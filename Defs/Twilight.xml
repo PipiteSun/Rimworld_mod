@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.28.0 黄昏之年：八位神、神力灌注（特性）、神明附体（状态）、世界条件、黄昏之兆、神迹残片、心情。
+     派系 / 兵种对应的神写在 Patches/Twilight.xml（PatchOperationAddModExtension）。技能见 ArtSource/Events-1.28.0-design-extract.md。 -->
+<Defs>
+  <!-- ==================== 八位神（degree 对应神力灌注特性等级；devoteeDegree 对应 1.39.0 信徒特性等级） ====================
+       1.39.0 信仰字段（alignment、worshippable、enemies、domainAbility、relic、likedOfferings、blessing/curse、iconPath、epithet）见 Source/Faith.cs；凯兰沃、密斯特拉、莎尔在 Defs/Faith.xml。 -->
+  <LichPhylactery.LP_DeityDef>
+    <defName>LP_Deity_Bane</defName><key>Bane</key>
+    <devoteeDegree>7</devoteeDegree><alignment>Evil</alignment><worshippable>true</worshippable><epithet>暴政之神</epithet><enemies><li>LP_Deity_Tyr</li></enemies><domainAbility>LP_Miracle_Dread</domainAbility><relic>LP_Relic_BlackHand</relic><likedOfferings><li>WeaponsMelee</li><li>Steel</li></likedOfferings><blessing>LichPhylactery.Manifest_Bane</blessing><curse>LichPhylactery.Manifest_Bane</curse><iconPath>Faith/Deities/Bane</iconPath><degree>1</degree>
+    <label>班恩</label><color>(0.55, 0.35, 0.9)</color>
+    <infusionTitle>暴君之仆</infusionTitle><vesselTitle>黑手</vesselTitle>
+    <description>暴政之神班恩，塞伊远征军所崇奉。附体者带着恐惧光环（12格内敌人射击精度-15%、移速×0.85），每20秒命令视线内最近3名敌人扔下武器（心智抗性可抵抗）；20格内的塞伊兵不逃跑、符印巨魔不狂暴。倒下时神力被抽走，20格内的随从立刻逃散。</description>
+  </LichPhylactery.LP_DeityDef>
+  <LichPhylactery.LP_DeityDef>
+    <defName>LP_Deity_Surtr</defName><key>Surtr</key>
+    <devoteeDegree>9</devoteeDegree><alignment>Evil</alignment><worshippable>true</worshippable><epithet>火巨人之王</epithet><domainAbility>LP_Miracle_ForgeWrath</domainAbility><relic>LP_Relic_ForgeHeart</relic><likedOfferings><li>Steel</li><li>Plasteel</li><li>Chemfuel</li></likedOfferings><blessing>LichPhylactery.Manifest_Surtr</blessing><curse>LichPhylactery.Manifest_Surtr</curse><iconPath>Faith/Deities/Surtr</iconPath><degree>2</degree>
+    <label>苏尔特</label><color>(1, 0.42, 0.12)</color>
+    <infusionTitle>余烬之血</infusionTitle><vesselTitle>苏尔特之焰</vesselTitle>
+    <description>火巨人之王苏尔特，余烬氏族所崇奉。附体者完全免疫火焰，走过的地块20%起火；周围有敌人时每25秒焰剑横扫（半径3格20点火焰并点燃）；每受一次伤害近战伤害+5%（最多+50%）。倒下时体内爆燃（半径4格25点火焰），自己严重烧伤但存活。</description>
+  </LichPhylactery.LP_DeityDef>
+  <LichPhylactery.LP_DeityDef>
+    <defName>LP_Deity_Ilsvi</defName><key>Ilsvi</key>
+    <devoteeDegree>10</devoteeDegree><alignment>Evil</alignment><worshippable>false</worshippable><epithet>夺心魔之神</epithet><iconPath>Faith/Deities/Ilsvi</iconPath><degree>3</degree>
+    <label>伊尔斯维</label><color>(0.75, 0.4, 0.85)</color>
+    <infusionTitle>低语者</infusionTitle><vesselTitle>伊尔斯维的低语</vesselTitle>
+    <description>夺心魔之神伊尔斯维，幽暗殖巢所崇奉。附体者免疫一切心灵效果，每15秒让15格内一名敌人狂乱10秒（心智抗性可抵抗；巫妖、火巨人、死灵造物等不能被蝌蚪寄生的人免疫）；20格内的被支配奴仆伤害+15%。倒下后脑髓被烧尽：大脑永久受损、痴呆，可以俘虏，夺心魔吞噬它的大脑脑髓+60。</description>
+  </LichPhylactery.LP_DeityDef>
+  <LichPhylactery.LP_DeityDef>
+    <defName>LP_Deity_Tyr</defName><key>Tyr</key>
+    <devoteeDegree>2</devoteeDegree><alignment>Good</alignment><worshippable>true</worshippable><epithet>正义之神</epithet><enemies><li>LP_Deity_Bane</li></enemies><domainAbility>LP_Miracle_Judgment</domainAbility><relic>LP_Relic_HandOfTyr</relic><likedOfferings><li>Gold</li><li>Silver</li></likedOfferings><blessing>LichPhylactery.Manifest_Tyr</blessing><curse>LichPhylactery.Manifest_Tyr</curse><iconPath>Faith/Deities/Tyr</iconPath><degree>4</degree>
+    <label>提尔</label><color>(1, 0.9, 0.45)</color>
+    <infusionTitle>律法之眼</infusionTitle><vesselTitle>正义之手</vesselTitle>
+    <description>正义之神提尔，猎巫狂热分子所崇奉。附体者周围10格是审判之庭：敌人不能使用任何能力；每30秒以罪罚打击视线内罪行最多的敌人（10+罪行×5，最多60）；不会眩晕，不会因疼痛倒地。倒下时服从审判、直接投降：不再流血，可以俘虏，招募难度减半。</description>
+  </LichPhylactery.LP_DeityDef>
+  <LichPhylactery.LP_DeityDef>
+    <defName>LP_Deity_Lathander</defName><key>Lathander</key>
+    <devoteeDegree>1</devoteeDegree><alignment>Good</alignment><worshippable>true</worshippable><epithet>晨曦之神</epithet><enemies><li>LP_Deity_Shar</li></enemies><domainAbility>LP_Miracle_Dawn</domainAbility><relic>LP_Relic_MorningStar</relic><likedOfferings><li>PlantFoodRaw</li></likedOfferings><blessing>LichPhylactery.Manifest_Lathander</blessing><curse>LichPhylactery.Manifest_Lathander</curse><iconPath>Faith/Deities/Lathander</iconPath><degree>5</degree>
+    <label>洛山达</label><color>(1, 0.72, 0.55)</color>
+    <infusionTitle>晨光之子</infusionTitle><vesselTitle>黎明</vesselTitle>
+    <description>晨曦之神洛山达，费伦拓荒同盟所崇奉（只在同盟与你敌对时出现）。附体者10格内的友方每小时每处伤口-5；每30秒用光柱打击视线内一名敌人（20点神圣伤害，不死者×2）；第一次被打倒时满血爬起。第二次倒下时黎明退去，可以正常俘虏。</description>
+  </LichPhylactery.LP_DeityDef>
+  <LichPhylactery.LP_DeityDef>
+    <defName>LP_Deity_Vlaakith</defName><key>Vlaakith</key>
+    <devoteeDegree>11</devoteeDegree><alignment>Evil</alignment><worshippable>false</worshippable><epithet>巫妖女王</epithet><iconPath>Faith/Deities/Vlaakith</iconPath><degree>6</degree>
+    <label>维拉基斯</label><color>(0.55, 0.85, 0.95)</color>
+    <infusionTitle>女王的宠儿</infusionTitle><vesselTitle>巫妖女王的注视</vesselTitle>
+    <description>吉斯洋基的巫妖女王维拉基斯，吉斯洋基雇佣兵所崇奉。附体者每20秒星界突袭（跳到视线内最远一名殖民者身后，下一次近战必中），所有近战附带8点灵能伤害（夺心魔×2）；死去时2名吉斯洋基战士从星界跳出复仇。倒下后尸体化为灰烬，不能俘虏，也没有灵魂可以汲取。</description>
+  </LichPhylactery.LP_DeityDef>
+  <LichPhylactery.LP_DeityDef>
+    <defName>LP_Deity_Talos</defName><key>Talos</key>
+    <devoteeDegree>6</devoteeDegree><alignment>Evil</alignment><worshippable>true</worshippable><epithet>风暴之神</epithet><enemies><li>LP_Deity_Lathander</li></enemies><domainAbility>LP_Miracle_Thunder</domainAbility><relic>LP_Relic_StormSpear</relic><likedOfferings><li>Chemfuel</li><li>ComponentIndustrial</li></likedOfferings><blessing>LichPhylactery.Manifest_Talos</blessing><curse>LichPhylactery.Manifest_Talos</curse><iconPath>Faith/Deities/Talos</iconPath><degree>7</degree>
+    <label>塔洛斯</label><color>(0.5, 0.7, 1)</color>
+    <infusionTitle>风暴之怒</infusionTitle><vesselTitle>风暴之主</vesselTitle>
+    <description>风暴之神塔洛斯，原版海盗所崇奉（模组设置里开启后才有）。附体者每40秒在一名殖民者附近3格落雷，在地图上时天气强制雷雨，10格内敌人射击精度-10%。倒下时一道雷劈在他自己身上，存活但重伤。</description>
+  </LichPhylactery.LP_DeityDef>
+  <LichPhylactery.LP_DeityDef>
+    <defName>LP_Deity_Malar</defName><key>Malar</key>
+    <devoteeDegree>5</devoteeDegree><alignment>Evil</alignment><worshippable>true</worshippable><epithet>狩猎之神</epithet><enemies><li>LP_Deity_Lathander</li></enemies><domainAbility>LP_Miracle_Hunt</domainAbility><relic>LP_Relic_BeastClaw</relic><likedOfferings><li>MeatRaw</li><li>Leathers</li></likedOfferings><blessing>LichPhylactery.Manifest_Malar</blessing><curse>LichPhylactery.Manifest_Malar</curse><iconPath>Faith/Deities/Malar</iconPath><degree>8</degree>
+    <label>马拉尔</label><color>(0.75, 0.25, 0.2)</color>
+    <infusionTitle>兽血</infusionTitle><vesselTitle>野兽之主</vesselTitle>
+    <description>狩猎之神马拉尔，原版野蛮部落所崇奉（模组设置里开启后才有）。附体者进场时让地图上2～4只野生动物猎杀殖民者（没有野生动物就从地图边缘来2只狼），近战伤害+25%，每60秒让15格内一只殖民地动物失控30秒（驯兽≥10的人就在旁边时不会）。倒下时野性退散，被驱使的野兽恢复平静。</description>
+  </LichPhylactery.LP_DeityDef>
+
+  <!-- ==================== 神力灌注 ==================== -->
+  <TraitDef>
+    <defName>LP_DivineInfusion</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#E08A3A>神力灌注（班恩）</color>]]></label><degree>1</degree><commonality>0</commonality>
+        <description>[PAWN_nameDef]身上流着暴君班恩的神力（暴君之仆）：心智抗性+20%；8格内的同伴不会因为有人倒下而逃跑；近战命中15%让目标畏惧5秒（移速×0.7、不能开枪）。黄昏之年里触发率提高。</description>
+        <statOffsets><LP_MindResist>0.2</LP_MindResist></statOffsets>
+      </li>
+      <li>
+        <label><![CDATA[<color=#E08A3A>神力灌注（苏尔特）</color>]]></label><degree>2</degree><commonality>0</commonality>
+        <description>[PAWN_nameDef]身上流着火巨人之王苏尔特的神力（余烬之血）：受到的火焰伤害减半，不会着火；近战命中附带4点烧伤，10%点燃目标。黄昏之年里烧伤更重。</description>
+        <statFactors><Flammability>0</Flammability></statFactors>
+      </li>
+      <li>
+        <label><![CDATA[<color=#E08A3A>神力灌注（伊尔斯维）</color>]]></label><degree>3</degree><commonality>0</commonality>
+        <description>[PAWN_nameDef]听得见伊尔斯维的低语（低语者）：心智抗性+30%，看得见灵能隐匿等隐身单位；被打倒时对攻击者心灵冲击，眩晕2秒。黄昏之年里眩晕更久。</description>
+        <statOffsets><LP_MindResist>0.3</LP_MindResist></statOffsets>
+      </li>
+      <li>
+        <label><![CDATA[<color=#E08A3A>神力灌注（提尔）</color>]]></label><degree>4</degree><commonality>0</commonality>
+        <description>[PAWN_nameDef]的双眼带着正义之神提尔的神力（律法之眼）：看穿隐形；对罪行多的目标（击杀人形、摘取器官、吃人肉累计≥5，巫妖和死灵造物直接算）伤害+10%。黄昏之年里加成更高。</description>
+      </li>
+      <li>
+        <label><![CDATA[<color=#E08A3A>神力灌注（洛山达）</color>]]></label><degree>5</degree><commonality>0</commonality>
+        <description>[PAWN_nameDef]受晨曦之神洛山达眷顾（晨光之子）：每小时一处伤口愈合3点；对不死者伤害+25%；第一次倒地时30%立刻爬起并止血。黄昏之年里更容易爬起。</description>
+      </li>
+      <li>
+        <label><![CDATA[<color=#E08A3A>神力灌注（维拉基斯）</color>]]></label><degree>6</degree><commonality>0</commonality>
+        <description>[PAWN_nameDef]是巫妖女王维拉基斯的宠儿：星界跳跃冷却减半，银剑灵能伤害+20%；受到致命伤时20%星界跳跃到8格外，躲开这一下。黄昏之年里更容易躲开。</description>
+      </li>
+      <li>
+        <label><![CDATA[<color=#E08A3A>神力灌注（塔洛斯）</color>]]></label><degree>7</degree><commonality>0</commonality>
+        <description>[PAWN_nameDef]身上带着风暴之神塔洛斯的怒气（风暴之怒）：EMP 不会让自己眩晕；远程命中8%附带一次小 EMP。黄昏之年里触发率提高。</description>
+      </li>
+      <li>
+        <label><![CDATA[<color=#E08A3A>神力灌注（马拉尔）</color>]]></label><degree>8</degree><commonality>0</commonality>
+        <description>[PAWN_nameDef]身上流着狩猎之神马拉尔的兽血：移速+10%，夜里不受黑暗影响；近战命中15%撕开伤口流血。黄昏之年里触发率提高。</description>
+        <statFactors><MoveSpeed>1.1</MoveSpeed></statFactors>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Legendary</tier><kind>神力灌注</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <!-- ==================== 神明附体 ==================== -->
+  <HediffDef>
+    <defName>LP_DivineVessel</defName>
+    <label>神明附体</label>
+    <description>一位神明借这具身体降临。附体者免疫眩晕、精神崩溃和一切精神状态；倒下时神明离体（各神不同），留下神迹残片。</description>
+    <hediffClass>LichPhylactery.Hediff_DivineVessel</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(1, 0.85, 0.5)</defaultLabelColor>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>LichPhylactery.PawnRenderNode_DivineHalo</nodeClass>
+        <workerClass>PawnRenderNodeWorker</workerClass>
+        <texPath>Things/Pawn/LP_DivineHalo</texPath>
+        <shaderTypeDef>MoteGlow</shaderTypeDef>
+        <parentTagDef>Body</parentTagDef>
+        <drawSize>(2.4,2.4)</drawSize>
+        <baseLayer>-5</baseLayer>
+        <rotDrawMode>Fresh</rotDrawMode>
+      </li>
+    </renderNodeProperties>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_FormerVessel</defName>
+    <label>曾为化身容器</label>
+    <description>神明曾借这具身体降临，留下了痕迹。</description>
+    <hediffClass>LichPhylactery.Hediff_FormerVessel</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_Surrendered</defName>
+    <label>服从审判</label>
+    <description>提尔的化身容器服从了审判：放下武器，伤口不再流血。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>180000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+    </comps>
+    <stages><li><totalBleedFactor>0</totalBleedFactor></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_DawnChild</defName>
+    <label>晨光之子</label>
+    <description>洛山达的晨光在伤口间流动。</description>
+    <hediffClass>LichPhylactery.Hediff_DawnChild</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+  <HediffDef Name="LP_DivineAuraBase" Abstract="True">
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>150</disappearsAfterTicks></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+  </HediffDef>
+  <HediffDef ParentName="LP_DivineAuraBase">
+    <defName>LP_BaneFear</defName>
+    <label>暴君的恐惧</label>
+    <description>班恩的化身容器就在附近，手在发抖。</description>
+    <defaultLabelColor>(0.6, 0.45, 0.9)</defaultLabelColor>
+    <stages><li><statFactors><ShootingAccuracyPawn>0.85</ShootingAccuracyPawn><MoveSpeed>0.85</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_DivineAuraBase">
+    <defName>LP_BaneDread</defName>
+    <label>畏惧</label>
+    <description>被暴君之仆吓破了胆：移速×0.7，不敢开枪。</description>
+    <defaultLabelColor>(0.6, 0.45, 0.9)</defaultLabelColor>
+    <comps Inherit="False">
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>300</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+    <stages><li><statFactors><MoveSpeed>0.7</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_DivineAuraBase">
+    <defName>LP_TalosGale</defName>
+    <label>塔洛斯的狂风</label>
+    <description>风暴之主身边狂风大作，很难瞄准。</description>
+    <defaultLabelColor>(0.5, 0.7, 1)</defaultLabelColor>
+    <stages><li><statFactors><ShootingAccuracyPawn>0.9</ShootingAccuracyPawn></statFactors></li></stages>
+  </HediffDef>
+
+  <DamageDef>
+    <defName>LP_DivineSmite</defName>
+    <label>神罚</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0}被神罚击杀了。</deathMessage>
+    <hediff>Burn</hediff>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <armorCategory>Heat</armorCategory>
+    <defaultDamage>10</defaultDamage>
+    <defaultArmorPenetration>1</defaultArmorPenetration>
+    <impactSoundType>Electric</impactSoundType>
+  </DamageDef>
+
+  <!-- ==================== 黄昏之年 ==================== -->
+  <GameConditionDef>
+    <defName>LP_TwilightYear</defName>
+    <conditionClass>LichPhylactery.GameCondition_TwilightYear</conditionClass>
+    <label>黄昏之年</label>
+    <description>诸神的目光投向了这片土地，天空染成暗红。敌人中的神力灌注者大幅增多，大规模袭击的领队可能被神明附体，神力的效果也更强。</description>
+    <endMessage>暗红的天幕褪去了，黄昏之年结束。</endMessage>
+    <letterText>天空染成了暗红色：黄昏之年开始了。</letterText>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
+  <IncidentDef>
+    <defName>LP_TwilightOmen</defName>
+    <label>黄昏之兆</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>World</li>
+    </targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_TwilightOmen</workerClass>
+    <!-- 不由叙事者抽取：由世界组件按年掷骰触发 -->
+    <baseChance>0</baseChance>
+  </IncidentDef>
+  <ThoughtDef>
+    <defName>LP_TwilightDread</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_Twilight</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li>
+        <label>不祥的黄昏</label>
+        <description>天空红得像血。诸神在看着我们，这不是什么好兆头。</description>
+        <baseMoodEffect>-3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_RepelledVessel</defName>
+    <durationDays>3</durationDays>
+    <stackLimit>3</stackLimit>
+    <stackedEffectMultiplier>0.5</stackedEffectMultiplier>
+    <stages>
+      <li>
+        <label>击退了神的使者</label>
+        <description>连神明附体的敌人都被我们打退了！</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_MiracleShard</defName>
+    <label>神迹残片</label>
+    <description>神明离开化身容器时留下的一小片凝固的神力，握在手里能听见遥远的颂歌。费伦拓荒同盟的商队和黑网都高价收购。</description>
+    <graphicData>
+      <texPath>Items/Materials/MiracleShard</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Stone_Drop</soundInteract>
+    <soundDrop>Stone_Drop</soundDrop>
+    <stackLimit>25</stackLimit>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <statBases>
+      <MarketValue>300</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <thingCategories>
+      <li>LP_AlchemyMaterials</li>
+    </thingCategories>
+    <tradeTags>
+      <li>LP_MiracleShard</li>
+    </tradeTags>
+    <burnableByRecipe>false</burnableByRecipe>
+  </ThingDef>
+</Defs>

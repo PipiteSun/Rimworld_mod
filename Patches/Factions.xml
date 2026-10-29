@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+  <!-- 1.19.0：幽暗殖巢的“地下钻出”进入普通立即进攻的登场方式；它的 Worker 只对幽暗殖巢可用。 -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/RaidStrategyDef[defName="ImmediateAttack"]/arriveModes</xpath>
+    <value>
+      <li>LP_Burrow</li>
+    </value>
+  </Operation>
+</Patch>

@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.55.0 异界契约：派系（九狱军团 / 狂猎永久敌对；九狱掮客 / 妖精宫廷 / 临时停战中立）、兵种、商队、事件、狂猎的职责。
+     代码见 Source/PactEvents.cs。 -->
+<Defs>
+  <!-- ==================== 派系 ==================== -->
+  <FactionDef ParentName="LP_FactionBase">
+    <defName>LP_HellsLegion</defName>
+    <label>九狱军团</label>
+    <fixedName>九狱军团</fixedName>
+    <description>九狱的正规军：链魔、骨魔、角魔和艾林魔。它们来讨债、来抓违约的人，也在血战之潮里和深渊魔群厮杀。和深渊魔群互相敌对。</description>
+    <pawnSingular>魔鬼</pawnSingular>
+    <pawnsPlural>魔鬼</pawnsPlural>
+    <techLevel>Medieval</techLevel>
+    <hidden>true</hidden>
+    <permanentEnemy>true</permanentEnemy>
+    <requiredCountAtGameStart>0</requiredCountAtGameStart>
+    <startingCountAtWorldCreation>0</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <displayInFactionSelection>false</displayInFactionSelection>
+    <settlementGenerationWeight>0</settlementGenerationWeight>
+    <canStageAttacks>false</canStageAttacks>
+    <raidsForbidden>true</raidsForbidden>
+    <canGenerateQuestSites>false</canGenerateQuestSites>
+    <rescueesCanJoin>false</rescueesCanJoin>
+    <factionIconPath>Pact/Factions/HellsLegion</factionIconPath>
+    <colorSpectrum><li>(0.62, 0.14, 0.12)</li><li>(0.35, 0.1, 0.1)</li></colorSpectrum>
+    <basicMemberKind>LP_HL_ChainDevil</basicMemberKind>
+    <backstoryFilters Inherit="False"><li><categories><li>LP_HellsBio</li></categories></li></backstoryFilters>
+    <ideoName>九层地狱</ideoName>
+    <ideoDescription>秩序就是契约，契约就是一切。</ideoDescription>
+    <forcedMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Ideological</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Supremacist</li>
+    </forcedMemes>
+    <raidCommonalityFromPointsCurve><points><li>(0, 0)</li></points></raidCommonalityFromPointsCurve>
+    <pawnGroupMakers>
+      <li><kindDef>Combat</kindDef><options><LP_HL_ChainDevil>1</LP_HL_ChainDevil><LP_HL_BoneDevil>0.6</LP_HL_BoneDevil><LP_HL_HornedDevil>0.4</LP_HL_HornedDevil></options></li>
+    </pawnGroupMakers>
+  </FactionDef>
+  <FactionDef ParentName="LP_FactionBase">
+    <defName>LP_FeyHunt</defName>
+    <label>狂猎</label>
+    <fixedName>狂猎</fixedName>
+    <description>两位女王的猎队：鹿角盔的骑手、冬狼、闪光犬和红帽。它们只追一个猎物，追到天亮。和深渊魔群互相敌对。</description>
+    <pawnSingular>猎手</pawnSingular>
+    <pawnsPlural>猎手</pawnsPlural>
+    <techLevel>Medieval</techLevel>
+    <hidden>true</hidden>
+    <permanentEnemy>true</permanentEnemy>
+    <requiredCountAtGameStart>0</requiredCountAtGameStart>
+    <startingCountAtWorldCreation>0</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <displayInFactionSelection>false</displayInFactionSelection>
+    <settlementGenerationWeight>0</settlementGenerationWeight>
+    <canStageAttacks>false</canStageAttacks>
+    <raidsForbidden>true</raidsForbidden>
+    <canGenerateQuestSites>false</canGenerateQuestSites>
+    <rescueesCanJoin>false</rescueesCanJoin>
+    <factionIconPath>Pact/Factions/FeyHunt</factionIconPath>
+    <colorSpectrum><li>(0.62, 0.72, 0.82)</li><li>(0.38, 0.5, 0.42)</li></colorSpectrum>
+    <basicMemberKind>LP_FW_Redcap</basicMemberKind>
+    <backstoryFilters Inherit="False"><li><categories><li>LP_FeyBio</li></categories></li></backstoryFilters>
+    <ideoName>永恒的狩猎</ideoName>
+    <ideoDescription>月亮升起时，猎物就该跑了。</ideoDescription>
+    <raidCommonalityFromPointsCurve><points><li>(0, 0)</li></points></raidCommonalityFromPointsCurve>
+    <pawnGroupMakers>
+      <li><kindDef>Combat</kindDef><options><LP_FW_Redcap>1</LP_FW_Redcap><LP_FW_WildHunter>0.5</LP_FW_WildHunter></options></li>
+    </pawnGroupMakers>
+  </FactionDef>
+  <FactionDef ParentName="LP_FactionBase">
+    <defName>LP_HellsBrokers</defName>
+    <label>九狱掮客</label>
+    <fixedName>九狱掮客</fixedName>
+    <description>一伙做生意的魔鬼律师和它们的骨魔护卫。它们卖契约书、灵魂币和恶魔学典籍，收囚犯和灵魂；被它们拖进九狱的人，也能从它们手里赎回来。谁敢抢它们的商队，九狱会记一辈子。</description>
+    <pawnSingular>掮客</pawnSingular>
+    <pawnsPlural>掮客</pawnsPlural>
+    <techLevel>Medieval</techLevel>
+    <hidden>true</hidden>
+    <requiredCountAtGameStart>0</requiredCountAtGameStart>
+    <startingCountAtWorldCreation>0</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <displayInFactionSelection>false</displayInFactionSelection>
+    <settlementGenerationWeight>0</settlementGenerationWeight>
+    <canStageAttacks>false</canStageAttacks>
+    <raidsForbidden>true</raidsForbidden>
+    <canGenerateQuestSites>false</canGenerateQuestSites>
+    <rescueesCanJoin>false</rescueesCanJoin>
+    <factionIconPath>Pact/Factions/HellsBrokers</factionIconPath>
+    <colorSpectrum><li>(0.5, 0.36, 0.2)</li><li>(0.3, 0.2, 0.14)</li></colorSpectrum>
+    <basicMemberKind>LP_HB_BoneDevil</basicMemberKind>
+    <backstoryFilters Inherit="False"><li><categories><li>LP_HellsBio</li></categories></li></backstoryFilters>
+    <ideoName>契约之道</ideoName>
+    <ideoDescription>一切都可以交易，一切都要签字。</ideoDescription>
+    <caravanTraderKinds><li>LP_InfernalCaravanTrader</li></caravanTraderKinds>
+    <raidCommonalityFromPointsCurve><points><li>(0, 0)</li></points></raidCommonalityFromPointsCurve>
+    <pawnGroupMakers>
+      <li><kindDef>Combat</kindDef><options><LP_HB_BoneDevil>1</LP_HB_BoneDevil></options></li>
+      <li>
+        <kindDef>Trader</kindDef>
+        <traders><LP_HB_Amnizu>1</LP_HB_Amnizu></traders>
+        <carriers><Muffalo>1</Muffalo></carriers>
+        <guards><LP_HB_BoneDevil>1</LP_HB_BoneDevil></guards>
+      </li>
+    </pawnGroupMakers>
+  </FactionDef>
+  <FactionDef ParentName="LP_FactionBase">
+    <defName>LP_FeyCourt</defName>
+    <label>妖精宫廷</label>
+    <fixedName>妖精宫廷</fixedName>
+    <description>两位女王的宫廷里跑出来做买卖的妖精：月亮升起时摆摊，天亮前收摊。它们不收银子换代价——收记忆、寿命、名字和笑声。</description>
+    <pawnSingular>妖精</pawnSingular>
+    <pawnsPlural>妖精</pawnsPlural>
+    <techLevel>Medieval</techLevel>
+    <hidden>true</hidden>
+    <requiredCountAtGameStart>0</requiredCountAtGameStart>
+    <startingCountAtWorldCreation>0</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <displayInFactionSelection>false</displayInFactionSelection>
+    <settlementGenerationWeight>0</settlementGenerationWeight>
+    <canStageAttacks>false</canStageAttacks>
+    <raidsForbidden>true</raidsForbidden>
+    <canGenerateQuestSites>false</canGenerateQuestSites>
+    <rescueesCanJoin>false</rescueesCanJoin>
+    <factionIconPath>Pact/Factions/FeyCourt</factionIconPath>
+    <colorSpectrum><li>(0.5, 0.72, 0.48)</li><li>(0.7, 0.62, 0.86)</li></colorSpectrum>
+    <basicMemberKind>LP_FY_Satyr</basicMemberKind>
+    <backstoryFilters Inherit="False"><li><categories><li>LP_FeyBio</li></categories></li></backstoryFilters>
+    <ideoName>月下的宫廷</ideoName>
+    <ideoDescription>一切都有价，只是价不一定是银子。</ideoDescription>
+    <caravanTraderKinds><li>LP_FeyMarketTrader</li></caravanTraderKinds>
+    <raidCommonalityFromPointsCurve><points><li>(0, 0)</li></points></raidCommonalityFromPointsCurve>
+    <pawnGroupMakers>
+      <li><kindDef>Combat</kindDef><options><LP_FY_Satyr>1</LP_FY_Satyr></options></li>
+      <li>
+        <kindDef>Trader</kindDef>
+        <traders><LP_FY_FeyMerchant>1</LP_FY_FeyMerchant></traders>
+        <carriers><Muffalo>1</Muffalo></carriers>
+        <guards><LP_FY_Satyr>1</LP_FY_Satyr></guards>
+      </li>
+    </pawnGroupMakers>
+  </FactionDef>
+  <FactionDef ParentName="LP_FactionBase">
+    <defName>LP_PlanarTruce</defName>
+    <label>临时停战</label>
+    <fixedName>停战的外来者</fixedName>
+    <description>血战之潮里接受了殖民地援助的一方：这一次对你中立，打完就走。</description>
+    <pawnSingular>外来者</pawnSingular>
+    <pawnsPlural>外来者</pawnsPlural>
+    <techLevel>Medieval</techLevel>
+    <hidden>true</hidden>
+    <requiredCountAtGameStart>0</requiredCountAtGameStart>
+    <startingCountAtWorldCreation>0</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <displayInFactionSelection>false</displayInFactionSelection>
+    <settlementGenerationWeight>0</settlementGenerationWeight>
+    <canStageAttacks>false</canStageAttacks>
+    <raidsForbidden>true</raidsForbidden>
+    <canGenerateQuestSites>false</canGenerateQuestSites>
+    <rescueesCanJoin>false</rescueesCanJoin>
+    <factionIconPath>Pact/Factions/Truce</factionIconPath>
+    <colorSpectrum><li>(0.6, 0.5, 0.4)</li></colorSpectrum>
+    <basicMemberKind>LP_HL_ChainDevil</basicMemberKind>
+    <backstoryFilters Inherit="False"><li><categories><li>LP_HellsBio</li></categories></li></backstoryFilters>
+    <ideoName>停战</ideoName>
+    <ideoDescription>敌人的敌人。</ideoDescription>
+    <raidCommonalityFromPointsCurve><points><li>(0, 0)</li></points></raidCommonalityFromPointsCurve>
+    <pawnGroupMakers>
+      <li><kindDef>Combat</kindDef><options><LP_HL_ChainDevil>1</LP_HL_ChainDevil></options></li>
+    </pawnGroupMakers>
+  </FactionDef>
+
+  <!-- ==================== 背景 ==================== -->
+  <BackstoryDef>
+    <defName>LP_Bs_HellsSpawn</defName>
+    <title>九狱所生</title>
+    <titleShort>魔鬼</titleShort>
+    <description>[PAWN_nameDef]从一份被撕毁的契约里成形，第一眼看见的是九狱的铁门。</description>
+    <slot>Childhood</slot>
+    <spawnCategories><li>LP_HellsBio</li></spawnCategories>
+    <skillGains><Melee>3</Melee><Social>2</Social></skillGains>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>LP_Bs_HellsVeteran</defName>
+    <title>九狱军团士兵</title>
+    <titleShort>魔鬼</titleShort>
+    <description>[PAWN_nameDef]在血战之潮里和恶魔打了几百年，升一级要签一份新契约。</description>
+    <slot>Adulthood</slot>
+    <spawnCategories><li>LP_HellsBio</li></spawnCategories>
+    <skillGains><Melee>5</Melee><Shooting>2</Shooting><Social>2</Social></skillGains>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>LP_Bs_FeyChild</defName>
+    <title>月下出生</title>
+    <titleShort>妖精</titleShort>
+    <description>[PAWN_nameDef]生在妖精荒野一个永远是黄昏的林子里，学会走路之前先学会了唱歌。</description>
+    <slot>Childhood</slot>
+    <spawnCategories><li>LP_FeyBio</li></spawnCategories>
+    <skillGains><Artistic>2</Artistic><Plants>2</Plants></skillGains>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>LP_Bs_FeyCourtier</defName>
+    <title>女王的廷臣</title>
+    <titleShort>廷臣</titleShort>
+    <description>[PAWN_nameDef]在宫廷里替女王跑腿、做买卖、打猎，知道每一个承诺的价钱。</description>
+    <slot>Adulthood</slot>
+    <spawnCategories><li>LP_FeyBio</li></spawnCategories>
+    <skillGains><Social>4</Social><Melee>3</Melee><Animals>2</Animals></skillGains>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>LP_Bs_CelestialHost</defName>
+    <title>天界的使者</title>
+    <titleShort>天使</titleShort>
+    <description>[PAWN_nameDef]是善神的使者，在天界的光里站了不知多少年，第一次被派到凡间。</description>
+    <slot>Adulthood</slot>
+    <spawnCategories><li>LP_CelestialBio</li></spawnCategories>
+    <skillGains><Melee>5</Melee><Medicine>4</Medicine><Social>3</Social></skillGains>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>LP_Bs_CelestialBorn</defName>
+    <title>光中成形</title>
+    <titleShort>天使</titleShort>
+    <description>[PAWN_nameDef]是从一句祷词里诞生的。</description>
+    <slot>Childhood</slot>
+    <spawnCategories><li>LP_CelestialBio</li></spawnCategories>
+    <skillGains><Medicine>2</Medicine><Intellectual>2</Intellectual></skillGains>
+  </BackstoryDef>
+
+  <!-- ==================== 兵种 ==================== -->
+  <PawnKindDef Name="LP_PactKindBase" ParentName="LP_FighterBase" Abstract="True">
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <minGenerationAge>20</minGenerationAge>
+    <maxGenerationAge>45</maxGenerationAge>
+    <apparelMoney>0</apparelMoney>
+    <weaponMoney>0</weaponMoney>
+    <invNutrition>0</invNutrition>
+    <chemicalAddictionChance>0</chemicalAddictionChance>
+    <humanPregnancyChance>0</humanPregnancyChance>
+    <canBeSapper>false</canBeSapper>
+    <initialResistanceRange>100~100</initialResistanceRange>
+  </PawnKindDef>
+  <PawnKindDef Name="LP_HLBase" ParentName="LP_PactKindBase" Abstract="True">
+    <defaultFactionDef>LP_HellsLegion</defaultFactionDef>
+    <backstoryFiltersOverride><li><categories><li>LP_HellsBio</li></categories></li></backstoryFiltersOverride>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_HLBase">
+    <defName>LP_HL_ChainDevil</defName>
+    <label>链魔</label>
+    <combatPower>150</combatPower>
+    <xenotypeSet><xenotypeChances><LP_ChainDevil>1</LP_ChainDevil></xenotypeChances></xenotypeSet>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_HLBase">
+    <defName>LP_HL_BoneDevil</defName>
+    <label>骨魔</label>
+    <combatPower>200</combatPower>
+    <xenotypeSet><xenotypeChances><LP_BoneDevil>1</LP_BoneDevil></xenotypeChances></xenotypeSet>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_HLBase">
+    <defName>LP_HL_HornedDevil</defName>
+    <label>角魔</label>
+    <combatPower>260</combatPower>
+    <xenotypeSet><xenotypeChances><LP_HornedDevil>1</LP_HornedDevil></xenotypeChances></xenotypeSet>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_HLBase">
+    <defName>LP_HL_CollectorLeader</defName>
+    <label>讨债的角魔</label>
+    <combatPower>400</combatPower>
+    <xenotypeSet><xenotypeChances><LP_HornedDevil>1</LP_HornedDevil></xenotypeChances></xenotypeSet>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_HLBase">
+    <defName>LP_HL_Erinyes</defName>
+    <label>艾林魔</label>
+    <combatPower>220</combatPower>
+    <xenotypeSet><xenotypeChances><LP_Erinyes>1</LP_Erinyes></xenotypeChances></xenotypeSet>
+    <weaponMoney>400~800</weaponMoney>
+    <weaponTags><li>MedievalMeleeDecent</li><li>MedievalMeleeAdvanced</li><li>NeolithicRangedHeavy</li></weaponTags>
+    <apparelMoney>200~400</apparelMoney>
+    <apparelTags><li>Medieval</li></apparelTags>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_HLBase">
+    <defName>LP_HL_Amnizu</defName>
+    <label>阿姆尼祖</label>
+    <combatPower>300</combatPower>
+    <xenotypeSet><xenotypeChances><LP_Amnizu>1</LP_Amnizu></xenotypeChances></xenotypeSet>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_PactKindBase">
+    <defName>LP_HB_Amnizu</defName>
+    <label>九狱掮客</label>
+    <defaultFactionDef>LP_HellsBrokers</defaultFactionDef>
+    <combatPower>300</combatPower>
+    <trader>true</trader>
+    <xenotypeSet><xenotypeChances><LP_Amnizu>1</LP_Amnizu></xenotypeChances></xenotypeSet>
+    <backstoryFiltersOverride><li><categories><li>LP_HellsBio</li></categories></li></backstoryFiltersOverride>
+    <apparelMoney>300~500</apparelMoney>
+    <apparelTags><li>Medieval</li></apparelTags>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_PactKindBase">
+    <defName>LP_HB_BoneDevil</defName>
+    <label>骨魔护卫</label>
+    <defaultFactionDef>LP_HellsBrokers</defaultFactionDef>
+    <combatPower>200</combatPower>
+    <xenotypeSet><xenotypeChances><LP_BoneDevil>1</LP_BoneDevil></xenotypeChances></xenotypeSet>
+    <backstoryFiltersOverride><li><categories><li>LP_HellsBio</li></categories></li></backstoryFiltersOverride>
+  </PawnKindDef>
+
+  <PawnKindDef Name="LP_FWBase" ParentName="LP_PactKindBase" Abstract="True">
+    <defaultFactionDef>LP_FeyHunt</defaultFactionDef>
+    <backstoryFiltersOverride><li><categories><li>LP_FeyBio</li></categories></li></backstoryFiltersOverride>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_FWBase">
+    <defName>LP_FW_Redcap</defName>
+    <label>红帽</label>
+    <combatPower>70</combatPower>
+    <xenotypeSet><xenotypeChances><LP_Redcap>1</LP_Redcap></xenotypeChances></xenotypeSet>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_FWBase">
+    <defName>LP_FW_WildHunter</defName>
+    <label>狂猎骑手</label>
+    <combatPower>180</combatPower>
+    <xenotypeSet><xenotypeChances><LP_WildHunter>1</LP_WildHunter></xenotypeChances></xenotypeSet>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_FWBase">
+    <defName>LP_FW_WildHuntLord</defName>
+    <label>狂猎首领</label>
+    <combatPower>400</combatPower>
+    <xenotypeSet><xenotypeChances><LP_WildHuntLord>1</LP_WildHuntLord></xenotypeChances></xenotypeSet>
+  </PawnKindDef>
+
+  <PawnKindDef Name="LP_FYBase" ParentName="LP_PactKindBase" Abstract="True">
+    <defaultFactionDef>LP_FeyCourt</defaultFactionDef>
+    <backstoryFiltersOverride><li><categories><li>LP_FeyBio</li></categories></li></backstoryFiltersOverride>
+    <initialResistanceRange>10~20</initialResistanceRange>
+    <apparelMoney>200~400</apparelMoney>
+    <apparelTags><li>Neolithic</li><li>Medieval</li></apparelTags>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_FYBase">
+    <defName>LP_FY_Satyr</defName>
+    <label>萨特</label>
+    <combatPower>60</combatPower>
+    <weaponMoney>100~250</weaponMoney>
+    <weaponTags><li>NeolithicMeleeBasic</li><li>NeolithicRangedBasic</li></weaponTags>
+    <xenotypeSet><xenotypeChances><LP_Satyr>1</LP_Satyr></xenotypeChances></xenotypeSet>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_FYBase">
+    <defName>LP_FY_Dryad</defName>
+    <label>林仙</label>
+    <combatPower>70</combatPower>
+    <xenotypeSet><xenotypeChances><LP_Dryad>1</LP_Dryad></xenotypeChances></xenotypeSet>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_FYBase">
+    <defName>LP_FY_FeyMerchant</defName>
+    <label>妖精商人</label>
+    <combatPower>60</combatPower>
+    <trader>true</trader>
+    <xenotypeSet><xenotypeChances><LP_Changeling>1</LP_Changeling></xenotypeChances></xenotypeSet>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_FYBase">
+    <defName>LP_FY_SatyrVolunteer</defName>
+    <label>萨特自愿者</label>
+    <combatPower>50</combatPower>
+    <xenotypeSet><xenotypeChances><LP_Satyr>1</LP_Satyr></xenotypeChances></xenotypeSet>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_FYBase">
+    <defName>LP_FY_ChangelingVolunteer</defName>
+    <label>调换儿自愿者</label>
+    <combatPower>50</combatPower>
+    <xenotypeSet><xenotypeChances><LP_Changeling>1</LP_Changeling></xenotypeChances></xenotypeSet>
+  </PawnKindDef>
+
+  <PawnKindDef Name="LP_CEBase" ParentName="LP_PactKindBase" Abstract="True">
+    <backstoryFiltersOverride><li><categories><li>LP_CelestialBio</li></categories></li></backstoryFiltersOverride>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_CEBase">
+    <defName>LP_CE_Deva</defName>
+    <label>狄瓦</label>
+    <combatPower>300</combatPower>
+    <xenotypeSet><xenotypeChances><LP_Deva>1</LP_Deva></xenotypeChances></xenotypeSet>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_CEBase">
+    <defName>LP_CE_Planetar</defName>
+    <label>行星使</label>
+    <combatPower>600</combatPower>
+    <xenotypeSet><xenotypeChances><LP_Planetar>1</LP_Planetar></xenotypeChances></xenotypeSet>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <resistance>2</resistance>
+        <cr>16</cr>
+        <level>18~18</level>
+        <legendPoints>0</legendPoints>
+        <milestone>false</milestone>
+        <deathOnDowned>false</deathOnDowned>
+        <title>行星使</title>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+
+  <!-- ==================== 商队 ==================== -->
+  <TraderKindDef>
+    <defName>LP_InfernalCaravanTrader</defName>
+    <label>九狱掮客</label>
+    <commonality>1</commonality>
+    <stockGenerators>
+      <li Class="StockGenerator_SingleDef"><thingDef>Silver</thingDef><countRange>800~1600</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_PactScroll</thingDef><countRange>2~2</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_SoulCoin</thingDef><countRange>10~25</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_Demonomicon</thingDef><countRange>1~1</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_InfernalPitchfork</thingDef><countRange>1~1</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_EntanglingRope</thingDef><countRange>0~1</countRange></li>
+      <li Class="StockGenerator_Animals"><tradeTagsSell><li>LP_HellsAnimal</li></tradeTagsSell><kindCountRange>1~1</kindCountRange><countRange>0~1</countRange><checkTemperature>false</checkTemperature></li>
+      <li Class="StockGenerator_Slaves"><countRange>0~0</countRange></li>
+      <li Class="StockGenerator_BuySingleDef"><thingDef>LP_TrueNameScroll</thingDef></li>
+      <li Class="StockGenerator_BuySingleDef"><thingDef>LP_MiracleShard</thingDef></li>
+    </stockGenerators>
+  </TraderKindDef>
+  <TraderKindDef>
+    <defName>LP_FeyMarketTrader</defName>
+    <label>妖精集市</label>
+    <commonality>1</commonality>
+    <stockGenerators>
+      <li Class="StockGenerator_SingleDef"><thingDef>Silver</thingDef><countRange>300~700</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_FeySilverBow</thingDef><countRange>1~2</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_WildHuntHorn</thingDef><countRange>0~1</countRange></li>
+      <li Class="StockGenerator_Animals"><tradeTagsSell><li>LP_FeyAnimal</li></tradeTagsSell><kindCountRange>1~1</kindCountRange><countRange>1~2</countRange><checkTemperature>false</checkTemperature></li>
+      <li Class="StockGenerator_Slaves"><slaveKindDef>LP_FY_SatyrVolunteer</slaveKindDef><countRange>1~1</countRange></li>
+      <li Class="StockGenerator_Slaves"><slaveKindDef>LP_FY_ChangelingVolunteer</slaveKindDef><countRange>0~1</countRange></li>
+    </stockGenerators>
+  </TraderKindDef>
+
+  <!-- ==================== 狂猎的职责：只追猎物，挡路才打 ==================== -->
+  <DutyDef>
+    <defName>LP_WildHuntDuty</defName>
+    <alwaysShowWeapon>true</alwaysShowWeapon>
+    <thinkNode Class="ThinkNode_Priority">
+      <subNodes>
+        <li Class="LichPhylactery.JobGiver_WildHunt" />
+        <li Class="JobGiver_AIFightEnemies"><targetAcquireRadius>5</targetAcquireRadius><targetKeepRadius>8</targetKeepRadius></li>
+        <li Class="JobGiver_WanderNearDutyLocation"><wanderRadius>8</wanderRadius></li>
+      </subNodes>
+    </thinkNode>
+  </DutyDef>
+
+  <!-- ==================== 事件（都吃“DND 事件频率”） ==================== -->
+  <IncidentDef>
+    <defName>LP_PatronWhisper</defName>
+    <label>宗主的低语</label>
+    <category>Misc</category>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_PatronWhisper</workerClass>
+    <baseChance>0.4</baseChance>
+    <minRefireDays>30</minRefireDays>
+    <earliestDay>20</earliestDay>
+  </IncidentDef>
+  <IncidentDef>
+    <defName>LP_BloodWar</defName>
+    <label>血战之潮</label>
+    <category>ThreatBig</category>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_BloodWar</workerClass>
+    <baseChance>0.2</baseChance>
+    <minRefireDays>30</minRefireDays>
+    <earliestDay>60</earliestDay>
+    <minThreatPoints>1500</minThreatPoints>
+    <pointsScaleable>true</pointsScaleable>
+  </IncidentDef>
+  <IncidentDef>
+    <defName>LP_InfernalCaravan</defName>
+    <label>九狱商队</label>
+    <category>FactionArrival</category>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_InfernalCaravan</workerClass>
+    <baseChance>0.5</baseChance>
+    <minRefireDays>30</minRefireDays>
+    <earliestDay>30</earliestDay>
+  </IncidentDef>
+  <IncidentDef>
+    <defName>LP_WildHunt</defName>
+    <label>狂猎</label>
+    <category>ThreatBig</category>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_WildHunt</workerClass>
+    <baseChance>0.1</baseChance>
+    <minRefireDays>30</minRefireDays>
+    <earliestDay>90</earliestDay>
+    <pointsScaleable>true</pointsScaleable>
+  </IncidentDef>
+  <IncidentDef>
+    <defName>LP_FallenDeva</defName>
+    <label>坠落天使</label>
+    <category>Misc</category>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_FallenDeva</workerClass>
+    <baseChance>0.2</baseChance>
+    <minRefireDays>30</minRefireDays>
+    <earliestDay>45</earliestDay>
+  </IncidentDef>
+  <IncidentDef>
+    <defName>LP_FeyMarket</defName>
+    <label>妖精集市</label>
+    <category>Misc</category>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_FeyMarket</workerClass>
+    <baseChance>0</baseChance>
+  </IncidentDef>
+</Defs>

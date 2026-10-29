@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.37.0 耐瑟瑞尔：黑网商队带卷轴的概率；卡苏斯的妄念接到原版非紧急精神状态思维树。 -->
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/TraderKindDef[defName="LP_Caravan_BlackNetwork"]/stockGenerators</xpath>
+    <value>
+      <li Class="LichPhylactery.StockGenerator_NetherilChance">
+        <thingDef>LP_NetherilStudyScroll</thingDef>
+        <chance>0.3</chance>
+        <price>Expensive</price>
+      </li>
+      <li Class="LichPhylactery.StockGenerator_NetherilChance">
+        <thingDef>LP_NetherilArcaneScroll</thingDef>
+        <chance>0.1</chance>
+        <price>Expensive</price>
+      </li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationInsert">
+    <xpath>/Defs/ThinkTreeDef[defName="MentalStateNonCritical"]/thinkRoot/subNodes/li[1]</xpath>
+    <value>
+      <li Class="ThinkNode_ConditionalMentalState">
+        <state>LP_KarsusObsession</state>
+        <subNodes>
+          <li Class="LichPhylactery.JobGiver_KarsusObsession" />
+          <li Class="JobGiver_WanderColony" />
+        </subNodes>
+      </li>
+    </value>
+  </Operation>
+</Patch>

@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.45.0 圣物与印记（40K 改编、费伦设定，13）。四种混沌印记是诅咒物品（CompCursed）。 -->
+<Defs>
+  <AbilityDef Name="LP_MagicAbilityBase" Abstract="True">
+    <hostile>false</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <aiCanUse>false</aiCanUse>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>0.5</warmupTime>
+      <range>0</range>
+      <targetParams><canTargetSelf>true</canTargetSelf></targetParams>
+    </verbProperties>
+  </AbilityDef>
+  <ThingDef Name="LP_MagicMarkBase" ParentName="LP_MagicAccessoryBase" Abstract="True">
+    <apparel><bodyPartGroups><li>Torso</li></bodyPartGroups></apparel>
+    <statBases><MarketValue>1600</MarketValue></statBases>
+    <modExtensions><li Class="LichPhylactery.AccessorySlot"><slot>Mark</slot></li></modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_MagicHeadBase">
+    <defName>LP_HaloOfLight</defName>
+    <label>圣光冠环</label>
+    <description>同盟圣武士的最高荣誉：一圈悬在头顶的淡金光环。任何攻击（包括近战）有20%概率被光环完全挡下，每天最多挡5次。戴在奇物层的头顶。</description>
+    <graphicData><texPath>Items/Magic/HaloOfLight</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>2500</MarketValue></statBases>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_MagicCharges"><maxCharges>5</maxCharges><dailyReset>true</dailyReset><chargeLabel>格挡</chargeLabel></li>
+      <li Class="LichPhylactery.CompProperties_WornGlow"><texPath>Items/Magic/HaloGlow</texPath></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_MagicNeckBase">
+    <defName>LP_MartyrsBeads</defName>
+    <label>殉道者念珠</label>
+    <description>红玫瑰念珠，罩着一层看不见的护盾：吸收300点伤害（近战、远程都挡），而且不妨碍佩戴者开枪。护盾打碎后念珠变成“碎裂的殉道者念珠”，要在圣坛重新祝圣（2小时）。戴在奇物层的颈部。</description>
+    <graphicData><texPath>Items/Magic/MartyrsBeads</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>2200</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_MagicCharges"><maxCharges>300</maxCharges><chargeLabel>护盾</chargeLabel></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_MartyrsBeadsBroken</defName>
+    <label>碎裂的殉道者念珠</label>
+    <description>护盾被打碎后的殉道者念珠，珠子上全是裂纹。在圣坛重新祝圣（2小时）就能恢复。</description>
+    <graphicData><texPath>Items/Magic/MartyrsBeadsBroken</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>1</stackLimit>
+    <techLevel>Medieval</techLevel>
+    <useHitPoints>true</useHitPoints>
+    <statBases><MaxHitPoints>60</MaxHitPoints><Mass>0.1</Mass><MarketValue>600</MarketValue><Flammability>0.5</Flammability></statBases>
+    <thingCategories><li>ItemsMisc</li></thingCategories>
+  </ThingDef>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_PuritySeal</defName>
+    <label>净化封印</label>
+    <description>盖着圣徽火漆的羊皮纸条。“贴上”后封在使用者身上穿着的衣服上，不占任何栏位，最多贴3张：每张精神崩溃阈值-3%；每天一次自动挣脱支配或恐惧。需要穿着躯干衣物才能贴；脱光衣服封印也不会掉（它封的是人）。</description>
+    <graphicData><texPath>Items/Magic/PuritySeal</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>10</stackLimit>
+    <techLevel>Medieval</techLevel>
+    <useHitPoints>true</useHitPoints>
+    <statBases><MaxHitPoints>40</MaxHitPoints><Mass>0.02</Mass><MarketValue>180</MarketValue><Flammability>1</Flammability></statBases>
+    <thingCategories><li>ItemsMisc</li></thingCategories>
+    <tradeTags><li>LP_MagicItem</li></tradeTags>
+    <comps>
+      <li Class="CompProperties_Usable"><useJob>UseItem</useJob><useLabel>贴上{0_label}</useLabel><useDuration>120</useDuration></li>
+      <li Class="LichPhylactery.CompProperties_MagicUse"><effect>purityseal</effect></li>
+    </comps>
+  </ThingDef>
+  <HediffDef>
+    <defName>LP_PuritySeals</defName>
+    <label>净化封印</label>
+    <description>衣服上贴着净化封印：每张精神崩溃阈值-3%，每天一次自动挣脱支配或恐惧。</description>
+    <hediffClass>LichPhylactery.Hediff_PuritySeals</hediffClass>
+    <isBad>false</isBad>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>3</maxSeverity>
+    <stages>
+      <li><minSeverity>0</minSeverity><label>1张</label><statOffsets><MentalBreakThreshold>-0.03</MentalBreakThreshold></statOffsets></li>
+      <li><minSeverity>2</minSeverity><label>2张</label><statOffsets><MentalBreakThreshold>-0.06</MentalBreakThreshold></statOffsets></li>
+      <li><minSeverity>3</minSeverity><label>3张</label><statOffsets><MentalBreakThreshold>-0.09</MentalBreakThreshold></statOffsets></li>
+    </stages>
+  </HediffDef>
+  <ThingDef ParentName="LP_MagicNeckBase">
+    <defName>LP_SpiritStone</defName>
+    <label>魂石</label>
+    <description>精灵的魂石，乳白的石心里像有雾在流动。佩戴者死亡时灵魂被吸进石头：巫妖没法汲取这具尸体的灵魂。装着灵魂的魂石可以在死灵仪式台献给命匣（相当于一份完整灵魂）；或者对尸体使用复生卷轴，不论死了多久都能复活此人（尸体必须还在，魂石随之碎掉）。只有精灵能制作。戴在奇物层的颈部。</description>
+    <graphicData><texPath>Items/Magic/SpiritStone</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1500</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_SpiritStone" /></comps>
+    <modExtensions><li Class="LichPhylactery.RaceGearExtension"><race>Elf</race></li></modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="LP_MagicHeadBase">
+    <defName>LP_PsychicHood</defName>
+    <label>灵能兜帽</label>
+    <description>缀着灵能晶格的深色兜帽。佩戴者5格内的友军（包括自己）被敌人的灵能、心灵能力指定时（支配、读心、心灵冲击、灵能扩展的法术等），有40%概率让法术落空。专门克制夺心魔。戴在奇物层的头顶。</description>
+    <graphicData><texPath>Items/Magic/PsychicHood</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1800</MarketValue></statBases>
+  </ThingDef>
+  <ThingDef ParentName="LP_MagicChestBase">
+    <defName>LP_CogOfMakers</defName>
+    <label>匠神齿轮</label>
+    <description>矮人异端“齿轮之神”的圣徽，一枚永远在转的铜齿轮。修理、维护机械体的速度×1.5；佩戴者身上的仿生部件不会被 EMP 关闭（不会被 EMP 震晕）。戴在奇物层的胸前。</description>
+    <graphicData><texPath>Items/Magic/CogOfMakers</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_WornHediff"><hediff>LP_MI_CogOfMakers</hediff></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_MagicChestBase">
+    <defName>LP_InquisitorSeal</defName>
+    <label>审判徽记</label>
+    <description>同盟审判官的玫瑰徽。谈判能力×1.2（招募、审讯更容易）；殖民地有人佩戴时，和费伦拓荒同盟的好感增加量×1.25；猎巫狂热分子不会来袭击这个殖民地。同盟好感≥75时，竖琴手会把一枚徽记当作礼物送来（只送一次）。戴在奇物层的胸前。</description>
+    <graphicData><texPath>Items/Magic/InquisitorSeal</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1600</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_WornHediff"><hediff>LP_MI_InquisitorSeal</hediff></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_MagicNeckBase">
+    <defName>LP_WaaaghTotem</defName>
+    <label>战嚎图腾</label>
+    <description>兽牙串成的半兽人图腾。只有半兽人能戴。6格内每多一个戴图腾的半兽人，全体近战伤害+5%（最多+25%）；但戴着它的人射击命中-10%（一心只想冲上去砍）。戴在奇物层的颈部。</description>
+    <graphicData><texPath>Items/Magic/WaaaghTotem</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>500</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_WornHediff"><hediff>LP_MI_WaaaghTotem</hediff></li></comps>
+    <modExtensions><li Class="LichPhylactery.ApparelGate"><race>HalfOrc</race></li></modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="LP_MagicChestBase">
+    <defName>LP_RevivalCore</defName>
+    <label>复苏核心</label>
+    <description>嵌在胸甲内侧的墨绿晶核，古老的复生协议还在运转。佩戴者死后24小时有50%概率以虚弱状态复活，核心随之碎掉（不论成败）。和巨魔的复活、死亡骑士套装不叠加（那样核心不会启动）。戴在奇物层的胸前。</description>
+    <graphicData><texPath>Items/Magic/RevivalCore</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>3000</MarketValue></statBases>
+  </ThingDef>
+  <HediffDef>
+    <defName>LP_RevivalWeakness</defName>
+    <label>复苏虚弱</label>
+    <description>刚被复苏核心从死亡里拉回来：意识-30%，移动-30%。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>180000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><capMods><li><capacity>Consciousness</capacity><offset>-0.3</offset></li><li><capacity>Moving</capacity><offset>-0.3</offset></li></capMods></li></stages>
+  </HediffDef>
+
+  <!-- 四种混沌印记（诅咒） -->
+  <ThingDef ParentName="LP_MagicMarkBase">
+    <defName>LP_MarkBlood</defName>
+    <label>鲜血印记</label>
+    <description>烙着血色八芒星的铁片，贴在胸口就长进肉里。近战伤害+30%，疼痛休克阈值+20%；但3天不打架就会陷入越来越重的“嗜血”心情。诅咒物品：戴上脱不下。巫妖戴着没有代价（同盟好感-30，只扣一次）。</description>
+    <graphicData><texPath>Items/Magic/MarkBlood</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_WornHediff"><hediff>LP_MI_MarkBlood</hediff></li>
+      <li Class="LichPhylactery.CompProperties_Cursed"><disguiseLabel>古旧红铁护符</disguiseLabel><disguiseDescription>一枚暗红色的古旧护符，摸上去微微发烫。黑网说它“能让人打得更狠”。</disguiseDescription><mark>true</mark></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_MagicMarkBase">
+    <defName>LP_MarkDecay</defName>
+    <label>腐朽印记</label>
+    <description>长着铜绿的三环印记。免疫疾病和毒素累积，失血速度-50%；但佩戴者美观-3，身边5格内的人心情-2。诅咒物品：戴上脱不下。巫妖戴着没有代价（同盟好感-30，只扣一次）。</description>
+    <graphicData><texPath>Items/Magic/MarkDecay</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_WornHediff"><hediff>LP_MI_MarkDecay</hediff></li>
+      <li Class="LichPhylactery.CompProperties_Cursed"><disguiseLabel>古旧铜绿护符</disguiseLabel><disguiseDescription>一枚长满铜绿的古旧护符。黑网说它“能让人百病不侵”。</disguiseDescription><mark>true</mark></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_MagicMarkBase">
+    <defName>LP_MarkChange</defName>
+    <label>万变印记</label>
+    <description>颜色一直在变的蓝色印记。心灵敏感度+40%，研究速度+20%；但每天会出一件小怪事（短暂眩晕，或者两项技能的热情对调）。诅咒物品：戴上脱不下。巫妖戴着没有代价（同盟好感-30，只扣一次）。</description>
+    <graphicData><texPath>Items/Magic/MarkChange</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_WornHediff"><hediff>LP_MI_MarkChange</hediff></li>
+      <li Class="LichPhylactery.CompProperties_MagicCharges"><maxCharges>1</maxCharges><dailyReset>true</dailyReset></li>
+      <li Class="LichPhylactery.CompProperties_Cursed"><disguiseLabel>古旧蓝晶护符</disguiseLabel><disguiseDescription>一枚颜色说不清的古旧护符。黑网说它“能让人开窍”。</disguiseDescription><mark>true</mark></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_MagicMarkBase">
+    <defName>LP_MarkRapture</defName>
+    <label>欢愉印记</label>
+    <description>紫粉色的蛇形印记。移动速度+15%，娱乐需求下降速度-50%；但心情上限被压到90%。诅咒物品：戴上脱不下。巫妖戴着没有代价（同盟好感-30，只扣一次）。</description>
+    <graphicData><texPath>Items/Magic/MarkRapture</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_WornHediff"><hediff>LP_MI_MarkRapture</hediff></li>
+      <li Class="LichPhylactery.CompProperties_Cursed"><disguiseLabel>古旧紫晶护符</disguiseLabel><disguiseDescription>一枚泛着紫光的古旧护符。黑网说它“能让人轻快起来”。</disguiseDescription><mark>true</mark></li>
+    </comps>
+  </ThingDef>
+
+  <HediffDef ParentName="LP_MagicItemHediffBase">
+    <defName>LP_MI_CogOfMakers</defName>
+    <label>匠神齿轮</label>
+    <description>机械体修理速度×1.5；仿生部件不会被 EMP 关闭。</description>
+    <stages>
+      <li><label>无效</label></li>
+      <li><statFactors><MechRepairSpeed>1.5</MechRepairSpeed></statFactors></li>
+    </stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_MagicItemHediffBase">
+    <defName>LP_MI_InquisitorSeal</defName>
+    <label>审判徽记</label>
+    <description>谈判能力×1.2。</description>
+    <stages>
+      <li><label>无效</label></li>
+      <li><statFactors><NegotiationAbility>1.2</NegotiationAbility></statFactors></li>
+    </stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_MagicItemHediffBase">
+    <defName>LP_MI_WaaaghTotem</defName>
+    <label>战嚎</label>
+    <description>6格内每多一个戴图腾的半兽人，近战伤害+5%（最多+25%）；射击命中-10%。</description>
+    <stages>
+      <li><label>孤身</label></li>
+      <li><label>+5%</label><statFactors><MeleeDamageFactor>1.05</MeleeDamageFactor></statFactors></li>
+      <li><label>+10%</label><statFactors><MeleeDamageFactor>1.10</MeleeDamageFactor></statFactors></li>
+      <li><label>+15%</label><statFactors><MeleeDamageFactor>1.15</MeleeDamageFactor></statFactors></li>
+      <li><label>+20%</label><statFactors><MeleeDamageFactor>1.20</MeleeDamageFactor></statFactors></li>
+      <li><label>+25%</label><statFactors><MeleeDamageFactor>1.25</MeleeDamageFactor></statFactors></li>
+    </stages>
+    <modExtensions><li Class="LichPhylactery.MagicHediffExtension"><condition>waaagh</condition></li></modExtensions>
+  </HediffDef>
+  <HediffDef ParentName="LP_MagicItemHediffBase">
+    <defName>LP_MI_MarkBlood</defName>
+    <label>鲜血印记</label>
+    <description>近战伤害+30%，疼痛休克阈值+20%。三天不打架就会嗜血（巫妖除外）。</description>
+    <stages>
+      <li><label>无效</label></li>
+      <li><statFactors><MeleeDamageFactor>1.3</MeleeDamageFactor></statFactors><statOffsets><PainShockThreshold>0.2</PainShockThreshold></statOffsets></li>
+    </stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_MagicItemHediffBase">
+    <defName>LP_MI_MarkDecay</defName>
+    <label>腐朽印记</label>
+    <description>免疫疾病和毒素累积，失血速度-50%；美观-3（巫妖除外）。</description>
+    <stages>
+      <li><label>无效</label></li>
+      <li><totalBleedFactor>0.5</totalBleedFactor><statOffsets><PawnBeauty>-3</PawnBeauty></statOffsets></li>
+      <li><label>巫妖</label><totalBleedFactor>0.5</totalBleedFactor></li>
+    </stages>
+    <modExtensions><li Class="LichPhylactery.MagicHediffExtension"><condition>lichExempt</condition></li></modExtensions>
+  </HediffDef>
+  <HediffDef ParentName="LP_MagicItemHediffBase">
+    <defName>LP_MI_MarkChange</defName>
+    <label>万变印记</label>
+    <description>心灵敏感度+40%，研究速度+20%；每天一件小怪事（巫妖除外）。</description>
+    <stages>
+      <li><label>无效</label></li>
+      <li><statOffsets><PsychicSensitivity>0.4</PsychicSensitivity></statOffsets><statFactors><ResearchSpeed>1.2</ResearchSpeed></statFactors></li>
+    </stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_MagicItemHediffBase">
+    <defName>LP_MI_MarkRapture</defName>
+    <label>欢愉印记</label>
+    <description>移动速度+15%，娱乐需求下降速度-50%；心情上限90%（巫妖除外）。</description>
+    <stages>
+      <li><label>无效</label></li>
+      <li><statFactors><MoveSpeed>1.15</MoveSpeed><JoyFallRateFactor>0.5</JoyFallRateFactor></statFactors></li>
+    </stages>
+  </HediffDef>
+  <ThoughtDef>
+    <defName>LP_Bloodthirst</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_Bloodthirst</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li><label>嗜血</label><description>鲜血印记在胸口发烫：好几天没打过架了。</description><baseMoodEffect>-5</baseMoodEffect></li>
+      <li><label>嗜血难耐</label><description>鲜血印记烫得受不了，满脑子都是砍人的念头。</description><baseMoodEffect>-12</baseMoodEffect></li>
+      <li><label>血渴发狂</label><description>再不见血，就要疯了。</description><baseMoodEffect>-25</baseMoodEffect></li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_DecayAura</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_DecayAura</workerClass>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li><label>腐朽的气味</label><description>附近有人身上带着腐朽印记，闻着就想吐。</description><baseMoodEffect>-2</baseMoodEffect></li>
+    </stages>
+  </ThoughtDef>
+</Defs>

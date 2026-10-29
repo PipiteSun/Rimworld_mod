@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.45.1 派系换装（必穿件）：和新衣甲占同一层的旧必穿件换成新的，其余旧装备照旧；概率件在 Source/MagicApparel.cs 的 MagicApparel.Outfits。
+     另外三件老装备换新外观（只换穿着贴图，不动数值）：精灵锁子甲、星界战甲、牛头人角盔。 -->
+<Patch>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/PawnKindDef[defName="LP_FC_Paladin"]/apparelRequired</xpath>
+    <value><apparelRequired><li>LP_PaladinPlate</li><li>LP_GreatHelmOath</li><li>LP_KnightMantle</li></apparelRequired></value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/PawnKindDef[defName="LP_FC_Knight"]/apparelRequired</xpath>
+    <value><li>LP_KnightMantle</li></value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/PawnKindDef[defName="LP_FC_Priest" or defName="LP_FC_ChurchPriest"]/apparelRequired</xpath>
+    <value><apparelRequired><li>LP_MorninglordVestments</li><li>LP_BattleClericBreastplate</li></apparelRequired></value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/PawnKindDef[defName="LP_FC_ElfRanger"]</xpath>
+    <value><apparelRequired><li>LP_RangerLeathers</li><li>LP_WoodwalkerCloak</li></apparelRequired></value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/PawnKindDef[defName="LP_FC_LoxodonWarden"]/apparelRequired/li[text()="Apparel_PlateArmor"]</xpath>
+    <value><li>LP_LoxodonWardenArmor</li></value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/PawnKindDef[defName="LP_FH_RedWizard" or defName="LP_FH_OgreBrute"]</xpath>
+    <value><apparelRequired /></value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/PawnKindDef[defName="LP_FH_RedWizard"]/apparelRequired</xpath>
+    <value><li>LP_RedWizardRobe</li></value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/PawnKindDef[defName="LP_FH_OgreBrute"]/apparelRequired</xpath>
+    <value><li>LP_OgreTrophyHide</li></value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/PawnKindDef[defName="LP_FH_GithMercenary"]/apparelRequired/li[text()="Apparel_PlateArmor"]</xpath>
+    <value><li>LP_GithAstralArmor</li></value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/PawnKindDef[defName="LP_EC_HumanSlave"]/apparelRequired</xpath>
+    <value><apparelRequired><li>LP_EmberCollarPlate</li><li>LP_EmberRivetHelm</li></apparelRequired></value>
+  </Operation>
+
+  <!-- 老装备换外观 -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName="LP_ElvenChain"]/apparel/wornGraphicPath</xpath>
+    <value><wornGraphicPath>LP/Apparel/ElvenChain/ElvenChain</wornGraphicPath></value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName="LP_GithAstralArmor"]/apparel/wornGraphicPath</xpath>
+    <value><wornGraphicPath>LP/Apparel/GithAstralArmor/GithAstralArmor</wornGraphicPath></value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName="LP_MinotaurHornHelm"]/apparel/wornGraphicPath</xpath>
+    <value><wornGraphicPath>LP/Apparel/MinotaurHornHelm/MinotaurHornHelm</wornGraphicPath></value>
+  </Operation>
+</Patch>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.63.0 清理版：魔法物品状态的阶段由代码选（Hediff_MagicItem.CurStageIndex），minSeverity 原来都是 0，
+     开发者模式下原版会报“stages are not in order of minSeverity”。这里按顺序补上很小的递增值，不影响阶段的选择。 -->
+<Patch>  <Operation Class="PatchOperationAdd"><xpath>Defs/HediffDef[@ParentName="LP_MagicItemHediffBase"]/stages/li[2][not(minSeverity)]</xpath><success>Always</success><value><minSeverity>0.001</minSeverity></value></Operation>
+  <Operation Class="PatchOperationAdd"><xpath>Defs/HediffDef[@ParentName="LP_MagicItemHediffBase"]/stages/li[3][not(minSeverity)]</xpath><success>Always</success><value><minSeverity>0.002</minSeverity></value></Operation>
+  <Operation Class="PatchOperationAdd"><xpath>Defs/HediffDef[@ParentName="LP_MagicItemHediffBase"]/stages/li[4][not(minSeverity)]</xpath><success>Always</success><value><minSeverity>0.003</minSeverity></value></Operation>
+  <Operation Class="PatchOperationAdd"><xpath>Defs/HediffDef[@ParentName="LP_MagicItemHediffBase"]/stages/li[5][not(minSeverity)]</xpath><success>Always</success><value><minSeverity>0.004</minSeverity></value></Operation>
+  <Operation Class="PatchOperationAdd"><xpath>Defs/HediffDef[@ParentName="LP_MagicItemHediffBase"]/stages/li[6][not(minSeverity)]</xpath><success>Always</success><value><minSeverity>0.005</minSeverity></value></Operation>
+</Patch>

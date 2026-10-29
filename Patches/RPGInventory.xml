@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 2026-10-29 RPG Style Inventory Revamped（创意工坊 2478833213，Sandy.RPGStyleInventory.avilmask.Revamped）联动：
+     它按 ItemSlotDef（服装层 + 身体部位）把衣物摆进纸娃娃格子，匹配不到的扔进格子下方的杂项区。
+     本模组的奇物 LP_Accessory、披风 LP_Cape 原本没有格子；这里在原 7×6 格右边加两列 DND 槽位，盾牌 LP_Shield 并进它的盾牌格。
+     同一格只能画一件：同部位的第二件奇物（比如第二枚戒指）仍显示在下方杂项区。
+     它的 CE / 魔法世界(RWoM) 联动用了原网格里的占位格，所以这里不占那些位置。没装该模组时整段跳过。 -->
+<Patch>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/Sandy_Detailed_RPG_Inventory.ItemSlotDef[defName="ItemSlotShield"]</xpath>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/Sandy_Detailed_RPG_Inventory.ItemSlotDef[defName="ItemSlotShield"]/apparelLayers</xpath>
+          <value><li>LP_Shield</li></value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs</xpath>
+          <value>
+            <Sandy_Detailed_RPG_Inventory.ItemSlotDef>
+              <defName>LP_ItemSlotHeadWondrous</defName>
+              <label>头部奇物</label>
+              <xPos>7</xPos><yPos>0</yPos>
+              <validationOrder>3500</validationOrder>
+              <apparelLayers><li>LP_Accessory</li></apparelLayers>
+              <bodyPartGroups><li>UpperHead</li><li>FullHead</li></bodyPartGroups>
+            </Sandy_Detailed_RPG_Inventory.ItemSlotDef>
+            <Sandy_Detailed_RPG_Inventory.ItemSlotDef>
+              <defName>LP_ItemSlotEyesWondrous</defName>
+              <label>眼部奇物</label>
+              <xPos>8</xPos><yPos>0</yPos>
+              <validationOrder>3510</validationOrder>
+              <apparelLayers><li>LP_Accessory</li></apparelLayers>
+              <bodyPartGroups><li>Eyes</li></bodyPartGroups>
+            </Sandy_Detailed_RPG_Inventory.ItemSlotDef>
+            <Sandy_Detailed_RPG_Inventory.ItemSlotDef>
+              <defName>LP_ItemSlotNeckWondrous</defName>
+              <label>颈部奇物</label>
+              <xPos>7</xPos><yPos>1</yPos>
+              <validationOrder>3520</validationOrder>
+              <apparelLayers><li>LP_Accessory</li></apparelLayers>
+              <bodyPartGroups><li>Neck</li></bodyPartGroups>
+            </Sandy_Detailed_RPG_Inventory.ItemSlotDef>
+            <Sandy_Detailed_RPG_Inventory.ItemSlotDef>
+              <defName>LP_ItemSlotCape</defName>
+              <label>披风</label>
+              <xPos>8</xPos><yPos>1</yPos>
+              <validationOrder>3530</validationOrder>
+              <apparelLayers><li>LP_Cape</li></apparelLayers>
+            </Sandy_Detailed_RPG_Inventory.ItemSlotDef>
+            <Sandy_Detailed_RPG_Inventory.ItemSlotDef>
+              <defName>LP_ItemSlotChestWondrous</defName>
+              <label>胸前奇物</label>
+              <xPos>7</xPos><yPos>2</yPos>
+              <validationOrder>3540</validationOrder>
+              <apparelLayers><li>LP_Accessory</li></apparelLayers>
+              <bodyPartGroups><li>Torso</li><li>Shoulders</li></bodyPartGroups>
+            </Sandy_Detailed_RPG_Inventory.ItemSlotDef>
+            <Sandy_Detailed_RPG_Inventory.ItemSlotDef>
+              <defName>LP_ItemSlotHandsWondrous</defName>
+              <label>手部奇物</label>
+              <xPos>7</xPos><yPos>3</yPos>
+              <validationOrder>3550</validationOrder>
+              <apparelLayers><li>LP_Accessory</li></apparelLayers>
+              <bodyPartGroups><li>Hands</li><li>Arms</li></bodyPartGroups>
+            </Sandy_Detailed_RPG_Inventory.ItemSlotDef>
+            <Sandy_Detailed_RPG_Inventory.ItemSlotDef>
+              <defName>LP_ItemSlotRing</defName>
+              <label>戒指</label>
+              <xPos>8</xPos><yPos>3</yPos>
+              <validationOrder>3560</validationOrder>
+              <apparelLayers><li>LP_Accessory</li></apparelLayers>
+              <bodyPartGroups><li>RightHand</li></bodyPartGroups>
+            </Sandy_Detailed_RPG_Inventory.ItemSlotDef>
+            <Sandy_Detailed_RPG_Inventory.ItemSlotDef>
+              <defName>LP_ItemSlotWaistWondrous</defName>
+              <label>腰间奇物</label>
+              <xPos>7</xPos><yPos>4</yPos>
+              <validationOrder>3570</validationOrder>
+              <apparelLayers><li>LP_Accessory</li></apparelLayers>
+              <bodyPartGroups><li>Waist</li></bodyPartGroups>
+            </Sandy_Detailed_RPG_Inventory.ItemSlotDef>
+            <Sandy_Detailed_RPG_Inventory.ItemSlotDef>
+              <defName>LP_ItemSlotFocusWondrous</defName>
+              <label>副手奇物</label>
+              <xPos>8</xPos><yPos>4</yPos>
+              <validationOrder>3580</validationOrder>
+              <apparelLayers><li>LP_Accessory</li></apparelLayers>
+              <bodyPartGroups><li>LeftHand</li></bodyPartGroups>
+            </Sandy_Detailed_RPG_Inventory.ItemSlotDef>
+            <!-- 兜底：以后新增的奇物如果部位都不在上面，就放这里；没有物品落到这格时它不显示。 -->
+            <Sandy_Detailed_RPG_Inventory.ItemSlotDef>
+              <defName>LP_ItemSlotWondrous</defName>
+              <label>奇物</label>
+              <xPos>7</xPos><yPos>5</yPos>
+              <validationOrder>3590</validationOrder>
+              <apparelLayers><li>LP_Accessory</li></apparelLayers>
+            </Sandy_Detailed_RPG_Inventory.ItemSlotDef>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

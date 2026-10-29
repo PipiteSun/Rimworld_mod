@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.27.0 DND 职业路径的能力（VPE 联动）。数值说明见 ArtSource/Classes-1.27.0-report.md。时间单位为刻（2500 刻 = 1 小时，60000 刻 = 1 天）。 -->
+<Defs>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_CureWounds</defName>
+    <label>治疗伤口</label>
+    <description>立即治疗一名目标（可以是自己）共 20 × 神恩强度点伤势，优先流血最严重的伤口。需要社交 6 级。</description>
+    <iconPath>LP/Classes/Cleric/CureWounds</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_Heal</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <targetingParameters><canTargetPawns>true</canTargetPawns><canTargetHumans>true</canTargetHumans><canTargetAnimals>true</canTargetAnimals><canTargetMechs>false</canTargetMechs><canTargetSelf>true</canTargetSelf><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations></targetingParameters>
+    <range>12</range>
+    <requireLineOfSight>false</requireLineOfSight>
+    <power>20</power>
+    <powerStatFactors><LP_DivinePower>1</LP_DivinePower></powerStatFactors>
+    <castTime>60</castTime>
+    <cooldownTime>1800</cooldownTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Cleric</path><level>1</level><order>1</order>
+        <psyfocusCost>0.1</psyfocusCost><entropyGain>8</entropyGain>
+        <requiredSkillLevel>6</requiredSkillLevel>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_Bless</defName>
+    <label>祝福</label>
+    <description>祝福一名友军 1 小时 × 神恩强度：近战命中 +10%，射击精度提高，心情 +3。需要社交 6 级。</description>
+    <iconPath>LP/Classes/Cleric/Bless</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_TargetBuff</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <targetingParameters><canTargetPawns>true</canTargetPawns><canTargetHumans>true</canTargetHumans><canTargetAnimals>true</canTargetAnimals><canTargetMechs>false</canTargetMechs><canTargetSelf>true</canTargetSelf><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations></targetingParameters>
+    <range>20</range>
+    <requireLineOfSight>false</requireLineOfSight>
+    <durationTime>2500</durationTime>
+    <durationTimeStatFactors><LP_DivinePower>1</LP_DivinePower></durationTimeStatFactors>
+    <castTime>30</castTime>
+    <cooldownTime>600</cooldownTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Cleric</path><level>1</level><order>2</order>
+        <psyfocusCost>0.08</psyfocusCost><entropyGain>6</entropyGain>
+        <requiredSkillLevel>6</requiredSkillLevel>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_LesserRestoration</defName>
+    <label>次级复原术</label>
+    <description>移除目标身上最严重的一种疾病（食物中毒、流感、瘟疫、感染、肌肉寄生虫、肠道蠕虫等），并止住所有出血 6 小时。需要社交 9 级。</description>
+    <iconPath>LP/Classes/Cleric/LesserRestoration</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_LesserRestoration</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <targetingParameters><canTargetPawns>true</canTargetPawns><canTargetHumans>true</canTargetHumans><canTargetAnimals>true</canTargetAnimals><canTargetMechs>false</canTargetMechs><canTargetSelf>true</canTargetSelf><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations></targetingParameters>
+    <range>12</range>
+    <requireLineOfSight>false</requireLineOfSight>
+    <durationTime>15000</durationTime>
+    <castTime>90</castTime>
+    <cooldownTime>2500</cooldownTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Cleric</path><level>2</level><order>1</order>
+        <psyfocusCost>0.15</psyfocusCost><entropyGain>10</entropyGain>
+        <requiredSkillLevel>9</requiredSkillLevel>
+        <prerequisites><li>LP_CureWounds</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_Guidance</defName>
+    <label>神导术</label>
+    <description>指引一名友军 1 小时 × 神恩强度：全局工作速度 +15%，学习速度 +30%。需要社交 9 级。</description>
+    <iconPath>LP/Classes/Cleric/Guidance</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_TargetBuff</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <targetingParameters><canTargetPawns>true</canTargetPawns><canTargetHumans>true</canTargetHumans><canTargetAnimals>true</canTargetAnimals><canTargetMechs>false</canTargetMechs><canTargetSelf>true</canTargetSelf><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations></targetingParameters>
+    <range>20</range>
+    <requireLineOfSight>false</requireLineOfSight>
+    <durationTime>2500</durationTime>
+    <durationTimeStatFactors><LP_DivinePower>1</LP_DivinePower></durationTimeStatFactors>
+    <castTime>30</castTime>
+    <cooldownTime>600</cooldownTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Cleric</path><level>2</level><order>2</order>
+        <psyfocusCost>0.1</psyfocusCost><entropyGain>6</entropyGain>
+        <requiredSkillLevel>9</requiredSkillLevel>
+        <prerequisites><li>LP_Bless</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_SacredFlame</defName>
+    <label>神圣打击</label>
+    <description>20 格内的一个敌人受 20 × 神恩强度点神圣伤害，无视掩体；对亡灵、邪魔和夺心魔翻倍。需要社交 12 级。</description>
+    <iconPath>LP/Classes/Cleric/SacredFlame</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_SacredFlame</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <targetingParameters><canTargetPawns>true</canTargetPawns><canTargetHumans>true</canTargetHumans><canTargetAnimals>true</canTargetAnimals><canTargetMechs>true</canTargetMechs><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations></targetingParameters>
+    <range>20</range>
+    <requireLineOfSight>false</requireLineOfSight>
+    <power>20</power>
+    <powerStatFactors><LP_DivinePower>1</LP_DivinePower></powerStatFactors>
+    <castTime>30</castTime>
+    <cooldownTime>900</cooldownTime>
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Cleric</path><level>3</level><order>1</order>
+        <psyfocusCost>0.12</psyfocusCost><entropyGain>12</entropyGain>
+        <requiredSkillLevel>12</requiredSkillLevel>
+        <prerequisites><li>LP_Guidance</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_TurnUndead</defName>
+    <label>驱散亡灵</label>
+    <description>半径 6 × 神恩强度内的敌对亡灵惊恐逃散 10 秒 × 神恩强度；没有心智的骷髅和死灵造物改为被击晕；巫妖只被减速。需要社交 12 级。</description>
+    <iconPath>LP/Classes/Cleric/TurnUndead</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_TurnUndead</abilityClass>
+    <targetMode>Self</targetMode>
+    <radius>6</radius>
+    <radiusStatFactors><LP_DivinePower>1</LP_DivinePower></radiusStatFactors>
+    <durationTime>600</durationTime>
+    <durationTimeStatFactors><LP_DivinePower>1</LP_DivinePower></durationTimeStatFactors>
+    <castTime>60</castTime>
+    <cooldownTime>3600</cooldownTime>
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Cleric</path><level>3</level><order>2</order>
+        <psyfocusCost>0.2</psyfocusCost><entropyGain>15</entropyGain>
+        <requiredSkillLevel>12</requiredSkillLevel>
+        <prerequisites><li>LP_LesserRestoration</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_MassHeal</defName>
+    <label>群体治疗</label>
+    <description>治疗半径 5 内的所有友军各 15 × 神恩强度点伤势。需要社交 15 级。</description>
+    <iconPath>LP/Classes/Cleric/MassHeal</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_MassHeal</abilityClass>
+    <targetMode>Self</targetMode>
+    <radius>5</radius>
+    <power>15</power>
+    <powerStatFactors><LP_DivinePower>1</LP_DivinePower></powerStatFactors>
+    <castTime>90</castTime>
+    <cooldownTime>2500</cooldownTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Cleric</path><level>4</level><order>1</order>
+        <psyfocusCost>0.3</psyfocusCost><entropyGain>20</entropyGain>
+        <requiredSkillLevel>15</requiredSkillLevel>
+        <prerequisites><li>LP_SacredFlame</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_DeathWard</defName>
+    <label>死亡守卫</label>
+    <description>守护一名友军一天：疼痛 ×0.5；本应因伤倒地时立即治疗 30 × 神恩强度点伤势并消耗守卫（一天内只触发一次）。需要社交 15 级。</description>
+    <iconPath>LP/Classes/Cleric/DeathWard</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_DeathWard</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <targetingParameters><canTargetPawns>true</canTargetPawns><canTargetHumans>true</canTargetHumans><canTargetAnimals>true</canTargetAnimals><canTargetMechs>false</canTargetMechs><canTargetSelf>true</canTargetSelf><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations></targetingParameters>
+    <range>20</range>
+    <requireLineOfSight>false</requireLineOfSight>
+    <power>30</power>
+    <powerStatFactors><LP_DivinePower>1</LP_DivinePower></powerStatFactors>
+    <durationTime>60000</durationTime>
+    <castTime>60</castTime>
+    <cooldownTime>60000</cooldownTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Cleric</path><level>4</level><order>2</order>
+        <psyfocusCost>0.25</psyfocusCost><entropyGain>15</entropyGain>
+        <requiredSkillLevel>15</requiredSkillLevel>
+        <prerequisites><li>LP_TurnUndead</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_Raise</defName>
+    <label>复生术</label>
+    <description>让一具死亡不超过 3 天的人形尸体复活（对巫妖、死灵造物和大脑被吞噬的尸体无效），复活者 3 天“复生虚弱”。神恩强度 1.25 以上时不会出现复活精神病。需要精神力满、社交 18 级，并学会群体治疗或死亡守卫。</description>
+    <iconPath>LP/Classes/Cleric/Raise</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_Raise</abilityClass>
+    <targetMode>Thing</targetMode>
+    <targetingParameters><canTargetPawns>false</canTargetPawns><canTargetItems>true</canTargetItems><canTargetCorpses>true</canTargetCorpses><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations><mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable></targetingParameters>
+    <range>12</range>
+    <requireLineOfSight>false</requireLineOfSight>
+    <castTime>300</castTime>
+    <cooldownTime>300000</cooldownTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Cleric</path><level>5</level><order>1</order>
+        <psyfocusCost>0.5</psyfocusCost><entropyGain>40</entropyGain>
+        <requiredSkillLevel>18</requiredSkillLevel>
+        <prerequisites><li>LP_MassHeal</li><li>LP_DeathWard</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+</Defs>

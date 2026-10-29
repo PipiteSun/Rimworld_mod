@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.64.0 红鹰商业联盟（只在启用 HAR 时加载）：奴隶种族池加上独眼巨人、双头巨人、六臂蛇人（权重各 0.5，稀有档）。 -->
+<Patch>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TraderKindDef[defName="LP_Caravan_RHSlaver" or defName="LP_Base_RedHawk" or defName="LP_Orbital_RedHawk"]/stockGenerators/li[@Class="LichPhylactery.StockGenerator_RHRaceSlaves"]/entries</xpath>
+    <value>
+      <li><pawnKind>LP_CyclopsColonist</pawnKind><weight>0.5</weight><tier>Rare</tier></li>
+      <li><pawnKind>LP_EttinColonist</pawnKind><weight>0.5</weight><tier>Rare</tier></li>
+      <li><pawnKind>LP_MarilithColonist</pawnKind><weight>0.5</weight><tier>Rare</tier></li>
+    </value>
+  </Operation>
+
+</Patch>

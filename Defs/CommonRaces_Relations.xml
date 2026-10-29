@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.57.0 普通种族的种族关系（共享组件 RacialRelationDef）。observer/target 可以再用 observers/targets 列出多个异种型；
+     targetLich = 本殖民地的巫妖也算目标。只计本殖民地成员与囚犯。 -->
+<Defs>
+  <ThoughtDef Name="LP_RacialRelation157Base" Abstract="True">
+    <workerClass>LichPhylactery.ThoughtWorker_DNDRacialRelation</workerClass>
+  </ThoughtDef>
+
+  <!-- 精灵 ↔ 卓尔 -5/-5 -->
+  <ThoughtDef ParentName="LP_RacialRelation157Base">
+    <defName>LP_RacialRelation_ElfDrow</defName>
+    <stages><li><label>卓尔叛徒</label><description>和卓尔住在一个屋檐下？那些蛛后的走狗背叛了整个精灵族。</description><baseMoodEffect>-5</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <LichPhylactery.RacialRelationDef>
+    <defName>LP_Relation_ElfDrow</defName>
+    <label>精灵看卓尔</label>
+    <observer>LP_Elf</observer>
+    <observers><li>LP_WoodElf</li></observers>
+    <target>LP_Drow</target>
+    <thought>LP_RacialRelation_ElfDrow</thought>
+  </LichPhylactery.RacialRelationDef>
+  <ThoughtDef ParentName="LP_RacialRelation157Base">
+    <defName>LP_RacialRelation_DrowElf</defName>
+    <stages><li><label>地表精灵</label><description>那些住在阳光下的软弱精灵，当年把我们赶进了幽暗地域。</description><baseMoodEffect>-5</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <LichPhylactery.RacialRelationDef>
+    <defName>LP_Relation_DrowElf</defName>
+    <label>卓尔看精灵</label>
+    <observer>LP_Drow</observer>
+    <target>LP_Elf</target>
+    <targets><li>LP_WoodElf</li></targets>
+    <thought>LP_RacialRelation_DrowElf</thought>
+  </LichPhylactery.RacialRelationDef>
+
+  <!-- 侏儒 ↔ 矮人 +2/+2 -->
+  <ThoughtDef ParentName="LP_RacialRelation157Base">
+    <defName>LP_RacialRelation_GnomeDwarf</defName>
+    <stages><li><label>矮人老伙计</label><description>矮人的锻炉配上侏儒的小机关，没有做不出来的东西。</description><baseMoodEffect>2</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <LichPhylactery.RacialRelationDef>
+    <defName>LP_Relation_GnomeDwarf</defName>
+    <label>侏儒看矮人</label>
+    <observer>LP_RockGnome</observer>
+    <observers><li>LP_ForestGnome</li><li>LP_DeepGnome</li></observers>
+    <target>LP_Dwarf</target>
+    <targets><li>LP_HillDwarf</li></targets>
+    <thought>LP_RacialRelation_GnomeDwarf</thought>
+  </LichPhylactery.RacialRelationDef>
+  <ThoughtDef ParentName="LP_RacialRelation157Base">
+    <defName>LP_RacialRelation_DwarfGnome</defName>
+    <stages><li><label>侏儒老伙计</label><description>侏儒话多了点，但手艺是真的好，和山里的老邻居一样靠得住。</description><baseMoodEffect>2</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <LichPhylactery.RacialRelationDef>
+    <defName>LP_Relation_DwarfGnome</defName>
+    <label>矮人看侏儒</label>
+    <observer>LP_Dwarf</observer>
+    <observers><li>LP_HillDwarf</li></observers>
+    <target>LP_RockGnome</target>
+    <targets><li>LP_ForestGnome</li><li>LP_DeepGnome</li></targets>
+    <thought>LP_RacialRelation_DwarfGnome</thought>
+  </LichPhylactery.RacialRelationDef>
+
+  <!-- 侏儒 → 夺心魔 -5 -->
+  <ThoughtDef ParentName="LP_RacialRelation157Base">
+    <defName>LP_RacialRelation_GnomeMindFlayer</defName>
+    <stages><li><label>吃脑子的怪物</label><description>侏儒的脑子对夺心魔来说可是美味。和它住在一起，我连觉都睡不好。</description><baseMoodEffect>-5</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <LichPhylactery.RacialRelationDef>
+    <defName>LP_Relation_GnomeMindFlayer</defName>
+    <label>侏儒看夺心魔</label>
+    <observer>LP_RockGnome</observer>
+    <observers><li>LP_ForestGnome</li><li>LP_DeepGnome</li></observers>
+    <target>LP_MindFlayer</target>
+    <thought>LP_RacialRelation_GnomeMindFlayer</thought>
+  </LichPhylactery.RacialRelationDef>
+
+  <!-- 狗头人 ↔ 侏儒 -3/-3；狗头人 → 巫妖 -2 -->
+  <ThoughtDef ParentName="LP_RacialRelation157Base">
+    <defName>LP_RacialRelation_KoboldGnome</defName>
+    <stages><li><label>讨厌的侏儒</label><description>侏儒偷看我们的陷阱，还嘲笑我们的尾巴。</description><baseMoodEffect>-3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <LichPhylactery.RacialRelationDef>
+    <defName>LP_Relation_KoboldGnome</defName>
+    <label>狗头人看侏儒</label>
+    <observer>LP_Kobold</observer>
+    <target>LP_RockGnome</target>
+    <targets><li>LP_ForestGnome</li><li>LP_DeepGnome</li></targets>
+    <thought>LP_RacialRelation_KoboldGnome</thought>
+  </LichPhylactery.RacialRelationDef>
+  <ThoughtDef ParentName="LP_RacialRelation157Base">
+    <defName>LP_RacialRelation_GnomeKobold</defName>
+    <stages><li><label>偷东西的狗头人</label><description>狗头人在我的工作台底下挖陷阱，还把我的齿轮偷去当宝贝。</description><baseMoodEffect>-3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <LichPhylactery.RacialRelationDef>
+    <defName>LP_Relation_GnomeKobold</defName>
+    <label>侏儒看狗头人</label>
+    <observer>LP_RockGnome</observer>
+    <observers><li>LP_ForestGnome</li><li>LP_DeepGnome</li></observers>
+    <target>LP_Kobold</target>
+    <thought>LP_RacialRelation_GnomeKobold</thought>
+  </LichPhylactery.RacialRelationDef>
+  <ThoughtDef ParentName="LP_RacialRelation157Base">
+    <defName>LP_RacialRelation_KoboldLich</defName>
+    <stages><li><label>可怕的骷髅法师</label><description>巫妖身上一股死人味，看我们的眼神像在挑实验材料。</description><baseMoodEffect>-2</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <LichPhylactery.RacialRelationDef>
+    <defName>LP_Relation_KoboldLich</defName>
+    <label>狗头人看巫妖</label>
+    <observer>LP_Kobold</observer>
+    <targetLich>true</targetLich>
+    <thought>LP_RacialRelation_KoboldLich</thought>
+  </LichPhylactery.RacialRelationDef>
+
+  <!-- 地精族 ↔ 矮人 -3/-3 -->
+  <ThoughtDef ParentName="LP_RacialRelation157Base">
+    <defName>LP_RacialRelation_GoblinoidDwarf</defName>
+    <stages><li><label>臭矮人</label><description>矮人一见我们就抄斧头，血仇书上写满了地精的名字。</description><baseMoodEffect>-3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <LichPhylactery.RacialRelationDef>
+    <defName>LP_Relation_GoblinoidDwarf</defName>
+    <label>地精族看矮人</label>
+    <observer>LP_Goblin</observer>
+    <observers><li>LP_Hobgoblin</li><li>LP_Bugbear</li></observers>
+    <target>LP_Dwarf</target>
+    <targets><li>LP_HillDwarf</li></targets>
+    <thought>LP_RacialRelation_GoblinoidDwarf</thought>
+  </LichPhylactery.RacialRelationDef>
+  <ThoughtDef ParentName="LP_RacialRelation157Base">
+    <defName>LP_RacialRelation_DwarfGoblinoid</defName>
+    <stages><li><label>地精崽子</label><description>地精烧过我们的矿坑，抢过我们的酒窖。现在居然要和它们睡一个院子。</description><baseMoodEffect>-3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <LichPhylactery.RacialRelationDef>
+    <defName>LP_Relation_DwarfGoblinoid</defName>
+    <label>矮人看地精族</label>
+    <observer>LP_Dwarf</observer>
+    <observers><li>LP_HillDwarf</li></observers>
+    <target>LP_Goblin</target>
+    <targets><li>LP_Hobgoblin</li><li>LP_Bugbear</li></targets>
+    <thought>LP_RacialRelation_DwarfGoblinoid</thought>
+  </LichPhylactery.RacialRelationDef>
+
+  <!-- 大地精 ↔ 精灵 -3/-3 -->
+  <ThoughtDef ParentName="LP_RacialRelation157Base">
+    <defName>LP_RacialRelation_HobgoblinElf</defName>
+    <stages><li><label>傲慢的精灵</label><description>精灵杀了我们无数的战士，还管那叫"守护森林"。</description><baseMoodEffect>-3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <LichPhylactery.RacialRelationDef>
+    <defName>LP_Relation_HobgoblinElf</defName>
+    <label>大地精看精灵</label>
+    <observer>LP_Hobgoblin</observer>
+    <target>LP_Elf</target>
+    <targets><li>LP_WoodElf</li></targets>
+    <thought>LP_RacialRelation_HobgoblinElf</thought>
+  </LichPhylactery.RacialRelationDef>
+  <ThoughtDef ParentName="LP_RacialRelation157Base">
+    <defName>LP_RacialRelation_ElfHobgoblin</defName>
+    <stages><li><label>大地精军阀</label><description>大地精的军团烧过精灵的林地，我不会忘。</description><baseMoodEffect>-3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <LichPhylactery.RacialRelationDef>
+    <defName>LP_Relation_ElfHobgoblin</defName>
+    <label>精灵看大地精</label>
+    <observer>LP_Elf</observer>
+    <observers><li>LP_WoodElf</li></observers>
+    <target>LP_Hobgoblin</target>
+    <thought>LP_RacialRelation_ElfHobgoblin</thought>
+  </LichPhylactery.RacialRelationDef>
+
+  <!-- 地精族 ↔ 半兽人 +2/+2 -->
+  <ThoughtDef ParentName="LP_RacialRelation157Base">
+    <defName>LP_RacialRelation_GoblinoidHalfOrc</defName>
+    <stages><li><label>兽人大哥</label><description>半兽人和我们一样被人看不起，也和我们一样能打。</description><baseMoodEffect>2</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <LichPhylactery.RacialRelationDef>
+    <defName>LP_Relation_GoblinoidHalfOrc</defName>
+    <label>地精族看半兽人</label>
+    <observer>LP_Goblin</observer>
+    <observers><li>LP_Hobgoblin</li><li>LP_Bugbear</li></observers>
+    <target>LP_HalfOrc</target>
+    <thought>LP_RacialRelation_GoblinoidHalfOrc</thought>
+  </LichPhylactery.RacialRelationDef>
+  <ThoughtDef ParentName="LP_RacialRelation157Base">
+    <defName>LP_RacialRelation_HalfOrcGoblinoid</defName>
+    <stages><li><label>部落的小兄弟</label><description>地精族吵吵闹闹，可上了战场是好帮手，像部落里的小兄弟。</description><baseMoodEffect>2</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <LichPhylactery.RacialRelationDef>
+    <defName>LP_Relation_HalfOrcGoblinoid</defName>
+    <label>半兽人看地精族</label>
+    <observer>LP_HalfOrc</observer>
+    <target>LP_Goblin</target>
+    <targets><li>LP_Hobgoblin</li><li>LP_Bugbear</li></targets>
+    <thought>LP_RacialRelation_HalfOrcGoblinoid</thought>
+  </LichPhylactery.RacialRelationDef>
+
+  <!-- 半身人 ↔ 矮人 +1/+1 -->
+  <ThoughtDef ParentName="LP_RacialRelation157Base">
+    <defName>LP_RacialRelation_HalflingDwarf</defName>
+    <stages><li><label>矮人酒友</label><description>矮人的酒配上半身人的烤派，再好不过了。</description><baseMoodEffect>1</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <LichPhylactery.RacialRelationDef>
+    <defName>LP_Relation_HalflingDwarf</defName>
+    <label>半身人看矮人</label>
+    <observer>LP_HalflingLightfoot</observer>
+    <observers><li>LP_HalflingStout</li></observers>
+    <target>LP_Dwarf</target>
+    <targets><li>LP_HillDwarf</li></targets>
+    <thought>LP_RacialRelation_HalflingDwarf</thought>
+  </LichPhylactery.RacialRelationDef>
+  <ThoughtDef ParentName="LP_RacialRelation157Base">
+    <defName>LP_RacialRelation_DwarfHalfling</defName>
+    <stages><li><label>半身人饭友</label><description>半身人个子小，饭量和酒量倒是一点不输矮人。</description><baseMoodEffect>1</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <LichPhylactery.RacialRelationDef>
+    <defName>LP_Relation_DwarfHalfling</defName>
+    <label>矮人看半身人</label>
+    <observer>LP_Dwarf</observer>
+    <observers><li>LP_HillDwarf</li></observers>
+    <target>LP_HalflingLightfoot</target>
+    <targets><li>LP_HalflingStout</li></targets>
+    <thought>LP_RacialRelation_DwarfHalfling</thought>
+  </LichPhylactery.RacialRelationDef>
+</Defs>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.31.0 法师塔坠落：残骸建筑与坠落物、野魔法状态与心情、三选一信件。规则见 Source/TowerCrash.cs。 -->
+<Defs>
+  <IncidentDef>
+    <defName>LP_TowerCrash</defName>
+    <label>法师塔坠落</label>
+    <category>ThreatSmall</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_TowerCrash</workerClass>
+    <baseChance>1.0</baseChance>
+    <minRefireDays>45</minRefireDays>
+    <pointsScaleable>false</pointsScaleable>
+  </IncidentDef>
+
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>LP_TowerWreckIncoming</defName>
+    <label>法师塔残骸（坠落中）</label>
+    <size>(3, 3)</size>
+    <skyfaller>
+      <shadowSize>(4, 4)</shadowSize>
+      <!-- 落点 2 格内受撞击伤害 -->
+      <explosionRadius>3.5</explosionRadius>
+      <explosionDamage>Bomb</explosionDamage>
+      <explosionDamageFactor>0.5</explosionDamageFactor>
+      <cameraShake>1</cameraShake>
+      <rubbleShrapnelCountRange>40~60</rubbleShrapnelCountRange>
+    </skyfaller>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_TowerWreck</defName>
+    <label>法师塔残骸</label>
+    <description>一座塞伊法师塔从天上摔了下来，只剩一截断掉的塔身和满地奥术水晶。残骸周围 15 格内野魔法四溢：待在附近的人和动物时不时会隐形、加速、被传送、头上开花、打嗝或者变色（都不致命）。\n\n拆掉它能得到卷轴、钢、玻璃钢，可能还有奇物。</description>
+    <thingClass>LichPhylactery.Building_TowerWreck</thingClass>
+    <graphicData>
+      <texPath>Things/Building/LP_TowerWreck</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3.6, 3.6)</drawSize>
+      <shadowData>
+        <volume>(2.4, 0.6, 2.4)</volume>
+      </shadowData>
+    </graphicData>
+    <size>(3,3)</size>
+    <rotatable>false</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>Impassable</passability>
+    <fillPercent>0.6</fillPercent>
+    <blockWind>true</blockWind>
+    <useHitPoints>true</useHitPoints>
+    <tickerType>Rare</tickerType>
+    <selectable>true</selectable>
+    <destroyable>true</destroyable>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <statBases>
+      <MaxHitPoints>1200</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <Beauty>-20</Beauty>
+      <WorkToBuild>4000</WorkToBuild>
+    </statBases>
+    <building>
+      <claimable>false</claimable>
+      <alwaysDeconstructible>true</alwaysDeconstructible>
+    </building>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>6</glowRadius>
+        <glowColor>(150,90,230,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <LetterDef ParentName="CustomChoiceLetterBase">
+    <defName>LP_TowerChoiceLetter</defName>
+    <letterClass>LichPhylactery.Letter_TowerCrash</letterClass>
+  </LetterDef>
+
+  <HediffDef>
+    <defName>LP_WildMagicBloom</defName>
+    <label>头上开花</label>
+    <description>野魔法让头顶冒出了一朵花。纯属好看，一小时后凋谢。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(1, 0.7, 0.85)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>2500</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_WildMagicHue</defName>
+    <label>野魔法变色</label>
+    <description>野魔法把皮肤染成了奇怪的颜色。纯外观，一天后恢复。</description>
+    <hediffClass>LichPhylactery.Hediff_WildMagicHue</hediffClass>
+    <defaultLabelColor>(0.7, 0.55, 1)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>60000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>LP_WildMagicBloomed</defName>
+    <durationDays>0.042</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>开了花</label>
+        <description>头上开了一朵花，有点好笑，也有点好看。</description>
+        <baseMoodEffect>1</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_WildMagicHiccup</defName>
+    <durationDays>0.042</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>打嗝</label>
+        <description>野魔法害我打嗝打个不停。</description>
+        <baseMoodEffect>-1</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

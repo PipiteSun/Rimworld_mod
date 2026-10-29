@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.27.0 职业物品：冒险者手册（入门）、魔法飞弹投射物、石墙术的石墙。 -->
+<Defs>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_AdventurersManual</defName>
+    <label>冒险者手册</label>
+    <description>一本被翻烂了的小书，记着费伦冒险者的四条路：以格斗立身的战士、以智识驭法的法师、以社交侍神的牧师、以手工造器的器械师。使用后：没有心灵链接而任一职业技能达到 8 级的人获得 1 级心灵链接，并免费解锁对应的职业路径（取技能最高的那条）；已有心灵链接的人只解锁一条新路径（技能 ≥ 6）。一本只能用一次。</description>
+    <graphicData><texPath>LP/Classes/Manual</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>5</stackLimit>
+    <techLevel>Medieval</techLevel>
+    <useHitPoints>true</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <statBases>
+      <MaxHitPoints>60</MaxHitPoints>
+      <Mass>0.5</Mass>
+      <Flammability>1</Flammability>
+      <DeteriorationRate>1</DeteriorationRate>
+      <MarketValue>800</MarketValue>
+    </statBases>
+    <thingCategories><li>ItemsMisc</li></thingCategories>
+    <tradeTags><li>LP_Scroll</li></tradeTags>
+    <thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
+    <resourceReadoutPriority>Last</resourceReadoutPriority>
+    <comps>
+      <li Class="CompProperties_Usable"><useJob>UseItem</useJob><useLabel>研读{0_label}</useLabel><useDuration>300</useDuration></li>
+      <li Class="LichPhylactery.VPEBridge.CompProperties_UseEffect_Manual" />
+      <li Class="CompProperties_UseEffectDestroySelf" />
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>LP_MagicMissileBullet</defName>
+    <label>魔法飞弹</label>
+    <thingClass>LichPhylactery.VPEBridge.MagicMissileBullet</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/Charge_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(0.7,0.5,1)</color>
+    </graphicData>
+    <projectile>
+      <damageDef>LP_ArcaneForce</damageDef>
+      <damageAmountBase>4</damageAmountBase>
+      <armorPenetrationBase>0.3</armorPenetrationBase>
+      <speed>50</speed>
+      <flyOverhead>false</flyOverhead>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_ConjuredWall</defName>
+    <label>石墙（石墙术）</label>
+    <description>石墙术召出来的石墙，一天后消散。</description>
+    <thingClass>Building</thingClass>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Things/Building/Linked/Wall</texPath>
+      <graphicClass>Graphic_Appearances</graphicClass>
+      <linkType>CornerFiller</linkType>
+      <linkFlags><li>Wall</li><li>Rock</li></linkFlags>
+      <damageData><cornerTL>Damage/Corner</cornerTL><cornerTR>Damage/Corner</cornerTR><cornerBL>Damage/Corner</cornerBL><cornerBR>Damage/Corner</cornerBR><edgeTop>Damage/Edge</edgeTop><edgeBot>Damage/Edge</edgeBot><edgeLeft>Damage/Edge</edgeLeft><edgeRight>Damage/Edge</edgeRight></damageData>
+    </graphicData>
+    <uiIconPath>Things/Building/Linked/WallSmooth_MenuIcon</uiIconPath>
+    <statBases>
+      <MaxHitPoints>400</MaxHitPoints>
+      <Flammability>0</Flammability>
+    </statBases>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>Impassable</passability>
+    <blockWind>true</blockWind>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>1</fillPercent>
+    <coversFloor>true</coversFloor>
+    <neverMultiSelect>true</neverMultiSelect>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <useHitPoints>true</useHitPoints>
+    <holdsRoof>true</holdsRoof>
+    <blockLight>true</blockLight>
+    <canOverlapZones>false</canOverlapZones>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <filthLeaving>Filth_RubbleRock</filthLeaving>
+    <stuffCategories><li>Stony</li></stuffCategories>
+    <costStuffCount>1</costStuffCount>
+    <building>
+      <isInert>true</isInert>
+      <ai_chillDestination>false</ai_chillDestination>
+      <blueprintGraphicData><texPath>Things/Building/Linked/Wall_Blueprint_Atlas</texPath></blueprintGraphicData>
+      <claimable>false</claimable>
+      <deconstructible>false</deconstructible>
+    </building>
+    <comps>
+      <li Class="CompProperties_Lifespan"><lifespanTicks>60000</lifespanTicks></li>
+    </comps>
+  </ThingDef>
+</Defs>

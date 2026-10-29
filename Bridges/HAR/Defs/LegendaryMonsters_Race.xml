@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.52.1 传奇怪的 HAR 种族：贝希尔（蛇形十二足）、眼魔（漂浮球体 + 主眼 + 10 根眼柄）、半巫妖（漂浮头骨）。只在启用 HAR 时加载。
+     写法同 1.52.0 五色龙：ParentName="Human"、列表 Inherit="False"、身体贴图是整只怪（按本色画好）、头型贴图透明、skinShader Cutout；
+     体型 / 生命 / 护甲在各自唯一的生命阶段里，画面大小由主程序集的根节点补丁按 LP_MonsterExtension.renderScale 放大。规则代码在 Source/LegendaryMonsters.cs。
+     “漂浮囊”（LP_FloatSac）是给眼魔和半巫妖的移动能力来源（人形的移动能力要靠带 MovingLimbCore 标签的部位）。 -->
+<Defs>
+
+  <!-- ==================== 部位 ==================== -->
+  <BodyPartDef>
+    <defName>LP_BeholderMainEye</defName>
+    <label>主眼</label>
+    <hitPoints>25</hitPoints>
+    <skinCovered>false</skinCovered>
+    <solid>false</solid>
+    <bleedRate>1</bleedRate>
+    <tags><li>SightSource</li></tags>
+  </BodyPartDef>
+  <BodyPartDef>
+    <defName>LP_BeholderStalk</defName>
+    <label>眼柄</label>
+    <hitPoints>14</hitPoints>
+    <skinCovered>true</skinCovered>
+    <solid>false</solid>
+    <bleedRate>1</bleedRate>
+    <frostbiteVulnerability>0.5</frostbiteVulnerability><!-- 1.63.0：同上 -->
+  </BodyPartDef>
+  <BodyPartDef>
+    <defName>LP_FloatSac</defName>
+    <label>漂浮囊</label>
+    <hitPoints>30</hitPoints>
+    <skinCovered>false</skinCovered>
+    <solid>false</solid>
+    <bleedRate>1</bleedRate>
+    <tags><li>MovingLimbCore</li></tags>
+    <frostbiteVulnerability>0.1</frostbiteVulnerability><!-- 1.63.0：原版要求身体至少有一处会冻伤（开发者模式配置检查）；半巫妖身上只有这一个自定义部位 -->
+  </BodyPartDef>
+
+  <!-- ==================== 身体 ==================== -->
+  <BodyDef>
+    <defName>LP_BehirBody</defName>
+    <label>贝希尔</label>
+    <corePart>
+      <def>Torso</def><customLabel>蛇躯</customLabel><height>Middle</height><depth>Outside</depth><groups><li>Torso</li></groups>
+      <parts>
+        <li><def>Tail</def><customLabel>尾</customLabel><coverage>0.08</coverage><groups><li>LP_DragonTail</li></groups></li>
+        <li><def>Spine</def><customLabel>脊椎</customLabel><coverage>0.03</coverage><depth>Inside</depth></li>
+        <li><def>Stomach</def><customLabel>胃袋</customLabel><coverage>0.04</coverage><depth>Inside</depth></li>
+        <li><def>Heart</def><customLabel>心</customLabel><coverage>0.03</coverage><depth>Inside</depth></li>
+        <li><def>Lung</def><customLabel>左肺</customLabel><coverage>0.03</coverage><depth>Inside</depth></li>
+        <li><def>Lung</def><customLabel>右肺</customLabel><coverage>0.03</coverage><depth>Inside</depth></li>
+        <li><def>Kidney</def><customLabel>左肾</customLabel><coverage>0.02</coverage><depth>Inside</depth></li>
+        <li><def>Kidney</def><customLabel>右肾</customLabel><coverage>0.02</coverage><depth>Inside</depth></li>
+        <li><def>Liver</def><customLabel>肝</customLabel><coverage>0.03</coverage><depth>Inside</depth></li>
+        <li>
+          <def>Neck</def><customLabel>颈</customLabel><coverage>0.12</coverage><height>Top</height><groups><li>Neck</li></groups>
+          <parts>
+            <li>
+              <def>Head</def><customLabel>头</customLabel><coverage>0.75</coverage><groups><li>HeadAttackTool</li><li>UpperHead</li><li>FullHead</li></groups>
+              <parts>
+                <li><def>Skull</def><customLabel>颅骨</customLabel><coverage>0.25</coverage><depth>Inside</depth><groups><li>UpperHead</li><li>FullHead</li></groups>
+                  <parts><li><def>Brain</def><customLabel>脑</customLabel><coverage>0.7</coverage><depth>Inside</depth><groups><li>UpperHead</li><li>FullHead</li></groups></li></parts></li>
+                <li><def>Eye</def><customLabel>左眼</customLabel><coverage>0.1</coverage><groups><li>FullHead</li><li>Eyes</li></groups></li>
+                <li><def>Eye</def><customLabel>右眼</customLabel><coverage>0.1</coverage><groups><li>FullHead</li><li>Eyes</li></groups></li>
+                <li><def>Nose</def><customLabel>鼻</customLabel><coverage>0.08</coverage><groups><li>FullHead</li></groups></li>
+                <li><def>AnimalJaw</def><customLabel>颚</customLabel><coverage>0.14</coverage><groups><li>Teeth</li><li>FullHead</li></groups></li>
+              </parts>
+            </li>
+          </parts>
+        </li>
+        <li><def>Leg</def><customLabel>第一对左足</customLabel><coverage>0.03</coverage><height>Bottom</height><groups><li>Legs</li></groups><parts><li><def>Paw</def><customLabel>第一对左爪</customLabel><coverage>0.2</coverage><groups><li>FrontLeftPaw</li><li>Feet</li></groups></li></parts></li>
+        <li><def>Leg</def><customLabel>第一对右足</customLabel><coverage>0.03</coverage><height>Bottom</height><groups><li>Legs</li></groups><parts><li><def>Paw</def><customLabel>第一对右爪</customLabel><coverage>0.2</coverage><groups><li>FrontRightPaw</li><li>Feet</li></groups></li></parts></li>
+        <li><def>Leg</def><customLabel>第二对左足</customLabel><coverage>0.03</coverage><height>Bottom</height><groups><li>Legs</li></groups></li>
+        <li><def>Leg</def><customLabel>第二对右足</customLabel><coverage>0.03</coverage><height>Bottom</height><groups><li>Legs</li></groups></li>
+        <li><def>Leg</def><customLabel>第三对左足</customLabel><coverage>0.03</coverage><height>Bottom</height><groups><li>Legs</li></groups></li>
+        <li><def>Leg</def><customLabel>第三对右足</customLabel><coverage>0.03</coverage><height>Bottom</height><groups><li>Legs</li></groups></li>
+        <li><def>Leg</def><customLabel>第四对左足</customLabel><coverage>0.03</coverage><height>Bottom</height><groups><li>Legs</li></groups></li>
+        <li><def>Leg</def><customLabel>第四对右足</customLabel><coverage>0.03</coverage><height>Bottom</height><groups><li>Legs</li></groups></li>
+        <li><def>Leg</def><customLabel>第五对左足</customLabel><coverage>0.03</coverage><height>Bottom</height><groups><li>Legs</li></groups></li>
+        <li><def>Leg</def><customLabel>第五对右足</customLabel><coverage>0.03</coverage><height>Bottom</height><groups><li>Legs</li></groups></li>
+        <li><def>Leg</def><customLabel>第六对左足</customLabel><coverage>0.03</coverage><height>Bottom</height><groups><li>Legs</li></groups></li>
+        <li><def>Leg</def><customLabel>第六对右足</customLabel><coverage>0.03</coverage><height>Bottom</height><groups><li>Legs</li></groups></li>
+      </parts>
+    </corePart>
+  </BodyDef>
+
+  <BodyDef>
+    <defName>LP_BeholderBody</defName>
+    <label>眼魔</label>
+    <corePart>
+      <def>Torso</def><customLabel>眼魔球体</customLabel><height>Middle</height><depth>Outside</depth><groups><li>Torso</li></groups>
+      <parts>
+        <li><def>Brain</def><customLabel>脑</customLabel><coverage>0.04</coverage><depth>Inside</depth></li>
+        <li><def>Heart</def><customLabel>心</customLabel><coverage>0.03</coverage><depth>Inside</depth></li>
+        <li><def>Lung</def><customLabel>气囊</customLabel><coverage>0.03</coverage><depth>Inside</depth></li>
+        <li><def>Kidney</def><customLabel>肾</customLabel><coverage>0.02</coverage><depth>Inside</depth></li>
+        <li><def>Liver</def><customLabel>肝</customLabel><coverage>0.02</coverage><depth>Inside</depth></li>
+        <li><def>Stomach</def><customLabel>胃</customLabel><coverage>0.02</coverage><depth>Inside</depth></li>
+        <li><def>LP_FloatSac</def><customLabel>左漂浮囊</customLabel><coverage>0.02</coverage><depth>Inside</depth></li>
+        <li><def>LP_FloatSac</def><customLabel>右漂浮囊</customLabel><coverage>0.02</coverage><depth>Inside</depth></li>
+        <li><def>LP_BeholderMainEye</def><customLabel>主眼</customLabel><coverage>0.1</coverage><groups><li>Eyes</li></groups></li>
+        <li><def>AnimalJaw</def><customLabel>巨口</customLabel><coverage>0.08</coverage><groups><li>Teeth</li></groups></li>
+        <li><def>LP_BeholderStalk</def><customLabel>魅惑眼柄</customLabel><coverage>0.03</coverage><height>Top</height></li>
+        <li><def>LP_BeholderStalk</def><customLabel>麻痹眼柄</customLabel><coverage>0.03</coverage><height>Top</height></li>
+        <li><def>LP_BeholderStalk</def><customLabel>恐惧眼柄</customLabel><coverage>0.03</coverage><height>Top</height></li>
+        <li><def>LP_BeholderStalk</def><customLabel>减速眼柄</customLabel><coverage>0.03</coverage><height>Top</height></li>
+        <li><def>LP_BeholderStalk</def><customLabel>衰弱眼柄</customLabel><coverage>0.03</coverage><height>Top</height></li>
+        <li><def>LP_BeholderStalk</def><customLabel>石化眼柄</customLabel><coverage>0.03</coverage><height>Top</height></li>
+        <li><def>LP_BeholderStalk</def><customLabel>解离眼柄</customLabel><coverage>0.03</coverage><height>Top</height></li>
+        <li><def>LP_BeholderStalk</def><customLabel>死亡眼柄</customLabel><coverage>0.03</coverage><height>Top</height></li>
+        <li><def>LP_BeholderStalk</def><customLabel>睡眠眼柄</customLabel><coverage>0.03</coverage><height>Top</height></li>
+        <li><def>LP_BeholderStalk</def><customLabel>念动眼柄</customLabel><coverage>0.03</coverage><height>Top</height></li>
+      </parts>
+    </corePart>
+  </BodyDef>
+
+  <BodyDef>
+    <defName>LP_DemilichBody</defName>
+    <label>半巫妖</label>
+    <corePart>
+      <def>Torso</def><customLabel>头骨</customLabel><height>Middle</height><depth>Outside</depth><groups><li>Torso</li></groups>
+      <parts>
+        <li><def>Brain</def><customLabel>残魂</customLabel><coverage>0.03</coverage><depth>Inside</depth></li>
+        <li><def>Heart</def><customLabel>负能核心</customLabel><coverage>0.02</coverage><depth>Inside</depth></li>
+        <li><def>Lung</def><customLabel>魂息</customLabel><coverage>0.02</coverage><depth>Inside</depth></li>
+        <li><def>Kidney</def><customLabel>死灵脉络</customLabel><coverage>0.02</coverage><depth>Inside</depth></li>
+        <li><def>Liver</def><customLabel>枯髓</customLabel><coverage>0.02</coverage><depth>Inside</depth></li>
+        <li><def>LP_FloatSac</def><customLabel>浮空之力</customLabel><coverage>0.02</coverage><depth>Inside</depth></li>
+        <li><def>Eye</def><customLabel>左宝石眼</customLabel><coverage>0.04</coverage><groups><li>Eyes</li></groups></li>
+        <li><def>Eye</def><customLabel>右宝石眼</customLabel><coverage>0.04</coverage><groups><li>Eyes</li></groups></li>
+        <li><def>AnimalJaw</def><customLabel>颚骨</customLabel><coverage>0.05</coverage><groups><li>Teeth</li></groups></li>
+      </parts>
+    </corePart>
+  </BodyDef>
+
+  <!-- ==================== 生命阶段（每个种族一个） ==================== -->
+  <LifeStageDef>
+    <defName>LP_BehirStage</defName><label>贝希尔</label><adjective>成年</adjective>
+    <developmentalStage>Adult</developmentalStage><reproductive>false</reproductive>
+    <bodySizeFactor>3.5</bodySizeFactor><healthScaleFactor>12</healthScaleFactor><meleeDamageFactor>1.4</meleeDamageFactor>
+    <statOffsets><ArmorRating_Sharp>0.45</ArmorRating_Sharp><ArmorRating_Blunt>0.35</ArmorRating_Blunt></statOffsets>
+    <voxPitch>0.5</voxPitch>
+  </LifeStageDef>
+  <LifeStageDef>
+    <defName>LP_BeholderStage</defName><label>眼魔</label><adjective>成年</adjective>
+    <developmentalStage>Adult</developmentalStage><reproductive>false</reproductive>
+    <bodySizeFactor>2.5</bodySizeFactor><healthScaleFactor>9</healthScaleFactor><meleeDamageFactor>1.2</meleeDamageFactor>
+    <statOffsets><ArmorRating_Sharp>0.4</ArmorRating_Sharp><ArmorRating_Blunt>0.3</ArmorRating_Blunt></statOffsets>
+    <voxPitch>0.6</voxPitch>
+  </LifeStageDef>
+  <LifeStageDef>
+    <defName>LP_DemilichStage</defName><label>半巫妖</label><adjective>古老</adjective>
+    <developmentalStage>Adult</developmentalStage><reproductive>false</reproductive>
+    <bodySizeFactor>0.8</bodySizeFactor><healthScaleFactor>3</healthScaleFactor><meleeDamageFactor>1</meleeDamageFactor>
+    <statOffsets><ArmorRating_Sharp>0.8</ArmorRating_Sharp><ArmorRating_Blunt>0.8</ArmorRating_Blunt></statOffsets>
+    <voxPitch>0.8</voxPitch>
+  </LifeStageDef>
+
+  <!-- ==================== 种族 ==================== -->
+  <AlienRace.ThingDef_AlienRace ParentName="Human" Name="LP_LegendaryMonsterBase" Abstract="True">
+    <statBases><MarketValue>6000</MarketValue><PsychicSensitivity>0.8</PsychicSensitivity></statBases>
+    <race>
+      <baseBodySize>1</baseBodySize>
+      <baseHealthScale>1</baseHealthScale>
+      <lifeExpectancy>3000</lifeExpectancy>
+      <ageGenerationCurve Inherit="False"><points><li>(100,0)</li><li>(200,1)</li><li>(1500,1)</li><li>(1600,0)</li></points></ageGenerationCurve>
+      <hediffGiverSets Inherit="False" />
+    </race>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><legendary>true</legendary></li>
+    </modExtensions>
+  </AlienRace.ThingDef_AlienRace>
+
+  <AlienRace.ThingDef_AlienRace ParentName="LP_LegendaryMonsterBase">
+    <defName>LP_Behir</defName>
+    <label>贝希尔</label>
+    <description>蓝色鳞片、十二条腿的巨大蛇形怪物，住在高山和沙漠的洞穴里。它是真龙的死敌：闻到龙的气味就会追上去，喷出一道闪电，把敌人整个吞下。</description>
+    <statBases><MoveSpeed>5.0</MoveSpeed></statBases>
+    <race>
+      <body>LP_BehirBody</body>
+      <lifeStageAges Inherit="False"><li><def>LP_BehirStage</def><minAge>0</minAge></li></lifeStageAges>
+    </race>
+    <tools Inherit="False">
+      <li><label>咬</label><capacities><li>Bite</li></capacities><power>30</power><cooldownTime>2.0</cooldownTime><armorPenetration>0.4</armorPenetration><linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup></li>
+      <li><label>左前爪</label><capacities><li>Scratch</li></capacities><power>14</power><cooldownTime>1.4</cooldownTime><armorPenetration>0.25</armorPenetration><linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup></li>
+      <li><label>右前爪</label><capacities><li>Scratch</li></capacities><power>14</power><cooldownTime>1.4</cooldownTime><armorPenetration>0.25</armorPenetration><linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup></li>
+      <li><label>尾巴</label><capacities><li>Blunt</li></capacities><power>20</power><cooldownTime>2.2</cooldownTime><armorPenetration>0.2</armorPenetration><linkedBodyPartsGroup>LP_DragonTail</linkedBodyPartsGroup></li>
+    </tools>
+    <alienRace>
+      <generalSettings>
+        <humanRecipeImport>false</humanRecipeImport><allowHumanBios>false</allowHumanBios><corpseCategory>CorpsesHumanlike</corpseCategory>
+        <alienPartGenerator>
+          <headTypes Inherit="False"><li>LP_MonsterHead_LP_Behir</li></headTypes>
+          <bodyTypes Inherit="False"><li>Hulk</li></bodyTypes>
+          <colorChannels Inherit="False"><li><name>skin</name><first Class="ColorGenerator_Single"><color>(1,1,1,1)</color></first></li></colorChannels>
+          <bodyAddons Inherit="False" />
+        </alienPartGenerator>
+      </generalSettings>
+      <graphicPaths><body>LegendaryMonsters/Behir/</body><head><path>LegendaryMonsters/Heads/</path></head><skinShader>Cutout</skinShader></graphicPaths>
+      <raceRestriction><onlyUseRaceRestrictedApparel>true</onlyUseRaceRestrictedApparel><onlyUseRaceRestrictedWeapons>true</onlyUseRaceRestrictedWeapons></raceRestriction>
+    </alienRace>
+  </AlienRace.ThingDef_AlienRace>
+
+  <AlienRace.ThingDef_AlienRace ParentName="LP_LegendaryMonsterBase">
+    <defName>LP_Beholder</defName>
+    <label>眼魔</label>
+    <description>漂浮在半空的巨大眼球，一张满是利齿的大嘴，头顶十根眼柄各射出一种魔法射线。它中央的主眼看到的地方，魔法统统失效。眼魔多疑、贪婪，恨一切和自己长得不一样的东西——尤其是夺心魔。</description>
+    <statBases><MoveSpeed>3.5</MoveSpeed></statBases>
+    <race>
+      <body>LP_BeholderBody</body>
+      <lifeStageAges Inherit="False"><li><def>LP_BeholderStage</def><minAge>0</minAge></li></lifeStageAges>
+    </race>
+    <tools Inherit="False">
+      <li><label>咬</label><capacities><li>Bite</li></capacities><power>20</power><cooldownTime>2.0</cooldownTime><armorPenetration>0.3</armorPenetration><linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup></li>
+    </tools>
+    <alienRace>
+      <generalSettings>
+        <humanRecipeImport>false</humanRecipeImport><allowHumanBios>false</allowHumanBios><corpseCategory>CorpsesHumanlike</corpseCategory>
+        <alienPartGenerator>
+          <headTypes Inherit="False"><li>LP_MonsterHead_LP_Beholder</li></headTypes>
+          <bodyTypes Inherit="False"><li>Hulk</li></bodyTypes>
+          <colorChannels Inherit="False"><li><name>skin</name><first Class="ColorGenerator_Single"><color>(1,1,1,1)</color></first></li></colorChannels>
+          <bodyAddons Inherit="False" />
+        </alienPartGenerator>
+      </generalSettings>
+      <graphicPaths><body>LegendaryMonsters/Beholder/</body><head><path>LegendaryMonsters/Heads/</path></head><skinShader>Cutout</skinShader></graphicPaths>
+      <raceRestriction><onlyUseRaceRestrictedApparel>true</onlyUseRaceRestrictedApparel><onlyUseRaceRestrictedWeapons>true</onlyUseRaceRestrictedWeapons></raceRestriction>
+    </alienRace>
+  </AlienRace.ThingDef_AlienRace>
+
+  <AlienRace.ThingDef_AlienRace ParentName="LP_LegendaryMonsterBase">
+    <defName>LP_Demilich</defName>
+    <label>半巫妖</label>
+    <description>活了太久、连身体都朽烂了的巫妖，只剩下一颗镶着宝石的头骨漂在空中。它的嚎叫能把活人的灵魂撕下来，吸进眼窝里的宝石。</description>
+    <statBases><MoveSpeed>4.0</MoveSpeed></statBases>
+    <race>
+      <body>LP_DemilichBody</body>
+      <lifeStageAges Inherit="False"><li><def>LP_DemilichStage</def><minAge>0</minAge></li></lifeStageAges>
+    </race>
+    <tools Inherit="False">
+      <li><label>啃咬</label><capacities><li>Bite</li></capacities><power>12</power><cooldownTime>1.8</cooldownTime><armorPenetration>0.3</armorPenetration><linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup></li>
+    </tools>
+    <alienRace>
+      <generalSettings>
+        <humanRecipeImport>false</humanRecipeImport><allowHumanBios>false</allowHumanBios><corpseCategory>CorpsesHumanlike</corpseCategory>
+        <alienPartGenerator>
+          <headTypes Inherit="False"><li>LP_MonsterHead_LP_Demilich</li></headTypes>
+          <bodyTypes Inherit="False"><li>Hulk</li></bodyTypes>
+          <colorChannels Inherit="False"><li><name>skin</name><first Class="ColorGenerator_Single"><color>(1,1,1,1)</color></first></li></colorChannels>
+          <bodyAddons Inherit="False" />
+        </alienPartGenerator>
+      </generalSettings>
+      <graphicPaths><body>LegendaryMonsters/Demilich/</body><head><path>LegendaryMonsters/Heads/</path></head><skinShader>Cutout</skinShader></graphicPaths>
+      <raceRestriction><onlyUseRaceRestrictedApparel>true</onlyUseRaceRestrictedApparel><onlyUseRaceRestrictedWeapons>true</onlyUseRaceRestrictedWeapons></raceRestriction>
+    </alienRace>
+  </AlienRace.ThingDef_AlienRace>
+
+  <HeadTypeDef><defName>LP_MonsterHead_LP_Behir</defName><graphicPath>LegendaryMonsters/Heads/Behir</graphicPath><gender>None</gender><randomChosen>false</randomChosen></HeadTypeDef>
+  <HeadTypeDef><defName>LP_MonsterHead_LP_Beholder</defName><graphicPath>LegendaryMonsters/Heads/Beholder</graphicPath><gender>None</gender><randomChosen>false</randomChosen></HeadTypeDef>
+  <HeadTypeDef><defName>LP_MonsterHead_LP_Demilich</defName><graphicPath>LegendaryMonsters/Heads/Demilich</graphicPath><gender>None</gender><randomChosen>false</randomChosen></HeadTypeDef>
+
+  <!-- ==================== 兵种 ==================== -->
+  <PawnKindDef Name="LP_LegendaryMonsterKindBase" Abstract="True">
+    <defaultFactionDef>LP_LegendaryBeasts</defaultFactionDef>
+    <isFighter>true</isFighter>
+    <canBeSapper>false</canBeSapper>
+    <apparelMoney>0</apparelMoney>
+    <weaponMoney>0</weaponMoney>
+    <apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+    <techHediffsChance>0</techHediffsChance>
+    <chemicalAddictionChance>0</chemicalAddictionChance>
+    <combatEnhancingDrugsChance>0</combatEnhancingDrugsChance>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <backstoryFiltersOverride><li><categories><li>LP_MonsterBio</li></categories></li></backstoryFiltersOverride>
+    <initialResistanceRange>99~99</initialResistanceRange>
+    <initialWillRange>10~10</initialWillRange><!-- 1.63.0：同上 -->
+    <minGenerationAge>100</minGenerationAge>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_LegendaryMonsterKindBase">
+    <defName>LP_LM_Behir</defName>
+    <label>贝希尔</label>
+    <race>LP_Behir</race>
+    <combatPower>900</combatPower>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>贝希尔</title>
+        <level>15~17</level>
+        <scores><li>23</li><li>16</li><li>18</li><li>7</li><li>14</li><li>12</li></scores>
+        <cr>11</cr>
+        <resistance>2</resistance>
+        <actionPoints>2</actionPoints>
+        <actions><li><action>Detect</action><cost>1</cost></li><li><action>Tail</action><cost>1</cost></li></actions>
+        <legendPoints>2</legendPoints>
+      </li>
+      <li Class="LichPhylactery.LP_MonsterExtension"><kind>behir</kind><renderScale>2.4</renderScale></li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_LegendaryMonsterKindBase">
+    <defName>LP_LM_Beholder</defName>
+    <label>眼魔</label>
+    <race>LP_Beholder</race>
+    <combatPower>1100</combatPower>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>眼魔</title>
+        <level>20~22</level>
+        <scores><li>10</li><li>14</li><li>18</li><li>17</li><li>15</li><li>17</li></scores>
+        <cr>13</cr>
+        <resistance>3</resistance>
+        <actionPoints>3</actionPoints>
+        <actions><li><action>Detect</action><cost>1</cost></li><li><action>Ray</action><cost>1</cost></li><li><action>Drift</action><cost>1</cost><cooldown>300</cooldown></li></actions>
+        <legendPoints>2</legendPoints>
+      </li>
+      <li Class="LichPhylactery.LP_MonsterExtension"><kind>beholder</kind><renderScale>2.0</renderScale></li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_LegendaryMonsterKindBase">
+    <defName>LP_LM_Demilich</defName>
+    <label>半巫妖</label>
+    <race>LP_Demilich</race>
+    <combatPower>1300</combatPower>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>半巫妖</title>
+        <level>26~28</level>
+        <scores><li>1</li><li>20</li><li>10</li><li>20</li><li>17</li><li>20</li></scores>
+        <cr>18</cr>
+        <resistance>3</resistance>
+        <actionPoints>3</actionPoints>
+        <actions><li><action>Detect</action><cost>1</cost></li><li><action>SoulDrain</action><cost>2</cost></li><li><action>Curse</action><cost>1</cost></li></actions>
+        <legendPoints>2</legendPoints>
+      </li>
+      <li Class="LichPhylactery.LP_MonsterExtension"><kind>demilich</kind><renderScale>1.0</renderScale></li>
+    </modExtensions>
+  </PawnKindDef>
+
+</Defs>

@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.36.0 DND 职业路径：武僧（VPE 联动）。格斗 ≥ 6 可解锁；左支 武艺→拨挡→乘风步→金刚之躯，右支 连击→震慑拳→开掌技→颤心掌，终极 空灵之身。拳脚走原版近战；“气”的效果（psychicMode=Yes）乘心灵敏感度。 -->
+<Defs>
+  <VanillaPsycastsExpanded.PsycasterPathDef Class="LichPhylactery.VPEBridge.LP_ClassPathDef">
+    <defName>LP_Path_Monk</defName>
+    <label>武僧</label>
+    <description>DND 武僧以气御身：武艺、拨挡箭矢、乘风步、金刚之躯，疾风连击、震慑拳、开掌技、颤心掌，终极 空灵之身。徒手（或拿短棍）时最强；拳脚走原版近战结算，Isekai 的力量与武器精通照常生效；“气”的效果乘心灵敏感度。学习每一环都需要对应的格斗等级（6/9/12/15/18）。</description>
+    <tab>DND职业</tab>
+    <order>8</order>
+    <requiredSkill>Melee</requiredSkill>
+    <requiredSkillLevel>6</requiredSkillLevel>
+    <martial>true</martial>
+    <classPsychic>false</classPsychic>
+    <lockedReason>需要格斗 6 级（或冒险者敏捷 13）</lockedReason>
+    <tooltip>武僧：格斗决定气的强度，徒手时最强。</tooltip>
+    <background>LP/Classes/Monk/Background</background>
+    <altBackground>LP/Classes/Monk/Background</altBackground>
+    <backgroundColor>(0.48,0.34,0.14)</backgroundColor>
+    <ignoreLockRestrictionsForNeurotrainers>false</ignoreLockRestrictionsForNeurotrainers>
+  </VanillaPsycastsExpanded.PsycasterPathDef>
+
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_MonkStance</defName>
+    <hediffClass>LichPhylactery.VPEBridge.Hediff_ClassScaled</hediffClass>
+    <label>武艺</label>
+    <description>徒手的武僧：近战伤害提高（× 1 + 0.5 × 战技强度），近战冷却 ×0.85。</description>
+    <defaultLabelColor>(0.95,0.8,0.45)</defaultLabelColor>
+    <stages><li><statFactors><MeleeCooldownFactor>0.85</MeleeCooldownFactor></statFactors></li></stages>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.ScaledHediffExtension">
+      <scaledFactors>
+        <li><stat>VEF_MeleeAttackDamageFactor</stat><baseValue>1</baseValue><perSeverity>0.5</perSeverity></li>
+      </scaledFactors>
+    </li></modExtensions>
+  </HediffDef>
+
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_MonkUnarmored</defName>
+    <hediffClass>LichPhylactery.VPEBridge.Hediff_ClassScaled</hediffClass>
+    <label>轻身</label>
+    <description>不穿重甲的武僧：近战闪避 +10% × 战技强度。</description>
+    <defaultLabelColor>(0.95,0.8,0.45)</defaultLabelColor>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.ScaledHediffExtension">
+      <scaledOffsets>
+        <li><stat>MeleeDodgeChance</stat><baseValue>0</baseValue><perSeverity>0.1</perSeverity></li>
+      </scaledOffsets>
+    </li></modExtensions>
+  </HediffDef>
+
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_Deflecting</defName>
+    <label>拨挡箭矢</label>
+    <description>每发远程攻击的伤害减少（严重度 = 减伤量），减到 0 时整发拨开。</description>
+    <defaultLabelColor>(0.95,0.8,0.45)</defaultLabelColor>
+    <maxSeverity>1000</maxSeverity>
+  </HediffDef>
+
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_StepOfTheWind</defName>
+    <label>乘风步</label>
+    <description>身轻如风：移动 ×1.6、近战闪避 +20%。</description>
+    <defaultLabelColor>(0.95,0.8,0.45)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>1.6</MoveSpeed></statFactors><statOffsets><MeleeDodgeChance>0.2</MeleeDodgeChance></statOffsets></li></stages>
+  </HediffDef>
+
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_DiamondSoul</defName>
+    <label>金刚之躯</label>
+    <description>气凝全身：受到伤害 ×0.7，免疫击晕，精神崩溃阈值 −10%。</description>
+    <defaultLabelColor>(0.95,0.8,0.45)</defaultLabelColor>
+    <stages><li><statFactors><IncomingDamageFactor>0.7</IncomingDamageFactor></statFactors><statOffsets><MentalBreakThreshold>-0.1</MentalBreakThreshold></statOffsets></li></stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>LP_QuiveringPalm</defName>
+    <hediffClass>LichPhylactery.VPEBridge.Hediff_QuiveringPalm</hediffClass>
+    <label>颤心</label>
+    <description>体内被种下了武僧的颤心之气，几秒后就会爆发。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.95,0.6,0.4)</defaultLabelColor>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>1000</maxSeverity>
+    <scenarioCanAdd>false</scenarioCanAdd>
+  </HediffDef>
+
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_EmptyBody</defName>
+    <label>空灵之身</label>
+    <description>身形化入虚空：隐身，受到伤害 ×0.5，每秒治疗（严重度 = 每秒治疗量）。</description>
+    <defaultLabelColor>(0.85,0.85,1)</defaultLabelColor>
+    <maxSeverity>1000</maxSeverity>
+    <stages><li><statFactors><IncomingDamageFactor>0.5</IncomingDamageFactor></statFactors></li></stages>
+    <comps><li Class="HediffCompProperties_Invisibility"><visibleToPlayer>true</visibleToPlayer><affectedByDisruptor>false</affectedByDisruptor></li><li Class="LichPhylactery.VPEBridge.HediffCompProperties_ClassPulse"><interval>60</interval><healFactor>1</healFactor></li></comps>
+  </HediffDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_MartialArts</defName>
+    <label>武艺</label>
+    <description>被动：徒手（或拿短棍）时近战伤害 ×(1 + 0.5 × 战技强度)、近战冷却 ×0.85；不穿利器护甲 ≥ 40% 的衣服时近战闪避 +10% × 战技强度。拳脚走原版近战结算，Isekai 的力量、武器精通照常生效。 需要格斗 6 级。</description>
+    <iconPath>LP/Classes/Monk/MartialArts</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassPassive</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>0</castTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Monk</path><level>1</level><order>1</order>
+        <psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain>
+        <requiredSkillLevel>6</requiredSkillLevel>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_FlurryOfBlows</defName>
+    <label>疾风连击</label>
+    <description>对相邻目标连出 2 拳（战技强度 ≥ 125% 时 3 拳），每拳都是一次完整的近战结算（不判定命中）。 需要格斗 6 级。</description>
+    <iconPath>LP/Classes/Monk/FlurryOfBlows</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_FlurryOfBlows</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <targetingParameters><canTargetPawns>true</canTargetPawns><canTargetHumans>true</canTargetHumans><canTargetAnimals>true</canTargetAnimals><canTargetMechs>true</canTargetMechs><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations></targetingParameters>
+    <range>1.9</range>
+    <requireLineOfSight>true</requireLineOfSight>
+    <castTime>0</castTime>
+    <cooldownTime>600</cooldownTime>
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Monk</path><level>1</level><order>2</order>
+        <psyfocusCost>0.05</psyfocusCost><entropyGain>4</entropyGain>
+        <requiredSkillLevel>6</requiredSkillLevel>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_DeflectMissiles</defName>
+    <label>拨挡箭矢</label>
+    <description>30 秒 × 战技强度：每发远程攻击的伤害减少 10 × 战技强度 × 心灵敏感度，减到 0 时整发拨开。 需要格斗 9 级。</description>
+    <iconPath>LP/Classes/Monk/DeflectMissiles</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_DeflectMissiles</abilityClass>
+    <targetMode>Self</targetMode>
+    <power>10</power>
+    <powerStatFactors><LP_MartialPower>1</LP_MartialPower></powerStatFactors>
+    <durationTime>1800</durationTime>
+    <durationTimeStatFactors><LP_MartialPower>1</LP_MartialPower></durationTimeStatFactors>
+    <castTime>0</castTime>
+    <cooldownTime>3600</cooldownTime>
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Monk</path><level>2</level><order>1</order>
+        <psyfocusCost>0.08</psyfocusCost><entropyGain>6</entropyGain>
+        <requiredSkillLevel>9</requiredSkillLevel>
+        <psychicMode>Yes</psychicMode>
+        <prerequisites><li>LP_MartialArts</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_StunningStrike</defName>
+    <label>震慑拳</label>
+    <description>一拳并以气震荡对方：击晕 2 秒 × 战技强度 × 心灵敏感度（体型 2 以上减半），对机械体也有效。 需要格斗 9 级。</description>
+    <iconPath>LP/Classes/Monk/StunningStrike</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_StunningStrike</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <targetingParameters><canTargetPawns>true</canTargetPawns><canTargetHumans>true</canTargetHumans><canTargetAnimals>true</canTargetAnimals><canTargetMechs>true</canTargetMechs><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations></targetingParameters>
+    <range>1.9</range>
+    <requireLineOfSight>true</requireLineOfSight>
+    <castTime>0</castTime>
+    <cooldownTime>1200</cooldownTime>
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Monk</path><level>2</level><order>2</order>
+        <psyfocusCost>0.08</psyfocusCost><entropyGain>6</entropyGain>
+        <requiredSkillLevel>9</requiredSkillLevel>
+        <psychicMode>Yes</psychicMode>
+        <prerequisites><li>LP_FlurryOfBlows</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_StepOfTheWind</defName>
+    <label>乘风步</label>
+    <description>20 秒 × 战技强度：移动 ×1.6、近战闪避 +20%。 需要格斗 12 级。</description>
+    <iconPath>LP/Classes/Monk/StepOfTheWind</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_SelfBuff</abilityClass>
+    <targetMode>Self</targetMode>
+    <durationTime>1200</durationTime>
+    <durationTimeStatFactors><LP_MartialPower>1</LP_MartialPower></durationTimeStatFactors>
+    <castTime>0</castTime>
+    <cooldownTime>3600</cooldownTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Monk</path><level>3</level><order>1</order>
+        <psyfocusCost>0.08</psyfocusCost><entropyGain>6</entropyGain>
+        <requiredSkillLevel>12</requiredSkillLevel>
+        <prerequisites><li>LP_DeflectMissiles</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_OpenHand</defName>
+    <label>开掌技</label>
+    <description>一拳把相邻目标击退 3 格（体型 2 以上 1 格）并打倒 1 秒；落点旁的其他敌人各受 6 × 战技强度 钝器伤害。 需要格斗 12 级。</description>
+    <iconPath>LP/Classes/Monk/OpenHand</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_OpenHand</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <targetingParameters><canTargetPawns>true</canTargetPawns><canTargetHumans>true</canTargetHumans><canTargetAnimals>true</canTargetAnimals><canTargetMechs>true</canTargetMechs><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations></targetingParameters>
+    <range>1.9</range>
+    <requireLineOfSight>true</requireLineOfSight>
+    <castTime>0</castTime>
+    <cooldownTime>1800</cooldownTime>
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Monk</path><level>3</level><order>2</order>
+        <psyfocusCost>0.1</psyfocusCost><entropyGain>8</entropyGain>
+        <requiredSkillLevel>12</requiredSkillLevel>
+        <prerequisites><li>LP_StunningStrike</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_DiamondSoul</defName>
+    <label>金刚之躯</label>
+    <description>立刻治疗 20 × 战技强度 × 心灵敏感度，并解除食物中毒或清除 20% 毒素积累；之后 1 小时 × 战技强度 受到伤害 ×0.7、免疫击晕、精神崩溃阈值 −10%。 需要格斗 15 级。</description>
+    <iconPath>LP/Classes/Monk/DiamondSoul</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_DiamondSoul</abilityClass>
+    <targetMode>Self</targetMode>
+    <power>20</power>
+    <powerStatFactors><LP_MartialPower>1</LP_MartialPower></powerStatFactors>
+    <durationTime>2500</durationTime>
+    <durationTimeStatFactors><LP_MartialPower>1</LP_MartialPower></durationTimeStatFactors>
+    <castTime>30</castTime>
+    <cooldownTime>60000</cooldownTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Monk</path><level>4</level><order>1</order>
+        <psyfocusCost>0.15</psyfocusCost><entropyGain>12</entropyGain>
+        <requiredSkillLevel>15</requiredSkillLevel>
+        <psychicMode>Yes</psychicMode>
+        <prerequisites><li>LP_StepOfTheWind</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_QuiveringPalm</defName>
+    <label>颤心掌</label>
+    <description>一拳在对方体内种下颤心，3 秒后爆发：躯干受 40 × 战技强度 × 心灵敏感度 钝器伤害（无视一半护甲）；巨人或体型 3 以上减半。 需要格斗 15 级。</description>
+    <iconPath>LP/Classes/Monk/QuiveringPalm</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_QuiveringPalm</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <targetingParameters><canTargetPawns>true</canTargetPawns><canTargetHumans>true</canTargetHumans><canTargetAnimals>true</canTargetAnimals><canTargetMechs>true</canTargetMechs><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations></targetingParameters>
+    <range>1.9</range>
+    <requireLineOfSight>true</requireLineOfSight>
+    <power>40</power>
+    <powerStatFactors><LP_MartialPower>1</LP_MartialPower></powerStatFactors>
+    <castTime>0</castTime>
+    <cooldownTime>2500</cooldownTime>
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Monk</path><level>4</level><order>2</order>
+        <psyfocusCost>0.15</psyfocusCost><entropyGain>15</entropyGain>
+        <requiredSkillLevel>15</requiredSkillLevel>
+        <psychicMode>Yes</psychicMode>
+        <prerequisites><li>LP_OpenHand</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_EmptyBody</defName>
+    <label>空灵之身</label>
+    <description>30 秒 × 战技强度：隐身（敌人无法锁定）、受到伤害 ×0.5、每秒治疗 1 × 战技强度 × 心灵敏感度。 需要格斗 18 级。</description>
+    <iconPath>LP/Classes/Monk/EmptyBody</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_SelfPowerBuff</abilityClass>
+    <targetMode>Self</targetMode>
+    <power>1</power>
+    <powerStatFactors><LP_MartialPower>1</LP_MartialPower></powerStatFactors>
+    <durationTime>1800</durationTime>
+    <durationTimeStatFactors><LP_MartialPower>1</LP_MartialPower></durationTimeStatFactors>
+    <castTime>30</castTime>
+    <cooldownTime>120000</cooldownTime>
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Monk</path><level>5</level><order>1</order>
+        <psyfocusCost>0.35</psyfocusCost><entropyGain>25</entropyGain>
+        <requiredSkillLevel>18</requiredSkillLevel>
+        <psychicMode>Yes</psychicMode>
+        <prerequisites><li>LP_DiamondSoul</li><li>LP_QuiveringPalm</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+</Defs>

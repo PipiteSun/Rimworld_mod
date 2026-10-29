@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- ==================== 巨魔血（余烬氏族、黑网收购） ==================== -->
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_TrollBlood</defName>
+    <label>巨魔血</label>
+    <description>从巨魔身上抽出的一瓶暗绿色血液，离体后仍在缓慢蠕动。火巨人用它淬火，黑网商人说它能卖给想要长生的人。\n\n可以对巨魔做“抽取巨魔血”手术获得；巨魔很快就能把血补回来。</description>
+    <graphicData>
+      <texPath>Factions/Items/TrollBlood</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <stackLimit>25</stackLimit>
+    <statBases>
+      <MarketValue>45</MarketValue>
+      <Mass>0.2</Mass>
+      <DeteriorationRate>2</DeteriorationRate>
+      <Flammability>0.5</Flammability>
+    </statBases>
+    <thingCategories>
+      <li>ItemsMisc</li>
+    </thingCategories>
+    <tradeability>All</tradeability>
+    <tradeTags>
+      <li>LP_TrollBlood</li>
+    </tradeTags>
+    <healthAffectsPrice>false</healthAffectsPrice>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryFlesh">
+    <defName>LP_ExtractTrollBlood</defName>
+    <label>抽取巨魔血</label>
+    <description>从巨魔身上抽出两瓶巨魔血。会造成一些失血，但巨魔的血很快就能补回来。只能对巨魔做。</description>
+    <workerClass>LichPhylactery.Recipe_ExtractTrollBlood</workerClass>
+    <jobString>正在抽取巨魔血。</jobString>
+    <workAmount>500</workAmount>
+    <hideBodyPartNames>true</hideBodyPartNames>
+    <targetsBodyPart>false</targetsBodyPart>
+    <isViolation>true</isViolation>
+    <anesthetize>false</anesthetize>
+    <uiIconThing>LP_TrollBlood</uiIconThing>
+    <recipeUsers>
+      <li>Human</li>
+    </recipeUsers>
+    <descriptionHyperlinks>
+      <ThingDef>LP_TrollBlood</ThingDef>
+    </descriptionHyperlinks>
+  </RecipeDef>
+
+  <!-- ==================== 费伦拓荒同盟的四种商队 ==================== -->
+
+  <TraderKindDef>
+    <defName>LP_Caravan_DwarfSmith</defName>
+    <label>矮人铁匠</label>
+    <commonality>1</commonality>
+    <stockGenerators>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Silver</thingDef>
+        <countRange>800~1300</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Steel</thingDef>
+        <countRange>250~600</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Plasteel</thingDef>
+        <countRange>-20~40</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Beer</thingDef>
+        <countRange>40~90</countRange>
+      </li>
+      <li Class="StockGenerator_Category">
+        <categoryDef>WeaponsMelee</categoryDef>
+        <maxTechLevelGenerate>Medieval</maxTechLevelGenerate>
+        <thingDefCountRange>4~6</thingDefCountRange>
+        <countRange>1~2</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Apparel_PlateArmor</thingDef>
+        <countRange>1~2</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Apparel_SimpleHelmet</thingDef>
+        <countRange>1~3</countRange>
+      </li>
+      <li Class="StockGenerator_BuyExpensiveSimple" />
+      <li Class="StockGenerator_BuyTradeTag"><tag>Art</tag></li>
+    </stockGenerators>
+    <modExtensions>
+      <li Class="LichPhylactery.TraderGroupExtension">
+        <traderKind>LP_FC_DwarfSmith</traderKind>
+      </li>
+    </modExtensions>
+  </TraderKindDef>
+
+  <TraderKindDef>
+    <defName>LP_Caravan_ElfHerbalist</defName>
+    <label>精灵草药商</label>
+    <commonality>1</commonality>
+    <stockGenerators>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Silver</thingDef>
+        <countRange>700~1100</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>MedicineHerbal</thingDef>
+        <countRange>25~50</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Bow_Great</thingDef>
+        <countRange>1~2</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Bow_Recurve</thingDef>
+        <countRange>1~3</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef" MayRequire="Ludeon.RimWorld.Biotech">
+        <thingDef>PoluxSeed</thingDef>
+        <countRange>-3~1</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Cloth</thingDef>
+        <countRange>80~200</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Dye</thingDef>
+        <countRange>15~30</countRange>
+      </li>
+      <li Class="StockGenerator_Category">
+        <categoryDef>FoodRaw</categoryDef>
+        <thingDefCountRange>3~4</thingDefCountRange>
+        <totalPriceRange>300~500</totalPriceRange>
+        <excludedCategories>
+          <li>EggsFertilized</li>
+        </excludedCategories>
+      </li>
+      <li Class="StockGenerator_BuyExpensiveSimple" />
+      <li Class="StockGenerator_BuyTradeTag"><tag>Art</tag></li>
+    </stockGenerators>
+    <modExtensions>
+      <li Class="LichPhylactery.TraderGroupExtension">
+        <traderKind>LP_FC_ElfHerbalist</traderKind>
+      </li>
+    </modExtensions>
+  </TraderKindDef>
+
+  <TraderKindDef>
+    <defName>LP_Caravan_ChurchPriest</defName>
+    <label>教会牧师</label>
+    <commonality>1</commonality>
+    <stockGenerators>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Silver</thingDef>
+        <countRange>600~1000</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>MedicineHerbal</thingDef>
+        <countRange>20~40</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>MedicineIndustrial</thingDef>
+        <countRange>8~20</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Penoxycyline</thingDef>
+        <countRange>5~12</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>MealSurvivalPack</thingDef>
+        <countRange>10~30</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Apparel_Robe</thingDef>
+        <countRange>1~3</countRange>
+      </li>
+      <li Class="StockGenerator_BuyExpensiveSimple" />
+      <li Class="StockGenerator_BuyTradeTag"><tag>Art</tag></li>
+    </stockGenerators>
+    <modExtensions>
+      <li Class="LichPhylactery.TraderGroupExtension">
+        <traderKind>LP_FC_ChurchPriest</traderKind>
+      </li>
+    </modExtensions>
+  </TraderKindDef>
+
+  <TraderKindDef>
+    <defName>LP_Caravan_FaerunGoods</defName>
+    <label>同盟商队</label>
+    <commonality>1.5</commonality>
+    <stockGenerators>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Silver</thingDef>
+        <countRange>800~1300</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>WoodLog</thingDef>
+        <countRange>150~400</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Cloth</thingDef>
+        <countRange>100~300</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Pemmican</thingDef>
+        <countRange>150~300</countRange>
+      </li>
+      <li Class="StockGenerator_Category">
+        <categoryDef>FoodRaw</categoryDef>
+        <thingDefCountRange>3~4</thingDefCountRange>
+        <totalPriceRange>300~600</totalPriceRange>
+        <excludedCategories>
+          <li>EggsFertilized</li>
+        </excludedCategories>
+      </li>
+      <li Class="StockGenerator_MarketValue">
+        <tradeTag>BasicClothing</tradeTag>
+        <countRange>5~7</countRange>
+        <maxTechLevelGenerate>Medieval</maxTechLevelGenerate>
+      </li>
+      <li Class="StockGenerator_Animals">
+        <maxWildness>0.70</maxWildness>
+        <tradeTagsSell>
+          <li>AnimalFarm</li>
+        </tradeTagsSell>
+        <tradeTagsBuy>
+          <li>AnimalExotic</li>
+        </tradeTagsBuy>
+        <kindCountRange>1~2</kindCountRange>
+        <countRange>2~4</countRange>
+      </li>
+      <li Class="StockGenerator_BuyExpensiveSimple" />
+      <li Class="StockGenerator_BuyTradeTag"><tag>Art</tag></li>
+      <li Class="StockGenerator_BuyTradeTag"><tag>MusicalInstrument</tag></li>
+    </stockGenerators>
+    <modExtensions>
+      <li Class="LichPhylactery.TraderGroupExtension">
+        <traderKind>LP_FC_Trader</traderKind>
+      </li>
+    </modExtensions>
+  </TraderKindDef>
+
+  <!-- ==================== 塞伊远征军 ==================== -->
+
+  <TraderKindDef>
+    <defName>LP_Caravan_RedRobe</defName>
+    <label>红袍商人</label>
+    <commonality>1</commonality>
+    <stockGenerators>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Silver</thingDef>
+        <countRange>800~1200</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Gold</thingDef>
+        <countRange>20~60</countRange>
+      </li>
+      <li Class="StockGenerator_Category">
+        <categoryDef>WeaponsMelee</categoryDef>
+        <maxTechLevelGenerate>Medieval</maxTechLevelGenerate>
+        <thingDefCountRange>3~4</thingDefCountRange>
+        <countRange>1~1</countRange>
+      </li>
+      <li Class="StockGenerator_Category">
+        <categoryDef>Drugs</categoryDef>
+        <maxTechLevelGenerate>Industrial</maxTechLevelGenerate>
+      </li>
+      <li Class="StockGenerator_Slaves">
+        <respectPopulationIntent>true</respectPopulationIntent>
+      </li>
+      <!-- 1.30.0：霜巨人掠夺者带回来的冬狼皮，偶尔还有一只冬狼幼崽（25%）。 -->
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>LP_Leather_WinterWolf</thingDef>
+        <countRange>40~120</countRange>
+      </li>
+      <li Class="LichPhylactery.StockGenerator_WinterWolfPup">
+        <chance>0.25</chance>
+      </li>
+      <li Class="StockGenerator_BuyExpensiveSimple" />
+      <li Class="StockGenerator_BuySlaves" />
+      <li Class="StockGenerator_BuyTradeTag"><tag>Art</tag></li>
+    </stockGenerators>
+  </TraderKindDef>
+
+  <!-- ==================== 余烬氏族：火巨人铁匠 ==================== -->
+
+  <TraderKindDef>
+    <defName>LP_Caravan_GiantSmith</defName>
+    <label>火巨人铁匠</label>
+    <commonality>1</commonality>
+    <modExtensions>
+      <li Class="LichPhylactery.TraderSellPriceExtension" />
+    </modExtensions>
+    <stockGenerators>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Silver</thingDef>
+        <countRange>900~1400</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Steel</thingDef>
+        <countRange>300~700</countRange>
+      </li>
+      <!-- 熔铁装备（火巨人专用） -->
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>LP_FireGiantMaul</thingDef>
+        <countRange>-1~1</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>LP_FireGiantHelmet</thingDef>
+        <countRange>-1~1</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>LP_FireGiantArmor</thingDef>
+        <countRange>-1~1</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>LP_FireGiantTunic</thingDef>
+        <countRange>0~1</countRange>
+      </li>
+      <!-- 普通体型能用的火巨人锻造品：熔炉锻出的钢制近战武器与板甲 -->
+      <li Class="StockGenerator_Category">
+        <categoryDef>WeaponsMelee</categoryDef>
+        <maxTechLevelGenerate>Medieval</maxTechLevelGenerate>
+        <thingDefCountRange>3~5</thingDefCountRange>
+        <countRange>1~2</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Apparel_PlateArmor</thingDef>
+        <countRange>1~3</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Apparel_SimpleHelmet</thingDef>
+        <countRange>1~3</countRange>
+      </li>
+      <!-- 高价收购巨魔血 -->
+      <li Class="StockGenerator_BuySingleDef">
+        <thingDef>LP_TrollBlood</thingDef>
+        <price>Expensive</price>
+      </li>
+      <li Class="StockGenerator_BuyExpensiveSimple" />
+    </stockGenerators>
+  </TraderKindDef>
+
+  <!-- ==================== 黑网：卖价偏高，收价偏低 ==================== -->
+
+  <TraderKindDef>
+    <defName>LP_Caravan_BlackNetwork</defName>
+    <label>黑网商队</label>
+    <commonality>1</commonality>
+    <modExtensions>
+      <li Class="LichPhylactery.TraderSellPriceExtension">
+        <defaultSellPrice>Cheap</defaultSellPrice>
+      </li>
+    </modExtensions>
+    <requestable>false</requestable>
+    <stockGenerators>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Silver</thingDef>
+        <countRange>1200~2000</countRange>
+      </li>
+      <!-- 奴隶 -->
+      <li Class="StockGenerator_Slaves">
+        <respectPopulationIntent>false</respectPopulationIntent>
+        <countRange>1~3</countRange>
+        <price>Expensive</price>
+      </li>
+      <!-- 毒药类药物 -->
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Yayo</thingDef>
+        <countRange>10~25</countRange>
+        <price>Expensive</price>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Flake</thingDef>
+        <countRange>15~40</countRange>
+        <price>Expensive</price>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>GoJuice</thingDef>
+        <countRange>4~10</countRange>
+        <price>Expensive</price>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Luciferium</thingDef>
+        <countRange>3~10</countRange>
+        <price>Expensive</price>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>LP_PsionicSuppressant</thingDef>
+        <countRange>-2~4</countRange>
+        <price>Expensive</price>
+      </li>
+      <!-- 1.38.0 从塞伊实验池里流出来的原生质凝胶（少量） -->
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>LP_ProtoplasmGel</thingDef>
+        <countRange>-3~6</countRange>
+        <price>Expensive</price>
+      </li>
+      <!-- 走私货 -->
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Gold</thingDef>
+        <countRange>30~90</countRange>
+        <price>Expensive</price>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Jade</thingDef>
+        <countRange>20~60</countRange>
+        <price>Expensive</price>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Neutroamine</thingDef>
+        <countRange>10~30</countRange>
+        <price>Expensive</price>
+      </li>
+      <li Class="StockGenerator_Category">
+        <categoryDef>BodyPartsBionic</categoryDef>
+        <thingDefCountRange>-1~2</thingDefCountRange>
+        <countRange>1~1</countRange>
+        <price>Expensive</price>
+      </li>
+      <li Class="StockGenerator_Techprints">
+        <countChances>
+          <li>
+            <count>1</count>
+            <chance>0.5</chance>
+          </li>
+        </countChances>
+      </li>
+      <!-- 收购：人体器官、巨魔血、夺心魔相关物品，以及其他贵重品（压价） -->
+      <li Class="StockGenerator_Category">
+        <categoryDef>BodyPartsNatural</categoryDef>
+        <thingDefCountRange>0~0</thingDefCountRange>
+        <price>Cheap</price>
+      </li>
+      <li Class="StockGenerator_BuySingleDef">
+        <thingDef>LP_TrollBlood</thingDef>
+        <price>Cheap</price>
+      </li>
+      <li Class="StockGenerator_BuySingleDef">
+        <thingDef>LP_Tadpole</thingDef>
+        <price>Cheap</price>
+      </li>
+      <li Class="StockGenerator_BuySingleDef">
+        <thingDef>LP_BrainJar</thingDef>
+        <price>Cheap</price>
+      </li>
+      <li Class="StockGenerator_BuySlaves">
+        <price>Cheap</price>
+      </li>
+      <li Class="StockGenerator_BuyExpensiveSimple">
+        <price>Cheap</price>
+      </li>
+      <li Class="StockGenerator_BuyTradeTag"><tag>Art</tag><price>Cheap</price></li>
+      <li Class="StockGenerator_BuyTradeTag"><tag>ExoticMisc</tag><price>Cheap</price></li>
+    </stockGenerators>
+  </TraderKindDef>
+
+</Defs>

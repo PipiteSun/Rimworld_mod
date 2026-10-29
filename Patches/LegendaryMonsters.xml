@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.52.1 传奇怪：驱散粉尘也能解除眼魔的石化；费伦同盟杂货商队卖眼魔巢穴情报（最高冒险者等级 ≥16，10%）和无尽墓穴情报（≥24，15%）。 -->
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/HediffDef[defName="LP_MagicDispelled"]/modExtensions/li[@Class="LichPhylactery.DispelExtension"]/removeHediffs</xpath>
+    <value>
+      <li>LP_BeholderPetrified</li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TraderKindDef[defName="LP_Caravan_FaerunGoods"]/stockGenerators</xpath>
+    <value>
+      <li Class="LichPhylactery.StockGenerator_MonsterIntel"><thing>LP_BeholderLairMap</thing><kind>beholder</kind><minLevel>16</minLevel><chance>0.1</chance></li>
+      <li Class="LichPhylactery.StockGenerator_MonsterIntel"><thing>LP_TombMap</thing><kind>demilich</kind><minLevel>24</minLevel><chance>0.15</chance></li>
+    </value>
+  </Operation>
+</Patch>

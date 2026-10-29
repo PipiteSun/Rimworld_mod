@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- 1.63.0：巨魔尸体过滤。火葬场账单里取消勾选“非巨魔尸体”就只烧巨魔。判断和巨魔复活规则相同（激活的巨魔再生基因）。 -->
+  <SpecialThingFilterDef>
+    <defName>LP_AllowTrollCorpses</defName>
+    <label>巨魔尸体</label>
+    <description>带巨魔再生基因的尸体。不烧掉或火化，它们会复活。</description>
+    <parentCategory>CorpsesHumanlike</parentCategory>
+    <allowedByDefault>true</allowedByDefault>
+    <saveKey>lpAllowTrollCorpses</saveKey>
+    <workerClass>LichPhylactery.SpecialThingFilterWorker_TrollCorpse</workerClass>
+  </SpecialThingFilterDef>
+  <SpecialThingFilterDef>
+    <defName>LP_AllowNonTrollCorpses</defName>
+    <label>非巨魔尸体</label>
+    <description>除巨魔以外的所有尸体。火化账单里取消勾选这一项，就只烧巨魔。</description>
+    <parentCategory>Corpses</parentCategory>
+    <allowedByDefault>true</allowedByDefault>
+    <saveKey>lpAllowNonTrollCorpses</saveKey>
+    <workerClass>LichPhylactery.SpecialThingFilterWorker_NonTrollCorpse</workerClass>
+  </SpecialThingFilterDef>
+  <!-- 1.63.0：伪装中的魅魔 / 梦魔被识破时，周围的殖民者“被欺骗”。 -->
+  <ThoughtDef>
+    <defName>LP_Deceived</defName>
+    <thoughtClass>Thought_MemorySocial</thoughtClass>
+    <durationDays>5</durationDays>
+    <stackLimit>1</stackLimit>
+    <stackLimitForSameOtherPawn>1</stackLimitForSameOtherPawn>
+    <stages>
+      <li>
+        <label>被欺骗</label>
+        <description>那个人一直顶着假面孔混在我们中间。</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+        <baseOpinionOffset>-10</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <!-- 1.63.0：夺心魔吞噬眼魔脑髓 -->
+  <HediffDef>
+    <defName>LP_BeholderInsight</defName>
+    <label>眼魔之识</label>
+    <description>吞下了眼魔的脑髓，十只眼睛看过的东西还在脑子里打转：心灵敏感度 +20%，能力冷却 -20%。10 天后消退。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <defaultLabelColor>(0.75, 0.55, 0.95)</defaultLabelColor>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>600000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+    </comps>
+    <stages><li><statOffsets><PsychicSensitivity>0.2</PsychicSensitivity></statOffsets></li></stages>
+  </HediffDef>
+</Defs>

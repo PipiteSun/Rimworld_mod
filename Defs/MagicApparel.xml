@@ -1,0 +1,714 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.45.1 魔法盔甲衣服（按《DND盔甲与衣服构思》）：34 件（构思的 32 条里余烬奴兵制服和吟游诗人装各含一顶帽子），7 个套装，派系换装。
+     双色：CutoutComplex + _m 遮罩（红=材料色，绿=纹章色）；纹章色由 HeraldryExtension 在穿上时按意识形态色 / 派系色给出（Source/MagicApparel.cs）。
+     自建披风层 LP_Cape：画在外层之上、腰带和头盔之下。衣甲不受器械师门槛。 -->
+<Defs>
+  <ApparelLayerDef>
+    <defName>LP_Cape</defName>
+    <label>披风</label>
+    <drawOrder>250</drawOrder>
+  </ApparelLayerDef>
+
+  <!-- ===== 基类 ===== -->
+  <ThingDef Name="LP_DNDClothBase" ParentName="ApparelMakeableBase" Abstract="True">
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>Apparel</li></thingCategories>
+    <tradeTags Inherit="False"><li>LP_DNDApparel</li><li>Clothing</li></tradeTags>
+    <graphicData><graphicClass>Graphic_Single</graphicClass><shaderType>CutoutComplex</shaderType></graphicData>
+    <apparel><useWornGraphicMask>true</useWornGraphicMask></apparel>
+    <modExtensions><li Class="LichPhylactery.HeraldryExtension" /></modExtensions>
+  </ThingDef>
+  <ThingDef Name="LP_DNDArmorBase" ParentName="ArmorSmithableBase" Abstract="True">
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <tradeTags Inherit="False"><li>LP_DNDArmor</li><li>Armor</li></tradeTags>
+    <graphicData><graphicClass>Graphic_Single</graphicClass><shaderType>CutoutComplex</shaderType></graphicData>
+    <recipeMaker><recipeUsers Inherit="False"><li>LP_RuneAnvil</li></recipeUsers><unfinishedThingDef>UnfinishedMetallicTechArmor</unfinishedThingDef></recipeMaker>
+    <apparel><useWornGraphicMask>true</useWornGraphicMask><defaultOutfitTags><li>Soldier</li></defaultOutfitTags></apparel>
+    <modExtensions><li Class="LichPhylactery.HeraldryExtension" /></modExtensions>
+  </ThingDef>
+  <ThingDef Name="LP_DNDHelmBase" ParentName="LP_DNDArmorBase" Abstract="True">
+    <thingCategories Inherit="False"><li>ArmorHeadgear</li></thingCategories>
+    <recipeMaker><unfinishedThingDef IsNull="True" /></recipeMaker>
+    <apparel><parentTagDef>ApparelHead</parentTagDef><layers><li>Overhead</li></layers></apparel>
+  </ThingDef>
+  <ThingDef Name="LP_DNDHatBase" ParentName="LP_DNDClothBase" Abstract="True">
+    <thingCategories Inherit="False"><li>Headgear</li></thingCategories>
+    <apparel><parentTagDef>ApparelHead</parentTagDef><layers><li>Overhead</li></layers><bodyPartGroups><li>UpperHead</li></bodyPartGroups></apparel>
+  </ThingDef>
+
+  <!-- ==================== 骑士与圣武士 ==================== -->
+  <ThingDef ParentName="LP_DNDArmorBase">
+    <defName>LP_PaladinPlate</defName>
+    <label>圣武士板甲</label>
+    <description>同盟骑士团的亮钢板甲：圆润外卷的大肩甲，胸甲中脊起棱、胸口一枚八芒旭日浮雕，腰下垂一片到膝的罩袍前摆（罩袍是纹章色）。护甲与移速惩罚同原版板甲。“圣盾之誓”：受到的死灵伤害-20%。\n\n套装“白银骑士团”（圣武士板甲 + 誓约巨盔 + 骑士披风）：能力“坚守誓约”。</description>
+    <graphicData><texPath>LP/Apparel/PaladinPlate/PaladinPlate_Icon</texPath></graphicData>
+    <stuffCategories><li>Metallic</li></stuffCategories>
+    <costStuffCount>150</costStuffCount>
+    <costList><Gold>10</Gold></costList>
+    <statBases><WorkToMake>38000</WorkToMake><MaxHitPoints>290</MaxHitPoints><Mass>15</Mass><StuffEffectMultiplierArmor>0.9</StuffEffectMultiplierArmor><StuffEffectMultiplierInsulation_Cold>1</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0</StuffEffectMultiplierInsulation_Heat><EquipDelay>15</EquipDelay></statBases>
+    <equippedStatOffsets><MoveSpeed>-0.8</MoveSpeed></equippedStatOffsets>
+    <recipeMaker><researchPrerequisite>LP_Research_KnightForging</researchPrerequisite><skillRequirements><Crafting>7</Crafting></skillRequirements><displayPriority>460</displayPriority></recipeMaker>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li><li>Legs</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/PaladinPlate/PaladinPlate</wornGraphicPath>
+      <layers><li>Middle</li><li>Shell</li></layers>
+      <tags><li>LP_KnightGear</li></tags>
+    </apparel>
+    <comps><li Class="LichPhylactery.CompProperties_ApparelSetPiece" /></comps>
+    <modExtensions><li Class="LichPhylactery.ItemDamageFactors"><factor>0.8</factor><damageDefs><li>LP_Necrotic</li></damageDefs><keywords><li>Necro</li></keywords></li></modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDHelmBase">
+    <defName>LP_GreatHelmOath</defName>
+    <label>誓约巨盔</label>
+    <description>桶形巨盔，十字形观察缝，侧面一圈金边，盔顶插一根纹章色的长羽饰（背后垂到后颈）。头部护甲约为原版先进头盔的80%；全盔看不清，瞄准时间+5%。牛头人的角会穿过盔顶。</description>
+    <graphicData><texPath>LP/Apparel/GreatHelmOath/GreatHelmOath_Icon</texPath></graphicData>
+    <stuffCategories><li>Metallic</li></stuffCategories>
+    <costStuffCount>50</costStuffCount>
+    <statBases><WorkToMake>6000</WorkToMake><MaxHitPoints>120</MaxHitPoints><Mass>2.5</Mass><StuffEffectMultiplierArmor>0.56</StuffEffectMultiplierArmor><StuffEffectMultiplierInsulation_Cold>0.15</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0</StuffEffectMultiplierInsulation_Heat><EquipDelay>2</EquipDelay></statBases>
+    <equippedStatOffsets><AimingDelayFactor>0.05</AimingDelayFactor></equippedStatOffsets>
+    <recipeMaker><researchPrerequisite>LP_Research_KnightForging</researchPrerequisite><skillRequirements><Crafting>5</Crafting></skillRequirements><displayPriority>461</displayPriority></recipeMaker>
+    <apparel>
+      <bodyPartGroups><li>FullHead</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/GreatHelmOath/GreatHelmOath</wornGraphicPath>
+      <renderSkipFlags><li>Hair</li><li>Beard</li></renderSkipFlags>
+      <tags><li>LP_KnightGear</li></tags>
+    </apparel>
+    <comps><li Class="LichPhylactery.CompProperties_ApparelSetPiece" /></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDClothBase">
+    <defName>LP_KnightMantle</defName>
+    <label>骑士披风</label>
+    <description>从双肩垂到脚踝的长披风，两枚圆扣针固定在肩上；外面纹章色、里衬深红，背面正中绣旭日。挂在自己的“披风”层，可以套在板甲外面。几乎没有护甲（锐器+4%），保暖+4℃。“旗帜”：穿戴者5格内的友军精神崩溃阈值-2%（多面旗帜不叠加）。</description>
+    <graphicData><texPath>LP/Apparel/KnightMantle/KnightMantle_Icon</texPath></graphicData>
+    <stuffCategories><li>Fabric</li></stuffCategories>
+    <costStuffCount>60</costStuffCount>
+    <costList><Gold>5</Gold></costList>
+    <statBases><WorkToMake>6000</WorkToMake><MaxHitPoints>120</MaxHitPoints><Mass>1.5</Mass><ArmorRating_Sharp>0.04</ArmorRating_Sharp><Insulation_Cold>4</Insulation_Cold><StuffEffectMultiplierArmor>0</StuffEffectMultiplierArmor><StuffEffectMultiplierInsulation_Cold>0.15</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0.1</StuffEffectMultiplierInsulation_Heat><Beauty>2</Beauty><EquipDelay>2</EquipDelay></statBases>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Shoulders</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/KnightMantle/KnightMantle</wornGraphicPath>
+      <layers><li>LP_Cape</li></layers>
+      <tags><li>LP_KnightGear</li></tags>
+    </apparel>
+    <comps><li Class="LichPhylactery.CompProperties_ApparelSetPiece" /></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDArmorBase">
+    <defName>LP_ChainShirt</defName>
+    <label>锁子甲衫</label>
+    <description>灰色链环的及臀甲衣，领口和袖口包着皮边。锐器护甲约为原版防弹背心的70%，钝器偏低；没有移速惩罚，工作速度-3%。中层，外面还能再套斗篷、袍子。普通人最便宜的中世纪中甲。</description>
+    <graphicData><texPath>LP/Apparel/ChainShirt/ChainShirt_Icon</texPath></graphicData>
+    <stuffCategories><li>Metallic</li></stuffCategories>
+    <costStuffCount>60</costStuffCount>
+    <statBases><WorkToMake>12000</WorkToMake><MaxHitPoints>180</MaxHitPoints><Mass>6</Mass><StuffEffectMultiplierArmor>0.78</StuffEffectMultiplierArmor><StuffEffectMultiplierInsulation_Cold>0.3</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0</StuffEffectMultiplierInsulation_Heat><EquipDelay>4</EquipDelay></statBases>
+    <equippedStatOffsets><WorkSpeedGlobal>-0.03</WorkSpeedGlobal></equippedStatOffsets>
+    <recipeMaker><researchPrerequisite>LP_Research_KnightForging</researchPrerequisite><skillRequirements><Crafting>4</Crafting></skillRequirements><displayPriority>462</displayPriority></recipeMaker>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Shoulders</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/ChainShirt/ChainShirt</wornGraphicPath>
+      <layers><li>Middle</li></layers>
+      <tags><li>LP_ChainShirt</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- ==================== 矮人 ==================== -->
+  <ThingDef ParentName="LP_DNDArmorBase">
+    <defName>LP_DwarvenRuneplate</defName>
+    <label>矮人符文重铠</label>
+    <description>方肩、粗腰、腿甲直到靴面的矮人重铠，每块甲片包着青铜金边，胸口三颗冰蓝符文。钝器护甲比原版板甲高15%，锐器相同；矮人穿着时移速惩罚减半；头顶有厚岩顶（山里的房间）时锐钝护甲各+10%。只有矮人能在符文铁砧打造。</description>
+    <graphicData><texPath>LP/Apparel/DwarvenRuneplate/DwarvenRuneplate_Icon</texPath></graphicData>
+    <stuffCategories><li>Metallic</li></stuffCategories>
+    <costStuffCount>180</costStuffCount>
+    <costList><Gold>15</Gold></costList>
+    <statBases><WorkToMake>42000</WorkToMake><MaxHitPoints>320</MaxHitPoints><Mass>17</Mass><ArmorRating_Blunt>0.06</ArmorRating_Blunt><StuffEffectMultiplierArmor>0.9</StuffEffectMultiplierArmor><StuffEffectMultiplierInsulation_Cold>1</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0</StuffEffectMultiplierInsulation_Heat><EquipDelay>16</EquipDelay></statBases>
+    <equippedStatOffsets><MoveSpeed>-0.8</MoveSpeed></equippedStatOffsets>
+    <recipeMaker><researchPrerequisite>LP_Research_LegendaryArmor</researchPrerequisite><skillRequirements><Crafting>8</Crafting></skillRequirements><displayPriority>463</displayPriority></recipeMaker>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li><li>Legs</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/DwarvenRuneplate/DwarvenRuneplate</wornGraphicPath>
+      <layers><li>Middle</li><li>Shell</li></layers>
+      <tags><li>LP_DwarfArmor</li></tags>
+    </apparel>
+    <comps><li Class="LichPhylactery.CompProperties_WornHediff"><hediff>LP_MA_MountainRunes</hediff></li></comps>
+    <modExtensions><li Class="LichPhylactery.RaceGearExtension"><race>Dwarf</race></li></modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDHelmBase">
+    <defName>LP_BeardedHelm</defName>
+    <label>胡须面甲盔</label>
+    <description>圆顶盔加一块铸成辫子大胡子形状的金属面甲（胡子是青铜金色），两根辫梢各挂一枚小铁环。戴上后真胡子藏在面甲后面。头部护甲约为原版先进头盔的90%；社交影响-5%（看不到嘴）。只有矮人能打造。</description>
+    <graphicData><texPath>LP/Apparel/BeardedHelm/BeardedHelm_Icon</texPath></graphicData>
+    <stuffCategories><li>Metallic</li></stuffCategories>
+    <costStuffCount>50</costStuffCount>
+    <costList><Gold>5</Gold></costList>
+    <statBases><WorkToMake>7000</WorkToMake><MaxHitPoints>130</MaxHitPoints><Mass>2.6</Mass><Beauty>1</Beauty><StuffEffectMultiplierArmor>0.63</StuffEffectMultiplierArmor><StuffEffectMultiplierInsulation_Cold>0.15</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0</StuffEffectMultiplierInsulation_Heat><EquipDelay>2</EquipDelay></statBases>
+    <equippedStatOffsets><SocialImpact>-0.05</SocialImpact></equippedStatOffsets>
+    <recipeMaker><researchPrerequisite>LP_Research_LegendaryArmor</researchPrerequisite><skillRequirements><Crafting>6</Crafting></skillRequirements><displayPriority>464</displayPriority></recipeMaker>
+    <apparel>
+      <bodyPartGroups><li>FullHead</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/BeardedHelm/BeardedHelm</wornGraphicPath>
+      <renderSkipFlags><li>Beard</li><li>Hair</li></renderSkipFlags>
+      <tags><li>LP_DwarfArmor</li></tags>
+    </apparel>
+    <modExtensions><li Class="LichPhylactery.RaceGearExtension"><race>Dwarf</race></li></modExtensions>
+  </ThingDef>
+
+  <!-- ==================== 游侠与游荡者 ==================== -->
+  <ThingDef ParentName="LP_DNDClothBase">
+    <defName>LP_RangerLeathers</defName>
+    <label>游侠皮甲</label>
+    <description>深棕硬皮胸甲，胸前交叉两条挂箭袋的带子，左肩一片单肩甲，腰间系着苔绿布带。狩猎隐匿+20%，瞄准时间-5%；没有移速惩罚。\n\n套装“游侠”（游侠皮甲 + 林行者兜帽斗篷）：驯服成功率×1.15、狩猎隐匿再+15%，野生动物不会主动攻击穿戴者。</description>
+    <graphicData><texPath>LP/Apparel/RangerLeathers/RangerLeathers_Icon</texPath></graphicData>
+    <stuffCategories><li>Leathery</li></stuffCategories>
+    <costStuffCount>70</costStuffCount>
+    <statBases><WorkToMake>9000</WorkToMake><MaxHitPoints>160</MaxHitPoints><Mass>3</Mass><StuffEffectMultiplierArmor>1.1</StuffEffectMultiplierArmor><StuffEffectMultiplierInsulation_Cold>0.4</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0.2</StuffEffectMultiplierInsulation_Heat><EquipDelay>3</EquipDelay></statBases>
+    <equippedStatOffsets><HuntingStealth>0.2</HuntingStealth><AimingDelayFactor>-0.05</AimingDelayFactor></equippedStatOffsets>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Shoulders</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/RangerLeathers/RangerLeathers</wornGraphicPath>
+      <layers><li>Middle</li></layers>
+      <tags><li>LP_RangerGear</li></tags>
+    </apparel>
+    <comps><li Class="LichPhylactery.CompProperties_ApparelSetPiece" /></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDClothBase">
+    <defName>LP_WoodwalkerCloak</defName>
+    <label>林行者兜帽斗篷</label>
+    <description>苔绿到墨绿渐变的长斗篷，下摆剪成锯齿树叶状，兜帽戴起来压到眉上（兜帽算在斗篷里，不占头盔位置）。保暖同原版斗篷；狩猎隐匿+15%；站在树木或灌木丛的格子里时被远程命中-10%。和精灵斗篷不同：这件看的是林子，不是站着不动。</description>
+    <graphicData><texPath>LP/Apparel/WoodwalkerCloak/WoodwalkerCloak_Icon</texPath></graphicData>
+    <stuffCategories><li>Fabric</li><li>Leathery</li></stuffCategories>
+    <costStuffCount>80</costStuffCount>
+    <statBases><WorkToMake>8000</WorkToMake><MaxHitPoints>120</MaxHitPoints><Mass>1.6</Mass><StuffEffectMultiplierArmor>0.2</StuffEffectMultiplierArmor><StuffEffectMultiplierInsulation_Cold>0.55</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0.3</StuffEffectMultiplierInsulation_Heat><EquipDelay>2</EquipDelay></statBases>
+    <equippedStatOffsets><HuntingStealth>0.15</HuntingStealth></equippedStatOffsets>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/WoodwalkerCloak/WoodwalkerCloak</wornGraphicPath>
+      <layers><li>Shell</li></layers>
+      <tags><li>LP_RangerGear</li></tags>
+    </apparel>
+    <comps><li Class="LichPhylactery.CompProperties_ApparelSetPiece" /></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDClothBase">
+    <defName>LP_ShadowweaveCloak</defName>
+    <label>暗影斗篷</label>
+    <description>炭黑色及膝斗篷，高立领遮到鼻子下，里衬暗红；一侧肩上斜搭披肩，腰间画着两把匕首的皮鞘。几乎没有护甲；站在光照低于30%的格子里时被远程命中-20%、移动速度+5%。\n\n套装“影行者”（暗影斗篷 + 游荡者面罩 + 精灵靴）：第一次近战攻击一个还没进入战斗的敌人时伤害×1.5（偷袭，每个目标只算一次）。</description>
+    <graphicData><texPath>LP/Apparel/ShadowweaveCloak/ShadowweaveCloak_Icon</texPath></graphicData>
+    <stuffCategories><li>Fabric</li></stuffCategories>
+    <costStuffCount>70</costStuffCount>
+    <statBases><WorkToMake>8000</WorkToMake><MaxHitPoints>110</MaxHitPoints><Mass>1.2</Mass><StuffEffectMultiplierArmor>0.1</StuffEffectMultiplierArmor><StuffEffectMultiplierInsulation_Cold>0.4</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0.3</StuffEffectMultiplierInsulation_Heat><EquipDelay>2</EquipDelay></statBases>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/ShadowweaveCloak/ShadowweaveCloak</wornGraphicPath>
+      <layers><li>Shell</li></layers>
+      <tags><li>LP_RogueGear</li></tags>
+    </apparel>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_ApparelSetPiece" />
+      <li Class="LichPhylactery.CompProperties_WornHediff"><hediff>LP_MA_Shadowweave</hediff></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDClothBase">
+    <defName>LP_RogueMask</defName>
+    <label>游荡者面罩</label>
+    <description>黑布面罩从鼻梁盖到下巴，眼睛露在外面；和暗影斗篷的立领连成一片。近战命中+3%，社交影响-10%。</description>
+    <graphicData><texPath>LP/Apparel/RogueMask/RogueMask_Icon</texPath></graphicData>
+    <thingCategories Inherit="False"><li>Headgear</li></thingCategories>
+    <stuffCategories><li>Fabric</li></stuffCategories>
+    <costStuffCount>15</costStuffCount>
+    <statBases><WorkToMake>1500</WorkToMake><MaxHitPoints>60</MaxHitPoints><Mass>0.1</Mass><StuffEffectMultiplierArmor>0</StuffEffectMultiplierArmor><StuffEffectMultiplierInsulation_Cold>0</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0</StuffEffectMultiplierInsulation_Heat><EquipDelay>1</EquipDelay></statBases>
+    <equippedStatOffsets><MeleeHitChance>0.03</MeleeHitChance><SocialImpact>-0.1</SocialImpact></equippedStatOffsets>
+    <apparel>
+      <parentTagDef>ApparelHead</parentTagDef>
+      <bodyPartGroups><li>Teeth</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/RogueMask/RogueMask</wornGraphicPath>
+      <layers><li>EyeCover</li></layers>
+      <tags><li>LP_RogueGear</li></tags>
+    </apparel>
+    <comps><li Class="LichPhylactery.CompProperties_ApparelSetPiece" /></comps>
+  </ThingDef>
+
+  <!-- ==================== 法师、牧师与红袍 ==================== -->
+  <ThingDef Name="LP_DNDRobeBase" ParentName="LP_DNDClothBase" Abstract="True">
+    <stuffCategories><li>Fabric</li></stuffCategories>
+    <statBases><MaxHitPoints>130</MaxHitPoints><Mass>2</Mass><StuffEffectMultiplierArmor>0.15</StuffEffectMultiplierArmor><StuffEffectMultiplierInsulation_Cold>0.55</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0.6</StuffEffectMultiplierInsulation_Heat><EquipDelay>3</EquipDelay></statBases>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li><li>Legs</li></bodyPartGroups>
+      <layers><li>Shell</li></layers>
+    </apparel>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDRobeBase">
+    <defName>LP_ArchmageRobe</defName>
+    <label>大法师长袍</label>
+    <description>及地长袍，高领外翻，喇叭袖宽大下垂；领口、袖口、下摆各一圈银白星辰新月刺绣，胸前一条银饰带。主色随布料。护甲很低；心灵敏感度+10%；读卷轴的失误率减半；巫妖穿着时死灵冲击冷却-10%。\n\n套装“大法师”（长袍 + 尖顶法师帽）：每天第一次读卷轴有50%概率不消耗卷轴。</description>
+    <graphicData><texPath>LP/Apparel/ArchmageRobe/ArchmageRobe_Icon</texPath></graphicData>
+    <costStuffCount>100</costStuffCount>
+    <costList><Gold>10</Gold></costList>
+    <statBases><WorkToMake>14000</WorkToMake></statBases>
+    <equippedStatOffsets><PsychicSensitivity>0.1</PsychicSensitivity></equippedStatOffsets>
+    <recipeMaker><researchPrerequisite>LP_Research_ArcaneTailoring</researchPrerequisite><skillRequirements><Crafting>6</Crafting></skillRequirements><displayPriority>465</displayPriority><recipeUsers Inherit="False"><li>LP_ArcaneLoom</li></recipeUsers></recipeMaker>
+    <apparel>
+      <wornGraphicPath>LP/Apparel/ArchmageRobe/ArchmageRobe</wornGraphicPath>
+      <tags><li>LP_MageGear</li></tags>
+    </apparel>
+    <comps><li Class="LichPhylactery.CompProperties_ApparelSetPiece" /></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDHatBase">
+    <defName>LP_WizardHat</defName>
+    <label>尖顶法师帽</label>
+    <description>宽檐尖顶帽，帽尖向后弯折，帽带上一颗银星，高度约有头高的1.3倍。颜色随布料，和长袍同料就成套。心灵敏感度+5%，没有护甲。不遮头发。</description>
+    <graphicData><texPath>LP/Apparel/WizardHat/WizardHat_Icon</texPath></graphicData>
+    <stuffCategories><li>Fabric</li></stuffCategories>
+    <costStuffCount>30</costStuffCount>
+    <statBases><WorkToMake>3000</WorkToMake><MaxHitPoints>60</MaxHitPoints><Mass>0.3</Mass><Beauty>1</Beauty><StuffEffectMultiplierArmor>0</StuffEffectMultiplierArmor><StuffEffectMultiplierInsulation_Cold>0.1</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0.2</StuffEffectMultiplierInsulation_Heat><EquipDelay>1</EquipDelay></statBases>
+    <equippedStatOffsets><PsychicSensitivity>0.05</PsychicSensitivity></equippedStatOffsets>
+    <recipeMaker><researchPrerequisite>LP_Research_ArcaneTailoring</researchPrerequisite><displayPriority>466</displayPriority><recipeUsers Inherit="False"><li>LP_ArcaneLoom</li></recipeUsers></recipeMaker>
+    <apparel>
+      <wornGraphicPath>LP/Apparel/WizardHat/WizardHat</wornGraphicPath>
+      <tags><li>LP_MageGear</li></tags>
+    </apparel>
+    <comps><li Class="LichPhylactery.CompProperties_ApparelSetPiece" /></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDClothBase">
+    <defName>LP_RedWizardRobe</defName>
+    <smeltable>false</smeltable>
+    <label>塞伊红袍</label>
+    <description>正红长袍配黑色宽腰封，下摆和袖口是黑底金线的塞伊锐角符文；外加一件带尖角硬肩的黑披肩（占披风层）。属性同大法师长袍（心灵敏感度+10%、读卷轴失误率减半）；“塞伊的威势”：穿戴者指挥的死灵造物移动速度+10%。费伦拓荒同盟的商队来访时，看到殖民地里有人穿红袍会让同盟好感-5（每次来访只算一次）。不能制作：从塞伊红袍法师身上剥下来。</description>
+    <graphicData><texPath>LP/Apparel/RedWizardRobe/RedWizardRobe_Icon</texPath></graphicData>
+    <recipeMaker IsNull="True" />
+    <statBases><MaxHitPoints>140</MaxHitPoints><Mass>2.2</Mass><MarketValue>650</MarketValue><ArmorRating_Sharp>0.08</ArmorRating_Sharp><ArmorRating_Blunt>0.04</ArmorRating_Blunt><Insulation_Cold>12</Insulation_Cold><Insulation_Heat>6</Insulation_Heat><EquipDelay>3</EquipDelay></statBases>
+    <colorGenerator Class="ColorGenerator_Single"><color>(0.62,0.12,0.12)</color></colorGenerator>
+    <equippedStatOffsets><PsychicSensitivity>0.1</PsychicSensitivity></equippedStatOffsets>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li><li>Legs</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/RedWizardRobe/RedWizardRobe</wornGraphicPath>
+      <layers><li>Shell</li><li>LP_Cape</li></layers>
+      <tags><li>LP_RedRobe</li></tags>
+    </apparel>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDRobeBase">
+    <defName>LP_MorninglordVestments</defName>
+    <label>晨主圣袍</label>
+    <description>象牙白长袍，外罩一条从双肩垂到膝下的金色圣带，末端绣旭日；胸口一枚大旭日圣徽，腰间朱红布带，背后是一大片放射状的金色日芒刺绣。护甲很低；手术成功率+5%、医疗速度+10%；受到的死灵伤害-10%。\n\n套装“晨光”（晨主圣袍 + 战斗牧师胸甲）：能力“驱散亡灵”。</description>
+    <graphicData><texPath>LP/Apparel/MorninglordVestments/MorninglordVestments_Icon</texPath></graphicData>
+    <costStuffCount>90</costStuffCount>
+    <costList><Gold>15</Gold></costList>
+    <statBases><WorkToMake>14000</WorkToMake></statBases>
+    <equippedStatOffsets><MedicalSurgerySuccessChance>0.05</MedicalSurgerySuccessChance><MedicalTendSpeed>0.1</MedicalTendSpeed></equippedStatOffsets>
+    <recipeMaker><researchPrerequisite>LP_Research_ArcaneTailoring</researchPrerequisite><skillRequirements><Crafting>6</Crafting></skillRequirements><displayPriority>467</displayPriority><recipeUsers Inherit="False"><li>LP_ArcaneLoom</li></recipeUsers></recipeMaker>
+    <apparel>
+      <wornGraphicPath>LP/Apparel/MorninglordVestments/MorninglordVestments</wornGraphicPath>
+      <tags><li>LP_ClericGear</li></tags>
+    </apparel>
+    <comps><li Class="LichPhylactery.CompProperties_ApparelSetPiece" /></comps>
+    <modExtensions><li Class="LichPhylactery.ItemDamageFactors"><factor>0.9</factor><damageDefs><li>LP_Necrotic</li></damageDefs><keywords><li>Necro</li></keywords></li></modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDArmorBase">
+    <defName>LP_BattleClericBreastplate</defName>
+    <label>战斗牧师胸甲</label>
+    <description>金边胸甲，胸口凸起一轮旭日；肩上没有甲（由圣袍盖住）。专门叠在晨主圣袍或斗篷里面穿。躯干锐钝护甲约为原版板甲的70%，工作速度-5%。</description>
+    <graphicData><texPath>LP/Apparel/BattleClericBreastplate/BattleClericBreastplate_Icon</texPath></graphicData>
+    <stuffCategories><li>Metallic</li></stuffCategories>
+    <costStuffCount>80</costStuffCount>
+    <costList><Gold>10</Gold></costList>
+    <statBases><WorkToMake>16000</WorkToMake><MaxHitPoints>200</MaxHitPoints><Mass>6</Mass><StuffEffectMultiplierArmor>0.63</StuffEffectMultiplierArmor><StuffEffectMultiplierInsulation_Cold>0.3</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0</StuffEffectMultiplierInsulation_Heat><EquipDelay>5</EquipDelay></statBases>
+    <equippedStatOffsets><WorkSpeedGlobal>-0.05</WorkSpeedGlobal></equippedStatOffsets>
+    <recipeMaker><researchPrerequisite>LP_Research_KnightForging</researchPrerequisite><skillRequirements><Crafting>5</Crafting></skillRequirements><displayPriority>468</displayPriority></recipeMaker>
+    <apparel>
+      <bodyPartGroups><li>Torso</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/BattleClericBreastplate/BattleClericBreastplate</wornGraphicPath>
+      <layers><li>Middle</li></layers>
+      <tags><li>LP_ClericGear</li></tags>
+    </apparel>
+    <comps><li Class="LichPhylactery.CompProperties_ApparelSetPiece" /></comps>
+  </ThingDef>
+
+  <!-- ==================== 死亡骑士、巫妖与亡灵 ==================== -->
+  <ThingDef ParentName="LP_DNDArmorBase">
+    <defName>LP_DeathknightPlate</defName>
+    <label>死亡骑士铠甲</label>
+    <description>发黑的铁色板甲，肩甲是向上翘起的锯齿尖刺，左肩挂一个小骷髅饰，胸甲中间的裂纹里透出幽绿；背后一件破成几条的黑披风（占披风层）。护甲为原版板甲的110%；寒冷伤害-20%；近战攻击穿戴者的敌人每次有10%概率陷入恐惧（牛头人、象人和不受心灵影响的不会）。不是亡灵的人穿着心情-3（“冰冷的铠甲在低语”）。只能由巫妖在死灵仪式台锻造（钢150 + 命匣200献祭经验）。\n\n套装“死亡骑士”（铠甲 + 亡魂巨盔）：倒地时以30%生命“再站起来”，每3天一次；巫妖本人穿不触发。</description>
+    <graphicData><texPath>LP/Apparel/DeathknightPlate/DeathknightPlate_Icon</texPath></graphicData>
+    <recipeMaker IsNull="True" />
+    <stuffCategories><li>Metallic</li></stuffCategories>
+    <costStuffCount>150</costStuffCount>
+    <statBases><MaxHitPoints>300</MaxHitPoints><Mass>16</Mass><MarketValue>2200</MarketValue><StuffEffectMultiplierArmor>0.99</StuffEffectMultiplierArmor><StuffEffectMultiplierInsulation_Cold>1</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0</StuffEffectMultiplierInsulation_Heat><EquipDelay>15</EquipDelay></statBases>
+    <equippedStatOffsets><MoveSpeed>-0.8</MoveSpeed></equippedStatOffsets>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li><li>Legs</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/DeathknightPlate/DeathknightPlate</wornGraphicPath>
+      <layers><li>Middle</li><li>Shell</li><li>LP_Cape</li></layers>
+      <tags><li>LP_DeathknightGear</li></tags>
+    </apparel>
+    <comps><li Class="LichPhylactery.CompProperties_ApparelSetPiece" /></comps>
+    <modExtensions><li Class="LichPhylactery.ItemDamageFactors"><factor>0.8</factor><damageDefs><li>Frostbite</li><li>LP_Frost</li></damageDefs><keywords><li>Frost</li><li>Cold</li></keywords></li></modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDHelmBase">
+    <defName>LP_HelmRestlessDead</defName>
+    <label>亡魂巨盔</label>
+    <description>黑铁全盔，前额两根后掠的角，面甲是骷髅牙齿造型，眼缝里两点幽绿。护甲同誓约巨盔，心智抗性+10%。只能由巫妖在死灵仪式台锻造（钢50 + 命匣80献祭经验）。</description>
+    <graphicData><texPath>LP/Apparel/HelmRestlessDead/HelmRestlessDead_Icon</texPath></graphicData>
+    <recipeMaker IsNull="True" />
+    <stuffCategories><li>Metallic</li></stuffCategories>
+    <costStuffCount>50</costStuffCount>
+    <statBases><MaxHitPoints>130</MaxHitPoints><Mass>2.5</Mass><MarketValue>800</MarketValue><StuffEffectMultiplierArmor>0.56</StuffEffectMultiplierArmor><StuffEffectMultiplierInsulation_Cold>0.15</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0</StuffEffectMultiplierInsulation_Heat><EquipDelay>2</EquipDelay></statBases>
+    <equippedStatOffsets><LP_MindResist>0.1</LP_MindResist><AimingDelayFactor>0.05</AimingDelayFactor></equippedStatOffsets>
+    <apparel>
+      <bodyPartGroups><li>FullHead</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/HelmRestlessDead/HelmRestlessDead</wornGraphicPath>
+      <renderSkipFlags><li>Hair</li><li>Beard</li></renderSkipFlags>
+      <tags><li>LP_DeathknightGear</li></tags>
+    </apparel>
+    <comps><li Class="LichPhylactery.CompProperties_ApparelSetPiece" /></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDRobeBase">
+    <defName>LP_LichShroud</defName>
+    <label>巫妖裹尸长袍</label>
+    <description>灰紫色长袍，层层叠叠像裹尸布，下摆破碎飘散；领口一圈褪色金边，胸前挂着一个小命匣吊坠，袖口长得盖住手。护甲很低；心灵敏感度+10%；寒冷伤害-30%。巫妖穿着时命匣获得的献祭经验+10%。</description>
+    <graphicData><texPath>LP/Apparel/LichShroud/LichShroud_Icon</texPath></graphicData>
+    <costStuffCount>80</costStuffCount>
+    <costList><Leather_Human>20</Leather_Human></costList>
+    <statBases><WorkToMake>12000</WorkToMake></statBases>
+    <equippedStatOffsets><PsychicSensitivity>0.1</PsychicSensitivity></equippedStatOffsets>
+    <recipeMaker><researchPrerequisite>LP_Research_ArcaneTailoring</researchPrerequisite><displayPriority>469</displayPriority><recipeUsers Inherit="False"><li>LP_ArcaneLoom</li></recipeUsers></recipeMaker>
+    <apparel>
+      <wornGraphicPath>LP/Apparel/LichShroud/LichShroud</wornGraphicPath>
+      <tags><li>LP_LichGear</li></tags>
+    </apparel>
+    <modExtensions><li Class="LichPhylactery.ItemDamageFactors"><factor>0.7</factor><damageDefs><li>Frostbite</li><li>LP_Frost</li></damageDefs><keywords><li>Frost</li><li>Cold</li></keywords></li></modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDHatBase">
+    <defName>LP_CrownOfBone</defName>
+    <smeltable>false</smeltable>
+    <label>骸骨王冠</label>
+    <description>黑铁细冠，前面竖着五根磨亮的指骨，中间镶一颗紫色宝石。社交影响+10%；巫妖戴着时恐惧凝视的范围+1格。只能由巫妖在死灵仪式台制作（金20 + 人皮10）。</description>
+    <graphicData><texPath>LP/Apparel/CrownOfBone/CrownOfBone_Icon</texPath></graphicData>
+    <recipeMaker IsNull="True" />
+    <statBases><MaxHitPoints>100</MaxHitPoints><Mass>0.6</Mass><MarketValue>700</MarketValue><Beauty>2</Beauty><EquipDelay>1</EquipDelay></statBases>
+    <colorGenerator Class="ColorGenerator_Single"><color>(0.3,0.28,0.32)</color></colorGenerator>
+    <equippedStatOffsets><SocialImpact>0.1</SocialImpact></equippedStatOffsets>
+    <apparel>
+      <wornGraphicPath>LP/Apparel/CrownOfBone/CrownOfBone</wornGraphicPath>
+      <tags><li>LP_LichGear</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- ==================== 龙、吉斯洋基、余烬 ==================== -->
+  <ThingDef ParentName="LP_DNDArmorBase">
+    <defName>LP_DragonknightArmor</defName>
+    <label>龙骑士战甲</label>
+    <description>用力能龙蜕下的鳞片打成的全身鳞片板甲：重叠的淡紫蓝鳞片镶暗银边，肩甲是两片向后伸展的龙翼骨架，腰间一片鳞片裙甲。护甲同原版钢板甲；力场伤害-40%；EMP 不会震晕穿戴者。殖民地里的力能龙不会因为和穿着它的人同住而不高兴（龙认可了这个骑士）。\n\n套装“龙骑士”（战甲 + 龙首盔）：10格内有己方力能龙时，龙的吐息冷却-15%；穿戴者受伤时，附近没在征召的己方力能龙会冲过去咬攻击者。</description>
+    <graphicData><texPath>LP/Apparel/DragonknightArmor/DragonknightArmor_Icon</texPath></graphicData>
+    <costList><LP_DragonShed>4</LP_DragonShed><Steel>80</Steel><LP_Mithral>20</LP_Mithral></costList>
+    <statBases><WorkToMake>40000</WorkToMake><MaxHitPoints>300</MaxHitPoints><Mass>13</Mass><ArmorRating_Sharp>0.82</ArmorRating_Sharp><ArmorRating_Blunt>0.42</ArmorRating_Blunt><ArmorRating_Heat>0.4</ArmorRating_Heat><Insulation_Cold>10</Insulation_Cold><EquipDelay>14</EquipDelay></statBases>
+    <colorGenerator Class="ColorGenerator_Single"><color>(0.62,0.6,0.82)</color></colorGenerator>
+    <equippedStatOffsets><MoveSpeed>-0.7</MoveSpeed></equippedStatOffsets>
+    <recipeMaker><researchPrerequisite>LP_Research_LegendaryArmor</researchPrerequisite><skillRequirements><Crafting>8</Crafting></skillRequirements><displayPriority>470</displayPriority><defaultIngredientFilter IsNull="True" /></recipeMaker>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li><li>Legs</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/DragonknightArmor/DragonknightArmor</wornGraphicPath>
+      <layers><li>Middle</li><li>Shell</li></layers>
+      <tags><li>LP_DragonknightGear</li></tags>
+    </apparel>
+    <comps><li Class="LichPhylactery.CompProperties_ApparelSetPiece" /></comps>
+    <modExtensions>
+      <li Class="LichPhylactery.ItemDamageFactors"><factor>0.6</factor><damageDefs><li>LP_Force</li><li>LP_ArcaneForce</li></damageDefs><keywords><li>Force</li></keywords></li>
+      <li Class="LichPhylactery.EmpStunImmunity" />
+    </modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDHelmBase">
+    <defName>LP_DragonHeadHelm</defName>
+    <label>龙首盔</label>
+    <description>做成张嘴龙头的头盔，脸从龙嘴里露出来，龙角向后。颜色同龙骑士战甲。头部护甲约为原版先进头盔的90%；社交影响+5%（威严）。</description>
+    <graphicData><texPath>LP/Apparel/DragonHeadHelm/DragonHeadHelm_Icon</texPath></graphicData>
+    <costList><LP_DragonShed>1</LP_DragonShed><LP_Mithral>10</LP_Mithral></costList>
+    <statBases><WorkToMake>9000</WorkToMake><MaxHitPoints>140</MaxHitPoints><Mass>1.8</Mass><ArmorRating_Sharp>0.75</ArmorRating_Sharp><ArmorRating_Blunt>0.3</ArmorRating_Blunt><ArmorRating_Heat>0.3</ArmorRating_Heat><EquipDelay>2</EquipDelay></statBases>
+    <colorGenerator Class="ColorGenerator_Single"><color>(0.62,0.6,0.82)</color></colorGenerator>
+    <equippedStatOffsets><SocialImpact>0.05</SocialImpact></equippedStatOffsets>
+    <recipeMaker><researchPrerequisite>LP_Research_LegendaryArmor</researchPrerequisite><skillRequirements><Crafting>7</Crafting></skillRequirements><displayPriority>471</displayPriority><defaultIngredientFilter IsNull="True" /></recipeMaker>
+    <apparel>
+      <bodyPartGroups><li>FullHead</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/DragonHeadHelm/DragonHeadHelm</wornGraphicPath>
+      <renderSkipFlags><li>Hair</li></renderSkipFlags>
+      <tags><li>LP_DragonknightGear</li></tags>
+    </apparel>
+    <comps><li Class="LichPhylactery.CompProperties_ApparelSetPiece" /></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDHelmBase">
+    <defName>LP_GithCrestedHelm</defName>
+    <smeltable>false</smeltable>
+    <label>吉斯洋基战冠</label>
+    <description>棱角很硬的青金色头盔，左右两片向后上方伸出的鳍状盔冠，额前一颗菱形银宝石；露出脸和耳朵。头部护甲约为原版先进头盔的70%；心智抗性+15%；吉斯洋基戴着时星界跳跃冷却-10%。不能制作：塞伊远征军里的吉斯洋基雇佣兵有一半戴着。</description>
+    <graphicData><texPath>LP/Apparel/GithCrestedHelm/GithCrestedHelm_Icon</texPath></graphicData>
+    <recipeMaker IsNull="True" />
+    <statBases><MaxHitPoints>120</MaxHitPoints><Mass>1.4</Mass><MarketValue>700</MarketValue><ArmorRating_Sharp>0.6</ArmorRating_Sharp><ArmorRating_Blunt>0.25</ArmorRating_Blunt><ArmorRating_Heat>0.25</ArmorRating_Heat><EquipDelay>2</EquipDelay></statBases>
+    <colorGenerator Class="ColorGenerator_Single"><color>(0.3,0.55,0.55)</color></colorGenerator>
+    <equippedStatOffsets><LP_MindResist>0.15</LP_MindResist></equippedStatOffsets>
+    <apparel>
+      <bodyPartGroups><li>UpperHead</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/GithCrestedHelm/GithCrestedHelm</wornGraphicPath>
+      <tags><li>LP_GithGear</li></tags>
+    </apparel>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDArmorBase">
+    <defName>LP_EmberCollarPlate</defName>
+    <label>熔铁项圈胸甲</label>
+    <description>余烬氏族给人类奴兵的制服：一块只盖住上半身的粗糙铸铁胸甲，连着项圈，胸口烙着余烬氏族的火焰印。数值约同原版防弹背心。火巨人可以在熔火锻炉打造。</description>
+    <graphicData><texPath>LP/Apparel/EmberCollarPlate/EmberCollarPlate_Icon</texPath></graphicData>
+    <stuffCategories><li>Metallic</li></stuffCategories>
+    <costStuffCount>60</costStuffCount>
+    <statBases><WorkToMake>9000</WorkToMake><MaxHitPoints>200</MaxHitPoints><Mass>5</Mass><StuffEffectMultiplierArmor>0.75</StuffEffectMultiplierArmor><StuffEffectMultiplierInsulation_Cold>0.2</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0</StuffEffectMultiplierInsulation_Heat><EquipDelay>4</EquipDelay></statBases>
+    <equippedStatOffsets><MoveSpeed>-0.1</MoveSpeed></equippedStatOffsets>
+    <recipeMaker><recipeUsers Inherit="False"><li>LP_FireGiantForge</li></recipeUsers><researchPrerequisite>LP_GiantForging</researchPrerequisite><displayPriority>472</displayPriority></recipeMaker>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Neck</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/EmberCollarPlate/EmberCollarPlate</wornGraphicPath>
+      <layers><li>Middle</li></layers>
+      <tags><li>LP_EmberSlave</li></tags>
+    </apparel>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDHelmBase">
+    <defName>LP_EmberRivetHelm</defName>
+    <label>铆钉铁盔</label>
+    <description>余烬奴兵戴的铆钉半盔，黑铁上烙着橙红火焰印。数值约同原版简易头盔。火巨人可以在熔火锻炉打造。</description>
+    <graphicData><texPath>LP/Apparel/EmberRivetHelm/EmberRivetHelm_Icon</texPath></graphicData>
+    <stuffCategories><li>Metallic</li></stuffCategories>
+    <costStuffCount>40</costStuffCount>
+    <statBases><WorkToMake>3200</WorkToMake><MaxHitPoints>100</MaxHitPoints><Mass>2</Mass><StuffEffectMultiplierArmor>0.5</StuffEffectMultiplierArmor><StuffEffectMultiplierInsulation_Cold>0.15</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0</StuffEffectMultiplierInsulation_Heat><EquipDelay>2</EquipDelay></statBases>
+    <recipeMaker><recipeUsers Inherit="False"><li>LP_FireGiantForge</li></recipeUsers><researchPrerequisite>LP_GiantForging</researchPrerequisite><displayPriority>473</displayPriority></recipeMaker>
+    <apparel>
+      <bodyPartGroups><li>UpperHead</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/EmberRivetHelm/EmberRivetHelm</wornGraphicPath>
+      <tags><li>LP_EmberSlave</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- ==================== 种族专属与大体型 ==================== -->
+  <ThingDef ParentName="LP_DNDArmorBase">
+    <defName>LP_LoxodonWardenArmor</defName>
+    <label>象人卫士重铠</label>
+    <description>厚重的圆弧板甲，表面刻着象人的环形图腾纹，肩甲大得像两片象耳。只有体型1.3以上的人能穿（象人、食人魔、泰坦……）。护甲为原版板甲的120%，移速惩罚也是120%；搬运量+10%。象人在符文铁砧打造。</description>
+    <graphicData><texPath>LP/Apparel/LoxodonWardenArmor/LoxodonWardenArmor_Icon</texPath></graphicData>
+    <stuffCategories><li>Metallic</li></stuffCategories>
+    <costStuffCount>250</costStuffCount>
+    <statBases><WorkToMake>45000</WorkToMake><MaxHitPoints>380</MaxHitPoints><Mass>22</Mass><StuffEffectMultiplierArmor>1.08</StuffEffectMultiplierArmor><StuffEffectMultiplierInsulation_Cold>1</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0</StuffEffectMultiplierInsulation_Heat><EquipDelay>18</EquipDelay></statBases>
+    <equippedStatOffsets><MoveSpeed>-0.96</MoveSpeed><CarryingCapacity>7.5</CarryingCapacity></equippedStatOffsets>
+    <recipeMaker><researchPrerequisite>LP_Research_LegendaryArmor</researchPrerequisite><skillRequirements><Crafting>8</Crafting></skillRequirements><displayPriority>474</displayPriority></recipeMaker>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li><li>Legs</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/LoxodonWardenArmor/LoxodonWardenArmor</wornGraphicPath>
+      <layers><li>Middle</li><li>Shell</li></layers>
+      <tags><li>LP_LoxodonArmor</li></tags>
+    </apparel>
+    <modExtensions>
+      <li Class="LichPhylactery.ApparelGate"><minBodySize>1.3</minBodySize></li>
+      <li Class="LichPhylactery.RaceGearExtension"><race>Loxodon</race></li>
+    </modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDClothBase">
+    <defName>LP_OgreTrophyHide</defName>
+    <label>食人魔战利品皮甲</label>
+    <description>几张缝在一起的毛皮，左肩扣着一个动物头骨当肩甲，腰间一串骨头叮当作响。锐器护甲约为原版防弹背心的60%；社交影响-10%；“威吓”：穿戴者3格内的敌人近战命中-5%。</description>
+    <graphicData><texPath>LP/Apparel/OgreTrophyHide/OgreTrophyHide_Icon</texPath></graphicData>
+    <stuffCategories><li>Leathery</li></stuffCategories>
+    <costStuffCount>100</costStuffCount>
+    <statBases><WorkToMake>9000</WorkToMake><MaxHitPoints>180</MaxHitPoints><Mass>5</Mass><StuffEffectMultiplierArmor>1.0</StuffEffectMultiplierArmor><StuffEffectMultiplierInsulation_Cold>0.6</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0.2</StuffEffectMultiplierInsulation_Heat><EquipDelay>3</EquipDelay></statBases>
+    <equippedStatOffsets><SocialImpact>-0.1</SocialImpact></equippedStatOffsets>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Shoulders</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/OgreTrophyHide/OgreTrophyHide</wornGraphicPath>
+      <layers><li>Middle</li></layers>
+      <tags><li>LP_OgreGear</li></tags>
+    </apparel>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDClothBase">
+    <defName>LP_SkyguardHarness</defName>
+    <label>鸟人羽翼轻甲</label>
+    <description>交叉皮带加一片胸甲，胸甲上是一只展翅的鹰纹；背后开口，翅膀照常伸在外面。锐器护甲约为原版防弹背心的50%，不影响翱翔；鸟人翱翔落地后3秒内近战闪避+10。</description>
+    <graphicData><texPath>LP/Apparel/SkyguardHarness/SkyguardHarness_Icon</texPath></graphicData>
+    <stuffCategories><li>Leathery</li></stuffCategories>
+    <costStuffCount>40</costStuffCount>
+    <costList><Steel>20</Steel></costList>
+    <statBases><WorkToMake>7000</WorkToMake><MaxHitPoints>140</MaxHitPoints><Mass>2</Mass><StuffEffectMultiplierArmor>0.9</StuffEffectMultiplierArmor><StuffEffectMultiplierInsulation_Cold>0.2</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0.1</StuffEffectMultiplierInsulation_Heat><EquipDelay>2</EquipDelay></statBases>
+    <apparel>
+      <bodyPartGroups><li>Torso</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/SkyguardHarness/SkyguardHarness</wornGraphicPath>
+      <layers><li>Middle</li></layers>
+      <tags><li>LP_AarakocraGear</li></tags>
+    </apparel>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDArmorBase">
+    <defName>LP_CelestialPanoply</defName>
+    <label>天穹神铠</label>
+    <description>金白色的古典胸甲，胸肌造型，裙甲是一条条皮条；背后悬着一圈镂空的金色日轮（占披风层）。只有体型2以上的人能穿（实际就是泰坦）。护甲为原版板甲的130%；雷电（闪电、电击、神罚）伤害免疫；美观+5。泰坦在符文铁砧打造：玻璃钢80、秘银40、金30。</description>
+    <graphicData><texPath>LP/Apparel/CelestialPanoply/CelestialPanoply_Icon</texPath></graphicData>
+    <costList><Plasteel>80</Plasteel><LP_Mithral>40</LP_Mithral><Gold>30</Gold></costList>
+    <statBases><WorkToMake>50000</WorkToMake><MaxHitPoints>420</MaxHitPoints><Mass>18</Mass><Beauty>5</Beauty><ArmorRating_Sharp>1.2</ArmorRating_Sharp><ArmorRating_Blunt>0.55</ArmorRating_Blunt><ArmorRating_Heat>0.6</ArmorRating_Heat><Insulation_Cold>12</Insulation_Cold><EquipDelay>16</EquipDelay></statBases>
+    <colorGenerator Class="ColorGenerator_Single"><color>(0.95,0.9,0.75)</color></colorGenerator>
+    <equippedStatOffsets><MoveSpeed>-0.8</MoveSpeed></equippedStatOffsets>
+    <recipeMaker><researchPrerequisite>LP_Research_LegendaryArmor</researchPrerequisite><skillRequirements><Crafting>9</Crafting></skillRequirements><displayPriority>475</displayPriority><defaultIngredientFilter IsNull="True" /></recipeMaker>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li><li>Legs</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/CelestialPanoply/CelestialPanoply</wornGraphicPath>
+      <layers><li>Middle</li><li>Shell</li><li>LP_Cape</li></layers>
+      <tags><li>LP_TitanGear</li></tags>
+    </apparel>
+    <modExtensions>
+      <li Class="LichPhylactery.ApparelGate"><minBodySize>2</minBodySize></li>
+      <li Class="LichPhylactery.RaceGearExtension"><race>Titan</race></li>
+      <li Class="LichPhylactery.ItemDamageFactors"><factor>0</factor><damageDefs><li>LP_Lightning</li><li>LP_Shock</li><li>LP_DivineSmite</li></damageDefs><keywords><li>Lightning</li><li>Thunder</li></keywords></li>
+    </modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDRobeBase">
+    <defName>LP_ElementalWeave</defName>
+    <label>元素织袍</label>
+    <description>同一件袍子按穿戴者的元素血脉换配色：火是赤橙、水是青蓝、土是赭石、风是浅白，不是元素裔就是中性灰。护甲很低；对应元素：火元素裔火焰伤害-20%、水元素裔寒冷伤害-20%、土元素裔钝器伤害-20%、风元素裔移动速度+5%。在法袍织机用布80和任意一枚元素符制作。</description>
+    <graphicData><texPath>LP/Apparel/ElementalWeave/ElementalWeave_Icon</texPath></graphicData>
+    <recipeMaker IsNull="True" />
+    <costStuffCount>80</costStuffCount>
+    <statBases><WorkToMake>12000</WorkToMake></statBases>
+    <apparel>
+      <wornGraphicPath>LP/Apparel/ElementalWeave/ElementalWeave</wornGraphicPath>
+      <tags><li>LP_GenasiGear</li></tags>
+    </apparel>
+    <comps><li Class="LichPhylactery.CompProperties_WornHediff"><hediff>LP_MA_ElementalWeave</hediff></li></comps>
+    <modExtensions><li Class="LichPhylactery.HeraldryExtension"><element>true</element></li></modExtensions>
+  </ThingDef>
+
+  <!-- ==================== 普通衣物 ==================== -->
+  <ThingDef ParentName="LP_DNDClothBase">
+    <defName>LP_AdventurerClothes</defName>
+    <label>冒险者旅行装</label>
+    <description>米白亚麻衬衫袖子卷到手肘，外面一件深棕皮背心，腰间宽皮带挂着两个小皮包和一个水囊。保暖同原版纽扣衫，外加少量皮革护甲；搬运量+5%。贴身层加中层，一件就够。</description>
+    <graphicData><texPath>LP/Apparel/AdventurerClothes/AdventurerClothes_Icon</texPath></graphicData>
+    <stuffCategories><li>Fabric</li></stuffCategories>
+    <costStuffCount>30</costStuffCount>
+    <costList><Leather_Plain>20</Leather_Plain></costList>
+    <statBases><WorkToMake>5000</WorkToMake><MaxHitPoints>120</MaxHitPoints><Mass>1</Mass><ArmorRating_Sharp>0.06</ArmorRating_Sharp><ArmorRating_Blunt>0.03</ArmorRating_Blunt><StuffEffectMultiplierArmor>0.1</StuffEffectMultiplierArmor><StuffEffectMultiplierInsulation_Cold>0.3</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0.3</StuffEffectMultiplierInsulation_Heat><EquipDelay>2</EquipDelay></statBases>
+    <equippedStatOffsets><CarryingCapacity>3.75</CarryingCapacity></equippedStatOffsets>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Shoulders</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/AdventurerClothes/AdventurerClothes</wornGraphicPath>
+      <layers><li>OnSkin</li><li>Middle</li></layers>
+      <tags><li>LP_CommonClothes</li></tags>
+    </apparel>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDClothBase">
+    <defName>LP_BardFinery</defName>
+    <label>吟游诗人装</label>
+    <description>宝蓝色泡泡袖紧身上衣，切口里露出金色衬里，斜挎一条鲁特琴背带。社交影响+10%；穿着它演奏乐器时，周围听众心情+1。配一顶羽饰贝雷帽更好。</description>
+    <graphicData><texPath>LP/Apparel/BardFinery/BardFinery_Icon</texPath></graphicData>
+    <stuffCategories><li>Fabric</li></stuffCategories>
+    <costStuffCount>60</costStuffCount>
+    <costList><Gold>5</Gold></costList>
+    <statBases><WorkToMake>8000</WorkToMake><MaxHitPoints>100</MaxHitPoints><Mass>0.8</Mass><Beauty>2</Beauty><StuffEffectMultiplierArmor>0.1</StuffEffectMultiplierArmor><StuffEffectMultiplierInsulation_Cold>0.25</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0.3</StuffEffectMultiplierInsulation_Heat><EquipDelay>2</EquipDelay></statBases>
+    <equippedStatOffsets><SocialImpact>0.1</SocialImpact></equippedStatOffsets>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Shoulders</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/BardFinery/BardFinery</wornGraphicPath>
+      <layers><li>OnSkin</li><li>Middle</li></layers>
+      <tags><li>LP_CommonClothes</li></tags>
+    </apparel>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDHatBase">
+    <defName>LP_BardBeret</defName>
+    <label>羽饰贝雷帽</label>
+    <description>斜戴的软贝雷，插一根长长的白羽毛。社交影响+3%，美观+1。</description>
+    <graphicData><texPath>LP/Apparel/BardBeret/BardBeret_Icon</texPath></graphicData>
+    <stuffCategories><li>Fabric</li></stuffCategories>
+    <costStuffCount>20</costStuffCount>
+    <statBases><WorkToMake>2000</WorkToMake><MaxHitPoints>50</MaxHitPoints><Mass>0.2</Mass><Beauty>1</Beauty><StuffEffectMultiplierArmor>0</StuffEffectMultiplierArmor><StuffEffectMultiplierInsulation_Cold>0.1</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0.2</StuffEffectMultiplierInsulation_Heat><EquipDelay>1</EquipDelay></statBases>
+    <equippedStatOffsets><SocialImpact>0.03</SocialImpact></equippedStatOffsets>
+    <apparel>
+      <wornGraphicPath>LP/Apparel/BardBeret/BardBeret</wornGraphicPath>
+      <tags><li>LP_CommonClothes</li></tags>
+    </apparel>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDClothBase">
+    <defName>LP_CourtAttire</defName>
+    <label>费伦宫廷礼服</label>
+    <description>深水城宫廷的礼服：男款是及膝的双排扣长摆外套、金穗肩章，女款是长裙配束腰与短披肩；金线刺绣满领口、前襟和袖口。底色随布料。美观+4，社交影响+10%；保暖一般，没有护甲。</description>
+    <graphicData><texPath>LP/Apparel/CourtAttire/CourtAttire_Icon</texPath></graphicData>
+    <stuffCategories><li>Fabric</li></stuffCategories>
+    <costStuffCount>120</costStuffCount>
+    <costList><Gold>20</Gold></costList>
+    <statBases><WorkToMake>18000</WorkToMake><MaxHitPoints>120</MaxHitPoints><Mass>2</Mass><Beauty>4</Beauty><StuffEffectMultiplierArmor>0.05</StuffEffectMultiplierArmor><StuffEffectMultiplierInsulation_Cold>0.35</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0.3</StuffEffectMultiplierInsulation_Heat><EquipDelay>3</EquipDelay></statBases>
+    <equippedStatOffsets><SocialImpact>0.1</SocialImpact></equippedStatOffsets>
+    <recipeMaker><researchPrerequisite>LP_Research_ArcaneTailoring</researchPrerequisite><skillRequirements><Crafting>6</Crafting></skillRequirements><displayPriority>476</displayPriority><recipeUsers Inherit="False"><li>LP_ArcaneLoom</li></recipeUsers></recipeMaker>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li><li>Legs</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/CourtAttire/CourtAttire</wornGraphicPath>
+      <layers><li>Middle</li><li>Shell</li></layers>
+      <tags><li>LP_NobleClothes</li></tags>
+    </apparel>
+  </ThingDef>
+  <ThingDef ParentName="LP_DNDClothBase">
+    <defName>LP_HarperCloak</defName>
+    <smeltable>false</smeltable>
+    <label>竖琴手旅人斗篷</label>
+    <description>灰褐色的朴素斗篷，左胸别着一枚银色的小竖琴与新月胸针——竖琴手的标志。保暖同原版斗篷；殖民者商队里有人穿着它时，世界地图上的行进速度+5%。不能制作：同盟好感≥60时，竖琴手的袭击预警会附赠一件（最多3件）。</description>
+    <graphicData><texPath>LP/Apparel/HarperCloak/HarperCloak_Icon</texPath></graphicData>
+    <recipeMaker IsNull="True" />
+    <statBases><MaxHitPoints>120</MaxHitPoints><Mass>1.4</Mass><MarketValue>400</MarketValue><ArmorRating_Sharp>0.05</ArmorRating_Sharp><Insulation_Cold>14</Insulation_Cold><Insulation_Heat>6</Insulation_Heat><EquipDelay>2</EquipDelay></statBases>
+    <colorGenerator Class="ColorGenerator_Single"><color>(0.48,0.43,0.36)</color></colorGenerator>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>LP/Apparel/HarperCloak/HarperCloak</wornGraphicPath>
+      <layers><li>Shell</li></layers>
+      <tags><li>LP_HarperGear</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- ==================== 条件状态 ==================== -->
+  <HediffDef ParentName="LP_MagicItemHediffBase">
+    <defName>LP_MA_MountainRunes</defName>
+    <label>山岳符文</label>
+    <description>矮人符文重铠：头顶有厚岩顶时锐钝护甲各+10%。</description>
+    <stages>
+      <li><label>露天</label></li>
+      <li><statOffsets><ArmorRating_Sharp>0.1</ArmorRating_Sharp><ArmorRating_Blunt>0.1</ArmorRating_Blunt></statOffsets></li>
+    </stages>
+    <modExtensions><li Class="LichPhylactery.MagicHediffExtension"><condition>thickRoof</condition></li></modExtensions>
+  </HediffDef>
+  <HediffDef ParentName="LP_MagicItemHediffBase">
+    <defName>LP_MA_Shadowweave</defName>
+    <label>暗影斗篷</label>
+    <description>在光照低于30%的地方：移动速度+5%，被远程命中-20%。</description>
+    <stages>
+      <li><label>亮处</label></li>
+      <li><statFactors><MoveSpeed>1.05</MoveSpeed></statFactors></li>
+    </stages>
+    <modExtensions><li Class="LichPhylactery.MagicHediffExtension"><condition>dark</condition></li></modExtensions>
+  </HediffDef>
+  <HediffDef ParentName="LP_MagicItemHediffBase">
+    <defName>LP_MA_ElementalWeave</defName>
+    <label>元素织袍</label>
+    <description>按元素血脉生效：火焰、寒冷或钝器伤害-20%，或者移动速度+5%。</description>
+    <stages>
+      <li><label>无血脉</label></li>
+      <li><label>火</label></li>
+      <li><label>水</label></li>
+      <li><label>土</label></li>
+      <li><label>风</label><statFactors><MoveSpeed>1.05</MoveSpeed></statFactors></li>
+    </stages>
+    <modExtensions><li Class="LichPhylactery.MagicHediffExtension"><condition>element</condition></li></modExtensions>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_SkyguardDodge</defName>
+    <label>落地闪身</label>
+    <description>鸟人翱翔落地的一瞬间还在空中翻身：近战闪避+10。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>180</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><statOffsets><MeleeDodgeChance>10</MeleeDodgeChance></statOffsets></li></stages>
+  </HediffDef>
+  <ThoughtDef>
+    <defName>LP_DeathknightWhispers</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_DeathknightWhispers</workerClass>
+    <stages><li><label>冰冷的铠甲在低语</label><description>死亡骑士铠甲贴着皮肤，冷得像坟墓里的石头，还在耳边低语。</description><baseMoodEffect>-3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_BardMusic</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_BardMusic</workerClass>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>吟游诗人的曲子</label><description>附近有吟游诗人在弹琴，曲子真好听。</description><baseMoodEffect>1</baseMoodEffect></li></stages>
+  </ThoughtDef>
+</Defs>

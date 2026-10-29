@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.51.0 稀有天赋特性：同一个人最多一个（exclusionTags LP_PointTalent）。1.58.0 起 commonality 0，算强力特性（1.66.0 热修起强力特性可以有多个，四个天赋之间仍互斥），由 HeroTraits.Roll 一起掷；
+     传奇种族（巫妖、巨人、泰坦、龙裔等）生成时去掉（Source/AdventurerAffinity.cs TalentGenerate）。效果在代码里：Talents / Affinity / Hediff_Adventurer.LevelPerks。 -->
+<Defs>
+  <TraitDef>
+    <defName>LP_TalentGifted</defName>
+    <commonality>0</commonality>
+    <exclusionTags><li>LP_PointTalent</li></exclusionTags>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#B070E0>天赋异禀</color>]]></label>
+        <description>[PAWN_nameDef]生来就比别人多一份才情。冒险者六项属性每点正调整值的效果 ×1.5（与种族亲和取较大，不相乘）。</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Epic</tier><kind>强力特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+  <TraitDef>
+    <defName>LP_TalentLateBloomer</defName>
+    <commonality>0</commonality>
+    <exclusionTags><li>LP_PointTalent</li></exclusionTags>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#B070E0>大器晚成</color>]]></label>
+        <description>[PAWN_nameDef]起步不快，却越走越远。冒险者每 4 级得到 1 个传奇属性点；传奇等级 21～40 每级 3 个传奇属性点（平时 2 个）。</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Epic</tier><kind>强力特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+  <TraitDef>
+    <defName>LP_TalentTempered</defName>
+    <commonality>0</commonality>
+    <exclusionTags><li>LP_PointTalent</li></exclusionTags>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#B070E0>百炼成钢</color>]]></label>
+        <description>[PAWN_nameDef]的每一分长进都是熬出来的。每次属性提升给 3 点（一项 +3，或一项 +2、另一项 +1），20 级多一次属性提升。</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Epic</tier><kind>强力特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+  <TraitDef>
+    <defName>LP_TalentMortalWill</defName>
+    <commonality>0</commonality>
+    <exclusionTags><li>LP_PointTalent</li></exclusionTags>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#B070E0>凡人之志</color>]]></label>
+        <description>[PAWN_nameDef]没有显赫的血脉，只有不肯认输的意志。冒险者经验 +25%；所有传奇属性每点收益 ×1.5（与种族亲和取较大，不相乘）。</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Epic</tier><kind>强力特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+</Defs>

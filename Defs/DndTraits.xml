@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.62.0 DND 性格特性与诅咒之力（ArtSource/Traits-1.62.0-spec.md；代码在 Source/DndTraits.cs）。
+     性格特性（阵营 / 种族互动 / 职业天赋 / 怪癖）commonality 0：生成后缀（DndTraits.OnGenerated）自己掷，每人最多 2 个、最多 1 个阵营，只用原版 3 个特性名额里的空位。
+     诅咒之力（红色）算强力特性（1.66.0 热修：可以和其他强力特性并存，诅咒之间用 LP_Curse 互斥），由 HeroTraits.OnGenerated 的同一次随机给出（KindCurse）。
+     同一特性不同程度的互斥（仁善 × 心理变态等）在代码里判断（TraitDef 的互斥不分程度）。数值写在描述里，规则在代码里。 -->
+<Defs>
+
+  <!-- ==================== 阵营 ==================== -->
+  <TraitDef>
+    <defName>LP_Order</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <degree>1</degree>
+        <label>守序</label>
+        <description>{PAWN_nameDef}相信规矩、秩序和说到做到。\n\n- 作息表“工作”时段内全局工作速度 +5%\n- 不会发生纵火、乱跑、出走类精神崩溃\n- 殖民地有领袖或头衔持有者：心情 +3「秩序井然」\n- 自己的作息表全是“任意”：心情 -3「毫无章法」</description>
+      </li>
+      <li>
+        <degree>-1</degree>
+        <label>混乱</label>
+        <description>{PAWN_nameDef}讨厌被管着，想到什么就做什么。\n\n- 灵感出现的几率 ×1.5\n- 连续征召超过 6 小时：心情 -4「被管束」</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Common</tier><kind>性格特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Morality</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <degree>1</degree>
+        <label>仁善</label>
+        <description>{PAWN_nameDef}心地善良，见不得别人受苦。\n\n- 救援倒地的人、给囚犯包扎：心情 +2「善举」\n- 用制伏武器打倒敌人（不伤性命）：心情 +2「手下留情」\n- 处决、摘取器官带来的坏心情之外再 -5「良心不安」\n- 殖民地有死灵造物：心情 -2\n- 装了 VPE 时，牧师路径的神圣伤害 +15%\n- 不会和心理变态、嗜血、巫妖信徒同时出现；成为巫妖后失去这个特性</description>
+      </li>
+      <li>
+        <degree>-1</degree>
+        <label>邪恶</label>
+        <description>{PAWN_nameDef}只在乎自己想要什么，别人的痛苦不算什么。\n\n- 处决、摘取器官、奴役不会让{PAWN_objective}心情变差\n- 压制奴隶的效果 +20%\n- 殖民地有巫妖：心情 +2「黑暗庇护」\n- 不会和善良、不死猎人同时出现</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Common</tier><kind>性格特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <!-- ==================== 种族互动 ==================== -->
+  <TraitDef>
+    <defName>LP_DragonStance</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <degree>-1</degree>
+        <label>惧龙</label>
+        <description>{PAWN_nameDef}小时候见过龙烧掉一整座村子。\n\n- 地图上有龙：心情 -6「龙威压顶」\n- 龙在 10 格内时，每隔几秒有 10% 的几率掉头逃开\n- 龙裔和五色真龙不会有这个特性</description>
+      </li>
+      <li>
+        <degree>1</degree>
+        <label><![CDATA[<color=#7FBF6A>屠龙志士</color>]]></label>
+        <description>{PAWN_nameDef}发过誓，这辈子要亲手斩下一条龙。\n\n- 对龙的伤害 +20%（和其他类型伤害加成合计最多 +60%）\n- 击杀龙：心情 +10，持续 10 天\n- 对殖民地的龙裔好感 -10\n- 龙裔不会有这个特性</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Common</tier><kind>性格特性</kind><degrees><li>1:Uncommon</li></degrees></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_GiantStance</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <degree>1</degree>
+        <label>巨人仆从</label>
+        <description>{PAWN_nameDef}在巨人的宅邸里长大，跟在大个子身边才踏实。\n\n- 在体型 1.5 以上的殖民者 3 格内干活，全局工作速度 +10%\n- 对体型 1.5 以上的殖民者好感 +15</description>
+      </li>
+      <li>
+        <degree>-1</degree>
+        <label><![CDATA[<color=#7FBF6A>巨人杀手</color>]]></label>
+        <description>{PAWN_nameDef}专门学过怎么对付比自己高三倍的东西。\n\n- 近战攻击体型 1.5 以上的目标伤害 +20%（和其他类型伤害加成合计最多 +60%）\n- 躲闪体型 1.5 以上敌人的近战攻击 +10%\n- 对巨人好感 -10\n- 巨人种族不会有这个特性</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Common</tier><kind>性格特性</kind><degrees><li>-1:Uncommon</li></degrees></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_UndeadStance</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <degree>1</degree>
+        <label>巫妖信徒</label>
+        <description>{PAWN_nameDef}相信不朽的巫妖才是这个世界真正的主人。\n\n- 殖民地有巫妖：心情 +4</description>
+      </li>
+      <li>
+        <degree>-1</degree>
+        <label><![CDATA[<color=#7FBF6A>不死猎人</color>]]></label>
+        <description>{PAWN_nameDef}把一辈子都花在了让死者安息上。\n\n- 对不死生物的伤害 +20%（和其他类型伤害加成合计最多 +60%）\n- 殖民地有巫妖或死灵造物：心情 -6\n- 巫妖和不死种族不会有这个特性</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Common</tier><kind>性格特性</kind><degrees><li>-1:Uncommon</li></degrees></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_RaceAttitude</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <degree>1</degree>
+        <label>世界公民</label>
+        <description>{PAWN_nameDef}走过很多地方，和哪个种族都处得来。\n\n- 不受种族关系的负面心情影响\n- 殖民地每多一个种族，心情 +1（最多 +4）</description>
+      </li>
+      <li>
+        <degree>-1</degree>
+        <label>纯血至上</label>
+        <description>{PAWN_nameDef}觉得只有自己的种族靠得住。\n\n- 对同种族的人好感 +10，对其他种族 -10\n- 本种族在殖民地占多数：心情 +3，否则 -3</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Common</tier><kind>性格特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_HiveSurvivor</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#7FBF6A>殖巢幸存者</color>]]></label>
+        <description>{PAWN_nameDef}从夺心魔的殖巢里活着逃了出来。\n\n- 心智抗性 +50%\n- 地图上有夺心魔：心情 -4\n- 对吉斯洋基好感 +10\n- “逃离殖巢”开局的人类俘虏必带\n- 夺心魔和半夺心魔不会有这个特性</description>
+        <statOffsets><LP_MindResist>0.5</LP_MindResist></statOffsets>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Uncommon</tier><kind>性格特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_DragonServant</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label>龙之眷从</label>
+        <description>{PAWN_nameDef}的祖辈世代侍奉龙。\n\n- 殖民地有龙裔殖民者：心情 +4\n- 把东西搬进龙裔的宝库时移动速度 +30%\n- 不会从龙宝库里往外搬东西\n- 殖民地的龙死去：心情 -15\n- 狗头人出现这个特性的几率 ×5；龙裔不会有这个特性</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Common</tier><kind>性格特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_GithExile</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label>吉斯流亡者</label>
+        <description>{PAWN_nameDef}背弃了巫妖女王维拉基斯。\n\n- 不再因为见到殖民地的巫妖而高兴（替代吉斯洋基原有的巫妖心情）\n- 对巫妖好感 -10\n- 只会出现在吉斯洋基身上</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Common</tier><kind>性格特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <!-- ==================== 职业天赋 ==================== -->
+  <TraitDef>
+    <defName>LP_Tactician</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#7FBF6A>战术家</color>]]></label>
+        <description>{PAWN_nameDef}天生会看战场。\n\n- 被征召时，4 格内的友军近战与射击命中 +5%（多个战术家不叠加）\n- 装了 VPE 时：战士路径经验 +25%（和背景、魔网之子等的经验加成取较高，不叠加）</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Uncommon</tier><kind>性格特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_ArcaneGift</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#7FBF6A>奥术天赋</color>]]></label>
+        <description>{PAWN_nameDef}对魔网的流动格外敏感。\n\n- 装了 VPE 时：法师路径经验 +25%（与其他经验加成取较高），心灵熵消耗 -10%\n- 没装 VPE 时：心灵敏感度 +10%\n- 不会和狂野魔法同时出现</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Uncommon</tier><kind>性格特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_WildMagic</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#7FBF6A>狂野魔法</color>]]></label>
+        <description>{PAWN_nameDef}身上的魔力从来不太听话。\n\n- 装了 VPE 时：每次施放能力有 5% 的几率引发魔力浪涌；法术伤害 +10%\n- 没装 VPE 时：每天随机一次小浪涌\n- 浪涌共 12 种：隐身 10 秒、脚下长花、敌人头上落下小火球、全队治疗 5 点、召唤一只友善的鸡、心灵熵清空、移速 +50% 1 小时、获得一次灵感、周围敌人眩晕 2 秒；或者自己身上着小火、皮肤变绿 1 天、原地发呆 5 秒。都不会致命\n- 不会和奥术天赋、魔法恐惧同时出现</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Uncommon</tier><kind>性格特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Tinkerer</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#7FBF6A>机械迷</color>]]></label>
+        <description>{PAWN_nameDef}看见齿轮就挪不开眼。\n\n- 修理建筑速度 +20%\n- 装了 VPE 时：器械师路径经验 +25%（与其他经验加成取较高），火器射击冷却 -5%</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Uncommon</tier><kind>性格特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_NatureBond</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#7FBF6A>自然之子</color>]]></label>
+        <description>{PAWN_nameDef}在林子里比在屋里自在。\n\n- 待在户外：心情 +2\n- 驯服、训练动物的成功率 +15%\n- 装了 VPE 时：德鲁伊路径经验 +25%（与其他经验加成取较高）</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Uncommon</tier><kind>性格特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <!-- ==================== 怪癖 ==================== -->
+  <TraitDef>
+    <defName>LP_Magephobe</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label>魔法恐惧</label>
+        <description>{PAWN_nameDef}不信任任何会施法的人。\n\n- 对有灵能、会施法的人好感 -10\n- 被别人施加增益法术：心情 -3\n- 受到敌方法术的伤害 -10%</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Common</tier><kind>性格特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_ArcaneCraving</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label>秘法上瘾</label>
+        <description>{PAWN_nameDef}迷上了魔法流过身体的感觉。\n\n- 超过 5 天没用过魔法药水或魔法卷轴：心情 -6「秘法渴求」\n- 用了一瓶魔法药水或一张魔法卷轴：心情 +4，持续 2 天</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Common</tier><kind>性格特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_TreasureHunter</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#7FBF6A>寻宝狂</color>]]></label>
+        <description>{PAWN_nameDef}听到“宝藏”两个字就坐不住。\n\n- 法师塔坠落、进入迷锁地牢：心情 +5「冒险的召唤」\n- 拆除古代遗迹多得 20% 材料\n- 有寻宝狂在迷锁地牢里时，地牢的宝物有 10% 的几率多出一件</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Uncommon</tier><kind>性格特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_PlaneTouched</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label>位面错乱</label>
+        <description>{PAWN_nameDef}曾在两个位面之间迷失了很久。\n\n- 位面裂隙里钻出来的野兽不会主动攻击{PAWN_objective}\n- 每 10～15 天会出神 1 小时\n- 传送类能力冷却 -20%</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Common</tier><kind>性格特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <!-- ==================== 诅咒之力（红色，占强力特性名额） ==================== -->
+  <TraitDef>
+    <defName>LP_Revenant</defName>
+    <commonality>0</commonality>
+    <exclusionTags><li>LP_Curse</li></exclusionTags>
+    <degreeDatas>
+      <li>
+        <degree>0</degree>
+        <label><![CDATA[<color=#D05050>复仇亡魂</color>]]></label>
+        <description>{PAWN_nameDef}发过血誓：害死{PAWN_objective}的人，一个也跑不掉。\n\n- 被敌对派系的人杀死、凶手还活着时：12 小时后在尸体处复活（伤势全愈，带「亡魂之躯」）；尸体被焚毁或不在了就不能复活。复活后冷却 60 天\n- 对凶手所在派系的伤害 +30%（和其他类型伤害加成合计最多 +60%）\n- 凶手和{PAWN_objective}在同一张地图上时不能隐身\n- 亲手杀死凶手：一次获得升到下一级所需经验的 50%，特性变为「安息之魂」\n\n「亡魂之躯」：受到治疗的效果 -50%、自然愈合 -30%、不会饿死但吃东西没有好心情；殖民者对{PAWN_objective}好感 -10（仁善的人再 -5）。</description>
+      </li>
+      <li>
+        <degree>1</degree>
+        <label><![CDATA[<color=#7FBF6A>安息之魂</color>]]></label>
+        <description>{PAWN_nameDef}的血仇已经报了，亡魂终于安息。\n\n- 对昔日凶手所在派系的伤害 +15%（和其他类型伤害加成合计最多 +60%）\n- 不再死后复活</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Epic</tier><kind>诅咒之力</kind><mark>Curse</mark><degrees><li>1:Uncommon:None</li></degrees></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Lycanthrope</defName>
+    <commonality>0</commonality>
+    <exclusionTags><li>LP_Curse</li></exclusionTags>
+    <degreeDatas>
+      <li>
+        <degree>1</degree>
+        <label><![CDATA[<color=#D05050>兽化症·狼</color>]]></label>
+        <description>{PAWN_nameDef}的血里住着一头狼。\n\n- 每 10～15 天、或者血量低于 30% 时，强制化身狼形 6 小时：近战伤害 ×2、移动速度 +1、每小时恢复 10 点伤势；非银、非魔法武器造成的伤害 -50%（法术、神术不减）\n- 化身期间会狂暴地扑向最近的敌人；附近没有敌人时有 10% 的几率攻击殖民者和家畜\n- 冒险者 10 级起「驯服野性」：不再强制化身、不再失控，可以每天主动化身一次\n- 化身时咬伤别人有 5% 的几率传染（对方已有强力特性时不会）\n- 圣水能伤到{PAWN_objective}</description>
+      </li>
+      <li>
+        <degree>2</degree>
+        <label><![CDATA[<color=#D05050>兽化症·熊</color>]]></label>
+        <description>{PAWN_nameDef}的血里住着一头熊。\n\n- 每 10～15 天、或者血量低于 30% 时，强制化身熊形 6 小时：近战伤害 ×2、移动速度 +1、每小时恢复 10 点伤势；非银、非魔法武器造成的伤害 -50%（法术、神术不减）\n- 化身期间会狂暴地扑向最近的敌人；附近没有敌人时有 10% 的几率攻击殖民者和家畜\n- 冒险者 10 级起「驯服野性」：不再强制化身、不再失控，可以每天主动化身一次\n- 化身时咬伤别人有 5% 的几率传染（对方已有强力特性时不会）\n- 圣水能伤到{PAWN_objective}</description>
+      </li>
+      <li>
+        <degree>3</degree>
+        <label><![CDATA[<color=#D05050>兽化症·虎</color>]]></label>
+        <description>{PAWN_nameDef}的血里住着一头虎。\n\n- 每 10～15 天、或者血量低于 30% 时，强制化身虎形 6 小时：近战伤害 ×2、移动速度 +1、每小时恢复 10 点伤势；非银、非魔法武器造成的伤害 -50%（法术、神术不减）\n- 化身期间会狂暴地扑向最近的敌人；附近没有敌人时有 10% 的几率攻击殖民者和家畜\n- 冒险者 10 级起「驯服野性」：不再强制化身、不再失控，可以每天主动化身一次\n- 化身时咬伤别人有 5% 的几率传染（对方已有强力特性时不会）\n- 圣水能伤到{PAWN_objective}</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Epic</tier><kind>诅咒之力</kind><mark>Curse</mark></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_FarRealmTouched</defName>
+    <commonality>0</commonality>
+    <exclusionTags><li>LP_Curse</li></exclusionTags>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#D05050>远域之触</color>]]></label>
+        <description>群星之外的东西碰过{PAWN_nameDef}的心智，留下了一道缝。\n\n- 心灵敏感度 +40%，心灵熵上限 +20\n- 能力「心灵冲击」：前方 5 格锥形内的敌人眩晕 2 秒并受到 15 点灵能伤害，每天 3 次\n- 地图上出现敌对的夺心魔时，会先一步发出警告\n- 代价：每 5～8 天一次「远域低语」——出神 2 小时，身边 6 格内的人心情 -2；精神崩溃阈值 +5%\n- 染上的途径：被心灵震爆打倒（5%）、“逃离殖巢”开局（5%）、获得耐瑟启迪时（1%），都要求还没有强力特性</description>
+        <statOffsets>
+          <PsychicSensitivity>0.4</PsychicSensitivity>
+          <MentalBreakThreshold>0.05</MentalBreakThreshold>
+        </statOffsets>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>诅咒之力</kind><mark>Curse</mark></li>
+    </modExtensions>
+  </TraitDef>
+
+  <!-- ==================== 状态 ==================== -->
+  <HediffDef>
+    <defName>LP_DndRecord</defName>
+    <label>性格特性记录</label>
+    <description>记录复仇亡魂的凶手、兽化症与远域之触的计时（隐藏）。</description>
+    <hediffClass>LichPhylactery.Hediff_DndRecord</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <defaultLabelColor>(0.82,0.31,0.31)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_RevenantBody</defName>
+    <label>亡魂之躯</label>
+    <description>从坟墓里爬回来的身体：受到治疗的效果 -50%、自然愈合 -30%，不会挨饿，但吃东西也尝不出味道。别人看着发怵。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.75,0.45,0.45)</defaultLabelColor>
+    <stages><li><naturalHealingFactor>0.7</naturalHealingFactor><hungerRateFactor>0</hungerRateFactor></li></stages>
+  </HediffDef>
+  <HediffDef Name="LP_BeastformBase" Abstract="True">
+    <hediffClass>LichPhylactery.Hediff_Beastform</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.82,0.31,0.31)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>15000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><statFactors><MeleeDamageFactor>2</MeleeDamageFactor></statFactors><statOffsets><MoveSpeed>1</MoveSpeed></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_BeastformBase">
+    <defName>LP_Beastform_Wolf</defName>
+    <label>狼形</label>
+    <description>兽化症发作，化身为狼：近战伤害 ×2、移动速度 +1、每小时恢复 10 点伤势；非银、非魔法武器的伤害减半。</description>
+    <renderNodeProperties>
+      <li>
+        <workerClass>PawnRenderNodeWorker_AttachmentBody</workerClass>
+        <texPath>LP/DndTraits/Beast_Wolf_Body</texPath>
+        <parentTagDef>Body</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><defaultData><layer>45</layer></defaultData><dataNorth><layer>45</layer></dataNorth></drawData>
+      </li>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <texPath>LP/DndTraits/Beast_Wolf_Head</texPath>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><defaultData><layer>82</layer></defaultData></drawData>
+      </li>
+    </renderNodeProperties>
+  </HediffDef>
+  <HediffDef ParentName="LP_BeastformBase">
+    <defName>LP_Beastform_Bear</defName>
+    <label>熊形</label>
+    <description>兽化症发作，化身为熊：近战伤害 ×2、移动速度 +1、每小时恢复 10 点伤势；非银、非魔法武器的伤害减半。</description>
+    <renderNodeProperties>
+      <li>
+        <workerClass>PawnRenderNodeWorker_AttachmentBody</workerClass>
+        <texPath>LP/DndTraits/Beast_Bear_Body</texPath>
+        <parentTagDef>Body</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><defaultData><layer>45</layer></defaultData><dataNorth><layer>45</layer></dataNorth></drawData>
+      </li>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <texPath>LP/DndTraits/Beast_Bear_Head</texPath>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><defaultData><layer>82</layer></defaultData></drawData>
+      </li>
+    </renderNodeProperties>
+  </HediffDef>
+  <HediffDef ParentName="LP_BeastformBase">
+    <defName>LP_Beastform_Tiger</defName>
+    <label>虎形</label>
+    <description>兽化症发作，化身为虎：近战伤害 ×2、移动速度 +1、每小时恢复 10 点伤势；非银、非魔法武器的伤害减半。</description>
+    <renderNodeProperties>
+      <li>
+        <workerClass>PawnRenderNodeWorker_AttachmentBody</workerClass>
+        <texPath>LP/DndTraits/Beast_Tiger_Body</texPath>
+        <parentTagDef>Body</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><defaultData><layer>45</layer></defaultData><dataNorth><layer>45</layer></dataNorth></drawData>
+      </li>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <texPath>LP/DndTraits/Beast_Tiger_Head</texPath>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><defaultData><layer>82</layer></defaultData></drawData>
+      </li>
+    </renderNodeProperties>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_DT_SurgeHaste</defName>
+    <label>浪涌疾行</label>
+    <description>狂野魔法的浪涌：移动速度 +50%。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <defaultLabelColor>(0.75,0.6,1)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>2500</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><statFactors><MoveSpeed>1.5</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+
+  <!-- ==================== 心情：自身 ==================== -->
+  <ThoughtDef Name="LP_DTMoodBase" Abstract="True">
+    <workerClass>LichPhylactery.ThoughtWorker_DndMood</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_DTMoodBase">
+    <defName>LP_DT_Orderly</defName>
+    <stages><li><label>秩序井然</label><description>殖民地有人主事，规矩立得起来。</description><baseMoodEffect>3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_DTMoodBase">
+    <defName>LP_DT_NoSchedule</defName>
+    <stages><li><label>毫无章法</label><description>什么时候干活、什么时候睡觉都没个准，这样下去不行。</description><baseMoodEffect>-3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_DTMoodBase">
+    <defName>LP_DT_Restrained</defName>
+    <stages><li><label>被管束</label><description>一直被人呼来喝去地征召着，我快受不了了。</description><baseMoodEffect>-4</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_DTMoodBase">
+    <defName>LP_DT_UndeadUnease</defName>
+    <stages><li><label>亵渎的造物</label><description>殖民地里走着被强行唤醒的死者。这不对。</description><baseMoodEffect>-2</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_DTMoodBase">
+    <defName>LP_DT_DarkShelter</defName>
+    <stages><li><label>黑暗庇护</label><description>有巫妖坐镇，谁也别想动我们。</description><baseMoodEffect>2</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_DTMoodBase">
+    <defName>LP_DT_DragonDread</defName>
+    <stages><li><label>龙威压顶</label><description>附近有龙。我的手一直在抖。</description><baseMoodEffect>-6</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_DTMoodBase">
+    <defName>LP_DT_LichDevotee</defName>
+    <stages><li><label>侍奉不朽者</label><description>殖民地有一位巫妖。能侍奉不朽者，是我的荣幸。</description><baseMoodEffect>4</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_DTMoodBase">
+    <defName>LP_DT_UndeadAbhor</defName>
+    <stages><li><label>与不死同居</label><description>我发誓要让死者安息，现在却和它们住在一起。</description><baseMoodEffect>-6</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_DTMoodBase">
+    <defName>LP_DT_Cosmopolitan</defName>
+    <stages>
+      <li><label>多族同居</label><description>殖民地里有各种各样的人，真热闹。</description><baseMoodEffect>1</baseMoodEffect></li>
+      <li><label>多族同居</label><description>殖民地里有各种各样的人，真热闹。</description><baseMoodEffect>2</baseMoodEffect></li>
+      <li><label>多族同居</label><description>殖民地里有各种各样的人，真热闹。</description><baseMoodEffect>3</baseMoodEffect></li>
+      <li><label>多族同居</label><description>殖民地里有各种各样的人，真热闹。</description><baseMoodEffect>4</baseMoodEffect></li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_DTMoodBase">
+    <defName>LP_DT_PureMajority</defName>
+    <stages>
+      <li><label>同族当家</label><description>殖民地里大多是我的同族。这样才安心。</description><baseMoodEffect>3</baseMoodEffect></li>
+      <li><label>异族环伺</label><description>殖民地里尽是些外族人。</description><baseMoodEffect>-3</baseMoodEffect></li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_DTMoodBase">
+    <defName>LP_DT_FlayerNear</defName>
+    <stages><li><label>殖巢的回忆</label><description>这附近有夺心魔。我又闻到了殖巢里的味道。</description><baseMoodEffect>-4</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_DTMoodBase">
+    <defName>LP_DT_DragonPatron</defName>
+    <stages><li><label>侍奉龙裔</label><description>殖民地有龙裔。能侍奉龙的血脉，祖先会为我骄傲。</description><baseMoodEffect>4</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_DTMoodBase">
+    <defName>LP_DT_Outdoors</defName>
+    <stages><li><label>天地之间</label><description>风吹在脸上，脚下是泥土。这才是活着。</description><baseMoodEffect>2</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_DTMoodBase">
+    <defName>LP_DT_ArcaneCraving</defName>
+    <stages><li><label>秘法渴求</label><description>好几天没碰过魔法药水或卷轴了。我想念那种感觉。</description><baseMoodEffect>-6</baseMoodEffect></li></stages>
+  </ThoughtDef>
+
+  <!-- ==================== 心情：记忆 ==================== -->
+  <ThoughtDef>
+    <defName>LP_DT_GoodDeed</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>5</stackLimit>
+    <stackedEffectMultiplier>0.75</stackedEffectMultiplier>
+    <stages><li><label>善举</label><description>我帮了一个需要帮助的人。</description><baseMoodEffect>2</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_DT_Mercy</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>5</stackLimit>
+    <stackedEffectMultiplier>0.75</stackedEffectMultiplier>
+    <stages><li><label>手下留情</label><description>我把敌人打倒了，但没要{PAWN_possessive}的命。</description><baseMoodEffect>2</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_DT_Conscience</defName>
+    <durationDays>5</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages><li><label>良心不安</label><description>我们对那个人做的事……我睡不着。</description><baseMoodEffect>-5</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_DT_Dragonslain</defName>
+    <durationDays>10</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages><li><label>斩落巨龙</label><description>那条龙倒下了。我的誓言兑现了。</description><baseMoodEffect>10</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_DT_DragonLost</defName>
+    <durationDays>10</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages><li><label>龙的陨落</label><description>殖民地的龙死了。我没能守住{PAWN_objective}。</description><baseMoodEffect>-15</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_DT_UnwantedBuff</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages><li><label>被施了法</label><description>有人往我身上施法。我不喜欢这样，哪怕是“为我好”。</description><baseMoodEffect>-3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_DT_ArcaneFix</defName>
+    <durationDays>2</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>秘法滋润</label><description>魔力流过全身，太舒服了。</description><baseMoodEffect>4</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_DT_CallOfAdventure</defName>
+    <durationDays>2</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>冒险的召唤</label><description>宝藏就在那里，等着我去拿！</description><baseMoodEffect>5</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_DT_FarWhisper</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>远域低语</label><description>那个人刚才一直在念叨着什么，听得我后背发凉。</description><baseMoodEffect>-2</baseMoodEffect></li></stages>
+  </ThoughtDef>
+
+  <!-- ==================== 好感 ==================== -->
+  <ThoughtDef Name="LP_DTOpinionBase" Abstract="True">
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <workerClass>LichPhylactery.ThoughtWorker_DndOpinion</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_DTOpinionBase">
+    <defName>LP_DT_DragonbornDistrust</defName>
+    <stages><li><label>屠龙之誓</label><baseOpinionOffset>-10</baseOpinionOffset></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_DTOpinionBase">
+    <defName>LP_DT_GiantDevotion</defName>
+    <stages><li><label>巨人仆从</label><baseOpinionOffset>15</baseOpinionOffset></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_DTOpinionBase">
+    <defName>LP_DT_GiantHatred</defName>
+    <stages><li><label>巨人杀手</label><baseOpinionOffset>-10</baseOpinionOffset></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_DTOpinionBase">
+    <defName>LP_DT_PureBlood</defName>
+    <stages>
+      <li><label>同族</label><baseOpinionOffset>10</baseOpinionOffset></li>
+      <li><label>异族</label><baseOpinionOffset>-10</baseOpinionOffset></li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_DTOpinionBase">
+    <defName>LP_DT_GithKinship</defName>
+    <stages><li><label>殖巢的宿敌</label><baseOpinionOffset>10</baseOpinionOffset></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_DTOpinionBase">
+    <defName>LP_DT_ExileLich</defName>
+    <stages><li><label>背弃的女王</label><baseOpinionOffset>-10</baseOpinionOffset></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_DTOpinionBase">
+    <defName>LP_DT_MagicDistrust</defName>
+    <stages><li><label>会施法的人</label><baseOpinionOffset>-10</baseOpinionOffset></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_DTOpinionBase">
+    <defName>LP_DT_RevenantDread</defName>
+    <stages>
+      <li><label>亡魂之躯</label><baseOpinionOffset>-10</baseOpinionOffset></li>
+      <li><label>亡魂之躯</label><baseOpinionOffset>-15</baseOpinionOffset></li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ==================== 能力 ==================== -->
+  <AbilityDef>
+    <defName>LP_DT_PsychicShock</defName>
+    <label>心灵冲击</label>
+    <description>把远域的低语灌进别人的脑子：前方 5 格锥形内的敌人眩晕 2 秒并受到 15 点灵能伤害。每天 3 次（用完后 1 天恢复）。</description>
+    <iconPath>LP/DndTraits/PsychicShock</iconPath>
+    <charges>3</charges>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <hostile>true</hostile>
+    <aiCanUse>true</aiCanUse>
+    <ai_IsOffensive>true</ai_IsOffensive>
+    <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+    <sendMessageOnCooldownComplete>false</sendMessageOnCooldownComplete>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>5</range>
+      <warmupTime>0.4</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetLocations>true</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_DndAbility"><effect>shock</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef>
+    <defName>LP_DT_Beastshape</defName>
+    <label>化身野兽</label>
+    <description>驯服了野性的兽化症患者可以主动化身 6 小时，不会失控。每天 1 次。</description>
+    <iconPath>LP/DndTraits/Beastshape</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <aiCanUse>false</aiCanUse>
+    <targetRequired>false</targetRequired>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <sendMessageOnCooldownComplete>false</sendMessageOnCooldownComplete>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <showPsycastEffects>false</showPsycastEffects>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>0.5</warmupTime>
+      <range>0.9</range>
+      <drawAimPie>false</drawAimPie>
+      <requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetSelf>true</canTargetSelf><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_DndAbility"><effect>shape</effect></li></comps>
+  </AbilityDef>
+</Defs>

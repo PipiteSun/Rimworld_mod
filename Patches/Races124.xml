@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.24.0 种族物品进货：黑网必带一盏神灯；红袍商人约20%带神灯；同盟商队卖象牙号角、风羽披风；红袍卖食人魔大棒。
+     炎魔之心、寒冰魔尾刺、火鞭等战利品由黑网与红袍收购。 -->
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/TraderKindDef[defName="LP_Caravan_BlackNetwork"]/stockGenerators</xpath>
+    <value>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_WonderLamp</thingDef><countRange>1~1</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_IceDevilStinger</thingDef><countRange>-1~2</countRange><price>Expensive</price></li>
+      <li Class="StockGenerator_BuyTradeTag"><tag>LP_FiendLoot</tag></li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/TraderKindDef[defName="LP_Caravan_RedRobe"]/stockGenerators</xpath>
+    <value>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_WonderLamp</thingDef><countRange>-3~1</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_OgreClub</thingDef><countRange>-1~1</countRange></li>
+      <li Class="StockGenerator_BuyTradeTag"><tag>LP_FiendLoot</tag></li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/TraderKindDef[defName="LP_Caravan_FaerunGoods"]/stockGenerators</xpath>
+    <value>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_IvoryHorn</thingDef><countRange>-2~1</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_FeatherCloak</thingDef><countRange>-2~1</countRange></li>
+    </value>
+  </Operation>
+</Patch>

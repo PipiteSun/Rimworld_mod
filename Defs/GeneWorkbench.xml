@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.26.0 基因工作台：5×5，合并原版基因提取器、基因装配器、基因库，并可定向提取单个基因。装配规则（复杂度、代谢、古菌胶囊、时长）全部沿用原版。 -->
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_GeneWorkbench</defName>
+    <label>基因工作台</label>
+    <description>一台把基因提取器、基因装配器和基因库合在一起的大型生物技术工作台。\n\n装配：和原版基因装配器一样，用基因组组装异种胚芽；复杂度、代谢、古菌胶囊和耗时的规则都不变。附近的原版基因库和基因处理器仍然可以连接到它。\n\n基因库：自带8格基因组存储，有电时防止基因组老化并缓慢修复。\n\n定向提取：指定一个殖民者、奴隶或囚犯和他身上的一个基因，被提取者进入工作台半天后，产出只含这个基因的基因组。和原版一样，基因不会从人身上移除，被提取者会受到基因缺失冲击并进入12～20天的基因重构期；古菌基因无法提取。</description>
+    <thingClass>LichPhylactery.Building_GeneWorkbench</thingClass>
+    <containedPawnsSelectable>true</containedPawnsSelectable>
+    <graphicData>
+      <texPath>GeneWorkbench/GeneWorkbench</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(5,5)</drawSize>
+      <shadowData>
+        <volume>(4.6, 0.8, 4.4)</volume>
+      </shadowData>
+    </graphicData>
+    <size>(5,5)</size>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>42</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <castEdgeShadows>true</castEdgeShadows>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <tickerType>Normal</tickerType>
+    <rotatable>true</rotatable>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0, 0, 3)</interactionCellOffset>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <canOverlapZones>false</canOverlapZones>
+    <designationCategory>Biotech</designationCategory>
+    <uiOrder>2101</uiOrder>
+    <researchPrerequisites>
+      <li>LP_GeneWorkbenchTech</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <building>
+      <ai_chillDestination>false</ai_chillDestination>
+      <buildingTags>
+        <li>Biotech</li>
+      </buildingTags>
+      <workTableRoomRole>Laboratory</workTableRoomRole>
+    </building>
+    <statBases>
+      <MaxHitPoints>800</MaxHitPoints>
+      <WorkToBuild>26000</WorkToBuild>
+      <Mass>150</Mass>
+      <Flammability>0.5</Flammability>
+      <AssemblySpeedFactor>1.0</AssemblySpeedFactor>
+    </statBases>
+    <costList>
+      <Steel>400</Steel>
+      <ComponentIndustrial>10</ComponentIndustrial>
+      <ComponentSpacer>4</ComponentSpacer>
+    </costList>
+    <inspectorTabs>
+      <li>ITab_ContentsGenepackHolder</li>
+    </inspectorTabs>
+    <descriptionHyperlinks>
+      <ThingDef>GeneAssembler</ThingDef>
+      <ThingDef>GeneExtractor</ThingDef>
+      <ThingDef>GeneBank</ThingDef>
+      <ThingDef>GeneProcessor</ThingDef>
+      <ThingDef>Genepack</ThingDef>
+      <ThingDef>Xenogerm</ThingDef>
+    </descriptionHyperlinks>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+    </placeWorkers>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>400</basePowerConsumption>
+        <idlePowerDraw>100</idlePowerDraw>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_GenepackContainer">
+        <compClass>LichPhylactery.CompLP_GenepackContainer</compClass>
+        <maxCapacity>8</maxCapacity>
+      </li>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>GeneBank</li>
+          <li>GeneProcessor</li>
+        </linkableFacilities>
+      </li>
+      <li Class="LichPhylactery.CompProperties_GeneWorkbench"/>
+    </comps>
+  </ThingDef>
+
+  <JobDef>
+    <defName>LP_EnterGeneWorkbench</defName>
+    <driverClass>LichPhylactery.JobDriver_EnterGeneWorkbench</driverClass>
+    <reportString>正在进入TargetA。</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+
+  <JobDef>
+    <defName>LP_CarryToGeneWorkbench</defName>
+    <driverClass>LichPhylactery.JobDriver_CarryToGeneWorkbench</driverClass>
+    <reportString>正在把TargetB带到TargetA。</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+
+  <WorkGiverDef>
+    <defName>LP_CarryToGeneWorkbench</defName>
+    <label>带到基因工作台</label>
+    <giverClass>LichPhylactery.WorkGiver_CarryToGeneWorkbench</giverClass>
+    <workType>Hauling</workType>
+    <verb>提取基因</verb>
+    <gerund>提取基因于</gerund>
+    <priorityInType>90</priorityInType>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+    <canBeDoneByMechs>false</canBeDoneByMechs>
+  </WorkGiverDef>
+
+  <WorkGiverDef>
+    <defName>LP_CreateXenogermWorkbench</defName>
+    <label>在基因工作台创建异种胚芽</label>
+    <giverClass>LichPhylactery.WorkGiver_CreateXenogermWorkbench</giverClass>
+    <workType>Research</workType>
+    <verb>创建异种胚芽</verb>
+    <gerund>创建异种胚芽于</gerund>
+    <priorityInType>120</priorityInType>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+    <canBeDoneByMechs>false</canBeDoneByMechs>
+  </WorkGiverDef>
+</Defs>

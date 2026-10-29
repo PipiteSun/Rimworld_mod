@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.58.5 血肉艺术品与皮雕：照原版小 / 大 / 巨型雕塑（Buildings_Art.xml）各做三档，都在原版艺创台（TableSculpting）上制作，用艺术技能、出品质、带艺术描述。
+     皮雕是普通的材料作品：布料（Fabric）或皮革（Leathery），用量 50 / 100 / 400，贴图是灰阶、按材料色染色，配方由 recipeMaker 自动生成（Make_LP_LeatherCarving*）。
+     生肉不是材料，血肉艺术品不能走 costStuffCount：不写 recipeMaker，另写三条配方吃任意生肉（MeatRaw 分类，默认不勾人肉）50 / 100 / 400 块；
+     贴图固定色；没有材料就没有自动市值，MarketValue 按“同量生肉 + 工作量”手填。成品用盐与蜡定型，不会腐烂。
+     贴图脚本 ArtSource/RaceArt/draw_artworks_158.py → Textures/LP/Art；自检 Source/ArtworkChecks.cs（Test.ps1 -Only Artworks）。 -->
+<Defs>
+
+  <!-- ==================== 艺术描述 ==================== -->
+  <RulePackDef>
+    <defName>LP_ArtDescription_FleshArt</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>physical_description_root->这件[fleshart][depicts]的是[image]。[desc_sentence_group]</li>
+        <li>physical_description_root->这件[fleshart]用拧结的肌束向我们[depiction]了[image]。[desc_sentence_group]</li>
+        <li>physical_description_root->在这件[fleshart]上，层叠的血肉[depiction]了[image]。[desc_sentence_group]</li>
+        <li>physical_description_root->这件[fleshart]以筋络和骨片拼出了[image]。[desc_sentence_group]</li>
+        <li>fleshart->血肉艺术品</li>
+        <li>fleshart->血肉雕塑</li>
+        <li>fleshart->肉塑</li>
+        <li>fleshart->作品</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <RulePackDef>
+    <defName>LP_ArtDescription_LeatherCarving</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>physical_description_root->这件[leatherart][depicts]的是[image]。[desc_sentence_group]</li>
+        <li>physical_description_root->这件[leatherart]上压出的花纹向我们[depiction]了[image]。[desc_sentence_group]</li>
+        <li>physical_description_root->在这件[leatherart]上，拼缝的皮片[depiction]了[image]。[desc_sentence_group]</li>
+        <li>physical_description_root->这件[leatherart]用刻刀和缝线描绘了[image]。[desc_sentence_group]</li>
+        <li>leatherart->皮雕</li>
+        <li>leatherart->皮艺作品</li>
+        <li>leatherart->缝制雕像</li>
+        <li>leatherart->作品</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <!-- ==================== 未完成品 ==================== -->
+  <ThingDef ParentName="UnfinishedBase">
+    <defName>LP_UnfinishedFleshArt</defName>
+    <label>未完成的血肉艺术品</label>
+    <description>一团正在塑形的生肉，骨片已经插好，筋络还没缠完。</description>
+    <graphicData>
+      <texPath>LP/Art/UnfinishedFleshArt</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <stuffCategories Inherit="false" />
+  </ThingDef>
+
+  <ThingDef ParentName="UnfinishedBase">
+    <defName>LP_UnfinishedLeatherCarving</defName>
+    <label>未完成的皮雕</label>
+    <description>一张刻了一半、缝了一半的皮料。</description>
+    <graphicData>
+      <texPath>LP/Art/UnfinishedLeatherCarving</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <stuffCategories Inherit="false">
+      <li>Fabric</li>
+      <li>Leathery</li>
+    </stuffCategories>
+  </ThingDef>
+
+  <!-- ==================== 皮雕（布料 / 皮革） ==================== -->
+  <!-- 不继承 SculptureBase：子 Def 的 comps 列表只会追加，会多出第二个 CompProperties_Art；这里照抄 SculptureBase 换掉描述生成器。 -->
+  <ThingDef Name="LP_LeatherCarvingBase" ParentName="ArtBuildingBase" Abstract="True">
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsArt</li>
+    </thingCategories>
+    <statBases>
+      <SellPriceFactor>1.10</SellPriceFactor>
+    </statBases>
+    <placeWorkers>
+      <li>PlaceWorker_MeditationOffsetBuildingsNear</li>
+    </placeWorkers>
+    <tradeTags>
+      <li>Art</li>
+    </tradeTags>
+    <ideoBuildingNamerBase MayRequire="Ludeon.RimWorld.Ideology">NamerIdeoSculpture</ideoBuildingNamerBase>
+    <thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
+    <rotatable>false</rotatable>
+    <stuffCategories>
+      <li>Fabric</li>
+      <li>Leathery</li>
+    </stuffCategories>
+    <comps>
+      <li Class="CompProperties_Art">
+        <nameMaker>NamerArtSculpture</nameMaker>
+        <descriptionMaker>LP_ArtDescription_LeatherCarving</descriptionMaker>
+        <canBeEnjoyedAsArt>true</canBeEnjoyedAsArt>
+      </li>
+    </comps>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Artistic</workSkill>
+      <unfinishedThingDef>LP_UnfinishedLeatherCarving</unfinishedThingDef>
+      <effectWorking>Tailor</effectWorking>
+      <soundWorking>Recipe_Tailor</soundWorking>
+      <recipeUsers>
+        <li>TableSculpting</li>
+      </recipeUsers>
+      <defaultIngredientFilter>
+        <categories>
+          <li>Root</li>
+        </categories>
+      </defaultIngredientFilter>
+    </recipeMaker>
+    <building>
+      <paintable>true</paintable>
+    </building>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_LeatherCarvingBase">
+    <defName>LP_LeatherCarvingSmall</defName>
+    <label>小皮雕</label>
+    <description>把一块躯干大小的布料或皮革刻花、压纹、缝制成的艺术品。比石木雕塑轻，也更怕火。</description>
+    <graphicData>
+      <graphicClass>Graphic_Random</graphicClass>
+      <texPath>LP/Art/LeatherCarvingSmall</texPath>
+    </graphicData>
+    <fillPercent>0.35</fillPercent>
+    <statBases>
+      <MaxHitPoints>70</MaxHitPoints>
+      <Mass>1.5</Mass>
+      <Beauty>50</Beauty>
+      <WorkToMake>18000</WorkToMake>
+      <Flammability>1.2</Flammability>
+      <StyleDominance MayRequire="Ludeon.RimWorld.Ideology">10</StyleDominance>
+    </statBases>
+    <costStuffCount>50</costStuffCount>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_LeatherCarvingBase">
+    <defName>LP_LeatherCarvingLarge</defName>
+    <label>大皮雕</label>
+    <description>一人高的皮艺作品：在骨架上蒙皮缝合，表面刻满花纹。比石木雕塑轻，也更怕火。</description>
+    <castEdgeShadows>true</castEdgeShadows>
+    <graphicData>
+      <graphicClass>Graphic_Random</graphicClass>
+      <texPath>LP/Art/LeatherCarvingLarge</texPath>
+      <drawSize>(3,3)</drawSize>
+    </graphicData>
+    <uiIconScale>0.666</uiIconScale>
+    <fillPercent>0.5</fillPercent>
+    <statBases>
+      <MaxHitPoints>120</MaxHitPoints>
+      <Mass>3.5</Mass>
+      <Beauty>100</Beauty>
+      <WorkToMake>30000</WorkToMake>
+      <Flammability>1.2</Flammability>
+      <StyleDominance MayRequire="Ludeon.RimWorld.Ideology">20</StyleDominance>
+    </statBases>
+    <costStuffCount>100</costStuffCount>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_LeatherCarvingBase">
+    <defName>LP_LeatherCarvingGrand</defName>
+    <label>巨型皮雕</label>
+    <description>用几十张皮料拼缝成的巨大作品，足以撑满一个房间。比石木雕塑轻，也更怕火。</description>
+    <castEdgeShadows>true</castEdgeShadows>
+    <graphicData>
+      <graphicClass>Graphic_Random</graphicClass>
+      <texPath>LP/Art/LeatherCarvingGrand</texPath>
+      <drawSize>(4,4)</drawSize>
+    </graphicData>
+    <uiIconScale>0.6666</uiIconScale>
+    <fillPercent>0.5</fillPercent>
+    <size>(2,2)</size>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>240</MaxHitPoints>
+      <Mass>14</Mass>
+      <Beauty>400</Beauty>
+      <WorkToMake>105000</WorkToMake>
+      <Flammability>1.2</Flammability>
+      <StyleDominance MayRequire="Ludeon.RimWorld.Ideology">40</StyleDominance>
+    </statBases>
+    <costStuffCount>400</costStuffCount>
+  </ThingDef>
+
+  <!-- ==================== 血肉艺术品（生肉） ==================== -->
+  <ThingDef Name="LP_FleshArtBase" ParentName="ArtBuildingBase" Abstract="True">
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsArt</li>
+    </thingCategories>
+    <statBases>
+      <SellPriceFactor>1.10</SellPriceFactor>
+    </statBases>
+    <placeWorkers>
+      <li>PlaceWorker_MeditationOffsetBuildingsNear</li>
+    </placeWorkers>
+    <tradeTags>
+      <li>Art</li>
+    </tradeTags>
+    <ideoBuildingNamerBase MayRequire="Ludeon.RimWorld.Ideology">NamerIdeoSculpture</ideoBuildingNamerBase>
+    <rotatable>false</rotatable>
+    <comps>
+      <li Class="CompProperties_Art">
+        <nameMaker>NamerArtSculpture</nameMaker>
+        <descriptionMaker>LP_ArtDescription_FleshArt</descriptionMaker>
+        <canBeEnjoyedAsArt>true</canBeEnjoyedAsArt>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_FleshArtBase">
+    <defName>LP_FleshArtSmall</defName>
+    <label>小血肉艺术品</label>
+    <description>用生肉、筋络和骨片塑成的躯干大小的作品，以盐与蜡定型，不会腐烂。观者往往说不清自己是被打动还是被冒犯。</description>
+    <graphicData>
+      <graphicClass>Graphic_Random</graphicClass>
+      <texPath>LP/Art/FleshArtSmall</texPath>
+    </graphicData>
+    <fillPercent>0.35</fillPercent>
+    <statBases>
+      <MaxHitPoints>80</MaxHitPoints>
+      <Mass>3</Mass>
+      <Beauty>50</Beauty>
+      <WorkToMake>18000</WorkToMake>
+      <MarketValue>165</MarketValue>
+      <StyleDominance MayRequire="Ludeon.RimWorld.Ideology">10</StyleDominance>
+    </statBases>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_FleshArtBase">
+    <defName>LP_FleshArtLarge</defName>
+    <label>大血肉艺术品</label>
+    <description>一人高的血肉作品：肌束缠绕在骨架上，以盐与蜡定型，不会腐烂。观者往往说不清自己是被打动还是被冒犯。</description>
+    <castEdgeShadows>true</castEdgeShadows>
+    <graphicData>
+      <graphicClass>Graphic_Random</graphicClass>
+      <texPath>LP/Art/FleshArtLarge</texPath>
+      <drawSize>(3,3)</drawSize>
+    </graphicData>
+    <uiIconScale>0.666</uiIconScale>
+    <fillPercent>0.5</fillPercent>
+    <statBases>
+      <MaxHitPoints>140</MaxHitPoints>
+      <Mass>7</Mass>
+      <Beauty>100</Beauty>
+      <WorkToMake>30000</WorkToMake>
+      <MarketValue>330</MarketValue>
+      <StyleDominance MayRequire="Ludeon.RimWorld.Ideology">20</StyleDominance>
+    </statBases>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_FleshArtBase">
+    <defName>LP_FleshArtGrand</defName>
+    <label>巨型血肉艺术品</label>
+    <description>用成堆生肉和整副骨架堆砌的巨大作品，足以撑满一个房间，以盐与蜡定型，不会腐烂。观者往往说不清自己是被打动还是被冒犯。</description>
+    <castEdgeShadows>true</castEdgeShadows>
+    <graphicData>
+      <graphicClass>Graphic_Random</graphicClass>
+      <texPath>LP/Art/FleshArtGrand</texPath>
+      <drawSize>(4,4)</drawSize>
+    </graphicData>
+    <uiIconScale>0.6666</uiIconScale>
+    <fillPercent>0.5</fillPercent>
+    <size>(2,2)</size>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>280</MaxHitPoints>
+      <Mass>28</Mass>
+      <Beauty>400</Beauty>
+      <WorkToMake>105000</WorkToMake>
+      <MarketValue>1180</MarketValue>
+      <StyleDominance MayRequire="Ludeon.RimWorld.Ideology">40</StyleDominance>
+    </statBases>
+  </ThingDef>
+
+  <!-- 血肉艺术品配方：任意生肉（默认不勾人肉），工作量由成品的 WorkToMake 决定。 -->
+  <RecipeDef Name="LP_MakeFleshArtBase" Abstract="True">
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Artistic</workSkill>
+    <unfinishedThingDef>LP_UnfinishedFleshArt</unfinishedThingDef>
+    <effectWorking>ButcherFlesh</effectWorking>
+    <soundWorking>Recipe_ButcherCorpseFlesh</soundWorking>
+    <recipeUsers>
+      <li>TableSculpting</li>
+    </recipeUsers>
+    <fixedIngredientFilter>
+      <categories>
+        <li>MeatRaw</li>
+      </categories>
+    </fixedIngredientFilter>
+    <defaultIngredientFilter>
+      <categories>
+        <li>MeatRaw</li>
+      </categories>
+      <disallowedThingDefs>
+        <li>Meat_Human</li>
+      </disallowedThingDefs>
+    </defaultIngredientFilter>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LP_MakeFleshArtBase">
+    <defName>LP_Make_FleshArtSmall</defName>
+    <label>制作小血肉艺术品</label>
+    <description>用 50 块生肉塑一件小血肉艺术品。</description>
+    <jobString>塑造血肉中。</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>MeatRaw</li>
+          </categories>
+        </filter>
+        <count>50</count>
+      </li>
+    </ingredients>
+    <products>
+      <LP_FleshArtSmall>1</LP_FleshArtSmall>
+    </products>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LP_MakeFleshArtBase">
+    <defName>LP_Make_FleshArtLarge</defName>
+    <label>制作大血肉艺术品</label>
+    <description>用 100 块生肉塑一件大血肉艺术品。</description>
+    <jobString>塑造血肉中。</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>MeatRaw</li>
+          </categories>
+        </filter>
+        <count>100</count>
+      </li>
+    </ingredients>
+    <products>
+      <LP_FleshArtLarge>1</LP_FleshArtLarge>
+    </products>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LP_MakeFleshArtBase">
+    <defName>LP_Make_FleshArtGrand</defName>
+    <label>制作巨型血肉艺术品</label>
+    <description>用 400 块生肉塑一件巨型血肉艺术品。</description>
+    <jobString>塑造血肉中。</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>MeatRaw</li>
+          </categories>
+        </filter>
+        <count>400</count>
+      </li>
+    </ingredients>
+    <products>
+      <LP_FleshArtGrand>1</LP_FleshArtGrand>
+    </products>
+  </RecipeDef>
+
+</Defs>

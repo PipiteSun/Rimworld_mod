@@ -1,0 +1,1 @@
+<Defs><WorkGiverDef><defName>LP_DoRituals</defName><label>在死灵仪式台工作</label><giverClass>WorkGiver_DoBill</giverClass><workType>Crafting</workType><priorityInType>90</priorityInType><fixedBillGiverDefs><li>LP_Altar</li></fixedBillGiverDefs><verb>执行</verb><gerund>正在执行死灵仪式</gerund><requiredCapacities><li>Manipulation</li></requiredCapacities></WorkGiverDef></Defs>

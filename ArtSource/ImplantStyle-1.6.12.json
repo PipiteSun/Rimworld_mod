@@ -1,0 +1,55 @@
+{
+  "mode": "built-in image_gen",
+  "transparent_background": true,
+  "date": "2026-10-22",
+  "assets": [
+    {
+      "key": "Implants/BlindSight",
+      "source": "C:\\Users\\25390\\.codex\\generated_images\\01a15bd6-0e61-7813-acb5-7723c1a69350\\exec-a5f03252-e217-40cd-a92d-ecbb5083b7e3.png",
+      "prompt": "Use case: style-transfer. Redraw the attached game sprite to closely fit VANILLA RIMWORLD item art, far simpler than the reference. Flat 2D orthographic cutout, chunky smooth near-black contour, restrained desaturated palette, broad solid fills, ONLY one flat shadow tone per material. Extremely low visual detail, readable at 32x32 pixels. Absolutely no painterly facets, texture, gradients, gloss, luminous effects, realistic anatomy, fine veins, intricate filigree, cast shadow, background, text or labels. Genuine transparent background. One centered isolated item on square canvas with 12% clear margin. Preserve the item identity, simplify its construction drastically. Pale bone-white round artificial eyeball with a flat muted ice-blue iris disk, simple dark pupil, a plain gray attachment band and one short burgundy nerve. At most one small dark vein stroke. Large clean connected shapes; no shiny gem, no mechanical rivets. Whole object spans 70% of square.",
+      "size": 256
+    },
+    {
+      "key": "Implants/WitheringHand",
+      "source": "C:\\Users\\25390\\.codex\\generated_images\\01a15bd6-0e61-7813-acb5-7723c1a69350\\exec-f16961aa-50ff-4084-8797-3fa1eb254c41.png",
+      "prompt": "Use case: style-transfer. Redraw the attached game sprite to closely fit VANILLA RIMWORLD item art, far simpler than the reference. Flat 2D orthographic cutout, chunky smooth near-black contour, restrained desaturated palette, broad solid fills, ONLY one flat shadow tone per material. Extremely low visual detail, readable at 32x32 pixels. Absolutely no painterly facets, texture, gradients, gloss, luminous effects, realistic anatomy, fine veins, intricate filigree, cast shadow, background, text or labels. Genuine transparent background. One centered isolated item on square canvas with 12% clear margin. Preserve the item identity, simplify its construction drastically. One whole necromantic arm, shoulder at upper left and mitten-like hand at lower right. Two simple broad burgundy flesh sections, two ivory bone plates, two plain gray joint bands. Hand is a compact simple silhouette with three short finger separations and a single small muted icy blue end patch. NO separate tiny finger bones, NO tendon striations, NO claws. Compact diagonal item.",
+      "size": 256
+    },
+    {
+      "key": "Implants/DeadPersonality",
+      "source": "C:\\Users\\25390\\.codex\\generated_images\\01a15bd6-0e61-7813-acb5-7723c1a69350\\exec-edb2f951-dc51-4e1a-a003-675b6f267a51.png",
+      "prompt": "Use case: style-transfer. Redraw the attached game sprite to closely fit VANILLA RIMWORLD item art, far simpler than the reference. Flat 2D orthographic cutout, chunky smooth near-black contour, restrained desaturated palette, broad solid fills, ONLY one flat shadow tone per material. Extremely low visual detail, readable at 32x32 pixels. Absolutely no painterly facets, texture, gradients, gloss, luminous effects, realistic anatomy, fine veins, intricate filigree, cast shadow, background, text or labels. Genuine transparent background. One centered isolated item on square canvas with 12% clear margin. Preserve the item identity, simplify its construction drastically. One small artificial brain with two blunt lobes, dusty gray-mauve flesh, only three thick curved groove lines in total, one tiny dull brass circular coupling with purple center between lobes, one short burgundy connection stub. Near-symmetric compact shape angled slightly. NO ornate star, NO gold circuitry, NO glossy highlights.",
+      "size": 256
+    },
+    {
+      "key": "Implants/ShadowLeg",
+      "source": "C:\\Users\\25390\\.codex\\generated_images\\01a15bd6-0e61-7813-acb5-7723c1a69350\\exec-d25e5d20-a075-48a0-ac26-1eecdf702926.png",
+      "prompt": "Use case: style-transfer. Redraw the attached game sprite to closely fit VANILLA RIMWORLD item art, far simpler than the reference. Flat 2D orthographic cutout, chunky smooth near-black contour, restrained desaturated palette, broad solid fills, ONLY one flat shadow tone per material. Extremely low visual detail, readable at 32x32 pixels. Absolutely no painterly facets, texture, gradients, gloss, luminous effects, realistic anatomy, fine veins, intricate filigree, cast shadow, background, text or labels. Genuine transparent background. One centered isolated item on square canvas with 12% clear margin. Preserve the item identity, simplify its construction drastically. One whole simple artificial leg, slightly bent at knee, thigh at upper left and blunt foot lower right. Two broad ivory bone casing shapes around charcoal-purple flesh, two flat gray connecting bands, one muted purple strip. Foot is a blunt boot-like simple shape without drawn toes. NO exposed tendons, NO ribbed detail, NO wisps. Compact diagonal item.",
+      "size": 256
+    },
+    {
+      "key": "Worn/BlindSightMark",
+      "source": "C:\\Users\\25390\\.codex\\generated_images\\01a15bd6-0e61-7813-acb5-7723c1a69350\\exec-16fca507-9f2e-4331-ae36-693bdb45a3dc.png",
+      "prompt": "Use case: style-transfer. Redraw this transparent pawn-overlay texture to match VANILLA RIMWORLD graphics. Severe simplification, clear bold near-black outer contour, flat muted colors, at most one flat shadow shape per material. Smooth clean shapes intended to be just a few pixels on a pawn. NOT ornate fantasy icon art. No gradients, painterly detail, textured surfaces, glossy glints, particle effects, bloom, text or background. Genuine transparent square canvas. Do not draw a character or body. Preserve composition position, center alignment, occupied proportions and transparent margins of the reference because existing attachment coordinates depend on them. Single small horizontally oval icy artificial eye plate centered, silhouette spans x=12%-88%, y=33%-67% of square. One dull gray rim outlined dark, a single flat desaturated ice-blue lens, tiny dark center. Plain three-four-color structure with NO fractures, facets or highlights. Horizontal eye alone.",
+      "size": 128
+    },
+    {
+      "key": "Worn/WitheringMark",
+      "source": "C:\\Users\\25390\\.codex\\generated_images\\01a15bd6-0e61-7813-acb5-7723c1a69350\\exec-fbcf676a-18c6-4746-a3e7-ce2bd8d7c765.png",
+      "prompt": "Use case: style-transfer. Redraw this transparent pawn-overlay texture to match VANILLA RIMWORLD graphics. Severe simplification, clear bold near-black outer contour, flat muted colors, at most one flat shadow shape per material. Smooth clean shapes intended to be just a few pixels on a pawn. NOT ornate fantasy icon art. No gradients, painterly detail, textured surfaces, glossy glints, particle effects, bloom, text or background. Genuine transparent square canvas. Do not draw a character or body. Preserve composition position, center alignment, occupied proportions and transparent margins of the reference because existing attachment coordinates depend on them. Vertical narrow flesh implant seam, x=40%-60%, y=10%-90%, centered. One continuous blunt burgundy strip with a SINGLE muted blue zigzag down its center and TWO simple flat gray staples. Barely branched, not a flame. NO barbs, thorns, tiny veins or flared tendrils. Designed as small shoulder/arm marking.",
+      "size": 128
+    },
+    {
+      "key": "Worn/MindMark",
+      "source": "C:\\Users\\25390\\.codex\\generated_images\\01a15bd6-0e61-7813-acb5-7723c1a69350\\exec-75f580a2-d63e-4531-b7cd-1376908eb6cb.png",
+      "prompt": "Use case: style-transfer. Redraw this transparent pawn-overlay texture to match VANILLA RIMWORLD graphics. Severe simplification, clear bold near-black outer contour, flat muted colors, at most one flat shadow shape per material. Smooth clean shapes intended to be just a few pixels on a pawn. NOT ornate fantasy icon art. No gradients, painterly detail, textured surfaces, glossy glints, particle effects, bloom, text or background. Genuine transparent square canvas. Do not draw a character or body. Preserve composition position, center alignment, occupied proportions and transparent margins of the reference because existing attachment coordinates depend on them. Simplify to a small plain dull brass ring with a single solid muted violet center disk and a short flat brass tab above and below. Central symmetrical forehead implant fitting x=29%-71% and y=20%-80%. No stars, rays, detailed symbols, ornate crescent arms or jewel facets. Three to four flat colors.",
+      "size": 128
+    },
+    {
+      "key": "Worn/ShadowMark",
+      "source": "C:\\Users\\25390\\.codex\\generated_images\\01a15bd6-0e61-7813-acb5-7723c1a69350\\exec-fab16ec3-c012-4345-a262-0a40ae456295.png",
+      "prompt": "Use case: style-transfer. Redraw this transparent pawn-overlay texture to match VANILLA RIMWORLD graphics. Severe simplification, clear bold near-black outer contour, flat muted colors, at most one flat shadow shape per material. Smooth clean shapes intended to be just a few pixels on a pawn. NOT ornate fantasy icon art. No gradients, painterly detail, textured surfaces, glossy glints, particle effects, bloom, text or background. Genuine transparent square canvas. Do not draw a character or body. Preserve composition position, center alignment, occupied proportions and transparent margins of the reference because existing attachment coordinates depend on them. Simplify to one low dark gray-purple crescent shadow arc, symmetric, lower portion of canvas x=12%-88%, y=52%-73%, with just two short blunt curls extending up to y=42% near its ends. Transparent hole in center. Broad quiet soft-edged silhouette with crisp contour, ONLY two flat muted purple shades. No detached flames, no spikes, no bright lavender highlights, no magic effects.",
+      "size": 128
+    }
+  ]
+}

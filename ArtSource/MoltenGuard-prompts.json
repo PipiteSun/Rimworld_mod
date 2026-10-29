@@ -1,0 +1,23 @@
+{
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "name": "Maul",
+      "prompt": "Create the advanced Molten Core Guard version of the referenced RimWorld fire giant equipment. Keep vanilla RimWorld game art: thick dark outlines, chunky readable shapes, flat muted dark iron and warm dark copper fills, at most 2 shading tones, no fine texture, no realistic rendering. The advanced tier has reinforced overlapping plates and a few SMALL dull orange inset core vents (flat color, no bloom, no surrounding glow). Transparent alpha, no labels, no text, no background. One oversized two-handed breaching warhammer sprite, square canvas. Preserve the reference's upper-right hammer head / lower-left brown wrapped handle diagonal orientation. Upgrade with thick angular steel striking faces and one small rectangular orange core in the hammer head, reinforced copper collar. Entire object with transparent padding. Single weapon, no character.",
+      "source": "C:\\Users\\25390\\.codex\\generated_images\\01a16452-061f-79d3-9b2c-52899d06813c\\exec-379eec76-fdf5-446e-9aad-42503cc1c072.png",
+      "reference": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\FireGiantEquipment\\Maul.png"
+    },
+    {
+      "name": "Helmet",
+      "prompt": "Create the advanced Molten Core Guard version of the referenced RimWorld fire giant equipment. Keep vanilla RimWorld game art: thick dark outlines, chunky readable shapes, flat muted dark iron and warm dark copper fills, at most 2 shading tones, no fine texture, no realistic rendering. The advanced tier has reinforced overlapping plates and a few SMALL dull orange inset core vents (flat color, no bloom, no surrounding glow). Transparent alpha, no labels, no text, no background. ONE helmet sprite sheet matching the reference's precise invisible 2x2 layout: top-left inventory front icon, top-right worn south/front, bottom-left worn east/right profile, bottom-right worn north/back. Equal-scale centered helmets in equal square cells separated by clear transparent gutters. Closed heavy rounded helmet, black T-shaped front visor, reinforced brow and cheek plates, copper brow band, small orange inset vent on each temple. Rear has a single small orange rectangular inset. No horns, spikes, crest, skull, neck, head or mannequin. Keep clean simple vanilla pawn helmet shapes. Real transparent background.",
+      "source": "C:\\Users\\25390\\.codex\\generated_images\\01a16452-061f-79d3-9b2c-52899d06813c\\exec-df175dec-5074-4880-a903-8b8797a30e1f.png",
+      "reference": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\FireGiantEquipment\\Helmet.png"
+    },
+    {
+      "name": "Armor",
+      "prompt": "Create the advanced Molten Core Guard version of the referenced RimWorld fire giant equipment. Keep vanilla RimWorld game art: thick dark outlines, chunky readable shapes, flat muted dark iron and warm dark copper fills, at most 2 shading tones, no fine texture, no realistic rendering. The advanced tier has reinforced overlapping plates and a few SMALL dull orange inset core vents (flat color, no bloom, no surrounding glow). Transparent alpha, no labels, no text, no background. ONE heavy armor sprite sheet matching the reference's precise invisible 2x2 layout: top-left inventory three-quarter icon, top-right worn south/front, bottom-left worn east/right profile, bottom-right worn north/back. Each centered within equal cell, same height and scale; clear transparent gutters. Broad Hulk-body sleeveless cuirass with thicker rounded overlapping shoulder plates, reinforced chest, copper belt, short armored skirt. Small rectangular dull orange core inset in center chest and small rear vent. NO tall collar or backpack rising above shoulders: leave head area clear. No head, skin, limbs, hands, feet, mannequin or stand. Worn directions flat orthographic game overlays, no perspective except inventory icon.",
+      "source": "C:\\Users\\25390\\.codex\\generated_images\\01a16452-061f-79d3-9b2c-52899d06813c\\exec-2b3da740-1a2d-478b-a15a-55d32d19c116.png",
+      "reference": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\FireGiantEquipment\\Armor.png"
+    }
+  ]
+}

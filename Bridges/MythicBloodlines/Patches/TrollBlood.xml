@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Patch>
+  <!-- 1.21.0 神兽血裔联动：巨魔血可以被饕餮喝下（其他人不会把它当食物，见 TrollBloodOnlyForTaotie）。 -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="LP_TrollBlood"]</xpath>
+    <value>
+      <ingestible>
+        <foodType>Fluid</foodType>
+        <preferability>NeverForNutrition</preferability>
+        <ingestEffect>EatMeat</ingestEffect>
+        <ingestSound>Meal_Eat</ingestSound>
+        <ingestCommandString>饮下{0}</ingestCommandString>
+        <ingestReportString>正在饮下{0}。</ingestReportString>
+        <maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
+      </ingestible>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="LP_TrollBlood"]/statBases</xpath>
+    <value>
+      <Nutrition>0.05</Nutrition>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="LP_TrollBlood"]/description</xpath>
+    <value>
+      <description>从巨魔身上抽出的一瓶暗绿色血液，离体后仍在缓慢蠕动。火巨人用它淬火，黑网商人说它能卖给想要长生的人。\n\n可以对巨魔做“抽取巨魔血”手术获得；巨魔很快就能把血补回来。\n\n（神兽血裔联动）饕餮可以用“饕餮进食”喝下它，获得12小时的弱化巨魔再生；其他人不会喝。</description>
+    </value>
+  </Operation>
+</Patch>

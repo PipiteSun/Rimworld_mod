@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.39.0 信仰：三位新神（只加定义，不进黄昏之年灌注）、神圣伤害、信徒/无神者特性、圣坛与祈祷、献祭、圣徽、祝圣圣水、九件神赐遗物、心情、季度显圣。
+     规则见 Source/Faith.cs；老八位神在 Defs/Twilight.xml。圣坛和圣水与设备上已有的死灵仪式台 LP_Altar、1.22.0 炼金圣水 LP_HolyWater 重名，改叫 LP_FaithAltar / LP_BlessedWater。 -->
+<Defs>
+  <!-- ==================== 三位新神 ==================== -->
+  <LichPhylactery.LP_DeityDef>
+    <defName>LP_Deity_Mystra</defName><key>Mystra</key><degree>0</degree>
+    <devoteeDegree>3</devoteeDegree><alignment>Good</alignment><worshippable>true</worshippable><epithet>魔法女神</epithet>
+    <enemies><li>LP_Deity_Shar</li></enemies><domainAbility>LP_Miracle_Weave</domainAbility><relic>LP_Relic_SilverTear</relic>
+    <likedOfferings><li>LP_AlchemyMaterials</li><li>Neutroamine</li></likedOfferings>
+    <blessing>LichPhylactery.Manifest_Mystra</blessing><curse>LichPhylactery.Manifest_Mystra</curse><iconPath>Faith/Deities/Mystra</iconPath>
+    <label>密斯特拉</label><color>(0.55, 0.7, 1)</color>
+    <description>魔法女神密斯特拉，魔网的守护者。法师与牧师都受她的恩泽；她厌恶滥用魔法的人，也厌恶把魔网撕裂的奥术半神。</description>
+  </LichPhylactery.LP_DeityDef>
+  <LichPhylactery.LP_DeityDef>
+    <defName>LP_Deity_Kelemvor</defName><key>Kelemvor</key><degree>0</degree>
+    <devoteeDegree>4</devoteeDegree><alignment>Neutral</alignment><worshippable>true</worshippable><epithet>死亡之神</epithet>
+    <domainAbility>LP_Miracle_Rest</domainAbility><relic>LP_Relic_AshScales</relic>
+    <likedOfferings><li>Medicine</li><li>Cloth</li></likedOfferings>
+    <blessing>LichPhylactery.Manifest_Kelemvor</blessing><curse>LichPhylactery.Manifest_Kelemvor</curse><iconPath>Faith/Deities/Kelemvor</iconPath>
+    <label>凯兰沃</label><color>(0.62, 0.68, 0.62)</color>
+    <description>死亡之神凯兰沃，亡者的公正审判者。他让死者安息，痛恨逃避死亡的巫妖和死灵造物：殖民地里有巫妖、巫妖复生、巨魔复活、汲取灵魂都会触怒他。</description>
+  </LichPhylactery.LP_DeityDef>
+  <LichPhylactery.LP_DeityDef>
+    <defName>LP_Deity_Shar</defName><key>Shar</key><degree>0</degree>
+    <devoteeDegree>8</devoteeDegree><alignment>Evil</alignment><worshippable>true</worshippable><epithet>黑暗与遗忘之神</epithet>
+    <enemies><li>LP_Deity_Mystra</li><li>LP_Deity_Lathander</li></enemies><domainAbility>LP_Miracle_Veil</domainAbility><relic>LP_Relic_NightTear</relic>
+    <likedOfferings><li>Drugs</li></likedOfferings>
+    <blessing>LichPhylactery.Manifest_Shar</blessing><curse>LichPhylactery.Manifest_Shar</curse><iconPath>Faith/Deities/Shar</iconPath>
+    <label>莎尔</label><color>(0.42, 0.3, 0.6)</color>
+    <description>黑暗与遗忘之神莎尔，夜之女士。她的信徒在黑夜里祈祷，从失去中汲取力量；她与密斯特拉、洛山达是死敌。</description>
+  </LichPhylactery.LP_DeityDef>
+
+  <!-- 神圣伤害：1.39.0 从 VPE 桥接移到这里（不装 VPE 也有）。对不死者与邪魔的 ×2 由使用它的代码自己乘。 -->
+  <DamageDef>
+    <defName>LP_Radiant</defName>
+    <label>神圣</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0}在神圣之光中化为灰烬。</deathMessage>
+    <hediff>Burn</hediff>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Heat</armorCategory>
+    <defaultDamage>20</defaultDamage>
+    <defaultArmorPenetration>0.4</defaultArmorPenetration>
+    <isRanged>true</isRanged>
+  </DamageDef>
+
+  <!-- ==================== 信徒 / 无神者 ==================== -->
+  <TraitDef>
+    <defName>LP_Devotee</defName>
+    <commonality>0.3</commonality>
+    <exclusionTags><li>LP_Faith</li></exclusionTags>
+    <degreeDatas>
+      <li><label>信徒（洛山达）</label><degree>1</degree><commonality>1</commonality>
+        <description>[PAWN_nameDef]是晨曦之神洛山达的信徒：在圣坛祈祷得到的神眷翻倍；种植速度+10%。殖民地的守护神是洛山达时心情+4，是他的敌对神时心情-6。</description>
+        <statOffsets><PlantWorkSpeed>0.1</PlantWorkSpeed></statOffsets></li>
+      <li><label>信徒（提尔）</label><degree>2</degree><commonality>1</commonality>
+        <description>[PAWN_nameDef]是正义之神提尔的信徒：在圣坛祈祷得到的神眷翻倍；和人打架的可能-25%。殖民地的守护神是提尔时心情+4，是他的敌对神时心情-6。</description></li>
+      <li><label>信徒（密斯特拉）</label><degree>3</degree><commonality>1</commonality>
+        <description>[PAWN_nameDef]是魔法女神密斯特拉的信徒：在圣坛祈祷得到的神眷翻倍；心灵敏感度+10%。殖民地的守护神是密斯特拉时心情+4，是她的敌对神时心情-6。</description>
+        <statOffsets><PsychicSensitivity>0.1</PsychicSensitivity></statOffsets></li>
+      <li><label>信徒（凯兰沃）</label><degree>4</degree><commonality>1</commonality>
+        <description>[PAWN_nameDef]是死亡之神凯兰沃的信徒：在圣坛祈祷得到的神眷翻倍；手术成功率+5%，看到尸体不难受。殖民地的守护神是凯兰沃时心情+4。</description>
+        <statOffsets><MedicalSurgerySuccessChance>0.05</MedicalSurgerySuccessChance></statOffsets></li>
+      <li><label>信徒（马拉尔）</label><degree>5</degree><commonality>1</commonality>
+        <description>[PAWN_nameDef]是狩猎之神马拉尔的信徒：在圣坛祈祷得到的神眷翻倍；打猎时命中+10%。殖民地的守护神是马拉尔时心情+4，是他的敌对神时心情-6。</description></li>
+      <li><label>信徒（塔洛斯）</label><degree>6</degree><commonality>1</commonality>
+        <description>[PAWN_nameDef]是风暴之神塔洛斯的信徒：在圣坛祈祷得到的神眷翻倍；雷暴天心情+3。殖民地的守护神是塔洛斯时心情+4，是他的敌对神时心情-6。</description></li>
+      <li><label>信徒（班恩）</label><degree>7</degree><commonality>1</commonality>
+        <description>[PAWN_nameDef]是暴政之神班恩的信徒：在圣坛祈祷得到的神眷翻倍；镇压奴隶的效果+20%。殖民地的守护神是班恩时心情+4，是他的敌对神时心情-6。</description>
+        <statFactors><SuppressionPower MayRequire="Ludeon.RimWorld.Ideology">1.2</SuppressionPower></statFactors></li>
+      <li><label>信徒（莎尔）</label><degree>8</degree><commonality>1</commonality>
+        <description>[PAWN_nameDef]是黑暗之神莎尔的信徒：在圣坛祈祷得到的神眷翻倍；在黑暗里不会难受。殖民地的守护神是莎尔时心情+4，是她的敌对神时心情-6。</description></li>
+      <li><label>信徒（苏尔特）</label><degree>9</degree><commonality>1</commonality>
+        <description>[PAWN_nameDef]是火巨人之王苏尔特的信徒：在圣坛祈祷得到的神眷翻倍；锻造速度+10%。殖民地的守护神是苏尔特时心情+4。</description></li>
+      <li><label>信徒（伊尔斯维）</label><degree>10</degree><commonality>0</commonality>
+        <description>[PAWN_nameDef]侍奉夺心魔之神伊尔斯维。</description></li>
+      <li><label>信徒（维拉基斯）</label><degree>11</degree><commonality>0</commonality>
+        <description>[PAWN_nameDef]侍奉巫妖女王维拉基斯。</description></li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Common</tier><kind>信仰</kind></li>
+    </modExtensions>
+  </TraitDef>
+  <TraitDef>
+    <defName>LP_Atheist</defName>
+    <commonality>0.1</commonality>
+    <exclusionTags><li>LP_Faith</li></exclusionTags>
+    <degreeDatas>
+      <li>
+        <label>无神者</label>
+        <description>[PAWN_nameDef]不信任何神：不受信仰相关的心情影响，不会祈祷，戴圣徽也没用；神术落在[PAWN_objective]身上只有一半效果；心智抗性+10%。</description>
+        <statOffsets><LP_MindResist>0.1</LP_MindResist></statOffsets>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Common</tier><kind>信仰</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <!-- ==================== 圣坛 ==================== -->
+  <ThingDef ParentName="BenchBase">
+    <defName>LP_FaithAltar</defName>
+    <label>圣坛</label>
+    <description>供奉殖民地守护神的圣坛。在这里选择守护神、祈祷（娱乐，1小时）、献上祭品换取神眷，制作圣徽和祝圣圣水，并为圣物祝圣（念珠、圣甲虫护符、净化封印、圣光冠环、护佑誓约戒指）；可连接守护神像；神眷够高时还能为信徒举行神选仪式。圣坛的光是守护神的颜色。可以建多座。</description>
+    <thingClass>LichPhylactery.Building_FaithAltar</thingClass>
+    <graphicData>
+      <texPath>Faith/Altar</texPath>
+      <shaderType>CutoutComplex</shaderType>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(2,1)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.20</staticSunShadowHeight>
+    <size>(2,1)</size>
+    <!-- 1.41.0：可以小型化搬运（剧本“朝圣之路”开局带一座小型化的圣坛） -->
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <stuffCategories>
+      <li>Woody</li>
+      <li>Stony</li>
+      <li>Metallic</li>
+    </stuffCategories>
+    <costStuffCount>60</costStuffCount>
+    <costList>
+      <Silver>50</Silver>
+    </costList>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <WorkToBuild>3000</WorkToBuild>
+      <MaxHitPoints>200</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <Beauty>8</Beauty>
+    </statBases>
+    <designationCategory>Misc</designationCategory>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(220,200,150,0)</glowColor>
+      </li>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>LP_DeityStatue</li>
+        </linkableFacilities>
+      </li>
+    </comps>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+    </building>
+    <constructionSkillPrerequisite>3</constructionSkillPrerequisite>
+    <researchPrerequisites>
+      <li>LP_Research_Faith</li>
+    </researchPrerequisites>
+  </ThingDef>
+  <WorkGiverDef>
+    <defName>LP_DoBillsFaithAltar</defName>
+    <label>在圣坛工作</label>
+    <giverClass>WorkGiver_DoBill</giverClass>
+    <workType>Crafting</workType>
+    <priorityInType>95</priorityInType>
+    <fixedBillGiverDefs>
+      <li>LP_FaithAltar</li>
+    </fixedBillGiverDefs>
+    <verb>侍奉</verb>
+    <gerund>正在圣坛工作</gerund>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+  </WorkGiverDef>
+
+  <!-- 祈祷：娱乐（冥想类），也可以右键圣坛命令。 -->
+  <JobDef>
+    <defName>LP_Pray</defName>
+    <driverClass>LichPhylactery.JobDriver_Pray</driverClass>
+    <reportString>正在圣坛前祈祷。</reportString>
+    <joyDuration>2500</joyDuration>
+    <joyKind>Meditative</joyKind>
+    <joySkill>Social</joySkill>
+    <joyXpPerTick>0.002</joyXpPerTick>
+    <casualInterruptible>true</casualInterruptible>
+    <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+  </JobDef>
+  <JoyGiverDef>
+    <defName>LP_PrayAtAltar</defName>
+    <giverClass>LichPhylactery.JoyGiver_Pray</giverClass>
+    <baseChance>1.2</baseChance>
+    <joyKind>Meditative</joyKind>
+    <thingDefs><li>LP_FaithAltar</li></thingDefs>
+    <requiredCapacities><li>Moving</li></requiredCapacities>
+  </JoyGiverDef>
+  <JobDef>
+    <defName>LP_ChosenRitual</defName>
+    <driverClass>LichPhylactery.JobDriver_ChosenRitual</driverClass>
+    <reportString>正在圣坛前接受神选仪式。</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+
+  <!-- ==================== 献祭（无产出，只加守护神的神眷） ==================== -->
+  <RecipeDef Name="LP_OfferingBase" Abstract="True">
+    <workerClass>LichPhylactery.RecipeWorker_Offering</workerClass>
+    <workAmount>600</workAmount>
+    <workSkill>Social</workSkill>
+    <effectWorking>Cook</effectWorking>
+    <recipeUsers><li>LP_FaithAltar</li></recipeUsers>
+    <researchPrerequisite>LP_Research_Faith</researchPrerequisite>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_OfferingBase">
+    <defName>LP_Offer_Silver</defName>
+    <label>献上白银</label>
+    <description>在圣坛上献上100白银：守护神神眷+1（按白银市值，每100+1）。</description>
+    <jobString>正在向守护神献祭。</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>100</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>Silver</li></thingDefs></fixedIngredientFilter>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_OfferingBase">
+    <defName>LP_Offer_Shard</defName>
+    <label>献上神迹残片</label>
+    <description>把一片神迹残片还给神：守护神神眷+10。</description>
+    <jobString>正在向守护神献祭。</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>LP_MiracleShard</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_MiracleShard</li></thingDefs></fixedIngredientFilter>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_OfferingBase">
+    <defName>LP_Offer_Liked</defName>
+    <label>献上守护神喜爱的祭品</label>
+    <description>献上一份（市值60）守护神喜爱的东西，神眷按市值×3计算（每份约+1.8）。各神喜欢的东西不同，见圣坛上的神眷一览；更换守护神后配方自动换成新神喜欢的东西。</description>
+    <jobString>正在向守护神献祭。</jobString>
+    <ingredientValueGetterClass>LichPhylactery.IngredientValueGetter_MarketValue</ingredientValueGetterClass>
+    <ingredients>
+      <li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>60</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>Silver</li></thingDefs></fixedIngredientFilter>
+  </RecipeDef>
+
+  <!-- ==================== 圣徽 ==================== -->
+  <ThingDef ParentName="LP_AccessoryBase">
+    <defName>LP_HolySymbol</defName>
+    <label>圣徽</label>
+    <description>挂在胸前的银质圣徽，上面的纹样是殖民地守护神的标记（没有守护神时圣徽“沉寂”）。佩戴者可以施放三个通用神术和守护神的领域神术，神恩强度+0.1；神术消耗殖民地的守护神神眷。无神者戴上没有用。</description>
+    <graphicData><texPath>Faith/HolySymbol</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>120</MarketValue><WorkToMake>1500</WorkToMake></statBases>
+    <costList><Silver>30</Silver><Gold>5</Gold></costList>
+    <apparel>
+      <bodyPartGroups><li>Neck</li></bodyPartGroups>
+    </apparel>
+    <recipeMaker>
+      <recipeUsers><li>LP_FaithAltar</li></recipeUsers>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <researchPrerequisite>LP_Research_Faith</researchPrerequisite>
+      <displayPriority>10</displayPriority>
+    </recipeMaker>
+    <tradeTags Inherit="False"><li>LP_Wondrous</li></tradeTags>
+  </ThingDef>
+
+  <!-- ==================== 祝圣圣水 ==================== -->
+  <ThingDef ParentName="LP_ThrowableBase">
+    <defName>LP_BlessedWater</defName>
+    <label>祝圣圣水</label>
+    <description>在圣坛前以守护神之名祝圣的圣水。扔出去在1.9格内造成12点神圣伤害（不死者与邪魔×2）、浇灭火焰，让巨魔的再生停1小时；也可以喝下去：一种感染或瘟疫类疾病严重度-10%，心情+2。每瓶制作时消耗守护神神眷0.5。</description>
+    <graphicData><texPath>Faith/BlessedWater</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>10</stackLimit>
+    <statBases><MarketValue>35</MarketValue><WorkToMake>600</WorkToMake><MaxHitPoints>50</MaxHitPoints><Flammability>0</Flammability></statBases>
+    <thingCategories Inherit="False"><li>Grenades</li></thingCategories>
+    <weaponTags><li>LP_BlessedWater</li></weaponTags>
+    <costList><MedicineHerbal>1</MedicineHerbal><Silver>10</Silver></costList>
+    <recipeMaker>
+      <recipeUsers><li>LP_FaithAltar</li></recipeUsers>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <researchPrerequisite>LP_Research_Faith</researchPrerequisite>
+      <displayPriority>20</displayPriority>
+    </recipeMaker>
+    <verbs>
+      <li>
+        <label>投掷祝圣圣水</label>
+        <verbClass>Verb_LaunchProjectile</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <range>12.9</range>
+        <forcedMissRadius>1.5</forcedMissRadius>
+        <warmupTime>1.3</warmupTime>
+        <noiseRadius>3</noiseRadius>
+        <soundCast>ThrowGrenade</soundCast>
+        <targetParams><canTargetLocations>true</canTargetLocations></targetParams>
+        <defaultProjectile>LP_Proj_BlessedWater</defaultProjectile>
+        <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="CompProperties_Usable">
+        <useJob>UseItem</useJob>
+        <useLabel>喝下祝圣圣水</useLabel>
+        <useDuration>120</useDuration>
+      </li>
+      <li Class="CompProperties_UseEffect">
+        <compClass>LichPhylactery.CompUseEffect_BlessedWater</compClass>
+      </li>
+      <li Class="CompProperties_UseEffectDestroySelf" />
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ThrowableProjectileBase">
+    <defName>LP_Proj_BlessedWater</defName>
+    <label>祝圣圣水</label>
+    <thingClass>LichPhylactery.Projectile_BlessedWater</thingClass>
+    <graphicData><texPath>Faith/BlessedWater</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <projectile>
+      <explosionRadius>1.9</explosionRadius>
+      <damageDef>LP_Radiant</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <screenShakeFactor>0.2</screenShakeFactor>
+    </projectile>
+  </ThingDef>
+
+  <!-- ==================== 神赐遗物（不可制作；神谕试炼、寻回圣物、神眷第一次到 80 时赐予） ==================== -->
+  <ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
+    <defName>LP_Relic_MorningStar</defName>
+    <label>晨星</label>
+    <description>洛山达的神赐遗物：一柄金色钉头锤，锤头像初升的太阳。对不死者伤害×2，命中10%点燃目标；早上6点到9点，持有者全部工作速度+5%。</description>
+    <graphicData><texPath>Faith/Relics/MorningStar</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <techLevel>Medieval</techLevel>
+    <statBases><MarketValue>2500</MarketValue><Mass>2.5</Mass><MaxHitPoints>300</MaxHitPoints></statBases>
+    <tradeability>Sellable</tradeability>
+    <tools>
+      <li><label>握柄</label><capacities><li>Poke</li></capacities><power>9</power><cooldownTime>2</cooldownTime></li>
+      <li><label>锤头</label><capacities><li>Blunt</li></capacities><power>21</power><cooldownTime>2</cooldownTime><armorPenetration>0.3</armorPenetration></li>
+    </tools>
+    <weaponTags Inherit="False"><li>LP_FaithRelic</li></weaponTags>
+    <thingSetMakerTags Inherit="False" />
+    <recipeMaker IsNull="True" />
+    <smeltable>false</smeltable>
+  </ThingDef>
+  <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+    <defName>LP_Relic_StormSpear</defName>
+    <label>风暴之矛</label>
+    <description>塔洛斯的神赐遗物：矛尖常年缠着电弧。命中20%召下一道落雷（25点伤害，半径1.5格，不会劈到持有者）。</description>
+    <graphicData><texPath>Faith/Relics/StormSpear</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <techLevel>Medieval</techLevel>
+    <statBases><MarketValue>2500</MarketValue><Mass>2.6</Mass><MaxHitPoints>300</MaxHitPoints></statBases>
+    <tradeability>Sellable</tradeability>
+    <tools>
+      <li><label>矛杆</label><capacities><li>Blunt</li></capacities><power>9</power><cooldownTime>2</cooldownTime></li>
+      <li><label>矛尖</label><capacities><li>Stab</li></capacities><power>22</power><cooldownTime>2.3</cooldownTime><armorPenetration>0.45</armorPenetration></li>
+    </tools>
+    <weaponTags Inherit="False"><li>LP_FaithRelic</li></weaponTags>
+    <thingSetMakerTags Inherit="False" />
+    <recipeMaker IsNull="True" />
+    <smeltable>false</smeltable>
+  </ThingDef>
+
+  <ThingDef Name="LP_RelicAccessoryBase" ParentName="LP_AccessoryBase" Abstract="True">
+    <statBases><MarketValue>2500</MarketValue><MaxHitPoints>300</MaxHitPoints></statBases>
+    <tradeability>Sellable</tradeability>
+    <tradeTags Inherit="False"><li>LP_FaithRelic</li></tradeTags>
+  </ThingDef>
+  <ThingDef ParentName="LP_RelicAccessoryBase">
+    <defName>LP_Relic_HandOfTyr</defName>
+    <label>提尔之手</label>
+    <description>提尔的神赐遗物：一只单手的白银护手。佩戴者和人打架的可能-50%；近战打击人形击杀数≥10的敌人时伤害+15%。</description>
+    <graphicData><texPath>Faith/Relics/HandOfTyr</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <apparel><bodyPartGroups><li>Hands</li></bodyPartGroups></apparel>
+  </ThingDef>
+  <ThingDef ParentName="LP_RelicAccessoryBase">
+    <defName>LP_Relic_SilverTear</defName>
+    <label>银焰之泪</label>
+    <description>密斯特拉的神赐遗物：一滴凝固的银色火焰。心灵敏感度+20%，神术与法术冷却×0.8。</description>
+    <graphicData><texPath>Faith/Relics/SilverTear</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <equippedStatOffsets><PsychicSensitivity>0.2</PsychicSensitivity></equippedStatOffsets>
+    <apparel><bodyPartGroups><li>Eyes</li></bodyPartGroups></apparel>
+  </ThingDef>
+  <ThingDef ParentName="LP_RelicAccessoryBase">
+    <defName>LP_Relic_AshScales</defName>
+    <label>灰烬天平</label>
+    <description>凯兰沃的神赐遗物：一副小小的灰色天平。佩戴者在战斗中死去时，尸体进入30天的“申诉”：期间复生卷轴必定成功（不受死亡1天、腐烂的限制）。对巫妖无效。</description>
+    <graphicData><texPath>Faith/Relics/AshScales</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <apparel><bodyPartGroups><li>Waist</li></bodyPartGroups></apparel>
+  </ThingDef>
+  <ThingDef ParentName="LP_RelicAccessoryBase">
+    <defName>LP_Relic_BeastClaw</defName>
+    <label>野兽之爪</label>
+    <description>马拉尔的神赐遗物：用巨兽利爪做成的护手。近战伤害+20%，近战命中额外撕开伤口（流血×1.5）；驯兽与训练成功率提高。</description>
+    <graphicData><texPath>Faith/Relics/BeastClaw</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <equippedStatOffsets><MeleeDamageFactor>0.2</MeleeDamageFactor><TameAnimalChance>0.12</TameAnimalChance><TrainAnimalChance>0.12</TrainAnimalChance></equippedStatOffsets>
+    <apparel><bodyPartGroups><li>Hands</li></bodyPartGroups></apparel>
+  </ThingDef>
+  <ThingDef ParentName="LP_RelicAccessoryBase">
+    <defName>LP_Relic_BlackHand</defName>
+    <label>黑手护手</label>
+    <description>班恩的神赐遗物：一只漆黑的铁护手。近战命中25%让敌人惊恐逃跑5秒（心智抗性可以抵抗）；佩戴者在地图上时，殖民地奴隶的压制下降速度×0.5。</description>
+    <graphicData><texPath>Faith/Relics/BlackHand</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <apparel><bodyPartGroups><li>Hands</li></bodyPartGroups></apparel>
+  </ThingDef>
+  <ThingDef ParentName="LP_RelicAccessoryBase">
+    <defName>LP_Relic_NightTear</defName>
+    <label>暗夜之泪</label>
+    <description>莎尔的神赐遗物：一颗吞光的黑色泪滴。佩戴者不会因为失去亲人而难过；在黑暗中近战闪避+15%。</description>
+    <graphicData><texPath>Faith/Relics/NightTear</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <apparel><bodyPartGroups><li>Eyes</li></bodyPartGroups></apparel>
+  </ThingDef>
+  <ThingDef ParentName="LP_RelicAccessoryBase">
+    <defName>LP_Relic_ForgeHeart</defName>
+    <label>熔炉之心</label>
+    <description>苏尔特的神赐遗物：一块不会冷却的熔岩之心。受到的火焰伤害×0.5；锻造速度+30%；近战附带5点烧伤。</description>
+    <graphicData><texPath>Faith/Relics/ForgeHeart</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <apparel><bodyPartGroups><li>Torso</li></bodyPartGroups></apparel>
+  </ThingDef>
+
+  <!-- ==================== 状态 ==================== -->
+  <HediffDef>
+    <defName>LP_Chosen</defName>
+    <label>神选者</label>
+    <description>在圣坛前被守护神选中的人：神恩强度+0.25，神术消耗减半，心智抗性+20%，身上带着守护神颜色的微光。</description>
+    <hediffClass>LichPhylactery.Hediff_Chosen</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(1, 0.9, 0.6)</defaultLabelColor>
+    <stages><li><statOffsets><LP_MindResist>0.2</LP_MindResist></statOffsets></li></stages>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>LichPhylactery.PawnRenderNode_ChosenGlow</nodeClass>
+        <workerClass>PawnRenderNodeWorker</workerClass>
+        <texPath>Things/Pawn/LP_DivineHalo</texPath>
+        <shaderTypeDef>MoteGlow</shaderTypeDef>
+        <parentTagDef>Body</parentTagDef>
+        <drawSize>(1.9,1.9)</drawSize>
+        <baseLayer>-5</baseLayer>
+        <rotDrawMode>Fresh</rotDrawMode>
+      </li>
+    </renderNodeProperties>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_BlessedWaterRelief</defName>
+    <label>圣水的慰藉</label>
+    <description>喝下了祝圣圣水。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>60000</disappearsAfterTicks></li></comps>
+  </HediffDef>
+
+  <!-- ==================== 心情 ==================== -->
+  <ThoughtDef>
+    <defName>LP_Prayed</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <nullifyingTraits><li>LP_Atheist</li></nullifyingTraits>
+    <stages><li><label>祈祷过</label><description>在圣坛前向神倾诉了一会儿，心里踏实多了。</description><baseMoodEffect>3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_DrankBlessedWater</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>喝了圣水</label><description>清凉的圣水流过喉咙，好像连病痛都轻了些。</description><baseMoodEffect>2</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_ServeMyGod</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_ServeMyGod</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages><li><label>侍奉我的神</label><description>殖民地奉我信仰的神为守护神。</description><baseMoodEffect>4</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_ServeEnemyGod</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_ServeEnemyGod</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages><li><label>侍奉敌神</label><description>殖民地的守护神是我的神的死敌。我每天都在敌人的圣坛前走过。</description><baseMoodEffect>-6</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_Forsaken</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_Forsaken</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages><li><label>神弃</label><description>我信仰的神已经背弃了这片土地。</description><baseMoodEffect>-6</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_DawnFavor</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_DawnFavor</workerClass>
+    <stages><li><label>黎明的眷顾</label><description>洛山达的晨光照在殖民地上，每一天都像新的开始。</description><baseMoodEffect>4</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_GuiltyConscience</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <nullifyingTraits><li>LP_Atheist</li></nullifyingTraits>
+    <stages><li><label>良心不安</label><description>提尔的目光落在我身上，我做过的每一件事都在眼前重演。</description><baseMoodEffect>-8</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_StormJoy</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_StormJoy</workerClass>
+    <stages><li><label>风暴之怒</label><description>雷声是塔洛斯在笑。</description><baseMoodEffect>3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_ConsecratedGround</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_Consecrated</workerClass>
+    <stages><li><label>圣化之地</label><description>脚下这片地被神祝福过。</description><baseMoodEffect>3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+
+  <!-- ==================== 季度显圣 ==================== -->
+  <GameConditionDef>
+    <defName>LP_FaithManifest</defName>
+    <conditionClass>LichPhylactery.GameCondition_FaithManifest</conditionClass>
+    <label>神迹显现</label>
+    <description>守护神的目光落在这片土地上。</description>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
+</Defs>

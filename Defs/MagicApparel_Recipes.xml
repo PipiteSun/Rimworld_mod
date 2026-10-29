@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.45.1 魔法盔甲衣服的特殊配方：元素织袍（任意元素符；1.47.0 起只在法袍织机）、死灵仪式台的死亡骑士装备与骸骨王冠（巫妖，消耗命匣献祭经验）。 -->
+<Defs>
+  <RecipeDef>
+    <defName>LP_MakeElementalWeave</defName>
+    <label>制作元素织袍</label>
+    <description>用80份布和任意一枚元素符织一件元素织袍。袍子的配色和效果跟着穿戴者的元素血脉走。</description>
+    <jobString>正在织元素织袍。</jobString>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <workAmount>12000</workAmount>
+    <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+    <recipeUsers><li>LP_ArcaneLoom</li></recipeUsers>
+    <ingredients>
+      <li><filter><stuffCategoriesToAllow><li>Fabric</li></stuffCategoriesToAllow></filter><count>80</count></li>
+      <li><filter><thingDefs><li>LP_ElementalFocus_Fire</li><li>LP_ElementalFocus_Water</li><li>LP_ElementalFocus_Earth</li><li>LP_ElementalFocus_Air</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <stuffCategoriesToAllow><li>Fabric</li></stuffCategoriesToAllow>
+      <thingDefs><li>LP_ElementalFocus_Fire</li><li>LP_ElementalFocus_Water</li><li>LP_ElementalFocus_Earth</li><li>LP_ElementalFocus_Air</li></thingDefs>
+    </fixedIngredientFilter>
+    <defaultIngredientFilter><stuffCategoriesToAllow><li>Fabric</li></stuffCategoriesToAllow><thingDefs><li>LP_ElementalFocus_Fire</li><li>LP_ElementalFocus_Water</li><li>LP_ElementalFocus_Earth</li><li>LP_ElementalFocus_Air</li></thingDefs></defaultIngredientFilter>
+    <products><LP_ElementalWeave>1</LP_ElementalWeave></products>
+    <productHasIngredientStuff>true</productHasIngredientStuff>
+  </RecipeDef>
+
+  <!-- 死灵仪式台：巫妖为自己的骑士锻甲（命匣经验当货币） -->
+  <RecipeDef ParentName="LP_RitualBase">
+    <defName>LP_ForgeDeathknightPlate</defName>
+    <label>锻造死亡骑士铠甲</label>
+    <description>巫妖用150钢和命匣里200点献祭经验锻一副死亡骑士铠甲（经验不足时不能开工）。</description>
+    <jobString>正在锻造死亡骑士铠甲。</jobString>
+    <workAmount>12000</workAmount>
+    <ingredients><li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>150</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Steel</li></thingDefs></fixedIngredientFilter>
+    <modExtensions><li Class="LichPhylactery.AltarForgeExtension"><product>LP_DeathknightPlate</product><stuff>Steel</stuff><experience>200</experience></li></modExtensions>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_RitualBase">
+    <defName>LP_ForgeHelmRestlessDead</defName>
+    <label>锻造亡魂巨盔</label>
+    <description>巫妖用50钢和命匣里80点献祭经验锻一顶亡魂巨盔（经验不足时不能开工）。</description>
+    <jobString>正在锻造亡魂巨盔。</jobString>
+    <workAmount>5000</workAmount>
+    <ingredients><li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>50</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Steel</li></thingDefs></fixedIngredientFilter>
+    <modExtensions><li Class="LichPhylactery.AltarForgeExtension"><product>LP_HelmRestlessDead</product><stuff>Steel</stuff><experience>80</experience></li></modExtensions>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_RitualBase">
+    <defName>LP_ForgeCrownOfBone</defName>
+    <label>制作骸骨王冠</label>
+    <description>巫妖用20金和10份人皮做一顶骸骨王冠。</description>
+    <jobString>正在制作骸骨王冠。</jobString>
+    <workAmount>4000</workAmount>
+    <ingredients>
+      <li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>20</count></li>
+      <li><filter><thingDefs><li>Leather_Human</li></thingDefs></filter><count>10</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>Gold</li><li>Leather_Human</li></thingDefs></fixedIngredientFilter>
+    <modExtensions><li Class="LichPhylactery.AltarForgeExtension"><product>LP_CrownOfBone</product></li></modExtensions>
+  </RecipeDef>
+</Defs>

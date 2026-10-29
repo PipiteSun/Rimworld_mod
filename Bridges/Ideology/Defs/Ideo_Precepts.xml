@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.56.0：DND 戒律（规格第三节）。情境心情的 worker 是 LichPhylactery.ThoughtWorker_LPPrecept（按 defName 分支，只读 IdeoMapCache 的计数）。
+     「吞噬大脑」沿用 1.13.0 已有的议题 LP_BrainDevouring（Defs/MindFlayer.xml），这里只在 Patches/Ideo_Vanilla.xml 里给它补规格里的心情。 -->
+<Defs>
+
+  <!-- ==================== 心情基类 ==================== -->
+  <ThoughtDef Name="LP_IdeoSituationalBase" Abstract="True">
+    <workerClass>LichPhylactery.ThoughtWorker_LPPrecept</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+  </ThoughtDef>
+  <ThoughtDef Name="LP_IdeoSelfMemoryBase" Abstract="True">
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>6</durationDays>
+    <stackLimit>3</stackLimit>
+    <stackedEffectMultiplier>0.5</stackedEffectMultiplier>
+  </ThoughtDef>
+  <ThoughtDef Name="LP_IdeoKnowMemoryBase" Abstract="True">
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>3</durationDays>
+    <stackLimit>3</stackLimit>
+    <stackedEffectMultiplier>0.5</stackedEffectMultiplier>
+    <nullifyingTraits>
+      <li>Psychopath</li>
+    </nullifyingTraits>
+  </ThoughtDef>
+
+  <!-- ==================== 亡灵观 ==================== -->
+  <IssueDef>
+    <defName>LP_Issue_Undead</defName>
+    <label>亡灵观</label>
+    <iconPath>UI/Issues/LP/Undead</iconPath>
+  </IssueDef>
+
+  <PreceptDef>
+    <defName>LP_Undead_Abhorrent</defName>
+    <issue>LP_Issue_Undead</issue>
+    <label>憎恶</label>
+    <description>不死之物是对生命与死亡的双重亵渎：巫妖复生、造出死灵造物、汲取灵魂都令人作呕。殖民地里每个死灵造物、每个巫妖都让人不安。</description>
+    <impact>Medium</impact>
+    <displayOrderInIssue>40</displayOrderInIssue>
+    <selectionWeight>1</selectionWeight>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <comps>
+      <li Class="PreceptComp_SelfTookMemoryThought"><eventDef>LP_HE_LichRevived</eventDef><thought>LP_Mem_Undead_Abhorrent_Self</thought></li>
+      <li Class="PreceptComp_KnowsMemoryThought"><eventDef>LP_HE_LichRevived</eventDef><thought>LP_Mem_Undead_Abhorrent_Know</thought></li>
+      <li Class="PreceptComp_SelfTookMemoryThought"><eventDef>LP_HE_ConstructRaised</eventDef><thought>LP_Mem_Undead_Abhorrent_Self</thought></li>
+      <li Class="PreceptComp_KnowsMemoryThought"><eventDef>LP_HE_ConstructRaised</eventDef><thought>LP_Mem_Undead_Abhorrent_Know</thought></li>
+      <li Class="PreceptComp_SelfTookMemoryThought"><eventDef>LP_HE_SoulDrained</eventDef><thought>LP_Mem_Undead_Abhorrent_SoulSelf</thought></li>
+      <li Class="PreceptComp_KnowsMemoryThought"><eventDef>LP_HE_SoulDrained</eventDef><thought>LP_Mem_Undead_Abhorrent_SoulKnow</thought></li>
+      <li Class="PreceptComp_SituationalThought"><thought>LP_Thought_Undead_Constructs</thought></li>
+      <li Class="PreceptComp_SituationalThought"><thought>LP_Thought_Undead_Lich</thought></li>
+    </comps>
+  </PreceptDef>
+  <PreceptDef>
+    <defName>LP_Undead_Wary</defName>
+    <issue>LP_Issue_Undead</issue>
+    <label>警惕</label>
+    <description>亡灵魔法是危险的力量，可以用，但要提防。</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>30</displayOrderInIssue>
+    <selectionWeight>1</selectionWeight>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <comps>
+      <li Class="PreceptComp_SelfTookMemoryThought"><eventDef>LP_HE_LichRevived</eventDef><thought>LP_Mem_Undead_Wary_Self</thought></li>
+      <li Class="PreceptComp_KnowsMemoryThought"><eventDef>LP_HE_LichRevived</eventDef><thought>LP_Mem_Undead_Wary_Know</thought></li>
+      <li Class="PreceptComp_SelfTookMemoryThought"><eventDef>LP_HE_ConstructRaised</eventDef><thought>LP_Mem_Undead_Wary_Self</thought></li>
+      <li Class="PreceptComp_KnowsMemoryThought"><eventDef>LP_HE_ConstructRaised</eventDef><thought>LP_Mem_Undead_Wary_Know</thought></li>
+      <li Class="PreceptComp_SelfTookMemoryThought"><eventDef>LP_HE_SoulDrained</eventDef><thought>LP_Mem_Undead_Wary_Self</thought></li>
+      <li Class="PreceptComp_KnowsMemoryThought"><eventDef>LP_HE_SoulDrained</eventDef><thought>LP_Mem_Undead_Wary_Know</thought></li>
+    </comps>
+  </PreceptDef>
+  <PreceptDef>
+    <defName>LP_Undead_Acceptable</defName>
+    <issue>LP_Issue_Undead</issue>
+    <label>可接受</label>
+    <description>亡灵魔法只是魔法的一个流派，没什么特别的。</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <selectionWeight>2</selectionWeight>
+    <defaultSelectionWeight>2</defaultSelectionWeight>
+  </PreceptDef>
+  <PreceptDef>
+    <defName>LP_Undead_Sacred</defName>
+    <issue>LP_Issue_Undead</issue>
+    <label>神圣</label>
+    <description>超越死亡是最崇高的追求。巫妖复生、造出死灵造物、汲取灵魂都是神圣的事；殖民地有命匣让人安心。</description>
+    <impact>High</impact>
+    <displayOrderInIssue>10</displayOrderInIssue>
+    <selectionWeight>1</selectionWeight>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <comps>
+      <li Class="PreceptComp_SelfTookMemoryThought"><eventDef>LP_HE_LichRevived</eventDef><thought>LP_Mem_Undead_Sacred_Self</thought></li>
+      <li Class="PreceptComp_KnowsMemoryThought"><eventDef>LP_HE_LichRevived</eventDef><thought>LP_Mem_Undead_Sacred_MasterReturns</thought></li>
+      <li Class="PreceptComp_SelfTookMemoryThought"><eventDef>LP_HE_ConstructRaised</eventDef><thought>LP_Mem_Undead_Sacred_Self</thought></li>
+      <li Class="PreceptComp_KnowsMemoryThought"><eventDef>LP_HE_ConstructRaised</eventDef><thought>LP_Mem_Undead_Sacred_Know</thought></li>
+      <li Class="PreceptComp_SelfTookMemoryThought"><eventDef>LP_HE_SoulDrained</eventDef><thought>LP_Mem_Undead_Sacred_Self</thought></li>
+      <li Class="PreceptComp_KnowsMemoryThought"><eventDef>LP_HE_SoulDrained</eventDef><thought>LP_Mem_Undead_Sacred_Know</thought></li>
+      <li Class="PreceptComp_SituationalThought"><thought>LP_Thought_Undead_Phylactery</thought></li>
+    </comps>
+  </PreceptDef>
+
+  <ThoughtDef ParentName="LP_IdeoSelfMemoryBase">
+    <defName>LP_Mem_Undead_Abhorrent_Self</defName>
+    <stages><li><label>我玷污了亡者</label><description>我亲手做了亵渎生死的事。</description><baseMoodEffect>-10</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoKnowMemoryBase">
+    <defName>LP_Mem_Undead_Abhorrent_Know</defName>
+    <stages><li><label>殖民地里有人玩弄亡灵</label><description>又有不死之物在殖民地里出现了。这是对生命的亵渎。</description><baseMoodEffect>-4</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoSelfMemoryBase">
+    <defName>LP_Mem_Undead_Abhorrent_SoulSelf</defName>
+    <stages><li><label>我汲取了灵魂</label><description>我把一个灵魂塞进了命匣。它在里面尖叫。</description><baseMoodEffect>-6</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoKnowMemoryBase">
+    <defName>LP_Mem_Undead_Abhorrent_SoulKnow</defName>
+    <stages><li><label>有人的灵魂被汲取了</label><description>一个灵魂被喂给了命匣，再也去不了亡者之地。</description><baseMoodEffect>-3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoSelfMemoryBase">
+    <defName>LP_Mem_Undead_Wary_Self</defName>
+    <stages><li><label>我动用了亡灵魔法</label><description>这力量很有用，但我心里发毛。</description><baseMoodEffect>-3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoKnowMemoryBase">
+    <defName>LP_Mem_Undead_Wary_Know</defName>
+    <stages><li><label>殖民地动用了亡灵魔法</label><description>希望他们知道自己在做什么。</description><baseMoodEffect>-1</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoSelfMemoryBase">
+    <defName>LP_Mem_Undead_Sacred_Self</defName>
+    <stages><li><label>我离永恒更近了一步</label><description>死亡的门槛在我面前退开了一点。</description><baseMoodEffect>4</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoKnowMemoryBase">
+    <defName>LP_Mem_Undead_Sacred_Know</defName>
+    <nullifyingTraits Inherit="False" />
+    <stages><li><label>亡灵的恩典</label><description>殖民地又向永恒迈进了一步。</description><baseMoodEffect>2</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoKnowMemoryBase">
+    <defName>LP_Mem_Undead_Sacred_MasterReturns</defName>
+    <nullifyingTraits Inherit="False" />
+    <stages><li><label>主人归来</label><description>巫妖从命匣中重塑了身体。死亡对伟大的存在毫无意义。</description><baseMoodEffect>3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+
+  <ThoughtDef ParentName="LP_IdeoSituationalBase">
+    <defName>LP_Thought_Undead_Constructs</defName>
+    <stages>
+      <li><label>殖民地里的死灵造物</label><description>殖民地使役着不死的仆役。</description><baseMoodEffect>-1</baseMoodEffect></li>
+      <li><label>殖民地里的死灵造物</label><description>殖民地使役着不死的仆役。</description><baseMoodEffect>-2</baseMoodEffect></li>
+      <li><label>殖民地里的死灵造物</label><description>殖民地使役着不死的仆役。</description><baseMoodEffect>-3</baseMoodEffect></li>
+      <li><label>殖民地里的死灵造物</label><description>殖民地使役着不死的仆役。</description><baseMoodEffect>-4</baseMoodEffect></li>
+      <li><label>殖民地里的死灵造物</label><description>殖民地使役着不死的仆役。</description><baseMoodEffect>-5</baseMoodEffect></li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoSituationalBase">
+    <defName>LP_Thought_Undead_Lich</defName>
+    <stages><li><label>和巫妖同住</label><description>殖民地里住着一个巫妖。</description><baseMoodEffect>-3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoSituationalBase">
+    <defName>LP_Thought_Undead_Phylactery</defName>
+    <stages><li><label>永恒的守护</label><description>殖民地有命匣。死亡不是终点。</description><baseMoodEffect>2</baseMoodEffect></li></stages>
+  </ThoughtDef>
+
+  <!-- ==================== 巨人观 ==================== -->
+  <IssueDef>
+    <defName>LP_Issue_Giants</defName>
+    <label>巨人观</label>
+    <iconPath>UI/Issues/LP/Giants</iconPath>
+  </IssueDef>
+  <PreceptDef>
+    <defName>LP_Giants_Feared</defName>
+    <issue>LP_Issue_Giants</issue>
+    <label>恐惧</label>
+    <description>巨人是行走的灾难。殖民地里每个巨躯殖民者都让人不安（巨躯本人不算）；杀死巨人是壮举。</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>30</displayOrderInIssue>
+    <selectionWeight>1</selectionWeight>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <comps>
+      <li Class="PreceptComp_SelfTookMemoryThought"><eventDef>LP_HE_GiantKilled</eventDef><thought>LP_Mem_Giants_KilledFeared</thought></li>
+      <li Class="PreceptComp_SituationalThought"><thought>LP_Thought_Giants_Feared</thought></li>
+    </comps>
+  </PreceptDef>
+  <PreceptDef>
+    <defName>LP_Giants_Respected</defName>
+    <issue>LP_Issue_Giants</issue>
+    <label>尊重</label>
+    <description>巨人和其他种族一样，有好有坏。</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <selectionWeight>2</selectionWeight>
+    <defaultSelectionWeight>2</defaultSelectionWeight>
+  </PreceptDef>
+  <PreceptDef>
+    <defName>LP_Giants_Supreme</defName>
+    <issue>LP_Issue_Giants</issue>
+    <label>至上</label>
+    <description>巨人生来伟大，矮小的种族理应仰望他们。巨躯殖民者心情+3，其他殖民者-1；杀死巨人是可耻的。</description>
+    <impact>Medium</impact>
+    <displayOrderInIssue>10</displayOrderInIssue>
+    <selectionWeight>1</selectionWeight>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <comps>
+      <li Class="PreceptComp_SelfTookMemoryThought"><eventDef>LP_HE_GiantKilled</eventDef><thought>LP_Mem_Giants_KilledSupreme</thought></li>
+      <li Class="PreceptComp_SituationalThought"><thought>LP_Thought_Giants_Supreme</thought></li>
+    </comps>
+  </PreceptDef>
+  <ThoughtDef ParentName="LP_IdeoSelfMemoryBase">
+    <defName>LP_Mem_Giants_KilledFeared</defName>
+    <stages><li><label>我杀死了巨人</label><description>那座会走的山倒下了，是我放倒的。</description><baseMoodEffect>3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoSelfMemoryBase">
+    <defName>LP_Mem_Giants_KilledSupreme</defName>
+    <stages><li><label>我杀死了巨人</label><description>我亲手杀死了一位高贵的巨人。</description><baseMoodEffect>-5</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoSituationalBase">
+    <defName>LP_Thought_Giants_Feared</defName>
+    <stages>
+      <li><label>殖民地里的巨人</label><description>那么大的个子，随时可能踩扁我。</description><baseMoodEffect>-1</baseMoodEffect></li>
+      <li><label>殖民地里的巨人</label><description>那么大的个子，随时可能踩扁我。</description><baseMoodEffect>-2</baseMoodEffect></li>
+      <li><label>殖民地里的巨人</label><description>那么大的个子，随时可能踩扁我。</description><baseMoodEffect>-3</baseMoodEffect></li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoSituationalBase">
+    <defName>LP_Thought_Giants_Supreme</defName>
+    <stages>
+      <li><label>生来伟大</label><description>我是巨人。位阶站在我这边。</description><baseMoodEffect>3</baseMoodEffect></li>
+      <li><label>渺小</label><description>和巨人相比，我实在太矮小了。</description><baseMoodEffect>-1</baseMoodEffect></li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ==================== 魔法观 ==================== -->
+  <IssueDef>
+    <defName>LP_Issue_Arcane</defName>
+    <label>魔法观</label>
+    <iconPath>UI/Issues/LP/Arcane</iconPath>
+  </IssueDef>
+  <PreceptDef>
+    <defName>LP_Arcane_Forbidden</defName>
+    <issue>LP_Issue_Arcane</issue>
+    <label>禁绝</label>
+    <description>魔法是腐化的根源。施放法术令人羞耻，带着魔法物品也让人不安。</description>
+    <impact>Medium</impact>
+    <displayOrderInIssue>40</displayOrderInIssue>
+    <selectionWeight>1</selectionWeight>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <comps>
+      <li Class="PreceptComp_SelfTookMemoryThought"><eventDef>LP_HE_SpellCast</eventDef><thought>LP_Mem_Arcane_Forbidden_Self</thought></li>
+      <li Class="PreceptComp_KnowsMemoryThought"><eventDef>LP_HE_SpellCast</eventDef><thought>LP_Mem_Arcane_Forbidden_Know</thought></li>
+      <li Class="PreceptComp_SituationalThought"><thought>LP_Thought_Arcane_Item</thought></li>
+    </comps>
+  </PreceptDef>
+  <PreceptDef>
+    <defName>LP_Arcane_Cautious</defName>
+    <issue>LP_Issue_Arcane</issue>
+    <label>谨慎</label>
+    <description>魔法是工具，要慎用。施法后会有点不自在。</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>30</displayOrderInIssue>
+    <selectionWeight>2</selectionWeight>
+    <defaultSelectionWeight>2</defaultSelectionWeight>
+    <comps>
+      <li Class="PreceptComp_SelfTookMemoryThought"><eventDef>LP_HE_SpellCast</eventDef><thought>LP_Mem_Arcane_Cautious_Self</thought></li>
+    </comps>
+  </PreceptDef>
+  <PreceptDef>
+    <defName>LP_Arcane_Revered</defName>
+    <issue>LP_Issue_Arcane</issue>
+    <label>尊崇</label>
+    <description>魔法是神明的馈赠。施法让人愉快；殖民地有附魔台让人安心。</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <selectionWeight>1</selectionWeight>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <comps>
+      <li Class="PreceptComp_SelfTookMemoryThought"><eventDef>LP_HE_SpellCast</eventDef><thought>LP_Mem_Arcane_Revered_Self</thought></li>
+      <li Class="PreceptComp_SituationalThought"><thought>LP_Thought_Arcane_Enchanting</thought></li>
+    </comps>
+  </PreceptDef>
+  <PreceptDef>
+    <defName>LP_Arcane_Supreme</defName>
+    <issue>LP_Issue_Arcane</issue>
+    <label>魔网至上</label>
+    <description>掌握魔网的人才是完整的人。施法让人欣喜；不会施法的殖民者觉得自己不被魔网眷顾。只有带「魔网至上」模因的文化能选。</description>
+    <impact>High</impact>
+    <displayOrderInIssue>10</displayOrderInIssue>
+    <selectionWeight>1</selectionWeight>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <requiredMemes>
+      <li>LP_Meme_Weave</li>
+    </requiredMemes>
+    <comps>
+      <li Class="PreceptComp_SelfTookMemoryThought"><eventDef>LP_HE_SpellCast</eventDef><thought>LP_Mem_Arcane_Supreme_Self</thought></li>
+      <li Class="PreceptComp_SituationalThought"><thought>LP_Thought_Arcane_NotBlessed</thought></li>
+    </comps>
+  </PreceptDef>
+  <ThoughtDef Name="LP_IdeoSpellMemoryBase" ParentName="LP_IdeoSelfMemoryBase" Abstract="True">
+    <durationDays>1</durationDays>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoSpellMemoryBase">
+    <defName>LP_Mem_Arcane_Forbidden_Self</defName>
+    <stages><li><label>我施放了禁忌的法术</label><description>魔力从我指尖流过的那一刻，我觉得自己被玷污了。</description><baseMoodEffect>-6</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoKnowMemoryBase">
+    <defName>LP_Mem_Arcane_Forbidden_Know</defName>
+    <durationDays>1</durationDays>
+    <stages><li><label>有人施法</label><description>又有人在殖民地里施放法术。</description><baseMoodEffect>-2</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoSpellMemoryBase">
+    <defName>LP_Mem_Arcane_Cautious_Self</defName>
+    <stages><li><label>施法后的不安</label><description>希望这次没有出什么差错。</description><baseMoodEffect>-1</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoSpellMemoryBase">
+    <defName>LP_Mem_Arcane_Revered_Self</defName>
+    <stages><li><label>施法的喜悦</label><description>魔力流过身体的感觉真好。</description><baseMoodEffect>1</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoSpellMemoryBase">
+    <defName>LP_Mem_Arcane_Supreme_Self</defName>
+    <stages><li><label>与魔网共鸣</label><description>我又一次触碰到了魔网。</description><baseMoodEffect>2</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoSituationalBase">
+    <defName>LP_Thought_Arcane_Item</defName>
+    <stages><li><label>身上的魔法物品</label><description>我身上带着被魔法浸染的东西。</description><baseMoodEffect>-3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoSituationalBase">
+    <defName>LP_Thought_Arcane_Enchanting</defName>
+    <stages><li><label>殖民地的附魔台</label><description>殖民地有一座附魔台，魔法在这里受到尊重。</description><baseMoodEffect>2</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoSituationalBase">
+    <defName>LP_Thought_Arcane_NotBlessed</defName>
+    <stages><li><label>不被魔网眷顾</label><description>我不会施法。在这个文化里，我总觉得矮人一截。</description><baseMoodEffect>-2</baseMoodEffect></li></stages>
+  </ThoughtDef>
+
+  <!-- ==================== 种族观 ==================== -->
+  <IssueDef>
+    <defName>LP_Issue_Races</defName>
+    <label>种族观</label>
+    <iconPath>UI/Issues/LP/Races</iconPath>
+  </IssueDef>
+  <PreceptDef>
+    <defName>LP_Races_Human</defName>
+    <issue>LP_Issue_Races</issue>
+    <label>人类至上</label>
+    <description>只有纯正的人类才是世界的主人。非基准人类殖民者心情-2，基准人类+2。可以和原版「人类至上」模因共存。</description>
+    <impact>Medium</impact>
+    <displayOrderInIssue>30</displayOrderInIssue>
+    <selectionWeight>1</selectionWeight>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <comps>
+      <li Class="PreceptComp_SituationalThought"><thought>LP_Thought_Races_Human</thought></li>
+    </comps>
+  </PreceptDef>
+  <PreceptDef>
+    <defName>LP_Races_Many</defName>
+    <issue>LP_Issue_Races</issue>
+    <label>众族共存</label>
+    <description>费伦大陆本来就是众族共存之地。殖民地里有4种以上的异种型时心情+3（众族之城）。</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <selectionWeight>2</selectionWeight>
+    <defaultSelectionWeight>2</defaultSelectionWeight>
+    <comps>
+      <li Class="PreceptComp_SituationalThought"><thought>LP_Thought_Races_Many</thought></li>
+    </comps>
+  </PreceptDef>
+  <PreceptDef>
+    <defName>LP_Races_Own</defName>
+    <issue>LP_Issue_Races</issue>
+    <label>本族至上</label>
+    <description>我们的族裔是最优秀的。和文化创始族裔相同的殖民者心情+2，不同的-1。创始族裔是这个文化第一次被玩家派系采用时殖民者里最多的那个异种型。</description>
+    <impact>Medium</impact>
+    <displayOrderInIssue>10</displayOrderInIssue>
+    <selectionWeight>1</selectionWeight>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <comps>
+      <li Class="PreceptComp_SituationalThought"><thought>LP_Thought_Races_Own</thought></li>
+    </comps>
+  </PreceptDef>
+  <ThoughtDef ParentName="LP_IdeoSituationalBase">
+    <defName>LP_Thought_Races_Human</defName>
+    <stages>
+      <li><label>纯正的人类</label><description>我是纯正的人类。</description><baseMoodEffect>2</baseMoodEffect></li>
+      <li><label>不纯的血统</label><description>按我们的信条，我的血统不够纯正。</description><baseMoodEffect>-2</baseMoodEffect></li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoSituationalBase">
+    <defName>LP_Thought_Races_Many</defName>
+    <stages><li><label>众族之城</label><description>殖民地里住着许多不同的种族，这才是费伦该有的样子。</description><baseMoodEffect>3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoSituationalBase">
+    <defName>LP_Thought_Races_Own</defName>
+    <stages>
+      <li><label>本族的骄傲</label><description>我属于文化的创始族裔。</description><baseMoodEffect>2</baseMoodEffect></li>
+      <li><label>外族人</label><description>我不属于文化的创始族裔。</description><baseMoodEffect>-1</baseMoodEffect></li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ==================== 成神观 ==================== -->
+  <IssueDef>
+    <defName>LP_Issue_Apotheosis</defName>
+    <label>成神观</label>
+    <iconPath>UI/Issues/LP/Apotheosis</iconPath>
+  </IssueDef>
+  <PreceptDef>
+    <defName>LP_Apotheosis_Blasphemy</defName>
+    <issue>LP_Issue_Apotheosis</issue>
+    <label>亵渎</label>
+    <description>凡人妄图成神是对众神的亵渎。殖民地有半神时心情-4，半神升级时-6。</description>
+    <impact>Medium</impact>
+    <displayOrderInIssue>30</displayOrderInIssue>
+    <selectionWeight>1</selectionWeight>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <comps>
+      <li Class="PreceptComp_KnowsMemoryThought"><eventDef>LP_HE_DemigodRisen</eventDef><thought>LP_Mem_Apotheosis_Blasphemy_Know</thought></li>
+      <li Class="PreceptComp_SituationalThought"><thought>LP_Thought_Apotheosis_Demigod</thought></li>
+    </comps>
+  </PreceptDef>
+  <PreceptDef>
+    <defName>LP_Apotheosis_Acceptable</defName>
+    <issue>LP_Issue_Apotheosis</issue>
+    <label>可接受</label>
+    <description>众神也是从凡人走上去的。</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <selectionWeight>2</selectionWeight>
+    <defaultSelectionWeight>2</defaultSelectionWeight>
+  </PreceptDef>
+  <PreceptDef>
+    <defName>LP_Apotheosis_Sacred</defName>
+    <issue>LP_Issue_Apotheosis</issue>
+    <label>神圣使命</label>
+    <description>帮助凡人成神是我们的使命。半神升级时心情+6（见证神迹）；同文化成员都算作半神的信徒（每人每天神力+0.25）。</description>
+    <impact>Medium</impact>
+    <displayOrderInIssue>10</displayOrderInIssue>
+    <selectionWeight>1</selectionWeight>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <comps>
+      <li Class="PreceptComp_KnowsMemoryThought"><eventDef>LP_HE_DemigodRisen</eventDef><thought>LP_Mem_Apotheosis_Sacred_Know</thought></li>
+    </comps>
+  </PreceptDef>
+  <ThoughtDef ParentName="LP_IdeoKnowMemoryBase">
+    <defName>LP_Mem_Apotheosis_Blasphemy_Know</defName>
+    <durationDays>6</durationDays>
+    <stages><li><label>僭越的半神</label><description>那个凡人又向神位爬了一步。众神会降下惩罚的。</description><baseMoodEffect>-6</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoKnowMemoryBase">
+    <defName>LP_Mem_Apotheosis_Sacred_Know</defName>
+    <durationDays>6</durationDays>
+    <nullifyingTraits Inherit="False" />
+    <stages><li><label>见证神迹</label><description>我亲眼看见凡人登上了更高的神位。</description><baseMoodEffect>6</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoSituationalBase">
+    <defName>LP_Thought_Apotheosis_Demigod</defName>
+    <stages><li><label>僭越者在殖民地</label><description>殖民地里有一个自称半神的凡人。</description><baseMoodEffect>-4</baseMoodEffect></li></stages>
+  </ThoughtDef>
+
+  <!-- ==================== 供奉 ==================== -->
+  <IssueDef>
+    <defName>LP_Issue_Offerings</defName>
+    <label>供奉</label>
+    <iconPath>UI/Issues/LP/Offerings</iconPath>
+  </IssueDef>
+  <PreceptDef>
+    <defName>LP_Offerings_None</defName>
+    <issue>LP_Issue_Offerings</issue>
+    <label>无要求</label>
+    <description>神明不需要凡人的祭品。</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>30</displayOrderInIssue>
+    <selectionWeight>2</selectionWeight>
+    <defaultSelectionWeight>2</defaultSelectionWeight>
+  </PreceptDef>
+  <PreceptDef>
+    <defName>LP_Offerings_Quarterly</defName>
+    <issue>LP_Issue_Offerings</issue>
+    <label>每季献祭</label>
+    <description>每季（15天）殖民地都要在圣坛完成至少一次献祭（神迹残片、白银或喜爱的祭品），没完成从第16天起心情-3（神没有得到供奉），直到完成为止。这条戒律下献祭得到的神眷×1.5。</description>
+    <impact>Medium</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <selectionWeight>1</selectionWeight>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <comps>
+      <li Class="PreceptComp_SituationalThought"><thought>LP_Thought_Offerings_Unfed</thought></li>
+    </comps>
+  </PreceptDef>
+  <PreceptDef>
+    <defName>LP_Offerings_Blood</defName>
+    <issue>LP_Issue_Offerings</issue>
+    <label>血祭</label>
+    <description>恶神喜欢鲜血。圣坛多一个「血祭」按钮：选一名囚犯处决，完成后守护神神眷+15。只在守护神是恶神时可用。</description>
+    <impact>High</impact>
+    <displayOrderInIssue>10</displayOrderInIssue>
+    <selectionWeight>1</selectionWeight>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+  </PreceptDef>
+  <ThoughtDef ParentName="LP_IdeoSituationalBase">
+    <defName>LP_Thought_Offerings_Unfed</defName>
+    <stages><li><label>神没有得到供奉</label><description>这一季还没有人在圣坛上献祭。神明会不高兴的。</description><baseMoodEffect>-3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+
+  <!-- 吞噬大脑（沿用 LP_BrainDevouring）：可憎档自己 -10、神圣档知道 +2、神圣档殖民地有上古脑 +2。comps 在 Patches/Ideo_Vanilla.xml 里加。 -->
+  <ThoughtDef ParentName="LP_IdeoSelfMemoryBase">
+    <defName>LP_Mem_Brain_Abhorrent_Self</defName>
+    <stages><li><label>我吞噬了大脑</label><description>我把一个人的心智吸了个干净。我是怪物。</description><baseMoodEffect>-10</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoKnowMemoryBase">
+    <defName>LP_Mem_Brain_Sacred_Know</defName>
+    <nullifyingTraits Inherit="False" />
+    <stages><li><label>又一个心智归入群脑</label><description>群脑又壮大了一分。</description><baseMoodEffect>2</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoSituationalBase">
+    <defName>LP_Thought_Brain_ElderBrain</defName>
+    <stages><li><label>上古脑的庇护</label><description>殖民地有一颗上古脑在低语。</description><baseMoodEffect>2</baseMoodEffect></li></stages>
+  </ThoughtDef>
+
+</Defs>

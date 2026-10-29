@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.56.0：主程序集原有的地方通过 IdeoEvents.Record 发出（没装文化时直接 return）。吞噬大脑沿用 1.13.0 的 LP_DevouredBrain。 -->
+<Defs>
+  <HistoryEventDef><defName>LP_HE_LichRevived</defName><label>巫妖复生</label></HistoryEventDef>
+  <HistoryEventDef><defName>LP_HE_SoulDrained</defName><label>汲取灵魂</label></HistoryEventDef>
+  <HistoryEventDef><defName>LP_HE_ConstructRaised</defName><label>造出死灵造物</label></HistoryEventDef>
+  <HistoryEventDef><defName>LP_HE_SpellCast</defName><label>施放法术</label></HistoryEventDef>
+  <HistoryEventDef><defName>LP_HE_DemigodRisen</defName><label>半神升级</label></HistoryEventDef>
+  <HistoryEventDef><defName>LP_HE_GiantKilled</defName><label>杀死巨人</label></HistoryEventDef>
+</Defs>

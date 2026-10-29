@@ -1,0 +1,20 @@
+<Defs>
+  <BackstoryDef>
+    <defName>LP_ConstructOrigin</defName>
+    <slot>Childhood</slot>
+    <title>死灵塑形</title>
+    <titleShort>死灵造物</titleShort>
+    <baseDesc>[PAWN_nameDef]的躯体由死灵仪式塑造，没有经历生者的童年。意识在仪式中苏醒，技能与知识由此后亲身学习积累。</baseDesc>
+    <shuffleable>false</shuffleable>
+    <spawnCategories><li>LP_ConstructOnly</li></spawnCategories>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>LP_ConstructService</defName>
+    <slot>Adulthood</slot>
+    <title>死灵侍从</title>
+    <titleShort>死灵侍从</titleShort>
+    <baseDesc>[PAWN_nameDef]以死灵造物的身份加入殖民地，接受巫妖的统御，承担工作并积累属于自己的经验（知识死灵的技能固定，经验传给主人）。</baseDesc>
+    <shuffleable>false</shuffleable>
+    <spawnCategories><li>LP_ConstructOnly</li></spawnCategories>
+  </BackstoryDef>
+</Defs>

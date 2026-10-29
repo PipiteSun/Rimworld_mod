@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.17.0 夺心魔灵能与半夺心魔。灵能消耗脑髓（半夺心魔免费，只受冷却限制）。 -->
+<Defs>
+  <AbilityDef ParentName="LP_MindFlayerAbilityBase">
+    <defName>LP_ReadMind</defName>
+    <label>读心</label>
+    <description>窥探一个人形生物的心思：看到对方的特质、最擅长的技能、当前心情和最在意的事。对殖民地的囚犯使用还会动摇其意志：抵抗-3。消耗3点脑髓（半夺心魔免费），冷却1小时。</description>
+    <iconPath>MindFlayer/Abilities/ReadMind</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <hostile>false</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>20</range>
+      <warmupTime>1</warmupTime>
+      <violent>false</violent>
+      <targetParams>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetHumans>true</canTargetHumans>
+        <canTargetAnimals>false</canTargetAnimals>
+        <canTargetMechs>false</canTargetMechs>
+        <canTargetSelf>false</canTargetSelf>
+        <canTargetBuildings>false</canTargetBuildings>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_MindFlayerAbility">
+        <effect>readmind</effect>
+        <cost>3</cost>
+      </li>
+    </comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_MindFlayerAbilityBase">
+    <defName>LP_Dominate</defName>
+    <label>支配人类</label>
+    <description>夺取一个非本殖民地人形生物的意志30秒：被支配者只会攻击自己原来的同伴，30秒后精疲力竭倒地。心智抗性可以抵抗；心灵失聪者不受影响。消耗25点脑髓，冷却2天。</description>
+    <iconPath>MindFlayer/Abilities/Dominate</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <hostile>true</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>15</range>
+      <warmupTime>1</warmupTime>
+      <violent>false</violent>
+      <targetParams>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetHumans>true</canTargetHumans>
+        <canTargetAnimals>false</canTargetAnimals>
+        <canTargetMechs>false</canTargetMechs>
+        <canTargetSelf>false</canTargetSelf>
+        <canTargetBuildings>false</canTargetBuildings>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_MindFlayerAbility">
+        <effect>dominate</effect>
+        <cost>25</cost>
+      </li>
+    </comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_MindFlayerAbilityBase">
+    <defName>LP_PsychicBind</defName>
+    <label>心灵束缚</label>
+    <description>把群脑的教义直接压进对方的心智：信仰不同的人形生物信念-40%，信念归零时改信施法者的意识形态。心智抗性可以抵抗。仅在加载《意识形态》时可用。消耗20点脑髓，冷却1天。</description>
+    <iconPath>MindFlayer/Abilities/PsychicBind</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>10</range>
+      <warmupTime>1.5</warmupTime>
+      <violent>false</violent>
+      <targetParams>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetHumans>true</canTargetHumans>
+        <canTargetAnimals>false</canTargetAnimals>
+        <canTargetMechs>false</canTargetMechs>
+        <canTargetSelf>false</canTargetSelf>
+        <canTargetBuildings>false</canTargetBuildings>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_MindFlayerAbility">
+        <effect>bind</effect>
+        <cost>20</cost>
+      </li>
+    </comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_MindFlayerAbilityBase">
+    <defName>LP_TelekineticThrow</defName>
+    <label>念力投掷</label>
+    <description>用念力把一个生物甩出去最多4格，造成10点钝击伤害并让其踉跄1秒。消耗8点脑髓，冷却6小时。</description>
+    <iconPath>MindFlayer/Abilities/TelekineticThrow</iconPath>
+    <cooldownTicksRange>15000</cooldownTicksRange>
+    <hostile>true</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>12</range>
+      <warmupTime>0.5</warmupTime>
+      <violent>false</violent>
+      <targetParams>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetSelf>false</canTargetSelf>
+        <canTargetBuildings>false</canTargetBuildings>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_MindFlayerAbility">
+        <effect>throw</effect>
+        <cost>8</cost>
+      </li>
+    </comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_MindFlayerAbilityBase">
+    <defName>LP_Unseen</defName>
+    <label>灵能隐匿</label>
+    <description>让周围所有心智都看不见自己，隐形1小时（使用原版的心灵隐形效果，攻击或受伤可能暴露）。消耗15点脑髓，冷却1天。</description>
+    <iconPath>MindFlayer/Abilities/Unseen</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <targetRequired>false</targetRequired>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>0</range>
+      <warmupTime>0.5</warmupTime>
+      <violent>false</violent>
+      <targetParams>
+        <canTargetSelf>true</canTargetSelf>
+        <canTargetPawns>false</canTargetPawns>
+        <canTargetBuildings>false</canTargetBuildings>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_MindFlayerAbility">
+        <effect>unseen</effect>
+        <cost>15</cost>
+      </li>
+    </comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_MindFlayerAbilityBase">
+    <defName>LP_PsychicStorm</defName>
+    <label>心灵风暴</label>
+    <description>向周围8格释放狂暴的心灵风暴：所有敌对目标被击晕约6秒并陷入心灵震荡，比心灵震爆更难抵抗（心智抗性只有一半效果）。消耗40点脑髓，冷却5天。</description>
+    <iconPath>MindFlayer/Abilities/PsychicStorm</iconPath>
+    <cooldownTicksRange>300000</cooldownTicksRange>
+    <hostile>true</hostile>
+    <targetRequired>false</targetRequired>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>0</range>
+      <warmupTime>2</warmupTime>
+      <violent>false</violent>
+      <targetParams>
+        <canTargetSelf>true</canTargetSelf>
+        <canTargetPawns>false</canTargetPawns>
+        <canTargetBuildings>false</canTargetBuildings>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_MindFlayerAbility">
+        <effect>storm</effect>
+        <cost>40</cost>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <MentalStateDef ParentName="BaseMentalState">
+    <defName>LP_Dominated</defName>
+    <stateClass>MentalState_MurderousRage</stateClass>
+    <label>被支配</label>
+    <category>Aggro</category>
+    <blockRandomInteraction>true</blockRandomInteraction>
+    <colonistsOnly>false</colonistsOnly>
+    <minTicksBeforeRecovery>1800</minTicksBeforeRecovery>
+    <maxTicksBeforeRecovery>1800</maxTicksBeforeRecovery>
+    <recoverFromSleep>true</recoverFromSleep>
+    <nameColor>(0.75,0.4,0.95)</nameColor>
+    <blockNormalThoughts>true</blockNormalThoughts>
+    <recoveryMessage>{0}摆脱了夺心魔的支配。</recoveryMessage>
+    <baseInspectLine>被支配：攻击原来的同伴</baseInspectLine>
+  </MentalStateDef>
+  <HediffDef>
+    <defName>LP_Dominated</defName>
+    <label>被支配</label>
+    <description>意志被夺心魔夺走，只会攻击自己原来的同伴。支配结束后会精疲力竭倒地。</description>
+    <hediffClass>LichPhylactery.Hediff_Dominated</hediffClass>
+    <defaultLabelColor>(0.75, 0.4, 0.95)</defaultLabelColor>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>1800</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_Unseen</defName>
+    <label>灵能隐匿</label>
+    <description>周围的心智看不见这个人。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Invisibility">
+        <visibleToPlayer>true</visibleToPlayer>
+      </li>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>2500</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+  </HediffDef>
+
+  <!-- ==================== 半夺心魔 ==================== -->
+  <ThingDef ParentName="MakeableDrugPillBase">
+    <defName>LP_PsionicSuppressant</defName>
+    <label>抑灵剂</label>
+    <description>一种压制灵能寄生体的药丸。在蝌蚪化形进度不到50%时服用，可以冻结化形，让宿主成为保有自我的"半夺心魔"：能读心、能吞噬大脑，每吞噬一个大脑领悟一项灵能（最多3项）。\n\n药效持续3天，断药3天后化形恢复。每吞噬一个大脑都有25%概率让抑制失效。</description>
+    <possessionCount>5</possessionCount>
+    <graphicData>
+      <texPath>MindFlayer/Items/PsionicSuppressant</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <socialPropernessMatters>false</socialPropernessMatters>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>900</WorkToMake>
+      <MarketValue>45</MarketValue>
+      <Mass>0.005</Mass>
+      <Flammability>0.7</Flammability>
+    </statBases>
+    <techLevel>Industrial</techLevel>
+    <ingestible>
+      <drugCategory>Medical</drugCategory>
+      <outcomeDoers>
+        <li Class="LichPhylactery.IngestionOutcomeDoer_PsionicSuppress" />
+      </outcomeDoers>
+    </ingestible>
+    <recipeMaker>
+      <researchPrerequisite>LP_DNDAlchemy</researchPrerequisite>
+      <recipeUsers>
+        <li>DrugLab</li>
+        <li>LP_AlchemyTable</li>
+      </recipeUsers>
+      <displayPriority>2110</displayPriority>
+    </recipeMaker>
+    <costList>
+      <Neutroamine>3</Neutroamine>
+      <MedicineHerbal>1</MedicineHerbal>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <listOrder>1010</listOrder>
+        <overdoseSeverityOffset>0.08~0.14</overdoseSeverityOffset>
+      </li>
+    </comps>
+  </ThingDef>
+  <HediffDef>
+    <defName>LP_PsionicSuppression</defName>
+    <label>抑灵剂</label>
+    <description>抑灵剂正在压制脑中的蝌蚪。化形进度低于50%时会被冻结。药效结束3天内不再服药，化形就会恢复。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.7, 0.6, 0.95)</defaultLabelColor>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>180000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+  <GeneDef>
+    <defName>LP_HalfIllithidGene</defName>
+    <label>半夺心魔</label>
+    <description>蝌蚪被抑灵剂压制在半途，宿主保住了自我，却也得到了夺心魔的一部分力量：能读心、能吞噬大脑（不需要脑髓，也不会获得脑髓）。每吞噬一个人形大脑领悟一项灵能（依次为心灵震爆、念力投掷、灵能隐匿，最多3项）。目睹吞噬大脑不会难过。</description>
+    <geneClass>LichPhylactery.Gene_HalfIllithid</geneClass>
+    <iconPath>MindFlayer/Genes/HalfIllithid</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>2</biostatCpx>
+    <biostatMet>0</biostatMet>
+    <abilities>
+      <li>LP_ReadMind</li>
+      <li>LP_DevourBrain</li>
+    </abilities>
+    <descriptionHyperlinks>
+      <AbilityDef>LP_ReadMind</AbilityDef>
+      <AbilityDef>LP_DevourBrain</AbilityDef>
+    </descriptionHyperlinks>
+    <customEffectDescriptions>
+      <li>灵能免费，只受冷却限制。</li>
+      <li>每吞噬一个人形大脑：领悟一项灵能（最多3项）；25%概率让抑灵剂失效。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+</Defs>

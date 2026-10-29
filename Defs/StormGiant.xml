@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.34.0 风暴巨人：可遗传的巨人血统（阶序第1位），代谢合计 -5。代码见 Source/StormGiant.cs，通用规则见 Source/GiantKin.cs。 -->
+<Defs>
+
+  <XenotypeDef>
+    <defName>LP_StormGiant</defName>
+    <label>风暴巨人</label>
+    <description>住在海渊与风暴中心的巨人族，血脉会遗传给子女，但他们子嗣稀少。成年风暴巨人的体型是常人的2.4倍，皮肤是淡紫灰或青绿色，头戴珊瑚与雷纹编成的头冠。他们在深海和浅滩里行走自如，雷电劈在身上也毫发无伤，每一次挥拳都带着雷霆。风暴巨人是天生的先知，能从风云里读出将要到来的灾祸——这份天赋也让他们终日忧郁。在巨人的阶序里，风暴巨人位居顶端。</description>
+    <descriptionShort>可遗传的巨人种族（阶序第1位）。2.4倍巨躯、水中行动、免疫EMP与落雷、近战附带雷霆、风雨天更强、预见袭击；闪电束、召唤风暴；生育×0.5，生性忧郁。</descriptionShort>
+    <iconPath>Giants/Genes/StormGiantCore</iconPath>
+    <inheritable>true</inheritable>
+    <combatPowerFactor>1.8</combatPowerFactor>
+    <genes>
+      <li>LP_StormGiantCore</li>
+      <li>LP_StormBody</li>
+      <li>LP_StormChild</li>
+      <li>LP_StormMelancholy</li>
+      <li>LP_StormOmen</li>
+      <li>LP_StormCrown</li>
+      <li>Body_Hulk</li>
+    </genes>
+  </XenotypeDef>
+
+  <GeneDef Name="LP_StormGiantGeneBase" Abstract="True">
+    <displayCategory>Miscellaneous</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>2</biostatCpx>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_StormGiantGeneBase">
+    <defName>LP_StormGiantCore</defName>
+    <label>风暴巨人本源</label>
+    <description>风暴巨人的海渊血脉，可随种族遗传。成年后体型为常人的2.4倍（显示1.55倍，儿童随年龄长大）；体型越大，生命和近战越强（巨躯规则），胃口也大（成年胃容量×240%），步子大却不快。风暴巨人在浅水、沼泽、浅海里行走如履平地。他们每一次近战命中都会追加一道雷霆（EMP 15，手持风暴三叉戟时×1.5），能放出闪电束；成年后还能召唤风暴。他们不在乎赤身裸体，生育能力只有常人的一半。</description>
+    <geneClass>LichPhylactery.Gene_StormGiant</geneClass>
+    <iconPath>Giants/Genes/StormGiantCore</iconPath>
+    <displayCategory>ResistanceAndWeakness</displayCategory>
+    <biostatCpx>4</biostatCpx>
+    <biostatMet>-3</biostatMet>
+    <statFactors>
+      <MoveSpeed>0.9</MoveSpeed>
+      <Fertility>0.5</Fertility>
+    </statFactors>
+    <abilities>
+      <li>LP_StormLightningBolt</li>
+      <li>LP_SummonStorm</li>
+    </abilities>
+    <descriptionHyperlinks>
+      <AbilityDef>LP_StormLightningBolt</AbilityDef>
+      <AbilityDef>LP_SummonStorm</AbilityDef>
+      <ThingDef>LP_StormTrident</ThingDef>
+    </descriptionHyperlinks>
+    <customEffectDescriptions>
+      <li>巨人血统：风暴巨人（阶序第1位，最高）。</li>
+      <li>体型随年龄增长，成年达到×2.4（显示×1.55）。</li>
+      <li>巨躯规则：生命与近战随体型提高（可在模组设置调整）。</li>
+      <li>巨胃：饱食度上限随体型提高，成年×240%。</li>
+      <li>移动速度：×90%；生育：×50%。</li>
+      <li>水中行动：浅水、沼泽、浅海不减速（深水仍不可通行）。</li>
+      <li>雷霆一击：每次近战命中追加 EMP 15（手持风暴三叉戟×1.5），无冷却。</li>
+      <li>不会因裸体产生负面心情；能穿普通衣服，巨人专属衣甲每件心情+2（最多+6）。</li>
+    </customEffectDescriptions>
+    <modExtensions>
+      <li Class="LichPhylactery.GiantKinExtension">
+        <rank>1</rank>
+        <element>storm</element>
+        <label>风暴巨人</label>
+        <adultSize>2.4</adultSize>
+        <renderScale>1.55</renderScale>
+      </li>
+      <li Class="LichPhylactery.AmphibiousExtension">
+        <waterCellCost>0</waterCellCost>
+      </li>
+    </modExtensions>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_StormGiantGeneBase">
+    <defName>LP_StormBody</defName>
+    <label>雷电之躯</label>
+    <description>雷电是风暴巨人的血。EMP 对他们完全无效；落雷（天然雷暴、泰坦的神罚、塔洛斯附体者召下的雷、风暴巨人自己召来的雷）的爆炸伤不到他们。</description>
+    <iconPath>Giants/Genes/StormBody</iconPath>
+    <displayCategory>ResistanceAndWeakness</displayCategory>
+    <biostatMet>-1</biostatMet>
+    <customEffectDescriptions>
+      <li>EMP 伤害全免。</li>
+      <li>落雷的爆炸对自己无伤害（雷击引起的火仍会烧伤）。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_StormGiantGeneBase">
+    <defName>LP_StormChild</defName>
+    <label>风暴之子</label>
+    <description>风雨越大，风暴巨人越精神。地图天气为下雨、雷雨、干雷暴或大雪时，近战伤害+15%、移动速度+10%，心情+3（风暴在歌唱）。</description>
+    <iconPath>Giants/Genes/StormChild</iconPath>
+    <biostatMet>-1</biostatMet>
+    <customEffectDescriptions>
+      <li>下雨、雷雨、干雷暴、大雪时：近战伤害×115%、移动速度×110%、心情+3。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_StormGiantGeneBase">
+    <defName>LP_StormMelancholy</defName>
+    <label>忧郁先知</label>
+    <description>看得见将来的人总是不快乐。风暴巨人常年心情-3（沉重的预兆）；只有在雨里，或者身边5格内没有别人、能独自望着天边时，这份忧郁才会散去。</description>
+    <iconPath>Giants/Genes/StormMelancholy</iconPath>
+    <biostatCpx>1</biostatCpx>
+    <biostatMet>1</biostatMet>
+    <customEffectDescriptions>
+      <li>常驻心情-3；雨天或5格内没有别人时不生效。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_StormGiantGeneBase">
+    <defName>LP_StormOmen</defName>
+    <label>风暴预兆</label>
+    <description>风暴巨人能从风云里读出将要到来的灾祸。家园地图上有成年的风暴巨人时，点数≥1000的敌对袭击推迟12小时落地，并提前来信说明派系和方向（与竖琴手预警叠加，可在模组设置关闭）。</description>
+    <iconPath>Giants/Genes/StormOmen</iconPath>
+    <biostatMet>-1</biostatMet>
+    <customEffectDescriptions>
+      <li>成年后：家园地图的≥1000点敌对袭击推迟12小时，并提前预警。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <!-- 肤色、发色：不放进异种型，生成时各随机一种作为内源基因（StormGiant.EnsureAppearance），遗传时随父母 -->
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinStormViolet</defName>
+    <label>淡紫灰肤色</label>
+    <labelShortAdj>淡紫灰</labelShortAdj>
+    <description>风暴巨人淡紫灰色的皮肤，像雷雨前的天色。</description>
+    <skinColorOverride>(156, 148, 178)</skinColorOverride>
+    <randomBrightnessFactor>0.06</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+    <displayOrderInCategory>1</displayOrderInCategory>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinStormTeal</defName>
+    <label>青绿肤色</label>
+    <labelShortAdj>青绿</labelShortAdj>
+    <description>风暴巨人青绿色的皮肤，像风暴里的海水。</description>
+    <skinColorOverride>(110, 160, 156)</skinColorOverride>
+    <randomBrightnessFactor>0.06</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+    <displayOrderInCategory>1</displayOrderInCategory>
+  </GeneDef>
+  <GeneDef ParentName="GeneHairColorBase">
+    <defName>LP_HairStormSilver</defName>
+    <label>银白发色</label>
+    <description>银白色的头发，像浪尖上的泡沫。</description>
+    <hairColorOverride>(214, 218, 228)</hairColorOverride>
+    <randomBrightnessFactor>0.04</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+    <displayOrderInCategory>1</displayOrderInCategory>
+  </GeneDef>
+  <GeneDef ParentName="GeneHairColorBase">
+    <defName>LP_HairStormBlue</defName>
+    <label>深蓝发色</label>
+    <description>深蓝色的头发，像风暴中心的海。</description>
+    <hairColorOverride>(52, 70, 116)</hairColorOverride>
+    <randomBrightnessFactor>0.05</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+    <displayOrderInCategory>1</displayOrderInCategory>
+  </GeneDef>
+  <GeneDef>
+    <defName>LP_StormCrown</defName>
+    <label>珊瑚雷纹头冠</label>
+    <description>风暴巨人用海渊珊瑚编成的头冠，枝杈上刻着雷纹，下雨时会泛起微光。</description>
+    <iconPath>Giants/Genes/StormGiantCore</iconPath>
+    <displayCategory>Cosmetic</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>0</biostatCpx>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Giants/StormCrown/StormCrown</texPath>
+        <color>(255, 255, 255)</color>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData>
+          <defaultData>
+            <layer>80</layer>
+          </defaultData>
+        </drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+
+  <!-- ==================== 能力 ==================== -->
+  <AbilityDef>
+    <defName>LP_StormLightningBolt</defName>
+    <label>闪电束</label>
+    <description>朝一个方向放出一道笔直的闪电，贯穿15格：路径上的每个人和建筑受到12点火焰和20点 EMP（遇到墙就停下）。冷却6小时。</description>
+    <iconPath>Giants/Abilities/LightningBolt</iconPath>
+    <cooldownTicksRange>15000</cooldownTicksRange>
+    <hostile>true</hostile>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <aiCanUse>false</aiCanUse>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>15</range>
+      <warmupTime>0.8</warmupTime>
+      <requireLineOfSight>false</requireLineOfSight>
+      <soundCast>Thunder_OnMap</soundCast>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetBuildings>true</canTargetBuildings>
+        <canTargetSelf>false</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_StormAbility"><effect>bolt</effect></li>
+    </comps>
+  </AbilityDef>
+  <AbilityDef>
+    <defName>LP_SummonStorm</defName>
+    <label>召唤风暴</label>
+    <description>（成年）召来一场风暴：地图天气转为雷雨并锁定1天；这一天里每2小时，会有一道雷劈在随机一名敌人3格内。冷却7天。</description>
+    <iconPath>Giants/Abilities/SummonStorm</iconPath>
+    <cooldownTicksRange>420000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <targetRequired>false</targetRequired>
+    <aiCanUse>false</aiCanUse>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>0</range>
+      <warmupTime>2</warmupTime>
+      <targetParams><canTargetSelf>true</canTargetSelf></targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_StormAbility"><effect>storm</effect></li>
+    </comps>
+  </AbilityDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>LP_StormBolt</defName>
+    <label>闪电束</label>
+    <thingClass>LichPhylactery.Projectile_StormBolt</thingClass>
+    <graphicData>
+      <texPath>Giants/Items/StormBolt</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>(1.6,1.6)</drawSize>
+    </graphicData>
+    <projectile>
+      <damageDef>EMP</damageDef>
+      <damageAmountBase>20</damageAmountBase>
+      <speed>120</speed>
+      <flyOverhead>true</flyOverhead>
+    </projectile>
+  </ThingDef>
+
+  <!-- 召来的天气（GameCondition_LPWeather：原版强制天气 + 存档 + 可选的落雷） -->
+  <GameConditionDef>
+    <defName>LP_StormCalled</defName>
+    <conditionClass>LichPhylactery.GameCondition_LPWeather</conditionClass>
+    <label>召唤风暴</label>
+    <description>风暴巨人召来的雷雨。风暴持续期间，每2小时会有一道雷劈向敌人。</description>
+    <weatherDef>RainyThunderstorm</weatherDef>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
+  <GameConditionDef>
+    <defName>LP_WeatherCalled</defName>
+    <conditionClass>LichPhylactery.GameCondition_LPWeather</conditionClass>
+    <label>召来的天气</label>
+    <description>被魔法召来、暂时锁定的天气。</description>
+    <weatherDef>RainyThunderstorm</weatherDef>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
+  <GameConditionDef>
+    <defName>LP_AbyssStorm</defName>
+    <conditionClass>LichPhylactery.GameCondition_LPWeather</conditionClass>
+    <label>海渊风暴</label>
+    <description>跟着风暴巨人从海上卷来的雷雨。</description>
+    <weatherDef>RainyThunderstorm</weatherDef>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
+
+  <!-- ==================== 心情 ==================== -->
+  <ThoughtDef>
+    <defName>LP_StormSinging</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_StormSinging</workerClass>
+    <stages>
+      <li>
+        <label>风暴在歌唱</label>
+        <description>雨点打在脸上，雷声在云里滚。这是海渊的歌，我听得懂。</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_StormForeboding</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_StormForeboding</workerClass>
+    <stages>
+      <li>
+        <label>沉重的预兆</label>
+        <description>我看见了还没发生的事，没法假装不知道。只有雨声或独处时，心里才能静一会儿。</description>
+        <baseMoodEffect>-3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ==================== 镣铐（被奴役的风暴巨人） ==================== -->
+  <HediffDef>
+    <defName>LP_Shackled</defName>
+    <label>镣铐</label>
+    <description>红袍法师刻满禁咒的镣铐：近战伤害减半，用不了任何能力，也放不出雷霆一击。被俘或加入殖民地后会被除去。</description>
+    <hediffClass>LichPhylactery.Hediff_Shackled</hediffClass>
+    <defaultLabelColor>(0.7, 0.3, 0.3)</defaultLabelColor>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <statFactors>
+          <MeleeDamageFactor>0.5</MeleeDamageFactor>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- ==================== 派系成员 ==================== -->
+  <!-- 塞伊远征军：不进 XML 的兵种表，由 StormGiantRaid 在 ≥4000 点的战斗袭击里按 10% 插入，戴镣铐 -->
+  <PawnKindDef ParentName="LP_FHBase">
+    <defName>LP_FH_EnslavedStormGiant</defName>
+    <label>被奴役的风暴巨人</label>
+    <combatPower>200</combatPower>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_StormGiant>1</LP_StormGiant>
+      </xenotypeChances>
+    </xenotypeSet>
+    <minGenerationAge>25</minGenerationAge>
+    <apparelMoney>0~80</apparelMoney>
+    <apparelTags Inherit="False">
+      <li>Neolithic</li>
+    </apparelTags>
+    <weaponMoney>0</weaponMoney>
+    <initialResistanceRange>18~22</initialResistanceRange>
+  </PawnKindDef>
+  <!-- 只用于巨人迁徙（风暴巨人先知），不进同盟的袭击和商队组 -->
+  <PawnKindDef ParentName="LP_FCBase">
+    <defName>LP_FC_StormGiantProphet</defName>
+    <label>风暴巨人先知</label>
+    <combatPower>220</combatPower>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_StormGiant>1</LP_StormGiant>
+      </xenotypeChances>
+    </xenotypeSet>
+    <minGenerationAge>40</minGenerationAge>
+    <itemQuality>Good</itemQuality>
+    <apparelMoney>200~400</apparelMoney>
+    <weaponMoney>0</weaponMoney>
+    <initialResistanceRange>30~45</initialResistanceRange>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_FCBase">
+    <defName>LP_FC_Sailor</defName>
+    <label>水手</label>
+    <combatPower>35</combatPower>
+    <isFighter>false</isFighter>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <requiredWorkTags Inherit="False" />
+    <apparelMoney>150~300</apparelMoney>
+    <weaponMoney>60~120</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeBasic</li>
+      <li>NeolithicMeleeBasic</li>
+    </weaponTags>
+  </PawnKindDef>
+
+  <!-- ==================== 剧本：海渊流亡者 ==================== -->
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>LP_AbyssExile</defName>
+    <label>海渊流亡者</label>
+    <description>一位风暴巨人被海渊的宫廷放逐，带着两名不肯离开他的人类水手，在一场雷雨里漂上了这片陌生的海岸。\n\n风暴巨人手里只剩一把风暴三叉戟；开局的第一天是一场跟着他们从海上卷来的雷雨。\n\n建议选海岸地图：风暴巨人在浅海和沼泽里行走如履平地，风雨天更强，也能预见大型袭击；但他们子嗣稀少，而且终日忧郁。</description>
+    <scenario>
+      <summary>一位被放逐的风暴巨人与两名人类水手，带着风暴三叉戟。建议海岸地图。</summary>
+      <parts>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns_Xenotypes">
+          <def>ConfigurePawnsXenotypes</def>
+          <pawnChoiceCount>8</pawnChoiceCount>
+          <customSummary>一位风暴巨人和两名人类水手。</customSummary>
+          <xenotypeCounts>
+            <li>
+              <xenotype>LP_StormGiant</xenotype>
+              <count>1</count>
+              <description>风暴巨人</description>
+              <requiredAtStart>true</requiredAtStart>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+            <li>
+              <xenotype>Baseliner</xenotype>
+              <count>2</count>
+              <description>人类水手</description>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+          </xenotypeCounts>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <visible>false</visible>
+          <method>Standing</method>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_TimedCondition">
+          <def>LP_TimedCondition</def>
+          <condition>LP_AbyssStorm</condition>
+          <days>1</days>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>LP_StormTrident</thingDef>
+          <count>1</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Pemmican</thingDef>
+          <count>80</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MedicineHerbal</thingDef>
+          <count>15</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Cloth</thingDef>
+          <count>80</count>
+        </li>
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>WoodLog</thingDef>
+          <count>250</count>
+        </li>
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>Steel</thingDef>
+          <count>150</count>
+        </li>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>海渊宫廷的大门在你身后关上了。\n\n两名水手划着破船跟了你三天三夜，最后一道浪把你们一起拍上了这片陌生的海岸。雷雨还没停——它是跟着你来的。\n\n你看得见将来的影子，却看不清自己的。先在这里活下去吧。</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+</Defs>

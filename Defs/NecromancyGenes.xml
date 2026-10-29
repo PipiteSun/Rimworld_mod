@@ -1,0 +1,30 @@
+﻿<Defs>
+  <GeneDef>
+    <defName>LP_NecroticTouch</defName>
+    <label>死灵之触</label>
+    <description>巫妖仪式赋予的超凡基因。近战命中仍然存活的血肉生物时，使其眩晕2秒。适用于徒手和近战武器；不作用于机械体、死灵造物、巫妖、尸体或建筑，远程攻击不会触发。</description>
+    <iconPath>Necromancy/Icons/NecroticTouch</iconPath>
+    <displayCategory>Archite</displayCategory>
+    <biostatCpx>3</biostatCpx><biostatMet>0</biostatMet><biostatArc>1</biostatArc>
+    <selectionWeight>0</selectionWeight>
+    <customEffectDescriptions><li>近战命中活体：眩晕2秒。</li></customEffectDescriptions>
+  </GeneDef>
+  <GeneDef>
+    <defName>LP_NecroticBody</defName>
+    <label>死灵之躯</label>
+    <description>巫妖仪式赋予的超凡基因。真空抗性与寒冷抗性100%，免疫低温症与冻伤，不需要进食、睡眠或娱乐。死亡后，只要绑定命匣仍然完好，3个游戏日后自动在命匣附近重塑身体，无须仪式台、材料或其他角色操作。原有身份、技能、关系与基因保留；精神力从零开始恢复。</description>
+    <geneClass>LichPhylactery.Gene_NecroticBody</geneClass>
+    <iconPath>Necromancy/Icons/NecroticBody</iconPath>
+    <displayCategory>Archite</displayCategory>
+    <biostatCpx>4</biostatCpx><biostatMet>0</biostatMet><biostatArc>2</biostatArc>
+    <selectionWeight>0</selectionWeight>
+    <disablesNeeds><li>Food</li><li>Rest</li><li>Joy</li></disablesNeeds>
+    <statOffsets><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">1</VacuumResistance><ComfyTemperatureMin>-300</ComfyTemperatureMin></statOffsets>
+    <makeImmuneTo><li>Hypothermia</li></makeImmuneTo>
+    <damageFactors><Frostbite>0</Frostbite></damageFactors>
+    <customEffectDescriptions>
+      <li>寒冷抗性：100%（免疫低温症与冻伤）。</li>
+      <li>绑定命匣未毁时，死亡3个游戏日后自动复活。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+</Defs>

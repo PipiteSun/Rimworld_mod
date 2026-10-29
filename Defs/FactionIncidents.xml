@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- ==================== 幽暗殖巢的奴仆 ==================== -->
+
+  <HediffDef>
+    <defName>LP_Thralled</defName>
+    <label>被支配</label>
+    <description>这个人的心智被夺心魔牢牢攥住，像傀儡一样替殖巢作战。支配他的夺心魔一旦死亡或倒地，支配就会解除。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.70, 0.50, 0.90)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <painFactor>0.5</painFactor>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>LP_ThrallAwakening</defName>
+    <label>支配解除</label>
+    <description>夺心魔的支配突然断开，这个人的心智一时还收不回来，瘫倒在地。过一阵子就会清醒。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.70, 0.50, 0.90)</defaultLabelColor>
+    <isBad>true</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>30000~45000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.1</setMax>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- ==================== 种族好感（只数殖民者和囚犯） ==================== -->
+
+  <GoodwillSituationDef>
+    <defName>LP_Goodwill_ColonyUndead</defName>
+    <label>殖民地里有巫妖或夺心魔</label>
+    <workerClass>LichPhylactery.GoodwillSituationWorker_Racial</workerClass>
+    <modExtensions>
+      <li Class="LichPhylactery.RacialGoodwillExtension">
+        <faction>LP_FaerunColony</faction>
+        <condition>lichOrFlayer</condition>
+        <offset>-25</offset>
+      </li>
+    </modExtensions>
+  </GoodwillSituationDef>
+
+  <GoodwillSituationDef>
+    <defName>LP_Goodwill_ColonyConstructs</defName>
+    <label>殖民地使役死灵造物</label>
+    <workerClass>LichPhylactery.GoodwillSituationWorker_Racial</workerClass>
+    <modExtensions>
+      <li Class="LichPhylactery.RacialGoodwillExtension">
+        <faction>LP_FaerunColony</faction>
+        <condition>constructs</condition>
+        <perUnit>-2</perUnit>
+        <cap>10</cap>
+      </li>
+    </modExtensions>
+  </GoodwillSituationDef>
+
+  <GoodwillSituationDef>
+    <defName>LP_Goodwill_ColonyHalfOrc</defName>
+    <label>殖民地里有半兽人</label>
+    <workerClass>LichPhylactery.GoodwillSituationWorker_Racial</workerClass>
+    <modExtensions>
+      <li Class="LichPhylactery.RacialGoodwillExtension">
+        <faction>LP_FaerunColony</faction>
+        <condition>halfOrc</condition>
+        <offset>5</offset>
+      </li>
+    </modExtensions>
+  </GoodwillSituationDef>
+
+  <!-- 1.24.0：象人、元素裔、鸟人 +5；食人魔 -5（塞伊不加） -->
+  <GoodwillSituationDef>
+    <defName>LP_Goodwill_Colony124Friends</defName>
+    <label>殖民地里有象人、元素裔或鸟人</label>
+    <workerClass>LichPhylactery.GoodwillSituationWorker_Racial</workerClass>
+    <modExtensions>
+      <li Class="LichPhylactery.RacialGoodwillExtension">
+        <faction>LP_FaerunColony</faction>
+        <condition>faerunFriend124</condition>
+        <offset>5</offset>
+      </li>
+    </modExtensions>
+  </GoodwillSituationDef>
+
+  <GoodwillSituationDef>
+    <defName>LP_Goodwill_ColonyOgre</defName>
+    <label>殖民地里有食人魔</label>
+    <workerClass>LichPhylactery.GoodwillSituationWorker_Racial</workerClass>
+    <modExtensions>
+      <li Class="LichPhylactery.RacialGoodwillExtension">
+        <faction>LP_FaerunColony</faction>
+        <condition>ogre</condition>
+        <offset>-5</offset>
+      </li>
+    </modExtensions>
+  </GoodwillSituationDef>
+
+  <GoodwillSituationDef>
+    <defName>LP_Goodwill_EmberGiant</defName>
+    <label>殖民地里有火巨人</label>
+    <workerClass>LichPhylactery.GoodwillSituationWorker_Racial</workerClass>
+    <modExtensions>
+      <li Class="LichPhylactery.RacialGoodwillExtension">
+        <faction>LP_EmberClan</faction>
+        <condition>fireGiant</condition>
+        <offset>15</offset>
+      </li>
+    </modExtensions>
+  </GoodwillSituationDef>
+
+  <GoodwillSituationDef>
+    <defName>LP_Goodwill_EmberTroll</defName>
+    <label>殖民地里有巨魔</label>
+    <workerClass>LichPhylactery.GoodwillSituationWorker_Racial</workerClass>
+    <modExtensions>
+      <li Class="LichPhylactery.RacialGoodwillExtension">
+        <faction>LP_EmberClan</faction>
+        <condition>troll</condition>
+        <offset>-15</offset>
+      </li>
+    </modExtensions>
+  </GoodwillSituationDef>
+
+  <GoodwillSituationDef>
+    <defName>LP_Goodwill_DwarfBloodDebt</defName>
+    <label>欠矮人的血债</label>
+    <workerClass>LichPhylactery.GoodwillSituationWorker_BloodDebt</workerClass>
+  </GoodwillSituationDef>
+
+  <!-- 1.20.0：效忠塞伊 / 旧日盟约期间抵消远征军的负自然好感，好感不再被拉回敌对 -->
+  <GoodwillSituationDef>
+    <defName>LP_Goodwill_ThayPledge</defName>
+    <label>向塞伊宣誓效忠</label>
+    <workerClass>LichPhylactery.GoodwillSituationWorker_ThayPledge</workerClass>
+  </GoodwillSituationDef>
+
+  <GoodwillSituationDef>
+    <defName>LP_Goodwill_OldPact</defName>
+    <label>旧日盟约</label>
+    <workerClass>LichPhylactery.GoodwillSituationWorker_OldPact</workerClass>
+  </GoodwillSituationDef>
+
+  <!-- ==================== 剧本组件 ==================== -->
+
+  <ScenPartDef>
+    <defName>LP_FactionGoodwill</defName>
+    <label>开局派系好感</label>
+    <scenPartClass>LichPhylactery.ScenPart_FactionGoodwill</scenPartClass>
+    <category>Misc</category>
+    <selectionWeight>0</selectionWeight>
+    <summaryPriority>300</summaryPriority>
+  </ScenPartDef>
+
+  <!-- ==================== 地下钻出 ==================== -->
+
+  <PawnsArrivalModeDef>
+    <defName>LP_Burrow</defName>
+    <workerClass>LichPhylactery.PawnsArrivalModeWorker_Burrow</workerClass>
+    <selectionWeightCurve>
+      <points>
+        <li>(0, 3)</li>
+      </points>
+    </selectionWeightCurve>
+    <textEnemy>一群{0}从地下钻了出来——是{1}！</textEnemy>
+    <textFriendly>一群友好的{0}从地下钻了出来（{1}）。</textFriendly>
+    <textWillArrive>{0_pawnsPluralDef}会从地下钻出来。</textWillArrive>
+  </PawnsArrivalModeDef>
+
+  <!-- ==================== 事件 ==================== -->
+
+  <IncidentDef>
+    <defName>LP_ZealotRaid</defName>
+    <label>猎巫狂热分子</label>
+    <category>ThreatSmall</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_ZealotRaid</workerClass>
+    <baseChance>0.3</baseChance>
+    <minRefireDays>30</minRefireDays>
+    <earliestDay>10</earliestDay>
+    <pointsScaleable>true</pointsScaleable>
+    <tale>Raid</tale>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>LP_BlackNetworkCaravan</defName>
+    <label>黑网商队</label>
+    <category>FactionArrival</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_BlackNetworkCaravan</workerClass>
+    <!-- 不进入说书人抽签：由 FactionEvents 大约每季触发一次 -->
+    <baseChance>0</baseChance>
+    <minRefireDays>10</minRefireDays>
+    <earliestDay>5</earliestDay>
+    <letterDef>PositiveEvent</letterDef>
+  </IncidentDef>
+
+  <LetterDef ParentName="CustomChoiceLetterBase">
+    <defName>LP_FactionChoiceLetter</defName>
+    <letterClass>LichPhylactery.Letter_FactionChoice</letterClass>
+  </LetterDef>
+
+</Defs>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.56.0：9 件神赐遗物可以成为原版文化圣物（规格 7.3）。 -->
+<Patch>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="LP_Relic_MorningStar"]/relicChance</xpath>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/ThingDef[defName="LP_Relic_MorningStar"]</xpath><value><relicChance>1</relicChance></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="LP_Relic_StormSpear"]/relicChance</xpath>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/ThingDef[defName="LP_Relic_StormSpear"]</xpath><value><relicChance>1</relicChance></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="LP_Relic_HandOfTyr"]/relicChance</xpath>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/ThingDef[defName="LP_Relic_HandOfTyr"]</xpath><value><relicChance>1</relicChance></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="LP_Relic_SilverTear"]/relicChance</xpath>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/ThingDef[defName="LP_Relic_SilverTear"]</xpath><value><relicChance>1</relicChance></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="LP_Relic_AshScales"]/relicChance</xpath>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/ThingDef[defName="LP_Relic_AshScales"]</xpath><value><relicChance>1</relicChance></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="LP_Relic_BeastClaw"]/relicChance</xpath>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/ThingDef[defName="LP_Relic_BeastClaw"]</xpath><value><relicChance>1</relicChance></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="LP_Relic_BlackHand"]/relicChance</xpath>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/ThingDef[defName="LP_Relic_BlackHand"]</xpath><value><relicChance>1</relicChance></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="LP_Relic_NightTear"]/relicChance</xpath>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/ThingDef[defName="LP_Relic_NightTear"]</xpath><value><relicChance>1</relicChance></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="LP_Relic_ForgeHeart"]/relicChance</xpath>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/ThingDef[defName="LP_Relic_ForgeHeart"]</xpath><value><relicChance>1</relicChance></value></nomatch>
+  </Operation>
+</Patch>

@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.30.0 霜巨人：可遗传的巨人血统（阶序第4位，在火巨人之下），代谢合计 -3。代码见 Source/FrostGiant.cs，通用规则见 Source/GiantKin.cs。 -->
+<Defs>
+
+  <XenotypeDef>
+    <defName>LP_FrostGiant</defName>
+    <label>霜巨人</label>
+    <description>住在冰原与雪山上的巨人族，血脉会遗传给子女。成年霜巨人的体型是常人的2.0倍，皮肤是冻土般的浅蓝灰色，霜白的头发编成结满冰碴的发辫。他们在零下八十度也不会失温，踩着积雪照样大步走，冬狼会像猎犬一样追随他们；他们最怕的是火，也受不了一点暖和天气。霜巨人是天生的掠夺者，打退一场袭击、看着库房里堆满抢来的兵甲，就是他们最大的乐趣。在巨人的阶序里，霜巨人排在火巨人之下——两族是几千年的世仇。</description>
+    <descriptionShort>可遗传的巨人种族。2倍巨躯、极耐寒、免疫冻伤失温与寒气、雪地不减速、驯服冬狼、怕火怕热、热爱战利品；冬之号角。</descriptionShort>
+    <iconPath>Giants/Genes/FrostGiantCore</iconPath>
+    <inheritable>true</inheritable>
+    <combatPowerFactor>1.6</combatPowerFactor>
+    <genes>
+      <li>LP_FrostGiantCore</li>
+      <li>LP_FrostSnowWalker</li>
+      <li>LP_FrostGiantFrailty</li>
+      <li>LP_FrostWolfLord</li>
+      <li>LP_FrostLootHeart</li>
+      <li>LP_SkinFrost</li>
+      <li>LP_HairFrost</li>
+      <li>LP_FrostBraids</li>
+      <li>Body_Hulk</li>
+    </genes>
+  </XenotypeDef>
+
+  <GeneDef Name="LP_FrostGiantGeneBase" Abstract="True">
+    <displayCategory>Miscellaneous</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>2</biostatCpx>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_FrostGiantGeneBase">
+    <defName>LP_FrostGiantCore</defName>
+    <label>霜巨人本源</label>
+    <description>霜巨人的冰原血脉，可随种族遗传。成年后体型为常人的2.0倍（显示1.4倍，儿童随年龄长大）；体型越大，生命和近战越强（巨躯规则：成年生命×150%、近战×130%），步子大却不快。霜巨人不怕冷：舒适温度下限-80℃，不会失温、不会冻伤，寒冰魔的寒气和冬狼咬的寒霜迟缓对他们无效。他们不在乎赤身裸体，能穿普通衣服，也有只有巨人能穿的专属衣甲。戴上霜巨人号角就能吹响“冬之号角”。</description>
+    <geneClass>LichPhylactery.Gene_FrostGiant</geneClass>
+    <iconPath>Giants/Genes/FrostGiantCore</iconPath>
+    <displayCategory>ResistanceAndWeakness</displayCategory>
+    <biostatCpx>4</biostatCpx>
+    <biostatMet>-3</biostatMet>
+    <statFactors>
+      <MoveSpeed>0.85</MoveSpeed>
+    </statFactors>
+    <statOffsets>
+      <ComfyTemperatureMin>-80</ComfyTemperatureMin>
+    </statOffsets>
+    <damageFactors>
+      <Frostbite>0</Frostbite>
+    </damageFactors>
+    <abilities>
+      <li>LP_WinterHornBlast</li>
+    </abilities>
+    <descriptionHyperlinks>
+      <AbilityDef>LP_WinterHornBlast</AbilityDef>
+      <ThingDef>LP_FrostGiantHorn</ThingDef>
+    </descriptionHyperlinks>
+    <customEffectDescriptions>
+      <li>巨人血统：霜巨人（阶序第4位，低于火巨人）。</li>
+      <li>体型随年龄增长，成年达到×2.0（显示×1.4）。</li>
+      <li>巨躯规则：成年生命总量×150%、近战伤害×130%（可在模组设置调整；关闭时生命仍×150%）。</li>
+      <li>巨胃：饱食度上限随体型提高，成年×200%。</li>
+      <li>移动速度：×85%。</li>
+      <li>不会失温、不会冻伤；不受“寒气侵体”和“寒霜迟缓”影响。</li>
+      <li>不会因裸体产生负面心情；能穿普通衣服，巨人专属衣甲每件心情+2（最多+6）。</li>
+      <li>冬之号角：装备霜巨人号角后可用。</li>
+    </customEffectDescriptions>
+    <modExtensions>
+      <li Class="LichPhylactery.GiantKinExtension">
+        <rank>4</rank>
+        <element>frost</element>
+        <label>霜巨人</label>
+        <adultSize>2.0</adultSize>
+        <renderScale>1.4</renderScale>
+      </li>
+    </modExtensions>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_FrostGiantGeneBase">
+    <defName>LP_FrostSnowWalker</defName>
+    <label>雪原行者</label>
+    <description>在没膝的积雪里也能大步走：积雪不会拖慢移动速度。冰天雪地里干活也不觉得冷（没有“寒冷”心情）。</description>
+    <iconPath>Giants/Genes/FrostSnowWalker</iconPath>
+    <biostatMet>-1</biostatMet>
+    <customEffectDescriptions>
+      <li>积雪不减速（不影响寻路的绕行判断）。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_FrostGiantGeneBase">
+    <defName>LP_FrostGiantFrailty</defName>
+    <label>畏火</label>
+    <description>霜巨人的身体经不起火烤，也受不了暖和天气：受到的火焰伤害×150%，舒适温度上限-22℃。</description>
+    <iconPath>Giants/Genes/FrostGiantFrailty</iconPath>
+    <displayCategory>ResistanceAndWeakness</displayCategory>
+    <biostatCpx>1</biostatCpx>
+    <biostatMet>2</biostatMet>
+    <damageFactors>
+      <Flame>1.5</Flame>
+    </damageFactors>
+    <statOffsets>
+      <ComfyTemperatureMax>-22</ComfyTemperatureMax>
+    </statOffsets>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_FrostGiantGeneBase">
+    <defName>LP_FrostWolfLord</defName>
+    <label>冬狼之主</label>
+    <description>冬狼认得霜巨人的气味。驯服冬狼的成功率×300%，北极狼与森林狼×150%（最多100%）；驯服失败或误伤时冬狼不会反噬。以这个霜巨人为主人的冬狼近战伤害×115%、移动速度×110%。</description>
+    <iconPath>Giants/Genes/FrostWolfLord</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <biostatMet>-1</biostatMet>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_FrostGiantGeneBase">
+    <defName>LP_FrostLootHeart</defName>
+    <label>战利品之心</label>
+    <description>霜巨人是天生的掠夺者。打退一场袭击后3天心情+5（战利品）；地图上不是殖民地自己做的武器和护甲（散落或入库的，不算穿在身上的）市值每1000银心情+1，最多+4。</description>
+    <iconPath>Giants/Genes/FrostLootHeart</iconPath>
+    <biostatMet>0</biostatMet>
+  </GeneDef>
+
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinFrost</defName>
+    <label>冻土肤色</label>
+    <labelShortAdj>冻土</labelShortAdj>
+    <description>霜巨人浅蓝灰色的皮肤，像冻住的土。</description>
+    <skinColorOverride>(164, 186, 204)</skinColorOverride>
+    <randomBrightnessFactor>0.06</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+    <displayOrderInCategory>1</displayOrderInCategory>
+  </GeneDef>
+  <GeneDef ParentName="GeneHairColorBase">
+    <defName>LP_HairFrost</defName>
+    <label>霜白发色</label>
+    <description>白得发蓝的头发，像结了一层霜。</description>
+    <hairColorOverride>(222, 236, 246)</hairColorOverride>
+    <randomBrightnessFactor>0.04</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+    <displayOrderInCategory>1</displayOrderInCategory>
+  </GeneDef>
+  <GeneDef>
+    <defName>LP_FrostBraids</defName>
+    <label>结霜发辫</label>
+    <description>霜巨人把头发编成两条粗辫子，辫梢挂着冰珠和骨环。</description>
+    <iconPath>Giants/Genes/FrostGiantCore</iconPath>
+    <displayCategory>Cosmetic</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>0</biostatCpx>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Giants/FrostBraids/FrostBraids</texPath>
+        <color>(255, 255, 255)</color>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData>
+          <defaultData>
+            <layer>80</layer>
+          </defaultData>
+        </drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+
+  <!-- ==================== 冬之号角 ==================== -->
+  <AbilityDef Name="LP_WinterHornBase" Abstract="True">
+    <iconPath>Giants/Abilities/WinterHorn</iconPath>
+    <hostile>false</hostile>
+    <targetRequired>false</targetRequired>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <aiCanUse>false</aiCanUse>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>0.5</warmupTime>
+      <range>0</range>
+      <targetParams><canTargetSelf>true</canTargetSelf></targetParams>
+    </verbProperties>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_WinterHornBase">
+    <defName>LP_WinterHornBlast</defName>
+    <label>冬之号角</label>
+    <description>霜巨人吹响霜巨人号角（需要装备）：15格内的友方60秒内近战命中+15%、不会被吓倒；15格内的冬狼另外“狂猎”，移动速度×130%。冷却1天。</description>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_WinterHorn" />
+    </comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_WinterHornBase">
+    <defName>LP_WinterHornCall</defName>
+    <label>狂猎号角</label>
+    <description>吹响霜巨人号角。不是霜巨人吹不出号角的全部力量：只有15格内的冬狼会“狂猎”，60秒内移动速度×130%。冷却1天。</description>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_WinterHorn"><wolvesOnly>true</wolvesOnly></li>
+    </comps>
+  </AbilityDef>
+  <HediffDef>
+    <defName>LP_WinterHorn</defName>
+    <label>冬之号角</label>
+    <description>冬之号角的长鸣还在耳边：近战命中+15%，不会被吓倒。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.75, 0.9, 1)</defaultLabelColor>
+    <isBad>false</isBad>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>3600</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_WildHunt</defName>
+    <label>狂猎</label>
+    <description>号角一响，冬狼就成了猎群：移动速度×130%。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.75, 0.9, 1)</defaultLabelColor>
+    <isBad>false</isBad>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>3600</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><statFactors><MoveSpeed>1.3</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+
+  <!-- ==================== 战利品之心 ==================== -->
+  <ThoughtDef>
+    <defName>LP_FrostSpoils</defName>
+    <durationDays>3</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>战利品</label>
+        <description>打退了敌人！他们丢下的兵器和盔甲，现在都是我们的了。</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_FrostLootHoard</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_FrostLootHoard</workerClass>
+    <stages>
+      <li><label>一点战利品</label><description>库房里有些从敌人那儿缴来的兵甲。</description><baseMoodEffect>1</baseMoodEffect></li>
+      <li><label>不少战利品</label><description>缴来的兵甲越堆越多了。</description><baseMoodEffect>2</baseMoodEffect></li>
+      <li><label>成堆的战利品</label><description>满地都是抢来的兵器和盔甲，真是个好营地。</description><baseMoodEffect>3</baseMoodEffect></li>
+      <li><label>掠夺者的宝山</label><description>战利品堆得像山一样高，冰原上的老家都没这么阔气。</description><baseMoodEffect>4</baseMoodEffect></li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ==================== 派系成员 ==================== -->
+  <!-- 塞伊远征军：不进 XML 的兵种表，由 FrostGiantRaid 按点数（≥800）与季节加进战斗组，随行1～2只冬狼。 -->
+  <PawnKindDef ParentName="LP_FHBase">
+    <defName>LP_FH_FrostGiantRaider</defName>
+    <label>霜巨人掠夺者</label>
+    <combatPower>180</combatPower>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_FrostGiant>1</LP_FrostGiant>
+      </xenotypeChances>
+    </xenotypeSet>
+    <minGenerationAge>25</minGenerationAge>
+    <apparelMoney>100~300</apparelMoney>
+    <apparelTags Inherit="False">
+      <li>Neolithic</li>
+    </apparelTags>
+    <weaponMoney>0</weaponMoney>
+    <initialResistanceRange>18~28</initialResistanceRange>
+  </PawnKindDef>
+  <!-- 只用于巨人迁徙（霜巨人战帮），不进同盟的袭击和商队组 -->
+  <PawnKindDef ParentName="LP_FCBase">
+    <defName>LP_FC_FrostGiantWanderer</defName>
+    <label>霜巨人战士</label>
+    <combatPower>180</combatPower>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_FrostGiant>1</LP_FrostGiant>
+      </xenotypeChances>
+    </xenotypeSet>
+    <minGenerationAge>25</minGenerationAge>
+    <apparelMoney>100~300</apparelMoney>
+    <apparelTags Inherit="False">
+      <li>Neolithic</li>
+    </apparelTags>
+    <weaponMoney>0</weaponMoney>
+    <initialResistanceRange>12~20</initialResistanceRange>
+  </PawnKindDef>
+
+  <!-- ==================== 剧本：冰原之子 ==================== -->
+  <ScenPartDef>
+    <defName>LP_IceborneKinPart</defName>
+    <label>冰原之子</label>
+    <scenPartClass>LichPhylactery.ScenPart_IceborneKin</scenPartClass>
+    <category>StartingImportant</category>
+    <selectionWeight>0</selectionWeight>
+    <summaryPriority>490</summaryPriority>
+    <maxUses>1</maxUses>
+  </ScenPartDef>
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>LP_IceborneKin</defName>
+    <label>冰原之子</label>
+    <description>部落的冰堡被火巨人攻破，两名霜巨人带着两只冬狼一路向南逃，终于在一片陌生的冻土上停下脚步。\n\n两名霜巨人各有一只认主的冬狼；带着短弓、长矛、干肉饼和皮革。余烬氏族的火巨人还记着这笔仇（好感-40）。\n\n建议选冰原或苔原：霜巨人不怕冷、雪地里照样走得快，但受不了暖和天气，也很怕火。</description>
+    <scenario>
+      <summary>两名霜巨人与两只认主的冬狼。怕热怕火，适合冰原或苔原。</summary>
+      <parts>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns_Xenotypes">
+          <def>ConfigurePawnsXenotypes</def>
+          <pawnChoiceCount>8</pawnChoiceCount>
+          <customSummary>两名霜巨人。</customSummary>
+          <xenotypeCounts>
+            <li>
+              <xenotype>LP_FrostGiant</xenotype>
+              <count>2</count>
+              <description>霜巨人</description>
+              <requiredAtStart>true</requiredAtStart>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+          </xenotypeCounts>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <visible>false</visible>
+          <method>Standing</method>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_IceborneKin">
+          <def>LP_IceborneKinPart</def>
+          <wolves>2</wolves>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_FactionGoodwill">
+          <def>LP_FactionGoodwill</def>
+          <faction>LP_EmberClan</faction>
+          <goodwill>-40</goodwill>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Bow_Short</thingDef>
+          <count>2</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MeleeWeapon_Spear</thingDef>
+          <stuff>Steel</stuff>
+          <count>2</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Pemmican</thingDef>
+          <count>60</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Leather_Plain</thingDef>
+          <count>100</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MedicineHerbal</thingDef>
+          <count>20</count>
+        </li>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>冰堡的城墙在火巨人的熔炉锤下塌了。你们带着两只冬狼一路向南，风雪替你们挡住了追兵。\n\n这里的雪不够厚，天也不够冷，可总比熔炉的火强。冬狼在身边嗅着新的猎物——是时候让这片冻土听见冬之号角了。</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+</Defs>

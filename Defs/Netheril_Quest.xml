@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.37.0 拉洛克的邀约 / 升神仪式：派系、PawnKind、事件、站点、游戏条件、hediff、祭坛与仪式。代码在 Source/NetherilQuest.cs、NetherilAscension.cs。 -->
+<Defs>
+  <!-- ==================== 隐藏派系：影巫王拉洛克的扈从（照 LP_DragonWanderers） ==================== -->
+  <!-- 不生成据点、不参与随机袭击；初始好感 0、不是永久敌人。闯进古墓后转敌对，打下古墓后每 60～90 天由代码派一小队亡灵（不走原版袭击）。 -->
+  <FactionDef ParentName="LP_FactionBase">
+    <defName>LP_Larloch</defName>
+    <label>影巫王拉洛克的扈从</label>
+    <fixedName>影巫王拉洛克的扈从</fixedName>
+    <description>影巫王拉洛克是耐瑟瑞尔覆灭后活下来的最古老的巫妖之一，躲在沃索迪尔的古墓里收集耐瑟遗物。他的扈从是半巫妖和骷髅。</description>
+    <pawnSingular>扈从</pawnSingular>
+    <pawnsPlural>扈从</pawnsPlural>
+    <techLevel>Medieval</techLevel>
+    <hidden>true</hidden>
+    <requiredCountAtGameStart>0</requiredCountAtGameStart>
+    <startingCountAtWorldCreation>0</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <displayInFactionSelection>false</displayInFactionSelection>
+    <settlementGenerationWeight>0</settlementGenerationWeight>
+    <canStageAttacks>false</canStageAttacks>
+    <raidsForbidden>true</raidsForbidden>
+    <canGenerateQuestSites>false</canGenerateQuestSites>
+    <rescueesCanJoin>false</rescueesCanJoin>
+    <factionIconPath>Factions/FaerunHostile</factionIconPath>
+    <colorSpectrum>
+      <li>(0.36, 0.30, 0.48)</li>
+      <li>(0.50, 0.44, 0.62)</li>
+    </colorSpectrum>
+    <basicMemberKind>LP_LarlochDemilich</basicMemberKind>
+    <ideoName>影巫王</ideoName>
+    <ideoDescription>耐瑟瑞尔的遗产只属于配得上它的人。</ideoDescription>
+    <forcedMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Ideological</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Individualist</li>
+    </forcedMemes>
+    <raidCommonalityFromPointsCurve>
+      <points>
+        <li>(0, 0)</li>
+      </points>
+    </raidCommonalityFromPointsCurve>
+    <pawnGroupMakers>
+      <li>
+        <kindDef>Combat</kindDef>
+        <options>
+          <LP_LarlochDemilich>1</LP_LarlochDemilich>
+          <LP_LarlochSkeleton>4</LP_LarlochSkeleton>
+        </options>
+      </li>
+    </pawnGroupMakers>
+  </FactionDef>
+
+  <PawnKindDef Name="LP_LarlochBase" ParentName="LP_FighterBase" Abstract="True">
+    <defaultFactionDef>LP_Larloch</defaultFactionDef>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <humanPregnancyChance>0</humanPregnancyChance>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_LarlochBase">
+    <defName>LP_LarlochEnvoy</defName>
+    <label>拉洛克的使者</label>
+    <combatPower>150</combatPower>
+    <minGenerationAge>40</minGenerationAge>
+    <itemQuality>Good</itemQuality>
+    <apparelMoney>300~500</apparelMoney>
+    <weaponMoney>200~400</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeDecent</li>
+    </weaponTags>
+    <initialResistanceRange>40~60</initialResistanceRange>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_LarlochBase">
+    <defName>LP_LarlochDemilich</defName>
+    <label>半巫妖</label>
+    <combatPower>150</combatPower>
+    <minGenerationAge>40</minGenerationAge>
+    <apparelMoney>200~400</apparelMoney>
+    <weaponMoney>200~400</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeDecent</li>
+    </weaponTags>
+    <initialResistanceRange>30~50</initialResistanceRange>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_LarlochBase">
+    <defName>LP_Larloch</defName>
+    <label>影巫王拉洛克</label>
+    <combatPower>600</combatPower>
+    <factionLeader>true</factionLeader>
+    <minGenerationAge>50</minGenerationAge>
+    <itemQuality>Excellent</itemQuality>
+    <apparelMoney>800~1200</apparelMoney>
+    <weaponMoney>800~1200</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeAdvanced</li>
+    </weaponTags>
+    <initialResistanceRange>80~100</initialResistanceRange>
+  </PawnKindDef>
+  <!-- 只在袭击组里出现：生成后由代码换成绑在半巫妖名下的死灵造物 -->
+  <PawnKindDef ParentName="LP_LarlochBase">
+    <defName>LP_LarlochSkeleton</defName>
+    <label>拉洛克的骷髅</label>
+    <combatPower>35</combatPower>
+    <apparelMoney>0</apparelMoney>
+    <weaponMoney>60~120</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeBasic</li>
+    </weaponTags>
+  </PawnKindDef>
+
+  <HediffDef>
+    <defName>LP_NetherilUndead</defName>
+    <label>半巫妖之躯</label>
+    <description>拉洛克用耐瑟奥术维系的不死之躯：不知疼痛、不需进食和睡眠。附近有敌人时会施放恐惧凝视和死灵冲击。</description>
+    <hediffClass>LichPhylactery.Hediff_NetherilUndead</hediffClass>
+    <defaultLabelColor>(0.66, 0.70, 0.66)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <painFactor>0</painFactor>
+        <totalBleedFactor>0.2</totalBleedFactor>
+        <hungerRateFactor>0</hungerRateFactor>
+        <restFallFactor>0</restFallFactor>
+      </li>
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_LarlochAvatar</defName>
+    <label>影巫王的化身</label>
+    <description>这不是拉洛克本人，只是他的一具化身：部件生命 ×2、不知疼痛，会恐惧凝视、死灵冲击，身边始终笼罩着生命汲取光环。化身死后不会复活。</description>
+    <hediffClass>LichPhylactery.Hediff_NetherilUndead</hediffClass>
+    <defaultLabelColor>(0.62, 0.54, 0.86)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <painFactor>0</painFactor>
+        <totalBleedFactor>0</totalBleedFactor>
+        <hungerRateFactor>0</hungerRateFactor>
+        <restFallFactor>0</restFallFactor>
+      </li>
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_ThayEliteMage</defName>
+    <label>塞伊精英法师</label>
+    <description>塞伊精心培养的红袍法师，护身咒文让受到的伤害 -40%。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <statFactors>
+          <IncomingDamageFactor>0.6</IncomingDamageFactor>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_PhylacteryLost</defName>
+    <label>失匣巫妖</label>
+    <description>这名巫妖的命匣交到了影巫王拉洛克手里。巫妖保留全部能力和命匣等级，但死后不会再复活，也不能再向命匣献祭。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.62, 0.54, 0.86)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_ArcaneDemigod</defName>
+    <label>奥术半神</label>
+    <description>魔网接纳了这个人：心灵熵上限 ×2、精神力回复 ×2、不再衰老、不需进食，心灵法术冷却减半，每天一次“神谕”。世上只能有一位奥术半神。</description>
+    <hediffClass>LichPhylactery.Hediff_ArcaneDemigod</hediffClass>
+    <defaultLabelColor>(0.95, 0.85, 0.50)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <keepOnBodyPartRestoration>true</keepOnBodyPartRestoration>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode</nodeClass>
+        <workerClass>PawnRenderNodeWorker</workerClass>
+        <texPath>Things/Pawn/LP_ArcaneHalo</texPath>
+        <parentTagDef>Head</parentTagDef>
+        <drawSize>1.1</drawSize>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData>
+          <defaultData>
+            <layer>85</layer>
+            <offset>(0, 0, 0.36)</offset>
+          </defaultData>
+        </drawData>
+      </li>
+    </renderNodeProperties>
+  </HediffDef>
+
+  <AbilityDef>
+    <defName>LP_Oracle</defName>
+    <label>神谕</label>
+    <description>奥术半神对一名殖民者低语魔网的真相：抹去他所有的负面心情记忆。每天一次。</description>
+    <iconPath>Things/Item/LP_KarsusScroll</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <aiCanUse>false</aiCanUse>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>1</warmupTime>
+      <range>30</range>
+      <targetParams>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetSelf>true</canTargetSelf>
+        <canTargetBuildings>false</canTargetBuildings>
+        <canTargetAnimals>false</canTargetAnimals>
+        <canTargetMechs>false</canTargetMechs>
+        <canTargetLocations>false</canTargetLocations>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_Oracle" />
+    </comps>
+  </AbilityDef>
+
+  <ThoughtDef>
+    <defName>LP_CompanionSentAway</defName>
+    <durationDays>10</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>同伴被送走</label>
+        <description>我们把一个同伴交给了巫妖。</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_WitnessedAscension</defName>
+    <durationDays>15</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>见证升神</label>
+        <description>我亲眼看见凡人成了神。</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_AscensionFailed</defName>
+    <durationDays>10</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>升神失败</label>
+        <description>魔网把我们的同伴变成了石头。</description>
+        <baseMoodEffect>-8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <GameConditionDef>
+    <defName>LP_WeaveTremor</defName>
+    <conditionClass>GameCondition</conditionClass>
+    <label>魔网震颤</label>
+    <description>升神仪式正在撬动魔网：这张地图上心灵法术的冷却 ×2。</description>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
+  <GameConditionDef>
+    <defName>LP_WeaveCollapse</defName>
+    <conditionClass>GameCondition</conditionClass>
+    <label>魔网崩溃</label>
+    <description>失败的升神仪式撕碎了这里的魔网：所有心灵法术（原版与 VPE）、职业法术、巫妖法术和法杖射击都施放不出来。</description>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
+
+  <!-- ==================== 事件、信件 ==================== -->
+  <IncidentDef>
+    <defName>LP_LarlochEnvoy</defName>
+    <label>拉洛克的使者</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_LarlochEnvoy</workerClass>
+    <baseChance>0</baseChance>
+  </IncidentDef>
+  <LetterDef ParentName="CustomChoiceLetterBase">
+    <defName>LP_LarlochChoiceLetter</defName>
+    <letterClass>LichPhylactery.Letter_LarlochEnvoy</letterClass>
+  </LetterDef>
+
+  <!-- ==================== 世界地图站点 ==================== -->
+  <SitePartDef>
+    <defName>LP_RedWizardCamp</defName>
+    <label>红袍法师营地</label>
+    <description>塞伊的红袍法师在这里扎营，营地里有一名精英法师。</description>
+    <workerClass>LichPhylactery.SitePartWorker_Netheril</workerClass>
+    <siteTexture>World/WorldObjects/Sites/Outpost</siteTexture>
+    <expandingIconTexture>World/WorldObjects/Expanding/Sites/Outpost</expandingIconTexture>
+    <applyFactionColorToSiteTexture>true</applyFactionColorToSiteTexture>
+    <showFactionInInspectString>true</showFactionInInspectString>
+    <requiresFaction>true</requiresFaction>
+    <approachOrderString>进攻{0}</approachOrderString>
+    <approachingReportString>正在进攻{0}。</approachingReportString>
+    <arrivedLetter>这里是红袍法师营地。杀掉那名精英红袍法师就算完成拉洛克的第二件差事。</arrivedLetter>
+    <arrivedLetterDef>NegativeEvent</arrivedLetterDef>
+    <wantsThreatPoints>true</wantsThreatPoints>
+  </SitePartDef>
+  <GenStepDef>
+    <defName>LP_RedWizardCamp</defName>
+    <linkWithSite>LP_RedWizardCamp</linkWithSite>
+    <order>450</order>
+    <genStep Class="LichPhylactery.GenStep_NetherilSite">
+      <kind>camp</kind>
+    </genStep>
+  </GenStepDef>
+  <SitePartDef>
+    <defName>LP_LarlochCrypt</defName>
+    <label>拉洛克的古墓</label>
+    <description>影巫王拉洛克的古墓：石砌墓室里守着骷髅、血肉巨像、半巫妖和拉洛克的化身。卡苏斯之卷放在中央大厅里。</description>
+    <workerClass>LichPhylactery.SitePartWorker_Netheril</workerClass>
+    <siteTexture>World/LP_LarlochCrypt</siteTexture>
+    <expandingIconTexture>World/LP_LarlochCrypt</expandingIconTexture>
+    <applyFactionColorToSiteTexture>false</applyFactionColorToSiteTexture>
+    <showFactionInInspectString>true</showFactionInInspectString>
+    <requiresFaction>true</requiresFaction>
+    <approachOrderString>闯入{0}</approachOrderString>
+    <approachingReportString>正在闯入{0}。</approachingReportString>
+    <arrivedLetter>这里是拉洛克的古墓。卡苏斯之卷就在中央大厅的架子上。</arrivedLetter>
+    <arrivedLetterDef>ThreatBig</arrivedLetterDef>
+    <wantsThreatPoints>true</wantsThreatPoints>
+  </SitePartDef>
+  <GenStepDef>
+    <defName>LP_LarlochCrypt</defName>
+    <linkWithSite>LP_LarlochCrypt</linkWithSite>
+    <order>450</order>
+    <genStep Class="LichPhylactery.GenStep_NetherilSite">
+      <kind>crypt</kind>
+    </genStep>
+  </GenStepDef>
+  <SitePartDef>
+    <defName>LP_NetherilWreck</defName>
+    <label>沉没的耐瑟浮城残骸</label>
+    <description>一块耐瑟瑞尔浮城的残骸从地底浮了出来，卡苏斯之卷就落在里面。有人抢先占住了这里。</description>
+    <workerClass>LichPhylactery.SitePartWorker_Netheril</workerClass>
+    <siteTexture>World/LP_NetherilWreck</siteTexture>
+    <expandingIconTexture>World/LP_NetherilWreck</expandingIconTexture>
+    <applyFactionColorToSiteTexture>false</applyFactionColorToSiteTexture>
+    <showFactionInInspectString>true</showFactionInInspectString>
+    <requiresFaction>true</requiresFaction>
+    <approachOrderString>进攻{0}</approachOrderString>
+    <approachingReportString>正在进攻{0}。</approachingReportString>
+    <arrivedLetter>这里是沉没的耐瑟浮城残骸，卡苏斯之卷就在残骸中央。</arrivedLetter>
+    <arrivedLetterDef>NegativeEvent</arrivedLetterDef>
+    <wantsThreatPoints>true</wantsThreatPoints>
+  </SitePartDef>
+  <GenStepDef>
+    <defName>LP_NetherilWreck</defName>
+    <linkWithSite>LP_NetherilWreck</linkWithSite>
+    <order>450</order>
+    <genStep Class="LichPhylactery.GenStep_NetherilSite">
+      <kind>wreck</kind>
+    </genStep>
+  </GenStepDef>
+
+  <!-- ==================== 建筑 ==================== -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_NetherilAltar</defName>
+    <label>耐瑟祭坛</label>
+    <description>用金、秘银和玻璃钢搭起的耐瑟瑞尔祭坛。读满七遍卡苏斯之卷的人可以在这里发起升神仪式。也是一处冥想焦点。</description>
+    <thingClass>LichPhylactery.Building_NetherilAltar</thingClass>
+    <graphicData>
+      <texPath>Things/Building/LP_NetherilAltar</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,3)</drawSize>
+      <shadowData>
+        <volume>(2.6, 0.5, 2.6)</volume>
+      </shadowData>
+    </graphicData>
+    <uiIconPath>Things/Building/LP_NetherilAltar</uiIconPath>
+    <size>(3,3)</size>
+    <rotatable>false</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <WorkToBuild>8000</WorkToBuild>
+      <Flammability>0</Flammability>
+      <Beauty>20</Beauty>
+      <MeditationFocusStrength MayRequire="Ludeon.RimWorld.Royalty">0.22</MeditationFocusStrength>
+    </statBases>
+    <costList>
+      <Gold>100</Gold>
+      <LP_Mithral>50</LP_Mithral>
+      <Plasteel>50</Plasteel>
+    </costList>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <researchPrerequisites>
+      <li>LP_Research_NetherilArcana</li>
+    </researchPrerequisites>
+    <designationCategory>Misc</designationCategory>
+    <comps>
+      <li Class="CompProperties_MeditationFocus" MayRequire="Ludeon.RimWorld.Royalty">
+        <statDef>MeditationFocusStrength</statDef>
+        <focusTypes>
+          <li>Artistic</li>
+          <li>Dignified</li>
+        </focusTypes>
+      </li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_LarlochOfferingBox</defName>
+    <label>拉洛克的祭箱</label>
+    <description>拉洛克的使者留下的祭箱，只收位面残渣和神迹残片。放够 20 份位面残渣和 3 块神迹残片后，祭箱连同里面的东西一起消失。</description>
+    <thingClass>LichPhylactery.Building_LarlochOffering</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Furniture/ShelfSmall</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(2,2)</drawSize>
+      <color>(0.42, 0.40, 0.50)</color>
+    </graphicData>
+    <size>(1,1)</size>
+    <rotatable>false</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.4</fillPercent>
+    <surfaceType>Item</surfaceType>
+    <canOverlapZones>false</canOverlapZones>
+    <tickerType>Rare</tickerType>
+    <statBases>
+      <MaxHitPoints>300</MaxHitPoints>
+      <Flammability>0</Flammability>
+    </statBases>
+    <inspectorTabs>
+      <li>ITab_Storage</li>
+    </inspectorTabs>
+    <building>
+      <claimable>false</claimable>
+      <deconstructible>false</deconstructible>
+      <preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+      <ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+      <maxItemsInCell>2</maxItemsInCell>
+      <fixedStorageSettings>
+        <filter>
+          <thingDefs>
+            <li>LP_PlanarResidue</li>
+            <li>LP_MiracleShard</li>
+          </thingDefs>
+        </filter>
+      </fixedStorageSettings>
+      <defaultStorageSettings>
+        <priority>Important</priority>
+        <filter>
+          <thingDefs>
+            <li>LP_PlanarResidue</li>
+            <li>LP_MiracleShard</li>
+          </thingDefs>
+        </filter>
+      </defaultStorageSettings>
+    </building>
+  </ThingDef>
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_PhylacteryCasket</defName>
+    <label>命匣匣柩</label>
+    <description>拉洛克的骷髅护送着的匣柩，里面封着一件命匣。塞伊想抢走它。</description>
+    <thingClass>LichPhylactery.Building_PhylacteryCasket</thingClass>
+    <graphicData>
+      <texPath>Necromancy/Phylactery</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.4,1.4)</drawSize>
+      <color>(0.60, 0.58, 0.78)</color>
+    </graphicData>
+    <size>(1,1)</size>
+    <rotatable>false</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.5</fillPercent>
+    <statBases>
+      <MaxHitPoints>800</MaxHitPoints>
+      <Flammability>0</Flammability>
+    </statBases>
+    <building>
+      <claimable>false</claimable>
+      <deconstructible>false</deconstructible>
+    </building>
+  </ThingDef>
+
+  <!-- ==================== 仪式：吟诵 ==================== -->
+  <DutyDef>
+    <defName>LP_NetherilChant</defName>
+    <thinkNode Class="ThinkNode_Priority">
+      <subNodes>
+        <li Class="LichPhylactery.JobGiver_NetherilChant" />
+      </subNodes>
+    </thinkNode>
+  </DutyDef>
+  <JobDef>
+    <defName>LP_NetherilChant</defName>
+    <driverClass>LichPhylactery.JobDriver_NetherilChant</driverClass>
+    <reportString>正在吟诵升神咒文。</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+</Defs>

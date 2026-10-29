@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.39.0 神术：3 个通用 + 9 个领域神术。原版能力（RimWorld.Ability），不依赖 VPE，不进 VPE 路径。
+     佩戴圣徽获得；施放消耗殖民地守护神的神眷（cost，信徒/神选者减半）；数值按 P = 神恩强度 × 心灵敏感度 缩放（见 Source/FaithMiracles.cs）。描述里的数值是 P=1 时的。 -->
+<Defs>
+  <AbilityDef Name="LP_MiracleBase" Abstract="True">
+    <abilityClass>LichPhylactery.Ability_Miracle</abilityClass>
+    <aiCanUse>false</aiCanUse>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <sendMessageOnCooldownComplete>false</sendMessageOnCooldownComplete>
+    <showPsycastEffects>false</showPsycastEffects>
+  </AbilityDef>
+
+  <!-- ==================== 通用 ==================== -->
+  <AbilityDef ParentName="LP_MiracleBase">
+    <defName>LP_Miracle_Sanctuary</defName>
+    <label>神圣庇护</label>
+    <description>为一名友军张开神圣护盾：吸收40×P点伤害，持续12小时。消耗神眷3，冷却1天。</description>
+    <iconPath>Faith/Miracles/Sanctuary</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>1</warmupTime>
+      <range>19.9</range>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetSelf>true</canTargetSelf><canTargetLocations>false</canTargetLocations><canTargetBuildings>false</canTargetBuildings><canTargetAnimals>true</canTargetAnimals></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_Miracle"><effect>Sanctuary</effect><cost>3</cost><amount>40</amount></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_MiracleBase">
+    <defName>LP_Miracle_Banish</defName>
+    <label>驱逐邪祟</label>
+    <description>对一名敌人降下25×P点神圣伤害（不死者与邪魔×2，神明附体者再×1.5）；对神力灌注者有30%×P的几率抹去他身上的灌注。消耗神眷4，冷却6小时。</description>
+    <iconPath>Faith/Miracles/Banish</iconPath>
+    <cooldownTicksRange>15000</cooldownTicksRange>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>1</warmupTime>
+      <range>24.9</range>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetLocations>false</canTargetLocations><canTargetBuildings>false</canTargetBuildings><canTargetAnimals>true</canTargetAnimals></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_Miracle"><effect>Banish</effect><cost>4</cost><amount>25</amount></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_MiracleBase">
+    <defName>LP_Miracle_Consecrate</defName>
+    <label>圣化之地</label>
+    <description>把一片地（半径5格）圣化1天：敌方不死者与邪魔在里面每秒受2×P点神圣伤害；巫妖和巨魔的复活计时在里面暂停；站在里面的殖民者心情+3。消耗神眷6，冷却2天。</description>
+    <iconPath>Faith/Miracles/Consecrate</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>2</warmupTime>
+      <range>24.9</range>
+      <requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetLocations>true</canTargetLocations><canTargetPawns>true</canTargetPawns><canTargetBuildings>true</canTargetBuildings></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_Miracle"><effect>Consecrate</effect><cost>6</cost><amount>2</amount><radius>5</radius></li></comps>
+  </AbilityDef>
+
+  <!-- ==================== 领域（守护神神眷 ≥20 才能放） ==================== -->
+  <AbilityDef ParentName="LP_MiracleBase">
+    <defName>LP_Miracle_Dawn</defName>
+    <label>黎明之光</label>
+    <description>洛山达的领域神术。施法者周围6格的友军止血，每处伤口愈合10×P；这片地上的作物1天内生长+20%。消耗神眷10，冷却3天。</description>
+    <iconPath>Faith/Miracles/Dawn</iconPath>
+    <cooldownTicksRange>180000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <targetRequired>false</targetRequired>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>1.5</warmupTime>
+      <range>0</range>
+      <targetParams><canTargetSelf>true</canTargetSelf></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_Miracle"><effect>Dawn</effect><cost>10</cost><amount>10</amount><radius>6</radius><domain>true</domain></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_MiracleBase">
+    <defName>LP_Miracle_Judgment</defName>
+    <label>真言审判</label>
+    <description>提尔的领域神术。对敌人：造成(10 + 人形击杀数/10×5，最多60)×P点神罚伤害；对殖民地的囚犯：抗拒-20×P，意志-10×P。消耗神眷10，冷却2天。</description>
+    <iconPath>Faith/Miracles/Judgment</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>1</warmupTime>
+      <range>24.9</range>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetLocations>false</canTargetLocations><canTargetBuildings>false</canTargetBuildings><canTargetAnimals>false</canTargetAnimals></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_Miracle"><effect>Judgment</effect><cost>10</cost><domain>true</domain></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_MiracleBase">
+    <defName>LP_Miracle_Weave</defName>
+    <label>魔网涌流</label>
+    <description>密斯特拉的领域神术。一名友军的能力冷却全部清零，有心灵链接的话精神力+30%。（VPE 的灵能冷却不在这里清。）消耗神眷12，冷却3天。</description>
+    <iconPath>Faith/Miracles/Weave</iconPath>
+    <cooldownTicksRange>180000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>1</warmupTime>
+      <range>19.9</range>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetSelf>true</canTargetSelf><canTargetLocations>false</canTargetLocations><canTargetBuildings>false</canTargetBuildings><canTargetAnimals>false</canTargetAnimals></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_Miracle"><effect>Weave</effect><cost>12</cost><amount>0.3</amount><domain>true</domain></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_MiracleBase">
+    <defName>LP_Miracle_Rest</defName>
+    <label>安息</label>
+    <description>凯兰沃的领域神术。施法者周围8格的敌方不死者受30×P点神圣伤害；范围内的人形尸体“已安息”：不能汲取灵魂、不能复生。巫妖施放时自己受20点伤害。消耗神眷8，冷却2天。</description>
+    <iconPath>Faith/Miracles/Rest</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <targetRequired>false</targetRequired>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>1.5</warmupTime>
+      <range>0</range>
+      <targetParams><canTargetSelf>true</canTargetSelf></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_Miracle"><effect>Rest</effect><cost>8</cost><amount>30</amount><radius>8</radius><domain>true</domain></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_MiracleBase">
+    <defName>LP_Miracle_Hunt</defName>
+    <label>狩猎之怒</label>
+    <description>马拉尔的领域神术。施法者周围10格的殖民地动物12小时内近战伤害+50%×P，移速+20%。消耗神眷8，冷却2天。</description>
+    <iconPath>Faith/Miracles/Hunt</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <targetRequired>false</targetRequired>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>1</warmupTime>
+      <range>0</range>
+      <targetParams><canTargetSelf>true</canTargetSelf></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_Miracle"><effect>Hunt</effect><cost>8</cost><amount>0.5</amount><radius>10</radius><domain>true</domain></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_MiracleBase">
+    <defName>LP_Miracle_Thunder</defName>
+    <label>召雷</label>
+    <description>塔洛斯的领域神术。向目标区域召下3道落雷，每道25×P点伤害，落点随机偏开最多2格。消耗神眷12，冷却2天。</description>
+    <iconPath>Faith/Miracles/Thunder</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>1.5</warmupTime>
+      <range>29.9</range>
+      <requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetLocations>true</canTargetLocations><canTargetPawns>true</canTargetPawns><canTargetBuildings>true</canTargetBuildings></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_Miracle"><effect>Thunder</effect><cost>12</cost><amount>25</amount><domain>true</domain></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_MiracleBase">
+    <defName>LP_Miracle_Dread</defName>
+    <label>暴君之令</label>
+    <description>班恩的领域神术。施法者周围6格的敌人惊恐逃跑10秒（心智抗性可以抵抗）；巨躯和神明附体者不受影响。消耗神眷10，冷却2天。</description>
+    <iconPath>Faith/Miracles/Dread</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <targetRequired>false</targetRequired>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>1</warmupTime>
+      <range>0</range>
+      <targetParams><canTargetSelf>true</canTargetSelf></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_Miracle"><effect>Dread</effect><cost>10</cost><radius>6</radius><domain>true</domain></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_MiracleBase">
+    <defName>LP_Miracle_Veil</defName>
+    <label>暗影帷幕</label>
+    <description>莎尔的领域神术。施法者周围5格的友军隐形20×P秒；攻击就会显形。消耗神眷10，冷却3天。</description>
+    <iconPath>Faith/Miracles/Veil</iconPath>
+    <cooldownTicksRange>180000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <targetRequired>false</targetRequired>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>1</warmupTime>
+      <range>0</range>
+      <targetParams><canTargetSelf>true</canTargetSelf></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_Miracle"><effect>Veil</effect><cost>10</cost><amount>20</amount><radius>5</radius><domain>true</domain></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_MiracleBase">
+    <defName>LP_Miracle_ForgeWrath</defName>
+    <label>熔炉之怒</label>
+    <description>苏尔特的领域神术。朝目标方向喷出6格长的锥形熔火，范围内的敌人受25×P点烧伤并着火；火巨人施放时×1.25。消耗神眷10，冷却2天。</description>
+    <iconPath>Faith/Miracles/ForgeWrath</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>1</warmupTime>
+      <range>5.9</range>
+      <targetParams><canTargetLocations>true</canTargetLocations><canTargetPawns>true</canTargetPawns><canTargetBuildings>true</canTargetBuildings></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_Miracle"><effect>ForgeWrath</effect><cost>10</cost><amount>25</amount><radius>6</radius><domain>true</domain></li></comps>
+  </AbilityDef>
+
+  <!-- ==================== 神术留下的状态 ==================== -->
+  <HediffDef>
+    <defName>LP_SanctuaryShield</defName>
+    <label>神圣庇护</label>
+    <description>一层神圣护盾，替身体挡下伤害，直到护盾耗尽或时间结束。</description>
+    <hediffClass>LichPhylactery.Hediff_SanctuaryShield</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <initialSeverity>40</initialSeverity>
+    <maxSeverity>1000</maxSeverity>
+    <defaultLabelColor>(1, 0.9, 0.55)</defaultLabelColor>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>30000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_HuntFury</defName>
+    <label>狩猎之怒</label>
+    <description>马拉尔的狩猎之怒在血管里奔涌。</description>
+    <hediffClass>LichPhylactery.Hediff_HuntFury</hediffClass>
+    <isBad>false</isBad>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>20</maxSeverity>
+    <defaultLabelColor>(0.8, 0.35, 0.3)</defaultLabelColor>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>30000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_SharVeil</defName>
+    <label>暗影帷幕</label>
+    <description>莎尔的帷幕把身形藏进黑暗：别人看不见。攻击就会显形。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <defaultLabelColor>(0.55, 0.45, 0.75)</defaultLabelColor>
+    <comps>
+      <li Class="HediffCompProperties_Invisibility">
+        <visibleToPlayer>true</visibleToPlayer>
+      </li>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>1200</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+  </HediffDef>
+</Defs>

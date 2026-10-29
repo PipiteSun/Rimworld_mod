@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.52.0 五色真龙的身体（HAR 联动）：头、颚、两翼、四肢、尾、心、双肺、内脏。打断两只翅膀就不能飞跃、不能振翼；打断尾巴就没有尾击（传奇动作按部位判断）。
+     核心部位用原版 Torso（人形代码会找它），四肢与爪照原版四足动物身体；翅膀是新的 BodyPartDef LP_DragonWing。 -->
+<Defs>
+
+  <BodyPartDef>
+    <defName>LP_DragonWing</defName>
+    <label>龙翼</label>
+    <hitPoints>45</hitPoints>
+    <skinCovered>true</skinCovered>
+    <solid>false</solid>
+    <bleedRate>1</bleedRate>
+    <permanentInjuryChanceFactor>2</permanentInjuryChanceFactor>
+  </BodyPartDef>
+
+  <BodyPartGroupDef>
+    <defName>LP_DragonTail</defName>
+    <label>龙尾</label>
+    <labelShort>尾</labelShort>
+    <listOrder>40</listOrder>
+  </BodyPartGroupDef>
+  <BodyPartGroupDef>
+    <defName>LP_DragonWings</defName>
+    <label>龙翼</label>
+    <labelShort>翼</labelShort>
+    <listOrder>41</listOrder>
+  </BodyPartGroupDef>
+
+  <BodyDef>
+    <defName>LP_DragonBody</defName>
+    <label>真龙</label>
+    <corePart>
+      <def>Torso</def>
+      <customLabel>龙躯</customLabel>
+      <height>Middle</height>
+      <depth>Outside</depth>
+      <groups><li>Torso</li></groups>
+      <parts>
+        <li><def>Tail</def><customLabel>龙尾</customLabel><coverage>0.08</coverage><groups><li>LP_DragonTail</li></groups></li>
+        <li><def>LP_DragonWing</def><customLabel>左翼</customLabel><coverage>0.07</coverage><height>Top</height><groups><li>LP_DragonWings</li></groups></li>
+        <li><def>LP_DragonWing</def><customLabel>右翼</customLabel><coverage>0.07</coverage><height>Top</height><groups><li>LP_DragonWings</li></groups></li>
+        <li><def>Spine</def><customLabel>脊椎</customLabel><coverage>0.03</coverage><depth>Inside</depth></li>
+        <li><def>Stomach</def><customLabel>胃</customLabel><coverage>0.03</coverage><depth>Inside</depth></li>
+        <li><def>Heart</def><customLabel>龙心</customLabel><coverage>0.03</coverage><depth>Inside</depth></li>
+        <li><def>Lung</def><customLabel>左肺</customLabel><coverage>0.03</coverage><depth>Inside</depth></li>
+        <li><def>Lung</def><customLabel>右肺</customLabel><coverage>0.03</coverage><depth>Inside</depth></li>
+        <li><def>Kidney</def><customLabel>左肾</customLabel><coverage>0.02</coverage><depth>Inside</depth></li>
+        <li><def>Kidney</def><customLabel>右肾</customLabel><coverage>0.02</coverage><depth>Inside</depth></li>
+        <li><def>Liver</def><customLabel>肝</customLabel><coverage>0.03</coverage><depth>Inside</depth></li>
+        <li>
+          <def>Neck</def>
+          <customLabel>龙颈</customLabel>
+          <coverage>0.14</coverage>
+          <height>Top</height>
+          <groups><li>Neck</li></groups>
+          <parts>
+            <li>
+              <def>Head</def>
+              <customLabel>龙首</customLabel>
+              <coverage>0.75</coverage>
+              <groups><li>HeadAttackTool</li><li>UpperHead</li><li>FullHead</li></groups>
+              <parts>
+                <li>
+                  <def>Skull</def>
+                  <customLabel>颅骨</customLabel>
+                  <coverage>0.25</coverage>
+                  <depth>Inside</depth>
+                  <groups><li>UpperHead</li><li>FullHead</li></groups>
+                  <parts>
+                    <li><def>Brain</def><customLabel>脑</customLabel><coverage>0.7</coverage><depth>Inside</depth><groups><li>UpperHead</li><li>FullHead</li></groups></li>
+                  </parts>
+                </li>
+                <li><def>Eye</def><customLabel>左眼</customLabel><coverage>0.1</coverage><groups><li>FullHead</li><li>Eyes</li></groups></li>
+                <li><def>Eye</def><customLabel>右眼</customLabel><coverage>0.1</coverage><groups><li>FullHead</li><li>Eyes</li></groups></li>
+                <li><def>Ear</def><customLabel>左耳</customLabel><coverage>0.06</coverage><groups><li>UpperHead</li><li>FullHead</li></groups></li>
+                <li><def>Ear</def><customLabel>右耳</customLabel><coverage>0.06</coverage><groups><li>UpperHead</li><li>FullHead</li></groups></li>
+                <li><def>Nose</def><customLabel>鼻</customLabel><coverage>0.08</coverage><groups><li>FullHead</li></groups></li>
+                <li><def>AnimalJaw</def><customLabel>龙颚</customLabel><coverage>0.12</coverage><groups><li>Teeth</li><li>FullHead</li></groups></li>
+              </parts>
+            </li>
+          </parts>
+        </li>
+        <li><def>Leg</def><customLabel>左前腿</customLabel><coverage>0.06</coverage><height>Bottom</height><groups><li>Legs</li></groups>
+          <parts><li><def>Paw</def><customLabel>左前爪</customLabel><coverage>0.15</coverage><groups><li>FrontLeftPaw</li><li>Feet</li></groups></li></parts></li>
+        <li><def>Leg</def><customLabel>右前腿</customLabel><coverage>0.06</coverage><height>Bottom</height><groups><li>Legs</li></groups>
+          <parts><li><def>Paw</def><customLabel>右前爪</customLabel><coverage>0.15</coverage><groups><li>FrontRightPaw</li><li>Feet</li></groups></li></parts></li>
+        <li><def>Leg</def><customLabel>左后腿</customLabel><coverage>0.06</coverage><height>Bottom</height><groups><li>Legs</li></groups>
+          <parts><li><def>Paw</def><customLabel>左后爪</customLabel><coverage>0.15</coverage><groups><li>Feet</li></groups></li></parts></li>
+        <li><def>Leg</def><customLabel>右后腿</customLabel><coverage>0.06</coverage><height>Bottom</height><groups><li>Legs</li></groups>
+          <parts><li><def>Paw</def><customLabel>右后爪</customLabel><coverage>0.15</coverage><groups><li>Feet</li></groups></li></parts></li>
+      </parts>
+    </corePart>
+  </BodyDef>
+
+</Defs>

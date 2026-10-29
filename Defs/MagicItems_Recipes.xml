@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.45.0 魔法物品配方（研究见 Defs/Research.xml 的附魔学一行）；魔化兵器的配方写在武器自己的 recipeMaker 里。
+     1.47.0：奇物、饰品和器物在附魔台；圣物在圣坛（LP_RelicRecipeBase）；解除诅咒卷轴和魔像手册在卷轴书桌（LP_DeskMagicRecipeBase）。defName 都没变。 -->
+<Defs>
+  <RecipeDef Name="LP_MagicRecipeBase" ParentName="LP_AlchemyRecipeBase" Abstract="True">
+    <workAmount>6000</workAmount>
+    <researchPrerequisite>LP_Research_WondrousCraft</researchPrerequisite>
+    <skillRequirements><Intellectual>6</Intellectual></skillRequirements>
+    <recipeUsers Inherit="False"><li>LP_EnchantingTable</li></recipeUsers>
+    <modExtensions><li Class="LichPhylactery.AlchemyRecipeExtension" /></modExtensions>
+  </RecipeDef>
+  <RecipeDef Name="LP_RelicRecipeBase" ParentName="LP_MagicRecipeBase" Abstract="True">
+    <recipeUsers Inherit="False"><li>LP_FaithAltar</li></recipeUsers>
+  </RecipeDef>
+  <RecipeDef Name="LP_DeskMagicRecipeBase" ParentName="LP_MagicRecipeBase" Abstract="True">
+    <recipeUsers Inherit="False"><li>LP_ScribeDesk</li></recipeUsers>
+  </RecipeDef>
+
+  <!-- ===== 附魔学 ===== -->
+  <RecipeDef ParentName="LP_MagicRecipeBase">
+    <defName>LP_MakeRingProtection</defName>
+    <label>制作守护戒指</label>
+    <description>用10金和10秘银制作一枚守护戒指。</description>
+    <jobString>正在制作守护戒指。</jobString>
+    <researchPrerequisite>LP_Research_Enchanting</researchPrerequisite>
+    <ingredients><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>10</count></li><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>10</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Gold</li><li>LP_Mithral</li></thingDefs></fixedIngredientFilter>
+    <products><LP_RingProtection>1</LP_RingProtection></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_MagicRecipeBase">
+    <defName>LP_MakeNecklaceAdaptation</defName>
+    <label>制作适应项链</label>
+    <description>用30银和2份草药制作一条适应项链。</description>
+    <jobString>正在制作适应项链。</jobString>
+    <researchPrerequisite>LP_Research_Enchanting</researchPrerequisite>
+    <ingredients><li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>30</count></li><li><filter><thingDefs><li>MedicineHerbal</li></thingDefs></filter><count>2</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Silver</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_NecklaceAdaptation>1</LP_NecklaceAdaptation></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_MagicRecipeBase">
+    <defName>LP_MakeGogglesNight</defName>
+    <label>制作夜视护目镜</label>
+    <description>用10份布和10钢制作一副夜视护目镜。</description>
+    <jobString>正在制作夜视护目镜。</jobString>
+    <researchPrerequisite>LP_Research_Enchanting</researchPrerequisite>
+    <ingredients><li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>10</count></li><li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>10</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Cloth</li><li>Steel</li></thingDefs></fixedIngredientFilter>
+    <products><LP_GogglesNight>1</LP_GogglesNight></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_MagicRecipeBase">
+    <defName>LP_MakeRingFreeAction</defName>
+    <label>制作自由行动戒指</label>
+    <description>用10金和20银制作一枚自由行动戒指。</description>
+    <jobString>正在制作自由行动戒指。</jobString>
+    <researchPrerequisite>LP_Research_Enchanting</researchPrerequisite>
+    <ingredients><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>10</count></li><li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>20</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Gold</li><li>Silver</li></thingDefs></fixedIngredientFilter>
+    <products><LP_RingFreeAction>1</LP_RingFreeAction></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_DeskMagicRecipeBase">
+    <defName>LP_MakeScrollRemoveCurse</defName>
+    <label>制作解除诅咒卷轴</label>
+    <description>用10份布和2金写一张解除诅咒卷轴。</description>
+    <jobString>正在制作解除诅咒卷轴。</jobString>
+    <workAmount>2400</workAmount>
+    <researchPrerequisite>LP_Research_Enchanting</researchPrerequisite>
+    <ingredients><li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>10</count></li><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>2</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Cloth</li><li>Gold</li></thingDefs></fixedIngredientFilter>
+    <products><LP_ScrollRemoveCurse>1</LP_ScrollRemoveCurse></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_MagicRecipeBase">
+    <defName>LP_MakeSpiritStone</defName>
+    <label>制作魂石</label>
+    <description>用2块玉石和10银打磨一颗魂石。只有精灵能做，需要手工8级。</description>
+    <jobString>正在打磨魂石。</jobString>
+    <researchPrerequisite>LP_Research_Enchanting</researchPrerequisite>
+    <workSkill>Crafting</workSkill>
+    <skillRequirements Inherit="False"><Crafting>8</Crafting></skillRequirements>
+    <ingredients><li><filter><thingDefs><li>Jade</li></thingDefs></filter><count>2</count></li><li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>10</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Jade</li><li>Silver</li></thingDefs></fixedIngredientFilter>
+    <products><LP_SpiritStone>1</LP_SpiritStone></products>
+  </RecipeDef>
+
+  <!-- ===== 奇物工艺 ===== -->
+  <RecipeDef ParentName="LP_MagicRecipeBase">
+    <defName>LP_MakeGauntletsOgrePower</defName>
+    <label>制作食人魔之力手套</label>
+    <description>用20份皮革、15钢和1块熔岩结晶制作一副食人魔之力手套。</description>
+    <jobString>正在制作食人魔之力手套。</jobString>
+    <ingredients><li><filter><categories><li>Leathers</li></categories></filter><count>20</count></li><li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>15</count></li><li><filter><thingDefs><li>LP_LavaCrystal</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><categories><li>Leathers</li></categories><thingDefs><li>Steel</li><li>LP_LavaCrystal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_GauntletsOgrePower>1</LP_GauntletsOgrePower></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_MagicRecipeBase">
+    <defName>LP_MakeGlovesMissileSnaring</defName>
+    <label>制作接箭手套</label>
+    <description>用15份皮革和20银制作一副接箭手套。</description>
+    <jobString>正在制作接箭手套。</jobString>
+    <ingredients><li><filter><categories><li>Leathers</li></categories></filter><count>15</count></li><li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>20</count></li></ingredients>
+    <fixedIngredientFilter><categories><li>Leathers</li></categories><thingDefs><li>Silver</li></thingDefs></fixedIngredientFilter>
+    <products><LP_GlovesMissileSnaring>1</LP_GlovesMissileSnaring></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_MagicRecipeBase">
+    <defName>LP_MakeBracersArchery</defName>
+    <label>制作箭术护腕</label>
+    <description>用15份皮革和5金制作一对箭术护腕。</description>
+    <jobString>正在制作箭术护腕。</jobString>
+    <ingredients><li><filter><categories><li>Leathers</li></categories></filter><count>15</count></li><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>5</count></li></ingredients>
+    <fixedIngredientFilter><categories><li>Leathers</li></categories><thingDefs><li>Gold</li></thingDefs></fixedIngredientFilter>
+    <products><LP_BracersArchery>1</LP_BracersArchery></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_MagicRecipeBase">
+    <defName>LP_MakeBracersDefense</defName>
+    <label>制作防御护腕</label>
+    <description>用30钢和5金制作一对防御护腕。</description>
+    <jobString>正在制作防御护腕。</jobString>
+    <ingredients><li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>30</count></li><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>5</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Steel</li><li>Gold</li></thingDefs></fixedIngredientFilter>
+    <products><LP_BracersDefense>1</LP_BracersDefense></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_MagicRecipeBase">
+    <defName>LP_MakeHelmTelepathy</defName>
+    <label>制作传心头盔</label>
+    <description>用30银和10秘银制作一顶传心头盔。</description>
+    <jobString>正在制作传心头盔。</jobString>
+    <ingredients><li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>30</count></li><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>10</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Silver</li><li>LP_Mithral</li></thingDefs></fixedIngredientFilter>
+    <products><LP_HelmTelepathy>1</LP_HelmTelepathy></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_MagicRecipeBase">
+    <defName>LP_MakeEyesEagle</defName>
+    <label>制作鹰眼</label>
+    <description>用15银和5金磨一对鹰眼镜片。</description>
+    <jobString>正在制作鹰眼。</jobString>
+    <ingredients><li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>15</count></li><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>5</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Silver</li><li>Gold</li></thingDefs></fixedIngredientFilter>
+    <products><LP_EyesEagle>1</LP_EyesEagle></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_MagicRecipeBase">
+    <defName>LP_MakeEyesMinuteSeeing</defName>
+    <label>制作微观之眼</label>
+    <description>用20银和3金磨一对微观之眼镜片。</description>
+    <jobString>正在制作微观之眼。</jobString>
+    <ingredients><li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>20</count></li><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>3</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Silver</li><li>Gold</li></thingDefs></fixedIngredientFilter>
+    <products><LP_EyesMinuteSeeing>1</LP_EyesMinuteSeeing></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_MagicRecipeBase">
+    <defName>LP_MakePeriaptWoundClosure</defName>
+    <label>制作伤口闭合护符</label>
+    <description>用15金和2瓶巨魔血制作一枚伤口闭合护符。</description>
+    <jobString>正在制作伤口闭合护符。</jobString>
+    <ingredients><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>15</count></li><li><filter><thingDefs><li>LP_TrollBlood</li></thingDefs></filter><count>2</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Gold</li><li>LP_TrollBlood</li></thingDefs></fixedIngredientFilter>
+    <products><LP_PeriaptWoundClosure>1</LP_PeriaptWoundClosure></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_MagicRecipeBase">
+    <defName>LP_MakeRingSpellTurning</defName>
+    <label>制作法术转向戒指</label>
+    <description>用15秘银和15金制作一枚法术转向戒指。</description>
+    <jobString>正在制作法术转向戒指。</jobString>
+    <ingredients><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>15</count></li><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>15</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Mithral</li><li>Gold</li></thingDefs></fixedIngredientFilter>
+    <products><LP_RingSpellTurning>1</LP_RingSpellTurning></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_MagicRecipeBase">
+    <defName>LP_MakeRingRegeneration</defName>
+    <label>制作再生戒指</label>
+    <description>用10金和2瓶巨魔血制作一枚再生戒指。</description>
+    <jobString>正在制作再生戒指。</jobString>
+    <ingredients><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>10</count></li><li><filter><thingDefs><li>LP_TrollBlood</li></thingDefs></filter><count>2</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Gold</li><li>LP_TrollBlood</li></thingDefs></fixedIngredientFilter>
+    <products><LP_RingRegeneration>1</LP_RingRegeneration></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_MagicRecipeBase">
+    <defName>LP_MakeBroochShielding</defName>
+    <label>制作护盾胸针</label>
+    <description>用20银和10秘银制作一枚护盾胸针。</description>
+    <jobString>正在制作护盾胸针。</jobString>
+    <ingredients><li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>20</count></li><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>10</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Silver</li><li>LP_Mithral</li></thingDefs></fixedIngredientFilter>
+    <products><LP_BroochShielding>1</LP_BroochShielding></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_MagicRecipeBase">
+    <defName>LP_MakeRingSpellStoring</defName>
+    <label>制作储法戒指</label>
+    <description>用20银和10秘银制作一枚储法戒指。</description>
+    <jobString>正在制作储法戒指。</jobString>
+    <ingredients><li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>20</count></li><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>10</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Silver</li><li>LP_Mithral</li></thingDefs></fixedIngredientFilter>
+    <products><LP_RingSpellStoring>1</LP_RingSpellStoring></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_MagicRecipeBase">
+    <defName>LP_MakePsychicHood</defName>
+    <label>制作灵能兜帽</label>
+    <description>用30份布、10金和1个零部件制作一顶灵能兜帽。</description>
+    <jobString>正在制作灵能兜帽。</jobString>
+    <ingredients><li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>30</count></li><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>10</count></li><li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Cloth</li><li>Gold</li><li>ComponentIndustrial</li></thingDefs></fixedIngredientFilter>
+    <products><LP_PsychicHood>1</LP_PsychicHood></products>
+  </RecipeDef>
+
+  <!-- ===== 圣物祝圣 ===== -->
+  <RecipeDef ParentName="LP_RelicRecipeBase">
+    <defName>LP_MakePrayerBeads</defName>
+    <label>制作祈祷念珠</label>
+    <description>用10份木材和5金串一副祈祷念珠，并祝圣。</description>
+    <jobString>正在祝圣祈祷念珠。</jobString>
+    <researchPrerequisite>LP_Research_SacredRelics</researchPrerequisite>
+    <ingredients><li><filter><thingDefs><li>WoodLog</li></thingDefs></filter><count>10</count></li><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>5</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>WoodLog</li><li>Gold</li></thingDefs></fixedIngredientFilter>
+    <products><LP_PrayerBeads>1</LP_PrayerBeads></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_RelicRecipeBase">
+    <defName>LP_MakeScarabProtection</defName>
+    <label>制作圣甲虫护符</label>
+    <description>用5块玉石和10金雕一枚圣甲虫护符，并祝圣。</description>
+    <jobString>正在祝圣圣甲虫护符。</jobString>
+    <researchPrerequisite>LP_Research_SacredRelics</researchPrerequisite>
+    <ingredients><li><filter><thingDefs><li>Jade</li></thingDefs></filter><count>5</count></li><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>10</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Jade</li><li>Gold</li></thingDefs></fixedIngredientFilter>
+    <products><LP_ScarabProtection>1</LP_ScarabProtection></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_RelicRecipeBase">
+    <defName>LP_MakeMartyrsBeads</defName>
+    <label>制作殉道者念珠</label>
+    <description>用30银和10金串一副殉道者念珠，并祝圣。</description>
+    <jobString>正在祝圣殉道者念珠。</jobString>
+    <researchPrerequisite>LP_Research_SacredRelics</researchPrerequisite>
+    <ingredients><li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>30</count></li><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>10</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Silver</li><li>Gold</li></thingDefs></fixedIngredientFilter>
+    <products><LP_MartyrsBeads>1</LP_MartyrsBeads></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_RelicRecipeBase">
+    <defName>LP_ReconsecrateMartyrsBeads</defName>
+    <label>重新祝圣殉道者念珠</label>
+    <description>为碎裂的殉道者念珠重新祝圣（2小时），护盾恢复到300。另需5金。</description>
+    <jobString>正在重新祝圣殉道者念珠。</jobString>
+    <workAmount>5000</workAmount>
+    <researchPrerequisite>LP_Research_SacredRelics</researchPrerequisite>
+    <skillRequirements Inherit="False" />
+    <ingredients><li><filter><thingDefs><li>LP_MartyrsBeadsBroken</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>5</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_MartyrsBeadsBroken</li><li>Gold</li></thingDefs></fixedIngredientFilter>
+    <products><LP_MartyrsBeads>1</LP_MartyrsBeads></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_RelicRecipeBase">
+    <defName>LP_MakePuritySeal</defName>
+    <label>制作净化封印</label>
+    <description>用1瓶圣水和5份布写3张净化封印。</description>
+    <jobString>正在制作净化封印。</jobString>
+    <workAmount>2000</workAmount>
+    <researchPrerequisite>LP_Research_SacredRelics</researchPrerequisite>
+    <ingredients><li><filter><thingDefs><li>LP_HolyWater</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>5</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_HolyWater</li><li>Cloth</li></thingDefs></fixedIngredientFilter>
+    <products><LP_PuritySeal>3</LP_PuritySeal></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_RelicRecipeBase">
+    <defName>LP_MakeHaloOfLight</defName>
+    <label>制作圣光冠环</label>
+    <description>用30金和1片神迹残片铸一圈圣光冠环。</description>
+    <jobString>正在祝圣圣光冠环。</jobString>
+    <workAmount>9000</workAmount>
+    <researchPrerequisite>LP_Research_SacredRelics</researchPrerequisite>
+    <ingredients><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>30</count></li><li><filter><thingDefs><li>LP_MiracleShard</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Gold</li><li>LP_MiracleShard</li></thingDefs></fixedIngredientFilter>
+    <products><LP_HaloOfLight>1</LP_HaloOfLight></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_RelicRecipeBase">
+    <defName>LP_MakeWardingBondCase</defName>
+    <label>制作护佑誓约戒指（一对）</label>
+    <description>用20金和20银打造一对互相绑定的护佑誓约戒指，装在誓约戒匣里。</description>
+    <jobString>正在打造护佑誓约戒指。</jobString>
+    <researchPrerequisite>LP_Research_SacredRelics</researchPrerequisite>
+    <ingredients><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>20</count></li><li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>20</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Gold</li><li>Silver</li></thingDefs></fixedIngredientFilter>
+    <products><LP_WardingBondCase>1</LP_WardingBondCase></products>
+  </RecipeDef>
+
+  <!-- ===== 神奇器物 ===== -->
+  <RecipeDef ParentName="LP_MagicRecipeBase">
+    <defName>LP_MakeImmovableRod</defName>
+    <label>制作不可移动之杖</label>
+    <description>用50钢和10玻璃钢制作一根不可移动之杖。</description>
+    <jobString>正在制作不可移动之杖。</jobString>
+    <workAmount>8000</workAmount>
+    <researchPrerequisite>LP_Research_WondrousDevices</researchPrerequisite>
+    <ingredients><li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>50</count></li><li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>10</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Steel</li><li>Plasteel</li></thingDefs></fixedIngredientFilter>
+    <products><LP_ImmovableRod>1</LP_ImmovableRod></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_MagicRecipeBase">
+    <defName>LP_MakeEversmokingBottle</defName>
+    <label>制作迷雾瓶</label>
+    <description>用20钢和10份化学燃料制作一只迷雾瓶。</description>
+    <jobString>正在制作迷雾瓶。</jobString>
+    <researchPrerequisite>LP_Research_WondrousDevices</researchPrerequisite>
+    <ingredients><li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>20</count></li><li><filter><thingDefs><li>Chemfuel</li></thingDefs></filter><count>10</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Steel</li><li>Chemfuel</li></thingDefs></fixedIngredientFilter>
+    <products><LP_EversmokingBottle>1</LP_EversmokingBottle></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_MagicRecipeBase">
+    <defName>LP_MakeEverburningTorch</defName>
+    <label>制作不灭火把</label>
+    <description>用5份木材、3金和1块熔岩结晶制作一支不灭火把。</description>
+    <jobString>正在制作不灭火把。</jobString>
+    <workAmount>3000</workAmount>
+    <researchPrerequisite>LP_Research_WondrousDevices</researchPrerequisite>
+    <ingredients><li><filter><thingDefs><li>WoodLog</li></thingDefs></filter><count>5</count></li><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>3</count></li><li><filter><thingDefs><li>LP_LavaCrystal</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>WoodLog</li><li>Gold</li><li>LP_LavaCrystal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_EverburningTorch>1</LP_EverburningTorch></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_MagicRecipeBase">
+    <defName>LP_MakeHornValhalla</defName>
+    <label>制作英灵号角</label>
+    <description>用40银、10金和10秘银制作一只英灵号角。</description>
+    <jobString>正在制作英灵号角。</jobString>
+    <workAmount>9000</workAmount>
+    <researchPrerequisite>LP_Research_WondrousDevices</researchPrerequisite>
+    <ingredients><li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>40</count></li><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>10</count></li><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>10</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Silver</li><li>Gold</li><li>LP_Mithral</li></thingDefs></fixedIngredientFilter>
+    <products><LP_HornValhalla>1</LP_HornValhalla></products>
+  </RecipeDef>
+
+  <!-- ===== 魔像学 ===== -->
+  <RecipeDef ParentName="LP_DeskMagicRecipeBase">
+    <defName>LP_MakeManualOfGolems</defName>
+    <label>撰写魔像手册</label>
+    <description>巫妖把魔像学的研究心得刻进石板，做成一本魔像手册（30石块、20金）。只有巫妖能写。</description>
+    <jobString>正在撰写魔像手册。</jobString>
+    <workAmount>12000</workAmount>
+    <researchPrerequisite>LP_Research_GolemManual</researchPrerequisite>
+    <ingredients><li><filter><categories><li>StoneBlocks</li></categories></filter><count>30</count></li><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>20</count></li></ingredients>
+    <fixedIngredientFilter><categories><li>StoneBlocks</li></categories><thingDefs><li>Gold</li></thingDefs></fixedIngredientFilter>
+    <products><LP_ManualOfGolems>1</LP_ManualOfGolems></products>
+    <modExtensions><li Class="LichPhylactery.RaceGearExtension"><race>Lich</race></li></modExtensions>
+  </RecipeDef>
+</Defs>

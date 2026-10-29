@@ -1,0 +1,1509 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.55.0 异界契约：新单位与种族（规格第三节）。全部原版人类 + 异种型（九狱小魔鬼、小精灵是动物）。
+     外来者判定走 1.54.0 的 LP_OutsiderExtension：九狱 LP_HellsCore、妖精 LP_FeyCore、天界 LP_CelestialCore；各族体型基因上另挂一份优先级 1 的扩展（等级范围、真名卷掉率）。
+     不吃不睡复用 1.54.0 的 LP_AbyssUndying。规则代码见 Source/PactRaces.cs。 -->
+<Defs>
+  <XenotypeDef Name="LP_PactFiendBase" Abstract="True">
+    <inheritable>false</inheritable>
+    <factionlessGenerationWeight>0</factionlessGenerationWeight>
+  </XenotypeDef>
+
+  <!-- ==================== 九狱 ==================== -->
+  <XenotypeDef ParentName="LP_PactFiendBase">
+    <defName>LP_ChainDevil</defName>
+    <label>链魔</label>
+    <description>浑身缠满带钩锁链的魔鬼，锁链像活物一样自己甩出去。链魔是九狱军团的狱卒：它能把 4 格外的人一链子拽到身边，还能隔着几步远让巫妖的骷髅倒戈。</description>
+    <descriptionShort>九狱狱卒。锁链抽打 + 拉拽、策反骷髅；倒下即遣返九狱。</descriptionShort>
+    <iconPath>Pact/Xenotypes/ChainDevil</iconPath>
+    <combatPowerFactor>1.5</combatPowerFactor>
+    <genes>
+      <li>LP_HellsCore</li><li>LP_AbyssUndying</li><li>LP_ChainDevilStature</li><li>LP_ChainDevilChains</li><li>LP_ChainDevilSubvert</li><li>LP_SkinChainDevil</li>
+      <li>Hair_BaldOnly</li><li>Beard_NoBeardOnly</li><li>Sterile</li>
+    </genes>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><strongScores><li>Con</li><li>Cha</li></strongScores><strongLegend><li>Melee</li><li>Tough</li></strongLegend></li>
+    </modExtensions>
+  </XenotypeDef>
+  <XenotypeDef ParentName="LP_PactFiendBase">
+    <defName>LP_BoneDevil</defName>
+    <label>骨魔</label>
+    <description>骨白、瘦长、皮包骨的魔鬼，背后翘着一条蝎子一样的尾巴。骨魔是九狱的监工：尾刺的毒让人手脚发麻，第一次看到它的人常常吓得腿软。</description>
+    <descriptionShort>九狱监工。蝎尾毒刺（体质豁免难度 14，基础成功率 45%）、恐惧气场；倒下即遣返九狱。</descriptionShort>
+    <iconPath>Pact/Xenotypes/BoneDevil</iconPath>
+    <combatPowerFactor>1.5</combatPowerFactor>
+    <genes>
+      <li>LP_HellsCore</li><li>LP_AbyssUndying</li><li>LP_BoneDevilStature</li><li>LP_BoneDevilTail</li><li>LP_BoneDevilDread</li><li>LP_SkinBoneDevil</li>
+      <li>Body_Thin</li><li>Hair_BaldOnly</li><li>Beard_NoBeardOnly</li><li>Sterile</li>
+    </genes>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><strongScores><li>Con</li><li>Cha</li></strongScores><strongLegend><li>Melee</li><li>Psychic</li></strongLegend></li>
+    </modExtensions>
+  </XenotypeDef>
+  <XenotypeDef ParentName="LP_PactFiendBase">
+    <defName>LP_HornedDevil</defName>
+    <label>角魔</label>
+    <description>蝠翼、大角、满身鳞甲的魔鬼，九狱军团的重步兵。角魔握着三股的地狱钢叉，还能把一团地狱火扔到 10 格外。</description>
+    <descriptionShort>九狱重步兵。地狱钢叉（地狱之伤）、地狱火投掷；倒下即遣返九狱，30% 留下钢叉。</descriptionShort>
+    <iconPath>Pact/Xenotypes/HornedDevil</iconPath>
+    <combatPowerFactor>2</combatPowerFactor>
+    <genes>
+      <li>LP_HellsCore</li><li>LP_AbyssUndying</li><li>LP_HornedDevilStature</li><li>LP_HornedDevilFlame</li><li>LP_SkinHornedDevil</li>
+      <li>Body_Hulk</li><li>Hair_BaldOnly</li><li>Beard_NoBeardOnly</li><li>Sterile</li>
+    </genes>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><strongScores><li>Str</li><li>Con</li></strongScores><strongLegend><li>Melee</li><li>Health</li></strongLegend></li>
+    </modExtensions>
+  </XenotypeDef>
+  <XenotypeDef ParentName="LP_PactFiendBase">
+    <defName>LP_Erinyes</defName>
+    <label>艾林魔</label>
+    <description>黑羽翼的复仇者，九狱派去追捕违约者的猎手。艾林魔外表像高挑的人类，皮肤上爬着红黑的纹样；她们从不害怕，从不放过标记过的猎物。阿斯莫蒂尔斯的契约可以让一名艾林魔终身跟随签约人；狄瓦耐心的劝说能把她带回天界。</description>
+    <descriptionShort>可玩的九狱复仇者。追猎（标记目标 +15%）、缚绳、恐惧免疫、射击 / 近战天赋 +2；束缚者不挣脱。</descriptionShort>
+    <iconPath>Pact/Xenotypes/Erinyes</iconPath>
+    <combatPowerFactor>1.5</combatPowerFactor>
+    <genes>
+      <li>LP_HellsCore</li><li>LP_AbyssUndying</li><li>LP_ErinyesStature</li><li>LP_ErinyesWings</li><li>LP_ErinyesHunt</li><li>LP_ErinyesRope</li><li>LP_ErinyesResolve</li><li>LP_SkinErinyes</li>
+      <li>Sterile</li>
+    </genes>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><strongScores><li>Dex</li><li>Wis</li></strongScores><strongLegend><li>Ranged</li><li>Melee</li></strongLegend></li>
+    </modExtensions>
+  </XenotypeDef>
+  <XenotypeDef ParentName="LP_PactFiendBase">
+    <defName>LP_Amnizu</defName>
+    <label>阿姆尼祖</label>
+    <description>干瘪、秃头、长着一对小角的魔鬼律师，九狱掮客的首领。谁敢对阿姆尼祖动手，它就伸出一根手指点在对方额头上——对方会突然忘掉自己最拿手的东西。</description>
+    <descriptionShort>九狱律师。被攻击时攻击者智力豁免难度 16（基础成功率 35%），失败最高技能 -2 级（1 天）；倒下即遣返九狱。</descriptionShort>
+    <iconPath>Pact/Xenotypes/Amnizu</iconPath>
+    <combatPowerFactor>2</combatPowerFactor>
+    <genes>
+      <li>LP_HellsCore</li><li>LP_AbyssUndying</li><li>LP_AmnizuStature</li><li>LP_AmnizuMind</li><li>LP_SkinAmnizu</li>
+      <li>Body_Thin</li><li>Hair_BaldOnly</li><li>Beard_NoBeardOnly</li><li>Sterile</li>
+    </genes>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><strongScores><li>Int</li><li>Cha</li></strongScores><weakScores><li>Str</li></weakScores><strongLegend><li>Psychic</li><li>Learn</li></strongLegend></li>
+    </modExtensions>
+  </XenotypeDef>
+
+  <!-- ==================== 妖精 ==================== -->
+  <XenotypeDef>
+    <defName>LP_Satyr</defName>
+    <label>萨特</label>
+    <description>羊角、毛腿、羊蹄的妖精后裔，天生的乐手和酒鬼。萨特的血是凡人的血，会遗传；他们对魔法有天生的抵抗力，冲撞起来能把人撞翻，派对上永远是最开心的那一个。</description>
+    <descriptionShort>可玩、可遗传。心灵敏感度 ×0.6、心灵类豁免成功率 +10%、冲撞、派对心情 +10、艺术天赋 +2；穿不了鞋。</descriptionShort>
+    <iconPath>Pact/Xenotypes/Satyr</iconPath>
+    <inheritable>true</inheritable>
+    <combatPowerFactor>1</combatPowerFactor>
+    <factionlessGenerationWeight>2</factionlessGenerationWeight>
+    <genes>
+      <li>LP_SatyrHorns</li><li>LP_SatyrHooves</li><li>LP_SatyrMagicResist</li><li>LP_SatyrCharge</li><li>LP_SatyrRevelry</li><li>LP_SatyrMusic</li>
+    </genes>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><strongScores><li>Dex</li><li>Cha</li></strongScores><weakScores><li>Int</li></weakScores><strongLegend><li>Melee</li><li>Recovery</li></strongLegend></li>
+    </modExtensions>
+  </XenotypeDef>
+  <XenotypeDef ParentName="LP_PactFiendBase">
+    <defName>LP_Dryad</defName>
+    <label>林仙</label>
+    <description>和一棵树绑在一起的妖精，皮肤上有树皮的纹路，头发是新叶的绿色。林仙能从一棵树走进另一棵树里；可她离不开自己的树——走远了会憔悴，树死了，她自己也活不过一天。林仙不老、不育，被提泰妮娅送来时作为束缚者加入，服从度不会下降。</description>
+    <descriptionShort>可玩的妖精。树之绑定（离树 40 格以上虚弱，树死 24 小时内要绑新树）、树行、种植 / 驯兽天赋 +4、利器护甲 +15%、怕火。</descriptionShort>
+    <iconPath>Pact/Xenotypes/Dryad</iconPath>
+    <combatPowerFactor>1</combatPowerFactor>
+    <genes>
+      <li>LP_FeyCore</li><li>LP_DryadTree</li><li>LP_DryadTreeStride</li><li>LP_DryadBark</li><li>LP_SkinDryad</li><li>LP_HairDryad</li>
+      <li>Sterile</li><li>Ageless</li>
+    </genes>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><strongScores><li>Wis</li><li>Cha</li></strongScores><weakScores><li>Str</li></weakScores><strongLegend><li>Recovery</li><li>Work</li></strongLegend></li>
+    </modExtensions>
+  </XenotypeDef>
+  <XenotypeDef ParentName="LP_PactFiendBase">
+    <defName>LP_Redcap</defName>
+    <label>红帽</label>
+    <description>矮小、凶残的妖精，戴着一顶用受害者的血染红的帽子，脚上是沉重的铁靴。红帽越打越凶：每砍中一次就更狠一分，倒在地上的人会被它的铁靴狠狠踩下去。</description>
+    <descriptionShort>妖精杀手。嗜血（近战命中叠伤害，最多 +15）、重踏（打倒地的目标 ×1.5）；倒下即遣返。</descriptionShort>
+    <iconPath>Pact/Xenotypes/Redcap</iconPath>
+    <combatPowerFactor>1</combatPowerFactor>
+    <genes>
+      <li>LP_FeyCore</li><li>LP_AbyssUndying</li><li>LP_RedcapStature</li><li>LP_RedcapBloodlustGene</li><li>LP_RedcapStomp</li><li>LP_SkinRedcap</li>
+      <li>Body_Thin</li><li>Hair_BaldOnly</li><li>Beard_NoBeardOnly</li><li>Sterile</li>
+    </genes>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><strongScores><li>Str</li><li>Con</li></strongScores><weakScores><li>Cha</li></weakScores><strongLegend><li>Melee</li><li>Health</li></strongLegend></li>
+    </modExtensions>
+  </XenotypeDef>
+  <XenotypeDef>
+    <defName>LP_Changeling</defName>
+    <label>调换儿</label>
+    <description>被妖精换进摇篮的孩子，长大后也忘不了自己从哪里来。调换儿的皮肤苍白得没有一点血色，五官像没画完的素描——可他们能变成任何一个见过的人的样子。血脉会遗传。</description>
+    <descriptionShort>可玩、可遗传。千面（复制别人的外观 24 小时）、美貌无效、社交天赋 +2；每 30 天要做回自己 1 天。</descriptionShort>
+    <iconPath>Pact/Xenotypes/Changeling</iconPath>
+    <inheritable>true</inheritable>
+    <combatPowerFactor>1</combatPowerFactor>
+    <factionlessGenerationWeight>0.3</factionlessGenerationWeight>
+    <genes>
+      <li>LP_SkinChangeling</li><li>LP_ChangelingFaces</li><li>LP_ChangelingFluid</li>
+    </genes>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><strongScores><li>Cha</li><li>Dex</li></strongScores><weakScores><li>Con</li></weakScores><strongLegend><li>Psychic</li><li>Learn</li></strongLegend></li>
+    </modExtensions>
+  </XenotypeDef>
+  <XenotypeDef ParentName="LP_PactFiendBase">
+    <defName>LP_WildHunter</defName>
+    <label>狂猎骑手</label>
+    <description>戴鹿角盔的妖精猎手，冬宫和夏宫都养着一队。狂猎只追一个猎物：挡路的才会挨打。妖精长矛对猎物格外致命；他们和所有妖精一样怕寒铁。</description>
+    <descriptionShort>狂猎骑手（敌人专属）。妖精长矛、对猎物伤害 +30%、怕寒铁；倒下即遣返，掉寒铁和号角。</descriptionShort>
+    <iconPath>Pact/Xenotypes/WildHunter</iconPath>
+    <combatPowerFactor>1.5</combatPowerFactor>
+    <genes>
+      <li>LP_FeyCore</li><li>LP_AbyssUndying</li><li>LP_WildHunterAntlers</li><li>LP_WildHunterPrey</li><li>LP_WildHunterSpear</li><li>LP_SkinWildHunter</li>
+      <li>Sterile</li>
+    </genes>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><strongScores><li>Dex</li><li>Wis</li></strongScores><strongLegend><li>Melee</li><li>Ranged</li></strongLegend></li>
+    </modExtensions>
+  </XenotypeDef>
+  <XenotypeDef ParentName="LP_PactFiendBase">
+    <defName>LP_WildHuntLord</defName>
+    <label>狂猎首领</label>
+    <description>狂猎的首领，鹿角更大、披着冬狼皮的斗篷。击败它会得到它所效忠的宗主的代理人真名。</description>
+    <descriptionShort>狂猎首领（敌人专属）。击败掉落宗主代理人的真名卷。</descriptionShort>
+    <iconPath>Pact/Xenotypes/WildHunter</iconPath>
+    <combatPowerFactor>2.5</combatPowerFactor>
+    <genes>
+      <li>LP_FeyCore</li><li>LP_AbyssUndying</li><li>LP_WildHunterAntlers</li><li>LP_WildHuntLordCrown</li><li>LP_WildHunterPrey</li><li>LP_WildHunterSpear</li><li>LP_SkinWildHunter</li>
+      <li>Body_Hulk</li><li>Sterile</li>
+    </genes>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><strongScores><li>Str</li><li>Dex</li><li>Cha</li></strongScores><strongLegend><li>Melee</li><li>Health</li></strongLegend><legendary>true</legendary></li>
+    </modExtensions>
+  </XenotypeDef>
+
+  <!-- ==================== 天界 ==================== -->
+  <XenotypeDef ParentName="LP_PactFiendBase">
+    <defName>LP_Deva</defName>
+    <label>狄瓦</label>
+    <description>白金羽翼的天使，善神派到凡间的使者。狄瓦握着光辉之锤，手一按就能合上伤口；一切隐形和伪装在她眼里都无所遁形。狄瓦会劝说堕落的艾林魔回头，自己却也可能在深渊的气息里慢慢堕落。</description>
+    <descriptionShort>天界使者。光辉之锤、治疗之触（一天 3 次）、真知（看穿隐身 / 伪装）、对恶魔 / 魔鬼 / 亡灵伤害 ×1.5、免疫腐化。</descriptionShort>
+    <iconPath>Pact/Xenotypes/Deva</iconPath>
+    <combatPowerFactor>2</combatPowerFactor>
+    <genes>
+      <li>LP_CelestialCore</li><li>LP_AbyssUndying</li><li>LP_DevaStature</li><li>LP_DevaMace</li><li>LP_DevaHealing</li><li>LP_SkinDeva</li>
+      <li>Sterile</li>
+    </genes>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><strongScores><li>Wis</li><li>Cha</li></strongScores><strongLegend><li>Psychic</li><li>Recovery</li></strongLegend></li>
+    </modExtensions>
+  </XenotypeDef>
+  <XenotypeDef ParentName="LP_PactFiendBase">
+    <defName>LP_Planetar</defName>
+    <label>行星使</label>
+    <description>两倍于常人的天使，白银羽翼，手握巨剑。行星使是善神的战将：天界之怒在 8 格内降下光辉，驱散能把一个外来者逐回它的位面。她有两次传奇抗性。</description>
+    <descriptionShort>天界战将（传奇层：抗性 2、CR 16、18 级）。巨剑、天界之怒、驱散；对恶魔 / 魔鬼 / 亡灵伤害 ×1.5。</descriptionShort>
+    <iconPath>Pact/Xenotypes/Planetar</iconPath>
+    <combatPowerFactor>4</combatPowerFactor>
+    <genes>
+      <li>LP_CelestialCore</li><li>LP_AbyssUndying</li><li>LP_PlanetarStature</li><li>LP_PlanetarSword</li><li>LP_PlanetarWrath</li><li>LP_PlanetarBanish</li><li>LP_SkinPlanetar</li>
+      <li>Body_Hulk</li><li>Sterile</li>
+    </genes>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><strongScores><li>Str</li><li>Wis</li><li>Cha</li></strongScores><strongLegend><li>Melee</li><li>Psychic</li></strongLegend><legendary>true</legendary></li>
+    </modExtensions>
+  </XenotypeDef>
+
+  <!-- ==================== 本源基因 ==================== -->
+  <GeneDef Name="LP_PactGeneBase" Abstract="True">
+    <displayCategory>Miscellaneous</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>1</biostatCpx>
+    <biostatMet>0</biostatMet>
+  </GeneDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_HellsCore</defName>
+    <label>九狱之躯</label>
+    <description>九狱魔鬼的身体：被击倒或杀死时化作黑烟遣返九狱（被束缚的、戴着位面锚链的除外）。银武器伤害 ×1.5，圣水 ×2，寒铁对它没有额外效果。不会被深渊腐化。九狱的造物守契约：束缚者的服从度不会下降，到 0 时也只会要求重新谈判。</description>
+    <iconPath>Pact/Genes/HellsCore</iconPath>
+    <customEffectDescriptions>
+      <li>倒下或死亡：遣返九狱。</li>
+      <li>银武器伤害 ×1.5，圣水伤害 ×2。</li>
+      <li>束缚者服从度不下降；到 0 时要求重新谈判，不会开打。</li>
+    </customEffectDescriptions>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_OutsiderExtension"><plane>Hells</plane><silver>1.5</silver><holy>2</holy><coldIron>1</coldIron><taintImmune>true</taintImmune><trueNameChance>0.3</trueNameChance></li>
+    </modExtensions>
+  </GeneDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_FeyCore</defName>
+    <label>妖精之躯</label>
+    <description>妖精荒野的造物：被击倒或杀死时化作一阵冷雾回到妖精荒野（被束缚的除外）。寒铁武器伤害 ×1.5。</description>
+    <iconPath>Pact/Genes/FeyCore</iconPath>
+    <customEffectDescriptions>
+      <li>倒下或死亡：回到妖精荒野。</li>
+      <li>寒铁武器伤害 ×1.5。</li>
+    </customEffectDescriptions>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_OutsiderExtension"><plane>Feywild</plane><coldIron>1.5</coldIron><holy>1</holy><trueNameChance>0.15</trueNameChance></li>
+    </modExtensions>
+  </GeneDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_CelestialCore</defName>
+    <label>天界之躯</label>
+    <description>天界的造物：免疫深渊腐化，圣水伤不到它；它的攻击对恶魔、魔鬼和亡灵 ×1.5；看得穿隐身和伪装（真知）。被击倒或杀死时化作光回到天界。</description>
+    <iconPath>Pact/Genes/CelestialCore</iconPath>
+    <customEffectDescriptions>
+      <li>造成的伤害对恶魔 / 魔鬼 / 亡灵 ×1.5。</li>
+      <li>真知：看穿隐身和伪装（算作魔鬼之眼）。</li>
+      <li>免疫深渊腐化；圣水无效。</li>
+    </customEffectDescriptions>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_OutsiderExtension"><plane>Celestia</plane><holy>0</holy><taintImmune>true</taintImmune></li>
+    </modExtensions>
+  </GeneDef>
+
+  <!-- ==================== 链魔 ==================== -->
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_ChainDevilStature</defName>
+    <label>链魔体型</label>
+    <description>高大、缠满锁链的身躯：实际体型 ×120%，显示 ×110%。</description>
+    <iconPath>Pact/Genes/ChainDevilStature</iconPath>
+    <modExtensions>
+      <li Class="LichPhylactery.SmallBodyExtension"><bodySize>1.2</bodySize><renderScale>1.1</renderScale></li>
+      <li Class="LichPhylactery.LP_OutsiderExtension"><plane>Hells</plane><silver>1.5</silver><holy>2</holy><coldIron>1</coldIron><taintImmune>true</taintImmune><levelRange>6~6</levelRange><trueNameChance>0.3</trueNameChance><priority>1</priority></li>
+    </modExtensions>
+    <renderNodeProperties>
+      <li>
+        <workerClass>PawnRenderNodeWorker_AttachmentBody</workerClass>
+        <texPath>Pact/Body/ChainDevilChains</texPath>
+        <parentTagDef>Body</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><scaleOffsetByBodySize>true</scaleOffsetByBodySize><defaultData><layer>55</layer></defaultData></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_ChainDevilChains</defName>
+    <label>活锁链</label>
+    <description>天生的武器：锁链抽打（钝器 14）；能力“锁链拽”：4 格内的一个目标挨一链子（14 钝器）并被拽到身边。</description>
+    <iconPath>Pact/Abilities/ChainLash</iconPath>
+    <displayCategory>Violence</displayCategory>
+    <geneClass>LichPhylactery.Gene_LinkedHediff</geneClass>
+    <abilities><li>LP_ChainLash</li></abilities>
+    <descriptionHyperlinks><AbilityDef>LP_ChainLash</AbilityDef></descriptionHyperlinks>
+    <modExtensions><li Class="LichPhylactery.LinkedHediffExtension"><hediff>LP_ChainDevilWeapon</hediff></li></modExtensions>
+  </GeneDef>
+  <HediffDef>
+    <defName>LP_ChainDevilWeapon</defName>
+    <label>活锁链</label>
+    <description>链魔身上的锁链，会自己甩出去。</description>
+    <hediffClass>LichPhylactery.Hediff_GeneLinked</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps><li Class="HediffCompProperties_VerbGiver"><tools><li><label>锁链</label><capacities><li>Blunt</li></capacities><power>14</power><cooldownTime>2.2</cooldownTime><alwaysTreatAsWeapon>true</alwaysTreatAsWeapon></li></tools></li></comps>
+  </HediffDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_ChainDevilSubvert</defName>
+    <label>策反骷髅</label>
+    <description>敌对的链魔 6 格内，巫妖的死灵造物要做意志（感知）豁免（难度 13，基础成功率 50%），失败狂暴 10 秒。每个造物每小时最多判一次。</description>
+    <iconPath>Pact/Genes/ChainDevilSubvert</iconPath>
+    <displayCategory>Violence</displayCategory>
+    <geneClass>LichPhylactery.Gene_ChainDevilSubvert</geneClass>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinChainDevil</defName>
+    <label>铁灰皮肤</label>
+    <labelShortAdj>铁灰</labelShortAdj>
+    <description>链魔铁灰色、布满勒痕的皮。</description>
+    <skinColorOverride>(120, 112, 112)</skinColorOverride>
+    <randomBrightnessFactor>0.05</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+  </GeneDef>
+
+  <!-- ==================== 骨魔 ==================== -->
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_BoneDevilStature</defName>
+    <label>骨魔体型</label>
+    <description>瘦长的骨白身躯：实际体型 ×150%，显示 ×130%，骷髅一样的头。</description>
+    <iconPath>Pact/Genes/BoneDevilStature</iconPath>
+    <exclusionTags><li>Headbone</li></exclusionTags>
+    <modExtensions>
+      <li Class="LichPhylactery.SmallBodyExtension"><bodySize>1.5</bodySize><renderScale>1.3</renderScale></li>
+      <li Class="LichPhylactery.LP_OutsiderExtension"><plane>Hells</plane><silver>1.5</silver><holy>2</holy><coldIron>1</coldIron><taintImmune>true</taintImmune><levelRange>8~8</levelRange><trueNameChance>0.3</trueNameChance><priority>1</priority></li>
+    </modExtensions>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Pact/Heads/BoneDevilSkull</texPath>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><defaultData><layer>75</layer></defaultData><dataNorth><layer>75</layer></dataNorth></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_BoneDevilTail</defName>
+    <label>蝎尾毒刺</label>
+    <description>蝎子一样的尾刺（穿刺 16）。被刺中的人做体质豁免（难度 14，基础成功率 45%），失败“骨毒”：操作 -20%，1 天。</description>
+    <iconPath>Pact/Genes/BoneDevilTail</iconPath>
+    <displayCategory>Violence</displayCategory>
+    <geneClass>LichPhylactery.Gene_LinkedHediff</geneClass>
+    <modExtensions><li Class="LichPhylactery.LinkedHediffExtension"><hediff>LP_BoneDevilTailWeapon</hediff></li></modExtensions>
+    <renderNodeProperties>
+      <li>
+        <workerClass>PawnRenderNodeWorker_AttachmentBody</workerClass>
+        <texPath>Pact/Tails/BoneDevilTail</texPath>
+        <parentTagDef>Body</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><scaleOffsetByBodySize>true</scaleOffsetByBodySize><defaultData><layer>-3</layer></defaultData><dataNorth><layer>85</layer></dataNorth></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <HediffDef>
+    <defName>LP_BoneDevilTailWeapon</defName>
+    <label>蝎尾毒刺</label>
+    <description>骨魔的尾刺。</description>
+    <hediffClass>LichPhylactery.Hediff_GeneLinked</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps><li Class="HediffCompProperties_VerbGiver"><tools><li><label>尾刺</label><capacities><li>Stab</li></capacities><power>16</power><cooldownTime>2.4</cooldownTime><alwaysTreatAsWeapon>true</alwaysTreatAsWeapon></li></tools></li></comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_BoneVenom</defName>
+    <label>骨毒</label>
+    <description>骨魔尾刺的毒让手脚发麻：操作 -20%。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.75, 0.75, 0.55)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>60000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><capMods><li><capacity>Manipulation</capacity><offset>-0.2</offset></li></capMods></li></stages>
+  </HediffDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_BoneDevilDread</defName>
+    <label>恐惧气场</label>
+    <description>第一次在 8 格内看到它的敌人做感知豁免（难度 13，基础成功率 50%），失败惊惧 10 秒。</description>
+    <iconPath>Pact/Genes/BoneDevilDread</iconPath>
+    <displayCategory>Violence</displayCategory>
+    <geneClass>LichPhylactery.Gene_BoneDevilDread</geneClass>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinBoneDevil</defName>
+    <label>骨白皮肤</label>
+    <labelShortAdj>骨白</labelShortAdj>
+    <description>骨魔紧绷在骨头上的苍白皮。</description>
+    <skinColorOverride>(222, 214, 190)</skinColorOverride>
+    <randomBrightnessFactor>0.04</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+  </GeneDef>
+
+  <!-- ==================== 角魔 ==================== -->
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_HornedDevilStature</defName>
+    <label>角魔体型</label>
+    <description>魁梧的鳞甲身躯：实际体型 ×180%，显示 ×140%，一对大角、一对蝠翼。生成时手握地狱钢叉。</description>
+    <iconPath>Pact/Genes/HornedDevilStature</iconPath>
+    <exclusionTags><li>Headbone</li></exclusionTags>
+    <modExtensions>
+      <li Class="LichPhylactery.SmallBodyExtension"><bodySize>1.8</bodySize><renderScale>1.4</renderScale></li>
+      <li Class="LichPhylactery.LP_OutsiderExtension"><plane>Hells</plane><silver>1.5</silver><holy>2</holy><coldIron>1</coldIron><taintImmune>true</taintImmune><levelRange>10~10</levelRange><trueNameChance>0.3</trueNameChance><priority>1</priority></li>
+    </modExtensions>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Pact/Horns/HornedDevilHorns</texPath>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><defaultData><layer>80</layer></defaultData><dataNorth><layer>10</layer></dataNorth></drawData>
+      </li>
+      <li>
+        <workerClass>PawnRenderNodeWorker_AttachmentBody</workerClass>
+        <texPath>Pact/Wings/HornedDevilWings</texPath>
+        <overrideMeshSize>(1.7, 1.7)</overrideMeshSize>
+        <parentTagDef>Body</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><scaleOffsetByBodySize>true</scaleOffsetByBodySize><defaultData><layer>-2</layer></defaultData><dataNorth><layer>90</layer></dataNorth></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_HornedDevilFlame</defName>
+    <label>地狱火投掷</label>
+    <description>能力“地狱火”：朝 10 格内的目标扔一团地狱火（火焰 15，可能点燃），冷却 30 秒。火焰、烧伤伤害 ×0.5。</description>
+    <iconPath>Pact/Abilities/HellfireHurl</iconPath>
+    <displayCategory>Violence</displayCategory>
+    <damageFactors><Flame>0.5</Flame><Burn>0.5</Burn></damageFactors>
+    <abilities><li>LP_HellfireHurl</li></abilities>
+    <descriptionHyperlinks><AbilityDef>LP_HellfireHurl</AbilityDef></descriptionHyperlinks>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinHornedDevil</defName>
+    <label>暗红鳞甲</label>
+    <labelShortAdj>暗红</labelShortAdj>
+    <description>角魔暗红色的鳞甲。</description>
+    <skinColorOverride>(132, 52, 46)</skinColorOverride>
+    <randomBrightnessFactor>0.05</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+  </GeneDef>
+
+  <!-- ==================== 艾林魔 ==================== -->
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_ErinyesStature</defName>
+    <label>艾林魔之躯</label>
+    <description>艾林魔的身体：外表就是高挑的人类，皮肤上爬着红黑的纹样。</description>
+    <iconPath>Pact/Genes/ErinyesStature</iconPath>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_OutsiderExtension"><plane>Hells</plane><silver>1.5</silver><holy>2</holy><coldIron>1</coldIron><taintImmune>true</taintImmune><levelRange>9~9</levelRange><trueNameChance>0.3</trueNameChance><priority>1</priority></li>
+    </modExtensions>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Pact/Heads/ErinyesMarks</texPath>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh</rotDrawMode>
+        <drawData><defaultData><layer>57</layer></defaultData></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_ErinyesWings</defName>
+    <label>黑羽之翼</label>
+    <description>一对乌黑的羽翼。</description>
+    <iconPath>Pact/Genes/ErinyesWings</iconPath>
+    <displayCategory>Cosmetic</displayCategory>
+    <renderNodeProperties>
+      <li>
+        <workerClass>PawnRenderNodeWorker_AttachmentBody</workerClass>
+        <texPath>Pact/Wings/ErinyesWings</texPath>
+        <overrideMeshSize>(1.6, 1.6)</overrideMeshSize>
+        <parentTagDef>Body</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><scaleOffsetByBodySize>true</scaleOffsetByBodySize><defaultData><layer>-2</layer></defaultData><dataNorth><layer>90</layer></dataNorth></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_ErinyesHunt</defName>
+    <label>追猎</label>
+    <description>能力“追猎”：标记一个敌人 3 天，艾林魔对它的伤害 +15%。冷却 1 天。</description>
+    <iconPath>Pact/Abilities/HuntersMark</iconPath>
+    <displayCategory>Violence</displayCategory>
+    <abilities><li>LP_HuntersMark</li></abilities>
+    <descriptionHyperlinks><AbilityDef>LP_HuntersMark</AbilityDef></descriptionHyperlinks>
+  </GeneDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_ErinyesRope</defName>
+    <label>缚绳</label>
+    <description>能力“缚绳”：8 格内一个目标做敏捷豁免（豁免难度随艾林魔的熟练加值和敏捷提高；目标的属性调整值和熟练加值每点 +5% 成功率），失败被缚住 4 秒。冷却 2 小时。</description>
+    <iconPath>Pact/Abilities/Entangle</iconPath>
+    <displayCategory>Violence</displayCategory>
+    <abilities><li>LP_ErinyesEntangle</li></abilities>
+    <descriptionHyperlinks><AbilityDef>LP_ErinyesEntangle</AbilityDef></descriptionHyperlinks>
+  </GeneDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_ErinyesResolve</defName>
+    <label>复仇者的意志</label>
+    <description>艾林魔从不害怕：免疫恐惧类效果（惊惧、恐惧气场、骇人威仪）。射击、近战天赋 +2。</description>
+    <iconPath>Pact/Genes/ErinyesResolve</iconPath>
+    <aptitudes><Shooting>2</Shooting><Melee>2</Melee></aptitudes>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinErinyes</defName>
+    <label>苍灰皮肤</label>
+    <labelShortAdj>苍灰</labelShortAdj>
+    <description>艾林魔苍灰的皮肤。</description>
+    <skinColorOverride>(176, 160, 160)</skinColorOverride>
+    <randomBrightnessFactor>0.05</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+  </GeneDef>
+
+  <!-- ==================== 阿姆尼祖 ==================== -->
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_AmnizuStature</defName>
+    <label>阿姆尼祖体型</label>
+    <description>干瘪的高个子：实际体型 ×140%，显示 ×120%，秃头、小角、尖耳。</description>
+    <iconPath>Pact/Genes/AmnizuStature</iconPath>
+    <exclusionTags><li>Headbone</li></exclusionTags>
+    <modExtensions>
+      <li Class="LichPhylactery.SmallBodyExtension"><bodySize>1.4</bodySize><renderScale>1.2</renderScale></li>
+      <li Class="LichPhylactery.LP_OutsiderExtension"><plane>Hells</plane><silver>1.5</silver><holy>2</holy><coldIron>1</coldIron><taintImmune>true</taintImmune><levelRange>11~11</levelRange><trueNameChance>0.5</trueNameChance><priority>1</priority></li>
+    </modExtensions>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Pact/Heads/AmnizuHead</texPath>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><defaultData><layer>80</layer></defaultData><dataNorth><layer>10</layer></dataNorth></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_AmnizuMind</defName>
+    <label>遗忘之触</label>
+    <description>攻击阿姆尼祖的人形做智力豁免（难度 16，基础成功率 35%），失败“遗忘”：最高的一项技能 -2 级，1 天后恢复。</description>
+    <iconPath>Pact/Genes/AmnizuMind</iconPath>
+    <displayCategory>Violence</displayCategory>
+  </GeneDef>
+  <HediffDef>
+    <defName>LP_AmnizuDrain</defName>
+    <label>遗忘</label>
+    <description>阿姆尼祖的手指点在额头上：最拿手的一项技能暂时 -2 级。</description>
+    <hediffClass>LichPhylactery.Hediff_AmnizuDrain</hediffClass>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.65, 0.55, 0.75)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>60000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+  </HediffDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinAmnizu</defName>
+    <label>枯黄皮肤</label>
+    <labelShortAdj>枯黄</labelShortAdj>
+    <description>阿姆尼祖羊皮纸一样的枯黄皮。</description>
+    <skinColorOverride>(176, 150, 112)</skinColorOverride>
+    <randomBrightnessFactor>0.04</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+  </GeneDef>
+
+  <!-- ==================== 萨特（可玩、可遗传；代谢合计 0） ==================== -->
+  <GeneDef Name="LP_SatyrGeneBase" Abstract="True">
+    <displayCategory>Miscellaneous</displayCategory>
+    <biostatCpx>1</biostatCpx>
+  </GeneDef>
+  <GeneDef ParentName="LP_SatyrGeneBase">
+    <defName>LP_SatyrHorns</defName>
+    <label>萨特之角</label>
+    <description>一对向后弯的羊角。</description>
+    <iconPath>Pact/Genes/SatyrHorns</iconPath>
+    <displayCategory>Cosmetic</displayCategory>
+    <biostatMet>0</biostatMet>
+    <exclusionTags><li>Headbone</li></exclusionTags>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Pact/Horns/SatyrHorns</texPath>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><defaultData><layer>80</layer></defaultData><dataNorth><layer>10</layer></dataNorth></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="LP_SatyrGeneBase">
+    <defName>LP_SatyrHooves</defName>
+    <label>羊蹄</label>
+    <description>毛茸茸的羊腿和一对蹄子：穿不了鞋、靴子（盖住脚的衣物）。带这条基因的人算作萨特。</description>
+    <iconPath>Pact/Genes/SatyrHooves</iconPath>
+    <biostatMet>1</biostatMet>
+    <renderNodeProperties>
+      <li>
+        <workerClass>PawnRenderNodeWorker_AttachmentBody</workerClass>
+        <texPath>Pact/Body/SatyrLegs</texPath>
+        <parentTagDef>Body</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><scaleOffsetByBodySize>true</scaleOffsetByBodySize><defaultData><layer>12</layer></defaultData></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="LP_SatyrGeneBase">
+    <defName>LP_SatyrMagicResist</defName>
+    <label>妖精血的抗性</label>
+    <description>心灵敏感度 ×0.6；智力、感知、魅力豁免成功率 +10%。</description>
+    <iconPath>Pact/Genes/SatyrMagicResist</iconPath>
+    <biostatMet>-1</biostatMet>
+    <statFactors><PsychicSensitivity>0.6</PsychicSensitivity></statFactors>
+  </GeneDef>
+  <GeneDef ParentName="LP_SatyrGeneBase">
+    <defName>LP_SatyrCharge</defName>
+    <label>冲撞</label>
+    <description>能力“冲撞”：冲到 6 格内的目标身边，目标做力量豁免（豁免难度随萨特的熟练加值和力量提高；目标的属性调整值和熟练加值每点 +5% 成功率），失败倒地 1 秒。冷却 4 小时。</description>
+    <iconPath>Pact/Abilities/SatyrCharge</iconPath>
+    <displayCategory>Violence</displayCategory>
+    <biostatMet>-1</biostatMet>
+    <abilities><li>LP_SatyrCharge</li></abilities>
+    <descriptionHyperlinks><AbilityDef>LP_SatyrCharge</AbilityDef></descriptionHyperlinks>
+  </GeneDef>
+  <GeneDef ParentName="LP_SatyrGeneBase">
+    <defName>LP_SatyrRevelry</defName>
+    <label>狂欢</label>
+    <description>只要殖民地办派对或婚礼，萨特心情 +10（1 天）。</description>
+    <iconPath>Pact/Genes/SatyrRevelry</iconPath>
+    <biostatMet>0</biostatMet>
+  </GeneDef>
+  <GeneDef ParentName="LP_SatyrGeneBase">
+    <defName>LP_SatyrMusic</defName>
+    <label>林间乐手</label>
+    <description>天生的乐手：艺术天赋 +2。</description>
+    <iconPath>Pact/Genes/SatyrMusic</iconPath>
+    <biostatMet>1</biostatMet>
+    <aptitudes><Artistic>2</Artistic></aptitudes>
+  </GeneDef>
+
+  <!-- ==================== 林仙 ==================== -->
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_DryadTree</defName>
+    <label>树之绑定</label>
+    <description>林仙和一棵成年的树（成长 ≥80%、不在种植区里）绑在一起。离树 40 格以上（或者不在同一张地图）：移速、工作速度 ×0.5，心情 -8。树被砍、被烧、死掉：疼痛 ×1.5、意识 -30%，心情 -30；24 小时内不和新树绑定就会死。没有树时漂泊（30 天内心情 -5）。能力“绑定此树”。</description>
+    <iconPath>Pact/Abilities/BindTree</iconPath>
+    <geneClass>LichPhylactery.Gene_DryadTree</geneClass>
+    <abilities><li>LP_BindTree</li></abilities>
+    <descriptionHyperlinks><AbilityDef>LP_BindTree</AbilityDef></descriptionHyperlinks>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_OutsiderExtension"><plane>Feywild</plane><coldIron>1.5</coldIron><holy>1</holy><levelRange>4~6</levelRange><priority>1</priority></li>
+    </modExtensions>
+  </GeneDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_DryadTreeStride</defName>
+    <label>树行</label>
+    <description>能力“树行”：走进一棵树，从 30 格内另一棵成年的树旁边走出来。冷却 2 小时。</description>
+    <iconPath>Pact/Abilities/TreeStride</iconPath>
+    <abilities><li>LP_TreeStride</li></abilities>
+    <descriptionHyperlinks><AbilityDef>LP_TreeStride</AbilityDef></descriptionHyperlinks>
+  </GeneDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_DryadBark</defName>
+    <label>树皮之肤</label>
+    <description>树皮纹路的皮肤：利器护甲 +15%；种植、驯兽天赋 +4；火焰、烧伤伤害 ×1.5。</description>
+    <iconPath>Pact/Genes/DryadBark</iconPath>
+    <statOffsets><ArmorRating_Sharp>0.15</ArmorRating_Sharp></statOffsets>
+    <aptitudes><Plants>4</Plants><Animals>4</Animals></aptitudes>
+    <damageFactors><Flame>1.5</Flame><Burn>1.5</Burn></damageFactors>
+    <renderNodeProperties>
+      <li>
+        <workerClass>PawnRenderNodeWorker_AttachmentBody</workerClass>
+        <texPath>Pact/Body/DryadBark</texPath>
+        <parentTagDef>Body</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><scaleOffsetByBodySize>true</scaleOffsetByBodySize><defaultData><layer>11</layer></defaultData></drawData>
+      </li>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Pact/Heads/DryadLeaves</texPath>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh</rotDrawMode>
+        <drawData><defaultData><layer>81</layer></defaultData><dataNorth><layer>81</layer></dataNorth></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinDryad</defName>
+    <label>树皮色皮肤</label>
+    <labelShortAdj>树皮色</labelShortAdj>
+    <description>林仙带着树皮纹路的褐绿色皮肤。</description>
+    <skinColorOverride>(150, 132, 96)</skinColorOverride>
+    <randomBrightnessFactor>0.05</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+  </GeneDef>
+  <GeneDef ParentName="GeneHairColorBase">
+    <defName>LP_HairDryad</defName>
+    <label>新叶绿发</label>
+    <labelShortAdj>新叶绿</labelShortAdj>
+    <description>新叶一样的绿色头发。</description>
+    <hairColorOverride>(118, 168, 78)</hairColorOverride>
+    <selectionWeight>0</selectionWeight>
+  </GeneDef>
+  <HediffDef>
+    <defName>LP_DryadSevered</defName>
+    <label>断树之痛</label>
+    <description>林仙的树死了，像被抽掉了半条命：疼痛 ×1.5，意识 -30%。24 小时内不和一棵新树绑定就会死。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.55, 0.65, 0.3)</defaultLabelColor>
+    <stages><li><painFactor>1.5</painFactor><capMods><li><capacity>Consciousness</capacity><offset>-0.3</offset></li></capMods></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_DryadDistant</defName>
+    <label>离树太远</label>
+    <description>离自己的树太远了（40 格以上或不在同一张地图）：移速、工作速度 ×0.5。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages><li><statFactors><MoveSpeed>0.5</MoveSpeed><WorkSpeedGlobal>0.5</WorkSpeedGlobal></statFactors></li></stages>
+  </HediffDef>
+
+  <!-- ==================== 红帽 ==================== -->
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_RedcapStature</defName>
+    <label>红帽体型</label>
+    <description>矮小的身躯：实际体型 ×60%，显示 ×70%；血红的尖帽、沉重的铁靴。</description>
+    <iconPath>Pact/Genes/RedcapStature</iconPath>
+    <exclusionTags><li>Headbone</li></exclusionTags>
+    <modExtensions>
+      <li Class="LichPhylactery.SmallBodyExtension"><bodySize>0.6</bodySize><renderScale>0.7</renderScale></li>
+      <li Class="LichPhylactery.LP_OutsiderExtension"><plane>Feywild</plane><coldIron>1.5</coldIron><holy>1</holy><levelRange>3~4</levelRange><trueNameChance>0.1</trueNameChance><priority>1</priority></li>
+    </modExtensions>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Pact/Heads/RedcapCap</texPath>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><defaultData><layer>82</layer></defaultData><dataNorth><layer>82</layer></dataNorth></drawData>
+      </li>
+      <li>
+        <workerClass>PawnRenderNodeWorker_AttachmentBody</workerClass>
+        <texPath>Pact/Body/RedcapBoots</texPath>
+        <parentTagDef>Body</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><scaleOffsetByBodySize>true</scaleOffsetByBodySize><defaultData><layer>13</layer></defaultData></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_RedcapBloodlustGene</defName>
+    <label>嗜血</label>
+    <description>每次近战命中叠一层“嗜血”（近战伤害 +3，最多 5 层 = +15），1 小时没命中就清零。</description>
+    <iconPath>Pact/Genes/RedcapBloodlust</iconPath>
+    <displayCategory>Violence</displayCategory>
+  </GeneDef>
+  <HediffDef>
+    <defName>LP_RedcapBloodlust</defName>
+    <label>嗜血</label>
+    <description>红帽越砍越凶：每层近战伤害 +3。</description>
+    <hediffClass>LichPhylactery.Hediff_RedcapBloodlust</hediffClass>
+    <isBad>false</isBad>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>5</maxSeverity>
+    <defaultLabelColor>(0.8, 0.2, 0.2)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>2500</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+  </HediffDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_RedcapStomp</defName>
+    <label>重踏</label>
+    <description>铁靴踩向倒在地上的人：对倒地目标的伤害 ×1.5。</description>
+    <iconPath>Pact/Genes/RedcapStomp</iconPath>
+    <displayCategory>Violence</displayCategory>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinRedcap</defName>
+    <label>灰褐皮肤</label>
+    <labelShortAdj>灰褐</labelShortAdj>
+    <description>红帽皱巴巴的灰褐皮。</description>
+    <skinColorOverride>(140, 122, 104)</skinColorOverride>
+    <randomBrightnessFactor>0.05</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+  </GeneDef>
+
+  <!-- ==================== 调换儿（可玩、可遗传；代谢合计 -1） ==================== -->
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinChangeling</defName>
+    <label>苍白无痕</label>
+    <labelShortAdj>苍白</labelShortAdj>
+    <description>调换儿苍白得没有一点血色的皮肤。</description>
+    <skinColorOverride>(232, 230, 226)</skinColorOverride>
+    <randomBrightnessFactor>0.02</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+  </GeneDef>
+  <GeneDef>
+    <defName>LP_ChangelingFaces</defName>
+    <label>千面</label>
+    <description>能力“千面”：复制一名看得见的人形的外观（脸、发型、肤色、体型）和名字，持续 24 小时；被魔鬼之眼、狄瓦的真知看穿时提前解除。冷却 1 天。每 30 天要做回自己整整 1 天，否则心情 -6。带这条基因的人算作调换儿。</description>
+    <iconPath>Pact/Abilities/Faces</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <geneClass>LichPhylactery.Gene_ChangelingFaces</geneClass>
+    <biostatCpx>2</biostatCpx>
+    <biostatMet>-1</biostatMet>
+    <selectionWeight>0</selectionWeight>
+    <abilities><li>LP_ChangelingFaces</li></abilities>
+    <descriptionHyperlinks><AbilityDef>LP_ChangelingFaces</AbilityDef></descriptionHyperlinks>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>LichPhylactery.PawnRenderNodeWorker_ChangelingFace</workerClass>
+        <texPath>Pact/Heads/ChangelingFace</texPath>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh</rotDrawMode>
+        <drawData><defaultData><layer>58</layer></defaultData></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef>
+    <defName>LP_ChangelingFluid</defName>
+    <label>流动之貌</label>
+    <description>调换儿的样子从来不固定：美貌类特性对它不起作用；社交天赋 +2。</description>
+    <iconPath>Pact/Genes/ChangelingFluid</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <biostatCpx>1</biostatCpx>
+    <biostatMet>0</biostatMet>
+    <selectionWeight>0</selectionWeight>
+    <statFactors><PawnBeauty>0</PawnBeauty></statFactors>
+    <aptitudes><Social>2</Social></aptitudes>
+  </GeneDef>
+  <HediffDef>
+    <defName>LP_ChangelingGuise</defName>
+    <label>千面</label>
+    <description>正披着别人的样子。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.8, 0.8, 0.9)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_ChangelingHidden</defName>
+    <label>调换儿</label>
+    <description>（隐藏）</description>
+    <hediffClass>LichPhylactery.Hediff_ChangelingHidden</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+
+  <!-- ==================== 狂猎 ==================== -->
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_WildHunterAntlers</defName>
+    <label>鹿角盔</label>
+    <description>和头长在一起的鹿角盔。</description>
+    <iconPath>Pact/Genes/WildHunterAntlers</iconPath>
+    <exclusionTags><li>Headbone</li></exclusionTags>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_OutsiderExtension"><plane>Feywild</plane><coldIron>1.5</coldIron><holy>1</holy><levelRange>8~10</levelRange><trueNameChance>0.15</trueNameChance><priority>1</priority></li>
+    </modExtensions>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Pact/Horns/WildHuntAntlers</texPath>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><defaultData><layer>82</layer></defaultData><dataNorth><layer>82</layer></dataNorth></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_WildHuntLordCrown</defName>
+    <label>猎主</label>
+    <description>狂猎首领：等级更高；击败它会掉落宗主代理人的真名卷。</description>
+    <iconPath>Pact/Genes/WildHuntLord</iconPath>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_OutsiderExtension"><plane>Feywild</plane><coldIron>1.5</coldIron><holy>1</holy><levelRange>12~14</levelRange><trueNameChance>0.3</trueNameChance><priority>2</priority></li>
+    </modExtensions>
+  </GeneDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_WildHunterPrey</defName>
+    <label>猎物</label>
+    <description>对狂猎追的猎物伤害 +30%。</description>
+    <iconPath>Pact/Genes/WildHunterPrey</iconPath>
+    <displayCategory>Violence</displayCategory>
+  </GeneDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_WildHunterSpear</defName>
+    <label>妖精长矛</label>
+    <description>天生的武器：妖精长矛（穿刺 20，护甲穿透 40%）。</description>
+    <iconPath>Pact/Genes/WildHunterSpear</iconPath>
+    <displayCategory>Violence</displayCategory>
+    <geneClass>LichPhylactery.Gene_LinkedHediff</geneClass>
+    <modExtensions><li Class="LichPhylactery.LinkedHediffExtension"><hediff>LP_WildHunterSpearWeapon</hediff></li></modExtensions>
+  </GeneDef>
+  <HediffDef>
+    <defName>LP_WildHunterSpearWeapon</defName>
+    <label>妖精长矛</label>
+    <description>狂猎骑手的长矛。</description>
+    <hediffClass>LichPhylactery.Hediff_GeneLinked</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps><li Class="HediffCompProperties_VerbGiver"><tools><li><label>妖精长矛</label><capacities><li>Stab</li></capacities><power>20</power><armorPenetration>0.4</armorPenetration><cooldownTime>2.2</cooldownTime><alwaysTreatAsWeapon>true</alwaysTreatAsWeapon></li></tools></li></comps>
+  </HediffDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinWildHunter</defName>
+    <label>霜白皮肤</label>
+    <labelShortAdj>霜白</labelShortAdj>
+    <description>狂猎骑手结着白霜的皮肤。</description>
+    <skinColorOverride>(204, 212, 216)</skinColorOverride>
+    <randomBrightnessFactor>0.04</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+  </GeneDef>
+  <HediffDef>
+    <defName>LP_WildHuntPrey</defName>
+    <label>狂猎的猎物</label>
+    <description>狂猎在追这个人：骑手对他的伤害 +30%。撑到早上 6 点就安全了。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.75, 0.8, 0.95)</defaultLabelColor>
+  </HediffDef>
+
+  <!-- ==================== 狄瓦 / 行星使 ==================== -->
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_DevaStature</defName>
+    <label>狄瓦之躯</label>
+    <description>高挑的天使：实际体型 ×140%，显示 ×120%，白金羽翼。</description>
+    <iconPath>Pact/Genes/DevaStature</iconPath>
+    <modExtensions>
+      <li Class="LichPhylactery.SmallBodyExtension"><bodySize>1.4</bodySize><renderScale>1.2</renderScale></li>
+      <li Class="LichPhylactery.LP_OutsiderExtension"><plane>Celestia</plane><holy>0</holy><taintImmune>true</taintImmune><levelRange>10~12</levelRange><priority>1</priority></li>
+    </modExtensions>
+    <renderNodeProperties>
+      <li>
+        <workerClass>PawnRenderNodeWorker_AttachmentBody</workerClass>
+        <texPath>Pact/Wings/DevaWings</texPath>
+        <overrideMeshSize>(1.7, 1.7)</overrideMeshSize>
+        <parentTagDef>Body</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><scaleOffsetByBodySize>true</scaleOffsetByBodySize><defaultData><layer>-2</layer></defaultData><dataNorth><layer>90</layer></dataNorth></drawData>
+      </li>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Pact/Heads/DevaHalo</texPath>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh</rotDrawMode>
+        <drawData><defaultData><layer>85</layer></defaultData><dataNorth><layer>85</layer></dataNorth></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_DevaMace</defName>
+    <label>光辉之锤</label>
+    <description>天生的武器：光辉之锤（钝器 16，附带 8 点光辉伤害）。带这条基因的人算作狄瓦。</description>
+    <iconPath>Pact/Genes/DevaMace</iconPath>
+    <displayCategory>Violence</displayCategory>
+    <geneClass>LichPhylactery.Gene_LinkedHediff</geneClass>
+    <modExtensions><li Class="LichPhylactery.LinkedHediffExtension"><hediff>LP_DevaMaceWeapon</hediff></li></modExtensions>
+  </GeneDef>
+  <HediffDef>
+    <defName>LP_DevaMaceWeapon</defName>
+    <label>光辉之锤</label>
+    <description>狄瓦的光辉之锤。</description>
+    <hediffClass>LichPhylactery.Hediff_GeneLinked</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps><li Class="HediffCompProperties_VerbGiver"><tools><li><label>光辉之锤</label><capacities><li>Blunt</li></capacities><power>16</power><cooldownTime>2.2</cooldownTime><alwaysTreatAsWeapon>true</alwaysTreatAsWeapon><extraMeleeDamages><li><def>LP_Radiant</def><amount>8</amount></li></extraMeleeDamages></li></tools></li></comps>
+  </HediffDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_DevaHealing</defName>
+    <label>治疗之触</label>
+    <description>能力“治疗之触”：治好一个人最严重的一处伤（也能止住地狱之伤）。冷却 8 小时（一天 3 次）。</description>
+    <iconPath>Pact/Abilities/HealingTouch</iconPath>
+    <abilities><li>LP_DevaHealingTouch</li></abilities>
+    <descriptionHyperlinks><AbilityDef>LP_DevaHealingTouch</AbilityDef></descriptionHyperlinks>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinDeva</defName>
+    <label>金辉皮肤</label>
+    <labelShortAdj>金辉</labelShortAdj>
+    <description>狄瓦泛着淡金光泽的皮肤。</description>
+    <skinColorOverride>(236, 214, 168)</skinColorOverride>
+    <randomBrightnessFactor>0.03</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+  </GeneDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_PlanetarStature</defName>
+    <label>行星使之躯</label>
+    <description>两倍于常人的天使：实际体型 ×200%，显示 ×160%，白银羽翼。</description>
+    <iconPath>Pact/Genes/PlanetarStature</iconPath>
+    <modExtensions>
+      <li Class="LichPhylactery.SmallBodyExtension"><bodySize>2.0</bodySize><renderScale>1.6</renderScale></li>
+      <li Class="LichPhylactery.LP_OutsiderExtension"><plane>Celestia</plane><holy>0</holy><taintImmune>true</taintImmune><priority>1</priority></li>
+    </modExtensions>
+    <renderNodeProperties>
+      <li>
+        <workerClass>PawnRenderNodeWorker_AttachmentBody</workerClass>
+        <texPath>Pact/Wings/PlanetarWings</texPath>
+        <overrideMeshSize>(1.8, 1.8)</overrideMeshSize>
+        <parentTagDef>Body</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><scaleOffsetByBodySize>true</scaleOffsetByBodySize><defaultData><layer>-2</layer></defaultData><dataNorth><layer>90</layer></dataNorth></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_PlanetarSword</defName>
+    <label>天界巨剑</label>
+    <description>天生的武器：天界巨剑（劈砍 30，护甲穿透 50%，附带 10 点光辉伤害）。</description>
+    <iconPath>Pact/Genes/PlanetarSword</iconPath>
+    <displayCategory>Violence</displayCategory>
+    <geneClass>LichPhylactery.Gene_LinkedHediff</geneClass>
+    <modExtensions><li Class="LichPhylactery.LinkedHediffExtension"><hediff>LP_PlanetarSwordWeapon</hediff></li></modExtensions>
+  </GeneDef>
+  <HediffDef>
+    <defName>LP_PlanetarSwordWeapon</defName>
+    <label>天界巨剑</label>
+    <description>行星使的巨剑。</description>
+    <hediffClass>LichPhylactery.Hediff_GeneLinked</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps><li Class="HediffCompProperties_VerbGiver"><tools><li><label>天界巨剑</label><capacities><li>Cut</li></capacities><power>30</power><armorPenetration>0.5</armorPenetration><cooldownTime>2.4</cooldownTime><alwaysTreatAsWeapon>true</alwaysTreatAsWeapon><extraMeleeDamages><li><def>LP_Radiant</def><amount>10</amount></li></extraMeleeDamages></li></tools></li></comps>
+  </HediffDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_PlanetarWrath</defName>
+    <label>天界之怒</label>
+    <description>能力“天界之怒”：8 格内的敌人受到 30 点光辉伤害。冷却 1 天。</description>
+    <iconPath>Pact/Abilities/Wrath</iconPath>
+    <displayCategory>Violence</displayCategory>
+    <abilities><li>LP_PlanetarWrath</li></abilities>
+    <descriptionHyperlinks><AbilityDef>LP_PlanetarWrath</AbilityDef></descriptionHyperlinks>
+  </GeneDef>
+  <GeneDef ParentName="LP_PactGeneBase">
+    <defName>LP_PlanetarBanish</defName>
+    <label>驱散</label>
+    <description>能力“驱散”：一个外来者做魅力豁免（难度 20，基础成功率 15%），失败被逐回它的位面；传奇首领先消耗传奇抗性。冷却 1 小时。</description>
+    <iconPath>Pact/Abilities/Banish</iconPath>
+    <displayCategory>Violence</displayCategory>
+    <abilities><li>LP_PlanetarBanish</li></abilities>
+    <descriptionHyperlinks><AbilityDef>LP_PlanetarBanish</AbilityDef></descriptionHyperlinks>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinPlanetar</defName>
+    <label>银辉皮肤</label>
+    <labelShortAdj>银辉</labelShortAdj>
+    <description>行星使泛着银光的皮肤。</description>
+    <skinColorOverride>(200, 208, 220)</skinColorOverride>
+    <randomBrightnessFactor>0.03</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+  </GeneDef>
+  <HediffDef>
+    <defName>LP_CelestialGuardian</defName>
+    <label>守护天使</label>
+    <description>善神派来守护殖民地的狄瓦：服从度不会下降。殖民地里腐化到恶魔之印的人 ≥3 时，它每天有 5% 失望离开。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.95, 0.85, 0.55)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_FallenDevaGuest</defName>
+    <label>坠落的客人</label>
+    <description>坠落的狄瓦：伤都包扎好后会醒来，作为客人留 10 天；离开时守护神神眷 +30。腐化到恶魔之印的人靠近它时，它每天有 10% 堕落成敌对的艾林魔。</description>
+    <hediffClass>LichPhylactery.Hediff_FallenDevaGuest</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.95, 0.85, 0.55)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_DevaStupor</defName>
+    <label>坠落昏迷</label>
+    <description>从天上摔下来，伤得太重醒不过来：意识最多 10%。把伤都包扎好就会醒。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages><li><capMods><li><capacity>Consciousness</capacity><setMax>0.1</setMax></li></capMods></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_RedeemProgress</defName>
+    <label>劝返</label>
+    <description>狄瓦在劝说这名艾林魔回头：累计 3 次就会变回狄瓦。</description>
+    <hediffClass>LichPhylactery.Hediff_RedeemProgress</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <initialSeverity>0.01</initialSeverity>
+    <maxSeverity>3</maxSeverity>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_HuntMarked</defName>
+    <label>被追猎</label>
+    <description>艾林魔标记了这个人：她对他的伤害 +15%。</description>
+    <hediffClass>LichPhylactery.Hediff_HuntMarked</hediffClass>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.85, 0.3, 0.3)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>180000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+  </HediffDef>
+
+  <InteractionDef>
+    <defName>LP_DevaRedeem</defName>
+    <label>劝返</label>
+    <workerClass>LichPhylactery.InteractionWorker_DevaRedeem</workerClass>
+    <symbol>Things/Mote/SpeechSymbols/KindWords</symbol>
+    <initiatorXpGainSkill>Social</initiatorXpGainSkill>
+    <initiatorXpGainAmount>10</initiatorXpGainAmount>
+    <logRulesInitiator>
+      <rulesStrings>
+        <li>r_logentry->[INITIATOR_nameDef]握着[RECIPIENT_nameDef]焦黑的羽毛，轻声说起天界的光。</li>
+        <li>r_logentry->[INITIATOR_nameDef]对[RECIPIENT_nameDef]说：你不是生来就属于九狱的。</li>
+      </rulesStrings>
+    </logRulesInitiator>
+  </InteractionDef>
+
+  <!-- ==================== 能力 ==================== -->
+  <AbilityDef ParentName="LP_PactAbilityBase">
+    <defName>LP_ChainLash</defName>
+    <label>锁链拽</label>
+    <description>甩出锁链：4 格内一个目标挨一链子（钝器 14），并被拽到身边。冷却 10 秒。</description>
+    <iconPath>Pact/Abilities/ChainLash</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <hostile>true</hostile>
+    <aiCanUse>true</aiCanUse>
+    <ai_IsOffensive>true</ai_IsOffensive>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>4.9</range>
+      <warmupTime>0.4</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_PactAbility"><effect>chainLash</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_PactAbilityBase">
+    <defName>LP_HellfireHurl</defName>
+    <label>地狱火</label>
+    <description>把一团地狱火扔向 10 格内的目标：火焰 15，可能点燃。冷却 30 秒。</description>
+    <iconPath>Pact/Abilities/HellfireHurl</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <hostile>true</hostile>
+    <aiCanUse>true</aiCanUse>
+    <ai_IsOffensive>true</ai_IsOffensive>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>10</range>
+      <warmupTime>0.6</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_PactAbility"><effect>hellfire</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_PactAbilityBase">
+    <defName>LP_HuntersMark</defName>
+    <label>追猎</label>
+    <description>标记一个敌人 3 天：艾林魔对它的伤害 +15%。冷却 1 天。</description>
+    <iconPath>Pact/Abilities/HuntersMark</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <hostile>true</hostile>
+    <aiCanUse>true</aiCanUse>
+    <ai_IsOffensive>true</ai_IsOffensive>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>24</range>
+      <warmupTime>0.3</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_PactAbility"><effect>huntMark</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_PactAbilityBase">
+    <defName>LP_ErinyesEntangle</defName>
+    <label>缚绳</label>
+    <description>甩出金色的绳索：8 格内一个目标做敏捷豁免（豁免难度随艾林魔的熟练加值和敏捷提高；目标的属性调整值和熟练加值每点 +5% 成功率），失败被缚住 4 秒。冷却 2 小时。</description>
+    <iconPath>Pact/Abilities/Entangle</iconPath>
+    <cooldownTicksRange>5000</cooldownTicksRange>
+    <hostile>true</hostile>
+    <aiCanUse>true</aiCanUse>
+    <ai_IsOffensive>true</ai_IsOffensive>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>8</range>
+      <warmupTime>0.4</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_PactAbility"><effect>entangle</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_PactAbilityBase">
+    <defName>LP_RopeEntangle</defName>
+    <label>缚绳</label>
+    <description>甩出缚绳：8 格内一个目标做敏捷豁免（豁免难度随使用者的熟练加值和敏捷提高；目标的属性调整值和熟练加值每点 +5% 成功率），失败被缚住 4 秒。用掉缚绳 1 点耐久。冷却 2 小时。</description>
+    <iconPath>Pact/Abilities/Entangle</iconPath>
+    <cooldownTicksRange>5000</cooldownTicksRange>
+    <hostile>true</hostile>
+    <aiCanUse>false</aiCanUse>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>8</range>
+      <warmupTime>0.4</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_PactAbility"><effect>rope</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_PactAbilityBase">
+    <defName>LP_SatyrCharge</defName>
+    <label>冲撞</label>
+    <description>低头冲到 6 格内的目标身边：目标做力量豁免（豁免难度随萨特的熟练加值和力量提高；目标的属性调整值和熟练加值每点 +5% 成功率），失败倒地 1 秒。冷却 4 小时。</description>
+    <iconPath>Pact/Abilities/SatyrCharge</iconPath>
+    <cooldownTicksRange>10000</cooldownTicksRange>
+    <hostile>true</hostile>
+    <aiCanUse>true</aiCanUse>
+    <ai_IsOffensive>true</ai_IsOffensive>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>6</range>
+      <warmupTime>0.3</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_PactAbility"><effect>charge</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_PactAbilityBase">
+    <defName>LP_TreeStride</defName>
+    <label>树行</label>
+    <description>走进身边的树，从 30 格内另一棵成年的树旁边走出来。冷却 2 小时。</description>
+    <iconPath>Pact/Abilities/TreeStride</iconPath>
+    <cooldownTicksRange>5000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <aiCanUse>false</aiCanUse>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>30</range>
+      <warmupTime>0.8</warmupTime>
+      <requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetPawns>false</canTargetPawns><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings><canTargetPlants>true</canTargetPlants><mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_PactAbility"><effect>treeStride</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_PactAbilityBase">
+    <defName>LP_BindTree</defName>
+    <label>绑定此树</label>
+    <description>和身边一棵成年的树（成长 ≥80%、不在种植区里、没被别的林仙占着）结下绑定。冷却 1 小时。</description>
+    <iconPath>Pact/Abilities/BindTree</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <hostile>false</hostile>
+    <aiCanUse>false</aiCanUse>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>4.9</range>
+      <warmupTime>2</warmupTime>
+      <requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetPawns>false</canTargetPawns><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings><canTargetPlants>true</canTargetPlants><mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_PactAbility"><effect>bindTree</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_PactAbilityBase">
+    <defName>LP_ChangelingFaces</defName>
+    <label>千面</label>
+    <description>复制 12 格内一名看得见的人形的外观和名字，持续 24 小时；被魔鬼之眼或狄瓦的真知看到会提前解除。冷却 1 天。</description>
+    <iconPath>Pact/Abilities/Faces</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <aiCanUse>false</aiCanUse>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>12</range>
+      <warmupTime>1.5</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings><canTargetAnimals>false</canTargetAnimals><canTargetMechs>false</canTargetMechs></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_PactAbility"><effect>faces</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_PactAbilityBase">
+    <defName>LP_DevaHealingTouch</defName>
+    <label>治疗之触</label>
+    <description>手按在伤口上：治好一个人最严重的一处伤（也能止住地狱之伤）。冷却 8 小时（一天 3 次）。</description>
+    <iconPath>Pact/Abilities/HealingTouch</iconPath>
+    <cooldownTicksRange>20000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <aiCanUse>true</aiCanUse>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>4.9</range>
+      <warmupTime>1</warmupTime>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetSelf>true</canTargetSelf><canTargetLocations>false</canTargetLocations><canTargetBuildings>false</canTargetBuildings><canTargetMechs>false</canTargetMechs></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_PactAbility"><effect>healTouch</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_PactAbilityBase">
+    <defName>LP_PlanetarWrath</defName>
+    <label>天界之怒</label>
+    <description>举剑向天：8 格内的敌人受到 30 点光辉伤害。冷却 1 天。</description>
+    <iconPath>Pact/Abilities/Wrath</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <targetRequired>false</targetRequired>
+    <hostile>true</hostile>
+    <aiCanUse>true</aiCanUse>
+    <ai_IsOffensive>true</ai_IsOffensive>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>1</warmupTime>
+      <range>0</range>
+      <targetParams><canTargetSelf>true</canTargetSelf></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_PactAbility"><effect>wrath</effect><radius>8</radius></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_PactAbilityBase">
+    <defName>LP_PlanetarBanish</defName>
+    <label>驱散</label>
+    <description>命令一个外来者（恶魔、魔鬼、妖精）离开：它做魅力豁免（难度 20，基础成功率 15%），失败被逐回自己的位面；传奇首领先消耗一次传奇抗性。冷却 1 小时。</description>
+    <iconPath>Pact/Abilities/Banish</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <hostile>true</hostile>
+    <aiCanUse>true</aiCanUse>
+    <ai_IsOffensive>true</ai_IsOffensive>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>12</range>
+      <warmupTime>0.8</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_PactAbility"><effect>banish</effect></li></comps>
+  </AbilityDef>
+
+  <!-- ==================== 心情 ==================== -->
+  <ThoughtDef>
+    <defName>LP_SatyrRevelry</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>狂欢</label><description>音乐、酒和跳舞——这才叫活着！</description><baseMoodEffect>10</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_DryadTreeDied</defName>
+    <durationDays>10</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>我的树死了</label><description>半个我跟着它一起死了。</description><baseMoodEffect>-30</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_DryadDistantThought</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>LP_DryadDistant</hediff>
+    <stages><li><label>离树太远</label><description>根被扯得生疼。我要回去。</description><baseMoodEffect>-8</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_DryadDriftingThought</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_DryadDrifting</workerClass>
+    <stages><li><label>漂泊</label><description>没有自己的树，像一片被风吹着走的叶子。</description><baseMoodEffect>-5</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_ChangelingSelfThought</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_ChangelingSelf</workerClass>
+    <stages><li><label>忘了自己的样子</label><description>镜子里的人是谁？我已经一个月没做回自己了。</description><baseMoodEffect>-6</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_PixieDustJoy</defName>
+    <durationDays>0.25</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>妖精粉尘</label><description>小精灵撒了一把亮晶晶的粉，忍不住想笑。</description><baseMoodEffect>10</baseMoodEffect></li></stages>
+  </ThoughtDef>
+
+  <!-- ==================== 动物魔宠：九狱小魔鬼、小精灵 ==================== -->
+  <ThingDef ParentName="AnimalThingBase">
+    <defName>LP_Imp</defName>
+    <label>九狱小魔鬼</label>
+    <description>红皮、小翼、细尾的小魔鬼，猫那么大。九狱掮客把它们当宠物卖：买下就和买家结下魔宠之契。它不打架时会隐身，让主人的心灵敏感度 +10%，每 10 天在主人耳边嘀咕一次“情报”——一半是真的。</description>
+    <statBases><MoveSpeed>4.8</MoveSpeed><MarketValue>700</MarketValue><ComfyTemperatureMin>-10</ComfyTemperatureMin><ComfyTemperatureMax>80</ComfyTemperatureMax><Wildness>1</Wildness></statBases>
+    <tools>
+      <li><label>claws</label><capacities><li>Scratch</li></capacities><power>6</power><cooldownTime>1.6</cooldownTime><linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup></li>
+      <li><capacities><li>Bite</li></capacities><power>7</power><cooldownTime>2</cooldownTime><linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup><chanceFactor>0.7</chanceFactor></li>
+    </tools>
+    <race>
+      <body>QuadrupedAnimalWithPawsAndTail</body>
+      <predator>false</predator>
+      <petness>0.6</petness>
+      <baseBodySize>0.3</baseBodySize>
+      <baseHungerRate>0.1</baseHungerRate>
+      <baseHealthScale>0.6</baseHealthScale>
+      <foodType>OmnivoreAnimal</foodType>
+      <leatherDef>Leather_Light</leatherDef>
+      <meatLabel>小魔鬼肉</meatLabel>
+      <trainability>None</trainability>
+      <manhunterOnTameFailChance>0</manhunterOnTameFailChance>
+      <manhunterOnDamageChance>0</manhunterOnDamageChance>
+      <lifeExpectancy>200</lifeExpectancy>
+      <lifeStageAges><li><def>AnimalAdult</def><minAge>0</minAge><soundWounded>Pawn_Monkey_Wounded</soundWounded><soundDeath>Pawn_Monkey_Death</soundDeath><soundCall>Pawn_Monkey_Call</soundCall><soundAngry>Pawn_Monkey_Angry</soundAngry></li></lifeStageAges>
+      <soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+    </race>
+    <tradeTags><li>LP_HellsAnimal</li></tradeTags>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_OutsiderExtension"><plane>Hells</plane><banishOnDown>false</banishOnDown><silver>1.5</silver><holy>2</holy><taintImmune>true</taintImmune></li>
+    </modExtensions>
+  </ThingDef>
+  <PawnKindDef ParentName="AnimalKindBase">
+    <defName>LP_ImpFamiliar</defName>
+    <label>九狱小魔鬼</label>
+    <race>LP_Imp</race>
+    <combatPower>40</combatPower>
+    <ecoSystemWeight>0</ecoSystemWeight>
+    <canArriveManhunter>false</canArriveManhunter>
+    <lifeStages>
+      <li>
+        <bodyGraphicData><texPath>Pact/Imp/Imp</texPath><drawSize>1.1</drawSize><shadowData><volume>(0.2, 0.2, 0.2)</volume><offset>(0,0,-0.1)</offset></shadowData></bodyGraphicData>
+        <dessicatedBodyGraphicData><texPath>Pact/Imp/Dessicated_Imp</texPath><drawSize>1.1</drawSize></dessicatedBodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+  <HediffDef>
+    <defName>LP_ImpNature</defName>
+    <label>九狱小魔鬼魔宠</label>
+    <description>和主人结了魔宠之契的小魔鬼：不打架时隐身；主人和它在同一张地图时心灵敏感度 +10%；每 10 天一封“小魔鬼的情报”。</description>
+    <hediffClass>LichPhylactery.Hediff_ImpNature</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+
+  <ThingDef ParentName="AnimalThingBase">
+    <defName>LP_Pixie</defName>
+    <label>小精灵</label>
+    <description>巴掌大的妖精，背上一对彩色的蝶翼，走过的地方会留下亮晶晶的粉尘。只能在妖精集市上买到，买下就和买家结下友谊。每天给主人或身边的一名殖民者撒一把妖精粉尘（6 小时：移速 +20%、工作 +20%、心情 +10 或静止隐身之一）；偶尔恶作剧，把主人背包里的东西扔到地上。</description>
+    <statBases><MoveSpeed>5.2</MoveSpeed><MarketValue>900</MarketValue><ComfyTemperatureMin>-10</ComfyTemperatureMin><ComfyTemperatureMax>50</ComfyTemperatureMax><Wildness>1</Wildness></statBases>
+    <tools>
+      <li><capacities><li>Scratch</li></capacities><power>3</power><cooldownTime>1.6</cooldownTime><linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup></li>
+    </tools>
+    <race>
+      <body>QuadrupedAnimalWithPawsAndTail</body>
+      <predator>false</predator>
+      <petness>1</petness>
+      <baseBodySize>0.2</baseBodySize>
+      <baseHungerRate>0.08</baseHungerRate>
+      <baseHealthScale>0.4</baseHealthScale>
+      <foodType>VegetarianRoughAnimal</foodType>
+      <leatherDef>Leather_Light</leatherDef>
+      <meatLabel>小精灵肉</meatLabel>
+      <trainability>None</trainability>
+      <manhunterOnTameFailChance>0</manhunterOnTameFailChance>
+      <manhunterOnDamageChance>0</manhunterOnDamageChance>
+      <lifeExpectancy>300</lifeExpectancy>
+      <lifeStageAges><li><def>AnimalAdult</def><minAge>0</minAge><soundWounded>Pawn_Monkey_Wounded</soundWounded><soundDeath>Pawn_Monkey_Death</soundDeath><soundCall>Pawn_Monkey_Call</soundCall><soundAngry>Pawn_Monkey_Angry</soundAngry></li></lifeStageAges>
+      <soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+    </race>
+    <tradeTags><li>LP_FeyAnimal</li></tradeTags>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_OutsiderExtension"><plane>Feywild</plane><banishOnDown>false</banishOnDown><coldIron>1.5</coldIron></li>
+    </modExtensions>
+  </ThingDef>
+  <PawnKindDef ParentName="AnimalKindBase">
+    <defName>LP_PixieFamiliar</defName>
+    <label>小精灵</label>
+    <race>LP_Pixie</race>
+    <combatPower>20</combatPower>
+    <ecoSystemWeight>0</ecoSystemWeight>
+    <canArriveManhunter>false</canArriveManhunter>
+    <lifeStages>
+      <li>
+        <bodyGraphicData><texPath>Pact/Pixie/Pixie</texPath><drawSize>0.9</drawSize><shadowData><volume>(0.15, 0.15, 0.15)</volume><offset>(0,0,-0.1)</offset></shadowData></bodyGraphicData>
+        <dessicatedBodyGraphicData><texPath>Pact/Pixie/Dessicated_Pixie</texPath><drawSize>0.9</drawSize></dessicatedBodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+  <HediffDef>
+    <defName>LP_PixieNature</defName>
+    <label>小精灵的友谊</label>
+    <description>小精灵和主人结下了友谊：每天撒一次妖精粉尘，每 5 天有 30% 恶作剧。</description>
+    <hediffClass>LichPhylactery.Hediff_PixieNature</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+  <HediffDef Name="LP_PixieDustBase" Abstract="True">
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <defaultLabelColor>(1, 0.85, 1)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>15000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+  </HediffDef>
+  <HediffDef ParentName="LP_PixieDustBase">
+    <defName>LP_PixieDust_Swift</defName>
+    <label>妖精粉尘：轻快</label>
+    <description>移速 +20%。</description>
+    <stages><li><statFactors><MoveSpeed>1.2</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_PixieDustBase">
+    <defName>LP_PixieDust_Diligent</defName>
+    <label>妖精粉尘：勤快</label>
+    <description>工作速度 +20%。</description>
+    <stages><li><statFactors><WorkSpeedGlobal>1.2</WorkSpeedGlobal></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_PixieDustBase">
+    <defName>LP_PixieDust_Joy</defName>
+    <label>妖精粉尘：开心</label>
+    <description>心情 +10（见心情）。</description>
+  </HediffDef>
+  <HediffDef ParentName="LP_PixieDustBase">
+    <defName>LP_PixieDust_Veil</defName>
+    <label>妖精粉尘：隐身</label>
+    <description>站着不动 3 秒后隐身。</description>
+    <hediffClass>LichPhylactery.Hediff_FrostShadow</hediffClass>
+  </HediffDef>
+</Defs>

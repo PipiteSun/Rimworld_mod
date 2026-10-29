@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.27.0 职业能力的状态。持续时间由能力施加时写入（HediffComp_Disappears），严重度 = 施法者当时的职业强度，分档的状态按严重度取档。 -->
+<Defs>
+  <HediffDef Name="LP_ClassBuffBase" Abstract="True">
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>5</maxSeverity>
+    <defaultLabelColor>(0.75,0.65,0.95)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>600~600</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+    </comps>
+  </HediffDef>
+
+  <!-- ===== 战士 ===== -->
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_SecondWind</defName>
+    <maxSeverity>100</maxSeverity>
+    <label>回气</label>
+    <description>战士调匀呼吸，600刻内持续治疗伤势（总量 = 20 × 战技强度，优先流血伤口）。</description>
+    <comps>
+      <li Class="LichPhylactery.VPEBridge.HediffCompProperties_ClassRegen"><interval>60</interval><ticksTotal>600</ticksTotal></li>
+    </comps>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_Shaken</defName>
+    <label>震慑</label>
+    <description>被战吼震慑：移动 ×0.7、近战命中与射击精度下降。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.9,0.6,0.5)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>0.7</MoveSpeed></statFactors><statOffsets><MeleeHitChance>-0.15</MeleeHitChance><ShootingAccuracyPawn>-0.05</ShootingAccuracyPawn></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ActionSurge</defName>
+    <label>动作如潮</label>
+    <description>近战冷却 ×0.6、射击冷却 ×0.6，移动 ×1.3。</description>
+    <stages><li><statFactors><MeleeCooldownFactor>0.6</MeleeCooldownFactor><RangedCooldownFactor>0.6</RangedCooldownFactor><MoveSpeed>1.3</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WeaponMastery</defName>
+    <hediffClass>LichPhylactery.VPEBridge.Hediff_MartialFlag</hediffClass>
+    <label>武器专精</label>
+    <description>近战伤害提高（×1.24 ～ ×1.45，随战技强度分档）；1.53.0 起远程武器的伤害也乘同一档系数。</description>
+    <stages>
+      <li><label>熟练</label><statFactors><VEF_MeleeAttackDamageFactor>1.24</VEF_MeleeAttackDamageFactor></statFactors></li>
+      <li><minSeverity>0.95</minSeverity><label>精通</label><statFactors><VEF_MeleeAttackDamageFactor>1.3</VEF_MeleeAttackDamageFactor></statFactors></li>
+      <li><minSeverity>1.1</minSeverity><label>专精</label><statFactors><VEF_MeleeAttackDamageFactor>1.35</VEF_MeleeAttackDamageFactor></statFactors></li>
+      <li><minSeverity>1.25</minSeverity><label>大师</label><statFactors><VEF_MeleeAttackDamageFactor>1.4</VEF_MeleeAttackDamageFactor></statFactors></li>
+      <li><minSeverity>1.45</minSeverity><label>宗师</label><statFactors><VEF_MeleeAttackDamageFactor>1.45</VEF_MeleeAttackDamageFactor></statFactors></li>
+    </stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_Indomitable</defName>
+    <label>不屈意志</label>
+    <description>感觉不到疼痛，不会因疼痛倒地，免疫击晕，精神崩溃阈值 -15%。</description>
+    <stages><li><painFactor>0</painFactor><statOffsets><MentalBreakThreshold>-0.15</MentalBreakThreshold></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_GuardStance</defName>
+    <label>守护姿态</label>
+    <description>护甲提高（+16% ～ +30%，随战技强度分档），移动 ×0.7；半径 3 内友军受到的伤害有 30% 转到自己身上。</description>
+    <stages>
+      <li><statFactors><MoveSpeed>0.7</MoveSpeed></statFactors><statOffsets><ArmorRating_Sharp>0.16</ArmorRating_Sharp><ArmorRating_Blunt>0.16</ArmorRating_Blunt></statOffsets></li>
+      <li><minSeverity>0.95</minSeverity><statFactors><MoveSpeed>0.7</MoveSpeed></statFactors><statOffsets><ArmorRating_Sharp>0.2</ArmorRating_Sharp><ArmorRating_Blunt>0.2</ArmorRating_Blunt></statOffsets></li>
+      <li><minSeverity>1.1</minSeverity><statFactors><MoveSpeed>0.7</MoveSpeed></statFactors><statOffsets><ArmorRating_Sharp>0.23</ArmorRating_Sharp><ArmorRating_Blunt>0.23</ArmorRating_Blunt></statOffsets></li>
+      <li><minSeverity>1.25</minSeverity><statFactors><MoveSpeed>0.7</MoveSpeed></statFactors><statOffsets><ArmorRating_Sharp>0.26</ArmorRating_Sharp><ArmorRating_Blunt>0.26</ArmorRating_Blunt></statOffsets></li>
+      <li><minSeverity>1.45</minSeverity><statFactors><MoveSpeed>0.7</MoveSpeed></statFactors><statOffsets><ArmorRating_Sharp>0.3</ArmorRating_Sharp><ArmorRating_Blunt>0.3</ArmorRating_Blunt></statOffsets></li>
+    </stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_SurgeOfBattle</defName>
+    <label>战意再临</label>
+    <description>近战冷却 ×0.5、近战伤害 ×1.5，免疫击晕；每次近战击杀让所有战士战技立即冷却完毕。</description>
+    <stages><li><statFactors><MeleeCooldownFactor>0.5</MeleeCooldownFactor><VEF_MeleeAttackDamageFactor>1.5</VEF_MeleeAttackDamageFactor></statFactors></li></stages>
+  </HediffDef>
+
+  <!-- 1.30.1 旋风斩结算时的临时状态：近战伤害（VEF_MeleeAttackDamageFactor）× 战技强度，结算完立刻移除。 -->
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WhirlwindFury</defName>
+    <hediffClass>LichPhylactery.VPEBridge.Hediff_ClassStrike</hediffClass>
+    <label>旋风之势</label>
+    <description>旋风斩这一下的近战伤害 × 战技强度。</description>
+  </HediffDef>
+
+  <!-- ===== 法师 ===== -->
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_MageArmor</defName>
+    <label>法师护甲</label>
+    <description>一层看不见的力场：利器与钝器护甲 +25%。</description>
+    <stages><li><statOffsets><ArmorRating_Sharp>0.25</ArmorRating_Sharp><ArmorRating_Blunt>0.25</ArmorRating_Blunt></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_MagicSleep</defName>
+    <label>魔法睡眠</label>
+    <description>被睡眠术放倒，意识降到 10%。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.6,0.6,0.9)</defaultLabelColor>
+    <stages><li><capMods><li><capacity>Consciousness</capacity><setMax>0.1</setMax></li></capMods></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_Haste</defName>
+    <label>急速</label>
+    <description>移动 ×1.5、工作速度 ×1.3、近战冷却 ×0.8。结束后会疲乏一小时。</description>
+    <stages><li><statFactors><MoveSpeed>1.5</MoveSpeed><WorkSpeedGlobal>1.3</WorkSpeedGlobal><MeleeCooldownFactor>0.8</MeleeCooldownFactor></statFactors></li></stages>
+    <comps>
+      <li Class="LichPhylactery.VPEBridge.HediffCompProperties_GiveOnRemoved"><hediff>LP_HasteFatigue</hediff><ticks>2500</ticks></li>
+    </comps>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_HasteFatigue</defName>
+    <label>急速疲乏</label>
+    <description>急速术过后的疲乏：移动 ×0.7。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.8,0.7,0.5)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>0.7</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+
+  <!-- ===== 牧师 ===== -->
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_Blessed</defName>
+    <label>祝福</label>
+    <description>受到牧师祝福：近战命中 +10%，射击精度提高，心情 +3。</description>
+    <defaultLabelColor>(0.95,0.85,0.5)</defaultLabelColor>
+    <stages><li><statOffsets><MeleeHitChance>0.1</MeleeHitChance><ShootingAccuracyPawn>0.03</ShootingAccuracyPawn></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_Guided</defName>
+    <label>神导</label>
+    <description>受到神导术指引：全局工作速度 +15%，学习速度 +30%。</description>
+    <defaultLabelColor>(0.95,0.85,0.5)</defaultLabelColor>
+    <stages><li><statFactors><WorkSpeedGlobal>1.15</WorkSpeedGlobal><GlobalLearningFactor>1.3</GlobalLearningFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_StaunchBleeding</defName>
+    <label>神圣止血</label>
+    <description>次级复原术止住了所有出血。</description>
+    <defaultLabelColor>(0.95,0.85,0.5)</defaultLabelColor>
+    <stages><li><totalBleedFactor>0</totalBleedFactor></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_DeathWard</defName>
+    <maxSeverity>100</maxSeverity>
+    <label>死亡守卫</label>
+    <description>疼痛 ×0.5。本应因伤倒地时，立即治疗 30 × 神恩强度点伤势并消耗这个守卫。</description>
+    <defaultLabelColor>(0.95,0.85,0.5)</defaultLabelColor>
+    <stages><li><painFactor>0.5</painFactor></li></stages>
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>LP_BlessedThought</defName>
+    <durationDays>0.25</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>受到祝福</label><description>神明在看着我。</description><baseMoodEffect>3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+</Defs>

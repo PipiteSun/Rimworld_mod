@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.24.0 巨灵：传奇、可玩、不可遗传。从神灯里擦出来；血脉（火/水/土/风）在召唤时随机加为异种基因，肤色随血脉。 -->
+<Defs>
+  <XenotypeDef>
+    <defName>LP_Genie</defName>
+    <label>巨灵</label>
+    <description>被束缚在神灯里的元素巨灵。巨灵生来带着四种元素血脉之一：火之伊弗利特、水之玛瑞德、土之道、风之金尼，肤色和能力都随血脉。擦亮神灯，巨灵就会现身做你的殖民者，每60天能实现一次愿望；巨灵倒下时不会死去，而是回到灯里沉睡15天。神灯若被卖掉、偷走或毁掉，巨灵一天后就会化烟离去。</description>
+    <descriptionShort>传奇种族，不可遗传。体型×1.5、不老、随机元素血脉（能力冷却减半）、每60天许一个愿；不会真正死去，倒下就回灯里。</descriptionShort>
+    <iconPath>Races124/Xenotypes/Genie</iconPath>
+    <inheritable>false</inheritable>
+    <combatPowerFactor>2</combatPowerFactor>
+    <factionlessGenerationWeight>0</factionlessGenerationWeight>
+    <genes>
+      <li>LP_GenieCore</li>
+      <li>LP_GenieStature</li>
+      <li>LP_GenieAgeless</li>
+      <li>LP_GenieWish</li>
+      <li>Body_Hulk</li>
+      <li>Sterile</li>
+    </genes>
+  </XenotypeDef>
+
+  <GeneDef Name="LP_GenieGeneBase" Abstract="True">
+    <displayCategory>Miscellaneous</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>2</biostatCpx>
+  </GeneDef>
+  <GeneDef ParentName="LP_GenieGeneBase">
+    <defName>LP_GenieCore</defName>
+    <label>巨灵本源</label>
+    <description>被神灯束缚的巨灵之身。巨灵记得自己的神灯：神灯不在你手里（被卖、被偷、被毁）一天后，巨灵就会化烟离去。巨灵倒下时不会死去、不留尸体，而是化作青烟回到灯里，神灯暗淡15天后能再擦出同一个巨灵（名字、技能、血脉不变，伤势清空）。巨灵不会被招募或俘虏；元素血脉能力的冷却减半。头戴一圈金色的头箍。</description>
+    <geneClass>LichPhylactery.Gene_GenieCore</geneClass>
+    <iconPath>Races124/Genes/GenieCore</iconPath>
+    <biostatMet>0</biostatMet>
+    <customEffectDescriptions>
+      <li>灯之束缚：神灯不在手里满1天，巨灵离去。</li>
+      <li>倒下回灯：不死、不留尸体，神灯暗淡15天。</li>
+      <li>元素血脉能力冷却×50%。</li>
+    </customEffectDescriptions>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Races124/Circlet/GenieCirclet</texPath>
+        <color>(255, 255, 255)</color>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh</rotDrawMode>
+        <drawData>
+          <defaultData>
+            <layer>80</layer>
+          </defaultData>
+        </drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="LP_GenieGeneBase">
+    <defName>LP_GenieStature</defName>
+    <label>巨灵体型</label>
+    <description>巨灵高大的身形：实际体型×150%，显示×130%。巨躯规则让巨灵的生命×125%、近战×115%；巨胃：饱食度上限×150%。</description>
+    <iconPath>Races124/Genes/GenieStature</iconPath>
+    <biostatMet>-1</biostatMet>
+    <modExtensions>
+      <li Class="LichPhylactery.SmallBodyExtension">
+        <bodySize>1.5</bodySize>
+        <renderScale>1.3</renderScale>
+      </li>
+    </modExtensions>
+  </GeneDef>
+  <GeneDef ParentName="LP_GenieGeneBase">
+    <defName>LP_GenieAgeless</defName>
+    <label>巨灵不老</label>
+    <description>巨灵已经活了几千年，身体不再衰老：18岁以后生理年龄停止增长。巨灵照常要吃饭睡觉。</description>
+    <iconPath>Races124/Genes/GenieAgeless</iconPath>
+    <displayCategory>Healing</displayCategory>
+    <biostatMet>-1</biostatMet>
+    <biologicalAgeTickFactorFromAgeCurve>
+      <points>
+        <li>(13, 1)</li>
+        <li>(18.5, 0)</li>
+      </points>
+    </biologicalAgeTickFactorFromAgeCurve>
+  </GeneDef>
+  <GeneDef ParentName="LP_GenieGeneBase">
+    <defName>LP_GenieWish</defName>
+    <label>许愿</label>
+    <description>巨灵能实现愿望：每60天一次，从丰收、和平、痊愈、财富、晴空、顿悟六个愿望中选一个。许愿后巨灵会倦怠15天。</description>
+    <iconPath>Races124/Genes/GenieWish</iconPath>
+    <biostatMet>-2</biostatMet>
+    <abilities>
+      <li>LP_GenieWish</li>
+    </abilities>
+    <descriptionHyperlinks>
+      <AbilityDef>LP_GenieWish</AbilityDef>
+    </descriptionHyperlinks>
+  </GeneDef>
+
+  <AbilityDef ParentName="LP_Races124AbilityBase">
+    <defName>LP_GenieWish</defName>
+    <label>实现愿望</label>
+    <description>请巨灵实现一个愿望（弹出选择框）：\n丰收——地图上所有作物立刻成熟；\n和平——15天内敌对袭击不会落到这张地图上；\n痊愈——治好地图上所有殖民者的伤口和疾病（上瘾不算）；\n财富——巨灵脚下出现2000白银；\n晴空——天气放晴并维持5天；\n顿悟——每个殖民者随机一项技能+2级。\n冷却60天；在选择框里取消不消耗冷却。许愿后巨灵倦怠15天：工作速度减半、血脉能力不可用、心情-5。</description>
+    <iconPath>Races124/Abilities/Wish</iconPath>
+    <cooldownTicksRange>3600000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <targetRequired>false</targetRequired>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>0</range>
+      <warmupTime>1</warmupTime>
+      <targetParams>
+        <canTargetSelf>true</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_Races124Ability"><effect>wish</effect></li>
+    </comps>
+  </AbilityDef>
+
+  <HediffDef>
+    <defName>LP_GenieFatigue</defName>
+    <label>倦怠</label>
+    <description>刚刚实现了一个愿望，巨灵的力量还没有恢复：工作速度减半，元素血脉能力暂时无法使用，心情也不太好。</description>
+    <hediffClass>LichPhylactery.Hediff_GenieFatigue</hediffClass>
+    <defaultLabelColor>(0.7, 0.7, 0.9)</defaultLabelColor>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>900000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statFactors>
+          <WorkSpeedGlobal>0.5</WorkSpeedGlobal>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+  <ThoughtDef>
+    <defName>LP_GenieFatigueMood</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>LP_GenieFatigue</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li>
+        <label>许愿后的倦怠</label>
+        <description>实现愿望耗尽了力气。凡人总是想要更多。</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <GameConditionDef>
+    <defName>LP_GenieClearSkies</defName>
+    <conditionClass>GameCondition_ForceWeather</conditionClass>
+    <label>巨灵的晴空</label>
+    <description>巨灵许下的愿望：这几天里天空一直晴朗。</description>
+    <weatherDef>Clear</weatherDef>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
+
+  <JobDef>
+    <defName>LP_RubLamp</defName>
+    <driverClass>LichPhylactery.JobDriver_RubLamp</driverClass>
+    <reportString>正在擦拭TargetA。</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+</Defs>

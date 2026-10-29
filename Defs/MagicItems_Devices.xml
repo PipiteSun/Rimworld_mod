@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.45.0 神奇器物（8）：不可移动之杖、无尽水瓶、迷雾瓶、不灭火把、英灵号角、捉弄袋、水晶球、魔像手册（→ 石魔像）。 -->
+<Defs>
+  <!-- 不可移动之杖 -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_ImmovableRod</defName>
+    <label>不可移动之杖</label>
+    <description>一根平平无奇的铁杖，一端有个按钮。放在地上选中它，“按下”按钮：杖子就定在原地，变成一格不可摧毁、不可通行的障碍，用来堵门、堵隧道、挡牛头人冲撞；再按一次（“收回”）又变回能搬走的杖子。</description>
+    <graphicData><texPath>Items/Magic/ImmovableRod</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>1</stackLimit>
+    <techLevel>Medieval</techLevel>
+    <useHitPoints>true</useHitPoints>
+    <statBases><MaxHitPoints>500</MaxHitPoints><Mass>3</Mass><MarketValue>1400</MarketValue><Flammability>0</Flammability></statBases>
+    <thingCategories><li>ItemsMisc</li></thingCategories>
+    <tradeTags><li>LP_MagicItem</li></tradeTags>
+    <comps><li Class="LichPhylactery.CompProperties_ImmovableRod" /></comps>
+  </ThingDef>
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_ImmovableRodActive</defName>
+    <label>按下的不可移动之杖</label>
+    <description>按下按钮的不可移动之杖，牢牢定在空中，什么都推不动、砸不坏。选中后“收回”就变回物品。</description>
+    <thingClass>Building</thingClass>
+    <graphicData><texPath>Items/Magic/ImmovableRodActive</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(1,1)</drawSize></graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>Impassable</passability>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>false</useHitPoints>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <statBases><MarketValue>1400</MarketValue><Flammability>0</Flammability><Beauty>0</Beauty></statBases>
+    <building><isInert>true</isInert><claimable>false</claimable><deconstructible>false</deconstructible><repairable>false</repairable></building>
+    <tradeability>None</tradeability>
+    <comps><li Class="LichPhylactery.CompProperties_ImmovableRod"><active>true</active></li></comps>
+  </ThingDef>
+
+  <!-- 无尽水瓶 -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_DecanterEndlessWater</defName>
+    <label>无尽水瓶</label>
+    <description>瓶口总在往外渗水的蓝釉瓷瓶，摆在地上就是一眼小泉。周围3格的植物生长速度+20%；“喷射”每天一次，浇灭3格内的所有火（救自家巨魔）。可以搬动。</description>
+    <thingClass>Building</thingClass>
+    <graphicData><texPath>Items/Magic/DecanterEndlessWater</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(1,1)</drawSize></graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.2</fillPercent>
+    <pathCost>30</pathCost>
+    <rotatable>false</rotatable>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories><li>BuildingsMisc</li></thingCategories>
+    <statBases><MaxHitPoints>150</MaxHitPoints><WorkToBuild>3000</WorkToBuild><Mass>4</Mass><MarketValue>1100</MarketValue><Flammability>0</Flammability><Beauty>3</Beauty></statBases>
+    <costList><LP_Mithral>15</LP_Mithral><ComponentIndustrial>2</ComponentIndustrial></costList>
+    <designationCategory>Misc</designationCategory>
+    <researchPrerequisites><li>LP_Research_WondrousDevices</li></researchPrerequisites>
+    <tradeTags><li>LP_MagicItem</li></tradeTags>
+    <comps><li Class="LichPhylactery.CompProperties_Decanter" /></comps>
+    <specialDisplayRadius>3</specialDisplayRadius>
+  </ThingDef>
+
+  <!-- 迷雾瓶 -->
+  <ThingDef ParentName="LP_ThrowableBase">
+    <defName>LP_EversmokingBottle</defName>
+    <label>迷雾瓶</label>
+    <description>永远冒烟的黄铜瓶，拔掉塞子一扔就是一大片浓雾：落点约7×7的范围里致盲烟雾维持2分钟，穿过烟雾的远程攻击命中-70%（原版烟雾规则）。瓶子不会摔坏，可以反复使用。</description>
+    <graphicData><texPath>Items/Magic/EversmokingBottle</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>500</MarketValue></statBases>
+    <tradeTags Inherit="False"><li>LP_MagicItem</li></tradeTags>
+    <weaponTags><li>LP_EversmokingBottle</li></weaponTags>
+    <verbs>
+      <li>
+        <label>投掷迷雾瓶</label>
+        <verbClass>Verb_LaunchProjectile</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <range>14.9</range>
+        <forcedMissRadius>1.9</forcedMissRadius>
+        <warmupTime>1.2</warmupTime>
+        <noiseRadius>4</noiseRadius>
+        <soundCast>ThrowGrenade</soundCast>
+        <targetParams><canTargetLocations>true</canTargetLocations></targetParams>
+        <defaultProjectile>LP_Proj_EversmokingBottle</defaultProjectile>
+        <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+      </li>
+    </verbs>
+  </ThingDef>
+  <ThingDef ParentName="LP_ThrowableProjectileBase">
+    <defName>LP_Proj_EversmokingBottle</defName>
+    <label>迷雾瓶</label>
+    <thingClass>LichPhylactery.Projectile_LPAlchemy</thingClass>
+    <graphicData><texPath>Items/Magic/EversmokingBottle</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <projectile><damageDef>Stun</damageDef><damageAmountBase>0</damageAmountBase><explosionRadius>3.5</explosionRadius></projectile>
+    <modExtensions><li Class="LichPhylactery.ThrowableEffectExtension"><effect>smoke</effect></li></modExtensions>
+  </ThingDef>
+
+  <!-- 不灭火把 -->
+  <ThingDef ParentName="LP_WondrousApparelBase">
+    <defName>LP_EverburningTorch</defName>
+    <label>不灭火把</label>
+    <description>火苗永远不熄、却一点也不烫的火把，挂在腰带上。佩戴者身边自带照明；它不是真火，点不着任何东西，巨魔拿着也不算“被火烧”。</description>
+    <graphicData><texPath>Items/Magic/EverburningTorch</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MaxHitPoints>200</MaxHitPoints><Mass>0.8</Mass><MarketValue>450</MarketValue><Flammability>0</Flammability></statBases>
+    <tradeTags Inherit="False"><li>LP_MagicItem</li></tradeTags>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <careIfWornByCorpse>false</careIfWornByCorpse>
+      <bodyPartGroups><li>Waist</li></bodyPartGroups>
+      <layers><li>Belt</li></layers>
+    </apparel>
+    <modExtensions><li Class="LichPhylactery.MagicLightExtension" /></modExtensions>
+  </ThingDef>
+
+  <!-- 英灵号角 -->
+  <ThingDef ParentName="LP_MagicAccessoryBase">
+    <defName>LP_HornValhalla</defName>
+    <label>英灵号角</label>
+    <description>镶银的牛角号。吹响“英灵号角”召来2～4名英灵战士（半透明的幽影战士，持长剑），1小时后消散；巫妖吹响时来的是骷髅战士。每7天一次。挂在奇物层的腰间（和其他号角共用位置）。</description>
+    <graphicData><texPath>Items/Magic/HornValhalla</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>2400</MarketValue></statBases>
+    <apparel><bodyPartGroups><li>Waist</li></bodyPartGroups></apparel>
+    <comps><li Class="LichPhylactery.CompProperties_GrantAbility"><ability>LP_MI_HornValhalla</ability></li></comps>
+  </ThingDef>
+  <AbilityDef ParentName="LP_MagicAbilityBase">
+    <defName>LP_MI_HornValhalla</defName>
+    <label>吹响英灵号角</label>
+    <description>吹响号角，召来2～4名英灵战士在身边作战，1小时后消散。巫妖吹响时召来骷髅战士。每7天一次。</description>
+    <iconPath>Items/Magic/HornValhalla</iconPath>
+    <cooldownTicksRange>420000</cooldownTicksRange>
+    <verbProperties><warmupTime>1.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_MagicAbility"><effect>horn</effect></li></comps>
+  </AbilityDef>
+  <HediffDef>
+    <defName>LP_SpectralSummon</defName>
+    <label>英灵召唤</label>
+    <description>被英灵号角召来的幽影战士。时间到了就会消散。</description>
+    <hediffClass>LichPhylactery.Hediff_Summoned</hediffClass>
+    <isBad>false</isBad>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>2500</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><painFactor>0</painFactor></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_TrickAnimal</defName>
+    <label>捉弄袋里的小东西</label>
+    <description>从捉弄袋里掏出来的小动物。时间到了就会凭空消失。</description>
+    <hediffClass>LichPhylactery.Hediff_Summoned</hediffClass>
+    <isBad>false</isBad>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>60000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+  </HediffDef>
+
+  <!-- 捉弄袋 -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_BagOfTricks</defName>
+    <label>捉弄袋</label>
+    <description>一只灰色的毛线小口袋。每天可以“掏”一次：掏出一只随机的小动物（老鼠、兔子、猫……），它对你很温顺，24小时后凭空消失。可以当探路的、当诱饵的。</description>
+    <graphicData><texPath>Items/Magic/BagOfTricks</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>1</stackLimit>
+    <techLevel>Medieval</techLevel>
+    <useHitPoints>true</useHitPoints>
+    <statBases><MaxHitPoints>80</MaxHitPoints><Mass>0.4</Mass><MarketValue>800</MarketValue><Flammability>0.8</Flammability></statBases>
+    <thingCategories><li>ItemsMisc</li></thingCategories>
+    <tradeTags><li>LP_MagicItem</li></tradeTags>
+    <comps>
+      <li Class="CompProperties_Usable"><useJob>UseItem</useJob><useLabel>伸手掏{0_label}</useLabel><useDuration>90</useDuration></li>
+      <li Class="LichPhylactery.CompProperties_MagicUse"><effect>bagoftricks</effect><cooldownTicks>60000</cooldownTicks></li>
+    </comps>
+  </ThingDef>
+
+  <!-- 水晶球 -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_CrystalBall</defName>
+    <label>水晶球</label>
+    <description>架在黑檀木座上的水晶球，雾气在里面缓缓转动。每天可以“窥视”一次：选一个世界地图上的据点，来信说明它属于哪个派系、什么种族的人守着、守军大约多少威胁点数。只能从塞伊红袍商人那里买到。</description>
+    <thingClass>Building</thingClass>
+    <graphicData><texPath>Items/Magic/CrystalBall</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(1,1)</drawSize></graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.3</fillPercent>
+    <rotatable>false</rotatable>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories><li>BuildingsMisc</li></thingCategories>
+    <statBases><MaxHitPoints>120</MaxHitPoints><Mass>5</Mass><MarketValue>1800</MarketValue><Flammability>0</Flammability><Beauty>8</Beauty><WorkToBuild>2000</WorkToBuild></statBases>
+    <tradeTags><li>LP_MagicItem</li></tradeTags>
+    <comps><li Class="LichPhylactery.CompProperties_CrystalBall" /></comps>
+  </ThingDef>
+
+  <!-- 魔像手册 -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_ManualOfGolems</defName>
+    <label>魔像手册</label>
+    <description>石板封面的厚书，写着怎样把石头唤作仆从。只有巫妖读得懂：巫妖读完后，死灵仪式台为他解锁“制作石魔像胚体”（第四种死灵造物：300石块，体型2，不吃不睡不腐，怕驱散粉尘）。读完书就碎成石屑。</description>
+    <graphicData><texPath>Items/Magic/ManualOfGolems</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>1</stackLimit>
+    <techLevel>Medieval</techLevel>
+    <useHitPoints>true</useHitPoints>
+    <statBases><MaxHitPoints>120</MaxHitPoints><Mass>3</Mass><MarketValue>2500</MarketValue><Flammability>0.3</Flammability></statBases>
+    <thingCategories><li>ItemsMisc</li></thingCategories>
+    <tradeTags><li>LP_MagicItem</li></tradeTags>
+    <comps>
+      <li Class="CompProperties_Usable"><useJob>UseItem</useJob><useLabel>研读{0_label}</useLabel><useDuration>600</useDuration></li>
+      <li Class="LichPhylactery.CompProperties_MagicUse"><effect>golemmanual</effect></li>
+    </comps>
+  </ThingDef>
+  <HediffDef>
+    <defName>LP_GolemLore</defName>
+    <label>魔像学识</label>
+    <description>读过魔像手册：死灵仪式台可以为这位巫妖制作石魔像胚体。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+  </HediffDef>
+
+  <!-- 石魔像：第四种死灵造物（Constructs.xml 的血肉巨像同一套代码） -->
+  <ThingDef ParentName="Human">
+    <defName>LP_StoneGolem</defName>
+    <label>石魔像</label>
+    <description>由死灵仪式唤醒、受命匣主人统御的石魔像。不吃不睡不腐，但驱散粉尘会伤到它。</description>
+    <statBases>
+      <MoveSpeed>3.0</MoveSpeed>
+      <ArmorRating_Blunt>0.45</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.45</ArmorRating_Sharp>
+      <MeleeDamageFactor>4</MeleeDamageFactor>
+      <MarketValue>300</MarketValue>
+      <ComfyTemperatureMin>-100</ComfyTemperatureMin>
+      <ComfyTemperatureMax>100</ComfyTemperatureMax>
+    </statBases>
+    <race>
+      <baseHealthScale>3</baseHealthScale>
+      <baseBodySize>2</baseBodySize>
+      <renderTree>Humanlike</renderTree>
+      <canBecomeShambler>false</canBecomeShambler>
+      <hasUnnaturalCorpse>false</hasUnnaturalCorpse>
+    </race>
+  </ThingDef>
+  <PawnKindDef ParentName="BasePlayerPawnKind">
+    <defName>LP_StoneGolem</defName>
+    <label>石魔像</label>
+    <race>Human</race>
+    <defaultFactionDef>PlayerColony</defaultFactionDef>
+    <apparelMoney>0</apparelMoney>
+    <weaponMoney>0</weaponMoney>
+    <humanPregnancyChance>0</humanPregnancyChance>
+    <isFighter>true</isFighter>
+    <initialResistanceRange>10~16</initialResistanceRange>
+    <backstoryCryptosleepCommonality>1</backstoryCryptosleepCommonality>
+  </PawnKindDef>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_StoneGolemSeed</defName>
+    <label>石魔像胚体</label>
+    <description>用石块砌成、刻满魔像符文的死灵胚体。选中后打开“配置死灵造物”，调整追加生肉、钢铁、玻璃钢与初始属性，再确认唤醒。材料从12格内可达且未禁用的地面物资吸收。</description>
+    <thingClass>LichPhylactery.ConstructSeed</thingClass>
+    <stackLimit>1</stackLimit>
+    <tradeability>None</tradeability>
+    <graphicData><texPath>Necromancy/StoneGolem_south</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>1.2</drawSize></graphicData>
+    <statBases><MaxHitPoints>300</MaxHitPoints><Mass>30</Mass><MarketValue>100</MarketValue><Flammability>0</Flammability><DeteriorationRate>0</DeteriorationRate></statBases>
+    <thingCategories><li>Manufactured</li></thingCategories>
+  </ThingDef>
+  <RecipeDef ParentName="LP_RitualBase">
+    <defName>LP_MakeStoneGolem</defName>
+    <label>制作石魔像胚体</label>
+    <description>消耗300石块制作石魔像胚体（只有读过魔像手册的巫妖能为自己的命匣做）。石魔像体型2，统御占用4，每天精神力维护0.5，不吃不睡不腐、不消耗血肉；驱散粉尘会伤到它。选中胚体打开配置界面，确认后唤醒。</description>
+    <jobString>正在制作石魔像胚体。</jobString>
+    <workAmount>6000</workAmount>
+    <ingredients>
+      <li><filter><categories><li>StoneBlocks</li></categories></filter><count>300</count></li>
+    </ingredients>
+    <fixedIngredientFilter><categories><li>StoneBlocks</li></categories></fixedIngredientFilter>
+  </RecipeDef>
+
+  <!-- 魂石献给命匣 -->
+  <RecipeDef ParentName="LP_RitualBase">
+    <defName>LP_OfferSpiritStone</defName>
+    <label>汲取魂石里的灵魂</label>
+    <description>把一颗封着灵魂的魂石献给命匣，相当于汲取一份完整灵魂（按那个人的技能总和与心灵敏感度计算献祭经验）。魂石随之碎掉。</description>
+    <jobString>正在汲取魂石里的灵魂。</jobString>
+    <workAmount>1500</workAmount>
+    <ingredients>
+      <li><filter><thingDefs><li>LP_SpiritStone</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_SpiritStone</li></thingDefs></fixedIngredientFilter>
+  </RecipeDef>
+
+  <!-- 解除诅咒卷轴 -->
+  <ThingDef ParentName="LP_ScrollBase">
+    <defName>LP_ScrollRemoveCurse</defName>
+    <label>解除诅咒卷轴</label>
+    <description>对一个人或一件诅咒物品阅读：解除一件诅咒物品的诅咒（顺便鉴定它）。之后它可以正常脱下或放下，效果和代价不变。教会牧师有售，卷轴书桌可以抄写，巫妖也能在死灵仪式台抄写。</description>
+    <graphicData><texPath>Items/Scrolls/RemoveCurse</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>300</MarketValue></statBases>
+    <comps>
+      <li Class="CompProperties_Usable"><useJob>UseItem</useJob><useLabel>阅读{0_label}</useLabel><useDuration>120</useDuration></li>
+      <li Class="LichPhylactery.CompProperties_Scroll"><effect>removecurse</effect><target>cursed</target><range>8</range></li>
+    </comps>
+  </ThingDef>
+  <RecipeDef ParentName="LP_ScribeBase">
+    <defName>LP_ScribeRemoveCurse</defName>
+    <label>抄写解除诅咒卷轴</label>
+    <description>巫妖消耗30点精神力和20份布，抄写一张解除诅咒卷轴。只有巫妖能做。</description>
+    <jobString>正在抄写解除诅咒卷轴。</jobString>
+    <products><LP_ScrollRemoveCurse>1</LP_ScrollRemoveCurse></products>
+  </RecipeDef>
+
+  <!-- 跟着佩戴者走的魔法光源（流星戒指、不灭火把）；不存档，读档时清掉重建 -->
+  <ThingDef>
+    <defName>LP_MagicLight</defName>
+    <label>魔法光</label>
+    <thingClass>ThingWithComps</thingClass>
+    <category>Ethereal</category>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <useHitPoints>false</useHitPoints>
+    <selectable>false</selectable>
+    <drawerType>None</drawerType>
+    <tickerType>Never</tickerType>
+    <rotatable>false</rotatable>
+    <comps><li Class="CompProperties_Glower"><glowRadius>6</glowRadius><glowColor>(230,230,255,0)</glowColor></li></comps>
+  </ThingDef>
+  <HediffDef>
+    <defName>LP_DeflectSuppressed</defName>
+    <label>偏折失效</label>
+    <description>被龙杀手砍中，力场偏折暂时失效。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>300</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+  </HediffDef>
+
+  <!-- 鉴定 -->
+  <JobDef>
+    <defName>LP_IdentifyItem</defName>
+    <driverClass>LichPhylactery.JobDriver_IdentifyItem</driverClass>
+    <reportString>正在研究台鉴定TargetA。</reportString>
+    <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+  </JobDef>
+</Defs>

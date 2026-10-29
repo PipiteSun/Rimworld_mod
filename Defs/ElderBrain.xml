@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.17.0 上古脑：3×3建筑，1～5级，产出蝌蚪，保存传承记忆，可召唤（默认关闭），被摧毁时惩罚夺心魔。外观为专属上古脑贴图（1.17.1）。 -->
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_ElderBrain</defName>
+    <label>上古脑</label>
+    <description>泡在灵能浆液里的巨大大脑，夺心魔群落的心智核心。建好后要放一具夺心魔尸体到它旁边才能唤醒。\n\n殖民地的夺心魔在同一地图上吞噬的每一个人形大脑都会汇入上古脑：累计1/4/10/20/35个大脑时分别达到1～5级。上古脑会定期产出夺心魔蝌蚪（1级每5天一条，5级每天一条），并保存最近5个被吞噬者的"传承记忆"，可以灌装成脑浆罐，让夺心魔继承其80%的经验。\n\n上古脑需要用草药或食物（生肉、饭菜）维持；断粮时停止产出，每挨饿一天丢失一份记忆。上古脑被摧毁时，所有夺心魔都会受到重创。</description>
+    <thingClass>LichPhylactery.Building_ElderBrain</thingClass>
+    <graphicData>
+      <texPath>MindFlayer/ElderBrain</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3.6,3.6)</drawSize>
+    </graphicData>
+    <size>(3,3)</size>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>60</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <tickerType>Normal</tickerType>
+    <rotatable>false</rotatable>
+    <designationCategory>Misc</designationCategory>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <statBases>
+      <MaxHitPoints>600</MaxHitPoints>
+      <WorkToBuild>8000</WorkToBuild>
+      <Flammability>0.5</Flammability>
+      <Beauty>-15</Beauty>
+      <Mass>150</Mass>
+    </statBases>
+    <costList>
+      <Steel>150</Steel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+      <MedicineHerbal>10</MedicineHerbal>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>养料</fuelLabel>
+        <fuelGizmoLabel>上古脑养料</fuelGizmoLabel>
+        <fuelConsumptionRate>5</fuelConsumptionRate>
+        <fuelCapacity>60</fuelCapacity>
+        <initialFuelPercent>0</initialFuelPercent>
+        <consumeFuelOnlyWhenUsed>false</consumeFuelOnlyWhenUsed>
+        <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+        <outOfFuelMessage>上古脑在挨饿</outOfFuelMessage>
+        <fuelFilter>
+          <thingDefs>
+            <li>MedicineHerbal</li>
+          </thingDefs>
+          <categories>
+            <li>MeatRaw</li>
+            <li>FoodMeals</li>
+          </categories>
+        </fuelFilter>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_BrainJar</defName>
+    <label>脑浆罐</label>
+    <description>一罐从上古脑里灌装出来的灵能浆液，封存着一个被吞噬者的记忆。夺心魔使用后会继承其中80%的技能经验。</description>
+    <thingClass>LichPhylactery.Thing_BrainJar</thingClass>
+    <graphicData>
+      <texPath>MindFlayer/Items/BrainJar</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.85</drawSize>
+    </graphicData>
+    <stackLimit>1</stackLimit>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <statBases>
+      <MaxHitPoints>40</MaxHitPoints>
+      <MarketValue>300</MarketValue>
+      <Mass>0.5</Mass>
+      <Flammability>0.5</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+    <thingCategories>
+      <li>Manufactured</li>
+    </thingCategories>
+    <tradeability>None</tradeability>
+    <comps>
+      <li Class="CompProperties_Usable">
+        <useJob>UseItem</useJob>
+        <useLabel>吸收传承记忆</useLabel>
+        <useDuration>600</useDuration>
+      </li>
+      <li Class="LichPhylactery.CompProperties_UseEffectInheritMemory" />
+    </comps>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>LP_ElderBrainCall</defName>
+    <label>上古脑的呼唤</label>
+    <description>脑中回荡着一个温柔又巨大的声音，召唤着自己走向它。</description>
+    <hediffClass>LichPhylactery.Hediff_ElderBrainCall</hediffClass>
+    <defaultLabelColor>(0.75, 0.55, 0.9)</defaultLabelColor>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_PsychicDaze</defName>
+    <label>心灵恍惚</label>
+    <description>意识被强大的心灵力量压垮，倒在地上动弹不得。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.75, 0.55, 0.9)</defaultLabelColor>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <capMods>
+          <li><capacity>Consciousness</capacity><setMax>0.1</setMax></li>
+        </capMods>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>30000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+  <ThoughtDef>
+    <defName>LP_ElderBrainDestroyed</defName>
+    <durationDays>10</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>上古脑陨灭</label>
+        <description>群脑的核心被毁了。我的心灵空荡荡的，仿佛被砍掉了一半。</description>
+        <baseMoodEffect>-15</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_ElderBrainStarving</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>上古脑在挨饿</label>
+        <description>上古脑的饥饿顺着群脑传过来，我也跟着难受。</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

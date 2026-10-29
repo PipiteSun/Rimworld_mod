@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.45.0 穿戴奇物（DMG 经典 12）与魔法饰品（DND 12）。全部在“奇物”层 LP_Accessory；按 AccessorySlot 分位置：
+     戒指（最多两枚不同的）、手、护腕、头顶、眼、颈、胸。同一位置只能戴一件（戒指两件）。效果代码在 Source/MagicItems*.cs。 -->
+<Defs>
+  <ThingDef Name="LP_MagicAccessoryBase" ParentName="LP_AccessoryBase" Abstract="True">
+    <tradeTags Inherit="False"><li>LP_MagicItem</li></tradeTags>
+    <statBases><MarketValue>800</MarketValue></statBases>
+  </ThingDef>
+  <ThingDef Name="LP_MagicHandsBase" ParentName="LP_MagicAccessoryBase" Abstract="True">
+    <apparel><bodyPartGroups><li>Hands</li></bodyPartGroups></apparel>
+    <modExtensions><li Class="LichPhylactery.AccessorySlot"><slot>Hands</slot></li></modExtensions>
+  </ThingDef>
+  <ThingDef Name="LP_MagicWristBase" ParentName="LP_MagicAccessoryBase" Abstract="True">
+    <apparel><bodyPartGroups><li>Hands</li></bodyPartGroups></apparel>
+    <modExtensions><li Class="LichPhylactery.AccessorySlot"><slot>Wrists</slot></li></modExtensions>
+  </ThingDef>
+  <ThingDef Name="LP_MagicHeadBase" ParentName="LP_MagicAccessoryBase" Abstract="True">
+    <apparel><bodyPartGroups><li>UpperHead</li></bodyPartGroups></apparel>
+    <modExtensions><li Class="LichPhylactery.AccessorySlot"><slot>Head</slot></li></modExtensions>
+  </ThingDef>
+  <ThingDef Name="LP_MagicEyesBase" ParentName="LP_MagicAccessoryBase" Abstract="True">
+    <apparel><bodyPartGroups><li>Eyes</li></bodyPartGroups></apparel>
+    <modExtensions><li Class="LichPhylactery.AccessorySlot"><slot>Eyes</slot></li></modExtensions>
+  </ThingDef>
+  <ThingDef Name="LP_MagicNeckBase" ParentName="LP_MagicAccessoryBase" Abstract="True">
+    <apparel><bodyPartGroups><li>Neck</li></bodyPartGroups></apparel>
+    <modExtensions><li Class="LichPhylactery.AccessorySlot"><slot>Neck</slot></li></modExtensions>
+  </ThingDef>
+  <ThingDef Name="LP_MagicChestBase" ParentName="LP_MagicAccessoryBase" Abstract="True">
+    <apparel><bodyPartGroups><li>Torso</li></bodyPartGroups></apparel>
+    <modExtensions><li Class="LichPhylactery.AccessorySlot"><slot>Chest</slot></li></modExtensions>
+  </ThingDef>
+  <ThingDef Name="LP_MagicRingBase" ParentName="LP_RingBase" Abstract="True">
+    <tradeTags Inherit="False"><li>LP_MagicItem</li></tradeTags>
+  </ThingDef>
+
+  <!-- ==================== C. 穿戴奇物 ==================== -->
+  <ThingDef ParentName="LP_MagicHandsBase">
+    <defName>LP_GauntletsOgrePower</defName>
+    <label>食人魔之力手套</label>
+    <description>指节镶着铁钉的厚皮手套，戴上后力大无穷：搬运量×1.5，近战伤害+15%。对体型1.5以上的大个子没有效果（火巨人戴上也不会更强）。戴在奇物层的手部。</description>
+    <graphicData><texPath>Items/Magic/GauntletsOgrePower</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1100</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_WornHediff"><hediff>LP_MI_OgrePower</hediff></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_MagicHandsBase">
+    <defName>LP_GlovesMissileSnaring</defName>
+    <label>接箭手套</label>
+    <description>掌心缝着一层细密银丝的软手套。空手、持近战单手武器或手枪时，有20%概率徒手接住一发射来的投射物，毫发无伤（炮弹、爆炸不算）。戴在奇物层的手部。</description>
+    <graphicData><texPath>Items/Magic/GlovesMissileSnaring</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1000</MarketValue></statBases>
+  </ThingDef>
+  <ThingDef ParentName="LP_MagicWristBase">
+    <defName>LP_BracersArchery</defName>
+    <label>箭术护腕</label>
+    <description>刻着鹰羽纹的皮护腕。手持弓弩时命中率+10%、瞄准时间-15%；枪械不受影响。戴在奇物层的护腕位置，可以和手套同戴。</description>
+    <graphicData><texPath>Items/Magic/BracersArchery</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>800</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_WornHediff"><hediff>LP_MI_ArcheryBracers</hediff></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_MagicWristBase">
+    <defName>LP_BracersDefense</defName>
+    <label>防御护腕</label>
+    <description>一对刻着护盾符文的铜护腕。躯干没有穿中层或外层衣甲时，锐器和钝器护甲各+25%。给巫妖、夺心魔、巨魔这类不爱穿甲的人。戴在奇物层的护腕位置。</description>
+    <graphicData><texPath>Items/Magic/BracersDefense</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_WornHediff"><hediff>LP_MI_DefenseBracers</hediff></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_MagicHeadBase">
+    <defName>LP_HelmTelepathy</defName>
+    <label>传心头盔</label>
+    <description>嵌着紫晶的银色额冠。佩戴者获得能力“读心”（夺心魔读心的弱化版，不消耗脑髓），每天一次；夺心魔戴上读心没有冷却。戴在奇物层的头顶。</description>
+    <graphicData><texPath>Items/Magic/HelmTelepathy</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1300</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_GrantAbility"><ability>LP_MI_ReadMind</ability></li></comps>
+  </ThingDef>
+  <AbilityDef ParentName="LP_MagicAbilityBase">
+    <defName>LP_MI_ReadMind</defName>
+    <label>读心（传心头盔）</label>
+    <description>窥探15格内一个人的特质、擅长的技能和心情；对囚犯还会降低一些抵抗。每天一次；夺心魔使用没有冷却。</description>
+    <iconPath>Items/Magic/HelmTelepathy</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><range>15</range><targetParams><canTargetSelf>false</canTargetSelf><canTargetPawns>true</canTargetPawns><canTargetLocations>false</canTargetLocations></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_MagicAbility"><effect>readmind</effect></li></comps>
+  </AbilityDef>
+  <ThingDef ParentName="LP_MagicEyesBase">
+    <defName>LP_EyesEagle</defName>
+    <label>鹰眼</label>
+    <description>一对水晶镜片，贴在眼前看得极远。白天远程武器射程+3格；瞄准时间-10%。戴在奇物层的眼部，可以和原版眼饰同戴。</description>
+    <graphicData><texPath>Items/Magic/EyesEagle</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1000</MarketValue></statBases>
+    <equippedStatOffsets><AimingDelayFactor>-0.1</AimingDelayFactor></equippedStatOffsets>
+  </ThingDef>
+  <ThingDef ParentName="LP_MagicEyesBase">
+    <defName>LP_EyesMinuteSeeing</defName>
+    <label>微观之眼</label>
+    <description>能看清发丝纹理的水晶镜片。手术成功率+10%、研究速度+10%，但射击和近战命中-5%。医生和研究员的“眼镜”。戴在奇物层的眼部。</description>
+    <graphicData><texPath>Items/Magic/EyesMinuteSeeing</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>900</MarketValue></statBases>
+    <equippedStatOffsets><MedicalSurgerySuccessChance>0.1</MedicalSurgerySuccessChance><ResearchSpeed>0.1</ResearchSpeed><MeleeHitChance>-0.05</MeleeHitChance></equippedStatOffsets>
+  </ThingDef>
+  <ThingDef ParentName="LP_MagicNeckBase">
+    <defName>LP_PeriaptWoundClosure</defName>
+    <label>伤口闭合护符</label>
+    <description>红玉髓雕成的护符，贴着心口微微发热。佩戴者不会失血而死（失血最多停在90%），伤口自然愈合速度×2。戴在奇物层的颈部。</description>
+    <graphicData><texPath>Items/Magic/PeriaptWoundClosure</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1400</MarketValue></statBases>
+    <equippedStatOffsets><InjuryHealingFactor>1</InjuryHealingFactor></equippedStatOffsets>
+  </ThingDef>
+  <ThingDef ParentName="LP_MagicNeckBase">
+    <defName>LP_AmuletProofDetection</defName>
+    <label>防探测护符</label>
+    <description>灰扑扑的铅坠，摸上去冰凉。佩戴者隐形时不会被识破卷轴和探测魔杖揭示，夺心魔（以及传心头盔）对佩戴者读心会落空。戴在奇物层的颈部。</description>
+    <graphicData><texPath>Items/Magic/AmuletProofDetection</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1200</MarketValue></statBases>
+  </ThingDef>
+  <ThingDef ParentName="LP_MagicRingBase">
+    <defName>LP_RingSpellTurning</defName>
+    <label>法术转向戒指</label>
+    <description>戒面是一块会映出人影的镜石。每天一次：敌人对佩戴者施放的能力（支配、恐惧凝视、心灵冲击等）被反弹回施法者身上。最多戴两枚不同的戒指。</description>
+    <graphicData><texPath>Items/Magic/RingSpellTurning</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1800</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_MagicCharges"><maxCharges>1</maxCharges><dailyReset>true</dailyReset><chargeLabel>反弹</chargeLabel></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_MagicRingBase">
+    <defName>LP_RingFreeAction</defName>
+    <label>自由行动戒指</label>
+    <description>戒圈刻着挣脱锁链的图案。佩戴者免疫黏胶袋、寒霜迟缓、法杖寒气之类的减速，力场囚笼也困不住他。给牛头人冲撞流。最多戴两枚不同的戒指。</description>
+    <graphicData><texPath>Items/Magic/RingFreeAction</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1200</MarketValue></statBases>
+  </ThingDef>
+  <ThingDef ParentName="LP_MagicRingBase">
+    <defName>LP_RingRegeneration</defName>
+    <label>再生戒指</label>
+    <description>泡过巨魔血的绿玉戒指。每天治好佩戴者一处伤口（不会长出断肢）。巨魔戴上没有额外效果。最多戴两枚不同的戒指。</description>
+    <graphicData><texPath>Items/Magic/RingRegeneration</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1500</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_MagicCharges"><maxCharges>1</maxCharges><dailyReset>true</dailyReset></li></comps>
+  </ThingDef>
+
+  <!-- ==================== D. 魔法饰品（DND） ==================== -->
+  <ThingDef ParentName="LP_MagicRingBase">
+    <defName>LP_RingProtection</defName>
+    <label>守护戒指</label>
+    <description>最朴素也最常用的魔法戒指。锐器、钝器、热能护甲各+6%，心智抗性+5%。最多戴两枚不同的戒指。</description>
+    <graphicData><texPath>Items/Magic/RingProtection</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>900</MarketValue></statBases>
+    <equippedStatOffsets><ArmorRating_Sharp>0.06</ArmorRating_Sharp><ArmorRating_Blunt>0.06</ArmorRating_Blunt><ArmorRating_Heat>0.06</ArmorRating_Heat><LP_MindResist>0.05</LP_MindResist></equippedStatOffsets>
+  </ThingDef>
+  <ThingDef ParentName="LP_MagicRingBase">
+    <defName>LP_RingWardingBond</defName>
+    <label>护佑誓约戒指</label>
+    <description>成对打造的一枚誓约戒指，另一枚是它的另一半。戴“甲戒”的人受到伤害时，一半转给同地图上戴“乙戒”的人。圣武士保护队友、巫妖让仆从挡刀都用得上。只能成对制作或购买（打开誓约戒匣得到两枚）。最多戴两枚不同的戒指。</description>
+    <graphicData><texPath>Items/Magic/RingWardingBond</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>800</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_WardingBond" /></comps>
+  </ThingDef>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_WardingBondCase</defName>
+    <label>誓约戒匣</label>
+    <description>天鹅绒衬里的小匣，里面并排躺着一对互相绑定的护佑誓约戒指（甲戒、乙戒）。打开就能取出两枚。</description>
+    <graphicData><texPath>Items/Magic/WardingBondCase</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>1</stackLimit>
+    <techLevel>Medieval</techLevel>
+    <useHitPoints>true</useHitPoints>
+    <statBases><MaxHitPoints>80</MaxHitPoints><Mass>0.3</Mass><MarketValue>1700</MarketValue><Flammability>0.5</Flammability></statBases>
+    <thingCategories><li>ItemsMisc</li></thingCategories>
+    <tradeTags><li>LP_MagicItem</li></tradeTags>
+    <comps>
+      <li Class="CompProperties_Usable"><useJob>UseItem</useJob><useLabel>打开{0_label}</useLabel><useDuration>60</useDuration></li>
+      <li Class="LichPhylactery.CompProperties_MagicUse"><effect>wardingcase</effect></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_MagicRingBase">
+    <defName>LP_RingSpellStoring</defName>
+    <label>储法戒指</label>
+    <description>戒面是一颗空心的蓝晶，能封存一道法术。用戒指的“存入法术”把身边的一张法术卷轴读进戒指（卷轴消耗），佩戴者就能不经阅读、不会失误地施放一次那道法术；用完可以再存。巫妖可以不用卷轴，直接花30点精神力把恐惧凝视或死灵冲击存进去。最多戴两枚不同的戒指。</description>
+    <graphicData><texPath>Items/Magic/RingSpellStoring</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1600</MarketValue></statBases>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_GrantAbility"><ability>LP_MI_StoredSpell</ability></li>
+      <li Class="LichPhylactery.CompProperties_SpellStoring" />
+    </comps>
+  </ThingDef>
+  <AbilityDef ParentName="LP_MagicAbilityBase">
+    <defName>LP_MI_StoredSpell</defName>
+    <label>释放储存的法术</label>
+    <description>释放储法戒指里封存的法术（效果同对应卷轴）。戒指空着时不能使用。</description>
+    <iconPath>Items/Magic/RingSpellStoring</iconPath>
+    <cooldownTicksRange>60</cooldownTicksRange>
+    <hostile>true</hostile>
+    <verbProperties><range>30</range><targetParams><canTargetSelf>true</canTargetSelf><canTargetPawns>true</canTargetPawns><canTargetLocations>true</canTargetLocations><canTargetItems>true</canTargetItems></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_MagicAbility"><effect>storedspell</effect></li></comps>
+  </AbilityDef>
+  <ThingDef ParentName="LP_MagicRingBase">
+    <defName>LP_RingAnimalInfluence</defName>
+    <label>动物影响戒指</label>
+    <description>戒面嵌着一片狼牙。驯服和训练成功率×1.25；能力“安抚”每天一次，让15格内一只发狂的动物恢复平静。最多戴两枚不同的戒指。</description>
+    <graphicData><texPath>Items/Magic/RingAnimalInfluence</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>900</MarketValue></statBases>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_WornHediff"><hediff>LP_MI_AnimalInfluence</hediff></li>
+      <li Class="LichPhylactery.CompProperties_GrantAbility"><ability>LP_MI_Soothe</ability></li>
+    </comps>
+  </ThingDef>
+  <AbilityDef ParentName="LP_MagicAbilityBase">
+    <defName>LP_MI_Soothe</defName>
+    <label>安抚动物</label>
+    <description>让15格内一只发狂（猎杀人类、狂暴）的动物恢复平静。每天一次。</description>
+    <iconPath>Items/Magic/RingAnimalInfluence</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><range>15</range><targetParams><canTargetSelf>false</canTargetSelf><canTargetPawns>true</canTargetPawns><canTargetLocations>false</canTargetLocations></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_MagicAbility"><effect>soothe</effect></li></comps>
+  </AbilityDef>
+  <ThingDef ParentName="LP_MagicRingBase">
+    <defName>LP_RingShootingStars</defName>
+    <label>流星戒指</label>
+    <description>戒面里像关着一小片夜空。夜里佩戴者身边自带一圈星光照明；能力“召唤流星”每天两次（冷却半天），在25格内召下一颗流星：半径2格的爆炸，并点燃落点。最多戴两枚不同的戒指。</description>
+    <graphicData><texPath>Items/Magic/RingShootingStars</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>2200</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_GrantAbility"><ability>LP_MI_ShootingStar</ability></li></comps>
+    <modExtensions><li Class="LichPhylactery.MagicLightExtension"><nightOnly>true</nightOnly></li></modExtensions>
+  </ThingDef>
+  <AbilityDef ParentName="LP_MagicAbilityBase">
+    <defName>LP_MI_ShootingStar</defName>
+    <label>召唤流星</label>
+    <description>从夜空召下一颗流星砸向25格内的目标点：半径2格爆炸（20点伤害），并点燃落点。冷却半天（每天两次）。</description>
+    <iconPath>Items/Magic/RingShootingStars</iconPath>
+    <cooldownTicksRange>30000</cooldownTicksRange>
+    <hostile>true</hostile>
+    <verbProperties><range>25</range><warmupTime>1</warmupTime><targetParams><canTargetSelf>false</canTargetSelf><canTargetPawns>true</canTargetPawns><canTargetLocations>true</canTargetLocations></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_MagicAbility"><effect>meteor</effect><radius>2</radius></li></comps>
+  </AbilityDef>
+  <ThingDef ParentName="LP_MagicNeckBase">
+    <defName>LP_NecklaceAdaptation</defName>
+    <label>适应项链</label>
+    <description>坠着一枚琉璃泡的项链，泡里总有一口新鲜空气。免疫毒气、毒尘和腐烂恶臭；装了奥德赛时还能在真空里呼吸。戴在奇物层的颈部。</description>
+    <graphicData><texPath>Items/Magic/NecklaceAdaptation</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1100</MarketValue></statBases>
+    <equippedStatOffsets><ToxicEnvironmentResistance>1</ToxicEnvironmentResistance><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">1</VacuumResistance></equippedStatOffsets>
+  </ThingDef>
+  <ThingDef ParentName="LP_MagicNeckBase">
+    <defName>LP_NecklaceFireballs</defName>
+    <label>火球项链</label>
+    <description>串着几颗暗红珠子的项链，生成时带3～9颗。每颗珠子都是一次“投掷火球”：扔向12格内的目标点，半径2.5格火焰爆炸。珠子用完项链就碎了。佩戴者自己着火时，有10%概率所有珠子一起炸开。戴在奇物层的颈部。</description>
+    <graphicData><texPath>Items/Magic/NecklaceFireballs</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1200</MarketValue></statBases>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_GrantAbility"><ability>LP_MI_FireballBead</ability></li>
+      <li Class="LichPhylactery.CompProperties_MagicCharges"><maxCharges>9</maxCharges><minCharges>3</minCharges><chargeLabel>珠</chargeLabel></li>
+    </comps>
+  </ThingDef>
+  <AbilityDef ParentName="LP_MagicAbilityBase">
+    <defName>LP_MI_FireballBead</defName>
+    <label>投掷火球</label>
+    <description>摘下一颗火球珠扔向12格内的目标点：半径2.5格火焰爆炸（15点伤害）。消耗一颗珠子。</description>
+    <iconPath>Items/Magic/NecklaceFireballs</iconPath>
+    <cooldownTicksRange>120</cooldownTicksRange>
+    <hostile>true</hostile>
+    <verbProperties><range>12</range><warmupTime>1</warmupTime><targetParams><canTargetSelf>false</canTargetSelf><canTargetPawns>true</canTargetPawns><canTargetLocations>true</canTargetLocations></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_MagicAbility"><effect>fireball</effect><radius>2.5</radius></li></comps>
+  </AbilityDef>
+  <ThingDef ParentName="LP_MagicNeckBase">
+    <defName>LP_PrayerBeads</defName>
+    <label>祈祷念珠</label>
+    <description>檀木念珠，每颗都刻着祷文。每天一次（两种用法共用冷却）：“祈祷治疗”治好5格内一个人最重的一处伤口；或者“祈祷祝福”让6格内的友军1小时内命中+5%、心智抗性+10%。巫妖和夺心魔戴上没有效果。戴在奇物层的颈部。</description>
+    <graphicData><texPath>Items/Magic/PrayerBeads</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1000</MarketValue></statBases>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_GrantAbility"><ability>LP_MI_PrayHeal</ability><notForRace>Lich</notForRace></li>
+      <li Class="LichPhylactery.CompProperties_GrantAbility"><ability>LP_MI_PrayBless</ability><notForRace>Lich</notForRace></li>
+    </comps>
+  </ThingDef>
+  <AbilityDef ParentName="LP_MagicAbilityBase">
+    <defName>LP_MI_PrayHeal</defName>
+    <label>祈祷治疗</label>
+    <description>握着念珠祈祷，治好5格内一个人最重的一处伤口。每天一次，和“祈祷祝福”共用冷却。夺心魔用不了。</description>
+    <iconPath>Items/Magic/PrayerBeads</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><range>5</range><warmupTime>1.5</warmupTime><targetParams><canTargetSelf>true</canTargetSelf><canTargetPawns>true</canTargetPawns><canTargetLocations>false</canTargetLocations></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_MagicAbility"><effect>prayheal</effect><shareCooldown>LP_MI_PrayBless</shareCooldown></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_MagicAbilityBase">
+    <defName>LP_MI_PrayBless</defName>
+    <label>祈祷祝福</label>
+    <description>高声祈祷：6格内的友军（包括自己）1小时内命中+5%、心智抗性+10%。每天一次，和“祈祷治疗”共用冷却。夺心魔用不了。</description>
+    <iconPath>Items/Magic/PrayerBeads</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>1.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_MagicAbility"><effect>praybless</effect><radius>6</radius><shareCooldown>LP_MI_PrayHeal</shareCooldown></li></comps>
+  </AbilityDef>
+  <HediffDef>
+    <defName>LP_MI_Blessed</defName>
+    <label>祈祷祝福</label>
+    <description>念珠的祷文还在耳边：命中+5%，心智抗性+10%。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>2500</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><statOffsets><MeleeHitChance>0.05</MeleeHitChance><LP_MindResist>0.1</LP_MindResist></statOffsets></li></stages>
+  </HediffDef>
+  <ThingDef ParentName="LP_MagicChestBase">
+    <defName>LP_BroochShielding</defName>
+    <label>护盾胸针</label>
+    <description>银质盾形胸针，别在衣襟上。佩戴者受到的力场伤害-75%：力能龙裔的力场吐息、弹力法球、念动法球和力场墙撞击都算。专门对付龙。戴在奇物层的胸前。</description>
+    <graphicData><texPath>Items/Magic/BroochShielding</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1100</MarketValue></statBases>
+    <modExtensions><li Class="LichPhylactery.ItemDamageFactors"><factor>0.25</factor><damageDefs><li>LP_Force</li><li>LP_ArcaneForce</li></damageDefs><keywords><li>Force</li></keywords></li></modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="LP_MagicChestBase">
+    <defName>LP_ScarabProtection</defName>
+    <label>圣甲虫护符</label>
+    <description>翡翠雕成的圣甲虫，翅膀上刻满护身咒文。死灵伤害-50%；另有12次抵抗：生命汲取光环的每次汲取、死亡律令都会被它挡下并消耗一次。次数用完就变回一块普通的玉石。专门对付巫妖。戴在奇物层的胸前。</description>
+    <graphicData><texPath>Items/Magic/ScarabProtection</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>2000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_MagicCharges"><maxCharges>12</maxCharges><chargeLabel>抵抗</chargeLabel></li></comps>
+    <modExtensions><li Class="LichPhylactery.ItemDamageFactors"><factor>0.5</factor><damageDefs><li>LP_Necrotic</li></damageDefs><keywords><li>Necro</li></keywords></li></modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="LP_MagicNeckBase">
+    <defName>LP_AmuletPlanes</defName>
+    <label>星界护符</label>
+    <description>银链上挂着一枚旋转的小星盘。非吉斯洋基也能每天星界跳跃一次（8格内瞬移）；吉斯洋基戴上时自己的星界跳跃冷却减半。每次用护符跳跃有5%概率被星界之风卷到地图边缘。戴在奇物层的颈部。</description>
+    <graphicData><texPath>Items/Magic/AmuletPlanes</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1500</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_GrantAbility"><ability>LP_MI_AstralStep</ability><notForRace>Githyanki</notForRace></li></comps>
+  </ThingDef>
+  <AbilityDef ParentName="LP_MagicAbilityBase">
+    <defName>LP_MI_AstralStep</defName>
+    <label>星界跳跃（护符）</label>
+    <description>借星界护符穿过星界，瞬间出现在8格内一处可站立的空地。每天一次；5%概率被卷到地图边缘。</description>
+    <iconPath>Items/Magic/AmuletPlanes</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><range>8</range><targetParams><canTargetSelf>false</canTargetSelf><canTargetPawns>false</canTargetPawns><canTargetLocations>true</canTargetLocations></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_MagicAbility"><effect>astral</effect></li></comps>
+  </AbilityDef>
+  <ThingDef ParentName="LP_MagicEyesBase">
+    <defName>LP_GogglesNight</defName>
+    <label>夜视护目镜</label>
+    <description>黑玻璃镜片的皮护目镜。黑暗中工作和射击不受减益。戴在奇物层的眼部，可以和原版眼饰同戴。</description>
+    <graphicData><texPath>Items/Magic/GogglesNight</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>700</MarketValue></statBases>
+  </ThingDef>
+
+  <!-- 条件效果用的状态（穿戴时自动加上、卸下时去掉；阶段0表示条件不满足） -->
+  <HediffDef Name="LP_MagicItemHediffBase" Abstract="True">
+    <hediffClass>LichPhylactery.Hediff_MagicItem</hediffClass>
+    <isBad>false</isBad>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+  <HediffDef ParentName="LP_MagicItemHediffBase">
+    <defName>LP_MI_OgrePower</defName>
+    <label>食人魔之力</label>
+    <description>食人魔之力手套：搬运量×1.5，近战伤害+15%。体型1.5以上时无效。</description>
+    <stages>
+      <li><label>无效</label></li>
+      <li><statFactors><CarryingCapacity>1.5</CarryingCapacity><MeleeDamageFactor>1.15</MeleeDamageFactor></statFactors></li>
+    </stages>
+    <modExtensions><li Class="LichPhylactery.MagicHediffExtension"><condition>smallBody</condition></li></modExtensions>
+  </HediffDef>
+  <HediffDef ParentName="LP_MagicItemHediffBase">
+    <defName>LP_MI_ArcheryBracers</defName>
+    <label>箭术护腕</label>
+    <description>手持弓弩时瞄准时间-15%、命中+10%。</description>
+    <stages>
+      <li><label>未持弓</label></li>
+      <li><statFactors><AimingDelayFactor>0.85</AimingDelayFactor></statFactors></li>
+    </stages>
+    <modExtensions><li Class="LichPhylactery.MagicHediffExtension"><condition>bow</condition></li></modExtensions>
+  </HediffDef>
+  <HediffDef ParentName="LP_MagicItemHediffBase">
+    <defName>LP_MI_DefenseBracers</defName>
+    <label>防御护腕</label>
+    <description>躯干没穿中层或外层衣甲时，锐器和钝器护甲各+25%。</description>
+    <stages>
+      <li><label>穿着衣甲</label></li>
+      <li><statOffsets><ArmorRating_Sharp>0.25</ArmorRating_Sharp><ArmorRating_Blunt>0.25</ArmorRating_Blunt></statOffsets></li>
+    </stages>
+    <modExtensions><li Class="LichPhylactery.MagicHediffExtension"><condition>unarmored</condition></li></modExtensions>
+  </HediffDef>
+  <HediffDef ParentName="LP_MagicItemHediffBase">
+    <defName>LP_MI_AnimalInfluence</defName>
+    <label>动物影响</label>
+    <description>动物影响戒指：驯服和训练成功率×1.25。</description>
+    <stages>
+      <li><label>无效</label></li>
+      <li><statFactors><TameAnimalChance>1.25</TameAnimalChance><TrainAnimalChance>1.25</TrainAnimalChance></statFactors></li>
+    </stages>
+  </HediffDef>
+</Defs>

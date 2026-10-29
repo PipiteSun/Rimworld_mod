@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.24.0 寒冰魔与炎魔：只随塞伊远征军出现。不可遗传、不育、不进随机生成；击倒或打死都会“被遣返九狱”，只留战利品。 -->
+<Defs>
+  <XenotypeDef Name="LP_FiendBase" Abstract="True">
+    <inheritable>false</inheritable>
+    <factionlessGenerationWeight>0</factionlessGenerationWeight>
+  </XenotypeDef>
+
+  <XenotypeDef ParentName="LP_FiendBase">
+    <defName>LP_IceDevil</defName>
+    <label>寒冰魔</label>
+    <description>九狱深处的魔鬼，冰蓝的甲壳上结着霜，昆虫般的头颅长着一对弯角，身后拖着带冰刺的长尾。寒冰魔被红袍法师召来为塞伊作战：它周身散发刺骨的寒气，靠近的敌人会越来越迟缓；尾刺扎进肉里就冻住血液。寒冰魔不吃不睡，也不会被俘——一旦倒下就会被遣返九狱，只留下一根尾刺。</description>
+    <descriptionShort>只出现在塞伊远征军中的魔鬼。寒气光环减速敌人、冰刺尾、看得见隐身者；倒下即遣返九狱。</descriptionShort>
+    <iconPath>Races124/Xenotypes/IceDevil</iconPath>
+    <combatPowerFactor>2</combatPowerFactor>
+    <genes>
+      <li>LP_FiendCore</li>
+      <li>LP_IceDevilStature</li>
+      <li>LP_IceDevilCold</li>
+      <li>LP_IceDevilStinger</li>
+      <li>LP_IceDevilSight</li>
+      <li>LP_SkinIceDevil</li>
+      <li>Body_Hulk</li>
+      <li>Hair_BaldOnly</li>
+      <li>Beard_NoBeardOnly</li>
+      <li>Sterile</li>
+    </genes>
+  </XenotypeDef>
+  <XenotypeDef ParentName="LP_FiendBase">
+    <defName>LP_Balor</defName>
+    <label>炎魔</label>
+    <description>深渊里最可怕的恶魔之一：两倍半于常人的巨躯裹在烈焰里，背生蝠翼，手握火鞭。炎魔完全不怕火，站在它身边的东西都可能烧起来，连塞伊自己的兵也不例外；它一振翅就能把身边的敌人掀翻。炎魔被打倒时身体崩解，一秒后炸成一团烈火，只留下一颗还在跳动的心脏。</description>
+    <descriptionShort>只出现在塞伊远征军中的恶魔。体型×2.5、火焰免疫、烈焰光环、振翼击退、死亡爆炸；怕冷。</descriptionShort>
+    <iconPath>Races124/Xenotypes/Balor</iconPath>
+    <combatPowerFactor>3</combatPowerFactor>
+    <genes>
+      <li>LP_FiendCore</li>
+      <li>LP_BalorStature</li>
+      <li>LP_BalorFlame</li>
+      <li>LP_BalorWings</li>
+      <li>LP_BalorDeathburst</li>
+      <li>LP_SkinBalor</li>
+      <li>Body_Hulk</li>
+      <li>Hair_BaldOnly</li>
+      <li>Beard_NoBeardOnly</li>
+      <li>Sterile</li>
+    </genes>
+  </XenotypeDef>
+
+  <GeneDef Name="LP_FiendGeneBase" Abstract="True">
+    <displayCategory>Miscellaneous</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>2</biostatCpx>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_FiendGeneBase">
+    <defName>LP_FiendCore</defName>
+    <label>九狱之躯</label>
+    <description>魔鬼与恶魔的身体：不吃不睡，也不在乎赤身裸体。被击倒或杀死时会被遣返九狱，不留活口、不留尸体，只在原地留下战利品。寒铁武器对它们的伤害×1.5，圣水对它们的伤害×2。</description>
+    <iconPath>Races124/Genes/FiendCore</iconPath>
+    <biostatMet>0</biostatMet>
+    <disablesNeeds>
+      <li>Food</li>
+      <li>Rest</li>
+    </disablesNeeds>
+    <customEffectDescriptions>
+      <li>倒下或死亡：化作黑烟遣返九狱，掉落武器与战利品，不能被俘虏或招募。</li>
+      <li>不会因赤身裸体而不快。</li>
+      <li>寒铁武器伤害×1.5，圣水伤害×2。</li>
+    </customEffectDescriptions>
+    <!-- 1.54.0 外来者层：九狱的魔鬼。银也克制魔鬼（×1.5）。 -->
+    <modExtensions>
+      <li Class="LichPhylactery.LP_OutsiderExtension">
+        <plane>Hells</plane>
+        <banishOnDown>true</banishOnDown>
+        <coldIron>1.5</coldIron>
+        <silver>1.5</silver>
+        <holy>2</holy>
+        <trueNameChance>0.4</trueNameChance>
+      </li>
+    </modExtensions>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_FiendGeneBase">
+    <defName>LP_IceDevilStature</defName>
+    <label>寒冰魔体型</label>
+    <description>寒冰魔高大的甲壳身躯：实际体型×150%，显示×130%，头顶一对冰蓝的弯角。巨躯规则让它的生命×125%、近战×115%。</description>
+    <iconPath>Races124/Genes/IceDevilStature</iconPath>
+    <biostatMet>-1</biostatMet>
+    <exclusionTags>
+      <li>Headbone</li>
+    </exclusionTags>
+    <modExtensions>
+      <li Class="LichPhylactery.SmallBodyExtension">
+        <bodySize>1.5</bodySize>
+        <renderScale>1.3</renderScale>
+      </li>
+    </modExtensions>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Races124/Horns/IceHorns</texPath>
+        <color>(255, 255, 255)</color>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData>
+          <defaultData>
+            <layer>80</layer>
+          </defaultData>
+          <dataNorth>
+            <layer>10</layer>
+          </dataNorth>
+        </drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="LP_FiendGeneBase">
+    <defName>LP_IceDevilCold</defName>
+    <label>寒霜之躯</label>
+    <description>寒冰魔不怕冷，也不会被点燃，火焰伤害减半。它周身5格内都是刺骨的寒气：对它敌对的角色每秒叠一层“寒气侵体”（最多3层，每层移速×85%、近战冷却×110%），离开30秒后消退。</description>
+    <geneClass>LichPhylactery.Gene_IceDevilCold</geneClass>
+    <iconPath>Races124/Genes/IceDevilCold</iconPath>
+    <biostatMet>-2</biostatMet>
+    <statFactors>
+      <Flammability>0</Flammability>
+    </statFactors>
+    <statOffsets>
+      <ComfyTemperatureMin>-200</ComfyTemperatureMin>
+    </statOffsets>
+    <damageFactors>
+      <Flame>0.5</Flame>
+      <Burn>0.5</Burn>
+      <Frostbite>0</Frostbite>
+    </damageFactors>
+  </GeneDef>
+  <GeneDef ParentName="LP_FiendGeneBase">
+    <defName>LP_IceDevilStinger</defName>
+    <label>冰刺尾</label>
+    <description>寒冰魔带冰刺的长尾。获得“尾刺”近战攻击：锐器（刺）18点，冷却3秒，命中追加一层寒气侵体。</description>
+    <geneClass>LichPhylactery.Gene_LinkedHediff</geneClass>
+    <iconPath>Races124/Genes/IceDevilStinger</iconPath>
+    <displayCategory>Violence</displayCategory>
+    <biostatMet>-1</biostatMet>
+    <modExtensions>
+      <li Class="LichPhylactery.LinkedHediffExtension">
+        <hediff>LP_IceDevilStingerWeapon</hediff>
+      </li>
+    </modExtensions>
+  </GeneDef>
+  <HediffDef>
+    <defName>LP_IceDevilStingerWeapon</defName>
+    <label>冰刺尾</label>
+    <description>寒冰魔的尾刺，扎进肉里就冻住血液。</description>
+    <hediffClass>LichPhylactery.Hediff_GeneLinked</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>尾刺</label>
+            <capacities>
+              <li>Stab</li>
+            </capacities>
+            <power>18</power>
+            <cooldownTime>3</cooldownTime>
+            <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+          </li>
+        </tools>
+      </li>
+    </comps>
+  </HediffDef>
+  <GeneDef ParentName="LP_FiendGeneBase">
+    <defName>LP_IceDevilSight</defName>
+    <label>魔鬼之眼</label>
+    <description>寒冰魔的复眼看得穿一切障眼法：伟龙的隐形、夺心魔的灵能隐匿、精灵斗篷和隐形药水的隐身，在它眼里都照常可见，可以照常瞄准。</description>
+    <iconPath>Races124/Genes/IceDevilSight</iconPath>
+    <biostatMet>-1</biostatMet>
+    <customEffectDescriptions>
+      <li>索敌与攻击时无视目标的心灵隐形。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinIceDevil</defName>
+    <label>冰蓝甲壳</label>
+    <labelShortAdj>冰蓝</labelShortAdj>
+    <description>寒冰魔冰蓝色的甲壳，表面结着白霜。</description>
+    <skinColorOverride>(150, 196, 228)</skinColorOverride>
+    <randomBrightnessFactor>0.05</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+    <displayOrderInCategory>1</displayOrderInCategory>
+  </GeneDef>
+  <HediffDef>
+    <defName>LP_Chilled</defName>
+    <label>寒气侵体</label>
+    <description>寒冰魔的寒气钻进了骨头：每层移动速度×85%、近战冷却×110%，最多3层。离开寒气30秒后消退。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.6, 0.85, 1)</defaultLabelColor>
+    <isBad>true</isBad>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>3</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>1800</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>一层</label>
+        <statFactors>
+          <MoveSpeed>0.85</MoveSpeed>
+          <MeleeCooldownFactor>1.1</MeleeCooldownFactor>
+        </statFactors>
+      </li>
+      <li>
+        <minSeverity>1.5</minSeverity>
+        <label>两层</label>
+        <statFactors>
+          <MoveSpeed>0.7225</MoveSpeed>
+          <MeleeCooldownFactor>1.21</MeleeCooldownFactor>
+        </statFactors>
+      </li>
+      <li>
+        <minSeverity>2.5</minSeverity>
+        <label>三层</label>
+        <statFactors>
+          <MoveSpeed>0.614</MoveSpeed>
+          <MeleeCooldownFactor>1.331</MeleeCooldownFactor>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <GeneDef ParentName="LP_FiendGeneBase">
+    <defName>LP_BalorStature</defName>
+    <label>炎魔体型</label>
+    <description>炎魔的巨躯：实际体型×250%，显示×160%，头顶一对焦黑带红的巨角。巨躯规则让它的生命×175%、近战×145%。</description>
+    <iconPath>Races124/Genes/BalorStature</iconPath>
+    <biostatMet>-2</biostatMet>
+    <exclusionTags>
+      <li>Headbone</li>
+    </exclusionTags>
+    <modExtensions>
+      <li Class="LichPhylactery.SmallBodyExtension">
+        <bodySize>2.5</bodySize>
+        <renderScale>1.6</renderScale>
+      </li>
+    </modExtensions>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Races124/Horns/BalorHorns</texPath>
+        <color>(255, 255, 255)</color>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData>
+          <defaultData>
+            <layer>80</layer>
+          </defaultData>
+          <dataNorth>
+            <layer>10</layer>
+          </dataNorth>
+        </drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="LP_FiendGeneBase">
+    <defName>LP_BalorFlame</defName>
+    <label>深渊烈焰</label>
+    <description>炎魔裹在深渊之火里：完全不受火焰伤害、不会被点燃，但怕冷（寒冷伤害×150%）。每2秒，它身边2格内的每个可燃物和角色都有20%概率着火——不分敌我。</description>
+    <geneClass>LichPhylactery.Gene_BalorFlame</geneClass>
+    <iconPath>Races124/Genes/BalorFlame</iconPath>
+    <biostatMet>-3</biostatMet>
+    <statFactors>
+      <Flammability>0</Flammability>
+    </statFactors>
+    <statOffsets>
+      <ComfyTemperatureMin>30</ComfyTemperatureMin>
+    </statOffsets>
+    <damageFactors>
+      <Flame>0</Flame>
+      <Burn>0</Burn>
+      <Frostbite>1.5</Frostbite>
+    </damageFactors>
+    <!-- 1.54.0 外来者层：炎魔在 DND 里是深渊恶魔（优先级高于九狱之躯）。 -->
+    <modExtensions>
+      <li Class="LichPhylactery.LP_OutsiderExtension">
+        <plane>Abyss</plane>
+        <banishOnDown>true</banishOnDown>
+        <coldIron>1.5</coldIron>
+        <holy>2</holy>
+        <trueNameChance>0.4</trueNameChance>
+        <priority>1</priority>
+      </li>
+    </modExtensions>
+  </GeneDef>
+  <GeneDef ParentName="LP_FiendGeneBase">
+    <defName>LP_BalorWings</defName>
+    <label>炎魔之翼</label>
+    <description>一对焦黑带红的巨大蝠翼。能力“振翼”：把4格内的敌人掀开2格并眩晕2秒，冷却1天。</description>
+    <iconPath>Races124/Genes/BalorWings</iconPath>
+    <displayCategory>Violence</displayCategory>
+    <biostatMet>-2</biostatMet>
+    <abilities>
+      <li>LP_BalorBuffet</li>
+    </abilities>
+    <descriptionHyperlinks>
+      <AbilityDef>LP_BalorBuffet</AbilityDef>
+    </descriptionHyperlinks>
+    <renderNodeProperties>
+      <li>
+        <workerClass>PawnRenderNodeWorker_AttachmentBody</workerClass>
+        <texPath>Races124/Wings/BalorWings</texPath>
+        <color>(255, 255, 255)</color>
+        <overrideMeshSize>(1.8, 1.8)</overrideMeshSize>
+        <parentTagDef>Body</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData>
+          <scaleOffsetByBodySize>true</scaleOffsetByBodySize>
+          <defaultData>
+            <layer>-2</layer>
+          </defaultData>
+          <dataNorth>
+            <layer>90</layer>
+          </dataNorth>
+        </drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <AbilityDef>
+    <defName>LP_BalorBuffet</defName>
+    <label>振翼</label>
+    <description>猛扇双翼：4格内的敌人被掀开2格并眩晕2秒。冷却1天。</description>
+    <iconPath>Races124/Abilities/Buffet</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <hostile>true</hostile>
+    <aiCanUse>true</aiCanUse>
+    <ai_IsOffensive>true</ai_IsOffensive>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>true</disableGizmoWhileUndrafted>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>4.9</range>
+      <warmupTime>0.6</warmupTime>
+      <requireLineOfSight>false</requireLineOfSight>
+      <targetParams>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetLocations>false</canTargetLocations>
+        <canTargetSelf>false</canTargetSelf>
+        <canTargetBuildings>false</canTargetBuildings>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_Races124Ability"><effect>buffet</effect></li>
+    </comps>
+  </AbilityDef>
+  <GeneDef ParentName="LP_FiendGeneBase">
+    <defName>LP_BalorDeathburst</defName>
+    <label>死亡爆炸</label>
+    <description>炎魔被打倒时身体开始崩解，1秒后炸开：半径4格内造成40点火焰伤害并点燃地面，不分敌我。</description>
+    <iconPath>Races124/Genes/BalorDeathburst</iconPath>
+    <displayCategory>Violence</displayCategory>
+    <biostatMet>0</biostatMet>
+    <customEffectDescriptions>
+      <li>消散时：1秒后半径4格的火焰爆炸（40点）。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinBalor</defName>
+    <label>深渊暗红</label>
+    <labelShortAdj>暗红</labelShortAdj>
+    <description>炎魔暗红色的皮肤，裂缝里透出火光。</description>
+    <skinColorOverride>(132, 38, 30)</skinColorOverride>
+    <randomBrightnessFactor>0.05</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+    <displayOrderInCategory>1</displayOrderInCategory>
+  </GeneDef>
+</Defs>

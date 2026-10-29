@@ -1,0 +1,18 @@
+# Version backups (~1.7 GB), kept locally only
+/ArtSource/backup-*/
+
+# Build output
+bin/
+obj/
+.vs/
+*.pdb
+*.user
+*.suo
+
+# Stray empty files at the mod root
+/ItemsPotions.cs
+/ReadingProgress.cs
+
+# OS junk
+Thumbs.db
+desktop.ini

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.15.0 共享组件：给后续常见种族（矮人、侏儒、半身人、半兽人、精灵、半精灵……）用的底层定义。玩家暂时看不到新内容。 -->
+<Defs>
+  <!-- 心智抗性：0~1，默认0。为0时隐藏，不在属性页出现。基因用 statOffsets 叠加。 -->
+  <StatDef>
+    <defName>LP_MindResist</defName>
+    <label>心智抗性</label>
+    <description>抵抗心灵震爆、寄生、魅惑等心智类效果的概率；同时按比例减弱心灵嗡鸣等心灵类负面心情。我方单位被原版或 VPE 灵能强加的失控（如仓皇逃窜、狂暴）也按这个概率抵抗；没抵抗住时，持续时间按同样比例缩短（最多缩短 75%）。</description>
+    <category>PawnResistances</category>
+    <defaultBaseValue>0</defaultBaseValue>
+    <minValue>0</minValue>
+    <maxValue>1</maxValue>
+    <hideAtValue>0</hideAtValue>
+    <toStringStyle>PercentZero</toStringStyle>
+    <showOnAnimals>false</showOnAnimals>
+    <showOnMechanoids>false</showOnMechanoids>
+    <displayPriorityInCategory>4013</displayPriorityInCategory>
+  </StatDef>
+
+  <!-- 冷却保命的通用冷却状态。时长由基因上的 OncePerCooldownExtension.cooldownDays 决定，这里的数值只是占位。 -->
+  <HediffDef>
+    <defName>LP_CheatDeathCooldown</defName>
+    <label>保命冷却</label>
+    <description>刚刚躲过一次致命或致倒的伤害。冷却结束前，同样的好运不会再次降临。</description>
+    <hediffClass>LichPhylactery.Hediff_OncePerCooldown</hediffClass>
+    <defaultLabelColor>(0.85, 0.8, 0.5)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>180000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <!-- 种族关系心情示例：巨魔看到同地图的火巨人。默认不启用（enabled=false），对现有存档没有任何影响。 -->
+  <ThoughtDef>
+    <defName>LP_RacialRelation_TrollFireGiant</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_DNDRacialRelation</workerClass>
+    <stages>
+      <li>
+        <label>火巨人的炉火</label>
+        <description>那个火巨人身上总有烧焦的气味，火焰是巨魔天生的克星。</description>
+        <baseMoodEffect>-1</baseMoodEffect>
+      </li>
+      <li>
+        <label>习惯了炉火</label>
+        <description>和火巨人相处久了，那股焦味反而让人觉得踏实。</description>
+        <baseMoodEffect>1</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <LichPhylactery.RacialRelationDef>
+    <defName>LP_Relation_TrollFireGiant</defName>
+    <label>巨魔与火巨人</label>
+    <enabled>false</enabled>
+    <observer>LP_Troll</observer>
+    <target>LP_FireGiant</target>
+    <thought>LP_RacialRelation_TrollFireGiant</thought>
+    <daysToAccept>15</daysToAccept>
+  </LichPhylactery.RacialRelationDef>
+</Defs>

@@ -1,0 +1,9 @@
+Generated with the built-in imagegen tool in generate mode on 2026-10-22. Transparent PNG outputs are copied into Textures/Necromancy/ConstructAppearance.
+
+Stitches.png
+Use case: stylized-concept. Asset type: transparent 2D RimWorld pawn body attachment texture for a flesh golem. Create ONLY a compact irregular cluster of three short surgical stitch seams: dark charcoal broken incision lines, muted burgundy edges, five or six thick crossing stitch bars. Flat colors, bold near-black outlines, minimal two-tone shading, readable at small game portrait size. Place the motif in the center of a square canvas and let it occupy roughly 65% of the width and 70% of the height. True transparent alpha around and between the seams. No body, no skin patch, no clothing, no frame, no glow, no text, no background. The asset overlays a vanilla pale-red Hulk body.
+
+SoulMark.png
+Use case: stylized-concept. Asset type: transparent 2D RimWorld pawn forehead attachment sprite for a necromantic scholar. Create ONLY a tiny angular soul sigil: one muted violet inner diamond surrounded by two broken bone-white arc strokes and a dark charcoal outline. Flat color blocks, thick readable strokes, no gradients, no glow, no detailed texture. Center the isolated symbol on a square canvas with generous fully transparent margins; symbol occupies around 55% of the canvas width. It will overlay a vanilla light-gray humanoid forehead at small portrait size. No face, no head, no eye, no clothing, no background, no border, no lettering, no watermark.
+
+The skeleton head uses RimWorld's existing Skull head type; no generated head texture is used.

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.58.3 属性典籍：黑网商队每次 5% 带一本随机典籍（市价 15000，买价约 20000）。 -->
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/TraderKindDef[defName="LP_Caravan_BlackNetwork"]/stockGenerators</xpath>
+    <value>
+      <li Class="LichPhylactery.StockGenerator_RandomTome">
+        <chance>0.05</chance>
+      </li>
+    </value>
+  </Operation>
+</Patch>

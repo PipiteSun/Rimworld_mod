@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- 1.59.0 超凡属性特性（Source/Exalted.cs）：巨人之力的踉跄、威仪光环（严重度：1 威仪 / 2 君临，正在“鼓舞”的人各 −0.5，不降崩溃阈值）。 -->
+  <HediffDef>
+    <defName>LP_ExaltedStagger</defName>
+    <label>踉跄</label>
+    <description>被一记巨力砸得站不稳：移动速度 ×0.1，近战冷却 ×1.5。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.9, 0.8, 0.6)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>0.1</MoveSpeed><MeleeCooldownFactor>1.5</MeleeCooldownFactor></statFactors></li></stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>90</disappearsAfterTicks></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_ExaltedPresence</defName>
+    <label>威仪</label>
+    <description>身边有一位气度非凡的人，叫人安心、不愿在他面前失态。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>2</maxSeverity>
+    <defaultLabelColor>(0.95, 0.8, 0.45)</defaultLabelColor>
+    <stages>
+      <li><minSeverity>0</minSeverity><label>鼓舞中</label></li>
+      <li><minSeverity>0.9</minSeverity><statOffsets><MentalBreakThreshold>-0.03</MentalBreakThreshold></statOffsets></li>
+      <li><minSeverity>1.4</minSeverity><label>君临·鼓舞中</label></li>
+      <li><minSeverity>1.9</minSeverity><label>君临</label><statOffsets><MentalBreakThreshold>-0.03</MentalBreakThreshold></statOffsets></li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>560</disappearsAfterTicks></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+  </HediffDef>
+  <!-- 1.59.0 热修1：健康页的显示用标记（Hediff_ExaltedMark 动态标签“超凡·巨人之力、神话·无影”），没有数值效果。 -->
+  <HediffDef>
+    <defName>LP_ExaltedMark</defName>
+    <label>超凡</label>
+    <description>六项属性中有达到凡人极限的一项（有效值 ≥20）。这只是一个标记，没有数值效果；详细效果见“冒险者”分页的“超凡”小节。</description>
+    <hediffClass>LichPhylactery.Hediff_ExaltedMark</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.91, 0.75, 0.31)</defaultLabelColor>
+  </HediffDef>
+  <ThoughtDef>
+    <defName>LP_ExaltedPresenceMood</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>LP_ExaltedPresence</hediff>
+    <stages>
+      <li><label>威仪在侧</label><description>有那个人在，什么都不用怕。</description><baseMoodEffect>3</baseMoodEffect></li>
+      <li><label>威仪在侧</label><description>有那个人在，什么都不用怕。</description><baseMoodEffect>3</baseMoodEffect></li>
+      <li><label>君临在侧</label><description>站在一位近乎神话的人身边，连呼吸都觉得光荣。</description><baseMoodEffect>6</baseMoodEffect></li>
+      <li><label>君临在侧</label><description>站在一位近乎神话的人身边，连呼吸都觉得光荣。</description><baseMoodEffect>6</baseMoodEffect></li>
+    </stages>
+  </ThoughtDef>
+</Defs>

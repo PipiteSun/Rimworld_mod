@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.55.0 异界契约：研究“位面契约学”、契约书、地狱钢叉、缚绳、狂猎号角、天界羽披、妖精银弓、契约讲台、地狱铸炉；读契约书的工作。
+     代码见 Source/Pacts.cs（契约书、讲台）、PactRaces.cs（缚绳、号角、钢叉、银弓、羽披的效果）、PactBoons.cs（铸炉的来源）。 -->
+<Defs>
+  <!-- 研究页 (5, 2.8)：开工前核对过是空的（深渊学在 (4, 2.8)）。 -->
+  <ResearchProjectDef>
+    <defName>LP_Research_PlanarPacts</defName>
+    <label>位面契约学</label>
+    <description>研究九狱与妖精宫廷的契约格式、条款陷阱和宗主们的真名。解锁契约讲台：契约书（来自“宗主的低语”、九狱商队、塞伊红袍法师）拿到讲台上读 4 小时，才能看清条款、审阅、谈判和签约。</description>
+    <baseCost>1800</baseCost>
+    <techLevel>Medieval</techLevel>
+    <prerequisites>
+      <li>LP_Research_Abyssology</li>
+    </prerequisites>
+    <tab>LP_FireGiantTech</tab>
+    <researchViewX>5</researchViewX>
+    <researchViewY>2.8</researchViewY>
+  </ResearchProjectDef>
+
+  <ThingCategoryDef>
+    <defName>LP_PactItems</defName>
+    <label>契约物品</label>
+    <parent>ResourcesRaw</parent>
+    <iconPath>Pact/Items/PactScroll</iconPath>
+  </ThingCategoryDef>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_PactScroll</defName>
+    <label>契约书</label>
+    <description>一卷用不知名的皮做成的契约，封口的蜡印是某位异界宗主的纹章。拿到契约讲台上读 4 小时，才能看清它写了什么：三个可选的恩赐、明面上的代价、偿契周期——还有藏在字里行间的隐藏条款。不能制作。</description>
+    <graphicData><texPath>Pact/Items/PactScroll</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <soundInteract>Standard_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <stackLimit>1</stackLimit>
+    <statBases><MarketValue>300</MarketValue><Mass>0.2</Mass><MaxHitPoints>60</MaxHitPoints><Flammability>1</Flammability></statBases>
+    <thingCategories><li>LP_PactItems</li></thingCategories>
+    <tradeTags><li>LP_Pact</li></tradeTags>
+    <comps><li Class="LichPhylactery.CompProperties_PactScroll" /></comps>
+  </ThingDef>
+
+  <!-- 地狱钢叉：原版长矛（钢）×1.2，25% 地狱之伤。不能制作：角魔 30% 掉落、九狱商队。 -->
+  <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+    <defName>LP_InfernalPitchfork</defName>
+    <label>地狱钢叉</label>
+    <description>角魔用的三股长叉，叉齿是九狱的黑钢，握柄烫手。需要双手握持。命中有 25% 留下“地狱之伤”：流血 ×2，普通包扎止不住，只有圣水、信仰治疗或手术能止住。伤害是钢长矛的 1.2 倍。不能制作。</description>
+    <graphicData><texPath>Pact/Items/InfernalPitchfork</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <techLevel>Medieval</techLevel>
+    <recipeMaker IsNull="True" />
+    <smeltable>false</smeltable>
+    <statBases><MarketValue>900</MarketValue><Mass>3</Mass><MaxHitPoints>220</MaxHitPoints></statBases>
+    <equippedAngleOffset>-25</equippedAngleOffset>
+    <weaponTags Inherit="False"><li>LP_InfernalPitchfork</li></weaponTags>
+    <weaponClasses><li>Neolithic</li></weaponClasses>
+    <thingSetMakerTags Inherit="False" />
+    <tradeTags Inherit="False"><li>LP_Pact</li></tradeTags>
+    <tools>
+      <li><label>叉柄</label><capacities><li>Blunt</li><li>Poke</li></capacities><power>16</power><cooldownTime>2.6</cooldownTime></li>
+      <li><label>叉齿</label><capacities><li>Stab</li></capacities><power>28</power><armorPenetration>0.6</armorPenetration><cooldownTime>2.6</cooldownTime></li>
+    </tools>
+  </ThingDef>
+  <HediffDef>
+    <defName>LP_InfernalWound</defName>
+    <label>地狱之伤</label>
+    <description>九狱黑钢留下的伤口：全身流血 ×2。普通包扎止不住，喝祝圣圣水、阿斯莫的治疗之手、夏日之触 / 狄瓦的治疗之触，或者手术“清理地狱之伤”能止住。两天后自己消退。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.85, 0.3, 0.2)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>120000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><totalBleedFactor>2</totalBleedFactor></li></stages>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryFlesh">
+    <defName>LP_CleanseInfernalWound</defName>
+    <label>清理地狱之伤</label>
+    <description>把地狱之伤里残留的九狱黑钢挑出来，止住流血。</description>
+    <workerClass>Recipe_RemoveHediff</workerClass>
+    <jobString>正在清理地狱之伤。</jobString>
+    <workAmount>800</workAmount>
+    <removesHediff>LP_InfernalWound</removesHediff>
+    <successfullyRemovedHediffMessage>{0}清理了{1}的地狱之伤。</successfullyRemovedHediffMessage>
+    <anesthetize>false</anesthetize>
+    <deathOnFailedSurgeryChance>0</deathOnFailedSurgeryChance>
+    <isViolation>false</isViolation>
+    <targetsBodyPart>false</targetsBodyPart>
+    <recipeUsers><li>Human</li></recipeUsers>
+    <skillRequirements><Medicine>4</Medicine></skillRequirements>
+    <ingredients><li><filter><categories><li>Medicine</li></categories></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><categories><li>Medicine</li></categories></fixedIngredientFilter>
+  </RecipeDef>
+
+  <!-- 缚绳：挂在腰间的奇物，能力“缚绳”（8 格，敏捷豁免否则定身 4 秒），10 次耐久。 -->
+  <ThingDef ParentName="LP_AccessoryBase">
+    <defName>LP_EntanglingRope</defName>
+    <label>缚绳</label>
+    <description>艾林魔用来捆人的金色绳索，自己会飞出去缠住目标。挂在腰间（奇物栏）：能力“缚绳”——8 格内一个目标做敏捷豁免（豁免难度随使用者的熟练加值和敏捷提高；目标的属性调整值和熟练加值每点 +5% 成功率），失败被缚住 4 秒。耐久 10 次，用完就断。冷却 2 小时。</description>
+    <graphicData><texPath>Pact/Items/EntanglingRope</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>600</MarketValue><Mass>0.6</Mass></statBases>
+    <apparel><bodyPartGroups><li>Waist</li></bodyPartGroups></apparel>
+    <tradeTags Inherit="False"><li>LP_Pact</li></tradeTags>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_GrantAbility"><ability>LP_RopeEntangle</ability></li>
+      <li Class="LichPhylactery.CompProperties_MagicCharges"><maxCharges>10</maxCharges><chargeLabel>耐久</chargeLabel></li>
+    </comps>
+  </ThingDef>
+
+  <!-- 狂猎号角：一次性。 -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_WildHuntHorn</defName>
+    <label>狂猎号角</label>
+    <description>狂猎骑手的弯角号角，吹起来像风里的狼嚎。一次性：吹响后 2 小时内，地图上殖民地的犬科动物（狗、狼、座狼、闪光犬……）移速 +30%、近战伤害 +20%；敌对人形各有 10% 吓得逃跑。</description>
+    <graphicData><texPath>Pact/Items/WildHuntHorn</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>5</stackLimit>
+    <statBases><MarketValue>350</MarketValue><Mass>0.8</Mass><MaxHitPoints>80</MaxHitPoints></statBases>
+    <thingCategories><li>LP_PactItems</li></thingCategories>
+    <tradeTags><li>LP_Pact</li></tradeTags>
+    <comps>
+      <li Class="CompProperties_Usable"><useJob>UseItem</useJob><useLabel>吹响狂猎号角</useLabel><useDuration>120</useDuration></li>
+      <li Class="CompProperties_UseEffect"><compClass>LichPhylactery.CompUseEffect_WildHuntHorn</compClass></li>
+      <li Class="CompProperties_UseEffectDestroySelf" />
+    </comps>
+  </ThingDef>
+  <HediffDef>
+    <defName>LP_HornRush</defName>
+    <label>狂猎</label>
+    <description>狂猎的号角在血里响：移速 +30%，近战伤害 +20%。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>5000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><statFactors><MoveSpeed>1.3</MoveSpeed><MeleeDamageFactor>1.2</MeleeDamageFactor></statFactors></li></stages>
+  </HediffDef>
+
+  <!-- 天界羽披：披风层（1.45.1 的 LP_Cape）。 -->
+  <ThingDef ParentName="ApparelBase">
+    <defName>LP_CelestialMantle</defName>
+    <label>天界羽披</label>
+    <description>狄瓦留下的白金羽毛披风，摸上去是温的。挂在“披风”层，可以套在盔甲外面。穿戴者造成的光辉伤害 +10%，深渊腐化获得 ×0.5；保暖 +6℃。不能制作：坠落天使的谢礼（10%），守护天使离开时也可能留下。</description>
+    <techLevel>Medieval</techLevel>
+    <smeltable>false</smeltable>
+    <graphicData><texPath>Pact/Items/CelestialMantle</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <thingCategories><li>Apparel</li></thingCategories>
+    <tradeTags><li>LP_MagicItem</li></tradeTags>
+    <tradeability>Sellable</tradeability>
+    <statBases><MarketValue>1800</MarketValue><MaxHitPoints>200</MaxHitPoints><Mass>1.2</Mass><ArmorRating_Sharp>0.06</ArmorRating_Sharp><Insulation_Cold>6</Insulation_Cold><Beauty>4</Beauty><EquipDelay>2</EquipDelay><Flammability>0.4</Flammability></statBases>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Shoulders</li></bodyPartGroups>
+      <wornGraphicPath>Pact/Apparel/CelestialMantle/CelestialMantle</wornGraphicPath>
+      <layers><li>LP_Cape</li></layers>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+      <canBeGeneratedToSatisfyToxicEnvironmentResistance>false</canBeGeneratedToSatisfyToxicEnvironmentResistance>
+    </apparel>
+  </ThingDef>
+
+  <!-- 妖精银弓：原版巨弓，射程 ×1.1；对恶魔 / 妖精 / 魔鬼 +20%。 -->
+  <ThingDef ParentName="Bow_Great">
+    <defName>LP_FeySilverBow</defName>
+    <label>妖精银弓</label>
+    <description>妖精宫廷的长弓，弓臂缠着银丝，弦是月光拧成的。射程比巨弓远一成；射中恶魔、魔鬼和妖精（外来者）时伤害 +20%。只在妖精集市上卖，不能制作。</description>
+    <graphicData><texPath>Pact/Items/FeySilverBow</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <costList Inherit="False" />
+    <recipeMaker IsNull="True" />
+    <weaponTags Inherit="False"><li>LP_FeyBow</li></weaponTags>
+    <thingSetMakerTags Inherit="False" />
+    <tradeTags><li>LP_Pact</li></tradeTags>
+    <statBases><MarketValue>1100</MarketValue><AccuracyLong>0.55</AccuracyLong></statBases>
+    <verbs Inherit="False">
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Arrow_Great</defaultProjectile>
+        <warmupTime>1.9</warmupTime>
+        <range>32.9</range>
+        <soundCast>Bow_Large</soundCast>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  <!-- ==================== 建筑 ==================== -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_PactLectern</defName>
+    <label>契约讲台</label>
+    <description>一张带锁链的书架讲台，链子一头拴着读经架，一头锁着放契约的格子。契约书只能放在这里读：读 4 小时看清条款，然后审阅、谈判、签约或拒绝。讲台还能“补偿宗主”（还债）、用宗主代理人的真名卷撕毁契约，检视面板里列着殖民地所有的契约。</description>
+    <thingClass>LichPhylactery.Building_PactLectern</thingClass>
+    <graphicData>
+      <texPath>Pact/Buildings/PactLectern</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(2,1)</drawSize>
+    </graphicData>
+    <uiIconPath>Pact/Buildings/PactLectern_south</uiIconPath>
+    <size>(2,1)</size>
+    <rotatable>true</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>42</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <castEdgeShadows>true</castEdgeShadows>
+    <stuffCategories><li>Woody</li><li>Stony</li></stuffCategories>
+    <costStuffCount>50</costStuffCount>
+    <costList><Gold>5</Gold></costList>
+    <statBases><MaxHitPoints>150</MaxHitPoints><Mass>15</Mass><WorkToBuild>1500</WorkToBuild><Flammability>0.8</Flammability><Beauty>1</Beauty></statBases>
+    <designationCategory>Misc</designationCategory>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <researchPrerequisites><li>LP_Research_PlanarPacts</li></researchPrerequisites>
+    <building><ai_chillDestination>false</ai_chillDestination></building>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories><li>BuildingsMisc</li></thingCategories>
+  </ThingDef>
+
+  <!-- 地狱铸炉：只能由迪斯帕特的恩赐得到（空投未安装的）。符文铁砧的所有配方在启动时加到这里（PactRacesStartup）。 -->
+  <ThingDef ParentName="BenchBase">
+    <defName>LP_InfernalForge</defName>
+    <label>地狱铸炉</label>
+    <description>迪斯帕特的铁城铸炉：黑铁炉膛里烧的是灵魂币，火是绿色的。能做符文铁砧的所有配方，工作速度 ×1.5。烧灵魂币，只在工作时消耗（1 枚 = 1 天）。不能建造：只能由迪斯帕特的恩赐“地狱铸炉”得到。</description>
+    <thingClass>Building_WorkTable</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>Pact/Buildings/InfernalForge</texPath>
+      <shaderType>CutoutComplex</shaderType>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(3,2)</drawSize>
+    </graphicData>
+    <uiIconPath>Pact/Buildings/InfernalForge_south</uiIconPath>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.30</staticSunShadowHeight>
+    <size>(3,2)</size>
+    <costList><Steel>150</Steel></costList>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <WorkToBuild>5000</WorkToBuild>
+      <MaxHitPoints>500</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <WorkTableWorkSpeedFactor>1.5</WorkTableWorkSpeedFactor>
+      <MarketValue>4000</MarketValue>
+    </statBases>
+    <tradeability>None</tradeability>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <inspectorTabs><li>ITab_Bills</li></inspectorTabs>
+    <building>
+      <workTableRoomRole>Workshop</workTableRoomRole>
+      <workTableNotInRoomRoleFactor>0.8</workTableNotInRoomRoleFactor>
+    </building>
+    <comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>1</fuelConsumptionRate>
+        <fuelCapacity>10</fuelCapacity>
+        <fuelFilter><thingDefs><li>LP_SoulCoin</li></thingDefs></fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <initialFuelPercent>0.3</initialFuelPercent>
+        <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+        <fuelLabel>灵魂币</fuelLabel>
+      </li>
+      <li Class="CompProperties_Glower"><glowRadius>5</glowRadius><glowColor>(110,230,140,0)</glowColor></li>
+    </comps>
+    <placeWorkers><li>PlaceWorker_PreventInteractionSpotOverlap</li></placeWorkers>
+  </ThingDef>
+
+  <JobDef>
+    <defName>LP_ReadPact</defName>
+    <driverClass>LichPhylactery.JobDriver_ReadPact</driverClass>
+    <reportString>正在契约讲台上读契约书。</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+</Defs>

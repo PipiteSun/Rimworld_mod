@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.29.0 器械师“符文炮台”：符文火铳的数值（伤害 18、穿甲 30%、射程 32、冷却 2.4 秒）× 器械强度，存在 60 秒，不需要电，不能建造或拆除。 -->
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_RuneTurret</defName>
+    <label>符文炮台</label>
+    <description>器械师用符文临时拼起来的炮台，装着一支符文火铳。伤害随器械强度提高，60 秒后散架。</description>
+    <thingClass>LichPhylactery.VPEBridge.Building_RuneTurret</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <drawHighlight>true</drawHighlight>
+    <drawHighlightOnlyForHostile>true</drawHighlightOnlyForHostile>
+    <graphicData>
+      <texPath>Things/Building/Security/TurretMini_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,3)</drawSize>
+      <color>(0.7,0.85,1)</color>
+      <damageData><rect>(0.2,0.2,0.6,0.6)</rect></damageData>
+      <shadowData><volume>(0.27,0.25,0.27)</volume></shadowData>
+    </graphicData>
+    <uiIconPath>Things/Building/Security/TurretMini_MenuIcon</uiIconPath>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>false</rotatable>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <Beauty>0</Beauty>
+      <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Lifespan"><lifespanTicks>3600</lifespanTicks></li>
+    </comps>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <building>
+      <combatPower>45</combatPower>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>LP_RuneTurretGun</turretGunDef>
+      <turretBurstCooldownTime>2.4</turretBurstCooldownTime>
+      <claimable>false</claimable>
+      <deconstructible>false</deconstructible>
+      <isInert>false</isInert>
+    </building>
+  </ThingDef>
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>LP_RuneTurretGun</defName>
+    <label>炮台符文火铳</label>
+    <description>装在符文炮台上的符文火铳。</description>
+    <graphicData>
+      <texPath>LP/Weapons/RunicMusket</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyTouch>0.60</AccuracyTouch>
+      <AccuracyShort>0.75</AccuracyShort>
+      <AccuracyMedium>0.80</AccuracyMedium>
+      <AccuracyLong>0.70</AccuracyLong>
+      <RangedWeapon_Cooldown>2.4</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>4.5</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>LP_Bullet_RuneTurret</defaultProjectile>
+        <warmupTime>0</warmupTime>
+        <range>32</range>
+        <soundCast>Shot_BoltActionRifle</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>10</muzzleFlashScale>
+      </li>
+    </verbs>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcaneBulletBase">
+    <defName>LP_Bullet_RuneTurret</defName>
+    <label>符文铳弹</label>
+    <graphicData><texPath>Things/Projectile/Bullet_Big</texPath><color>(0.6,0.85,1)</color></graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>18</damageAmountBase>
+      <armorPenetrationBase>0.30</armorPenetrationBase>
+      <stoppingPower>1</stoppingPower>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+</Defs>

@@ -1,0 +1,23 @@
+Asset generation: built-in image_gen, transparent_background=true. No API/CLI fallback.
+Date: 2026-10-21.
+Original generated PNGs retained under C:/Users/25390/.codex/generated_images/01a15bd6-0e61-7813-acb5-7723c1a69350/.
+Game textures: Textures/Necromancy/.
+South/north/east pawn images are independent generated directional assets; Graphic_Multi mirrors east for west.
+
+Altar prompt:
+Use case: stylized-concept. Asset type: one production-ready transparent PNG sprite for a RimWorld mod, a 3 by 3 tile necromantic ritual workbench. Single isolated object centered, generous transparent margins. Match RimWorld vanilla building art: orthographic top down with just a little front face visible, chunky dark charcoal outlines, simple flat muted colours, very few large shading regions, legible at 128 pixels, no textures or realistic rendering. Square low dark grey stone altar slab with four bone ivory corner posts, small dim desaturated jade runic circle inset in its flat top, empty centre for a phylactery, small candles contained on slab. Clearly a work table, not a room or scene. No floor, no surrounding terrain, no text, no labels, no bloom, no cast shadow outside the object. Actual transparent alpha background.
+
+The four initial item/pawn prompts use this wrapper:
+Use case: stylized-concept. Production-ready transparent PNG sprite for a RimWorld mod. [SUBJECT] Match vanilla RimWorld art very closely: heavy dark charcoal outlines, large simple flat colour shapes, only one understated shadow tone, orthographic game view, extremely low detail, cleanly readable at 64 pixels. Centre single object with generous fully transparent margin. No text, labels, floor, scenery, lighting effects, bloom, painterly rendering, 3D render, gradients, shadow outside silhouette. Actual transparent alpha background.
+
+Phylactery subject:
+One isolated small phylactery reliquary: squat dark iron hexagonal box, bone ivory corner bands, a tiny muted jade soul gem inset on the lid. Game item inventory sprite, top down slightly from front, square framing.
+Skeleton subject:
+One complete skeleton servant pawn as seen in RimWorld, front facing SOUTH game sprite, big simplified round skull with dark empty sockets, no jaw detail, tiny torso with three large rib strokes, short stubby bone arm shapes close to torso, NO legs or feet (RimWorld pawn silhouette), pale dirty ivory, short ragged grey waist cloth. Head and body together single connected compact silhouette.
+Golem subject:
+One complete flesh golem pawn as seen in RimWorld, front facing SOUTH game sprite, small bald rounded head merging into huge wide hulking torso, two huge stubby arms close to the body, NO legs or feet (RimWorld pawn silhouette). Muted grey rose stitched flesh, only 4 big dark stitches, bone plates on shoulders, tiny dim jade eyes. Non-graphic, chunky tank silhouette.
+Scholar subject:
+One complete scholarly undead pawn as seen in RimWorld, front facing SOUTH game sprite, big simple ivory skull head with two small jade eyes, deep desaturated dark teal hood and robe, broad simple robe torso, short arms integrated with silhouette, NO legs or feet (RimWorld pawn silhouette), small bone clasp and plain closed book against chest. Head and torso together in compact pawn silhouette.
+
+Directional edit prompt (for each of Skeleton, Golem, Scholar; reference is its corresponding original south PNG):
+Use case: identity-preserve. Make the [north/east] facing directional sprite of this exact RimWorld game pawn. [North: Show the BACK of the character, facing away, no face visible. / East: Show the character in RIGHT PROFILE, facing right.] Preserve the character design, colours, thick outlines, all proportions, original scale relative to canvas, centering, head height and lower body baseline exactly. Keep the simple vanilla RimWorld pawn style and stubby silhouette with NO legs and NO feet. One single sprite only. Same square canvas and transparent background. No text, no floor, no shadows outside silhouette, no lighting effects.

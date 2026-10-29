@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.48.0 冒险者等级（第一阶段）：隐藏状态 LP_Adventurer 存等级、经验、六维和里程碑；效果在 Source/Adventurer.cs 里按属性合成。 -->
+<Defs>
+  <HediffDef>
+    <defName>LP_Adventurer</defName>
+    <label>冒险者</label>
+    <description>冒险者等级 1～20 与力量、敏捷、体质、智力、感知、魅力六项属性。在小人检视面板的“冒险者”分页查看和加点。</description>
+    <hediffClass>LichPhylactery.Hediff_Adventurer</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <defaultLabelColor>(0.9, 0.8, 0.5)</defaultLabelColor>
+  </HediffDef>
+
+  <LetterDef ParentName="CustomChoiceLetterBase">
+    <defName>LP_AdventurerLevelLetter</defName>
+    <letterClass>LichPhylactery.Letter_AdventurerLevel</letterClass>
+    <color>(0.55, 0.85, 0.55)</color>
+    <flashColor>(0.55, 0.85, 0.55)</flashColor>
+  </LetterDef>
+</Defs>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.28.0 传送门失控：位面裂口建筑、四个来源位面、位面残渣、强化药水。 -->
+<Defs>
+  <IncidentDef>
+    <defName>LP_PortalBreach</defName>
+    <label>传送门失控</label>
+    <category>ThreatBig</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_PortalBreach</workerClass>
+    <!-- 原版“疯狂动物群”是 2.0，这里取一半 -->
+    <baseChance>1.0</baseChance>
+    <minRefireDays>20</minRefireDays>
+    <earliestDay>15</earliestDay>
+    <pointsScaleable>false</pointsScaleable>
+  </IncidentDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_PlanarRift</defName>
+    <label>位面裂口</label>
+    <description>一道撕开现实的紫黑色旋涡，另一边是别的位面。每隔一段时间就会有生物从里面涌出来。\n\n打碎它（600 生命）、把驱散粉尘扔到它旁边，或者让巨灵命令它闭合，都能把它关上。开了三天还没关的裂口会崩溃。</description>
+    <thingClass>LichPhylactery.Building_PlanarRift</thingClass>
+    <graphicData>
+      <texPath>Things/Building/LP_PlanarRift</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2.6,2.6)</drawSize>
+      <shadowData>
+        <volume>(1.6, 0.3, 1.6)</volume>
+      </shadowData>
+    </graphicData>
+    <size>(2,2)</size>
+    <rotatable>false</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>Impassable</passability>
+    <fillPercent>0.5</fillPercent>
+    <blockWind>false</blockWind>
+    <useHitPoints>true</useHitPoints>
+    <tickerType>Normal</tickerType>
+    <selectable>true</selectable>
+    <destroyable>true</destroyable>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <statBases>
+      <MaxHitPoints>600</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <Beauty>-30</Beauty>
+    </statBases>
+    <building>
+      <claimable>false</claimable>
+      <isInert>true</isInert>
+      <isTargetable>true</isTargetable>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <draftAttackNonDeconstructable>true</draftAttackNonDeconstructable>
+    </building>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>7</glowRadius>
+        <glowColor>(150,60,220,0)</glowColor>
+      </li>
+      <li Class="LichPhylactery.CompProperties_PlanarRift" />
+    </comps>
+  </ThingDef>
+
+  <JobDef>
+    <defName>LP_CommandRift</defName>
+    <driverClass>LichPhylactery.JobDriver_CommandRift</driverClass>
+    <reportString>正在命令裂口闭合。</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+
+  <!-- 来源位面：每波生物、升级后追加（第 3 波起） -->
+  <LichPhylactery.PortalPlaneDef>
+    <defName>LP_Plane_NineHells</defName>
+    <label>九狱</label>
+    <description>硫磺和铁锈的味道从裂口里涌出来：九狱的地狱犬成群结队，再往后寒冰魔也会亲自走出来。</description>
+    <color>(0.85, 0.25, 0.15)</color>
+    <spawns>
+      <li><kind>LP_HellHound</kind><count>2~3</count></li>
+      <li><kind>LP_FH_IceDevil</kind><count>1~1</count><fromWave>3</fromWave><scale>false</scale><maxTotal>1</maxTotal><side>thay</side></li>
+    </spawns>
+  </LichPhylactery.PortalPlaneDef>
+  <LichPhylactery.PortalPlaneDef>
+    <defName>LP_Plane_ElementalFire</defName>
+    <label>元素火位面</label>
+    <description>裂口里翻滚着火焰：地狱犬先冲出来，后面跟着浑身着火的火裔元素裔。</description>
+    <color>(1, 0.55, 0.15)</color>
+    <spawns>
+      <li><kind>LP_HellHound</kind><count>2~3</count></li>
+      <li><kind>LP_FC_Genasi</kind><count>1~1</count><fromWave>3</fromWave><scale>false</scale><side>thay</side><special>fireGenasi</special></li>
+    </spawns>
+  </LichPhylactery.PortalPlaneDef>
+  <LichPhylactery.PortalPlaneDef>
+    <defName>LP_Plane_Feywild</defName>
+    <label>妖精荒野</label>
+    <description>裂口另一边是过分鲜艳的森林：闪光犬和魔化兽一起冲出来，它们彼此是死敌，也都想咬你。</description>
+    <color>(0.45, 0.95, 0.55)</color>
+    <spawns>
+      <li><kind>LP_BlinkDog</kind><count>2~2</count></li>
+      <li><kind>LP_DisplacerBeast</kind><count>1~1</count><side>rival</side></li>
+      <li><kind>LP_BlinkDog</kind><count>1~1</count><fromWave>3</fromWave><scale>false</scale></li>
+      <li><kind>LP_DisplacerBeast</kind><count>1~1</count><fromWave>3</fromWave><scale>false</scale><side>rival</side></li>
+    </spawns>
+  </LichPhylactery.PortalPlaneDef>
+  <LichPhylactery.PortalPlaneDef>
+    <defName>LP_Plane_Shadowfell</defName>
+    <label>幽影界</label>
+    <description>灰色的寒气从裂口里漫出来：冬狼成群，后面还有一只隐在阴影里、看不见的魔化兽。</description>
+    <color>(0.45, 0.5, 0.65)</color>
+    <spawns>
+      <li><kind>LP_WinterWolf</kind><count>2~3</count></li>
+      <li><kind>LP_DisplacerBeast</kind><count>1~1</count><fromWave>3</fromWave><scale>false</scale><special>invisible</special></li>
+    </spawns>
+  </LichPhylactery.PortalPlaneDef>
+
+  <HediffDef>
+    <defName>LP_PlanarSpawn</defName>
+    <label>位面来客</label>
+    <description>从位面裂口里出来的生物。</description>
+    <hediffClass>LichPhylactery.Hediff_PlanarSpawn</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_PlanarFlameBody</defName>
+    <label>元素火之躯</label>
+    <description>身体一直在燃烧，却不会被火伤到。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <defaultLabelColor>(1, 0.6, 0.2)</defaultLabelColor>
+    <everCurableByItem>false</everCurableByItem>
+    <stages><li><statFactors><Flammability>0</Flammability></statFactors></li></stages>
+    <modExtensions>
+      <li Class="LichPhylactery.ItemDamageFactors">
+        <factor>0</factor>
+        <damageDefs><li>Flame</li><li>Burn</li></damageDefs>
+        <keywords><li>Flame</li><li>Incendiary</li></keywords>
+        <excluded><li>Acid</li></excluded>
+      </li>
+    </modExtensions>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_ShadowVeil</defName>
+    <label>幽影隐匿</label>
+    <description>幽影界的阴影裹着它，肉眼看不见。驱散粉尘、识破卷轴能让它现形。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="HediffCompProperties_Invisibility"><visibleToPlayer>true</visibleToPlayer></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+  </HediffDef>
+
+  <!-- 位面残渣：裂口关闭后掉落；炼金材料 -->
+  <ThingCategoryDef>
+    <defName>LP_AlchemyMaterials</defName>
+    <label>炼金材料</label>
+    <parent>ResourcesRaw</parent>
+    <iconPath>Items/Materials/PlanarResidue/PlanarResidue_a</iconPath>
+  </ThingCategoryDef>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_PlanarResidue</defName>
+    <label>位面残渣</label>
+    <description>位面裂口闭合后留下的闪着紫光的结晶碎屑，摸上去时冷时热。炼金桌上用它加强药水，能让药效持续两倍时间。</description>
+    <graphicData>
+      <texPath>Items/Materials/PlanarResidue</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <soundInteract>Stone_Drop</soundInteract>
+    <soundDrop>Stone_Drop</soundDrop>
+    <stackLimit>50</stackLimit>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <statBases>
+      <MarketValue>60</MarketValue>
+      <Mass>0.2</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <thingCategories>
+      <li>LP_AlchemyMaterials</li>
+    </thingCategories>
+    <tradeTags>
+      <li>LP_Material</li>
+    </tradeTags>
+    <burnableByRecipe>false</burnableByRecipe>
+  </ThingDef>
+
+  <!-- 强化药水：同种药水持续时间 ×2 -->
+  <ThingDef ParentName="LP_PotionBase">
+    <defName>LP_PotionGreaterHealingEnhanced</defName>
+    <label>强化强效治疗药水</label>
+    <description>加了位面残渣的强效治疗药水，泛着淡淡的紫光。效果同强效治疗药水，加快愈合的时间延长到两倍（12小时）。巫妖和死灵造物喝了无效。</description>
+    <descriptionHyperlinks><HediffDef>LP_PotionHealing</HediffDef></descriptionHyperlinks>
+    <graphicData><texPath>Items/Potions/GreaterHealing</texPath><graphicClass>Graphic_Single</graphicClass><color>(0.85,0.7,1)</color></graphicData>
+    <statBases><MarketValue>300</MarketValue></statBases>
+    <ingestible><outcomeDoers><li Class="LichPhylactery.IngestionOutcomeDoer_LPPotion"><effect>greaterheal</effect><durationFactor>2</durationFactor></li></outcomeDoers></ingestible>
+    <comps><li Class="CompProperties_Drug"><listOrder>2210</listOrder></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_PotionBase">
+    <defName>LP_PotionFireResistanceEnhanced</defName>
+    <label>强化抗火药水</label>
+    <description>加了位面残渣的抗火药水，泛着淡淡的紫光。效果同抗火药水，持续时间延长到两倍（48小时）。</description>
+    <descriptionHyperlinks><HediffDef>LP_PotionFireResistance</HediffDef></descriptionHyperlinks>
+    <graphicData><texPath>Items/Potions/FireResistance</texPath><graphicClass>Graphic_Single</graphicClass><color>(0.85,0.7,1)</color></graphicData>
+    <statBases><MarketValue>230</MarketValue></statBases>
+    <ingestible><outcomeDoers><li Class="LichPhylactery.IngestionOutcomeDoer_LPPotion"><hediff>LP_PotionFireResistance</hediff><durationFactor>2</durationFactor></li></outcomeDoers></ingestible>
+    <comps><li Class="CompProperties_Drug"><listOrder>2211</listOrder></li></comps>
+  </ThingDef>
+  <RecipeDef ParentName="LP_PotionRecipeBase">
+    <defName>LP_BrewPotionGreaterHealingEnhanced</defName>
+    <label>强化强效治疗药水</label>
+    <description>用2份位面残渣加强1瓶强效治疗药水，药效持续时间×2。</description>
+    <jobString>正在强化药水。</jobString>
+    <workAmount>800</workAmount>
+    <ingredients>
+      <li><filter><thingDefs><li>LP_PlanarResidue</li></thingDefs></filter><count>2</count></li>
+      <li><filter><thingDefs><li>LP_PotionGreaterHealing</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_PlanarResidue</li><li>LP_PotionGreaterHealing</li></thingDefs></fixedIngredientFilter>
+    <products><LP_PotionGreaterHealingEnhanced>1</LP_PotionGreaterHealingEnhanced></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_PotionRecipeBase">
+    <defName>LP_BrewPotionFireResistanceEnhanced</defName>
+    <label>强化抗火药水</label>
+    <description>用2份位面残渣加强1瓶抗火药水，药效持续时间×2。</description>
+    <jobString>正在强化药水。</jobString>
+    <workAmount>800</workAmount>
+    <ingredients>
+      <li><filter><thingDefs><li>LP_PlanarResidue</li></thingDefs></filter><count>2</count></li>
+      <li><filter><thingDefs><li>LP_PotionFireResistance</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_PlanarResidue</li><li>LP_PotionFireResistance</li></thingDefs></fixedIngredientFilter>
+    <products><LP_PotionFireResistanceEnhanced>1</LP_PotionFireResistanceEnhanced></products>
+  </RecipeDef>
+</Defs>

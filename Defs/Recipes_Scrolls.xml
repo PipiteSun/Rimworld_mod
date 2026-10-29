@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.47.0 卷轴书桌：六张原来只能买或捡的法术卷轴可以抄写了（物品定义在 Defs/Items_Scrolls.xml，这里只加配方）。
+     “研究”工作、按智识；识破/防护邪恶/火球要“卷轴抄写”，传送/石化/复生要“高阶卷轴”和稀有材料。材料价值约为成品市价的 40–55%。 -->
+<Defs>
+  <RecipeDef Name="LP_DeskScrollRecipeBase" Abstract="True">
+    <workSpeedStat>ResearchSpeed</workSpeedStat>
+    <workSkill>Intellectual</workSkill>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_Drug</soundWorking>
+    <recipeUsers><li>LP_ScribeDesk</li></recipeUsers>
+    <researchPrerequisite>LP_Research_Scribing</researchPrerequisite>
+    <allowMixingIngredients>false</allowMixingIngredients>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LP_DeskScrollRecipeBase">
+    <defName>LP_WriteScrollTrueSeeing</defName>
+    <label>抄写识破卷轴</label>
+    <description>用10份布和1块熔岩结晶抄写一张识破卷轴。需要智识6。</description>
+    <jobString>正在抄写识破卷轴。</jobString>
+    <workAmount>1800</workAmount>
+    <skillRequirements><Intellectual>6</Intellectual></skillRequirements>
+    <ingredients><li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>10</count></li><li><filter><thingDefs><li>LP_LavaCrystal</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Cloth</li><li>LP_LavaCrystal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_ScrollTrueSeeing>1</LP_ScrollTrueSeeing></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_DeskScrollRecipeBase">
+    <defName>LP_WriteScrollProtectionEvil</defName>
+    <label>抄写防护邪恶卷轴</label>
+    <description>用10份布和20白银抄写一张防护邪恶卷轴。需要智识6。</description>
+    <jobString>正在抄写防护邪恶卷轴。</jobString>
+    <workAmount>1800</workAmount>
+    <skillRequirements><Intellectual>6</Intellectual></skillRequirements>
+    <ingredients><li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>10</count></li><li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>20</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Cloth</li><li>Silver</li></thingDefs></fixedIngredientFilter>
+    <products><LP_ScrollProtectionEvil>1</LP_ScrollProtectionEvil></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_DeskScrollRecipeBase">
+    <defName>LP_WriteScrollFireball</defName>
+    <label>抄写火球卷轴</label>
+    <description>用10份布和2块熔岩结晶抄写一张火球卷轴。需要智识8。</description>
+    <jobString>正在抄写火球卷轴。</jobString>
+    <workAmount>2200</workAmount>
+    <skillRequirements><Intellectual>8</Intellectual></skillRequirements>
+    <ingredients><li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>10</count></li><li><filter><thingDefs><li>LP_LavaCrystal</li></thingDefs></filter><count>2</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Cloth</li><li>LP_LavaCrystal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_ScrollFireball>1</LP_ScrollFireball></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_DeskScrollRecipeBase">
+    <defName>LP_WriteScrollTeleport</defName>
+    <label>抄写传送卷轴</label>
+    <description>用10份布和3秘银抄写一张传送卷轴。需要研究“高阶卷轴”和智识10。</description>
+    <jobString>正在抄写传送卷轴。</jobString>
+    <workAmount>3000</workAmount>
+    <researchPrerequisite>LP_Research_HighScrolls</researchPrerequisite>
+    <skillRequirements><Intellectual>10</Intellectual></skillRequirements>
+    <ingredients><li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>10</count></li><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>3</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Cloth</li><li>LP_Mithral</li></thingDefs></fixedIngredientFilter>
+    <products><LP_ScrollTeleport>1</LP_ScrollTeleport></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_DeskScrollRecipeBase">
+    <defName>LP_WriteScrollFleshToStone</defName>
+    <label>抄写石化卷轴</label>
+    <description>用10份布、2精金和10块任意石砖抄写一张石化卷轴。需要研究“高阶卷轴”和智识12。</description>
+    <jobString>正在抄写石化卷轴。</jobString>
+    <workAmount>3600</workAmount>
+    <researchPrerequisite>LP_Research_HighScrolls</researchPrerequisite>
+    <skillRequirements><Intellectual>12</Intellectual></skillRequirements>
+    <ingredients><li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>10</count></li><li><filter><thingDefs><li>LP_Adamantine</li></thingDefs></filter><count>2</count></li><li><filter><categories><li>StoneBlocks</li></categories></filter><count>10</count></li></ingredients>
+    <fixedIngredientFilter><categories><li>StoneBlocks</li></categories><thingDefs><li>Cloth</li><li>LP_Adamantine</li></thingDefs></fixedIngredientFilter>
+    <products><LP_ScrollFleshToStone>1</LP_ScrollFleshToStone></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_DeskScrollRecipeBase">
+    <defName>LP_WriteScrollRevivify</defName>
+    <label>抄写复生卷轴</label>
+    <description>用10份布、1片神迹残片和10金抄写一张复生卷轴。需要研究“高阶卷轴”和智识14。</description>
+    <jobString>正在抄写复生卷轴。</jobString>
+    <workAmount>6000</workAmount>
+    <researchPrerequisite>LP_Research_HighScrolls</researchPrerequisite>
+    <skillRequirements><Intellectual>14</Intellectual></skillRequirements>
+    <ingredients><li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>10</count></li><li><filter><thingDefs><li>LP_MiracleShard</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>10</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Cloth</li><li>LP_MiracleShard</li><li>Gold</li></thingDefs></fixedIngredientFilter>
+    <products><LP_ScrollRevivify>1</LP_ScrollRevivify></products>
+  </RecipeDef>
+</Defs>

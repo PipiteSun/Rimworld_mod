@@ -1,0 +1,14 @@
+<Defs>
+  <ThoughtDef>
+    <defName>LP_ConstructSerenity</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_ConstructSerenity</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li>
+        <label>死灵心智</label>
+        <description>死灵之力使我的心智保持安定。生者的纷扰仍会影响我，但我拥有源自不死躯体的平静。</description>
+        <baseMoodEffect>30</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

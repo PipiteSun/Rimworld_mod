@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- 1.19.0 派系。LichPhylactery.FactionExtension：设置开关、初始好感、斩首配置。 -->
+
+  <FactionDef ParentName="FactionBase" Name="LP_FactionBase" Abstract="True">
+    <humanlikeFaction>true</humanlikeFaction>
+    <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+    <maxCountAtGameStart>1</maxCountAtGameStart>
+    <configurationListOrderPriority>300</configurationListOrderPriority>
+    <listOrderPriority>25</listOrderPriority>
+    <settlementGenerationWeight>1</settlementGenerationWeight>
+    <canStageAttacks>true</canStageAttacks>
+    <settlementNameMaker>NamerSettlementOutlander</settlementNameMaker>
+    <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+    <allowedArrivalTemperatureRange>-40~45</allowedArrivalTemperatureRange>
+    <raidLootMaker>OutlanderRaidLootMaker</raidLootMaker>
+    <fixedIdeo>true</fixedIdeo>
+    <requiredPreceptsOnly>false</requiredPreceptsOnly>
+    <backstoryFilters>
+      <li>
+        <categories>
+          <li>Outlander</li>
+        </categories>
+      </li>
+    </backstoryFilters>
+    <raidCommonalityFromPointsCurve>
+      <points>
+        <li>(0, 1)</li>
+      </points>
+    </raidCommonalityFromPointsCurve>
+    <maxPawnCostPerTotalPointsCurve>
+      <points>
+        <li>(0,35)</li>
+        <li>(70, 50)</li>
+        <li>(800, 100)</li>
+        <li>(1300, 150)</li>
+        <li>(2000, 220)</li>
+        <li>(100000, 10000)</li>
+      </points>
+    </maxPawnCostPerTotalPointsCurve>
+  </FactionDef>
+
+  <!-- ==================== 费伦拓荒同盟 ==================== -->
+
+  <FactionDef ParentName="LP_FactionBase">
+    <defName>LP_FaerunColony</defName>
+    <label>费伦拓荒同盟</label>
+    <fixedName>费伦拓荒同盟</fixedName>
+    <description>从费伦大陆远渡而来的拓荒者同盟：人类、矮人、精灵和半兽人一同开垦这片陌生的土地。他们用剑与长弓自保，由圣武士和牧师维持秩序。\n\n同盟高层愿意和任何守规矩的邻居做生意。但他们痛恨亡灵和夺心魔——殖民地里若有巫妖或夺心魔，同盟会疏远你，教会里的狂热分子甚至可能不顾高层反对前来猎巫。</description>
+    <pawnSingular>拓荒者</pawnSingular>
+    <pawnsPlural>拓荒者</pawnsPlural>
+    <leaderTitle>执政官</leaderTitle>
+    <techLevel>Medieval</techLevel>
+    <categoryTag>LP_Faerun</categoryTag>
+    <factionIconPath>Factions/FaerunColony</factionIconPath>
+    <colorSpectrum>
+      <li>(0.20, 0.42, 0.92)</li>
+      <li>(0.42, 0.62, 1.00)</li>
+    </colorSpectrum>
+    <basicMemberKind>LP_FC_Guard</basicMemberKind>
+    <fixedLeaderKinds>
+      <li>LP_FC_Knight</li>
+    </fixedLeaderKinds>
+    <ideoName>拓荒者的誓约</ideoName>
+    <ideoDescription>正义、互助与对亡灵的警惕。拓荒者相信众神看着每一块新开垦的田地。</ideoDescription>
+    <forcedMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Structure_TheistAbstract</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Collectivist</li>
+    </forcedMemes>
+    <deityPresets>
+      <li>
+        <nameType>
+          <name>提尔</name><type>正义之神</type>
+        </nameType>
+        <gender>Male</gender>
+        <iconPath>UI/Deities/DeityGeneric</iconPath>
+      </li>
+      <li>
+        <nameType>
+          <name>拉森德</name><type>晨曦之神</type>
+        </nameType>
+        <gender>Male</gender>
+        <iconPath>UI/Deities/DeityGeneric</iconPath>
+      </li>
+    </deityPresets>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_Dwarf>0.14</LP_Dwarf>
+        <LP_Elf>0.12</LP_Elf>
+        <LP_HalfOrc>0.11</LP_HalfOrc>
+        <!-- 1.57.0 普通种族 -->
+        <LP_HillDwarf>0.05</LP_HillDwarf>
+        <LP_WoodElf>0.05</LP_WoodElf>
+        <LP_HalfElf>0.05</LP_HalfElf>
+        <LP_HalflingLightfoot>0.04</LP_HalflingLightfoot>
+        <LP_HalflingStout>0.03</LP_HalflingStout>
+        <LP_RockGnome>0.02</LP_RockGnome>
+        <LP_ForestGnome>0.02</LP_ForestGnome>
+        <LP_DeepGnome>0.01</LP_DeepGnome>
+      </xenotypeChances>
+    </xenotypeSet>
+    <caravanTraderKinds>
+      <li>LP_Caravan_DwarfSmith</li>
+      <li>LP_Caravan_ElfHerbalist</li>
+      <li>LP_Caravan_ChurchPriest</li>
+      <li>LP_Caravan_FaerunGoods</li>
+      <li>LP_Caravan_CloudLuxury</li>
+    </caravanTraderKinds>
+    <visitorTraderKinds>
+      <li>Visitor_Outlander_Standard</li>
+    </visitorTraderKinds>
+    <baseTraderKinds>
+      <li>Base_Outlander_Standard</li>
+    </baseTraderKinds>
+    <pawnGroupMakers>
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>100</commonality>
+        <options>
+          <LP_FC_Villager>4</LP_FC_Villager>
+          <LP_FC_Guard>10</LP_FC_Guard>
+          <LP_FC_Archer>8</LP_FC_Archer>
+          <LP_FC_Knight>3</LP_FC_Knight>
+          <LP_FC_Paladin>0.9</LP_FC_Paladin>
+          <LP_FC_Priest>0.9</LP_FC_Priest>
+          <LP_FC_Genasi>3</LP_FC_Genasi>
+          <LP_FC_LoxodonWarden>2</LP_FC_LoxodonWarden>
+          <LP_FC_AarakocraScout>2</LP_FC_AarakocraScout>
+          <LP_FC_OozeWanderer>1.5</LP_FC_OozeWanderer>
+        </options>
+      </li>
+      <li>
+        <kindDef>Peaceful</kindDef>
+        <options>
+          <LP_FC_Villager>16</LP_FC_Villager>
+          <LP_FC_Guard>8</LP_FC_Guard>
+          <LP_FC_Archer>4</LP_FC_Archer>
+          <LP_FC_Paladin>0.8</LP_FC_Paladin>
+          <LP_FC_Priest>0.8</LP_FC_Priest>
+          <LP_FC_Genasi>2</LP_FC_Genasi>
+          <LP_FC_LoxodonWarden>1</LP_FC_LoxodonWarden>
+          <LP_FC_AarakocraScout>2</LP_FC_AarakocraScout>
+          <LP_FC_OozeWanderer>1.5</LP_FC_OozeWanderer>
+          <LP_FC_CloudNoble>0.6</LP_FC_CloudNoble>
+        </options>
+      </li>
+      <!-- 1.34.1 云巨人奢侈品商队：云巨人贵族领队 -->
+      <li>
+        <kindDef>Trader</kindDef>
+        <traders>
+          <LP_FC_CloudNobleTrader>1</LP_FC_CloudNobleTrader>
+        </traders>
+        <carriers>
+          <Muffalo>4</Muffalo>
+          <Alpaca>4</Alpaca>
+        </carriers>
+        <guards>
+          <LP_FC_Knight>2</LP_FC_Knight>
+          <LP_FC_Guard>6</LP_FC_Guard>
+          <LP_FC_Servant>4</LP_FC_Servant>
+        </guards>
+      </li>
+      <li>
+        <kindDef>Trader</kindDef>
+        <traders>
+          <LP_FC_DwarfSmith>1</LP_FC_DwarfSmith>
+        </traders>
+        <carriers>
+          <Muffalo>6</Muffalo>
+          <Alpaca>4</Alpaca>
+        </carriers>
+        <guards>
+          <LP_FC_DwarfGuard>1</LP_FC_DwarfGuard>
+        </guards>
+      </li>
+      <li>
+        <kindDef>Trader</kindDef>
+        <traders>
+          <LP_FC_ElfHerbalist>1</LP_FC_ElfHerbalist>
+        </traders>
+        <carriers>
+          <Muffalo>4</Muffalo>
+          <Alpaca>4</Alpaca>
+        </carriers>
+        <guards>
+          <LP_FC_ElfRanger>1</LP_FC_ElfRanger>
+        </guards>
+      </li>
+      <li>
+        <kindDef>Trader</kindDef>
+        <traders>
+          <LP_FC_ChurchPriest>1</LP_FC_ChurchPriest>
+        </traders>
+        <carriers>
+          <Muffalo>6</Muffalo>
+          <Alpaca>4</Alpaca>
+        </carriers>
+        <guards>
+          <LP_FC_Paladin>1</LP_FC_Paladin>
+        </guards>
+      </li>
+      <li>
+        <kindDef>Trader</kindDef>
+        <traders>
+          <LP_FC_Trader>1</LP_FC_Trader>
+        </traders>
+        <carriers>
+          <Muffalo>6</Muffalo>
+          <Dromedary>3</Dromedary>
+          <Alpaca>3</Alpaca>
+        </carriers>
+        <guards>
+          <LP_FC_Guard>10</LP_FC_Guard>
+          <LP_FC_Archer>8</LP_FC_Archer>
+        </guards>
+      </li>
+      <li>
+        <kindDef>Settlement</kindDef>
+        <options>
+          <LP_FC_Villager>8</LP_FC_Villager>
+          <LP_FC_Guard>10</LP_FC_Guard>
+          <LP_FC_Archer>8</LP_FC_Archer>
+          <LP_FC_Knight>4</LP_FC_Knight>
+          <LP_FC_Paladin>1</LP_FC_Paladin>
+          <LP_FC_Priest>1</LP_FC_Priest>
+          <LP_FC_Genasi>3</LP_FC_Genasi>
+          <LP_FC_LoxodonWarden>2</LP_FC_LoxodonWarden>
+          <LP_FC_AarakocraScout>1</LP_FC_AarakocraScout>
+          <LP_FC_CloudNoble>0.3</LP_FC_CloudNoble>
+        </options>
+      </li>
+    </pawnGroupMakers>
+    <modExtensions>
+      <li Class="LichPhylactery.FactionExtension">
+        <toggle>colony</toggle>
+        <initialGoodwill>40</initialGoodwill>
+      </li>
+    </modExtensions>
+  </FactionDef>
+
+  <!-- ==================== 塞伊远征军 ==================== -->
+
+  <FactionDef ParentName="LP_FactionBase">
+    <defName>LP_FaerunHostile</defName>
+    <label>塞伊远征军</label>
+    <fixedName>塞伊远征军</fixedName>
+    <description>塞伊的红袍法师带着亡灵、符印巨魔和雇来的兽人、牛头人跨海而来，要在这片土地上建起新的魔法帝国。\n\n红袍法师是远征军的头脑：法师一倒，被他绑定的骷髅会当场崩解，符印巨魔会失控狂暴，兽人会四散奔逃。远征军不是天生的死敌，但很难讨好；红袍们对巫妖格外有兴趣。</description>
+    <pawnSingular>远征军</pawnSingular>
+    <pawnsPlural>远征军</pawnsPlural>
+    <leaderTitle>大法师</leaderTitle>
+    <techLevel>Medieval</techLevel>
+    <naturalEnemy>true</naturalEnemy>
+    <categoryTag>LP_Faerun</categoryTag>
+    <factionIconPath>Factions/FaerunHostile</factionIconPath>
+    <colorSpectrum>
+      <li>(0.72, 0.06, 0.06)</li>
+      <li>(0.92, 0.16, 0.12)</li>
+    </colorSpectrum>
+    <basicMemberKind>LP_FH_OrcWarrior</basicMemberKind>
+    <fixedLeaderKinds>
+      <li>LP_FH_RedWizard</li>
+    </fixedLeaderKinds>
+    <ideoName>塞伊的红袍</ideoName>
+    <ideoDescription>力量属于掌握魔法的人。其余的人生来就该服从。</ideoDescription>
+    <forcedMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Ideological</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Supremacist</li>
+    </forcedMemes>
+    <caravanTraderKinds>
+      <li>LP_Caravan_RedRobe</li>
+    </caravanTraderKinds>
+    <visitorTraderKinds>
+      <li>Visitor_Outlander_Standard</li>
+    </visitorTraderKinds>
+    <baseTraderKinds>
+      <li>Base_Outlander_Standard</li>
+    </baseTraderKinds>
+    <pawnGroupMakers>
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>100</commonality>
+        <options>
+          <LP_FH_RedWizard>5</LP_FH_RedWizard>
+          <LP_FH_RuneTroll>6</LP_FH_RuneTroll>
+          <LP_FH_OrcWarrior>14</LP_FH_OrcWarrior>
+          <LP_FH_MinotaurCharger>5</LP_FH_MinotaurCharger>
+          <LP_FH_GithMercenary>1.6</LP_FH_GithMercenary>
+          <LP_FH_OgreBrute>3</LP_FH_OgreBrute>
+          <LP_FH_IceDevil>1.5</LP_FH_IceDevil>
+          <LP_FH_Balor>0.5</LP_FH_Balor>
+          <LP_FH_GoblinRaider>9</LP_FH_GoblinRaider>
+          <LP_FH_KoboldSkulker>4</LP_FH_KoboldSkulker>
+          <LP_FH_DrowBlade>2.5</LP_FH_DrowBlade>
+        </options>
+      </li>
+      <li>
+        <kindDef>Peaceful</kindDef>
+        <options>
+          <LP_FH_RedWizard>4</LP_FH_RedWizard>
+          <LP_FH_OrcWarrior>10</LP_FH_OrcWarrior>
+          <LP_FH_MinotaurCharger>4</LP_FH_MinotaurCharger>
+          <LP_FH_GoblinRaider>5</LP_FH_GoblinRaider>
+        </options>
+      </li>
+      <li>
+        <kindDef>Trader</kindDef>
+        <traders>
+          <LP_FH_RedTrader>1</LP_FH_RedTrader>
+        </traders>
+        <carriers>
+          <Muffalo>6</Muffalo>
+          <Dromedary>4</Dromedary>
+        </carriers>
+        <guards>
+          <LP_FH_OrcWarrior>10</LP_FH_OrcWarrior>
+          <LP_FH_MinotaurCharger>4</LP_FH_MinotaurCharger>
+          <LP_FH_GithMercenary>0.6</LP_FH_GithMercenary>
+        </guards>
+      </li>
+      <li>
+        <kindDef>Settlement</kindDef>
+        <options>
+          <LP_FH_RedWizard>5</LP_FH_RedWizard>
+          <LP_FH_RuneTroll>6</LP_FH_RuneTroll>
+          <LP_FH_OrcWarrior>14</LP_FH_OrcWarrior>
+          <LP_FH_MinotaurCharger>5</LP_FH_MinotaurCharger>
+          <LP_FH_GithMercenary>1.6</LP_FH_GithMercenary>
+          <LP_FH_OgreBrute>3</LP_FH_OgreBrute>
+          <LP_FH_IceDevil>1.5</LP_FH_IceDevil>
+          <LP_FH_Balor>0.5</LP_FH_Balor>
+          <LP_FH_GoblinRaider>9</LP_FH_GoblinRaider>
+          <LP_FH_KoboldSkulker>4</LP_FH_KoboldSkulker>
+          <LP_FH_DrowBlade>2.5</LP_FH_DrowBlade>
+        </options>
+      </li>
+    </pawnGroupMakers>
+    <modExtensions>
+      <li Class="LichPhylactery.FactionExtension">
+        <toggle>hostile</toggle>
+        <initialGoodwill>-80</initialGoodwill>
+        <leaderKinds>
+          <li>LP_FH_RedWizard</li>
+        </leaderKinds>
+        <followerKinds>
+          <li>LP_FH_RuneTroll</li>
+          <li>LP_FH_OrcWarrior</li>
+        </followerKinds>
+        <followersPerLeader>6</followersPerLeader>
+        <constructsPerLeader>2~3</constructsPerLeader>
+      </li>
+    </modExtensions>
+  </FactionDef>
+
+  <!-- ==================== 余烬氏族 ==================== -->
+
+  <FactionDef ParentName="LP_FactionBase">
+    <defName>LP_EmberClan</defName>
+    <label>余烬氏族</label>
+    <fixedName>余烬氏族</fixedName>
+    <description>火巨人统治的锻炉氏族。少数火巨人坐在熔炉旁发号施令，抓来的人类和半兽人穿着铁甲替他们打仗、挖矿。\n\n余烬氏族对外人冷淡，但尊重同为火巨人的殖民地；他们憎恨巨魔，也和塞伊远征军是世仇。火巨人一倒，奴兵们就会扔下武器逃命。</description>
+    <pawnSingular>氏族成员</pawnSingular>
+    <pawnsPlural>氏族成员</pawnsPlural>
+    <leaderTitle>炉主</leaderTitle>
+    <techLevel>Medieval</techLevel>
+    <factionIconPath>Factions/EmberClan</factionIconPath>
+    <colorSpectrum>
+      <li>(1.00, 0.46, 0.04)</li>
+      <li>(1.00, 0.66, 0.18)</li>
+    </colorSpectrum>
+    <basicMemberKind>LP_EC_HumanSlave</basicMemberKind>
+    <fixedLeaderKinds>
+      <li>LP_EC_FireGiant</li>
+    </fixedLeaderKinds>
+    <ideoName>熔炉的律法</ideoName>
+    <ideoDescription>火焰锻造强者，也熔掉弱者。弱者只配为强者握锤。</ideoDescription>
+    <forcedMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Structure_TheistEmbodied</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Supremacist</li>
+    </forcedMemes>
+    <deityPresets>
+      <li>
+        <nameType>
+          <name>苏尔特</name><type>火巨人之王</type>
+        </nameType>
+        <gender>Male</gender>
+        <iconPath>UI/Deities/DeityGeneric</iconPath>
+      </li>
+    </deityPresets>
+    <apparelStuffFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>Cloth</li>
+        <li>Leather_Plain</li>
+      </thingDefs>
+    </apparelStuffFilter>
+    <caravanTraderKinds>
+      <li>LP_Caravan_GiantSmith</li>
+    </caravanTraderKinds>
+    <visitorTraderKinds>
+      <li>Visitor_Outlander_Standard</li>
+    </visitorTraderKinds>
+    <baseTraderKinds>
+      <li>Base_Outlander_Standard</li>
+    </baseTraderKinds>
+    <pawnGroupMakers>
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>100</commonality>
+        <options>
+          <LP_EC_FireGiant>3</LP_EC_FireGiant>
+          <LP_EC_HumanSlave>12</LP_EC_HumanSlave>
+          <LP_EC_OrcSlave>3</LP_EC_OrcSlave>
+          <LP_EC_OgreSlave>2</LP_EC_OgreSlave>
+        </options>
+      </li>
+      <li>
+        <kindDef>Peaceful</kindDef>
+        <options>
+          <LP_EC_FireGiant>2</LP_EC_FireGiant>
+          <LP_EC_HumanSlave>12</LP_EC_HumanSlave>
+          <LP_EC_OrcSlave>3</LP_EC_OrcSlave>
+        </options>
+      </li>
+      <li>
+        <kindDef>Trader</kindDef>
+        <traders>
+          <LP_EC_GiantSmith>1</LP_EC_GiantSmith>
+        </traders>
+        <carriers>
+          <Muffalo>6</Muffalo>
+          <Elephant>2</Elephant>
+        </carriers>
+        <guards>
+          <LP_EC_HumanSlave>10</LP_EC_HumanSlave>
+          <LP_EC_OrcSlave>3</LP_EC_OrcSlave>
+        </guards>
+      </li>
+      <li>
+        <kindDef>Settlement</kindDef>
+        <options>
+          <LP_EC_FireGiant>3</LP_EC_FireGiant>
+          <LP_EC_HumanSlave>12</LP_EC_HumanSlave>
+          <LP_EC_OrcSlave>3</LP_EC_OrcSlave>
+          <LP_EC_OgreSlave>2</LP_EC_OgreSlave>
+        </options>
+      </li>
+    </pawnGroupMakers>
+    <modExtensions>
+      <li Class="LichPhylactery.FactionExtension">
+        <toggle>ember</toggle>
+        <initialGoodwill>-20</initialGoodwill>
+        <leaderKinds>
+          <li>LP_EC_FireGiant</li>
+        </leaderKinds>
+        <followerKinds>
+          <li>LP_EC_HumanSlave</li>
+          <li>LP_EC_OrcSlave</li>
+        </followerKinds>
+        <followersPerLeader>8</followersPerLeader>
+        <leaderCount>1~2</leaderCount>
+        <enemyFactions>
+          <li>LP_FaerunHostile</li>
+        </enemyFactions>
+      </li>
+    </modExtensions>
+  </FactionDef>
+
+  <!-- ==================== 幽暗殖巢 ==================== -->
+
+  <FactionDef ParentName="LP_FactionBase">
+    <defName>LP_IllithidColony</defName>
+    <label>幽暗殖巢</label>
+    <fixedName>幽暗殖巢</fixedName>
+    <description>从幽暗地域深处爬上来的夺心魔殖巢。几个夺心魔用灵能支配着一群被抓来的人类、矮人、精灵和半兽人，让他们像傀儡一样冲锋。\n\n殖巢不和任何人谈判。他们常常从地底挖穿上来，在殖民地中间冒出头。杀掉或击倒夺心魔，被支配的奴仆就会醒过来、瘫倒在地，可以带回去。</description>
+    <pawnSingular>殖巢成员</pawnSingular>
+    <pawnsPlural>殖巢成员</pawnsPlural>
+    <leaderTitle>主脑代言人</leaderTitle>
+    <techLevel>Ultra</techLevel>
+    <permanentEnemy>true</permanentEnemy>
+    <canStageAttacks>false</canStageAttacks>
+    <factionIconPath>Factions/IllithidColony</factionIconPath>
+    <colorSpectrum>
+      <li>(0.52, 0.18, 0.74)</li>
+      <li>(0.70, 0.36, 0.92)</li>
+    </colorSpectrum>
+    <basicMemberKind>LP_IC_Thrall</basicMemberKind>
+    <fixedLeaderKinds>
+      <li>LP_IC_MindFlayer</li>
+    </fixedLeaderKinds>
+    <ideoName>主脑的低语</ideoName>
+    <ideoDescription>所有心灵终将汇入主脑。</ideoDescription>
+    <forcedMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Ideological</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Supremacist</li>
+    </forcedMemes>
+    <arrivalModeWhitelist>
+      <li>LP_Burrow</li>
+      <li>EdgeWalkIn</li>
+    </arrivalModeWhitelist>
+    <pawnGroupMakers>
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>100</commonality>
+        <options>
+          <LP_IC_MindFlayer>2</LP_IC_MindFlayer>
+          <LP_IC_Thrall>12</LP_IC_Thrall>
+        </options>
+      </li>
+      <li>
+        <kindDef>Settlement</kindDef>
+        <options>
+          <LP_IC_MindFlayer>3</LP_IC_MindFlayer>
+          <LP_IC_Thrall>12</LP_IC_Thrall>
+        </options>
+      </li>
+    </pawnGroupMakers>
+    <modExtensions>
+      <li Class="LichPhylactery.FactionExtension">
+        <toggle>illithid</toggle>
+        <initialGoodwill>-100</initialGoodwill>
+        <leaderKinds>
+          <li>LP_IC_MindFlayer</li>
+        </leaderKinds>
+        <followerKinds>
+          <li>LP_IC_Thrall</li>
+        </followerKinds>
+        <followersPerLeader>8</followersPerLeader>
+        <leaderCount>1~3</leaderCount>
+      </li>
+    </modExtensions>
+  </FactionDef>
+
+  <!-- ==================== 黑网（隐藏，只出商队） ==================== -->
+
+  <FactionDef ParentName="LP_FactionBase">
+    <defName>LP_BlackNetwork</defName>
+    <label>黑网</label>
+    <fixedName>黑网</fixedName>
+    <description>没有据点、没有旗帜的走私网络。黑网的商人偶尔会出现在殖民地门口，卖奴隶、毒药和来路不明的货，也收器官、巨魔血和夺心魔的东西——价钱永远对他们有利。</description>
+    <pawnSingular>黑网商人</pawnSingular>
+    <pawnsPlural>黑网商人</pawnsPlural>
+    <techLevel>Industrial</techLevel>
+    <hidden>true</hidden>
+    <displayInFactionSelection>false</displayInFactionSelection>
+    <settlementGenerationWeight>0</settlementGenerationWeight>
+    <canStageAttacks>false</canStageAttacks>
+    <raidsForbidden>true</raidsForbidden>
+    <canGenerateQuestSites>false</canGenerateQuestSites>
+    <rescueesCanJoin>false</rescueesCanJoin>
+    <factionIconPath>Factions/BlackNetwork</factionIconPath>
+    <colorSpectrum>
+      <li>(0.26, 0.30, 0.30)</li>
+      <li>(0.34, 0.38, 0.36)</li>
+    </colorSpectrum>
+    <basicMemberKind>LP_BN_Enforcer</basicMemberKind>
+    <ideoName>价钱</ideoName>
+    <ideoDescription>一切都有价钱。</ideoDescription>
+    <forcedMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Ideological</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Individualist</li>
+    </forcedMemes>
+    <raidCommonalityFromPointsCurve>
+      <points>
+        <li>(0, 0)</li>
+      </points>
+    </raidCommonalityFromPointsCurve>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_HalfOrc>0.2</LP_HalfOrc>
+        <LP_Dwarf>0.1</LP_Dwarf>
+        <LP_Elf>0.1</LP_Elf>
+        <!-- 1.57.0 -->
+        <LP_Goblin>0.05</LP_Goblin>
+        <LP_Kobold>0.03</LP_Kobold>
+        <LP_Drow>0.03</LP_Drow>
+        <LP_HalflingLightfoot>0.03</LP_HalflingLightfoot>
+      </xenotypeChances>
+    </xenotypeSet>
+    <caravanTraderKinds>
+      <li>LP_Caravan_BlackNetwork</li>
+    </caravanTraderKinds>
+    <pawnGroupMakers>
+      <li>
+        <kindDef>Trader</kindDef>
+        <traders>
+          <LP_BN_Broker>1</LP_BN_Broker>
+        </traders>
+        <carriers>
+          <Muffalo>4</Muffalo>
+          <Dromedary>4</Dromedary>
+        </carriers>
+        <guards>
+          <LP_BN_Enforcer>1</LP_BN_Enforcer>
+        </guards>
+      </li>
+      <li>
+        <kindDef>Combat</kindDef>
+        <options>
+          <LP_BN_Enforcer>1</LP_BN_Enforcer>
+        </options>
+      </li>
+    </pawnGroupMakers>
+    <modExtensions>
+      <li Class="LichPhylactery.FactionExtension">
+        <toggle>blacknet</toggle>
+        <initialGoodwill>0</initialGoodwill>
+      </li>
+    </modExtensions>
+  </FactionDef>
+
+  <!-- ==================== 狂热分子（临时隐藏派系） ==================== -->
+
+  <FactionDef ParentName="LP_FactionBase">
+    <defName>LP_Zealots</defName>
+    <label>猎巫狂热分子</label>
+    <fixedName>猎巫狂热分子</fixedName>
+    <description>费伦拓荒同盟教会里的狂热分子。他们不顾同盟高层的反对，自行组织起来猎杀巫妖和夺心魔。杀死他们不会影响你和同盟的关系。</description>
+    <pawnSingular>狂热分子</pawnSingular>
+    <pawnsPlural>狂热分子</pawnsPlural>
+    <techLevel>Medieval</techLevel>
+    <hidden>true</hidden>
+    <permanentEnemy>true</permanentEnemy>
+    <displayInFactionSelection>false</displayInFactionSelection>
+    <settlementGenerationWeight>0</settlementGenerationWeight>
+    <canGenerateQuestSites>false</canGenerateQuestSites>
+    <rescueesCanJoin>false</rescueesCanJoin>
+    <factionIconPath>Factions/Zealots</factionIconPath>
+    <colorSpectrum>
+      <li>(0.96, 0.90, 0.64)</li>
+      <li>(1.00, 0.96, 0.80)</li>
+    </colorSpectrum>
+    <basicMemberKind>LP_FC_Paladin</basicMemberKind>
+    <ideoName>拓荒者的誓约</ideoName>
+    <ideoDescription>亡灵必须被焚尽。</ideoDescription>
+    <forcedMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Structure_TheistAbstract</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Supremacist</li>
+    </forcedMemes>
+    <!-- 1.20.0：和同盟一样给出固定神祇，避免世界生成时为固定意识形态随机起神名（中文环境偶尔解析失败报错） -->
+    <deityPresets>
+      <li>
+        <nameType>
+          <name>提尔</name><type>正义之神</type>
+        </nameType>
+        <gender>Male</gender>
+        <iconPath>UI/Deities/DeityGeneric</iconPath>
+      </li>
+      <li>
+        <nameType>
+          <name>拉森德</name><type>晨曦之神</type>
+        </nameType>
+        <gender>Male</gender>
+        <iconPath>UI/Deities/DeityGeneric</iconPath>
+      </li>
+    </deityPresets>
+    <raidCommonalityFromPointsCurve>
+      <points>
+        <li>(0, 0)</li>
+      </points>
+    </raidCommonalityFromPointsCurve>
+    <pawnGroupMakers>
+      <li>
+        <kindDef>Combat</kindDef>
+        <options>
+          <LP_FC_Paladin>2</LP_FC_Paladin>
+          <LP_FC_Priest>1</LP_FC_Priest>
+        </options>
+      </li>
+    </pawnGroupMakers>
+    <modExtensions>
+      <li Class="LichPhylactery.FactionExtension">
+        <toggle>colony</toggle>
+        <initialGoodwill>-100</initialGoodwill>
+      </li>
+    </modExtensions>
+  </FactionDef>
+
+</Defs>

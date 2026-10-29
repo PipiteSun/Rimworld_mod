@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.22.0 炼金投掷物：照原版手雷/燃烧瓶写法（与原版一样是可反复投掷的装备）。 -->
+<Defs>
+  <ThingDef Name="LP_ThrowableBase" ParentName="BaseWeapon" Abstract="True">
+    <weaponClasses><li>Ranged</li></weaponClasses>
+    <tickerType>Normal</tickerType>
+    <uiIconScale>1.3</uiIconScale>
+    <soundInteract>Interact_Grenade</soundInteract>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>Grenades</li></thingCategories>
+    <tradeTags><li>WeaponRanged</li><li>LP_Alchemy</li></tradeTags>
+    <statBases>
+      <Mass>1</Mass>
+      <RangedWeapon_Cooldown>2.66</RangedWeapon_Cooldown>
+      <WorkToMake>2400</WorkToMake>
+    </statBases>
+    <rotateInShelves>false</rotateInShelves>
+  </ThingDef>
+  <ThingDef Name="LP_ThrowableProjectileBase" ParentName="BaseGrenadeProjectile" Abstract="True">
+    <projectile>
+      <speed>12</speed>
+      <arcHeightFactor>2</arcHeightFactor>
+      <shadowSize>0.4</shadowSize>
+    </projectile>
+  </ThingDef>
+
+  <!-- 炼金之火 -->
+  <ThingDef ParentName="LP_ThrowableBase">
+    <defName>LP_AlchemistFire</defName>
+    <label>炼金之火</label>
+    <description>装着黏稠炼金燃液的陶瓶，摔碎后立刻在小范围内燃起大火，点燃目标。火焰会中断巨魔的再生6小时，并阻止它复活。</description>
+    <graphicData><texPath>Items/Throwables/AlchemistFire</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>45</MarketValue></statBases>
+    <weaponTags><li>LP_AlchemistFire</li><li>GrenadeFlame</li></weaponTags>
+    <verbs>
+      <li>
+        <label>投掷炼金之火</label>
+        <verbClass>Verb_LaunchProjectile</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <range>12.9</range>
+        <forcedMissRadius>1.9</forcedMissRadius>
+        <warmupTime>1.5</warmupTime>
+        <noiseRadius>4</noiseRadius>
+        <soundCast>ThrowMolotovCocktail</soundCast>
+        <targetParams><canTargetLocations>true</canTargetLocations></targetParams>
+        <defaultProjectile>LP_Proj_AlchemistFire</defaultProjectile>
+        <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>1.9</explosiveRadius>
+        <explosiveDamageType>Flame</explosiveDamageType>
+        <requiredDamageTypeToExplode>Flame</requiredDamageTypeToExplode>
+      </li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ThrowableProjectileBase">
+    <defName>LP_Proj_AlchemistFire</defName>
+    <label>炼金之火</label>
+    <thingClass>Projectile_Explosive</thingClass>
+    <graphicData><texPath>Items/Projectiles/AlchemistFire</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <projectile>
+      <explosionRadius>1.4</explosionRadius>
+      <damageDef>Flame</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+      <ai_IsIncendiary>true</ai_IsIncendiary>
+      <screenShakeFactor>0.5</screenShakeFactor>
+    </projectile>
+  </ThingDef>
+
+  <!-- 强酸瓶 -->
+  <ThingDef ParentName="LP_ThrowableBase">
+    <defName>LP_AcidVial</defName>
+    <label>强酸瓶</label>
+    <description>密封着强酸的玻璃小瓶，砸中单个目标后造成酸液灼伤。被命中者身上的服装受到三倍损伤。酸液会中断巨魔的再生6小时，并阻止它复活。</description>
+    <graphicData><texPath>Items/Throwables/AcidVial</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>40</MarketValue></statBases>
+    <weaponTags><li>LP_AcidVial</li></weaponTags>
+    <verbs>
+      <li>
+        <label>投掷强酸瓶</label>
+        <verbClass>Verb_LaunchProjectile</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <range>12.9</range>
+        <warmupTime>1.3</warmupTime>
+        <noiseRadius>3</noiseRadius>
+        <soundCast>ThrowGrenade</soundCast>
+        <defaultProjectile>LP_Proj_AcidVial</defaultProjectile>
+        <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+      </li>
+    </verbs>
+  </ThingDef>
+  <ThingDef ParentName="LP_ThrowableProjectileBase">
+    <defName>LP_Proj_AcidVial</defName>
+    <label>强酸瓶</label>
+    <thingClass>Bullet</thingClass>
+    <graphicData><texPath>Items/Projectiles/AcidVial</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <projectile>
+      <damageDef>LP_AlchemyAcid</damageDef>
+      <damageAmountBase>14</damageAmountBase>
+      <armorPenetrationBase>0.1</armorPenetrationBase>
+      <arcHeightFactor>1</arcHeightFactor>
+    </projectile>
+  </ThingDef>
+  <DamageDef>
+    <defName>LP_AlchemyAcid</defName>
+    <label>强酸</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0}被强酸溶蚀而死。</deathMessage>
+    <hediff>AcidBurn</hediff>
+    <armorCategory>Sharp</armorCategory>
+    <defaultDamage>14</defaultDamage>
+    <defaultArmorPenetration>0.1</defaultArmorPenetration>
+  </DamageDef>
+
+  <!-- 圣水 -->
+  <ThingDef ParentName="LP_ThrowableBase">
+    <defName>LP_HolyWater</defName>
+    <label>圣水</label>
+    <description>祝圣过的银瓶清水。在小范围内对死灵造物和巫妖造成约30点伤害，巫妖被命中还会失去15点精神力；对活人毫无伤害。</description>
+    <graphicData><texPath>Items/Throwables/HolyWater</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>55</MarketValue></statBases>
+    <weaponTags><li>LP_HolyWater</li></weaponTags>
+    <verbs>
+      <li>
+        <label>投掷圣水</label>
+        <verbClass>Verb_LaunchProjectile</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <range>12.9</range>
+        <forcedMissRadius>1.5</forcedMissRadius>
+        <warmupTime>1.3</warmupTime>
+        <noiseRadius>3</noiseRadius>
+        <soundCast>ThrowGrenade</soundCast>
+        <targetParams><canTargetLocations>true</canTargetLocations></targetParams>
+        <defaultProjectile>LP_Proj_HolyWater</defaultProjectile>
+        <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+      </li>
+    </verbs>
+  </ThingDef>
+  <ThingDef ParentName="LP_ThrowableProjectileBase">
+    <defName>LP_Proj_HolyWater</defName>
+    <label>圣水</label>
+    <thingClass>Projectile_Explosive</thingClass>
+    <graphicData><texPath>Items/Projectiles/HolyWater</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <projectile>
+      <explosionRadius>1.5</explosionRadius>
+      <damageDef>LP_HolyWater</damageDef>
+      <damageAmountBase>30</damageAmountBase>
+      <screenShakeFactor>0.2</screenShakeFactor>
+    </projectile>
+  </ThingDef>
+  <DamageDef>
+    <defName>LP_HolyWater</defName>
+    <label>圣水</label>
+    <workerClass>LichPhylactery.DamageWorker_HolyWater</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0}被圣水净化了。</deathMessage>
+    <hediff>LP_HolyBurn</hediff>
+    <defaultDamage>30</defaultDamage>
+    <armorCategory>Heat</armorCategory>
+    <makesBlood>false</makesBlood>
+    <explosionCellFleck>BlastExtinguisher</explosionCellFleck>
+    <explosionColorEdge>(1, 0.95, 0.7, 0.1)</explosionColorEdge>
+    <soundExplosion>Explosion_Stun</soundExplosion>
+  </DamageDef>
+  <HediffDef ParentName="InjuryBase">
+    <defName>LP_HolyBurn</defName>
+    <label>圣水灼伤</label>
+    <labelNoun>一处圣水灼伤</labelNoun>
+    <description>圣水在死灵之躯上灼出的伤口。</description>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>已包扎</labelTendedWell>
+        <labelTendedWellInner>已处理</labelTendedWellInner>
+        <labelSolidTendedWell>已处理</labelSolidTendedWell>
+      </li>
+    </comps>
+    <injuryProps>
+      <painPerSeverity>0.01875</painPerSeverity>
+      <averagePainPerSeverityPermanent>0.00625</averagePainPerSeverityPermanent>
+      <canMerge>true</canMerge>
+      <destroyedLabel>被净化</destroyedLabel>
+      <destroyedOutLabel>被净化</destroyedOutLabel>
+    </injuryProps>
+  </HediffDef>
+
+  <!-- 雷鸣石 -->
+  <ThingDef ParentName="LP_ThrowableBase">
+    <defName>LP_Thunderstone</defName>
+    <label>雷鸣石</label>
+    <description>封着一声雷鸣的符文石。落地炸响，让3×3范围内的人眩晕2秒，并打断正在预热或引导的能力。无法制作，可从商队购买或从敌人身上缴获。</description>
+    <graphicData><texPath>Items/Throwables/Thunderstone</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>90</MarketValue><Mass>0.5</Mass></statBases>
+    <weaponTags><li>LP_Thunderstone</li></weaponTags>
+    <verbs>
+      <li>
+        <label>投掷雷鸣石</label>
+        <verbClass>Verb_LaunchProjectile</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <range>14.9</range>
+        <forcedMissRadius>1</forcedMissRadius>
+        <warmupTime>1.2</warmupTime>
+        <noiseRadius>8</noiseRadius>
+        <soundCast>ThrowGrenade</soundCast>
+        <targetParams><canTargetLocations>true</canTargetLocations></targetParams>
+        <defaultProjectile>LP_Proj_Thunderstone</defaultProjectile>
+        <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+      </li>
+    </verbs>
+  </ThingDef>
+  <ThingDef ParentName="LP_ThrowableProjectileBase">
+    <defName>LP_Proj_Thunderstone</defName>
+    <label>雷鸣石</label>
+    <thingClass>LichPhylactery.Projectile_LPAlchemy</thingClass>
+    <graphicData><texPath>Items/Projectiles/Thunderstone</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <projectile><damageDef>Stun</damageDef><damageAmountBase>0</damageAmountBase><explosionRadius>1.5</explosionRadius><soundExplode>Explosion_Stun</soundExplode></projectile>
+    <modExtensions><li Class="LichPhylactery.ThrowableEffectExtension"><effect>thunder</effect></li></modExtensions>
+  </ThingDef>
+
+  <!-- 黏胶袋 -->
+  <ThingDef ParentName="LP_ThrowableBase">
+    <defName>LP_TanglefootBag</defName>
+    <label>黏胶袋</label>
+    <description>装满强黏炼金胶的皮袋。破裂后黏住3×3范围内的人，10秒内移动速度-70%；体型超过2的大家伙只受一半效果。</description>
+    <graphicData><texPath>Items/Throwables/TanglefootBag</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>35</MarketValue></statBases>
+    <weaponTags><li>LP_TanglefootBag</li></weaponTags>
+    <verbs>
+      <li>
+        <label>投掷黏胶袋</label>
+        <verbClass>Verb_LaunchProjectile</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <range>12.9</range>
+        <forcedMissRadius>1.2</forcedMissRadius>
+        <warmupTime>1.2</warmupTime>
+        <noiseRadius>2</noiseRadius>
+        <soundCast>ThrowGrenade</soundCast>
+        <targetParams><canTargetLocations>true</canTargetLocations></targetParams>
+        <defaultProjectile>LP_Proj_TanglefootBag</defaultProjectile>
+        <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+      </li>
+    </verbs>
+  </ThingDef>
+  <ThingDef ParentName="LP_ThrowableProjectileBase">
+    <defName>LP_Proj_TanglefootBag</defName>
+    <label>黏胶袋</label>
+    <thingClass>LichPhylactery.Projectile_LPAlchemy</thingClass>
+    <graphicData><texPath>Items/Projectiles/TanglefootBag</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <projectile><damageDef>Stun</damageDef><damageAmountBase>0</damageAmountBase><explosionRadius>1.5</explosionRadius></projectile>
+    <modExtensions><li Class="LichPhylactery.ThrowableEffectExtension"><effect>tangle</effect></li></modExtensions>
+  </ThingDef>
+  <HediffDef>
+    <defName>LP_Tanglefoot</defName>
+    <label>被黏住</label>
+    <description>脚下黏满炼金胶，几乎迈不开步子。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <maxSeverity>1</maxSeverity>
+    <initialSeverity>1</initialSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>600</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+    </comps>
+    <stages>
+      <li><label>轻微</label><statFactors><MoveSpeed>0.65</MoveSpeed></statFactors></li>
+      <li><minSeverity>0.75</minSeverity><statFactors><MoveSpeed>0.3</MoveSpeed></statFactors></li>
+    </stages>
+  </HediffDef>
+
+  <!-- 驱散粉尘 -->
+  <ThingDef ParentName="LP_ThrowableBase">
+    <defName>LP_DispelDust</defName>
+    <label>驱散粉尘</label>
+    <description>研磨过的反魔法晶尘。扬开后5×5范围内的人30秒内魔法被驱散：护盾腰带停摆，力能龙裔的偏折、朦胧与错位失效，隐形和灵能隐匿被迫现形，护盾类灵能（例如VPE的护盾）直接消散。还能让石化的石像复原。无法制作，可从商队购买或从敌人身上缴获。</description>
+    <graphicData><texPath>Items/Throwables/DispelDust</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>120</MarketValue><Mass>0.4</Mass></statBases>
+    <weaponTags><li>LP_DispelDust</li></weaponTags>
+    <verbs>
+      <li>
+        <label>扬撒驱散粉尘</label>
+        <verbClass>Verb_LaunchProjectile</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <range>10.9</range>
+        <forcedMissRadius>1</forcedMissRadius>
+        <warmupTime>1.2</warmupTime>
+        <noiseRadius>2</noiseRadius>
+        <soundCast>ThrowGrenade</soundCast>
+        <targetParams><canTargetLocations>true</canTargetLocations></targetParams>
+        <defaultProjectile>LP_Proj_DispelDust</defaultProjectile>
+        <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+      </li>
+    </verbs>
+  </ThingDef>
+  <ThingDef ParentName="LP_ThrowableProjectileBase">
+    <defName>LP_Proj_DispelDust</defName>
+    <label>驱散粉尘</label>
+    <thingClass>LichPhylactery.Projectile_LPAlchemy</thingClass>
+    <graphicData><texPath>Items/Projectiles/DispelDust</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <projectile><damageDef>Stun</damageDef><damageAmountBase>0</damageAmountBase><explosionRadius>2.5</explosionRadius></projectile>
+    <modExtensions><li Class="LichPhylactery.ThrowableEffectExtension"><effect>dispel</effect></li></modExtensions>
+  </ThingDef>
+  <HediffDef>
+    <defName>LP_MagicDispelled</defName>
+    <label>魔法被驱散</label>
+    <description>身上的魔法被驱散粉尘压制：护盾腰带停摆，力能龙裔的偏折、朦胧与错位失效，隐形被迫现形。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.75, 0.75, 0.9)</defaultLabelColor>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>1800</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+    </comps>
+    <modExtensions>
+      <li Class="LichPhylactery.DispelExtension">
+        <removeHediffs>
+          <li>VPE_Overshield</li>
+          <li>VPE_FireShield</li>
+          <li>VPE_IceShield</li>
+          <li>VPE_DeathShield</li>
+          <li>VPE_AnimalOvershield</li>
+          <li>VPE_GuardianSkipBarrier</li>
+        </removeHediffs>
+      </li>
+    </modExtensions>
+  </HediffDef>
+</Defs>

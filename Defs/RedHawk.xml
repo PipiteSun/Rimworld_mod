@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- 1.64.0 红鹰商业联盟（ArtSource/RedHawk-1.64.0-spec.md）：中立贸易派系，三种商队、据点与飞空商船。
+       库存生成器在 Source/RedHawk.cs；HAR 种族奴隶条目在 Bridges/HAR/Patches/RedHawk_HAR.xml。 -->
+
+  <FactionDef ParentName="LP_FactionBase">
+    <defName>LP_RedHawkLeague</defName>
+    <label>红鹰商业联盟</label>
+    <fixedName>红鹰商业联盟</fixedName>
+    <description>横跨费伦各大港口的商业联盟，旗帜上是一只叼着金币的红鹰。红鹰不问来历、只认契约：奴隶、龙鳞、秘银、深渊的灵魂币，乃至异界宗主亲笔签下的契约书，只要价钱合适都能买到。\n\n联盟对巫妖、夺心魔或恶魔契约者都没有偏见——在他们眼里，这些只是更大的主顾。</description>
+    <pawnSingular>红鹰商人</pawnSingular>
+    <pawnsPlural>红鹰商人</pawnsPlural>
+    <leaderTitle>总商</leaderTitle>
+    <techLevel>Medieval</techLevel>
+    <factionIconPath>Factions/RedHawkLeague</factionIconPath>
+    <colorSpectrum>
+      <li>(0.62, 0.12, 0.10)</li>
+      <li>(0.80, 0.22, 0.14)</li>
+    </colorSpectrum>
+    <basicMemberKind>LP_RH_Mercenary</basicMemberKind>
+    <fixedLeaderKinds>
+      <li>LP_RH_Leader</li>
+    </fixedLeaderKinds>
+    <ideoName>金与契</ideoName>
+    <ideoDescription>一切交易都要签字，一切签字都要兑现。</ideoDescription>
+    <forcedMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Ideological</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Individualist</li>
+    </forcedMemes>
+    <!-- 奴隶贩子不能反对奴隶制 -->
+    <disallowedPrecepts>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Slavery_Abhorrent</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Slavery_Disapproved</li>
+    </disallowedPrecepts>
+    <!-- 同 1.20.0：给固定神祇，避免为固定意识形态随机起中文神名时报错 -->
+    <deityPresets>
+      <li>
+        <nameType>
+          <name>瓦奥克</name><type>财富之神</type>
+        </nameType>
+        <gender>Male</gender>
+        <iconPath>UI/Deities/DeityGeneric</iconPath>
+      </li>
+    </deityPresets>
+    <!-- 商人不爱打仗：敌对时的袭击权重 ×0.5 -->
+    <raidCommonalityFromPointsCurve>
+      <points>
+        <li>(0, 0.5)</li>
+      </points>
+    </raidCommonalityFromPointsCurve>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_HalfElf>0.12</LP_HalfElf>
+        <LP_Tiefling>0.10</LP_Tiefling>
+        <LP_HalflingLightfoot>0.08</LP_HalflingLightfoot>
+        <LP_Dwarf>0.06</LP_Dwarf>
+        <LP_RockGnome>0.05</LP_RockGnome>
+        <LP_HalfOrc>0.06</LP_HalfOrc>
+        <LP_Hobgoblin>0.04</LP_Hobgoblin>
+        <LP_Githyanki>0.02</LP_Githyanki>
+      </xenotypeChances>
+    </xenotypeSet>
+    <caravanTraderKinds>
+      <li>LP_Caravan_RHSlaver</li>
+      <li>LP_Caravan_RHMaterials</li>
+      <li>LP_Caravan_RHPact</li>
+    </caravanTraderKinds>
+    <visitorTraderKinds>
+      <li>Visitor_Outlander_Standard</li>
+    </visitorTraderKinds>
+    <baseTraderKinds>
+      <li>LP_Base_RedHawk</li>
+    </baseTraderKinds>
+    <pawnGroupMakers>
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>100</commonality>
+        <options>
+          <LP_RH_Mercenary>10</LP_RH_Mercenary>
+          <LP_RH_Crossbowman>8</LP_RH_Crossbowman>
+          <LP_RH_Gladiator>2</LP_RH_Gladiator>
+        </options>
+      </li>
+      <li>
+        <kindDef>Peaceful</kindDef>
+        <options>
+          <LP_RH_Merchant>10</LP_RH_Merchant>
+          <LP_RH_Mercenary>6</LP_RH_Mercenary>
+          <LP_RH_Crossbowman>4</LP_RH_Crossbowman>
+        </options>
+      </li>
+      <li>
+        <kindDef>Trader</kindDef>
+        <traders>
+          <LP_RH_Slaver>1</LP_RH_Slaver>
+        </traders>
+        <carriers>
+          <Muffalo>6</Muffalo>
+          <Dromedary>3</Dromedary>
+          <Alpaca>3</Alpaca>
+        </carriers>
+        <guards>
+          <LP_RH_Mercenary>5</LP_RH_Mercenary>
+          <LP_RH_Crossbowman>3</LP_RH_Crossbowman>
+          <LP_RH_Gladiator>1</LP_RH_Gladiator>
+        </guards>
+      </li>
+      <li>
+        <kindDef>Trader</kindDef>
+        <traders>
+          <LP_RH_Appraiser>1</LP_RH_Appraiser>
+        </traders>
+        <carriers>
+          <Muffalo>6</Muffalo>
+          <Dromedary>3</Dromedary>
+          <Alpaca>3</Alpaca>
+        </carriers>
+        <guards>
+          <LP_RH_Mercenary>5</LP_RH_Mercenary>
+          <LP_RH_Crossbowman>3</LP_RH_Crossbowman>
+        </guards>
+      </li>
+      <li>
+        <kindDef>Trader</kindDef>
+        <traders>
+          <LP_RH_PactBroker>1</LP_RH_PactBroker>
+        </traders>
+        <carriers>
+          <Muffalo>6</Muffalo>
+          <Dromedary>3</Dromedary>
+          <Alpaca>3</Alpaca>
+        </carriers>
+        <guards>
+          <LP_RH_Mercenary>5</LP_RH_Mercenary>
+          <LP_RH_Crossbowman>3</LP_RH_Crossbowman>
+        </guards>
+      </li>
+      <li>
+        <kindDef>Settlement</kindDef>
+        <options>
+          <LP_RH_Merchant>6</LP_RH_Merchant>
+          <LP_RH_Mercenary>10</LP_RH_Mercenary>
+          <LP_RH_Crossbowman>8</LP_RH_Crossbowman>
+          <LP_RH_Gladiator>2</LP_RH_Gladiator>
+        </options>
+      </li>
+    </pawnGroupMakers>
+    <modExtensions>
+      <li Class="LichPhylactery.FactionExtension">
+        <toggle>redhawk</toggle>
+        <initialGoodwill>10</initialGoodwill>
+      </li>
+    </modExtensions>
+  </FactionDef>
+
+  <!-- ==================== 成员（红金配色） ==================== -->
+
+  <PawnKindDef Name="LP_RHBase" ParentName="LP_FighterBase" Abstract="True">
+    <defaultFactionDef>LP_RedHawkLeague</defaultFactionDef>
+    <apparelColor>(0.62, 0.14, 0.10)</apparelColor>
+    <ignoreIdeoApparelColors>true</ignoreIdeoApparelColors>
+  </PawnKindDef>
+
+  <PawnKindDef Name="LP_RHTraderBase" ParentName="LP_RHBase" Abstract="True">
+    <combatPower>45</combatPower>
+    <trader>true</trader>
+    <isFighter>false</isFighter>
+    <requiredWorkTags Inherit="False" />
+    <minGenerationAge>22</minGenerationAge>
+    <apparelMoney>300~600</apparelMoney>
+    <weaponMoney>100~250</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeBasic</li>
+    </weaponTags>
+    <skills>
+      <li>
+        <skill>Social</skill>
+        <range>6~12</range>
+      </li>
+    </skills>
+    <initialResistanceRange>14~22</initialResistanceRange>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_RHTraderBase">
+    <defName>LP_RH_Merchant</defName>
+    <label>红鹰商人</label>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_RHTraderBase">
+    <defName>LP_RH_Slaver</defName>
+    <label>奴隶贩子</label>
+    <combatPower>55</combatPower>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_HalfOrc>0.5</LP_HalfOrc>
+      </xenotypeChances>
+    </xenotypeSet>
+    <weaponTags Inherit="False">
+      <li>MedievalMeleeBasic</li>
+      <li>NeolithicMeleeBasic</li>
+    </weaponTags>
+    <!-- 1.61.0 制伏短棍：随身带一根，不进 weaponTags（制伏武器不给 NPC 当主武器） -->
+    <inventoryOptions>
+      <thingDef>LP_SubduingCudgel</thingDef>
+      <countRange>1~1</countRange>
+    </inventoryOptions>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_RHTraderBase">
+    <defName>LP_RH_Appraiser</defName>
+    <label>材料鉴定师</label>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_RockGnome>0.5</LP_RockGnome>
+        <LP_Dwarf>0.5</LP_Dwarf>
+      </xenotypeChances>
+    </xenotypeSet>
+    <apparelRequired>
+      <li>Apparel_Robe</li>
+    </apparelRequired>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_RHTraderBase">
+    <defName>LP_RH_PactBroker</defName>
+    <label>契约掮客</label>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_Tiefling>1</LP_Tiefling>
+      </xenotypeChances>
+    </xenotypeSet>
+    <apparelRequired>
+      <li>Apparel_Robe</li>
+    </apparelRequired>
+    <weaponTags Inherit="False">
+      <li>NeolithicMeleeBasic</li>
+    </weaponTags>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_RHBase">
+    <defName>LP_RH_Mercenary</defName>
+    <label>红鹰佣兵</label>
+    <combatPower>65</combatPower>
+    <canBeSapper>true</canBeSapper>
+    <apparelMoney>500~900</apparelMoney>
+    <apparelRequired>
+      <li>Apparel_SimpleHelmet</li>
+    </apparelRequired>
+    <weaponMoney>200~400</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeDecent</li>
+      <li>MedievalMeleeAdvanced</li>
+    </weaponTags>
+    <skills>
+      <li>
+        <skill>Melee</skill>
+        <range>6~10</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_RHBase">
+    <defName>LP_RH_Crossbowman</defName>
+    <label>红鹰弩手</label>
+    <combatPower>55</combatPower>
+    <apparelMoney>300~600</apparelMoney>
+    <weaponMoney>150~300</weaponMoney>
+    <weaponTags>
+      <li>NeolithicRangedDecent</li>
+      <li>NeolithicRangedHeavy</li>
+    </weaponTags>
+    <skills>
+      <li>
+        <skill>Shooting</skill>
+        <range>6~10</range>
+      </li>
+    </skills>
+    <disallowedTraits>
+      <li>Brawler</li>
+    </disallowedTraits>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_RHBase">
+    <defName>LP_RH_Gladiator</defName>
+    <label>角斗士</label>
+    <combatPower>110</combatPower>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_Ogre>0.34</LP_Ogre>
+        <LP_Minotaur>0.33</LP_Minotaur>
+        <LP_HalfOrc>0.33</LP_HalfOrc>
+      </xenotypeChances>
+    </xenotypeSet>
+    <apparelMoney>200~500</apparelMoney>
+    <weaponMoney>400~800</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeAdvanced</li>
+    </weaponTags>
+    <skills>
+      <li>
+        <skill>Melee</skill>
+        <range>10~14</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_RHBase">
+    <defName>LP_RH_Leader</defName>
+    <label>红鹰总商</label>
+    <combatPower>90</combatPower>
+    <factionLeader>true</factionLeader>
+    <minGenerationAge>30</minGenerationAge>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_HalfElf>0.4</LP_HalfElf>
+      </xenotypeChances>
+    </xenotypeSet>
+    <itemQuality>Good</itemQuality>
+    <apparelMoney>1200~2200</apparelMoney>
+    <apparelRequired>
+      <li>Apparel_Robe</li>
+    </apparelRequired>
+    <weaponMoney>500~1000</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeAdvanced</li>
+    </weaponTags>
+    <skills>
+      <li>
+        <skill>Social</skill>
+        <range>12~18</range>
+      </li>
+    </skills>
+    <initialResistanceRange>30~45</initialResistanceRange>
+  </PawnKindDef>
+
+  <!-- 奴隶库存的通用种类：人类 + 生成时 ForcedXenotype；照原版奴隶（背景过滤、粗衣、无武器）。 -->
+  <PawnKindDef ParentName="SlaveBase">
+    <defName>LP_RH_SlaveStock</defName>
+    <label>奴隶</label>
+    <minGenerationAge>16</minGenerationAge>
+    <maxGenerationAge>45</maxGenerationAge>
+    <apparelMoney>0~200</apparelMoney>
+    <xenotypeSet Inherit="False">
+      <xenotypeChances />
+    </xenotypeSet>
+  </PawnKindDef>
+
+  <!-- ==================== 商队 ==================== -->
+
+  <TraderKindDef>
+    <defName>LP_Caravan_RHSlaver</defName>
+    <label>红鹰奴隶商队</label>
+    <commonality>1</commonality>
+    <stockGenerators>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Silver</thingDef>
+        <countRange>1000~1600</countRange>
+      </li>
+      <li Class="LichPhylactery.StockGenerator_RHRaceSlaves">
+        <countRange>10~14</countRange>
+        <minRare>3</minRare>
+        <entries>
+          <li><xenotype>LP_HalfOrc</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_Elf</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_WoodElf</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_Dwarf</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_HillDwarf</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_HalflingLightfoot</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_HalflingStout</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_RockGnome</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_ForestGnome</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_HalfElf</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_Kobold</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_Goblin</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_Hobgoblin</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_Bugbear</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_Drow</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_DeepGnome</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Tiefling</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Aasimar</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_GenasiFire</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_GenasiWater</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_GenasiEarth</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_GenasiAir</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Loxodon</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Aarakocra</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Ogre</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Minotaur</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Troll</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Githyanki</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Oozefolk</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_ForceDragon</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Satyr</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Dryad</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Changeling</xenotype><tier>Rare</tier></li>
+        </entries>
+      </li>
+      <li Class="LichPhylactery.StockGenerator_RHDefList">
+        <entries>
+          <li><def>LP_SubduingCudgel</def><countRange>1~2</countRange></li>
+          <li><def>LP_NetCrossbow</def><chance>0.5</chance></li>
+          <li><def>LP_SleepDustPouch</def><countRange>3~6</countRange></li>
+        </entries>
+      </li>
+      <li Class="StockGenerator_BuySlaves" />
+      <li Class="StockGenerator_BuyExpensiveSimple" />
+      <li Class="StockGenerator_BuyTradeTag"><tag>Art</tag></li>
+    </stockGenerators>
+    <modExtensions>
+      <li Class="LichPhylactery.TraderGroupExtension">
+        <traderKind>LP_RH_Slaver</traderKind>
+      </li>
+    </modExtensions>
+  </TraderKindDef>
+
+  <TraderKindDef>
+    <defName>LP_Caravan_RHMaterials</defName>
+    <label>红鹰魔法材料商队</label>
+    <commonality>1</commonality>
+    <stockGenerators>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Silver</thingDef>
+        <countRange>1000~1500</countRange>
+      </li>
+      <li Class="LichPhylactery.StockGenerator_RHDefList">
+        <entries>
+          <li><def>LP_Mithral</def><countRange>40~100</countRange></li>
+          <li><def>LP_Adamantine</def><countRange>20~60</countRange></li>
+          <li><def>LP_ColdIron</def><countRange>60~150</countRange></li>
+          <li><def>LP_LavaCrystal</def><countRange>15~40</countRange></li>
+          <li><def>LP_DragonShed</def><countRange>5~15</countRange><chance>0.7</chance></li>
+          <li><def>LP_DragonFang</def><countRange>3~8</countRange><chance>0.5</chance></li>
+          <li><def>LP_TrollBlood</def><countRange>6~15</countRange><chance>0.8</chance></li>
+          <li><def>LP_TrollHide</def><countRange>30~80</countRange><chance>0.6</chance></li>
+          <li><def>LP_Leather_WinterWolf</def><countRange>30~80</countRange><chance>0.5</chance></li>
+          <li><def>LP_SkyAmber</def><countRange>2~5</countRange><chance>0.5</chance></li>
+          <li><def>LP_FogFlask</def><countRange>3~8</countRange><chance>0.5</chance></li>
+          <li><def>LP_DemonBlood</def><countRange>3~8</countRange><chance>0.4</chance></li>
+          <li><def>LP_BlessedWater</def><countRange>4~10</countRange><chance>0.6</chance></li>
+        </entries>
+      </li>
+      <!-- 五色龙鳞：随机挑 2 色 -->
+      <li Class="LichPhylactery.StockGenerator_RHDefList">
+        <pickRange>2~2</pickRange>
+        <entries>
+          <li><def>LP_DragonScale_Red</def><countRange>10~25</countRange></li>
+          <li><def>LP_DragonScale_Blue</def><countRange>10~25</countRange></li>
+          <li><def>LP_DragonScale_Green</def><countRange>10~25</countRange></li>
+          <li><def>LP_DragonScale_Black</def><countRange>10~25</countRange></li>
+          <li><def>LP_DragonScale_White</def><countRange>10~25</countRange></li>
+        </entries>
+      </li>
+      <!-- 四种元素符：60% 出现，随机挑 2 种 -->
+      <li Class="LichPhylactery.StockGenerator_RHDefList">
+        <chance>0.6</chance>
+        <pickRange>2~2</pickRange>
+        <entries>
+          <li><def>LP_ElementalFocus_Fire</def><countRange>1~2</countRange></li>
+          <li><def>LP_ElementalFocus_Water</def><countRange>1~2</countRange></li>
+          <li><def>LP_ElementalFocus_Earth</def><countRange>1~2</countRange></li>
+          <li><def>LP_ElementalFocus_Air</def><countRange>1~2</countRange></li>
+        </entries>
+      </li>
+      <!-- 五色龙之血：15% 出现 1 瓶 -->
+      <li Class="LichPhylactery.StockGenerator_RHDefList">
+        <chance>0.15</chance>
+        <pickRange>1~1</pickRange>
+        <entries>
+          <li><def>LP_DragonBlood_Red</def></li>
+          <li><def>LP_DragonBlood_Blue</def></li>
+          <li><def>LP_DragonBlood_Green</def></li>
+          <li><def>LP_DragonBlood_Black</def></li>
+          <li><def>LP_DragonBlood_White</def></li>
+        </entries>
+      </li>
+      <li Class="StockGenerator_BuyExpensiveSimple" />
+      <li Class="StockGenerator_BuyTradeTag"><tag>Art</tag></li>
+    </stockGenerators>
+    <modExtensions>
+      <li Class="LichPhylactery.TraderGroupExtension">
+        <traderKind>LP_RH_Appraiser</traderKind>
+      </li>
+    </modExtensions>
+  </TraderKindDef>
+
+  <TraderKindDef>
+    <defName>LP_Caravan_RHPact</defName>
+    <label>红鹰契约卷轴商队</label>
+    <commonality>0.8</commonality>
+    <stockGenerators>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Silver</thingDef>
+        <countRange>1200~2000</countRange>
+      </li>
+      <!-- 每张契约书来自不同宗主；关掉「异界契约」时不卖 -->
+      <li Class="LichPhylactery.StockGenerator_RHPactScrolls">
+        <countRange>2~4</countRange>
+      </li>
+      <li Class="LichPhylactery.StockGenerator_RHDefList">
+        <entries>
+          <li><def>LP_SoulCoin</def><countRange>15~40</countRange><pactOffFactor>2</pactOffFactor></li>
+          <li><def>LP_TrueNameScroll</def><countRange>1~2</countRange><chance>0.6</chance></li>
+          <li><def>LP_Demonomicon</def><chance>0.5</chance></li>
+          <li><def>LP_DimensionalShackles</def><countRange>1~2</countRange><chance>0.6</chance></li>
+          <li><def>LP_DemonBlood</def><countRange>4~10</countRange><chance>0.7</chance><pactOffFactor>2</pactOffFactor></li>
+          <li><def>LP_EntanglingRope</def><countRange>1~2</countRange><chance>0.5</chance><requires>pact</requires></li>
+          <li><def>LP_InfernalPitchfork</def><chance>0.25</chance><requires>pact</requires></li>
+          <li><def>LP_WildHuntHorn</def><chance>0.15</chance><requires>pact</requires></li>
+          <li><def>LP_FeySilverBow</def><chance>0.15</chance><requires>pact</requires></li>
+        </entries>
+      </li>
+      <li Class="StockGenerator_BuyTradeTag"><tag>LP_Pact</tag></li>
+      <li Class="StockGenerator_BuySingleDef"><thingDef>LP_CelestialMantle</thingDef></li>
+      <li Class="StockGenerator_BuyExpensiveSimple" />
+    </stockGenerators>
+    <modExtensions>
+      <li Class="LichPhylactery.TraderGroupExtension">
+        <traderKind>LP_RH_PactBroker</traderKind>
+      </li>
+    </modExtensions>
+  </TraderKindDef>
+
+  <!-- ==================== 据点：红鹰商站（三类各少一些） ==================== -->
+
+  <TraderKindDef>
+    <defName>LP_Base_RedHawk</defName>
+    <label>红鹰商站</label>
+    <stockGenerators>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Silver</thingDef>
+        <countRange>2000~3500</countRange>
+      </li>
+      <li Class="LichPhylactery.StockGenerator_RHRaceSlaves">
+        <countRange>6~8</countRange>
+        <minRare>2</minRare>
+        <entries>
+          <li><xenotype>LP_HalfOrc</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_Elf</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_WoodElf</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_Dwarf</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_HillDwarf</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_HalflingLightfoot</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_HalflingStout</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_RockGnome</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_ForestGnome</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_HalfElf</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_Kobold</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_Goblin</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_Hobgoblin</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_Bugbear</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_Drow</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_DeepGnome</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Tiefling</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Aasimar</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_GenasiFire</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_GenasiWater</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_GenasiEarth</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_GenasiAir</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Loxodon</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Aarakocra</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Ogre</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Minotaur</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Troll</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Githyanki</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Oozefolk</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_ForceDragon</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Satyr</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Dryad</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Changeling</xenotype><tier>Rare</tier></li>
+        </entries>
+      </li>
+      <li Class="LichPhylactery.StockGenerator_RHDefList">
+        <pickRange>8~8</pickRange>
+        <entries>
+          <li><def>LP_Mithral</def><countRange>20~50</countRange></li>
+          <li><def>LP_Adamantine</def><countRange>10~30</countRange></li>
+          <li><def>LP_ColdIron</def><countRange>30~80</countRange></li>
+          <li><def>LP_LavaCrystal</def><countRange>8~20</countRange></li>
+          <li><def>LP_DragonShed</def><countRange>3~8</countRange></li>
+          <li><def>LP_DragonScale_Red</def><countRange>5~12</countRange></li>
+          <li><def>LP_DragonScale_Blue</def><countRange>5~12</countRange></li>
+          <li><def>LP_DragonScale_Green</def><countRange>5~12</countRange></li>
+          <li><def>LP_DragonScale_Black</def><countRange>5~12</countRange></li>
+          <li><def>LP_DragonScale_White</def><countRange>5~12</countRange></li>
+          <li><def>LP_DragonFang</def><countRange>2~4</countRange></li>
+          <li><def>LP_TrollBlood</def><countRange>3~8</countRange></li>
+          <li><def>LP_TrollHide</def><countRange>15~40</countRange></li>
+          <li><def>LP_Leather_WinterWolf</def><countRange>15~40</countRange></li>
+          <li><def>LP_SkyAmber</def><countRange>1~3</countRange></li>
+          <li><def>LP_FogFlask</def><countRange>2~4</countRange></li>
+          <li><def>LP_ElementalFocus_Fire</def></li>
+          <li><def>LP_ElementalFocus_Water</def></li>
+          <li><def>LP_ElementalFocus_Earth</def></li>
+          <li><def>LP_ElementalFocus_Air</def></li>
+          <li><def>LP_BlessedWater</def><countRange>2~5</countRange></li>
+        </entries>
+      </li>
+      <li Class="LichPhylactery.StockGenerator_RHPactScrolls">
+        <countRange>1~2</countRange>
+      </li>
+      <li Class="LichPhylactery.StockGenerator_RHDefList">
+        <entries>
+          <li><def>LP_SoulCoin</def><countRange>10~25</countRange><pactOffFactor>2</pactOffFactor></li>
+        </entries>
+      </li>
+      <li Class="LichPhylactery.StockGenerator_RHDefList">
+        <pickRange>2~2</pickRange>
+        <entries>
+          <li><def>LP_TrueNameScroll</def></li>
+          <li><def>LP_Demonomicon</def></li>
+          <li><def>LP_DimensionalShackles</def></li>
+          <li><def>LP_DemonBlood</def><countRange>2~5</countRange></li>
+          <li><def>LP_EntanglingRope</def><requires>pact</requires></li>
+          <li><def>LP_InfernalPitchfork</def><requires>pact</requires></li>
+          <li><def>LP_WildHuntHorn</def><requires>pact</requires></li>
+          <li><def>LP_FeySilverBow</def><requires>pact</requires></li>
+        </entries>
+      </li>
+      <li Class="StockGenerator_BuySlaves" />
+      <li Class="StockGenerator_BuyTradeTag"><tag>LP_Pact</tag></li>
+      <li Class="StockGenerator_BuySingleDef"><thingDef>LP_CelestialMantle</thingDef></li>
+      <li Class="StockGenerator_BuyExpensiveSimple" />
+      <li Class="StockGenerator_BuyTradeTag"><tag>Art</tag></li>
+    </stockGenerators>
+  </TraderKindDef>
+
+  <!-- ==================== 飞空商船（通讯台呼叫，空投交易；和联盟敌对时不会来） ==================== -->
+
+  <TraderKindDef>
+    <defName>LP_Orbital_RedHawk</defName>
+    <label>红鹰飞空商船</label>
+    <orbital>true</orbital>
+    <faction>LP_RedHawkLeague</faction>
+    <commonality>0.6</commonality>
+    <stockGenerators>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Silver</thingDef>
+        <countRange>1500~2500</countRange>
+      </li>
+      <li Class="LichPhylactery.StockGenerator_RHRaceSlaves">
+        <countRange>3~5</countRange>
+        <minRare>1</minRare>
+        <entries>
+          <li><xenotype>LP_HalfOrc</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_Elf</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_WoodElf</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_Dwarf</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_HillDwarf</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_HalflingLightfoot</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_HalflingStout</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_RockGnome</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_ForestGnome</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_HalfElf</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_Kobold</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_Goblin</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_Hobgoblin</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_Bugbear</xenotype><weight>3</weight></li>
+          <li><xenotype>LP_Drow</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_DeepGnome</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Tiefling</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Aasimar</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_GenasiFire</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_GenasiWater</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_GenasiEarth</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_GenasiAir</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Loxodon</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Aarakocra</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Ogre</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Minotaur</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Troll</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Githyanki</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Oozefolk</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_ForceDragon</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Satyr</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Dryad</xenotype><tier>Rare</tier></li>
+          <li><xenotype>LP_Changeling</xenotype><tier>Rare</tier></li>
+        </entries>
+      </li>
+      <li Class="LichPhylactery.StockGenerator_RHDefList">
+        <pickRange>6~6</pickRange>
+        <entries>
+          <li><def>LP_Mithral</def><countRange>20~50</countRange></li>
+          <li><def>LP_Adamantine</def><countRange>10~30</countRange></li>
+          <li><def>LP_ColdIron</def><countRange>30~80</countRange></li>
+          <li><def>LP_LavaCrystal</def><countRange>8~20</countRange></li>
+          <li><def>LP_DragonShed</def><countRange>3~8</countRange></li>
+          <li><def>LP_DragonScale_Red</def><countRange>5~12</countRange></li>
+          <li><def>LP_DragonScale_Blue</def><countRange>5~12</countRange></li>
+          <li><def>LP_DragonScale_Green</def><countRange>5~12</countRange></li>
+          <li><def>LP_DragonScale_Black</def><countRange>5~12</countRange></li>
+          <li><def>LP_DragonScale_White</def><countRange>5~12</countRange></li>
+          <li><def>LP_DragonFang</def><countRange>2~4</countRange></li>
+          <li><def>LP_TrollBlood</def><countRange>3~8</countRange></li>
+          <li><def>LP_TrollHide</def><countRange>15~40</countRange></li>
+          <li><def>LP_Leather_WinterWolf</def><countRange>15~40</countRange></li>
+          <li><def>LP_SkyAmber</def><countRange>1~3</countRange></li>
+          <li><def>LP_FogFlask</def><countRange>2~4</countRange></li>
+          <li><def>LP_ElementalFocus_Fire</def></li>
+          <li><def>LP_ElementalFocus_Water</def></li>
+          <li><def>LP_ElementalFocus_Earth</def></li>
+          <li><def>LP_ElementalFocus_Air</def></li>
+          <li><def>LP_BlessedWater</def><countRange>2~5</countRange></li>
+        </entries>
+      </li>
+      <li Class="LichPhylactery.StockGenerator_RHPactScrolls">
+        <countRange>1~1</countRange>
+      </li>
+      <li Class="LichPhylactery.StockGenerator_RHDefList">
+        <entries>
+          <li><def>LP_SoulCoin</def><countRange>10~20</countRange><pactOffFactor>2</pactOffFactor></li>
+        </entries>
+      </li>
+      <li Class="StockGenerator_BuySlaves" />
+      <li Class="StockGenerator_BuyTradeTag"><tag>LP_Pact</tag></li>
+      <li Class="StockGenerator_BuyExpensiveSimple" />
+      <li Class="StockGenerator_BuyTradeTag"><tag>Art</tag></li>
+    </stockGenerators>
+  </TraderKindDef>
+
+</Defs>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.29.0 DND 枪械与法杖的商人：矮人铁匠商队卖 D、F 组与黑曜石（Odyssey 的 Obsidian）；黑网卖 D 组与法杖，约 2% 进一件噩耗或天火降世（约 6000 银）。 -->
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/TraderKindDef[defName="LP_Caravan_DwarfSmith"]/stockGenerators</xpath>
+    <value>
+      <li Class="StockGenerator_Tag">
+        <tradeTag>LP_GunD</tradeTag>
+        <thingDefCountRange>1~2</thingDefCountRange>
+        <countRange>1~1</countRange>
+      </li>
+      <li Class="StockGenerator_Tag">
+        <tradeTag>LP_GunF</tradeTag>
+        <thingDefCountRange>1~3</thingDefCountRange>
+        <countRange>1~1</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef" MayRequire="Ludeon.RimWorld.Odyssey">
+        <thingDef>Obsidian</thingDef>
+        <countRange>20~60</countRange>
+      </li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/TraderKindDef[defName="LP_Caravan_BlackNetwork"]/stockGenerators</xpath>
+    <value>
+      <li Class="StockGenerator_Tag">
+        <tradeTag>LP_GunD</tradeTag>
+        <thingDefCountRange>1~2</thingDefCountRange>
+        <countRange>1~1</countRange>
+        <price>Expensive</price>
+      </li>
+      <li Class="StockGenerator_Tag">
+        <tradeTag>LP_Staff</tradeTag>
+        <thingDefCountRange>1~2</thingDefCountRange>
+        <countRange>1~1</countRange>
+        <price>Expensive</price>
+      </li>
+      <li Class="LichPhylactery.StockGenerator_RareArcane">
+        <thingDefs>
+          <li>LP_Doom</li>
+          <li>LP_Skyfire</li>
+        </thingDefs>
+        <chance>0.02</chance>
+      </li>
+    </value>
+  </Operation>
+</Patch>

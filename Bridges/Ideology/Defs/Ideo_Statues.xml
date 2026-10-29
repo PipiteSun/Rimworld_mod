@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.56.0：神像与神殿（规格第七节）。只在装了文化 DLC 时加载：神像的作用都和文化有关。效果在 Source/IdeoTemple.cs。 -->
+<Defs>
+
+  <ThingDef Name="LP_StatueBase" ParentName="BuildingBase" Abstract="True">
+    <thingClass>Building</thingClass>
+    <category>Building</category>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(2,2)</drawSize>
+    </graphicData>
+    <size>(2,2)</size>
+    <rotatable>false</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.5</fillPercent>
+    <pathCost>50</pathCost>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.35</staticSunShadowHeight>
+    <useHitPoints>true</useHitPoints>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories><li>BuildingsArt</li></thingCategories>
+    <stuffCategories>
+      <li>Stony</li>
+      <li>Metallic</li>
+    </stuffCategories>
+    <costStuffCount>150</costStuffCount>
+    <costList><Gold>20</Gold></costList>
+    <statBases>
+      <WorkToBuild>20000</WorkToBuild>
+      <MaxHitPoints>300</MaxHitPoints>
+      <Mass>60</Mass>
+      <Flammability>0</Flammability>
+      <Beauty>60</Beauty>
+    </statBases>
+    <designationCategory>Misc</designationCategory>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <researchPrerequisites><li>LP_Research_Faith</li></researchPrerequisites>
+    <building><artificialForMeditationPurposes>false</artificialForMeditationPurposes></building>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_StatueBase">
+    <defName>LP_Statue_Lathander</defName>
+    <label>洛山达像</label>
+    <description>高举太阳圆盘的晨主的石像。洛山达是守护神时放在任一家园地图，守护神每天神眷+0.3（不论几座只算一次）；文化的神有立像时信徒心情+1，没有时-1。和圣坛放在同一个房间就成了神殿：在神殿里祈祷神眷×1.25，庆典品质+10%。</description>
+    <graphicData><texPath>Things/Building/LP/Statues/Lathander</texPath></graphicData>
+    <uiOrder>2630</uiOrder>
+    <modExtensions><li Class="LichPhylactery.LP_StatueExtension"><deity>LP_Deity_Lathander</deity></li></modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_StatueBase">
+    <defName>LP_Statue_Tyr</defName>
+    <label>提尔像</label>
+    <description>蒙眼托秤的正义之神的石像。提尔是守护神时放在任一家园地图，守护神每天神眷+0.3（不论几座只算一次）；文化的神有立像时信徒心情+1，没有时-1。和圣坛放在同一个房间就成了神殿：在神殿里祈祷神眷×1.25，庆典品质+10%。</description>
+    <graphicData><texPath>Things/Building/LP/Statues/Tyr</texPath></graphicData>
+    <uiOrder>2631</uiOrder>
+    <modExtensions><li Class="LichPhylactery.LP_StatueExtension"><deity>LP_Deity_Tyr</deity></li></modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_StatueBase">
+    <defName>LP_Statue_Mystra</defName>
+    <label>密斯特拉像</label>
+    <description>头顶星环的魔法女神的石像。密斯特拉是守护神时放在任一家园地图，守护神每天神眷+0.3（不论几座只算一次）；文化的神有立像时信徒心情+1，没有时-1。和圣坛放在同一个房间就成了神殿：在神殿里祈祷神眷×1.25，庆典品质+10%。</description>
+    <graphicData><texPath>Things/Building/LP/Statues/Mystra</texPath></graphicData>
+    <uiOrder>2632</uiOrder>
+    <modExtensions><li Class="LichPhylactery.LP_StatueExtension"><deity>LP_Deity_Mystra</deity></li></modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_StatueBase">
+    <defName>LP_Statue_Kelemvor</defName>
+    <label>凯兰沃像</label>
+    <description>捧着骷髅天平的死亡之神的石像。凯兰沃是守护神时放在任一家园地图，守护神每天神眷+0.3（不论几座只算一次）；文化的神有立像时信徒心情+1，没有时-1。和圣坛放在同一个房间就成了神殿：在神殿里祈祷神眷×1.25，庆典品质+10%。</description>
+    <graphicData><texPath>Things/Building/LP/Statues/Kelemvor</texPath></graphicData>
+    <uiOrder>2633</uiOrder>
+    <modExtensions><li Class="LichPhylactery.LP_StatueExtension"><deity>LP_Deity_Kelemvor</deity></li></modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_StatueBase">
+    <defName>LP_Statue_Malar</defName>
+    <label>马拉尔像</label>
+    <description>兽首利爪的狩猎之神的石像。马拉尔是守护神时放在任一家园地图，守护神每天神眷+0.3（不论几座只算一次）；文化的神有立像时信徒心情+1，没有时-1。和圣坛放在同一个房间就成了神殿：在神殿里祈祷神眷×1.25，庆典品质+10%。</description>
+    <graphicData><texPath>Things/Building/LP/Statues/Malar</texPath></graphicData>
+    <uiOrder>2634</uiOrder>
+    <modExtensions><li Class="LichPhylactery.LP_StatueExtension"><deity>LP_Deity_Malar</deity></li></modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_StatueBase">
+    <defName>LP_Statue_Talos</defName>
+    <label>塔洛斯像</label>
+    <description>高举闪电的风暴之神的石像。塔洛斯是守护神时放在任一家园地图，守护神每天神眷+0.3（不论几座只算一次）；文化的神有立像时信徒心情+1，没有时-1。和圣坛放在同一个房间就成了神殿：在神殿里祈祷神眷×1.25，庆典品质+10%。</description>
+    <graphicData><texPath>Things/Building/LP/Statues/Talos</texPath></graphicData>
+    <uiOrder>2635</uiOrder>
+    <modExtensions><li Class="LichPhylactery.LP_StatueExtension"><deity>LP_Deity_Talos</deity></li></modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_StatueBase">
+    <defName>LP_Statue_Bane</defName>
+    <label>班恩像</label>
+    <description>伸出黑手的暴政之神的石像。班恩是守护神时放在任一家园地图，守护神每天神眷+0.3（不论几座只算一次）；文化的神有立像时信徒心情+1，没有时-1。和圣坛放在同一个房间就成了神殿：在神殿里祈祷神眷×1.25，庆典品质+10%。</description>
+    <graphicData><texPath>Things/Building/LP/Statues/Bane</texPath></graphicData>
+    <uiOrder>2636</uiOrder>
+    <modExtensions><li Class="LichPhylactery.LP_StatueExtension"><deity>LP_Deity_Bane</deity></li></modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_StatueBase">
+    <defName>LP_Statue_Shar</defName>
+    <label>莎尔像</label>
+    <description>怀抱黑色圆盘的夜之女士的石像。莎尔是守护神时放在任一家园地图，守护神每天神眷+0.3（不论几座只算一次）；文化的神有立像时信徒心情+1，没有时-1。和圣坛放在同一个房间就成了神殿：在神殿里祈祷神眷×1.25，庆典品质+10%。</description>
+    <graphicData><texPath>Things/Building/LP/Statues/Shar</texPath></graphicData>
+    <uiOrder>2637</uiOrder>
+    <modExtensions><li Class="LichPhylactery.LP_StatueExtension"><deity>LP_Deity_Shar</deity></li></modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_StatueBase">
+    <defName>LP_Statue_Surtr</defName>
+    <label>苏尔特像</label>
+    <description>站在铁砧前的火巨人之王的石像。苏尔特是守护神时放在任一家园地图，守护神每天神眷+0.3（不论几座只算一次）；文化的神有立像时信徒心情+1，没有时-1。和圣坛放在同一个房间就成了神殿：在神殿里祈祷神眷×1.25，庆典品质+10%。</description>
+    <graphicData><texPath>Things/Building/LP/Statues/Surtr</texPath></graphicData>
+    <uiOrder>2638</uiOrder>
+    <modExtensions><li Class="LichPhylactery.LP_StatueExtension"><deity>LP_Deity_Surtr</deity></li></modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_StatueBase">
+    <defName>LP_Statue_Pantheon</defName>
+    <label>众神像</label>
+    <description>刻着许多面孔的多面立柱的石像。众神殿文化的守护神放在任一家园地图，守护神每天神眷+0.3（不论几座只算一次）；文化的神有立像时信徒心情+1，没有时-1。和圣坛放在同一个房间就成了神殿：在神殿里祈祷神眷×1.25，庆典品质+10%。</description>
+    <graphicData><texPath>Things/Building/LP/Statues/Pantheon</texPath></graphicData>
+    <uiOrder>2639</uiOrder>
+    <modExtensions><li Class="LichPhylactery.LP_StatueExtension"></li></modExtensions>
+  </ThingDef>
+
+  <RoomRoleDef>
+    <defName>LP_Temple</defName>
+    <label>神殿</label>
+    <workerClass>LichPhylactery.RoomRoleWorker_LPTemple</workerClass>
+    <relatedStats>
+      <li>Impressiveness</li>
+      <li>Wealth</li>
+      <li>Space</li>
+      <li>Beauty</li>
+      <li>Cleanliness</li>
+    </relatedStats>
+  </RoomRoleDef>
+
+</Defs>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.45.0 魔法物品进货：同盟一般商人、矮人铁匠、精灵草药商、教会牧师、红袍商人、黑网（黑网的“好货”里30%是未鉴定的诅咒品）。 -->
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/TraderKindDef[defName="LP_Caravan_FaerunGoods"]/stockGenerators</xpath>
+    <value>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_RingProtection</thingDef><countRange>-1~1</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_NecklaceAdaptation</thingDef><countRange>-2~1</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_PeriaptWoundClosure</thingDef><countRange>-2~1</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_GauntletsOgrePower</thingDef><countRange>-2~1</countRange></li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/TraderKindDef[defName="LP_Caravan_DwarfSmith"]/stockGenerators</xpath>
+    <value>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_BroochShielding</thingDef><countRange>-1~1</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_GogglesNight</thingDef><countRange>-1~1</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_CogOfMakers</thingDef><countRange>-1~1</countRange></li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/TraderKindDef[defName="LP_Caravan_ElfHerbalist"]/stockGenerators</xpath>
+    <value>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_BracersArchery</thingDef><countRange>-1~1</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_RingAnimalInfluence</thingDef><countRange>-1~1</countRange></li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/TraderKindDef[defName="LP_Caravan_ChurchPriest"]/stockGenerators</xpath>
+    <value>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_ScrollRemoveCurse</thingDef><countRange>1~3</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_WardingBondCase</thingDef><countRange>-2~1</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_PrayerBeads</thingDef><countRange>-1~1</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_MartyrsBeads</thingDef><countRange>-3~1</countRange><price>Expensive</price></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_ScarabProtection</thingDef><countRange>-4~1</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_PuritySeal</thingDef><countRange>-2~4</countRange></li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/TraderKindDef[defName="LP_Caravan_RedRobe"]/stockGenerators</xpath>
+    <value>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_NecklaceFireballs</thingDef><countRange>-1~1</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_CrystalBall</thingDef><countRange>-2~1</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_PsychicHood</thingDef><countRange>-2~1</countRange></li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/TraderKindDef[defName="LP_Caravan_BlackNetwork"]/stockGenerators</xpath>
+    <value>
+      <li Class="LichPhylactery.StockGenerator_LPMagicGoods">
+        <countRange>1~3</countRange>
+        <cursedChance>0.3</cursedChance>
+        <goods>
+          <li>LP_GauntletsOgrePower</li>
+          <li>LP_HelmTelepathy</li>
+          <li>LP_AmuletProofDetection</li>
+          <li>LP_RingShootingStars</li>
+          <li>LP_AmuletPlanes</li>
+          <li>LP_BagOfTricks</li>
+          <li>LP_EversmokingBottle</li>
+          <li>LP_BroochShielding</li>
+        </goods>
+        <cursed>
+          <li>LP_SwordVengeance</li>
+          <li>LP_MarkBlood</li>
+          <li>LP_MarkDecay</li>
+          <li>LP_MarkChange</li>
+          <li>LP_MarkRapture</li>
+        </cursed>
+      </li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_VorpalSword</thingDef><countRange>-6~1</countRange><price>Expensive</price></li>
+    </value>
+  </Operation>
+</Patch>

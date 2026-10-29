@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.45.1 七个套装：穿齐时加上套装状态（Hediff_ApparelSet，脱掉任一件就消失）；有主动能力的套装同时给能力。件数表在 Source/MagicApparel.cs 的 MagicApparel.Sets。 -->
+<Defs>
+  <HediffDef Name="LP_ApparelSetBase" Abstract="True">
+    <hediffClass>LichPhylactery.Hediff_ApparelSet</hediffClass>
+    <isBad>false</isBad>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.85, 0.8, 0.55)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ApparelSetBase">
+    <defName>LP_Set_SilverOrder</defName>
+    <label>套装：白银骑士团</label>
+    <description>圣武士板甲、誓约巨盔、骑士披风穿齐：获得能力“坚守誓约”。</description>
+    <stages><li /></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ApparelSetBase">
+    <defName>LP_Set_Ranger</defName>
+    <label>套装：游侠</label>
+    <description>游侠皮甲、林行者兜帽斗篷穿齐：驯服成功率×1.15、狩猎隐匿+15%，野生动物不会主动攻击。</description>
+    <stages><li><statFactors><TameAnimalChance>1.15</TameAnimalChance></statFactors><statOffsets><HuntingStealth>0.15</HuntingStealth></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ApparelSetBase">
+    <defName>LP_Set_Shadow</defName>
+    <label>套装：影行者</label>
+    <description>暗影斗篷、游荡者面罩、精灵靴穿齐：第一次近战攻击还没进入战斗的敌人时伤害×1.5（每个目标一次）。</description>
+    <stages><li /></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ApparelSetBase">
+    <defName>LP_Set_Archmage</defName>
+    <label>套装：大法师</label>
+    <description>大法师长袍、尖顶法师帽穿齐：每天第一次读卷轴有50%概率不消耗卷轴。</description>
+    <stages><li /></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ApparelSetBase">
+    <defName>LP_Set_Dawn</defName>
+    <label>套装：晨光</label>
+    <description>晨主圣袍、战斗牧师胸甲穿齐：获得能力“驱散亡灵”。</description>
+    <stages><li /></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ApparelSetBase">
+    <defName>LP_Set_Deathknight</defName>
+    <label>套装：死亡骑士</label>
+    <description>死亡骑士铠甲、亡魂巨盔穿齐：倒地时以30%生命再站起来，每3天一次（巫妖本人穿不触发）。</description>
+    <stages><li /></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ApparelSetBase">
+    <defName>LP_Set_Dragonknight</defName>
+    <label>套装：龙骑士</label>
+    <description>龙骑士战甲、龙首盔穿齐：10格内己方力能龙的吐息冷却-15%；受伤时附近己方力能龙会冲向攻击者。</description>
+    <stages><li /></stages>
+  </HediffDef>
+
+  <AbilityDef ParentName="LP_MagicAbilityBase">
+    <defName>LP_AS_HoldOath</defName>
+    <label>坚守誓约</label>
+    <description>白银骑士团的誓言：15秒内受到的伤害-40%，期间几乎不能移动。冷却1天。</description>
+    <iconPath>LP/Apparel/PaladinPlate/PaladinPlate_Icon</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>0.3</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_SetAbility"><effect>holdoath</effect></li></comps>
+  </AbilityDef>
+  <HediffDef>
+    <defName>LP_HoldOath</defName>
+    <label>坚守誓约</label>
+    <description>骑士站定脚跟、举盾守誓：受到的伤害-40%，几乎不能移动。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>900</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><statFactors><MoveSpeed>0.05</MoveSpeed></statFactors></li></stages>
+    <modExtensions><li Class="LichPhylactery.ItemDamageFactors"><factor>0.6</factor><all>true</all></li></modExtensions>
+  </HediffDef>
+  <AbilityDef ParentName="LP_MagicAbilityBase">
+    <defName>LP_AS_TurnUndead</defName>
+    <label>驱散亡灵</label>
+    <description>高举旭日圣徽：8格内的骷髅、血肉巨像、石魔像各受到30点神圣伤害，巫妖和死亡骑士眩晕2秒。冷却2天。</description>
+    <iconPath>LP/Apparel/MorninglordVestments/MorninglordVestments_Icon</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <hostile>true</hostile>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_SetAbility"><effect>turnundead</effect><radius>8</radius></li></comps>
+  </AbilityDef>
+</Defs>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.27.0 冒险者手册（布 20 + 金 10，研究“DND炼金术”之后）；1.47.0 起在卷轴书桌编写。 -->
+<Defs>
+  <RecipeDef ParentName="LP_AlchemyRecipeBase">
+    <defName>LP_MakeAdventurersManual</defName>
+    <label>编写冒险者手册</label>
+    <description>用 20 份布和 10 份金编写一本冒险者手册。</description>
+    <jobString>正在编写冒险者手册。</jobString>
+    <workAmount>3000</workAmount>
+    <recipeUsers Inherit="False"><li>LP_ScribeDesk</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>20</count></li>
+      <li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>10</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>Cloth</li><li>Gold</li></thingDefs></fixedIngredientFilter>
+    <products><LP_AdventurersManual>1</LP_AdventurersManual></products>
+    <modExtensions>
+      <li Class="LichPhylactery.AlchemyRecipeExtension" />
+    </modExtensions>
+  </RecipeDef>
+</Defs>

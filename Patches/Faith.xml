@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+  <!-- 1.39.0 信仰：派系固定信仰（成员 25% 带信徒特性；亵渎者、寻回圣物按它找敌对神的派系），阿斯莫与提夫林的派系出现率。不解析原版意识形态里的神名。 -->
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/FactionDef[defName="LP_FaerunColony"]</xpath>
+    <value><li Class="LichPhylactery.FaithExtension"><deities><li>LP_Deity_Lathander</li><li>LP_Deity_Tyr</li><li>LP_Deity_Mystra</li></deities></li></value>
+  </Operation>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/FactionDef[defName="LP_FaerunHostile"]</xpath>
+    <value><li Class="LichPhylactery.FaithExtension"><deities><li>LP_Deity_Bane</li></deities></li></value>
+  </Operation>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/FactionDef[defName="LP_EmberClan"]</xpath>
+    <value><li Class="LichPhylactery.FaithExtension"><deities><li>LP_Deity_Surtr</li></deities></li></value>
+  </Operation>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/FactionDef[defName="LP_Zealots"]</xpath>
+    <value><li Class="LichPhylactery.FaithExtension"><deities><li>LP_Deity_Tyr</li></deities></li></value>
+  </Operation>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/FactionDef[defName="Pirate" or defName="PirateWaster"]</xpath>
+    <value><li Class="LichPhylactery.FaithExtension"><deities><li>LP_Deity_Talos</li></deities></li></value>
+  </Operation>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/FactionDef[defName="TribeCivil" or defName="TribeRough" or defName="TribeSavage"]</xpath>
+    <value><li Class="LichPhylactery.FaithExtension"><deities><li>LP_Deity_Malar</li></deities></li></value>
+  </Operation>
+
+  <!-- 阿斯莫：费伦拓荒同盟 8%，猎巫狂热分子 5%；提夫林：塞伊红袍法师 10%，黑网 15%。 -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/FactionDef[defName="LP_FaerunColony"]/xenotypeSet/xenotypeChances</xpath>
+    <value><LP_Aasimar>0.08</LP_Aasimar></value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/FactionDef[defName="LP_BlackNetwork"]/xenotypeSet/xenotypeChances</xpath>
+    <value><LP_Tiefling>0.15</LP_Tiefling></value>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/FactionDef[defName="LP_Zealots"]/xenotypeSet</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/FactionDef[defName="LP_Zealots"]/xenotypeSet/xenotypeChances</xpath>
+      <value><LP_Aasimar>0.05</LP_Aasimar></value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>Defs/FactionDef[defName="LP_Zealots"]</xpath>
+      <value><xenotypeSet><xenotypeChances><LP_Aasimar>0.05</LP_Aasimar></xenotypeChances></xenotypeSet></value>
+    </nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnKindDef[defName="LP_FH_RedWizard"]/xenotypeSet</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/PawnKindDef[defName="LP_FH_RedWizard"]/xenotypeSet/xenotypeChances</xpath>
+      <value><LP_Tiefling>0.1</LP_Tiefling></value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>Defs/PawnKindDef[defName="LP_FH_RedWizard"]</xpath>
+      <value><xenotypeSet><xenotypeChances><LP_Tiefling>0.1</LP_Tiefling></xenotypeChances></xenotypeSet></value>
+    </nomatch>
+  </Operation>
+</Patch>

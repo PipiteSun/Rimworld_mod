@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.22.0 卷轴：一次性使用。智识≥6才能读；失败率 max(0,(8-智识)×5%)，失败时卷轴烧毁、手部轻微烧伤；巫妖读不会失败。 -->
+<Defs>
+  <ThingDef Name="LP_ScrollBase" ParentName="ResourceBase" Abstract="True">
+    <stackLimit>10</stackLimit>
+    <techLevel>Medieval</techLevel>
+    <useHitPoints>true</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <statBases>
+      <MaxHitPoints>40</MaxHitPoints>
+      <Mass>0.05</Mass>
+      <Flammability>1</Flammability>
+      <DeteriorationRate>1</DeteriorationRate>
+    </statBases>
+    <thingCategories><li>ItemsMisc</li></thingCategories>
+    <tradeTags><li>LP_Scroll</li></tradeTags>
+    <resourceReadoutPriority>Last</resourceReadoutPriority>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_ScrollBase">
+    <defName>LP_ScrollTeleport</defName>
+    <label>传送卷轴</label>
+    <description>写满空间符文的卷轴。读完后立刻回到玩家主基地，落在自己的床边（没有床就落在殖民地中心附近）。已经在主基地时读它没有效果，卷轴也不会消耗。</description>
+    <graphicData><texPath>Items/Scrolls/Teleport</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>350</MarketValue></statBases>
+    <comps>
+      <li Class="CompProperties_Usable"><useJob>UseItem</useJob><useLabel>阅读{0_label}</useLabel><useDuration>120</useDuration></li>
+      <li Class="LichPhylactery.CompProperties_Scroll"><effect>teleport</effect></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ScrollBase">
+    <defName>LP_ScrollRevivify</defName>
+    <label>复生卷轴</label>
+    <description>极其稀有的金印卷轴。对一具死亡不超过1天的人形尸体使用，可以让对方复活，之后3天处于“复生虚弱”（意识-30%）。对巫妖、死灵造物和大脑被吞噬的尸体无效。</description>
+    <graphicData><texPath>Items/Scrolls/Revivify</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>3000</MarketValue></statBases>
+    <comps>
+      <li Class="CompProperties_Usable"><useJob>UseItem</useJob><useLabel>对尸体阅读{0_label}</useLabel><useDuration>240</useDuration></li>
+      <li Class="LichPhylactery.CompProperties_Scroll"><effect>revivify</effect><target>corpse</target><range>3</range></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ScrollBase">
+    <defName>LP_ScrollProtectionEvil</defName>
+    <label>防护邪恶卷轴</label>
+    <description>读出后在自己脚下展开一片5×5的金色结界，持续1天。敌对的死灵造物、夺心魔，以及被支配、被奴役的人都不能走进结界。</description>
+    <graphicData><texPath>Items/Scrolls/ProtectionEvil</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>300</MarketValue></statBases>
+    <comps>
+      <li Class="CompProperties_Usable"><useJob>UseItem</useJob><useLabel>阅读{0_label}</useLabel><useDuration>120</useDuration></li>
+      <li Class="LichPhylactery.CompProperties_Scroll"><effect>protection</effect></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ScrollBase">
+    <defName>LP_ScrollFireball</defName>
+    <label>火球卷轴</label>
+    <description>封着一团火球的卷轴。读出后在30格内的目标点引发半径3格的火焰爆炸。</description>
+    <graphicData><texPath>Items/Scrolls/Fireball</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>250</MarketValue></statBases>
+    <comps>
+      <li Class="CompProperties_Usable"><useJob>UseItem</useJob><useLabel>阅读{0_label}</useLabel><useDuration>90</useDuration></li>
+      <li Class="LichPhylactery.CompProperties_Scroll"><effect>fireball</effect><target>cell</target><range>30</range></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ScrollBase">
+    <defName>LP_ScrollTrueSeeing</defName>
+    <label>识破卷轴</label>
+    <description>读出后1小时内揭示当前地图上所有隐形的人（包括隐形药水、伟龙、灵能隐匿和心灵隐形），并立刻解除地图上所有人被夺心魔施加的“被支配”状态（包括殖巢奴仆）。</description>
+    <graphicData><texPath>Items/Scrolls/TrueSeeing</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>280</MarketValue></statBases>
+    <comps>
+      <li Class="CompProperties_Usable"><useJob>UseItem</useJob><useLabel>阅读{0_label}</useLabel><useDuration>120</useDuration></li>
+      <li Class="LichPhylactery.CompProperties_Scroll"><effect>trueseeing</effect></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ScrollBase">
+    <defName>LP_ScrollFleshToStone</defName>
+    <label>石化卷轴</label>
+    <description>对30格内的一个敌人（体型不超过2）使用：对方行动迟缓，30秒后化成一尊石像物品，人完整地封在石像里。对石像扬驱散粉尘可以让他复原。</description>
+    <graphicData><texPath>Items/Scrolls/FleshToStone</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>450</MarketValue></statBases>
+    <comps>
+      <li Class="CompProperties_Usable"><useJob>UseItem</useJob><useLabel>阅读{0_label}</useLabel><useDuration>90</useDuration></li>
+      <li Class="LichPhylactery.CompProperties_Scroll"><effect>fleshtostone</effect><target>pawn</target><range>30</range></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ScrollBase">
+    <defName>LP_ScrollFearGaze</defName>
+    <label>恐惧凝视卷轴</label>
+    <description>巫妖抄写的法术卷轴。非巫妖读出也能施展3级巫妖法术“恐惧凝视”：目标点4.9格内的敌对人形陷入恐慌逃跑，敌对动物眩晕5秒。</description>
+    <graphicData><texPath>Items/Scrolls/FearGaze</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>220</MarketValue></statBases>
+    <comps>
+      <li Class="CompProperties_Usable"><useJob>UseItem</useJob><useLabel>阅读{0_label}</useLabel><useDuration>90</useDuration></li>
+      <li Class="LichPhylactery.CompProperties_Scroll"><effect>feargaze</effect><target>cell</target><range>24</range></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ScrollBase">
+    <defName>LP_ScrollNecroticBlast</defName>
+    <label>死灵冲击卷轴</label>
+    <description>巫妖抄写的法术卷轴。非巫妖读出也能施展6级巫妖法术“死灵冲击”：目标点3.9格内的每个敌对目标受到15点死灵伤害，无视护甲。</description>
+    <graphicData><texPath>Items/Scrolls/NecroticBlast</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>260</MarketValue></statBases>
+    <comps>
+      <li Class="CompProperties_Usable"><useJob>UseItem</useJob><useLabel>阅读{0_label}</useLabel><useDuration>90</useDuration></li>
+      <li Class="LichPhylactery.CompProperties_Scroll"><effect>necroblast</effect><target>cell</target><range>28</range></li>
+    </comps>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>LP_RevivifyWeakness</defName>
+    <label>复生虚弱</label>
+    <description>刚被复生卷轴从死亡中拉回来，灵魂和身体还没对上。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>180000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+    </comps>
+    <stages><li><capMods><li><capacity>Consciousness</capacity><offset>-0.3</offset></li></capMods></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_Petrifying</defName>
+    <label>石化中</label>
+    <description>皮肤正在变成石头。30秒后会彻底化成石像；被驱散粉尘覆盖时石化中止。</description>
+    <hediffClass>LichPhylactery.Hediff_Petrifying</hediffClass>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.7, 0.7, 0.65)</defaultLabelColor>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>1800</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+    </comps>
+    <stages><li><statFactors><MoveSpeed>0.5</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_PetrifiedStatue</defName>
+    <label>石像</label>
+    <description>一个被石化卷轴化成石头的人，完整地封在石像里。对它扬驱散粉尘可以让他复原；石像被毁时里面的人也就没了。</description>
+    <thingClass>LichPhylactery.PetrifiedStatue</thingClass>
+    <graphicData><texPath>Items/PetrifiedStatue</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(1.3,1.3)</drawSize></graphicData>
+    <stackLimit>1</stackLimit>
+    <useHitPoints>true</useHitPoints>
+    <statBases>
+      <MaxHitPoints>300</MaxHitPoints>
+      <Mass>60</Mass>
+      <MarketValue>50</MarketValue>
+      <Flammability>0</Flammability>
+      <Beauty>2</Beauty>
+    </statBases>
+    <thingCategories><li>ItemsMisc</li></thingCategories>
+    <tradeability>None</tradeability>
+    <burnableByRecipe>false</burnableByRecipe>
+  </ThingDef>
+
+  <!-- 巫妖抄写：死灵仪式台，30点精神力 + 20布 -->
+  <RecipeDef Name="LP_ScribeBase" Abstract="True">
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Intellectual</workSkill>
+    <workAmount>2000</workAmount>
+    <recipeUsers><li>LP_Altar</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>20</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>Cloth</li></thingDefs></fixedIngredientFilter>
+    <modExtensions>
+      <li Class="LichPhylactery.RaceGearExtension"><race>Lich</race></li>
+      <li Class="LichPhylactery.ScribeExtension"><focusCost>30</focusCost></li>
+    </modExtensions>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_ScribeBase">
+    <defName>LP_ScribeFearGaze</defName>
+    <label>抄写恐惧凝视卷轴</label>
+    <description>巫妖消耗30点精神力和20份布，把恐惧凝视写成卷轴，给非巫妖使用。只有巫妖能做。</description>
+    <jobString>正在抄写恐惧凝视卷轴。</jobString>
+    <products><LP_ScrollFearGaze>1</LP_ScrollFearGaze></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_ScribeBase">
+    <defName>LP_ScribeNecroticBlast</defName>
+    <label>抄写死灵冲击卷轴</label>
+    <description>巫妖消耗30点精神力和20份布，把死灵冲击写成卷轴，给非巫妖使用。只有巫妖能做。</description>
+    <jobString>正在抄写死灵冲击卷轴。</jobString>
+    <products><LP_ScrollNecroticBlast>1</LP_ScrollNecroticBlast></products>
+  </RecipeDef>
+</Defs>

@@ -1,0 +1,12 @@
+DND边缘大陆基因图标重绘（2026-10-23）
+生成模式：内置 imagegen 编辑模式；每张以原贴图作为内容参考、以隔离游戏测试的 GeneIconComparison.png 左列原版《生物科技》图标作为风格参考，透明背景。
+共同提示：single square transparent-background gene icon; match vanilla RimWorld Biotech gene icons; simple flat silhouette, few large muted color shapes, thick solid black outline, no texture or small details; centered with generous margin, legible at 64px; no text, panel or background.
+LichCore：骨白骷髅、浅灰绿魂焰、额心菱形。删除渐变和细节。
+NecroticTouch：骨白手指触及浅灰绿四角星。只保留手和星的轮廓。
+NecroticBody：灰绿色盾形内的白色骷髅与胸肋。压缩为几个大色块。
+FireGiantGene：深红宽肩与头部、炭黑发须、琥珀眼、单条熔岩裂纹。减少五官和肌肉明暗。
+TrollAppearance：橄榄绿巨魔正面头部、尖耳、厚下颌、两枚白色獠牙。去掉肩膀和面部纹理。
+TrollRegeneration：橄榄绿前臂与爪手、浅绿愈合纹。减去多余裂纹和解剖细节。
+最终贴图：Textures/Necromancy/Icons/LichCore.png、NecroticTouch.png、NecroticBody.png；Textures/FireGiant/FireGiantGene.png；Textures/Troll/TrollAppearance.png、TrollRegeneration.png。
+原图备份：ArtSource/GeneIconsOriginal。验证：隔离游戏 907 项检查通过；游戏内原版／模组 82 像素图标对照预览见 ArtSource/Preview/GeneIconComparison.png。
+火巨人物品核查：Equipment 与 MoltenGuard 的重锤、头盔、重甲及四向穿着图在轮廓、黑灰铁色和铜色点缀上互相一致；Forge 的建筑俯视结构与 Tunic 的物品栏图整体符合本模组已确立的 RimWorld 式深色轮廓和大色块，但两者细节密度高于原版常见小尺寸物品图。Tunic 穿着时使用原版 Duster 图，衣物外观与物品栏图不完全对应。

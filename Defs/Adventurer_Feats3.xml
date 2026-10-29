@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.67.0 新专长（ArtSource/FeatsBuff-1.67.0-spec.md 第六节，改编自 5e 2024）：斩击者 / 穿刺者 / 粉碎者（三选一）、法师杀手、防御决斗者、武器大师、耐久、妖精之触。
+     每个都附带 +1 属性（bonusAbilities）。规则效果在 Source/AdventurerFeats2.cs（OutFactor / AfterHit）。 -->
+<Defs>
+  <LichPhylactery.LP_FeatDef Name="LP_WeaponTypeFeatBase" Abstract="True">
+    <exclusiveGroup>WeaponType</exclusiveGroup>
+    <enemyTags><li>melee</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef ParentName="LP_WeaponTypeFeatBase">
+    <defName>LP_Feat_Slasher</defName>
+    <label>斩击者</label>
+    <description>刀刃划开的伤口又长又深。利器（砍、抓）伤害 ×1.2；命中 25% 让目标 3 秒内移速减半。斩击者、穿刺者、粉碎者三选一。附带力量或敏捷 +1。</description>
+    <iconPath>LP/Feats/Slasher</iconPath>
+    <order>26</order>
+    <skillReqs><li><skill>Melee</skill><level>6</level></li></skillReqs>
+    <bonusAbilities><li>Str</li><li>Dex</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef ParentName="LP_WeaponTypeFeatBase">
+    <defName>LP_Feat_Piercer</defName>
+    <label>穿刺者</label>
+    <description>专找要害下手。刺击、咬、子弹、箭矢伤害 ×1.2；这类攻击 20% 造成双倍伤害。斩击者、穿刺者、粉碎者三选一。附带力量或敏捷 +1。</description>
+    <iconPath>LP/Feats/Piercer</iconPath>
+    <order>27</order>
+    <workerClass>LichPhylactery.FeatWorker_Piercer</workerClass>
+    <bonusAbilities><li>Str</li><li>Dex</li></bonusAbilities>
+    <enemyTags Inherit="False"><li>melee</li><li>ranged</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef ParentName="LP_WeaponTypeFeatBase">
+    <defName>LP_Feat_Crusher</defName>
+    <label>粉碎者</label>
+    <description>一锤下去连人带甲砸飞。钝器伤害 ×1.2；命中 25% 把目标推开 1 格并眩晕 1 秒。斩击者、穿刺者、粉碎者三选一。附带力量或体质 +1。</description>
+    <iconPath>LP/Feats/Crusher</iconPath>
+    <order>28</order>
+    <skillReqs><li><skill>Melee</skill><level>6</level></li></skillReqs>
+    <bonusAbilities><li>Str</li><li>Con</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_MageSlayer</defName>
+    <label>法师杀手</label>
+    <description>专门对付施法者。对施法者（DND 职业、佩戴圣徽、心灵能力者、敌方法系兵种）伤害 ×1.3；打中正在施法的人会打断施法并让对方眩晕 1 秒；心智抗性 +25%。附带力量或敏捷 +1。</description>
+    <iconPath>LP/Feats/MageSlayer</iconPath>
+    <order>29</order>
+    <bonusAbilities><li>Str</li><li>Dex</li></bonusAbilities>
+    <statOffsets><LP_MindResist>0.25</LP_MindResist></statOffsets>
+    <enemyTags><li>melee</li><li>ranged</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_DefensiveDuelist</defName>
+    <label>防御决斗者</label>
+    <description>剑尖一挑就把来招卸开。近战闪避 +15，近战命中 ×1.05。附带敏捷 +1。</description>
+    <iconPath>LP/Feats/DefensiveDuelist</iconPath>
+    <order>30</order>
+    <skillReqs><li><skill>Melee</skill><level>8</level></li></skillReqs>
+    <bonusAbilities><li>Dex</li></bonusAbilities>
+    <statOffsets><MeleeDodgeChance>15</MeleeDodgeChance></statOffsets>
+    <statFactors><MeleeHitChance>1.05</MeleeHitChance></statFactors>
+    <enemyTags><li>melee</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_WeaponMaster</defName>
+    <label>武器大师</label>
+    <description>什么兵器到手里都顺手。近战命中 ×1.1，射击精度 ×1.1，瞄准时间 ×0.9。附带力量或敏捷 +1。</description>
+    <iconPath>LP/Feats/WeaponMaster</iconPath>
+    <order>31</order>
+    <bonusAbilities><li>Str</li><li>Dex</li></bonusAbilities>
+    <statFactors><MeleeHitChance>1.1</MeleeHitChance><ShootingAccuracyPawn>1.1</ShootingAccuracyPawn><AimingDelayFactor>0.9</AimingDelayFactor></statFactors>
+    <enemyTags><li>melee</li><li>ranged</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_Durable</defName>
+    <label>耐久</label>
+    <description>伤得再重也能很快站起来。伤口愈合 ×1.5，休息恢复 ×1.3，疼痛休克阈值 +10%。附带体质 +1。</description>
+    <iconPath>LP/Feats/Durable</iconPath>
+    <order>32</order>
+    <bonusAbilities><li>Con</li></bonusAbilities>
+    <statOffsets><PainShockThreshold>0.1</PainShockThreshold></statOffsets>
+    <statFactors><InjuryHealingFactor>1.5</InjuryHealingFactor><RestRateMultiplier>1.3</RestRateMultiplier></statFactors>
+    <enemyTags><li>any</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_FeyTouched</defName>
+    <label>妖精之触</label>
+    <description>和妖精荒野打过交道。获得能力“迷踪步”（原版长跳：跳到远处的一格，冷却照原版）。附带智力、感知或魅力 +1。</description>
+    <iconPath>LP/Feats/FeyTouched</iconPath>
+    <order>33</order>
+    <bonusAbilities><li>Int</li><li>Wis</li><li>Cha</li></bonusAbilities>
+    <grantAbility>Longjump</grantAbility>
+  </LichPhylactery.LP_FeatDef>
+
+  <HediffDef>
+    <defName>LP_FeatSlashed</defName>
+    <label>深长伤口</label>
+    <description>被斩击者划了一道深口子：移动速度减半。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages><li><statFactors><MoveSpeed>0.5</MoveSpeed></statFactors></li></stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>180</disappearsAfterTicks></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+  </HediffDef>
+</Defs>

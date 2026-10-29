@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.34.1 云巨人（优雅者）：可遗传的巨人血统（阶序第2位），代谢合计 -4。代码见 Source/CloudGiant.cs。 -->
+<Defs>
+
+  <XenotypeDef>
+    <defName>LP_CloudGiant</defName>
+    <label>云巨人</label>
+    <description>住在云端城堡里的巨人族，血脉会遗传给子女。成年云巨人的体型是常人的2.2倍，皮肤淡蓝白，银白的头发上戴着云纹头冠。他们走路像踩在云上，沼泽、泥地、浅水和积雪都拖不住他们，连陷阱都察觉不到他们的脚步。云巨人讲究体面，只肯住配得上身份的卧室，却也慷慨好客，喜欢用礼物结交朋友；他们谈吐优雅，最擅长交涉与说服。在巨人的阶序里，云巨人仅次于风暴巨人。</description>
+    <descriptionShort>可遗传的巨人种族（阶序第2位）。2.2倍巨躯、踏云（沼泽泥地浅水积雪不减速）、不触发陷阱、社交出众、讲究卧室、会赠礼；迷踪步、云雾术、唤风驱云。</descriptionShort>
+    <iconPath>Giants/Genes/CloudGiantCore</iconPath>
+    <inheritable>true</inheritable>
+    <combatPowerFactor>1.5</combatPowerFactor>
+    <genes>
+      <li>LP_CloudGiantCore</li>
+      <li>LP_CloudNoble</li>
+      <li>LP_CloudGift</li>
+      <li>LP_CloudGrace</li>
+      <li>LP_SkinCloud</li>
+      <li>LP_HairStormSilver</li>
+      <li>LP_CloudCrown</li>
+      <li>Body_Thin</li>
+    </genes>
+  </XenotypeDef>
+
+  <GeneDef Name="LP_CloudGiantGeneBase" Abstract="True">
+    <displayCategory>Miscellaneous</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>2</biostatCpx>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_CloudGiantGeneBase">
+    <defName>LP_CloudGiantCore</defName>
+    <label>云巨人本源</label>
+    <description>云巨人的云端血脉，可随种族遗传。成年后体型为常人的2.2倍（显示1.45倍，儿童随年龄长大）；体型越大，生命和近战越强（巨躯规则），胃口也大（成年胃容量×220%），步子大却不快。云巨人走路像踩在云上：沼泽、泥地、浅水和积雪不会拖慢他们，也不会踩响陷阱。他们天生健谈（社交+3），比常人耐冷（舒适下限-10℃），不在乎赤身裸体。</description>
+    <geneClass>LichPhylactery.Gene_CloudGiant</geneClass>
+    <iconPath>Giants/Genes/CloudGiantCore</iconPath>
+    <displayCategory>ResistanceAndWeakness</displayCategory>
+    <biostatCpx>4</biostatCpx>
+    <biostatMet>-3</biostatMet>
+    <statFactors>
+      <MoveSpeed>0.9</MoveSpeed>
+    </statFactors>
+    <statOffsets>
+      <ComfyTemperatureMin>-10</ComfyTemperatureMin>
+    </statOffsets>
+    <aptitudes>
+      <Social>3</Social>
+    </aptitudes>
+    <abilities>
+      <li>LP_CloudMistyStep</li>
+      <li>LP_CloudFog</li>
+      <li>LP_CloudCallWind</li>
+    </abilities>
+    <descriptionHyperlinks>
+      <AbilityDef>LP_CloudMistyStep</AbilityDef>
+      <AbilityDef>LP_CloudFog</AbilityDef>
+      <AbilityDef>LP_CloudCallWind</AbilityDef>
+      <ThingDef>LP_CloudMorningstar</ThingDef>
+    </descriptionHyperlinks>
+    <customEffectDescriptions>
+      <li>巨人血统：云巨人（阶序第2位）。</li>
+      <li>体型随年龄增长，成年达到×2.2（显示×1.45）。</li>
+      <li>巨躯规则：生命与近战随体型提高（可在模组设置调整）。</li>
+      <li>巨胃：饱食度上限随体型提高，成年×220%。</li>
+      <li>移动速度：×90%。</li>
+      <li>踏云：沼泽、泥地、浅水、积雪的移动消耗按普通地面算（不影响寻路的绕行判断）。</li>
+      <li>不会触发陷阱。</li>
+      <li>不会因裸体产生负面心情；能穿普通衣服，巨人专属衣甲每件心情+2（最多+6）。</li>
+    </customEffectDescriptions>
+    <modExtensions>
+      <li Class="LichPhylactery.GiantKinExtension">
+        <rank>2</rank>
+        <element>cloud</element>
+        <label>云巨人</label>
+        <adultSize>2.2</adultSize>
+        <renderScale>1.45</renderScale>
+      </li>
+    </modExtensions>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_CloudGiantGeneBase">
+    <defName>LP_CloudNoble</defName>
+    <label>贵胄之心</label>
+    <description>云巨人生来就是贵族。自己的卧室印象度低于“非常好”（或者没有自己的卧室）时心情-4“配不上我的身份”；达到“极好”时心情+4。他们做生意也讲究：交易价格+10%。</description>
+    <iconPath>Giants/Genes/CloudNoble</iconPath>
+    <biostatMet>0</biostatMet>
+    <statOffsets>
+      <TradePriceImprovement>0.1</TradePriceImprovement>
+    </statOffsets>
+    <customEffectDescriptions>
+      <li>卧室印象度 &lt;“非常好”：心情-4；≥“极好”：心情+4。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_CloudGiantGeneBase">
+    <defName>LP_CloudGift</defName>
+    <label>赠礼之风</label>
+    <description>云巨人用礼物交朋友。选中这个云巨人、右键别的派系的访客或商队成员，可以“赠礼”：送出背包里或身边4格内地上的一件东西，对方派系好感+（市值÷100×1.5，最多+25），收到礼物的人7天心情+5。</description>
+    <iconPath>Giants/Genes/CloudGift</iconPath>
+    <biostatMet>0</biostatMet>
+    <customEffectDescriptions>
+      <li>右键非玩家派系的访客、商队成员：赠礼（好感+市值÷100×1.5，最多+25）。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_CloudGiantGeneBase">
+    <defName>LP_CloudGrace</defName>
+    <label>优雅者</label>
+    <description>云巨人的谈吐无可挑剔：社交再+2，交涉能力+15%，招募谈话让囚犯的抵抗多降15%。</description>
+    <iconPath>Giants/Genes/CloudGrace</iconPath>
+    <biostatMet>-1</biostatMet>
+    <aptitudes>
+      <Social>2</Social>
+    </aptitudes>
+    <statOffsets>
+      <NegotiationAbility>0.15</NegotiationAbility>
+    </statOffsets>
+    <customEffectDescriptions>
+      <li>招募谈话降低的抵抗×115%。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinCloud</defName>
+    <label>淡蓝白肤色</label>
+    <labelShortAdj>淡蓝白</labelShortAdj>
+    <description>云巨人淡蓝白色的皮肤，像晴天里的薄云。</description>
+    <skinColorOverride>(206, 220, 232)</skinColorOverride>
+    <randomBrightnessFactor>0.05</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+    <displayOrderInCategory>1</displayOrderInCategory>
+  </GeneDef>
+  <GeneDef>
+    <defName>LP_CloudCrown</defName>
+    <label>云纹头冠</label>
+    <description>云巨人的银质头冠，冠上錾着卷曲的云纹，镶着一颗天空琥珀。</description>
+    <iconPath>Giants/Genes/CloudGiantCore</iconPath>
+    <displayCategory>Cosmetic</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>0</biostatCpx>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Giants/CloudCrown/CloudCrown</texPath>
+        <color>(255, 255, 255)</color>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData>
+          <defaultData>
+            <layer>80</layer>
+          </defaultData>
+        </drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+
+  <!-- ==================== 能力 ==================== -->
+  <AbilityDef>
+    <defName>LP_CloudMistyStep</defName>
+    <label>迷踪步</label>
+    <description>化作一缕银雾，瞬间出现在6格内看得见的一个空位上。冷却30秒。</description>
+    <iconPath>Giants/Abilities/MistyStep</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <hostile>false</hostile>
+    <aiCanUse>false</aiCanUse>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>6</range>
+      <warmupTime>0.2</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetPawns>false</canTargetPawns>
+        <canTargetBuildings>false</canTargetBuildings>
+        <canTargetSelf>false</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_CloudAbility"><effect>step</effect></li>
+    </comps>
+  </AbilityDef>
+  <AbilityDef>
+    <defName>LP_CloudFog</defName>
+    <label>云雾术</label>
+    <description>在目标点召来一团浓雾：4格半径内30秒的致盲烟雾（挡住射击视线）。冷却4小时。</description>
+    <iconPath>Giants/Abilities/CloudFog</iconPath>
+    <cooldownTicksRange>10000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <aiCanUse>false</aiCanUse>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>24</range>
+      <warmupTime>1</warmupTime>
+      <requireLineOfSight>false</requireLineOfSight>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetBuildings>true</canTargetBuildings>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_CloudAbility"><effect>fog</effect></li>
+    </comps>
+  </AbilityDef>
+  <AbilityDef>
+    <defName>LP_CloudCallWind</defName>
+    <label>唤风驱云</label>
+    <description>（成年）施放后选一种天气：晴天、雾或下雨，地图天气转为它并保持1天。不能召来雷雨。冷却5天（关掉选择菜单不选，冷却退还）。</description>
+    <iconPath>Giants/Abilities/CallWind</iconPath>
+    <cooldownTicksRange>300000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <targetRequired>false</targetRequired>
+    <aiCanUse>false</aiCanUse>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>0</range>
+      <warmupTime>1.5</warmupTime>
+      <targetParams><canTargetSelf>true</canTargetSelf></targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_CloudAbility"><effect>wind</effect></li>
+    </comps>
+  </AbilityDef>
+
+  <!-- ==================== 赠礼 ==================== -->
+  <JobDef>
+    <defName>LP_CloudGiveGift</defName>
+    <driverClass>LichPhylactery.JobDriver_CloudGiveGift</driverClass>
+    <reportString>正在把礼物送给TargetB。</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+
+  <!-- ==================== 心情 ==================== -->
+  <ThoughtDef>
+    <defName>LP_CloudNobleRoom</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_CloudNoble</workerClass>
+    <stages>
+      <li>
+        <label>配不上我的身份</label>
+        <description>这就是给我住的地方？云端城堡里连仆人的屋子都比这体面。</description>
+        <baseMoodEffect>-4</baseMoodEffect>
+      </li>
+      <li>
+        <label>相称的居所</label>
+        <description>雕饰、地毯、宽敞的床——这才是云巨人该住的卧室。</description>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_CloudGiftReceived</defName>
+    <durationDays>7</durationDays>
+    <stackLimit>3</stackLimit>
+    <stackedEffectMultiplier>0.5</stackedEffectMultiplier>
+    <stages>
+      <li>
+        <label>收到云巨人的礼物</label>
+        <description>一位云巨人送了我一份体面的礼物。</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_CloudTreasure</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_CloudTreasure</workerClass>
+    <stages>
+      <li>
+        <label>稀世珍藏</label>
+        <description>这里竟然藏着一枚力能龙蛋。云端宫廷里也没几家有这样的收藏。</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_OrdningBowed</defName>
+    <durationDays>15</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>俯首</label>
+        <description>殖民地向云巨人的使节承认了阶序。我得低下头，承认他们在我之上。</description>
+        <baseMoodEffect>-3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_OrdningListed</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_OrdningListed</workerClass>
+    <stages>
+      <li>
+        <label>名列阶序</label>
+        <description>云巨人的宫廷承认了我们，我们的名字写进了巨人的阶序。</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ==================== 事件 ==================== -->
+  <LetterDef ParentName="CustomChoiceLetterBase">
+    <defName>LP_CloudChoiceLetter</defName>
+    <letterClass>LichPhylactery.Letter_CloudChoice</letterClass>
+  </LetterDef>
+  <!-- 两个事件都不随机抽取（baseChance 0）：收购龙蛋在同盟访客/商队到达时 15% 触发，使节每年判定一次 20%；开发者模式可以手动触发。 -->
+  <IncidentDef>
+    <defName>LP_CloudEggOffer</defName>
+    <label>收购龙蛋</label>
+    <category>Misc</category>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_CloudEggOffer</workerClass>
+    <baseChance>0</baseChance>
+    <pointsScaleable>false</pointsScaleable>
+  </IncidentDef>
+  <IncidentDef>
+    <defName>LP_OrdningEnvoy</defName>
+    <label>上位者的使节</label>
+    <category>Misc</category>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_OrdningEnvoy</workerClass>
+    <baseChance>0</baseChance>
+    <pointsScaleable>false</pointsScaleable>
+  </IncidentDef>
+
+  <!-- ==================== 派系成员（费伦拓荒同盟） ==================== -->
+  <!-- 云巨人贵族：同盟访客组、据点组（权重0.3）、巨人迁徙、上位者的使节；不进 Combat 组。装备由代码给（晨星锤 + 云纹长袍）。 -->
+  <PawnKindDef Name="LP_FC_CloudNobleBase" ParentName="LP_FCBase">
+    <defName>LP_FC_CloudNoble</defName>
+    <label>云巨人贵族</label>
+    <combatPower>160</combatPower>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_CloudGiant>1</LP_CloudGiant>
+      </xenotypeChances>
+    </xenotypeSet>
+    <minGenerationAge>30</minGenerationAge>
+    <itemQuality>Good</itemQuality>
+    <apparelMoney>400~800</apparelMoney>
+    <weaponMoney>0</weaponMoney>
+    <initialResistanceRange>30~45</initialResistanceRange>
+  </PawnKindDef>
+  <!-- 同一个兵种的商人版：只做“云巨人奢侈品商队”的领队 -->
+  <PawnKindDef ParentName="LP_FC_CloudNobleBase">
+    <defName>LP_FC_CloudNobleTrader</defName>
+    <label>云巨人贵族</label>
+    <trader>true</trader>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_FCBase">
+    <defName>LP_FC_Servant</defName>
+    <label>仆从</label>
+    <combatPower>30</combatPower>
+    <isFighter>false</isFighter>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <requiredWorkTags Inherit="False" />
+    <apparelMoney>200~400</apparelMoney>
+    <weaponMoney>40~100</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeBasic</li>
+    </weaponTags>
+  </PawnKindDef>
+
+  <TraderKindDef>
+    <defName>LP_Caravan_CloudLuxury</defName>
+    <label>云巨人奢侈品商队</label>
+    <commonality>0.6</commonality>
+    <stockGenerators>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Silver</thingDef>
+        <countRange>1000~1600</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Gold</thingDef>
+        <countRange>40~100</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>LP_SkyAmber</thingDef>
+        <countRange>2~5</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>LP_CloudRobe</thingDef>
+        <countRange>0~1</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Jade</thingDef>
+        <countRange>20~50</countRange>
+      </li>
+      <li Class="StockGenerator_MarketValue">
+        <tradeTag>Art</tradeTag>
+        <countRange>2~4</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>MealLavish</thingDef>
+        <countRange>8~16</countRange>
+      </li>
+      <li Class="StockGenerator_BuyExpensiveSimple" />
+      <li Class="StockGenerator_BuyTradeTag"><tag>Art</tag></li>
+      <li Class="StockGenerator_BuyTradeTag"><tag>MusicalInstrument</tag></li>
+    </stockGenerators>
+    <modExtensions>
+      <li Class="LichPhylactery.TraderGroupExtension">
+        <traderKind>LP_FC_CloudNobleTrader</traderKind>
+      </li>
+    </modExtensions>
+  </TraderKindDef>
+
+  <!-- ==================== 剧本：坠落的云堡 ==================== -->
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>LP_FallenCloudKeep</defName>
+    <label>坠落的云堡</label>
+    <description>云端城堡的锚链断了。城堡沉进大地之前，一位云巨人带着三名仆从、一箱白银和几件心爱的艺术品逃了下来。\n\n没有武器，只有钱、体面和一张好嘴；费伦拓荒同盟早就和云堡有生意往来（好感+40）。\n\n云巨人讲究卧室，尽快给他盖一间配得上身份的房间吧。</description>
+    <scenario>
+      <summary>一位云巨人与三名人类仆从，带着白银、黄金和艺术品，但没有武器。</summary>
+      <parts>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns_Xenotypes">
+          <def>ConfigurePawnsXenotypes</def>
+          <pawnChoiceCount>8</pawnChoiceCount>
+          <customSummary>一位云巨人和三名人类仆从。</customSummary>
+          <xenotypeCounts>
+            <li>
+              <xenotype>LP_CloudGiant</xenotype>
+              <count>1</count>
+              <description>云巨人</description>
+              <requiredAtStart>true</requiredAtStart>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+            <li>
+              <xenotype>Baseliner</xenotype>
+              <count>3</count>
+              <description>人类仆从</description>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+          </xenotypeCounts>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <visible>false</visible>
+          <method>Standing</method>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_FactionGoodwill">
+          <def>LP_FactionGoodwill</def>
+          <faction>LP_FaerunColony</faction>
+          <goodwill>40</goodwill>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Silver</thingDef>
+          <count>3000</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>SculptureSmall</thingDef>
+          <stuff>BlocksMarble</stuff>
+          <count>2</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Gold</thingDef>
+          <count>50</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MealSimple</thingDef>
+          <count>10</count>
+        </li>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>锚链崩断的声音像一声雷。\n\n你只来得及抓起钱箱和两尊最喜欢的雕像，带着三个仆从跳下了下沉的云堡。现在你们站在泥地里，四周是陌生的荒野。\n\n没有剑，没有护卫。可云巨人从来不靠剑——靠的是体面、礼物，和一张能说动任何人的嘴。</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+</Defs>

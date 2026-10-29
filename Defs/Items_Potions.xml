@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.22.0 药水：药物类物品，可用药物政策管理；巫妖和死灵造物不能喝。 -->
+<Defs>
+  <ThingDef Name="LP_PotionBase" ParentName="DrugBase" Abstract="True">
+    <rotatable>false</rotatable>
+    <stackLimit>25</stackLimit>
+    <techLevel>Medieval</techLevel>
+    <socialPropernessMatters>false</socialPropernessMatters>
+    <statBases>
+      <Mass>0.3</Mass>
+      <Flammability>0.4</Flammability>
+      <DeteriorationRate>1</DeteriorationRate>
+    </statBases>
+    <tradeTags>
+      <li>LP_Potion</li>
+    </tradeTags>
+    <ingestible>
+      <drugCategory>Medical</drugCategory>
+      <foodType>Processed, Fluid</foodType>
+      <baseIngestTicks>90</baseIngestTicks>
+      <ingestSound>Ingest_Beer</ingestSound>
+      <ingestHoldUsesTable>false</ingestHoldUsesTable>
+      <useEatingSpeedStat>false</useEatingSpeedStat>
+      <chairSearchRadius>0</chairSearchRadius>
+      <ingestCommandString>饮用{0}</ingestCommandString>
+      <ingestReportString>正在饮用{0}。</ingestReportString>
+    </ingestible>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_PotionBase">
+    <defName>LP_PotionHealing</defName>
+    <label>治疗药水</label>
+    <description>以巨魔血为底调成的红色药水。喝下后所有出血立刻止住（相当于一次简单包扎），6小时内自然愈合速度×3。巫妖和死灵造物喝了无效。</description>
+    <descriptionHyperlinks><HediffDef>LP_PotionHealing</HediffDef></descriptionHyperlinks>
+    <graphicData><texPath>Items/Potions/Healing</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>60</MarketValue></statBases>
+    <ingestible><outcomeDoers><li Class="LichPhylactery.IngestionOutcomeDoer_LPPotion"><effect>heal</effect></li></outcomeDoers></ingestible>
+    <comps><li Class="CompProperties_Drug"><listOrder>2200</listOrder></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_PotionBase">
+    <defName>LP_PotionGreaterHealing</defName>
+    <label>强效治疗药水</label>
+    <description>浓稠的深红色药水。效果同治疗药水，另外能长回一处缺失的手指或脚趾（只限这类小部位）。巫妖和死灵造物喝了无效。</description>
+    <descriptionHyperlinks><HediffDef>LP_PotionHealing</HediffDef></descriptionHyperlinks>
+    <graphicData><texPath>Items/Potions/GreaterHealing</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>160</MarketValue></statBases>
+    <ingestible><outcomeDoers><li Class="LichPhylactery.IngestionOutcomeDoer_LPPotion"><effect>greaterheal</effect></li></outcomeDoers></ingestible>
+    <comps><li Class="CompProperties_Drug"><listOrder>2201</listOrder></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_PotionBase">
+    <defName>LP_PotionGiantStrength</defName>
+    <label>巨人之力药水</label>
+    <description>熔岩结晶溶成的橙色药水，喝下去像吞了一团火。12小时内近战伤害×1.3、搬运量×1.5，身形看上去也大了一圈。</description>
+    <descriptionHyperlinks><HediffDef>LP_PotionGiantStrength</HediffDef></descriptionHyperlinks>
+    <graphicData><texPath>Items/Potions/GiantStrength</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>120</MarketValue></statBases>
+    <ingestible><outcomeDoers><li Class="LichPhylactery.IngestionOutcomeDoer_LPPotion"><hediff>LP_PotionGiantStrength</hediff></li></outcomeDoers></ingestible>
+    <comps><li Class="CompProperties_Drug"><listOrder>2202</listOrder><isCombatEnhancingDrug>true</isCombatEnhancingDrug></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_PotionBase">
+    <defName>LP_PotionFireResistance</defName>
+    <label>抗火药水</label>
+    <description>微温的琥珀色药水。24小时内不会着火，受到的火焰伤害-75%。</description>
+    <descriptionHyperlinks><HediffDef>LP_PotionFireResistance</HediffDef></descriptionHyperlinks>
+    <graphicData><texPath>Items/Potions/FireResistance</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>90</MarketValue></statBases>
+    <ingestible><outcomeDoers><li Class="LichPhylactery.IngestionOutcomeDoer_LPPotion"><hediff>LP_PotionFireResistance</hediff></li></outcomeDoers></ingestible>
+    <comps><li Class="CompProperties_Drug"><listOrder>2203</listOrder></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_PotionBase">
+    <defName>LP_PotionInvisibility</defName>
+    <label>隐形药水</label>
+    <description>几乎透明的药水，瓶子拿在手里都难以看清。喝下后2小时内隐身，攻击时立即现形、药效结束。无法制作，只能从黑网商队买到。</description>
+    <descriptionHyperlinks><HediffDef>LP_PotionInvisibility</HediffDef></descriptionHyperlinks>
+    <graphicData><texPath>Items/Potions/Invisibility</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>400</MarketValue></statBases>
+    <tradeTags Inherit="False"><li>LP_PotionRare</li></tradeTags>
+    <thingCategories Inherit="False"><li>ItemsMisc</li></thingCategories>
+    <ingestible><outcomeDoers><li Class="LichPhylactery.IngestionOutcomeDoer_LPPotion"><hediff>LP_PotionInvisibility</hediff></li></outcomeDoers></ingestible>
+    <comps><li Class="CompProperties_Drug"><listOrder>2204</listOrder><isCombatEnhancingDrug>true</isCombatEnhancingDrug></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_PotionBase">
+    <defName>LP_PotionHeroism</defName>
+    <label>英雄药水</label>
+    <description>金光闪闪的烈性药水。8小时内不会精神崩溃，免疫恐惧类效果（例如巫妖的恐惧凝视），意识+10%。</description>
+    <descriptionHyperlinks><HediffDef>LP_PotionHeroism</HediffDef></descriptionHyperlinks>
+    <graphicData><texPath>Items/Potions/Heroism</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>180</MarketValue></statBases>
+    <ingestible><outcomeDoers><li Class="LichPhylactery.IngestionOutcomeDoer_LPPotion"><hediff>LP_PotionHeroism</hediff></li></outcomeDoers></ingestible>
+    <comps><li Class="CompProperties_Drug"><listOrder>2205</listOrder><isCombatEnhancingDrug>true</isCombatEnhancingDrug></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_PotionBase">
+    <defName>LP_PotionMindShield</defName>
+    <label>心智护盾药水</label>
+    <description>从夺心魔脑浆罐里提炼出的淡紫色药水。12小时内心智抗性+40%（与种族抗性相加，最多95%）。</description>
+    <descriptionHyperlinks><HediffDef>LP_PotionMindShield</HediffDef></descriptionHyperlinks>
+    <graphicData><texPath>Items/Potions/MindShield</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>150</MarketValue></statBases>
+    <ingestible><outcomeDoers><li Class="LichPhylactery.IngestionOutcomeDoer_LPPotion"><hediff>LP_PotionMindShield</hediff></li></outcomeDoers></ingestible>
+    <comps><li Class="CompProperties_Drug"><listOrder>2206</listOrder></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_PotionBase">
+    <defName>LP_PotionTrollRegen</defName>
+    <label>巨魔再生剂</label>
+    <description>五瓶巨魔血浓缩成的一剂暗绿色药剂。3天内获得弱化的巨魔再生：饱食度不低于50%时缓慢修复伤口（巨魔的四分之一），不会长回断肢，也不会复活；饥饿速度×1.5。药效结束时有10%概率染上巨魔血瘾。</description>
+    <descriptionHyperlinks><HediffDef>LP_TrollRegenTonic</HediffDef><HediffDef>LP_TrollBloodAddiction</HediffDef></descriptionHyperlinks>
+    <graphicData><texPath>Items/Potions/TrollRegen</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>140</MarketValue></statBases>
+    <ingestible><outcomeDoers><li Class="LichPhylactery.IngestionOutcomeDoer_LPPotion"><hediff>LP_TrollRegenTonic</hediff></li></outcomeDoers></ingestible>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <chemical>LP_TrollBloodChem</chemical>
+        <addictiveness>0</addictiveness>
+        <needLevelOffset>1</needLevelOffset>
+        <existingAddictionSeverityOffset>0.1</existingAddictionSeverityOffset>
+        <listOrder>2207</listOrder>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <HediffDef Name="LP_PotionHediffBase" Abstract="True">
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <defaultLabelColor>(0.55, 0.8, 1)</defaultLabelColor>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+  <HediffDef ParentName="LP_PotionHediffBase">
+    <defName>LP_PotionHealing</defName>
+    <label>治疗药水</label>
+    <description>药力在伤口间流动，自然愈合速度大幅提高。</description>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>2</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>15000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+    <stages>
+      <li><statFactors><InjuryHealingFactor>3</InjuryHealingFactor></statFactors></li>
+      <li><minSeverity>1.5</minSeverity><label>加倍</label><statFactors><InjuryHealingFactor>6</InjuryHealingFactor></statFactors></li>
+    </stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_PotionHediffBase">
+    <defName>LP_PotionGiantStrength</defName>
+    <label>巨人之力</label>
+    <description>熔岩之力充满四肢。</description>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>30000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+    <stages><li><statFactors><MeleeDamageFactor>1.3</MeleeDamageFactor><CarryingCapacity>1.5</CarryingCapacity></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_PotionHediffBase">
+    <defName>LP_PotionFireResistance</defName>
+    <label>抗火</label>
+    <description>皮肤覆着一层看不见的凉意，火焰难以伤及。</description>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>60000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+    <stages><li><statFactors><Flammability>0</Flammability></statFactors></li></stages>
+    <modExtensions>
+      <li Class="LichPhylactery.ItemDamageFactors">
+        <factor>0.25</factor>
+        <damageDefs><li>Flame</li><li>Burn</li></damageDefs>
+        <keywords><li>Flame</li><li>Incendiary</li></keywords>
+        <excluded><li>Acid</li></excluded>
+      </li>
+    </modExtensions>
+  </HediffDef>
+  <HediffDef ParentName="LP_PotionHediffBase">
+    <defName>LP_PotionInvisibility</defName>
+    <label>隐形药水</label>
+    <description>身形淡去，敌人看不见这个人。发动攻击会立即现形，药效随之结束。</description>
+    <comps>
+      <li Class="HediffCompProperties_Invisibility"><visibleToPlayer>true</visibleToPlayer></li>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>5000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+  </HediffDef>
+  <HediffDef ParentName="LP_PotionHediffBase">
+    <defName>LP_PotionHeroism</defName>
+    <label>英雄气概</label>
+    <description>胸中涌起无畏的勇气：不会精神崩溃，也不会被恐惧吓倒。</description>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>20000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+    <stages><li><blocksMentalBreaks>true</blocksMentalBreaks><capMods><li><capacity>Consciousness</capacity><offset>0.1</offset></li></capMods></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_PotionHediffBase">
+    <defName>LP_PotionMindShield</defName>
+    <label>心智护盾</label>
+    <description>思绪外罩着一层薄雾般的屏障。心智抗性+40%（与种族抗性相加，最多95%）。</description>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>30000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+  </HediffDef>
+  <HediffDef ParentName="LP_PotionHediffBase">
+    <defName>LP_TrollRegenTonic</defName>
+    <label>巨魔再生剂</label>
+    <description>巨魔血在体内蠕动：饱食度不低于50%时缓慢修复伤口（巨魔的四分之一），不长断肢、不会复活。着火、被火烧或酸蚀时暂停。饥饿速度×1.5。药效结束时有10%概率染上巨魔血瘾。</description>
+    <hediffClass>LichPhylactery.Hediff_TrollTonic</hediffClass>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>180000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+    <stages><li><hungerRateFactor>1.5</hungerRateFactor></li></stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>LP_TrollBurned</defName>
+    <label>被火烧</label>
+    <description>巨魔被火焰烧伤，血肉再生中断6小时；这段时间里死去不会复活。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <defaultLabelColor>(1, 0.5, 0.2)</defaultLabelColor>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>15000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+    </comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_TrollAcid</defName>
+    <label>酸蚀</label>
+    <description>巨魔被酸液灼伤，血肉再生中断6小时；这段时间里死去不会复活。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.6, 0.9, 0.3)</defaultLabelColor>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>15000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+    </comps>
+  </HediffDef>
+  <!-- 抽巨魔血冷却：时长由设置页“抽巨魔血冷却”天数决定（默认3天），这里的数值只是兜底。 -->
+  <HediffDef>
+    <defName>LP_RecentlyBled</defName>
+    <label>刚被抽血</label>
+    <description>这个巨魔刚被抽过血，要等伤口和血量都缓过来才能再抽。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>180000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+    </comps>
+  </HediffDef>
+
+  <!-- 巨魔血瘾：原版成瘾框架 -->
+  <ChemicalDef>
+    <defName>LP_TrollBloodChem</defName>
+    <label>巨魔血</label>
+    <addictionHediff>LP_TrollBloodAddiction</addictionHediff>
+  </ChemicalDef>
+  <NeedDef ParentName="DrugAddictionNeedBase">
+    <defName>LP_Chemical_TrollBlood</defName>
+    <needClass>Need_Chemical</needClass>
+    <label>巨魔血</label>
+    <description>因为巨魔血瘾，这个人需要定期喝巨魔再生剂，否则会出现戒断反应。</description>
+    <fallPerDay>0.333</fallPerDay>
+    <listPriority>45</listPriority>
+  </NeedDef>
+  <HediffDef ParentName="AddictionBase">
+    <defName>LP_TrollBloodAddiction</defName>
+    <label>巨魔血瘾</label>
+    <description>身体习惯了巨魔血带来的再生力，离不开它了。不定期喝巨魔再生剂就会出现戒断反应；长时间不喝可以慢慢戒掉。</description>
+    <hediffClass>Hediff_Addiction</hediffClass>
+    <chemicalNeed>LP_Chemical_TrollBlood</chemicalNeed>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay"><severityPerDay>-0.04</severityPerDay><showDaysToRecover>true</showDaysToRecover></li>
+    </comps>
+    <stages>
+      <li></li>
+      <li>
+        <label>戒断</label>
+        <painFactor>1.5</painFactor>
+        <hungerRateFactorOffset>0.5</hungerRateFactorOffset>
+        <capMods>
+          <li><capacity>Consciousness</capacity><offset>-0.15</offset></li>
+          <li><capacity>Moving</capacity><offset>-0.15</offset></li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+  <ThoughtDef>
+    <defName>LP_TrollBloodWithdrawal</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>LP_TrollBloodAddiction</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stages>
+      <li><visible>false</visible></li>
+      <li>
+        <label>巨魔血戒断</label>
+        <description>伤口好得这么慢，浑身都在发痒。我需要再来一剂。</description>
+        <baseMoodEffect>-12</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

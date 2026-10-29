@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.27.0 职业强度：0.5 + 职业技能/20（6 级 0.8，10 级 1.0，20 级 1.5）。能力的伤害、治疗、持续时间、半径按它缩放，不再乘心灵敏感度。 -->
+<Defs>
+  <StatDef Name="LP_ClassPowerBase" Abstract="True">
+    <category>PawnMisc</category>
+    <defaultBaseValue>1</defaultBaseValue>
+    <minValue>0.5</minValue>
+    <toStringStyle>PercentZero</toStringStyle>
+    <showOnHumanlikes>true</showOnHumanlikes>
+    <showOnAnimals>false</showOnAnimals>
+    <showOnMechanoids>false</showOnMechanoids>
+    <showOnEntities>false</showOnEntities>
+    <showIfUndefined>false</showIfUndefined>
+    <cacheable>false</cacheable>
+  </StatDef>
+  <StatDef ParentName="LP_ClassPowerBase">
+    <defName>LP_MartialPower</defName>
+    <label>战技强度</label>
+    <description>DND 战士战技的强度倍率：0.5 + 格斗等级/20。回气治疗量、战吼范围、绊摔击晕时长、增益持续时间、旋风斩伤害等都乘这个倍率。1.36.0 起武僧（拳脚、拨挡、颤心掌）与圣武士的格斗支也用它。1.53.0：战士的回气、战吼看格斗和射击里较高的一项（射击较高时用射术强度）；物理路径者另加 VPE 灵能等级加成（每级 +2%，最多 +40%）。</description>
+    <parts><li Class="LichPhylactery.VPEBridge.StatPart_ClassSkill"><skill>Melee</skill></li></parts>
+    <displayPriorityInCategory>4210</displayPriorityInCategory>
+  </StatDef>
+  <StatDef ParentName="LP_ClassPowerBase">
+    <defName>LP_MarksmanPower</defName>
+    <label>射术强度</label>
+    <description>DND 战士射击支的强度倍率：0.5 + 射击等级/20，另加冒险者敏捷调整值与 VPE 灵能等级加成。稳固瞄准、压制射击、精准射击、连射、死神之眼的伤害与持续时间都乘这个倍率。</description>
+    <parts><li Class="LichPhylactery.VPEBridge.StatPart_ClassSkill"><skill>Shooting</skill></li></parts>
+    <displayPriorityInCategory>4213</displayPriorityInCategory>
+  </StatDef>
+  <StatDef ParentName="LP_ClassPowerBase">
+    <defName>LP_ArcanePower</defName>
+    <label>奥术强度</label>
+    <description>DND 法师法术的强度倍率：0.5 + 智识等级/20。魔法飞弹、火球术、闪电束、解离术的伤害，睡眠术、急速术的持续时间，石墙的耐久和传送距离都乘这个倍率。</description>
+    <parts><li Class="LichPhylactery.VPEBridge.StatPart_ClassSkill"><skill>Intellectual</skill></li></parts>
+    <displayPriorityInCategory>4211</displayPriorityInCategory>
+  </StatDef>
+  <StatDef ParentName="LP_ClassPowerBase">
+    <defName>LP_DivinePower</defName>
+    <label>神恩强度</label>
+    <description>DND 牧师神术的强度倍率：0.5 + 社交等级/20。治疗量、神圣打击伤害、驱散亡灵的范围与时长、祝福和神导的持续时间都乘这个倍率。1.36.0 起圣武士的社交支（圣疗、灵光、放逐邪恶）也用它。</description>
+    <parts><li Class="LichPhylactery.VPEBridge.StatPart_ClassSkill"><skill>Social</skill></li></parts>
+    <displayPriorityInCategory>4212</displayPriorityInCategory>
+  </StatDef>
+</Defs>

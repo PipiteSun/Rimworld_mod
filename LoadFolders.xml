@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<loadFolders>
+  <v1.7>
+    <li>/</li>
+    <li>1.7</li>
+    <li IfModActive="local.standalone.mythicbloodlines">Bridges/MythicBloodlines</li>
+    <li IfModActive="jellycreative.isekaileveling">Bridges/Isekai</li>
+    <li IfModActive="vanillaexpanded.vpsycastse">Bridges/VPE</li>
+    <li IfModActive="ludeon.rimworld.ideology">Bridges/Ideology</li>
+    <li IfModActive="erdelf.humanoidalienraces">Bridges/HAR</li>
+    <li IfModActive="kikohi.jewelry">Bridges/Jewelry</li>
+  </v1.7>
+</loadFolders>

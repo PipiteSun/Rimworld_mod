@@ -1,0 +1,777 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.38.0 流浆人（DND Plasmoid）：可遗传的异种型，原生质资源条、吞没、分裂、渗过、重塑、析出凝胶；凝胶物品与配方、同盟兵种、剧本“实验池逃亡”。 -->
+<Defs>
+  <XenotypeDef>
+    <defName>LP_Oozefolk</defName>
+    <label>流浆人</label>
+    <description>一团有了意识的原生质，勉强捏成人形。流浆人没有骨头，钝器打上去像打进一桶胶，强酸也伤不了他们多少；伤口不会感染、也不留疤。他们什么都能消化，还能把一具尸体整个吞没，用攒下的原生质分裂出新的自己、从门缝里渗过去、重新长出断掉的手指。代价是怕冷（零度以下身体就会凝滞）、怕火、怕干。血脉会遗传给子女——准确地说，分裂出来的孩子和父体几乎一模一样。</description>
+    <descriptionShort>可遗传。钝击、强酸伤害大减，不感染、不留疤，吃什么都行；原生质驱动吞没、分裂、渗过、重塑；怕冷、怕火。</descriptionShort>
+    <iconPath>Oozefolk/Xenotypes/Oozefolk</iconPath>
+    <inheritable>true</inheritable>
+    <combatPowerFactor>1</combatPowerFactor>
+    <factionlessGenerationWeight>0.5</factionlessGenerationWeight>
+    <genes>
+      <li>LP_OozeCore</li>
+      <li>LP_OozeProtoplasm</li>
+      <li>LP_OozeDigest</li>
+      <li>LP_OozePseudopod</li>
+      <li>LP_OozeAmorphous</li>
+      <li>LP_OozeSplit</li>
+      <li>LP_OozeChill</li>
+      <li>LP_OozeDesiccate</li>
+      <li>LP_OozeSheen</li>
+      <li>LP_SkinOozeGreen</li>
+      <li>Hair_BaldOnly</li>
+      <li>Beard_NoBeardOnly</li>
+      <li>Immunity_Strong</li>
+    </genes>
+  </XenotypeDef>
+
+  <AbilityDef Name="LP_OozeAbilityBase" Abstract="True">
+    <aiCanUse>false</aiCanUse>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <sendMessageOnCooldownComplete>false</sendMessageOnCooldownComplete>
+  </AbilityDef>
+
+  <GeneDef Name="LP_OozeGeneBase" Abstract="True">
+    <displayCategory>Miscellaneous</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>1</biostatCpx>
+  </GeneDef>
+
+  <!-- ==================== 本源 ==================== -->
+  <GeneDef ParentName="LP_OozeGeneBase">
+    <defName>LP_OozeCore</defName>
+    <label>流浆之躯</label>
+    <description>身体是一团会思考的原生质，没有骨骼也没有固定的器官位置。钝器打上去只会陷进去，强酸也溶不动它；伤口会自己合拢，不会感染、也不会留下疤痕，失血也比常人慢。带这条基因的人算作流浆人。</description>
+    <iconPath>Oozefolk/Genes/OozeCore</iconPath>
+    <biostatCpx>2</biostatCpx>
+    <biostatMet>-2</biostatMet>
+    <statOffsets>
+      <ToxicResistance>0.5</ToxicResistance>
+      <ToxicEnvironmentResistance>0.5</ToxicEnvironmentResistance>
+    </statOffsets>
+    <damageFactors>
+      <Blunt>0.5</Blunt>
+    </damageFactors>
+    <customEffectDescriptions>
+      <li>算作流浆人（吞没、分裂、稳形护带、种族判定）。</li>
+      <li>酸蚀伤害：×25%（伤害名含 Acid 的全部，包括强酸瓶和其他模组的酸）。</li>
+      <li>出血速度：×50%。</li>
+      <li>伤口不会感染，旧伤不会变成永久伤疤。</li>
+      <li>夺心魔蝌蚪无法寄生（会被溶解）。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_OozeGeneBase">
+    <defName>LP_OozeProtoplasm</defName>
+    <label>原生质</label>
+    <description>体内储存着可以随意调用的原生质。提供“原生质”资源条（0～100，开局30，不会自然流失）：吃饭、吞没尸体可以补充，分裂、渗过、重塑和析出凝胶都要消耗。</description>
+    <geneClass>LichPhylactery.Gene_OozeProtoplasm</geneClass>
+    <resourceGizmoType>LichPhylactery.GeneGizmo_OozeProtoplasm</resourceGizmoType>
+    <resourceLabel>原生质</resourceLabel>
+    <resourceGizmoThresholds>
+      <li>0.1</li>
+      <li>0.25</li>
+      <li>0.4</li>
+      <li>0.8</li>
+    </resourceGizmoThresholds>
+    <showGizmoOnWorldView>true</showGizmoOnWorldView>
+    <showGizmoWhenDrafted>true</showGizmoWhenDrafted>
+    <resourceDescription>流浆人体内可以调用的原生质。吃饭、吞没尸体补充；分裂、渗过、重塑、析出凝胶消耗。不会自然流失。</resourceDescription>
+    <iconPath>Oozefolk/Genes/Protoplasm</iconPath>
+    <biostatMet>0</biostatMet>
+    <abilities>
+      <li>LP_OozeReshape</li>
+      <li>LP_OozeExtractGel</li>
+    </abilities>
+    <descriptionHyperlinks>
+      <AbilityDef>LP_OozeReshape</AbilityDef>
+      <AbilityDef>LP_OozeExtractGel</AbilityDef>
+    </descriptionHyperlinks>
+    <customEffectDescriptions>
+      <li>原生质上限100（佩戴稳形护带120），开局30，不会自然流失。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_OozeGeneBase">
+    <defName>LP_OozeDigest</defName>
+    <label>万物消化</label>
+    <description>胃就是全身。什么都能化开：不会食物中毒，吃生食也不在乎；每吃一顿饭还能多攒一点原生质。能把一整具尸体“吞没”进身体里慢慢消化。</description>
+    <geneClass>LichPhylactery.Gene_OozeDigest</geneClass>
+    <iconPath>Oozefolk/Genes/Digest</iconPath>
+    <biostatMet>-1</biostatMet>
+    <statFactors>
+      <FoodPoisonChance>0</FoodPoisonChance>
+    </statFactors>
+    <abilities>
+      <li>LP_OozeEngulf</li>
+    </abilities>
+    <descriptionHyperlinks>
+      <AbilityDef>LP_OozeEngulf</AbilityDef>
+    </descriptionHyperlinks>
+    <customEffectDescriptions>
+      <li>不会因吃生食不开心。</li>
+      <li>每吃一顿：原生质+3。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_OozeGeneBase">
+    <defName>LP_OozePseudopod</defName>
+    <label>伪足</label>
+    <description>可以随时从身上甩出一条带酸液的伪足当鞭子抽人，衣服被酸液泡过坏得特别快。双手都没了也能用伪足干活，操作能力不会低于60%。</description>
+    <geneClass>LichPhylactery.Gene_LinkedHediff</geneClass>
+    <iconPath>Oozefolk/Genes/Pseudopod</iconPath>
+    <displayCategory>Violence</displayCategory>
+    <biostatMet>-1</biostatMet>
+    <customEffectDescriptions>
+      <li>获得“酸性伪足”近战攻击：钝击9点＋酸蚀4点，冷却2秒；酸蚀对被击中者身上衣物的损伤×200%。</li>
+      <li>操作能力不低于60%（但不超过意识水平）。</li>
+    </customEffectDescriptions>
+    <modExtensions>
+      <li Class="LichPhylactery.LinkedHediffExtension">
+        <hediff>LP_OozeLash</hediff>
+      </li>
+    </modExtensions>
+  </GeneDef>
+  <HediffDef>
+    <defName>LP_OozeLash</defName>
+    <label>酸性伪足</label>
+    <description>伪足基因带来的天然近战武器。</description>
+    <hediffClass>LichPhylactery.Hediff_GeneLinked</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>酸性伪足</label>
+            <capacities>
+              <li>Blunt</li>
+            </capacities>
+            <power>9</power>
+            <cooldownTime>2.0</cooldownTime>
+            <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+            <extraMeleeDamages>
+              <li>
+                <def>LP_OozeAcid</def>
+                <amount>4</amount>
+              </li>
+            </extraMeleeDamages>
+          </li>
+        </tools>
+      </li>
+    </comps>
+  </HediffDef>
+  <DamageDef>
+    <defName>LP_OozeAcid</defName>
+    <label>酸蚀</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0}被流浆人的酸液溶蚀而死。</deathMessage>
+    <hediff>AcidBurn</hediff>
+    <armorCategory>Sharp</armorCategory>
+    <defaultDamage>4</defaultDamage>
+    <defaultArmorPenetration>0.05</defaultArmorPenetration>
+  </DamageDef>
+
+  <GeneDef ParentName="LP_OozeGeneBase">
+    <defName>LP_OozeAmorphous</defName>
+    <label>无定形</label>
+    <description>身体没有固定形状，能挤过任何缝隙：可以从门缝里“渗过”一扇门，哪怕门锁着、是别人的门。被关起来的时候也更容易越狱，越狱途中锁着的门挡不住他们。</description>
+    <iconPath>Oozefolk/Genes/Amorphous</iconPath>
+    <displayCategory>Movement</displayCategory>
+    <biostatMet>-1</biostatMet>
+    <abilities>
+      <li>LP_OozeSeep</li>
+    </abilities>
+    <descriptionHyperlinks>
+      <AbilityDef>LP_OozeSeep</AbilityDef>
+    </descriptionHyperlinks>
+    <customEffectDescriptions>
+      <li>作为囚犯：越狱几率×200%（与罪犯背景等效果相乘）；越狱途中可以打开任何门。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_OozeGeneBase">
+    <defName>LP_OozeSplit</defName>
+    <label>分裂繁殖</label>
+    <description>流浆人不靠怀孕繁衍，而是攒够原生质后把自己分成两半：分出来的是一个婴儿，带着父体全部的内源基因。代价是不能和任何人（包括别的流浆人）以普通方式生育。</description>
+    <iconPath>Oozefolk/Genes/Split</iconPath>
+    <displayCategory>Reproduction</displayCategory>
+    <biostatMet>0</biostatMet>
+    <statFactors>
+      <Fertility>0</Fertility>
+    </statFactors>
+    <abilities>
+      <li>LP_OozeFission</li>
+    </abilities>
+    <descriptionHyperlinks>
+      <AbilityDef>LP_OozeFission</AbilityDef>
+    </descriptionHyperlinks>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_OozeGeneBase">
+    <defName>LP_OozeChill</defName>
+    <label>凝滞</label>
+    <description>原生质遇冷会变稠。流浆人怕冷：舒适温度下限高8°C；站在0°C以下的地方，身体会“凝滞”，走得慢、手也不灵活，回暖1小时后才能恢复。冻伤、冬狼的寒霜撕咬、寒霜法杖和寒冰魔的寒气对他们都格外伤。</description>
+    <geneClass>LichPhylactery.Gene_OozeChill</geneClass>
+    <iconPath>Oozefolk/Genes/Chill</iconPath>
+    <displayCategory>Temperature</displayCategory>
+    <biostatMet>3</biostatMet>
+    <statOffsets>
+      <ComfyTemperatureMin>8</ComfyTemperatureMin>
+    </statOffsets>
+    <customEffectDescriptions>
+      <li>所在格低于0°C（佩戴稳形护带时-15°C）：凝滞，移动速度×75%，操作-10%；回暖1小时后消失。</li>
+      <li>冻伤和其他寒冷伤害×150%；寒霜迟缓、寒霜缠身、寒气侵体的持续时间×150%。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+  <HediffDef>
+    <defName>LP_OozeSluggish</defName>
+    <label>凝滞</label>
+    <description>天太冷，身体里的原生质变稠了：移动速度×75%，操作-10%。回到0°C以上1小时后恢复。</description>
+    <hediffClass>LichPhylactery.Hediff_OozeSluggish</hediffClass>
+    <defaultLabelColor>(0.6, 0.8, 1)</defaultLabelColor>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>2500</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statFactors>
+          <MoveSpeed>0.75</MoveSpeed>
+        </statFactors>
+        <capMods>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.1</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <GeneDef ParentName="LP_OozeGeneBase">
+    <defName>LP_OozeDesiccate</defName>
+    <label>怕干</label>
+    <description>原生质里大半是水，遇火就沸、一烤就干：受到的火焰伤害×150%，也更容易着火。</description>
+    <iconPath>Oozefolk/Genes/Desiccate</iconPath>
+    <displayCategory>Temperature</displayCategory>
+    <biostatMet>2</biostatMet>
+    <statOffsets>
+      <Flammability>0.25</Flammability>
+    </statOffsets>
+    <damageFactors>
+      <Flame>1.5</Flame>
+      <Burn>1.5</Burn>
+    </damageFactors>
+  </GeneDef>
+
+  <GeneDef>
+    <defName>LP_OozeSheen</defName>
+    <label>流光</label>
+    <description>流浆人头顶总带着一层湿漉漉的光泽，偶尔会往下垂一滴胶。纯外观，颜色随肤色。</description>
+    <iconPath>Oozefolk/Genes/Sheen</iconPath>
+    <displayCategory>Cosmetic</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>0</biostatCpx>
+    <biostatMet>0</biostatMet>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Oozefolk/Sheen/Sheen</texPath>
+        <useSkinShader>true</useSkinShader>
+        <useRottenColor>true</useRottenColor>
+        <colorType>Skin</colorType>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData>
+          <defaultData>
+            <layer>66</layer>
+          </defaultData>
+        </drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinOozeGreen</defName>
+    <label>胆绿肤色</label>
+    <labelShortAdj>胆绿</labelShortAdj>
+    <description>流浆人常见的胆汁绿色，半透明似的发着湿光。</description>
+    <skinColorOverride>(118, 150, 104)</skinColorOverride>
+    <randomBrightnessFactor>0.06</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+    <displayOrderInCategory>1</displayOrderInCategory>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinOozeBlue</defName>
+    <label>渊蓝肤色</label>
+    <labelShortAdj>渊蓝</labelShortAdj>
+    <description>像深水一样的灰蓝色原生质。</description>
+    <skinColorOverride>(96, 132, 156)</skinColorOverride>
+    <randomBrightnessFactor>0.06</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+    <displayOrderInCategory>1</displayOrderInCategory>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinOozeAmber</defName>
+    <label>琥珀肤色</label>
+    <labelShortAdj>琥珀</labelShortAdj>
+    <description>像蜂蜜或树脂一样的琥珀色原生质。</description>
+    <skinColorOverride>(176, 140, 82)</skinColorOverride>
+    <randomBrightnessFactor>0.06</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+    <displayOrderInCategory>1</displayOrderInCategory>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinOozeViolet</defName>
+    <label>雾紫肤色</label>
+    <labelShortAdj>雾紫</labelShortAdj>
+    <description>带着一层雾气似的灰紫色原生质。</description>
+    <skinColorOverride>(138, 116, 152)</skinColorOverride>
+    <randomBrightnessFactor>0.06</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+    <displayOrderInCategory>1</displayOrderInCategory>
+  </GeneDef>
+
+  <!-- ==================== 能力 ==================== -->
+  <AbilityDef ParentName="LP_OozeAbilityBase">
+    <defName>LP_OozeEngulf</defName>
+    <label>吞没</label>
+    <description>把一具尸体整个吞进身体里慢慢消化，需要2小时，可以被打断。尸体消失，衣服和武器留在原地。人形尸体：原生质+25、饱食度+50%；动物：原生质=体型×15（最多30），饱食度=体型×30%（最多60%）；开始腐烂的尸体减半。干尸、机械体、巫妖与死灵造物、流浆人的尸体不能吞没。15格内看见的殖民者会心情-3（1天；食人者、精神病态和流浆人不在乎）。吞没人形尸体算作吃人肉。也可以选中流浆人后右键尸体下令。</description>
+    <iconPath>Oozefolk/Abilities/Engulf</iconPath>
+    <cooldownTicksRange>60</cooldownTicksRange>
+    <hostile>false</hostile>
+    <jobDef>CastAbilityOnThingMelee</jobDef>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbilityTouch</verbClass>
+      <drawAimPie>true</drawAimPie>
+      <range>-1</range>
+      <warmupTime>83.33</warmupTime>
+      <violent>false</violent>
+      <targetParams>
+        <canTargetPawns>false</canTargetPawns>
+        <canTargetCorpses>true</canTargetCorpses>
+        <canTargetItems>true</canTargetItems>
+        <canTargetBuildings>false</canTargetBuildings>
+        <canTargetSelf>false</canTargetSelf>
+        <canTargetLocations>false</canTargetLocations>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_OozeAbility">
+        <effect>engulf</effect>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <AbilityDef ParentName="LP_OozeAbilityBase">
+    <defName>LP_OozeFission</defName>
+    <label>分裂</label>
+    <description>把自己的一部分原生质分出去，1小时后生下一个流浆人婴儿：同样的异种型，带着父体全部的内源基因（后天植入的外源基因不会复制），肤色随机。只有成年流浆人能分裂，消耗80原生质和25%饱食度；父体之后3天“分裂虚弱”（意识-20%、移速×80%）。冷却30天（可在模组设置里调为15～60天）。</description>
+    <iconPath>Oozefolk/Abilities/Fission</iconPath>
+    <cooldownTicksRange>1800000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <targetRequired>false</targetRequired>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>41.67</warmupTime>
+      <range>0</range>
+      <targetParams><canTargetSelf>true</canTargetSelf></targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_OozeAbility">
+        <effect>fission</effect>
+        <cost>80</cost>
+      </li>
+    </comps>
+  </AbilityDef>
+  <HediffDef>
+    <defName>LP_OozeSplitWeak</defName>
+    <label>分裂虚弱</label>
+    <description>刚刚分出去一半原生质，身体还没长回来：意识-20%，移动速度×80%。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.6, 0.75, 0.55)</defaultLabelColor>
+    <isBad>true</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>180000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statFactors>
+          <MoveSpeed>0.8</MoveSpeed>
+        </statFactors>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.2</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <AbilityDef ParentName="LP_OozeAbilityBase">
+    <defName>LP_OozeSeep</defName>
+    <label>渗过</label>
+    <description>从门缝里挤过去：选择3格内、和自己之间隔着一扇门的地方（也可以直接点那扇门），瞬间渗到门的另一侧。任何门都行，锁着的、敌人的都一样；但不能穿墙或岩壁。消耗10原生质，冷却1小时。</description>
+    <iconPath>Oozefolk/Abilities/Seep</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <hostile>false</hostile>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>3.9</range>
+      <warmupTime>0.5</warmupTime>
+      <requireLineOfSight>false</requireLineOfSight>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetBuildings>true</canTargetBuildings>
+        <canTargetPawns>false</canTargetPawns>
+        <canTargetSelf>false</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_OozeAbility">
+        <effect>seep</effect>
+        <cost>10</cost>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <AbilityDef ParentName="LP_OozeAbilityBase">
+    <defName>LP_OozeReshape</defName>
+    <label>重塑</label>
+    <description>静下来6小时，用原生质重新捏出身体缺掉的部分：恢复一个缺失的外部部位（手、脚、手指、脚趾、耳朵、鼻子；不含眼睛和内脏，大的优先）；没有缺失的部位时，改为抹平一处永久伤疤。消耗40原生质，冷却2天。</description>
+    <iconPath>Oozefolk/Abilities/Reshape</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <targetRequired>false</targetRequired>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>250</warmupTime>
+      <range>0</range>
+      <targetParams><canTargetSelf>true</canTargetSelf></targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_OozeAbility">
+        <effect>reshape</effect>
+        <cost>40</cost>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <AbilityDef ParentName="LP_OozeAbilityBase">
+    <defName>LP_OozeExtractGel</defName>
+    <label>析出凝胶</label>
+    <description>把一部分原生质挤出体外，凝成1份原生质凝胶（可做凝胶敷料、强酸瓶、黏胶袋和稳形护带）。消耗25原生质，需要30秒。</description>
+    <iconPath>Oozefolk/Abilities/ExtractGel</iconPath>
+    <cooldownTicksRange>60</cooldownTicksRange>
+    <hostile>false</hostile>
+    <targetRequired>false</targetRequired>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>30</warmupTime>
+      <range>0</range>
+      <targetParams><canTargetSelf>true</canTargetSelf></targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_OozeAbility">
+        <effect>extract</effect>
+        <cost>25</cost>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <ThoughtDef>
+    <defName>LP_WitnessedEngulf</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>3</stackLimit>
+    <stackedEffectMultiplier>0.75</stackedEffectMultiplier>
+    <stages>
+      <li>
+        <label>目睹吞没</label>
+        <description>我看见那个流浆人把一整具尸体吞了进去，尸体在它身体里慢慢化开……</description>
+        <baseMoodEffect>-3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ==================== 物品 ==================== -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_ProtoplasmGel</defName>
+    <label>原生质凝胶</label>
+    <description>流浆人析出的一团半透明凝胶，摸上去凉凉的、会微微蠕动。可以在炼金桌做成凝胶敷料、强酸瓶和黏胶袋，也能在缝纫台做成流浆人用的稳形护带。\n\n流浆人用“析出凝胶”能力产出；屠宰流浆人的尸体也能得到3份（不出肉和皮）。黑网商队偶尔会卖。</description>
+    <graphicData>
+      <texPath>Oozefolk/Items/ProtoplasmGel</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Standard_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <stackLimit>25</stackLimit>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <statBases>
+      <MarketValue>15</MarketValue>
+      <Mass>0.4</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <thingCategories>
+      <li>ResourcesRaw</li>
+    </thingCategories>
+    <tradeTags>
+      <li>LP_Material</li>
+    </tradeTags>
+    <burnableByRecipe>false</burnableByRecipe>
+  </ThingDef>
+
+  <ThingDef ParentName="MedicineBase">
+    <defName>LP_GelDressing</defName>
+    <label>凝胶敷料</label>
+    <description>用原生质凝胶浸透的布条。敷在伤口上会自己贴合、收紧，效果接近工业药品。</description>
+    <possessionCount>3</possessionCount>
+    <graphicData>
+      <texPath>Oozefolk/Items/GelDressing</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.85</drawSize>
+    </graphicData>
+    <techLevel>Medieval</techLevel>
+    <statBases>
+      <MarketValue>14</MarketValue>
+      <Mass>0.35</Mass>
+      <Flammability>1.0</Flammability>
+      <MedicalPotency>0.9</MedicalPotency>
+      <MedicalQualityMax>1.0</MedicalQualityMax>
+      <DeteriorationRate>4</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>LP_StabilizerBand</defName>
+    <label>稳形护带</label>
+    <description>缝着几袋原生质凝胶的皮质腰带，紧紧箍住流浆人的身体，让它在寒冷里也能保持形状。只对流浆人有效：凝滞的触发温度从0°C降到-15°C，原生质上限+20。戴在奇物栏位，不占别的装备位置。</description>
+    <techLevel>Medieval</techLevel>
+    <graphicData>
+      <texPath>Oozefolk/Items/StabilizerBand</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <stuffCategories>
+      <li>Leathery</li>
+    </stuffCategories>
+    <costStuffCount>20</costStuffCount>
+    <costList>
+      <LP_ProtoplasmGel>5</LP_ProtoplasmGel>
+    </costList>
+    <thingCategories>
+      <li>ApparelMisc</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>0.4</Mass>
+      <WorkToMake>2400</WorkToMake>
+      <EquipDelay>1</EquipDelay>
+      <Flammability>0.6</Flammability>
+    </statBases>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <careIfWornByCorpse>false</careIfWornByCorpse>
+      <bodyPartGroups>
+        <li>Waist</li>
+      </bodyPartGroups>
+      <layers>
+        <li>LP_Accessory</li>
+      </layers>
+    </apparel>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Tailor</effectWorking>
+      <soundWorking>Recipe_Tailor</soundWorking>
+      <recipeUsers>
+        <li>ElectricTailoringBench</li>
+        <li>HandTailoringBench</li>
+        <li>LP_ArcaneLoom</li>
+      </recipeUsers>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+      <researchPrerequisite>LP_DNDAlchemy</researchPrerequisite>
+      <displayPriority>900</displayPriority>
+    </recipeMaker>
+  </ThingDef>
+
+  <RecipeDef ParentName="LP_ThrowableRecipeBase">
+    <defName>LP_MakeGelDressing</defName>
+    <label>制作凝胶敷料</label>
+    <description>用1份原生质凝胶和3份布制作2份凝胶敷料。</description>
+    <jobString>正在制作凝胶敷料。</jobString>
+    <workAmount>900</workAmount>
+    <ingredients>
+      <li><filter><thingDefs><li>LP_ProtoplasmGel</li></thingDefs></filter><count>1</count></li>
+      <li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>3</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_ProtoplasmGel</li><li>Cloth</li></thingDefs></fixedIngredientFilter>
+    <products><LP_GelDressing>2</LP_GelDressing></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_ThrowableRecipeBase">
+    <defName>LP_MakeAcidVialGel</defName>
+    <label>用凝胶制作强酸瓶</label>
+    <description>用2份原生质凝胶和5份钢制作一组强酸瓶（替代化学燃料配方）。</description>
+    <jobString>正在制作强酸瓶。</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>LP_ProtoplasmGel</li></thingDefs></filter><count>2</count></li>
+      <li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>5</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_ProtoplasmGel</li><li>Steel</li></thingDefs></fixedIngredientFilter>
+    <products><LP_AcidVial>1</LP_AcidVial></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_ThrowableRecipeBase">
+    <defName>LP_MakeTanglefootBagGel</defName>
+    <label>用凝胶制作黏胶袋</label>
+    <description>用2份原生质凝胶和5份布制作一组黏胶袋（替代化学燃料配方）。</description>
+    <jobString>正在制作黏胶袋。</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>LP_ProtoplasmGel</li></thingDefs></filter><count>2</count></li>
+      <li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>5</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_ProtoplasmGel</li><li>Cloth</li></thingDefs></fixedIngredientFilter>
+    <products><LP_TanglefootBag>1</LP_TanglefootBag></products>
+  </RecipeDef>
+
+  <!-- ==================== 费伦拓荒同盟兵种 ==================== -->
+  <PawnKindDef ParentName="LP_FCBase">
+    <defName>LP_FC_OozeWanderer</defName>
+    <label>流浆人游民</label>
+    <combatPower>55</combatPower>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_Oozefolk>1</LP_Oozefolk>
+      </xenotypeChances>
+    </xenotypeSet>
+    <apparelMoney>150~350</apparelMoney>
+    <weaponMoney>100~250</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeBasic</li>
+      <li>NeolithicRangedBasic</li>
+    </weaponTags>
+    <inventoryOptions>
+      <skipChance>0.6</skipChance>
+      <subOptionsChooseOne>
+        <li>
+          <thingDef>LP_GelDressing</thingDef>
+          <countRange>1~2</countRange>
+        </li>
+        <li>
+          <thingDef>LP_ProtoplasmGel</thingDef>
+          <countRange>1~2</countRange>
+        </li>
+      </subOptionsChooseOne>
+    </inventoryOptions>
+    <initialResistanceRange>10~18</initialResistanceRange>
+  </PawnKindDef>
+
+  <!-- ==================== 剧本：实验池逃亡 ==================== -->
+  <ScenPartDef>
+    <defName>LP_OozeEscape</defName>
+    <label>实验池逃亡</label>
+    <scenPartClass>LichPhylactery.ScenPart_OozeEscape</scenPartClass>
+    <category>StartingImportant</category>
+    <selectionWeight>0</selectionWeight>
+    <summaryPriority>488</summaryPriority>
+    <maxUses>1</maxUses>
+  </ScenPartDef>
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>LP_OozeScenario</defName>
+    <label>实验池逃亡</label>
+    <description>塞伊的红袍法师在地下实验室里养着一池原生质，想把它们培育成听话的仆役。三个流浆人在一次失败的实验里有了自己的意识，溶开池壁的封印，带着一点能抢到的东西逃了出来。\n\n其中一人在实验池里多泡了几天，开局原生质有60；另外带着凝胶敷料、强酸瓶和一条稳形护带。流浆人不怕感染、什么都能吃，能吞没尸体、分裂繁衍；但很怕冷。大约第6天，塞伊会派一支小追捕队（约300点）来把实验品抓回去。\n\n注意：三人都很怕冷，冬天来得早的地方要先解决取暖；追捕队不强但来得快，属于中等难度。</description>
+    <scenario>
+      <summary>三名从塞伊实验池里逃出来的流浆人；第6天红袍的追捕队就会找上门。</summary>
+      <parts>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns_Xenotypes">
+          <def>ConfigurePawnsXenotypes</def>
+          <pawnChoiceCount>8</pawnChoiceCount>
+          <customSummary>三名流浆人。</customSummary>
+          <xenotypeCounts>
+            <li>
+              <xenotype>LP_Oozefolk</xenotype>
+              <count>3</count>
+              <description>流浆人</description>
+              <requiredAtStart>true</requiredAtStart>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+          </xenotypeCounts>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <visible>false</visible>
+          <method>Standing</method>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_OozeEscape">
+          <def>LP_OozeEscape</def>
+          <protoplasm>60</protoplasm>
+          <raidDay>6</raidDay>
+          <raidPoints>300</raidPoints>
+          <letterLabel>实验池的追捕者</letterLabel>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>LP_GelDressing</thingDef>
+          <count>10</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>LP_AcidVial</thingDef>
+          <count>4</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MealSurvivalPack</thingDef>
+          <count>30</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>LP_StabilizerBand</thingDef>
+          <stuff>Leather_Plain</stuff>
+        </li>
+
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>Steel</thingDef>
+          <count>200</count>
+        </li>
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>WoodLog</thingDef>
+          <count>300</count>
+        </li>
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>Cloth</thingDef>
+          <count>60</count>
+        </li>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>池壁的符文熄灭的那一刻，你们第一次知道了“自己”是什么意思。\n\n你们从排水沟里流出实验室，一路渗过三道上锁的门，在荒野里重新捏出了人形。身后，红袍法师的咒骂声还在回荡——他们不会让珍贵的实验品就这么跑掉。\n\n找个暖和的地方。尽快。</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+</Defs>

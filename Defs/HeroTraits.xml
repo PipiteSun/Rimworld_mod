@@ -1,0 +1,698 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.58.0 强力特性（ArtSource/TraitsFeats-1.58.0-spec.md 第一节；代码在 Source/HeroTraits*.cs）。
+     金 / 紫 / 1.51.0 的四个稀有天赋 / 红色诅咒合称强力特性，每人最多“每人最多强力特性”个（1.66.0 热修，原来共用 exclusionTags LP_PowerTrait 只能一个），commonality 都是 0：生成后缀里自己掷一次（HeroTraits.Roll）。
+     传说事迹（青）不随机、不占名额，由事件授予（HeroDeeds）。数值写在描述里，规则在代码里；六维 / 传奇倍率走 LP_AdventurerAffinityExt（与种族倍率取较大，不相乘）。
+     名字撞车改名：邪契者 LP_PactDestiny（LP_PactBound 是 1.55.0 的状态）、屠龙者 LP_DeedDragonslayer（LP_DragonSlayer 是 1.45.0 的龙杀手）、弑神者 LP_DeedGodslayer（LP_Godslayer 是 1.40.0 篡火者特性）。 -->
+<Defs>
+
+  <!-- ==================== 金色：英雄之资系 ==================== -->
+  <TraitDef>
+    <defName>LP_HeroicSpark</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#E08A3A>英雄之资</color>]]></label>
+        <description>{PAWN_nameDef}身上有说不清的东西——吟游诗人管它叫“英雄之资”。\n\n- 所有传奇属性每点收益 ×1.5（与种族亲和取较大，不相乘）\n- 传奇等级 21～40 每级 3 个传奇属性点（平时 2 个）\n- 六项属性上限 +2\n- 4、8、12、16 级的属性提升每次 3 点（平时 2 点）</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Legendary</tier><kind>强力特性</kind></li>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt">
+        <legendAllFactor>1.5</legendAllFactor>
+        <legendPointsPerLevelOffset>1</legendPointsPerLevelOffset>
+        <scoreCapOffset>2</scoreCapOffset>
+        <asiBonusPoints>1</asiBonusPoints>
+      </li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Paragon</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li><degree>1</degree><label><![CDATA[<color=#E08A3A>极致·力量</color>]]></label><description>{PAWN_nameDef}的力量是天生的极致。\n\n- 力量每点正调整值收益 ×2.5，力量上限 26\n- 传奇属性“近战”“血量”每点收益 ×2\n（都与种族亲和取较大，不相乘）</description></li>
+      <li><degree>2</degree><label><![CDATA[<color=#E08A3A>极致·敏捷</color>]]></label><description>{PAWN_nameDef}的敏捷是天生的极致。\n\n- 敏捷每点正调整值收益 ×2.5，敏捷上限 26\n- 传奇属性“远程”“近战”每点收益 ×2\n（都与种族亲和取较大，不相乘）</description></li>
+      <li><degree>3</degree><label><![CDATA[<color=#E08A3A>极致·体质</color>]]></label><description>{PAWN_nameDef}的体质是天生的极致。\n\n- 体质每点正调整值收益 ×2.5，体质上限 26\n- 传奇属性“血量”“承受”每点收益 ×2\n（都与种族亲和取较大，不相乘）</description></li>
+      <li><degree>4</degree><label><![CDATA[<color=#E08A3A>极致·智力</color>]]></label><description>{PAWN_nameDef}的智力是天生的极致。\n\n- 智力每点正调整值收益 ×2.5，智力上限 26\n- 传奇属性“学习”“工作”每点收益 ×2\n（都与种族亲和取较大，不相乘）</description></li>
+      <li><degree>5</degree><label><![CDATA[<color=#E08A3A>极致·感知</color>]]></label><description>{PAWN_nameDef}的感知是天生的极致。\n\n- 感知每点正调整值收益 ×2.5，感知上限 26\n- 传奇属性“心灵”“回复”每点收益 ×2\n（都与种族亲和取较大，不相乘）</description></li>
+      <li><degree>6</degree><label><![CDATA[<color=#E08A3A>极致·魅力</color>]]></label><description>{PAWN_nameDef}的魅力是天生的极致。\n\n- 魅力每点正调整值收益 ×2.5，魅力上限 26\n- 传奇属性“心灵”“工作”每点收益 ×2\n（都与种族亲和取较大，不相乘）</description></li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Legendary</tier><kind>强力特性</kind></li>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><paragonScore>true</paragonScore></li>
+    </modExtensions>
+  </TraitDef>
+
+  <!-- ==================== 紫色：加点效率 ==================== -->
+  <TraitDef>
+    <defName>LP_GiftedScore</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li><degree>1</degree><label><![CDATA[<color=#5B9BD5>天赋·力量</color>]]></label><description>{PAWN_nameDef}天生力气大。\n\n- 力量算作“擅长”：每点正调整值收益 ×1.5（与种族亲和取较大，不相乘）</description></li>
+      <li><degree>2</degree><label><![CDATA[<color=#5B9BD5>天赋·敏捷</color>]]></label><description>{PAWN_nameDef}天生手脚灵活。\n\n- 敏捷算作“擅长”：每点正调整值收益 ×1.5（与种族亲和取较大，不相乘）</description></li>
+      <li><degree>3</degree><label><![CDATA[<color=#5B9BD5>天赋·体质</color>]]></label><description>{PAWN_nameDef}天生结实。\n\n- 体质算作“擅长”：每点正调整值收益 ×1.5（与种族亲和取较大，不相乘）</description></li>
+      <li><degree>4</degree><label><![CDATA[<color=#5B9BD5>天赋·智力</color>]]></label><description>{PAWN_nameDef}天生聪明。\n\n- 智力算作“擅长”：每点正调整值收益 ×1.5（与种族亲和取较大，不相乘）</description></li>
+      <li><degree>5</degree><label><![CDATA[<color=#5B9BD5>天赋·感知</color>]]></label><description>{PAWN_nameDef}天生敏锐。\n\n- 感知算作“擅长”：每点正调整值收益 ×1.5（与种族亲和取较大，不相乘）</description></li>
+      <li><degree>6</degree><label><![CDATA[<color=#5B9BD5>天赋·魅力</color>]]></label><description>{PAWN_nameDef}天生讨人喜欢。\n\n- 魅力算作“擅长”：每点正调整值收益 ×1.5（与种族亲和取较大，不相乘）</description></li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>强力特性</kind></li>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><giftedScore>true</giftedScore></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_DefyFate</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#B070E0>反骨</color>]]></label>
+        <description>{PAWN_nameDef}偏不信血脉写好的命。\n\n- 种族“笨拙”的属性按 ×1 算\n- 每次属性提升多 1 点（平时 2 点，现在 3 点）</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Epic</tier><kind>强力特性</kind></li>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><removeWeak>true</removeWeak><asiBonusPoints>1</asiBonusPoints></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Hardened</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>金刚之躯</color>]]></label>
+        <description>{PAWN_nameDef}的身子骨像铁打的。\n\n- 传奇属性“血量”“承受”“回复”每点收益 ×1.5（与种族亲和取较大，不相乘）</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>强力特性</kind></li>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><strongLegend><li>血量</li><li>承受</li><li>回复</li></strongLegend></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Edge</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>锋芒</color>]]></label>
+        <description>{PAWN_nameDef}生来就是打仗的料。\n\n- 传奇属性“近战”“远程”每点收益 ×1.5（与种族亲和取较大，不相乘）</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>强力特性</kind></li>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><strongLegend><li>近战</li><li>远程</li></strongLegend></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Insight</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>灵光</color>]]></label>
+        <description>{PAWN_nameDef}的脑子里时常闪过别人想不到的东西。\n\n- 传奇属性“心灵”“学习”每点收益 ×1.5（与种族亲和取较大，不相乘）\n- 智力、感知中较高的一项上限 +2</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>强力特性</kind></li>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><strongLegend><li>心灵</li><li>学习</li></strongLegend><capHigherOf><li>智力</li><li>感知</li></capHigherOf><capHigherBonus>2</capHigherBonus></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Diligent</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#B070E0>勤勉</color>]]></label>
+        <description>{PAWN_nameDef}从不偷懒，长进也比别人多一分。\n\n- 6、10、14、18 级各多一次属性提升</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Epic</tier><kind>强力特性</kind></li>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><extraAsiLevels><li>6</li><li>10</li><li>14</li><li>18</li></extraAsiLevels></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_LegendSeed</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>传奇之胚</color>]]></label>
+        <description>{PAWN_nameDef}注定要成为传奇——只是还没到时候。\n\n- 成为传奇冒险者时一次性获得 10 个传奇属性点\n- 500 / 1000 人形击杀里程碑的传奇属性点奖励翻倍（各 6 点）</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>强力特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <!-- ==================== 紫色：强化天赋（规则型） ==================== -->
+  <TraitDef>
+    <defName>LP_TotemSpirit</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <degree>1</degree>
+        <label><![CDATA[<color=#5B9BD5>图腾之魂·熊</color>]]></label>
+        <description>熊的灵魂在{PAWN_nameDef}的血里低吼。\n\n- 总体健康低于 50% 时，受到的非心灵伤害 -35%\n- 疼痛休克阈值 +10%</description>
+        <statOffsets><PainShockThreshold>0.1</PainShockThreshold></statOffsets>
+      </li>
+      <li>
+        <degree>2</degree>
+        <label><![CDATA[<color=#5B9BD5>图腾之魂·狼</color>]]></label>
+        <description>狼群的灵魂跟着{PAWN_nameDef}一起狩猎。\n\n- {PAWN_pronoun}近战命中过的目标（8 秒内），其他友军对它近战命中 +15%\n- 近战命中 10% 让目标倒地 1 秒（体型 3 以上无效）\n- 移动速度 +0.3</description>
+        <statOffsets><MoveSpeed>0.3</MoveSpeed></statOffsets>
+      </li>
+      <li>
+        <degree>3</degree>
+        <label><![CDATA[<color=#5B9BD5>图腾之魂·鹰</color>]]></label>
+        <description>鹰的灵魂替{PAWN_nameDef}盯着远处。\n\n- 射击时目标掩体的减免减半（和神射手不叠加）\n- 远程武器射程 ×1.15</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>强力特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_FavoredEnemy</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li><degree>1</degree><label><![CDATA[<color=#5B9BD5>宿敌猎人·龙</color>]]></label><description>{PAWN_nameDef}发誓要猎杀世上的龙。\n\n- 对宿敌（龙：五色真龙、力能龙裔、其他龙类）伤害 +25%、命中 +15%\n- 宿敌出现在本地图时提示一次\n- 击杀宿敌累计 50 个后成为“宿敌克星”：伤害 +40%，免疫宿敌施加的眩晕与控制</description></li>
+      <li><degree>2</degree><label><![CDATA[<color=#5B9BD5>宿敌猎人·巨人</color>]]></label><description>{PAWN_nameDef}发誓要猎杀巨人。\n\n- 对宿敌（体型 2 以上的巨人种族）伤害 +25%、命中 +15%\n- 宿敌出现在本地图时提示一次\n- 击杀宿敌累计 50 个后成为“宿敌克星”：伤害 +40%，免疫宿敌施加的眩晕与控制</description></li>
+      <li><degree>3</degree><label><![CDATA[<color=#5B9BD5>宿敌猎人·不死</color>]]></label><description>{PAWN_nameDef}发誓要让死者安息。\n\n- 对宿敌（巫妖、死灵造物、死亡骑士、半巫妖、Anomaly 尸鬼）伤害 +25%、命中 +15%\n- 宿敌出现在本地图时提示一次\n- 击杀宿敌累计 50 个后成为“宿敌克星”：伤害 +40%，免疫宿敌施加的眩晕与控制</description></li>
+      <li><degree>4</degree><label><![CDATA[<color=#5B9BD5>宿敌猎人·邪魔</color>]]></label><description>{PAWN_nameDef}发誓要把邪魔赶回深渊和九狱。\n\n- 对宿敌（深渊恶魔、九狱魔鬼、炎魔、寒冰魔、契约恶魔）伤害 +25%、命中 +15%\n- 宿敌出现在本地图时提示一次\n- 击杀宿敌累计 50 个后成为“宿敌克星”：伤害 +40%，免疫宿敌施加的眩晕与控制</description></li>
+      <li><degree>5</degree><label><![CDATA[<color=#5B9BD5>宿敌猎人·异怪</color>]]></label><description>{PAWN_nameDef}见过幽暗地域里的东西，从此只想把它们杀干净。\n\n- 对宿敌（夺心魔、眼魔、贝希尔、六臂蛇人）伤害 +25%、命中 +15%\n- 宿敌出现在本地图时提示一次\n- 击杀宿敌累计 50 个后成为“宿敌克星”：伤害 +40%，免疫宿敌施加的眩晕与控制</description></li>
+      <li><degree>6</degree><label><![CDATA[<color=#5B9BD5>宿敌猎人·野兽</color>]]></label><description>{PAWN_nameDef}是荒野里长大的猎手。\n\n- 对宿敌（动物）伤害 +25%、命中 +15%\n- 宿敌出现在本地图时提示一次\n- 击杀宿敌累计 50 个后成为“宿敌克星”：伤害 +40%，免疫宿敌施加的眩晕与控制</description></li>
+      <li><degree>7</degree><label><![CDATA[<color=#5B9BD5>宿敌猎人·仇敌派系</color>]]></label><description>{PAWN_nameDef}和一个派系有血仇（派系名见悬停说明下方）。\n\n- 对宿敌（那个派系的成员）伤害 +25%、命中 +15%\n- 宿敌出现在本地图时提示一次\n- 击杀宿敌累计 50 个后成为“宿敌克星”：伤害 +40%，免疫宿敌施加的眩晕与控制</description></li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>强力特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Attuner</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>同调者</color>]]></label>
+        <description>魔法物品在{PAWN_nameDef}手里格外听话。\n\n- 身上魔法物品（1.45.0 魔法物品、魔法衣甲）自带的属性加成 ×1.25\n- 戒指最多戴三枚（平时两枚）\n- {PAWN_pronoun}击杀宿敌冠军时，20% 多掉一件魔法物品</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>强力特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_ElementTouched</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li><degree>1</degree><label><![CDATA[<color=#5B9BD5>元素之触·火</color>]]></label><description>火元素在{PAWN_nameDef}身上留下了印记。\n\n- 任何武器命中额外造成 3 点灼烧伤害\n- 受到的火焰类伤害 -50%\n- {PAWN_possessive}火焰类法术、神术、法杖伤害 +30%\n- 火元素裔：改为火焰伤害 -75%，不加附伤</description></li>
+      <li><degree>2</degree><label><![CDATA[<color=#5B9BD5>元素之触·冰</color>]]></label><description>寒冰元素在{PAWN_nameDef}身上留下了印记。\n\n- 任何武器命中额外造成 3 点寒霜伤害，并让目标减速 2 秒\n- 受到的寒冷类伤害 -50%\n- {PAWN_possessive}寒冷类法术、神术、法杖伤害 +30%\n- 水元素裔：改为寒冷伤害 -75%，不加附伤</description></li>
+      <li><degree>3</degree><label><![CDATA[<color=#5B9BD5>元素之触·雷</color>]]></label><description>雷电元素在{PAWN_nameDef}身上留下了印记。\n\n- 任何武器命中额外造成 3 点电击伤害，10% 跳到 2 格内另一个敌人\n- 受到的雷电类伤害 -50%\n- {PAWN_possessive}雷电类法术、神术、法杖伤害 +30%\n- 风元素裔：改为雷电伤害 -75%，不加附伤</description></li>
+      <li><degree>4</degree><label><![CDATA[<color=#5B9BD5>元素之触·酸</color>]]></label><description>强酸元素在{PAWN_nameDef}身上留下了印记。\n\n- 任何武器命中额外造成 3 点强酸伤害\n- 受到的强酸类伤害 -50%\n- {PAWN_possessive}强酸类法术、神术、法杖伤害 +30%\n- 土元素裔：改为强酸伤害 -75%，不加附伤</description></li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>强力特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_SpellWarded</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>法术抗体</color>]]></label>
+        <description>魔法在{PAWN_nameDef}身上总是打滑。\n\n- 敌方的灵能、法术、神术伤害 -35%（没有武器的伤害、法杖伤害）\n- 敌方的眩晕、魅惑、支配、心灵震爆 50% 无效\n- 只抵抗敌对施法者，友方的增益法术照常生效\n- 代价：心灵敏感度 -20%</description>
+        <statOffsets><PsychicSensitivity>-0.2</PsychicSensitivity></statOffsets>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>强力特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Duelist</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>决斗者</color>]]></label>
+        <description>{PAWN_nameDef}最擅长一对一。\n\n- 身边（1.5 格内）只有一个敌人时：近战命中 +25%、近战闪避 +25%，闪避成功 50% 立即反击一次\n- 被 3 个以上敌人贴身时近战命中 -10%\n（身边敌人数每 4 秒更新一次）</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>强力特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <!-- ==================== 金色：天命（会进化） ==================== -->
+  <TraitDef>
+    <defName>LP_Prophesied</defName>
+    <commonality>0</commonality>
+    <exclusionTags><li>LP_Destiny</li></exclusionTags>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#E0B040>预言之子</color>]]></label>
+        <description>{PAWN_nameDef}出生那天，有人说出了一句预言（预言内容见悬停说明下方）。\n\n觉醒：命运未尽——预言兑现之前，致命伤改为倒地并止血（冷却 20 天）；对预言目标伤害 +25%。\n显现（冒险者 10 级）：命运未尽冷却 12 天；{PAWN_pronoun}倒地时 5 格内友军“为了预言之子”命中 +10%（1 小时）。\n升华（预言兑现）：一次性获得下一级所需的全部经验，全殖民地“预言兑现”心情 +8（10 天）；命运未尽换成命运主宰——每天一次，下一次攻击必中且伤害 ×2。</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Mythic</tier><kind>天命</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_PactDestiny</defName>
+    <commonality>0</commonality>
+    <exclusionTags><li>LP_Destiny</li></exclusionTags>
+    <degreeDatas>
+      <li>
+        <degree>1</degree>
+        <label><![CDATA[<color=#E0B040>邪契者·邪魔</color>]]></label>
+        <description>{PAWN_nameDef}和九狱的一位大魔鬼有约。\n\n所有阶段：邪契魔能爆（每道 12 伤害，1/5/11/17 级 1/2/3/4 道，冷却 4 秒，不耗心灵熵）。\n觉醒：每次击杀获得临时伤害吸收 15 + 冒险者等级（最多 60）。\n显现（10 级）：魔能爆命中点燃目标。\n升华（传奇冒险者）：火焰伤害 -50%；每天一次“直坠地狱”（单体 10 秒共 60 点灼烧伤害，期间目标动弹不得）。\n偿契：每 15～20 天宗主提一次要求，3 天内处决一名囚犯或交 500 银。失败 → 宗主之怒 10 天（魔能爆不能用、心情 -10）；连续两次失败降一阶，觉醒阶再连败特性消失并“背弃之契”心情 -15（15 天）。</description>
+      </li>
+      <li>
+        <degree>2</degree>
+        <label><![CDATA[<color=#E0B040>邪契者·妖精</color>]]></label>
+        <description>{PAWN_nameDef}和妖精女王有约。\n\n所有阶段：邪契魔能爆（每道 12 伤害，1/5/11/17 级 1/2/3/4 道，冷却 4 秒，不耗心灵熵）。\n觉醒：妖精步——传送到 8 格内，冷却 30 秒。\n显现（10 级）：被命中时 20% 让攻击者迷惑 3 秒。\n升华（传奇冒险者）：每天一次“妖精魅惑”，6 格内的敌人失神 10 秒（首领无效）。\n偿契：每 15～20 天宗主提一次要求，3 天内举办派对 / 婚礼，或交一件品质优秀以上的艺术品。失败 → 宗主之怒 10 天（魔能爆不能用、心情 -10）；连续两次失败降一阶，觉醒阶再连败特性消失并“背弃之契”心情 -15（15 天）。</description>
+      </li>
+      <li>
+        <degree>3</degree>
+        <label><![CDATA[<color=#E0B040>邪契者·旧日</color>]]></label>
+        <description>{PAWN_nameDef}在梦里听见了星界之外的低语，并且回答了它。\n\n所有阶段：邪契魔能爆（每道 12 伤害，1/5/11/17 级 1/2/3/4 道，冷却 4 秒，不耗心灵熵）。\n觉醒：心灵敏感度 +20%。\n显现（10 级）：魔能爆命中让目标眩晕 1 秒（同一目标 10 秒一次）。\n升华（传奇冒险者）：每天一次“异界触须”，半径 3 的区域里敌人被困 15 秒并持续受伤。\n偿契：每 15～20 天宗主提一次要求，3 天内本人冥想 8 小时或研读耐瑟瑞尔卷轴 1 小时。失败 → 宗主之怒 10 天（魔能爆不能用、心情 -10）；连续两次失败降一阶，觉醒阶再连败特性消失并“背弃之契”心情 -15（15 天）。</description>
+        <statOffsets><PsychicSensitivity>0.2</PsychicSensitivity></statOffsets>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Mythic</tier><kind>天命</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_WeaveChild</defName>
+    <commonality>0</commonality>
+    <exclusionTags><li>LP_Destiny</li></exclusionTags>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#E0B040>魔网之子</color>]]></label>
+        <description>魔网在{PAWN_nameDef}身边像水一样流动。\n\n觉醒：法杖伤害 +20%；装了 VPE 时灵能能力的心灵熵消耗 -25%，没装时心灵敏感度 +15%。\n显现（冒险者 10 级）：每次施法 15% 不进冷却；没装 VPE 时改为法杖射程 +3。\n升华（传奇冒险者）：每天一次“魔网涌动”，60 秒内施法不耗心灵熵、不进冷却；魔网震颤和魔网崩溃对{PAWN_objective}无效。</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Mythic</tier><kind>天命</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_DivineChampion</defName>
+    <commonality>0</commonality>
+    <exclusionTags><li>LP_Destiny</li></exclusionTags>
+    <degreeDatas>
+      <li><degree>1</degree><label><![CDATA[<color=#E0B040>神之勇士·洛山达</color>]]></label><description>晨曦之主洛山达选中了{PAWN_nameDef}。\n\n觉醒：牧师 / 圣武士路径经验 +30%，圣坛祈祷得到的神眷 ×2，对不死生物伤害 +20%。\n显现（冒险者 10 级）：成神之路进度 ×1.5，洛山达的领域神术冷却 -25%。\n升华（传奇冒险者）：神明干预——殖民地同一张地图上 3 名以上殖民者倒地时自动降下神迹（每季一次）：晨光普照，全员治愈伤口、止血。成神时半神等级 +1 起步。</description></li>
+      <li><degree>2</degree><label><![CDATA[<color=#E0B040>神之勇士·提尔</color>]]></label><description>公正之神提尔选中了{PAWN_nameDef}。\n\n觉醒：牧师 / 圣武士路径经验 +30%，圣坛祈祷得到的神眷 ×2，对邪魔伤害 +20%。\n显现（冒险者 10 级）：成神之路进度 ×1.5，提尔的领域神术冷却 -25%。\n升华（传奇冒险者）：神明干预——殖民地同一张地图上 3 名以上殖民者倒地时自动降下神迹（每季一次）：公正之剑，30 秒内全员近战伤害 +50%。成神时半神等级 +1 起步。</description></li>
+      <li><degree>3</degree><label><![CDATA[<color=#E0B040>神之勇士·密斯特拉</color>]]></label><description>魔法女神密斯特拉选中了{PAWN_nameDef}。\n\n觉醒：牧师 / 圣武士路径经验 +30%，圣坛祈祷得到的神眷 ×2，对异怪伤害 +20%。\n显现（冒险者 10 级）：成神之路进度 ×1.5，密斯特拉的领域神术冷却 -25%。\n升华（传奇冒险者）：神明干预——殖民地同一张地图上 3 名以上殖民者倒地时自动降下神迹（每季一次）：魔网断流，打断全部敌方施法，所有敌人眩晕 5 秒。成神时半神等级 +1 起步。</description></li>
+      <li><degree>4</degree><label><![CDATA[<color=#E0B040>神之勇士·凯兰沃</color>]]></label><description>死亡之神凯兰沃选中了{PAWN_nameDef}。\n\n觉醒：牧师 / 圣武士路径经验 +30%，圣坛祈祷得到的神眷 ×2，对不死生物伤害 +20%。\n显现（冒险者 10 级）：成神之路进度 ×1.5，凯兰沃的领域神术冷却 -25%。\n升华（传奇冒险者）：神明干预——殖民地同一张地图上 3 名以上殖民者倒地时自动降下神迹（每季一次）：死亡止步，倒地的殖民者全部止血，1 天内不会失血而死。成神时半神等级 +1 起步。</description></li>
+      <li><degree>5</degree><label><![CDATA[<color=#E0B040>神之勇士·马拉尔</color>]]></label><description>兽王马拉尔选中了{PAWN_nameDef}。\n\n觉醒：牧师 / 圣武士路径经验 +30%，圣坛祈祷得到的神眷 ×2，对野兽伤害 +20%。\n显现（冒险者 10 级）：成神之路进度 ×1.5，马拉尔的领域神术冷却 -25%。\n升华（传奇冒险者）：神明干预——殖民地同一张地图上 3 名以上殖民者倒地时自动降下神迹（每季一次）：兽王咆哮，地图上的敌人恐慌逃跑 10 秒。成神时半神等级 +1 起步。</description></li>
+      <li><degree>6</degree><label><![CDATA[<color=#E0B040>神之勇士·塔洛斯</color>]]></label><description>风暴之神塔洛斯选中了{PAWN_nameDef}。\n\n觉醒：牧师 / 圣武士路径经验 +30%，圣坛祈祷得到的神眷 ×2，对巨人伤害 +20%。\n显现（冒险者 10 级）：成神之路进度 ×1.5，塔洛斯的领域神术冷却 -25%。\n升华（传奇冒险者）：神明干预——殖民地同一张地图上 3 名以上殖民者倒地时自动降下神迹（每季一次）：雷霆之怒，最多 6 道闪电劈向敌人（每道 30 点电击伤害）。成神时半神等级 +1 起步。</description></li>
+      <li><degree>7</degree><label><![CDATA[<color=#E0B040>神之勇士·班恩</color>]]></label><description>暴君班恩选中了{PAWN_nameDef}。\n\n觉醒：牧师 / 圣武士路径经验 +30%，圣坛祈祷得到的神眷 ×2，对神力灌注者、神明附体者和半神伤害 +20%。\n显现（冒险者 10 级）：成神之路进度 ×1.5，班恩的领域神术冷却 -25%。\n升华（传奇冒险者）：神明干预——殖民地同一张地图上 3 名以上殖民者倒地时自动降下神迹（每季一次）：暴君之威，地图上的敌人全部惊惧 1 小时。成神时半神等级 +1 起步。</description></li>
+      <li><degree>8</degree><label><![CDATA[<color=#E0B040>神之勇士·莎尔</color>]]></label><description>暗夜女神莎尔选中了{PAWN_nameDef}。\n\n觉醒：牧师 / 圣武士路径经验 +30%，圣坛祈祷得到的神眷 ×2，对异怪伤害 +20%。\n显现（冒险者 10 级）：成神之路进度 ×1.5，莎尔的领域神术冷却 -25%。\n升华（传奇冒险者）：神明干预——殖民地同一张地图上 3 名以上殖民者倒地时自动降下神迹（每季一次）：暗夜帷幕，地图上的殖民者隐身 30 秒。成神时半神等级 +1 起步。</description></li>
+      <li><degree>9</degree><label><![CDATA[<color=#E0B040>神之勇士·苏尔特</color>]]></label><description>火巨人之神苏尔特选中了{PAWN_nameDef}。\n\n觉醒：牧师 / 圣武士路径经验 +30%，圣坛祈祷得到的神眷 ×2，对龙伤害 +20%。\n显现（冒险者 10 级）：成神之路进度 ×1.5，苏尔特的领域神术冷却 -25%。\n升华（传奇冒险者）：神明干预——殖民地同一张地图上 3 名以上殖民者倒地时自动降下神迹（每季一次）：熔炉之怒，地图上的敌人全部着火并受到 20 点火焰伤害。成神时半神等级 +1 起步。</description></li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Mythic</tier><kind>天命</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <!-- ==================== 青色：传说事迹（不随机、不占名额） ==================== -->
+  <TraitDef>
+    <defName>LP_DeedDragonslayer</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#50C0C0>屠龙者</color>]]></label>
+        <description>{PAWN_nameDef}参与杀死了一条龙。\n\n- 对龙伤害 +30%\n- 免疫龙威带来的惊惧\n- 龙的吐息（龙身上不带武器的伤害）-30%</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>传说事迹</kind><mark>Deed</mark></li>
+    </modExtensions>
+  </TraitDef>
+  <TraitDef>
+    <defName>LP_Giantbane</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#50C0C0>巨人克星</color>]]></label>
+        <description>{PAWN_nameDef}用近战放倒过三个巨人。\n\n- 近战打体型 1.5 以上的目标伤害 +30%\n- 传奇属性“血量”每点收益至少 ×1.25</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>传说事迹</kind><mark>Deed</mark></li>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><legendFloor><li>血量</li></legendFloor><legendFloorFactor>1.25</legendFloorFactor></li>
+    </modExtensions>
+  </TraitDef>
+  <TraitDef>
+    <defName>LP_Lichbane</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#50C0C0>巫妖克星</color>]]></label>
+        <description>{PAWN_nameDef}击败过影巫王拉洛克，或者亲手毁掉过敌人的命匣。\n\n- 对不死生物伤害 +30%\n- 不会被汲取灵魂\n- 传奇属性“心灵”每点收益至少 ×1.25</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>传说事迹</kind><mark>Deed</mark></li>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><legendFloor><li>心灵</li></legendFloor><legendFloorFactor>1.25</legendFloorFactor></li>
+    </modExtensions>
+  </TraitDef>
+  <TraitDef>
+    <defName>LP_DeedGodslayer</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#50C0C0>弑神者</color>]]></label>
+        <description>{PAWN_nameDef}参与杀死了一名神明附体者或半神。\n\n- 对神力灌注者、神明附体者和半神伤害 +35%\n- 他们的神术伤害（不带武器的伤害）-35%\n- 六项属性上限 +1</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Epic</tier><kind>传说事迹</kind><mark>Deed</mark></li>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><scoreCapOffset>1</scoreCapOffset></li>
+    </modExtensions>
+  </TraitDef>
+  <TraitDef>
+    <defName>LP_MindFortress</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#50C0C0>心智堡垒</color>]]></label>
+        <description>{PAWN_nameDef}从夺心魔的支配里挣脱过，或者扛过了三次心灵震爆。\n\n- 免疫心灵控制（支配、心灵震爆、心灵束缚等走心智抗性判定的效果）\n- 心灵类伤害 -50%\n- 精神崩溃阈值 -5%</description>
+        <statOffsets><MentalBreakThreshold>-0.05</MentalBreakThreshold></statOffsets>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Epic</tier><kind>传说事迹</kind><mark>Deed</mark></li>
+    </modExtensions>
+  </TraitDef>
+  <TraitDef>
+    <defName>LP_DeathReturned</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#50C0C0>冥界归来</color>]]></label>
+        <description>{PAWN_nameDef}死过一次，又回来了。\n\n- 不会因为死亡类事件（亲友、同伴死去，目睹死亡）心情变差\n- 对不死生物伤害 +20%\n- 每 30 天一次：倒地后 2 小时内不会失血而死</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Uncommon</tier><kind>传说事迹</kind><mark>Deed</mark></li>
+    </modExtensions>
+  </TraitDef>
+  <TraitDef>
+    <defName>LP_LastStand</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#50C0C0>绝境英雄</color>]]></label>
+        <description>那一次袭击里，殖民地只剩{PAWN_nameDef}一个人还站着——{PAWN_pronoun}守住了。\n\n- 疼痛休克阈值 +10%\n- 获得时 +1 次属性提升；25% 当场觉醒英雄之资（已有英雄之资、极致或天命时改为 +3 传奇属性点）</description>
+        <statOffsets><PainShockThreshold>0.1</PainShockThreshold></statOffsets>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>传说事迹</kind><mark>Deed</mark></li>
+    </modExtensions>
+  </TraitDef>
+
+  <!-- ==================== 状态 ==================== -->
+  <HediffDef>
+    <defName>LP_HeroRecord</defName>
+    <label>强力特性记录</label>
+    <description>记录天命阶段、预言、偿契、宿敌和传说事迹的进度（隐藏）。</description>
+    <hediffClass>LichPhylactery.Hediff_HeroRecord</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <defaultLabelColor>(0.88,0.69,0.25)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_HeroFrostSlow</defName>
+    <label>寒霜迟滞</label>
+    <description>元素之触·冰的寒气让动作变慢。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.6,0.8,1)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>120</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><capMods><li><capacity>Moving</capacity><offset>-0.3</offset></li></capMods></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_ForTheProphesied</defName>
+    <label>为了预言之子</label>
+    <description>预言之子倒下了——为了预言，所有人都打起了精神。近战和射击命中 +10%。</description>
+    <hediffClass>LichPhylactery.Hediff_HeroBuff</hediffClass>
+    <isBad>false</isBad>
+    <defaultLabelColor>(0.88,0.69,0.25)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>2500</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_FiendishVigor</defName>
+    <label>邪魔活力</label>
+    <description>宗主从死者身上抽出的生命：吸收受到的伤害（数值 = 剩余吸收量），1 天后消散。</description>
+    <hediffClass>LichPhylactery.Hediff_FeatInspired</hediffClass>
+    <isBad>false</isBad>
+    <initialSeverity>15</initialSeverity>
+    <maxSeverity>60</maxSeverity>
+    <defaultLabelColor>(0.9,0.4,0.3)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>60000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_HurledThroughHell</defName>
+    <label>直坠地狱</label>
+    <description>被扔进九狱转了一圈：动弹不得，每秒受到灼烧伤害。</description>
+    <hediffClass>LichPhylactery.Hediff_HeroTorment</hediffClass>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.9,0.3,0.2)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>600</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_EldritchTentacles</defName>
+    <label>异界触须</label>
+    <description>从地面裂缝里伸出的触须缠住了身体：动弹不得，每秒受到伤害。</description>
+    <hediffClass>LichPhylactery.Hediff_HeroTorment</hediffClass>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.5,0.3,0.7)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>900</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_PatronWrath</defName>
+    <label>宗主之怒</label>
+    <description>没能偿契，宗主收回了恩惠：邪契魔能爆不能用。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.8,0.3,0.3)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>600000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_DeathGrace</defName>
+    <label>冥界的宽限</label>
+    <description>死过一次的人，死神会多给一点时间：不再失血。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <defaultLabelColor>(0.6,0.8,0.8)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>5000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><totalBleedFactor>0</totalBleedFactor></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_WeaveSurge</defName>
+    <label>魔网涌动</label>
+    <description>魔网之子的升华：施法不耗心灵熵、不进冷却。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <defaultLabelColor>(0.5,0.7,1)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>3600</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_DivineBlessing</defName>
+    <label>公正之剑</label>
+    <description>提尔的神迹：近战伤害 +50%。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <defaultLabelColor>(0.95,0.85,0.45)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>1800</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><statFactors><MeleeDamageFactor>1.5</MeleeDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_DivineRespite</defName>
+    <label>死亡止步</label>
+    <description>凯兰沃的神迹：伤口不再流血。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <defaultLabelColor>(0.7,0.75,0.8)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>60000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><totalBleedFactor>0</totalBleedFactor></li></stages>
+  </HediffDef>
+
+  <!-- ==================== 心情 ==================== -->
+  <ThoughtDef>
+    <defName>LP_ProphecyFulfilled</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>10</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>预言兑现</label><description>我们亲眼见证了预言成真。</description><baseMoodEffect>8</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_PatronWrathMood</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>10</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>宗主之怒</label><description>宗主对我很不满意。我能感觉到那股寒意。</description><baseMoodEffect>-10</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_PactForsaken</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>15</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>背弃之契</label><description>宗主抛弃了我，连同{PAWN_possessive}给我的一切。</description><baseMoodEffect>-15</baseMoodEffect></li></stages>
+  </ThoughtDef>
+
+  <LetterDef ParentName="CustomChoiceLetterBase">
+    <defName>LP_HeroPactLetter</defName>
+    <letterClass>LichPhylactery.ChoiceLetter_HeroPact</letterClass>
+    <color>(0.88, 0.69, 0.25)</color>
+    <flashColor>(0.88, 0.69, 0.25)</flashColor>
+  </LetterDef>
+
+  <!-- ==================== 能力 ==================== -->
+  <AbilityDef Name="LP_HeroAbilityBase" Abstract="True">
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <sendMessageOnCooldownComplete>false</sendMessageOnCooldownComplete>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_HeroAbilityBase">
+    <defName>LP_HeroPactBlast</defName>
+    <label>邪契魔能爆</label>
+    <description>邪契者的契约法术：一道力场光束（射程 24），每道 12 点魔能伤害（护甲穿透 30%）。道数随冒险者等级：1–4 级 1 道、5–10 级 2 道、11–16 级 3 道、17 级起 4 道；目标倒下后剩下的光束自动打向附近的敌人。不耗心灵熵。冷却 4 秒。宗主之怒期间不能用。</description>
+    <iconPath>Pact/Abilities/EldritchBlast</iconPath>
+    <cooldownTicksRange>240</cooldownTicksRange>
+    <hostile>true</hostile>
+    <aiCanUse>true</aiCanUse>
+    <ai_IsOffensive>true</ai_IsOffensive>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>24</range>
+      <warmupTime>0.6</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_HeroPower"><effect>blast</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_HeroAbilityBase">
+    <defName>LP_HeroFeyStep</defName>
+    <label>妖精步</label>
+    <description>踏进妖精荒野又走出来：传送到 8 格内看得见的空地。冷却 30 秒。</description>
+    <iconPath>Pact/Abilities/TreeStride</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <hostile>false</hostile>
+    <aiCanUse>false</aiCanUse>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>8</range>
+      <warmupTime>0.2</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>false</canTargetPawns><canTargetLocations>true</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_HeroPower"><effect>feystep</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_HeroAbilityBase">
+    <defName>LP_HeroHurlHell</defName>
+    <label>直坠地狱</label>
+    <description>邪契者·邪魔的升华：把一个敌人扔进九狱转一圈。10 秒内目标动弹不得，每秒受到 6 点灼烧伤害（共 60 点）。每天一次。</description>
+    <iconPath>Pact/Abilities/HellfireHurl</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <hostile>true</hostile>
+    <aiCanUse>true</aiCanUse>
+    <ai_IsOffensive>true</ai_IsOffensive>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>15</range>
+      <warmupTime>1</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_HeroPower"><effect>hell</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_HeroAbilityBase">
+    <defName>LP_HeroFeyCharm</defName>
+    <label>妖精魅惑</label>
+    <description>邪契者·妖精的升华：6 格内的敌人被妖精的歌声迷住，失神 10 秒（首领、传奇单位、半神无效）。每天一次。</description>
+    <iconPath>Pact/Abilities/Faces</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <aiCanUse>false</aiCanUse>
+    <targetRequired>false</targetRequired>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>0</range>
+      <warmupTime>0.5</warmupTime>
+      <targetParams><canTargetSelf>true</canTargetSelf></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_HeroPower"><effect>charm</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_HeroAbilityBase">
+    <defName>LP_HeroTentacles</defName>
+    <label>异界触须</label>
+    <description>邪契者·旧日的升华：在一处地面（半径 3）撕开星界之外的裂缝，里面的敌人被触须困住 15 秒，每秒受到 3 点伤害。每天一次。</description>
+    <iconPath>Pact/Abilities/ChainLash</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <hostile>true</hostile>
+    <aiCanUse>false</aiCanUse>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>20</range>
+      <warmupTime>1</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetLocations>true</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_HeroPower"><effect>tentacles</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_HeroAbilityBase">
+    <defName>LP_HeroFateMaster</defName>
+    <label>命运主宰</label>
+    <description>预言之子的升华：下一次攻击必中，伤害 ×2。每天一次。</description>
+    <iconPath>Faith/Miracles/Judgment</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <aiCanUse>false</aiCanUse>
+    <targetRequired>false</targetRequired>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>0</range>
+      <warmupTime>0</warmupTime>
+      <targetParams><canTargetSelf>true</canTargetSelf></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_HeroPower"><effect>fate</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_HeroAbilityBase">
+    <defName>LP_HeroWeaveSurge</defName>
+    <label>魔网涌动</label>
+    <description>魔网之子的升华：60 秒内施法不耗心灵熵、不进冷却。每天一次。</description>
+    <iconPath>Faith/Miracles/Dawn</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <aiCanUse>false</aiCanUse>
+    <targetRequired>false</targetRequired>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>0</range>
+      <warmupTime>0</warmupTime>
+      <targetParams><canTargetSelf>true</canTargetSelf></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_HeroPower"><effect>weave</effect></li></comps>
+  </AbilityDef>
+</Defs>

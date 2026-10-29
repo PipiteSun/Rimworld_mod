@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.31.0 龙过境（两阶段）：龙影条件、吐息弹坑、心情、隐藏派系“游荡的古龙”、古龙与龙仆、三选一信件。规则见 Source/DragonFlyover.cs。 -->
+<Defs>
+  <IncidentDef>
+    <defName>LP_DragonFlyover</defName>
+    <label>龙过境</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_DragonFlyover</workerClass>
+    <baseChance>0.6</baseChance>
+    <minRefireDays>40</minRefireDays>
+    <!-- 最早第 1 年第 3 季度 -->
+    <earliestDay>30</earliestDay>
+    <pointsScaleable>false</pointsScaleable>
+  </IncidentDef>
+
+  <GameConditionDef>
+    <defName>LP_DragonShadow</defName>
+    <conditionClass>LichPhylactery.GameCondition_DragonShadow</conditionClass>
+    <label>龙过境</label>
+    <description>一条巨龙在这片天空上盘旋。它的影子不时掠过大地，野兽四散奔逃。</description>
+    <endMessage>巨龙飞远了。</endMessage>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
+
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_DragonShadowFleck</defName>
+    <graphicData>
+      <texPath>Things/Mote/LP_DragonShadow</texPath>
+      <shaderType>Transparent</shaderType>
+      <color>(1, 1, 1, 0.38)</color>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.4</fadeInTime>
+    <solidTime>7</solidTime>
+    <fadeOutTime>0.6</fadeOutTime>
+  </FleckDef>
+
+  <ThingDef ParentName="BaseFilth">
+    <defName>LP_ForceCrater</defName>
+    <label>力场弹坑</label>
+    <graphicData>
+      <texPath>Things/Filth/RubbleRock</texPath>
+      <color>(0.72, 0.82, 1)</color>
+    </graphicData>
+    <filth>
+      <disappearsInDays>30~35</disappearsInDays>
+      <cleaningWorkToReduceThickness>35</cleaningWorkToReduceThickness>
+    </filth>
+    <statBases>
+      <BeautyOutdoors>-4</BeautyOutdoors>
+    </statBases>
+  </ThingDef>
+
+  <ThoughtDef>
+    <defName>LP_DragonShadowDread</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_DragonShadow</workerClass>
+    <validWhileDespawned>false</validWhileDespawned>
+    <stages>
+      <li>
+        <label>巨龙的阴影</label>
+        <description>一条巨龙在头顶上盘旋，每次影子掠过都让人心里发毛。</description>
+        <baseMoodEffect>-3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_DragonKinScent</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_DragonKinScent</workerClass>
+    <validWhileDespawned>false</validWhileDespawned>
+    <stages>
+      <li>
+        <label>同类的气息</label>
+        <description>天上飘下来同类的气息。这片天空也有别的龙。</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_DuelWinner</defName>
+    <durationDays>15</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>胜者</label>
+        <description>我在决斗里打倒了另一条龙。它的宝藏现在归我了。</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_DuelLoser</defName>
+    <durationDays>10</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>败者</label>
+        <description>我在决斗里输给了另一条龙，眼睁睁看着它的仆从搬走我的宝藏。</description>
+        <baseMoodEffect>-8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <LetterDef ParentName="CustomChoiceLetterBase">
+    <defName>LP_DragonChoiceLetter</defName>
+    <letterClass>LichPhylactery.Letter_DragonVisit</letterClass>
+  </LetterDef>
+
+  <HediffDef>
+    <defName>LP_EventVisitor</defName>
+    <label>访客</label>
+    <description>事件里来的访客（游荡的古龙及其仆从、云游导师）。</description>
+    <hediffClass>LichPhylactery.Hediff_EventVisitor</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+
+  <!-- 隐藏派系：不生成据点、不参与随机袭击；初始好感 0，不是永久敌人。只有拒绝古龙时它会短暂敌对来抢一次宝库，袭击结束后好感回到 0。 -->
+  <FactionDef ParentName="LP_FactionBase">
+    <defName>LP_DragonWanderers</defName>
+    <label>游荡的古龙</label>
+    <fixedName>游荡的古龙</fixedName>
+    <description>一条没有巢穴的古龙和它的仆从。它们在大地上游荡，寻找值得一战的对手或值得结亲的同类。</description>
+    <pawnSingular>龙仆</pawnSingular>
+    <pawnsPlural>龙仆</pawnsPlural>
+    <techLevel>Medieval</techLevel>
+    <hidden>true</hidden>
+    <requiredCountAtGameStart>0</requiredCountAtGameStart>
+    <startingCountAtWorldCreation>0</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <displayInFactionSelection>false</displayInFactionSelection>
+    <settlementGenerationWeight>0</settlementGenerationWeight>
+    <canStageAttacks>false</canStageAttacks>
+    <raidsForbidden>true</raidsForbidden>
+    <canGenerateQuestSites>false</canGenerateQuestSites>
+    <rescueesCanJoin>false</rescueesCanJoin>
+    <factionIconPath>Factions/EmberClan</factionIconPath>
+    <colorSpectrum>
+      <li>(0.62, 0.74, 0.92)</li>
+      <li>(0.78, 0.86, 1.00)</li>
+    </colorSpectrum>
+    <basicMemberKind>LP_DragonServant</basicMemberKind>
+    <ideoName>龙之宝藏</ideoName>
+    <ideoDescription>宝藏属于最强的龙。</ideoDescription>
+    <forcedMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Ideological</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Individualist</li>
+    </forcedMemes>
+    <raidCommonalityFromPointsCurve>
+      <points>
+        <li>(0, 0)</li>
+      </points>
+    </raidCommonalityFromPointsCurve>
+    <pawnGroupMakers>
+      <li>
+        <kindDef>Combat</kindDef>
+        <options>
+          <LP_DragonServant>1</LP_DragonServant>
+        </options>
+      </li>
+    </pawnGroupMakers>
+  </FactionDef>
+
+  <PawnKindDef ParentName="LP_FighterBase">
+    <defName>LP_WildDragon</defName>
+    <label>游荡的古龙</label>
+    <defaultFactionDef>LP_DragonWanderers</defaultFactionDef>
+    <combatPower>400</combatPower>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_ForceDragon>1</LP_ForceDragon>
+      </xenotypeChances>
+    </xenotypeSet>
+    <minGenerationAge>35</minGenerationAge>
+    <itemQuality>Good</itemQuality>
+    <apparelMoney>300~600</apparelMoney>
+    <weaponMoney>0</weaponMoney>
+    <initialResistanceRange>40~60</initialResistanceRange>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_FighterBase">
+    <defName>LP_DragonServant</defName>
+    <label>龙仆</label>
+    <defaultFactionDef>LP_DragonWanderers</defaultFactionDef>
+    <combatPower>50</combatPower>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <apparelMoney>200~400</apparelMoney>
+    <weaponMoney>100~250</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeBasic</li>
+      <li>MedievalMeleeDecent</li>
+    </weaponTags>
+    <initialResistanceRange>12~20</initialResistanceRange>
+  </PawnKindDef>
+</Defs>

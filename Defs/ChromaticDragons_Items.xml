@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.52.0 五色真龙的战利品与身体状态（由 ArtSource/ChromaticDragons-gen_defs.py 生成）。不依赖 HAR：物品照常加载，只是没装 HAR 时得不到。 -->
+<Defs>
+
+  <DamageDef>
+    <defName>LP_DragonPoison</defName>
+    <label>龙毒</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0}被龙毒毒死了。</deathMessage>
+    <hediff>ChemicalBurn</hediff>
+    <armorCategory>Heat</armorCategory>
+    <defaultDamage>9</defaultDamage>
+    <defaultArmorPenetration>0.2</defaultArmorPenetration>
+  </DamageDef>
+
+  <!-- 真龙之躯：不饿不困、没有心情、不会自发精神崩溃；本色元素免疫。年龄档的护甲、移速、体型、生命、近战在 HAR 种族的生命阶段里。 -->
+  <HediffDef Name="LP_DragonBodyBase" Abstract="True">
+    <hediffClass>LichPhylactery.Hediff_DragonBody</hediffClass>
+    <description>真龙的身体：不需要吃饭睡觉，不会自己精神崩溃（外力造成的精神状态由传奇抗性处理），对本色元素免疫。吐息每 6 秒有 1/3 几率充好。倒地即死，不能俘虏。</description>
+    <defaultLabelColor>(1, 0.75, 0.45)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+  <HediffDef ParentName="LP_DragonBodyBase">
+    <defName>LP_DragonBody_Red</defName>
+    <label>真龙之躯（红）</label>
+    <stages>
+      <li>
+        <painFactor>0.6</painFactor>
+        <blocksMentalBreaks>true</blocksMentalBreaks>
+        <disablesNeeds><li>Food</li><li>Rest</li><li>Joy</li><li>Beauty</li><li>Comfort</li><li>Outdoors</li><li>RoomSize</li><li MayRequire="Ludeon.RimWorld.Ideology">Indoors</li></disablesNeeds>
+        <damageFactors><Flame>0</Flame><Burn>0</Burn></damageFactors>
+        <statOffsets><ComfyTemperatureMax>200</ComfyTemperatureMax><ComfyTemperatureMin>-40</ComfyTemperatureMin></statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_DragonBodyBase">
+    <defName>LP_DragonBody_Blue</defName>
+    <label>真龙之躯（蓝）</label>
+    <stages>
+      <li>
+        <painFactor>0.6</painFactor>
+        <blocksMentalBreaks>true</blocksMentalBreaks>
+        <disablesNeeds><li>Food</li><li>Rest</li><li>Joy</li><li>Beauty</li><li>Comfort</li><li>Outdoors</li><li>RoomSize</li><li MayRequire="Ludeon.RimWorld.Ideology">Indoors</li></disablesNeeds>
+        <damageFactors><LP_Shock>0</LP_Shock><EMP>0</EMP></damageFactors>
+        <statOffsets><ComfyTemperatureMin>-40</ComfyTemperatureMin><ComfyTemperatureMax>40</ComfyTemperatureMax></statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_DragonBodyBase">
+    <defName>LP_DragonBody_Green</defName>
+    <label>真龙之躯（绿）</label>
+    <stages>
+      <li>
+        <painFactor>0.6</painFactor>
+        <blocksMentalBreaks>true</blocksMentalBreaks>
+        <disablesNeeds><li>Food</li><li>Rest</li><li>Joy</li><li>Beauty</li><li>Comfort</li><li>Outdoors</li><li>RoomSize</li><li MayRequire="Ludeon.RimWorld.Ideology">Indoors</li></disablesNeeds>
+        <damageFactors><LP_DragonPoison>0</LP_DragonPoison></damageFactors>
+        <statOffsets><ToxicResistance>1</ToxicResistance><ComfyTemperatureMin>-40</ComfyTemperatureMin><ComfyTemperatureMax>40</ComfyTemperatureMax></statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_DragonBodyBase">
+    <defName>LP_DragonBody_Black</defName>
+    <label>真龙之躯（黑）</label>
+    <stages>
+      <li>
+        <painFactor>0.6</painFactor>
+        <blocksMentalBreaks>true</blocksMentalBreaks>
+        <disablesNeeds><li>Food</li><li>Rest</li><li>Joy</li><li>Beauty</li><li>Comfort</li><li>Outdoors</li><li>RoomSize</li><li MayRequire="Ludeon.RimWorld.Ideology">Indoors</li></disablesNeeds>
+        <damageFactors><LP_AlchemyAcid>0</LP_AlchemyAcid><LP_OozeAcid>0</LP_OozeAcid></damageFactors>
+        <statOffsets><ComfyTemperatureMin>-40</ComfyTemperatureMin><ComfyTemperatureMax>40</ComfyTemperatureMax></statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_DragonBodyBase">
+    <defName>LP_DragonBody_White</defName>
+    <label>真龙之躯（白）</label>
+    <stages>
+      <li>
+        <painFactor>0.6</painFactor>
+        <blocksMentalBreaks>true</blocksMentalBreaks>
+        <disablesNeeds><li>Food</li><li>Rest</li><li>Joy</li><li>Beauty</li><li>Comfort</li><li>Outdoors</li><li>RoomSize</li><li MayRequire="Ludeon.RimWorld.Ideology">Indoors</li></disablesNeeds>
+        <damageFactors><LP_Frost>0</LP_Frost><Frostbite>0</Frostbite></damageFactors>
+        <statOffsets><ComfyTemperatureMin>-200</ComfyTemperatureMin><ComfyTemperatureMax>40</ComfyTemperatureMax></statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_DragonScale_Red</defName>
+    <label>红龙鳞</label>
+    <description>从红龙尸体上剥下的鳞片，比钢还硬，又轻得多。可以代替金属做板甲、盾、头盔这类可选材料的装备：利器护甲 ×1.6（相对钢），本色火焰护甲 ×2（热护甲）。</description>
+    <graphicData><texPath>ChromaticDragons/Items/Scale_Red</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Metal_Drop</soundDrop>
+    <stackLimit>150</stackLimit>
+    <useHitPoints>false</useHitPoints>
+    <statBases>
+      <MarketValue>20</MarketValue>
+      <Mass>0.35</Mass>
+      <StuffPower_Armor_Sharp>1.44</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>0.45</StuffPower_Armor_Blunt>
+      <StuffPower_Armor_Heat>1.20</StuffPower_Armor_Heat>
+      <StuffPower_Insulation_Cold>3</StuffPower_Insulation_Cold>
+      <StuffPower_Insulation_Heat>6</StuffPower_Insulation_Heat>
+      <SharpDamageMultiplier>1</SharpDamageMultiplier>
+      <BluntDamageMultiplier>1</BluntDamageMultiplier>
+    </statBases>
+    <thingCategories><li>ResourcesRaw</li></thingCategories>
+    <burnableByRecipe>false</burnableByRecipe>
+    <smeltable>false</smeltable>
+    <stuffProps>
+      <categories><li>Metallic</li></categories>
+      <appearance>Metal</appearance>
+      <commonality>0</commonality>
+      <color>(150,52,44)</color>
+      <soundImpactBullet>BulletImpact_Metal</soundImpactBullet>
+      <soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>
+      <soundMeleeHitBlunt>MeleeHit_Metal_Blunt</soundMeleeHitBlunt>
+      <soundImpactMelee>Pawn_Melee_Punch_HitBuilding_Metal</soundImpactMelee>
+      <statFactors><MaxHitPoints>1.5</MaxHitPoints><Beauty>2</Beauty><Flammability>0.2</Flammability></statFactors>
+    </stuffProps>
+    <tradeTags><li>LP_DragonLoot</li></tradeTags>
+  </ThingDef>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_DragonScale_Blue</defName>
+    <label>蓝龙鳞</label>
+    <description>从蓝龙尸体上剥下的鳞片，比钢还硬，又轻得多。可以代替金属做板甲、盾、头盔这类可选材料的装备：利器护甲 ×1.6（相对钢），穿着它做的衣甲时，受到的闪电伤害 −50%。</description>
+    <graphicData><texPath>ChromaticDragons/Items/Scale_Blue</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Metal_Drop</soundDrop>
+    <stackLimit>150</stackLimit>
+    <useHitPoints>false</useHitPoints>
+    <statBases>
+      <MarketValue>20</MarketValue>
+      <Mass>0.35</Mass>
+      <StuffPower_Armor_Sharp>1.44</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>0.45</StuffPower_Armor_Blunt>
+      <StuffPower_Armor_Heat>0.60</StuffPower_Armor_Heat>
+      <StuffPower_Insulation_Cold>3</StuffPower_Insulation_Cold>
+      <StuffPower_Insulation_Heat>0</StuffPower_Insulation_Heat>
+      <SharpDamageMultiplier>1</SharpDamageMultiplier>
+      <BluntDamageMultiplier>1</BluntDamageMultiplier>
+    </statBases>
+    <thingCategories><li>ResourcesRaw</li></thingCategories>
+    <burnableByRecipe>false</burnableByRecipe>
+    <smeltable>false</smeltable>
+    <stuffProps>
+      <categories><li>Metallic</li></categories>
+      <appearance>Metal</appearance>
+      <commonality>0</commonality>
+      <color>(64,92,150)</color>
+      <soundImpactBullet>BulletImpact_Metal</soundImpactBullet>
+      <soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>
+      <soundMeleeHitBlunt>MeleeHit_Metal_Blunt</soundMeleeHitBlunt>
+      <soundImpactMelee>Pawn_Melee_Punch_HitBuilding_Metal</soundImpactMelee>
+      <statFactors><MaxHitPoints>1.5</MaxHitPoints><Beauty>2</Beauty><Flammability>0.2</Flammability></statFactors>
+    </stuffProps>
+    <tradeTags><li>LP_DragonLoot</li></tradeTags>
+  </ThingDef>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_DragonScale_Green</defName>
+    <label>绿龙鳞</label>
+    <description>从绿龙尸体上剥下的鳞片，比钢还硬，又轻得多。可以代替金属做板甲、盾、头盔这类可选材料的装备：利器护甲 ×1.6（相对钢），穿着它做的衣甲时，受到的毒素伤害 −50%。</description>
+    <graphicData><texPath>ChromaticDragons/Items/Scale_Green</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Metal_Drop</soundDrop>
+    <stackLimit>150</stackLimit>
+    <useHitPoints>false</useHitPoints>
+    <statBases>
+      <MarketValue>20</MarketValue>
+      <Mass>0.35</Mass>
+      <StuffPower_Armor_Sharp>1.44</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>0.45</StuffPower_Armor_Blunt>
+      <StuffPower_Armor_Heat>0.60</StuffPower_Armor_Heat>
+      <StuffPower_Insulation_Cold>3</StuffPower_Insulation_Cold>
+      <StuffPower_Insulation_Heat>0</StuffPower_Insulation_Heat>
+      <SharpDamageMultiplier>1</SharpDamageMultiplier>
+      <BluntDamageMultiplier>1</BluntDamageMultiplier>
+    </statBases>
+    <thingCategories><li>ResourcesRaw</li></thingCategories>
+    <burnableByRecipe>false</burnableByRecipe>
+    <smeltable>false</smeltable>
+    <stuffProps>
+      <categories><li>Metallic</li></categories>
+      <appearance>Metal</appearance>
+      <commonality>0</commonality>
+      <color>(72,120,64)</color>
+      <soundImpactBullet>BulletImpact_Metal</soundImpactBullet>
+      <soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>
+      <soundMeleeHitBlunt>MeleeHit_Metal_Blunt</soundMeleeHitBlunt>
+      <soundImpactMelee>Pawn_Melee_Punch_HitBuilding_Metal</soundImpactMelee>
+      <statFactors><MaxHitPoints>1.5</MaxHitPoints><Beauty>2</Beauty><Flammability>0.2</Flammability></statFactors>
+    </stuffProps>
+    <tradeTags><li>LP_DragonLoot</li></tradeTags>
+  </ThingDef>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_DragonScale_Black</defName>
+    <label>黑龙鳞</label>
+    <description>从黑龙尸体上剥下的鳞片，比钢还硬，又轻得多。可以代替金属做板甲、盾、头盔这类可选材料的装备：利器护甲 ×1.6（相对钢），穿着它做的衣甲时，受到的强酸伤害 −50%。</description>
+    <graphicData><texPath>ChromaticDragons/Items/Scale_Black</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Metal_Drop</soundDrop>
+    <stackLimit>150</stackLimit>
+    <useHitPoints>false</useHitPoints>
+    <statBases>
+      <MarketValue>20</MarketValue>
+      <Mass>0.35</Mass>
+      <StuffPower_Armor_Sharp>1.44</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>0.45</StuffPower_Armor_Blunt>
+      <StuffPower_Armor_Heat>0.60</StuffPower_Armor_Heat>
+      <StuffPower_Insulation_Cold>3</StuffPower_Insulation_Cold>
+      <StuffPower_Insulation_Heat>0</StuffPower_Insulation_Heat>
+      <SharpDamageMultiplier>1</SharpDamageMultiplier>
+      <BluntDamageMultiplier>1</BluntDamageMultiplier>
+    </statBases>
+    <thingCategories><li>ResourcesRaw</li></thingCategories>
+    <burnableByRecipe>false</burnableByRecipe>
+    <smeltable>false</smeltable>
+    <stuffProps>
+      <categories><li>Metallic</li></categories>
+      <appearance>Metal</appearance>
+      <commonality>0</commonality>
+      <color>(58,54,64)</color>
+      <soundImpactBullet>BulletImpact_Metal</soundImpactBullet>
+      <soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>
+      <soundMeleeHitBlunt>MeleeHit_Metal_Blunt</soundMeleeHitBlunt>
+      <soundImpactMelee>Pawn_Melee_Punch_HitBuilding_Metal</soundImpactMelee>
+      <statFactors><MaxHitPoints>1.5</MaxHitPoints><Beauty>2</Beauty><Flammability>0.2</Flammability></statFactors>
+    </stuffProps>
+    <tradeTags><li>LP_DragonLoot</li></tradeTags>
+  </ThingDef>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_DragonScale_White</defName>
+    <label>白龙鳞</label>
+    <description>从白龙尸体上剥下的鳞片，比钢还硬，又轻得多。可以代替金属做板甲、盾、头盔这类可选材料的装备：利器护甲 ×1.6（相对钢），本色寒冷护甲 ×2（热护甲）。</description>
+    <graphicData><texPath>ChromaticDragons/Items/Scale_White</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Metal_Drop</soundDrop>
+    <stackLimit>150</stackLimit>
+    <useHitPoints>false</useHitPoints>
+    <statBases>
+      <MarketValue>20</MarketValue>
+      <Mass>0.35</Mass>
+      <StuffPower_Armor_Sharp>1.44</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>0.45</StuffPower_Armor_Blunt>
+      <StuffPower_Armor_Heat>1.20</StuffPower_Armor_Heat>
+      <StuffPower_Insulation_Cold>6</StuffPower_Insulation_Cold>
+      <StuffPower_Insulation_Heat>0</StuffPower_Insulation_Heat>
+      <SharpDamageMultiplier>1</SharpDamageMultiplier>
+      <BluntDamageMultiplier>1</BluntDamageMultiplier>
+    </statBases>
+    <thingCategories><li>ResourcesRaw</li></thingCategories>
+    <burnableByRecipe>false</burnableByRecipe>
+    <smeltable>false</smeltable>
+    <stuffProps>
+      <categories><li>Metallic</li></categories>
+      <appearance>Metal</appearance>
+      <commonality>0</commonality>
+      <color>(214,224,230)</color>
+      <soundImpactBullet>BulletImpact_Metal</soundImpactBullet>
+      <soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>
+      <soundMeleeHitBlunt>MeleeHit_Metal_Blunt</soundMeleeHitBlunt>
+      <soundImpactMelee>Pawn_Melee_Punch_HitBuilding_Metal</soundImpactMelee>
+      <statFactors><MaxHitPoints>1.5</MaxHitPoints><Beauty>2</Beauty><Flammability>0.2</Flammability></statFactors>
+    </stuffProps>
+    <tradeTags><li>LP_DragonLoot</li></tradeTags>
+  </ThingDef>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_DragonFang</defName>
+    <label>龙牙</label>
+    <description>成年以上真龙的牙，又长又利。可以代替金属做刀剑：锋利 ×1.4。</description>
+    <graphicData><texPath>ChromaticDragons/Items/Fang</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>50</stackLimit>
+    <useHitPoints>false</useHitPoints>
+    <statBases><MarketValue>30</MarketValue><Mass>0.5</Mass><StuffPower_Armor_Sharp>0.6</StuffPower_Armor_Sharp><StuffPower_Armor_Blunt>0.3</StuffPower_Armor_Blunt><StuffPower_Armor_Heat>0.3</StuffPower_Armor_Heat><SharpDamageMultiplier>1.4</SharpDamageMultiplier><BluntDamageMultiplier>0.8</BluntDamageMultiplier></statBases>
+    <thingCategories><li>ResourcesRaw</li></thingCategories>
+    <smeltable>false</smeltable>
+    <stuffProps><categories><li>Metallic</li></categories><appearance>Metal</appearance><commonality>0</commonality><color>(232,222,196)</color><statFactors><MaxHitPoints>1.2</MaxHitPoints><Beauty>1.5</Beauty><Flammability>0.3</Flammability></statFactors></stuffProps>
+    <tradeTags><li>LP_DragonLoot</li></tradeTags>
+  </ThingDef>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_DragonHeart_Red</defName>
+    <label>红龙之心</label>
+    <description>成年以上红龙的心脏，摸上去还是温的。可以在炼金桌上炼成三瓶红龙之血，也能卖个好价钱。</description>
+    <graphicData><texPath>ChromaticDragons/Items/Heart_Red</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>5</stackLimit>
+    <statBases><MarketValue>5000</MarketValue><Mass>3</Mass><MaxHitPoints>120</MaxHitPoints><Flammability>0.5</Flammability></statBases>
+    <thingCategories><li>ResourcesRaw</li></thingCategories>
+    <tradeTags><li>LP_DragonLoot</li></tradeTags>
+  </ThingDef>
+  <ThingDef ParentName="LP_PotionBase">
+    <defName>LP_DragonBlood_Red</defName>
+    <label>红龙之血</label>
+    <description>用红龙之心炼成的药剂。7 天内受到的火焰伤害 −50%，生命 +5%。</description>
+    <descriptionHyperlinks><HediffDef>LP_DragonBlood_Red</HediffDef></descriptionHyperlinks>
+    <graphicData><texPath>ChromaticDragons/Items/Blood_Red</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1500</MarketValue></statBases>
+    <ingestible><outcomeDoers><li Class="LichPhylactery.IngestionOutcomeDoer_LPPotion"><hediff>LP_DragonBlood_Red</hediff></li></outcomeDoers></ingestible>
+    <comps><li Class="CompProperties_Drug"><listOrder>2260</listOrder></li></comps>
+  </ThingDef>
+  <HediffDef ParentName="LP_PotionHediffBase">
+    <defName>LP_DragonBlood_Red</defName>
+    <label>红龙之血</label>
+    <description>红龙的血在血管里流淌：受到的火焰伤害 −50%，生命 +5%。</description>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>420000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+  </HediffDef>
+  <RecipeDef ParentName="LP_PotionRecipeBase">
+    <defName>LP_BrewDragonBlood_Red</defName>
+    <label>炼制红龙之血</label>
+    <description>用 1 颗红龙之心炼成 3 瓶红龙之血。</description>
+    <jobString>正在炼制红龙之血。</jobString>
+    <ingredients><li><filter><thingDefs><li>LP_DragonHeart_Red</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_DragonHeart_Red</li></thingDefs></fixedIngredientFilter>
+    <products><LP_DragonBlood_Red>3</LP_DragonBlood_Red></products>
+  </RecipeDef>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_DragonHeart_Blue</defName>
+    <label>蓝龙之心</label>
+    <description>成年以上蓝龙的心脏，摸上去还是温的。可以在炼金桌上炼成三瓶蓝龙之血，也能卖个好价钱。</description>
+    <graphicData><texPath>ChromaticDragons/Items/Heart_Blue</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>5</stackLimit>
+    <statBases><MarketValue>5000</MarketValue><Mass>3</Mass><MaxHitPoints>120</MaxHitPoints><Flammability>0.5</Flammability></statBases>
+    <thingCategories><li>ResourcesRaw</li></thingCategories>
+    <tradeTags><li>LP_DragonLoot</li></tradeTags>
+  </ThingDef>
+  <ThingDef ParentName="LP_PotionBase">
+    <defName>LP_DragonBlood_Blue</defName>
+    <label>蓝龙之血</label>
+    <description>用蓝龙之心炼成的药剂。7 天内受到的闪电伤害 −50%，生命 +5%。</description>
+    <descriptionHyperlinks><HediffDef>LP_DragonBlood_Blue</HediffDef></descriptionHyperlinks>
+    <graphicData><texPath>ChromaticDragons/Items/Blood_Blue</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1500</MarketValue></statBases>
+    <ingestible><outcomeDoers><li Class="LichPhylactery.IngestionOutcomeDoer_LPPotion"><hediff>LP_DragonBlood_Blue</hediff></li></outcomeDoers></ingestible>
+    <comps><li Class="CompProperties_Drug"><listOrder>2261</listOrder></li></comps>
+  </ThingDef>
+  <HediffDef ParentName="LP_PotionHediffBase">
+    <defName>LP_DragonBlood_Blue</defName>
+    <label>蓝龙之血</label>
+    <description>蓝龙的血在血管里流淌：受到的闪电伤害 −50%，生命 +5%。</description>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>420000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+  </HediffDef>
+  <RecipeDef ParentName="LP_PotionRecipeBase">
+    <defName>LP_BrewDragonBlood_Blue</defName>
+    <label>炼制蓝龙之血</label>
+    <description>用 1 颗蓝龙之心炼成 3 瓶蓝龙之血。</description>
+    <jobString>正在炼制蓝龙之血。</jobString>
+    <ingredients><li><filter><thingDefs><li>LP_DragonHeart_Blue</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_DragonHeart_Blue</li></thingDefs></fixedIngredientFilter>
+    <products><LP_DragonBlood_Blue>3</LP_DragonBlood_Blue></products>
+  </RecipeDef>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_DragonHeart_Green</defName>
+    <label>绿龙之心</label>
+    <description>成年以上绿龙的心脏，摸上去还是温的。可以在炼金桌上炼成三瓶绿龙之血，也能卖个好价钱。</description>
+    <graphicData><texPath>ChromaticDragons/Items/Heart_Green</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>5</stackLimit>
+    <statBases><MarketValue>5000</MarketValue><Mass>3</Mass><MaxHitPoints>120</MaxHitPoints><Flammability>0.5</Flammability></statBases>
+    <thingCategories><li>ResourcesRaw</li></thingCategories>
+    <tradeTags><li>LP_DragonLoot</li></tradeTags>
+  </ThingDef>
+  <ThingDef ParentName="LP_PotionBase">
+    <defName>LP_DragonBlood_Green</defName>
+    <label>绿龙之血</label>
+    <description>用绿龙之心炼成的药剂。7 天内受到的毒素伤害 −50%，生命 +5%。</description>
+    <descriptionHyperlinks><HediffDef>LP_DragonBlood_Green</HediffDef></descriptionHyperlinks>
+    <graphicData><texPath>ChromaticDragons/Items/Blood_Green</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1500</MarketValue></statBases>
+    <ingestible><outcomeDoers><li Class="LichPhylactery.IngestionOutcomeDoer_LPPotion"><hediff>LP_DragonBlood_Green</hediff></li></outcomeDoers></ingestible>
+    <comps><li Class="CompProperties_Drug"><listOrder>2262</listOrder></li></comps>
+  </ThingDef>
+  <HediffDef ParentName="LP_PotionHediffBase">
+    <defName>LP_DragonBlood_Green</defName>
+    <label>绿龙之血</label>
+    <description>绿龙的血在血管里流淌：受到的毒素伤害 −50%，生命 +5%。</description>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>420000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+  </HediffDef>
+  <RecipeDef ParentName="LP_PotionRecipeBase">
+    <defName>LP_BrewDragonBlood_Green</defName>
+    <label>炼制绿龙之血</label>
+    <description>用 1 颗绿龙之心炼成 3 瓶绿龙之血。</description>
+    <jobString>正在炼制绿龙之血。</jobString>
+    <ingredients><li><filter><thingDefs><li>LP_DragonHeart_Green</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_DragonHeart_Green</li></thingDefs></fixedIngredientFilter>
+    <products><LP_DragonBlood_Green>3</LP_DragonBlood_Green></products>
+  </RecipeDef>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_DragonHeart_Black</defName>
+    <label>黑龙之心</label>
+    <description>成年以上黑龙的心脏，摸上去还是温的。可以在炼金桌上炼成三瓶黑龙之血，也能卖个好价钱。</description>
+    <graphicData><texPath>ChromaticDragons/Items/Heart_Black</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>5</stackLimit>
+    <statBases><MarketValue>5000</MarketValue><Mass>3</Mass><MaxHitPoints>120</MaxHitPoints><Flammability>0.5</Flammability></statBases>
+    <thingCategories><li>ResourcesRaw</li></thingCategories>
+    <tradeTags><li>LP_DragonLoot</li></tradeTags>
+  </ThingDef>
+  <ThingDef ParentName="LP_PotionBase">
+    <defName>LP_DragonBlood_Black</defName>
+    <label>黑龙之血</label>
+    <description>用黑龙之心炼成的药剂。7 天内受到的强酸伤害 −50%，生命 +5%。</description>
+    <descriptionHyperlinks><HediffDef>LP_DragonBlood_Black</HediffDef></descriptionHyperlinks>
+    <graphicData><texPath>ChromaticDragons/Items/Blood_Black</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1500</MarketValue></statBases>
+    <ingestible><outcomeDoers><li Class="LichPhylactery.IngestionOutcomeDoer_LPPotion"><hediff>LP_DragonBlood_Black</hediff></li></outcomeDoers></ingestible>
+    <comps><li Class="CompProperties_Drug"><listOrder>2263</listOrder></li></comps>
+  </ThingDef>
+  <HediffDef ParentName="LP_PotionHediffBase">
+    <defName>LP_DragonBlood_Black</defName>
+    <label>黑龙之血</label>
+    <description>黑龙的血在血管里流淌：受到的强酸伤害 −50%，生命 +5%。</description>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>420000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+  </HediffDef>
+  <RecipeDef ParentName="LP_PotionRecipeBase">
+    <defName>LP_BrewDragonBlood_Black</defName>
+    <label>炼制黑龙之血</label>
+    <description>用 1 颗黑龙之心炼成 3 瓶黑龙之血。</description>
+    <jobString>正在炼制黑龙之血。</jobString>
+    <ingredients><li><filter><thingDefs><li>LP_DragonHeart_Black</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_DragonHeart_Black</li></thingDefs></fixedIngredientFilter>
+    <products><LP_DragonBlood_Black>3</LP_DragonBlood_Black></products>
+  </RecipeDef>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_DragonHeart_White</defName>
+    <label>白龙之心</label>
+    <description>成年以上白龙的心脏，摸上去还是温的。可以在炼金桌上炼成三瓶白龙之血，也能卖个好价钱。</description>
+    <graphicData><texPath>ChromaticDragons/Items/Heart_White</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>5</stackLimit>
+    <statBases><MarketValue>5000</MarketValue><Mass>3</Mass><MaxHitPoints>120</MaxHitPoints><Flammability>0.5</Flammability></statBases>
+    <thingCategories><li>ResourcesRaw</li></thingCategories>
+    <tradeTags><li>LP_DragonLoot</li></tradeTags>
+  </ThingDef>
+  <ThingDef ParentName="LP_PotionBase">
+    <defName>LP_DragonBlood_White</defName>
+    <label>白龙之血</label>
+    <description>用白龙之心炼成的药剂。7 天内受到的寒冷伤害 −50%，生命 +5%。</description>
+    <descriptionHyperlinks><HediffDef>LP_DragonBlood_White</HediffDef></descriptionHyperlinks>
+    <graphicData><texPath>ChromaticDragons/Items/Blood_White</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1500</MarketValue></statBases>
+    <ingestible><outcomeDoers><li Class="LichPhylactery.IngestionOutcomeDoer_LPPotion"><hediff>LP_DragonBlood_White</hediff></li></outcomeDoers></ingestible>
+    <comps><li Class="CompProperties_Drug"><listOrder>2264</listOrder></li></comps>
+  </ThingDef>
+  <HediffDef ParentName="LP_PotionHediffBase">
+    <defName>LP_DragonBlood_White</defName>
+    <label>白龙之血</label>
+    <description>白龙的血在血管里流淌：受到的寒冷伤害 −50%，生命 +5%。</description>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>420000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+  </HediffDef>
+  <RecipeDef ParentName="LP_PotionRecipeBase">
+    <defName>LP_BrewDragonBlood_White</defName>
+    <label>炼制白龙之血</label>
+    <description>用 1 颗白龙之心炼成 3 瓶白龙之血。</description>
+    <jobString>正在炼制白龙之血。</jobString>
+    <ingredients><li><filter><thingDefs><li>LP_DragonHeart_White</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_DragonHeart_White</li></thingDefs></fixedIngredientFilter>
+    <products><LP_DragonBlood_White>3</LP_DragonBlood_White></products>
+  </RecipeDef>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_DragonLairMap</defName>
+    <label>龙巢情报</label>
+    <description>同盟的探子画的一张兽皮地图，标着一座远古龙巢的位置。读懂它，龙巢就会显露在世界地图上（30 天后消失）。</description>
+    <graphicData><texPath>ChromaticDragons/Items/LairMap</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>1</stackLimit>
+    <thingCategories><li>Items</li></thingCategories>
+    <statBases><MarketValue>3000</MarketValue><Mass>0.2</Mass><MaxHitPoints>40</MaxHitPoints><Flammability>1</Flammability></statBases>
+    <tradeTags><li>LP_DragonLairMap</li></tradeTags>
+    <comps>
+      <li Class="CompProperties_Usable"><useJob>UseItem</useJob><useLabel>读{0_label}</useLabel><useDuration>300</useDuration></li>
+      <li Class="CompProperties_UseEffect"><compClass>LichPhylactery.CompUseEffect_DragonLairMap</compClass></li>
+      <li Class="CompProperties_UseEffectDestroySelf" />
+    </comps>
+  </ThingDef>
+
+</Defs>

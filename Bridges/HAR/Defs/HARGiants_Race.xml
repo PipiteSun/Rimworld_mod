@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.44.0 双头巨人、独眼巨人（Humanoid Alien Races 可选联动，只在启用 erdelf.HumanoidAlienRaces 时由 LoadFolders.xml 加载）。
+     种族继承原版 Human（HAR 已把 Human 改成 ThingDef_AlienRace），改体型、统计与身体（身体见 HARGiants_Bodies.xml）；规则代码在主程序集 Source/HARGiants.cs。
+     体型只来自种族 baseBodySize（双头 2.0、独眼 1.8）：本源基因的 GiantKinExtension adultSize 是 1，不再放大；巨躯规则、渲染、胃容量读种族上的 GiantRaceExtension，儿童随年龄长大。 -->
+<Defs>
+
+  <!-- ==================== 双头巨人 ==================== -->
+  <AlienRace.ThingDef_AlienRace ParentName="Human">
+    <defName>LP_Ettin</defName>
+    <label>双头巨人</label>
+    <description>山丘与荒原上的双头巨人（艾汀）：一副比常人大一倍的粗壮身躯，肩上并排长着两个头，两颗脑子各有各的主意。左头管左手，右头管右手，打起架来左右开弓；睡觉也是一个头睡、一个头醒着放哨。失去一个头不会要他的命，只是从此孤零零的。双头巨人学东西慢，脾气也冲，两个头常常吵个没完。他们能和人类恋爱、结婚、生育，孩子的种族随母亲。</description>
+    <statBases>
+      <MarketValue>2200</MarketValue>
+      <MoveSpeed>4.0</MoveSpeed>
+      <GlobalLearningFactor>0.85</GlobalLearningFactor>
+    </statBases>
+    <race>
+      <body>LP_EttinBody</body>
+      <baseBodySize>2.0</baseBodySize>
+      <baseHealthScale>1</baseHealthScale>
+    </race>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_HARGiant" />
+    </comps>
+    <modExtensions>
+      <li Class="LichPhylactery.GiantRaceExtension">
+        <kind>ettin</kind>
+        <adultSize>2.0</adultSize>
+        <renderScale>1.4</renderScale>
+        <stomach>1.8</stomach>
+      </li>
+    </modExtensions>
+    <alienRace>
+      <generalSettings>
+        <humanRecipeImport>true</humanRecipeImport>
+        <allowHumanBios>true</allowHumanBios>
+        <corpseCategory>CorpsesHumanlike</corpseCategory>
+        <alienPartGenerator>
+          <!-- 主头（左头）用原版人类头，往一边挪；第二个头（右头）是下面的身体附件，跟着这四种头型各配一款。 -->
+          <headTypes Inherit="False">
+            <li>Male_AverageNormal</li>
+            <li>Male_AverageWide</li>
+            <li>Female_AverageNormal</li>
+            <li>Female_AverageWide</li>
+          </headTypes>
+          <bodyTypes Inherit="False">
+            <li MayRequire="Ludeon.RimWorld.Biotech">Baby</li>
+            <li MayRequire="Ludeon.RimWorld.Biotech">Child</li>
+            <li>Hulk</li>
+          </bodyTypes>
+          <headOffsetDirectional>
+            <south><offset>(0.26, 0)</offset></south>
+            <north><offset>(-0.26, 0)</offset></north>
+            <east><offset>(0.06, 0.12)</offset></east>
+            <west><offset>(-0.04, -0.07)</offset></west>
+          </headOffsetDirectional>
+          <colorChannels Inherit="False">
+            <li>
+              <name>skin</name>
+              <first Class="ColorGenerator_Options">
+                <options>
+                  <li><weight>50</weight><only>(150, 138, 122)</only></li>
+                  <li><weight>50</weight><only>(176, 140, 96)</only></li>
+                </options>
+              </first>
+            </li>
+          </colorChannels>
+          <bodyAddons Inherit="False">
+            <!-- 第二个头（右头）：挂在 LP_EttinHead 部位上，部位缺失时隐藏；头型决定款式（男两款、女一款），头用肤色通道、头发用发色通道。
+                 南北两头并排（主头在 HAR 的 headOffsetDirectional 里挪到另一边），画在身体和衣服之上、主头之下；东向右头在近处画在最前，西向在远处画在后面。
+                 layerInvert 关掉（HAR 默认北向把层翻到身体后面）。本段由 ArtSource/HARGiants-gen_addons.py 生成。 -->
+            <li>
+              <name>EttinSecondHeadA</name>
+              <path>HARGiants/Ettin/Addons/SecondHeadA</path>
+              <colorChannel>skin</colorChannel>
+              <drawSize>(1.0, 1.0)</drawSize>
+              <scaleWithPawnDrawsize>true</scaleWithPawnDrawsize>
+              <inFrontOfBody>true</inFrontOfBody>
+              <layerInvert>false</layerInvert>
+              <userCustomizable>false</userCustomizable>
+              <offsets><south><offset>(-0.260, 0.34)</offset><layerOffset>-0.2830</layerOffset></south><north><offset>(0.260, 0.34)</offset><layerOffset>-0.2830</layerOffset></north><east><offset>(-0.160, 0.27)</offset><layerOffset>0.0000</layerOffset></east><west><offset>(-0.060, 0.44)</offset><layerOffset>-0.2830</layerOffset></west></offsets>
+              <conditions>
+                <BodyPart><bodyPart>LP_EttinHead</bodyPart></BodyPart>
+                <BodyType>Hulk</BodyType>
+                <HeadType>Male_AverageNormal</HeadType>
+                <RotStage>Fresh,Rotting</RotStage>
+              </conditions>
+            </li>
+            <li>
+              <name>EttinSecondHeadB</name>
+              <path>HARGiants/Ettin/Addons/SecondHeadB</path>
+              <colorChannel>skin</colorChannel>
+              <drawSize>(1.0, 1.0)</drawSize>
+              <scaleWithPawnDrawsize>true</scaleWithPawnDrawsize>
+              <inFrontOfBody>true</inFrontOfBody>
+              <layerInvert>false</layerInvert>
+              <userCustomizable>false</userCustomizable>
+              <offsets><south><offset>(-0.260, 0.34)</offset><layerOffset>-0.2830</layerOffset></south><north><offset>(0.260, 0.34)</offset><layerOffset>-0.2830</layerOffset></north><east><offset>(-0.160, 0.27)</offset><layerOffset>0.0000</layerOffset></east><west><offset>(-0.060, 0.44)</offset><layerOffset>-0.2830</layerOffset></west></offsets>
+              <conditions>
+                <BodyPart><bodyPart>LP_EttinHead</bodyPart></BodyPart>
+                <BodyType>Hulk</BodyType>
+                <HeadType>Male_AverageWide</HeadType>
+                <RotStage>Fresh,Rotting</RotStage>
+              </conditions>
+            </li>
+            <li>
+              <name>EttinSecondHeadF</name>
+              <path>HARGiants/Ettin/Addons/SecondHeadF</path>
+              <colorChannel>skin</colorChannel>
+              <drawSize>(1.0, 1.0)</drawSize>
+              <scaleWithPawnDrawsize>true</scaleWithPawnDrawsize>
+              <inFrontOfBody>true</inFrontOfBody>
+              <layerInvert>false</layerInvert>
+              <userCustomizable>false</userCustomizable>
+              <offsets><south><offset>(-0.260, 0.34)</offset><layerOffset>-0.2830</layerOffset></south><north><offset>(0.260, 0.34)</offset><layerOffset>-0.2830</layerOffset></north><east><offset>(-0.160, 0.27)</offset><layerOffset>0.0000</layerOffset></east><west><offset>(-0.060, 0.44)</offset><layerOffset>-0.2830</layerOffset></west></offsets>
+              <conditions>
+                <BodyPart><bodyPart>LP_EttinHead</bodyPart></BodyPart>
+                <BodyType>Hulk</BodyType>
+                <Or><HeadType>Female_AverageNormal</HeadType><HeadType>Female_AverageWide</HeadType></Or>
+                <RotStage>Fresh,Rotting</RotStage>
+              </conditions>
+            </li>
+            <li>
+              <name>EttinSecondHairA</name>
+              <path>HARGiants/Ettin/Addons/SecondHairA</path>
+              <colorChannel>hair</colorChannel>
+              <drawSize>(1.0, 1.0)</drawSize>
+              <scaleWithPawnDrawsize>true</scaleWithPawnDrawsize>
+              <inFrontOfBody>true</inFrontOfBody>
+              <layerInvert>false</layerInvert>
+              <userCustomizable>false</userCustomizable>
+              <offsets><south><offset>(-0.260, 0.34)</offset><layerOffset>-0.2826</layerOffset></south><north><offset>(0.260, 0.34)</offset><layerOffset>-0.2826</layerOffset></north><east><offset>(-0.160, 0.27)</offset><layerOffset>0.0004</layerOffset></east><west><offset>(-0.060, 0.44)</offset><layerOffset>-0.2826</layerOffset></west></offsets>
+              <conditions>
+                <BodyPart><bodyPart>LP_EttinHead</bodyPart></BodyPart>
+                <BodyType>Hulk</BodyType>
+                <HeadType>Male_AverageNormal</HeadType>
+                <Not><ApparelDef><apparel>LP_EttinTwinHelm</apparel></ApparelDef></Not>
+              </conditions>
+            </li>
+            <li>
+              <name>EttinSecondHairB</name>
+              <path>HARGiants/Ettin/Addons/SecondHairB</path>
+              <colorChannel>hair</colorChannel>
+              <drawSize>(1.0, 1.0)</drawSize>
+              <scaleWithPawnDrawsize>true</scaleWithPawnDrawsize>
+              <inFrontOfBody>true</inFrontOfBody>
+              <layerInvert>false</layerInvert>
+              <userCustomizable>false</userCustomizable>
+              <offsets><south><offset>(-0.260, 0.34)</offset><layerOffset>-0.2826</layerOffset></south><north><offset>(0.260, 0.34)</offset><layerOffset>-0.2826</layerOffset></north><east><offset>(-0.160, 0.27)</offset><layerOffset>0.0004</layerOffset></east><west><offset>(-0.060, 0.44)</offset><layerOffset>-0.2826</layerOffset></west></offsets>
+              <conditions>
+                <BodyPart><bodyPart>LP_EttinHead</bodyPart></BodyPart>
+                <BodyType>Hulk</BodyType>
+                <HeadType>Male_AverageWide</HeadType>
+                <Not><ApparelDef><apparel>LP_EttinTwinHelm</apparel></ApparelDef></Not>
+              </conditions>
+            </li>
+            <li>
+              <name>EttinSecondHairF</name>
+              <path>HARGiants/Ettin/Addons/SecondHairF</path>
+              <colorChannel>hair</colorChannel>
+              <drawSize>(1.0, 1.0)</drawSize>
+              <scaleWithPawnDrawsize>true</scaleWithPawnDrawsize>
+              <inFrontOfBody>true</inFrontOfBody>
+              <layerInvert>false</layerInvert>
+              <userCustomizable>false</userCustomizable>
+              <offsets><south><offset>(-0.260, 0.34)</offset><layerOffset>-0.2826</layerOffset></south><north><offset>(0.260, 0.34)</offset><layerOffset>-0.2826</layerOffset></north><east><offset>(-0.160, 0.27)</offset><layerOffset>0.0004</layerOffset></east><west><offset>(-0.060, 0.44)</offset><layerOffset>-0.2826</layerOffset></west></offsets>
+              <conditions>
+                <BodyPart><bodyPart>LP_EttinHead</bodyPart></BodyPart>
+                <BodyType>Hulk</BodyType>
+                <Or><HeadType>Female_AverageNormal</HeadType><HeadType>Female_AverageWide</HeadType></Or>
+                <Not><ApparelDef><apparel>LP_EttinTwinHelm</apparel></ApparelDef></Not>
+              </conditions>
+            </li>
+            <!-- 双盔的另一半（戴在第二个头上），不跟颜色通道：钢铁本色。 -->
+            <li>
+              <name>EttinTwinHelmSecond</name>
+              <path>HARGiants/Ettin/Addons/TwinHelmSecond</path>
+              <shaderType>Cutout</shaderType>
+              <drawSize>(1.0, 1.0)</drawSize>
+              <scaleWithPawnDrawsize>true</scaleWithPawnDrawsize>
+              <inFrontOfBody>true</inFrontOfBody>
+              <layerInvert>false</layerInvert>
+              <userCustomizable>false</userCustomizable>
+              <offsets><south><offset>(-0.260, 0.34)</offset><layerOffset>-0.2822</layerOffset></south><north><offset>(0.260, 0.34)</offset><layerOffset>-0.2822</layerOffset></north><east><offset>(-0.160, 0.27)</offset><layerOffset>0.0008</layerOffset></east><west><offset>(-0.060, 0.44)</offset><layerOffset>-0.2822</layerOffset></west></offsets>
+              <conditions>
+                <BodyPart><bodyPart>LP_EttinHead</bodyPart></BodyPart>
+                <Or><BodyType>Hulk</BodyType><BodyType>Child</BodyType></Or>
+                <ApparelDef><apparel>LP_EttinTwinHelm</apparel></ApparelDef>
+              </conditions>
+            </li>
+            <!-- 儿童：同一套贴图缩小（近似对位）。 -->
+            <li>
+              <name>EttinSecondHeadChild</name>
+              <path>HARGiants/Ettin/Addons/SecondHeadA</path>
+              <colorChannel>skin</colorChannel>
+              <drawSize>(0.8, 0.8)</drawSize>
+              <scaleWithPawnDrawsize>true</scaleWithPawnDrawsize>
+              <inFrontOfBody>true</inFrontOfBody>
+              <layerInvert>false</layerInvert>
+              <userCustomizable>false</userCustomizable>
+              <offsets><south><offset>(-0.208, 0.30)</offset><layerOffset>-0.2830</layerOffset></south><north><offset>(0.208, 0.30)</offset><layerOffset>-0.2830</layerOffset></north><east><offset>(-0.128, 0.23)</offset><layerOffset>0.0000</layerOffset></east><west><offset>(-0.048, 0.40)</offset><layerOffset>-0.2830</layerOffset></west></offsets>
+              <conditions>
+                <BodyPart><bodyPart>LP_EttinHead</bodyPart></BodyPart>
+                <Or><BodyType>Child</BodyType><BodyType>Baby</BodyType></Or>
+                <RotStage>Fresh,Rotting</RotStage>
+              </conditions>
+            </li>
+          </bodyAddons>
+        </alienPartGenerator>
+      </generalSettings>
+      <raceRestriction>
+        <onlyUseRaceRestrictedXenotypes>true</onlyUseRaceRestrictedXenotypes>
+        <xenotypeList>
+          <li>LP_EttinKin</li>
+        </xenotypeList>
+      </raceRestriction>
+    </alienRace>
+  </AlienRace.ThingDef_AlienRace>
+
+  <!-- ==================== 独眼巨人 ==================== -->
+  <AlienRace.ThingDef_AlienRace ParentName="Human">
+    <defName>LP_Cyclops</defName>
+    <label>独眼巨人</label>
+    <description>住在海岛和山谷里的独眼巨人：比常人大八成的身躯，额头正中一只大眼睛。他们是了不起的铁匠和石匠，也是耐心的牧人，总有一群羊跟在身边；可一只眼睛看不准远近，弓和枪都用不好。那只眼睛要是没了，就什么也看不见了。独眼巨人能和人类恋爱、结婚、生育，孩子的种族随母亲。</description>
+    <statBases>
+      <MarketValue>2000</MarketValue>
+      <MoveSpeed>4.2</MoveSpeed>
+      <GlobalLearningFactor>0.85</GlobalLearningFactor>
+    </statBases>
+    <race>
+      <body>LP_CyclopsBody</body>
+      <baseBodySize>1.8</baseBodySize>
+      <baseHealthScale>1</baseHealthScale>
+    </race>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_HARGiant" />
+    </comps>
+    <modExtensions>
+      <li Class="LichPhylactery.GiantRaceExtension">
+        <kind>cyclops</kind>
+        <adultSize>1.8</adultSize>
+        <renderScale>1.35</renderScale>
+        <stomach>1.7</stomach>
+      </li>
+    </modExtensions>
+    <alienRace>
+      <generalSettings>
+        <humanRecipeImport>true</humanRecipeImport>
+        <allowHumanBios>true</allowHumanBios>
+        <corpseCategory>CorpsesHumanlike</corpseCategory>
+        <alienPartGenerator>
+          <headTypes Inherit="False">
+            <li>LP_CyclopsMale_A</li>
+            <li>LP_CyclopsMale_B</li>
+            <li>LP_CyclopsFemale_A</li>
+            <li>LP_CyclopsFemale_B</li>
+          </headTypes>
+          <bodyTypes Inherit="False">
+            <li MayRequire="Ludeon.RimWorld.Biotech">Baby</li>
+            <li MayRequire="Ludeon.RimWorld.Biotech">Child</li>
+            <li>Hulk</li>
+          </bodyTypes>
+          <colorChannels Inherit="False">
+            <li>
+              <name>skin</name>
+              <first Class="ColorGenerator_Options">
+                <options>
+                  <li><weight>50</weight><only>(168, 104, 82)</only></li>
+                  <li><weight>50</weight><only>(140, 136, 92)</only></li>
+                </options>
+              </first>
+            </li>
+          </colorChannels>
+          <bodyAddons Inherit="False">
+            <!-- 独眼：跟着头走（alignWithHead），不跟肤色（眼白、眼珠本色）；独眼缺失、戴了遮住整个头或眼睛的头盔时隐藏。北向是空图。 -->
+            <li>
+              <name>CyclopsEye</name>
+              <path>HARGiants/Cyclops/Addons/Eye</path>
+              <shaderType>Cutout</shaderType>
+              <alignWithHead>true</alignWithHead>
+              <drawSize>(1, 1)</drawSize>
+              <scaleWithPawnDrawsize>true</scaleWithPawnDrawsize>
+              <inFrontOfBody>true</inFrontOfBody>
+              <userCustomizable>false</userCustomizable>
+              <conditions>
+                <BodyPart><bodyPart>LP_CyclopsEye</bodyPart></BodyPart>
+                <Apparel><hiddenUnderApparelFor><li>FullHead</li><li>Eyes</li></hiddenUnderApparelFor></Apparel>
+                <RotStage>Fresh,Rotting</RotStage>
+              </conditions>
+            </li>
+          </bodyAddons>
+        </alienPartGenerator>
+      </generalSettings>
+      <!-- HAR 按“头路径 + 头型贴图文件名”找头（Male_A → HARGiants/Cyclops/Heads/Male_A），所以头路径要指到独眼巨人自己的文件夹。 -->
+      <graphicPaths>
+        <head>
+          <path>HARGiants/Cyclops/Heads/</path>
+        </head>
+      </graphicPaths>
+      <raceRestriction>
+        <onlyUseRaceRestrictedXenotypes>true</onlyUseRaceRestrictedXenotypes>
+        <xenotypeList>
+          <li>LP_CyclopsKin</li>
+        </xenotypeList>
+      </raceRestriction>
+    </alienRace>
+  </AlienRace.ThingDef_AlienRace>
+
+  <!-- 独眼巨人头型：只有带独眼巨人本源的角色能用（原版人类随机不到）；脸上只有粗眉和鼻子，眼睛是上面的身体附件。 -->
+  <HeadTypeDef ParentName="AverageBase">
+    <defName>LP_CyclopsMale_A</defName>
+    <graphicPath>HARGiants/Cyclops/Heads/Male_A</graphicPath>
+    <gender>Male</gender>
+    <requiredGenes><li>LP_CyclopsCore</li></requiredGenes>
+    <eyeOffsetEastWest>(0.18, 0, 0.17)</eyeOffsetEastWest>
+  </HeadTypeDef>
+  <HeadTypeDef ParentName="AverageBase">
+    <defName>LP_CyclopsMale_B</defName>
+    <graphicPath>HARGiants/Cyclops/Heads/Male_B</graphicPath>
+    <gender>Male</gender>
+    <requiredGenes><li>LP_CyclopsCore</li></requiredGenes>
+    <eyeOffsetEastWest>(0.18, 0, 0.17)</eyeOffsetEastWest>
+  </HeadTypeDef>
+  <HeadTypeDef ParentName="AverageBase">
+    <defName>LP_CyclopsFemale_A</defName>
+    <graphicPath>HARGiants/Cyclops/Heads/Female_A</graphicPath>
+    <gender>Female</gender>
+    <requiredGenes><li>LP_CyclopsCore</li></requiredGenes>
+    <eyeOffsetEastWest>(0.16, 0, 0.17)</eyeOffsetEastWest>
+  </HeadTypeDef>
+  <HeadTypeDef ParentName="AverageBase">
+    <defName>LP_CyclopsFemale_B</defName>
+    <graphicPath>HARGiants/Cyclops/Heads/Female_B</graphicPath>
+    <gender>Female</gender>
+    <requiredGenes><li>LP_CyclopsCore</li></requiredGenes>
+    <eyeOffsetEastWest>(0.16, 0, 0.17)</eyeOffsetEastWest>
+  </HeadTypeDef>
+
+  <!-- ==================== 角色种类 ==================== -->
+  <PawnKindDef ParentName="BasePlayerPawnKind">
+    <defName>LP_EttinColonist</defName>
+    <label>双头巨人殖民者</label>
+    <race>LP_Ettin</race>
+    <defaultFactionDef>PlayerColony</defaultFactionDef>
+    <combatPower>80</combatPower>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_EttinKin>1</LP_EttinKin>
+      </xenotypeChances>
+    </xenotypeSet>
+    <chemicalAddictionChance>0.04</chemicalAddictionChance>
+    <apparelTags>
+      <li>IndustrialBasic</li>
+    </apparelTags>
+    <apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+    <apparelMoney>350~600</apparelMoney>
+    <backstoryCryptosleepCommonality>1</backstoryCryptosleepCommonality>
+    <initialResistanceRange>13~21</initialResistanceRange>
+  </PawnKindDef>
+  <PawnKindDef ParentName="BasePlayerPawnKind">
+    <defName>LP_CyclopsColonist</defName>
+    <label>独眼巨人殖民者</label>
+    <race>LP_Cyclops</race>
+    <defaultFactionDef>PlayerColony</defaultFactionDef>
+    <combatPower>70</combatPower>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_CyclopsKin>1</LP_CyclopsKin>
+      </xenotypeChances>
+    </xenotypeSet>
+    <chemicalAddictionChance>0.04</chemicalAddictionChance>
+    <apparelTags>
+      <li>IndustrialBasic</li>
+    </apparelTags>
+    <apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+    <apparelMoney>350~600</apparelMoney>
+    <backstoryCryptosleepCommonality>1</backstoryCryptosleepCommonality>
+    <initialResistanceRange>13~21</initialResistanceRange>
+  </PawnKindDef>
+
+  <!-- 塞伊远征军：不进 XML 的兵种表，由 EttinRaid 在 ≥800 点的战斗袭击里以 10% 加入一名（顶掉 2 名普通随从），发独眼巨锤或棍棒、双盔。 -->
+  <PawnKindDef ParentName="LP_FHBase">
+    <defName>LP_FH_EttinBrute</defName>
+    <label>双头蛮兵</label>
+    <race>LP_Ettin</race>
+    <combatPower>160</combatPower>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_EttinKin>1</LP_EttinKin>
+      </xenotypeChances>
+    </xenotypeSet>
+    <minGenerationAge>22</minGenerationAge>
+    <apparelMoney>100~300</apparelMoney>
+    <apparelTags Inherit="False">
+      <li>Neolithic</li>
+    </apparelTags>
+    <weaponMoney>0</weaponMoney>
+    <skills>
+      <li>
+        <skill>Melee</skill>
+        <range>6~12</range>
+      </li>
+    </skills>
+    <initialResistanceRange>18~28</initialResistanceRange>
+  </PawnKindDef>
+  <!-- 巨人迁徙：流浪的双头巨人；独眼巨人牧人（带绵羊）；同盟商队的独眼巨人护卫（CyclopsGuard 按 10% 插入）。不进同盟的袭击和据点组。 -->
+  <PawnKindDef ParentName="LP_FCBase">
+    <defName>LP_FC_EttinWanderer</defName>
+    <label>流浪的双头巨人</label>
+    <race>LP_Ettin</race>
+    <combatPower>150</combatPower>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_EttinKin>1</LP_EttinKin>
+      </xenotypeChances>
+    </xenotypeSet>
+    <minGenerationAge>22</minGenerationAge>
+    <apparelMoney>100~300</apparelMoney>
+    <apparelTags Inherit="False">
+      <li>Neolithic</li>
+    </apparelTags>
+    <weaponMoney>100~250</weaponMoney>
+    <weaponTags>
+      <li>NeolithicMeleeBasic</li>
+      <li>NeolithicMeleeDecent</li>
+    </weaponTags>
+    <initialResistanceRange>18~28</initialResistanceRange>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_FCBase">
+    <defName>LP_FC_CyclopsShepherd</defName>
+    <label>独眼巨人牧人</label>
+    <race>LP_Cyclops</race>
+    <combatPower>130</combatPower>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_CyclopsKin>1</LP_CyclopsKin>
+      </xenotypeChances>
+    </xenotypeSet>
+    <minGenerationAge>25</minGenerationAge>
+    <apparelMoney>150~350</apparelMoney>
+    <apparelTags Inherit="False">
+      <li>Neolithic</li>
+    </apparelTags>
+    <weaponMoney>100~250</weaponMoney>
+    <weaponTags>
+      <li>NeolithicMeleeBasic</li>
+      <li>NeolithicMeleeDecent</li>
+    </weaponTags>
+    <initialResistanceRange>20~30</initialResistanceRange>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_FCBase">
+    <defName>LP_FC_CyclopsGuard</defName>
+    <label>独眼巨人护卫</label>
+    <race>LP_Cyclops</race>
+    <combatPower>130</combatPower>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_CyclopsKin>1</LP_CyclopsKin>
+      </xenotypeChances>
+    </xenotypeSet>
+    <minGenerationAge>22</minGenerationAge>
+    <apparelMoney>200~450</apparelMoney>
+    <weaponMoney>0</weaponMoney>
+    <initialResistanceRange>20~30</initialResistanceRange>
+  </PawnKindDef>
+
+  <!-- ==================== HAR：开局、流浪者、难民（各权重 3；人类 100，六臂蛇人 5） ==================== -->
+  <AlienRace.RaceSettings>
+    <defName>LP_HARGiantsRaceSettings</defName>
+    <pawnKindSettings>
+      <startingColonists>
+        <li>
+          <pawnKindEntries>
+            <li>
+              <kindDefs><li>LP_EttinColonist</li></kindDefs>
+              <chance>3</chance>
+            </li>
+            <li>
+              <kindDefs><li>LP_CyclopsColonist</li></kindDefs>
+              <chance>3</chance>
+            </li>
+          </pawnKindEntries>
+          <factionDefs>
+            <li>PlayerColony</li>
+            <li>PlayerTribe</li>
+          </factionDefs>
+        </li>
+      </startingColonists>
+      <alienwandererkinds>
+        <li>
+          <pawnKindEntries>
+            <li>
+              <kindDefs><li>LP_EttinColonist</li></kindDefs>
+              <chance>3</chance>
+            </li>
+            <li>
+              <kindDefs><li>LP_CyclopsColonist</li></kindDefs>
+              <chance>3</chance>
+            </li>
+          </pawnKindEntries>
+          <factionDefs>
+            <li>PlayerColony</li>
+            <li>PlayerTribe</li>
+          </factionDefs>
+        </li>
+      </alienwandererkinds>
+      <alienrefugeekinds>
+        <li>
+          <kindDefs><li>LP_EttinColonist</li></kindDefs>
+          <chance>3</chance>
+        </li>
+        <li>
+          <kindDefs><li>LP_CyclopsColonist</li></kindDefs>
+          <chance>3</chance>
+        </li>
+      </alienrefugeekinds>
+    </pawnKindSettings>
+  </AlienRace.RaceSettings>
+
+  <!-- ==================== 剧本：山脚的弃儿 ==================== -->
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>LP_HillOutcasts</defName>
+    <label>山脚的弃儿</label>
+    <description>一个被族人赶出来的双头巨人、一个丢了羊圈的独眼巨人，和一个不知怎么跟上他们的人类，赶着四只绵羊来到一片山脚下。\n\n他们手里只有两根棍棒、一点钢铁和干粮。双头巨人两个头总在吵架，独眼巨人射不准，可两个大个子干起活来顶好几个人。\n\n建议选丘陵地形：独眼巨人建造快、会锻造，山里的石头和矿脉正合用；羊群能让独眼巨人安心。</description>
+    <scenario>
+      <summary>一个双头巨人、一个独眼巨人、一个人类和四只绵羊。建议丘陵地图。</summary>
+      <parts>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns_KindDefs">
+          <def>ConfigurePawnsKindDefs</def>
+          <pawnChoiceCount>8</pawnChoiceCount>
+          <kindCounts>
+            <li>
+              <kindDef>LP_EttinColonist</kindDef>
+              <count>1</count>
+              <requiredAtStart>true</requiredAtStart>
+            </li>
+            <li>
+              <kindDef>LP_CyclopsColonist</kindDef>
+              <count>1</count>
+              <requiredAtStart>true</requiredAtStart>
+            </li>
+            <li>
+              <kindDef>Colonist</kindDef>
+              <count>1</count>
+            </li>
+          </kindCounts>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <visible>false</visible>
+          <method>Standing</method>
+        </li>
+
+        <li Class="ScenPart_StartingAnimal">
+          <def>StartingAnimal</def>
+          <animalKind>Sheep</animalKind>
+          <count>4</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MeleeWeapon_Club</thingDef>
+          <stuff>WoodLog</stuff>
+          <count>2</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Steel</thingDef>
+          <count>150</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Pemmican</thingDef>
+          <count>60</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MedicineHerbal</thingDef>
+          <count>15</count>
+        </li>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>族人把你们赶下了山。\n\n左头说该往东走，右头说该往西走；独眼巨人一声不吭，只顾数他的四只羊；那个人类小个子一路跟着，赶也赶不走。\n\n现在，这片山脚就是你们的家了。</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+</Defs>

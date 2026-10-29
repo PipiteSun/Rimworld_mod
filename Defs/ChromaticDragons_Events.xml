@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.52.0 五色真龙的登场（规则在 Source/ChromaticDragons.cs）：隐藏派系「五色龙群」、龙教徒、勒索 / 来袭事件、龙巢世界地点、背景故事。
+     真龙种族和兵种在 Bridges/HAR（只在启用 HAR 时加载）；没装 HAR 时这里的事件不会触发（IncidentWorker 先看 Dragons.Available）。 -->
+<Defs>
+
+  <!-- 隐藏、永久敌对；袭击组只由事件代码生成。 -->
+  <FactionDef ParentName="LP_FactionBase">
+    <defName>LP_ChromaticDragons</defName>
+    <label>五色龙群</label>
+    <fixedName>五色龙群</fixedName>
+    <description>红、蓝、绿、黑、白五色真龙和崇拜它们的龙之教团。它们各自为政，从不结盟，却同样贪婪、同样敌视一切不肯低头的人。</description>
+    <pawnSingular>龙教徒</pawnSingular>
+    <pawnsPlural>龙教徒</pawnsPlural>
+    <techLevel>Medieval</techLevel>
+    <hidden>true</hidden>
+    <permanentEnemy>true</permanentEnemy>
+    <requiredCountAtGameStart>0</requiredCountAtGameStart>
+    <startingCountAtWorldCreation>0</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <displayInFactionSelection>false</displayInFactionSelection>
+    <settlementGenerationWeight>0</settlementGenerationWeight>
+    <canStageAttacks>false</canStageAttacks>
+    <raidsForbidden>true</raidsForbidden>
+    <canGenerateQuestSites>false</canGenerateQuestSites>
+    <rescueesCanJoin>false</rescueesCanJoin>
+    <factionIconPath>ChromaticDragons/Faction</factionIconPath>
+    <colorSpectrum>
+      <li>(0.62, 0.20, 0.18)</li>
+      <li>(0.30, 0.40, 0.62)</li>
+    </colorSpectrum>
+    <basicMemberKind>LP_DragonCultist</basicMemberKind>
+    <backstoryFilters Inherit="False">
+      <li><categories><li>LP_DragonCult</li></categories></li>
+    </backstoryFilters>
+    <ideoName>龙之教团</ideoName>
+    <ideoDescription>龙是世界真正的主人。侍奉龙的人，死后也能分到一枚金币。</ideoDescription>
+    <forcedMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Ideological</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Supremacist</li>
+    </forcedMemes>
+    <raidCommonalityFromPointsCurve>
+      <points>
+        <li>(0, 0)</li>
+      </points>
+    </raidCommonalityFromPointsCurve>
+    <pawnGroupMakers>
+      <li>
+        <kindDef>Combat</kindDef>
+        <options>
+          <LP_DragonCultist>1</LP_DragonCultist>
+        </options>
+      </li>
+    </pawnGroupMakers>
+  </FactionDef>
+
+  <PawnKindDef ParentName="LP_FighterBase">
+    <defName>LP_DragonCultist</defName>
+    <label>龙教徒</label>
+    <defaultFactionDef>LP_ChromaticDragons</defaultFactionDef>
+    <combatPower>60</combatPower>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <apparelMoney>300~600</apparelMoney>
+    <apparelTags>
+      <li>Neolithic</li>
+      <li>Medieval</li>
+    </apparelTags>
+    <weaponMoney>150~350</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeDecent</li>
+      <li>MedievalMeleeAdvanced</li>
+      <li>NeolithicRangedChief</li>
+    </weaponTags>
+    <backstoryFiltersOverride><li><categories><li>LP_DragonCult</li></categories></li></backstoryFiltersOverride>
+    <initialResistanceRange>20~30</initialResistanceRange>
+  </PawnKindDef>
+
+  <!-- 龙之教团的背景故事（龙教徒）与真龙自己的“背景”（只给真龙）。 -->
+  <BackstoryDef>
+    <defName>LP_Bs_DragonCultChild</defName>
+    <title>龙鳞下的孩子</title>
+    <titleShort>龙仆之子</titleShort>
+    <description>[PAWN_nameDef]的村子年年给山里的龙进贡。[PAWN_nameDef]从小就被教导：龙是神，人是龙的仆从，能替龙擦一片鳞是莫大的荣耀。</description>
+    <slot>Childhood</slot>
+    <spawnCategories><li>LP_DragonCult</li></spawnCategories>
+    <skillGains><Melee>2</Melee><Social>1</Social></skillGains>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>LP_Bs_DragonCultist</defName>
+    <title>龙之教团信徒</title>
+    <titleShort>龙教徒</titleShort>
+    <description>[PAWN_nameDef]加入了龙之教团，替一条五色龙看守巢穴、搜刮贡品。教团许诺：最忠诚的人死后会变成龙巫妖，永远守着主人的宝藏。</description>
+    <slot>Adulthood</slot>
+    <spawnCategories><li>LP_DragonCult</li></spawnCategories>
+    <skillGains><Melee>4</Melee><Shooting>2</Shooting><Intellectual>1</Intellectual></skillGains>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>LP_Bs_DragonWyrmling</defName>
+    <title>幼龙</title>
+    <titleShort>幼龙</titleShort>
+    <description>[PAWN_nameDef]破壳而出就会喷吐，几十年里独自在荒野里长大，学会了狩猎、恐吓和囤积。</description>
+    <slot>Childhood</slot>
+    <spawnCategories><li>LP_DragonBio</li></spawnCategories>
+    <skillGains><Melee>6</Melee></skillGains>
+    <workDisables>ManualDumb, ManualSkilled, Caring, Artistic, Crafting, Cooking, Animals, PlantWork, Mining</workDisables>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>LP_Bs_DragonHoarder</defName>
+    <title>巢穴之主</title>
+    <titleShort>真龙</titleShort>
+    <description>[PAWN_nameDef]占据着一座巢穴，睡在自己囤积的宝藏上。附近的村庄都知道它的名字，也都给它进贡。</description>
+    <slot>Adulthood</slot>
+    <spawnCategories><li>LP_DragonBio</li></spawnCategories>
+    <skillGains><Melee>8</Melee><Social>4</Social><Intellectual>2</Intellectual></skillGains>
+    <workDisables>ManualDumb, ManualSkilled, Caring, Artistic, Crafting, Cooking, Animals, PlantWork, Mining</workDisables>
+  </BackstoryDef>
+
+  <LetterDef ParentName="CustomChoiceLetterBase">
+    <defName>LP_DragonExtortionLetter</defName>
+    <letterClass>LichPhylactery.Letter_DragonExtortion</letterClass>
+  </LetterDef>
+
+  <IncidentDef>
+    <defName>LP_DragonExtortion</defName>
+    <label>真龙勒索</label>
+    <category>ThreatSmall</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_DragonExtortion</workerClass>
+    <baseChance>0.5</baseChance>
+    <minRefireDays>20</minRefireDays>
+    <earliestDay>30</earliestDay>
+    <pointsScaleable>false</pointsScaleable>
+  </IncidentDef>
+  <IncidentDef>
+    <defName>LP_DragonRaid</defName>
+    <label>真龙来袭</label>
+    <category>ThreatBig</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_DragonRaid</workerClass>
+    <baseChance>0.6</baseChance>
+    <minRefireDays>20</minRefireDays>
+    <earliestDay>45</earliestDay>
+    <pointsScaleable>true</pointsScaleable>
+  </IncidentDef>
+
+  <!-- 龙巢：世界地点（30 天后消失）。地图 = 原版生成 + 中央石窟巢穴房间（GenStep_DragonLair）。 -->
+  <SitePartDef>
+    <defName>LP_DragonLair</defName>
+    <label>龙巢</label>
+    <description>一条真龙的巢穴：它睡在宝藏堆旁，身边守着护卫。</description>
+    <workerClass>LichPhylactery.SitePartWorker_DragonLair</workerClass>
+    <siteTexture>ChromaticDragons/LairSite</siteTexture>
+    <expandingIconTexture>ChromaticDragons/LairSite</expandingIconTexture>
+    <applyFactionColorToSiteTexture>false</applyFactionColorToSiteTexture>
+    <showFactionInInspectString>true</showFactionInInspectString>
+    <requiresFaction>true</requiresFaction>
+    <approachOrderString>闯入{0}</approachOrderString>
+    <approachingReportString>正在闯入{0}。</approachingReportString>
+    <arrivedLetter>这里是龙巢。巢主睡在宝藏堆旁：有人走近 10 格就会醒来。在巢里它多一次传奇抗性，每 10 秒放一次巢穴动作；把它引出巢穴 20 格以外，巢穴动作就停了。</arrivedLetter>
+    <arrivedLetterDef>ThreatBig</arrivedLetterDef>
+    <wantsThreatPoints>true</wantsThreatPoints>
+  </SitePartDef>
+  <GenStepDef>
+    <defName>LP_DragonLair</defName>
+    <linkWithSite>LP_DragonLair</linkWithSite>
+    <order>450</order>
+    <genStep Class="LichPhylactery.GenStep_DragonLair" />
+  </GenStepDef>
+
+</Defs>

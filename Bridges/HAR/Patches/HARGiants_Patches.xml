@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.44.0 双头巨人、独眼巨人（只在启用 HAR 时加载）。 -->
+<Patch>
+
+  <!-- 独眼 LP_CyclopsEye：所有能装在眼睛上的手术（仿生眼、阿凯奥特眼、摘除/致盲等，包括其他模组的）也能装在独眼上。 -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/RecipeDef[appliedOnFixedBodyParts/li="Eye" and not(appliedOnFixedBodyParts/li="LP_CyclopsEye")]/appliedOnFixedBodyParts</xpath>
+    <value>
+      <li>LP_CyclopsEye</li>
+    </value>
+  </Operation>
+
+  <!-- 内讧（两头不和）：站在原地吵，不干活；饿极、困极时照样去吃饭睡觉。 -->
+  <Operation Class="PatchOperationInsert">
+    <xpath>Defs/ThinkTreeDef[defName="MentalStateNonCritical"]/thinkRoot/subNodes/li[1]</xpath>
+    <value>
+      <li Class="ThinkNode_ConditionalMentalState">
+        <state>LP_EttinArguing</state>
+        <subNodes>
+          <li Class="ThinkNode_PrioritySorter">
+            <subNodes>
+              <li Class="JobGiver_GetFood">
+                <maxLevelPercentage>0.05</maxLevelPercentage>
+              </li>
+              <li Class="JobGiver_GetRest">
+                <maxLevelPercentage>0.15</maxLevelPercentage>
+              </li>
+            </subNodes>
+          </li>
+          <li Class="JobGiver_StandAndBeSociallyActive">
+            <ticksRange>300~600</ticksRange>
+          </li>
+        </subNodes>
+      </li>
+    </value>
+  </Operation>
+
+</Patch>

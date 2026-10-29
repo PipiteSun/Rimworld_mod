@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.45.0 珠宝（Jewelry，kikohi.jewelry）联动：只在启用珠宝模组时由 LoadFolders 加载。
+     珠宝模组的宝石藏在首饰实例里，配方读不到，所以“附魔首饰”改成：任意珠宝戒指 + 2颗对应宝石 + 催化材料 → 本模组的魔法戒指（原首饰消耗）。
+     红宝石→抗火，蓝宝石→抗寒，玉石→抗酸，钻石→守护戒指。 -->
+<Defs>
+  <RecipeDef Name="LP_EnchantJewelryBase" ParentName="LP_MagicRecipeBase" Abstract="True">
+    <researchPrerequisite>LP_Research_Enchanting</researchPrerequisite>
+    <workAmount>4000</workAmount>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_EnchantJewelryBase">
+    <defName>LP_EnchantJewelry_Fire</defName>
+    <label>附魔首饰：抗火戒指</label>
+    <description>把一枚珠宝戒指、2颗红宝石和1块熔岩结晶附魔成抗火戒指（原首饰消耗）。</description>
+    <jobString>正在附魔首饰。</jobString>
+    <ingredients><li><filter><thingDefs><li>Jewelry_Ring</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>Ruby</li></thingDefs></filter><count>2</count></li><li><filter><thingDefs><li>LP_LavaCrystal</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Jewelry_Ring</li><li>Ruby</li><li>LP_LavaCrystal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_RingResistanceFire>1</LP_RingResistanceFire></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_EnchantJewelryBase">
+    <defName>LP_EnchantJewelry_Cold</defName>
+    <label>附魔首饰：抗寒戒指</label>
+    <description>把一枚珠宝戒指、2颗蓝宝石和5份寒铁附魔成抗寒戒指（原首饰消耗）。</description>
+    <jobString>正在附魔首饰。</jobString>
+    <ingredients><li><filter><thingDefs><li>Jewelry_Ring</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>Sapphire</li></thingDefs></filter><count>2</count></li><li><filter><thingDefs><li>LP_ColdIron</li></thingDefs></filter><count>5</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Jewelry_Ring</li><li>Sapphire</li><li>LP_ColdIron</li></thingDefs></fixedIngredientFilter>
+    <products><LP_RingResistanceCold>1</LP_RingResistanceCold></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_EnchantJewelryBase">
+    <defName>LP_EnchantJewelry_Acid</defName>
+    <label>附魔首饰：抗酸戒指</label>
+    <description>把一枚珠宝戒指、2块玉石和1块熔岩结晶附魔成抗酸戒指（原首饰消耗）。</description>
+    <jobString>正在附魔首饰。</jobString>
+    <ingredients><li><filter><thingDefs><li>Jewelry_Ring</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>Jade</li></thingDefs></filter><count>2</count></li><li><filter><thingDefs><li>LP_LavaCrystal</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Jewelry_Ring</li><li>Jade</li><li>LP_LavaCrystal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_RingResistanceAcid>1</LP_RingResistanceAcid></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_EnchantJewelryBase">
+    <defName>LP_EnchantJewelry_Protection</defName>
+    <label>附魔首饰：守护戒指</label>
+    <description>把一枚珠宝戒指、2颗钻石和1块熔岩结晶附魔成守护戒指（原首饰消耗）。</description>
+    <jobString>正在附魔首饰。</jobString>
+    <ingredients><li><filter><thingDefs><li>Jewelry_Ring</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>Diamond</li></thingDefs></filter><count>2</count></li><li><filter><thingDefs><li>LP_LavaCrystal</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Jewelry_Ring</li><li>Diamond</li><li>LP_LavaCrystal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_RingProtection>1</LP_RingProtection></products>
+  </RecipeDef>
+</Defs>

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.58.3 持续成长（ArtSource/TraitsFeats-1.58.3-spec.md）：6 本属性典籍、4 件传承武器和它们的能力 / 状态。规则在 Source/Growth.cs。
+     都不能制作：来源是宿敌冠军、传奇怪首领、黑网商队、拉洛克差事、Isekai 宝箱。 -->
+<Defs>
+  <!-- ==================== 属性典籍 ==================== -->
+  <ThingDef Name="LP_TomeBase" ParentName="BookBase" Abstract="True">
+    <thingClass>LichPhylactery.Book_Tome</thingClass>
+    <thingSetMakerTags Inherit="False" />
+    <statBases><Mass>0.6</Mass><Beauty>3</Beauty><MarketValue>15000</MarketValue></statBases>
+    <tradeTags Inherit="False"><li>LP_Tome</li></tradeTags>
+  </ThingDef>
+  <ThingDef ParentName="LP_TomeBase">
+    <defName>LP_Tome_STR</defName>
+    <label>力量手册</label>
+    <description>记载着古代武僧锤炼体魄之法的手册。累计研读 30 小时后，读者的力量 +2、力量上限 +2（同一项属性只能从典籍得一次），书随即化为灰烬。</description>
+    <graphicData><texPath>LP/Items/Tomes/Tome_STR</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <uiIconPath>LP/Items/Tomes/Tome_STR</uiIconPath>
+    <comps><li Class="CompProperties_Book"><nameMaker>LP_Namer_TomeSTR</nameMaker><descriptionMaker>LP_Description_Tome</descriptionMaker><ageYearsRange>300~900</ageYearsRange><pickWeight>0</pickWeight>
+      <openGraphic><texPath>LP/Items/Tomes/Tome_STR</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></openGraphic>
+      <verticalGraphic><texPath>LP/Items/Tomes/Tome_STR</texPath><graphicClass>Graphic_Single</graphicClass><addTopAltitudeBias>true</addTopAltitudeBias></verticalGraphic>
+      <doers><li Class="LichPhylactery.BookOutcomeProperties_Netheril"><doerClass>LichPhylactery.BookOutcome_Tome</doerClass></li></doers></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_TomeBase">
+    <defName>LP_Tome_DEX</defName>
+    <label>敏捷手册</label>
+    <description>游荡者公会代代相传的身法手册。累计研读 30 小时后，读者的敏捷 +2、敏捷上限 +2（同一项属性只能从典籍得一次），书随即化为灰烬。</description>
+    <graphicData><texPath>LP/Items/Tomes/Tome_DEX</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <uiIconPath>LP/Items/Tomes/Tome_DEX</uiIconPath>
+    <comps><li Class="CompProperties_Book"><nameMaker>LP_Namer_TomeDEX</nameMaker><descriptionMaker>LP_Description_Tome</descriptionMaker><ageYearsRange>300~900</ageYearsRange><pickWeight>0</pickWeight>
+      <openGraphic><texPath>LP/Items/Tomes/Tome_DEX</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></openGraphic>
+      <verticalGraphic><texPath>LP/Items/Tomes/Tome_DEX</texPath><graphicClass>Graphic_Single</graphicClass><addTopAltitudeBias>true</addTopAltitudeBias></verticalGraphic>
+      <doers><li Class="LichPhylactery.BookOutcomeProperties_Netheril"><doerClass>LichPhylactery.BookOutcome_Tome</doerClass></li></doers></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_TomeBase">
+    <defName>LP_Tome_CON</defName>
+    <label>体质手册</label>
+    <description>矮人老兵口述、学徒记下的耐力手册。累计研读 30 小时后，读者的体质 +2、体质上限 +2（同一项属性只能从典籍得一次），书随即化为灰烬。</description>
+    <graphicData><texPath>LP/Items/Tomes/Tome_CON</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <uiIconPath>LP/Items/Tomes/Tome_CON</uiIconPath>
+    <comps><li Class="CompProperties_Book"><nameMaker>LP_Namer_TomeCON</nameMaker><descriptionMaker>LP_Description_Tome</descriptionMaker><ageYearsRange>300~900</ageYearsRange><pickWeight>0</pickWeight>
+      <openGraphic><texPath>LP/Items/Tomes/Tome_CON</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></openGraphic>
+      <verticalGraphic><texPath>LP/Items/Tomes/Tome_CON</texPath><graphicClass>Graphic_Single</graphicClass><addTopAltitudeBias>true</addTopAltitudeBias></verticalGraphic>
+      <doers><li Class="LichPhylactery.BookOutcomeProperties_Netheril"><doerClass>LichPhylactery.BookOutcome_Tome</doerClass></li></doers></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_TomeBase">
+    <defName>LP_Tome_INT</defName>
+    <label>智力之书</label>
+    <description>一位不知名大法师的思辨笔记。累计研读 30 小时后，读者的智力 +2、智力上限 +2（同一项属性只能从典籍得一次），书随即化为灰烬。</description>
+    <graphicData><texPath>LP/Items/Tomes/Tome_INT</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <uiIconPath>LP/Items/Tomes/Tome_INT</uiIconPath>
+    <comps><li Class="CompProperties_Book"><nameMaker>LP_Namer_TomeINT</nameMaker><descriptionMaker>LP_Description_Tome</descriptionMaker><ageYearsRange>300~900</ageYearsRange><pickWeight>0</pickWeight>
+      <openGraphic><texPath>LP/Items/Tomes/Tome_INT</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></openGraphic>
+      <verticalGraphic><texPath>LP/Items/Tomes/Tome_INT</texPath><graphicClass>Graphic_Single</graphicClass><addTopAltitudeBias>true</addTopAltitudeBias></verticalGraphic>
+      <doers><li Class="LichPhylactery.BookOutcomeProperties_Netheril"><doerClass>LichPhylactery.BookOutcome_Tome</doerClass></li></doers></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_TomeBase">
+    <defName>LP_Tome_WIS</defName>
+    <label>感知之书</label>
+    <description>德鲁伊长老在月下写成的冥想之书。累计研读 30 小时后，读者的感知 +2、感知上限 +2（同一项属性只能从典籍得一次），书随即化为灰烬。</description>
+    <graphicData><texPath>LP/Items/Tomes/Tome_WIS</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <uiIconPath>LP/Items/Tomes/Tome_WIS</uiIconPath>
+    <comps><li Class="CompProperties_Book"><nameMaker>LP_Namer_TomeWIS</nameMaker><descriptionMaker>LP_Description_Tome</descriptionMaker><ageYearsRange>300~900</ageYearsRange><pickWeight>0</pickWeight>
+      <openGraphic><texPath>LP/Items/Tomes/Tome_WIS</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></openGraphic>
+      <verticalGraphic><texPath>LP/Items/Tomes/Tome_WIS</texPath><graphicClass>Graphic_Single</graphicClass><addTopAltitudeBias>true</addTopAltitudeBias></verticalGraphic>
+      <doers><li Class="LichPhylactery.BookOutcomeProperties_Netheril"><doerClass>LichPhylactery.BookOutcome_Tome</doerClass></li></doers></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_TomeBase">
+    <defName>LP_Tome_CHA</defName>
+    <label>魅力之书</label>
+    <description>宫廷吟游诗人的演说与仪态秘籍。累计研读 30 小时后，读者的魅力 +2、魅力上限 +2（同一项属性只能从典籍得一次），书随即化为灰烬。</description>
+    <graphicData><texPath>LP/Items/Tomes/Tome_CHA</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <uiIconPath>LP/Items/Tomes/Tome_CHA</uiIconPath>
+    <comps><li Class="CompProperties_Book"><nameMaker>LP_Namer_TomeCHA</nameMaker><descriptionMaker>LP_Description_Tome</descriptionMaker><ageYearsRange>300~900</ageYearsRange><pickWeight>0</pickWeight>
+      <openGraphic><texPath>LP/Items/Tomes/Tome_CHA</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></openGraphic>
+      <verticalGraphic><texPath>LP/Items/Tomes/Tome_CHA</texPath><graphicClass>Graphic_Single</graphicClass><addTopAltitudeBias>true</addTopAltitudeBias></verticalGraphic>
+      <doers><li Class="LichPhylactery.BookOutcomeProperties_Netheril"><doerClass>LichPhylactery.BookOutcome_Tome</doerClass></li></doers></li></comps>
+  </ThingDef>
+  <RulePackDef><defName>LP_Namer_TomeSTR</defName><rulePack><rulesStrings><li>title->力量手册</li></rulesStrings></rulePack></RulePackDef>
+  <RulePackDef><defName>LP_Namer_TomeDEX</defName><rulePack><rulesStrings><li>title->敏捷手册</li></rulesStrings></rulePack></RulePackDef>
+  <RulePackDef><defName>LP_Namer_TomeCON</defName><rulePack><rulesStrings><li>title->体质手册</li></rulesStrings></rulePack></RulePackDef>
+  <RulePackDef><defName>LP_Namer_TomeINT</defName><rulePack><rulesStrings><li>title->智力之书</li></rulesStrings></rulePack></RulePackDef>
+  <RulePackDef><defName>LP_Namer_TomeWIS</defName><rulePack><rulesStrings><li>title->感知之书</li></rulesStrings></rulePack></RulePackDef>
+  <RulePackDef><defName>LP_Namer_TomeCHA</defName><rulePack><rulesStrings><li>title->魅力之书</li></rulesStrings></rulePack></RulePackDef>
+  <RulePackDef><defName>LP_Description_Tome</defName><rulePack><rulesStrings><li>desc->一本从古代遗迹里流传出来的典籍，书页间的力量足以改变读者本身。</li><li>desc->封面的徽记仍在微微发光，像是在等待下一位读者。</li></rulesStrings></rulePack></RulePackDef>
+
+  <!-- ==================== 传承武器 ==================== -->
+  <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+    <defName>LP_Legacy_Sword</defName>
+    <label>黎明之誓</label>
+    <description>传承长剑。沉睡时只是一把大师级的长剑；第一个用它击杀 10 个敌人的人成为它的主人。主人冒险者 10 级时觉醒（伤害 +15%，能力“黎明斩”），成为传奇冒险者时升华（再 +15%，3 格内友军近战命中 +5%）。别人拿着只是沉睡版；主人死去后它回到沉睡。无法制作。</description>
+    <graphicData><texPath>LP/Weapons/Legacy/Sword</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <techLevel>Medieval</techLevel><smeltable>false</smeltable><equippedAngleOffset>-65</equippedAngleOffset>
+    <statBases><Mass>2</Mass><MaxHitPoints>300</MaxHitPoints><Flammability>0</Flammability><MarketValue>4500</MarketValue></statBases>
+    <tradeTags Inherit="False"><li>LP_Legacy</li></tradeTags>
+    <weaponClasses><li>Melee</li></weaponClasses>
+    <recipeMaker IsNull="True" />
+    <tools>
+      <li><label>剑柄</label><capacities><li>Blunt</li></capacities><power>9</power><cooldownTime>2</cooldownTime></li>
+      <li><label>剑尖</label><capacities><li>Stab</li></capacities><power>22</power><cooldownTime>2.6</cooldownTime><armorPenetration>0.32</armorPenetration></li>
+      <li><label>剑刃</label><labelUsedInLogging>false</labelUsedInLogging><capacities><li>Cut</li></capacities><power>24</power><cooldownTime>2.6</cooldownTime><armorPenetration>0.32</armorPenetration></li>
+    </tools>
+    <comps><li Class="LichPhylactery.CompProperties_LegacyWeapon"><kind>Sword</kind><ability>LP_LegacyDawnStrike</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
+    <defName>LP_Legacy_Hammer</defName>
+    <label>山之心</label>
+    <description>传承战锤。沉睡时只是一把大师级的战锤；第一个用它击杀 10 个敌人的人成为它的主人。主人冒险者 10 级时觉醒（伤害 +15%，能力“震地”），成为传奇冒险者时升华（再 +15%，主人受到的伤害 -10%）。别人拿着只是沉睡版；主人死去后它回到沉睡。无法制作。</description>
+    <graphicData><texPath>LP/Weapons/Legacy/Hammer</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <techLevel>Medieval</techLevel><smeltable>false</smeltable><equippedAngleOffset>-65</equippedAngleOffset>
+    <statBases><Mass>4</Mass><MaxHitPoints>300</MaxHitPoints><Flammability>0</Flammability><MarketValue>4500</MarketValue></statBases>
+    <tradeTags Inherit="False"><li>LP_Legacy</li></tradeTags>
+    <weaponClasses><li>Melee</li></weaponClasses>
+    <recipeMaker IsNull="True" />
+    <tools>
+      <li><label>锤柄</label><capacities><li>Poke</li></capacities><power>9</power><cooldownTime>2</cooldownTime></li>
+      <li><label>锤头</label><labelUsedInLogging>false</labelUsedInLogging><capacities><li>Blunt</li></capacities><power>28</power><cooldownTime>2.8</cooldownTime><armorPenetration>0.25</armorPenetration></li>
+    </tools>
+    <comps><li Class="LichPhylactery.CompProperties_LegacyWeapon"><kind>Hammer</kind><ability>LP_LegacyQuake</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="Bow_Great">
+    <defName>LP_Legacy_Bow</defName>
+    <label>风语</label>
+    <description>传承长弓。沉睡时只是一把大师级的长弓；第一个用它击杀 10 个敌人的人成为它的主人。主人冒险者 10 级时觉醒（伤害 +15%，能力“风之箭”），成为传奇冒险者时升华（再 +15%，射程 +3）。别人拿着只是沉睡版；主人死去后它回到沉睡。无法制作。</description>
+    <graphicData><texPath>LP/Weapons/Legacy/Bow</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <smeltable>false</smeltable>
+    <statBases><MarketValue>4500</MarketValue><MaxHitPoints>200</MaxHitPoints></statBases>
+    <thingSetMakerTags Inherit="False" />
+    <weaponTags Inherit="False" />
+    <tradeTags Inherit="False"><li>LP_Legacy</li></tradeTags>
+    <costList Inherit="False" />
+    <recipeMaker IsNull="True" />
+    <comps><li Class="LichPhylactery.CompProperties_LegacyWeapon"><kind>Bow</kind><ability>LP_LegacyWindArrow</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_StaffBase">
+    <defName>LP_Legacy_Staff</defName>
+    <label>星辉</label>
+    <description>传承法杖（按 1.29.0 法杖规则射击：魔力系数 = 心灵敏感度）。沉睡时只是一根大师级的法杖；第一个用它击杀 10 个敌人的人成为它的主人。主人冒险者 10 级时觉醒（伤害 +15%，能力“星落”），成为传奇冒险者时升华（再 +15%，心灵熵恢复 +20%）。别人拿着只是沉睡版；主人死去后它回到沉睡。无法制作。</description>
+    <graphicData><texPath>LP/Weapons/Legacy/Staff</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <statBases><RangedWeapon_Cooldown>2.0</RangedWeapon_Cooldown><MarketValue>4500</MarketValue></statBases>
+    <tradeTags Inherit="False"><li>LP_Legacy</li></tradeTags>
+    <recipeMaker IsNull="True" />
+    <verbs>
+      <li>
+        <verbClass>LichPhylactery.Verb_ArcaneShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>LP_Bolt_MagicMissile</defaultProjectile>
+        <warmupTime>1.0</warmupTime>
+        <range>28</range>
+        <soundCast>Shot_IncendiaryLauncher</soundCast>
+        <muzzleFlashScale>8</muzzleFlashScale>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_ArcaneWeapon"><group>G</group></li>
+      <li Class="LichPhylactery.CompProperties_LegacyWeapon"><kind>Staff</kind><ability>LP_LegacyStarfall</ability></li>
+    </comps>
+  </ThingDef>
+
+  <!-- ==================== 觉醒能力 ==================== -->
+  <AbilityDef Name="LP_LegacyAbilityBase" Abstract="True">
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <sendMessageOnCooldownComplete>false</sendMessageOnCooldownComplete>
+    <showPsycastEffects>false</showPsycastEffects>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <hostile>true</hostile><aiCanUse>true</aiCanUse><ai_IsOffensive>true</ai_IsOffensive>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_LegacyAbilityBase">
+    <defName>LP_LegacyDawnStrike</defName>
+    <label>黎明斩</label>
+    <description>黎明之誓的觉醒能力：对身边一个敌人斩出晨光，30 点光耀伤害并致盲 10 秒（视力 -60%）。每天一次。</description>
+    <iconPath>LP/Weapons/Legacy/Sword</iconPath>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>2.9</range><warmupTime>0.4</warmupTime>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_LegacyPower"><effect>dawn</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_LegacyAbilityBase">
+    <defName>LP_LegacyQuake</defName>
+    <label>震地</label>
+    <description>山之心的觉醒能力：重锤砸地，半径 2 内的敌人受到 15 点钝击并倒地 2 秒。每天一次。</description>
+    <iconPath>LP/Weapons/Legacy/Hammer</iconPath>
+    <targetRequired>false</targetRequired>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>0</range><warmupTime>0.6</warmupTime><targetParams><canTargetSelf>true</canTargetSelf></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_LegacyPower"><effect>quake</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_LegacyAbilityBase">
+    <defName>LP_LegacyWindArrow</defName>
+    <label>风之箭</label>
+    <description>风语的觉醒能力：一支风化的箭穿透一整列，路上每个敌人受到 25 点穿刺伤害（射程 30）。每天一次。</description>
+    <iconPath>LP/Weapons/Legacy/Bow</iconPath>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>30</range><warmupTime>1</warmupTime><requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetLocations>true</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_LegacyPower"><effect>wind</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_LegacyAbilityBase">
+    <defName>LP_LegacyStarfall</defName>
+    <label>星落</label>
+    <description>星辉的觉醒能力：唤下一颗小小的流星，半径 2 内的敌人受到 30 点光耀伤害（射程 25）。每天一次。</description>
+    <iconPath>LP/Weapons/Legacy/Staff</iconPath>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>25</range><warmupTime>1.2</warmupTime><requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetLocations>true</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_LegacyPower"><effect>starfall</effect></li></comps>
+  </AbilityDef>
+
+  <HediffDef>
+    <defName>LP_LegacyBlinded</defName>
+    <label>晨光致盲</label>
+    <description>被黎明斩的光晃花了眼。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <stages><li><capMods><li><capacity>Sight</capacity><offset>-0.6</offset></li></capMods></li></stages>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>600</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li><li Class="HediffCompProperties_DisappearsOnDeath" /></comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_LegacyStarlight</defName>
+    <label>星辉共鸣</label>
+    <description>升华的星辉与主人共鸣：心灵熵恢复 +20%。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad><everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.7, 0.65, 0.95)</defaultLabelColor>
+    <stages><li><statFactors><PsychicEntropyRecoveryRate>1.2</PsychicEntropyRecoveryRate></statFactors></li></stages>
+  </HediffDef>
+</Defs>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.61.0 制伏武器的商人：原版奴隶贩（Caravan_Outlander_PirateMerchant）和黑网商队各自约 25% 带 1 根制伏短棍、约 25% 带 1 把缚网弩。其他商人不卖制伏武器（武器的 tradeTags 只有 LP_NonlethalStock）。 -->
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/TraderKindDef[defName="Caravan_Outlander_PirateMerchant" or defName="LP_Caravan_BlackNetwork"]/stockGenerators</xpath>
+    <value>
+      <li Class="LichPhylactery.StockGenerator_RareArcane">
+        <thingDefs>
+          <li>LP_SubduingCudgel</li>
+        </thingDefs>
+        <chance>0.25</chance>
+      </li>
+      <li Class="LichPhylactery.StockGenerator_RareArcane">
+        <thingDefs>
+          <li>LP_NetCrossbow</li>
+        </thingDefs>
+        <chance>0.25</chance>
+      </li>
+    </value>
+  </Operation>
+</Patch>

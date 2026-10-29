@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.24.0 种族物品：元素符、象牙号角、食人魔大棒、风羽披风、寒冰魔尾刺、霜刺长枪、炎魔之心、炎魔火鞭、天穹之剑、神灯。
+     种族制作限制、种族加成沿用 1.22.0 的 RaceGearExtension；附带能力沿用 CompGrantAbility。 -->
+<Defs>
+  <!-- ==================== 元素符 ==================== -->
+  <ThingDef Name="LP_ElementalFocusBase" ParentName="LP_AccessoryBase" Abstract="True">
+    <statBases><MarketValue>900</MarketValue></statBases>
+    <apparel><bodyPartGroups><li>LeftHand</li></bodyPartGroups></apparel>
+  </ThingDef>
+  <ThingDef ParentName="LP_ElementalFocusBase">
+    <defName>LP_ElementalFocus_Fire</defName>
+    <label>炽焰符</label>
+    <description>嵌着熔岩结晶的秘银护符，握在左手里微微发烫。炽焰血脉的元素裔或巨灵佩戴时：火花冷却减半，火焰伤害再减半（合计只受四分之一）。其他人佩戴：可燃性减半。只有炽焰血脉的元素裔能在附魔台制作。</description>
+    <graphicData><texPath>Races124/Items/FocusFire</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <modExtensions><li Class="LichPhylactery.RaceGearExtension"><race>ElementFire</race></li></modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="LP_ElementalFocusBase">
+    <defName>LP_ElementalFocus_Water</defName>
+    <label>潮汐符</label>
+    <description>秘银框里封着一滴永不干涸的水。潮汐血脉的元素裔或巨灵佩戴时：水流冷却减半，灭火范围扩大到5×5。其他人佩戴：获得水中行动（浅水、沼泽不减速）。只有潮汐血脉的元素裔能在附魔台制作。</description>
+    <graphicData><texPath>Races124/Items/FocusWater</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <modExtensions>
+      <li Class="LichPhylactery.RaceGearExtension"><race>ElementWater</race></li>
+      <li Class="LichPhylactery.AmphibiousExtension" />
+    </modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="LP_ElementalFocusBase">
+    <defName>LP_ElementalFocus_Earth</defName>
+    <label>岩石符</label>
+    <description>一块精金打磨的沉重符石。岩石血脉的元素裔或巨灵佩戴时：采矿速度从×130%提高到×160%。其他人佩戴：采矿速度×115%。只有岩石血脉的元素裔能在附魔台制作。</description>
+    <graphicData><texPath>Races124/Items/FocusEarth</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <modExtensions><li Class="LichPhylactery.RaceGearExtension"><race>ElementEarth</race></li></modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="LP_ElementalFocusBase">
+    <defName>LP_ElementalFocus_Air</defName>
+    <label>疾风符</label>
+    <description>秘银环上缠着永远飘动的布条。疾风血脉的元素裔或巨灵佩戴时：风跃冷却减半，移动速度从×110%提高到×120%。其他人佩戴：移动速度×105%。只有疾风血脉的元素裔能在附魔台制作。</description>
+    <graphicData><texPath>Races124/Items/FocusAir</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <modExtensions><li Class="LichPhylactery.RaceGearExtension"><race>ElementAir</race></li></modExtensions>
+  </ThingDef>
+  <RecipeDef Name="LP_FocusRecipeBase" ParentName="LP_AlchemyRecipeBase" Abstract="True">
+    <recipeUsers Inherit="False"><li>LP_EnchantingTable</li></recipeUsers>
+    <workAmount>4000</workAmount>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_FocusRecipeBase">
+    <defName>LP_MakeElementalFocus_Fire</defName>
+    <label>制作炽焰符</label>
+    <description>用20秘银和5块熔岩结晶制作一枚炽焰符。只有炽焰血脉的元素裔能做。</description>
+    <jobString>正在制作炽焰符。</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>20</count></li>
+      <li><filter><thingDefs><li>LP_LavaCrystal</li></thingDefs></filter><count>5</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Mithral</li><li>LP_LavaCrystal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_ElementalFocus_Fire>1</LP_ElementalFocus_Fire></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_FocusRecipeBase">
+    <defName>LP_MakeElementalFocus_Water</defName>
+    <label>制作潮汐符</label>
+    <description>用20秘银和20份草药制作一枚潮汐符。只有潮汐血脉的元素裔能做。</description>
+    <jobString>正在制作潮汐符。</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>20</count></li>
+      <li><filter><thingDefs><li>MedicineHerbal</li></thingDefs></filter><count>20</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Mithral</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_ElementalFocus_Water>1</LP_ElementalFocus_Water></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_FocusRecipeBase">
+    <defName>LP_MakeElementalFocus_Earth</defName>
+    <label>制作岩石符</label>
+    <description>用20秘银和5份精金制作一枚岩石符。只有岩石血脉的元素裔能做。</description>
+    <jobString>正在制作岩石符。</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>20</count></li>
+      <li><filter><thingDefs><li>LP_Adamantine</li></thingDefs></filter><count>5</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Mithral</li><li>LP_Adamantine</li></thingDefs></fixedIngredientFilter>
+    <products><LP_ElementalFocus_Earth>1</LP_ElementalFocus_Earth></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_FocusRecipeBase">
+    <defName>LP_MakeElementalFocus_Air</defName>
+    <label>制作疾风符</label>
+    <description>用20秘银和30份布制作一枚疾风符。只有疾风血脉的元素裔能做。</description>
+    <jobString>正在制作疾风符。</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>20</count></li>
+      <li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>30</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Mithral</li><li>Cloth</li></thingDefs></fixedIngredientFilter>
+    <products><LP_ElementalFocus_Air>1</LP_ElementalFocus_Air></products>
+  </RecipeDef>
+
+  <!-- ==================== 象牙号角 ==================== -->
+  <ThingDef ParentName="LP_AccessoryBase">
+    <defName>LP_IvoryHorn</defName>
+    <label>象牙号角</label>
+    <description>象人用银和钢打造、雕成象牙模样的战号，挂在腰间。吹响它（“号角”能力）：使用者8格内的友方30秒内不会被吓倒，移动速度×110%；象人吹奏时范围扩大到12格。冷却1天。只有象人能在手工制作点制作。</description>
+    <graphicData><texPath>Races124/Items/IvoryHorn</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>600</MarketValue><Mass>0.8</Mass></statBases>
+    <apparel><bodyPartGroups><li>Waist</li></bodyPartGroups></apparel>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_GrantAbility"><ability>LP_IvoryHornBlast</ability></li>
+    </comps>
+    <modExtensions><li Class="LichPhylactery.RaceGearExtension"><race>Loxodon</race></li></modExtensions>
+  </ThingDef>
+  <RecipeDef>
+    <defName>LP_MakeIvoryHorn</defName>
+    <label>制作象牙号角</label>
+    <description>用50白银和20钢制作一支象牙号角。只有象人能做。</description>
+    <jobString>正在制作象牙号角。</jobString>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Smith</soundWorking>
+    <workAmount>3000</workAmount>
+    <recipeUsers><li>CraftingSpot</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>50</count></li>
+      <li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>20</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>Silver</li><li>Steel</li></thingDefs></fixedIngredientFilter>
+    <products><LP_IvoryHorn>1</LP_IvoryHorn></products>
+  </RecipeDef>
+  <AbilityDef>
+    <defName>LP_IvoryHornBlast</defName>
+    <label>号角</label>
+    <description>吹响象牙号角：8格内（象人12格）的友方30秒内不会被吓倒，移动速度×110%。冷却1天。</description>
+    <iconPath>Races124/Abilities/Horn</iconPath>
+    <hostile>false</hostile>
+    <targetRequired>false</targetRequired>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <aiCanUse>false</aiCanUse>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>0.5</warmupTime>
+      <range>0</range>
+      <targetParams><canTargetSelf>true</canTargetSelf></targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_Races124Ability"><effect>horn</effect></li>
+    </comps>
+  </AbilityDef>
+  <HediffDef>
+    <defName>LP_HornCourage</defName>
+    <label>号角鼓舞</label>
+    <description>象牙号角的长鸣还在耳边：不会被吓倒，移动速度×110%。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.9, 0.85, 0.7)</defaultLabelColor>
+    <isBad>false</isBad>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>1800</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><statFactors><MoveSpeed>1.1</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+
+  <!-- ==================== 食人魔大棒 ==================== -->
+  <ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
+    <defName>LP_OgreClub</defName>
+    <label>食人魔大棒</label>
+    <description>一根比人还高的粗大棒子，头上箍着铁环。钝击很重，命中时有20%概率把敌人砸退1格。可它也重得离谱：体型不到1.4的人挥不动，伤害×60%、移动速度-0.2。只有食人魔能在巨人铁砧或手工制作点制作。</description>
+    <graphicData><texPath>Races124/Items/OgreClub</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>1.3</drawSize></graphicData>
+    <uiIconScale>1.1</uiIconScale>
+    <techLevel>Neolithic</techLevel>
+    <costStuffCount>80</costStuffCount>
+    <statBases><WorkToMake>6000</WorkToMake><Mass>6</Mass><MarketValue>180</MarketValue></statBases>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <recipeMaker>
+      <recipeUsers Inherit="False"><li>CraftingSpot</li><li>LP_GiantAnvil</li></recipeUsers>
+      <skillRequirements><Crafting>3</Crafting></skillRequirements>
+      <displayPriority>430</displayPriority>
+    </recipeMaker>
+    <stuffCategories><li>Metallic</li><li>Woody</li></stuffCategories>
+    <weaponTags><li>LP_OgreGear</li></weaponTags>
+    <tradeTags><li>LP_OgreGear</li></tradeTags>
+    <weaponClasses><li>Melee</li></weaponClasses>
+    <tools>
+      <li><label>棒柄</label><capacities><li>Poke</li></capacities><power>10</power><cooldownTime>2.6</cooldownTime></li>
+      <li><label>棒头</label><labelUsedInLogging>false</labelUsedInLogging><capacities><li>Blunt</li></capacities><power>30</power><cooldownTime>3.2</cooldownTime></li>
+    </tools>
+    <modExtensions>
+      <li Class="LichPhylactery.RaceGearExtension"><race>Ogre</race></li>
+      <li Class="LichPhylactery.HeavyWeaponExtension"><minBodySize>1.4</minBodySize><damageFactor>0.6</damageFactor><moveOffset>-0.2</moveOffset></li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- ==================== 风羽披风 ==================== -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>LP_FeatherCloak</defName>
+    <label>风羽披风</label>
+    <description>用鸟人换下的飞羽缝成的短披风，不遮手臂。鸟人穿着时翱翔距离+4格、冷却×75%；其他人穿着时移动速度×108%。保暖与普通斗篷相当。只有鸟人能在裁缝台或法袍织机制作。</description>
+    <graphicData><texPath>Races124/Items/FeatherCloak</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <techLevel>Medieval</techLevel>
+    <stuffCategories><li>Leathery</li></stuffCategories>
+    <costStuffCount>20</costStuffCount>
+    <costList><Cloth>60</Cloth></costList>
+    <statBases>
+      <WorkToMake>7000</WorkToMake>
+      <MaxHitPoints>140</MaxHitPoints>
+      <Mass>1.2</Mass>
+      <MarketValue>420</MarketValue>
+      <Insulation_Cold>10</Insulation_Cold>
+      <StuffEffectMultiplierArmor>0.2</StuffEffectMultiplierArmor>
+      <StuffEffectMultiplierInsulation_Cold>0.3</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0.2</StuffEffectMultiplierInsulation_Heat>
+      <EquipDelay>2</EquipDelay>
+    </statBases>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <tradeTags><li>LP_AarakocraGear</li></tradeTags>
+    <colorGenerator Class="ColorGenerator_Single"><color>(0.80,0.68,0.50)</color></colorGenerator>
+    <recipeMaker>
+      <recipeUsers Inherit="False"><li>ElectricTailoringBench</li><li>HandTailoringBench</li><li>LP_ArcaneLoom</li></recipeUsers>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Tailor</effectWorking>
+      <soundWorking>Recipe_Tailor</soundWorking>
+      <skillRequirements><Crafting>4</Crafting></skillRequirements>
+    </recipeMaker>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Shoulders</li></bodyPartGroups>
+      <wornGraphicPath>Races124/Items/Worn/FeatherCloak</wornGraphicPath>
+      <layers><li>Shell</li></layers>
+      <tags><li>LP_AarakocraGear</li></tags>
+    </apparel>
+    <modExtensions><li Class="LichPhylactery.RaceGearExtension"><race>Aarakocra</race></li></modExtensions>
+  </ThingDef>
+
+  <!-- ==================== 寒冰魔尾刺、霜刺长枪 ==================== -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_IceDevilStinger</defName>
+    <label>寒冰魔尾刺</label>
+    <description>寒冰魔被遣返九狱时留下的尾刺，摸上去冷得扎手，永远不会融化。可以和寒铁一起锻成霜刺长枪。</description>
+    <graphicData><texPath>Races124/Items/IceDevilStinger</texPath><graphicClass>Graphic_StackCount</graphicClass></graphicData>
+    <stackLimit>10</stackLimit>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <techLevel>Medieval</techLevel>
+    <statBases><MarketValue>300</MarketValue><Mass>0.6</Mass><Flammability>0</Flammability></statBases>
+    <thingCategories><li>ItemsMisc</li></thingCategories>
+    <tradeTags><li>LP_FiendLoot</li></tradeTags>
+  </ThingDef>
+  <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+    <defName>LP_FrostSpear</defName>
+    <label>霜刺长枪</label>
+    <description>寒铁枪杆上装着寒冰魔的尾刺。命中时追加一层寒气侵体（移速×85%、近战冷却×110%，最多3层）。对寒冰魔和炎魔毫无作用——魔鬼不怕自己的寒气。在符文铁砧用40寒铁和1根寒冰魔尾刺锻造（需要秘金冶炼）。</description>
+    <graphicData><texPath>Races124/Items/FrostSpear</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>1.3</drawSize></graphicData>
+    <techLevel>Medieval</techLevel>
+    <smeltable>true</smeltable>
+    <relicChance>0</relicChance>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <statBases><WorkToMake>16000</WorkToMake><Mass>2.6</Mass><MarketValue>700</MarketValue></statBases>
+    <costList><LP_ColdIron>40</LP_ColdIron><LP_IceDevilStinger>1</LP_IceDevilStinger></costList>
+    <weaponTags><li>LP_FrostSpear</li></weaponTags>
+    <tradeTags><li>LP_FiendLoot</li></tradeTags>
+    <tools>
+      <li><label>枪杆</label><capacities><li>Blunt</li></capacities><power>12</power><cooldownTime>2</cooldownTime></li>
+      <li><label>枪尖</label><labelUsedInLogging>false</labelUsedInLogging><capacities><li>Stab</li></capacities><power>24</power><cooldownTime>2.4</cooldownTime></li>
+    </tools>
+    <recipeMaker>
+      <recipeUsers Inherit="False"><li>LP_RuneAnvil</li></recipeUsers>
+      <researchPrerequisite>LP_MythicMetallurgy</researchPrerequisite>
+      <skillRequirements><Crafting>7</Crafting></skillRequirements>
+      <displayPriority>440</displayPriority>
+      <defaultIngredientFilter Inherit="False"><categories><li>Root</li></categories></defaultIngredientFilter>
+    </recipeMaker>
+  </ThingDef>
+
+  <!-- ==================== 炎魔之心、炎魔火鞭 ==================== -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_BalorHeart</defName>
+    <label>炎魔之心</label>
+    <description>炎魔崩解后留下的心脏，像一块还在跳动的熔岩。黑网和红袍商人都肯出高价收购。（以后可用来锻造火焰舌。）</description>
+    <graphicData><texPath>Races124/Items/BalorHeart</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>1</stackLimit>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <techLevel>Medieval</techLevel>
+    <statBases><MarketValue>2500</MarketValue><Mass>2</Mass><Flammability>0</Flammability></statBases>
+    <thingCategories><li>ItemsMisc</li></thingCategories>
+    <tradeTags><li>LP_FiendLoot</li></tradeTags>
+  </ThingDef>
+  <ThingDef ParentName="BaseGunWithQuality">
+    <defName>LP_BalorWhip</defName>
+    <label>炎魔火鞭</label>
+    <description>炎魔手中的多尾火鞭，鞭梢永远燃着深渊之火。抽中目标造成18点火焰伤害、点燃对方，并把它向持鞭者拉近2格；射程只有4.9格。不怕火的人（九狱之躯、火巨人、炽焰血脉）才握得住——其他人每挥一鞭，自己的手都会被烫伤2点。只能从炎魔身上缴获。</description>
+    <graphicData><texPath>Races124/Items/BalorWhip</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <techLevel>Medieval</techLevel>
+    <tradeability>Sellable</tradeability>
+    <smeltable>false</smeltable>
+    <relicChance>0</relicChance>
+    <statBases>
+      <MarketValue>1800</MarketValue>
+      <Mass>2</Mass>
+      <AccuracyTouch>0.9</AccuracyTouch>
+      <AccuracyShort>0.8</AccuracyShort>
+      <AccuracyMedium>0.6</AccuracyMedium>
+      <AccuracyLong>0.4</AccuracyLong>
+      <RangedWeapon_Cooldown>1.8</RangedWeapon_Cooldown>
+      <Flammability>0</Flammability>
+    </statBases>
+    <weaponTags><li>LP_BalorWhip</li></weaponTags>
+    <tradeTags><li>LP_FiendLoot</li></tradeTags>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>LP_BalorLash</defaultProjectile>
+        <warmupTime>0.6</warmupTime>
+        <range>4.9</range>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>Bow_Large</soundCast>
+        <muzzleFlashScale>0</muzzleFlashScale>
+      </li>
+    </verbs>
+    <tools>
+      <li><label>鞭柄</label><capacities><li>Blunt</li></capacities><power>9</power><cooldownTime>2</cooldownTime></li>
+    </tools>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>LP_BalorLash</defName>
+    <label>烈焰鞭击</label>
+    <thingClass>LichPhylactery.Projectile_BalorLash</thingClass>
+    <graphicData>
+      <texPath>Races124/Items/BalorLash</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <projectile>
+      <damageDef>Flame</damageDef>
+      <damageAmountBase>18</damageAmountBase>
+      <speed>55</speed>
+    </projectile>
+  </ThingDef>
+
+  <!-- ==================== 天穹之剑 ==================== -->
+  <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+    <defName>LP_EmpyreanBlade</defName>
+    <label>天穹之剑</label>
+    <description>天穹神裔的巨剑，剑身上流动着雷光。命中有25%概率追加一道雷霆（10点 EMP + 6点火焰）。剑太大了：体型不到2的人挥不动，伤害×50%（不是不能用）。只有泰坦或火巨人能在符文铁砧或熔火锻炉打造。</description>
+    <graphicData><texPath>Races124/Items/EmpyreanBlade</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>1.5</drawSize></graphicData>
+    <techLevel>Medieval</techLevel>
+    <smeltable>true</smeltable>
+    <relicChance>0</relicChance>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <statBases><WorkToMake>30000</WorkToMake><Mass>6</Mass><MarketValue>2600</MarketValue></statBases>
+    <costList><Plasteel>60</Plasteel><LP_Mithral>20</LP_Mithral><Gold>10</Gold></costList>
+    <weaponTags><li>LP_EmpyreanBlade</li></weaponTags>
+    <tradeTags><li>LP_TitanGear</li></tradeTags>
+    <tools>
+      <li><label>剑柄</label><capacities><li>Blunt</li></capacities><power>12</power><cooldownTime>2</cooldownTime></li>
+      <li><label>剑尖</label><capacities><li>Stab</li></capacities><power>26</power><cooldownTime>2.6</cooldownTime></li>
+      <li><label>剑刃</label><labelUsedInLogging>false</labelUsedInLogging><capacities><li>Cut</li></capacities><power>32</power><cooldownTime>2.6</cooldownTime></li>
+    </tools>
+    <recipeMaker>
+      <researchPrerequisite>LP_RacialBlades</researchPrerequisite>
+      <recipeUsers Inherit="False"><li>LP_RuneAnvil</li><li>LP_FireGiantForge</li></recipeUsers>
+      <skillRequirements><Crafting>9</Crafting></skillRequirements>
+      <displayPriority>445</displayPriority>
+      <defaultIngredientFilter Inherit="False"><categories><li>Root</li></categories></defaultIngredientFilter>
+    </recipeMaker>
+    <modExtensions>
+      <li Class="LichPhylactery.RaceGearExtension"><race>TitanOrFireGiant</race></li>
+      <li Class="LichPhylactery.HeavyWeaponExtension"><minBodySize>2</minBodySize><damageFactor>0.5</damageFactor></li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- ==================== 神灯 ==================== -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_WonderLamp</defName>
+    <label>神灯</label>
+    <description>一盏古旧的黄铜油灯，灯身上刻着看不懂的符文。右键“擦拭神灯”：沉睡的神灯会召出一位巨灵加入殖民地（随机为火、水、土、风之一）；巨灵在外时神灯“有主”；巨灵被击倒或杀死时回到灯里，神灯“暗淡”15天，之后能再擦出同一个巨灵；灯里的巨灵与外界隔绝（不冻伤、不挨饿、不会死），擦出来是满状态；暗淡时选中神灯可花1000白银立刻唤醒。\n\n神灯必须留在你手里：卖掉、被偷或被毁，巨灵一天后就会离去。不能制作；黑网商队必带一盏，红袍商人偶尔也有。</description>
+    <thingClass>LichPhylactery.WonderLamp</thingClass>
+    <graphicData><texPath>Races124/Items/WonderLamp_Asleep</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>1</stackLimit>
+    <useHitPoints>true</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <techLevel>Medieval</techLevel>
+    <statBases><MarketValue>3500</MarketValue><Mass>1</Mass><MaxHitPoints>300</MaxHitPoints><Flammability>0</Flammability><DeteriorationRate>0</DeteriorationRate></statBases>
+    <thingCategories><li>ItemsMisc</li></thingCategories>
+    <tradeTags><li>LP_WonderLamp</li></tradeTags>
+    <smeltable>false</smeltable>
+    <burnableByRecipe>false</burnableByRecipe>
+  </ThingDef>
+</Defs>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.31.0 云游导师（只在启用 Vanilla Psycasts Expanded 时由 LoadFolders 加载）。规则见 Bridges/VPE/Source/Mentor.cs。 -->
+<Defs>
+  <IncidentDef>
+    <defName>LP_WanderingMentor</defName>
+    <label>云游导师</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>LichPhylactery.VPEBridge.IncidentWorker_WanderingMentor</workerClass>
+    <baseChance>1.0</baseChance>
+    <minRefireDays>30</minRefireDays>
+    <pointsScaleable>false</pointsScaleable>
+  </IncidentDef>
+
+  <LetterDef ParentName="CustomChoiceLetterBase">
+    <defName>LP_MentorChoiceLetter</defName>
+    <letterClass>LichPhylactery.VPEBridge.Letter_MentorLeaving</letterClass>
+  </LetterDef>
+
+  <ThoughtDef>
+    <defName>LP_MentorDrivenOff</defName>
+    <durationDays>5</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>赶走了导师</label>
+        <description>有人对来访的导师动了手，他愤然离去。我们本可以从他那里学到很多。</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- 导师所属的隐藏中立派系：不生成据点、不袭击，好感 0。 -->
+  <FactionDef ParentName="LP_FactionBase">
+    <defName>LP_WanderingScholars</defName>
+    <label>云游学者</label>
+    <fixedName>云游学者</fixedName>
+    <description>四处游历、传授本领的战士、法师和牧师。他们不属于任何势力，只是路过。</description>
+    <pawnSingular>导师</pawnSingular>
+    <pawnsPlural>导师</pawnsPlural>
+    <techLevel>Medieval</techLevel>
+    <hidden>true</hidden>
+    <requiredCountAtGameStart>0</requiredCountAtGameStart>
+    <startingCountAtWorldCreation>0</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <displayInFactionSelection>false</displayInFactionSelection>
+    <settlementGenerationWeight>0</settlementGenerationWeight>
+    <canStageAttacks>false</canStageAttacks>
+    <raidsForbidden>true</raidsForbidden>
+    <canGenerateQuestSites>false</canGenerateQuestSites>
+    <rescueesCanJoin>false</rescueesCanJoin>
+    <factionIconPath>Factions/FaerunColony</factionIconPath>
+    <colorSpectrum>
+      <li>(0.86, 0.78, 0.52)</li>
+      <li>(0.95, 0.90, 0.70)</li>
+    </colorSpectrum>
+    <basicMemberKind>LP_Mentor_Wizard</basicMemberKind>
+    <ideoName>游学</ideoName>
+    <ideoDescription>本领要传下去。</ideoDescription>
+    <forcedMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Ideological</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Individualist</li>
+    </forcedMemes>
+    <raidCommonalityFromPointsCurve>
+      <points>
+        <li>(0, 0)</li>
+      </points>
+    </raidCommonalityFromPointsCurve>
+    <pawnGroupMakers>
+      <li>
+        <kindDef>Combat</kindDef>
+        <options>
+          <LP_Mentor_Fighter>1</LP_Mentor_Fighter>
+        </options>
+      </li>
+    </pawnGroupMakers>
+  </FactionDef>
+
+  <PawnKindDef Name="LP_MentorBase" ParentName="LP_FighterBase" Abstract="True">
+    <defaultFactionDef>LP_WanderingScholars</defaultFactionDef>
+    <combatPower>120</combatPower>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <minGenerationAge>40</minGenerationAge>
+    <itemQuality>Good</itemQuality>
+    <apparelMoney>400~800</apparelMoney>
+    <weaponMoney>200~400</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeDecent</li>
+    </weaponTags>
+    <initialResistanceRange>40~60</initialResistanceRange>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_MentorBase">
+    <defName>LP_Mentor_Fighter</defName>
+    <label>云游剑术导师</label>
+    <skills><li><skill>Melee</skill><range>16~20</range></li></skills>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_MentorBase">
+    <defName>LP_Mentor_Wizard</defName>
+    <label>云游法术导师</label>
+    <apparelRequired><li>Apparel_Robe</li></apparelRequired>
+    <skills><li><skill>Intellectual</skill><range>16~20</range></li></skills>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_MentorBase">
+    <defName>LP_Mentor_Cleric</defName>
+    <label>云游神术导师</label>
+    <apparelRequired><li>Apparel_Robe</li></apparelRequired>
+    <skills><li><skill>Social</skill><range>16~20</range></li></skills>
+  </PawnKindDef>
+  <!-- 1.36.0 -->
+  <PawnKindDef ParentName="LP_MentorBase">
+    <defName>LP_Mentor_Druid</defName>
+    <label>云游德鲁伊导师</label>
+    <apparelRequired><li>Apparel_Robe</li></apparelRequired>
+    <skills><li><skill>Plants</skill><range>16~20</range></li><li><skill>Animals</skill><range>16~20</range></li></skills>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_MentorBase">
+    <defName>LP_Mentor_Paladin</defName>
+    <label>云游圣武士导师</label>
+    <skills><li><skill>Melee</skill><range>16~20</range></li><li><skill>Social</skill><range>12~16</range></li></skills>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_MentorBase">
+    <defName>LP_Mentor_Sorcerer</defName>
+    <label>云游术士导师</label>
+    <apparelRequired><li>Apparel_Robe</li></apparelRequired>
+    <skills><li><skill>Social</skill><range>16~20</range></li><li><skill>Intellectual</skill><range>12~16</range></li></skills>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_MentorBase">
+    <defName>LP_Mentor_Monk</defName>
+    <label>云游武僧导师</label>
+    <weaponMoney>0~0</weaponMoney>
+    <skills><li><skill>Melee</skill><range>16~20</range></li></skills>
+  </PawnKindDef>
+</Defs>

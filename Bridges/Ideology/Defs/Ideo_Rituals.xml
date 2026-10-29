@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.56.0：9 场神祇庆典 + 灰袍葬礼（规格第五节）。结果 worker、品质 comp 和目标过滤在 Source/IdeoRituals.cs。
+     日期由 Harmony 后缀 RitualObligationTrigger_Date.Init 固定成扩展里的 festivalQuadrum / festivalDay。 -->
+<Defs>
+
+  <RitualObligationTargetFilterDef>
+    <defName>LP_Target_FaithAltar</defName>
+    <workerClass>LichPhylactery.RitualObligationTargetWorker_FaithAltar</workerClass>
+  </RitualObligationTargetFilterDef>
+
+  <RitualOutcomeEffectDef Name="LP_FestivalOutcomeBase" Abstract="True">
+    <description>根据仪式品质，参与者获得 {MINMOOD}～{MAXMOOD} 心情，持续 {MOODDAYS} 天；这位神的神眷：糟糕-3、平淡+2、不错+6、难忘+12。</description>
+    <workerClass>LichPhylactery.RitualOutcomeEffectWorker_LPFestival</workerClass>
+    <outcomeChances>
+      <li><label>糟糕</label><chance>0.05</chance><memory>TerribleFestival</memory><description>{0}糟透了！大家熬着尴尬的寒暄等它结束。</description><positivityIndex>-2</positivityIndex></li>
+      <li><label>平淡</label><chance>0.15</chance><memory>BoringFestival</memory><description>{0}很平淡。大家都放不开。</description><positivityIndex>-1</positivityIndex></li>
+      <li><label>不错</label><chance>0.6</chance><memory>FunFestival</memory><description>{0}很不错。大家都很高兴有机会一起放松。</description><positivityIndex>1</positivityIndex></li>
+      <li><label>难忘</label><chance>0.2</chance><memory>UnforgettableFestival</memory><description>{0}令人难忘！神明似乎也在注视着这场庆典。</description><positivityIndex>2</positivityIndex></li>
+    </outcomeChances>
+  </RitualOutcomeEffectDef>
+
+  <!-- ==================== 洛山达：绿草节 ==================== -->
+  <RitualOutcomeEffectDef ParentName="LP_FestivalOutcomeBase">
+    <defName>LP_FestivalOutcome_Lathander</defName>
+    <comps>
+      <li Class="RitualOutcomeComp_ParticipantCount">
+        <label>参与人数</label>
+        <curve><points><li>(1, 0.0)</li><li>(5, 0.15)</li><li>(10, 0.25)</li></points></curve>
+      </li>
+      <li Class="RitualOutcomeComp_RoomStat">
+        <label>房间印象</label>
+        <statDef>Impressiveness</statDef>
+        <curve><points><li>0, 0</li><li>50, 0.1</li><li>120, 0.2</li></points></curve>
+      </li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>cleric</kind><label>有神官主持</label><qualityOffset>0.15</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>temple</kind><label>在神殿里</label><qualityOffset>0.1</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>statue</kind><label>神像在8格内</label><qualityOffset>0.1</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>relic</kind><label>神赐遗物在8格内</label><qualityOffset>0.15</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>dawn</kind><label>白天开始</label><qualityOffset>0.1</qualityOffset></li>
+    </comps>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_FestivalExtension">
+        <deity>LP_Deity_Lathander</deity>
+        <unforgettable>3天「黎明的眷顾」（洛山达赐福）。</unforgettable>
+      </li>
+    </modExtensions>
+  </RitualOutcomeEffectDef>
+  <RitualPatternDef ParentName="CelebrationPartyChat">
+    <defName>LP_FestivalPattern_Lathander</defName>
+    <nameMaker IsNull="True" />
+    <ritualExpectedDesc>每年{DATE}，{MEMBERS}要向洛山达举行绿草节。</ritualExpectedDesc>
+    <shortDescOverride>绿草节</shortDescOverride>
+    <descOverride>洛山达的庆典：在晨光里欢庆新生。白天开始品质+10%。难忘时：3天「黎明的眷顾」（洛山达赐福）。</descOverride>
+    <iconPathOverride>UI/Memes/LP/Lathander</iconPathOverride>
+    <ritualObligationTargetFilter>LP_Target_FaithAltar</ritualObligationTargetFilter>
+    <ritualOutcomeEffect>LP_FestivalOutcome_Lathander</ritualOutcomeEffect>
+    <tags Inherit="False"><li>LP_DeityFestival</li></tags>
+    <patternGroupTag>LP_DeityFestival_Lathander</patternGroupTag>
+  </RitualPatternDef>
+  <PreceptDef ParentName="FestivalBase">
+    <defName>LP_Festival_Lathander</defName>
+    <label>绿草节</label>
+    <description>洛山达的庆典，在圣坛举行。在晨光里欢庆新生。白天开始品质+10%。</description>
+    <iconPath>UI/Memes/LP/Lathander</iconPath>
+    <ritualPatternBase>LP_FestivalPattern_Lathander</ritualPatternBase>
+    <canGenerateAsSpecialPrecept>false</canGenerateAsSpecialPrecept>
+    <visibleOnAddFloatMenu>false</visibleOnAddFloatMenu>
+    <requiredMemes>
+      <li>LP_Meme_Lathander</li>
+      <li>LP_Meme_Pantheon</li>
+    </requiredMemes>
+  </PreceptDef>
+
+  <!-- ==================== 提尔：盾会 ==================== -->
+  <RitualOutcomeEffectDef ParentName="LP_FestivalOutcomeBase">
+    <defName>LP_FestivalOutcome_Tyr</defName>
+    <comps>
+      <li Class="RitualOutcomeComp_ParticipantCount">
+        <label>参与人数</label>
+        <curve><points><li>(1, 0.0)</li><li>(5, 0.15)</li><li>(10, 0.25)</li></points></curve>
+      </li>
+      <li Class="RitualOutcomeComp_RoomStat">
+        <label>房间印象</label>
+        <statDef>Impressiveness</statDef>
+        <curve><points><li>0, 0</li><li>50, 0.1</li><li>120, 0.2</li></points></curve>
+      </li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>cleric</kind><label>有神官主持</label><qualityOffset>0.15</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>temple</kind><label>在神殿里</label><qualityOffset>0.1</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>statue</kind><label>神像在8格内</label><qualityOffset>0.1</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>relic</kind><label>神赐遗物在8格内</label><qualityOffset>0.15</qualityOffset></li>
+    </comps>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_FestivalExtension">
+        <deity>LP_Deity_Tyr</deity>
+        <unforgettable>主持人立下誓言（30天：近战命中+5，社交冲突几率×0.5）。</unforgettable>
+      </li>
+    </modExtensions>
+  </RitualOutcomeEffectDef>
+  <RitualPatternDef ParentName="CelebrationPartyChat">
+    <defName>LP_FestivalPattern_Tyr</defName>
+    <nameMaker IsNull="True" />
+    <ritualExpectedDesc>每年{DATE}，{MEMBERS}要向提尔举行盾会。</ritualExpectedDesc>
+    <shortDescOverride>盾会</shortDescOverride>
+    <descOverride>提尔的庆典：重申誓言、裁决纷争。每4年（年份能被4整除）是大盾会：神眷结果×1.5。难忘时：主持人立下誓言（30天：近战命中+5，社交冲突几率×0.5）。</descOverride>
+    <iconPathOverride>UI/Memes/LP/Tyr</iconPathOverride>
+    <ritualObligationTargetFilter>LP_Target_FaithAltar</ritualObligationTargetFilter>
+    <ritualOutcomeEffect>LP_FestivalOutcome_Tyr</ritualOutcomeEffect>
+    <tags Inherit="False"><li>LP_DeityFestival</li></tags>
+    <patternGroupTag>LP_DeityFestival_Tyr</patternGroupTag>
+  </RitualPatternDef>
+  <PreceptDef ParentName="FestivalBase">
+    <defName>LP_Festival_Tyr</defName>
+    <label>盾会</label>
+    <description>提尔的庆典，在圣坛举行。重申誓言、裁决纷争。每4年（年份能被4整除）是大盾会：神眷结果×1.5。</description>
+    <iconPath>UI/Memes/LP/Tyr</iconPath>
+    <ritualPatternBase>LP_FestivalPattern_Tyr</ritualPatternBase>
+    <canGenerateAsSpecialPrecept>false</canGenerateAsSpecialPrecept>
+    <visibleOnAddFloatMenu>false</visibleOnAddFloatMenu>
+    <requiredMemes>
+      <li>LP_Meme_Tyr</li>
+      <li>LP_Meme_Pantheon</li>
+    </requiredMemes>
+  </PreceptDef>
+
+  <!-- ==================== 密斯特拉：魔网之夜 ==================== -->
+  <RitualOutcomeEffectDef ParentName="LP_FestivalOutcomeBase">
+    <defName>LP_FestivalOutcome_Mystra</defName>
+    <comps>
+      <li Class="RitualOutcomeComp_ParticipantCount">
+        <label>参与人数</label>
+        <curve><points><li>(1, 0.0)</li><li>(5, 0.15)</li><li>(10, 0.25)</li></points></curve>
+      </li>
+      <li Class="RitualOutcomeComp_RoomStat">
+        <label>房间印象</label>
+        <statDef>Impressiveness</statDef>
+        <curve><points><li>0, 0</li><li>50, 0.1</li><li>120, 0.2</li></points></curve>
+      </li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>cleric</kind><label>有神官主持</label><qualityOffset>0.15</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>temple</kind><label>在神殿里</label><qualityOffset>0.1</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>statue</kind><label>神像在8格内</label><qualityOffset>0.1</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>relic</kind><label>神赐遗物在8格内</label><qualityOffset>0.15</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>night10</kind><label>夜里开始</label><qualityOffset>0.1</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>casters</kind><label>会施法的参与者</label><qualityOffset>0.03</qualityOffset></li>
+    </comps>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_FestivalExtension">
+        <deity>LP_Deity_Mystra</deity>
+        <unforgettable>参与者精神力补满，3天心灵敏感度+10%。</unforgettable>
+      </li>
+    </modExtensions>
+  </RitualOutcomeEffectDef>
+  <RitualPatternDef ParentName="CelebrationPartyChat">
+    <defName>LP_FestivalPattern_Mystra</defName>
+    <nameMaker IsNull="True" />
+    <ritualExpectedDesc>每年{DATE}，{MEMBERS}要向密斯特拉举行魔网之夜。</ritualExpectedDesc>
+    <shortDescOverride>魔网之夜</shortDescOverride>
+    <descOverride>密斯特拉的庆典：在星光下向魔网致意。夜里开始品质+10%，每名会施法的参与者+3%。难忘时：参与者精神力补满，3天心灵敏感度+10%。</descOverride>
+    <iconPathOverride>UI/Memes/LP/Mystra</iconPathOverride>
+    <ritualObligationTargetFilter>LP_Target_FaithAltar</ritualObligationTargetFilter>
+    <ritualOutcomeEffect>LP_FestivalOutcome_Mystra</ritualOutcomeEffect>
+    <tags Inherit="False"><li>LP_DeityFestival</li></tags>
+    <patternGroupTag>LP_DeityFestival_Mystra</patternGroupTag>
+  </RitualPatternDef>
+  <PreceptDef ParentName="FestivalBase">
+    <defName>LP_Festival_Mystra</defName>
+    <label>魔网之夜</label>
+    <description>密斯特拉的庆典，在圣坛举行。在星光下向魔网致意。夜里开始品质+10%，每名会施法的参与者+3%。</description>
+    <iconPath>UI/Memes/LP/Mystra</iconPath>
+    <ritualPatternBase>LP_FestivalPattern_Mystra</ritualPatternBase>
+    <canGenerateAsSpecialPrecept>false</canGenerateAsSpecialPrecept>
+    <visibleOnAddFloatMenu>false</visibleOnAddFloatMenu>
+    <requiredMemes>
+      <li>LP_Meme_Mystra</li>
+      <li>LP_Meme_Pantheon</li>
+    </requiredMemes>
+  </PreceptDef>
+
+  <!-- ==================== 凯兰沃：亡者之宴 ==================== -->
+  <RitualOutcomeEffectDef ParentName="LP_FestivalOutcomeBase">
+    <defName>LP_FestivalOutcome_Kelemvor</defName>
+    <comps>
+      <li Class="RitualOutcomeComp_ParticipantCount">
+        <label>参与人数</label>
+        <curve><points><li>(1, 0.0)</li><li>(5, 0.15)</li><li>(10, 0.25)</li></points></curve>
+      </li>
+      <li Class="RitualOutcomeComp_RoomStat">
+        <label>房间印象</label>
+        <statDef>Impressiveness</statDef>
+        <curve><points><li>0, 0</li><li>50, 0.1</li><li>120, 0.2</li></points></curve>
+      </li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>cleric</kind><label>有神官主持</label><qualityOffset>0.15</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>temple</kind><label>在神殿里</label><qualityOffset>0.1</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>statue</kind><label>神像在8格内</label><qualityOffset>0.1</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>relic</kind><label>神赐遗物在8格内</label><qualityOffset>0.15</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>graves</kind><label>已入葬的墓</label><qualityOffset>0.1</qualityOffset></li>
+    </comps>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_FestivalExtension">
+        <deity>LP_Deity_Kelemvor</deity>
+        <unforgettable>地图上所有人形尸体得到安息，参与者心情+5（10天）。</unforgettable>
+      </li>
+    </modExtensions>
+  </RitualOutcomeEffectDef>
+  <RitualPatternDef ParentName="CelebrationPartyChat">
+    <defName>LP_FestivalPattern_Kelemvor</defName>
+    <nameMaker IsNull="True" />
+    <ritualExpectedDesc>每年{DATE}，{MEMBERS}要向凯兰沃举行亡者之宴。</ritualExpectedDesc>
+    <shortDescOverride>亡者之宴</shortDescOverride>
+    <descOverride>凯兰沃的庆典：与逝者共进一餐，送别不得安息的魂灵。地图上有已入葬的墓或石棺时品质+10%。难忘时：地图上所有人形尸体得到安息，参与者心情+5（10天）。</descOverride>
+    <iconPathOverride>UI/Memes/LP/Kelemvor</iconPathOverride>
+    <ritualObligationTargetFilter>LP_Target_FaithAltar</ritualObligationTargetFilter>
+    <ritualOutcomeEffect>LP_FestivalOutcome_Kelemvor</ritualOutcomeEffect>
+    <tags Inherit="False"><li>LP_DeityFestival</li></tags>
+    <patternGroupTag>LP_DeityFestival_Kelemvor</patternGroupTag>
+  </RitualPatternDef>
+  <PreceptDef ParentName="FestivalBase">
+    <defName>LP_Festival_Kelemvor</defName>
+    <label>亡者之宴</label>
+    <description>凯兰沃的庆典，在圣坛举行。与逝者共进一餐，送别不得安息的魂灵。地图上有已入葬的墓或石棺时品质+10%。</description>
+    <iconPath>UI/Memes/LP/Kelemvor</iconPath>
+    <ritualPatternBase>LP_FestivalPattern_Kelemvor</ritualPatternBase>
+    <canGenerateAsSpecialPrecept>false</canGenerateAsSpecialPrecept>
+    <visibleOnAddFloatMenu>false</visibleOnAddFloatMenu>
+    <requiredMemes>
+      <li>LP_Meme_Kelemvor</li>
+      <li>LP_Meme_Pantheon</li>
+    </requiredMemes>
+  </PreceptDef>
+
+  <!-- ==================== 马拉尔：大猎 ==================== -->
+  <RitualOutcomeEffectDef ParentName="LP_FestivalOutcomeBase">
+    <defName>LP_FestivalOutcome_Malar</defName>
+    <comps>
+      <li Class="RitualOutcomeComp_ParticipantCount">
+        <label>参与人数</label>
+        <curve><points><li>(1, 0.0)</li><li>(5, 0.15)</li><li>(10, 0.25)</li></points></curve>
+      </li>
+      <li Class="RitualOutcomeComp_RoomStat">
+        <label>房间印象</label>
+        <statDef>Impressiveness</statDef>
+        <curve><points><li>0, 0</li><li>50, 0.1</li><li>120, 0.2</li></points></curve>
+      </li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>cleric</kind><label>有神官主持</label><qualityOffset>0.15</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>temple</kind><label>在神殿里</label><qualityOffset>0.1</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>statue</kind><label>神像在8格内</label><qualityOffset>0.1</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>relic</kind><label>神赐遗物在8格内</label><qualityOffset>0.15</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>consumeBody</kind><label>动物尸体（献祭）</label><qualityOffset>0</qualityOffset></li>
+    </comps>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_FestivalExtension">
+        <deity>LP_Deity_Malar</deity>
+        <unforgettable>参与者5天近战命中+5、射击精度+5%。</unforgettable>
+      </li>
+    </modExtensions>
+  </RitualOutcomeEffectDef>
+  <RitualPatternDef ParentName="CelebrationPartyChat">
+    <defName>LP_FestivalPattern_Malar</defName>
+    <nameMaker IsNull="True" />
+    <ritualExpectedDesc>每年{DATE}，{MEMBERS}要向马拉尔举行大猎。</ritualExpectedDesc>
+    <shortDescOverride>大猎</shortDescOverride>
+    <descOverride>马拉尔的庆典：把猎物献给兽王。开始时圣坛3格内要有一具体型≥0.7的动物尸体，庆典结束时献上。难忘时：参与者5天近战命中+5、射击精度+5%。</descOverride>
+    <iconPathOverride>UI/Memes/LP/Malar</iconPathOverride>
+    <ritualObligationTargetFilter>LP_Target_FaithAltar</ritualObligationTargetFilter>
+    <ritualOutcomeEffect>LP_FestivalOutcome_Malar</ritualOutcomeEffect>
+    <tags Inherit="False"><li>LP_DeityFestival</li></tags>
+    <patternGroupTag>LP_DeityFestival_Malar</patternGroupTag>
+  </RitualPatternDef>
+  <PreceptDef ParentName="FestivalBase">
+    <defName>LP_Festival_Malar</defName>
+    <label>大猎</label>
+    <description>马拉尔的庆典，在圣坛举行。把猎物献给兽王。开始时圣坛3格内要有一具体型≥0.7的动物尸体，庆典结束时献上。</description>
+    <iconPath>UI/Memes/LP/Malar</iconPath>
+    <ritualPatternBase>LP_FestivalPattern_Malar</ritualPatternBase>
+    <canGenerateAsSpecialPrecept>false</canGenerateAsSpecialPrecept>
+    <visibleOnAddFloatMenu>false</visibleOnAddFloatMenu>
+    <requiredMemes>
+      <li>LP_Meme_Malar</li>
+      <li>LP_Meme_Pantheon</li>
+    </requiredMemes>
+  </PreceptDef>
+
+  <!-- ==================== 塔洛斯：风暴之歌 ==================== -->
+  <RitualOutcomeEffectDef ParentName="LP_FestivalOutcomeBase">
+    <defName>LP_FestivalOutcome_Talos</defName>
+    <comps>
+      <li Class="RitualOutcomeComp_ParticipantCount">
+        <label>参与人数</label>
+        <curve><points><li>(1, 0.0)</li><li>(5, 0.15)</li><li>(10, 0.25)</li></points></curve>
+      </li>
+      <li Class="RitualOutcomeComp_RoomStat">
+        <label>房间印象</label>
+        <statDef>Impressiveness</statDef>
+        <curve><points><li>0, 0</li><li>50, 0.1</li><li>120, 0.2</li></points></curve>
+      </li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>cleric</kind><label>有神官主持</label><qualityOffset>0.15</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>temple</kind><label>在神殿里</label><qualityOffset>0.1</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>statue</kind><label>神像在8格内</label><qualityOffset>0.1</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>relic</kind><label>神赐遗物在8格内</label><qualityOffset>0.15</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>storm</kind><label>雷暴中</label><qualityOffset>0.25</qualityOffset></li>
+    </comps>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_FestivalExtension">
+        <deity>LP_Deity_Talos</deity>
+        <unforgettable>3天塔洛斯赐福。</unforgettable>
+      </li>
+    </modExtensions>
+  </RitualOutcomeEffectDef>
+  <RitualPatternDef ParentName="CelebrationPartyChat">
+    <defName>LP_FestivalPattern_Talos</defName>
+    <nameMaker IsNull="True" />
+    <ritualExpectedDesc>每年{DATE}，{MEMBERS}要向塔洛斯举行风暴之歌。</ritualExpectedDesc>
+    <shortDescOverride>风暴之歌</shortDescOverride>
+    <descOverride>塔洛斯的庆典：在狂风中高歌。雷暴中品质+25%。难忘时：3天塔洛斯赐福。</descOverride>
+    <iconPathOverride>UI/Memes/LP/Talos</iconPathOverride>
+    <ritualObligationTargetFilter>LP_Target_FaithAltar</ritualObligationTargetFilter>
+    <ritualOutcomeEffect>LP_FestivalOutcome_Talos</ritualOutcomeEffect>
+    <tags Inherit="False"><li>LP_DeityFestival</li></tags>
+    <patternGroupTag>LP_DeityFestival_Talos</patternGroupTag>
+  </RitualPatternDef>
+  <PreceptDef ParentName="FestivalBase">
+    <defName>LP_Festival_Talos</defName>
+    <label>风暴之歌</label>
+    <description>塔洛斯的庆典，在圣坛举行。在狂风中高歌。雷暴中品质+25%。</description>
+    <iconPath>UI/Memes/LP/Talos</iconPath>
+    <ritualPatternBase>LP_FestivalPattern_Talos</ritualPatternBase>
+    <canGenerateAsSpecialPrecept>false</canGenerateAsSpecialPrecept>
+    <visibleOnAddFloatMenu>false</visibleOnAddFloatMenu>
+    <requiredMemes>
+      <li>LP_Meme_Talos</li>
+      <li>LP_Meme_Pantheon</li>
+    </requiredMemes>
+  </PreceptDef>
+
+  <!-- ==================== 班恩：暴政之日 ==================== -->
+  <RitualOutcomeEffectDef ParentName="LP_FestivalOutcomeBase">
+    <defName>LP_FestivalOutcome_Bane</defName>
+    <comps>
+      <li Class="RitualOutcomeComp_ParticipantCount">
+        <label>参与人数</label>
+        <curve><points><li>(1, 0.0)</li><li>(5, 0.15)</li><li>(10, 0.25)</li></points></curve>
+      </li>
+      <li Class="RitualOutcomeComp_RoomStat">
+        <label>房间印象</label>
+        <statDef>Impressiveness</statDef>
+        <curve><points><li>0, 0</li><li>50, 0.1</li><li>120, 0.2</li></points></curve>
+      </li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>cleric</kind><label>有神官主持</label><qualityOffset>0.15</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>temple</kind><label>在神殿里</label><qualityOffset>0.1</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>statue</kind><label>神像在8格内</label><qualityOffset>0.1</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>relic</kind><label>神赐遗物在8格内</label><qualityOffset>0.15</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>slaves</kind><label>在场的奴隶</label><qualityOffset>0.05</qualityOffset></li>
+    </comps>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_FestivalExtension">
+        <deity>LP_Deity_Bane</deity>
+        <unforgettable>地图上所有奴隶的压制度+20%。</unforgettable>
+      </li>
+    </modExtensions>
+  </RitualOutcomeEffectDef>
+  <RitualPatternDef ParentName="CelebrationPartyChat">
+    <defName>LP_FestivalPattern_Bane</defName>
+    <nameMaker IsNull="True" />
+    <ritualExpectedDesc>每年{DATE}，{MEMBERS}要向班恩举行暴政之日。</ritualExpectedDesc>
+    <shortDescOverride>暴政之日</shortDescOverride>
+    <descOverride>班恩的庆典：向黑手宣誓服从。每名在场的奴隶品质+5%（最多+20%）。难忘时：地图上所有奴隶的压制度+20%。</descOverride>
+    <iconPathOverride>UI/Memes/LP/Bane</iconPathOverride>
+    <ritualObligationTargetFilter>LP_Target_FaithAltar</ritualObligationTargetFilter>
+    <ritualOutcomeEffect>LP_FestivalOutcome_Bane</ritualOutcomeEffect>
+    <tags Inherit="False"><li>LP_DeityFestival</li></tags>
+    <patternGroupTag>LP_DeityFestival_Bane</patternGroupTag>
+  </RitualPatternDef>
+  <PreceptDef ParentName="FestivalBase">
+    <defName>LP_Festival_Bane</defName>
+    <label>暴政之日</label>
+    <description>班恩的庆典，在圣坛举行。向黑手宣誓服从。每名在场的奴隶品质+5%（最多+20%）。</description>
+    <iconPath>UI/Memes/LP/Bane</iconPath>
+    <ritualPatternBase>LP_FestivalPattern_Bane</ritualPatternBase>
+    <canGenerateAsSpecialPrecept>false</canGenerateAsSpecialPrecept>
+    <visibleOnAddFloatMenu>false</visibleOnAddFloatMenu>
+    <requiredMemes>
+      <li>LP_Meme_Bane</li>
+      <li>LP_Meme_Pantheon</li>
+    </requiredMemes>
+  </PreceptDef>
+
+  <!-- ==================== 莎尔：无光守夜 ==================== -->
+  <RitualOutcomeEffectDef ParentName="LP_FestivalOutcomeBase">
+    <defName>LP_FestivalOutcome_Shar</defName>
+    <comps>
+      <li Class="RitualOutcomeComp_ParticipantCount">
+        <label>参与人数</label>
+        <curve><points><li>(1, 0.0)</li><li>(5, 0.15)</li><li>(10, 0.25)</li></points></curve>
+      </li>
+      <li Class="RitualOutcomeComp_RoomStat">
+        <label>房间印象</label>
+        <statDef>Impressiveness</statDef>
+        <curve><points><li>0, 0</li><li>50, 0.1</li><li>120, 0.2</li></points></curve>
+      </li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>cleric</kind><label>有神官主持</label><qualityOffset>0.15</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>temple</kind><label>在神殿里</label><qualityOffset>0.1</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>statue</kind><label>神像在8格内</label><qualityOffset>0.1</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>relic</kind><label>神赐遗物在8格内</label><qualityOffset>0.15</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>night20</kind><label>夜里开始</label><qualityOffset>0.2</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>dark</kind><label>圣坛在黑暗中</label><qualityOffset>0.1</qualityOffset></li>
+    </comps>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_FestivalExtension">
+        <deity>LP_Deity_Shar</deity>
+        <unforgettable>参与者5天近战闪避+8。</unforgettable>
+      </li>
+    </modExtensions>
+  </RitualOutcomeEffectDef>
+  <RitualPatternDef ParentName="CelebrationPartyChat">
+    <defName>LP_FestivalPattern_Shar</defName>
+    <nameMaker IsNull="True" />
+    <ritualExpectedDesc>每年{DATE}，{MEMBERS}要向莎尔举行无光守夜。</ritualExpectedDesc>
+    <shortDescOverride>无光守夜</shortDescOverride>
+    <descOverride>莎尔的庆典：在黑暗中忘却痛苦。夜里品质+20%，圣坛所在格亮度低于30%再+10%。难忘时：参与者5天近战闪避+8。</descOverride>
+    <iconPathOverride>UI/Memes/LP/Shar</iconPathOverride>
+    <ritualObligationTargetFilter>LP_Target_FaithAltar</ritualObligationTargetFilter>
+    <ritualOutcomeEffect>LP_FestivalOutcome_Shar</ritualOutcomeEffect>
+    <tags Inherit="False"><li>LP_DeityFestival</li></tags>
+    <patternGroupTag>LP_DeityFestival_Shar</patternGroupTag>
+  </RitualPatternDef>
+  <PreceptDef ParentName="FestivalBase">
+    <defName>LP_Festival_Shar</defName>
+    <label>无光守夜</label>
+    <description>莎尔的庆典，在圣坛举行。在黑暗中忘却痛苦。夜里品质+20%，圣坛所在格亮度低于30%再+10%。</description>
+    <iconPath>UI/Memes/LP/Shar</iconPath>
+    <ritualPatternBase>LP_FestivalPattern_Shar</ritualPatternBase>
+    <canGenerateAsSpecialPrecept>false</canGenerateAsSpecialPrecept>
+    <visibleOnAddFloatMenu>false</visibleOnAddFloatMenu>
+    <requiredMemes>
+      <li>LP_Meme_Shar</li>
+      <li>LP_Meme_Pantheon</li>
+    </requiredMemes>
+  </PreceptDef>
+
+  <!-- ==================== 苏尔特：熔炉之火 ==================== -->
+  <RitualOutcomeEffectDef ParentName="LP_FestivalOutcomeBase">
+    <defName>LP_FestivalOutcome_Surtr</defName>
+    <comps>
+      <li Class="RitualOutcomeComp_ParticipantCount">
+        <label>参与人数</label>
+        <curve><points><li>(1, 0.0)</li><li>(5, 0.15)</li><li>(10, 0.25)</li></points></curve>
+      </li>
+      <li Class="RitualOutcomeComp_RoomStat">
+        <label>房间印象</label>
+        <statDef>Impressiveness</statDef>
+        <curve><points><li>0, 0</li><li>50, 0.1</li><li>120, 0.2</li></points></curve>
+      </li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>cleric</kind><label>有神官主持</label><qualityOffset>0.15</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>temple</kind><label>在神殿里</label><qualityOffset>0.1</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>statue</kind><label>神像在8格内</label><qualityOffset>0.1</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>relic</kind><label>神赐遗物在8格内</label><qualityOffset>0.15</qualityOffset></li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>consumeValue</kind><label>武器或护甲（献祭）</label><qualityOffset>0</qualityOffset></li>
+    </comps>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_FestivalExtension">
+        <deity>LP_Deity_Surtr</deity>
+        <unforgettable>参与者5天锻造速度+25%。</unforgettable>
+      </li>
+    </modExtensions>
+  </RitualOutcomeEffectDef>
+  <RitualPatternDef ParentName="CelebrationPartyChat">
+    <defName>LP_FestivalPattern_Surtr</defName>
+    <nameMaker IsNull="True" />
+    <ritualExpectedDesc>每年{DATE}，{MEMBERS}要向苏尔特举行熔炉之火。</ritualExpectedDesc>
+    <shortDescOverride>熔炉之火</shortDescOverride>
+    <descOverride>苏尔特的庆典：把最好的兵甲投进熔炉。开始时圣坛3格内要有市值合计≥300的武器或护甲，庆典结束时献上。难忘时：参与者5天锻造速度+25%。</descOverride>
+    <iconPathOverride>UI/Memes/LP/Surtr</iconPathOverride>
+    <ritualObligationTargetFilter>LP_Target_FaithAltar</ritualObligationTargetFilter>
+    <ritualOutcomeEffect>LP_FestivalOutcome_Surtr</ritualOutcomeEffect>
+    <tags Inherit="False"><li>LP_DeityFestival</li></tags>
+    <patternGroupTag>LP_DeityFestival_Surtr</patternGroupTag>
+  </RitualPatternDef>
+  <PreceptDef ParentName="FestivalBase">
+    <defName>LP_Festival_Surtr</defName>
+    <label>熔炉之火</label>
+    <description>苏尔特的庆典，在圣坛举行。把最好的兵甲投进熔炉。开始时圣坛3格内要有市值合计≥300的武器或护甲，庆典结束时献上。</description>
+    <iconPath>UI/Memes/LP/Surtr</iconPath>
+    <ritualPatternBase>LP_FestivalPattern_Surtr</ritualPatternBase>
+    <canGenerateAsSpecialPrecept>false</canGenerateAsSpecialPrecept>
+    <visibleOnAddFloatMenu>false</visibleOnAddFloatMenu>
+    <requiredMemes>
+      <li>LP_Meme_Surtr</li>
+      <li>LP_Meme_Pantheon</li>
+    </requiredMemes>
+  </PreceptDef>
+
+  <!-- ==================== 灰袍葬礼 ==================== -->
+  <RitualOutcomeEffectDef ParentName="AttendedFuneralBase">
+    <defName>LP_FuneralGreyRobeOutcome</defName>
+    <description>根据仪式品质，参与者获得 {MINMOOD}～{MAXMOOD} 心情，持续 {MOODDAYS} 天。「不错」及以上：死者得到安息（不能复生、灵魂不能被汲取），凯兰沃神眷+2；「难忘」再+3。</description>
+    <workerClass>LichPhylactery.RitualOutcomeEffectWorker_LPFuneral</workerClass>
+    <comps>
+      <li Class="RitualOutcomeComp_RolePresentNotSubstituted">
+        <roleId>moralist</roleId>
+        <label>大祭司在场</label>
+        <qualityOffset>0.3</qualityOffset>
+        <disableInClassicMode>true</disableInClassicMode>
+      </li>
+      <li Class="RitualOutcomeComp_ParticipantCount">
+        <label>参与人数</label>
+        <curve><points><li>(1, 0.0)</li><li>(5, 0.5)</li><li>(10, 0.7)</li></points></curve>
+      </li>
+      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>cleric</kind><label>有神官主持</label><qualityOffset>0.15</qualityOffset></li>
+    </comps>
+  </RitualOutcomeEffectDef>
+  <RitualPatternDef>
+    <defName>LP_FuneralGreyRobe</defName>
+    <nameMaker>NamerRitualFuneral</nameMaker>
+    <ritualExpectedDesc>可以为{PAWN_nameDef}举行灰袍葬礼。</ritualExpectedDesc>
+    <ritualExpectedDescNoAdjective>可以为{PAWN_nameDef}举行灰袍葬礼。</ritualExpectedDescNoAdjective>
+    <shortDescOverride>灰袍葬礼</shortDescOverride>
+    <ritualObligationTriggers>
+      <li Class="RitualObligationTrigger_MemberDiedProperties">
+        <mustBePlayerIdeo>true</mustBePlayerIdeo>
+      </li>
+    </ritualObligationTriggers>
+    <ritualObligationTargetFilter>GraveWithTargetsCorpse</ritualObligationTargetFilter>
+    <ritualBehavior>Funeral</ritualBehavior>
+    <ritualOutcomeEffect>LP_FuneralGreyRobeOutcome</ritualOutcomeEffect>
+  </RitualPatternDef>
+  <PreceptDef ParentName="FuneralBase">
+    <defName>LP_Funeral_GreyRobe</defName>
+    <label>灰袍葬礼</label>
+    <description>凯兰沃的灰袍祭司主持的葬礼，代替原版葬礼。原版葬礼的效果照常；「不错」及以上时死者得到安息（不能复生、灵魂不能被汲取），凯兰沃神眷+2，「难忘」再+3。永夜不朽的文化不能选。</description>
+    <ritualPatternBase>LP_FuneralGreyRobe</ritualPatternBase>
+    <classic>false</classic>
+    <canGenerateAsSpecialPrecept>false</canGenerateAsSpecialPrecept>
+    <extraTextPawnDeathLetter>{PAWN_nameDef}应该入土，并举行一场灰袍葬礼，让{PAWN_possessive}的亲友道别，也让凯兰沃接走{PAWN_possessive}的灵魂。</extraTextPawnDeathLetter>
+    <requiredMemes>
+      <li>LP_Meme_Kelemvor</li>
+      <li>LP_Meme_Pantheon</li>
+    </requiredMemes>
+    <conflictingMemes>
+      <li>LP_Meme_Undeath</li>
+    </conflictingMemes>
+  </PreceptDef>
+
+  <!-- ==================== 庆典奖励 ==================== -->
+  <HediffDef Name="LP_FestivalHediffBase" Abstract="True">
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <defaultLabelColor>(0.85, 0.8, 0.55)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_FestivalHediffBase">
+    <defName>LP_SworeOath</defName>
+    <label>立下誓言</label>
+    <description>在盾会上向提尔立下誓言：近战命中+5，社交冲突的几率减半。</description>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>1800000~1800000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><statOffsets><MeleeHitChance>5</MeleeHitChance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_FestivalHediffBase">
+    <defName>LP_WeaveNight</defName>
+    <label>魔网之夜</label>
+    <description>魔网之夜的余韵：心灵敏感度+10%。</description>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>180000~180000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><statOffsets><PsychicSensitivity>0.1</PsychicSensitivity></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_FestivalHediffBase">
+    <defName>LP_GreatHunt</defName>
+    <label>大猎的兽性</label>
+    <description>兽王马拉尔的狂热还在血管里奔流：近战命中+5，射击精度+5%。</description>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>300000~300000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><statOffsets><MeleeHitChance>5</MeleeHitChance></statOffsets><statFactors><ShootingAccuracyPawn>1.05</ShootingAccuracyPawn></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_FestivalHediffBase">
+    <defName>LP_SharShelter</defName>
+    <label>夜之庇护</label>
+    <description>夜之女士的阴影裹着身体：近战闪避+8。</description>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>300000~300000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><statOffsets><MeleeDodgeChance>8</MeleeDodgeChance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_FestivalHediffBase">
+    <defName>LP_ForgeFire</defName>
+    <label>熔炉之火</label>
+    <description>苏尔特的炉火还在手里燃烧：锻造速度+25%（锻造台上的全局工作速度）。</description>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>300000~300000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li /></stages>
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>LP_Mem_KelemvorPeace</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>10</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>与亡者和解</label><description>亡者之宴上，我和逝去的人好好道了别。</description><baseMoodEffect>5</baseMoodEffect></li></stages>
+  </ThoughtDef>
+
+</Defs>

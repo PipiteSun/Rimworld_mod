@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.54.0 深渊仪式：深渊法阵、束缚法阵、驱魔结界（研究 LP_Research_Abyssology，见 Defs/Research.xml）；仪式、护阵、炼魂、真名、锚链、审讯、赎回灵魂的工作。 -->
+<Defs>
+  <ThingDef Name="LP_AbyssFloorBase" ParentName="BuildingBase" Abstract="True">
+    <category>Building</category>
+    <altitudeLayer>FloorEmplacement</altitudeLayer>
+    <passability>Standable</passability>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <useHitPoints>true</useHitPoints>
+    <drawerType>MapMeshOnly</drawerType>
+    <clearBuildingArea>false</clearBuildingArea>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Misc</designationCategory>
+    <tickerType>Never</tickerType>
+    <building>
+      <isEdifice>false</isEdifice>
+      <isInert>true</isInert>
+      <ai_chillDestination>false</ai_chillDestination>
+      <canConstructInCorner>true</canConstructInCorner>
+    </building>
+    <researchPrerequisites><li>LP_Research_Abyssology</li></researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_AbyssFloorBase">
+    <defName>LP_AbyssCircle</defName>
+    <label>深渊法阵</label>
+    <description>用银和寒铁嵌在地上的 5×5 暗红符文圈。在这里举行深渊仪式召唤恶魔：一阶劣魔群和夸塞魔，二阶巴路古拉和哈兹魔，三阶魅魔 / 梦魔、纳巴苏（和六臂蛇魔），四阶炎魔。二阶以上要先读过记载那种恶魔的恶魔学典籍。还可以在这里炼魂。每张地图只能有一个。\n\n可以再花 40 银镶一圈银边：成功率 +5%。</description>
+    <thingClass>LichPhylactery.Building_AbyssCircle</thingClass>
+    <graphicData>
+      <texPath>LP/Abyss/AbyssCircle</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(5,5)</drawSize>
+    </graphicData>
+    <uiIconPath>LP/Abyss/AbyssCircle</uiIconPath>
+    <size>(5,5)</size>
+    <statBases>
+      <MaxHitPoints>300</MaxHitPoints>
+      <WorkToBuild>3000</WorkToBuild>
+      <Beauty>-10</Beauty>
+      <Flammability>0</Flammability>
+    </statBases>
+    <costList><Silver>20</Silver><LP_ColdIron>10</LP_ColdIron></costList>
+    <placeWorkers><li>LichPhylactery.PlaceWorker_AbyssLimit</li></placeWorkers>
+    <modExtensions><li Class="LichPhylactery.AbyssLimitExtension"><max>1</max></li></modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="LP_AbyssFloorBase">
+    <defName>LP_BindingCircle</defName>
+    <label>束缚法阵</label>
+    <description>3×3 的银色锁链符文。束缚者的床放在法阵上（或紧挨着它）时，服从度每天 +3；戴位面锚链的外来者囚犯关在有束缚法阵的房间里不会越狱，也只有在这样的房间里才能抽恶魔血。每张地图最多 4 个。</description>
+    <graphicData>
+      <texPath>LP/Abyss/BindingCircle</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(3,3)</drawSize>
+    </graphicData>
+    <uiIconPath>LP/Abyss/BindingCircle</uiIconPath>
+    <size>(3,3)</size>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>1500</WorkToBuild>
+      <Beauty>-3</Beauty>
+      <Flammability>0</Flammability>
+    </statBases>
+    <costList><Silver>15</Silver><LP_ColdIron>10</LP_ColdIron></costList>
+    <placeWorkers><li>LichPhylactery.PlaceWorker_AbyssLimit</li></placeWorkers>
+    <modExtensions><li Class="LichPhylactery.AbyssLimitExtension"><max>4</max></li></modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="LP_AbyssFloorBase">
+    <defName>LP_WardingGlyph</defName>
+    <label>驱魔结界</label>
+    <description>一枚刻在地上、浇过圣水的银色符文。半径 6 格内：敌对外来者移速 ×0.7；睡在里面的人深渊腐化每天 -1%；位面裂口不会在这里打开。地图上每个结界让位面薄弱度每天 -1（最多算 5 个）。</description>
+    <thingClass>LichPhylactery.Building_WardingGlyph</thingClass>
+    <graphicData>
+      <texPath>LP/Abyss/WardingGlyph</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <uiIconPath>LP/Abyss/WardingGlyph</uiIconPath>
+    <size>(1,1)</size>
+    <statBases>
+      <MaxHitPoints>80</MaxHitPoints>
+      <WorkToBuild>800</WorkToBuild>
+      <Beauty>1</Beauty>
+      <Flammability>0</Flammability>
+    </statBases>
+    <costList><Silver>10</Silver><LP_HolyWater>1</LP_HolyWater></costList>
+    <placeWorkers><li>LichPhylactery.PlaceWorker_WardRadius</li></placeWorkers>
+  </ThingDef>
+
+  <JobDef>
+    <defName>LP_AbyssRitual</defName>
+    <driverClass>LichPhylactery.JobDriver_AbyssRitual</driverClass>
+    <reportString>正在主持深渊仪式。</reportString>
+    <casualInterruptible>false</casualInterruptible>
+    <playerInterruptible>true</playerInterruptible>
+  </JobDef>
+  <JobDef>
+    <defName>LP_AbyssWard</defName>
+    <driverClass>LichPhylactery.JobDriver_AbyssWard</driverClass>
+    <reportString>正在为深渊仪式护阵。</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+  <JobDef>
+    <defName>LP_AbyssRefine</defName>
+    <driverClass>LichPhylactery.JobDriver_AbyssRefine</driverClass>
+    <reportString>正在炼魂：TargetB。</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+  <JobDef>
+    <defName>LP_UseTrueName</defName>
+    <driverClass>LichPhylactery.JobDriver_UseTrueName</driverClass>
+    <reportString>正在念出真名。</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+  <JobDef>
+    <defName>LP_ApplyShackles</defName>
+    <driverClass>LichPhylactery.JobDriver_ApplyShackles</driverClass>
+    <reportString>正在给TargetB戴上位面锚链。</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+  <JobDef>
+    <defName>LP_InterrogateTrueName</defName>
+    <driverClass>LichPhylactery.JobDriver_InterrogateTrueName</driverClass>
+    <reportString>正在审讯TargetA的真名。</reportString>
+  </JobDef>
+  <JobDef>
+    <defName>LP_RedeemSoul</defName>
+    <driverClass>LichPhylactery.JobDriver_RedeemSoul</driverClass>
+    <reportString>正在圣坛前赎回灵魂。</reportString>
+  </JobDef>
+
+  <PrisonerInteractionModeDef>
+    <defName>LP_InterrogateTrueName</defName>
+    <label>审讯真名</label>
+    <description>狱卒每次和它交谈有 15% 的机会撬出它的真名（得到真名卷），之后自动切回“维持”。只对戴位面锚链的外来者囚犯有效。</description>
+    <listOrder>95</listOrder>
+  </PrisonerInteractionModeDef>
+  <WorkGiverDef>
+    <defName>LP_WardenInterrogateTrueName</defName>
+    <label>审讯真名</label>
+    <giverClass>LichPhylactery.WorkGiver_Warden_InterrogateTrueName</giverClass>
+    <workType>Warden</workType>
+    <verb>审讯</verb>
+    <gerund>审讯</gerund>
+    <priorityInType>55</priorityInType>
+    <requiredCapacities><li>Talking</li></requiredCapacities>
+  </WorkGiverDef>
+</Defs>

@@ -1,0 +1,809 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- 1.19.0 派系成员。combatPower 按原版普通袭击者档次：35～130，火巨人与夺心魔是精英。 -->
+
+  <PawnKindDef Name="LP_FactionKindBase" Abstract="True">
+    <race>Human</race>
+    <maxGenerationAge>60</maxGenerationAge>
+    <chemicalAddictionChance>0.03</chemicalAddictionChance>
+    <invNutrition>2.55</invNutrition>
+    <invFoodDef>Pemmican</invFoodDef>
+    <itemQuality>Normal</itemQuality>
+    <gearHealthRange>0.6~1.6</gearHealthRange>
+    <apparelTags>
+      <li>IndustrialBasic</li>
+      <li>Neolithic</li>
+    </apparelTags>
+    <initialWillRange>1~3</initialWillRange>
+    <initialResistanceRange>12~20</initialResistanceRange>
+  </PawnKindDef>
+
+  <PawnKindDef Name="LP_FighterBase" ParentName="LP_FactionKindBase" Abstract="True">
+    <isFighter>true</isFighter>
+    <requiredWorkTags>
+      <li>Violent</li>
+    </requiredWorkTags>
+  </PawnKindDef>
+
+  <!-- ==================== 费伦拓荒同盟 ==================== -->
+
+  <PawnKindDef Name="LP_FCBase" ParentName="LP_FighterBase" Abstract="True">
+    <defaultFactionDef>LP_FaerunColony</defaultFactionDef>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_FCBase">
+    <defName>LP_FC_Villager</defName>
+    <label>拓荒者</label>
+    <combatPower>35</combatPower>
+    <isFighter>false</isFighter>
+    <requiredWorkTags Inherit="False" />
+    <apparelMoney>150~300</apparelMoney>
+    <weaponMoney>60~120</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeBasic</li>
+      <li>NeolithicMeleeBasic</li>
+    </weaponTags>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_FCBase">
+    <defName>LP_FC_Guard</defName>
+    <label>同盟卫兵</label>
+    <combatPower>55</combatPower>
+    <canBeSapper>true</canBeSapper>
+    <apparelMoney>300~600</apparelMoney>
+    <apparelRequired>
+      <li>Apparel_SimpleHelmet</li>
+    </apparelRequired>
+    <weaponMoney>150~300</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeDecent</li>
+      <li>NeolithicMeleeDecent</li>
+    </weaponTags>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_FCBase">
+    <defName>LP_FC_Archer</defName>
+    <label>同盟弓手</label>
+    <combatPower>50</combatPower>
+    <apparelMoney>200~400</apparelMoney>
+    <weaponMoney>80~200</weaponMoney>
+    <weaponTags>
+      <li>NeolithicRangedDecent</li>
+      <li>NeolithicRangedHeavy</li>
+    </weaponTags>
+    <disallowedTraits>
+      <li>Brawler</li>
+    </disallowedTraits>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_FCBase">
+    <defName>LP_FC_Knight</defName>
+    <label>同盟骑士</label>
+    <combatPower>100</combatPower>
+    <minGenerationAge>25</minGenerationAge>
+    <factionLeader>true</factionLeader>
+    <canBeSapper>true</canBeSapper>
+    <itemQuality>Good</itemQuality>
+    <apparelMoney>800~1400</apparelMoney>
+    <apparelRequired>
+      <li>Apparel_PlateArmor</li>
+      <li>Apparel_SimpleHelmet</li>
+    </apparelRequired>
+    <weaponMoney>500~1000</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeAdvanced</li>
+    </weaponTags>
+    <initialResistanceRange>25~40</initialResistanceRange>
+  </PawnKindDef>
+
+  <!-- 固定 PawnKind 的人类圣武士与牧师（也用于狂热分子） -->
+  <PawnKindDef ParentName="LP_FCBase">
+    <defName>LP_FC_Paladin</defName>
+    <label>圣武士</label>
+    <combatPower>110</combatPower>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <minGenerationAge>22</minGenerationAge>
+    <itemQuality>Good</itemQuality>
+    <apparelMoney>800~1500</apparelMoney>
+    <apparelRequired>
+      <li>Apparel_PlateArmor</li>
+      <li>Apparel_SimpleHelmet</li>
+    </apparelRequired>
+    <weaponMoney>500~1000</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeAdvanced</li>
+      <li>MedievalMeleeDecent</li>
+    </weaponTags>
+    <disallowedTraits>
+      <li>Psychopath</li>
+      <li>Cannibal</li>
+    </disallowedTraits>
+    <initialResistanceRange>30~45</initialResistanceRange>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_FCBase">
+    <defName>LP_FC_Priest</defName>
+    <label>牧师</label>
+    <combatPower>60</combatPower>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <minGenerationAge>25</minGenerationAge>
+    <apparelMoney>300~600</apparelMoney>
+    <apparelRequired>
+      <li>Apparel_Robe</li>
+    </apparelRequired>
+    <weaponMoney>100~250</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeBasic</li>
+      <li>MedievalMeleeDecent</li>
+    </weaponTags>
+    <skills>
+      <li>
+        <skill>Medicine</skill>
+        <range>6~12</range>
+      </li>
+    </skills>
+    <initialResistanceRange>20~30</initialResistanceRange>
+  </PawnKindDef>
+
+  <!-- 商队：成员按种族固定 -->
+  <PawnKindDef Name="LP_FCTraderBase" ParentName="LP_FCBase" Abstract="True">
+    <combatPower>60</combatPower>
+    <trader>true</trader>
+    <apparelMoney>300~600</apparelMoney>
+    <weaponMoney>150~300</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeDecent</li>
+    </weaponTags>
+    <initialResistanceRange>14~22</initialResistanceRange>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_FCTraderBase">
+    <defName>LP_FC_DwarfSmith</defName>
+    <label>矮人铁匠</label>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_Dwarf>1</LP_Dwarf>
+      </xenotypeChances>
+    </xenotypeSet>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_FCTraderBase">
+    <defName>LP_FC_ElfHerbalist</defName>
+    <label>精灵草药商</label>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_Elf>1</LP_Elf>
+      </xenotypeChances>
+    </xenotypeSet>
+    <weaponTags Inherit="False">
+      <li>NeolithicRangedHeavy</li>
+    </weaponTags>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_FCTraderBase">
+    <defName>LP_FC_ChurchPriest</defName>
+    <label>教会牧师</label>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <apparelRequired>
+      <li>Apparel_Robe</li>
+    </apparelRequired>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_FCTraderBase">
+    <defName>LP_FC_Trader</defName>
+    <label>同盟商人</label>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_FCBase">
+    <defName>LP_FC_DwarfGuard</defName>
+    <label>矮人护卫</label>
+    <combatPower>60</combatPower>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_Dwarf>1</LP_Dwarf>
+      </xenotypeChances>
+    </xenotypeSet>
+    <apparelMoney>400~800</apparelMoney>
+    <apparelRequired>
+      <li>Apparel_SimpleHelmet</li>
+    </apparelRequired>
+    <weaponMoney>200~400</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeDecent</li>
+      <li>MedievalMeleeAdvanced</li>
+    </weaponTags>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_FCBase">
+    <defName>LP_FC_ElfRanger</defName>
+    <label>精灵游侠</label>
+    <combatPower>60</combatPower>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_Elf>1</LP_Elf>
+      </xenotypeChances>
+    </xenotypeSet>
+    <apparelMoney>250~500</apparelMoney>
+    <weaponMoney>150~300</weaponMoney>
+    <weaponTags>
+      <li>NeolithicRangedHeavy</li>
+      <li>NeolithicRangedDecent</li>
+    </weaponTags>
+    <disallowedTraits>
+      <li>Brawler</li>
+    </disallowedTraits>
+  </PawnKindDef>
+
+  <!-- ==================== 塞伊远征军 ==================== -->
+
+  <PawnKindDef Name="LP_FHBase" ParentName="LP_FighterBase" Abstract="True">
+    <defaultFactionDef>LP_FaerunHostile</defaultFactionDef>
+    <useFactionXenotypes>false</useFactionXenotypes>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_FHBase">
+    <defName>LP_FH_RedWizard</defName>
+    <label>红袍法师</label>
+    <combatPower>100</combatPower>
+    <minGenerationAge>28</minGenerationAge>
+    <factionLeader>true</factionLeader>
+    <itemQuality>Good</itemQuality>
+    <apparelMoney>400~800</apparelMoney>
+    <ignoreIdeoApparelColors>true</ignoreIdeoApparelColors>
+    <specificApparelRequirements>
+      <li>
+        <apparelDef>Apparel_Robe</apparelDef>
+        <color>(0.70, 0.07, 0.07)</color>
+      </li>
+    </specificApparelRequirements>
+    <weaponMoney>200~500</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeBasic</li>
+      <li>MedievalMeleeDecent</li>
+    </weaponTags>
+    <forcedHair>Shaved</forcedHair>
+    <skills>
+      <li>
+        <skill>Intellectual</skill>
+        <range>8~16</range>
+      </li>
+    </skills>
+    <initialResistanceRange>30~50</initialResistanceRange>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_FHBase">
+    <defName>LP_FH_RuneTroll</defName>
+    <label>符印巨魔</label>
+    <combatPower>90</combatPower>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_Troll>1</LP_Troll>
+      </xenotypeChances>
+    </xenotypeSet>
+    <apparelMoney>100~250</apparelMoney>
+    <apparelTags Inherit="False">
+      <li>Neolithic</li>
+    </apparelTags>
+    <weaponMoney>100~200</weaponMoney>
+    <weaponTags>
+      <li>NeolithicMeleeDecent</li>
+      <li>NeolithicMeleeAdvanced</li>
+    </weaponTags>
+    <initialResistanceRange>20~30</initialResistanceRange>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_FHBase">
+    <defName>LP_FH_OrcWarrior</defName>
+    <label>兽人战士</label>
+    <combatPower>55</combatPower>
+    <canBeSapper>true</canBeSapper>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_HalfOrc>1</LP_HalfOrc>
+      </xenotypeChances>
+    </xenotypeSet>
+    <apparelMoney>200~350</apparelMoney>
+    <apparelTags Inherit="False">
+      <li>Neolithic</li>
+    </apparelTags>
+    <apparelRequired>
+      <li>Apparel_WarVeil</li>
+    </apparelRequired>
+    <weaponMoney>150~300</weaponMoney>
+    <weaponTags>
+      <li>NeolithicMeleeDecent</li>
+      <li>NeolithicMeleeAdvanced</li>
+    </weaponTags>
+    <initialResistanceRange>8~14</initialResistanceRange>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_FHBase">
+    <defName>LP_FH_MinotaurCharger</defName>
+    <label>牛头人冲锋兵</label>
+    <combatPower>85</combatPower>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_Minotaur>1</LP_Minotaur>
+      </xenotypeChances>
+    </xenotypeSet>
+    <apparelMoney>200~400</apparelMoney>
+    <weaponMoney>200~400</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeDecent</li>
+      <li>NeolithicMeleeAdvanced</li>
+    </weaponTags>
+    <initialResistanceRange>15~25</initialResistanceRange>
+  </PawnKindDef>
+
+  <!-- 25% 带银剑由 1.18.0 的 Githyanki.MaybeArm 处理 -->
+  <PawnKindDef ParentName="LP_FHBase">
+    <defName>LP_FH_GithMercenary</defName>
+    <label>吉斯洋基雇佣兵</label>
+    <combatPower>110</combatPower>
+    <itemQuality>Good</itemQuality>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_Githyanki>1</LP_Githyanki>
+      </xenotypeChances>
+    </xenotypeSet>
+    <apparelMoney>500~900</apparelMoney>
+    <apparelRequired>
+      <li>Apparel_PlateArmor</li>
+    </apparelRequired>
+    <weaponMoney>500~1000</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeAdvanced</li>
+    </weaponTags>
+    <initialResistanceRange>25~40</initialResistanceRange>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_FHBase">
+    <defName>LP_FH_RedTrader</defName>
+    <label>红袍商人</label>
+    <combatPower>60</combatPower>
+    <trader>true</trader>
+    <ignoreIdeoApparelColors>true</ignoreIdeoApparelColors>
+    <specificApparelRequirements>
+      <li>
+        <apparelDef>Apparel_Robe</apparelDef>
+        <color>(0.70, 0.07, 0.07)</color>
+      </li>
+    </specificApparelRequirements>
+    <apparelMoney>300~600</apparelMoney>
+    <weaponMoney>100~250</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeBasic</li>
+    </weaponTags>
+  </PawnKindDef>
+
+  <!-- 红袍法师的死灵造物：不进入 options，由代码按法师数生成并绑定 -->
+  <PawnKindDef ParentName="LP_FHBase">
+    <defName>LP_FH_Skeleton</defName>
+    <label>红袍骷髅</label>
+    <combatPower>30</combatPower>
+    <apparelMoney>0</apparelMoney>
+    <weaponMoney>60~120</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeBasic</li>
+      <li>NeolithicMeleeBasic</li>
+    </weaponTags>
+    <humanPregnancyChance>0</humanPregnancyChance>
+    <initialResistanceRange>10~16</initialResistanceRange>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_FHBase">
+    <defName>LP_FH_Golem</defName>
+    <label>红袍血肉巨像</label>
+    <combatPower>90</combatPower>
+    <apparelMoney>0</apparelMoney>
+    <weaponMoney>0</weaponMoney>
+    <humanPregnancyChance>0</humanPregnancyChance>
+    <initialResistanceRange>10~16</initialResistanceRange>
+  </PawnKindDef>
+
+  <!-- ==================== 余烬氏族 ==================== -->
+
+  <PawnKindDef Name="LP_ECBase" ParentName="LP_FighterBase" Abstract="True">
+    <defaultFactionDef>LP_EmberClan</defaultFactionDef>
+    <useFactionXenotypes>false</useFactionXenotypes>
+  </PawnKindDef>
+
+  <!-- 每次袭击 1～2 个：maxPerGroup 封顶，代码保证至少 1 个 -->
+  <PawnKindDef ParentName="LP_ECBase">
+    <defName>LP_EC_FireGiant</defName>
+    <label>火巨人领队</label>
+    <combatPower>180</combatPower>
+    <maxPerGroup>2</maxPerGroup>
+    <minGenerationAge>30</minGenerationAge>
+    <factionLeader>true</factionLeader>
+    <itemQuality>Good</itemQuality>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_FireGiant>1</LP_FireGiant>
+      </xenotypeChances>
+    </xenotypeSet>
+    <apparelMoney>0~200</apparelMoney>
+    <weaponMoney>0</weaponMoney>
+    <initialResistanceRange>35~50</initialResistanceRange>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_ECBase">
+    <defName>LP_EC_HumanSlave</defName>
+    <label>人类奴兵</label>
+    <combatPower>55</combatPower>
+    <canBeSapper>true</canBeSapper>
+    <itemQuality>Poor</itemQuality>
+    <apparelMoney>400~700</apparelMoney>
+    <apparelRequired>
+      <li>Apparel_PlateArmor</li>
+      <li>Apparel_SimpleHelmet</li>
+    </apparelRequired>
+    <weaponMoney>100~250</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeBasic</li>
+      <li>MedievalMeleeDecent</li>
+    </weaponTags>
+    <initialWillRange>0~1</initialWillRange>
+    <initialResistanceRange>4~10</initialResistanceRange>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_ECBase">
+    <defName>LP_EC_OrcSlave</defName>
+    <label>半兽人奴兵</label>
+    <combatPower>50</combatPower>
+    <itemQuality>Poor</itemQuality>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_HalfOrc>1</LP_HalfOrc>
+      </xenotypeChances>
+    </xenotypeSet>
+    <apparelMoney>300~500</apparelMoney>
+    <apparelRequired>
+      <li>Apparel_SimpleHelmet</li>
+    </apparelRequired>
+    <weaponMoney>100~250</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeBasic</li>
+      <li>NeolithicMeleeDecent</li>
+    </weaponTags>
+    <initialWillRange>0~1</initialWillRange>
+    <initialResistanceRange>4~10</initialResistanceRange>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_ECBase">
+    <defName>LP_EC_GiantSmith</defName>
+    <label>火巨人铁匠</label>
+    <combatPower>150</combatPower>
+    <trader>true</trader>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_FireGiant>1</LP_FireGiant>
+      </xenotypeChances>
+    </xenotypeSet>
+    <apparelMoney>0~200</apparelMoney>
+    <weaponMoney>0</weaponMoney>
+  </PawnKindDef>
+
+  <!-- ==================== 幽暗殖巢 ==================== -->
+
+  <PawnKindDef Name="LP_ICBase" ParentName="LP_FighterBase" Abstract="True">
+    <defaultFactionDef>LP_IllithidColony</defaultFactionDef>
+    <useFactionXenotypes>false</useFactionXenotypes>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_ICBase">
+    <defName>LP_IC_MindFlayer</defName>
+    <label>夺心魔</label>
+    <combatPower>150</combatPower>
+    <maxPerGroup>3</maxPerGroup>
+    <factionLeader>true</factionLeader>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_MindFlayer>1</LP_MindFlayer>
+      </xenotypeChances>
+    </xenotypeSet>
+    <itemQuality>Good</itemQuality>
+    <apparelMoney>300~800</apparelMoney>
+    <apparelTags Inherit="False">
+      <li>IndustrialBasic</li>
+      <li>IndustrialAdvanced</li>
+    </apparelTags>
+    <weaponMoney>0</weaponMoney>
+    <initialResistanceRange>40~60</initialResistanceRange>
+  </PawnKindDef>
+
+  <!-- 被支配奴仆：普通随机装备；LP_Thralled 由代码在袭击生成后加上 -->
+  <PawnKindDef ParentName="LP_ICBase">
+    <defName>LP_IC_Thrall</defName>
+    <label>被支配奴仆</label>
+    <combatPower>40</combatPower>
+    <canBeSapper>true</canBeSapper>
+    <itemQuality>Poor</itemQuality>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_Dwarf>0.2</LP_Dwarf>
+        <LP_Elf>0.2</LP_Elf>
+        <LP_HalfOrc>0.2</LP_HalfOrc>
+      </xenotypeChances>
+    </xenotypeSet>
+    <apparelMoney>100~400</apparelMoney>
+    <apparelTags Inherit="False">
+      <li>IndustrialBasic</li>
+      <li>Neolithic</li>
+    </apparelTags>
+    <weaponMoney>100~300</weaponMoney>
+    <weaponTags>
+      <li>Gun</li>
+      <li>MedievalMeleeBasic</li>
+      <li>NeolithicMeleeDecent</li>
+    </weaponTags>
+    <initialWillRange>0~1</initialWillRange>
+    <initialResistanceRange>4~10</initialResistanceRange>
+  </PawnKindDef>
+
+  <!-- ==================== 黑网 ==================== -->
+
+  <PawnKindDef Name="LP_BNBase" ParentName="LP_FighterBase" Abstract="True">
+    <defaultFactionDef>LP_BlackNetwork</defaultFactionDef>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_BNBase">
+    <defName>LP_BN_Broker</defName>
+    <label>黑网掮客</label>
+    <combatPower>60</combatPower>
+    <trader>true</trader>
+    <apparelMoney>400~900</apparelMoney>
+    <weaponMoney>200~400</weaponMoney>
+    <weaponTags>
+      <li>SimpleGun</li>
+    </weaponTags>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_BNBase">
+    <defName>LP_BN_Enforcer</defName>
+    <label>黑网打手</label>
+    <combatPower>75</combatPower>
+    <apparelMoney>400~900</apparelMoney>
+    <apparelTags>
+      <li>IndustrialMilitaryBasic</li>
+    </apparelTags>
+    <weaponMoney>250~500</weaponMoney>
+    <weaponTags>
+      <li>Gun</li>
+      <li>ShortShots</li>
+    </weaponTags>
+  </PawnKindDef>
+
+  <!-- ==================== 1.24.0 新种族兵种 ==================== -->
+
+  <!-- 费伦拓荒同盟：元素裔游民（四个元素裔各25%）、象人卫士、鸟人斥候 -->
+  <PawnKindDef ParentName="LP_FCBase">
+    <defName>LP_FC_Genasi</defName>
+    <label>元素裔游民</label>
+    <combatPower>60</combatPower>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_GenasiFire>0.25</LP_GenasiFire>
+        <LP_GenasiWater>0.25</LP_GenasiWater>
+        <LP_GenasiEarth>0.25</LP_GenasiEarth>
+        <LP_GenasiAir>0.25</LP_GenasiAir>
+      </xenotypeChances>
+    </xenotypeSet>
+    <apparelMoney>250~500</apparelMoney>
+    <weaponMoney>150~300</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeDecent</li>
+      <li>NeolithicRangedDecent</li>
+    </weaponTags>
+    <initialResistanceRange>14~22</initialResistanceRange>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_FCBase">
+    <defName>LP_FC_LoxodonWarden</defName>
+    <label>象人卫士</label>
+    <combatPower>90</combatPower>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_Loxodon>1</LP_Loxodon>
+      </xenotypeChances>
+    </xenotypeSet>
+    <itemQuality>Good</itemQuality>
+    <apparelMoney>700~1200</apparelMoney>
+    <apparelRequired>
+      <li>Apparel_PlateArmor</li>
+      <li>Apparel_SimpleHelmet</li>
+    </apparelRequired>
+    <weaponMoney>300~600</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeDecent</li>
+      <li>MedievalMeleeAdvanced</li>
+    </weaponTags>
+    <disallowedTraits>
+      <li>Brawler</li>
+    </disallowedTraits>
+    <initialResistanceRange>25~40</initialResistanceRange>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_FCBase">
+    <defName>LP_FC_AarakocraScout</defName>
+    <label>鸟人斥候</label>
+    <combatPower>65</combatPower>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_Aarakocra>1</LP_Aarakocra>
+      </xenotypeChances>
+    </xenotypeSet>
+    <apparelMoney>200~400</apparelMoney>
+    <weaponMoney>150~300</weaponMoney>
+    <weaponTags>
+      <li>NeolithicRangedDecent</li>
+      <li>NeolithicRangedHeavy</li>
+    </weaponTags>
+    <disallowedTraits>
+      <li>Brawler</li>
+    </disallowedTraits>
+    <initialResistanceRange>14~22</initialResistanceRange>
+  </PawnKindDef>
+
+  <!-- 塞伊远征军：食人魔打手（60%拿食人魔大棒）、寒冰魔（30%拿霜刺长枪）、炎魔（必带火鞭）。
+       寒冰魔与炎魔的数量按袭击点数裁剪（Fiends.TrimRaid），倒下即遣返九狱，所以只进 Combat 与 Settlement 组。 -->
+  <PawnKindDef ParentName="LP_FHBase">
+    <defName>LP_FH_OgreBrute</defName>
+    <label>食人魔打手</label>
+    <combatPower>95</combatPower>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_Ogre>1</LP_Ogre>
+      </xenotypeChances>
+    </xenotypeSet>
+    <apparelMoney>150~300</apparelMoney>
+    <apparelTags Inherit="False">
+      <li>Neolithic</li>
+    </apparelTags>
+    <weaponMoney>100~250</weaponMoney>
+    <weaponTags>
+      <li>NeolithicMeleeDecent</li>
+      <li>NeolithicMeleeAdvanced</li>
+    </weaponTags>
+    <initialResistanceRange>10~18</initialResistanceRange>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_FHBase">
+    <defName>LP_FH_IceDevil</defName>
+    <label>寒冰魔</label>
+    <combatPower>220</combatPower>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_IceDevil>1</LP_IceDevil>
+      </xenotypeChances>
+    </xenotypeSet>
+    <minGenerationAge>30</minGenerationAge>
+    <maxGenerationAge>60</maxGenerationAge>
+    <apparelMoney>0</apparelMoney>
+    <weaponMoney>0</weaponMoney>
+    <humanPregnancyChance>0</humanPregnancyChance>
+    <invNutrition>0</invNutrition>
+    <canBeSapper>false</canBeSapper>
+    <initialResistanceRange>100~100</initialResistanceRange>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_FHBase">
+    <defName>LP_FH_Balor</defName>
+    <label>炎魔</label>
+    <combatPower>450</combatPower>
+    <factionLeader>false</factionLeader>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_Balor>1</LP_Balor>
+      </xenotypeChances>
+    </xenotypeSet>
+    <minGenerationAge>30</minGenerationAge>
+    <maxGenerationAge>60</maxGenerationAge>
+    <apparelMoney>0</apparelMoney>
+    <weaponMoney>0</weaponMoney>
+    <humanPregnancyChance>0</humanPregnancyChance>
+    <invNutrition>0</invNutrition>
+    <canBeSapper>false</canBeSapper>
+    <initialResistanceRange>100~100</initialResistanceRange>
+  </PawnKindDef>
+
+  <!-- 1.57.0 普通种族：塞伊远征军里的地精三族、狗头人与卓尔（不新建派系）。 -->
+  <PawnKindDef ParentName="LP_FHBase">
+    <defName>LP_FH_GoblinRaider</defName>
+    <label>地精劫掠者</label>
+    <combatPower>45</combatPower>
+    <canBeSapper>true</canBeSapper>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_Goblin>0.55</LP_Goblin>
+        <LP_Hobgoblin>0.3</LP_Hobgoblin>
+        <LP_Bugbear>0.15</LP_Bugbear>
+      </xenotypeChances>
+    </xenotypeSet>
+    <apparelMoney>100~250</apparelMoney>
+    <apparelTags Inherit="False">
+      <li>Neolithic</li>
+    </apparelTags>
+    <weaponMoney>100~250</weaponMoney>
+    <weaponTags>
+      <li>NeolithicMeleeDecent</li>
+      <li>NeolithicRangedBasic</li>
+      <li>MedievalMeleeBasic</li>
+    </weaponTags>
+    <initialResistanceRange>6~12</initialResistanceRange>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_FHBase">
+    <defName>LP_FH_KoboldSkulker</defName>
+    <label>狗头人潜行者</label>
+    <combatPower>35</combatPower>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_Kobold>1</LP_Kobold>
+      </xenotypeChances>
+    </xenotypeSet>
+    <apparelMoney>60~150</apparelMoney>
+    <apparelTags Inherit="False">
+      <li>Neolithic</li>
+    </apparelTags>
+    <weaponMoney>60~180</weaponMoney>
+    <weaponTags>
+      <li>NeolithicRangedBasic</li>
+      <li>NeolithicMeleeBasic</li>
+    </weaponTags>
+    <initialResistanceRange>4~10</initialResistanceRange>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_FHBase">
+    <defName>LP_FH_DrowBlade</defName>
+    <label>卓尔刀客</label>
+    <combatPower>90</combatPower>
+    <itemQuality>Good</itemQuality>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_Drow>1</LP_Drow>
+      </xenotypeChances>
+    </xenotypeSet>
+    <apparelMoney>300~600</apparelMoney>
+    <weaponMoney>300~600</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeDecent</li>
+      <li>MedievalMeleeAdvanced</li>
+    </weaponTags>
+    <initialResistanceRange>18~30</initialResistanceRange>
+  </PawnKindDef>
+
+
+  <!-- 余烬氏族：食人魔奴兵 -->
+  <PawnKindDef ParentName="LP_ECBase">
+    <defName>LP_EC_OgreSlave</defName>
+    <label>食人魔奴兵</label>
+    <combatPower>90</combatPower>
+    <itemQuality>Poor</itemQuality>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_Ogre>1</LP_Ogre>
+      </xenotypeChances>
+    </xenotypeSet>
+    <apparelMoney>200~400</apparelMoney>
+    <apparelRequired>
+      <li>Apparel_SimpleHelmet</li>
+    </apparelRequired>
+    <weaponMoney>100~250</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeBasic</li>
+      <li>NeolithicMeleeDecent</li>
+    </weaponTags>
+    <initialWillRange>0~1</initialWillRange>
+    <initialResistanceRange>4~10</initialResistanceRange>
+  </PawnKindDef>
+
+</Defs>

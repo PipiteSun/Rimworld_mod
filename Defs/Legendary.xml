@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.52.0 通用传奇层（Source/Legendary.cs）：传奇抗性、传奇点、惊惧、控制类名单、屠龙记录与传说、巢穴动作的减益。不依赖 HAR。 -->
+<Defs>
+
+  <!-- 传奇抗性拦截的控制类状态（按设备上的实际 defName；没有的会被忽略）。 -->
+  <LichPhylactery.LP_LegendaryRulesDef>
+    <defName>LP_LegendaryRules</defName>
+    <label>传奇抗性规则</label>
+    <controlHediffs>
+      <li>LP_FrostSlow</li>
+      <li>LP_Entangled</li>
+      <li>LP_Tanglefoot</li>
+      <li>LP_MagicSleep</li>
+      <li>LP_Dominated</li>
+      <li>LP_DivineDominated</li>
+      <li>LP_Petrifying</li>
+      <li>LP_PsychicDaze</li>
+      <li>LP_BaneFear</li>
+      <li>LP_FeatSentinelSlow</li>
+      <li>LP_Frightened</li>
+      <li>LP_LairDarkness</li>
+      <li>LP_LairSandstorm</li>
+      <li>Anesthetic</li>
+      <li>CatatonicBreakdown</li>
+      <li>PsychicVertigo</li>
+      <li>PsychicBlindness</li>
+    </controlHediffs>
+  </LichPhylactery.LP_LegendaryRulesDef>
+
+  <HediffDef>
+    <defName>LP_LegendaryResistance</defName>
+    <label>传奇抗性</label>
+    <description>传说中的生物能够硬扛下一次本该生效的控制：眩晕、外力造成的精神状态、控制类状态和疼痛倒地，每次消耗一次，效果完全不生效。每个游戏日恢复满；在自己的巢穴里多一次。传奇冒险者每 5 级获得 1 次。</description>
+    <hediffClass>LichPhylactery.Hediff_LegendaryResistance</hediffClass>
+    <defaultLabelColor>(1, 0.72, 0.3)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_LegendaryActions</defName>
+    <label>传奇点</label>
+    <description>传说中的生物在别人出手的间隙也能行动：15 格内的敌人每完成一次攻击，它就花传奇点做一次传奇动作。每 4 秒恢复 1 点。</description>
+    <hediffClass>LichPhylactery.Hediff_LegendaryActions</hediffClass>
+    <defaultLabelColor>(1, 0.6, 0.3)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>LP_Frightened</defName>
+    <label>惊惧</label>
+    <description>被传说中生物的骇人威仪吓住了：手脚发软，打不准也跑不快。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.9, 0.5, 0.5)</defaultLabelColor>
+    <isBad>true</isBad>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>3600</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages>
+      <li>
+        <statFactors>
+          <MeleeHitChance>0.75</MeleeHitChance>
+          <ShootingAccuracyPawn>0.75</ShootingAccuracyPawn>
+          <MoveSpeed>0.85</MoveSpeed>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_LairSandstorm</defName>
+    <label>巢穴沙尘</label>
+    <description>龙巢里卷起的沙尘迷住了眼睛：远程命中降低。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>1200</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><statFactors><ShootingAccuracyPawn>0.7</ShootingAccuracyPawn></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_LairDarkness</defName>
+    <label>巢穴黑暗</label>
+    <description>黑龙召来的魔法黑暗：什么都看不清，命中大幅降低。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>1200</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><statFactors><MeleeHitChance>0.6</MeleeHitChance><ShootingAccuracyPawn>0.6</ShootingAccuracyPawn></statFactors></li></stages>
+  </HediffDef>
+
+  <!-- 被魅惑：借用原版“精神错乱游荡”的思考树分支（补丁见 Patches/Legendary.xml），30 秒，受伤立刻醒。 -->
+  <MentalStateDef ParentName="BaseMentalState">
+    <defName>LP_DragonCharmed</defName>
+    <stateClass>MentalState</stateClass>
+    <label>被魅惑</label>
+    <category>Misc</category>
+    <blockNormalThoughts>true</blockNormalThoughts>
+    <nameColor>(0.55, 0.9, 0.55)</nameColor>
+    <minTicksBeforeRecovery>1800</minTicksBeforeRecovery>
+    <maxTicksBeforeRecovery>1800</maxTicksBeforeRecovery>
+    <recoveryMtbDays>0.01</recoveryMtbDays>
+    <recoveryMessage>{0}从真龙的魅惑中清醒过来。</recoveryMessage>
+    <baseInspectLine>精神状态：被魅惑</baseInspectLine>
+    <recoverFromSleep>true</recoverFromSleep>
+  </MentalStateDef>
+
+  <RecordDef>
+    <defName>LP_DragonsSlain</defName>
+    <label>屠龙</label>
+    <description>我亲手斩杀的成年以上的真龙。</description>
+    <type>Int</type>
+    <displayOrder>2</displayOrder>
+  </RecordDef>
+  <TaleDef>
+    <defName>LP_SlewLegend</defName>
+    <label>斩杀传奇</label>
+    <taleClass>Tale_DoublePawn</taleClass>
+    <type>Volatile</type>
+    <firstPawnSymbol>KILLER</firstPawnSymbol>
+    <secondPawnSymbol>VICTIM</secondPawnSymbol>
+    <baseInterest>20</baseInterest>
+    <rulePack>
+      <rulesStrings>
+        <li>tale_noun->[KILLER_nameDef]斩杀[VICTIM_nameDef]</li>
+        <li>tale_noun->[VICTIM_nameDef]之死</li>
+        <li>image->[KILLER_nameFull]站在[VICTIM_nameFull]巨大的尸体上</li>
+        <li>image->[KILLER_nameFull]把武器刺进[VICTIM_nameFull]的心口</li>
+        <li>image->[VICTIM_nameFull]在[KILLER_nameFull]面前轰然倒下</li>
+        <li>circumstance_phrase->鳞片和鲜血洒了一地</li>
+        <li>circumstance_phrase->远处的人们屏住了呼吸</li>
+        <li>circumstance_phrase->宝藏堆在一旁闪闪发光</li>
+        <li>desc_sentence->[VICTIM_nameDef]的翅膀还张着。</li>
+        <li>desc_sentence->[KILLER_nameDef]浑身是伤。</li>
+      </rulesStrings>
+    </rulePack>
+  </TaleDef>
+
+</Defs>

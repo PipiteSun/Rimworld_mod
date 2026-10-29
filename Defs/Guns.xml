@@ -1,0 +1,800 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.29.0 DND 枪械与法杖：两项研究（1.35.0 起在 Defs/Research.xml，“DND边缘大陆”页签）、13 件武器（D 魔法枪 3、E 高级魔法枪 2、F 魔力矮人枪械 5、G 法杖 3）、投射物、状态与寒霜伤害。
+     F、G 组的伤害按射手心灵敏感度乘“魔力系数”（Source/Guns.cs）；伤害数值写的是系数 1.0 时的值。
+     黑曜石用 Odyssey DLC 自带的 Obsidian（MayRequire，没装 Odyssey 时熔岩穿甲枪的配方不需要黑曜石）。 -->
+<Defs>
+
+  <!-- ==================== 基类 ==================== -->
+  <ThingDef Name="LP_ArcaneGunBase" ParentName="BaseGunWithQuality" Abstract="True">
+    <weaponTags>
+      <li>LP_ArcaneGun</li>
+    </weaponTags>
+    <comps>
+      <li Class="CompProperties_Biocodable"/>
+    </comps>
+    <uiIconScale>1.3</uiIconScale>
+    <relicChance>0</relicChance>
+  </ThingDef>
+  <ThingDef Name="LP_SmithGunBase" ParentName="LP_ArcaneGunBase" Abstract="True">
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <recipeUsers Inherit="False">
+        <li>LP_RuneAnvil</li>
+      </recipeUsers>
+      <unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
+      <researchPrerequisite>LP_RunicFirearms</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>6</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+    <tools>
+      <li>
+        <label>枪托</label>
+        <capacities><li>Blunt</li></capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+  <ThingDef Name="LP_StaffBase" ParentName="LP_ArcaneGunBase" Abstract="True">
+    <techLevel>Medieval</techLevel>
+    <smeltable>false</smeltable>
+    <burnableByRecipe>true</burnableByRecipe>
+    <equippedAngleOffset>-45</equippedAngleOffset>
+    <statBases>
+      <Flammability>1</Flammability>
+      <Mass>2</Mass>
+      <WorkToMake>14000</WorkToMake>
+      <AccuracyTouch>0.85</AccuracyTouch>
+      <AccuracyShort>0.80</AccuracyShort>
+      <AccuracyMedium>0.70</AccuracyMedium>
+      <AccuracyLong>0.55</AccuracyLong>
+    </statBases>
+    <tradeTags>
+      <li>LP_Staff</li>
+    </tradeTags>
+    <recipeMaker>
+      <workSpeedStat>LP_AlchemySpeed</workSpeedStat>
+      <workSkill>Intellectual</workSkill>
+      <effectWorking>Cook</effectWorking>
+      <soundWorking>Recipe_Drug</soundWorking>
+      <recipeUsers Inherit="False">
+        <li>LP_EnchantingTable</li>
+      </recipeUsers>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+      <researchPrerequisite>LP_ArcaneStaves</researchPrerequisite>
+      <skillRequirements>
+        <Intellectual>6</Intellectual>
+      </skillRequirements>
+    </recipeMaker>
+    <!-- 双手长杖，也能当钝器 -->
+    <tools>
+      <li>
+        <label>杖身</label>
+        <capacities><li>Blunt</li></capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+  <ThingDef Name="LP_ArcaneBulletBase" ParentName="BaseBullet" Abstract="True">
+    <thingClass>LichPhylactery.LP_ArcaneBullet</thingClass>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef>
+
+  <!-- ==================== D 组：魔法枪（普通枪） ==================== -->
+  <ThingDef ParentName="LP_SmithGunBase">
+    <defName>LP_SilverPistol</defName>
+    <label>圣银手枪</label>
+    <description>枪管内壁镀着祝圣过的白银，子弹里掺了银屑。对死灵造物、巫妖和魔鬼伤害 +50%。不吃心灵敏感度，谁都能用。</description>
+    <graphicData><texPath>LP/Weapons/SilverPistol</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <soundInteract>Interact_Revolver</soundInteract>
+    <weaponClasses><li>RangedLight</li></weaponClasses>
+    <tradeTags><li>LP_GunD</li></tradeTags>
+    <statBases>
+      <WorkToMake>9000</WorkToMake>
+      <Mass>1.3</Mass>
+      <AccuracyTouch>0.80</AccuracyTouch>
+      <AccuracyShort>0.70</AccuracyShort>
+      <AccuracyMedium>0.50</AccuracyMedium>
+      <AccuracyLong>0.30</AccuracyLong>
+      <RangedWeapon_Cooldown>1.6</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Silver>60</Silver>
+      <Steel>30</Steel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>LP_Bullet_SilverPistol</defaultProjectile>
+        <warmupTime>0.6</warmupTime>
+        <range>24</range>
+        <soundCast>Shot_Revolver</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_ArcaneWeapon"><group>D</group><silverBane>true</silverBane></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcaneBulletBase">
+    <defName>LP_Bullet_SilverPistol</defName>
+    <label>圣银弹</label>
+    <graphicData><texPath>Things/Projectile/Bullet_Small</texPath><color>(0.9,0.92,1)</color></graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>14</damageAmountBase>
+      <armorPenetrationBase>0.20</armorPenetrationBase>
+      <stoppingPower>0.5</stoppingPower>
+      <speed>55</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_SmithGunBase">
+    <defName>LP_LavaPiercer</defName>
+    <label>熔岩穿甲枪</label>
+    <description>枪膛里嵌着熔岩结晶，射出的弹头带着岩浆的热量，能烧穿护甲；命中有25%概率点燃目标，巨魔被它打中同样会被火焰阻断再生。不吃心灵敏感度。</description>
+    <graphicData><texPath>LP/Weapons/LavaPiercer</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <weaponClasses><li>RangedHeavy</li></weaponClasses>
+    <tradeTags><li>LP_GunD</li></tradeTags>
+    <statBases>
+      <WorkToMake>16000</WorkToMake>
+      <Mass>4.2</Mass>
+      <AccuracyTouch>0.55</AccuracyTouch>
+      <AccuracyShort>0.70</AccuracyShort>
+      <AccuracyMedium>0.75</AccuracyMedium>
+      <AccuracyLong>0.65</AccuracyLong>
+      <RangedWeapon_Cooldown>2.6</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Steel>70</Steel>
+      <ComponentIndustrial>3</ComponentIndustrial>
+      <LP_LavaCrystal>6</LP_LavaCrystal>
+      <Obsidian MayRequire="Ludeon.RimWorld.Odyssey">10</Obsidian>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>LP_Bullet_LavaPiercer</defaultProjectile>
+        <warmupTime>1.4</warmupTime>
+        <range>30</range>
+        <soundCast>Shot_IncendiaryLauncher</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>11</muzzleFlashScale>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_ArcaneWeapon"><group>D</group></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcaneBulletBase">
+    <defName>LP_Bullet_LavaPiercer</defName>
+    <label>熔岩弹</label>
+    <graphicData><texPath>Things/Projectile/Bullet_Big</texPath><color>(1,0.45,0.15)</color></graphicData>
+    <projectile>
+      <damageDef>Flame</damageDef>
+      <damageAmountBase>22</damageAmountBase>
+      <armorPenetrationBase>0.45</armorPenetrationBase>
+      <stoppingPower>1</stoppingPower>
+      <speed>70</speed>
+    </projectile>
+    <modExtensions><li Class="LichPhylactery.ArcaneShotExt"><igniteChance>0.25</igniteChance></li></modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_SmithGunBase">
+    <defName>LP_ThunderGun</defName>
+    <label>雷鸣铳</label>
+    <description>枪口装着一对雷鸣石电极，打出的是一团电磁脉冲：命中处半径1.5格内的机械体、护盾和炮台受电磁伤害，人形被震得眩晕1秒。不吃心灵敏感度。</description>
+    <graphicData><texPath>LP/Weapons/ThunderGun</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <weaponClasses><li>RangedLight</li></weaponClasses>
+    <tradeTags><li>LP_GunD</li></tradeTags>
+    <statBases>
+      <WorkToMake>12000</WorkToMake>
+      <Mass>3.2</Mass>
+      <AccuracyTouch>0.70</AccuracyTouch>
+      <AccuracyShort>0.70</AccuracyShort>
+      <AccuracyMedium>0.55</AccuracyMedium>
+      <AccuracyLong>0.40</AccuracyLong>
+      <RangedWeapon_Cooldown>2.0</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Steel>60</Steel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>LP_Bullet_ThunderGun</defaultProjectile>
+        <warmupTime>1.0</warmupTime>
+        <range>26</range>
+        <soundCast>Shot_ChargeRifle</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_ArcaneWeapon"><group>D</group></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcaneBulletBase">
+    <defName>LP_Bullet_ThunderGun</defName>
+    <label>雷鸣弹</label>
+    <graphicData><texPath>Things/Projectile/Charge_Small</texPath><color>(0.55,0.8,1)</color><shaderType>TransparentPostLight</shaderType></graphicData>
+    <projectile>
+      <damageDef>EMP</damageDef>
+      <damageAmountBase>16</damageAmountBase>
+      <armorPenetrationBase>0.15</armorPenetrationBase>
+      <speed>60</speed>
+    </projectile>
+    <modExtensions><li Class="LichPhylactery.ArcaneShotExt"><empRadius>1.5</empRadius><stunTicks>60</stunTicks></li></modExtensions>
+  </ThingDef>
+
+  <!-- ==================== E 组：高级魔法枪（不能制作） ==================== -->
+  <ThingDef ParentName="LP_ArcaneGunBase">
+    <defName>LP_Doom</defName>
+    <label>噩耗</label>
+    <description>一把来历不明的长狙，枪身刻满了亡者的名字。命中头部或躯干时有15%概率贯穿目标，打中身后直线上的下一个人（同样的伤害）。不能制作，只能在黑网或地下城深处找到。</description>
+    <techLevel>Spacer</techLevel>
+    <smeltable>false</smeltable>
+    <graphicData><texPath>LP/Weapons/Doom</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <weaponClasses><li>RangedHeavy</li></weaponClasses>
+    <tradeTags><li>LP_GunE</li></tradeTags>
+    <statBases>
+      <MarketValue>6000</MarketValue>
+      <Mass>6</Mass>
+      <AccuracyTouch>0.50</AccuracyTouch>
+      <AccuracyShort>0.75</AccuracyShort>
+      <AccuracyMedium>0.92</AccuracyMedium>
+      <AccuracyLong>0.95</AccuracyLong>
+      <RangedWeapon_Cooldown>5</RangedWeapon_Cooldown>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>LP_Bullet_Doom</defaultProjectile>
+        <warmupTime>3.5</warmupTime>
+        <range>48</range>
+        <soundCast>Shot_SniperRifle</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>12</muzzleFlashScale>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>枪托</label>
+        <capacities><li>Blunt</li></capacities>
+        <power>10</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_ArcaneWeapon"><group>E</group></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcaneBulletBase">
+    <defName>LP_Bullet_Doom</defName>
+    <label>噩耗弹</label>
+    <graphicData><texPath>Things/Projectile/Bullet_Big</texPath><color>(0.7,0.7,0.85)</color></graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>45</damageAmountBase>
+      <armorPenetrationBase>0.70</armorPenetrationBase>
+      <stoppingPower>1.5</stoppingPower>
+      <speed>100</speed>
+    </projectile>
+    <modExtensions><li Class="LichPhylactery.ArcaneShotExt"><pierceChance>0.15</pierceChance></li></modExtensions>
+  </ThingDef>
+
+  <!-- 天火降世：伤害、穿甲、射程与原版电荷长枪相同（启动时同步，见 Source/Guns.cs 的 GunStartup），瞄准和冷却各少 30%。 -->
+  <ThingDef ParentName="LP_ArcaneGunBase">
+    <defName>LP_Skyfire</defName>
+    <label>天火降世</label>
+    <description>一杆缠着火纹的长枪，扳机一扣，天上的火就落下来。伤害、穿甲和射程与电荷长枪相同，但瞄准和冷却都快三成；打出的是火焰，命中有15%概率点燃目标。不能制作，只能在黑网或地下城深处找到。</description>
+    <techLevel>Spacer</techLevel>
+    <smeltable>false</smeltable>
+    <graphicData><texPath>LP/Weapons/Skyfire</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <soundInteract>Interact_ChargeLance</soundInteract>
+    <weaponClasses><li>RangedHeavy</li></weaponClasses>
+    <tradeTags><li>LP_GunE</li></tradeTags>
+    <statBases>
+      <MarketValue>6000</MarketValue>
+      <Mass>7</Mass>
+      <AccuracyTouch>0.65</AccuracyTouch>
+      <AccuracyShort>0.85</AccuracyShort>
+      <AccuracyMedium>0.85</AccuracyMedium>
+      <AccuracyLong>0.75</AccuracyLong>
+      <RangedWeapon_Cooldown>1.89</RangedWeapon_Cooldown>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>LP_Bullet_Skyfire</defaultProjectile>
+        <warmupTime>1.19</warmupTime>
+        <range>32.9</range>
+        <soundCast>ChargeLance_Fire</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>12</muzzleFlashScale>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>枪管</label>
+        <capacities><li>Blunt</li><li>Poke</li></capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_ArcaneWeapon"><group>E</group></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcaneBulletBase">
+    <defName>LP_Bullet_Skyfire</defName>
+    <label>天火</label>
+    <graphicData><texPath>Things/Projectile/ChargeLanceShot</texPath><color>(1,0.6,0.25)</color><shaderType>TransparentPostLight</shaderType><drawSize>1.5</drawSize></graphicData>
+    <projectile>
+      <damageDef>Flame</damageDef>
+      <damageAmountBase>30</damageAmountBase>
+      <stoppingPower>1.5</stoppingPower>
+      <speed>120</speed>
+    </projectile>
+    <modExtensions><li Class="LichPhylactery.ArcaneShotExt"><igniteChance>0.15</igniteChance></li></modExtensions>
+  </ThingDef>
+
+  <!-- ==================== F 组：魔力矮人枪械（魔力系数 = 0.5 + 0.5 × 敏感度，上限 2） ==================== -->
+  <ThingDef ParentName="LP_SmithGunBase">
+    <defName>LP_RunicMusket</defName>
+    <label>符文火铳</label>
+    <description>矮人的长管火铳，枪身刻着秘银符文。威力随射手的心灵敏感度变化（魔力系数 0.5 + 0.5 × 敏感度，最高 ×2）；矮人用时敏感度不足100%按100%算。</description>
+    <graphicData><texPath>LP/Weapons/RunicMusket</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <weaponClasses><li>RangedHeavy</li></weaponClasses>
+    <tradeTags><li>LP_GunF</li></tradeTags>
+    <statBases>
+      <WorkToMake>14000</WorkToMake>
+      <Mass>4.5</Mass>
+      <AccuracyTouch>0.60</AccuracyTouch>
+      <AccuracyShort>0.75</AccuracyShort>
+      <AccuracyMedium>0.80</AccuracyMedium>
+      <AccuracyLong>0.70</AccuracyLong>
+      <RangedWeapon_Cooldown>2.4</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Steel>60</Steel>
+      <WoodLog>20</WoodLog>
+      <LP_Mithral>8</LP_Mithral>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>LichPhylactery.Verb_ArcaneShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>LP_Bullet_RunicMusket</defaultProjectile>
+        <warmupTime>1.6</warmupTime>
+        <range>32</range>
+        <soundCast>Shot_BoltActionRifle</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>10</muzzleFlashScale>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_ArcaneWeapon"><group>F</group></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcaneBulletBase">
+    <defName>LP_Bullet_RunicMusket</defName>
+    <label>符文铳弹</label>
+    <graphicData><texPath>Things/Projectile/Bullet_Big</texPath><color>(0.6,0.85,1)</color></graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>18</damageAmountBase>
+      <armorPenetrationBase>0.30</armorPenetrationBase>
+      <stoppingPower>1</stoppingPower>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_SmithGunBase">
+    <defName>LP_RunicPistol</defName>
+    <label>符文手铳</label>
+    <description>短管的符文火铳，矮人卫士的随身武器。威力随射手的心灵敏感度变化（魔力系数 0.5 + 0.5 × 敏感度，最高 ×2）；矮人用时敏感度不足100%按100%算。</description>
+    <graphicData><texPath>LP/Weapons/RunicPistol</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <soundInteract>Interact_Revolver</soundInteract>
+    <weaponClasses><li>RangedLight</li></weaponClasses>
+    <tradeTags><li>LP_GunF</li></tradeTags>
+    <statBases>
+      <WorkToMake>8000</WorkToMake>
+      <Mass>1.6</Mass>
+      <AccuracyTouch>0.80</AccuracyTouch>
+      <AccuracyShort>0.65</AccuracyShort>
+      <AccuracyMedium>0.45</AccuracyMedium>
+      <AccuracyLong>0.25</AccuracyLong>
+      <RangedWeapon_Cooldown>1.5</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Steel>35</Steel>
+      <LP_Mithral>4</LP_Mithral>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>LichPhylactery.Verb_ArcaneShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>LP_Bullet_RunicPistol</defaultProjectile>
+        <warmupTime>0.4</warmupTime>
+        <range>22</range>
+        <soundCast>Shot_Revolver</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_ArcaneWeapon"><group>F</group></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcaneBulletBase">
+    <defName>LP_Bullet_RunicPistol</defName>
+    <label>符文铳弹</label>
+    <graphicData><texPath>Things/Projectile/Bullet_Small</texPath><color>(0.6,0.85,1)</color></graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>13</damageAmountBase>
+      <armorPenetrationBase>0.20</armorPenetrationBase>
+      <stoppingPower>0.5</stoppingPower>
+      <speed>55</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_SmithGunBase">
+    <defName>LP_HammerCannon</defName>
+    <label>雷锤手炮</label>
+    <description>粗短的符文手炮，打出一颗刻着雷锤符文的铁弹：落点半径1.9格爆炸，眩晕范围内的敌人1秒；不会点火，也不会伤到自己人。爆炸伤害随射手的心灵敏感度变化（魔力系数 0.5 + 0.5 × 敏感度，最高 ×2）。</description>
+    <graphicData><texPath>LP/Weapons/HammerCannon</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <weaponClasses><li>RangedHeavy</li></weaponClasses>
+    <tradeTags><li>LP_GunF</li></tradeTags>
+    <statBases>
+      <WorkToMake>18000</WorkToMake>
+      <Mass>6</Mass>
+      <AccuracyTouch>0.60</AccuracyTouch>
+      <AccuracyShort>0.60</AccuracyShort>
+      <AccuracyMedium>0.50</AccuracyMedium>
+      <AccuracyLong>0.35</AccuracyLong>
+      <RangedWeapon_Cooldown>3.2</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Steel>80</Steel>
+      <LP_Mithral>10</LP_Mithral>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>LichPhylactery.Verb_ArcaneShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>LP_Shell_HammerCannon</defaultProjectile>
+        <warmupTime>1.5</warmupTime>
+        <range>24</range>
+        <forcedMissRadius>1.2</forcedMissRadius>
+        <soundCast>ThumpCannon_Fire</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>12</muzzleFlashScale>
+        <targetParams><canTargetLocations>true</canTargetLocations></targetParams>
+        <ai_AvoidFriendlyFireRadius>2</ai_AvoidFriendlyFireRadius>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_ArcaneWeapon"><group>F</group></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>LP_Shell_HammerCannon</defName>
+    <label>雷锤炮弹</label>
+    <thingClass>LichPhylactery.LP_ArcaneShell</thingClass>
+    <graphicData><texPath>Things/Projectile/Bullet_Thump</texPath><graphicClass>Graphic_Single</graphicClass><color>(0.65,0.8,1)</color></graphicData>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>14</damageAmountBase>
+      <armorPenetrationBase>0.15</armorPenetrationBase>
+      <explosionRadius>1.9</explosionRadius>
+      <speed>45</speed>
+      <soundExplode>Explosion_Thump</soundExplode>
+      <ai_IsIncendiary>false</ai_IsIncendiary>
+    </projectile>
+    <modExtensions><li Class="LichPhylactery.ArcaneShotExt"><stunTicks>60</stunTicks></li></modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_SmithGunBase">
+    <defName>LP_RunicRepeater</defName>
+    <label>符文连珠铳</label>
+    <description>三根枪管轮转的符文铳，一次连发3发。威力随射手的心灵敏感度变化（魔力系数 0.5 + 0.5 × 敏感度，最高 ×2）；矮人用时敏感度不足100%按100%算。</description>
+    <graphicData><texPath>LP/Weapons/RunicRepeater</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <weaponClasses><li>RangedHeavy</li></weaponClasses>
+    <tradeTags><li>LP_GunF</li></tradeTags>
+    <statBases>
+      <WorkToMake>20000</WorkToMake>
+      <Mass>5.5</Mass>
+      <AccuracyTouch>0.65</AccuracyTouch>
+      <AccuracyShort>0.70</AccuracyShort>
+      <AccuracyMedium>0.60</AccuracyMedium>
+      <AccuracyLong>0.45</AccuracyLong>
+      <RangedWeapon_Cooldown>2.6</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Steel>90</Steel>
+      <LP_Mithral>12</LP_Mithral>
+      <ComponentIndustrial>3</ComponentIndustrial>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>LichPhylactery.Verb_ArcaneShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>LP_Bullet_RunicRepeater</defaultProjectile>
+        <warmupTime>1.2</warmupTime>
+        <range>28</range>
+        <burstShotCount>3</burstShotCount>
+        <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+        <soundCast>Shot_AssaultRifle</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_ArcaneWeapon"><group>F</group></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcaneBulletBase">
+    <defName>LP_Bullet_RunicRepeater</defName>
+    <label>符文连珠弹</label>
+    <graphicData><texPath>Things/Projectile/Bullet_Small</texPath><color>(0.6,0.85,1)</color></graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>11</damageAmountBase>
+      <armorPenetrationBase>0.18</armorPenetrationBase>
+      <stoppingPower>0.5</stoppingPower>
+      <speed>60</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_SmithGunBase">
+    <defName>LP_MountainWrath</defName>
+    <label>山岳之怒</label>
+    <description>矮人王族的传承重铳，精金枪管里流着山岳的怒火。只有矮人能驾驭它。命中后目标身上留下3秒“符文灼印”，期间受到的魔力伤害 +15%。威力随射手的心灵敏感度变化（魔力系数 0.5 + 0.5 × 敏感度，最高 ×2；矮人不足100%按100%算）。</description>
+    <graphicData><texPath>LP/Weapons/MountainWrath</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <weaponClasses><li>RangedHeavy</li></weaponClasses>
+    <tradeTags><li>LP_GunF</li></tradeTags>
+    <statBases>
+      <WorkToMake>32000</WorkToMake>
+      <Mass>8</Mass>
+      <AccuracyTouch>0.55</AccuracyTouch>
+      <AccuracyShort>0.75</AccuracyShort>
+      <AccuracyMedium>0.88</AccuracyMedium>
+      <AccuracyLong>0.85</AccuracyLong>
+      <RangedWeapon_Cooldown>4</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Steel>140</Steel>
+      <LP_Adamantine>15</LP_Adamantine>
+      <LP_Mithral>15</LP_Mithral>
+    </costList>
+    <recipeMaker>
+      <skillRequirements>
+        <Crafting>10</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+    <verbs>
+      <li>
+        <verbClass>LichPhylactery.Verb_ArcaneShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>LP_Bullet_MountainWrath</defaultProjectile>
+        <warmupTime>2.8</warmupTime>
+        <range>42</range>
+        <soundCast>Shot_SniperRifle</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>13</muzzleFlashScale>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_ArcaneWeapon"><group>F</group><dwarfOnly>true</dwarfOnly></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcaneBulletBase">
+    <defName>LP_Bullet_MountainWrath</defName>
+    <label>山岳之怒</label>
+    <graphicData><texPath>Things/Projectile/Bullet_Big</texPath><color>(1,0.75,0.35)</color></graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>34</damageAmountBase>
+      <armorPenetrationBase>0.60</armorPenetrationBase>
+      <stoppingPower>1.5</stoppingPower>
+      <speed>90</speed>
+    </projectile>
+    <modExtensions><li Class="LichPhylactery.ArcaneShotExt"><hitHediff>LP_RuneBrand</hitHediff><hitHediffTicks>180</hitHediffTicks></li></modExtensions>
+  </ThingDef>
+
+  <!-- ==================== G 组：法杖（魔力系数 = 心灵敏感度，最低 0.2、不封顶；敏感度 0 不能用） ==================== -->
+  <ThingDef ParentName="LP_StaffBase">
+    <defName>LP_MissileStaff</defName>
+    <label>魔法飞弹杖</label>
+    <description>杖头嵌着一颗紫水晶，一次射出3枚魔法飞弹，必定命中（无视掩体与距离）。威力随持有者的心灵敏感度变化（魔力系数 = 敏感度，最低 0.2，不封顶）；敏感度为0的人用它，法杖毫无回应。有心灵链接的人每次施放增加心灵熵；没有心灵链接的人只能发挥70%的威力。</description>
+    <graphicData><texPath>LP/Weapons/MissileStaff</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <statBases>
+      <RangedWeapon_Cooldown>2.2</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <WoodLog>40</WoodLog>
+      <Silver>20</Silver>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>LichPhylactery.Verb_ArcaneShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>LP_Bolt_MagicMissile</defaultProjectile>
+        <warmupTime>1.0</warmupTime>
+        <range>26</range>
+        <burstShotCount>3</burstShotCount>
+        <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+        <soundCast>Shot_ChargeBlaster</soundCast>
+        <muzzleFlashScale>6</muzzleFlashScale>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_ArcaneWeapon"><group>G</group></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcaneBulletBase">
+    <defName>LP_Bolt_MagicMissile</defName>
+    <label>魔法飞弹</label>
+    <graphicData><texPath>Things/Projectile/Charge_Small</texPath><color>(0.75,0.5,1)</color><shaderType>TransparentPostLight</shaderType></graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>6</damageAmountBase>
+      <armorPenetrationBase>0.10</armorPenetrationBase>
+      <speed>45</speed>
+    </projectile>
+    <modExtensions><li Class="LichPhylactery.ArcaneShotExt"><alwaysHit>true</alwaysHit></li></modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_StaffBase">
+    <defName>LP_FireStaff</defName>
+    <label>火焰法杖</label>
+    <description>杖头的熔岩结晶终年发烫，射出单发火焰弹（不爆炸），命中有30%概率点燃目标。威力随持有者的心灵敏感度变化（魔力系数 = 敏感度，最低 0.2，不封顶）；敏感度为0的人用它，法杖毫无回应。有心灵链接的人每次施放增加心灵熵；没有心灵链接的人只能发挥70%的威力。</description>
+    <graphicData><texPath>LP/Weapons/FireStaff</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <statBases>
+      <RangedWeapon_Cooldown>2.4</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <WoodLog>40</WoodLog>
+      <LP_LavaCrystal>6</LP_LavaCrystal>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>LichPhylactery.Verb_ArcaneShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>LP_Bolt_Fire</defaultProjectile>
+        <warmupTime>1.2</warmupTime>
+        <range>28</range>
+        <soundCast>Shot_IncendiaryLauncher</soundCast>
+        <muzzleFlashScale>8</muzzleFlashScale>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_ArcaneWeapon"><group>G</group></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcaneBulletBase">
+    <defName>LP_Bolt_Fire</defName>
+    <label>火焰弹</label>
+    <graphicData><texPath>Things/Projectile/Charge_Small</texPath><color>(1,0.5,0.15)</color><shaderType>TransparentPostLight</shaderType><drawSize>1.3</drawSize></graphicData>
+    <projectile>
+      <damageDef>Flame</damageDef>
+      <damageAmountBase>16</damageAmountBase>
+      <armorPenetrationBase>0.20</armorPenetrationBase>
+      <speed>40</speed>
+    </projectile>
+    <modExtensions><li Class="LichPhylactery.ArcaneShotExt"><igniteChance>0.3</igniteChance></li></modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_StaffBase">
+    <defName>LP_FrostStaff</defName>
+    <label>寒霜法杖</label>
+    <description>寒铁杖身裹着一层永不融化的白霜，射出寒霜弹，命中后4秒内目标移速 -40%。威力随持有者的心灵敏感度变化（魔力系数 = 敏感度，最低 0.2，不封顶）；敏感度为0的人用它，法杖毫无回应。有心灵链接的人每次施放增加心灵熵；没有心灵链接的人只能发挥70%的威力。</description>
+    <graphicData><texPath>LP/Weapons/FrostStaff</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <statBases>
+      <RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <WoodLog>30</WoodLog>
+      <LP_ColdIron>10</LP_ColdIron>
+      <LP_Mithral>5</LP_Mithral>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>LichPhylactery.Verb_ArcaneShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>LP_Bolt_Frost</defaultProjectile>
+        <warmupTime>1.0</warmupTime>
+        <range>26</range>
+        <soundCast>Shot_ChargeRifle</soundCast>
+        <muzzleFlashScale>6</muzzleFlashScale>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_ArcaneWeapon"><group>G</group></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcaneBulletBase">
+    <defName>LP_Bolt_Frost</defName>
+    <label>寒霜弹</label>
+    <graphicData><texPath>Things/Projectile/Charge_Small</texPath><color>(0.6,0.9,1)</color><shaderType>TransparentPostLight</shaderType></graphicData>
+    <projectile>
+      <damageDef>LP_Frost</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <armorPenetrationBase>0.15</armorPenetrationBase>
+      <speed>45</speed>
+    </projectile>
+    <modExtensions><li Class="LichPhylactery.ArcaneShotExt"><hitHediff>LP_FrostStaffChill</hitHediff><hitHediffTicks>240</hitHediffTicks></li></modExtensions>
+  </ThingDef>
+
+  <!-- ==================== 伤害与状态 ==================== -->
+  <DamageDef>
+    <defName>LP_Frost</defName>
+    <label>寒霜</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0}被冻成了冰雕。</deathMessage>
+    <hediff>Frostbite</hediff>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Heat</armorCategory>
+    <defaultDamage>12</defaultDamage>
+    <defaultArmorPenetration>0.15</defaultArmorPenetration>
+    <isRanged>true</isRanged>
+    <makesAnimalsFlee>true</makesAnimalsFlee>
+  </DamageDef>
+
+  <HediffDef Name="LP_GunHediffBase" Abstract="True">
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <initialSeverity>1</initialSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>180~180</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+    </comps>
+  </HediffDef>
+  <HediffDef ParentName="LP_GunHediffBase">
+    <defName>LP_RuneBrand</defName>
+    <label>符文灼印</label>
+    <description>被山岳之怒打出的符文还在发烫：受到的魔力伤害（符文枪械、法杖）+15%。</description>
+    <defaultLabelColor>(1,0.75,0.35)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_GunHediffBase">
+    <defName>LP_FrostStaffChill</defName>
+    <label>寒霜缠身</label>
+    <description>被寒霜弹冻住了半边身子：移速 -40%。</description>
+    <defaultLabelColor>(0.6,0.85,1)</defaultLabelColor>
+    <comps Inherit="False">
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>240~240</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+    </comps>
+    <stages><li><statFactors><MoveSpeed>0.6</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+</Defs>

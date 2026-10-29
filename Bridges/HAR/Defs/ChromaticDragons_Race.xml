@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.52.0 五色真龙（Humanoid Alien Races 可选联动，只在启用 erdelf.HumanoidAlienRaces 时加载；由 ArtSource/ChromaticDragons-gen_defs.py 生成）。
+     人形种族（ParentName="Human"，HAR 列表 Inherit="False"）、自带龙形身体 LP_DragonBody（ChromaticDragons_Body.xml）；年龄档 = 生命阶段（体型、生命、近战、护甲、移速）。
+     身体贴图是整条龙（含头）、按颜色预先上色，头型贴图是透明的；skinShader Cutout 不染肤色。规则代码在主程序集 Source/ChromaticDragons.cs、Source/Legendary.cs。 -->
+<Defs>
+
+  <AlienRace.ThingDef_AlienRace ParentName="Human" Name="LP_ChromaticDragonBase" Abstract="True">
+    <statBases>
+      <MarketValue>8000</MarketValue>
+      <MoveSpeed>4.6</MoveSpeed>
+      <PsychicSensitivity>0.8</PsychicSensitivity>
+    </statBases>
+    <race>
+      <body>LP_DragonBody</body>
+      <baseBodySize>1</baseBodySize>
+      <baseHealthScale>1</baseHealthScale>
+      <lifeExpectancy>3000</lifeExpectancy>
+      <lifeStageAges Inherit="False">
+        <li><def>LP_DragonYoung</def><minAge>0</minAge></li>
+        <li><def>LP_DragonAdult</def><minAge>100</minAge></li>
+        <li><def>LP_DragonAncient</def><minAge>800</minAge></li>
+      </lifeStageAges>
+      <ageGenerationCurve Inherit="False"><points><li>(30,0)</li><li>(60,1)</li><li>(400,1)</li><li>(1500,0.1)</li><li>(1600,0)</li></points></ageGenerationCurve>
+      <hediffGiverSets Inherit="False" />
+    </race>
+    <tools Inherit="False">
+      <li><label>咬</label><capacities><li>Bite</li></capacities><power>28</power><cooldownTime>2.2</cooldownTime><armorPenetration>0.45</armorPenetration><linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup></li>
+      <li><label>左前爪</label><capacities><li>Scratch</li></capacities><power>18</power><cooldownTime>1.6</cooldownTime><armorPenetration>0.3</armorPenetration><linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup></li>
+      <li><label>右前爪</label><capacities><li>Scratch</li></capacities><power>18</power><cooldownTime>1.6</cooldownTime><armorPenetration>0.3</armorPenetration><linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup></li>
+      <li><label>尾巴</label><capacities><li>Blunt</li></capacities><power>22</power><cooldownTime>2.4</cooldownTime><armorPenetration>0.25</armorPenetration><linkedBodyPartsGroup>LP_DragonTail</linkedBodyPartsGroup></li>
+    </tools>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><legendary>true</legendary></li>
+    </modExtensions>
+  </AlienRace.ThingDef_AlienRace>
+
+  <AlienRace.ThingDef_AlienRace ParentName="LP_ChromaticDragonBase">
+    <defName>LP_RedDragon</defName>
+    <label>红龙</label>
+    <description>最强大也最贪婪的五色龙。红龙住在火山和高山里，睡在金山上，喷吐烈焰。它们傲慢、残忍，认为世上一切财宝本来就该属于自己。
+
+真龙有智慧，会说话，活上千年。它们有传奇抗性、传奇动作和骇人威仪，倒下就会死去，不会投降。</description>
+    <modExtensions Inherit="True">
+      <li Class="LichPhylactery.LP_DragonExtension"><color>Red</color></li>
+    </modExtensions>
+    <alienRace>
+      <generalSettings>
+        <humanRecipeImport>false</humanRecipeImport>
+        <allowHumanBios>false</allowHumanBios>
+        <corpseCategory>CorpsesHumanlike</corpseCategory>
+        <alienPartGenerator>
+          <headTypes Inherit="False"><li>LP_DragonHead_Red</li></headTypes>
+          <bodyTypes Inherit="False"><li>Hulk</li></bodyTypes>
+          <colorChannels Inherit="False"><li><name>skin</name><first Class="ColorGenerator_Single"><color>(1,1,1,1)</color></first></li></colorChannels>
+          <bodyAddons Inherit="False" />
+        </alienPartGenerator>
+      </generalSettings>
+      <graphicPaths>
+        <body>ChromaticDragons/Red/</body>
+        <head><path>ChromaticDragons/Heads/</path></head>
+        <skinShader>Cutout</skinShader>
+      </graphicPaths>
+      <raceRestriction>
+        <onlyUseRaceRestrictedApparel>true</onlyUseRaceRestrictedApparel>
+        <onlyUseRaceRestrictedWeapons>true</onlyUseRaceRestrictedWeapons>
+      </raceRestriction>
+    </alienRace>
+  </AlienRace.ThingDef_AlienRace>
+  <HeadTypeDef>
+    <defName>LP_DragonHead_Red</defName>
+    <graphicPath>ChromaticDragons/Heads/Red</graphicPath>
+    <gender>None</gender>
+    <randomChosen>false</randomChosen>
+  </HeadTypeDef>
+
+  <AlienRace.ThingDef_AlienRace ParentName="LP_ChromaticDragonBase">
+    <defName>LP_BlueDragon</defName>
+    <label>蓝龙</label>
+    <description>沙漠与荒原的主人。蓝龙能在沙地下潜行，从地底钻出伏击猎物，喷出一道笔直的闪电。它们虚荣而讲究秩序，喜欢役使龙教徒。
+
+真龙有智慧，会说话，活上千年。它们有传奇抗性、传奇动作和骇人威仪，倒下就会死去，不会投降。</description>
+    <modExtensions Inherit="True">
+      <li Class="LichPhylactery.LP_DragonExtension"><color>Blue</color></li>
+    </modExtensions>
+    <alienRace>
+      <generalSettings>
+        <humanRecipeImport>false</humanRecipeImport>
+        <allowHumanBios>false</allowHumanBios>
+        <corpseCategory>CorpsesHumanlike</corpseCategory>
+        <alienPartGenerator>
+          <headTypes Inherit="False"><li>LP_DragonHead_Blue</li></headTypes>
+          <bodyTypes Inherit="False"><li>Hulk</li></bodyTypes>
+          <colorChannels Inherit="False"><li><name>skin</name><first Class="ColorGenerator_Single"><color>(1,1,1,1)</color></first></li></colorChannels>
+          <bodyAddons Inherit="False" />
+        </alienPartGenerator>
+      </generalSettings>
+      <graphicPaths>
+        <body>ChromaticDragons/Blue/</body>
+        <head><path>ChromaticDragons/Heads/</path></head>
+        <skinShader>Cutout</skinShader>
+      </graphicPaths>
+      <raceRestriction>
+        <onlyUseRaceRestrictedApparel>true</onlyUseRaceRestrictedApparel>
+        <onlyUseRaceRestrictedWeapons>true</onlyUseRaceRestrictedWeapons>
+      </raceRestriction>
+    </alienRace>
+  </AlienRace.ThingDef_AlienRace>
+  <HeadTypeDef>
+    <defName>LP_DragonHead_Blue</defName>
+    <graphicPath>ChromaticDragons/Heads/Blue</graphicPath>
+    <gender>None</gender>
+    <randomChosen>false</randomChosen>
+  </HeadTypeDef>
+
+  <AlienRace.ThingDef_AlienRace ParentName="LP_ChromaticDragonBase">
+    <defName>LP_GreenDragon</defName>
+    <label>绿龙</label>
+    <description>森林里最狡诈的龙。绿龙喷吐毒气，擅长谎言和魅惑，会在水里潜行。它们宁可让猎物自己走进巢穴。
+
+真龙有智慧，会说话，活上千年。它们有传奇抗性、传奇动作和骇人威仪，倒下就会死去，不会投降。</description>
+    <modExtensions Inherit="True">
+      <li Class="LichPhylactery.LP_DragonExtension"><color>Green</color></li>
+    </modExtensions>
+    <alienRace>
+      <generalSettings>
+        <humanRecipeImport>false</humanRecipeImport>
+        <allowHumanBios>false</allowHumanBios>
+        <corpseCategory>CorpsesHumanlike</corpseCategory>
+        <alienPartGenerator>
+          <headTypes Inherit="False"><li>LP_DragonHead_Green</li></headTypes>
+          <bodyTypes Inherit="False"><li>Hulk</li></bodyTypes>
+          <colorChannels Inherit="False"><li><name>skin</name><first Class="ColorGenerator_Single"><color>(1,1,1,1)</color></first></li></colorChannels>
+          <bodyAddons Inherit="False" />
+        </alienPartGenerator>
+      </generalSettings>
+      <graphicPaths>
+        <body>ChromaticDragons/Green/</body>
+        <head><path>ChromaticDragons/Heads/</path></head>
+        <skinShader>Cutout</skinShader>
+      </graphicPaths>
+      <raceRestriction>
+        <onlyUseRaceRestrictedApparel>true</onlyUseRaceRestrictedApparel>
+        <onlyUseRaceRestrictedWeapons>true</onlyUseRaceRestrictedWeapons>
+      </raceRestriction>
+    </alienRace>
+  </AlienRace.ThingDef_AlienRace>
+  <HeadTypeDef>
+    <defName>LP_DragonHead_Green</defName>
+    <graphicPath>ChromaticDragons/Heads/Green</graphicPath>
+    <gender>None</gender>
+    <randomChosen>false</randomChosen>
+  </HeadTypeDef>
+
+  <AlienRace.ThingDef_AlienRace ParentName="LP_ChromaticDragonBase">
+    <defName>LP_BlackDragon</defName>
+    <label>黑龙</label>
+    <description>沼泽里最阴毒的龙。黑龙的头骨般的脸上满是腐蚀的痕迹，喷出一道强酸，能溶穿铠甲。它们的巢穴总是一片漆黑。
+
+真龙有智慧，会说话，活上千年。它们有传奇抗性、传奇动作和骇人威仪，倒下就会死去，不会投降。</description>
+    <modExtensions Inherit="True">
+      <li Class="LichPhylactery.LP_DragonExtension"><color>Black</color></li>
+    </modExtensions>
+    <alienRace>
+      <generalSettings>
+        <humanRecipeImport>false</humanRecipeImport>
+        <allowHumanBios>false</allowHumanBios>
+        <corpseCategory>CorpsesHumanlike</corpseCategory>
+        <alienPartGenerator>
+          <headTypes Inherit="False"><li>LP_DragonHead_Black</li></headTypes>
+          <bodyTypes Inherit="False"><li>Hulk</li></bodyTypes>
+          <colorChannels Inherit="False"><li><name>skin</name><first Class="ColorGenerator_Single"><color>(1,1,1,1)</color></first></li></colorChannels>
+          <bodyAddons Inherit="False" />
+        </alienPartGenerator>
+      </generalSettings>
+      <graphicPaths>
+        <body>ChromaticDragons/Black/</body>
+        <head><path>ChromaticDragons/Heads/</path></head>
+        <skinShader>Cutout</skinShader>
+      </graphicPaths>
+      <raceRestriction>
+        <onlyUseRaceRestrictedApparel>true</onlyUseRaceRestrictedApparel>
+        <onlyUseRaceRestrictedWeapons>true</onlyUseRaceRestrictedWeapons>
+      </raceRestriction>
+    </alienRace>
+  </AlienRace.ThingDef_AlienRace>
+  <HeadTypeDef>
+    <defName>LP_DragonHead_Black</defName>
+    <graphicPath>ChromaticDragons/Heads/Black</graphicPath>
+    <gender>None</gender>
+    <randomChosen>false</randomChosen>
+  </HeadTypeDef>
+
+  <AlienRace.ThingDef_AlienRace ParentName="LP_ChromaticDragonBase">
+    <defName>LP_WhiteDragon</defName>
+    <label>白龙</label>
+    <description>最小也最野蛮的五色龙。白龙住在冰原和冰川里，喷吐寒冰，不屑于讨价还价，看到猎物就扑上去。
+
+真龙有智慧，会说话，活上千年。它们有传奇抗性、传奇动作和骇人威仪，倒下就会死去，不会投降。</description>
+    <modExtensions Inherit="True">
+      <li Class="LichPhylactery.LP_DragonExtension"><color>White</color></li>
+    </modExtensions>
+    <alienRace>
+      <generalSettings>
+        <humanRecipeImport>false</humanRecipeImport>
+        <allowHumanBios>false</allowHumanBios>
+        <corpseCategory>CorpsesHumanlike</corpseCategory>
+        <alienPartGenerator>
+          <headTypes Inherit="False"><li>LP_DragonHead_White</li></headTypes>
+          <bodyTypes Inherit="False"><li>Hulk</li></bodyTypes>
+          <colorChannels Inherit="False"><li><name>skin</name><first Class="ColorGenerator_Single"><color>(1,1,1,1)</color></first></li></colorChannels>
+          <bodyAddons Inherit="False" />
+        </alienPartGenerator>
+      </generalSettings>
+      <graphicPaths>
+        <body>ChromaticDragons/White/</body>
+        <head><path>ChromaticDragons/Heads/</path></head>
+        <skinShader>Cutout</skinShader>
+      </graphicPaths>
+      <raceRestriction>
+        <onlyUseRaceRestrictedApparel>true</onlyUseRaceRestrictedApparel>
+        <onlyUseRaceRestrictedWeapons>true</onlyUseRaceRestrictedWeapons>
+      </raceRestriction>
+    </alienRace>
+  </AlienRace.ThingDef_AlienRace>
+  <HeadTypeDef>
+    <defName>LP_DragonHead_White</defName>
+    <graphicPath>ChromaticDragons/Heads/White</graphicPath>
+    <gender>None</gender>
+    <randomChosen>false</randomChosen>
+  </HeadTypeDef>
+
+  <LifeStageDef>
+    <defName>LP_DragonYoung</defName>
+    <label>青年龙</label>
+    <adjective>青年</adjective>
+    <developmentalStage>Adult</developmentalStage>
+    <reproductive>false</reproductive>
+    <bodySizeFactor>2.5</bodySizeFactor>
+    <healthScaleFactor>6</healthScaleFactor>
+    <meleeDamageFactor>1.0</meleeDamageFactor>
+    <statOffsets><ArmorRating_Sharp>0.4</ArmorRating_Sharp><ArmorRating_Blunt>0.3</ArmorRating_Blunt><MoveSpeed>0</MoveSpeed></statOffsets>
+    <voxPitch>0.5</voxPitch>
+  </LifeStageDef>
+  <LifeStageDef>
+    <defName>LP_DragonAdult</defName>
+    <label>成年龙</label>
+    <adjective>成年</adjective>
+    <developmentalStage>Adult</developmentalStage>
+    <reproductive>false</reproductive>
+    <bodySizeFactor>4.0</bodySizeFactor>
+    <healthScaleFactor>24</healthScaleFactor>
+    <meleeDamageFactor>1.6</meleeDamageFactor>
+    <statOffsets><ArmorRating_Sharp>0.55</ArmorRating_Sharp><ArmorRating_Blunt>0.4</ArmorRating_Blunt><MoveSpeed>0.2</MoveSpeed></statOffsets>
+    <voxPitch>0.5</voxPitch>
+  </LifeStageDef>
+  <LifeStageDef>
+    <defName>LP_DragonAncient</defName>
+    <label>远古龙</label>
+    <adjective>远古</adjective>
+    <developmentalStage>Adult</developmentalStage>
+    <reproductive>false</reproductive>
+    <bodySizeFactor>6.0</bodySizeFactor>
+    <healthScaleFactor>40</healthScaleFactor>
+    <meleeDamageFactor>2.5</meleeDamageFactor>
+    <statOffsets><ArmorRating_Sharp>0.7</ArmorRating_Sharp><ArmorRating_Blunt>0.55</ArmorRating_Blunt><MoveSpeed>0.4</MoveSpeed></statOffsets>
+    <voxPitch>0.5</voxPitch>
+  </LifeStageDef>
+
+  <!-- 兵种：每色三档（青年 / 成年 / 远古）。传奇扩展：固定等级、固定六维（5e 怪物书）、CR、传奇抗性 / 动作、骇人威仪半径、击杀奖励。 -->
+  <PawnKindDef Name="LP_ChromaticDragonKindBase" Abstract="True">
+    <defaultFactionDef>LP_ChromaticDragons</defaultFactionDef>
+    <isFighter>true</isFighter>
+    <canBeSapper>false</canBeSapper>
+    <apparelMoney>0</apparelMoney>
+    <weaponMoney>0</weaponMoney>
+    <apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+    <techHediffsChance>0</techHediffsChance>
+    <chemicalAddictionChance>0</chemicalAddictionChance>
+    <combatEnhancingDrugsChance>0</combatEnhancingDrugsChance>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <backstoryFiltersOverride><li><categories><li>LP_DragonBio</li></categories></li></backstoryFiltersOverride>
+    <initialResistanceRange>99~99</initialResistanceRange>
+    <initialWillRange>10~10</initialWillRange><!-- 1.63.0：人形兵种要有意志（开发者模式下原版会报配置错误）；龙不会被奴役 -->
+    <minGenerationAge>30</minGenerationAge>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_RedDragon_Young</defName>
+    <label>青年红龙</label>
+    <race>LP_RedDragon</race>
+    <combatPower>600</combatPower>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>青年红龙</title>
+        <level>10~12</level>
+        <scores><li>23</li><li>10</li><li>21</li><li>14</li><li>11</li><li>19</li></scores>
+        <cr>10</cr>
+        <resistance>0</resistance>
+        <actionPoints>0</actionPoints>
+        <actions></actions>
+        <presenceRadius>0</presenceRadius>
+        <milestone>false</milestone>
+        <legendPoints>0</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_RedDragon_Adult</defName>
+    <label>成年红龙</label>
+    <race>LP_RedDragon</race>
+    <combatPower>1500</combatPower>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>成年红龙</title>
+        <level>18~20</level>
+        <scores><li>27</li><li>10</li><li>25</li><li>16</li><li>13</li><li>21</li></scores>
+        <cr>17</cr>
+        <resistance>3</resistance>
+        <actionPoints>3</actionPoints>
+        <actions><li><action>Detect</action><cost>1</cost></li><li><action>Wing</action><cost>2</cost></li><li><action>Tail</action><cost>1</cost></li></actions>
+        <presenceRadius>18</presenceRadius>
+        <milestone>true</milestone>
+        <legendPoints>2</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_RedDragon_Ancient</defName>
+    <label>远古红龙</label>
+    <race>LP_RedDragon</race>
+    <combatPower>3500</combatPower>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>远古红龙</title>
+        <level>31~35</level>
+        <scores><li>30</li><li>10</li><li>29</li><li>18</li><li>15</li><li>23</li></scores>
+        <cr>24</cr>
+        <resistance>3</resistance>
+        <actionPoints>3</actionPoints>
+        <actions><li><action>Glance</action><cost>1</cost><cooldown>600</cooldown></li><li><action>Detect</action><cost>1</cost></li><li><action>Wing</action><cost>2</cost></li><li><action>Tail</action><cost>1</cost></li></actions>
+        <presenceRadius>24</presenceRadius>
+        <milestone>true</milestone>
+        <legendPoints>4</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_BlueDragon_Young</defName>
+    <label>青年蓝龙</label>
+    <race>LP_BlueDragon</race>
+    <combatPower>600</combatPower>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>青年蓝龙</title>
+        <level>10~12</level>
+        <scores><li>21</li><li>10</li><li>19</li><li>14</li><li>13</li><li>17</li></scores>
+        <cr>9</cr>
+        <resistance>0</resistance>
+        <actionPoints>0</actionPoints>
+        <actions></actions>
+        <presenceRadius>0</presenceRadius>
+        <milestone>false</milestone>
+        <legendPoints>0</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_BlueDragon_Adult</defName>
+    <label>成年蓝龙</label>
+    <race>LP_BlueDragon</race>
+    <combatPower>1500</combatPower>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>成年蓝龙</title>
+        <level>18~20</level>
+        <scores><li>25</li><li>10</li><li>23</li><li>16</li><li>15</li><li>19</li></scores>
+        <cr>16</cr>
+        <resistance>3</resistance>
+        <actionPoints>3</actionPoints>
+        <actions><li><action>Detect</action><cost>1</cost></li><li><action>Wing</action><cost>2</cost></li><li><action>Tail</action><cost>1</cost></li></actions>
+        <presenceRadius>18</presenceRadius>
+        <milestone>true</milestone>
+        <legendPoints>2</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_BlueDragon_Ancient</defName>
+    <label>远古蓝龙</label>
+    <race>LP_BlueDragon</race>
+    <combatPower>3500</combatPower>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>远古蓝龙</title>
+        <level>31~35</level>
+        <scores><li>29</li><li>10</li><li>27</li><li>18</li><li>17</li><li>21</li></scores>
+        <cr>23</cr>
+        <resistance>3</resistance>
+        <actionPoints>3</actionPoints>
+        <actions><li><action>Glance</action><cost>1</cost><cooldown>600</cooldown></li><li><action>Detect</action><cost>1</cost></li><li><action>Wing</action><cost>2</cost></li><li><action>Tail</action><cost>1</cost></li></actions>
+        <presenceRadius>24</presenceRadius>
+        <milestone>true</milestone>
+        <legendPoints>4</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_GreenDragon_Young</defName>
+    <label>青年绿龙</label>
+    <race>LP_GreenDragon</race>
+    <combatPower>600</combatPower>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>青年绿龙</title>
+        <level>10~12</level>
+        <scores><li>19</li><li>12</li><li>17</li><li>16</li><li>13</li><li>15</li></scores>
+        <cr>8</cr>
+        <resistance>0</resistance>
+        <actionPoints>0</actionPoints>
+        <actions></actions>
+        <presenceRadius>0</presenceRadius>
+        <milestone>false</milestone>
+        <legendPoints>0</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_GreenDragon_Adult</defName>
+    <label>成年绿龙</label>
+    <race>LP_GreenDragon</race>
+    <combatPower>1500</combatPower>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>成年绿龙</title>
+        <level>18~20</level>
+        <scores><li>23</li><li>12</li><li>21</li><li>18</li><li>15</li><li>17</li></scores>
+        <cr>15</cr>
+        <resistance>3</resistance>
+        <actionPoints>3</actionPoints>
+        <actions><li><action>Detect</action><cost>1</cost></li><li><action>Wing</action><cost>2</cost></li><li><action>Tail</action><cost>1</cost></li></actions>
+        <presenceRadius>18</presenceRadius>
+        <milestone>true</milestone>
+        <legendPoints>2</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_GreenDragon_Ancient</defName>
+    <label>远古绿龙</label>
+    <race>LP_GreenDragon</race>
+    <combatPower>3500</combatPower>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>远古绿龙</title>
+        <level>31~35</level>
+        <scores><li>27</li><li>12</li><li>25</li><li>20</li><li>17</li><li>19</li></scores>
+        <cr>22</cr>
+        <resistance>3</resistance>
+        <actionPoints>3</actionPoints>
+        <actions><li><action>Glance</action><cost>1</cost><cooldown>600</cooldown></li><li><action>Detect</action><cost>1</cost></li><li><action>Wing</action><cost>2</cost></li><li><action>Tail</action><cost>1</cost></li></actions>
+        <presenceRadius>24</presenceRadius>
+        <milestone>true</milestone>
+        <legendPoints>4</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_BlackDragon_Young</defName>
+    <label>青年黑龙</label>
+    <race>LP_BlackDragon</race>
+    <combatPower>600</combatPower>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>青年黑龙</title>
+        <level>10~12</level>
+        <scores><li>19</li><li>14</li><li>17</li><li>12</li><li>11</li><li>15</li></scores>
+        <cr>7</cr>
+        <resistance>0</resistance>
+        <actionPoints>0</actionPoints>
+        <actions></actions>
+        <presenceRadius>0</presenceRadius>
+        <milestone>false</milestone>
+        <legendPoints>0</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_BlackDragon_Adult</defName>
+    <label>成年黑龙</label>
+    <race>LP_BlackDragon</race>
+    <combatPower>1500</combatPower>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>成年黑龙</title>
+        <level>18~20</level>
+        <scores><li>23</li><li>14</li><li>21</li><li>14</li><li>13</li><li>17</li></scores>
+        <cr>14</cr>
+        <resistance>3</resistance>
+        <actionPoints>3</actionPoints>
+        <actions><li><action>Detect</action><cost>1</cost></li><li><action>Wing</action><cost>2</cost></li><li><action>Tail</action><cost>1</cost></li></actions>
+        <presenceRadius>18</presenceRadius>
+        <milestone>true</milestone>
+        <legendPoints>2</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_BlackDragon_Ancient</defName>
+    <label>远古黑龙</label>
+    <race>LP_BlackDragon</race>
+    <combatPower>3500</combatPower>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>远古黑龙</title>
+        <level>31~35</level>
+        <scores><li>27</li><li>14</li><li>25</li><li>16</li><li>15</li><li>19</li></scores>
+        <cr>21</cr>
+        <resistance>3</resistance>
+        <actionPoints>3</actionPoints>
+        <actions><li><action>Glance</action><cost>1</cost><cooldown>600</cooldown></li><li><action>Detect</action><cost>1</cost></li><li><action>Wing</action><cost>2</cost></li><li><action>Tail</action><cost>1</cost></li></actions>
+        <presenceRadius>24</presenceRadius>
+        <milestone>true</milestone>
+        <legendPoints>4</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_WhiteDragon_Young</defName>
+    <label>青年白龙</label>
+    <race>LP_WhiteDragon</race>
+    <combatPower>600</combatPower>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>青年白龙</title>
+        <level>10~12</level>
+        <scores><li>18</li><li>10</li><li>18</li><li>6</li><li>11</li><li>12</li></scores>
+        <cr>6</cr>
+        <resistance>0</resistance>
+        <actionPoints>0</actionPoints>
+        <actions></actions>
+        <presenceRadius>0</presenceRadius>
+        <milestone>false</milestone>
+        <legendPoints>0</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_WhiteDragon_Adult</defName>
+    <label>成年白龙</label>
+    <race>LP_WhiteDragon</race>
+    <combatPower>1500</combatPower>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>成年白龙</title>
+        <level>18~20</level>
+        <scores><li>22</li><li>10</li><li>22</li><li>8</li><li>12</li><li>12</li></scores>
+        <cr>13</cr>
+        <resistance>3</resistance>
+        <actionPoints>3</actionPoints>
+        <actions><li><action>Detect</action><cost>1</cost></li><li><action>Wing</action><cost>2</cost></li><li><action>Tail</action><cost>1</cost></li></actions>
+        <presenceRadius>18</presenceRadius>
+        <milestone>true</milestone>
+        <legendPoints>2</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_WhiteDragon_Ancient</defName>
+    <label>远古白龙</label>
+    <race>LP_WhiteDragon</race>
+    <combatPower>3500</combatPower>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>远古白龙</title>
+        <level>31~35</level>
+        <scores><li>26</li><li>10</li><li>26</li><li>10</li><li>13</li><li>14</li></scores>
+        <cr>20</cr>
+        <resistance>3</resistance>
+        <actionPoints>3</actionPoints>
+        <actions><li><action>Glance</action><cost>1</cost><cooldown>600</cooldown></li><li><action>Detect</action><cost>1</cost></li><li><action>Wing</action><cost>2</cost></li><li><action>Tail</action><cost>1</cost></li></actions>
+        <presenceRadius>24</presenceRadius>
+        <milestone>true</milestone>
+        <legendPoints>4</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+
+</Defs>

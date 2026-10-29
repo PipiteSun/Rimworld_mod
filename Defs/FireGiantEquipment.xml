@@ -1,0 +1,37 @@
+<Defs>
+ <ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
+  <defName>LP_FireGiantMaul</defName><label>火巨人熔炉重锤</label>
+  <description>为火巨人锻造的双手重锤。厚重铁锤头以玻璃钢加固，挥击缓慢却能重创披甲目标。只有具备熔火巨人本源的角色能够装备；在熔火锻炉制作。</description>
+  <graphicData><texPath>FireGiant/Equipment/Maul</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(1.5,1.5)</drawSize></graphicData>
+  <techLevel>Industrial</techLevel><equippedAngleOffset>-45</equippedAngleOffset>
+  <statBases><MaxHitPoints>500</MaxHitPoints><Mass>12</Mass><WorkToMake>22000</WorkToMake><Flammability>0</Flammability></statBases>
+  <costList><Steel>200</Steel><Plasteel>40</Plasteel></costList>
+  <recipeMaker><recipeUsers Inherit="False"><li>LP_FireGiantForge</li></recipeUsers><researchPrerequisite>LP_GiantForging</researchPrerequisite><skillRequirements><Crafting>6</Crafting></skillRequirements></recipeMaker>
+  <tools><li><label>锤头</label><capacities><li>Blunt</li></capacities><power>40</power><armorPenetration>0.35</armorPenetration><cooldownTime>3.6</cooldownTime></li></tools>
+ </ThingDef>
+ <ThingDef ParentName="ApparelBase">
+  <defName>LP_FireGiantHelmet</defName><label>火巨人熔铁战盔</label>
+  <description>火巨人专用的封闭式重盔，宽大的铁质面甲保护头部、眼睛和下颌。只有巨人能穿，在熔火锻炉制作。</description>
+  <graphicData><texPath>FireGiant/Equipment/Helmet</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+  <techLevel>Industrial</techLevel>
+  <statBases><MaxHitPoints>350</MaxHitPoints><Mass>4</Mass><WorkToMake>14000</WorkToMake><Flammability>0</Flammability><ArmorRating_Sharp>1.1</ArmorRating_Sharp><ArmorRating_Blunt>0.45</ArmorRating_Blunt><ArmorRating_Heat>0.8</ArmorRating_Heat><Insulation_Cold>5</Insulation_Cold><Insulation_Heat>5</Insulation_Heat><EquipDelay>3</EquipDelay></statBases>
+  <costList><Steel>100</Steel><Plasteel>20</Plasteel><ComponentIndustrial>2</ComponentIndustrial></costList>
+  <thingCategories><li>ApparelArmor</li></thingCategories>
+  <recipeMaker><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill><effectWorking>Smith</effectWorking><soundWorking>Recipe_Smith</soundWorking><recipeUsers><li>LP_FireGiantForge</li></recipeUsers><researchPrerequisite>LP_GiantPlate</researchPrerequisite><skillRequirements><Crafting>6</Crafting></skillRequirements><unfinishedThingDef>UnfinishedMetallicTechArmor</unfinishedThingDef></recipeMaker>
+  <apparel><countsAsClothingForNudity>false</countsAsClothingForNudity><bodyPartGroups><li>FullHead</li></bodyPartGroups><wornGraphicPath>FireGiant/Equipment/Worn/Helmet</wornGraphicPath><layers><li>Overhead</li></layers><defaultOutfitTags><li>Soldier</li></defaultOutfitTags></apparel>
+  <modExtensions><li Class="LichPhylactery.GiantApparelExtension"><mood>2</mood></li></modExtensions>
+ </ThingDef>
+ <ThingDef ParentName="ApparelBase">
+  <defName>LP_FireGiantArmor</defName><label>火巨人熔铁重甲</label>
+  <description>以厚铁板与玻璃钢制成的火巨人重甲，覆盖躯干、颈部、肩部、手臂和腿部。防护坚实，但进一步降低移动速度。只有巨人能穿，在熔火锻炉制作；同时占用中层和外层，不能与锻工外衣、冬狼皮大氅同穿。</description>
+  <graphicData><texPath>FireGiant/Equipment/Armor</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+  <techLevel>Industrial</techLevel>
+  <statBases><MaxHitPoints>600</MaxHitPoints><Mass>30</Mass><WorkToMake>42000</WorkToMake><Flammability>0</Flammability><ArmorRating_Sharp>1.25</ArmorRating_Sharp><ArmorRating_Blunt>0.55</ArmorRating_Blunt><ArmorRating_Heat>0.9</ArmorRating_Heat><Insulation_Cold>15</Insulation_Cold><Insulation_Heat>10</Insulation_Heat><EquipDelay>15</EquipDelay></statBases>
+  <equippedStatOffsets><MoveSpeed>-0.4</MoveSpeed></equippedStatOffsets>
+  <costList><Steel>300</Steel><Plasteel>80</Plasteel><ComponentIndustrial>4</ComponentIndustrial></costList>
+  <thingCategories><li>ApparelArmor</li></thingCategories>
+  <recipeMaker><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill><effectWorking>Smith</effectWorking><soundWorking>Recipe_Smith</soundWorking><recipeUsers><li>LP_FireGiantForge</li></recipeUsers><researchPrerequisite>LP_GiantPlate</researchPrerequisite><skillRequirements><Crafting>8</Crafting></skillRequirements><unfinishedThingDef>UnfinishedMetallicTechArmor</unfinishedThingDef></recipeMaker>
+  <apparel><bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li><li>Legs</li></bodyPartGroups><wornGraphicPath>FireGiant/Equipment/Worn/Armor</wornGraphicPath><layers><li>Middle</li><li>Shell</li></layers><defaultOutfitTags><li>Soldier</li></defaultOutfitTags></apparel>
+  <modExtensions><li Class="LichPhylactery.GiantApparelExtension"><mood>2</mood></li></modExtensions>
+ </ThingDef>
+</Defs>

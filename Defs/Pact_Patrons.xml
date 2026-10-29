@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.55.0 异界契约：七位宗主（九狱四位、妖精两位女王和巫婆集会）、契约状态、恩赐状态与能力、隐藏条款状态、魔能爆、心情、信件。
+     宗主的字段见 Source/Pacts.cs 的 LP_PatronDef；恩赐的 workerClass 见 Source/PactBoons.cs。
+     条款 kind：SacrificePrisoner / Silver / Item / Gathering / Secret / Name / Year 是偿契要求（Item 的 category：BookOrScroll、Art、SoulCoin）；
+     intervalDays > 0 的条款按自己的周期执行（灵魂税、利息、一年寿命）；onExpiry 的在到期时要（迪斯帕特）；其他是特殊规则。 -->
+<Defs>
+  <!-- ==================== 九狱 ==================== -->
+  <LichPhylactery.LP_PatronDef>
+    <defName>LP_Patron_Asmodeus</defName>
+    <label>阿斯莫蒂尔斯</label>
+    <description>九狱之主，第九层涅瑟斯的统治者。他的契约写得最漂亮，也最贵：签下的是灵魂。</description>
+    <plane>Hells</plane>
+    <term>Soul</term>
+    <negotiable>true</negotiable>
+    <hiddenCount>2</hiddenCount>
+    <reviewDC>18</reviewDC>
+    <taintOnSign>0.1</taintOnSign>
+    <demandInterval>20~20</demandInterval>
+    <iconPath>Pact/Patrons/Asmodeus</iconPath>
+    <color>(0.62, 0.12, 0.12)</color>
+    <agentLabel>阿斯莫蒂尔斯的代理人</agentLabel>
+    <boons>
+      <li><key>InfernalMark</key><label>地狱之主的印记</label><description>5 格内的敌对人形心生恐惧：精神崩溃阈值 +15%（每 5 秒刷新）。魔能爆点燃的概率从 20% 提到 40%。</description><workerClass>LichPhylactery.PactBoon_Hediff</workerClass><hediff>LP_Boon_InfernalMark</hediff></li>
+      <li><key>HellGuard</key><label>九狱守卫</label><description>能力“召唤角魔”：1 名角魔作为仆从听候差遣 5 天，冷却 15 天。</description><workerClass>LichPhylactery.PactBoon_Ability</workerClass><ability>LP_SummonHornedDevil</ability></li>
+      <li><key>Erinyes</key><label>艾林魔</label><description>立即得到 1 名艾林魔束缚者（初始 9 级），终身跟随签约人，服从度不会下降。签约人死亡或契约结束时它回九狱。</description><workerClass>LichPhylactery.PactBoon_Bound</workerClass><kind>LP_HL_Erinyes</kind><count>9</count></li>
+    </boons>
+    <visibleClauses>
+      <li><kind>SacrificePrisoner</kind><label>血祭</label><description>每 20 天处决一名囚犯。</description></li>
+    </visibleClauses>
+    <demands>
+      <li><kind>SacrificePrisoner</kind><label>血祭</label><description>每 20 天处决一名囚犯。</description></li>
+    </demands>
+    <hiddenClausePool>
+      <li><kind>Firstborn</kind><label>长子条款</label><description>签约人的下一个孩子生来就是提夫林；十八岁时有一半的机会被九狱带走。</description></li>
+      <li><kind>SoulTax</kind><label>灵魂税</label><description>每季自动收走 3 枚灵魂币，交不出就债务 +1。</description><count>3</count><intervalDays>15</intervalDays></li>
+      <li><kind>Hellfire</kind><label>地狱之火</label><description>签约人受到的火焰伤害 ×1.25。</description></li>
+    </hiddenClausePool>
+  </LichPhylactery.LP_PatronDef>
+
+  <LichPhylactery.LP_PatronDef>
+    <defName>LP_Patron_Mephistopheles</defName>
+    <label>梅菲斯托菲勒斯</label>
+    <description>第八层凯尼亚的冰狱之主，九狱最博学的大公。他收藏知识，也收藏欠他知识的人。</description>
+    <plane>Hells</plane>
+    <term>Life</term>
+    <negotiable>true</negotiable>
+    <hiddenCount>2</hiddenCount>
+    <reviewDC>18</reviewDC>
+    <taintOnSign>0.1</taintOnSign>
+    <demandInterval>15~15</demandInterval>
+    <iconPath>Pact/Patrons/Mephistopheles</iconPath>
+    <color>(0.45, 0.62, 0.8)</color>
+    <agentLabel>梅菲斯托菲勒斯的代理人</agentLabel>
+    <boons>
+      <li><key>IceArcana</key><label>冰狱奥术</label><description>心灵熵上限 +20%；签约人的冰霜伤害（寒冷、冻伤类）命中时额外 +1 层寒气侵体。</description><workerClass>LichPhylactery.PactBoon_Hediff</workerClass><hediff>LP_Boon_IceArcana</hediff></li>
+      <li><key>IceGuard</key><label>寒冰守卫</label><description>能力“召唤寒冰魔”：1 名寒冰魔作为仆从听候差遣 5 天（期满正常离开），冷却 15 天。</description><workerClass>LichPhylactery.PactBoon_Ability</workerClass><ability>LP_SummonIceDevil</ability></li>
+      <li><key>ForbiddenBooks</key><label>禁书</label><description>签约时和之后每 60 天送来 1 本恶魔学典籍和 1 张随机学派的耐瑟瑞尔秘术残卷。</description><workerClass>LichPhylactery.PactBoon_Books</workerClass><days>60</days></li>
+    </boons>
+    <visibleClauses>
+      <li><kind>Item</kind><label>知识的什一税</label><description>每 15 天交出一本书或一张卷轴。</description><category>BookOrScroll</category></li>
+    </visibleClauses>
+    <demands>
+      <li><kind>Item</kind><label>知识的什一税</label><description>每 15 天交出一本书或一张卷轴。</description><category>BookOrScroll</category></li>
+    </demands>
+    <hiddenClausePool>
+      <li><kind>LongWinter</kind><label>长冬</label><description>每年冬季开始时，殖民地寒潮 10 天。</description></li>
+      <li><kind>IceHeart</kind><label>冰心</label><description>签约人的心情始终 -5。</description></li>
+      <li><kind>SoulTax</kind><label>灵魂税</label><description>每季自动收走 3 枚灵魂币，交不出就债务 +1。</description><count>3</count><intervalDays>15</intervalDays></li>
+    </hiddenClausePool>
+  </LichPhylactery.LP_PatronDef>
+
+  <LichPhylactery.LP_PatronDef>
+    <defName>LP_Patron_Dispater</defName>
+    <label>迪斯帕特</label>
+    <description>第二层迪斯的铁城之主，偏执、富有、从不出城。他只签一年的契约，到期时要一大笔银子。</description>
+    <plane>Hells</plane>
+    <term>Year</term>
+    <negotiable>true</negotiable>
+    <hiddenCount>2</hiddenCount>
+    <reviewDC>18</reviewDC>
+    <taintOnSign>0.1</taintOnSign>
+    <demandInterval>60~60</demandInterval>
+    <iconPath>Pact/Patrons/Dispater</iconPath>
+    <color>(0.42, 0.42, 0.46)</color>
+    <agentLabel>迪斯帕特的代理人</agentLabel>
+    <boons>
+      <li><key>IronGold</key><label>铁城之金</label><description>签约时和之后每季空投 1500 银。到期时要还的白银翻倍（12000）。</description><workerClass>LichPhylactery.PactBoon_Drop</workerClass><thing>Silver</thing><count>1500</count><days>15</days><clauseFactor>2</clauseFactor></li>
+      <li><key>IronArtisans</key><label>铁城工匠</label><description>签约人活着、在殖民地地图上时，这张地图上的殖民者建造速度 +25%。</description><workerClass>LichPhylactery.PactBoon_ColonyHediff</workerClass><hediff>LP_Boon_IronArtisan</hediff></li>
+      <li><key>InfernalForge</key><label>地狱铸炉</label><description>立即空投一座未安装的地狱铸炉：烧灵魂币，能做符文铁砧的所有配方，速度 ×1.5。</description><workerClass>LichPhylactery.PactBoon_Forge</workerClass><thing>LP_InfernalForge</thing></li>
+    </boons>
+    <visibleClauses>
+      <li><kind>Silver</kind><label>铁城的账单</label><description>一年到期时交出 6000 银（选了铁城之金的是 12000）。</description><count>6000</count><onExpiry>true</onExpiry></li>
+    </visibleClauses>
+    <hiddenClausePool>
+      <li><kind>Collateral</kind><label>抵押物</label><description>到期还不上时，殖民地价值最高的一栋建筑被收走。</description></li>
+      <li><kind>Interest</kind><label>利息</label><description>每季额外收 500 银，交不出就债务 +1。</description><count>500</count><intervalDays>15</intervalDays></li>
+      <li><kind>SoulTax</kind><label>灵魂税</label><description>每季自动收走 3 枚灵魂币，交不出就债务 +1。</description><count>3</count><intervalDays>15</intervalDays></li>
+    </hiddenClausePool>
+  </LichPhylactery.LP_PatronDef>
+
+  <LichPhylactery.LP_PatronDef>
+    <defName>LP_Patron_Glasya</defName>
+    <label>格拉西娅</label>
+    <description>第六层马尔博格的女主人，阿斯莫蒂尔斯的女儿，九狱最好的律师。没有她解不开的契约——除了她自己的。</description>
+    <plane>Hells</plane>
+    <term>Life</term>
+    <negotiable>true</negotiable>
+    <hiddenCount>2</hiddenCount>
+    <reviewDC>18</reviewDC>
+    <taintOnSign>0.1</taintOnSign>
+    <demandInterval>15~15</demandInterval>
+    <iconPath>Pact/Patrons/Glasya</iconPath>
+    <color>(0.7, 0.32, 0.5)</color>
+    <agentLabel>格拉西娅的代理人</agentLabel>
+    <boons>
+      <li><key>QueenTongue</key><label>女王之舌</label><description>签约人社交影响 +30%，交易价格改善 +15%。</description><workerClass>LichPhylactery.PactBoon_Hediff</workerClass><hediff>LP_Boon_QueenTongue</hediff></li>
+      <li><key>SeeClauses</key><label>看穿条款</label><description>殖民地所有其他契约的隐藏条款自动揭开。</description><workerClass>LichPhylactery.PactBoon_SeeClauses</workerClass></li>
+      <li><key>Unbind</key><label>解开契约</label><description>立刻解除殖民地里另一份契约，没有任何后果；之后这份契约的代价周期 ×0.75。</description><workerClass>LichPhylactery.PactBoon_Unbind</workerClass></li>
+    </boons>
+    <visibleClauses>
+      <li><kind>Secret</kind><label>秘密</label><description>每 15 天交出一件秘密：随机两名殖民者互相意见 -20、各自心情 -5（5 天）。</description></li>
+    </visibleClauses>
+    <demands>
+      <li><kind>Secret</kind><label>秘密</label><description>每 15 天交出一件秘密：随机两名殖民者互相意见 -20、各自心情 -5（5 天）。</description></li>
+    </demands>
+    <hiddenClausePool>
+      <li><kind>Resale</kind><label>转卖</label><description>签约一年后，契约被转卖给另一位九狱宗主：恩赐保留，代价换成新宗主的。</description></li>
+      <li><kind>SoulTax</kind><label>灵魂税</label><description>每季自动收走 3 枚灵魂币，交不出就债务 +1。</description><count>3</count><intervalDays>15</intervalDays></li>
+    </hiddenClausePool>
+  </LichPhylactery.LP_PatronDef>
+
+  <!-- ==================== 妖精 ==================== -->
+  <LichPhylactery.LP_PatronDef>
+    <defName>LP_Patron_Titania</defName>
+    <label>提泰妮娅</label>
+    <description>夏宫女王，妖精荒野里最明亮的君主。她的契约像夏天一样慷慨——和夏天一样，说变就变。</description>
+    <plane>Feywild</plane>
+    <term>Life</term>
+    <negotiable>false</negotiable>
+    <hiddenCount>1</hiddenCount>
+    <reviewDC>15</reviewDC>
+    <mutation>0.2</mutation>
+    <demandInterval>15~15</demandInterval>
+    <iconPath>Pact/Patrons/Titania</iconPath>
+    <color>(0.55, 0.78, 0.4)</color>
+    <agentLabel>夏宫的使者</agentLabel>
+    <boons>
+      <li><key>SummerGrace</key><label>夏日恩泽</label><description>签约人所在的殖民地地图上，作物生长 +30%；种植区里的作物不会因为低温枯萎。</description><workerClass>LichPhylactery.PactBoon_Summer</workerClass></li>
+      <li><key>SummerTouch</key><label>夏日之触</label><description>能力“夏日之触”：治好一名殖民者最严重的一处伤（不含缺失部位），冷却 1 天。</description><workerClass>LichPhylactery.PactBoon_Ability</workerClass><ability>LP_SummerTouch</ability></li>
+      <li><key>SummerGuest</key><label>夏宫来客</label><description>立即得到 1 名萨特或 1 名林仙（由你选），作为殖民者加入。</description><workerClass>LichPhylactery.PactBoon_Guest</workerClass></li>
+    </boons>
+    <visibleClauses>
+      <li><kind>Gathering</kind><label>夏夜的欢宴</label><description>每 15 天举办一次派对或婚礼。</description></li>
+    </visibleClauses>
+    <demands>
+      <li><kind>Gathering</kind><label>夏夜的欢宴</label><description>每 15 天举办一次派对或婚礼。</description></li>
+      <li><kind>Secret</kind><label>一件秘密</label><description>交出一件秘密：随机两名殖民者互相意见 -20、各自心情 -5（5 天）。</description></li>
+      <li><kind>Name</kind><label>一个名字</label><description>随机一名殖民者的名字被收走：改名、心情 -6、社交影响 -20%（10 天）。</description></li>
+      <li><kind>Item</kind><label>一件美物</label><description>交出一件品质优秀以上的艺术品。</description><category>Art</category></li>
+    </demands>
+    <hiddenClausePool>
+      <li><kind>NoTreeCut</kind><label>不伐之誓</label><description>殖民者每砍倒一棵树，债务 +1。</description></li>
+      <li><kind>Year</kind><label>一年寿命</label><description>每年收走签约人一年寿命（生物年龄 +1）。</description><intervalDays>60</intervalDays></li>
+    </hiddenClausePool>
+  </LichPhylactery.LP_PatronDef>
+
+  <LichPhylactery.LP_PatronDef>
+    <defName>LP_Patron_QueenOfAir</defName>
+    <label>风暗女王</label>
+    <description>冬宫的风暗女王，没人见过她的脸。她喜欢收集名字——和孩子。</description>
+    <plane>Feywild</plane>
+    <term>Life</term>
+    <negotiable>false</negotiable>
+    <hiddenCount>1</hiddenCount>
+    <reviewDC>15</reviewDC>
+    <mutation>0.2</mutation>
+    <demandInterval>15~15</demandInterval>
+    <iconPath>Pact/Patrons/QueenOfAir</iconPath>
+    <color>(0.5, 0.58, 0.75)</color>
+    <agentLabel>冬宫的使者</agentLabel>
+    <boons>
+      <li><key>WinterVeil</key><label>冬之帷幕</label><description>能力“冬之帷幕”：6 格内的敌人做感知豁免（豁免难度随签约人的熟练加值和魅力提高；目标的属性调整值和熟练加值每点 +5% 成功率），失败被魅惑 6 秒。冷却 1 天。</description><workerClass>LichPhylactery.PactBoon_Ability</workerClass><ability>LP_WinterVeil</ability></li>
+      <li><key>FrostShadow</key><label>霜影</label><description>签约人站着不动 3 秒后隐身；一动或一出手就现形。</description><workerClass>LichPhylactery.PactBoon_Hediff</workerClass><hediff>LP_Boon_FrostShadow</hediff></li>
+      <li><key>RedcapServants</key><label>红帽之仆</label><description>能力“召唤红帽”：4 只红帽作为仆从听候差遣 3 天，冷却 1 季。</description><workerClass>LichPhylactery.PactBoon_Ability</workerClass><ability>LP_SummonRedcaps</ability></li>
+    </boons>
+    <visibleClauses>
+      <li><kind>Name</kind><label>一个名字</label><description>每季收走随机一名殖民者的名字：改名、心情 -6、社交影响 -20%（10 天）。</description></li>
+    </visibleClauses>
+    <demands>
+      <li><kind>Name</kind><label>一个名字</label><description>每季收走随机一名殖民者的名字：改名、心情 -6、社交影响 -20%（10 天）。</description></li>
+      <li><kind>Secret</kind><label>一件秘密</label><description>交出一件秘密：随机两名殖民者互相意见 -20、各自心情 -5（5 天）。</description></li>
+      <li><kind>Gathering</kind><label>冬夜的舞会</label><description>举办一次派对或婚礼。</description></li>
+      <li><kind>Year</kind><label>一年寿命</label><description>收走签约人一年寿命（生物年龄 +1）。</description></li>
+    </demands>
+    <hiddenClausePool>
+      <li><kind>WinterFirstborn</kind><label>长子归冬宫</label><description>签约人的下一个孩子出生时必定被换成调换儿。</description></li>
+      <li><kind>WinterKiss</kind><label>冬之吻</label><description>签约人的最低舒适温度 +10℃。</description></li>
+    </hiddenClausePool>
+  </LichPhylactery.LP_PatronDef>
+
+  <LichPhylactery.LP_PatronDef>
+    <defName>LP_Patron_Hags</defName>
+    <label>巫婆集会</label>
+    <description>三个老巫婆凑成的集会，替两位女王跑腿，也替自己做买卖。她们的恩赐是从女王那里偷来的，定金要当场付。</description>
+    <plane>Feywild</plane>
+    <term>Year</term>
+    <negotiable>false</negotiable>
+    <hiddenCount>0</hiddenCount>
+    <reviewDC>15</reviewDC>
+    <mutation>0.2</mutation>
+    <demandInterval>30~30</demandInterval>
+    <boonChoices>3</boonChoices>
+    <iconPath>Pact/Patrons/Hags</iconPath>
+    <color>(0.42, 0.5, 0.3)</color>
+    <agentLabel>巫婆集会的使者</agentLabel>
+    <boons>
+      <li><key>SummerGrace</key><label>夏日恩泽</label><description>签约人所在的殖民地地图上，作物生长 +30%；种植区里的作物不会因为低温枯萎。</description><workerClass>LichPhylactery.PactBoon_Summer</workerClass></li>
+      <li><key>SummerTouch</key><label>夏日之触</label><description>能力“夏日之触”：治好一名殖民者最严重的一处伤，冷却 1 天。</description><workerClass>LichPhylactery.PactBoon_Ability</workerClass><ability>LP_SummerTouch</ability></li>
+      <li><key>SummerGuest</key><label>夏宫来客</label><description>立即得到 1 名萨特或 1 名林仙，作为殖民者加入。</description><workerClass>LichPhylactery.PactBoon_Guest</workerClass></li>
+      <li><key>WinterVeil</key><label>冬之帷幕</label><description>能力“冬之帷幕”：6 格内的敌人做感知豁免，失败被魅惑 6 秒。冷却 1 天。</description><workerClass>LichPhylactery.PactBoon_Ability</workerClass><ability>LP_WinterVeil</ability></li>
+      <li><key>FrostShadow</key><label>霜影</label><description>签约人站着不动 3 秒后隐身。</description><workerClass>LichPhylactery.PactBoon_Hediff</workerClass><hediff>LP_Boon_FrostShadow</hediff></li>
+      <li><key>RedcapServants</key><label>红帽之仆</label><description>能力“召唤红帽”：4 只红帽仆从 3 天，冷却 1 季。</description><workerClass>LichPhylactery.PactBoon_Ability</workerClass><ability>LP_SummonRedcaps</ability></li>
+    </boons>
+    <visibleClauses>
+      <li><kind>YearOrEye</kind><label>定金</label><description>签约时当场付：一年寿命，或者一只眼睛（你选）。</description></li>
+      <li><kind>Item</kind><label>美物</label><description>每 30 天交出一件品质优秀以上的艺术品。</description><category>Art</category></li>
+    </visibleClauses>
+    <demands>
+      <li><kind>Item</kind><label>美物</label><description>每 30 天交出一件品质优秀以上的艺术品。</description><category>Art</category></li>
+      <li><kind>Gathering</kind><label>巫婆的茶会</label><description>举办一次派对或婚礼。</description></li>
+      <li><kind>Secret</kind><label>一件秘密</label><description>交出一件秘密：随机两名殖民者互相意见 -20、各自心情 -5（5 天）。</description></li>
+    </demands>
+  </LichPhylactery.LP_PatronDef>
+
+  <!-- ==================== 契约状态 ==================== -->
+  <HediffDef>
+    <defName>LP_PactSigner</defName>
+    <label>契约</label>
+    <description>和一位异界宗主签下的契约。括号里是宗主和债务（0～3）。债务 1：心情 -6，恩赐给的能力冷却 ×2；债务 2：宗主派讨债者（九狱）或狂猎（妖精），之后每 15 天一次；债务 3：强制执行——签约人被拖进那个位面（巫妖：命匣被收走）。在契约讲台“补偿宗主”可以还债。</description>
+    <hediffClass>LichPhylactery.Hediff_PactSigner</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <initialSeverity>0.01</initialSeverity>
+    <minSeverity>0</minSeverity>
+    <maxSeverity>3</maxSeverity>
+    <defaultLabelColor>(0.75, 0.6, 0.35)</defaultLabelColor>
+    <stages>
+      <li><label>守约</label></li>
+      <li><minSeverity>1</minSeverity><label>欠债</label></li>
+      <li><minSeverity>2</minSeverity><label>被追债</label></li>
+      <li><minSeverity>3</minSeverity><label>强制执行</label></li>
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_PactBound</defName>
+    <label>契约守卫</label>
+    <description>宗主按契约借给签约人的守卫：守契约，服从度不会下降。契约结束时它会回去。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.75, 0.6, 0.35)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_PatronAgent</defName>
+    <label>宗主代理人</label>
+    <description>（隐藏）讨债者 / 狂猎的首领：倒下时掉落宗主代理人的真名卷。</description>
+    <hediffClass>LichPhylactery.Hediff_PatronAgent</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+
+  <!-- ==================== 恩赐状态（severity 1 = 普通，1.5 = 命匣抵押） ==================== -->
+  <HediffDef Name="LP_PactBoonHediffBase" Abstract="True">
+    <hediffClass>LichPhylactery.Hediff_PactBoon</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>2</maxSeverity>
+    <defaultLabelColor>(0.75, 0.6, 0.35)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_PactBoonHediffBase">
+    <defName>LP_Boon_InfernalMark</defName>
+    <label>地狱之主的印记</label>
+    <description>阿斯莫蒂尔斯的印记在额头上发烫：5 格内的敌对人形心生恐惧（精神崩溃阈值 +15%）；魔能爆点燃的概率 40%。</description>
+    <hediffClass>LichPhylactery.Hediff_InfernalMark</hediffClass>
+    <stages><li /></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_InfernalDread</defName>
+    <label>九狱的恐惧</label>
+    <description>地狱之主的印记压得人喘不过气：精神崩溃阈值 +15%。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>600</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><statOffsets><MentalBreakThreshold>0.15</MentalBreakThreshold></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_PactBoonHediffBase">
+    <defName>LP_Boon_IceArcana</defName>
+    <label>冰狱奥术</label>
+    <description>梅菲斯托菲勒斯的寒冰在血管里流：心灵熵上限 +20%；冰霜伤害命中时额外 +1 层寒气侵体。</description>
+    <stages><li><statFactors><PsychicEntropyMax>1.2</PsychicEntropyMax></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_Boon_IronArtisan</defName>
+    <label>铁城工匠</label>
+    <description>迪斯帕特的契约：殖民地的建造速度 +25%（签约人活着、在这张地图上时）。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages><li><statFactors><ConstructionSpeed>1.25</ConstructionSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_PactBoonHediffBase">
+    <defName>LP_Boon_QueenTongue</defName>
+    <label>女王之舌</label>
+    <description>格拉西娅借给签约人的舌头：社交影响 +30%，交易价格改善 +15%。</description>
+    <stages><li><statFactors><SocialImpact>1.3</SocialImpact></statFactors><statOffsets><TradePriceImprovement>0.15</TradePriceImprovement></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_PactBoonHediffBase">
+    <defName>LP_Boon_FrostShadow</defName>
+    <label>霜影</label>
+    <description>风暗女王的霜影：站着不动 3 秒后隐身，一动或一出手就现形。</description>
+    <hediffClass>LichPhylactery.Hediff_FrostShadow</hediffClass>
+    <stages><li /></stages>
+  </HediffDef>
+
+  <!-- ==================== 隐藏条款的状态 ==================== -->
+  <HediffDef>
+    <defName>LP_Clause_Hellfire</defName>
+    <label>地狱之火</label>
+    <description>契约里的“地狱之火”：受到的火焰伤害 ×1.25。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages><li><damageFactors><Flame>1.25</Flame><Burn>1.25</Burn></damageFactors></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_Clause_IceHeart</defName>
+    <label>冰心</label>
+    <description>契约里的“冰心”：心情始终 -5。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_Clause_WinterKiss</defName>
+    <label>冬之吻</label>
+    <description>契约里的“冬之吻”：最低舒适温度 +10℃。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages><li><statOffsets><ComfyTemperatureMin>10</ComfyTemperatureMin></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_HellsClaim</defName>
+    <label>九狱的索取</label>
+    <description>长子条款：这孩子十八岁时，九狱会来要人（50%）。</description>
+    <hediffClass>LichPhylactery.Hediff_HellsClaim</hediffClass>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.62, 0.2, 0.2)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_NameStolenHediff</defName>
+    <label>失去的名字</label>
+    <description>原来的名字被宗主收走了，新名字怎么也叫不顺口：社交影响 -20%。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>600000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><statFactors><SocialImpact>0.8</SocialImpact></statFactors></li></stages>
+  </HediffDef>
+
+  <!-- ==================== 魔能爆 ==================== -->
+  <DamageDef>
+    <defName>LP_Eldritch</defName>
+    <label>魔能</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0}被魔能爆撕碎了。</deathMessage>
+    <hediff>Crush</hediff>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Blunt</armorCategory>
+    <defaultDamage>12</defaultDamage>
+    <defaultArmorPenetration>0.3</defaultArmorPenetration>
+    <buildingDamageFactor>1</buildingDamageFactor>
+    <overkillPctToDestroyPart>0~0.7</overkillPctToDestroyPart>
+  </DamageDef>
+  <AbilityDef Name="LP_PactAbilityBase" Abstract="True">
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <sendMessageOnCooldownComplete>false</sendMessageOnCooldownComplete>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_PactAbilityBase">
+    <defName>LP_EldritchBlast</defName>
+    <label>魔能爆</label>
+    <description>签约人都会的契约法术：一道力场光束（射程 24），每道 12 点魔能伤害（护甲穿透 30%）。道数随冒险者等级：1–4 级 1 道、5–10 级 2 道、11–16 级 3 道、17 级起 4 道；目标倒下后剩下的光束自动打向附近的敌人。九狱宗主：20% 点燃；妖精宗主：15% 让目标迷惑 2 秒。冷却 4 秒。解约后失去。</description>
+    <iconPath>Pact/Abilities/EldritchBlast</iconPath>
+    <cooldownTicksRange>240</cooldownTicksRange>
+    <hostile>true</hostile>
+    <aiCanUse>true</aiCanUse>
+    <ai_IsOffensive>true</ai_IsOffensive>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>24</range>
+      <warmupTime>0.6</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_EldritchBlast" /></comps>
+  </AbilityDef>
+
+  <!-- ==================== 恩赐能力 ==================== -->
+  <AbilityDef Name="LP_PactSelfAbilityBase" ParentName="LP_PactAbilityBase" Abstract="True">
+    <targetRequired>false</targetRequired>
+    <hostile>false</hostile>
+    <aiCanUse>false</aiCanUse>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>1</warmupTime>
+      <range>0</range>
+      <targetParams><canTargetSelf>true</canTargetSelf></targetParams>
+    </verbProperties>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_PactSelfAbilityBase">
+    <defName>LP_SummonHornedDevil</defName>
+    <label>召唤角魔</label>
+    <description>按阿斯莫蒂尔斯的契约召来一名角魔，作为仆从听候差遣 5 天。冷却 15 天（欠债时 ×2）。</description>
+    <iconPath>Pact/Abilities/SummonHornedDevil</iconPath>
+    <cooldownTicksRange>900000</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_PactAbility"><effect>summon</effect><kind>LP_HL_HornedDevil</kind><count>1</count><days>5</days></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_PactSelfAbilityBase">
+    <defName>LP_SummonIceDevil</defName>
+    <label>召唤寒冰魔</label>
+    <description>按梅菲斯托菲勒斯的契约召来一名寒冰魔，作为仆从听候差遣 5 天，期满正常离开。冷却 15 天（欠债时 ×2）。</description>
+    <iconPath>Pact/Abilities/SummonIceDevil</iconPath>
+    <cooldownTicksRange>900000</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_PactAbility"><effect>summon</effect><kind>LP_FH_IceDevil</kind><count>1</count><days>5</days></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_PactSelfAbilityBase">
+    <defName>LP_SummonRedcaps</defName>
+    <label>召唤红帽</label>
+    <description>按风暗女王的契约召来 4 只红帽，作为仆从听候差遣 3 天。冷却 1 季（欠债时 ×2）。</description>
+    <iconPath>Pact/Abilities/SummonRedcaps</iconPath>
+    <cooldownTicksRange>900000</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_PactAbility"><effect>summon</effect><kind>LP_FW_Redcap</kind><count>4</count><days>3</days></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_PactSelfAbilityBase">
+    <defName>LP_WinterVeil</defName>
+    <label>冬之帷幕</label>
+    <description>落下一层冬雾：6 格内的敌人做感知豁免（豁免难度随签约人的熟练加值和魅力提高；目标的属性调整值和熟练加值每点 +5% 成功率），失败被魅惑 6 秒。冷却 1 天（欠债时 ×2）。</description>
+    <iconPath>Pact/Abilities/WinterVeil</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <hostile>true</hostile>
+    <comps><li Class="LichPhylactery.CompProperties_PactAbility"><effect>veil</effect><radius>6</radius></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_PactAbilityBase">
+    <defName>LP_SummerTouch</defName>
+    <label>夏日之触</label>
+    <description>手心按在伤口上，夏天的光就把它合上了：治好一名殖民者最严重的一处伤（不含缺失部位；也能止住地狱之伤）。冷却 1 天（欠债时 ×2）。</description>
+    <iconPath>Pact/Abilities/SummerTouch</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <aiCanUse>false</aiCanUse>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>4.9</range>
+      <warmupTime>1</warmupTime>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetSelf>true</canTargetSelf><canTargetLocations>false</canTargetLocations><canTargetBuildings>false</canTargetBuildings><canTargetAnimals>false</canTargetAnimals><canTargetMechs>false</canTargetMechs></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_PactAbility"><effect>summerTouch</effect></li></comps>
+  </AbilityDef>
+
+  <!-- ==================== 心情 ==================== -->
+  <ThoughtDef>
+    <defName>LP_PactMissed</defName>
+    <durationDays>3</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>错过了机会</label><description>那份契约烧掉了。也许是对的……也许不是。</description><baseMoodEffect>-3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_PactDebtThought</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_PactDebt</workerClass>
+    <stages><li><label>违约的阴影</label><description>我欠了不该欠的东西。每一个夜里都能听见它们在数。</description><baseMoodEffect>-6</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_SecretRevealed</defName>
+    <durationDays>5</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>秘密被公开了</label><description>那件事本来只有我们俩知道。</description><baseMoodEffect>-5</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_SecretRevealedOpinion</defName>
+    <thoughtClass>Thought_MemorySocial</thoughtClass>
+    <durationDays>15</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>秘密被公开了</label><baseOpinionOffset>-20</baseOpinionOffset></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_NameStolen</defName>
+    <durationDays>10</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>失去了名字</label><description>有人叫我，我却要愣一下才知道是在叫我。</description><baseMoodEffect>-6</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_IceHeartThought</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>LP_Clause_IceHeart</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages><li><label>冰心</label><description>心里结了一层霜，什么都暖不进来。</description><baseMoodEffect>-5</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_LaughterSold</defName>
+    <durationDays>15</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>卖掉的笑声</label><description>我把笑声卖给了妖精。现在想笑也笑不出来。</description><baseMoodEffect>-5</baseMoodEffect></li></stages>
+  </ThoughtDef>
+
+  <LetterDef ParentName="CustomChoiceLetterBase">
+    <defName>LP_PactLetter</defName>
+    <letterClass>LichPhylactery.ChoiceLetter_Pact</letterClass>
+    <color>(0.78, 0.6, 0.35)</color>
+    <flashColor>(0.78, 0.6, 0.35)</flashColor>
+  </LetterDef>
+</Defs>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.50.0 传奇重铸之石：黑网商队每次 15% 带一块（市场价 6000，买价约 8000 银）。 -->
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/TraderKindDef[defName="LP_Caravan_BlackNetwork"]/stockGenerators</xpath>
+    <value>
+      <li Class="LichPhylactery.StockGenerator_NetherilChance">
+        <thingDef>LP_LegendRespecStone</thingDef>
+        <chance>0.15</chance>
+      </li>
+    </value>
+  </Operation>
+</Patch>

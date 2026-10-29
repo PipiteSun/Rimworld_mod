@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.54.0 深渊仪式：灵魂币、恶魔血、恶魔学典籍、真名卷、位面锚链、饱魂之牙；抽恶魔血手术、锚链配方。代码见 Source/AbyssRitual.cs、Outsiders.cs。 -->
+<Defs>
+  <ThingCategoryDef>
+    <defName>LP_AbyssItems</defName>
+    <label>深渊物品</label>
+    <parent>ResourcesRaw</parent>
+    <iconPath>Items/Abyss/SoulCoin</iconPath>
+  </ThingCategoryDef>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_SoulCoin</defName>
+    <label>灵魂币</label>
+    <description>深渊的通货：一枚冰冷的黑铁币，正面锁着一个尖叫的灵魂。深渊仪式用它代替活祭；巫妖可以把它吸收进命匣（每枚相当于献祭一具普通尸体的 25%）。背包里揣着 10 枚以上会让人心神不宁。不能制作，只能炼魂或从恶魔身上得到。</description>
+    <graphicData><texPath>Items/Abyss/SoulCoin</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <soundInteract>Silver_Drop</soundInteract>
+    <soundDrop>Silver_Drop</soundDrop>
+    <stackLimit>50</stackLimit>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <statBases><MarketValue>30</MarketValue><Mass>0.02</Mass><Flammability>0</Flammability></statBases>
+    <thingCategories><li>LP_AbyssItems</li></thingCategories>
+    <tradeTags><li>LP_Abyss</li></tradeTags>
+    <burnableByRecipe>false</burnableByRecipe>
+    <comps>
+      <li Class="CompProperties_Usable"><useJob>UseItem</useJob><useLabel>吸收灵魂（巫妖）</useLabel><useDuration>120</useDuration></li>
+      <li Class="CompProperties_UseEffect"><compClass>LichPhylactery.CompUseEffect_SoulCoin</compClass></li>
+      <li Class="CompProperties_UseEffectDestroySelf" />
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_PotionBase">
+    <defName>LP_DemonBlood</defName>
+    <label>恶魔血</label>
+    <description>一小瓶冒着热气的黑红色血液。喝下去：1 天内近战伤害 +15%、疼痛 -10%，但深渊腐化 +8%。深渊仪式的二阶祭品之一；炼金桌的配方以后会用到它。</description>
+    <descriptionHyperlinks><HediffDef>LP_DemonBloodRush</HediffDef></descriptionHyperlinks>
+    <graphicData><texPath>Items/Abyss/DemonBlood</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>10</stackLimit>
+    <statBases><MarketValue>60</MarketValue><MaxHitPoints>50</MaxHitPoints></statBases>
+    <thingCategories Inherit="False"><li>LP_AbyssItems</li></thingCategories>
+    <tradeTags Inherit="False"><li>LP_Abyss</li></tradeTags>
+    <ingestible>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff"><hediffDef>LP_DemonBloodRush</hediffDef><severity>1</severity></li>
+        <li Class="LichPhylactery.IngestionOutcomeDoer_AbyssTaint"><offset>0.08</offset></li>
+      </outcomeDoers>
+    </ingestible>
+    <comps><li Class="CompProperties_Drug"><listOrder>2300</listOrder></li></comps>
+  </ThingDef>
+  <HediffDef>
+    <defName>LP_DemonBloodRush</defName>
+    <label>恶魔血</label>
+    <description>恶魔血在血管里烧：近战伤害 +15%，疼痛 -10%。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <defaultLabelColor>(0.8, 0.25, 0.25)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>60000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><painFactor>0.9</painFactor><statFactors><MeleeDamageFactor>1.15</MeleeDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_DemonBloodDrawn</defName>
+    <label>抽过恶魔血</label>
+    <description>最近被抽过血，5 天内不能再抽。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>300000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryFlesh">
+    <defName>LP_ExtractDemonBlood</defName>
+    <label>抽恶魔血</label>
+    <description>从戴着位面锚链、关在有束缚法阵房间里的恶魔囚犯身上抽一瓶恶魔血。不伤性命，每 5 天一次。</description>
+    <workerClass>LichPhylactery.Recipe_ExtractDemonBlood</workerClass>
+    <jobString>正在抽恶魔血。</jobString>
+    <workAmount>600</workAmount>
+    <anesthetize>false</anesthetize>
+    <surgerySuccessChanceFactor>99</surgerySuccessChanceFactor>
+    <deathOnFailedSurgeryChance>0</deathOnFailedSurgeryChance>
+    <isViolation>false</isViolation>
+    <targetsBodyPart>false</targetsBodyPart>
+    <researchPrerequisite>LP_Research_Abyssology</researchPrerequisite>
+    <recipeUsers><li>Human</li></recipeUsers>
+    <skillRequirements><Medicine>3</Medicine></skillRequirements>
+    <ingredients />
+    <fixedIngredientFilter />
+  </RecipeDef>
+
+  <!-- 恶魔学典籍：原版书。每本随机记载一种恶魔，读满 4 小时学会召唤它。 -->
+  <RulePackDef>
+    <defName>LP_Namer_Demonomicon</defName>
+    <rulePack><rulesStrings><li>title->恶魔学典籍</li></rulesStrings></rulePack>
+  </RulePackDef>
+  <RulePackDef>
+    <defName>LP_Description_Demonomicon</defName>
+    <rulePack><rulesStrings>
+      <li>desc->一本用不知名的皮装订的书，书页摸上去是温的。字迹会在你移开目光时轻轻蠕动。</li>
+      <li>desc->扉页上有一圈烧焦的符文，读者的名字会在读完时自己出现在下面。</li>
+    </rulesStrings></rulePack>
+  </RulePackDef>
+  <ThingDef ParentName="BookBase">
+    <defName>LP_Demonomicon</defName>
+    <label>恶魔学典籍</label>
+    <description>记载深渊恶魔真名、习性和召唤仪式的禁书。每本只详细记载一种恶魔（巴路古拉、哈兹魔、魅魔、纳巴苏、六臂蛇魔或炎魔）。读满 4 小时，殖民地就学会在深渊法阵上召唤它；阅读时每小时深渊腐化 +0.5%。地图上放着它会让位面一点点变薄。</description>
+    <thingClass>LichPhylactery.Book_Demonomicon</thingClass>
+    <thingSetMakerTags Inherit="False" />
+    <graphicData>
+      <texPath>Items/Abyss/Demonomicon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.8</drawSize>
+    </graphicData>
+    <uiIconPath>Items/Abyss/Demonomicon</uiIconPath>
+    <statBases><MarketValue>600</MarketValue><Mass>0.6</Mass><Beauty>-2</Beauty></statBases>
+    <comps>
+      <li Class="CompProperties_Book">
+        <nameMaker>LP_Namer_Demonomicon</nameMaker>
+        <descriptionMaker>LP_Description_Demonomicon</descriptionMaker>
+        <ageYearsRange>200~900</ageYearsRange>
+        <pickWeight>0</pickWeight>
+        <openGraphic><texPath>Items/Abyss/DemonomiconOpen</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></openGraphic>
+        <verticalGraphic><texPath>Items/Abyss/Demonomicon</texPath><graphicClass>Graphic_Single</graphicClass><addTopAltitudeBias>true</addTopAltitudeBias></verticalGraphic>
+        <doers><li Class="LichPhylactery.BookOutcomeProperties_Demonomicon" /></doers>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_TrueNameScroll</defName>
+    <label>真名卷</label>
+    <description>一张写着外来者真名的羊皮卷。持有自己束缚者的真名卷，它的服从度衰减减半；对卷上记载的敌人念出真名，它要做魅力豁免，失败立刻被逐回原来的位面；召唤同种外来者的仪式成功率 +10%；还能直接封住一道深渊裂口（用掉卷）。</description>
+    <graphicData><texPath>Items/Abyss/TrueNameScroll</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <soundInteract>Standard_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <stackLimit>1</stackLimit>
+    <statBases><MarketValue>400</MarketValue><Mass>0.05</Mass><MaxHitPoints>40</MaxHitPoints><Flammability>1</Flammability></statBases>
+    <thingCategories><li>LP_AbyssItems</li></thingCategories>
+    <tradeTags><li>LP_Abyss</li></tradeTags>
+    <comps><li Class="LichPhylactery.CompProperties_TrueName" /></comps>
+  </ThingDef>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_DimensionalShackles</defName>
+    <label>位面锚链</label>
+    <description>刻满锚定符文的银与寒铁镣铐。给倒地的外来者戴上，它就不会再被遣返，可以俘虏；殖民者背包里带着锚链时，5 格内倒下的敌对外来者会被自动锁住。戴锚链的外来者囚犯关在有束缚法阵的房间里不会越狱，还能审讯出真名。</description>
+    <graphicData><texPath>Items/Abyss/DimensionalShackles</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Metal_Drop</soundDrop>
+    <stackLimit>10</stackLimit>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <statBases><MarketValue>180</MarketValue><Mass>1</Mass><Flammability>0</Flammability></statBases>
+    <thingCategories><li>LP_AbyssItems</li></thingCategories>
+    <tradeTags><li>LP_Abyss</li></tradeTags>
+  </ThingDef>
+  <RecipeDef>
+    <defName>LP_MakeDimensionalShackles</defName>
+    <label>锻造位面锚链</label>
+    <description>用 30 银、20 寒铁和 2 份位面残渣锻造一副位面锚链。</description>
+    <jobString>正在锻造位面锚链。</jobString>
+    <workAmount>3000</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Smith</soundWorking>
+    <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+    <researchPrerequisite>LP_Research_Abyssology</researchPrerequisite>
+    <skillRequirements><Crafting>6</Crafting></skillRequirements>
+    <recipeUsers><li>LP_RuneAnvil</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>30</count></li>
+      <li><filter><thingDefs><li>LP_ColdIron</li></thingDefs></filter><count>20</count></li>
+      <li><filter><thingDefs><li>LP_PlanarResidue</li></thingDefs></filter><count>2</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>Silver</li><li>LP_ColdIron</li><li>LP_PlanarResidue</li></thingDefs></fixedIngredientFilter>
+    <products><LP_DimensionalShackles>1</LP_DimensionalShackles></products>
+  </RecipeDef>
+
+  <ThingDef ParentName="LP_MagicNeckBase">
+    <defName>LP_GorgedFang</defName>
+    <label>饱魂之牙</label>
+    <description>纳巴苏的一颗长獠牙，穿了根皮绳挂在脖子上。佩戴者每杀死一个人形就叠一层“饱魂之牙”（伤害 +1%，最多 10 层，死亡清零）；但佩戴时深渊腐化每天 +0.2%。戴在奇物层的颈部。</description>
+    <graphicData><texPath>Items/Abyss/GorgedFang</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>900</MarketValue><Mass>0.1</Mass></statBases>
+    <tradeTags Inherit="False"><li>LP_MagicItem</li><li>LP_Abyss</li></tradeTags>
+    <comps><li Class="LichPhylactery.CompProperties_WornHediff"><hediff>LP_FangWearer</hediff></li></comps>
+  </ThingDef>
+  <HediffDef>
+    <defName>LP_FangWearer</defName>
+    <label>戴着饱魂之牙</label>
+    <description>獠牙贴着皮肤，像在低声要求更多的灵魂：每杀一个人形叠一层伤害加成；深渊腐化每天 +0.2%。</description>
+    <hediffClass>LichPhylactery.Hediff_FangWearer</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_FangGorged</defName>
+    <label>饱魂之牙</label>
+    <description>獠牙里存着被杀者的灵魂：每层伤害 +1%，最多 10 层，死亡清零。</description>
+    <hediffClass>LichPhylactery.Hediff_FangGorged</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>10</maxSeverity>
+    <defaultLabelColor>(0.75, 0.45, 0.85)</defaultLabelColor>
+  </HediffDef>
+</Defs>

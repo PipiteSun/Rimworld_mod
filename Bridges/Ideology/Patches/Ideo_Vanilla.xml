@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.56.0：让原版戒律接受 DND 模因的必带要求；给 1.13.0 的「吞噬大脑」议题补规格 3.5 的心情。 -->
+<Patch>
+  <!-- 亡者之判必带「尸体：不在乎」，原版只允许几种模因选它。 -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/PreceptDef[defName="Corpses_DontCare"]/requiredMemes</xpath>
+    <value><li>LP_Meme_Kelemvor</li></value>
+  </Operation>
+
+  <!-- 吞噬大脑：可憎 自己-10、知道-5；神圣 知道+2、殖民地有上古脑+2。 -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/PreceptDef[defName="LP_BrainDevouring_Abhorrent"]/comps</xpath>
+    <value>
+      <li Class="PreceptComp_SelfTookMemoryThought"><eventDef>LP_DevouredBrain</eventDef><thought>LP_Mem_Brain_Abhorrent_Self</thought></li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThoughtDef[defName="LP_BrainDevoured_Know_Abhorrent"]/stages/li/baseMoodEffect</xpath>
+    <value><baseMoodEffect>-5</baseMoodEffect></value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/PreceptDef[defName="LP_BrainDevouring_Sacred"]/comps</xpath>
+    <value>
+      <li Class="PreceptComp_KnowsMemoryThought"><eventDef>LP_DevouredBrain</eventDef><thought>LP_Mem_Brain_Sacred_Know</thought></li>
+      <li Class="PreceptComp_SituationalThought"><thought>LP_Thought_Brain_ElderBrain</thought></li>
+    </value>
+  </Operation>
+</Patch>

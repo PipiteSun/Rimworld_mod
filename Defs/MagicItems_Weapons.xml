@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.45.0 魔化兵器（7）：火焰舌、霜寒之刃、锐锋剑、龙杀手、守护者之剑、闪电标枪、复仇之剑（诅咒）。
+     可制作的五件走 1.43.0 器械师门槛（Bridges/VPE/Source/Artificer.cs）；命中效果在 Source/MagicItems.cs（MagicWeaponExtension）。 -->
+<Defs>
+  <ThingDef Name="LP_MagicBladeBase" ParentName="BaseMeleeWeapon_Sharp_Quality" Abstract="True">
+    <techLevel>Medieval</techLevel>
+    <smeltable>false</smeltable>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <statBases><Mass>2</Mass><MaxHitPoints>200</MaxHitPoints><Flammability>0</Flammability></statBases>
+    <tradeTags Inherit="False"><li>LP_MagicWeapon</li></tradeTags>
+    <weaponClasses><li>Melee</li></weaponClasses>
+    <!-- 1.47.0：魔化兵器在符文铁砧锻造（火焰舌自己改回熔火锻炉）。 -->
+    <recipeMaker><recipeUsers Inherit="False"><li>LP_RuneAnvil</li></recipeUsers></recipeMaker>
+    <tools>
+      <li><label>剑柄</label><capacities><li>Blunt</li></capacities><power>9</power><cooldownTime>2</cooldownTime></li>
+      <li><label>剑尖</label><capacities><li>Stab</li></capacities><power>21</power><cooldownTime>2.6</cooldownTime><armorPenetration>0.3</armorPenetration></li>
+      <li><label>剑刃</label><labelUsedInLogging>false</labelUsedInLogging><capacities><li>Cut</li></capacities><power>23</power><cooldownTime>2.6</cooldownTime><armorPenetration>0.3</armorPenetration></li>
+    </tools>
+  </ThingDef>
+
+  <!-- 火焰舌 -->
+  <ThingDef ParentName="LP_MagicBladeBase">
+    <defName>LP_FlameTongue</defName>
+    <label>火焰舌</label>
+    <description>剑身刻满火焰符文的长剑，念出口令就会窜起火舌。“燃火”开启时，每次近战命中额外造成8点火焰伤害，20%概率点燃目标；火焰算作“被火烧”，会中断巨魔的再生。能力“燃火”可以随时开关，关掉时就是一把普通的好剑，不会点燃自家仓库。火巨人在熔火锻炉打造：钢80、熔岩结晶4。</description>
+    <graphicData><texPath>Items/Magic/FlameTongue</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><WorkToMake>18000</WorkToMake><MarketValue>1500</MarketValue></statBases>
+    <costList><Steel>80</Steel><LP_LavaCrystal>4</LP_LavaCrystal></costList>
+    <recipeMaker>
+      <recipeUsers Inherit="False"><li>LP_FireGiantForge</li></recipeUsers>
+      <researchPrerequisite>LP_Research_EnchantedArms</researchPrerequisite>
+      <skillRequirements><Crafting>8</Crafting></skillRequirements>
+      <displayPriority>450</displayPriority>
+    </recipeMaker>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_GrantAbility"><ability>LP_FlameToggle</ability></li>
+      <li Class="LichPhylactery.CompProperties_MagicWeapon" />
+    </comps>
+    <modExtensions><li Class="LichPhylactery.MagicWeaponExtension"><extraDamage>8</extraDamage><extraDamageDef>Flame</extraDamageDef><igniteChance>0.2</igniteChance><toggle>true</toggle></li></modExtensions>
+  </ThingDef>
+  <AbilityDef ParentName="LP_MagicAbilityBase">
+    <defName>LP_FlameToggle</defName>
+    <label>燃火</label>
+    <description>念出口令，让火焰舌的剑身燃起或熄灭。燃火时近战命中附带火焰伤害并可能点燃目标。</description>
+    <iconPath>Items/Magic/FlameTongue</iconPath>
+    <cooldownTicksRange>60</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_MagicAbility"><effect>flametoggle</effect></li></comps>
+  </AbilityDef>
+
+  <!-- 霜寒之刃 -->
+  <ThingDef ParentName="LP_MagicBladeBase">
+    <defName>LP_FrostBrand</defName>
+    <label>霜寒之刃</label>
+    <description>剑身结着永不融化的白霜。每次近战命中额外造成8点寒霜伤害，并让目标体温骤降（低温症加重，和凋亡之手同一套）。持有者不会着火。在符文铁砧打造：钢80、寒铁20。</description>
+    <graphicData><texPath>Items/Magic/FrostBrand</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><WorkToMake>18000</WorkToMake><MarketValue>1500</MarketValue></statBases>
+    <costList><Steel>80</Steel><LP_ColdIron>20</LP_ColdIron></costList>
+    <recipeMaker>
+      <researchPrerequisite>LP_Research_EnchantedArms</researchPrerequisite>
+      <skillRequirements><Crafting>8</Crafting></skillRequirements>
+      <displayPriority>451</displayPriority>
+    </recipeMaker>
+    <modExtensions><li Class="LichPhylactery.MagicWeaponExtension"><extraDamage>8</extraDamage><extraDamageDef>LP_Frost</extraDamageDef><chill>0.06</chill><fireproofHolder>true</fireproofHolder></li></modExtensions>
+  </ThingDef>
+
+  <!-- 锐锋剑 -->
+  <ThingDef ParentName="LP_MagicBladeBase">
+    <defName>LP_VorpalSword</defName>
+    <label>锐锋剑</label>
+    <description>薄得几乎看不见剑刃的古剑。近战命中头部、且这一击之后目标生命低于25%时，直接斩下它的头颅。对体型2以上的巨物、巫妖（他们不靠头活着）和没有头的生物无效。无法制作，只能从吉斯洋基雇佣兵手里缴获、在 Isekai 地下城的高级宝箱或黑网偶然得到。</description>
+    <graphicData><texPath>Items/Magic/VorpalSword</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>3500</MarketValue></statBases>
+    <recipeMaker IsNull="True" />
+    <modExtensions><li Class="LichPhylactery.MagicWeaponExtension"><vorpal>true</vorpal></li></modExtensions>
+  </ThingDef>
+
+  <!-- 龙杀手 -->
+  <ThingDef ParentName="LP_MagicBladeBase">
+    <defName>LP_DragonSlayer</defName>
+    <label>龙杀手</label>
+    <description>剑格铸成龙首的阔剑，剑脊嵌着龙鳞蜕。对力能龙裔（以及其他龙）造成的伤害+50%；命中时让对方的偏折力场5秒内失效。屠龙者的标配。在符文铁砧打造：钢100、龙鳞蜕2。</description>
+    <graphicData><texPath>Items/Magic/DragonSlayer</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><WorkToMake>20000</WorkToMake><MarketValue>1700</MarketValue><Mass>2.6</Mass></statBases>
+    <costList><Steel>100</Steel><LP_DragonShed>2</LP_DragonShed></costList>
+    <recipeMaker>
+      <researchPrerequisite>LP_Research_EnchantedArms</researchPrerequisite>
+      <skillRequirements><Crafting>8</Crafting></skillRequirements>
+      <displayPriority>452</displayPriority>
+    </recipeMaker>
+    <modExtensions><li Class="LichPhylactery.MagicWeaponExtension"><dragonFactor>1.5</dragonFactor><deflectBreakTicks>300</deflectBreakTicks></li></modExtensions>
+  </ThingDef>
+
+  <!-- 守护者之剑 -->
+  <ThingDef ParentName="LP_MagicBladeBase">
+    <defName>LP_DefenderSword</defName>
+    <label>守护者之剑</label>
+    <description>护手宽大、剑身泛着银光的秘银长剑。能力“守御”可以随时开关：守御时近战伤害-30%、近战闪避+20%，把攻势化成守势。在符文铁砧打造：秘银60。</description>
+    <graphicData><texPath>Items/Magic/DefenderSword</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><WorkToMake>18000</WorkToMake><MarketValue>1600</MarketValue><Mass>1.4</Mass></statBases>
+    <costList><LP_Mithral>60</LP_Mithral></costList>
+    <recipeMaker>
+      <researchPrerequisite>LP_Research_EnchantedArms</researchPrerequisite>
+      <skillRequirements><Crafting>8</Crafting></skillRequirements>
+      <displayPriority>453</displayPriority>
+    </recipeMaker>
+    <comps><li Class="LichPhylactery.CompProperties_GrantAbility"><ability>LP_DefenderStance</ability></li></comps>
+  </ThingDef>
+  <AbilityDef ParentName="LP_MagicAbilityBase">
+    <defName>LP_DefenderStance</defName>
+    <label>守御</label>
+    <description>举剑护身，或者放下守势。守御时近战伤害-30%、近战闪避+20%。</description>
+    <iconPath>Items/Magic/DefenderSword</iconPath>
+    <cooldownTicksRange>60</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_MagicAbility"><effect>defend</effect></li></comps>
+  </AbilityDef>
+  <HediffDef>
+    <defName>LP_DefenderStance</defName>
+    <label>守御</label>
+    <description>举着守护者之剑采取守势：近战伤害-30%，近战闪避+20%。放下剑或关掉守御就解除。</description>
+    <hediffClass>LichPhylactery.Hediff_MagicItem</hediffClass>
+    <isBad>false</isBad>
+    <stages><li><statFactors><MeleeDamageFactor>0.7</MeleeDamageFactor></statFactors><statOffsets><MeleeDodgeChance>20</MeleeDodgeChance></statOffsets></li></stages>
+    <modExtensions><li Class="LichPhylactery.MagicHediffExtension"><heldWeapon>LP_DefenderSword</heldWeapon></li></modExtensions>
+  </HediffDef>
+
+  <!-- 闪电标枪 -->
+  <ThingDef ParentName="LP_ThrowableBase">
+    <defName>LP_JavelinLightning</defName>
+    <label>闪电标枪</label>
+    <description>一捆五支、枪头缠着铜线的标枪，掷出后化作一道闪电。命中点和它身后沿飞行方向共3格放电：每格里的人受到10点电磁（EMP）和12点电击伤害。龙免疫 EMP，所以它专打机械体和护盾兵。和原版手雷一样可以反复投掷。在符文铁砧打造：钢30、零部件1。</description>
+    <graphicData><texPath>Items/Magic/JavelinLightning</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <techLevel>Medieval</techLevel>
+    <statBases><MarketValue>600</MarketValue><Mass>2</Mass><WorkToMake>9000</WorkToMake><RangedWeapon_Cooldown>2.4</RangedWeapon_Cooldown></statBases>
+    <thingCategories Inherit="False"><li>WeaponsRanged</li></thingCategories>
+    <tradeTags Inherit="False"><li>LP_MagicWeapon</li></tradeTags>
+    <costList><Steel>30</Steel><ComponentIndustrial>1</ComponentIndustrial></costList>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <recipeUsers Inherit="False"><li>LP_RuneAnvil</li></recipeUsers>
+      <researchPrerequisite>LP_Research_EnchantedArms</researchPrerequisite>
+      <skillRequirements><Crafting>6</Crafting></skillRequirements>
+      <displayPriority>454</displayPriority>
+    </recipeMaker>
+    <verbs>
+      <li>
+        <label>投掷闪电标枪</label>
+        <verbClass>Verb_LaunchProjectile</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <range>19.9</range>
+        <forcedMissRadius>0.9</forcedMissRadius>
+        <warmupTime>1.2</warmupTime>
+        <noiseRadius>4</noiseRadius>
+        <soundCast>ThrowGrenade</soundCast>
+        <targetParams><canTargetLocations>true</canTargetLocations></targetParams>
+        <defaultProjectile>LP_Proj_JavelinLightning</defaultProjectile>
+        <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+      </li>
+    </verbs>
+  </ThingDef>
+  <ThingDef ParentName="LP_ThrowableProjectileBase">
+    <defName>LP_Proj_JavelinLightning</defName>
+    <label>闪电标枪</label>
+    <thingClass>LichPhylactery.Projectile_LPAlchemy</thingClass>
+    <graphicData><texPath>Items/Magic/JavelinLightningFlight</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <projectile><damageDef>Stun</damageDef><damageAmountBase>0</damageAmountBase><explosionRadius>1</explosionRadius><speed>30</speed><arcHeightFactor>0.4</arcHeightFactor></projectile>
+    <modExtensions><li Class="LichPhylactery.ThrowableEffectExtension"><effect>lightning</effect></li></modExtensions>
+  </ThingDef>
+  <DamageDef>
+    <defName>LP_Shock</defName>
+    <label>电击</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0}被闪电劈死了。</deathMessage>
+    <hediff>Burn</hediff>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <armorCategory>Heat</armorCategory>
+    <defaultDamage>12</defaultDamage>
+    <defaultArmorPenetration>0.2</defaultArmorPenetration>
+  </DamageDef>
+
+  <!-- 复仇之剑（诅咒） -->
+  <ThingDef ParentName="LP_MagicBladeBase">
+    <defName>LP_SwordVengeance</defName>
+    <label>复仇之剑</label>
+    <description>一把被怨灵附着的诅咒长剑。近战伤害+15%，但持有者精神崩溃阈值+10%。拿起来就放不下：不能卸下、不能换武器，只有解除诅咒卷轴（或在设置里关掉“诅咒物品”）才能放手。黑网把它当成“精良长剑”出售。</description>
+    <graphicData><texPath>Items/Magic/SwordVengeance</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>900</MarketValue></statBases>
+    <recipeMaker IsNull="True" />
+    <equippedStatOffsets><MeleeDamageFactor>0.15</MeleeDamageFactor><MentalBreakThreshold>0.10</MentalBreakThreshold></equippedStatOffsets>
+    <comps><li Class="LichPhylactery.CompProperties_Cursed"><disguiseLabel>精良长剑</disguiseLabel><disguiseDescription>一把做工精良的长剑，剑格上缠着黑色的皮绳。看起来是件好货。</disguiseDescription></li></comps>
+  </ThingDef>
+</Defs>

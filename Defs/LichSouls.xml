@@ -1,0 +1,176 @@
+<Defs>
+  <RecipeDef ParentName="LP_RitualBase">
+    <defName>LP_OfferSoul</defName>
+    <label>汲取灵魂</label>
+    <description>消耗一具完整的人形尸体，把其灵魂汲入命匣。获得的献祭经验 =（50 + 5 × 技能等级总和）× 心灵敏感度（按20%～400%计算）。尸体不能缺少任何身体部位，不能是已风干的枯骨，也不能是巫妖或死灵造物。选中尸体可以查看它的灵魂价值。</description>
+    <jobString>正在汲取灵魂。</jobString>
+    <workAmount>2000</workAmount>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>CorpsesHumanlike</li>
+          </categories>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <categories>
+        <li>CorpsesHumanlike</li>
+      </categories>
+    </fixedIngredientFilter>
+  </RecipeDef>
+
+  <HediffDef ParentName="InjuryBase">
+    <defName>LP_NecroticWound</defName>
+    <label>死灵蚀伤</label>
+    <labelNoun>一处死灵蚀伤</labelNoun>
+    <description>被死灵能量侵蚀的血肉。</description>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>已包扎</labelTendedWell>
+        <labelTendedWellInner>已处理</labelTendedWellInner>
+        <labelSolidTendedWell>已处理</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_Infecter">
+        <infectionChance>0.15</infectionChance>
+      </li>
+      <li Class="HediffCompProperties_GetsPermanent">
+        <permanentLabel>死灵疤痕</permanentLabel>
+      </li>
+    </comps>
+    <injuryProps>
+      <painPerSeverity>0.0125</painPerSeverity>
+      <averagePainPerSeverityPermanent>0.00625</averagePainPerSeverityPermanent>
+      <canMerge>true</canMerge>
+      <destroyedLabel>被侵蚀殆尽</destroyedLabel>
+      <destroyedOutLabel>被侵蚀殆尽</destroyedOutLabel>
+    </injuryProps>
+  </HediffDef>
+
+  <DamageDef>
+    <defName>LP_Necrotic</defName>
+    <label>死灵能量</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0}的生命被死灵能量吞噬。</deathMessage>
+    <hediff>LP_NecroticWound</hediff>
+    <makesBlood>false</makesBlood>
+    <defaultDamage>10</defaultDamage>
+  </DamageDef>
+
+  <AbilityDef ParentName="PsycastBase">
+    <defName>LP_FearGaze</defName>
+    <label>恐惧凝视</label>
+    <description>巫妖的凝视令敌人肝胆俱裂。目标位置4.9格内的敌对人形陷入恐慌逃跑，敌对动物眩晕5秒；机械体、死灵生物和心灵失聪者不受影响。命匣3级解锁。基础精神力消耗15点，心灵熵20点。</description>
+    <abilityClass>LichPhylactery.LichPsycast</abilityClass>
+    <level>0</level>
+    <iconPath>Necromancy/Icons/NecroticTouch</iconPath>
+    <hostile>true</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <aiCanUse>false</aiCanUse>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <statBases>
+      <Ability_PsyfocusCost>0.15</Ability_PsyfocusCost>
+      <Ability_EntropyGain>20</Ability_EntropyGain>
+    </statBases>
+    <verbProperties>
+      <warmupTime>0.5</warmupTime>
+      <range>24</range>
+      <targetParams Inherit="False">
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetHumans>true</canTargetHumans>
+        <canTargetAnimals>true</canTargetAnimals>
+        <canTargetMechs>true</canTargetMechs>
+        <canTargetSelf>false</canTargetSelf>
+        <canTargetBuildings>false</canTargetBuildings>
+        <canTargetLocations>true</canTargetLocations>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_LichSpell">
+        <effect>fear</effect>
+        <radius>4.9</radius>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <AbilityDef ParentName="PsycastBase">
+    <defName>LP_NecroticBlast</defName>
+    <label>死灵冲击</label>
+    <description>在目标位置引爆死灵能量。3.9格内的每个敌对目标受到15点死灵伤害，并按心灵敏感度递减加成（100%敏感度约1.5倍，上限趋近2.5倍），无视护甲，不伤害友方。命匣6级解锁。基础精神力消耗12点，心灵熵25点。</description>
+    <abilityClass>LichPhylactery.LichPsycast</abilityClass>
+    <level>0</level>
+    <iconPath>Necromancy/Icons/SoulBolt</iconPath>
+    <hostile>true</hostile>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <aiCanUse>false</aiCanUse>
+    <cooldownTicksRange>900</cooldownTicksRange>
+    <statBases>
+      <Ability_PsyfocusCost>0.12</Ability_PsyfocusCost>
+      <Ability_EntropyGain>25</Ability_EntropyGain>
+    </statBases>
+    <verbProperties>
+      <warmupTime>0.75</warmupTime>
+      <range>28</range>
+      <targetParams Inherit="False">
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetHumans>true</canTargetHumans>
+        <canTargetAnimals>true</canTargetAnimals>
+        <canTargetMechs>true</canTargetMechs>
+        <canTargetSelf>false</canTargetSelf>
+        <canTargetBuildings>false</canTargetBuildings>
+        <canTargetLocations>true</canTargetLocations>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_LichSpell">
+        <effect>blast</effect>
+        <radius>3.9</radius>
+        <damage>15</damage>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <AbilityDef ParentName="PsycastBase">
+    <defName>LP_PowerWordKill</defName>
+    <label>死亡律令</label>
+    <description>说出一个死亡之词，指定的角色当场死亡，尸体保持完整，可用于汲取灵魂。可以对敌人、中立者、动物、机械体和囚犯使用，不能对己方殖民者或造物使用。命匣15级解锁。基础精神力消耗50点，心灵熵45点，冷却1天。</description>
+    <abilityClass>LichPhylactery.LichPsycast</abilityClass>
+    <level>0</level>
+    <iconPath>Necromancy/Icons/LichCore</iconPath>
+    <hostile>true</hostile>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <aiCanUse>false</aiCanUse>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <statBases>
+      <Ability_PsyfocusCost>0.5</Ability_PsyfocusCost>
+      <Ability_EntropyGain>45</Ability_EntropyGain>
+    </statBases>
+    <verbProperties>
+      <warmupTime>1.5</warmupTime>
+      <range>30</range>
+      <targetParams Inherit="False">
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetHumans>true</canTargetHumans>
+        <canTargetAnimals>true</canTargetAnimals>
+        <canTargetMechs>true</canTargetMechs>
+        <canTargetSelf>false</canTargetSelf>
+        <canTargetBuildings>false</canTargetBuildings>
+        <canTargetLocations>false</canTargetLocations>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_LichSpell">
+        <effect>kill</effect>
+      </li>
+    </comps>
+  </AbilityDef>
+</Defs>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.27.0 DND 职业路径（VPE 联动）；1.27.4 背景改为 VPE 同尺寸的 950×1515 塔罗牌式贴图（不再写 width/height）。
+    ：只在启用 Vanilla Psycasts Expanded 时由 LoadFolders 加载。
+     三条路径放在灵能页签的“DND职业”分页里。解锁路径除了 VPE 原有条件（心灵链接 + 1 点）外，还要职业技能 ≥ 6：
+     战士看格斗、法师看智识、牧师看社交。每个能力另有自己的技能要求（见 Abilities_*.xml 的 requiredSkillLevel）。 -->
+<Defs>
+  <VanillaPsycastsExpanded.PsycasterPathDef Class="LichPhylactery.VPEBridge.LP_ClassPathDef">
+    <defName>LP_Path_Fighter</defName>
+    <label>战士</label>
+    <description>DND 战士的战技。格斗支：回气、战吼、冲锋、绊摔、动作如潮、武器专精、不屈意志、缴械击、旋风斩、守护姿态，终极 战意再临；射击支（1.53.0）：稳固瞄准、压制射击、精准射击、连射，终极 死神之眼。格斗或射击任一 6 级即可入门；格斗支的强度看“战技强度”，射击支看“射术强度”，回气、战吼看两者里较高的一项。学习每一环都需要那一支对应的技能等级（6/9/12/15/18）。物理路径：打仗回精神力（斗志）、额外攻击、战斗风格。</description>
+    <tab>DND职业</tab>
+    <order>1</order>
+    <requiredSkill>Melee</requiredSkill>
+    <alternateSkill>Shooting</alternateSkill>
+    <requiredSkillLevel>6</requiredSkillLevel>
+    <martial>true</martial>
+    <lockedReason>需要格斗或射击 6 级（或冒险者力量/敏捷 13）</lockedReason>
+    <tooltip>战士：格斗支看格斗，射击支看射击。</tooltip>
+    <background>LP/Classes/Background_Fighter</background>
+    <altBackground>LP/Classes/Background_Fighter</altBackground>
+    <backgroundColor>(0.45,0.16,0.12)</backgroundColor>
+    <ignoreLockRestrictionsForNeurotrainers>false</ignoreLockRestrictionsForNeurotrainers>
+  </VanillaPsycastsExpanded.PsycasterPathDef>
+
+  <VanillaPsycastsExpanded.PsycasterPathDef Class="LichPhylactery.VPEBridge.LP_ClassPathDef">
+    <defName>LP_Path_Wizard</defName>
+    <label>法师</label>
+    <description>DND 法师的奥术：魔法飞弹、法师护甲、火球术、睡眠术、闪电束、急速术、石墙术、传送术与解离术。法术强度看“奥术强度”（随智识等级增长），伤害再乘心灵敏感度（最低 0.2，不封顶），精神力和心灵熵消耗高。学习每一环的法术都需要对应的智识等级（6/9/12/15/18）。</description>
+    <tab>DND职业</tab>
+    <order>2</order>
+    <requiredSkill>Intellectual</requiredSkill>
+    <requiredSkillLevel>6</requiredSkillLevel>
+    <classPsychic>true</classPsychic>
+    <lockedReason>需要智识 6 级（或冒险者智力 13）</lockedReason>
+    <tooltip>法师：智识决定奥术强度与可学的法术。</tooltip>
+    <background>LP/Classes/Background_Wizard</background>
+    <altBackground>LP/Classes/Background_Wizard</altBackground>
+    <backgroundColor>(0.14,0.18,0.45)</backgroundColor>
+    <ignoreLockRestrictionsForNeurotrainers>false</ignoreLockRestrictionsForNeurotrainers>
+  </VanillaPsycastsExpanded.PsycasterPathDef>
+
+  <VanillaPsycastsExpanded.PsycasterPathDef Class="LichPhylactery.VPEBridge.LP_ClassPathDef">
+    <defName>LP_Path_Cleric</defName>
+    <label>牧师</label>
+    <description>DND 牧师的神术：治疗伤口、祝福、次级复原术、神导术、神圣打击、驱散亡灵、群体治疗、死亡守卫与复生术。神术强度看“神恩强度”（随社交等级增长），伤害与治疗量再乘心灵敏感度（最低 0.2，不封顶）。学习每一环的神术都需要对应的社交等级（6/9/12/15/18）。</description>
+    <tab>DND职业</tab>
+    <order>3</order>
+    <requiredSkill>Social</requiredSkill>
+    <requiredSkillLevel>6</requiredSkillLevel>
+    <classPsychic>true</classPsychic>
+    <lockedReason>需要社交 6 级（或冒险者感知 13）</lockedReason>
+    <tooltip>牧师：社交决定神恩强度与可学的神术。</tooltip>
+    <background>LP/Classes/Background_Cleric</background>
+    <altBackground>LP/Classes/Background_Cleric</altBackground>
+    <backgroundColor>(0.45,0.38,0.12)</backgroundColor>
+    <ignoreLockRestrictionsForNeurotrainers>false</ignoreLockRestrictionsForNeurotrainers>
+  </VanillaPsycastsExpanded.PsycasterPathDef>
+</Defs>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.29.0 DND 职业路径：器械师（VPE 联动，只在启用 Vanilla Psycasts Expanded 时由 LoadFolders 加载）。
+     门槛：手工 ≥ 6；能力分 5 环（手工 6/9/12/15/18）；职业强度“器械强度”= 0.5 + 手工/20。
+     被动能力（奥术工坊、符文铭刻、大师工艺、山岳锻造、魔力共鸣）学会即生效，没有按钮。能力见 ClassAbilities_Artificer.xml，炮台见 ClassThings_Artificer.xml。 -->
+<Defs>
+  <VanillaPsycastsExpanded.PsycasterPathDef Class="LichPhylactery.VPEBridge.LP_ClassPathDef">
+    <defName>LP_Path_Artificer</defName>
+    <label>器械师</label>
+    <description>DND 器械师把魔力锻进器械：奥术工坊、快速维修、符文铭刻、过载射击、魔力充能、大师工艺、山岳锻造、符文炮台与魔力共鸣。器械强度随手工等级增长；学习每一环都需要对应的手工等级（6/9/12/15/18）。装了 VPE 时，所有可制作的 DND 武器（符文枪械、法杖、DND近战武器和精灵长弓）都要会器械师对应的被动能力（奥术工坊、符文铭刻、山岳锻造）才能制作；传说武器和投掷物不受限，模组设置“DND武器需要器械师”可以关掉这条限制。</description>
+    <tab>DND职业</tab>
+    <order>4</order>
+    <requiredSkill>Crafting</requiredSkill>
+    <requiredSkillLevel>6</requiredSkillLevel>
+    <lockedReason>需要手工 6 级（或冒险者智力 13）</lockedReason>
+    <tooltip>器械师：手工决定器械强度与可学的能力。</tooltip>
+    <background>LP/Classes/Artificer/Background</background>
+    <altBackground>LP/Classes/Artificer/Background</altBackground>
+    <backgroundColor>(0.32,0.28,0.18)</backgroundColor>
+    <ignoreLockRestrictionsForNeurotrainers>false</ignoreLockRestrictionsForNeurotrainers>
+  </VanillaPsycastsExpanded.PsycasterPathDef>
+
+  <StatDef ParentName="LP_ClassPowerBase">
+    <defName>LP_ArtificePower</defName>
+    <label>器械强度</label>
+    <description>DND 器械师能力的强度倍率：0.5 + 手工等级/20。过载射击的伤害加成、符文炮台的伤害都乘这个倍率。</description>
+    <parts><li Class="LichPhylactery.VPEBridge.StatPart_ClassSkill"><skill>Crafting</skill></li></parts>
+    <displayPriorityInCategory>4213</displayPriorityInCategory>
+  </StatDef>
+
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_Overcharge</defName>
+    <label>过载射击</label>
+    <description>下一次远程命中的伤害 ×(1 + 器械强度)，武器掉 5% 耐久。10 秒内没打中就散掉。</description>
+    <defaultLabelColor>(0.95,0.75,0.4)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ArcaneCharged</defName>
+    <label>魔力充能</label>
+    <description>器械师灌注的魔力：用符文矮人枪械和法杖时魔力系数 +0.5。</description>
+    <defaultLabelColor>(0.6,0.8,1)</defaultLabelColor>
+  </HediffDef>
+</Defs>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.53.0 武人之道与战士射击支的状态（见 ArtSource/MartialClasses-1.53.0-spec.md 第四节）。
+     LP_ExtraAttack 由 MapComponent_ClassAuras 每 250 刻按档位给 / 改 / 移除（不限时）；射击支的状态由能力施加时写入时长（HediffComp_Disappears）。
+     Hediff_MartialFlag 加上 / 移除时维护 Martial.ShotFlags（瞄准系数、远程伤害、连射多一发都只查这个字典，不在每发子弹时遍历状态）。 -->
+<Defs>
+  <HediffDef>
+    <defName>LP_ExtraAttack</defName>
+    <label>额外攻击</label>
+    <description>物理路径的额外攻击：近战冷却、射击冷却缩短，普通近战命中后有机会追击一次。档位随冒险者等级（战士 11 级第 2 档、20 级第 3 档）。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>3</maxSeverity>
+    <defaultLabelColor>(0.95,0.6,0.4)</defaultLabelColor>
+    <stages>
+      <li><minSeverity>0</minSeverity><label>第 1 档</label><statFactors><MeleeCooldownFactor>0.8</MeleeCooldownFactor><RangedCooldownFactor>0.85</RangedCooldownFactor></statFactors></li>
+      <li><minSeverity>1.5</minSeverity><label>第 2 档</label><statFactors><MeleeCooldownFactor>0.7</MeleeCooldownFactor><RangedCooldownFactor>0.75</RangedCooldownFactor></statFactors></li>
+      <li><minSeverity>2.5</minSeverity><label>第 3 档</label><statFactors><MeleeCooldownFactor>0.6</MeleeCooldownFactor><RangedCooldownFactor>0.65</RangedCooldownFactor></statFactors></li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_SteadyAim</defName>
+    <hediffClass>LichPhylactery.VPEBridge.Hediff_MartialFlag</hediffClass>
+    <label>稳固瞄准</label>
+    <description>沉下身子瞄准：射击预热 ×0.5、远程命中 ×1.15，移动 ×0.5。</description>
+    <everCurableByItem>false</everCurableByItem>
+    <stages><li><statFactors><AimingDelayFactor>0.5</AimingDelayFactor><MoveSpeed>0.5</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_Suppressed</defName>
+    <hediffClass>LichPhylactery.VPEBridge.Hediff_MartialFlag</hediffClass>
+    <label>被压制</label>
+    <description>被压制射击的火力压得抬不起头：移动 ×0.6、远程命中 ×0.75。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.9,0.6,0.5)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>0.6</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_RapidFire</defName>
+    <hediffClass>LichPhylactery.VPEBridge.Hediff_MartialFlag</hediffClass>
+    <label>连射</label>
+    <description>射击冷却 ×0.5；连发武器每轮多打 1 发。</description>
+    <everCurableByItem>false</everCurableByItem>
+    <stages><li><statFactors><RangedCooldownFactor>0.5</RangedCooldownFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_DeadEye</defName>
+    <hediffClass>LichPhylactery.VPEBridge.Hediff_MartialFlag</hediffClass>
+    <label>死神之眼</label>
+    <description>远程必中、无视掩体，射击伤害 ×1.5；每次射杀敌人，所有战士战技立刻冷却完毕。</description>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_Hobbled</defName>
+    <label>腿部中弹</label>
+    <description>被精准射击打中腿：移动 ×0.5。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.9,0.6,0.5)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>0.5</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <!-- 冲锋落地那一击的临时状态：近战伤害（VEF_MeleeAttackDamageFactor）= 严重度（1 + 0.3 × 战技强度），结算完立刻移除（旋风之势同款）。 -->
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ChargeStrike</defName>
+    <hediffClass>LichPhylactery.VPEBridge.Hediff_ClassStrike</hediffClass>
+    <label>冲锋之势</label>
+    <description>冲锋落地的这一下近战伤害 ×(1 + 0.3 × 战技强度)。</description>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+  <!-- 压制射击的连射（看不见）：每 6 刻打一发，6 发打完自己移除。 -->
+  <HediffDef>
+    <defName>LP_SuppressingVolley</defName>
+    <label>压制射击中</label>
+    <description>正在倾泻压制火力。</description>
+    <hediffClass>LichPhylactery.VPEBridge.Hediff_SuppressingVolley</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <stages><li><becomeVisible>false</becomeVisible></li></stages>
+  </HediffDef>
+
+  <!-- 冲锋的飞行：原版跳跃（PawnFlyerBase）同款，落地时结算冲锋那一击。 -->
+  <ThingDef ParentName="PawnFlyerBase">
+    <defName>LP_ChargeFlyer</defName>
+    <label>冲锋</label>
+    <thingClass>LichPhylactery.VPEBridge.LP_ChargeFlyer</thingClass>
+  </ThingDef>
+</Defs>

@@ -1,0 +1,20 @@
+{
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "name": "Maul",
+      "prompt": "A single inventory and held weapon sprite of an oversized fire giant forge warhammer for a RimWorld mod. Match vanilla RimWorld item art: orthographic flat 2D, strong nearly black outline, chunky simple readable silhouette, muted charcoal steel head, iron bands, small dull copper inset, brown wrapped long handle. Head at upper right, handle toward lower left, diagonal 45 degrees. Two or three flat color shades only, no tiny details, no glow, no flames, no text, no ground shadow, no character. Entire hammer visible centered with 10% transparent padding. Square transparent PNG. This is a usable game sprite, not concept artwork.",
+      "source": "C:\\Users\\25390\\.codex\\generated_images\\01a16452-061f-79d3-9b2c-52899d06813c\\exec-8d65efa1-3c94-4529-96dc-dcccabcc7fb5.png"
+    },
+    {
+      "name": "Helmet",
+      "prompt": "Create one production sprite sheet for ONE fire giant closed iron helmet in vanilla RimWorld pawn art style. Transparent square canvas divided into a precise invisible 2x2 grid of equal square cells. Top-left: inventory icon/front view. Top-right: worn south/front view. Bottom-left: worn east/right-facing profile. Bottom-right: worn north/back view. Each helmet centered in its own cell at identical scale occupying 65% cell width and 65% height. NO grid lines or labels. Helmet only, NO head, face, body, neck, mannequin or background. Broad simple rounded charcoal iron helmet with short squared cheek guards, dark T-shaped visor slit on front, a single muted copper brow band; no horns, no plume. Match vanilla RimWorld: thick dark outline, flat muted fills, very few simple shading blocks, clean rounded silhouette, no fine texture, no realism, no 3D, no glow. Three worn views are flat orthographic game overlays. Preserve real transparent alpha.",
+      "source": "C:\\Users\\25390\\.codex\\generated_images\\01a16452-061f-79d3-9b2c-52899d06813c\\exec-b08db067-c1dc-48a1-9f18-f1fa8d669b2d.png"
+    },
+    {
+      "name": "Armor",
+      "prompt": "Create one production sprite sheet for ONE fire giant heavy plate cuirass in vanilla RimWorld pawn clothing art style, suitable for a Hulk body. Transparent square canvas divided into a precise invisible 2x2 grid of equal square cells. Top-left inventory icon, top-right south/front worn torso, bottom-left east/right-facing worn torso, bottom-right north/back worn torso. Each centered in its cell at same scale, occupying 72% cell width and 72% height. No grid lines or labels. Sleeveless broad hulking barrel-shaped dark iron cuirass with modest wide shoulder plates, copper belt and small copper reinforcement accents, short overlapping armored skirt. VERY SIMPLE chunky silhouette, vanilla RimWorld thick dark outlines and flat desaturated grey fills, only 2 shading tones. No arms, hands, legs, head, skin, mannequin, stand, background, shadow or text. Worn overlays have a small empty neck opening at top and rounded flat bottom like vanilla RimWorld apparel. Side view narrower but same height. No flames, spikes, fantasy ornaments, gradients or 3D rendering. Actual transparent alpha, game-ready sprites.",
+      "source": "C:\\Users\\25390\\.codex\\generated_images\\01a16452-061f-79d3-9b2c-52899d06813c\\exec-47e2968a-a253-42f5-9547-e6741eacd378.png"
+    }
+  ]
+}

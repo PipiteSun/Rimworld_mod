@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.32.0 背景特性：8 个 DND 背景，进原版特性随机池（Source/BackgroundTraits.cs）。
+     exclusionTags LP_Background：一个人最多一个背景。commonality 由设置页“背景特性”开关和“背景特性出现率”滑条改写（0.3 × 滑条，关掉为 0）。 -->
+<Defs>
+
+  <!-- ==================== 特性 ==================== -->
+  <TraitDef>
+    <defName>LP_Background_Acolyte</defName>
+    <commonality>0.3</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#7FBF6A>侍僧</color>]]></label>
+        <description>{PAWN_nameDef}曾在神殿里侍奉，习惯了祈祷与静修。\n\n- 冥想心灵专注获取 +20%\n- 参加任何意识形态仪式后获得心情 +3“神圣时光”（1天）\n- 装了 Vanilla Psycasts Expanded 时：牧师路径经验 +25%</description>
+        <statFactors>
+          <MeditationFocusGain MayRequireAnyOf="Ludeon.RimWorld.Royalty,Ludeon.RimWorld.Biotech">1.2</MeditationFocusGain>
+        </statFactors>
+      </li>
+    </degreeDatas>
+    <exclusionTags><li>LP_Background</li></exclusionTags>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Uncommon</tier><kind>背景特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Background_Criminal</defName>
+    <commonality>0.3</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#7FBF6A>罪犯</color>]]></label>
+        <description>{PAWN_nameDef}在城市的阴影里讨过生活，撬锁、销赃、躲卫兵都是老本行。\n\n- 作为囚犯时越狱几率 ×2\n- 殖民地有罪犯背景的殖民者时，囚犯越狱几率 ×0.75（{PAWN_pronoun}知道犯人会从哪里钻空子）\n- 和黑网商队交易时价格好 10%\n- 作为囚犯时，每次招募谈话让抵抗下降 ×1.3</description>
+      </li>
+    </degreeDatas>
+    <exclusionTags><li>LP_Background</li></exclusionTags>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Uncommon</tier><kind>背景特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Background_FolkHero</defName>
+    <commonality>0.3</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#7FBF6A>民间英雄</color>]]></label>
+        <description>{PAWN_nameDef}曾经挺身对抗暴君和怪物，乡亲们至今还在传唱{PAWN_possessive}故事。\n\n- 被征召时，6格内的其他殖民者心情 +3“英雄在此”\n- {PAWN_pronoun}倒地时，全殖民地心情 -3“英雄倒下”（1天）</description>
+      </li>
+    </degreeDatas>
+    <exclusionTags><li>LP_Background</li></exclusionTags>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Uncommon</tier><kind>背景特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Background_Noble</defName>
+    <commonality>0.3</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#7FBF6A>贵族</color>]]></label>
+        <description>{PAWN_nameDef}出身名门，从小就被教导如何发号施令，而不是如何拿扫帚。\n\n- 社交影响 +15%\n- 不做清洁和搬运\n- 卧室印象低于“体面”时心情 -4“配不上我的身份”\n- 装了皇权 DLC 时：获得荣誉 ×1.2\n- 与苦行互斥</description>
+        <statOffsets>
+          <SocialImpact>0.15</SocialImpact>
+        </statOffsets>
+      </li>
+    </degreeDatas>
+    <disabledWorkTags>Cleaning, Hauling</disabledWorkTags>
+    <conflictingTraits>
+      <li>Ascetic</li>
+    </conflictingTraits>
+    <exclusionTags><li>LP_Background</li></exclusionTags>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Uncommon</tier><kind>背景特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Background_Sage</defName>
+    <commonality>0.3</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#7FBF6A>贤者</color>]]></label>
+        <description>{PAWN_nameDef}在图书馆和学院里度过了大半生，离开书本就浑身不自在。\n\n- 研究速度 +10%\n- 读书收益 +30%\n- 装了 Vanilla Psycasts Expanded 时：法师路径经验 +25%\n- 殖民地没有任何书架和研究台时心情 -2“无书可读”</description>
+        <statFactors>
+          <ResearchSpeed>1.1</ResearchSpeed>
+          <ReadingSpeed>1.3</ReadingSpeed>
+        </statFactors>
+      </li>
+    </degreeDatas>
+    <exclusionTags><li>LP_Background</li></exclusionTags>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Uncommon</tier><kind>背景特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Background_Soldier</defName>
+    <commonality>0.3</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#7FBF6A>士兵</color>]]></label>
+        <description>{PAWN_nameDef}在军队里服过役，听到号令身体就会自己动起来。\n\n- 被征召时瞄准时间 -10%\n- 3格内有另一名士兵背景的友军时，双方射击精度和近战命中 +5%</description>
+      </li>
+    </degreeDatas>
+    <exclusionTags><li>LP_Background</li></exclusionTags>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Uncommon</tier><kind>背景特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Background_Hermit</defName>
+    <commonality>0.3</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#7FBF6A>隐士</color>]]></label>
+        <description>{PAWN_nameDef}曾经独自在荒野里隐居多年，比起人群更习惯和自己的念头相处。\n\n- 独占卧室时心情 +3“独处之所”\n- 和别人同住一间卧室时心情 -4“没有清静”（替代原版的“睡在营房”心情）\n- 冥想心灵专注获取 +30%\n- 主动社交互动的频率 ×0.5</description>
+        <statFactors>
+          <MeditationFocusGain MayRequireAnyOf="Ludeon.RimWorld.Royalty,Ludeon.RimWorld.Biotech">1.3</MeditationFocusGain>
+        </statFactors>
+        <disallowedThoughts>
+          <li>SleptInBarracks</li>
+        </disallowedThoughts>
+      </li>
+    </degreeDatas>
+    <exclusionTags><li>LP_Background</li></exclusionTags>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Uncommon</tier><kind>背景特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Background_Outlander</defName>
+    <commonality>0.3</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#7FBF6A>局外人</color>]]></label>
+        <description>{PAWN_nameDef}在文明之外的荒原上长大，风雨对{PAWN_objective}来说就是日常。\n\n- 在没有屋顶、也不在居住区的地方移动速度 +10%\n- 采集野生植物产量 +25%\n- 不受淋湿、沙尘等坏天气心情影响\n- 连续 3 天一直待在屋顶下时心情 -3“闷坏了”</description>
+        <disallowedThoughts>
+          <li>SoakingWet</li>
+          <li MayRequire="Ludeon.RimWorld.Odyssey">BlowingSand</li>
+          <li MayRequire="Ludeon.RimWorld.Anomaly">GrayPall</li>
+        </disallowedThoughts>
+      </li>
+    </degreeDatas>
+    <exclusionTags><li>LP_Background</li></exclusionTags>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Uncommon</tier><kind>背景特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <!-- 士兵协同：隐藏的辅助属性，挂在射击精度和近战命中的 postProcessStatFactors 上（在原版技能曲线之后乘），3格内有士兵战友时为 1.05。 -->
+  <StatDef>
+    <defName>LP_SoldierCohesion</defName>
+    <label>士兵协同</label>
+    <description>士兵背景的小人在3格内有另一名士兵背景的友军时，射击精度和近战命中 +5%。</description>
+    <category>PawnCombat</category>
+    <defaultBaseValue>1</defaultBaseValue>
+    <minValue>0</minValue>
+    <toStringStyle>PercentZero</toStringStyle>
+    <alwaysHide>true</alwaysHide>
+  </StatDef>
+
+  <!-- ==================== 心情 ==================== -->
+  <ThoughtDef>
+    <defName>LP_BG_HolyTime</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <requiredTraits><li>LP_Background_Acolyte</li></requiredTraits>
+    <stages>
+      <li>
+        <label>神圣时光</label>
+        <description>刚刚参加了一场仪式。熟悉的祷词和香火，让我想起了在神殿里的日子。</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>LP_BG_HeroPresent</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_HeroPresent</workerClass>
+    <stages>
+      <li>
+        <label>英雄在此</label>
+        <description>那位民间英雄就站在我身边，拿起了武器。有英雄在，我们一定能挺过去。</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>LP_BG_HeroFallen</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>英雄倒下</label>
+        <description>连那位民间英雄都倒下了……我们真的还有希望吗？</description>
+        <baseMoodEffect>-3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>LP_BG_NobleBedroom</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_NobleBedroom</workerClass>
+    <requiredTraits><li>LP_Background_Noble</li></requiredTraits>
+    <stages>
+      <li>
+        <label>配不上我的身份</label>
+        <description>这种地方也配叫卧室？我家的马厩都比这里体面。</description>
+        <baseMoodEffect>-4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>LP_BG_SageNoStudy</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_SageNoStudy</workerClass>
+    <requiredTraits><li>LP_Background_Sage</li></requiredTraits>
+    <stages>
+      <li>
+        <label>无书可读</label>
+        <description>这里连一个书架、一张研究台都没有。没有学问的日子，真是度日如年。</description>
+        <baseMoodEffect>-2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>LP_BG_HermitRoom</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_HermitRoom</workerClass>
+    <requiredTraits><li>LP_Background_Hermit</li></requiredTraits>
+    <stages>
+      <li>
+        <label>独处之所</label>
+        <description>有一间只属于我的屋子。关上门，世界就安静了。</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+      <li>
+        <label>没有清静</label>
+        <description>睡觉的时候屋里还有别人的呼吸声。我想念一个人的荒野。</description>
+        <baseMoodEffect>-4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>LP_BG_OutlanderCooped</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_OutlanderCooped</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <requiredTraits><li>LP_Background_Outlander</li></requiredTraits>
+    <stages>
+      <li>
+        <label>闷坏了</label>
+        <description>已经整整三天没见过天空了。我需要风、需要雨，需要出去走走。</description>
+        <baseMoodEffect>-3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

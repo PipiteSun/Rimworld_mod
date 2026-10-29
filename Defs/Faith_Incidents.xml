@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.39.0 信仰任务：朝圣者、神谕试炼、寻回圣物、亵渎者。只有建了圣坛并选了守护神才会出现；出现权重 × “DND 事件频率” × “信仰任务频率”。规则见 Source/FaithIncidents.cs。 -->
+<Defs>
+  <IncidentDef>
+    <defName>LP_Faith_Pilgrims</defName>
+    <label>朝圣者</label>
+    <category>Misc</category>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_FaithPilgrims</workerClass>
+    <baseChance>0.8</baseChance>
+    <minRefireDays>20</minRefireDays>
+    <pointsScaleable>false</pointsScaleable>
+  </IncidentDef>
+  <IncidentDef>
+    <defName>LP_Faith_Trial</defName>
+    <label>神谕试炼</label>
+    <category>Misc</category>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_FaithTrial</workerClass>
+    <baseChance>0.6</baseChance>
+    <minRefireDays>30</minRefireDays>
+    <pointsScaleable>false</pointsScaleable>
+  </IncidentDef>
+  <IncidentDef>
+    <defName>LP_Faith_LostRelic</defName>
+    <label>寻回圣物</label>
+    <category>Misc</category>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_FaithLostRelic</workerClass>
+    <baseChance>0.4</baseChance>
+    <minRefireDays>60</minRefireDays>
+    <pointsScaleable>true</pointsScaleable>
+  </IncidentDef>
+  <IncidentDef>
+    <defName>LP_Faith_Desecrators</defName>
+    <label>亵渎者</label>
+    <category>ThreatSmall</category>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_FaithDesecrators</workerClass>
+    <baseChance>0.5</baseChance>
+    <minRefireDays>30</minRefireDays>
+    <pointsScaleable>true</pointsScaleable>
+  </IncidentDef>
+  <LetterDef ParentName="CustomChoiceLetterBase">
+    <defName>LP_FaithPilgrimsLetter</defName>
+    <letterClass>LichPhylactery.ChoiceLetter_FaithPilgrims</letterClass>
+  </LetterDef>
+</Defs>

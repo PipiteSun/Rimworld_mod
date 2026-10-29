@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.56.0：神官角色、神迹布道能力（规格第六节）和神祇模因被动的心情（第二节 2.3 / 2.4、第七节神像）。 -->
+<Defs>
+
+  <RulePackDef>
+    <defName>LP_NamerRoleCleric</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_roleName->神官</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <PreceptDef ParentName="PreceptRoleSingleBase">
+    <defName>LP_Role_Cleric</defName>
+    <label>神官</label>
+    <description>侍奉文化之神的神职人员。神术消耗×0.75（和信徒、神选者的折扣相乘），社交影响+10%；会「神迹布道」（效力是原版改宗的2倍，额外消耗守护神神眷5）；殖民地有神官在地图上时，圣坛多一个「集体祈祷」按钮；庆典和灰袍葬礼有神官参加品质+15%。需要神祇模因或众神殿。</description>
+    <iconPath>UI/Roles/LP/Cleric</iconPath>
+    <nameMaker>LP_NamerRoleCleric</nameMaker>
+    <displayOrderInImpact>90</displayOrderInImpact>
+    <restrictToSupremeGenderChance>0</restrictToSupremeGenderChance>
+    <requiredMemes>
+      <li>LP_Meme_Lathander</li>
+      <li>LP_Meme_Tyr</li>
+      <li>LP_Meme_Mystra</li>
+      <li>LP_Meme_Kelemvor</li>
+      <li>LP_Meme_Malar</li>
+      <li>LP_Meme_Talos</li>
+      <li>LP_Meme_Bane</li>
+      <li>LP_Meme_Shar</li>
+      <li>LP_Meme_Surtr</li>
+      <li>LP_Meme_Ilsvi</li>
+      <li>LP_Meme_Vlaakith</li>
+      <li>LP_Meme_Pantheon</li>
+    </requiredMemes>
+    <roleEffects>
+      <li Class="RoleEffect_PawnStatOffset">
+        <statDef>SocialImpact</statDef>
+        <modifier>0.1</modifier>
+      </li>
+    </roleEffects>
+    <grantedAbilities>
+      <li>LP_Ability_DivinePreach</li>
+    </grantedAbilities>
+    <roleRequiredWorkTags><li>Social</li></roleRequiredWorkTags>
+    <roleTags><li>LP_Cleric</li></roleTags>
+  </PreceptDef>
+
+  <AbilityDef>
+    <defName>LP_Ability_DivinePreach</defName>
+    <label>神迹布道</label>
+    <description>以神迹为证向对方布道，劝说对方改信说话者的文化。效力是原版「改宗」的2倍；额外消耗守护神神眷5（不够时不能用）。冷却和原版改宗一样（3天）。</description>
+    <iconPath>UI/Abilities/LP/DivinePreach</iconPath>
+    <warmupMoteSocialSymbol>Things/Mote/SpeechSymbols/Convert</warmupMoteSocialSymbol>
+    <warmupSound>MoralistAbility_Warmup</warmupSound>
+    <jobDef>CastAbilityOnThingMelee</jobDef>
+    <stunTargetWhileCasting>True</stunTargetWhileCasting>
+    <showPsycastEffects>False</showPsycastEffects>
+    <displayGizmoWhileUndrafted>True</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>False</disableGizmoWhileUndrafted>
+    <showWhenDrafted>false</showWhenDrafted>
+    <hostile>false</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <cooldownTicksRange>180000</cooldownTicksRange>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_AbilityFavorCost">
+        <cost>5</cost>
+      </li>
+      <li Class="CompProperties_AbilityConvert">
+        <successMessage>{INITIATOR_labelShort}以神迹布道，{RECIPIENT_labelShort}改信了{IDEO}。</successMessage>
+        <failMessage>{INITIATOR_labelShort}的布道没能说服{RECIPIENT_labelShort}。{RECIPIENT_labelShort}有些不快，但确信度从{CERTAINTYBEFORE}降到了{CERTAINTYAFTER}。</failMessage>
+        <failedThoughtInitiator>FailedConvertAbilityInitiator</failedThoughtInitiator>
+        <failedThoughtRecipient>FailedConvertAbilityRecipient</failedThoughtRecipient>
+        <convertPowerFactor>4</convertPowerFactor>
+        <sound>MoralistAbility_Resolve</sound>
+      </li>
+      <li Class="CompProperties_AbilityMustBeCapableOf">
+        <workTags>
+          <li>Social</li>
+        </workTags>
+      </li>
+      <li Class="CompProperties_AbilityShowTargetIdeoCertainty" />
+    </comps>
+    <verbProperties>
+      <verbClass>Verb_CastAbilityTouch</verbClass>
+      <drawAimPie>False</drawAimPie>
+      <range>-1</range>
+      <warmupTime>3.0</warmupTime>
+      <targetParams>
+        <canTargetBuildings>False</canTargetBuildings>
+        <canTargetSubhumans>false</canTargetSubhumans>
+        <neverTargetHostileFaction>True</neverTargetHostileFaction>
+      </targetParams>
+    </verbProperties>
+  </AbilityDef>
+
+  <!-- ==================== 模因被动的心情（worker：LichPhylactery.ThoughtWorker_LPMeme，只读缓存） ==================== -->
+  <ThoughtDef Name="LP_IdeoMemeThoughtBase" Abstract="True">
+    <workerClass>LichPhylactery.ThoughtWorker_LPMeme</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoMemeThoughtBase">
+    <defName>LP_Thought_LathanderConstructs</defName>
+    <stages>
+      <li><label>晨光下的不死之物</label><description>殖民地里的死灵造物冒犯了晨主。</description><baseMoodEffect>-1</baseMoodEffect></li>
+      <li><label>晨光下的不死之物</label><description>殖民地里的死灵造物冒犯了晨主。</description><baseMoodEffect>-2</baseMoodEffect></li>
+      <li><label>晨光下的不死之物</label><description>殖民地里的死灵造物冒犯了晨主。</description><baseMoodEffect>-3</baseMoodEffect></li>
+      <li><label>晨光下的不死之物</label><description>殖民地里的死灵造物冒犯了晨主。</description><baseMoodEffect>-4</baseMoodEffect></li>
+      <li><label>晨光下的不死之物</label><description>殖民地里的死灵造物冒犯了晨主。</description><baseMoodEffect>-5</baseMoodEffect></li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoMemeThoughtBase">
+    <defName>LP_Thought_MystraGift</defName>
+    <stages><li><label>魔网的礼物</label><description>我身上带着魔法物品，能感觉到魔网在轻轻颤动。</description><baseMoodEffect>2</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoMemeThoughtBase">
+    <defName>LP_Thought_MalarBeasts</defName>
+    <stages>
+      <li><label>兽王的伙伴</label><description>殖民地里养着兽王钟爱的猛兽。</description><baseMoodEffect>1</baseMoodEffect></li>
+      <li><label>兽王的伙伴</label><description>殖民地里养着兽王钟爱的猛兽。</description><baseMoodEffect>2</baseMoodEffect></li>
+      <li><label>兽王的伙伴</label><description>殖民地里养着兽王钟爱的猛兽。</description><baseMoodEffect>3</baseMoodEffect></li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoMemeThoughtBase">
+    <defName>LP_Thought_TalosStorm</defName>
+    <stages><li><label>风暴之子</label><description>雷声是塔洛斯在歌唱。</description><baseMoodEffect>4</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoMemeThoughtBase">
+    <defName>LP_Thought_DefiantShrine</defName>
+    <stages><li><label>讨厌的神龛</label><description>殖民地里居然供着神。我们不向任何神下跪。</description><baseMoodEffect>-2</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="LP_IdeoMemeThoughtBase">
+    <defName>LP_Thought_DeityStatue</defName>
+    <stages>
+      <li><label>神没有立像</label><description>我们信奉的神在家园里连一尊神像都没有。</description><baseMoodEffect>-1</baseMoodEffect></li>
+      <li><label>神像庇佑</label><description>家园里立着我们的神的神像。</description><baseMoodEffect>1</baseMoodEffect></li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>LP_Mem_TemplePrayer</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>在宏伟的神殿祈祷</label><description>在这样宏伟的神殿里祈祷，神一定听得见。</description><baseMoodEffect>5</baseMoodEffect></li></stages>
+  </ThoughtDef>
+
+</Defs>

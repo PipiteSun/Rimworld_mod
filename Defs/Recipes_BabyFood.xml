@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.22.1 肉制婴儿食品：在电炉灶、燃料炉灶上多两张配方，可以用生肉做原版婴儿食品；原版素食配方不变。
+     比例与原版相同（0.25营养→10份，批量1.00营养→40份）。默认只勾选生肉（排除人肉、虫肉、扭曲肉），蔬菜、奶、蛋可在工作单里手动勾上混用；受精卵始终不能用。 -->
+<Defs>
+  <RecipeDef Name="LP_MakeBabyFoodMeatBase" Abstract="True">
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <requiredGiverWorkType>Cooking</requiredGiverWorkType>
+    <workSkill>Cooking</workSkill>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+    </recipeUsers>
+    <fixedIngredientFilter>
+      <categories>
+        <li>FoodRaw</li>
+      </categories>
+      <disallowedCategories>
+        <li>EggsFertilized</li>
+      </disallowedCategories>
+    </fixedIngredientFilter>
+    <defaultIngredientFilter>
+      <categories>
+        <li>MeatRaw</li>
+      </categories>
+      <disallowedThingDefs>
+        <li>Meat_Human</li>
+        <li>Meat_Megaspider</li>
+        <li MayRequire="Ludeon.RimWorld.Anomaly">Meat_Twisted</li>
+      </disallowedThingDefs>
+    </defaultIngredientFilter>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LP_MakeBabyFoodMeatBase">
+    <defName>LP_Make_BabyFoodMeat</defName>
+    <label>用肉制作婴儿食品</label>
+    <description>把生肉剁碎煮烂，做成婴儿吃的糊糊。产物就是原版婴儿食品，只是不再是素食：会记住用了什么肉，大人被迫吃下时照常按肉类和食人的戒律算心情。默认只用生肉（不含人肉、虫肉），可以在工作单里勾上蔬菜、奶、蛋一起混用。</description>
+    <jobString>正在用肉制作婴儿食品。</jobString>
+    <workAmount>450</workAmount>
+    <ingredients>
+      <li>
+        <filter>
+          <customSummary>生肉或其他生食材</customSummary>
+          <categories>
+            <li>FoodRaw</li>
+          </categories>
+          <disallowedCategories>
+            <li>EggsFertilized</li>
+          </disallowedCategories>
+        </filter>
+        <count>0.25</count>
+      </li>
+    </ingredients>
+    <products>
+      <BabyFood>10</BabyFood>
+    </products>
+    <displayPriority>1432</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LP_MakeBabyFoodMeatBase">
+    <defName>LP_Make_BabyFoodMeatBulk</defName>
+    <label>用肉制作婴儿食品 x4</label>
+    <description>一次把一大锅生肉煮成婴儿食品糊糊。产物就是原版婴儿食品，只是不再是素食：会记住用了什么肉，大人被迫吃下时照常按肉类和食人的戒律算心情。默认只用生肉（不含人肉、虫肉），可以在工作单里勾上蔬菜、奶、蛋一起混用。</description>
+    <jobString>正在批量用肉制作婴儿食品。</jobString>
+    <workAmount>1800</workAmount>
+    <ingredients>
+      <li>
+        <filter>
+          <customSummary>生肉或其他生食材</customSummary>
+          <categories>
+            <li>FoodRaw</li>
+          </categories>
+          <disallowedCategories>
+            <li>EggsFertilized</li>
+          </disallowedCategories>
+        </filter>
+        <count>1.00</count>
+      </li>
+    </ingredients>
+    <products>
+      <BabyFood>40</BabyFood>
+    </products>
+    <displayPriority>1433</displayPriority>
+  </RecipeDef>
+</Defs>

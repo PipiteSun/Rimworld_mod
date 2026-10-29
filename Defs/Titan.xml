@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.24.0 泰坦（天穹神裔）：传奇、可玩、不可遗传。只从剧本“坠落的神裔”或开发者模式得到。血量不另调，只走巨躯规则。 -->
+<Defs>
+  <XenotypeDef>
+    <defName>LP_Titan</defName>
+    <label>天穹神裔</label>
+    <description>从天穹坠落的半神，金铜色的皮肤，白发，头顶悬着一圈淡金色的光环。神裔有两个半常人高，力大无穷，能召下神罚的闪电，也能用一口神息合拢同伴的伤口；心情好时天空随之放晴，心情坏时雷雨大作。它们不会生育，也不肯承认世上有比自己更伟大的存在。</description>
+    <descriptionShort>传奇种族，不可遗传。体型×2.5（巨躯：生命×1.75、近战×1.45）、神威资源、神罚与神裔之息、免疫眩晕、影响天气；暴躁、傲慢。</descriptionShort>
+    <iconPath>Races124/Xenotypes/Titan</iconPath>
+    <inheritable>false</inheritable>
+    <combatPowerFactor>3</combatPowerFactor>
+    <factionlessGenerationWeight>0</factionlessGenerationWeight>
+    <genes>
+      <li>LP_TitanStature</li>
+      <li>LP_TitanDivinity</li>
+      <li>LP_TitanWeather</li>
+      <li>LP_TitanUnshakable</li>
+      <li>LP_SkinTitan</li>
+      <li>Body_Hulk</li>
+      <li>Hair_SnowWhite</li>
+      <li>Aggression_Aggressive</li>
+      <li>Sterile</li>
+    </genes>
+  </XenotypeDef>
+
+  <GeneDef Name="LP_TitanGeneBase" Abstract="True">
+    <displayCategory>Miscellaneous</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>3</biostatCpx>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_TitanGeneBase">
+    <defName>LP_TitanStature</defName>
+    <label>神裔之躯</label>
+    <description>两个半常人高的神裔之躯：实际体型×250%，显示×160%，搬运量再×120%；饭量是常人的1.5倍、胃容量×250%，步子大却不快（移速×90%）。巨躯规则让神裔的生命×175%、近战×145%。</description>
+    <geneClass>LichPhylactery.Gene_LinkedHediff</geneClass>
+    <iconPath>Races124/Genes/TitanStature</iconPath>
+    <biostatMet>-2</biostatMet>
+    <statFactors>
+      <MoveSpeed>0.9</MoveSpeed>
+    </statFactors>
+    <modExtensions>
+      <li Class="LichPhylactery.SmallBodyExtension">
+        <bodySize>2.5</bodySize>
+        <renderScale>1.6</renderScale>
+        <carryFactor>1.2</carryFactor>
+      </li>
+      <li Class="LichPhylactery.LinkedHediffExtension">
+        <hediff>LP_TitanAppetite</hediff>
+      </li>
+    </modExtensions>
+  </GeneDef>
+  <HediffDef>
+    <defName>LP_TitanAppetite</defName>
+    <label>神裔食量</label>
+    <description>神裔的巨躯需要大量食物。</description>
+    <hediffClass>LichPhylactery.Hediff_GeneLinked</hediffClass>
+    <defaultLabelColor>(0.9, 0.78, 0.4)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <hungerRateFactor>1.5</hungerRateFactor>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <GeneDef ParentName="LP_TitanGeneBase">
+    <defName>LP_TitanDivinity</defName>
+    <label>神威</label>
+    <description>神裔的神性，表现为“神威”资源条（0～100）：每天自然恢复10点，心情≥80%时每天再恢复10点，每击杀一个敌人+5。神威用于“神罚”（30）和“神裔之息”（40）。头顶悬着一圈淡金色的光环。</description>
+    <geneClass>LichPhylactery.Gene_TitanDivinity</geneClass>
+    <resourceGizmoType>LichPhylactery.GeneGizmo_DivinityResource</resourceGizmoType>
+    <resourceLabel>神威</resourceLabel>
+    <resourceGizmoThresholds>
+      <li>0.3</li>
+      <li>0.4</li>
+    </resourceGizmoThresholds>
+    <showGizmoOnWorldView>true</showGizmoOnWorldView>
+    <showGizmoWhenDrafted>true</showGizmoWhenDrafted>
+    <resourceDescription>神裔的神威。每天恢复，击杀敌人也会增加；神罚与神裔之息消耗它。</resourceDescription>
+    <iconPath>Races124/Genes/TitanDivinity</iconPath>
+    <biostatMet>-2</biostatMet>
+    <abilities>
+      <li>LP_TitanSmite</li>
+      <li>LP_TitanBreath</li>
+    </abilities>
+    <descriptionHyperlinks>
+      <AbilityDef>LP_TitanSmite</AbilityDef>
+      <AbilityDef>LP_TitanBreath</AbilityDef>
+    </descriptionHyperlinks>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Races124/Halo/TitanHalo</texPath>
+        <color>(255, 255, 255)</color>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh</rotDrawMode>
+        <drawData>
+          <defaultData>
+            <layer>80</layer>
+          </defaultData>
+        </drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="LP_TitanGeneBase">
+    <defName>LP_TitanWeather</defName>
+    <label>天候随心</label>
+    <description>神裔的喜怒会写在天上：神裔在地图上时，每天黎明看一次它的心情——心情≥80%天气转晴，心情≤30%转为雷雨，其余时候不干预。只影响神裔所在的地图。可在模组设置里关闭。</description>
+    <iconPath>Races124/Genes/TitanWeather</iconPath>
+    <biostatMet>0</biostatMet>
+  </GeneDef>
+  <GeneDef ParentName="LP_TitanGeneBase">
+    <defName>LP_TitanUnshakable</defName>
+    <label>不可动摇</label>
+    <description>神裔不会被眩晕（包括 EMP），心智抗性+50%。</description>
+    <iconPath>Races124/Genes/TitanUnshakable</iconPath>
+    <biostatMet>-1</biostatMet>
+    <statOffsets>
+      <LP_MindResist>0.5</LP_MindResist>
+    </statOffsets>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinTitan</defName>
+    <label>金铜肤色</label>
+    <labelShortAdj>金铜</labelShortAdj>
+    <description>神裔金铜色的皮肤，在阳光下微微发亮。</description>
+    <skinColorOverride>(206, 164, 96)</skinColorOverride>
+    <randomBrightnessFactor>0.05</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+    <displayOrderInCategory>1</displayOrderInCategory>
+  </GeneDef>
+
+  <AbilityDef ParentName="LP_Races124AbilityBase">
+    <defName>LP_TitanSmite</defName>
+    <label>神罚</label>
+    <description>在10格内的一格召下一道闪电（与天然落雷相同的火焰爆炸，外加一圈 EMP）。消耗30神威，冷却1天。打不穿山体。</description>
+    <iconPath>Races124/Abilities/Smite</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <hostile>true</hostile>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>10</range>
+      <warmupTime>1</warmupTime>
+      <requireLineOfSight>false</requireLineOfSight>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetBuildings>true</canTargetBuildings>
+        <canTargetSelf>false</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_Races124Ability"><effect>smite</effect></li>
+    </comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_Races124AbilityBase">
+    <defName>LP_TitanBreath</defName>
+    <label>神裔之息</label>
+    <description>吹出一口神息：自身5格内的所有友方（同一派系），每处伤口严重度-10，并止住出血。消耗40神威，冷却2天。</description>
+    <iconPath>Races124/Abilities/DivineBreath</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <targetRequired>false</targetRequired>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>0</range>
+      <warmupTime>1</warmupTime>
+      <targetParams>
+        <canTargetSelf>true</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_Races124Ability"><effect>breath</effect></li>
+    </comps>
+  </AbilityDef>
+
+  <ThoughtDef>
+    <defName>LP_TitanPride</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_TitanPride</workerClass>
+    <validWhileDespawned>false</validWhileDespawned>
+    <stages>
+      <li>
+        <label>神裔的傲慢</label>
+        <description>这里竟有比我更高大的存在？荒唐。</description>
+        <baseMoodEffect>-3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ==================== 剧本：坠落的神裔 ==================== -->
+  <ScenPartDef>
+    <defName>LP_FallenEmpyreanPart</defName>
+    <label>坠落的神裔</label>
+    <scenPartClass>LichPhylactery.ScenPart_FallenEmpyrean</scenPartClass>
+    <category>StartingImportant</category>
+    <selectionWeight>0</selectionWeight>
+    <summaryPriority>490</summaryPriority>
+    <maxUses>1</maxUses>
+  </ScenPartDef>
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>LP_FallenEmpyrean</defName>
+    <label>坠落的神裔</label>
+    <description>一位天穹神裔在天上的战争中败落，坠入凡间。两个凡人在陨坑边找到了它，从此追随左右。神裔头顶的光环还在，神威却所剩无几。\n\n开局的神裔近战与社交都很出色，手持一把天穹之剑；神裔有两个半常人高，生命和近战都远超常人，但饭量也大，而且看不得有比自己更高大的存在。费伦拓荒同盟对天上的来客心怀敬畏（好感+20）。大约第10天，塞伊远征军会循着陨星的踪迹前来抢夺神裔。\n\n推荐路线：泰坦觉醒。难度：中。神裔开局就认下一位父神（七位可信奉的神里随机，开局信件会写出名字），泰坦觉醒之路已经开启，“神格学”研究已经完成。\n\n注意：神裔不会生育，也只有这一位；它的心情会直接写在天上——心情好时放晴，心情坏时雷雨。</description>
+    <scenario>
+      <summary>一位坠落的天穹神裔和两名凡人追随者；第10天塞伊远征军就会循迹而来。推荐路线：泰坦觉醒，难度中。</summary>
+      <parts>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns_Xenotypes">
+          <def>ConfigurePawnsXenotypes</def>
+          <pawnChoiceCount>8</pawnChoiceCount>
+          <customSummary>一位天穹神裔和两名凡人追随者。</customSummary>
+          <xenotypeCounts>
+            <li>
+              <xenotype>LP_Titan</xenotype>
+              <count>1</count>
+              <description>天穹神裔</description>
+              <requiredAtStart>true</requiredAtStart>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+            <li>
+              <xenotype>Baseliner</xenotype>
+              <count>2</count>
+              <description>追随者</description>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+          </xenotypeCounts>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <visible>false</visible>
+          <method>Standing</method>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_FallenEmpyrean">
+          <def>LP_FallenEmpyreanPart</def>
+          <bladeQuality>Good</bladeQuality>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_FactionGoodwill">
+          <def>LP_FactionGoodwill</def>
+          <faction>LP_FaerunColony</faction>
+          <goodwill>20</goodwill>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_TimedRaid">
+          <def>LP_TimedRaid</def>
+          <faction>LP_FaerunHostile</faction>
+          <days>10~10</days>
+          <pointsFactor>0.6</pointsFactor>
+          <letterLabel>追猎神裔</letterLabel>
+        </li>
+
+        <li Class="ScenPart_StartingResearch">
+          <def>StartingResearch</def>
+          <project>LP_Research_Theogony</project>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Meat_Muffalo</thingDef>
+          <count>150</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MealSurvivalPack</thingDef>
+          <count>15</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MedicineIndustrial</thingDef>
+          <count>5</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>ComponentIndustrial</thingDef>
+          <count>5</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Apparel_ShieldBelt</thingDef>
+          <count>1</count>
+        </li>
+
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>Steel</thingDef>
+          <count>200</count>
+        </li>
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>WoodLog</thingDef>
+          <count>200</count>
+        </li>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>你从天穹坠落了很久。\n\n陨坑还在冒烟，头顶的光环忽明忽暗。两个凡人跪在坑边，捧着你那把还在嗡鸣的剑。\n\n天上的战争已经与你无关。可红袍法师闻到了陨星的味道——在他们赶到之前，让这片土地记住神裔的名字。</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+</Defs>

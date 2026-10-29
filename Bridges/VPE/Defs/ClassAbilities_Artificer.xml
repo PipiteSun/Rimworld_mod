@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.29.0 器械师的 9 个能力（VPE 联动）。时间单位为刻（60 刻 = 1 秒，60000 刻 = 1 天）。被动能力用 Ability_ArtificerPassive：没有按钮，学会即生效。 -->
+<Defs>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_ArcaneWorkshop</defName>
+    <label>奥术工坊</label>
+    <description>被动：能制作魔法飞弹杖、火焰法杖、寒霜法杖、符文手铳和符文火铳（还需要研究“奥术法杖”/“符文火器”），以及食人魔大棒、矮人投掷锤、精灵长弓、半兽人巨斧、银剑和霜巨人斧（各自的研究照旧）。需要手工 6 级。</description>
+    <iconPath>LP/Classes/Artificer/ArcaneWorkshop</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ArtificerPassive</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>0</castTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Artificer</path><level>1</level><order>1</order>
+        <psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain>
+        <requiredSkillLevel>6</requiredSkillLevel>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_QuickRepair</defName>
+    <label>快速维修</label>
+    <description>给一名友方修好装备：主武器和身上每件服装各恢复 25% 耐久。冷却 1 天。需要手工 6 级。</description>
+    <iconPath>LP/Classes/Artificer/QuickRepair</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_QuickRepair</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <targetingParameters><canTargetPawns>true</canTargetPawns><canTargetHumans>true</canTargetHumans><canTargetSelf>true</canTargetSelf><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations></targetingParameters>
+    <range>4.9</range>
+    <requireLineOfSight>true</requireLineOfSight>
+    <castTime>60</castTime>
+    <cooldownTime>60000</cooldownTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Artificer</path><level>1</level><order>2</order>
+        <psyfocusCost>0.08</psyfocusCost><entropyGain>6</entropyGain>
+        <requiredSkillLevel>6</requiredSkillLevel>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_RuneInscription</defName>
+    <label>符文铭刻</label>
+    <description>被动：能制作圣银手枪、熔岩穿甲枪、雷鸣铳、雷锤手炮和符文连珠铳（还需要研究“符文火器”），以及霜刺长枪、天穹之剑、云巨人晨星锤、风暴三叉戟、火巨人熔炉重锤和熔核破城锤（各自的研究照旧）。需要手工 9 级。</description>
+    <iconPath>LP/Classes/Artificer/RuneInscription</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ArtificerPassive</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>0</castTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Artificer</path><level>2</level><order>1</order>
+        <psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain>
+        <requiredSkillLevel>9</requiredSkillLevel>
+        <prerequisites><li>LP_ArcaneWorkshop</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_Overcharge</defName>
+    <label>过载射击</label>
+    <description>10 秒内，自己的下一次远程命中伤害 ×(1 + 器械强度)，所用武器掉 5% 耐久。需要手工 9 级。</description>
+    <iconPath>LP/Classes/Artificer/Overcharge</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_SelfBuff</abilityClass>
+    <targetMode>Self</targetMode>
+    <durationTime>600</durationTime>
+    <castTime>15</castTime>
+    <cooldownTime>2500</cooldownTime>
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Artificer</path><level>2</level><order>2</order>
+        <psyfocusCost>0.06</psyfocusCost><entropyGain>8</entropyGain>
+        <requiredSkillLevel>9</requiredSkillLevel>
+        <prerequisites><li>LP_QuickRepair</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_ArcaneCharge</defName>
+    <label>魔力充能</label>
+    <description>给一名友方灌注魔力：30 秒内用符文矮人枪械和法杖时魔力系数 +0.5（对其他武器无效）。需要手工 12 级。</description>
+    <iconPath>LP/Classes/Artificer/ArcaneCharge</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ArcaneCharge</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <targetingParameters><canTargetPawns>true</canTargetPawns><canTargetHumans>true</canTargetHumans><canTargetSelf>true</canTargetSelf><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations></targetingParameters>
+    <range>14.9</range>
+    <requireLineOfSight>true</requireLineOfSight>
+    <durationTime>1800</durationTime>
+    <castTime>20</castTime>
+    <cooldownTime>3600</cooldownTime>
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Artificer</path><level>3</level><order>1</order>
+        <psyfocusCost>0.12</psyfocusCost><entropyGain>10</entropyGain>
+        <requiredSkillLevel>12</requiredSkillLevel>
+        <prerequisites><li>LP_Overcharge</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_MasterCraft</defName>
+    <label>大师工艺</label>
+    <description>被动：制作“符文火器”“奥术法杖”研究解锁的所有武器品质 +1（与矮人的加成叠加，最高传说）。需要手工 12 级。</description>
+    <iconPath>LP/Classes/Artificer/MasterCraft</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ArtificerPassive</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>0</castTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Artificer</path><level>3</level><order>2</order>
+        <psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain>
+        <requiredSkillLevel>12</requiredSkillLevel>
+        <prerequisites><li>LP_RuneInscription</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_MountainForge</defName>
+    <label>山岳锻造</label>
+    <description>被动：能制作矮人王族的重铳“山岳之怒”。需要手工 15 级。</description>
+    <iconPath>LP/Classes/Artificer/MountainForge</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ArtificerPassive</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>0</castTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Artificer</path><level>4</level><order>1</order>
+        <psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain>
+        <requiredSkillLevel>15</requiredSkillLevel>
+        <prerequisites><li>LP_MasterCraft</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_RuneTurretAbility</defName>
+    <label>符文炮台</label>
+    <description>在目标格放下一座临时符文炮台：符文火铳的数值 × 器械强度，持续 60 秒。冷却 2 天。需要手工 15 级。</description>
+    <iconPath>LP/Classes/Artificer/RuneTurret</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_RuneTurret</abilityClass>
+    <targetMode>Location</targetMode>
+    <range>9.9</range>
+    <requireLineOfSight>true</requireLineOfSight>
+    <castTime>60</castTime>
+    <cooldownTime>120000</cooldownTime>
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Artificer</path><level>4</level><order>2</order>
+        <psyfocusCost>0.15</psyfocusCost><entropyGain>12</entropyGain>
+        <requiredSkillLevel>15</requiredSkillLevel>
+        <prerequisites><li>LP_ArcaneCharge</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_ArcaneResonance</defName>
+    <label>魔力共鸣</label>
+    <description>被动：自己用符文矮人枪械和法杖时，心灵敏感度不足 150% 按 150% 算。需要手工 18 级，并学会山岳锻造或符文炮台。</description>
+    <iconPath>LP/Classes/Artificer/ArcaneResonance</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ArtificerPassive</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>0</castTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Artificer</path><level>5</level><order>1</order>
+        <psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain>
+        <requiredSkillLevel>18</requiredSkillLevel>
+        <prerequisites><li>LP_MountainForge</li><li>LP_RuneTurretAbility</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+</Defs>

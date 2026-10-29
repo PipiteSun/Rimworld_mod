@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.60.0 迷锁地牢：迷锁之门（原版口袋地图入口）、楼层生成、迷锁石墙 / 灯 / 泉 / 回响、迷锁碎片、主题、迷锁规则。代码在 Source/Mythal.cs。 -->
+<Defs>
+
+  <!-- ==================== 建筑 ==================== -->
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_MythalGate</defName>
+    <label>迷锁之门</label>
+    <description>一座古代精灵与耐瑟瑞尔人共同建造的石拱门，下面埋着一座失落的迷锁。迷锁守护的城早已不在，结界只剩一座会自己重组的迷宫：每被解开一层就会坍塌，封闭几天后用新的形状重新编织下一层，层数一直往下，没有尽头。\n\n每层打倒守护者，解开它的人能拿到冒险者经验、迷锁碎片和宝藏；每 10 层有一个里程碑首领。迷锁碎片可以在门上兑换物资。\n\n迷锁之门不可拆、不可移动、不会损坏。</description>
+    <thingClass>LichPhylactery.Building_MythalGate</thingClass>
+    <size>(3,3)</size>
+    <useHitPoints>false</useHitPoints>
+    <rotatable>false</rotatable>
+    <canOverlapZones>false</canOverlapZones>
+    <tickerType>Normal</tickerType>
+    <drawerType>RealtimeOnly</drawerType>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>LP/Mythal/GateOpen</texPath>
+      <drawSize>(3,3)</drawSize>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <fillPercent>0.5</fillPercent>
+    <passability>Impassable</passability>
+    <holdsRoof>false</holdsRoof>
+    <destroyable>false</destroyable>
+    <building>
+      <isEdifice>true</isEdifice>
+      <deconstructible>false</deconstructible>
+      <isTargetable>false</isTargetable>
+      <isInert>true</isInert>
+      <claimable>false</claimable>
+      <expandHomeArea>false</expandHomeArea>
+    </building>
+    <portal>
+      <pocketMapGenerator>LP_MythalFloor</pocketMapGenerator>
+      <exitDef>LP_MythalExit</exitDef>
+      <pocketMapSize>70</pocketMapSize>
+    </portal>
+    <statBases>
+      <Flammability>0</Flammability>
+      <Beauty>10</Beauty>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>6</glowRadius>
+        <glowColor>(120,170,230,0)</glowColor>
+      </li>
+    </comps>
+    <inspectorTabs>
+      <li>ITab_ContentsMapPortal</li>
+    </inspectorTabs>
+  </ThingDef>
+
+  <ThingDef ParentName="PocketMapExit">
+    <defName>LP_MythalExit</defName>
+    <label>迷锁回响</label>
+    <description>迷锁结界里的一道回声：从这里可以直接回到地面上的迷锁之门。</description>
+    <size>(3,3)</size>
+    <drawerType>RealtimeOnly</drawerType>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>LP/Mythal/Exit</texPath>
+      <drawSize>(3,3)</drawSize>
+    </graphicData>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <statBases>
+      <Flammability>0</Flammability>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>8</glowRadius>
+        <glowColor>(130,180,235,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef>
+    <defName>LP_MythalWall</defName>
+    <label>迷锁石墙</label>
+    <description>迷锁结界凝成的石墙，摸上去是温的。挖不动，也打不坏。</description>
+    <category>Building</category>
+    <thingClass>Building</thingClass>
+    <graphicData>
+      <texPath>LP/Mythal/Wall_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <linkType>CornerFiller</linkType>
+      <linkFlags>
+        <li>Rock</li>
+        <li>MapEdge</li>
+      </linkFlags>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>Impassable</passability>
+    <blockWind>true</blockWind>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>1</fillPercent>
+    <coversFloor>true</coversFloor>
+    <neverMultiSelect>true</neverMultiSelect>
+    <rotatable>false</rotatable>
+    <saveCompressible>true</saveCompressible>
+    <holdsRoof>true</holdsRoof>
+    <staticSunShadowHeight>1.0</staticSunShadowHeight>
+    <blockLight>true</blockLight>
+    <drawerType>MapMeshOnly</drawerType>
+    <useHitPoints>false</useHitPoints>
+    <destroyable>false</destroyable>
+    <selectable>true</selectable>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <Flammability>0</Flammability>
+    </statBases>
+    <building>
+      <isInert>true</isInert>
+      <deconstructible>false</deconstructible>
+      <claimable>false</claimable>
+      <isTargetable>false</isTargetable>
+      <expandHomeArea>false</expandHomeArea>
+      <canBuildNonEdificesUnder>false</canBuildNonEdificesUnder>
+    </building>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_MythalLamp</defName>
+    <label>迷锁灯</label>
+    <description>一簇淡蓝色的迷锁结晶，自己发光。</description>
+    <size>(1,1)</size>
+    <useHitPoints>false</useHitPoints>
+    <destroyable>false</destroyable>
+    <rotatable>false</rotatable>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>LP/Mythal/Lamp</texPath>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.3</fillPercent>
+    <statBases>
+      <Flammability>0</Flammability>
+    </statBases>
+    <building>
+      <deconstructible>false</deconstructible>
+      <isInert>true</isInert>
+      <claimable>false</claimable>
+      <isTargetable>false</isTargetable>
+      <expandHomeArea>false</expandHomeArea>
+    </building>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(110,160,220,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_MythalFountain</defName>
+    <label>迷锁泉</label>
+    <description>迷锁结界里涌出的一眼清泉。走到泉边的人伤口愈合、疲劳一扫而空，每人每层一次。</description>
+    <size>(2,2)</size>
+    <useHitPoints>false</useHitPoints>
+    <destroyable>false</destroyable>
+    <rotatable>false</rotatable>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>LP/Mythal/Fountain</texPath>
+      <drawSize>(2,2)</drawSize>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>Impassable</passability>
+    <fillPercent>0.4</fillPercent>
+    <statBases>
+      <Flammability>0</Flammability>
+      <Beauty>15</Beauty>
+    </statBases>
+    <building>
+      <deconstructible>false</deconstructible>
+      <isInert>true</isInert>
+      <claimable>false</claimable>
+      <isTargetable>false</isTargetable>
+      <expandHomeArea>false</expandHomeArea>
+    </building>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>7</glowRadius>
+        <glowColor>(120,200,220,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- ==================== 迷锁碎片 ==================== -->
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_MythalShard</defName>
+    <label>迷锁碎片</label>
+    <description>迷锁结界崩塌时掉下的一片淡蓝结晶。只能在迷锁之门上兑换东西，商人不认它。</description>
+    <graphicData>
+      <texPath>LP/Mythal/Shard</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Silver_Drop</soundInteract>
+    <soundDrop>Silver_Drop</soundDrop>
+    <stackLimit>500</stackLimit>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <tradeability>None</tradeability>
+    <statBases>
+      <MarketValue>5</MarketValue>
+      <Mass>0.01</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <thingCategories>
+      <li>ResourcesRaw</li>
+    </thingCategories>
+    <burnableByRecipe>false</burnableByRecipe>
+  </ThingDef>
+
+  <!-- ==================== 楼层地图 ==================== -->
+
+  <MapGeneratorDef>
+    <defName>LP_MythalFloor</defName>
+    <label>迷锁地牢</label>
+    <isUnderground>true</isUnderground>
+    <disableCallAid>true</disableCallAid>
+    <ignoreAreaRevealedLetter>true</ignoreAreaRevealedLetter>
+    <pocketMapProperties>
+      <biome>Underground</biome>
+      <temperature>18</temperature>
+    </pocketMapProperties>
+    <genSteps>
+      <li>LP_MythalFloor</li>
+    </genSteps>
+  </MapGeneratorDef>
+
+  <GenStepDef>
+    <defName>LP_MythalFloor</defName>
+    <order>10</order>
+    <genStep Class="LichPhylactery.GenStep_MythalFloor" />
+  </GenStepDef>
+
+  <ThoughtDef>
+    <defName>LP_MythalExpelled</defName>
+    <durationDays>3</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>被迷锁驱逐</label>
+        <description>我在迷锁地牢里倒下，醒来时已经躺在门口。被一座结界嫌弃的感觉真不好受。</description>
+        <baseMoodEffect>-6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ==================== 主题（按层数窗口随机；兵种不存在时自动跳过） ==================== -->
+
+  <LichPhylactery.MythalThemeDef>
+    <defName>LP_MythalTheme_KoboldMine</defName>
+    <label>狗头人矿坑</label>
+    <minFloor>1</minFloor><maxFloor>15</maxFloor>
+    <floorTerrain>FlagstoneSandstone</floorTerrain>
+    <monsters><li>LP_FH_KoboldSkulker</li><li>LP_FH_KoboldSkulker</li><li>LP_FH_KoboldSkulker</li><li>LP_Worg</li></monsters>
+    <guardians><li>LP_FH_KoboldSkulker</li></guardians>
+    <loot>
+      <li><def>Steel</def><count>20~40</count></li>
+      <li><def>Gold</def><count>3~8</count></li>
+      <li><def>ComponentIndustrial</def><count>1~2</count><chance>0.6</chance></li>
+      <li><def>LP_PotionHealing</def><count>1~1</count><chance>0.4</chance></li>
+    </loot>
+  </LichPhylactery.MythalThemeDef>
+
+  <LichPhylactery.MythalThemeDef>
+    <defName>LP_MythalTheme_GoblinCamp</defName>
+    <label>地精营地</label>
+    <minFloor>1</minFloor><maxFloor>20</maxFloor>
+    <floorTerrain>WoodPlankFloor</floorTerrain>
+    <monsters><li>LP_FH_GoblinRaider</li><li>LP_FH_GoblinRaider</li><li>LP_FH_GoblinRaider</li><li>LP_FH_OrcWarrior</li><li>LP_FH_OgreBrute</li></monsters>
+    <guardians><li>LP_FH_OgreBrute</li></guardians>
+    <loot>
+      <li><def>Leather_Plain</def><count>20~40</count></li>
+      <li><def>Silver</def><count>30~60</count></li>
+      <li><def>MedicineHerbal</def><count>3~6</count><chance>0.6</chance></li>
+    </loot>
+  </LichPhylactery.MythalThemeDef>
+
+  <LichPhylactery.MythalThemeDef>
+    <defName>LP_MythalTheme_OwlbearDen</defName>
+    <label>猫头鹰熊林窟</label>
+    <minFloor>3</minFloor><maxFloor>20</maxFloor>
+    <floorTerrain>Granite_Rough</floorTerrain>
+    <monsters><li>LP_Owlbear</li><li>LP_BlinkDog</li><li>LP_BlinkDog</li><li>LP_WinterWolf</li><li>LP_DisplacerBeast</li></monsters>
+    <guardians><li>LP_Owlbear</li></guardians>
+    <loot>
+      <li><def>Leather_Plain</def><count>30~50</count></li>
+      <li><def>MedicineHerbal</def><count>4~8</count></li>
+      <li><def>WoodLog</def><count>40~80</count><chance>0.5</chance></li>
+    </loot>
+  </LichPhylactery.MythalThemeDef>
+
+  <LichPhylactery.MythalThemeDef>
+    <defName>LP_MythalTheme_Crypt</defName>
+    <label>亡者墓穴</label>
+    <minFloor>5</minFloor><maxFloor>30</maxFloor>
+    <floorTerrain>FlagstoneSlate</floorTerrain>
+    <monsters><li>LP_FH_Skeleton</li><li>LP_FH_Skeleton</li><li>LP_FH_Skeleton</li><li>LP_HellHound</li></monsters>
+    <guardians><li>LP_LM_Demilich</li><li>LP_LM_DeathKnight</li></guardians>
+    <loot>
+      <li><def>Gold</def><count>5~15</count></li>
+      <li><def>LP_ScrollProtectionEvil</def><count>1~1</count><chance>0.3</chance></li>
+      <li><def>LP_ScrollRevivify</def><count>1~1</count><chance>0.1</chance></li>
+    </loot>
+  </LichPhylactery.MythalThemeDef>
+
+  <LichPhylactery.MythalThemeDef>
+    <defName>LP_MythalTheme_RedWizardTower</defName>
+    <label>红袍法师塔</label>
+    <minFloor>10</minFloor><maxFloor>40</maxFloor>
+    <floorTerrain>TileMarble</floorTerrain>
+    <monsters><li>LP_FH_RedWizard</li><li>LP_FH_RedWizard</li><li>LP_HellHound</li><li>LP_FH_RuneTroll</li></monsters>
+    <guardians><li>LP_FH_RedWizard</li></guardians>
+    <loot>
+      <li><def>Gold</def><count>8~20</count></li>
+      <li><def>ComponentIndustrial</def><count>2~4</count></li>
+      <li><def>LP_ScrollFireball</def><count>1~1</count><chance>0.4</chance></li>
+      <li><def>LP_ScrollTrueSeeing</def><count>1~1</count><chance>0.3</chance></li>
+    </loot>
+  </LichPhylactery.MythalThemeDef>
+
+  <LichPhylactery.MythalThemeDef>
+    <defName>LP_MythalTheme_DragonCult</defName>
+    <label>龙教巢穴</label>
+    <minFloor>20</minFloor>
+    <floorTerrain>TileGranite</floorTerrain>
+    <monsters><li>LP_DragonCultist</li><li>LP_DragonCultist</li><li>LP_FH_KoboldSkulker</li><li>LP_FH_KoboldSkulker</li></monsters>
+    <guardians><li>LP_DragonCultist</li></guardians>
+    <loot>
+      <li><def>Gold</def><count>10~25</count></li>
+      <li><def>Jade</def><count>5~10</count></li>
+    </loot>
+  </LichPhylactery.MythalThemeDef>
+
+  <LichPhylactery.MythalThemeDef>
+    <defName>LP_MythalTheme_Underdark</defName>
+    <label>幽暗地域</label>
+    <minFloor>25</minFloor>
+    <floorTerrain>Slate_Rough</floorTerrain>
+    <monsters><li>LP_FH_DrowBlade</li><li>LP_FH_DrowBlade</li><li>LP_FH_DrowBlade</li><li>LP_IC_Thrall</li><li>LP_IC_Thrall</li><li>LP_IC_MindFlayer</li></monsters>
+    <guardians><li>LP_IC_MindFlayer</li></guardians>
+    <loot>
+      <li><def>Gold</def><count>10~20</count></li>
+      <li><def>Plasteel</def><count>10~20</count></li>
+      <li><def>Silver</def><count>60~120</count></li>
+    </loot>
+  </LichPhylactery.MythalThemeDef>
+
+  <LichPhylactery.MythalThemeDef>
+    <defName>LP_MythalTheme_AbyssRift</defName>
+    <label>深渊裂隙</label>
+    <minFloor>35</minFloor>
+    <floorTerrain>TileSlate</floorTerrain>
+    <monsters><li>LP_AH_Dretch</li><li>LP_AH_Dretch</li><li>LP_AH_Barlgura</li><li>LP_AH_Hezrou</li><li>LP_HL_BoneDevil</li></monsters>
+    <guardians><li>LP_HL_HornedDevil</li><li>LP_AH_Hezrou</li></guardians>
+    <loot>
+      <li><def>LP_SoulCoin</def><count>2~5</count></li>
+      <li><def>Gold</def><count>15~30</count></li>
+      <li><def>Plasteel</def><count>15~30</count></li>
+    </loot>
+  </LichPhylactery.MythalThemeDef>
+
+  <!-- ==================== 迷锁规则（第 1～4 层固定没有规则） ==================== -->
+
+  <LichPhylactery.MythalRuleDef>
+    <defName>LP_MythalRule_None</defName>
+    <label>无</label>
+    <description>这一层的迷锁很安静。</description>
+    <minFloor>1</minFloor>
+    <weight>2</weight>
+  </LichPhylactery.MythalRuleDef>
+  <LichPhylactery.MythalRuleDef>
+    <defName>LP_MythalRule_Gravity</defName>
+    <label>重力</label>
+    <description>所有人移动速度 −25%</description>
+    <hediff>LP_MythalRule_Gravity</hediff>
+  </LichPhylactery.MythalRuleDef>
+  <LichPhylactery.MythalRuleDef>
+    <defName>LP_MythalRule_Fury</defName>
+    <label>狂暴</label>
+    <description>双方近战伤害 +30%</description>
+    <hediff>LP_MythalRule_Fury</hediff>
+  </LichPhylactery.MythalRuleDef>
+  <LichPhylactery.MythalRuleDef>
+    <defName>LP_MythalRule_Lifeflow</defName>
+    <label>生命回流</label>
+    <description>所有人（包括敌人）伤口愈合 ×4</description>
+    <hediff>LP_MythalRule_Lifeflow</hediff>
+  </LichPhylactery.MythalRuleDef>
+  <LichPhylactery.MythalRuleDef>
+    <defName>LP_MythalRule_Stasis</defName>
+    <label>时间凝滞</label>
+    <description>伤口不流血，不会饿，也不会累</description>
+    <hediff>LP_MythalRule_Stasis</hediff>
+  </LichPhylactery.MythalRuleDef>
+  <LichPhylactery.MythalRuleDef>
+    <defName>LP_MythalRule_Fragile</defName>
+    <label>破碎</label>
+    <description>所有人受到的伤害 +25%</description>
+    <hediff>LP_MythalRule_Fragile</hediff>
+    <minFloor>8</minFloor>
+  </LichPhylactery.MythalRuleDef>
+  <LichPhylactery.MythalRuleDef>
+    <defName>LP_MythalRule_Blessing</defName>
+    <label>祝福</label>
+    <description>我方近战命中 +10%，瞄准时间 −15%</description>
+    <hediff>LP_MythalRule_Blessing</hediff>
+    <playerOnly>true</playerOnly>
+    <weight>0.5</weight>
+  </LichPhylactery.MythalRuleDef>
+
+  <HediffDef Name="LP_MythalRuleBase" Abstract="True">
+    <hediffClass>LichPhylactery.Hediff_MythalRule</hediffClass>
+    <defaultLabelColor>(0.55, 0.75, 0.95)</defaultLabelColor>
+    <isBad>false</isBad>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <everCurableByItem>false</everCurableByItem>
+    <initialSeverity>1</initialSeverity>
+  </HediffDef>
+  <HediffDef ParentName="LP_MythalRuleBase">
+    <defName>LP_MythalRule_Gravity</defName>
+    <label>迷锁规则：重力</label>
+    <description>这一层的迷锁把一切往下拽。离开迷锁地牢后消失。</description>
+    <stages><li><statFactors><MoveSpeed>0.75</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_MythalRuleBase">
+    <defName>LP_MythalRule_Fury</defName>
+    <label>迷锁规则：狂暴</label>
+    <description>这一层的迷锁煽动着每一次挥击。离开迷锁地牢后消失。</description>
+    <stages><li><statFactors><MeleeDamageFactor>1.3</MeleeDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_MythalRuleBase">
+    <defName>LP_MythalRule_Lifeflow</defName>
+    <label>迷锁规则：生命回流</label>
+    <description>这一层的迷锁把生命力灌回每一具身体，敌人也一样。离开迷锁地牢后消失。</description>
+    <stages><li><statFactors><InjuryHealingFactor>4</InjuryHealingFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_MythalRuleBase">
+    <defName>LP_MythalRule_Stasis</defName>
+    <label>迷锁规则：时间凝滞</label>
+    <description>这一层的时间几乎停住了：伤口不流血，不会饿，也不会累。离开迷锁地牢后消失。</description>
+    <stages><li><hungerRateFactor>0</hungerRateFactor><restFallFactor>0</restFallFactor><totalBleedFactor>0</totalBleedFactor></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_MythalRuleBase">
+    <defName>LP_MythalRule_Fragile</defName>
+    <label>迷锁规则：破碎</label>
+    <description>这一层的迷锁让血肉变得脆弱。离开迷锁地牢后消失。</description>
+    <stages><li><statFactors><IncomingDamageFactor>1.25</IncomingDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_MythalRuleBase">
+    <defName>LP_MythalRule_Blessing</defName>
+    <label>迷锁规则：祝福</label>
+    <description>这一层的迷锁认出了你们，暗暗相助。离开迷锁地牢后消失。</description>
+    <stages><li><statOffsets><MeleeHitChance>0.1</MeleeHitChance></statOffsets><statFactors><AimingDelayFactor>0.85</AimingDelayFactor></statFactors></li></stages>
+  </HediffDef>
+
+</Defs>

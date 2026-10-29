@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.22.0 奇物。戒指、护符、伊奥恩石戴在自建的“奇物”层（1.45.0 起由“饰品”改名） LP_Accessory，不占用其他装备位置。 -->
+<Defs>
+  <ThingDef Name="LP_WondrousApparelBase" ParentName="ApparelBase" Abstract="True">
+    <techLevel>Medieval</techLevel>
+    <smeltable>false</smeltable>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <tradeTags><li>LP_Wondrous</li></tradeTags>
+    <statBases><EquipDelay>1</EquipDelay></statBases>
+  </ThingDef>
+  <ThingDef Name="LP_AccessoryBase" ParentName="LP_WondrousApparelBase" Abstract="True">
+    <statBases><MaxHitPoints>80</MaxHitPoints><Mass>0.05</Mass><Flammability>0</Flammability></statBases>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <careIfWornByCorpse>false</careIfWornByCorpse>
+      <layers><li>LP_Accessory</li></layers>
+    </apparel>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_WondrousApparelBase">
+    <defName>LP_BagOfHolding</defName>
+    <label>次元袋</label>
+    <description>袋口小小，里面却连着一个口袋维度。挂在腰带上，搬运量+60，不影响移动速度。受到火焰或锐器伤害时有2%概率被撕破：袋子毁掉，背包里的东西掉一地。</description>
+    <graphicData><texPath>Items/Wondrous/BagOfHolding</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MaxHitPoints>100</MaxHitPoints><Mass>0.5</Mass><MarketValue>900</MarketValue></statBases>
+    <equippedStatOffsets><CarryingCapacity>60</CarryingCapacity></equippedStatOffsets>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <bodyPartGroups><li>Waist</li></bodyPartGroups>
+      <layers><li>Belt</li></layers>
+    </apparel>
+  </ThingDef>
+  <ThingDef ParentName="LP_WondrousApparelBase">
+    <defName>LP_CloakElvenkind</defName>
+    <label>精灵斗篷</label>
+    <description>颜色随环境变幻的精灵斗篷。穿着者站着不动时，被远程攻击命中的概率-15%；精灵穿着时-30%。</description>
+    <graphicData><texPath>Items/Wondrous/CloakElvenkind</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MaxHitPoints>120</MaxHitPoints><Mass>1</Mass><MarketValue>800</MarketValue><Insulation_Cold>8</Insulation_Cold></statBases>
+    <colorGenerator Class="ColorGenerator_Single"><color>(0.38,0.55,0.33)</color></colorGenerator>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Shoulders</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath>
+      <layers><li>Shell</li></layers>
+    </apparel>
+  </ThingDef>
+  <ThingDef ParentName="LP_WondrousApparelBase">
+    <defName>LP_BootsElvenkind</defName>
+    <label>精灵靴</label>
+    <description>软底的精灵靴，走起路来悄无声息：穿着者走动不会吵醒睡着的人或动物。</description>
+    <graphicData><texPath>Items/Wondrous/BootsElvenkind</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MaxHitPoints>100</MaxHitPoints><Mass>0.6</Mass><MarketValue>450</MarketValue></statBases>
+    <apparel>
+      <bodyPartGroups><li>Feet</li></bodyPartGroups>
+      <layers><li>OnSkin</li></layers>
+    </apparel>
+  </ThingDef>
+  <ThingDef ParentName="LP_WondrousApparelBase">
+    <defName>LP_BootsSpeed</defName>
+    <label>疾行靴</label>
+    <description>后跟带着小小羽翼的红靴。穿着者获得“疾行”能力：1分钟内移动速度×2，冷却1天。</description>
+    <graphicData><texPath>Items/Wondrous/BootsSpeed</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MaxHitPoints>100</MaxHitPoints><Mass>0.6</Mass><MarketValue>700</MarketValue></statBases>
+    <apparel>
+      <bodyPartGroups><li>Feet</li></bodyPartGroups>
+      <layers><li>OnSkin</li></layers>
+    </apparel>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_GrantAbility"><ability>LP_SpeedBurst</ability></li>
+    </comps>
+  </ThingDef>
+  <AbilityDef>
+    <defName>LP_SpeedBurst</defName>
+    <label>疾行</label>
+    <description>疾行靴的魔力涌入双腿：1分钟内移动速度×2。冷却1天。</description>
+    <iconPath>Items/Abilities/SpeedBurst</iconPath>
+    <hostile>false</hostile>
+    <targetRequired>false</targetRequired>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <aiCanUse>false</aiCanUse>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>0</warmupTime>
+      <range>0</range>
+      <targetParams><canTargetSelf>true</canTargetSelf></targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_ItemAbility"><effect>speed</effect></li>
+    </comps>
+  </AbilityDef>
+  <HediffDef>
+    <defName>LP_SpeedBurst</defName>
+    <label>疾行</label>
+    <description>疾行靴的魔力：移动速度×2。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>3600</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><statFactors><MoveSpeed>2</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <ThingDef ParentName="LP_WondrousApparelBase">
+    <defName>LP_IntellectFortress</defName>
+    <label>心灵屏障头环</label>
+    <description>镶着蓝晶的银头环。心智抗性+40%；夺心魔对佩戴者读心时会被反噬：眩晕2秒并陷入“心灵震荡”。</description>
+    <graphicData><texPath>Items/Wondrous/IntellectFortress</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MaxHitPoints>100</MaxHitPoints><Mass>0.2</Mass><MarketValue>1200</MarketValue></statBases>
+    <equippedStatOffsets><LP_MindResist>0.4</LP_MindResist></equippedStatOffsets>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <bodyPartGroups><li>UpperHead</li></bodyPartGroups>
+      <layers><li>Overhead</li></layers>
+    </apparel>
+  </ThingDef>
+
+  <ThingDef Name="LP_RingBase" ParentName="LP_AccessoryBase" Abstract="True">
+    <statBases><MarketValue>700</MarketValue></statBases>
+    <apparel><bodyPartGroups><li>RightHand</li></bodyPartGroups></apparel>
+    <modExtensions><li Class="LichPhylactery.AccessorySlot"><slot>Ring</slot><max>2</max></li></modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="LP_RingBase">
+    <defName>LP_RingResistanceFire</defName>
+    <label>抗火戒指</label>
+    <description>红宝石戒指。佩戴者受到的火焰伤害-50%。最多戴两枚不同的戒指。</description>
+    <graphicData><texPath>Items/Wondrous/RingFire</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <modExtensions><li Class="LichPhylactery.ItemDamageFactors"><factor>0.5</factor><damageDefs><li>Flame</li><li>Burn</li></damageDefs><keywords><li>Flame</li><li>Incendiary</li></keywords><excluded><li>Acid</li></excluded></li></modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="LP_RingBase">
+    <defName>LP_RingResistanceCold</defName>
+    <label>抗寒戒指</label>
+    <description>冰晶戒指。佩戴者受到的寒冷类伤害（冻伤、寒冰射线等）-50%。最多戴两枚不同的戒指。</description>
+    <graphicData><texPath>Items/Wondrous/RingCold</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <modExtensions><li Class="LichPhylactery.ItemDamageFactors"><factor>0.5</factor><damageDefs><li>Frostbite</li></damageDefs><keywords><li>Frost</li><li>Cold</li><li>Ice</li><li>Freez</li></keywords></li></modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="LP_RingBase">
+    <defName>LP_RingResistanceAcid</defName>
+    <label>抗酸戒指</label>
+    <description>翠玉戒指。佩戴者受到的酸液伤害-50%。最多戴两枚不同的戒指。</description>
+    <graphicData><texPath>Items/Wondrous/RingAcid</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <modExtensions><li Class="LichPhylactery.ItemDamageFactors"><factor>0.5</factor><keywords><li>Acid</li></keywords></li></modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="LP_RingBase">
+    <defName>LP_RingResistanceMind</defName>
+    <label>心灵抗性戒指</label>
+    <description>紫晶银戒。佩戴者心智抗性+30%。最多戴两枚不同的戒指。</description>
+    <graphicData><texPath>Items/Wondrous/RingMind</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <equippedStatOffsets><LP_MindResist>0.3</LP_MindResist></equippedStatOffsets>
+  </ThingDef>
+  <ThingDef ParentName="LP_AccessoryBase">
+    <defName>LP_AmuletHealth</defName>
+    <label>健康护符</label>
+    <description>刻着治疗圣徽的金护符。佩戴者不会染上疾病（流感、瘟疫、疟疾、伤口感染等）。</description>
+    <graphicData><texPath>Items/Wondrous/AmuletHealth</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1100</MarketValue></statBases>
+    <apparel><bodyPartGroups><li>Neck</li></bodyPartGroups></apparel>
+  </ThingDef>
+  <ThingDef ParentName="LP_AccessoryBase">
+    <defName>LP_IounStone</defName>
+    <label>伊奥恩石</label>
+    <description>会自己绕着主人头顶打转的小晶石。每颗石头对应一项技能（射击、近战、建造、医疗、智识、社交、手工之一，生成时随机），环绕时该技能学习速度+50%。最多同时戴两颗，戴第三颗会顶掉最早的那颗。</description>
+    <graphicData><texPath>Items/Wondrous/IounStone</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1500</MarketValue></statBases>
+    <apparel><bodyPartGroups><li>UpperHead</li></bodyPartGroups></apparel>
+    <comps><li Class="LichPhylactery.CompProperties_IounStone" /></comps>
+  </ThingDef>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_WandDetection</defName>
+    <label>探测魔杖</label>
+    <description>杖头嵌着青晶的短杖。只要放在地图的储存区里（库存区、货架等），这张地图上所有隐形的人都会被标记、无法隐身。</description>
+    <graphicData><texPath>Items/Wondrous/WandDetection</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>1</stackLimit>
+    <useHitPoints>true</useHitPoints>
+    <techLevel>Medieval</techLevel>
+    <statBases><MaxHitPoints>80</MaxHitPoints><Mass>0.4</Mass><MarketValue>1000</MarketValue><Flammability>0.5</Flammability></statBases>
+    <thingCategories><li>ItemsMisc</li></thingCategories>
+    <tradeTags><li>LP_Wondrous</li></tradeTags>
+  </ThingDef>
+</Defs>

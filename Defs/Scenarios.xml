@@ -1,0 +1,1686 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- ==================== 剧本组件 ==================== -->
+
+  <ScenPartDef>
+    <defName>LP_LichAscension</defName>
+    <label>巫妖开局</label>
+    <scenPartClass>LichPhylactery.ScenPart_LichAscension</scenPartClass>
+    <category>StartingImportant</category>
+    <selectionWeight>0</selectionWeight>
+    <summaryPriority>490</summaryPriority>
+    <maxUses>1</maxUses>
+  </ScenPartDef>
+
+  <ScenPartDef>
+    <defName>LP_FireGiantClan</defName>
+    <label>火巨人锻炉氏族</label>
+    <scenPartClass>LichPhylactery.ScenPart_FireGiantClan</scenPartClass>
+    <category>StartingImportant</category>
+    <selectionWeight>0</selectionWeight>
+    <summaryPriority>490</summaryPriority>
+    <maxUses>1</maxUses>
+  </ScenPartDef>
+
+  <ScenPartDef>
+    <defName>LP_ForceDragonClutch</defName>
+    <label>力能龙裔的宝库与龙蛋</label>
+    <scenPartClass>LichPhylactery.ScenPart_ForceDragonClutch</scenPartClass>
+    <category>StartingImportant</category>
+    <selectionWeight>0</selectionWeight>
+    <summaryPriority>490</summaryPriority>
+    <maxUses>1</maxUses>
+  </ScenPartDef>
+
+  <ScenPartDef>
+    <defName>LP_TimedCondition</defName>
+    <label>开局限时状况</label>
+    <scenPartClass>LichPhylactery.ScenPart_TimedCondition</scenPartClass>
+    <category>GameCondition</category>
+    <selectionWeight>0</selectionWeight>
+    <summaryPriority>400</summaryPriority>
+  </ScenPartDef>
+
+  <!-- 1.20.0 新组件 -->
+  <ScenPartDef>
+    <defName>LP_TimedRaid</defName>
+    <label>限时派系袭击</label>
+    <scenPartClass>LichPhylactery.ScenPart_TimedRaid</scenPartClass>
+    <category>Misc</category>
+    <selectionWeight>0</selectionWeight>
+    <summaryPriority>390</summaryPriority>
+  </ScenPartDef>
+
+  <ScenPartDef>
+    <defName>LP_MountainCamp</defName>
+    <label>山腹营地</label>
+    <scenPartClass>LichPhylactery.ScenPart_MountainCamp</scenPartClass>
+    <category>StartingImportant</category>
+    <selectionWeight>0</selectionWeight>
+    <summaryPriority>480</summaryPriority>
+    <maxUses>1</maxUses>
+  </ScenPartDef>
+
+  <ScenPartDef>
+    <defName>LP_Labyrinth</defName>
+    <label>迷宫遗迹</label>
+    <scenPartClass>LichPhylactery.ScenPart_Labyrinth</scenPartClass>
+    <category>StartingImportant</category>
+    <selectionWeight>0</selectionWeight>
+    <summaryPriority>480</summaryPriority>
+    <maxUses>1</maxUses>
+  </ScenPartDef>
+
+  <ScenPartDef>
+    <defName>LP_StarterKit</defName>
+    <label>开局装备</label>
+    <scenPartClass>LichPhylactery.ScenPart_StarterKit</scenPartClass>
+    <category>StartingImportant</category>
+    <selectionWeight>0</selectionWeight>
+    <summaryPriority>470</summaryPriority>
+  </ScenPartDef>
+
+  <ScenPartDef>
+    <defName>LP_StarterBoon</defName>
+    <label>开局天赋</label>
+    <scenPartClass>LichPhylactery.ScenPart_StarterBoon</scenPartClass>
+    <category>StartingImportant</category>
+    <selectionWeight>0</selectionWeight>
+    <summaryPriority>470</summaryPriority>
+  </ScenPartDef>
+
+  <ScenPartDef>
+    <defName>LP_StarterBackstory</defName>
+    <label>开局背景</label>
+    <scenPartClass>LichPhylactery.ScenPart_StarterBackstory</scenPartClass>
+    <category>StartingImportant</category>
+    <selectionWeight>0</selectionWeight>
+    <summaryPriority>470</summaryPriority>
+    <maxUses>1</maxUses>
+  </ScenPartDef>
+
+  <ScenPartDef>
+    <defName>LP_FlayerEscape</defName>
+    <label>逃离殖巢</label>
+    <scenPartClass>LichPhylactery.ScenPart_FlayerEscape</scenPartClass>
+    <category>StartingImportant</category>
+    <selectionWeight>0</selectionWeight>
+    <summaryPriority>490</summaryPriority>
+    <maxUses>1</maxUses>
+  </ScenPartDef>
+
+  <HediffDef>
+    <defName>LP_Bound</defName>
+    <label>捆缚</label>
+    <description>手脚被牢牢捆住，只能躺在地上。几天后绳结会松开；在那之前最好把人关进囚室。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.75, 0.7, 0.6)</defaultLabelColor>
+    <isBad>true</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>300000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <setMax>0.05</setMax>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <BackstoryDef>
+    <defName>LP_ChainbreakerExile</defName>
+    <slot>Adulthood</slot>
+    <title>断链流亡者</title>
+    <titleShort>流亡者</titleShort>
+    <baseDesc>[PAWN_nameDef]曾是塞伊红袍法师手下的兽人奴兵，额头上还留着奴印。[PAWN_pronoun]在前线替远征军挖壕、扛盾、送死，直到某个溃败的夜里砸断了脚镣，逃进了荒野。</baseDesc>
+    <skillGains>
+      <Melee>2</Melee>
+      <Construction>1</Construction>
+    </skillGains>
+    <shuffleable>false</shuffleable>
+    <spawnCategories><li>LP_ScenarioOnly</li></spawnCategories>
+  </BackstoryDef>
+
+  <!-- ==================== 巫妖：命匣初成 ==================== -->
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>LP_LichScenario</defName>
+    <label>命匣初成</label>
+    <description>你在废弃的地下墓室里完成了最后一步仪式，把灵魂封进了命匣。追随你的学徒还活着，几具刚刚唤醒的死灵造物守在门口。太阳在仪式完成的那一刻暗了下去。\n\n开局人物页的第一位角色会成为巫妖（若其心灵失聪，则改由心灵敏感度最高的人担任）。巫妖不吃不睡，但需要生肉和完整的尸体喂养命匣；另一名活人学徒负责吃饭和那些死者做不好的事。塞伊远征军听说了你的仪式，暂时把你当作同道：开局好感0，“旧日盟约”让它维持60天，之后会逐渐回落，除非你向红袍宣誓效忠。\n\n注意：只有两名活人，前期人手主要靠死灵造物，属于有难度的开局。</description>
+    <scenario>
+      <summary>一位刚完成仪式的巫妖、一名学徒，以及命匣、仪式台和三具死灵造物。</summary>
+      <parts>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns">
+          <def>ConfigPage_ConfigureStartingPawns</def>
+          <pawnCount>2</pawnCount>
+          <pawnChoiceCount>8</pawnChoiceCount>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <visible>false</visible>
+          <method>Standing</method>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_FactionGoodwill">
+          <def>LP_FactionGoodwill</def>
+          <faction>LP_FaerunHostile</faction>
+          <goodwill>0</goodwill>
+          <pactDays>60</pactDays>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_LichAscension">
+          <def>LP_LichAscension</def>
+          <level>3</level>
+          <skeletons>2</skeletons>
+          <golems>1</golems>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_TimedCondition">
+          <def>LP_TimedCondition</def>
+          <condition>Eclipse</condition>
+          <days>3</days>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Silver</thingDef>
+          <count>600</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MealSurvivalPack</thingDef>
+          <count>30</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MedicineIndustrial</thingDef>
+          <count>10</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Meat_Human</thingDef>
+          <count>120</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>ComponentIndustrial</thingDef>
+          <count>15</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MeleeWeapon_LongSword</thingDef>
+          <stuff>Steel</stuff>
+        </li>
+
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>Steel</thingDef>
+          <count>300</count>
+        </li>
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>WoodLog</thingDef>
+          <count>300</count>
+        </li>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>最后一句咒文落下时，你的心跳停了，却没有死去。\n\n灵魂沉进那只冰冷的命匣，墓室里的骷髅与血肉巨像一同睁开空洞的眼睛，等待你的命令。只有你的学徒还在发抖——这里只剩学徒还需要吃饭和睡觉。\n\n外面，太阳被黑影吞没了。\n\n保护好命匣。只要它还在，死亡就只是一场三天的长眠。</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+  <!-- ==================== 火巨人：熔炉流亡 ==================== -->
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>LP_FireGiantScenario</defName>
+    <label>熔炉流亡</label>
+    <description>火山喷发吞没了你们氏族的锻炉大厅。三名火巨人背着炉中尚未熄灭的余火逃了出来，在这片陌生的土地上重新点燃锻炉。火山灰遮住了天空，而火巨人最怕的就是冷。\n\n开局带有一座已经添了燃料的熔火锻炉和锻造研究；每个火巨人穿着锻工外衣，近战最好的火巨人手持熔炉重锤。\n\n注意：火巨人行动迟缓且怕冷，开局数天的火山冬天会让保暖成为第一要务。</description>
+    <scenario>
+      <summary>三名火巨人、一座带余火的熔火锻炉和锻造知识。怕冷，有难度。</summary>
+      <parts>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns_Xenotypes">
+          <def>ConfigurePawnsXenotypes</def>
+          <pawnChoiceCount>8</pawnChoiceCount>
+          <customSummary>三名火巨人。</customSummary>
+          <xenotypeCounts>
+            <li>
+              <xenotype>LP_FireGiant</xenotype>
+              <count>3</count>
+              <description>火巨人</description>
+              <requiredAtStart>true</requiredAtStart>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+          </xenotypeCounts>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <visible>false</visible>
+          <method>Standing</method>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_FactionGoodwill">
+          <def>LP_FactionGoodwill</def>
+          <faction>LP_EmberClan</faction>
+          <goodwill>-40</goodwill>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_FireGiantClan">
+          <def>LP_FireGiantClan</def>
+          <fuel>30</fuel>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_TimedCondition">
+          <def>LP_TimedCondition</def>
+          <condition>VolcanicWinter</condition>
+          <days>5</days>
+        </li>
+
+        <li Class="ScenPart_StartingResearch">
+          <def>StartingResearch</def>
+          <project>Smithing</project>
+        </li>
+
+        <li Class="ScenPart_StartingResearch">
+          <def>StartingResearch</def>
+          <project>LP_GiantForging</project>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Silver</thingDef>
+          <count>500</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MealSurvivalPack</thingDef>
+          <count>40</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MedicineHerbal</thingDef>
+          <count>15</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>ComponentIndustrial</thingDef>
+          <count>12</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Plasteel</thingDef>
+          <count>60</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Chemfuel</thingDef>
+          <count>50</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Cloth</thingDef>
+          <count>150</count>
+        </li>
+
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>Steel</thingDef>
+          <count>600</count>
+        </li>
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>WoodLog</thingDef>
+          <count>500</count>
+        </li>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>火山醒来的那天夜里，锻炉大厅的穹顶塌了。\n\n你们三个用铁钳夹着炉心里最后一块红热的炭，一路走到天空被灰烬染成铅色的地方。\n\n这里的土地陌生而寒冷。先把锻炉重新烧旺，再让这片土地记住火巨人的锤声。</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+  <!-- ==================== 巨魔：灰烬中的部落 ==================== -->
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>LP_TrollScenario</defName>
+    <label>灰烬中的部落</label>
+    <description>持火把的猎人烧毁了你们的营地。只有没被烧到的尸体，在第二天清晨重新长合、爬了起来。四个巨魔饿着肚子，带着两头座狼，离开了冒烟的故乡。\n\n部落科技起步。巨魔饱食时快速再生，死后不被烧掉就会复活；他们刚刚从死亡中长回来，身体还很虚弱，肚子也空着。塞伊远征军从前雇过你们的部落：开局好感0，“旧日盟约”让它维持60天，之后会逐渐回落成敌对。\n\n注意：巨魔食量很大，开局只带了生肉和少量干肉饼，需要尽快狩猎。</description>
+    <scenario>
+      <summary>四个刚从死亡中长回来的巨魔和两头座狼，部落科技。</summary>
+      <playerFaction>
+        <factionDef>PlayerTribe</factionDef>
+      </playerFaction>
+      <parts>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns_Xenotypes">
+          <def>ConfigurePawnsXenotypes</def>
+          <pawnChoiceCount>8</pawnChoiceCount>
+          <customSummary>四个巨魔。</customSummary>
+          <xenotypeCounts>
+            <li>
+              <xenotype>LP_Troll</xenotype>
+              <count>4</count>
+              <description>巨魔</description>
+              <requiredAtStart>true</requiredAtStart>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+          </xenotypeCounts>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <method>Standing</method>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_FactionGoodwill">
+          <def>LP_FactionGoodwill</def>
+          <faction>LP_FaerunHostile</faction>
+          <goodwill>0</goodwill>
+          <pactDays>60</pactDays>
+        </li>
+
+        <li Class="ScenPart_ForcedHediff">
+          <def>ForcedHediff</def>
+          <visible>false</visible>
+          <context>PlayerStarter</context>
+          <chance>1</chance>
+          <hediff>LP_TrollRevivalWeakness</hediff>
+          <severityRange>1~1</severityRange>
+        </li>
+        <li Class="ScenPart_SetNeedLevel">
+          <def>SetNeedLevel</def>
+          <visible>false</visible>
+          <context>PlayerStarter</context>
+          <chance>1.0</chance>
+          <need>Food</need>
+          <levelRange>0.1~0.3</levelRange>
+        </li>
+
+        <li Class="ScenPart_StartingAnimal">
+          <def>StartingAnimal</def>
+          <animalKind>Warg</animalKind>
+          <count>2</count>
+          <bondToRandomPlayerPawnChance>1.0</bondToRandomPlayerPawnChance>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Silver</thingDef>
+          <count>150</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Meat_Muffalo</thingDef>
+          <count>250</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Pemmican</thingDef>
+          <count>150</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MedicineHerbal</thingDef>
+          <count>10</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MeleeWeapon_Club</thingDef>
+          <stuff>WoodLog</stuff>
+          <count>2</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MeleeWeapon_Spear</thingDef>
+          <stuff>Steel</stuff>
+          <count>2</count>
+        </li>
+
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>WoodLog</thingDef>
+          <count>400</count>
+        </li>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>他们是带着火把在夜里来的。\n\n族人一个接一个倒下，猎人们烧掉了能找到的每一具尸体。可他们没有找到所有人。\n\n第二天清晨，你在泥地里重新长合，撕开的伤口慢慢闭上，空荡荡的胃在咆哮。另外三个同伴也站了起来，两头座狼从林子里循着气味回到你们身边。\n\n离开冒烟的故乡吧。去找肉，去找一个没有火的地方。</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+  <!-- ==================== 力能龙：龙蛋 ==================== -->
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>LP_ForceDragonScenario</defName>
+    <label>龙蛋</label>
+    <description>一位年老的力能龙裔厌倦了漫长的流浪，带着两名凡人仆从在这片荒野里筑起一座小宝库。宝库里堆着金银，还有一枚已经快要孵化的龙蛋。\n\n开局的力能龙裔已是古龙，会力墙和力场囚笼；宝库是一间带屋顶的独占卧室，龙蛋必须留在里面才会孵化。力能龙裔只吃肉，拒绝搬运和清洁，粗活要靠两名仆从。\n\n注意：宝库里的东西被搬走或卖掉，龙会记仇；外人来偷，它会当场暴怒。</description>
+    <scenario>
+      <summary>一条古龙、两名仆从、一座小宝库和一枚快孵化的力能龙蛋。</summary>
+      <parts>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns_Xenotypes">
+          <def>ConfigurePawnsXenotypes</def>
+          <pawnChoiceCount>8</pawnChoiceCount>
+          <customSummary>一名力能龙裔和两名仆从。</customSummary>
+          <xenotypeCounts>
+            <li>
+              <xenotype>LP_ForceDragon</xenotype>
+              <count>1</count>
+              <description>力能龙裔</description>
+              <requiredAtStart>true</requiredAtStart>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+            <li>
+              <xenotype>Baseliner</xenotype>
+              <count>2</count>
+              <description>仆从</description>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+          </xenotypeCounts>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <visible>false</visible>
+          <method>Standing</method>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_ForceDragonClutch">
+          <def>LP_ForceDragonClutch</def>
+          <age>4</age>
+          <eggs>1</eggs>
+          <eggProgress>0.9</eggProgress>
+          <gold>200</gold>
+          <silver>1500</silver>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Meat_Muffalo</thingDef>
+          <count>300</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MealSurvivalPack</thingDef>
+          <count>30</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MedicineIndustrial</thingDef>
+          <count>10</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>ComponentIndustrial</thingDef>
+          <count>10</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Apparel_ShieldBelt</thingDef>
+          <count>2</count>
+        </li>
+
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>Steel</thingDef>
+          <count>400</count>
+        </li>
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>WoodLog</thingDef>
+          <count>400</count>
+        </li>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>你已经活了很久，久到记不清上一次离开宝库是什么时候。\n\n两个凡人跪在门口，等着你吩咐。金子在身下冰凉，一枚龙蛋在金子中间微微发烫——蛋壳里的小东西就快要醒了。\n\n守住宝库。谁敢伸手，就让谁见识力场的锋刃。</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+  <!-- ==================== 1.20.0 半兽人：断链战帮 ==================== -->
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>LP_HalfOrcScenario</defName>
+    <label>断链战帮</label>
+    <description>你们曾是塞伊红袍法师手下的兽人奴兵，额头烙着奴印，在前线替远征军挖壕、扛盾、送死。一次溃败的夜里，四个半兽人砸断了脚镣，抢了武器逃进荒野。红袍从不放过逃奴。\n\n部落科技起步，四人都是“断链流亡者”，每人一把钢制钉头锤或长矛。与塞伊远征军的好感是-100（只是开局值，之后照常可以缓和）；费伦拓荒同盟同情逃奴，好感+20。大约第6天，“红袍的追兵”会来一次小规模袭击（约原版威胁的0.6倍），之后就看你们自己的了。\n\n注意：开局就有一场注定的追兵战，好在半兽人皮糙肉厚、倒下前还能硬撑一口气，属于中等难度。</description>
+    <scenario>
+      <summary>四个砸断脚镣的半兽人逃奴，部落科技；第6天红袍的追兵就到。</summary>
+      <playerFaction>
+        <factionDef>PlayerTribe</factionDef>
+      </playerFaction>
+      <parts>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns_Xenotypes">
+          <def>ConfigurePawnsXenotypes</def>
+          <pawnChoiceCount>8</pawnChoiceCount>
+          <customSummary>四个半兽人逃奴。</customSummary>
+          <xenotypeCounts>
+            <li>
+              <xenotype>LP_HalfOrc</xenotype>
+              <count>4</count>
+              <description>半兽人</description>
+              <requiredAtStart>true</requiredAtStart>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+          </xenotypeCounts>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <method>Standing</method>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_StarterBackstory">
+          <def>LP_StarterBackstory</def>
+          <adulthood>LP_ChainbreakerExile</adulthood>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_FactionGoodwill">
+          <def>LP_FactionGoodwill</def>
+          <faction>LP_FaerunHostile</faction>
+          <goodwill>-100</goodwill>
+        </li>
+        <li Class="LichPhylactery.ScenPart_FactionGoodwill">
+          <def>LP_FactionGoodwill</def>
+          <faction>LP_FaerunColony</faction>
+          <goodwill>20</goodwill>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_StarterKit">
+          <def>LP_StarterKit</def>
+          <weapons>
+            <li>MeleeWeapon_Mace</li>
+            <li>MeleeWeapon_Spear</li>
+          </weapons>
+          <weaponStuff>Steel</weaponStuff>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_TimedRaid">
+          <def>LP_TimedRaid</def>
+          <faction>LP_FaerunHostile</faction>
+          <days>6~6</days>
+          <pointsFactor>0.6</pointsFactor>
+          <letterLabel>红袍的追兵</letterLabel>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Pemmican</thingDef>
+          <count>200</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MedicineHerbal</thingDef>
+          <count>15</count>
+        </li>
+
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>WoodLog</thingDef>
+          <count>300</count>
+        </li>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>铁链断开的声音，比任何战鼓都响。\n\n你们四个踩着看守的尸体冲出营地，一路跑到天亮，跑到再也听不见红袍的号角。手里攥着抢来的钉头锤和长矛，脚踝上还挂着半截镣铐。\n\n红袍从不放过逃奴。在追兵赶到之前，先找个能守住的地方。</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+  <!-- ==================== 1.20.0 精灵：月下林地 ==================== -->
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>LP_ElfScenario</defName>
+    <label>月下林地</label>
+    <description>三名精灵游侠离开了衰落的林中王庭，追着月光来到这片无人的林地。费伦拓荒同盟的竖琴手是他们的老朋友，一路上替他们打探消息。\n\n射箭最好的那位精灵带着1级心灵链接：精灵睡觉时进入“冥想之息”，有灵能的精灵每晚恢复约20%精神力。与费伦拓荒同盟的好感是+65，开局就满足竖琴手预警的门槛（≥60）：大型袭击会推迟1～2天落地，并提前来信。建议选森林或温带森林开局（剧本不强制生物群系）。\n\n注意：只有三个人，武器只有弓，工业开局但物资偏少，属于中等难度。</description>
+    <scenario>
+      <summary>三名精灵游侠、一张长弓和一颗波吕克斯种子；竖琴手开局就站在你这边。</summary>
+      <parts>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns_Xenotypes">
+          <def>ConfigurePawnsXenotypes</def>
+          <pawnChoiceCount>8</pawnChoiceCount>
+          <customSummary>三名精灵。</customSummary>
+          <xenotypeCounts>
+            <li>
+              <xenotype>LP_Elf</xenotype>
+              <count>3</count>
+              <description>精灵</description>
+              <requiredAtStart>true</requiredAtStart>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+          </xenotypeCounts>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <visible>false</visible>
+          <method>Standing</method>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_FactionGoodwill">
+          <def>LP_FactionGoodwill</def>
+          <faction>LP_FaerunColony</faction>
+          <goodwill>65</goodwill>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_StarterBoon">
+          <def>LP_StarterBoon</def>
+          <bestAt>Shooting</bestAt>
+          <psylink>1</psylink>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_StarterKit">
+          <def>LP_StarterKit</def>
+          <weapons>
+            <li>Bow_Recurve</li>
+          </weapons>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Bow_Great</thingDef>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MedicineHerbal</thingDef>
+          <count>30</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Cloth</thingDef>
+          <count>150</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined" MayRequire="Ludeon.RimWorld.Biotech">
+          <def>StartingThing_Defined</def>
+          <thingDef>PoluxSeed</thingDef>
+          <count>1</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Silver</thingDef>
+          <count>300</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MealSurvivalPack</thingDef>
+          <count>20</count>
+        </li>
+
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>WoodLog</thingDef>
+          <count>300</count>
+        </li>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>月光从树冠的缝隙里漏下来，照在你们的弓弦上。\n\n林中王庭已经空了，古老的歌谣只剩你们三个还记得。竖琴手留下的密信说，这片林地没有主人。\n\n种下那颗种子吧。等它长成大树，这里就是新的王庭。</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+  <!-- ==================== 1.20.0 矮人：深山誓约 ==================== -->
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>LP_DwarfScenario</defName>
+    <label>深山誓约</label>
+    <description>三名矮人在祖先的石碑前立下誓约：在新的山脉下开凿一座要塞，让余烬氏族为当年烧毁的矿坑付出代价。他们背着啤酒桶和钢锭翻山而来。\n\n开局物资（啤酒、钢、玻璃钢、花岗岩块、一把钢锤和一件钢板甲）会放在附近有厚岩顶的山洞里——“山腹营地”；矮人在厚岩顶下心情+3、采矿和劳动更快（石之耐力）。采矿最好的那位还带着一级手工兴趣。与费伦拓荒同盟的好感是+50，与余烬氏族是-60（世仇）。附近找不到山体时物资会放在普通位置并来信提醒，所以建议选丘陵或山地开局。\n\n注意：开局人少但装备扎实，难度适中；选平原开局会失去石之耐力的大部分好处。</description>
+    <scenario>
+      <summary>三名立誓的矮人，物资存在附近的山洞里；与余烬氏族是世仇。</summary>
+      <parts>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns_Xenotypes">
+          <def>ConfigurePawnsXenotypes</def>
+          <pawnChoiceCount>8</pawnChoiceCount>
+          <customSummary>三名矮人。</customSummary>
+          <xenotypeCounts>
+            <li>
+              <xenotype>LP_Dwarf</xenotype>
+              <count>3</count>
+              <description>矮人</description>
+              <requiredAtStart>true</requiredAtStart>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+          </xenotypeCounts>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <visible>false</visible>
+          <method>Standing</method>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_FactionGoodwill">
+          <def>LP_FactionGoodwill</def>
+          <faction>LP_FaerunColony</faction>
+          <goodwill>50</goodwill>
+        </li>
+        <li Class="LichPhylactery.ScenPart_FactionGoodwill">
+          <def>LP_FactionGoodwill</def>
+          <faction>LP_EmberClan</faction>
+          <goodwill>-60</goodwill>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_StarterBoon">
+          <def>LP_StarterBoon</def>
+          <bestAt>Mining</bestAt>
+          <passionSkill>Crafting</passionSkill>
+          <passion>Minor</passion>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_MountainCamp">
+          <def>LP_MountainCamp</def>
+          <things>
+            <li><thing>Beer</thing><count>40</count></li>
+            <li><thing>Steel</thing><count>400</count></li>
+            <li><thing>Plasteel</thing><count>60</count></li>
+            <li><thing>BlocksGranite</thing><count>100</count></li>
+            <li MayRequire="Ludeon.RimWorld.Royalty"><thing>MeleeWeapon_Warhammer</thing><stuff>Steel</stuff><count>1</count></li>
+            <li><thing>Apparel_PlateArmor</thing><stuff>Steel</stuff><count>1</count></li>
+          </things>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MealSurvivalPack</thingDef>
+          <count>30</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MedicineIndustrial</thingDef>
+          <count>10</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Silver</thingDef>
+          <count>400</count>
+        </li>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>“以石为证，以火为誓。”\n\n你们三个在山脚下放下行囊，把祖先石碑的拓片钉在岩壁上。山洞里很干燥，啤酒桶码得整整齐齐。\n\n凿开这座山。等要塞的大门立起来，再去找余烬氏族算账。</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+  <!-- ==================== 1.20.0 夺心魔：逃离殖巢 ==================== -->
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>LP_MindFlayerScenario</defName>
+    <label>逃离殖巢</label>
+    <description>一只夺心魔在上古脑的低语里听见了一声杂音，然后它就再也听不见上古脑了。它带着一个半化形的人类仆从逃出幽暗殖巢，还拖走了两个本来要喂给上古脑的俘虏。殖巢不会容忍叛逃者。\n\n夺心魔开局脑髓60，两名被捆缚的人类囚犯就是最初的脑髓来源（捆缚约5天后松开，尽快建好囚室）。人类殖民者脑中有一条进度30%的蝌蚪，正处在抑灵剂药效中，是保有自我的“半夺心魔”：随身的3份抑灵剂要省着用，断药3天化形就会恢复。另有2条蝌蚪。大约第10～15天，幽暗殖巢的追捕者会从地下钻出来。殖民地里有夺心魔，费伦拓荒同盟会按种族好感自然-25，开局也可能遇到猎巫狂热分子。\n\n注意：人少、仇家多、食物要靠大脑，属于高难度开局。</description>
+    <scenario>
+      <summary>一只叛逃的夺心魔、一个半夺心魔仆从和两名俘虏；殖巢的追捕者会从地下钻出来。</summary>
+      <parts>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns_Xenotypes">
+          <def>ConfigurePawnsXenotypes</def>
+          <pawnChoiceCount>8</pawnChoiceCount>
+          <customSummary>一只夺心魔和一名人类仆从。</customSummary>
+          <xenotypeCounts>
+            <li>
+              <xenotype>LP_MindFlayer</xenotype>
+              <count>1</count>
+              <description>夺心魔</description>
+              <requiredAtStart>true</requiredAtStart>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+            <li>
+              <xenotype>Baseliner</xenotype>
+              <count>1</count>
+              <description>半夺心魔仆从</description>
+              <requiredAtStart>true</requiredAtStart>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+          </xenotypeCounts>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <visible>false</visible>
+          <method>Standing</method>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_FlayerEscape">
+          <def>LP_FlayerEscape</def>
+          <cerebrum>60</cerebrum>
+          <tadpole>0.3</tadpole>
+          <prisoners>2</prisoners>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_TimedRaid">
+          <def>LP_TimedRaid</def>
+          <faction>LP_IllithidColony</faction>
+          <days>10~15</days>
+          <pointsFactor>0.6</pointsFactor>
+          <arrival>LP_Burrow</arrival>
+          <letterLabel>殖巢的追捕</letterLabel>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>LP_Tadpole</thingDef>
+          <count>2</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>LP_PsionicSuppressant</thingDef>
+          <count>3</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MealSimple</thingDef>
+          <count>20</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MedicineIndustrial</thingDef>
+          <count>10</count>
+        </li>
+
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>Steel</thingDef>
+          <count>300</count>
+        </li>
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>WoodLog</thingDef>
+          <count>300</count>
+        </li>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>上古脑的声音消失了。\n\n先是一阵眩晕，然后是从未有过的安静——你第一次听见了自己的念头。你拖着仆从和两个俘虏爬出地底，阳光刺得触须发痛。\n\n殖巢会派人来找你。在那之前，吃饱，然后准备好。</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+  <!-- ==================== 1.20.0 牛头人：迷宫之主 ==================== -->
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>LP_MinotaurScenario</defName>
+    <label>迷宫之主</label>
+    <description>两名牛头人从塞伊远征军的冲锋兵里出逃，同行的还有一名半兽人逃兵。他们在荒野里找到一座古老的石墙迷宫，牛头人一走进去就再也不想出来了。\n\n开局附近有一座约17×17的花岗岩迷宫遗迹，全部盖有屋顶，只有一个入口；中央5×5的房间里放着两张睡袋、干肉饼和草药。牛头人天生认路，在迷宫里如鱼得水。牛头人和半兽人互相看着顺眼（各自心情+2）。与塞伊远征军的好感是-100。附近找不到平地时迷宫不会生成，并来信说明。\n\n注意：迷宫易守难攻，但不好扩建；红袍对逃兵毫不留情，属于中等难度。</description>
+    <scenario>
+      <summary>两名牛头人和一名半兽人逃兵，占据了一座古老的石墙迷宫。</summary>
+      <parts>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns_Xenotypes">
+          <def>ConfigurePawnsXenotypes</def>
+          <pawnChoiceCount>8</pawnChoiceCount>
+          <customSummary>两名牛头人和一名半兽人。</customSummary>
+          <xenotypeCounts>
+            <li>
+              <xenotype>LP_Minotaur</xenotype>
+              <count>2</count>
+              <description>牛头人</description>
+              <requiredAtStart>true</requiredAtStart>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+            <li>
+              <xenotype>LP_HalfOrc</xenotype>
+              <count>1</count>
+              <description>半兽人</description>
+              <requiredAtStart>true</requiredAtStart>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+          </xenotypeCounts>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <visible>false</visible>
+          <method>Standing</method>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_FactionGoodwill">
+          <def>LP_FactionGoodwill</def>
+          <faction>LP_FaerunHostile</faction>
+          <goodwill>-100</goodwill>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_StarterKit">
+          <def>LP_StarterKit</def>
+          <weapons>
+            <li MayRequire="Ludeon.RimWorld.Royalty">MeleeWeapon_Warhammer</li>
+            <li>MeleeWeapon_LongSword</li>
+          </weapons>
+          <weaponStuff>Steel</weaponStuff>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_Labyrinth">
+          <def>LP_Labyrinth</def>
+          <size>17</size>
+          <roof>true</roof>
+          <bedrolls>2</bedrolls>
+          <things>
+            <li><thing>Pemmican</thing><count>150</count></li>
+            <li><thing>MedicineHerbal</thing><count>10</count></li>
+          </things>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Silver</thingDef>
+          <count>300</count>
+        </li>
+
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>WoodLog</thingDef>
+          <count>200</count>
+        </li>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>石墙上爬满了青苔，通道窄得只容一人通过。\n\n别人在这里会迷路，你们却闭着眼睛也能走到中央。那个半兽人逃兵跟在后面骂骂咧咧，可他也承认：这是红袍最难找到的地方。\n\n守住入口。让追兵在墙里转到天黑。</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+  <!-- ==================== 1.20.0 吉斯洋基：银剑小队 ==================== -->
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>LP_GithyankiScenario</defName>
+    <label>银剑小队</label>
+    <description>三名吉斯洋基星界战士一路追猎夺心魔，迷失在这颗陌生的星球上。一位落难的巫妖收留了他们——吉斯洋基世代侍奉不死的巫妖女王，这份恩情他们不会忘。如今巫妖沉睡在远方的墓室里，小队要在这里替自己找一个立足之地。\n\n近战最好的战士手持优秀品质的银剑，其余两人持钢长剑，全员穿钢板甲、带1级心灵链接。与费伦拓荒同盟的好感是0；幽暗殖巢照旧是死敌，大约第8天，“触须在地下蠕动”——殖巢的袭击者会从地下钻出来。\n\n注意：战力强、人手少、缺少生产技能，属于中等难度。</description>
+    <scenario>
+      <summary>三名吉斯洋基星界战士、一把银剑；第8天幽暗殖巢就会从地下钻出来。</summary>
+      <parts>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns_Xenotypes">
+          <def>ConfigurePawnsXenotypes</def>
+          <pawnChoiceCount>8</pawnChoiceCount>
+          <customSummary>三名吉斯洋基。</customSummary>
+          <xenotypeCounts>
+            <li>
+              <xenotype>LP_Githyanki</xenotype>
+              <count>3</count>
+              <description>吉斯洋基</description>
+              <requiredAtStart>true</requiredAtStart>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+          </xenotypeCounts>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <visible>false</visible>
+          <method>Standing</method>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_FactionGoodwill">
+          <def>LP_FactionGoodwill</def>
+          <faction>LP_FaerunColony</faction>
+          <goodwill>0</goodwill>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_StarterKit">
+          <def>LP_StarterKit</def>
+          <champion>LP_SilverSword</champion>
+          <championQuality>Excellent</championQuality>
+          <championSkill>Melee</championSkill>
+          <weapons>
+            <li>MeleeWeapon_LongSword</li>
+          </weapons>
+          <weaponStuff>Steel</weaponStuff>
+          <apparel>
+            <li>Apparel_PlateArmor</li>
+          </apparel>
+          <apparelStuff>Steel</apparelStuff>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_StarterBoon">
+          <def>LP_StarterBoon</def>
+          <psylink>1</psylink>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_TimedRaid">
+          <def>LP_TimedRaid</def>
+          <faction>LP_IllithidColony</faction>
+          <days>8~8</days>
+          <pointsFactor>0.8</pointsFactor>
+          <arrival>LP_Burrow</arrival>
+          <letterLabel>触须在地下蠕动</letterLabel>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MealSimple</thingDef>
+          <count>20</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MedicineIndustrial</thingDef>
+          <count>10</count>
+        </li>
+
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>Steel</thingDef>
+          <count>300</count>
+        </li>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>星界的银光在身后合拢。\n\n你们追着夺心魔的踪迹一路跃迁，最后落在了这片陌生的土地上。巫妖的恩情还没有报，触须的气味却已经在地底下弥漫开来。\n\n拔出银剑。这一次，猎物会自己找上门来。</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+  <!-- ==================== 1.41.0 成神开局剧本 ==================== -->
+
+  <ScenPartDef>
+    <defName>LP_NetherilHeir</defName>
+    <label>耐瑟遗徒</label>
+    <scenPartClass>LichPhylactery.ScenPart_NetherilHeir</scenPartClass>
+    <category>StartingImportant</category>
+    <selectionWeight>0</selectionWeight>
+    <summaryPriority>490</summaryPriority>
+    <maxUses>1</maxUses>
+  </ScenPartDef>
+
+  <ScenPartDef>
+    <defName>LP_DoomLich</defName>
+    <label>末日将至</label>
+    <scenPartClass>LichPhylactery.ScenPart_DoomLich</scenPartClass>
+    <category>StartingImportant</category>
+    <selectionWeight>0</selectionWeight>
+    <summaryPriority>485</summaryPriority>
+    <maxUses>1</maxUses>
+  </ScenPartDef>
+
+  <ScenPartDef>
+    <defName>LP_Pilgrimage</defName>
+    <label>朝圣之路</label>
+    <scenPartClass>LichPhylactery.ScenPart_Pilgrimage</scenPartClass>
+    <category>StartingImportant</category>
+    <selectionWeight>0</selectionWeight>
+    <summaryPriority>490</summaryPriority>
+    <maxUses>1</maxUses>
+  </ScenPartDef>
+
+  <ScenPartDef>
+    <defName>LP_TwilightHunter</defName>
+    <label>黄昏猎神者</label>
+    <scenPartClass>LichPhylactery.ScenPart_TwilightHunter</scenPartClass>
+    <category>StartingImportant</category>
+    <selectionWeight>0</selectionWeight>
+    <summaryPriority>490</summaryPriority>
+    <maxUses>1</maxUses>
+  </ScenPartDef>
+
+  <!-- ==================== 1.41.0 奥术：耐瑟遗徒 ==================== -->
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>LP_NetherilHeirScenario</defName>
+    <label>耐瑟遗徒</label>
+    <description>坠落的耐瑟瑞尔浮城下面，一位人类法师在瓦砾里找到了老师留下的研习卷。他已经能感到卡苏斯之卷在远方低语，影巫王拉洛克也感到了他。两名同伴陪他离开了废墟。\n\n推荐路线：奥术飞升。难度：中。\n\n开局人物页的第一位是法师：心灵链接4级（装了 Vanilla Psycasts Expanded 时灵能等级8）、智识至少10、身上已有2层“卡苏斯的回响”。“耐瑟瑞尔奥术”和“神格学”研究已经完成。开局带两卷优秀品质的耐瑟瑞尔研习卷、一卷秘术残卷，以及建耐瑟祭坛要用的金和秘银。影巫王拉洛克的扈从好感0；第10天拉洛克的使者必定到来，带来“拉洛克的邀约”。\n\n注意：只有三个人，主力是一名法师；拉洛克的交易每条都有代价。</description>
+    <scenario>
+      <summary>一位耐瑟瑞尔法师和两名同伴；第10天影巫王拉洛克的使者就会到来。推荐路线：奥术飞升，难度中。</summary>
+      <parts>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns_Xenotypes">
+          <def>ConfigurePawnsXenotypes</def>
+          <pawnChoiceCount>8</pawnChoiceCount>
+          <customSummary>三名人类，第一位是法师。</customSummary>
+          <xenotypeCounts>
+            <li>
+              <xenotype>Baseliner</xenotype>
+              <count>3</count>
+              <description>人类</description>
+              <requiredAtStart>true</requiredAtStart>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+          </xenotypeCounts>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <visible>false</visible>
+          <method>Standing</method>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_NetherilHeir">
+          <def>LP_NetherilHeir</def>
+          <psylink>4</psylink>
+          <vpeLevel>8</vpeLevel>
+          <intellect>10</intellect>
+          <echo>2</echo>
+          <envoyDay>10</envoyDay>
+        </li>
+
+        <li Class="ScenPart_StartingResearch">
+          <def>StartingResearch</def>
+          <project>LP_Research_NetherilArcana</project>
+        </li>
+        <li Class="ScenPart_StartingResearch">
+          <def>StartingResearch</def>
+          <project>LP_Research_Theogony</project>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>LP_NetherilStudyScroll</thingDef>
+          <quality>Excellent</quality>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>LP_NetherilStudyScroll</thingDef>
+          <quality>Excellent</quality>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>LP_NetherilArcaneScroll</thingDef>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Gold</thingDef>
+          <count>100</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>LP_Mithral</thingDef>
+          <count>50</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Silver</thingDef>
+          <count>400</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MealSurvivalPack</thingDef>
+          <count>30</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MedicineIndustrial</thingDef>
+          <count>10</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>ComponentIndustrial</thingDef>
+          <count>10</count>
+        </li>
+
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>Steel</thingDef>
+          <count>300</count>
+        </li>
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>WoodLog</thingDef>
+          <count>300</count>
+        </li>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>浮城的残骸在身后冒着青烟。\n\n老师的研习卷还带着他的体温，字里行间藏着一个名字——卡苏斯。每读一行，脑海里的回响就清晰一分。\n\n远方的古墓里，有一双没有眼皮的眼睛也在读你。十天之内，他的使者就会来。</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+  <!-- ==================== 1.41.0 半神巫妖：末日将至 ==================== -->
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>LP_DoomLichScenario</defName>
+    <label>末日将至</label>
+    <description>这位巫妖已经活了三个世纪，命匣里的灵魂多到快要溢出。他终于决定去拿那唯一还没拿到的东西：神位。死神凯兰沃也终于决定，不能再让他活下去了。\n\n推荐路线：半神巫妖。难度：难。\n\n开局人物页的第一位角色是巫妖（若其心灵失聪，则改由心灵敏感度最高的人担任），命匣20级，统御三具骷髅仆役，附近有一座死灵仪式台；另一名活人学徒负责吃饭和死者做不好的事。半神巫妖之路已经开启：试炼一“万魂”已汲取10 / 20个灵魂；凯兰沃的神眷开局-50。“神格学”研究已经完成。第5天凯兰沃的末日卫士会先派一支小队来摧毁命匣（点数是殖民地威胁的一半，不算试炼的三波）。\n\n注意：只有两名活人，末日卫士专打亡灵，命匣一旦被毁这条路就断了。</description>
+    <scenario>
+      <summary>一位命匣20级的巫妖、一名学徒和三具骷髅；第5天末日卫士就来摧毁命匣。推荐路线：半神巫妖，难度难。</summary>
+      <parts>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns">
+          <def>ConfigPage_ConfigureStartingPawns</def>
+          <pawnCount>2</pawnCount>
+          <pawnChoiceCount>8</pawnChoiceCount>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <visible>false</visible>
+          <method>Standing</method>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_LichAscension">
+          <def>LP_LichAscension</def>
+          <level>20</level>
+          <skeletons>3</skeletons>
+          <golems>0</golems>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_DoomLich">
+          <def>LP_DoomLich</def>
+          <souls>10</souls>
+          <raidDay>5</raidDay>
+          <pointsFactor>0.5</pointsFactor>
+        </li>
+
+        <li Class="ScenPart_StartingResearch">
+          <def>StartingResearch</def>
+          <project>LP_Research_Theogony</project>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Plasteel</thingDef>
+          <count>50</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Silver</thingDef>
+          <count>500</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MealSurvivalPack</thingDef>
+          <count>30</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MedicineIndustrial</thingDef>
+          <count>10</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Meat_Human</thingDef>
+          <count>120</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>ComponentIndustrial</thingDef>
+          <count>10</count>
+        </li>
+
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>Steel</thingDef>
+          <count>300</count>
+        </li>
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>WoodLog</thingDef>
+          <count>300</count>
+        </li>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>命匣在你掌心里嗡嗡作响，像一颗装了太多心跳的心脏。\n\n三百年来你收集的每一个灵魂都在里面低语。只差一步——再汲取十个灵魂，你就能伸手去够神位。\n\n可你听见了钟声。那是死神的钟。他的灰袍卫士已经上路了。</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+  <!-- ==================== 1.41.0 圣徒：朝圣之路 ==================== -->
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>LP_PilgrimageScenario</defName>
+    <label>朝圣之路</label>
+    <description>三名信徒追随着同一个启示走了几百里路：他们的神要在这片土地上立起一座圣坛，而他们之中的一个人，是神亲手选中的。\n\n推荐路线：圣徒。难度：中。\n\n开局人物都是同一位神的信徒——这位神从九位可信奉的神里随机，跟着人物页第一位走（重新随机第一位时神也会跟着换），第一位就是这位神的神选者。这位神已经是殖民地的守护神，神眷60；圣徒之路已经开启，停在试炼一“虔信”。“信仰与神术”和“神格学”研究已经完成。开局带一座小型化的圣坛（选中后点“安装”即可）、一枚圣徽、五瓶祝圣圣水和五片神迹残片。\n\n注意：圣徒之路的证道和圣火降临都会引来强敌；神眷掉到60以下就要先补回来。</description>
+    <scenario>
+      <summary>一位神选者和两名同信的信徒，带着一座小型化的圣坛。推荐路线：圣徒，难度中。</summary>
+      <parts>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns">
+          <def>ConfigPage_ConfigureStartingPawns</def>
+          <pawnCount>3</pawnCount>
+          <pawnChoiceCount>8</pawnChoiceCount>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <visible>false</visible>
+          <method>Standing</method>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_Pilgrimage">
+          <def>LP_Pilgrimage</def>
+          <favor>60</favor>
+        </li>
+
+        <li Class="ScenPart_StartingResearch">
+          <def>StartingResearch</def>
+          <project>LP_Research_Faith</project>
+        </li>
+        <li Class="ScenPart_StartingResearch">
+          <def>StartingResearch</def>
+          <project>LP_Research_Theogony</project>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>LP_HolySymbol</thingDef>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>LP_BlessedWater</thingDef>
+          <count>5</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>LP_MiracleShard</thingDef>
+          <count>5</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Silver</thingDef>
+          <count>500</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MealSurvivalPack</thingDef>
+          <count>30</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MedicineHerbal</thingDef>
+          <count>20</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>ComponentIndustrial</thingDef>
+          <count>10</count>
+        </li>
+
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>Steel</thingDef>
+          <count>300</count>
+        </li>
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>WoodLog</thingDef>
+          <count>400</count>
+        </li>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>启示在第七个夜里变得清晰：就是这里。\n\n你们把圣坛从驮架上卸下来，圣徽在神选者胸前微微发光。另外两个人跪下祈祷，声音被风吹得很远。\n\n神在看着。先立起圣坛，再让这片土地听见祂的名字。</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+  <!-- ==================== 1.41.0 篡火者：黄昏猎神者 ==================== -->
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>LP_TwilightHunterScenario</defName>
+    <label>黄昏猎神者</label>
+    <description>四个佣兵在同一个夜里做了同样的梦：众神在暗红的天幕下争吵，有一位神的火种从指缝里漏了出来。领头的老兵醒来时，手心还在发烫。\n\n推荐路线：篡火者。难度：很难。\n\n开局人物页的第一位是老兵：射击或格斗（取较高的一项）至少12级，心灵敏感度至少110%（不够时换成“心灵敏感”特性）。第3天黄昏之年必定开始——本局不受“第2年起”的限制，持续时间照设置。殖民者击败一名神明附体的首领时，篡火者之路就会自动开启。“神格学”研究已经完成。开局带五片神迹残片（篡火仪式每片+8%成功率）、一把精良的钢长剑和一支精良的突击步枪。\n\n注意：黄昏之年里敌人更强、附体首领极难对付，篡火仪式失败就会死人。</description>
+    <scenario>
+      <summary>四名佣兵和一个猎神的梦；第3天黄昏之年就开始。推荐路线：篡火者，难度很难。</summary>
+      <parts>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns">
+          <def>ConfigPage_ConfigureStartingPawns</def>
+          <pawnCount>4</pawnCount>
+          <pawnChoiceCount>8</pawnChoiceCount>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <visible>false</visible>
+          <method>Standing</method>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_TwilightHunter">
+          <def>LP_TwilightHunter</def>
+          <skill>12</skill>
+          <sensitivity>1.1</sensitivity>
+          <twilightDay>3</twilightDay>
+        </li>
+
+        <li Class="ScenPart_StartingResearch">
+          <def>StartingResearch</def>
+          <project>LP_Research_Theogony</project>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>LP_MiracleShard</thingDef>
+          <count>5</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MeleeWeapon_LongSword</thingDef>
+          <stuff>Steel</stuff>
+          <quality>Excellent</quality>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Gun_AssaultRifle</thingDef>
+          <quality>Excellent</quality>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Silver</thingDef>
+          <count>600</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MealSurvivalPack</thingDef>
+          <count>40</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MedicineIndustrial</thingDef>
+          <count>15</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>ComponentIndustrial</thingDef>
+          <count>15</count>
+        </li>
+
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>Steel</thingDef>
+          <count>400</count>
+        </li>
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>WoodLog</thingDef>
+          <count>300</count>
+        </li>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>天边已经泛出暗红色。\n\n老兵擦着长剑，没有说话。梦里那位神漏下的火种还烫在他的手心——三天后，诸神会降到凡人的身体里，到那时，神也是可以被杀死的。\n\n备好残片，备好子弹。黄昏之年就要来了。</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+  <!-- ==================== 1.57.0 普通种族：冒险者小队 ==================== -->
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>LP_AdventurerPartyScenario</defName>
+    <label>冒险者小队</label>
+    <description>一支典型的费伦冒险者小队：人类、高等精灵、山地矮人、轻足半身人和半兽人。他们在酒馆里接下最后一份委托，结果委托人留下的地图把他们带到了这片无人的边境。\n\n五个人、五个种族：精灵和矮人起初会互相看不顺眼（熬过60天就成了老战友），半身人的幸运和勇敢能救急，半兽人能在倒下前再撑半天。起始物资照原版坠机开局，适合想一次体验多个普通种族的玩家。\n\n注意：人多物资也多，难度与原版坠机开局相当。</description>
+    <scenario>
+      <summary>五名不同种族的冒险者，原版坠机开局的物资。</summary>
+      <parts>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns_Xenotypes">
+          <def>ConfigurePawnsXenotypes</def>
+          <pawnChoiceCount>8</pawnChoiceCount>
+          <customSummary>人类、高等精灵、山地矮人、轻足半身人、半兽人各一名。</customSummary>
+          <xenotypeCounts>
+            <li>
+              <xenotype>Baseliner</xenotype>
+              <count>1</count>
+              <description>人类</description>
+              <requiredAtStart>true</requiredAtStart>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+            <li>
+              <xenotype>LP_Elf</xenotype>
+              <count>1</count>
+              <description>高等精灵</description>
+              <requiredAtStart>true</requiredAtStart>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+            <li>
+              <xenotype>LP_Dwarf</xenotype>
+              <count>1</count>
+              <description>山地矮人</description>
+              <requiredAtStart>true</requiredAtStart>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+            <li>
+              <xenotype>LP_HalflingLightfoot</xenotype>
+              <count>1</count>
+              <description>轻足半身人</description>
+              <requiredAtStart>true</requiredAtStart>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+            <li>
+              <xenotype>LP_HalfOrc</xenotype>
+              <count>1</count>
+              <description>半兽人</description>
+              <requiredAtStart>true</requiredAtStart>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+          </xenotypeCounts>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <visible>false</visible>
+          <method>Standing</method>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_FactionGoodwill">
+          <def>LP_FactionGoodwill</def>
+          <faction>LP_FaerunColony</faction>
+          <goodwill>30</goodwill>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Silver</thingDef>
+          <count>800</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MealSurvivalPack</thingDef>
+          <count>50</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MedicineIndustrial</thingDef>
+          <count>30</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>ComponentIndustrial</thingDef>
+          <count>30</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Gun_BoltActionRifle</thingDef>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Bow_Recurve</thingDef>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MeleeWeapon_LongSword</thingDef>
+          <stuff>Steel</stuff>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MeleeWeapon_Knife</thingDef>
+          <stuff>Plasteel</stuff>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Apparel_FlakVest</thingDef>
+        </li>
+        <li Class="ScenPart_StartingAnimal">
+          <def>StartingAnimal</def>
+          <count>1</count>
+          <bondToRandomPlayerPawnChance>1.0</bondToRandomPlayerPawnChance>
+        </li>
+
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>Steel</thingDef>
+          <count>450</count>
+        </li>
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>WoodLog</thingDef>
+          <count>300</count>
+        </li>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>酒馆老板说这份委托"很简单"。\n\n现在，你们五个站在一片没有路、没有村子、也没有委托人的荒地上。精灵在抱怨矮人的鼾声，矮人在抱怨精灵的诗，半身人已经在找能生火做饭的地方了。\n\n既然回不去了，就在这里把营地扎起来吧。</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+</Defs>

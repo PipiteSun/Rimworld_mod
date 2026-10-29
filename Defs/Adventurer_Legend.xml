@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.50.0 传奇等级与传奇属性点：洗点用的“传奇重铸之石”（不可制作；宿敌冠军 30% 掉落、黑网稀有、拉洛克差事二）。效果在 Source/AdventurerLegend.cs。 -->
+<Defs>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_LegendRespecStone</defName>
+    <label>传奇重铸之石</label>
+    <description>一块暗色的多面晶石，裂纹里流着金光。传奇冒险者握碎它，过去投下的所有传奇属性点都会退回，可以重新分配。只有传奇冒险者能用；没有投过点的人用不了。\n\n无法制作。宿敌冠军有时会带着它，黑网商队偶尔有货，拉洛克也会拿它当报酬。</description>
+    <graphicData>
+      <texPath>LP/Items/LegendRespecStone</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <stackLimit>5</stackLimit>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>Items</li></thingCategories>
+    <statBases>
+      <MarketValue>6000</MarketValue>
+      <Mass>0.3</Mass>
+      <MaxHitPoints>200</MaxHitPoints>
+      <Flammability>0</Flammability>
+    </statBases>
+    <tradeTags><li>LP_LegendStone</li></tradeTags>
+    <comps>
+      <li Class="CompProperties_Usable">
+        <useJob>UseItem</useJob>
+        <useLabel>握碎{0_label}</useLabel>
+        <useDuration>180</useDuration>
+      </li>
+      <li Class="CompProperties_UseEffect">
+        <compClass>LichPhylactery.CompUseEffect_LegendRespec</compClass>
+      </li>
+      <li Class="CompProperties_UseEffectDestroySelf" />
+    </comps>
+  </ThingDef>
+</Defs>

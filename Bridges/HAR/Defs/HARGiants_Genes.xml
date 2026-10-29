@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.44.0 双头巨人、独眼巨人的异种型、基因、状态、心情与精神状态（只在启用 HAR 时加载）。HAR 种族 100% 生成各自的异种型；基因可在基因工作台提取、植入。
+     两族都是巨人（本源基因挂 GiantKinExtension：双头 rank 5、独眼 rank 6，adultSize 1——体型只来自种族 baseBodySize）。
+     代谢：双头巨人 本源 -2、轮流值守 -1、左右开弓 -1、两头不和 +2，合计 -2；独眼巨人 本源 -2、匠心 -1、牧者 -1、单眼视界 +2，合计 -2。规则代码见 Source/HARGiants.cs。 -->
+<Defs>
+
+  <!-- ==================== 双头巨人 ==================== -->
+  <XenotypeDef>
+    <defName>LP_EttinKin</defName>
+    <label>双头巨人</label>
+    <description>双头巨人（艾汀）的血脉：一副巨大的身躯上长着两个头，两颗脑子各有各的主意。两个头轮流睡觉、轮流放哨，一左一右各管一只手，打起架来左右开弓；可它们也总在吵架。血脉会遗传给子女。</description>
+    <descriptionShort>可遗传的巨人种族。两个头两颗脑子：丢一个头不会死，睡得少还会放哨，副手武器左右开弓；两个头常常吵架。</descriptionShort>
+    <iconPath>HARGiants/Ettin/Xenotype</iconPath>
+    <inheritable>true</inheritable>
+    <combatPowerFactor>1.6</combatPowerFactor>
+    <factionlessGenerationWeight>0</factionlessGenerationWeight>
+    <genes>
+      <li>LP_EttinCore</li>
+      <li>LP_EttinWatch</li>
+      <li>LP_EttinTwinGrip</li>
+      <li>LP_EttinQuarrel</li>
+    </genes>
+  </XenotypeDef>
+
+  <GeneDef Name="LP_HARGiantGeneBase" Abstract="True">
+    <displayCategory>Miscellaneous</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>2</biostatCpx>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_HARGiantGeneBase">
+    <defName>LP_EttinCore</defName>
+    <label>双头巨人本源</label>
+    <description>双头巨人的血脉，可随种族遗传。双头巨人的巨躯来自种族本身（体型2.0，显示约1.4倍）；这个基因让人算作巨人：阶序第5位（在霜巨人之下），能穿巨人专属衣甲、拿巨人专用武器，不在乎赤身裸体。装在别的种族身上只有“巨人”身份，不会长大个子。</description>
+    <geneClass>LichPhylactery.Gene_HARGiant</geneClass>
+    <iconPath>HARGiants/Ettin/Genes/Core</iconPath>
+    <displayCategory>ResistanceAndWeakness</displayCategory>
+    <biostatCpx>3</biostatCpx>
+    <biostatMet>-2</biostatMet>
+    <customEffectDescriptions>
+      <li>巨人血统：双头巨人（阶序第5位，低于霜巨人）。</li>
+      <li>体型来自双头巨人种族（成年2.0，显示约1.4倍）；装在别的种族身上不改变体型。</li>
+      <li>不会因裸体产生负面心情；能穿普通衣服，巨人专属衣甲每件心情+2（最多+6）。</li>
+    </customEffectDescriptions>
+    <modExtensions>
+      <li Class="LichPhylactery.GiantKinExtension">
+        <rank>5</rank>
+        <element>ettin</element>
+        <label>双头巨人</label>
+        <adultSize>1</adultSize>
+        <renderScale>1</renderScale>
+      </li>
+    </modExtensions>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_HARGiantGeneBase">
+    <defName>LP_EttinWatch</defName>
+    <label>轮流值守</label>
+    <description>需要两个头。一个头睡觉时另一个头醒着：睡眠需求下降速度×50%；睡着时10格内出现敌人会立刻醒来。只有一个头（或装在只有一个头的人身上）时没有效果。</description>
+    <geneClass>LichPhylactery.Gene_EttinWatch</geneClass>
+    <iconPath>HARGiants/Ettin/Genes/Watch</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <biostatMet>-1</biostatMet>
+    <customEffectDescriptions>
+      <li>需要两个头（人类身上无效，失去一个头后失效）。</li>
+      <li>睡眠需求下降速度：×50%。</li>
+      <li>睡着时10格内有敌人立刻醒来（每250刻检查）。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_HARGiantGeneBase">
+    <defName>LP_EttinTwinGrip</defName>
+    <label>左右开弓</label>
+    <description>需要两个头各管一只手：只有双头巨人的身体有效，两只手都要能用。背包里最好的一把近战武器当副手，主手拿近战武器或空手时，每次普通近战命中后副手追加一击（伤害按模组设置“副手追加伤害”，默认50%，同六臂蛇人）。</description>
+    <iconPath>HARGiants/Ettin/Genes/TwinGrip</iconPath>
+    <displayCategory>Violence</displayCategory>
+    <biostatMet>-1</biostatMet>
+    <customEffectDescriptions>
+      <li>需要两个头各管一只手（只有双头巨人的身体有效），两只手都要能用。</li>
+      <li>副手：背包里品质×DPS最高的1把近战武器。</li>
+      <li>普通近战命中后副手追加一击；主手拿远程武器时不触发，技能命中不触发。</li>
+    </customEffectDescriptions>
+    <modExtensions>
+      <li Class="LichPhylactery.OffhandExtension">
+        <max>1</max>
+        <perExtraArmPair>false</perExtraArmPair>
+        <needsTwinHeads>true</needsTwinHeads>
+      </li>
+    </modExtensions>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_HARGiantGeneBase">
+    <defName>LP_EttinQuarrel</defName>
+    <label>两头不和</label>
+    <description>两个头谁也不服谁。轻度精神崩溃时可能陷入“内讧”：站在原地吵上1小时，什么活都不干；另外大约每15天有10%的可能自己吵起来（心情高于70%时不会）。需要两个头才吵得起来。</description>
+    <geneClass>LichPhylactery.Gene_EttinQuarrel</geneClass>
+    <iconPath>HARGiants/Ettin/Genes/Quarrel</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <biostatCpx>1</biostatCpx>
+    <biostatMet>2</biostatMet>
+    <customEffectDescriptions>
+      <li>轻度精神崩溃多一种“内讧”（与“悲伤游荡”一样常见）：原地争吵1小时，不工作。</li>
+      <li>每15天10%自己吵起来；心情高于70%或睡着时不会。</li>
+      <li>需要两个头（失去一个头后不再吵）。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinEttinGrey</defName>
+    <label>灰褐皮</label>
+    <labelShortAdj>灰褐</labelShortAdj>
+    <description>双头巨人粗糙的灰褐色皮肤，像风化的山岩。</description>
+    <skinColorOverride>(150, 138, 122)</skinColorOverride>
+    <randomBrightnessFactor>0.06</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+    <displayOrderInCategory>1</displayOrderInCategory>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinEttinOchre</defName>
+    <label>赭土皮</label>
+    <labelShortAdj>赭土</labelShortAdj>
+    <description>双头巨人赭黄色的皮肤，像晒干的黏土。</description>
+    <skinColorOverride>(176, 140, 96)</skinColorOverride>
+    <randomBrightnessFactor>0.06</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+    <displayOrderInCategory>1</displayOrderInCategory>
+  </GeneDef>
+
+  <HediffDef>
+    <defName>LP_EttinLoneHead</defName>
+    <label>孤首</label>
+    <description>双头巨人失去了一个头，剩下的那个头只能独自看路、独自放哨：视力×75%，轮流值守失效，心情-8。剩下的头照常吃饭说话。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.8, 0.6, 0.5)</defaultLabelColor>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Sight</capacity>
+            <postFactor>0.75</postFactor>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+  <ThoughtDef>
+    <defName>LP_EttinLoneHeadMood</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_EttinLoneHead</workerClass>
+    <stages>
+      <li>
+        <label>孤首</label>
+        <description>另一个头不在了。没有人跟我吵架，也没有人替我放哨。</description>
+        <baseMoodEffect>-8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <MentalBreakDef>
+    <defName>LP_EttinQuarrelBreak</defName>
+    <mentalState>LP_EttinArguing</mentalState>
+    <workerClass>LichPhylactery.MentalBreakWorker_EttinQuarrel</workerClass>
+    <baseCommonality>0.5</baseCommonality>
+    <intensity>Minor</intensity>
+  </MentalBreakDef>
+  <MentalStateDef ParentName="BaseMentalState">
+    <defName>LP_EttinArguing</defName>
+    <stateClass>LichPhylactery.MentalState_EttinArguing</stateClass>
+    <label>内讧</label>
+    <category>Misc</category>
+    <colonistsOnly>false</colonistsOnly>
+    <minTicksBeforeRecovery>2500</minTicksBeforeRecovery>
+    <maxTicksBeforeRecovery>2500</maxTicksBeforeRecovery>
+    <recoveryMtbDays>0.01</recoveryMtbDays>
+    <recoverFromSleep>true</recoverFromSleep>
+    <blockNormalThoughts>false</blockNormalThoughts>
+    <nameColor>(0.95, 0.65, 0.5)</nameColor>
+    <recoveryMessage>{0}的两个头终于不吵了。</recoveryMessage>
+    <beginLetterLabel>内讧</beginLetterLabel>
+    <beginLetter>{0}的两个头吵起来了，站在原地互不相让，大约要吵上一个小时。</beginLetter>
+    <beginLetterDef>NegativeEvent</beginLetterDef>
+    <baseInspectLine>精神状态：内讧</baseInspectLine>
+    <allowBeatfire>true</allowBeatfire>
+    <inCaravanCanDo>true</inCaravanCanDo>
+    <escapingPrisonersIgnore>true</escapingPrisonersIgnore>
+  </MentalStateDef>
+
+  <!-- ==================== 独眼巨人 ==================== -->
+  <XenotypeDef>
+    <defName>LP_CyclopsKin</defName>
+    <label>独眼巨人</label>
+    <description>独眼巨人的血脉：额头正中只有一只大眼睛。他们是手艺极好的铁匠和石匠，也是耐心的牧人，羊群在身边时最安心；可一只眼睛看不准远近，射箭开枪都差一截。凝视类的恐吓对他们没用。血脉会遗传给子女。</description>
+    <descriptionShort>可遗传的巨人种族。一只眼（没了就瞎），建造与锻造更快，擅长驯兽放牧，免疫凝视；射击不准。</descriptionShort>
+    <iconPath>HARGiants/Cyclops/Xenotype</iconPath>
+    <inheritable>true</inheritable>
+    <combatPowerFactor>1.5</combatPowerFactor>
+    <factionlessGenerationWeight>0</factionlessGenerationWeight>
+    <genes>
+      <li>LP_CyclopsCore</li>
+      <li>LP_CyclopsCraft</li>
+      <li>LP_CyclopsShepherd</li>
+      <li>LP_CyclopsFlatSight</li>
+    </genes>
+  </XenotypeDef>
+
+  <GeneDef ParentName="LP_HARGiantGeneBase">
+    <defName>LP_CyclopsCore</defName>
+    <label>独眼巨人本源</label>
+    <description>独眼巨人的血脉，可随种族遗传。独眼巨人的巨躯来自种族本身（体型1.8，显示约1.35倍）；这个基因让人算作巨人：阶序第6位（在双头巨人之下），能穿巨人专属衣甲、拿巨人专用武器，不在乎赤身裸体。那只大眼睛不怕被瞪：巫妖的恐惧凝视之类的凝视效果对他们无效。</description>
+    <geneClass>LichPhylactery.Gene_HARGiant</geneClass>
+    <iconPath>HARGiants/Cyclops/Genes/Core</iconPath>
+    <displayCategory>ResistanceAndWeakness</displayCategory>
+    <biostatCpx>3</biostatCpx>
+    <biostatMet>-2</biostatMet>
+    <customEffectDescriptions>
+      <li>巨人血统：独眼巨人（阶序第6位，低于双头巨人）。</li>
+      <li>体型来自独眼巨人种族（成年1.8，显示约1.35倍）；装在别的种族身上不改变体型。</li>
+      <li>免疫凝视类效果（巫妖恐惧凝视、恐惧凝视卷轴等）。</li>
+      <li>不会因裸体产生负面心情；能穿普通衣服，巨人专属衣甲每件心情+2（最多+6）。</li>
+    </customEffectDescriptions>
+    <modExtensions>
+      <li Class="LichPhylactery.GiantKinExtension">
+        <rank>6</rank>
+        <element>cyclops</element>
+        <label>独眼巨人</label>
+        <adultSize>1</adultSize>
+        <renderScale>1</renderScale>
+      </li>
+    </modExtensions>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_HARGiantGeneBase">
+    <defName>LP_CyclopsCraft</defName>
+    <label>独眼匠心</label>
+    <description>独眼巨人天生是好工匠：建造速度+20%；在锻造台、熔火锻炉、符文铁砧、巨人铁砧上干活（锻造类配方）的工作速度+15%。</description>
+    <iconPath>HARGiants/Cyclops/Genes/Craft</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <biostatMet>-1</biostatMet>
+    <statFactors>
+      <ConstructionSpeed>1.2</ConstructionSpeed>
+    </statFactors>
+    <customEffectDescriptions>
+      <li>锻造类配方的工作速度：×115%。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_HARGiantGeneBase">
+    <defName>LP_CyclopsShepherd</defName>
+    <label>牧者</label>
+    <description>独眼巨人是耐心的牧人：驯服、训练动物的成功率和动物采集（挤奶、剪毛）产量+25%。殖民地养着绵羊或山羊时心情+2（羊群）。</description>
+    <iconPath>HARGiants/Cyclops/Genes/Shepherd</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <biostatMet>-1</biostatMet>
+    <statFactors>
+      <TameAnimalChance>1.25</TameAnimalChance>
+      <TrainAnimalChance>1.25</TrainAnimalChance>
+      <AnimalGatherYield>1.25</AnimalGatherYield>
+    </statFactors>
+    <customEffectDescriptions>
+      <li>殖民地有绵羊或山羊时：心情+2（羊群）。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+  <ThoughtDef>
+    <defName>LP_CyclopsFlock</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_CyclopsFlock</workerClass>
+    <stages>
+      <li>
+        <label>羊群</label>
+        <description>听得见羊叫，心里就踏实。</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <GeneDef ParentName="LP_HARGiantGeneBase">
+    <defName>LP_CyclopsFlatSight</defName>
+    <label>单眼视界</label>
+    <description>只有一只眼睛，看不准远近：射击精度-3.5点（原版的精度点数，射击10级、20格时命中率约×70%），远程瞄准时间+10%。戴上独眼透镜后精度惩罚减半（约×85%）。</description>
+    <iconPath>HARGiants/Cyclops/Genes/FlatSight</iconPath>
+    <displayCategory>Violence</displayCategory>
+    <biostatCpx>1</biostatCpx>
+    <biostatMet>2</biostatMet>
+    <statOffsets>
+      <AimingDelayFactor>0.1</AimingDelayFactor>
+    </statOffsets>
+    <customEffectDescriptions>
+      <li>射击精度：-3.5点（触发欢是-5点）；戴独眼透镜时-1.75点。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinCyclopsRuddy</defName>
+    <label>赤褐皮</label>
+    <labelShortAdj>赤褐</labelShortAdj>
+    <description>独眼巨人被炉火烤成赤褐色的皮肤。</description>
+    <skinColorOverride>(168, 104, 82)</skinColorOverride>
+    <randomBrightnessFactor>0.06</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+    <displayOrderInCategory>1</displayOrderInCategory>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinCyclopsOlive</defName>
+    <label>橄榄皮</label>
+    <labelShortAdj>橄榄</labelShortAdj>
+    <description>独眼巨人晒成橄榄色的皮肤。</description>
+    <skinColorOverride>(140, 136, 92)</skinColorOverride>
+    <randomBrightnessFactor>0.06</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+    <displayOrderInCategory>1</displayOrderInCategory>
+  </GeneDef>
+
+</Defs>

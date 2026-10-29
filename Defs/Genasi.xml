@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.24.0 元素裔：四个可遗传的异种型共用本源“元素血脉”，各带一条元素血脉（互斥标签 DND_Element，巨灵复用）。 -->
+<Defs>
+  <XenotypeDef Name="LP_GenasiBase" Abstract="True">
+    <inheritable>true</inheritable>
+    <combatPowerFactor>1.1</combatPowerFactor>
+    <factionlessGenerationWeight>0</factionlessGenerationWeight>
+  </XenotypeDef>
+
+  <XenotypeDef ParentName="LP_GenasiBase">
+    <defName>LP_GenasiFire</defName>
+    <label>火元素裔</label>
+    <description>血管里流着火元素的人类后裔。火元素裔的皮肤像烧透的赭石，摸上去总是温热的；他们不会被点燃，火焰伤害减半，能用指尖弹出火花点燃6格内的东西。代价是怕冷、脾气火爆。血脉会遗传给子女。</description>
+    <descriptionShort>可遗传。不会被点燃、火焰伤害减半、耐热，能放“火花”；怕冷、暴躁。</descriptionShort>
+    <iconPath>Races124/Xenotypes/GenasiFire</iconPath>
+    <genes>
+      <li>LP_GenasiCore</li>
+      <li>LP_ElementFire</li>
+      <li>LP_SkinEmber</li>
+      <li>Aggression_Aggressive</li>
+    </genes>
+  </XenotypeDef>
+  <XenotypeDef ParentName="LP_GenasiBase">
+    <defName>LP_GenasiWater</defName>
+    <label>水元素裔</label>
+    <description>水元素的后裔，皮肤泛着蓝青色的光泽，发梢总是湿的。水元素裔在浅水、沼泽和浅海里行走如履平地，能召来一股水流扑灭火焰、把敌人浇透。身体比常人娇弱。血脉会遗传给子女。</description>
+    <descriptionShort>可遗传。水中行动不减速、较耐寒，能放“水流”灭火并浇透敌人；体质娇弱。</descriptionShort>
+    <iconPath>Races124/Xenotypes/GenasiWater</iconPath>
+    <genes>
+      <li>LP_GenasiCore</li>
+      <li>LP_ElementWater</li>
+      <li>LP_SkinTide</li>
+      <li>Delicate</li>
+    </genes>
+  </XenotypeDef>
+  <XenotypeDef ParentName="LP_GenasiBase">
+    <defName>LP_GenasiEarth</defName>
+    <label>土元素裔</label>
+    <description>土元素的后裔，灰褐色的皮肤像风化的岩石，钝器打在身上像打在石头上。土元素裔天生会找矿，挖得又快又干净，但走路沉，学东西也慢。没有主动能力。血脉会遗传给子女。</description>
+    <descriptionShort>可遗传。采矿快、产量高、钝器护甲+15%；移速稍慢、学得慢。</descriptionShort>
+    <iconPath>Races124/Xenotypes/GenasiEarth</iconPath>
+    <genes>
+      <li>LP_GenasiCore</li>
+      <li>LP_ElementEarth</li>
+      <li>LP_SkinStone</li>
+      <li>Learning_Slow</li>
+    </genes>
+  </XenotypeDef>
+  <XenotypeDef ParentName="LP_GenasiBase">
+    <defName>LP_GenasiAir</defName>
+    <label>风元素裔</label>
+    <description>风元素的后裔，浅灰蓝的皮肤，身形细长，走路带风。风元素裔跑得快，还能乘风跃到8格外看得见的地方；只是身板单薄，近战吃亏。血脉会遗传给子女。</description>
+    <descriptionShort>可遗传。移速+10%，能“风跃”到8格内看得见的地方；身形纤瘦、不擅近战。</descriptionShort>
+    <iconPath>Races124/Xenotypes/GenasiAir</iconPath>
+    <genes>
+      <li>LP_GenasiCore</li>
+      <li>LP_ElementAir</li>
+      <li>LP_SkinSky</li>
+      <li>Body_Thin</li>
+      <li>AptitudePoor_Melee</li>
+    </genes>
+  </XenotypeDef>
+
+  <AbilityDef Name="LP_Races124AbilityBase" Abstract="True">
+    <aiCanUse>false</aiCanUse>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <sendMessageOnCooldownComplete>false</sendMessageOnCooldownComplete>
+  </AbilityDef>
+
+  <GeneDef>
+    <defName>LP_GenasiCore</defName>
+    <label>元素血脉</label>
+    <description>祖上某位与元素生物结合留下的血脉。带这条基因的人算作元素裔；血脉的具体力量来自另一条“元素血脉”基因（炽焰、潮汐、岩石、疾风四选一）。</description>
+    <iconPath>Races124/Genes/GenasiCore</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>1</biostatCpx>
+    <biostatMet>0</biostatMet>
+    <customEffectDescriptions>
+      <li>算作元素裔（种族关系、派系好感、元素符制作）。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <GeneDef Name="LP_ElementBase" Abstract="True">
+    <displayCategory>Miscellaneous</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>2</biostatCpx>
+    <exclusionTags>
+      <li>DND_Element</li>
+    </exclusionTags>
+  </GeneDef>
+  <GeneDef ParentName="LP_ElementBase">
+    <defName>LP_ElementFire</defName>
+    <label>炽焰血脉</label>
+    <description>火元素的血脉。携带者不会被点燃，受到的火焰伤害减半（不是免疫）；耐热但怕冷。能用“火花”点燃6格内的一个目标。</description>
+    <iconPath>Races124/Genes/ElementFire</iconPath>
+    <biostatMet>-3</biostatMet>
+    <statFactors>
+      <Flammability>0</Flammability>
+    </statFactors>
+    <statOffsets>
+      <ComfyTemperatureMax>20</ComfyTemperatureMax>
+      <ComfyTemperatureMin>10</ComfyTemperatureMin>
+    </statOffsets>
+    <damageFactors>
+      <Flame>0.5</Flame>
+      <Burn>0.5</Burn>
+    </damageFactors>
+    <abilities>
+      <li>LP_ElementSpark</li>
+    </abilities>
+    <descriptionHyperlinks>
+      <AbilityDef>LP_ElementSpark</AbilityDef>
+    </descriptionHyperlinks>
+  </GeneDef>
+  <GeneDef ParentName="LP_ElementBase">
+    <defName>LP_ElementWater</defName>
+    <label>潮汐血脉</label>
+    <description>水元素的血脉。携带者走进浅水、沼泽和浅海时不会减速，寻路也不再绕开水；比常人耐寒。能用“水流”在目标处扑灭3×3范围的火，并把格内的敌人浇透（移速×80%，10秒）。</description>
+    <iconPath>Races124/Genes/ElementWater</iconPath>
+    <biostatMet>-4</biostatMet>
+    <statOffsets>
+      <ComfyTemperatureMin>-10</ComfyTemperatureMin>
+    </statOffsets>
+    <abilities>
+      <li>LP_ElementTide</li>
+    </abilities>
+    <descriptionHyperlinks>
+      <AbilityDef>LP_ElementTide</AbilityDef>
+    </descriptionHyperlinks>
+    <customEffectDescriptions>
+      <li>水中行动：浅水、沼泽、浅海不减速（深水仍不可通行）。</li>
+    </customEffectDescriptions>
+    <modExtensions>
+      <li Class="LichPhylactery.AmphibiousExtension" />
+    </modExtensions>
+  </GeneDef>
+  <GeneDef ParentName="LP_ElementBase">
+    <defName>LP_ElementEarth</defName>
+    <label>岩石血脉</label>
+    <description>土元素的血脉。携带者采矿速度×130%、采矿产量+10%，皮肤像岩石一样抗钝击（钝器护甲+15%），走路略慢。没有主动能力。</description>
+    <iconPath>Races124/Genes/ElementEarth</iconPath>
+    <biostatMet>-3</biostatMet>
+    <statFactors>
+      <MiningSpeed>1.3</MiningSpeed>
+      <MoveSpeed>0.95</MoveSpeed>
+    </statFactors>
+    <statOffsets>
+      <ArmorRating_Blunt>0.15</ArmorRating_Blunt>
+    </statOffsets>
+    <customEffectDescriptions>
+      <li>采矿产量：+10%（最高100%）。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+  <GeneDef ParentName="LP_ElementBase">
+    <defName>LP_ElementAir</defName>
+    <label>疾风血脉</label>
+    <description>风元素的血脉。携带者移动速度×110%，能乘风“风跃”到8格内看得见、能站人的地方（不能穿墙，不消耗精神力）。</description>
+    <iconPath>Races124/Genes/ElementAir</iconPath>
+    <biostatMet>-2</biostatMet>
+    <statFactors>
+      <MoveSpeed>1.1</MoveSpeed>
+    </statFactors>
+    <abilities>
+      <li>LP_ElementWindLeap</li>
+    </abilities>
+    <descriptionHyperlinks>
+      <AbilityDef>LP_ElementWindLeap</AbilityDef>
+    </descriptionHyperlinks>
+  </GeneDef>
+
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinEmber</defName>
+    <label>余烬肤色</label>
+    <labelShortAdj>赭红</labelShortAdj>
+    <description>火元素裔的赭红色皮肤，像炭火将熄时的颜色。</description>
+    <skinColorOverride>(176, 82, 52)</skinColorOverride>
+    <randomBrightnessFactor>0.08</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+    <displayOrderInCategory>1</displayOrderInCategory>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinTide</defName>
+    <label>潮汐肤色</label>
+    <labelShortAdj>蓝青</labelShortAdj>
+    <description>水元素裔的蓝青色皮肤，带着水面一样的光泽。</description>
+    <skinColorOverride>(86, 146, 168)</skinColorOverride>
+    <randomBrightnessFactor>0.08</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+    <displayOrderInCategory>1</displayOrderInCategory>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinStone</defName>
+    <label>岩石肤色</label>
+    <labelShortAdj>灰褐</labelShortAdj>
+    <description>土元素裔的灰褐色皮肤，像风化的砂岩。</description>
+    <skinColorOverride>(138, 122, 102)</skinColorOverride>
+    <randomBrightnessFactor>0.08</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+    <displayOrderInCategory>1</displayOrderInCategory>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinSky</defName>
+    <label>天空肤色</label>
+    <labelShortAdj>浅灰蓝</labelShortAdj>
+    <description>风元素裔的浅灰蓝色皮肤，像阴天的天空。</description>
+    <skinColorOverride>(178, 196, 214)</skinColorOverride>
+    <randomBrightnessFactor>0.06</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+    <displayOrderInCategory>1</displayOrderInCategory>
+  </GeneDef>
+
+  <!-- ==================== 能力 ==================== -->
+  <AbilityDef ParentName="LP_Races124AbilityBase">
+    <defName>LP_ElementSpark</defName>
+    <label>火花</label>
+    <description>从指尖弹出一点火星，点燃6格内看得见的一个目标（小火）。不会被点燃的目标不受影响。冷却12小时；巨灵使用、或炽焰血脉佩戴炽焰符时冷却减半。</description>
+    <iconPath>Races124/Abilities/Spark</iconPath>
+    <cooldownTicksRange>30000</cooldownTicksRange>
+    <hostile>true</hostile>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>6</range>
+      <warmupTime>0.5</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetBuildings>true</canTargetBuildings>
+        <canTargetItems>true</canTargetItems>
+        <canTargetPlants>true</canTargetPlants>
+        <canTargetSelf>false</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_Races124Ability"><effect>spark</effect></li>
+    </comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_Races124AbilityBase">
+    <defName>LP_ElementTide</defName>
+    <label>水流</label>
+    <description>在8格内的目标处召来一股水流：扑灭3×3范围（潮汐血脉佩戴潮汐符时5×5）内的所有火焰，格内的敌人被浇透，移速×80%持续10秒。冷却1天。</description>
+    <iconPath>Races124/Abilities/Tide</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>8</range>
+      <warmupTime>0.5</warmupTime>
+      <requireLineOfSight>false</requireLineOfSight>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetBuildings>true</canTargetBuildings>
+        <canTargetSelf>true</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_Races124Ability"><effect>tide</effect></li>
+    </comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_Races124AbilityBase">
+    <defName>LP_ElementWindLeap</defName>
+    <label>风跃</label>
+    <description>乘一阵风跃到8格内看得见、能站人的地方。不能穿墙，不消耗精神力。冷却8小时。</description>
+    <iconPath>Races124/Abilities/WindLeap</iconPath>
+    <cooldownTicksRange>20000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>8</range>
+      <warmupTime>0.2</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetPawns>false</canTargetPawns>
+        <canTargetBuildings>false</canTargetBuildings>
+        <canTargetSelf>false</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_Races124Ability"><effect>windleap</effect></li>
+    </comps>
+  </AbilityDef>
+
+  <HediffDef>
+    <defName>LP_Soaked</defName>
+    <label>湿透</label>
+    <description>被一股水流浇得浑身湿透，衣服沉甸甸的：移动速度×80%。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.5, 0.75, 1)</defaultLabelColor>
+    <isBad>true</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>600</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statFactors>
+          <MoveSpeed>0.8</MoveSpeed>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- ==================== 种族关系 ==================== -->
+  <ThoughtDef>
+    <defName>LP_RacialRelation_FireGenasiGiant</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_DNDRacialRelation</workerClass>
+    <stages>
+      <li>
+        <label>火焰的远亲</label>
+        <description>那个火巨人身上有和我一样的火。我们是远亲。</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <LichPhylactery.RacialRelationDef>
+    <defName>LP_Relation_FireGenasiGiant</defName>
+    <label>火元素裔看火巨人</label>
+    <observer>LP_GenasiFire</observer>
+    <target>LP_FireGiant</target>
+    <thought>LP_RacialRelation_FireGenasiGiant</thought>
+  </LichPhylactery.RacialRelationDef>
+  <ThoughtDef>
+    <defName>LP_RacialRelation_GiantFireGenasi</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_DNDRacialRelation</workerClass>
+    <stages>
+      <li>
+        <label>炉火的血亲</label>
+        <description>那个火元素裔的血是热的，像锻炉里的铁水。</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <LichPhylactery.RacialRelationDef>
+    <defName>LP_Relation_GiantFireGenasi</defName>
+    <label>火巨人看火元素裔</label>
+    <observer>LP_FireGiant</observer>
+    <target>LP_GenasiFire</target>
+    <thought>LP_RacialRelation_GiantFireGenasi</thought>
+  </LichPhylactery.RacialRelationDef>
+  <ThoughtDef>
+    <defName>LP_RacialRelation_WaterGenasiGiant</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_DNDRacialRelation</workerClass>
+    <stages>
+      <li>
+        <label>烤人的火巨人</label>
+        <description>那个火巨人走到哪里都冒着热气，靠近一点都觉得皮肤要干裂了。</description>
+        <baseMoodEffect>-1</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <LichPhylactery.RacialRelationDef>
+    <defName>LP_Relation_WaterGenasiGiant</defName>
+    <label>水元素裔看火巨人</label>
+    <observer>LP_GenasiWater</observer>
+    <target>LP_FireGiant</target>
+    <thought>LP_RacialRelation_WaterGenasiGiant</thought>
+  </LichPhylactery.RacialRelationDef>
+</Defs>

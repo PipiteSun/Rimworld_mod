@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.31.0 惊逃兽群（含后续大事件）与冬狼寒潮。规则见 Source/Stampede.cs。 -->
+<Defs>
+  <IncidentDef>
+    <defName>LP_Stampede</defName>
+    <label>惊逃兽群</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_Stampede</workerClass>
+    <!-- 原版“动物迁徙”是 1.0，这里取一半 -->
+    <baseChance>0.5</baseChance>
+    <minRefireDays>12</minRefireDays>
+    <pointsScaleable>false</pointsScaleable>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>LP_WinterWolfColdSnap</defName>
+    <label>冬狼寒潮</label>
+    <category>ThreatBig</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_WinterWolfColdSnap</workerClass>
+    <baseChance>0.6</baseChance>
+    <minRefireDays>30</minRefireDays>
+    <pointsScaleable>true</pointsScaleable>
+  </IncidentDef>
+
+  <HediffDef>
+    <defName>LP_ColdSnapFrenzy</defName>
+    <label>寒潮狂性</label>
+    <description>寒潮让这只冬狼狂性大发：移速 +20%，冰咬造成的寒霜迟缓持续时间翻倍（8秒）。寒潮结束时消退。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.6, 0.85, 1)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <statFactors>
+          <MoveSpeed>1.2</MoveSpeed>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+</Defs>

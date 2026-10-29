@@ -1,0 +1,247 @@
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_Altar</defName>
+    <label>死灵仪式台</label>
+    <description>3×3的死灵仪式工作台。添加巫妖仪式工作单，由预定角色执行完成转化。其他工作单服务于按钮选定的12格内命匣。</description>
+    <thingClass>LichPhylactery.Building_Altar</thingClass>
+    <graphicData>
+      <texPath>Necromancy/Altar</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3.6,3.6)</drawSize>
+    </graphicData>
+    <size>(3,3)</size>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <designationCategory>Production</designationCategory>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0,0,-2)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <WorkToBuild>6000</WorkToBuild>
+      <Mass>80</Mass>
+      <Flammability>0</Flammability>
+      <Beauty>-4</Beauty>
+      <WorkTableWorkSpeedFactor>1</WorkTableWorkSpeedFactor>
+    </statBases>
+    <costList>
+      <BlocksGranite>150</BlocksGranite>
+      <Steel>100</Steel>
+    </costList>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <building>
+      <buildingTags>
+        <li>Production</li>
+      </buildingTags>
+    </building>
+  </ThingDef>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_Phylactery</defName>
+    <label>命匣</label>
+    <description>巫妖的灵魂容器。可搬运、储藏，必须保护免于摧毁。生肉献祭提高等级；主人拥有死灵之躯时，死亡3日后自动复活。工作单服务时放在台子12格内。</description>
+    <thingClass>LichPhylactery.Phylactery</thingClass>
+    <graphicData>
+      <texPath>Necromancy/Phylactery</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.5</drawSize>
+    </graphicData>
+    <stackLimit>1</stackLimit>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <Mass>3</Mass>
+      <MarketValue>1800</MarketValue>
+      <Flammability>0.4</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+    <thingCategories>
+      <li>Manufactured</li>
+    </thingCategories>
+    <tradeability>None</tradeability>
+  </ThingDef>
+  <HediffDef>
+    <defName>LP_Lich</defName>
+    <label>巫妖之躯</label>
+    <description>精神力维持的不死之躯。命匣保存灵魂与原有基因；不需要食物、睡眠或娱乐，不流血，无法自然愈合。通过精神力修复与重塑身体。</description>
+    <hediffClass>LichPhylactery.Hediff_Lich</hediffClass>
+    <isBad>false</isBad>
+    <initialSeverity>1</initialSeverity>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_Limb</defName>
+    <label>魂能强化</label>
+    <description>每层增加20%该部位生命上限、12%部位效率，占用5点精神力上限。仅支持头部、躯干、脊椎、手臂、腿及主要器官（大脑、心脏、肺、肝、肾、胃、眼睛、耳朵）；手指等小部位不可强化。每部位至多5层；部位缺失后强化消失。</description>
+    <hediffClass>LichPhylactery.Hediff_Limb</hediffClass>
+    <isBad>false</isBad>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>5</maxSeverity>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_Construct</defName>
+    <label>死灵造物</label>
+    <description>受到巫妖统御的造物。失去主人或统御容量不足时休眠。</description>
+    <hediffClass>LichPhylactery.Hediff_Construct</hediffClass>
+    <isBad>false</isBad>
+    <initialSeverity>1</initialSeverity>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <forceRenderTreeRecache>true</forceRenderTreeRecache>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>LichPhylactery.ConstructRoleMarkNode</nodeClass>
+        <workerClass>LichPhylactery.ConstructRoleMarkWorker</workerClass>
+        <texPath>Necromancy/ConstructAppearance/Stitches</texPath>
+        <parentTagDef>Body</parentTagDef>
+        <baseLayer>18</baseLayer>
+        <overrideMeshSize>1</overrideMeshSize>
+        <drawSize>(0.50,0.60)</drawSize>
+        <visibleFacing><li>South</li><li>East</li><li>West</li></visibleFacing>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+      </li>
+      <li>
+        <nodeClass>LichPhylactery.ConstructRoleMarkNode</nodeClass>
+        <workerClass>LichPhylactery.ConstructRoleMarkWorker</workerClass>
+        <texPath>Necromancy/ConstructAppearance/SoulMark</texPath>
+        <parentTagDef>Head</parentTagDef>
+        <baseLayer>60</baseLayer>
+        <overrideMeshSize>1</overrideMeshSize>
+        <drawSize>(0.18,0.18)</drawSize>
+        <visibleFacing><li>South</li><li>East</li><li>West</li></visibleFacing>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+      </li>
+    </renderNodeProperties>
+  </HediffDef>
+  <GeneDef>
+    <defName>LP_LichGene</defName>
+    <label>巫妖魂核</label>
+    <description>巫妖超凡基因。心灵敏感度增加25%，停止生物衰老。完成死灵仪式后获得命匣绑定、精神力修复和死灵统御。仪式自动追加此异种基因，并保存转化前所有内源与异种基因，不清空、不替换原有基因。</description>
+    <geneClass>LichPhylactery.Gene_Lich</geneClass>
+    <iconPath>Necromancy/Icons/LichCore</iconPath>
+    <displayCategory>Archite</displayCategory>
+    <biostatCpx>4</biostatCpx>
+    <biostatMet>-3</biostatMet>
+    <biostatArc>3</biostatArc>
+    <selectionWeight>0</selectionWeight>
+    <biologicalAgeTickFactorFromAgeCurve>
+      <points>
+        <li>(0,1)</li>
+        <li>(18,0)</li>
+      </points>
+    </biologicalAgeTickFactorFromAgeCurve>
+    <statOffsets>
+      <PsychicSensitivity>0.25</PsychicSensitivity>
+    </statOffsets>
+  </GeneDef>
+  <PawnRenderTreeDef>
+    <defName>LP_ConstructTree</defName>
+    <root Class="PawnRenderNodeProperties_Parent">
+      <debugLabel>Root</debugLabel>
+      <tagDef>Root</tagDef>
+      <children>
+        <li>
+          <debugLabel>Body</debugLabel>
+          <nodeClass>LichPhylactery.ConstructBodyNode</nodeClass>
+          <workerClass>PawnRenderNodeWorker_Body</workerClass>
+          <tagDef>Body</tagDef>
+          <skipFlag>Body</skipFlag>
+          <colorType>Custom</colorType>
+          <useRottenColor>true</useRottenColor>
+          <useSkinShader>true</useSkinShader>
+          <children>
+            <li Class="PawnRenderNodeProperties_Overlay">
+              <debugLabel>Wounds - pre apparel</debugLabel>
+              <workerClass>PawnRenderNodeWorker_OverlayWounds</workerClass>
+              <overlayLayer>Body</overlayLayer>
+              <baseLayer>8</baseLayer>
+            </li>
+            <li Class="PawnRenderNodeProperties_Swaddle" MayRequire="Ludeon.RimWorld.Biotech">
+              <debugLabel>Baby swaddle</debugLabel>
+              <nodeClass>PawnRenderNode_Swaddle</nodeClass>
+              <workerClass>PawnRenderNodeWorker_Swaddle</workerClass>
+              <texPath>Things/Pawn/Humanlike/Apparel/SwaddledBaby/Swaddled_Child</texPath>
+              <swaddleColorOffset>0.1</swaddleColorOffset>
+              <brightnessRange>0.6~0.89</brightnessRange>
+              <baseLayer>10</baseLayer>
+            </li>
+            <li Class="PawnRenderNodeProperties_Parent">
+              <debugLabel>Apparel root</debugLabel>
+              <tagDef>ApparelBody</tagDef>
+              <baseLayer>20</baseLayer>
+            </li>
+            <li Class="PawnRenderNodeProperties_Overlay">
+              <debugLabel>Wounds - post apparel</debugLabel>
+              <workerClass>PawnRenderNodeWorker_OverlayWounds</workerClass>
+              <overlayOverApparel>true</overlayOverApparel>
+              <overlayLayer>Body</overlayLayer>
+              <baseLayer>30</baseLayer>
+            </li>
+            <li Class="PawnRenderNodeProperties_Overlay">
+              <debugLabel>Firefoam</debugLabel>
+              <workerClass>PawnRenderNodeWorker_OverlayFirefoam</workerClass>
+              <overlayLayer>Body</overlayLayer>
+              <baseLayer>40</baseLayer>
+            </li>
+          </children>
+        </li>
+        <li>
+          <debugLabel>Head stump</debugLabel>
+          <nodeClass>PawnRenderNode_Stump</nodeClass>
+          <workerClass>PawnRenderNodeWorker_Stump</workerClass>
+          <texPath>Things/Pawn/Humanlike/Heads/None_Average_Stump</texPath>
+          <baseLayer>50</baseLayer>
+          <colorType>Skin</colorType>
+          <skipFlag>Head</skipFlag>
+          <useSkinShader>true</useSkinShader>
+          <useRottenColor>true</useRottenColor>
+          <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        </li>
+        <li>
+          <debugLabel>Head</debugLabel>
+          <nodeClass>LichPhylactery.ConstructHeadNode</nodeClass>
+          <workerClass>PawnRenderNodeWorker_Head</workerClass>
+          <tagDef>Head</tagDef>
+          <skipFlag>Head</skipFlag>
+          <baseLayer>50</baseLayer>
+          <colorType>Custom</colorType>
+          <useRottenColor>true</useRottenColor>
+          <useSkinShader>true</useSkinShader>
+          <children>
+            <li Class="PawnRenderNodeProperties_Overlay">
+              <debugLabel>Head wounds</debugLabel>
+              <workerClass>PawnRenderNodeWorker_OverlayWounds</workerClass>
+              <overlayLayer>Head</overlayLayer>
+              <baseLayer>65</baseLayer>
+            </li>
+            <li Class="PawnRenderNodeProperties_Parent">
+              <debugLabel>Apparel root</debugLabel>
+              <tagDef>ApparelHead</tagDef>
+              <baseLayer>70</baseLayer>
+            </li>
+            <li Class="PawnRenderNodeProperties_Overlay">
+              <debugLabel>Firefoam</debugLabel>
+              <workerClass>PawnRenderNodeWorker_OverlayFirefoam</workerClass>
+              <overlayLayer>Head</overlayLayer>
+              <baseLayer>85</baseLayer>
+            </li>
+            <li Class="PawnRenderNodeProperties_Overlay">
+              <debugLabel>Status overlay</debugLabel>
+              <workerClass>PawnRenderNodeWorker_OverlayStatus</workerClass>
+              <baseLayer>100</baseLayer>
+            </li>
+          </children>
+        </li>
+        <li Class="PawnRenderNodeProperties_Carried">
+          <debugLabel>Weapon/carried thing</debugLabel>
+          <workerClass>PawnRenderNodeWorker_Carried</workerClass>
+        </li>
+      </children>
+      <workerClass>LichPhylactery.ConstructRootWorker</workerClass>
+    </root>
+  </PawnRenderTreeDef>
+</Defs>

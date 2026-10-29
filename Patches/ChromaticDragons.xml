@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.52.0：绿龙「被魅惑」借用原版精神错乱游荡的思考树分支；同盟（费伦拓荒同盟）杂货商队 15% 卖「龙巢情报」（殖民地最高冒险者等级够高时，见 StockGenerator_DragonLairMap）。 -->
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThinkTreeDef//li[@Class="ThinkNode_ConditionalMentalStates"][states/li="Wander_Psychotic"]/states</xpath>
+    <value>
+      <li>LP_DragonCharmed</li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TraderKindDef[defName="LP_Caravan_FaerunGoods"]/stockGenerators</xpath>
+    <value>
+      <li Class="LichPhylactery.StockGenerator_DragonLairMap" />
+    </value>
+  </Operation>
+</Patch>

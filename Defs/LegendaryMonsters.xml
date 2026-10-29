@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.52.1 传奇怪（规则在 Source/LegendaryMonsters.cs，传奇层在 Source/Legendary.cs）。
+     贝希尔、眼魔、半巫妖的种族和兵种在 Bridges/HAR/Defs/LegendaryMonsters_Race.xml（只在启用 HAR 时加载）；
+     这里是不需要 HAR 的部分：派系「传奇怪物」、死亡骑士、各自的“XX之躯”、掉落物、两个世界地点、龙的猎手事件。 -->
+<Defs>
+
+  <FactionDef ParentName="LP_FactionBase">
+    <defName>LP_LegendaryBeasts</defName>
+    <label>传奇怪物</label>
+    <fixedName>传奇怪物</fixedName>
+    <description>贝希尔、眼魔、半巫妖这些独来独往的传说中的怪物。它们不结盟、不谈判，对谁都怀着敌意。</description>
+    <pawnSingular>怪物</pawnSingular>
+    <pawnsPlural>怪物</pawnsPlural>
+    <techLevel>Medieval</techLevel>
+    <hidden>true</hidden>
+    <permanentEnemy>true</permanentEnemy>
+    <requiredCountAtGameStart>0</requiredCountAtGameStart>
+    <startingCountAtWorldCreation>0</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <displayInFactionSelection>false</displayInFactionSelection>
+    <settlementGenerationWeight>0</settlementGenerationWeight>
+    <canStageAttacks>false</canStageAttacks>
+    <raidsForbidden>true</raidsForbidden>
+    <canGenerateQuestSites>false</canGenerateQuestSites>
+    <rescueesCanJoin>false</rescueesCanJoin>
+    <factionIconPath>LegendaryMonsters/Faction</factionIconPath>
+    <colorSpectrum>
+      <li>(0.46, 0.30, 0.60)</li>
+      <li>(0.34, 0.50, 0.44)</li>
+    </colorSpectrum>
+    <basicMemberKind>LP_DragonCultist</basicMemberKind>
+    <backstoryFilters Inherit="False">
+      <li><categories><li>LP_DragonCult</li></categories></li>
+    </backstoryFilters>
+    <ideoName>无名的饥渴</ideoName>
+    <ideoDescription>活着就是为了吞下更多。</ideoDescription>
+    <forcedMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Ideological</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Supremacist</li>
+    </forcedMemes>
+    <raidCommonalityFromPointsCurve><points><li>(0, 0)</li></points></raidCommonalityFromPointsCurve>
+    <pawnGroupMakers>
+      <li>
+        <kindDef>Combat</kindDef>
+        <options><LP_DragonCultist>1</LP_DragonCultist></options>
+      </li>
+    </pawnGroupMakers>
+  </FactionDef>
+
+  <!-- 传奇怪自己的“背景”（只给贝希尔、眼魔、半巫妖）。 -->
+  <BackstoryDef>
+    <defName>LP_Bs_MonsterSpawn</defName>
+    <title>幽暗中诞生</title>
+    <titleShort>怪物</titleShort>
+    <description>[PAWN_nameDef]诞生在没有光的地方，从小就靠吞掉别的东西活下来。</description>
+    <slot>Childhood</slot>
+    <spawnCategories><li>LP_MonsterBio</li></spawnCategories>
+    <skillGains><Melee>6</Melee></skillGains>
+    <workDisables>ManualDumb, ManualSkilled, Caring, Artistic, Crafting, Cooking, Animals, PlantWork, Mining</workDisables>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>LP_Bs_MonsterLegend</defName>
+    <title>传说中的怪物</title>
+    <titleShort>传奇怪</titleShort>
+    <description>吟游诗人唱过[PAWN_nameDef]的故事，唱的都是去找它的人再也没有回来。</description>
+    <slot>Adulthood</slot>
+    <spawnCategories><li>LP_MonsterBio</li></spawnCategories>
+    <skillGains><Melee>8</Melee><Shooting>6</Shooting><Intellectual>4</Intellectual></skillGains>
+    <workDisables>ManualDumb, ManualSkilled, Caring, Artistic, Crafting, Cooking, Animals, PlantWork, Mining</workDisables>
+  </BackstoryDef>
+
+  <!-- ==================== 死亡骑士（人类 + 亡灵之躯，不需要 HAR） ==================== -->  <PawnKindDef ParentName="LP_FHBase">
+    <defName>LP_LM_DeathKnight</defName>
+    <label>死亡骑士</label>
+    <combatPower>700</combatPower>
+    <minGenerationAge>30</minGenerationAge>
+    <itemQuality>Excellent</itemQuality>
+    <apparelMoney>300~600</apparelMoney>
+    <apparelTags>
+      <li>Medieval</li>
+    </apparelTags>
+    <weaponMoney>0</weaponMoney>
+    <forcedHair>Shaved</forcedHair>
+    <canBeSapper>false</canBeSapper>
+    <humanPregnancyChance>0</humanPregnancyChance>
+    <initialResistanceRange>100~100</initialResistanceRange>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>死亡骑士</title>
+        <level>22~24</level>
+        <scores><li>20</li><li>11</li><li>20</li><li>12</li><li>16</li><li>18</li></scores>
+        <cr>17</cr>
+        <resistance>3</resistance>
+        <actionPoints>3</actionPoints>
+        <actions>
+          <li><action>Detect</action><cost>1</cost></li>
+          <li><action>UndeadCommand</action><cost>1</cost><cooldown>600</cooldown></li>
+          <li><action>Hellfire</action><cost>2</cost><cooldown>300</cooldown></li>
+        </actions>
+        <legendPoints>2</legendPoints>
+        <deathOnDowned>false</deathOnDowned>
+      </li>
+      <li Class="LichPhylactery.LP_MonsterExtension">
+        <kind>deathknight</kind>
+        <healthFactor>4</healthFactor>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+
+  <!-- ==================== 各自的“XX之躯” ==================== -->
+  <HediffDef Name="LP_MonsterBodyBase" Abstract="True">
+    <hediffClass>LichPhylactery.Hediff_MonsterBody</hediffClass>
+    <defaultLabelColor>(0.75, 0.6, 0.95)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+  <HediffDef ParentName="LP_MonsterBodyBase">
+    <defName>LP_BehirBody</defName>
+    <label>贝希尔之躯</label>
+    <description>蛇一样的十二足猎龙者：闪电吐息每 6 秒有 1/3 几率充好，吐出一道 16 格的闪电（敏捷豁免减半，对机械体 ×2）；把贴身的人吞进肚子（每秒 4 点酸蚀，打它 60 点或里面挣扎 30 点就吐出来）。打真龙和力能龙裔伤害 ×1.5，不怕龙的威仪。倒地即死。</description>
+    <stages><li>
+      <painFactor>0.6</painFactor><blocksMentalBreaks>true</blocksMentalBreaks>
+      <disablesNeeds><li>Food</li><li>Rest</li><li>Joy</li><li>Beauty</li><li>Comfort</li><li>Outdoors</li><li>RoomSize</li><li MayRequire="Ludeon.RimWorld.Ideology">Indoors</li></disablesNeeds>
+      <damageFactors><LP_Shock>0</LP_Shock></damageFactors>
+      <statOffsets><ComfyTemperatureMin>-40</ComfyTemperatureMin><ComfyTemperatureMax>60</ComfyTemperatureMax></statOffsets>
+    </li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_MonsterBodyBase">
+    <defName>LP_BeholderBody</defName>
+    <label>眼魔之躯</label>
+    <description>漂浮的眼球：每 3 秒从眼柄射出 1～2 道射线（全部可以豁免）；打掉一根眼柄就少一种射线。主眼正面 60° 锥形 20 格内不能施法、护盾腰带失效。倒地即死。</description>
+    <stages><li>
+      <painFactor>0.6</painFactor><blocksMentalBreaks>true</blocksMentalBreaks>
+      <disablesNeeds><li>Food</li><li>Rest</li><li>Joy</li><li>Beauty</li><li>Comfort</li><li>Outdoors</li><li>RoomSize</li><li MayRequire="Ludeon.RimWorld.Ideology">Indoors</li></disablesNeeds>
+      <statOffsets><ComfyTemperatureMin>-40</ComfyTemperatureMin><ComfyTemperatureMax>40</ComfyTemperatureMax></statOffsets>
+    </li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_MonsterBodyBase">
+    <defName>LP_DeathKnightBody</defName>
+    <label>死亡骑士之躯</label>
+    <description>被诅咒的不死骑士：不吃不睡、不会崩溃。每 20 秒朝敌人最密的地方掷一枚地狱火球（半径 4，一半火焰一半死灵，敏捷豁免减半）；15 格内的亡灵伤害与护甲 +20%。倒地后 1 小时化为灰烬，只留下铠甲。</description>
+    <stages><li>
+      <painFactor>0.5</painFactor><blocksMentalBreaks>true</blocksMentalBreaks>
+      <disablesNeeds><li>Food</li><li>Rest</li><li>Joy</li><li>Beauty</li><li>Comfort</li><li>Outdoors</li><li>RoomSize</li><li MayRequire="Ludeon.RimWorld.Ideology">Indoors</li></disablesNeeds>
+      <damageFactors><LP_Necrotic>0</LP_Necrotic></damageFactors>
+      <statOffsets><ToxicResistance>1</ToxicResistance><ComfyTemperatureMin>-60</ComfyTemperatureMin><ComfyTemperatureMax>60</ComfyTemperatureMax></statOffsets>
+    </li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_MonsterBodyBase">
+    <defName>LP_DemilichBody</defName>
+    <label>半巫妖之躯</label>
+    <description>只剩一颗镶着宝石的头骨：每 60 秒发出一次吞魂之嚎（20 格内活人体质豁免难度 21、基础成功率 10%，失败灵魂撕裂、倒地，30 秒内不救治就死；巫妖和死灵造物免疫）。圣水、银器伤害 ×2。倒地即死。</description>
+    <stages><li>
+      <painFactor>0.3</painFactor><blocksMentalBreaks>true</blocksMentalBreaks>
+      <disablesNeeds><li>Food</li><li>Rest</li><li>Joy</li><li>Beauty</li><li>Comfort</li><li>Outdoors</li><li>RoomSize</li><li MayRequire="Ludeon.RimWorld.Ideology">Indoors</li></disablesNeeds>
+      <damageFactors><LP_Necrotic>0</LP_Necrotic></damageFactors>
+      <statOffsets><ToxicResistance>1</ToxicResistance><ComfyTemperatureMin>-100</ComfyTemperatureMin><ComfyTemperatureMax>100</ComfyTemperatureMax></statOffsets>
+    </li></stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>LP_UndeadCommanded</defName>
+    <label>亡灵统领</label>
+    <description>死亡骑士的意志驱使着这具亡灵：伤害与护甲 +20%。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>360</disappearsAfterTicks></li></comps>
+    <stages><li><statFactors><MeleeDamageFactor>1.2</MeleeDamageFactor><ArmorRating_Sharp>1.2</ArmorRating_Sharp><ArmorRating_Blunt>1.2</ArmorRating_Blunt></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_BeholderPetrified</defName>
+    <label>石化</label>
+    <description>被眼魔的石化射线定住了，全身像石头一样僵硬：一天之内动不了。驱散粉尘可以解除。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.7, 0.7, 0.7)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>60000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><capMods><li><capacity>Moving</capacity><setMax>0</setMax></li><li><capacity>Manipulation</capacity><setMax>0.05</setMax></li></capMods></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_SoulTorn</defName>
+    <label>灵魂撕裂</label>
+    <description>灵魂被半巫妖的嚎叫撕下了一半，吸进了它的宝石。人倒在地上，30 秒内不包扎就会死；包扎之后变成“缝合的灵魂”，一天后恢复。</description>
+    <hediffClass>LichPhylactery.Hediff_SoulTorn</hediffClass>
+    <isBad>true</isBad>
+    <tendable>true</tendable>
+    <initialSeverity>1</initialSeverity>
+    <lethalSeverity>-1</lethalSeverity>
+    <defaultLabelColor>(0.6, 0.9, 0.8)</defaultLabelColor>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration"><baseTendDurationHours>24</baseTendDurationHours><severityPerDayTended>0</severityPerDayTended></li>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>120000</disappearsAfterTicks></li>
+    </comps>
+    <stages>
+      <li><minSeverity>0</minSeverity><label>缝合</label><capMods><li><capacity>Consciousness</capacity><offset>-0.2</offset></li></capMods></li>
+      <li><minSeverity>0.9</minSeverity><lifeThreatening>true</lifeThreatening><capMods><li><capacity>Consciousness</capacity><setMax>0.1</setMax></li></capMods></li>
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_DemilichCurse</defName>
+    <label>半巫妖的诅咒</label>
+    <description>半巫妖的诅咒：命中和工作效率降低，一天后消散。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>60000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><statFactors><MeleeHitChance>0.8</MeleeHitChance><ShootingAccuracyPawn>0.8</ShootingAccuracyPawn><WorkSpeedGlobal>0.8</WorkSpeedGlobal></statFactors></li></stages>
+  </HediffDef>
+  <ThoughtDef>
+    <defName>LP_SoulsFreed</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>3</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>灵魂得到解放</label><description>灵魂宝石碎了，被困的灵魂飘走了。心里轻松了不少。</description><baseMoodEffect>5</baseMoodEffect></li></stages>
+  </ThoughtDef>
+
+  <!-- ==================== 掉落 ==================== -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_BehirHorn</defName>
+    <label>贝希尔角</label>
+    <description>贝希尔头上的角，摸上去会麻手。可以代替金属做刀剑（锋利 ×1.2）。</description>
+    <graphicData><texPath>LegendaryMonsters/Items/BehirHorn</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>20</stackLimit>
+    <useHitPoints>false</useHitPoints>
+    <statBases><MarketValue>60</MarketValue><Mass>0.6</Mass><StuffPower_Armor_Sharp>0.6</StuffPower_Armor_Sharp><StuffPower_Armor_Blunt>0.3</StuffPower_Armor_Blunt><StuffPower_Armor_Heat>0.4</StuffPower_Armor_Heat><SharpDamageMultiplier>1.2</SharpDamageMultiplier><BluntDamageMultiplier>0.9</BluntDamageMultiplier></statBases>
+    <thingCategories><li>ResourcesRaw</li></thingCategories>
+    <smeltable>false</smeltable>
+    <stuffProps><categories><li>Metallic</li></categories><appearance>Metal</appearance><commonality>0</commonality><color>(86,104,140)</color><statFactors><MaxHitPoints>1.1</MaxHitPoints><Beauty>1.5</Beauty><Flammability>0.2</Flammability></statFactors></stuffProps>
+  </ThingDef>
+  <ThingDef ParentName="LeatherBase">
+    <defName>LP_Leather_Behir</defName>
+    <label>贝希尔皮</label>
+    <description>贝希尔的蓝色鳞皮，又韧又能挡电。</description>
+    <graphicData><color>(70,92,132)</color></graphicData>
+    <statBases><MarketValue>7</MarketValue><StuffPower_Armor_Sharp>1.1</StuffPower_Armor_Sharp><StuffPower_Armor_Blunt>0.4</StuffPower_Armor_Blunt><StuffPower_Armor_Heat>1.2</StuffPower_Armor_Heat><StuffPower_Insulation_Cold>14</StuffPower_Insulation_Cold><StuffPower_Insulation_Heat>10</StuffPower_Insulation_Heat></statBases>
+    <stuffProps><color>(70,92,132)</color><commonality>0</commonality></stuffProps>
+  </ThingDef>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_BeholderEye</defName>
+    <label>眼魔主眼</label>
+    <description>眼魔中央那只大眼，死后还在发出反魔法的微光。可以在附魔台做成反魔法护符。</description>
+    <graphicData><texPath>LegendaryMonsters/Items/BeholderEye</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>5</stackLimit>
+    <statBases><MarketValue>1500</MarketValue><Mass>2</Mass><MaxHitPoints>60</MaxHitPoints><Flammability>0.5</Flammability></statBases>
+    <thingCategories><li>ResourcesRaw</li></thingCategories>
+  </ThingDef>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_BeholderStalk</defName>
+    <label>眼魔眼柄</label>
+    <description>眼魔的一根眼柄，末端的小眼还在转。法师们拿它当抄写卷轴的高级原料，商人也愿意出好价钱。</description>
+    <graphicData><texPath>LegendaryMonsters/Items/BeholderStalk</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>20</stackLimit>
+    <statBases><MarketValue>250</MarketValue><Mass>0.3</Mass><MaxHitPoints>40</MaxHitPoints><Flammability>0.5</Flammability></statBases>
+    <thingCategories><li>ResourcesRaw</li></thingCategories>
+  </ThingDef>
+  <ThingDef ParentName="ApparelNoQualityBase">
+    <defName>LP_AntiMagicAmulet</defName>
+    <label>反魔法护符</label>
+    <description>用眼魔主眼做的护符，挂在腰间。佩戴者 3 格内的敌人不能施法、护盾腰带失效——佩戴者自己也不能施法。</description>
+    <graphicData><texPath>LegendaryMonsters/Items/AntiMagicAmulet</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <techLevel>Medieval</techLevel>
+    <statBases><MarketValue>2400</MarketValue><Mass>0.5</Mass><MaxHitPoints>100</MaxHitPoints><WorkToMake>6000</WorkToMake><EquipDelay>2</EquipDelay></statBases>
+    <thingCategories><li>ApparelUtility</li></thingCategories>
+    <costList><LP_BeholderEye>1</LP_BeholderEye><Gold>20</Gold></costList>
+    <recipeMaker>
+      <recipeUsers Inherit="False"><li>LP_EnchantingTable</li></recipeUsers>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Intellectual</workSkill>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+      <skillRequirements><Intellectual>8</Intellectual></skillRequirements>
+    </recipeMaker>
+    <apparel>
+      <bodyPartGroups><li>Waist</li></bodyPartGroups>
+      <layers><li>Belt</li></layers>
+      <tags><li>LP_AntiMagic</li></tags>
+      <careIfWornByCorpse>false</careIfWornByCorpse>
+    </apparel>
+  </ThingDef>
+  <ThingDef ParentName="LP_ThrowableBase">
+    <defName>LP_HellfireOrb</defName>
+    <label>地狱火宝珠</label>
+    <description>死亡骑士化灰后留下的暗红色宝珠，里面翻滚着地狱火。投出去会炸开一个半径 4 的地狱火球：一半火焰、一半死灵伤害（敏捷豁免减半）。只能用一次。</description>
+    <graphicData><texPath>LegendaryMonsters/Items/HellfireOrb</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>900</MarketValue><Mass>0.5</Mass></statBases>
+    <weaponTags><li>LP_HellfireOrb</li></weaponTags>
+    <verbs>
+      <li>
+        <label>投出地狱火宝珠</label>
+        <verbClass>Verb_LaunchProjectile</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <range>12.9</range>
+        <forcedMissRadius>1</forcedMissRadius>
+        <warmupTime>1.5</warmupTime>
+        <noiseRadius>4</noiseRadius>
+        <soundCast>ThrowGrenade</soundCast>
+        <targetParams><canTargetLocations>true</canTargetLocations></targetParams>
+        <defaultProjectile>LP_Proj_HellfireOrb</defaultProjectile>
+        <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+      </li>
+    </verbs>
+  </ThingDef>
+  <ThingDef ParentName="LP_ThrowableProjectileBase">
+    <defName>LP_Proj_HellfireOrb</defName>
+    <label>地狱火宝珠</label>
+    <thingClass>LichPhylactery.Projectile_LPAlchemy</thingClass>
+    <graphicData><texPath>LegendaryMonsters/Items/HellfireOrb</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <projectile><damageDef>Flame</damageDef><damageAmountBase>0</damageAmountBase><explosionRadius>4</explosionRadius></projectile>
+    <modExtensions><li Class="LichPhylactery.ThrowableEffectExtension"><effect>hellfire</effect></li></modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_SoulGem</defName>
+    <label>灵魂宝石</label>
+    <description>半巫妖眼窝里的宝石，里面关着它吞下的灵魂。巫妖用它：命匣一次获得 100 点献祭经验。别人摔碎它：放出灵魂，地图上的殖民者心情 +5（3 天）。</description>
+    <graphicData><texPath>LegendaryMonsters/Items/SoulGem</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>5</stackLimit>
+    <thingCategories><li>Items</li></thingCategories>
+    <statBases><MarketValue>2500</MarketValue><Mass>0.2</Mass><MaxHitPoints>80</MaxHitPoints><Flammability>0</Flammability></statBases>
+    <comps>
+      <li Class="CompProperties_Usable"><useJob>UseItem</useJob><useLabel>使用{0_label}</useLabel><useDuration>240</useDuration></li>
+      <li Class="CompProperties_UseEffect"><compClass>LichPhylactery.CompUseEffect_SoulGem</compClass></li>
+      <li Class="CompProperties_UseEffectDestroySelf" />
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_DemilichSkull</defName>
+    <label>半巫妖头骨</label>
+    <description>半巫妖碎裂的头骨，还残留着它千年的负能量。巫妖把它献给命匣：命匣一次获得 300 点献祭经验。</description>
+    <graphicData><texPath>LegendaryMonsters/Items/DemilichSkull</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>1</stackLimit>
+    <thingCategories><li>Items</li></thingCategories>
+    <statBases><MarketValue>4000</MarketValue><Mass>1</Mass><MaxHitPoints>150</MaxHitPoints><Flammability>0</Flammability></statBases>
+    <comps>
+      <li Class="CompProperties_Usable"><useJob>UseItem</useJob><useLabel>把{0_label}献给命匣</useLabel><useDuration>300</useDuration></li>
+      <li Class="CompProperties_UseEffect"><compClass>LichPhylactery.CompUseEffect_DemilichSkull</compClass></li>
+      <li Class="CompProperties_UseEffectDestroySelf" />
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_BeholderLairMap</defName>
+    <label>眼魔巢穴情报</label>
+    <description>同盟的探子从幽暗地域带回的一张草图。读懂它，一座眼魔巢穴就会显露在世界地图上（30 天后消失）。</description>
+    <graphicData><texPath>LegendaryMonsters/Items/IntelBeholder</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>1</stackLimit>
+    <thingCategories><li>Items</li></thingCategories>
+    <statBases><MarketValue>2000</MarketValue><Mass>0.2</Mass><MaxHitPoints>40</MaxHitPoints><Flammability>1</Flammability></statBases>
+    <tradeTags><li>LP_MonsterIntel</li></tradeTags>
+    <comps>
+      <li Class="CompProperties_Usable"><useJob>UseItem</useJob><useLabel>读{0_label}</useLabel><useDuration>300</useDuration></li>
+      <li Class="LichPhylactery.CompProperties_UseEffectMonsterIntel"><kind>beholder</kind></li>
+      <li Class="CompProperties_UseEffectDestroySelf" />
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_TombMap</defName>
+    <label>无尽墓穴情报</label>
+    <description>一张写满警告的古卷，标着一位半巫妖的坟墓。读懂它，无尽墓穴就会显露在世界地图上（30 天后消失）。</description>
+    <graphicData><texPath>LegendaryMonsters/Items/IntelTomb</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>1</stackLimit>
+    <thingCategories><li>Items</li></thingCategories>
+    <statBases><MarketValue>3000</MarketValue><Mass>0.2</Mass><MaxHitPoints>40</MaxHitPoints><Flammability>1</Flammability></statBases>
+    <tradeTags><li>LP_MonsterIntel</li></tradeTags>
+    <comps>
+      <li Class="CompProperties_Usable"><useJob>UseItem</useJob><useLabel>读{0_label}</useLabel><useDuration>300</useDuration></li>
+      <li Class="LichPhylactery.CompProperties_UseEffectMonsterIntel"><kind>demilich</kind></li>
+      <li Class="CompProperties_UseEffectDestroySelf" />
+    </comps>
+  </ThingDef>
+
+  <!-- ==================== 事件与地点 ==================== -->
+  <IncidentDef>
+    <defName>LP_BehirHunt</defName>
+    <label>龙的猎手</label>
+    <category>ThreatBig</category>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_BehirHunt</workerClass>
+    <baseChance>0.2</baseChance>
+    <minRefireDays>30</minRefireDays>
+    <earliestDay>45</earliestDay>
+    <pointsScaleable>false</pointsScaleable>
+  </IncidentDef>
+  <SitePartDef>
+    <defName>LP_BeholderLair</defName>
+    <label>眼魔巢穴</label>
+    <description>地下洞穴深处，一只眼魔守着它的收藏。</description>
+    <workerClass>LichPhylactery.SitePartWorker_MonsterLair</workerClass>
+    <siteTexture>LegendaryMonsters/SiteBeholder</siteTexture>
+    <expandingIconTexture>LegendaryMonsters/SiteBeholder</expandingIconTexture>
+    <applyFactionColorToSiteTexture>false</applyFactionColorToSiteTexture>
+    <showFactionInInspectString>true</showFactionInInspectString>
+    <requiresFaction>true</requiresFaction>
+    <approachOrderString>闯入{0}</approachOrderString>
+    <approachingReportString>正在闯入{0}。</approachingReportString>
+    <arrivedLetter>这里是眼魔巢穴。别站在它正前方：主眼正面不能施法、护盾腰带失效。打掉眼柄能让它少一种射线。</arrivedLetter>
+    <arrivedLetterDef>ThreatBig</arrivedLetterDef>
+    <wantsThreatPoints>true</wantsThreatPoints>
+  </SitePartDef>
+  <GenStepDef>
+    <defName>LP_BeholderLair</defName>
+    <linkWithSite>LP_BeholderLair</linkWithSite>
+    <order>450</order>
+    <genStep Class="LichPhylactery.GenStep_MonsterLair"><kind>beholder</kind></genStep>
+  </GenStepDef>
+  <SitePartDef>
+    <defName>LP_EndlessTomb</defName>
+    <label>无尽墓穴</label>
+    <description>一位半巫妖的坟墓。它只剩一颗头骨，却比任何活着的法师都可怕。</description>
+    <workerClass>LichPhylactery.SitePartWorker_MonsterLair</workerClass>
+    <siteTexture>LegendaryMonsters/SiteTomb</siteTexture>
+    <expandingIconTexture>LegendaryMonsters/SiteTomb</expandingIconTexture>
+    <applyFactionColorToSiteTexture>false</applyFactionColorToSiteTexture>
+    <showFactionInInspectString>true</showFactionInInspectString>
+    <requiresFaction>true</requiresFaction>
+    <approachOrderString>闯入{0}</approachOrderString>
+    <approachingReportString>正在闯入{0}。</approachingReportString>
+    <arrivedLetter>这里是无尽墓穴。半巫妖每 60 秒发出一次吞魂之嚎：带上医生，灵魂撕裂的人 30 秒内必须包扎。圣水和银器伤害 ×2。</arrivedLetter>
+    <arrivedLetterDef>ThreatBig</arrivedLetterDef>
+    <wantsThreatPoints>true</wantsThreatPoints>
+  </SitePartDef>
+  <GenStepDef>
+    <defName>LP_EndlessTomb</defName>
+    <linkWithSite>LP_EndlessTomb</linkWithSite>
+    <order>450</order>
+    <genStep Class="LichPhylactery.GenStep_MonsterLair"><kind>demilich</kind></genStep>
+  </GenStepDef>
+
+</Defs>

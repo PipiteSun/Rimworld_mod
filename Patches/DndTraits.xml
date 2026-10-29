@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.62.0 性格特性的派系 / 种族加权（LP_TraitWeightExtension：特性 + 程度 → 倍率，生成后缀里读）。 -->
+<Patch>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/FactionDef[defName="LP_FaerunHostile"]</xpath>
+    <value>
+      <li Class="LichPhylactery.LP_TraitWeightExtension">
+        <weights>
+          <li><trait>LP_Morality</trait><degree>-1</degree><factor>3</factor></li>
+          <li><trait>LP_Order</trait><degree>1</degree><factor>2</factor></li>
+        </weights>
+      </li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/FactionDef[defName="LP_FaerunColony"]</xpath>
+    <value>
+      <li Class="LichPhylactery.LP_TraitWeightExtension">
+        <weights><li><trait>LP_Morality</trait><degree>1</degree><factor>2</factor></li></weights>
+      </li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/FactionDef[defName="LP_EmberClan"]</xpath>
+    <value>
+      <li Class="LichPhylactery.LP_TraitWeightExtension">
+        <weights><li><trait>LP_Order</trait><degree>-1</degree><factor>2</factor></li></weights>
+      </li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/FactionDef[defName="LP_Zealots"]</xpath>
+    <value>
+      <li Class="LichPhylactery.LP_TraitWeightExtension">
+        <weights><li><trait>LP_Order</trait><degree>1</degree><factor>3</factor></li></weights>
+      </li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/XenotypeDef[defName="LP_Kobold"]</xpath>
+    <value>
+      <li Class="LichPhylactery.LP_TraitWeightExtension">
+        <weights><li><trait>LP_DragonServant</trait><degree>0</degree><factor>5</factor></li></weights>
+      </li>
+    </value>
+  </Operation>
+</Patch>

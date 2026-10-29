@@ -1,0 +1,12 @@
+<Defs>
+ <ThingDef ParentName="BuildingBase">
+  <defName>LP_RemoldingPool</defName><label>死灵重塑池</label>
+  <description>3×3重塑池。修改已有死灵造物的材料投入、技能兴趣和知识专长，保留本人、技能经验、关系及植入体。耗时1个游戏日，统御与维护继续生效；失去统御时暂停。增加投入补差额，减少不返还，另收50生肉。入池时吸收12格内可用材料，入池后取消不退款。池体被拆除或摧毁会释放造物并保留原配置。</description>
+  <thingClass>LichPhylactery.Building_RemoldingPool</thingClass><tickerType>Rare</tickerType>
+  <graphicData><texPath>Necromancy/Altar</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(3.3,3.3)</drawSize><color>(0.55,0.85,0.65)</color></graphicData>
+  <size>(3,3)</size><altitudeLayer>Building</altitudeLayer><passability>PassThroughOnly</passability><pathCost>50</pathCost><fillPercent>0.5</fillPercent><designationCategory>Production</designationCategory><hasInteractionCell>true</hasInteractionCell><interactionCellOffset>(0,0,-2)</interactionCellOffset>
+  <statBases><MaxHitPoints>500</MaxHitPoints><WorkToBuild>7000</WorkToBuild><Mass>100</Mass><Flammability>0</Flammability><Beauty>-3</Beauty></statBases>
+  <costList><Steel>150</Steel><Plasteel>50</Plasteel></costList>
+ </ThingDef>
+ <JobDef><defName>LP_EnterRemolding</defName><driverClass>LichPhylactery.JobDriver_EnterRemolding</driverClass><reportString>正在进入死灵重塑池。</reportString><casualInterruptible>false</casualInterruptible></JobDef>
+</Defs>

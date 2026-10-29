@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.53.0 战斗风格（物理职业第一批，见 ArtSource/MartialClasses-1.53.0-spec.md 第二节 5）。存在冒险者状态里；殖民者的槽位由 VPE 桥给（有物理路径 1 个，战士冒险者 10 级 2 个），
+     敌人冒险者等级 ≥ 3 时 50% 按 enemyTags 随机 1 个。规则效果在 Source/AdventurerStyles.cs 与 AdventurerFeats.cs 的挂钩里；
+     防御、决斗、巨武器、徒手的数值写在下面 4 个条件状态里，冒险者状态每 250 刻按装备给 / 移除。 -->
+<Defs>
+  <LichPhylactery.LP_FightingStyleDef>
+    <defName>LP_Style_Archery</defName>
+    <label>箭术</label>
+    <description>远程武器射击命中 ×1.08，射程 +2 格（只算武器射击，不算能力；投掷物不算）。</description>
+    <iconPath>LP/Adventurer/Styles/Archery</iconPath>
+    <order>1</order>
+    <enemyTags><li>ranged</li></enemyTags>
+  </LichPhylactery.LP_FightingStyleDef>
+  <LichPhylactery.LP_FightingStyleDef>
+    <defName>LP_Style_Defense</defName>
+    <label>防御</label>
+    <description>穿着外套层或中间层且那件衣服的利器护甲 ≥ 40% 时，利器、钝器护甲 +8%。</description>
+    <iconPath>LP/Adventurer/Styles/Defense</iconPath>
+    <order>2</order>
+    <enemyTags><li>melee</li><li>ranged</li></enemyTags>
+  </LichPhylactery.LP_FightingStyleDef>
+  <LichPhylactery.LP_FightingStyleDef>
+    <defName>LP_Style_Dueling</defName>
+    <label>决斗</label>
+    <description>主手是单手近战武器（质量 2.5 千克以下）且没有在用的副手时，近战伤害 ×1.2。</description>
+    <iconPath>LP/Adventurer/Styles/Dueling</iconPath>
+    <order>3</order>
+    <enemyTags><li>melee</li></enemyTags>
+  </LichPhylactery.LP_FightingStyleDef>
+  <LichPhylactery.LP_FightingStyleDef>
+    <defName>LP_Style_GreatWeapon</defName>
+    <label>巨武器</label>
+    <description>使用双手近战武器（质量 2.5 千克以上）时近战伤害 ×1.15、近战冷却 ×0.95。</description>
+    <iconPath>LP/Adventurer/Styles/GreatWeapon</iconPath>
+    <order>4</order>
+    <enemyTags><li>melee</li></enemyTags>
+  </LichPhylactery.LP_FightingStyleDef>
+  <LichPhylactery.LP_FightingStyleDef>
+    <defName>LP_Style_Protection</defName>
+    <label>守护</label>
+    <description>相邻（周围 8 格）的友军被攻击时，攻击者的命中 ×0.85（近战和远程都算）。</description>
+    <iconPath>LP/Adventurer/Styles/Protection</iconPath>
+    <order>5</order>
+    <enemyTags><li>melee</li></enemyTags>
+  </LichPhylactery.LP_FightingStyleDef>
+  <LichPhylactery.LP_FightingStyleDef>
+    <defName>LP_Style_Interception</defName>
+    <label>拦截</label>
+    <description>3 格内的友军受到外来伤害时，替他挡下 3 + 熟练加值点（最低减到 0）。每 10 秒一次。</description>
+    <iconPath>LP/Adventurer/Styles/Interception</iconPath>
+    <order>6</order>
+  </LichPhylactery.LP_FightingStyleDef>
+  <LichPhylactery.LP_FightingStyleDef>
+    <defName>LP_Style_TwoWeapon</defName>
+    <label>双武器</label>
+    <description>背包里的一把近战武器当作副手：每次普通近战命中有 30% 用副手再砍一刀（伤害按设置里的副手倍率）。右键地上的近战武器可以“拿作副手”。装了双持类模组时无效。</description>
+    <iconPath>LP/Adventurer/Styles/TwoWeapon</iconPath>
+    <order>7</order>
+    <enemyTags><li>melee</li></enemyTags>
+  </LichPhylactery.LP_FightingStyleDef>
+  <LichPhylactery.LP_FightingStyleDef>
+    <defName>LP_Style_BlindFighting</defName>
+    <label>盲斗</label>
+    <description>射击不受烟雾影响；3 格内能看见隐身的单位。</description>
+    <iconPath>LP/Adventurer/Styles/BlindFighting</iconPath>
+    <order>8</order>
+  </LichPhylactery.LP_FightingStyleDef>
+  <LichPhylactery.LP_FightingStyleDef>
+    <defName>LP_Style_Thrown</defName>
+    <label>投掷</label>
+    <description>投掷物（手雷、燃烧瓶、EMP 手雷、本模组的炼金投掷物）射程 ×1.3、命中 ×1.1。</description>
+    <iconPath>LP/Adventurer/Styles/Thrown</iconPath>
+    <order>9</order>
+    <enemyTags><li>ranged</li></enemyTags>
+  </LichPhylactery.LP_FightingStyleDef>
+  <LichPhylactery.LP_FightingStyleDef>
+    <defName>LP_Style_Unarmed</defName>
+    <label>徒手</label>
+    <description>没拿武器时拳脚伤害 ×1.6；拳脚命中有 20% 抓住目标 2 秒（几乎不能移动）。</description>
+    <iconPath>LP/Adventurer/Styles/Unarmed</iconPath>
+    <order>10</order>
+  </LichPhylactery.LP_FightingStyleDef>
+
+  <!-- 条件状态：冒险者状态每 250 刻按装备给 / 移除（装备变化最多晚 4 秒生效）。不显示剩余时间，不能被物品治好。 -->
+  <HediffDef Name="LP_StyleBuffBase" Abstract="True">
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <defaultLabelColor>(0.9, 0.8, 0.5)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_StyleBuffBase">
+    <defName>LP_StyleDefense</defName>
+    <label>防御风格</label>
+    <description>战斗风格·防御：穿着够硬的外衣，利器、钝器护甲 +8%。</description>
+    <stages><li><statOffsets><ArmorRating_Sharp>0.08</ArmorRating_Sharp><ArmorRating_Blunt>0.08</ArmorRating_Blunt></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_StyleBuffBase">
+    <defName>LP_StyleDueling</defName>
+    <label>决斗风格</label>
+    <description>战斗风格·决斗：单手武器、没有副手，近战伤害 ×1.2。</description>
+    <stages><li><statFactors><MeleeDamageFactor>1.2</MeleeDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_StyleBuffBase">
+    <defName>LP_StyleGreatWeapon</defName>
+    <label>巨武器风格</label>
+    <description>战斗风格·巨武器：双手武器，近战伤害 ×1.15、近战冷却 ×0.95。</description>
+    <stages><li><statFactors><MeleeDamageFactor>1.15</MeleeDamageFactor><MeleeCooldownFactor>0.95</MeleeCooldownFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_StyleBuffBase">
+    <defName>LP_StyleUnarmed</defName>
+    <label>徒手风格</label>
+    <description>战斗风格·徒手：没拿武器，拳脚伤害 ×1.6。</description>
+    <stages><li><statFactors><MeleeDamageFactor>1.6</MeleeDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_Grappled</defName>
+    <label>被擒抱</label>
+    <description>被徒手格斗者抓住，几乎不能移动。持续 2 秒（120 刻）。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <defaultLabelColor>(0.9, 0.6, 0.5)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>0</MoveSpeed></statFactors></li></stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>120</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+  </HediffDef>
+</Defs>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+  <!-- 1.28.0 黄昏之年：派系 / 兵种对应的神。兵种上的优先于派系上的（吉斯洋基雇佣兵在塞伊远征军里，但拜维拉基斯）。 -->
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/FactionDef[defName="LP_FaerunHostile"]</xpath>
+    <value><li Class="LichPhylactery.DeityExtension"><deity>LP_Deity_Bane</deity></li></value>
+  </Operation>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/FactionDef[defName="LP_EmberClan"]</xpath>
+    <value><li Class="LichPhylactery.DeityExtension"><deity>LP_Deity_Surtr</deity></li></value>
+  </Operation>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/FactionDef[defName="LP_IllithidColony"]</xpath>
+    <value><li Class="LichPhylactery.DeityExtension"><deity>LP_Deity_Ilsvi</deity></li></value>
+  </Operation>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/FactionDef[defName="LP_Zealots"]</xpath>
+    <value><li Class="LichPhylactery.DeityExtension"><deity>LP_Deity_Tyr</deity></li></value>
+  </Operation>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/FactionDef[defName="LP_FaerunColony"]</xpath>
+    <value><li Class="LichPhylactery.DeityExtension"><deity>LP_Deity_Lathander</deity><onlyWhenHostile>true</onlyWhenHostile></li></value>
+  </Operation>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/PawnKindDef[defName="LP_FH_GithMercenary"]</xpath>
+    <value><li Class="LichPhylactery.DeityExtension"><deity>LP_Deity_Vlaakith</deity></li></value>
+  </Operation>
+  <!-- 原版派系：设置“原版派系也有神力”关闭时代码里忽略（默认关闭） -->
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/FactionDef[defName="Pirate" or defName="PirateWaster"]</xpath>
+    <value><li Class="LichPhylactery.DeityExtension"><deity>LP_Deity_Talos</deity><vanilla>true</vanilla></li></value>
+  </Operation>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/FactionDef[defName="TribeRough" or defName="TribeSavage"]</xpath>
+    <value><li Class="LichPhylactery.DeityExtension"><deity>LP_Deity_Malar</deity><vanilla>true</vanilla></li></value>
+  </Operation>
+
+  <!-- 神迹残片：费伦拓荒同盟的四种商队和黑网收购 -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TraderKindDef[defName="LP_Caravan_DwarfSmith" or defName="LP_Caravan_ElfHerbalist" or defName="LP_Caravan_ChurchPriest" or defName="LP_Caravan_FaerunGoods" or defName="LP_Caravan_BlackNetwork"]/stockGenerators</xpath>
+    <value>
+      <li Class="StockGenerator_BuyTradeTag"><tag>LP_MiracleShard</tag></li>
+    </value>
+  </Operation>
+</Patch>

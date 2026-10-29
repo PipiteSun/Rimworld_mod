@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.44.0 双头巨人、独眼巨人的物品（只在启用 HAR 时加载）：双盔（巨人专属头盔）、独眼巨锤（巨人专用近战）、独眼透镜（只有独眼巨人能戴）。都要研究「巨人锻造」。 -->
+<Defs>
+
+  <!-- ==================== 双盔 ==================== -->
+  <ThingDef ParentName="ApparelBase">
+    <defName>LP_EttinTwinHelm</defName>
+    <label>双盔</label>
+    <description>两顶铁盔用一根横梁焊在一起，给双头巨人的两个头同时戴上。防护约为钢制简易头盔的1.1倍：锐器50%、钝器25%、热18%。普通帽子和头盔只盖得住双头巨人的主头，这顶能把两个头都护住。只有巨人能戴（别的巨人只用得上其中一顶）。在巨人铁砧用70钢锻造。</description>
+    <graphicData>
+      <texPath>HARGiants/Items/EttinTwinHelm</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <uiIconScale>1.2</uiIconScale>
+    <techLevel>Medieval</techLevel>
+    <statBases>
+      <MaxHitPoints>130</MaxHitPoints>
+      <Mass>3.5</Mass>
+      <WorkToMake>6000</WorkToMake>
+      <Flammability>0</Flammability>
+      <ArmorRating_Sharp>0.5</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.25</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.18</ArmorRating_Heat>
+      <Insulation_Cold>2</Insulation_Cold>
+      <EquipDelay>2</EquipDelay>
+    </statBases>
+    <costList>
+      <Steel>70</Steel>
+    </costList>
+    <thingCategories>
+      <li>ApparelArmor</li>
+    </thingCategories>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <recipeUsers Inherit="False">
+        <li>LP_GiantAnvil</li>
+      </recipeUsers>
+      <researchPrerequisite>LP_GiantForging</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>5</Crafting>
+      </skillRequirements>
+      <unfinishedThingDef>UnfinishedMetallicTechArmor</unfinishedThingDef>
+    </recipeMaker>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <bodyPartGroups>
+        <li>UpperHead</li>
+        <li>LP_EttinSecondHead</li>
+      </bodyPartGroups>
+      <wornGraphicPath>HARGiants/Worn/EttinTwinHelm</wornGraphicPath>
+      <layers>
+        <li>Overhead</li>
+      </layers>
+      <tags>
+        <li>LP_GiantGear</li>
+      </tags>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+    </apparel>
+    <modExtensions>
+      <li Class="LichPhylactery.GiantApparelExtension"><mood>2</mood></li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- ==================== 独眼巨锤 ==================== -->
+  <ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
+    <defName>LP_CyclopsMaul</defName>
+    <label>独眼巨锤</label>
+    <description>独眼巨人锻打铁砧用的大锤，也拿来砸开敌人的脑袋。钝击32，攻击间隔3秒；命中有15%的概率把目标砸晕1秒。只有巨人能用。在巨人铁砧用100钢或150木头制作（材料决定锤子的材质）。</description>
+    <graphicData>
+      <texPath>HARGiants/Items/CyclopsMaul</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.6,1.6)</drawSize>
+    </graphicData>
+    <uiIconScale>1.1</uiIconScale>
+    <techLevel>Medieval</techLevel>
+    <costStuffCount>100</costStuffCount>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+    </stuffCategories>
+    <weaponTags Inherit="False">
+      <li>LP_GiantWeapon</li>
+    </weaponTags>
+    <statBases>
+      <WorkToMake>18000</WorkToMake>
+      <Mass>10</Mass>
+    </statBases>
+    <equippedAngleOffset>-45</equippedAngleOffset>
+    <tools>
+      <li>
+        <label>锤头</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>32</power>
+        <cooldownTime>3.0</cooldownTime>
+      </li>
+    </tools>
+    <recipeMaker><recipeUsers Inherit="False"><li>LP_GiantAnvil</li></recipeUsers><researchPrerequisite>LP_GiantForging</researchPrerequisite></recipeMaker>
+    <modExtensions>
+      <li Class="LichPhylactery.GiantWeaponExtension" />
+    </modExtensions>
+  </ThingDef>
+  <RecipeDef Name="LP_MakeCyclopsMaulBase" Abstract="True">
+    <jobString>正在制作独眼巨锤。</jobString>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Smith</soundWorking>
+    <workAmount>18000</workAmount>
+    <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+    <recipeUsers>
+      <li>LP_GiantAnvil</li>
+    </recipeUsers>
+    <researchPrerequisite>LP_GiantForging</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>5</Crafting>
+    </skillRequirements>
+    <productHasIngredientStuff>true</productHasIngredientStuff>
+    <products><LP_CyclopsMaul>1</LP_CyclopsMaul></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_MakeCyclopsMaulBase">
+    <defName>LP_MakeCyclopsMaulSteel</defName>
+    <label>锻造独眼巨锤（钢）</label>
+    <description>用100钢锻造一把独眼巨锤。</description>
+    <ingredients>
+      <li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>100</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>Steel</li></thingDefs></fixedIngredientFilter>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_MakeCyclopsMaulBase">
+    <defName>LP_MakeCyclopsMaulWood</defName>
+    <label>制作独眼巨锤（木）</label>
+    <description>用150木头削一把独眼巨锤。</description>
+    <ingredients>
+      <li><filter><thingDefs><li>WoodLog</li></thingDefs></filter><count>150</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>WoodLog</li></thingDefs></fixedIngredientFilter>
+  </RecipeDef>
+
+  <!-- ==================== 独眼透镜 ==================== -->
+  <ThingDef ParentName="LP_AccessoryBase">
+    <defName>LP_CyclopsLens</defName>
+    <label>独眼透镜</label>
+    <description>金框嵌着一片磨得极薄的玻璃钢，夹在独眼巨人的眉骨上，帮那只眼睛估算远近：单眼视界的射击精度惩罚减半（-3.5点 → -1.75点）。只有独眼巨人能戴。在手工制作点或机械加工台用10玻璃钢和5金制作。</description>
+    <graphicData><texPath>HARGiants/Items/CyclopsLens</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>420</MarketValue><Mass>0.2</Mass></statBases>
+    <apparel><bodyPartGroups><li>UpperHead</li></bodyPartGroups></apparel>
+    <modExtensions>
+      <li Class="LichPhylactery.GeneWearExtension"><gene>LP_CyclopsCore</gene><label>独眼巨人</label></li>
+    </modExtensions>
+  </ThingDef>
+  <RecipeDef>
+    <defName>LP_MakeCyclopsLens</defName>
+    <label>制作独眼透镜</label>
+    <description>用10玻璃钢和5金制作一片独眼透镜。</description>
+    <jobString>正在制作独眼透镜。</jobString>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Smith</soundWorking>
+    <workAmount>4000</workAmount>
+    <recipeUsers>
+      <li>TableMachining</li>
+      <li>CraftingSpot</li>
+    </recipeUsers>
+    <researchPrerequisite>LP_GiantForging</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>6</Crafting>
+    </skillRequirements>
+    <ingredients>
+      <li><filter><thingDefs><li>Plasteel</li></thingDefs></filter><count>10</count></li>
+      <li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>5</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>Plasteel</li><li>Gold</li></thingDefs></fixedIngredientFilter>
+    <products><LP_CyclopsLens>1</LP_CyclopsLens></products>
+  </RecipeDef>
+
+</Defs>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.54.0 深渊仪式：深渊狂乱借用原版狂暴的思考树分支；六臂蛇人的“深渊之躯”（HAR 联动）挂外来者扩展；异域商人 10% 卖恶魔学典籍。 -->
+<Patch>
+  <Operation Class="PatchOperationInsert">
+    <xpath>Defs/ThinkTreeDef[defName="MentalStateCritical"]/thinkRoot/subNodes/li[@Class="ThinkNode_ConditionalMentalState"][state="Berserk"]</xpath>
+    <order>Append</order>
+    <value>
+      <li Class="ThinkNode_ConditionalMentalState">
+        <state>LP_AbyssFrenzy</state>
+        <subNodes>
+          <li Class="ThinkNode_Priority">
+            <subNodes>
+              <li Class="JobGiver_Berserk" />
+              <li Class="JobGiver_WanderAnywhere">
+                <maxDanger>Deadly</maxDanger>
+              </li>
+            </subNodes>
+          </li>
+        </subNodes>
+      </li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/GeneDef[defName="LP_AbyssalHide"]</xpath>
+    <match Class="PatchOperationAddModExtension">
+      <xpath>Defs/GeneDef[defName="LP_AbyssalHide"]</xpath>
+      <value>
+        <li Class="LichPhylactery.LP_OutsiderExtension">
+          <plane>Abyss</plane>
+          <banishOnDown>false</banishOnDown>
+          <taintImmune>true</taintImmune>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/TraderKindDef[defName="Orbital_Exotic"]/stockGenerators</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/TraderKindDef[defName="Orbital_Exotic"]/stockGenerators</xpath>
+      <value><li Class="StockGenerator_SingleDef"><thingDef>LP_Demonomicon</thingDef><countRange>-8~1</countRange></li></value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/TraderKindDef[defName="Caravan_Outlander_Exotic"]/stockGenerators</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/TraderKindDef[defName="Caravan_Outlander_Exotic"]/stockGenerators</xpath>
+      <value><li Class="StockGenerator_SingleDef"><thingDef>LP_Demonomicon</thingDef><countRange>-8~1</countRange></li></value>
+    </match>
+  </Operation>
+</Patch>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.27.0 DND 职业路径的能力（VPE 联动）。数值说明见 ArtSource/Classes-1.27.0-report.md。时间单位为刻（2500 刻 = 1 小时，60000 刻 = 1 天）。 -->
+<Defs>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_MagicMissile</defName>
+    <label>魔法飞弹</label>
+    <description>射出 3 发奥术飞弹，每发 4 × 奥术强度点奥术力伤害，28 格。需要智识 6 级。</description>
+    <iconPath>LP/Classes/Wizard/MagicMissile</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_MagicMissile</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <targetingParameters><canTargetPawns>true</canTargetPawns><canTargetHumans>true</canTargetHumans><canTargetAnimals>true</canTargetAnimals><canTargetMechs>true</canTargetMechs><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations></targetingParameters>
+    <range>28</range>
+    <requireLineOfSight>true</requireLineOfSight>
+    <power>4</power>
+    <powerStatFactors><LP_ArcanePower>1</LP_ArcanePower></powerStatFactors>
+    <castTime>30</castTime>
+    <cooldownTime>600</cooldownTime>
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Wizard</path><level>1</level><order>1</order>
+        <psyfocusCost>0.08</psyfocusCost><entropyGain>8</entropyGain>
+        <requiredSkillLevel>6</requiredSkillLevel>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_MageArmor</defName>
+    <label>法师护甲</label>
+    <description>一天 × 奥术强度内利器与钝器护甲 +25%。需要智识 6 级。</description>
+    <iconPath>LP/Classes/Wizard/MageArmor</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_SelfBuff</abilityClass>
+    <targetMode>Self</targetMode>
+    <durationTime>60000</durationTime>
+    <durationTimeStatFactors><LP_ArcanePower>1</LP_ArcanePower></durationTimeStatFactors>
+    <castTime>60</castTime>
+    <cooldownTime>60000</cooldownTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Wizard</path><level>1</level><order>2</order>
+        <psyfocusCost>0.1</psyfocusCost><entropyGain>6</entropyGain>
+        <requiredSkillLevel>6</requiredSkillLevel>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_Fireball</defName>
+    <label>火球术</label>
+    <description>向 24 格内的一点投出火球，半径 2.5 的火焰爆炸，伤害 15 × 奥术强度并点燃。需要智识 9 级。</description>
+    <iconPath>LP/Classes/Wizard/Fireball</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_Fireball</abilityClass>
+    <targetMode>Location</targetMode>
+    <targetingParameters><canTargetPawns>true</canTargetPawns><canTargetBuildings>true</canTargetBuildings><canTargetLocations>true</canTargetLocations><canTargetSelf>false</canTargetSelf></targetingParameters>
+    <range>24</range>
+    <requireLineOfSight>true</requireLineOfSight>
+    <radius>2.5</radius>
+    <power>15</power>
+    <powerStatFactors><LP_ArcanePower>1</LP_ArcanePower></powerStatFactors>
+    <castTime>60</castTime>
+    <cooldownTime>1800</cooldownTime>
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Wizard</path><level>2</level><order>1</order>
+        <psyfocusCost>0.15</psyfocusCost><entropyGain>15</entropyGain>
+        <requiredSkillLevel>9</requiredSkillLevel>
+        <prerequisites><li>LP_MagicMissile</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_Sleep</defName>
+    <label>睡眠术</label>
+    <description>让 20 格内的一个目标陷入魔法睡眠 8 秒 × 奥术强度（意识降到 10%）。对机械体、意识已低于 30% 的目标无效；心智抗性可以抵抗。需要智识 9 级。</description>
+    <iconPath>LP/Classes/Wizard/Sleep</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_Sleep</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <targetingParameters><canTargetPawns>true</canTargetPawns><canTargetHumans>true</canTargetHumans><canTargetAnimals>true</canTargetAnimals><canTargetMechs>true</canTargetMechs><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations></targetingParameters>
+    <range>20</range>
+    <requireLineOfSight>true</requireLineOfSight>
+    <durationTime>480</durationTime>
+    <durationTimeStatFactors><LP_ArcanePower>1</LP_ArcanePower></durationTimeStatFactors>
+    <castTime>60</castTime>
+    <cooldownTime>3600</cooldownTime>
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Wizard</path><level>2</level><order>2</order>
+        <psyfocusCost>0.12</psyfocusCost><entropyGain>12</entropyGain>
+        <requiredSkillLevel>9</requiredSkillLevel>
+        <prerequisites><li>LP_MageArmor</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_LightningBolt</defName>
+    <label>闪电束</label>
+    <description>从自己到目标拉出一道最长 20 格的闪电，线上每个目标受 20 × 奥术强度点闪电伤害并被击晕 1 秒；机械体改受电磁伤害。需要智识 12 级。</description>
+    <iconPath>LP/Classes/Wizard/LightningBolt</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_LightningBolt</abilityClass>
+    <targetMode>Location</targetMode>
+    <targetingParameters><canTargetPawns>true</canTargetPawns><canTargetBuildings>true</canTargetBuildings><canTargetLocations>true</canTargetLocations><canTargetSelf>false</canTargetSelf></targetingParameters>
+    <range>20</range>
+    <requireLineOfSight>true</requireLineOfSight>
+    <power>20</power>
+    <powerStatFactors><LP_ArcanePower>1</LP_ArcanePower></powerStatFactors>
+    <castTime>60</castTime>
+    <cooldownTime>1800</cooldownTime>
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Wizard</path><level>3</level><order>1</order>
+        <psyfocusCost>0.18</psyfocusCost><entropyGain>18</entropyGain>
+        <requiredSkillLevel>12</requiredSkillLevel>
+        <prerequisites><li>LP_Fireball</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_Haste</defName>
+    <label>急速术</label>
+    <description>让 20 格内的一名友军急速 1 小时 × 奥术强度：移动 ×1.5、工作速度 ×1.3、近战冷却 ×0.8；结束后疲乏一小时。需要智识 12 级。</description>
+    <iconPath>LP/Classes/Wizard/Haste</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_TargetBuff</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <targetingParameters><canTargetPawns>true</canTargetPawns><canTargetHumans>true</canTargetHumans><canTargetAnimals>true</canTargetAnimals><canTargetMechs>false</canTargetMechs><canTargetSelf>true</canTargetSelf><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations></targetingParameters>
+    <range>20</range>
+    <requireLineOfSight>false</requireLineOfSight>
+    <durationTime>2500</durationTime>
+    <durationTimeStatFactors><LP_ArcanePower>1</LP_ArcanePower></durationTimeStatFactors>
+    <castTime>60</castTime>
+    <cooldownTime>2500</cooldownTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Wizard</path><level>3</level><order>2</order>
+        <psyfocusCost>0.15</psyfocusCost><entropyGain>12</entropyGain>
+        <requiredSkillLevel>12</requiredSkillLevel>
+        <prerequisites><li>LP_Sleep</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_WallOfStone</defName>
+    <label>石墙术</label>
+    <description>在 20 格内的一点造出一道 5 格长的石墙（垂直于施法方向，耐久 200 × 奥术强度，一天后消散），已被占的格子跳过。需要智识 15 级。</description>
+    <iconPath>LP/Classes/Wizard/WallOfStone</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_WallOfStone</abilityClass>
+    <targetMode>Location</targetMode>
+    <targetingParameters><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>true</canTargetLocations><canTargetSelf>false</canTargetSelf></targetingParameters>
+    <range>20</range>
+    <requireLineOfSight>true</requireLineOfSight>
+    <power>200</power>
+    <powerStatFactors><LP_ArcanePower>1</LP_ArcanePower></powerStatFactors>
+    <castTime>90</castTime>
+    <cooldownTime>2500</cooldownTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Wizard</path><level>4</level><order>1</order>
+        <psyfocusCost>0.25</psyfocusCost><entropyGain>20</entropyGain>
+        <requiredSkillLevel>15</requiredSkillLevel>
+        <prerequisites><li>LP_LightningBolt</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_Teleport</defName>
+    <label>传送术</label>
+    <description>把自己传送到视线内的任意可站立格，距离 20 × 奥术强度（最多 40）。需要智识 15 级。</description>
+    <iconPath>LP/Classes/Wizard/Teleport</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_Teleport</abilityClass>
+    <targetMode>Location</targetMode>
+    <targetingParameters><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>true</canTargetLocations><canTargetSelf>false</canTargetSelf></targetingParameters>
+    <range>20</range>
+    <rangeStatFactors><LP_ArcanePower>1</LP_ArcanePower></rangeStatFactors>
+    <maxRange>40</maxRange>
+    <requireLineOfSight>true</requireLineOfSight>
+    <castTime>30</castTime>
+    <cooldownTime>7200</cooldownTime>
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Wizard</path><level>4</level><order>2</order>
+        <psyfocusCost>0.2</psyfocusCost><entropyGain>15</entropyGain>
+        <requiredSkillLevel>15</requiredSkillLevel>
+        <prerequisites><li>LP_Haste</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_Disintegrate</defName>
+    <label>解离术</label>
+    <description>一道绿色射线：30 格内的目标受 60 × 奥术强度点奥术力伤害（护甲只算一半），建筑与机械体受双倍；被杀死的人形目标不留尸体。需要智识 18 级，并学会石墙术或传送术。</description>
+    <iconPath>LP/Classes/Wizard/Disintegrate</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_Disintegrate</abilityClass>
+    <targetMode>Thing</targetMode>
+    <targetingParameters><canTargetPawns>true</canTargetPawns><canTargetHumans>true</canTargetHumans><canTargetAnimals>true</canTargetAnimals><canTargetMechs>true</canTargetMechs><canTargetBuildings>true</canTargetBuildings><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf><mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable></targetingParameters>
+    <range>30</range>
+    <requireLineOfSight>true</requireLineOfSight>
+    <power>60</power>
+    <powerStatFactors><LP_ArcanePower>1</LP_ArcanePower></powerStatFactors>
+    <castTime>90</castTime>
+    <cooldownTime>60000</cooldownTime>
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Wizard</path><level>5</level><order>1</order>
+        <psyfocusCost>0.4</psyfocusCost><entropyGain>30</entropyGain>
+        <requiredSkillLevel>18</requiredSkillLevel>
+        <prerequisites><li>LP_WallOfStone</li><li>LP_Teleport</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+</Defs>

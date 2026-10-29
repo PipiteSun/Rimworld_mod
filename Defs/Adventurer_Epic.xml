@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.49.0 冒险者等级第三阶段：史诗恩赐、传奇冒险者、宿敌冠军。规则在 Source/AdventurerEpic.cs。 -->
+<Defs>
+  <LichPhylactery.LP_EpicBoonDef>
+    <defName>LP_Boon_Fate</defName>
+    <label>命运之恩</label>
+    <description>命运还没打算让你死。受到致命伤时改为倒地：致命的部位恢复、伤口止血。每 60 天生效 1 次。</description>
+    <order>1</order>
+  </LichPhylactery.LP_EpicBoonDef>
+  <LichPhylactery.LP_EpicBoonDef>
+    <defName>LP_Boon_Immortal</defName>
+    <label>不朽之恩</label>
+    <description>时间从你身上绕了过去：成年后不再衰老，免疫疾病。</description>
+    <order>2</order>
+    <enemy>false</enemy>
+  </LichPhylactery.LP_EpicBoonDef>
+  <LichPhylactery.LP_EpicBoonDef>
+    <defName>LP_Boon_Might</defName>
+    <label>威能之恩</label>
+    <description>任选一项属性 +4，该项上限提高到 24（半神的上限加成另算）。</description>
+    <order>3</order>
+  </LichPhylactery.LP_EpicBoonDef>
+  <LichPhylactery.LP_EpicBoonDef>
+    <defName>LP_Boon_Speed</defName>
+    <label>迅捷之恩</label>
+    <description>移动速度 +0.6，近战攻击冷却 −15%。</description>
+    <order>4</order>
+    <statOffsets>
+      <MoveSpeed>0.6</MoveSpeed>
+    </statOffsets>
+    <statFactors>
+      <MeleeCooldownFactor>0.85</MeleeCooldownFactor>
+    </statFactors>
+  </LichPhylactery.LP_EpicBoonDef>
+  <LichPhylactery.LP_EpicBoonDef>
+    <defName>LP_Boon_Psyche</defName>
+    <label>心灵之恩</label>
+    <description>心灵敏感度 +25%，心灵熵上限 +20。</description>
+    <order>5</order>
+    <statOffsets>
+      <PsychicSensitivity>0.25</PsychicSensitivity>
+      <PsychicEntropyMax>20</PsychicEntropyMax>
+    </statOffsets>
+  </LichPhylactery.LP_EpicBoonDef>
+  <LichPhylactery.LP_EpicBoonDef>
+    <defName>LP_Boon_Combat</defName>
+    <label>战斗之恩</label>
+    <description>每击倒或击杀一个敌人，自身的每处伤口各治疗该部位生命的 5%。</description>
+    <order>6</order>
+  </LichPhylactery.LP_EpicBoonDef>
+
+  <HediffDef>
+    <defName>LP_BoonFateDowned</defName>
+    <label>死里逃生</label>
+    <description>命运之恩把这个人从死亡边缘拉了回来，但身体还需要几个小时才能重新站起来。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(1, 0.8, 0.3)</defaultLabelColor>
+    <stages>
+      <li><capMods><li><capacity>Consciousness</capacity><setMax>0.1</setMax></li></capMods></li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>15000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>LP_LegendCompanion</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_LegendCompanion</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages><li><label>与传奇同行</label><description>殖民地里有一位传奇冒险者。吟游诗人会唱到我们的。</description><baseMoodEffect>3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_LegendRenown</defName>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <workerClass>LichPhylactery.ThoughtWorker_LegendRenown</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages><li><label>传奇冒险者</label><baseOpinionOffset>10</baseOpinionOffset></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_LegendFallen</defName>
+    <durationDays>10</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages><li><label>传奇陨落</label><description>殖民地的传奇冒险者死了。那些故事再也不会有新的一章。</description><baseMoodEffect>-6</baseMoodEffect></li></stages>
+  </ThoughtDef>
+
+  <IncidentDef>
+    <defName>LP_NemesisChampion</defName>
+    <label>宿敌冠军</label>
+    <category>ThreatBig</category>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_NemesisChampion</workerClass>
+    <baseChance>0</baseChance>
+    <pointsScaleable>false</pointsScaleable>
+  </IncidentDef>
+</Defs>

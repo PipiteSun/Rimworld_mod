@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.36.0 DND 职业路径：德鲁伊（VPE 联动，只在启用 Vanilla Psycasts Expanded 时由 LoadFolders 加载）。主 种植 / 副 驯兽，任一 ≥ 6 可解锁；左支驯兽、右支种植，终极 掌控天气看种植 18。效果的“量”乘心灵敏感度。 -->
+<Defs>
+  <VanillaPsycastsExpanded.PsycasterPathDef Class="LichPhylactery.VPEBridge.LP_ClassPathDef">
+    <defName>LP_Path_Druid</defName>
+    <label>德鲁伊</label>
+    <description>DND 德鲁伊守护自然：安抚野兽、召唤野兽、荒野变形、兽王号令（驯兽），纠缠术、树肤术、植物滋长、召雷术（种植），终极 掌控天气。种植或驯兽任一 6 级即可入门；每个能力看自己那门技能（6/9/12/15/18），只练一门也能走完半棵树。效果乘心灵敏感度（最低 0.2，不封顶）。巫妖不能学。</description>
+    <tab>DND职业</tab>
+    <order>5</order>
+    <requiredSkill>Plants</requiredSkill>
+    <alternateSkill>Animals</alternateSkill>
+    <requiredSkillLevel>6</requiredSkillLevel>
+    <classPsychic>true</classPsychic>
+    <lockedReason>需要种植或驯兽 6 级，或冒险者感知 13（巫妖不能学）</lockedReason>
+    <tooltip>德鲁伊：种植支掌管植物与天气，驯兽支掌管野兽与变形。</tooltip>
+    <background>LP/Classes/Druid/Background</background>
+    <altBackground>LP/Classes/Druid/Background</altBackground>
+    <backgroundColor>(0.22,0.38,0.18)</backgroundColor>
+    <ignoreLockRestrictionsForNeurotrainers>false</ignoreLockRestrictionsForNeurotrainers>
+  </VanillaPsycastsExpanded.PsycasterPathDef>
+
+  <StatDef ParentName="LP_ClassPowerBase">
+    <defName>LP_PrimalPower</defName>
+    <label>野性强度</label>
+    <description>DND 德鲁伊驯兽一支的强度倍率：0.5 + 驯兽等级/20。安抚野兽的成功率、灵狼数量、熊形的近战伤害与持续时间、兽王号令的范围与加成都乘这个倍率。</description>
+    <parts><li Class="LichPhylactery.VPEBridge.StatPart_ClassSkill"><skill>Animals</skill></li></parts>
+    <displayPriorityInCategory>4214</displayPriorityInCategory>
+  </StatDef>
+
+  <StatDef ParentName="LP_ClassPowerBase">
+    <defName>LP_VerdantPower</defName>
+    <label>生长强度</label>
+    <description>DND 德鲁伊种植一支的强度倍率：0.5 + 种植等级/20。纠缠术与树肤术的持续时间、植物滋长的范围与生长量、召雷术的伤害都乘这个倍率。</description>
+    <parts><li Class="LichPhylactery.VPEBridge.StatPart_ClassSkill"><skill>Plants</skill></li></parts>
+    <displayPriorityInCategory>4215</displayPriorityInCategory>
+  </StatDef>
+
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_Entangled</defName>
+    <label>藤蔓缠绕</label>
+    <description>被德鲁伊的藤蔓缠住了。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.5,0.8,0.4)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>0.1</MoveSpeed></statFactors></li><li><minSeverity>1.5</minSeverity><label>大型</label><statFactors><MoveSpeed>0.4</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_Barkskin</defName>
+    <label>树肤</label>
+    <description>皮肤硬得像树皮：利器护甲 +30%、钝器护甲 +15%，移动 ×0.95。</description>
+    <defaultLabelColor>(0.6,0.75,0.4)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>0.95</MoveSpeed></statFactors><statOffsets><ArmorRating_Sharp>0.3</ArmorRating_Sharp><ArmorRating_Blunt>0.15</ArmorRating_Blunt></statOffsets></li></stages>
+  </HediffDef>
+
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_Conjured</defName>
+    <label>灵体召唤</label>
+    <description>德鲁伊召来的灵体野兽：时间一到就化为光点消失，死后不留尸体。</description>
+    <defaultLabelColor>(0.6,0.9,0.6)</defaultLabelColor>
+    <comps Inherit="False"><li Class="LichPhylactery.VPEBridge.HediffCompProperties_Conjured"><ticks>60000</ticks></li></comps>
+  </HediffDef>
+
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WildShape</defName>
+    <hediffClass>LichPhylactery.VPEBridge.Hediff_WildShape</hediffClass>
+    <label>熊形</label>
+    <description>化身为熊：用熊爪和熊咬战斗，近战伤害 × 野性强度，受到伤害 ×0.6，移动 ×1.15；不能做精细工作。</description>
+    <defaultLabelColor>(0.75,0.55,0.35)</defaultLabelColor>
+    <stages><li><disabledWorkTags>Crafting, Intellectual, Caring</disabledWorkTags><statFactors><IncomingDamageFactor>0.6</IncomingDamageFactor><MoveSpeed>1.15</MoveSpeed></statFactors></li></stages>
+    <comps><li Class="HediffCompProperties_VerbGiver"><tools><li><label>熊爪</label><capacities><li>Scratch</li></capacities><power>18</power><cooldownTime>1.6</cooldownTime></li><li><label>熊咬</label><capacities><li>Bite</li></capacities><power>20</power><cooldownTime>2</cooldownTime></li></tools></li></comps>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.ScaledHediffExtension">
+      <scaledFactors>
+        <li><stat>VEF_MeleeAttackDamageFactor</stat><baseValue>0</baseValue><perSeverity>1</perSeverity></li>
+      </scaledFactors>
+    </li></modExtensions>
+  </HediffDef>
+
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_BeastFrenzy</defName>
+    <hediffClass>LichPhylactery.VPEBridge.Hediff_ClassScaled</hediffClass>
+    <label>兽王号令</label>
+    <description>受德鲁伊号令的野兽：近战伤害提高，移动 ×1.2，受到伤害 ×0.8。</description>
+    <defaultLabelColor>(0.75,0.55,0.35)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>1.2</MoveSpeed><IncomingDamageFactor>0.8</IncomingDamageFactor></statFactors></li></stages>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.ScaledHediffExtension">
+      <scaledFactors>
+        <li><stat>VEF_MeleeAttackDamageFactor</stat><baseValue>1</baseValue><perSeverity>0.3</perSeverity></li>
+      </scaledFactors>
+    </li></modExtensions>
+  </HediffDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_AnimalFriendship</defName>
+    <label>安抚野兽</label>
+    <description>安抚 15 格内的一只动物：发狂的立刻恢复正常；野生的按 35% × 野性强度 × (1 − 野性/2) 的概率（最高 90%）直接被驯服，失败时它会逃开、不会反击。 需要驯兽 6 级。</description>
+    <iconPath>LP/Classes/Druid/AnimalFriendship</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_AnimalFriendship</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <targetingParameters><canTargetPawns>true</canTargetPawns><canTargetHumans>false</canTargetHumans><canTargetAnimals>true</canTargetAnimals><canTargetMechs>false</canTargetMechs><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations></targetingParameters>
+    <range>15</range>
+    <requireLineOfSight>true</requireLineOfSight>
+    <power>1</power>
+    <powerStatFactors><LP_PrimalPower>1</LP_PrimalPower></powerStatFactors>
+    <castTime>30</castTime>
+    <cooldownTime>60000</cooldownTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Druid</path><level>1</level><order>1</order>
+        <psyfocusCost>0.1</psyfocusCost><entropyGain>10</entropyGain>
+        <requiredSkillLevel>6</requiredSkillLevel>
+        <skill>Animals</skill>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_Entangle</defName>
+    <label>纠缠术</label>
+    <description>20 格内一点半径 2.5 长出藤蔓，敌人被缠住 4 秒 × 生长强度：移动 ×0.1（体型 2 以上 ×0.4）。 需要种植 6 级。</description>
+    <iconPath>LP/Classes/Druid/Entangle</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_Entangle</abilityClass>
+    <targetMode>Location</targetMode>
+    <targetingParameters><canTargetPawns>true</canTargetPawns><canTargetBuildings>true</canTargetBuildings><canTargetLocations>true</canTargetLocations><canTargetSelf>false</canTargetSelf></targetingParameters>
+    <range>20</range>
+    <requireLineOfSight>true</requireLineOfSight>
+    <radius>2.5</radius>
+    <durationTime>240</durationTime>
+    <durationTimeStatFactors><LP_VerdantPower>1</LP_VerdantPower></durationTimeStatFactors>
+    <castTime>30</castTime>
+    <cooldownTime>1200</cooldownTime>
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Druid</path><level>1</level><order>2</order>
+        <psyfocusCost>0.08</psyfocusCost><entropyGain>8</entropyGain>
+        <requiredSkillLevel>6</requiredSkillLevel>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_ConjureAnimals</defName>
+    <label>召唤野兽</label>
+    <description>在身边召出 2 只灵体森林狼（野性强度 ≥ 125% 时 3 只），听从施法者，1 天后或死亡时化为光点消失，不留尸体。 需要驯兽 9 级。</description>
+    <iconPath>LP/Classes/Druid/ConjureAnimals</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ConjureAnimals</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>30</castTime>
+    <cooldownTime>60000</cooldownTime>
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Druid</path><level>2</level><order>1</order>
+        <psyfocusCost>0.15</psyfocusCost><entropyGain>15</entropyGain>
+        <requiredSkillLevel>9</requiredSkillLevel>
+        <skill>Animals</skill>
+        <prerequisites><li>LP_AnimalFriendship</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_Barkskin</defName>
+    <label>树肤术</label>
+    <description>让一名友军的皮肤变得像树皮 1 小时 × 生长强度：利器护甲 +30%、钝器护甲 +15%，移动 ×0.95。 需要种植 9 级。</description>
+    <iconPath>LP/Classes/Druid/Barkskin</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_TargetBuff</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <targetingParameters><canTargetPawns>true</canTargetPawns><canTargetHumans>true</canTargetHumans><canTargetAnimals>true</canTargetAnimals><canTargetMechs>false</canTargetMechs><canTargetSelf>true</canTargetSelf><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations></targetingParameters>
+    <range>20</range>
+    <requireLineOfSight>false</requireLineOfSight>
+    <durationTime>2500</durationTime>
+    <durationTimeStatFactors><LP_VerdantPower>1</LP_VerdantPower></durationTimeStatFactors>
+    <castTime>30</castTime>
+    <cooldownTime>600</cooldownTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Druid</path><level>2</level><order>2</order>
+        <psyfocusCost>0.1</psyfocusCost><entropyGain>8</entropyGain>
+        <requiredSkillLevel>9</requiredSkillLevel>
+        <prerequisites><li>LP_Entangle</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_WildShape</defName>
+    <label>荒野变形</label>
+    <description>化为熊形 1 小时 × 野性强度：远程武器收进背包（变回时装回），用熊爪和熊咬战斗，近战伤害 × 野性强度，受到伤害 ×0.6，移动 ×1.15，不能做手工、研究和照料类工作。可以随时“变回原形”。 需要驯兽 12 级。</description>
+    <iconPath>LP/Classes/Druid/WildShape</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_WildShape</abilityClass>
+    <targetMode>Self</targetMode>
+    <durationTime>2500</durationTime>
+    <durationTimeStatFactors><LP_PrimalPower>1</LP_PrimalPower></durationTimeStatFactors>
+    <castTime>60</castTime>
+    <cooldownTime>60000</cooldownTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Druid</path><level>3</level><order>1</order>
+        <psyfocusCost>0.2</psyfocusCost><entropyGain>15</entropyGain>
+        <requiredSkillLevel>12</requiredSkillLevel>
+        <skill>Animals</skill>
+        <prerequisites><li>LP_ConjureAnimals</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_PlantGrowth</defName>
+    <label>植物滋长</label>
+    <description>25 格内一点半径 6 × 生长强度内的所有植物（作物和野生）生长度 +25% × 生长强度（封顶 100%），并去掉枯萎病。 需要种植 12 级。</description>
+    <iconPath>LP/Classes/Druid/PlantGrowth</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_PlantGrowth</abilityClass>
+    <targetMode>Location</targetMode>
+    <targetingParameters><canTargetPawns>true</canTargetPawns><canTargetBuildings>true</canTargetBuildings><canTargetLocations>true</canTargetLocations><canTargetSelf>false</canTargetSelf></targetingParameters>
+    <range>25</range>
+    <requireLineOfSight>false</requireLineOfSight>
+    <radius>6</radius>
+    <radiusStatFactors><LP_VerdantPower>1</LP_VerdantPower></radiusStatFactors>
+    <power>0.25</power>
+    <powerStatFactors><LP_VerdantPower>1</LP_VerdantPower></powerStatFactors>
+    <castTime>60</castTime>
+    <cooldownTime>60000</cooldownTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Druid</path><level>3</level><order>2</order>
+        <psyfocusCost>0.2</psyfocusCost><entropyGain>12</entropyGain>
+        <requiredSkillLevel>12</requiredSkillLevel>
+        <prerequisites><li>LP_Barkskin</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_BeastCommand</defName>
+    <label>兽王号令</label>
+    <description>半径 10 × 野性强度内本派系的动物（含召唤的灵狼）1 小时：近战伤害 ×(1 + 0.3 × 野性强度)、移动 ×1.2、受到伤害 ×0.8。 需要驯兽 15 级。</description>
+    <iconPath>LP/Classes/Druid/BeastCommand</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_BeastCommand</abilityClass>
+    <targetMode>Self</targetMode>
+    <radius>10</radius>
+    <radiusStatFactors><LP_PrimalPower>1</LP_PrimalPower></radiusStatFactors>
+    <durationTime>2500</durationTime>
+    <castTime>30</castTime>
+    <cooldownTime>60000</cooldownTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Druid</path><level>4</level><order>1</order>
+        <psyfocusCost>0.2</psyfocusCost><entropyGain>15</entropyGain>
+        <requiredSkillLevel>15</requiredSkillLevel>
+        <skill>Animals</skill>
+        <prerequisites><li>LP_WildShape</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_CallLightning</defName>
+    <label>召雷术</label>
+    <description>30 格内一点落雷：半径 1.9 内的敌人受 25 × 生长强度 电击伤害（机械体改受电磁）。下雨或雷暴时伤害 ×1.5、冷却减半。 需要种植 15 级。</description>
+    <iconPath>LP/Classes/Druid/CallLightning</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_CallLightning</abilityClass>
+    <targetMode>Location</targetMode>
+    <targetingParameters><canTargetPawns>true</canTargetPawns><canTargetBuildings>true</canTargetBuildings><canTargetLocations>true</canTargetLocations><canTargetSelf>false</canTargetSelf></targetingParameters>
+    <range>30</range>
+    <requireLineOfSight>true</requireLineOfSight>
+    <power>25</power>
+    <powerStatFactors><LP_VerdantPower>1</LP_VerdantPower></powerStatFactors>
+    <castTime>45</castTime>
+    <cooldownTime>3600</cooldownTime>
+    <showUndrafted>false</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Druid</path><level>4</level><order>2</order>
+        <psyfocusCost>0.2</psyfocusCost><entropyGain>18</entropyGain>
+        <requiredSkillLevel>15</requiredSkillLevel>
+        <prerequisites><li>LP_PlantGrowth</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_ControlWeather</defName>
+    <label>掌控天气</label>
+    <description>选择天气（晴、雨、雾、雷暴，气温 ≤ 0 时还有雪）维持 1 天，并结束本地图一个负面天气事件（毒尘、寒潮、热浪、火山冬天等；任务和永久事件除外）。 需要种植 18 级。</description>
+    <iconPath>LP/Classes/Druid/ControlWeather</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ControlWeather</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>120</castTime>
+    <cooldownTime>300000</cooldownTime>
+    <showUndrafted>true</showUndrafted>
+    <modExtensions>
+      <li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt">
+        <path>LP_Path_Druid</path><level>5</level><order>1</order>
+        <psyfocusCost>0.4</psyfocusCost><entropyGain>30</entropyGain>
+        <requiredSkillLevel>18</requiredSkillLevel>
+        <prerequisites><li>LP_BeastCommand</li><li>LP_CallLightning</li></prerequisites>
+      </li>
+    </modExtensions>
+  </VEF.Abilities.AbilityDef>
+</Defs>

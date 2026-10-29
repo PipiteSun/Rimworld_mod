@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+  <!-- 1.40.0 成神：每位神的神职（LP_PortfolioExtension）。神职不写进 LP_DeityDef 的 C# 类，只用这个扩展挂上去。 -->
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/LichPhylactery.LP_DeityDef[defName="LP_Deity_Lathander"]</xpath>
+    <value><li Class="LichPhylactery.LP_PortfolioExtension"><portfolio>LP_Portfolio_Dawn</portfolio></li></value>
+  </Operation>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/LichPhylactery.LP_DeityDef[defName="LP_Deity_Tyr"]</xpath>
+    <value><li Class="LichPhylactery.LP_PortfolioExtension"><portfolio>LP_Portfolio_Justice</portfolio></li></value>
+  </Operation>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/LichPhylactery.LP_DeityDef[defName="LP_Deity_Bane"]</xpath>
+    <value><li Class="LichPhylactery.LP_PortfolioExtension"><portfolio>LP_Portfolio_Tyranny</portfolio></li></value>
+  </Operation>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/LichPhylactery.LP_DeityDef[defName="LP_Deity_Vlaakith"]</xpath>
+    <value><li Class="LichPhylactery.LP_PortfolioExtension"><portfolio>LP_Portfolio_Tyranny</portfolio></li></value>
+  </Operation>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/LichPhylactery.LP_DeityDef[defName="LP_Deity_Talos"]</xpath>
+    <value><li Class="LichPhylactery.LP_PortfolioExtension"><portfolio>LP_Portfolio_Storm</portfolio></li></value>
+  </Operation>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/LichPhylactery.LP_DeityDef[defName="LP_Deity_Surtr"]</xpath>
+    <value><li Class="LichPhylactery.LP_PortfolioExtension"><portfolio>LP_Portfolio_Fire</portfolio></li></value>
+  </Operation>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/LichPhylactery.LP_DeityDef[defName="LP_Deity_Malar"]</xpath>
+    <value><li Class="LichPhylactery.LP_PortfolioExtension"><portfolio>LP_Portfolio_Wild</portfolio></li></value>
+  </Operation>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/LichPhylactery.LP_DeityDef[defName="LP_Deity_Ilsvi"]</xpath>
+    <value><li Class="LichPhylactery.LP_PortfolioExtension"><portfolio>LP_Portfolio_Mind</portfolio></li></value>
+  </Operation>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/LichPhylactery.LP_DeityDef[defName="LP_Deity_Kelemvor"]</xpath>
+    <value><li Class="LichPhylactery.LP_PortfolioExtension"><portfolio>LP_Portfolio_Death</portfolio></li></value>
+  </Operation>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/LichPhylactery.LP_DeityDef[defName="LP_Deity_Mystra"]</xpath>
+    <value><li Class="LichPhylactery.LP_PortfolioExtension"><portfolio>LP_Portfolio_Magic</portfolio></li></value>
+  </Operation>
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>Defs/LichPhylactery.LP_DeityDef[defName="LP_Deity_Shar"]</xpath>
+    <value><li Class="LichPhylactery.LP_PortfolioExtension"><portfolio>LP_Portfolio_Dark</portfolio></li></value>
+  </Operation>
+</Patch>

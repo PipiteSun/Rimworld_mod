@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.39.0 阿斯莫与提夫林：可遗传的异种型（照 1.24.0 写法：人类头 + 原版附件 + 肤色）。规则见 Source/FaithRaces.cs。
+     代谢：阿斯莫的原版基因合计 -4，提夫林 -6，靠“天界之责”(+3)、“魔鬼血统”(+4)、“魔鬼契约”(+2) 拉回到需求的 -1 和 0。 -->
+<Defs>
+  <XenotypeDef>
+    <defName>LP_Aasimar</defName>
+    <label>阿斯莫</label>
+    <description>血管里流着天界之血的凡人。阿斯莫生得俊美，头顶浮着一圈只有他们自己才看得见、别人也看得见的淡淡光环；天生擅长医疗与交际，伤不了他们多少的是神圣之光和死灵之力。每个阿斯莫都得到过一次天界启示：光辉之魂（一跃）、光辉消耗（灼人的光环）或亡者裹布（驱散活人）。他们憎恶巫妖与死灵造物。血脉会遗传。</description>
+    <descriptionShort>可遗传。天界抗性、治疗之手、三选一的天界启示、光环；擅长医疗与社交，憎恶不死者。</descriptionShort>
+    <iconPath>Faith/Xenotypes/Aasimar</iconPath>
+    <inheritable>true</inheritable>
+    <combatPowerFactor>1</combatPowerFactor>
+    <factionlessGenerationWeight>0.5</factionlessGenerationWeight>
+    <genes>
+      <li>LP_Gene_CelestialLineage</li>
+      <li>LP_Gene_CelestialResistance</li>
+      <li>LP_Gene_HealingHands</li>
+      <li>LP_Gene_RadiantSoul</li>
+      <li>LP_Gene_Halo</li>
+      <li>LP_SkinAasimarGold</li>
+      <li>LP_HairAasimarGold</li>
+      <li>Beauty_Pretty</li>
+      <li>AptitudeStrong_Social</li>
+      <li>AptitudeStrong_Medicine</li>
+      <li>DarkVision</li>
+    </genes>
+  </XenotypeDef>
+  <XenotypeDef>
+    <defName>LP_Tiefling</defName>
+    <label>提夫林</label>
+    <description>祖上和魔鬼立过契约的凡人。提夫林长着犄角和细长的尾巴，皮肤是红色或紫色；不怕热，火也烧不太动他们；挨了打会用地狱之火反击，必要时还能再跟魔鬼讨价还价一次。别人总要过很久才肯把他们当自己人。血脉会遗传。</description>
+    <descriptionShort>可遗传。地狱抗性、地狱叱喝、魔鬼契约；犄角、尾巴、红紫肤色，善于交际但被人提防。</descriptionShort>
+    <iconPath>Faith/Xenotypes/Tiefling</iconPath>
+    <inheritable>true</inheritable>
+    <combatPowerFactor>1</combatPowerFactor>
+    <factionlessGenerationWeight>0.5</factionlessGenerationWeight>
+    <genes>
+      <li>LP_Gene_FiendishBlood</li>
+      <li>LP_Gene_InfernalResistance</li>
+      <li>LP_Gene_HellishRebuke</li>
+      <li>LP_Gene_InfernalPact</li>
+      <li>Headbone_MiniHorns</li>
+      <li>Tail_Smooth</li>
+      <li>DarkVision</li>
+      <li>MaxTemp_LargeIncrease</li>
+      <li>AptitudeStrong_Social</li>
+      <li>Beauty_Pretty</li>
+      <li>Skin_DeepRed</li>
+    </genes>
+  </XenotypeDef>
+
+  <GeneDef Name="LP_PlanetouchedGeneBase" Abstract="True">
+    <displayCategory>Miscellaneous</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>1</biostatCpx>
+    <biostatMet>0</biostatMet>
+  </GeneDef>
+  <AbilityDef Name="LP_PlanetouchedAbilityBase" Abstract="True">
+    <aiCanUse>false</aiCanUse>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <sendMessageOnCooldownComplete>false</sendMessageOnCooldownComplete>
+  </AbilityDef>
+
+  <!-- ==================== 阿斯莫 ==================== -->
+  <GeneDef ParentName="LP_PlanetouchedGeneBase">
+    <defName>LP_Gene_CelestialLineage</defName>
+    <label>天界之责</label>
+    <description>天界之血让人憎恶逃避死亡的东西：对巫妖和死灵造物的伤害+25%；看到巫妖心情-5、看到死灵造物心情-4，巫妖看到阿斯莫也会心情-5。带这条基因的人算作阿斯莫。</description>
+    <iconPath>Faith/Genes/CelestialLineage</iconPath>
+    <biostatCpx>2</biostatCpx>
+    <biostatMet>3</biostatMet>
+    <customEffectDescriptions>
+      <li>算作阿斯莫（种族判定、神选仪式、天界之子）。</li>
+      <li>对巫妖、死灵造物的伤害：×125%。</li>
+      <li>神圣伤害像火一样让巨魔的再生停1小时。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+  <GeneDef ParentName="LP_PlanetouchedGeneBase">
+    <defName>LP_Gene_CelestialResistance</defName>
+    <label>天界抗性</label>
+    <description>神圣之光认得这具身体，死灵之力也很难侵蚀它：神圣、神罚与死灵伤害减半。</description>
+    <iconPath>Faith/Genes/CelestialResistance</iconPath>
+    <damageFactors>
+      <LP_Radiant>0.5</LP_Radiant>
+      <LP_DivineSmite>0.5</LP_DivineSmite>
+      <LP_Necrotic>0.5</LP_Necrotic>
+    </damageFactors>
+  </GeneDef>
+  <GeneDef ParentName="LP_PlanetouchedGeneBase">
+    <defName>LP_Gene_HealingHands</defName>
+    <label>治疗之手</label>
+    <description>把手按在伤者身上就能合拢伤口：每处伤口愈合（医疗等级/2 + 社交等级/2）。不能长回断肢。冷却1天。</description>
+    <iconPath>Faith/Genes/HealingHands</iconPath>
+    <abilities><li>LP_HealingHands</li></abilities>
+    <descriptionHyperlinks><AbilityDef>LP_HealingHands</AbilityDef></descriptionHyperlinks>
+  </GeneDef>
+  <GeneDef ParentName="LP_PlanetouchedGeneBase">
+    <defName>LP_Gene_RadiantSoul</defName>
+    <label>天界启示：光辉之魂</label>
+    <description>一对光翼一闪而过：跳到远处（原版长跳，冷却1天）。天界启示三选一。</description>
+    <iconPath>Faith/Genes/RadiantSoul</iconPath>
+    <exclusionTags><li>LP_AasimarRevelation</li></exclusionTags>
+    <abilities><li>LP_RadiantSoulLeap</li></abilities>
+    <descriptionHyperlinks><AbilityDef>LP_RadiantSoulLeap</AbilityDef></descriptionHyperlinks>
+  </GeneDef>
+  <GeneDef ParentName="LP_PlanetouchedGeneBase">
+    <defName>LP_Gene_RadiantConsumption</defName>
+    <label>天界启示：光辉消耗</label>
+    <description>可以开关的灼光：开着时2格内的敌人每秒受2点神圣伤害，自己每10秒受1点烧伤。天界启示三选一。</description>
+    <iconPath>Faith/Genes/RadiantConsumption</iconPath>
+    <geneClass>LichPhylactery.Gene_RadiantConsumption</geneClass>
+    <exclusionTags><li>LP_AasimarRevelation</li></exclusionTags>
+  </GeneDef>
+  <GeneDef ParentName="LP_PlanetouchedGeneBase">
+    <defName>LP_Gene_NecroticShroud</defName>
+    <label>天界启示：亡者裹布</label>
+    <description>披上一层死亡的阴影：4格内活着的敌人惊恐逃跑8秒。冷却1天。天界启示三选一。</description>
+    <iconPath>Faith/Genes/NecroticShroud</iconPath>
+    <exclusionTags><li>LP_AasimarRevelation</li></exclusionTags>
+    <abilities><li>LP_NecroticShroud</li></abilities>
+    <descriptionHyperlinks><AbilityDef>LP_NecroticShroud</AbilityDef></descriptionHyperlinks>
+  </GeneDef>
+  <GeneDef ParentName="LP_PlanetouchedGeneBase">
+    <defName>LP_Gene_Halo</defName>
+    <label>天界光环</label>
+    <description>头顶浮着一圈淡淡的光环，颜色随发色。纯外观。</description>
+    <iconPath>Faith/Genes/Halo</iconPath>
+    <displayCategory>Cosmetic</displayCategory>
+    <biostatCpx>0</biostatCpx>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Faith/Halo/Halo</texPath>
+        <colorType>Hair</colorType>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh</rotDrawMode>
+        <drawData>
+          <defaultData>
+            <layer>80</layer>
+          </defaultData>
+        </drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinAasimarGold</defName>
+    <label>浅金肤色</label>
+    <labelShortAdj>浅金</labelShortAdj>
+    <description>阿斯莫的皮肤带着淡淡的金色光泽。</description>
+    <skinColorOverride>(236, 214, 168)</skinColorOverride>
+    <randomBrightnessFactor>0.05</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinAasimarSilver</defName>
+    <label>银白肤色</label>
+    <labelShortAdj>银白</labelShortAdj>
+    <description>阿斯莫的皮肤白得发亮，像月光下的银。</description>
+    <skinColorOverride>(222, 226, 232)</skinColorOverride>
+    <randomBrightnessFactor>0.05</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+  </GeneDef>
+  <GeneDef ParentName="GeneHairColorBase">
+    <defName>LP_HairAasimarGold</defName>
+    <label>金色头发</label>
+    <hairColorOverride>(232, 196, 96)</hairColorOverride>
+    <selectionWeight>0</selectionWeight>
+    <randomBrightnessFactor>0.05</randomBrightnessFactor>
+  </GeneDef>
+  <GeneDef ParentName="GeneHairColorBase">
+    <defName>LP_HairAasimarSilver</defName>
+    <label>银色头发</label>
+    <hairColorOverride>(214, 220, 228)</hairColorOverride>
+    <selectionWeight>0</selectionWeight>
+    <randomBrightnessFactor>0.05</randomBrightnessFactor>
+  </GeneDef>
+
+  <AbilityDef ParentName="LP_PlanetouchedAbilityBase">
+    <defName>LP_HealingHands</defName>
+    <label>治疗之手</label>
+    <description>把手按在一名友军身上：每处伤口愈合（医疗等级/2 + 社交等级/2）。不能长回断肢。冷却1天。</description>
+    <iconPath>Faith/Abilities/HealingHands</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <verbProperties>
+      <verbClass>Verb_CastAbilityTouch</verbClass>
+      <warmupTime>2</warmupTime>
+      <range>-1</range>
+      <drawAimPie>false</drawAimPie>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetSelf>true</canTargetSelf><canTargetLocations>false</canTargetLocations><canTargetBuildings>false</canTargetBuildings><canTargetAnimals>true</canTargetAnimals></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_Planetouched"><effect>HealingHands</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_PlanetouchedAbilityBase">
+    <defName>LP_RadiantSoulLeap</defName>
+    <label>光辉之魂</label>
+    <description>光翼一展，跳到远处。冷却1天。</description>
+    <iconPath>Faith/Abilities/RadiantSoul</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbilityJump</verbClass>
+      <label>跳跃</label>
+      <violent>false</violent>
+      <forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+      <warmupTime>0.5</warmupTime>
+      <range>19.9</range>
+      <requireLineOfSight>true</requireLineOfSight>
+      <soundCast>Longjump_Jump</soundCast>
+      <soundLanding>Longjump_Land</soundLanding>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetPawns>false</canTargetPawns>
+        <canTargetBuildings>false</canTargetBuildings>
+      </targetParams>
+    </verbProperties>
+    <jobDef>CastJump</jobDef>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_PlanetouchedAbilityBase">
+    <defName>LP_NecroticShroud</defName>
+    <label>亡者裹布</label>
+    <description>披上死亡的阴影：4格内活着的敌人惊恐逃跑8秒。冷却1天。</description>
+    <iconPath>Faith/Abilities/NecroticShroud</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <targetRequired>false</targetRequired>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>0.5</warmupTime>
+      <range>0</range>
+      <targetParams><canTargetSelf>true</canTargetSelf></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_Planetouched"><effect>NecroticShroud</effect></li></comps>
+  </AbilityDef>
+
+  <!-- ==================== 提夫林 ==================== -->
+  <GeneDef ParentName="LP_PlanetouchedGeneBase">
+    <defName>LP_Gene_FiendishBlood</defName>
+    <label>魔鬼血统</label>
+    <description>祖上和魔鬼立过约，这件事写在脸上。不是提夫林的殖民者看到还没在殖民地住满1年的提夫林时心情-2（异类）；阿斯莫对提夫林好感-3，两人都住满1年后变成+3（宿命之友）。带这条基因的人算作提夫林。</description>
+    <iconPath>Faith/Genes/FiendishBlood</iconPath>
+    <biostatCpx>2</biostatCpx>
+    <biostatMet>4</biostatMet>
+    <customEffectDescriptions>
+      <li>算作提夫林（种族判定、神选仪式、天界之子）。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+  <GeneDef ParentName="LP_PlanetouchedGeneBase">
+    <defName>LP_Gene_InfernalResistance</defName>
+    <label>地狱抗性</label>
+    <description>九狱之火在血里烧过：火焰与烧伤伤害减半。</description>
+    <iconPath>Faith/Genes/InfernalResistance</iconPath>
+    <damageFactors>
+      <Flame>0.5</Flame>
+      <Burn>0.5</Burn>
+    </damageFactors>
+  </GeneDef>
+  <GeneDef ParentName="LP_PlanetouchedGeneBase">
+    <defName>LP_Gene_HellishRebuke</defName>
+    <label>地狱叱喝</label>
+    <description>被近战打中时25%的几率用地狱之火回敬对方10点烧伤（每10秒最多一次）。</description>
+    <iconPath>Faith/Genes/HellishRebuke</iconPath>
+    <geneClass>LichPhylactery.Gene_HellishRebuke</geneClass>
+    <displayCategory>Violence</displayCategory>
+  </GeneDef>
+  <GeneDef ParentName="LP_PlanetouchedGeneBase">
+    <defName>LP_Gene_InfernalPact</defName>
+    <label>魔鬼契约</label>
+    <description>还能再跟魔鬼讨价还价一次：心情-10（3天），换来24小时射击与近战伤害+20%、精神力获取+20%；之后12小时“契约透支”（意识-10%）。冷却5天。</description>
+    <iconPath>Faith/Genes/InfernalPact</iconPath>
+    <biostatMet>2</biostatMet>
+    <abilities><li>LP_InfernalPact</li></abilities>
+    <descriptionHyperlinks><AbilityDef>LP_InfernalPact</AbilityDef></descriptionHyperlinks>
+  </GeneDef>
+  <AbilityDef ParentName="LP_PlanetouchedAbilityBase">
+    <defName>LP_InfernalPact</defName>
+    <label>魔鬼契约</label>
+    <description>跟魔鬼讨价还价：心情-10（3天），换来24小时射击与近战伤害+20%、精神力获取+20%；之后12小时意识-10%。冷却5天。</description>
+    <iconPath>Faith/Abilities/InfernalPact</iconPath>
+    <cooldownTicksRange>300000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <targetRequired>false</targetRequired>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>1</warmupTime>
+      <range>0</range>
+      <targetParams><canTargetSelf>true</canTargetSelf></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_Planetouched"><effect>InfernalPact</effect></li></comps>
+  </AbilityDef>
+  <HediffDef>
+    <defName>LP_InfernalPactActive</defName>
+    <label>魔鬼契约</label>
+    <description>和魔鬼的交易生效中：射击与近战伤害+20%，精神力获取+20%。到期后会透支。</description>
+    <hediffClass>LichPhylactery.Hediff_InfernalPact</hediffClass>
+    <isBad>false</isBad>
+    <defaultLabelColor>(0.85, 0.3, 0.25)</defaultLabelColor>
+    <stages><li><statFactors><MeleeDamageFactor>1.2</MeleeDamageFactor></statFactors></li></stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>60000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_PactOverdraw</defName>
+    <label>契约透支</label>
+    <description>魔鬼来收账了。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <stages><li><capMods><li><capacity>Consciousness</capacity><offset>-0.1</offset></li></capMods></li></stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>30000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+  </HediffDef>
+
+  <!-- ==================== 心情 ==================== -->
+  <ThoughtDef>
+    <defName>LP_InfernalBargain</defName>
+    <durationDays>3</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>与魔鬼讨价还价</label><description>我又跟那个声音做了一笔交易。我不想知道它要拿走什么。</description><baseMoodEffect>-10</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_AasimarSeesLich</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_AasimarSeesUndead</workerClass>
+    <stages><li><label>附近有巫妖</label><description>那东西逃过了死亡。我身上的每一滴天界之血都在尖叫。</description><baseMoodEffect>-5</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_AasimarSeesConstruct</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_AasimarSeesUndead</workerClass>
+    <stages><li><label>附近有死灵造物</label><description>被拼起来的死者在走动。不该是这样的。</description><baseMoodEffect>-4</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_LichSeesAasimar</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_LichSeesAasimar</workerClass>
+    <stages><li><label>附近有阿斯莫</label><description>那圈光环刺得我眼睛疼。</description><baseMoodEffect>-5</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_TieflingStranger</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_TieflingStranger</workerClass>
+    <stages><li><label>异类</label><description>那个长着犄角的家伙还没在这里住多久，我总觉得他身上有硫磺味。</description><baseMoodEffect>-2</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_AasimarTieflingOpinion</defName>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <workerClass>LichPhylactery.ThoughtWorker_AasimarTiefling</workerClass>
+    <stages>
+      <li><label>魔鬼之血</label><baseOpinionOffset>-3</baseOpinionOffset></li>
+      <li><label>宿命之友</label><baseOpinionOffset>3</baseOpinionOffset></li>
+    </stages>
+  </ThoughtDef>
+</Defs>

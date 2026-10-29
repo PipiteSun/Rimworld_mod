@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.58.1 专长第二批（ArtSource/TraitsFeats-1.58.1-spec.md）：13 个通用专长（元素使 4 支、坚毅心智 3 支各算一个 def，同组只能选一个），9 个种族专长（只对对应种族显示），起源专长池。
+     规则效果在 Source/AdventurerFeats2.cs；statOffsets/statFactors 合进冒险者状态。category：General / Racial；origin=true 的进起源池。 -->
+<Defs>
+  <!-- ==================== 通用专长 ==================== -->
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_MagicInitiate</defName>
+    <label>魔法学徒</label>
+    <description>学过一点真正的魔法。装了 VPE 时：按智识 / 社交 / 种植与驯兽中最高的一项选法师、牧师或德鲁伊路径，学会该路径的第一个能力（不占路径点、不需要解锁路径）；没装 VPE 时：获得“魔能飞弹”（必中，8 + 等级点魔能伤害，射程 20，约每天 3 次）。附带智力、感知或魅力 +1。</description>
+    <bonusAbilities><li>Int</li><li>Wis</li><li>Cha</li></bonusAbilities>
+    <iconPath>LP/Feats/MagicInitiate</iconPath>
+    <order>13</order><origin>true</origin>
+    <workerClass>LichPhylactery.FeatWorker_MagicInitiate</workerClass>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_TavernBrawler</defName>
+    <label>酒馆斗殴者</label>
+    <description>酒馆里打出来的拳头。徒手伤害 ×2.5，社交斗殴伤害 ×2；徒手命中 40% 把敌人推开 1 格并眩晕 1 秒。附带力量或体质 +1。</description>
+    <bonusAbilities><li>Str</li><li>Con</li></bonusAbilities>
+    <iconPath>LP/Feats/TavernBrawler</iconPath>
+    <order>14</order><origin>true</origin>
+    <enemyTags><li>melee</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_Crafter</defName>
+    <label>工匠</label>
+    <description>懂行的手艺人。一般劳动速度（制作类工作）+25%；当谈判人向商人买工具、武器、衣甲时价格 -20%。附带敏捷或智力 +1。</description>
+    <bonusAbilities><li>Dex</li><li>Int</li></bonusAbilities>
+    <iconPath>LP/Feats/Crafter</iconPath>
+    <order>15</order><origin>true</origin>
+    <statFactors><GeneralLaborSpeed>1.25</GeneralLaborSpeed></statFactors>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_Skilled</defName>
+    <label>技能专家</label>
+    <description>样样都学过一点。选专长时，等级最高、兴趣还没到“大”的 3 个技能兴趣各提升一级（无 → 小 → 大），并且这 3 个技能各 +3 级；全局学习 ×1.1。附带任意一项属性 +1（加在当前最高的一项）。</description>
+    <bonusAbilities><li>Any</li></bonusAbilities>
+    <statFactors><GlobalLearningFactor>1.1</GlobalLearningFactor></statFactors>
+    <iconPath>LP/Feats/Skilled</iconPath>
+    <order>16</order><origin>true</origin>
+    <workerClass>LichPhylactery.FeatWorker_Skilled</workerClass>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_Musician</defName>
+    <label>音乐家</label>
+    <description>琴声能鼓动人心。演奏乐器时，10 格内的殖民者心情 +6“激昂乐章”（半天）；每天第一次演奏时，让最多 3 位听众获得“激励”：6 小时内手术成功率、谈判能力、射击精度 ×1.3。需要魅力 13 或艺术 6。附带魅力 +1。</description>
+    <bonusAbilities><li>Cha</li></bonusAbilities>
+    <iconPath>LP/Feats/Musician</iconPath>
+    <order>17</order><origin>true</origin><usesPerDay>1</usesPerDay>
+    <workerClass>LichPhylactery.FeatWorker_Musician</workerClass>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef Name="LP_ElementalAdeptBase" Abstract="True">
+    <order>18</order>
+    <exclusiveGroup>ElementalAdept</exclusiveGroup>
+    <workerClass>LichPhylactery.FeatWorker_ElementalAdept</workerClass>
+    <bonusAbilities><li>Int</li><li>Wis</li><li>Cha</li></bonusAbilities>
+    <enemyTags><li>caster</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef ParentName="LP_ElementalAdeptBase">
+    <defName>LP_Feat_ElementalAdept_Fire</defName>
+    <label>元素使·火</label>
+    <description>火焰听从这个施法者。火焰类伤害无视目标对火焰的抗性（连火巨人也烧得伤），并且 +25%。需要 DND 职业路径或佩戴圣徽。只能选一种元素。附带智力、感知或魅力 +1。</description>
+    <iconPath>LP/Feats/ElementalAdept_Fire</iconPath><element>1</element>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef ParentName="LP_ElementalAdeptBase">
+    <defName>LP_Feat_ElementalAdept_Cold</defName>
+    <label>元素使·冰</label>
+    <description>寒冰听从这个施法者。寒冷类伤害无视目标对寒冷的抗性，并且 +25%。需要 DND 职业路径或佩戴圣徽。只能选一种元素。附带智力、感知或魅力 +1。</description>
+    <iconPath>LP/Feats/ElementalAdept_Cold</iconPath><element>2</element>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef ParentName="LP_ElementalAdeptBase">
+    <defName>LP_Feat_ElementalAdept_Lightning</defName>
+    <label>元素使·雷</label>
+    <description>雷电听从这个施法者。雷电类伤害无视目标对雷电的抗性，并且 +25%。需要 DND 职业路径或佩戴圣徽。只能选一种元素。附带智力、感知或魅力 +1。</description>
+    <iconPath>LP/Feats/ElementalAdept_Lightning</iconPath><element>3</element>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef ParentName="LP_ElementalAdeptBase">
+    <defName>LP_Feat_ElementalAdept_Acid</defName>
+    <label>元素使·酸</label>
+    <description>强酸听从这个施法者。强酸类伤害无视目标对强酸的抗性，并且 +25%。需要 DND 职业路径或佩戴圣徽。只能选一种元素。附带智力、感知或魅力 +1。</description>
+    <iconPath>LP/Feats/ElementalAdept_Acid</iconPath><element>4</element>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_Observant</defName>
+    <label>观察者</label>
+    <description>什么都逃不过这双眼睛。研究速度 +25%；看得见隐身的单位（暗影帷幕、隐身药水、心灵隐形、卓尔黑暗术里的人）。需要智力或感知 13。附带智力或感知 +1。</description>
+    <bonusAbilities><li>Int</li><li>Wis</li></bonusAbilities>
+    <iconPath>LP/Feats/Observant</iconPath>
+    <order>19</order>
+    <workerClass>LichPhylactery.FeatWorker_Observant</workerClass>
+    <statFactors><ResearchSpeed>1.25</ResearchSpeed></statFactors>
+    <enemyTags><li>any</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_Actor</defName>
+    <label>演员</label>
+    <description>天生的骗子和演员。交易价格 +10%，谈判能力（招募等）×1.3；能力“伪装”（每天 2 次）：2 分钟内敌人几乎不会优先瞄准这个人。需要魅力 13。附带魅力 +1。</description>
+    <bonusAbilities><li>Cha</li></bonusAbilities>
+    <iconPath>LP/Feats/Actor</iconPath>
+    <order>20</order><ability>Cha</ability><abilityMin>13</abilityMin>
+    <statOffsets><TradePriceImprovement>0.1</TradePriceImprovement></statOffsets>
+    <statFactors><NegotiationAbility>1.3</NegotiationAbility></statFactors>
+    <grantAbility>LP_FeatDisguise</grantAbility>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_Telepathic</defName>
+    <label>心灵感应</label>
+    <description>能把念头送进别人脑子里。社交影响 ×1.15；能力“安抚心灵”（每天 3 次）：让 30 格内一个正在精神崩溃的殖民者立刻平静下来。附带智力、感知或魅力 +1。</description>
+    <bonusAbilities><li>Int</li><li>Wis</li><li>Cha</li></bonusAbilities>
+    <statFactors><SocialImpact>1.15</SocialImpact></statFactors>
+    <iconPath>LP/Feats/Telepathic</iconPath>
+    <order>21</order>
+    <grantAbility>LP_FeatCalmMind</grantAbility>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef Name="LP_ResilientBase" Abstract="True">
+    <order>22</order>
+    <iconPath>LP/Feats/Resilient</iconPath>
+    <exclusiveGroup>Resilient</exclusiveGroup>
+    <enemyTags><li>any</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef ParentName="LP_ResilientBase">
+    <defName>LP_Feat_Resilient_Mind</defName>
+    <label>坚毅心智·意志</label>
+    <description>心志比常人坚定。精神崩溃阈值 -15%，心智抗性 +20%。坚毅心智三选一。附带感知 +1。</description>
+    <bonusAbilities><li>Wis</li></bonusAbilities>
+    <statOffsets><MentalBreakThreshold>-0.15</MentalBreakThreshold><LP_MindResist>0.2</LP_MindResist></statOffsets>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef ParentName="LP_ResilientBase">
+    <defName>LP_Feat_Resilient_Toxic</defName>
+    <label>坚毅心智·抗毒</label>
+    <description>身体对毒物格外顽强。毒素抗性 +70%。坚毅心智三选一。附带体质 +1。</description>
+    <bonusAbilities><li>Con</li></bonusAbilities>
+    <statOffsets><ToxicResistance>0.7</ToxicResistance></statOffsets>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef ParentName="LP_ResilientBase">
+    <defName>LP_Feat_Resilient_Immune</defName>
+    <label>坚毅心智·免疫</label>
+    <description>很少生病，病了也好得快。免疫获得速度 ×1.6，休息恢复 ×1.2。坚毅心智三选一。附带体质 +1。</description>
+    <bonusAbilities><li>Con</li></bonusAbilities>
+    <statFactors><ImmunityGainSpeed>1.6</ImmunityGainSpeed><RestRateMultiplier>1.2</RestRateMultiplier></statFactors>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_Chef</defName>
+    <label>厨师</label>
+    <description>厨艺出众。烹饪速度 ×1.25；做饭时 35% 多做出一份“点心”（吃了心情 +5，6 小时伤口愈合 +25%）。需要烹饪 6。附带体质或感知 +1。</description>
+    <bonusAbilities><li>Con</li><li>Wis</li></bonusAbilities>
+    <statFactors><CookSpeed>1.25</CookSpeed></statFactors>
+    <iconPath>LP/Feats/Chef</iconPath>
+    <order>23</order>
+    <skillReqs><li><skill>Cooking</skill><level>6</level></li></skillReqs>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_Poisoner</defName>
+    <label>毒师</label>
+    <description>懂得用草药调毒。能力“武器涂毒”：消耗 1 份草药（身上或地图上的），之后 20 次近战命中附加蛛后之毒。需要手工或医疗 6。附带敏捷或智力 +1。</description>
+    <bonusAbilities><li>Dex</li><li>Int</li></bonusAbilities>
+    <iconPath>LP/Feats/Poisoner</iconPath>
+    <order>24</order>
+    <workerClass>LichPhylactery.FeatWorker_Poisoner</workerClass>
+    <grantAbility>LP_FeatCoatBlade</grantAbility>
+    <enemyTags><li>melee</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_RitualCaster</defName>
+    <label>仪式施法者</label>
+    <description>会用仪式补回耗尽的法术。能力“仪式施放”（每天 2 次）：站着引导 1 小时，冷却剩得最久的那个能力立刻冷却完毕，并且之后 1 小时内下一次施法不进冷却、不加心灵熵。需要智力或感知 13，且有 DND 职业路径或圣徽。附带智力或感知 +1。</description>
+    <bonusAbilities><li>Int</li><li>Wis</li></bonusAbilities>
+    <iconPath>LP/Feats/RitualCaster</iconPath>
+    <order>25</order>
+    <workerClass>LichPhylactery.FeatWorker_RitualCaster</workerClass>
+    <grantAbility>LP_FeatRitualCast</grantAbility>
+  </LichPhylactery.LP_FeatDef>
+
+  <!-- ==================== 种族专长 ==================== -->
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_DwarvenFortitude</defName>
+    <label>矮人坚毅</label>
+    <description>矮人的身子骨。毒素抗性 +50%；每天第一次喝酒后立刻治好 40 点伤口。只有山地矮人、丘陵矮人能选。附带体质 +1。</description>
+    <bonusAbilities><li>Con</li></bonusAbilities>
+    <iconPath>LP/Feats/DwarvenFortitude</iconPath>
+    <order>40</order><category>Racial</category><usesPerDay>1</usesPerDay>
+    <requiredXenotypesAny><li>LP_Dwarf</li><li>LP_HillDwarf</li></requiredXenotypesAny>
+    <statOffsets><ToxicResistance>0.5</ToxicResistance></statOffsets>
+    <enemyTags><li>any</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_DragonFear</defName>
+    <label>龙威</label>
+    <description>龙的怒火让人胆寒。龙息（力能龙裔不带武器的伤害）命中的敌人 40% 恐慌逃跑 8 秒（首领、传奇单位无效）。只有力能龙裔能选。附带力量或魅力 +1。</description>
+    <bonusAbilities><li>Str</li><li>Cha</li></bonusAbilities>
+    <iconPath>LP/Feats/DragonFear</iconPath>
+    <order>41</order><category>Racial</category>
+    <requiredXenotypesAny><li>LP_ForceDragon</li></requiredXenotypesAny>
+    <enemyTags><li>any</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_InfernalWrath</defName>
+    <label>炼狱之怒</label>
+    <description>挨打只会让血里的火烧得更旺。被敌人攻击后，下一次攻击额外造成 15 点火焰伤害（5 秒冷却）。只有提夫林、阿斯莫能选。附带魅力 +1。</description>
+    <bonusAbilities><li>Cha</li></bonusAbilities>
+    <iconPath>LP/Feats/InfernalWrath</iconPath>
+    <order>42</order><category>Racial</category>
+    <requiredXenotypesAny><li>LP_Tiefling</li><li>LP_Aasimar</li></requiredXenotypesAny>
+    <enemyTags><li>any</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_ElvenAccuracy</defName>
+    <label>精灵精准</label>
+    <description>精灵的眼睛从不失手。射击精度 ×1.15；卓尔在黑暗中、高等精灵与木精灵在白天再 ×1.1。只有高等精灵、木精灵、卓尔精灵能选。附带敏捷 +1。</description>
+    <bonusAbilities><li>Dex</li></bonusAbilities>
+    <iconPath>LP/Feats/ElvenAccuracy</iconPath>
+    <order>43</order><category>Racial</category>
+    <requiredXenotypesAny><li>LP_Elf</li><li>LP_WoodElf</li><li>LP_Drow</li></requiredXenotypesAny>
+    <enemyTags><li>ranged</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_MagmaGrip</defName>
+    <label>熔岩之握</label>
+    <description>拳头里流着熔岩。徒手和锤、棒类近战命中 50% 点燃目标；在熔火锻炉做东西时品质再提升一档的概率 +20%。只有火巨人能选。附带力量 +1。</description>
+    <bonusAbilities><li>Str</li></bonusAbilities>
+    <iconPath>LP/Feats/MagmaGrip</iconPath>
+    <order>44</order><category>Racial</category>
+    <requiredXenotypesAny><li>LP_FireGiant</li></requiredXenotypesAny>
+    <enemyTags><li>melee</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_BloodRegen</defName>
+    <label>嗜血再生</label>
+    <description>鲜血让伤口愈合得更快。近战击杀敌人后立刻治好 60 点伤口（和狂暴可以叠加）。只有巨魔能选。附带体质 +1。</description>
+    <bonusAbilities><li>Con</li></bonusAbilities>
+    <iconPath>LP/Feats/BloodRegen</iconPath>
+    <order>45</order><category>Racial</category>
+    <requiredXenotypesAny><li>LP_Troll</li></requiredXenotypesAny>
+    <enemyTags><li>melee</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_PhylacteryOath</defName>
+    <label>命匣之誓</label>
+    <description>灵魂被誓言钉在命匣上。在命匣所在的地图上，即死效果（死亡律令之类上千点的一击、被砍掉头）改为倒地。只有巫妖能选。附带智力 +1。</description>
+    <bonusAbilities><li>Int</li></bonusAbilities>
+    <iconPath>LP/Feats/PhylacteryOath</iconPath>
+    <order>46</order><category>Racial</category><requireLich>true</requireLich>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_BountifulLuck</defName>
+    <label>好运连连</label>
+    <description>好运会传染。半身人的幸运冷却 3 天 → 1 天；触发时 3 格内一个友军也得到一次“借来的好运”（下一次会致倒地或死亡的伤只剩 10%）。只有半身人能选。附带敏捷 +1。</description>
+    <bonusAbilities><li>Dex</li></bonusAbilities>
+    <iconPath>LP/Feats/BountifulLuck</iconPath>
+    <order>47</order><category>Racial</category>
+    <requiredXenotypesAny><li>LP_HalflingLightfoot</li><li>LP_HalflingStout</li></requiredXenotypesAny>
+    <enemyTags><li>any</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_GnomishCunning</defName>
+    <label>侏儒机巧</label>
+    <description>侏儒的脑子转得飞快。心智抗性 +35%；做发条玩具和机械类物品（零部件、机械制品）时一般劳动速度 ×1.4。只有岩侏儒、森林侏儒、地侏能选。附带智力 +1。</description>
+    <bonusAbilities><li>Int</li></bonusAbilities>
+    <iconPath>LP/Feats/GnomishCunning</iconPath>
+    <order>48</order><category>Racial</category>
+    <requiredXenotypesAny><li>LP_RockGnome</li><li>LP_ForestGnome</li><li>LP_DeepGnome</li></requiredXenotypesAny>
+    <statOffsets><LP_MindResist>0.35</LP_MindResist></statOffsets>
+    <enemyTags><li>any</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+
+  <!-- ==================== 能力 ==================== -->
+  <AbilityDef Name="LP_Feat2AbilityBase" Abstract="True">
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <sendMessageOnCooldownComplete>false</sendMessageOnCooldownComplete>
+    <showPsycastEffects>false</showPsycastEffects>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_Feat2AbilityBase">
+    <defName>LP_FeatMagicMissile</defName>
+    <label>魔能飞弹</label>
+    <description>魔法学徒（没装 VPE）：一道必中的魔能飞弹，8 + 冒险者等级点魔能伤害，射程 20。冷却 8 小时（约每天 3 次）。</description>
+    <iconPath>LP/Feats/MagicInitiate</iconPath>
+    <cooldownTicksRange>20000</cooldownTicksRange>
+    <hostile>true</hostile><aiCanUse>true</aiCanUse><ai_IsOffensive>true</ai_IsOffensive>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass><range>20</range><warmupTime>0.5</warmupTime><requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_FeatPower"><effect>missile</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_Feat2AbilityBase">
+    <defName>LP_FeatDisguise</defName>
+    <label>伪装</label>
+    <description>演员：换个模样混进人群。2 分钟内敌人几乎不会优先瞄准这个人。每天 2 次。</description>
+    <iconPath>LP/Feats/Actor</iconPath>
+    <cooldownTicksRange>30000</cooldownTicksRange>
+    <hostile>false</hostile><aiCanUse>false</aiCanUse><targetRequired>false</targetRequired>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>0</range><warmupTime>0.5</warmupTime><targetParams><canTargetSelf>true</canTargetSelf></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_FeatPower"><effect>disguise</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_Feat2AbilityBase">
+    <defName>LP_FeatCalmMind</defName>
+    <label>安抚心灵</label>
+    <description>心灵感应：让 30 格内一个正在精神崩溃的殖民者立刻平静下来。每天 3 次。</description>
+    <iconPath>LP/Feats/Telepathic</iconPath>
+    <cooldownTicksRange>20000</cooldownTicksRange>
+    <hostile>false</hostile><aiCanUse>false</aiCanUse>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass><range>30</range><warmupTime>0.5</warmupTime><requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_FeatPower"><effect>calm</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_Feat2AbilityBase">
+    <defName>LP_FeatCoatBlade</defName>
+    <label>武器涂毒</label>
+    <description>毒师：用 1 份草药（身上或地图上的）调毒涂在武器上，之后 20 次近战命中附加蛛后之毒。冷却 1 小时。</description>
+    <iconPath>LP/Feats/Poisoner</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <hostile>false</hostile><aiCanUse>false</aiCanUse><targetRequired>false</targetRequired>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>0</range><warmupTime>2</warmupTime><targetParams><canTargetSelf>true</canTargetSelf></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_FeatPower"><effect>coat</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_Feat2AbilityBase">
+    <defName>LP_FeatRitualCast</defName>
+    <label>仪式施放</label>
+    <description>仪式施法者：站着引导 1 小时（打断就白费），冷却剩得最久的那个能力立刻冷却完毕，之后 1 小时内下一次施法不进冷却、不加心灵熵。每天 2 次，只在有能力冷却中时可用。</description>
+    <iconPath>LP/Feats/RitualCaster</iconPath>
+    <cooldownTicksRange>30000</cooldownTicksRange>
+    <hostile>false</hostile><aiCanUse>false</aiCanUse><targetRequired>false</targetRequired>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>0</range><warmupTime>41.6</warmupTime><targetParams><canTargetSelf>true</canTargetSelf></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_FeatPower"><effect>ritual</effect></li></comps>
+  </AbilityDef>
+
+  <!-- ==================== 状态、心情、物品 ==================== -->
+  <HediffDef>
+    <defName>LP_MusicInspired</defName>
+    <label>激励</label>
+    <description>音乐家的琴声还在心里回响：手术成功率、谈判能力、射击精度 ×1.3。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad><everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.95, 0.8, 0.45)</defaultLabelColor>
+    <stages><li><statFactors><MedicalSurgerySuccessChance>1.3</MedicalSurgerySuccessChance><NegotiationAbility>1.3</NegotiationAbility><ShootingAccuracyPawn>1.3</ShootingAccuracyPawn></statFactors></li></stages>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>15000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li><li Class="HediffCompProperties_DisappearsOnDeath" /></comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_FeatDisguised</defName>
+    <label>伪装</label>
+    <description>换了模样混在人群里：敌人几乎不会优先瞄准。</description>
+    <hediffClass>LichPhylactery.Hediff_FeatDisguised</hediffClass>
+    <isBad>false</isBad><everCurableByItem>false</everCurableByItem>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>7200</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li><li Class="HediffCompProperties_DisappearsOnDeath" /></comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_FeatPoisonedBlade</defName>
+    <label>涂毒武器</label>
+    <description>武器上涂着毒：近战命中附加蛛后之毒（数值 = 剩余次数）。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad><everCurableByItem>false</everCurableByItem>
+    <initialSeverity>20</initialSeverity><maxSeverity>20</maxSeverity>
+    <defaultLabelColor>(0.6, 0.75, 0.3)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>60000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li><li Class="HediffCompProperties_DisappearsOnDeath" /></comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_RitualPrimed</defName>
+    <label>仪式余韵</label>
+    <description>仪式的力量还在：下一次施法不进冷却、不加心灵熵。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad><everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.6, 0.55, 0.85)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>2500</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li><li Class="HediffCompProperties_DisappearsOnDeath" /></comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_BorrowedLuck</defName>
+    <label>借来的好运</label>
+    <description>半身人分来的好运：下一次会致倒地或死亡的伤只剩 10%。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad><everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.6, 0.85, 0.5)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>180000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li><li Class="HediffCompProperties_DisappearsOnDeath" /></comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_SnackComfort</defName>
+    <label>点心的余味</label>
+    <description>吃了一份好点心：伤口愈合 +25%。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad><everCurableByItem>false</everCurableByItem>
+    <stages><li><statFactors><InjuryHealingFactor>1.25</InjuryHealingFactor></statFactors></li></stages>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>15000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li><li Class="HediffCompProperties_DisappearsOnDeath" /></comps>
+  </HediffDef>
+  <ThoughtDef>
+    <defName>LP_RousingTune</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>0.5</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>激昂乐章</label><description>刚才那段曲子让人热血沸腾。</description><baseMoodEffect>6</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_AteFeatSnack</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>吃了厨师的点心</label><description>那份点心真是好吃。</description><baseMoodEffect>5</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_FeatSnack</defName>
+    <label>点心</label>
+    <description>厨师顺手做的一份精致点心。吃了心情 +5（1 天），6 小时内伤口愈合 +25%。</description>
+    <graphicData><texPath>LP/Items/FeatSnack</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <soundInteract>Standard_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <tickerType>Rare</tickerType><!-- 1.58.6：CompRottable 需要 Rare/Normal（ResourceBase 是 Never），否则配置错误、点心也不会按 4 天腐烂 -->
+    <statBases><MaxHitPoints>50</MaxHitPoints><MarketValue>12</MarketValue><Mass>0.1</Mass><Flammability>1.0</Flammability><DeteriorationRate>6</DeteriorationRate><Nutrition>0.3</Nutrition></statBases>
+    <thingCategories><li>Foods</li></thingCategories>
+    <ingestible>
+      <preferability>MealFine</preferability>
+      <foodType>Processed</foodType>
+      <joy>0.12</joy>
+      <joyKind>Gluttonous</joyKind>
+      <tasteThought>LP_AteFeatSnack</tasteThought>
+      <ingestSound>Meal_Eat</ingestSound>
+      <outcomeDoers><li Class="IngestionOutcomeDoer_GiveHediff"><hediffDef>LP_SnackComfort</hediffDef><severity>1</severity></li></outcomeDoers>
+    </ingestible>
+    <comps><li Class="CompProperties_Rottable"><daysToRotStart>4</daysToRotStart><rotDestroys>true</rotDestroys></li></comps>
+  </ThingDef>
+</Defs>

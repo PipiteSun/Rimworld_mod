@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.22.0 物品与炼金：炼金桌、两项研究（1.35.0 起在 Defs/Research.xml）、炼金速度属性、炼金配方。 -->
+<Defs>
+
+  <StatDef>
+    <defName>LP_AlchemySpeed</defName>
+    <label>炼金速度</label>
+    <description>在炼金桌调配药水和投掷物、在附魔台制作魔法物品的速度。按智识与医疗两项技能的平均等级计算。</description>
+    <category>PawnWork</category>
+    <defaultBaseValue>1</defaultBaseValue>
+    <minValue>0.1</minValue>
+    <toStringStyle>PercentZero</toStringStyle>
+    <supressDisabledError>true</supressDisabledError>
+    <statFactors>
+      <li>WorkSpeedGlobal</li>
+    </statFactors>
+    <capacityFactors>
+      <li>
+        <capacity>Sight</capacity>
+        <weight>0.6</weight>
+        <max>1</max>
+      </li>
+      <li>
+        <capacity>Manipulation</capacity>
+        <weight>1</weight>
+      </li>
+    </capacityFactors>
+    <parts>
+      <li Class="LichPhylactery.StatPart_AlchemySkill" />
+    </parts>
+    <displayPriorityInCategory>4300</displayPriorityInCategory>
+  </StatDef>
+
+  <ThingDef ParentName="BenchBase">
+    <defName>LP_AlchemyTable</defName>
+    <label>炼金桌</label>
+    <description>摆满烧瓶、蒸馏器和研钵的工作台。在这里调配DND药水、炼金投掷物、雾瓶、风暴宝珠、凝胶敷料和抑灵剂，并淬炼寒铁；魔法物品改在附魔台、圣物在圣坛、卷轴和手册在卷轴书桌制作。配方速度按智识与医疗的平均等级计算。可连接蒸馏器（+15%）和工具柜。</description>
+    <thingClass>Building_WorkTable</thingClass>
+    <graphicData>
+      <texPath>Items/AlchemyTable</texPath>
+      <shaderType>CutoutComplex</shaderType>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(2,1)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.20</staticSunShadowHeight>
+    <size>(2,1)</size>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>75</costStuffCount>
+    <costList>
+      <Steel>50</Steel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <WorkToBuild>2500</WorkToBuild>
+      <MaxHitPoints>180</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <Cleanliness>-2</Cleanliness>
+    </statBases>
+    <designationCategory>Production</designationCategory>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <building>
+      <workTableRoomRole>Laboratory</workTableRoomRole>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+    </building>
+    <!-- 1.47.0：可连接蒸馏器和工具柜。 -->
+    <comps>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+          <li>LP_Alembic</li>
+        </linkableFacilities>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+    </placeWorkers>
+    <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+    <researchPrerequisites>
+      <li>LP_DNDAlchemy</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <WorkGiverDef>
+    <defName>LP_DoBillsAlchemy</defName>
+    <label>炼金</label>
+    <giverClass>WorkGiver_DoBill</giverClass>
+    <workType>Crafting</workType>
+    <workTags>
+      <li>Intellectual</li>
+    </workTags>
+    <priorityInType>96</priorityInType>
+    <fixedBillGiverDefs>
+      <li>LP_AlchemyTable</li>
+    </fixedBillGiverDefs>
+    <verb>炼金</verb>
+    <gerund>正在炼金桌工作</gerund>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+  </WorkGiverDef>
+
+  <RecipeDef Name="LP_AlchemyRecipeBase" Abstract="True">
+    <workSpeedStat>LP_AlchemySpeed</workSpeedStat>
+    <workSkill>Intellectual</workSkill>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_Drug</soundWorking>
+    <recipeUsers>
+      <li>LP_AlchemyTable</li>
+    </recipeUsers>
+    <researchPrerequisite>LP_DNDAlchemy</researchPrerequisite>
+    <workAmount>1200</workAmount>
+    <allowMixingIngredients>false</allowMixingIngredients>
+  </RecipeDef>
+  <RecipeDef Name="LP_PotionRecipeBase" ParentName="LP_AlchemyRecipeBase" Abstract="True">
+    <modExtensions>
+      <li Class="LichPhylactery.AlchemyRecipeExtension">
+        <potion>true</potion>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+  <RecipeDef Name="LP_ThrowableRecipeBase" ParentName="LP_AlchemyRecipeBase" Abstract="True">
+    <workAmount>2400</workAmount>
+    <modExtensions>
+      <li Class="LichPhylactery.AlchemyRecipeExtension" />
+    </modExtensions>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LP_PotionRecipeBase">
+    <defName>LP_BrewPotionHealing</defName>
+    <label>调配治疗药水</label>
+    <description>用1瓶巨魔血和2份草药调配1瓶治疗药水。</description>
+    <jobString>正在调配治疗药水。</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>LP_TrollBlood</li></thingDefs></filter><count>1</count></li>
+      <li><filter><thingDefs><li>MedicineHerbal</li></thingDefs></filter><count>2</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_TrollBlood</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_PotionHealing>1</LP_PotionHealing></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_PotionRecipeBase">
+    <defName>LP_BrewPotionGreaterHealing</defName>
+    <label>调配强效治疗药水</label>
+    <description>用3瓶巨魔血和1份工业药调配1瓶强效治疗药水。</description>
+    <jobString>正在调配强效治疗药水。</jobString>
+    <workAmount>2000</workAmount>
+    <ingredients>
+      <li><filter><thingDefs><li>LP_TrollBlood</li></thingDefs></filter><count>3</count></li>
+      <li><filter><thingDefs><li>MedicineIndustrial</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_TrollBlood</li><li>MedicineIndustrial</li></thingDefs></fixedIngredientFilter>
+    <products><LP_PotionGreaterHealing>1</LP_PotionGreaterHealing></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_PotionRecipeBase">
+    <defName>LP_BrewPotionGiantStrength</defName>
+    <label>调配巨人之力药水</label>
+    <description>用2块熔岩结晶和1份草药调配1瓶巨人之力药水。</description>
+    <jobString>正在调配巨人之力药水。</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>LP_LavaCrystal</li></thingDefs></filter><count>2</count></li>
+      <li><filter><thingDefs><li>MedicineHerbal</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_LavaCrystal</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_PotionGiantStrength>1</LP_PotionGiantStrength></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_PotionRecipeBase">
+    <defName>LP_BrewPotionFireResistance</defName>
+    <label>调配抗火药水</label>
+    <description>用1块熔岩结晶和1份草药调配1瓶抗火药水。</description>
+    <jobString>正在调配抗火药水。</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>LP_LavaCrystal</li></thingDefs></filter><count>1</count></li>
+      <li><filter><thingDefs><li>MedicineHerbal</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_LavaCrystal</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_PotionFireResistance>1</LP_PotionFireResistance></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_PotionRecipeBase">
+    <defName>LP_BrewPotionHeroism</defName>
+    <label>调配英雄药水</label>
+    <description>用3份啤酒和2份黄金调配1瓶英雄药水。</description>
+    <jobString>正在调配英雄药水。</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>Beer</li></thingDefs></filter><count>3</count></li>
+      <li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>2</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>Beer</li><li>Gold</li></thingDefs></fixedIngredientFilter>
+    <products><LP_PotionHeroism>1</LP_PotionHeroism></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_PotionRecipeBase">
+    <defName>LP_BrewPotionMindShield</defName>
+    <label>调配心智护盾药水</label>
+    <description>把1个脑浆罐里残留的心智提炼成3瓶心智护盾药水。</description>
+    <jobString>正在调配心智护盾药水。</jobString>
+    <workAmount>2400</workAmount>
+    <ingredients>
+      <li><filter><thingDefs><li>LP_BrainJar</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_BrainJar</li></thingDefs></fixedIngredientFilter>
+    <products><LP_PotionMindShield>3</LP_PotionMindShield></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_PotionRecipeBase">
+    <defName>LP_BrewPotionTrollRegen</defName>
+    <label>调配巨魔再生剂</label>
+    <description>把5瓶巨魔血浓缩成1剂巨魔再生剂。</description>
+    <jobString>正在调配巨魔再生剂。</jobString>
+    <workAmount>2000</workAmount>
+    <ingredients>
+      <li><filter><thingDefs><li>LP_TrollBlood</li></thingDefs></filter><count>5</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_TrollBlood</li></thingDefs></fixedIngredientFilter>
+    <products><LP_PotionTrollRegen>1</LP_PotionTrollRegen></products>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LP_ThrowableRecipeBase">
+    <defName>LP_MakeAlchemistFire</defName>
+    <label>制作炼金之火</label>
+    <description>用20份化学燃料和10份布制作一组炼金之火。</description>
+    <jobString>正在制作炼金之火。</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>Chemfuel</li></thingDefs></filter><count>20</count></li>
+      <li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>10</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>Chemfuel</li><li>Cloth</li></thingDefs></fixedIngredientFilter>
+    <products><LP_AlchemistFire>1</LP_AlchemistFire></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_ThrowableRecipeBase">
+    <defName>LP_MakeAcidVial</defName>
+    <label>制作强酸瓶</label>
+    <description>用20份化学燃料和10份钢制作一组强酸瓶。</description>
+    <jobString>正在制作强酸瓶。</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>Chemfuel</li></thingDefs></filter><count>20</count></li>
+      <li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>10</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>Chemfuel</li><li>Steel</li></thingDefs></fixedIngredientFilter>
+    <products><LP_AcidVial>1</LP_AcidVial></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_ThrowableRecipeBase">
+    <defName>LP_MakeHolyWater</defName>
+    <label>制作圣水</label>
+    <description>用15份白银和2份草药祝圣一组圣水。</description>
+    <jobString>正在制作圣水。</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>15</count></li>
+      <li><filter><thingDefs><li>MedicineHerbal</li></thingDefs></filter><count>2</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>Silver</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_HolyWater>1</LP_HolyWater></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_ThrowableRecipeBase">
+    <defName>LP_MakeTanglefootBag</defName>
+    <label>制作黏胶袋</label>
+    <description>用15份布和10份化学燃料熬出黏胶，装成一组黏胶袋。</description>
+    <jobString>正在制作黏胶袋。</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>15</count></li>
+      <li><filter><thingDefs><li>Chemfuel</li></thingDefs></filter><count>10</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>Cloth</li><li>Chemfuel</li></thingDefs></fixedIngredientFilter>
+    <products><LP_TanglefootBag>1</LP_TanglefootBag></products>
+  </RecipeDef>
+</Defs>

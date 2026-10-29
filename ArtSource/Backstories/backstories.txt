@@ -1,0 +1,172 @@
+# 类别|槽位C/A|defName后缀|标题|短标题|技能|禁用工作|背景特性:概率|描述
+## ===== 费伦通用 =====
+LP_Faerun|C|DockChild|深水城码头孩|码头孩|Social+2,Melee+1,Construction+1|||[PAWN_nameDef]在深水城的码头上长大，白天替商船扛货，晚上听水手吹牛。[PAWN_nameDef]学会了在醉汉中间说好话，也学会了在说好话没用的时候先动手。
+LP_Faerun|C|GateUrchin|博德之门街童|街童|Melee+2,Social+2||Criminal:0.3|博德之门下城区的孩子没有谁是空着手长大的。[PAWN_nameDef]会撬锁、会跑、会在火焰之拳的巡逻队面前装出一脸无辜。
+LP_Faerun|C|SwordCoastFarm|剑湾农家子|农家子|Plants+3,Animals+2|||[PAWN_nameDef]是剑湾一户小农家的孩子，种萝卜、赶羊、躲地精。每年秋天都有冒险者路过村子，[PAWN_nameDef]总是看着他们的背影发呆。
+LP_Faerun,LP_Arcane|C|CandlekeepScribe|烛堡抄写童|抄写童|Intellectual+3,Artistic+1||Sage:0.3|[PAWN_nameDef]在烛堡的抄经房里长大，替僧侣誊写一本又一本古书。[PAWN_nameDef]读过的禁书比大多数法师都多，只是没人知道。
+LP_Faerun|C|HarperWard|竖琴手的养子|竖琴手养子|Social+2,Shooting+2||FolkHero:0.2|[PAWN_nameDef]的父母死于一场与塞伊有关的暗杀。竖琴手收养了[PAWN_nameDef]，教会了暗号、弓术，以及“永远别相信穿红袍的人”。
+LP_Faerun|C|TavernHand|冒险者酒馆帮工|酒馆帮工|Cooking+3,Social+1|||[PAWN_nameDef]在一家叫“打呵欠的门户”的酒馆里刷盘子、端炖菜。每一张通缉令、每一个藏宝图的传言，[PAWN_nameDef]都是第一个听到的。
+LP_Faerun,LP_Faith|C|TempleOrphan|晨曦神殿孤儿|神殿孤儿|Medicine+2,Social+1,Intellectual+1||Acolyte:0.3|[PAWN_nameDef]被遗弃在晨曦之主神殿的台阶上，由牧师们养大。[PAWN_nameDef]学会的第一件事是包扎伤口，第二件事是在日出时祈祷。
+LP_Faerun|C|CaravanChild|篷车商队之子|商队之子|Animals+2,Social+2|||[PAWN_nameDef]是在商队篷车上出生的，从安姆走到卡林珊，又从卡林珊走回来。[PAWN_nameDef]记得每一条商路上哪口井有水、哪个关卡要塞钱。
+LP_Faerun|A|Adventurer|赏金冒险者|冒险者|Melee+3,Shooting+2,Medicine+1||FolkHero:0.2|[PAWN_nameDef]揭过告示板上的每一种委托：清地精窝、护送商队、找丢失的猫。大多数队友都死在了半路上，[PAWN_nameDef]活了下来，并为此感到一点内疚。
+LP_Faerun|A|DungeonDelver|地城探索者|地城探索者|Mining+2,Melee+2,Shooting+1|||[PAWN_nameDef]专门钻那些别人不敢进的古墓和地城。[PAWN_nameDef]能闻出陷阱的味道，也知道宝箱里最值钱的往往是那张不起眼的地图。
+LP_Faerun|A|Bard|流浪吟游诗人|吟游诗人|Social+4,Artistic+3|Cleaning||[PAWN_nameDef]在剑湾的每一家酒馆都唱过歌，也欠过每一家酒馆的账。[PAWN_nameDef]的歌能让敌人放下武器，也能让朋友拔出武器。
+LP_Faerun|A|RangerGuide|边境游侠|游侠|Shooting+3,Animals+2,Plants+1||Outlander:0.3|[PAWN_nameDef]给穿越荒野的商队当向导，在高森林边缘守了很多年。[PAWN_nameDef]宁可睡在星空下，也不愿在城里多待一晚。
+LP_Faerun|A|CityWatch|城卫军士|城卫|Melee+3,Shooting+2||Soldier:0.3|[PAWN_nameDef]在深水城城卫队服役多年，抓过小偷、拦过醉鬼，也在一个雨夜亲眼看见一头眼魔从下水道里飘出来。
+LP_Faerun,LP_Arcane|A|FailedWizard|落第法师|落第法师|Intellectual+4,Artistic+1|ManualDumb|Sage:0.3|[PAWN_nameDef]在法师学院读了七年，最后因为一场炸掉半座塔的实验被开除。[PAWN_nameDef]坚持说那次实验“在理论上是成功的”。
+LP_Faerun,LP_Underworld|A|ThievesGuild|盗贼公会成员|盗贼|Melee+2,Social+2,Crafting+1||Criminal:0.4|[PAWN_nameDef]是影贼公会的一员，替公会收保护费、开锁、偶尔“劝说”不肯交钱的商人。离开公会的方式只有两种，[PAWN_nameDef]选了比较少见的那一种。
+LP_Faerun|A|FlamingFist|火焰之拳佣兵|佣兵|Shooting+3,Melee+3|Artistic|Soldier:0.4|[PAWN_nameDef]在博德之门的火焰之拳佣兵团当过兵，打过地精、海盗和邪教徒。佣兵团的信条很简单：先拿钱，再拔剑。
+LP_Faerun|A|Homesteader|拓荒定居者|拓荒者|Construction+3,Plants+2,Mining+1|||[PAWN_nameDef]跟着费伦拓荒同盟去过好几片无主之地，砍树、垒墙、开荒。[PAWN_nameDef]亲手建起过三座村子，又亲眼看着其中两座被烧掉。
+LP_Faerun,LP_Arcane|A|Alchemist|街头炼金术士|炼金术士|Medicine+2,Intellectual+2,Crafting+2|||[PAWN_nameDef]在集市上卖药水：治疗药水、隐形药水、以及据说能让头发重新长出来的药水。前两种大多是真的。
+## ===== 信仰 =====
+LP_Faith|C|TempleChoir|神殿唱诗童|唱诗童|Artistic+2,Social+2||Acolyte:0.3|[PAWN_nameDef]从小在神殿的唱诗班里唱颂歌。[PAWN_nameDef]的嗓子很好，好到连脾气最坏的老祭司都会在听歌时闭上眼睛。
+LP_Faith|A|MorninglordAcolyte|晨曦教会侍僧|侍僧|Medicine+3,Social+2||Acolyte:0.5|[PAWN_nameDef]是晨曦之主拉山德的侍僧，在瘟疫村庄和战场之间奔走。[PAWN_nameDef]相信每一个黎明都是一次新的机会，包括对最坏的人。
+LP_Faith|A|TyrPaladin|提尔的圣武士|圣武士|Melee+4,Social+2||FolkHero:0.3|[PAWN_nameDef]向公正之神提尔立下誓言，守护弱者、审判罪人。[PAWN_nameDef]的盾牌上刻着天平，剑上刻着誓言的每一个字。
+LP_Faith|A|KelemvorUndertaker|凯兰沃的送葬人|送葬人|Medicine+2,Intellectual+2,Construction+1||Acolyte:0.3|[PAWN_nameDef]侍奉死神凯兰沃，替无名尸体下葬，替亡魂引路。[PAWN_nameDef]憎恨一切不死生物，对巫妖尤其如此。
+LP_Faith|A|Pilgrim|云游朝圣者|朝圣者|Social+2,Medicine+1,Plants+1||Hermit:0.3|[PAWN_nameDef]走遍了费伦的圣地，在每一座神龛前留下一枚铜币。[PAWN_nameDef]说自己在找一个答案，但从来不说问题是什么。
+## ===== 塞伊 =====
+LP_Thay|C|ThayBorn|塞伊奴隶营之子|奴隶营之子|Mining+2,Construction+2|||[PAWN_nameDef]出生在塞伊高原的奴隶营里，记事起就在采石场搬石头。红袍法师从[PAWN_nameDef]身边走过时，从来不会低头看一眼。
+LP_Thay,LP_Arcane|C|RedRobeApprentice|红袍学徒|红袍学徒|Intellectual+3,Social+1|Cleaning|Sage:0.2|[PAWN_nameDef]从小被送进塞伊的法术学校。在那里，同学之间互相下毒是一门选修课，背叛是必修课。
+LP_Thay,LP_Arcane|A|RedWizard|塞伊红袍法师|红袍法师|Intellectual+5,Social+2|ManualDumb,Cleaning|Noble:0.4|[PAWN_nameDef]是塞伊的红袍法师，剃光了头，纹满了法术刺青。在塞伊，红袍是一切的主人；离开塞伊，[PAWN_nameDef]依然这么认为。
+LP_Thay|A|RuneTamer|符印驯兽师|驯兽师|Animals+4,Melee+2|Social||[PAWN_nameDef]负责给塞伊军队里的巨魔烙上符印。[PAWN_nameDef]手臂上的每一道伤疤都来自一头还没被驯服的巨魔。
+LP_Thay|A|ThayConscript|塞伊奴隶兵|奴隶兵|Melee+3,Shooting+1|Intellectual,Artistic|Soldier:0.2|[PAWN_nameDef]被塞伊征去当兵，站在骷髅和巨魔的队伍最前面。没人教过[PAWN_nameDef]读书，只教过怎么在冲锋时不回头。
+LP_Thay,LP_Arcane|A|NecroForeman|死灵工坊监工|死灵监工|Medicine+2,Crafting+2,Intellectual+1|Artistic||[PAWN_nameDef]在塞伊的死灵工坊里监督尸体的缝合与唤醒。[PAWN_nameDef]对死人比对活人有耐心得多。
+LP_Thay|A|TaxCollector|塞伊收税官|收税官|Social+4,Intellectual+1|ManualDumb|Noble:0.3|[PAWN_nameDef]替塞伊的地方总督收税。交不出税的农民有两个选择：交出儿子，或者交出自己。[PAWN_nameDef]会礼貌地问清楚是哪一个。
+## ===== 余烬氏族 =====
+LP_Ember|C|ForgeSlaveChild|熔炉边的奴童|奴童|Crafting+2,Construction+1|||[PAWN_nameDef]在火巨人的熔炉旁长大，给风箱拉绳、给铁砧递钳子。[PAWN_nameDef]的手臂上满是火星烫出的小疤。
+LP_Ember|A|ForgeThrall|锻炉奴工|锻炉奴工|Crafting+4,Mining+2|Intellectual||[PAWN_nameDef]给余烬氏族的火巨人打了很多年铁。火巨人从不记得奴隶的名字，但记得[PAWN_nameDef]锻的剑从来不崩口。
+LP_Ember|A|SlagOverseer|熔渣监工|监工|Melee+3,Social+2,Crafting+1|||[PAWN_nameDef]替火巨人管着一队奴工，手里拿着鞭子，背后站着比自己高两倍的主人。[PAWN_nameDef]很清楚自己也是奴隶，只是戴着稍微好一点的镣铐。
+## ===== 幽暗殖巢 =====
+LP_Illithid,LP_Faerun|C|UnderdarkFoundling|幽暗地域的弃儿|幽暗弃儿|Mining+2,Melee+1,Shooting+1|||[PAWN_nameDef]在幽暗地域的隧道里长大，没见过太阳。[PAWN_nameDef]能在完全的黑暗里认路，也学会了一听到湿漉漉的脚步声就立刻躲起来。
+LP_Illithid|A|Thrall|殖巢奴仆|殖巢奴仆|Mining+3,Construction+2|Social,Artistic,Intellectual||[PAWN_nameDef]被夺心魔支配了很多年，替殖巢挖隧道、搬尸体。那些年的记忆是一片灰白的雾，偶尔能想起一张脸，却想不起是谁。
+LP_Illithid|A|PoolKeeper|脑池看守|脑池看守|Medicine+2,Intellectual+2,Animals+1|Social||[PAWN_nameDef]的工作是照料上古脑的脑池：调盐分、清残渣、把新鲜的大脑放进去。[PAWN_nameDef]至今会在梦里听见脑池里传出的低语。
+## ===== 黑网 / 狂热分子 =====
+LP_Underworld|A|Smuggler|黑网走私客|走私客|Social+3,Shooting+2,Crafting+1||Criminal:0.5|[PAWN_nameDef]替黑网运过蝌蚪罐、走私过龙蛋，也替塞伊和竖琴手两边同时送过信。[PAWN_nameDef]唯一的原则是：货物不问来源，客户不问去处。
+LP_Underworld|A|Fence|赃物鉴定师|销赃人|Social+2,Intellectual+2,Artistic+1||Criminal:0.3|[PAWN_nameDef]一眼就能看出一件魔法物品是真是假、是偷来的还是抢来的。前者决定价格，后者决定价格再打几折。
+LP_Zealot|A|WitchHunter|猎巫人|猎巫人|Shooting+3,Melee+2,Intellectual+1|Artistic||[PAWN_nameDef]追猎过术士、德鲁伊、巫妖，以及很多其实只是会认草药的老太太。[PAWN_nameDef]的银弩箭上刻着每一个“女巫”的名字。
+LP_Zealot|A|Bookburner|焚书修士|焚书修士|Melee+2,Social+3|Intellectual||[PAWN_nameDef]相信魔法是一切苦难的根源，烧过三座法师塔的藏书室。[PAWN_nameDef]布道时很有感染力，尤其是站在火堆旁边的时候。
+## ===== 巫妖 =====
+LP_Race_Lich|A|UndyingArchmage|不朽的大法师|不朽法师|Intellectual+6,Medicine+2,Crafting+1|Cleaning,Hauling|Sage:0.3|[PAWN_nameDef]活着的时候就是一位大法师，死后也没有打算停下研究。[PAWN_nameDef]已经记不清自己的心跳是什么声音了。
+LP_Race_Lich|A|PhylacteryHermit|命匣守密者|守密者|Intellectual+4,Artistic+2,Crafting+2|Social|Hermit:0.5|[PAWN_nameDef]把命匣藏在只有自己知道的地方，然后在一座塔里独自度过了三百年。[PAWN_nameDef]不喜欢访客，尤其不喜欢带着圣徽的访客。
+## ===== 巨人通用 =====
+LP_Race_Giant|C|FosterGiant|人类收养的巨人娃|巨人养子|Social+2,Construction+2|||[PAWN_nameDef]是被一户人类农家捡回去养大的。十岁时[PAWN_nameDef]就比谷仓还高了，村里人从此再也不用搭梯子修屋顶。
+LP_Race_Giant|A|GiantWanderer|巨人游群的流浪者|巨人游群|Plants+2,Mining+2,Melee+2||Outlander:0.4|[PAWN_nameDef]跟着巨人游群在山脊之间迁徙，跟着季节走，跟着猎物走。[PAWN_nameDef]见过的地平线比任何人类都多。
+## ===== 火巨人 =====
+LP_Race_FireGiant|C|LavaHallChild|熔岩厅的锤童|锤童|Crafting+3,Mining+1|||[PAWN_nameDef]在火山深处的熔岩厅里长大，五岁就能抡动人类铁匠抬不动的锤子。[PAWN_nameDef]的摇篮是一口冷却的坩埚。
+LP_Race_FireGiant|C|HostageChild|余烬氏族的人质|人质|Social+2,Melee+2|||[PAWN_nameDef]小时候被当成人质送到敌对的氏族，在别人的熔炉边长大。[PAWN_nameDef]学会了察言观色，也学会了把仇恨藏在笑容后面。
+LP_Race_FireGiant|A|ForgeSmith|熔炉氏族铁匠|巨人铁匠|Crafting+5,Mining+2|PlantWork||[PAWN_nameDef]是氏族里最好的铁匠之一，锻出的武器能劈开城门。对[PAWN_nameDef]来说，世界上只有两种东西：能熔的和还没熔的。
+LP_Race_FireGiant|A|Warband|火巨人战帮头目|战帮头目|Melee+4,Social+2||Soldier:0.3|[PAWN_nameDef]带着一队奴兵和巨人，替氏族征讨不肯纳贡的村庄。[PAWN_nameDef]相信力量就是秩序，而秩序要用锤子敲出来。
+LP_Race_FireGiant,LP_Faith|A|SurtrKeeper|苏尔特的祭火者|祭火者|Crafting+2,Social+2,Intellectual+1||Acolyte:0.4|[PAWN_nameDef]看守着氏族的圣火，向巨人之神苏尔特献上最好的锻件。[PAWN_nameDef]说火焰里能看见未来，而未来总是在燃烧。
+## ===== 霜巨人 =====
+LP_Race_FrostGiant|C|WolfPlaymate|冬狼崽的玩伴|狼崽玩伴|Animals+3,Melee+1|||[PAWN_nameDef]小时候和一窝冬狼崽睡在同一张熊皮上。长大以后，那几头狼仍然只听[PAWN_nameDef]一个人的话。
+LP_Race_FrostGiant|A|WolfMaster|冬狼驯主|冬狼驯主|Animals+4,Melee+2,Shooting+1||Outlander:0.2|[PAWN_nameDef]是部族里的冬狼驯主，暴风雪里能凭狼嚎分辨出每一头狼。在冰原上，[PAWN_nameDef]的狼群比任何城墙都可靠。
+LP_Race_FrostGiant|A|Reaver|冰原掠袭者|掠袭者|Melee+4,Construction+1,Social+1|Artistic||[PAWN_nameDef]驾着冰船沿海岸南下，抢粮食、抢铁器、抢奴隶。[PAWN_nameDef]认为冬天是诸神给霜巨人的礼物，而南方人是礼物的包装纸。
+## ===== 云巨人 =====
+LP_Race_CloudGiant|C|CastleHeir|云堡贵胄之子|云堡之子|Social+3,Artistic+2||Noble:0.4|[PAWN_nameDef]在漂浮于云端的城堡里长大，脚下是雾，头上是星。[PAWN_nameDef]小时候以为地面上的人类都是会动的玩具。
+LP_Race_CloudGiant|A|Envoy|云端宫廷使节|宫廷使节|Social+5,Intellectual+2|ManualDumb|Noble:0.5|[PAWN_nameDef]代表云端宫廷出使人类诸国，送礼、谈判、记下每一份怠慢。[PAWN_nameDef]的礼物总是太贵重，贵重到对方永远还不起。
+LP_Race_CloudGiant|A|WeatherSeer|天候术士|天候术士|Intellectual+3,Plants+3|||[PAWN_nameDef]能读懂风和云的语言，替宫廷预言收成和风暴。人类农夫愿意用整年的收成换[PAWN_nameDef]一句话。
+## ===== 风暴巨人 =====
+LP_Race_StormGiant|C|DeepPalace|海渊宫殿之子|海渊之子|Animals+2,Intellectual+2|||[PAWN_nameDef]在海底的珊瑚宫殿里长大，和鲸鱼一起游泳，听着潮汐学习预言的韵律。
+LP_Race_StormGiant|A|StormOracle|风暴预言者|预言者|Intellectual+5,Social+1|Hauling|Hermit:0.4|[PAWN_nameDef]在风暴中冥想，从雷声里解读诸神的意图。[PAWN_nameDef]的预言总是准的，只是从来没人能在它应验之前听懂。
+LP_Race_StormGiant|A|DeepExile|海渊流亡者|流亡者|Melee+3,Shooting+2,Construction+1|||[PAWN_nameDef]因为一个不肯说出口的预言被逐出了海渊宫廷。从那以后，[PAWN_nameDef]每次看到雷雨都会抬头，像是在等谁来叫自己回家。
+## ===== 泰坦 / 觉醒泰坦 =====
+LP_Race_Titan|C|DivineFoundling|神裔弃子|神裔弃子|Melee+2,Social+2,Intellectual+1|||[PAWN_nameDef]的父亲是一位神，母亲是一个凡人，而两边都没有来接[PAWN_nameDef]回家。[PAWN_nameDef]五岁那年发脾气时，村子上空下了一场冰雹。
+LP_Race_Titan|A|HeroDisciple|半神的门徒|半神门徒|Melee+4,Social+3|Cleaning,Hauling|FolkHero:0.4|[PAWN_nameDef]走遍费伦，替弱者打倒怪物，想要证明自己配得上那一半神血。诗人们已经写了好几首关于[PAWN_nameDef]的歌，大部分都是瞎编的。
+LP_Race_Titan|A|PeakWatcher|山巅守望者|守望者|Shooting+3,Intellectual+2,Plants+1||Hermit:0.3|[PAWN_nameDef]在一座没有名字的山顶上守望了几十年，不知道自己在等什么。也许是一个预兆，也许是父亲的一句话。
+## ===== 双头巨人 =====
+LP_Race_Ettin|C|QuarrelChild|打架长大的双首|打架双首|Melee+3|Social||[PAWN_nameDef]的两个脑袋从会说话起就在吵架：先吃谁的饭、先往哪边走、昨天是谁先动的手。[PAWN_nameDef]的童年基本就是一场持续十年的内斗。
+LP_Race_Ettin|A|HillRaider|丘陵劫掠者|劫掠者|Melee+4,Mining+1|Intellectual||[PAWN_nameDef]在丘陵里劫掠过路的商队。左边的脑袋负责看路，右边的脑袋负责数钱，两边都坚持自己才是老大。
+LP_Race_Ettin|A|TwinGatekeeper|双首守门人|守门人|Melee+3,Construction+2||Soldier:0.3|[PAWN_nameDef]给一座要塞守了很多年大门。两个脑袋轮流睡觉，从来没有让任何人偷偷溜进去过。
+## ===== 独眼巨人 =====
+LP_Race_Cyclops|C|CyclopsShepherd|山羊群的牧童|牧童|Animals+3,Plants+1|||[PAWN_nameDef]在海边的山岛上放羊，一只眼睛看着羊群，一只耳朵听着海浪。小时候[PAWN_nameDef]以为全世界都只有一只眼睛。
+LP_Race_Cyclops|A|CyclopsSmith|独眼匠人|独眼匠人|Crafting+5,Construction+2|Social||[PAWN_nameDef]在火山洞里打铁，打出过能射穿城墙的弩和能挡住闪电的盾。[PAWN_nameDef]话很少，但每一件作品都很有说服力。
+LP_Race_Cyclops|A|OmenKeeper|神谕洞看守|神谕看守|Intellectual+2,Medicine+2,Animals+1||Acolyte:0.3|[PAWN_nameDef]看守着一座古老的神谕洞，替来求问的凡人献祭羊羔。据说独眼能看见命运，[PAWN_nameDef]从不否认，也从不承认。
+## ===== 巨魔 =====
+LP_Race_Troll|C|BogWhelp|沼泽饿崽|沼泽饿崽|Melee+3|Intellectual||[PAWN_nameDef]在沼泽里长大，什么都吃，吃不饱就咬兄弟姐妹。被咬掉的胳膊过几天就会长回来，所以大家都不太在意。
+LP_Race_Troll|C|RuneboundWhelp|被烙印的幼巨魔|烙印幼崽|Melee+2,Mining+2|||[PAWN_nameDef]还很小就被塞伊的驯兽师抓走，在背上烙了符印。符印的灼痛[PAWN_nameDef]到现在都记得，只是记不清烙下它的人长什么样了。
+LP_Race_Troll|A|BridgeToll|桥下收费者|桥下收费者|Melee+3,Social+2|||[PAWN_nameDef]在一座石桥下住了很多年，向每一个过路人收过桥费。交不起钱的，就留下一条腿。反正[PAWN_nameDef]自己的腿也会长回来，所以不觉得这很过分。
+LP_Race_Troll|A|RuneboundTroll|塞伊符印巨魔|符印巨魔|Melee+5|Intellectual,Artistic,Social||[PAWN_nameDef]曾是塞伊军队里的符印巨魔，被法术驱赶着冲在最前面。主人死后，符印的声音终于安静了，[PAWN_nameDef]才第一次想起自己饿了。
+LP_Race_Troll|A|AshHunter|灰烬部落猎手|灰烬猎手|Melee+3,Animals+2,Cooking+1|||[PAWN_nameDef]是灰烬中的巨魔部落里最好的猎手，能追着一头鹿跑三天三夜。鹿通常在第二天就放弃了。
+## ===== 力能龙 =====
+LP_Race_ForceDragon|C|HoardHatchling|宝库中破壳的幼龙|宝库幼龙|Intellectual+2,Artistic+2|||[PAWN_nameDef]在一座堆满金币的宝库里破壳，睁眼看见的第一样东西是一顶王冠。[PAWN_nameDef]从那时起就知道，世界上最重要的事情是数清楚自己有多少东西。
+LP_Race_ForceDragon|C|KoboldRaised|狗头人养大的雏龙|狗头人养大|Social+2,Construction+2|||[PAWN_nameDef]的母亲在[PAWN_nameDef]破壳前就被屠龙者杀死了，一群狗头人把龙蛋偷偷搬走，像侍奉神明一样把[PAWN_nameDef]养大。[PAWN_nameDef]学会的第一件事是设陷阱。
+LP_Race_ForceDragon|A|HoardLord|宝库领主|宝库领主|Intellectual+3,Social+2,Artistic+2|ManualDumb,Cleaning|Noble:0.4|[PAWN_nameDef]统治着一片山谷和山谷里的一切。[PAWN_nameDef]记得宝库里每一枚金币的位置，以及每一个想偷金币的人的名字。
+LP_Race_ForceDragon|A|SlayerBane|屠龙者的宿敌|屠龙者宿敌|Melee+4,Intellectual+1|||[PAWN_nameDef]杀过的屠龙者比大多数龙见过的都多。[PAWN_nameDef]把他们的盾牌挂在巢穴墙上，作为对下一批人的忠告。
+LP_Race_ForceDragon|A|DisguisedWanderer|化身人形的游历者|人形游历者|Social+3,Intellectual+3||Sage:0.3|[PAWN_nameDef]用人类的样子在城市里住过几十年，开过书店、当过学者，甚至结过一次婚。离开的那天，[PAWN_nameDef]只带走了一本书。
+## ===== 半兽人 =====
+LP_Race_HalfOrc|C|TribeHalfblood|兽人部落的混血崽|混血崽|Melee+3,Animals+1|||[PAWN_nameDef]在兽人部落里长大，因为血统不纯总是挨揍。[PAWN_nameDef]很快就学会了，挨揍之前先揍别人。
+LP_Race_HalfOrc|C|CityStreetHalfOrc|城里挨白眼的孩子|挨白眼的孩子|Melee+2,Social+1,Construction+1|||[PAWN_nameDef]是城里唯一一个长着獠牙的孩子。邻居们锁上门，商贩们多收钱，城卫军见了就盘问。[PAWN_nameDef]学会了忍耐，也学会了记账。
+LP_Race_HalfOrc|A|PitFighter|角斗场冠军|角斗冠军|Melee+5,Social+1|Artistic|FolkHero:0.2|[PAWN_nameDef]在卡林珊的地下角斗场连赢了四十场。观众们喊着[PAWN_nameDef]的名字，赌徒们靠[PAWN_nameDef]发了财，而[PAWN_nameDef]只拿到了自由。
+LP_Race_HalfOrc|A|ChainBreaker|断链战帮逃兵|断链战士|Melee+3,Shooting+2,Construction+1||Soldier:0.3|[PAWN_nameDef]曾经被锁在塞伊的奴隶兵队伍里，后来和同伴一起砸断锁链逃了出来。[PAWN_nameDef]的手腕上还留着镣铐的印子，[PAWN_nameDef]不打算去掉它。
+LP_Race_HalfOrc,LP_Faith|A|GruumshPriest|独眼之神的祭司|兽人祭司|Melee+2,Social+2,Medicine+1||Acolyte:0.3|[PAWN_nameDef]曾是兽人部落里格乌什的祭司，主持战前的血祭。后来[PAWN_nameDef]离开了部落，但仍保留着在每场战斗前祷告的习惯。
+## ===== 精灵 =====
+LP_Race_Elf|C|MoonwoodChild|月下林地的孩子|林地之子|Plants+3,Artistic+2|||[PAWN_nameDef]在月光照耀的古林里长大，和树精一起唱歌，和独角兽一起饮水。对精灵来说，[PAWN_nameDef]的童年短暂得只有一个世纪。
+LP_Race_Elf|C|ScoutChild|林地斥候学徒|斥候学徒|Shooting+3,Animals+1|||[PAWN_nameDef]五十岁时还是个孩子，却已经能在树梢之间无声地奔跑，在百步之外射中松鼠的尾巴。
+LP_Race_Elf|A|CenturySinger|百年歌者|百年歌者|Artistic+5,Social+2|ManualDumb||[PAWN_nameDef]用一百年学会了一首歌，又用一百年学会了怎么唱好它。人类听[PAWN_nameDef]唱歌会流泪，却说不出为什么。
+LP_Race_Elf|A|Warden|森林守卫|森林守卫|Shooting+4,Plants+2||Outlander:0.3|[PAWN_nameDef]守护着精灵的森林边界，射退过伐木工、地精和一整支兽人战帮。[PAWN_nameDef]记得每一棵被砍倒的树。
+LP_Race_Elf|A|EvermeetExile|永聚岛的流亡贵族|流亡贵族|Intellectual+4,Medicine+2|ManualDumb|Noble:0.3|[PAWN_nameDef]出身永聚岛的贵族世家，因为一桩不肯解释的丑闻被流放到大陆上。[PAWN_nameDef]对人类的城市很失望，对人类的寿命更失望。
+## ===== 矮人 =====
+LP_Race_Dwarf|C|MineChild|矿道里长大|矿道之子|Mining+3,Construction+2|||[PAWN_nameDef]在秘银堡的矿道里长大，听着镐头声入睡。[PAWN_nameDef]第一次看见天空时，问大人那块蓝色的石头是什么矿。
+LP_Race_Dwarf|C|BreweryChild|酒窖童工|酒窖童工|Cooking+3,Crafting+1|||[PAWN_nameDef]从小在家族的酒窖里帮忙，搬桶、滚桶、偷偷尝桶。矮人说这是最好的教育。
+LP_Race_Dwarf|A|RuneSmith|符文锻工|符文锻工|Crafting+5,Mining+2|||[PAWN_nameDef]是家族里第十七代锻工，在铁砧上刻符文的手比雕刻师还稳。[PAWN_nameDef]的作品从来不卖给精灵，尽管出价总是最高。
+LP_Race_Dwarf|A|ShieldDwarf|盾矮人卫士|盾矮人|Melee+4,Construction+2||Soldier:0.3|[PAWN_nameDef]在矮人要塞的大门前站了三十年岗。[PAWN_nameDef]的盾牌上有一道深深的爪痕，那是一头岩龙留下的，龙已经不在了，盾还在。
+LP_Race_Dwarf|A|GrudgeKeeper|血债清算人|清算人|Intellectual+2,Social+2,Melee+2|||[PAWN_nameDef]负责记录家族的血债之书：谁欠了谁、欠了多少、何时偿还。书里还有几十个名字没被划掉，[PAWN_nameDef]一个都没忘。
+## ===== 夺心魔 =====
+LP_Race_MindFlayer|C|SpawnPool|殖巢孵育池|孵育池|Intellectual+3|Artistic||[PAWN_nameDef]没有童年。[PAWN_nameDef]的意识是在一具人类躯体里醒来的，醒来时已经知道自己是谁、该服从谁，以及大脑是什么味道。
+LP_Race_MindFlayer|A|ElderVoice|主脑传声者|主脑传声者|Intellectual+4,Social+3|ManualDumb||[PAWN_nameDef]是上古脑的传声者，把主脑的意志传达给殖巢里的每一个成员。[PAWN_nameDef]的脑中至今还回响着那个庞大的声音。
+LP_Race_MindFlayer|A|PsionicHunter|灵能猎手|灵能猎手|Melee+2,Social+2,Intellectual+2|||[PAWN_nameDef]负责为殖巢狩猎新鲜的大脑。[PAWN_nameDef]更喜欢聪明的猎物：它们更好吃，逃跑时也更有趣。
+LP_Race_MindFlayer|A|IllithidRenegade|叛离殖巢者|叛离者|Intellectual+3,Medicine+2,Crafting+1||Hermit:0.3|某一天，[PAWN_nameDef]听不见上古脑的声音了。没有了主脑，[PAWN_nameDef]第一次开始思考自己想要什么，答案让[PAWN_nameDef]自己都感到害怕。
+## ===== 牛头人 =====
+LP_Race_Minotaur|C|MazeChild|迷宫里长大|迷宫之子|Construction+2,Melee+2|||[PAWN_nameDef]在一座古老的迷宫里长大，闭着眼睛也能找到出口。[PAWN_nameDef]小时候最喜欢的游戏是让闯进来的人类迷路。
+LP_Race_Minotaur|A|BaphometCharger|巴风特的冲锋兵|冲锋兵|Melee+5|Intellectual||[PAWN_nameDef]在恶魔领主巴风特的军队里当过冲锋兵，用犄角撞开过城门和盾墙。[PAWN_nameDef]逃出来以后，再也不肯低头，除非是为了冲锋。
+LP_Race_Minotaur|A|MazeArchitect|迷宫建筑师|迷宫建筑师|Construction+4,Mining+2||Hermit:0.2|[PAWN_nameDef]设计过好几座迷宫，每一座都比上一座更难走出去。[PAWN_nameDef]说好的迷宫和好的家是一样的：外人进不来，自己人出得去。
+## ===== 吉斯洋基 =====
+LP_Race_Githyanki|C|AstralCreche|星界孵育所|星界孵育所|Melee+2,Shooting+1,Intellectual+1|||[PAWN_nameDef]在物质界的秘密孵育所里长大，那里的孩子在成年前必须杀死一头夺心魔，否则就不算吉斯洋基。[PAWN_nameDef]通过了考验。
+LP_Race_Githyanki|A|SilverKnight|银剑骑士|银剑骑士|Melee+5,Social+1||Soldier:0.4|[PAWN_nameDef]是巫妖女王维拉基斯麾下的骑士，被赐予了一柄银剑。[PAWN_nameDef]用这柄剑砍下过十几只夺心魔的头，每一颗都献给了女王。
+LP_Race_Githyanki|A|DragonRider|红龙骑手|红龙骑手|Animals+4,Melee+2|||[PAWN_nameDef]骑着一头与吉斯洋基立有古老盟约的红龙，在星界海上巡游。那头龙从来没有喜欢过[PAWN_nameDef]，但从来没有让[PAWN_nameDef]摔下去。
+LP_Race_Githyanki|A|AstralRaider|星界海盗|星界海盗|Shooting+3,Melee+2,Crafting+1||Criminal:0.3|[PAWN_nameDef]驾驶着星界舰劫掠过无数个世界。对吉斯洋基来说，抢劫不是罪行，而是一门手艺。
+## ===== 元素裔 =====
+LP_Race_GenasiFire|C|EmberHands|灼手的炉边童|灼手童|Cooking+2,Crafting+2|||[PAWN_nameDef]一生气头发就会冒火，把家里的窗帘烧掉了好几次。后来[PAWN_nameDef]学会了去厨房生气，那里本来就需要火。
+LP_Race_GenasiWater|C|TideChild|渔村潮童|潮童|Cooking+2,Animals+1,Plants+1|||[PAWN_nameDef]在海边的渔村长大，能在水下憋气一整天。渔夫们说，只要[PAWN_nameDef]站在船头，就从来不会翻船。
+LP_Race_GenasiEarth|C|StoneVein|采石场的石脉童|石脉童|Mining+3,Construction+1|||[PAWN_nameDef]从小在采石场里玩耍，赤着脚就能感觉到哪里有矿脉。石匠们给了[PAWN_nameDef]一个外号：会走路的探矿杖。
+LP_Race_GenasiAir|C|KiteChild|风车塔的放风筝孩|风筝孩|Artistic+2,Shooting+2|||[PAWN_nameDef]在一座风车塔顶长大，放风筝从来不需要等风。[PAWN_nameDef]说风会跟自己说话，大人们都当笑话听。
+LP_Race_Genasi|A|PlaneVisitor|元素位面的访客|位面访客|Intellectual+3,Social+2|||[PAWN_nameDef]曾经穿过传送门，去血脉源头的元素位面住了几年。回来以后，[PAWN_nameDef]觉得物质界的一切都太温和、太安静了。
+LP_Race_Genasi|A|CalimshanGuard|卡林珊商会护卫|商会护卫|Melee+3,Shooting+2|||[PAWN_nameDef]在卡林珊替富商当护卫，那里的元素裔很常见，也很值钱。[PAWN_nameDef]的雇主喜欢在客人面前展示[PAWN_nameDef]，就像展示一件稀有的珍宝。
+LP_Race_Genasi,LP_Arcane|A|ElementalAttuner|元素调律师|调律师|Crafting+3,Intellectual+2|||[PAWN_nameDef]能感应物品里沉睡的元素力量，替法师和铁匠调校魔法武器。[PAWN_nameDef]说每一把剑都有自己的脾气。
+## ===== 象人 =====
+LP_Race_Loxodon|C|LoxodonScribe|圣地的抄经童|抄经童|Intellectual+2,Artistic+2|||[PAWN_nameDef]在象人的圣地里长大，用长鼻卷着笔抄写经文。[PAWN_nameDef]记得每一页经文，因为象人从不忘记。
+LP_Race_Loxodon,LP_Faith|A|StoneMonk|石匠僧侣|石匠僧侣|Construction+4,Medicine+2||Acolyte:0.3|[PAWN_nameDef]是一位石匠僧侣，花了四十年雕刻一座神殿的大门。每一刀都是一次祷告，[PAWN_nameDef]还没有雕完。
+LP_Race_Loxodon|A|Peacekeeper|和平守卫|和平守卫|Melee+3,Social+2|||[PAWN_nameDef]在城市里调解纠纷、守护弱者。[PAWN_nameDef]很少动手，但只要动手，事情就会立刻和平下来。
+## ===== 食人魔 =====
+LP_Race_Ogre|C|CaveBrute|山洞里的大块头|山洞大块头|Melee+3|Intellectual||[PAWN_nameDef]在一个山洞里长大，那里的规矩只有一条：谁拳头大谁先吃。[PAWN_nameDef]从小就是先吃的那一个。
+LP_Race_Ogre|A|HiredMuscle|雇来的打手|打手|Melee+4,Construction+1|Intellectual,Artistic||[PAWN_nameDef]给出钱最多的人当打手：塞伊、黑网、山贼，谁都行。[PAWN_nameDef]唯一的要求是管饭，而且要管饱。
+LP_Race_Ogre|A|GlutCook|大胃王厨子|大胃王厨子|Cooking+5,Melee+1|Intellectual||[PAWN_nameDef]在一家路边客栈当厨子，做的炖肉分量大到能喂饱一支小队。[PAWN_nameDef]做菜从来不看菜谱，只看锅里还剩多少。
+## ===== 鸟人 =====
+LP_Race_Aarakocra|C|CliffNest|高崖巢中长大|高崖之子|Shooting+2,Plants+1,Animals+1|Mining||[PAWN_nameDef]在悬崖上的巢里长大，学会走路之前先学会了飞。[PAWN_nameDef]至今不明白，为什么会有人愿意住在地底下。
+LP_Race_Aarakocra|A|WindMessenger|风之信使|风之信使|Social+2,Shooting+2,Intellectual+1|Mining||[PAWN_nameDef]替山脚下的城市送信，一天能飞过三座王国。[PAWN_nameDef]见过太多秘密，所以学会了不看信的内容。
+LP_Race_Aarakocra|A|SkyPatrol|天空巡逻兵|天空巡逻|Shooting+4,Melee+1|Mining|Outlander:0.3|[PAWN_nameDef]在部落的领空上巡逻，用标枪驱赶狮鹫和双足飞龙。[PAWN_nameDef]能在俯冲时射中地上的一只兔子。
+## ===== 巨灵 =====
+LP_Race_Genie|C|BrassPage|黄铜城的宫廷侍童|黄铜侍童|Social+3,Artistic+1|||[PAWN_nameDef]在火元素位面的黄铜城里当过侍童，替苏丹端火焰葡萄酒。[PAWN_nameDef]从那时起就懂得，最好的礼物是对方开口之前就送到的那一份。
+LP_Race_Genie|A|LampBound|被困千年的灯灵|灯灵|Social+3,Intellectual+3|Cleaning,Hauling|Noble:0.3|[PAWN_nameDef]被一位法师封进神灯，在黑暗里待了整整一千年。[PAWN_nameDef]答应过很多主人的愿望，每一个都实现了，只是不一定按主人想要的方式。
+LP_Race_Genie|A|Vizier|元素宫廷的大维齐尔|大维齐尔|Social+4,Intellectual+2|ManualDumb|Noble:0.3|[PAWN_nameDef]曾是元素宫廷里的大维齐尔，替苏丹管理过一整座城市的事务。[PAWN_nameDef]对凡人的礼仪很宽容，但对凡人的账本很失望。
+## ===== 六臂蛇人 =====
+LP_Race_Marilith|C|AbyssSpawn|深渊战场的幼体|深渊幼体|Melee+3|Caring||[PAWN_nameDef]诞生在深渊的血战之中，第一件学会的事情是同时握住六把刀。在深渊里，学不会的孩子活不过第一天。
+LP_Race_Marilith|A|AbyssGeneral|深渊将军|深渊将军|Melee+5,Social+2|Caring|Soldier:0.3|[PAWN_nameDef]曾在深渊的血战中指挥过一整支恶魔军团。[PAWN_nameDef]的六只手各握一把剑，每一把都有自己的名字和故事。
+LP_Race_Marilith|A|BoundServant|被契约束缚者|契约之仆|Melee+2,Crafting+2,Social+1|||[PAWN_nameDef]被塞伊的召唤师用契约束缚了数十年。召唤师死后契约失效，[PAWN_nameDef]第一次可以决定自己往哪里走。
+## ===== 流浆人 =====
+LP_Race_Oozefolk|C|SplitBorn|分裂而生|分裂而生|Cooking+2,Medicine+1|||[PAWN_nameDef]是从父辈身上分裂出来的，出生时就带着一部分模糊的记忆。[PAWN_nameDef]常常分不清哪些往事是自己的，哪些是父辈的。
+LP_Race_Oozefolk|A|SpelljammerHand|星界货船水手|货船水手|Construction+2,Shooting+2,Crafting+1|||[PAWN_nameDef]在一艘星界货船上当了很多年水手，能把身体挤进管道里修船。船坠毁在这个世界之后，[PAWN_nameDef]是唯一一个没有摔碎骨头的人，因为[PAWN_nameDef]根本没有骨头。
+LP_Race_Oozefolk|A|SewerKeeper|下水道看守|下水道看守|Medicine+2,Mining+2|||[PAWN_nameDef]在深水城的下水道里工作，清淤、驱鼠、处理一些不该出现在下水道里的东西。[PAWN_nameDef]说那里其实挺舒服的，又湿又暗。
+## ===== 阿斯莫 / 提夫林 =====
+LP_Race_Aasimar,LP_Race_Tiefling|C|HornedOutcast|被村子赶出来的孩子|被逐之子|Social+2,Melee+1,Shooting+1|||[PAWN_nameDef]生来就和别人不一样，村里人说这是神明或者魔鬼的印记。不管是哪一种，他们都不想让[PAWN_nameDef]留下来。
+LP_Race_Aasimar,LP_Faith|A|AasimarPenitent|天界血脉的赎罪者|赎罪者|Medicine+3,Social+2||Acolyte:0.4|[PAWN_nameDef]梦里总有一位天界向导在说话，可那声音越来越远。[PAWN_nameDef]走遍费伦治病救人，想找回那个声音。
+LP_Race_Aasimar|A|FallenPaladin|堕落的圣武士|堕落圣武士|Melee+4,Social+1|||[PAWN_nameDef]曾是一位圣武士，在一场无法挽回的战斗之后背弃了誓言。[PAWN_nameDef]的剑还在，信仰却不知道丢在了哪里。
+LP_Race_Tiefling|A|InfernalLawyer|地狱契约律师|契约律师|Social+5,Intellectual+2|ManualDumb|Sage:0.2|[PAWN_nameDef]专门替凡人审读和魔鬼签的契约，找出里面的每一个陷阱。生意一直很好，因为凡人总是先签字再来找[PAWN_nameDef]。
+LP_Race_Tiefling|A|TieflingGrifter|街头骗子|街头骗子|Social+3,Melee+2|||[PAWN_nameDef]发现，既然人们无论如何都会觉得长角的人是骗子，那还不如真的去当骗子。[PAWN_nameDef]干得很出色。
+## ===== 费伦通用（补充） =====
+LP_Faerun|A|PurpleDragonKnight|紫龙骑士|紫龙骑士|Melee+4,Social+2,Animals+1||Soldier:0.3|[PAWN_nameDef]曾是科米尔的紫龙骑士，在国王的旗帜下骑马冲锋。战争结束后，[PAWN_nameDef]的连队只剩下三个人和一面烧焦的旗。
+LP_Faerun|A|DragonSlayer|屠龙者|屠龙者|Melee+3,Shooting+3,Crafting+1|||[PAWN_nameDef]一生只杀死过一头龙，却为此付出了半个队伍和一只耳朵。[PAWN_nameDef]至今会被任何像翅膀扇动的声音惊醒。
+LP_Faerun|A|MonsterHunter|怪物猎人|怪物猎人|Shooting+3,Animals+2,Medicine+1||Outlander:0.2|[PAWN_nameDef]靠猎杀怪物换赏金：枭熊、蝎尾狮、夜里叼走孩子的鹰身女妖。[PAWN_nameDef]的背包里永远装着银粉、盐和一本写满批注的怪物图鉴。
+LP_Faerun,LP_Arcane|A|NetherilLooter|耐瑟遗迹盗掘者|遗迹盗掘者|Mining+2,Intellectual+3,Crafting+1||Criminal:0.2|[PAWN_nameDef]在安洛克沙漠里挖掘耐瑟瑞尔帝国的废墟，找过飞城的碎片和巫妖的手稿。[PAWN_nameDef]有一个原则：读不懂的卷轴，绝不念出声。
+LP_Faerun,LP_Ember|A|EmberRunaway|余烬氏族逃奴|逃奴|Crafting+3,Mining+2,Melee+1|||[PAWN_nameDef]在火巨人的锻炉里当了十年奴隶，某个火山爆发的夜里趁乱逃了出来。[PAWN_nameDef]至今听到铁锤声就会下意识地低下头。
+LP_Faerun|A|RetiredAdventurer|退休冒险者|退休冒险者|Melee+2,Shooting+2,Social+2,Cooking+1|||[PAWN_nameDef]年轻时屠过龙、救过公主、拿过一整箱金币，后来全花在了一家没人光顾的酒馆上。[PAWN_nameDef]的故事讲了一遍又一遍，每一遍那条龙都比上一遍更大。

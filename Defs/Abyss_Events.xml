@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.54.0 深渊仪式：深渊魔群派系与兵种、事件（深渊低语 / 魅魔来访 / 深渊入侵 / 纳巴苏猎魂）、深渊裂口的来源位面、
+     腐化 / 束缚 / 仆从 / 锚链 / 抵押等状态、心情、深渊狂乱、重申真名交流、信件。代码见 Source/Abyss*.cs。 -->
+<Defs>
+  <!-- ==================== 深渊魔群 ==================== -->
+  <FactionDef ParentName="LP_FactionBase">
+    <defName>LP_AbyssHorde</defName>
+    <label>深渊魔群</label>
+    <fixedName>深渊魔群</fixedName>
+    <description>从深渊里爬出来的恶魔：仪式召来却没被束缚住的、挣断束缚的，还有从深渊裂口里涌出来的。它们没有据点、不谈判，只想把这个世界拖进深渊。</description>
+    <pawnSingular>恶魔</pawnSingular>
+    <pawnsPlural>恶魔</pawnsPlural>
+    <techLevel>Medieval</techLevel>
+    <hidden>true</hidden>
+    <permanentEnemy>true</permanentEnemy>
+    <requiredCountAtGameStart>0</requiredCountAtGameStart>
+    <startingCountAtWorldCreation>0</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <displayInFactionSelection>false</displayInFactionSelection>
+    <settlementGenerationWeight>0</settlementGenerationWeight>
+    <canStageAttacks>false</canStageAttacks>
+    <raidsForbidden>true</raidsForbidden>
+    <canGenerateQuestSites>false</canGenerateQuestSites>
+    <rescueesCanJoin>false</rescueesCanJoin>
+    <factionIconPath>Abyss/Faction</factionIconPath>
+    <colorSpectrum>
+      <li>(0.55, 0.12, 0.18)</li>
+      <li>(0.40, 0.16, 0.36)</li>
+    </colorSpectrum>
+    <basicMemberKind>LP_AH_Dretch</basicMemberKind>
+    <backstoryFilters Inherit="False">
+      <li><categories><li>LP_AbyssBio</li></categories></li>
+    </backstoryFilters>
+    <ideoName>无底之渊</ideoName>
+    <ideoDescription>一切都会坠落，一切终将属于深渊。</ideoDescription>
+    <forcedMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Ideological</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Supremacist</li>
+    </forcedMemes>
+    <raidCommonalityFromPointsCurve><points><li>(0, 0)</li></points></raidCommonalityFromPointsCurve>
+    <pawnGroupMakers>
+      <li>
+        <kindDef>Combat</kindDef>
+        <options><LP_AH_Dretch>1</LP_AH_Dretch><LP_AH_Barlgura>0.3</LP_AH_Barlgura></options>
+      </li>
+    </pawnGroupMakers>
+  </FactionDef>
+
+  <BackstoryDef>
+    <defName>LP_Bs_DemonSpawn</defName>
+    <title>深渊所生</title>
+    <titleShort>恶魔</titleShort>
+    <description>[PAWN_nameDef]在深渊的火海与冰窟之间成形，从第一天起就在和别的恶魔撕咬。</description>
+    <slot>Childhood</slot>
+    <spawnCategories><li>LP_AbyssBio</li></spawnCategories>
+    <skillGains><Melee>4</Melee></skillGains>
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>LP_Bs_DemonVeteran</defName>
+    <title>深渊恶魔</title>
+    <titleShort>恶魔</titleShort>
+    <description>[PAWN_nameDef]在深渊的无尽战争里活了下来。凡人知道它的真名，就能把它拴住——它为此恨透了凡人。</description>
+    <slot>Adulthood</slot>
+    <spawnCategories><li>LP_AbyssBio</li></spawnCategories>
+    <skillGains><Melee>5</Melee><Social>2</Social><Mining>2</Mining></skillGains>
+  </BackstoryDef>
+
+  <PawnKindDef Name="LP_AHBase" ParentName="LP_FighterBase" Abstract="True">
+    <defaultFactionDef>LP_AbyssHorde</defaultFactionDef>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <minGenerationAge>20</minGenerationAge>
+    <maxGenerationAge>45</maxGenerationAge>
+    <apparelMoney>0</apparelMoney>
+    <weaponMoney>0</weaponMoney>
+    <invNutrition>0</invNutrition>
+    <chemicalAddictionChance>0</chemicalAddictionChance>
+    <humanPregnancyChance>0</humanPregnancyChance>
+    <canBeSapper>false</canBeSapper>
+    <initialResistanceRange>100~100</initialResistanceRange>
+    <backstoryFiltersOverride>
+      <li><categories><li>LP_AbyssBio</li></categories></li>
+    </backstoryFiltersOverride>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_AHBase">
+    <defName>LP_AH_Dretch</defName>
+    <label>劣魔</label>
+    <combatPower>35</combatPower>
+    <xenotypeSet><xenotypeChances><LP_Dretch>1</LP_Dretch></xenotypeChances></xenotypeSet>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_AHBase">
+    <defName>LP_AH_Barlgura</defName>
+    <label>巴路古拉</label>
+    <combatPower>140</combatPower>
+    <xenotypeSet><xenotypeChances><LP_Barlgura>1</LP_Barlgura></xenotypeChances></xenotypeSet>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_AHBase">
+    <defName>LP_AH_Hezrou</defName>
+    <label>哈兹魔</label>
+    <combatPower>180</combatPower>
+    <xenotypeSet><xenotypeChances><LP_Hezrou>1</LP_Hezrou></xenotypeChances></xenotypeSet>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_AHBase">
+    <defName>LP_AH_Succubus</defName>
+    <label>魅魔</label>
+    <combatPower>160</combatPower>
+    <fixedGender>Female</fixedGender>
+    <xenotypeSet><xenotypeChances><LP_Succubus>1</LP_Succubus></xenotypeChances></xenotypeSet>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_AHBase">
+    <defName>LP_AH_Nabassu</defName>
+    <label>纳巴苏</label>
+    <combatPower>260</combatPower>
+    <xenotypeSet><xenotypeChances><LP_Nabassu>1</LP_Nabassu></xenotypeChances></xenotypeSet>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_AHBase">
+    <defName>LP_AH_ShadowDemon</defName>
+    <label>影魔</label>
+    <combatPower>150</combatPower>
+    <xenotypeSet><xenotypeChances><LP_ShadowDemon>1</LP_ShadowDemon></xenotypeChances></xenotypeSet>
+  </PawnKindDef>
+
+  <!-- ==================== 深渊裂口的来源位面（不进传送门失控的随机池） ==================== -->
+  <LichPhylactery.PortalPlaneDef>
+    <defName>LP_Plane_Abyss</defName>
+    <label>深渊</label>
+    <description>暗红与紫黑翻滚的裂口里传出无数尖叫：深渊魔群正从里面往外爬。</description>
+    <color>(0.6, 0.12, 0.35)</color>
+    <randomPool>false</randomPool>
+    <holyClosable>true</holyClosable>
+    <bonusReward>LP_DemonBlood</bonusReward>
+    <bonusCount>1~2</bonusCount>
+    <spawns>
+      <li><kind>LP_AH_Dretch</kind><count>3~6</count><side>abyss</side></li>
+      <li><kind>LP_AH_Barlgura</kind><count>1~2</count><fromWave>2</fromWave><side>abyss</side></li>
+      <li><kind>LP_AH_Hezrou</kind><count>1~1</count><fromWave>3</fromWave><scale>false</scale><side>abyss</side></li>
+      <li><kind>LP_AH_ShadowDemon</kind><count>1~2</count><fromWave>3</fromWave><scale>false</scale><side>abyss</side><special>night</special></li>
+      <li><kind>LP_AH_Succubus</kind><count>1~1</count><fromWave>4</fromWave><scale>false</scale><maxTotal>2</maxTotal><side>abyss</side></li>
+      <li><kind>LP_FH_Balor</kind><count>1~1</count><fromWave>5</fromWave><scale>false</scale><maxTotal>1</maxTotal><side>abyss</side><minPoints>3500</minPoints></li>
+    </spawns>
+  </LichPhylactery.PortalPlaneDef>
+
+  <!-- ==================== 事件 ==================== -->
+  <IncidentDef>
+    <defName>LP_AbyssWhisper</defName>
+    <label>深渊低语</label>
+    <category>Misc</category>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_AbyssWhisper</workerClass>
+    <baseChance>0.3</baseChance>
+    <minRefireDays>10</minRefireDays>
+    <earliestDay>10</earliestDay>
+  </IncidentDef>
+  <IncidentDef>
+    <defName>LP_SuccubusVisit</defName>
+    <label>魅魔来访</label>
+    <category>Misc</category>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_SuccubusVisit</workerClass>
+    <baseChance>0.4</baseChance>
+    <minRefireDays>60</minRefireDays>
+    <earliestDay>30</earliestDay>
+  </IncidentDef>
+  <IncidentDef>
+    <defName>LP_AbyssIncursion</defName>
+    <label>深渊入侵</label>
+    <category>ThreatBig</category>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_AbyssIncursion</workerClass>
+    <baseChance>0</baseChance>
+    <minRefireDays>10</minRefireDays>
+    <pointsScaleable>true</pointsScaleable>
+  </IncidentDef>
+  <IncidentDef>
+    <defName>LP_NabassuHunt</defName>
+    <label>纳巴苏猎魂</label>
+    <category>ThreatSmall</category>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_NabassuHunt</workerClass>
+    <baseChance>0.25</baseChance>
+    <minRefireDays>45</minRefireDays>
+    <earliestDay>40</earliestDay>
+    <pointsScaleable>false</pointsScaleable>
+  </IncidentDef>
+
+  <LetterDef ParentName="CustomChoiceLetterBase">
+    <defName>LP_AbyssWhisperLetter</defName>
+    <letterClass>LichPhylactery.ChoiceLetter_AbyssWhisper</letterClass>
+    <color>(0.62, 0.3, 0.6)</color>
+    <flashColor>(0.62, 0.3, 0.6)</flashColor>
+  </LetterDef>
+  <LetterDef ParentName="CustomChoiceLetterBase">
+    <defName>LP_SuccubusRevealLetter</defName>
+    <letterClass>LichPhylactery.ChoiceLetter_SuccubusReveal</letterClass>
+    <color>(0.8, 0.3, 0.45)</color>
+    <flashColor>(0.8, 0.3, 0.45)</flashColor>
+  </LetterDef>
+
+  <MentalStateDef ParentName="Berserk">
+    <defName>LP_AbyssFrenzy</defName>
+    <label>深渊狂乱</label>
+    <beginLetterLabel>深渊狂乱</beginLetterLabel>
+    <beginLetter>深渊的声音在{0}的脑子里吼得太响了：[PAWN_pronoun]陷入了深渊狂乱，会攻击看见的任何人。</beginLetter>
+    <recoveryMessage>{0}的深渊狂乱平息了。</recoveryMessage>
+    <baseInspectLine>精神状态：深渊狂乱</baseInspectLine>
+  </MentalStateDef>
+
+  <InteractionDef>
+    <defName>LP_ReassertName</defName>
+    <label>重申真名</label>
+    <workerClass>LichPhylactery.InteractionWorker_ReassertName</workerClass>
+    <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
+    <initiatorXpGainSkill>Social</initiatorXpGainSkill>
+    <initiatorXpGainAmount>10</initiatorXpGainAmount>
+    <logRulesInitiator>
+      <rulesStrings>
+        <li>r_logentry->[INITIATOR_nameDef]低声对[RECIPIENT_nameDef]念出了它的真名，提醒它是谁的仆从。</li>
+        <li>r_logentry->[INITIATOR_nameDef]用真名叫住了[RECIPIENT_nameDef]，它不情愿地低下了头。</li>
+      </rulesStrings>
+    </logRulesInitiator>
+  </InteractionDef>
+
+  <!-- ==================== 腐化 ==================== -->
+  <LichPhylactery.LP_TaintFactorDef>
+    <defName>LP_TaintFactors</defName>
+    <label>深渊腐化种族系数</label>
+    <factors>
+      <li><race>Marilith</race><factor>0</factor></li>
+      <li><race>Lich</race><factor>0.5</factor><mood>false</mood></li>
+      <li><race>Tiefling</race><factor>0.5</factor></li>
+      <li><race>Cambion</race><factor>0.5</factor></li>
+      <li><race>Succubus</race><factor>0.5</factor></li>
+      <li><race>MindFlayer</race><factor>0.75</factor></li>
+      <li><race>HalfIllithid</race><factor>0.75</factor></li>
+      <li><race>Githyanki</race><factor>0.75</factor></li>
+      <li><race>Aasimar</race><factor>2</factor></li>
+      <li><race>Elf</race><factor>1.5</factor></li>
+    </factors>
+  </LichPhylactery.LP_TaintFactorDef>
+  <HediffDef>
+    <defName>LP_AbyssalTaint</defName>
+    <label>深渊腐化</label>
+    <description>深渊在这个人的灵魂上留下的污痕。低语（10%）：心情 -3，近战 +3%；阴影（30%）：近战 +6%、疼痛阈值 +10%、社交影响 -10%，向善神祈祷的神眷减半；恶魔之印（60%）：长出小角、眼睛发红，火焰伤害 ×0.8，偶尔陷入深渊狂乱，不再自然消退；堕落（90%）：到 100% 化魔。</description>
+    <hediffClass>LichPhylactery.Hediff_AbyssalTaint</hediffClass>
+    <isBad>true</isBad>
+    <initialSeverity>0.0001</initialSeverity>
+    <minSeverity>0</minSeverity>
+    <maxSeverity>1</maxSeverity>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.72, 0.32, 0.62)</defaultLabelColor>
+    <stages>
+      <li><label>潜伏</label></li>
+      <li><minSeverity>0.1</minSeverity><label>低语</label><statFactors><MeleeDamageFactor>1.03</MeleeDamageFactor></statFactors></li>
+      <li><minSeverity>0.3</minSeverity><label>阴影</label><statFactors><MeleeDamageFactor>1.06</MeleeDamageFactor><SocialImpact>0.9</SocialImpact></statFactors><statOffsets><PainShockThreshold>0.1</PainShockThreshold></statOffsets></li>
+      <li><minSeverity>0.6</minSeverity><label>恶魔之印</label><statFactors><MeleeDamageFactor>1.06</MeleeDamageFactor><SocialImpact>0.9</SocialImpact></statFactors><statOffsets><PainShockThreshold>0.1</PainShockThreshold></statOffsets><damageFactors><Flame>0.8</Flame></damageFactors></li>
+      <li><minSeverity>0.9</minSeverity><label>堕落</label><statFactors><MeleeDamageFactor>1.06</MeleeDamageFactor><SocialImpact>0.9</SocialImpact></statFactors><statOffsets><PainShockThreshold>0.1</PainShockThreshold></statOffsets><damageFactors><Flame>0.8</Flame></damageFactors></li>
+    </stages>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>LichPhylactery.PawnRenderNodeWorker_TaintMark</workerClass>
+        <texPath>Abyss/Taint/TaintHorns</texPath>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><defaultData><layer>80</layer></defaultData><dataNorth><layer>10</layer></dataNorth></drawData>
+      </li>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>LichPhylactery.PawnRenderNodeWorker_TaintMark</workerClass>
+        <texPath>Abyss/Taint/TaintEyes</texPath>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh</rotDrawMode>
+        <drawData><defaultData><layer>58</layer></defaultData></drawData>
+      </li>
+    </renderNodeProperties>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_AbyssFavored</defName>
+    <label>深渊宠儿</label>
+    <description>彻底拥抱了深渊：伤害 +10%。阿斯莫看见它会不舒服。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.8, 0.25, 0.4)</defaultLabelColor>
+    <stages><li><statFactors><MeleeDamageFactor>1.1</MeleeDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_TaintedPhylactery</defName>
+    <label>命匣受污</label>
+    <description>深渊的污痕渗进了命匣：复活所需的时间 ×1.5。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.55, 0.3, 0.55)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_SoulMortgaged</defName>
+    <label>灵魂抵押</label>
+    <description>这个人的灵魂抵押给了深渊：死后不能复活，尸体也会化作黑烟。可以在圣坛向善神赎回（30 神眷）。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.6, 0.2, 0.3)</defaultLabelColor>
+  </HediffDef>
+
+  <!-- ==================== 束缚 / 仆从 / 锚链 ==================== -->
+  <HediffDef>
+    <defName>LP_PlanarBinding</defName>
+    <label>位面束缚</label>
+    <description>被深渊仪式拴在这个世界的外来者，括号里是服从度（0～100）。服从度每天下降；降到 0 它会挣脱，变成深渊魔群的一员。主人对它重申真名、把它的床放在束缚法阵里、持有它的真名卷都能维持服从。束缚者不会衰老，被击倒不会遣返；死亡时身体化作黑烟回到深渊。</description>
+    <hediffClass>LichPhylactery.Hediff_PlanarBinding</hediffClass>
+    <isBad>false</isBad>
+    <initialSeverity>50</initialSeverity>
+    <minSeverity>0</minSeverity>
+    <maxSeverity>100</maxSeverity>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.75, 0.45, 0.85)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_AbyssThrall</defName>
+    <label>深渊仆从</label>
+    <description>限时召来的仆从：听从命令、可以征召，没有心情，不算进袭击点数，死了也没人难过。时间到了就被遣返。</description>
+    <hediffClass>LichPhylactery.Hediff_AbyssThrall</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.75, 0.45, 0.85)</defaultLabelColor>
+    <stages><li><disablesNeeds><li>Mood</li></disablesNeeds></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_PlanarShackled</defName>
+    <label>位面锚链</label>
+    <description>锚定符文的镣铐把它锁在这个位面上：倒下不会被遣返，可以俘虏；死了也会留下尸体。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.75, 0.78, 0.82)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_RitualStupor</defName>
+    <label>深渊咒缚</label>
+    <description>深渊仪式的主祭用咒文把他定住了：动弹不得。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>15000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><capMods><li><capacity>Consciousness</capacity><setMax>0.1</setMax></li></capMods></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_SuccubusDisguise</defName>
+    <label>伪装</label>
+    <description>（隐藏）</description>
+    <hediffClass>LichPhylactery.Hediff_SuccubusDisguise</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+
+  <!-- ==================== 心情 ==================== -->
+  <ThoughtDef>
+    <defName>LP_AbyssWhisperThought</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_AbyssWhisper</workerClass>
+    <stages><li><label>耳边的低语</label><description>总有个声音在我耳边说话，说的都是我不想听的事。</description><baseMoodEffect>-3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_AasimarSeesFavored</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_AasimarSeesFavored</workerClass>
+    <stages><li><label>身边有深渊宠儿</label><description>那个人身上的深渊气息浓得化不开。我身上的天界之血在发烫。</description><baseMoodEffect>-5</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_DretchStenchThought</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_DretchStench</workerClass>
+    <stages><li><label>劣魔的恶臭</label><description>那东西臭得像一池烂泥。</description><baseMoodEffect>-2</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_SuccubusHolySymbolThought</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_SuccubusHolySymbol</workerClass>
+    <stages><li><label>看见圣徽</label><description>那枚圣徽亮得刺眼。</description><baseMoodEffect>-3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_SoulCoinScream</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_SoulCoins</workerClass>
+    <stages><li><label>它们在尖叫</label><description>背包里那些灵魂币一直在尖叫，只有我听得见。</description><baseMoodEffect>-2</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_SuccubusKissed</defName>
+    <thoughtClass>Thought_MemorySocial</thoughtClass>
+    <durationDays>15</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>魅惑之吻</label><baseOpinionOffset>20</baseOpinionOffset></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_SuccubusSated</defName>
+    <durationDays>2</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>餍足</label><description>昨晚吃得很饱。</description><baseMoodEffect>6</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_SuccubusStarved</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>饥渴</label><description>已经好几个晚上没有吃到东西了。</description><baseMoodEffect>-4</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_HauntedDreams</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>噩梦缠身</label><description>一整夜都在做同一个梦，醒来却比睡前还累。</description><baseMoodEffect>-3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_RejectedAbyss</defName>
+    <durationDays>3</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>拒绝了深渊</label><description>我把那本书扔进了火里，那个声音终于安静了。</description><baseMoodEffect>3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_AbandonedBySuccubus</defName>
+    <durationDays>10</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>被抛下</label><description>它走了。我竟然还想着它。</description><baseMoodEffect>-8</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_BarlguraBloodthirst</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>见了血</label><description>刚才那一刀真漂亮。</description><baseMoodEffect>5</baseMoodEffect></li></stages>
+  </ThoughtDef>
+</Defs>

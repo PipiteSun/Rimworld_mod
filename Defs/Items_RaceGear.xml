@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.22.0 种族特色装备。种族按 1.20.0 的基因规则判断；需要本族成员在对应工作台制作（蜕鳞甲除外）。 -->
+<Defs>
+  <ApparelLayerDef>
+    <defName>LP_Shield</defName>
+    <label>盾牌</label>
+    <drawOrder>350</drawOrder>
+  </ApparelLayerDef>
+  <ApparelLayerDef>
+    <defName>LP_Accessory</defName>
+    <label>奇物</label>
+    <drawOrder>15</drawOrder>
+  </ApparelLayerDef>
+
+  <!-- 矮人投掷锤 -->
+  <ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
+    <defName>LP_DwarvenThrowingHammer</defName>
+    <label>矮人投掷锤</label>
+    <description>矮人铁匠打造的短柄战锤，锤头刻着回归符文。既能近战挥砸，也能用“投掷”能力掷向8格内的敌人，命中后锤子会自己飞回主人手中（冷却30秒）。矮人投掷没有冷却。只有矮人能在符文铁砧打造。</description>
+    <graphicData><texPath>Items/RaceGear/DwarvenThrowingHammer</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <uiIconScale>1.2</uiIconScale>
+    <techLevel>Medieval</techLevel>
+    <costStuffCount>60</costStuffCount>
+    <statBases><WorkToMake>9000</WorkToMake><Mass>1.6</Mass><MarketValue>260</MarketValue></statBases>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <recipeMaker>
+      <recipeUsers Inherit="False"><li>LP_RuneAnvil</li></recipeUsers>
+      <researchPrerequisite>LP_RacialArmory</researchPrerequisite>
+      <skillRequirements><Crafting>6</Crafting></skillRequirements>
+      <displayPriority>410</displayPriority>
+    </recipeMaker>
+    <stuffCategories><li>Metallic</li></stuffCategories>
+    <weaponTags><li>LP_DwarvenGear</li></weaponTags>
+    <tradeTags><li>LP_DwarvenGear</li></tradeTags>
+    <weaponClasses><li>Melee</li></weaponClasses>
+    <tools>
+      <li><label>锤柄</label><capacities><li>Poke</li></capacities><power>9</power><cooldownTime>2</cooldownTime></li>
+      <li><label>锤头</label><labelUsedInLogging>false</labelUsedInLogging><capacities><li>Blunt</li></capacities><power>16</power><cooldownTime>2</cooldownTime></li>
+    </tools>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_GrantAbility"><ability>LP_HammerThrow</ability></li>
+    </comps>
+    <modExtensions><li Class="LichPhylactery.RaceGearExtension"><race>Dwarf</race></li></modExtensions>
+  </ThingDef>
+  <AbilityDef>
+    <defName>LP_HammerThrow</defName>
+    <label>投掷战锤</label>
+    <description>把矮人投掷锤掷向8格内的目标，造成一次锤头伤害（随品质和材料提高），锤子随即飞回手中。冷却30秒；矮人使用没有冷却。</description>
+    <iconPath>Items/Abilities/HammerThrow</iconPath>
+    <hostile>true</hostile>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>true</disableGizmoWhileUndrafted>
+    <aiCanUse>true</aiCanUse>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>0.5</warmupTime>
+      <range>8</range>
+      <soundCast>ThrowGrenade</soundCast>
+      <targetParams>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetSelf>false</canTargetSelf>
+        <canTargetBuildings>false</canTargetBuildings>
+        <canTargetLocations>false</canTargetLocations>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_ItemAbility"><effect>hammer</effect></li>
+    </comps>
+  </AbilityDef>
+
+  <!-- 矮人符文盾 -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>LP_DwarvenRuneShield</defName>
+    <label>矮人符文盾</label>
+    <description>包铁圆盾，盾面嵌着石之符文。有25%概率挡下射来的远程攻击；站在厚岩顶的山体下时格挡率提高到45%。佩戴在左手，不占用其他装备位置。只有矮人能在符文铁砧打造。</description>
+    <graphicData><texPath>Items/RaceGear/DwarvenRuneShield</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <techLevel>Medieval</techLevel>
+    <stuffCategories><li>Metallic</li></stuffCategories>
+    <costStuffCount>70</costStuffCount>
+    <costList><WoodLog>20</WoodLog></costList>
+    <statBases><WorkToMake>8000</WorkToMake><MaxHitPoints>200</MaxHitPoints><Mass>4</Mass><EquipDelay>2</EquipDelay><StuffEffectMultiplierArmor>0</StuffEffectMultiplierArmor><StuffEffectMultiplierInsulation_Cold>0</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0</StuffEffectMultiplierInsulation_Heat></statBases>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <tradeTags><li>LP_DwarvenGear</li></tradeTags>
+    <recipeMaker>
+      <researchPrerequisite>LP_RacialArmory</researchPrerequisite>
+      <recipeUsers Inherit="False"><li>LP_RuneAnvil</li></recipeUsers>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <skillRequirements><Crafting>6</Crafting></skillRequirements>
+    </recipeMaker>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <bodyPartGroups><li>LeftHand</li></bodyPartGroups>
+      <layers><li>LP_Shield</li></layers>
+      <tags><li>LP_DwarvenGear</li></tags>
+    </apparel>
+    <modExtensions><li Class="LichPhylactery.RaceGearExtension"><race>Dwarf</race></li></modExtensions>
+  </ThingDef>
+
+  <!-- 精灵长弓 -->
+  <ThingDef ParentName="Bow_Great">
+    <defName>LP_ElvenLongbow</defName>
+    <label>精灵长弓</label>
+    <description>精灵用山梣木和秘银丝弦制作的长弓，射程比原版长弓远4格，瞄准更快。精灵用它射击时不受黑暗影响。只有精灵能制作。</description>
+    <graphicData><texPath>Items/RaceGear/ElvenLongbow</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><WorkToMake>11000</WorkToMake><MarketValue>420</MarketValue></statBases>
+    <tradeTags><li>LP_ElvenGear</li></tradeTags>
+    <weaponTags Inherit="False"><li>LP_ElvenGear</li></weaponTags>
+    <thingSetMakerTags Inherit="False" />
+    <recipeMaker><recipeUsers Inherit="False"><li>LP_RuneAnvil</li><li>CraftingSpot</li></recipeUsers><researchPrerequisite>LP_RacialArmory</researchPrerequisite></recipeMaker>
+    <verbs Inherit="False">
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Arrow_Great</defaultProjectile>
+        <warmupTime>1.5</warmupTime>
+        <range>33.9</range>
+        <soundCast>Bow_Large</soundCast>
+      </li>
+    </verbs>
+    <modExtensions><li Class="LichPhylactery.RaceGearExtension"><race>Elf</race></li></modExtensions>
+  </ThingDef>
+
+  <!-- 精灵锁子甲 -->
+  <ThingDef ParentName="ApparelBase">
+    <defName>LP_ElvenChain</defName>
+    <label>精灵锁子甲</label>
+    <description>用秘银细环编成的锁子甲，轻得像丝绸，防护却接近板甲，不会拖慢穿戴者的移动和工作。精灵穿着时近战闪避额外+5%。只能用秘银、由精灵在符文铁砧打造（需要秘金冶炼）。</description>
+    <graphicData><texPath>Items/RaceGear/ElvenChain</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <techLevel>Medieval</techLevel>
+    <costList><LP_Mithral>120</LP_Mithral></costList>
+    <statBases>
+      <WorkToMake>24000</WorkToMake>
+      <MaxHitPoints>300</MaxHitPoints>
+      <Mass>5</Mass>
+      <MarketValue>1500</MarketValue>
+      <ArmorRating_Sharp>0.95</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.36</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.4</ArmorRating_Heat>
+      <Insulation_Cold>4</Insulation_Cold>
+      <EquipDelay>4</EquipDelay>
+    </statBases>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <tradeTags><li>LP_ElvenGear</li><li>Armor</li></tradeTags>
+    <recipeMaker>
+      <researchPrerequisite>LP_MythicMetallurgy</researchPrerequisite>
+      <recipeUsers Inherit="False"><li>LP_RuneAnvil</li></recipeUsers>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <skillRequirements><Crafting>8</Crafting></skillRequirements>
+    </recipeMaker>
+    <colorGenerator Class="ColorGenerator_Single"><color>(0.84,0.9,0.94)</color></colorGenerator>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PlateArmor/PlateArmor</wornGraphicPath>
+      <layers><li>Middle</li><li>Shell</li></layers>
+      <tags><li>LP_ElvenGear</li></tags>
+      <defaultOutfitTags><li>Soldier</li></defaultOutfitTags>
+    </apparel>
+    <modExtensions>
+      <li Class="LichPhylactery.RaceGearExtension">
+        <race>Elf</race>
+        <!-- 近战闪避的原始值以“点”计（约每点2%），2.5点≈+5%。 -->
+        <raceStatOffsets><MeleeDodgeChance>2.5</MeleeDodgeChance></raceStatOffsets>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- 半兽人巨斧 -->
+  <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+    <defName>LP_OrcishGreataxe</defName>
+    <label>半兽人巨斧</label>
+    <description>沉重的双手巨斧，斧刃带着粗野的锯齿。每击倒或杀死一个敌人，5秒内近战冷却-30%。半兽人挥舞它时野蛮重击的概率翻倍。只有半兽人能在符文铁砧打造。</description>
+    <graphicData><texPath>Items/RaceGear/OrcishGreataxe</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <techLevel>Medieval</techLevel>
+    <costStuffCount>120</costStuffCount>
+    <statBases><WorkToMake>14000</WorkToMake><Mass>4.5</Mass><MarketValue>320</MarketValue></statBases>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <recipeMaker>
+      <recipeUsers Inherit="False"><li>LP_RuneAnvil</li></recipeUsers>
+      <researchPrerequisite>LP_RacialBlades</researchPrerequisite>
+      <skillRequirements><Crafting>6</Crafting></skillRequirements>
+      <displayPriority>420</displayPriority>
+    </recipeMaker>
+    <stuffCategories><li>Metallic</li></stuffCategories>
+    <weaponTags><li>LP_OrcishGear</li></weaponTags>
+    <tradeTags><li>LP_OrcishGear</li></tradeTags>
+    <weaponClasses><li>Melee</li></weaponClasses>
+    <tools>
+      <li><label>斧柄</label><capacities><li>Poke</li></capacities><power>10</power><cooldownTime>2.2</cooldownTime></li>
+      <li><label>斧刃</label><labelUsedInLogging>false</labelUsedInLogging><capacities><li>Cut</li></capacities><power>27</power><cooldownTime>2.9</cooldownTime><armorPenetration>0.3</armorPenetration></li>
+    </tools>
+    <modExtensions><li Class="LichPhylactery.RaceGearExtension"><race>HalfOrc</race></li></modExtensions>
+  </ThingDef>
+  <HediffDef>
+    <defName>LP_AxeFrenzy</defName>
+    <label>斧下狂热</label>
+    <description>刚砍倒一个敌人，血往头上涌：近战冷却-30%。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>300</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><statFactors><MeleeCooldownFactor>0.7</MeleeCooldownFactor></statFactors></li></stages>
+  </HediffDef>
+
+  <!-- 牛头人角盔 -->
+  <ThingDef ParentName="ArmorHelmetMakeableBase">
+    <defName>LP_MinotaurHornHelm</defName>
+    <label>牛头人角盔</label>
+    <description>两侧装着弯角的铁盔。非牛头人戴上它能使用弱化的冲撞（4格、伤害减半、冷却1天）；牛头人戴着它时，自身的蛮牛冲撞距离+3格。只有牛头人能在符文铁砧打造。</description>
+    <techLevel>Medieval</techLevel>
+    <graphicData><texPath>Items/RaceGear/MinotaurHornHelm</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stuffCategories><li>Metallic</li></stuffCategories>
+    <costStuffCount>60</costStuffCount>
+    <tradeTags><li>LP_MinotaurGear</li><li>Armor</li></tradeTags>
+    <statBases>
+      <WorkToMake>5000</WorkToMake>
+      <MaxHitPoints>140</MaxHitPoints>
+      <Mass>3</Mass>
+      <MarketValue>240</MarketValue>
+      <StuffEffectMultiplierArmor>0.6</StuffEffectMultiplierArmor>
+      <StuffEffectMultiplierInsulation_Cold>0.15</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0</StuffEffectMultiplierInsulation_Heat>
+      <EquipDelay>1.5</EquipDelay>
+    </statBases>
+    <recipeMaker>
+      <researchPrerequisite>LP_RacialArmory</researchPrerequisite>
+      <recipeUsers Inherit="False"><li>LP_RuneAnvil</li></recipeUsers>
+    </recipeMaker>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <bodyPartGroups><li>UpperHead</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/SimpleHelmet/SimpleHelmet</wornGraphicPath>
+      <layers><li>Overhead</li></layers>
+      <tags><li>LP_MinotaurGear</li></tags>
+    </apparel>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_GrantAbility"><ability>LP_HelmCharge</ability><notForRace>Minotaur</notForRace></li>
+    </comps>
+    <modExtensions><li Class="LichPhylactery.RaceGearExtension"><race>Minotaur</race></li></modExtensions>
+  </ThingDef>
+  <AbilityDef>
+    <defName>LP_HelmCharge</defName>
+    <label>角盔冲撞</label>
+    <description>借着角盔向前猛冲最多4格，撞上第一个敌人：伤害是牛头人蛮牛冲撞的一半，并把对方撞退2格、眩晕1秒。冷却1天。</description>
+    <iconPath>Items/Abilities/HelmCharge</iconPath>
+    <hostile>true</hostile>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>true</disableGizmoWhileUndrafted>
+    <aiCanUse>false</aiCanUse>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>0.4</warmupTime>
+      <range>4.9</range>
+      <requireLineOfSight>true</requireLineOfSight>
+      <targetParams>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetSelf>false</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_ItemAbility"><effect>helmcharge</effect><range>4</range><damageFactor>0.5</damageFactor></li>
+    </comps>
+  </AbilityDef>
+
+  <!-- 星界战甲 -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>LP_GithAstralArmor</defName>
+    <label>星界战甲</label>
+    <description>吉斯洋基的中甲，甲片间嵌着星界水晶。吉斯洋基穿着它完成星界跳跃后，3秒内受到的伤害减半。只有吉斯洋基能在符文铁砧打造。</description>
+    <graphicData><texPath>Items/RaceGear/GithAstralArmor</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <techLevel>Medieval</techLevel>
+    <stuffCategories><li>Metallic</li></stuffCategories>
+    <costStuffCount>90</costStuffCount>
+    <costList><Silver>30</Silver></costList>
+    <statBases>
+      <WorkToMake>14000</WorkToMake>
+      <MaxHitPoints>220</MaxHitPoints>
+      <Mass>8</Mass>
+      <MarketValue>600</MarketValue>
+      <StuffEffectMultiplierArmor>0.8</StuffEffectMultiplierArmor>
+      <StuffEffectMultiplierInsulation_Cold>0.3</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0</StuffEffectMultiplierInsulation_Heat>
+      <EquipDelay>4</EquipDelay>
+    </statBases>
+    <equippedStatOffsets><MoveSpeed>-0.2</MoveSpeed></equippedStatOffsets>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <tradeTags><li>LP_GithGear</li><li>Armor</li></tradeTags>
+    <recipeMaker>
+      <researchPrerequisite>LP_AstralPlate</researchPrerequisite>
+      <recipeUsers Inherit="False"><li>LP_RuneAnvil</li></recipeUsers>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <skillRequirements><Crafting>7</Crafting></skillRequirements>
+    </recipeMaker>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Shoulders</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest</wornGraphicPath>
+      <layers><li>Middle</li></layers>
+      <tags><li>LP_GithGear</li></tags>
+      <defaultOutfitTags><li>Soldier</li></defaultOutfitTags>
+    </apparel>
+    <modExtensions><li Class="LichPhylactery.RaceGearExtension"><race>Githyanki</race></li></modExtensions>
+  </ThingDef>
+  <HediffDef>
+    <defName>LP_AstralWard</defName>
+    <label>星界余波</label>
+    <description>刚从星界跃回，身形还有一半留在星界里：受到的伤害减半。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>180</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <modExtensions><li Class="LichPhylactery.ItemDamageFactors"><factor>0.5</factor><all>true</all></li></modExtensions>
+  </HediffDef>
+
+  <!-- 蜕鳞甲 -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>LP_DragonShedArmor</defName>
+    <label>蜕鳞甲</label>
+    <description>用力能龙裔蜕下的鳞片缀成的甲衣。穿着者免疫 EMP 眩晕，受到的力场类伤害-50%。符文铁砧或熔火锻炉都能打造；力能龙裔自己不屑于穿同族的旧鳞。</description>
+    <graphicData><texPath>Items/RaceGear/DragonShedArmor</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <techLevel>Medieval</techLevel>
+    <costList><LP_DragonShed>30</LP_DragonShed><Steel>20</Steel></costList>
+    <statBases>
+      <WorkToMake>16000</WorkToMake>
+      <MaxHitPoints>280</MaxHitPoints>
+      <Mass>6</Mass>
+      <MarketValue>2200</MarketValue>
+      <ArmorRating_Sharp>0.8</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.5</ArmorRating_Heat>
+      <Insulation_Cold>6</Insulation_Cold>
+      <EquipDelay>4</EquipDelay>
+    </statBases>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <tradeTags><li>LP_DragonGear</li><li>Armor</li></tradeTags>
+    <recipeMaker>
+      <researchPrerequisite>LP_RacialArmory</researchPrerequisite>
+      <recipeUsers Inherit="False"><li>LP_RuneAnvil</li><li>LP_FireGiantForge</li></recipeUsers>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <skillRequirements><Crafting>7</Crafting></skillRequirements>
+    </recipeMaker>
+    <colorGenerator Class="ColorGenerator_Single"><color>(0.58,0.73,0.87)</color></colorGenerator>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Shoulders</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest</wornGraphicPath>
+      <layers><li>Middle</li></layers>
+      <tags><li>LP_DragonGear</li></tags>
+      <defaultOutfitTags><li>Soldier</li></defaultOutfitTags>
+    </apparel>
+    <modExtensions>
+      <li Class="LichPhylactery.ItemDamageFactors">
+        <factor>0.5</factor>
+        <damageDefs><li>LP_Force</li></damageDefs>
+        <keywords><li>Force</li></keywords>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- 夺心魔触须披风 -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>LP_IllithidTendrilCloak</defName>
+    <label>夺心魔触须披风</label>
+    <description>用夺心魔蜕下的触须皮缝成的披风，边缘的触须还会微微抽动。穿着者的恐惧类能力更强（被吓倒的人额外眩晕）；夺心魔穿着时心灵震爆射程+2格。同一地图上看见有人穿着它的非夺心魔殖民者会心情-2（不叠加）。只有夺心魔能在裁缝台或法袍织机制作。</description>
+    <graphicData><texPath>Items/RaceGear/IllithidTendrilCloak</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <techLevel>Medieval</techLevel>
+    <stuffCategories><li>Leathery</li></stuffCategories>
+    <costStuffCount>60</costStuffCount>
+    <costList><LP_Tadpole>1</LP_Tadpole></costList>
+    <statBases>
+      <WorkToMake>9000</WorkToMake>
+      <MaxHitPoints>160</MaxHitPoints>
+      <Mass>2</Mass>
+      <MarketValue>700</MarketValue>
+      <StuffEffectMultiplierArmor>0.3</StuffEffectMultiplierArmor>
+      <StuffEffectMultiplierInsulation_Cold>0.5</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0.3</StuffEffectMultiplierInsulation_Heat>
+      <EquipDelay>2</EquipDelay>
+    </statBases>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <tradeTags><li>LP_IllithidGear</li></tradeTags>
+    <recipeMaker>
+      <recipeUsers Inherit="False"><li>ElectricTailoringBench</li><li>HandTailoringBench</li><li>LP_ArcaneLoom</li></recipeUsers>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Tailor</effectWorking>
+      <soundWorking>Recipe_Tailor</soundWorking>
+      <skillRequirements><Crafting>5</Crafting></skillRequirements>
+    </recipeMaker>
+    <colorGenerator Class="ColorGenerator_Single"><color>(0.42,0.27,0.47)</color></colorGenerator>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Shoulders</li><li>Arms</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath>
+      <layers><li>Shell</li></layers>
+      <tags><li>LP_IllithidGear</li></tags>
+    </apparel>
+    <modExtensions><li Class="LichPhylactery.RaceGearExtension"><race>MindFlayer</race></li></modExtensions>
+  </ThingDef>
+  <ThoughtDef>
+    <defName>LP_SawTendrilCloak</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_TendrilCloak</workerClass>
+    <validWhileDespawned>false</validWhileDespawned>
+    <stages>
+      <li>
+        <label>看到触须披风</label>
+        <description>有人穿着夺心魔触须做的披风走来走去，那些触须还在动。</description>
+        <baseMoodEffect>-2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- 骨质护符 -->
+  <ThingDef ParentName="ApparelBase">
+    <defName>LP_BoneTalisman</defName>
+    <label>骨质护符</label>
+    <description>巫妖用骨片和人皮串成的护符。敌方死灵造物不会主动攻击佩戴者；佩戴者若先动手攻击死灵造物，它们照常还手。佩戴在饰品位置，不占用其他装备位置。只有巫妖能在死灵仪式台制作。</description>
+    <graphicData><texPath>Items/RaceGear/BoneTalisman</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <techLevel>Medieval</techLevel>
+    <statBases><MaxHitPoints>80</MaxHitPoints><Mass>0.2</Mass><MarketValue>500</MarketValue><EquipDelay>1</EquipDelay></statBases>
+    <thingCategories><li>ApparelMisc</li></thingCategories>
+    <tradeTags><li>LP_LichGear</li></tradeTags>
+    <smeltable>false</smeltable>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <bodyPartGroups><li>Torso</li></bodyPartGroups>
+      <layers><li>LP_Accessory</li></layers>
+      <tags><li>LP_LichGear</li></tags>
+    </apparel>
+    <modExtensions><li Class="LichPhylactery.RaceGearExtension"><race>Lich</race></li></modExtensions>
+  </ThingDef>
+  <RecipeDef>
+    <defName>LP_MakeBoneTalisman</defName>
+    <label>制作骨质护符</label>
+    <description>巫妖用10份人皮和20份白银制作一枚骨质护符。只有巫妖能做。</description>
+    <jobString>正在制作骨质护符。</jobString>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <workAmount>3000</workAmount>
+    <recipeUsers Inherit="False"><li>LP_Altar</li></recipeUsers>
+    <ingredients>
+      <li><filter><thingDefs><li>Leather_Human</li></thingDefs></filter><count>10</count></li>
+      <li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>20</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>Leather_Human</li><li>Silver</li></thingDefs></fixedIngredientFilter>
+    <products><LP_BoneTalisman>1</LP_BoneTalisman></products>
+  </RecipeDef>
+</Defs>

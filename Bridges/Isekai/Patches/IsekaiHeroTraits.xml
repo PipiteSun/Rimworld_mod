@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.58.0 强力特性 × Isekai RPG Leveling 的互斥（只在 Isekai 启用时加载，见 LoadFolders.xml）。双方的 conflictingTraits 都写上：
+     四个天命、英雄之资、极致 × 主角 / 反派 / 回归者 / 召唤勇者 / 转生者 / 空洞之核 / 封印之力；图腾之魂 × 狂战士之血；法术抗体 × 开悟。
+     天赋·某项 × 对应白色属性特性是按 degree 的，在 Source/HeroTraitsIsekai.cs 里处理。 -->
+<Patch>
+  <Operation Class="PatchOperationConditional">
+    <success>Always</success>
+    <xpath>Defs/TraitDef[defName="LP_DivineChampion"]/conflictingTraits</xpath>
+    <match Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="LP_DivineChampion"]/conflictingTraits</xpath><value><li>Isekai_Protagonist</li><li>Isekai_Antagonist</li><li>Isekai_Regressor</li><li>Isekai_SummonedHero</li><li>Isekai_Reincarnated</li><li>Isekai_HollowCore</li><li>Isekai_SealedPower</li></value></match>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="LP_DivineChampion"]</xpath><value><conflictingTraits><li>Isekai_Protagonist</li><li>Isekai_Antagonist</li><li>Isekai_Regressor</li><li>Isekai_SummonedHero</li><li>Isekai_Reincarnated</li><li>Isekai_HollowCore</li><li>Isekai_SealedPower</li></conflictingTraits></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <success>Always</success>
+    <xpath>Defs/TraitDef[defName="LP_HeroicSpark"]/conflictingTraits</xpath>
+    <match Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="LP_HeroicSpark"]/conflictingTraits</xpath><value><li>Isekai_Protagonist</li><li>Isekai_Antagonist</li><li>Isekai_Regressor</li><li>Isekai_SummonedHero</li><li>Isekai_Reincarnated</li><li>Isekai_HollowCore</li><li>Isekai_SealedPower</li></value></match>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="LP_HeroicSpark"]</xpath><value><conflictingTraits><li>Isekai_Protagonist</li><li>Isekai_Antagonist</li><li>Isekai_Regressor</li><li>Isekai_SummonedHero</li><li>Isekai_Reincarnated</li><li>Isekai_HollowCore</li><li>Isekai_SealedPower</li></conflictingTraits></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <success>Always</success>
+    <xpath>Defs/TraitDef[defName="LP_PactDestiny"]/conflictingTraits</xpath>
+    <match Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="LP_PactDestiny"]/conflictingTraits</xpath><value><li>Isekai_Protagonist</li><li>Isekai_Antagonist</li><li>Isekai_Regressor</li><li>Isekai_SummonedHero</li><li>Isekai_Reincarnated</li><li>Isekai_HollowCore</li><li>Isekai_SealedPower</li></value></match>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="LP_PactDestiny"]</xpath><value><conflictingTraits><li>Isekai_Protagonist</li><li>Isekai_Antagonist</li><li>Isekai_Regressor</li><li>Isekai_SummonedHero</li><li>Isekai_Reincarnated</li><li>Isekai_HollowCore</li><li>Isekai_SealedPower</li></conflictingTraits></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <success>Always</success>
+    <xpath>Defs/TraitDef[defName="LP_Paragon"]/conflictingTraits</xpath>
+    <match Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="LP_Paragon"]/conflictingTraits</xpath><value><li>Isekai_Protagonist</li><li>Isekai_Antagonist</li><li>Isekai_Regressor</li><li>Isekai_SummonedHero</li><li>Isekai_Reincarnated</li><li>Isekai_HollowCore</li><li>Isekai_SealedPower</li></value></match>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="LP_Paragon"]</xpath><value><conflictingTraits><li>Isekai_Protagonist</li><li>Isekai_Antagonist</li><li>Isekai_Regressor</li><li>Isekai_SummonedHero</li><li>Isekai_Reincarnated</li><li>Isekai_HollowCore</li><li>Isekai_SealedPower</li></conflictingTraits></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <success>Always</success>
+    <xpath>Defs/TraitDef[defName="LP_Prophesied"]/conflictingTraits</xpath>
+    <match Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="LP_Prophesied"]/conflictingTraits</xpath><value><li>Isekai_Protagonist</li><li>Isekai_Antagonist</li><li>Isekai_Regressor</li><li>Isekai_SummonedHero</li><li>Isekai_Reincarnated</li><li>Isekai_HollowCore</li><li>Isekai_SealedPower</li></value></match>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="LP_Prophesied"]</xpath><value><conflictingTraits><li>Isekai_Protagonist</li><li>Isekai_Antagonist</li><li>Isekai_Regressor</li><li>Isekai_SummonedHero</li><li>Isekai_Reincarnated</li><li>Isekai_HollowCore</li><li>Isekai_SealedPower</li></conflictingTraits></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <success>Always</success>
+    <xpath>Defs/TraitDef[defName="LP_SpellWarded"]/conflictingTraits</xpath>
+    <match Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="LP_SpellWarded"]/conflictingTraits</xpath><value><li>Isekai_Enlightened</li></value></match>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="LP_SpellWarded"]</xpath><value><conflictingTraits><li>Isekai_Enlightened</li></conflictingTraits></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <success>Always</success>
+    <xpath>Defs/TraitDef[defName="LP_TotemSpirit"]/conflictingTraits</xpath>
+    <match Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="LP_TotemSpirit"]/conflictingTraits</xpath><value><li>Isekai_BerserkerBlood</li></value></match>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="LP_TotemSpirit"]</xpath><value><conflictingTraits><li>Isekai_BerserkerBlood</li></conflictingTraits></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <success>Always</success>
+    <xpath>Defs/TraitDef[defName="LP_WeaveChild"]/conflictingTraits</xpath>
+    <match Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="LP_WeaveChild"]/conflictingTraits</xpath><value><li>Isekai_Protagonist</li><li>Isekai_Antagonist</li><li>Isekai_Regressor</li><li>Isekai_SummonedHero</li><li>Isekai_Reincarnated</li><li>Isekai_HollowCore</li><li>Isekai_SealedPower</li></value></match>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="LP_WeaveChild"]</xpath><value><conflictingTraits><li>Isekai_Protagonist</li><li>Isekai_Antagonist</li><li>Isekai_Regressor</li><li>Isekai_SummonedHero</li><li>Isekai_Reincarnated</li><li>Isekai_HollowCore</li><li>Isekai_SealedPower</li></conflictingTraits></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <success>Always</success>
+    <xpath>Defs/TraitDef[defName="Isekai_Antagonist"]/conflictingTraits</xpath>
+    <match Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="Isekai_Antagonist"]/conflictingTraits</xpath><value><li>LP_Prophesied</li><li>LP_WeaveChild</li><li>LP_HeroicSpark</li><li>LP_DivineChampion</li><li>LP_Paragon</li><li>LP_PactDestiny</li></value></match>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="Isekai_Antagonist"]</xpath><value><conflictingTraits><li>LP_Prophesied</li><li>LP_WeaveChild</li><li>LP_HeroicSpark</li><li>LP_DivineChampion</li><li>LP_Paragon</li><li>LP_PactDestiny</li></conflictingTraits></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <success>Always</success>
+    <xpath>Defs/TraitDef[defName="Isekai_BerserkerBlood"]/conflictingTraits</xpath>
+    <match Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="Isekai_BerserkerBlood"]/conflictingTraits</xpath><value><li>LP_TotemSpirit</li></value></match>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="Isekai_BerserkerBlood"]</xpath><value><conflictingTraits><li>LP_TotemSpirit</li></conflictingTraits></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <success>Always</success>
+    <xpath>Defs/TraitDef[defName="Isekai_Enlightened"]/conflictingTraits</xpath>
+    <match Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="Isekai_Enlightened"]/conflictingTraits</xpath><value><li>LP_SpellWarded</li></value></match>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="Isekai_Enlightened"]</xpath><value><conflictingTraits><li>LP_SpellWarded</li></conflictingTraits></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <success>Always</success>
+    <xpath>Defs/TraitDef[defName="Isekai_HollowCore"]/conflictingTraits</xpath>
+    <match Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="Isekai_HollowCore"]/conflictingTraits</xpath><value><li>LP_Prophesied</li><li>LP_WeaveChild</li><li>LP_HeroicSpark</li><li>LP_DivineChampion</li><li>LP_Paragon</li><li>LP_PactDestiny</li></value></match>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="Isekai_HollowCore"]</xpath><value><conflictingTraits><li>LP_Prophesied</li><li>LP_WeaveChild</li><li>LP_HeroicSpark</li><li>LP_DivineChampion</li><li>LP_Paragon</li><li>LP_PactDestiny</li></conflictingTraits></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <success>Always</success>
+    <xpath>Defs/TraitDef[defName="Isekai_Protagonist"]/conflictingTraits</xpath>
+    <match Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="Isekai_Protagonist"]/conflictingTraits</xpath><value><li>LP_Prophesied</li><li>LP_WeaveChild</li><li>LP_HeroicSpark</li><li>LP_DivineChampion</li><li>LP_Paragon</li><li>LP_PactDestiny</li></value></match>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="Isekai_Protagonist"]</xpath><value><conflictingTraits><li>LP_Prophesied</li><li>LP_WeaveChild</li><li>LP_HeroicSpark</li><li>LP_DivineChampion</li><li>LP_Paragon</li><li>LP_PactDestiny</li></conflictingTraits></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <success>Always</success>
+    <xpath>Defs/TraitDef[defName="Isekai_Regressor"]/conflictingTraits</xpath>
+    <match Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="Isekai_Regressor"]/conflictingTraits</xpath><value><li>LP_Prophesied</li><li>LP_WeaveChild</li><li>LP_HeroicSpark</li><li>LP_DivineChampion</li><li>LP_Paragon</li><li>LP_PactDestiny</li></value></match>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="Isekai_Regressor"]</xpath><value><conflictingTraits><li>LP_Prophesied</li><li>LP_WeaveChild</li><li>LP_HeroicSpark</li><li>LP_DivineChampion</li><li>LP_Paragon</li><li>LP_PactDestiny</li></conflictingTraits></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <success>Always</success>
+    <xpath>Defs/TraitDef[defName="Isekai_Reincarnated"]/conflictingTraits</xpath>
+    <match Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="Isekai_Reincarnated"]/conflictingTraits</xpath><value><li>LP_Prophesied</li><li>LP_WeaveChild</li><li>LP_HeroicSpark</li><li>LP_DivineChampion</li><li>LP_Paragon</li><li>LP_PactDestiny</li></value></match>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="Isekai_Reincarnated"]</xpath><value><conflictingTraits><li>LP_Prophesied</li><li>LP_WeaveChild</li><li>LP_HeroicSpark</li><li>LP_DivineChampion</li><li>LP_Paragon</li><li>LP_PactDestiny</li></conflictingTraits></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <success>Always</success>
+    <xpath>Defs/TraitDef[defName="Isekai_SealedPower"]/conflictingTraits</xpath>
+    <match Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="Isekai_SealedPower"]/conflictingTraits</xpath><value><li>LP_Prophesied</li><li>LP_WeaveChild</li><li>LP_HeroicSpark</li><li>LP_DivineChampion</li><li>LP_Paragon</li><li>LP_PactDestiny</li></value></match>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="Isekai_SealedPower"]</xpath><value><conflictingTraits><li>LP_Prophesied</li><li>LP_WeaveChild</li><li>LP_HeroicSpark</li><li>LP_DivineChampion</li><li>LP_Paragon</li><li>LP_PactDestiny</li></conflictingTraits></value></nomatch>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <success>Always</success>
+    <xpath>Defs/TraitDef[defName="Isekai_SummonedHero"]/conflictingTraits</xpath>
+    <match Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="Isekai_SummonedHero"]/conflictingTraits</xpath><value><li>LP_Prophesied</li><li>LP_WeaveChild</li><li>LP_HeroicSpark</li><li>LP_DivineChampion</li><li>LP_Paragon</li><li>LP_PactDestiny</li></value></match>
+    <nomatch Class="PatchOperationAdd"><xpath>Defs/TraitDef[defName="Isekai_SummonedHero"]</xpath><value><conflictingTraits><li>LP_Prophesied</li><li>LP_WeaveChild</li><li>LP_HeroicSpark</li><li>LP_DivineChampion</li><li>LP_Paragon</li><li>LP_PactDestiny</li></conflictingTraits></value></nomatch>
+  </Operation></Patch>

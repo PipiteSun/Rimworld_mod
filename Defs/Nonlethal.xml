@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.61.0 制伏武器：两种制伏伤害（不造成伤口，只叠加“制伏”状态）、制伏 / 缚网状态、5 件武器与投射物（配方由 recipeMaker 生成）。
+     研究“制伏战术”在 Defs/Research.xml；规则代码在 Source/Nonlethal.cs。不进任何 NPC 派系的武器标签，商人只在 Patches/Nonlethal.xml 里少量进货。 -->
+<Defs>
+
+  <!-- ==================== 伤害 ==================== -->
+  <DamageDef>
+    <defName>LP_Subdue</defName>
+    <label>制伏打击</label>
+    <workerClass>LichPhylactery.DamageWorker_LPSubdue</workerClass>
+    <externalViolence>true</externalViolence>
+    <makesBlood>false</makesBlood>
+    <canInterruptJobs>true</canInterruptJobs>
+    <hasForcefulImpact>false</hasForcefulImpact>
+    <deathMessage>{0}被制伏了。</deathMessage>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Blunt</armorCategory>
+    <defaultDamage>10</defaultDamage>
+  </DamageDef>
+  <DamageDef>
+    <defName>LP_SleepMagic</defName>
+    <label>安眠魔法</label>
+    <workerClass>LichPhylactery.DamageWorker_LPSubdue</workerClass>
+    <externalViolence>true</externalViolence>
+    <makesBlood>false</makesBlood>
+    <canInterruptJobs>true</canInterruptJobs>
+    <hasForcefulImpact>false</hasForcefulImpact>
+    <deathMessage>{0}沉沉睡去。</deathMessage>
+    <defaultDamage>10</defaultDamage>
+    <explosionCellFleck>BlastExtinguisher</explosionCellFleck>
+    <explosionColorCenter>(0.78, 0.55, 1, 0.55)</explosionColorCenter>
+    <explosionColorEdge>(0.65, 0.45, 0.9, 0.2)</explosionColorEdge>
+    <soundExplosion>Explosion_Smoke</soundExplosion>
+  </DamageDef>
+
+  <!-- 制伏近战：工具能力 → 招式 → LP_Subdue 伤害（战斗日志沿用原版“砸”的说法） -->
+  <ToolCapacityDef>
+    <defName>LP_SubdueStrike</defName>
+    <label>制伏</label>
+  </ToolCapacityDef>
+  <ManeuverDef>
+    <defName>LP_SubdueStrike</defName>
+    <requiredCapacity>LP_SubdueStrike</requiredCapacity>
+    <verb>
+      <verbClass>Verb_MeleeAttackDamage</verbClass>
+      <meleeDamageDef>LP_Subdue</meleeDamageDef>
+    </verb>
+    <logEntryDef>MeleeAttack</logEntryDef>
+    <combatLogRulesHit>Maneuver_Smash_MeleeHit</combatLogRulesHit>
+    <combatLogRulesDeflect>Maneuver_Smash_MeleeDeflect</combatLogRulesDeflect>
+    <combatLogRulesMiss>Maneuver_Smash_MeleeMiss</combatLogRulesMiss>
+    <combatLogRulesDodge>Maneuver_Smash_MeleeDodge</combatLogRulesDodge>
+  </ManeuverDef>
+
+  <!-- ==================== 状态 ==================== -->
+  <HediffDef>
+    <defName>LP_Subdued</defName>
+    <label>制伏</label>
+    <description>被制伏武器或安眠魔法打得头晕眼花。这不是伤口：不流血、不感染、不需要治疗，止痛药也没用。严重度到 100% 时昏迷倒地（意识最多 10%，不会因此死亡）。最后一次受到制伏伤害后 1 小时内不消退，之后每小时减少 10%。其他来源的真实伤口照常按原版规则计算。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.78, 0.62, 1)</defaultLabelColor>
+    <isBad>true</isBad>
+    <makesSickThought>false</makesSickThought>
+    <everCurableByItem>false</everCurableByItem>
+    <initialSeverity>0.01</initialSeverity>
+    <maxSeverity>1.3</maxSeverity>
+    <comps>
+      <li Class="LichPhylactery.HediffCompProperties_SubdueRecover">
+        <graceTicks>2500</graceTicks>
+        <perHour>0.1</perHour>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>晕眩</label>
+        <capMods>
+          <li><capacity>Moving</capacity><postFactor>0.9</postFactor></li>
+          <li><capacity>Manipulation</capacity><offset>-0.1</offset></li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.4</minSeverity>
+        <label>摇摇欲坠</label>
+        <capMods>
+          <li><capacity>Consciousness</capacity><setMax>0.7</setMax></li>
+          <li><capacity>Moving</capacity><postFactor>0.7</postFactor></li>
+          <li><capacity>Manipulation</capacity><offset>-0.1</offset></li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.7</minSeverity>
+        <label>快撑不住</label>
+        <capMods>
+          <li><capacity>Consciousness</capacity><setMax>0.4</setMax></li>
+          <li><capacity>Moving</capacity><postFactor>0.5</postFactor></li>
+          <li><capacity>Manipulation</capacity><offset>-0.2</offset></li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>1.0</minSeverity>
+        <label>昏迷倒地</label>
+        <capMods>
+          <li><capacity>Consciousness</capacity><setMax>0.1</setMax></li>
+          <li><capacity>Moving</capacity><postFactor>0.5</postFactor></li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_Netted</defName>
+    <label>缚网</label>
+    <description>被束缚网缠住了手脚，移动能力 -50%。几秒后就能挣脱。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.75, 0.75, 0.7)</defaultLabelColor>
+    <isBad>true</isBad>
+    <makesSickThought>false</makesSickThought>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>360</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <capMods>
+          <li><capacity>Moving</capacity><postFactor>0.5</postFactor></li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- ==================== 武器 ==================== -->
+  <!-- 1. 制伏短棍：单手近战，材料木质 40 + 钢 20 -->
+  <ThingDef ParentName="BaseMeleeWeapon_Blunt">
+    <defName>LP_SubduingCudgel</defName>
+    <label>制伏短棍</label>
+    <description>皮革缠柄的短棍，铁箍上刻着让人昏昏欲睡的安眠符文。专门用来把人敲晕，打得再重也只会让对方头晕眼花、最后昏迷倒地。\n\n非致命：只会让目标昏迷倒地，不会造成伤口，也不会杀死目标。适合抓俘虏。</description>
+    <graphicData>
+      <texPath>LP/Nonlethal/SubduingCudgel</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <uiIconScale>1.1</uiIconScale>
+    <techLevel>Medieval</techLevel>
+    <relicChance>0</relicChance>
+    <costStuffCount>40</costStuffCount>
+    <stuffCategories>
+      <li>Woody</li>
+    </stuffCategories>
+    <costList>
+      <Steel>20</Steel>
+    </costList>
+    <statBases>
+      <WorkToMake>6000</WorkToMake>
+      <Mass>1.2</Mass>
+    </statBases>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <weaponTags>
+      <li>LP_Nonlethal</li>
+    </weaponTags>
+    <tradeTags Inherit="False">
+      <li>LP_NonlethalStock</li>
+    </tradeTags>
+    <comps>
+      <li><compClass>CompQuality</compClass></li>
+    </comps>
+    <recipeMaker>
+      <recipeUsers Inherit="False">
+        <li>LP_RuneAnvil</li>
+      </recipeUsers>
+      <researchPrerequisite>LP_Research_Subduing</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>4</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+    <tools>
+      <li>
+        <label>棍头</label>
+        <labelUsedInLogging>false</labelUsedInLogging>
+        <capacities><li>LP_SubdueStrike</li></capacities>
+        <power>12</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+      <li>
+        <label>戳击</label>
+        <capacities><li>LP_SubdueStrike</li></capacities>
+        <power>9</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <!-- 2. 缚网弩 -->
+  <ThingDef ParentName="BaseGunWithQuality">
+    <defName>LP_NetCrossbow</defName>
+    <label>缚网弩</label>
+    <description>沉重的木弩，弩托上盘着一卷灰色绳网。射出的束缚网把目标打得一个踉跄（眩晕 2.5 秒），之后 6 秒内移动能力 -50%。\n\n非致命：只会让目标昏迷倒地，不会造成伤口，也不会杀死目标。适合抓俘虏。</description>
+    <graphicData>
+      <texPath>LP/Nonlethal/NetCrossbow</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <uiIconScale>1.2</uiIconScale>
+    <techLevel>Medieval</techLevel>
+    <relicChance>0</relicChance>
+    <soundInteract>Bow_Large</soundInteract>
+    <burnableByRecipe>true</burnableByRecipe>
+    <weaponTags Inherit="False">
+      <li>LP_Nonlethal</li>
+    </weaponTags>
+    <tradeTags Inherit="False">
+      <li>LP_NonlethalStock</li>
+    </tradeTags>
+    <weaponClasses>
+      <li>Ranged</li>
+    </weaponClasses>
+    <costList>
+      <WoodLog>50</WoodLog>
+      <Steel>30</Steel>
+      <Cloth>30</Cloth>
+    </costList>
+    <statBases>
+      <WorkToMake>14000</WorkToMake>
+      <Mass>3.5</Mass>
+      <AccuracyTouch>0.70</AccuracyTouch>
+      <AccuracyShort>0.75</AccuracyShort>
+      <AccuracyMedium>0.60</AccuracyMedium>
+      <AccuracyLong>0.40</AccuracyLong>
+      <RangedWeapon_Cooldown>2.6</RangedWeapon_Cooldown>
+    </statBases>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <recipeUsers>
+        <li>LP_RuneAnvil</li>
+      </recipeUsers>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+      <researchPrerequisite>LP_Research_Subduing</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>5</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>LP_Proj_Net</defaultProjectile>
+        <warmupTime>1.2</warmupTime>
+        <range>22</range>
+        <soundCast>Bow_Large</soundCast>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>弩托</label>
+        <capacities><li>LP_SubdueStrike</li></capacities>
+        <power>8</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+    <rotateInShelves>false</rotateInShelves>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>LP_Proj_Net</defName>
+    <label>束缚网</label>
+    <thingClass>LichPhylactery.Projectile_LPNet</thingClass>
+    <graphicData>
+      <texPath>LP/Nonlethal/Proj_Net</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.2</drawSize>
+    </graphicData>
+    <projectile>
+      <damageDef>LP_Subdue</damageDef>
+      <damageAmountBase>8</damageAmountBase>
+      <speed>32</speed>
+      <arcHeightFactor>0.2</arcHeightFactor>
+    </projectile>
+    <modExtensions>
+      <li Class="LichPhylactery.NonlethalShotExt">
+        <stunTicks>150</stunTicks>
+        <hediff>LP_Netted</hediff>
+        <hediffTicks>360</hediffTicks>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- 3. 安眠短弓：木质 60 + 秘银 3 -->
+  <ThingDef ParentName="BaseGunWithQuality">
+    <defName>LP_SleepBow</defName>
+    <label>安眠短弓</label>
+    <description>深绿色的短弓，箭羽染成淡紫色，箭头蘸着会发光的紫色安眠粉。中箭的人只会越来越困。精灵这类心智坚定的种族按心智抗性少受影响。\n\n非致命：只会让目标昏迷倒地，不会造成伤口，也不会杀死目标。适合抓俘虏。</description>
+    <graphicData>
+      <texPath>LP/Nonlethal/SleepBow</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <uiIconScale>1.2</uiIconScale>
+    <techLevel>Medieval</techLevel>
+    <relicChance>0</relicChance>
+    <soundInteract>Bow_Small</soundInteract>
+    <burnableByRecipe>true</burnableByRecipe>
+    <weaponTags Inherit="False">
+      <li>LP_Nonlethal</li>
+    </weaponTags>
+    <tradeTags Inherit="False">
+      <li>LP_NonlethalStock</li>
+    </tradeTags>
+    <weaponClasses>
+      <li>Ranged</li>
+      <li>RangedLight</li>
+    </weaponClasses>
+    <costStuffCount>60</costStuffCount>
+    <stuffCategories>
+      <li>Woody</li>
+    </stuffCategories>
+    <costList>
+      <LP_Mithral>3</LP_Mithral>
+    </costList>
+    <statBases>
+      <WorkToMake>9000</WorkToMake>
+      <Mass>0.9</Mass>
+      <AccuracyTouch>0.75</AccuracyTouch>
+      <AccuracyShort>0.70</AccuracyShort>
+      <AccuracyMedium>0.55</AccuracyMedium>
+      <AccuracyLong>0.35</AccuracyLong>
+      <RangedWeapon_Cooldown>1.8</RangedWeapon_Cooldown>
+    </statBases>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smelt</effectWorking>
+      <soundWorking>Recipe_MakeBow</soundWorking>
+      <recipeUsers>
+        <li>LP_RuneAnvil</li>
+      </recipeUsers>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+      <researchPrerequisite>LP_Research_Subduing</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>5</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>LP_Proj_SleepArrow</defaultProjectile>
+        <warmupTime>1.0</warmupTime>
+        <range>26</range>
+        <soundCast>Bow_Small</soundCast>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>弓臂</label>
+        <capacities><li>LP_SubdueStrike</li></capacities>
+        <power>7</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+    <rotateInShelves>false</rotateInShelves>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>LP_Proj_SleepArrow</defName>
+    <label>安眠箭</label>
+    <graphicData>
+      <texPath>LP/Nonlethal/Proj_SleepArrow</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>LP_SleepMagic</damageDef>
+      <damageAmountBase>10</damageAmountBase>
+      <speed>44</speed>
+    </projectile>
+  </ThingDef>
+
+  <!-- 4. 安眠法杖：G 组法杖（魔力系数、心灵熵、驱散粉尘、敏感度 0 不能用都照 1.29.0 规则），附魔台；研究要制伏战术 + 奥术法杖 -->
+  <ThingDef ParentName="LP_StaffBase">
+    <defName>LP_SleepStaff</defName>
+    <label>安眠法杖</label>
+    <description>弯曲的灰白木杖，杖头的月牙托着一颗淡紫色水晶，射出催人入睡的安眠魔弹。威力随持有者的心灵敏感度变化（魔力系数 = 敏感度，最低 0.2，不封顶）；敏感度为0的人用它，法杖毫无回应。有心灵链接的人每次施放增加心灵熵；没有心灵链接的人只能发挥70%的威力。精灵这类心智坚定的种族按心智抗性少受影响。\n\n非致命：只会让目标昏迷倒地，不会造成伤口，也不会杀死目标。适合抓俘虏。</description>
+    <graphicData><texPath>LP/Nonlethal/SleepStaff</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <weaponTags Inherit="False">
+      <li>LP_Nonlethal</li>
+    </weaponTags>
+    <tradeTags Inherit="False">
+      <li>LP_NonlethalStaff</li>
+    </tradeTags>
+    <statBases>
+      <RangedWeapon_Cooldown>2.2</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <WoodLog>40</WoodLog>
+      <LP_Mithral>8</LP_Mithral>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <recipeMaker>
+      <researchPrerequisites>
+        <li>LP_Research_Subduing</li>
+      </researchPrerequisites>
+    </recipeMaker>
+    <verbs>
+      <li>
+        <verbClass>LichPhylactery.Verb_ArcaneShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>LP_Bolt_Sleep</defaultProjectile>
+        <warmupTime>1.0</warmupTime>
+        <range>28</range>
+        <soundCast>Shot_ChargeBlaster</soundCast>
+        <muzzleFlashScale>6</muzzleFlashScale>
+      </li>
+    </verbs>
+    <tools Inherit="False">
+      <li>
+        <label>杖身</label>
+        <capacities><li>LP_SubdueStrike</li></capacities>
+        <power>8</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_ArcaneWeapon"><group>G</group></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcaneBulletBase">
+    <defName>LP_Bolt_Sleep</defName>
+    <label>安眠魔弹</label>
+    <graphicData><texPath>LP/Nonlethal/Proj_SleepBolt</texPath><shaderType>TransparentPostLight</shaderType></graphicData>
+    <projectile>
+      <damageDef>LP_SleepMagic</damageDef>
+      <damageAmountBase>16</damageAmountBase>
+      <armorPenetrationBase>0</armorPenetrationBase>
+      <speed>40</speed>
+    </projectile>
+  </ThingDef>
+
+  <!-- 5. 安眠粉囊：照原版手雷写法，可以反复投掷；爆散伤到范围内所有血肉生物（包括友军） -->
+  <ThingDef ParentName="BaseWeapon">
+    <defName>LP_SleepDustPouch</defName>
+    <label>安眠粉囊</label>
+    <description>扎口的紫布袋，里面装满会发光的安眠粉，口子上不停往外冒紫色粉末。扔出去在半径 2.4 格内炸开一团紫色粉尘，范围内所有血肉生物都会受到安眠魔法——包括自己人，扔之前看清楚。\n\n非致命：只会让目标昏迷倒地，不会造成伤口，也不会杀死目标。适合抓俘虏。</description>
+    <graphicData>
+      <texPath>LP/Nonlethal/SleepDustPouch</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <uiIconScale>1.3</uiIconScale>
+    <soundInteract>Interact_Grenade</soundInteract>
+    <techLevel>Medieval</techLevel>
+    <tickerType>Normal</tickerType>
+    <relicChance>0</relicChance>
+    <weaponClasses><li>Ranged</li></weaponClasses>
+    <thingCategories><li>Grenades</li></thingCategories>
+    <weaponTags><li>LP_Nonlethal</li></weaponTags>
+    <burnableByRecipe>true</burnableByRecipe>
+    <costList>
+      <Cloth>20</Cloth>
+      <LP_Mithral>2</LP_Mithral>
+      <MedicineHerbal>2</MedicineHerbal>
+    </costList>
+    <statBases>
+      <WorkToMake>3000</WorkToMake>
+      <Mass>0.5</Mass>
+      <RangedWeapon_Cooldown>8</RangedWeapon_Cooldown>
+      <Flammability>1</Flammability>
+    </statBases>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Tailor</effectWorking>
+      <soundWorking>Recipe_Tailor</soundWorking>
+      <recipeUsers>
+        <li>LP_RuneAnvil</li>
+      </recipeUsers>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+      <researchPrerequisite>LP_Research_Subduing</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>4</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+    <verbs>
+      <li>
+        <label>投掷安眠粉囊</label>
+        <verbClass>Verb_LaunchProjectile</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <range>12</range>
+        <forcedMissRadius>1.4</forcedMissRadius>
+        <warmupTime>1.5</warmupTime>
+        <noiseRadius>3</noiseRadius>
+        <soundCast>ThrowGrenade</soundCast>
+        <targetParams><canTargetLocations>true</canTargetLocations></targetParams>
+        <defaultProjectile>LP_Proj_SleepDust</defaultProjectile>
+        <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+      </li>
+    </verbs>
+    <rotateInShelves>false</rotateInShelves>
+  </ThingDef>
+  <ThingDef ParentName="BaseGrenadeProjectile">
+    <defName>LP_Proj_SleepDust</defName>
+    <label>安眠粉囊</label>
+    <thingClass>Projectile_Explosive</thingClass>
+    <graphicData>
+      <texPath>LP/Nonlethal/Proj_Dust</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <explosionRadius>2.4</explosionRadius>
+      <damageDef>LP_SleepMagic</damageDef>
+      <damageAmountBase>22</damageAmountBase>
+      <screenShakeFactor>0</screenShakeFactor>
+    </projectile>
+  </ThingDef>
+</Defs>

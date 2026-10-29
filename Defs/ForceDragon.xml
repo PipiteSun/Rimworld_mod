@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- ==================== 异种型 ==================== -->
+
+  <XenotypeDef>
+    <defName>LP_ForceDragon</defName>
+    <label>力能龙裔</label>
+    <description>源自《史诗等级手册》的力能巨龙，以人形化身混迹于凡人之间。钻石般的细鳞会折射光线，皮肤苍白近乎透明；它们对一切力场效果免疫，以吞噬护盾和力场为食，吐出的是一道撕裂建筑与护盾的纯力场锥，而不是火焰。\n\n力能龙裔的强大是攒出来的钱和熬出来的时间：在宝库（自己独占的卧室）所在地图度过足够的日子、并让宝库里的财富达到门槛后，龙龄会从幼龙一级级长到伟龙，体型、鳞甲、龙爪、力能上限和能力都会随之提升。它们孤高傲慢，只吃肉，拒绝搬运和清洁一类粗活，宝库被人动了会勃然大怒；不走普通生育，而是在宝库里筑巢产下龙蛋。</description>
+    <descriptionShort>苍白、长角的龙裔化身。力场吐息拆墙破盾，偏折与闪避越老越强；靠时间和宝库财富成长，只吃肉（铁胃，不会食物中毒；成年后胃容量500%，一顿管三天）、傲慢、囤积，靠龙蛋繁殖。</descriptionShort>
+    <iconPath>UI/Icons/Genes/Gene_HeadboneCenterhorn</iconPath>
+    <inheritable>true</inheritable>
+    <combatPowerFactor>1.8</combatPowerFactor>
+    <factionlessGenerationWeight>0</factionlessGenerationWeight>
+    <genes>
+      <li>LP_ForceDragonHeart</li>
+      <li>LP_ForceImmunity</li>
+      <li>LP_DragonClaws</li>
+      <li>LP_DragonScales</li>
+      <li>LP_DragonBody</li>
+      <li>LP_DragonCarnivore</li>
+      <li>LP_DragonArrogance</li>
+      <li>LP_DragonHoarder</li>
+      <li>Ageless</li>
+      <li>DarkVision</li>
+      <li>Headbone_MiniHorns</li>
+      <li>Tail_Smooth</li>
+      <li>Skin_SheerWhite</li>
+      <li>Beauty_Beautiful</li>
+      <li>AptitudeStrong_Intellectual</li>
+      <li>AptitudePoor_Social</li>
+      <li>Robust</li>
+      <li>RobustDigestion</li>
+      <li>StrongStomach</li>
+      <li>Sterile</li>
+    </genes>
+  </XenotypeDef>
+
+  <!-- ==================== 专属基因 ==================== -->
+
+  <GeneDef>
+    <defName>LP_ForceDragonHeart</defName>
+    <label>力能龙之心</label>
+    <description>力能龙裔的本源。提供“力能”资源条与“龙龄”成长：力能每天自然恢复5点，吃肉恢复1点，主要靠用吐息打碎敌人的护盾或吞噬未装备的护盾获得。龙龄从幼龙开始，在宝库所在地图度过的天数与宝库财富同时达到门槛后晋升，最多5级。随龙龄解锁力场吐息、吞噬护盾、弹力法球、力墙、力场囚笼与念动法球，并获得偏折力场、朦胧、错位与伟龙的常驻隐形。力能龙裔不受EMP影响：不会因EMP眩晕，偏折、闪避与隐形也不会因EMP失效。</description>
+    <geneClass>LichPhylactery.Gene_ForceDragonHeart</geneClass>
+    <resourceGizmoType>LichPhylactery.GeneGizmo_ForceResource</resourceGizmoType>
+    <resourceLabel>力能</resourceLabel>
+    <resourceGizmoThresholds>
+      <li>0.2</li>
+    </resourceGizmoThresholds>
+    <showGizmoOnWorldView>true</showGizmoOnWorldView>
+    <showGizmoWhenDrafted>true</showGizmoWhenDrafted>
+    <resourceDescription>力能龙裔体内流转的纯粹力场。主动能力都消耗力能，不消耗精神力，也不受心灵敏感度影响。力能低于20点时偏折力场关闭；归零时朦胧、错位和隐形也会失效。</resourceDescription>
+    <iconPath>UI/Icons/Genes/Gene_ArchiteMetabolism</iconPath>
+    <displayCategory>Archite</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>4</biostatCpx>
+    <biostatMet>-2</biostatMet>
+    <biostatArc>2</biostatArc>
+    <customEffectDescriptions>
+      <li>力能上限：幼龙60点，每升一级+10，伟龙100点；每天自然恢复5点。</li>
+      <li>龙龄5级：幼龙→少年（30天+宝库5000银）→成年（60天+20000银）→古龙（120天+60000银）→伟龙（240天+150000银）；天数只算在宝库所在地图上的日子，门槛可在模组设置中调整。</li>
+      <li>每升一级：实际体型和外观+5%、近战命中+3%、饥饿速度略增（成年龙从500%饿到225%约3天：幼龙57.3%，伟龙68.8%）。</li>
+      <li>龙之胃与龙之长眠（成年）：饱食度上限500%；低于225%才去找吃的（仍算吃饱、不扣心情），低于100%才饥饿，低于40%非常饿；开吃后一直吃到475%，饭菜一次最多吃3份。基因代谢率带来的食物消耗被抵消。</li>
+      <li>幼崽食量：成年前（婴儿、儿童）抵消基因代谢率带来的食物消耗，龙龄也不加食量，饥饿速度保持100%，胃容量和饥饿阈值与常人相同。</li>
+      <li>偏折力场：远程攻击15%概率被弹开，每级+5%，封顶35%（力能≥20时有效）。</li>
+      <li>朦胧（少年起）：被攻击时20%概率闪开；错位（古龙起）：提高到50%。伟龙常驻隐形。力能归零时全部失效。</li>
+      <li>不受EMP影响：不会被EMP眩晕，偏折、闪避和隐形不会因EMP失效。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <GeneDef>
+    <defName>LP_ForceImmunity</defName>
+    <label>力场免疫</label>
+    <description>力能龙裔对一切力场效果免疫，包括别的力能龙裔的吐息。原版没有力场伤害，这个基因主要用于对内平衡；以后模组里的魔法飞弹等力场伤害也归入这一类。</description>
+    <iconPath>UI/Icons/Genes/Gene_PerfectImmunity</iconPath>
+    <displayCategory>ResistanceAndWeakness</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>1</biostatCpx>
+    <biostatMet>0</biostatMet>
+    <damageFactors>
+      <LP_Force>0</LP_Force>
+    </damageFactors>
+    <customEffectDescriptions>
+      <li>完全免疫力场伤害。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <GeneDef>
+    <defName>LP_DragonClaws</defName>
+    <label>龙爪</label>
+    <description>手指末端藏着钻石般的利爪，可以直接用来近战撕扯。龙爪造成锐器伤害，伤害随龙龄提高。</description>
+    <geneClass>LichPhylactery.Gene_DragonClaws</geneClass>
+    <iconPath>UI/Icons/Genes/Gene_ElongatedFingers</iconPath>
+    <displayCategory>Violence</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>2</biostatCpx>
+    <biostatMet>-1</biostatMet>
+    <customEffectDescriptions>
+      <li>获得“龙爪”近战攻击：锐器（抓伤）伤害16点，冷却2秒，穿甲按原版伤害计算。</li>
+      <li>龙爪伤害随龙龄提高：每级+25%，伟龙×200%（32点）。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <GeneDef>
+    <defName>LP_DragonScales</defName>
+    <label>龙鳞</label>
+    <description>细小的钻石鳞片覆盖全身，像天然的护甲一样挡下刀刃和重击。龙龄越高，鳞片越坚硬。外观上的苍白“钻石鳞”皮肤由原版极白皮肤基因提供。</description>
+    <iconPath>UI/Icons/Genes/Gene_FacialRidges</iconPath>
+    <displayCategory>ResistanceAndWeakness</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>2</biostatCpx>
+    <biostatMet>-1</biostatMet>
+    <customEffectDescriptions>
+      <li>天然锐器护甲：幼龙30%，每级+10%，伟龙70%。</li>
+      <li>天然钝器护甲：幼龙15%，每级+7.5%，伟龙45%。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <GeneDef>
+    <defName>LP_DragonBody</defName>
+    <label>龙体</label>
+    <description>龙的骨骼与筋肉远比人类坚韧，每个身体部位都能承受更多伤害。生命总量×150%，与巨躯规则的体型加成取较大值，不相乘。</description>
+    <iconPath>UI/Icons/Genes/Gene_BodyHulk</iconPath>
+    <displayCategory>ResistanceAndWeakness</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>2</biostatCpx>
+    <biostatMet>-1</biostatMet>
+    <customEffectDescriptions>
+      <li>生命总量：×150%（与巨躯规则的体型加成取较大值，不相乘；火巨人加龙体也是×150%）。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <GeneDef>
+    <defName>LP_DragonCarnivore</defName>
+    <label>肉食者</label>
+    <description>力能龙裔只吃肉。不饿到挨饿时，它们不会主动去吃素食或不含肉的饭；真被迫吃了，会大为不快。生肉配合原版强健消化不会带来心情惩罚。</description>
+    <iconPath>UI/Icons/Genes/Gene_Bloodfeeder</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>1</biostatCpx>
+    <biostatMet>1</biostatMet>
+    <customEffectDescriptions>
+      <li>不挨饿时只吃含肉的食物（按原版“肉食者”标准判断）。</li>
+      <li>吃下不含肉的食物：心情-8，持续1天。</li>
+      <li>每次吃肉恢复1点力能。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <GeneDef>
+    <defName>LP_DragonArrogance</defName>
+    <label>龙之傲慢</label>
+    <description>力能龙裔看不起“低等生物”。它们可以研究、施法、打仗，却拒绝扫地和搬运；和非龙族聊天时容易出言不逊，被安排和别人同住更是屈辱。这份傲慢也是一种威压：近战技能不如它的敌人，连靠近它都需要勇气。</description>
+    <iconPath>UI/Icons/Genes/Gene_DeadCalm</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>1</biostatCpx>
+    <biostatMet>2</biostatMet>
+    <disabledWorkTags>ManualDumb, Cleaning, Hauling</disabledWorkTags>
+    <customEffectDescriptions>
+      <li>无法从事愚蠢劳动、清洁和搬运。</li>
+      <li>对非力能龙裔发起侮辱的概率×300%。</li>
+      <li>卧室里有非力能龙裔的同住者：“屈尊同住”心情-6。</li>
+      <li>傲慢威压：近战技能低于它的敌人对它近战命中×80%。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <GeneDef>
+    <defName>LP_DragonHoarder</defName>
+    <label>囤积癖</label>
+    <description>龙与宝库密不可分。力能龙裔自己独占的卧室会被视为宝库，房间里所有物品的市值（火巨人锻造品按双倍计）就是宝库价值，决定龙龄晋升和心情。宝库越富有、越美观，龙的心情越好；从宝库里拿走东西不会让它心情变差，但外人动它的宝库，会直接触发一次锁定小偷的杀意狂暴。</description>
+    <iconPath>UI/Icons/Genes/Gene_Pretty</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>1</biostatCpx>
+    <biostatMet>1</biostatMet>
+    <customEffectDescriptions>
+      <li>宝库财富心情：1000银起+3，10000起+6，50000起+12，150000起+15；没有宝库或不足1000银时没有心情（不扣分）。</li>
+      <li>宝库美观心情：房间美观度“漂亮”（2.4）起+2，“美丽”（5）起+4，“非常美丽”（15）起+6，“极其美丽”（50）起+8。</li>
+      <li>外人从宝库拿东西：力能龙裔对小偷陷入杀意狂暴（可在模组设置中关闭）。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+
+  <!-- ==================== 龙龄与状态 ==================== -->
+
+  <HediffDef>
+    <defName>LP_DragonAge</defName>
+    <label>龙龄</label>
+    <description>力能龙裔的成长阶段。在宝库所在地图度过的天数和宝库价值同时达到门槛后晋升；每一级都会提高体型、鳞甲、龙爪、力能上限，并解锁新的能力。</description>
+    <hediffClass>LichPhylactery.Hediff_DragonAge</hediffClass>
+    <isBad>false</isBad>
+    <initialSeverity>1</initialSeverity>
+    <minSeverity>1</minSeverity>
+    <maxSeverity>5</maxSeverity>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.6, 0.8, 1)</defaultLabelColor>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>LP_DragonClawWeapon</defName>
+    <label>龙爪</label>
+    <description>龙爪基因带来的天然近战武器。</description>
+    <hediffClass>LichPhylactery.Hediff_DragonClaws</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>龙爪</label>
+            <capacities>
+              <li>Scratch</li>
+            </capacities>
+            <power>16</power>
+            <cooldownTime>2</cooldownTime>
+            <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+          </li>
+        </tools>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>LP_ForceSphere</defName>
+    <label>弹力法球</label>
+    <description>被关在一个不可破坏的力场球里：里面的人出不来，外面的攻击也打不进去。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <defaultLabelColor>(0.6, 0.8, 1)</defaultLabelColor>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>600~600</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>LP_DragonInvisibility</defName>
+    <label>伟龙隐形</label>
+    <description>伟龙的鳞片已经几乎完全透明，敌人很难看见它。受到伤害或发动攻击后会短暂现形。力能归零时失效。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="HediffCompProperties_Invisibility">
+        <visibleToPlayer>true</visibleToPlayer>
+        <recoverFromDisruptedTicks>300</recoverFromDisruptedTicks>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <!-- ==================== 力场伤害 ==================== -->
+
+  <DamageDef>
+    <defName>LP_Force</defName>
+    <label>力场</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0}被力场撕碎了。</deathMessage>
+    <hediff>Crush</hediff>
+    <hediffSkin>Cut</hediffSkin>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Blunt</armorCategory>
+    <defaultDamage>12</defaultDamage>
+    <defaultArmorPenetration>0.3</defaultArmorPenetration>
+    <buildingDamageFactor>3</buildingDamageFactor>
+    <overkillPctToDestroyPart>0.4~1.0</overkillPctToDestroyPart>
+  </DamageDef>
+
+  <!-- ==================== 力墙 ==================== -->
+
+  <ThingDef>
+    <defName>LP_ForceWall</defName>
+    <label>力墙</label>
+    <description>透明、不可破坏的临时力场墙，挡子弹也挡人。到时间后自行消散。</description>
+    <thingClass>LichPhylactery.ForceWall</thingClass>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Other/ForceField</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(0.55, 0.75, 1, 0.75)</color>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+    <passability>Impassable</passability>
+    <fillPercent>1</fillPercent>
+    <useHitPoints>false</useHitPoints>
+    <tickerType>Normal</tickerType>
+    <selectable>true</selectable>
+    <rotatable>false</rotatable>
+    <castEdgeShadows>false</castEdgeShadows>
+    <staticSunShadowHeight>0</staticSunShadowHeight>
+    <holdsRoof>false</holdsRoof>
+    <blockLight>false</blockLight>
+    <coversFloor>false</coversFloor>
+    <statBases>
+      <MaxHitPoints>1000</MaxHitPoints>
+      <Flammability>0</Flammability>
+    </statBases>
+    <building>
+      <deconstructible>false</deconstructible>
+      <claimable>false</claimable>
+      <isInert>true</isInert>
+    </building>
+  </ThingDef>
+
+  <!-- ==================== 龙蛋 ==================== -->
+
+  <ThingDef>
+    <defName>LP_ForceDragonEgg</defName>
+    <label>力能龙蛋</label>
+    <description>表面像钻石一样闪烁的龙蛋。必须放在力能龙裔的宝库里保温才会孵化，宝库越富有孵得越快；孵出的是一个龙龄为幼龙的力能龙裔婴儿。价格极高。</description>
+    <thingClass>ThingWithComps</thingClass>
+    <category>Item</category>
+    <graphicData>
+      <texPath>Things/Item/Resource/AnimalProductRaw/EggOval</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+      <color>(0.78, 0.88, 1)</color>
+      <drawSize>1.3</drawSize>
+    </graphicData>
+    <altitudeLayer>Item</altitudeLayer>
+    <tickerType>Rare</tickerType>
+    <stackLimit>1</stackLimit>
+    <alwaysHaulable>true</alwaysHaulable>
+    <selectable>true</selectable>
+    <useHitPoints>true</useHitPoints>
+    <rotatable>false</rotatable>
+    <pathCost>14</pathCost>
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <thingCategories>
+      <li>ItemsMisc</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <MarketValue>4000</MarketValue>
+      <Mass>3</Mass>
+      <Flammability>0</Flammability>
+      <Beauty>10</Beauty>
+    </statBases>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_DragonEgg" />
+    </comps>
+  </ThingDef>
+
+  <!-- ==================== 能力 ==================== -->
+
+  <AbilityDef Name="LP_ForceDragonAbilityBase" Abstract="True">
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <aiCanUse>false</aiCanUse>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <sendMessageOnCooldownComplete>false</sendMessageOnCooldownComplete>
+  </AbilityDef>
+
+  <AbilityDef ParentName="LP_ForceDragonAbilityBase">
+    <defName>LP_ForceBreath</defName>
+    <label>力场吐息</label>
+    <description>吐出一道撕裂一切的力场锥。对生物造成力场伤害（幼龙13点，每级+3），对建筑和掩体造成3倍伤害；锥内敌人的护盾腰带、机械体护盾会被直接打碎，每打碎一个回复25点力能。不会点火。射程随龙龄从4格增长到9格。消耗25点力能。</description>
+    <iconPath>UI/Abilities/Flashstorm</iconPath>
+    <cooldownTicksRange>5000</cooldownTicksRange>
+    <hostile>true</hostile>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>9</range>
+      <warmupTime>1</warmupTime>
+      <requireLineOfSight>false</requireLineOfSight>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetBuildings>true</canTargetBuildings>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_ForceDragonAbility">
+        <effect>breath</effect>
+        <cost>25</cost>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <AbilityDef ParentName="LP_ForceDragonAbilityBase">
+    <defName>LP_DevourShield</defName>
+    <label>吞噬护盾</label>
+    <description>把一件没有被装备的护盾腰带、护盾背包等力场装置吃掉，换成力能：护盾腰带回复40点，其他力场装置回复30点。不消耗力能。</description>
+    <iconPath>UI/Abilities/EntropyDump</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <hostile>false</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>2.9</range>
+      <warmupTime>1.5</warmupTime>
+      <violent>false</violent>
+      <targetParams>
+        <canTargetItems>true</canTargetItems>
+        <canTargetPawns>false</canTargetPawns>
+        <canTargetBuildings>false</canTargetBuildings>
+        <canTargetLocations>false</canTargetLocations>
+        <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_ForceDragonAbility">
+        <effect>devour</effect>
+        <cost>0</cost>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <AbilityDef ParentName="LP_ForceDragonAbilityBase">
+    <defName>LP_ResilientSphere</defName>
+    <label>弹力法球</label>
+    <description>把一个目标关进不可破坏的力场球10秒：里面的人出不来，外面的攻击也打不进去。可以困住敌人，也可以用来保护自己的伤员。少年龙解锁，消耗20点力能。</description>
+    <iconPath>UI/Abilities/BulletShield</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <hostile>false</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>20</range>
+      <warmupTime>0.5</warmupTime>
+      <violent>false</violent>
+      <targetParams>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetSelf>true</canTargetSelf>
+        <canTargetBuildings>false</canTargetBuildings>
+        <canTargetLocations>false</canTargetLocations>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_ForceDragonAbility">
+        <effect>sphere</effect>
+        <cost>20</cost>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <AbilityDef ParentName="LP_ForceDragonAbilityBase">
+    <defName>LP_WallOfForce</defName>
+    <label>力墙</label>
+    <description>在目标处垂直于施法方向竖起一道透明、不可破坏、挡子弹也挡人的力墙，持续20秒。成年龙5格，古龙7格，伟龙9格。成年龙解锁，消耗30点力能。</description>
+    <iconPath>UI/Abilities/Wallraise</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <hostile>false</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>20</range>
+      <warmupTime>0.5</warmupTime>
+      <violent>false</violent>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetPawns>false</canTargetPawns>
+        <canTargetBuildings>false</canTargetBuildings>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_ForceDragonAbility">
+        <effect>wall</effect>
+        <cost>30</cost>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <AbilityDef ParentName="LP_ForceDragonAbilityBase">
+    <defName>LP_ForceCage</defName>
+    <label>力场囚笼</label>
+    <description>在目标周围立起一圈3×3的力场囚笼，把它困住1天。笼子不可破坏，适合活捉；对异象实体同样有效。古龙解锁，消耗50点力能。</description>
+    <iconPath>UI/Abilities/Stun</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <hostile>true</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>15</range>
+      <warmupTime>1</warmupTime>
+      <targetParams>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetSelf>false</canTargetSelf>
+        <canTargetBuildings>false</canTargetBuildings>
+        <canTargetLocations>false</canTargetLocations>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_ForceDragonAbility">
+        <effect>cage</effect>
+        <cost>50</cost>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <AbilityDef ParentName="LP_ForceDragonAbilityBase">
+    <defName>LP_TelekineticSphere</defName>
+    <label>念动法球</label>
+    <description>把目标关进弹力法球，并用念力把整个球拖到施法者身边。适合把敌人拖进自己的力场囚笼，或把伤员从火线上拉回来。伟龙解锁，消耗40点力能。</description>
+    <iconPath>UI/Abilities/Beckon</iconPath>
+    <cooldownTicksRange>5000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>25</range>
+      <warmupTime>0.5</warmupTime>
+      <violent>false</violent>
+      <targetParams>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetSelf>false</canTargetSelf>
+        <canTargetBuildings>false</canTargetBuildings>
+        <canTargetLocations>false</canTargetLocations>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_ForceDragonAbility">
+        <effect>telekinetic</effect>
+        <cost>40</cost>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <!-- ==================== 心情 ==================== -->
+
+  <ThoughtDef>
+    <defName>LP_DragonHoard</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_DragonHoard</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <!-- 1.23.3：只有正面阶段；没有宝库或不足1000银时不产生心情。 -->
+      <li>
+        <label>小宝库</label>
+        <description>宝库里总算有点像样的东西了。</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+      <li>
+        <label>丰厚的宝库</label>
+        <description>我躺在财宝上，感觉好极了。</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+      <li>
+        <label>传说中的宝库</label>
+        <description>我的宝库足以让吟游诗人传唱千年。</description>
+        <baseMoodEffect>12</baseMoodEffect>
+      </li>
+      <li>
+        <label>伟龙的宝库</label>
+        <description>金山银海堆到了天花板。世上再没有比这更配得上我的床。</description>
+        <baseMoodEffect>15</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>LP_DragonHoardBeauty</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_DragonHoardBeauty</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li>
+        <label>宝库整洁</label>
+        <description>财宝摆得还算体面。</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+      <li>
+        <label>宝库华美</label>
+        <description>宝物在灯光下闪闪发亮，正合我意。</description>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+      <li>
+        <label>宝库璀璨</label>
+        <description>我的宝库本身就是一件艺术品。</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+      <li>
+        <label>宝库如梦似幻</label>
+        <description>连神祇见了我的宝库也要驻足。</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>LP_DragonSharedRoom</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_DragonSharedRoom</workerClass>
+    <stages>
+      <li>
+        <label>屈尊同住</label>
+        <description>我竟然要和低等生物睡在同一个房间里。</description>
+        <baseMoodEffect>-6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- 1.23.3 起宝库被拿走东西不再给这个心情，只在卖掉龙鳞蜕时出现；defName 保持不变以兼容旧存档。 -->
+  <ThoughtDef>
+    <defName>LP_HoardStolen</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>5</durationDays>
+    <stackLimit>3</stackLimit>
+    <stackedEffectMultiplier>0.5</stackedEffectMultiplier>
+    <stages>
+      <li>
+        <label>龙鳞被卖</label>
+        <description>有人把我蜕下的龙鳞卖了！每一片我都记得。</description>
+        <baseMoodEffect>-15</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>LP_DragonAteNonMeat</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1</durationDays>
+    <stackLimit>2</stackLimit>
+    <stages>
+      <li>
+        <label>被迫吃素</label>
+        <description>我吃了不含肉的东西。龙不该吃草。</description>
+        <baseMoodEffect>-8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

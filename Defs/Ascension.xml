@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.40.0 成神任务线（ArtSource/Ascension-1.40.0-spec.md）：神职、神职能力、神性火花、圣徒/弑神者、半神状态、末日卫士、觉醒泰坦、心情、天象。
+     神职由 Patches/Ascension.xml 的 LP_PortfolioExtension 挂到 11 位神上；代码在 Source/Ascension*.cs、Demigod*.cs。 -->
+<Defs>
+
+  <!-- ==================== 神职 ==================== -->
+  <LichPhylactery.LP_DivinePortfolioDef>
+    <defName>LP_Portfolio_Dawn</defName><key>Dawn</key><label>黎明</label>
+    <description>洛山达的神职：晨光、复苏与新生。</description>
+    <color>(1, 0.82, 0.42)</color><iconPath>Ascension/Abilities/DawnLight</iconPath>
+    <abilities><li>LP_DA_DawnLight</li><li>LP_DA_UnfadingDawn</li></abilities>
+    <passive>15格内的友方心情+4（晨光普照）</passive><blessing>殖民者伤口愈合×1.2</blessing>
+    <deed>tend</deed><deedTarget>15</deedTarget><deedLabel>救治倒地的人</deedLabel>
+  </LichPhylactery.LP_DivinePortfolioDef>
+  <LichPhylactery.LP_DivinePortfolioDef>
+    <defName>LP_Portfolio_Justice</defName><key>Justice</key><label>正义</label>
+    <description>提尔的神职：律法、审判与守护。</description>
+    <color>(0.6, 0.72, 0.95)</color><iconPath>Ascension/Abilities/JudgmentHammer</iconPath>
+    <abilities><li>LP_DA_JudgmentHammer</li><li>LP_DA_JusticeShield</li></abilities>
+    <passive>20格内的敌方隐形单位现形</passive><blessing>囚犯越狱的几率×0.5</blessing>
+    <deed>capture</deed><deedTarget>5</deedTarget><deedLabel>俘获敌人</deedLabel>
+  </LichPhylactery.LP_DivinePortfolioDef>
+  <LichPhylactery.LP_DivinePortfolioDef>
+    <defName>LP_Portfolio_Tyranny</defName><key>Tyranny</key><label>暴政</label>
+    <description>班恩与维拉基斯的神职：支配、恐惧与铁律。</description>
+    <color>(0.55, 0.25, 0.3)</color><iconPath>Ascension/Abilities/Dominate</iconPath>
+    <abilities><li>LP_DA_Dominate</li><li>LP_DA_CrownOfDread</li></abilities>
+    <passive>10格内的敌人射击精度-15%</passive><blessing>镇压/奴役效率×1.25</blessing>
+  </LichPhylactery.LP_DivinePortfolioDef>
+  <LichPhylactery.LP_DivinePortfolioDef>
+    <defName>LP_Portfolio_Storm</defName><key>Storm</key><label>风暴</label>
+    <description>塔洛斯的神职：雷霆、狂风与毁灭。</description>
+    <color>(0.55, 0.75, 1)</color><iconPath>Ascension/Abilities/ThunderWrath</iconPath>
+    <abilities><li>LP_DA_ThunderWrath</li><li>LP_DA_CallWind</li></abilities>
+    <passive>近战攻击他的人受到8点电击（×神职强度）</passive><blessing>闪电不会击中殖民地建筑</blessing>
+    <deed>stormkill</deed><deedTarget>15</deedTarget><deedLabel>雨天或雷暴天杀敌</deedLabel>
+  </LichPhylactery.LP_DivinePortfolioDef>
+  <LichPhylactery.LP_DivinePortfolioDef>
+    <defName>LP_Portfolio_Fire</defName><key>Fire</key><label>火焰</label>
+    <description>苏尔特的神职：烈焰、熔炉与锻造。</description>
+    <color>(1, 0.45, 0.2)</color><iconPath>Ascension/Abilities/Meteor</iconPath>
+    <abilities><li>LP_DA_Meteor</li><li>LP_DA_ForgeBlessing</li></abilities>
+    <passive>免疫火焰伤害，不会被点燃</passive><blessing>锻造速度×1.15</blessing>
+    <deed>firekill</deed><deedTarget>15</deedTarget><deedLabel>用火焰杀敌</deedLabel>
+  </LichPhylactery.LP_DivinePortfolioDef>
+  <LichPhylactery.LP_DivinePortfolioDef>
+    <defName>LP_Portfolio_Wild</defName><key>Wild</key><label>野性</label>
+    <description>马拉尔的神职：狩猎、獠牙与兽群。</description>
+    <color>(0.6, 0.42, 0.25)</color><iconPath>Ascension/Abilities/PackCall</iconPath>
+    <abilities><li>LP_DA_PackCall</li><li>LP_DA_PredatorForm</li></abilities>
+    <passive>狂暴的野生动物不会把他当作目标</passive><blessing>驯兽成功率×1.2</blessing>
+    <deed>wild</deed><deedTarget>10</deedTarget><deedLabel>驯服动物或杀死狂暴的动物</deedLabel>
+  </LichPhylactery.LP_DivinePortfolioDef>
+  <LichPhylactery.LP_DivinePortfolioDef>
+    <defName>LP_Portfolio_Mind</defName><key>Mind</key><label>心灵</label>
+    <description>伊尔斯维的神职：灵能、意志与低语。</description>
+    <color>(0.75, 0.45, 0.85)</color><iconPath>Ascension/Abilities/PsionicBlast</iconPath>
+    <abilities><li>LP_DA_PsionicBlast</li><li>LP_DA_WillCrush</li></abilities>
+    <passive>殖民地全体心灵敏感度+5%</passive><blessing>研究速度×1.1</blessing>
+  </LichPhylactery.LP_DivinePortfolioDef>
+  <LichPhylactery.LP_DivinePortfolioDef>
+    <defName>LP_Portfolio_Death</defName><key>Death</key><label>死亡</label>
+    <description>凯兰沃的神职：安息、审判与亡者的归宿。</description>
+    <color>(0.7, 0.72, 0.75)</color><iconPath>Ascension/Abilities/SoulRest</iconPath>
+    <abilities><li>LP_DA_SoulRest</li><li>LP_DA_JudgmentGate</li></abilities>
+    <passive>看到尸体不难受；殖民者死去时全员的心情惩罚×0.5</passive><blessing>手术成功率+5%</blessing>
+    <deed>death</deed><deedTarget>12</deedTarget><deedLabel>安葬尸体或摧毁亡灵</deedLabel>
+  </LichPhylactery.LP_DivinePortfolioDef>
+  <LichPhylactery.LP_DivinePortfolioDef>
+    <defName>LP_Portfolio_Magic</defName><key>Magic</key><label>魔法</label>
+    <description>密斯特拉的神职：魔网、法术与知识。</description>
+    <color>(0.45, 0.6, 1)</color><iconPath>Ascension/Abilities/WeaveMissiles</iconPath>
+    <abilities><li>LP_DA_WeaveMissiles</li><li>LP_DA_Antimagic</li></abilities>
+    <passive>本人心灵法术冷却×0.85</passive><blessing>精神力回复（冥想）×1.1</blessing>
+    <deed>magic</deed><deedTarget>30</deedTarget><deedLabel>成功施放消耗精神力或神眷的能力</deedLabel>
+  </LichPhylactery.LP_DivinePortfolioDef>
+  <LichPhylactery.LP_DivinePortfolioDef>
+    <defName>LP_Portfolio_Dark</defName><key>Dark</key><label>黑暗</label>
+    <description>莎尔的神职：夜色、遗忘与秘密。</description>
+    <color>(0.35, 0.3, 0.5)</color><iconPath>Ascension/Abilities/ShadowStep</iconPath>
+    <abilities><li>LP_DA_OblivionFog</li><li>LP_DA_ShadowStep</li></abilities>
+    <passive>夜里（22～5点）移动+15%、造成的伤害+10%</passive><blessing>夜里不会因为“在黑暗中”难受</blessing>
+    <deed>nightkill</deed><deedTarget>15</deedTarget><deedLabel>夜里（22～5点）杀敌</deedLabel>
+  </LichPhylactery.LP_DivinePortfolioDef>
+  <LichPhylactery.LP_DivinePortfolioDef>
+    <defName>LP_Portfolio_Undeath</defName><key>Undeath</key><label>不死</label>
+    <description>半神巫妖夺来的神职：永夜、灵魂与不朽。</description>
+    <color>(0.45, 0.85, 0.6)</color><iconPath>Ascension/Abilities/SoulHarvest</iconPath>
+    <abilities><li>LP_DA_SoulHarvest</li><li>LP_DA_DeadArmy</li></abilities>
+    <passive>命匣化为神龛（复生1天、神力≥50时立即复生、命匣生命×2）</passive><blessing>死灵造物的维护费×0.8</blessing>
+    <opposed><li>LP_Deity_Kelemvor</li><li>LP_Deity_Lathander</li></opposed>
+  </LichPhylactery.LP_DivinePortfolioDef>
+  <LichPhylactery.LP_DivinePortfolioDef>
+    <defName>LP_Portfolio_Arcane</defName><key>Arcane</key><label>奥术</label>
+    <description>奥术半神的神职：卡苏斯没能握住的魔网本身。</description>
+    <color>(0.55, 0.85, 1)</color><iconPath>Ascension/UI/Demigod</iconPath>
+    <passive>无（奥术半神原有的效果不变）</passive><blessing>心灵法术冷却×0.9</blessing>
+    <opposed><li>LP_Deity_Shar</li></opposed>
+  </LichPhylactery.LP_DivinePortfolioDef>
+
+  <!-- ==================== 神职能力（消耗神力；描述里的数值是强度×1 时的） ==================== -->
+  <AbilityDef Name="LP_DivineAbilityBase" Abstract="True">
+    <abilityClass>LichPhylactery.Ability_Divine</abilityClass>
+    <aiCanUse>false</aiCanUse>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <sendMessageOnCooldownComplete>false</sendMessageOnCooldownComplete>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+  </AbilityDef>
+  <AbilityDef Name="LP_DivineSelfBase" ParentName="LP_DivineAbilityBase" Abstract="True">
+    <targetRequired>false</targetRequired>
+    <hostile>false</hostile>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>1</warmupTime>
+      <range>0</range>
+      <targetParams><canTargetSelf>true</canTargetSelf></targetParams>
+    </verbProperties>
+  </AbilityDef>
+  <AbilityDef Name="LP_DivinePawnBase" ParentName="LP_DivineAbilityBase" Abstract="True">
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>1</warmupTime>
+      <range>24.9</range>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetLocations>false</canTargetLocations><canTargetBuildings>false</canTargetBuildings><canTargetAnimals>true</canTargetAnimals><canTargetSelf>false</canTargetSelf></targetParams>
+    </verbProperties>
+  </AbilityDef>
+  <AbilityDef Name="LP_DivineCellBase" ParentName="LP_DivineAbilityBase" Abstract="True">
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>1</warmupTime>
+      <range>24.9</range>
+      <requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetLocations>true</canTargetLocations><canTargetPawns>true</canTargetPawns><canTargetBuildings>true</canTargetBuildings></targetParams>
+    </verbProperties>
+  </AbilityDef>
+
+  <!-- 黎明 -->
+  <AbilityDef ParentName="LP_DivineSelfBase">
+    <defName>LP_DA_DawnLight</defName><label>破晓之光</label>
+    <description>身周6格的友方伤口共愈合15点；敌方亡灵、邪魔和夺心魔受到20点神圣伤害。消耗30神力，冷却1天。</description>
+    <iconPath>Ascension/Abilities/DawnLight</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_DivineAbility"><effect>DawnLight</effect><cost>30</cost><radius>6</radius></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_DivinePawnBase">
+    <defName>LP_DA_UnfadingDawn</defName><label>不灭晨曦</label>
+    <description>护佑一名友方24小时：这期间受到的第一次致命伤不会致死，伤口当场止血。消耗50神力，冷却2天。</description>
+    <iconPath>Ascension/Abilities/UnfadingDawn</iconPath>
+    <hostile>false</hostile><cooldownTicksRange>120000</cooldownTicksRange>
+    <verbProperties><targetParams><canTargetSelf>true</canTargetSelf></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_DivineAbility"><effect>UnfadingDawn</effect><cost>50</cost><duration>60000</duration></li></comps>
+  </AbilityDef>
+  <!-- 正义 -->
+  <AbilityDef ParentName="LP_DivinePawnBase">
+    <defName>LP_DA_JudgmentHammer</defName><label>审判之锤</label>
+    <description>对一名敌人砸下35点神圣伤害，并眩晕2秒。消耗30神力，冷却1天。</description>
+    <iconPath>Ascension/Abilities/JudgmentHammer</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_DivineAbility"><effect>JudgmentHammer</effect><cost>30</cost></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_DivineSelfBase">
+    <defName>LP_DA_JusticeShield</defName><label>正义之盾</label>
+    <description>身周8格的友方人形护甲（利器、钝器）+20%，持续1天。消耗40神力，冷却1天。</description>
+    <iconPath>Ascension/Abilities/JusticeShield</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_DivineAbility"><effect>JusticeShield</effect><cost>40</cost><radius>8</radius><duration>60000</duration></li></comps>
+  </AbilityDef>
+  <!-- 暴政 -->
+  <AbilityDef ParentName="LP_DivinePawnBase">
+    <defName>LP_DA_Dominate</defName><label>支配</label>
+    <description>支配一名人形敌人的心智：12小时内他站到你这一边，结束后回到原来的派系。心灵失聪的人不受影响。消耗60神力，冷却2天。</description>
+    <iconPath>Ascension/Abilities/Dominate</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_DivineAbility"><effect>Dominate</effect><cost>60</cost><duration>30000</duration></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_DivineSelfBase">
+    <defName>LP_DA_CrownOfDread</defName><label>恐惧之冠</label>
+    <description>身周7格的敌人惊恐逃窜。消耗40神力，冷却1天。</description>
+    <iconPath>Ascension/Abilities/CrownOfDread</iconPath>
+    <hostile>true</hostile>
+    <comps><li Class="LichPhylactery.CompProperties_DivineAbility"><effect>CrownOfDread</effect><cost>40</cost><radius>7</radius></li></comps>
+  </AbilityDef>
+  <!-- 风暴 -->
+  <AbilityDef ParentName="LP_DivineCellBase">
+    <defName>LP_DA_ThunderWrath</defName><label>雷霆之怒</label>
+    <description>在目标区域召下3道闪电，每道对1.5格内的人造成25点电击伤害。消耗40神力，冷却1天。</description>
+    <iconPath>Ascension/Abilities/ThunderWrath</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_DivineAbility"><effect>ThunderWrath</effect><cost>40</cost></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_DivineSelfBase">
+    <defName>LP_DA_CallWind</defName><label>唤风</label>
+    <description>让这张地图下起雷暴（约1天），本派系的人移动速度+10%，持续1天。消耗30神力，冷却1天。</description>
+    <iconPath>Ascension/Abilities/CallWind</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_DivineAbility"><effect>CallWind</effect><cost>30</cost><duration>60000</duration></li></comps>
+  </AbilityDef>
+  <!-- 火焰 -->
+  <AbilityDef ParentName="LP_DivineCellBase">
+    <defName>LP_DA_Meteor</defName><label>陨火</label>
+    <description>召下一颗火球：4格内造成40点火焰伤害并点燃。消耗45神力，冷却1天。</description>
+    <iconPath>Ascension/Abilities/Meteor</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_DivineAbility"><effect>Meteor</effect><cost>45</cost><radius>4</radius></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_DivineSelfBase">
+    <defName>LP_DA_ForgeBlessing</defName><label>熔炉祝福</label>
+    <description>身周6格的友方人形1天内近战每次命中附加6点烧伤。消耗30神力，冷却1天。</description>
+    <iconPath>Ascension/Abilities/ForgeBlessing</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_DivineAbility"><effect>ForgeBlessing</effect><cost>30</cost><radius>6</radius><duration>60000</duration></li></comps>
+  </AbilityDef>
+  <!-- 野性 -->
+  <AbilityDef ParentName="LP_DivineSelfBase">
+    <defName>LP_DA_PackCall</defName><label>兽群召唤</label>
+    <description>召来4只听从本派系的座狼，1天后它们回到荒野。消耗50神力，冷却2天。</description>
+    <iconPath>Ascension/Abilities/PackCall</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_DivineAbility"><effect>PackCall</effect><cost>50</cost><duration>60000</duration></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_DivineSelfBase">
+    <defName>LP_DA_PredatorForm</defName><label>掠食者之形</label>
+    <description>化身掠食者6小时：近战伤害+50%、移动速度+20%。消耗30神力，冷却1天。</description>
+    <iconPath>Ascension/Abilities/PredatorForm</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_DivineAbility"><effect>PredatorForm</effect><cost>30</cost><duration>15000</duration></li></comps>
+  </AbilityDef>
+  <!-- 心灵 -->
+  <AbilityDef ParentName="LP_DivineSelfBase">
+    <defName>LP_DA_PsionicBlast</defName><label>灵能爆震</label>
+    <description>身周5格的敌人眩晕3秒，并受到15点灵能伤害（心灵失聪的人不受影响）。消耗45神力，冷却1天。</description>
+    <iconPath>Ascension/Abilities/PsionicBlast</iconPath>
+    <hostile>true</hostile>
+    <comps><li Class="LichPhylactery.CompProperties_DivineAbility"><effect>PsionicBlast</effect><cost>45</cost><radius>5</radius></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_DivinePawnBase">
+    <defName>LP_DA_WillCrush</defName><label>意志碾压</label>
+    <description>碾碎一名敌人的意志，让他陷入狂暴（心灵失聪的人不受影响）。消耗50神力，冷却1天。</description>
+    <iconPath>Ascension/Abilities/WillCrush</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_DivineAbility"><effect>WillCrush</effect><cost>50</cost></li></comps>
+  </AbilityDef>
+  <!-- 死亡 -->
+  <AbilityDef ParentName="LP_DivineSelfBase">
+    <defName>LP_DA_SoulRest</defName><label>灵魂安息</label>
+    <description>身周8格的敌方亡灵与死灵造物受到40点神圣伤害；倒地的敌人和敌人的尸体6小时内不能被复生，也不能被吞噬大脑。消耗40神力，冷却1天。</description>
+    <iconPath>Ascension/Abilities/SoulRest</iconPath>
+    <hostile>true</hostile>
+    <comps><li Class="LichPhylactery.CompProperties_DivineAbility"><effect>SoulRest</effect><cost>40</cost><radius>8</radius><duration>15000</duration></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_DivinePawnBase">
+    <defName>LP_DA_JudgmentGate</defName><label>审判之门</label>
+    <description>为一名敌人打开审判之门：生命低于30%时当场死去，否则受到30点神圣伤害。消耗50神力，冷却1天。</description>
+    <iconPath>Ascension/Abilities/JudgmentGate</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_DivineAbility"><effect>JudgmentGate</effect><cost>50</cost></li></comps>
+  </AbilityDef>
+  <!-- 魔法 -->
+  <AbilityDef ParentName="LP_DivineSelfBase">
+    <defName>LP_DA_WeaveMissiles</defName><label>魔网飞弹</label>
+    <description>射出5发追踪的魔网飞弹，随机打向15格内的敌人，每发8点力场伤害。消耗30神力，冷却1天。</description>
+    <iconPath>Ascension/Abilities/WeaveMissiles</iconPath>
+    <hostile>true</hostile>
+    <comps><li Class="LichPhylactery.CompProperties_DivineAbility"><effect>WeaveMissiles</effect><cost>30</cost></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_DivineSelfBase">
+    <defName>LP_DA_Antimagic</defName><label>反魔场</label>
+    <description>以自己为中心张开6格的反魔场，持续1天：里面的敌人放不出能力，神明附体者的神技停摆。消耗50神力，冷却1天。</description>
+    <iconPath>Ascension/Abilities/Antimagic</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_DivineAbility"><effect>Antimagic</effect><cost>50</cost><radius>6</radius><duration>60000</duration></li></comps>
+  </AbilityDef>
+  <!-- 黑暗 -->
+  <AbilityDef ParentName="LP_DivineCellBase">
+    <defName>LP_DA_OblivionFog</defName><label>遗忘之雾</label>
+    <description>在目标处放出遗忘之雾：6格内的敌人6小时内射击精度-40%。消耗40神力，冷却1天。</description>
+    <iconPath>Ascension/Abilities/OblivionFog</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_DivineAbility"><effect>OblivionFog</effect><cost>40</cost><radius>6</radius><duration>15000</duration></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_DivineAbilityBase">
+    <defName>LP_DA_ShadowStep</defName><label>影遁</label>
+    <description>没入阴影，瞬移到12格内的一处，并隐形8秒。消耗30神力，冷却1天。</description>
+    <iconPath>Ascension/Abilities/ShadowStep</iconPath>
+    <hostile>false</hostile>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>0.5</warmupTime>
+      <range>12</range>
+      <requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetLocations>true</canTargetLocations><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_DivineAbility"><effect>ShadowStep</effect><cost>30</cost></li></comps>
+  </AbilityDef>
+  <!-- 不死 -->
+  <AbilityDef ParentName="LP_DivineSelfBase">
+    <defName>LP_DA_SoulHarvest</defName><label>万魂收割</label>
+    <description>收割身周8格内所有倒地人形敌人的灵魂：他们当场死去（尸体完整），每个灵魂让命匣得到50点献祭经验。消耗40神力，冷却1天。</description>
+    <iconPath>Ascension/Abilities/SoulHarvest</iconPath>
+    <hostile>true</hostile>
+    <comps><li Class="LichPhylactery.CompProperties_DivineAbility"><effect>SoulHarvest</effect><cost>40</cost><radius>8</radius></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_DivineSelfBase">
+    <defName>LP_DA_DeadArmy</defName><label>亡者大军</label>
+    <description>从地下唤起4具骷髅（沿用死灵造物的骷髅），1天后崩解。消耗50神力，冷却1天。</description>
+    <iconPath>Ascension/Abilities/DeadArmy</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_DivineAbility"><effect>DeadArmy</effect><cost>50</cost><duration>60000</duration></li></comps>
+  </AbilityDef>
+
+  <!-- ==================== 半神与能力状态 ==================== -->
+  <HediffDef>
+    <defName>LP_Demigod</defName>
+    <label>半神</label>
+    <description>凡躯里燃着一粒神性火花。不老、饥饿×0.3、免疫疾病、心灵敏感度+20%（每级再+5%）、受到伤害×0.95（每级再×0.95）、精神崩溃阈值-10%；神职给两个主动能力和一个被动。神力每天恢复，神力满时可以接受众神的试炼提升神性等级。</description>
+    <hediffClass>LichPhylactery.Hediff_Demigod</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <defaultLabelColor>(1, 0.85, 0.4)</defaultLabelColor>
+    <comps><li Class="LichPhylactery.HediffCompProperties_Demigod" /></comps>
+  </HediffDef>
+  <HediffDef Name="LP_DivineTimedBase" Abstract="True">
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(1, 0.85, 0.45)</defaultLabelColor>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>60000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+  </HediffDef>
+  <HediffDef ParentName="LP_DivineTimedBase">
+    <defName>LP_UnfadingDawn</defName><label>不灭晨曦</label>
+    <description>洛山达的晨光护着这个人：第一次致命伤不会致死，伤口会立刻止血。</description>
+  </HediffDef>
+  <HediffDef ParentName="LP_DivineTimedBase">
+    <defName>LP_JusticeShield</defName><label>正义之盾</label>
+    <description>提尔的盾护在身前。</description>
+    <stages><li><statOffsets><ArmorRating_Sharp>0.2</ArmorRating_Sharp><ArmorRating_Blunt>0.2</ArmorRating_Blunt></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_DivineTimedBase">
+    <defName>LP_DivineDominated</defName><label>被支配</label>
+    <description>心智被半神支配。到时会回到原来的派系。</description>
+    <hediffClass>LichPhylactery.Hediff_DivineDominated</hediffClass>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.75, 0.4, 0.45)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_DivineTimedBase">
+    <defName>LP_CallWindHaste</defName><label>唤风</label>
+    <description>风推着脚步。</description>
+  </HediffDef>
+  <HediffDef ParentName="LP_DivineTimedBase">
+    <defName>LP_ForgeBlessing</defName><label>熔炉祝福</label>
+    <description>武器上燃着苏尔特的火：近战命中附加6点烧伤。</description>
+  </HediffDef>
+  <HediffDef ParentName="LP_DivineTimedBase">
+    <defName>LP_PredatorForm</defName><label>掠食者之形</label>
+    <description>马拉尔的兽性涌了上来。</description>
+    <stages><li><statFactors><MeleeDamageFactor>1.5</MeleeDamageFactor><MoveSpeed>1.2</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_DivineTimedBase">
+    <defName>LP_OblivionFog</defName><label>遗忘之雾</label>
+    <description>眼前的一切都蒙着一层雾，瞄准时常常忘了自己要打什么：射击精度×0.6。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.55, 0.5, 0.7)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_DivineTimedBase">
+    <defName>LP_SummonedTemp</defName><label>神召</label>
+    <description>被半神召来，时间一到就会离开或崩解。</description>
+    <hediffClass>LichPhylactery.Hediff_SummonedTemp</hediffClass>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_FreezeRevivalAura</defName>
+    <label>冻结复生</label>
+    <description>凯兰沃的审判者：身边15格内，巫妖和巨魔的复生计时暂停。</description>
+    <hediffClass>LichPhylactery.Hediff_FreezeRevival</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.75, 0.78, 0.85)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_GiantKing</defName>
+    <label>巨人王</label>
+    <description>应泰坦的挑战而来的巨人王。</description>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(1, 0.6, 0.35)</defaultLabelColor>
+  </HediffDef>
+
+  <!-- ==================== 神性火花 ==================== -->
+  <ThingDef Name="LP_SparkBase" ParentName="ResourceBase" Abstract="True">
+    <graphicData><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <soundInteract>Stone_Drop</soundInteract>
+    <soundDrop>Stone_Drop</soundDrop>
+    <stackLimit>1</stackLimit>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <statBases><MarketValue>0</MarketValue><Mass>0.1</Mass><Flammability>0</Flammability><DeteriorationRate>0</DeteriorationRate></statBases>
+    <thingCategories><li>ItemsMisc</li></thingCategories>
+    <tradeability>None</tradeability>
+    <burnableByRecipe>false</burnableByRecipe>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_DivineSpark" />
+      <li Class="CompProperties_Glower"><glowRadius>3</glowRadius><glowColor>(255,220,140,0)</glowColor></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_SparkBase">
+    <defName>LP_DivineSpark</defName>
+    <label>神性火花</label>
+    <description>一粒凝成实体的神性，摸上去不烫，却让人不敢久看。只有它为之而落的那个人能吸收它（在升神仪式里引导12小时）。地图上有火花时，殖民者心情+4。不能出售。</description>
+    <graphicData><texPath>Ascension/Items/DivineSpark</texPath></graphicData>
+  </ThingDef>
+  <ThingDef ParentName="LP_SparkBase">
+    <defName>LP_UsurpedSpark</defName>
+    <label>篡夺的神性火花</label>
+    <description>从神明附体者身上夺来的暗红色火花，还带着原主的怒意。任何殖民者都能尝试吸收它，但篡火仪式可能失败。不能出售。</description>
+    <graphicData><texPath>Ascension/Items/UsurpedSpark</texPath></graphicData>
+  </ThingDef>
+
+  <!-- ==================== 圣物 ==================== -->
+  <ThingDef ParentName="LP_AccessoryBase">
+    <defName>LP_SaintSeal</defName>
+    <label>圣徒圣印</label>
+    <description>圣徒证道时神赐的印戒，只认它的主人（绑定）。心灵敏感度+10%，神职能力冷却×0.8，圣徒所属之神的神眷获得×1.25。戴在奇物栏，不显示在身上。</description>
+    <graphicData><texPath>Ascension/Items/SaintSeal</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>1500</MarketValue><MaxHitPoints>300</MaxHitPoints></statBases>
+    <equippedStatOffsets><PsychicSensitivity>0.1</PsychicSensitivity></equippedStatOffsets>
+    <tradeability>None</tradeability>
+    <apparel><bodyPartGroups><li>Shoulders</li></bodyPartGroups></apparel>
+    <comps><li Class="CompProperties_Biocodable" /></comps>
+    <tradeTags Inherit="False" />
+  </ThingDef>
+  <ThingDef ParentName="LP_AccessoryBase">
+    <defName>LP_EternalNightCrown</defName>
+    <label>永夜冠冕</label>
+    <description>半神巫妖的冠冕，骨白与暗金交错，只认它的主人（绑定）。巫妖精神力上限+30%，死灵造物统御容量+4，神职能力伤害+15%。戴在奇物栏，不显示在身上。</description>
+    <graphicData><texPath>Ascension/Items/EternalNightCrown</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>3000</MarketValue><MaxHitPoints>400</MaxHitPoints></statBases>
+    <tradeability>None</tradeability>
+    <apparel><bodyPartGroups><li>UpperHead</li></bodyPartGroups></apparel>
+    <comps><li Class="CompProperties_Biocodable" /></comps>
+    <tradeTags Inherit="False" />
+  </ThingDef>
+  <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+    <defName>LP_SkySpear</defName>
+    <label>天穹之矛</label>
+    <description>觉醒泰坦的长矛，矛尖映着天穹的光，只认它的主人（绑定）。伤害是普通长矛的1.6倍，每次命中附带8点父神神职的伤害（黎明、正义：神圣；风暴：电击加短暂眩晕；野性：割伤流血；火焰：烧伤，可能点燃；其他：神圣）。不吃心灵敏感度，走武器品质（和 Isekai 的近战加成）。</description>
+    <graphicData><texPath>Ascension/Weapons/SkySpear</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <techLevel>Medieval</techLevel>
+    <statBases><MarketValue>4000</MarketValue><Mass>3</Mass><MaxHitPoints>400</MaxHitPoints></statBases>
+    <tradeability>None</tradeability>
+    <equippedAngleOffset>-25</equippedAngleOffset>
+    <tools>
+      <li><label>矛杆</label><capacities><li>Blunt</li></capacities><power>14</power><cooldownTime>2</cooldownTime></li>
+      <li><label>矛尖</label><capacities><li>Stab</li></capacities><power>38</power><cooldownTime>2.6</cooldownTime><armorPenetration>0.6</armorPenetration></li>
+    </tools>
+    <weaponTags Inherit="False"><li>LP_AscensionRelic</li></weaponTags>
+    <thingSetMakerTags Inherit="False" />
+    <recipeMaker IsNull="True" />
+    <smeltable>false</smeltable>
+    <comps>
+      <li Class="CompProperties_Biocodable" />
+      <li Class="LichPhylactery.CompProperties_SkySpear" />
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+    <defName>LP_Godsbane</defName>
+    <label>诸神之祸</label>
+    <description>篡火者的长剑，剑身里锁着一缕被篡夺的神火，只认它的主人（绑定）。对神力灌注者、神明附体者和半神伤害×2；其余和精工长剑的1.3倍一样。</description>
+    <graphicData><texPath>Ascension/Weapons/Godsbane</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <techLevel>Medieval</techLevel>
+    <statBases><MarketValue>4000</MarketValue><Mass>2</Mass><MaxHitPoints>400</MaxHitPoints></statBases>
+    <tradeability>None</tradeability>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <tools>
+      <li><label>剑柄</label><capacities><li>Poke</li></capacities><power>12</power><cooldownTime>2</cooldownTime></li>
+      <li><label>剑尖</label><capacities><li>Stab</li></capacities><power>30</power><cooldownTime>2.6</cooldownTime><armorPenetration>0.5</armorPenetration></li>
+      <li><label>剑刃</label><capacities><li>Cut</li></capacities><power>30</power><cooldownTime>2.6</cooldownTime><armorPenetration>0.5</armorPenetration></li>
+    </tools>
+    <weaponTags Inherit="False"><li>LP_AscensionRelic</li></weaponTags>
+    <thingSetMakerTags Inherit="False" />
+    <recipeMaker IsNull="True" />
+    <smeltable>false</smeltable>
+    <comps><li Class="CompProperties_Biocodable" /></comps>
+  </ThingDef>
+
+  <!-- ==================== 特性 ==================== -->
+  <TraitDef>
+    <defName>LP_Saint</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#50C0C0>圣徒</color>]]></label>
+        <description>[PAWN_nameDef]在异端勇者面前证了道，是[PAWN_possessive]神的圣徒：心灵敏感度+15%、社交+2；[PAWN_possessive]的神每天神眷+0.2。装了 VPE 时神恩强度+0.15。</description>
+        <statOffsets><PsychicSensitivity>0.15</PsychicSensitivity></statOffsets>
+        <skillGains><Social>2</Social></skillGains>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Uncommon</tier><kind>传说事迹</kind><mark>Deed</mark></li>
+    </modExtensions>
+  </TraitDef>
+  <TraitDef>
+    <defName>LP_Godslayer</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#50C0C0>弑神者</color>]]></label>
+        <description>[PAWN_nameDef]亲手击败过神明附体的首领：对神力灌注者、神明附体者和半神造成的伤害×1.3；神明附体首领的神技打在[PAWN_objective]身上只有七成效果。</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>传说事迹</kind><mark>Deed</mark></li>
+    </modExtensions>
+  </TraitDef>
+
+  <!-- ==================== 凯兰沃的教会（末日卫士） ==================== -->
+  <FactionDef ParentName="LP_FactionBase">
+    <defName>LP_KelemvorChurch</defName>
+    <label>凯兰沃的末日卫士</label>
+    <fixedName>凯兰沃的末日卫士</fixedName>
+    <description>死神凯兰沃的教会派出的末日卫士：灰袍、长剑，专门猎杀不该存在的不死者。他们不和任何人谈判。</description>
+    <pawnSingular>末日卫士</pawnSingular>
+    <pawnsPlural>末日卫士</pawnsPlural>
+    <techLevel>Medieval</techLevel>
+    <hidden>true</hidden>
+    <permanentEnemy>true</permanentEnemy>
+    <requiredCountAtGameStart>0</requiredCountAtGameStart>
+    <startingCountAtWorldCreation>0</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <displayInFactionSelection>false</displayInFactionSelection>
+    <settlementGenerationWeight>0</settlementGenerationWeight>
+    <canStageAttacks>false</canStageAttacks>
+    <raidsForbidden>true</raidsForbidden>
+    <canGenerateQuestSites>false</canGenerateQuestSites>
+    <rescueesCanJoin>false</rescueesCanJoin>
+    <factionIconPath>Factions/FaerunColony</factionIconPath>
+    <colorSpectrum>
+      <li>(0.55, 0.56, 0.6)</li>
+      <li>(0.7, 0.72, 0.76)</li>
+    </colorSpectrum>
+    <basicMemberKind>LP_Doomguide</basicMemberKind>
+    <ideoName>凯兰沃</ideoName>
+    <ideoDescription>死亡是公正的，逃避它的人必须被带回去。</ideoDescription>
+    <raidCommonalityFromPointsCurve><points><li>(0, 0)</li></points></raidCommonalityFromPointsCurve>
+    <pawnGroupMakers>
+      <li>
+        <kindDef>Combat</kindDef>
+        <options><LP_Doomguide>1</LP_Doomguide></options>
+      </li>
+    </pawnGroupMakers>
+  </FactionDef>
+  <PawnKindDef Name="LP_DoomguideBase" ParentName="LP_FighterBase" Abstract="True">
+    <defaultFactionDef>LP_KelemvorChurch</defaultFactionDef>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <humanPregnancyChance>0</humanPregnancyChance>
+    <ignoreIdeoApparelColors>true</ignoreIdeoApparelColors>
+    <specificApparelRequirements>
+      <li>
+        <apparelDef>Apparel_Robe</apparelDef>
+        <color>(0.46, 0.47, 0.5)</color>
+      </li>
+    </specificApparelRequirements>
+    <weaponTags>
+      <li>MedievalMeleeDecent</li>
+    </weaponTags>
+    <initialResistanceRange>40~60</initialResistanceRange>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_DoomguideBase">
+    <defName>LP_Doomguide</defName>
+    <label>末日卫士</label>
+    <combatPower>110</combatPower>
+    <minGenerationAge>22</minGenerationAge>
+    <itemQuality>Good</itemQuality>
+    <apparelMoney>300~600</apparelMoney>
+    <weaponMoney>300~600</weaponMoney>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_DoomguideBase">
+    <defName>LP_DoomJudge</defName>
+    <label>凯兰沃的审判者</label>
+    <combatPower>300</combatPower>
+    <factionLeader>true</factionLeader>
+    <minGenerationAge>40</minGenerationAge>
+    <itemQuality>Excellent</itemQuality>
+    <apparelMoney>800~1200</apparelMoney>
+    <weaponMoney>800~1200</weaponMoney>
+    <weaponTags Inherit="False">
+      <li>MedievalMeleeAdvanced</li>
+      <li>MedievalMeleeDecent</li>
+    </weaponTags>
+    <initialResistanceRange>80~100</initialResistanceRange>
+  </PawnKindDef>
+
+  <!-- ==================== 觉醒泰坦 ==================== -->
+  <XenotypeDef>
+    <defName>LP_AwakenedTitan</defName>
+    <label>觉醒泰坦</label>
+    <description>走完天穹之门的天穹神裔：神性在血里醒了过来，头顶的光环之外又多了一圈淡金色的神辉。它仍是神裔，只是离父神更近了一步。觉醒的神血不会传给后代。</description>
+    <descriptionShort>天穹神裔的全部基因，加上“觉醒神血”（心灵敏感度+20%、头顶神辉）。不可遗传。</descriptionShort>
+    <iconPath>Ascension/Xenotypes/AwakenedTitan</iconPath>
+    <inheritable>false</inheritable>
+    <combatPowerFactor>3.5</combatPowerFactor>
+    <factionlessGenerationWeight>0</factionlessGenerationWeight>
+    <genes>
+      <li>LP_TitanStature</li>
+      <li>LP_TitanDivinity</li>
+      <li>LP_TitanWeather</li>
+      <li>LP_TitanUnshakable</li>
+      <li>LP_SkinTitan</li>
+      <li>Body_Hulk</li>
+      <li>Hair_SnowWhite</li>
+      <li>Aggression_Aggressive</li>
+      <li>Sterile</li>
+      <li>LP_DivineBlood</li>
+    </genes>
+  </XenotypeDef>
+  <GeneDef>
+    <defName>LP_DivineBlood</defName>
+    <label>觉醒神血</label>
+    <description>天穹之门打开时，父神的神性流进了泰坦的血里：心灵敏感度+20%，头顶再多一圈淡金色的神辉。体型不变（同泰坦2.5倍）。这份神血不会遗传给后代。</description>
+    <displayCategory>Miscellaneous</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <iconPath>Ascension/Genes/DivineBlood</iconPath>
+    <biostatCpx>2</biostatCpx>
+    <biostatMet>0</biostatMet>
+    <statOffsets><PsychicSensitivity>0.2</PsychicSensitivity></statOffsets>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Ascension/Halo/DivineHalo</texPath>
+        <color>(255, 255, 255)</color>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh</rotDrawMode>
+        <drawData><defaultData><layer>81</layer></defaultData></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+
+  <!-- ==================== 心情 ==================== -->
+  <ThoughtDef>
+    <defName>LP_DivineRadiance</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_DivineRadiance</workerClass>
+    <validWhileDespawned>false</validWhileDespawned>
+    <stages><li><label>神性的光辉</label><description>地图上有一粒神性火花，整片土地都亮了一些。</description><baseMoodEffect>4</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_NewGodRises</defName>
+    <durationDays>10</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>新神崛起</label><description>我们的半神通过了众神的试炼。我亲眼看着一位神变得更强大。</description><baseMoodEffect>8</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_GodWatches</defName>
+    <durationDays>30</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>我们的神在看着我们</label><description>从这片土地上升起的神，如今在天穹上看着我们。</description><baseMoodEffect>15</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_GodWatchesForever</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_GodWatchesForever</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages><li><label>神的故乡</label><description>我们的殖民地出过一位神。</description><baseMoodEffect>3</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_DawnPresence</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_DawnPresence</workerClass>
+    <validWhileDespawned>false</validWhileDespawned>
+    <stages><li><label>晨光普照</label><description>黎明的半神就在附近，四周暖洋洋的。</description><baseMoodEffect>4</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_GithBetrayal</defName>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <workerClass>LichPhylactery.ThoughtWorker_GithBetrayal</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages><li><label>僭越的巫妖</label><baseOpinionOffset>-50</baseOpinionOffset></li></stages>
+  </ThoughtDef>
+
+  <!-- ==================== 天象、工作 ==================== -->
+  <GameConditionDef>
+    <defName>LP_DivineTremor</defName>
+    <conditionClass>LichPhylactery.GameCondition_DivineTremor</conditionClass>
+    <label>神性震荡</label>
+    <description>有人在引导神性火花，这张地图上的灵能都在发颤：心灵法术冷却×1.5。</description>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
+  <GameConditionDef>
+    <defName>LP_WrathStorm</defName>
+    <conditionClass>LichPhylactery.GameCondition_WrathStorm</conditionClass>
+    <label>神怒风暴</label>
+    <description>天穹之门正在打开，天空阴沉，雷电不时落下。</description>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
+  <JobDef>
+    <defName>LP_AscensionRite</defName>
+    <driverClass>LichPhylactery.JobDriver_AscensionRite</driverClass>
+    <reportString>正在引导神性火花。</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+  <JobDef>
+    <defName>LP_SkyGate</defName>
+    <driverClass>LichPhylactery.JobDriver_SkyGate</driverClass>
+    <reportString>正在天穹之门下等待。</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+</Defs>

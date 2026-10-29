@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.28.0 巨人迁徙：事件、两个新兵种（食人魔流民、同盟的泰坦流浪者）、讨食信、种族心情。1.30.2：食人魔流民归余烬氏族。 -->
+<Defs>
+  <!-- 1.34.1 隐藏派系“巨人游群”：所有迁徙队伍挂在它下面（照 1.31.0 龙过境的 LP_DragonWanderers）。对所有派系永久中立（代码每250刻维持），
+       被玩家打伤成员才转敌对，队伍都走了以后复原为中立；好感、礼物、留下居住仍记到原来的派系（余烬氏族或费伦拓荒同盟）。被救的陌生人可以请求加入。 -->
+  <FactionDef ParentName="LP_FactionBase">
+    <defName>LP_GiantWanderers</defName>
+    <label>巨人游群</label>
+    <fixedName>巨人游群</fixedName>
+    <description>在大地上迁徙的巨人和他们的同伴。他们不属于任何一方，也不和任何一方为敌。</description>
+    <pawnSingular>迁徙者</pawnSingular>
+    <pawnsPlural>迁徙者</pawnsPlural>
+    <techLevel>Medieval</techLevel>
+    <hidden>true</hidden>
+    <requiredCountAtGameStart>0</requiredCountAtGameStart>
+    <startingCountAtWorldCreation>0</startingCountAtWorldCreation>
+    <maxConfigurableAtWorldCreation>0</maxConfigurableAtWorldCreation>
+    <displayInFactionSelection>false</displayInFactionSelection>
+    <settlementGenerationWeight>0</settlementGenerationWeight>
+    <canStageAttacks>false</canStageAttacks>
+    <raidsForbidden>true</raidsForbidden>
+    <canGenerateQuestSites>false</canGenerateQuestSites>
+    <rescueesCanJoin>true</rescueesCanJoin>
+    <factionIconPath>Factions/EmberClan</factionIconPath>
+    <colorSpectrum>
+      <li>(0.70, 0.66, 0.56)</li>
+      <li>(0.84, 0.80, 0.70)</li>
+    </colorSpectrum>
+    <basicMemberKind>LP_FC_Villager</basicMemberKind>
+    <ideoName>远行者</ideoName>
+    <ideoDescription>大地很宽，路很长。</ideoDescription>
+    <forcedMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Animist</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Collectivist</li>
+    </forcedMemes>
+    <raidCommonalityFromPointsCurve>
+      <points>
+        <li>(0, 0)</li>
+      </points>
+    </raidCommonalityFromPointsCurve>
+    <pawnGroupMakers>
+      <li>
+        <kindDef>Combat</kindDef>
+        <options>
+          <LP_FC_Villager>1</LP_FC_Villager>
+        </options>
+      </li>
+    </pawnGroupMakers>
+  </FactionDef>
+
+  <IncidentDef>
+    <defName>LP_GiantMigration</defName>
+    <label>巨人迁徙</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_GiantMigration</workerClass>
+    <!-- 原版“旅行者”是 4.0，这里取一半 -->
+    <baseChance>2.0</baseChance>
+    <minRefireDays>25</minRefireDays>
+    <pointsScaleable>false</pointsScaleable>
+  </IncidentDef>
+
+  <LetterDef ParentName="CustomChoiceLetterBase">
+    <defName>LP_GiantChoiceLetter</defName>
+    <letterClass>LichPhylactery.Letter_GiantMigration</letterClass>
+  </LetterDef>
+
+  <!-- 只用于巨人迁徙，不进任何袭击和商队组。1.30.2 起归余烬氏族（defName 不改，兼容存档） -->
+  <PawnKindDef ParentName="LP_ECBase">
+    <defName>LP_FC_OgreWanderer</defName>
+    <label>食人魔流民</label>
+    <combatPower>90</combatPower>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_Ogre>1</LP_Ogre>
+      </xenotypeChances>
+    </xenotypeSet>
+    <apparelMoney>150~300</apparelMoney>
+    <apparelTags Inherit="False">
+      <li>Neolithic</li>
+    </apparelTags>
+    <weaponMoney>100~250</weaponMoney>
+    <weaponTags>
+      <li>NeolithicMeleeDecent</li>
+      <li>NeolithicMeleeAdvanced</li>
+    </weaponTags>
+    <initialResistanceRange>10~18</initialResistanceRange>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_FCBase">
+    <defName>LP_FC_TitanWanderer</defName>
+    <label>泰坦流浪者</label>
+    <combatPower>250</combatPower>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_Titan>1</LP_Titan>
+      </xenotypeChances>
+    </xenotypeSet>
+    <minGenerationAge>30</minGenerationAge>
+    <itemQuality>Good</itemQuality>
+    <apparelMoney>300~600</apparelMoney>
+    <weaponMoney>300~600</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeDecent</li>
+      <li>MedievalMeleeAdvanced</li>
+    </weaponTags>
+    <initialResistanceRange>30~45</initialResistanceRange>
+  </PawnKindDef>
+
+  <ThoughtDef>
+    <defName>LP_GiantHatesTrolls</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_GiantHatesTrolls</workerClass>
+    <validWhileDespawned>false</validWhileDespawned>
+    <stages>
+      <li>
+        <label>厌恶巨魔</label>
+        <description>那个殖民地里住着巨魔——那种烧不死的东西。真想快点离开这里。</description>
+        <baseMoodEffect>-6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_ClanPassing</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_ClanPassing</workerClass>
+    <validWhileDespawned>false</validWhileDespawned>
+    <stages>
+      <li>
+        <label>氏族路过</label>
+        <description>余烬氏族的同胞在附近扎营。看到熟悉的熔火之光，心里暖洋洋的。</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

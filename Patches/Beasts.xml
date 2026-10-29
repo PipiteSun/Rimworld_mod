@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.25.0 DND 野兽的野外刷新。原版同生态区的中型掠食者（灰熊、森林狼、座狼、美洲狮等）多为 0.07，这里取它的一半到等同，保证“偶尔能遇到”。
+     设置里关掉“野外刷新 DND 野兽”时，代码把这些权重当成 0（见 Source/Beasts.cs），不用改这里。 -->
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/BiomeDef[defName="TemperateForest"]/wildAnimals</xpath>
+    <value>
+      <LP_Owlbear>0.05</LP_Owlbear>
+      <LP_DisplacerBeast>0.03</LP_DisplacerBeast>
+      <LP_BlinkDog>0.04</LP_BlinkDog>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/BiomeDef[defName="BorealForest"]/wildAnimals</xpath>
+    <value>
+      <LP_Owlbear>0.05</LP_Owlbear>
+      <LP_Worg>0.06</LP_Worg>
+      <LP_WinterWolf>0.02</LP_WinterWolf>
+      <LP_BlinkDog>0.02</LP_BlinkDog>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/BiomeDef[defName="TemperateSwamp"]/wildAnimals</xpath>
+    <value>
+      <LP_Owlbear>0.03</LP_Owlbear>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/BiomeDef[defName="Tundra"]/wildAnimals</xpath>
+    <value>
+      <LP_Worg>0.06</LP_Worg>
+      <LP_WinterWolf>0.06</LP_WinterWolf>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/BiomeDef[defName="ColdBog"]/wildAnimals</xpath>
+    <value>
+      <LP_Worg>0.04</LP_Worg>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/BiomeDef[defName="IceSheet"]/wildAnimals</xpath>
+    <value>
+      <LP_WinterWolf>0.05</LP_WinterWolf>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/BiomeDef[defName="AridShrubland"]/wildAnimals</xpath>
+    <value>
+      <LP_HellHound>0.03</LP_HellHound>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/BiomeDef[defName="Desert"]/wildAnimals</xpath>
+    <value>
+      <LP_HellHound>0.04</LP_HellHound>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/BiomeDef[defName="ExtremeDesert"]/wildAnimals</xpath>
+    <value>
+      <LP_HellHound>0.05</LP_HellHound>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/BiomeDef[defName="TropicalRainforest"]/wildAnimals</xpath>
+    <value>
+      <LP_DisplacerBeast>0.07</LP_DisplacerBeast>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/BiomeDef[defName="TropicalSwamp"]/wildAnimals</xpath>
+    <value>
+      <LP_DisplacerBeast>0.05</LP_DisplacerBeast>
+    </value>
+  </Operation>
+  <!-- Odyssey：熔岩地给地狱犬，冰川平原给冬狼。 -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/BiomeDef[defName="LavaField"]/wildAnimals</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>/Defs/BiomeDef[defName="LavaField"]/wildAnimals</xpath>
+      <value>
+        <LP_HellHound>0.05</LP_HellHound>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/BiomeDef[defName="GlacialPlain"]/wildAnimals</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>/Defs/BiomeDef[defName="GlacialPlain"]/wildAnimals</xpath>
+      <value>
+        <LP_WinterWolf>0.03</LP_WinterWolf>
+      </value>
+    </match>
+  </Operation>
+</Patch>

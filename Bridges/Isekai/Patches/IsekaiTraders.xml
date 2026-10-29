@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.22.0 Isekai 联动：只在启用 Isekai RPG Leveling 时由 LoadFolders 加载。原版奇物商人（商队、轨道）出售治疗药水。
+     地下城宝箱的额外掉落在 C#（Source/ItemsIsekai.cs）里按类型名挂钩，只在启用 Isekai 地下城附加包时生效。 -->
+<Patch>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/TraderKindDef[defName="Caravan_Outlander_Exotic"]/stockGenerators</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>/Defs/TraderKindDef[defName="Caravan_Outlander_Exotic"]/stockGenerators</xpath>
+      <value>
+        <li Class="StockGenerator_SingleDef"><thingDef>LP_PotionHealing</thingDef><countRange>2~5</countRange></li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/TraderKindDef[defName="Orbital_Exotic"]/stockGenerators</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>/Defs/TraderKindDef[defName="Orbital_Exotic"]/stockGenerators</xpath>
+      <value>
+        <li Class="StockGenerator_SingleDef"><thingDef>LP_PotionHealing</thingDef><countRange>2~5</countRange></li>
+      </value>
+    </match>
+  </Operation>
+</Patch>

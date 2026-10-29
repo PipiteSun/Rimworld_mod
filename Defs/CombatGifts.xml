@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.66.0 武艺天赋（ArtSource/CombatGifts-1.66.0-spec.md；代码在 Source/CombatGifts.cs）。
+     蓝色 #5B9BD5，独立名额，每人最多“每人最多武艺天赋”个（1.66.0 热修，原来 exclusionTags LP_CombatGift 只能一个），和强力特性并存，commonality 0：生成后缀里自己掷。
+     描述只写入门数值；精通 / 化境和当前阶段由悬停说明（CombatGiftTip）补上。 -->
+<Defs>
+
+  <TraitDef>
+    <defName>LP_CG_Mighty</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>巨力</color>]]></label>
+        <description>{PAWN_nameDef}天生神力，抡起战锤像抡起柴刀。\n\n入门：力量 +2（上限 +2）；负重 +25%</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>武艺天赋</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_CG_Swift</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>迅捷</color>]]></label>
+        <description>{PAWN_nameDef}的脚步轻得像风，没人追得上。\n\n入门：敏捷 +2（上限 +2）；移动速度 +0.4</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>武艺天赋</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_CG_Stalwart</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>坚韧之体</color>]]></label>
+        <description>{PAWN_nameDef}的骨头比铁还硬，挨了刀也只是皱皱眉。\n\n入门：体质 +2（上限 +2）；受到的伤害 -10%（最多 -25%）</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>武艺天赋</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_CG_Brilliant</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>博闻强识</color>]]></label>
+        <description>{PAWN_nameDef}过目不忘，任何典籍读一遍就能复述。\n\n入门：智力 +2（上限 +2）；研究速度 +15%</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>武艺天赋</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_CG_Eagle</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>鹰眼</color>]]></label>
+        <description>{PAWN_nameDef}能在百步之外看清敌人的眼神。\n\n入门：感知 +2（上限 +2）；远程瞄准时间 -20%</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>武艺天赋</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_CG_Commanding</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>王者气度</color>]]></label>
+        <description>{PAWN_nameDef}一开口，所有人都会安静下来听。\n\n入门：魅力 +2（上限 +2）；社交影响 +20%</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>武艺天赋</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_CG_Flurry</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>连斩</color>]]></label>
+        <description>{PAWN_nameDef}的刀快得只剩残影。\n\n入门：近战冷却 -20%；近战命中后成功率 15% 立刻追加一击</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>武艺天赋</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_CG_Rage</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>狂暴之血</color>]]></label>
+        <description>越是伤重，{PAWN_nameDef}越是凶猛。\n\n入门：健康低于 60% 时近战伤害 +30%、近战冷却 -15%、疼痛 ×0.5</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>武艺天赋</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_CG_Deadeye</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>神射</color>]]></label>
+        <description>{PAWN_nameDef}射出的箭和子弹好像长了眼睛。\n\n入门：远程命中 +12%；远程伤害 +15%</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>武艺天赋</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_CG_Lethal</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>致命一击</color>]]></label>
+        <description>{PAWN_nameDef}总能找到对手的要害。\n\n入门：任何攻击成功率 10% 暴击，伤害 ×2；护甲穿透 +10%</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>武艺天赋</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_CG_Bulwark</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>铁壁</color>]]></label>
+        <description>{PAWN_nameDef}站稳了就像一堵墙。\n\n入门：利器 / 钝器护甲 +15%（绝对值，最多 +30%）；不会踉跄</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>武艺天赋</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_CG_Regen</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>再生之体</color>]]></label>
+        <description>{PAWN_nameDef}的伤口愈合得惊人地快，断肢也能慢慢长回来。\n\n入门：伤口愈合 ×2.5；每 15 天长回一个缺失的非要害部位</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>武艺天赋</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_CG_Arcane</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>法力奔涌</color>]]></label>
+        <description>魔力在{PAWN_nameDef}的血管里奔流。\n\n入门：法杖 / 灵能 / 神术伤害 +25%；装了 VPE 时心灵熵上限 +20，否则心灵敏感度 +15%</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>武艺天赋</kind></li>
+    </modExtensions>
+  </TraitDef>
+</Defs>

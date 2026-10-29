@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.54.0 深渊仪式：恶魔种族（劣魔、巴路古拉、哈兹魔、魅魔/梦魔、纳巴苏、影魔）、可玩的坎比恩、动物魔宠夸塞魔。
+     恶魔共用 LP_AbyssCore（判定 + 外来者扩展）；不吃不睡拆成 LP_AbyssUndying（魅魔不带）。各族体型基因上另挂一份优先级更高的扩展（等级范围、真名卷掉率）。规则代码见 Source/AbyssRaces.cs。 -->
+<Defs>
+  <XenotypeDef Name="LP_DemonBase" Abstract="True">
+    <inheritable>false</inheritable>
+    <factionlessGenerationWeight>0</factionlessGenerationWeight>
+  </XenotypeDef>
+
+  <XenotypeDef ParentName="LP_DemonBase">
+    <defName>LP_Dretch</defName>
+    <label>劣魔</label>
+    <description>深渊里最低等的恶魔：矮胖、灰白、浑身散发着腐臭，脑子只够听懂最简单的命令。劣魔被召来做苦力最合适——搬运、采矿、清扫，别的什么都干不好。它们身边 2 格内的人会被熏得心情变差。</description>
+    <descriptionShort>深渊最低等的恶魔。只能干粗活，工作速度 ×0.8，恶臭熏人；倒下即遣返。</descriptionShort>
+    <iconPath>Abyss/Xenotypes/Dretch</iconPath>
+    <combatPowerFactor>1</combatPowerFactor>
+    <genes>
+      <li>LP_AbyssCore</li><li>LP_AbyssUndying</li><li>LP_DretchStature</li><li>LP_DretchStench</li><li>LP_DretchToil</li><li>LP_SkinDretch</li>
+      <li>Body_Fat</li><li>Hair_BaldOnly</li><li>Beard_NoBeardOnly</li><li>Sterile</li>
+    </genes>
+  </XenotypeDef>
+  <XenotypeDef ParentName="LP_DemonBase">
+    <defName>LP_Barlgura</defName>
+    <label>巴路古拉</label>
+    <description>猿一样的深渊恶魔，橙褐色的皮毛下是一身蛮力。巴路古拉能一跃扑到 8 格外的敌人身边，把周围的人震倒；站着不动时会融进阴影里看不见。它喜欢看别人流血。</description>
+    <descriptionShort>猿形恶魔。近战 +20%、负重 +40%、跃击、静立隐形；倒下即遣返（束缚者除外）。</descriptionShort>
+    <iconPath>Abyss/Xenotypes/Barlgura</iconPath>
+    <combatPowerFactor>1.5</combatPowerFactor>
+    <genes>
+      <li>LP_AbyssCore</li><li>LP_AbyssUndying</li><li>LP_BarlguraStature</li><li>LP_BarlguraMight</li><li>LP_BarlguraLeap</li><li>LP_BarlguraStill</li><li>LP_BarlguraBrute</li><li>LP_SkinBarlgura</li>
+      <li>Body_Hulk</li><li>Hair_BaldOnly</li><li>Beard_NoBeardOnly</li><li>Sterile</li>
+    </genes>
+  </XenotypeDef>
+  <XenotypeDef ParentName="LP_DemonBase">
+    <defName>LP_Hezrou</defName>
+    <label>哈兹魔</label>
+    <description>蟾蜍一样的深渊恶魔，满身疣子的绿灰皮又厚又韧。哈兹魔身上的恶臭能让 3 格内的敌人恶心得握不住武器；它在水里和在泥里一样自在。</description>
+    <descriptionShort>蟾蜍形恶魔。利/钝护甲 +20%、恶臭让敌人恶心、水中行动；倒下即遣返（束缚者除外）。</descriptionShort>
+    <iconPath>Abyss/Xenotypes/Hezrou</iconPath>
+    <combatPowerFactor>1.5</combatPowerFactor>
+    <genes>
+      <li>LP_AbyssCore</li><li>LP_AbyssUndying</li><li>LP_HezrouStature</li><li>LP_HezrouHide</li><li>LP_HezrouStench</li><li>LP_SkinHezrou</li>
+      <li>Body_Hulk</li><li>Hair_BaldOnly</li><li>Beard_NoBeardOnly</li><li>Sterile</li>
+    </genes>
+  </XenotypeDef>
+  <XenotypeDef ParentName="LP_DemonBase">
+    <defName>LP_Succubus</defName>
+    <label>魅魔</label>
+    <description>以诱惑为食的深渊恶魔，女性叫魅魔，男性叫梦魔。它们长着蝠翼、细尾和一对小角，能变形成普通人的样子混进人群；魅惑之吻让人失去抵抗，夜里同床的人会被吸走精力。魅魔可以和凡人生育，孩子是坎比恩。</description>
+    <descriptionShort>可玩的恶魔。变形伪装、魅惑之吻、梦境吸取；火焰/毒素抗性，社交 +25%；怕圣坛和圣徽；孩子是坎比恩。</descriptionShort>
+    <iconPath>Abyss/Xenotypes/Succubus</iconPath>
+    <combatPowerFactor>1</combatPowerFactor>
+    <genes>
+      <li>LP_AbyssCore</li><li>LP_SuccubusNature</li><li>LP_SuccubusHorns</li><li>LP_SuccubusWings</li><li>LP_SuccubusTail</li><li>LP_SuccubusGuise</li><li>LP_SuccubusKiss</li><li>LP_SuccubusDream</li><li>LP_SkinSuccubus</li>
+      <li>Beauty_Pretty</li>
+    </genes>
+  </XenotypeDef>
+  <XenotypeDef ParentName="LP_DemonBase">
+    <defName>LP_Nabassu</defName>
+    <label>纳巴苏</label>
+    <description>石像鬼一样的深渊恶魔：灰黑的石皮、蝠翼、长獠牙。纳巴苏猎食灵魂——被它杀死的人灵魂会被吞掉，再也无法复活，而它每吞一个就更强一分。它的凝视能让人的四肢像石头一样僵硬。</description>
+    <descriptionShort>噬魂恶魔。杀死的人不能复活、饱魂层数叠加、石化凝视；倒下即遣返（束缚者除外）。</descriptionShort>
+    <iconPath>Abyss/Xenotypes/Nabassu</iconPath>
+    <combatPowerFactor>2</combatPowerFactor>
+    <genes>
+      <li>LP_AbyssCore</li><li>LP_AbyssUndying</li><li>LP_NabassuStature</li><li>LP_NabassuDevour</li><li>LP_NabassuGaze</li><li>LP_SkinNabassu</li>
+      <li>Body_Hulk</li><li>Hair_BaldOnly</li><li>Beard_NoBeardOnly</li><li>Sterile</li>
+    </genes>
+  </XenotypeDef>
+  <XenotypeDef ParentName="LP_DemonBase">
+    <defName>LP_ShadowDemon</defName>
+    <label>影魔</label>
+    <description>没有实体的深渊恶魔，像一团人形的黑影。普通武器只能伤到它一半；可它怕光——站在亮处时受到的伤害 ×1.5，动作也慢下来。影魔只在夜里从深渊裂口里出来，不能召唤，也不能束缚。</description>
+    <descriptionShort>夜间敌人。非魔法武器伤害减半；亮处受伤 ×1.5、移速 ×0.7。</descriptionShort>
+    <iconPath>Abyss/Xenotypes/ShadowDemon</iconPath>
+    <combatPowerFactor>1.5</combatPowerFactor>
+    <genes>
+      <li>LP_AbyssCore</li><li>LP_AbyssUndying</li><li>LP_ShadowDemonForm</li><li>LP_SkinShadowDemon</li>
+      <li>Body_Thin</li><li>Hair_BaldOnly</li><li>Beard_NoBeardOnly</li><li>Sterile</li>
+    </genes>
+  </XenotypeDef>
+  <XenotypeDef>
+    <defName>LP_Cambion</defName>
+    <label>坎比恩</label>
+    <description>恶魔和凡人的孩子，或者被深渊彻底浸透后化魔的凡人。坎比恩长着角和一对小号蝠翼，眼睛是金红色的；他们不怕火，天生懂得怎么让别人害怕或者服从。坎比恩是凡人生的，不会被遣返。血脉会遗传。</description>
+    <descriptionShort>可遗传。寒铁 ×1.25、深渊腐化 ×0.5、火焰 ×0.5、滑翔跳跃、社交天赋。</descriptionShort>
+    <iconPath>Abyss/Xenotypes/Cambion</iconPath>
+    <inheritable>true</inheritable>
+    <combatPowerFactor>1</combatPowerFactor>
+    <factionlessGenerationWeight>0.5</factionlessGenerationWeight>
+    <genes>
+      <li>LP_CambionBlood</li><li>LP_CambionHorns</li><li>LP_CambionWings</li><li>LP_CambionFire</li><li>LP_CambionPresence</li>
+    </genes>
+  </XenotypeDef>
+
+  <!-- ==================== 公共基因 ==================== -->
+  <GeneDef Name="LP_AbyssGeneBase" Abstract="True">
+    <displayCategory>Miscellaneous</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>1</biostatCpx>
+    <biostatMet>0</biostatMet>
+  </GeneDef>
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_AbyssCore</defName>
+    <label>深渊之躯</label>
+    <description>深渊恶魔的身体：被击倒或杀死时化作黑烟遣返深渊（被束缚的、戴着位面锚链的除外），不会因赤身裸体而不快。寒铁武器对它的伤害 ×1.5，圣水 ×2。</description>
+    <iconPath>Abyss/Genes/AbyssCore</iconPath>
+    <customEffectDescriptions>
+      <li>倒下或死亡：遣返深渊，敌人掉落灵魂币、恶魔血等。</li>
+      <li>寒铁武器伤害 ×1.5，圣水伤害 ×2，信仰的光辉伤害 ×1.25。</li>
+      <li>不受深渊腐化以外的心灵影响……也不会被腐化。</li>
+    </customEffectDescriptions>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_OutsiderExtension">
+        <plane>Abyss</plane>
+        <coldIron>1.5</coldIron>
+        <holy>2</holy>
+        <taintImmune>true</taintImmune>
+        <trueNameChance>0.2</trueNameChance>
+      </li>
+    </modExtensions>
+  </GeneDef>
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_AbyssUndying</defName>
+    <label>不吃不睡</label>
+    <description>深渊的造物不需要进食，也不需要睡眠。</description>
+    <iconPath>Abyss/Genes/AbyssUndying</iconPath>
+    <disablesNeeds><li>Food</li><li>Rest</li></disablesNeeds>
+  </GeneDef>
+
+  <!-- ==================== 劣魔 ==================== -->
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_DretchStature</defName>
+    <label>劣魔体型</label>
+    <description>矮小肥胖的身躯：实际体型 ×70%，显示 ×80%，头顶一对小角。</description>
+    <iconPath>Abyss/Genes/DretchStature</iconPath>
+    <exclusionTags><li>Headbone</li></exclusionTags>
+    <modExtensions>
+      <li Class="LichPhylactery.SmallBodyExtension"><bodySize>0.7</bodySize><renderScale>0.8</renderScale></li>
+      <li Class="LichPhylactery.LP_OutsiderExtension"><plane>Abyss</plane><coldIron>1.5</coldIron><holy>2</holy><taintImmune>true</taintImmune><levelRange>1~2</levelRange><trueNameChance>0.05</trueNameChance><priority>1</priority></li>
+    </modExtensions>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Abyss/Horns/DretchHorns</texPath>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><defaultData><layer>80</layer></defaultData><dataNorth><layer>10</layer></dataNorth></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_DretchStench</defName>
+    <label>劣魔恶臭</label>
+    <description>劣魔浑身散发着腐臭：2 格内的其他人形心情 -2。</description>
+    <iconPath>Abyss/Genes/DretchStench</iconPath>
+    <customEffectDescriptions><li>2 格内其他人形：心情 -2。</li></customEffectDescriptions>
+  </GeneDef>
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_DretchToil</defName>
+    <label>苦力</label>
+    <description>劣魔只听得懂最简单的命令：只能搬运、采矿、清扫和干粗活，全局工作速度 ×0.8。</description>
+    <iconPath>Abyss/Genes/DretchToil</iconPath>
+    <disabledWorkTags>ManualSkilled, Caring, Social, Intellectual, Animals, Artistic, Crafting, Cooking, PlantWork, Constructing</disabledWorkTags>
+    <statFactors><WorkSpeedGlobal>0.8</WorkSpeedGlobal></statFactors>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinDretch</defName>
+    <label>灰白肤色</label>
+    <labelShortAdj>灰白</labelShortAdj>
+    <description>劣魔死鱼一样的灰白皮肤。</description>
+    <skinColorOverride>(186, 182, 168)</skinColorOverride>
+    <randomBrightnessFactor>0.05</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+  </GeneDef>
+
+  <!-- ==================== 巴路古拉 ==================== -->
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_BarlguraStature</defName>
+    <label>巴路古拉体型</label>
+    <description>猿一样的魁梧身躯：实际体型 ×160%，显示 ×130%，猿脸、外翻的獠牙。巨躯规则让它的生命和近战更强。</description>
+    <iconPath>Abyss/Genes/BarlguraStature</iconPath>
+    <exclusionTags><li>Headbone</li></exclusionTags>
+    <modExtensions>
+      <li Class="LichPhylactery.SmallBodyExtension"><bodySize>1.6</bodySize><renderScale>1.3</renderScale></li>
+      <li Class="LichPhylactery.LP_OutsiderExtension"><plane>Abyss</plane><coldIron>1.5</coldIron><holy>2</holy><taintImmune>true</taintImmune><levelRange>4~6</levelRange><trueNameChance>0.2</trueNameChance><priority>1</priority></li>
+    </modExtensions>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Abyss/Heads/BarlguraFace</texPath>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><defaultData><layer>75</layer></defaultData><dataNorth><layer>10</layer></dataNorth></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_BarlguraMight</defName>
+    <label>猿力</label>
+    <description>巴路古拉一身蛮力：近战伤害 +20%，负重 +40%。</description>
+    <iconPath>Abyss/Genes/BarlguraMight</iconPath>
+    <statFactors><MeleeDamageFactor>1.2</MeleeDamageFactor><CarryingCapacity>1.4</CarryingCapacity></statFactors>
+  </GeneDef>
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_BarlguraLeap</defName>
+    <label>跃击</label>
+    <description>能力“跃击”：一跃扑到 8 格内的目标身边，落地时 1 格内的敌人做敏捷豁免（难度 13，基础成功率 50%），失败倒地 1 秒。冷却 6 小时。</description>
+    <iconPath>Abyss/Abilities/Leap</iconPath>
+    <displayCategory>Violence</displayCategory>
+    <abilities><li>LP_BarlguraLeap</li></abilities>
+    <descriptionHyperlinks><AbilityDef>LP_BarlguraLeap</AbilityDef></descriptionHyperlinks>
+  </GeneDef>
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_BarlguraStill</defName>
+    <label>静立隐形</label>
+    <description>站着不动、不攻击 3 秒后融进阴影，别人看不见它；一动或一出手就会现形。</description>
+    <iconPath>Abyss/Genes/BarlguraStill</iconPath>
+    <geneClass>LichPhylactery.Gene_BarlguraStill</geneClass>
+  </GeneDef>
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_BarlguraBrute</defName>
+    <label>嗜杀</label>
+    <description>巴路古拉学不会读书、画画、包扎和说好话；看到处决时心情 +5。</description>
+    <iconPath>Abyss/Genes/BarlguraBrute</iconPath>
+    <disabledWorkTags>Intellectual, Artistic, Caring, Social</disabledWorkTags>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinBarlgura</defName>
+    <label>橙褐肤色</label>
+    <labelShortAdj>橙褐</labelShortAdj>
+    <description>巴路古拉橙褐色的粗皮。</description>
+    <skinColorOverride>(168, 104, 62)</skinColorOverride>
+    <randomBrightnessFactor>0.05</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+  </GeneDef>
+
+  <!-- ==================== 哈兹魔 ==================== -->
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_HezrouStature</defName>
+    <label>哈兹魔体型</label>
+    <description>蟾蜍一样的庞大身躯：实际体型 ×180%，显示 ×140%，宽口的蟾蜍头。</description>
+    <iconPath>Abyss/Genes/HezrouStature</iconPath>
+    <exclusionTags><li>Headbone</li></exclusionTags>
+    <modExtensions>
+      <li Class="LichPhylactery.SmallBodyExtension"><bodySize>1.8</bodySize><renderScale>1.4</renderScale></li>
+      <li Class="LichPhylactery.LP_OutsiderExtension"><plane>Abyss</plane><coldIron>1.5</coldIron><holy>2</holy><taintImmune>true</taintImmune><levelRange>6~8</levelRange><trueNameChance>0.2</trueNameChance><priority>1</priority></li>
+    </modExtensions>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Abyss/Heads/HezrouHead</texPath>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><defaultData><layer>75</layer></defaultData><dataNorth><layer>75</layer></dataNorth></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_HezrouHide</defName>
+    <label>疣皮</label>
+    <description>又厚又韧的疣状皮：利器、钝器护甲各 +20%；在浅水、沼泽里行动不受减速。</description>
+    <iconPath>Abyss/Genes/HezrouHide</iconPath>
+    <statOffsets><ArmorRating_Sharp>0.2</ArmorRating_Sharp><ArmorRating_Blunt>0.2</ArmorRating_Blunt></statOffsets>
+    <modExtensions><li Class="LichPhylactery.AmphibiousExtension" /></modExtensions>
+  </GeneDef>
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_HezrouStench</defName>
+    <label>哈兹魔恶臭</label>
+    <description>每 5 秒，3 格内的敌对人形做体质豁免（难度 13，基础成功率 50%），失败“恶心”10 秒（操作 -20%、移速 ×0.9）。豁免成功的人 1 分钟内不会再受影响。</description>
+    <iconPath>Abyss/Genes/HezrouStench</iconPath>
+    <geneClass>LichPhylactery.Gene_HezrouStench</geneClass>
+    <displayCategory>Violence</displayCategory>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinHezrou</defName>
+    <label>绿灰疣皮</label>
+    <labelShortAdj>绿灰</labelShortAdj>
+    <description>哈兹魔绿灰色、满是疣子的皮。</description>
+    <skinColorOverride>(112, 128, 96)</skinColorOverride>
+    <randomBrightnessFactor>0.05</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+  </GeneDef>
+
+  <!-- ==================== 魅魔 / 梦魔 ==================== -->
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_SuccubusNature</defName>
+    <label>魅魔之性</label>
+    <description>魅魔 / 梦魔的天性：社交影响 +25%、谈判价格 +10%；火焰、烧伤伤害 ×0.5，毒素抗性 +50%；食量只有常人的 20%。不能在圣坛 5 格内工作，看见圣徽心情 -3。带这条基因的人算作魅魔。</description>
+    <iconPath>Abyss/Genes/SuccubusNature</iconPath>
+    <geneClass>LichPhylactery.Gene_LinkedHediff</geneClass>
+    <statFactors><SocialImpact>1.25</SocialImpact></statFactors>
+    <statOffsets><TradePriceImprovement>0.1</TradePriceImprovement><ToxicResistance>0.5</ToxicResistance></statOffsets>
+    <damageFactors><Flame>0.5</Flame><Burn>0.5</Burn></damageFactors>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_OutsiderExtension"><plane>Abyss</plane><coldIron>1.5</coldIron><holy>2</holy><taintImmune>true</taintImmune><levelRange>7~9</levelRange><trueNameChance>0.3</trueNameChance><priority>1</priority></li>
+      <li Class="LichPhylactery.LinkedHediffExtension"><hediff>LP_SuccubusAppetite</hediff></li>
+    </modExtensions>
+  </GeneDef>
+  <HediffDef>
+    <defName>LP_SuccubusAppetite</defName>
+    <label>魅魔食量</label>
+    <description>魅魔靠吸取别人的精力过活，正经饭只吃一点点：饥饿速度 ×20%。</description>
+    <hediffClass>LichPhylactery.Hediff_GeneLinked</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages><li><hungerRateFactor>0.2</hungerRateFactor></li></stages>
+  </HediffDef>
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_SuccubusHorns</defName>
+    <label>魅魔之角</label>
+    <description>一对弯弯的小角。变形伪装时看不见。</description>
+    <iconPath>Abyss/Genes/SuccubusHorns</iconPath>
+    <displayCategory>Cosmetic</displayCategory>
+    <exclusionTags><li>Headbone</li></exclusionTags>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>LichPhylactery.PawnRenderNodeWorker_AbyssGene</workerClass>
+        <texPath>Abyss/Horns/SuccubusHorns</texPath>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><defaultData><layer>80</layer></defaultData><dataNorth><layer>10</layer></dataNorth></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_SuccubusWings</defName>
+    <label>魅魔蝠翼</label>
+    <description>一对紫黑色的蝠翼。变形伪装时看不见。</description>
+    <iconPath>Abyss/Genes/SuccubusWings</iconPath>
+    <displayCategory>Cosmetic</displayCategory>
+    <renderNodeProperties>
+      <li>
+        <workerClass>LichPhylactery.PawnRenderNodeWorker_AbyssBody</workerClass>
+        <texPath>Abyss/Wings/SuccubusWings</texPath>
+        <overrideMeshSize>(1.5, 1.5)</overrideMeshSize>
+        <parentTagDef>Body</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><scaleOffsetByBodySize>true</scaleOffsetByBodySize><defaultData><layer>-2</layer></defaultData><dataNorth><layer>90</layer></dataNorth></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_SuccubusTail</defName>
+    <label>魅魔细尾</label>
+    <description>一条末端带着桃心状尖梢的细尾。变形伪装时看不见。</description>
+    <iconPath>Abyss/Genes/SuccubusTail</iconPath>
+    <displayCategory>Cosmetic</displayCategory>
+    <exclusionTags><li>Tail</li></exclusionTags>
+    <renderNodeProperties>
+      <li>
+        <workerClass>LichPhylactery.PawnRenderNodeWorker_AbyssBody</workerClass>
+        <texPath>Abyss/Tails/SuccubusTail</texPath>
+        <parentTagDef>Body</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><scaleOffsetByBodySize>true</scaleOffsetByBodySize><defaultData><layer>-3</layer></defaultData><dataNorth><layer>85</layer></dataNorth></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_SuccubusGuise</defName>
+    <label>变形伪装</label>
+    <description>可以开关的幻象：开着时角、翼、尾和绯红肤色都藏起来，看起来就是普通人。被魔鬼之眼（8 格）或阿斯莫（5 格）看到会自动解除。</description>
+    <iconPath>Abyss/Abilities/Guise</iconPath>
+    <geneClass>LichPhylactery.Gene_SuccubusGuise</geneClass>
+  </GeneDef>
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_SuccubusKiss</defName>
+    <label>魅惑之吻</label>
+    <description>能力“魅惑之吻”（接触，冷却 1 天）：目标做感知豁免（豁免难度随魅魔的熟练加值和魅力提高；目标的属性调整值和熟练加值每点 +5% 成功率）。失败：敌人被魅惑 60 秒；囚犯招募抵抗 -15；殖民者对它的好感 +20。豁免成功的人 24 小时内免疫。</description>
+    <iconPath>Abyss/Abilities/Kiss</iconPath>
+    <abilities><li>LP_SuccubusKiss</li></abilities>
+    <descriptionHyperlinks><AbilityDef>LP_SuccubusKiss</AbilityDef></descriptionHyperlinks>
+  </GeneDef>
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_SuccubusDream</defName>
+    <label>梦境吸取</label>
+    <description>每天早上 6 点结算：前一晚和它睡同一张床的人休息 -20%、深渊腐化 +3%，会做噩梦；它自己恢复一些伤势，心情“餍足”+6 两天。连续 3 天没有吸取，心情“饥渴”-4。</description>
+    <iconPath>Abyss/Genes/SuccubusDream</iconPath>
+    <geneClass>LichPhylactery.Gene_SuccubusDream</geneClass>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinSuccubus</defName>
+    <label>绯红肤色</label>
+    <labelShortAdj>绯红</labelShortAdj>
+    <description>魅魔的皮肤透着绯红。（60% 的魅魔是普通肤色。）</description>
+    <skinColorOverride>(196, 92, 104)</skinColorOverride>
+    <randomBrightnessFactor>0.05</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+  </GeneDef>
+
+  <!-- ==================== 坎比恩 ==================== -->
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_CambionBlood</defName>
+    <label>深渊血统</label>
+    <description>血管里流着恶魔的血：寒铁对它的伤害 ×1.25，深渊腐化 ×0.5；装了 VPE 时算作术士血脉（路径门槛 -2）。带这条基因的人算作坎比恩。</description>
+    <iconPath>Abyss/Genes/CambionBlood</iconPath>
+    <biostatCpx>2</biostatCpx>
+    <biostatMet>1</biostatMet>
+    <customEffectDescriptions>
+      <li>寒铁武器伤害 ×1.25。</li>
+      <li>深渊腐化获取 ×0.5。</li>
+      <li>VPE：术士路径的技能门槛 -2。</li>
+    </customEffectDescriptions>
+  </GeneDef>
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_CambionHorns</defName>
+    <label>坎比恩之角</label>
+    <description>一对向后弯的角和一双金红色的眼睛。</description>
+    <iconPath>Abyss/Genes/CambionHorns</iconPath>
+    <displayCategory>Cosmetic</displayCategory>
+    <exclusionTags><li>Headbone</li></exclusionTags>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Abyss/Horns/CambionHorns</texPath>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><defaultData><layer>80</layer></defaultData><dataNorth><layer>10</layer></dataNorth></drawData>
+      </li>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Abyss/Eyes/CambionEyes</texPath>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh</rotDrawMode>
+        <drawData><defaultData><layer>58</layer></defaultData></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_CambionWings</defName>
+    <label>恶魔之翼</label>
+    <description>一对小号蝠翼，飞不起来，但能滑翔。能力“滑翔跳跃”：跳到 6 格内的地方，冷却 4 小时。</description>
+    <iconPath>Abyss/Abilities/Glide</iconPath>
+    <biostatMet>-1</biostatMet>
+    <abilities><li>LP_CambionGlide</li></abilities>
+    <descriptionHyperlinks><AbilityDef>LP_CambionGlide</AbilityDef></descriptionHyperlinks>
+    <renderNodeProperties>
+      <li>
+        <workerClass>PawnRenderNodeWorker_AttachmentBody</workerClass>
+        <texPath>Abyss/Wings/CambionWings</texPath>
+        <overrideMeshSize>(1.3, 1.3)</overrideMeshSize>
+        <parentTagDef>Body</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><scaleOffsetByBodySize>true</scaleOffsetByBodySize><defaultData><layer>-2</layer></defaultData><dataNorth><layer>90</layer></dataNorth></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_CambionFire</defName>
+    <label>深渊之火</label>
+    <description>火焰认得恶魔的血：火焰、烧伤伤害 ×0.5。</description>
+    <iconPath>Abyss/Genes/CambionFire</iconPath>
+    <biostatMet>-1</biostatMet>
+    <displayCategory>ResistanceAndWeakness</displayCategory>
+    <damageFactors><Flame>0.5</Flame><Burn>0.5</Burn></damageFactors>
+  </GeneDef>
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_CambionPresence</defName>
+    <label>深渊气魄</label>
+    <description>天生知道怎么让人害怕或者服从：社交天赋 +2。</description>
+    <iconPath>Abyss/Genes/CambionPresence</iconPath>
+    <aptitudes><Social>2</Social></aptitudes>
+  </GeneDef>
+
+  <!-- ==================== 纳巴苏 ==================== -->
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_NabassuStature</defName>
+    <label>纳巴苏体型</label>
+    <description>石像鬼般的身躯：实际体型 ×160%，显示 ×130%，背生蝠翼，长着长獠牙。</description>
+    <iconPath>Abyss/Genes/NabassuStature</iconPath>
+    <exclusionTags><li>Headbone</li></exclusionTags>
+    <modExtensions>
+      <li Class="LichPhylactery.SmallBodyExtension"><bodySize>1.6</bodySize><renderScale>1.3</renderScale></li>
+      <li Class="LichPhylactery.LP_OutsiderExtension"><plane>Abyss</plane><coldIron>1.5</coldIron><holy>2</holy><taintImmune>true</taintImmune><levelRange>9~11</levelRange><trueNameChance>0.3</trueNameChance><priority>1</priority></li>
+    </modExtensions>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Abyss/Heads/NabassuFangs</texPath>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><defaultData><layer>75</layer></defaultData><dataNorth><layer>10</layer></dataNorth></drawData>
+      </li>
+      <li>
+        <workerClass>PawnRenderNodeWorker_AttachmentBody</workerClass>
+        <texPath>Abyss/Wings/NabassuWings</texPath>
+        <overrideMeshSize>(1.7, 1.7)</overrideMeshSize>
+        <parentTagDef>Body</parentTagDef>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <drawData><scaleOffsetByBodySize>true</scaleOffsetByBodySize><defaultData><layer>-2</layer></defaultData><dataNorth><layer>90</layer></dataNorth></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_NabassuDevour</defName>
+    <label>噬魂</label>
+    <description>被它杀死的人形灵魂被吞噬：不能被任何方式复活（复活血清、神术、巫妖的命匣都不行），24 小时后 30% 起身成敌对劣魔。它每吞一个灵魂获得 1 层“饱魂”（生命 +5%、伤害 +5%，最多 10 层）。</description>
+    <iconPath>Abyss/Genes/NabassuDevour</iconPath>
+    <displayCategory>Violence</displayCategory>
+    <customEffectDescriptions><li>杀死人形：灵魂被吞噬，自己 +1 层饱魂。</li></customEffectDescriptions>
+  </GeneDef>
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_NabassuGaze</defName>
+    <label>石化凝视</label>
+    <description>能力“石化凝视”（6 格，冷却 30 秒）：一人做体质豁免（难度 14，基础成功率 45%），失败移速 ×0.5，10 秒。</description>
+    <iconPath>Abyss/Abilities/Gaze</iconPath>
+    <displayCategory>Violence</displayCategory>
+    <abilities><li>LP_NabassuGaze</li></abilities>
+    <descriptionHyperlinks><AbilityDef>LP_NabassuGaze</AbilityDef></descriptionHyperlinks>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinNabassu</defName>
+    <label>灰黑石皮</label>
+    <labelShortAdj>灰黑</labelShortAdj>
+    <description>纳巴苏像风化岩石一样的灰黑皮。</description>
+    <skinColorOverride>(84, 82, 86)</skinColorOverride>
+    <randomBrightnessFactor>0.05</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+  </GeneDef>
+
+  <!-- ==================== 影魔 ==================== -->
+  <GeneDef ParentName="LP_AbyssGeneBase">
+    <defName>LP_ShadowDemonForm</defName>
+    <label>无形之影</label>
+    <description>影魔几乎没有实体：非魔法、品质不到杰作、也不是寒铁或银的武器（包括爪牙）只能造成一半伤害。它怕光：站在光照 50% 以上的格子里受到的伤害 ×1.5，移速 ×0.7。</description>
+    <iconPath>Abyss/Genes/ShadowDemonForm</iconPath>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_OutsiderExtension"><plane>Abyss</plane><coldIron>1.5</coldIron><holy>2</holy><nonMagicFactor>0.5</nonMagicFactor><lightBane>true</lightBane><taintImmune>true</taintImmune><levelRange>6~8</levelRange><trueNameChance>0.2</trueNameChance><priority>1</priority></li>
+    </modExtensions>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Abyss/Eyes/ShadowEyes</texPath>
+        <parentTagDef>Head</parentTagDef>
+        <rotDrawMode>Fresh</rotDrawMode>
+        <drawData><defaultData><layer>60</layer></defaultData></drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+  <GeneDef ParentName="GeneSkinColorOverride">
+    <defName>LP_SkinShadowDemon</defName>
+    <label>漆黑之影</label>
+    <labelShortAdj>漆黑</labelShortAdj>
+    <description>影魔的身体像一团凝固的黑烟。</description>
+    <skinColorOverride>(30, 28, 38)</skinColorOverride>
+    <randomBrightnessFactor>0.02</randomBrightnessFactor>
+    <selectionWeight>0</selectionWeight>
+  </GeneDef>
+
+  <!-- ==================== 能力 ==================== -->
+  <AbilityDef Name="LP_AbyssAbilityBase" Abstract="True">
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <sendMessageOnCooldownComplete>false</sendMessageOnCooldownComplete>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_AbyssAbilityBase">
+    <defName>LP_BarlguraLeap</defName>
+    <label>跃击</label>
+    <description>一跃扑到 8 格内的目标身边，落地时 1 格内的敌人做敏捷豁免（难度 13，基础成功率 50%），失败倒地 1 秒。冷却 6 小时。</description>
+    <iconPath>Abyss/Abilities/Leap</iconPath>
+    <cooldownTicksRange>15000</cooldownTicksRange>
+    <hostile>true</hostile>
+    <aiCanUse>true</aiCanUse>
+    <ai_IsOffensive>true</ai_IsOffensive>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>8</range>
+      <warmupTime>0.4</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_AbyssAbility"><effect>leap</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_AbyssAbilityBase">
+    <defName>LP_SuccubusKiss</defName>
+    <label>魅惑之吻</label>
+    <description>吻一名相邻的人形：目标做感知豁免（豁免难度随魅魔的熟练加值和魅力提高；目标的属性调整值和熟练加值每点 +5% 成功率）。失败：敌人被魅惑 60 秒；囚犯招募抵抗 -15；殖民者对你的好感 +20。豁免成功的人 24 小时内免疫。冷却 1 天。</description>
+    <iconPath>Abyss/Abilities/Kiss</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <aiCanUse>true</aiCanUse>
+    <verbProperties>
+      <verbClass>Verb_CastAbilityTouch</verbClass>
+      <range>-1</range>
+      <warmupTime>1</warmupTime>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings><canTargetAnimals>false</canTargetAnimals><canTargetMechs>false</canTargetMechs></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_AbyssAbility"><effect>kiss</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_AbyssAbilityBase">
+    <defName>LP_NabassuGaze</defName>
+    <label>石化凝视</label>
+    <description>凝视 6 格内的一人：它做体质豁免（难度 14，基础成功率 45%），失败移速 ×0.5，10 秒。冷却 30 秒。</description>
+    <iconPath>Abyss/Abilities/Gaze</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <hostile>true</hostile>
+    <aiCanUse>true</aiCanUse>
+    <ai_IsOffensive>true</ai_IsOffensive>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>6</range>
+      <warmupTime>0.5</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_AbyssAbility"><effect>gaze</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_AbyssAbilityBase">
+    <defName>LP_CambionGlide</defName>
+    <label>滑翔跳跃</label>
+    <description>张开小翼滑翔到 6 格内的地方。冷却 4 小时。</description>
+    <iconPath>Abyss/Abilities/Glide</iconPath>
+    <cooldownTicksRange>10000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <aiCanUse>false</aiCanUse>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>6</range>
+      <warmupTime>0.3</warmupTime>
+      <requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetPawns>false</canTargetPawns><canTargetLocations>true</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetBuildings>false</canTargetBuildings></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_AbyssAbility"><effect>glide</effect></li></comps>
+  </AbilityDef>
+
+  <!-- ==================== 种族状态 ==================== -->
+  <HediffDef>
+    <defName>LP_Nauseated</defName>
+    <label>恶心</label>
+    <description>哈兹魔的恶臭让人想吐：操作 -20%，移速 ×0.9。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.6, 0.75, 0.4)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>600</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><capMods><li><capacity>Manipulation</capacity><offset>-0.2</offset></li></capMods><statFactors><MoveSpeed>0.9</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_NabassuPetrify</defName>
+    <label>石化中</label>
+    <description>纳巴苏的凝视让四肢像石头一样僵硬：移速 ×0.5。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.7, 0.7, 0.68)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>600</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><statFactors><MoveSpeed>0.5</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_BarlguraHidden</defName>
+    <label>融入阴影</label>
+    <description>静静站着的巴路古拉融进了阴影里。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="HediffCompProperties_Invisibility"><visibleToPlayer>true</visibleToPlayer></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_SoulDevoured</defName>
+    <label>灵魂被吞噬</label>
+    <description>纳巴苏吞掉了这个人的灵魂：任何方式都无法再让他复活。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.55, 0.4, 0.6)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_SoulGorged</defName>
+    <label>饱魂</label>
+    <description>吞下的灵魂在它身体里翻腾：每层生命 +5%（受到伤害按比例减少）、伤害 +5%，最多 10 层。</description>
+    <hediffClass>LichPhylactery.Hediff_SoulGorged</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>10</maxSeverity>
+    <defaultLabelColor>(0.75, 0.45, 0.85)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_QuasitNature</defName>
+    <label>夸塞魔魔宠</label>
+    <description>通过深渊仪式召来的魔宠：不战斗时隐身；主人和它在同一张地图时心灵敏感度 +10%，深渊腐化每天 +0.3%。</description>
+    <hediffClass>LichPhylactery.Hediff_QuasitNature</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_QuasitVeil</defName>
+    <label>隐身</label>
+    <description>不打架的时候，夸塞魔看不见。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="HediffCompProperties_Invisibility"><visibleToPlayer>true</visibleToPlayer></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_QuasitBond</defName>
+    <label>魔宠之契</label>
+    <description>夸塞魔就在身边，深渊的低语也更清楚了：心灵敏感度 +10%。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages><li><statOffsets><PsychicSensitivity>0.1</PsychicSensitivity></statOffsets></li></stages>
+  </HediffDef>
+
+  <!-- ==================== 夸塞魔（动物） ==================== -->
+  <ThingDef ParentName="AnimalThingBase">
+    <defName>LP_Quasit</defName>
+    <label>夸塞魔</label>
+    <description>小鬼一样的深渊恶魔，只有猫那么大，长着蝠翼和一条带刺的尾巴。夸塞魔不能驯服，只能用深渊仪式召来做魔宠：它跟着主人走，不打架时会隐身。</description>
+    <statBases>
+      <MoveSpeed>4.8</MoveSpeed>
+      <MarketValue>300</MarketValue>
+      <ComfyTemperatureMin>-20</ComfyTemperatureMin>
+      <ComfyTemperatureMax>60</ComfyTemperatureMax>
+      <Wildness>1</Wildness>
+    </statBases>
+    <tools>
+      <li><label>claws</label><capacities><li>Scratch</li></capacities><power>6</power><cooldownTime>1.6</cooldownTime><linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup></li>
+      <li><capacities><li>Bite</li></capacities><power>7</power><cooldownTime>2</cooldownTime><linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup><chanceFactor>0.7</chanceFactor></li>
+    </tools>
+    <race>
+      <body>QuadrupedAnimalWithPawsAndTail</body>
+      <predator>false</predator>
+      <petness>0.6</petness>
+      <baseBodySize>0.3</baseBodySize>
+      <baseHungerRate>0.1</baseHungerRate>
+      <baseHealthScale>0.6</baseHealthScale>
+      <foodType>OmnivoreAnimal</foodType>
+      <leatherDef>Leather_Light</leatherDef>
+      <meatLabel>夸塞魔肉</meatLabel>
+      <trainability>None</trainability>
+      <manhunterOnTameFailChance>0</manhunterOnTameFailChance>
+      <manhunterOnDamageChance>0</manhunterOnDamageChance>
+      <lifeExpectancy>200</lifeExpectancy>
+      <lifeStageAges>
+        <li><def>AnimalAdult</def><minAge>0</minAge><soundWounded>Pawn_Monkey_Wounded</soundWounded><soundDeath>Pawn_Monkey_Death</soundDeath><soundCall>Pawn_Monkey_Call</soundCall><soundAngry>Pawn_Monkey_Angry</soundAngry></li>
+      </lifeStageAges>
+      <soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+    </race>
+    <tradeability>None</tradeability>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_OutsiderExtension"><plane>Abyss</plane><banishOnDown>false</banishOnDown><coldIron>1.5</coldIron><holy>2</holy><taintImmune>true</taintImmune></li>
+    </modExtensions>
+  </ThingDef>
+  <PawnKindDef ParentName="AnimalKindBase">
+    <defName>LP_QuasitFamiliar</defName>
+    <label>夸塞魔</label>
+    <race>LP_Quasit</race>
+    <combatPower>40</combatPower>
+    <ecoSystemWeight>0</ecoSystemWeight>
+    <canArriveManhunter>false</canArriveManhunter>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Abyss/Quasit/Quasit</texPath>
+          <drawSize>1.1</drawSize>
+          <shadowData><volume>(0.2, 0.2, 0.2)</volume><offset>(0,0,-0.1)</offset></shadowData>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData>
+          <texPath>Abyss/Quasit/Dessicated_Quasit</texPath>
+          <drawSize>1.1</drawSize>
+        </dessicatedBodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+</Defs>

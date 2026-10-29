@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.67.0：数值加强，每个专长附带 +1 属性（bonusAbilities，加在当前最高的一项，上限之后）。
+     1.48.1 冒险者专长（第二阶段）：12 个通用专长。用一次属性提升（4/8/12/16 级）换一个；敌人每次属性提升 50% 按兵种类别（enemyTags）随机一个。
+     规则效果在 Source/AdventurerFeats.cs；statOffsets/statFactors 合进冒险者状态；usesPerDay 存在冒险者状态里，午夜清零。 -->
+<Defs>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_Alert</defName>
+    <label>警觉</label>
+    <description>时刻提防着危险。被偷袭时不会被打个措手不及（偷袭照常闪避、不被出手即眩晕的攻击眩晕）；瞄准时间一直 ×0.8；征召后 10 秒内，用武器射击的预热时间再减半。附带敏捷或感知 +1。</description>
+    <iconPath>LP/Feats/Alert</iconPath>
+    <order>1</order>
+    <bonusAbilities><li>Dex</li><li>Wis</li></bonusAbilities>
+    <statFactors><AimingDelayFactor>0.8</AimingDelayFactor></statFactors>
+    <enemyTags><li>any</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_Tough</defName>
+    <label>坚韧</label>
+    <description>比看上去更能扛。部位生命 +2% × 冒险者等级（20 级 +40%，最多算到 30 级）；每天前 3 次倒地时，流血的伤口自动止血、立刻治好 20 点伤，并且 1 小时内疼痛减半。附带体质 +1。</description>
+    <iconPath>LP/Feats/Tough</iconPath>
+    <order>2</order>
+    <usesPerDay>3</usesPerDay>
+    <bonusAbilities><li>Con</li></bonusAbilities>
+    <enemyTags><li>any</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_Lucky</defName>
+    <label>幸运</label>
+    <description>命运总是偏向这个人。每天次数 = 熟练加值（2～8 次）：自己被命中时让这一击重新判定命中，或者自己打空时重新判定一次（近战和远程都算）；失败的豁免也可再试一次。附带任意一项属性 +1（加在当前最高的一项）。</description>
+    <iconPath>LP/Feats/Lucky</iconPath>
+    <order>3</order>
+    <usesPerDay>2</usesPerDay>
+    <workerClass>LichPhylactery.FeatWorker_Lucky</workerClass>
+    <bonusAbilities><li>Any</li></bonusAbilities>
+    <enemyTags><li>any</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_GreatWeaponMaster</defName>
+    <label>巨武器大师</label>
+    <description>挥动沉重武器的大师。双手近战武器（质量 2.5 千克以上）伤害 ×1.25；用它击倒或击杀敌人后，立刻再攻击身边的下一个敌人（冷却 2 秒）。附带力量 +1。</description>
+    <iconPath>LP/Feats/GreatWeaponMaster</iconPath>
+    <order>4</order>
+    <skillReqs><li><skill>Melee</skill><level>8</level></li></skillReqs>
+    <bonusAbilities><li>Str</li></bonusAbilities>
+    <enemyTags><li>melee</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_Sharpshooter</defName>
+    <label>神射手</label>
+    <description>百步穿杨。远程武器射程 +40%，完全无视目标的掩体，远程武器伤害 ×1.15。附带敏捷 +1。</description>
+    <iconPath>LP/Feats/Sharpshooter</iconPath>
+    <order>5</order>
+    <skillReqs><li><skill>Shooting</skill><level>8</level></li></skillReqs>
+    <bonusAbilities><li>Dex</li></bonusAbilities>
+    <enemyTags><li>ranged</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_Sentinel</defName>
+    <label>哨兵</label>
+    <description>谁也别想从身边溜走。近战命中 ×1.1；近战范围内的敌人离开时，立刻对它自由攻击一次（每 0.5 秒最多一次），命中后目标定身 1.5 秒、之后 2 秒移速减半。有“灵活”专长的人不会触发。附带力量或敏捷 +1。</description>
+    <iconPath>LP/Feats/Sentinel</iconPath>
+    <order>6</order>
+    <skillReqs><li><skill>Melee</skill><level>8</level></li></skillReqs>
+    <bonusAbilities><li>Str</li><li>Dex</li></bonusAbilities>
+    <statFactors><MeleeHitChance>1.1</MeleeHitChance></statFactors>
+    <enemyTags><li>melee</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_WarCaster</defName>
+    <label>战争施法者</label>
+    <description>在刀光剑影里也能稳住法术。施法预热时受伤不会被打断（不中断施法、不被伤害眩晕）；能力的施法预热时间 ×0.75；心灵热量上限 +30。对 VPE 职业能力和神术都有效。需要 DND 职业路径或佩戴圣徽。附带智力、感知或魅力 +1。</description>
+    <iconPath>LP/Feats/WarCaster</iconPath>
+    <order>7</order>
+    <workerClass>LichPhylactery.FeatWorker_WarCaster</workerClass>
+    <bonusAbilities><li>Int</li><li>Wis</li><li>Cha</li></bonusAbilities>
+    <statOffsets><PsychicEntropyMax>30</PsychicEntropyMax></statOffsets>
+    <enemyTags><li>caster</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_Healer</defName>
+    <label>治疗者</label>
+    <description>受过正规的战地医疗训练。包扎品质 ×1.3，医疗速度 ×1.3，手术成功率 ×1.2；每次包扎额外治好伤员身上最小的 3 处伤各 6 点。附带感知 +1。</description>
+    <iconPath>LP/Feats/Healer</iconPath>
+    <order>8</order>
+    <skillReqs><li><skill>Medicine</skill><level>6</level></li></skillReqs>
+    <bonusAbilities><li>Wis</li></bonusAbilities>
+    <statFactors><MedicalTendSpeed>1.3</MedicalTendSpeed><MedicalSurgerySuccessChance>1.2</MedicalSurgerySuccessChance></statFactors>
+    <enemyTags><li>caster</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_HeavyArmorMaster</defName>
+    <label>重甲大师</label>
+    <description>懂得让重甲吃下每一击。躯干穿着重甲（锐器护甲 60% 以上）时，每次受到的锐器、钝器伤害 −（3 + 熟练加值），即 5～11 点（在护甲计算之前）。附带力量或体质 +1。</description>
+    <iconPath>LP/Feats/HeavyArmorMaster</iconPath>
+    <order>9</order>
+    <ability>Str</ability>
+    <abilityMin>13</abilityMin>
+    <bonusAbilities><li>Str</li><li>Con</li></bonusAbilities>
+    <enemyTags><li>melee</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_Mobile</defName>
+    <label>灵活</label>
+    <description>身手敏捷，进退自如。移动速度 +0.4 再 ×1.1；近战闪避 +10；脱离近战时不会被“哨兵”自由攻击。附带敏捷 +1。</description>
+    <iconPath>LP/Feats/Mobile</iconPath>
+    <order>10</order>
+    <bonusAbilities><li>Dex</li></bonusAbilities>
+    <statOffsets><MoveSpeed>0.4</MoveSpeed><MeleeDodgeChance>10</MeleeDodgeChance></statOffsets>
+    <statFactors><MoveSpeed>1.1</MoveSpeed></statFactors>
+    <enemyTags><li>melee</li><li>ranged</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_InspiringLeader</defName>
+    <label>鼓舞领袖</label>
+    <description>几句话就能让同伴重新振作。获得主动能力“鼓舞”（每天 2 次）：10 格内的友军 1 天内获得“鼓舞”护盾，吸收 20 + 3 × 等级 + 5 × 魅力调整值点伤害，心情 +5（半天）。需要魅力 13。附带魅力或感知 +1。</description>
+    <iconPath>LP/Feats/InspiringLeader</iconPath>
+    <order>11</order>
+    <usesPerDay>2</usesPerDay>
+    <ability>Cha</ability>
+    <abilityMin>13</abilityMin>
+    <bonusAbilities><li>Cha</li><li>Wis</li></bonusAbilities>
+    <workerClass>LichPhylactery.FeatWorker_InspiringLeader</workerClass>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_SpellSniper</defName>
+    <label>法术狙击</label>
+    <description>把法术打得更远。VPE 职业能力（含 VPE 心灵法术）和神术的射程 +75%；心灵热量恢复 ×1.25。需要 DND 职业路径或佩戴圣徽。附带智力、感知或魅力 +1。</description>
+    <iconPath>LP/Feats/SpellSniper</iconPath>
+    <order>12</order>
+    <workerClass>LichPhylactery.FeatWorker_SpellSniper</workerClass>
+    <bonusAbilities><li>Int</li><li>Wis</li><li>Cha</li></bonusAbilities>
+    <statFactors><PsychicEntropyRecoveryRate>1.25</PsychicEntropyRecoveryRate></statFactors>
+    <enemyTags><li>caster</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+
+  <!-- ==================== 专长留下的状态 ==================== -->
+  <HediffDef>
+    <defName>LP_FeatToughResolve</defName>
+    <label>坚韧</label>
+    <description>咬紧牙关撑住：疼痛减半。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.9, 0.8, 0.5)</defaultLabelColor>
+    <stages><li><painFactor>0.5</painFactor></li></stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>2500</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_FeatSentinelSlow</defName>
+    <label>被哨兵拖住</label>
+    <description>想脱身时挨了一下：移动速度减半。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages><li><statFactors><MoveSpeed>0.5</MoveSpeed></statFactors></li></stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>120</disappearsAfterTicks></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_FeatInspired</defName>
+    <label>鼓舞</label>
+    <description>领袖的话还在耳边：一层护盾替身体挡下伤害，直到吸收量用完或一天过去。</description>
+    <hediffClass>LichPhylactery.Hediff_FeatInspired</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <initialSeverity>10</initialSeverity>
+    <maxSeverity>200</maxSeverity>
+    <defaultLabelColor>(0.95, 0.8, 0.45)</defaultLabelColor>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>60000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>LP_FeatInspiredMood</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>0.5</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>受到鼓舞</label><description>领袖的话让人重新振作起来。</description><baseMoodEffect>5</baseMoodEffect></li></stages>
+  </ThoughtDef>
+
+  <AbilityDef>
+    <defName>LP_FeatInspire</defName>
+    <label>鼓舞</label>
+    <description>鼓舞领袖专长：10 格内的友军（含自己）获得“鼓舞”护盾 1 天，吸收 20 + 3 × 等级 + 5 × 魅力调整值点伤害，心情 +5（半天）。每天 2 次，午夜恢复。</description>
+    <iconPath>LP/Feats/InspiringLeader</iconPath>
+    <aiCanUse>false</aiCanUse>
+    <hostile>false</hostile>
+    <targetRequired>false</targetRequired>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <showPsycastEffects>false</showPsycastEffects>
+    <statBases><Ability_EffectRadius>10</Ability_EffectRadius></statBases>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>1</warmupTime>
+      <range>0.9</range>
+      <drawAimPie>false</drawAimPie>
+      <requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetSelf>true</canTargetSelf><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_FeatInspire" /></comps>
+  </AbilityDef>
+</Defs>

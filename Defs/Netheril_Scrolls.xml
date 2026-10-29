@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.37.0 耐瑟瑞尔卷轴：三种原版书（BookBase + CompProperties_Book），效果在 Source/NetherilScrolls.cs 的 BookOutcomeDoer 里。
+     pickWeight 0：原版随机生成书（商队、奖励、世界书库）不会抽到它们；只从宝箱、黑网、红袍、法师塔残骸和拉洛克任务线来。 -->
+<Defs>
+  <RulePackDef>
+    <defName>LP_Namer_NetherilStudy</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>title->耐瑟瑞尔研习卷：魔网初论</li>
+        <li>title->耐瑟瑞尔研习卷：浮城学派手记</li>
+        <li>title->耐瑟瑞尔研习卷：奥术基础十二讲</li>
+        <li>title->耐瑟瑞尔研习卷：心灵与魔网</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+  <RulePackDef>
+    <defName>LP_Namer_NetherilArcane</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>title->耐瑟瑞尔秘术残卷</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+  <RulePackDef>
+    <defName>LP_Namer_Karsus</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>title->卡苏斯之卷</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+  <RulePackDef>
+    <defName>LP_Description_Netheril</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>desc->一卷从坠落的耐瑟瑞尔浮城里流传出来的卷轴，字里行间仍有魔网的余温。</li>
+        <li>desc->卷轴的边缘被火燎过，耐瑟文字却依旧清晰，像是刚刚写下。</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <ThingDef Name="LP_NetherilScrollBase" ParentName="BookBase" Abstract="True">
+    <thingClass>LichPhylactery.Book_Netheril</thingClass>
+    <thingSetMakerTags Inherit="False" />
+    <statBases>
+      <Mass>0.3</Mass>
+      <Beauty>2</Beauty>
+    </statBases>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_NetherilScrollBase">
+    <defName>LP_NetherilStudyScroll</defName>
+    <label>耐瑟瑞尔研习卷</label>
+    <description>耐瑟瑞尔奥术师留下的入门讲义。需要心灵链接和至少 6 级智识才能读：每读 1 小时增加 8 点心灵熵，换来灵能经验（装了 VPE）或“耐瑟研习度”（没装 VPE 时，研习度到 100/200/400/800/1600 时心灵链接升一级，最高 6 级）。每人每天最多从耐瑟卷轴获得 40 点。不会读坏。</description>
+    <graphicData>
+      <texPath>Things/Item/LP_NetherilStudyScroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.8</drawSize>
+    </graphicData>
+    <uiIconPath>Things/Item/LP_NetherilStudyScroll</uiIconPath>
+    <statBases>
+      <MarketValue>1500</MarketValue>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Book">
+        <nameMaker>LP_Namer_NetherilStudy</nameMaker>
+        <descriptionMaker>LP_Description_Netheril</descriptionMaker>
+        <ageYearsRange>1700~2000</ageYearsRange>
+        <pickWeight>0</pickWeight>
+        <openGraphic>
+          <texPath>Things/Item/LP_NetherilStudyScroll</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+          <drawSize>0.7</drawSize>
+        </openGraphic>
+        <verticalGraphic>
+          <texPath>Things/Item/LP_NetherilStudyScroll</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+          <addTopAltitudeBias>true</addTopAltitudeBias>
+        </verticalGraphic>
+        <doers>
+          <li Class="LichPhylactery.BookOutcomeProperties_Netheril">
+            <doerClass>LichPhylactery.BookOutcome_NetherilStudy</doerClass>
+          </li>
+        </doers>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_NetherilScrollBase">
+    <defName>LP_NetherilArcaneScroll</defName>
+    <label>耐瑟瑞尔秘术残卷</label>
+    <description>记着某个奥术学派法术的残卷，学派写在名字里。读满 24 小时（按品质加快）就能领悟一个本学派、等级不超过自己灵能等级的心灵法术——不占 VPE 路径点，也不需要先解锁路径。每人每卷最多领悟 2 个，之后只剩研习余效。每读 1 小时增加 4 点心灵熵。</description>
+    <graphicData>
+      <texPath>Things/Item/LP_NetherilArcaneScroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.8</drawSize>
+    </graphicData>
+    <uiIconPath>Things/Item/LP_NetherilArcaneScroll</uiIconPath>
+    <statBases>
+      <MarketValue>3000</MarketValue>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Book">
+        <nameMaker>LP_Namer_NetherilArcane</nameMaker>
+        <descriptionMaker>LP_Description_Netheril</descriptionMaker>
+        <ageYearsRange>1700~2000</ageYearsRange>
+        <pickWeight>0</pickWeight>
+        <openGraphic>
+          <texPath>Things/Item/LP_NetherilArcaneScroll</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+          <drawSize>0.7</drawSize>
+        </openGraphic>
+        <verticalGraphic>
+          <texPath>Things/Item/LP_NetherilArcaneScroll</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+          <addTopAltitudeBias>true</addTopAltitudeBias>
+        </verticalGraphic>
+        <doers>
+          <li Class="LichPhylactery.BookOutcomeProperties_Netheril">
+            <doerClass>LichPhylactery.BookOutcome_NetherilArcane</doerClass>
+          </li>
+        </doers>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_NetherilScrollBase">
+    <defName>LP_KarsusScroll</defName>
+    <label>卡苏斯之卷</label>
+    <description>耐瑟瑞尔大法师卡苏斯妄图夺取魔网神格时写下的卷轴，世上只有这一卷。读完一遍要 40 小时，每遍留下一层“卡苏斯的回响”。有人读满 7 遍、心灵链接 6 级（VPE 灵能等级 20）时，可以在耐瑟祭坛发起升神仪式。不能交易。</description>
+    <graphicData>
+      <texPath>Things/Item/LP_KarsusScroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.9</drawSize>
+    </graphicData>
+    <uiIconPath>Things/Item/LP_KarsusScroll</uiIconPath>
+    <tradeability>None</tradeability>
+    <burnableByRecipe>false</burnableByRecipe>
+    <statBases>
+      <MarketValue>8000</MarketValue>
+      <MaxHitPoints>200</MaxHitPoints>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Flammability>0.2</Flammability>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Book">
+        <nameMaker>LP_Namer_Karsus</nameMaker>
+        <descriptionMaker>LP_Description_Netheril</descriptionMaker>
+        <ageYearsRange>1700~1800</ageYearsRange>
+        <pickWeight>0</pickWeight>
+        <openGraphic>
+          <texPath>Things/Item/LP_KarsusScroll</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+          <drawSize>0.8</drawSize>
+        </openGraphic>
+        <verticalGraphic>
+          <texPath>Things/Item/LP_KarsusScroll</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+          <addTopAltitudeBias>true</addTopAltitudeBias>
+        </verticalGraphic>
+        <doers>
+          <li Class="LichPhylactery.BookOutcomeProperties_Netheril">
+            <doerClass>LichPhylactery.BookOutcome_Karsus</doerClass>
+          </li>
+        </doers>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>LP_KarsusEcho</defName>
+    <label>卡苏斯的回响</label>
+    <description>卡苏斯之卷在心里留下的回响。每层心灵熵上限 +5%、心灵敏感度 +5%、精神崩溃阈值 +2%，最多 10 层。永久。</description>
+    <hediffClass>LichPhylactery.Hediff_KarsusEcho</hediffClass>
+    <defaultLabelColor>(0.70, 0.62, 0.95)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>10</maxSeverity>
+    <keepOnBodyPartRestoration>true</keepOnBodyPartRestoration>
+  </HediffDef>
+
+  <!-- 1.42.0 耐瑟启迪：一次连续读耐瑟卷轴满 1 小时、放下卷轴时获得，10 小时后消失；心灵熵满了立刻消散。严重度 1 = 普通（研习卷、秘术残卷），2 = 卡苏斯启迪（卡苏斯之卷）。 -->
+  <HediffDef>
+    <defName>LP_NetherilInsight</defName>
+    <label>耐瑟启迪</label>
+    <description>刚放下耐瑟瑞尔卷轴，脑中仍回荡着失落帝国的咒文：心灵更敏锐，冥想与钻研都更有收获（智识技能学习 ×1.25），但心灵熵也消退得更慢。持续 10 小时；心灵熵一旦满溢，启迪随之消散。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.62, 0.80, 0.98)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <initialSeverity>1</initialSeverity>
+    <minSeverity>1</minSeverity>
+    <maxSeverity>2</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>25000~25000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+      <li Class="LichPhylactery.HediffCompProperties_NetherilInsight" />
+    </comps>
+    <stages>
+      <li>
+        <minSeverity>0</minSeverity>
+        <statOffsets>
+          <PsychicSensitivity>0.20</PsychicSensitivity>
+        </statOffsets>
+        <statFactors>
+          <MeditationFocusGain>1.25</MeditationFocusGain>
+          <PsychicEntropyRecoveryRate>0.6</PsychicEntropyRecoveryRate>
+        </statFactors>
+      </li>
+      <li>
+        <minSeverity>1.5</minSeverity>
+        <overrideLabel>卡苏斯启迪</overrideLabel>
+        <statOffsets>
+          <PsychicSensitivity>0.35</PsychicSensitivity>
+        </statOffsets>
+        <statFactors>
+          <MeditationFocusGain>1.40</MeditationFocusGain>
+          <PsychicEntropyRecoveryRate>0.5</PsychicEntropyRecoveryRate>
+          <PsychicEntropyMax>1.10</PsychicEntropyMax>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <MentalStateDef ParentName="BaseMentalState">
+    <defName>LP_KarsusObsession</defName>
+    <stateClass>MentalState</stateClass>
+    <label>卡苏斯的妄念</label>
+    <category>Misc</category>
+    <colonistsOnly>true</colonistsOnly>
+    <minTicksBeforeRecovery>60000</minTicksBeforeRecovery>
+    <maxTicksBeforeRecovery>60000</maxTicksBeforeRecovery>
+    <recoveryMtbDays>99</recoveryMtbDays>
+    <recoverFromSleep>false</recoverFromSleep>
+    <blockNormalThoughts>true</blockNormalThoughts>
+    <nameColor>(0.70, 0.62, 0.95)</nameColor>
+    <recoveryMessage>{0}从卡苏斯的妄念里醒了过来。</recoveryMessage>
+    <beginLetterLabel>卡苏斯的妄念</beginLetterLabel>
+    <beginLetter>{0}被卡苏斯之卷迷住了：接下来一天里拒绝工作，只读卡苏斯之卷，读不了就在耐瑟祭坛旁游荡。</beginLetter>
+    <beginLetterDef>NegativeEvent</beginLetterDef>
+    <baseInspectLine>精神状态：卡苏斯的妄念</baseInspectLine>
+    <inCaravanCanDo>true</inCaravanCanDo>
+    <escapingPrisonersIgnore>true</escapingPrisonersIgnore>
+  </MentalStateDef>
+</Defs>
