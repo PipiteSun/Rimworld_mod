@@ -710,12 +710,18 @@ namespace LichPhylactery {
    Find.LetterStack.ReceiveLetter(l);return l;
   }
  }
- public class ChoiceLetter_Pact : ChoiceLetter {
+ public class ChoiceLetter_Pact : LP_EventLetter {
   public string kind;public int pactId=-1,extra=-1;public Pawn pawn;public Thing thing;
   PlanarPact PlanarPact=>Pacts.ById(pactId);
-  DiaOption Opt(string text,Action act,string disabled=null){var o=new DiaOption(text){action=()=>{Find.LetterStack.RemoveLetter(this);act?.Invoke();},resolveTree=true};if(disabled!=null)o.Disable(disabled);return o;}
+  // 1.69.0 事件小人入口：没答复过就一直能答（选项本身会检查契约 / 契约书 / 小人还在不在）；签约人、契约书、血战双方都能打开。
+  protected override bool Live=>kind=="bloodwar"?Pacts.Comp?.bloodWar is PactBloodWar w && w.aided==null && Math.Abs(w.start-arrivalTick)<GenDate.TicksPerHour:pawn==null || !pawn.Dead;
+  public override IEnumerable<Thing> EventThings{get{
+   if(pawn!=null)yield return pawn;if(thing!=null)yield return thing;
+   var w=kind=="bloodwar"?Pacts.Comp?.bloodWar:null;if(w!=null)foreach(var p in w.hells.Concat(w.abyss))if(p!=null)yield return p;
+  }}
+  DiaOption Opt(string text,Action act,string disabled=null){var o=new DiaOption(text){action=()=>{Resolve();act?.Invoke();},resolveTree=true};if(disabled!=null)o.Disable(disabled);return o;}
   public override IEnumerable<DiaOption> Choices{get{
-   if(ArchivedOnly){yield return Option_Close;yield break;}
+   if(Closed){yield return Option_Close;yield break;}
    switch(kind){
     case "offer":{
      var s=thing?.TryGetComp<CompPactScroll>();if(s==null || thing.Destroyed || pawn==null || pawn.Dead){yield return Option_Close;yield break;}

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.71.0 探索公告板：木制告示板，每天贴出分等阶的冒险委托（守卫家园 / 远征讨伐 / 清剿据点）。
+     委托由 Source/QuestBoard.cs 生成成原版任务（任务分页里看得到），完成时照“任务点数 × 0.5”给冒险者经验（Adventurer.QuestDone）。
+     参考了 Isekai 公会公告板的做法（建筑 + 每日刷新的委托列表），但不依赖 Isekai。贴图 ArtSource/RaceArt/draw_questboard_171.py。 -->
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_QuestBoard</defName>
+    <label>探索公告板</label>
+    <description>一块钉满羊皮纸告示的木板。附近的冒险者公会、商旅和村镇会把悬赏贴在这里：每天刷新一批分等阶（青铜、白银、黄金、秘银、传说）的委托，例如守住即将来袭的敌人、远征世界地图上的怪物巢穴、清剿敌对据点。\n\n殖民地最高冒险者等级越高，能接的委托等阶越高。完成委托给银币和物品报酬，接取人得到“任务点数 × 0.5”的冒险者经验，殖民地其他人得到其中的四分之一。</description>
+    <thingClass>LichPhylactery.Building_QuestBoard</thingClass>
+    <graphicData>
+      <texPath>LP/QuestBoard/QuestBoard</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(2,2)</drawSize>
+      <drawOffsetSouth>(0,0,0.35)</drawOffsetSouth>
+      <drawOffsetNorth>(0,0,0.35)</drawOffsetNorth>
+      <shadowData>
+        <volume>(1.6,0.4,0.2)</volume>
+      </shadowData>
+    </graphicData>
+    <size>(2,1)</size>
+    <rotatable>true</rotatable>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>120</MaxHitPoints>
+      <WorkToBuild>2000</WorkToBuild>
+      <Mass>18</Mass>
+      <Flammability>1.0</Flammability>
+      <Beauty>3</Beauty>
+    </statBases>
+    <costList>
+      <WoodLog>60</WoodLog>
+    </costList>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <designationCategory>Misc</designationCategory>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+  </ThingDef>
+
+  <!-- 远征讨伐的站点：没有派系，地图上是一群狂暴的野兽（GenStep_QuestBoardLair 生成）。 -->
+  <SitePartDef>
+    <defName>LP_QB_MonsterLair</defName>
+    <label>怪物巢穴</label>
+    <description>探索公告板上悬赏的怪物盘踞在这里。</description>
+    <workerClass>SitePartWorker</workerClass>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
+    <expandingIconTexture>World/WorldObjects/Expanding/Sites/Manhunters</expandingIconTexture>
+    <requiresFaction>false</requiresFaction>
+    <approachOrderString>讨伐{0}</approachOrderString>
+    <approachingReportString>正在讨伐{0}。</approachingReportString>
+    <arrivedLetter>这里就是悬赏里的怪物巢穴。消灭所有怪物（杀死或打倒）就算完成委托。</arrivedLetter>
+    <arrivedLetterDef>ThreatBig</arrivedLetterDef>
+    <wantsThreatPoints>true</wantsThreatPoints>
+    <considerEnteringAsAttack>true</considerEnteringAsAttack>
+  </SitePartDef>
+  <GenStepDef>
+    <defName>LP_QB_MonsterLair</defName>
+    <linkWithSite>LP_QB_MonsterLair</linkWithSite>
+    <order>1600</order>
+    <genStep Class="LichPhylactery.GenStep_QuestBoardLair" />
+  </GenStepDef>
+
+  <!-- 委托生成成原版任务时用的根（任务直接在 C# 里拼，根节点是空的）。 -->
+  <QuestScriptDef>
+    <defName>LP_QuestBoardContract</defName>
+    <label>探索公告板委托</label>
+    <isRootSpecial>true</isRootSpecial>
+    <autoAccept>false</autoAccept>
+    <sendAvailableLetter>false</sendAvailableLetter>
+    <defaultChallengeRating>1</defaultChallengeRating>
+    <root Class="QuestNode_Sequence">
+      <nodes />
+    </root>
+  </QuestScriptDef>
+</Defs>

@@ -386,10 +386,14 @@ namespace LichPhylactery {
   public override void ExposeData(){base.ExposeData();Scribe_References.Look(ref source,"lpSource");Scribe_Values.Look(ref acc,"lpAcc");}
  }
  // 偿契信件：交银子 / 交艺术品。
- public class ChoiceLetter_HeroPact : ChoiceLetter {
+ public class ChoiceLetter_HeroPact : LP_EventLetter {
   public Pawn pawn;
+  // 1.69.0 事件小人入口：偿契还没交（选中这名殖民者）。
+  protected override bool Live{get{var r=HeroTraits.Record(pawn);return pawn!=null && !pawn.Dead && r?.demand!=null && r.demand!="old" && !r.demandPaid;}}
+  protected override bool StateTracked=>true;
+  public override IEnumerable<Thing> EventThings{get{yield return pawn;}}
   public override IEnumerable<DiaOption> Choices{get{
-   if(ArchivedOnly){yield return Option_Close;yield break;}
+   if(Closed){yield return Option_Close;yield break;}
    var r=HeroTraits.Record(pawn);
    if(pawn!=null && !pawn.Dead && r?.demand!=null && r.demand!="old" && !r.demandPaid){
     var why=HeroDestiny.CannotDeliver(pawn,r);

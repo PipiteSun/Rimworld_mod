@@ -145,7 +145,7 @@ namespace LichPhylactery {
    var lord=LordMaker.MakeNewLord(f,new LordJob_LarlochEnvoy(stand,Now+EnvoyStayTicks),map,list);
    st.envoy=envoy;st.envoyLord=lord;st.stage=reappear?st.stage:"envoy";st.reappearMode=reappear;st.envoyPending=true;st.envoyStand=stand;
    var l=(Letter_LarlochEnvoy)LetterMaker.MakeLetter(DefDatabase<LetterDef>.GetNamed("LP_LarlochChoiceLetter"));
-   l.Label="拉洛克的邀约";l.lookTargets=new LookTargets(envoy);l.relatedFaction=f;
+   l.Label="拉洛克的邀约";l.lookTargets=new LookTargets(envoy);l.relatedFaction=f;l.envoy=envoy;
    l.Text=reappear
     ?"影巫王拉洛克的使者又来了。这一次他开门见山：卡苏斯之卷又落回了拉洛克手里，他愿意再给你一次机会。\n\n以人换卷：交出一名心灵链接≥"+ASendPsylink+"（装了 VPE 时灵能等级≥"+ASendVPE+"）的殖民者，他会随使者永远离开（不算死亡），你立刻得到卷轴。\n以命匣换卷：交出一名巫妖的命匣。巫妖保留能力和等级，但从此死了不再复活。\n去古墓硬抢：拉洛克的古墓会显露在世界地图上，卷轴就放在中央大厅里。\n\n使者在殖民地边上等一天。不回复就当作你要去古墓硬抢。"
     :"一个半巫妖带着两名骷髅护卫停在殖民地边上。他自称影巫王拉洛克的使者：主人察觉到你们在读耐瑟瑞尔的卷轴，愿意把真正的宝贝——卡苏斯之卷——交给配得上的人。\n\n以人换卷：交出一名心灵链接≥"+ASendPsylink+"（装了 VPE 时灵能等级≥"+ASendVPE+"）的殖民者，他会随使者永远离开（不算死亡，全体心情 -5 持续 10 天），你立刻得到卷轴。\n以命匣换卷：交出一名巫妖的命匣。命匣会被带走；巫妖保留能力和等级，但从此死了不再复活，也不能再向命匣献祭。\n为他办三件事：献上位面遗物、斩杀一名红袍法师、守护一次命匣转移，办完就把卷轴送来。\n拒绝：使者 60 天后再来，最多再来 2 次。\n\n也可以去古墓硬抢——第三次拒绝以后，拉洛克的古墓就会显露在世界地图上。\n\n使者在殖民地边上等一天。不回复就当作拒绝。";
@@ -477,25 +477,31 @@ namespace LichPhylactery {
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref cell,"cell");Scribe_Values.Look(ref leaveTick,"leaveTick");Scribe_Values.Look(ref leaveNow,"leaveNow");}
  }
 
- public class Letter_LarlochEnvoy : ChoiceLetter {
+ public class Letter_LarlochEnvoy : LP_EventLetter {
+  // 1.69.0 事件小人入口：这一次来访的使者（和骷髅护卫）还在等答复。
+  public Pawn envoy;
+  protected override bool Live{get{var st=Netheril.State;return st!=null && st.envoyPending && (envoy==null || envoy==st.envoy);}}
+  protected override bool StateTracked=>true;
+  public override IEnumerable<Thing> EventThings{get{var st=Netheril.State;if(st?.envoy==null)return Enumerable.Empty<Thing>();return (st.envoyLord?.ownedPawns??new List<Pawn>()).Prepend(st.envoy).Distinct().Cast<Thing>();}}
+  public override void ExposeData(){base.ExposeData();Scribe_References.Look(ref envoy,"lpEnvoy");}
   public override IEnumerable<DiaOption> Choices{get{
    var st=Netheril.State;
-   if(ArchivedOnly || st==null || !st.envoyPending){yield return Option_Close;yield break;}
+   if(Closed || st==null || !st.envoyPending){yield return Option_Close;yield break;}
    var map=st.envoy?.MapHeld??NetherilQuest.Home;
    // 1.61.0 热修：选人/选巫妖改成信件里的下一页（原来是关掉对话框再弹浮动菜单，玩家那边点了没反应）。
    var a=new DiaOption("以人换卷"){link=Pick("选一名殖民者随使者离开：",NetherilQuest.OfferablePawns(map),p=>p.LabelShort+"（心灵链接 "+p.GetPsylinkLevel()+(NetherilHooks.VPEActive?"，灵能等级 "+NetherilHooks.Level(p):"")+"）",NetherilQuest.ChooseA)};
    var why=NetherilQuest.ABlocked(map);if(why!=null)a.Disable(why);yield return a;
    var b=new DiaOption("以命匣换卷"){link=Pick("选一名巫妖，把他的命匣交给使者：",NetherilQuest.OfferableLiches(map),p=>p.LabelShort+"的命匣（等级 "+Necro.Lich(p).box.level+"）",NetherilQuest.ChooseB)};
    why=NetherilQuest.BBlocked(map);if(why!=null)b.Disable(why);yield return b;
-   yield return LarlochIntel.Option(st,map,()=>Find.LetterStack.RemoveLetter(this)); // 1.63.0 购买情报
+   yield return LarlochIntel.Option(st,map,()=>Find.LetterStack.RemoveLetter(this)); // 1.63.0 购买情报（买完使者照常等答复，不算结束）
    if(st.reappearMode){yield return Choice("去古墓硬抢",NetherilQuest.ChooseCrypt);}
    else{yield return Choice("为他办三件事",()=>NetherilQuest.ChooseC());yield return Choice("拒绝",()=>NetherilQuest.Refuse());}
    yield return Option_Postpone;
   }}
-  DiaOption Choice(string text,Action act)=>new DiaOption(text){action=()=>{act?.Invoke();Find.LetterStack.RemoveLetter(this);},resolveTree=true};
+  DiaOption Choice(string text,Action act)=>new DiaOption(text){action=()=>{act?.Invoke();Resolve();},resolveTree=true};
   public DiaNode Pick(string prompt,IEnumerable<Pawn> pawns,Func<Pawn,string> label,Func<Pawn,bool> choose){
    var node=new DiaNode(prompt);
-   foreach(var p in pawns.ToList())node.options.Add(new DiaOption(label(p)){action=()=>{if(choose(p))Find.LetterStack.RemoveLetter(this);else Messages.Message("没能交换："+p.LabelShort+"已经不符合条件（不在使者所在的地图，或命匣已毁、已交出）。",MessageTypeDefOf.RejectInput,false);},resolveTree=true});
+   foreach(var p in pawns.ToList())node.options.Add(new DiaOption(label(p)){action=()=>{if(choose(p))Resolve();else Messages.Message("没能交换："+p.LabelShort+"已经不符合条件（不在使者所在的地图，或命匣已毁、已交出）。",MessageTypeDefOf.RejectInput,false);},resolveTree=true});
    node.options.Add(new DiaOption("返回"){action=OpenLetter,resolveTree=true});
    return node;
   }

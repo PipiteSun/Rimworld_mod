@@ -32,6 +32,7 @@ namespace LichPhylactery {
   Pawn Shown=>SelPawn??(SelThing as Corpse)?.InnerPawn;
   public override bool IsVisible=>Adventurer.Enabled && Adventurer.Get(Shown)!=null;
   Vector2 scroll;float contentH=600f;
+  public static int page; // 1.72.0：0 = 冒险者，1 = 职业
   static Texture2D greyBar;static Texture2D GreyBar=>greyBar??(greyBar=SolidColorMaterials.NewSolidColorTexture(new Color(.35f,.35f,.35f)));
   static readonly Color Gold=new Color(1f,.82f,.35f);
   const float Row=26f;
@@ -68,10 +69,18 @@ namespace LichPhylactery {
   public static void AffinityColor(float eff){if(eff>1.0001f)GUI.color=new Color(.6f,1f,.6f);else if(eff<.9999f)GUI.color=new Color(1f,.65f,.55f);}
   protected override void FillTab(){
    var p=Shown;var h=Adventurer.Get(p);if(h==null)return;
-   var outer=new Rect(0f,0f,size.x,size.y).ContractedBy(10f);
+   // 1.72.0：顶部两页——“冒险者”（原来的全部内容）和“职业”（ClassPage）。
+   var all=new Rect(0f,0f,size.x,size.y).ContractedBy(10f);
+   int pts=ClassSystem.Points(h);
+   for(int i=0;i<2;i++){
+    var tb=new Rect(all.x+i*124f,all.y,120f,24f);bool on=page==i;
+    if(on)Widgets.DrawBoxSolid(tb,new Color(1f,1f,1f,.12f));
+    if(Widgets.ButtonText(tb,i==0?"冒险者":"职业"+(pts>0?"（"+pts+"）":""),drawBackground:!on) && page!=i){page=i;scroll=Vector2.zero;}
+   }
+   var outer=new Rect(all.x,all.y+28f,all.width,all.height-28f);
    var view=new Rect(0f,0f,outer.width-16f,Mathf.Max(contentH,outer.height-4f));
    Widgets.BeginScrollView(outer,ref scroll,view);
-   try{contentH=DrawContents(view.width,p,h)+8f;}
+   try{contentH=(page==1?ClassPage.Draw(view.width,p,h,p.Faction!=null && p.Faction.IsPlayer && !p.Dead):DrawContents(view.width,p,h))+8f;}
    finally{Text.Font=GameFont.Small;Text.Anchor=TextAnchor.UpperLeft;GUI.color=Color.white;Widgets.EndScrollView();}
   }
 
@@ -118,7 +127,7 @@ namespace LichPhylactery {
   }
   // 预览：临时加点，取这项的效果说明（含种族亲和）。
   public static string Preview(Hediff_Adventurer h,int i,int by){h.scores[i]+=by;try{return h.EffectText(i);}finally{h.scores[i]-=by;}}
-  static string EffectLine(Hediff_Adventurer h,int i){var lines=h.EffectText(i).Split('\n');return lines.Length>2?lines[2].Trim():"";}
+  static string EffectLine(Hediff_Adventurer h,int i){var lines=h.EffectText(i).Split('\n');foreach(var l in lines)if(l.StartsWith("属性倍率") || l.StartsWith("属性效果") || l.StartsWith("传奇单位"))return l.Trim();return lines.Length>2?lines[2].Trim():"";} // 有“专长 +1”一行时不能按行号取
 
   // ---------- 绘制 ----------
   float DrawContents(float w,Pawn p,Hediff_Adventurer h){
@@ -143,7 +152,7 @@ namespace LichPhylactery {
    int pts=h.AvailablePoints;
    var head=new Rect(0f,y,180f,28f);
    if(pts<=0)GUI.color=Color.gray;Widgets.Label(new Rect(head.x,head.y+4f,head.width,24f),"可用属性点："+pts);GUI.color=Color.white;
-   TooltipHandler.TipRegion(head,"每次属性提升 = "+h.ASIPoints+" 点"+(h.ASIPoints==3?"（百炼成钢）":"")+"；4、8、12、16 级各一次"+(h.ASIPoints==3?"，20 级再一次":"")+"。\n点六维后面的 +1 / +2 直接加点，单项上限 "+Adventurer.ScoreCap+"（威能之恩那一项 +4，每个半神等级 +2）。\n剩下 "+h.pendingASI+" 次完整的属性提升"+(h.asiLeft>0?"，另有 "+h.asiLeft+" 点是拆开的":"")+"；改选专长要消耗一次完整的属性提升。");
+   TooltipHandler.TipRegion(head,"每次属性提升 = "+h.ASIPoints+" 点"+(h.ASIPoints==3?"（百炼成钢）":"")+"；4、8、12、16 级各一次"+(h.ASIPoints==3?"，20 级再一次":"")+"。\n点六维后面的 +1 / +2 直接加点，单项上限 "+Adventurer.ScoreCap+"（威能之恩那一项 +4，传奇冒险者每 5 个传奇等级 +2）。\n剩下 "+h.pendingASI+" 次完整的属性提升"+(h.asiLeft>0?"，另有 "+h.asiLeft+" 点是拆开的":"")+"；改选专长要消耗一次完整的属性提升。");
    float bx=w;
    {var r=new Rect(bx-110f,y,110f,28f);bx-=116f;bool auto=LichMod.Settings?.adventurerAutoASI??false,was=auto;
     Widgets.CheckboxLabeled(r,"自动加点",ref auto);
@@ -337,16 +346,16 @@ namespace LichPhylactery {
   float DrawClassFeatures(float y,float w,Pawn p,Hediff_Adventurer h,bool own){
    var lines=ClassLinesHook?.Invoke(p);int slots=Styles.Slots(p);
    bool npcStyles=!own && h.styles.Count>0;
-   if(ClassLinesHook==null && !npcStyles)return y; // 没有 VPE：殖民者没有职业特性
+   if(ClassLinesHook==null && !npcStyles)return y;
    Widgets.Label(new Rect(0f,y,w,24f),"职业特性");y+=24f;
-   if((lines==null || lines.Count==0) && slots<=0 && !npcStyles){Grey(ref y,w,"职业特性：解锁战士、圣武士或武僧路径后出现");return y+4f;}
+   if((lines==null || lines.Count==0) && slots<=0 && !npcStyles){Grey(ref y,w,"职业特性：学习战士、圣武士或武僧（“职业”页）后出现");return y+4f;}
    if(lines!=null)foreach(var line in lines){
     int bar=line.IndexOf('|');string text=bar<0?line:line.Substring(0,bar),tip=bar<0?null:line.Substring(bar+1);
     var r=new Rect(4f,y,w-4f,24f);Widgets.Label(r,text);if(tip!=null){Widgets.DrawHighlightIfMouseover(r);TooltipHandler.TipRegion(r,tip);}y+=Row;
    }
    // 风格槽位
    int shown=npcStyles?h.styles.Count:Styles.MaxSlots;
-   if(own && slots<=0 && h.styles.Count==0){Grey(ref y,w,"战斗风格：解锁物理路径后可选 1 个");return y+4f;}
+   if(own && slots<=0 && h.styles.Count==0){Grey(ref y,w,"战斗风格：学习物理职业后可选 1 个");return y+4f;}
    {
     var row=new Rect(0f,y,w,28f);float x=4f;
     Widgets.Label(new Rect(x,y+3f,70f,24f),"战斗风格");x+=72f;
@@ -367,7 +376,7 @@ namespace LichPhylactery {
      }else if(i<slots){
       Widgets.Label(new Rect(cell.x,cell.y+3f,cell.width,24f),mark+" （空，在下面选）");
      }else{
-      GUI.color=Color.gray;Widgets.Label(new Rect(cell.x,cell.y+3f,cell.width,24f),mark+" （"+(i==0?"解锁物理路径":"战士冒险者 10 级")+"解锁）");GUI.color=Color.white;
+      GUI.color=Color.gray;Widgets.Label(new Rect(cell.x,cell.y+3f,cell.width,24f),mark+" （"+(i==0?"学习物理职业":"战士 10 级")+"解锁）");GUI.color=Color.white;
      }
     }
     y+=30f;
@@ -405,13 +414,17 @@ namespace LichPhylactery {
    if(h.AvailablePoints>0)parts.Add("属性点 "+h.AvailablePoints);
    if(h.boonPoints>0)parts.Add("史诗恩赐 "+h.boonPoints);
    if(h.legendPoints>0)parts.Add("传奇属性点 "+h.legendPoints);
+   if(ClassSystem.Points(h)>0)parts.Add("职业点 "+ClassSystem.Points(h)); // 1.72.0
+   if(ClassLegendary.Points(h)>0)parts.Add("传奇职业点 "+ClassLegendary.Points(h)); // 1.74.0
    return string.Join("、",parts);
   }
   public override IEnumerable<DiaOption> Choices{get{
    if(!ArchivedOnly)foreach(var p in pawns){
     var h=Adventurer.Get(p);if(h==null || p.Dead || p.Faction==null || !p.Faction.IsPlayer)continue;
+    var pp=p;
+    if(ClassSystem.Points(h)>0 || ClassLegendary.Points(h)>0)yield return new DiaOption("给"+p.LabelShort+"选择职业（"+(ClassSystem.Points(h)>0?"职业点 "+ClassSystem.Points(h):"传奇职业点 "+ClassLegendary.Points(h))+"）"){action=()=>Find.WindowStack.Add(new Dialog_ChooseClass(pp)),resolveTree=true}; // 1.72.0：窗口，不用浮动菜单
     string pend=Pending(h);if(pend=="")continue;
-    var pp=p;yield return new DiaOption("打开"+p.LabelShort+"的冒险者分页（"+pend+"）"){action=()=>ITab_Adventurer.OpenFor(pp),resolveTree=true};
+    yield return new DiaOption("打开"+p.LabelShort+"的冒险者分页（"+pend+"）"){action=()=>ITab_Adventurer.OpenFor(pp),resolveTree=true};
    }
    if(lookTargets!=null && lookTargets.IsValid())yield return Option_JumpToLocation;
    yield return Option_Close;

@@ -11,7 +11,7 @@ namespace LichPhylactery {
   static Type VPEBridgeChecks=>GenTypes.GetTypeInAnyAssembly("LichPhylactery.VPEBridge.BridgeChecks");
   void CheckVPEBridge(){
    bool vpe=ModsConfig.IsActive(VPEId);
-   Check((VPEBridgeChecks!=null)==vpe && (DefDatabase<StatDef>.GetNamedSilentFail("LP_MartialPower")!=null)==vpe && (DefDatabase<ThingDef>.GetNamedSilentFail("LP_AdventurersManual")!=null)==vpe,"VPE class bridge loads exactly when Vanilla Psycasts Expanded is active ("+vpe+")");
+   Check((VPEBridgeChecks!=null)==vpe && (DefDatabase<IncidentDef>.GetNamedSilentFail("LP_WanderingMentor")!=null)==vpe,"VPE class bridge loads exactly when Vanilla Psycasts Expanded is active ("+vpe+")");
    RunVPEBridge("Run");
   }
   // 1.53.0：-VPE -Only <组名> 只跑 VPE 桥里的这些检查组（BridgeChecks 的 <组名>Checks / <组名>PrepareSave / <组名>AfterLoad）。

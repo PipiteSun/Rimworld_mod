@@ -64,6 +64,7 @@ namespace LichPhylactery {
   public static Action<Pawn,int> LevelUpHook;
   public static Func<Pawn,int> PrimaryAbilityHook;
   public static bool VPELoaded=>LevelUpHook!=null;
+  public static int PrimaryAbility(Pawn p){int a=ClassSystem.Primary(p);return a>=0?a:PrimaryAbilityHook?.Invoke(p)??-1;} // 1.72.0：主职业优先
 
   // ---------- 对象 ----------
   public static bool Eligible(Pawn p)=>p!=null && p.RaceProps!=null && p.RaceProps.Humanlike && !p.RaceProps.IsMechanoid && p.ageTracker!=null && p.ageTracker.AgeBiologicalYears>=MinAge && !Excluded(p);
@@ -162,7 +163,7 @@ namespace LichPhylactery {
   // ---------- 经验 ----------
   public static float GainXP(Pawn p,float amount,bool scaled=true){
    if(!Enabled || amount<=0f)return 0f;var h=Get(p);if(h==null)return 0f;
-   if(scaled)amount*=XpScale*Talents.XpFactor(h);h.AddXp(amount);return amount; // 1.51.0 凡人之志 +25%
+   if(scaled)amount*=XpScale*Talents.XpFactor(h)*ClassSystem.XpFactor(p);h.AddXp(amount);return amount; // 1.51.0 凡人之志 +25%；1.73.0 背景 / 特性的职业经验加成
   }
   // 训练（冒险者手册等）：最多练到 3 级。
   public static float GainTrainingXP(Pawn p,float amount){
@@ -322,6 +323,7 @@ namespace LichPhylactery {
   // 1.53.0 战斗风格（AdventurerStyles.cs）：已选风格（按槽位）、改选后生效的刻、正在适应的槽位（-1 = 没有）、敌人是否掷过；styleMask 是生效风格的缓存（不存档）。
   public List<LP_FightingStyleDef> styles=new List<LP_FightingStyleDef>();public int styleReadyTick,styleAdaptSlot=-1;public bool styleRolled;
   public int styleMask;
+  public ClassData classes=new ClassData(); // 1.72.0 职业等级、资源（Classes.cs）
   // 1.59.0 超凡属性特性（Exalted.cs）：掩码在 BuildStage 里算、不存档；已发过信的掩码、是否算过基准、硬撑（本轮开始的刻 / 次数 / 撑到哪一刻）、金刚不坏上次消伤疤的刻存档。
   public int exaltedMask,mythicMask,exaltedSent,mythicSent,holdUntil,holdStart=int.MinValue,holdUses,scarTick=int.MinValue;public bool exaltedInit;
   internal Verse.AI.MentalState halvedState;
@@ -396,7 +398,7 @@ namespace LichPhylactery {
    for(int guard=0;boonPoints>0 && guard<6;guard++){
     var pick=Epic.Boons.Where(b=>b.enemy && !HasBoon(b)).ToList();if(pick.Count==0){boonPoints=0;break;}
     var b=pick.RandomElement();int a=-1;
-    if(b==Epic.Might){a=Adventurer.PrimaryAbilityHook?.Invoke(pawn)??-1;if(a<0)a=Adventurer.KindExt(pawn)?.Primary??-1;if(a<0)a=Enumerable.Range(0,6).OrderByDescending(i=>scores[i]).First();}
+    if(b==Epic.Might){a=Adventurer.PrimaryAbility(pawn);if(a<0)a=Adventurer.KindExt(pawn)?.Primary??-1;if(a<0)a=Enumerable.Range(0,6).OrderByDescending(i=>scores[i]).First();}
     TakeBoon(b,a);
    }
   }
@@ -416,6 +418,7 @@ namespace LichPhylactery {
   public void LevelUp(){
    level++;
    LevelPerks(level);
+   ClassLegendary.SyncPoints(this); // 1.74.0 传奇职业点（25 / 30 / 35 / 40）
    if(level<=Adventurer.MaxLevel || level%2==0)Adventurer.LevelUpHook?.Invoke(pawn,level); // 1.50.0：传奇等级每 2 级 1 个 VPE 路径点
    if(pendingASI>0 && Adventurer.AutoASI(pawn))AutoAssign();
    if(boonPoints>0 && Npc)AutoBoon();
@@ -483,13 +486,13 @@ namespace LichPhylactery {
   public void AutoAssign(){
    bool npc=pawn.Faction==null || !pawn.Faction.IsPlayer;
    if(asiLeft>0){ // 拆开剩下的点：主属性优先，按顺序填到上限
-    int pr=Adventurer.PrimaryAbilityHook?.Invoke(pawn)??-1;if(pr<0)pr=Adventurer.KindExt(pawn)?.Primary??-1;
+    int pr=Adventurer.PrimaryAbility(pawn);if(pr<0)pr=Adventurer.KindExt(pawn)?.Primary??-1;
     foreach(int i in Enumerable.Range(0,6).OrderByDescending(i=>i==pr?100:scores[i]).ThenBy(i=>i).ToList()){int add=Math.Min(asiLeft,Cap(i)-scores[i]);if(add>0){scores[i]+=add;asiLeft-=add;}if(asiLeft<=0)break;}
     asiLeft=0;Dirty();
    }
    for(int guard=0;pendingASI>0 && guard<10;guard++){
     if(npc && Rand.Chance(Feats.EnemyFeatChance) && TryEnemyFeat())continue;
-    int primary=Adventurer.PrimaryAbilityHook?.Invoke(pawn)??-1;
+    int primary=Adventurer.PrimaryAbility(pawn);
     if(primary<0)primary=Adventurer.KindExt(pawn)?.Primary??-1;
     var order=Enumerable.Range(0,6).OrderByDescending(i=>i==primary?100:scores[i]).ThenBy(i=>i).Where(i=>scores[i]<Cap(i)).ToList();
     if(order.Count==0){pendingASI=0;break;}
@@ -604,6 +607,7 @@ namespace LichPhylactery {
    if(holdUntil>0 && GenTicks.TicksGame>=holdUntil)Exalted.HoldExpired(this); // 1.59.0 硬撑到期：重新判定倒地
    if((syncAcc+=delta)<250)return;syncAcc=0;
    Styles.Refresh(this); // 1.53.0 战斗风格的掩码与条件状态（没有风格的人直接返回）
+   ClassSystem.Tick250(this); // 1.72.0 职业资源、物理职业缓存、武僧架势、圣武士灵光（没有职业的人直接返回）
    if(pawn!=null)Exalted.Tick(this); // 1.59.0 超凡：补算掩码、发信、光环 / 显形 / 封顶（掩码为 0 时只比较一次）
    if(pawn!=null && !pawn.Dead)CombatGifts.Tick250(this); // 1.66.0 狂暴之血阈值、再生之体长回肢体（没有武艺天赋的人一次缓存查找）
    if(!Adventurer.Enabled || pawn==null || pawn.Dead)return;
@@ -643,7 +647,9 @@ namespace LichPhylactery {
    Scribe_Collections.Look(ref styles,"lpStyles",LookMode.Def);Scribe_Values.Look(ref styleReadyTick,"lpStyleReady");Scribe_Values.Look(ref styleAdaptSlot,"lpStyleAdapt",-1);Scribe_Values.Look(ref styleRolled,"lpStyleRolled");
    Scribe_Values.Look(ref workXpToday,"lpWorkXpToday");Scribe_Values.Look(ref workXpDay,"lpWorkXpDay",-1);Scribe_Values.Look(ref workXpRem,"lpWorkXpRem");Scribe_Values.Look(ref workXpTotal,"lpWorkXpTotal");
    Scribe_Values.Look(ref cgBonus,"lpCgBonus");Scribe_Values.Look(ref cgRegenTick,"lpCgRegen",-1); // 1.66.0 武艺天赋
+   Scribe_Deep.Look(ref classes,"lpClasses"); // 1.72.0 职业
    if(Scribe.mode==LoadSaveMode.LoadingVars || Scribe.mode==LoadSaveMode.PostLoadInit){
+    if(classes==null)classes=new ClassData();
     if(styles==null)styles=new List<LP_FightingStyleDef>();styles.RemoveAll(x=>x==null);styleMask=0;
     if(spent!=null)legendSpent=spent.ToArray();
     if(list!=null && list.Count==6)scores=list.ToArray();
@@ -722,6 +728,8 @@ namespace LichPhylactery {
    else if(h.AvailablePoints>0)sb.AppendLine("· 还有可用属性点 "+h.AvailablePoints);
    if(legend>0)sb.AppendLine("· 传奇属性点 +"+legend+"（余 "+h.legendPoints+"）");
    if(Adventurer.VPELoaded && vpe>0)sb.AppendLine("· VPE 路径点 +"+vpe);
+   {int lc=0;foreach(var th in ClassLegendary.Thresholds)if(from<th && to>=th)lc++;if(lc>0)sb.AppendLine("· 传奇职业点 +"+lc+"（可用 "+ClassLegendary.Points(h)+"，点“传奇职业”按钮或分页的“职业”页）");} // 1.74.0
+   {int cp=Math.Max(0,Math.Min(to,ClassSystem.CapLevel)-Math.Max(from,0));int left=ClassSystem.Points(h);if(cp>0 || left>0)sb.AppendLine("· 职业点 +"+cp+(left>0?"（可用 "+left+"，点“选择职业”按钮或分页的“职业”页）":""));} // 1.72.0
    if(ITab_Adventurer.LevelUpLinesHook!=null)for(int l=from+1;l<=to;l++){var extra=ITab_Adventurer.LevelUpLinesHook(p,l);if(extra!=null)foreach(var line in extra)sb.AppendLine("· "+line);} // 1.53.0 职业特性（额外攻击、战斗风格槽）
    if(part>0f)sb.AppendLine("· 部位生命 +"+(part*100f).ToString("0.#")+"%（现在共 +"+((h.PartFactor(s)-1f)*100f).ToString("0.#")+"%）");
    else if(to<=Adventurer.MaxLevel && Adventurer.EffectsHandedToIsekai)sb.AppendLine("· 部位生命成长交给 Isekai（共存模式）");
@@ -859,6 +867,8 @@ namespace LichPhylactery {
    ExposeAffinity(); // 1.51.0 种族亲和
    ExposeExalted(); // 1.59.0 超凡属性特性
    ExposeWork(); // 1.61.0 热修：日常工作经验
+   ExposeQuestBoard(); // 1.71.0 探索公告板
+   ExposeClasses(); // 1.72.0 职业
    adventurerEnemyLevels=ExposeMergedToggle(adventurerEnemyLevels,"lpEnemyLevels163","adventurerEnemyLevels","adventurerEnemyLevelsCoexist");
    Scribe_Values.Look(ref adventurerEnemyCap,"adventurerEnemyCap",true);Scribe_Values.Look(ref adventurerEnemyCapOffset,"adventurerEnemyCapOffset",3);
    adventurerEnemyCapOffset=Math.Max(0,Math.Min(19,adventurerEnemyCapOffset));
@@ -873,8 +883,10 @@ namespace LichPhylactery {
    l.CheckboxLabeled("冒险者等级",ref s.adventurer,"13 岁以上的人有冒险者等级 1～20 和六项属性（力量、敏捷、体质、智力、感知、魅力）。击杀、守住袭击、完成任务、DND 事件里程碑给经验，日常工作也有少量；每 4 级一次属性提升。关闭后不再获得经验、属性没有效果、隐藏“冒险者”分页；已有的等级和属性保留。");
    l.Label("冒险者经验倍率："+s.adventurerXpPercent+"%");s.adventurerXpPercent=Mathf.RoundToInt(l.Slider(s.adventurerXpPercent,25,400)/5f)*5;
    TooltipHandler.TipRegion(l.Label("日常工作经验倍率："+(s.adventurerWorkXp<=0f?"关闭":"×"+s.adventurerWorkXp.ToString("0.0"))),"每 50 点技能经验 = 1 × 倍率 冒险者经验；每天前 80 点全额，之后 ×0.5。0 = 关闭。");s.adventurerWorkXp=Mathf.Round(l.Slider(s.adventurerWorkXp,0f,3f)*10f)/10f; // 1.61.0 热修
+   l.CheckboxLabeled("探索公告板",ref s.questBoard,"1.71.0：建筑“探索公告板”（杂项）每天贴出 6 份分等阶的委托：守卫家园、远征讨伐（怪物巢穴）、清剿据点。等阶青铜 / 白银 / 黄金 / 秘银 / 传说，需要殖民地最高冒险者等级 1 / 5 / 9 / 13 / 17；完成给银币和物品报酬，接取人得到“任务点数 × 0.5”的冒险者经验。关闭后不再刷新委托，已接的委托照常进行。"); // 1.71.0
    l.Label("属性效果强度："+s.adventurerEffectPercent+"%（六维的数值效果、技能学习速度、部位生命成长；0% 等于只看等级）");s.adventurerEffectPercent=Mathf.RoundToInt(l.Slider(s.adventurerEffectPercent,0,200)/5f)*5;
    l.CheckboxLabeled("种族亲和",ref s.adventurerAffinity,"每个种族有擅长和笨拙的属性：擅长的六维属性每点正调整值的效果 ×1.5（传奇种族 ×1.75），笨拙的 ×0.5（负调整值不乘）；擅长的传奇属性每点 ×1.5（传奇种族 ×1.75），人类所有传奇属性 ×1.1。只改效果，不改属性数值、上限和专长门槛。在“冒险者”分页每项后面标“擅长 / 笨拙”。\n关闭后所有种族 ×1（天赋特性照常）。");
+   ClassSettings.Draw(l); // 1.72.0 职业
    l.CheckboxLabeled("殖民者自动加点",ref s.adventurerAutoASI,"开启后殖民者升到 4、8、12、16 级时自动属性提升：职业主属性优先（装了 VPE 且有 DND 职业），否则加在最高的一项。关闭时在“冒险者”分页或升级信件里手动加点。敌人和访客永远自动。");
    bool isekai=Adventurer.IsekaiActive;
    var old=GUI.color;if(!isekai)GUI.color=Color.gray;

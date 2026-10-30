@@ -498,10 +498,14 @@ namespace LichPhylactery {
  }
 
  // ---------- 信件 ----------
- public class Letter_DragonExtortion : ChoiceLetter {
+ public class Letter_DragonExtortion : LP_EventLetter {
   public DragonEncounter encounter;
+  // 1.69.0 事件小人入口：龙还在等答复（右键龙或它的护卫）。
+  protected override bool Live=>encounter!=null && !encounter.answered && Here(encounter.dragon);
+  protected override bool StateTracked=>true;
+  public override IEnumerable<Thing> EventThings=>encounter==null?Enumerable.Empty<Thing>():encounter.guards.Prepend(encounter.dragon).Cast<Thing>();
   public override IEnumerable<DiaOption> Choices{get{
-   var e=encounter;if(ArchivedOnly || e==null || e.answered || e.dragon==null || e.dragon.Dead){yield return Option_Close;yield break;}
+   var e=encounter;if(Closed || e==null || e.answered || e.dragon==null || e.dragon.Dead){yield return Option_Close;yield break;}
    yield return Choice("付（"+e.demand.ToString("0")+" 价值的"+Dragons.DemandText(e)+"）",()=>Dragons.Pay(e),true);
    var who=Dragons.Negotiator(e.map);
    var neg=Choice("谈"+(who!=null?"：派"+who.LabelShort+"交涉（成功率 "+Dragons.NegotiateChance(who,e.stage).ToStringPercent()+"）":""),()=>{Dragons.Negotiate(e,who);Dragons.SendExtortionLetter(e);},true);
@@ -511,7 +515,7 @@ namespace LichPhylactery {
    yield return Choice("拒绝",()=>Dragons.Refuse(e),true);
    yield return Option_Postpone;
   }}
-  DiaOption Choice(string text,Action act,bool close)=>new DiaOption(text){action=()=>{act?.Invoke();if(close)Find.LetterStack.RemoveLetter(this);},resolveTree=true};
+  DiaOption Choice(string text,Action act,bool close)=>new DiaOption(text){action=()=>{act?.Invoke();if(close)Resolve();},resolveTree=true};
   public override void ExposeData(){
    base.ExposeData();Pawn d=encounter?.dragon;Scribe_References.Look(ref d,"lpDragon");
    if(Scribe.mode==LoadSaveMode.PostLoadInit)encounter=Dragons.State?.Encounter(d);

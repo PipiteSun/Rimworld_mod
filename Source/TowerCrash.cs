@@ -193,6 +193,8 @@ namespace LichPhylactery {
    foreach(var g in guards)if(g!=null && !g.Dead && !g.Destroyed && g.Faction!=Faction.OfPlayer){if(g.Spawned)FleckMaker.ThrowDustPuffThick(g.DrawPos,g.Map,1.5f,Color.gray);Necro.Registry?.constructs.Remove(g);g.Destroy();}
    if(master!=null && !master.Destroyed){if(Find.WorldPawns.Contains(master))Find.WorldPawns.RemovePawn(master);master.Destroy();}
   }
+  // 1.69.0：选中残骸也能重新打开“法师塔坠落”的选项。
+  public override IEnumerable<Gizmo> GetGizmos(){foreach(var g in base.GetGizmos())yield return g;foreach(var g in EventPawnAccess.Gizmos(this))yield return g;}
   public override string GetInspectString(){
    var s=base.GetInspectString();var lines=new List<string>();
    if(!s.NullOrEmpty())lines.Add(s);
@@ -228,10 +230,14 @@ namespace LichPhylactery {
   public override void ExposeData(){base.ExposeData();Scribe_References.Look(ref wreck,"wreck");Scribe_Values.Look(ref cell,"cell");Scribe_Values.Look(ref ally,"ally");}
  }
 
- public class Letter_TowerCrash : ChoiceLetter {
+ public class Letter_TowerCrash : LP_EventLetter {
   public Building_TowerWreck wreck;
+  // 1.69.0 事件小人入口：残骸还没决定怎么处理（选中残骸点按钮，或右键残骸）。
+  protected override bool Live=>wreck!=null && !wreck.Destroyed && wreck.choice=="none";
+  protected override bool StateTracked=>true;
+  public override IEnumerable<Thing> EventThings{get{yield return wreck;}}
   public override IEnumerable<DiaOption> Choices{get{
-   if(ArchivedOnly || wreck==null || wreck.Destroyed){yield return Option_Close;yield break;}
+   if(Closed || wreck==null || wreck.Destroyed){yield return Option_Close;yield break;}
    bool done=wreck.choice!="none";
    var self=Choice("自己拆",()=>TowerCrash.Choose(wreck,"self"));if(done)self.Disable("已经决定了");yield return self;
    var thay=Choice("等塞伊回收（"+TowerCrash.ThayDays+"天后）",()=>TowerCrash.Choose(wreck,"thay"));if(done)thay.Disable("已经决定了");yield return thay;
@@ -239,7 +245,7 @@ namespace LichPhylactery {
    var ally=Choice("通知同盟（"+TowerCrash.AllyDays+"天后）",()=>TowerCrash.Choose(wreck,"ally"));if(done)ally.Disable("已经决定了");else if(why!=null)ally.Disable(why);yield return ally;
    yield return Option_Postpone;
   }}
-  DiaOption Choice(string text,Action act)=>new DiaOption(text){action=()=>{act?.Invoke();Find.LetterStack.RemoveLetter(this);},resolveTree=true};
+  DiaOption Choice(string text,Action act)=>new DiaOption(text){action=()=>{act?.Invoke();Resolve();},resolveTree=true};
   public override void ExposeData(){base.ExposeData();Scribe_References.Look(ref wreck,"lpWreck");}
  }
 

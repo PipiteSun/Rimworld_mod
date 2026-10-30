@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.27.0 奇物商人（商队、轨道）偶尔出售冒险者手册。1.73.0 从 VPE 桥移到主模组（手册不再需要 VPE）。 -->
+<Patch>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/TraderKindDef[defName="Caravan_Outlander_Exotic"]/stockGenerators</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>/Defs/TraderKindDef[defName="Caravan_Outlander_Exotic"]/stockGenerators</xpath>
+      <value>
+        <li Class="StockGenerator_SingleDef"><thingDef>LP_AdventurersManual</thingDef><countRange>0~1</countRange></li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/TraderKindDef[defName="Orbital_Exotic"]/stockGenerators</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>/Defs/TraderKindDef[defName="Orbital_Exotic"]/stockGenerators</xpath>
+      <value>
+        <li Class="StockGenerator_SingleDef"><thingDef>LP_AdventurersManual</thingDef><countRange>0~1</countRange></li>
+      </value>
+    </match>
+  </Operation>
+</Patch>

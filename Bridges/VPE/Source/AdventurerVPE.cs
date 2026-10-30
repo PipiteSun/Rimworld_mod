@@ -21,7 +21,7 @@ namespace LichPhylactery.VPEBridge {
   public static int PathAbility(LP_ClassPathDef path,Pawn p){
    switch(path?.defName){
     case Classes.FighterPath:return Best(p,Adventurer.Str,Adventurer.Dex);
-    case Classes.WizardPath:case Artificer.PathName:return Adventurer.Int;
+    case Classes.WizardPath:case Classes.ArtificerPath:return Adventurer.Int;
     case Classes.ClericPath:case Classes.DruidPath:return Adventurer.Wis;
     case Classes.PaladinPath:case Classes.SorcererPath:return Adventurer.Cha;
     case Classes.MonkPath:return Adventurer.Dex;

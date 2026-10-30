@@ -12,7 +12,7 @@ namespace LichPhylactery.VPEBridge {
  // 再加几项桥接热点：技能经验、VEF IsEnabledForPawn、守护姿态、职业光环刷新。
  public static partial class BridgeChecks {
   static void PerfChecks(){
-   string[] paths={Classes.FighterPath,Classes.WizardPath,Classes.ClericPath,Classes.DruidPath,Classes.PaladinPath,Classes.SorcererPath,Classes.MonkPath,Artificer.PathName};
+   string[] paths={Classes.FighterPath,Classes.WizardPath,Classes.ClericPath,Classes.DruidPath,Classes.PaladinPath,Classes.SorcererPath,Classes.MonkPath,Classes.ArtificerPath};
    LichPerf.Decorate=list=>{
     int i=0;
     foreach(var p in list.Where(p=>p.RaceProps.Humanlike && p.GetComp<CompAbilities>()!=null && Adventurer.Get(p)!=null).Take(32)){
@@ -34,8 +34,8 @@ namespace LichPhylactery.VPEBridge {
     LichPerf.Bench("vpe class Learn(Melee)",20000,()=>cls.skills.Learn(SkillDefOf.Melee,.0001f));
     var ab=cls.GetComp<CompAbilities>()?.LearnedAbilities.FirstOrDefault();
     if(ab!=null)LichPerf.Bench("vpe class IsEnabledForPawn",20000,()=>sink=ab.IsEnabledForPawn(out _));
-    LichPerf.Bench("vpe GuardStanceShare.Guardian",20000,()=>sink=GuardStanceShare.Guardian(plain));
-    var m=adv.Map;LichPerf.Bench("vpe ClassAuras.Refresh",100,()=>MapComponent_ClassAuras.Refresh(m));
+    LichPerf.Bench("vpe GuardStanceShare.Guardian",20000,()=>sink=ClassDamageMods.Guardian(plain)); // 1.72.0 主程序集
+    LichPerf.Bench("class Tick250",100,()=>ClassSystem.Tick250(Adventurer.Get(adv))); // 1.72.0 灵光在职业者自己的冒险者状态里
    };
    try{var s=LichPerf.Run(map);Check(s.Length>0,"performance pass recorded (VPE): "+s);}
    finally{LichPerf.Decorate=null;LichPerf.ExtraBench=null;}

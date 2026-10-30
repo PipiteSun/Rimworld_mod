@@ -107,7 +107,7 @@ namespace LichPhylactery {
   public static int[] Prefs(Pawn p){
    bool npc=p.Faction==null || !p.Faction.IsPlayer;string role;
    if(npc){var r=Feats.EnemyRoles(p);role=r.Contains("caster")?"caster":r.Contains("ranged")?"ranged":"melee";}
-   else role=RoleHook?.Invoke(p);
+   else role=ClassSystem.Role(p)??RoleHook?.Invoke(p); // 1.72.0 主程序集的职业优先
    var list=new List<int>();
    switch(role){
     case "melee":list.Add(Melee);list.Add(Health);break;

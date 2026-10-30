@@ -26,7 +26,9 @@ namespace LichPhylactery.VPEBridge {
   static FactionDef scholars;
   public static FactionDef ScholarsDef=>scholars??(scholars=DefDatabase<FactionDef>.GetNamedSilentFail("LP_WanderingScholars"));
   public static MentorState State=>GameComp<MentorState>.Get();
-  public static IEnumerable<Pawn> Students(Map map,LP_ClassPathDef path)=>map==null?Enumerable.Empty<Pawn>():map.mapPawns.FreeColonistsSpawned.Where(p=>Classes.HasPath(p,path));
+  // 1.72.0：战士、武僧、圣武士的导师看冒险者职业等级（主程序集），上课给冒险者经验而不是 VPE 经验。
+  public static LP_ClassDef ClassFor(LP_ClassPathDef path)=>path!=null && ClassMigration.Hidden(path)?ClassSystem.ByLegacyPath(path.defName):null;
+  public static IEnumerable<Pawn> Students(Map map,LP_ClassPathDef path){if(map==null)return Enumerable.Empty<Pawn>();var c=ClassFor(path);return map.mapPawns.FreeColonistsSpawned.Where(p=>c!=null?ClassSystem.Level(p,c)>0:Classes.HasPath(p,path));}
   // 每条路径在殖民地里的人数（只算战士、法师、牧师）。
   public static Dictionary<LP_ClassPathDef,int> PathCounts(Map map){
    var d=new Dictionary<LP_ClassPathDef,int>();
@@ -42,8 +44,9 @@ namespace LichPhylactery.VPEBridge {
    return counts.Keys.Last();
   }
   public static int Level(Pawn p)=>Classes.Psycasts(p)?.level??0;
+  public static int Level(Pawn p,LP_ClassPathDef path){var c=ClassFor(path);return c!=null?ClassSystem.Level(p,c):Level(p);}
   public static int MaxLevel(Pawn p){var h=Classes.Psycasts(p);return h==null?100:Mathf.Max(1,(int)h.def.maxSeverity);}
-  public static int TargetLevel(Map map,LP_ClassPathDef path,Pawn mentor)=>Mathf.Min(MaxLevel(mentor),Students(map,path).Select(Level).DefaultIfEmpty(0).Max()+LevelBonus);
+  public static int TargetLevel(Map map,LP_ClassPathDef path,Pawn mentor)=>Mathf.Min(ClassFor(path)!=null?ClassSystem.CapLevel:MaxLevel(mentor),Students(map,path).Select(p=>Level(p,path)).DefaultIfEmpty(0).Max()+LevelBonus);
   public static Faction Scholars(){
    if(ScholarsDef==null)return null;bool had=Factions.Of(ScholarsDef)!=null;
    var f=Factions.EnsureHidden(ScholarsDef);if(f!=null && !had)Factions.SetRelation(f,Faction.OfPlayer,0);
@@ -53,6 +56,8 @@ namespace LichPhylactery.VPEBridge {
    var f=Scholars();if(f==null)return null;
    var p=PawnGenerator.GeneratePawn(new PawnGenerationRequest(DefDatabase<PawnKindDef>.GetNamed(KindFor(path.defName)),f,PawnGenerationContext.NonPlayer,map.Tile,forceGenerateNewPawn:true,canGeneratePawnRelations:false,mustBeCapableOfViolence:true));
    foreach(var sd in new[]{path.requiredSkill,path.alternateSkill}){if(sd==null)continue;var skill=p.skills?.GetSkill(sd);if(skill!=null && !skill.TotallyDisabled && skill.Level<16)skill.Level=16;}
+   var cls=ClassFor(path);
+   if(cls!=null){var a=Adventurer.Get(p)??Adventurer.TryAdd(p,1,true);int target=TargetLevel(map,path,p);if(a!=null){if(a.level<target)a.RaiseTo(target);ClassSystem.SetLevel(a,cls,target);}return p;} // 1.72.0
    if(p.GetMainPsylinkSource()==null)p.ChangePsylinkLevel(1,false);
    var h=Classes.Psycasts(p);
    if(h!=null){
@@ -77,9 +82,15 @@ namespace LichPhylactery.VPEBridge {
   }
   // 教一次：同路径殖民者各得下一级所需经验的 25%（直接加进 VPE，不经过每日上限）。返回受教人数。
   public static float Share(Pawn p){var h=Classes.Psycasts(p);return h==null?0f:Hediff_PsycastAbilities.ExperienceRequiredForLevel(h.level)*TeachShare;}
+  // 1.72.0：职业导师的一课 = 冒险者下一级所需经验的 25%（不受每日上限）。
+  public static float AdventurerShare(Pawn p){var a=Adventurer.Get(p);return a==null?0f:Mathf.Max(0f,a.NextXp-Legend.XpFor(a.level))*TeachShare;}
   public static int Teach(MentorVisit v){
    int n=0;
-   foreach(var s in Students(v.map,v.path).ToList()){var h=Classes.Psycasts(s);if(h==null)continue;h.GainExperience(Share(s),true);Adventurer.GainXP(s,Adventurer.LessonXP);n++;} // 1.48.0 每课冒险者经验 50
+   bool cls=ClassFor(v.path)!=null;
+   foreach(var s in Students(v.map,v.path).ToList()){
+    if(cls){Adventurer.GainXP(s,AdventurerShare(s)+Adventurer.LessonXP);n++;continue;} // 1.72.0 职业导师：只给冒险者经验
+    var h=Classes.Psycasts(s);if(h==null)continue;h.GainExperience(Share(s),true);Adventurer.GainXP(s,Adventurer.LessonXP);n++; // 1.48.0 每课冒险者经验 50
+   }
    v.taught++;
    if(n>0)Messages.Message(v.mentor.LabelShort+"给"+n+"名"+v.path.label+"上了一课。",new LookTargets(v.mentor),MessageTypeDefOf.PositiveEvent,false);
    return n;
@@ -184,7 +195,7 @@ namespace LichPhylactery.VPEBridge {
   protected override bool TryExecuteWorker(IncidentParms parms){
    var map=parms.target as Map;if(!Mentor.CanFire(map))return false;
    var v=Mentor.Start(map);if(v==null)return false;
-   SendStandardLetter("云游导师","一位云游的"+v.path.label+"导师"+v.mentor.LabelShort+"（VPE 等级 "+Mentor.Level(v.mentor)+"）路过殖民地，愿意住"+Mentor.StayDays+"天。\n\n他每天给殖民地里同路径（"+v.path.label+"）的人上一课：每人得到下一级所需经验的25%（不受每天50点的上限限制）。\n\n别惹他——有人动手他就走，大家会很懊恼。",LetterDefOf.PositiveEvent,parms,new LookTargets(v.mentor));
+   SendStandardLetter("云游导师","一位云游的"+v.path.label+"导师"+v.mentor.LabelShort+"（"+(Mentor.ClassFor(v.path)!=null?"职业等级":"VPE 等级")+" "+Mentor.Level(v.mentor,v.path)+"）路过殖民地，愿意住"+Mentor.StayDays+"天。\n\n他每天给殖民地里同"+(Mentor.ClassFor(v.path)!=null?"职业":"路径")+"（"+v.path.label+"）的人上一课：每人得到下一级所需"+(Mentor.ClassFor(v.path)!=null?"冒险者":"")+"经验的25%（不受每天50点的上限限制）。\n\n别惹他——有人动手他就走，大家会很懊恼。",LetterDefOf.PositiveEvent,parms,new LookTargets(v.mentor));
    return true;
   }
  }

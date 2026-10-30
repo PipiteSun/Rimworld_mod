@@ -355,7 +355,7 @@ namespace LichPhylactery {
    LichMod.Settings.staffEntropy=Mathf.Round(l.Slider(LichMod.Settings.staffEntropy,0f,20f)*2f)/2f;
    l.Label("制伏伤害倍率："+LichMod.Settings.subdueDamagePercent+"%（制伏短棍、缚网弩、安眠短弓、安眠法杖、安眠粉囊让目标昏迷的速度）");
    LichMod.Settings.subdueDamagePercent=Mathf.RoundToInt(l.Slider(LichMod.Settings.subdueDamagePercent,50f,200f)/5f)*5;
-   l.CheckboxLabeled("DND武器需要器械师",ref LichMod.Settings.dndWeaponsNeedArtificer,"只在同时启用 Vanilla Psycasts Expanded 时有效：符文枪械、法杖、DND 近战武器和精灵长弓要会器械师对应的被动能力（奥术工坊、符文铭刻、山岳锻造）才能制作。关掉后谁都能做（研究和技能要求照旧）。不装 VPE 时没有这条限制。");
+   l.CheckboxLabeled("DND武器需要器械师",ref LichMod.Settings.dndWeaponsNeedArtificer,"符文枪械、法杖、DND 近战武器和精灵长弓要器械师才能制作：奥术工坊那一档要器械师 1 级，符文铭刻那一档要器械师 5 级，“山岳之怒”要学会山岳锻造（1.73.0 起不需要 VPE）。关掉后谁都能做（研究和技能要求照旧）。");
   }
  }
 }

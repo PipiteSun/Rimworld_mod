@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.68.0 立约者开局：契约种族只在带 LP_PactStart 组件的剧本里出现在建角异种下拉中（Source/PactStart.cs）。 -->
+<Defs>
+
+  <ScenPartDef>
+    <defName>LP_PactStart</defName>
+    <label>立约者开局</label>
+    <scenPartClass>LichPhylactery.ScenPart_PactStart</scenPartClass>
+    <category>StartingImportant</category>
+    <selectionWeight>0</selectionWeight>
+    <summaryPriority>495</summaryPriority>
+    <maxUses>1</maxUses>
+  </ScenPartDef>
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>LP_PactScenario</defName>
+    <label>立约者</label>
+    <description>一名凡人立约者、一个从妖精荒野跟来的萨特、一个流着深渊血的坎比恩，还有一只被位面锚链锁在这个世界上的劣魔。你们手里攥着三份来自不同宗主的契约书——签下哪一份，代价都不会小。\n\n这是唯一能在建角时选择契约种族的开局：九狱魔鬼（链魔、骨魔、角魔、艾林魔、阿姆尼祖）、妖精宫廷（萨特、林仙、红帽、调换儿、狂猎骑手、狂猎首领）、天界使者（狄瓦、行星使）、深渊恶魔（劣魔、巴路古拉、哈兹魔、魅魔、纳巴苏、影魔、坎比恩），以及寒冰魔和炎魔。其他开局的异种下拉里看不到这些种族。\n\n开局的外来者殖民者都戴着位面锚链：倒下不会被遣返，死了也会留下尸体。位面契约学（连同前置的位面血统、深渊学）已经研究完成，开局带一座未安装的契约讲台：把契约书拿到讲台上读 4 小时，就能审阅、谈判和签约。\n\n注意：契约的代价是真实的，债务会招来讨债者；外来者殖民者很强，但部分种族（如炎魔、行星使）远强于普通开局，属于自由度高、平衡由你把握的开局。</description>
+    <scenario>
+      <summary>立约者、萨特、坎比恩和一只戴锚链的劣魔，三份契约书和一座契约讲台；契约种族可以在建角时选择。</summary>
+      <parts>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns_Xenotypes">
+          <def>ConfigurePawnsXenotypes</def>
+          <pawnChoiceCount>8</pawnChoiceCount>
+          <customSummary>一名立约者、一个萨特、一个坎比恩和一只劣魔。</customSummary>
+          <xenotypeCounts>
+            <li>
+              <xenotype>Baseliner</xenotype>
+              <count>1</count>
+              <description>立约者</description>
+              <requiredAtStart>true</requiredAtStart>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+            <li>
+              <xenotype>LP_Satyr</xenotype>
+              <count>1</count>
+              <description>萨特</description>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+            <li>
+              <xenotype>LP_Cambion</xenotype>
+              <count>1</count>
+              <description>坎比恩</description>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+            <li>
+              <xenotype>LP_Dretch</xenotype>
+              <count>1</count>
+              <description>劣魔</description>
+              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+            </li>
+          </xenotypeCounts>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <visible>false</visible>
+          <method>Standing</method>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_PactStart">
+          <def>LP_PactStart</def>
+          <scrolls>3</scrolls>
+          <shackle>true</shackle>
+        </li>
+
+        <li Class="ScenPart_StartingResearch">
+          <def>StartingResearch</def>
+          <project>LP_Research_Planetouched</project>
+        </li>
+        <li Class="ScenPart_StartingResearch">
+          <def>StartingResearch</def>
+          <project>LP_Research_Abyssology</project>
+        </li>
+        <li Class="ScenPart_StartingResearch">
+          <def>StartingResearch</def>
+          <project>LP_Research_PlanarPacts</project>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Silver</thingDef>
+          <count>800</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>LP_SoulCoin</thingDef>
+          <count>3</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MealSurvivalPack</thingDef>
+          <count>30</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MedicineIndustrial</thingDef>
+          <count>15</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>ComponentIndustrial</thingDef>
+          <count>20</count>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Gun_Revolver</thingDef>
+        </li>
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MeleeWeapon_LongSword</thingDef>
+          <stuff>Steel</stuff>
+        </li>
+
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>Steel</thingDef>
+          <count>300</count>
+        </li>
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>WoodLog</thingDef>
+          <count>300</count>
+        </li>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>契约书的封蜡还是温的。\n\n三位宗主都听见了你的名字：一位在九狱的账簿上，一位在妖精宫廷的月光里，一位在更远的地方。劣魔脚上的锚链叮当作响，萨特在一旁吹着跑调的笛子，坎比恩盯着那几卷契约，眼睛里映着火。\n\n先把讲台立起来。读清楚每一个字——尤其是那些写得很小的字。</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+</Defs>

@@ -127,7 +127,7 @@ namespace LichPhylactery {
   // 1.53.0 VPE 桥登记：射手的瞄准系数（稳固瞄准 ×1.15、被压制 ×0.75、死神之眼 ≥ 100 = 必中且无视掩体）。
   public static Func<Pawn,float> AimHook;
   public const float MustHit=100f;
-  public static bool IsCaster(Pawn p)=>p!=null && (HasClassHook!=null && HasClassHook(p) || Miracles.WearsSymbol(p));
+  public static bool IsCaster(Pawn p)=>p!=null && (ClassSystem.Any(p) || HasClassHook!=null && HasClassHook(p) || Miracles.WearsSymbol(p));
   // 敌人随机专长用的类别：兵种扩展的 role，主属性是智/感/魅或有法系 → caster；拿远程武器 → ranged；否则 melee。
   public static HashSet<string> EnemyRoles(Pawn p){
    var r=new HashSet<string>();var e=Adventurer.KindExt(p);

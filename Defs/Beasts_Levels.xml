@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- 1.70.0 野兽强化：野性等级、精英野兽、兽王之心与兽王护符。数值在 Source/BeastLevels.cs。 -->
+  <HediffDef>
+    <defName>LP_BeastLevel</defName>
+    <hediffClass>LichPhylactery.Hediff_BeastLevel</hediffClass>
+    <label>野性等级</label>
+    <description>这只动物在荒野中磨炼出的强度。等级折算成力量和体质，用和殖民者相同的六维曲线放大近战伤害和部位生命（1 级不变），每级移速再快 1%（至多 30%）。\n\n狂暴兽群和敌对派系带来的野兽按袭击强度定级，野外动物随殖民地的冒险者等级变强；玩家的动物在战斗、搬运和救援中积累经验成长，主人是游侠或德鲁伊时经验 +25%（动物伙伴）。</description>
+    <defaultLabelColor>(0.85, 0.75, 0.45)</defaultLabelColor>
+    <isBad>false</isBad>
+    <initialSeverity>1</initialSeverity>
+    <minSeverity>1</minSeverity>
+    <maxSeverity>40</maxSeverity>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_BeastElite</defName>
+    <hediffClass>LichPhylactery.Hediff_BeastElite</hediffClass>
+    <label>精英野兽</label>
+    <description>一只特别凶猛的野兽，带有下面四种变种之一：\n恐怖：部位生命 ×3，近战伤害 ×1.5。\n狂暴：近战冷却 −33%，重伤也不会逃跑。\n远古：野性等级 +5，利器 / 钝器护甲 +40%。\n深渊腐化：近战命中时追加约 30% 的烧伤。\n\n狂暴兽群的首领总是精英。精英死后会留下兽王之心。</description>
+    <defaultLabelColor>(0.85, 0.35, 0.3)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+  </HediffDef>
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_BeastKingHeart</defName>
+    <label>兽王之心</label>
+    <description>精英野兽死后留下的心脏，还在缓慢地搏动。可以在附魔台做成兽王护符，商人也愿意出好价钱。</description>
+    <graphicData>
+      <texPath>Things/Item/Health/HealthItem</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(0.75, 0.2, 0.18)</color>
+    </graphicData>
+    <stackLimit>10</stackLimit>
+    <statBases><MarketValue>600</MarketValue><Mass>0.8</Mass><MaxHitPoints>60</MaxHitPoints><Flammability>0.6</Flammability><DeteriorationRate>2</DeteriorationRate></statBases>
+    <thingCategories><li>ResourcesRaw</li></thingCategories>
+  </ThingDef>
+  <ThingDef ParentName="ApparelNoQualityBase">
+    <defName>LP_BeastKingAmulet</defName>
+    <label>兽王护符</label>
+    <description>用兽王之心和金银做的护符，挂在腰间。佩戴者近战伤害 +10%，驯兽 +2。</description>
+    <graphicData>
+      <texPath>LegendaryMonsters/Items/AntiMagicAmulet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(0.85, 0.45, 0.25)</color>
+    </graphicData>
+    <techLevel>Medieval</techLevel>
+    <statBases><MarketValue>1100</MarketValue><Mass>0.4</Mass><MaxHitPoints>100</MaxHitPoints><WorkToMake>4000</WorkToMake><EquipDelay>2</EquipDelay></statBases>
+    <equippedStatOffsets><MeleeDamageFactor>0.1</MeleeDamageFactor></equippedStatOffsets>
+    <thingCategories><li>ApparelUtility</li></thingCategories>
+    <costList><LP_BeastKingHeart>1</LP_BeastKingHeart><Silver>100</Silver><Gold>10</Gold></costList>
+    <recipeMaker>
+      <recipeUsers Inherit="False"><li>LP_EnchantingTable</li></recipeUsers>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+      <skillRequirements><Crafting>6</Crafting></skillRequirements>
+    </recipeMaker>
+    <apparel>
+      <bodyPartGroups><li>Waist</li></bodyPartGroups>
+      <layers><li>Belt</li></layers>
+      <tags><li>LP_BeastKing</li></tags>
+      <careIfWornByCorpse>false</careIfWornByCorpse>
+    </apparel>
+  </ThingDef>
+</Defs>

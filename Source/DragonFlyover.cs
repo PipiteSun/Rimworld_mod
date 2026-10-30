@@ -325,10 +325,14 @@ namespace LichPhylactery {
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref spot,"spot");}
  }
 
- public class Letter_DragonVisit : ChoiceLetter {
+ public class Letter_DragonVisit : LP_EventLetter {
   public DragonVisit visit;
+  // 1.69.0 事件小人入口：古龙还在殖民地外等答复（右键古龙或它的仆从）。
+  protected override bool Live=>visit!=null && !visit.answered && visit.stage=="waiting" && Here(visit.dragon) && Events2.State?.dragonVisits.Contains(visit)==true;
+  protected override bool StateTracked=>true;
+  public override IEnumerable<Thing> EventThings=>visit==null?Enumerable.Empty<Thing>():visit.servants.Prepend(visit.dragon).Cast<Thing>();
   public override IEnumerable<DiaOption> Choices{get{
-   if(ArchivedOnly || visit==null){yield return Option_Close;yield break;}
+   if(Closed || visit==null){yield return Option_Close;yield break;}
    var champs=DragonFlyover.AdultDragons(visit.map).Where(p=>p.Spawned && !p.Downed).Take(DragonFlyover.MaxChampions).ToList();
    if(champs.Count==0){var none=new DiaOption("决斗");none.Disable("殖民地里没有能出战的成年龙");yield return none;}
    foreach(var c in champs){var o=Choice("决斗：派"+c.LabelShort+"（"+ForceDragon.AgeLabel(ForceDragon.Age(c))+"）出战",()=>DragonFlyover.Duel(visit,c));if(visit.answered)o.Disable("已经答复过了");yield return o;}
@@ -336,7 +340,7 @@ namespace LichPhylactery {
    var no=Choice("拒绝",()=>DragonFlyover.Refuse(visit));if(visit.answered)no.Disable("已经答复过了");yield return no;
    yield return Option_Postpone;
   }}
-  DiaOption Choice(string text,Action act)=>new DiaOption(text){action=()=>{act?.Invoke();Find.LetterStack.RemoveLetter(this);},resolveTree=true};
+  DiaOption Choice(string text,Action act)=>new DiaOption(text){action=()=>{act?.Invoke();Resolve();},resolveTree=true};
   public override void ExposeData(){base.ExposeData();Scribe_Deep.Look(ref visit,"lpDragonVisitCopy");
    if(Scribe.mode==LoadSaveMode.PostLoadInit && visit?.lord!=null){var live=DragonFlyover.VisitOf(visit.lord);if(live!=null)visit=live;}
   }

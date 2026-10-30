@@ -19,7 +19,8 @@ namespace LichPhylactery.VPEBridge {
   static Pawn Student(LP_ClassPathDef path,int level){
    var p=PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist,Faction.OfPlayer,PawnGenerationContext.NonPlayer,-1,forceGenerateNewPawn:true,canGeneratePawnRelations:false,mustBeCapableOfViolence:true,forceNoBackstory:true,fixedBiologicalAge:25,fixedChronologicalAge:25,forcedXenotype:XenotypeDefOf.Baseliner));
    p.skills.GetSkill(path.requiredSkill).Level=12;GenSpawn.Spawn(p,CellFinder.RandomClosewalkCellNear(map.Center,map,8),map);made.Add(p);
-   p.ChangePsylinkLevel(1,false);var h=Classes.Psycasts(p);if(level>h.level)h.ChangeLevel(level-h.level,false);h.UnlockPath(path);h.experience=0f;
+   // 1.73.0：学生按冒险者职业等级算。
+   var a=Adventurer.Get(p)??Adventurer.TryAdd(p,level,true);a.level=Math.Max(a.level,level);a.xp=Adventurer.XpTable[Math.Min(20,a.level)-1];ClassSystem.SetLevel(a,Mentor.ClassFor(path),level);
    return p;
   }
   static void Track(MentorVisit v){if(v?.mentor!=null)made.Add(v.mentor);}
@@ -54,17 +55,17 @@ namespace LichPhylactery.VPEBridge {
    Check(weighted && counts[Fighter]>=2 && counts[Wizard]>=1,"mentor path is weighted by how many colonists follow it ("+string.Join(",",counts.Select(kv=>kv.Key.defName+":"+kv.Value))+")");
    // 导师：同路径全部能力，等级 = 同路径最高 +3。
    var v=Mentor.Start(map,Wizard);Track(v);
-   int best=Mentor.Students(map,Wizard).Max(Mentor.Level);
-   Check(v!=null && v.mentor.Spawned && v.mentor.Faction?.def==Mentor.ScholarsDef && !v.mentor.HostileTo(Faction.OfPlayer) && Classes.HasPath(v.mentor,Wizard),"a wizard mentor arrives as a neutral visitor");
-   Check(Mentor.Level(v.mentor)==Math.Min(Mentor.MaxLevel(v.mentor),best+Mentor.LevelBonus),"mentor level = best colonist on the path +3 ("+Mentor.Level(v.mentor)+" vs "+best+")");
-   var comp=v.mentor.GetComp<CompAbilities>();Check(Wizard.abilities.All(a=>comp.HasAbility(a)),"mentor knows every ability of the path");
+   int best=Mentor.Students(map,Wizard).Max(s=>Mentor.Level(s,Wizard));var wc=Mentor.ClassFor(Wizard);
+   Check(v!=null && v.mentor.Spawned && v.mentor.Faction?.def==Mentor.ScholarsDef && !v.mentor.HostileTo(Faction.OfPlayer) && ClassSystem.Level(v.mentor,wc)>0,"a wizard mentor arrives as a neutral visitor with wizard class levels");
+   Check(Mentor.Level(v.mentor,Wizard)==Math.Min(ClassSystem.CapLevel,best+Mentor.LevelBonus),"mentor class level = best colonist in the class +3 ("+Mentor.Level(v.mentor,Wizard)+" vs "+best+")");
+   Check(wc.abilities.Where(e=>e.level<=Mentor.Level(v.mentor,Wizard) && e.capstoneSkill==null).All(e=>v.mentor.abilities.GetAbility(e.ability)!=null),"mentor knows every wizard ability up to its class level");
    Check(v.lord?.LordJob is LordJob_MentorVisit,"mentor stays with a visitor lord (no trading)");
    Check(!Mentor.CanFire(map),"only one mentor at a time");
    // 每天一课：25%，不受每日上限。
-   Classes.State.Allow(w1,9999f);float given=Classes.State.GivenToday(w1);var h=Classes.Psycasts(w1);h.experience=0f;float share=Mentor.Share(w1);var hf=Classes.Psycasts(f1);hf.experience=0f;
+   var aw=Adventurer.Get(w1);var af=Adventurer.Get(f1);float x0=aw.xp,f0=af.xp;float share=Mentor.AdventurerShare(w1);bool shareOk=Near(share,(aw.NextXp-Legend.XpFor(aw.level))*.25f);
    v.arriveTick=Find.TickManager.TicksGame-GenDate.TicksPerDay-1;Mentor.Tick(Mentor.State);
-   Check(v.taught==1 && share>0 && Near(h.experience,share) && Near(Classes.State.GivenToday(w1),given) && Near(hf.experience,0f),"day 1: wizards gain 25% of their next level ("+share.ToString("0.#")+") even past the daily cap; fighters gain nothing");
-   Check(Near(share,Hediff_PsycastAbilities.ExperienceRequiredForLevel(h.level)*.25f),"lesson size is 25% of the experience needed for the next level");
+   Check(v.taught==1 && share>0 && aw.xp-x0>=share && Near(af.xp,f0),"day 1: wizards gain adventurer XP (25% of the next level + 50 = "+(aw.xp-x0).ToString("0")+"); fighters gain nothing");
+   Check(shareOk,"lesson size is 25% of the adventurer XP needed for the next level");
    Mentor.Tick(Mentor.State);Check(v.taught==1,"one lesson per day");
    v.taught=Mentor.StayDays-1;v.arriveTick=Find.TickManager.TicksGame-Mentor.StayDays*GenDate.TicksPerDay-1;Mentor.Tick(Mentor.State);
    Check(v.taught==Mentor.StayDays,"three lessons over three days");

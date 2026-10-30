@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.73.0：法师、牧师、德鲁伊、术士、器械师移到主模组（Defs/Classes2.xml）。这里只留这五条旧路径的 VPE 能力空壳（老存档读得进来，读档时迁移成职业等级），以及德鲁伊、术士、器械师的路径定义（法师、牧师在 Paths.xml）。路径不显示、不能解锁。 -->
+<Defs>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_MagicMissile</defName><label>魔法飞弹（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Wizard/MagicMissile</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Wizard</path><level>1</level><order>1</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_MageArmor</defName><label>法师护甲（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Wizard/MageArmor</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Wizard</path><level>1</level><order>2</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_Fireball</defName><label>火球术（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Wizard/Fireball</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Wizard</path><level>2</level><order>1</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_Sleep</defName><label>睡眠术（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Wizard/Sleep</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Wizard</path><level>2</level><order>2</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_LightningBolt</defName><label>闪电束（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Wizard/LightningBolt</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Wizard</path><level>3</level><order>1</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_Haste</defName><label>急速术（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Wizard/Haste</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Wizard</path><level>3</level><order>2</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_WallOfStone</defName><label>石墙术（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Wizard/WallOfStone</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Wizard</path><level>4</level><order>1</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_Teleport</defName><label>传送术（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Wizard/Teleport</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Wizard</path><level>4</level><order>2</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_Disintegrate</defName><label>解离术（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Wizard/Disintegrate</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Wizard</path><level>5</level><order>1</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_CureWounds</defName><label>治疗伤口（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Cleric/CureWounds</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Cleric</path><level>1</level><order>1</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_Bless</defName><label>祝福（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Cleric/Bless</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Cleric</path><level>1</level><order>2</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_LesserRestoration</defName><label>次级复原术（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Cleric/LesserRestoration</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Cleric</path><level>2</level><order>1</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_Guidance</defName><label>神导术（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Cleric/Guidance</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Cleric</path><level>2</level><order>2</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_SacredFlame</defName><label>神圣打击（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Cleric/SacredFlame</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Cleric</path><level>3</level><order>1</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_TurnUndead</defName><label>驱散亡灵（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Cleric/TurnUndead</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Cleric</path><level>3</level><order>2</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_MassHeal</defName><label>群体治疗（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Cleric/MassHeal</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Cleric</path><level>4</level><order>1</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_DeathWard</defName><label>死亡守卫（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Cleric/DeathWard</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Cleric</path><level>4</level><order>2</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_Raise</defName><label>复生术（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Cleric/Raise</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Cleric</path><level>5</level><order>1</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_AnimalFriendship</defName><label>安抚野兽（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Druid/AnimalFriendship</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Druid</path><level>1</level><order>1</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_Entangle</defName><label>纠缠术（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Druid/Entangle</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Druid</path><level>1</level><order>2</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_ConjureAnimals</defName><label>召唤野兽（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Druid/ConjureAnimals</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Druid</path><level>2</level><order>1</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_Barkskin</defName><label>树肤术（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Druid/Barkskin</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Druid</path><level>2</level><order>2</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_WildShape</defName><label>荒野变形（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Druid/WildShape</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Druid</path><level>3</level><order>1</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_PlantGrowth</defName><label>植物滋长（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Druid/PlantGrowth</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Druid</path><level>3</level><order>2</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_BeastCommand</defName><label>兽王号令（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Druid/BeastCommand</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Druid</path><level>4</level><order>1</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_CallLightning</defName><label>召雷术（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Druid/CallLightning</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Druid</path><level>4</level><order>2</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_ControlWeather</defName><label>掌控天气（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Druid/ControlWeather</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Druid</path><level>5</level><order>1</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_ChaosBolt</defName><label>混沌箭（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Sorcerer/ChaosBolt</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Sorcerer</path><level>1</level><order>1</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_BurningHands</defName><label>燃烧之手（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Sorcerer/BurningHands</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Sorcerer</path><level>1</level><order>2</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_CharmPerson</defName><label>魅惑人类（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Sorcerer/CharmPerson</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Sorcerer</path><level>2</level><order>1</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_TwinSpell</defName><label>超魔·孪生（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Sorcerer/TwinSpell</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Sorcerer</path><level>2</level><order>2</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_DragonWings</defName><label>龙族之翼（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Sorcerer/DragonWings</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Sorcerer</path><level>3</level><order>1</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_IceStorm</defName><label>冰风暴（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Sorcerer/IceStorm</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Sorcerer</path><level>3</level><order>2</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_MassSuggestion</defName><label>群体暗示（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Sorcerer/MassSuggestion</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Sorcerer</path><level>4</level><order>1</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_EmpoweredSpell</defName><label>超魔·强效（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Sorcerer/EmpoweredSpell</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Sorcerer</path><level>4</level><order>2</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_SorcerousSurge</defName><label>魔涌（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Sorcerer/SorcerousSurge</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Sorcerer</path><level>5</level><order>1</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_ArcaneWorkshop</defName><label>奥术工坊（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Artificer/ArcaneWorkshop</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Artificer</path><level>1</level><order>1</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_QuickRepair</defName><label>快速维修（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Artificer/QuickRepair</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Artificer</path><level>1</level><order>2</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_RuneInscription</defName><label>符文铭刻（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Artificer/RuneInscription</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Artificer</path><level>2</level><order>1</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_Overcharge</defName><label>过载射击（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Artificer/Overcharge</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Artificer</path><level>2</level><order>2</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_ArcaneCharge</defName><label>魔力充能（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Artificer/ArcaneCharge</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Artificer</path><level>3</level><order>1</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_MasterCraft</defName><label>大师工艺（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Artificer/MasterCraft</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Artificer</path><level>3</level><order>2</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_MountainForge</defName><label>山岳锻造（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Artificer/MountainForge</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Artificer</path><level>4</level><order>1</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_RuneTurretAbility</defName><label>符文炮台（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Artificer/RuneTurret</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Artificer</path><level>4</level><order>2</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>LP_ArcaneResonance</defName><label>魔力共鸣（旧）</label>
+    <description>1.72.0 以前的 VPE 能力，已改为冒险者职业能力（读档时自动换算）。</description>
+    <iconPath>LP/Classes/Artificer/ArcaneResonance</iconPath>
+    <abilityClass>LichPhylactery.VPEBridge.Ability_ClassLegacy</abilityClass><targetMode>Self</targetMode><castTime>0</castTime>
+    <modExtensions><li Class="LichPhylactery.VPEBridge.LP_ClassAbilityExt"><path>LP_Path_Artificer</path><level>5</level><order>1</order><psyfocusCost>0</psyfocusCost><entropyGain>0</entropyGain><requiredSkillLevel>99</requiredSkillLevel></li></modExtensions>
+  </VEF.Abilities.AbilityDef>
+  <VanillaPsycastsExpanded.PsycasterPathDef Class="LichPhylactery.VPEBridge.LP_ClassPathDef"><defName>LP_Path_Druid</defName><label>德鲁伊</label><description>DND 德鲁伊守护自然：安抚野兽、召唤野兽、荒野变形、兽王号令（驯兽），纠缠术、树肤术、植物滋长、召雷术（种植），终极 掌控天气。种植或驯兽任一 6 级即可入门；每个能力看自己那门技能（6/9/12/15/18），只练一门也能走完半棵树。效果乘心灵敏感度（最低 0.2，不封顶）。巫妖不能学。</description><tab>DND职业</tab><order>5</order><requiredSkill>Plants</requiredSkill><alternateSkill>Animals</alternateSkill><requiredSkillLevel>6</requiredSkillLevel><classPsychic>true</classPsychic><lockedReason>需要种植或驯兽 6 级，或冒险者感知 13（巫妖不能学）</lockedReason><tooltip>德鲁伊：种植支掌管植物与天气，驯兽支掌管野兽与变形。</tooltip><background>LP/Classes/Druid/Background</background><altBackground>LP/Classes/Druid/Background</altBackground><backgroundColor>(0.22,0.38,0.18)</backgroundColor><ignoreLockRestrictionsForNeurotrainers>false</ignoreLockRestrictionsForNeurotrainers></VanillaPsycastsExpanded.PsycasterPathDef>
+  <VanillaPsycastsExpanded.PsycasterPathDef Class="LichPhylactery.VPEBridge.LP_ClassPathDef"><defName>LP_Path_Sorcerer</defName><label>术士</label><description>DND 术士生来带着魔力：混沌箭、魅惑人类、龙族之翼、群体暗示（社交），燃烧之手、超魔·孪生、冰风暴、超魔·强效（智识），终极 魔涌。社交或智识任一 6 级即可入门；力能龙裔、元素裔、巨灵、泰坦、风暴巨人、云巨人、六臂蛇人有术士血脉，所有门槛 −2、天赋强度 +15%。效果乘心灵敏感度。</description><tab>DND职业</tab><order>7</order><requiredSkill>Social</requiredSkill><alternateSkill>Intellectual</alternateSkill><requiredSkillLevel>6</requiredSkillLevel><classPsychic>true</classPsychic><lockedReason>需要社交或智识 6 级（术士血脉 4 级），或冒险者魅力 13</lockedReason><tooltip>术士：社交支是天生的魅力法术，智识支是超魔与元素。</tooltip><background>LP/Classes/Sorcerer/Background</background><altBackground>LP/Classes/Sorcerer/Background</altBackground><backgroundColor>(0.42,0.16,0.4)</backgroundColor><ignoreLockRestrictionsForNeurotrainers>false</ignoreLockRestrictionsForNeurotrainers></VanillaPsycastsExpanded.PsycasterPathDef>
+  <VanillaPsycastsExpanded.PsycasterPathDef Class="LichPhylactery.VPEBridge.LP_ClassPathDef"><defName>LP_Path_Artificer</defName><label>器械师</label><description>DND 器械师把魔力锻进器械：奥术工坊、快速维修、符文铭刻、过载射击、魔力充能、大师工艺、山岳锻造、符文炮台与魔力共鸣。器械强度随手工等级增长；学习每一环都需要对应的手工等级（6/9/12/15/18）。装了 VPE 时，所有可制作的 DND 武器（符文枪械、法杖、DND近战武器和精灵长弓）都要会器械师对应的被动能力（奥术工坊、符文铭刻、山岳锻造）才能制作；传说武器和投掷物不受限，模组设置“DND武器需要器械师”可以关掉这条限制。</description><tab>DND职业</tab><order>4</order><requiredSkill>Crafting</requiredSkill><requiredSkillLevel>6</requiredSkillLevel><lockedReason>需要手工 6 级（或冒险者智力 13）</lockedReason><tooltip>器械师：手工决定器械强度与可学的能力。</tooltip><background>LP/Classes/Artificer/Background</background><altBackground>LP/Classes/Artificer/Background</altBackground><backgroundColor>(0.32,0.28,0.18)</backgroundColor><ignoreLockRestrictionsForNeurotrainers>false</ignoreLockRestrictionsForNeurotrainers></VanillaPsycastsExpanded.PsycasterPathDef>
+</Defs>

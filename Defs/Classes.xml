@@ -1,0 +1,755 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.72.0 职业体系脱离 VPE（第一版）：战士、武僧、圣武士在主模组里，原版 RimWorld 能力（不需要心灵链接、不耗精神力 / 心灵熵），装不装 VPE 都能玩。
+     职业等级存在冒险者状态里（LichPhylactery.ClassData）；每个冒险者等级 1 点职业点，职业等级总和 ≤ 冒险者等级（最多 20）。
+     能力在职业等级 1/3/5/9/13/17/20 自动获得（20 级的终极另要那门技能 18 级）；施放消耗职业资源：战士 斗志、武僧 气、圣武士 神恩。
+     状态、属性从 Bridges/VPE 移来（defName 不变），VEF_MeleeAttackDamageFactor 改成原版 MeleeDamageFactor。见 ArtSource/Classes-1.72.0-report.md。 -->
+<Defs>
+  <!-- ===== 职业 ===== -->
+  <LichPhylactery.LP_ClassDef>
+    <defName>LP_Class_Fighter</defName>
+    <label>战士</label>
+    <description>DND 战士：格斗支（回气、冲锋、战吼、绊摔、动作如潮、武器专精、不屈意志、缴械击、旋风斩、守护姿态，终极 战意再临）与射击支（稳固瞄准、压制射击、精准射击、连射，终极 死神之眼）。格斗支的强度看“战技强度”，射击支看“射术强度”。资源：斗志（命中、击杀敌人时积攒，睡觉时回满）。物理职业：额外攻击、战斗风格。</description>
+    <mainSkill>Melee</mainSkill>
+    <alternateSkill>Shooting</alternateSkill>
+    <primary>Str/Dex</primary>
+    <order>1</order>
+    <resource>Fury</resource>
+    <martial>true</martial>
+    <legacyPath>LP_Path_Fighter</legacyPath>
+    <background>LP/Classes/Background_Fighter</background>
+    <color>(0.95,0.6,0.4)</color>
+    <abilities>
+      <li><ability>LP_SecondWind</ability><level>1</level></li>
+      <li><ability>LP_Charge</ability><level>1</level></li>
+      <li><ability>LP_SteadyAim</ability><level>1</level></li>
+      <li><ability>LP_BattleCry</ability><level>3</level></li>
+      <li><ability>LP_SuppressingFire</ability><level>3</level></li>
+      <li><ability>LP_Trip</ability><level>5</level></li>
+      <li><ability>LP_ActionSurge</ability><level>5</level></li>
+      <li><ability>LP_WeaponMastery</ability><level>9</level></li>
+      <li><ability>LP_Indomitable</ability><level>9</level></li>
+      <li><ability>LP_PrecisionShot</ability><level>9</level></li>
+      <li><ability>LP_DisarmingStrike</ability><level>13</level></li>
+      <li><ability>LP_Whirlwind</ability><level>13</level></li>
+      <li><ability>LP_RapidFire</ability><level>13</level></li>
+      <li><ability>LP_GuardStance</ability><level>17</level></li>
+      <li><ability>LP_SurgeOfBattle</ability><level>20</level><capstoneSkill>Melee</capstoneSkill></li>
+      <li><ability>LP_DeadEye</ability><level>20</level><capstoneSkill>Shooting</capstoneSkill></li>
+    </abilities>
+    <legendary><li>LP_LegUnyielding</li><li>LP_LegThousandArmies</li></legendary>
+  </LichPhylactery.LP_ClassDef>
+
+  <LichPhylactery.LP_ClassDef>
+    <defName>LP_Class_Monk</defName>
+    <label>武僧</label>
+    <description>DND 武僧以气御身：武艺（被动）、疾风连击、拨挡箭矢、震慑拳、乘风步、开掌技、金刚之躯、颤心掌，终极 空灵之身。徒手（或拿短棍）时最强；拳脚走原版近战结算，Isekai 的力量与武器精通照常生效。强度看“战技强度”；“气”的效果（设置开着时）乘心灵敏感度。资源：气（冥想时恢复，睡觉时回满）。物理职业：额外攻击（只在徒手时）、战斗风格。</description>
+    <mainSkill>Melee</mainSkill>
+    <primary>Dex</primary>
+    <order>3</order>
+    <resource>Ki</resource>
+    <martial>true</martial>
+    <legacyPath>LP_Path_Monk</legacyPath>
+    <background>LP/Classes/Monk/Background</background>
+    <color>(0.95,0.8,0.4)</color>
+    <abilities>
+      <li><ability>LP_MartialArts</ability><level>1</level></li>
+      <li><ability>LP_FlurryOfBlows</ability><level>1</level></li>
+      <li><ability>LP_DeflectMissiles</ability><level>3</level></li>
+      <li><ability>LP_StunningStrike</ability><level>5</level></li>
+      <li><ability>LP_StepOfTheWind</ability><level>9</level></li>
+      <li><ability>LP_OpenHand</ability><level>9</level></li>
+      <li><ability>LP_DiamondSoul</ability><level>13</level></li>
+      <li><ability>LP_QuiveringPalm</ability><level>17</level></li>
+      <li><ability>LP_EmptyBody</ability><level>20</level><capstoneSkill>Melee</capstoneSkill></li>
+    </abilities>
+    <legendary><li>LP_LegFormless</li><li>LP_LegHeavenPalm</li></legendary>
+  </LichPhylactery.LP_ClassDef>
+
+  <LichPhylactery.LP_ClassDef>
+    <defName>LP_Class_Paladin</defName>
+    <label>圣武士</label>
+    <description>DND 圣武士以誓言为剑：至圣斩、誓仇、神圣武器、援护换位（格斗，战技强度），圣疗、守护灵光、勇气灵光、放逐邪恶（社交，神恩强度），终极 圣光化身。武器那一下照常结算，追加的神圣伤害和治疗（设置开着时）乘心灵敏感度。资源：神恩（祈祷、冥想时恢复，信奉神明的人快 25%，睡觉时回满）。巫妖不能当圣武士。物理职业：额外攻击、战斗风格。</description>
+    <mainSkill>Melee</mainSkill>
+    <alternateSkill>Social</alternateSkill>
+    <primary>Cha</primary>
+    <order>2</order>
+    <resource>Grace</resource>
+    <martial>true</martial>
+    <legacyPath>LP_Path_Paladin</legacyPath>
+    <background>LP/Classes/Paladin/Background</background>
+    <color>(1,0.9,0.55)</color>
+    <abilities>
+      <li><ability>LP_DivineSmite</ability><level>1</level></li>
+      <li><ability>LP_LayOnHands</ability><level>1</level></li>
+      <li><ability>LP_VowOfEnmity</ability><level>3</level></li>
+      <li><ability>LP_AuraOfProtection</ability><level>5</level></li>
+      <li><ability>LP_SacredWeapon</ability><level>9</level></li>
+      <li><ability>LP_AuraOfCourage</ability><level>9</level></li>
+      <li><ability>LP_Intercept</ability><level>13</level></li>
+      <li><ability>LP_DispelEvil</ability><level>17</level></li>
+      <li><ability>LP_HolyAvatar</ability><level>20</level><capstoneSkill>Melee</capstoneSkill></li>
+    </abilities>
+    <legendary><li>LP_LegDivineIncarnation</li><li>LP_LegUndyingOath</li></legendary>
+  </LichPhylactery.LP_ClassDef>
+
+  <!-- ===== 职业强度（1.27.0 起在 VPE 桥里，1.72.0 移到主模组；奥术、天赋等其他强度仍在桥里） ===== -->
+  <StatDef Name="LP_ClassPowerBase" Abstract="True">
+    <category>PawnMisc</category>
+    <defaultBaseValue>1</defaultBaseValue>
+    <minValue>0.5</minValue>
+    <toStringStyle>PercentZero</toStringStyle>
+    <showOnHumanlikes>true</showOnHumanlikes>
+    <showOnAnimals>false</showOnAnimals>
+    <showOnMechanoids>false</showOnMechanoids>
+    <showOnEntities>false</showOnEntities>
+    <showIfUndefined>false</showIfUndefined>
+    <cacheable>false</cacheable>
+  </StatDef>
+  <StatDef ParentName="LP_ClassPowerBase">
+    <defName>LP_MartialPower</defName>
+    <label>战技强度</label>
+    <description>DND 战技的强度倍率：0.5 + 格斗等级/20，另加冒险者力量或敏捷（较高者）调整值 × 0.04 与 (熟练加值 − 2) × 0.02。有物理职业（战士、武僧、圣武士）的人另加 0.02 ×（物理职业等级合计 − 1），最多 +40%。回气治疗量、战吼范围、增益持续时间、武僧拳脚与气、圣武士格斗支都乘这个倍率。</description>
+    <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Melee</skill></li></parts>
+    <displayPriorityInCategory>4210</displayPriorityInCategory>
+  </StatDef>
+  <StatDef ParentName="LP_ClassPowerBase">
+    <defName>LP_MarksmanPower</defName>
+    <label>射术强度</label>
+    <description>DND 战士射击支的强度倍率：0.5 + 射击等级/20，另加冒险者敏捷调整值 × 0.04 与 (熟练加值 − 2) × 0.02；有物理职业的人另加 0.02 ×（物理职业等级合计 − 1），最多 +40%。</description>
+    <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Shooting</skill></li></parts>
+    <displayPriorityInCategory>4213</displayPriorityInCategory>
+  </StatDef>
+  <StatDef ParentName="LP_ClassPowerBase">
+    <defName>LP_DivinePower</defName>
+    <label>神恩强度</label>
+    <description>神术的强度倍率：0.5 + 社交等级/20，另加冒险者魅力调整值 × 0.04 与 (熟练加值 − 2) × 0.02。圣武士的社交支（圣疗、守护灵光、放逐邪恶）用它；装了 VPE 时牧师神术也用它。</description>
+    <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Social</skill></li><li Class="LichPhylactery.StatPart_LegendaryClassPower"><ability>LP_LegDivineGuardian</ability><bonus>0.2</bonus></li></parts>
+    <displayPriorityInCategory>4212</displayPriorityInCategory>
+  </StatDef>
+
+  <!-- ===== 状态（defName 与 1.71.0 的 VPE 桥相同） ===== -->
+  <HediffDef Name="LP_ClassBuffBase" Abstract="True">
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>5</maxSeverity>
+    <defaultLabelColor>(0.75,0.65,0.95)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>600~600</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+    </comps>
+  </HediffDef>
+
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_SecondWind</defName>
+    <maxSeverity>100</maxSeverity>
+    <label>回气</label>
+    <description>战士调匀呼吸，600刻内持续治疗伤势（总量 = 20 × 战技强度，优先流血伤口）。</description>
+    <comps>
+      <li Class="LichPhylactery.HediffCompProperties_ClassHeal"><interval>60</interval><ticksTotal>600</ticksTotal></li>
+    </comps>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_Shaken</defName>
+    <label>震慑</label>
+    <description>被震慑：移动 ×0.7、近战命中与射击精度下降。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.9,0.6,0.5)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>0.7</MoveSpeed></statFactors><statOffsets><MeleeHitChance>-0.15</MeleeHitChance><ShootingAccuracyPawn>-0.05</ShootingAccuracyPawn></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ActionSurge</defName>
+    <label>动作如潮</label>
+    <description>近战冷却 ×0.6、射击冷却 ×0.6，移动 ×1.3。</description>
+    <stages><li><statFactors><MeleeCooldownFactor>0.6</MeleeCooldownFactor><RangedCooldownFactor>0.6</RangedCooldownFactor><MoveSpeed>1.3</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WeaponMastery</defName>
+    <hediffClass>LichPhylactery.Hediff_MartialFlag</hediffClass>
+    <label>武器专精</label>
+    <description>近战伤害提高（×1.24 ～ ×1.45，随战技强度分档）；远程武器的伤害也乘同一档系数。</description>
+    <stages>
+      <li><label>熟练</label><statFactors><MeleeDamageFactor>1.24</MeleeDamageFactor></statFactors></li>
+      <li><minSeverity>0.95</minSeverity><label>精通</label><statFactors><MeleeDamageFactor>1.3</MeleeDamageFactor></statFactors></li>
+      <li><minSeverity>1.1</minSeverity><label>专精</label><statFactors><MeleeDamageFactor>1.35</MeleeDamageFactor></statFactors></li>
+      <li><minSeverity>1.25</minSeverity><label>大师</label><statFactors><MeleeDamageFactor>1.4</MeleeDamageFactor></statFactors></li>
+      <li><minSeverity>1.45</minSeverity><label>宗师</label><statFactors><MeleeDamageFactor>1.45</MeleeDamageFactor></statFactors></li>
+    </stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_Indomitable</defName>
+    <label>不屈意志</label>
+    <description>感觉不到疼痛，不会因疼痛倒地，免疫击晕，精神崩溃阈值 -15%。</description>
+    <stages><li><painFactor>0</painFactor><statOffsets><MentalBreakThreshold>-0.15</MentalBreakThreshold></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_GuardStance</defName>
+    <label>守护姿态</label>
+    <description>护甲提高（+16% ～ +30%，随战技强度分档），移动 ×0.7；半径 3 内友军受到的伤害有 30% 转到自己身上。</description>
+    <stages>
+      <li><statFactors><MoveSpeed>0.7</MoveSpeed></statFactors><statOffsets><ArmorRating_Sharp>0.16</ArmorRating_Sharp><ArmorRating_Blunt>0.16</ArmorRating_Blunt></statOffsets></li>
+      <li><minSeverity>0.95</minSeverity><statFactors><MoveSpeed>0.7</MoveSpeed></statFactors><statOffsets><ArmorRating_Sharp>0.2</ArmorRating_Sharp><ArmorRating_Blunt>0.2</ArmorRating_Blunt></statOffsets></li>
+      <li><minSeverity>1.1</minSeverity><statFactors><MoveSpeed>0.7</MoveSpeed></statFactors><statOffsets><ArmorRating_Sharp>0.23</ArmorRating_Sharp><ArmorRating_Blunt>0.23</ArmorRating_Blunt></statOffsets></li>
+      <li><minSeverity>1.25</minSeverity><statFactors><MoveSpeed>0.7</MoveSpeed></statFactors><statOffsets><ArmorRating_Sharp>0.26</ArmorRating_Sharp><ArmorRating_Blunt>0.26</ArmorRating_Blunt></statOffsets></li>
+      <li><minSeverity>1.45</minSeverity><statFactors><MoveSpeed>0.7</MoveSpeed></statFactors><statOffsets><ArmorRating_Sharp>0.3</ArmorRating_Sharp><ArmorRating_Blunt>0.3</ArmorRating_Blunt></statOffsets></li>
+    </stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_SurgeOfBattle</defName>
+    <label>战意再临</label>
+    <description>近战冷却 ×0.5、近战伤害 ×1.5，免疫击晕；每次近战击杀让所有战士战技立即冷却完毕。</description>
+    <stages><li><statFactors><MeleeCooldownFactor>0.5</MeleeCooldownFactor><MeleeDamageFactor>1.5</MeleeDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <!-- 旋风斩、冲锋那一击的临时状态：近战伤害（MeleeDamageFactor）= 严重度，结算完立刻移除。 -->
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WhirlwindFury</defName>
+    <hediffClass>LichPhylactery.Hediff_StrikeFactor</hediffClass>
+    <label>旋风之势</label>
+    <description>旋风斩这一下的近战伤害 × 战技强度。</description>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ChargeStrike</defName>
+    <hediffClass>LichPhylactery.Hediff_StrikeFactor</hediffClass>
+    <label>冲锋之势</label>
+    <description>冲锋落地的这一下近战伤害 ×(1 + 0.3 × 战技强度)。</description>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>LP_ExtraAttack</defName>
+    <label>额外攻击</label>
+    <description>物理职业的额外攻击：近战冷却、射击冷却缩短，普通近战命中后有机会追击一次。档位：任一物理职业 5 级第 1 档，战士 11 级第 2 档、20 级第 3 档。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>3</maxSeverity>
+    <defaultLabelColor>(0.95,0.6,0.4)</defaultLabelColor>
+    <stages>
+      <li><minSeverity>0</minSeverity><label>第 1 档</label><statFactors><MeleeCooldownFactor>0.8</MeleeCooldownFactor><RangedCooldownFactor>0.85</RangedCooldownFactor></statFactors></li>
+      <li><minSeverity>1.5</minSeverity><label>第 2 档</label><statFactors><MeleeCooldownFactor>0.7</MeleeCooldownFactor><RangedCooldownFactor>0.75</RangedCooldownFactor></statFactors></li>
+      <li><minSeverity>2.5</minSeverity><label>第 3 档</label><statFactors><MeleeCooldownFactor>0.6</MeleeCooldownFactor><RangedCooldownFactor>0.65</RangedCooldownFactor></statFactors></li>
+    </stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_SteadyAim</defName>
+    <hediffClass>LichPhylactery.Hediff_MartialFlag</hediffClass>
+    <label>稳固瞄准</label>
+    <description>沉下身子瞄准：射击预热 ×0.5、远程命中 ×1.15，移动 ×0.5。</description>
+    <everCurableByItem>false</everCurableByItem>
+    <stages><li><statFactors><AimingDelayFactor>0.5</AimingDelayFactor><MoveSpeed>0.5</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_Suppressed</defName>
+    <hediffClass>LichPhylactery.Hediff_MartialFlag</hediffClass>
+    <label>被压制</label>
+    <description>被压制射击的火力压得抬不起头：移动 ×0.6、远程命中 ×0.75。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.9,0.6,0.5)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>0.6</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_RapidFire</defName>
+    <hediffClass>LichPhylactery.Hediff_MartialFlag</hediffClass>
+    <label>连射</label>
+    <description>射击冷却 ×0.5；连发武器每轮多打 1 发。</description>
+    <everCurableByItem>false</everCurableByItem>
+    <stages><li><statFactors><RangedCooldownFactor>0.5</RangedCooldownFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_DeadEye</defName>
+    <hediffClass>LichPhylactery.Hediff_MartialFlag</hediffClass>
+    <label>死神之眼</label>
+    <description>远程必中、无视掩体，射击伤害 ×1.5；每次射杀敌人，所有战士战技立刻冷却完毕。</description>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_Hobbled</defName>
+    <label>腿部中弹</label>
+    <description>被精准射击打中腿：移动 ×0.5。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.9,0.6,0.5)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>0.5</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_SuppressingVolley</defName>
+    <label>压制射击中</label>
+    <description>正在倾泻压制火力。</description>
+    <hediffClass>LichPhylactery.Hediff_SuppressingVolley</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <stages><li><becomeVisible>false</becomeVisible></li></stages>
+  </HediffDef>
+  <ThingDef ParentName="PawnFlyerBase">
+    <defName>LP_ChargeFlyer</defName>
+    <label>冲锋</label>
+    <thingClass>LichPhylactery.LP_ChargeFlyer</thingClass>
+  </ThingDef>
+
+  <!-- 武僧 -->
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_MonkStance</defName>
+    <hediffClass>LichPhylactery.Hediff_ScaledBuff</hediffClass>
+    <label>武艺</label>
+    <description>徒手的武僧：近战伤害提高（× 1 + 0.5 × 战技强度），近战冷却 ×0.85。</description>
+    <defaultLabelColor>(0.95,0.8,0.45)</defaultLabelColor>
+    <stages><li><statFactors><MeleeCooldownFactor>0.85</MeleeCooldownFactor></statFactors></li></stages>
+    <modExtensions><li Class="LichPhylactery.ScaledBuffExtension">
+      <scaledFactors>
+        <li><stat>MeleeDamageFactor</stat><baseValue>1</baseValue><perSeverity>0.5</perSeverity></li>
+      </scaledFactors>
+    </li></modExtensions>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_MonkUnarmored</defName>
+    <hediffClass>LichPhylactery.Hediff_ScaledBuff</hediffClass>
+    <label>轻身</label>
+    <description>不穿重甲的武僧：近战闪避 +10% × 战技强度。</description>
+    <defaultLabelColor>(0.95,0.8,0.45)</defaultLabelColor>
+    <modExtensions><li Class="LichPhylactery.ScaledBuffExtension">
+      <scaledOffsets>
+        <li><stat>MeleeDodgeChance</stat><baseValue>0</baseValue><perSeverity>0.1</perSeverity></li>
+      </scaledOffsets>
+    </li></modExtensions>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_Deflecting</defName>
+    <label>拨挡箭矢</label>
+    <description>每发远程攻击的伤害减少（严重度 = 减伤量），减到 0 时整发拨开。</description>
+    <defaultLabelColor>(0.95,0.8,0.45)</defaultLabelColor>
+    <maxSeverity>1000</maxSeverity>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_StepOfTheWind</defName>
+    <label>乘风步</label>
+    <description>身轻如风：移动 ×1.6、近战闪避 +20%。</description>
+    <defaultLabelColor>(0.95,0.8,0.45)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>1.6</MoveSpeed></statFactors><statOffsets><MeleeDodgeChance>0.2</MeleeDodgeChance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_DiamondSoul</defName>
+    <label>金刚之躯</label>
+    <description>气凝全身：受到伤害 ×0.7，免疫击晕，精神崩溃阈值 −10%。</description>
+    <defaultLabelColor>(0.95,0.8,0.45)</defaultLabelColor>
+    <stages><li><statFactors><IncomingDamageFactor>0.7</IncomingDamageFactor></statFactors><statOffsets><MentalBreakThreshold>-0.1</MentalBreakThreshold></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_QuiveringPalm</defName>
+    <hediffClass>LichPhylactery.Hediff_QuiveringPalm</hediffClass>
+    <label>颤心</label>
+    <description>体内被种下了武僧的颤心之气，几秒后就会爆发。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.95,0.6,0.4)</defaultLabelColor>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>1000</maxSeverity>
+    <scenarioCanAdd>false</scenarioCanAdd>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_EmptyBody</defName>
+    <label>空灵之身</label>
+    <description>身形化入虚空：隐身，受到伤害 ×0.5，每秒治疗（严重度 = 每秒治疗量）。</description>
+    <defaultLabelColor>(0.85,0.85,1)</defaultLabelColor>
+    <maxSeverity>1000</maxSeverity>
+    <stages><li><statFactors><IncomingDamageFactor>0.5</IncomingDamageFactor></statFactors></li></stages>
+    <comps><li Class="HediffCompProperties_Invisibility"><visibleToPlayer>true</visibleToPlayer><affectedByDisruptor>false</affectedByDisruptor></li><li Class="LichPhylactery.HediffCompProperties_ClassAura"><interval>60</interval><healFactor>1</healFactor></li></comps>
+  </HediffDef>
+
+  <!-- 圣武士 -->
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_SmiteReady</defName>
+    <label>至圣斩</label>
+    <description>下一次近战命中追加神圣伤害（严重度 = 伤害量），10 秒内有效。</description>
+    <defaultLabelColor>(1,0.9,0.55)</defaultLabelColor>
+    <maxSeverity>1000</maxSeverity>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_SacredWeapon</defName>
+    <label>神圣武器</label>
+    <description>每次近战命中追加神圣伤害（严重度 = 伤害量）。</description>
+    <defaultLabelColor>(1,0.9,0.55)</defaultLabelColor>
+    <maxSeverity>1000</maxSeverity>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_Enmity</defName>
+    <hediffClass>LichPhylactery.Hediff_Enmity</hediffClass>
+    <label>誓仇</label>
+    <description>被圣武士立誓追讨：那名圣武士对它的伤害提高。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.95,0.6,0.4)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ProtectionAura</defName>
+    <hediffClass>LichPhylactery.Hediff_ScaledBuff</hediffClass>
+    <label>守护灵光</label>
+    <description>在圣武士的守护灵光里：受到伤害降低（×0.8～×0.95，随神恩强度），精神崩溃阈值 −5%。</description>
+    <defaultLabelColor>(1,0.9,0.55)</defaultLabelColor>
+    <stages><li><statOffsets><MentalBreakThreshold>-0.05</MentalBreakThreshold></statOffsets></li></stages>
+    <modExtensions><li Class="LichPhylactery.ScaledBuffExtension">
+      <scaledFactors>
+        <li><stat>IncomingDamageFactor</stat><baseValue>1</baseValue><perSeverity>-0.1</perSeverity><min>0.8</min><max>1</max></li>
+      </scaledFactors>
+    </li></modExtensions>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CourageAura</defName>
+    <label>勇气灵光</label>
+    <description>在圣武士的勇气灵光里：不会恐慌逃跑。</description>
+    <defaultLabelColor>(1,0.9,0.55)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_Sheltered</defName>
+    <label>受庇护</label>
+    <description>圣武士挡在身前：受到伤害 ×0.5。</description>
+    <defaultLabelColor>(1,0.9,0.55)</defaultLabelColor>
+    <stages><li><statFactors><IncomingDamageFactor>0.5</IncomingDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_HolyAvatar</defName>
+    <label>圣光化身</label>
+    <description>圣光加身：每秒灼伤周围的敌人、治疗周围的友军（严重度 = 每秒伤害），免疫击晕与恐慌。</description>
+    <defaultLabelColor>(1,0.95,0.7)</defaultLabelColor>
+    <maxSeverity>1000</maxSeverity>
+    <comps><li Class="LichPhylactery.HediffCompProperties_ClassAura"><interval>60</interval><radius>6</radius><damageEnemies>true</damageEnemies><healAllies>true</healAllies><healFactor>0.4</healFactor></li></comps>
+  </HediffDef>
+  <ThoughtDef>
+    <defName>LP_EnmityAvenged</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>誓仇得报</label><description>我立誓追讨的敌人倒下了。</description><baseMoodEffect>5</baseMoodEffect></li></stages>
+  </ThoughtDef>
+
+  <!-- ===== 能力：原版 RimWorld 能力，消耗职业资源（cost），不需要心灵链接 ===== -->
+  <AbilityDef Name="LP_ClassAbilityBase" Abstract="True">
+    <abilityClass>LichPhylactery.Ability_Class</abilityClass>
+    <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <sendMessageOnCooldownComplete>false</sendMessageOnCooldownComplete>
+    <showPsycastEffects>false</showPsycastEffects>
+    <aiCanUse>false</aiCanUse>
+    <hostile>false</hostile>
+  </AbilityDef>
+  <AbilityDef Name="LP_ClassSelfBase" ParentName="LP_ClassAbilityBase" Abstract="True">
+    <targetRequired>false</targetRequired>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>0</range><warmupTime>0.5</warmupTime><targetParams><canTargetSelf>true</canTargetSelf></targetParams></verbProperties>
+  </AbilityDef>
+  <AbilityDef Name="LP_ClassMeleeBase" ParentName="LP_ClassAbilityBase" Abstract="True">
+    <hostile>true</hostile>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>1.9</range><warmupTime>0.25</warmupTime><requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetAnimals>true</canTargetAnimals><canTargetMechs>true</canTargetMechs><canTargetHumans>true</canTargetHumans></targetParams></verbProperties>
+  </AbilityDef>
+
+  <!-- 战士 -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SecondWind</defName>
+    <label>回气</label>
+    <description>调匀呼吸，600刻内持续治疗自己的伤势，总量 20 × 战技强度，优先流血伤口。强度看战技强度与射术强度里较高的一项。战士 1 级。</description>
+    <iconPath>LP/Classes/Fighter/SecondWind</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>5000</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SecondWind</effect><cost>1</cost><power>20</power><stat>LP_MartialPower</stat><bestSkill>true</bestSkill></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_Charge</defName>
+    <label>冲锋</label>
+    <description>扑向 8 格内的一个敌人：跳到它身边，落地立刻用当前武器结算一次近战（必中，伤害 ×(1 + 0.3 × 战技强度)）；体型 1 以下的目标被撞倒（击晕 1 秒）。战士 1 级。</description>
+    <iconPath>LP/Classes/Fighter/Charge</iconPath>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><range>8</range><warmupTime>0.17</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Charge</effect><cost>1</cost><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SteadyAim</defName>
+    <label>稳固瞄准</label>
+    <description>沉下身子瞄准：15 秒内射击预热 ×0.5、远程命中 ×1.15，移动 ×0.5。战士 1 级（射击支）。</description>
+    <iconPath>LP/Classes/Fighter/SteadyAim</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><warmupTime>0.17</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><cost>1</cost><duration>900</duration><stat>LP_MarksmanPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BattleCry</defName>
+    <label>战吼</label>
+    <description>一声怒吼，半径 4 × 战技强度内的敌人被震慑 5 秒 × 战技强度：移动 ×0.7，命中下降。强度看战技强度与射术强度里较高的一项。战士 3 级。</description>
+    <iconPath>LP/Classes/Fighter/BattleCry</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>BattleCry</effect><cost>1</cost><radius>4</radius><radiusScales>true</radiusScales><duration>300</duration><durationScales>true</durationScales><stat>LP_MartialPower</stat><bestSkill>true</bestSkill></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAbilityBase">
+    <defName>LP_SuppressingFire</defName>
+    <label>压制射击</label>
+    <description>对一片区域倾泻火力：用当前武器的子弹连射 6 发（每 0.1 秒一发，落在目标点半径 3 内的随机格，伤害 ×0.5）；区域内的敌人被压制 6 秒：移动 ×0.6、远程命中 ×0.75。射程 = 当前武器射程，需要远程武器。战士 3 级（射击支）。</description>
+    <iconPath>LP/Classes/Fighter/SuppressingFire</iconPath>
+    <hostile>true</hostile>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>45</range><warmupTime>0.33</warmupTime><requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetBuildings>true</canTargetBuildings><canTargetLocations>true</canTargetLocations><canTargetSelf>false</canTargetSelf></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SuppressingFire</effect><cost>1</cost><radius>3</radius><stat>LP_MarksmanPower</stat><ranged>true</ranged></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_Trip</defName>
+    <label>绊摔</label>
+    <description>把身边的目标绊倒：击晕 1.5 秒 × 战技强度并击退 1 格；体型 2 以上的目标只被震慑不被击退。战士 5 级。</description>
+    <iconPath>LP/Classes/Fighter/Trip</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Trip</effect><cost>1</cost><duration>90</duration><durationScales>true</durationScales><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_ActionSurge</defName>
+    <label>动作如潮</label>
+    <description>10 秒 × 战技强度内近战冷却 ×0.6、射击冷却 ×0.6、移动 ×1.3。冷却 6 小时。战士 5 级。</description>
+    <iconPath>LP/Classes/Fighter/ActionSurge</iconPath>
+    <cooldownTicksRange>15000</cooldownTicksRange>
+    <verbProperties><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><cost>2</cost><duration>600</duration><durationScales>true</durationScales><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WeaponMastery</defName>
+    <label>武器专精</label>
+    <description>2 小时 × 战技强度内近战伤害提高 ×1.24 ～ ×1.45（随战技强度分档），远程武器的伤害也乘同一档系数。冷却 1 小时。战士 9 级。</description>
+    <iconPath>LP/Classes/Fighter/WeaponMastery</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><cost>2</cost><duration>5000</duration><durationScales>true</durationScales><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_Indomitable</defName>
+    <label>不屈意志</label>
+    <description>1 小时 × 战技强度内感觉不到疼痛、不会因疼痛倒地、免疫击晕，精神崩溃阈值 -15%。冷却 6 小时。战士 9 级。</description>
+    <iconPath>LP/Classes/Fighter/Indomitable</iconPath>
+    <cooldownTicksRange>15000</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><cost>2</cost><duration>2500</duration><durationScales>true</durationScales><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAbilityBase">
+    <defName>LP_PrecisionShot</defName>
+    <label>精准射击</label>
+    <description>立刻对一个敌人打出一发当前武器的子弹，必中，伤害 ×(1.5 + 0.5 × 射术强度)，穿甲 +30%。征召时多一个按钮切换模式：要害（只有上面的效果）/ 打腿（伤害 ×0.7，目标移动 ×0.5 持续 10 秒）/ 打手（伤害 ×0.5，有机会打落武器，成功率按敏捷和射术强度算，鼠标停在模式按钮上可以看到公式）。射程 = 当前武器射程，需要远程武器。战士 9 级（射击支）。</description>
+    <iconPath>LP/Classes/Fighter/PrecisionShot</iconPath>
+    <hostile>true</hostile>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>45</range><warmupTime>0.5</warmupTime><requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetAnimals>true</canTargetAnimals><canTargetMechs>true</canTargetMechs><canTargetHumans>true</canTargetHumans></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PrecisionShot</effect><cost>1</cost><stat>LP_MarksmanPower</stat><ranged>true</ranged></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_DisarmingStrike</defName>
+    <label>缴械击</label>
+    <description>对身边的敌人结算一次近战，然后试着打落它的武器（落到 2 格外）。成功率 = 50% + 10% ×（自己的力量调整值 + 熟练加值 − 目标的）+ 20% ×（战技强度 − 1），限 15%～90%；体型 2 以上再减半。没有冒险者等级的一方按调整值 0、熟练加值 +2 算。机械体、动物、没拿武器的只吃那一击。战士 13 级。</description>
+    <iconPath>LP/Classes/Fighter/DisarmingStrike</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>DisarmingStrike</effect><cost>1</cost><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_Whirlwind</defName>
+    <label>旋风斩</label>
+    <description>对相邻的所有敌人各结算一次当前近战武器的伤害（必中，伤害 × 战技强度；近战伤害系数、武器品质与 Isekai 的精炼/力量加成都算在内）。战士 13 级。</description>
+    <iconPath>LP/Classes/Fighter/Whirlwind</iconPath>
+    <hostile>true</hostile>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><warmupTime>0.33</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Whirlwind</effect><cost>2</cost><radius>1.5</radius><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_RapidFire</defName>
+    <label>连射</label>
+    <description>10 秒 × 射术强度内射击冷却 ×0.5；连发武器每轮多打 1 发。冷却 2 小时。战士 13 级（射击支）。</description>
+    <iconPath>LP/Classes/Fighter/RapidFire</iconPath>
+    <cooldownTicksRange>5000</cooldownTicksRange>
+    <verbProperties><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><cost>2</cost><duration>600</duration><durationScales>true</durationScales><stat>LP_MarksmanPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GuardStance</defName>
+    <label>守护姿态</label>
+    <description>30 秒 × 战技强度内护甲 +16% ～ +30%（随战技强度分档），移动 ×0.7；半径 3 内友军受到的伤害有 30% 转到自己身上。冷却 2 小时。战士 17 级。</description>
+    <iconPath>LP/Classes/Fighter/GuardStance</iconPath>
+    <cooldownTicksRange>5000</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><cost>2</cost><duration>1800</duration><durationScales>true</durationScales><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SurgeOfBattle</defName>
+    <label>战意再临</label>
+    <description>20 秒内近战冷却 ×0.5、近战伤害 ×1.5、免疫击晕；期间每次近战击杀让所有战士战技立刻冷却完毕。冷却 1 天。战士 20 级，并且格斗 18 级。</description>
+    <iconPath>LP/Classes/Fighter/SurgeOfBattle</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><cost>3</cost><duration>1200</duration><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DeadEye</defName>
+    <label>死神之眼</label>
+    <description>20 秒内远程必中、无视掩体，射击伤害 ×1.5；期间每次射杀敌人，所有战士战技立刻冷却完毕。冷却 1 天。战士 20 级，并且射击 18 级。</description>
+    <iconPath>LP/Classes/Fighter/DeadEye</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><cost>3</cost><duration>1200</duration><stat>LP_MarksmanPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- 武僧 -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_MartialArts</defName>
+    <label>武艺</label>
+    <description>被动：徒手（或拿短棍）时近战伤害 ×(1 + 0.5 × 战技强度)、近战冷却 ×0.85；不穿利器护甲 ≥ 40% 的衣服时近战闪避 +10% × 战技强度。拳脚走原版近战结算，Isekai 的力量、武器精通照常生效。武僧 1 级。</description>
+    <iconPath>LP/Classes/Monk/MartialArts</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_FlurryOfBlows</defName>
+    <label>疾风连击</label>
+    <description>对相邻目标连出 2 拳（战技强度 ≥ 125% 时 3 拳），每拳都是一次完整的近战结算（必中）。武僧 1 级。</description>
+    <iconPath>LP/Classes/Monk/FlurryOfBlows</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Flurry</effect><cost>1</cost><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DeflectMissiles</defName>
+    <label>拨挡箭矢</label>
+    <description>30 秒 × 战技强度：每发远程攻击的伤害减少 10 × 战技强度（× 心灵敏感度），减到 0 时整发拨开。武僧 3 级。</description>
+    <iconPath>LP/Classes/Monk/DeflectMissiles</iconPath>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Deflect</effect><cost>1</cost><power>10</power><duration>1800</duration><durationScales>true</durationScales><stat>LP_MartialPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_StunningStrike</defName>
+    <label>震慑拳</label>
+    <description>一拳并以气震荡对方：击晕 2 秒 × 战技强度（× 心灵敏感度；体型 2 以上减半），对机械体也有效。武僧 5 级。</description>
+    <iconPath>LP/Classes/Monk/StunningStrike</iconPath>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>StunningStrike</effect><cost>1</cost><stat>LP_MartialPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_StepOfTheWind</defName>
+    <label>乘风步</label>
+    <description>20 秒 × 战技强度：移动 ×1.6、近战闪避 +20%。武僧 9 级。</description>
+    <iconPath>LP/Classes/Monk/StepOfTheWind</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><cost>1</cost><duration>1200</duration><durationScales>true</durationScales><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_OpenHand</defName>
+    <label>开掌技</label>
+    <description>一拳把相邻目标击退 3 格（体型 2 以上 1 格）并打倒 1 秒；落点旁的其他敌人各受 6 × 战技强度 钝器伤害。武僧 9 级。</description>
+    <iconPath>LP/Classes/Monk/OpenHand</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>OpenHand</effect><cost>2</cost><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DiamondSoul</defName>
+    <label>金刚之躯</label>
+    <description>立刻治疗 20 × 战技强度（× 心灵敏感度），并解除食物中毒或清除 20% 毒素积累；之后 1 小时 × 战技强度 受到伤害 ×0.7、免疫击晕、精神崩溃阈值 −10%。武僧 13 级。</description>
+    <iconPath>LP/Classes/Monk/DiamondSoul</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>DiamondSoul</effect><cost>2</cost><power>20</power><duration>2500</duration><durationScales>true</durationScales><stat>LP_MartialPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_QuiveringPalm</defName>
+    <label>颤心掌</label>
+    <description>一拳在对方体内种下颤心，3 秒后爆发：躯干受 40 × 战技强度（× 心灵敏感度）钝器伤害（无视一半护甲）；巨人或体型 3 以上减半。武僧 17 级。</description>
+    <iconPath>LP/Classes/Monk/QuiveringPalm</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>QuiveringPalm</effect><cost>2</cost><power>40</power><stat>LP_MartialPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_EmptyBody</defName>
+    <label>空灵之身</label>
+    <description>30 秒 × 战技强度：隐身（敌人无法锁定）、受到伤害 ×0.5、每秒治疗 1 × 战技强度（× 心灵敏感度）。武僧 20 级，并且格斗 18 级。</description>
+    <iconPath>LP/Classes/Monk/EmptyBody</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PowerBuff</effect><cost>3</cost><power>1</power><duration>1800</duration><durationScales>true</durationScales><stat>LP_MartialPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+
+  <!-- 圣武士 -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DivineSmite</defName>
+    <label>至圣斩</label>
+    <description>10 秒内下一次近战命中额外造成 10 × 战技强度（× 心灵敏感度）神圣伤害，对亡灵、邪魔、夺心魔翻倍。武器那一下照常结算（Isekai 加成生效）。圣武士 1 级。</description>
+    <iconPath>LP/Classes/Paladin/DivineSmite</iconPath>
+    <cooldownTicksRange>900</cooldownTicksRange>
+    <verbProperties><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Smite</effect><cost>1</cost><power>10</power><duration>600</duration><stat>LP_MartialPower</stat><psychic>true</psychic><hediff>LP_SmiteReady</hediff></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAbilityBase">
+    <defName>LP_LayOnHands</defName>
+    <label>圣疗</label>
+    <description>触碰一名友军（或自己）治疗 25 × 神恩强度（× 心灵敏感度）；没有伤口时改为解除食物中毒或清除 30% 毒素积累。圣武士 1 级。</description>
+    <iconPath>LP/Classes/Paladin/LayOnHands</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>1.9</range><warmupTime>0.5</warmupTime><requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations><canTargetSelf>true</canTargetSelf><canTargetAnimals>true</canTargetAnimals><canTargetMechs>false</canTargetMechs><canTargetHumans>true</canTargetHumans></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LayOnHands</effect><cost>1</cost><power>25</power><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_VowOfEnmity</defName>
+    <label>誓仇</label>
+    <description>标记一个敌人 1 天：施法者对它造成的所有伤害 ×(1 + 0.25 × 战技强度)；它死后施法者心情 +5（誓仇得报）。圣武士 3 级。</description>
+    <iconPath>LP/Classes/Paladin/VowOfEnmity</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><range>20</range></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Vow</effect><cost>1</cost><duration>60000</duration><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AuraOfProtection</defName>
+    <label>守护灵光</label>
+    <description>被动：半径 5 内友军（含自己）受到的伤害 ×(1 − 0.1 × 神恩强度)（最低 ×0.8），精神崩溃阈值 −5%。多名圣武士不叠加，取最强。圣武士 5 级。</description>
+    <iconPath>LP/Classes/Paladin/AuraOfProtection</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SacredWeapon</defName>
+    <label>神圣武器</label>
+    <description>1 小时 × 战技强度：每次近战命中追加 4 × 战技强度（× 心灵敏感度）神圣伤害（对亡灵、邪魔、夺心魔翻倍）。圣武士 9 级。</description>
+    <iconPath>LP/Classes/Paladin/SacredWeapon</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Smite</effect><cost>2</cost><power>4</power><duration>2500</duration><durationScales>true</durationScales><stat>LP_MartialPower</stat><psychic>true</psychic><hediff>LP_SacredWeapon</hediff></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AuraOfCourage</defName>
+    <label>勇气灵光</label>
+    <description>被动：半径 5 内友军不会进入恐慌逃跑，并立即摆脱“震慑”。圣武士 9 级。</description>
+    <iconPath>LP/Classes/Paladin/AuraOfCourage</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAbilityBase">
+    <defName>LP_Intercept</defName>
+    <label>援护换位</label>
+    <description>与 12 × 战技强度 格内的一名友军瞬间换位，对方获得“受庇护”10 秒：受到伤害 ×0.5。圣武士 13 级。</description>
+    <iconPath>LP/Classes/Paladin/Intercept</iconPath>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>30</range><warmupTime>0</warmupTime><requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf><canTargetAnimals>true</canTargetAnimals><canTargetMechs>true</canTargetMechs><canTargetHumans>true</canTargetHumans></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Intercept</effect><cost>1</cost><range>12</range><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DispelEvil</defName>
+    <label>放逐邪恶</label>
+    <description>半径 5 × 神恩强度 内敌对的亡灵、邪魔、夺心魔各受 30 × 神恩强度（× 心灵敏感度）神圣伤害并击晕 2 秒；敌对的召唤物直接被驱散。圣武士 17 级。</description>
+    <iconPath>LP/Classes/Paladin/DispelEvil</iconPath>
+    <hostile>true</hostile>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><warmupTime>0.75</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>DispelEvil</effect><cost>2</cost><power>30</power><radius>5</radius><radiusScales>true</radiusScales><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_HolyAvatar</defName>
+    <label>圣光化身</label>
+    <description>30 秒 × 战技强度：半径 6 内的敌人每秒受 5 × 战技强度（× 心灵敏感度）神圣伤害（对亡灵、邪魔翻倍），友军每秒治疗它的 40%；自己免疫击晕与恐慌。圣武士 20 级，并且格斗 18 级。</description>
+    <iconPath>LP/Classes/Paladin/HolyAvatar</iconPath>
+    <cooldownTicksRange>180000</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PowerBuff</effect><cost>3</cost><power>5</power><duration>1800</duration><durationScales>true</durationScales><stat>LP_MartialPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+</Defs>

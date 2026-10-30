@@ -17,9 +17,9 @@ namespace LichPhylactery.VPEBridge {
     LichMod.Settings.dndWeaponsNeedArtificer=false;
     bool off=staff.PawnSatisfiesSkillRequirements(smith);
     LichMod.Settings.dndWeaponsNeedArtificer=true;
-    Learn(smith,Artificer.Workshop);
+    var ah=Adventurer.Get(smith)??Adventurer.TryAdd(smith,1,true);ClassSystem.SetLevel(ah,Artificer.Class,1); // 1.73.0：器械师 1 级（主程序集职业）
     bool learned=staff.PawnSatisfiesSkillRequirements(smith) && cudgel.PawnSatisfiesSkillRequirements(smith);
-    Check(blocked && off && learned,"nonlethal: a crafting/intellectual-20 pawn without 奥术工坊 cannot craft the sleep staff or cudgel; setting off allows it; learning 奥术工坊 unlocks both");
+    Check(blocked && off && learned,"nonlethal: a crafting/intellectual-20 pawn without the artificer class cannot craft the sleep staff or cudgel; setting off allows it; artificer level 1 unlocks both");
    }finally{LichMod.Settings.dndWeaponsNeedArtificer=setting;}
   }
  }

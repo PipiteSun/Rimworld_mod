@@ -25,7 +25,7 @@ namespace LichPhylactery.VPEBridge {
  }
  [StaticConstructorOnStartup]
  public static class Feats2VPE {
-  static Feats2VPE(){Feats2.InitiateHook=Initiate;Feats2.RitualResetHook=ResetLongest;Feats2.RitualCooldownHook=p=>Longest(p)!=null;}
+  static Feats2VPE(){Feats2.RitualResetHook=ResetLongest;Feats2.RitualCooldownHook=p=>Longest(p)!=null;} // 1.73.0：魔法学徒不再学 VPE 路径的第一个能力（职业都移到主程序集），一律给魔能飞弹
   // 魔法学徒：智识 → 法师，社交 → 牧师，种植 / 驯兽 → 德鲁伊（取最高的一项），学会该路径等级最低的能力。
   public static LP_ClassPathDef PathFor(Pawn p){
    int intel=Classes.Level(p,SkillDefOf.Intellectual),soc=Classes.Level(p,SkillDefOf.Social),nat=System.Math.Max(Classes.Level(p,SkillDefOf.Plants),Classes.Level(p,SkillDefOf.Animals));

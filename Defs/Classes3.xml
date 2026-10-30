@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.74.0 传奇职业能力：8 个职业各 2 个（1 主动 + 1 被动）。传奇冒险者 25 / 30 / 35 / 40 级各给 1 点传奇职业点，学一个要那个职业 9 级（同职业第二个 17 级）。
+     每学一个，那个职业的资源上限 +2。主动能力消耗 3（器械师不耗资源），冷却 1～3 天（神迹干预 30 天）。见 ArtSource/Classes-1.74.0-report.md。 -->
+<Defs>
+  <AbilityDef Name="LP_LegendaryBase" ParentName="LP_ClassSelfBase" Abstract="True">
+    <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+  </AbilityDef>
+
+  <!-- 战士 -->
+  <AbilityDef ParentName="LP_LegendaryBase">
+    <defName>LP_LegUnyielding</defName>
+    <label>不屈战魂</label>
+    <description>传奇被动：每天一次，本应倒下时不倒，立刻治好一半伤势，斗志回满。传奇战士。</description>
+    <iconPath>LP/Classes/Legendary/Unyielding</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_LegThousandArmies</defName>
+    <label>千军破</label>
+    <description>传奇：朝目标方向 90° 扇形横扫。拿近战武器时 5 格内每个敌人吃一次近战结算，伤害 ×3（必中）；拿远程武器时武器射程内每个敌人各中一发必中的子弹，伤害 ×3。冷却 1 天。传奇战士。</description>
+    <iconPath>LP/Classes/Legendary/ThousandArmies</iconPath>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><range>30</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ThousandArmies</effect><cost>3</cost><power>3</power><radius>5</radius><stat>LP_MartialPower</stat><bestSkill>true</bestSkill></li></comps>
+  </AbilityDef>
+
+  <!-- 武僧 -->
+  <AbilityDef ParentName="LP_LegendaryBase">
+    <defName>LP_LegFormless</defName>
+    <label>无相之身</label>
+    <description>传奇被动：近战闪避 +25%，免疫击晕。传奇武僧。</description>
+    <iconPath>LP/Classes/Legendary/Formless</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_LegHeavenPalm</defName>
+    <label>天震掌</label>
+    <description>传奇：一掌按在相邻敌人身上，先一次近战结算，再震伤躯干 80 × 战技强度（× 心灵敏感度）钝器伤害（无视八成护甲），并击晕 10 秒。传奇怪物和剧情首领有 50% 的成功率挣脱击晕。冷却 1 天。传奇武僧。</description>
+    <iconPath>LP/Classes/Legendary/HeavenPalm</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>HeavenPalm</effect><cost>3</cost><power>80</power><duration>600</duration><stat>LP_MartialPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+
+  <!-- 圣武士 -->
+  <AbilityDef ParentName="LP_LegendaryBase">
+    <defName>LP_LegDivineIncarnation</defName>
+    <label>神圣化身</label>
+    <description>传奇：30 秒内化身神圣之光：半径 8 内的敌人每秒受 10 × 神恩强度（× 心灵敏感度）神圣伤害（对亡灵、邪魔翻倍），友军每秒治疗它的一半，并且不会恐慌、不会精神崩溃。冷却 2 天。传奇圣武士。</description>
+    <iconPath>LP/Classes/Legendary/DivineIncarnation</iconPath>
+    <hostile>true</hostile>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PowerBuff</effect><cost>3</cost><power>10</power><duration>1800</duration><hediff>LP_LegDivineAura</hediff><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_LegendaryBase">
+    <defName>LP_LegUndyingOath</defName>
+    <label>誓约不灭</label>
+    <description>传奇被动：自己和 8 格内的友军所有豁免成功率 +10%。多名圣武士不叠加。传奇圣武士。</description>
+    <iconPath>LP/Classes/Legendary/UndyingOath</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- 法师 -->
+  <AbilityDef ParentName="LP_LegendaryBase">
+    <defName>LP_LegSpellMastery</defName>
+    <label>法术强效</label>
+    <description>传奇被动：用奥术强度的法术（法师全部、术士智识支）伤害与治疗 ×1.3；法师法术的法力消耗 −1（最少 1）。传奇法师。</description>
+    <iconPath>LP/Classes/Legendary/SpellMastery</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArcanePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_LegMeteorSwarm</defName>
+    <label>流星爆</label>
+    <description>传奇：30 格内一点、半径 4 里先后砸下 4 颗流星，每颗半径 2.5 的火焰爆炸，伤害 35 × 奥术强度（× 心灵敏感度）。冷却 1 天。传奇法师。</description>
+    <iconPath>LP/Classes/Legendary/MeteorSwarm</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><range>30</range><warmupTime>1.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>MeteorSwarm</effect><cost>3</cost><power>35</power><radius>4</radius><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+
+  <!-- 牧师 -->
+  <AbilityDef ParentName="LP_LegendaryBase">
+    <defName>LP_LegDivineIntervention</defName>
+    <label>神迹干预</label>
+    <description>传奇：向神明祈求神迹：本地图所有殖民者伤势全愈、疾病清除，死亡不超过 3 天的殖民者尸体复活（巫妖、死灵造物、没有大脑的除外）。冷却 30 天。传奇牧师。</description>
+    <iconPath>LP/Classes/Legendary/DivineIntervention</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1800000</cooldownTicksRange>
+    <verbProperties><warmupTime>3</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>DivineIntervention</effect><cost>3</cost><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_LegendaryBase">
+    <defName>LP_LegDivineGuardian</defName>
+    <label>神圣守护</label>
+    <description>传奇被动：神恩强度 +20%；复生术只消耗 2 神恩。传奇牧师。</description>
+    <iconPath>LP/Classes/Legendary/DivineGuardian</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- 德鲁伊 -->
+  <AbilityDef ParentName="LP_LegendaryBase">
+    <defName>LP_LegTimelessDruid</defName>
+    <label>永恒德鲁伊</label>
+    <description>传奇被动：成年后不再衰老；荒野变形不消耗法力。传奇德鲁伊。</description>
+    <iconPath>LP/Classes/Legendary/TimelessDruid</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PrimalPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_LegNatureWrath</defName>
+    <label>自然之怒</label>
+    <description>传奇：30 格内一点半径 6 掀起风暴：4 道落雷各劈一个敌人（没有敌人时劈在范围里），每道 30 × 生长强度（× 心灵敏感度）电击；范围里的敌人被藤蔓缠住 10 秒 × 生长强度。冷却 1 天。传奇德鲁伊。</description>
+    <iconPath>LP/Classes/Legendary/NatureWrath</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><range>30</range><warmupTime>1.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>NatureWrath</effect><cost>3</cost><power>30</power><radius>6</radius><duration>600</duration><durationScales>true</durationScales><stat>LP_VerdantPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+
+  <!-- 术士 -->
+  <AbilityDef ParentName="LP_LegendaryBase">
+    <defName>LP_LegBloodlineAwakening</defName>
+    <label>血脉觉醒</label>
+    <description>传奇被动：天赋强度 +20%；有术士血脉时，受到血脉对应元素的伤害 ×0.5（力能龙裔：力场；火元素裔、巨灵、坎比恩：火焰；水元素裔：冻伤；土元素裔、泰坦：钝器；风元素裔、风暴巨人、云巨人：闪电；六臂蛇人：利器）。传奇术士。</description>
+    <iconPath>LP/Classes/Legendary/BloodlineAwakening</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_InnatePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_LegendaryBase">
+    <defName>LP_LegArcaneSurge</defName>
+    <label>魔力奔流</label>
+    <description>传奇：接下来 1 天内的 3 个职业法术（消耗资源的能力）不消耗资源、不进冷却。冷却 2 天。传奇术士。</description>
+    <iconPath>LP/Classes/Legendary/ArcaneSurge</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ArcaneTorrent</effect><cost>3</cost><stat>LP_InnatePower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- 器械师 -->
+  <AbilityDef ParentName="LP_LegendaryBase">
+    <defName>LP_LegSoulforge</defName>
+    <label>魂铸</label>
+    <description>传奇被动：制作的 DND 武器（器械师门槛表里的那些）品质 +1，另有 10% 直接成为传说品质。传奇器械师。</description>
+    <iconPath>LP/Classes/Legendary/Soulforge</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_LegWarGolem</defName>
+    <label>战争傀儡</label>
+    <description>传奇：在 10 格内的空格子拼起一座符文战争傀儡炮台，存在 2 天：耐久 600，符文火铳的数值 × 2 × 器械强度。冷却 3 天。传奇器械师。</description>
+    <iconPath>LP/Classes/Legendary/WarGolem</iconPath>
+    <hostile>false</hostile>
+    <cooldownTicksRange>180000</cooldownTicksRange>
+    <verbProperties><range>9.9</range><warmupTime>2</warmupTime><targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WarGolem</effect><power>2</power><stat>LP_ArtificePower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===== 状态与建筑 ===== -->
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_LegDivineAura</defName>
+    <label>神圣化身</label>
+    <description>神圣之光加身：每秒灼伤周围的敌人、治疗周围的友军（严重度 = 每秒伤害），友军不会恐慌和精神崩溃。</description>
+    <defaultLabelColor>(1,0.95,0.7)</defaultLabelColor>
+    <maxSeverity>1000</maxSeverity>
+    <comps><li Class="LichPhylactery.HediffCompProperties_ClassAura"><interval>60</interval><radius>8</radius><damageEnemies>true</damageEnemies><healAllies>true</healAllies><healFactor>0.5</healFactor><allyHediff>LP_LegSanctified</allyHediff></li></comps>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_LegSanctified</defName>
+    <label>神圣庇护</label>
+    <description>在神圣化身的光里：不会恐慌，不会精神崩溃。</description>
+    <defaultLabelColor>(1,0.95,0.7)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_LegFormlessBuff</defName>
+    <label>无相之身</label>
+    <description>传奇武僧：近战闪避 +25%，免疫击晕。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <defaultLabelColor>(0.95,0.8,0.45)</defaultLabelColor>
+    <stages><li><statOffsets><MeleeDodgeChance>0.25</MeleeDodgeChance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_LegBloodlineAwake</defName>
+    <label>血脉觉醒</label>
+    <description>觉醒的术士血脉：受到血脉对应元素的伤害减半。</description>
+    <hediffClass>LichPhylactery.Hediff_BloodlineAwake</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <defaultLabelColor>(0.9,0.45,0.75)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_LegArcaneTorrent</defName>
+    <label>魔力奔流</label>
+    <description>接下来的职业法术不消耗资源、不进冷却（严重度 = 剩余次数）。</description>
+    <defaultLabelColor>(0.9,0.5,0.8)</defaultLabelColor>
+    <maxSeverity>10</maxSeverity>
+    <comps Inherit="False"><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>60000~60000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+  </HediffDef>
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_RuneWarGolem</defName>
+    <label>符文战争傀儡</label>
+    <description>传奇器械师拼起来的符文战争傀儡，装着一支加强的符文火铳。伤害随器械强度提高，2 天后散架。</description>
+    <thingClass>LichPhylactery.Building_RuneTurret</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <drawHighlight>true</drawHighlight>
+    <drawHighlightOnlyForHostile>true</drawHighlightOnlyForHostile>
+    <graphicData>
+      <texPath>Things/Building/Security/TurretMini_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3.6,3.6)</drawSize>
+      <color>(0.85,0.75,0.45)</color>
+      <damageData><rect>(0.2,0.2,0.6,0.6)</rect></damageData>
+      <shadowData><volume>(0.3,0.3,0.3)</volume></shadowData>
+    </graphicData>
+    <uiIconPath>Things/Building/Security/TurretMini_MenuIcon</uiIconPath>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>false</rotatable>
+    <statBases>
+      <MaxHitPoints>600</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <Beauty>0</Beauty>
+      <ShootingAccuracyTurret>0.98</ShootingAccuracyTurret>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Lifespan"><lifespanTicks>120000</lifespanTicks></li>
+    </comps>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <building>
+      <combatPower>90</combatPower>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>LP_RuneTurretGun</turretGunDef>
+      <turretBurstCooldownTime>2.4</turretBurstCooldownTime>
+      <claimable>false</claimable>
+      <deconstructible>false</deconstructible>
+      <isInert>false</isInert>
+    </building>
+  </ThingDef>
+</Defs>

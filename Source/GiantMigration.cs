@@ -336,10 +336,14 @@ namespace LichPhylactery {
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref camp,"camp");Scribe_Values.Look(ref exit,"exit");}
  }
 
- public class Letter_GiantMigration : ChoiceLetter {
+ public class Letter_GiantMigration : LP_EventLetter {
   public string kind;public GiantGroup group;
+  // 1.69.0 事件小人入口：讨食 / 预言等扎营队伍答复，想留下的巨人还没走。
+  protected override bool Live=>group!=null && GiantMigration.State?.migrations.Contains(group)==true && (kind=="food"?!group.answered && !group.left:kind=="prophet"?!group.stayAsked && !group.left:kind=="stay" && Here(group.stayer) && group.stayer.Faction!=Faction.OfPlayer && group.pawns.Contains(group.stayer));
+  protected override bool StateTracked=>kind!="stay";
+  public override IEnumerable<Thing> EventThings=>group==null?Enumerable.Empty<Thing>():kind=="stay"?new Thing[]{group.stayer}:kind=="prophet"?new Thing[]{GiantMigration.Prophet(group)}:group.Alive.Cast<Thing>();
   public override IEnumerable<DiaOption> Choices{get{
-   if(ArchivedOnly || group==null){yield return Option_Close;yield break;}
+   if(Closed || group==null){yield return Option_Close;yield break;}
    if(kind=="food"){
     float have=GiantMigration.StoredNutrition(group.map,GiantMigration.FineOnly(group)),meat=GiantMigration.StoredMeat(group.map);
     var give=Choice("给他们食物（营养值 "+group.need.ToString("0.#")+(group.meatNeed>0?"，另加生肉 "+group.meatNeed.ToString("0.#"):"")+"）",()=>GiantMigration.Feed(group));
@@ -355,7 +359,7 @@ namespace LichPhylactery {
    }
    yield return Option_Postpone;
   }}
-  DiaOption Choice(string text,Action act)=>new DiaOption(text){action=()=>{act?.Invoke();Find.LetterStack.RemoveLetter(this);},resolveTree=true};
+  DiaOption Choice(string text,Action act)=>new DiaOption(text){action=()=>{act?.Invoke();Resolve();},resolveTree=true};
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref kind,"kind");Scribe_Deep.Look(ref group,"lpGiantGroupCopy");
    // 信件里存的是同一个队伍的引用：读档后换成状态组件里的那一份。
    if(Scribe.mode==LoadSaveMode.PostLoadInit && group?.lord!=null){var live=GiantMigration.GroupOf(group.lord);if(live!=null)group=live;}

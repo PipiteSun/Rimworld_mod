@@ -39,7 +39,7 @@ namespace LichPhylactery {
   // 1.23.0：火巨人与龙体的生命加成改由巨躯规则放进 HealthScale（BodySize.cs），原版 GetMaxHealth 已含在内。
   // 这里的旧系数只在迁移时测量 1.22.1 的旧最大值（火巨人、龙体各×1.5，相乘，只取整一次）。
   // 1.48.0：冒险者等级与体质的部位生命成长也乘在这里（与巫妖强化、巨躯规则相乘，只取整一次）。
-  public static float WithoutReinforcement(BodyPartRecord part,Pawn pawn){float health=TemperingCompatibility.Apply(part.def.GetMaxHealth(pawn),part,pawn);float factor=BodySize.LegacyPartFactor(pawn)*Adventurer.PartHealthFactor(pawn)*Subraces.PartHealthFactor(pawn);return factor!=1f?Mathf.Ceil(health*factor):health;}
+  public static float WithoutReinforcement(BodyPartRecord part,Pawn pawn){float health=TemperingCompatibility.Apply(part.def.GetMaxHealth(pawn),part,pawn);float factor=BodySize.LegacyPartFactor(pawn)*Adventurer.PartHealthFactor(pawn)*Subraces.PartHealthFactor(pawn)*BeastLevels.PartHealthFactor(pawn);return factor!=1f?Mathf.Ceil(health*factor):health;}
   public static float Maximum(BodyPartRecord part,Pawn pawn){
    float original=WithoutReinforcement(part,pawn);
    var enhancements=pawn.health?.hediffSet?.hediffs;

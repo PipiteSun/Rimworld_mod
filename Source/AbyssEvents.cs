@@ -121,20 +121,23 @@ namespace LichPhylactery {
    return true;
   }
  }
- public class ChoiceLetter_AbyssWhisper : ChoiceLetter {
+ public class ChoiceLetter_AbyssWhisper : LP_EventLetter {
   public Pawn dreamer;public Thing book;
+  // 1.69.0 事件小人入口：做梦的殖民者还在、书还在（选中他或右键那本书）。
+  protected override bool Live=>book!=null && !book.Destroyed && dreamer!=null && !dreamer.Dead;
+  public override IEnumerable<Thing> EventThings{get{yield return dreamer;yield return book;}}
   public static void Keep(Pawn p,Thing b){AbyssTaint.Add(p,AbyssEvents.WhisperTaint,"深渊低语");}
   public static void Burn(Pawn p,Thing b){if(b!=null && !b.Destroyed)b.Destroy();var th=DefDatabase<ThoughtDef>.GetNamedSilentFail("LP_RejectedAbyss");if(th!=null)p?.needs?.mood?.thoughts?.memories?.TryGainMemory(th);}
   public static string CannotGive(){var f=Factions.Colony;return f==null?"没有费伦拓荒同盟":f.HostileTo(Faction.OfPlayer)?"费伦拓荒同盟和你敌对":null;}
   public static void Give(Thing b){if(b!=null && !b.Destroyed)b.Destroy();Factions.ChangeGoodwillExact(Factions.Colony,AbyssEvents.FactionGoodwill,"交出了一本恶魔学典籍");}
   public override IEnumerable<DiaOption> Choices{get{
-   if(ArchivedOnly || book==null || book.Destroyed){yield return Option_Close;yield break;}
+   if(Closed || book==null || book.Destroyed){yield return Option_Close;yield break;}
    yield return Choice("留下（"+dreamer?.LabelShort+"腐化 +5%）",()=>Keep(dreamer,book));
    yield return Choice("烧掉（心情 +3，3 天）",()=>Burn(dreamer,book));
    var give=Choice("交给费伦拓荒同盟（好感 +10）",()=>Give(book));var why=CannotGive();if(why!=null)give.Disable(why);yield return give;
    yield return Option_Postpone;
   }}
-  DiaOption Choice(string text,Action act)=>new DiaOption(text){action=()=>{act?.Invoke();Find.LetterStack.RemoveLetter(this);},resolveTree=true};
+  DiaOption Choice(string text,Action act)=>new DiaOption(text){action=()=>{act?.Invoke();Resolve();},resolveTree=true};
   public override void ExposeData(){base.ExposeData();Scribe_References.Look(ref dreamer,"lpDreamer");Scribe_References.Look(ref book,"lpBook");}
  }
  // 魅魔来访：看起来就是普通的流浪者加入。10～20 天后（或被魔鬼之眼 / 阿斯莫看到时）现形。
@@ -167,18 +170,22 @@ namespace LichPhylactery {
   }
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref revealTick,"lpReveal");Scribe_Deep.Look(ref dream,"lpDream");if(dream==null)dream=new DreamState();}
  }
- public class ChoiceLetter_SuccubusReveal : ChoiceLetter {
+ public class ChoiceLetter_SuccubusReveal : LP_EventLetter {
   public Pawn succubus;
+  // 1.69.0 事件小人入口：现形的魅魔还没处置（选中它）。
+  protected override bool Live=>succubus!=null && !succubus.Dead && !succubus.Destroyed && !Outsiders.Bound(succubus) && succubus.Faction?.IsPlayer==true;
+  protected override bool StateTracked=>true;
+  public override IEnumerable<Thing> EventThings{get{yield return succubus;}}
   public static string CannotBind(Pawn p){var map=p?.MapHeld;if(map==null || AbyssItems.AbyssCircle==null || !map.listerThings.ThingsOfDef(AbyssItems.AbyssCircle).Any())return "地图上没有深渊法阵";if(AbyssBinding.BoundCount()>=AbyssBinding.BoundCap())return "束缚者已满";return null;}
   public static void BindIt(Pawn p){var m=AbyssEvents.BestSocial(p.MapHeld);AbyssBinding.Bind(p,m,50f);AbyssBinding.SetLevel(p,8,true);}
   public static void Fight(Pawn p){AbyssBinding.BreakFree(p,"撕下了伪装");}
   public override IEnumerable<DiaOption> Choices{get{
-   var p=succubus;if(ArchivedOnly || p==null || p.Dead || p.Destroyed || Outsiders.Bound(p) || p.Faction?.IsPlayer!=true){yield return Option_Close;yield break;}
+   var p=succubus;if(Closed || p==null || p.Dead || p.Destroyed || Outsiders.Bound(p) || p.Faction?.IsPlayer!=true){yield return Option_Close;yield break;}
    var bind=Choice("束缚它（服从度 50，主人是社交最高的殖民者）",()=>BindIt(p));var why=CannotBind(p);if(why!=null)bind.Disable(why);yield return bind;
    yield return Choice("驱逐（它离开；和它最亲近的人心情 -8）",()=>AbyssEvents.Expel(p));
    yield return Choice("动手",()=>Fight(p));
   }}
-  DiaOption Choice(string text,Action act)=>new DiaOption(text){action=()=>{act?.Invoke();Find.LetterStack.RemoveLetter(this);},resolveTree=true};
+  DiaOption Choice(string text,Action act)=>new DiaOption(text){action=()=>{act?.Invoke();Resolve();},resolveTree=true};
   public override void ExposeData(){base.ExposeData();Scribe_References.Look(ref succubus,"lpSuccubus");}
  }
  // 深渊入侵：只由薄弱度触发（baseChance 0）。打开一道深渊裂口，按事件点数决定第 5 波有没有炎魔。

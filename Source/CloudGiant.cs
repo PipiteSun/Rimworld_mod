@@ -102,7 +102,7 @@ namespace LichPhylactery {
   public static Letter_CloudChoice OfferForEgg(Map map,Pawn buyer){
    var egg=EggOn(map);var f=Factions.Colony;if(egg==null || f==null || f.HostileTo(Faction.OfPlayer))return null;
    int price=Mathf.RoundToInt(egg.MarketValue*EggPriceFactor);
-   var l=CloudLetter("收购龙蛋","egg",map,f);l.egg=egg;l.price=price;l.lookTargets=new LookTargets(buyer!=null?(Thing)buyer:egg);
+   var l=CloudLetter("收购龙蛋","egg",map,f);l.egg=egg;l.price=price;l.pawn=buyer;l.lookTargets=new LookTargets(buyer!=null?(Thing)buyer:egg);
    l.Text=(buyer!=null?buyer.LabelShort+"（"+f.Name+"）":f.Name+"的商人")+"打听到殖民地有一枚力能龙蛋，愿意出"+price+"白银收购（龙蛋市值的两倍）。云巨人的宫廷最喜欢收藏这种稀世珍宝。\n\n接受：龙蛋交给他们，"+price+"白银放在龙蛋原来的位置。\n拒绝：没有后果。";
    Find.LetterStack.ReceiveLetter(l);return l;
   }
@@ -130,7 +130,7 @@ namespace LichPhylactery {
    GenSpawn.Spawn(p,entry,map);
    if(!RCellFinder.TryFindRandomSpotJustOutsideColony(p,out var chill))chill=CellFinder.RandomClosewalkCellNear(map.Center,map,10);
    LordMaker.MakeNewLord(c,new LordJob_VisitColony(c,chill,GenDate.TicksPerDay),map,new List<Pawn>{p});
-   var l=CloudLetter("上位者的使节","envoy",map,c);l.lookTargets=new LookTargets(p);
+   var l=CloudLetter("上位者的使节","envoy",map,c);l.lookTargets=new LookTargets(p);l.pawn=p;
    l.Text=c.Name+"派来了一位云巨人贵族"+p.LabelShort+"。他看着殖民地里的火巨人、霜巨人，慢条斯理地说：\n\n“巨人的阶序不会因为离开故土就消失。承认云巨人在你们之上，同盟就当你们是体面的邻居。”\n\n承认阶序：同盟好感 +"+EnvoyGoodwill+"；殖民地里的火巨人、霜巨人"+BowDays+"天“俯首”-3，之后永久“名列阶序”+2。\n拒绝："+c.Name+"好感 "+EnvoyRefuse+"，30天内同盟会来一次袭击（袭击结束后好感回到0，不会永久敌对）。";
    Find.LetterStack.ReceiveLetter(l);
    MaybeOfferForEgg(map,p);
@@ -339,10 +339,14 @@ namespace LichPhylactery {
   }
  }
 
- public class Letter_CloudChoice : ChoiceLetter {
-  public string kind;public Map map;public Thing egg;public int price;
+ public class Letter_CloudChoice : LP_EventLetter {
+  public string kind;public Map map;public Thing egg;public int price;public Pawn pawn;
+  // 1.69.0 事件小人入口：使节 / 买主还在地图上（没有买主的收购信两天内有效，也能右键龙蛋）。
+  public const int NoBuyerTicks=2*GenDate.TicksPerDay;
+  protected override bool Live=>kind=="egg"?egg!=null && !egg.Destroyed && egg.Spawned && (pawn!=null?Here(pawn):Find.TickManager.TicksGame-arrivalTick<NoBuyerTicks):kind=="envoy" && Here(pawn);
+  public override IEnumerable<Thing> EventThings{get{if(pawn!=null)yield return pawn;if(kind=="egg" && egg!=null)yield return egg;}}
   public override IEnumerable<DiaOption> Choices{get{
-   if(ArchivedOnly){yield return Option_Close;yield break;}
+   if(Closed){yield return Option_Close;yield break;}
    if(kind=="egg"){
     var sell=Choice("接受（"+price+"白银）",()=>CloudGiant.SellEgg(this));if(egg==null || egg.Destroyed || !egg.Spawned)sell.Disable("那枚龙蛋已经不在了");yield return sell;
     yield return Choice("拒绝",null);
@@ -352,8 +356,8 @@ namespace LichPhylactery {
    }
    yield return Option_Postpone;
   }}
-  DiaOption Choice(string text,Action act)=>new DiaOption(text){action=()=>{act?.Invoke();Find.LetterStack.RemoveLetter(this);},resolveTree=true};
-  public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref kind,"kind");Scribe_References.Look(ref map,"map");Scribe_References.Look(ref egg,"egg");Scribe_Values.Look(ref price,"price");}
+  DiaOption Choice(string text,Action act)=>new DiaOption(text){action=()=>{act?.Invoke();Resolve();},resolveTree=true};
+  public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref kind,"kind");Scribe_References.Look(ref map,"map");Scribe_References.Look(ref egg,"egg");Scribe_Values.Look(ref price,"price");Scribe_References.Look(ref pawn,"lpPawn");}
  }
  // 事件：收购龙蛋（开发者模式可手动触发；平时由访客、商队到达时 15% 触发）。
  public class IncidentWorker_CloudEggOffer : IncidentWorker {
