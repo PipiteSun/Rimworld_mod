@@ -33,12 +33,13 @@ namespace LichPhylactery {
    if(ClassSystem.CannotCast(pawn,def,Props)!=null)return false;
    ClassSystem.Pay(pawn,def,Props);
    bool ok=base.Activate(target,dest);
-   if(ok){ClassCasters.AfterCast(this);ClassLegendary.AfterCast(this);}
+   if(ok){ClassCasters.AfterCast(this);ClassLegendary.AfterCast(this);ClassSubclass.AfterCast(this);}
    return ok;
   }
   public override string Tooltip{get{
    var p=Props;var c=ClassSystem.ClassOf(def);string s=base.Tooltip;
    if(p==null || c==null)return s;
+   if(ClassSubclass.UsesMana(def) && !p.passive)return s+"\n\n消耗：法力 "+ClassLegendary.Cost(pawn,def,p)+"（现有 "+ClassSubclass.Mana(pawn).ToString("0.#")+"）\n强度："+ClassEffects.Strength(pawn,p).ToStringPercent(); // 诡术师
    return s+"\n\n"+(p.passive?"被动":c.resource==ClassResource.None || p.cost<=0?"不消耗资源（只看冷却）":"消耗："+ClassSystem.ResourceLabel(c.resource)+" "+ClassLegendary.Cost(pawn,def,p)+"（现有 "+ClassSystem.Resource(pawn,c).ToString("0.#")+"）"+(ClassSystem.FreeCast(pawn,p)?"，魔涌中免费":""))+"\n强度："+ClassEffects.Strength(pawn,p).ToStringPercent();
   }}
  }
@@ -56,7 +57,7 @@ namespace LichPhylactery {
  public static class ClassEffects {
   public static readonly Color MartialColor=new Color(.95f,.6f,.4f);
   public static float Strength(Pawn p,CompProperties_ClassEffect e)=>ClassSystem.Strength(p,e);
-  public static float Power(Pawn p,CompProperties_ClassEffect e)=>e.power*Strength(p,e)*(e.sorcery && Items.Has(p,"LP_Empowered")?1.5f:1f)*ClassLegendary.PowerFactor(p,e); // 1.73.0 超魔·强效；1.74.0 法术强效 ×1.3
+  public static float Power(Pawn p,CompProperties_ClassEffect e)=>e.power*Strength(p,e)*(e.sorcery && Items.Has(p,"LP_Empowered")?1.5f:1f)*ClassLegendary.PowerFactor(p,e)*Warlock.PowerFactor(p,e); // 1.73.0 超魔·强效；1.74.0 法术强效 ×1.3；邪术师（宗主化身、邪魔 + 契约）
   public static int Duration(Pawn p,CompProperties_ClassEffect e)=>Mathf.RoundToInt(e.duration*(e.durationScales?ClassSystem.StatValue(p,e):1f));
   public static float Radius(Pawn p,CompProperties_ClassEffect e)=>e.radius*(e.radiusScales?ClassSystem.StatValue(p,e):1f);
   static bool Hostile(Pawn caster,Pawn t)=>t!=null && t!=caster && !t.Dead && t.HostileTo(caster);
@@ -77,7 +78,7 @@ namespace LichPhylactery {
      if(t.HostileTo(caster))return "只能对友军使用。";
      break;
    }
-   var cw=ClassCasters.Invalid(caster,e,target)??ClassLegendary.Invalid(caster,e,target);if(cw!=null)return cw; // 1.73.0 施法职业；1.74.0 传奇
+   var cw=ClassCasters.Invalid(caster,e,target)??ClassLegendary.Invalid(caster,e,target)??ClassMartial2.Invalid(caster,e,target)??ClassSubclass.Invalid(caster,e,target)??Warlock.Invalid(caster,e,target);if(cw!=null)return cw; // 1.73.0 施法职业；1.74.0 传奇；新职业；子职业；邪术师
    if(e.ranged){var v=Martial.RangedVerb(caster);if(v?.Projectile==null)return "需要远程武器。";if(target.Cell.IsValid && caster.Position.DistanceTo(target.Cell)>v.EffectiveRange)return "超出当前武器的射程（"+v.EffectiveRange.ToString("0")+" 格）。";}
    switch(e.effect){
     case "Charge":if(!t.Position.AdjacentTo8WayOrInside(caster.Position) && !Charge.LandingCell(caster,t).IsValid)return "目标身边没有能落脚的格子。";break;
@@ -118,6 +119,9 @@ namespace LichPhylactery {
    }
    if(ClassCasters.Apply(p,def,e,target))return; // 1.73.0 施法职业
    if(ClassLegendary.Apply(p,def,e,target))return; // 1.74.0 传奇职业能力
+   if(ClassMartial2.Apply(p,def,e,target))return; // 野蛮人、游侠、游荡者
+   if(ClassSubclass.Apply(p,def,e,target))return; // 子职业与通用能力
+   if(Warlock.Apply(p,def,e,target))return; // 邪术师
    Log.ErrorOnce("[DND边缘大陆] 未知的职业能力效果："+e.effect,e.effect?.GetHashCode()??0);
   }
   public static int BattleCry(Pawn p,float radius,int ticks,float s){
@@ -181,12 +185,14 @@ namespace LichPhylactery {
    if(caster?.Map==null || t==null || t.Dead)return false;
    if(t.Position.AdjacentTo8WayOrInside(caster.Position)){Land(caster,t,factor);return true;}
    var cell=LandingCell(caster,t);if(!cell.IsValid)return false;
+   // MakeFlyer 会把施法者从地图上拿走，之后 caster.Map 是 null：地图和起点要先记下来，否则飞行物生成失败、人就没了。
+   var map=caster.Map;var origin=caster.Position;
+   Items.Mote(caster,"冲锋",ClassEffects.MartialColor);
    var def=DefDatabase<ThingDef>.GetNamedSilentFail("LP_ChargeFlyer");
    var flyer=def==null?null:PawnFlyer.MakeFlyer(def,caster,cell,null,null) as LP_ChargeFlyer;
-   if(flyer==null){Races124.Blink(caster,cell);Land(caster,t,factor);return true;}
+   if(flyer==null){if(!caster.Spawned)GenSpawn.Spawn(caster,origin,map);Races124.Blink(caster,cell);Land(caster,t,factor);return true;}
    flyer.target=t;flyer.factor=factor;
-   GenSpawn.Spawn(flyer,cell,caster.Map);
-   Items.Mote(caster,"冲锋",ClassEffects.MartialColor);
+   GenSpawn.Spawn(flyer,origin,map);
    return true;
   }
   public static bool Land(Pawn caster,Pawn t,float factor){

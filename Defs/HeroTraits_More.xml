@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.79.0 新增强力特性：6 个蓝色（稀有）、5 个紫色（史诗）进强力特性的“紫色”池（HeroTraits.Choices KindPurple），4 个红色诅咒之力进诅咒池（DndTraits.AddCurseChoices）。
+     规则和原来一样：commonality 0，生成后缀里自己掷；占强力特性名额（每人最多“每人最多强力特性”个）；诅咒之间用 LP_Curse 互斥；名字颜色按稀有度表（TraitRarityExt）。
+     数值写在描述里，规则在代码里（Source/HeroTraitsMore.cs）；纯属性的直接写 statOffsets / statFactors，六维 / 传奇倍率走 LP_AdventurerAffinityExt。 -->
+<Defs>
+
+  <!-- ==================== 蓝色（稀有） ==================== -->
+  <TraitDef>
+    <defName>LP_Artisan</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>巧匠之手</color>]]></label>
+        <description>{PAWN_nameDef}的手好像天生就知道该怎么用工具。\n\n- 全局工作速度 +10%\n- 传奇属性“工作”每点收益 ×1.5（与种族亲和取较大，不相乘）</description>
+        <statOffsets><WorkSpeedGlobal>0.1</WorkSpeedGlobal></statOffsets>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>强力特性</kind></li>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><strongLegend><li>工作</li></strongLegend></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Fleetfoot</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>疾风之足</color>]]></label>
+        <description>{PAWN_nameDef}跑起来像一阵风。\n\n- 移动速度 +0.4\n- 近战闪避 +10</description>
+        <statOffsets><MoveSpeed>0.4</MoveSpeed><MeleeDodgeChance>10</MeleeDodgeChance></statOffsets>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>强力特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_IronWill</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>钢铁意志</color>]]></label>
+        <description>{PAWN_nameDef}的意志像铁一样硬，什么都压不垮。\n\n- 精神崩溃阈值 -8%\n- 心智抗性 +30%</description>
+        <statOffsets><MentalBreakThreshold>-0.08</MentalBreakThreshold><LP_MindResist>0.3</LP_MindResist></statOffsets>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>强力特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Silvertongue</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>银舌</color>]]></label>
+        <description>{PAWN_nameDef}一开口，石头都能被说动。\n\n- 谈判能力 ×1.3、社交影响 ×1.3\n- 魅力上限 +2</description>
+        <statFactors><NegotiationAbility>1.3</NegotiationAbility><SocialImpact>1.3</SocialImpact></statFactors>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>强力特性</kind></li>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><capHigherOf><li>魅力</li></capHigherOf><capHigherBonus>2</capHigherBonus></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Hardy</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>荒野之躯</color>]]></label>
+        <description>{PAWN_nameDef}在荒野里摸爬滚打长大，什么苦都吃过。\n\n- 免疫获得速度 ×1.2\n- 伤口愈合速度 ×1.3\n- 毒素抗性 +25%\n- 舒适温度范围两头各放宽 10°C</description>
+        <statOffsets><ToxicResistance>0.25</ToxicResistance><ComfyTemperatureMin>-10</ComfyTemperatureMin><ComfyTemperatureMax>10</ComfyTemperatureMax></statOffsets>
+        <statFactors><ImmunityGainSpeed>1.2</ImmunityGainSpeed><InjuryHealingFactor>1.3</InjuryHealingFactor></statFactors>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>强力特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_EagleEyed</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>远瞳</color>]]></label>
+        <description>{PAWN_nameDef}能看清别人只看得到一个黑点的东西。\n\n- 射击精度 +6\n- 瞄准时间 ×0.85</description>
+        <statOffsets><ShootingAccuracyPawn>6</ShootingAccuracyPawn></statOffsets>
+        <statFactors><AimingDelayFactor>0.85</AimingDelayFactor></statFactors>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>强力特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <!-- ==================== 紫色（史诗） ==================== -->
+  <TraitDef>
+    <defName>LP_Prodigy</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#B070E0>神童</color>]]></label>
+        <description>{PAWN_nameDef}学什么都比别人快一大截。\n\n- 技能学习速度 ×1.5\n- 传奇属性“学习”“工作”每点收益 ×1.5（与种族亲和取较大，不相乘）\n- 智力上限 +2</description>
+        <statFactors><GlobalLearningFactor>1.5</GlobalLearningFactor></statFactors>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Epic</tier><kind>强力特性</kind></li>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><strongLegend><li>学习</li><li>工作</li></strongLegend><capHigherOf><li>智力</li></capHigherOf><capHigherBonus>2</capHigherBonus></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Unyielding</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#B070E0>百折不挠</color>]]></label>
+        <description>{PAWN_nameDef}好几次都该死了，可每次都又爬了起来。\n\n- 致命伤改为倒地幸存，伤口止血（冷却 10 天，处决和手术不算）\n- 和命运之恩、命运未尽不会同一次触发：它们先判\n- 疼痛休克阈值 +10%</description>
+        <statOffsets><PainShockThreshold>0.1</PainShockThreshold></statOffsets>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Epic</tier><kind>强力特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Juggernaut</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#B070E0>万夫莫敌</color>]]></label>
+        <description>{PAWN_nameDef}挨刀子就像挨了一拳。\n\n- 受到的伤害 ×0.85\n- 疼痛休克阈值 +15%\n- 传奇属性“血量”每点收益 ×1.5（与种族亲和取较大，不相乘）</description>
+        <statOffsets><PainShockThreshold>0.15</PainShockThreshold></statOffsets>
+        <statFactors><IncomingDamageFactor>0.85</IncomingDamageFactor></statFactors>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Epic</tier><kind>强力特性</kind></li>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><strongLegend><li>血量</li></strongLegend></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Spellblood</defName>
+    <commonality>0</commonality>
+    <conflictingTraits><li>LP_SpellWarded</li></conflictingTraits>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#B070E0>魔裔之血</color>]]></label>
+        <description>{PAWN_nameDef}的祖上和某种魔法生物通过婚，魔网在{PAWN_possessive}血里流淌。\n\n- 心灵敏感度 +25%\n- 心灵熵恢复速度 ×1.3\n- 传奇属性“心灵”每点收益 ×2（与种族亲和取较大，不相乘）\n- 不会和法术抗体同时出现</description>
+        <statOffsets><PsychicSensitivity>0.25</PsychicSensitivity></statOffsets>
+        <statFactors><PsychicEntropyRecoveryRate>1.3</PsychicEntropyRecoveryRate></statFactors>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Epic</tier><kind>强力特性</kind></li>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><strongLegend><li>心灵</li></strongLegend><legendStrongFactor>2</legendStrongFactor></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Executioner</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#B070E0>处刑者</color>]]></label>
+        <description>{PAWN_nameDef}看得出谁已经撑不住了，下手从不留情。\n\n- 对倒地、或者总体健康低于 30% 的敌人伤害 +50%\n- 亲手击杀敌人后 1 小时内近战与射击命中 +10%「乘胜追击」</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Epic</tier><kind>强力特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <!-- ==================== 诅咒之力（红色，占强力特性名额） ==================== -->
+  <TraitDef>
+    <defName>LP_Vampirism</defName>
+    <commonality>0</commonality>
+    <exclusionTags><li>LP_Curse</li></exclusionTags>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#D05050>吸血鬼之咒</color>]]></label>
+        <description>{PAWN_nameDef}被吸血鬼咬过，没死，可也不再完全是活人了。\n\n- 近战伤害 ×1.3，移动速度 +0.3\n- 伤口愈合速度 ×2\n- 近战命中时吸血，回复 2 点伤势\n- 代价：白天待在没有屋顶的地方会「日光灼身」——移动 -15%、意识 -10%，每小时受到 1 点烧伤；进屋或天黑就消退</description>
+        <statOffsets><MoveSpeed>0.3</MoveSpeed></statOffsets>
+        <statFactors><MeleeDamageFactor>1.3</MeleeDamageFactor><InjuryHealingFactor>2</InjuryHealingFactor></statFactors>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Epic</tier><kind>诅咒之力</kind><mark>Curse</mark></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Doomed</defName>
+    <commonality>0</commonality>
+    <exclusionTags><li>LP_Curse</li></exclusionTags>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#D05050>厄运缠身</color>]]></label>
+        <description>一个女巫在临死前诅咒了{PAWN_nameDef}。厄运一直跟着{PAWN_objective}，有时也会扑向别人。\n\n- 近战闪避 +15\n- 被敌人打中时 15% 的几率「厄运转嫁」：攻击者也受到这次伤害的一半\n- 代价：平均每 8 天一次厄运降临——身上一件衣甲耐久 -30%，心情 -5「厄运缠身」（2 天）</description>
+        <statOffsets><MeleeDodgeChance>15</MeleeDodgeChance></statOffsets>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>诅咒之力</kind><mark>Curse</mark></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Hollow</defName>
+    <commonality>0</commonality>
+    <exclusionTags><li>LP_Curse</li></exclusionTags>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#D05050>空心之人</color>]]></label>
+        <description>{PAWN_nameDef}的一半灵魂被什么东西吃掉了，剩下的那一半很平静——平静得吓人。\n\n- 精神崩溃阈值 -15%\n- 疼痛休克阈值 +20%\n- 心智抗性 +50%\n- 代价：社交影响 ×0.5、技能学习速度 ×0.8、心灵敏感度 -30%、外貌 -1（别人看着发怵）</description>
+        <statOffsets><MentalBreakThreshold>-0.15</MentalBreakThreshold><PainShockThreshold>0.2</PainShockThreshold><LP_MindResist>0.5</LP_MindResist><PsychicSensitivity>-0.3</PsychicSensitivity><PawnBeauty>-1</PawnBeauty></statOffsets>
+        <statFactors><SocialImpact>0.5</SocialImpact><GlobalLearningFactor>0.8</GlobalLearningFactor></statFactors>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>诅咒之力</kind><mark>Curse</mark></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_Hellbrand</defName>
+    <commonality>0</commonality>
+    <exclusionTags><li>LP_Curse</li></exclusionTags>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#D05050>狱火烙印</color>]]></label>
+        <description>{PAWN_nameDef}的胸口有一个九狱魔鬼留下的烙印，到现在还是烫的。\n\n- 武器命中额外造成 4 点火焰伤害\n- 受到的火焰类伤害 -75%\n- 舒适温度上限 +40°C\n- 代价：受到的寒冷类伤害 +50%；精神崩溃阈值 +5%；平均每 12 天一次魔鬼来索债，心情 -8「狱火索债」（3 天）</description>
+        <statOffsets><ComfyTemperatureMax>40</ComfyTemperatureMax><MentalBreakThreshold>0.05</MentalBreakThreshold></statOffsets>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Epic</tier><kind>诅咒之力</kind><mark>Curse</mark></li>
+    </modExtensions>
+  </TraitDef>
+
+  <!-- ==================== 状态 ==================== -->
+  <HediffDef>
+    <defName>LP_MT_UnyieldingSpent</defName>
+    <label>百折不挠（冷却）</label>
+    <description>刚从鬼门关爬回来，下一次就没这么走运了：冷却结束前百折不挠不会再救命。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <defaultLabelColor>(0.69,0.44,0.88)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>600000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_MT_Momentum</defName>
+    <label>乘胜追击</label>
+    <description>刚刚亲手了结了一个敌人，手感正热：近战与射击命中 +10%。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <defaultLabelColor>(0.69,0.44,0.88)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>2500</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><statFactors><MeleeHitChance>1.1</MeleeHitChance><ShootingAccuracyPawn>1.1</ShootingAccuracyPawn></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_MT_Sunburn</defName>
+    <label>日光灼身</label>
+    <description>吸血鬼之咒：阳光像针一样扎在皮肤上。移动 -15%、意识 -10%，每小时受到 1 点烧伤。进屋或天黑就消退。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.82,0.31,0.31)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>300</disappearsAfterTicks><showRemainingTime>false</showRemainingTime></li></comps>
+    <stages><li><capMods><li><capacity>Moving</capacity><offset>-0.15</offset></li><li><capacity>Consciousness</capacity><offset>-0.1</offset></li></capMods></li></stages>
+  </HediffDef>
+
+  <!-- ==================== 心情 ==================== -->
+  <ThoughtDef>
+    <defName>LP_MT_Doom</defName>
+    <durationDays>2</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>厄运缠身</label><description>又出事了。那个女巫的话一直在我耳边。</description><baseMoodEffect>-5</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_MT_HellDebt</defName>
+    <durationDays>3</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>狱火索债</label><description>烙印又烫起来了。那个魔鬼在提醒我，我还欠着它。</description><baseMoodEffect>-8</baseMoodEffect></li></stages>
+  </ThoughtDef>
+</Defs>

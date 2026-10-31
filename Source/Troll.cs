@@ -207,8 +207,19 @@ namespace LichPhylactery {
   }
   public override void ExposeData(){
    if(Scribe.mode==LoadSaveMode.Saving)pending.RemoveAll(p=>p==null || p.Discarded || p.Corpse==null || p.Corpse.Destroyed || Troll.Gene(p)?.reviveTick<0);
-   Scribe_Collections.Look(ref pending,"trollRevivals",LookMode.Reference);
+   // 1.82.0 热修：死去的小人在原版里算“已销毁”，不带 saveDestroyedThings 时引用会被存成 null，读档后待复活列表就空了，尸体永远停在“0.0小时后复活”。
+   Scribe_Collections.Look(ref pending,"trollRevivals",true,LookMode.Reference);
    if(Scribe.mode==LoadSaveMode.PostLoadInit)pending=pending?.Where(p=>p!=null).Distinct().ToList()??new List<Pawn>();
+  }
+  // 旧存档里已经丢失的条目：读档时从各地图（含棺材、货架等容器里）的尸体找回仍在计时的巨魔。
+  public override void LoadedGame(){base.LoadedGame();Rescan();}
+  public int Rescan(){
+   int found=0;var corpses=new List<Thing>();
+   foreach(var map in Find.Maps){
+    corpses.Clear();ThingOwnerUtility.GetAllThingsRecursively(map,ThingRequest.ForGroup(ThingRequestGroup.Corpse),corpses);
+    foreach(var t in corpses){var p=(t as Corpse)?.InnerPawn;if(p!=null && Troll.Gene(p)?.reviveTick>=0 && !pending.Contains(p)){pending.Add(p);found++;}}
+   }
+   return found;
   }
  }
  [HarmonyPatch(typeof(Pawn_HealthTracker),nameof(Pawn_HealthTracker.PostApplyDamage))]

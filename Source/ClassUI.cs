@@ -17,7 +17,7 @@ namespace LichPhylactery {
    float y=0f;int pts=ClassSystem.Points(h);
    {var r=new Rect(0f,y,w-130f,26f);if(pts<=0)GUI.color=Color.gray;
     Widgets.Label(new Rect(r.x,r.y+3f,r.width,24f),"职业点：可用 "+pts+"　已用 "+ClassSystem.Total(h)+" / "+ClassSystem.Budget(h)+(ClassLegendary.Points(h)>0?"　传奇职业点 "+ClassLegendary.Points(h):"")+(h.classes.freeUnlocks>0?"　（冒险者手册：下一个职业跳过门槛）":""));GUI.color=Color.white;
-    TooltipHandler.TipRegion(r,"每个冒险者等级 1 点职业点（传奇等级 21～40 不给），职业等级总和不超过冒险者等级（最多 20）。\n第一个职业：主或副技能 "+ClassSystem.FirstSkill+" 级（或主属性 "+ClassSystem.ScoreGate+"）。\n兼修（最多 "+ClassSystem.MaxClasses+" 个）：冒险者 "+ClassSystem.MultiAdventurerLevel+" 级，且那门技能 "+ClassSystem.MultiSkill+" 级（或主属性 "+ClassSystem.ScoreGate+"）。\n能力在职业等级 1 / 3 / 5 / 9 / 13 / 17 / 20 自动获得；20 级的终极另要那门技能 "+ClassSystem.CapstoneSkill+" 级。");
+    TooltipHandler.TipRegion(r,"每个冒险者等级 1 点职业点（传奇等级 21～40 不给），职业等级总和不超过冒险者等级（最多 20）。\n第一个职业：主或副技能 "+ClassSystem.FirstSkill+" 级（或主属性 "+ClassSystem.ScoreGate+"）。\n兼修（最多 "+ClassSystem.MaxClasses+" 个）：冒险者 "+ClassSystem.MultiAdventurerLevel+" 级，且那门技能 "+ClassSystem.MultiSkill+" 级（或主属性 "+ClassSystem.ScoreGate+"）。\n能力在职业等级 "+string.Join(" / ",ClassSystem.AbilityLevels)+" 自动获得（邪术师的秘法奥秘在 11 / 13）；"+ClassSystem.AbilityLevels[ClassSystem.AbilityLevels.Length-1]+" 级的终极另要那门技能 "+ClassSystem.CapstoneSkill+" 级。");
     if(own && pts>0 && Widgets.ButtonText(new Rect(w-124f,y,124f,26f),"选择职业"))Find.WindowStack.Add(new Dialog_ChooseClass(p));}
    y+=30f;
    foreach(var c in ClassSystem.All)y=DrawClass(y,w,p,h,c,own,pts);
@@ -27,19 +27,21 @@ namespace LichPhylactery {
    int lv=ClassSystem.Level(h,c);string why=ClassSystem.CanAdd(h,c);
    var head=new Rect(0f,y,w,28f);Widgets.DrawLightHighlight(head);
    GUI.color=lv>0?c.color:Color.gray;Text.Font=GameFont.Medium;Widgets.Label(new Rect(4f,y,200f,30f),c.LabelCap+(lv>0?" Lv "+lv:""));Text.Font=GameFont.Small;GUI.color=Color.white;
-   TooltipHandler.TipRegion(new Rect(0f,y,200f,28f),c.LabelCap+"\n\n"+c.description);
+   {var nr=new Rect(0f,y,200f,28f);if(Mouse.IsOver(nr))TooltipHandler.TipRegion(nr,ClassLevelInfo.ClassTip(p,h,c));} // 1.89.0 每级表与下一级获得（原 1.81.0 热修2 / 热修3 的成长说明并入）
    if(lv>0){
     float cur=ClassSystem.Resource(h,c);int max=ClassSystem.MaxResource(h,c);
     var br=new Rect(200f,y+6f,180f,18f);Widgets.FillableBar(br,max<=0?0f:cur/max,Bar(c.color));
     Text.Anchor=TextAnchor.MiddleCenter;Text.Font=GameFont.Tiny;Widgets.Label(br,ClassSystem.ResourceLabel(c.resource)+" "+cur.ToString("0.#")+" / "+max);Text.Anchor=TextAnchor.UpperLeft;Text.Font=GameFont.Small;
-    Widgets.DrawHighlightIfMouseover(br);TooltipHandler.TipRegion(br,ClassSystem.ResourceTip(c)+"\n上限 = 2 + 职业等级 / 2（四舍五入）。");
+    Widgets.DrawHighlightIfMouseover(br);if(Mouse.IsOver(br))TooltipHandler.TipRegion(br,ClassLevelInfo.ResourceTip(h,c)); // 1.89.0 每种资源的真实上限公式
    }else{GUI.color=Color.gray;Text.Font=GameFont.Tiny;Widgets.Label(new Rect(200f,y+7f,w-320f,20f),(why??"可以学习").Truncate(w-320f));Text.Font=GameFont.Small;GUI.color=Color.white;if(why!=null)TooltipHandler.TipRegion(new Rect(200f,y,w-320f,28f),why);}
    if(own && pts>0){
     var b=new Rect(w-110f,y+1f,106f,26f);bool ok=why==null;string key=c.defName;
-    if(Widgets.ButtonText(b,armed==key?"确定？":lv>0?"+1 级":"学习",active:ok) && ok){if(armed==key){armed=null;ClassSystem.AddLevel(h,c,true);}else armed=key;}
+    if(Widgets.ButtonText(b,armed==key?"确定？":lv>0?"+1 级":"学习",active:ok) && ok){if(armed==key){armed=null;ClassLevelInfo.AddLevel(h,c);}else armed=key;}
     TooltipHandler.TipRegion(b,ok?(armed==key?"再点一次确认":"点两次确认："+c.label+" "+(lv+1)+" 级"):why);
    }
-   y+=32f;
+   y+=30f;
+   // 1.89.0 直显：部位生命与职业强度，现在 → 下一级。
+   {string line=ClassLevelInfo.RowLine(p,h,c);if(line!=null){Text.Font=GameFont.Tiny;var lr=new Rect(4f,y,w-8f,Mathf.Max(18f,Text.CalcHeight(line,w-8f)));GUI.color=lv>0?new Color(.85f,.85f,.85f):Color.gray;Widgets.Label(lr,line);GUI.color=Color.white;Text.Font=GameFont.Small;if(Mouse.IsOver(lr))TooltipHandler.TipRegion(lr,"“下一级”是在这个职业再加 1 级之后的值（悬停职业名看每级表）。");y+=lr.height+2f;}else y+=2f;}
    // 能力树：按获得等级分行，每行最多 4 个。
    var rows=new List<List<ClassAbilityEntry>>();
    foreach(var g in c.abilities.GroupBy(e=>e.level).OrderBy(g=>g.Key)){var l=g.ToList();for(int i=0;i<l.Count;i+=4)rows.Add(l.Skip(i).Take(4).ToList());}
@@ -66,6 +68,7 @@ namespace LichPhylactery {
     ry+=rowH;
    }
    y+=treeH+4f;
+   if(lv>0)y=ClassSubclass.DrawRow(y,w,p,h,c,own); // 子职业行
    if(lv>0 && c.legendary.Count>0)y=DrawLegendRow(y,w,p,h,c,own);
    return y+4f;
   }

@@ -32,7 +32,7 @@ namespace LichPhylactery {
   Pawn Shown=>SelPawn??(SelThing as Corpse)?.InnerPawn;
   public override bool IsVisible=>Adventurer.Enabled && Adventurer.Get(Shown)!=null;
   Vector2 scroll;float contentH=600f;
-  public static int page; // 1.72.0：0 = 冒险者，1 = 职业
+  public static int page; // 1.72.0：0 = 冒险者，1 = 职业；2026-10-30：2 = 属性
   static Texture2D greyBar;static Texture2D GreyBar=>greyBar??(greyBar=SolidColorMaterials.NewSolidColorTexture(new Color(.35f,.35f,.35f)));
   static readonly Color Gold=new Color(1f,.82f,.35f);
   const float Row=26f;
@@ -72,15 +72,15 @@ namespace LichPhylactery {
    // 1.72.0：顶部两页——“冒险者”（原来的全部内容）和“职业”（ClassPage）。
    var all=new Rect(0f,0f,size.x,size.y).ContractedBy(10f);
    int pts=ClassSystem.Points(h);
-   for(int i=0;i<2;i++){
+   for(int i=0;i<3;i++){ // 2026-10-30：第三页“属性”（AttributePage：六维逐项公式与当前值）
     var tb=new Rect(all.x+i*124f,all.y,120f,24f);bool on=page==i;
     if(on)Widgets.DrawBoxSolid(tb,new Color(1f,1f,1f,.12f));
-    if(Widgets.ButtonText(tb,i==0?"冒险者":"职业"+(pts>0?"（"+pts+"）":""),drawBackground:!on) && page!=i){page=i;scroll=Vector2.zero;}
+    if(Widgets.ButtonText(tb,i==0?"冒险者":i==1?"职业"+(pts>0?"（"+pts+"）":""):"属性",drawBackground:!on) && page!=i){page=i;scroll=Vector2.zero;}
    }
    var outer=new Rect(all.x,all.y+28f,all.width,all.height-28f);
    var view=new Rect(0f,0f,outer.width-16f,Mathf.Max(contentH,outer.height-4f));
    Widgets.BeginScrollView(outer,ref scroll,view);
-   try{contentH=(page==1?ClassPage.Draw(view.width,p,h,p.Faction!=null && p.Faction.IsPlayer && !p.Dead):DrawContents(view.width,p,h))+8f;}
+   try{contentH=(page==1?ClassPage.Draw(view.width,p,h,p.Faction!=null && p.Faction.IsPlayer && !p.Dead):page==2?AttributePage.Draw(view.width,p,h):DrawContents(view.width,p,h))+8f;}
    finally{Text.Font=GameFont.Small;Text.Anchor=TextAnchor.UpperLeft;GUI.color=Color.white;Widgets.EndScrollView();}
   }
 
@@ -115,6 +115,7 @@ namespace LichPhylactery {
    sb.AppendLine("· 冒险者手册："+(h.level>=Adventurer.TrainingCapLevel?"已超过（只练到 "+Adventurer.TrainingCapLevel+" 级）":"每本 "+(Adventurer.ManualXP*mult).ToString("0")+"，最多练到 "+Adventurer.TrainingCapLevel+" 级"));
    float wm=AdventurerWork.Mult; // 1.61.0 热修：日常工作
    sb.AppendLine(wm<=0f?"· 日常工作：已关闭":"· 日常工作：每 "+AdventurerWork.SkillPerXp.ToString("0")+" 技能经验 +"+(wm*mult).ToString("0.##")+"（今日 "+AdventurerWork.Today(h).ToString("0.#")+" / "+AdventurerWork.DailyFull.ToString("0")+" 全额，之后 ×"+AdventurerWork.OverFactor+"；累计 "+K(h.workXpTotal*mult)+"）");
+   AdventurerExtraXp.Tip(sb,h,mult); // 1.75.0 非战斗经验
    if(Epic.KillMilestonesOn){
     sb.Append("· 击杀里程碑（下一级所需的 "+(Epic.KillMilestoneShare*100f).ToString("0")+"%，现在 "+K(Epic.NextLevelXp(h)*Epic.KillMilestoneShare)+"）：");
     sb.AppendLine(string.Join(" ",Epic.KillMilestones.Select(t=>(h.milestonesDone.Contains("kills"+t)?"✓":"")+t)));
@@ -128,6 +129,35 @@ namespace LichPhylactery {
   // 预览：临时加点，取这项的效果说明（含种族亲和）。
   public static string Preview(Hediff_Adventurer h,int i,int by){h.scores[i]+=by;try{return h.EffectText(i);}finally{h.scores[i]-=by;}}
   static string EffectLine(Hediff_Adventurer h,int i){var lines=h.EffectText(i).Split('\n');foreach(var l in lines)if(l.StartsWith("属性倍率") || l.StartsWith("属性效果") || l.StartsWith("传奇单位"))return l.Trim();return lines.Length>2?lines[2].Trim():"";} // 有“专长 +1”一行时不能按行号取
+
+  // ---------- 1.76.0 初始属性购点 ----------
+  public const string BuyConfirmKey="buy:confirm";
+  public static string BuyTip(Hediff_Adventurer h,int a,int d,string why){
+   int b=h.buyBase[a],v=b+d;
+   string head=Adventurer.Names[a]+" 购点基础值 "+b+"（种族、背景等 "+Adventurer.Signed(h.scores[a]-b)+"）";
+   if(why!=null)return head+"\n不能"+(d<0?"减":"加")+"："+why;
+   int c=Adventurer.BuyCost(v)-Adventurer.BuyCost(b);
+   return head+"\n"+(d<0?"减到 ":"加到 ")+v+"："+(c>=0?"花 "+c:"退回 "+(-c))+" 点，剩 "+(h.BuyLeft-c)+"\n\n之后：\n"+Preview(h,a,d);
+  }
+  public static bool PressConfirmBuy(Hediff_Adventurer h,ref string armed){
+   if(h==null || !h.buyOpen){armed=null;return false;}
+   if(!Confirm(ref armed,BuyConfirmKey))return false;h.ConfirmBuy();return true;
+  }
+  float DrawBuyHeader(float y,float w,Pawn p,Hediff_Adventurer h){
+   if(p!=armedFor){armed=null;armedFor=p;stylePickSlot=-1;}
+   var row=new Rect(0f,y,w,30f);Widgets.DrawBoxSolid(row,new Color(1f,.82f,.35f,.10f));
+   int left=h.BuyLeft;
+   var lab=new Rect(4f,y+5f,w-270f,24f);GUI.color=left<0?new Color(1f,.6f,.5f):Gold;
+   Widgets.Label(lab,"初始属性分配：剩余购点 "+left+" / "+Adventurer.BuyBudget);GUI.color=Color.white;
+   if(Mouse.IsOver(lab))TooltipHandler.TipRegion(lab,"5e 购点制：每项基础值 8～15，费用 8:0　9:1　10:2　11:3　12:4　13:5　14:7　15:9（共 "+Adventurer.BuyBudget+" 点）。\n种族、背景特性等加值另算，显示的数值已经包含。\n点六维后面的 − / + 改基础值；预填的是按技能推荐的标准数组。\n点“确认”两次后锁定，每人只有一次；不确认也按当前分配生效。");
+   float bx=w;
+   {var b=new Rect(bx-90f,y+1f,90f,28f);bx-=94f;bool armedNow=armed==BuyConfirmKey;
+    TooltipHandler.TipRegion(b,armedNow?"再点一次确认：锁定当前分配，之后不能再改"+(left>0?"（还剩 "+left+" 点没用，会作废）":"")+"。":"锁定当前分配（点两次）。");
+    if(Widgets.ButtonText(b,armedNow?"确定？":"确认"))PressConfirmBuy(h,ref armed);}
+   {var b=new Rect(bx-70f,y+1f,70f,28f);bx-=74f;TooltipHandler.TipRegion(b,"按技能恢复推荐分配（标准数组 15/14/13/12/10/8）。");if(Widgets.ButtonText(b,"推荐")){h.BuyRecommend();armed=null;}}
+   {var b=new Rect(bx-80f,y+1f,80f,28f);TooltipHandler.TipRegion(b,"六项基础值全部改回 8，购点全部退回，再自己分配。");if(Widgets.ButtonText(b,"全部 8")){h.BuyReset();armed=null;}}
+   return y+34f;
+  }
 
   // ---------- 绘制 ----------
   float DrawContents(float w,Pawn p,Hediff_Adventurer h){
@@ -161,20 +191,32 @@ namespace LichPhylactery {
    if(own && h.boonPoints>0){var r=new Rect(bx-120f,y,120f,28f);bx-=126f;
     if(Widgets.ButtonText(r,"选恩赐（"+h.boonPoints+"）"))scroll.y=boonPickY;
     TooltipHandler.TipRegion(r,"跳到下面的“史诗恩赐”列表，在分页里直接选。");}
-   if(own && h.pendingASI>0){var r=new Rect(bx-120f,y,120f,28f);
-    if(Widgets.ButtonText(r,"选专长（"+h.pendingASI+"）"))scroll.y=featPickY;
-    TooltipHandler.TipRegion(r,"跳到下面的“可选专长”列表：用一次完整的属性提升换一个专长。");}
+   if(own && h.FeatPicks>0){var r=new Rect(bx-120f,y,120f,28f);
+    if(Widgets.ButtonText(r,"选专长（"+h.FeatPicks+"）"))scroll.y=featPickY;
+    TooltipHandler.TipRegion(r,"跳到下面的“可选专长”列表："+(h.fighterFeats>0?"先用战士奖励专长（免费，剩 "+h.fighterFeats+" 个），":"")+"用一次完整的属性提升换一个专长。");}
    y+=32f;
+   bool buy=own && h.buyOpen;
+   if(buy)y=DrawBuyHeader(y,w,p,h); // 1.76.0 初始属性购点
    // 六维：一行一项，后面就地 +1 / +2，再后面是当前效果
    int exRaw=Exalted.Raw(h); // 热修1：达标但效果没生效（Isekai 共存等）的项也标出来，灰色
    for(int i=0;i<6;i++){
     var row=new Rect(0f,y,w,26f);if(i%2==0)Widgets.DrawLightHighlight(row);
-    var lab=new Rect(4f,y+2f,210f,24f);
+    var lab=new Rect(24f,y+2f,190f,24f);bool open=expanded.Contains(i); // 1.81.0 热修5：点属性名或箭头展开效果表
+    var arrow=new Rect(4f,y+5f,16f,16f);GUI.DrawTexture(arrow,open?TexButton.Collapse:TexButton.Reveal);
+    if(Widgets.ButtonInvisible(arrow) || Widgets.ButtonInvisible(lab)){if(open)expanded.Remove(i);else expanded.Add(i);}
     AffinityColor(Affinity.ScoreMult(h,i));
     if((h.mythicMask&1<<i)!=0)GUI.color=Mythic;else if((h.exaltedMask&1<<i)!=0)GUI.color=Gold;else if((exRaw&1<<i)!=0)GUI.color=ExaltedOff; // 1.59.0 超凡金色、神话紫色
     Widgets.Label(lab,Adventurer.Names[i]+" "+h.scores[i]+Feats.ScoreTag(h,i)+"/"+h.Cap(i)+" ("+Adventurer.Signed(h.Mod(i))+")"+Affinity.Tag(h,i));GUI.color=Color.white;
-    if(Mouse.IsOver(lab))TooltipHandler.TipRegion(lab,h.EffectText(i)+Exalted.Tip(h,i));
+    if(Mouse.IsOver(lab))TooltipHandler.TipRegion(lab,h.EffectText(i)+Exalted.Tip(h,i)+"\n\n（点属性名展开 / 收起效果表）");
     float x=216f;
+    if(buy){ // 1.76.0 购点：− / + 改基础值
+     for(int d=-1;d<=1;d+=2){
+      var b=new Rect(x,y+1f,28f,24f);x+=30f;string why=h.CanBuy(i,d);
+      if(Mouse.IsOver(b))TooltipHandler.TipRegion(b,BuyTip(h,i,d,why));
+      if(Widgets.ButtonText(b,d<0?"−":"+",active:why==null) && why==null)h.Buy(i,d);
+     }
+     x+=4f;
+    }
     if(own && pts>0){
      for(int by=1;by<=2;by++){
       if(by>pts)break;var b=new Rect(x,y+1f,40f,24f);x+=44f;bool ok=h.CanRaise(i,by);
@@ -185,6 +227,7 @@ namespace LichPhylactery {
     x=Mathf.Max(x,306f);
     Text.Font=GameFont.Tiny;GUI.color=new Color(.8f,.8f,.8f);Widgets.Label(new Rect(x,y+5f,w-x-4f,22f),EffectLine(h,i));GUI.color=Color.white;Text.Font=GameFont.Small;
     y+=27f;
+    if(open)y=DrawEffectTable(y,w,h,i);
    }
    y=Growth.Draw(y+2f,w,h); // 1.58.3 典籍 / 许愿 / 实战磨砺
    y=DrawExalted(y,w,h); // 1.59.0 超凡
@@ -238,8 +281,8 @@ namespace LichPhylactery {
    if(p!=armedFor){armed=null;armedFor=p;stylePickSlot=-1;}
    // 热修2：可选专长（有完整的属性提升时）。一行一个：图标、名字、效果、前置；不满足的灰色并写原因；“选择”点两次确认。
    featPickY=y;
-   if(own && h.pendingASI>0){
-    GUI.color=Gold;Widgets.Label(new Rect(0f,y,w,24f),"可选专长（消耗一次属性提升，剩 "+h.pendingASI+" 次）");GUI.color=Color.white;y+=26f;
+   if(own && h.FeatPicks>0){
+    GUI.color=Gold;Widgets.Label(new Rect(0f,y,w,24f),h.fighterFeats>0?"可选专长（战士奖励专长，免费，剩 "+h.fighterFeats+" 个"+(h.pendingASI>0?"；之后消耗属性提升，剩 "+h.pendingASI+" 次":"")+"）":"可选专长（消耗一次属性提升，剩 "+h.pendingASI+" 次）");GUI.color=Color.white;y+=26f;
     foreach(var f in Feats.All){
      if(!Feats2.Visible(f,p))continue; // 1.58.1 种族专长只对对应种族显示
      var row=new Rect(0f,y,w,54f);string why=h.CanTakeFeat(f);bool ok=why==null;
@@ -255,7 +298,7 @@ namespace LichPhylactery {
      Text.Font=GameFont.Small;GUI.color=Color.white;
      {var tr=new Rect(row.x,row.y,row.width-90f,row.height);if(Mouse.IsOver(tr))TooltipHandler.TipRegion(tr,f.LabelCap+"\n\n"+f.description+"\n\n前置："+f.PrereqText()+(ok?"":"\n不能选："+why));}
      string key=FeatKey(f);var b=new Rect(row.xMax-84f,row.y+13f,80f,28f);
-     if(ok && armed==key)TooltipHandler.TipRegion(b,"再点一次确认：消耗一次属性提升换“"+f.label+"”。");
+     if(ok && armed==key)TooltipHandler.TipRegion(b,"再点一次确认："+(h.fighterFeats>0?"用一个战士奖励专长":"消耗一次属性提升")+"换“"+f.label+"”。");
      if(Widgets.ButtonText(b,h.HasFeat(f)?"已有":armed==key?"确定？":"选择",active:ok) && ok)PickFeat(h,f,ref armed);
      y+=56f;
     }
@@ -339,6 +382,28 @@ namespace LichPhylactery {
    }
    return y+((n+2)/3)*30f+2f;
   }
+  // 1.81.0 热修5：展开的效果表。来源一行（种族擅长 / 天赋），下面两列网格：效果名左对齐、数值右对齐，Tiny 字体，块下面一条分隔线。
+  readonly HashSet<int> expanded=new HashSet<int>();
+  const float FxRowH=18f,FxValW=64f;
+  static float DrawEffectTable(float y,float w,Hediff_Adventurer h,int a){
+   Text.Font=GameFont.Tiny;float x0=24f,cw=(w-x0-8f)/2f;
+   var rows=h.EffectRows(a);
+   if(rows==null){
+    GUI.color=Color.gray;string why=Adventurer.EffectsHandedToIsekai?"属性效果已交给 Isekai（设置里可以打开）。":Adventurer.EffectScale<=0f?"属性效果已在设置里关闭。":"传奇单位：六维不提供数值效果（强度已经算在兵种里）。";
+    Widgets.Label(new Rect(x0,y,w-x0,FxRowH),why);GUI.color=Color.white;y+=FxRowH;
+   }else{
+    string src=Affinity.SourceTag(h,a);
+    if(src!=""){GUI.color=Gold;Widgets.Label(new Rect(x0,y,w-x0,FxRowH),"（"+src+"）");GUI.color=Color.white;y+=FxRowH;}
+    for(int k=0;k<rows.Count;k++){
+     var cell=new Rect(x0+cw*(k%2),y+FxRowH*(k/2),cw-8f,FxRowH);
+     GUI.color=new Color(.85f,.85f,.85f);Widgets.Label(new Rect(cell.x+4f,cell.y,cell.width-FxValW-4f,FxRowH),rows[k].Key);
+     GUI.color=Color.white;Text.Anchor=TextAnchor.UpperRight;Widgets.Label(new Rect(cell.xMax-FxValW,cell.y,FxValW,FxRowH),rows[k].Value);Text.Anchor=TextAnchor.UpperLeft;
+    }
+    y+=FxRowH*((rows.Count+1)/2);
+   }
+   Text.Font=GameFont.Small;GUI.color=new Color(1f,1f,1f,.25f);Widgets.DrawLineHorizontal(x0,y+2f,w-x0-4f);GUI.color=Color.white;
+   return y+6f;
+  }
   static void Grey(ref float y,float w,string text){GUI.color=Color.gray;Widgets.Label(new Rect(4f,y,w-4f,24f),text);GUI.color=Color.white;y+=Row;}
 
   // 1.53.0 职业特性：额外攻击 / 斗志 / VPE 等级（桥给的行）+ 战斗风格槽位；空槽或点了“改选”的槽下面列出可选风格（两次点击确认）。
@@ -411,7 +476,9 @@ namespace LichPhylactery {
   public List<Pawn> pawns=new List<Pawn>();
   public static string Pending(Hediff_Adventurer h){
    var parts=new List<string>();
+   if(h.buyOpen)parts.Add("初始属性分配"); // 1.76.0
    if(h.AvailablePoints>0)parts.Add("属性点 "+h.AvailablePoints);
+   if(h.fighterFeats>0)parts.Add("战士奖励专长 "+h.fighterFeats); // 2026-10-31
    if(h.boonPoints>0)parts.Add("史诗恩赐 "+h.boonPoints);
    if(h.legendPoints>0)parts.Add("传奇属性点 "+h.legendPoints);
    if(ClassSystem.Points(h)>0)parts.Add("职业点 "+ClassSystem.Points(h)); // 1.72.0

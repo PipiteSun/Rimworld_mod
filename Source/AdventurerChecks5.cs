@@ -9,7 +9,8 @@ namespace LichPhylactery {
  public partial class LichChecks {
   static string advSavedAffinity;
   static string AffinitySummary(Hediff_Adventurer h)=>h.Affinity.key+"|"+h.Talent?.defName+"|"+Affinity.LegendMult(h,Legend.Health).ToString("0.###")+"|"+h.legendPoints;
-  static float Research(Hediff_Adventurer h)=>h.BuildStage(1f).statFactors?.GetStatFactorFromList(StatDefOf.ResearchSpeed)??1f;
+  // 1.81.0 热修：研究速度改成照 Isekai 每点 +6%，不再走 3.5 表；这些亲和检查改看同一行表里的全局工作速度（仍是 ×M）。
+  static float Research(Hediff_Adventurer h)=>h.BuildStage(1f).statFactors?.GetStatFactorFromList(StatDefOf.WorkSpeedGlobal)??1f;
   Hediff_Adventurer AdvAt(Pawn p,int intScore){var h=Adventurer.Get(p);h.scores=new[]{10,10,10,10,10,10};h.scores[Adventurer.Int]=intScore;h.legendSpent=new int[Legend.Count];h.legendPoints=0;h.Dirty();return h;}
   Pawn AdvTalentPawn(string xeno,TraitDef talent){
    var p=PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist,Faction.OfPlayer,PawnGenerationContext.NonPlayer,-1,forceGenerateNewPawn:true,allowDead:false,allowDowned:false,canGeneratePawnRelations:false,forcedXenotype:DefDatabase<XenotypeDef>.GetNamed(xeno),mustBeCapableOfViolence:true,forceNoBackstory:true,forcedTraits:new[]{talent},fixedBiologicalAge:25f,fixedChronologicalAge:25f));

@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- DND 怪物第二批：锈蚀怪、凝胶怪、石化蜥、蝎尾狮、掘地兽、腐尸爬虫。
+     贴图是自己画的（ArtSource/RaceArt/draw_wildmonsters.py），招牌规则见 Source/WildMonsters.cs，野外刷新见 Patches/WildMonsters.xml。 -->
+<Defs>
+
+  <!-- ========== 状态 ========== -->
+
+  <HediffDef>
+    <defName>LP_Engulfed</defName>
+    <label>被吞没</label>
+    <description>被凝胶怪整个裹进了透明的胶体里，动弹不得、被它带着走，每秒都被酸液灼伤。打倒凝胶怪就能脱身，最多困住6秒。</description>
+    <hediffClass>LichPhylactery.Hediff_Engulfed</hediffClass>
+    <defaultLabelColor>(0.55, 0.9, 0.6)</defaultLabelColor>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>LP_BasiliskGaze</defName>
+    <label>石化中</label>
+    <description>和石化蜥对上了眼，四肢正从末端开始变僵、发灰。越僵走得越慢；完全僵住时要靠体质撑过去，撑不过去就会变成石头。不再被注视就会慢慢缓过来。瞎了的人不受影响。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.75, 0.75, 0.7)</defaultLabelColor>
+    <isBad>true</isBad>
+    <initialSeverity>0.1</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-72</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>发僵</label>
+        <statFactors><MoveSpeed>0.85</MoveSpeed></statFactors>
+      </li>
+      <li>
+        <minSeverity>0.5</minSeverity>
+        <label>半身僵硬</label>
+        <statFactors><MoveSpeed>0.6</MoveSpeed></statFactors>
+        <capMods><li><capacity>Manipulation</capacity><offset>-0.2</offset></li></capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>LP_BasiliskPetrified</defName>
+    <label>石化</label>
+    <description>在石化蜥的凝视下变成了石头：半天之内一动不动，之后石皮才会剥落。驱散粉尘可以立刻解除。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.7, 0.7, 0.7)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>30000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><capMods><li><capacity>Moving</capacity><setMax>0</setMax></li><li><capacity>Manipulation</capacity><setMax>0.05</setMax></li></capMods></li></stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>LP_CrawlerToxin</defName>
+    <label>腐尸爬虫毒素</label>
+    <description>腐尸爬虫的触须分泌的麻痹毒素。积累得越多，身体越麻木；积满时全身麻痹10秒。毒素几个小时内就会代谢掉。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.85, 0.6, 0.65)</defaultLabelColor>
+    <isBad>true</isBad>
+    <maxSeverity>1</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-4</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>刺麻</label>
+        <statFactors><MoveSpeed>0.85</MoveSpeed></statFactors>
+      </li>
+      <li>
+        <minSeverity>0.5</minSeverity>
+        <label>麻木</label>
+        <statFactors><MoveSpeed>0.6</MoveSpeed></statFactors>
+        <capMods><li><capacity>Manipulation</capacity><offset>-0.3</offset></li></capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>LP_CrawlerParalysis</defName>
+    <label>全身麻痹</label>
+    <description>腐尸爬虫的毒素积满了，全身麻痹倒地，10秒后才能重新动弹。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.85, 0.6, 0.65)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>600</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><capMods><li><capacity>Moving</capacity><setMax>0</setMax></li><li><capacity>Manipulation</capacity><setMax>0.05</setMax></li></capMods></li></stages>
+  </HediffDef>
+
+  <!-- ========== 凝胶怪的身体 ========== -->
+
+  <BodyPartDef>
+    <defName>LP_GelMass</defName>
+    <label>胶质</label>
+    <hitPoints>40</hitPoints>
+    <skinCovered>false</skinCovered>
+    <tags>
+      <li>MovingLimbCore</li>
+      <li>BreathingSource</li>
+      <li>BloodPumpingSource</li>
+      <li>BloodFiltrationKidney</li>
+      <li>BloodFiltrationLiver</li>
+      <li>MetabolismSource</li>
+      <li>EatingSource</li>
+      <li>SightSource</li>
+      <li>HearingSource</li>
+    </tags>
+    <executionPartPriority>500</executionPartPriority>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>LP_GelNucleus</defName>
+    <label>核</label>
+    <hitPoints>15</hitPoints>
+    <skinCovered>false</skinCovered>
+    <delicate>true</delicate>
+    <tags>
+      <li>ConsciousnessSource</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyDef>
+    <defName>LP_GelCubeBody</defName>
+    <label>凝胶体</label>
+    <corePart>
+      <def>LP_GelMass</def>
+      <height>Middle</height>
+      <depth>Outside</depth>
+      <parts>
+        <li>
+          <def>LP_GelNucleus</def>
+          <coverage>0.08</coverage>
+          <depth>Inside</depth>
+        </li>
+      </parts>
+    </corePart>
+  </BodyDef>
+
+  <!-- ========== 物品 ========== -->
+
+  <ThingDef ParentName="LeatherBase">
+    <defName>LP_Leather_Bulette</defName>
+    <label>掘地兽甲皮</label>
+    <description>掘地兽背上一片片厚重的甲片连着坚韧的皮。很重、不太保暖，但是刀枪难入，适合做护甲。</description>
+    <possessionCount>15</possessionCount>
+    <graphicData>
+      <texPath>Things/Item/Resource/LP_BuletteHide</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(255,255,255)</color>
+    </graphicData>
+    <statBases>
+      <MarketValue>5</MarketValue>
+      <StuffPower_Armor_Sharp>1.25</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>0.4</StuffPower_Armor_Blunt>
+      <StuffPower_Insulation_Cold>10</StuffPower_Insulation_Cold>
+      <StuffPower_Insulation_Heat>12</StuffPower_Insulation_Heat>
+    </statBases>
+    <stuffProps>
+      <color>(104,116,128)</color>
+      <commonality>0.01</commonality>
+      <statFactors>
+        <Beauty>1.2</Beauty>
+        <Mass>1.6</Mass>
+      </statFactors>
+    </stuffProps>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>LP_Proj_ManticoreSpike</defName>
+    <label>蝎尾狮尾刺</label>
+    <graphicData>
+      <texPath>Things/Projectile/LP_ManticoreSpike</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Stab</damageDef>
+      <damageAmountBase>9</damageAmountBase>
+      <armorPenetrationBase>0.25</armorPenetrationBase>
+      <stoppingPower>0.5</stoppingPower>
+      <speed>55</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="PawnFlyerBase">
+    <defName>LP_BuletteFlyer</defName>
+    <label>掘地兽跃击</label>
+    <thingClass>LichPhylactery.LP_BuletteFlyer</thingClass>
+  </ThingDef>
+
+  <!-- ========== 共用的父定义 ========== -->
+
+  <ThingDef Name="LP_WildMonsterBase" ParentName="AnimalThingBase" Abstract="True">
+    <statBases>
+      <ComfyTemperatureMin>-20</ComfyTemperatureMin>
+      <ComfyTemperatureMax>50</ComfyTemperatureMax>
+      <FilthRate>2</FilthRate>
+    </statBases>
+    <race>
+      <petness>0</petness>
+      <nameOnTameChance>1</nameOnTameChance>
+      <manhunterOnTameFailChance>0.5</manhunterOnTameFailChance>
+      <manhunterOnDamageChance>1.00</manhunterOnDamageChance>
+      <lifeExpectancy>30</lifeExpectancy>
+      <soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+    </race>
+    <tradeTags>
+      <li>AnimalExotic</li>
+      <li>AnimalFighter</li>
+    </tradeTags>
+  </ThingDef>
+
+  <!-- ========== 锈蚀怪 ========== -->
+
+  <ThingDef ParentName="LP_WildMonsterBase">
+    <defName>LP_RustMonster</defName>
+    <label>锈蚀怪</label>
+    <description>披着锈红甲壳、拖着螺旋桨似尾巴的虫形怪物，靠两根羽毛状的触角找金属吃。性子不算凶，可一旦打起来，它碰到的金属武器、金属护甲都会迅速锈蚀：每次命中让对方手里的金属武器和一件金属护甲损失10%耐久；用金属近战武器砍它，武器也会锈掉5%。木头、皮革、骨头不受影响。</description>
+    <statBases>
+      <MoveSpeed>4.2</MoveSpeed>
+      <MarketValue>350</MarketValue>
+      <Wildness>0.7</Wildness>
+      <ArmorRating_Sharp>0.25</ArmorRating_Sharp>
+    </statBases>
+    <race>
+      <body>BeetleLike</body>
+      <baseBodySize>1.0</baseBodySize>
+      <baseHealthScale>1.3</baseHealthScale>
+      <baseHungerRate>0.3</baseHungerRate>
+      <foodType>OmnivoreAnimal</foodType>
+      <trainability>Intermediate</trainability>
+      <leatherDef>Leather_Lizard</leatherDef>
+      <meatLabel>锈蚀怪肉</meatLabel>
+      <manhunterOnDamageChance>0.3</manhunterOnDamageChance>
+      <gestationPeriodDays>12</gestationPeriodDays>
+      <litterSizeCurve><points><li>(0.5, 0)</li><li>(1, 1)</li><li>(1.5, 0.5)</li><li>(2, 0)</li></points></litterSizeCurve>
+      <lifeStageAges>
+        <li><def>AnimalBaby</def><minAge>0</minAge></li>
+        <li><def>AnimalJuvenile</def><minAge>0.25</minAge></li>
+        <li>
+          <def>AnimalAdult</def><minAge>0.6</minAge>
+          <soundWounded>Pawn_Megascarab_Wounded</soundWounded>
+          <soundDeath>Pawn_Megascarab_Death</soundDeath>
+          <soundCall>Pawn_Megascarab_Call</soundCall>
+          <soundAngry>Pawn_Megascarab_Angry</soundAngry>
+        </li>
+      </lifeStageAges>
+      <soundEating>Insectoid_Eat</soundEating>
+    </race>
+    <tools>
+      <li>
+        <label>antennae</label>
+        <labelNoLocation>触角</labelNoLocation>
+        <capacities><li>Blunt</li></capacities>
+        <power>7</power>
+        <cooldownTime>1.6</cooldownTime>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+      <li>
+        <label>mandibles</label>
+        <labelNoLocation>颚</labelNoLocation>
+        <capacities><li>Bite</li></capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>Mouth</linkedBodyPartsGroup>
+      </li>
+    </tools>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_WildMonster"><kind>RustMonster</kind></li>
+    </comps>
+  </ThingDef>
+
+  <PawnKindDef ParentName="AnimalKindBase">
+    <defName>LP_RustMonster</defName>
+    <label>锈蚀怪</label>
+    <race>LP_RustMonster</race>
+    <combatPower>85</combatPower>
+    <ecoSystemWeight>0.4</ecoSystemWeight>
+    <wildGroupSize>1~2</wildGroupSize>
+    <lifeStages>
+      <li>
+        <label>锈蚀怪幼虫</label>
+        <bodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/RustMonster/RustMonster</texPath><drawSize>0.9</drawSize></bodyGraphicData>
+        <dessicatedBodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/RustMonster/Dessicated_RustMonster</texPath><drawSize>0.9</drawSize></dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/RustMonster/RustMonster</texPath><drawSize>1.4</drawSize></bodyGraphicData>
+        <dessicatedBodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/RustMonster/Dessicated_RustMonster</texPath><drawSize>1.4</drawSize></dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/LP_WildMonsters/RustMonster/RustMonster</texPath><drawSize>1.9</drawSize>
+          <shadowData><volume>(0.35, 0.3, 0.3)</volume><offset>(0,0,-0.2)</offset></shadowData>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/RustMonster/Dessicated_RustMonster</texPath><drawSize>1.9</drawSize></dessicatedBodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+
+  <!-- ========== 凝胶怪 ========== -->
+
+  <ThingDef ParentName="LP_WildMonsterBase">
+    <defName>LP_GelatinousCube</defName>
+    <label>凝胶怪</label>
+    <description>一块一人多高、几乎透明的方形胶体，慢吞吞地在潮湿的地方滑行，把路上的一切都裹进身体里慢慢消化，里面常能看到没化完的骨头、铁器和钱币。近战命中时有35%的机会把体型不大于它的目标整个吞没：被吞没的人困在胶体里、被它带着走，动弹不得，每秒受到酸蚀伤害，最多6秒，打倒它才能救出来（每只凝胶怪10秒才能吞一次）。本身不怕酸，也没有能剥的皮。几乎不可能驯服。</description>
+    <statBases>
+      <MoveSpeed>1.9</MoveSpeed>
+      <MarketValue>300</MarketValue>
+      <Wildness>0.98</Wildness>
+      <ComfyTemperatureMin>-5</ComfyTemperatureMin>
+      <ComfyTemperatureMax>45</ComfyTemperatureMax>
+      <ArmorRating_Blunt>0.4</ArmorRating_Blunt>
+    </statBases>
+    <race>
+      <body>LP_GelCubeBody</body>
+      <bloodDef>Filth_Slime</bloodDef>
+      <hasGenders>false</hasGenders>
+      <baseBodySize>2.2</baseBodySize>
+      <baseHealthScale>3.5</baseHealthScale>
+      <baseHungerRate>0.15</baseHungerRate>
+      <foodType>OmnivoreAnimal</foodType>
+      <predator>true</predator>
+      <maxPreyBodySize>2</maxPreyBodySize>
+      <trainability>None</trainability>
+      <meatLabel>凝胶块</meatLabel>
+      <lifeStageAges>
+        <li><def>AnimalBaby</def><minAge>0</minAge></li>
+        <li><def>AnimalJuvenile</def><minAge>0.5</minAge></li>
+        <li>
+          <def>AnimalAdult</def><minAge>1</minAge>
+          <soundWounded>Pawn_Megascarab_Wounded</soundWounded>
+          <soundDeath>Pawn_Megascarab_Death</soundDeath>
+        </li>
+      </lifeStageAges>
+      <soundEating>Insectoid_Eat</soundEating>
+      <soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
+    </race>
+    <tools>
+      <li>
+        <label>pseudopod</label>
+        <labelNoLocation>伪足</labelNoLocation>
+        <capacities><li>Blunt</li></capacities>
+        <power>12</power>
+        <cooldownTime>2.4</cooldownTime>
+        <extraMeleeDamages>
+          <li><def>AcidBurn</def><amount>4</amount></li>
+        </extraMeleeDamages>
+      </li>
+    </tools>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_WildMonster"><kind>GelatinousCube</kind></li>
+    </comps>
+  </ThingDef>
+
+  <PawnKindDef ParentName="AnimalKindBase">
+    <defName>LP_GelatinousCube</defName>
+    <label>凝胶怪</label>
+    <race>LP_GelatinousCube</race>
+    <combatPower>150</combatPower>
+    <ecoSystemWeight>0.6</ecoSystemWeight>
+    <lifeStages>
+      <li>
+        <label>小凝胶怪</label>
+        <bodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/GelatinousCube/GelatinousCube</texPath><shaderType>Transparent</shaderType><drawSize>1.1</drawSize></bodyGraphicData>
+        <dessicatedBodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/GelatinousCube/Dessicated_GelatinousCube</texPath><shaderType>Transparent</shaderType><drawSize>1.1</drawSize></dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/GelatinousCube/GelatinousCube</texPath><shaderType>Transparent</shaderType><drawSize>1.7</drawSize></bodyGraphicData>
+        <dessicatedBodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/GelatinousCube/Dessicated_GelatinousCube</texPath><shaderType>Transparent</shaderType><drawSize>1.7</drawSize></dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/LP_WildMonsters/GelatinousCube/GelatinousCube</texPath><shaderType>Transparent</shaderType><drawSize>2.3</drawSize>
+          <shadowData><volume>(0.7, 0.5, 0.7)</volume><offset>(0,0,-0.3)</offset></shadowData>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/GelatinousCube/Dessicated_GelatinousCube</texPath><shaderType>Transparent</shaderType><drawSize>2.3</drawSize></dessicatedBodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+
+  <!-- ========== 石化蜥 ========== -->
+
+  <ThingDef ParentName="LP_WildMonsterBase">
+    <defName>LP_Basilisk</defName>
+    <label>石化蜥</label>
+    <description>八条腿的巨蜥，行动迟缓，眼睛泛着黄绿色的光。打起来时，7格内看得见它的敌人每秒都会和它对上眼、身体逐渐僵硬变慢；完全僵住时要靠体质撑过去（豁免失败就变成石头半天，驱散粉尘能解）。瞎子、机械体和别的石化蜥不受影响。巢穴附近常有栩栩如生的“石像”。</description>
+    <statBases>
+      <MoveSpeed>3.0</MoveSpeed>
+      <MarketValue>700</MarketValue>
+      <Wildness>0.9</Wildness>
+      <ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+      <ComfyTemperatureMin>0</ComfyTemperatureMin>
+      <ComfyTemperatureMax>55</ComfyTemperatureMax>
+    </statBases>
+    <race>
+      <body>QuadrupedAnimalWithPawsAndTail</body>
+      <baseBodySize>1.7</baseBodySize>
+      <baseHealthScale>2.0</baseHealthScale>
+      <baseHungerRate>0.3</baseHungerRate>
+      <foodType>CarnivoreAnimal</foodType>
+      <predator>true</predator>
+      <maxPreyBodySize>2</maxPreyBodySize>
+      <trainability>Intermediate</trainability>
+      <leatherDef>Leather_Lizard</leatherDef>
+      <meatLabel>石化蜥肉</meatLabel>
+      <gestationPeriodDays>20</gestationPeriodDays>
+      <litterSizeCurve><points><li>(0.5, 0)</li><li>(1, 1)</li><li>(1.5, 0)</li></points></litterSizeCurve>
+      <lifeStageAges>
+        <li><def>AnimalBaby</def><minAge>0</minAge></li>
+        <li><def>AnimalJuvenile</def><minAge>0.3</minAge></li>
+        <li>
+          <def>AnimalAdult</def><minAge>0.8</minAge>
+          <soundWounded>Pawn_Iguana_Wounded</soundWounded>
+          <soundDeath>Pawn_Iguana_Death</soundDeath>
+          <soundCall>Pawn_Iguana_Call</soundCall>
+          <soundAngry>Pawn_Iguana_Angry</soundAngry>
+        </li>
+      </lifeStageAges>
+      <soundEating>Reptile_Eat</soundEating>
+    </race>
+    <tools>
+      <li>
+        <label>left claw</label>
+        <labelNoLocation>爪</labelNoLocation>
+        <capacities><li>Scratch</li></capacities>
+        <power>11</power>
+        <cooldownTime>1.6</cooldownTime>
+        <linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
+      </li>
+      <li>
+        <label>right claw</label>
+        <labelNoLocation>爪</labelNoLocation>
+        <capacities><li>Scratch</li></capacities>
+        <power>11</power>
+        <cooldownTime>1.6</cooldownTime>
+        <linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
+      </li>
+      <li>
+        <label>teeth</label>
+        <labelNoLocation>毒牙</labelNoLocation>
+        <capacities><li>Bite</li></capacities>
+        <power>16</power>
+        <cooldownTime>2.2</cooldownTime>
+        <linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+        <extraMeleeDamages><li><def>ToxicBite</def><amount>4</amount></li></extraMeleeDamages>
+      </li>
+      <li>
+        <label>head</label>
+        <capacities><li>Blunt</li></capacities>
+        <power>6</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+        <chanceFactor>0.2</chanceFactor>
+      </li>
+    </tools>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_WildMonster"><kind>Basilisk</kind></li>
+    </comps>
+  </ThingDef>
+
+  <PawnKindDef ParentName="AnimalKindBase">
+    <defName>LP_Basilisk</defName>
+    <label>石化蜥</label>
+    <race>LP_Basilisk</race>
+    <combatPower>170</combatPower>
+    <ecoSystemWeight>0.6</ecoSystemWeight>
+    <lifeStages>
+      <li>
+        <label>石化蜥幼崽</label>
+        <bodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/Basilisk/Basilisk</texPath><drawSize>1.1</drawSize></bodyGraphicData>
+        <dessicatedBodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/Basilisk/Dessicated_Basilisk</texPath><drawSize>1.1</drawSize></dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/Basilisk/Basilisk</texPath><drawSize>1.7</drawSize></bodyGraphicData>
+        <dessicatedBodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/Basilisk/Dessicated_Basilisk</texPath><drawSize>1.7</drawSize></dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/LP_WildMonsters/Basilisk/Basilisk</texPath><drawSize>2.3</drawSize>
+          <shadowData><volume>(0.6, 0.35, 0.4)</volume><offset>(0,0,-0.25)</offset></shadowData>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/Basilisk/Dessicated_Basilisk</texPath><drawSize>2.3</drawSize></dessicatedBodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+
+  <!-- ========== 蝎尾狮 ========== -->
+
+  <ThingDef ParentName="LP_WildMonsterBase">
+    <defName>LP_Manticore</defName>
+    <label>蝎尾狮</label>
+    <description>狮子的身体、蝙蝠的翅膀、一张狡猾的人脸，尾巴末端长着一团尖刺。远远地就会甩尾射出尖刺：敌人在3～15格内、看得见时，每8秒连射3根尾刺。尾刺最多24根，用掉后每小时长回一根。</description>
+    <statBases>
+      <MoveSpeed>4.8</MoveSpeed>
+      <MarketValue>900</MarketValue>
+      <Wildness>0.9</Wildness>
+      <ComfyTemperatureMin>-10</ComfyTemperatureMin>
+      <ComfyTemperatureMax>55</ComfyTemperatureMax>
+    </statBases>
+    <race>
+      <body>QuadrupedAnimalWithPawsAndTail</body>
+      <baseBodySize>1.9</baseBodySize>
+      <baseHealthScale>2.2</baseHealthScale>
+      <baseHungerRate>0.35</baseHungerRate>
+      <foodType>CarnivoreAnimalStrict</foodType>
+      <predator>true</predator>
+      <maxPreyBodySize>2.5</maxPreyBodySize>
+      <trainability>Intermediate</trainability>
+      <leatherDef>Leather_Panthera</leatherDef>
+      <meatLabel>蝎尾狮肉</meatLabel>
+      <gestationPeriodDays>18</gestationPeriodDays>
+      <litterSizeCurve><points><li>(0.5, 0)</li><li>(1, 1)</li><li>(1.5, 0.5)</li><li>(2, 0)</li></points></litterSizeCurve>
+      <lifeStageAges>
+        <li><def>AnimalBaby</def><minAge>0</minAge></li>
+        <li><def>AnimalJuvenile</def><minAge>0.3</minAge></li>
+        <li>
+          <def>AnimalAdult</def><minAge>0.8</minAge>
+          <soundWounded>Pawn_Cougar_Injured</soundWounded>
+          <soundDeath>Pawn_Cougar_Death</soundDeath>
+          <soundAngry>Pawn_Cougar_Angry</soundAngry>
+        </li>
+      </lifeStageAges>
+      <soundEating>PredatorLarge_Eat</soundEating>
+      <soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+    </race>
+    <tools>
+      <li>
+        <label>left claw</label>
+        <labelNoLocation>爪</labelNoLocation>
+        <capacities><li>Scratch</li></capacities>
+        <power>15</power>
+        <cooldownTime>1.5</cooldownTime>
+        <linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
+      </li>
+      <li>
+        <label>right claw</label>
+        <labelNoLocation>爪</labelNoLocation>
+        <capacities><li>Scratch</li></capacities>
+        <power>15</power>
+        <cooldownTime>1.5</cooldownTime>
+        <linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
+      </li>
+      <li>
+        <label>teeth</label>
+        <capacities><li>Bite</li></capacities>
+        <power>18</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+        <chanceFactor>0.8</chanceFactor>
+      </li>
+    </tools>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_WildMonster"><kind>Manticore</kind></li>
+    </comps>
+  </ThingDef>
+
+  <PawnKindDef ParentName="AnimalKindBase">
+    <defName>LP_Manticore</defName>
+    <label>蝎尾狮</label>
+    <race>LP_Manticore</race>
+    <combatPower>210</combatPower>
+    <ecoSystemWeight>0.7</ecoSystemWeight>
+    <lifeStages>
+      <li>
+        <label>蝎尾狮幼崽</label>
+        <bodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/Manticore/Manticore</texPath><drawSize>1.3</drawSize></bodyGraphicData>
+        <dessicatedBodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/Manticore/Dessicated_Manticore</texPath><drawSize>1.3</drawSize></dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/Manticore/Manticore</texPath><drawSize>2.0</drawSize></bodyGraphicData>
+        <dessicatedBodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/Manticore/Dessicated_Manticore</texPath><drawSize>2.0</drawSize></dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/LP_WildMonsters/Manticore/Manticore</texPath><drawSize>2.7</drawSize>
+          <shadowData><volume>(0.5, 0.45, 0.45)</volume><offset>(0,0,-0.3)</offset></shadowData>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/Manticore/Dessicated_Manticore</texPath><drawSize>2.7</drawSize></dessicatedBodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+
+  <!-- ========== 掘地兽 ========== -->
+
+  <ThingDef ParentName="LP_WildMonsterBase">
+    <defName>LP_Bulette</defName>
+    <label>掘地兽</label>
+    <description>人称“陆鲨”的巨兽：浑身厚甲、背上竖着一片大甲鳍，平时在地下穿行，嗅到猎物就破土而出。敌人在3～9格外时会高高跃起砸下去（每15秒一次）：落点周围的人受到重击并被撞倒，敏捷好的能躲开一半伤害、不被撞倒。甲皮可以做很好的护甲。几乎不可能驯服。</description>
+    <statBases>
+      <MoveSpeed>4.0</MoveSpeed>
+      <MarketValue>1200</MarketValue>
+      <Wildness>0.98</Wildness>
+      <ArmorRating_Sharp>0.7</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.35</ArmorRating_Blunt>
+      <ComfyTemperatureMin>-30</ComfyTemperatureMin>
+    </statBases>
+    <race>
+      <body>QuadrupedAnimalWithPaws</body>
+      <baseBodySize>2.8</baseBodySize>
+      <baseHealthScale>3.2</baseHealthScale>
+      <baseHungerRate>0.5</baseHungerRate>
+      <foodType>CarnivoreAnimal</foodType>
+      <predator>true</predator>
+      <maxPreyBodySize>3</maxPreyBodySize>
+      <trainability>None</trainability>
+      <leatherDef>LP_Leather_Bulette</leatherDef>
+      <meatLabel>掘地兽肉</meatLabel>
+      <gestationPeriodDays>30</gestationPeriodDays>
+      <litterSizeCurve><points><li>(0.5, 0)</li><li>(1, 1)</li><li>(1.5, 0)</li></points></litterSizeCurve>
+      <lifeStageAges>
+        <li><def>AnimalBaby</def><minAge>0</minAge></li>
+        <li><def>AnimalJuvenile</def><minAge>0.4</minAge></li>
+        <li>
+          <def>AnimalAdult</def><minAge>1</minAge>
+          <soundWounded>Pawn_Rhinoceros_Wounded</soundWounded>
+          <soundDeath>Pawn_Rhinoceros_Death</soundDeath>
+          <soundCall>Pawn_Rhinoceros_Call</soundCall>
+          <soundAngry>Pawn_Rhinoceros_Angry</soundAngry>
+        </li>
+      </lifeStageAges>
+      <soundEating>PredatorLarge_Eat</soundEating>
+    </race>
+    <tools>
+      <li>
+        <label>left claw</label>
+        <labelNoLocation>爪</labelNoLocation>
+        <capacities><li>Scratch</li></capacities>
+        <power>18</power>
+        <cooldownTime>1.8</cooldownTime>
+        <linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
+      </li>
+      <li>
+        <label>right claw</label>
+        <labelNoLocation>爪</labelNoLocation>
+        <capacities><li>Scratch</li></capacities>
+        <power>18</power>
+        <cooldownTime>1.8</cooldownTime>
+        <linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
+      </li>
+      <li>
+        <label>jaws</label>
+        <labelNoLocation>巨颚</labelNoLocation>
+        <capacities><li>Bite</li></capacities>
+        <power>26</power>
+        <cooldownTime>2.4</cooldownTime>
+        <armorPenetration>0.35</armorPenetration>
+        <linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+      </li>
+    </tools>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_WildMonster"><kind>Bulette</kind></li>
+    </comps>
+  </ThingDef>
+
+  <PawnKindDef ParentName="AnimalKindBase">
+    <defName>LP_Bulette</defName>
+    <label>掘地兽</label>
+    <race>LP_Bulette</race>
+    <combatPower>280</combatPower>
+    <ecoSystemWeight>0.9</ecoSystemWeight>
+    <lifeStages>
+      <li>
+        <label>掘地兽幼崽</label>
+        <bodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/Bulette/Bulette</texPath><drawSize>1.6</drawSize></bodyGraphicData>
+        <dessicatedBodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/Bulette/Dessicated_Bulette</texPath><drawSize>1.6</drawSize></dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/Bulette/Bulette</texPath><drawSize>2.4</drawSize></bodyGraphicData>
+        <dessicatedBodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/Bulette/Dessicated_Bulette</texPath><drawSize>2.4</drawSize></dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/LP_WildMonsters/Bulette/Bulette</texPath><drawSize>3.3</drawSize>
+          <shadowData><volume>(0.8, 0.6, 0.6)</volume><offset>(0,0,-0.35)</offset></shadowData>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/Bulette/Dessicated_Bulette</texPath><drawSize>3.3</drawSize></dessicatedBodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+
+  <!-- ========== 腐尸爬虫 ========== -->
+
+  <ThingDef ParentName="LP_WildMonsterBase">
+    <defName>LP_CarrionCrawler</defName>
+    <label>腐尸爬虫</label>
+    <description>马那么大的多足腐食虫，常在沼泽和墓地里翻找尸体，嘴边垂着一圈粉色触须。触须每次命中都会注入麻痹毒素（体质好的能挡下一次）：毒素越积越麻木，积满时全身麻痹倒地10秒。</description>
+    <statBases>
+      <MoveSpeed>3.6</MoveSpeed>
+      <MarketValue>400</MarketValue>
+      <Wildness>0.85</Wildness>
+      <ArmorRating_Sharp>0.2</ArmorRating_Sharp>
+      <ToxicEnvironmentResistance>1</ToxicEnvironmentResistance>
+    </statBases>
+    <race>
+      <body>BeetleLikeWithClaw</body>
+      <baseBodySize>1.4</baseBodySize>
+      <baseHealthScale>1.8</baseHealthScale>
+      <baseHungerRate>0.3</baseHungerRate>
+      <foodType>CarnivoreAnimal</foodType>
+      <predator>true</predator>
+      <maxPreyBodySize>1.6</maxPreyBodySize>
+      <trainability>Intermediate</trainability>
+      <meatLabel>腐尸爬虫肉</meatLabel>
+      <gestationPeriodDays>10</gestationPeriodDays>
+      <litterSizeCurve><points><li>(0.5, 0)</li><li>(1, 1)</li><li>(2, 1)</li><li>(2.5, 0)</li></points></litterSizeCurve>
+      <lifeStageAges>
+        <li><def>AnimalBaby</def><minAge>0</minAge></li>
+        <li><def>AnimalJuvenile</def><minAge>0.2</minAge></li>
+        <li>
+          <def>AnimalAdult</def><minAge>0.5</minAge>
+          <soundWounded>Pawn_Spelopede_Pain</soundWounded>
+          <soundDeath>Pawn_Spelopede_Death</soundDeath>
+          <soundCall>Pawn_Spelopede_Call</soundCall>
+          <soundAngry>Pawn_Spelopede_Angry</soundAngry>
+        </li>
+      </lifeStageAges>
+      <soundEating>Insectoid_Eat</soundEating>
+    </race>
+    <tools>
+      <li>
+        <label>tentacles</label>
+        <labelNoLocation>触须</labelNoLocation>
+        <capacities><li>Blunt</li></capacities>
+        <power>5</power>
+        <cooldownTime>1.4</cooldownTime>
+        <linkedBodyPartsGroup>HeadClaw</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+        <chanceFactor>2</chanceFactor>
+      </li>
+      <li>
+        <label>mandibles</label>
+        <labelNoLocation>颚</labelNoLocation>
+        <capacities><li>Bite</li></capacities>
+        <power>11</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>Mouth</linkedBodyPartsGroup>
+      </li>
+    </tools>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_WildMonster"><kind>CarrionCrawler</kind></li>
+    </comps>
+  </ThingDef>
+
+  <PawnKindDef ParentName="AnimalKindBase">
+    <defName>LP_CarrionCrawler</defName>
+    <label>腐尸爬虫</label>
+    <race>LP_CarrionCrawler</race>
+    <combatPower>130</combatPower>
+    <ecoSystemWeight>0.5</ecoSystemWeight>
+    <wildGroupSize>1~3</wildGroupSize>
+    <lifeStages>
+      <li>
+        <label>腐尸爬虫幼虫</label>
+        <bodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/CarrionCrawler/CarrionCrawler</texPath><drawSize>1.1</drawSize></bodyGraphicData>
+        <dessicatedBodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/CarrionCrawler/Dessicated_CarrionCrawler</texPath><drawSize>1.1</drawSize></dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/CarrionCrawler/CarrionCrawler</texPath><drawSize>1.8</drawSize></bodyGraphicData>
+        <dessicatedBodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/CarrionCrawler/Dessicated_CarrionCrawler</texPath><drawSize>1.8</drawSize></dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/LP_WildMonsters/CarrionCrawler/CarrionCrawler</texPath><drawSize>2.4</drawSize>
+          <shadowData><volume>(0.5, 0.3, 0.35)</volume><offset>(0,0,-0.25)</offset></shadowData>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData><texPath>Things/Pawn/Animal/LP_WildMonsters/CarrionCrawler/Dessicated_CarrionCrawler</texPath><drawSize>2.4</drawSize></dessicatedBodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+
+  <!-- ========== 迷锁地牢新主题 ========== -->
+
+  <LichPhylactery.MythalThemeDef>
+    <defName>LP_MythalTheme_UnderdarkWarren</defName>
+    <label>幽暗地穴</label>
+    <minFloor>5</minFloor><maxFloor>35</maxFloor>
+    <floorTerrain>Granite_Rough</floorTerrain>
+    <monsters><li>LP_CarrionCrawler</li><li>LP_CarrionCrawler</li><li>LP_RustMonster</li><li>LP_GelatinousCube</li><li>LP_Basilisk</li></monsters>
+    <guardians><li>LP_Bulette</li><li>LP_Manticore</li></guardians>
+    <loot>
+      <li><def>Steel</def><count>30~60</count></li>
+      <li><def>Silver</def><count>40~80</count></li>
+      <li><def>Gold</def><count>4~10</count></li>
+      <li><def>LP_Leather_Bulette</def><count>15~30</count><chance>0.4</chance></li>
+    </loot>
+  </LichPhylactery.MythalThemeDef>
+
+</Defs>

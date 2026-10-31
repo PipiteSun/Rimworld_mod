@@ -219,8 +219,8 @@ namespace LichPhylactery {
    if(__instance.Dead)return true;
    if(Feats2.TryOath(__instance,dinfo,exactCulprit))return false; // 1.58.1 命匣之誓
    if(HeroDestiny.TryFate(__instance,dinfo,exactCulprit))return false; // 1.58.0 预言之子“命运未尽”先判（冷却 20/12 天，比命运之恩短）；它救下了就不再用命运之恩
-   if(!Epic.Has(__instance,Epic.Fate))return true;
-   return !Epic.TryFate(__instance,dinfo,exactCulprit);
+   if(Epic.Has(__instance,Epic.Fate) && Epic.TryFate(__instance,dinfo,exactCulprit))return false;
+   return !MoreTraits.TryUnyielding(__instance,dinfo,exactCulprit); // 1.79.0 百折不挠：命运之恩没救下时才轮到它
   }
  }
  // 死亡后：传奇陨落、击杀里程碑、宿敌冠军奖励、战斗之恩。

@@ -50,7 +50,7 @@ namespace LichPhylactery {
   // 2. 等级公式与倍率。
   void BlFormula(){
    Check(Near(BeastLevels.Score(1),10f) && Near(BeastLevels.Score(20),20f) && Near(BeastLevels.Score(30),24f) && Near(BeastLevels.Mult(1),1f) && Near(BeastLevels.Mult(20),4f) && Near(BeastLevels.Mult(30),7f),"[beast levels] virtual STR/CON: level 1=10 ×1, 20=20 ×4, 30=24 ×7");
-   Check(Near(BeastLevels.MeleeFactor(1,0),1f) && Near(BeastLevels.PartFactor(1,0),1f) && Near(BeastLevels.SpeedFactor(1),1f) && Near(BeastLevels.SpeedFactor(40),1.3f) && Near(BeastLevels.PartFactor(20,0),1.19f*4f),"[beast levels] multipliers are ×1 at level 1; speed caps at +30%; level 20 part HP ×(1.19×4)");
+   Check(Near(BeastLevels.MeleeFactor(1,0),1f) && Near(BeastLevels.PartFactor(1,0),1f) && Near(BeastLevels.SpeedFactor(1),1f) && Near(BeastLevels.SpeedFactor(40),1.3f) && Near(BeastLevels.PartFactor(20,0),1.95f*1.75f) && Near(BeastLevels.PartFactor(40,0),1.95f*2.35f),"[beast levels] multipliers are ×1 at level 1; speed caps at +30%; level 20 part HP ×3.4125 (1.95 × Con 20 ×1.75), level 40 ×(1.95 × 2.35) (1.81.0 hotfix3)");
    Check(BeastLevels.PackLevel(450f,40,0)==11 && BeastLevels.PackLevel(450f,40,2)==13 && BeastLevels.PackLevel(100000f,8,0)==8 && BeastLevels.PackLevel(0f,10,-2)==1,"[beast levels] pack level = 1 + points per pawn ÷45 ± noise, clamped 1..cap");
    Check(BeastLevels.AmbientMax(10)==7 && BeastLevels.AmbientMax(2)==1 && BeastLevels.AmbientMax(1)==1,"[beast levels] ambient wild animals roll 1..max(1, colony max − 3)");
    Check(BeastLevels.Cap()==Mathf.Clamp(AdventurerEnemies.ColonyMaxLevel()+3,1,BeastLevels.MaxLevel),"[beast levels] hostile cap = colony max adventurer level + 3 (legendary range only through this cap)");
@@ -67,7 +67,7 @@ namespace LichPhylactery {
    Check(Near(m0,m1) && Near(hp0,hp1) && Near(v0,v1),"[beast levels] level 1 is vanilla: melee "+m0+"/"+m1+", torso "+hp0+"/"+hp1+", speed "+v0+"/"+v1);
    h.level=20;h.Dirty();
    float m20=one.GetStatValue(StatDefOf.MeleeDamageFactor),hp20=PartHealth.Maximum(torso,one),v20=one.GetStatValue(StatDefOf.MoveSpeed);
-   Check(Math.Abs(m20-m0*4f)<.05f && Math.Abs(hp20-Mathf.Ceil(hp0*1.19f*4f))<=1f && v20>v0*1.15f && Near(h.Severity,20f) && h.Label.Contains("20"),"[beast levels] level 20: melee ×4 ("+m20+"), torso "+hp20+" (≈"+hp0+"×4.76), faster");
+   Check(Math.Abs(m20-m0*1.5f)<.05f && Math.Abs(hp20-Mathf.Ceil(hp0*1.95f*1.75f))<=1f && v20>v0*1.15f && Near(h.Severity,20f) && h.Label.Contains("20"),"[beast levels] level 20: melee ×1.5 (1.81.0 linear) ("+m20+"), torso "+hp20+" (≈"+hp0+"×3.4125), faster");
    BlToggleOff(one,m0);
   }
   void BlToggleOff(Pawn one,float m0){

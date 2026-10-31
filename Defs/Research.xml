@@ -205,6 +205,33 @@
     <researchViewX>5</researchViewX>
     <researchViewY>0.7</researchViewY>
   </ResearchProjectDef>
+  <!-- 1.85.0 附魔强化（取代 Isekai 的装备强化）：装备强化 (4,0)、高阶强化 (5,0)，接在魔化兵器 (3,0) 右边。 -->
+  <ResearchProjectDef>
+    <defName>LP_Research_GearEnhancing</defName>
+    <label>装备强化</label>
+    <description>把魔力一层层叠进已经做好的兵器和衣甲：在武器或衣物上选好强化目标，附魔台的“附魔强化（+1～+5）”工作单会用秘银和白银逐级强化它。每一级武器伤害+6%、远程命中+1.5%，衣物护甲+5%再加1%，价值+15%；强化成功时顺便修好耐久。等级越高越容易失败，失败只损失材料。</description>
+    <baseCost>1500</baseCost>
+    <techLevel>Medieval</techLevel>
+    <prerequisites>
+      <li>LP_Research_Enchanting</li>
+    </prerequisites>
+    <tab>LP_FireGiantTech</tab>
+    <researchViewX>4</researchViewX>
+    <researchViewY>0</researchViewY>
+  </ResearchProjectDef>
+  <ResearchProjectDef>
+    <defName>LP_Research_GearEnhancingHigh</defName>
+    <label>高阶强化</label>
+    <description>把装备从+5继续推到+10：附魔台的“附魔强化（+6～+10）”工作单改用精金和黄金。成功率更低；从+6往上失败时装备会掉一级（不会掉到+5以下）。</description>
+    <baseCost>3000</baseCost>
+    <techLevel>Medieval</techLevel>
+    <prerequisites>
+      <li>LP_Research_GearEnhancing</li>
+    </prerequisites>
+    <tab>LP_FireGiantTech</tab>
+    <researchViewX>5</researchViewX>
+    <researchViewY>0</researchViewY>
+  </ResearchProjectDef>
 
   <!-- ==================== 巨人谱系（火巨人 / 熔火 / 霜 / 风暴 / 云巨人） ==================== -->
   <ResearchProjectDef>

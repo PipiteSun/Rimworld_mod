@@ -71,7 +71,9 @@ namespace LichPhylactery {
    Check(cmd>=1 && Items.Has(skel,"LP_UndeadCommanded") && !Items.Has(farSkel,"LP_UndeadCommanded") && Near(buff.stages[0].statFactors.GetStatFactorFromList(StatDefOf.MeleeDamageFactor),1.2f),"undead command: allied skeleton within 15 cells gets +20% damage and armor, one 20 cells away does not");
    // 3 倒地 1 小时后化灰，留下优秀品质的铠甲和地狱火宝珠
    var res=Legendary.Resistance(k);if(res!=null)res.charges=0;
-   k.health.AddHediff(HediffDefOf.Anesthetic);bool downed=k.Downed && !k.Dead;
+   // 超凡体质的“硬撑”会把第一次倒地延后（游戏里到时会再检查），自检直接用掉本期的硬撑次数。
+   if(hk!=null){hk.holdUntil=0;hk.holdStart=Find.TickManager.TicksGame;hk.holdUses=99;}Legendary.painWindow.Remove(k);
+   k.health.AddHediff(HediffDefOf.Anesthetic);var anes=k.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.Anesthetic);if(anes!=null)anes.Severity=1f;k.health.CheckForStateChange(null,null);bool downed=k.Downed && !k.Dead;
    var body=k.health.hediffSet.hediffs.OfType<Hediff_MonsterBody>().First();
    var at=k.Position;int ashed=Monsters.Ashed;
    body.TickInterval(60);int dt1=body.downTick;body.downTick=Find.TickManager.TicksGame-Monsters.AshTicks;bool downNow=k.Downed;string kk=body.Kind;body.TickInterval(60);

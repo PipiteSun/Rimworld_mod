@@ -11,6 +11,23 @@ using Verse.AI;
 namespace LichPhylactery {
  // 1.63.0 清理版第二批：半巫妖谈判、吞眼魔脑髓、拉洛克使者卖情报、纳巴苏挑离群目标、敌方卓尔用黑暗术。
 
+ // ---------- 地精埋伏（1.82.0 补）：带地精劫掠者的敌对袭击，原本从一边走进来的，25% 改成分几路从不同边缘包抄 ----------
+ public static class GoblinAmbush {
+  public const float Chance=.25f;public const string RaiderKind="LP_FH_GoblinRaider";
+  public static float? TestRoll;public static int Fired;
+  public static bool Applies(List<Pawn> pawns,IncidentParms parms)=>parms?.raidArrivalMode==PawnsArrivalModeDefOf.EdgeWalkIn && parms.target is Map && parms.faction!=null && parms.faction.HostileTo(Faction.OfPlayer) && pawns!=null && pawns.Any(p=>p?.kindDef?.defName==RaiderKind);
+  public static bool TryArrive(List<Pawn> pawns,IncidentParms parms){
+   if(!Applies(pawns,parms) || (TestRoll??Rand.Value)>=Chance)return false;
+   parms.raidArrivalMode=PawnsArrivalModeDefOf.EdgeWalkInGroups;parms.raidArrivalMode.Worker.Arrive(pawns,parms);Fired++;
+   if(!Adventurer.TestSuppressed)Messages.Message("地精埋伏：劫掠者分成几路，从地图的不同边缘包抄过来！",new LookTargets(pawns.Where(p=>p.Spawned)),MessageTypeDefOf.ThreatBig);
+   return true;
+  }
+ }
+ [HarmonyPatch(typeof(PawnsArrivalModeWorker_EdgeWalkIn),nameof(PawnsArrivalModeWorker_EdgeWalkIn.Arrive))]
+ public static class GoblinAmbushArrive {
+  static bool Prefix(List<Pawn> pawns,IncidentParms parms)=>!GoblinAmbush.TryArrive(pawns,parms);
+ }
+
  // ---------- 巫妖与半巫妖谈判 ----------
  // 本方巫妖 10 格内有没被激怒（没受过伤）的半巫妖：成功率 50% + 社交×3% + 冒险者等级×1%（最多 90%）。
  // 成功：半巫妖离开地图，留下 1 份秘术残卷或 1 块神迹残片；失败：它照常敌对，并立刻做一次传奇动作。每个半巫妖只能谈一次。

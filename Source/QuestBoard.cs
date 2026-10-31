@@ -64,23 +64,55 @@ namespace LichPhylactery {
   }
 
   // ---------- 报酬 ----------
+  // 1.83.0 报酬随机化：银币减半，换成一批原版任务奖励（原版 Reward_ItemsStandard 生成器：药品、材料、装备、书、科技蓝图、DLC 物品……，
+  // 品质照原版奖励规则），价值按等阶 × 委托类型 × 0.8～1.3 浮动；DND 物品改成按概率出现。物品在贴出委托时就生成好并存进委托里，面板上看到的就是到手的。
+  public const float SilverShare=.5f,GoodsShare=1.1f;
+  public static readonly float[] DndChance={.35f,.5f,.6f,.75f,.9f};
+  public static float KindMult(string kind)=>kind==Hunt?HuntSilver:kind==Camp?CampSilver:1f;
   public static List<string> RollItems(int tier){
    var l=new List<string>();
    Action<string[]> add=pool=>{var ok=pool.Where(n=>Items.Thing(n)!=null).ToList();if(ok.Count>0)l.Add(ok.RandomElement());};
-   int common=tier==1?1:tier==2?2:tier==3?1:tier==4?0:1,rare=tier==3?1:tier>=4?2:0,magic=tier>=4?1:0;
-   for(int i=0;i<common;i++)add(IsekaiLoot.CommonLoot);
-   for(int i=0;i<rare;i++)add(IsekaiLoot.RareLoot);
-   for(int i=0;i<magic;i++)add(IsekaiLoot.MagicLoot);
+   if(Rand.Chance(DndChance[Mathf.Clamp(tier,1,MaxTier)-1])){
+    if(tier>=4 && Rand.Chance(tier==5?.7f:.45f))add(IsekaiLoot.MagicLoot);
+    else if(tier>=3 && Rand.Chance(.5f))add(IsekaiLoot.RareLoot);
+    else add(IsekaiLoot.CommonLoot);
+   }
+   if(tier==5 && Rand.Chance(.4f))add(IsekaiLoot.RareLoot);
    return l;
+  }
+  public static float GoodsBudget(int tier,string kind)=>TierSilver[Mathf.Clamp(tier,1,MaxTier)-1]*KindMult(kind)*GoodsShare;
+  public static List<Thing> RollGoods(float value,out int extraSilver){
+   extraSilver=0;var outList=new List<Thing>();
+   try{
+    var parms=default(ThingSetMakerParams);parms.totalMarketValueRange=new FloatRange(value*.85f,value*1.05f);parms.qualityGenerator=QualityGenerator.Reward;
+    var got=ThingSetMakerDefOf.Reward_ItemsStandard.root.Generate(parms);
+    foreach(var t in got){
+     if(t==null || t is Pawn)continue;
+     if(t.def==ThingDefOf.Silver){extraSilver+=t.stackCount;continue;}
+     outList.Add(t);
+    }
+   }catch(Exception e){Log.Warning("[LichPhylactery] quest board reward roll failed: "+e.Message);}
+   return outList;
+  }
+  public static void RollReward(BoardContract c){
+   float budget=GoodsBudget(c.tier,c.kind)*Rand.Range(.8f,1.3f);
+   c.goods=RollGoods(budget,out int extra);
+   c.silver=Mathf.RoundToInt((TierSilver[c.tier-1]*KindMult(c.kind)*SilverShare+extra)/10f)*10;
+   c.items=RollItems(c.tier);
+   // 原版生成器偶尔什么都给不出（被别的模组过滤空了）：那就照旧全给银子。
+   if(c.goods.Count==0)c.silver+=Mathf.RoundToInt(budget/10f)*10;
   }
   public static List<Thing> MakeReward(BoardContract c){
    var list=new List<Thing>();int silver=c.silver;
    while(silver>0){var s=ThingMaker.MakeThing(ThingDefOf.Silver);s.stackCount=Math.Min(silver,ThingDefOf.Silver.stackLimit);silver-=s.stackCount;list.Add(s);}
+   if(c.goods!=null){list.AddRange(c.goods.Where(t=>t!=null && !t.Destroyed));c.goods.Clear();}
    foreach(var n in c.items){var d=Items.Thing(n);if(d==null)continue;var t=ThingMaker.MakeThing(d,d.MadeFromStuff?GenStuff.DefaultStuffFor(d):null);t.TryGetComp<CompQuality>()?.SetQuality(QualityUtility.GenerateQualityReward(),ArtGenerationContext.Outsider);list.Add(t);}
    return list;
   }
+  public static float GoodsValue(BoardContract c)=>c.goods==null?0f:c.goods.Where(t=>t!=null).Sum(t=>t.MarketValue*t.stackCount);
   public static string RewardText(BoardContract c){
    var parts=new List<string>{c.silver+" 银"};
+   if(c.goods!=null)foreach(var t in c.goods)if(t!=null)parts.Add(t.LabelNoParenthesis+(t.stackCount>1?" ×"+t.stackCount:"")+(t.TryGetQuality(out var qc)?"（"+qc.GetLabel()+"）":""));
    foreach(var n in c.items){var d=Items.Thing(n);if(d!=null)parts.Add(d.label);}
    return string.Join("、",parts);
   }
@@ -93,8 +125,7 @@ namespace LichPhylactery {
    if(kind==Defense){c.points=pts;c.faction=PickFaction(pts,false);if(c.faction==null){var a=PickAnimal(pts,home.Tile);if(a==null)return null;c.animal=a.defName;}}
    else if(kind==Hunt){c.points=pts*HuntPoints;var a=PickAnimal(c.points,home.Tile);if(a==null)return null;c.animal=a.defName;}
    else{c.points=pts;c.faction=PickFaction(pts,true);if(c.faction==null)return null;}
-   c.silver=Mathf.RoundToInt(TierSilver[tier-1]*(kind==Hunt?HuntSilver:kind==Camp?CampSilver:1f)/10f)*10;
-   c.items=RollItems(tier);
+   RollReward(c);
    return c;
   }
   public static void Refresh(){
@@ -126,7 +157,7 @@ namespace LichPhylactery {
    if(c.kind==Defense)body="冒险者公会得到消息："+(c.faction!=null?c.faction.Name+"的一伙人":"一群狂暴的"+AnimalLabel(c))+"正朝殖民地逼近。接下委托后 6～12 小时内来袭，打退所有来犯者（杀死、打倒、俘虏或赶走）就算完成。";
    else if(c.kind==Hunt)body="荒野里出现了一群狂暴的"+AnimalLabel(c)+"，威胁着过往的商旅。接下委托后世界地图上会出现「怪物巢穴」（离殖民地 "+SiteMin(c.tier)+"～"+SiteMax(c.tier)+" 格），组织远征队前往，消灭所有怪物（杀死或打倒）。"+SiteDays(c.tier)+" 天内不去，巢穴就会散去，委托失败。";
    else body=(c.faction?.Name??"敌对派系")+"在附近建了一处前哨据点。接下委托后据点会出现在世界地图上（离殖民地 "+SiteMin(c.tier)+"～"+SiteMax(c.tier)+" 格），前往并消灭所有守军。"+SiteDays(c.tier)+" 天内不去，据点就会撤走，委托失败。";
-   return body+"\n\n等阶："+TierLabel(c.tier)+"（推荐冒险者等级 "+TierMinLevel[c.tier-1]+"+）\n威胁点数："+Mathf.RoundToInt(c.points)+"\n报酬："+RewardText(c)+"\n冒险者经验：接取人约 "+Mathf.RoundToInt(XpFor(c.points)*Adventurer.XpScale)+" 点，殖民地其他人各约 "+Mathf.RoundToInt(XpFor(c.points)*Adventurer.QuestHomeShare*Adventurer.XpScale)+" 点。";
+   return body+"\n\n等阶："+TierLabel(c.tier)+"（推荐冒险者等级 "+TierMinLevel[c.tier-1]+"+）\n威胁点数："+Mathf.RoundToInt(c.points)+"\n报酬："+RewardText(c)+(c.goods!=null && c.goods.Count>0?"（物品约值 "+Mathf.RoundToInt(GoodsValue(c))+" 银）":"")+"\n冒险者经验：接取人约 "+Mathf.RoundToInt(XpFor(c.points)*Adventurer.XpScale)+" 点，殖民地其他人各约 "+Mathf.RoundToInt(XpFor(c.points)*Adventurer.QuestHomeShare*Adventurer.XpScale)+" 点。";
   }
 
   public static AcceptanceReport CanAccept(BoardContract c){
@@ -214,11 +245,12 @@ namespace LichPhylactery {
 
   public static void Complete(BoardContract c){
    var st=State;var home=Home;var q=c.quest;
+   string rewardText=RewardText(c);
    var reward=MakeReward(c);
    if(home!=null && reward.Count>0)DropPodUtility.DropThingsNear(DropCellFinder.TradeDropSpot(home),home,reward,110,false,false,true,false);
    c.done=true;st?.active.Remove(c);
    var by=q?.AccepterPawn;
-   Find.LetterStack.ReceiveLetter("委托完成："+Title(c),"探索公告板上的【"+TierLabel(c.tier)+"】委托「"+Title(c)+"」完成了。\n\n报酬（空投送到殖民地）："+RewardText(c)+"\n冒险者经验："+(by!=null?by.LabelShort+"约 "+Mathf.RoundToInt(XpFor(c.points)*Adventurer.XpScale)+" 点，":"")+"殖民地其他人各约 "+Mathf.RoundToInt(XpFor(c.points)*Adventurer.QuestHomeShare*Adventurer.XpScale)+" 点。",LetterDefOf.PositiveEvent,home!=null?new LookTargets(new TargetInfo(DropCellFinder.TradeDropSpot(home),home)):LookTargets.Invalid,null,q);
+   Find.LetterStack.ReceiveLetter("委托完成："+Title(c),"探索公告板上的【"+TierLabel(c.tier)+"】委托「"+Title(c)+"」完成了。\n\n报酬（空投送到殖民地）："+rewardText+"\n冒险者经验："+(by!=null?by.LabelShort+"约 "+Mathf.RoundToInt(XpFor(c.points)*Adventurer.XpScale)+" 点，":"")+"殖民地其他人各约 "+Mathf.RoundToInt(XpFor(c.points)*Adventurer.QuestHomeShare*Adventurer.XpScale)+" 点。",LetterDefOf.PositiveEvent,home!=null?new LookTargets(new TargetInfo(DropCellFinder.TradeDropSpot(home),home)):LookTargets.Invalid,null,q);
    if(q!=null && q.State==QuestState.Ongoing)q.End(QuestEndOutcome.Success,false);
   }
   public static void Fail(BoardContract c,string why){
@@ -243,17 +275,17 @@ namespace LichPhylactery {
 
  // 一份委托（公告板上的或已接下的）。
  public class BoardContract : IExposable {
-  public int id;public string kind;public int tier=1;public float points;public int silver;public List<string> items=new List<string>();
+  public int id;public string kind;public int tier=1;public float points;public int silver;public List<string> items=new List<string>();public List<Thing> goods=new List<Thing>();
   public Faction faction;public string animal;public int offerExpires=-1;
   public Quest quest;public Site site;public List<Pawn> raiders=new List<Pawn>();
   public int raidTick=-1,deadline=-1,mapTick=-1;public bool raidSent,sawEnemies,done;
   public void ExposeData(){
    Scribe_Values.Look(ref id,"id");Scribe_Values.Look(ref kind,"kind");Scribe_Values.Look(ref tier,"tier",1);Scribe_Values.Look(ref points,"points");Scribe_Values.Look(ref silver,"silver");
-   Scribe_Collections.Look(ref items,"items",LookMode.Value);Scribe_References.Look(ref faction,"faction");Scribe_Values.Look(ref animal,"animal");Scribe_Values.Look(ref offerExpires,"offerExpires",-1);
+   Scribe_Collections.Look(ref items,"items",LookMode.Value);Scribe_Collections.Look(ref goods,"goods",LookMode.Deep);Scribe_References.Look(ref faction,"faction");Scribe_Values.Look(ref animal,"animal");Scribe_Values.Look(ref offerExpires,"offerExpires",-1);
    Scribe_References.Look(ref quest,"quest");Scribe_References.Look(ref site,"site");Scribe_Collections.Look(ref raiders,"raiders",LookMode.Reference);
    Scribe_Values.Look(ref raidTick,"raidTick",-1);Scribe_Values.Look(ref deadline,"deadline",-1);Scribe_Values.Look(ref mapTick,"mapTick",-1);
    Scribe_Values.Look(ref raidSent,"raidSent");Scribe_Values.Look(ref sawEnemies,"sawEnemies");Scribe_Values.Look(ref done,"done");
-   if(Scribe.mode==LoadSaveMode.PostLoadInit){if(items==null)items=new List<string>();if(raiders==null)raiders=new List<Pawn>();raiders.RemoveAll(p=>p==null);}
+   if(Scribe.mode==LoadSaveMode.PostLoadInit){if(items==null)items=new List<string>();if(goods==null)goods=new List<Thing>();goods.RemoveAll(t=>t==null);if(raiders==null)raiders=new List<Pawn>();raiders.RemoveAll(p=>p==null);}
   }
  }
 
@@ -344,7 +376,7 @@ namespace LichPhylactery {
    Widgets.Label(new Rect(inner.x+60f,inner.y+2f,inner.width-200f,24f),QuestBoard.KindLabel(c.kind)+" · "+QuestBoard.Title(c));
    GUI.color=new Color(.8f,.8f,.8f);
    Widgets.Label(new Rect(inner.x,inner.y+28f,inner.width-150f,24f),"推荐等级 "+QuestBoard.TierMinLevel[c.tier-1]+"+ · 威胁点数 "+Mathf.RoundToInt(c.points)+" · 经验约 "+Mathf.RoundToInt(QuestBoard.XpFor(c.points)*Adventurer.XpScale)+(c.kind==QuestBoard.Defense?" · 在殖民地":" · 要远征"));
-   Widgets.Label(new Rect(inner.x,inner.y+52f,inner.width-150f,24f),"报酬："+QuestBoard.RewardText(c));
+   var rr=new Rect(inner.x,inner.y+52f,inner.width-150f,24f);Widgets.Label(rr,("报酬："+QuestBoard.RewardText(c)).Truncate(rr.width));
    GUI.color=Color.white;
    TooltipHandler.TipRegion(new Rect(inner.x,inner.y,inner.width-150f,inner.height),QuestBoard.Describe(c));
    var ok=QuestBoard.CanAccept(c);var btn=new Rect(inner.xMax-130f,inner.y+20f,130f,36f);

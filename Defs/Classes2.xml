@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 1.73.0 职业体系第二版：法师、牧师、德鲁伊、术士、器械师移到主模组（原版 RimWorld 能力，不需要 VPE）。
-     能力 defName 与 1.71.0 的 VEF 能力相同；职业等级 1/3/5/9/13/17/20 获得，20 级终极另要主技能 18。
+     能力 defName 与 1.71.0 的 VEF 能力相同；职业等级 1/3/5/7/10/13/15 获得，15 级终极另要主技能 15。
      资源：法师 / 术士 / 德鲁伊 法力（各自一条），牧师 神恩（与圣武士共用一条），器械师没有资源只看冷却。见 ArtSource/Classes-1.73.0-report.md。 -->
 <Defs>
   <!-- ===== 职业 ===== -->
   <LichPhylactery.LP_ClassDef>
     <defName>LP_Class_Wizard</defName>
     <label>法师</label>
-    <description>DND 法师的奥术：魔法飞弹、法师护甲、火球术、睡眠术、闪电束、急速术、石墙术、传送术，终极 解离术。强度看“奥术强度”（智识），伤害与治疗（设置开着时）乘心灵敏感度。资源：法力（睡觉时恢复，在研究台、卷轴书桌或读书时也会慢慢恢复）。</description>
+    <description>DND 法师的奥术：魔法飞弹（戏法）、法师护甲、护盾术、火球术、迷踪步、睡眠术、镜影术、闪电束、急速术、石墙术、传送术，终极 解离术。强度看“奥术强度”（智识），伤害与治疗（设置开着时）乘心灵敏感度。资源：法力（上限 2 + 法师等级；醒着时缓慢恢复，睡觉时快，在研究台、卷轴书桌或读书时再快一些）。</description>
     <mainSkill>Intellectual</mainSkill>
     <primary>Int</primary>
     <order>4</order>
@@ -19,13 +19,16 @@
     <abilities>
       <li><ability>LP_MagicMissile</ability><level>1</level></li>
       <li><ability>LP_MageArmor</ability><level>1</level></li>
+      <li><ability>LP_ShieldSpell</ability><level>1</level></li>
       <li><ability>LP_Fireball</ability><level>3</level></li>
+      <li><ability>LP_MistyStep</ability><level>3</level></li>
       <li><ability>LP_Sleep</ability><level>5</level></li>
-      <li><ability>LP_LightningBolt</ability><level>9</level></li>
-      <li><ability>LP_Haste</ability><level>9</level></li>
-      <li><ability>LP_WallOfStone</ability><level>13</level></li>
-      <li><ability>LP_Teleport</ability><level>17</level></li>
-      <li><ability>LP_Disintegrate</ability><level>20</level><capstoneSkill>Intellectual</capstoneSkill></li>
+      <li><ability>LP_MirrorImage</ability><level>5</level></li>
+      <li><ability>LP_LightningBolt</ability><level>7</level></li>
+      <li><ability>LP_Haste</ability><level>7</level></li>
+      <li><ability>LP_WallOfStone</ability><level>10</level></li>
+      <li><ability>LP_Teleport</ability><level>13</level></li>
+      <li><ability>LP_Disintegrate</ability><level>15</level><capstoneSkill>Intellectual</capstoneSkill></li>
     </abilities>
     <legendary><li>LP_LegSpellMastery</li><li>LP_LegMeteorSwarm</li></legendary>
   </LichPhylactery.LP_ClassDef>
@@ -47,11 +50,11 @@
       <li><ability>LP_Bless</ability><level>1</level></li>
       <li><ability>LP_LesserRestoration</ability><level>3</level></li>
       <li><ability>LP_Guidance</ability><level>5</level></li>
-      <li><ability>LP_SacredFlame</ability><level>9</level></li>
-      <li><ability>LP_TurnUndead</ability><level>9</level></li>
-      <li><ability>LP_MassHeal</ability><level>13</level></li>
-      <li><ability>LP_DeathWard</ability><level>17</level></li>
-      <li><ability>LP_Raise</ability><level>20</level><capstoneSkill>Social</capstoneSkill></li>
+      <li><ability>LP_SacredFlame</ability><level>7</level></li>
+      <li><ability>LP_TurnUndead</ability><level>7</level></li>
+      <li><ability>LP_MassHeal</ability><level>10</level></li>
+      <li><ability>LP_DeathWard</ability><level>13</level></li>
+      <li><ability>LP_Raise</ability><level>15</level><capstoneSkill>Social</capstoneSkill></li>
     </abilities>
     <legendary><li>LP_LegDivineIntervention</li><li>LP_LegDivineGuardian</li></legendary>
   </LichPhylactery.LP_ClassDef>
@@ -59,7 +62,7 @@
   <LichPhylactery.LP_ClassDef>
     <defName>LP_Class_Druid</defName>
     <label>德鲁伊</label>
-    <description>DND 德鲁伊守护自然：安抚野兽、召唤野兽、荒野变形、兽王号令（驯兽，野性强度），纠缠术、树肤术、植物滋长、召雷术（种植，生长强度），终极 掌控天气。效果（设置开着时）乘心灵敏感度。资源：法力（睡觉时恢复）。巫妖不能当德鲁伊。</description>
+    <description>DND 德鲁伊守护自然：安抚野兽、召唤野兽、荒野变形、兽王号令（驯兽，野性强度），纠缠术、树肤术、植物滋长、召雷术（种植，生长强度），终极 掌控天气。效果（设置开着时）乘心灵敏感度。资源：法力（上限 2 + 德鲁伊等级；醒着时缓慢恢复，睡觉时快）。巫妖不能当德鲁伊。</description>
     <mainSkill>Plants</mainSkill>
     <alternateSkill>Animals</alternateSkill>
     <primary>Wis</primary>
@@ -74,11 +77,11 @@
       <li><ability>LP_Entangle</ability><level>1</level></li>
       <li><ability>LP_ConjureAnimals</ability><level>3</level></li>
       <li><ability>LP_Barkskin</ability><level>5</level></li>
-      <li><ability>LP_WildShape</ability><level>9</level></li>
-      <li><ability>LP_PlantGrowth</ability><level>9</level></li>
-      <li><ability>LP_BeastCommand</ability><level>13</level></li>
-      <li><ability>LP_CallLightning</ability><level>17</level></li>
-      <li><ability>LP_ControlWeather</ability><level>20</level><capstoneSkill>Plants</capstoneSkill></li>
+      <li><ability>LP_WildShape</ability><level>7</level></li>
+      <li><ability>LP_PlantGrowth</ability><level>7</level></li>
+      <li><ability>LP_BeastCommand</ability><level>10</level></li>
+      <li><ability>LP_CallLightning</ability><level>13</level></li>
+      <li><ability>LP_ControlWeather</ability><level>15</level><capstoneSkill>Plants</capstoneSkill></li>
     </abilities>
     <legendary><li>LP_LegTimelessDruid</li><li>LP_LegNatureWrath</li></legendary>
   </LichPhylactery.LP_ClassDef>
@@ -86,7 +89,7 @@
   <LichPhylactery.LP_ClassDef>
     <defName>LP_Class_Sorcerer</defName>
     <label>术士</label>
-    <description>DND 术士生来带着魔力：混沌箭、魅惑人类、龙族之翼、群体暗示（社交，天赋强度），燃烧之手、超魔·孪生、冰风暴、超魔·强效（智识，奥术强度），终极 魔涌。力能龙裔、元素裔、巨灵、泰坦、风暴巨人、云巨人、六臂蛇人、坎比恩有术士血脉：技能门槛 −2、天赋强度 +15%。资源：法力（睡觉时恢复）。</description>
+    <description>DND 术士生来带着魔力：混沌箭、魅惑人类、龙族之翼、群体暗示（社交，天赋强度），燃烧之手、超魔·孪生、冰风暴、超魔·强效（智识，奥术强度），终极 魔涌。力能龙裔、元素裔、巨灵、泰坦、风暴巨人、云巨人、六臂蛇人、坎比恩有术士血脉：技能门槛 −2、天赋强度 +15%。资源：法力（上限 2 + 术士等级；醒着时缓慢恢复，睡觉时快）。</description>
     <mainSkill>Social</mainSkill>
     <alternateSkill>Intellectual</alternateSkill>
     <primary>Cha</primary>
@@ -102,11 +105,11 @@
       <li><ability>LP_BurningHands</ability><level>1</level></li>
       <li><ability>LP_CharmPerson</ability><level>3</level></li>
       <li><ability>LP_TwinSpell</ability><level>5</level></li>
-      <li><ability>LP_DragonWings</ability><level>9</level></li>
-      <li><ability>LP_IceStorm</ability><level>9</level></li>
-      <li><ability>LP_MassSuggestion</ability><level>13</level></li>
-      <li><ability>LP_EmpoweredSpell</ability><level>17</level></li>
-      <li><ability>LP_SorcerousSurge</ability><level>20</level><capstoneSkill>Social</capstoneSkill></li>
+      <li><ability>LP_DragonWings</ability><level>7</level></li>
+      <li><ability>LP_IceStorm</ability><level>7</level></li>
+      <li><ability>LP_MassSuggestion</ability><level>10</level></li>
+      <li><ability>LP_EmpoweredSpell</ability><level>13</level></li>
+      <li><ability>LP_SorcerousSurge</ability><level>15</level><capstoneSkill>Social</capstoneSkill></li>
     </abilities>
     <legendary><li>LP_LegBloodlineAwakening</li><li>LP_LegArcaneSurge</li></legendary>
   </LichPhylactery.LP_ClassDef>
@@ -114,7 +117,7 @@
   <LichPhylactery.LP_ClassDef>
     <defName>LP_Class_Artificer</defName>
     <label>器械师</label>
-    <description>DND 器械师把魔力锻进器械：奥术工坊、符文铭刻、大师工艺、山岳锻造、魔力共鸣（被动），快速维修、过载射击、魔力充能、符文炮台。强度看“器械强度”（手工）。没有资源，只看冷却。模组设置“DND武器需要器械师”开着时，可制作的 DND 武器要器械师才能做：奥术工坊那一档要器械师 1 级，符文铭刻那一档要 5 级，“山岳之怒”要学会山岳锻造。</description>
+    <description>DND 器械师把魔力锻进器械：奥术工坊、符文铭刻、大师工艺、山岳锻造、魔力共鸣（被动），快速维修、过载射击、魔力充能、符文炮台。强度看“器械强度”（手工）。没有资源，只看冷却。模组设置“DND武器需要器械师”开着时，可制作的 DND 武器要器械师才能做：奥术工坊那一档要器械师 1 级，符文铭刻那一档要 5 级，“山岳之怒”要学会山岳锻造。每个器械师等级让制作的物品期望品质 +0.1 档（10 级 +1 档，20 级 +2 档；整数部分必定提升，小数部分按几率再升一档，最高传说）。</description>
     <mainSkill>Crafting</mainSkill>
     <primary>Int</primary>
     <order>8</order>
@@ -127,11 +130,11 @@
       <li><ability>LP_QuickRepair</ability><level>1</level></li>
       <li><ability>LP_Overcharge</ability><level>3</level></li>
       <li><ability>LP_RuneInscription</ability><level>5</level></li>
-      <li><ability>LP_ArcaneCharge</ability><level>9</level></li>
-      <li><ability>LP_MasterCraft</ability><level>9</level></li>
-      <li><ability>LP_MountainForge</ability><level>13</level></li>
-      <li><ability>LP_RuneTurretAbility</ability><level>17</level></li>
-      <li><ability>LP_ArcaneResonance</ability><level>20</level><capstoneSkill>Crafting</capstoneSkill></li>
+      <li><ability>LP_ArcaneCharge</ability><level>7</level></li>
+      <li><ability>LP_MasterCraft</ability><level>7</level></li>
+      <li><ability>LP_MountainForge</ability><level>10</level></li>
+      <li><ability>LP_RuneTurretAbility</ability><level>13</level></li>
+      <li><ability>LP_ArcaneResonance</ability><level>15</level><capstoneSkill>Crafting</capstoneSkill></li>
     </abilities>
     <legendary><li>LP_LegSoulforge</li><li>LP_LegWarGolem</li></legendary>
   </LichPhylactery.LP_ClassDef>
@@ -216,8 +219,21 @@
     <stages><li><statOffsets><ArmorRating_Sharp>0.25</ArmorRating_Sharp><ArmorRating_Blunt>0.25</ArmorRating_Blunt></statOffsets></li></stages>
   </HediffDef>
   <HediffDef ParentName="LP_ClassBuffBase">
-    <defName>LP_MagicSleep</defName>
-    <label>魔法睡眠</label>
+    <defName>LP_ShieldSpell</defName>
+    <hediffClass>LichPhylactery.Hediff_Ward</hediffClass>
+    <label>护盾术</label>
+    <description>一层奥术护盾：受到的伤害先由护盾吸收（严重度 = 剩余吸收量）。</description>
+    <maxSeverity>10000</maxSeverity>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_MirrorImage</defName>
+    <hediffClass>LichPhylactery.Hediff_Ward</hediffClass>
+    <label>镜影</label>
+    <description>幻影分身（严重度 = 剩余分身数）：每次被敌人的攻击命中，消耗一个分身，这一下落空。</description>
+    <stages><li><label>1 个分身</label></li><li><minSeverity>1.5</minSeverity><label>2 个分身</label></li><li><minSeverity>2.5</minSeverity><label>3 个分身</label></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_MagicSleep</defName>    <label>魔法睡眠</label>
     <description>被睡眠术放倒，意识降到 10%。</description>
     <isBad>true</isBad>
     <defaultLabelColor>(0.6,0.6,0.9)</defaultLabelColor>
@@ -586,11 +602,11 @@
   <AbilityDef ParentName="LP_ClassMeleeBase">
     <defName>LP_MagicMissile</defName>
     <label>魔法飞弹</label>
-    <description>射出 3 发奥术飞弹，每发 4 × 奥术强度点奥术力伤害，28 格。法师 1 级。</description>
+    <description>戏法，不耗法力：射出 3 发奥术飞弹，每发 4 × 奥术强度点奥术力伤害，28 格，冷却 5 秒。法师 1 级。</description>
     <iconPath>LP/Classes/Wizard/MagicMissile</iconPath>
-    <cooldownTicksRange>600</cooldownTicksRange>
+    <cooldownTicksRange>300</cooldownTicksRange>
     <verbProperties><range>28</range><warmupTime>0.5</warmupTime></verbProperties>
-    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>MagicMissile</effect><cost>1</cost><power>4</power><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>MagicMissile</effect><cost>0</cost><power>4</power><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
   </AbilityDef>
   <AbilityDef ParentName="LP_ClassSelfBase">
     <defName>LP_MageArmor</defName>
@@ -605,11 +621,11 @@
   <AbilityDef ParentName="LP_ClassLocBase">
     <defName>LP_Fireball</defName>
     <label>火球术</label>
-    <description>向 24 格内的一点投出火球，半径 2.5 的火焰爆炸，伤害 15 × 奥术强度并点燃。法师 3 级。</description>
+    <description>向 24 格内的一点投出火球，半径 4 的火焰爆炸，伤害 20 × 奥术强度并点燃。法师 3 级。</description>
     <iconPath>LP/Classes/Wizard/Fireball</iconPath>
     <cooldownTicksRange>1800</cooldownTicksRange>
     <verbProperties><range>24</range><warmupTime>1</warmupTime></verbProperties>
-    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Fireball</effect><cost>2</cost><power>15</power><radius>2.5</radius><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Fireball</effect><cost>2</cost><power>20</power><radius>4</radius><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
   </AbilityDef>
   <AbilityDef ParentName="LP_ClassMeleeBase">
     <defName>LP_Sleep</defName>
@@ -623,16 +639,16 @@
   <AbilityDef ParentName="LP_ClassLocBase">
     <defName>LP_LightningBolt</defName>
     <label>闪电束</label>
-    <description>从自己到目标拉出一道最长 20 格的闪电，线上每个敌人受 20 × 奥术强度点闪电伤害并被击晕 1 秒；机械体改受电磁伤害。法师 9 级。</description>
+    <description>从自己到目标拉出一道最长 20 格的闪电，线上每个敌人受 30 × 奥术强度点闪电伤害并被击晕 1 秒；机械体改受电磁伤害。法师 7 级。</description>
     <iconPath>LP/Classes/Wizard/LightningBolt</iconPath>
     <cooldownTicksRange>1800</cooldownTicksRange>
     <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
-    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LightningBolt</effect><cost>2</cost><power>20</power><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LightningBolt</effect><cost>2</cost><power>30</power><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
   </AbilityDef>
   <AbilityDef ParentName="LP_ClassAllyBase">
     <defName>LP_Haste</defName>
     <label>急速术</label>
-    <description>让 20 格内的一名友军急速 1 小时 × 奥术强度：移动 ×1.5、工作速度 ×1.3、近战冷却 ×0.8；结束后疲乏一小时。法师 9 级。</description>
+    <description>让 20 格内的一名友军急速 1 小时 × 奥术强度：移动 ×1.5、工作速度 ×1.3、近战冷却 ×0.8；结束后疲乏一小时。法师 7 级。</description>
     <iconPath>LP/Classes/Wizard/Haste</iconPath>
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
     <cooldownTicksRange>2500</cooldownTicksRange>
@@ -642,7 +658,7 @@
   <AbilityDef ParentName="LP_ClassLocBase">
     <defName>LP_WallOfStone</defName>
     <label>石墙术</label>
-    <description>在 20 格内的一点造出一道 5 格长的石墙（垂直于施法方向，耐久 200 × 奥术强度，一天后消散），已被占的格子跳过。法师 13 级。</description>
+    <description>在 20 格内的一点造出一道 5 格长的石墙（垂直于施法方向，耐久 200 × 奥术强度，一天后消散），已被占的格子跳过。法师 10 级。</description>
     <iconPath>LP/Classes/Wizard/WallOfStone</iconPath>
     <hostile>false</hostile>
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
@@ -653,17 +669,44 @@
   <AbilityDef ParentName="LP_ClassLocBase">
     <defName>LP_Teleport</defName>
     <label>传送术</label>
-    <description>把自己传送到视线内的任意可站立格，距离 20 × 奥术强度（最多 40）。法师 17 级。</description>
+    <description>把自己传送到视线内的任意可站立格，距离 20 × 奥术强度（最多 40）。法师 13 级。</description>
     <iconPath>LP/Classes/Wizard/Teleport</iconPath>
     <hostile>false</hostile>
     <cooldownTicksRange>7200</cooldownTicksRange>
     <verbProperties><range>40</range><warmupTime>0.5</warmupTime><targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings></targetParams></verbProperties>
     <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Teleport</effect><cost>1</cost><range>20</range><maxRange>40</maxRange><stat>LP_ArcanePower</stat></li></comps>
   </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_ShieldSpell</defName>
+    <label>护盾术</label>
+    <description>10 秒内身外多一层奥术护盾：受到的伤害先由护盾吸收，共 20 × 奥术强度点，吸完为止。法力 1，冷却 10 秒。法师 1 级。</description>
+    <iconPath>LP/Classes/Wizard/MageArmor</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PowerBuff</effect><hediff>LP_ShieldSpell</hediff><cost>1</cost><power>20</power><duration>600</duration><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_MistyStep</defName>
+    <label>迷踪步</label>
+    <description>化作银雾，瞬移到 10 格内视线所及的空格。法力 1，冷却 10 秒。法师 3 级。</description>
+    <iconPath>LP/Classes/Wizard/Teleport</iconPath>
+    <hostile>false</hostile>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>10</range><warmupTime>0</warmupTime><targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Teleport</effect><cost>1</cost><range>10</range><maxRange>10</maxRange><stat>LP_ArcanePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_MirrorImage</defName>
+    <label>镜影术</label>
+    <description>身边浮现 3 个幻影分身，持续 1 小时：每次被敌人的攻击命中，改由一个分身挨下（这一下落空），分身用完为止。法力 2，冷却 1 分钟。法师 5 级。</description>
+    <iconPath>LP/Classes/Sorcerer/TwinSpell</iconPath>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>MirrorImage</effect><cost>2</cost><duration>2500</duration><stat>LP_ArcanePower</stat></li></comps>
+  </AbilityDef>
   <AbilityDef ParentName="LP_ClassAbilityBase">
-    <defName>LP_Disintegrate</defName>
-    <label>解离术</label>
-    <description>一道绿色射线：30 格内的目标受 60 × 奥术强度点奥术力伤害（护甲只算一半），建筑与机械体受双倍；被杀死的人形目标不留尸体。法师 20 级，并且智识 18 级。</description>
+    <defName>LP_Disintegrate</defName>    <label>解离术</label>
+    <description>一道绿色射线：30 格内的目标受 60 × 奥术强度点奥术力伤害（护甲只算一半），建筑与机械体受双倍；被杀死的人形目标不留尸体。法师 15 级，并且智识 15 级。</description>
     <iconPath>LP/Classes/Wizard/Disintegrate</iconPath>
     <hostile>true</hostile>
     <cooldownTicksRange>60000</cooldownTicksRange>
@@ -714,7 +757,7 @@
   <AbilityDef ParentName="LP_ClassMeleeBase">
     <defName>LP_SacredFlame</defName>
     <label>神圣打击</label>
-    <description>20 格内的一个敌人受 20 × 神恩强度点神圣伤害，无视掩体；对亡灵、邪魔和夺心魔翻倍。牧师 9 级。</description>
+    <description>20 格内的一个敌人受 20 × 神恩强度点神圣伤害，无视掩体；对亡灵、邪魔和夺心魔翻倍。牧师 7 级。</description>
     <iconPath>LP/Classes/Cleric/SacredFlame</iconPath>
     <cooldownTicksRange>900</cooldownTicksRange>
     <verbProperties><range>20</range><warmupTime>0.5</warmupTime><requireLineOfSight>false</requireLineOfSight></verbProperties>
@@ -723,7 +766,7 @@
   <AbilityDef ParentName="LP_ClassSelfBase">
     <defName>LP_TurnUndead</defName>
     <label>驱散亡灵</label>
-    <description>半径 6 × 神恩强度内的敌对亡灵惊恐逃散 10 秒 × 神恩强度；没有心智的骷髅和死灵造物改为被击晕；巫妖只被减速。牧师 9 级。</description>
+    <description>半径 6 × 神恩强度内的敌对亡灵惊恐逃散 10 秒 × 神恩强度；没有心智的骷髅和死灵造物改为被击晕；巫妖只被减速。牧师 7 级。</description>
     <iconPath>LP/Classes/Cleric/TurnUndead</iconPath>
     <hostile>true</hostile>
     <cooldownTicksRange>3600</cooldownTicksRange>
@@ -733,7 +776,7 @@
   <AbilityDef ParentName="LP_ClassSelfBase">
     <defName>LP_MassHeal</defName>
     <label>群体治疗</label>
-    <description>治疗半径 5 内的所有友军各 15 × 神恩强度点伤势。牧师 13 级。</description>
+    <description>治疗半径 5 内的所有友军各 15 × 神恩强度点伤势。牧师 10 级。</description>
     <iconPath>LP/Classes/Cleric/MassHeal</iconPath>
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
     <cooldownTicksRange>2500</cooldownTicksRange>
@@ -743,7 +786,7 @@
   <AbilityDef ParentName="LP_ClassAllyBase">
     <defName>LP_DeathWard</defName>
     <label>死亡守卫</label>
-    <description>守护一名友军一天：疼痛 ×0.5；本应因伤倒地时立即治疗 30 × 神恩强度点伤势并消耗守卫（一天内只触发一次）。牧师 17 级。</description>
+    <description>守护一名友军一天：疼痛 ×0.5；本应因伤倒地时立即治疗 30 × 神恩强度点伤势并消耗守卫（一天内只触发一次）。牧师 13 级。</description>
     <iconPath>LP/Classes/Cleric/DeathWard</iconPath>
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
     <cooldownTicksRange>60000</cooldownTicksRange>
@@ -753,7 +796,7 @@
   <AbilityDef ParentName="LP_ClassAbilityBase">
     <defName>LP_Raise</defName>
     <label>复生术</label>
-    <description>让 12 格内一具死亡不超过 3 天的人形尸体复活（对巫妖、死灵造物和大脑被吞噬的尸体无效），复活者 3 天“复生虚弱”。牧师 20 级，并且社交 18 级。</description>
+    <description>让 12 格内一具死亡不超过 3 天的人形尸体复活（对巫妖、死灵造物和大脑被吞噬的尸体无效），复活者 3 天“复生虚弱”。牧师 15 级，并且社交 15 级。</description>
     <iconPath>LP/Classes/Cleric/Raise</iconPath>
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
     <cooldownTicksRange>300000</cooldownTicksRange>
@@ -802,7 +845,7 @@
   <AbilityDef ParentName="LP_ClassSelfBase">
     <defName>LP_WildShape</defName>
     <label>荒野变形</label>
-    <description>化为熊形 1 小时 × 野性强度：远程武器收进背包（变回时装回），用熊爪和熊咬战斗，近战伤害 × 野性强度，受到伤害 ×0.6，移动 ×1.15，不能做手工、研究和照料类工作。可以随时“变回原形”。德鲁伊 9 级。</description>
+    <description>化为熊形 1 小时 × 野性强度：远程武器收进背包（变回时装回），用熊爪和熊咬战斗，近战伤害 × 野性强度，受到伤害 ×0.6，移动 ×1.15，不能做手工、研究和照料类工作。可以随时“变回原形”。德鲁伊 7 级。</description>
     <iconPath>LP/Classes/Druid/WildShape</iconPath>
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
     <cooldownTicksRange>60000</cooldownTicksRange>
@@ -812,7 +855,7 @@
   <AbilityDef ParentName="LP_ClassLocBase">
     <defName>LP_PlantGrowth</defName>
     <label>植物滋长</label>
-    <description>25 格内一点半径 6 × 生长强度内的所有植物（作物和野生）生长度 +25% × 生长强度（封顶 100%），并去掉枯萎病。德鲁伊 9 级。</description>
+    <description>25 格内一点半径 6 × 生长强度内的所有植物（作物和野生）生长度 +25% × 生长强度（封顶 100%），并去掉枯萎病。德鲁伊 7 级。</description>
     <iconPath>LP/Classes/Druid/PlantGrowth</iconPath>
     <hostile>false</hostile>
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
@@ -823,7 +866,7 @@
   <AbilityDef ParentName="LP_ClassSelfBase">
     <defName>LP_BeastCommand</defName>
     <label>兽王号令</label>
-    <description>半径 10 × 野性强度内本派系的动物（含召唤的灵狼）1 小时：近战伤害 ×(1 + 0.3 × 野性强度)、移动 ×1.2、受到伤害 ×0.8。德鲁伊 13 级。</description>
+    <description>半径 10 × 野性强度内本派系的动物（含召唤的灵狼）1 小时：近战伤害 ×(1 + 0.3 × 野性强度)、移动 ×1.2、受到伤害 ×0.8。德鲁伊 10 级。</description>
     <iconPath>LP/Classes/Druid/BeastCommand</iconPath>
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
     <cooldownTicksRange>60000</cooldownTicksRange>
@@ -832,7 +875,7 @@
   <AbilityDef ParentName="LP_ClassLocBase">
     <defName>LP_CallLightning</defName>
     <label>召雷术</label>
-    <description>30 格内一点落雷：半径 1.9 内的敌人受 25 × 生长强度 电击伤害（机械体改受电磁）。下雨或雷暴时伤害 ×1.5、冷却减半。德鲁伊 17 级。</description>
+    <description>30 格内一点落雷：半径 1.9 内的敌人受 25 × 生长强度 电击伤害（机械体改受电磁）。下雨或雷暴时伤害 ×1.5、冷却减半。德鲁伊 13 级。</description>
     <iconPath>LP/Classes/Druid/CallLightning</iconPath>
     <cooldownTicksRange>3600</cooldownTicksRange>
     <verbProperties><range>30</range><warmupTime>0.75</warmupTime></verbProperties>
@@ -841,7 +884,7 @@
   <AbilityDef ParentName="LP_ClassSelfBase">
     <defName>LP_ControlWeather</defName>
     <label>掌控天气</label>
-    <description>打开天气窗口选择天气（晴、雨、雾、雷暴，气温 ≤ 0 时还有雪）维持 1 天，并结束本地图一个负面天气事件（毒尘、寒潮、热浪、火山冬天等；任务和永久事件除外）。德鲁伊 20 级，并且种植 18 级。</description>
+    <description>打开天气窗口选择天气（晴、雨、雾、雷暴，气温 ≤ 0 时还有雪）维持 1 天，并结束本地图一个负面天气事件（毒尘、寒潮、热浪、火山冬天等；任务和永久事件除外）。德鲁伊 15 级，并且种植 15 级。</description>
     <iconPath>LP/Classes/Druid/ControlWeather</iconPath>
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
     <cooldownTicksRange>300000</cooldownTicksRange>
@@ -862,11 +905,11 @@
   <AbilityDef ParentName="LP_ClassLocBase">
     <defName>LP_BurningHands</defName>
     <label>燃烧之手</label>
-    <description>面前 90° 扇形 6 格喷出火焰：10 × 奥术强度 火焰伤害并点燃，地面可能起火。术士 1 级。</description>
+    <description>面前 90° 扇形 6 格喷出火焰：18 × 奥术强度 火焰伤害并点燃，地面可能起火。术士 1 级。</description>
     <iconPath>LP/Classes/Sorcerer/BurningHands</iconPath>
     <cooldownTicksRange>900</cooldownTicksRange>
     <verbProperties><range>6</range><warmupTime>0.5</warmupTime></verbProperties>
-    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>BurningHands</effect><cost>1</cost><power>10</power><stat>LP_ArcanePower</stat><psychic>true</psychic><sorcery>true</sorcery></li></comps>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>BurningHands</effect><cost>1</cost><power>18</power><stat>LP_ArcanePower</stat><psychic>true</psychic><sorcery>true</sorcery></li></comps>
   </AbilityDef>
   <AbilityDef ParentName="LP_ClassAbilityBase">
     <defName>LP_CharmPerson</defName>
@@ -891,7 +934,7 @@
   <AbilityDef ParentName="LP_ClassLocBase">
     <defName>LP_DragonWings</defName>
     <label>龙族之翼</label>
-    <description>展开龙翼，飞到 15 × 天赋强度 格内的可站立格，飞行中不受攻击；起飞后 15 秒内闪避 +20%。术士 9 级。</description>
+    <description>展开龙翼，飞到 15 × 天赋强度 格内的可站立格，飞行中不受攻击；起飞后 15 秒内闪避 +20%。术士 7 级。</description>
     <iconPath>LP/Classes/Sorcerer/DragonWings</iconPath>
     <hostile>false</hostile>
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
@@ -902,16 +945,16 @@
   <AbilityDef ParentName="LP_ClassLocBase">
     <defName>LP_IceStorm</defName>
     <label>冰风暴</label>
-    <description>25 格内一点降下冰风暴：半径 3 内的敌人受 8 × 奥术强度 冰霜伤害和一半的钝器伤害，并减速 6 秒；地面积雪。术士 9 级。</description>
+    <description>25 格内一点降下冰风暴：半径 3 内的敌人受 14 × 奥术强度 冰霜伤害和一半的钝器伤害，并减速 6 秒；地面积雪。术士 7 级。</description>
     <iconPath>LP/Classes/Sorcerer/IceStorm</iconPath>
     <cooldownTicksRange>3600</cooldownTicksRange>
     <verbProperties><range>25</range><warmupTime>1</warmupTime></verbProperties>
-    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>IceStorm</effect><cost>2</cost><power>8</power><radius>3</radius><stat>LP_ArcanePower</stat><psychic>true</psychic><sorcery>true</sorcery></li></comps>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>IceStorm</effect><cost>2</cost><power>14</power><radius>3</radius><stat>LP_ArcanePower</stat><psychic>true</psychic><sorcery>true</sorcery></li></comps>
   </AbilityDef>
   <AbilityDef ParentName="LP_ClassLocBase">
     <defName>LP_MassSuggestion</defName>
     <label>群体暗示</label>
-    <description>20 格内一点半径 4 内的敌对人形各自对抗心智抗性，没抵抗住的陷入恍惚 15 秒 × 天赋强度。术士 13 级。</description>
+    <description>20 格内一点半径 4 内的敌对人形各自对抗心智抗性，没抵抗住的陷入恍惚 15 秒 × 天赋强度。术士 10 级。</description>
     <iconPath>LP/Classes/Sorcerer/MassSuggestion</iconPath>
     <cooldownTicksRange>2500</cooldownTicksRange>
     <verbProperties><warmupTime>1</warmupTime></verbProperties>
@@ -920,7 +963,7 @@
   <AbilityDef ParentName="LP_ClassSelfBase">
     <defName>LP_EmpoweredSpell</defName>
     <label>超魔·强效</label>
-    <description>30 秒内接下来的两个术士法术伤害 ×1.5。术士 17 级。</description>
+    <description>30 秒内接下来的两个术士法术伤害 ×1.5。术士 13 级。</description>
     <iconPath>LP/Classes/Sorcerer/EmpoweredSpell</iconPath>
     <cooldownTicksRange>2500</cooldownTicksRange>
     <verbProperties><warmupTime>0</warmupTime></verbProperties>
@@ -929,7 +972,7 @@
   <AbilityDef ParentName="LP_ClassSelfBase">
     <defName>LP_SorcerousSurge</defName>
     <label>魔涌</label>
-    <description>30 秒 × 天赋强度：术士法术不耗法力、冷却 ×0.25；每次施法有 20% 触发狂野魔法——治愈之光、隐形、灵能共鸣、繁花，或者自燃、乱序传送、熵涌、混乱精魂。术士 20 级，并且社交 18 级。</description>
+    <description>30 秒 × 天赋强度：术士法术不耗法力、冷却 ×0.25；每次施法有 20% 触发狂野魔法——治愈之光、隐形、灵能共鸣、繁花，或者自燃、乱序传送、熵涌、混乱精魂。术士 15 级，并且社交 15 级。</description>
     <iconPath>LP/Classes/Sorcerer/SorcerousSurge</iconPath>
     <cooldownTicksRange>180000</cooldownTicksRange>
     <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><cost>3</cost><duration>1800</duration><durationScales>true</durationScales><stat>LP_InnatePower</stat><sorcery>true</sorcery></li></comps>
@@ -972,7 +1015,7 @@
   <AbilityDef ParentName="LP_ClassAllyBase">
     <defName>LP_ArcaneCharge</defName>
     <label>魔力充能</label>
-    <description>给一名友方灌注魔力：30 秒内用符文矮人枪械和法杖时魔力系数 +0.5（对其他武器无效）。器械师 9 级。</description>
+    <description>给一名友方灌注魔力：30 秒内用符文矮人枪械和法杖时魔力系数 +0.5（对其他武器无效）。器械师 7 级。</description>
     <iconPath>LP/Classes/Artificer/ArcaneCharge</iconPath>
     <cooldownTicksRange>3600</cooldownTicksRange>
     <verbProperties><range>14.9</range><warmupTime>0.33</warmupTime><requireLineOfSight>true</requireLineOfSight></verbProperties>
@@ -981,21 +1024,21 @@
   <AbilityDef ParentName="LP_ClassSelfBase">
     <defName>LP_MasterCraft</defName>
     <label>大师工艺</label>
-    <description>被动：制作“符文火器”“奥术法杖”研究解锁的所有武器品质 +1（与矮人的加成叠加，最高传说）。器械师 9 级。</description>
+    <description>被动：制作“符文火器”“奥术法杖”研究解锁的所有武器品质 +1（与矮人的加成叠加，最高传说）。器械师 7 级。</description>
     <iconPath>LP/Classes/Artificer/MasterCraft</iconPath>
     <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
   </AbilityDef>
   <AbilityDef ParentName="LP_ClassSelfBase">
     <defName>LP_MountainForge</defName>
     <label>山岳锻造</label>
-    <description>被动：能制作矮人王族的重铳“山岳之怒”。器械师 13 级。</description>
+    <description>被动：能制作矮人王族的重铳“山岳之怒”。器械师 10 级。</description>
     <iconPath>LP/Classes/Artificer/MountainForge</iconPath>
     <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
   </AbilityDef>
   <AbilityDef ParentName="LP_ClassLocBase">
     <defName>LP_RuneTurretAbility</defName>
     <label>符文炮台</label>
-    <description>在 10 格内的空格子放下一座临时符文炮台：符文火铳的数值 × 器械强度，持续 60 秒。冷却 2 天。器械师 17 级。</description>
+    <description>在 10 格内的空格子放下一座临时符文炮台：符文火铳的数值 × 器械强度，持续 60 秒。冷却 2 天。器械师 13 级。</description>
     <iconPath>LP/Classes/Artificer/RuneTurret</iconPath>
     <hostile>false</hostile>
     <cooldownTicksRange>120000</cooldownTicksRange>
@@ -1005,7 +1048,7 @@
   <AbilityDef ParentName="LP_ClassSelfBase">
     <defName>LP_ArcaneResonance</defName>
     <label>魔力共鸣</label>
-    <description>被动：自己用符文矮人枪械和法杖时，心灵敏感度不足 150% 按 150% 算。器械师 20 级，并且手工 18 级。</description>
+    <description>被动：自己用符文矮人枪械和法杖时，心灵敏感度不足 150% 按 150% 算。器械师 15 级，并且手工 15 级。</description>
     <iconPath>LP/Classes/Artificer/ArcaneResonance</iconPath>
     <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
   </AbilityDef>

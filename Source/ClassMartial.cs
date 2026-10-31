@@ -11,7 +11,7 @@ namespace LichPhylactery {
  // 1.72.0 武人之道（1.53.0 起在 VPE 桥的 Martial.cs，现在移到主程序集，读新的职业等级）：物理职业（战士、圣武士、武僧）共用的斗志、强度加成、额外攻击，
  // 战士射击支的“射击状态位”（ShotFlags）和登记过的子弹（Shots），圣武士、武僧的命中 / 受伤 / 击杀效果。
  // 性能：Cache 只在职业者自己的冒险者状态每 250 刻（ClassSystem.Tick250）和加点时更新；所有命中、伤害、击杀挂钩第一步都是 Is(p) 或空字典判断。
- public class MartialInfo {public bool fighter,paladin,monk;public int tier,fighterLevel,best,total;public float bonus;}
+ public class MartialInfo {public bool fighter,paladin,monk;public int tier,fighterLevel,best,total;public float bonus;public int barbarian,ranger,rogue,flags;public float damage,pen;} // 新职业等级与被动能力位（ClassMartial2）；1.81.0 热修3 伤害 / 近战穿甲成长
  public enum PrecisionMode{Vital,Leg,Hand}
  public class ShotMod {public float damage=1f,ap,power=1f;public PrecisionMode mode;public bool precision;public Pawn caster;}
 
@@ -28,7 +28,7 @@ namespace LichPhylactery {
  public static class Martial {
   public const float FuryHit=.004f,FuryKill=.03f,FuryCap=.15f,FuryResourcePer=20f;
   public const int HourTicks=2500;
-  public static readonly int[] TierLevels={5,11,20};
+  public static readonly int[] TierLevels={5,10,15}; // 1.87.0：战士第 2、3 档 11 / 20 → 10 / 15
   public static readonly float[] FollowUp={0f,.15f,.25f,.35f},MeleeCooldown={1f,.8f,.7f,.6f},RangedCooldown={1f,.85f,.75f,.65f};
   public static readonly Color Color=new Color(.95f,.6f,.4f);
 
@@ -45,15 +45,17 @@ namespace LichPhylactery {
    if(i.fighterLevel>=TierLevels[1])return 2;
    return i.best>=TierLevels[0]?1:0;
   }
-  public static bool MonkOnly(MartialInfo i)=>i!=null && i.monk && !i.fighter && !i.paladin;
-  public static void Reset(){Cache.Clear();infos.Clear();Shots.Clear();ShotFlags.Clear();Hediff_MartialFlag.generation++;}
+  public static bool MonkOnly(MartialInfo i)=>i!=null && i.monk && !i.fighter && !i.paladin && i.barbarian<=0 && i.ranger<=0;
+  public static void Reset(){Cache.Clear();infos.Clear();Shots.Clear();ShotFlags.Clear();Hediff_MartialFlag.generation++;ClassMartial2.Reset();}
   public static void Refresh(Pawn p){
    if(p==null)return;int id=p.thingIDNumber;
-   var h=p.Dead?null:Adventurer.Get(p);int f=0,pa=0,mo=0;
-   if(h?.classes!=null){f=ClassSystem.Level(h,ClassSystem.Fighter);pa=ClassSystem.Level(h,ClassSystem.Paladin);mo=ClassSystem.Level(h,ClassSystem.Monk);}
-   if(f+pa+mo<=0){if(Cache.Remove(id)){infos.Remove(id);if(!p.Dead)Items.Remove(p,"LP_ExtraAttack");}return;}
+   var h=p.Dead?null:Adventurer.Get(p);int f=0,pa=0,mo=0,ba=0,ra=0,ro=0;
+   if(h?.classes!=null){f=ClassSystem.Level(h,ClassSystem.Fighter);pa=ClassSystem.Level(h,ClassSystem.Paladin);mo=ClassSystem.Level(h,ClassSystem.Monk);ba=ClassSystem.Level(h,ClassMartial2.Barbarian);ra=ClassSystem.Level(h,ClassMartial2.Ranger);ro=ClassSystem.Level(h,ClassMartial2.Rogue);}
+   if(f+pa+mo+ba+ra+ro<=0){if(Cache.Remove(id)){var old=infos.TryGetValue(id,out var oi)?oi.flags:0;infos.Remove(id);if(!p.Dead)Items.Remove(p,"LP_ExtraAttack");ClassMartial2.Refreshed(p,null,old);}return;}
    if(!infos.TryGetValue(id,out var i))infos[id]=i=new MartialInfo();
-   i.fighter=f>0;i.paladin=pa>0;i.monk=mo>0;i.fighterLevel=f;i.best=Mathf.Max(f,Mathf.Max(pa,mo));i.total=f+pa+mo;i.bonus=ClassSystem.MartialBonusFor(i.total);
+   i.fighter=f>0;i.paladin=pa>0;i.monk=mo>0;i.fighterLevel=f;i.best=Mathf.Max(Mathf.Max(f,ba),Mathf.Max(Mathf.Max(pa,mo),ra));i.total=f+pa+mo+ba+ra+ro;i.bonus=ClassSystem.MartialBonusFor(i.total); // 游荡者不算额外攻击档位（best），只算强度合计
+   i.damage=ClassSystem.MartialDamage(h);i.pen=ClassSystem.MartialPen(h);
+   i.barbarian=ba;i.ranger=ra;i.rogue=ro;int oldFlags=i.flags;i.flags=ClassMartial2.Flags(p);ClassMartial2.Refreshed(p,i,oldFlags);
    int tier=TierFor(i);
    if(MonkOnly(i) && !MonkCore.Unarmed(p))tier=0; // 只有武僧：徒手时才有
    i.tier=tier;Cache.Add(id);
@@ -95,6 +97,14 @@ namespace LichPhylactery {
    return f;
   }
   public static bool Ranged(DamageInfo d)=>d.Weapon!=null && d.Weapon.IsRangedWeapon;
+  // 1.81.0 热修3：物理职业的远程武器伤害（近战走冒险者状态的 MeleeDamageFactor）和近战穿甲成长，在 ClassDamageMods 后缀里加。
+  public static float RangedDamage(Pawn a)=>Adventurer.Enabled?1f+(Info(a)?.damage??0f):1f;
+  static AccessTools.StructFieldRef<DamageInfo,float> pen;
+  public static void Penetrate(ref DamageInfo d,Pawn a){
+   if(!Adventurer.Enabled)return;float add=Info(a)?.pen??0f;if(add<=0f)return;
+   if(pen==null)pen=AccessTools.StructFieldRefAccess<DamageInfo,float>("armorPenetrationInt");
+   pen(ref d)+=add;
+  }
   public static float RangedFactor(Pawn a,byte b){
    float f=1f;
    if((b & FlagMastery)!=0){var def=Items.Hediff("LP_WeaponMastery");var h=def==null?null:a.health.hediffSet.GetFirstHediffOfDef(def);var st=h?.CurStage?.statFactors;if(st!=null)for(int i=0;i<st.Count;i++)if(st[i].stat==StatDefOf.MeleeDamageFactor)f*=st[i].value;}
@@ -106,6 +116,7 @@ namespace LichPhylactery {
   public static readonly Dictionary<Projectile,ShotMod> Shots=new Dictionary<Projectile,ShotMod>();
   public static void Cleanup(){
    if(Shots.Count>0)foreach(var k in Shots.Keys.Where(x=>x==null || x.Destroyed).ToList())Shots.Remove(k);
+   ClassMartial2.Cleanup();
    if(ShotFlags.Count>0)foreach(var k in ShotFlags.Keys.Where(x=>x==null || x.Destroyed || x.Dead).ToList())ShotFlags.Remove(k);
   }
   public static void Impacted(Projectile proj,Thing hit){
@@ -146,7 +157,7 @@ namespace LichPhylactery {
   // 战斗风格槽：有物理职业 1 个；战士 10 级 2 个。
   public static int Slots(Pawn p){var i=Is(p)?Info(p):null;if(i==null)return 0;return i.fighterLevel>=10?2:1;}
   public static string TierText(int tier)=>"近战冷却 ×"+MeleeCooldown[tier].ToString("0.00")+"，追击 "+FollowUp[tier].ToStringPercent()+"，射击冷却 ×"+RangedCooldown[tier].ToString("0.00");
-  const string TierTable="额外攻击（物理职业）：\n第 1 档：任一物理职业 5 级 — 近战冷却 ×0.80，追击 15%，射击冷却 ×0.85\n第 2 档：战士 11 级 — 近战冷却 ×0.70，追击 25%，射击冷却 ×0.75\n第 3 档：战士 20 级 — 近战冷却 ×0.60，追击 35%，射击冷却 ×0.65\n\n只有武僧的人只在徒手时生效。\n追击：普通近战命中后再按原版近战结算打一下（Isekai 力量、武器品质照常）；追击不再触发追击。";
+  const string TierTable="额外攻击（物理职业）：\n第 1 档：战士、圣武士、武僧、野蛮人或游侠 5 级（游荡者没有，改用偷袭） — 近战冷却 ×0.80，追击 15%，射击冷却 ×0.85\n第 2 档：战士 10 级 — 近战冷却 ×0.70，追击 25%，射击冷却 ×0.75\n第 3 档：战士 15 级 — 近战冷却 ×0.60，追击 35%，射击冷却 ×0.65\n\n只有武僧的人只在徒手时生效。\n追击：普通近战命中后再按原版近战结算打一下（Isekai 力量、武器品质照常）；追击不再触发追击。";
   public static List<string> Lines(Pawn p){
    var i=Is(p)?Info(p):null;if(i==null)return null;
    var list=new List<string>();
@@ -154,7 +165,8 @@ namespace LichPhylactery {
    else list.Add((MonkOnly(i) && i.best>=TierLevels[0]?"额外攻击：只在徒手时生效":"额外攻击：物理职业 5 级解锁")+"|"+TierTable);
    float got=State?.FuryThisHour(p)??0f;
    list.Add("斗志：本小时 +"+(got*FuryResourcePer).ToString("0.#")+" / "+(FuryCap*FuryResourcePer).ToString("0")+"|"+ClassSystem.ResourceTip(ClassSystem.Fighter)+"\n召唤物、友军、囚犯不算。");
-   list.Add("物理职业等级 "+i.total+"：战技强度、射术强度 +"+(i.bonus*100f).ToString("0")+"%|物理职业（战士、武僧、圣武士）等级合计每比 1 高 1 级 +2%，最多 +40%。只加格斗、射击的职业强度。");
+   list.Add("物理职业等级 "+i.total+"：战技强度、射术强度 +"+(i.bonus*100f).ToString("0")+"%|物理职业（战士、武僧、圣武士、野蛮人、游侠、游荡者）等级合计每比 1 高 1 级 +2%，最多 +40%。只加格斗、射击的职业强度。");
+   ClassMartial2.Lines(p,i,list);
    return list;
   }
 
@@ -437,7 +449,10 @@ namespace LichPhylactery {
   static void Postfix(Pawn __instance,ref DamageInfo dinfo,ref bool absorbed){
    if(absorbed || __instance.Dead || dinfo.Def==null || dinfo.Amount<=0f)return;
    var a=dinfo.Instigator as Pawn;
-   if(a!=null && Martial.Is(a))PaladinCore.ApplyEnmity(__instance,ref dinfo);
+   if(a!=null && Martial.Is(a)){
+    PaladinCore.ApplyEnmity(__instance,ref dinfo);
+    if(a!=__instance){if(HeroCombat.Melee(dinfo))Martial.Penetrate(ref dinfo,a);else if(Martial.Ranged(dinfo)){float rf=Martial.RangedDamage(a);if(rf!=1f)dinfo.SetAmount(dinfo.Amount*rf);}} // 1.81.0 热修3
+   }
    if(a!=null && Martial.ShotFlags.Count>0){byte b=Martial.Flags(a);if((b & (Martial.FlagMastery|Martial.FlagDeadEye))!=0 && Martial.Ranged(dinfo))dinfo.SetAmount(dinfo.Amount*Martial.RangedFactor(a,b));}
    if(Martial.Cache.Count>0 && MonkCore.Deflect(__instance,ref dinfo))absorbed=true;
    if(!absorbed && dinfo.Amount>0f && a!=null && Martial.Is(a))Martial.OnHit(__instance,a);
@@ -461,7 +476,7 @@ namespace LichPhylactery {
  [HarmonyPatch(typeof(MentalStateHandler),nameof(MentalStateHandler.TryStartMentalState))]
  public static class ClassCourage {
   static bool Prefix(Pawn ___pawn,MentalStateDef stateDef,ref bool __result){
-   if(!PaladinCore.NoPanic(___pawn,stateDef) && !(stateDef!=null && Items.Has(___pawn,"LP_LegSanctified")))return true; // 1.74.0 神圣化身：不会精神崩溃
+   if(!PaladinCore.NoPanic(___pawn,stateDef) && !(stateDef!=null && (Items.Has(___pawn,"LP_LegSanctified") || Items.Has(___pawn,"LP_LegBerserkerBuff"))))return true; // 1.74.0 神圣化身、狂战之魂：不会精神崩溃
    __result=false;return false;
   }
  }
@@ -469,7 +484,7 @@ namespace LichPhylactery {
  [HarmonyPatch(typeof(StunHandler),nameof(StunHandler.StunFor))]
  public static class ClassStunImmunity {
   static readonly AccessTools.FieldRef<StunHandler,Thing> Parent=AccessTools.FieldRefAccess<StunHandler,Thing>("parent");
-  public static bool Immune(Pawn p)=>p!=null && (Items.Has(p,"LP_Indomitable") || Items.Has(p,"LP_SurgeOfBattle") || Items.Has(p,"LP_HolyAvatar") || Items.Has(p,"LP_DiamondSoul") || Items.Has(p,"LP_LegFormlessBuff")); // 1.74.0 无相之身
+  public static bool Immune(Pawn p)=>p!=null && (Items.Has(p,"LP_Indomitable") || Items.Has(p,"LP_SurgeOfBattle") || Items.Has(p,"LP_HolyAvatar") || Items.Has(p,"LP_DiamondSoul") || Items.Has(p,"LP_LegFormlessBuff") || Items.Has(p,"LP_LegBerserkerBuff")); // 1.74.0 无相之身；狂战之魂
   static bool Prefix(StunHandler __instance)=>!Immune(Parent(__instance) as Pawn);
  }
  [HarmonyPatch(typeof(Projectile),nameof(Projectile.DamageAmount),MethodType.Getter)]
@@ -509,7 +524,7 @@ namespace LichPhylactery {
    int pts=ClassSystem.Points(h);int lp=ClassLegendary.Points(h);
    if(lp>0 && !p.Dead)yield return new Command_Action{
     defaultLabel="传奇职业（"+lp+"）",
-    defaultDesc="还有 "+lp+" 点传奇职业点：打开职业窗口学一个传奇职业能力（那个职业 9 级，同职业第二个 17 级）。",
+    defaultDesc="还有 "+lp+" 点传奇职业点：打开职业窗口学一个传奇职业能力（那个职业 "+ClassLegendary.FirstLevel+" 级，同职业第二个 "+ClassLegendary.SecondLevel+" 级）。",
     icon=ContentFinder<Texture2D>.Get("LP/Classes/Legendary/Unyielding",false)??BaseContent.BadTex,
     action=()=>Find.WindowStack.Add(new Dialog_ChooseClass(p))
    };
@@ -518,6 +533,13 @@ namespace LichPhylactery {
     defaultDesc="还有 "+pts+" 点职业点：打开职业窗口，给战士、武僧或圣武士加 1 级。也可以在“冒险者”分页的“职业”页里加点。",
     icon=ClassSystem.Fighter?.Background??BaseContent.BadTex,
     action=()=>Find.WindowStack.Add(new Dialog_ChooseClass(p))
+   };
+   int foes=ClassMartial2.OpenFoeSlots(h);
+   if(foes>0 && !p.Dead)yield return new Command_Action{
+    defaultLabel="选择宿敌（"+foes+"）",
+    defaultDesc="游侠的宿敌：选一种生物类型，对它伤害 +20%、命中提高。"+ClassMartial2.SecondFoeLevel+" 级可以再选一种。选定后不能更改。",
+    icon=ContentFinder<Texture2D>.Get("LP/Classes/Ranger/FavoredFoe",false)??BaseContent.BadTex,
+    action=()=>Find.WindowStack.Add(new Dialog_ChooseFavored(p))
    };
    if(!Martial.Is(p) || !p.Drafted || !ClassSystem.Knows(p,"LP_PrecisionShot"))yield break;
    var st=Martial.State;if(st==null)yield break;var mode=st.Mode(p);

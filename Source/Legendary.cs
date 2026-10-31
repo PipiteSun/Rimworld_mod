@@ -65,7 +65,7 @@ namespace LichPhylactery {
   public static int DC(Pawn caster,int a)=>8+Proficiency(LevelOf(caster))+Mod(caster,a);
   // 对某个来源的额外豁免加值（火巨人 / 吉斯洋基对红龙、霜巨人对白龙 +2，见 ChromaticDragons.SaveBonus）。
   public static Func<Pawn,Pawn,int,int> SaveBonusHook;
-  public static int SaveBonus(Pawn p,int a,Pawn source)=>Mod(p,a)+Proficiency(Adventurer.Get(p)?.level??0)+(SaveBonusHook?.Invoke(p,source,a)??0);
+  public static int SaveBonus(Pawn p,int a,Pawn source)=>Mod(p,a)+Proficiency(Adventurer.Get(p)?.level??0)+(SaveBonusHook?.Invoke(p,source,a)??0)-Warlock.SaveBonusPenalty(p); // 邪术师咒术：成功率 −15%
   public static int D20()=>TestD20??Rand.RangeInclusive(1,20);
   public static int lastRoll;
   // 1.59.0 热修（去 d20 措辞）：对玩家只显示成功率。和 Save 的判定同一个概率：调整值、熟练加值、额外加值每点 +5%，难度每点 −5%，限 0～100%（不含幸运再试）。

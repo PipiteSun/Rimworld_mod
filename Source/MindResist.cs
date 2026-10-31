@@ -19,7 +19,7 @@ namespace LichPhylactery {
   // 掷骰：抵抗成功返回 true。chanceFactor 为效果自身的强度修正（例如强力震爆传0.5，抵抗率减半）。
   public static bool TryResist(Pawn pawn,float chanceFactor=1f){
    if(HeroCombat.MindResist(pawn))return true; // 1.58.0 心智堡垒免疫、法术抗体 50%
-   float chance=Mathf.Clamp01(Resistance(pawn)*chanceFactor);
+   float chance=Mathf.Clamp01(Resistance(pawn)*chanceFactor-Warlock.SavePenalty(pawn)); // 邪术师咒术 −15%
    return chance>0f && Rand.Chance(chance);
   }
   // 按抗性削弱一个数值（伤害、严重度、心情惩罚）：value×(1-抗性)。

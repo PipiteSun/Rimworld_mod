@@ -191,6 +191,25 @@ namespace LichPhylactery {
    lock(moveCache){moveCache[p.thingIDNumber]=(now,f);}
    return f;
   }
+
+  // ---------- 影魔半透明（约 50%，原版透明着色器；头像、造型台不变） ----------
+  public const float ShadowAlpha=.5f;
+  static readonly Dictionary<Material,Material> shadowMats=new Dictionary<Material,Material>();
+  public static bool Translucent(PawnDrawParms parms)=>!parms.dead && (parms.flags&(PawnRenderFlags.Portrait|PawnRenderFlags.StylingStation|PawnRenderFlags.Invisible))==0 && Is(parms.pawn,ShadowDemon);
+  public static Material ShadowMat(Material src){
+   if(src==null)return null;
+   if(!shadowMats.TryGetValue(src,out var m)){
+    m=new Material(src){shader=ShaderDatabase.Transparent,name=src.name+"_LPShadow"};var c=src.color;c.a*=ShadowAlpha;m.color=c;
+    shadowMats[src]=m;
+   }
+   return m;
+  }
+ }
+ [HarmonyPatch(typeof(PawnRenderNodeWorker),nameof(PawnRenderNodeWorker.GetFinalizedMaterial))]
+ public static class ShadowDemonRender {
+  static void Postfix(PawnDrawParms parms,ref Material __result){
+   if(__result!=null && AbyssRaces.Translucent(parms))__result=AbyssRaces.ShadowMat(__result);
+  }
  }
  public class DreamState : IExposable {
   public Pawn partner;public int partnerDay=-9,settledDay=-1,hungry;

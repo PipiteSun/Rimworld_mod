@@ -53,7 +53,8 @@ namespace LichPhylactery {
   }
 
   // ---------- 实战磨砺：每 2500 刻按差值采样 ----------
-  static float Xp(Pawn p,SkillDef s){var r=p.skills?.GetSkill(s);return r==null?0f:r.XpTotalEarned;}
+  static float Xp(Pawn p,SkillDef s){var r=p.skills?.GetSkill(s);return r==null?0f:Progress(r);}
+  public static float Progress(SkillRecord r)=>r.XpTotalEarned+r.xpSinceLastLevel; // XpTotalEarned 只算已升过的级，加上本级进度才是实时总量
   public static readonly string[] GrindSources={"格斗经验 + 采矿经验 ×0.5","射击经验","受到的伤害 ×100","智识经验","（医疗 + 驯兽 + 种植经验）×0.5","社交经验"};
   public static float[] Sources(Pawn p){
    var s=new float[6];if(p?.skills==null)return s;
@@ -63,21 +64,28 @@ namespace LichPhylactery {
    return s;
   }
   public static int Raised;
-  public static int Sample(Pawn p){
-   var h=Adventurer.Get(p);if(h==null || !GrindOn || !Adventurer.Enabled)return 0;var now=Sources(p);int n=0;
-   if(h.grindLast==null || h.grindLast.Length!=6){h.grindLast=now;return 0;} // 第一次只记基准，不算以前的
-   bool apply=!Adventurer.EffectsHandedToIsekai; // Isekai 共存：照常累计但只显示
-   for(int a=0;a<6;a++){
-    float d=Mathf.Max(0f,now[a]-h.grindLast[a]);h.grind[a]+=d;
-    if(h.grind[a]>=GrindNeed && apply && h.grindGained[a]<GrindMax && h.scores[a]<h.Cap(a)){
-     h.grind[a]-=GrindNeed;h.grindGained[a]++;h.scores[a]++;h.Dirty();n++;Raised++;
-     if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"在实战中磨砺出了更好的"+Adventurer.Names[a]+"（+1，现在 "+h.scores[a]+"；这一项还能磨砺 "+(GrindMax-h.grindGained[a])+" 次）。",p,MessageTypeDefOf.PositiveEvent,false);
-    }
-    if(h.grindGained[a]>=GrindMax || h.scores[a]>=h.Cap(a))h.grind[a]=Mathf.Min(h.grind[a],GrindNeed);
+  // 1.75.0：改成实时累计——学到技能经验（SkillRecord.Learn 前后 XpTotalEarned 的差）、受到伤害（DamageTaken 记录）的当下就记进磨砺，
+  // 每单位活动的量和原来的采样一样（Sources 的系数）；不再每 2500 刻扫一遍。grindLast 不再使用（老存档里的值保留无害）。
+  public static int Grind(Pawn p,int a,float amount){
+   if(amount<=0f || p==null || !GrindOn || !Adventurer.Enabled || !p.IsFreeColonist || p.Dead)return 0;
+   var h=Adventurer.Get(p);if(h==null)return 0;int n=0;
+   h.grind[a]+=amount;
+   if(h.grind[a]>=GrindNeed && !Adventurer.EffectsHandedToIsekai && h.grindGained[a]<GrindMax && h.scores[a]<h.Cap(a)){ // Isekai 共存：照常累计但只显示
+    h.grind[a]-=GrindNeed;h.grindGained[a]++;h.scores[a]++;h.Dirty();n++;Raised++;
+    if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"在实战中磨砺出了更好的"+Adventurer.Names[a]+"（+1，现在 "+h.scores[a]+"；这一项还能磨砺 "+(GrindMax-h.grindGained[a])+" 次）。",p,MessageTypeDefOf.PositiveEvent,false);
    }
-   h.grindLast=now;return n;
+   if(h.grindGained[a]>=GrindMax || h.scores[a]>=h.Cap(a))h.grind[a]=Mathf.Min(h.grind[a],GrindNeed);
+   return n;
   }
-  public static string GrindTip(Hediff_Adventurer h,int a)=>"实战磨砺："+Adventurer.Names[a]+" "+Mathf.Min(h.grind[a],GrindNeed).ToString("0")+" / "+GrindNeed+"\n来源："+GrindSources[a]+"\n满了这一项 +1（一生最多 +"+GrindMax+"，不超过上限；已得 "+h.grindGained[a]+"）。每 2500 刻按差值累计。"+(Adventurer.EffectsHandedToIsekai?"\nIsekai 共存模式：照常累计，但不加属性。":"")+(GrindOn?"":"\n“实战磨砺”已在设置里关闭。");
+  // 技能 → (属性, 系数)，-1 = 不算。
+  public static int GrindAbility(SkillDef s,out float factor){
+   factor=1f;
+   if(s==SkillDefOf.Melee)return 0;if(s==SkillDefOf.Mining){factor=.5f;return 0;}
+   if(s==SkillDefOf.Shooting)return 1;if(s==SkillDefOf.Intellectual)return 3;if(s==SkillDefOf.Social)return 5;
+   if(s==SkillDefOf.Medicine || s==SkillDefOf.Animals || s==SkillDefOf.Plants){factor=.5f;return 4;}
+   return -1;
+  }
+  public static string GrindTip(Hediff_Adventurer h,int a)=>"实战磨砺："+Adventurer.Names[a]+" "+Mathf.Min(h.grind[a],GrindNeed).ToString("0")+" / "+GrindNeed+"\n来源："+GrindSources[a]+"\n满了这一项 +1（一生最多 +"+GrindMax+"，不超过上限；已得 "+h.grindGained[a]+"）。实时累计。"+(Adventurer.EffectsHandedToIsekai?"\nIsekai 共存模式：照常累计，但不加属性。":"")+(GrindOn?"":"\n“实战磨砺”已在设置里关闭。");
   // 分页：典籍 / 许愿 / 磨砺一行。
   public static float Draw(float y,float w,Hediff_Adventurer h){
    var src=new List<string>();for(int a=0;a<6;a++){if(h.tomes[a])src.Add(Adventurer.Names[a]+" 典籍 +2");}if(h.wishAbility>=0)src.Add(Adventurer.Names[h.wishAbility]+" 许愿 +1");
@@ -330,6 +338,20 @@ namespace LichPhylactery {
  public static class GrowthTradeRep {static void Postfix(TradeAction __0,ref float __result){if(__0!=TradeAction.PlayerBuys || !Growth.RepOn)return;var f=TradeSession.trader?.Faction;if(f==null)return;float k=Growth.PriceFactor(f,__0);if(k!=1f)__result*=k;}}
  // 声望三级：请求援兵冷却减半；商队带一件专属物品（每个商人一次）。
  [HarmonyPatch(typeof(FactionDialogMaker),"CallForAid")]
+ // 1.75.0 实战磨砺实时累计
+ [HarmonyPatch(typeof(SkillRecord),nameof(SkillRecord.Learn))]
+ public static class GrowthGrindLearn {
+  // __state = 学习前的 XpTotalEarned + 1；别的前缀（知识亡灵）返回 false 跳过本前缀时保持 0，这时不算。
+  static void Prefix(SkillRecord __instance,out float __state){__state=Growth.Progress(__instance)+1f;}
+  static void Postfix(SkillRecord __instance,Pawn ___pawn,float __state){
+   if(__state<=0f)return;float d=Growth.Progress(__instance)-(__state-1f);if(d<=0f || __instance.def==null || ___pawn==null || !___pawn.IsFreeColonist)return;
+   int a=Growth.GrindAbility(__instance.def,out float f);if(a>=0)Growth.Grind(___pawn,a,d*f);
+  }
+ }
+ [HarmonyPatch(typeof(Pawn_RecordsTracker),nameof(Pawn_RecordsTracker.AddTo))]
+ public static class GrowthGrindDamage {
+  static void Postfix(Pawn ___pawn,RecordDef def,float value){if(value>0f && def==RecordDefOf.DamageTaken)Growth.Grind(___pawn,2,value*100f);}
+ }
  public static class GrowthAidRep {static void Postfix(Faction __1){if(Growth.RepOn && Growth.Tracked(__1) && Growth.Rank(__1)>=3)__1.lastMilitaryAidRequestTick-=Growth.AidCooldown/2;}}
  [HarmonyPatch(typeof(TradeSession),nameof(TradeSession.SetupWith))]
  public static class GrowthStockRep {

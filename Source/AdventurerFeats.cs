@@ -26,12 +26,17 @@ namespace LichPhylactery {
   public string BonusText=>BonusOptions.Count==0?null:BonusOptions.Count==6?"任意一项属性 +1（加在当前最高的一项）":string.Join("或",BonusOptions.Select(i=>Adventurer.Names[i]))+" +1"+(BonusOptions.Count>1?"（加在当前更高的一项）":"");
   public string category="General",exclusiveGroup;public List<XenotypeDef> requiredXenotypesAny;public List<GeneDef> requiredGenesAny;public bool requireLich,origin;public int element;public AbilityDef grantAbility;
   public bool Racial=>category=="Racial";
+  // 1.88.0 职业专属专长（Defs/Adventurer_ClassFeats.xml，效果在 Source/ClassFeats.cs）：要这个职业到 classLevel 级才能选，只对有这个职业的人显示。
+  // powerStats 加 powerBonus（职业强度）；resourceBonus 资源上限；gainFactor 资源获取 ×；cooldownFactor 本职业能力冷却 ×；costReduce 本职业能力消耗 −N（最少 1）。
+  public LP_ClassDef requiredClass;public int classLevel=1;public List<StatDef> powerStats;public float powerBonus,gainFactor=1f,cooldownFactor=1f;public int resourceBonus,costReduce;
+  public bool ClassFeat=>requiredClass!=null;
   [Unsaved] FeatWorker worker;[Unsaved] Texture2D icon;
   public FeatWorker Worker{get{if(worker==null){worker=(FeatWorker)Activator.CreateInstance(workerClass);worker.def=this;}return worker;}}
   public int AbilityIdx=>Adventurer.AbilityIndex(ability);
   public Texture2D Icon=>icon??(icon=iconPath.NullOrEmpty()?BaseContent.BadTex:ContentFinder<Texture2D>.Get(iconPath,false)??BaseContent.BadTex);
   public string PrereqText(){
    var parts=new List<string>();
+   if(requiredClass!=null)parts.Add(requiredClass.label+" "+classLevel+" 级"); // 1.88.0
    if(minLevel>1)parts.Add(minLevel+" 级");
    if(skillReqs!=null)foreach(var r in skillReqs)parts.Add(r.skill.LabelCap+" ≥ "+r.level);
    if(AbilityIdx>=0)parts.Add(Adventurer.Names[AbilityIdx]+" ≥ "+abilityMin);
@@ -47,6 +52,7 @@ namespace LichPhylactery {
   // 不满足的前置：null = 满足。
   public virtual string Unmet(Pawn p,Hediff_Adventurer h){
    if(h==null)return "没有冒险者等级";
+   if(def.requiredClass!=null && ClassSystem.Level(h,def.requiredClass)<def.classLevel)return "需要"+def.requiredClass.label+" "+def.classLevel+" 级"; // 1.88.0 职业专属
    if(h.level<def.minLevel)return "需要 "+def.minLevel+" 级";
    if(def.skillReqs!=null)foreach(var r in def.skillReqs){var s=p?.skills?.GetSkill(r.skill);if(s==null || s.TotallyDisabled || s.Level<r.level)return "需要"+r.skill.label+" "+r.level;}
    int a=def.AbilityIdx;if(a>=0 && h.scores[a]<def.abilityMin)return "需要"+Adventurer.Names[a]+" "+def.abilityMin;

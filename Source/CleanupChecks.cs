@@ -165,6 +165,21 @@ namespace LichPhylactery {
    var comp=drow.abilities.GetAbility(ad).comps.OfType<CompAbilityEffect_DrowDarkness>().First();
    var crowd=CuPawn(Faction.OfPlayer,16,8);CuPawn(Faction.OfPlayer,17,8);CuPawn(Faction.OfPlayer,16,9);var single=CuPawn(Faction.OfPlayer,16,-12);
    Check(ad.aiCanUse && comp.AICanTargetNow(new LocalTargetInfo(crowd)) && !comp.AICanTargetNow(new LocalTargetInfo(single)) && ad.cooldownTicksRange.min>=60000,"hostile drow cast darkness on a crowd of 3 (not on a lone target); 1-day cooldown = once per fight");
+   // 26 地精埋伏：带地精劫掠者的边缘走入袭击 25% 改成分路包抄
+   var gk=DefDatabase<PawnKindDef>.GetNamedSilentFail(GoblinAmbush.RaiderKind);var gf=Factions.Hostile??foe;
+   List<Pawn> Band(PawnKindDef k){var l=new List<Pawn>();for(int i=0;i<3;i++){var p=PawnGenerator.GeneratePawn(new PawnGenerationRequest(k,gf,forceGenerateNewPawn:true,canGeneratePawnRelations:false));cuMade.Add(p);l.Add(p);}return l;}
+   IncidentParms Parms(){var ip=new IncidentParms{target=map,faction=gf,raidArrivalMode=PawnsArrivalModeDefOf.EdgeWalkIn,points=500f};PawnsArrivalModeDefOf.EdgeWalkIn.Worker.TryResolveRaidSpawnCenter(ip);return ip;}
+   int fired=GoblinAmbush.Fired;bool gOk=false;string gWhy="no goblin kind";
+   if(gk!=null){
+    try{
+     GoblinAmbush.TestRoll=.1f;var b1=Band(gk);var p1=Parms();PawnsArrivalModeDefOf.EdgeWalkIn.Worker.Arrive(b1,p1);
+     GoblinAmbush.TestRoll=.5f;var b2=Band(gk);var p2=Parms();PawnsArrivalModeDefOf.EdgeWalkIn.Worker.Arrive(b2,p2);
+     GoblinAmbush.TestRoll=.1f;var b3=Band(DefDatabase<PawnKindDef>.GetNamed("LP_FH_OrcWarrior"));var p3=Parms();PawnsArrivalModeDefOf.EdgeWalkIn.Worker.Arrive(b3,p3);
+     gOk=b1.All(p=>p.Spawned) && p1.raidArrivalMode==PawnsArrivalModeDefOf.EdgeWalkInGroups && b2.All(p=>p.Spawned) && p2.raidArrivalMode==PawnsArrivalModeDefOf.EdgeWalkIn && b3.All(p=>p.Spawned) && p3.raidArrivalMode==PawnsArrivalModeDefOf.EdgeWalkIn && GoblinAmbush.Fired==fired+1;
+     gWhy="modes "+p1.raidArrivalMode?.defName+"/"+p2.raidArrivalMode?.defName+"/"+p3.raidArrivalMode?.defName+" fired "+(GoblinAmbush.Fired-fired);
+    }finally{GoblinAmbush.TestRoll=null;}
+   }
+   Check(gOk,"goblin ambush: a walk-in raid with goblin raiders splits into groups from several edges at roll 10% (25% chance), not at 50%, and never without goblins ("+gWhy+")");
   }
   void CleanupSmall(){
    CleanupMergedToggles();CleanupLeftovers();

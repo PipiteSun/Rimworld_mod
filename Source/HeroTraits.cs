@@ -31,7 +31,7 @@ namespace LichPhylactery {
   public bool dragonslayer,giantbane,lichbane,godslayer,fortress,returned,laststand;
   public int capAll,legendPerLevel,asiBonus,capHigherBonus;public float legendAll=1f;public bool removeWeak;
   public readonly float[] legendStrong=new float[Legend.Count],legendFloor=new float[Legend.Count];public readonly string[] legendStrongBy=new string[Legend.Count];
-  public HashSet<int> extraAsi;public List<int> capHigherOf;
+  public HashSet<int> extraAsi;public List<int> capHigherOf;public List<KeyValuePair<List<int>,int>> capMore;
   public Hediff_HeroRecord rec;
   // 1.58.1 专长（冒险者状态里的），同样走这个缓存：专长变动时失效。
   public bool brawler,crafter,observant,musician,ritual,magma,bloodRegen,infernal,elven,dragonFear,oath,bountiful,dwarven,poisoner;public int adept;
@@ -57,6 +57,7 @@ namespace LichPhylactery {
    if(all!=null)return;
    gold=new HashSet<TraitDef>{HeroDefOf.LP_HeroicSpark,HeroDefOf.LP_Paragon,HeroDefOf.LP_Prophesied,HeroDefOf.LP_PactDestiny,HeroDefOf.LP_WeaveChild,HeroDefOf.LP_DivineChampion};
    purple=new HashSet<TraitDef>{HeroDefOf.LP_GiftedScore,HeroDefOf.LP_DefyFate,HeroDefOf.LP_Hardened,HeroDefOf.LP_Edge,HeroDefOf.LP_Insight,HeroDefOf.LP_Diligent,HeroDefOf.LP_LegendSeed,HeroDefOf.LP_TotemSpirit,HeroDefOf.LP_FavoredEnemy,HeroDefOf.LP_Attuner,HeroDefOf.LP_ElementTouched,HeroDefOf.LP_SpellWarded,HeroDefOf.LP_Duelist};
+   foreach(var d in MoreTraits.Purple)purple.Add(d); // 1.79.0 新增蓝 / 紫（HeroTraitsMore.cs）
    deeds=new HashSet<TraitDef>{HeroDefOf.LP_DeedDragonslayer,HeroDefOf.LP_Giantbane,HeroDefOf.LP_Lichbane,HeroDefOf.LP_DeedGodslayer,HeroDefOf.LP_MindFortress,HeroDefOf.LP_DeathReturned,HeroDefOf.LP_LastStand};
    gold.Remove(null);purple.Remove(null);deeds.Remove(null);
    all=new HashSet<TraitDef>(gold.Concat(purple).Concat(deeds));
@@ -135,7 +136,7 @@ namespace LichPhylactery {
      if(e.extraAsiLevels!=null){if(i.extraAsi==null)i.extraAsi=new HashSet<int>();foreach(var l in e.extraAsiLevels)i.extraAsi.Add(l);}
      if(e.strongLegend!=null)foreach(var s in e.strongLegend){int x=Affinity.LegendIndex(s);if(x>=0 && e.legendStrongFactor>i.legendStrong[x]){i.legendStrong[x]=e.legendStrongFactor;i.legendStrongBy[x]=Plain(d,g);}}
      if(e.legendFloor!=null)foreach(var s in e.legendFloor){int x=Affinity.LegendIndex(s);if(x>=0)i.legendFloor[x]=Math.Max(i.legendFloor[x],e.legendFloorFactor);}
-     if(e.capHigherOf!=null && e.capHigherBonus>0){i.capHigherOf=e.capHigherOf.Select(Adventurer.AbilityIndex).Where(x=>x>=0).ToList();i.capHigherBonus=e.capHigherBonus;}
+     if(e.capHigherOf!=null && e.capHigherBonus>0){var of=e.capHigherOf.Select(Adventurer.AbilityIndex).Where(x=>x>=0).ToList();if(i.capHigherOf==null){i.capHigherOf=of;i.capHigherBonus=e.capHigherBonus;}else(i.capMore??(i.capMore=new List<KeyValuePair<List<int>,int>>())).Add(new KeyValuePair<List<int>,int>(of,e.capHigherBonus));} // 1.79.0 银舌 / 神童：第二组起放进 capMore，各算各的
     }
    }
    if(i!=null && i.rec==null)i.rec=Record(p);
@@ -151,14 +152,14 @@ namespace LichPhylactery {
   }
 
   // ---------- 加点规则（AdventurerAffinity / Hediff_Adventurer 调用） ----------
-  // 六维倍率：天赋·某项 ×1.5、极致 ×2.5、反骨把笨拙拉回 ×1，都和种族倍率取较大。
-  public static float ScoreMult(Pawn p,int a,float m){
+  // 六维倍率（1.81.0 热修5 拆开）：天赋·某项 ×1.5、极致 ×2.5 是天赋倍率（TalentMult，取较大，乘在整个效果上）；反骨把种族的笨拙拉回 ×1（RaceMult）。
+  public static float TalentMult(Pawn p,int a,float m){
    var i=Info(p);if(i==null || a<0 || a>5)return m;
    if(i.gifted==a)m=Math.Max(m,GiftedMult);
    if(i.paragon==a)m=Math.Max(m,ParagonMult);
-   if(i.removeWeak && m<1f)m=1f;
    return m;
   }
+  public static float RaceMult(Pawn p,int a,float m){var i=Info(p);return i!=null && a>=0 && a<=5 && i.removeWeak && m<1f?1f:m;}
   public static float LegendMult(Pawn p,int x,float m){
    var i=Info(p);if(i==null || x<0 || x>=Legend.Count)return m;
    m=Math.Max(m,i.legendAll);
@@ -182,7 +183,9 @@ namespace LichPhylactery {
   public static int CapBonus(Hediff_Adventurer h,int a){
    if(h==null || a<0 || a>5)return 0;var i=Info(h.pawn);if(i==null)return 0;
    int b=i.capAll;if(i.paragon==a)b+=ParagonCap-Adventurer.ScoreCap;
-   if(i.capHigherOf!=null && i.capHigherBonus>0 && i.capHigherOf.Contains(a)){int best=-1;foreach(int x in i.capHigherOf)if(best<0 || h.scores[x]>h.scores[best])best=x;if(best==a)b+=i.capHigherBonus;}
+   int Higher(List<int> of,int bonus){if(of==null || bonus<=0 || !of.Contains(a))return 0;int best=-1;foreach(int x in of)if(best<0 || h.scores[x]>h.scores[best])best=x;return best==a?bonus:0;}
+   b+=Higher(i.capHigherOf,i.capHigherBonus);
+   if(i.capMore!=null)foreach(var g in i.capMore)b+=Higher(g.Key,g.Value);
    return b;
   }
   public static int AsiBonus(Pawn p)=>Info(p)?.asiBonus??0;
@@ -241,6 +244,7 @@ namespace LichPhylactery {
      Add(HeroDefOf.LP_DefyFate,new[]{0});Add(HeroDefOf.LP_Diligent,new[]{0});
      Add(HeroDefOf.LP_TotemSpirit,Enumerable.Range(1,3));Add(HeroDefOf.LP_FavoredEnemy,Enumerable.Range(1,FavoredFactionFor(p)!=null?7:6));
      Add(HeroDefOf.LP_Attuner,new[]{0});Add(HeroDefOf.LP_ElementTouched,Enumerable.Range(1,4));Add(HeroDefOf.LP_SpellWarded,new[]{0});Add(HeroDefOf.LP_Duelist,new[]{0});
+     foreach(var d in MoreTraits.Purple)if(tier!=Tier.Legendary || !d.HasModExtension<LP_AdventurerAffinityExt>())Add(d,new[]{0}); // 1.79.0 新增蓝 / 紫（传奇种族同样不抽改加点倍率 / 上限的那几个）
      break;
     case KindTalent:
      foreach(var d in Talents.All)Add(d,new[]{0});
@@ -505,7 +509,7 @@ namespace LichPhylactery {
   public void Tick2500(int now){
    Refresh();
    foreach(var p in destinies.ToList()){try{HeroDestiny.Periodic(p,now);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 天命周期出错："+e,75158001);}}
-   foreach(var p in PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive_FreeColonists.ToList()){Growth.Sample(p);if(Growth.all.Count>0)Growth.Sync(p);} // 1.58.3 实战磨砺、传承武器阶段
+   foreach(var p in PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive_FreeColonists.ToList()){if(Growth.all.Count>0)Growth.Sync(p);} // 1.58.3 传承武器阶段（实战磨砺 1.75.0 起实时累计，Growth.Grind）
    HeroDestiny.CheckColonyDemigod();
    if(now%60000<2500){HeroTraits.Cleanup();DndCreatureType.Trim();}
   }

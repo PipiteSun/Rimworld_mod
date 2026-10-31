@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- DND 怪物第二批的野外刷新：比 1.25.0 的野兽更稀有（0.01～0.03），偶尔能撞见。
+     设置里关掉“野外刷新 DND 怪物”时，代码把这些权重当成 0（见 Source/WildMonsters.cs），不用改这里。 -->
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/BiomeDef[defName="TemperateForest"]/wildAnimals</xpath>
+    <value>
+      <LP_RustMonster>0.02</LP_RustMonster>
+      <LP_Manticore>0.01</LP_Manticore>
+      <LP_Bulette>0.01</LP_Bulette>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/BiomeDef[defName="BorealForest"]/wildAnimals</xpath>
+    <value>
+      <LP_RustMonster>0.02</LP_RustMonster>
+      <LP_Bulette>0.01</LP_Bulette>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/BiomeDef[defName="Tundra"]/wildAnimals</xpath>
+    <value>
+      <LP_Bulette>0.02</LP_Bulette>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/BiomeDef[defName="TemperateSwamp"]/wildAnimals</xpath>
+    <value>
+      <LP_GelatinousCube>0.02</LP_GelatinousCube>
+      <LP_CarrionCrawler>0.03</LP_CarrionCrawler>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/BiomeDef[defName="TropicalSwamp"]/wildAnimals</xpath>
+    <value>
+      <LP_GelatinousCube>0.02</LP_GelatinousCube>
+      <LP_CarrionCrawler>0.03</LP_CarrionCrawler>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/BiomeDef[defName="ColdBog"]/wildAnimals</xpath>
+    <value>
+      <LP_GelatinousCube>0.02</LP_GelatinousCube>
+      <LP_CarrionCrawler>0.03</LP_CarrionCrawler>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/BiomeDef[defName="TropicalRainforest"]/wildAnimals</xpath>
+    <value>
+      <LP_Basilisk>0.02</LP_Basilisk>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/BiomeDef[defName="AridShrubland"]/wildAnimals</xpath>
+    <value>
+      <LP_RustMonster>0.03</LP_RustMonster>
+      <LP_Basilisk>0.03</LP_Basilisk>
+      <LP_Manticore>0.02</LP_Manticore>
+      <LP_Bulette>0.02</LP_Bulette>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/BiomeDef[defName="Desert"]/wildAnimals</xpath>
+    <value>
+      <LP_RustMonster>0.02</LP_RustMonster>
+      <LP_Basilisk>0.03</LP_Basilisk>
+      <LP_Manticore>0.02</LP_Manticore>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/BiomeDef[defName="ExtremeDesert"]/wildAnimals</xpath>
+    <value>
+      <LP_Manticore>0.02</LP_Manticore>
+    </value>
+  </Operation>
+</Patch>

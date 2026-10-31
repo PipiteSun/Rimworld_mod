@@ -57,7 +57,7 @@ namespace LichPhylactery.VPEBridge {
  }
  // 1.73.0：迁移按版本号跑（1.72.0 只迁了战士 / 武僧 / 圣武士，老存档里 done=true 也要再跑一遍迁剩下五条；Migrate 对已经迁过的人什么都不做）。
  public class GameComponent_ClassMigration : GameComponent {
-  public const int Version=2;
+  public const int Version=3; // 1.74.0 热修：读回来的旧能力（见 LegacyAbilityClassNames）再迁一遍
   public bool done;public int version;
   public GameComponent_ClassMigration(Game game){}
   public override void FinalizeInit(){
@@ -116,6 +116,18 @@ namespace LichPhylactery.VPEBridge {
  // 三条旧路径的 VPE 能力：没有按钮、没有效果，读档后由 ClassMigration 删掉。
  public class Ability_ClassLegacy : Ability {
   public override bool ShowGizmoOnPawn()=>false;
+ }
+ // 1.74.0 热修：1.73.0 删掉了旧职业能力的类（Ability_MagicMissile、Ability_SecondWind 等 57 个），老存档里 VEF 能力列表按这些类名读，
+ // 找不到时 VEF 退回抽象的 Ability，整个人读档失败（PawnKindDef 为空的“半个人”：标签报错、和他互动的殖民者每次互动都中断并反复重来，
+ // 社交分页里的心情和好感一直在变）。这些类名一律读成 Ability_ClassLegacy，再由迁移删掉。
+ [HarmonyPatch(typeof(BackCompatibility),nameof(BackCompatibility.GetBackCompatibleType))]
+ public static class LegacyAbilityClassNames {
+  public const string Prefix_="LichPhylactery.VPEBridge.Ability_";
+  public static Type Map(Type baseType,string name){
+   if(name==null || !name.StartsWith(Prefix_) || baseType==null || !baseType.IsAssignableFrom(typeof(Ability_ClassLegacy)))return null;
+   return GenTypes.GetTypeInAnyAssembly(name)==null?typeof(Ability_ClassLegacy):null;
+  }
+  static bool Prefix(Type baseType,string providedClassName,ref Type __result){var t=Map(baseType,providedClassName);if(t==null)return true;__result=t;return false;}
  }
  public class Hediff_MartialFlag : HediffWithComps {}
  public class Hediff_Enmity : HediffWithComps {public Pawn caster;public override void ExposeData(){base.ExposeData();Scribe_References.Look(ref caster,"lpEnmityCaster");}}

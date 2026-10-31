@@ -292,7 +292,7 @@ namespace LichPhylactery {
    var deities=Twilight.Deities;
    Check(deities.Count==8 && deities.Select(d=>d.degree).SequenceEqual(Enumerable.Range(1,8)) && deities.All(d=>Chinese(d.label) && !d.key.NullOrEmpty() && Chinese(d.description)),"eight deities load with degrees 1-8");
    var trait=Twilight.Trait;
-   Check(trait!=null && trait.GetGenderSpecificCommonality(Gender.Male)==0f && trait.degreeDatas.Count==8 && deities.All(d=>trait.DataAtDegree(d.degree).label=="神力灌注（"+d.label+"）"),"divine infusion trait: 8 degrees named after the gods, commonality 0");
+   Check(trait!=null && trait.GetGenderSpecificCommonality(Gender.Male)==0f && trait.degreeDatas.Count==8 && deities.All(d=>trait.DataAtDegree(d.degree).label.StripTags()=="神力灌注（"+d.label+"）"),"divine infusion trait: 8 degrees named after the gods, commonality 0");
    Check(Twilight.VesselDef?.hediffClass==typeof(Hediff_DivineVessel) && Twilight.VesselDef.RenderNodeProperties?.Any(r=>r.nodeClass==typeof(PawnRenderNode_DivineHalo))==true && Twilight.Condition?.conditionClass==typeof(GameCondition_TwilightYear),"vessel hediff with tinted halo, twilight world condition");
    // 随机殖民者不带特性。
    int carried=0;for(int i=0;i<40;i++){var p=PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist,Faction.OfPlayer,PawnGenerationContext.NonPlayer,-1,forceGenerateNewPawn:true,canGeneratePawnRelations:false));if(p.story.traits.HasTrait(trait))carried++;p.Destroy();}
@@ -324,7 +324,7 @@ namespace LichPhylactery {
    var foes=new List<Pawn>();
    foreach(var d in Twilight.Deities){
     var p=EvPawn(null,Enemy??Faction.OfPlayer);float mind=DNDMind.Resistance(p),speed=p.GetStatValue(StatDefOf.MoveSpeed);
-    Twilight.Infuse(p,d);Check(Twilight.Infused(p)==d && p.story.traits.GetTrait(Twilight.Trait).Label=="神力灌注（"+d.label+"）","infusion trait for "+d.label);
+    Twilight.Infuse(p,d);Check(Twilight.Infused(p)==d && p.story.traits.GetTrait(Twilight.Trait).Label.StripTags()=="神力灌注（"+d.label+"）","infusion trait for "+d.label);
     switch(d.key){
      case "Bane":Check(Near(DNDMind.Resistance(p)-mind,.2f),"Bane infusion: mind resistance +20%");break;
      case "Surtr":Check(p.GetStatValue(StatDefOf.Flammability)==0f && Near(TwilightSkills.DamageFactor(p,new DamageInfo(DamageDefOf.Flame,10f)),.5f),"Surtr infusion: fire damage halved, cannot catch fire");break;

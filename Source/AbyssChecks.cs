@@ -228,6 +228,11 @@ namespace LichPhylactery {
    var sd=made["LP_AH_ShadowDemon"];var e=Outsiders.Of(sd);var claw=new DamageInfo(DamageDefOf.Scratch,10f,0f,-1f,prey,null,ThingDefOf.Human);
    float df=Outsiders.DamageFactor(sd,e,claw);float want=.5f*(Outsiders.Lit(sd)?1.5f:1f);
    Check(e.lightBane && Near(e.nonMagicFactor,.5f) && Near(df,want) && Near(Outsiders.DamageFactor(sd,e,new DamageInfo(DamageDefOf.Flame,10f)),Outsiders.Lit(sd)?1.5f:1f),"shadow demon: natural / mundane weapons x0.5, x1.5 more in the light, abilities without a weapon unaffected by the mundane rule ("+df+", lit "+Outsiders.Lit(sd)+")");
+   // 影魔半透明：地图上画成约 50% 透明（原版透明着色器），头像和其他人不变
+   var dp=PawnDrawParms.Default;dp.pawn=sd;var pp=dp;pp.flags|=PawnRenderFlags.Portrait;var hp=dp;hp.pawn=prey;
+   var src=MaterialPool.MatFrom(BaseContent.WhiteTex,ShaderDatabase.Cutout,Color.white);var sm=AbyssRaces.ShadowMat(src);
+   Check(AbyssRaces.Translucent(dp) && !AbyssRaces.Translucent(pp) && !AbyssRaces.Translucent(hp) && sm.shader==ShaderDatabase.Transparent && Near(sm.color.a,AbyssRaces.ShadowAlpha) && AbyssRaces.ShadowMat(src)==sm
+    && Harmony.GetPatchInfo(AccessTools.Method(typeof(PawnRenderNodeWorker),nameof(PawnRenderNodeWorker.GetFinalizedMaterial)))?.Postfixes.Any(x=>x.owner=="local.lich.phylactery")==true,"shadow demon renders about 50% transparent on the map (transparent shader, cached), portraits and other pawns unchanged");
   }
 
   // ---------- 真名卷 / 锚链 / 审讯 / 典籍 ----------

@@ -127,7 +127,7 @@
     <degreeDatas>
       <li>
         <label><![CDATA[<color=#B070E0>勤勉</color>]]></label>
-        <description>{PAWN_nameDef}从不偷懒，长进也比别人多一分。\n\n- 6、10、14、18 级各多一次属性提升</description>
+        <description>{PAWN_nameDef}从不偷懒，长进也比别人多一分。\n\n- 6、10、14、18 级各多一次属性提升（这几级本来什么都不给；每次可以加属性，也可以改选专长，二选一）</description>
       </li>
     </degreeDatas>
     <modExtensions>

@@ -75,7 +75,11 @@ namespace LichPhylactery.VPEBridge {
     var q=Make(0,12,12);var hq=Adv(q,6);hq.classes=new ClassData();ClassSystem.SetLevel(hq,ClassSystem.Fighter,2);hq.classes.migrated=true;
     var cq=q.GetComp<CompAbilities>();foreach(var n in new[]{"LP_MagicMissile","LP_MageArmor","LP_Fireball"})cq.GiveAbility(Def(n));Classes.Psycasts(q).UnlockPath(Classes.Path(Classes.WizardPath));
     var wiz=DefDatabase<LP_ClassDef>.GetNamed("LP_Class_Wizard");int moved2=ClassMigration.Migrate(q);
-    Check(moved2==1 && ClassSystem.Level(hq,wiz)==2 && ClassSystem.Level(hq,ClassSystem.Fighter)==2 && q.abilities.GetAbility(DefDatabase<RimWorld.AbilityDef>.GetNamed("LP_Fireball"))!=null && hq.classes.kept.Any(d=>d.defName=="LP_Fireball") && !cq.LearnedAbilities.Any(a=>ClassMigration.Hidden(a.def)) && GameComponent_ClassMigration.Version==2,"second migration pass (1.73.0): a pawn already migrated in 1.72.0 keeps fighter 2 and gets wizard 2 from 3 old wizard spells");
+    Check(moved2==1 && ClassSystem.Level(hq,wiz)==2 && ClassSystem.Level(hq,ClassSystem.Fighter)==2 && q.abilities.GetAbility(DefDatabase<RimWorld.AbilityDef>.GetNamed("LP_Fireball"))!=null && hq.classes.kept.Any(d=>d.defName=="LP_Fireball") && !cq.LearnedAbilities.Any(a=>ClassMigration.Hidden(a.def)) && GameComponent_ClassMigration.Version==3,"second migration pass (1.73.0): a pawn already migrated in 1.72.0 keeps fighter 2 and gets wizard 2 from 3 old wizard spells");
+    // 1.74.0 热修：老存档里已经删掉的旧能力类名读成 Ability_ClassLegacy（不再退回抽象 Ability 让整个人读坏）；别的类名不受影响。
+    var oldT=BackCompatibility.GetBackCompatibleType(typeof(Ability),"LichPhylactery.VPEBridge.Ability_MagicMissile",null);var oldT2=BackCompatibility.GetBackCompatibleType(typeof(Ability),"LichPhylactery.VPEBridge.Ability_SecondWind",null);
+    var keepT=BackCompatibility.GetBackCompatibleType(typeof(Ability),typeof(Ability_ClassLegacy).FullName,null);var otherBase=LegacyAbilityClassNames.Map(typeof(Hediff),"LichPhylactery.VPEBridge.Ability_MagicMissile");
+    Check(oldT==typeof(Ability_ClassLegacy) && oldT2==typeof(Ability_ClassLegacy) && keepT==typeof(Ability_ClassLegacy) && otherBase==null && !oldT.IsAbstract,"removed 1.72/1.73 ability class names load as the inert legacy ability ("+oldT+", "+oldT2+")");
    }finally{Adventurer.TestSuppressed=sup;}
   }
   static void ClassesAfterLoad(){

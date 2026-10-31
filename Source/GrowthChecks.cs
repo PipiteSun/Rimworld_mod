@@ -51,12 +51,17 @@ namespace LichPhylactery {
     c.kills[other.thingIDNumber]=3;GR.OwnerDied(owner);
     Check(c.owner==null && c.kills.Count==0 && Near(GR.DamageFactor(owner,new DamageInfo(DamageDefOf.Cut,10f,0f,-1f,owner,null,sword.def)),1f),"when the owner dies the weapon sleeps again and the kill counts reset");
     owner.equipment.Remove(sword);GR.Sync(owner);
-    // 9. 实战磨砺：按差值累计（第一次只记基准），满 120000 +1
-    var g=HtPawn();var hg=GrAdv(g);int raised=GR.Raised;GR.Sample(g);g.records.AddTo(RecordDefOf.DamageTaken,1300f);int n1=GR.Sample(g);
-    Check(hg.grindLast!=null && n1==1 && hg.scores[2]==11 && hg.grindGained[2]==1 && Near(hg.grind[2],10000f),"实战磨砺: the first sample is only a baseline; 1300 damage taken = 130000 grind → Con +1 (10000 carried over)");
+    // 9. 实战磨砺：1.75.0 起实时累计（受伤 / 学到技能的当下），满 120000 +1
+    var g=HtPawn();var hg=GrAdv(g);int raised=GR.Raised;g.records.AddTo(RecordDefOf.DamageTaken,500f);float live=hg.grind[2];g.records.AddTo(RecordDefOf.DamageTaken,800f);
+    Check(Near(live,50000f) && GR.Raised==raised+1 && hg.scores[2]==11 && hg.grindGained[2]==1 && Near(hg.grind[2],10000f),"实战磨砺 is live: 500 damage taken → 50000 at once; 1300 total = 130000 → Con +1 (10000 carried over)");
+    // 技能经验当下就进磨砺：100 射击（不受学习倍率影响的部分按实际入账算）→ 敏捷；采矿 ×0.5 → 力量；建造不算
+    var sh=g.skills.GetSkill(SkillDefOf.Shooting);float e0=GR.Progress(sh),d0=hg.grind[1];sh.Learn(100f,false,true);float shot=hg.grind[1]-d0,earned=GR.Progress(sh)-e0;
+    var mi=g.skills.GetSkill(SkillDefOf.Mining);float m0=hg.grind[0],me0=GR.Progress(mi);mi.Learn(100f,false,true);float mined=hg.grind[0]-m0,mearned=GR.Progress(mi)-me0;
+    float[] before=(float[])hg.grind.Clone();g.skills.GetSkill(SkillDefOf.Construction).Learn(100f,false,true);
+    Check(earned>0f && Near(shot,earned) && Near(mined,mearned*.5f) && hg.grind.SequenceEqual(before),"skill XP feeds 实战磨砺 as it is learned: shooting "+shot+" → Dex, mining ×0.5 → Str ("+mined+"), construction nothing (no waiting for a skill level-up)");
     // 10. 每项一生最多 +2，到上限就不加
-    g.records.AddTo(RecordDefOf.DamageTaken,1300f);GR.Sample(g);g.records.AddTo(RecordDefOf.DamageTaken,2600f);GR.Sample(g);
-    var g2=HtPawn();var hg2=GrAdv(g2);hg2.scores[2]=20;GR.Sample(g2);g2.records.AddTo(RecordDefOf.DamageTaken,2000f);int capped=GR.Sample(g2);
+    g.records.AddTo(RecordDefOf.DamageTaken,1300f);g.records.AddTo(RecordDefOf.DamageTaken,2600f);
+    var g2=HtPawn();var hg2=GrAdv(g2);hg2.scores[2]=20;int r2=GR.Raised;g2.records.AddTo(RecordDefOf.DamageTaken,2000f);int capped=GR.Raised-r2;
     Check(hg.grindGained[2]==2 && hg.scores[2]==12 && hg.grind[2]<=GR.GrindNeed && capped==0 && hg2.scores[2]==20,"grinding stops at +2 per score (Con 12) and never goes past the cap (Con 20 stays 20)");
     // 11. 派系声望：任务 +3 → 头衔一级、商队卖价 -5%；送礼每 20 好感 +1
     var f=GrFriend;

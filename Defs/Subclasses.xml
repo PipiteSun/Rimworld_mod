@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 子职业（见 ArtSource/Subclasses-spec.md / Source/ClassSubclass.cs）：野蛮人、游侠、游荡者各 3 个，职业 3 级选一个（选定不能改），能力在职业 3 / 7 / 11 / 15 级获得；
+     每个职业另有 2 个通用能力（general，7 / 11 级自动获得）。分支（choices）在子职业窗口里选，到等级才能选。 -->
+<Defs>
+  <!-- ===================== 子职业 ===================== -->
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_BarbarianGeneral</defName>
+    <label>野蛮人通用</label>
+    <description>所有野蛮人都会的两项能力。</description>
+    <parent>LP_Class_Barbarian</parent><general>true</general><order>0</order>
+    <abilities><li><ability>LP_FeralInstinct</ability><level>7</level></li><li><ability>LP_RecklessCharge</ability><level>11</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Berserker</defName>
+    <label>狂战士之道</label>
+    <description>为杀戮而狂暴：狂暴中出手更快、心志不可动摇，眼神就能吓退敌人，挨打必还手。</description>
+    <parent>LP_Class_Barbarian</parent><order>1</order><emblem>LP/Classes/Subclass/Emblem_Berserker</emblem><color>(0.9,0.4,0.32)</color>
+    <abilities><li><ability>LP_Frenzy</ability><level>3</level></li><li><ability>LP_MindlessRage</ability><level>7</level></li><li><ability>LP_IntimidatingPresence</ability><level>11</level></li><li><ability>LP_Retaliation</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_TotemWarrior</defName>
+    <label>图腾勇士之道</label>
+    <description>与一种图腾兽的灵魂结盟（熊、鹰、狼选一次，不能改），所有能力都随图腾变化。</description>
+    <parent>LP_Class_Barbarian</parent><order>2</order><emblem>LP/Classes/Subclass/Emblem_TotemWarrior</emblem><color>(0.72,0.58,0.4)</color>
+    <abilities><li><ability>LP_TotemSpiritRage</ability><level>3</level></li><li><ability>LP_AspectOfBeast</ability><level>7</level></li><li><ability>LP_SpiritWalker</ability><level>11</level></li><li><ability>LP_TotemAttunement</ability><level>15</level></li></abilities>
+    <choices><li><key>totem</key><label>图腾</label><level>3</level>
+      <options><li>熊</li><li>鹰</li><li>狼</li></options>
+      <tips><li>狂暴中除心灵外所有伤害 ×0.5；负重 ×2；灵魂行者召来灰熊；图腾调和嘲讽身边敌人。</li><li>狂暴中远程命中你 ×0.7、移动 ×1.2；远程射程 +3；灵魂行者召来鹰灵（食火鸡形）；图腾调和在狂暴中滑翔。</li><li>狂暴中 5 格内友军近战命中 +15%；移动 ×1.1、追踪逃跑的敌人；灵魂行者召来森林狼；图腾调和让近战命中撞倒目标。</li></tips></li></choices>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_StormHerald</defName>
+    <label>风暴先驱之道</label>
+    <description>狂暴时化身风暴（沙漠之火、海洋之雷、冻原之冰选一次，不能改）：身边的敌人持续受伤，友军得到庇护。</description>
+    <parent>LP_Class_Barbarian</parent><order>3</order><emblem>LP/Classes/Subclass/Emblem_StormHerald</emblem><color>(0.55,0.7,0.9)</color>
+    <abilities><li><ability>LP_StormAura</ability><level>3</level></li><li><ability>LP_StormSoul</ability><level>7</level></li><li><ability>LP_ShieldingStorm</ability><level>11</level></li><li><ability>LP_RagingStorm</ability><level>15</level></li></abilities>
+    <choices><li><key>element</key><label>风暴</label><level>3</level>
+      <options><li>沙漠（火）</li><li>海洋（雷）</li><li>冻原（冰）</li></options>
+      <tips><li>光环灼烧；火焰伤害 ×0.5，舒适温度上限 +40℃；狂暴风暴可能点燃敌人。</li><li>光环电击（机械体 EMP）；闪电伤害 ×0.5，舒适温度两头各 ±20℃；狂暴风暴可能击晕敌人。</li><li>光环冰霜；冰霜伤害 ×0.5，舒适温度下限 −40℃；狂暴风暴可能让敌人减速。</li></tips></li></choices>
+  </LichPhylactery.LP_SubclassDef>
+
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_RogueGeneral</defName>
+    <label>游荡者通用</label>
+    <description>所有游荡者都会的两项能力。</description>
+    <parent>LP_Class_Rogue</parent><general>true</general><order>0</order>
+    <abilities><li><ability>LP_RogueEvasion</ability><level>7</level></li><li><ability>LP_SteadyTarget</ability><level>11</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Assassin</defName>
+    <label>刺客</label>
+    <description>一击致命的专家：没进入战斗的敌人挨一下就是重击，倒下、被控住的目标更是死路一条。</description>
+    <parent>LP_Class_Rogue</parent><order>1</order><emblem>LP/Classes/Subclass/Emblem_Assassin</emblem><color>(0.7,0.4,0.45)</color>
+    <abilities><li><ability>LP_AssassinsOpening</ability><level>3</level></li><li><ability>LP_Impostor</ability><level>7</level></li><li><ability>LP_DeadlyStrike</ability><level>11</level></li><li><ability>LP_DeathStrike</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Thief</defName>
+    <label>盗贼</label>
+    <description>手快、脚快、眼尖：顺手牵羊、翻墙越脊、找得到宝藏，开打的头几秒快得惊人。</description>
+    <parent>LP_Class_Rogue</parent><order>2</order><emblem>LP/Classes/Subclass/Emblem_Thief</emblem><color>(0.62,0.66,0.5)</color>
+    <abilities><li><ability>LP_FastHands</ability><level>3</level></li><li><ability>LP_SecondStoryWork</ability><level>7</level></li><li><ability>LP_TreasureSense</ability><level>11</level></li><li><ability>LP_ThiefReflexes</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_ArcaneTrickster</defName>
+    <label>诡术师</label>
+    <description>学了点奥术的游荡者：有自己的法力（规则同法师），会法师之手、魔能飞弹、隐形术、睡眠术，还能偷走敌人的法术。</description>
+    <parent>LP_Class_Rogue</parent><order>3</order><emblem>LP/Classes/Subclass/Emblem_ArcaneTrickster</emblem><color>(0.62,0.5,0.9)</color>
+    <abilities><li><ability>LP_MageHand</ability><level>3</level></li><li><ability>LP_ATMagicMissile</ability><level>3</level></li><li><ability>LP_ATInvisibility</ability><level>3</level></li><li><ability>LP_ATSleep</ability><level>3</level></li>
+      <li><ability>LP_MagicalAmbush</ability><level>7</level></li><li><ability>LP_VersatileTrickster</ability><level>11</level></li><li><ability>LP_SpellThief</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_RangerGeneral</defName>
+    <label>游侠通用</label>
+    <description>所有游侠都会的两项能力。</description>
+    <parent>LP_Class_Ranger</parent><general>true</general><order>0</order>
+    <abilities><li><ability>LP_FieldEye</ability><level>7</level></li><li><ability>LP_ThornTrap</ability><level>11</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Hunter</defName>
+    <label>猎人</label>
+    <description>专门对付威胁的猎手：选一种猎杀之道（3 级）和一种防御战术（7 级），能同时攻击身边所有敌人。</description>
+    <parent>LP_Class_Ranger</parent><order>1</order><emblem>LP/Classes/Subclass/Emblem_Hunter</emblem><color>(0.6,0.72,0.42)</color>
+    <abilities><li><ability>LP_HuntersPrey</ability><level>3</level></li><li><ability>LP_DefensiveTactics</ability><level>7</level></li><li><ability>LP_MultiAttack</ability><level>11</level></li><li><ability>LP_SuperiorDefense</ability><level>15</level></li></abilities>
+    <choices>
+      <li><key>prey</key><label>猎手之选</label><level>3</level>
+        <options><li>巨像杀手</li><li>群敌杀手</li></options>
+        <tips><li>对已经受伤的目标伤害 ×1.25。</li><li>身边贴着 3 个以上敌人时，近战命中后对另一个相邻敌人再打一次（每秒一次）。</li></tips></li>
+      <li><key>defense</key><label>防御战术</label><level>7</level>
+        <options><li>多重攻击防御</li><li>逃脱之术</li></options>
+        <tips><li>同一个敌人 3 秒内第二次起打中你，伤害 ×0.5。</li><li>爆炸、火焰这类躲得开的伤害 ×0.5。</li></tips></li>
+    </choices>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_BeastMaster</defName>
+    <label>兽王</label>
+    <description>与一只动物结成游侠伙伴：它跟着你成长（野性等级跟到你的冒险者等级），学会特技，攻击翻倍，还能分享你的增益。</description>
+    <parent>LP_Class_Ranger</parent><order>2</order><emblem>LP/Classes/Subclass/Emblem_BeastMaster</emblem><color>(0.72,0.6,0.4)</color>
+    <abilities><li><ability>LP_RangerCompanion</ability><level>3</level></li><li><ability>LP_ExceptionalTraining</ability><level>7</level></li><li><ability>LP_BestialFury</ability><level>11</level></li><li><ability>LP_ShareSpells</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_GloomStalker</defName>
+    <label>幽域追踪者</label>
+    <description>在黑暗里狩猎的游侠：每场战斗的第一击最致命，暗处难以命中，意志如钢，落空了马上补刀。</description>
+    <parent>LP_Class_Ranger</parent><order>3</order><emblem>LP/Classes/Subclass/Emblem_GloomStalker</emblem><color>(0.5,0.5,0.66)</color>
+    <abilities><li><ability>LP_DreadAmbusher</ability><level>3</level></li><li><ability>LP_IronMind</ability><level>7</level></li><li><ability>LP_StalkersFlurry</ability><level>11</level></li><li><ability>LP_ShadowyDodge</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+
+  <!-- ===================== 状态 ===================== -->
+  <HediffDef Name="LP_SubclassPassiveBase" Abstract="True">
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>5</maxSeverity>
+    <defaultLabelColor>(0.85,0.75,0.5)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_FrenzyFatigue</defName>
+    <label>狂乱疲惫</label>
+    <description>狂乱过后筋疲力尽：移动 ×0.8，近战冷却 ×1.2。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.75,0.55,0.5)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>0.8</MoveSpeed><MeleeCooldownFactor>1.2</MeleeCooldownFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_TotemEagleRage</defName>
+    <label>鹰之灵</label>
+    <description>狂暴中鹰灵附体：移动 ×1.2，远程攻击更难命中你（×0.7）。</description>
+    <defaultLabelColor>(0.72,0.58,0.4)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>1.2</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WolfPackBuff</defName>
+    <label>狼群之灵</label>
+    <description>身边有狂暴的狼之图腾勇士：近战命中 +15%。</description>
+    <defaultLabelColor>(0.72,0.58,0.4)</defaultLabelColor>
+    <stages><li><statOffsets><MeleeHitChance>0.15</MeleeHitChance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_TotemAspect</defName>
+    <label>兽之面相</label>
+    <description>图腾兽的面相：熊 负重 ×2；鹰 远程武器射程 +3、射击精度略升；狼 移动 ×1.1，能追踪逃跑的敌人。</description>
+    <stages>
+      <li><label>熊</label><statFactors><CarryingCapacity>2</CarryingCapacity></statFactors></li>
+      <li><minSeverity>1.5</minSeverity><label>鹰</label><statOffsets><ShootingAccuracyPawn>0.02</ShootingAccuracyPawn></statOffsets></li>
+      <li><minSeverity>2.5</minSeverity><label>狼</label><statFactors><MoveSpeed>1.1</MoveSpeed></statFactors></li>
+    </stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_Tracked</defName>
+    <label>被追踪</label>
+    <description>被狼之图腾勇士盯上了脚印：移动 ×0.8。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.9,0.6,0.5)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>0.8</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_Taunted</defName>
+    <label>被嘲讽</label>
+    <description>被熊之图腾勇士吸引了注意，只想打他。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.9,0.6,0.5)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WolfPounce</defName>
+    <label>狼之扑倒</label>
+    <description>近战命中把体型不超过 2 的目标撞倒 2 秒。</description>
+    <defaultLabelColor>(0.72,0.58,0.4)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_StormSoulBuff</defName>
+    <label>风暴之魂</label>
+    <description>风暴的力量护着身体：对应元素的伤害 ×0.5，舒适温度放宽。</description>
+    <stages>
+      <li><label>沙漠</label><statOffsets><ComfyTemperatureMax>40</ComfyTemperatureMax></statOffsets></li>
+      <li><minSeverity>1.5</minSeverity><label>海洋</label><statOffsets><ComfyTemperatureMin>-20</ComfyTemperatureMin><ComfyTemperatureMax>20</ComfyTemperatureMax></statOffsets></li>
+      <li><minSeverity>2.5</minSeverity><label>冻原</label><statOffsets><ComfyTemperatureMin>-40</ComfyTemperatureMin></statOffsets></li>
+    </stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_StormShelter</defName>
+    <label>庇护风暴</label>
+    <description>身处风暴先驱的光环里：对应元素的伤害 ×0.75，舒适温度放宽一半。</description>
+    <defaultLabelColor>(0.55,0.7,0.9)</defaultLabelColor>
+    <stages>
+      <li><label>沙漠</label><statOffsets><ComfyTemperatureMax>20</ComfyTemperatureMax></statOffsets></li>
+      <li><minSeverity>1.5</minSeverity><label>海洋</label><statOffsets><ComfyTemperatureMin>-10</ComfyTemperatureMin><ComfyTemperatureMax>10</ComfyTemperatureMax></statOffsets></li>
+      <li><minSeverity>2.5</minSeverity><label>冻原</label><statOffsets><ComfyTemperatureMin>-20</ComfyTemperatureMin></statOffsets></li>
+    </stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_FeralInstinctBuff</defName>
+    <label>野性直觉</label>
+    <description>察觉到袭击，抢先出手：移动 ×1.3，瞄准时间 ×0.5，近战冷却 ×0.8。</description>
+    <defaultLabelColor>(0.9,0.45,0.35)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>1.3</MoveSpeed><AimingDelayFactor>0.5</AimingDelayFactor><MeleeCooldownFactor>0.8</MeleeCooldownFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_RogueSteady</defName>
+    <label>稳固目标</label>
+    <description>瞄准好了：下一次攻击必定命中，并且满足偷袭条件。</description>
+    <defaultLabelColor>(0.62,0.62,0.78)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_DeathStrikeFx</defName>
+    <hediffClass>LichPhylactery.Hediff_StrikeFactor</hediffClass>
+    <label>死亡之击</label>
+    <description>死亡之击这一下的近战伤害倍率。</description>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_SecondStoryBuff</defName>
+    <label>飞檐走壁</label>
+    <description>身手轻巧：移动 ×1.15，地形、积雪和植物都拖不慢你。</description>
+    <stages><li><statFactors><MoveSpeed>1.15</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ThiefReflexBuff</defName>
+    <label>盗贼反射</label>
+    <description>战斗刚开始，手比谁都快：近战冷却、射击冷却 ×0.5。</description>
+    <defaultLabelColor>(0.62,0.62,0.78)</defaultLabelColor>
+    <stages><li><statFactors><MeleeCooldownFactor>0.5</MeleeCooldownFactor><RangedCooldownFactor>0.5</RangedCooldownFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ATInvisible</defName>
+    <label>隐形术</label>
+    <description>诡术师的隐形术：隐形，攻击后现形（隐形时出手算偷袭）。</description>
+    <defaultLabelColor>(0.62,0.5,0.9)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Invisibility"><visibleToPlayer>true</visibleToPlayer><affectedByDisruptor>true</affectedByDisruptor></li></comps>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_Distracted</defName>
+    <hediffClass>LichPhylactery.Hediff_ClassMark</hediffClass>
+    <label>被法师之手干扰</label>
+    <description>一只看不见的手在扯它的衣角：算作偷袭目标。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.62,0.5,0.9)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_Spotted</defName>
+    <label>被发现</label>
+    <description>游侠的原野之眼看见了它。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.55,0.75,0.45)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CompanionGuard</defName>
+    <hediffClass>LichPhylactery.Hediff_ClassMark</hediffClass>
+    <label>伙伴守护</label>
+    <description>游侠伙伴守在身边：伙伴在 3 格内时受到的伤害 ×0.75。</description>
+    <defaultLabelColor>(0.55,0.75,0.45)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_BeastFuryBuff</defName>
+    <label>野兽之怒</label>
+    <description>兽王的伙伴：近战冷却 ×0.5（每次出手攻击两次）。</description>
+    <defaultLabelColor>(0.55,0.75,0.45)</defaultLabelColor>
+    <stages><li><statFactors><MeleeCooldownFactor>0.5</MeleeCooldownFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_IronMindBuff</defName>
+    <label>钢铁意志</label>
+    <description>幽域追踪者的意志：不会恐惧，心智抗性 +10%。</description>
+    <stages><li><statOffsets><LP_MindResist>0.1</LP_MindResist></statOffsets></li></stages>
+  </HediffDef>
+
+  <!-- ===================== 荆棘陷阱 ===================== -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_ThornTrapThing</defName>
+    <label>荆棘陷阱</label>
+    <description>游侠埋下的一丛带刺藤蔓。敌人踩上去会被缠住 5 秒，触发一次就散掉。每个游侠最多同时有 3 个。</description>
+    <thingClass>LichPhylactery.Building_ThornTrap</thingClass>
+    <graphicData>
+      <texPath>LP/Classes/Subclass/ThornTrapThing</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <rotatable>false</rotatable>
+    <tickerType>Normal</tickerType>
+    <stealable>false</stealable>
+    <passability>Standable</passability>
+    <statBases>
+      <MaxHitPoints>30</MaxHitPoints>
+      <Flammability>1</Flammability>
+      <Beauty>-2</Beauty>
+      <TrapSpringChance>1.0</TrapSpringChance>
+    </statBases>
+    <building>
+      <isTrap>true</isTrap>
+      <trapDestroyOnSpring>true</trapDestroyOnSpring>
+      <trapDamageCategory>Sharp</trapDamageCategory>
+      <expandHomeArea>false</expandHomeArea>
+      <ai_chillDestination>false</ai_chillDestination>
+      <deconstructible>false</deconstructible>
+    </building>
+  </ThingDef>
+
+  <!-- ===================== 能力：野蛮人通用 ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_FeralInstinct</defName>
+    <label>野性直觉</label>
+    <description>被动：不会被偷袭、暗杀或伏击（偷袭、暗杀、隐匿伏击、刺杀的“没察觉”加成都对你无效）。袭击到来时抢先行动：15 秒内移动 ×1.3、瞄准时间 ×0.5、近战冷却 ×0.8。野蛮人 7 级（通用）。</description>
+    <iconPath>LP/Classes/Subclass/FeralInstinct</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_RagePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_RecklessCharge</defName>
+    <label>狂暴冲撞</label>
+    <description>冲到 8 格内的一个空格，路线上的敌人受 5 × 狂怒强度 钝器伤害并被撞倒 2 秒。消耗 1 点怒气。冷却 20 秒。野蛮人 11 级（通用）。</description>
+    <iconPath>LP/Classes/Subclass/RecklessCharge</iconPath>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><range>8</range><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>RageCharge</effect><cost>1</cost><stat>LP_RagePower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- 狂战士之道 -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_Frenzy</defName>
+    <label>狂乱</label>
+    <description>被动：狂暴中每秒对正在近战的相邻敌人多结算一次普通攻击。代价：狂暴结束后疲惫 1 小时（移动 ×0.8、近战冷却 ×1.2）。狂战士之道，野蛮人 3 级。</description>
+    <iconPath>LP/Classes/Subclass/Frenzy</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_RagePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_MindlessRage</defName>
+    <label>无脑狂怒</label>
+    <description>被动：狂暴中免疫恐惧、魅惑和精神崩溃（狂暴开始时已有的震慑、恐惧也会消失）。狂战士之道，野蛮人 7 级。</description>
+    <iconPath>LP/Classes/Subclass/MindlessRage</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_RagePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_IntimidatingPresence</defName>
+    <label>威吓凝视</label>
+    <description>瞪住 10 格内一个敌人，让它吓得逃跑 10 秒（机械体等不会逃的只被震慑）。抵抗成功率 = 10% + 2% × 目标等级（最多 50%），首领、传奇 50%。不耗怒气。冷却 1 小时。狂战士之道，野蛮人 11 级。</description>
+    <iconPath>LP/Classes/Subclass/IntimidatingPresence</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><range>10</range><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Intimidate</effect><duration>600</duration><stat>LP_RagePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_Retaliation</defName>
+    <label>报复</label>
+    <description>被动：被敌人近战打中时立刻反击一次（每秒最多一次）。狂战士之道，野蛮人 15 级。</description>
+    <iconPath>LP/Classes/Subclass/Retaliation</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_RagePower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- 图腾勇士之道 -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_TotemSpiritRage</defName>
+    <label>图腾之灵</label>
+    <description>被动，看图腾：熊 狂暴中除心灵伤害外所有伤害 ×0.5（取代狂暴的 ×0.7）；鹰 狂暴中远程攻击命中你 ×0.7、移动 ×1.2；狼 狂暴中 5 格内的友军近战命中 +15%。图腾勇士之道，野蛮人 3 级。</description>
+    <iconPath>LP/Classes/Subclass/TotemSpirit</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_RagePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AspectOfBeast</defName>
+    <label>兽之面相</label>
+    <description>被动，看图腾：熊 负重 ×2；鹰 远程武器射程 +3、射击精度略升；狼 移动 ×1.1，40 格内正在逃跑的敌人被追踪（移动 ×0.8）。图腾勇士之道，野蛮人 7 级。</description>
+    <iconPath>LP/Classes/Subclass/AspectOfBeast</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_RagePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SpiritWalker</defName>
+    <label>灵魂行者</label>
+    <description>召来图腾兽的灵体助战 60 秒：熊 一只灰熊；鹰 两只鹰灵（原版没有鹰，用食火鸡的样子）；狼 两只森林狼（狂怒强度 125% 以上三只）。冷却 2 小时。图腾勇士之道，野蛮人 11 级。</description>
+    <iconPath>LP/Classes/Subclass/SpiritWalker</iconPath>
+    <cooldownTicksRange>5000</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SpiritWalker</effect><stat>LP_RagePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_TotemAttunement</defName>
+    <label>图腾调和</label>
+    <description>看图腾：熊 嘲讽 8 格内的敌人 10 秒（它们只想打你）；鹰 狂暴中滑翔到 10 格内的一个空格；狼 20 秒内近战命中把体型不超过 2 的目标撞倒 2 秒。熊和狼点任意位置即可。冷却 20 秒。图腾勇士之道，野蛮人 15 级。</description>
+    <iconPath>LP/Classes/Subclass/TotemAttunement</iconPath>
+    <hostile>false</hostile>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><range>10</range><warmupTime>0.25</warmupTime><requireLineOfSight>false</requireLineOfSight><targetParams><canTargetSelf>true</canTargetSelf></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>TotemAttune</effect><stat>LP_RagePower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- 风暴先驱之道 -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_StormAura</defName>
+    <label>风暴光环</label>
+    <description>被动：狂暴中每秒对半径 3 内的敌人造成 (1.5 + 0.1 × 野蛮人等级) × 狂怒强度 的元素伤害（沙漠 灼烧、海洋 闪电（机械体 EMP）、冻原 冰霜）。风暴先驱之道，野蛮人 3 级。</description>
+    <iconPath>LP/Classes/Subclass/StormAura</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_RagePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_StormSoul</defName>
+    <label>风暴之魂</label>
+    <description>被动：所选元素的伤害 ×0.5；沙漠 舒适温度上限 +40℃，海洋 两头各 ±20℃，冻原 舒适温度下限 −40℃。风暴先驱之道，野蛮人 7 级。</description>
+    <iconPath>LP/Classes/Subclass/StormSoul</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_RagePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_ShieldingStorm</defName>
+    <label>庇护风暴</label>
+    <description>被动：风暴光环里的同阵营友军得到一半的风暴之魂（所选元素伤害 ×0.75，舒适温度放宽一半）。风暴先驱之道，野蛮人 11 级。</description>
+    <iconPath>LP/Classes/Subclass/ShieldingStorm</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_RagePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_RagingStorm</defName>
+    <label>狂暴风暴</label>
+    <description>被动：风暴光环伤害 ×2、半径 5；每次伤害有 25% 的成功率附加效果（沙漠 点燃，海洋 击晕 1 秒，冻原 减速 2 秒）。风暴先驱之道，野蛮人 15 级。</description>
+    <iconPath>LP/Classes/Subclass/RagingStorm</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_RagePower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===================== 能力：游荡者通用 ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_RogueEvasion</defName>
+    <label>反射闪避</label>
+    <description>被动：爆炸、范围伤害 ×0.5。游荡者 7 级（通用）。</description>
+    <iconPath>LP/Classes/Subclass/RogueEvasion</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SteadyTarget</defName>
+    <label>稳固目标</label>
+    <description>站定瞄准 2 秒：之后 30 秒内的下一次攻击必定命中，并且满足偷袭条件。不耗资源。冷却 15 秒。游荡者 11 级（通用）。</description>
+    <iconPath>LP/Classes/Subclass/SteadyTarget</iconPath>
+    <cooldownTicksRange>900</cooldownTicksRange>
+    <verbProperties><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SteadyTarget</effect><duration>1800</duration><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- 刺客 -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AssassinsOpening</defName>
+    <label>暗杀</label>
+    <description>被动：对还没进入战斗的敌人（没有攻击目标、10 秒内没受过伤也没出过手）的第一下必定重击（×2）并必定偷袭。刺客，游荡者 3 级。</description>
+    <iconPath>LP/Classes/Subclass/AssassinsOpening</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_Impostor</defName>
+    <label>伪装身份</label>
+    <description>被动：精于伪装，暗影潜行的隐形时间 ×2。刺客，游荡者 7 级。</description>
+    <iconPath>LP/Classes/Subclass/Impostor</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DeadlyStrike</defName>
+    <label>致命一击</label>
+    <description>被动：对倒地、睡着、被击晕、被缠绕、魔法睡眠或处于精神状态（逃跑、被魅惑等）的目标，偷袭这一下伤害再 ×1.5。刺客，游荡者 11 级。</description>
+    <iconPath>LP/Classes/Subclass/DeadlyStrike</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_DeathStrike</defName>
+    <label>死亡之击</label>
+    <description>对相邻敌人一击，伤害 ×3（偷袭照常叠加）；目标没倒下时，抵抗失败就直接倒地。抵抗成功率 = 10% + 2% × 目标等级（最多 50%），首领、传奇 50%。冷却 6 小时。刺客，游荡者 15 级。</description>
+    <iconPath>LP/Classes/Subclass/DeathStrike</iconPath>
+    <cooldownTicksRange>15000</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>DeathStrike</effect><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- 盗贼 -->
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_FastHands</defName>
+    <label>快手·顺手牵羊</label>
+    <description>从相邻敌人身上摸走一样随身物品（优先药品，否则最值钱的一件），放进自己的背包。冷却 10 秒。盗贼，游荡者 3 级。</description>
+    <iconPath>LP/Classes/Subclass/FastHands</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><warmupTime>0.1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Pilfer</effect><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SecondStoryWork</defName>
+    <label>飞檐走壁</label>
+    <description>被动：地形、积雪和植物带来的移动减速全免（比野外穿行更强），移动 ×1.15。盗贼，游荡者 7 级。</description>
+    <iconPath>LP/Classes/Subclass/SecondStoryWork</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_TreasureSense</defName>
+    <label>寻宝直觉</label>
+    <description>被动：迷锁地牢的宝藏室和守卫奖励各多一件（治疗药水）。盗贼，游荡者 11 级。</description>
+    <iconPath>LP/Classes/Subclass/TreasureSense</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_ThiefReflexes</defName>
+    <label>盗贼反射</label>
+    <description>被动：每场战斗（1 小时没有攻防之后算新的一场）开始的 10 秒内，近战冷却、射击冷却 ×0.5。盗贼，游荡者 15 级。</description>
+    <iconPath>LP/Classes/Subclass/ThiefReflexes</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- 诡术师 -->
+  <AbilityDef ParentName="LP_ClassAbilityBase">
+    <defName>LP_MageHand</defName>
+    <label>法师之手</label>
+    <description>一只看不见的手：把 10 格内的一件物品拿到自己身边，或者打开一扇门。不耗法力。冷却 5 秒。诡术师，游荡者 3 级。</description>
+    <iconPath>LP/Classes/Subclass/MageHand</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>10</range><warmupTime>0.25</warmupTime><requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>true</canTargetBuildings><canTargetItems>true</canTargetItems><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>MageHand</effect><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_ATMagicMissile</defName>
+    <label>魔能飞弹（诡术师）</label>
+    <description>射出 3 发奥术飞弹，每发 4 × 诡术强度 点奥术力伤害，28 格。消耗 1 点法力。诡术师，游荡者 3 级。</description>
+    <iconPath>LP/Classes/Subclass/ATMagicMissile</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>28</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>MagicMissile</effect><cost>1</cost><power>4</power><stat>LP_CunningPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_ATInvisibility</defName>
+    <label>隐形术（诡术师）</label>
+    <description>隐形 20 秒 × 诡术强度，攻击后现形（隐形时出手算偷袭）。消耗 2 点法力。冷却 20 秒。诡术师，游荡者 3 级。</description>
+    <iconPath>LP/Classes/Subclass/ATInvisibility</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_ATInvisible</hediff><cost>2</cost><duration>1200</duration><durationScales>true</durationScales><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_ATSleep</defName>
+    <label>睡眠术（诡术师）</label>
+    <description>让 20 格内的一个敌人陷入魔法睡眠 8 秒 × 诡术强度。对机械体、意识已低于 30% 的目标无效；心智抗性可以抵抗（魔法伏击时抵抗成功率 −20%）。消耗 1 点法力。冷却 1 分钟。诡术师，游荡者 3 级。</description>
+    <iconPath>LP/Classes/Subclass/ATSleep</iconPath>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ATSleep</effect><cost>1</cost><duration>480</duration><durationScales>true</durationScales><stat>LP_CunningPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_MagicalAmbush</defName>
+    <label>魔法伏击</label>
+    <description>被动：隐形中施放的睡眠术，目标的抵抗成功率 −20%。诡术师，游荡者 7 级。</description>
+    <iconPath>LP/Classes/Subclass/MagicalAmbush</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_VersatileTrickster</defName>
+    <label>多才多艺的诡计</label>
+    <description>用法师之手扯住 10 格内一个敌人：5 秒内它算作偷袭目标（任何人打它都满足偷袭条件）。不耗法力。冷却 15 秒。诡术师，游荡者 11 级。</description>
+    <iconPath>LP/Classes/Subclass/VersatileTrickster</iconPath>
+    <cooldownTicksRange>900</cooldownTicksRange>
+    <verbProperties><range>10</range><warmupTime>0.1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Distract</effect><duration>300</duration><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SpellThief</defName>
+    <label>偷取法术</label>
+    <description>被动：敌人对你施放能力（原版灵能等）时，有 35% + 心智抗性 的成功率抵抗它，并把这个法术偷过来：8 小时内你能施放一次。诡术师，游荡者 15 级。</description>
+    <iconPath>LP/Classes/Subclass/SpellThief</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===================== 能力：游侠通用 ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_FieldEye</defName>
+    <label>原野之眼</label>
+    <description>被动：同一地图上敌对的宿敌会被标出（“被发现”），第一次发现时提示。游侠 7 级（通用）。</description>
+    <iconPath>LP/Classes/Subclass/FieldEye</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_HuntPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_ThornTrap</defName>
+    <label>荆棘陷阱</label>
+    <description>在 15 格内埋一个荆棘陷阱：敌人踩上去被缠住 5 秒（藤蔓缠绕并击晕），触发一次就散掉。每人最多 3 个，再放会拆掉最早的。冷却 10 秒。游侠 11 级（通用）。</description>
+    <iconPath>LP/Classes/Subclass/ThornTrap</iconPath>
+    <hostile>false</hostile>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>15</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ThornTrap</effect><stat>LP_HuntPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- 猎人 -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_HuntersPrey</defName>
+    <label>猎手之选</label>
+    <description>被动，选一种：巨像杀手 对已经受伤的目标伤害 ×1.25；群敌杀手 身边贴着 3 个以上敌人时，近战命中后对另一个相邻敌人再打一次（每秒一次）。猎人，游侠 3 级。</description>
+    <iconPath>LP/Classes/Subclass/HuntersPrey</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_HuntPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DefensiveTactics</defName>
+    <label>防御战术</label>
+    <description>被动，选一种：多重攻击防御 同一个敌人 3 秒内第二次起打中你，伤害 ×0.5；逃脱之术 爆炸、火焰伤害 ×0.5。猎人，游侠 7 级。</description>
+    <iconPath>LP/Classes/Subclass/DefensiveTactics</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_HuntPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_MultiAttack</defName>
+    <label>多重攻击</label>
+    <description>拿远程武器时：12 格内（不超过射程）最多 8 个敌人各中一发当前武器的必中子弹；拿近战武器时：对所有相邻敌人各结算一次攻击。不耗资源。冷却 30 秒。猎人，游侠 11 级。</description>
+    <iconPath>LP/Classes/Subclass/MultiAttack</iconPath>
+    <hostile>true</hostile>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>MultiAttack</effect><stat>LP_HuntPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SuperiorDefense</defName>
+    <label>高级猎手防御</label>
+    <description>被动：受伤后 10 秒内，再受到同一种伤害时这一下 ×0.5。猎人，游侠 15 级。</description>
+    <iconPath>LP/Classes/Subclass/SuperiorDefense</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_HuntPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- 兽王 -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_RangerCompanion</defName>
+    <label>游侠伙伴</label>
+    <description>被动：用“选择伙伴”按钮和一只殖民地动物结伴（设为主人）。伙伴的野性等级直接跟到你的冒险者等级（最多 40，不受普通主人 20 级的成长上限），对你的宿敌伤害 +20%。伙伴死了可以再选。兽王，游侠 3 级。</description>
+    <iconPath>LP/Classes/Subclass/RangerCompanion</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_HuntPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAbilityBase">
+    <defName>LP_ExceptionalTraining</defName>
+    <label>非凡训练</label>
+    <description>指挥伙伴（30 格内）：点敌人 → 伙伴扑过去把它撞倒 2 秒并咬一口；点友军（或自己）→ 伙伴守护 30 秒（伙伴在 3 格内时该友军受伤 ×0.75）；点物品 → 伙伴把它叼回你身边。伙伴的攻击算魔法武器。冷却 10 秒。兽王，游侠 7 级。</description>
+    <iconPath>LP/Classes/Subclass/ExceptionalTraining</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>30</range><warmupTime>0.1</warmupTime><requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetItems>true</canTargetItems><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations><canTargetSelf>true</canTargetSelf><canTargetAnimals>true</canTargetAnimals><canTargetMechs>true</canTargetMechs><canTargetHumans>true</canTargetHumans></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Training</effect><stat>LP_HuntPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BestialFury</defName>
+    <label>野兽之怒</label>
+    <description>被动：伙伴近战冷却 ×0.5（每次出手攻击两次）。兽王，游侠 11 级。</description>
+    <iconPath>LP/Classes/Subclass/BestialFury</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_HuntPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_ShareSpells</defName>
+    <label>分享法术</label>
+    <description>被动：你给自己施加的职业增益（狂暴、隐匿伏击、灵巧动作之类）同时加在 30 格内的伙伴身上；伙伴倒地时每天一次自动救起它（治疗 100）。兽王，游侠 15 级。</description>
+    <iconPath>LP/Classes/Subclass/ShareSpells</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_HuntPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- 幽域追踪者 -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DreadAmbusher</defName>
+    <label>恐惧伏击</label>
+    <description>被动：每场战斗（1 小时没有出手之后算新的一场）你的第一次命中伤害 ×1.5，并让目标恐惧逃跑 3 秒（首领、机械体只被震慑）。身处暗处（亮度低于 30%）时，近战和远程命中你 ×0.8。幽域追踪者，游侠 3 级。</description>
+    <iconPath>LP/Classes/Subclass/DreadAmbusher</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_HuntPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_IronMind</defName>
+    <label>钢铁意志</label>
+    <description>被动：免疫恐惧（逃跑类精神状态、震慑），心智抗性 +10%。幽域追踪者，游侠 7 级。</description>
+    <iconPath>LP/Classes/Subclass/IronMind</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_HuntPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_StalkersFlurry</defName>
+    <label>追猎者的乱舞</label>
+    <description>被动：攻击落空时立刻补一击（近战和远程的命中都按“落空再判定一次”计算）。幽域追踪者，游侠 11 级。</description>
+    <iconPath>LP/Classes/Subclass/StalkersFlurry</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_HuntPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_ShadowyDodge</defName>
+    <label>暗影闪避</label>
+    <description>被动：受到敌人攻击时有 30% 的成功率完全躲开这一下（每 5 秒最多一次）。幽域追踪者，游侠 15 级。</description>
+    <iconPath>LP/Classes/Subclass/ShadowyDodge</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_HuntPower</stat></li></comps>
+  </AbilityDef>
+</Defs>

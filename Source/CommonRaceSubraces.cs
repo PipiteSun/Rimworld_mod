@@ -13,7 +13,7 @@ namespace LichPhylactery {
  public static class Subraces {
   public const int CacheTicks=250;
   public const float SunlightGlow=.6f,SunlightFactor=.85f,DarknessFactor=.7f,GrudgeFactor=1.05f,HideFactor=.85f,CamouflageFactor=.7f;
-  public const float PoisonChance=.15f,PackStep=.05f,HobStep=.03f,FuryFactor=1.15f,SurpriseFactor=1.5f,ToughnessFactor=1.15f,TrapFactor=1.3f,TrapBuildFactor=2f,TinkerToyFactor=2f;
+  public const float PoisonChance=.15f,PackStep=.05f,HobStep=.03f,FuryFactor=1.15f,SurpriseFactor=1.25f,ToughnessFactor=1.15f,TrapFactor=1.3f,TrapBuildFactor=2f,TinkerToyFactor=2f;
   public const int PackMax=3,HobMax=3,SurpriseTicks=600,EscapeTicks=120,StillTicks=120,GrudgeTicks=60*GenDate.TicksPerDay,DarknessRefresh=90;
   public const float HideRadius=2f,PackRadius=1.5f,HobRadius=3f,SmallBeastSize=.5f,SmallBeastFactor=2f,HoardStep=.02f,HoardMax=.2f;
   // 1.58.6：改用线程安全、查不到也缓存的 DefCache（原来是普通 Dictionary，又会在属性 / 命中钩子里被写入）。

@@ -12,13 +12,13 @@ using Verse.AI;
 namespace LichPhylactery {
  // 1.70.0 野兽强化（见 ArtSource/Beasts-1.70.0-report.md）：
  // 野性等级：野生 / 非玩家动物第一次出现时定等级（狂暴兽群、敌对组按每只点数 ÷45 ±2，环境野兽 1～殖民地最高等级 −3，上限殖民地最高等级 +3），
- // 存在可见状态 LP_BeastLevel 上；等级折成虚拟力量 / 体质（1 级 10、20 级 20、30 级 24），套殖民者同一条六维曲线：近战伤害 × 力量倍率，部位生命 ×(1 + 1%/级) × 体质倍率，移速 +1%/级（至多 +30%）。
+ // 存在可见状态 LP_BeastLevel 上；等级折成虚拟力量 / 体质（1 级 10、20 级 20、30 级 24），套殖民者同一条六维曲线：近战伤害 × 力量倍率，部位生命 ×(1 + 5%/级，到 20 级) × (1 + 体质调整值 × 15%)（1.81.0 热修3），移速 +1%/级（至多 +30%）。
  // 精英（恐怖 / 狂暴 / 远古 / 深渊腐化）存在同一个状态里，另挂一个只显示的 LP_BeastElite；兽群首领必为精英、等级 +3，死后同群其余野兽退出狂暴并逃离地图。
  // 玩家的动物靠近战伤害和搬运 / 救援积累经验成长（上限：主人的冒险者等级，否则殖民地最高等级，硬上限 20）。
  // 所有钩子都在生成 / 出生 / 伤害 / 死亡 / 工作结束时触发，没有逐刻扫描。
  public static class BeastLevels {
   public const int MaxLevel=40,TameCap=20,CapOffset=3,AmbientOffset=3,LeaderBonus=3,AncientBonus=5,XpPerLevel=100;
-  public const float SpeedPer=.01f,SpeedMax=.3f,PartPer=.01f,CompanionXp=1.25f,BurnShare=.3f,DreadPart=3f,DreadMelee=1.5f,FrenzyCooldown=.67f,AncientArmor=.4f,DefaultElite=.05f,EliteMax=.2f,HaulXp=5f,RescueXp=20f;
+  public const float SpeedPer=.01f,SpeedMax=.3f,PartPer=.05f,CompanionXp=1.25f,BurnShare=.3f,DreadPart=3f,DreadMelee=1.5f,FrenzyCooldown=.67f,AncientArmor=.4f,DefaultElite=.05f,EliteMax=.2f,HaulXp=5f,RescueXp=20f;
   public const int None=0,Dread=1,Frenzy=2,Ancient=3,Abyssal=4;
   public static readonly string[] EliteNames={"","恐怖","狂暴","远古","深渊腐化"};
   public static readonly Color[] EliteColors={Color.white,new Color(.85f,.35f,.3f),new Color(1f,.55f,.2f),new Color(.55f,.75f,1f),new Color(.7f,.3f,.85f)};
@@ -51,8 +51,11 @@ namespace LichPhylactery {
   // 殖民者的六维曲线（Adventurer.Curve），小数部分在相邻两档之间插值。
   public static float CurveF(float s){int i=Mathf.FloorToInt(s);float f=s-i,a=Adventurer.Curve(i);return f<.0001f?a:Mathf.Lerp(a,Adventurer.Curve(i+1),f);}
   public static float Mult(int level)=>CurveF(Score(level));
-  public static float MeleeFactor(int level,int elite)=>Mult(level)*(elite==Dread?DreadMelee:1f);
-  public static float PartFactor(int level,int elite)=>(1f+PartPer*(Mathf.Clamp(level,1,MaxLevel)-1))*Mult(level)*(elite==Dread?DreadPart:1f);
+  public static float MeleeFactor(int level,int elite)=>Adventurer.MeleeFactor((Score(level)-10f)/2f)*(elite==Dread?DreadMelee:1f); // 1.81.0：近战伤害同冒险者，1 + 虚拟力量调整值 × 10%（20 级 ×1.5，40 级 ×1.9）
+  // 1.81.0 热修3：部位生命同冒险者 —— 等级成长每级 +5%（到 20 级，×1.95）× 虚拟体质（1 + 调整值 × 15%，20 级 ×1.75，40 级 ×2.35）。
+  public static float ConPart(int level)=>1f+Hediff_Adventurer.ConPartPerMod*(Score(level)-10f)/2f;
+  public static float LegacyPartFactor(int level,int elite)=>(1f+.01f*(Mathf.Clamp(level,1,MaxLevel)-1))*Mult(level)*(elite==Dread?DreadPart:1f); // 热修3 之前（读旧档缩小伤口用）
+  public static float PartFactor(int level,int elite)=>(1f+PartPer*(Mathf.Clamp(level,1,Adventurer.MaxLevel)-1))*ConPart(level)*(elite==Dread?DreadPart:1f);
   public static float SpeedFactor(int level)=>1f+Mathf.Min(SpeedMax,SpeedPer*(Mathf.Clamp(level,1,MaxLevel)-1));
   // 部位生命（LimbHealth.cs 的 PartHealth.WithoutReinforcement 乘进去）。热路径：先看是不是动物，再查登记表。
   public static float PartHealthFactor(Pawn p){
@@ -121,6 +124,7 @@ namespace LichPhylactery {
   public static Pawn Master(Pawn p)=>p?.playerSettings?.Master;
   // 成长上限：主人的冒险者等级，没有主人时殖民地最高等级；冒险者系统关了就是 20。硬上限 20（传奇等级不给动物）。
   public static int GrowthCap(Pawn p){
+   if(ClassSubclass.Companions.Count>0 && ClassSubclass.Companions.Contains(p)){var mh=Adventurer.Get(Master(p));if(mh!=null)return Mathf.Clamp(mh.level,1,MaxLevel);} // 子职业·兽王的游侠伙伴：跟到游侠的冒险者等级（最多 40）
    int c;if(!Adventurer.Enabled)c=TameCap;else{var m=Master(p);c=m!=null?(Adventurer.Get(m)?.level??1):ColonyMax();}
    return Mathf.Clamp(c,1,TameCap);
   }

@@ -59,6 +59,11 @@ namespace LichPhylactery {
    // 3. 奴隶状态
    var bad=all.Where(p=>!p.RaceProps.Humanlike || p.genes?.Xenotype==null || p.guest?.joinStatus!=JoinStatus.JoinAsSlave || p.relations.DirectRelations.Count>0 || p.relations.RelatedPawns.Any() || p.DevelopmentalStage!=DevelopmentalStage.Adult || p.Dead).Select(p=>p.LabelShort+"("+RedHawk.RaceKey(p)+")").ToList();
    Check(bad.Count==0 && all.Count>=30,"all "+all.Count+" stock slaves are adult humanlikes with a xenotype, join as slaves when bought, and have no relatives "+string.Join(",",bad));
+   // 3b. 商队里的库存奴隶是商品（交易窗口能买），红鹰护卫不是
+   var notChattel=all.Where(p=>p.GetTraderCaravanRole()!=TraderCaravanRole.Chattel).Select(p=>p.LabelShort).ToList();
+   var guard=PawnGenerator.GeneratePawn(new PawnGenerationRequest(DefDatabase<PawnKindDef>.GetNamed("LP_RH_Mercenary"),fac,forceGenerateNewPawn:true));rhMade.Add(guard);
+   if(guard.guest!=null)guard.guest.joinStatus=JoinStatus.JoinAsSlave;
+   Check(notChattel.Count==0 && guard.GetTraderCaravanRole()==TraderCaravanRole.Guard,"slaver caravan stock slaves count as goods (Chattel) so the trade window lists them; a red hawk mercenary stays a guard ("+guard.GetTraderCaravanRole()+"/"+guard.guest?.joinStatus+") "+string.Join(",",notChattel));
 
    // 4. 种族池 33 个基础条目都能解析并生成（含力能龙裔）
    var basic=gen.entries.Where(e=>e.pawnKind.NullOrEmpty()).ToList();

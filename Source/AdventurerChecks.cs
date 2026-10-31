@@ -85,7 +85,7 @@ namespace LichPhylactery {
     hc.scores=new[]{10,10,10,10,10,10};hc.Dirty();float baseMelee=c.GetStatValue(melee);
     hc.scores[Adventurer.Str]=16;hc.Dirty();float str16=c.GetStatValue(melee);
     s.adventurerEffectPercent=0;float off=c.GetStatValue(melee);s.adventurerEffectPercent=100;
-    Check(Near(str16/baseMelee,2.3f) && Near(off/baseMelee,1f),"Str 16 → melee damage ×2.3 (3.5 carrying-capacity curve); effect strength 0% → ×1 ("+baseMelee+" / "+str16+" / "+off+")");
+    Check(Near(str16/baseMelee,1.3f) && Near(off/baseMelee,1f),"Str 16 → melee damage ×1.3 (1.81.0: 1 + modifier × 10%); effect strength 0% → ×1 ("+baseMelee+" / "+str16+" / "+off+")");
     float carry0=c.GetStatValue(StatDefOf.CarryingCapacity);hc.scores[Adventurer.Str]=10;hc.Dirty();float carry1=c.GetStatValue(StatDefOf.CarryingCapacity);
     Check(Near(carry0/carry1,2.3f),"Str 16 → carrying capacity ×2.3");
     // 1.65.0 曲线：10 = ×1，15 = ×2，20 = ×4，24 = ×7，30 = ×16；低于 10 = 属性/10
@@ -93,11 +93,21 @@ namespace LichPhylactery {
     hc.scores[Adventurer.Str]=20;hc.AddBoon(Epic.Might,Adventurer.Str); // 威能之恩：上限 24、力量 20 → 24
     float str24=c.GetStatValue(melee),carry24=c.GetStatValue(StatDefOf.CarryingCapacity);int eff24=hc.Eff(Adventurer.Str);
     hc.boons.Remove(Epic.Might);hc.mightAbility=-1;hc.scores[Adventurer.Str]=10;hc.Dirty();
-    Check(eff24==24 && Near(str24/baseMelee,7f) && carry24/carry1>=7f-.01f,"Str 24 → melee damage ×7 and carrying capacity at least ×7 (超凡 adds its own carry factor) of Str 10 ("+(str24/baseMelee).ToString("0.##")+" / "+(carry24/carry1).ToString("0.##")+")");
-    // 部位生命：5 级、体质 14 → (1 + 4×1%) × 1.75 = ×1.82
+    Check(eff24==24 && Near(str24/baseMelee,1.7f) && carry24/carry1>=7f-.01f,"Str 24 → melee damage ×1.7 (linear) and carrying capacity at least ×7 (超凡 adds its own carry factor) of Str 10 ("+(str24/baseMelee).ToString("0.##")+" / "+(carry24/carry1).ToString("0.##")+")");
+    // 部位生命：5 级、体质 14 → (1 + 4×5%) × 1.3 = ×1.56（1.81.0 每级 +5%；热修3 体质每点调整值 +15%）
     hc.level=5;hc.scores[Adventurer.Con]=14;hc.Dirty();var torso=c.RaceProps.body.corePart;
     float withAdv=PartHealth.Maximum(torso,c);Adventurer.forcedScale=0f;float without=PartHealth.Maximum(torso,c);Adventurer.forcedScale=-1f;
-    Check(Near(Adventurer.PartHealthFactor(c),1.82f) && Math.Abs(withAdv-Mathf.Ceil(without*1.82f))<=1f,"level 5 Con 14 → part health ×1.82 ("+without+" → "+withAdv+")");
+    Check(Near(Adventurer.PartHealthFactor(c),1.56f) && Math.Abs(withAdv-Mathf.Ceil(without*1.56f))<=1f,"level 5 Con 14 → part health ×1.56 = 1.2 × 1.3 ("+without+" → "+withAdv+")");
+    // 1.81.0 热修2：部位生命成长按职业（野蛮人 4 + 未分配 1 → (1+(4×7%+5%)/5×4)×1.3；法师 4 → 4%）
+    {if(hc.classes==null)hc.classes=new ClassData();var barb=DefDatabase<LP_ClassDef>.GetNamedSilentFail("LP_Class_Barbarian");var wiz=DefDatabase<LP_ClassDef>.GetNamedSilentFail("LP_Class_Wizard");
+     hc.classes.levels.Clear();if(barb!=null)hc.classes.levels[barb]=4;hc.Dirty();float fb=Adventurer.PartHealthFactor(c);
+     hc.classes.levels.Clear();if(wiz!=null)hc.classes.levels[wiz]=4;hc.Dirty();float fw=Adventurer.PartHealthFactor(c);
+     hc.classes.levels.Clear();hc.Dirty();
+     Check(barb!=null && wiz!=null && Near(fb,(1f+(4f*.07f+.05f)/5f*4f)*1.3f) && Near(fw,(1f+(4f*.04f+.05f)/5f*4f)*1.3f),"part health growth follows class hit dice: level 5 Con 14 Barbarian 4 → ×1.643, Wizard 4 → ×1.518 ("+fb.ToString("0.###")+" / "+fw.ToString("0.###")+")");}
+    // 1.81.0：等级每级近战命中 / 闪避 +1%（最终几率补丁，到 20 级）；亲和只放大正的调整值（擅长力量 18 = ×1.6）
+    var dodgeM=AccessTools.Method(typeof(Verb_MeleeAttack),"GetDodgeChance");var dodgeP=dodgeM==null?null:Harmony.GetPatchInfo(dodgeM);
+    bool dodgePatched=dodgeP!=null && dodgeP.Postfixes.Any(x=>x.PatchMethod.DeclaringType==typeof(AdventurerMeleeDodge));
+    Check(Near(Adventurer.LevelMelee(5),.04f) && Near(Adventurer.LevelMelee(20),.19f) && Near(Adventurer.LevelMelee(30),.19f) && Near(Adventurer.LevelMelee(c),.04f) && dodgePatched && Near(Adventurer.MeleeFactor(Affinity.Apply(4,1.5f)),1.6f) && Near(Adventurer.MeleeFactor(-10f),.5f),"level melee hit/dodge +1%/level (lvl 5 +4%, lvl 20 +19%, capped), dodge patch "+(dodgeM!=null)+"/"+dodgePatched+"; strong Str 18 → melee ×1.6");
     hc.scores[Adventurer.Con]=6;hc.level=1;
     Check(Near(Adventurer.PartHealthFactor(c),1f),"negative constitution never lowers part health");
     // 7. 学习速度
@@ -132,6 +142,9 @@ namespace LichPhylactery {
     CheckAdventurerStage5(); // 1.51.0 种族加点亲和与稀有天赋（AdventurerChecks5.cs）
     CheckAdventurerStage6(); // 1.52.0 热修：冒险者分页（AdventurerChecks6.cs）
     CheckAdventurerWork(); // 1.61.0 热修：日常工作经验（AdventurerChecks7.cs）
+    CheckAdventurerExtraXp(); // 1.75.0 非战斗经验（AdventurerChecks8.cs）
+    CheckAdventurerPointBuy(); // 1.76.0 初始属性购点（AdventurerChecks9.cs）
+    CheckAdventurerBalance(); // 1.81.0 热修3：职业与属性平衡（AdventurerChecks10.cs）
    }finally{
     s.adventurer=oldOn;s.adventurerAutoASI=oldAuto;s.adventurerXpPercent=oldXp;s.adventurerEffectPercent=oldFx;s.adventurerIsekaiCoexist=oldCo;Adventurer.forcedScale=-1f;
     foreach(var p in advMade)if(!p.Destroyed && p.ThingID!=advSavedId)p.Destroy();
@@ -154,6 +167,7 @@ namespace LichPhylactery {
     advSavedFeats=string.Join(",",h.feats.Select(f=>f.defName));advSavedLuckyLeft=h.UsesLeft(Feats.Lucky);
     Check(advSavedLuckyLeft==1,"save fixture has lucky + alert with 1 lucky use left");
     h.workXpToday=23.5f;h.workXpDay=1234;h.workXpRem=.75f;h.workXpTotal=77f; // 1.61.0 热修：日常工作经验
+    PrepareExtraXpSave(p,h); // 1.75.0
     PrepareEpicSave(h); // 1.49.0
     PrepareLegendSave(h); // 1.50.0
     PrepareAffinitySave(h); // 1.51.0
@@ -165,6 +179,7 @@ namespace LichPhylactery {
    Check(Adventurer.State!=null && Adventurer.State.backfilled,"backfill flag is saved");
    Check(string.Join(",",h.feats.Select(f=>f.defName))==advSavedFeats && h.UsesLeft(Feats.Lucky)==advSavedLuckyLeft,"feats and today's remaining uses survive save/load ("+advSavedFeats+", lucky "+h.UsesLeft(Feats.Lucky)+")");
    Check(Near(h.workXpToday,23.5f) && h.workXpDay==1234 && Near(h.workXpRem,.75f) && Near(h.workXpTotal,77f),"work XP today / day / remainder / total survive save/load");
+   CheckExtraXpAfterLoad(p,h); // 1.75.0
    CheckEpicAfterLoad(h); // 1.49.0
    CheckLegendAfterLoad(h); // 1.50.0
    CheckAffinityAfterLoad(h); // 1.51.0
@@ -185,7 +200,7 @@ namespace LichPhylactery {
     Check(h.level==4 && h.pendingASI==1,"levels, XP and ASI still work with Isekai");
     h.scores=new[]{10,10,10,10,10,10};h.Dirty();float base10=p.GetStatValue(StatDefOf.MeleeDamageFactor);h.scores[0]=18;h.Dirty();float base18=p.GetStatValue(StatDefOf.MeleeDamageFactor);
     s.adventurerIsekaiCoexist=false;float on18=p.GetStatValue(StatDefOf.MeleeDamageFactor);
-    Check(Near(base18,base10) && Near(on18/base10,3f) && Near(Adventurer.LearnFactor(p,SkillDefOf.Melee),3f),"coexistence off → Str 18 gives melee ×3 again");
+    Check(Near(base18,base10) && Near(on18/base10,1.4f) && Near(Adventurer.LearnFactor(p,SkillDefOf.Melee),3f),"coexistence off → Str 18 gives melee ×1.4 and melee learning ×3 again");
    }finally{
     s.adventurerIsekaiCoexist=oldCo;s.adventurer=oldOn;s.adventurerEffectPercent=oldFx;
     foreach(var p in advMade)if(!p.Destroyed)p.Destroy();advMade.Clear();Adventurer.TestSuppressed=true;

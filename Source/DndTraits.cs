@@ -60,6 +60,7 @@ namespace LichPhylactery {
    personality=new HashSet<TraitDef>{DndTraitDefOf.LP_Order,DndTraitDefOf.LP_Morality,DndTraitDefOf.LP_DragonStance,DndTraitDefOf.LP_GiantStance,DndTraitDefOf.LP_UndeadStance,DndTraitDefOf.LP_RaceAttitude,DndTraitDefOf.LP_HiveSurvivor,DndTraitDefOf.LP_DragonServant,DndTraitDefOf.LP_GithExile,
     DndTraitDefOf.LP_Tactician,DndTraitDefOf.LP_ArcaneGift,DndTraitDefOf.LP_WildMagic,DndTraitDefOf.LP_Tinkerer,DndTraitDefOf.LP_NatureBond,DndTraitDefOf.LP_Magephobe,DndTraitDefOf.LP_ArcaneCraving,DndTraitDefOf.LP_TreasureHunter,DndTraitDefOf.LP_PlaneTouched};
    curses=new HashSet<TraitDef>{DndTraitDefOf.LP_Revenant,DndTraitDefOf.LP_Lycanthrope,DndTraitDefOf.LP_FarRealmTouched};
+   foreach(var d in MoreTraits.Curses)curses.Add(d); // 1.79.0 吸血鬼之咒、厄运缠身、空心之人、狱火烙印（HeroTraitsMore.cs）
    personality.Remove(null);curses.Remove(null);
   }
   public static bool IsPersonality(TraitDef d){if(d==null)return false;Sets();return personality.Contains(d);}
@@ -175,6 +176,7 @@ namespace LichPhylactery {
   public static void AddCurseChoices(Pawn p,Action<TraitDef,IEnumerable<int>> add,bool revenant=true){
    if(revenant)add(DndTraitDefOf.LP_Revenant,new[]{0});
    add(DndTraitDefOf.LP_Lycanthrope,new[]{1,2,3});add(DndTraitDefOf.LP_FarRealmTouched,new[]{0});
+   foreach(var d in MoreTraits.Curses)if(MoreTraits.CurseAllowed(p,d))add(d,new[]{0}); // 1.79.0
   }
   public static Trait BossCurse(Pawn p){
    var c=HeroTraits.Choices(p,HeroTraits.KindCurse).Where(x=>x.def!=DndTraitDefOf.LP_Revenant).ToList();if(c.Count==0)return null;

@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 新职业：野蛮人、游侠、游荡者（同 1.72–1.74 的职业框架，见 ArtSource/Classes3-spec.md）。
+     野蛮人用怒气（受击、命中积攒，脱战衰减，睡觉不恢复）；游侠、游荡者没有资源，只看冷却。三个都是物理职业（游荡者不给额外攻击档位，改用偷袭）。 -->
+<Defs>
+  <!-- ===== 职业 ===== -->
+  <LichPhylactery.LP_ClassDef>
+    <defName>LP_Class_Barbarian</defName>
+    <label>野蛮人</label>
+    <description>DND 野蛮人以怒为力：狂暴、鲁莽攻击、危险感知（被动）、野性怒吼、残暴重击（被动）、不灭之怒（被动），终极 原初斗士。强度看“狂怒强度”（格斗等级与力量）。资源：怒气（受到敌人伤害 +0.5、命中敌人 +0.1，脱战后每小时 −1，睡觉不恢复）。狂暴中不能使用施法职业的能力。物理职业：额外攻击、战斗风格。</description>
+    <mainSkill>Melee</mainSkill>
+    <primary>Str</primary>
+    <order>9</order>
+    <resource>Rage</resource>
+    <martial>true</martial>
+    <background>LP/Classes/Barbarian/Background</background>
+    <color>(0.85,0.45,0.35)</color>
+    <abilities>
+      <li><ability>LP_Rage</ability><level>1</level></li>
+      <li><ability>LP_RecklessAttack</ability><level>3</level></li>
+      <li><ability>LP_DangerSense</ability><level>5</level></li>
+      <li><ability>LP_PrimalRoar</ability><level>7</level></li>
+      <li><ability>LP_BrutalCritical</ability><level>10</level></li>
+      <li><ability>LP_RelentlessRage</ability><level>13</level></li>
+      <li><ability>LP_PrimalChampion</ability><level>15</level><capstoneSkill>Melee</capstoneSkill></li>
+    </abilities>
+    <legendary><li>LP_LegBerserkerSoul</li><li>LP_LegEarthShatter</li></legendary>
+  </LichPhylactery.LP_ClassDef>
+
+  <LichPhylactery.LP_ClassDef>
+    <defName>LP_Class_Ranger</defName>
+    <label>游侠</label>
+    <description>DND 游侠是荒野的猎手：宿敌（被动，选一种生物类型）、猎人印记、野外穿行（被动）、齐射、兽伴（被动）、隐匿伏击，终极 屠戮宿敌。强度看“猎术强度”（射击或格斗较高者，敏捷或感知较高者）。没有资源，能力只看冷却。主人是游侠的动物得到动物伙伴的经验加成。物理职业：额外攻击、战斗风格。</description>
+    <mainSkill>Shooting</mainSkill>
+    <alternateSkill>Animals</alternateSkill>
+    <primary>Dex/Wis</primary>
+    <order>10</order>
+    <resource>None</resource>
+    <martial>true</martial>
+    <background>LP/Classes/Ranger/Background</background>
+    <color>(0.55,0.75,0.45)</color>
+    <abilities>
+      <li><ability>LP_FavoredFoe</ability><level>1</level></li>
+      <li><ability>LP_RangerMark</ability><level>3</level></li>
+      <li><ability>LP_Woodstride</ability><level>5</level></li>
+      <li><ability>LP_Volley</ability><level>7</level></li>
+      <li><ability>LP_BeastBond</ability><level>10</level></li>
+      <li><ability>LP_HideInPlain</ability><level>13</level></li>
+      <li><ability>LP_FoeSlayer</ability><level>15</level><capstoneSkill>Shooting</capstoneSkill></li>
+    </abilities>
+    <legendary><li>LP_LegFoeBane</li><li>LP_LegArrowStorm</li></legendary>
+  </LichPhylactery.LP_ClassDef>
+
+  <LichPhylactery.LP_ClassDef>
+    <defName>LP_Class_Rogue</defName>
+    <label>游荡者</label>
+    <description>DND 游荡者靠诡计取胜：偷袭（被动）、灵巧动作、诡诈闪避（被动）、暗影潜行、淬毒刃、刺杀，终极 幸运一击。强度看“诡术强度”（格斗或射击较高者，敏捷）。没有资源，能力只看冷却。物理职业：战斗风格；不给额外攻击档位，改用偷袭。</description>
+    <mainSkill>Melee</mainSkill>
+    <alternateSkill>Shooting</alternateSkill>
+    <primary>Dex</primary>
+    <order>11</order>
+    <resource>None</resource>
+    <martial>true</martial>
+    <background>LP/Classes/Rogue/Background</background>
+    <color>(0.62,0.62,0.78)</color>
+    <abilities>
+      <li><ability>LP_SneakAttack</ability><level>1</level></li>
+      <li><ability>LP_CunningAction</ability><level>3</level></li>
+      <li><ability>LP_UncannyDodge</ability><level>5</level></li>
+      <li><ability>LP_ShadowStep</ability><level>7</level></li>
+      <li><ability>LP_PoisonBlade</ability><level>10</level></li>
+      <li><ability>LP_Assassinate</ability><level>13</level></li>
+      <li><ability>LP_StrokeOfLuck</ability><level>15</level><capstoneSkill>Melee</capstoneSkill></li>
+    </abilities>
+    <legendary><li>LP_LegShadowDance</li><li>LP_LegDeathMark</li></legendary>
+  </LichPhylactery.LP_ClassDef>
+
+  <!-- ===== 职业强度 ===== -->
+  <StatDef ParentName="LP_ClassPowerBase">
+    <defName>LP_RagePower</defName>
+    <label>狂怒强度</label>
+    <description>野蛮人能力的强度倍率：0.5 + 格斗等级/20，另加冒险者力量调整值 × 0.04 与 (熟练加值 − 2) × 0.02；有物理职业的人另加 0.02 ×（物理职业等级合计 − 1），最多 +40%。</description>
+    <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Melee</skill><ability>Str</ability></li></parts>
+    <displayPriorityInCategory>4214</displayPriorityInCategory>
+  </StatDef>
+  <StatDef ParentName="LP_ClassPowerBase">
+    <defName>LP_HuntPower</defName>
+    <label>猎术强度</label>
+    <description>游侠能力的强度倍率：0.5 +（射击、格斗里较高的等级）/20，另加冒险者敏捷或感知（较高者）调整值 × 0.04 与 (熟练加值 − 2) × 0.02；有物理职业的人另加 0.02 ×（物理职业等级合计 − 1），最多 +40%。</description>
+    <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Shooting</skill><alternateSkill>Melee</alternateSkill><ability>Dex/Wis</ability></li></parts>
+    <displayPriorityInCategory>4215</displayPriorityInCategory>
+  </StatDef>
+  <StatDef ParentName="LP_ClassPowerBase">
+    <defName>LP_CunningPower</defName>
+    <label>诡术强度</label>
+    <description>游荡者能力的强度倍率：0.5 +（格斗、射击里较高的等级）/20，另加冒险者敏捷调整值 × 0.04 与 (熟练加值 − 2) × 0.02；有物理职业的人另加 0.02 ×（物理职业等级合计 − 1），最多 +40%。</description>
+    <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Melee</skill><alternateSkill>Shooting</alternateSkill><ability>Dex</ability></li></parts>
+    <displayPriorityInCategory>4216</displayPriorityInCategory>
+  </StatDef>
+
+  <!-- ===== 状态 ===== -->
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_Rage</defName>
+    <hediffClass>LichPhylactery.Hediff_Rage</hediffClass>
+    <label>狂暴</label>
+    <description>野蛮人的狂暴：近战伤害 ×(1.15 + 0.1 × 狂怒强度)，受到的利器、钝器伤害（含子弹）×0.7；不能使用施法职业的能力。</description>
+    <defaultLabelColor>(0.9,0.45,0.35)</defaultLabelColor>
+    <modExtensions><li Class="LichPhylactery.ScaledBuffExtension">
+      <scaledFactors><li><stat>MeleeDamageFactor</stat><baseValue>1.15</baseValue><perSeverity>0.1</perSeverity></li></scaledFactors>
+    </li></modExtensions>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_RecklessAttack</defName>
+    <label>鲁莽攻击</label>
+    <description>不顾防守地猛攻：近战命中 +20%，自己的近战闪避 −20%。</description>
+    <defaultLabelColor>(0.9,0.45,0.35)</defaultLabelColor>
+    <stages><li><statOffsets><MeleeDodgeChance>-0.2</MeleeDodgeChance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_RelentlessRageActive</defName>
+    <label>不灭之怒</label>
+    <description>怒火撑着身体：感觉不到疼痛，暂时不会倒下。</description>
+    <defaultLabelColor>(0.95,0.35,0.3)</defaultLabelColor>
+    <stages><li><painFactor>0</painFactor></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_LegBerserkerBuff</defName>
+    <label>狂战之魂</label>
+    <description>传奇野蛮人的狂暴：近战冷却 ×0.85，免疫击晕和精神崩溃。</description>
+    <defaultLabelColor>(0.95,0.35,0.3)</defaultLabelColor>
+    <stages><li><statFactors><MeleeCooldownFactor>0.85</MeleeCooldownFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_RangerMark</defName>
+    <hediffClass>LichPhylactery.Hediff_ClassMark</hediffClass>
+    <label>猎人印记</label>
+    <description>被游侠标记：标记者对它的伤害提高（× 1 + 0.15 × 猎术强度）。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.55,0.75,0.45)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_BeastBondBuff</defName>
+    <hediffClass>LichPhylactery.Hediff_ScaledBuff</hediffClass>
+    <label>兽伴</label>
+    <description>游侠的动物伙伴：近战伤害 ×(1.1 + 0.1 × 主人的猎术强度)，移动 ×1.1，护甲 +10% × 猎术强度；对主人的宿敌伤害 +20%。</description>
+    <defaultLabelColor>(0.55,0.75,0.45)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>1.1</MoveSpeed></statFactors></li></stages>
+    <modExtensions><li Class="LichPhylactery.ScaledBuffExtension">
+      <scaledFactors><li><stat>MeleeDamageFactor</stat><baseValue>1.1</baseValue><perSeverity>0.1</perSeverity></li></scaledFactors>
+      <scaledOffsets><li><stat>ArmorRating_Sharp</stat><baseValue>0</baseValue><perSeverity>0.1</perSeverity><max>0.3</max></li><li><stat>ArmorRating_Blunt</stat><baseValue>0</baseValue><perSeverity>0.1</perSeverity><max>0.3</max></li></scaledOffsets>
+    </li></modExtensions>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_HideInPlain</defName>
+    <label>隐匿伏击</label>
+    <description>藏身于环境之中：隐形；下一次攻击伤害 ×1.5，出手后现形。</description>
+    <defaultLabelColor>(0.55,0.75,0.45)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Invisibility"><visibleToPlayer>true</visibleToPlayer><affectedByDisruptor>true</affectedByDisruptor></li></comps>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CunningAction</defName>
+    <label>灵巧动作</label>
+    <description>冲刺、脱离：移动 ×1.6，近战闪避 +30%。</description>
+    <defaultLabelColor>(0.62,0.62,0.78)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>1.6</MoveSpeed></statFactors><statOffsets><MeleeDodgeChance>0.3</MeleeDodgeChance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ShadowStep</defName>
+    <label>暗影潜行</label>
+    <description>融入阴影：隐形，攻击后现形。</description>
+    <defaultLabelColor>(0.62,0.62,0.78)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Invisibility"><visibleToPlayer>true</visibleToPlayer><affectedByDisruptor>true</affectedByDisruptor></li></comps>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_PoisonBlade</defName>
+    <label>淬毒刃</label>
+    <description>武器淬了毒：每次命中给目标毒素积累 +6% × 诡术强度（机械体、亡灵无效）。</description>
+    <defaultLabelColor>(0.55,0.8,0.45)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_DeathMark</defName>
+    <hediffClass>LichPhylactery.Hediff_ClassMark</hediffClass>
+    <label>死亡印记</label>
+    <description>被游荡者盯上：标记者对它的伤害 ×2；它死在印记里时，标记者的游荡者能力全部冷却完毕。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.62,0.62,0.78)</defaultLabelColor>
+  </HediffDef>
+  <!-- 刺杀那一下的临时状态：近战伤害（MeleeDamageFactor）= 严重度，结算完立刻移除。 -->
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_AssassinStrike</defName>
+    <hediffClass>LichPhylactery.Hediff_StrikeFactor</hediffClass>
+    <label>刺杀之势</label>
+    <description>刺杀这一下的近战伤害倍率。</description>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+
+  <!-- ===== 能力：野蛮人 ===== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_Rage</defName>
+    <label>狂暴</label>
+    <description>陷入狂暴 30 秒：近战伤害 ×(1.15 + 0.1 × 狂怒强度)，受到的利器、钝器伤害（含子弹）×0.7；狂暴中不能使用施法职业的能力。消耗 1 点怒气。野蛮人 1 级。</description>
+    <iconPath>LP/Classes/Barbarian/Rage</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><warmupTime>0.1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Rage</effect><cost>1</cost><duration>1800</duration><stat>LP_RagePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_RecklessAttack</defName>
+    <label>鲁莽攻击</label>
+    <description>15 秒内不顾防守地猛攻：近战命中 +20%，自己的近战闪避 −20%。不耗怒气。野蛮人 3 级。</description>
+    <iconPath>LP/Classes/Barbarian/RecklessAttack</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><warmupTime>0.1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><duration>900</duration><stat>LP_RagePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DangerSense</defName>
+    <label>危险感知</label>
+    <description>被动：没倒地时，射来的子弹有 15% × 狂怒强度（最多 30%）的成功率被完全闪开；爆炸伤害 ×0.5。野蛮人 5 级。</description>
+    <iconPath>LP/Classes/Barbarian/DangerSense</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_RagePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PrimalRoar</defName>
+    <label>野性怒吼</label>
+    <description>一声野兽般的咆哮：半径 6 × 狂怒强度内的敌人被震慑 10 秒；不是首领的人形和动物另有 40% × 狂怒强度（最多 80%）的成功率吓得逃跑。消耗 1 点怒气。冷却 1 小时。野蛮人 7 级。</description>
+    <iconPath>LP/Classes/Barbarian/PrimalRoar</iconPath>
+    <hostile>true</hostile>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PrimalRoar</effect><cost>1</cost><radius>6</radius><radiusScales>true</radiusScales><duration>600</duration><stat>LP_RagePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BrutalCritical</defName>
+    <label>残暴重击</label>
+    <description>被动：近战命中时有 15% 的成功率（狂暴中 25%）打出重击，这一下伤害 ×2。野蛮人 10 级。</description>
+    <iconPath>LP/Classes/Barbarian/BrutalCritical</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_RagePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_RelentlessRage</defName>
+    <label>不灭之怒</label>
+    <description>被动：狂暴中本应倒下时，靠怒火再撑 10 秒（感觉不到疼痛、不会倒下）；每次狂暴只能撑一次，10 秒后伤势还在就照常倒下。野蛮人 13 级。</description>
+    <iconPath>LP/Classes/Barbarian/RelentlessRage</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_RagePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PrimalChampion</defName>
+    <label>原初斗士</label>
+    <description>被动：力量 +4（加在属性上限之后，同武艺天赋），怒气不再随时间衰减。野蛮人 15 级，另需格斗 15 级。</description>
+    <iconPath>LP/Classes/Barbarian/PrimalChampion</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_RagePower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===== 能力：游侠 ===== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_FavoredFoe</defName>
+    <label>宿敌</label>
+    <description>被动：选定一种宿敌（龙、巨人、不死、邪魔、异怪、野兽、神力、人形或机械体；征召时用“选择宿敌”按钮选）。对宿敌伤害 +20%、近战命中 +20%、射击命中 ×1.2。游侠 10 级可以再选一种。游侠 1 级。</description>
+    <iconPath>LP/Classes/Ranger/FavoredFoe</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_HuntPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_RangerMark</defName>
+    <label>猎人印记</label>
+    <description>标记 30 格内的一个敌人 1 小时：自己对它的伤害 ×(1 + 0.15 × 猎术强度)。不耗资源。游侠 3 级。</description>
+    <iconPath>LP/Classes/Ranger/HuntersMark</iconPath>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><range>30</range><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>HuntersMark</effect><duration>2500</duration><stat>LP_HuntPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_Woodstride</defName>
+    <label>野外穿行</label>
+    <description>被动：地形、积雪和植物带来的移动减速少 75%。游侠 5 级。</description>
+    <iconPath>LP/Classes/Ranger/Woodstride</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_HuntPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_Volley</defName>
+    <label>齐射</label>
+    <description>朝武器射程内的一点齐射：半径 3 内每个敌人（最多 6 个）各中一发当前武器的必中子弹，伤害 ×0.8 × 猎术强度。需要远程武器，不耗资源。游侠 7 级。</description>
+    <iconPath>LP/Classes/Ranger/Volley</iconPath>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>45</range><warmupTime>0.75</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Volley</effect><power>0.8</power><radius>3</radius><stat>LP_HuntPower</stat><ranged>true</ranged></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BeastBond</defName>
+    <label>兽伴</label>
+    <description>被动：主人是自己的动物（同一地图）得到兽伴状态：近战伤害 ×(1.1 + 0.1 × 猎术强度)，移动 ×1.1，护甲 +10% × 猎术强度，对你的宿敌伤害 +20%。另外可以再选一种宿敌。游侠 10 级。</description>
+    <iconPath>LP/Classes/Ranger/BeastBond</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_HuntPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_HideInPlain</defName>
+    <label>隐匿伏击</label>
+    <description>隐入地形 20 秒 × 猎术强度：隐形；下一次攻击伤害 ×1.5，出手后现形。冷却 1 小时。游侠 13 级。</description>
+    <iconPath>LP/Classes/Ranger/HideInPlain</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><duration>1200</duration><durationScales>true</durationScales><stat>LP_HuntPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_FoeSlayer</defName>
+    <label>屠戮宿敌</label>
+    <description>被动：宿敌加成翻倍（伤害 +40%、近战命中 +40%、射击命中 ×1.4）。游侠 15 级，另需射击 15 级。</description>
+    <iconPath>LP/Classes/Ranger/FoeSlayer</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_HuntPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===== 能力：游荡者 ===== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SneakAttack</defName>
+    <label>偷袭</label>
+    <description>被动：目标倒地、被击晕、正在逃跑、没把你当目标，或者身边 1.5 格内有你的友军时，你的攻击伤害 ×(1 + (0.2 + 0.03 ×（游荡者等级 − 1）) × 诡术强度)；每秒最多一次。近战、远程都算。游荡者 1 级。</description>
+    <iconPath>LP/Classes/Rogue/SneakAttack</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CunningAction</defName>
+    <label>灵巧动作</label>
+    <description>5 秒 × 诡术强度内移动 ×1.6、近战闪避 +30%，用来冲刺或脱离。游荡者 3 级。</description>
+    <iconPath>LP/Classes/Rogue/CunningAction</iconPath>
+    <cooldownTicksRange>900</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><duration>300</duration><durationScales>true</durationScales><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_UncannyDodge</defName>
+    <label>诡诈闪避</label>
+    <description>被动：每 10 秒一次，受到的一次远程伤害减半。游荡者 5 级。</description>
+    <iconPath>LP/Classes/Rogue/UncannyDodge</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_ShadowStep</defName>
+    <label>暗影潜行</label>
+    <description>融入阴影 15 秒 × 诡术强度：隐形，攻击后现形（隐形时出手也算偷袭）。游荡者 7 级。</description>
+    <iconPath>LP/Classes/Rogue/ShadowStep</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2400</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><duration>900</duration><durationScales>true</durationScales><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PoisonBlade</defName>
+    <label>淬毒刃</label>
+    <description>给武器淬毒 1 分钟：每次命中给目标毒素积累 +6% × 诡术强度（机械体、亡灵无效）。冷却 1 小时。游荡者 10 级。</description>
+    <iconPath>LP/Classes/Rogue/PoisonBlade</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><duration>3600</duration><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_Assassinate</defName>
+    <label>刺杀</label>
+    <description>对相邻敌人结算一次近战：目标没察觉你（没把你当目标，或你正隐形）时这一下伤害 ×(2 + 诡术强度)，否则 ×1.5；偷袭照常叠加。冷却 1 分钟。游荡者 13 级。</description>
+    <iconPath>LP/Classes/Rogue/Assassinate</iconPath>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Assassinate</effect><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_StrokeOfLuck</defName>
+    <label>幸运一击</label>
+    <description>被动：每天一次，一次本该落空的近战攻击改为命中，并且这一下伤害 ×2。游荡者 15 级，另需格斗 15 级。</description>
+    <iconPath>LP/Classes/Rogue/StrokeOfLuck</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===== 传奇 ===== -->
+  <AbilityDef ParentName="LP_LegendaryBase">
+    <defName>LP_LegBerserkerSoul</defName>
+    <label>狂战之魂</label>
+    <description>传奇被动：狂暴中免疫击晕和精神崩溃，近战冷却 ×0.85。传奇野蛮人。</description>
+    <iconPath>LP/Classes/Legendary/BerserkerSoul</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_RagePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_LegendaryBase">
+    <defName>LP_LegEarthShatter</defName>
+    <label>大地崩裂</label>
+    <description>传奇：一斧劈开大地，半径 5 内的敌人受 30 × 狂怒强度 钝器伤害并被击晕 3 秒。消耗 3 点怒气。冷却 1 天。传奇野蛮人。</description>
+    <iconPath>LP/Classes/Legendary/EarthShatter</iconPath>
+    <hostile>true</hostile>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>0.75</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>EarthShatter</effect><cost>3</cost><power>30</power><radius>5</radius><stat>LP_RagePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_LegendaryBase">
+    <defName>LP_LegFoeBane</defName>
+    <label>宿敌克星</label>
+    <description>传奇被动：对宿敌的攻击必定命中，伤害再 +15%。传奇游侠。</description>
+    <iconPath>LP/Classes/Legendary/FoeBane</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_HuntPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_LegArrowStorm</defName>
+    <label>万箭齐发</label>
+    <description>传奇：朝武器射程内一点倾泻箭雨，半径 6 内每个敌人（最多 10 个）各中 3 发当前武器的必中子弹。需要远程武器。冷却 1 天。传奇游侠。</description>
+    <iconPath>LP/Classes/Legendary/ArrowStorm</iconPath>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><range>45</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ArrowStorm</effect><power>1</power><radius>6</radius><stat>LP_HuntPower</stat><ranged>true</ranged></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_LegendaryBase">
+    <defName>LP_LegShadowDance</defName>
+    <label>影舞</label>
+    <description>传奇被动：偷袭不再看条件，每 0.5 秒就能触发一次。传奇游荡者。</description>
+    <iconPath>LP/Classes/Legendary/ShadowDance</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_LegDeathMark</defName>
+    <label>死亡印记</label>
+    <description>传奇：标记 30 格内的一个敌人 30 秒，你对它的伤害 ×2；它在印记里死去时，你的游荡者能力全部冷却完毕。冷却 1 天。传奇游荡者。</description>
+    <iconPath>LP/Classes/Legendary/DeathMark</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><range>30</range><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>DeathMark</effect><duration>1800</duration><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+</Defs>

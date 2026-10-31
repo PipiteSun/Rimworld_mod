@@ -34,7 +34,7 @@ namespace LichPhylactery {
     var good=DtPawn();DtGive(good,DndTraitDefOf.LP_Morality,1);bool psy=DtGive(good,TraitDefOf.Psychopath)!=null;
     var evil=DtPawn();DtGive(evil,DndTraitDefOf.LP_Morality,-1);bool kind=DtGive(evil,TraitDefOf.Kind)!=null;
     var wildP=DtPawn();DtGive(wildP,DndTraitDefOf.LP_ArcaneGift);bool wild=DtGive(wildP,DndTraitDefOf.LP_WildMagic)!=null;
-    Check(pers.Count==18 && curses.Count==3 && zero && red && ns.dndPersonality && ns.dndCurses && ns.dndPersonalityRate==100 && !psy && !kind && !wild && DndTraits.Info(good).morality==1,"18 personality + 3 curse traits load (commonality 0, curses red in the power slot), settings default on / 100%; 仁善 blocks 心理变态, 邪恶 blocks 善良, 奥术天赋 blocks 狂野魔法");
+    Check(pers.Count==18 && curses.Count==7 && zero && red && ns.dndPersonality && ns.dndCurses && ns.dndPersonalityRate==100 && !psy && !kind && !wild && DndTraits.Info(good).morality==1,"18 personality + 7 curse traits load (commonality 0, curses red in the power slot), settings default on / 100%; 仁善 blocks 心理变态, 邪恶 blocks 善良, 奥术天赋 blocks 狂野魔法");
     // 2. 生成 200 人：每人性格特性 ≤2、阵营 ≤1、原版名额 ≤3，至少一个的比例 10%～45%
     for(int k=0;k<200;k++){var p=PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist,Faction.OfPlayer,PawnGenerationContext.NonPlayer,-1,forceGenerateNewPawn:true,canGeneratePawnRelations:false,fixedBiologicalAge:25f,fixedChronologicalAge:25f));batch.Add(p);}
     int maxP=batch.Max(DndTraits.PersonalityCount),maxA=batch.Max(p=>p.story.traits.allTraits.Count(t=>DndTraits.IsAlignment(t.def))),maxV=batch.Where(p=>DndTraits.PersonalityCount(p)>0).Select(p=>DndTraits.VanillaCap-DndTraits.Room(p)).DefaultIfEmpty(0).Max();

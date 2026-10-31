@@ -17,7 +17,7 @@ namespace LichPhylactery {
    Adventurer.TestSuppressed=false;s.adventurer=true;s.originFeats=true;
    try{
     // 1. 定义：27 个新专长（通用 18 个 def = 13 种，元素使 4 支、坚毅心智 3 支），种族 9；图标都在；元素使 / 坚毅心智同组。1.67.0 再加 8 个（斩 / 刺 / 碎同组）= 35
-    var news=DefDatabase<LP_FeatDef>.AllDefsListForReading.Where(Feats2.Is).ToList();
+    var news=DefDatabase<LP_FeatDef>.AllDefsListForReading.Where(f=>Feats2.Is(f) && !f.ClassFeat).ToList(); // 1.88.0 职业专属专长另在 -Only ClassFeats
     Check(news.Count==35 && news.Count(f=>f.exclusiveGroup=="WeaponType")==3 && news.Count(f=>f.Racial)==9 && news.All(f=>f.Icon!=BaseContent.BadTex) && news.Count(f=>f.exclusiveGroup=="ElementalAdept")==4 && news.Count(f=>f.exclusiveGroup=="Resilient")==3 && Feats2.OriginPool.All(n=>FD(n)!=null) && new Settings().originFeats,"35 feats from 1.58.1 / 1.67.0 (26 general defs, 9 racial) with icons; adept / resilient variants are exclusive groups; origin pool and setting default on (got "+news.Count+", bad icons "+news.Count(f=>f.Icon==BaseContent.BadTex)+")");
     // 2. 种族专长只对对应种族可选（分页也只显示给对应种族）；巫妖专长看巫妖基因
     var human=HtPawn();var hh=F2Adv(human);hh.pendingASI=3;var dwarf=HtPawn("LP_HillDwarf");var hd=F2Adv(dwarf);hd.pendingASI=1;
@@ -29,7 +29,7 @@ namespace LichPhylactery {
     // 4. 元素使·火：火巨人身上也烧得伤（基因的火焰系数 0 被无视），火焰伤害 +10%
     var giant=HtPawn("LP_FireGiant",AdvEnemy,true,0,0);var mage=HtPawn(null,null,true,1,0);var hm=F2Adv(mage);
     giant.TakeDamage(new DamageInfo(DamageDefOf.Flame,10f,0f,-1f,mage));int b0=Burns(giant);
-    hm.AddFeat(FD("LP_Feat_ElementalAdept_Fire"));giant.TakeDamage(new DamageInfo(DamageDefOf.Flame,10f,0f,-1f,mage));int b1=Burns(giant);
+    hm.AddFeat(FD("LP_Feat_ElementalAdept_Fire"));var torso=giant.RaceProps.body.corePart;int b1=0;for(int i=0;i<3 && b1==0;i++){giant.TakeDamage(new DamageInfo(DamageDefOf.Flame,10f,2f,-1f,mage,torso));b1=Burns(giant);} // 不穿甲的一下可能被衣服吃掉或打空，直接打躯干、最多三下
     float bonus=Feats2.OutFactor(mage,HeroTraits.Info(mage),giant,new DamageInfo(DamageDefOf.Flame,10f,0f,-1f,mage));
     Check(b0==0 && b1>0 && Near(bonus,1.25f),"元素使·火: flame does nothing to a fire giant ("+b0+" burns) until the caster is an adept ("+b1+" burns), and fire damage ×"+bonus);
     // 5. 观察者：看得见心灵隐形的人

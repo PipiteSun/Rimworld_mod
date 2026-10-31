@@ -56,6 +56,7 @@ namespace LichPhylactery {
     if(!manhunterDefault.TryGetValue(k,out bool d))manhunterDefault[k]=d=k.canArriveManhunter;
     k.canArriveManhunter=d && on;
    }
+   WildMonsters.ApplySettings();
   }
   public static bool DefaultManhunter(PawnKindDef k){ApplySettings();return manhunterDefault.TryGetValue(k,out bool d) && d;}
  }
@@ -238,10 +239,11 @@ namespace LichPhylactery {
  // 1.25.0 设置：DND 野兽。
  public partial class Settings {
   public bool dndBeastsWild=true;
-  void ExposeBeasts(){Scribe_Values.Look(ref dndBeastsWild,"dndBeastsWild",true);ExposeBeastLevels();}
+  void ExposeBeasts(){Scribe_Values.Look(ref dndBeastsWild,"dndBeastsWild",true);ExposeBeastLevels();ExposeWildMonsters();}
  }
  public static class BeastSettings {
   public static void Draw(Listing_Standard l){l.GapLine();l.Label("DND野兽");l.CheckboxLabeled("野外刷新 DND 野兽",ref LichMod.Settings.dndBeastsWild,"猫头鹰熊、邪座狼、冬狼、地狱犬、魔化兽、闪光犬会在各自的生态区野外刷新，前五种也会以狂暴兽群出现。关闭后不再刷新、也不会以狂暴兽群出现；保存设置后立即生效，已经在地图上的野兽不受影响。");
+   WildMonsterSettings.Draw(l); // DND 怪物第二批
    // 1.70.0 野兽强化
    var s=LichMod.Settings;
    l.CheckboxLabeled("野兽野性等级",ref s.beastLevels,"野生和非玩家的动物出现时带「野性等级」：狂暴兽群和敌对组按威胁点数定级，野外动物 1～殖民地最高等级 −3，上限殖民地最高等级 +3。等级越高近战伤害、部位生命越高、跑得越快（与殖民者同一条六维曲线，1 级不变）。玩家的动物靠战斗和搬运成长。关闭后不再给新动物定级，已有的等级不提供效果。");

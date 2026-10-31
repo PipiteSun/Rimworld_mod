@@ -64,7 +64,7 @@ namespace LichPhylactery {
    return true;
   }
   static readonly HashSet<string> Known=new HashSet<string>{"MagicMissile","Fireball","Sleep","LightningBolt","TargetBuff","WallOfStone","Teleport","Disintegrate","Heal","LesserRestoration","SacredFlame","TurnUndead","MassHeal","DeathWard","Raise",
-   "AnimalFriendship","Entangle","ConjureAnimals","WildShape","PlantGrowth","BeastCommand","CallLightning","ControlWeather","ChaosBolt","BurningHands","CharmPerson","Twin","DragonWings","IceStorm","MassSuggestion","Empower","QuickRepair","RuneTurret"};
+   "AnimalFriendship","Entangle","ConjureAnimals","WildShape","PlantGrowth","BeastCommand","CallLightning","ControlWeather","ChaosBolt","BurningHands","CharmPerson","Twin","DragonWings","IceStorm","MassSuggestion","Empower","QuickRepair","RuneTurret","MirrorImage"};
   static void ApplyOne(Pawn p,AbilityDef def,CompProperties_ClassEffect e,LocalTargetInfo target){
    var t=target.Thing as Pawn;var cell=target.Cell;float s=ClassEffects.Strength(p,e),pw=ClassEffects.Power(p,e);int dur=ClassEffects.Duration(p,e);float rad=ClassEffects.Radius(p,e);
    switch(e.effect){
@@ -80,6 +80,7 @@ namespace LichPhylactery {
     case "WallOfStone":if(cell.IsValid && p.Map!=null)WallOfStone(p,cell,Mathf.RoundToInt(pw));return;
     case "Teleport":if(!cell.IsValid || p.Map==null || !cell.Standable(p.Map))return;FleckMaker.ThrowDustPuffThick(p.DrawPos,p.Map,2f,Arcane);Races124.Blink(p,cell);FleckMaker.ThrowDustPuffThick(p.DrawPos,p.Map,2f,Arcane);return;
     case "Disintegrate":Disintegrate(p,target.Thing,pw);return;
+    case "MirrorImage":Items.Give(p,"LP_MirrorImage",dur,MirrorImages);Items.Mote(p,"镜影术",Arcane);return; // 1.81.0 热修4
     // 牧师
     case "Heal":if(Friendly(p,t)){float h=ClassMelee.Heal(t,pw);Items.Mote(t,"治疗 "+h.ToString("0"),Divine);}return;
     case "LesserRestoration":if(Friendly(p,t))LesserRestoration(t,dur);return;
@@ -135,6 +136,23 @@ namespace LichPhylactery {
   }
 
   // ---------- 法师 ----------
+  // 1.81.0 热修4 防御法术：镜影（严重度 = 分身数，每次被敌人攻击命中消耗一个、这一下落空）、护盾术（严重度 = 剩余吸收量）。挂在 WizardWards（Pawn.PreApplyDamage 前缀）。
+  public const float MirrorImages=3f;
+  static readonly DefRef<HediffDef> mirrorDef=new DefRef<HediffDef>("LP_MirrorImage"),shieldDef=new DefRef<HediffDef>("LP_ShieldSpell");
+  // 返回 true = 整下伤害被挡掉。
+  public static bool Ward(Pawn v,ref DamageInfo d){
+   var set=v.health?.hediffSet;if(set==null)return false;
+   var md=mirrorDef.Def;var mirror=md==null?null:set.GetFirstHediffOfDef(md);
+   if(mirror!=null && d.Instigator!=null && d.Instigator!=v && d.Instigator.HostileTo(v) && (HeroCombat.Melee(d) || d.Weapon!=null || d.Def.isRanged || d.Def.isExplosive)){ // 只算攻击（近战、武器、投射物、爆炸），不算着火等持续伤害
+    if(mirror.Severity<=1.01f)v.health.RemoveHediff(mirror);else mirror.Severity-=1f;
+    Items.Mote(v,"镜影替身",Arcane);return true;
+   }
+   var sd=shieldDef.Def;var shield=sd==null?null:set.GetFirstHediffOfDef(sd);if(shield==null)return false;
+   float take=Mathf.Min(shield.Severity,d.Amount);if(take<=0f)return false;
+   if(shield.Severity-take<=.01f)v.health.RemoveHediff(shield);else shield.Severity-=take;
+   if(take>=d.Amount-.001f){Items.Mote(v,"护盾吸收",Arcane);return true;}
+   d.SetAmount(d.Amount-take);return false;
+  }
   public static int MagicMissile(Pawn caster,Pawn t,float strength){
    var bullet=DefCache<ThingDef>.Get("LP_MagicMissileBullet");if(bullet==null || t==null || !t.Spawned || caster.Map==null)return 0;
    for(int i=0;i<3;i++){
@@ -263,6 +281,7 @@ namespace LichPhylactery {
      if(w.playerSettings!=null)w.playerSettings.Master=caster;
     }
     FleckMaker.ThrowDustPuffThick(w.DrawPos,map,2f,Nature);
+    HediffComp_Conjured.Engage(w);
     made.Add(w);
    }
    return made;
@@ -427,6 +446,23 @@ namespace LichPhylactery {
   }
  }
 
+ // 镜影 / 护盾状态的类：Live = 地图上还在的个数（快速返回用；读档时补计，跨存档只会多不会少，多了也只是少一次快速返回）。
+ public class Hediff_Ward : HediffWithComps {
+  public static int Live;
+  public override void PostAdd(DamageInfo? dinfo){base.PostAdd(dinfo);Live++;}
+  public override void PostRemoved(){base.PostRemoved();if(Live>0)Live--;}
+  public override void ExposeData(){base.ExposeData();if(Scribe.mode==LoadSaveMode.PostLoadInit)Live++;}
+ }
+ // 1.81.0 热修4：镜影术、护盾术（Pawn.PreApplyDamage 前缀；没有人带这两个状态时第一步就返回）。
+ [HarmonyPatch(typeof(Pawn),nameof(Pawn.PreApplyDamage))]
+ public static class WizardWards {
+  [HarmonyPriority(Priority.High)]
+  static bool Prefix(Pawn __instance,ref DamageInfo dinfo,ref bool absorbed){
+   if(Hediff_Ward.Live<=0 || absorbed || dinfo.Def==null || !dinfo.Def.harmsHealth || dinfo.Amount<=0f || __instance.Dead)return true;
+   if(ClassCasters.Ward(__instance,ref dinfo)){absorbed=true;return false;}
+   return true;
+  }
+ }
  // 魔法飞弹：1.7 的 Projectile 没有伤害倍率，命中后按 (奥术强度 − 1) 补一次同类伤害。
  public class MagicMissileBullet : Bullet {
   public float strength=1f;
@@ -470,7 +506,30 @@ namespace LichPhylactery {
   public override void CompPostTickInterval(ref float severityAdjustment,int delta){
    base.CompPostTickInterval(ref severityAdjustment,delta);
    if(ticksLeft<0)ticksLeft=Props.ticks;
-   ticksLeft-=delta;if(ticksLeft<=0)Vanish(Pawn);
+   ticksLeft-=delta;if(ticksLeft<=0){Vanish(Pawn);return;}
+   scanIn-=delta;if(scanIn<=0){scanIn=30;Engage(Pawn);}
+  }
+  int scanIn;
+  // 召唤兽是普通动物，原版 AI 不会主动找敌人：每半秒找最近的可达敌人扑上去（征召、精神状态、倒地时不管）。
+  public const float EngageRadius=30f;
+  public static bool Engage(Pawn p){
+   if(p==null || !p.Spawned || p.Dead || p.Downed || p.InMentalState || p.Drafted || p.jobs==null || p.mindState==null)return false;
+   var cur=p.CurJob;if(cur!=null && (cur.def==JobDefOf.AttackMelee || cur.def==JobDefOf.AttackStatic) && cur.targetA.Thing is Pawn ct && !ct.Dead && !ct.Downed)return false;
+   var t=Target(p);if(t==null)return false;
+   var job=JobMaker.MakeJob(JobDefOf.AttackMelee,t);job.expiryInterval=600;job.checkOverrideOnExpire=true;job.killIncappedTarget=false;
+   p.mindState.enemyTarget=t;
+   p.jobs.StartJob(job,JobCondition.InterruptForced,null,false,true);
+   return true;
+  }
+  public static Pawn Target(Pawn p){
+   Pawn best=null;float bd=EngageRadius*EngageRadius;
+   foreach(var a in p.Map.attackTargetsCache.GetPotentialTargetsFor(p)){
+    if(!(a.Thing is Pawn t) || t==p || t.Dead || t.Downed || !t.Spawned || t.IsPrisoner || !t.HostileTo(p) || a.ThreatDisabled(p))continue;
+    float d=(t.Position-p.Position).LengthHorizontalSquared;if(d>=bd)continue;
+    if(!p.CanReach(t,PathEndMode.Touch,Danger.Deadly))continue;
+    best=t;bd=d;
+   }
+   return best;
   }
   public static void Vanish(Pawn p){if(p==null || p.Destroyed)return;if(p.Spawned)FleckMaker.ThrowDustPuffThick(p.DrawPos,p.Map,2f,new Color(.6f,.9f,.6f));p.Destroy();}
   public override string CompLabelInBracketsExtra=>ticksLeft>0?ticksLeft.ToStringTicksToPeriod():null;

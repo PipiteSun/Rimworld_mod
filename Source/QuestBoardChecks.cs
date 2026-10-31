@@ -24,7 +24,7 @@ namespace LichPhylactery {
    var s=LichMod.Settings;bool oOn=s.questBoard,oAdv=s.adventurer,oSup=Adventurer.TestSuppressed;
    s.questBoard=true;s.adventurer=true;Adventurer.TestSuppressed=false;
    Rand.PushState(17101);
-   try{QbDefs();QbTiers();QbRefresh();QbDefense();QbHunt();QbCamp();QbLimits();}
+   try{QbDefs();QbTiers();QbRefresh();QbRewards();QbDefense();QbHunt();QbCamp();QbLimits();}
    finally{
     Rand.PopState();s.questBoard=oOn;s.adventurer=oAdv;Adventurer.TestSuppressed=oSup;QuestBoard.TestLevel=null;
     var st=QuestBoard.State;if(st!=null){foreach(var c in st.active.ToList())QuestBoard.Fail(c,"检查结束。");st.offers.Clear();}
@@ -53,10 +53,25 @@ namespace LichPhylactery {
   // 3. 每日刷新：只出已解锁的等阶，最高等阶至少一份，报酬与点数按表。
   void QbRefresh(){
    QuestBoard.TestLevel=9;QuestBoard.Refresh();var st=QuestBoard.State;var offers=st.offers.ToList();
-   bool table=offers.All(o=>Near(o.points,QuestBoard.TierPoints[o.tier-1]*(o.kind==QuestBoard.Hunt?QuestBoard.HuntPoints:1f)) && o.silver>0 && o.items.Count>0 && o.items.All(n=>Items.Thing(n)!=null));
+   bool table=offers.All(o=>Near(o.points,QuestBoard.TierPoints[o.tier-1]*(o.kind==QuestBoard.Hunt?QuestBoard.HuntPoints:1f)) && o.silver>0 && (o.items.Count>0 || o.goods.Count>0) && o.items.All(n=>Items.Thing(n)!=null));
    bool text=offers.All(o=>QbChinese(QuestBoard.Title(o)) && QuestBoard.Describe(o).Contains("冒险者经验") && !qbBanned.Any(w=>QuestBoard.Describe(o).Contains(w)));
    Check(offers.Count>=3 && offers.Count<=QuestBoard.OffersPerDay && offers.All(o=>o.tier>=1 && o.tier<=3) && offers.Any(o=>o.tier==3) && table && text && st.nextRefresh>QuestBoard.Now,
     "[quest board] daily refresh at level 9: "+offers.Count+" offers ("+string.Join(" ",offers.Select(o=>o.kind+o.tier))+"), tiers 1~3 with a tier-3 one, points / silver / items by the table, Chinese text without dice words");
+  }
+
+  // 3b. 1.83.0 报酬随机：原版奖励生成器抽一批物品（不含银子、不含活物），价值随等阶涨，种类多样；DND 物品按概率出现；面板文字列出物品。
+  void QbRewards(){
+   var defs=new HashSet<ThingDef>();var val=new float[QuestBoard.MaxTier];int dnd=0,n=0,empty=0;bool clean=true,text=true;
+   for(int tier=1;tier<=QuestBoard.MaxTier;tier++)for(int i=0;i<12;i++){
+    var c=QuestBoard.MakeOffer(QuestBoard.Kinds[i%3],tier,map);if(c==null)continue;n++;
+    if(c.goods.Count==0)empty++;
+    foreach(var t in c.goods){defs.Add(t.def);if(t.def==ThingDefOf.Silver || t is Pawn || t.Spawned)clean=false;}
+    val[tier-1]+=QuestBoard.GoodsValue(c)/12f;dnd+=c.items.Count;
+    string rt=QuestBoard.RewardText(c);if(!rt.Contains(" 银") || c.goods.Any(t=>!rt.Contains(t.LabelNoParenthesis)))text=false;
+   }
+   bool rising=val[0]>60f && val[4]>val[0]*4f;
+   Check(n>=50 && empty<=n/10 && clean && text && defs.Count>=15 && rising && dnd>0 && dnd<n,
+    "[quest board] rewards are random vanilla reward sets: "+n+" offers, "+defs.Count+" distinct item kinds, "+empty+" without goods, average goods value by tier "+string.Join("/",val.Select(v=>Mathf.RoundToInt(v)))+", DND items "+dnd+", reward text lists the goods");
   }
 
   // 4. 守卫家园：接取 → 来袭 → 打退 → 成功，接取人拿“点数 × 0.5”经验，报酬空投。
@@ -132,7 +147,7 @@ namespace LichPhylactery {
   }
   void CheckQuestBoardAfterLoad(){
    var st=QuestBoard.State;var c=st?.ById(qbSavedActive);
-   Check(c!=null && st.active.Contains(c) && c.quest?.State==QuestState.Ongoing && c.site!=null && !c.site.Destroyed && c.quest.PartsListForReading.OfType<QuestPart_QuestBoard>().Any(p=>p.contractId==c.id) && st.offers.Select(o=>o.id).SequenceEqual(qbSavedOffers) && st.offers.All(o=>o.items.Count>0),
+   Check(c!=null && st.active.Contains(c) && c.quest?.State==QuestState.Ongoing && c.site!=null && !c.site.Destroyed && c.quest.PartsListForReading.OfType<QuestPart_QuestBoard>().Any(p=>p.contractId==c.id) && st.offers.Select(o=>o.id).SequenceEqual(qbSavedOffers) && st.offers.All(o=>o.items.Count>0 || o.goods.Count>0),
     "[quest board] after loading: the accepted hunt keeps its quest and site, today's offers are unchanged");
    QuestBoard.Fail(c,"检查结束。");
    Check(c.quest.State==QuestState.EndedFailed && c.site.Destroyed,"[quest board] failing it after load ends the quest and removes the site");

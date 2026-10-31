@@ -856,14 +856,14 @@
   <GeneDef>
     <defName>LP_BugbearSurprise</defName>
     <label>突袭</label>
-    <description>熊地精擅长从暗处扑出来。目标在600刻（10秒）内既没有攻击过、也没有受过伤时，熊地精对它的近战伤害×150%。</description>
+    <description>熊地精擅长从暗处扑出来。目标在600刻（10秒）内既没有攻击过、也没有受过伤时，熊地精对它的近战伤害×125%。</description>
     <iconPath>CommonRaces/Genes/BugbearSurprise</iconPath>
     <displayCategory>Violence</displayCategory>
     <biostatCpx>1</biostatCpx>
     <biostatMet>-1</biostatMet>
     <selectionWeight>0</selectionWeight>
     <customEffectDescriptions>
-      <li>目标10秒内未攻击也未受伤：近战伤害×150%。</li>
+      <li>目标10秒内未攻击也未受伤：近战伤害×125%。</li>
     </customEffectDescriptions>
   </GeneDef>
   <GeneDef>
@@ -932,7 +932,7 @@
     <defName>LP_Bugbear</defName>
     <label>熊地精</label>
     <description>地精族里最高大的一支，血脉会遗传给子女。浑身长毛、膀大腰圆，胳膊长得出奇，近战伤害高、命中准，最擅长从暗处突袭；只是学东西慢，又贪睡。</description>
-    <descriptionShort>可遗传的地精族。魁梧、毛皮、近战伤害高、长臂近战命中+10%，突袭伤害×150%；学得慢、贪睡。</descriptionShort>
+    <descriptionShort>可遗传的地精族。魁梧、毛皮、近战伤害高、长臂近战命中+10%，突袭伤害×125%；学得慢、贪睡。</descriptionShort>
     <iconPath>CommonRaces/Xenotypes/Bugbear</iconPath>
     <inheritable>true</inheritable>
     <combatPowerFactor>1.2</combatPowerFactor>

@@ -202,7 +202,7 @@ namespace LichPhylactery {
    var bug=CrPawn("LP_Bugbear",CrCell(18,-10));var mark=CrHuman(CrCell(18,-12));mark.mindState.lastAttackTargetTick=-99999;mark.mindState.lastHarmTick=-99999;
    float surprise=Subraces.DamageFactor(bug,mark,true);mark.mindState.lastHarmTick=Find.TickManager.TicksGame;float aware=Subraces.DamageFactor(bug,mark,true);
    var limbs=Subraces.G("LP_BugbearLongLimbs");
-   Check(Near(surprise,1.5f) && Near(aware,1f) && limbs.statOffsets.Any(m=>m.stat==StatDefOf.MeleeHitChance && Near(m.value,.1f)) && bug.story.bodyType==BodyTypeDefOf.Hulk,"bugbear: surprise attack ×150% on a target that has not fought for 10 seconds, normal afterwards; long limbs +10% melee hit; hulk body");
+   Check(Near(surprise,1.25f) && Near(aware,1f) && limbs.statOffsets.Any(m=>m.stat==StatDefOf.MeleeHitChance && Near(m.value,.1f)) && bug.story.bodyType==BodyTypeDefOf.Hulk,"bugbear: surprise attack ×125% on a target that has not fought for 10 seconds, normal afterwards; long limbs +10% melee hit; hulk body");
    CrClean();
   }
 

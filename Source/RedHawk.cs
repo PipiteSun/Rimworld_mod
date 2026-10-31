@@ -121,6 +121,23 @@ namespace LichPhylactery {
   public override bool HandlesThingDef(ThingDef d)=>d!=null && d==Pacts.ScrollDef;
  }
 
+ // 原版商队只把兵种为 Slave 的人当商品（Chattel），红鹰的库存奴隶用自己的兵种 / HAR 兵种，会被当成护卫、交易窗口里看不到。
+ // 红鹰派系里兵种是奴隶池兵种（LP_RH_SlaveStock 或 HAR 条目的兵种）、买下后成为奴隶的人就是商品；护卫和商人不受影响。
+ [HarmonyPatch(typeof(TraderCaravanUtility),nameof(TraderCaravanUtility.GetTraderCaravanRole))]
+ public static class RedHawkChattelRole {
+  static HashSet<PawnKindDef> kinds;
+  public static HashSet<PawnKindDef> StockKinds{get{
+   if(kinds==null){
+    kinds=new HashSet<PawnKindDef>();if(RedHawk.StockKind!=null)kinds.Add(RedHawk.StockKind);
+    foreach(var k in DefDatabase<TraderKindDef>.AllDefsListForReading)foreach(var g in k.stockGenerators.OfType<StockGenerator_RHRaceSlaves>())foreach(var e in g.entries)if(e.Kind!=null)kinds.Add(e.Kind);
+   }
+   return kinds;
+  }}
+  static void Postfix(Pawn p,ref TraderCaravanRole __result){
+   if(__result==TraderCaravanRole.Guard && p.guest?.joinStatus==JoinStatus.JoinAsSlave && p.Faction!=null && p.Faction.def==RedHawk.Def && StockKinds.Contains(p.kindDef))__result=TraderCaravanRole.Chattel;
+  }
+ }
+
  // 契约和深渊都关掉时契约卷轴商队不来；派系开关关掉时它的飞空商船不来（已有存档里派系还在）。
  [HarmonyPatch(typeof(TraderKindDef),nameof(TraderKindDef.CalculatedCommonality),MethodType.Getter)]
  public static class RedHawkTraderGate {

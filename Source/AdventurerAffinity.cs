@@ -106,12 +106,21 @@ namespace LichPhylactery {
   // ---------- 开关与倍率 ----------
   public static bool? forcedOn; // 自检、设置变化时比较开关前后
   public static bool On=>forcedOn??(LichMod.Settings?.adventurerAffinity??true);
-  // 六维：种族倍率（开关关掉时 1）与天赋异禀 ×1.5 取较大。
-  public static float ScoreMult(Hediff_Adventurer h,int a){
-   if(h==null)return 1f;float m=On?h.Affinity.ScoreMult(a):1f;
-   if(h.Talent==Talents.Gifted)m=Math.Max(m,Talents.GiftedMult);
-   return HeroTraits.ScoreMult(h.pawn,a,m); // 1.58.0 天赋·某项、极致、反骨（同样取较大）
+  // 1.81.0 热修5：六维倍率拆成两个。
+  // RaceMult：种族亲和（开关关掉时 1），反骨把笨拙拉回 ×1；只用来放大正的调整值（AMod）。
+  public static float RaceMult(Hediff_Adventurer h,int a){
+   if(h==null)return 1f;
+   return HeroTraits.RaceMult(h.pawn,a,On?h.Affinity.ScoreMult(a):1f);
   }
+  // TalentMult：天赋异禀 ×1.5、天赋·某项 ×1.5、极致 ×2.5 取最大，没有则 1；线性效果（近战伤害、心灵敏感度、部位生命、职业强度）乘在整个倍率上，和种族相乘。
+  public static float TalentMult(Hediff_Adventurer h,int a){
+   if(h==null || a<0 || a>5)return 1f;float m=h.Talent==Talents.Gifted?Talents.GiftedMult:1f;
+   return HeroTraits.TalentMult(h.pawn,a,m);
+  }
+  // 3.5 表类效果（AMult：负重、采矿、研究等）照旧：种族和天赋取较大，不相乘。
+  public static float ScoreMult(Hediff_Adventurer h,int a){float r=RaceMult(h,a),t=TalentMult(h,a);return t>1f?Math.Max(r,t):r;}
+  // 线性效果的天赋倍率：基础值 ≥ ×1 时整个乘上（低于 ×1 不乘，和 3.5 表“属性低于 10 时不乘”一致）。
+  public static float Talented(float v,float t)=>v>=1f?v*t:v;
   // 传奇：种族倍率与凡人之志 ×1.5 取较大。
   public static float LegendMult(Hediff_Adventurer h,int i){
    if(h==null)return 1f;float m=On?h.Affinity.LegendMult(i):1f;
@@ -129,9 +138,28 @@ namespace LichPhylactery {
    return race;
   }
   static string HeroNote(Hediff_Adventurer h,int a,bool legend){var n=HeroTraits.MultNote(h.pawn,a,legend);return n==null?"":"；特性："+n+"，与种族倍率取较大";}
+  // 1.81.0 热修5：分页效果表的来源标注，例如“种族擅长：调整值 ×1.5；极致：整体 ×2.5”；没有则 ""。
+  public static string SourceTag(Hediff_Adventurer h,int a){
+   if(h==null)return "";var parts=new List<string>();float r=RaceMult(h,a);
+   if(r>1.0001f)parts.Add("种族擅长：调整值 ×"+r.ToString("0.##"));else if(r<.9999f)parts.Add("种族笨拙：调整值 ×"+r.ToString("0.##"));
+   var i=HeroTraits.Info(h.pawn);
+   if(i!=null && i.paragon==a)parts.Add("极致：整体 ×"+HeroTraits.ParagonMult.ToString("0.##"));
+   else if(i!=null && i.gifted==a)parts.Add("天赋：整体 ×"+HeroTraits.GiftedMult.ToString("0.##"));
+   else if(h.Talent==Talents.Gifted)parts.Add(h.Talent.degreeDatas[0].label+"：整体 ×"+Talents.GiftedMult.ToString("0.##"));
+   return string.Join("；",parts);
+  }
+  // 1.81.0 热修5：种族和天赋分开写。
   public static string Tip(Hediff_Adventurer h,int a){
-   if(h==null)return "";float m=ScoreMult(h,a);if(Math.Abs(m-1f)<.0001f)return "";
-   return "种族亲和（"+Source(h,false)+HeroNote(h,a,false)+"）：这项属性倍率 ×"+m.ToString("0.##")+"（属性低于 10 时不乘；笨拙不会让倍率低于 ×1）";
+   if(h==null)return "";float m=ScoreMult(h,a),r=RaceMult(h,a),t=TalentMult(h,a);if(Math.Abs(m-1f)<.0001f && Math.Abs(r-1f)<.0001f && Math.Abs(t-1f)<.0001f)return "";
+   string race=On?h.Affinity.label+"，"+h.Affinity.Tier:"种族亲和已关闭";var hero=HeroTraits.MultNote(h.pawn,a,false);
+   var sb=new System.Text.StringBuilder();
+   sb.Append("种族亲和（"+race+(hero!=null && hero.Contains("反骨")?"；反骨：笨拙按 ×1":"")+"）：只放大正的调整值 ×"+r.ToString("0.##")+"（负调整值不乘）");
+   if(t>1.0001f){
+    var src=new List<string>();if(h.Talent==Talents.Gifted)src.Add(h.Talent.degreeDatas[0].label+" ×"+Talents.GiftedMult.ToString("0.##"));if(hero!=null)foreach(var s in hero.Split('、'))if(!s.Contains("反骨"))src.Add(s);
+    sb.Append("\n天赋（"+string.Join("、",src)+"，取较大）：近战伤害 / 心灵敏感度 / 部位生命 / 职业强度的整个效果 ×"+t.ToString("0.##")+"（不和种族取较大，两者相乘；效果低于 ×1 时不乘）");
+   }
+   sb.Append("\n其他属性效果（负重、采矿、研究等）倍率 ×"+m.ToString("0.##")+"（种族和天赋取较大；属性低于 10 时不乘；笨拙不会让倍率低于 ×1）");
+   return sb.ToString();
   }
   public static string LegendTip(Hediff_Adventurer h,int i){
    if(h==null)return "";float m=LegendMult(h,i);if(Math.Abs(m-1f)<.0001f)return "";

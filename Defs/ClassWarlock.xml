@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 邪术师（见 ArtSource/WarlockNpc-spec.md / Source/ClassWarlock.cs）：社交（副 智识），主属性魅力，施法职业（能力乘心灵敏感度）。
+     资源：契约法力，上限 2 + 邪术师等级/4；连续 1 小时冥想 / 娱乐 / 睡觉（短休）回满。宗主（子职业）在邪术师 1 级选，能力在 1 / 3 / 7 / 11 / 15 级；
+     魔能祈唤在 5 级、9 级各选一项（宗主定义里的 choices，三个宗主相同）。 -->
+<Defs>
+  <!-- ===== 职业 ===== -->
+  <LichPhylactery.LP_ClassDef>
+    <defName>LP_Class_Warlock</defName>
+    <label>邪术师</label>
+    <description>DND 邪术师与异界宗主立约换取力量：魔能爆（戏法，5 / 10 / 15 级多一道光束）、黑暗术、魔能祈唤（被动，选择）、咒术、秘法奥秘（支配人类、力场监牢，每天一次），终极 秘法大师。1 级选宗主：邪魔、妖精或旧日支配者。强度看“契约强度”（社交或智识，魅力）。资源：契约法力（上限 2 + 邪术师等级/4，很少；连续 1 小时冥想、娱乐或睡觉就回满）。</description>
+    <mainSkill>Social</mainSkill>
+    <alternateSkill>Intellectual</alternateSkill>
+    <primary>Cha</primary>
+    <order>12</order>
+    <resource>Pact</resource>
+    <caster>true</caster>
+    <subclassLevel>1</subclassLevel>
+    <background>LP/Classes/Warlock/Background</background>
+    <color>(0.6,0.4,0.85)</color>
+    <abilities>
+      <li><ability>LP_WL_EldritchBlast</ability><level>1</level></li>
+      <li><ability>LP_WL_Darkness</ability><level>3</level></li>
+      <li><ability>LP_WL_Invocations</ability><level>5</level></li>
+      <li><ability>LP_WL_Hex</ability><level>7</level></li>
+      <li><ability>LP_WL_Dominate</ability><level>11</level></li>
+      <li><ability>LP_WL_ForceCage</ability><level>13</level></li>
+      <li><ability>LP_WL_EldritchMaster</ability><level>15</level><capstoneSkill>Social</capstoneSkill></li>
+    </abilities>
+    <legendary><li>LP_LegPatronAvatar</li><li>LP_LegEldritchSoul</li></legendary>
+  </LichPhylactery.LP_ClassDef>
+
+  <!-- ===== 职业强度 ===== -->
+  <StatDef ParentName="LP_ClassPowerBase">
+    <defName>LP_PactPower</defName>
+    <label>契约强度</label>
+    <description>邪术师能力的强度倍率：0.5 +（社交、智识里较高的等级）/20，另加冒险者魅力调整值与熟练加值、邪术师职业等级加成（每级 +2%，最多 +40%）。邪魔宗主的邪术师另有异界契约（九狱或深渊宗主）时，邪术师能力 ×1.25。</description>
+    <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Social</skill><alternateSkill>Intellectual</alternateSkill><ability>Cha</ability></li></parts>
+    <displayPriorityInCategory>4218</displayPriorityInCategory>
+  </StatDef>
+
+  <!-- ===== 状态 ===== -->
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WL_Darkened</defName>
+    <label>魔法黑暗</label>
+    <description>被邪术师的魔法黑暗笼罩：视觉 −50%。有魔鬼视觉的邪术师不受影响。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.45,0.35,0.6)</defaultLabelColor>
+    <stages><li><capMods><li><capacity>Sight</capacity><offset>-0.5</offset></li></capMods></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WL_Hexed</defName>
+    <hediffClass>LichPhylactery.Hediff_Hex</hediffClass>
+    <label>咒术</label>
+    <description>被邪术师下了咒：受到那名邪术师的伤害 ×1.25，各种豁免的成功率 −15%。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.6,0.4,0.85)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WL_Caged</defName>
+    <label>力场监牢</label>
+    <description>被关在看不见的力场里：动弹不得，受到的伤害 ×0.5。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.6,0.4,0.85)</defaultLabelColor>
+    <stages><li><statFactors><IncomingDamageFactor>0.5</IncomingDamageFactor></statFactors><capMods><li><capacity>Moving</capacity><setMax>0.1</setMax></li></capMods></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_LegPatronAvatarBuff</defName>
+    <label>宗主化身</label>
+    <description>宗主的力量借你一用：邪术师能力不耗契约法力，强度 ×1.5。</description>
+    <defaultLabelColor>(0.75,0.5,1)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_WL_DevilSightBuff</defName>
+    <label>魔鬼视觉</label>
+    <description>暗处看得一清二楚：在黑暗里视觉 +30%，不受魔法黑暗影响。</description>
+    <defaultLabelColor>(0.6,0.4,0.85)</defaultLabelColor>
+    <stages><li><capMods><li><capacity>Sight</capacity><offset>0.3</offset></li></capMods></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_WL_DarkLuckBuff</defName>
+    <label>黑暗之运</label>
+    <description>邪魔的眷顾：心智抗性 +10%，受到的伤害 ×0.9。</description>
+    <defaultLabelColor>(0.85,0.4,0.35)</defaultLabelColor>
+    <stages><li><statOffsets><LP_MindResist>0.1</LP_MindResist></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_WL_FeyDefenseBuff</defName>
+    <label>魅惑防御</label>
+    <description>妖精宗主的庇护：心智抗性 +30%；近战打你的敌人有 20% 的成功率被迷住 2 秒。</description>
+    <defaultLabelColor>(0.5,0.8,0.6)</defaultLabelColor>
+    <stages><li><statOffsets><LP_MindResist>0.3</LP_MindResist></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_WL_AwakenedMindBuff</defName>
+    <label>觉醒心灵</label>
+    <description>星界之外的低语打开了心灵：心灵敏感度 +20%，心智抗性 +10%（灵能控制也更容易抵抗、时间更短）。</description>
+    <defaultLabelColor>(0.45,0.7,0.75)</defaultLabelColor>
+    <stages><li><statOffsets><PsychicSensitivity>0.2</PsychicSensitivity><LP_MindResist>0.1</LP_MindResist></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_WL_ThoughtShieldBuff</defName>
+    <label>思维屏障</label>
+    <description>心灵被屏障护住：心智抗性 +20%，受到的心灵伤害 ×0.5。</description>
+    <defaultLabelColor>(0.45,0.7,0.75)</defaultLabelColor>
+    <stages><li><statOffsets><LP_MindResist>0.2</LP_MindResist></statOffsets></li></stages>
+  </HediffDef>
+
+  <!-- ===== 通用能力 ===== -->
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_WL_EldritchBlast</defName>
+    <label>魔能爆</label>
+    <description>戏法：向 24 格内的敌人射出魔能光束，每道 10 × 契约强度 力场伤害；邪术师 5 / 10 / 15 级时 2 / 3 / 4 道。目标倒下后剩下的光束打 6 格内另一个敌人。不耗契约法力。邪术师 1 级。</description>
+    <iconPath>LP/Classes/Warlock/EldritchBlast</iconPath>
+    <cooldownTicksRange>240</cooldownTicksRange>
+    <verbProperties><range>36</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>EldritchBlast</effect><power>10</power><range>24</range><stat>LP_PactPower</stat><psychic>true</psychic><single>true</single></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_WL_Darkness</defName>
+    <label>黑暗术</label>
+    <description>在 20 格内一点召来半径 3 的魔法黑暗：里面的敌人视觉 −50%，持续 10 秒 × 契约强度。消耗 1 点契约法力，冷却 20 秒。邪术师 3 级。</description>
+    <iconPath>LP/Classes/Warlock/Darkness</iconPath>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WLDarkness</effect><cost>1</cost><radius>3</radius><duration>600</duration><durationScales>true</durationScales><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WL_Invocations</defName>
+    <label>魔能祈唤</label>
+    <description>被动：邪术师 5 级、9 级各选一项秘术（选定后不能更改，两次不能选同一项）：苦痛魔能爆（每道魔能爆 + 魅力调整值 × 2 伤害，至少 +2）、魔鬼视觉（暗处视觉 +30%，不受魔法黑暗影响）、魔能长矛（魔能爆射程 24 → 36 格）。邪术师 5 级。</description>
+    <iconPath>LP/Classes/Warlock/Invocations</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PactPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_WL_Hex</defName>
+    <label>咒术</label>
+    <description>给 24 格内的一个敌人下咒 60 秒 × 契约强度：受到你的伤害 ×1.25，各种豁免（心智抗性、属性豁免）的成功率 −15%。消耗 1 点契约法力，冷却 10 秒。邪术师 7 级。</description>
+    <iconPath>LP/Classes/Warlock/Hex</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>24</range><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WLHex</effect><cost>1</cost><duration>3600</duration><durationScales>true</durationScales><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_WL_Dominate</defName>
+    <label>秘法奥秘·支配人类</label>
+    <description>夺取 20 格内一个敌对人形的心智（对抗心智抗性；咒术让它更难抵抗）：没抵抗住就陷入狂暴、攻击身边的人 15 秒 × 契约强度。剧情首领和传奇单位有 50% 的成功率挣脱。不耗契约法力，每天一次。邪术师 11 级。</description>
+    <iconPath>LP/Classes/Warlock/Dominate</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WLDominate</effect><duration>900</duration><durationScales>true</durationScales><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_WL_ForceCage</defName>
+    <label>秘法奥秘·力场监牢</label>
+    <description>在 20 格内一点立起力场监牢：半径 2 内的敌人被关住 10 秒 × 契约强度（击晕，受到的伤害 ×0.5）；剧情首领和传奇单位时间减半。不耗契约法力，每天一次。邪术师 13 级。</description>
+    <iconPath>LP/Classes/Warlock/ForceCage</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WLForceCage</effect><radius>2</radius><duration>600</duration><durationScales>true</durationScales><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WL_EldritchMaster</defName>
+    <label>秘法大师</label>
+    <description>向宗主祈求 10 秒（施法期间不能动），契约法力立刻回满。每天一次。邪术师 15 级，另要社交 15。</description>
+    <iconPath>LP/Classes/Warlock/EldritchMaster</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>10</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WLMaster</effect><stat>LP_PactPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===== 邪魔 ===== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WL_DarkBlessing</defName>
+    <label>黑暗祝福</label>
+    <description>被动：你击杀敌人时治疗自己 5 + 邪术师等级/2 的伤势。邪魔宗主，邪术师 1 级。</description>
+    <iconPath>LP/Classes/Warlock/DarkBlessing</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PactPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_WL_HellishRebuke</defName>
+    <label>炼狱叱喝</label>
+    <description>让 15 格内的一个敌人被地狱之火包住：15 × 契约强度 火焰伤害并点燃。消耗 1 点契约法力，冷却 10 秒。邪魔宗主，邪术师 3 级。</description>
+    <iconPath>LP/Classes/Warlock/HellishRebuke</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>15</range><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WLRebuke</effect><cost>1</cost><power>15</power><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WL_DarkLuck</defName>
+    <label>黑暗之运</label>
+    <description>被动：心智抗性 +10%，受到的伤害 ×0.9。邪魔宗主，邪术师 7 级。</description>
+    <iconPath>LP/Classes/Warlock/DarkLuck</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PactPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WL_FiendResilience</defName>
+    <label>邪魔韧性</label>
+    <description>被动：受到的火焰、灼烧伤害 ×0.5。邪魔宗主，邪术师 11 级。</description>
+    <iconPath>LP/Classes/Warlock/FiendResilience</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PactPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_WL_HurlHell</defName>
+    <label>掷入地狱</label>
+    <description>把 20 格内的一个敌人扔进九狱片刻：45 × 契约强度 火焰伤害，击晕 5 秒并震慑 10 秒。消耗 1 点契约法力，每天一次。邪魔宗主，邪术师 15 级。</description>
+    <iconPath>LP/Classes/Warlock/HurlHell</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WLHurl</effect><cost>1</cost><power>45</power><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+
+  <!-- ===== 妖精 ===== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WL_FeyPresence</defName>
+    <label>妖精风采</label>
+    <description>散发妖精的威仪：半径 4 内的敌人对抗心智抗性，没抵抗住的惊恐逃跑 3 秒 × 契约强度（不能逃的被震慑）。消耗 1 点契约法力，冷却 30 秒。妖精宗主，邪术师 1 级。</description>
+    <iconPath>LP/Classes/Warlock/FeyPresence</iconPath>
+    <hostile>true</hostile>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WLFeyPresence</effect><cost>1</cost><radius>4</radius><duration>180</duration><durationScales>true</durationScales><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_WL_MistyEscape</defName>
+    <label>雾遁</label>
+    <description>化作妖精的雾气，瞬移到 8 格内视线所及的空格。消耗 1 点契约法力，冷却 15 秒。妖精宗主，邪术师 3 级。</description>
+    <iconPath>LP/Classes/Warlock/MistyEscape</iconPath>
+    <hostile>false</hostile>
+    <cooldownTicksRange>900</cooldownTicksRange>
+    <verbProperties><range>8</range><warmupTime>0</warmupTime><targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Teleport</effect><cost>1</cost><range>8</range><maxRange>8</maxRange><stat>LP_PactPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WL_BeguilingDefense</defName>
+    <label>魅惑防御</label>
+    <description>被动：心智抗性 +30%；近战打中你的敌人有 20% 的成功率被迷住（击晕 2 秒）。妖精宗主，邪术师 7 级。</description>
+    <iconPath>LP/Classes/Warlock/BeguilingDefense</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PactPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_WL_Beguile</defName>
+    <label>迷魂之舞</label>
+    <description>20 格内一点半径 3 的敌对人形各自对抗心智抗性，没抵抗住的被魅惑、恍惚游荡 15 秒 × 契约强度。消耗 2 点契约法力，冷却 1 小时。妖精宗主，邪术师 11 级。</description>
+    <iconPath>LP/Classes/Warlock/Beguile</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>MassSuggestion</effect><cost>2</cost><radius>3</radius><duration>900</duration><durationScales>true</durationScales><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_WL_DarkDelirium</defName>
+    <label>黑暗谵妄</label>
+    <description>把 20 格内的一个敌人拖进妖精的幻境（对抗心智抗性）：没抵抗住就惊恐逃跑 20 秒 × 契约强度并被震慑；剧情首领和传奇单位只被震慑。消耗 2 点契约法力，冷却 1 天。妖精宗主，邪术师 15 级。</description>
+    <iconPath>LP/Classes/Warlock/DarkDelirium</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WLDelirium</effect><cost>2</cost><duration>1200</duration><durationScales>true</durationScales><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+
+  <!-- ===== 旧日支配者 ===== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WL_AwakenedMind</defName>
+    <label>觉醒心灵</label>
+    <description>被动：心灵敏感度 +20%，心智抗性 +10%（别人的灵能控制更难生效、生效时间更短）。旧日支配者宗主，邪术师 1 级。</description>
+    <iconPath>LP/Classes/Warlock/AwakenedMind</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PactPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_WL_DissonantWhispers</defName>
+    <label>不谐低语</label>
+    <description>对 20 格内的一个敌人低语只有它听得懂的话：14 × 契约强度 心灵伤害；没抵抗住（心智抗性）的还会惊恐逃跑 3 秒。消耗 1 点契约法力，冷却 10 秒。旧日支配者宗主，邪术师 3 级。</description>
+    <iconPath>LP/Classes/Warlock/DissonantWhispers</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>0.25</warmupTime><requireLineOfSight>false</requireLineOfSight></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WLWhispers</effect><cost>1</cost><power>14</power><duration>180</duration><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WL_EntropicWard</defName>
+    <label>熵能护盾</label>
+    <description>被动：受到的远程伤害 ×0.85。旧日支配者宗主，邪术师 7 级。</description>
+    <iconPath>LP/Classes/Warlock/EntropicWard</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PactPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WL_ThoughtShield</defName>
+    <label>思维屏障</label>
+    <description>被动：心智抗性 +20%，受到的心灵伤害 ×0.5。旧日支配者宗主，邪术师 11 级。</description>
+    <iconPath>LP/Classes/Warlock/ThoughtShield</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PactPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_WL_CreateThrall</defName>
+    <label>创造奴仆</label>
+    <description>把 3 格内一个倒地的敌对人形变成你的奴仆（对抗心智抗性；剧情首领和传奇单位不行）：没抵抗住就加入你的阵营。消耗 2 点契约法力，冷却 1 天。旧日支配者宗主，邪术师 15 级。</description>
+    <iconPath>LP/Classes/Warlock/CreateThrall</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><range>3</range><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WLThrall</effect><cost>2</cost><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+
+  <!-- ===== 传奇 ===== -->
+  <AbilityDef ParentName="LP_LegendaryBase">
+    <defName>LP_LegPatronAvatar</defName>
+    <label>宗主化身</label>
+    <description>传奇：60 秒内宗主的力量借你一用，邪术师能力不耗契约法力、强度 ×1.5。消耗 3 点契约法力，冷却 2 天。传奇邪术师。</description>
+    <iconPath>LP/Classes/Legendary/PatronAvatar</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PowerBuff</effect><cost>3</cost><power>1</power><duration>3600</duration><hediff>LP_LegPatronAvatarBuff</hediff><stat>LP_PactPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_LegendaryBase">
+    <defName>LP_LegEldritchSoul</defName>
+    <label>魔能之魂</label>
+    <description>传奇被动：魔能爆多一道光束；你击杀敌人时契约法力 +1。传奇邪术师。</description>
+    <iconPath>LP/Classes/Legendary/EldritchSoul</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PactPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===== 宗主（子职业，邪术师 1 级选） ===== -->
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Fiend</defName>
+    <label>邪魔宗主</label>
+    <description>与九狱或深渊的邪魔立约：火焰与诅咒，杀戮能滋养你。另有异界契约（九狱或深渊宗主）时，邪术师能力 ×1.25。</description>
+    <parent>LP_Class_Warlock</parent><order>1</order><emblem>LP/Classes/Subclass/Emblem_Fiend</emblem><color>(0.85,0.4,0.35)</color>
+    <abilities><li><ability>LP_WL_DarkBlessing</ability><level>1</level></li><li><ability>LP_WL_HellishRebuke</ability><level>3</level></li><li><ability>LP_WL_DarkLuck</ability><level>7</level></li><li><ability>LP_WL_FiendResilience</ability><level>11</level></li><li><ability>LP_WL_HurlHell</ability><level>15</level></li></abilities>
+    <choices>
+      <li><key>invoc1</key><label>魔能祈唤</label><level>5</level><options><li>苦痛魔能爆</li><li>魔鬼视觉</li><li>魔能长矛</li></options>
+        <tips><li>每道魔能爆 + 魅力调整值 × 2 伤害（至少 +2）。</li><li>暗处视觉 +30%，不受魔法黑暗影响。</li><li>魔能爆射程 24 → 36 格。</li></tips></li>
+      <li><key>invoc2</key><label>第二祈唤</label><level>9</level><distinctFrom>invoc1</distinctFrom><options><li>苦痛魔能爆</li><li>魔鬼视觉</li><li>魔能长矛</li></options>
+        <tips><li>每道魔能爆 + 魅力调整值 × 2 伤害（至少 +2）。</li><li>暗处视觉 +30%，不受魔法黑暗影响。</li><li>魔能爆射程 24 → 36 格。</li></tips></li>
+    </choices>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Archfey</defName>
+    <label>妖精宗主</label>
+    <description>与妖精荒野的大君立约：魅惑、恐惧与雾中穿行。</description>
+    <parent>LP_Class_Warlock</parent><order>2</order><emblem>LP/Classes/Subclass/Emblem_Archfey</emblem><color>(0.5,0.8,0.6)</color>
+    <abilities><li><ability>LP_WL_FeyPresence</ability><level>1</level></li><li><ability>LP_WL_MistyEscape</ability><level>3</level></li><li><ability>LP_WL_BeguilingDefense</ability><level>7</level></li><li><ability>LP_WL_Beguile</ability><level>11</level></li><li><ability>LP_WL_DarkDelirium</ability><level>15</level></li></abilities>
+    <choices>
+      <li><key>invoc1</key><label>魔能祈唤</label><level>5</level><options><li>苦痛魔能爆</li><li>魔鬼视觉</li><li>魔能长矛</li></options>
+        <tips><li>每道魔能爆 + 魅力调整值 × 2 伤害（至少 +2）。</li><li>暗处视觉 +30%，不受魔法黑暗影响。</li><li>魔能爆射程 24 → 36 格。</li></tips></li>
+      <li><key>invoc2</key><label>第二祈唤</label><level>9</level><distinctFrom>invoc1</distinctFrom><options><li>苦痛魔能爆</li><li>魔鬼视觉</li><li>魔能长矛</li></options>
+        <tips><li>每道魔能爆 + 魅力调整值 × 2 伤害（至少 +2）。</li><li>暗处视觉 +30%，不受魔法黑暗影响。</li><li>魔能爆射程 24 → 36 格。</li></tips></li>
+    </choices>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_GreatOldOne</defName>
+    <label>旧日支配者宗主</label>
+    <description>与星界之外不可名状的存在立约：心灵之力、思维护盾与支配。</description>
+    <parent>LP_Class_Warlock</parent><order>3</order><emblem>LP/Classes/Subclass/Emblem_GreatOldOne</emblem><color>(0.45,0.7,0.75)</color>
+    <abilities><li><ability>LP_WL_AwakenedMind</ability><level>1</level></li><li><ability>LP_WL_DissonantWhispers</ability><level>3</level></li><li><ability>LP_WL_EntropicWard</ability><level>7</level></li><li><ability>LP_WL_ThoughtShield</ability><level>11</level></li><li><ability>LP_WL_CreateThrall</ability><level>15</level></li></abilities>
+    <choices>
+      <li><key>invoc1</key><label>魔能祈唤</label><level>5</level><options><li>苦痛魔能爆</li><li>魔鬼视觉</li><li>魔能长矛</li></options>
+        <tips><li>每道魔能爆 + 魅力调整值 × 2 伤害（至少 +2）。</li><li>暗处视觉 +30%，不受魔法黑暗影响。</li><li>魔能爆射程 24 → 36 格。</li></tips></li>
+      <li><key>invoc2</key><label>第二祈唤</label><level>9</level><distinctFrom>invoc1</distinctFrom><options><li>苦痛魔能爆</li><li>魔鬼视觉</li><li>魔能长矛</li></options>
+        <tips><li>每道魔能爆 + 魅力调整值 × 2 伤害（至少 +2）。</li><li>暗处视觉 +30%，不受魔法黑暗影响。</li><li>魔能爆射程 24 → 36 格。</li></tips></li>
+    </choices>
+  </LichPhylactery.LP_SubclassDef>
+</Defs>

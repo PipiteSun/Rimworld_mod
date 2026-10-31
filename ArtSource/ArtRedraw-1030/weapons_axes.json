@@ -1,0 +1,1622 @@
+[
+{
+"def_": "LP_SkySpear",
+"kind": "weapon",
+"file": "Defs\\Ascension.xml",
+"tex": "Ascension/Weapons/SkySpear",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "天穹之矛",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Ascension\\Weapons\\SkySpear.png",
+"W": 128,
+"p0": [
+10.213338383893998,
+122.30823010613148
+],
+"p1": [
+121.97458970382446,
+8.916578408655127
+],
+"elong": 6.18092607290376,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Ascension\\Weapons\\SkySpear.png"
+},
+{
+"def_": "LP_Godsbane",
+"kind": "weapon",
+"file": "Defs\\Ascension.xml",
+"tex": "Ascension/Weapons/Godsbane",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "诸神之祸",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Ascension\\Weapons\\Godsbane.png",
+"W": 128,
+"p0": [
+20.987488071966794,
+105.98888909802236
+],
+"p1": [
+110.01071471866061,
+17.01136744541249
+],
+"elong": 4.837531871735908,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Ascension\\Weapons\\Godsbane.png"
+},
+{
+"def_": "LP_RuneTurretGun",
+"kind": "weapon",
+"file": "Defs\\Classes2.xml",
+"tex": "LP/Weapons/RunicMusket",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "炮台符文火铳",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\LP\\Weapons\\RunicMusket.png",
+"W": 64,
+"p0": [
+1.3705638146573804,
+70.22603437326077
+],
+"p1": [
+125.80976483407593,
+56.27335702193171
+],
+"elong": 4.157252712974917,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\LP\\Weapons\\RunicMusket.png"
+},
+{
+"def_": "LP_BlessedWater",
+"kind": "weapon",
+"file": "Defs\\Faith.xml",
+"tex": "Faith/BlessedWater",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "祝圣圣水",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Faith\\BlessedWater.png",
+"W": 128,
+"p0": [
+63.517090696895075,
+119.97002386301904
+],
+"p1": [
+64.03566578496415,
+11.970209086296826
+],
+"elong": 1.5383783518911753,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Faith\\BlessedWater.png"
+},
+{
+"def_": "LP_Relic_MorningStar",
+"kind": "weapon",
+"file": "Defs\\Faith.xml",
+"tex": "Faith/Relics/MorningStar",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "晨星",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Faith\\Relics\\MorningStar.png",
+"W": 128,
+"p0": [
+23.839627381553093,
+117.02901678802762
+],
+"p1": [
+100.02233991419098,
+16.514870231028617
+],
+"elong": 2.168802363253413,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Faith\\Relics\\MorningStar.png"
+},
+{
+"def_": "LP_Relic_StormSpear",
+"kind": "weapon",
+"file": "Defs\\Faith.xml",
+"tex": "Faith/Relics/StormSpear",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "风暴之矛",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Faith\\Relics\\StormSpear.png",
+"W": 128,
+"p0": [
+13.632467072256581,
+119.6257856982925
+],
+"p1": [
+125.68594640070513,
+22.784778626778845
+],
+"elong": 2.7301002128530634,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Faith\\Relics\\StormSpear.png"
+},
+{
+"def_": "LP_FireGiantMaul",
+"kind": "weapon",
+"file": "Defs\\FireGiantEquipment.xml",
+"tex": "FireGiant/Equipment/Maul",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "火巨人熔炉重锤",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "(1.5,1.5)",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\FireGiant\\Equipment\\Maul.png",
+"W": 256,
+"p0": [
+15.507620448359667,
+116.4948716810323
+],
+"p1": [
+102.96055039665227,
+28.51538464973308
+],
+"elong": 2.332349107967292,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\FireGiant\\Equipment\\Maul.png"
+},
+{
+"def_": "LP_SilverSword",
+"kind": "weapon",
+"file": "Defs\\Githyanki.xml",
+"tex": "MinotaurGith/Weapons/SilverSword",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "银剑",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\MinotaurGith\\Weapons\\SilverSword.png",
+"W": 128,
+"p0": [
+0.998479851587831,
+63.48542526096908
+],
+"p1": [
+124.99897706942012,
+63.53777995389908
+],
+"elong": 7.509123301136849,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\MinotaurGith\\Weapons\\SilverSword.png"
+},
+{
+"def_": "LP_Legacy_Sword",
+"kind": "weapon",
+"file": "Defs\\Growth.xml",
+"tex": "LP/Weapons/Legacy/Sword",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "黎明之誓",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\LP\\Weapons\\Legacy\\Sword.png",
+"W": 128,
+"p0": [
+25.50440082847284,
+101.50437116495053
+],
+"p1": [
+103.0033731902137,
+24.003363252305668
+],
+"elong": 4.049563885080588,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\LP\\Weapons\\Legacy\\Sword.png"
+},
+{
+"def_": "LP_Legacy_Hammer",
+"kind": "weapon",
+"file": "Defs\\Growth.xml",
+"tex": "LP/Weapons/Legacy/Hammer",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "山之心",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\LP\\Weapons\\Legacy\\Hammer.png",
+"W": 128,
+"p0": [
+20.892595024207232,
+113.8138583685694
+],
+"p1": [
+111.31768797206678,
+7.195891275770748
+],
+"elong": 2.7689163299743917,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\LP\\Weapons\\Legacy\\Hammer.png"
+},
+{
+"def_": "LP_Legacy_Bow",
+"kind": "weapon",
+"file": "Defs\\Growth.xml",
+"tex": "LP/Weapons/Legacy/Bow",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "风语",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\LP\\Weapons\\Legacy\\Bow.png",
+"W": 128,
+"p0": [
+71.16947893015086,
+115.90236644192365
+],
+"p1": [
+70.71513623699447,
+10.920691951326049
+],
+"elong": 1.4402848556873609,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\LP\\Weapons\\Legacy\\Bow.png"
+},
+{
+"def_": "LP_Legacy_Staff",
+"kind": "weapon",
+"file": "Defs\\Growth.xml",
+"tex": "LP/Weapons/Legacy/Staff",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "星辉",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\LP\\Weapons\\Legacy\\Staff.png",
+"W": 128,
+"p0": [
+25.997652243578393,
+120.6864529783844
+],
+"p1": [
+100.62116486552121,
+11.375082222623902
+],
+"elong": 4.733497994066053,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\LP\\Weapons\\Legacy\\Staff.png"
+},
+{
+"def_": "LP_SilverPistol",
+"kind": "weapon",
+"file": "Defs\\Guns.xml",
+"tex": "LP/Weapons/SilverPistol",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "圣银手枪",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\LP\\Weapons\\SilverPistol.png",
+"W": 64,
+"p0": [
+25.783913054801573,
+76.9169374485921
+],
+"p1": [
+112.7618494012512,
+44.85876155612921
+],
+"elong": 2.179443508191653,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\LP\\Weapons\\SilverPistol.png"
+},
+{
+"def_": "LP_LavaPiercer",
+"kind": "weapon",
+"file": "Defs\\Guns.xml",
+"tex": "LP/Weapons/LavaPiercer",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "熔岩穿甲枪",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\LP\\Weapons\\LavaPiercer.png",
+"W": 64,
+"p0": [
+3.3787101088454747,
+69.77349112995049
+],
+"p1": [
+125.56392500510142,
+56.596456254052555
+],
+"elong": 3.4579593005164915,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\LP\\Weapons\\LavaPiercer.png"
+},
+{
+"def_": "LP_ThunderGun",
+"kind": "weapon",
+"file": "Defs\\Guns.xml",
+"tex": "LP/Weapons/ThunderGun",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "雷鸣铳",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\LP\\Weapons\\ThunderGun.png",
+"W": 64,
+"p0": [
+7.625533602492162,
+68.86308687890343
+],
+"p1": [
+120.67540424855835,
+56.55216404043557
+],
+"elong": 3.1932344138613216,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\LP\\Weapons\\ThunderGun.png"
+},
+{
+"def_": "LP_Doom",
+"kind": "weapon",
+"file": "Defs\\Guns.xml",
+"tex": "LP/Weapons/Doom",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "噩耗",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\LP\\Weapons\\Doom.png",
+"W": 64,
+"p0": [
+1.0824913103423057,
+68.665168708247
+],
+"p1": [
+124.77298104152115,
+53.08729706089363
+],
+"elong": 2.8522099015334517,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\LP\\Weapons\\Doom.png"
+},
+{
+"def_": "LP_Skyfire",
+"kind": "weapon",
+"file": "Defs\\Guns.xml",
+"tex": "LP/Weapons/Skyfire",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "天火降世",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\LP\\Weapons\\Skyfire.png",
+"W": 64,
+"p0": [
+2.9208958865289105,
+67.99282082660149
+],
+"p1": [
+125.57568830284445,
+58.274672755289586
+],
+"elong": 3.571686382847045,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\LP\\Weapons\\Skyfire.png"
+},
+{
+"def_": "LP_RunicMusket",
+"kind": "weapon",
+"file": "Defs\\Guns.xml",
+"tex": "LP/Weapons/RunicMusket",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "符文火铳",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\LP\\Weapons\\RunicMusket.png",
+"W": 64,
+"p0": [
+1.3705638146573804,
+70.22603437326077
+],
+"p1": [
+125.80976483407593,
+56.27335702193171
+],
+"elong": 4.157252712974917,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\LP\\Weapons\\RunicMusket.png"
+},
+{
+"def_": "LP_RunicPistol",
+"kind": "weapon",
+"file": "Defs\\Guns.xml",
+"tex": "LP/Weapons/RunicPistol",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "符文手铳",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\LP\\Weapons\\RunicPistol.png",
+"W": 64,
+"p0": [
+18.42653896401074,
+76.98087272741692
+],
+"p1": [
+106.68051413062484,
+48.16036399647651
+],
+"elong": 2.3166836665477026,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\LP\\Weapons\\RunicPistol.png"
+},
+{
+"def_": "LP_HammerCannon",
+"kind": "weapon",
+"file": "Defs\\Guns.xml",
+"tex": "LP/Weapons/HammerCannon",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "雷锤手炮",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\LP\\Weapons\\HammerCannon.png",
+"W": 64,
+"p0": [
+5.5950807133102245,
+70.29089653901042
+],
+"p1": [
+114.20504238760142,
+61.295736473476204
+],
+"elong": 2.444686097774704,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\LP\\Weapons\\HammerCannon.png"
+},
+{
+"def_": "LP_RunicRepeater",
+"kind": "weapon",
+"file": "Defs\\Guns.xml",
+"tex": "LP/Weapons/RunicRepeater",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "符文连珠铳",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\LP\\Weapons\\RunicRepeater.png",
+"W": 64,
+"p0": [
+1.498113360997003,
+71.46729681882535
+],
+"p1": [
+124.0760675167435,
+57.19322646953241
+],
+"elong": 3.3559928422493357,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\LP\\Weapons\\RunicRepeater.png"
+},
+{
+"def_": "LP_MountainWrath",
+"kind": "weapon",
+"file": "Defs\\Guns.xml",
+"tex": "LP/Weapons/MountainWrath",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "山岳之怒",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\LP\\Weapons\\MountainWrath.png",
+"W": 64,
+"p0": [
+-0.23248748834035382,
+70.19365273731256
+],
+"p1": [
+125.32905971355427,
+54.322114841195294
+],
+"elong": 2.6689400304918727,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\LP\\Weapons\\MountainWrath.png"
+},
+{
+"def_": "LP_MissileStaff",
+"kind": "weapon",
+"file": "Defs\\Guns.xml",
+"tex": "LP/Weapons/MissileStaff",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "魔法飞弹杖",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\LP\\Weapons\\MissileStaff.png",
+"W": 64,
+"p0": [
+11.11500317053271,
+119.14613090101508
+],
+"p1": [
+114.38720407707824,
+12.236933023049602
+],
+"elong": 5.592947693904306,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\LP\\Weapons\\MissileStaff.png"
+},
+{
+"def_": "LP_FireStaff",
+"kind": "weapon",
+"file": "Defs\\Guns.xml",
+"tex": "LP/Weapons/FireStaff",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "火焰法杖",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\LP\\Weapons\\FireStaff.png",
+"W": 64,
+"p0": [
+11.14016773523138,
+119.15583286029047
+],
+"p1": [
+114.26762588538382,
+12.127764608434838
+],
+"elong": 4.728744455827031,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\LP\\Weapons\\FireStaff.png"
+},
+{
+"def_": "LP_FrostStaff",
+"kind": "weapon",
+"file": "Defs\\Guns.xml",
+"tex": "LP/Weapons/FrostStaff",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "寒霜法杖",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\LP\\Weapons\\FrostStaff.png",
+"W": 64,
+"p0": [
+11.11500317053271,
+119.14613090101508
+],
+"p1": [
+114.38720407707824,
+12.236933023049602
+],
+"elong": 5.592947693904306,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\LP\\Weapons\\FrostStaff.png"
+},
+{
+"def_": "LP_FrostGiantAxe",
+"kind": "weapon",
+"file": "Defs\\Items_Giants.xml",
+"tex": "Giants/Items/FrostGiantAxe",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "霜巨人斧",
+"stuff": true,
+"shader": "",
+"color": "",
+"drawSize": "(1.6,1.6)",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Giants\\Items\\FrostGiantAxe.png",
+"W": 128,
+"p0": [
+5.4159461003537785,
+70.9776448691046
+],
+"p1": [
+127.13910118557607,
+56.25055695511101
+],
+"elong": 1.479110342945059,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Giants\\Items\\FrostGiantAxe.png"
+},
+{
+"def_": "LP_StormTrident",
+"kind": "weapon",
+"file": "Defs\\Items_Giants.xml",
+"tex": "Giants/Items/StormTrident",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "风暴三叉戟",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "(1.7,1.7)",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Giants\\Items\\StormTrident.png",
+"W": 128,
+"p0": [
+7.929409282109205,
+80.79517407528986
+],
+"p1": [
+120.01652020203694,
+45.788417628257356
+],
+"elong": 2.028423689112756,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Giants\\Items\\StormTrident.png"
+},
+{
+"def_": "LP_CloudMorningstar",
+"kind": "weapon",
+"file": "Defs\\Items_Giants.xml",
+"tex": "Giants/Items/CloudMorningstar",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "云巨人晨星锤",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "(1.6,1.6)",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Giants\\Items\\CloudMorningstar.png",
+"W": 128,
+"p0": [
+7.8682602643699795,
+81.56230563278712
+],
+"p1": [
+122.99458619931019,
+44.19136769628301
+],
+"elong": 2.969948779235883,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Giants\\Items\\CloudMorningstar.png"
+},
+{
+"def_": "LP_FogFlask",
+"kind": "weapon",
+"file": "Defs\\Items_Giants.xml",
+"tex": "Giants/Items/FogFlask",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "雾瓶",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Giants\\Items\\FogFlask.png",
+"W": 128,
+"p0": [
+56.61765430184186,
+120.97739771361034
+],
+"p1": [
+77.34384372961702,
+-2.6324201839432533
+],
+"elong": 1.698503599375573,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Giants\\Items\\FogFlask.png"
+},
+{
+"def_": "LP_DwarvenThrowingHammer",
+"kind": "weapon",
+"file": "Defs\\Items_RaceGear.xml",
+"tex": "Items/RaceGear/DwarvenThrowingHammer",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "矮人投掷锤",
+"stuff": true,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Items\\RaceGear\\DwarvenThrowingHammer.png",
+"W": 128,
+"p0": [
+36.87141855252357,
+120.4071058289978
+],
+"p1": [
+77.7802944474226,
+31.323823465421665
+],
+"elong": 1.8050855337045177,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Items\\RaceGear\\DwarvenThrowingHammer.png"
+},
+{
+"def_": "LP_ElvenLongbow",
+"kind": "weapon",
+"file": "Defs\\Items_RaceGear.xml",
+"tex": "Items/RaceGear/ElvenLongbow",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "精灵长弓",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Items\\RaceGear\\ElvenLongbow.png",
+"W": 128,
+"p0": [
+60.160616297524086,
+124.00499644993663
+],
+"p1": [
+60.10527426849571,
+3.003571908924016
+],
+"elong": 4.135206333462309,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Items\\RaceGear\\ElvenLongbow.png"
+},
+{
+"def_": "LP_OrcishGreataxe",
+"kind": "weapon",
+"file": "Defs\\Items_RaceGear.xml",
+"tex": "Items/RaceGear/OrcishGreataxe",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "半兽人巨斧",
+"stuff": true,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Items\\RaceGear\\OrcishGreataxe.png",
+"W": 128,
+"p0": [
+20.258596795699127,
+110.8789214457945
+],
+"p1": [
+104.81801088244063,
+16.80153579691686
+],
+"elong": 1.8806352080263322,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Items\\RaceGear\\OrcishGreataxe.png"
+},
+{
+"def_": "LP_OgreClub",
+"kind": "weapon",
+"file": "Defs\\Items_Races124.xml",
+"tex": "Races124/Items/OgreClub",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "食人魔大棒",
+"stuff": true,
+"shader": "",
+"color": "",
+"drawSize": "1.3",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Races124\\Items\\OgreClub.png",
+"W": 128,
+"p0": [
+4.1980432568510935,
+73.71298282226473
+],
+"p1": [
+121.13690939866534,
+52.22551460486784
+],
+"elong": 4.022329031047259,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Races124\\Items\\OgreClub.png"
+},
+{
+"def_": "LP_FrostSpear",
+"kind": "weapon",
+"file": "Defs\\Items_Races124.xml",
+"tex": "Races124/Items/FrostSpear",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "霜刺长枪",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "1.3",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Races124\\Items\\FrostSpear.png",
+"W": 128,
+"p0": [
+2.985416564941218,
+64.29243025817577
+],
+"p1": [
+124.99147855624324,
+63.43187042029798
+],
+"elong": 8.87937056785183,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Races124\\Items\\FrostSpear.png"
+},
+{
+"def_": "LP_BalorWhip",
+"kind": "weapon",
+"file": "Defs\\Items_Races124.xml",
+"tex": "Races124/Items/BalorWhip",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "炎魔火鞭",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Races124\\Items\\BalorWhip.png",
+"W": 128,
+"p0": [
+0.9953265430326184,
+62.9228601686765
+],
+"p1": [
+126.0198113352615,
+61.136784327105275
+],
+"elong": 3.3369950224248894,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Races124\\Items\\BalorWhip.png"
+},
+{
+"def_": "LP_EmpyreanBlade",
+"kind": "weapon",
+"file": "Defs\\Items_Races124.xml",
+"tex": "Races124/Items/EmpyreanBlade",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "天穹之剑",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "1.5",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Races124\\Items\\EmpyreanBlade.png",
+"W": 128,
+"p0": [
+0.9985986958043824,
+63.48587957933146
+],
+"p1": [
+125.00069102733832,
+63.51522735611358
+],
+"elong": 5.057565065332415,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Races124\\Items\\EmpyreanBlade.png"
+},
+{
+"def_": "LP_AlchemistFire",
+"kind": "weapon",
+"file": "Defs\\Items_Throwables.xml",
+"tex": "Items/Throwables/AlchemistFire",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "炼金之火",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Items\\Throwables\\AlchemistFire.png",
+"W": 128,
+"p0": [
+63.52040693830143,
+116.99921721718466
+],
+"p1": [
+63.48621742691433,
+2.111248027778828
+],
+"elong": 1.7039462294616987,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Items\\Throwables\\AlchemistFire.png"
+},
+{
+"def_": "LP_AcidVial",
+"kind": "weapon",
+"file": "Defs\\Items_Throwables.xml",
+"tex": "Items/Throwables/AcidVial",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "强酸瓶",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Items\\Throwables\\AcidVial.png",
+"W": 128,
+"p0": [
+63.5,
+117.0
+],
+"p1": [
+63.5,
+9.0
+],
+"elong": 2.2327731460099667,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Items\\Throwables\\AcidVial.png"
+},
+{
+"def_": "LP_HolyWater",
+"kind": "weapon",
+"file": "Defs\\Items_Throwables.xml",
+"tex": "Items/Throwables/HolyWater",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "圣水",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Items\\Throwables\\HolyWater.png",
+"W": 128,
+"p0": [
+63.5,
+118.0
+],
+"p1": [
+63.5,
+8.0
+],
+"elong": 1.5699274896805637,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Items\\Throwables\\HolyWater.png"
+},
+{
+"def_": "LP_Thunderstone",
+"kind": "weapon",
+"file": "Defs\\Items_Throwables.xml",
+"tex": "Items/Throwables/Thunderstone",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "雷鸣石",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Items\\Throwables\\Thunderstone.png",
+"W": 128,
+"p0": [
+59.42837538780713,
+113.68030649465852
+],
+"p1": [
+70.61816829772992,
+17.858022632406943
+],
+"elong": 1.09152638975392,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Items\\Throwables\\Thunderstone.png"
+},
+{
+"def_": "LP_TanglefootBag",
+"kind": "weapon",
+"file": "Defs\\Items_Throwables.xml",
+"tex": "Items/Throwables/TanglefootBag",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "黏胶袋",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Items\\Throwables\\TanglefootBag.png",
+"W": 128,
+"p0": [
+63.421747479438864,
+116.02713199736911
+],
+"p1": [
+63.580674221025326,
+25.020022636218556
+],
+"elong": 1.1348441756125294,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Items\\Throwables\\TanglefootBag.png"
+},
+{
+"def_": "LP_DispelDust",
+"kind": "weapon",
+"file": "Defs\\Items_Throwables.xml",
+"tex": "Items/Throwables/DispelDust",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "驱散粉尘",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Items\\Throwables\\DispelDust.png",
+"W": 128,
+"p0": [
+63.5,
+118.0
+],
+"p1": [
+63.5,
+19.0
+],
+"elong": 1.3124620173046138,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Items\\Throwables\\DispelDust.png"
+},
+{
+"def_": "LP_HellfireOrb",
+"kind": "weapon",
+"file": "Defs\\LegendaryMonsters.xml",
+"tex": "LegendaryMonsters/Items/HellfireOrb",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "地狱火宝珠",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\LegendaryMonsters\\Items\\HellfireOrb.png",
+"W": 128,
+"p0": [
+59.431790786046705,
+110.8075859295108
+],
+"p1": [
+68.09062884008304,
+20.932139021129174
+],
+"elong": 1.0303861220600317,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\LegendaryMonsters\\Items\\HellfireOrb.png"
+},
+{
+"def_": "LP_EversmokingBottle",
+"kind": "weapon",
+"file": "Defs\\MagicItems_Devices.xml",
+"tex": "Items/Magic/EversmokingBottle",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "迷雾瓶",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Items\\Magic\\EversmokingBottle.png",
+"W": 128,
+"p0": [
+61.78030200176473,
+119.4896948854596
+],
+"p1": [
+67.56925400413792,
+0.6004180671436217
+],
+"elong": 2.327556308635043,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Items\\Magic\\EversmokingBottle.png"
+},
+{
+"def_": "LP_FlameTongue",
+"kind": "weapon",
+"file": "Defs\\MagicItems_Weapons.xml",
+"tex": "Items/Magic/FlameTongue",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "火焰舌",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Items\\Magic\\FlameTongue.png",
+"W": 128,
+"p0": [
+16.939972348012184,
+117.51128132353557
+],
+"p1": [
+106.71339731459872,
+18.522705714960864
+],
+"elong": 4.1353721366925695,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Items\\Magic\\FlameTongue.png"
+},
+{
+"def_": "LP_FrostBrand",
+"kind": "weapon",
+"file": "Defs\\MagicItems_Weapons.xml",
+"tex": "Items/Magic/FrostBrand",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "霜寒之刃",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Items\\Magic\\FrostBrand.png",
+"W": 128,
+"p0": [
+16.747537059018136,
+117.42493891354607
+],
+"p1": [
+107.11016328463238,
+18.862223643000746
+],
+"elong": 4.069329287214535,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Items\\Magic\\FrostBrand.png"
+},
+{
+"def_": "LP_VorpalSword",
+"kind": "weapon",
+"file": "Defs\\MagicItems_Weapons.xml",
+"tex": "Items/Magic/VorpalSword",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "锐锋剑",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Items\\Magic\\VorpalSword.png",
+"W": 128,
+"p0": [
+16.686074933801628,
+117.42523684767475
+],
+"p1": [
+107.1113629853472,
+18.895330406845133
+],
+"elong": 4.01254454627687,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Items\\Magic\\VorpalSword.png"
+},
+{
+"def_": "LP_DragonSlayer",
+"kind": "weapon",
+"file": "Defs\\MagicItems_Weapons.xml",
+"tex": "Items/Magic/DragonSlayer",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "龙杀手",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Items\\Magic\\DragonSlayer.png",
+"W": 128,
+"p0": [
+15.086107007401047,
+115.3935515930685
+],
+"p1": [
+106.16516445223198,
+17.561301938659405
+],
+"elong": 3.1018492860286697,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Items\\Magic\\DragonSlayer.png"
+},
+{
+"def_": "LP_DefenderSword",
+"kind": "weapon",
+"file": "Defs\\MagicItems_Weapons.xml",
+"tex": "Items/Magic/DefenderSword",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "守护者之剑",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Items\\Magic\\DefenderSword.png",
+"W": 128,
+"p0": [
+13.78283004145522,
+114.01355600709763
+],
+"p1": [
+105.25528242556447,
+17.39533790181183
+],
+"elong": 2.741277043280533,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Items\\Magic\\DefenderSword.png"
+},
+{
+"def_": "LP_JavelinLightning",
+"kind": "weapon",
+"file": "Defs\\MagicItems_Weapons.xml",
+"tex": "Items/Magic/JavelinLightning",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "闪电标枪",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Items\\Magic\\JavelinLightning.png",
+"W": 128,
+"p0": [
+10.472440848387407,
+121.25167855778729
+],
+"p1": [
+114.9118224254511,
+13.915686270998137
+],
+"elong": 5.424393320950946,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Items\\Magic\\JavelinLightning.png"
+},
+{
+"def_": "LP_SwordVengeance",
+"kind": "weapon",
+"file": "Defs\\MagicItems_Weapons.xml",
+"tex": "Items/Magic/SwordVengeance",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "复仇之剑",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Items\\Magic\\SwordVengeance.png",
+"W": 128,
+"p0": [
+16.747537059018136,
+117.42493891354607
+],
+"p1": [
+107.11016328463238,
+18.862223643000746
+],
+"elong": 4.069329287214535,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Items\\Magic\\SwordVengeance.png"
+},
+{
+"def_": "LP_MoltenMaul",
+"kind": "weapon",
+"file": "Defs\\MoltenGuard.xml",
+"tex": "FireGiant/MoltenGuard/Maul",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "熔核破城锤",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "(1.5,1.5)",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\FireGiant\\MoltenGuard\\Maul.png",
+"W": 256,
+"p0": [
+13.064423300624867,
+118.55853326271443
+],
+"p1": [
+105.36245499691832,
+26.839477246988217
+],
+"elong": 2.2778956576896277,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\FireGiant\\MoltenGuard\\Maul.png"
+},
+{
+"def_": "LP_SubduingCudgel",
+"kind": "weapon",
+"file": "Defs\\Nonlethal.xml",
+"tex": "LP/Nonlethal/SubduingCudgel",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "制伏短棍",
+"stuff": true,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\LP\\Nonlethal\\SubduingCudgel.png",
+"W": 128,
+"p0": [
+19.38963124335268,
+110.41311801968308
+],
+"p1": [
+105.52365157749779,
+21.533732044821136
+],
+"elong": 5.347894849006278,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\LP\\Nonlethal\\SubduingCudgel.png"
+},
+{
+"def_": "LP_NetCrossbow",
+"kind": "weapon",
+"file": "Defs\\Nonlethal.xml",
+"tex": "LP/Nonlethal/NetCrossbow",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "缚网弩",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\LP\\Nonlethal\\NetCrossbow.png",
+"W": 128,
+"p0": [
+4.9822057122559755,
+68.78825014778471
+],
+"p1": [
+122.81621598147709,
+59.574578846672054
+],
+"elong": 1.840233765880633,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\LP\\Nonlethal\\NetCrossbow.png"
+},
+{
+"def_": "LP_SleepBow",
+"kind": "weapon",
+"file": "Defs\\Nonlethal.xml",
+"tex": "LP/Nonlethal/SleepBow",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "安眠短弓",
+"stuff": true,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\LP\\Nonlethal\\SleepBow.png",
+"W": 128,
+"p0": [
+79.5047619807087,
+114.0123920155485
+],
+"p1": [
+79.62266596343443,
+13.018109986655077
+],
+"elong": 1.2879119123549805,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\LP\\Nonlethal\\SleepBow.png"
+},
+{
+"def_": "LP_SleepStaff",
+"kind": "weapon",
+"file": "Defs\\Nonlethal.xml",
+"tex": "LP/Nonlethal/SleepStaff",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "安眠法杖",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\LP\\Nonlethal\\SleepStaff.png",
+"W": 128,
+"p0": [
+16.285088243480843,
+120.38827746730377
+],
+"p1": [
+109.23821691417982,
+10.206169123390353
+],
+"elong": 4.345287928667746,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\LP\\Nonlethal\\SleepStaff.png"
+},
+{
+"def_": "LP_SleepDustPouch",
+"kind": "weapon",
+"file": "Defs\\Nonlethal.xml",
+"tex": "LP/Nonlethal/SleepDustPouch",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "安眠粉囊",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\LP\\Nonlethal\\SleepDustPouch.png",
+"W": 128,
+"p0": [
+60.1654252649955,
+122.37929366934299
+],
+"p1": [
+71.29216070020068,
+0.7477753841771744
+],
+"elong": 1.7616215343258539,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\LP\\Nonlethal\\SleepDustPouch.png"
+},
+{
+"def_": "LP_InfernalPitchfork",
+"kind": "weapon",
+"file": "Defs\\Pact_Items.xml",
+"tex": "Pact/Items/InfernalPitchfork",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "地狱钢叉",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Pact\\Items\\InfernalPitchfork.png",
+"W": 128,
+"p0": [
+25.289351786377104,
+110.26012840210677
+],
+"p1": [
+108.38375539079206,
+14.393831380717813
+],
+"elong": 4.104349323237521,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Pact\\Items\\InfernalPitchfork.png"
+},
+{
+"def_": "LP_FeySilverBow",
+"kind": "weapon",
+"file": "Defs\\Pact_Items.xml",
+"tex": "Pact/Items/FeySilverBow",
+"cls": "Graphic_Single",
+"where": "mod",
+"worn": "",
+"wornwhere": "",
+"label": "妖精银弓",
+"stuff": false,
+"shader": "",
+"color": "",
+"drawSize": "",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Textures\\Pact\\Items\\FeySilverBow.png",
+"W": 128,
+"p0": [
+52.50417362270449,
+114.0
+],
+"p1": [
+52.50417362270452,
+13.0
+],
+"elong": 1.3263030830997955,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Textures\\Pact\\Items\\FeySilverBow.png"
+},
+{
+"def_": "LP_CyclopsMaul",
+"kind": "weapon",
+"file": "Bridges\\HAR\\Defs\\HARGiants_Items.xml",
+"tex": "HARGiants/Items/CyclopsMaul",
+"cls": "Graphic_Single",
+"where": "bridge",
+"worn": "",
+"wornwhere": "",
+"label": "独眼巨锤",
+"stuff": true,
+"shader": "",
+"color": "",
+"drawSize": "(1.6,1.6)",
+"path": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\Bridges\\HAR\\Textures\\HARGiants\\Items\\CyclopsMaul.png",
+"W": 128,
+"p0": [
+27.752458503736953,
+108.18061918864117
+],
+"p1": [
+108.04306584193836,
+10.539714296350851
+],
+"elong": 3.34626036615176,
+"backup": "E:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\LichPhylactery\\ArtSource\\backup-art-1030\\Bridges\\HAR\\Textures\\HARGiants\\Items\\CyclopsMaul.png"
+}
+]

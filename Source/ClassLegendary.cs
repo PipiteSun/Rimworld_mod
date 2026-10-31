@@ -8,11 +8,11 @@ using Verse;
 
 namespace LichPhylactery {
  // 1.74.0 传奇职业能力（见 ArtSource/Classes-1.74.0-spec.md / report.md）：传奇冒险者 25 / 30 / 35 / 40 级各 1 点传奇职业点（老存档按当前等级补发一次，靠 legendaryGranted 计数）。
- // 每个职业 2 个（LP_ClassDef.legendary：1 主动 + 1 被动），学第一个要那个职业 9 级，同职业第二个 17 级；每学一个，那个职业的资源上限 +2。
+ // 每个职业 2 个（LP_ClassDef.legendary：1 主动 + 1 被动），学第一个要那个职业 7 级，同职业第二个 10 级（1.87.0 前 9 / 17；10+10 兼修可以用满 4 点）；每学一个，那个职业的资源上限 +2。
  // 被动的效果：属性（StatPart_LegendaryClassPower）、状态（无相之身、血脉觉醒，在 Tick250 里给 / 收）、挂钩（不屈战魂、誓约不灭、永恒德鲁伊、魂铸）和资源消耗（法术强效、神圣守护、永恒德鲁伊）。
  public static class ClassLegendary {
   public static readonly int[] Thresholds={25,30,35,40};
-  public const int FirstLevel=9,SecondLevel=17,ResourceBonus=2,OathRadius=8,OathSave=2;
+  public const int FirstLevel=7,SecondLevel=10,ResourceBonus=2,OathRadius=8,OathSave=2;
   public const float MasteryFactor=1.3f,SoulforgeLegendChance=.1f,UnyieldingHeal=.5f,BossStunChance=.5f;
   static Dictionary<AbilityDef,LP_ClassDef> byAbility;static int stamp=-1;
   public static LP_ClassDef ClassOf(AbilityDef d){
@@ -62,6 +62,7 @@ namespace LichPhylactery {
    if(def.defName=="LP_WildShape" && HasLeg(p,timeless))return 0;
    if(def.defName=="LP_Raise" && HasLeg(p,guardian))cost=2;
    if(ClassSystem.ClassOf(def)?.defName=="LP_Class_Wizard" && HasLeg(p,mastery))cost=Math.Max(1,cost-1);
+   int fr=ClassFeats.CostReduce(p,def);if(fr>0)cost=Math.Max(1,cost-fr); // 1.88.0 职业专属专长
    return cost;
   }
   public static float PowerFactor(Pawn p,CompProperties_ClassEffect e)=>e?.stat!=null && e.stat.defName=="LP_ArcanePower" && HasLeg(p,mastery)?MasteryFactor:1f;

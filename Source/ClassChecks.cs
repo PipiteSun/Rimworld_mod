@@ -13,7 +13,7 @@ namespace LichPhylactery {
    var p=AdvPawn();var h=Adventurer.Get(p)??Adventurer.TryAdd(p,1,true);
    foreach(var s in DefDatabase<SkillDef>.AllDefsListForReading){var r=p.skills.GetSkill(s);if(!r.TotallyDisabled)r.Level=0;}
    p.skills.GetSkill(SkillDefOf.Melee).Level=melee;p.skills.GetSkill(SkillDefOf.Social).Level=social;p.skills.GetSkill(SkillDefOf.Shooting).Level=shooting;
-   h.level=level;h.xp=Adventurer.XpTable[Mathf.Clamp(level,1,20)-1];h.scores=new[]{10,10,10,10,10,10};h.classes=new ClassData();h.Dirty();
+   h.level=level;h.xp=Adventurer.XpTable[Mathf.Clamp(level,1,20)-1];h.scores=new[]{10,10,10,10,10,10};h.classes=new ClassData();h.fighterFeats=h.fighterFeatGranted=0;h.Dirty();
    p.equipment?.DestroyAllEquipment();
    return p;
   }
@@ -22,10 +22,10 @@ namespace LichPhylactery {
   void CheckClasses(){
    bool sup=Adventurer.TestSuppressed;Adventurer.TestSuppressed=false;var s=LichMod.Settings;bool oldPsy=s.classPsychic,oldEnt=s.classEntropy,oldOn=s.adventurer;s.adventurer=true;
    try{
-    // 1. 定义：3 个职业、34 个原版能力（Ability_Class + 图标），等级都在 1/3/5/9/13/17/20；三个强度属性在主程序集；设置默认值。
+    // 1. 定义：3 个职业、34 个原版能力（Ability_Class + 图标），等级都在 1/3/5/7/10/13/15（1.87.0）；三个强度属性在主程序集；设置默认值。
     var all=new[]{ClassSystem.Fighter,ClassSystem.Monk,ClassSystem.Paladin}.Where(c=>c!=null).ToList();var abilities=all.SelectMany(c=>c.abilities).ToList(); // 1.73.0：只看物理三职业（施法职业在 CheckClassesCasters）
     Check(all.Count==3 && ClassSystem.Fighter!=null && ClassSystem.Monk!=null && ClassSystem.Paladin!=null && abilities.Count==34 && abilities.All(e=>e.ability.abilityClass==typeof(Ability_Class) && e.ability.uiIcon!=null && e.ability.uiIcon!=BaseContent.BadTex && ClassSystem.AbilityLevels.Contains(e.level) && e.ability.comps.OfType<CompProperties_ClassEffect>().Any())
-     && new[]{"LP_MartialPower","LP_MarksmanPower","LP_DivinePower"}.All(n=>DefDatabase<StatDef>.GetNamed(n).parts.Any(x=>x is StatPart_ClassPower)) && all.All(c=>c.Background!=null),"3 classes with 34 vanilla abilities (icons, levels 1/3/5/9/13/17/20) and the 3 power stats live in the main assembly");
+     && new[]{"LP_MartialPower","LP_MarksmanPower","LP_DivinePower"}.All(n=>DefDatabase<StatDef>.GetNamed(n).parts.Any(x=>x is StatPart_ClassPower)) && all.All(c=>c.Background!=null),"3 classes with 34 vanilla abilities (icons, levels 1/3/5/7/10/13/15) and the 3 power stats live in the main assembly");
     Check(new LichPhylactery.Settings().classPsychic && !new LichPhylactery.Settings().classEntropy && (ModsConfig.IsActive(VPEId) || DefDatabase<IncidentDef>.GetNamedSilentFail("LP_WanderingMentor")==null),"settings default: psychic factor on, entropy off; without VPE the class system runs alone");
     // 2. 职业点：每个冒险者等级 1 点，最多 20；传奇等级不给。
     var a=ClsPawn(1,6);var ha=Adventurer.Get(a);int p1=ClassSystem.Points(ha);ha.level=4;int p4=ClassSystem.Points(ha);ha.level=25;int p25=ClassSystem.Budget(ha);ha.level=4;
@@ -39,10 +39,27 @@ namespace LichPhylactery {
     hb.level=3;b.skills.GetSkill(SkillDefOf.Social).Level=7;string soc7=ClassSystem.CanAdd(hb,ClassSystem.Paladin);b.skills.GetSkill(SkillDefOf.Social).Level=8;bool multi=ClassSystem.AddLevel(hb,ClassSystem.Paladin);
     var lich=ClsPawn(5,10,10);lich.genes.AddGene(DefDatabase<GeneDef>.GetNamed("LP_LichGene"),true);
     Check(lv2!=null && soc7!=null && multi && ClassSystem.Level(hb,ClassSystem.Paladin)==1 && ClassSystem.Total(hb)==2 && ClassSystem.CanAdd(Adventurer.Get(lich),ClassSystem.Paladin)=="亡灵无法立下圣誓","multiclass (fighter by shooting 10): paladin needs adventurer 3 and melee or social 8; a lich cannot be a paladin");
-    // 5. 等级到了给能力；终极另要技能 18。
+    // 5. 等级到了给能力；终极另要技能 15（1.87.0 前 18）。
     var c=ClsPawn(20,10);var hc=Adventurer.Get(c);for(int i=0;i<20;i++)ClassSystem.AddLevel(hc,ClassSystem.Fighter);
-    bool mid=HasAb(c,"LP_WeaponMastery") && HasAb(c,"LP_GuardStance") && !HasAb(c,"LP_SurgeOfBattle");c.skills.GetSkill(SkillDefOf.Melee).Level=18;ClassSystem.Sync(hc);
-    Check(ClassSystem.Level(hc,ClassSystem.Fighter)==20 && mid && HasAb(c,"LP_SurgeOfBattle") && !HasAb(c,"LP_DeadEye") && ClassSystem.MaxResource(hc,ClassSystem.Fighter)==12 && Martial.Tier(c)==3,"fighter 20: tier-17 abilities at melee 10, surge of battle only at melee 18 (dead eye still needs shooting 18); 12 fury max, extra attack tier 3");
+    bool mid=HasAb(c,"LP_WeaponMastery") && HasAb(c,"LP_GuardStance") && !HasAb(c,"LP_SurgeOfBattle");c.skills.GetSkill(SkillDefOf.Melee).Level=15;ClassSystem.Sync(hc);
+    Check(ClassSystem.Level(hc,ClassSystem.Fighter)==20 && mid && HasAb(c,"LP_SurgeOfBattle") && !HasAb(c,"LP_DeadEye") && ClassSystem.MaxResource(hc,ClassSystem.Fighter)==12 && Martial.Tier(c)==3,"fighter 20: level-13 abilities at melee 10, surge of battle only at melee 15 (dead eye still needs shooting 15); 12 fury max, extra attack tier 3");
+    // 5c. 1.87.0：终极在战士 15 级 + 格斗 15（14 级还没有）；额外攻击第 2 档 10 级、第 3 档 15 级。
+    {var c15=ClsPawn(15,15);var h15=Adventurer.Get(c15);int t9=0,t10=0,t14=0;bool cap14=true;
+     for(int i=1;i<=15;i++){ClassSystem.AddLevel(h15,ClassSystem.Fighter);if(i==9)t9=Martial.Tier(c15);if(i==10)t10=Martial.Tier(c15);if(i==14){t14=Martial.Tier(c15);cap14=HasAb(c15,"LP_SurgeOfBattle");}}
+     Check(!cap14 && ClassSystem.Level(h15,ClassSystem.Fighter)==15 && HasAb(c15,"LP_SurgeOfBattle") && HasAb(c15,"LP_GuardStance") && !HasAb(c15,"LP_DeadEye"),"capstone at fighter 15 + melee 15 (surge of battle; none at fighter 14, dead eye still needs shooting 15)");
+     Check(t9==1 && t10==2 && t14==2 && Martial.Tier(c15)==3,"extra attack: fighter 9 → tier 1, 10 → tier 2, 14 → tier 2, 15 → tier 3 (was 11 / 20)");}
+    // 5d. 1.87.0 老存档：等级表版本 0、战士 10 级只有旧表的能力 → 一次 Tick250 补上新表 10 级的能力，什么都不收回；新建的数据直接是新版本。
+    {var os=ClsPawn(10,10);var hos=Adventurer.Get(os);hos.classes.levels[ClassSystem.Fighter]=10;hos.classes.table=0;hos.fighterFeatGranted=ClassSystem.FighterFeatsDue(10);
+     foreach(var e in ClassSystem.Fighter.abilities)if(e.level<=7 && os.abilities.GetAbility(e.ability)==null)os.abilities.GainAbility(e.ability);
+     int n0=os.abilities.abilities.Count;bool pre=!HasAb(os,"LP_Whirlwind");ClassSystem.Tick250(hos);int n1=os.abilities.abilities.Count;ClassSystem.Tick250(hos);
+     Check(pre && hos.classes.table==ClassSystem.TableVersion && HasAb(os,"LP_Whirlwind") && HasAb(os,"LP_DisarmingStrike") && HasAb(os,"LP_RapidFire") && !HasAb(os,"LP_GuardStance") && n1==n0+3 && os.abilities.abilities.Count==n1 && new ClassData().table==ClassSystem.TableVersion,
+      "old save (table 0, fighter 10 with the old level-9 set): one Tick250 grants the 3 level-10 abilities, nothing removed or repeated ("+n0+" → "+n1+")");}
+    // 5b. 2026-10-31 战士奖励专长：战士 1、2、4…20 级各 1 个（20 级共 11 个），免费选、不占属性提升；老存档按水位线补发；NPC 自动选。
+    {int f20=hc.fighterFeats;hc.pendingASI=0;var pick=Feats.All.FirstOrDefault(x=>hc.CanTakeFeat(x)==null);bool took=pick!=null && hc.TakeFeat(pick) && hc.fighterFeats==f20-1 && hc.pendingASI==0;
+     var o=ClsPawn(7,10);var ho=Adventurer.Get(o);ho.classes.levels[ClassSystem.Fighter]=3;ho.fighterFeats=0;ho.fighterFeatGranted=0;int back=ClassSystem.SyncFighterFeats(ho,true);int again=ClassSystem.SyncFighterFeats(ho);
+     ho.classes.levels[ClassSystem.Fighter]=4;int at4=ClassSystem.SyncFighterFeats(ho);bool pend=Letter_AdventurerLevel.Pending(ho).Contains("战士奖励专长");
+     var n=ClsPawn(7,10);n.SetFaction(null);var hn=Adventurer.Get(n);int nf0=hn.feats.Count;ClassSystem.SetLevel(hn,ClassSystem.Fighter,6);
+     Check(f20==11 && hc.fighterFeatGranted==11 && took && back==2 && again==0 && at4==1 && ho.fighterFeats==3 && pend && ClassSystem.FighterFeatsDue(7)==4 && hn.fighterFeats==0 && hn.feats.Count==nf0+4,"fighter bonus feats: fighter 20 → 11, a pick uses them before ability score improvements ("+pick?.defName+"); an old fighter 3 save gets 2 once, fighter 4 one more; NPC fighter 6 auto-picks 4 ("+(hn.feats.Count-nf0)+")");}
     // 6. 施放：扣资源、生效；资源不够时按钮灰掉。
     GenSpawn.Spawn(a,altar.InteractionCell+IntVec3.East*3,map);
     var sw=a.abilities.GetAbility(DefDatabase<AbilityDef>.GetNamed("LP_SecondWind"));
@@ -64,6 +81,10 @@ namespace LichPhylactery {
     Check(Letter_AdventurerLevel.Pending(ha).Contains("职业点") && new Dialog_ChooseClass(a)!=null && GameComponent_Adventurer.LevelGains(a,ha,3,4).Contains("职业点"),"level-up letter lists class points; the class dialog opens");
     CheckClassesCasters(); // 1.73.0 法师 / 牧师 / 德鲁伊 / 术士 / 器械师
     CheckClassesLegendary(); // 1.74.0 传奇职业能力
+    CheckClasses3(); // 野蛮人 / 游侠 / 游荡者
+    CheckSubclasses(); // 子职业 + 通用能力
+    CheckWarlock(); // 邪术师
+    CheckClassUI(); // 1.89.0 部位生命 / 职业强度前后对比、资源上限公式
    }finally{
     s.classPsychic=oldPsy;s.classEntropy=oldEnt;s.adventurer=oldOn;
     foreach(var p in advMade)if(!p.Destroyed)p.Destroy();advMade.Clear();Adventurer.TestSuppressed=sup;
@@ -76,9 +97,9 @@ namespace LichPhylactery {
    try{
     // 1. 定义：8 个职业、79 个原版能力；五个强度属性在主程序集（天赋强度带血脉）；冒险者手册在主程序集。
     var all=ClassSystem.All;var abilities=all.SelectMany(c=>c.abilities).ToList();
-    Check(all.Count==8 && abilities.Count==79 && abilities.Select(e=>e.ability).Distinct().Count()==79 && abilities.All(e=>e.ability.abilityClass==typeof(Ability_Class) && e.ability.uiIcon!=null && e.ability.uiIcon!=BaseContent.BadTex) && all.All(c=>c.Background!=null && c.primary!=null)
+    Check(all.Count==12 && abilities.Count==110 && abilities.Select(e=>e.ability).Distinct().Count()==110 && abilities.All(e=>e.ability.abilityClass==typeof(Ability_Class) && e.ability.uiIcon!=null && e.ability.uiIcon!=BaseContent.BadTex) && all.All(c=>c.Background!=null && c.primary!=null)
      && new[]{"LP_ArcanePower","LP_PrimalPower","LP_VerdantPower","LP_InnatePower","LP_ArtificePower"}.All(n=>DefDatabase<StatDef>.GetNamed(n).parts.Any(x=>x is StatPart_ClassPower)) && DefDatabase<StatDef>.GetNamed("LP_InnatePower").parts.Any(x=>x is StatPart_SorcererBloodline)
-     && DefDatabase<ThingDef>.GetNamed("LP_AdventurersManual").GetCompProperties<CompProperties_UseEffect_Manual>()!=null,"8 classes, 79 vanilla abilities with icons, 5 caster power stats (innate has the bloodline part) and the manual live in the main assembly");
+     && DefDatabase<ThingDef>.GetNamed("LP_AdventurersManual").GetCompProperties<CompProperties_UseEffect_Manual>()!=null,"12 classes, 110 vanilla abilities with icons (1.81.0 hotfix4 +3 wizard defences; +7 warlock), 5 caster power stats (innate has the bloodline part) and the manual live in the main assembly");
     // 2. 门槛：德鲁伊看种植或驯兽 6；巫妖不能当德鲁伊；术士血脉（力能龙裔）社交 4 就行，人类不行。
     var dr=ClsPawn(1);dr.skills.GetSkill(SkillDefOf.Animals).Level=6;var hdr=Adventurer.Get(dr);
     var lich=ClsPawn(1);lich.skills.GetSkill(SkillDefOf.Plants).Level=10;lich.genes.AddGene(DefDatabase<GeneDef>.GetNamed("LP_LichGene"),true);
@@ -106,7 +127,7 @@ namespace LichPhylactery {
     var wz=ClsPawn(12);wz.skills.GetSkill(SkillDefOf.Intellectual).Level=10;var hw=Adventurer.Get(wz);for(int i=0;i<11;i++)ClassSystem.AddLevel(hw,Cls("Wizard"));
     float ap=wz.GetStatValue(DefDatabase<StatDef>.GetNamed("LP_ArcanePower"));
     var mm=DefDatabase<AbilityDef>.GetNamed("LP_MagicMissile").comps.OfType<CompProperties_ClassEffect>().First();var qr=DefDatabase<AbilityDef>.GetNamed("LP_QuickRepair").comps.OfType<CompProperties_ClassEffect>().First();
-    Check(Near(ap,ClassSystem.Power(10)+Adventurer.ClassPowerBonus(wz,Adventurer.Int)+.2f) && Near(ClassSystem.PsychicFactor(wz,mm),Mathf.Max(.2f,wz.GetStatValue(StatDefOf.PsychicSensitivity))) && Near(ClassSystem.PsychicFactor(wz,qr),1f) && HasAb(wz,"LP_LightningBolt") && !HasAb(wz,"LP_WallOfStone"),"wizard 11: arcane power +0.2, magic missile ×psychic sensitivity, artificer never; lightning bolt at 9, wall of stone not yet");
+    Check(Near(ap,ClassSystem.Power(10)+Adventurer.ClassPowerBonus(wz,Adventurer.Int)+.2f) && Near(ClassSystem.PsychicFactor(wz,mm),Mathf.Max(.2f,wz.GetStatValue(StatDefOf.PsychicSensitivity))) && Near(ClassSystem.PsychicFactor(wz,qr),1f) && HasAb(wz,"LP_LightningBolt") && HasAb(wz,"LP_WallOfStone") && !HasAb(wz,"LP_Teleport"),"wizard 11: arcane power +0.2, magic missile ×psychic sensitivity, artificer never; lightning bolt (7) and wall of stone (10), teleport (13) not yet");
     // 6. 施放：治疗伤口扣 1 法力？（牧师用神恩）治好友军；器械师的快速维修不耗资源。
     GenSpawn.Spawn(pc,altar.InteractionCell+IntVec3.South*3,map);var ally=ClsPawn(1);GenSpawn.Spawn(ally,altar.InteractionCell+IntVec3.South*4,map);
     ally.TakeDamage(new DamageInfo(DamageDefOf.Cut,8f,0f,-1f,null,ally.RaceProps.body.AllParts.First(x=>x.def.defName=="Torso")));float inj=ClassMelee.InjurySum(ally);float grace=ClassSystem.Resource(hpc,Cls("Cleric"));
@@ -135,7 +156,7 @@ namespace LichPhylactery {
   void CheckClassesLegendary(){
    // 1. 定义：16 个，每个职业 1 主动 + 1 被动，都有图标。
    var legs=ClassSystem.All.SelectMany(c=>c.legendary).ToList();
-   Check(legs.Count==16 && legs.Distinct().Count()==16 && ClassSystem.All.All(c=>c.legendary.Count==2 && c.legendary.Count(a=>a.comps.OfType<CompProperties_ClassEffect>().First().passive)==1) && legs.All(a=>a.abilityClass==typeof(Ability_Class) && a.uiIcon!=null && a.uiIcon!=BaseContent.BadTex && ClassLegendary.ClassOf(a)!=null),"16 legendary class abilities: one active and one passive per class, all with icons");
+   Check(legs.Count==24 && legs.Distinct().Count()==24 && ClassSystem.All.All(c=>c.legendary.Count==2 && c.legendary.Count(a=>a.comps.OfType<CompProperties_ClassEffect>().First().passive)==1) && legs.All(a=>a.abilityClass==typeof(Ability_Class) && a.uiIcon!=null && a.uiIcon!=BaseContent.BadTex && ClassLegendary.ClassOf(a)!=null),"24 legendary class abilities (warlock +2): one active and one passive per class, all with icons");
    // 2. 传奇职业点：25 / 30 / 35 / 40 级各 1 点（升级时发）。
    var a=ClsPawn(20,10);var ha=Adventurer.Get(a);ha.legendary=true;ha.level=24;ha.xp=Legend.XpFor(24);int at24=ClassLegendary.SyncPoints(ha);
    ha.LevelUp();int at25=ClassLegendary.Points(ha);for(int i=0;i<15;i++)ha.LevelUp();
@@ -143,15 +164,19 @@ namespace LichPhylactery {
    // 3. 老存档补发：37 级、没有记录 → 补 3 点，只补一次。
    var o=ClsPawn(20);var ho=Adventurer.Get(o);ho.legendary=true;ho.level=37;ClassSystem.Tick250(ho);int once=ho.classes.legendaryPoints;ClassSystem.Tick250(ho);
    Check(once==3 && ho.classes.legendaryPoints==3,"an old level-37 save gets 3 legendary points once");
-   // 4. 门槛：战士 8 级不行；9 级学第一个；同职业第二个要 17 级；点数用完不能学。
-   var f=ClsPawn(20,12);var hf=Adventurer.Get(f);hf.legendary=true;hf.level=30;ClassLegendary.SyncPoints(hf);for(int i=0;i<8;i++)ClassSystem.AddLevel(hf,ClassSystem.Fighter);
-   var un=Ab("LP_LegUnyielding");var ta=Ab("LP_LegThousandArmies");string w8=ClassLegendary.CanLearn(hf,ClassSystem.Fighter,un);
-   ClassSystem.AddLevel(hf,ClassSystem.Fighter);int max9=ClassSystem.MaxResource(hf,ClassSystem.Fighter);float r9=ClassSystem.Resource(hf,ClassSystem.Fighter);
-   bool first=ClassLegendary.Learn(hf,ClassSystem.Fighter,un);string w9=ClassLegendary.CanLearn(hf,ClassSystem.Fighter,ta);
-   for(int i=0;i<8;i++)ClassSystem.AddLevel(hf,ClassSystem.Fighter);bool second=ClassLegendary.Learn(hf,ClassSystem.Fighter,ta);
-   Check(w8!=null && first && w9!=null && w9.Contains("17") && second && ClassLegendary.Points(hf)==0 && HasAb(f,"LP_LegUnyielding") && HasAb(f,"LP_LegThousandArmies"),"legendary gate: fighter 8 refused, 9 learns the first, the second needs 17 ("+w9+"), two points spent");
+   // 4. 门槛（1.87.0）：战士 6 级不行；7 级学第一个；同职业第二个要 10 级；点数用完不能学。
+   var f=ClsPawn(20,12);var hf=Adventurer.Get(f);hf.legendary=true;hf.level=30;ClassLegendary.SyncPoints(hf);for(int i=0;i<6;i++)ClassSystem.AddLevel(hf,ClassSystem.Fighter);
+   var un=Ab("LP_LegUnyielding");var ta=Ab("LP_LegThousandArmies");string w6=ClassLegendary.CanLearn(hf,ClassSystem.Fighter,un);
+   ClassSystem.AddLevel(hf,ClassSystem.Fighter);int max7=ClassSystem.MaxResource(hf,ClassSystem.Fighter);
+   bool first=ClassLegendary.Learn(hf,ClassSystem.Fighter,un);string w7=ClassLegendary.CanLearn(hf,ClassSystem.Fighter,ta);
+   for(int i=0;i<2;i++)ClassSystem.AddLevel(hf,ClassSystem.Fighter);string w9=ClassLegendary.CanLearn(hf,ClassSystem.Fighter,ta);ClassSystem.AddLevel(hf,ClassSystem.Fighter);bool second=ClassLegendary.Learn(hf,ClassSystem.Fighter,ta);
+   Check(w6!=null && first && w7!=null && w7.Contains("10") && w9!=null && second && ClassLegendary.Points(hf)==0 && HasAb(f,"LP_LegUnyielding") && HasAb(f,"LP_LegThousandArmies"),"legendary gate: fighter 6 refused, 7 learns the first, the second needs 10 ("+w7+"), two points spent");
    // 5. 资源上限：每个传奇能力 +2。
-   Check(max9==7 && ClassSystem.MaxResource(hf,ClassSystem.Fighter)==ClassSystem.MaxResource(17)+4,"each legendary ability adds +2 to the class resource (fighter 9: 7 → 9; fighter 17 with two: "+ClassSystem.MaxResource(hf,ClassSystem.Fighter)+")");
+   Check(max7==6 && ClassSystem.MaxResource(hf,ClassSystem.Fighter)==ClassSystem.MaxResource(10)+4,"each legendary ability adds +2 to the class resource (fighter 7: 6 → 8; fighter 10 with two: "+ClassSystem.MaxResource(hf,ClassSystem.Fighter)+")");
+   // 5b. 1.87.0：战士 10 + 武僧 10 的传奇 40 级能用满 4 点传奇职业点。
+   {var sp=ClsPawn(20,12);var hsp=Adventurer.Get(sp);hsp.legendary=true;hsp.level=40;ClassLegendary.SyncPoints(hsp);for(int i=0;i<10;i++){ClassSystem.AddLevel(hsp,ClassSystem.Fighter);ClassSystem.AddLevel(hsp,ClassSystem.Monk);}
+    int learnt=ClassSystem.Fighter.legendary.Concat(ClassSystem.Monk.legendary).Count(x=>ClassLegendary.Learn(hsp,ClassLegendary.ClassOf(x),x));
+    Check(ClassSystem.Level(hsp,ClassSystem.Fighter)==10 && ClassSystem.Level(hsp,ClassSystem.Monk)==10 && learnt==4 && ClassLegendary.Points(hsp)==0,"a fighter 10 / monk 10 split spends all 4 legendary class points ("+learnt+" learnt)");}
    // 6. 被动：无相之身 = 闪避 +25%、免疫击晕；不屈战魂每天一次。
    var m=ClsPawn(20,12);var hm=Adventurer.Get(m);hm.legendary=true;hm.level=25;ClassLegendary.SyncPoints(hm);for(int i=0;i<9;i++)ClassSystem.AddLevel(hm,ClassSystem.Monk);
    float dodge0=m.GetStatValue(StatDefOf.MeleeDodgeChance);ClassLegendary.Learn(hm,ClassSystem.Monk,Ab("LP_LegFormless"));GenSpawn.Spawn(m,altar.InteractionCell+IntVec3.East*4,map);
@@ -168,9 +193,9 @@ namespace LichPhylactery {
    ClassLegendary.Learn(hg,DefDatabase<LP_ClassDef>.GetNamed("LP_Class_Wizard"),Ab("LP_LegSpellMastery"));ClassLegendary.Learn(hg,DefDatabase<LP_ClassDef>.GetNamed("LP_Class_Cleric"),Ab("LP_LegDivineGuardian"));
    var dru=ClsPawn(20);var hd=Adventurer.Get(dru);hd.legendary=true;hd.level=25;ClassLegendary.SyncPoints(hd);dru.skills.GetSkill(SkillDefOf.Plants).Level=12;for(int i=0;i<9;i++)ClassSystem.AddLevel(hd,DefDatabase<LP_ClassDef>.GetNamed("LP_Class_Druid"));
    float age0=dru.ageTracker.BiologicalTicksPerTick;ClassLegendary.Learn(hd,DefDatabase<LP_ClassDef>.GetNamed("LP_Class_Druid"),Ab("LP_LegTimelessDruid"));
-   Check(ClassLegendary.Cost(mg,Ab("LP_Fireball"),Fx("LP_Fireball"))==1 && ClassLegendary.Cost(mg,Ab("LP_MagicMissile"),Fx("LP_MagicMissile"))==1 && Near(ClassEffects.Power(mg,Fx("LP_Fireball")),fb0*1.3f)
+   Check(ClassLegendary.Cost(mg,Ab("LP_Fireball"),Fx("LP_Fireball"))==1 && ClassLegendary.Cost(mg,Ab("LP_MagicMissile"),Fx("LP_MagicMissile"))==0 && Near(ClassEffects.Power(mg,Fx("LP_Fireball")),fb0*1.3f)
     && ClassLegendary.Cost(mg,Ab("LP_Raise"),Fx("LP_Raise"))==2 && Near(mg.GetStatValue(DefDatabase<StatDef>.GetNamed("LP_DivinePower")),div0+.2f)
-    && ClassLegendary.Cost(dru,Ab("LP_WildShape"),Fx("LP_WildShape"))==0 && age0>0f && dru.ageTracker.BiologicalTicksPerTick==0f,"spell mastery (fireball 2 → 1, ×1.3), divine guardian (raise 2, divine power +0.2), timeless druid (wild shape free, no aging)");
+    && ClassLegendary.Cost(dru,Ab("LP_WildShape"),Fx("LP_WildShape"))==0 && age0>0f && dru.ageTracker.BiologicalTicksPerTick==0f,"spell mastery (fireball 2 → 1, cantrip magic missile stays 0, ×1.3), divine guardian (raise 2, divine power +0.2), timeless druid (wild shape free, no aging)");
    // 9. 主动能力都能放（不报错）：千军破、流星爆、自然之怒、魔力奔流、战争傀儡、神迹干预、神圣化身。
    var errors=new List<string>();int ran=0;var caster=ClsPawn(30,12,12);GenSpawn.Spawn(caster,altar.InteractionCell+IntVec3.West*4,map);var e1=AdvPawn(null,AdvEnemy);GenSpawn.Spawn(e1,caster.Position+IntVec3.West,map);
    foreach(var n in new[]{"LP_LegThousandArmies","LP_LegMeteorSwarm","LP_LegNatureWrath","LP_LegArcaneSurge","LP_LegWarGolem","LP_LegDivineIntervention","LP_LegDivineIncarnation"}){
@@ -182,6 +207,13 @@ namespace LichPhylactery {
    Check(errors.Count==0 && ran==7 && torrent && golem is Building_RuneTurret gt && gt.power>1f && Items.Has(caster,"LP_LegDivineAura"),"7 legendary actives run without errors; arcane torrent makes spells free; the war golem turret spawns"+(errors.Count==0?"":": "+string.Join(" | ",errors)));
    golem?.Destroy();
    foreach(var t in map.listerThings.ThingsOfDef(DefDatabase<ThingDef>.GetNamed("LP_RuneWarGolem")).ToList())t.Destroy();
+   // 10. 冲锋（hotfix）：远处起跳要把人装进飞行物生成在地图上，不能“消失”（MakeFlyer 之后 caster.Map 已是 null）。
+   var ch=ClsPawn(3,10);var chFrom=CellFinder.RandomClosewalkCellNear(altar.InteractionCell+IntVec3.South*8,map,3,c=>c.GetFirstPawn(map)==null && c.Standable(map));GenSpawn.Spawn(ch,chFrom,map);
+   var chFoe=AdvPawn(null,AdvEnemy);var chTo=CellFinder.RandomClosewalkCellNear(chFrom+IntVec3.East*5,map,1,c=>c.GetFirstPawn(map)==null && c.Standable(map));GenSpawn.Spawn(chFoe,chTo,map);
+   bool chStarted=!chFoe.Position.AdjacentTo8WayOrInside(ch.Position) && Charge.Start(ch,chFoe,1.3f);
+   var chFlyer=map.listerThings.AllThings.OfType<LP_ChargeFlyer>().FirstOrDefault(f=>f.FlyingPawn==ch);
+   Check(chStarted && (ch.Spawned || chFlyer!=null && chFlyer.Spawned),"冲锋 from 5 cells: the charger stays on the map (spawned charge flyer carrying them), not vanished");
+   if(chFlyer!=null && !ch.Spawned){chFlyer.GetDirectlyHeldThings().TryDrop(ch,chFlyer.Position,map,ThingPlaceMode.Near,out _);chFlyer.Destroy();}
   }
   void PrepareClassesSave(){
    bool sup=Adventurer.TestSuppressed;Adventurer.TestSuppressed=false;
@@ -192,12 +224,16 @@ namespace LichPhylactery {
     h.classes.legendaryPoints=2;h.classes.legendaryGranted=3;h.classes.legendary.Add(DefDatabase<AbilityDef>.GetNamed("LP_LegUnyielding"));h.classes.legendaryTicks["LP_LegUnyielding"]=1234;ClassSystem.Sync(h); // 1.74.0
     GenSpawn.Spawn(p,altar.InteractionCell+IntVec3.North*3,map);clsSavedId=p.ThingID;
     Check(HasAb(p,"LP_Whirlwind") && HasAb(p,"LP_BattleCry"),"save fixture: fighter 3 / paladin 1 with a kept whirlwind");
+    PrepareClasses3Save(); // 野蛮人 / 游侠
+    PrepareSubclassSave(); // 子职业
    }finally{Adventurer.TestSuppressed=sup;}
   }
   void CheckClassesAfterLoad(){
    var p=map.mapPawns.AllPawnsSpawned.FirstOrDefault(x=>x.ThingID==clsSavedId);var h=Adventurer.Get(p);
    Check(h!=null && ClassSystem.Level(h,ClassSystem.Fighter)==3 && ClassSystem.Level(h,ClassSystem.Paladin)==1 && Near(ClassSystem.Resource(h,ClassSystem.Fighter),2.5f) && h.classes.kept.Count==1 && h.classes.freeUnlocks==1 && h.classes.legendaryPoints==2 && h.classes.legendaryGranted==3 && h.classes.legendary.Count==1 && h.classes.legendaryTicks.TryGetValue("LP_LegUnyielding",out int lt) && lt==1234 && HasAb(p,"LP_LegUnyielding") && HasAb(p,"LP_Whirlwind") && HasAb(p,"LP_DivineSmite") && ClassSystem.Points(h)==2,"class levels, resources, kept abilities, manual waiver, legendary points / abilities and the vanilla abilities survive save/load");
    p?.Destroy();
+   CheckClasses3AfterLoad();
+   CheckSubclassAfterLoad();
   }
  }
 }

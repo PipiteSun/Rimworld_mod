@@ -66,7 +66,7 @@ namespace LichPhylactery {
   public static string RaceUnmet(LP_FeatDef f,Pawn p)=>RaceOk(f,p)?null:"只有"+RaceLabel(f)+"能选";
   public static string GroupUnmet(LP_FeatDef f,Hediff_Adventurer h){if(f.exclusiveGroup.NullOrEmpty())return null;var o=h.feats.FirstOrDefault(x=>x!=f && x.exclusiveGroup==f.exclusiveGroup);return o==null?null:"已经选了"+o.label+"（同类只能选一个）";}
   // 分页：种族专长只对对应种族显示。
-  public static bool Visible(LP_FeatDef f,Pawn p)=>!f.Racial || RaceOk(f,p);
+  public static bool Visible(LP_FeatDef f,Pawn p)=>(!f.Racial || RaceOk(f,p)) && (f.requiredClass==null || ClassSystem.Level(p,f.requiredClass)>0); // 1.88.0 职业专属专长只对有这个职业的人显示
   public static void GrantAbility(Pawn p,AbilityDef d,bool on){if(d==null || p?.abilities==null)return;bool has=p.abilities.GetAbility(d)!=null;if(on && !has)p.abilities.GainAbility(d);else if(!on && has)p.abilities.RemoveAbility(d);}
   static int Skill(Pawn p,SkillDef s){var r=p?.skills?.GetSkill(s);return r==null || r.TotallyDisabled?0:r.Level;}
 

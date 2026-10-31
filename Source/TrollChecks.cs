@@ -134,6 +134,9 @@ namespace LichPhylactery {
    Check(troll.Corpse.GetInspectString().Contains("巨魔再生"),"troll corpse shows revival countdown");
    revivals.Process();
    Check(troll.Dead && gene.reviveTick>=0,"troll stays dead before the timer ends");
+   // 1.82.0 热修：死者算“已销毁”，存档引用必须带 saveDestroyedThings；旧档丢失的条目读档时从尸体找回。
+   revivals.pending.Remove(troll);
+   Check(revivals.Rescan()>=1 && revivals.pending.Contains(troll),"troll corpse lost from the pending list is found again on load");
    gene.reviveTick=Find.TickManager.TicksGame;
    revivals.Process();
    Check(!troll.Dead && troll.Spawned && gene.revivals==1 && troll.health.hediffSet.HasHediff(Troll.Weakness) && !revivals.pending.Contains(troll),"troll revives in place with weakness");

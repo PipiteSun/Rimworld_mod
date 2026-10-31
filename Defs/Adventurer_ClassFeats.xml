@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.88.0 职业专属专长：每个职业两个（职业 3 级 / 7 级），只对有这个职业的人显示，用属性提升或战士奖励专长选。
+     规则字段（Source/ClassFeats.cs）：powerStats + powerBonus 职业强度；resourceBonus 资源上限；gainFactor 资源获取 ×；cooldownFactor 本职业能力冷却 ×；costReduce 本职业能力消耗 −N（最少 1）。
+     数值字段 statOffsets / statFactors 和其他专长一样合进冒险者状态。每个都附带 +1 属性（bonusAbilities）。NPC 职业者也会按 enemyTags 随机选到。 -->
+<Defs>
+  <LichPhylactery.LP_FeatDef Name="LP_ClassFeatBase" Abstract="True">
+    <category>Class</category>
+    <enemyTags><li>any</li></enemyTags>
+  </LichPhylactery.LP_FeatDef>
+
+  <!-- ===== 战士 ===== -->
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_FighterVeteran</defName>
+    <label>战场老兵</label>
+    <description>见过的阵仗多了，什么局面都稳得住。战技强度、射术强度 +15%；斗志上限 +2；疼痛休克阈值 +10%。战士专属。附带力量、敏捷或体质 +1。</description>
+    <iconPath>LP/Feats/Class/FighterVeteran</iconPath>
+    <order>60</order>
+    <requiredClass>LP_Class_Fighter</requiredClass><classLevel>3</classLevel>
+    <powerStats><li>LP_MartialPower</li><li>LP_MarksmanPower</li></powerStats><powerBonus>0.15</powerBonus>
+    <resourceBonus>2</resourceBonus>
+    <statOffsets><PainShockThreshold>0.1</PainShockThreshold></statOffsets>
+    <bonusAbilities><li>Str</li><li>Dex</li><li>Con</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_FighterHundredBattles</defName>
+    <label>百战之躯</label>
+    <description>越打越有劲，招式一套接一套。斗志获取 ×1.5；战士能力冷却 ×0.8；近战命中 ×1.05，射击精度 ×1.05。战士专属。附带力量、敏捷或体质 +1。</description>
+    <iconPath>LP/Feats/Class/FighterHundredBattles</iconPath>
+    <order>61</order>
+    <requiredClass>LP_Class_Fighter</requiredClass><classLevel>7</classLevel>
+    <gainFactor>1.5</gainFactor><cooldownFactor>0.8</cooldownFactor>
+    <statFactors><MeleeHitChance>1.05</MeleeHitChance><ShootingAccuracyPawn>1.05</ShootingAccuracyPawn></statFactors>
+    <bonusAbilities><li>Str</li><li>Dex</li><li>Con</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+
+  <!-- ===== 武僧 ===== -->
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_MonkBreath</defName>
+    <label>内息调和</label>
+    <description>一呼一吸都在养气。气上限 +2；气的恢复 ×1.5；冥想专注获取 +10%。武僧专属。附带敏捷或感知 +1。</description>
+    <iconPath>LP/Feats/Class/MonkBreath</iconPath>
+    <order>62</order>
+    <requiredClass>LP_Class_Monk</requiredClass><classLevel>3</classLevel>
+    <resourceBonus>2</resourceBonus><gainFactor>1.5</gainFactor>
+    <statOffsets><MeditationFocusGain>0.1</MeditationFocusGain></statOffsets>
+    <bonusAbilities><li>Dex</li><li>Wis</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_MonkShadowless</defName>
+    <label>无影身法</label>
+    <description>出手看不清，躲闪也看不清。战技强度 +20%；近战闪避 +12；移动速度 +0.4；武僧能力冷却 ×0.85。武僧专属。附带敏捷或感知 +1。</description>
+    <iconPath>LP/Feats/Class/MonkShadowless</iconPath>
+    <order>63</order>
+    <requiredClass>LP_Class_Monk</requiredClass><classLevel>7</classLevel>
+    <powerStats><li>LP_MartialPower</li></powerStats><powerBonus>0.2</powerBonus>
+    <cooldownFactor>0.85</cooldownFactor>
+    <statOffsets><MeleeDodgeChance>12</MeleeDodgeChance><MoveSpeed>0.4</MoveSpeed></statOffsets>
+    <bonusAbilities><li>Dex</li><li>Wis</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+
+  <!-- ===== 圣武士 ===== -->
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_PaladinOathkeeper</defName>
+    <label>坚守圣誓</label>
+    <description>誓言刻在心里，什么蛊惑都动摇不了。神恩强度 +15%；心智抗性 +20%；神恩上限 +1。圣武士专属。附带力量或魅力 +1。</description>
+    <iconPath>LP/Feats/Class/PaladinOathkeeper</iconPath>
+    <order>64</order>
+    <requiredClass>LP_Class_Paladin</requiredClass><classLevel>3</classLevel>
+    <powerStats><li>LP_DivinePower</li></powerStats><powerBonus>0.15</powerBonus>
+    <resourceBonus>1</resourceBonus>
+    <statOffsets><LP_MindResist>0.2</LP_MindResist></statOffsets>
+    <bonusAbilities><li>Str</li><li>Cha</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_PaladinZealot</defName>
+    <label>圣焰狂信</label>
+    <description>每一击都带着神的怒火。近战伤害 ×1.08；圣武士能力冷却 ×0.8；神恩获取 ×1.25。圣武士专属。附带力量或魅力 +1。</description>
+    <iconPath>LP/Feats/Class/PaladinZealot</iconPath>
+    <order>65</order>
+    <requiredClass>LP_Class_Paladin</requiredClass><classLevel>7</classLevel>
+    <cooldownFactor>0.8</cooldownFactor><gainFactor>1.25</gainFactor>
+    <statFactors><MeleeDamageFactor>1.08</MeleeDamageFactor></statFactors>
+    <bonusAbilities><li>Str</li><li>Cha</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+
+  <!-- ===== 法师 ===== -->
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_WizardScholar</defName>
+    <label>奥术学者</label>
+    <description>法术书翻得比谁都勤。奥术强度 +15%；法力上限 +3；研究速度 ×1.1。法师专属。附带智力 +1。</description>
+    <iconPath>LP/Feats/Class/WizardScholar</iconPath>
+    <order>66</order>
+    <requiredClass>LP_Class_Wizard</requiredClass><classLevel>3</classLevel>
+    <powerStats><li>LP_ArcanePower</li></powerStats><powerBonus>0.15</powerBonus>
+    <resourceBonus>3</resourceBonus>
+    <statFactors><ResearchSpeed>1.1</ResearchSpeed></statFactors>
+    <bonusAbilities><li>Int</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_WizardSculptor</defName>
+    <label>法术塑形</label>
+    <description>把法术的结构削到最精简。法师能力的法力消耗 −1（最少 1）；法师能力冷却 ×0.85。法师专属。附带智力 +1。</description>
+    <iconPath>LP/Feats/Class/WizardSculptor</iconPath>
+    <order>67</order>
+    <requiredClass>LP_Class_Wizard</requiredClass><classLevel>7</classLevel>
+    <costReduce>1</costReduce><cooldownFactor>0.85</cooldownFactor>
+    <bonusAbilities><li>Int</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+
+  <!-- ===== 牧师 ===== -->
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_ClericDevout</defName>
+    <label>虔诚祷者</label>
+    <description>祈祷时神总会回应。神恩获取 ×1.5；神恩强度 +10%；包扎品质 ×1.1。牧师专属。附带感知 +1。</description>
+    <iconPath>LP/Feats/Class/ClericDevout</iconPath>
+    <order>68</order>
+    <requiredClass>LP_Class_Cleric</requiredClass><classLevel>3</classLevel>
+    <powerStats><li>LP_DivinePower</li></powerStats><powerBonus>0.1</powerBonus>
+    <gainFactor>1.5</gainFactor>
+    <statFactors><MedicalTendQuality>1.1</MedicalTendQuality></statFactors>
+    <bonusAbilities><li>Wis</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_ClericBlessedHands</defName>
+    <label>神眷之手</label>
+    <description>神力在手里流得更顺。神恩上限 +2；牧师能力冷却 ×0.8；免疫获取速度 ×1.15。牧师专属。附带感知或体质 +1。</description>
+    <iconPath>LP/Feats/Class/ClericBlessedHands</iconPath>
+    <order>69</order>
+    <requiredClass>LP_Class_Cleric</requiredClass><classLevel>7</classLevel>
+    <resourceBonus>2</resourceBonus><cooldownFactor>0.8</cooldownFactor>
+    <statFactors><ImmunityGainSpeed>1.15</ImmunityGainSpeed></statFactors>
+    <bonusAbilities><li>Wis</li><li>Con</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+
+  <!-- ===== 德鲁伊 ===== -->
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_DruidWildChild</defName>
+    <label>荒野之子</label>
+    <description>在林子里长大，草木鸟兽都认得你。野性强度、生长强度 +15%；种植速度 ×1.15；驯服成功率 ×1.15。德鲁伊专属。附带感知 +1。</description>
+    <iconPath>LP/Feats/Class/DruidWildChild</iconPath>
+    <order>70</order>
+    <requiredClass>LP_Class_Druid</requiredClass><classLevel>3</classLevel>
+    <powerStats><li>LP_PrimalPower</li><li>LP_VerdantPower</li></powerStats><powerBonus>0.15</powerBonus>
+    <statFactors><PlantWorkSpeed>1.15</PlantWorkSpeed><TameAnimalChance>1.15</TameAnimalChance></statFactors>
+    <bonusAbilities><li>Wis</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_DruidWarden</defName>
+    <label>自然守望者</label>
+    <description>自然之力护着守护它的人。法力上限 +3；德鲁伊能力冷却 ×0.85；毒素抗性 +30%。德鲁伊专属。附带感知或体质 +1。</description>
+    <iconPath>LP/Feats/Class/DruidWarden</iconPath>
+    <order>71</order>
+    <requiredClass>LP_Class_Druid</requiredClass><classLevel>7</classLevel>
+    <resourceBonus>3</resourceBonus><cooldownFactor>0.85</cooldownFactor>
+    <statOffsets><ToxicResistance>0.3</ToxicResistance></statOffsets>
+    <bonusAbilities><li>Wis</li><li>Con</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+
+  <!-- ===== 术士 ===== -->
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_SorcererWellspring</defName>
+    <label>魔力之泉</label>
+    <description>血里的魔力源源不断地涌出来。法力获取 ×1.5；法力上限 +2。术士专属。附带魅力或体质 +1。</description>
+    <iconPath>LP/Feats/Class/SorcererWellspring</iconPath>
+    <order>72</order>
+    <requiredClass>LP_Class_Sorcerer</requiredClass><classLevel>3</classLevel>
+    <resourceBonus>2</resourceBonus><gainFactor>1.5</gainFactor>
+    <bonusAbilities><li>Cha</li><li>Con</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_SorcererResonance</defName>
+    <label>血脉共鸣</label>
+    <description>血脉里的力量和你的意志合为一体。天赋强度 +25%；心灵敏感度 +10%；术士能力冷却 ×0.9。术士专属。附带魅力 +1。</description>
+    <iconPath>LP/Feats/Class/SorcererResonance</iconPath>
+    <order>73</order>
+    <requiredClass>LP_Class_Sorcerer</requiredClass><classLevel>7</classLevel>
+    <powerStats><li>LP_InnatePower</li></powerStats><powerBonus>0.25</powerBonus>
+    <cooldownFactor>0.9</cooldownFactor>
+    <statOffsets><PsychicSensitivity>0.1</PsychicSensitivity></statOffsets>
+    <bonusAbilities><li>Cha</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+
+  <!-- ===== 器械师 ===== -->
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_ArtificerTinker</defName>
+    <label>熟练工匠</label>
+    <description>工具在手里就像身体的一部分。器械强度 +15%；器械师能力冷却 ×0.85；一般劳动速度 ×1.1。器械师专属。附带智力或体质 +1。</description>
+    <iconPath>LP/Feats/Class/ArtificerTinker</iconPath>
+    <order>74</order>
+    <requiredClass>LP_Class_Artificer</requiredClass><classLevel>3</classLevel>
+    <powerStats><li>LP_ArtificePower</li></powerStats><powerBonus>0.15</powerBonus>
+    <cooldownFactor>0.85</cooldownFactor>
+    <statFactors><GeneralLaborSpeed>1.1</GeneralLaborSpeed></statFactors>
+    <bonusAbilities><li>Int</li><li>Con</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_ArtificerMasterwork</defName>
+    <label>工坊大师</label>
+    <description>符文和机关都改到了极致。器械强度 +20%；器械师能力冷却 ×0.75。器械师专属。附带智力 +1。</description>
+    <iconPath>LP/Feats/Class/ArtificerMasterwork</iconPath>
+    <order>75</order>
+    <requiredClass>LP_Class_Artificer</requiredClass><classLevel>7</classLevel>
+    <powerStats><li>LP_ArtificePower</li></powerStats><powerBonus>0.2</powerBonus>
+    <cooldownFactor>0.75</cooldownFactor>
+    <bonusAbilities><li>Int</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+
+  <!-- ===== 野蛮人 ===== -->
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_BarbarianSmolder</defName>
+    <label>怒火中烧</label>
+    <description>一点就着，越烧越旺。怒气上限 +2；怒气获取 ×1.5。野蛮人专属。附带力量或体质 +1。</description>
+    <iconPath>LP/Feats/Class/BarbarianSmolder</iconPath>
+    <order>76</order>
+    <requiredClass>LP_Class_Barbarian</requiredClass><classLevel>3</classLevel>
+    <resourceBonus>2</resourceBonus><gainFactor>1.5</gainFactor>
+    <bonusAbilities><li>Str</li><li>Con</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_BarbarianFeralBody</defName>
+    <label>野性体魄</label>
+    <description>伤口还没包好就又冲上去了。狂怒强度 +20%；伤口愈合 ×1.3；疼痛休克阈值 +10%。野蛮人专属。附带力量或体质 +1。</description>
+    <iconPath>LP/Feats/Class/BarbarianFeralBody</iconPath>
+    <order>77</order>
+    <requiredClass>LP_Class_Barbarian</requiredClass><classLevel>7</classLevel>
+    <powerStats><li>LP_RagePower</li></powerStats><powerBonus>0.2</powerBonus>
+    <statOffsets><PainShockThreshold>0.1</PainShockThreshold></statOffsets>
+    <statFactors><InjuryHealingFactor>1.3</InjuryHealingFactor></statFactors>
+    <bonusAbilities><li>Str</li><li>Con</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+
+  <!-- ===== 游侠 ===== -->
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_RangerWildHunter</defName>
+    <label>荒野猎手</label>
+    <description>读得懂每一道足迹。猎术强度 +15%；射击精度 ×1.05；游侠能力冷却 ×0.9。游侠专属。附带敏捷或感知 +1。</description>
+    <iconPath>LP/Feats/Class/RangerWildHunter</iconPath>
+    <order>78</order>
+    <requiredClass>LP_Class_Ranger</requiredClass><classLevel>3</classLevel>
+    <powerStats><li>LP_HuntPower</li></powerStats><powerBonus>0.15</powerBonus>
+    <cooldownFactor>0.9</cooldownFactor>
+    <statFactors><ShootingAccuracyPawn>1.05</ShootingAccuracyPawn></statFactors>
+    <bonusAbilities><li>Dex</li><li>Wis</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_RangerStalker</defName>
+    <label>追猎大师</label>
+    <description>盯上的猎物跑不掉。游侠能力冷却 ×0.8；移动速度 +0.3；瞄准时间 ×0.9。游侠专属。附带敏捷或感知 +1。</description>
+    <iconPath>LP/Feats/Class/RangerStalker</iconPath>
+    <order>79</order>
+    <requiredClass>LP_Class_Ranger</requiredClass><classLevel>7</classLevel>
+    <cooldownFactor>0.8</cooldownFactor>
+    <statOffsets><MoveSpeed>0.3</MoveSpeed></statOffsets>
+    <statFactors><AimingDelayFactor>0.9</AimingDelayFactor></statFactors>
+    <bonusAbilities><li>Dex</li><li>Wis</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+
+  <!-- ===== 游荡者 ===== -->
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_RogueShadowVeteran</defName>
+    <label>阴影老手</label>
+    <description>在暗巷里混久了，刀子从哪来都看得见。诡术强度 +15%；近战闪避 +10。游荡者专属。附带敏捷或智力 +1。</description>
+    <iconPath>LP/Feats/Class/RogueShadowVeteran</iconPath>
+    <order>80</order>
+    <requiredClass>LP_Class_Rogue</requiredClass><classLevel>3</classLevel>
+    <powerStats><li>LP_CunningPower</li></powerStats><powerBonus>0.15</powerBonus>
+    <statOffsets><MeleeDodgeChance>10</MeleeDodgeChance></statOffsets>
+    <bonusAbilities><li>Dex</li><li>Int</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_RogueDeadlyPrecision</defName>
+    <label>致命精准</label>
+    <description>只出一刀，刀刀见血。游荡者能力冷却 ×0.8；近战命中 ×1.08；射击精度 ×1.05。游荡者专属。附带敏捷 +1。</description>
+    <iconPath>LP/Feats/Class/RogueDeadlyPrecision</iconPath>
+    <order>81</order>
+    <requiredClass>LP_Class_Rogue</requiredClass><classLevel>7</classLevel>
+    <cooldownFactor>0.8</cooldownFactor>
+    <statFactors><MeleeHitChance>1.08</MeleeHitChance><ShootingAccuracyPawn>1.05</ShootingAccuracyPawn></statFactors>
+    <bonusAbilities><li>Dex</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+
+  <!-- ===== 邪术师 ===== -->
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_WarlockDeepPact</defName>
+    <label>契约深化</label>
+    <description>又在契约上多签了一行字。契约强度 +15%；契约法力上限 +1。邪术师专属。附带魅力 +1。</description>
+    <iconPath>LP/Feats/Class/WarlockDeepPact</iconPath>
+    <order>82</order>
+    <requiredClass>LP_Class_Warlock</requiredClass><classLevel>3</classLevel>
+    <powerStats><li>LP_PactPower</li></powerStats><powerBonus>0.15</powerBonus>
+    <resourceBonus>1</resourceBonus>
+    <bonusAbilities><li>Cha</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_WarlockPatronFavor</defName>
+    <label>宗主眷顾</label>
+    <description>宗主的目光一直落在你身上。契约强度 +10%；邪术师能力冷却 ×0.8；心智抗性 +25%。邪术师专属。附带魅力或体质 +1。</description>
+    <iconPath>LP/Feats/Class/WarlockPatronFavor</iconPath>
+    <order>83</order>
+    <requiredClass>LP_Class_Warlock</requiredClass><classLevel>7</classLevel>
+    <powerStats><li>LP_PactPower</li></powerStats><powerBonus>0.1</powerBonus>
+    <cooldownFactor>0.8</cooldownFactor>
+    <statOffsets><LP_MindResist>0.25</LP_MindResist></statOffsets>
+    <bonusAbilities><li>Cha</li><li>Con</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+</Defs>

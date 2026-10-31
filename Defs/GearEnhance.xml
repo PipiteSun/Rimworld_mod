@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.85.0 附魔强化（取代 Isekai 的装备强化）：所有武器和衣物带 CompGearEnhance（Source/GearEnhance.cs 启动时加上）。
+     在物品上点“附魔强化”选强化目标；这两张工作单只接选了目标、等级在本档范围里的装备，做完不消耗装备，只按成功率改等级。
+     研究见 Defs/Research.xml：装备强化 (4,0)、高阶强化 (5,0)。 -->
+<Defs>
+  <RecipeDef Name="LP_GearEnhanceRecipeBase" ParentName="LP_AlchemyRecipeBase" Abstract="True">
+    <workerClass>LichPhylactery.RecipeWorker_GearEnhance</workerClass>
+    <recipeUsers Inherit="False"><li>LP_EnchantingTable</li></recipeUsers>
+    <jobString>正在附魔强化装备。</jobString>
+    <ingredientValueGetterClass>LichPhylactery.RitualCount</ingredientValueGetterClass>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Smith</soundWorking>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_GearEnhanceRecipeBase">
+    <defName>LP_EnhanceGearLow</defName>
+    <label>附魔强化（+1～+5）</label>
+    <description>把一件选了强化目标的武器或衣物强化一级，最高到+5。每次用4秘银和25白银。成功率：+1 100%、+2 95%、+3 90%、+4 80%、+5 70%，智识和手工的平均等级每比8高一级再+1.5%（最多+18%），连着奥术聚能石再+5%。失败只损失材料。装备要放在地上或储存区里，穿在身上的不会被拿来强化。</description>
+    <workAmount>3000</workAmount>
+    <researchPrerequisite>LP_Research_GearEnhancing</researchPrerequisite>
+    <skillRequirements><Intellectual>6</Intellectual></skillRequirements>
+    <ingredients>
+      <li><filter><categories><li>Weapons</li><li>Apparel</li></categories></filter><count>1</count></li>
+      <li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>4</count></li>
+      <li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>25</count></li>
+    </ingredients>
+    <fixedIngredientFilter><categories><li>Weapons</li><li>Apparel</li></categories><thingDefs><li>LP_Mithral</li><li>Silver</li></thingDefs></fixedIngredientFilter>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_GearEnhanceRecipeBase">
+    <defName>LP_EnhanceGearHigh</defName>
+    <label>附魔强化（+6～+10）</label>
+    <description>把一件已经+5以上、选了强化目标的武器或衣物再强化一级，最高到+10。每次用4精金和10黄金。成功率：+6 60%、+7 50%、+8 40%、+9 30%、+10 20%，技能和奥术聚能石的加成同低阶。从+6往上失败时装备掉一级（不会掉到+5以下）。</description>
+    <workAmount>6000</workAmount>
+    <researchPrerequisite>LP_Research_GearEnhancingHigh</researchPrerequisite>
+    <skillRequirements><Intellectual>10</Intellectual></skillRequirements>
+    <ingredients>
+      <li><filter><categories><li>Weapons</li><li>Apparel</li></categories></filter><count>1</count></li>
+      <li><filter><thingDefs><li>LP_Adamantine</li></thingDefs></filter><count>4</count></li>
+      <li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>10</count></li>
+    </ingredients>
+    <fixedIngredientFilter><categories><li>Weapons</li><li>Apparel</li></categories><thingDefs><li>LP_Adamantine</li><li>Gold</li></thingDefs></fixedIngredientFilter>
+  </RecipeDef>
+</Defs>
