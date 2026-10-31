@@ -164,8 +164,8 @@
   <StatDef ParentName="LP_ClassPowerBase">
     <defName>LP_InnatePower</defName>
     <label>天赋强度</label>
-    <description>术士社交一支的强度倍率：0.5 + 社交等级/20，另加冒险者魅力调整值 × 0.05 与 (熟练加值 − 2) × 0.02、术士等职业等级合计每比 1 高 1 级 +2%（最多 +40%）；有术士血脉的再 +15%。</description>
-    <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Social</skill></li><li Class="LichPhylactery.StatPart_SorcererBloodline" /><li Class="LichPhylactery.StatPart_LegendaryClassPower"><ability>LP_LegBloodlineAwakening</ability><bonus>0.2</bonus></li></parts>
+    <description>术士社交一支的强度倍率：0.5 + 社交等级/20，另加冒险者魅力调整值 × 0.10（× 天赋）与 (熟练加值 − 2) × 0.02、术士等用社交的职业等级合计每比 1 高 1 级 +5%（最多 +95%，即 20 级）；有术士血脉的再 +15%。</description>
+    <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Social</skill><levelPer>0.05</levelPer><levelMax>0.95</levelMax><abilityPer>0.10</abilityPer></li><li Class="LichPhylactery.StatPart_SorcererBloodline" /><li Class="LichPhylactery.StatPart_LegendaryClassPower"><ability>LP_LegBloodlineAwakening</ability><bonus>0.2</bonus></li></parts>
     <displayPriorityInCategory>4216</displayPriorityInCategory>
   </StatDef>
   <StatDef ParentName="LP_ClassPowerBase">

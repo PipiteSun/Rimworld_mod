@@ -59,6 +59,31 @@ namespace LichPhylactery {
     Check(part!=null && Near(part.abilityPer,.1f) && Near(part.LevelPer,.05f) && Near(part.LevelMax,.95f) && art!=null && Near(art.abilityPer,.05f) && Near(art.LevelPer,.02f)
      && Near(v,want) && (!plain || Near(v,2.14f)) && Near(next-v,.05f) && tip.Contains(ap.LabelCap+" +5%") && tip.Contains("最多 +95%") && expl.Contains("×10%") && expl.Contains("+5%"),
      "[1.97.0] wizard 10, Int skill 15, INT 18 (mod "+mod.ToString("0.##")+", talent ×"+tm.ToString("0.##")+", scale "+sc.ToString("0.##")+"): arcane power ×"+v.ToString("0.00")+" (want ×"+want.ToString("0.00")+", old ×1.67), next level ×"+next.ToString("0.00")+"; artificer still 5% / 2%");}
+   // 6. 1.98.0（Peter：术士和法师一样）：术士 10 级、社交 12、魅力 18（调整值 +4）、冒险者 10 级（熟练 +4）
+   //    天赋强度 = 0.5 + 12/20 + 4×10% + (4−2)×2% + 9×5% = 1.10 + 0.40 + 0.04 + 0.45 = ×1.99（旧 ×1.52）；神恩强度的魅力项仍 5%、等级 2%。
+   {var p=ClsPawn(10,0,12);var h=Adventurer.Get(p);h.scores[Adventurer.Cha]=18;h.Dirty();var S=Cls("Sorcerer");ClassSystem.SetLevel(h,S,10);
+    var ip=DefDatabase<StatDef>.GetNamed("LP_InnatePower");var part=ClassLevelInfo.Part(ip);var div=ClassLevelInfo.Part(DefDatabase<StatDef>.GetNamed("LP_DivinePower"));
+    float v=p.GetStatValue(ip),mod=h.AMod(Adventurer.Cha),tm=Affinity.TalentMult(h,Adventurer.Cha),sc=Adventurer.EffectScale;
+    float want=1.10f+(Affinity.Talented(1f+.1f*mod,tm)-1f)*sc+.04f+.45f+(ClassSystem.Bloodline(p)?ClassSystem.BloodlineBonus:0f),next=ClassLevelInfo.PowerWith(p,h,ip,S,ClassLevelInfo.NextAdventurerLevel(h));
+    bool plain=Near(mod,4f) && Near(tm,1f) && Near(sc,1f) && !ClassSystem.Bloodline(p);string tip=ClassLevelInfo.ClassTip(p,h,S),expl=part.ExplanationPart(StatRequest.For(p));
+    Check(part!=null && Near(part.abilityPer,.1f) && Near(part.LevelPer,.05f) && Near(part.LevelMax,.95f) && div!=null && Near(div.abilityPer,.05f) && Near(div.LevelPer,.02f)
+     && Near(v,want) && (!plain || Near(v,1.99f)) && Near(next-v,.05f) && tip.Contains(ip.LabelCap+" +5%") && tip.Contains("最多 +95%") && expl.Contains("×10%") && expl.Contains("+5%"),
+     "[1.98.0] sorcerer 10, Social 12, CHA 18 (mod "+mod.ToString("0.##")+", talent ×"+tm.ToString("0.##")+", scale "+sc.ToString("0.##")+"): innate power ×"+v.ToString("0.00")+" (want ×"+want.ToString("0.00")+", old ×1.52), next level ×"+next.ToString("0.00")+"; divine still 5% / 2%");}
+   // 7. 1.99.0（Peter：不睡觉的种族回不了职业资源）：没有休息需求的人平时每 250 刻回上限 1/240（240 次 = 一天回满），正常人不多回；冥想调息回满；按钮只给不睡觉的人。
+   {var map=Find.CurrentMap;var M=ClassSystem.Monk;var W=Cls("Wizard");
+    Pawn Make(bool noSleep){var p=ClsPawn(8);var h=Adventurer.Get(p);ClassSystem.SetLevel(h,M,4);ClassSystem.SetLevel(h,W,4);if(noSleep)p.needs.rest=null;
+     if(map!=null)GenSpawn.Spawn(p,CellFinder.RandomClosewalkCellNear(map.Center,map,10),map);h.classes.res[M]=0f;h.classes.res[W]=0f;return p;}
+    var ns=Make(true);var nm=Make(false);var hns=Adventurer.Get(ns);var hnm=Adventurer.Get(nm);
+    bool calm=ClassRestless.Calm(ns);for(int i=0;i<ClassRestless.TrickleDiv/4;i++){ClassRestless.Tick250(hns);ClassRestless.Tick250(hnm);}
+    float qk=ClassSystem.Resource(hns,M),qm=ClassSystem.Resource(hns,W),kMax=ClassSystem.MaxResource(hns,M),mMax=ClassSystem.MaxResource(hns,W);
+    for(int i=0;i<ClassRestless.TrickleDiv;i++)ClassRestless.Tick250(hns);
+    bool full=Near(ClassSystem.Resource(hns,M),kMax) && Near(ClassSystem.Resource(hns,W),mMax),normal=Near(ClassSystem.Resource(hnm,M),0f) && Near(ClassSystem.Resource(hnm,W),0f);
+    hns.classes.res[M]=0f;hns.classes.res[W]=0f;ClassRestless.Refill(hns);bool refill=Near(ClassSystem.Resource(hns,M),kMax) && Near(ClassSystem.Resource(hns,W),mMax);
+    bool gz=ns.GetGizmos().OfType<Command_Action>().Any(g=>g.defaultLabel=="冥想调息"),gzN=nm.GetGizmos().OfType<Command_Action>().Any(g=>g.defaultLabel=="冥想调息");
+    ns.drafter.Drafted=true;bool draftedStop=!ClassRestless.Calm(ns);ns.drafter.Drafted=false;
+    if(ns.Spawned)ns.DeSpawn();if(nm.Spawned)nm.DeSpawn();
+    Check(map!=null && ClassRestless.NoSleep(ns) && !ClassRestless.NoSleep(nm) && calm && Near(qk,kMax/4f) && Near(qm,mMax/4f) && full && normal && refill && gz && !gzN && draftedStop && ClassRestless.AttuneJob!=null,
+     "[1.99.0] no-sleep pawn: 6 h → ki "+qk.ToString("0.##")+"/"+kMax+", mana "+qm.ToString("0.##")+"/"+mMax+" (want 1/4), a day → full "+full+"; sleeping-race pawn unchanged "+normal+"; attune refills "+refill+"; gizmo only for no-sleep "+gz+"/"+gzN+"; drafted stops "+draftedStop);}
   }
  }
 }

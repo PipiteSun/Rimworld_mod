@@ -250,8 +250,8 @@ namespace LichPhylactery {
   public static float forcedScale=-1f;
   public static float PartHealthFactor(Pawn p){var h=Get(p);if(h==null || Legendary.Is(p))return 1f;return h.PartFactor(forcedScale>=0f?forcedScale:EffectScale)*Legend.HealthFactor(h)*Feats.ToughFactor(h);} // 1.50.0 传奇属性点“血量”相乘；1.67.0 坚韧
   // 职业强度：0.05 × 主属性有效调整值（乘属性效果强度；1.81.0 热修3 照 5e 的施法调整值，智力 20 = +0.25）+ 0.02 ×（熟练加值 − 2）。
-  // 1.97.0（Peter）：奥术强度的智力项每点调整值 10%（StatPart_ClassPower.abilityPer），其他强度仍 5%。
-  public const float ClassAbilityPer=.05f,ArcaneAbilityPer=.1f;
+  // 1.97.0（Peter）：奥术强度的智力项每点调整值 10%（StatPart_ClassPower.abilityPer），其他强度仍 5%。1.98.0：天赋强度的魅力项同样 10%。
+  public const float ClassAbilityPer=.05f,ArcaneAbilityPer=.1f,InnateAbilityPer=.1f;
   public static float ClassPowerBonus(Pawn p,int ability)=>ClassPowerBonus(p,ability,ClassAbilityPer);
   public static float ClassPowerBonus(Pawn p,int ability,float per){
    if(!Enabled || ability<0)return 0f;var h=Get(p);if(h==null)return 0f;
@@ -748,6 +748,7 @@ namespace LichPhylactery {
    if(skills!=null)Row(skills+"学习",X(Mathf.Max(Adventurer.LearnMin,Fx(a,s))));
    Row("职业强度（主属性）",Pct(Adventurer.ClassPowerBonus(pawn,a)-Adventurer.ProfClassPer*Math.Max(0,Proficiency-2)));
    if(a==Adventurer.Int)Row("奥术强度（智力）",Pct(Adventurer.ClassPowerBonus(pawn,a,Adventurer.ArcaneAbilityPer)-Adventurer.ProfClassPer*Math.Max(0,Proficiency-2)));
+   if(a==Adventurer.Cha)Row("天赋强度（魅力）",Pct(Adventurer.ClassPowerBonus(pawn,a,Adventurer.InnateAbilityPer)-Adventurer.ProfClassPer*Math.Max(0,Proficiency-2)));
    return rows;
   }
   // 纯文本版（自检、复制用）：每行“效果名 值”。

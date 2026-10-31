@@ -199,7 +199,7 @@ namespace LichPhylactery {
    // 9. 主动能力都能放（不报错）：千军破、流星爆、自然之怒、魔力奔流、战争傀儡、神迹干预、神圣化身。
    var errors=new List<string>();int ran=0;var caster=ClsPawn(30,12,12);GenSpawn.Spawn(caster,altar.InteractionCell+IntVec3.West*4,map);var e1=AdvPawn(null,AdvEnemy);GenSpawn.Spawn(e1,caster.Position+IntVec3.West,map);
    foreach(var n in new[]{"LP_LegThousandArmies","LP_LegMeteorSwarm","LP_LegNatureWrath","LP_LegArcaneSurge","LP_LegWarGolem","LP_LegDivineIntervention","LP_LegDivineIncarnation"}){
-    var free=CellFinder.RandomClosewalkCellNear(caster.Position,map,4,c=>c!=caster.Position && c.GetFirstPawn(map)==null && c.GetEdifice(map)==null && c.Standable(map));var far=CellFinder.RandomClosewalkCellNear(caster.Position+IntVec3.West*16,map,3);
+    var free=CellFinder.RandomClosewalkCellNear(caster.Position,map,4,c=>c!=caster.Position && c.GetFirstPawn(map)==null && c.GetEdifice(map)==null && c.Standable(map));var far=CellFinder.RandomClosewalkCellNear((caster.Position+IntVec3.West*16).ClampInsideMap(map),map,3); // 1.99.0：施法者靠西边时这一格会出界（日志 ThingsListAt out of bounds）
     try{var tgt=n=="LP_LegWarGolem"?new LocalTargetInfo(free):n=="LP_LegMeteorSwarm" || n=="LP_LegNatureWrath"?new LocalTargetInfo(far):new LocalTargetInfo(e1.Position);ClassEffects.Apply(caster,Ab(n),Fx(n),tgt);ran++;}
     catch(Exception ex){errors.Add(n+": "+ex.GetType().Name+" "+ex.Message);}
    }

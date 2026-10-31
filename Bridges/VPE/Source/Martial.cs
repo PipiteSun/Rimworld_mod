@@ -73,7 +73,8 @@ namespace LichPhylactery.VPEBridge {
  public static class HideMovedPaths {
   static MethodBase TargetMethod()=>AccessTools.Constructor(AccessTools.TypeByName("VanillaPsycastsExpanded.UI.ITab_Pawn_Psycasts")??AccessTools.TypeByName("VanillaPsycastsExpanded.ITab_Pawn_Psycasts"),Type.EmptyTypes);
   // 1.73.0：八条都隐藏后“DND职业”页签空了，连页签一起拿掉。
-  static void Postfix(object __instance){
+  public static Type TabType=>AccessTools.TypeByName("VanillaPsycastsExpanded.UI.ITab_Pawn_Psycasts")??AccessTools.TypeByName("VanillaPsycastsExpanded.ITab_Pawn_Psycasts");
+  public static void Postfix(object __instance){
    var tr=Traverse.Create(__instance);
    var dict=tr.Field("pathsByTab").GetValue<Dictionary<string,List<PsycasterPathDef>>>();if(dict==null)return;
    foreach(var list in dict.Values)list.RemoveAll(ClassMigration.Hidden);

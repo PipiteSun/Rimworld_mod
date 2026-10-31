@@ -234,7 +234,9 @@ namespace LichPhylactery {
    y=DrawExalted(y,w,h); // 1.59.0 超凡
    if(Adventurer.EffectsHandedToIsekai){Grey(ref y,w,"六维的数值效果已交给 Isekai（设置“Isekai 共存模式”）；等级、加点、专长、恩赐、熟练加值照常");}
    else if(Adventurer.EffectScale<=0f){Grey(ref y,w,"属性效果强度 0%：六维没有数值效果");}
-   else{Widgets.Label(new Rect(0f,y,w,24f),"部位生命 +"+((h.PartFactor(Adventurer.EffectScale)-1f)*100f).ToString("0.#")+"%（等级与体质）");y+=Row;}
+   else{ // 1.99.0（Peter）：和属性页“部位生命合计”同一个数（含坚韧、传奇血量），以前只算等级与体质
+    float tough=Feats.ToughFactor(h),leg=Legend.HealthFactor(h);
+    Widgets.Label(new Rect(0f,y,w,24f),"部位生命合计 +"+((Adventurer.PartHealthFactor(h.pawn)-1f)*100f).ToString("0.#")+"%（等级、体质"+(Math.Abs(tough-1f)>.0001f?"、坚韧":"")+(Math.Abs(leg-1f)>.0001f?"、传奇血量":"")+"）");y+=Row;}
    // 1.49.0 史诗恩赐
    if(h.boons.Count>0){
     var r=new Rect(0f,y,w,24f);

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.99.0：不睡觉的种族（巫妖、构装体等）的“冥想调息”：原地静坐 2 小时，职业资源回满。 -->
+<Defs>
+  <JobDef>
+    <defName>LP_Attune</defName>
+    <driverClass>LichPhylactery.JobDriver_Attune</driverClass>
+    <reportString>正在冥想调息。</reportString>
+    <casualInterruptible>false</casualInterruptible>
+    <suspendable>false</suspendable>
+  </JobDef>
+</Defs>

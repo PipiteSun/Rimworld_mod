@@ -28,6 +28,12 @@ namespace LichPhylactery {
     bool exOn=(h.exaltedMask&1)!=0;var carry=AttributePage.Lines(h,0,AttributePage.ExtrasOf(h)).FirstOrDefault(l=>l.label=="负重");var con=AttributePage.Lines(h,2);
     Check(!Exalted.On || exOn && carry?.extra!=null && carry.extra.Contains("超凡 ×1.25"),"attribute page extras: exalted Str carry '"+carry?.extra+"' (mask "+h.exaltedMask+")");
     Check(con.Any(l=>l.label=="部位生命合计" && l.value=="×"+Adventurer.PartHealthFactor(p).ToString("0.00")) && AttributePage.Composition(h,0).Contains("有效 20") && AttributePage.MultText(h,0).Contains("×4.00"),"attribute page composition / Con total: '"+AttributePage.Composition(h,0)+"' '"+AttributePage.MultText(h,0)+"'");
+    // 5. 1.99.0（Peter：体质倍数怎么来的）：天赋写成“(1 + x × 调整值′) × 天赋”；等级成长按 1.93.0 公式（冒险者 2 级、战士 2 级 = 1 + 2 × 6% − 4% = ×1.08）
+    h.level=2;h.Dirty();ClassSystem.SetLevel(h,ClassSystem.Fighter,2);
+    var con2=AttributePage.Lines(h,2);var cp=con2.FirstOrDefault(l=>l.label=="部位生命（体质）");var lg=con2.FirstOrDefault(l=>l.label=="等级成长");var cls=con2.FirstOrDefault(l=>l.label=="职业强度（主属性）");
+    Check(cp!=null && cp.formula.StartsWith("(1 + 15% × 调整值′) × 天赋") && cp.tip.StartsWith("(1 + 15% × ") && lg!=null && lg.value=="×1.08" && lg.formula.Contains("未分配等级 × 4%") && lg.tip.Contains("2 × 6%") && !lg.tip.Contains("平均")
+     && cls!=null && cls.formula=="(1 + 5% × 调整值′) × 天赋 − 1" && AttributePage.Formula(melee).StartsWith("(1 + 10% × 调整值′) × 天赋"),
+     "[1.99.0] attribute page wording: con '"+cp?.formula+"' / '"+cp?.tip?.Replace("\n"," | ")+"', level growth "+lg?.value+" '"+lg?.formula+"' / '"+lg?.tip?.Replace("\n"," | ")+"', class '"+cls?.formula+"'");
    }finally{
     s.adventurer=oOn;Adventurer.TestSuppressed=oSup;
     foreach(var x in htMade){if(!x.Destroyed)x.Destroy();}htMade.Clear();

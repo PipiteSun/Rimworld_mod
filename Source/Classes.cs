@@ -273,7 +273,9 @@ namespace LichPhylactery {
    if(amount>0f)amount*=ClassFeats.GainFactor(h,c); // 1.88.0 职业专属专长：资源获取
    float cur=Resource(h,c),next=Mathf.Clamp(cur+amount,0f,max);h.classes.res[PoolKey(c)]=next;return next-cur;
   }
-  public static string ResourceTip(LP_ClassDef c){
+  // 1.99.0：靠睡觉恢复的资源补一句不睡觉种族的恢复方式（ClassRestless）。
+  public static string ResourceTip(LP_ClassDef c){var s=ResourceTipBase(c);var r=c?.resource;return r==ClassResource.Fury || r==ClassResource.Ki || r==ClassResource.Grace || r==ClassResource.Mana || r==ClassResource.Pact?s+"不需要睡觉的种族：不在战斗中、未征召时每 6 小时回上限的 1/4，或用“冥想调息”原地静坐 2 小时回满。":s;}
+  static string ResourceTipBase(LP_ClassDef c){
    switch(c?.resource){
     case ClassResource.Fury:return "斗志：命中敌对、未倒地的目标 +"+(Martial.FuryHit*Martial.FuryResourcePer).ToString("0.##")+"，击杀敌人 +"+(Martial.FuryKill*Martial.FuryResourcePer).ToString("0.##")+"（每人每游戏小时最多 +"+(Martial.FuryCap*Martial.FuryResourcePer).ToString("0.#")+"）；睡觉时每 250 刻 +"+SleepRegen+"。有心灵链接时照旧另加精神力。";
     case ClassResource.Ki:return "气：冥想时每 250 刻 +"+MeditateRegen+"，睡觉时每 250 刻 +"+SleepRegen+"。";
@@ -314,6 +316,7 @@ namespace LichPhylactery {
    var p=h.pawn;if(p==null)return;
    if(d.table<TableVersion)Regrant(h); // 1.87.0 新等级表（老存档补一次）
    Regen(h);
+   ClassRestless.Tick250(h); // 1.99.0 不睡觉的种族：平时慢慢回（代替睡觉）
    Warlock.Tick250(h); // 邪术师：短休回满契约法力、被动
    if((d.syncAcc+=1)>=4){d.syncAcc=0;Sync(h);}
    Martial.Refresh(p);
