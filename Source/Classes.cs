@@ -122,6 +122,13 @@ namespace LichPhylactery {
   public static int Points(Hediff_Adventurer h)=>h==null?0:Mathf.Max(0,Budget(h)-Total(h));
   public static int Points(Pawn p)=>Points(Adventurer.Get(p));
   public static bool Any(Pawn p)=>Data(p)?.Any==true;
+  // 1.90.0 会施法的职业：施法职业（法师、牧师、德鲁伊、术士、邪术师）、圣武士（神术）、器械师，或诡术师子职业。专长“战争施法者”等的前置用它。
+  public const string SpellcasterText="施法职业（法师、牧师、德鲁伊、术士、邪术师、圣武士、器械师或诡术师）";
+  public static bool Spellcaster(Pawn p){
+   var h=Adventurer.Get(p);if(h?.classes==null || h.classes.levels.Count==0)return false;
+   foreach(var kv in h.classes.levels)if(kv.Value>0 && kv.Key!=null && (kv.Key.caster || kv.Key==Paladin || kv.Key.defName=="LP_Class_Artificer"))return true;
+   return ClassSubclass.ManaMax(h)>0;
+  }
   public static IEnumerable<LP_ClassDef> Taken(Hediff_Adventurer h)=>h?.classes==null?Enumerable.Empty<LP_ClassDef>():All.Where(c=>Level(h,c)>0);
   public static int Skill(Pawn p,SkillDef s){if(p?.skills==null || s==null)return 0;var r=p.skills.GetSkill(s);return r==null || r.TotallyDisabled?0:r.Level;}
   // 主属性（LP_ClassDef.primary）：几项里取当前较高的一项。
@@ -150,7 +157,9 @@ namespace LichPhylactery {
   }
 
   // ---------- 加点 ----------
-  public static string GateText(LP_ClassDef c,int taken,Pawn p=null){int b=GateBonus(c,p);return taken==0?"需要"+c.SkillText+" "+(FirstSkill-b)+" 级（或"+Adventurer.Names[DefaultAbility(c)]+" "+ScoreGate+"）":"兼修需要冒险者 "+MultiAdventurerLevel+" 级，且"+c.SkillText+" "+(MultiSkill-b)+" 级（或"+Adventurer.Names[DefaultAbility(c)]+" "+ScoreGate+"）";}
+  // 1.90.0：主属性写全（“力量或敏捷 13”），ScoreOk 本来就取较高的一项。
+  public static string PrimaryText(LP_ClassDef c){var l=c==null || c.primary.NullOrEmpty()?new List<int>():c.primary.Split('/').Select(s=>Adventurer.AbilityIndex(s)).Where(i=>i>=0).Distinct().ToList();if(l.Count==0)l.Add(DefaultAbility(c));return string.Join("或",l.Select(i=>Adventurer.Names[i]));}
+  public static string GateText(LP_ClassDef c,int taken,Pawn p=null){int b=GateBonus(c,p);return taken==0?"需要"+c.SkillText+" "+(FirstSkill-b)+" 级（或"+PrimaryText(c)+" "+ScoreGate+"）":"兼修需要冒险者 "+MultiAdventurerLevel+" 级，且"+c.SkillText+" "+(MultiSkill-b)+" 级（或"+PrimaryText(c)+" "+ScoreGate+"）";}
   public static bool GateOk(Hediff_Adventurer h,LP_ClassDef c,int taken){
    var p=h.pawn;bool skill=c.SkillLevel(p)>=(taken==0?FirstSkill:MultiSkill)-GateBonus(c,p) || ScoreOk(c,p);
    return taken==0?skill:h.level>=MultiAdventurerLevel && skill;
@@ -347,14 +356,17 @@ namespace LichPhylactery {
 
   // ---------- 物理职业的强度加成（取代 1.53.0 的 VPE 灵能等级加成） ----------
   public const float MartialPer=.02f,MartialMax=.4f;
-  public static float MartialBonusFor(int total)=>Mathf.Clamp(MartialPer*(total-1),0f,MartialMax);
+  public static float MartialBonusFor(int total)=>LevelBonusFor(total,MartialPer,MartialMax);
+  public static float LevelBonusFor(int total,float per,float max)=>Mathf.Clamp(per*(total-1),0f,max);
   public static float MartialBonus(Pawn p,SkillDef s)=>s==SkillDefOf.Melee || s==SkillDefOf.Shooting?Martial.Bonus(p):0f;
   // 1.73.0 施法职业：用这门技能当主 / 副技能的职业等级合计每比 1 高 1 级 +2%，最多 +40%（格斗、射击仍按物理职业合计）。
-  public static float ClassBonus(Pawn p,SkillDef s){
+  // 1.97.0：每级比例与上限可按强度属性设（StatPart_ClassPower.levelPer / levelMax；奥术强度 5%、95%）。
+  public static float ClassBonus(Pawn p,SkillDef s)=>ClassBonus(p,s,MartialPer,MartialMax);
+  public static float ClassBonus(Pawn p,SkillDef s,float per,float max){
    if(s==SkillDefOf.Melee || s==SkillDefOf.Shooting)return Martial.Bonus(p);
    var h=Adventurer.Get(p);if(h?.classes==null || h.classes.levels.Count==0 || s==null)return 0f;int n=0;
    foreach(var kv in h.classes.levels)if(kv.Key.mainSkill==s || kv.Key.alternateSkill==s)n+=kv.Value;
-   return MartialBonusFor(n);
+   return LevelBonusFor(n,per,max);
   }
   public static int ClassBonusLevels(Pawn p,SkillDef s){var h=Adventurer.Get(p);int n=0;if(h?.classes!=null)foreach(var kv in h.classes.levels)if(kv.Key.mainSkill==s || kv.Key.alternateSkill==s)n+=kv.Value;return n;}
   // 魔涌期间术士法术不耗法力。
@@ -399,12 +411,21 @@ namespace LichPhylactery {
  // 职业强度属性（战技 / 射术 / 神恩强度）：0.5 + 技能/20 + 冒险者主属性 + 物理职业加成。
  public class StatPart_ClassPower : StatPart {
   public SkillDef skill,alternateSkill;public string ability; // 新职业：副技能（取较高）、指定属性
-  public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p)val=ClassSystem.Power(p,skill,alternateSkill,ability)+ClassFeats.PowerBonus(p,parentStat);} // 1.88.0 职业专属专长
+  // 1.97.0：每个强度属性自己的比例（默认 = 原来的 2% / 40% / 5%；奥术强度 5% / 95% / 10%）。格斗、射击的职业等级项仍走物理职业合计。
+  public float levelPer=ClassSystem.MartialPer,levelMax=ClassSystem.MartialMax,abilityPer=Adventurer.ClassAbilityPer;
+  bool MartialSkill=>skill==SkillDefOf.Melee || skill==SkillDefOf.Shooting;
+  public float LevelPer=>MartialSkill?ClassSystem.MartialPer:levelPer;
+  public float LevelMax=>MartialSkill?ClassSystem.MartialMax:levelMax;
+  public float LevelBonusFor(int total)=>ClassSystem.LevelBonusFor(total,LevelPer,LevelMax);
+  public float AbilityBonus(Pawn p)=>p==null?0f:Adventurer.ClassPowerBonus(p,ClassSystem.PowerAbility(p,skill,ability),abilityPer);
+  public float LevelBonus(Pawn p)=>ClassSystem.ClassBonus(p,skill,levelPer,levelMax);
+  public float Value(Pawn p)=>ClassSystem.Power(ClassSystem.PowerSkill(p,skill,alternateSkill))+AbilityBonus(p)+LevelBonus(p);
+  public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p)val=Value(p)+ClassFeats.PowerBonus(p,parentStat);} // 1.88.0 职业专属专长
   public override string ExplanationPart(StatRequest req){
-   if(!(req.Thing is Pawn p))return null;int l=ClassSystem.PowerSkill(p,skill,alternateSkill);float a=Adventurer.ClassPowerBonus(p,ClassSystem.PowerAbility(p,skill,ability)),v=ClassSystem.ClassBonus(p,skill);
+   if(!(req.Thing is Pawn p))return null;int l=ClassSystem.PowerSkill(p,skill,alternateSkill);float a=AbilityBonus(p),v=LevelBonus(p);
    var sk=alternateSkill!=null && ClassSystem.Skill(p,alternateSkill)>ClassSystem.Skill(p,skill)?alternateSkill:skill;
-   return sk.LabelCap+" "+l+" 级：0.5 + "+l+"/20 = "+ClassSystem.Power(l).ToStringPercent()+(a!=0f?"\n冒险者（主属性调整值 ×5% 与熟练加值）："+(a>0f?"+":"")+a.ToStringPercent():"")
-    +(v!=0f?"\n"+(skill==SkillDefOf.Melee || skill==SkillDefOf.Shooting?"物理职业等级 "+(Martial.Info(p)?.total??0):"相关职业等级 "+ClassSystem.ClassBonusLevels(p,skill))+"：+"+v.ToStringPercent():"")
+   return sk.LabelCap+" "+l+" 级：0.5 + "+l+"/20 = "+ClassSystem.Power(l).ToStringPercent()+(a!=0f?"\n冒险者（主属性调整值 ×"+(abilityPer*100f).ToString("0")+"% 与熟练加值）："+(a>0f?"+":"")+a.ToStringPercent():"")
+    +(v!=0f?"\n"+(MartialSkill?"物理职业等级 "+(Martial.Info(p)?.total??0):"相关职业等级 "+ClassSystem.ClassBonusLevels(p,skill))+"（每比 1 高 1 级 +"+(LevelPer*100f).ToString("0")+"%，最多 +"+(LevelMax*100f).ToString("0")+"%）：+"+v.ToStringPercent():"")
     +ClassFeats.PowerText(p,parentStat);
   }
  }

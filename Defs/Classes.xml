@@ -108,22 +108,22 @@
   <StatDef ParentName="LP_ClassPowerBase">
     <defName>LP_MartialPower</defName>
     <label>战技强度</label>
-    <description>DND 战技的强度倍率：0.5 + 格斗等级/20，另加冒险者力量或敏捷（较高者）调整值 × 0.04 与 (熟练加值 − 2) × 0.02。有物理职业（战士、武僧、圣武士）的人另加 0.02 ×（物理职业等级合计 − 1），最多 +40%。回气治疗量、战吼范围、增益持续时间、武僧拳脚与气、圣武士格斗支都乘这个倍率。</description>
+    <description>DND 战技的强度倍率：0.5 + 格斗等级/20，另加冒险者力量或敏捷（较高者）调整值 × 0.05 与 (熟练加值 − 2) × 0.02。有物理职业（战士、武僧、圣武士、野蛮人、游侠、游荡者）的人另加 0.02 ×（物理职业等级合计 − 1），最多 +40%。回气治疗量、战吼范围、增益持续时间、武僧拳脚与气、圣武士格斗支都乘这个倍率。</description>
     <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Melee</skill></li></parts>
     <displayPriorityInCategory>4210</displayPriorityInCategory>
   </StatDef>
   <StatDef ParentName="LP_ClassPowerBase">
     <defName>LP_MarksmanPower</defName>
     <label>射术强度</label>
-    <description>DND 战士射击支的强度倍率：0.5 + 射击等级/20，另加冒险者敏捷调整值 × 0.04 与 (熟练加值 − 2) × 0.02；有物理职业的人另加 0.02 ×（物理职业等级合计 − 1），最多 +40%。</description>
+    <description>DND 战士射击支的强度倍率：0.5 + 射击等级/20，另加冒险者敏捷调整值 × 0.05 与 (熟练加值 − 2) × 0.02；有物理职业的人另加 0.02 ×（物理职业等级合计 − 1），最多 +40%。</description>
     <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Shooting</skill></li></parts>
     <displayPriorityInCategory>4213</displayPriorityInCategory>
   </StatDef>
   <StatDef ParentName="LP_ClassPowerBase">
     <defName>LP_DivinePower</defName>
     <label>神恩强度</label>
-    <description>神术的强度倍率：0.5 + 社交等级/20，另加冒险者魅力调整值 × 0.04 与 (熟练加值 − 2) × 0.02。圣武士的社交支（圣疗、守护灵光、放逐邪恶）用它；装了 VPE 时牧师神术也用它。</description>
-    <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Social</skill></li><li Class="LichPhylactery.StatPart_LegendaryClassPower"><ability>LP_LegDivineGuardian</ability><bonus>0.2</bonus></li></parts>
+    <description>神术的强度倍率：0.5 + 社交等级/20，另加冒险者感知或魅力（取较高，牧师看感知、圣武士看魅力）的调整值 × 0.05 与 (熟练加值 − 2) × 0.02。牧师的神术和圣武士的社交支（圣疗、守护灵光、放逐邪恶）用它。</description>
+    <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Social</skill><ability>Wis/Cha</ability></li><li Class="LichPhylactery.StatPart_LegendaryClassPower"><ability>LP_LegDivineGuardian</ability><bonus>0.2</bonus></li></parts>
     <displayPriorityInCategory>4212</displayPriorityInCategory>
   </StatDef>
 

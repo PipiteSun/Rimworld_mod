@@ -104,7 +104,7 @@ namespace LichPhylactery {
  public class ScenPart_TwilightHunter : ScenPart {
   public int skill=12,twilightDay=3;public float sensitivity=1.1f;
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref skill,"skill",12);Scribe_Values.Look(ref twilightDay,"twilightDay",3);Scribe_Values.Look(ref sensitivity,"sensitivity",1.1f);}
-  public override string Summary(Scenario scen)=>"首领是人物页第一位的老兵：射击或格斗（取较高的一项）至少"+skill+"级，心灵敏感度至少"+sensitivity.ToStringPercent()+"。第"+twilightDay+"天黄昏之年必定开始（不受“第2年起”的限制，持续时间照设置）。";
+  public override string Summary(Scenario scen)=>"首领是人物页第一位的老兵：射击或格斗（取较高的一项）至少"+skill+"级，心灵敏感度至少"+sensitivity.ToStringPercent()+"。第"+twilightDay+"天黄昏之年必定开始（持续时间照设置）。";
   public override void PostGameStart(){var map=Find.AnyPlayerHomeMap;if(map!=null)Apply(ScenEdit.Starters(map).ToList());}
   public Pawn Apply(List<Pawn> pawns){
    var vet=AscensionStart.Leader(pawns,p=>!p.WorkTagIsDisabled(WorkTags.Violent));if(vet==null)return null;

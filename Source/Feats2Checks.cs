@@ -81,7 +81,7 @@ namespace LichPhylactery {
     // 16. 矮人坚毅：每天第一次喝酒治 15 点伤
     hd.AddFeat(dwf);var cut=HediffMaker.MakeHediff(HediffDefOf.Cut,dwarf,dwarf.RaceProps.body.corePart);cut.Severity=20f;dwarf.health.AddHediff(cut);
     var beer=ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("Beer"));beer.Ingested(dwarf,0f);float sev=dwarf.health.hediffSet.hediffs.OfType<Hediff_Injury>().Sum(x=>x.Severity);
-    Check(Near(sev,0f) && dwarf.GetStatValue(StatDefOf.ToxicResistance)>=.5f,"矮人坚毅: the first beer of the day heals 40 points (20 → "+sev+"), toxic resistance +50%");
+    Check(Near(sev,0f) && dwarf.GetStatValue(StatDefOf.ToxicResistance)>=.5f,"矮人坚毅: the first beer of the day heals 60 points (20 → "+sev+"), toxic resistance +50%");
     // 17. 好运连连：冷却 2 天，3 格内一个友军得到“借来的好运”
     var hl=HtPawn("LP_HalflingLightfoot",null,true,-4,0);F2Adv(hl).AddFeat(FD("LP_Feat_BountifulLuck"));var buddy=HtPawn(null,null,true,-3,0);
     var cdh=OncePerCooldown.StartCooldown(hl,DefDatabase<GeneDef>.GetNamed("LP_HalflingLuck"));int left=cdh.TryGetComp<HediffComp_Disappears>()?.ticksToDisappear??0;
@@ -96,6 +96,9 @@ namespace LichPhylactery {
     var troll=HtPawn("LP_Troll");F2Adv(troll).AddFeat(FD("LP_Feat_BloodRegen"));var cut2=HediffMaker.MakeHediff(HediffDefOf.Cut,troll,troll.RaceProps.body.corePart);cut2.Severity=40f;troll.health.AddHediff(cut2);
     Feats2.Killed(troll,HeroTraits.Info(troll),true);float tsev=troll.health.hediffSet.hediffs.OfType<Hediff_Injury>().Sum(x=>x.Severity);
     Check(ef>=1.15f-.001f && ef<=1.15f*1.1f+.001f && Near(tsev,0f) && Feats2.BloodRegenHeal==60,"精灵精准: aim ×"+ef.ToString("0.###")+"; 嗜血再生: a melee kill heals up to 60 (40 → "+tsev+")");
+    // 20. 1.92.0 弱专长加强：抗毒免疫毒素累积、免疫 ×2、妖精之触心智抗性、炼狱之怒随等级、矮人治 60
+    float BuffOff(string d,string s)=>FD(d).statOffsets?.GetStatOffsetFromList(DefDatabase<StatDef>.GetNamed(s))??0f;float BuffFac(string d,string s)=>FD(d).statFactors?.GetStatFactorFromList(DefDatabase<StatDef>.GetNamed(s))??1f;
+    Check(Near(BuffOff("LP_Feat_Resilient_Toxic","ToxicResistance"),1f) && Near(BuffFac("LP_Feat_Resilient_Immune","ImmunityGainSpeed"),2f) && Near(BuffOff("LP_Feat_FeyTouched","LP_MindResist"),.2f) && Near(BuffOff("LP_Feat_DwarvenFortitude","ToxicResistance"),.7f) && Feats2.DwarfHeal==60 && FD("LP_Feat_InfernalWrath").description.Contains("冒险者等级"),"1.92.0 buffs: 抗毒 toxic +100%, 免疫 ×2, 妖精之触 mind resist +20%, 矮人坚毅 toxic +70% / heal 60, 炼狱之怒 scales with level");
    }finally{
     s.adventurer=oOn;s.originFeats=oOrigin;Feats2.TestRoll=null;Feats2.TestSuppressed=oF2;
     foreach(var p in htMade){if(p.Dead && p.Corpse!=null && !p.Corpse.Destroyed)p.Corpse.Destroy();else if(!p.Destroyed)p.Destroy();}htMade.Clear();

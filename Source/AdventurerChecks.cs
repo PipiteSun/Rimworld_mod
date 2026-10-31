@@ -94,16 +94,16 @@ namespace LichPhylactery {
     float str24=c.GetStatValue(melee),carry24=c.GetStatValue(StatDefOf.CarryingCapacity);int eff24=hc.Eff(Adventurer.Str);
     hc.boons.Remove(Epic.Might);hc.mightAbility=-1;hc.scores[Adventurer.Str]=10;hc.Dirty();
     Check(eff24==24 && Near(str24/baseMelee,1.7f) && carry24/carry1>=7f-.01f,"Str 24 → melee damage ×1.7 (linear) and carrying capacity at least ×7 (超凡 adds its own carry factor) of Str 10 ("+(str24/baseMelee).ToString("0.##")+" / "+(carry24/carry1).ToString("0.##")+")");
-    // 部位生命：5 级、体质 14 → (1 + 4×5%) × 1.3 = ×1.56（1.81.0 每级 +5%；热修3 体质每点调整值 +15%）
+    // 部位生命：5 级、体质 14、无职业 → (1 + 5×4% − 4%) × 1.3 = ×1.508（1.93.0 未分配等级 4%；热修3 体质每点调整值 +15%）
     hc.level=5;hc.scores[Adventurer.Con]=14;hc.Dirty();var torso=c.RaceProps.body.corePart;
     float withAdv=PartHealth.Maximum(torso,c);Adventurer.forcedScale=0f;float without=PartHealth.Maximum(torso,c);Adventurer.forcedScale=-1f;
-    Check(Near(Adventurer.PartHealthFactor(c),1.56f) && Math.Abs(withAdv-Mathf.Ceil(without*1.56f))<=1f,"level 5 Con 14 → part health ×1.56 = 1.2 × 1.3 ("+without+" → "+withAdv+")");
-    // 1.81.0 热修2：部位生命成长按职业（野蛮人 4 + 未分配 1 → (1+(4×7%+5%)/5×4)×1.3；法师 4 → 4%）
+    Check(Near(Adventurer.PartHealthFactor(c),1.16f*1.3f) && Math.Abs(withAdv-Mathf.Ceil(without*1.16f*1.3f))<=1f,"level 5 Con 14 → part health ×1.508 = 1.16 × 1.3 ("+without+" → "+withAdv+")");
+    // 1.81.0 热修2：部位生命成长按职业；1.93.0 = Σ 职业等级成长 + 未分配 × 4% − 4%（野蛮人 4 + 未分配 1 → (1+4×7%)×1.3；法师 4 + 未分配 1 → (1+4×4%)×1.3）
     {if(hc.classes==null)hc.classes=new ClassData();var barb=DefDatabase<LP_ClassDef>.GetNamedSilentFail("LP_Class_Barbarian");var wiz=DefDatabase<LP_ClassDef>.GetNamedSilentFail("LP_Class_Wizard");
      hc.classes.levels.Clear();if(barb!=null)hc.classes.levels[barb]=4;hc.Dirty();float fb=Adventurer.PartHealthFactor(c);
      hc.classes.levels.Clear();if(wiz!=null)hc.classes.levels[wiz]=4;hc.Dirty();float fw=Adventurer.PartHealthFactor(c);
      hc.classes.levels.Clear();hc.Dirty();
-     Check(barb!=null && wiz!=null && Near(fb,(1f+(4f*.07f+.05f)/5f*4f)*1.3f) && Near(fw,(1f+(4f*.04f+.05f)/5f*4f)*1.3f),"part health growth follows class hit dice: level 5 Con 14 Barbarian 4 → ×1.643, Wizard 4 → ×1.518 ("+fb.ToString("0.###")+" / "+fw.ToString("0.###")+")");}
+     Check(barb!=null && wiz!=null && Near(fb,1.28f*1.3f) && Near(fw,1.16f*1.3f),"part health growth follows class hit dice: level 5 Con 14 Barbarian 4 → ×1.664, Wizard 4 → ×1.508 ("+fb.ToString("0.###")+" / "+fw.ToString("0.###")+")");}
     // 1.81.0：等级每级近战命中 / 闪避 +1%（最终几率补丁，到 20 级）；亲和只放大正的调整值（擅长力量 18 = ×1.6）
     var dodgeM=AccessTools.Method(typeof(Verb_MeleeAttack),"GetDodgeChance");var dodgeP=dodgeM==null?null:Harmony.GetPatchInfo(dodgeM);
     bool dodgePatched=dodgeP!=null && dodgeP.Postfixes.Any(x=>x.PatchMethod.DeclaringType==typeof(AdventurerMeleeDodge));

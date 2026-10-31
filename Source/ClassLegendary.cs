@@ -41,7 +41,7 @@ namespace LichPhylactery {
    if(CanLearn(h,c,d)!=null)return false;
    h.classes.legendaryPoints--;h.classes.legendary.Add(d);
    if(h.pawn?.abilities!=null && h.pawn.abilities.GetAbility(d)==null)h.pawn.abilities.GainAbility(d);
-   if(c.resource!=ClassResource.None)ClassSystem.AddResource(h,c,ResourceBonus); // 新的上限那 2 点直接补上
+   if(c.resource!=ClassResource.None){var key=ClassSystem.PoolKey(c);h.classes.res[key]=Mathf.Min(ClassSystem.Resource(h,c)+ResourceBonus,ClassSystem.MaxResource(h,c));} // 新的上限那 2 点直接补上（1.90.0：不再乘职业专长的资源获取倍率）
    Passives(h);
    if(message && h.pawn?.Faction!=null && h.pawn.Faction.IsPlayer)Messages.Message(h.pawn.LabelShort+"领悟了传奇能力「"+d.label+"」（"+c.label+"）",h.pawn,MessageTypeDefOf.PositiveEvent,false);
    return true;

@@ -123,11 +123,11 @@ namespace LichPhylactery {
     for(int i=0;i<8;i++)ClassSystem.AddLevel(hs,Artificer.Class);bool l13=wrath.PawnSatisfiesSkillRequirements(smith) && ClassSystem.Knows(smith,Artificer.MountainForge);
     var plain=ClsPawn(1);foreach(var sk in DefDatabase<SkillDef>.AllDefsListForReading){var r=plain.skills.GetSkill(sk);if(!r.TotallyDisabled)r.Level=20;}s.dndWeaponsNeedArtificer=false;bool off=wrath.PawnSatisfiesSkillRequirements(plain);s.dndWeaponsNeedArtificer=true;
     Check(none && l1 && l5 && l13 && off && staff.ProducedThingDef.description.Contains("器械师 1 级"),"artificer gate: none → no; level 1 → sleep staff; level 5 → runic repeater; level 13 (山岳锻造) → mountain wrath; setting off → anyone");
-    // 5. 施法职业强度：法师 11 → 奥术强度 +0.2；法师能力乘心灵敏感度（设置开着），器械师不乘。
+    // 5. 施法职业强度：法师 11 → 奥术强度 +0.5（1.97.0 每级 5%）；法师能力乘心灵敏感度（设置开着），器械师不乘。
     var wz=ClsPawn(12);wz.skills.GetSkill(SkillDefOf.Intellectual).Level=10;var hw=Adventurer.Get(wz);for(int i=0;i<11;i++)ClassSystem.AddLevel(hw,Cls("Wizard"));
     float ap=wz.GetStatValue(DefDatabase<StatDef>.GetNamed("LP_ArcanePower"));
     var mm=DefDatabase<AbilityDef>.GetNamed("LP_MagicMissile").comps.OfType<CompProperties_ClassEffect>().First();var qr=DefDatabase<AbilityDef>.GetNamed("LP_QuickRepair").comps.OfType<CompProperties_ClassEffect>().First();
-    Check(Near(ap,ClassSystem.Power(10)+Adventurer.ClassPowerBonus(wz,Adventurer.Int)+.2f) && Near(ClassSystem.PsychicFactor(wz,mm),Mathf.Max(.2f,wz.GetStatValue(StatDefOf.PsychicSensitivity))) && Near(ClassSystem.PsychicFactor(wz,qr),1f) && HasAb(wz,"LP_LightningBolt") && HasAb(wz,"LP_WallOfStone") && !HasAb(wz,"LP_Teleport"),"wizard 11: arcane power +0.2, magic missile ×psychic sensitivity, artificer never; lightning bolt (7) and wall of stone (10), teleport (13) not yet");
+    Check(Near(ap,ClassSystem.Power(10)+Adventurer.ClassPowerBonus(wz,Adventurer.Int,Adventurer.ArcaneAbilityPer)+.5f) &&Near(ClassSystem.PsychicFactor(wz,mm),Mathf.Max(.2f,wz.GetStatValue(StatDefOf.PsychicSensitivity))) && Near(ClassSystem.PsychicFactor(wz,qr),1f) && HasAb(wz,"LP_LightningBolt") && HasAb(wz,"LP_WallOfStone") && !HasAb(wz,"LP_Teleport"),"wizard 11: arcane power +0.5 (1.97.0: 5% per level), magic missile ×psychic sensitivity, artificer never; lightning bolt (7) and wall of stone (10), teleport (13) not yet");
     // 6. 施放：治疗伤口扣 1 法力？（牧师用神恩）治好友军；器械师的快速维修不耗资源。
     GenSpawn.Spawn(pc,altar.InteractionCell+IntVec3.South*3,map);var ally=ClsPawn(1);GenSpawn.Spawn(ally,altar.InteractionCell+IntVec3.South*4,map);
     ally.TakeDamage(new DamageInfo(DamageDefOf.Cut,8f,0f,-1f,null,ally.RaceProps.body.AllParts.First(x=>x.def.defName=="Torso")));float inj=ClassMelee.InjurySum(ally);float grace=ClassSystem.Resource(hpc,Cls("Cleric"));

@@ -63,8 +63,8 @@ namespace LichPhylactery {
  }
  // 战争施法者：有 DND 职业路径（VPE 桥登记）或佩戴圣徽（神术）。
  public class FeatWorker_WarCaster : FeatWorker {
-  public override string ExtraPrereq=>"有 DND 职业路径或佩戴圣徽";
-  public override string Unmet(Pawn p,Hediff_Adventurer h)=>base.Unmet(p,h)??(Feats.IsCaster(p)?null:"需要 DND 职业路径或佩戴圣徽");
+  public override string ExtraPrereq=>"有"+ClassSystem.SpellcasterText+"或佩戴圣徽";
+  public override string Unmet(Pawn p,Hediff_Adventurer h)=>base.Unmet(p,h)??(Feats.IsCaster(p)?null:"需要"+ClassSystem.SpellcasterText+"或佩戴圣徽");
  }
  // 法术狙击：同上，没有法术可放时选它没有意义。
  public class FeatWorker_SpellSniper : FeatWorker_WarCaster {}
@@ -133,7 +133,8 @@ namespace LichPhylactery {
   // 1.53.0 VPE 桥登记：射手的瞄准系数（稳固瞄准 ×1.15、被压制 ×0.75、死神之眼 ≥ 100 = 必中且无视掩体）。
   public static Func<Pawn,float> AimHook;
   public const float MustHit=100f;
-  public static bool IsCaster(Pawn p)=>p!=null && (ClassSystem.Any(p) || HasClassHook!=null && HasClassHook(p) || Miracles.WearsSymbol(p));
+  // 1.90.0：只算会施法的职业（ClassSystem.Spellcaster）；以前学了任何职业（战士、野蛮人……）都算施法者，战争施法者、法师杀手、敌人法系类别都会误判。
+  public static bool IsCaster(Pawn p)=>p!=null && (ClassSystem.Spellcaster(p) || HasClassHook!=null && HasClassHook(p) || Miracles.WearsSymbol(p));
   // 敌人随机专长用的类别：兵种扩展的 role，主属性是智/感/魅或有法系 → caster；拿远程武器 → ranged；否则 melee。
   public static HashSet<string> EnemyRoles(Pawn p){
    var r=new HashSet<string>();var e=Adventurer.KindExt(p);
@@ -204,7 +205,8 @@ namespace LichPhylactery {
   // ---------- 神射手：射程 ×1.4，无视掩体，远程伤害 ×1.15；法术狙击：神术射程 ×1.75 ----------
   public static float RangeFactor(Verb verb,Thing attacker){
    if(!(attacker is Pawn p) || verb==null)return 1f;
-   if(verb is Verb_CastAbility ca)return ca.ability is Ability_Miracle && Has(p,SpellSniper)?SpellSniperRange:1f;
+   // 1.90.0：职业法术（Ability_Class，1.72.0 起不在 VPE 里）也算；近身（射程 ≤ 2）和借用武器射程的能力不算。
+   if(verb is Verb_CastAbility ca)return (ca.ability is Ability_Miracle || ca.ability is Ability_Class ac && ac.Props?.ranged!=true && verb.verbProps.range>2f) && Has(p,SpellSniper)?SpellSniperRange:1f;
    if(!verb.verbProps.IsMeleeAttack && verb.EquipmentSource!=null && Has(p,Sharpshooter))return SharpshooterRange;
    return 1f;
   }

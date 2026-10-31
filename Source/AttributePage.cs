@@ -92,6 +92,10 @@ namespace LichPhylactery {
    if(skills!=null)list.Add(new Line{label=skills+"学习",formula="×M，最低 ×"+N(Adventurer.LearnMin),value=X(Mathf.Max(Adventurer.LearnMin,h.Fx(a,s))),tip="技能学习速度 = 属性倍率 M = "+X(h.AMult(a))});
    float cp=Adventurer.ClassPowerBonus(h.pawn,a)-Adventurer.ProfClassPer*Math.Max(0,h.Proficiency-2);
    list.Add(new Line{label="职业强度（主属性）",formula=P(Adventurer.ClassAbilityPer)+" × 调整值′，× 天赋",value=Pct(cp),tip="以"+Adventurer.Names[a]+"为主属性的职业（施法、职业能力）强度：(1 + "+P(Adventurer.ClassAbilityPer)+" × "+N(h.AMod(a))+")"+(tm>1.0001f?" × 天赋 "+N(tm):"")+" − 1 = "+Pct(cp)+"\n熟练加值另加 "+P(Adventurer.ProfClassPer)+" ×（熟练 − 2）。"});
+   if(a==Adventurer.Int){ // 1.97.0 奥术强度的智力项 10%
+    float ap=Adventurer.ClassPowerBonus(h.pawn,a,Adventurer.ArcaneAbilityPer)-Adventurer.ProfClassPer*Math.Max(0,h.Proficiency-2);
+    list.Add(new Line{label="奥术强度（智力）",formula=P(Adventurer.ArcaneAbilityPer)+" × 调整值′，× 天赋",value=Pct(ap),tip="奥术强度（法师、术士智识支）的智力项每点调整值 "+P(Adventurer.ArcaneAbilityPer)+"：(1 + "+P(Adventurer.ArcaneAbilityPer)+" × "+N(h.AMod(a))+")"+(tm>1.0001f?" × 天赋 "+N(tm):"")+" − 1 = "+Pct(ap)+"\n器械强度等其他用智力的强度仍按 "+P(Adventurer.ClassAbilityPer)+"。"});
+   }
    return list;
   }
 

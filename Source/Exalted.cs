@@ -19,11 +19,11 @@ namespace LichPhylactery {
   public const float StrCarry=1.25f,StrMining=1.2f,StrPen=.15f,MythicPen=.3f,StaggerChance=.15f,StaggerSize=1.5f,MythicStaggerSize=3f,MythicBuilding=2f;
   public const float DexAim=.8f,DexDodge=10f,DexMove=.2f,DexShot=.85f,MythicShot=.75f,EvadeChance=.25f;
   public const float ConBleed=.7f,ConPain=.15f,BloodCap=.58f;
-  public const float IntRead=1.3f,IntEcho=.1f,MythicEcho=.2f;
+  public const float IntRead=1.5f,IntEcho=.25f,MythicEcho=.5f,MythicLearn=1.2f; // 1.92.0：原 1.3 / 10% / 20%，没有学习速度
   public const float WisFocus=1.3f,WisTend=1.1f,WisRadius=8f,MythicWisRadius=15f,PsychicHalf=.5f;
   public const float ChaTrade=.05f,ChaPersuade=1.15f,ChaRadius=10f,MythicChaRadius=15f,ChaBreak=-.03f,ChaEnemyRadius=6f,ChaEnemyHit=.08f,RoutRadius=8f,RoutChance=.15f,RepFactor=1.5f;
   public const float CostPer=.04f,MythicCostPer=.08f;
-  public const int StaggerTicks=90,HoldTicks=480,MythicHoldTicks=720,HoldPeriod=GenDate.TicksPerDay,EvadeWindow=600,ScarTicks=10*GenDate.TicksPerDay;
+  public const int StaggerTicks=90,HoldTicks=480,MythicHoldTicks=720,HoldPeriod=GenDate.TicksPerDay,EvadeWindow=600,ScarTicks=5*GenDate.TicksPerDay,MythicScarTicks=2*GenDate.TicksPerDay;
   public static readonly string[] ExaltedNames={"巨人之力","疾影","不屈之躯","洞彻心智","明察","威仪"};
   public static readonly string[] MythicNames={"撼山","无影","金刚不坏","天才","先知","君临"};
   // 神话的传奇属性点：力→近战+血量；敏→远程+近战；体→血量+承受；智→学习+工作；感→心灵+回复；魅→心灵+工作。
@@ -84,7 +84,7 @@ namespace LichPhylactery {
    if((m&1)!=0){F(f,"CarryingCapacity",StrCarry);F(f,"MiningSpeed",StrMining);}
    if((m&2)!=0){F(f,"AimingDelayFactor",DexAim);F(o,"MeleeDodgeChance",DexDodge);if(h.HasFeat(Feats.Mobile))F(o,"MoveSpeed",DexMove);} // 已有灵活：免借机攻击重叠，改为移速
    if((m&4)!=0){st.totalBleedFactor*=ConBleed;F(o,"PainShockThreshold",ConPain);}
-   if((m&8)!=0)F(f,"ReadingSpeed",IntRead);
+   if((m&8)!=0){F(f,"ReadingSpeed",IntRead);if((h.mythicMask&8)!=0)F(f,"GlobalLearningFactor",MythicLearn);}
    if((m&16)!=0){F(f,"MeditationFocusGain",WisFocus);F(f,"MedicalTendQuality",WisTend);}
    if((m&32)!=0){F(o,"TradePriceImprovement",ChaTrade);F(f,"NegotiationAbility",ChaPersuade);F(f,"ConversionPower",ChaPersuade);}
   }
@@ -107,8 +107,8 @@ namespace LichPhylactery {
    switch(a){
     case 0:return mythic?"撼山：负重 +25%、采矿 +20%；近战护甲穿透 +30%；近战命中 15% 让体型 ≤3 的目标踉跄 1.5 秒；近战打建筑 ×2；免疫踉跄和击倒类状态。":"巨人之力：负重 +25%、采矿速度 +20%；近战护甲穿透 +15%；近战命中 15% 让体型 ≤1.5 的目标踉跄 1.5 秒（移速 ×0.1、近战冷却 ×1.5）。";
     case 1:return mythic?"无影：在疾影之上，敌人射击的命中 ×0.75；每 10 秒受到的第一次近战或投射物伤害有 25% 完全落空。":"疾影：瞄准时间 −20%，近战闪避 +10；敌人射击他的命中 ×0.85；不会被哨兵借机攻击（已有“灵活”则改为移速 +0.2）。";
-    case 2:return mythic?"金刚不坏：在不屈之躯之上，硬撑每天 2 次、每次 12 秒；失血封顶在极重之前；每 10 天消除一处伤疤或旧伤。":"不屈之躯：失血速度 −30%，疼痛休克阈值 +15%；食物中毒、流感、瘟疫、疟疾、睡眠病等可致死的疾病停在致死之前；硬撑：每天一次，本该倒地时撑 8 秒再倒。";
-    case 3:return mythic?"天才：在洞彻心智之上，没有热情的技能按小热情学习；举一反三 20%。":"洞彻心智：读书、研读卷轴和典籍速度 +30%；技能不衰退；举一反三：技能升级时随机另一项技能得到这次升级所需经验的 10%。";
+    case 2:return mythic?"金刚不坏：在不屈之躯之上，硬撑每天 2 次、每次 12 秒；失血封顶在极重之前；伤疤消除加快到每 2 天一处。":"不屈之躯：失血速度 −30%，疼痛休克阈值 +15%；食物中毒、流感、瘟疫、疟疾、睡眠病等可致死的疾病停在致死之前；硬撑：每天一次，本该倒地时撑 8 秒再倒；身上有伤疤或旧伤时，每 5 天消除最重的一处。";
+    case 3:return mythic?"天才：在洞彻心智之上，全局学习速度 ×1.2；没有热情的技能按小热情学习；举一反三 50%。":"洞彻心智：读书、研读卷轴和典籍速度 +50%；技能不衰退；举一反三：技能升级时随机另一项技能得到这次升级所需经验的 25%。";
     case 4:return mythic?"先知：在明察之上，显形半径 15 格；免疫心灵震爆；敌对袭击到来时收到一封先知的预感。":"明察：冥想心灵专注 +30%，医疗品质 +10%；8 格内隐形或伪装的敌人显形；心灵震爆、夺心魔支配、魅惑等心灵效果持续时间减半。";
     default:return mythic?"君临：光环 15 格、心情 +6；他击倒或击杀敌人时，8 格内的敌方人形 15% 逃跑（首领、宿敌冠军、神力灌注 3 级以上、传奇怪物除外）；派系声望获得 ×1.5。":"威仪：交易价格 +5%，招募 / 说服 +15%；10 格内己方人形心情 +3、精神崩溃阈值 −3%；6 格内敌方人形命中 −8%。多个威仪不叠加。";
    }
@@ -149,7 +149,7 @@ namespace LichPhylactery {
    else if(m.mask!=raw || m.active!=on){m.mask=raw;m.active=on;p.health.Notify_HediffChanged(m);}
    return m;
   }
-  // 体：疾病停在致死前；神话失血停在极重前、每 10 天消除一处伤疤 / 旧伤。
+  // 体：疾病停在致死前；神话失血停在极重前；去疤（HealScar）。
   public static int CapDiseases(Hediff_Adventurer h){
    var p=h.pawn;var list=p.health.hediffSet.hediffs;int n=0;bool mythic=(h.mythicMask&4)!=0;
    for(int i=0;i<list.Count;i++){
@@ -157,12 +157,18 @@ namespace LichPhylactery {
     if(Diseases.Contains(x.def.defName) && x.def.lethalSeverity>0f){float cap=x.def.lethalSeverity-.02f;if(x.Severity>cap){x.Severity=cap;n++;}}
     else if(mythic && x.def==HediffDefOf.BloodLoss && x.Severity>BloodCap){x.Severity=BloodCap;n++;}
    }
-   if(mythic){
-    int now=GenTicks.TicksGame;
-    if(h.scarTick==int.MinValue)h.scarTick=now;
-    else if(now-h.scarTick>=ScarTicks){var scar=list.OfType<Hediff_Injury>().FirstOrDefault(i=>i.IsPermanent());if(scar!=null){p.health.RemoveHediff(scar);h.scarTick=now;Items.Mote(p,"金刚不坏",new Color(.95f,.85f,.45f));}}
-   }
+   HealScar(h,mythic);
    return n;
+  }
+  // 1.91.0 去疤：身上有伤疤 / 旧伤时计时，不屈之躯满 5 天、金刚不坏满 2 天消除最重的一处（意识形态的仪式疤痕不动）；没有伤疤时计时归零，新疤从头算。
+  public static Hediff_Injury HealScar(Hediff_Adventurer h,bool mythic){
+   var p=h.pawn;int now=GenTicks.TicksGame;Hediff_Injury scar=null;
+   foreach(var x in p.health.hediffSet.hediffs)if(x is Hediff_Injury i && i.IsPermanent() && i.def.defName!="Scarification" && (scar==null || i.Severity>scar.Severity))scar=i;
+   if(scar==null || h.scarTick==int.MinValue || now<h.scarTick){h.scarTick=now;return null;}
+   if(now-h.scarTick<(mythic?MythicScarTicks:ScarTicks))return null;
+   p.health.RemoveHediff(scar);h.scarTick=now;Items.Mote(p,mythic?"金刚不坏":"不屈之躯",new Color(.95f,.85f,.45f));
+   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"的"+(mythic?"金刚不坏":"不屈之躯")+"消除了"+(scar.Part!=null?scar.Part.LabelCap+"上的":"")+scar.LabelCap+"。",p,MessageTypeDefOf.PositiveEvent,false);
+   return scar;
   }
   // 感：外力造成的控制类精神状态剩余时间减半（每个状态一次）。
   static readonly AccessTools.FieldRef<MentalState,int> Age=AccessTools.FieldRefAccess<MentalState,int>("age");

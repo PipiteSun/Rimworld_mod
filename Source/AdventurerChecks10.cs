@@ -18,7 +18,7 @@ namespace LichPhylactery {
     Check(melee.kind==Hediff_Adventurer.FxKind.Linear && psy.kind==Hediff_Adventurer.FxKind.Linear && Near(h.FxValue(melee,1f),1.4f) && Near(h.FxValue(psy,1f),1.5f) && Near(h.FxValue(psy,.5f),1.25f),"[hotfix3] linear: Str 18 melee ×"+h.FxValue(melee,1f).ToString("0.##")+" (1.4), Wis 20 psychic sensitivity ×"+h.FxValue(psy,1f).ToString("0.##")+" (1.5), half effect strength ×1.25");
     // 2. 体质对部位生命：5 级体质 14 无职业 = 1.2 × 1.3
     h.scores=new[]{10,10,14,10,10,10};h.level=5;h.Dirty();float p14=h.PartFactor(1f),c14=h.ConPart(1f);h.scores[Adventurer.Con]=20;float c20=h.ConPart(1f);h.scores[Adventurer.Con]=6;float c6=h.ConPart(1f);
-    Check(Near(p14,1.56f) && Near(c14,1.3f) && Near(c20,1.75f) && Near(c6,1f),"[hotfix3] Con part health linear +15%/modifier: level 5 Con 14 ×"+p14.ToString("0.###")+" (1.2×1.3), Con 20 ×1.75, Con 6 ×1");
+    Check(Near(p14,1.16f*1.3f) && Near(c14,1.3f) && Near(c20,1.75f) && Near(c6,1f),"[hotfix3] Con part health linear +15%/modifier: level 5 Con 14 ×"+p14.ToString("0.###")+" (1.16×1.3, 1.93.0 unspent 4%), Con 20 ×1.75, Con 6 ×1");
     // 4. 物理职业伤害成长：战士 20 近战 ×1.6（Σ 职业等级 × 3%）、远程同样；施法职业 0；不乘属性效果强度
     h.scores=new[]{10,10,10,10,10,10};h.level=20;h.classes.levels[fighter]=20;h.Dirty();Martial.Refresh(a);
     float m1=h.BuildStage(1f).statFactors?.GetStatFactorFromList(StatDefOf.MeleeDamageFactor)??1f,m0=h.BuildStage(0f).statFactors?.GetStatFactorFromList(StatDefOf.MeleeDamageFactor)??1f;
@@ -39,10 +39,11 @@ namespace LichPhylactery {
     h.classes.levels.Clear();h.level=1;h.scores=new[]{10,10,10,20,10,10};h.Dirty();Martial.Refresh(a);
     float cp=Adventurer.ClassPowerBonus(a,Adventurer.Int);
     Check(Near(cp,.25f),"[hotfix3] class power: Int 20 → +"+cp.ToString("0.###")+" (modifier 5 × 5%)");
-    // 9. 施法职业等级成长：法师 10 → 智识强度 +0.18（已有的 ClassBonus，上限 +40%）
+    // 9. 施法职业等级成长：法师 10 → 奥术强度 +0.45（1.97.0 每级 5%，上限 +95%）；默认比例（其他强度）仍 +0.18、上限 +40%
     if(wiz!=null){h.level=10;h.classes.levels[wiz]=10;h.Dirty();}
-    float cb=wiz==null?-1f:ClassSystem.ClassBonus(a,wiz.mainSkill);
-    Check(wiz!=null && Near(cb,.18f) && Near(ClassSystem.MartialBonusFor(25),.4f),"[hotfix3] caster level growth: wizard 10 → "+wiz?.mainSkill?.defName+" power +"+cb.ToString("0.###")+" (+2% per level above 1, capped +40%)");
+    var arc=ClassLevelInfo.Part(DefDatabase<StatDef>.GetNamed("LP_ArcanePower"));
+    float cb=wiz==null || arc==null?-1f:arc.LevelBonus(a),cd=wiz==null?-1f:ClassSystem.ClassBonus(a,wiz.mainSkill);
+    Check(wiz!=null && arc!=null && Near(cb,.45f) && Near(cd,.18f) && Near(arc.LevelBonusFor(25),.95f) && Near(arc.LevelBonusFor(21),.95f) && Near(ClassSystem.MartialBonusFor(25),.4f),"[1.97.0] caster level growth: wizard 10 → arcane power +"+cb.ToString("0.###")+" (+5% per level above 1, capped +95%); default rate still +"+cd.ToString("0.###")+" (+2%, capped +40%)");
    }finally{
     s.adventurerLevelGap=oldGap;h.classes?.levels.Clear();h.Dirty();Martial.Refresh(a);
    }

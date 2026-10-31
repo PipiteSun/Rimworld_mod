@@ -80,10 +80,13 @@
   <LichPhylactery.LP_FeatDef>
     <defName>LP_Feat_FeyTouched</defName>
     <label>妖精之触</label>
-    <description>和妖精荒野打过交道。获得能力“迷踪步”（原版长跳：跳到远处的一格，冷却照原版）。附带智力、感知或魅力 +1。</description>
+    <description>和妖精荒野打过交道。获得能力“迷踪步”（原版长跳：跳到远处的一格，冷却照原版）；心智抗性 +20%，社交影响 ×1.1。附带智力、感知或魅力 +1。</description>
     <iconPath>LP/Feats/FeyTouched</iconPath>
     <order>33</order>
     <bonusAbilities><li>Int</li><li>Wis</li><li>Cha</li></bonusAbilities>
+    <!-- 1.92.0：原来只有一个长跳能力。 -->
+    <statOffsets><LP_MindResist>0.2</LP_MindResist></statOffsets>
+    <statFactors><SocialImpact>1.1</SocialImpact></statFactors>
     <grantAbility>Longjump</grantAbility>
   </LichPhylactery.LP_FeatDef>
 

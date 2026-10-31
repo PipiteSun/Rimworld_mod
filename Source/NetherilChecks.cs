@@ -30,7 +30,7 @@ namespace LichPhylactery {
    if(st.offeringBox!=null && !st.offeringBox.Destroyed)st.offeringBox.Destroy();
    if(st.casket!=null && !st.casket.Destroyed)st.casket.Destroy();
    st.campSite=st.cryptSite=st.wreckSite=null;st.offeringBox=null;st.casket=null;st.casketGuards.Clear();st.campLeader=null;
-   st.stage="idle";st.deal=null;st.envoyTick=-1;st.refusals=0;st.errand=0;st.errandDeadline=-1;st.envoyPending=false;st.reappearMode=false;
+   st.stage="idle";st.deal=null;st.envoyTick=-1;st.refusals=0;st.errand=0;st.errandDeadline=-1;st.nextErrand=0;st.nextErrandTick=-1;st.envoyPending=false;st.reappearMode=false;
    if(st.envoyLord!=null){foreach(var p in st.envoyLord.ownedPawns.ToList())if(!p.Destroyed){Necro.Registry?.constructs.Remove(p);p.Destroy();}if(map.lordManager.lords.Contains(st.envoyLord))map.lordManager.RemoveLord(st.envoyLord);}
    st.envoy=null;st.envoyLord=null;st.karsusStatus="none";st.deciphered=false;st.reappearTick=-1;st.larlochDefeated=false;st.nextUndeadRaid=-1;st.demigod=null;
    NetherilQuest.InvalidateScrollCache();
@@ -294,7 +294,11 @@ namespace LichPhylactery {
    var shard=ThingMaker.MakeThing(Items.Thing("LP_MiracleShard"));shard.stackCount=NetherilQuest.ShardNeed;GenSpawn.Spawn(shard,box.Position,map);
    bool done=box.TryComplete();
    bool reward=map.listerThings.ThingsOfDef(Items.Thing(Netheril.ArcaneDef)).Any(t=>Netheril.Doer<BookOutcome_NetherilArcane>(t)?.school=="Necromancy");
-   Check(started && done && box.Destroyed && residue.Destroyed && shard.Destroyed && reward && st.stage=="errand" && st.errand==2 && st.errandDeadline>Find.TickManager.TicksGame+29*GenDate.TicksPerDay && (st.campSite!=null || NetherilQuest.Thay==null),"netheril 17: option C starts errand 1; 20 residue + 3 shards in the offering box finish it, a necromancy scroll arrives and errand 2 (red wizard camp) begins");
+   // 1.97.0 补丁：差事之间隔 15 天。先确认空档期不开下一件，再把空档拨到期。
+   int now=Find.TickManager.TicksGame;bool gap=st.errand==0 && st.nextErrand==2 && st.nextErrandTick==now+NetherilQuest.ErrandGapDays*GenDate.TicksPerDay && st.campSite==null;
+   NetherilQuest.ErrandTick(st);bool stillGap=st.errand==0 && st.campSite==null;
+   st.nextErrandTick=now;NetherilQuest.ErrandTick(st);
+   Check(started && done && box.Destroyed && residue.Destroyed && shard.Destroyed && reward && gap && stillGap && st.stage=="errand" && st.errand==2 && st.nextErrand==0 && st.errandDeadline>now+29*GenDate.TicksPerDay && (st.campSite!=null || NetherilQuest.Thay==null),"netheril 17: option C starts errand 1; 20 residue + 3 shards in the offering box finish it, a necromancy scroll arrives, errand 2 (red wizard camp) waits "+NetherilQuest.ErrandGapDays+" days and then begins (gap "+gap+", still "+stillGap+")");
   }
   void PrepareNetherilSave(){var st=Netheril.State;if(st.envoy!=null && st.envoy.Destroyed)st.envoy=null;st.envoyLord=null;st.envoyPending=false;nErrand=st.errand;nDeadline=st.errandDeadline;nStage=st.stage;nCampSite=st.campSite!=null;}
   void CheckNetherilAfterLoad(){

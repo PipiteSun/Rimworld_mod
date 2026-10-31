@@ -250,10 +250,12 @@ namespace LichPhylactery {
   public static float forcedScale=-1f;
   public static float PartHealthFactor(Pawn p){var h=Get(p);if(h==null || Legendary.Is(p))return 1f;return h.PartFactor(forcedScale>=0f?forcedScale:EffectScale)*Legend.HealthFactor(h)*Feats.ToughFactor(h);} // 1.50.0 传奇属性点“血量”相乘；1.67.0 坚韧
   // 职业强度：0.05 × 主属性有效调整值（乘属性效果强度；1.81.0 热修3 照 5e 的施法调整值，智力 20 = +0.25）+ 0.02 ×（熟练加值 − 2）。
-  public const float ClassAbilityPer=.05f;
-  public static float ClassPowerBonus(Pawn p,int ability){
+  // 1.97.0（Peter）：奥术强度的智力项每点调整值 10%（StatPart_ClassPower.abilityPer），其他强度仍 5%。
+  public const float ClassAbilityPer=.05f,ArcaneAbilityPer=.1f;
+  public static float ClassPowerBonus(Pawn p,int ability)=>ClassPowerBonus(p,ability,ClassAbilityPer);
+  public static float ClassPowerBonus(Pawn p,int ability,float per){
    if(!Enabled || ability<0)return 0f;var h=Get(p);if(h==null)return 0f;
-   return (Affinity.Talented(1f+ClassAbilityPer*h.AMod(ability),Affinity.TalentMult(h,ability))-1f)*EffectScale+ProfClassPer*Math.Max(0,h.Proficiency-2); // 1.81.0 热修5：天赋乘整个 (1 + 5% × 调整值)
+   return (Affinity.Talented(1f+per*h.AMod(ability),Affinity.TalentMult(h,ability))-1f)*EffectScale+ProfClassPer*Math.Max(0,h.Proficiency-2); // 1.81.0 热修5：天赋乘整个 (1 + 5% × 调整值)
   }
   // 1.52.0 热修：熟练加值每比 +2 高 1 点 —— 近战命中 +2%（加在最终命中率上，见 AdventurerMeleeHit）、射击精度 ×+1%（合进状态的属性系数）、VPE 职业强度 +0.02。
   // 只看等级，不乘“属性效果强度”，Isekai 共存时也生效；传奇怪物（Legendary）不算。
@@ -387,7 +389,7 @@ namespace LichPhylactery {
   public List<LP_FightingStyleDef> styles=new List<LP_FightingStyleDef>();public int styleReadyTick,styleAdaptSlot=-1;public bool styleRolled;
   public int styleMask;
   public ClassData classes=new ClassData(); // 1.72.0 职业等级、资源（Classes.cs）
-  // 1.59.0 超凡属性特性（Exalted.cs）：掩码在 BuildStage 里算、不存档；已发过信的掩码、是否算过基准、硬撑（本轮开始的刻 / 次数 / 撑到哪一刻）、金刚不坏上次消伤疤的刻存档。
+  // 1.59.0 超凡属性特性（Exalted.cs）：掩码在 BuildStage 里算、不存档；已发过信的掩码、是否算过基准、硬撑（本轮开始的刻 / 次数 / 撑到哪一刻）、去疤计时起点（1.91.0 起不屈之躯也用）存档。
   public int exaltedMask,mythicMask,exaltedSent,mythicSent,holdUntil,holdStart=int.MinValue,holdUses,scarTick=int.MinValue;public bool exaltedInit;
   internal Verse.AI.MentalState halvedState;
   public int SpendLegend(int i,int n){n=Math.Min(n,legendPoints);if(n<=0 || i<0 || i>=Legend.Count)return 0;legendSpent[i]+=n;legendPoints-=n;Dirty();return n;}
@@ -646,7 +648,8 @@ namespace LichPhylactery {
    int ex=Exalted.Compute(this);exaltedMask=ex&63;mythicMask=ex>>6&63;Exalted.Store(pawn,ex); // 1.59.0 超凡掩码
    Exalted.AddStats(this,st,f,o);
    // 专长的数值不乘属性效果强度（Isekai 共存时照样生效），只看总开关。
-   if(Adventurer.Enabled)foreach(var feat in feats){if(feat.statOffsets!=null)o.AddRange(feat.statOffsets);if(feat.statFactors!=null)f.AddRange(feat.statFactors);}
+   // 1.90.0：职业专属专长在职业等级低于要求时连数值一起暂停（和 ClassFeats 的规则类效果一致）。
+   if(Adventurer.Enabled)foreach(var feat in feats){if(feat.requiredClass!=null && !ClassFeats.Active(this,feat))continue;if(feat.statOffsets!=null)o.AddRange(feat.statOffsets);if(feat.statFactors!=null)f.AddRange(feat.statFactors);}
    // 1.49.0 史诗恩赐与传奇称号：同专长，不乘属性效果强度。
    if(Adventurer.Enabled){
     foreach(var b in boons){if(b.statOffsets!=null)o.AddRange(b.statOffsets);if(b.statFactors!=null)f.AddRange(b.statFactors);}
@@ -675,12 +678,18 @@ namespace LichPhylactery {
    if(f.Count>0)st.statFactors=f.GroupBy(m=>m.stat).Select(g=>new StatModifier{stat=g.Key,value=g.Aggregate(1f,(x,m)=>x*m.value)}).ToList();
    if(o.Count>0)st.statOffsets=o.GroupBy(m=>m.stat).Select(g=>new StatModifier{stat=g.Key,value=g.Sum(m=>m.value)}).ToList();
   }
-  public const float PartPerLevel=.05f; // 1.81.0 热修（照 3.5 的血量随等级涨）：每级 +1% 改为 +5%，20 级 ×1.95，再乘体质倍率；热修2 起这是未分配职业点的等级
-  // 1.81.0 热修2（Peter）：等级成长按职业生命骰（LP_ClassDef.PartPerLevel）。平均每级成长 × (等级−1)，第 1 级不算。
-  public float LevelGrowth(int lv){
-   lv=Math.Min(lv,Adventurer.MaxLevel);if(lv<=1)return 0f;float sum=0f;int n=0;
-   if(classes?.levels!=null)foreach(var kv in classes.levels){if(kv.Key==null)continue;int c=Math.Min(kv.Value,lv-n);if(c<=0)continue;sum+=c*kv.Key.PartPerLevel;n+=c;}
-   sum+=(lv-n)*PartPerLevel;return sum/lv*(lv-1);
+  public const float PartPerLevel=.05f; // 1.81.0 热修（照 3.5 的血量随等级涨）：每级 +1% 改为 +5%，20 级 ×1.95，再乘体质倍率；热修2 起是 d8 职业的默认值
+  // 1.93.0（Peter：升级法师部位生命反而下降）：未分配职业点的等级按最低的职业生命骰 4% 算，扣掉的“第 1 级”也固定 4%，
+  // 这样加任何职业点都是 +（职业成长 − 4%）≥ 0，冒险者升级 +4%，部位生命不会因为升级或加点下降。
+  public const float UnspentPartPer=.04f;
+  // 1.81.0 热修2（Peter）：等级成长按职业生命骰（LP_ClassDef.PartPerLevel）。1.93.0 起 = 各职业等级成长之和 + 未分配等级 × 4% − 4%（不再取平均）。
+  public float LevelGrowth(int lv)=>PartGrowth(classes,null,lv);
+  // plus：预算这个职业多 1 级（ClassLevelInfo 的“下一级”用同一函数）。冒险者等级超过 20 按 20 算，传奇等级不加。
+  public static float PartGrowth(ClassData classes,LP_ClassDef plus,int lv){
+   lv=Math.Min(lv,Adventurer.MaxLevel);if(lv<=0)return 0f;float sum=0f;int n=0;bool seen=false;
+   if(classes?.levels!=null)foreach(var kv in classes.levels){if(kv.Key==null)continue;int v=kv.Value;if(kv.Key==plus){v++;seen=true;}int c=Math.Min(v,lv-n);if(c<=0)continue;sum+=c*kv.Key.PartPerLevel;n+=c;}
+   if(plus!=null && !seen && lv-n>0){sum+=plus.PartPerLevel;n++;}
+   sum+=(lv-n)*UnspentPartPer;return Math.Max(0f,sum-UnspentPartPer);
   }
   // 1.81.0 热修3：体质对部位生命改成线性，每点有效调整值 +15%（14 = ×1.3，20 = ×1.75），低于 10 不减少。
   public const float ConPartPerMod=.15f;
@@ -738,6 +747,7 @@ namespace LichPhylactery {
    string skills=a==0?"格斗":a==1?"射击":a==3?"智识":a==4?"医疗 / 种植 / 驯兽":a==5?"社交":null;
    if(skills!=null)Row(skills+"学习",X(Mathf.Max(Adventurer.LearnMin,Fx(a,s))));
    Row("职业强度（主属性）",Pct(Adventurer.ClassPowerBonus(pawn,a)-Adventurer.ProfClassPer*Math.Max(0,Proficiency-2)));
+   if(a==Adventurer.Int)Row("奥术强度（智力）",Pct(Adventurer.ClassPowerBonus(pawn,a,Adventurer.ArcaneAbilityPer)-Adventurer.ProfClassPer*Math.Max(0,Proficiency-2)));
    return rows;
   }
   // 纯文本版（自检、复制用）：每行“效果名 值”。
@@ -889,7 +899,7 @@ namespace LichPhylactery {
    {int cp=Math.Max(0,Math.Min(to,ClassSystem.CapLevel)-Math.Max(from,0));int left=ClassSystem.Points(h);if(cp>0 || left>0)sb.AppendLine("· 职业点 +"+cp+(left>0?"（可用 "+left+"，点“选择职业”按钮或分页的“职业”页）":""));} // 1.72.0
    if(ITab_Adventurer.LevelUpLinesHook!=null)for(int l=from+1;l<=to;l++){var extra=ITab_Adventurer.LevelUpLinesHook(p,l);if(extra!=null)foreach(var line in extra)sb.AppendLine("· "+line);} // 1.53.0 职业特性（额外攻击、战斗风格槽）
    {float m0=Adventurer.LevelMelee(from),m1=Adventurer.LevelMelee(to);if(Adventurer.Enabled && m1>m0)sb.AppendLine("· 近战命中、近战闪避各 +"+((m1-m0)*100f).ToString("0.#")+"%（现在各 +"+(m1*100f).ToString("0.#")+"%）");} // 1.81.0
-   if(part>0f)sb.AppendLine("· 部位生命 "+ClassLevelInfo.PartText(ClassLevelInfo.PartAtAdventurer(h,Math.Max(1,from)))+" → "+ClassLevelInfo.PartText(Adventurer.PartHealthFactor(p))+"（按职业生命骰，未分配的等级按 +5%）"); // 1.89.0 前后对比（合计倍率，含体质、传奇、坚韧）
+   if(part>0f)sb.AppendLine("· 部位生命 "+ClassLevelInfo.PartText(ClassLevelInfo.PartAtAdventurer(h,Math.Max(1,from)))+" → "+ClassLevelInfo.PartText(Adventurer.PartHealthFactor(p))+"（按职业生命骰，未分配的等级按 +4%）"); // 1.89.0 前后对比（合计倍率，含体质、传奇、坚韧）
    else if(to<=Adventurer.MaxLevel && Adventurer.EffectsHandedToIsekai)sb.AppendLine("· 部位生命成长交给 Isekai（共存模式）");
    if(boon)sb.AppendLine("· 史诗恩赐点 +1"+(h.boonPoints>0?"（"+h.boonPoints+" 点待选）":""));
    if(h.legendary && from<Adventurer.MaxLevel && to>=Adventurer.MaxLevel)sb.AppendLine("· 成为传奇冒险者");

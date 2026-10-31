@@ -143,35 +143,35 @@
   <StatDef ParentName="LP_ClassPowerBase">
     <defName>LP_ArcanePower</defName>
     <label>奥术强度</label>
-    <description>法师法术与术士智识支的强度倍率：0.5 + 智识等级/20，另加冒险者智力倍率与熟练加值、法师 / 术士职业等级加成（每级 +2%，最多 +40%）。</description>
-    <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Intellectual</skill></li></parts>
+    <description>法师法术与术士智识支的强度倍率：0.5 + 智识等级/20，另加冒险者智力调整值 × 0.10（× 天赋）与 (熟练加值 − 2) × 0.02、法师 / 术士职业等级合计每比 1 高 1 级 +5%（最多 +95%，即 20 级）。</description>
+    <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Intellectual</skill><levelPer>0.05</levelPer><levelMax>0.95</levelMax><abilityPer>0.10</abilityPer></li></parts>
     <displayPriorityInCategory>4211</displayPriorityInCategory>
   </StatDef>
   <StatDef ParentName="LP_ClassPowerBase">
     <defName>LP_PrimalPower</defName>
     <label>野性强度</label>
-    <description>德鲁伊驯兽一支的强度倍率：0.5 + 驯兽等级/20，另加冒险者感知倍率与熟练加值、德鲁伊职业等级加成。</description>
+    <description>德鲁伊驯兽一支的强度倍率：0.5 + 驯兽等级/20，另加冒险者感知调整值 × 0.05 与 (熟练加值 − 2) × 0.02、德鲁伊职业等级合计每比 1 高 1 级 +2%（最多 +40%）。</description>
     <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Animals</skill></li></parts>
     <displayPriorityInCategory>4214</displayPriorityInCategory>
   </StatDef>
   <StatDef ParentName="LP_ClassPowerBase">
     <defName>LP_VerdantPower</defName>
     <label>生长强度</label>
-    <description>德鲁伊种植一支的强度倍率：0.5 + 种植等级/20，另加冒险者感知倍率与熟练加值、德鲁伊职业等级加成。</description>
+    <description>德鲁伊种植一支的强度倍率：0.5 + 种植等级/20，另加冒险者感知调整值 × 0.05 与 (熟练加值 − 2) × 0.02、德鲁伊职业等级合计每比 1 高 1 级 +2%（最多 +40%）。</description>
     <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Plants</skill></li></parts>
     <displayPriorityInCategory>4215</displayPriorityInCategory>
   </StatDef>
   <StatDef ParentName="LP_ClassPowerBase">
     <defName>LP_InnatePower</defName>
     <label>天赋强度</label>
-    <description>术士社交一支的强度倍率：0.5 + 社交等级/20，另加冒险者魅力倍率与熟练加值、术士职业等级加成；有术士血脉的再 +15%。</description>
+    <description>术士社交一支的强度倍率：0.5 + 社交等级/20，另加冒险者魅力调整值 × 0.05 与 (熟练加值 − 2) × 0.02、术士等职业等级合计每比 1 高 1 级 +2%（最多 +40%）；有术士血脉的再 +15%。</description>
     <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Social</skill></li><li Class="LichPhylactery.StatPart_SorcererBloodline" /><li Class="LichPhylactery.StatPart_LegendaryClassPower"><ability>LP_LegBloodlineAwakening</ability><bonus>0.2</bonus></li></parts>
     <displayPriorityInCategory>4216</displayPriorityInCategory>
   </StatDef>
   <StatDef ParentName="LP_ClassPowerBase">
     <defName>LP_ArtificePower</defName>
     <label>器械强度</label>
-    <description>器械师能力的强度倍率：0.5 + 手工等级/20，另加冒险者智力倍率与熟练加值、器械师职业等级加成。过载射击的伤害加成、符文炮台的伤害都乘这个倍率。</description>
+    <description>器械师能力的强度倍率：0.5 + 手工等级/20，另加冒险者智力调整值 × 0.05 与 (熟练加值 − 2) × 0.02（不吃奥术强度的 10%）、器械师职业等级合计每比 1 高 1 级 +2%（最多 +40%）。过载射击的伤害加成、符文炮台的伤害都乘这个倍率。</description>
     <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Crafting</skill></li></parts>
     <displayPriorityInCategory>4217</displayPriorityInCategory>
   </StatDef>

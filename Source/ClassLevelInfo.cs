@@ -8,8 +8,8 @@ using Verse;
 
 namespace LichPhylactery {
  // 1.89.0（Peter：升级后部位生命和施法强度的变化）：只做显示，不改数值。
- // 部位生命按 Hediff_Adventurer.LevelGrowth 的同一公式预算“下一级”（职业生命骰换掉一个未分配等级的 +5%）；
- // 职业强度按 StatPart_ClassPower：相关职业等级合计每比 1 高 1 级 +2%（最多 +40%），冒险者升级另看熟练加值 ×2%。
+ // 部位生命按 Hediff_Adventurer.LevelGrowth 的同一公式预算“下一级”（职业生命骰换掉一个未分配等级的 +4%，1.93.0 起不会变少）；
+ // 职业强度按 StatPart_ClassPower：相关职业等级合计每比 1 高 1 级 +levelPer（默认 2%、最多 40%；1.97.0 奥术 5%、最多 95%），冒险者升级另看熟练加值 ×2%。
  [StaticConstructorOnStartup]
  public static class ClassLevelInfo {
   static ClassLevelInfo(){var prev=ITab_Adventurer.LevelUpLinesHook;ITab_Adventurer.LevelUpLinesHook=(p,l)=>{var a=LevelUpLines(p,l);var b=prev?.Invoke(p,l);return b==null?a:a.Concat(b);};}
@@ -17,12 +17,7 @@ namespace LichPhylactery {
   // ---------- 部位生命 ----------
   static float Scale=>Adventurer.forcedScale>=0f?Adventurer.forcedScale:Adventurer.EffectScale;
   // LevelGrowth 的同一公式，plus 这个职业多 1 级、冒险者等级按 lv 算。
-  public static float Growth(Hediff_Adventurer h,LP_ClassDef plus,int lv){
-   lv=Math.Min(lv,Adventurer.MaxLevel);if(lv<=1)return 0f;float sum=0f;int n=0;bool seen=false;
-   if(h.classes?.levels!=null)foreach(var kv in h.classes.levels){if(kv.Key==null)continue;int v=kv.Value;if(kv.Key==plus){v++;seen=true;}int c=Math.Min(v,lv-n);if(c<=0)continue;sum+=c*kv.Key.PartPerLevel;n+=c;}
-   if(plus!=null && !seen && lv-n>0){sum+=plus.PartPerLevel;n++;}
-   sum+=(lv-n)*Hediff_Adventurer.PartPerLevel;return sum/lv*(lv-1);
-  }
+  public static float Growth(Hediff_Adventurer h,LP_ClassDef plus,int lv)=>Hediff_Adventurer.PartGrowth(h.classes,plus,lv);
   // 部位生命合计倍率（同 Adventurer.PartHealthFactor），换成 plus 多 1 级、冒险者 lv 级之后的值。
   public static float PartWith(Hediff_Adventurer h,LP_ClassDef plus,int lv){
    var p=h?.pawn;float now=Adventurer.PartHealthFactor(p);if(h==null || Legendary.Is(p))return now;
@@ -57,7 +52,7 @@ namespace LichPhylactery {
   public static float PowerWith(Pawn p,Hediff_Adventurer h,StatDef stat,LP_ClassDef plus,int lv){
    float now=p.GetStatValue(stat);var part=Part(stat);if(part==null || h==null)return now;
    int n=BonusLevels(h,part.skill),m=n+(Counts(plus,part.skill)?1:0);
-   return now+ClassSystem.MartialBonusFor(m)-ClassSystem.MartialBonusFor(n)+Prof(lv)-Prof(h.level);
+   return now+part.LevelBonusFor(m)-part.LevelBonusFor(n)+Prof(lv)-Prof(h.level); // 1.97.0 每个强度属性自己的比例（奥术 5%、最多 95%）
   }
   // 下一级的冒险者等级：还有职业点就是现在的等级，没有就得先升 1 级。
   public static int NextAdventurerLevel(Hediff_Adventurer h)=>Math.Max(h.level,ClassSystem.Total(h)+1);
@@ -120,9 +115,9 @@ namespace LichPhylactery {
   public static string ClassTip(Pawn p,Hediff_Adventurer h,LP_ClassDef c){
    var sb=new StringBuilder();
    sb.AppendLine(c.LabelCap);sb.AppendLine();sb.AppendLine(c.description);sb.AppendLine();
-   sb.AppendLine("每个职业等级：部位生命 +"+(c.PartPerLevel*100f).ToString("0.#")+"%（未分配职业点的等级 +"+(Hediff_Adventurer.PartPerLevel*100f).ToString("0.#")+"%；按平均每级 ×(冒险者等级 − 1)，再乘体质）");
+   sb.AppendLine("每个职业等级：部位生命 +"+(c.PartPerLevel*100f).ToString("0.#")+"%（未分配职业点的等级 +"+(Hediff_Adventurer.UnspentPartPer*100f).ToString("0.#")+"%；合计再减 "+(Hediff_Adventurer.UnspentPartPer*100f).ToString("0.#")+"%，再乘体质；加点和升级都不会降低）");
    if(c.DamagePerLevel>0f)sb.AppendLine("　武器伤害 +"+(c.DamagePerLevel*100f).ToString("0.#")+"%（近战与远程），近战穿甲 +"+(c.PenPerLevel*100f).ToString("0.#")+"%");
-   foreach(var s in Stats(c)){var part=Part(s);sb.AppendLine("　"+s.LabelCap+" +"+(ClassSystem.MartialPer*100f).ToString("0")+"%（"+(MartialSkill(part.skill)?"所有物理职业":"用"+part.skill.label+"的职业")+"等级合计每比 1 高 1 级，最多 +"+(ClassSystem.MartialMax*100f).ToString("0")+"%）");}
+   foreach(var s in Stats(c)){var part=Part(s);sb.AppendLine("　"+s.LabelCap+" +"+(part.LevelPer*100f).ToString("0")+"%（"+(MartialSkill(part.skill)?"所有物理职业":"用"+part.skill.label+"的职业")+"等级合计每比 1 高 1 级，最多 +"+(part.LevelMax*100f).ToString("0")+"%）");}
    string f=ResourceFormula(c);if(f!=null)sb.AppendLine("资源 "+ClassSystem.ResourceLabel(c.resource)+"："+f);
    sb.AppendLine();sb.AppendLine("等级表：");
    int lv=ClassSystem.Level(h,c);

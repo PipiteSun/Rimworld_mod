@@ -13,7 +13,7 @@ namespace LichPhylactery {
  public static class Feats2 {
   // 1.67.0 专长加强：数值约翻倍（旧值见 ArtSource/backup-1.66.0）。
   public const float BrawlerFactor=2.5f,BrawlerSocial=2f,BrawlerPush=.4f,CrafterDiscount=.8f,AdeptBonus=1.25f,ElvenAim=1.15f,ElvenBonus=1.1f,MagmaIgnite=.5f,MagmaForge=.2f,DragonFearChance=.4f,GnomeToy=1.4f,OriginLucky=.05f,MusicRadius=10f,ChefChance=.35f;
-  public const int MissileDamage=8,InfernalDamage=15,InfernalCooldown=300,BloodRegenHeal=60,DwarfHeal=40,DragonFearTicks=480,PoisonCharges=20,SkilledCount=3,SkilledLevels=3,MusicInspireCount=3,BrawlerStunTicks=60;
+  public const int MissileDamage=8,InfernalDamage=15,InfernalCooldown=300,BloodRegenHeal=60,DwarfHeal=60,DragonFearTicks=480,PoisonCharges=20,SkilledCount=3,SkilledLevels=3,MusicInspireCount=3,BrawlerStunTicks=60;
   // 1.67.0 新专长：斩击者 / 穿刺者 / 粉碎者（三选一）、法师杀手。
   public const float WeaponTypeDamage=1.2f,SlashSlowChance=.25f,PierceCritChance=.2f,CrushPushChance=.25f,MageSlayerDamage=1.3f;
   public const int SlashSlowTicks=180,CrushStunTicks=60,MageSlayerStunTicks=60;
@@ -166,7 +166,7 @@ namespace LichPhylactery {
     if(v.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.PanicFlee,"龙威",true,true) && v.MentalState!=null){v.MentalState.forceRecoverAfterTicks=DragonFearTicks;Feared++;}
    }
    if(ai.poisoner && HeroCombat.Melee(d) && !v.Dead){var h=a.health.hediffSet.GetFirstHediffOfDef(Items.Hediff("LP_FeatPoisonedBlade"));if(h!=null && DrowPoisonStrike.Poison(v)){Poisoned++;h.Severity-=1f;if(h.Severity<.5f)a.health.RemoveHediff(h);}}
-   if(ai.infernal && WrathArmed(a)){int now=GenTicks.TicksGame;wrathUsed[a.thingIDNumber]=now;wrathReady.Remove(a.thingIDNumber);HeroCombat.extra=true;try{if(!v.Dead)v.TakeDamage(new DamageInfo(DamageDefOf.Flame,InfernalDamage,0f,-1f,a));}finally{HeroCombat.extra=false;}Items.Mote(a,"炼狱之怒",new Color(1f,.5f,.3f));}
+   if(ai.infernal && WrathArmed(a)){int now=GenTicks.TicksGame;wrathUsed[a.thingIDNumber]=now;wrathReady.Remove(a.thingIDNumber);HeroCombat.extra=true;try{if(!v.Dead)v.TakeDamage(new DamageInfo(DamageDefOf.Flame,InfernalDamage+(Adventurer.Get(a)?.level??0),0f,-1f,a));}finally{HeroCombat.extra=false;}Items.Mote(a,"炼狱之怒",new Color(1f,.5f,.3f));}
   }
   // 受害者一侧：炼狱之怒被打后蓄势（10 秒冷却）。
   public static void Struck(Pawn v,HeroInfo vi,Pawn a){
@@ -268,8 +268,8 @@ namespace LichPhylactery {
   public override string Unmet(Pawn p,Hediff_Adventurer h)=>base.Unmet(p,h)??(h.scores[Adventurer.Cha]>=13 || p?.skills?.GetSkill(SkillDefOf.Artistic)?.Level>=6?null:"需要魅力 13 或艺术 6");
  }
  public class FeatWorker_ElementalAdept : FeatWorker {
-  public override string ExtraPrereq=>"有 DND 职业路径或佩戴圣徽";
-  public override string Unmet(Pawn p,Hediff_Adventurer h)=>base.Unmet(p,h)??(Feats.IsCaster(p)?null:"需要 DND 职业路径或佩戴圣徽");
+  public override string ExtraPrereq=>"有"+ClassSystem.SpellcasterText+"或佩戴圣徽";
+  public override string Unmet(Pawn p,Hediff_Adventurer h)=>base.Unmet(p,h)??(Feats.IsCaster(p)?null:"需要"+ClassSystem.SpellcasterText+"或佩戴圣徽");
  }
  public class FeatWorker_Observant : FeatWorker {
   public override string ExtraPrereq=>"智力或感知 13";
@@ -280,8 +280,8 @@ namespace LichPhylactery {
   public override string Unmet(Pawn p,Hediff_Adventurer h)=>base.Unmet(p,h)??(p?.skills?.GetSkill(SkillDefOf.Crafting)?.Level>=6 || p?.skills?.GetSkill(SkillDefOf.Medicine)?.Level>=6?null:"需要手工或医疗 6");
  }
  public class FeatWorker_RitualCaster : FeatWorker {
-  public override string ExtraPrereq=>"智力或感知 13，有 DND 职业路径或佩戴圣徽";
-  public override string Unmet(Pawn p,Hediff_Adventurer h)=>base.Unmet(p,h)??(h.scores[Adventurer.Int]<13 && h.scores[Adventurer.Wis]<13?"需要智力或感知 13":Feats.IsCaster(p)?null:"需要 DND 职业路径或佩戴圣徽");
+  public override string ExtraPrereq=>"智力或感知 13，有"+ClassSystem.SpellcasterText+"或佩戴圣徽";
+  public override string Unmet(Pawn p,Hediff_Adventurer h)=>base.Unmet(p,h)??(h.scores[Adventurer.Int]<13 && h.scores[Adventurer.Wis]<13?"需要智力或感知 13":Feats.IsCaster(p)?null:"需要"+ClassSystem.SpellcasterText+"或佩戴圣徽");
  }
 
  // 1.67.0 穿刺者：近战或射击 6。

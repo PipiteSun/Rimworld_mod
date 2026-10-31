@@ -313,8 +313,17 @@ namespace LichPhylactery {
    var world=Twilight.World;world.startTick=-1;Twilight.Omen();Check(world.startTick==EvNow+15*GenDate.TicksPerDay,"omen: twilight starts in 15 days");
    world.startTick=EvNow;WorldTick311(world);
    Check(Twilight.Active && world.startTick<0,"countdown reaching zero starts the twilight year");Twilight.End();
-   int year=GenDate.YearsPassed;world.rolledYear=year-1;Twilight.TestRoll=0f;WorldTick311(world);
-   Check(year>=1?world.startTick>0 && world.rolledYear==year:world.startTick<0,"yearly roll happens once a year from year 2 (year "+year+")");world.startTick=-1;Twilight.TestRoll=1f;
+   int year=GenDate.YearsPassed;world.rolledYear=year-1;Twilight.TestRoll=0f;
+   if(year==0){
+    // 1.97.0 补丁：第 1 年在随机一天掷；没到那天不掷，到了掷一次。
+    int oldFirst=world.firstRollTick;world.firstRollTick=EvNow+10*GenDate.TicksPerDay;WorldTick311(world);bool waited=world.startTick<0 && world.rolledYear<0;
+    world.firstRollTick=EvNow;WorldTick311(world);
+    Check(waited && world.startTick>0 && world.rolledYear==0,"first-year roll waits for its random day, then rolls once (waited "+waited+")");
+    world.firstRollTick=oldFirst;
+   }
+   else{WorldTick311(world);Check(world.startTick>0 && world.rolledYear==year,"yearly roll happens once a year (year "+year+")");}
+   world.startTick=-1;Twilight.TestRoll=1f;
+   Check(WorldComponent_Twilight.FirstYearMinDay>=1 && WorldComponent_Twilight.FirstYearMaxDay+Twilight.OmenDays<=60,"first-year roll day 5～45: the omen's twilight still begins inside year 1");
 
    CheckInfusions();CheckGenerationHook();CheckVessels();
   }

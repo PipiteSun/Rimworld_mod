@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.96.0 温存：给有“放荡交欢”（原版异种扩展·优侣种 VRE_InitiateLovin）的人另加一个不拆散关系的普通亲热。规则代码见 Source/TenderLovin.cs。
+     没装优侣种时没人能得到它。 -->
+<Defs>
+  <AbilityDef ParentName="AbilityTouchBase">
+    <defName>LP_TenderLovin</defName>
+    <label>温存</label>
+    <description>走到目标身边，和对方温存一会儿。结束后双方获得和原版亲热一样的心情（“滚床单”），也算一次亲热：下次亲热的冷却照原版重新计算，优侣种的欢爱依赖会被满足；生物科技下异性之间有和原版一样的怀孕几率（看双方的生育计划、绝育等）。\n\n和“放荡交欢”不同，这不算出轨：双方现有的恋人、伴侣、未婚夫妻和配偶关系都保持不变。\n\n目标须为成年人形、清醒、不敌对，属于同一派系或是本殖民地的囚犯 / 奴隶；不能是无性恋或血亲，且对施放者的好感不低于 0（恋人之间不限）。</description>
+    <iconPath>Things/Mote/Heart</iconPath>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <cooldownTicksRange>30000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <verbProperties>
+      <verbClass>Verb_CastAbilityTouch</verbClass>
+      <drawAimPie>false</drawAimPie>
+      <range>-1</range>
+      <warmupTime>1</warmupTime>
+      <targetParams>
+        <canTargetAnimals>false</canTargetAnimals>
+        <canTargetSelf>false</canTargetSelf>
+        <canTargetBuildings>false</canTargetBuildings>
+        <canTargetMechs>false</canTargetMechs>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_TenderLovin"/>
+    </comps>
+  </AbilityDef>
+
+  <JobDef>
+    <defName>LP_TenderLovin</defName>
+    <driverClass>LichPhylactery.JobDriver_TenderLovin</driverClass>
+    <reportString>和TargetA温存。</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+  <JobDef>
+    <defName>LP_TenderLovinPartner</defName>
+    <driverClass>LichPhylactery.JobDriver_TenderLovinPartner</driverClass>
+    <reportString>和TargetA温存。</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+</Defs>

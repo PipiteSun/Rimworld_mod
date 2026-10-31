@@ -29,9 +29,11 @@ namespace LichPhylactery {
    try{
     PactStart.TestForce=false;
     var normal=PactStart.Allowed(scen)?null:PactStart.Choosable().ToList();
-    Check(normal!=null && !normal.Any(PactStart.IsPactRace) && normal.Contains(XenotypeDefOf.Baseliner) && normal.Count==DefDatabase<XenotypeDef>.AllDefsListForReading.Count-pact.Count,"normal start lists "+(normal?.Count??-1)+" xenotypes, none of them pact races");
+    int enemy=EnemyRaces.All.Count(); // 1.95.0：敌人专用异种两边都不列（狂猎既是契约种族也是敌人专用）
+    int both=EnemyRaces.All.Count(PactStart.IsPactRace);
+    Check(normal!=null && !normal.Any(PactStart.IsPactRace) && normal.Contains(XenotypeDefOf.Baseliner) && normal.Count==DefDatabase<XenotypeDef>.AllDefsListForReading.Count-pact.Count-enemy+both,"normal start lists "+(normal?.Count??-1)+" xenotypes, none of them pact races");
     PactStart.TestForce=true;
-    Check(PactStart.Choosable().Count()==DefDatabase<XenotypeDef>.AllDefsListForReading.Count && PactStart.Choosable().Contains(PsX("LP_Planetar")),"pact start lists every xenotype, including 行星使");
+    Check(PactStart.Choosable().Count()==DefDatabase<XenotypeDef>.AllDefsListForReading.Count-enemy && PactStart.Choosable().Contains(PsX("LP_Planetar")),"pact start lists every non-enemy xenotype, including 行星使");
    }finally{PactStart.TestForce=forced;}
 
    // 4. 立约者剧本：加载无错、打开契约种族；其他剧本都不打开，也不在开局异种里点名契约种族

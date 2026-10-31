@@ -33,7 +33,7 @@
   <StatDef ParentName="LP_ClassPowerBase">
     <defName>LP_PactPower</defName>
     <label>契约强度</label>
-    <description>邪术师能力的强度倍率：0.5 +（社交、智识里较高的等级）/20，另加冒险者魅力调整值与熟练加值、邪术师职业等级加成（每级 +2%，最多 +40%）。邪魔宗主的邪术师另有异界契约（九狱或深渊宗主）时，邪术师能力 ×1.25。</description>
+    <description>邪术师能力的强度倍率：0.5 +（社交、智识里较高的等级）/20，另加冒险者魅力调整值 × 0.05 与 (熟练加值 − 2) × 0.02、邪术师等职业等级合计每比 1 高 1 级 +2%（最多 +40%）。邪魔宗主的邪术师另有异界契约（九狱或深渊宗主）时，邪术师能力 ×1.25。</description>
     <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Social</skill><alternateSkill>Intellectual</alternateSkill><ability>Cha</ability></li></parts>
     <displayPriorityInCategory>4218</displayPriorityInCategory>
   </StatDef>

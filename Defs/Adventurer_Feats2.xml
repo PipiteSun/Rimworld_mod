@@ -59,25 +59,25 @@
   <LichPhylactery.LP_FeatDef ParentName="LP_ElementalAdeptBase">
     <defName>LP_Feat_ElementalAdept_Fire</defName>
     <label>元素使·火</label>
-    <description>火焰听从这个施法者。火焰类伤害无视目标对火焰的抗性（连火巨人也烧得伤），并且 +25%。需要 DND 职业路径或佩戴圣徽。只能选一种元素。附带智力、感知或魅力 +1。</description>
+    <description>火焰听从这个施法者。火焰类伤害无视目标对火焰的抗性（连火巨人也烧得伤），并且 +25%。需要施法职业（法师、牧师、德鲁伊、术士、邪术师、圣武士、器械师或诡术师）或佩戴圣徽。只能选一种元素。附带智力、感知或魅力 +1。</description>
     <iconPath>LP/Feats/ElementalAdept_Fire</iconPath><element>1</element>
   </LichPhylactery.LP_FeatDef>
   <LichPhylactery.LP_FeatDef ParentName="LP_ElementalAdeptBase">
     <defName>LP_Feat_ElementalAdept_Cold</defName>
     <label>元素使·冰</label>
-    <description>寒冰听从这个施法者。寒冷类伤害无视目标对寒冷的抗性，并且 +25%。需要 DND 职业路径或佩戴圣徽。只能选一种元素。附带智力、感知或魅力 +1。</description>
+    <description>寒冰听从这个施法者。寒冷类伤害无视目标对寒冷的抗性，并且 +25%。需要施法职业（法师、牧师、德鲁伊、术士、邪术师、圣武士、器械师或诡术师）或佩戴圣徽。只能选一种元素。附带智力、感知或魅力 +1。</description>
     <iconPath>LP/Feats/ElementalAdept_Cold</iconPath><element>2</element>
   </LichPhylactery.LP_FeatDef>
   <LichPhylactery.LP_FeatDef ParentName="LP_ElementalAdeptBase">
     <defName>LP_Feat_ElementalAdept_Lightning</defName>
     <label>元素使·雷</label>
-    <description>雷电听从这个施法者。雷电类伤害无视目标对雷电的抗性，并且 +25%。需要 DND 职业路径或佩戴圣徽。只能选一种元素。附带智力、感知或魅力 +1。</description>
+    <description>雷电听从这个施法者。雷电类伤害无视目标对雷电的抗性，并且 +25%。需要施法职业（法师、牧师、德鲁伊、术士、邪术师、圣武士、器械师或诡术师）或佩戴圣徽。只能选一种元素。附带智力、感知或魅力 +1。</description>
     <iconPath>LP/Feats/ElementalAdept_Lightning</iconPath><element>3</element>
   </LichPhylactery.LP_FeatDef>
   <LichPhylactery.LP_FeatDef ParentName="LP_ElementalAdeptBase">
     <defName>LP_Feat_ElementalAdept_Acid</defName>
     <label>元素使·酸</label>
-    <description>强酸听从这个施法者。强酸类伤害无视目标对强酸的抗性，并且 +25%。需要 DND 职业路径或佩戴圣徽。只能选一种元素。附带智力、感知或魅力 +1。</description>
+    <description>强酸听从这个施法者。强酸类伤害无视目标对强酸的抗性，并且 +25%。需要施法职业（法师、牧师、德鲁伊、术士、邪术师、圣武士、器械师或诡术师）或佩戴圣徽。只能选一种元素。附带智力、感知或魅力 +1。</description>
     <iconPath>LP/Feats/ElementalAdept_Acid</iconPath><element>4</element>
   </LichPhylactery.LP_FeatDef>
   <LichPhylactery.LP_FeatDef>
@@ -128,16 +128,18 @@
   <LichPhylactery.LP_FeatDef ParentName="LP_ResilientBase">
     <defName>LP_Feat_Resilient_Toxic</defName>
     <label>坚毅心智·抗毒</label>
-    <description>身体对毒物格外顽强。毒素抗性 +70%。坚毅心智三选一。附带体质 +1。</description>
+    <description>身体对毒物格外顽强。毒素抗性 +100%（毒素不再累积），毒性环境抗性 +50%，疼痛休克阈值 +10%。坚毅心智三选一。附带体质 +1。</description>
     <bonusAbilities><li>Con</li></bonusAbilities>
-    <statOffsets><ToxicResistance>0.7</ToxicResistance></statOffsets>
+    <!-- 1.92.0：原来只有毒素抗性 +70%，明显弱于“意志”。 -->
+    <statOffsets><ToxicResistance>1</ToxicResistance><ToxicEnvironmentResistance>0.5</ToxicEnvironmentResistance><PainShockThreshold>0.1</PainShockThreshold></statOffsets>
   </LichPhylactery.LP_FeatDef>
   <LichPhylactery.LP_FeatDef ParentName="LP_ResilientBase">
     <defName>LP_Feat_Resilient_Immune</defName>
     <label>坚毅心智·免疫</label>
-    <description>很少生病，病了也好得快。免疫获得速度 ×1.6，休息恢复 ×1.2。坚毅心智三选一。附带体质 +1。</description>
+    <description>很少生病，病了也好得快。免疫获得速度 ×2，休息恢复 ×1.3，伤口愈合 ×1.2。坚毅心智三选一。附带体质 +1。</description>
     <bonusAbilities><li>Con</li></bonusAbilities>
-    <statFactors><ImmunityGainSpeed>1.6</ImmunityGainSpeed><RestRateMultiplier>1.2</RestRateMultiplier></statFactors>
+    <!-- 1.92.0：原来免疫 ×1.6、休息 ×1.2。 -->
+    <statFactors><ImmunityGainSpeed>2</ImmunityGainSpeed><RestRateMultiplier>1.3</RestRateMultiplier><InjuryHealingFactor>1.2</InjuryHealingFactor></statFactors>
   </LichPhylactery.LP_FeatDef>
   <LichPhylactery.LP_FeatDef>
     <defName>LP_Feat_Chef</defName>
@@ -163,7 +165,7 @@
   <LichPhylactery.LP_FeatDef>
     <defName>LP_Feat_RitualCaster</defName>
     <label>仪式施法者</label>
-    <description>会用仪式补回耗尽的法术。能力“仪式施放”（每天 2 次）：站着引导 1 小时，冷却剩得最久的那个能力立刻冷却完毕，并且之后 1 小时内下一次施法不进冷却、不加心灵熵。需要智力或感知 13，且有 DND 职业路径或圣徽。附带智力或感知 +1。</description>
+    <description>会用仪式补回耗尽的法术。能力“仪式施放”（每天 2 次）：站着引导 1 小时，冷却剩得最久的那个能力立刻冷却完毕，并且之后 1 小时内下一次施法不进冷却、不加心灵熵。需要智力或感知 13，且有施法职业或圣徽。附带智力或感知 +1。</description>
     <bonusAbilities><li>Int</li><li>Wis</li></bonusAbilities>
     <iconPath>LP/Feats/RitualCaster</iconPath>
     <order>25</order>
@@ -175,12 +177,12 @@
   <LichPhylactery.LP_FeatDef>
     <defName>LP_Feat_DwarvenFortitude</defName>
     <label>矮人坚毅</label>
-    <description>矮人的身子骨。毒素抗性 +50%；每天第一次喝酒后立刻治好 40 点伤口。只有山地矮人、丘陵矮人能选。附带体质 +1。</description>
+    <description>矮人的身子骨。毒素抗性 +70%，疼痛休克阈值 +10%；每天第一次喝酒后立刻治好 60 点伤口。只有山地矮人、丘陵矮人能选。附带体质 +1。</description>
     <bonusAbilities><li>Con</li></bonusAbilities>
     <iconPath>LP/Feats/DwarvenFortitude</iconPath>
     <order>40</order><category>Racial</category><usesPerDay>1</usesPerDay>
     <requiredXenotypesAny><li>LP_Dwarf</li><li>LP_HillDwarf</li></requiredXenotypesAny>
-    <statOffsets><ToxicResistance>0.5</ToxicResistance></statOffsets>
+    <statOffsets><ToxicResistance>0.7</ToxicResistance><PainShockThreshold>0.1</PainShockThreshold></statOffsets>
     <enemyTags><li>any</li></enemyTags>
   </LichPhylactery.LP_FeatDef>
   <LichPhylactery.LP_FeatDef>
@@ -196,7 +198,7 @@
   <LichPhylactery.LP_FeatDef>
     <defName>LP_Feat_InfernalWrath</defName>
     <label>炼狱之怒</label>
-    <description>挨打只会让血里的火烧得更旺。被敌人攻击后，下一次攻击额外造成 15 点火焰伤害（5 秒冷却）。只有提夫林、阿斯莫能选。附带魅力 +1。</description>
+    <description>挨打只会让血里的火烧得更旺。被敌人攻击后，下一次攻击额外造成 15 + 冒险者等级点火焰伤害（5 秒冷却）。只有提夫林、阿斯莫能选。附带魅力 +1。</description>
     <bonusAbilities><li>Cha</li></bonusAbilities>
     <iconPath>LP/Feats/InfernalWrath</iconPath>
     <order>42</order><category>Racial</category>

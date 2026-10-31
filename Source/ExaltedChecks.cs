@@ -16,6 +16,12 @@ namespace LichPhylactery {
    ExRefresh(h);return h;
   }
   static void ExRefresh(Hediff_Adventurer h){h.Dirty();var _=h.CurStage;}
+  // 躯干上一处已成疤（永久）的割伤。
+  static Hediff_Injury ExScar(Pawn p,float sev){
+   var part=p.health.hediffSet.GetNotMissingParts().First(x=>x.def==BodyPartDefOf.Torso);
+   var i=(Hediff_Injury)HediffMaker.MakeHediff(HediffDefOf.Cut,p,part);i.Severity=sev;p.health.AddHediff(i,part);
+   i.TryGetComp<HediffComp_GetsPermanent>().IsPermanent=true;return i;
+  }
   // 热修1：按设置文件的格式读一份 Settings（只读临时文件，不碰玩家的设置）。
   static Settings ExLoadSettings(string body){
    string tmp=System.IO.Path.Combine(System.IO.Path.GetTempPath(),"lp_exalted_settings_test.xml");Settings st=null;
@@ -27,6 +33,7 @@ namespace LichPhylactery {
   }
   // 24 需要上限 24：威能之恩那一项 +4。
   static void ExMythic(Hediff_Adventurer h,int a){h.boons.Add(Epic.Might);h.mightAbility=a;h.scores[a]=24;ExRefresh(h);}
+  static float ExAdded(Hediff_Adventurer h,string stat){var f=new List<StatModifier>();Exalted.AddStats(h,new HediffStage(),f,new List<StatModifier>());var m=f.FirstOrDefault(x=>x.stat.defName==stat);return m==null?1f:m.value;} // 只看超凡自己加的那一项（智力本身也加全局学习）
   static float ExFactor(Hediff_Adventurer h,string stat){var m=h.CurStage.statFactors?.FirstOrDefault(x=>x.stat.defName==stat);return m==null?1f:m.value;}
   static float ExOffset(Hediff_Adventurer h,string stat){var m=h.CurStage.statOffsets?.FirstOrDefault(x=>x.stat.defName==stat);return m==null?0f:m.value;}
   Pawn ExAnimal(float min,float max){
@@ -94,19 +101,29 @@ namespace LichPhylactery {
     Exalted.CapDiseases(hc);Exalted.CapDiseases(hc2);
     Check(plague.Severity<HediffDefOf.Plague.lethalSeverity-.01f && Near(blood.Severity,Exalted.BloodCap) && Near(plague2.Severity,.97f) && Near(hc.CurStage.totalBleedFactor,.7f) && Near(ExOffset(hc,"PainShockThreshold"),.15f+.05f*3f),"不屈之躯 holds plague at "+plague.Severity.ToString("0.000")+"; 金刚不坏 holds blood loss at 0.58; bleeding ×0.7, pain shock +15%");
     c1.health.RemoveHediff(plague);c2.health.RemoveHediff(blood);a19.health.RemoveHediff(plague2);
+    // 13b. 1.91.0 去疤：不屈之躯有疤时满 5 天消除最重的一处，金刚不坏 2 天；没疤时计时归零；没有超凡体质不去疤
+    var clean=HtPawn();var hcl=ExAdv(clean,Adventurer.Con,20);
+    foreach(var cp in new[]{c1,c2,clean,a19})foreach(var oi in cp.health.hediffSet.hediffs.OfType<Hediff_Injury>().Where(x=>x.IsPermanent()).ToList())cp.health.RemoveHediff(oi); // 生成时自带的旧伤
+    var small=ExScar(c1,2f);var worst=ExScar(c1,4f);hc.scarTick=int.MinValue;var g0=Exalted.HealScar(hc,false);
+    hc.scarTick=now-Exalted.ScarTicks+250;var g1=Exalted.HealScar(hc,false);hc.scarTick=now-Exalted.ScarTicks;var g2=Exalted.HealScar(hc,false);
+    var ms=ExScar(c2,3f);hc2.scarTick=now-Exalted.MythicScarTicks;Exalted.CapDiseases(hc2);bool myGone=!c2.health.hediffSet.hediffs.Contains(ms);
+    hcl.scarTick=now-Exalted.ScarTicks*3;Exalted.HealScar(hcl,false);bool reset=hcl.scarTick==now;
+    var keep=ExScar(a19,3f);Adventurer.Get(a19).scarTick=now-Exalted.ScarTicks*3;Exalted.Tick(Adventurer.Get(a19));
+    Check(g0==null && hc.scarTick==now && g1==null && g2==worst && c1.health.hediffSet.hediffs.Contains(small) && !c1.health.hediffSet.hediffs.Contains(worst) && myGone && reset && a19.health.hediffSet.hediffs.Contains(keep) && Exalted.Describe(2,false).Contains("5 天") && Exalted.Describe(2,true).Contains("2 天"),"去疤: 不屈之躯 removes the worst scar (4 of 2/4) after 5 scarred days, not a tick earlier; 金刚不坏 after 2 days; no scars resets the timer; a pawn without 超凡体质 keeps its scar");
+    c1.health.RemoveHediff(small);a19.health.RemoveHediff(keep);
     // 14. 技能不衰退
     var it=HtPawn();ExAdv(it,Adventurer.Int,20);var sk=it.skills.skills.First(x=>!x.TotallyDisabled);sk.Level=18;sk.xpSinceLastLevel=1000f;float before=sk.xpSinceLastLevel;sk.Interval();
     var ctl=HtPawn();var sc=ctl.skills.skills.First(x=>!x.TotallyDisabled);sc.Level=18;sc.xpSinceLastLevel=1000f;float cb=sc.xpSinceLastLevel;sc.Interval();
-    Check(sk.Level==18 && Near(sk.xpSinceLastLevel,before) && sc.xpSinceLastLevel<cb && Near(ExFactor(Adventurer.Get(it),"ReadingSpeed"),1.3f) && Near(Exalted.ReadFactor(it),1.3f),"洞彻心智: a level-18 skill does not decay (control lost "+(cb-sc.xpSinceLastLevel).ToString("0")+" xp); reading ×1.3");
-    // 15. 举一反三：升级那一刻另一项技能得到所需经验的 10%（天才 20%）
+    Check(sk.Level==18 && Near(sk.xpSinceLastLevel,before) && sc.xpSinceLastLevel<cb && Near(ExFactor(Adventurer.Get(it),"ReadingSpeed"),Exalted.IntRead) && Near(Exalted.ReadFactor(it),Exalted.IntRead),"洞彻心智: a level-18 skill does not decay (control lost "+(cb-sc.xpSinceLastLevel).ToString("0")+" xp); reading ×"+Exalted.IntRead);
+    // 15. 举一反三：升级那一刻另一项技能得到所需经验的 25%（天才 50%，1.92.0 起）
     foreach(var x in it.skills.skills){x.Level=3;x.xpSinceLastLevel=0f;}
     var up=it.skills.skills.First(x=>!x.TotallyDisabled);float need=SkillRecord.XpRequiredToLevelUpFrom(3);float others=it.skills.skills.Where(x=>x!=up).Sum(x=>x.XpTotalEarned+x.xpSinceLastLevel);
     up.Learn(need+1f,true,true);float gain=it.skills.skills.Where(x=>x!=up).Sum(x=>x.XpTotalEarned+x.xpSinceLastLevel)-others;
-    Check(up.Level==4 && Near(gain/need,.1f) && Exalted.Echoes>0,"举一反三: level 3 → 4 gives another skill "+gain.ToString("0")+" xp ("+(gain/need).ToStringPercent()+" of "+need.ToString("0")+"; mask "+Exalted.MaskOf(it)+", echoes "+Exalted.Echoes+")");
+    Check(up.Level==4 && Near(gain/need,Exalted.IntEcho) && Exalted.Echoes>0,"举一反三: level 3 → 4 gives another skill "+gain.ToString("0")+" xp ("+(gain/need).ToStringPercent()+" of "+need.ToString("0")+"; mask "+Exalted.MaskOf(it)+", echoes "+Exalted.Echoes+")");
     var gn=HtPawn();ExMythic(ExAdv(gn),Adventurer.Int);var sa=gn.skills.skills.Where(x=>!x.TotallyDisabled).Take(2).ToList();
     foreach(var x in sa){x.Level=5;x.xpSinceLastLevel=0f;}sa[0].passion=Passion.None;sa[1].passion=Passion.Minor;sa[0].Learn(100f,false);sa[1].Learn(100f,false);
     var ct=HtPawn();var sct=ct.skills.skills.Where(x=>!x.TotallyDisabled).Take(2).ToList();foreach(var x in sct){x.Level=5;x.xpSinceLastLevel=0f;}sct[0].passion=Passion.None;sct[1].passion=Passion.Minor;sct[0].Learn(100f,false);sct[1].Learn(100f,false);
-    Check(Near(sa[0].xpSinceLastLevel,sa[1].xpSinceLastLevel) && sct[0].xpSinceLastLevel<sct[1].xpSinceLastLevel*.5f,"天才: a no-passion skill learns like minor passion ("+sa[0].xpSinceLastLevel.ToString("0")+" vs "+sa[1].xpSinceLastLevel.ToString("0")+"; normal pawn "+sct[0].xpSinceLastLevel.ToString("0")+")");
+    Check(Near(sa[0].xpSinceLastLevel,sa[1].xpSinceLastLevel) && sct[0].xpSinceLastLevel<sct[1].xpSinceLastLevel*.5f && Near(ExAdded(Adventurer.Get(gn),"GlobalLearningFactor"),Exalted.MythicLearn) && Near(ExAdded(Adventurer.Get(it),"GlobalLearningFactor"),1f),"天才: global learning ×"+Exalted.MythicLearn+" (not on plain 洞彻心智); a no-passion skill learns like minor passion ("+sa[0].xpSinceLastLevel.ToString("0")+" vs "+sa[1].xpSinceLastLevel.ToString("0")+"; normal pawn "+sct[0].xpSinceLastLevel.ToString("0")+")");
     // 16. 明察显形：8 格；先知 15 格
     var seer=HtPawn(null,null,true,0,0);ExAdv(seer,Adventurer.Wis,20);var prophet=HtPawn(null,null,true,1,0);ExMythic(ExAdv(prophet),Adventurer.Wis);
     var inv=DefDatabase<HediffDef>.GetNamed("PsychicInvisibility");var near=HtPawn(null,enemy,true,0,6);var far=HtPawn(null,enemy,true,0,12);near.health.AddHediff(inv);far.health.AddHediff(inv);

@@ -37,10 +37,11 @@
   <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
     <defName>LP_Feat_Class_MonkBreath</defName>
     <label>内息调和</label>
-    <description>一呼一吸都在养气。气上限 +2；气的恢复 ×1.5；冥想专注获取 +10%。武僧专属。附带敏捷或感知 +1。</description>
+    <description>一呼一吸都在养气。战技强度 +10%；气上限 +2；气的恢复 ×1.5；冥想专注获取 +10%。武僧专属。附带敏捷或感知 +1。</description>
     <iconPath>LP/Feats/Class/MonkBreath</iconPath>
     <order>62</order>
     <requiredClass>LP_Class_Monk</requiredClass><classLevel>3</classLevel>
+    <powerStats><li>LP_MartialPower</li></powerStats><powerBonus>0.1</powerBonus><!-- 1.92.0：3 级专长里只有资源、没有强度的三个补上 +10% -->
     <resourceBonus>2</resourceBonus><gainFactor>1.5</gainFactor>
     <statOffsets><MeditationFocusGain>0.1</MeditationFocusGain></statOffsets>
     <bonusAbilities><li>Dex</li><li>Wis</li></bonusAbilities>
@@ -160,11 +161,12 @@
   <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
     <defName>LP_Feat_Class_SorcererWellspring</defName>
     <label>魔力之泉</label>
-    <description>血里的魔力源源不断地涌出来。法力获取 ×1.5；法力上限 +2。术士专属。附带魅力或体质 +1。</description>
+    <description>血里的魔力源源不断地涌出来。天赋强度 +10%；法力获取 ×1.5；法力上限 +3。术士专属。附带魅力或体质 +1。</description>
     <iconPath>LP/Feats/Class/SorcererWellspring</iconPath>
     <order>72</order>
     <requiredClass>LP_Class_Sorcerer</requiredClass><classLevel>3</classLevel>
-    <resourceBonus>2</resourceBonus><gainFactor>1.5</gainFactor>
+    <powerStats><li>LP_InnatePower</li></powerStats><powerBonus>0.1</powerBonus>
+    <resourceBonus>3</resourceBonus><gainFactor>1.5</gainFactor>
     <bonusAbilities><li>Cha</li><li>Con</li></bonusAbilities>
   </LichPhylactery.LP_FeatDef>
   <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
@@ -209,10 +211,11 @@
   <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
     <defName>LP_Feat_Class_BarbarianSmolder</defName>
     <label>怒火中烧</label>
-    <description>一点就着，越烧越旺。怒气上限 +2；怒气获取 ×1.5。野蛮人专属。附带力量或体质 +1。</description>
+    <description>一点就着，越烧越旺。狂怒强度 +10%；怒气上限 +2；怒气获取 ×1.5。野蛮人专属。附带力量或体质 +1。</description>
     <iconPath>LP/Feats/Class/BarbarianSmolder</iconPath>
     <order>76</order>
     <requiredClass>LP_Class_Barbarian</requiredClass><classLevel>3</classLevel>
+    <powerStats><li>LP_RagePower</li></powerStats><powerBonus>0.1</powerBonus>
     <resourceBonus>2</resourceBonus><gainFactor>1.5</gainFactor>
     <bonusAbilities><li>Str</li><li>Con</li></bonusAbilities>
   </LichPhylactery.LP_FeatDef>
@@ -283,12 +286,12 @@
   <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
     <defName>LP_Feat_Class_WarlockDeepPact</defName>
     <label>契约深化</label>
-    <description>又在契约上多签了一行字。契约强度 +15%；契约法力上限 +1。邪术师专属。附带魅力 +1。</description>
+    <description>又在契约上多签了一行字。契约强度 +15%；契约法力上限 +1；邪术师能力冷却 ×0.9。邪术师专属。附带魅力 +1。</description>
     <iconPath>LP/Feats/Class/WarlockDeepPact</iconPath>
     <order>82</order>
     <requiredClass>LP_Class_Warlock</requiredClass><classLevel>3</classLevel>
     <powerStats><li>LP_PactPower</li></powerStats><powerBonus>0.15</powerBonus>
-    <resourceBonus>1</resourceBonus>
+    <resourceBonus>1</resourceBonus><cooldownFactor>0.9</cooldownFactor><!-- 1.92.0：原来只有强度和 +1，比同级的坚守圣誓少一项 -->
     <bonusAbilities><li>Cha</li></bonusAbilities>
   </LichPhylactery.LP_FeatDef>
   <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">

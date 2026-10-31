@@ -78,21 +78,21 @@
   <StatDef ParentName="LP_ClassPowerBase">
     <defName>LP_RagePower</defName>
     <label>狂怒强度</label>
-    <description>野蛮人能力的强度倍率：0.5 + 格斗等级/20，另加冒险者力量调整值 × 0.04 与 (熟练加值 − 2) × 0.02；有物理职业的人另加 0.02 ×（物理职业等级合计 − 1），最多 +40%。</description>
+    <description>野蛮人能力的强度倍率：0.5 + 格斗等级/20，另加冒险者力量调整值 × 0.05 与 (熟练加值 − 2) × 0.02；有物理职业的人另加 0.02 ×（物理职业等级合计 − 1），最多 +40%。</description>
     <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Melee</skill><ability>Str</ability></li></parts>
     <displayPriorityInCategory>4214</displayPriorityInCategory>
   </StatDef>
   <StatDef ParentName="LP_ClassPowerBase">
     <defName>LP_HuntPower</defName>
     <label>猎术强度</label>
-    <description>游侠能力的强度倍率：0.5 +（射击、格斗里较高的等级）/20，另加冒险者敏捷或感知（较高者）调整值 × 0.04 与 (熟练加值 − 2) × 0.02；有物理职业的人另加 0.02 ×（物理职业等级合计 − 1），最多 +40%。</description>
+    <description>游侠能力的强度倍率：0.5 +（射击、格斗里较高的等级）/20，另加冒险者敏捷或感知（较高者）调整值 × 0.05 与 (熟练加值 − 2) × 0.02；有物理职业的人另加 0.02 ×（物理职业等级合计 − 1），最多 +40%。</description>
     <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Shooting</skill><alternateSkill>Melee</alternateSkill><ability>Dex/Wis</ability></li></parts>
     <displayPriorityInCategory>4215</displayPriorityInCategory>
   </StatDef>
   <StatDef ParentName="LP_ClassPowerBase">
     <defName>LP_CunningPower</defName>
     <label>诡术强度</label>
-    <description>游荡者能力的强度倍率：0.5 +（格斗、射击里较高的等级）/20，另加冒险者敏捷调整值 × 0.04 与 (熟练加值 − 2) × 0.02；有物理职业的人另加 0.02 ×（物理职业等级合计 − 1），最多 +40%。</description>
+    <description>游荡者能力的强度倍率：0.5 +（格斗、射击里较高的等级）/20，另加冒险者敏捷调整值 × 0.05 与 (熟练加值 − 2) × 0.02；有物理职业的人另加 0.02 ×（物理职业等级合计 − 1），最多 +40%。</description>
     <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Melee</skill><alternateSkill>Shooting</alternateSkill><ability>Dex</ability></li></parts>
     <displayPriorityInCategory>4216</displayPriorityInCategory>
   </StatDef>

@@ -17,6 +17,7 @@ namespace LichPhylactery {
   public const int EnvoyDaysMin=3,EnvoyDaysMax=10,EnvoyStayTicks=GenDate.TicksPerDay,RefuseDays=60,MaxRefusals=3,ErrandDays=30,ResidueNeed=20,ShardNeed=3,CasketRaidTicks=6*GenDate.TicksPerHour,CasketStayTicks=GenDate.TicksPerDay,ReappearMin=30,ReappearMax=60,WreckDays=30,RaidMin=60,RaidMax=90;
   public const float ReadHoursNeed=20f,CampPoints=1f,CryptPoints=1.5f,WreckPoints=1.2f,CasketRaidPoints=1.2f,UndeadRaidPoints=.6f,ThayScrollWeight=1.25f;
   public const int ASendPsylink=4,ASendVPE=10,ErrandGoodwill=30,SilverReward=1000;
+  public const int ErrandGapDays=15; // 1.97.0 补丁 选项 C：办完一件差事，隔 15 天才交代下一件
   public const string ResearchName="LP_Research_NetherilArcana";
   static FactionDef larlochDef;
   public static FactionDef LarlochDef=>larlochDef??(larlochDef=DefDatabase<FactionDef>.GetNamedSilentFail("LP_Larloch"));
@@ -148,7 +149,7 @@ namespace LichPhylactery {
    l.Label="拉洛克的邀约";l.lookTargets=new LookTargets(envoy);l.relatedFaction=f;l.envoy=envoy;
    l.Text=reappear
     ?"影巫王拉洛克的使者又来了。这一次他开门见山：卡苏斯之卷又落回了拉洛克手里，他愿意再给你一次机会。\n\n以人换卷：交出一名心灵链接≥"+ASendPsylink+"（装了 VPE 时灵能等级≥"+ASendVPE+"）的殖民者，他会随使者永远离开（不算死亡），你立刻得到卷轴。\n以命匣换卷：交出一名巫妖的命匣。巫妖保留能力和等级，但从此死了不再复活。\n去古墓硬抢：拉洛克的古墓会显露在世界地图上，卷轴就放在中央大厅里。\n\n使者在殖民地边上等一天。不回复就当作你要去古墓硬抢。"
-    :"一个半巫妖带着两名骷髅护卫停在殖民地边上。他自称影巫王拉洛克的使者：主人察觉到你们在读耐瑟瑞尔的卷轴，愿意把真正的宝贝——卡苏斯之卷——交给配得上的人。\n\n以人换卷：交出一名心灵链接≥"+ASendPsylink+"（装了 VPE 时灵能等级≥"+ASendVPE+"）的殖民者，他会随使者永远离开（不算死亡，全体心情 -5 持续 10 天），你立刻得到卷轴。\n以命匣换卷：交出一名巫妖的命匣。命匣会被带走；巫妖保留能力和等级，但从此死了不再复活，也不能再向命匣献祭。\n为他办三件事：献上位面遗物、斩杀一名红袍法师、守护一次命匣转移，办完就把卷轴送来。\n拒绝：使者 60 天后再来，最多再来 2 次。\n\n也可以去古墓硬抢——第三次拒绝以后，拉洛克的古墓就会显露在世界地图上。\n\n使者在殖民地边上等一天。不回复就当作拒绝。";
+    :"一个半巫妖带着两名骷髅护卫停在殖民地边上。他自称影巫王拉洛克的使者：主人察觉到你们在读耐瑟瑞尔的卷轴，愿意把真正的宝贝——卡苏斯之卷——交给配得上的人。\n\n以人换卷：交出一名心灵链接≥"+ASendPsylink+"（装了 VPE 时灵能等级≥"+ASendVPE+"）的殖民者，他会随使者永远离开（不算死亡，全体心情 -5 持续 10 天），你立刻得到卷轴。\n以命匣换卷：交出一名巫妖的命匣。命匣会被带走；巫妖保留能力和等级，但从此死了不再复活，也不能再向命匣献祭。\n为他办三件事：献上位面遗物、斩杀一名红袍法师、守护一次命匣转移（每件办完隔 "+ErrandGapDays+" 天再交代下一件），办完就把卷轴送来。\n拒绝：使者 60 天后再来，最多再来 2 次。\n\n也可以去古墓硬抢——第三次拒绝以后，拉洛克的古墓就会显露在世界地图上。\n\n使者在殖民地边上等一天。不回复就当作拒绝。";
    Find.LetterStack.ReceiveLetter(l);
    return lord;
   }
@@ -191,7 +192,7 @@ namespace LichPhylactery {
   // D：拒绝（不回复、使者离开也算）。第三次拒绝后古墓显露。
   public static void Refuse(string why="你拒绝了拉洛克的邀约"){
    var st=State;if(st==null)return;
-   EnvoyLeaves(st);st.refusals++;st.errand=0;
+   EnvoyLeaves(st);st.refusals++;st.errand=0;st.nextErrand=0;st.nextErrandTick=-1;
    if(st.refusals>=MaxRefusals){st.stage="crypt";CreateCrypt(st,"第"+st.refusals+"次拒绝以后");return;}
    st.stage="refused";st.envoyTick=Now+RefuseDays*GenDate.TicksPerDay;
    Letter("拉洛克的耐心",why+"（已拒绝 "+st.refusals+" / "+MaxRefusals+" 次）。\n\n使者 "+RefuseDays+" 天后会再来。第"+MaxRefusals+"次拒绝以后，拉洛克的古墓会显露在世界地图上，可以去那里硬抢卡苏斯之卷。",LetterDefOf.NeutralEvent);
@@ -215,7 +216,11 @@ namespace LichPhylactery {
   }
 
   // ---------- 三件差事 ----------
+  // 办完差事 n 以后：先空着，ErrandGapDays 天后由 ErrandTick 交代下一件。
+  static void QueueErrand(NetherilQuestState st,int n){st.errand=0;st.nextErrand=n;st.nextErrandTick=Now+ErrandGapDays*GenDate.TicksPerDay;}
+  static string GapNote=>"\n\n拉洛克会在 "+ErrandGapDays+" 天后派人交代下一件差事。";
   public static void StartErrand(NetherilQuestState st,int n,Map map){
+   st.nextErrand=0;st.nextErrandTick=-1;
    st.errand=n;st.errandDeadline=Now+ErrandDays*GenDate.TicksPerDay;map=map??Home;
    switch(n){
     case 1:{
@@ -247,14 +252,14 @@ namespace LichPhylactery {
    Adventurer.MilestoneColony("larloch"+n,Adventurer.LarlochXP); // 1.48.0 冒险者里程碑：每件差事全体殖民者各一次
    switch(n){
     case 1:
-     if(map!=null)Messenger(map,new List<Thing>{Netheril.MakeArcane("Necromancy",QualityCategory.Good),Growth.MakeLegacy()}.Where(t=>t!=null).ToList(),"拉洛克收下了位面遗物，骷髅信使送来了一卷死灵学派的秘术残卷和一件沉睡的传承武器。"); // 1.58.3 传承武器
-     StartErrand(st,2,map);break;
+     if(map!=null)Messenger(map,new List<Thing>{Netheril.MakeArcane("Necromancy",QualityCategory.Good),Growth.MakeLegacy()}.Where(t=>t!=null).ToList(),"拉洛克收下了位面遗物，骷髅信使送来了一卷死灵学派的秘术残卷和一件沉睡的传承武器。"+GapNote); // 1.58.3 传承武器
+     QueueErrand(st,2);break;
     case 2:
      DestroySite(ref st.campSite);st.campLeader=null;
      if(map!=null){var silver=ThingMaker.MakeThing(ThingDefOf.Silver);silver.stackCount=SilverReward;var gifts=new List<Thing>{Netheril.MakeStudy(QualityCategory.Excellent),silver};var stone=Legend.MakeStone();if(stone!=null)gifts.Add(stone); // 1.50.0 传奇重铸之石
       var tome=Growth.MakeTome();if(tome!=null)gifts.Add(tome); // 1.58.3 属性典籍
-      Messenger(map,gifts,"红袍法师死了。骷髅信使送来了一卷优秀的研习卷、"+SilverReward+" 银"+(stone!=null?"、一块传奇重铸之石":"")+(tome!=null?"和一本"+tome.LabelNoCount:"")+"。");}
-     StartErrand(st,3,map);break;
+      Messenger(map,gifts,"红袍法师死了。骷髅信使送来了一卷优秀的研习卷、"+SilverReward+" 银"+(stone!=null?"、一块传奇重铸之石":"")+(tome!=null?"和一本"+tome.LabelNoCount:"")+"。"+GapNote);}
+     QueueErrand(st,3);break;
     case 3:
      var cell=st.casket!=null && st.casket.Spawned?st.casket.Position:(map?.Center??IntVec3.Invalid);
      CasketLeaves(st);
@@ -278,6 +283,7 @@ namespace LichPhylactery {
    Refuse(why);
   }
   public static void ErrandTick(NetherilQuestState st){
+   if(st.errand==0){if(st.nextErrand>0 && Now>=st.nextErrandTick)StartErrand(st,st.nextErrand,Home);return;}
    if(Now>st.errandDeadline){ErrandFailed("差事"+st.errand+"超过 "+ErrandDays+" 天没有办完，拉洛克当作你拒绝了");return;}
    if(st.errand==2 && st.campSite!=null && st.campSite.Destroyed && (st.campLeader==null || !st.campLeader.Dead)){st.campSite=null;var thay=Thay;if(thay!=null)st.campSite=MakeSite("LP_RedWizardCamp",thay,4,10,CampPoints);}
    if(st.errand==3 && st.casket!=null){
@@ -395,7 +401,7 @@ namespace LichPhylactery {
   // 卡苏斯之卷
   public Thing karsus;public string karsusStatus="none";public bool deciphered;public int reappearTick=-1;
   // 任务线
-  public string stage="idle",deal;public int envoyTick=-1,nextDailyCheck,refusals,errand,errandDeadline=-1;
+  public string stage="idle",deal;public int envoyTick=-1,nextDailyCheck,refusals,errand,errandDeadline=-1,nextErrand,nextErrandTick=-1;
   public bool envoyPending,reappearMode;public int intelEnvoyId=-1;public Pawn envoy;public Lord envoyLord;public IntVec3 envoyStand=IntVec3.Invalid;
   public Thing offeringBox;public Site campSite,cryptSite,wreckSite;public Pawn campLeader;public int wreckDeadline=-1;
   public Thing casket;public List<Pawn> casketGuards=new List<Pawn>();public int casketRaidTick=-1,casketDoneTick=-1;public bool casketRaidSent;
@@ -442,7 +448,7 @@ namespace LichPhylactery {
    Scribe_Collections.Look(ref karsusTicks,"lpKarsusTicks",LookMode.Value,LookMode.Value);Scribe_Collections.Look(ref karsusPasses,"lpKarsusPasses",LookMode.Value,LookMode.Value);Scribe_Collections.Look(ref readClock,"lpReadClock",LookMode.Value,LookMode.Value);
    if(Scribe.mode==LoadSaveMode.LoadingVars){Dictionary<int,int> oldHours=null;Scribe_Collections.Look(ref oldHours,"lpKarsusHours",LookMode.Value,LookMode.Value);if(oldHours!=null && oldHours.Count>0){if(karsusTicks==null)karsusTicks=new Dictionary<int,int>();foreach(var kv in oldHours)if(!karsusTicks.ContainsKey(kv.Key))karsusTicks[kv.Key]=kv.Value*Netheril.HourTicks;}}
    Scribe_References.Look(ref karsus,"lpKarsus");Scribe_Values.Look(ref karsusStatus,"lpKarsusStatus","none");Scribe_Values.Look(ref deciphered,"lpDeciphered");Scribe_Values.Look(ref reappearTick,"lpReappearTick",-1);
-   Scribe_Values.Look(ref stage,"lpStage","idle");Scribe_Values.Look(ref deal,"lpDeal");Scribe_Values.Look(ref envoyTick,"lpEnvoyTick",-1);Scribe_Values.Look(ref nextDailyCheck,"lpNextDailyCheck");Scribe_Values.Look(ref refusals,"lpRefusals");Scribe_Values.Look(ref errand,"lpErrand");Scribe_Values.Look(ref errandDeadline,"lpErrandDeadline",-1);
+   Scribe_Values.Look(ref stage,"lpStage","idle");Scribe_Values.Look(ref deal,"lpDeal");Scribe_Values.Look(ref envoyTick,"lpEnvoyTick",-1);Scribe_Values.Look(ref nextDailyCheck,"lpNextDailyCheck");Scribe_Values.Look(ref refusals,"lpRefusals");Scribe_Values.Look(ref errand,"lpErrand");Scribe_Values.Look(ref errandDeadline,"lpErrandDeadline",-1);Scribe_Values.Look(ref nextErrand,"lpNextErrand");Scribe_Values.Look(ref nextErrandTick,"lpNextErrandTick",-1);
    Scribe_Values.Look(ref envoyPending,"lpEnvoyPending");Scribe_Values.Look(ref intelEnvoyId,"lpIntelEnvoyId",-1);Scribe_Values.Look(ref reappearMode,"lpReappearMode");Scribe_References.Look(ref envoy,"lpEnvoy");Scribe_References.Look(ref envoyLord,"lpEnvoyLord");Scribe_Values.Look(ref envoyStand,"lpEnvoyStand",IntVec3.Invalid);
    Scribe_References.Look(ref offeringBox,"lpOfferingBox");Scribe_References.Look(ref campSite,"lpCampSite");Scribe_References.Look(ref cryptSite,"lpCryptSite");Scribe_References.Look(ref wreckSite,"lpWreckSite");Scribe_References.Look(ref campLeader,"lpCampLeader");Scribe_Values.Look(ref wreckDeadline,"lpWreckDeadline",-1);
    Scribe_References.Look(ref casket,"lpCasket");ScribePawns.Look(ref casketGuards,"lpCasketGuards");Scribe_Values.Look(ref casketRaidTick,"lpCasketRaidTick",-1);Scribe_Values.Look(ref casketDoneTick,"lpCasketDoneTick",-1);Scribe_Values.Look(ref casketRaidSent,"lpCasketRaidSent");

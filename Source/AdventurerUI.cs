@@ -182,11 +182,12 @@ namespace LichPhylactery {
    int pts=h.AvailablePoints;
    var head=new Rect(0f,y,180f,28f);
    if(pts<=0)GUI.color=Color.gray;Widgets.Label(new Rect(head.x,head.y+4f,head.width,24f),"可用属性点："+pts);GUI.color=Color.white;
-   TooltipHandler.TipRegion(head,"每次属性提升 = "+h.ASIPoints+" 点"+(h.ASIPoints==3?"（百炼成钢）":"")+"；4、8、12、16 级各一次"+(h.ASIPoints==3?"，20 级再一次":"")+"。\n点六维后面的 +1 / +2 直接加点，单项上限 "+Adventurer.ScoreCap+"（威能之恩那一项 +4，传奇冒险者每 5 个传奇等级 +2）。\n剩下 "+h.pendingASI+" 次完整的属性提升"+(h.asiLeft>0?"，另有 "+h.asiLeft+" 点是拆开的":"")+"；改选专长要消耗一次完整的属性提升。");
+   // 1.90.0：等级按这个人的实际规则列（勤勉 6 / 10 / 14 / 18、百炼成钢 20）；3 点的来源可能是百炼成钢、英雄之资或反骨，不再一律写百炼成钢。
+   TooltipHandler.TipRegion(head,"每次属性提升 = "+h.ASIPoints+" 点"+(h.ASIPoints>2?"（天赋或特性加成，不叠加）":"")+"；"+string.Join("、",Enumerable.Range(2,Adventurer.MaxLevel-1).Where(l=>h.AsiAt(l)>0).Select(l=>l+(h.AsiAt(l)>1?"（×"+h.AsiAt(l)+"）":"")))+" 级各一次。\n点六维后面的 +1 / +2 直接加点，单项上限 "+Adventurer.ScoreCap+"（威能之恩那一项 +4，传奇冒险者每 5 个传奇等级 +2）。\n剩下 "+h.pendingASI+" 次完整的属性提升"+(h.asiLeft>0?"，另有 "+h.asiLeft+" 点是拆开的":"")+"；改选专长要消耗一次完整的属性提升。");
    float bx=w;
    {var r=new Rect(bx-110f,y,110f,28f);bx-=116f;bool auto=LichMod.Settings?.adventurerAutoASI??false,was=auto;
     Widgets.CheckboxLabeled(r,"自动加点",ref auto);
-    TooltipHandler.TipRegion(r,"同设置里的“殖民者自动加点”：升到 4、8、12、16 级时自动加在职业主属性或最高的一项。打开时这个人剩下的点也立即自动分配。");
+    TooltipHandler.TipRegion(r,"同设置里的“殖民者自动加点”：获得属性提升时自动加在职业主属性或最高的一项。打开时这个人剩下的点也立即自动分配。");
     if(auto!=was && LichMod.Settings!=null){LichMod.Settings.adventurerAutoASI=auto;LoadedModManager.GetMod<LichMod>()?.WriteSettings();if(auto && own && pts>0)h.AutoAssign();}}
    if(own && h.boonPoints>0){var r=new Rect(bx-120f,y,120f,28f);bx-=126f;
     if(Widgets.ButtonText(r,"选恩赐（"+h.boonPoints+"）"))scroll.y=boonPickY;
@@ -344,7 +345,7 @@ namespace LichPhylactery {
    if(Adventurer.VPELoaded){
     var r=new Rect(0f,y,w,24f);
     Widgets.Label(r,"VPE 额外路径点 +"+h.vpeGranted+(h.vpeBanked>0?"（另有 "+h.vpeBanked+" 点等觉醒灵能后发放）":""));
-    TooltipHandler.TipRegion(r,"每个冒险者等级给 1 点 VPE 路径点（不加 VPE 灵能等级；传奇等级每 2 级 1 点）。还没有 VPE 灵能的人先攒着，第一次获得心灵链接时一次发放。\nDND 职业路径：对应技能 6 级，或主属性 13 即可解锁；职业强度另加 0.04 × 主属性调整值 + 0.02 ×（熟练加值 − 2）。");
+    TooltipHandler.TipRegion(r,"每个冒险者等级给 1 点 VPE 路径点（不加 VPE 灵能等级；传奇等级每 2 级 1 点）。还没有 VPE 灵能的人先攒着，第一次获得心灵链接时一次发放。\nDND 职业路径：对应技能 6 级，或主属性 13 即可解锁；职业强度另加 0.05 × 主属性调整值 + 0.02 ×（熟练加值 − 2）。");
     y+=Row;
    }
    if(h.milestonesDone.Count>0){var r=new Rect(0f,y,w,24f);Widgets.Label(r,"里程碑："+h.milestonesDone.Count+" 个");if(Mouse.IsOver(r))TooltipHandler.TipRegion(r,Tip());y+=Row;}

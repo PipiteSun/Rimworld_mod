@@ -90,9 +90,11 @@ namespace LichPhylactery {
   }
   static string Tip(Pawn p,LP_ClassDef c,ClassAbilityEntry e,bool have,string miss){
    var d=e.ability;var props=d.comps?.OfType<CompProperties_ClassEffect>().FirstOrDefault();
-   string cost=props==null?"":props.passive?"被动":"消耗 "+ClassSystem.ResourceLabel(c.resource)+" "+props.cost;
-   int cd=d.cooldownTicksRange.max;
-   return d.LabelCap+"（"+c.label+" "+e.level+" 级"+(e.capstoneSkill!=null?"，"+e.capstoneSkill.LabelCap+" "+ClassSystem.CapstoneSkill+" 级":"")+"）\n\n"+d.description+"\n\n"+cost+(cd>0?"　冷却 "+cd.ToStringTicksToPeriod():"")+(props!=null && props.stat!=null?"\n当前强度 "+ClassSystem.Strength(p,props).ToStringPercent():"")+"\n\n"+(have?"已掌握":miss??"未掌握");
+   // 1.90.0：消耗、冷却、强度按实际公式（传奇能力、职业专属专长的减免与倍率都算进去）。
+   int pay=props==null?0:ClassLegendary.Cost(p,d,props);
+   string cost=props==null?"":props.passive?"被动":"消耗 "+ClassSystem.ResourceLabel(c.resource)+" "+pay+(pay!=props.cost?"（基础 "+props.cost+"）":"");
+   int cd0=d.cooldownTicksRange.max,cd=cd0<=0?cd0:Mathf.Max(1,Mathf.RoundToInt(cd0*ClassFeats.CooldownFactor(p,d)));
+   return d.LabelCap+"（"+c.label+" "+e.level+" 级"+(e.capstoneSkill!=null?"，"+e.capstoneSkill.LabelCap+" "+ClassSystem.CapstoneSkill+" 级":"")+"）\n\n"+d.description+"\n\n"+cost+(cd>0?"　冷却 "+cd.ToStringTicksToPeriod()+(cd!=cd0?"（基础 "+cd0.ToStringTicksToPeriod()+"）":""):"")+(props!=null && props.stat!=null?"\n当前强度 "+(ClassSystem.Strength(p,props)*ClassLegendary.PowerFactor(p,props)).ToStringPercent():"")+"\n\n"+(have?"已掌握":miss??"未掌握");
   }
  }
 }

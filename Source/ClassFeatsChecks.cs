@@ -52,6 +52,9 @@ namespace LichPhylactery {
     var ab=r.abilities.abilities.FirstOrDefault(x=>x is Ability_Class && ClassSystem.ClassOf(x.def)==Cls("Artificer"));int acd=-1,off=-1;
     if(ab!=null){ab.StartCooldown(1000);acd=ab.CooldownTicksRemaining;s.adventurer=false;ab.StartCooldown(1000);off=ab.CooldownTicksRemaining;s.adventurer=true;ab.ResetCooldown();}
     Check(acd==750 && off==1000,"工坊大师: "+ab?.def.label+" cooldown 1000 → "+acd+"; adventurer switch off → "+off);
+    // 9. 1.92.0：每个 3 级职业专长都带本职业强度（内息调和、魔力之泉、怒火中烧补上 +10%），契约深化多冷却 ×0.9
+    var lv3=DefDatabase<LP_FeatDef>.AllDefsListForReading.Where(f=>f.ClassFeat && f.classLevel==3).ToList();
+    Check(lv3.Count==12 && lv3.All(f=>f.powerBonus>0f && f.powerStats!=null && f.powerStats.Count>0) && Near(FD("LP_Feat_Class_WarlockDeepPact").cooldownFactor,.9f) && FD("LP_Feat_Class_SorcererWellspring").resourceBonus==3,"every class-level-3 feat raises its class power (missing: "+string.Join(",",lv3.Where(f=>f.powerBonus<=0f).Select(f=>f.label))+"); 契约深化 cooldown ×0.9; 魔力之泉 mana +3");
    }finally{
     s.adventurer=oldOn;foreach(var p in advMade)if(!p.Destroyed)p.Destroy();advMade.Clear();Adventurer.TestSuppressed=sup;
    }

@@ -158,19 +158,25 @@ namespace LichPhylactery {
   }
  }
 
- // ---------- 黄昏之兆：每年第 1 天掷一次（第 2 年起，25%），15 天后开始 ----------
+ // ---------- 黄昏之兆：每年掷一次（25%），15 天后开始。第 2 年起在每年第 1 天掷；第 1 年在第 5～45 天里随机一天掷（1.97.0 补丁） ----------
  public class WorldComponent_Twilight : WorldComponent {
   public const float YearChance=.25f;
-  public int startTick=-1,rolledYear=-1;
+  public const int FirstYearMinDay=5,FirstYearMaxDay=45;
+  public int startTick=-1,rolledYear=-1,firstRollTick=-1;
   public WorldComponent_Twilight(World world):base(world){}
   public override void WorldComponentTick(){
    int now=Find.TickManager.TicksGame;if(now%GenDate.TicksPerHour!=311)return;
    if(startTick>=0 && now>=startTick){startTick=-1;Twilight.Start();return;}
    int year=GenDate.YearsPassed;
-   if(year>=1 && year!=rolledYear){rolledYear=year;if(LichMod.Settings.twilightYear && startTick<0 && !Twilight.Active && Twilight.Roll<YearChance)Twilight.Omen();}
+   if(year==0 && rolledYear<0){
+    if(firstRollTick<0)firstRollTick=Rand.RangeInclusive(FirstYearMinDay,FirstYearMaxDay)*GenDate.TicksPerDay;
+    if(now>=firstRollTick){rolledYear=0;YearRoll();}
+   }
+   else if(year>=1 && year!=rolledYear){rolledYear=year;YearRoll();}
   }
+  void YearRoll(){if(LichMod.Settings.twilightYear && startTick<0 && !Twilight.Active && Twilight.Roll<YearChance)Twilight.Omen();}
   public float DaysUntilStart=>startTick<0?-1f:(startTick-Find.TickManager.TicksGame)/(float)GenDate.TicksPerDay;
-  public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref startTick,"lpTwilightStart",-1);Scribe_Values.Look(ref rolledYear,"lpTwilightYear",-1);}
+  public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref startTick,"lpTwilightStart",-1);Scribe_Values.Look(ref rolledYear,"lpTwilightYear",-1);Scribe_Values.Look(ref firstRollTick,"lpTwilightFirstRoll",-1);}
  }
  public class IncidentWorker_TwilightOmen : IncidentWorker {
   protected override bool CanFireNowSub(IncidentParms parms)=>LichMod.Settings.twilightYear && Twilight.World!=null && Twilight.World.startTick<0 && !Twilight.Active;

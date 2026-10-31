@@ -68,7 +68,7 @@
   <LichPhylactery.LP_FeatDef>
     <defName>LP_Feat_WarCaster</defName>
     <label>战争施法者</label>
-    <description>在刀光剑影里也能稳住法术。施法预热时受伤不会被打断（不中断施法、不被伤害眩晕）；能力的施法预热时间 ×0.75；心灵热量上限 +30。对 VPE 职业能力和神术都有效。需要 DND 职业路径或佩戴圣徽。附带智力、感知或魅力 +1。</description>
+    <description>在刀光剑影里也能稳住法术。施法预热时受伤不会被打断（不中断施法、不被伤害眩晕）；能力的施法预热时间 ×0.75；心灵热量上限 +30。对职业法术、VPE 能力和神术都有效。需要施法职业（法师、牧师、德鲁伊、术士、邪术师、圣武士、器械师或诡术师）或佩戴圣徽。附带智力、感知或魅力 +1。</description>
     <iconPath>LP/Feats/WarCaster</iconPath>
     <order>7</order>
     <workerClass>LichPhylactery.FeatWorker_WarCaster</workerClass>
@@ -124,7 +124,7 @@
   <LichPhylactery.LP_FeatDef>
     <defName>LP_Feat_SpellSniper</defName>
     <label>法术狙击</label>
-    <description>把法术打得更远。VPE 职业能力（含 VPE 心灵法术）和神术的射程 +75%；心灵热量恢复 ×1.25。需要 DND 职业路径或佩戴圣徽。附带智力、感知或魅力 +1。</description>
+    <description>把法术打得更远。职业法术（近身和借用武器射程的除外）、VPE 心灵法术和神术的射程 +75%；心灵热量恢复 ×1.25。需要施法职业（法师、牧师、德鲁伊、术士、邪术师、圣武士、器械师或诡术师）或佩戴圣徽。附带智力、感知或魅力 +1。</description>
     <iconPath>LP/Feats/SpellSniper</iconPath>
     <order>12</order>
     <workerClass>LichPhylactery.FeatWorker_SpellSniper</workerClass>

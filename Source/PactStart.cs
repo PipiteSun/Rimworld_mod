@@ -24,7 +24,8 @@ namespace LichPhylactery {
   public static bool Allowed(Scenario s)=>TestForce || s?.AllParts.Any(p=>p is ScenPart_PactStart)==true;
   public static bool AllowedNow=>Allowed(Current.Game?.Scenario);
   // 替换建角页里的 DefDatabase<XenotypeDef>.AllDefs
-  public static IEnumerable<XenotypeDef> Choosable(){var all=DefDatabase<XenotypeDef>.AllDefs;return AllowedNow?all:all.Where(x=>!IsPactRace(x));}
+  // 1.95.0：敌人专用异种（EnemyRaces）在任何剧本里都不列出
+  public static IEnumerable<XenotypeDef> Choosable(){var all=DefDatabase<XenotypeDef>.AllDefs.Where(x=>!EnemyRaces.Hidden(x));return AllowedNow?all:all.Where(x=>!IsPactRace(x));}
  }
 
  [HarmonyPatch]
