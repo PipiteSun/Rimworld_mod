@@ -58,8 +58,7 @@ namespace LichPhylactery {
     var br=HtPawn(null,null,true,-2,-2);F2Adv(br).AddFeat(Feats2.Brawler);var foe=HtPawn(null,AdvEnemy,true,-1,-2);var at=foe.Position;
     float fist=Feats2.OutFactor(br,HeroTraits.Info(br),foe,new DamageInfo(DamageDefOf.Blunt,5f,0f,-1f,br,null,br.def));
     Feats2.TestRoll=0f;try{foe.TakeDamage(new DamageInfo(DamageDefOf.Blunt,1f,0f,-1f,br,null,br.def));}finally{Feats2.TestRoll=null;}
-    Check(Near(fist,2.5f) && foe.Position!=at && foe.Position.DistanceTo(br.Position)>at.DistanceTo(br.Position),"酒馆斗殴者: unarmed damage ×"+fist+" and a punch shoves the enemy one cell ("+at+" → "+foe.Position+")");
-    // 11. 起源专长按背景表：侍僧 → 魔法学徒，罪犯 → 警觉，隐士 → 治疗者，没有背景 → 技能专家，5% → 幸运
+    Check(Near(fist,2.5f) && foe.Position!=at && foe.Position.DistanceTo(br.Position)>at.DistanceTo(br.Position),"酒馆斗殴者: unarmed damage ×"+fist+" and a punch shoves the enemy one cell ("+at+" → "+foe.Position+")");    // 11. 起源专长按背景表：侍僧 → 魔法学徒，罪犯 → 警觉，隐士 → 治疗者，没有背景 → 技能专家，5% → 幸运
     Pawn Bg(TraitDef t){var p=HtPawn();if(t!=null)p.story.traits.GainTrait(new Trait(t));return p;}
     Check(Feats2.PickOrigin(Bg(BackgroundTraits.Acolyte),.5f)==Feats2.MagicInitiate && Feats2.PickOrigin(Bg(BackgroundTraits.Criminal),.5f)==Feats.Alert && Feats2.PickOrigin(Bg(BackgroundTraits.Hermit),.5f)==Feats.Healer && Feats2.PickOrigin(Bg(BackgroundTraits.Noble),.5f)==Feats2.Skilled && Feats2.PickOrigin(Bg(null),.5f)==Feats2.Skilled && Feats2.PickOrigin(Bg(BackgroundTraits.Acolyte),.01f)==Feats.Lucky,"origin feat table: acolyte → 魔法学徒, criminal → 警觉, hermit → 治疗者, noble / no background → 技能专家, the 5% roll → 幸运");
     // 12. 发放：只发一次；已有同名的改发技能专家；起源专长不占属性提升

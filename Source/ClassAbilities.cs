@@ -33,7 +33,7 @@ namespace LichPhylactery {
    if(ClassSystem.CannotCast(pawn,def,Props)!=null)return false;
    ClassSystem.Pay(pawn,def,Props);
    bool ok=base.Activate(target,dest);
-   if(ok){ClassCasters.AfterCast(this);ClassLegendary.AfterCast(this);ClassSubclass.AfterCast(this);}
+   if(ok){ClassCasters.AfterCast(this);ClassLegendary.AfterCast(this);ClassSubclass.AfterCast(this);LakeArcana.AfterCast(this,target);} // 1.100.0 秘传
    return ok;
   }
   public override string Tooltip{get{
@@ -57,8 +57,8 @@ namespace LichPhylactery {
  public static class ClassEffects {
   public static readonly Color MartialColor=new Color(.95f,.6f,.4f);
   public static float Strength(Pawn p,CompProperties_ClassEffect e)=>ClassSystem.Strength(p,e);
-  public static float Power(Pawn p,CompProperties_ClassEffect e)=>e.power*Strength(p,e)*(e.sorcery && Items.Has(p,"LP_Empowered")?1.5f:1f)*ClassLegendary.PowerFactor(p,e)*Warlock.PowerFactor(p,e); // 1.73.0 超魔·强效；1.74.0 法术强效 ×1.3；邪术师（宗主化身、邪魔 + 契约）
-  public static int Duration(Pawn p,CompProperties_ClassEffect e)=>Mathf.RoundToInt(e.duration*(e.durationScales?ClassSystem.StatValue(p,e):1f));
+  public static float Power(Pawn p,CompProperties_ClassEffect e)=>e.power*Strength(p,e)*(e.sorcery && Items.Has(p,"LP_Empowered")?1.5f:1f)*ClassLegendary.PowerFactor(p,e)*Warlock.PowerFactor(p,e)*LakeArcana.PowerFactor(p,e); // 1.73.0 超魔·强效；1.74.0 法术强效 ×1.3；邪术师（宗主化身、邪魔 + 契约）；1.100.0 超魔·追踪、元素化身
+  public static int Duration(Pawn p,CompProperties_ClassEffect e)=>Mathf.RoundToInt(e.duration*(e.durationScales?ClassSystem.StatValue(p,e):1f)*LakeArcana.DurationFactor(p,e)); // 1.100.0 超魔·延效
   public static float Radius(Pawn p,CompProperties_ClassEffect e)=>e.radius*(e.radiusScales?ClassSystem.StatValue(p,e):1f);
   static bool Hostile(Pawn caster,Pawn t)=>t!=null && t!=caster && !t.Dead && t.HostileTo(caster);
   static bool Friendly(Pawn caster,Pawn t)=>t!=null && !t.Dead && !t.HostileTo(caster);
@@ -78,7 +78,7 @@ namespace LichPhylactery {
      if(t.HostileTo(caster))return "只能对友军使用。";
      break;
    }
-   var cw=ClassCasters.Invalid(caster,e,target)??ClassLegendary.Invalid(caster,e,target)??ClassMartial2.Invalid(caster,e,target)??ClassSubclass.Invalid(caster,e,target)??Warlock.Invalid(caster,e,target);if(cw!=null)return cw; // 1.73.0 施法职业；1.74.0 传奇；新职业；子职业；邪术师
+   var cw=ClassCasters.Invalid(caster,e,target)??ClassLegendary.Invalid(caster,e,target)??ClassMartial2.Invalid(caster,e,target)??ClassSubclass.Invalid(caster,e,target)??Warlock.Invalid(caster,e,target)??ArcanaEffects.Invalid(caster,e,target);if(cw!=null)return cw; // 1.73.0 施法职业；1.74.0 传奇；新职业；子职业；邪术师
    if(e.ranged){var v=Martial.RangedVerb(caster);if(v?.Projectile==null)return "需要远程武器。";if(target.Cell.IsValid && caster.Position.DistanceTo(target.Cell)>v.EffectiveRange)return "超出当前武器的射程（"+v.EffectiveRange.ToString("0")+" 格）。";}
    switch(e.effect){
     case "Charge":if(!t.Position.AdjacentTo8WayOrInside(caster.Position) && !Charge.LandingCell(caster,t).IsValid)return "目标身边没有能落脚的格子。";break;
@@ -122,6 +122,7 @@ namespace LichPhylactery {
    if(ClassMartial2.Apply(p,def,e,target))return; // 野蛮人、游侠、游荡者
    if(ClassSubclass.Apply(p,def,e,target))return; // 子职业与通用能力
    if(Warlock.Apply(p,def,e,target))return; // 邪术师
+   if(ArcanaEffects.Apply(p,def,e,target))return; // 1.100.0 秘传
    Log.ErrorOnce("[DND边缘大陆] 未知的职业能力效果："+e.effect,e.effect?.GetHashCode()??0);
   }
   public static int BattleCry(Pawn p,float radius,int ticks,float s){

@@ -712,6 +712,8 @@ namespace LichPhylactery {
  }
  public class ChoiceLetter_Pact : LP_EventLetter {
   public string kind;public int pactId=-1,extra=-1;public Pawn pawn;public Thing thing;
+  // 2026-11-02：调换儿信件记原来的异种（按 defName 存）；以前记的是 XenotypeDef 列表下标，中途加减模组（如 Alpha Genes）后会指到别的异种。
+  public XenotypeDef xeno;
   PlanarPact PlanarPact=>Pacts.ById(pactId);
   // 1.69.0 事件小人入口：没答复过就一直能答（选项本身会检查契约 / 契约书 / 小人还在不在）；签约人、契约书、血战双方都能打开。
   protected override bool Live=>kind=="bloodwar"?Pacts.Comp?.bloodWar is PactBloodWar w && w.aided==null && Math.Abs(w.start-arrivalTick)<GenDate.TicksPerHour:pawn==null || !pawn.Dead;
@@ -776,7 +778,7 @@ namespace LichPhylactery {
   }}
   void Resend(CompPactScroll s,string prefix){PactLetters.Send("offer",null,pawn,thing,"契约书："+s.patron.label,prefix+Pacts.OfferText(pawn,s));}
   public DiaOption Choice(string text,Action act,string disabled=null)=>Opt(text,act,disabled);
-  public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref kind,"lpKind");Scribe_Values.Look(ref pactId,"lpPactId",-1);Scribe_Values.Look(ref extra,"lpExtra",-1);Scribe_References.Look(ref pawn,"lpPawn");Scribe_References.Look(ref thing,"lpThing");}
+  public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref kind,"lpKind");Scribe_Values.Look(ref pactId,"lpPactId",-1);Scribe_Values.Look(ref extra,"lpExtra",-1);Scribe_Defs.Look(ref xeno,"lpXeno");Scribe_References.Look(ref pawn,"lpPawn");Scribe_References.Look(ref thing,"lpThing");}
  }
 
  // ---------- 设置（“异界契约”分组：画在“深渊”分组下面，见 AbyssSettings.Draw 末尾） ----------

@@ -138,9 +138,10 @@ namespace LichPhylactery {
      var s=DefCache<StatDef>.Get("LP_CunningPower");f*=1f+SneakBonus(i.rogue,s==null?1f:a.GetStatValue(s));
      if(ClassSubclass.S(a,ClassSubclass.SDeadly) && ClassSubclass.Controlled(v))f*=ClassSubclass.DeadlyFactor; // 致命一击
      lastSneak[a.thingIDNumber]=Find.TickManager.TicksGame;Items.Mote(v,"偷袭",ShadowColor);
+     if(LakeArcana.Touched && LakeArcana.Has(a,"CripplingStab"))Items.Give(v,"LP_ACB_Crippled",1800); // 1.100.0 致残刺
     }
     if(luckCrit.Remove(a.thingIDNumber))f*=2f;
-    if(Items.Has(a,"LP_PoisonBlade") && v.RaceProps.IsFlesh && !Items.Undead(v)){var s=DefCache<StatDef>.Get("LP_CunningPower");HealthUtility.AdjustSeverity(v,HediffDefOf.ToxicBuildup,PoisonPer*(s==null?1f:a.GetStatValue(s)));}
+    if(Items.Has(a,"LP_PoisonBlade") && v.RaceProps.IsFlesh && (!Items.Undead(v) || LakeArcana.Touched && LakeArcana.Has(a,"PoisonKing"))){var s=DefCache<StatDef>.Get("LP_CunningPower");HealthUtility.AdjustSeverity(v,HediffDefOf.ToxicBuildup,PoisonPer*(s==null?1f:a.GetStatValue(s))*(LakeArcana.Touched && LakeArcana.Has(a,"PoisonKing")?2f:1f));} // 1.100.0 毒王：毒量 ×2，对亡灵也生效
     if(Items.Has(a,"LP_ShadowStep"))Items.Remove(a,"LP_ShadowStep");
    }
    if(ClassSubclass.Users.Count>0)f*=ClassSubclass.Out(a,v,d,hostile); // 子职业

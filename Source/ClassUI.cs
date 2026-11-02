@@ -20,6 +20,7 @@ namespace LichPhylactery {
     TooltipHandler.TipRegion(r,"每个冒险者等级 1 点职业点（传奇等级 21～40 不给），职业等级总和不超过冒险者等级（最多 20）。\n第一个职业：主或副技能 "+ClassSystem.FirstSkill+" 级（或主属性 "+ClassSystem.ScoreGate+"）。\n兼修（最多 "+ClassSystem.MaxClasses+" 个）：冒险者 "+ClassSystem.MultiAdventurerLevel+" 级，且那门技能 "+ClassSystem.MultiSkill+" 级（或主属性 "+ClassSystem.ScoreGate+"）。\n能力在职业等级 "+string.Join(" / ",ClassSystem.AbilityLevels)+" 自动获得（邪术师的秘法奥秘在 11 / 13）；"+ClassSystem.AbilityLevels[ClassSystem.AbilityLevels.Length-1]+" 级的终极另要那门技能 "+ClassSystem.CapstoneSkill+" 级。");
     if(own && pts>0 && Widgets.ButtonText(new Rect(w-124f,y,124f,26f),"选择职业"))Find.WindowStack.Add(new Dialog_ChooseClass(p));}
    y+=30f;
+   if(LakeArcana.Slots(h)>0){var ar=new Rect(0f,y,w,22f);GUI.color=new Color(.55f,.8f,1f);Widgets.Label(ar,LakeArcana.SlotLine(h));GUI.color=Color.white;TooltipHandler.TipRegion(ar,LakeArcana.SlotTip);y+=24f;} // 1.100.0
    foreach(var c in ClassSystem.All)y=DrawClass(y,w,p,h,c,own,pts);
    return y;
   }
@@ -70,6 +71,7 @@ namespace LichPhylactery {
    y+=treeH+4f;
    if(lv>0)y=ClassSubclass.DrawRow(y,w,p,h,c,own); // 子职业行
    if(lv>0 && c.legendary.Count>0)y=DrawLegendRow(y,w,p,h,c,own);
+   if(lv>0)y=LakeArcana.DrawClassRow(y,w,p,h,c); // 1.100.0 职业水晶
    return y+4f;
   }
   // 1.74.0「传奇」行：两个传奇能力的图标、状态，可以学的时候有按钮。

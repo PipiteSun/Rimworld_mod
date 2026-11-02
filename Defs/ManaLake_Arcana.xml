@@ -1,0 +1,714 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.100.0 魔力湖泊职业水晶：12 个职业 × 4 枚（6 / 7 / 8 / 9 环），见 Source/ManaLake.cs、ManaLakeEffects.cs。
+     只有那个职业能学（职业等级 11 / 13 / 15 / 17），占秘传槽；不耗资源，冷却 6 环 2 天、7 环 3 天、8 环 5 天、9 环 7 天（个别注明）。
+     强度用那个职业的强度属性；数值写的是 ×1 强度时的基础值。 -->
+<Defs>
+
+  <!-- ==================== 状态 ==================== -->
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ACB_SteelCut</defName>
+    <label>斩铁式</label>
+    <description>所有攻击无视护甲。</description>
+    <defaultLabelColor>(0.95,0.6,0.4)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ACB_Immovable</defName>
+    <label>不动如山</label>
+    <description>免疫击晕，不会倒地，受到的伤害 ×0.5。</description>
+    <defaultLabelColor>(0.95,0.6,0.4)</defaultLabelColor>
+    <stages><li><statFactors><IncomingDamageFactor>0.5</IncomingDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ACB_SwordDomain</defName>
+    <hediffClass>LichPhylactery.Hediff_SwordDomain</hediffClass>
+    <label>剑圣之域</label>
+    <description>剑气笼罩 3 格：每 0.5 秒对范围里的一名敌人发动一次近战结算。</description>
+    <defaultLabelColor>(0.95,0.6,0.4)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ACB_Warlord</defName>
+    <label>万军之主</label>
+    <description>近战命中 +15%、射击精度提高、造成的伤害 ×1.15，不会精神崩溃。</description>
+    <defaultLabelColor>(0.95,0.75,0.4)</defaultLabelColor>
+    <stages><li><blocksMentalBreaks>true</blocksMentalBreaks><statOffsets><MeleeHitChance>0.15</MeleeHitChance><ShootingAccuracyPawn>0.03</ShootingAccuracyPawn></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ACP_CloudBody</defName>
+    <label>云体</label>
+    <description>秘传被动：移动 ×1.3，免疫击晕。</description>
+    <defaultLabelColor>(0.75,0.9,1)</defaultLabelColor>
+    <comps Inherit="False" />
+    <stages><li><statFactors><MoveSpeed>1.3</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ACB_Chained</defName>
+    <label>天罚之链</label>
+    <description>被神圣锁链锁住：几乎无法移动；每次攻击都会被锁链反噬，受到神圣伤害（数值看严重度）。</description>
+    <isBad>true</isBad>
+    <maxSeverity>999</maxSeverity>
+    <defaultLabelColor>(1,0.9,0.5)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>0.05</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ACB_Shield</defName>
+    <hediffClass>LichPhylactery.Hediff_ArcanaShield</hediffClass>
+    <label>光耀护盾</label>
+    <description>吸收伤害的护盾，严重度就是还能吸收的点数。</description>
+    <maxSeverity>999</maxSeverity>
+    <defaultLabelColor>(1,0.95,0.6)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ACB_Blinded</defName>
+    <label>失明</label>
+    <description>被神圣之光或魔法刺瞎，几乎看不见。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.9,0.6,0.5)</defaultLabelColor>
+    <stages><li><capMods><li><capacity>Sight</capacity><setMax>0.1</setMax></li></capMods></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ACB_HolyAura</defName>
+    <label>神圣光环</label>
+    <description>受到的伤害 ×0.7；近战攻击你的邪魔和亡灵会失明 10 秒。</description>
+    <defaultLabelColor>(1,0.95,0.6)</defaultLabelColor>
+    <stages><li><statFactors><IncomingDamageFactor>0.7</IncomingDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ACB_Angelic</defName>
+    <label>天界之躯</label>
+    <description>天使侍从：受到的伤害 ×0.5，近战伤害 ×1.5。</description>
+    <comps Inherit="False" />
+    <defaultLabelColor>(1,0.95,0.6)</defaultLabelColor>
+    <stages><li><statFactors><IncomingDamageFactor>0.5</IncomingDamageFactor><MeleeDamageFactor>1.5</MeleeDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ACB_Simulacrum</defName>
+    <label>冰雪拟像</label>
+    <description>法师用冰雪塑成的拟像：只有本体一半的耐受（受到的伤害 ×2）。</description>
+    <comps Inherit="False" />
+    <defaultLabelColor>(0.7,0.9,1)</defaultLabelColor>
+    <stages><li><statFactors><IncomingDamageFactor>2</IncomingDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ACB_DragonForm</defName>
+    <hediffClass>LichPhylactery.Hediff_ScaledBuff</hediffClass>
+    <label>真龙之形</label>
+    <description>化身真龙：用龙爪和龙咬战斗，近战伤害 × 野性强度，受到的伤害 ×0.5，移动 ×1.3；不能做精细工作。</description>
+    <defaultLabelColor>(0.9,0.4,0.3)</defaultLabelColor>
+    <stages><li><disabledWorkTags>Crafting, Intellectual, Caring</disabledWorkTags><statFactors><IncomingDamageFactor>0.5</IncomingDamageFactor><MoveSpeed>1.3</MoveSpeed></statFactors></li></stages>
+    <comps><li Class="HediffCompProperties_VerbGiver"><tools><li><label>龙爪</label><capacities><li>Scratch</li></capacities><power>30</power><cooldownTime>1.5</cooldownTime></li><li><label>龙咬</label><capacities><li>Bite</li></capacities><power>36</power><cooldownTime>2</cooldownTime><armorPenetration>0.4</armorPenetration></li></tools></li></comps>
+    <modExtensions><li Class="LichPhylactery.ScaledBuffExtension">
+      <scaledFactors>
+        <li><stat>MeleeDamageFactor</stat><baseValue>0</baseValue><perSeverity>1</perSeverity></li>
+      </scaledFactors>
+    </li></modExtensions>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ACB_ElementalForm</defName>
+    <label>元素化身</label>
+    <description>免疫火焰、寒霜、闪电、电击和强酸伤害；术士法术伤害 ×1.3。</description>
+    <defaultLabelColor>(1,0.6,0.9)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ACB_Unstoppable</defName>
+    <label>不可阻挡</label>
+    <description>狂暴中：免疫击晕。</description>
+    <comps Inherit="False" />
+    <defaultLabelColor>(0.9,0.3,0.25)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ACB_Enlarge</defName>
+    <label>巨人化</label>
+    <description>近战伤害 ×1.5，受到的伤害 ×0.8。</description>
+    <defaultLabelColor>(0.9,0.3,0.25)</defaultLabelColor>
+    <stages><li><statFactors><MeleeDamageFactor>1.5</MeleeDamageFactor><IncomingDamageFactor>0.8</IncomingDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ACB_Camouflage</defName>
+    <label>自然伪装</label>
+    <description>静止不动融进周围：下一次攻击伤害 ×2（攻击或移动后解除）。</description>
+    <comps Inherit="False" />
+    <defaultLabelColor>(0.5,0.8,0.4)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ACB_EvolvedBeast</defName>
+    <label>兽伴进化</label>
+    <description>游侠的兽伴：受到的伤害 ×0.67（相当于生命 +50%），近战伤害 ×1.3，移动 ×1.1。</description>
+    <comps Inherit="False" />
+    <defaultLabelColor>(0.5,0.8,0.4)</defaultLabelColor>
+    <stages><li><statFactors><IncomingDamageFactor>0.67</IncomingDamageFactor><MeleeDamageFactor>1.3</MeleeDamageFactor><MoveSpeed>1.1</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ACB_HuntGodEye</defName>
+    <label>猎神之眼</label>
+    <description>射击精度大幅提高（几乎必中），对宿敌伤害 ×1.5。</description>
+    <defaultLabelColor>(0.5,0.8,0.4)</defaultLabelColor>
+    <stages><li><statOffsets><ShootingAccuracyPawn>0.5</ShootingAccuracyPawn></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ACB_Crippled</defName>
+    <label>致残</label>
+    <description>被刺伤筋腱：移动 ×0.5。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.75,0.5,0.85)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>0.5</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+
+  <!-- 九霄坠击的飞行物、力场发生器 -->
+  <ThingDef ParentName="PawnFlyerBase">
+    <defName>LP_SkyFallFlyer</defName>
+    <label>九霄坠击</label>
+    <thingClass>LichPhylactery.LP_SkyFallFlyer</thingClass>
+    <pawnFlyer>
+      <flightDurationMin>3</flightDurationMin>
+      <flightSpeed>10</flightSpeed>
+      <heightFactor>6</heightFactor>
+    </pawnFlyer>
+  </ThingDef>
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_ArcaneForceField</defName>
+    <label>力场发生器</label>
+    <description>器械师拼起来的符文力场柱：子弹能出去，进不来。一天后符文烧尽、自行崩解。</description>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <pathCost>0</pathCost>
+    <passability>Standable</passability>
+    <fillPercent>0.35</fillPercent>
+    <graphicData>
+      <texPath>LP/Arcana/ForceFieldPylon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.8</drawSize>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>300</MaxHitPoints>
+      <Flammability>0</Flammability>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <killedLeavings/>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
+    <building>
+      <claimable>false</claimable>
+      <ai_chillDestination>false</ai_chillDestination>
+      <isEdifice>false</isEdifice>
+    </building>
+    <comps>
+      <li Class="CompProperties_ProjectileInterceptor">
+        <radius>5</radius>
+        <interceptGroundProjectiles>true</interceptGroundProjectiles>
+        <interceptNonHostileProjectiles>false</interceptNonHostileProjectiles>
+        <interceptOutgoingProjectiles>false</interceptOutgoingProjectiles>
+        <color>(0.45, 0.75, 1)</color>
+        <idlePulseSpeed>3</idlePulseSpeed>
+        <minIdleAlpha>0.05</minIdleAlpha>
+        <disarmedByEmpForTicks>600</disarmedByEmpForTicks>
+      </li>
+      <li Class="CompProperties_DestroyAfterDelay">
+        <delayTicks>60000</delayTicks>
+        <destroyMode>KillFinalize</destroyMode>
+        <countdownLabel>崩解倒计时</countdownLabel>
+      </li>
+    </comps>
+  </ThingDef>
+  <PawnKindDef ParentName="LP_FighterBase">
+    <defName>LP_AC_AngelKind</defName>
+    <label>天使侍从</label>
+    <combatPower>150</combatPower>
+    <apparelMoney>800~1400</apparelMoney>
+    <weaponMoney>500~900</weaponMoney>
+    <itemQuality>Good</itemQuality>
+    <weaponTags>
+      <li>MedievalMeleeAdvanced</li>
+    </weaponTags>
+    <skills>
+      <li><skill>Melee</skill><range>12~16</range></li>
+    </skills>
+  </PawnKindDef>
+
+  <!-- ==================== 能力 ==================== -->
+  <AbilityDef Name="LP_ArcanaPassiveBase" ParentName="LP_ClassSelfBase" Abstract="True" />
+
+  <!-- 战士 -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AC_SteelCut</defName>
+    <label>斩铁式</label>
+    <description>秘传（6 环战士）：30 秒内所有攻击无视护甲。冷却 2 天。</description>
+    <iconPath>LP/Arcana/SteelCut</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_ACB_SteelCut</hediff><duration>1800</duration><stat>LP_MartialPower</stat><bestSkill>true</bestSkill></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>6</ring><cls>LP_Class_Fighter</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AC_Immovable</defName>
+    <label>不动如山</label>
+    <description>秘传（7 环战士）：30 秒内免疫击晕、不会倒地，受到的伤害 ×0.5。冷却 3 天。</description>
+    <iconPath>LP/Arcana/Immovable</iconPath>
+    <cooldownTicksRange>180000</cooldownTicksRange>
+    <verbProperties><warmupTime>0.1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_ACB_Immovable</hediff><duration>1800</duration><stat>LP_MartialPower</stat><bestSkill>true</bestSkill></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>7</ring><cls>LP_Class_Fighter</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AC_SwordDomain</defName>
+    <label>剑圣之域</label>
+    <description>秘传（8 环战士）：20 秒内剑气笼罩身边 3 格，每 0.5 秒对范围里的一名敌人发动一次近战结算（按当前近战武器，伤害 × 战技强度）。冷却 5 天。</description>
+    <iconPath>LP/Arcana/SwordDomain</iconPath>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <cooldownTicksRange>300000</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_ACB_SwordDomain</hediff><duration>1200</duration><stat>LP_MartialPower</stat><bestSkill>true</bestSkill></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>8</ring><cls>LP_Class_Fighter</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AC_Warlord</defName>
+    <label>万军之主</label>
+    <description>秘传（9 环战士）：本地图所有己方人形 1 天内近战命中 +15%、射击精度提高、造成的伤害 ×1.15，不会精神崩溃。冷却 7 天。</description>
+    <iconPath>LP/Arcana/Warlord</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>420000</cooldownTicksRange>
+    <verbProperties><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ArWarlord</effect><duration>60000</duration><stat>LP_MartialPower</stat><bestSkill>true</bestSkill></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>9</ring><cls>LP_Class_Fighter</cls></li></modExtensions>
+  </AbilityDef>
+
+  <!-- 武僧（攀云僧） -->
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_AC_CloudStep</defName>
+    <label>攀云步</label>
+    <description>秘传（6 环武僧·攀云僧）：跃向 25 格内任意一处空地，无视墙和地形；落地时半径 2 格内的敌人受 15 × 战技强度钝器伤害并被击晕 1 秒。冷却 2 天。</description>
+    <iconPath>LP/Arcana/CloudStep</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <verbProperties><range>25</range><warmupTime>0.3</warmupTime><requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>true</canTargetLocations></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ArCloudStep</effect><power>15</power><radius>2</radius><stat>LP_MartialPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>6</ring><cls>LP_Class_Monk</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_AC_CloudHand</defName>
+    <label>云手</label>
+    <description>秘传（7 环武僧·攀云僧）：隔空打出 15 格的掌劲，40 × 战技强度钝器伤害，无视一半护甲，并把目标击退 3 格。冷却 3 天。</description>
+    <iconPath>LP/Arcana/CloudHand</iconPath>
+    <cooldownTicksRange>180000</cooldownTicksRange>
+    <verbProperties><range>15</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ArCloudHand</effect><power>40</power><stat>LP_MartialPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>7</ring><cls>LP_Class_Monk</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ArcanaPassiveBase">
+    <defName>LP_AC_CloudBody</defName>
+    <label>云体</label>
+    <description>秘传被动（8 环武僧·攀云僧）：移动 ×1.3，免疫击晕。</description>
+    <iconPath>LP/Arcana/CloudBody</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_MartialPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>8</ring><cls>LP_Class_Monk</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_AC_SkyFall</defName>
+    <label>九霄坠击</label>
+    <description>秘传（9 环武僧·攀云僧）：腾身入云 3 秒（期间不可被攻击），再坠向 30 格内一点：半径 4 格内的敌人受 60 × 战技强度钝器伤害并被击晕 5 秒。冷却 7 天。</description>
+    <iconPath>LP/Arcana/SkyFall</iconPath>
+    <cooldownTicksRange>420000</cooldownTicksRange>
+    <verbProperties><range>30</range><warmupTime>0.5</warmupTime><requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>true</canTargetLocations></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ArSkyFall</effect><power>60</power><radius>4</radius><duration>300</duration><stat>LP_MartialPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>9</ring><cls>LP_Class_Monk</cls></li></modExtensions>
+  </AbilityDef>
+
+  <!-- 圣武士 -->
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_AC_JudgmentChain</defName>
+    <label>天罚之链</label>
+    <description>秘传（6 环圣武士）：用神圣锁链锁住 20 格内一名敌人 10 秒，它几乎无法移动；期间它每攻击一次，自己受 20 × 神恩强度（× 心灵敏感度）神圣伤害。冷却 2 天。</description>
+    <iconPath>LP/Arcana/JudgmentChain</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ArChain</effect><power>20</power><duration>600</duration><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>6</ring><cls>LP_Class_Paladin</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ArcanaPassiveBase">
+    <defName>LP_AC_RadiantShield</defName>
+    <label>光耀护盾</label>
+    <description>秘传被动（7 环圣武士）：每次施放至圣斩（或其他神圣斩击类能力）后，得到吸收 30 × 神恩强度伤害的护盾，持续 1 分钟。</description>
+    <iconPath>LP/Arcana/RadiantShield</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><power>30</power><stat>LP_DivinePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>7</ring><cls>LP_Class_Paladin</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_AC_Sanctuary</defName>
+    <label>圣域</label>
+    <description>秘传（8 环圣武士）：在 20 格内一点划出半径 5 格的圣域，持续 1 小时：友军每秒恢复 2 × 神恩强度点伤势，邪魔和亡灵每秒受 5 × 神恩强度神圣伤害。冷却 5 天。</description>
+    <iconPath>LP/Arcana/Sanctuary</iconPath>
+    <hostile>false</hostile>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>300000</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1.5</warmupTime><requireLineOfSight>false</requireLineOfSight></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ArSanctuary</effect><power>5</power><radius>5</radius><duration>2500</duration><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>8</ring><cls>LP_Class_Paladin</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AC_AngelDescent</defName>
+    <label>天使降临</label>
+    <description>秘传（9 环圣武士）：召来一名天界的天使侍从（天神裔，善战，受到的伤害 ×0.5、近战伤害 ×1.5）协战 1 天，时间一到化为光点离去。冷却 7 天。</description>
+    <iconPath>LP/Arcana/AngelDescent</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>420000</cooldownTicksRange>
+    <verbProperties><warmupTime>3</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ArAngel</effect><duration>60000</duration><stat>LP_DivinePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>9</ring><cls>LP_Class_Paladin</cls></li></modExtensions>
+  </AbilityDef>
+
+  <!-- 法师 -->
+  <AbilityDef ParentName="LP_ArcanaPassiveBase">
+    <defName>LP_AC_CantripMastery</defName>
+    <label>咒法精通</label>
+    <description>秘传被动（6 环法师）：法师 1 级能力的法力消耗变为 0。</description>
+    <iconPath>LP/Arcana/CantripMastery</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>6</ring><cls>LP_Class_Wizard</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_AC_PrismWall</defName>
+    <label>棱光墙</label>
+    <description>秘传（7 环法师）：在 25 格内一点立起一道 10 格长的七彩光墙（与施法方向垂直），持续 1 小时：墙上的敌人每秒受火焰、寒霜、闪电、强酸各 8 × 奥术强度（× 心灵敏感度）伤害。冷却 3 天。</description>
+    <iconPath>LP/Arcana/PrismWall</iconPath>
+    <cooldownTicksRange>180000</cooldownTicksRange>
+    <verbProperties><range>25</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ArPrismWall</effect><power>8</power><duration>2500</duration><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>7</ring><cls>LP_Class_Wizard</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_AC_Simulacrum</defName>
+    <label>拟像术</label>
+    <description>秘传（8 环法师）：用冰雪复制 20 格内一名己方人形：拟像有同样的种族、性别和技能等级，只有一半的耐受（受到的伤害 ×2），3 天后融化。冷却 5 天。</description>
+    <iconPath>LP/Arcana/Simulacrum</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>300000</cooldownTicksRange>
+    <verbProperties><warmupTime>3</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ArSimulacrum</effect><duration>180000</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>8</ring><cls>LP_Class_Wizard</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_AC_TruePolymorph</defName>
+    <label>真实变形术</label>
+    <description>秘传（9 环法师）：把 20 格内一名敌人永久变成一只属于你的动物（体型大的变成灰熊，其余变成森林狼）。对传奇生物、剧情首领和体型 3 以上的目标无效。冷却 10 天。</description>
+    <iconPath>LP/Arcana/TruePolymorph</iconPath>
+    <cooldownTicksRange>600000</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ArPolymorph</effect><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>9</ring><cls>LP_Class_Wizard</cls></li></modExtensions>
+  </AbilityDef>
+
+  <!-- 牧师 -->
+  <AbilityDef ParentName="LP_ArcanaPassiveBase">
+    <defName>LP_AC_HolyWordHeal</defName>
+    <label>圣言疗愈</label>
+    <description>秘传被动（6 环牧师）：治疗伤口和群体治疗另外为每个被治疗的人清除一种疾病或成瘾。</description>
+    <iconPath>LP/Arcana/HolyWordHeal</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>6</ring><cls>LP_Class_Cleric</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AC_DivineWord</defName>
+    <label>神之圣言</label>
+    <description>秘传（7 环牧师）：念出神的圣言，半径 6 格内的敌人：剩余健康不到 20% 的当场死亡，不到 50% 的击晕 10 秒，其余失明 1 分钟。传奇生物和剧情首领只会失明。冷却 3 天。</description>
+    <iconPath>LP/Arcana/DivineWord</iconPath>
+    <hostile>true</hostile>
+    <cooldownTicksRange>180000</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ArDivineWord</effect><radius>6</radius><duration>600</duration><stat>LP_DivinePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>7</ring><cls>LP_Class_Cleric</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AC_HolyAura</defName>
+    <label>神圣光环</label>
+    <description>秘传（8 环牧师）：1 分钟内，自己和半径 6 格内的友军受到的伤害 ×0.7，近战攻击他们的邪魔和亡灵失明 10 秒。冷却 5 天。</description>
+    <iconPath>LP/Arcana/HolyAura</iconPath>
+    <cooldownTicksRange>300000</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ArHolyAura</effect><radius>6</radius><duration>3600</duration><stat>LP_DivinePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>8</ring><cls>LP_Class_Cleric</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAbilityBase">
+    <defName>LP_AC_TrueResurrection</defName>
+    <label>真实复活</label>
+    <description>秘传（9 环牧师）：复活 12 格内一具死亡不超过 1 年的人形尸体，失去的肢体和器官一并长回；尸体腐烂成白骨也可以。对巫妖和死灵造物无效。冷却 30 天。</description>
+    <iconPath>LP/Arcana/TrueResurrection</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1800000</cooldownTicksRange>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>12</range><warmupTime>5</warmupTime><requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetPawns>false</canTargetPawns><canTargetItems>true</canTargetItems><canTargetCorpses>true</canTargetCorpses><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations><mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ArTrueRes</effect><stat>LP_DivinePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>9</ring><cls>LP_Class_Cleric</cls></li></modExtensions>
+  </AbilityDef>
+
+  <!-- 德鲁伊 -->
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_AC_TreeStride</defName>
+    <label>横越植物</label>
+    <description>秘传（6 环德鲁伊）：站在树旁（2 格内）时，走进树里，从本地图另一棵树旁走出来；身边 2 格内最多 3 名友军一起走。冷却 2 天。</description>
+    <iconPath>LP/Arcana/TreeStride</iconPath>
+    <hostile>false</hostile>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <verbProperties><range>500</range><warmupTime>1</warmupTime><requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetPlants>true</canTargetPlants><canTargetLocations>true</canTargetLocations></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ArTreeStride</effect><stat>LP_PrimalPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>6</ring><cls>LP_Class_Druid</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ArcanaPassiveBase">
+    <defName>LP_AC_RegenCircle</defName>
+    <label>再生之环</label>
+    <description>秘传被动（7 环德鲁伊）：荒野变形期间每 250 刻恢复 2 × 野性强度点伤势；变回人形时再治好当前伤势的 20%。</description>
+    <iconPath>LP/Arcana/RegenCircle</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><power>2</power><stat>LP_PrimalPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>7</ring><cls>LP_Class_Druid</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AC_AnimalShapes</defName>
+    <label>兽形术</label>
+    <description>秘传（8 环德鲁伊）：自己和身边 5 格内最多 4 名己方人形一起荒野变形（熊形）1 小时，强度按你的野性强度。冷却 5 天。</description>
+    <iconPath>LP/Arcana/AnimalShapes</iconPath>
+    <cooldownTicksRange>300000</cooldownTicksRange>
+    <verbProperties><warmupTime>1.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ArAnimalShapes</effect><radius>5</radius><duration>2500</duration><stat>LP_PrimalPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>8</ring><cls>LP_Class_Druid</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AC_DragonForm</defName>
+    <label>化身真龙</label>
+    <description>秘传（9 环德鲁伊）：化身真龙 1 小时：龙爪 30、龙咬 36（穿甲 40%），近战伤害 × 野性强度，受到的伤害 ×0.5，移动 ×1.3。冷却 7 天。</description>
+    <iconPath>LP/Arcana/DragonForm</iconPath>
+    <cooldownTicksRange>420000</cooldownTicksRange>
+    <verbProperties><warmupTime>1.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_ACB_DragonForm</hediff><duration>2500</duration><stat>LP_PrimalPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>9</ring><cls>LP_Class_Druid</cls></li></modExtensions>
+  </AbilityDef>
+
+  <!-- 术士 -->
+  <AbilityDef ParentName="LP_ArcanaPassiveBase">
+    <defName>LP_AC_SeekingSpell</defName>
+    <label>超魔·追踪</label>
+    <description>秘传被动（6 环术士）：术士法术会追着目标的要害打，伤害与治疗 ×1.25。</description>
+    <iconPath>LP/Arcana/SeekingSpell</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_InnatePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>6</ring><cls>LP_Class_Sorcerer</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ArcanaPassiveBase">
+    <defName>LP_AC_ExtendedSpell</defName>
+    <label>超魔·延效</label>
+    <description>秘传被动（7 环术士）：术士法术的持续时间 ×2。</description>
+    <iconPath>LP/Arcana/ExtendedSpell</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_InnatePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>7</ring><cls>LP_Class_Sorcerer</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AC_ElementalForm</defName>
+    <label>元素化身</label>
+    <description>秘传（8 环术士）：30 秒内化身元素：免疫火焰、寒霜、闪电、电击和强酸伤害，术士法术伤害 ×1.3。冷却 5 天。</description>
+    <iconPath>LP/Arcana/ElementalForm</iconPath>
+    <cooldownTicksRange>300000</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_ACB_ElementalForm</hediff><duration>1800</duration><stat>LP_InnatePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>8</ring><cls>LP_Class_Sorcerer</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_AC_SourceBurst</defName>
+    <label>源能爆发</label>
+    <description>秘传（9 环术士）：耗尽全部术士法力（至少 1 点），在 25 格内一点引爆：半径 5 格内的敌人受（每点法力 15）× 天赋强度（× 心灵敏感度）奥术力伤害。冷却 7 天。</description>
+    <iconPath>LP/Arcana/SourceBurst</iconPath>
+    <cooldownTicksRange>420000</cooldownTicksRange>
+    <verbProperties><range>25</range><warmupTime>1.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ArSourceBurst</effect><power>15</power><radius>5</radius><stat>LP_InnatePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>9</ring><cls>LP_Class_Sorcerer</cls></li></modExtensions>
+  </AbilityDef>
+
+  <!-- 器械师 -->
+  <AbilityDef ParentName="LP_ClassAbilityBase">
+    <defName>LP_AC_Replicate</defName>
+    <label>完美复刻</label>
+    <description>秘传（6 环器械师）：复刻 3 格内一件 DND 物品（服装、武器或奇物，品质相同，传说品质除外），花掉地图上相当于它市价一半的白银。冷却 15 天。</description>
+    <iconPath>LP/Arcana/Replicate</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>900000</cooldownTicksRange>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>3</range><warmupTime>5</warmupTime><requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetPawns>false</canTargetPawns><canTargetItems>true</canTargetItems><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations><mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ArReplicate</effect><stat>LP_ArtificePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>6</ring><cls>LP_Class_Artificer</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_AC_ForceField</defName>
+    <label>力场发生器</label>
+    <description>秘传（7 环器械师）：在 10 格内一处空地放下力场柱，展开半径 5 格的拦弹护盾（外面射进来的子弹被挡住，里面可以往外打），1 天后崩解。冷却 3 天。</description>
+    <iconPath>LP/Arcana/ForceField</iconPath>
+    <hostile>false</hostile>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>180000</cooldownTicksRange>
+    <verbProperties><range>10</range><warmupTime>1</warmupTime><requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>true</canTargetLocations></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ArForceField</effect><stat>LP_ArtificePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>7</ring><cls>LP_Class_Artificer</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ArcanaPassiveBase">
+    <defName>LP_AC_SoulCore</defName>
+    <label>灵魂之核</label>
+    <description>秘传被动（8 环器械师）：你放下的符文炮台和战争傀儡伤害 ×1.5。</description>
+    <iconPath>LP/Arcana/SoulCore</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>8</ring><cls>LP_Class_Artificer</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ArcanaPassiveBase">
+    <defName>LP_AC_MasterArtisan</defName>
+    <label>万能匠魂</label>
+    <description>秘传被动（9 环器械师）：可以多戴一枚魔法戒指。</description>
+    <iconPath>LP/Arcana/MasterArtisan</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>9</ring><cls>LP_Class_Artificer</cls></li></modExtensions>
+  </AbilityDef>
+
+  <!-- 野蛮人 -->
+  <AbilityDef ParentName="LP_ArcanaPassiveBase">
+    <defName>LP_AC_BloodFury</defName>
+    <label>血怒</label>
+    <description>秘传被动（6 环野蛮人）：狂暴中，自己每损失 10% 的健康，造成的伤害 +5%（最多 +50%）。</description>
+    <iconPath>LP/Arcana/BloodFury</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_RagePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>6</ring><cls>LP_Class_Barbarian</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ArcanaPassiveBase">
+    <defName>LP_AC_Unstoppable</defName>
+    <label>不可阻挡</label>
+    <description>秘传被动（7 环野蛮人）：狂暴中免疫击晕。</description>
+    <iconPath>LP/Arcana/Unstoppable</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_RagePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>7</ring><cls>LP_Class_Barbarian</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AC_Enlarge</defName>
+    <label>巨人化</label>
+    <description>秘传（8 环野蛮人）：30 秒内身形暴涨，近战伤害 ×1.5，受到的伤害 ×0.8。冷却 5 天。</description>
+    <iconPath>LP/Arcana/Enlarge</iconPath>
+    <cooldownTicksRange>300000</cooldownTicksRange>
+    <verbProperties><warmupTime>0.3</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_ACB_Enlarge</hediff><duration>1800</duration><stat>LP_RagePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>8</ring><cls>LP_Class_Barbarian</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ArcanaPassiveBase">
+    <defName>LP_AC_EternalRage</defName>
+    <label>永恒狂怒</label>
+    <description>秘传被动（9 环野蛮人）：狂暴不再有时限，只要 10 秒内还在战斗就一直持续；狂暴中不会倒地（伤势过重时照样会死）。</description>
+    <iconPath>LP/Arcana/EternalRage</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_RagePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>9</ring><cls>LP_Class_Barbarian</cls></li></modExtensions>
+  </AbilityDef>
+
+  <!-- 游侠 -->
+  <AbilityDef ParentName="LP_ArcanaPassiveBase">
+    <defName>LP_AC_Camouflage</defName>
+    <label>自然伪装</label>
+    <description>秘传被动（6 环游侠）：征召后静止不动约 4 秒就进入伪装，下一次攻击伤害 ×2（攻击或移动后解除）。</description>
+    <iconPath>LP/Arcana/Camouflage</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_HuntPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>6</ring><cls>LP_Class_Ranger</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_AC_GaleArrow</defName>
+    <label>疾风箭</label>
+    <description>秘传（7 环游侠）：用当前远程武器射出一发弹射箭：命中目标后再弹向它 8 格内的另外 2 名敌人，每次都是一发完整的射击。冷却 3 天。</description>
+    <iconPath>LP/Arcana/GaleArrow</iconPath>
+    <cooldownTicksRange>180000</cooldownTicksRange>
+    <verbProperties><range>40</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ArGaleArrow</effect><ranged>true</ranged><stat>LP_HuntPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>7</ring><cls>LP_Class_Ranger</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ArcanaPassiveBase">
+    <defName>LP_AC_BeastEvolve</defName>
+    <label>兽伴进化</label>
+    <description>秘传被动（8 环游侠）：你的兽伴受到的伤害 ×0.67（相当于生命 +50%），近战伤害 ×1.3，移动 ×1.1。</description>
+    <iconPath>LP/Arcana/BeastEvolve</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_HuntPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>8</ring><cls>LP_Class_Ranger</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AC_HuntGodEye</defName>
+    <label>猎神之眼</label>
+    <description>秘传（9 环游侠）：1 天内射击精度大幅提高（几乎必中），对宿敌伤害 ×1.5。冷却 7 天。</description>
+    <iconPath>LP/Arcana/HuntGodEye</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>420000</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_ACB_HuntGodEye</hediff><duration>60000</duration><stat>LP_HuntPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>9</ring><cls>LP_Class_Ranger</cls></li></modExtensions>
+  </AbilityDef>
+
+  <!-- 游荡者 -->
+  <AbilityDef ParentName="LP_ArcanaPassiveBase">
+    <defName>LP_AC_TrapMaster</defName>
+    <label>陷阱大师</label>
+    <description>秘传被动（6 环游荡者）：不会触发任何陷阱。</description>
+    <iconPath>LP/Arcana/TrapMaster</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_CunningPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>6</ring><cls>LP_Class_Rogue</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ArcanaPassiveBase">
+    <defName>LP_AC_CripplingStab</defName>
+    <label>致残刺</label>
+    <description>秘传被动（7 环游荡者）：偷袭命中后，目标移动 ×0.5，持续 30 秒。</description>
+    <iconPath>LP/Arcana/CripplingStab</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_CunningPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>7</ring><cls>LP_Class_Rogue</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ArcanaPassiveBase">
+    <defName>LP_AC_PoisonKing</defName>
+    <label>毒王</label>
+    <description>秘传被动（8 环游荡者）：淬毒刃的毒量 ×2，对血肉亡灵也生效。</description>
+    <iconPath>LP/Arcana/PoisonKing</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_CunningPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>8</ring><cls>LP_Class_Rogue</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ArcanaPassiveBase">
+    <defName>LP_AC_Shadowless</defName>
+    <label>无影</label>
+    <description>秘传被动（9 环游荡者）：每次杀死敌人后隐形 3 秒，可以连续触发。</description>
+    <iconPath>LP/Arcana/Shadowless</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_CunningPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>9</ring><cls>LP_Class_Rogue</cls></li></modExtensions>
+  </AbilityDef>
+
+  <!-- 邪术师 -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AC_OtherGuardian</defName>
+    <label>异界护卫</label>
+    <description>秘传（6 环邪术师）：按宗主召来一只异界护卫协战 3 天：邪魔宗主是小恶魔，妖精宗主是小精灵，其余是夸塞魔。冷却 2 天。</description>
+    <iconPath>LP/Arcana/OtherGuardian</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <verbProperties><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ArGuardian</effect><duration>180000</duration><stat>LP_PactPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>6</ring><cls>LP_Class_Warlock</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ArcanaPassiveBase">
+    <defName>LP_AC_SoulHarvest</defName>
+    <label>灵魂收割</label>
+    <description>秘传被动（7 环邪术师）：用魔能伤害（魔能爆等）杀死敌人时，回 1 点契约法力。</description>
+    <iconPath>LP/Arcana/SoulHarvest</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PactPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>7</ring><cls>LP_Class_Warlock</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_AC_MassFear</defName>
+    <label>群体恐惧</label>
+    <description>秘传（8 环邪术师）：20 格内一点半径 6 格内的敌人陷入恐惧、四散奔逃 15 秒；传奇生物和剧情首领有 50% 的成功率挣脱。冷却 5 天。</description>
+    <iconPath>LP/Arcana/MassFear</iconPath>
+    <cooldownTicksRange>300000</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ArMassFear</effect><radius>6</radius><duration>900</duration><stat>LP_PactPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>8</ring><cls>LP_Class_Warlock</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ArcanaPassiveBase">
+    <defName>LP_AC_SoulPact</defName>
+    <label>灵魂契约</label>
+    <description>秘传被动（9 环邪术师）：你杀死的敌对人形（传奇生物和剧情首领除外）有 50% 的概率灵魂被束缚：当场爬起来成为你的战斗仆从，3 天后灵魂散去、化为光点消失。</description>
+    <iconPath>LP/Arcana/SoulPact</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PactPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>9</ring><cls>LP_Class_Warlock</cls></li></modExtensions>
+  </AbilityDef>
+
+</Defs>

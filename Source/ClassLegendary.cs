@@ -63,7 +63,7 @@ namespace LichPhylactery {
    if(def.defName=="LP_Raise" && HasLeg(p,guardian))cost=2;
    if(ClassSystem.ClassOf(def)?.defName=="LP_Class_Wizard" && HasLeg(p,mastery))cost=Math.Max(1,cost-1);
    int fr=ClassFeats.CostReduce(p,def);if(fr>0)cost=Math.Max(1,cost-fr); // 1.88.0 职业专属专长
-   return cost;
+   return LakeArcana.Cost(p,def,cost); // 1.100.0 咒法精通
   }
   public static float PowerFactor(Pawn p,CompProperties_ClassEffect e)=>e?.stat!=null && e.stat.defName=="LP_ArcanePower" && HasLeg(p,mastery)?MasteryFactor:1f;
   public static bool Torrent(Pawn p)=>Items.Has(p,"LP_LegArcaneTorrent");

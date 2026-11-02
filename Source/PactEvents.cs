@@ -236,7 +236,7 @@ namespace LichPhylactery {
    if(baby==null || baby.Dead)return;var h=baby.health.hediffSet.hediffs.OfType<Hediff_ChangelingHidden>().FirstOrDefault();var orig=h?.originalXeno;if(h!=null)baby.health.RemoveHediff(h);
    var x=DefDatabase<XenotypeDef>.GetNamedSilentFail(PactRaces.Changeling);if(x!=null)AbyssRaces.ConvertTo(baby,x);
    var l=PactLetters.Send("changeling",null,baby,null,"调换儿","一个月来，"+baby.LabelShort+"越长越不像父母：皮肤苍白得没有一点血色，五官像没画完的素描。真正的孩子被妖精调换走了——摇篮里躺着的是一个调换儿。\n\n养大它？还是用一件杰作品质的艺术品把孩子换回来？");
-   if(orig!=null)l.extra=DefDatabase<XenotypeDef>.AllDefsListForReading.IndexOf(orig);
+   l.xeno=orig;
   }
   public static Thing MasterworkArt(Map map)=>map?.listerThings.ThingsInGroup(ThingRequestGroup.Art).FirstOrDefault(t=>t.Spawned && t.def.category==ThingCategory.Item && !t.IsForbidden(Faction.OfPlayer) && t.TryGetQuality(out var q) && q>=QualityCategory.Masterwork);
   public static Pawn SwapBack(Pawn changeling,XenotypeDef xeno){
@@ -256,7 +256,8 @@ namespace LichPhylactery {
     case "bloodwar":{var w=Pacts.Comp?.bloodWar;if(w==null || w.aided!=null){yield return l.Option_CloseOrPostpone();yield break;}
      yield return l.Choice("旁观",()=>{});yield return l.Choice("援助九狱",()=>AidBloodWar("hells"));yield return l.Choice("援助深渊",()=>AidBloodWar("abyss"));break;}
     case "changeling":{var b=l.pawn;if(b==null || b.Dead){yield return l.Option_CloseOrPostpone();yield break;}
-     var xeno=l.extra>=0 && l.extra<DefDatabase<XenotypeDef>.AllDefsListForReading.Count?DefDatabase<XenotypeDef>.AllDefsListForReading[l.extra]:null;
+     // 旧存档里只有下标（lpExtra），照旧读，模组列表没变时仍然对。
+     var xeno=l.xeno??(l.extra>=0 && l.extra<DefDatabase<XenotypeDef>.AllDefsListForReading.Count?DefDatabase<XenotypeDef>.AllDefsListForReading[l.extra]:null);
      yield return l.Choice("养大它",()=>{});
      yield return l.Choice("换回孩子（交一件杰作品质的艺术品）",()=>SwapBack(b,xeno),MasterworkArt(b.MapHeld)==null?"地图上没有杰作以上品质的艺术品":null);
      yield return l.Option_CloseOrPostpone();break;}

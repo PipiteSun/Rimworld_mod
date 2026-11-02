@@ -401,6 +401,8 @@ namespace LichPhylactery {
    var hid=baby.health.hediffSet.hediffs.OfType<Hediff_ChangelingHidden>().FirstOrDefault();bool looksNormal=hid!=null && !hid.Visible && baby.genes.Xenotype==XenotypeDefOf.Baseliner;
    PactEvents.RevealChangeling(baby);var cl=Find.LetterStack.LettersListForReading.OfType<ChoiceLetter_Pact>().LastOrDefault(l=>l.kind=="changeling");
    Check(looksNormal && PactRaces.IsChangeling(baby) && cl!=null && pq.Clause("WinterFirstborn")==null,"[hid "+(hid!=null)+" xeno "+baby.genes.Xenotype?.defName+" mother "+baby.GetMother()?.LabelShort+" ch "+PactRaces.IsChangeling(baby)+" letter "+(cl!=null)+"] changeling: 'Firstborn to the Winter Court' swaps the next baby; it looks normal (hidden status) until the reveal turns it into a changeling and asks raise / swap back");
+   // 2026-11-02：信件按 defName 记原异种（不再依赖 XenotypeDef 列表下标，中途加模组也不会错位）
+   Check(cl?.xeno==XenotypeDefOf.Baseliner && cl.extra==-1,"changeling letter remembers the original xenotype by def ("+cl?.xeno?.defName+")");
    PcEndAll();
    // 5.5 狂猎
    var f=PcHuman(PcCell(4,42),1);var pf=PcSign(f,"LP_Patron_Titania","SummerTouch");Pacts.AddDebt(pf,1,"测试");

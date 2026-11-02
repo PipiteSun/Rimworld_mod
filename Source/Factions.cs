@@ -47,7 +47,7 @@ namespace LichPhylactery {
  public class TraderGroupExtension : DefModExtension { public PawnKindDef traderKind; }
 
  public static class Factions {
-  public static readonly string[] Toggles={"colony","hostile","ember","illithid","blacknet","redhawk"};
+  public static readonly string[] Toggles={"colony","hostile","ember","illithid","blacknet","redhawk","manalake"};
   static FactionDef colony,hostile,ember,illithid,blacknet,zealots;
   public static FactionDef ColonyDef=>colony??(colony=DefDatabase<FactionDef>.GetNamedSilentFail("LP_FaerunColony"));
   public static FactionDef HostileDef=>hostile??(hostile=DefDatabase<FactionDef>.GetNamedSilentFail("LP_FaerunHostile"));
@@ -61,7 +61,7 @@ namespace LichPhylactery {
 
   public static bool ToggleOn(string toggle){
    var s=LichMod.Settings;
-   switch(toggle){case "colony":return s.factionColony;case "hostile":return s.factionHostile;case "ember":return s.factionEmber;case "illithid":return s.factionIllithid;case "blacknet":return s.factionBlackNet;case "redhawk":return s.factionRedHawk;default:return true;}
+   switch(toggle){case "colony":return s.factionColony;case "hostile":return s.factionHostile;case "ember":return s.factionEmber;case "illithid":return s.factionIllithid;case "blacknet":return s.factionBlackNet;case "redhawk":return s.factionRedHawk;case "manalake":return s.factionManaLake;default:return true;}
   }
   // 未受管的派系视为开启。
   public static bool Enabled(FactionDef def){var e=Ext(def);return e==null || ToggleOn(e.toggle);}

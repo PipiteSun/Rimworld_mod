@@ -484,7 +484,7 @@ namespace LichPhylactery {
  [HarmonyPatch(typeof(StunHandler),nameof(StunHandler.StunFor))]
  public static class ClassStunImmunity {
   static readonly AccessTools.FieldRef<StunHandler,Thing> Parent=AccessTools.FieldRefAccess<StunHandler,Thing>("parent");
-  public static bool Immune(Pawn p)=>p!=null && (Items.Has(p,"LP_Indomitable") || Items.Has(p,"LP_SurgeOfBattle") || Items.Has(p,"LP_HolyAvatar") || Items.Has(p,"LP_DiamondSoul") || Items.Has(p,"LP_LegFormlessBuff") || Items.Has(p,"LP_LegBerserkerBuff")); // 1.74.0 无相之身；狂战之魂
+  public static bool Immune(Pawn p)=>p!=null && (Items.Has(p,"LP_Indomitable") || Items.Has(p,"LP_SurgeOfBattle") || Items.Has(p,"LP_HolyAvatar") || Items.Has(p,"LP_DiamondSoul") || Items.Has(p,"LP_LegFormlessBuff") || Items.Has(p,"LP_LegBerserkerBuff") || LakeArcana.Touched && ArcanaEffects.Steadfast(p)); // 1.74.0 无相之身；狂战之魂；1.100.0 不动如山、云体、不可阻挡
   static bool Prefix(StunHandler __instance)=>!Immune(Parent(__instance) as Pawn);
  }
  [HarmonyPatch(typeof(Projectile),nameof(Projectile.DamageAmount),MethodType.Getter)]

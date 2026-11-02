@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- 1.100.0 魔力湖泊：中立的湖畔法术匠人，出售秘传结晶（Source/ManaLake.cs）。
+       结晶在 ManaLake_Crystals.xml，能力在 ManaLake_Arcana.xml。职业水晶只在好感 ≥ 75（盟友）时上架。 -->
+
+  <FactionDef ParentName="LP_FactionBase">
+    <defName>LP_ManaLake</defName>
+    <label>魔力湖泊</label>
+    <fixedName>魔力湖泊</fixedName>
+    <description>魔网在这里渗出地表，汇成一片泛着微光的湖。住在湖边的是一群不讲学派、只管「淘湖」的法术匠人：他们把湖水里凝结的法术碎片压成结晶，卖给出得起价的人——吸收一枚，就能永久学会结晶里的秘传。\n\n湖民自己并不强大，靠湖水的产出和各方主顾过日子，很少主动挑起战事。塞伊的红袍法师一直想占下这片湖，猎巫的狂热分子把所有卖法术的人都当成巫师——这两家是湖民的死敌。\n\n最珍贵的职业水晶只卖给盟友。</description>
+    <pawnSingular>湖民</pawnSingular>
+    <pawnsPlural>湖民</pawnsPlural>
+    <leaderTitle>湖主</leaderTitle>
+    <techLevel>Medieval</techLevel>
+    <factionIconPath>Factions/ManaLake</factionIconPath>
+    <colorSpectrum>
+      <li>(0.20, 0.55, 0.85)</li>
+      <li>(0.40, 0.75, 0.95)</li>
+    </colorSpectrum>
+    <basicMemberKind>LP_ML_Lakeman</basicMemberKind>
+    <fixedLeaderKinds>
+      <li>LP_ML_Leader</li>
+    </fixedLeaderKinds>
+    <ideoName>湖的低语</ideoName>
+    <ideoDescription>湖水给的，湖水也会收回。只取够用的那一份。</ideoDescription>
+    <forcedMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Ideological</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Collectivist</li>
+    </forcedMemes>
+    <deityPresets>
+      <li>
+        <nameType>
+          <name>迷斯卓</name><type>魔网之神</type>
+        </nameType>
+        <gender>Female</gender>
+        <iconPath>UI/Deities/DeityGeneric</iconPath>
+      </li>
+    </deityPresets>
+    <!-- 湖民不爱打仗：敌对时袭击权重 ×0.6 -->
+    <raidCommonalityFromPointsCurve>
+      <points>
+        <li>(0, 0.6)</li>
+      </points>
+    </raidCommonalityFromPointsCurve>
+    <xenotypeSet>
+      <xenotypeChances>
+        <LP_HalfElf>0.15</LP_HalfElf>
+        <LP_Elf>0.10</LP_Elf>
+        <LP_RockGnome>0.08</LP_RockGnome>
+        <LP_ForestGnome>0.05</LP_ForestGnome>
+        <LP_GenasiWater>0.04</LP_GenasiWater>
+      </xenotypeChances>
+    </xenotypeSet>
+    <caravanTraderKinds>
+      <li>LP_Caravan_ManaLake</li>
+    </caravanTraderKinds>
+    <visitorTraderKinds>
+      <li>Visitor_Outlander_Standard</li>
+    </visitorTraderKinds>
+    <baseTraderKinds>
+      <li>LP_Base_ManaLake</li>
+    </baseTraderKinds>
+    <pawnGroupMakers>
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>100</commonality>
+        <options>
+          <LP_ML_Warden>10</LP_ML_Warden>
+          <LP_ML_Lakeman>6</LP_ML_Lakeman>
+          <LP_ML_Spellwright>3</LP_ML_Spellwright>
+        </options>
+      </li>
+      <li>
+        <kindDef>Peaceful</kindDef>
+        <options>
+          <LP_ML_Lakeman>10</LP_ML_Lakeman>
+          <LP_ML_Warden>4</LP_ML_Warden>
+          <LP_ML_Spellwright>2</LP_ML_Spellwright>
+        </options>
+      </li>
+      <li>
+        <kindDef>Trader</kindDef>
+        <traders>
+          <LP_ML_Merchant>1</LP_ML_Merchant>
+        </traders>
+        <carriers>
+          <Muffalo>6</Muffalo>
+          <Alpaca>4</Alpaca>
+        </carriers>
+        <guards>
+          <LP_ML_Warden>5</LP_ML_Warden>
+          <LP_ML_Spellwright>1</LP_ML_Spellwright>
+        </guards>
+      </li>
+      <li>
+        <kindDef>Settlement</kindDef>
+        <options>
+          <LP_ML_Lakeman>8</LP_ML_Lakeman>
+          <LP_ML_Warden>10</LP_ML_Warden>
+          <LP_ML_Spellwright>4</LP_ML_Spellwright>
+        </options>
+      </li>
+    </pawnGroupMakers>
+    <modExtensions>
+      <li Class="LichPhylactery.FactionExtension">
+        <toggle>manalake</toggle>
+        <initialGoodwill>0</initialGoodwill>
+        <enemyFactions>
+          <li>LP_FaerunHostile</li>
+          <li>LP_Zealots</li>
+        </enemyFactions>
+      </li>
+    </modExtensions>
+  </FactionDef>
+
+  <!-- ==================== 成员（湖蓝配色） ==================== -->
+
+  <PawnKindDef Name="LP_MLBase" ParentName="LP_FighterBase" Abstract="True">
+    <defaultFactionDef>LP_ManaLake</defaultFactionDef>
+    <apparelColor>(0.22, 0.50, 0.78)</apparelColor>
+    <ignoreIdeoApparelColors>true</ignoreIdeoApparelColors>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_MLBase">
+    <defName>LP_ML_Lakeman</defName>
+    <label>淘湖人</label>
+    <combatPower>40</combatPower>
+    <apparelMoney>200~500</apparelMoney>
+    <weaponMoney>100~250</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeBasic</li>
+      <li>NeolithicMeleeBasic</li>
+    </weaponTags>
+    <skills>
+      <li>
+        <skill>Intellectual</skill>
+        <range>4~10</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_MLBase">
+    <defName>LP_ML_Warden</defName>
+    <label>湖卫</label>
+    <combatPower>60</combatPower>
+    <canBeSapper>true</canBeSapper>
+    <apparelMoney>500~900</apparelMoney>
+    <apparelRequired>
+      <li>Apparel_SimpleHelmet</li>
+    </apparelRequired>
+    <weaponMoney>200~400</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeDecent</li>
+      <li>NeolithicRangedDecent</li>
+    </weaponTags>
+    <skills>
+      <li>
+        <skill>Melee</skill>
+        <range>5~10</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_MLBase">
+    <defName>LP_ML_Spellwright</defName>
+    <label>结晶匠</label>
+    <combatPower>85</combatPower>
+    <minGenerationAge>25</minGenerationAge>
+    <apparelMoney>400~800</apparelMoney>
+    <apparelRequired>
+      <li>Apparel_Robe</li>
+    </apparelRequired>
+    <weaponMoney>150~300</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeBasic</li>
+    </weaponTags>
+    <skills>
+      <li>
+        <skill>Intellectual</skill>
+        <range>10~16</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_MLBase">
+    <defName>LP_ML_Merchant</defName>
+    <label>湖民商人</label>
+    <combatPower>45</combatPower>
+    <trader>true</trader>
+    <isFighter>false</isFighter>
+    <requiredWorkTags Inherit="False" />
+    <minGenerationAge>22</minGenerationAge>
+    <apparelMoney>300~600</apparelMoney>
+    <apparelRequired>
+      <li>Apparel_Robe</li>
+    </apparelRequired>
+    <weaponMoney>100~250</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeBasic</li>
+    </weaponTags>
+    <skills>
+      <li>
+        <skill>Social</skill>
+        <range>6~12</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="LP_MLBase">
+    <defName>LP_ML_Leader</defName>
+    <label>湖主</label>
+    <combatPower>100</combatPower>
+    <factionLeader>true</factionLeader>
+    <minGenerationAge>35</minGenerationAge>
+    <itemQuality>Good</itemQuality>
+    <apparelMoney>1200~2200</apparelMoney>
+    <apparelRequired>
+      <li>Apparel_Robe</li>
+    </apparelRequired>
+    <weaponMoney>500~1000</weaponMoney>
+    <weaponTags>
+      <li>MedievalMeleeDecent</li>
+    </weaponTags>
+    <skills>
+      <li>
+        <skill>Intellectual</skill>
+        <range>14~20</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
+  <!-- ==================== 商队与据点 ==================== -->
+
+  <TraderKindDef>
+    <defName>LP_Caravan_ManaLake</defName>
+    <label>魔力湖泊商队</label>
+    <commonality>1</commonality>
+    <stockGenerators>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Silver</thingDef>
+        <countRange>1500~2500</countRange>
+      </li>
+      <!-- 盟友时偶尔带 1 枚 6～7 环职业水晶 -->
+      <li Class="LichPhylactery.StockGenerator_Arcana">
+        <countRange>0~1</countRange>
+        <rings>6~7</rings>
+        <minGoodwill>75</minGoodwill>
+      </li>
+      <li Class="StockGenerator_Tag">
+        <tradeTag>LP_Scroll</tradeTag>
+        <thingDefCountRange>2~3</thingDefCountRange>
+        <totalPriceRange>500~1500</totalPriceRange>
+      </li>
+      <li Class="StockGenerator_BuyTradeTag"><tag>LP_Scroll</tag></li>
+      <li Class="StockGenerator_BuyExpensiveSimple" />
+      <li Class="StockGenerator_BuyTradeTag"><tag>Art</tag></li>
+    </stockGenerators>
+    <modExtensions>
+      <li Class="LichPhylactery.TraderGroupExtension">
+        <traderKind>LP_ML_Merchant</traderKind>
+      </li>
+    </modExtensions>
+  </TraderKindDef>
+
+  <TraderKindDef>
+    <defName>LP_Base_ManaLake</defName>
+    <label>魔力湖泊湖畔集市</label>
+    <stockGenerators>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Silver</thingDef>
+        <countRange>3000~5000</countRange>
+      </li>
+      <li Class="LichPhylactery.StockGenerator_Arcana">
+        <countRange>1~2</countRange>
+        <rings>6~7</rings>
+        <minGoodwill>75</minGoodwill>
+      </li>
+      <li Class="LichPhylactery.StockGenerator_Arcana">
+        <countRange>0~1</countRange>
+        <rings>8~9</rings>
+        <minGoodwill>75</minGoodwill>
+      </li>
+      <li Class="StockGenerator_Tag">
+        <tradeTag>LP_Scroll</tradeTag>
+        <thingDefCountRange>3~4</thingDefCountRange>
+        <totalPriceRange>800~2500</totalPriceRange>
+      </li>
+      <li Class="StockGenerator_BuyTradeTag"><tag>LP_Scroll</tag></li>
+      <li Class="StockGenerator_BuyExpensiveSimple" />
+      <li Class="StockGenerator_BuyTradeTag"><tag>Art</tag></li>
+    </stockGenerators>
+  </TraderKindDef>
+
+</Defs>

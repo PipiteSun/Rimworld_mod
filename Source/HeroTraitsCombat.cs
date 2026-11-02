@@ -169,7 +169,7 @@ namespace LichPhylactery {
    var worn=p?.apparel?.WornApparel;if(worn!=null)for(int k=0;k<worn.Count;k++)if(MagicThing(worn[k].def))yield return worn[k];
    var w=p?.equipment?.Primary;if(w!=null && MagicThing(w.def))yield return w;
   }
-  public static int ExtraRings(Pawn p)=>HeroTraits.Info(p)?.attuner==true?1:0;
+  public static int ExtraRings(Pawn p)=>(HeroTraits.Info(p)?.attuner==true?1:0)+(LakeArcana.Touched && LakeArcana.Has(p,"MasterArtisan")?1:0); // 1.100.0 万能匠魂
   // 骇人威仪 / 龙威：屠龙者免疫龙，宿敌克星免疫宿敌。
   public static bool FearImmuneTo(Pawn p,Pawn source){
    var i=HeroTraits.Info(p);if(i==null || source==null)return false;

@@ -1,0 +1,338 @@
+[
+  {
+    "key": "SteelCut",
+    "label": "斩铁式",
+    "color": "(0.95,0.6,0.4)",
+    "ring": 6,
+    "passive": false
+  },
+  {
+    "key": "Immovable",
+    "label": "不动如山",
+    "color": "(0.95,0.6,0.4)",
+    "ring": 7,
+    "passive": false
+  },
+  {
+    "key": "SwordDomain",
+    "label": "剑圣之域",
+    "color": "(0.95,0.6,0.4)",
+    "ring": 8,
+    "passive": false
+  },
+  {
+    "key": "Warlord",
+    "label": "万军之主",
+    "color": "(0.95,0.6,0.4)",
+    "ring": 9,
+    "passive": false
+  },
+  {
+    "key": "CloudStep",
+    "label": "攀云步",
+    "color": "(0.95,0.8,0.4)",
+    "ring": 6,
+    "passive": false
+  },
+  {
+    "key": "CloudHand",
+    "label": "云手",
+    "color": "(0.95,0.8,0.4)",
+    "ring": 7,
+    "passive": false
+  },
+  {
+    "key": "CloudBody",
+    "label": "云体",
+    "color": "(0.95,0.8,0.4)",
+    "ring": 8,
+    "passive": true
+  },
+  {
+    "key": "SkyFall",
+    "label": "九霄坠击",
+    "color": "(0.95,0.8,0.4)",
+    "ring": 9,
+    "passive": false
+  },
+  {
+    "key": "JudgmentChain",
+    "label": "天罚之链",
+    "color": "(1,0.9,0.55)",
+    "ring": 6,
+    "passive": false
+  },
+  {
+    "key": "RadiantShield",
+    "label": "光耀护盾",
+    "color": "(1,0.9,0.55)",
+    "ring": 7,
+    "passive": true
+  },
+  {
+    "key": "Sanctuary",
+    "label": "圣域",
+    "color": "(1,0.9,0.55)",
+    "ring": 8,
+    "passive": false
+  },
+  {
+    "key": "AngelDescent",
+    "label": "天使降临",
+    "color": "(1,0.9,0.55)",
+    "ring": 9,
+    "passive": false
+  },
+  {
+    "key": "CantripMastery",
+    "label": "咒法精通",
+    "color": "(0.7,0.5,1)",
+    "ring": 6,
+    "passive": true
+  },
+  {
+    "key": "PrismWall",
+    "label": "棱光墙",
+    "color": "(0.7,0.5,1)",
+    "ring": 7,
+    "passive": false
+  },
+  {
+    "key": "Simulacrum",
+    "label": "拟像术",
+    "color": "(0.7,0.5,1)",
+    "ring": 8,
+    "passive": false
+  },
+  {
+    "key": "TruePolymorph",
+    "label": "真实变形术",
+    "color": "(0.7,0.5,1)",
+    "ring": 9,
+    "passive": false
+  },
+  {
+    "key": "HolyWordHeal",
+    "label": "圣言疗愈",
+    "color": "(1,0.9,0.5)",
+    "ring": 6,
+    "passive": true
+  },
+  {
+    "key": "DivineWord",
+    "label": "神之圣言",
+    "color": "(1,0.9,0.5)",
+    "ring": 7,
+    "passive": false
+  },
+  {
+    "key": "HolyAura",
+    "label": "神圣光环",
+    "color": "(1,0.9,0.5)",
+    "ring": 8,
+    "passive": false
+  },
+  {
+    "key": "TrueResurrection",
+    "label": "真实复活",
+    "color": "(1,0.9,0.5)",
+    "ring": 9,
+    "passive": false
+  },
+  {
+    "key": "TreeStride",
+    "label": "横越植物",
+    "color": "(0.55,0.85,0.45)",
+    "ring": 6,
+    "passive": false
+  },
+  {
+    "key": "RegenCircle",
+    "label": "再生之环",
+    "color": "(0.55,0.85,0.45)",
+    "ring": 7,
+    "passive": true
+  },
+  {
+    "key": "AnimalShapes",
+    "label": "兽形术",
+    "color": "(0.55,0.85,0.45)",
+    "ring": 8,
+    "passive": false
+  },
+  {
+    "key": "DragonForm",
+    "label": "化身真龙",
+    "color": "(0.55,0.85,0.45)",
+    "ring": 9,
+    "passive": false
+  },
+  {
+    "key": "SeekingSpell",
+    "label": "超魔·追踪",
+    "color": "(0.9,0.45,0.75)",
+    "ring": 6,
+    "passive": true
+  },
+  {
+    "key": "ExtendedSpell",
+    "label": "超魔·延效",
+    "color": "(0.9,0.45,0.75)",
+    "ring": 7,
+    "passive": true
+  },
+  {
+    "key": "ElementalForm",
+    "label": "元素化身",
+    "color": "(0.9,0.45,0.75)",
+    "ring": 8,
+    "passive": false
+  },
+  {
+    "key": "SourceBurst",
+    "label": "源能爆发",
+    "color": "(0.9,0.45,0.75)",
+    "ring": 9,
+    "passive": false
+  },
+  {
+    "key": "Replicate",
+    "label": "完美复刻",
+    "color": "(0.95,0.8,0.45)",
+    "ring": 6,
+    "passive": false
+  },
+  {
+    "key": "ForceField",
+    "label": "力场发生器",
+    "color": "(0.95,0.8,0.45)",
+    "ring": 7,
+    "passive": false
+  },
+  {
+    "key": "SoulCore",
+    "label": "灵魂之核",
+    "color": "(0.95,0.8,0.45)",
+    "ring": 8,
+    "passive": true
+  },
+  {
+    "key": "MasterArtisan",
+    "label": "万能匠魂",
+    "color": "(0.95,0.8,0.45)",
+    "ring": 9,
+    "passive": true
+  },
+  {
+    "key": "BloodFury",
+    "label": "血怒",
+    "color": "(0.85,0.45,0.35)",
+    "ring": 6,
+    "passive": true
+  },
+  {
+    "key": "Unstoppable",
+    "label": "不可阻挡",
+    "color": "(0.85,0.45,0.35)",
+    "ring": 7,
+    "passive": true
+  },
+  {
+    "key": "Enlarge",
+    "label": "巨人化",
+    "color": "(0.85,0.45,0.35)",
+    "ring": 8,
+    "passive": false
+  },
+  {
+    "key": "EternalRage",
+    "label": "永恒狂怒",
+    "color": "(0.85,0.45,0.35)",
+    "ring": 9,
+    "passive": true
+  },
+  {
+    "key": "Camouflage",
+    "label": "自然伪装",
+    "color": "(0.55,0.75,0.45)",
+    "ring": 6,
+    "passive": true
+  },
+  {
+    "key": "GaleArrow",
+    "label": "疾风箭",
+    "color": "(0.55,0.75,0.45)",
+    "ring": 7,
+    "passive": false
+  },
+  {
+    "key": "BeastEvolve",
+    "label": "兽伴进化",
+    "color": "(0.55,0.75,0.45)",
+    "ring": 8,
+    "passive": true
+  },
+  {
+    "key": "HuntGodEye",
+    "label": "猎神之眼",
+    "color": "(0.55,0.75,0.45)",
+    "ring": 9,
+    "passive": false
+  },
+  {
+    "key": "TrapMaster",
+    "label": "陷阱大师",
+    "color": "(0.62,0.62,0.78)",
+    "ring": 6,
+    "passive": true
+  },
+  {
+    "key": "CripplingStab",
+    "label": "致残刺",
+    "color": "(0.62,0.62,0.78)",
+    "ring": 7,
+    "passive": true
+  },
+  {
+    "key": "PoisonKing",
+    "label": "毒王",
+    "color": "(0.62,0.62,0.78)",
+    "ring": 8,
+    "passive": true
+  },
+  {
+    "key": "Shadowless",
+    "label": "无影",
+    "color": "(0.62,0.62,0.78)",
+    "ring": 9,
+    "passive": true
+  },
+  {
+    "key": "OtherGuardian",
+    "label": "异界护卫",
+    "color": "(0.6,0.4,0.85)",
+    "ring": 6,
+    "passive": false
+  },
+  {
+    "key": "SoulHarvest",
+    "label": "灵魂收割",
+    "color": "(0.6,0.4,0.85)",
+    "ring": 7,
+    "passive": true
+  },
+  {
+    "key": "MassFear",
+    "label": "群体恐惧",
+    "color": "(0.6,0.4,0.85)",
+    "ring": 8,
+    "passive": false
+  },
+  {
+    "key": "SoulPact",
+    "label": "灵魂契约",
+    "color": "(0.6,0.4,0.85)",
+    "ring": 9,
+    "passive": true
+  }
+]

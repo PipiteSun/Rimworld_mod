@@ -121,8 +121,7 @@ namespace LichPhylactery {
 
   // ---------- 伤害与命中（HeroCombat 调用） ----------
   public static bool Unarmed(DamageInfo d)=>d.Weapon!=null && d.Weapon.race!=null && d.Def!=null && !d.Def.isRanged;
-  public static bool Bludgeon(DamageInfo d)=>Unarmed(d) || d.Weapon!=null && d.Weapon.IsMeleeWeapon && d.Def==DamageDefOf.Blunt;
-  // 攻击者一侧：酒馆斗殴者、元素使 +25%（社交斗殴的对手不是敌人，所以在敌对判断之前）。
+  public static bool Bludgeon(DamageInfo d)=>Unarmed(d) || d.Weapon!=null && d.Weapon.IsMeleeWeapon && d.Def==DamageDefOf.Blunt;  // 攻击者一侧：酒馆斗殴者、元素使 +25%（社交斗殴的对手不是敌人，所以在敌对判断之前）。
   // 1.67.0：巨武器大师（双手近战 ×1.25）、神射手（远程武器 ×1.15）、斩 / 刺 / 碎（对应伤害 ×1.2，穿刺者 20% 双倍）、法师杀手（对施法者 ×1.3）。
   public static float OutFactor(Pawn a,HeroInfo i,Pawn v,DamageInfo d){
    if(!Adventurer.Enabled)return 1f;float f=1f;

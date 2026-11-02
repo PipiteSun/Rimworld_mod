@@ -52,6 +52,7 @@ namespace LichPhylactery {
   public bool npc; // NPC 职业已经分过（NpcClasses.cs）
   public List<AbilityDef> autocast=new List<AbilityDef>(); // 开了自动施放的职业能力（ClassAutoCast.cs）
   public int table=ClassSystem.TableVersion; // 1.87.0 等级表版本：旧存档读进来是 0，Tick250 里补一次新表下够格的能力
+  public List<AbilityDef> arcana=new List<AbilityDef>();public int arcanaLast;public bool arcanaShaped; // 1.100.0 魔力湖泊的秘传（ManaLake.cs）：学会的、上次施放秘传的刻、再生之环记着上次是否在荒野变形
   public bool Any=>levels.Count>0;
   public void ExposeData(){
    Scribe_Collections.Look(ref levels,"levels",LookMode.Def,LookMode.Value);
@@ -62,8 +63,10 @@ namespace LichPhylactery {
    Scribe_Collections.Look(ref legendary,"legendary",LookMode.Def);Scribe_Collections.Look(ref legendaryTicks,"legendaryTicks",LookMode.Value,LookMode.Value);
    Scribe_Values.Look(ref rageTick,"rageTick");Scribe_Collections.Look(ref favored,"favored",LookMode.Value);
    Scribe_Deep.Look(ref sub,"sub");Scribe_Values.Look(ref npc,"npc");Scribe_Collections.Look(ref autocast,"autocast",LookMode.Def);Scribe_Values.Look(ref table,"table");
+   Scribe_Collections.Look(ref arcana,"arcana",LookMode.Def);Scribe_Values.Look(ref arcanaLast,"arcanaLast");Scribe_Values.Look(ref arcanaShaped,"arcanaShaped");
    if(Scribe.mode==LoadSaveMode.PostLoadInit){
     if(autocast==null)autocast=new List<AbilityDef>();autocast.RemoveAll(x=>x==null);
+    if(arcana==null)arcana=new List<AbilityDef>();arcana.RemoveAll(x=>x==null);
     if(favored==null)favored=new List<int>();if(sub==null)sub=new SubclassData();
     if(levels==null)levels=new Dictionary<LP_ClassDef,int>();if(res==null)res=new Dictionary<LP_ClassDef,float>();if(kept==null)kept=new List<AbilityDef>();
     if(legendary==null)legendary=new List<AbilityDef>();legendary.RemoveAll(x=>x==null);if(legendaryTicks==null)legendaryTicks=new Dictionary<string,int>();
@@ -82,7 +85,7 @@ namespace LichPhylactery {
   public static List<LP_ClassDef> All{get{if(all==null || allCount!=DefDatabase<LP_ClassDef>.DefCount){all=DefDatabase<LP_ClassDef>.AllDefsListForReading.OrderBy(d=>d.order).ToList();allCount=DefDatabase<LP_ClassDef>.DefCount;byAbility=null;}return all;}}
   static Dictionary<AbilityDef,(LP_ClassDef cls,ClassAbilityEntry entry)> byAbility;
   static Dictionary<AbilityDef,(LP_ClassDef cls,ClassAbilityEntry entry)> ByAbility{get{var a=All;if(byAbility==null){byAbility=new Dictionary<AbilityDef,(LP_ClassDef,ClassAbilityEntry)>();foreach(var c in a)foreach(var e in c.abilities)if(e.ability!=null)byAbility[e.ability]=(c,e);}return byAbility;}}
-  public static LP_ClassDef ClassOf(AbilityDef d)=>d!=null && ByAbility.TryGetValue(d,out var v)?v.cls:ClassLegendary.ClassOf(d)??ClassSubclass.ClassOf(d); // 子职业能力算所属职业
+  public static LP_ClassDef ClassOf(AbilityDef d)=>d!=null && ByAbility.TryGetValue(d,out var v)?v.cls:ClassLegendary.ClassOf(d)??ClassSubclass.ClassOf(d)??LakeArcana.ClassOf(d); // 子职业能力算所属职业；1.100.0 职业水晶算那个职业
   public static ClassAbilityEntry EntryOf(AbilityDef d)=>d!=null && ByAbility.TryGetValue(d,out var v)?v.entry:null;
   public static LP_ClassDef ByLegacyPath(string path)=>path==null?null:All.FirstOrDefault(c=>c.legacyPath==path);
   // 1.81.0 热修2（Peter）：部位生命成长按职业生命骰（d12 野蛮人 7%，d10 6%，d8 5%，d6 4%）；没分配职业点的等级按 Hediff_Adventurer.PartPerLevel。
@@ -236,6 +239,7 @@ namespace LichPhylactery {
     foreach(var e in c.abilities)if(Entitled(h,c,e) && p.abilities.GetAbility(e.ability)==null){p.abilities.GainAbility(e.ability);n++;}}
    foreach(var a in h.classes.legendary)if(p.abilities.GetAbility(a)==null){p.abilities.GainAbility(a);n++;} // 1.74.0
    n+=ClassSubclass.Sync(h); // 子职业与通用能力
+   n+=LakeArcana.Sync(h); // 1.100.0 秘传
    return n;
   }
   // 1.87.0（Peter：最终特性下调到 15 级左右）：旧存档的人按新等级表补一次够格的能力（只加不减），玩家的人发一条消息列出补上的能力。
@@ -311,6 +315,7 @@ namespace LichPhylactery {
    NpcClasses.Tick(h); // NPC 职业（懒分配、升级加点、战斗中施放；玩家的人直接返回）
    var d=h.classes;if(d==null)return;
    if(h.level>=ClassLegendary.Thresholds[0])ClassLegendary.SyncPoints(h); // 1.74.0 传奇职业点（老存档在这里补发）
+   if(d.arcana.Count>0)LakeArcana.Passives(h); // 1.100.0 秘传的被动
    if(d.levels.Count==0)return;
    if(h.fighterFeatGranted<FighterFeatLevels.Length)SyncFighterFeats(h,true); // 2026-10-31 战士奖励专长（老存档在这里补发）
    var p=h.pawn;if(p==null)return;
@@ -340,6 +345,7 @@ namespace LichPhylactery {
   public static string CannotCast(Pawn p,AbilityDef def,CompProperties_ClassEffect props){
    if(props==null || props.passive)return null;
    var h=Adventurer.Get(p);var c=ClassOf(def);
+   var arc=LakeArcana.CannotCast(p,def);if(arc!=null)return arc; // 1.100.0 秘传公共冷却
    if(c==null || h==null)return null;
    if(c.caster && ClassMartial2.Raging(p))return "狂暴中无法施法";
    int cost=ClassLegendary.Cost(p,def,props);

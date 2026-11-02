@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.100.0 魔力湖泊的秘传结晶：由 ArtSource/ManaLake/gen_crystals.ps1 按 ManaLake_Arcana.xml 生成，不要手改。 -->
+<Defs>
+  <ThingDef Name="LP_ArcanumCrystalBase" ParentName="ResourceBase" Abstract="True">
+    <graphicData>
+      <texPath>LP/Items/ArcanumCrystal</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <stackLimit>5</stackLimit>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>Items</li></thingCategories>
+    <tradeTags><li>LP_ArcanumCrystal</li></tradeTags>
+    <statBases>
+      <Mass>0.2</Mass>
+      <MaxHitPoints>200</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <Beauty>4</Beauty>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Usable">
+        <useJob>UseItem</useJob>
+        <useLabel>吸收{0_label}</useLabel>
+        <useDuration>2500</useDuration>
+      </li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_SteelCut</defName>
+    <label>职业水晶：斩铁式</label>
+    <description>魔力湖泊的职业水晶。战士吸收后永久学会秘传「斩铁式」（6 环，需要战士 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（6 环战士）：30 秒内所有攻击无视护甲。冷却 2 天。</description>
+    <graphicData><color>(0.95,0.6,0.4)</color></graphicData>
+    <statBases><MarketValue>8000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_SteelCut</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_Immovable</defName>
+    <label>职业水晶：不动如山</label>
+    <description>魔力湖泊的职业水晶。战士吸收后永久学会秘传「不动如山」（7 环，需要战士 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（7 环战士）：30 秒内免疫击晕、不会倒地，受到的伤害 ×0.5。冷却 3 天。</description>
+    <graphicData><color>(0.95,0.6,0.4)</color></graphicData>
+    <statBases><MarketValue>12000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_Immovable</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_SwordDomain</defName>
+    <label>职业水晶：剑圣之域</label>
+    <description>魔力湖泊的职业水晶。战士吸收后永久学会秘传「剑圣之域」（8 环，需要战士 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（8 环战士）：20 秒内剑气笼罩身边 3 格，每 0.5 秒对范围里的一名敌人发动一次近战结算（按当前近战武器，伤害 × 战技强度）。冷却 5 天。</description>
+    <graphicData><color>(0.95,0.6,0.4)</color></graphicData>
+    <statBases><MarketValue>16000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_SwordDomain</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_Warlord</defName>
+    <label>职业水晶：万军之主</label>
+    <description>魔力湖泊的职业水晶。战士吸收后永久学会秘传「万军之主」（9 环，需要战士 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（9 环战士）：本地图所有己方人形 1 天内近战命中 +15%、射击精度提高、造成的伤害 ×1.15，不会精神崩溃。冷却 7 天。</description>
+    <graphicData><color>(0.95,0.6,0.4)</color></graphicData>
+    <statBases><MarketValue>25000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_Warlord</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_CloudStep</defName>
+    <label>职业水晶：攀云步</label>
+    <description>魔力湖泊的职业水晶。武僧吸收后永久学会秘传「攀云步」（6 环，需要武僧 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（6 环武僧·攀云僧）：跃向 25 格内任意一处空地，无视墙和地形；落地时半径 2 格内的敌人受 15 × 战技强度钝器伤害并被击晕 1 秒。冷却 2 天。</description>
+    <graphicData><color>(0.95,0.8,0.4)</color></graphicData>
+    <statBases><MarketValue>8000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_CloudStep</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_CloudHand</defName>
+    <label>职业水晶：云手</label>
+    <description>魔力湖泊的职业水晶。武僧吸收后永久学会秘传「云手」（7 环，需要武僧 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（7 环武僧·攀云僧）：隔空打出 15 格的掌劲，40 × 战技强度钝器伤害，无视一半护甲，并把目标击退 3 格。冷却 3 天。</description>
+    <graphicData><color>(0.95,0.8,0.4)</color></graphicData>
+    <statBases><MarketValue>12000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_CloudHand</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_CloudBody</defName>
+    <label>职业水晶：云体</label>
+    <description>魔力湖泊的职业水晶。武僧吸收后永久学会被动秘传「云体」（8 环，需要武僧 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（8 环武僧·攀云僧）：移动 ×1.3，免疫击晕。</description>
+    <graphicData><color>(0.95,0.8,0.4)</color></graphicData>
+    <statBases><MarketValue>16000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_CloudBody</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_SkyFall</defName>
+    <label>职业水晶：九霄坠击</label>
+    <description>魔力湖泊的职业水晶。武僧吸收后永久学会秘传「九霄坠击」（9 环，需要武僧 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（9 环武僧·攀云僧）：腾身入云 3 秒（期间不可被攻击），再坠向 30 格内一点：半径 4 格内的敌人受 60 × 战技强度钝器伤害并被击晕 5 秒。冷却 7 天。</description>
+    <graphicData><color>(0.95,0.8,0.4)</color></graphicData>
+    <statBases><MarketValue>25000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_SkyFall</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_JudgmentChain</defName>
+    <label>职业水晶：天罚之链</label>
+    <description>魔力湖泊的职业水晶。圣武士吸收后永久学会秘传「天罚之链」（6 环，需要圣武士 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（6 环圣武士）：用神圣锁链锁住 20 格内一名敌人 10 秒，它几乎无法移动；期间它每攻击一次，自己受 20 × 神恩强度（× 心灵敏感度）神圣伤害。冷却 2 天。</description>
+    <graphicData><color>(1,0.9,0.55)</color></graphicData>
+    <statBases><MarketValue>8000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_JudgmentChain</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_RadiantShield</defName>
+    <label>职业水晶：光耀护盾</label>
+    <description>魔力湖泊的职业水晶。圣武士吸收后永久学会被动秘传「光耀护盾」（7 环，需要圣武士 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（7 环圣武士）：每次施放至圣斩（或其他神圣斩击类能力）后，得到吸收 30 × 神恩强度伤害的护盾，持续 1 分钟。</description>
+    <graphicData><color>(1,0.9,0.55)</color></graphicData>
+    <statBases><MarketValue>12000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_RadiantShield</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_Sanctuary</defName>
+    <label>职业水晶：圣域</label>
+    <description>魔力湖泊的职业水晶。圣武士吸收后永久学会秘传「圣域」（8 环，需要圣武士 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（8 环圣武士）：在 20 格内一点划出半径 5 格的圣域，持续 1 小时：友军每秒恢复 2 × 神恩强度点伤势，邪魔和亡灵每秒受 5 × 神恩强度神圣伤害。冷却 5 天。</description>
+    <graphicData><color>(1,0.9,0.55)</color></graphicData>
+    <statBases><MarketValue>16000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_Sanctuary</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_AngelDescent</defName>
+    <label>职业水晶：天使降临</label>
+    <description>魔力湖泊的职业水晶。圣武士吸收后永久学会秘传「天使降临」（9 环，需要圣武士 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（9 环圣武士）：召来一名天界的天使侍从（天神裔，善战，受到的伤害 ×0.5、近战伤害 ×1.5）协战 1 天，时间一到化为光点离去。冷却 7 天。</description>
+    <graphicData><color>(1,0.9,0.55)</color></graphicData>
+    <statBases><MarketValue>25000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_AngelDescent</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_CantripMastery</defName>
+    <label>职业水晶：咒法精通</label>
+    <description>魔力湖泊的职业水晶。法师吸收后永久学会被动秘传「咒法精通」（6 环，需要法师 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（6 环法师）：法师 1 级能力的法力消耗变为 0。</description>
+    <graphicData><color>(0.7,0.5,1)</color></graphicData>
+    <statBases><MarketValue>8000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_CantripMastery</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_PrismWall</defName>
+    <label>职业水晶：棱光墙</label>
+    <description>魔力湖泊的职业水晶。法师吸收后永久学会秘传「棱光墙」（7 环，需要法师 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（7 环法师）：在 25 格内一点立起一道 10 格长的七彩光墙（与施法方向垂直），持续 1 小时：墙上的敌人每秒受火焰、寒霜、闪电、强酸各 8 × 奥术强度（× 心灵敏感度）伤害。冷却 3 天。</description>
+    <graphicData><color>(0.7,0.5,1)</color></graphicData>
+    <statBases><MarketValue>12000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_PrismWall</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_Simulacrum</defName>
+    <label>职业水晶：拟像术</label>
+    <description>魔力湖泊的职业水晶。法师吸收后永久学会秘传「拟像术」（8 环，需要法师 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（8 环法师）：用冰雪复制 20 格内一名己方人形：拟像有同样的种族、性别和技能等级，只有一半的耐受（受到的伤害 ×2），3 天后融化。冷却 5 天。</description>
+    <graphicData><color>(0.7,0.5,1)</color></graphicData>
+    <statBases><MarketValue>16000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_Simulacrum</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_TruePolymorph</defName>
+    <label>职业水晶：真实变形术</label>
+    <description>魔力湖泊的职业水晶。法师吸收后永久学会秘传「真实变形术」（9 环，需要法师 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（9 环法师）：把 20 格内一名敌人永久变成一只属于你的动物（体型大的变成灰熊，其余变成森林狼）。对传奇生物、剧情首领和体型 3 以上的目标无效。冷却 10 天。</description>
+    <graphicData><color>(0.7,0.5,1)</color></graphicData>
+    <statBases><MarketValue>25000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_TruePolymorph</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_HolyWordHeal</defName>
+    <label>职业水晶：圣言疗愈</label>
+    <description>魔力湖泊的职业水晶。牧师吸收后永久学会被动秘传「圣言疗愈」（6 环，需要牧师 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（6 环牧师）：治疗伤口和群体治疗另外为每个被治疗的人清除一种疾病或成瘾。</description>
+    <graphicData><color>(1,0.9,0.5)</color></graphicData>
+    <statBases><MarketValue>8000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_HolyWordHeal</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_DivineWord</defName>
+    <label>职业水晶：神之圣言</label>
+    <description>魔力湖泊的职业水晶。牧师吸收后永久学会秘传「神之圣言」（7 环，需要牧师 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（7 环牧师）：念出神的圣言，半径 6 格内的敌人：剩余健康不到 20% 的当场死亡，不到 50% 的击晕 10 秒，其余失明 1 分钟。传奇生物和剧情首领只会失明。冷却 3 天。</description>
+    <graphicData><color>(1,0.9,0.5)</color></graphicData>
+    <statBases><MarketValue>12000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_DivineWord</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_HolyAura</defName>
+    <label>职业水晶：神圣光环</label>
+    <description>魔力湖泊的职业水晶。牧师吸收后永久学会秘传「神圣光环」（8 环，需要牧师 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（8 环牧师）：1 分钟内，自己和半径 6 格内的友军受到的伤害 ×0.7，近战攻击他们的邪魔和亡灵失明 10 秒。冷却 5 天。</description>
+    <graphicData><color>(1,0.9,0.5)</color></graphicData>
+    <statBases><MarketValue>16000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_HolyAura</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_TrueResurrection</defName>
+    <label>职业水晶：真实复活</label>
+    <description>魔力湖泊的职业水晶。牧师吸收后永久学会秘传「真实复活」（9 环，需要牧师 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（9 环牧师）：复活 12 格内一具死亡不超过 1 年的人形尸体，失去的肢体和器官一并长回；尸体腐烂成白骨也可以。对巫妖和死灵造物无效。冷却 30 天。</description>
+    <graphicData><color>(1,0.9,0.5)</color></graphicData>
+    <statBases><MarketValue>25000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_TrueResurrection</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_TreeStride</defName>
+    <label>职业水晶：横越植物</label>
+    <description>魔力湖泊的职业水晶。德鲁伊吸收后永久学会秘传「横越植物」（6 环，需要德鲁伊 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（6 环德鲁伊）：站在树旁（2 格内）时，走进树里，从本地图另一棵树旁走出来；身边 2 格内最多 3 名友军一起走。冷却 2 天。</description>
+    <graphicData><color>(0.55,0.85,0.45)</color></graphicData>
+    <statBases><MarketValue>8000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_TreeStride</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_RegenCircle</defName>
+    <label>职业水晶：再生之环</label>
+    <description>魔力湖泊的职业水晶。德鲁伊吸收后永久学会被动秘传「再生之环」（7 环，需要德鲁伊 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（7 环德鲁伊）：荒野变形期间每 250 刻恢复 2 × 野性强度点伤势；变回人形时再治好当前伤势的 20%。</description>
+    <graphicData><color>(0.55,0.85,0.45)</color></graphicData>
+    <statBases><MarketValue>12000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_RegenCircle</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_AnimalShapes</defName>
+    <label>职业水晶：兽形术</label>
+    <description>魔力湖泊的职业水晶。德鲁伊吸收后永久学会秘传「兽形术」（8 环，需要德鲁伊 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（8 环德鲁伊）：自己和身边 5 格内最多 4 名己方人形一起荒野变形（熊形）1 小时，强度按你的野性强度。冷却 5 天。</description>
+    <graphicData><color>(0.55,0.85,0.45)</color></graphicData>
+    <statBases><MarketValue>16000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_AnimalShapes</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_DragonForm</defName>
+    <label>职业水晶：化身真龙</label>
+    <description>魔力湖泊的职业水晶。德鲁伊吸收后永久学会秘传「化身真龙」（9 环，需要德鲁伊 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（9 环德鲁伊）：化身真龙 1 小时：龙爪 30、龙咬 36（穿甲 40%），近战伤害 × 野性强度，受到的伤害 ×0.5，移动 ×1.3。冷却 7 天。</description>
+    <graphicData><color>(0.55,0.85,0.45)</color></graphicData>
+    <statBases><MarketValue>25000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_DragonForm</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_SeekingSpell</defName>
+    <label>职业水晶：超魔·追踪</label>
+    <description>魔力湖泊的职业水晶。术士吸收后永久学会被动秘传「超魔·追踪」（6 环，需要术士 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（6 环术士）：术士法术会追着目标的要害打，伤害与治疗 ×1.25。</description>
+    <graphicData><color>(0.9,0.45,0.75)</color></graphicData>
+    <statBases><MarketValue>8000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_SeekingSpell</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_ExtendedSpell</defName>
+    <label>职业水晶：超魔·延效</label>
+    <description>魔力湖泊的职业水晶。术士吸收后永久学会被动秘传「超魔·延效」（7 环，需要术士 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（7 环术士）：术士法术的持续时间 ×2。</description>
+    <graphicData><color>(0.9,0.45,0.75)</color></graphicData>
+    <statBases><MarketValue>12000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_ExtendedSpell</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_ElementalForm</defName>
+    <label>职业水晶：元素化身</label>
+    <description>魔力湖泊的职业水晶。术士吸收后永久学会秘传「元素化身」（8 环，需要术士 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（8 环术士）：30 秒内化身元素：免疫火焰、寒霜、闪电、电击和强酸伤害，术士法术伤害 ×1.3。冷却 5 天。</description>
+    <graphicData><color>(0.9,0.45,0.75)</color></graphicData>
+    <statBases><MarketValue>16000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_ElementalForm</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_SourceBurst</defName>
+    <label>职业水晶：源能爆发</label>
+    <description>魔力湖泊的职业水晶。术士吸收后永久学会秘传「源能爆发」（9 环，需要术士 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（9 环术士）：耗尽全部术士法力（至少 1 点），在 25 格内一点引爆：半径 5 格内的敌人受（每点法力 15）× 天赋强度（× 心灵敏感度）奥术力伤害。冷却 7 天。</description>
+    <graphicData><color>(0.9,0.45,0.75)</color></graphicData>
+    <statBases><MarketValue>25000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_SourceBurst</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_Replicate</defName>
+    <label>职业水晶：完美复刻</label>
+    <description>魔力湖泊的职业水晶。器械师吸收后永久学会秘传「完美复刻」（6 环，需要器械师 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（6 环器械师）：复刻 3 格内一件 DND 物品（服装、武器或奇物，品质相同，传说品质除外），花掉地图上相当于它市价一半的白银。冷却 15 天。</description>
+    <graphicData><color>(0.95,0.8,0.45)</color></graphicData>
+    <statBases><MarketValue>8000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_Replicate</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_ForceField</defName>
+    <label>职业水晶：力场发生器</label>
+    <description>魔力湖泊的职业水晶。器械师吸收后永久学会秘传「力场发生器」（7 环，需要器械师 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（7 环器械师）：在 10 格内一处空地放下力场柱，展开半径 5 格的拦弹护盾（外面射进来的子弹被挡住，里面可以往外打），1 天后崩解。冷却 3 天。</description>
+    <graphicData><color>(0.95,0.8,0.45)</color></graphicData>
+    <statBases><MarketValue>12000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_ForceField</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_SoulCore</defName>
+    <label>职业水晶：灵魂之核</label>
+    <description>魔力湖泊的职业水晶。器械师吸收后永久学会被动秘传「灵魂之核」（8 环，需要器械师 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（8 环器械师）：你放下的符文炮台和战争傀儡伤害 ×1.5。</description>
+    <graphicData><color>(0.95,0.8,0.45)</color></graphicData>
+    <statBases><MarketValue>16000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_SoulCore</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_MasterArtisan</defName>
+    <label>职业水晶：万能匠魂</label>
+    <description>魔力湖泊的职业水晶。器械师吸收后永久学会被动秘传「万能匠魂」（9 环，需要器械师 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（9 环器械师）：可以多戴一枚魔法戒指。</description>
+    <graphicData><color>(0.95,0.8,0.45)</color></graphicData>
+    <statBases><MarketValue>25000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_MasterArtisan</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_BloodFury</defName>
+    <label>职业水晶：血怒</label>
+    <description>魔力湖泊的职业水晶。野蛮人吸收后永久学会被动秘传「血怒」（6 环，需要野蛮人 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（6 环野蛮人）：狂暴中，自己每损失 10% 的健康，造成的伤害 +5%（最多 +50%）。</description>
+    <graphicData><color>(0.85,0.45,0.35)</color></graphicData>
+    <statBases><MarketValue>8000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_BloodFury</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_Unstoppable</defName>
+    <label>职业水晶：不可阻挡</label>
+    <description>魔力湖泊的职业水晶。野蛮人吸收后永久学会被动秘传「不可阻挡」（7 环，需要野蛮人 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（7 环野蛮人）：狂暴中免疫击晕。</description>
+    <graphicData><color>(0.85,0.45,0.35)</color></graphicData>
+    <statBases><MarketValue>12000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_Unstoppable</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_Enlarge</defName>
+    <label>职业水晶：巨人化</label>
+    <description>魔力湖泊的职业水晶。野蛮人吸收后永久学会秘传「巨人化」（8 环，需要野蛮人 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（8 环野蛮人）：30 秒内身形暴涨，近战伤害 ×1.5，受到的伤害 ×0.8。冷却 5 天。</description>
+    <graphicData><color>(0.85,0.45,0.35)</color></graphicData>
+    <statBases><MarketValue>16000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_Enlarge</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_EternalRage</defName>
+    <label>职业水晶：永恒狂怒</label>
+    <description>魔力湖泊的职业水晶。野蛮人吸收后永久学会被动秘传「永恒狂怒」（9 环，需要野蛮人 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（9 环野蛮人）：狂暴不再有时限，只要 10 秒内还在战斗就一直持续；狂暴中不会倒地（伤势过重时照样会死）。</description>
+    <graphicData><color>(0.85,0.45,0.35)</color></graphicData>
+    <statBases><MarketValue>25000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_EternalRage</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_Camouflage</defName>
+    <label>职业水晶：自然伪装</label>
+    <description>魔力湖泊的职业水晶。游侠吸收后永久学会被动秘传「自然伪装」（6 环，需要游侠 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（6 环游侠）：征召后静止不动约 4 秒就进入伪装，下一次攻击伤害 ×2（攻击或移动后解除）。</description>
+    <graphicData><color>(0.55,0.75,0.45)</color></graphicData>
+    <statBases><MarketValue>8000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_Camouflage</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_GaleArrow</defName>
+    <label>职业水晶：疾风箭</label>
+    <description>魔力湖泊的职业水晶。游侠吸收后永久学会秘传「疾风箭」（7 环，需要游侠 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（7 环游侠）：用当前远程武器射出一发弹射箭：命中目标后再弹向它 8 格内的另外 2 名敌人，每次都是一发完整的射击。冷却 3 天。</description>
+    <graphicData><color>(0.55,0.75,0.45)</color></graphicData>
+    <statBases><MarketValue>12000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_GaleArrow</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_BeastEvolve</defName>
+    <label>职业水晶：兽伴进化</label>
+    <description>魔力湖泊的职业水晶。游侠吸收后永久学会被动秘传「兽伴进化」（8 环，需要游侠 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（8 环游侠）：你的兽伴受到的伤害 ×0.67（相当于生命 +50%），近战伤害 ×1.3，移动 ×1.1。</description>
+    <graphicData><color>(0.55,0.75,0.45)</color></graphicData>
+    <statBases><MarketValue>16000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_BeastEvolve</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_HuntGodEye</defName>
+    <label>职业水晶：猎神之眼</label>
+    <description>魔力湖泊的职业水晶。游侠吸收后永久学会秘传「猎神之眼」（9 环，需要游侠 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（9 环游侠）：1 天内射击精度大幅提高（几乎必中），对宿敌伤害 ×1.5。冷却 7 天。</description>
+    <graphicData><color>(0.55,0.75,0.45)</color></graphicData>
+    <statBases><MarketValue>25000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_HuntGodEye</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_TrapMaster</defName>
+    <label>职业水晶：陷阱大师</label>
+    <description>魔力湖泊的职业水晶。游荡者吸收后永久学会被动秘传「陷阱大师」（6 环，需要游荡者 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（6 环游荡者）：不会触发任何陷阱。</description>
+    <graphicData><color>(0.62,0.62,0.78)</color></graphicData>
+    <statBases><MarketValue>8000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_TrapMaster</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_CripplingStab</defName>
+    <label>职业水晶：致残刺</label>
+    <description>魔力湖泊的职业水晶。游荡者吸收后永久学会被动秘传「致残刺」（7 环，需要游荡者 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（7 环游荡者）：偷袭命中后，目标移动 ×0.5，持续 30 秒。</description>
+    <graphicData><color>(0.62,0.62,0.78)</color></graphicData>
+    <statBases><MarketValue>12000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_CripplingStab</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_PoisonKing</defName>
+    <label>职业水晶：毒王</label>
+    <description>魔力湖泊的职业水晶。游荡者吸收后永久学会被动秘传「毒王」（8 环，需要游荡者 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（8 环游荡者）：淬毒刃的毒量 ×2，对血肉亡灵也生效。</description>
+    <graphicData><color>(0.62,0.62,0.78)</color></graphicData>
+    <statBases><MarketValue>16000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_PoisonKing</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_Shadowless</defName>
+    <label>职业水晶：无影</label>
+    <description>魔力湖泊的职业水晶。游荡者吸收后永久学会被动秘传「无影」（9 环，需要游荡者 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（9 环游荡者）：每次杀死敌人后隐形 3 秒，可以连续触发。</description>
+    <graphicData><color>(0.62,0.62,0.78)</color></graphicData>
+    <statBases><MarketValue>25000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_Shadowless</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_OtherGuardian</defName>
+    <label>职业水晶：异界护卫</label>
+    <description>魔力湖泊的职业水晶。邪术师吸收后永久学会秘传「异界护卫」（6 环，需要邪术师 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（6 环邪术师）：按宗主召来一只异界护卫协战 3 天：邪魔宗主是小恶魔，妖精宗主是小精灵，其余是夸塞魔。冷却 2 天。</description>
+    <graphicData><color>(0.6,0.4,0.85)</color></graphicData>
+    <statBases><MarketValue>8000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_OtherGuardian</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_SoulHarvest</defName>
+    <label>职业水晶：灵魂收割</label>
+    <description>魔力湖泊的职业水晶。邪术师吸收后永久学会被动秘传「灵魂收割」（7 环，需要邪术师 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（7 环邪术师）：用魔能伤害（魔能爆等）杀死敌人时，回 1 点契约法力。</description>
+    <graphicData><color>(0.6,0.4,0.85)</color></graphicData>
+    <statBases><MarketValue>12000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_SoulHarvest</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_MassFear</defName>
+    <label>职业水晶：群体恐惧</label>
+    <description>魔力湖泊的职业水晶。邪术师吸收后永久学会秘传「群体恐惧」（8 环，需要邪术师 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（8 环邪术师）：20 格内一点半径 6 格内的敌人陷入恐惧、四散奔逃 15 秒；传奇生物和剧情首领有 50% 的成功率挣脱。冷却 5 天。</description>
+    <graphicData><color>(0.6,0.4,0.85)</color></graphicData>
+    <statBases><MarketValue>16000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_MassFear</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_SoulPact</defName>
+    <label>职业水晶：灵魂契约</label>
+    <description>魔力湖泊的职业水晶。邪术师吸收后永久学会被动秘传「灵魂契约」（9 环，需要邪术师 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（9 环邪术师）：你杀死的敌对人形（传奇生物和剧情首领除外）有 50% 的概率灵魂被束缚：当场爬起来成为你的战斗仆从，3 天后灵魂散去、化为光点消失。</description>
+    <graphicData><color>(0.6,0.4,0.85)</color></graphicData>
+    <statBases><MarketValue>25000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_SoulPact</ability></li></comps>
+  </ThingDef>
+</Defs>
