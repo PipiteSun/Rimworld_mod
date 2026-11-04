@@ -748,9 +748,9 @@ namespace LichPhylactery {
  [HarmonyPatch(typeof(TraitSet),nameof(TraitSet.GainTrait))]
  public static class DndGainBlock {static bool Prefix(Pawn ___pawn,Trait trait)=>!DndTraits.DegreeConflict(___pawn,trait);}
  [HarmonyPatch(typeof(TraitSet),nameof(TraitSet.GainTrait))]
- public static class DndGain {static void Postfix(Pawn ___pawn,Trait trait){if(trait==null || !DndTraits.Is(trait.def) || ___pawn?.story?.traits?.allTraits.Contains(trait)!=true)return;DndTraits.Gained(___pawn,trait);}}
+ public static class DndGain {public static void Postfix(Pawn ___pawn,Trait trait){if(trait==null || !DndTraits.Is(trait.def) || ___pawn?.story?.traits?.allTraits.Contains(trait)!=true)return;DndTraits.Gained(___pawn,trait);}}
  [HarmonyPatch(typeof(TraitSet),nameof(TraitSet.RemoveTrait))]
- public static class DndLose {static void Postfix(Pawn ___pawn,Trait trait){if(trait==null || !DndTraits.Is(trait.def))return;DndTraits.Lost(___pawn,trait);}}
+ public static class DndLose {public static void Postfix(Pawn ___pawn,Trait trait){if(trait==null || !DndTraits.Is(trait.def))return;DndTraits.Lost(___pawn,trait);}}
  [HarmonyPatch(typeof(Trait),nameof(Trait.TipString))]
  public static class DndTip {static void Postfix(Trait __instance,Pawn pawn,ref string __result){if(__instance==null || !DndTraits.IsCurse(__instance.def))return;var x=DndTraits.ExtraTip(pawn,__instance);if(!x.NullOrEmpty())__result=__result+"\n\n"+x;}}
  // 伤害：类型加成（与 1.58.0 合计封顶）、狂野魔法法术、仁善神圣、魔法恐惧、兽形减伤。

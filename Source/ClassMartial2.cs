@@ -360,8 +360,8 @@ namespace LichPhylactery {
  public static class ClassWoodstride {
   public const float Cut=.75f;
   static void Postfix(Pawn __0,IntVec3 __1,ref float __result){
-   if(ClassMartial2.Woodstriders.Count==0 && ClassSubclass.Climbers.Count==0 || __0==null)return;
-   bool climb=ClassSubclass.Climbers.Count>0 && ClassSubclass.Climbers.Contains(__0); // 子职业·盗贼 飞檐走壁：全免
+   if(ClassMartial2.Woodstriders.Count==0 && ClassSubclass.Climbers.Count==0 && Subclass2.Fliers.Count==0 && Subclass3.Wingers.Count==0 && Subclass4.LightFeet.Count==0 || __0==null)return;
+   bool climb=ClassSubclass.Climbers.Count>0 && ClassSubclass.Climbers.Contains(__0) || Subclass2.Fliers.Count>0 && Subclass2.Fliers.Contains(__0) || Subclass3.Wingers.Count>0 && Subclass3.Wingers.Contains(__0) || Subclass4.LightFeet.Count>0 && Subclass4.LightFeet.Contains(__0); // 子职业·盗贼 飞檐走壁、1.104.0 龙魂 龙翼、1.111.0 轻盈药剂：全免
    if(!climb && !ClassMartial2.Woodstriders.Contains(__0))return;
    var map=__0.Map;if(map==null || !__1.InBounds(map))return;
    __result=Mathf.Max(1f,__result-Extra(map,__1)*(climb?1f:Cut));

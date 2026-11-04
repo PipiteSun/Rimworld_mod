@@ -18,7 +18,7 @@ namespace LichPhylactery {
   public static readonly string[] RareLoot={"LP_PotionGreaterHealing","LP_ScrollFleshToStone","LP_ScrollRevivify"};
   public const float LampChance=.05f,StudyChance=.1f,ArcaneChance=.05f,MagicChance=.15f;
   // 1.45.0：三级以上宝箱额外15%掉一件魔法物品，锐锋剑、复苏核心、流星戒指、不可移动之杖、魔像手册优先（各占两份）。
-  public static readonly string[] MagicLoot={"LP_VorpalSword","LP_VorpalSword","LP_RevivalCore","LP_RevivalCore","LP_RingShootingStars","LP_RingShootingStars","LP_ImmovableRod","LP_ImmovableRod","LP_ManualOfGolems","LP_ManualOfGolems","LP_BagOfTricks","LP_RingProtection","LP_NecklaceAdaptation","LP_PeriaptWoundClosure","LP_HelmTelepathy","LP_EyesEagle","LP_GauntletsOgrePower","LP_HornValhalla","LP_ScarabProtection","LP_BroochShielding"};
+  public static readonly string[] MagicLoot={"LP_VorpalSword","LP_VorpalSword","LP_RevivalCore","LP_RevivalCore","LP_RingShootingStars","LP_RingShootingStars","LP_ImmovableRod","LP_ImmovableRod","LP_ManualOfGolems","LP_ManualOfGolems","LP_BagOfTricks","LP_RingProtection","LP_NecklaceAdaptation","LP_PeriaptWoundClosure","LP_HelmTelepathy","LP_EyesEagle","LP_GauntletsOgrePower","LP_HornValhalla","LP_ScarabProtection","LP_BroochShielding","LP_IounBlank","LP_IounBlank"}; // 1.112.0 伊奥恩原石（刻成颅石）
   public static string MagicDrop(int tier,Func<float> rand){if(tier<3 || rand()>=MagicChance)return null;return MagicLoot[Math.Min(MagicLoot.Length-1,(int)(rand()*MagicLoot.Length))];}
   public static List<string> NetherilLoot(int tier,Func<float> rand){var l=new List<string>();if(rand()<StudyChance)l.Add("study");if(tier>=3 && rand()<ArcaneChance)l.Add("arcane");return l;}
   public static bool Patched{get;private set;}

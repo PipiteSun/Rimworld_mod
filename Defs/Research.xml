@@ -3,7 +3,7 @@
      原来直接挂在原版研究（锻造、长剑、板甲、异种胚芽植入）下的 DND 装备与建筑，改由本页签的新研究解锁，新研究再以原版研究为前置。
      坐标按主题分横排（X 步长 1，Y 步长 0.7），前置都在左边；布局表见 ArtSource/ResearchTab-1.35.0-spec.md。
      Y 0.0~1.4 炼金/物品/枪械/法杖；2.1 巨人谱系（火巨人/熔火）；2.8 信仰（1.39.0）；3.5~4.2 其他种族兵装；4.9 基因工作台；
-     1.47.0 DND工作台：符文锻造 (0,1.4)、卷轴抄写 (2,1.4)、高阶卷轴 (4,1.4)。
+     1.47.0 DND工作台：符文锻造 (0,1.4)、卷轴抄写 (2,1.4)、高阶卷轴 (4,1.4)。1.101.0 秘金深掘 (5,1.4)（秘金冶炼 + 原版深层钻探）。
      5.6 起留给联动（VPE 职业 5.6~6.3、HAR 7.0~7.7、神兽血裔 8.4~9.1、Isekai 9.8），目前联动没有研究，只是空着。 -->
 <Defs>
   <ResearchTabDef>
@@ -51,6 +51,21 @@
     <tab>LP_FireGiantTech</tab>
     <researchViewX>1</researchViewX>
     <researchViewY>0.7</researchViewY>
+  </ResearchProjectDef>
+  <!-- 1.101.0 秘金深掘 (5,1.4)：炼金/物品排最右的空位。 -->
+  <ResearchProjectDef>
+    <defName>LP_Research_MythicDrilling</defName>
+    <label>秘金深掘</label>
+    <description>把原版深层钻探和秘金冶炼结合起来：在钻杆上刻寻金符文、用白银探针引路，从地壳深处钻出秘银与精金。解锁秘金深钻（像深层钻机一样通电、由采矿工作操作，不需要深层矿藏）。</description>
+    <baseCost>2000</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>LP_MythicMetallurgy</li>
+      <li>DeepDrilling</li>
+    </prerequisites>
+    <tab>LP_FireGiantTech</tab>
+    <researchViewX>5</researchViewX>
+    <researchViewY>1.4</researchViewY>
   </ResearchProjectDef>
   <ResearchProjectDef>
     <defName>LP_RunicFirearms</defName>

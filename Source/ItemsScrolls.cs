@@ -14,7 +14,7 @@ namespace LichPhylactery {
   public const int MinIntellect=6,RevivifyMaxAge=60000,WardTicks=60000,RevealTicks=2500,PetrifyTicks=1800,WardRadius=2;
   public const float FailPerLevel=.05f,FireballRadius=3f,MaxPetrifySize=2f;
   public static int Intellect(Pawn p)=>p?.skills?.GetSkill(SkillDefOf.Intellectual)?.Level??0;
-  public static float FailChance(Pawn p)=>Items.IsLich(p)?0f:Mathf.Max(0f,(8-Intellect(p))*FailPerLevel)*MagicApparel.ScrollFailFactor(p); // 1.45.1 法袍失误率减半
+  public static float FailChance(Pawn p)=>Items.IsLich(p) || Subclass3.S(p,Subclass3.FQuill)?0f:Mathf.Max(0f,(8-Intellect(p))*FailPerLevel)*MagicApparel.ScrollFailFactor(p); // 1.45.1 法袍失误率减半
   public static string CannotRead(Pawn p){
    if(p?.skills==null)return "不会读卷轴。";
    if(!Items.IsLich(p) && Intellect(p)<MinIntellect)return "智识不足"+MinIntellect+"级，读不懂卷轴。";

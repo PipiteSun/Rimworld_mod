@@ -13,7 +13,7 @@ namespace LichPhylactery {
    var p=AdvPawn();var h=Adventurer.Get(p)??Adventurer.TryAdd(p,1,true);
    foreach(var s in DefDatabase<SkillDef>.AllDefsListForReading){var r=p.skills.GetSkill(s);if(!r.TotallyDisabled)r.Level=0;}
    p.skills.GetSkill(SkillDefOf.Melee).Level=melee;p.skills.GetSkill(SkillDefOf.Social).Level=social;p.skills.GetSkill(SkillDefOf.Shooting).Level=shooting;
-   h.level=level;h.xp=Adventurer.XpTable[Mathf.Clamp(level,1,20)-1];h.scores=new[]{10,10,10,10,10,10};h.classes=new ClassData();h.fighterFeats=h.fighterFeatGranted=0;h.Dirty();
+   h.level=level;h.xp=Adventurer.XpTable[Mathf.Clamp(level,1,20)-1];h.scores=new[]{10,10,10,10,10,10};h.classes=new ClassData();h.fighterFeats=h.fighterFeatGranted=h.monkFeatGranted=h.paladinFeatGranted=0;h.Dirty();
    p.equipment?.DestroyAllEquipment();
    return p;
   }
@@ -57,9 +57,16 @@ namespace LichPhylactery {
     // 5b. 2026-10-31 战士奖励专长：战士 1、2、4…20 级各 1 个（20 级共 11 个），免费选、不占属性提升；老存档按水位线补发；NPC 自动选。
     {int f20=hc.fighterFeats;hc.pendingASI=0;var pick=Feats.All.FirstOrDefault(x=>hc.CanTakeFeat(x)==null);bool took=pick!=null && hc.TakeFeat(pick) && hc.fighterFeats==f20-1 && hc.pendingASI==0;
      var o=ClsPawn(7,10);var ho=Adventurer.Get(o);ho.classes.levels[ClassSystem.Fighter]=3;ho.fighterFeats=0;ho.fighterFeatGranted=0;int back=ClassSystem.SyncFighterFeats(ho,true);int again=ClassSystem.SyncFighterFeats(ho);
-     ho.classes.levels[ClassSystem.Fighter]=4;int at4=ClassSystem.SyncFighterFeats(ho);bool pend=Letter_AdventurerLevel.Pending(ho).Contains("战士奖励专长");
+     ho.classes.levels[ClassSystem.Fighter]=4;int at4=ClassSystem.SyncFighterFeats(ho);bool pend=Letter_AdventurerLevel.Pending(ho).Contains("职业奖励专长");
      var n=ClsPawn(7,10);n.SetFaction(null);var hn=Adventurer.Get(n);int nf0=hn.feats.Count;ClassSystem.SetLevel(hn,ClassSystem.Fighter,6);
      Check(f20==11 && hc.fighterFeatGranted==11 && took && back==2 && again==0 && at4==1 && ho.fighterFeats==3 && pend && ClassSystem.FighterFeatsDue(7)==4 && hn.fighterFeats==0 && hn.feats.Count==nf0+4,"fighter bonus feats: fighter 20 → 11, a pick uses them before ability score improvements ("+pick?.defName+"); an old fighter 3 save gets 2 once, fighter 4 one more; NPC fighter 6 auto-picks 4 ("+(hn.feats.Count-nf0)+")");}
+    // 5e. 2026-11-03 热修：武僧、圣武士 1、2 级各 1 个免费专长（3 级起不再给）；老存档按各自水位线补发；武僧部位生命成长 7%。
+    {var mk_m=ClsPawn(10,10,10);var mk_hm=Adventurer.Get(mk_m);ClassSystem.AddLevel(mk_hm,ClassSystem.Monk);int mk_m1=mk_hm.fighterFeats;ClassSystem.AddLevel(mk_hm,ClassSystem.Monk);int mk_m2=mk_hm.fighterFeats;ClassSystem.AddLevel(mk_hm,ClassSystem.Monk);int mk_m3=mk_hm.fighterFeats;
+     mk_hm.level=10;for(int i=0;i<3;i++)ClassSystem.AddLevel(mk_hm,ClassSystem.Paladin);int mk_mp=mk_hm.fighterFeats;
+     var mk_om=ClsPawn(7,10,10);var mk_hom=Adventurer.Get(mk_om);mk_hom.classes.levels[ClassSystem.Monk]=5;mk_hom.classes.levels[ClassSystem.Paladin]=1;int mk_oback=ClassSystem.SyncFighterFeats(mk_hom);int mk_oagain=ClassSystem.SyncFighterFeats(mk_hom);
+     var mk_cleric=DefDatabase<LP_ClassDef>.GetNamedSilentFail("LP_Class_Cleric");var mk_oc=ClsPawn(7,0,10);var mk_hoc=Adventurer.Get(mk_oc);if(mk_cleric!=null)mk_hoc.classes.levels[mk_cleric]=2;int mk_cl=ClassSystem.SyncFighterFeats(mk_hoc);
+     Check(mk_m1==1 && mk_m2==2 && mk_m3==2 && mk_mp==4 && mk_hm.monkFeatGranted==2 && mk_hm.paladinFeatGranted==2 && mk_oback==3 && mk_oagain==0 && mk_hom.fighterFeats==3 && mk_cl==0 && Near(ClassSystem.DefaultPartPer("LP_Class_Monk"),.07f),
+      "monk / paladin bonus feats: monk 1 → 1, 2 → 2, 3 still 2; + paladin 3 → 4; old save monk 5 + paladin 1 gets 3 once; cleric gets none; monk part HP growth 7%");}
     // 6. 施放：扣资源、生效；资源不够时按钮灰掉。
     GenSpawn.Spawn(a,altar.InteractionCell+IntVec3.East*3,map);
     var sw=a.abilities.GetAbility(DefDatabase<AbilityDef>.GetNamed("LP_SecondWind"));

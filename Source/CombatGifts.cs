@@ -353,9 +353,9 @@ namespace LichPhylactery {
  [HarmonyPatch(typeof(Pawn_AgeTracker),"BirthdayBiological")]
  public static class CombatGiftBirthday {static void Postfix(Pawn ___pawn,int birthdayAge){if(birthdayAge==Adventurer.MinAge && ___pawn!=null && !___pawn.Dead)CombatGifts.OnGenerated(___pawn,false);}}
  [HarmonyPatch(typeof(TraitSet),nameof(TraitSet.GainTrait))]
- public static class CombatGiftGain {static void Postfix(Pawn ___pawn,Trait trait){if(trait==null || !CombatGifts.Is(trait.def))return;CombatGifts.Invalidate(___pawn);var h=Adventurer.Get(___pawn);if(h!=null){h.cgRage=false;h.Dirty();}}}
+ public static class CombatGiftGain {public static void Postfix(Pawn ___pawn,Trait trait){if(trait==null || !CombatGifts.Is(trait.def))return;CombatGifts.Invalidate(___pawn);var h=Adventurer.Get(___pawn);if(h!=null){h.cgRage=false;h.Dirty();}}}
  [HarmonyPatch(typeof(TraitSet),nameof(TraitSet.RemoveTrait))]
- public static class CombatGiftLose {static void Postfix(Pawn ___pawn,Trait trait){if(trait==null || !CombatGifts.Is(trait.def))return;CombatGifts.Invalidate(___pawn);var h=Adventurer.Get(___pawn);if(h!=null){h.cgRage=false;h.cgBonus=0;h.Dirty();}}}
+ public static class CombatGiftLose {public static void Postfix(Pawn ___pawn,Trait trait){if(trait==null || !CombatGifts.Is(trait.def))return;CombatGifts.Invalidate(___pawn);var h=Adventurer.Get(___pawn);if(h!=null){h.cgRage=false;h.cgBonus=0;h.Dirty();}}}
  [HarmonyPatch(typeof(Trait),nameof(Trait.TipString))]
  public static class CombatGiftTip {static void Postfix(Trait __instance,Pawn pawn,ref string __result){if(__instance==null || !CombatGifts.Is(__instance.def))return;var x=CombatGifts.ExtraTip(pawn,__instance);if(!x.NullOrEmpty())__result=__result+"\n\n"+x;}}
  [HarmonyPatch(typeof(Pawn),nameof(Pawn.PreApplyDamage))]

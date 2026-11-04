@@ -104,7 +104,7 @@ namespace LichPhylactery {
    Check(alive && chained.IsPrisonerOfColony,"a shackled demon who is downed is not banished and can be captured");
    chained.Kill(null);FlushDeferred();
    Check(chained.Corpse!=null && !chained.Corpse.Destroyed,"a shackled demon leaves a normal corpse");
-   if(har){var mar=AbMake("LP_MarilithColonist",Faction.OfPlayer,AbCell(14,0));Check(mar!=null && Outsiders.IsDemon(mar) && !Fiends.Is(mar) && Outsiders.Of(mar).taintImmune,"the marilith (HAR) is an abyss outsider that is never banished and immune to taint");}
+   {var mar=AbMake("LP_MarilithColonist",Faction.OfPlayer,AbCell(14,0));Check(mar!=null && Outsiders.IsDemon(mar) && !Fiends.Is(mar) && Outsiders.Of(mar).taintImmune,"the marilith (xenotype, no HAR needed) is an abyss outsider that is never banished and immune to taint");}
    Outsiders.TestRoll=null;
   }
 
@@ -183,9 +183,9 @@ namespace LichPhylactery {
    for(int i=0;i<4;i++)PortalEvent.HolyNear(map,rift.Position);int hits=rift.Comp.holyHits;bool open=!rift.Destroyed;PortalEvent.HolyNear(map,rift.Position);
    Check(open && hits==4 && rift.Destroyed && !circle.Locked,"holy water landing within 3 cells counts; the fifth bottle closes the abyss rift and frees the circle");
    ClearAbyssThings();
-   // 没装 HAR：菜单里没有六臂蛇魔，典籍不出六臂蛇魔
+   // 1.102.0：六臂蛇人是异种型，有没有 HAR 都能召唤，典籍也会记载六臂蛇魔
    var mt=AbyssRitual.Target("marilith");var demons=Enumerable.Range(0,300).Select(i=>AbyssItems.RandomDemon()).ToList();
-   Check(har?AbyssRitual.Unavailable(circle,mt)!="需要 Humanoid Alien Races":AbyssRitual.Unavailable(circle,mt)=="需要 Humanoid Alien Races" && !demons.Contains("marilith"),"marilith option exists only with HAR (har="+har+"); without HAR the demonomicon never records it");
+   Check(AbyssRitual.Unavailable(circle,mt)!="需要 Humanoid Alien Races" && demons.Contains("marilith"),"marilith option exists with or without HAR (har="+har+"); the demonomicon can record it");
    LichMod.Settings.abyssBindColonists=false;string off3=AbyssRitual.Unavailable(circle,t3);string offBind=AbyssRitual.Unavailable(circle,AbyssRitual.Target("barlguraBind"));LichMod.Settings.abyssBindColonists=true;
    Check(off3!=null && off3.Contains("允许束缚") && offBind!=null,"with binding disabled in the settings tier 3 and every binding option are greyed out");
    tc.value=0f;
@@ -290,7 +290,7 @@ namespace LichPhylactery {
    PortalEvent.TryFindSpot(map,out spot);var forced=PortalEvent.Open(map,spot,AbyssItems.AbyssPlane,500f,true);abMade.AddRange(forced.Comp.spawned);
    Check(forced.Comp.spawned.Count(Fiends.IsBalor)==1,"a rift from a failed tier-4 ritual brings the balor in its first wave regardless of points");
    foreach(var s in forced.Comp.spawned.ToList())if(!s.Destroyed){s.GetLord()?.RemovePawn(s);if(s.Spawned)s.DeSpawn();}forced.Destroy();
-   if(har){var mar=AbMake("LP_MarilithColonist",Faction.OfPlayer,AbCell(6,17));Check(PortalEvent.CanCommand(mar) && !PortalEvent.CanCommand(p),"a marilith can command a rift closed like a genie");}
+   {var mar=AbMake("LP_MarilithColonist",Faction.OfPlayer,AbCell(6,17));Check(PortalEvent.CanCommand(mar) && !PortalEvent.CanCommand(p),"a marilith can command a rift closed like a genie");}
    foreach(var s in big.Comp.spawned.ToList())if(!s.Destroyed){s.GetLord()?.RemovePawn(s);if(s.Spawned)s.DeSpawn();}
    // 纳巴苏：夜里出现，白天推迟到 22 点
    var np=StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatSmall,map);np.forced=true;int hour=GenLocalDate.HourOfDay(map);st.hunters.Clear();st.huntTick=-1;

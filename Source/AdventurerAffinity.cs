@@ -197,9 +197,9 @@ namespace LichPhylactery {
  }
  // 特性变化时刷新冒险者效果（天赋、生成时的特性）。
  [HarmonyPatch(typeof(TraitSet),nameof(TraitSet.GainTrait))]
- public static class TalentGain {static void Postfix(Pawn ___pawn,Trait trait){if(Talents.Is(trait?.def))Adventurer.Get(___pawn)?.Dirty();}}
+ public static class TalentGain {public static void Postfix(Pawn ___pawn,Trait trait){if(Talents.Is(trait?.def))Adventurer.Get(___pawn)?.Dirty();}}
  [HarmonyPatch(typeof(TraitSet),nameof(TraitSet.RemoveTrait))]
- public static class TalentLose {static void Postfix(Pawn ___pawn,Trait trait){if(Talents.Is(trait?.def))Adventurer.Get(___pawn)?.Dirty();}}
+ public static class TalentLose {public static void Postfix(Pawn ___pawn,Trait trait){if(Talents.Is(trait?.def))Adventurer.Get(___pawn)?.Dirty();}}
 
  // ---------- 设置（画在“冒险者”里） ----------
  public partial class Settings {

@@ -27,7 +27,16 @@ namespace LichPhylactery {
     if(charEditorFrames==start){var w=CharEditorCompat.Panel();if(w!=null)w.tab=i;}
     if(charEditorFrames==start+30)ScreenCapture.CaptureScreenshot(Path.Combine(dir,"CharEditor-"+i+".png"));
    }
-   if(charEditorFrames>=220)Application.Quit();
+   // 编辑器自己的特性栏加两个特性（金色强力特性 + 原版「善良」），关掉编辑器，在信息卡的人物页截一张 CharEditor-4.png。
+   if(charEditorFrames==220 && charEditorPawn!=null && CharEditorCompat.TraitAdd!=null){
+    foreach(var w in Find.WindowStack.Windows.Where(w=>w is Window_DndEditor || CharEditorCompat.UiType.IsInstanceOfType(w)).ToList())w.Close(false);
+    var gold=HeroTraits.Gold.First();
+    foreach(var d in new[]{gold,TraitDefOf.Kind})if(!charEditorPawn.story.traits.HasTrait(d))CharEditorCompat.TraitAdd.Invoke(null,new object[]{charEditorPawn,d,d.degreeDatas[0],false,false,null});
+    var card=new Dialog_InfoCard(charEditorPawn);AccessTools.Field(typeof(Dialog_InfoCard),"tab").SetValue(card,Dialog_InfoCard.InfoCardTab.Character);Find.WindowStack.Add(card);
+    Messages.Clear();
+   }
+   if(charEditorFrames==250)ScreenCapture.CaptureScreenshot(Path.Combine(dir,"CharEditor-4.png"));
+   if(charEditorFrames>=270)Application.Quit();
    return true;
   }
  }

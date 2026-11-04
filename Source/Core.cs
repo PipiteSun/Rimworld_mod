@@ -82,7 +82,7 @@ namespace LichPhylactery {
   public ThingOwner<Pawn> souls;
   public Phylactery(){souls=new ThingOwner<Pawn>(this,true,LookMode.Deep,false);}
   public float Effective=>Necro.EffectiveLevel(level);
-  public int Capacity=>4+(int)(Effective*2);
+  public int Capacity{get{int c=4+(int)(Effective*2);return DndImplants.VecnaWill(soul)?Mathf.RoundToInt(c*DndImplants.VecnaCapacity):c;}} // 1.114.0 维克那的意志：统御上限 +50%
   public void Register(){if(Necro.Registry!=null && !Necro.Registry.boxes.Contains(this))Necro.Registry.boxes.Add(this);}
   public override void SpawnSetup(Map map,bool respawningAfterLoad=false){base.SpawnSetup(map,respawningAfterLoad);Register();}
   public void Feed(float amount){if(level>=LichMod.Settings.levelCap)return;experience+=Math.Max(0,amount);while(level<LichMod.Settings.levelCap && experience>=Necro.Requirement(level)){experience-=Necro.Requirement(level);level++;}Necro.Lich(soul)?.ClampFocus();Necro.Lich(soul)?.SyncSpells();}

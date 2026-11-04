@@ -100,6 +100,12 @@ namespace LichPhylactery {
    bool pain=tough.health.InPainShock;
    AccessTools.Method(typeof(Pawn_HealthTracker),"CheckForStateChange").Invoke(tough.health,new object[]{null,null});
    bool upAfterPain=!tough.Downed && tr.charges==0;
+   // 2026-11-02：已经倒地的不被抗性拉起来（难民舱里的传奇冒险者回满抗性就爬起来，无法救援）。
+   Legendary.painWindow.Remove(tough);SpendHold();AccessTools.Method(typeof(Pawn_HealthTracker),"CheckForStateChange").Invoke(tough.health,new object[]{null,null});
+   bool wentDown=tough.Downed;tr.charges=1;
+   AccessTools.Method(typeof(Pawn_HealthTracker),"CheckForStateChange").Invoke(tough.health,new object[]{null,null});
+   bool staysDown=tough.Downed && tr.charges==1;
+   Check(wentDown && staysDown,"pain shock: a legend already downed stays down when charges refill (went down "+wentDown+", stays "+staysDown+", charges "+tr.charges+")");
    foreach(var h in tough.health.hediffSet.hediffs.OfType<Hediff_Injury>().ToList())tough.health.RemoveHediff(h);Legendary.painWindow.Remove(tough);
    tr.charges=2;SpendHold();
    foreach(var leg2 in tough.health.hediffSet.GetNotMissingParts().Where(x=>x.def.defName=="Leg").ToList())tough.health.AddHediff(HediffDefOf.MissingBodyPart,leg2);

@@ -52,6 +52,20 @@ namespace LichPhylactery {
     int bonus=h.Eff(0)-h.Cap(0);bool mask=CombatGifts.HasGift(p,CombatGifts.Mighty);
     bool g0=CharEditorCompat.SetTrait(p,gift,0,false),h0=CharEditorCompat.SetTrait(p,gold,gold.degreeDatas[0].degree,false);
     Check(g1 && h1 && mask && bonus>0 && g0 && h0 && !CombatGifts.HasGift(p,CombatGifts.Mighty) && !HeroTraits.Has(p,gold),"char editor traits: gift "+g1+"/"+g0+" (Str bonus "+bonus+"), gold "+gold.defName+" "+h1+"/"+h0);
+    // 8. 编辑器自己的特性栏（TraitTool 直接改 allTraits）：加上的在人物卡特性里、缓存和效果同步；去掉的跟着清掉
+    if(ce){
+     var plain=TraitDefOf.Kind;
+     var traits=p.story.traits;foreach(var x in traits.allTraits.Where(x=>x.def==plain || plain.ConflictsWith(x.def) || x.def.ConflictsWith(plain)).ToList())traits.RemoveTrait(x);
+     CharEditorCompat.TraitAdd.Invoke(null,new object[]{p,gift,gift.degreeDatas[0],false,false,null});
+     CharEditorCompat.TraitAdd.Invoke(null,new object[]{p,gold,gold.degreeDatas[0],false,false,null});
+     CharEditorCompat.TraitAdd.Invoke(null,new object[]{p,plain,plain.degreeDatas[0],false,false,null});
+     var sorted=traits.TraitsSorted.Select(x=>x.def).ToList();
+     bool shown=sorted.Contains(gift) && sorted.Contains(gold) && sorted.Contains(plain);
+     bool synced=CombatGifts.HasGift(p,CombatGifts.Mighty) && HeroTraits.Has(p,gold) && h.Eff(0)>h.Cap(0);
+     foreach(var x in traits.allTraits.Where(x=>x.def==gift || x.def==gold || x.def==plain).ToList())CharEditorCompat.TraitRemove.Invoke(null,new object[]{p,x});
+     bool cleared=!CombatGifts.HasGift(p,CombatGifts.Mighty) && !HeroTraits.Has(p,gold) && !traits.HasTrait(plain);
+     Check(shown && synced && cleared,"char editor own trait list: shown in card "+shown+" ("+string.Join(",",sorted.Select(d=>d.defName))+"), DND caches synced "+synced+", removal cleared "+cleared);
+    }
    }finally{
     s.adventurer=oOn;Adventurer.TestSuppressed=oSup;
     if(p!=null && !p.Destroyed)p.Destroy();

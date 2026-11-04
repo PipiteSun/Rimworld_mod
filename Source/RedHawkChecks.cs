@@ -77,13 +77,13 @@ namespace LichPhylactery {
    Check(basic.Count==33 && unresolved.Count==0 && wrong.Count==0 && basic.Count(e=>e.Rare)==19 && samePools,
     "slave race pool: 33 base xenotypes (14 common + 19 rare) all resolve and generate adults of that xenotype, incl. LP_ForceDragon; base and orbital use the same pool "+string.Join(",",unresolved.Concat(wrong)));
 
-   // 5. HAR 条目
+   // 5. 三族条目（1.102.0 起是异种型，不需要 HAR）
    var har=gen.entries.Where(e=>!e.pawnKind.NullOrEmpty()).ToList();
-   if(RhHar){
+   {
     var races=new List<string>();
-    foreach(var e in har){var p=RedHawk.MakeSlave(e,fac,map.Tile,false);rhMade.Add(p);races.Add(p?.def.defName);}
-    Check(har.Count==3 && har.All(e=>e.Valid && e.Rare && Near(e.weight,.5f)) && races.SequenceEqual(new[]{"LP_Cyclops","LP_Ettin","LP_Marilith"}),"HAR on: cyclops, ettin and marilith join the slave pool (weight 0.5, rare) and generate as their own races ("+string.Join(",",races)+")");
-   }else Check(har.Count==0 && gen.Valid.Count()==33,"no HAR: the slave pool has no HAR entries and the 33 base entries still generate");
+    foreach(var e in har){var p=RedHawk.MakeSlave(e,fac,map.Tile,false);rhMade.Add(p);races.Add(p?.genes?.Xenotype?.defName);}
+    Check(har.Count==3 && har.All(e=>e.Valid && e.Rare && Near(e.weight,.5f)) && races.SequenceEqual(new[]{"LP_CyclopsKin","LP_EttinKin","LP_MarilithKin"}),"cyclops, ettin and marilith join the slave pool with or without HAR (weight 0.5, rare) and generate as their xenotypes ("+string.Join(",",races)+")");
+   }
 
    // 6. 材料商队
    var mats=RhStock(RhKind(RedHawk.MaterialCaravan)).Where(t=>t.def!=ThingDefOf.Silver).ToList();

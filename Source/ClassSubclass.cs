@@ -33,6 +33,7 @@ namespace LichPhylactery {
   public int lastFight=-99999,lastStrike=-99999;
   public AbilityDef stolen;public int stolenTick;
   public List<LP_ClassDef> reminded=new List<LP_ClassDef>();
+  public Thing bond;public List<Pawn> defenders=new List<Pawn>();public int oath; // 1.103.0 奥法骑士的绑定武器、战铸师的钢铁卫士、誓言之力剩余次数（ClassSubclass2.cs）
   public void ExposeData(){
    Scribe_Collections.Look(ref picks,"picks",LookMode.Def);
    Scribe_Collections.Look(ref choices,"choices",LookMode.Value,LookMode.Value);
@@ -41,7 +42,9 @@ namespace LichPhylactery {
    Scribe_Values.Look(ref lastFight,"lastFight",-99999);Scribe_Values.Look(ref lastStrike,"lastStrike",-99999);
    Scribe_Defs.Look(ref stolen,"stolen");Scribe_Values.Look(ref stolenTick,"stolenTick");
    Scribe_Collections.Look(ref reminded,"reminded",LookMode.Def);
+   Scribe_References.Look(ref bond,"bond");Scribe_Collections.Look(ref defenders,"defenders",LookMode.Reference);Scribe_Values.Look(ref oath,"oath");
    if(Scribe.mode==LoadSaveMode.PostLoadInit){
+    if(defenders==null)defenders=new List<Pawn>();defenders.RemoveAll(x=>x==null);
     if(picks==null)picks=new List<LP_SubclassDef>();picks.RemoveAll(x=>x==null);
     if(choices==null)choices=new Dictionary<string,int>();if(ticks==null)ticks=new Dictionary<string,int>();
     if(reminded==null)reminded=new List<LP_ClassDef>();reminded.RemoveAll(x=>x==null);
@@ -91,11 +94,11 @@ namespace LichPhylactery {
    if(h?.classes==null || s==null || s.general || s.parent==null)return "没有这个子职业";
    if(ClassSystem.Level(h,s.parent)<PickLevelFor(s.parent))return "需要"+s.parent.label+" "+PickLevelFor(s.parent)+" 级";
    var cur=Picked(h,s.parent);if(cur!=null)return cur==s?"已经选了":"已经选了"+cur.label+"（选定后不能更改）";
-   return null;
+   return Subclass2.PickBlock(h,s);
   }
   public static bool Pick(Hediff_Adventurer h,LP_SubclassDef s,bool message=false){
    if(CanPick(h,s)!=null)return false;var d=Data(h);d.picks.Add(s);
-   if(s.defName==Trickster)d.mana=ManaMax(h);
+   if(s.defName==Trickster || s.defName==Subclass2.EldritchKnight)d.mana=ManaMax(h);
    ClassSystem.Sync(h);if(h.pawn!=null)Martial.Refresh(h.pawn);
    if(message && h.pawn?.Faction!=null && h.pawn.Faction.IsPlayer){
     var more=s.choices.Where(c=>c.level<=ClassSystem.Level(h,s.parent)).Select(c=>c.label).ToList();
@@ -173,8 +176,8 @@ namespace LichPhylactery {
 
   // ---------- 诡术师的法力 ----------
   static readonly HashSet<string> ManaSpells=new HashSet<string>{"LP_ATMagicMissile","LP_ATInvisibility","LP_ATSleep"};
-  public static bool UsesMana(AbilityDef d)=>d!=null && ManaSpells.Contains(d.defName);
-  public static int ManaMax(Hediff_Adventurer h)=>Has(h,Trickster)?ClassSystem.MaxResource(ClassSystem.Level(h,ClassMartial2.Rogue)):0;
+  public static bool UsesMana(AbilityDef d)=>d!=null && (ManaSpells.Contains(d.defName) || Subclass2.EKSpell(d)); // 1.103.0 奥法骑士的战争戏法共用这个法力
+  public static int ManaMax(Hediff_Adventurer h)=>(Has(h,Trickster)?ClassSystem.MaxResource(ClassSystem.Level(h,ClassMartial2.Rogue)):0)+Subclass2.EKManaMax(h);
   public static float Mana(Hediff_Adventurer h)=>Data(h)?.mana??0f;
   public static float Mana(Pawn p)=>Mana(Adventurer.Get(p));
   public static float AddMana(Hediff_Adventurer h,float a){int max=ManaMax(h);if(max<=0 || a==0f)return 0f;var d=Data(h);float cur=d.mana,next=Mathf.Clamp(cur+a,0f,max);d.mana=next;return next-cur;}
@@ -197,7 +200,7 @@ namespace LichPhylactery {
    Items.Give(t,"LP_Shaken",ticks,1f);return false;
   }
   public static bool NotInCombat(Pawn v){var m=v?.mindState;if(m==null || v.Downed)return false;int now=Now;return m.enemyTarget==null && now-m.lastHarmTick>600 && now-v.LastAttackTargetTick>600;}
-  public static bool Unsurprisable(Pawn v)=>Users.Count>0 && S(v,SInstinct);
+  public static bool Unsurprisable(Pawn v)=>Users.Count>0 && S(v,SInstinct) || DndImplants.Alert(v); // 1.112.0 警觉之石
   public static bool Controlled(Pawn v)=>v.Downed || !v.Awake() || v.stances?.stunner?.Stunned==true || v.InMentalState || Items.Has(v,"LP_MagicSleep") || Items.Has(v,"LP_Entangled");
   public static bool Dark(Pawn t)=>t.Spawned && t.Map.glowGrid.GroundGlowAt(t.Position)<.3f;
   public static bool Psychic(DamageDef d)=>d!=null && (d.defName.Contains("Psychic") || d.defName.Contains("Psy"));
@@ -295,8 +298,9 @@ namespace LichPhylactery {
   // ---------- 每 250 刻 ----------
   public static void Tick250(Hediff_Adventurer h){
    var p=h.pawn;if(p==null || p.Dead)return;var d=Data(h);int f=Flags(p);
-   if(d.picks.Count>0 && Has(h,Trickster)){
+   if(d.picks.Count>0 && (Has(h,Trickster) || Has(h,Subclass2.EldritchKnight))){
     bool asleep=!p.Awake();if(asleep)AddMana(h,ClassSystem.SleepRegen);else if(ClassSystem.Studying(p))AddMana(h,ClassSystem.StudyRegen);
+    if(!asleep && Has(h,Subclass2.EldritchKnight))AddMana(h,ClassSystem.AwakeManaRegen); // 奥法骑士醒着也慢慢回（同法师）
    }
    if(d.stolen!=null && (Now-d.stolenTick>StolenTicks || Now<d.stolenTick))DropStolen(p,d);
    if(f==0)return;
@@ -579,7 +583,7 @@ namespace LichPhylactery {
    }
    int pend=(pick==null && lv>=PickLevelFor(c)?1:0)+PendingChoices(h).Count(t=>t.s.parent==c);
    if(own && pend>0 && Widgets.ButtonText(new Rect(w-124f,y+10f,120f,28f),pick==null?"选择子职业":"选择分支"))Find.WindowStack.Add(new Dialog_ChooseSubclass(p));
-   if(Has(h,Trickster) && c==ClassMartial2.Rogue){Text.Font=GameFont.Tiny;Widgets.Label(new Rect(312f,y+4f,140f,18f),"法力 "+Mana(h).ToString("0.#")+" / "+ManaMax(h));Text.Font=GameFont.Small;}
+   if(Has(h,Trickster) && c==ClassMartial2.Rogue || Has(h,Subclass2.EldritchKnight) && c==ClassSystem.Fighter){Text.Font=GameFont.Tiny;Widgets.Label(new Rect(312f,y+4f,140f,18f),"法力 "+Mana(h).ToString("0.#")+" / "+ManaMax(h));Text.Font=GameFont.Small;}
    if(pick!=null && pick.defName==BeastMaster){Text.Font=GameFont.Tiny;var cp=Data(h).companion;Widgets.Label(new Rect(312f,y+4f,200f,18f),"伙伴："+(cp==null?"未选择":cp.LabelShort));Text.Font=GameFont.Small;}
    return y+52f;
   }

@@ -378,6 +378,9 @@ namespace LichPhylactery {
    if(!__result || ___pawn==null || !__instance.InPainShock || !Legendary.CanResist(___pawn))return;
    // 只拦疼痛：意识过低、移动能力为 0（部位缺失）照常倒地。
    if(!__instance.capacities.CanBeAwake || !__instance.capacities.CapableOf(PawnCapacityDefOf.Moving))return;
+   // 只撑住"将要倒地"，已经倒地的不会被抗性拉起来（否则倒地的传奇冒险者每回满一次抗性就爬起来，无法救援/俘虏）；
+   // 未生成在地图上（如难民舱生成时的 DamageUntilDowned）不拦，照常倒地。
+   if(__instance.Downed || !___pawn.Spawned)return;
    int now=Find.TickManager.TicksGame;
    if(Legendary.painWindow.TryGetValue(___pawn,out int until) && now<until){__result=false;return;}
    if(!LegendaryStateCheck.active)return;

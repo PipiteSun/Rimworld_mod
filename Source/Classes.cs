@@ -91,10 +91,10 @@ namespace LichPhylactery {
   // 1.81.0 热修2（Peter）：部位生命成长按职业生命骰（d12 野蛮人 7%，d10 6%，d8 5%，d6 4%）；没分配职业点的等级按 Hediff_Adventurer.PartPerLevel。
   public static float DefaultPartPer(string d){
    switch(d){
-    case "LP_Class_Barbarian":return .07f;
+    case "LP_Class_Barbarian":case "LP_Class_Monk":return .07f; // 2026-11-03 热修（Peter）：武僧 5% → 7%
     case "LP_Class_Fighter":case "LP_Class_Paladin":case "LP_Class_Ranger":return .06f;
     case "LP_Class_Wizard":case "LP_Class_Sorcerer":return .04f;
-    default:return Hediff_Adventurer.PartPerLevel; // 牧师、德鲁伊、武僧、游荡者、器械师、未知职业
+    default:return Hediff_Adventurer.PartPerLevel; // 牧师、德鲁伊、游荡者、器械师、未知职业
    }
   }
   // 1.81.0 热修3（Peter，照 D&D 物理职业）：武器伤害每职业等级 战士 / 野蛮人 +3%，圣武士 / 游侠 / 武僧 / 游荡者 +2%；近战穿甲 +0.015 / +0.01；施法职业 0。
@@ -206,17 +206,28 @@ namespace LichPhylactery {
   // 2026-10-31 热修（Peter：7 级战士没有选专长的机会；照 3.5 战士奖励专长）：战士职业等级 1、2 和之后每个偶数级各 1 个免费专长，不占属性提升。
   // 按已发水位线补发（老存档在 Tick250 补，只发不收）；玩家的人在“冒险者”分页里选，NPC 立即随机选一个合适的。
   public static readonly int[] FighterFeatLevels={1,2,4,6,8,10,12,14,16,18,20};
-  public static int FighterFeatsDue(int fighterLevel){int n=0;foreach(int l in FighterFeatLevels)if(l<=fighterLevel)n++;return n;}
+  // 2026-11-03 热修（Peter）：武僧、圣武士职业 1、2 级也各 1 个免费专长（同一个奖励专长池，各自的水位线）。
+  public static readonly int[] MonkPaladinFeatLevels={1,2};
+  public static int FighterFeatsDue(int fighterLevel)=>FeatsDue(FighterFeatLevels,fighterLevel);
+  public static int FeatsDue(int[] levels,int classLevel){int n=0;foreach(int l in levels)if(l<=classLevel)n++;return n;}
+  public static bool BonusFeatsPending(Hediff_Adventurer h)=>h.fighterFeatGranted<FighterFeatLevels.Length || h.monkFeatGranted<MonkPaladinFeatLevels.Length || h.paladinFeatGranted<MonkPaladinFeatLevels.Length;
+  public static int[] BonusFeatLevels(LP_ClassDef c)=>c==null?null:c==Fighter?FighterFeatLevels:c==Monk || c==Paladin?MonkPaladinFeatLevels:null;
+  static int GrantFrom(Hediff_Adventurer h,LP_ClassDef c,int[] levels,ref int granted,List<string> who){
+   if(c==null)return 0;int due=FeatsDue(levels,Level(h,c));if(due<=granted)return 0;
+   int gave=due-granted;granted=due;who.Add(c.label+" "+Level(h,c)+" 级");return gave;
+  }
   public static int SyncFighterFeats(Hediff_Adventurer h,bool letter=false){
-   if(h==null || Fighter==null)return 0;
-   int due=FighterFeatsDue(Level(h,Fighter));if(due<=h.fighterFeatGranted)return 0;
-   int gave=due-h.fighterFeatGranted;h.fighterFeatGranted=due;h.fighterFeats+=gave;
+   if(h==null)return 0;
+   var who=new List<string>();
+   int gave=GrantFrom(h,Fighter,FighterFeatLevels,ref h.fighterFeatGranted,who)+GrantFrom(h,Monk,MonkPaladinFeatLevels,ref h.monkFeatGranted,who)+GrantFrom(h,Paladin,MonkPaladinFeatLevels,ref h.paladinFeatGranted,who);
+   if(gave==0)return 0;
+   h.fighterFeats+=gave;
    var p=h.pawn;
    if(p==null || p.Faction==null || !p.Faction.IsPlayer){while(h.fighterFeats>0 && h.TryEnemyFeat(true)){}}
    else if(!p.Dead && !Adventurer.TestSuppressed){
-    string text=p.LabelShort+"（战士 "+Level(h,Fighter)+" 级）获得 "+gave+" 个战士奖励专长：免费选一个专长，不占属性提升。战士 1、2 级和之后每个偶数级各 1 个。\n\n在“冒险者”分页的“可选专长”里选择。";
-    if(letter)Find.LetterStack.ReceiveLetter("战士奖励专长",text,LetterDefOf.PositiveEvent,p);
-    else Messages.Message(p.LabelShort+"获得 "+gave+" 个战士奖励专长（在冒险者分页选择）",p,MessageTypeDefOf.PositiveEvent,false);
+    string text=p.LabelShort+"（"+string.Join("、",who)+"）获得 "+gave+" 个职业奖励专长：免费选一个专长，不占属性提升。战士 1、2 级和之后每个偶数级各 1 个；武僧、圣武士 1、2 级各 1 个。\n\n在“冒险者”分页的“可选专长”里选择。";
+    if(letter)Find.LetterStack.ReceiveLetter("职业奖励专长",text,LetterDefOf.PositiveEvent,p);
+    else Messages.Message(p.LabelShort+"获得 "+gave+" 个职业奖励专长（在冒险者分页选择）",p,MessageTypeDefOf.PositiveEvent,false);
    }
    h.Dirty();return gave;
   }
@@ -271,7 +282,7 @@ namespace LichPhylactery {
   public static float Resource(Pawn p,LP_ClassDef c)=>Resource(Adventurer.Get(p),c);
   // 1.81.0 热修4：法力（法师、术士、德鲁伊，各自一条）上限 2 + 职业等级（20 级 22，照 5e 的法术位数）；斗志 / 气 / 神恩 / 怒气仍是 2 + (等级+1)/2。
   public static int MaxMana(int level)=>level<=0?0:2+level;
-  public static int MaxResource(Hediff_Adventurer h,LP_ClassDef c)=>c==null || c.resource==ClassResource.None?0:(c.resource==ClassResource.Mana?MaxMana(PoolLevel(h,c)):c.resource==ClassResource.Pact?Warlock.MaxPact(PoolLevel(h,c)):MaxResource(PoolLevel(h,c)))+ClassLegendary.ResourceFor(h,c)+ClassFeats.ResourceBonus(h,c); // 1.74.0 每个传奇能力 +2；契约法力 2 + 等级/4；1.88.0 职业专属专长
+  public static int MaxResource(Hediff_Adventurer h,LP_ClassDef c)=>c==null || c.resource==ClassResource.None?0:Mathf.Max(0,(c.resource==ClassResource.Mana?MaxMana(PoolLevel(h,c)):c.resource==ClassResource.Pact?Warlock.MaxPact(PoolLevel(h,c)):MaxResource(PoolLevel(h,c)))+ClassLegendary.ResourceFor(h,c)+ClassFeats.ResourceBonus(h,c)-Subclass2.ResourcePenalty(h,c)); // 1.104.0 恶鬼之血的身体强化扣上限；1.74.0 每个传奇能力 +2；契约法力 2 + 等级/4；1.88.0 职业专属专长
   public static float AddResource(Hediff_Adventurer h,LP_ClassDef c,float amount){
    int max=MaxResource(h,c);if(max<=0 || amount==0f)return 0f;
    if(amount>0f)amount*=ClassFeats.GainFactor(h,c); // 1.88.0 职业专属专长：资源获取
@@ -308,6 +319,8 @@ namespace LichPhylactery {
     else if(med && c.resource==ClassResource.Grace)add=MeditateRegen*(Devotee(p)?DevoteeRegen:1f);
     else if(c.resource==ClassResource.Mana && c.defName=="LP_Class_Wizard" && Studying(p))add=StudyRegen;
     if(!asleep && c.resource==ClassResource.Mana)add+=AwakeManaRegen; // 1.81.0 热修4：醒着也慢慢回（每小时约 +0.5），和研究的回复叠加
+    if(add>0f && c.resource==ClassResource.Grace && Items.Has(p,"LP_Oathbroken"))add*=.5f; // 1.103.0 背誓
+    if(add>0f && c.resource==ClassResource.Mana && Items.Has(p,"LP_SP_HaloOn"))add*=.5f; // 1.109.0 死亡光环开着
     if(add>0f)AddResource(h,c,add);
    }
   }
@@ -317,12 +330,15 @@ namespace LichPhylactery {
    if(h.level>=ClassLegendary.Thresholds[0])ClassLegendary.SyncPoints(h); // 1.74.0 传奇职业点（老存档在这里补发）
    if(d.arcana.Count>0)LakeArcana.Passives(h); // 1.100.0 秘传的被动
    if(d.levels.Count==0)return;
-   if(h.fighterFeatGranted<FighterFeatLevels.Length)SyncFighterFeats(h,true); // 2026-10-31 战士奖励专长（老存档在这里补发）
+   if(BonusFeatsPending(h))SyncFighterFeats(h,true); // 2026-10-31 战士奖励专长（老存档在这里补发；2026-11-03 起含武僧、圣武士）
    var p=h.pawn;if(p==null)return;
    if(d.table<TableVersion)Regrant(h); // 1.87.0 新等级表（老存档补一次）
    Regen(h);
    ClassRestless.Tick250(h); // 1.99.0 不睡觉的种族：平时慢慢回（代替睡觉）
    Warlock.Tick250(h); // 邪术师：短休回满契约法力、被动
+   Subclass3.Tick250(h); // 1.106.0 暗影宗、散打宗
+   Subclass4.Tick250(h); // 1.111.0 炼金师、装甲师、堡垒工程师
+   Subclass2.Tick250(h); // 1.103.0 第二批子职业的被动、钢铁卫士、誓言之力
    if((d.syncAcc+=1)>=4){d.syncAcc=0;Sync(h);}
    Martial.Refresh(p);
    if(p.Dead)return;
@@ -349,12 +365,14 @@ namespace LichPhylactery {
    if(c==null || h==null)return null;
    if(c.caster && ClassMartial2.Raging(p))return "狂暴中无法施法";
    int cost=ClassLegendary.Cost(p,def,props);
+   var s2=Subclass2.CannotCast(p,def,props)??Subclass3.CannotCast(p,def,props);if(s2!=null)return s2; // 1.103.0 失血、誓言之力；1.110.0 引导神力
    var mana=ClassSubclass.ManaCannot(h,def,cost);if(mana!=null)return mana; // 诡术师的法力
    if(cost>0 && c.resource!=ClassResource.None && !FreeCast(p,props) && Resource(h,c)+.001f<cost)return ResourceLabel(c.resource)+"不足（"+Resource(h,c).ToString("0.#")+" / "+cost+"）";
    if(props.ranged && Martial.RangedVerb(p)?.Projectile==null)return "需要远程武器";
    return null;
   }
   public static void Pay(Pawn p,AbilityDef def,CompProperties_ClassEffect props){
+   if(props!=null && !props.passive && (Subclass2.Pay(p,def,props) || Subclass3.Pay(p,def,props)))return; // 1.103.0 失血、誓言之力；1.110.0 引导神力（定义里 cost 为 0）
    if(props==null || props.cost<=0 || FreeCast(p,props))return;var h=Adventurer.Get(p);var c=ClassOf(def);
    if(ClassSubclass.PayMana(h,def,ClassLegendary.Cost(p,def,props)))return; // 诡术师的法力
    if(c==null || c.resource==ClassResource.None)return;
@@ -379,7 +397,7 @@ namespace LichPhylactery {
   }
   public static int ClassBonusLevels(Pawn p,SkillDef s){var h=Adventurer.Get(p);int n=0;if(h?.classes!=null)foreach(var kv in h.classes.levels)if(kv.Key.mainSkill==s || kv.Key.alternateSkill==s)n+=kv.Value;return n;}
   // 魔涌期间术士法术不耗法力。
-  public static bool FreeCast(Pawn p,CompProperties_ClassEffect props)=>props!=null && (props.sorcery && Items.Has(p,"LP_SorcerousSurge") || props.effect!="ArcaneTorrent" && ClassLegendary.Torrent(p) || Warlock.Free(p,props)); // 1.74.0 魔力奔流；宗主化身
+  public static bool FreeCast(Pawn p,CompProperties_ClassEffect props)=>props!=null && (props.sorcery && Items.Has(p,"LP_SorcerousSurge") || props.effect!="ArcaneTorrent" && ClassLegendary.Torrent(p) || Warlock.Free(p,props) || Subclass2.Free(p,props) || Subclass3.Free(p,props)); // 1.74.0 魔力奔流；宗主化身；1.103.0 灵能战士（神经热）；1.107.0 思维具现
   // 1.73.0：背景 / 特性的职业经验加成（原来加在 VPE 路径经验上）改成冒险者经验 ×，取所学职业里最高的一项。
   public static float XpFactor(Pawn p){
    var h=Adventurer.Get(p);if(h?.classes==null || h.classes.levels.Count==0)return 1f;float f=1f;

@@ -120,6 +120,7 @@ namespace LichPhylactery {
    if(guardian){
     Add(Thing(Scrolls.RandomElement()),1);
     if(Milestone(floor) || Rand.Chance(Mathf.Min(.9f,.25f+floor*.01f)))Add(Thing(RandomMagicItem()),1);
+    if(floor>=60){var art=DndImplants.RollArtifact(.03f);if(art!=null)Add(Thing(art),1);} // 1.114.0 维克那神器：60 层起守卫极少掉落（世上各一件）
    }else if(Rand.Chance(.3f))Add(Thing("LP_PotionHealing"),1);
    return list;
   }

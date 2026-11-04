@@ -1,0 +1,5140 @@
+[
+{
+"file": "Bridges\\HAR\\Textures\\HARGiants\\Items\\CyclopsLens.png",
+"role": "icon",
+"had": 1.78,
+"added": 0.22,
+"hd": false
+},
+{
+"file": "Bridges\\HAR\\Textures\\HARGiants\\Items\\CyclopsMaul.png",
+"role": "weapon",
+"had": 2.44,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Bridges\\HAR\\Textures\\HARGiants\\Items\\EttinTwinHelm.png",
+"role": "icon",
+"had": 4.03,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Bridges\\HAR\\Textures\\HARGiants\\Worn\\EttinTwinHelm_east.png",
+"role": "worn",
+"had": 3.29,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Bridges\\HAR\\Textures\\HARGiants\\Worn\\EttinTwinHelm_north.png",
+"role": "worn",
+"had": 3.36,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Bridges\\HAR\\Textures\\HARGiants\\Worn\\EttinTwinHelm_south.png",
+"role": "worn",
+"had": 3.25,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Ascension\\Items\\EternalNightCrown.png",
+"role": "icon",
+"had": 4.01,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Ascension\\Items\\SaintSeal.png",
+"role": "icon",
+"had": 2.91,
+"added": 1.09,
+"hd": false
+},
+{
+"file": "Textures\\Ascension\\Weapons\\Godsbane.png",
+"role": "weapon",
+"had": 8.99,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Ascension\\Weapons\\SkySpear.png",
+"role": "weapon",
+"had": 1.99,
+"added": 0.61,
+"hd": false
+},
+{
+"file": "Textures\\Faith\\BlessedWater.png",
+"role": "weapon",
+"had": 2.17,
+"added": 0.43,
+"hd": false
+},
+{
+"file": "Textures\\Faith\\HolySymbol.png",
+"role": "icon",
+"had": 2.22,
+"added": 1.78,
+"hd": false
+},
+{
+"file": "Textures\\Faith\\Relics\\AshScales.png",
+"role": "icon",
+"had": 1.97,
+"added": 2.03,
+"hd": false
+},
+{
+"file": "Textures\\Faith\\Relics\\BeastClaw.png",
+"role": "icon",
+"had": 2.81,
+"added": 1.19,
+"hd": false
+},
+{
+"file": "Textures\\Faith\\Relics\\BlackHand.png",
+"role": "icon",
+"had": 12.47,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Faith\\Relics\\ForgeHeart.png",
+"role": "icon",
+"had": 5.32,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Faith\\Relics\\HandOfTyr.png",
+"role": "icon",
+"had": 2.18,
+"added": 1.82,
+"hd": false
+},
+{
+"file": "Textures\\Faith\\Relics\\MorningStar.png",
+"role": "weapon",
+"had": 1.9,
+"added": 0.7,
+"hd": false
+},
+{
+"file": "Textures\\Faith\\Relics\\NightTear.png",
+"role": "icon",
+"had": 12.91,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Faith\\Relics\\SilverTear.png",
+"role": "icon",
+"had": 3.03,
+"added": 0.97,
+"hd": false
+},
+{
+"file": "Textures\\Faith\\Relics\\StormSpear.png",
+"role": "weapon",
+"had": 2.36,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Equipment\\Armor.png",
+"role": "icon",
+"had": 8.99,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Equipment\\Helmet.png",
+"role": "icon",
+"had": 11.45,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Equipment\\Maul.png",
+"role": "weapon",
+"had": 12.24,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Equipment\\Worn\\Armor_Fat_east.png",
+"role": "worn",
+"had": 10.95,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Equipment\\Worn\\Armor_Fat_north.png",
+"role": "worn",
+"had": 9.83,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Equipment\\Worn\\Armor_Fat_south.png",
+"role": "worn",
+"had": 9.33,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Equipment\\Worn\\Armor_Female_east.png",
+"role": "worn",
+"had": 10.71,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Equipment\\Worn\\Armor_Female_north.png",
+"role": "worn",
+"had": 9.89,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Equipment\\Worn\\Armor_Female_south.png",
+"role": "worn",
+"had": 9.12,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Equipment\\Worn\\Armor_Hulk_east.png",
+"role": "worn",
+"had": 10.88,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Equipment\\Worn\\Armor_Hulk_north.png",
+"role": "worn",
+"had": 9.97,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Equipment\\Worn\\Armor_Hulk_south.png",
+"role": "worn",
+"had": 9.48,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Equipment\\Worn\\Armor_Male_east.png",
+"role": "worn",
+"had": 10.55,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Equipment\\Worn\\Armor_Male_north.png",
+"role": "worn",
+"had": 9.62,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Equipment\\Worn\\Armor_Male_south.png",
+"role": "worn",
+"had": 9.02,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Equipment\\Worn\\Armor_Thin_east.png",
+"role": "worn",
+"had": 10.33,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Equipment\\Worn\\Armor_Thin_north.png",
+"role": "worn",
+"had": 9.88,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Equipment\\Worn\\Armor_Thin_south.png",
+"role": "worn",
+"had": 9.16,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Equipment\\Worn\\Helmet_east.png",
+"role": "worn",
+"had": 11.26,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Equipment\\Worn\\Helmet_north.png",
+"role": "worn",
+"had": 11.61,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Equipment\\Worn\\Helmet_south.png",
+"role": "worn",
+"had": 11.28,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\MoltenGuard\\Armor.png",
+"role": "icon",
+"had": 6.88,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\MoltenGuard\\Helmet.png",
+"role": "icon",
+"had": 10.6,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\MoltenGuard\\Maul.png",
+"role": "weapon",
+"had": 12.64,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Fat_east.png",
+"role": "worn",
+"had": 6.61,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Fat_north.png",
+"role": "worn",
+"had": 5.05,
+"added": 1.15,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Fat_south.png",
+"role": "worn",
+"had": 5.04,
+"added": 1.16,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Female_east.png",
+"role": "worn",
+"had": 5.01,
+"added": 1.19,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Female_north.png",
+"role": "worn",
+"had": 3.99,
+"added": 2.21,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Female_south.png",
+"role": "worn",
+"had": 3.88,
+"added": 2.32,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Hulk_east.png",
+"role": "worn",
+"had": 6.0,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Hulk_north.png",
+"role": "worn",
+"had": 5.19,
+"added": 1.01,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Hulk_south.png",
+"role": "worn",
+"had": 5.14,
+"added": 1.06,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Male_east.png",
+"role": "worn",
+"had": 4.88,
+"added": 1.32,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Male_north.png",
+"role": "worn",
+"had": 4.08,
+"added": 2.12,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Male_south.png",
+"role": "worn",
+"had": 4.1,
+"added": 2.1,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Thin_east.png",
+"role": "worn",
+"had": 4.2,
+"added": 2.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Thin_north.png",
+"role": "worn",
+"had": 3.34,
+"added": 2.86,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Thin_south.png",
+"role": "worn",
+"had": 3.3,
+"added": 2.9,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\MoltenGuard\\Worn\\Helmet_east.png",
+"role": "worn",
+"had": 10.54,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\MoltenGuard\\Worn\\Helmet_north.png",
+"role": "worn",
+"had": 10.82,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\MoltenGuard\\Worn\\Helmet_south.png",
+"role": "worn",
+"had": 10.64,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Tunic.png",
+"role": "icon",
+"had": 13.0,
+"added": 25.47,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Worn\\Tunic_Fat_east.png",
+"role": "worn",
+"had": 3.69,
+"added": 2.51,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Worn\\Tunic_Fat_north.png",
+"role": "worn",
+"had": 3.8,
+"added": 2.4,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Worn\\Tunic_Fat_south.png",
+"role": "worn",
+"had": 3.92,
+"added": 2.28,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Worn\\Tunic_Female_east.png",
+"role": "worn",
+"had": 3.71,
+"added": 2.49,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Worn\\Tunic_Female_north.png",
+"role": "worn",
+"had": 3.79,
+"added": 2.41,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Worn\\Tunic_Female_south.png",
+"role": "worn",
+"had": 3.81,
+"added": 2.39,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Worn\\Tunic_Hulk_east.png",
+"role": "worn",
+"had": 3.7,
+"added": 2.5,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Worn\\Tunic_Hulk_north.png",
+"role": "worn",
+"had": 3.82,
+"added": 2.38,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Worn\\Tunic_Hulk_south.png",
+"role": "worn",
+"had": 3.89,
+"added": 2.31,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Worn\\Tunic_Male_east.png",
+"role": "worn",
+"had": 3.71,
+"added": 2.49,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Worn\\Tunic_Male_north.png",
+"role": "worn",
+"had": 3.79,
+"added": 2.41,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Worn\\Tunic_Male_south.png",
+"role": "worn",
+"had": 3.89,
+"added": 2.31,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Worn\\Tunic_Thin_east.png",
+"role": "worn",
+"had": 3.7,
+"added": 2.5,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Worn\\Tunic_Thin_north.png",
+"role": "worn",
+"had": 3.74,
+"added": 2.46,
+"hd": false
+},
+{
+"file": "Textures\\FireGiant\\Worn\\Tunic_Thin_south.png",
+"role": "worn",
+"had": 3.81,
+"added": 2.39,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Items\\AbyssCoralArmor.png",
+"role": "icon",
+"had": 3.86,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Items\\CloudMorningstar.png",
+"role": "weapon",
+"had": 2.18,
+"added": 0.42,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Items\\CloudRobe.png",
+"role": "icon",
+"had": 3.31,
+"added": 0.69,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Items\\FogFlask.png",
+"role": "weapon",
+"had": 2.26,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Items\\FrostGiantAxe.png",
+"role": "weapon",
+"had": 2.09,
+"added": 0.51,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Items\\FrostGiantHorn.png",
+"role": "icon",
+"had": 2.41,
+"added": 1.59,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Items\\StormTrident.png",
+"role": "weapon",
+"had": 2.29,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Items\\WinterWolfCloak.png",
+"role": "icon",
+"had": 3.41,
+"added": 0.59,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\AbyssCoralArmor_Fat_east.png",
+"role": "worn",
+"had": 4.11,
+"added": 2.09,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\AbyssCoralArmor_Fat_north.png",
+"role": "worn",
+"had": 4.14,
+"added": 2.06,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\AbyssCoralArmor_Fat_south.png",
+"role": "worn",
+"had": 4.17,
+"added": 2.03,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\AbyssCoralArmor_Female_east.png",
+"role": "worn",
+"had": 4.06,
+"added": 2.14,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\AbyssCoralArmor_Female_north.png",
+"role": "worn",
+"had": 4.11,
+"added": 2.09,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\AbyssCoralArmor_Female_south.png",
+"role": "worn",
+"had": 4.07,
+"added": 2.13,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\AbyssCoralArmor_Hulk_east.png",
+"role": "worn",
+"had": 4.06,
+"added": 2.14,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\AbyssCoralArmor_Hulk_north.png",
+"role": "worn",
+"had": 4.16,
+"added": 2.04,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\AbyssCoralArmor_Hulk_south.png",
+"role": "worn",
+"had": 4.15,
+"added": 2.05,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\AbyssCoralArmor_Male_east.png",
+"role": "worn",
+"had": 4.02,
+"added": 2.18,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\AbyssCoralArmor_Male_north.png",
+"role": "worn",
+"had": 4.12,
+"added": 2.08,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\AbyssCoralArmor_Male_south.png",
+"role": "worn",
+"had": 4.15,
+"added": 2.05,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\AbyssCoralArmor_Thin_east.png",
+"role": "worn",
+"had": 4.01,
+"added": 2.19,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\AbyssCoralArmor_Thin_north.png",
+"role": "worn",
+"had": 4.07,
+"added": 2.13,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\AbyssCoralArmor_Thin_south.png",
+"role": "worn",
+"had": 4.11,
+"added": 2.09,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\CloudRobe_Fat_east.png",
+"role": "worn",
+"had": 3.65,
+"added": 2.55,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\CloudRobe_Fat_north.png",
+"role": "worn",
+"had": 3.6,
+"added": 2.6,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\CloudRobe_Fat_south.png",
+"role": "worn",
+"had": 3.75,
+"added": 2.45,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\CloudRobe_Female_east.png",
+"role": "worn",
+"had": 3.4,
+"added": 2.8,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\CloudRobe_Female_north.png",
+"role": "worn",
+"had": 3.39,
+"added": 2.81,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\CloudRobe_Female_south.png",
+"role": "worn",
+"had": 3.38,
+"added": 2.82,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\CloudRobe_Hulk_east.png",
+"role": "worn",
+"had": 3.62,
+"added": 2.58,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\CloudRobe_Hulk_north.png",
+"role": "worn",
+"had": 3.7,
+"added": 2.5,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\CloudRobe_Hulk_south.png",
+"role": "worn",
+"had": 3.76,
+"added": 2.44,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\CloudRobe_Male_east.png",
+"role": "worn",
+"had": 3.23,
+"added": 2.97,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\CloudRobe_Male_north.png",
+"role": "worn",
+"had": 3.42,
+"added": 2.78,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\CloudRobe_Male_south.png",
+"role": "worn",
+"had": 3.43,
+"added": 2.77,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\CloudRobe_Thin_east.png",
+"role": "worn",
+"had": 3.35,
+"added": 2.85,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\CloudRobe_Thin_north.png",
+"role": "worn",
+"had": 3.36,
+"added": 2.84,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\CloudRobe_Thin_south.png",
+"role": "worn",
+"had": 3.38,
+"added": 2.82,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\WinterWolfCloak_Fat_east.png",
+"role": "worn",
+"had": 3.43,
+"added": 2.77,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\WinterWolfCloak_Fat_north.png",
+"role": "worn",
+"had": 3.48,
+"added": 2.72,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\WinterWolfCloak_Fat_south.png",
+"role": "worn",
+"had": 3.44,
+"added": 2.76,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\WinterWolfCloak_Female_east.png",
+"role": "worn",
+"had": 3.82,
+"added": 2.38,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\WinterWolfCloak_Female_north.png",
+"role": "worn",
+"had": 3.44,
+"added": 2.76,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\WinterWolfCloak_Female_south.png",
+"role": "worn",
+"had": 3.44,
+"added": 2.76,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\WinterWolfCloak_Hulk_east.png",
+"role": "worn",
+"had": 3.4,
+"added": 2.8,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\WinterWolfCloak_Hulk_north.png",
+"role": "worn",
+"had": 3.28,
+"added": 2.92,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\WinterWolfCloak_Hulk_south.png",
+"role": "worn",
+"had": 3.21,
+"added": 2.99,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\WinterWolfCloak_Male_east.png",
+"role": "worn",
+"had": 3.83,
+"added": 2.37,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\WinterWolfCloak_Male_north.png",
+"role": "worn",
+"had": 3.81,
+"added": 2.39,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\WinterWolfCloak_Male_south.png",
+"role": "worn",
+"had": 3.44,
+"added": 2.76,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\WinterWolfCloak_Thin_east.png",
+"role": "worn",
+"had": 3.83,
+"added": 2.37,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\WinterWolfCloak_Thin_north.png",
+"role": "worn",
+"had": 3.42,
+"added": 2.78,
+"hd": false
+},
+{
+"file": "Textures\\Giants\\Worn\\WinterWolfCloak_Thin_south.png",
+"role": "worn",
+"had": 3.41,
+"added": 2.79,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Abyss\\GorgedFang.png",
+"role": "icon",
+"had": 2.11,
+"added": 1.89,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\AmuletPlanes.png",
+"role": "icon",
+"had": 1.84,
+"added": 2.16,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\AmuletProofDetection.png",
+"role": "icon",
+"had": 1.94,
+"added": 2.06,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\BracersArchery.png",
+"role": "icon",
+"had": 3.77,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\BracersDefense.png",
+"role": "icon",
+"had": 3.09,
+"added": 0.91,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\BroochShielding.png",
+"role": "icon",
+"had": 2.08,
+"added": 1.92,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\CogOfMakers.png",
+"role": "icon",
+"had": 3.03,
+"added": 0.97,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\DefenderSword.png",
+"role": "weapon",
+"had": 2.23,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\DragonSlayer.png",
+"role": "weapon",
+"had": 2.81,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\EverburningTorch.png",
+"role": "icon",
+"had": 2.31,
+"added": 1.69,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\EversmokingBottle.png",
+"role": "weapon",
+"had": 2.33,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\EyesEagle.png",
+"role": "icon",
+"had": 2.16,
+"added": 1.84,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\EyesMinuteSeeing.png",
+"role": "icon",
+"had": 2.26,
+"added": 1.74,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\FlameTongue.png",
+"role": "weapon",
+"had": 2.34,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\FrostBrand.png",
+"role": "weapon",
+"had": 1.02,
+"added": 1.58,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\GauntletsOgrePower.png",
+"role": "icon",
+"had": 2.9,
+"added": 1.1,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\GlovesMissileSnaring.png",
+"role": "icon",
+"had": 2.29,
+"added": 1.71,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\GogglesNight.png",
+"role": "icon",
+"had": 2.93,
+"added": 1.07,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\HaloOfLight.png",
+"role": "icon",
+"had": 2.79,
+"added": 1.21,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\HelmTelepathy.png",
+"role": "icon",
+"had": 2.16,
+"added": 1.84,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\HornValhalla.png",
+"role": "icon",
+"had": 2.18,
+"added": 1.82,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\InquisitorSeal.png",
+"role": "icon",
+"had": 2.97,
+"added": 1.03,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\JavelinLightning.png",
+"role": "weapon",
+"had": 2.01,
+"added": 0.59,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\JavelinLightningFlight.png",
+"role": "weapon",
+"had": 3.28,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\MarkBlood.png",
+"role": "icon",
+"had": 10.94,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\MarkChange.png",
+"role": "icon",
+"had": 7.98,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\MarkDecay.png",
+"role": "icon",
+"had": 7.79,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\MarkRapture.png",
+"role": "icon",
+"had": 7.31,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\MartyrsBeads.png",
+"role": "icon",
+"had": 2.35,
+"added": 1.65,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\NecklaceAdaptation.png",
+"role": "icon",
+"had": 1.84,
+"added": 2.16,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\NecklaceFireballs.png",
+"role": "icon",
+"had": 1.83,
+"added": 2.17,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\PeriaptWoundClosure.png",
+"role": "icon",
+"had": 1.86,
+"added": 2.14,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\PrayerBeads.png",
+"role": "icon",
+"had": 2.16,
+"added": 1.84,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\PsychicHood.png",
+"role": "icon",
+"had": 3.34,
+"added": 0.66,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\RevivalCore.png",
+"role": "icon",
+"had": 5.75,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\RingAnimalInfluence.png",
+"role": "icon",
+"had": 2.95,
+"added": 1.05,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\RingFreeAction.png",
+"role": "icon",
+"had": 3.04,
+"added": 0.96,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\RingProtection.png",
+"role": "icon",
+"had": 3.03,
+"added": 0.97,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\RingRegeneration.png",
+"role": "icon",
+"had": 3.06,
+"added": 0.94,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\RingShootingStars.png",
+"role": "icon",
+"had": 3.14,
+"added": 0.86,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\RingSpellStoring.png",
+"role": "icon",
+"had": 3.01,
+"added": 0.99,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\RingSpellTurning.png",
+"role": "icon",
+"had": 3.01,
+"added": 0.99,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\RingWardingBond.png",
+"role": "icon",
+"had": 2.86,
+"added": 1.14,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\ScarabProtection.png",
+"role": "icon",
+"had": 3.11,
+"added": 0.89,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\SpiritStone.png",
+"role": "icon",
+"had": 2.11,
+"added": 1.89,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\SwordVengeance.png",
+"role": "weapon",
+"had": 3.14,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\VorpalSword.png",
+"role": "weapon",
+"had": 2.42,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Magic\\WaaaghTotem.png",
+"role": "icon",
+"had": 2.1,
+"added": 1.9,
+"hd": false
+},
+{
+"file": "Textures\\Items\\RaceGear\\BoneTalisman.png",
+"role": "icon",
+"had": 1.56,
+"added": 2.44,
+"hd": false
+},
+{
+"file": "Textures\\Items\\RaceGear\\DragonShedArmor.png",
+"role": "icon",
+"had": 3.71,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\RaceGear\\DwarvenRuneShield.png",
+"role": "icon",
+"had": 4.28,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\RaceGear\\DwarvenThrowingHammer.png",
+"role": "weapon",
+"had": 2.34,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\RaceGear\\ElvenChain.png",
+"role": "icon",
+"had": 2.98,
+"added": 1.02,
+"hd": false
+},
+{
+"file": "Textures\\Items\\RaceGear\\ElvenLongbow.png",
+"role": "weapon",
+"had": 1.66,
+"added": 0.94,
+"hd": false
+},
+{
+"file": "Textures\\Items\\RaceGear\\GithAstralArmor.png",
+"role": "icon",
+"had": 2.95,
+"added": 1.05,
+"hd": false
+},
+{
+"file": "Textures\\Items\\RaceGear\\IllithidTendrilCloak.png",
+"role": "icon",
+"had": 8.54,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\RaceGear\\MinotaurHornHelm.png",
+"role": "icon",
+"had": 3.77,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\RaceGear\\OrcishGreataxe.png",
+"role": "weapon",
+"had": 2.38,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Throwables\\AcidVial.png",
+"role": "weapon",
+"had": 2.02,
+"added": 0.58,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Throwables\\AlchemistFire.png",
+"role": "weapon",
+"had": 2.25,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Throwables\\DispelDust.png",
+"role": "weapon",
+"had": 2.29,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Throwables\\HolyWater.png",
+"role": "weapon",
+"had": 1.74,
+"added": 0.86,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Throwables\\TanglefootBag.png",
+"role": "weapon",
+"had": 2.62,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Throwables\\Thunderstone.png",
+"role": "weapon",
+"had": 3.0,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Wondrous\\AmuletHealth.png",
+"role": "icon",
+"had": 2.03,
+"added": 1.97,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Wondrous\\BagOfHolding.png",
+"role": "icon",
+"had": 3.87,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Wondrous\\BootsElvenkind.png",
+"role": "icon",
+"had": 3.23,
+"added": 0.77,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Wondrous\\BootsSpeed.png",
+"role": "icon",
+"had": 4.86,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Wondrous\\CloakElvenkind.png",
+"role": "icon",
+"had": 3.04,
+"added": 0.96,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Wondrous\\IntellectFortress.png",
+"role": "icon",
+"had": 2.46,
+"added": 1.54,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Wondrous\\IounStone.png",
+"role": "icon",
+"had": 3.12,
+"added": 0.88,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Wondrous\\RingAcid.png",
+"role": "icon",
+"had": 3.06,
+"added": 0.94,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Wondrous\\RingCold.png",
+"role": "icon",
+"had": 3.0,
+"added": 1.0,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Wondrous\\RingFire.png",
+"role": "icon",
+"had": 3.09,
+"added": 0.91,
+"hd": false
+},
+{
+"file": "Textures\\Items\\Wondrous\\RingMind.png",
+"role": "icon",
+"had": 3.01,
+"added": 0.99,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Fat_east.png",
+"role": "worn",
+"had": 5.27,
+"added": 0.93,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Fat_north.png",
+"role": "worn",
+"had": 5.12,
+"added": 1.08,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Fat_south.png",
+"role": "worn",
+"had": 5.08,
+"added": 1.12,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Female_east.png",
+"role": "worn",
+"had": 5.12,
+"added": 1.08,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Female_north.png",
+"role": "worn",
+"had": 5.08,
+"added": 1.12,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Female_south.png",
+"role": "worn",
+"had": 5.11,
+"added": 1.09,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Hulk_east.png",
+"role": "worn",
+"had": 5.16,
+"added": 1.04,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Hulk_north.png",
+"role": "worn",
+"had": 5.13,
+"added": 1.07,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Hulk_south.png",
+"role": "worn",
+"had": 5.08,
+"added": 1.12,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Icon.png",
+"role": "icon",
+"had": 4.11,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Male_east.png",
+"role": "worn",
+"had": 5.15,
+"added": 1.05,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Male_north.png",
+"role": "worn",
+"had": 5.09,
+"added": 1.11,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Male_south.png",
+"role": "worn",
+"had": 5.11,
+"added": 1.09,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Thin_east.png",
+"role": "worn",
+"had": 5.18,
+"added": 1.02,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Thin_north.png",
+"role": "worn",
+"had": 5.04,
+"added": 1.16,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Thin_south.png",
+"role": "worn",
+"had": 5.11,
+"added": 1.09,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Fat_east.png",
+"role": "worn",
+"had": 3.31,
+"added": 2.89,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Fat_north.png",
+"role": "worn",
+"had": 3.16,
+"added": 3.04,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Fat_south.png",
+"role": "worn",
+"had": 3.21,
+"added": 2.99,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Female_east.png",
+"role": "worn",
+"had": 3.79,
+"added": 2.41,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Female_north.png",
+"role": "worn",
+"had": 3.65,
+"added": 2.55,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Female_south.png",
+"role": "worn",
+"had": 3.72,
+"added": 2.48,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Hulk_east.png",
+"role": "worn",
+"had": 3.97,
+"added": 2.23,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Hulk_north.png",
+"role": "worn",
+"had": 3.45,
+"added": 2.75,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Hulk_south.png",
+"role": "worn",
+"had": 3.47,
+"added": 2.73,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Icon.png",
+"role": "icon",
+"had": 2.95,
+"added": 1.05,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Male_east.png",
+"role": "worn",
+"had": 3.65,
+"added": 2.55,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Male_north.png",
+"role": "worn",
+"had": 3.55,
+"added": 2.65,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Male_south.png",
+"role": "worn",
+"had": 3.65,
+"added": 2.55,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Thin_east.png",
+"role": "worn",
+"had": 3.39,
+"added": 2.81,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Thin_north.png",
+"role": "worn",
+"had": 3.01,
+"added": 3.19,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Thin_south.png",
+"role": "worn",
+"had": 2.98,
+"added": 3.22,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BardBeret\\BardBeret_Icon.png",
+"role": "icon",
+"had": 3.9,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BardBeret\\BardBeret_east.png",
+"role": "worn",
+"had": 4.34,
+"added": 1.86,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BardBeret\\BardBeret_north.png",
+"role": "worn",
+"had": 4.3,
+"added": 1.9,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BardBeret\\BardBeret_south.png",
+"role": "worn",
+"had": 3.97,
+"added": 2.23,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Fat_east.png",
+"role": "worn",
+"had": 3.43,
+"added": 2.77,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Fat_north.png",
+"role": "worn",
+"had": 3.07,
+"added": 3.13,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Fat_south.png",
+"role": "worn",
+"had": 3.09,
+"added": 3.11,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Female_east.png",
+"role": "worn",
+"had": 3.44,
+"added": 2.76,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Female_north.png",
+"role": "worn",
+"had": 3.22,
+"added": 2.98,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Female_south.png",
+"role": "worn",
+"had": 3.19,
+"added": 3.01,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Hulk_east.png",
+"role": "worn",
+"had": 3.48,
+"added": 2.72,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Hulk_north.png",
+"role": "worn",
+"had": 3.17,
+"added": 3.03,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Hulk_south.png",
+"role": "worn",
+"had": 3.3,
+"added": 2.9,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Icon.png",
+"role": "icon",
+"had": 2.69,
+"added": 1.31,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Male_east.png",
+"role": "worn",
+"had": 3.19,
+"added": 3.01,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Male_north.png",
+"role": "worn",
+"had": 3.04,
+"added": 3.16,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Male_south.png",
+"role": "worn",
+"had": 3.16,
+"added": 3.04,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Thin_east.png",
+"role": "worn",
+"had": 3.04,
+"added": 3.16,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Thin_north.png",
+"role": "worn",
+"had": 2.77,
+"added": 3.43,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Thin_south.png",
+"role": "worn",
+"had": 2.81,
+"added": 3.39,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Fat_east.png",
+"role": "worn",
+"had": 4.11,
+"added": 2.09,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Fat_north.png",
+"role": "worn",
+"had": 3.19,
+"added": 3.01,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Fat_south.png",
+"role": "worn",
+"had": 3.25,
+"added": 2.95,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Female_east.png",
+"role": "worn",
+"had": 3.63,
+"added": 2.57,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Female_north.png",
+"role": "worn",
+"had": 3.15,
+"added": 3.05,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Female_south.png",
+"role": "worn",
+"had": 3.17,
+"added": 3.03,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Hulk_east.png",
+"role": "worn",
+"had": 4.29,
+"added": 1.91,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Hulk_north.png",
+"role": "worn",
+"had": 3.73,
+"added": 2.47,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Hulk_south.png",
+"role": "worn",
+"had": 3.76,
+"added": 2.44,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Icon.png",
+"role": "icon",
+"had": 2.76,
+"added": 1.24,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Male_east.png",
+"role": "worn",
+"had": 3.46,
+"added": 2.74,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Male_north.png",
+"role": "worn",
+"had": 3.02,
+"added": 3.18,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Male_south.png",
+"role": "worn",
+"had": 3.1,
+"added": 3.1,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Thin_east.png",
+"role": "worn",
+"had": 3.33,
+"added": 2.87,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Thin_north.png",
+"role": "worn",
+"had": 2.71,
+"added": 3.49,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Thin_south.png",
+"role": "worn",
+"had": 2.74,
+"added": 3.46,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BeardedHelm\\BeardedHelm_Icon.png",
+"role": "icon",
+"had": 3.36,
+"added": 0.64,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BeardedHelm\\BeardedHelm_east.png",
+"role": "worn",
+"had": 3.74,
+"added": 2.46,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BeardedHelm\\BeardedHelm_north.png",
+"role": "worn",
+"had": 3.59,
+"added": 2.61,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\BeardedHelm\\BeardedHelm_south.png",
+"role": "worn",
+"had": 3.85,
+"added": 2.35,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Fat_east.png",
+"role": "worn",
+"had": 4.24,
+"added": 1.96,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Fat_north.png",
+"role": "worn",
+"had": 3.7,
+"added": 2.5,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Fat_south.png",
+"role": "worn",
+"had": 3.43,
+"added": 2.77,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Female_east.png",
+"role": "worn",
+"had": 3.81,
+"added": 2.39,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Female_north.png",
+"role": "worn",
+"had": 3.18,
+"added": 3.02,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Female_south.png",
+"role": "worn",
+"had": 3.08,
+"added": 3.12,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Hulk_east.png",
+"role": "worn",
+"had": 4.73,
+"added": 1.47,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Hulk_north.png",
+"role": "worn",
+"had": 3.93,
+"added": 2.27,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Hulk_south.png",
+"role": "worn",
+"had": 3.68,
+"added": 2.52,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Icon.png",
+"role": "icon",
+"had": 2.75,
+"added": 1.25,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Male_east.png",
+"role": "worn",
+"had": 3.66,
+"added": 2.54,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Male_north.png",
+"role": "worn",
+"had": 3.18,
+"added": 3.02,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Male_south.png",
+"role": "worn",
+"had": 3.07,
+"added": 3.13,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Thin_east.png",
+"role": "worn",
+"had": 3.45,
+"added": 2.75,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Thin_north.png",
+"role": "worn",
+"had": 2.74,
+"added": 3.46,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Thin_south.png",
+"role": "worn",
+"had": 2.7,
+"added": 3.5,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Fat_east.png",
+"role": "worn",
+"had": 4.1,
+"added": 2.1,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Fat_north.png",
+"role": "worn",
+"had": 3.17,
+"added": 3.03,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Fat_south.png",
+"role": "worn",
+"had": 3.19,
+"added": 3.01,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Female_east.png",
+"role": "worn",
+"had": 3.62,
+"added": 2.58,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Female_north.png",
+"role": "worn",
+"had": 2.98,
+"added": 3.22,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Female_south.png",
+"role": "worn",
+"had": 3.02,
+"added": 3.18,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Hulk_east.png",
+"role": "worn",
+"had": 4.28,
+"added": 1.92,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Hulk_north.png",
+"role": "worn",
+"had": 3.57,
+"added": 2.63,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Hulk_south.png",
+"role": "worn",
+"had": 3.57,
+"added": 2.63,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Icon.png",
+"role": "icon",
+"had": 2.81,
+"added": 1.19,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Male_east.png",
+"role": "worn",
+"had": 3.44,
+"added": 2.76,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Male_north.png",
+"role": "worn",
+"had": 2.92,
+"added": 3.28,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Male_south.png",
+"role": "worn",
+"had": 2.93,
+"added": 3.27,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Thin_east.png",
+"role": "worn",
+"had": 3.25,
+"added": 2.95,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Thin_north.png",
+"role": "worn",
+"had": 2.62,
+"added": 3.58,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Thin_south.png",
+"role": "worn",
+"had": 2.62,
+"added": 3.58,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Fat_east.png",
+"role": "worn",
+"had": 4.03,
+"added": 2.17,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Fat_north.png",
+"role": "worn",
+"had": 3.12,
+"added": 3.08,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Fat_south.png",
+"role": "worn",
+"had": 3.38,
+"added": 2.82,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Female_east.png",
+"role": "worn",
+"had": 3.62,
+"added": 2.58,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Female_north.png",
+"role": "worn",
+"had": 2.97,
+"added": 3.23,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Female_south.png",
+"role": "worn",
+"had": 3.01,
+"added": 3.19,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Hulk_east.png",
+"role": "worn",
+"had": 4.1,
+"added": 2.1,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Hulk_north.png",
+"role": "worn",
+"had": 3.41,
+"added": 2.79,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Hulk_south.png",
+"role": "worn",
+"had": 3.53,
+"added": 2.67,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Icon.png",
+"role": "icon",
+"had": 2.66,
+"added": 1.34,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Male_east.png",
+"role": "worn",
+"had": 3.35,
+"added": 2.85,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Male_north.png",
+"role": "worn",
+"had": 2.87,
+"added": 3.33,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Male_south.png",
+"role": "worn",
+"had": 2.92,
+"added": 3.28,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Thin_east.png",
+"role": "worn",
+"had": 3.07,
+"added": 3.13,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Thin_north.png",
+"role": "worn",
+"had": 2.53,
+"added": 3.67,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Thin_south.png",
+"role": "worn",
+"had": 2.55,
+"added": 3.65,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CrownOfBone\\CrownOfBone_Icon.png",
+"role": "icon",
+"had": 3.05,
+"added": 0.95,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CrownOfBone\\CrownOfBone_east.png",
+"role": "worn",
+"had": 2.83,
+"added": 3.37,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CrownOfBone\\CrownOfBone_north.png",
+"role": "worn",
+"had": 2.01,
+"added": 4.19,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\CrownOfBone\\CrownOfBone_south.png",
+"role": "worn",
+"had": 2.76,
+"added": 3.44,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Fat_east.png",
+"role": "worn",
+"had": 4.93,
+"added": 1.27,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Fat_north.png",
+"role": "worn",
+"had": 4.18,
+"added": 2.02,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Fat_south.png",
+"role": "worn",
+"had": 4.19,
+"added": 2.01,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Female_east.png",
+"role": "worn",
+"had": 3.84,
+"added": 2.36,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Female_north.png",
+"role": "worn",
+"had": 3.43,
+"added": 2.77,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Female_south.png",
+"role": "worn",
+"had": 3.43,
+"added": 2.77,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Hulk_east.png",
+"role": "worn",
+"had": 1.49,
+"added": 4.71,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Hulk_north.png",
+"role": "worn",
+"had": 4.22,
+"added": 1.98,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Hulk_south.png",
+"role": "worn",
+"had": 4.26,
+"added": 1.94,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Icon.png",
+"role": "icon",
+"had": 2.96,
+"added": 1.04,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Male_east.png",
+"role": "worn",
+"had": 3.71,
+"added": 2.49,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Male_north.png",
+"role": "worn",
+"had": 3.5,
+"added": 2.7,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Male_south.png",
+"role": "worn",
+"had": 3.5,
+"added": 2.7,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Thin_east.png",
+"role": "worn",
+"had": 3.4,
+"added": 2.8,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Thin_north.png",
+"role": "worn",
+"had": 2.87,
+"added": 3.33,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Thin_south.png",
+"role": "worn",
+"had": 2.83,
+"added": 3.37,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DragonHeadHelm\\DragonHeadHelm_Icon.png",
+"role": "icon",
+"had": 3.39,
+"added": 0.61,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DragonHeadHelm\\DragonHeadHelm_east.png",
+"role": "worn",
+"had": 3.63,
+"added": 2.57,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DragonHeadHelm\\DragonHeadHelm_north.png",
+"role": "worn",
+"had": 4.15,
+"added": 2.05,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DragonHeadHelm\\DragonHeadHelm_south.png",
+"role": "worn",
+"had": 3.99,
+"added": 2.21,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Fat_east.png",
+"role": "worn",
+"had": 4.47,
+"added": 1.73,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Fat_north.png",
+"role": "worn",
+"had": 4.22,
+"added": 1.98,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Fat_south.png",
+"role": "worn",
+"had": 4.24,
+"added": 1.96,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Female_east.png",
+"role": "worn",
+"had": 3.86,
+"added": 2.34,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Female_north.png",
+"role": "worn",
+"had": 3.7,
+"added": 2.5,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Female_south.png",
+"role": "worn",
+"had": 3.73,
+"added": 2.47,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Hulk_east.png",
+"role": "worn",
+"had": 4.63,
+"added": 1.57,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Hulk_north.png",
+"role": "worn",
+"had": 4.48,
+"added": 1.72,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Hulk_south.png",
+"role": "worn",
+"had": 4.48,
+"added": 1.72,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Icon.png",
+"role": "icon",
+"had": 2.98,
+"added": 1.02,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Male_east.png",
+"role": "worn",
+"had": 3.77,
+"added": 2.43,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Male_north.png",
+"role": "worn",
+"had": 3.66,
+"added": 2.54,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Male_south.png",
+"role": "worn",
+"had": 3.71,
+"added": 2.49,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Thin_east.png",
+"role": "worn",
+"had": 3.55,
+"added": 2.65,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Thin_north.png",
+"role": "worn",
+"had": 3.09,
+"added": 3.11,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Thin_south.png",
+"role": "worn",
+"had": 3.06,
+"added": 3.14,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Fat_east.png",
+"role": "worn",
+"had": 4.31,
+"added": 1.89,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Fat_north.png",
+"role": "worn",
+"had": 3.88,
+"added": 2.32,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Fat_south.png",
+"role": "worn",
+"had": 3.87,
+"added": 2.33,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Female_east.png",
+"role": "worn",
+"had": 3.74,
+"added": 2.46,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Female_north.png",
+"role": "worn",
+"had": 3.44,
+"added": 2.76,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Female_south.png",
+"role": "worn",
+"had": 3.47,
+"added": 2.73,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Hulk_east.png",
+"role": "worn",
+"had": 4.62,
+"added": 1.58,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Hulk_north.png",
+"role": "worn",
+"had": 4.28,
+"added": 1.92,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Hulk_south.png",
+"role": "worn",
+"had": 4.23,
+"added": 1.97,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Icon.png",
+"role": "icon",
+"had": 2.98,
+"added": 1.02,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Male_east.png",
+"role": "worn",
+"had": 3.59,
+"added": 2.61,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Male_north.png",
+"role": "worn",
+"had": 3.42,
+"added": 2.78,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Male_south.png",
+"role": "worn",
+"had": 3.41,
+"added": 2.79,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Thin_east.png",
+"role": "worn",
+"had": 3.31,
+"added": 2.89,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Thin_north.png",
+"role": "worn",
+"had": 2.86,
+"added": 3.34,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Thin_south.png",
+"role": "worn",
+"had": 2.88,
+"added": 3.32,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Fat_east.png",
+"role": "worn",
+"had": 3.74,
+"added": 2.46,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Fat_north.png",
+"role": "worn",
+"had": 3.57,
+"added": 2.63,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Fat_south.png",
+"role": "worn",
+"had": 3.53,
+"added": 2.67,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Female_east.png",
+"role": "worn",
+"had": 3.7,
+"added": 2.5,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Female_north.png",
+"role": "worn",
+"had": 3.55,
+"added": 2.65,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Female_south.png",
+"role": "worn",
+"had": 3.55,
+"added": 2.65,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Hulk_east.png",
+"role": "worn",
+"had": 3.89,
+"added": 2.31,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Hulk_north.png",
+"role": "worn",
+"had": 3.7,
+"added": 2.5,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Hulk_south.png",
+"role": "worn",
+"had": 3.76,
+"added": 2.44,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Icon.png",
+"role": "icon",
+"had": 3.04,
+"added": 0.96,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Male_east.png",
+"role": "worn",
+"had": 3.55,
+"added": 2.65,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Male_north.png",
+"role": "worn",
+"had": 3.51,
+"added": 2.69,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Male_south.png",
+"role": "worn",
+"had": 3.53,
+"added": 2.67,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Thin_east.png",
+"role": "worn",
+"had": 3.28,
+"added": 2.92,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Thin_north.png",
+"role": "worn",
+"had": 2.99,
+"added": 3.21,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Thin_south.png",
+"role": "worn",
+"had": 2.98,
+"added": 3.22,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Fat_east.png",
+"role": "worn",
+"had": 4.96,
+"added": 1.24,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Fat_north.png",
+"role": "worn",
+"had": 3.96,
+"added": 2.24,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Fat_south.png",
+"role": "worn",
+"had": 4.07,
+"added": 2.13,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Female_east.png",
+"role": "worn",
+"had": 4.18,
+"added": 2.02,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Female_north.png",
+"role": "worn",
+"had": 3.48,
+"added": 2.72,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Female_south.png",
+"role": "worn",
+"had": 3.5,
+"added": 2.7,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Hulk_east.png",
+"role": "worn",
+"had": 5.1,
+"added": 1.1,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Hulk_north.png",
+"role": "worn",
+"had": 4.24,
+"added": 1.96,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Hulk_south.png",
+"role": "worn",
+"had": 4.25,
+"added": 1.95,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Male_east.png",
+"role": "worn",
+"had": 4.01,
+"added": 2.19,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Male_north.png",
+"role": "worn",
+"had": 3.49,
+"added": 2.71,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Male_south.png",
+"role": "worn",
+"had": 3.49,
+"added": 2.71,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Thin_east.png",
+"role": "worn",
+"had": 3.74,
+"added": 2.46,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Thin_north.png",
+"role": "worn",
+"had": 2.84,
+"added": 3.36,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Thin_south.png",
+"role": "worn",
+"had": 2.83,
+"added": 3.37,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Fat_east.png",
+"role": "worn",
+"had": 2.76,
+"added": 3.44,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Fat_north.png",
+"role": "worn",
+"had": 2.38,
+"added": 3.82,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Fat_south.png",
+"role": "worn",
+"had": 2.74,
+"added": 3.46,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Female_east.png",
+"role": "worn",
+"had": 2.91,
+"added": 3.29,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Female_north.png",
+"role": "worn",
+"had": 2.67,
+"added": 3.53,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Female_south.png",
+"role": "worn",
+"had": 2.71,
+"added": 3.49,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Hulk_east.png",
+"role": "worn",
+"had": 2.94,
+"added": 3.26,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Hulk_north.png",
+"role": "worn",
+"had": 2.92,
+"added": 3.28,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Hulk_south.png",
+"role": "worn",
+"had": 2.97,
+"added": 3.23,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Icon.png",
+"role": "icon",
+"had": 2.31,
+"added": 1.69,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Male_east.png",
+"role": "worn",
+"had": 2.84,
+"added": 3.36,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Male_north.png",
+"role": "worn",
+"had": 2.42,
+"added": 3.78,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Male_south.png",
+"role": "worn",
+"had": 2.65,
+"added": 3.55,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Thin_east.png",
+"role": "worn",
+"had": 2.87,
+"added": 3.33,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Thin_north.png",
+"role": "worn",
+"had": 2.33,
+"added": 3.87,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Thin_south.png",
+"role": "worn",
+"had": 2.33,
+"added": 3.87,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\EmberRivetHelm\\EmberRivetHelm_Icon.png",
+"role": "icon",
+"had": 3.7,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\EmberRivetHelm\\EmberRivetHelm_east.png",
+"role": "worn",
+"had": 3.63,
+"added": 2.57,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\EmberRivetHelm\\EmberRivetHelm_north.png",
+"role": "worn",
+"had": 3.63,
+"added": 2.57,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\EmberRivetHelm\\EmberRivetHelm_south.png",
+"role": "worn",
+"had": 3.61,
+"added": 2.59,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Fat_east.png",
+"role": "worn",
+"had": 4.45,
+"added": 1.75,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Fat_north.png",
+"role": "worn",
+"had": 3.87,
+"added": 2.33,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Fat_south.png",
+"role": "worn",
+"had": 4.1,
+"added": 2.1,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Female_east.png",
+"role": "worn",
+"had": 3.85,
+"added": 2.35,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Female_north.png",
+"role": "worn",
+"had": 3.64,
+"added": 2.56,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Female_south.png",
+"role": "worn",
+"had": 3.59,
+"added": 2.61,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Hulk_east.png",
+"role": "worn",
+"had": 4.51,
+"added": 1.69,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Hulk_north.png",
+"role": "worn",
+"had": 4.3,
+"added": 1.9,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Hulk_south.png",
+"role": "worn",
+"had": 4.31,
+"added": 1.89,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Male_east.png",
+"role": "worn",
+"had": 3.76,
+"added": 2.44,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Male_north.png",
+"role": "worn",
+"had": 3.59,
+"added": 2.61,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Male_south.png",
+"role": "worn",
+"had": 3.58,
+"added": 2.62,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Thin_east.png",
+"role": "worn",
+"had": 3.53,
+"added": 2.67,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Thin_north.png",
+"role": "worn",
+"had": 3.01,
+"added": 3.19,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Thin_south.png",
+"role": "worn",
+"had": 3.01,
+"added": 3.19,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\GithCrestedHelm\\GithCrestedHelm_Icon.png",
+"role": "icon",
+"had": 2.69,
+"added": 1.31,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\GithCrestedHelm\\GithCrestedHelm_east.png",
+"role": "worn",
+"had": 3.17,
+"added": 3.03,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\GithCrestedHelm\\GithCrestedHelm_north.png",
+"role": "worn",
+"had": 3.18,
+"added": 3.02,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\GithCrestedHelm\\GithCrestedHelm_south.png",
+"role": "worn",
+"had": 3.09,
+"added": 3.11,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\GreatHelmOath\\GreatHelmOath_Icon.png",
+"role": "icon",
+"had": 3.1,
+"added": 0.9,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\GreatHelmOath\\GreatHelmOath_east.png",
+"role": "worn",
+"had": 3.37,
+"added": 2.83,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\GreatHelmOath\\GreatHelmOath_north.png",
+"role": "worn",
+"had": 3.17,
+"added": 3.03,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\GreatHelmOath\\GreatHelmOath_south.png",
+"role": "worn",
+"had": 3.4,
+"added": 2.8,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Fat_east.png",
+"role": "worn",
+"had": 3.48,
+"added": 2.72,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Fat_north.png",
+"role": "worn",
+"had": 3.2,
+"added": 3.0,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Fat_south.png",
+"role": "worn",
+"had": 3.12,
+"added": 3.08,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Female_east.png",
+"role": "worn",
+"had": 3.75,
+"added": 2.45,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Female_north.png",
+"role": "worn",
+"had": 3.24,
+"added": 2.96,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Female_south.png",
+"role": "worn",
+"had": 3.21,
+"added": 2.99,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Hulk_east.png",
+"role": "worn",
+"had": 3.5,
+"added": 2.7,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Hulk_north.png",
+"role": "worn",
+"had": 3.03,
+"added": 3.17,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Hulk_south.png",
+"role": "worn",
+"had": 2.95,
+"added": 3.25,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Icon.png",
+"role": "icon",
+"had": 2.74,
+"added": 1.26,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Male_east.png",
+"role": "worn",
+"had": 3.57,
+"added": 2.63,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Male_north.png",
+"role": "worn",
+"had": 3.25,
+"added": 2.95,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Male_south.png",
+"role": "worn",
+"had": 3.24,
+"added": 2.96,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Thin_east.png",
+"role": "worn",
+"had": 3.35,
+"added": 2.85,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Thin_north.png",
+"role": "worn",
+"had": 2.73,
+"added": 3.47,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Thin_south.png",
+"role": "worn",
+"had": 2.67,
+"added": 3.53,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\HelmRestlessDead\\HelmRestlessDead_Icon.png",
+"role": "icon",
+"had": 4.67,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\HelmRestlessDead\\HelmRestlessDead_east.png",
+"role": "worn",
+"had": 5.18,
+"added": 1.02,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\HelmRestlessDead\\HelmRestlessDead_north.png",
+"role": "worn",
+"had": 5.66,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\HelmRestlessDead\\HelmRestlessDead_south.png",
+"role": "worn",
+"had": 5.5,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Fat_east.png",
+"role": "worn",
+"had": 3.61,
+"added": 2.59,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Fat_north.png",
+"role": "worn",
+"had": 3.68,
+"added": 2.52,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Fat_south.png",
+"role": "worn",
+"had": 3.72,
+"added": 2.48,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Female_east.png",
+"role": "worn",
+"had": 3.51,
+"added": 2.69,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Female_north.png",
+"role": "worn",
+"had": 3.67,
+"added": 2.53,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Female_south.png",
+"role": "worn",
+"had": 3.72,
+"added": 2.48,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Hulk_east.png",
+"role": "worn",
+"had": 3.5,
+"added": 2.7,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Hulk_north.png",
+"role": "worn",
+"had": 3.5,
+"added": 2.7,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Hulk_south.png",
+"role": "worn",
+"had": 3.47,
+"added": 2.73,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Icon.png",
+"role": "icon",
+"had": 3.17,
+"added": 0.83,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Male_east.png",
+"role": "worn",
+"had": 3.49,
+"added": 2.71,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Male_north.png",
+"role": "worn",
+"had": 3.62,
+"added": 2.58,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Male_south.png",
+"role": "worn",
+"had": 3.73,
+"added": 2.47,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Thin_east.png",
+"role": "worn",
+"had": 3.12,
+"added": 3.08,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Thin_north.png",
+"role": "worn",
+"had": 3.03,
+"added": 3.17,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Thin_south.png",
+"role": "worn",
+"had": 3.01,
+"added": 3.19,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Fat_east.png",
+"role": "worn",
+"had": 3.8,
+"added": 2.4,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Fat_north.png",
+"role": "worn",
+"had": 3.65,
+"added": 2.55,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Fat_south.png",
+"role": "worn",
+"had": 3.71,
+"added": 2.49,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Female_east.png",
+"role": "worn",
+"had": 4.19,
+"added": 2.01,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Female_north.png",
+"role": "worn",
+"had": 3.6,
+"added": 2.6,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Female_south.png",
+"role": "worn",
+"had": 3.7,
+"added": 2.5,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Hulk_east.png",
+"role": "worn",
+"had": 4.15,
+"added": 2.05,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Hulk_north.png",
+"role": "worn",
+"had": 3.56,
+"added": 2.64,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Hulk_south.png",
+"role": "worn",
+"had": 3.62,
+"added": 2.58,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Icon.png",
+"role": "icon",
+"had": 3.02,
+"added": 0.98,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Male_east.png",
+"role": "worn",
+"had": 3.91,
+"added": 2.29,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Male_north.png",
+"role": "worn",
+"had": 3.65,
+"added": 2.55,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Male_south.png",
+"role": "worn",
+"had": 3.79,
+"added": 2.41,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Thin_east.png",
+"role": "worn",
+"had": 3.71,
+"added": 2.49,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Thin_north.png",
+"role": "worn",
+"had": 3.01,
+"added": 3.19,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Thin_south.png",
+"role": "worn",
+"had": 3.08,
+"added": 3.12,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Fat_east.png",
+"role": "worn",
+"had": 3.93,
+"added": 2.27,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Fat_north.png",
+"role": "worn",
+"had": 3.49,
+"added": 2.71,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Fat_south.png",
+"role": "worn",
+"had": 3.59,
+"added": 2.61,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Female_east.png",
+"role": "worn",
+"had": 3.39,
+"added": 2.81,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Female_north.png",
+"role": "worn",
+"had": 3.04,
+"added": 3.16,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Female_south.png",
+"role": "worn",
+"had": 3.14,
+"added": 3.06,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Hulk_east.png",
+"role": "worn",
+"had": 4.08,
+"added": 2.12,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Hulk_north.png",
+"role": "worn",
+"had": 3.73,
+"added": 2.47,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Hulk_south.png",
+"role": "worn",
+"had": 3.8,
+"added": 2.4,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Icon.png",
+"role": "icon",
+"had": 2.81,
+"added": 1.19,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Male_east.png",
+"role": "worn",
+"had": 3.19,
+"added": 3.01,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Male_north.png",
+"role": "worn",
+"had": 3.08,
+"added": 3.12,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Male_south.png",
+"role": "worn",
+"had": 3.08,
+"added": 3.12,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Thin_east.png",
+"role": "worn",
+"had": 3.05,
+"added": 3.15,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Thin_north.png",
+"role": "worn",
+"had": 2.71,
+"added": 3.49,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Thin_south.png",
+"role": "worn",
+"had": 2.76,
+"added": 3.44,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\MinotaurHornHelm\\MinotaurHornHelm_east.png",
+"role": "worn",
+"had": 3.83,
+"added": 2.37,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\MinotaurHornHelm\\MinotaurHornHelm_north.png",
+"role": "worn",
+"had": 3.93,
+"added": 2.27,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\MinotaurHornHelm\\MinotaurHornHelm_south.png",
+"role": "worn",
+"had": 3.89,
+"added": 2.31,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Fat_east.png",
+"role": "worn",
+"had": 3.7,
+"added": 2.5,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Fat_north.png",
+"role": "worn",
+"had": 3.52,
+"added": 2.68,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Fat_south.png",
+"role": "worn",
+"had": 3.53,
+"added": 2.67,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Female_east.png",
+"role": "worn",
+"had": 4.15,
+"added": 2.05,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Female_north.png",
+"role": "worn",
+"had": 3.62,
+"added": 2.58,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Female_south.png",
+"role": "worn",
+"had": 3.6,
+"added": 2.6,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Hulk_east.png",
+"role": "worn",
+"had": 4.16,
+"added": 2.04,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Hulk_north.png",
+"role": "worn",
+"had": 3.47,
+"added": 2.73,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Hulk_south.png",
+"role": "worn",
+"had": 3.4,
+"added": 2.8,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Icon.png",
+"role": "icon",
+"had": 2.95,
+"added": 1.05,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Male_east.png",
+"role": "worn",
+"had": 3.99,
+"added": 2.21,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Male_north.png",
+"role": "worn",
+"had": 3.57,
+"added": 2.63,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Male_south.png",
+"role": "worn",
+"had": 3.61,
+"added": 2.59,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Thin_east.png",
+"role": "worn",
+"had": 3.72,
+"added": 2.48,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Thin_north.png",
+"role": "worn",
+"had": 2.91,
+"added": 3.29,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Thin_south.png",
+"role": "worn",
+"had": 2.92,
+"added": 3.28,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Fat_east.png",
+"role": "worn",
+"had": 4.14,
+"added": 2.06,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Fat_north.png",
+"role": "worn",
+"had": 3.75,
+"added": 2.45,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Fat_south.png",
+"role": "worn",
+"had": 3.7,
+"added": 2.5,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Female_east.png",
+"role": "worn",
+"had": 3.55,
+"added": 2.65,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Female_north.png",
+"role": "worn",
+"had": 3.55,
+"added": 2.65,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Female_south.png",
+"role": "worn",
+"had": 3.29,
+"added": 2.91,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Hulk_east.png",
+"role": "worn",
+"had": 4.16,
+"added": 2.04,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Hulk_north.png",
+"role": "worn",
+"had": 3.92,
+"added": 2.28,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Hulk_south.png",
+"role": "worn",
+"had": 3.9,
+"added": 2.3,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Icon.png",
+"role": "icon",
+"had": 3.09,
+"added": 0.91,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Male_east.png",
+"role": "worn",
+"had": 3.45,
+"added": 2.75,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Male_north.png",
+"role": "worn",
+"had": 3.27,
+"added": 2.93,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Male_south.png",
+"role": "worn",
+"had": 3.22,
+"added": 2.98,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Thin_east.png",
+"role": "worn",
+"had": 3.18,
+"added": 3.02,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Thin_north.png",
+"role": "worn",
+"had": 3.03,
+"added": 3.17,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Thin_south.png",
+"role": "worn",
+"had": 3.05,
+"added": 3.15,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Fat_east.png",
+"role": "worn",
+"had": 5.5,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Fat_north.png",
+"role": "worn",
+"had": 5.2,
+"added": 1.0,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Fat_south.png",
+"role": "worn",
+"had": 5.21,
+"added": 0.99,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Female_east.png",
+"role": "worn",
+"had": 5.12,
+"added": 1.08,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Female_north.png",
+"role": "worn",
+"had": 5.16,
+"added": 1.04,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Female_south.png",
+"role": "worn",
+"had": 5.19,
+"added": 1.01,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Hulk_east.png",
+"role": "worn",
+"had": 5.31,
+"added": 0.89,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Hulk_north.png",
+"role": "worn",
+"had": 5.15,
+"added": 1.05,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Hulk_south.png",
+"role": "worn",
+"had": 5.17,
+"added": 1.03,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Icon.png",
+"role": "icon",
+"had": 4.15,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Male_east.png",
+"role": "worn",
+"had": 5.12,
+"added": 1.08,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Male_north.png",
+"role": "worn",
+"had": 5.14,
+"added": 1.06,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Male_south.png",
+"role": "worn",
+"had": 5.16,
+"added": 1.04,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Thin_east.png",
+"role": "worn",
+"had": 5.12,
+"added": 1.08,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Thin_north.png",
+"role": "worn",
+"had": 5.11,
+"added": 1.09,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Thin_south.png",
+"role": "worn",
+"had": 5.14,
+"added": 1.06,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Fat_east.png",
+"role": "worn",
+"had": 4.33,
+"added": 1.87,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Fat_north.png",
+"role": "worn",
+"had": 3.8,
+"added": 2.4,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Fat_south.png",
+"role": "worn",
+"had": 3.93,
+"added": 2.27,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Female_east.png",
+"role": "worn",
+"had": 3.73,
+"added": 2.47,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Female_north.png",
+"role": "worn",
+"had": 3.16,
+"added": 3.04,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Female_south.png",
+"role": "worn",
+"had": 3.26,
+"added": 2.94,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Hulk_east.png",
+"role": "worn",
+"had": 4.43,
+"added": 1.77,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Hulk_north.png",
+"role": "worn",
+"had": 3.98,
+"added": 2.22,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Hulk_south.png",
+"role": "worn",
+"had": 4.08,
+"added": 2.12,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Icon.png",
+"role": "icon",
+"had": 3.07,
+"added": 0.93,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Male_east.png",
+"role": "worn",
+"had": 3.62,
+"added": 2.58,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Male_north.png",
+"role": "worn",
+"had": 3.19,
+"added": 3.01,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Male_south.png",
+"role": "worn",
+"had": 3.26,
+"added": 2.94,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Thin_east.png",
+"role": "worn",
+"had": 3.5,
+"added": 2.7,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Thin_north.png",
+"role": "worn",
+"had": 2.82,
+"added": 3.38,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Thin_south.png",
+"role": "worn",
+"had": 2.93,
+"added": 3.27,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Fat_east.png",
+"role": "worn",
+"had": 3.64,
+"added": 2.56,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Fat_north.png",
+"role": "worn",
+"had": 3.55,
+"added": 2.65,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Fat_south.png",
+"role": "worn",
+"had": 3.58,
+"added": 2.62,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Female_east.png",
+"role": "worn",
+"had": 3.82,
+"added": 2.38,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Female_north.png",
+"role": "worn",
+"had": 3.72,
+"added": 2.48,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Female_south.png",
+"role": "worn",
+"had": 3.71,
+"added": 2.49,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Hulk_east.png",
+"role": "worn",
+"had": 3.67,
+"added": 2.53,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Hulk_north.png",
+"role": "worn",
+"had": 3.27,
+"added": 2.93,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Hulk_south.png",
+"role": "worn",
+"had": 3.34,
+"added": 2.86,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Icon.png",
+"role": "icon",
+"had": 2.96,
+"added": 1.04,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Male_east.png",
+"role": "worn",
+"had": 3.7,
+"added": 2.5,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Male_north.png",
+"role": "worn",
+"had": 3.66,
+"added": 2.54,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Male_south.png",
+"role": "worn",
+"had": 3.68,
+"added": 2.52,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Thin_east.png",
+"role": "worn",
+"had": 3.51,
+"added": 2.69,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Thin_north.png",
+"role": "worn",
+"had": 3.07,
+"added": 3.13,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Thin_south.png",
+"role": "worn",
+"had": 3.04,
+"added": 3.16,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RogueMask\\RogueMask_Icon.png",
+"role": "icon",
+"had": 4.0,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RogueMask\\RogueMask_east.png",
+"role": "worn",
+"had": 3.12,
+"added": 3.08,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RogueMask\\RogueMask_north.png",
+"role": "worn",
+"had": 2.88,
+"added": 3.32,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\RogueMask\\RogueMask_south.png",
+"role": "worn",
+"had": 3.43,
+"added": 2.77,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Fat_east.png",
+"role": "worn",
+"had": 3.56,
+"added": 2.64,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Fat_north.png",
+"role": "worn",
+"had": 3.12,
+"added": 3.08,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Fat_south.png",
+"role": "worn",
+"had": 3.48,
+"added": 2.72,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Female_east.png",
+"role": "worn",
+"had": 3.8,
+"added": 2.4,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Female_north.png",
+"role": "worn",
+"had": 3.15,
+"added": 3.05,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Female_south.png",
+"role": "worn",
+"had": 3.29,
+"added": 2.91,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Hulk_east.png",
+"role": "worn",
+"had": 3.62,
+"added": 2.58,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Hulk_north.png",
+"role": "worn",
+"had": 2.98,
+"added": 3.22,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Hulk_south.png",
+"role": "worn",
+"had": 3.03,
+"added": 3.17,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Icon.png",
+"role": "icon",
+"had": 2.8,
+"added": 1.2,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Male_east.png",
+"role": "worn",
+"had": 3.73,
+"added": 2.47,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Male_north.png",
+"role": "worn",
+"had": 3.2,
+"added": 3.0,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Male_south.png",
+"role": "worn",
+"had": 3.54,
+"added": 2.66,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Thin_east.png",
+"role": "worn",
+"had": 3.25,
+"added": 2.95,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Thin_north.png",
+"role": "worn",
+"had": 2.62,
+"added": 3.58,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Thin_south.png",
+"role": "worn",
+"had": 2.82,
+"added": 3.38,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Fat_east.png",
+"role": "worn",
+"had": 2.91,
+"added": 3.29,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Fat_north.png",
+"role": "worn",
+"had": 2.9,
+"added": 3.3,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Fat_south.png",
+"role": "worn",
+"had": 2.92,
+"added": 3.28,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Female_east.png",
+"role": "worn",
+"had": 2.97,
+"added": 3.23,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Female_north.png",
+"role": "worn",
+"had": 2.98,
+"added": 3.22,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Female_south.png",
+"role": "worn",
+"had": 3.03,
+"added": 3.17,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Hulk_east.png",
+"role": "worn",
+"had": 3.09,
+"added": 3.11,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Hulk_north.png",
+"role": "worn",
+"had": 3.15,
+"added": 3.05,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Hulk_south.png",
+"role": "worn",
+"had": 3.16,
+"added": 3.04,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Icon.png",
+"role": "icon",
+"had": 2.4,
+"added": 1.6,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Male_east.png",
+"role": "worn",
+"had": 2.84,
+"added": 3.36,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Male_north.png",
+"role": "worn",
+"had": 2.89,
+"added": 3.31,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Male_south.png",
+"role": "worn",
+"had": 2.89,
+"added": 3.31,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Thin_east.png",
+"role": "worn",
+"had": 2.8,
+"added": 3.4,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Thin_north.png",
+"role": "worn",
+"had": 2.61,
+"added": 3.59,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Thin_south.png",
+"role": "worn",
+"had": 2.66,
+"added": 3.54,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\WizardHat\\WizardHat_Icon.png",
+"role": "icon",
+"had": 4.04,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\WizardHat\\WizardHat_east.png",
+"role": "worn",
+"had": 5.02,
+"added": 1.18,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\WizardHat\\WizardHat_north.png",
+"role": "worn",
+"had": 5.03,
+"added": 1.17,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\WizardHat\\WizardHat_south.png",
+"role": "worn",
+"had": 5.02,
+"added": 1.18,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Fat_east.png",
+"role": "worn",
+"had": 3.7,
+"added": 2.5,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Fat_north.png",
+"role": "worn",
+"had": 3.97,
+"added": 2.23,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Fat_south.png",
+"role": "worn",
+"had": 3.66,
+"added": 2.54,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Female_east.png",
+"role": "worn",
+"had": 3.66,
+"added": 2.54,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Female_north.png",
+"role": "worn",
+"had": 3.92,
+"added": 2.28,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Female_south.png",
+"role": "worn",
+"had": 3.7,
+"added": 2.5,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Hulk_east.png",
+"role": "worn",
+"had": 3.56,
+"added": 2.64,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Hulk_north.png",
+"role": "worn",
+"had": 3.98,
+"added": 2.22,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Hulk_south.png",
+"role": "worn",
+"had": 3.71,
+"added": 2.49,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Icon.png",
+"role": "icon",
+"had": 3.06,
+"added": 0.94,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Male_east.png",
+"role": "worn",
+"had": 3.57,
+"added": 2.63,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Male_north.png",
+"role": "worn",
+"had": 3.94,
+"added": 2.26,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Male_south.png",
+"role": "worn",
+"had": 3.71,
+"added": 2.49,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Thin_east.png",
+"role": "worn",
+"had": 3.21,
+"added": 2.99,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Thin_north.png",
+"role": "worn",
+"had": 3.02,
+"added": 3.18,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Thin_south.png",
+"role": "worn",
+"had": 2.99,
+"added": 3.21,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Nonlethal\\NetCrossbow.png",
+"role": "weapon",
+"had": 2.18,
+"added": 0.42,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Nonlethal\\SleepBow.png",
+"role": "weapon",
+"had": 1.68,
+"added": 0.92,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Nonlethal\\SleepDustPouch.png",
+"role": "weapon",
+"had": 2.8,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Nonlethal\\SleepStaff.png",
+"role": "weapon",
+"had": 4.92,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Nonlethal\\SubduingCudgel.png",
+"role": "weapon",
+"had": 2.37,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Weapons\\Doom.png",
+"role": "weapon",
+"had": 11.19,
+"added": 0.0,
+"hd": true
+},
+{
+"file": "Textures\\LP\\Weapons\\FireStaff.png",
+"role": "weapon",
+"had": 6.11,
+"added": 0.0,
+"hd": true
+},
+{
+"file": "Textures\\LP\\Weapons\\FrostStaff.png",
+"role": "weapon",
+"had": 2.28,
+"added": 0.0,
+"hd": true
+},
+{
+"file": "Textures\\LP\\Weapons\\HammerCannon.png",
+"role": "weapon",
+"had": 3.01,
+"added": 0.0,
+"hd": true
+},
+{
+"file": "Textures\\LP\\Weapons\\LavaPiercer.png",
+"role": "weapon",
+"had": 9.98,
+"added": 0.0,
+"hd": true
+},
+{
+"file": "Textures\\LP\\Weapons\\Legacy\\Bow.png",
+"role": "weapon",
+"had": 1.98,
+"added": 0.62,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Weapons\\Legacy\\Hammer.png",
+"role": "weapon",
+"had": 3.15,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Weapons\\Legacy\\Staff.png",
+"role": "weapon",
+"had": 5.0,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Weapons\\Legacy\\Sword.png",
+"role": "weapon",
+"had": 2.31,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\LP\\Weapons\\MissileStaff.png",
+"role": "weapon",
+"had": 3.05,
+"added": 0.0,
+"hd": true
+},
+{
+"file": "Textures\\LP\\Weapons\\MountainWrath.png",
+"role": "weapon",
+"had": 3.61,
+"added": 0.0,
+"hd": true
+},
+{
+"file": "Textures\\LP\\Weapons\\RunicMusket.png",
+"role": "weapon",
+"had": 3.61,
+"added": 0.0,
+"hd": true
+},
+{
+"file": "Textures\\LP\\Weapons\\RunicPistol.png",
+"role": "weapon",
+"had": 2.98,
+"added": 0.0,
+"hd": true
+},
+{
+"file": "Textures\\LP\\Weapons\\RunicRepeater.png",
+"role": "weapon",
+"had": 3.01,
+"added": 0.0,
+"hd": true
+},
+{
+"file": "Textures\\LP\\Weapons\\SilverPistol.png",
+"role": "weapon",
+"had": 2.33,
+"added": 0.0,
+"hd": true
+},
+{
+"file": "Textures\\LP\\Weapons\\Skyfire.png",
+"role": "weapon",
+"had": 2.9,
+"added": 0.0,
+"hd": true
+},
+{
+"file": "Textures\\LP\\Weapons\\ThunderGun.png",
+"role": "weapon",
+"had": 2.59,
+"added": 0.0,
+"hd": true
+},
+{
+"file": "Textures\\LegendaryMonsters\\Items\\AntiMagicAmulet.png",
+"role": "icon",
+"had": 12.58,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\LegendaryMonsters\\Items\\HellfireOrb.png",
+"role": "weapon",
+"had": 5.38,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\MinotaurGith\\Weapons\\SilverSword.png",
+"role": "weapon",
+"had": 2.1,
+"added": 0.5,
+"hd": false
+},
+{
+"file": "Textures\\Oozefolk\\Items\\StabilizerBand.png",
+"role": "icon",
+"had": 2.75,
+"added": 1.25,
+"hd": false
+},
+{
+"file": "Textures\\Pact\\Apparel\\CelestialMantle\\CelestialMantle_Fat_east.png",
+"role": "worn",
+"had": 2.02,
+"added": 1.08,
+"hd": false
+},
+{
+"file": "Textures\\Pact\\Apparel\\CelestialMantle\\CelestialMantle_Fat_north.png",
+"role": "worn",
+"had": 1.81,
+"added": 1.29,
+"hd": false
+},
+{
+"file": "Textures\\Pact\\Apparel\\CelestialMantle\\CelestialMantle_Fat_south.png",
+"role": "worn",
+"had": 2.17,
+"added": 0.93,
+"hd": false
+},
+{
+"file": "Textures\\Pact\\Apparel\\CelestialMantle\\CelestialMantle_Female_east.png",
+"role": "worn",
+"had": 2.06,
+"added": 1.04,
+"hd": false
+},
+{
+"file": "Textures\\Pact\\Apparel\\CelestialMantle\\CelestialMantle_Female_north.png",
+"role": "worn",
+"had": 1.93,
+"added": 1.17,
+"hd": false
+},
+{
+"file": "Textures\\Pact\\Apparel\\CelestialMantle\\CelestialMantle_Female_south.png",
+"role": "worn",
+"had": 2.15,
+"added": 0.95,
+"hd": false
+},
+{
+"file": "Textures\\Pact\\Apparel\\CelestialMantle\\CelestialMantle_Hulk_east.png",
+"role": "worn",
+"had": 1.97,
+"added": 1.13,
+"hd": false
+},
+{
+"file": "Textures\\Pact\\Apparel\\CelestialMantle\\CelestialMantle_Hulk_north.png",
+"role": "worn",
+"had": 1.89,
+"added": 1.21,
+"hd": false
+},
+{
+"file": "Textures\\Pact\\Apparel\\CelestialMantle\\CelestialMantle_Hulk_south.png",
+"role": "worn",
+"had": 2.14,
+"added": 0.96,
+"hd": false
+},
+{
+"file": "Textures\\Pact\\Apparel\\CelestialMantle\\CelestialMantle_Male_east.png",
+"role": "worn",
+"had": 2.09,
+"added": 1.01,
+"hd": false
+},
+{
+"file": "Textures\\Pact\\Apparel\\CelestialMantle\\CelestialMantle_Male_north.png",
+"role": "worn",
+"had": 1.98,
+"added": 1.12,
+"hd": false
+},
+{
+"file": "Textures\\Pact\\Apparel\\CelestialMantle\\CelestialMantle_Male_south.png",
+"role": "worn",
+"had": 2.14,
+"added": 0.96,
+"hd": false
+},
+{
+"file": "Textures\\Pact\\Apparel\\CelestialMantle\\CelestialMantle_Thin_east.png",
+"role": "worn",
+"had": 2.01,
+"added": 1.09,
+"hd": false
+},
+{
+"file": "Textures\\Pact\\Apparel\\CelestialMantle\\CelestialMantle_Thin_north.png",
+"role": "worn",
+"had": 2.01,
+"added": 1.09,
+"hd": false
+},
+{
+"file": "Textures\\Pact\\Apparel\\CelestialMantle\\CelestialMantle_Thin_south.png",
+"role": "worn",
+"had": 2.21,
+"added": 0.89,
+"hd": false
+},
+{
+"file": "Textures\\Pact\\Items\\CelestialMantle.png",
+"role": "icon",
+"had": 3.21,
+"added": 0.79,
+"hd": false
+},
+{
+"file": "Textures\\Pact\\Items\\EntanglingRope.png",
+"role": "icon",
+"had": 1.87,
+"added": 2.13,
+"hd": false
+},
+{
+"file": "Textures\\Pact\\Items\\FeySilverBow.png",
+"role": "weapon",
+"had": 1.62,
+"added": 0.98,
+"hd": false
+},
+{
+"file": "Textures\\Pact\\Items\\InfernalPitchfork.png",
+"role": "weapon",
+"had": 6.43,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Races124\\Items\\BalorWhip.png",
+"role": "weapon",
+"had": 3.0,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Races124\\Items\\EmpyreanBlade.png",
+"role": "weapon",
+"had": 0.49,
+"added": 1.6,
+"hd": false
+},
+{
+"file": "Textures\\Races124\\Items\\FeatherCloak.png",
+"role": "icon",
+"had": 2.71,
+"added": 1.29,
+"hd": false
+},
+{
+"file": "Textures\\Races124\\Items\\FocusAir.png",
+"role": "icon",
+"had": 2.66,
+"added": 1.34,
+"hd": false
+},
+{
+"file": "Textures\\Races124\\Items\\FocusEarth.png",
+"role": "icon",
+"had": 3.12,
+"added": 0.88,
+"hd": false
+},
+{
+"file": "Textures\\Races124\\Items\\FocusFire.png",
+"role": "icon",
+"had": 2.99,
+"added": 1.01,
+"hd": false
+},
+{
+"file": "Textures\\Races124\\Items\\FocusWater.png",
+"role": "icon",
+"had": 3.07,
+"added": 0.93,
+"hd": false
+},
+{
+"file": "Textures\\Races124\\Items\\FrostSpear.png",
+"role": "weapon",
+"had": 2.05,
+"added": 0.55,
+"hd": false
+},
+{
+"file": "Textures\\Races124\\Items\\IvoryHorn.png",
+"role": "icon",
+"had": 2.49,
+"added": 1.51,
+"hd": false
+},
+{
+"file": "Textures\\Races124\\Items\\OgreClub.png",
+"role": "weapon",
+"had": 2.32,
+"added": 0.0,
+"hd": false
+},
+{
+"file": "Textures\\Races124\\Items\\Worn\\FeatherCloak_Fat_east.png",
+"role": "worn",
+"had": 1.98,
+"added": 1.12,
+"hd": false
+},
+{
+"file": "Textures\\Races124\\Items\\Worn\\FeatherCloak_Fat_north.png",
+"role": "worn",
+"had": 1.78,
+"added": 1.32,
+"hd": false
+},
+{
+"file": "Textures\\Races124\\Items\\Worn\\FeatherCloak_Fat_south.png",
+"role": "worn",
+"had": 2.15,
+"added": 0.95,
+"hd": false
+},
+{
+"file": "Textures\\Races124\\Items\\Worn\\FeatherCloak_Female_east.png",
+"role": "worn",
+"had": 2.01,
+"added": 1.09,
+"hd": false
+},
+{
+"file": "Textures\\Races124\\Items\\Worn\\FeatherCloak_Female_north.png",
+"role": "worn",
+"had": 1.91,
+"added": 1.19,
+"hd": false
+},
+{
+"file": "Textures\\Races124\\Items\\Worn\\FeatherCloak_Female_south.png",
+"role": "worn",
+"had": 2.11,
+"added": 0.99,
+"hd": false
+},
+{
+"file": "Textures\\Races124\\Items\\Worn\\FeatherCloak_Hulk_east.png",
+"role": "worn",
+"had": 1.95,
+"added": 1.15,
+"hd": false
+},
+{
+"file": "Textures\\Races124\\Items\\Worn\\FeatherCloak_Hulk_north.png",
+"role": "worn",
+"had": 1.88,
+"added": 1.22,
+"hd": false
+},
+{
+"file": "Textures\\Races124\\Items\\Worn\\FeatherCloak_Hulk_south.png",
+"role": "worn",
+"had": 2.1,
+"added": 1.0,
+"hd": false
+},
+{
+"file": "Textures\\Races124\\Items\\Worn\\FeatherCloak_Male_east.png",
+"role": "worn",
+"had": 2.05,
+"added": 1.05,
+"hd": false
+},
+{
+"file": "Textures\\Races124\\Items\\Worn\\FeatherCloak_Male_north.png",
+"role": "worn",
+"had": 1.93,
+"added": 1.17,
+"hd": false
+},
+{
+"file": "Textures\\Races124\\Items\\Worn\\FeatherCloak_Male_south.png",
+"role": "worn",
+"had": 2.08,
+"added": 1.02,
+"hd": false
+},
+{
+"file": "Textures\\Races124\\Items\\Worn\\FeatherCloak_Thin_east.png",
+"role": "worn",
+"had": 1.98,
+"added": 1.12,
+"hd": false
+},
+{
+"file": "Textures\\Races124\\Items\\Worn\\FeatherCloak_Thin_north.png",
+"role": "worn",
+"had": 2.01,
+"added": 1.09,
+"hd": false
+},
+{
+"file": "Textures\\Races124\\Items\\Worn\\FeatherCloak_Thin_south.png",
+"role": "worn",
+"had": 2.17,
+"added": 0.93,
+"hd": false
+}
+]

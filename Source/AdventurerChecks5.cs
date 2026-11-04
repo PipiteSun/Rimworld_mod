@@ -18,6 +18,9 @@ namespace LichPhylactery {
   }
   void CheckAdventurerStage5(){
    var s=LichMod.Settings;bool oAff=s.adventurerAffinity,oL=s.adventurerLegend,oAuto=s.adventurerLegendAuto;bool oStrip=Talents.StripAll;
+   // 2026-11-03 热修：-Only AdventurerStage5 单独跑时没有 CheckAdventurer 的开关准备，冒险者被测试压制、Get 返回 null；这里自己补上，结束时还原并清掉造的人。
+   bool standalone=Adventurer.TestSuppressed||!s.adventurer;bool oSup=Adventurer.TestSuppressed,oOn=s.adventurer,oAsi=s.adventurerAutoASI,oCo=s.adventurerIsekaiCoexist;int oXp=s.adventurerXpPercent,oFx=s.adventurerEffectPercent;
+   if(standalone){Adventurer.TestSuppressed=false;s.adventurer=true;s.adventurerAutoASI=false;s.adventurerXpPercent=100;s.adventurerEffectPercent=100;s.adventurerIsekaiCoexist=false;}
    s.adventurerAffinity=true;s.adventurerLegend=true;s.adventurerLegendAuto=false;
    try{
     // 1. 表：每个有种族加值的种族都有亲和条目；传奇种族分档
@@ -39,12 +42,12 @@ namespace LichPhylactery {
     var giant=AdvPawn(DefDatabase<XenotypeDef>.GetNamed("LP_FireGiant"));var hg=AdvAt(giant,10);hg.legendSpent[Legend.Health]=10;
     hg.scores[Adventurer.Con]=14;hg.Dirty();
     Check(hg.Affinity.key=="LP_FireGiant" && Near(Legend.HealthFactor(hg),1.35f) && Near(hg.AMod(Adventurer.Con),3.5f) && hg.Mod(Adventurer.Con)==2 && hg.Cap(Adventurer.Con)==20,"fire giant (legendary tier): legend health 10 = ×"+Legend.HealthFactor(hg).ToString("0.###")+", Con +2 counts as +3.5 for effects while the score/modifier/cap stay 14/+2/20");
-    // 5. HAR 双头巨人按种族 def 查表
+    // 5. 双头巨人（1.102.0 起是人类 + 异种型）按异种型查表
     var ettinKind=DefDatabase<PawnKindDef>.GetNamedSilentFail("LP_EttinColonist");
     if(ettinKind!=null){
      var ettin=PawnGenerator.GeneratePawn(new PawnGenerationRequest(ettinKind,Faction.OfPlayer,PawnGenerationContext.NonPlayer,-1,forceGenerateNewPawn:true,allowDead:false,allowDowned:false,canGeneratePawnRelations:false,mustBeCapableOfViolence:true,fixedBiologicalAge:25f,fixedChronologicalAge:25f));advMade.Add(ettin);
      var hx=Adventurer.Get(ettin);
-     Check(hx!=null && ettin.def.defName=="LP_Ettin" && hx.Affinity.key=="LP_Ettin" && hx.Affinity.legendary && Near(Affinity.ScoreMult(hx,Adventurer.Con),1.75f) && Near(Affinity.ScoreMult(hx,Adventurer.Int),.5f) && Near(Affinity.LegendMult(hx,Legend.Melee),1.75f),"HAR ettin uses the LP_Ettin race entry: Con ×1.75, Int ×0.5, legend melee ×1.75");
+     Check(hx!=null && ettin.def==ThingDefOf.Human && hx.Affinity.key=="LP_EttinKin" && hx.Affinity.legendary && Near(Affinity.ScoreMult(hx,Adventurer.Con),1.75f) && Near(Affinity.ScoreMult(hx,Adventurer.Int),.5f) && Near(Affinity.LegendMult(hx,Legend.Melee),1.75f),"ettin (human + LP_EttinKin xenotype, 1.102.0) uses the LP_EttinKin entry: Con ×1.75, Int ×0.5, legend melee ×1.75");
     }else Check(!ModsConfig.IsActive("erdelf.humanoidalienraces"),"HAR ettin affinity check skipped (HAR not loaded)");
     // 6. 设置关掉：全部 ×1；部位生命变少时伤口缩小
     s.adventurerAffinity=false;he.Dirty();hh.Dirty();
@@ -76,6 +79,10 @@ namespace LichPhylactery {
     Check(Near(xp,125f) && Near(Affinity.LegendMult(hmw,Legend.Health),1.5f) && Near(Affinity.LegendMult(hmw,Legend.Work),1.5f) && Affinity.LegendTag(hmw,Legend.Work)==" 擅长","凡人之志: 100 XP → "+xp+", every legend stat ×1.5 for a human (instead of ×1.1)");
    }finally{
     s.adventurerAffinity=oAff;s.adventurerLegend=oL;s.adventurerLegendAuto=oAuto;Talents.StripAll=oStrip;
+    if(standalone){
+     Adventurer.TestSuppressed=oSup;s.adventurer=oOn;s.adventurerAutoASI=oAsi;s.adventurerXpPercent=oXp;s.adventurerEffectPercent=oFx;s.adventurerIsekaiCoexist=oCo;
+     foreach(var p in advMade)if(!p.Destroyed)p.Destroy();advMade.Clear();
+    }
    }
   }
   void PrepareAffinitySave(Hediff_Adventurer h){

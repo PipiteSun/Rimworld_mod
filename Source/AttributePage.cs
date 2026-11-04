@@ -111,7 +111,7 @@ namespace LichPhylactery {
 
   // 有效值构成：基础（不超过上限）+ 上限之后的加值。
   public static string Composition(Hediff_Adventurer h,int a){
-   int b=h.scores[a],cap=h.Cap(a),feat=Feats.ScoreBonus(h,a),gift=CombatGifts.ScoreBonus(h,a),cls=ClassMartial2.ScoreBonus(h,a);
+   int b=h.scores[a],cap=h.Cap(a),feat=Feats.ScoreBonus(h,a),gift=CombatGifts.ScoreBonus(h,a),cls=ClassMartial2.ScoreBonus(h,a)+Subclass2.ScoreBonus(h,a);
    var s="基础 "+b+(b>cap?"（超过上限 "+cap+"，按 "+cap+" 算）":"（上限 "+cap+"）");
    if(feat>0)s+=" + 专长 "+feat;if(gift>0)s+=" + 武艺天赋 "+gift;if(cls>0)s+=" + 职业 "+cls;
    return s+" = 有效 "+h.Eff(a)+"　调整值 "+Adventurer.Signed(h.Mod(a))+"，调整值′ "+N(h.AMod(a))+(Math.Abs(Affinity.RaceMult(h,a)-1f)>.0001f && h.Mod(a)>0?"（× 种族 "+N(Affinity.RaceMult(h,a))+"）":"");

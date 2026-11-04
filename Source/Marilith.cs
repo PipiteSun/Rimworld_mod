@@ -9,9 +9,9 @@ using Verse.AI;
 using UnityEngine;
 
 namespace LichPhylactery {
- // 1.33.0 六臂蛇人（Humanoid Alien Races 可选联动）。种族、身体、基因、贴图都在 Bridges/HAR（只在启用 HAR 时加载）；
- // 这里是不需要 HAR 类型的规则：种族识别（MarilithExtension）、六臂操作加成、副手连击、蛇行、冷血、缠绕、剑刃风暴。
- // 没装 HAR 时这些定义都不存在，所有查询用 GetNamedSilentFail，钩子直接返回。
+ // 1.33.0 六臂蛇人（原为 Humanoid Alien Races 种族）。1.102.0 起改成原版人类 + 异种型 LP_MarilithKin（Defs/Marilith_Xenotype.xml，不需要 HAR）：
+ // 体型、六臂、蛇尾都在“蛇身本源”基因上（MarilithExtension + 渲染节点，见 Source/XenoParts.cs），旧档里的 HAR 种族读档时转成人类（LegacyRaceSave）。
+ // 这里是规则：种族识别、六臂操作加成、副手连击、蛇行、冷血、缠绕、剑刃风暴、上半身贴图、穿不上裤子。
  // 1.44.0：体型、渲染、胃容量字段移到通用的 RaceSizeExtension（Source/HARGiants.cs，双头巨人、独眼巨人共用）。
  public class MarilithExtension : RaceSizeExtension {
   public MarilithExtension(){adultSize=1.6f;renderScale=1.3f;} // 巨躯规则用的成年体型倍率、整体渲染缩放（衣服、额外手臂、蛇尾一起放大），儿童随年龄长大
@@ -19,34 +19,45 @@ namespace LichPhylactery {
  // 1.44.0 副手连击改成通用扩展（挂在基因上）：六臂连击 max 2、按额外手臂对数；双头巨人的左右开弓 max 1、要双头巨人的身体且两只手都能用。
  public class OffhandExtension : DefModExtension {public int max=2;public bool perExtraArmPair=true,needsTwinHeads;}
  public static class Marilith {
-  public const string Race="LP_Marilith",SixArms="LP_SixArms",Blades="LP_MarilithBlades",Glide="LP_SerpentGlide",ColdBlood="LP_ColdBlood",Constricted="LP_Constricted",Constricting="LP_Constricting";
-  // 额外手臂按 customLabel 认（BodyDef LP_MarilithBody）：第 3/4 臂一对、第 5/6 臂一对。
-  public static readonly string[] ExtraHands={"左中手","右中手","左下手","右下手"};
+  public const string Race="LP_Marilith",Core="LP_MarilithCore",Kin="LP_MarilithKin",SixArms="LP_SixArms",Blades="LP_MarilithBlades",Glide="LP_SerpentGlide",ColdBlood="LP_ColdBlood",Constricted="LP_Constricted",Constricting="LP_Constricting";
   public static readonly string[] SkinGenes={"LP_SkinSerpentTeal","LP_SkinSerpentDark","LP_SkinSerpentGold"};
   static readonly float[] skinWeights={.4f,.35f,.25f};
-  public const float ManipPerHand=.1f,ColdMove=.85f,ColdBelow=0f;
+  public const float ManipPerHand=.1f,ColdMove=.85f,ColdBelow=0f,MaleChance=.15f;
+  static readonly System.Collections.Concurrent.ConcurrentDictionary<ThingDef,bool> legsOnly=new System.Collections.Concurrent.ConcurrentDictionary<ThingDef,bool>();
+  // 只盖腿、脚的衣服（裤子、护腿、鞋）。
+  public static bool LegsOnly(ThingDef d)=>d?.apparel?.bodyPartGroups!=null && legsOnly.GetOrAdd(d,x=>x.apparel.bodyPartGroups.Count>0 && x.apparel.bodyPartGroups.All(g=>g==BodyPartGroupDefOf.Legs || g.defName=="Feet"));
   public const int MaxOffhands=2;
 
   static readonly System.Collections.Concurrent.ConcurrentDictionary<ThingDef,MarilithExtension> exts=new System.Collections.Concurrent.ConcurrentDictionary<ThingDef,MarilithExtension>();
   public static MarilithExtension Ext(ThingDef d){if(d==null)return null;return exts.GetOrAdd(d,x=>x.GetModExtension<MarilithExtension>());}
-  public static bool Is(Pawn p)=>p!=null && Ext(p.def)!=null;
-  public static ThingDef RaceDef=>DefDatabase<ThingDef>.GetNamedSilentFail(Race);
-  public static bool Loaded=>RaceDef!=null;
+  public static bool Is(Pawn p)=>RaceSize.Of(p) is MarilithExtension;
+  public static ThingDef RaceDef=>DefDatabase<ThingDef>.GetNamedSilentFail(Race); // 1.102.0 起没有这个种族了
+  public static bool Loaded=>DefDatabase<GeneDef>.GetNamedSilentFail(Core)!=null;
   // 巨躯规则（BodySize.Size）里的种族倍率：成年 1.6，儿童随年龄长大（与巨人血统同一条成长曲线）。
-  public static float SizeFactor(Pawn p)=>Ext(p?.def)==null?1f:RaceSize.SizeFactor(p);
-  public static float RenderFactor(Pawn p)=>Ext(p?.def)==null?1f:RaceSize.RenderFactor(p);
+  public static float SizeFactor(Pawn p)=>Is(p)?RaceSize.SizeFactor(p):1f;
+  public static float RenderFactor(Pawn p)=>Is(p)?RaceSize.RenderFactor(p):1f;
 
   // ---------- 额外手臂 ----------
-  static readonly System.Collections.Concurrent.ConcurrentDictionary<BodyDef,BodyPartRecord[]> hands=new System.Collections.Concurrent.ConcurrentDictionary<BodyDef,BodyPartRecord[]>();
-  public static BodyPartRecord[] Hands(Pawn p){
+  // 1.102.0：原版人类身体只有两条手臂，额外的四条是蛇身本源的外观节点，长在两侧肩膀上（每侧两条：中臂、下臂）。
+  // 一侧的肩膀没了或换成义肢（仿生臂等装在肩膀上），那一侧的两条额外手臂就跟着没了。
+  static readonly System.Collections.Concurrent.ConcurrentDictionary<BodyDef,BodyPartRecord[]> shoulders=new System.Collections.Concurrent.ConcurrentDictionary<BodyDef,BodyPartRecord[]>();
+  // [左肩, 右肩]：按 customLabel 认，认不出时按身体里的顺序（原版人类先左后右）。
+  public static BodyPartRecord[] Shoulders(Pawn p){
    var body=p?.RaceProps?.body;if(body==null)return new BodyPartRecord[0];
-   return hands.GetOrAdd(body,b=>ExtraHands.Select(l=>b.AllParts.FirstOrDefault(x=>x.def==BodyPartDefOf.Hand && x.untranslatedCustomLabel==l)).ToArray());
+   return shoulders.GetOrAdd(body,b=>{var all=b.GetPartsWithDef(BodyPartDefOf.Shoulder).ToList();if(all.Count<2)return all.ToArray();
+    var l=all.FirstOrDefault(x=>x.untranslatedCustomLabel=="left shoulder")??all[0];var r=all.FirstOrDefault(x=>x!=l && x.untranslatedCustomLabel=="right shoulder")??all.First(x=>x!=l);return new[]{l,r};});
   }
   public static bool HandUsable(Pawn p,BodyPartRecord hand)=>hand!=null && p?.health?.hediffSet!=null && !p.health.hediffSet.PartIsMissing(hand) && PawnCapacityUtility.CalculatePartEfficiency(p.health.hediffSet,hand)>.001f;
+  // 这一侧（左 0 / 右 1）的两条额外手臂在不在：要有蛇身本源，肩膀没缺、不是义肢、还有效率。
+  public static bool SideUsable(Pawn p,int side){
+   if(!Is(p) || p.health?.hediffSet==null)return false;var s=Shoulders(p);if(side<0 || side>=s.Length)return false;
+   var set=p.health.hediffSet;var part=s[side];
+   return !set.PartIsMissing(part) && !set.HasDirectlyAddedPartFor(part) && PawnCapacityUtility.CalculatePartEfficiency(set,part)>.001f;
+  }
   // 能用的额外手（0～4）。
-  public static int UsableHands(Pawn p){int n=0;foreach(var h in Hands(p))if(HandUsable(p,h))n++;return n;}
-  // 能用的额外手臂对数（0～2）：一对里至少一只手能用就算。
-  public static int UsablePairs(Pawn p){var h=Hands(p);if(h.Length<4)return 0;int n=0;for(int i=0;i<4;i+=2)if(HandUsable(p,h[i]) || HandUsable(p,h[i+1]))n++;return n;}
+  public static int UsableHands(Pawn p){int n=0;for(int i=0;i<2;i++)if(SideUsable(p,i))n+=2;return n;}
+  // 能用的额外手臂对数（0～2）：一侧算一对。
+  public static int UsablePairs(Pawn p){int n=0;for(int i=0;i<2;i++)if(SideUsable(p,i))n++;return n;}
   // 六臂：操作 +0.4 ×（完好额外手臂对数 / 2）。按手算：每只能用的额外手 +0.1，一整对 +0.2，四只都在 +0.4。
   public static float ManipulationBonus(Pawn p)=>Is(p)?ManipPerHand*UsableHands(p):0f;
   public static void EnsureSixArms(Pawn p){
@@ -139,7 +150,7 @@ namespace LichPhylactery {
   }
  }
 
- // 六臂（常驻）：操作 +0.1 × 能用的额外手。不可治疗、不可移除（蛇人的种族组件会补回来）。
+ // 六臂（常驻）：操作 +0.1 × 能用的额外手。不可治疗、不可移除（蛇身本源基因会补回来）。
  public class Hediff_SixArms : Hediff {
   HediffStage stage;float built=-1f;
   public override bool ShouldRemove=>!Marilith.Is(pawn);
@@ -150,14 +161,12 @@ namespace LichPhylactery {
   }}
   public override string LabelInBrackets=>"额外手 "+Marilith.UsableHands(pawn)+"/4，操作 +"+Marilith.ManipulationBonus(pawn).ToStringPercent();
  }
- // 种族组件：生成、出生、读档、每 2500 刻确认六臂状态与鳞色基因都在。
- public class CompProperties_Marilith : CompProperties {public CompProperties_Marilith(){compClass=typeof(CompMarilith);}}
- public class CompMarilith : ThingComp {
+ // 蛇身本源（1.102.0，代替原来 HAR 种族上的组件）：加上、读档、每 2500 刻确认六臂状态在；去掉时六臂状态自己消失（ShouldRemove）。
+ public class Gene_MarilithCore : Gene {
   int ticks;
-  Pawn Pawn=>parent as Pawn;
-  public override void PostSpawnSetup(bool respawningAfterLoad){base.PostSpawnSetup(respawningAfterLoad);Marilith.EnsureSixArms(Pawn);}
-  public override void CompTickInterval(int delta){base.CompTickInterval(delta);if((ticks+=delta)<2500)return;ticks=0;Marilith.EnsureSixArms(Pawn);}
-  public override void PostExposeData(){base.PostExposeData();if(Scribe.mode==LoadSaveMode.PostLoadInit && Pawn?.health!=null)Marilith.EnsureSixArms(Pawn);}
+  public override void PostAdd(){base.PostAdd();RaceSize.Invalidate(pawn);if(Current.ProgramState==ProgramState.Playing)Marilith.EnsureSixArms(pawn);}
+  public override void PostRemove(){RaceSize.Invalidate(pawn);base.PostRemove();}
+  public override void TickInterval(int delta){base.TickInterval(delta);if((ticks+=delta)<2500)return;ticks=0;if(Active)Marilith.EnsureSixArms(pawn);}
  }
  [HarmonyPatch(typeof(PawnGenerator),nameof(PawnGenerator.GeneratePawn),new[]{typeof(PawnGenerationRequest)})]
  public static class MarilithGenerated {
@@ -167,7 +176,29 @@ namespace LichPhylactery {
  // 渲染：根节点 ×1.3（同巨人的做法，不用 HAR 的 customDrawSize，头、衣服、身体附件一起缩放）。1.44.0 起所有带 RaceSizeExtension 的种族通用（双头巨人 ×1.4、独眼巨人 ×1.35）。
  [HarmonyPatch(typeof(PawnRenderNodeWorker),nameof(PawnRenderNodeWorker.ScaleFor))]
  public static class MarilithRenderSize {
-  static void Postfix(PawnRenderNode node,PawnDrawParms parms,ref Vector3 __result){if(RenderTags.IsRoot(node?.Props?.tagDef) && RaceSize.Ext(parms.pawn?.def)!=null)__result*=RaceSize.RenderFactor(parms.pawn);}
+  static void Postfix(PawnRenderNode node,PawnDrawParms parms,ref Vector3 __result){if(RenderTags.IsRoot(node?.Props?.tagDef) && RaceSize.Of(parms.pawn)!=null)__result*=RaceSize.RenderFactor(parms.pawn);}
+ }
+ // 1.102.0 上半身贴图：蛇身本源的人身体用 Marilith/Bodies/Naked_Hulk（儿童、婴儿用 Naked_Child），没有腿，下面由蛇尾节点接上。干尸照原版。
+ [HarmonyPatch(typeof(PawnRenderNode_Body),nameof(PawnRenderNode_Body.GraphicFor))]
+ public static class MarilithBodyGraphic {
+  static void Postfix(Pawn pawn,ref Graphic __result){
+   if(__result==null || pawn?.story?.bodyType==null || !Marilith.Is(pawn) || pawn.Drawer?.renderer?.CurRotDrawMode==RotDrawMode.Dessicated)return;
+   var b=pawn.story.bodyType;string path="Marilith/Bodies/Naked_"+(b==BodyTypeDefOf.Child || b==BodyTypeDefOf.Baby?"Child":"Hulk");
+   __result=GraphicDatabase.Get<Graphic_Multi>(path,__result.Shader,Vector2.one,__result.color);
+  }
+ }
+ // 1.102.0 蛇尾代替双腿：只盖腿、脚的衣服（裤子、护腿、鞋）穿不上（原来 HAR 身体没有 Legs/Feet 部位组）。
+ [HarmonyPatch(typeof(ApparelUtility),nameof(ApparelUtility.HasPartsToWear),new Type[]{typeof(Pawn),typeof(ThingDef)})]
+ public static class MarilithNoLegwear {
+  static void Postfix(Pawn __0,ThingDef __1,ref bool __result){if(__result && Marilith.LegsOnly(__1) && Marilith.Is(__0))__result=false;}
+ }
+ // 1.102.0 85% 是女性（原来 HAR 种族 maleGenderProbability 0.15）：只管必出六臂蛇人的兵种，没定性别时定一个。
+ [HarmonyPatch(typeof(PawnGenerator),nameof(PawnGenerator.GeneratePawn),new[]{typeof(PawnGenerationRequest)})]
+ public static class MarilithGender {
+  static void Prefix(ref PawnGenerationRequest request){
+   var k=request.KindDef;if(k==null || request.FixedGender.HasValue || k.xenotypeSet==null)return;var kin=DefDatabase<XenotypeDef>.GetNamedSilentFail(Marilith.Kin);if(kin==null || !k.xenotypeSet.Contains(kin))return;
+   request.FixedGender=Rand.Chance(Marilith.MaleChance)?Gender.Male:Gender.Female;
+  }
  }
  // ---------- 冷血：环境低于 0℃ 移速 ×85% ----------
  public class StatPart_ColdBlood : StatPart {
@@ -376,7 +407,7 @@ namespace LichPhylactery {
  }
  public static class MarilithSettings {
   public static void Draw(Listing_Standard l){
-   l.GapLine();l.Label("六臂蛇人（需要 Humanoid Alien Races）");
+   l.GapLine();l.Label("六臂蛇人");
    l.Label("副手追加伤害："+LichMod.Settings.offhandDamage.ToStringPercent()+(Marilith.DualWield?"（已检测到双持类模组，副手连击关闭）":""));
    LichMod.Settings.offhandDamage=Mathf.Round(l.Slider(LichMod.Settings.offhandDamage,.25f,1f)*20f)/20f;
   }

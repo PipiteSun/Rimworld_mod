@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.103.0 第二批子职业（见 Source/ClassSubclass2.cs）：奥法骑士、灵能战士（战士），血咒学派（法师），战铸师（器械师），异变心灵（术士），征服之誓、救赎之誓（圣武士）。
+     职业 3 级选一个（选定不能改），能力在职业 3 / 7 / 11 / 15 级获得。数值是对应强度 100% 时的值。 -->
+<Defs>
+  <!-- ===================== 子职业 ===================== -->
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_EldritchKnight</defName>
+    <label>奥法骑士</label>
+    <description>剑与法术。有自己的法力（上限 1 + 战士等级 ÷ 3，睡觉、研究时恢复，醒着也慢慢回），用来放战争戏法；绑定的武器不会被缴械，还能召回到手里。</description>
+    <parent>LP_Class_Fighter</parent><order>1</order><emblem>LP/Classes/Subclass/Emblem_EldritchKnight</emblem><color>(0.55,0.5,0.95)</color>
+    <abilities><li><ability>LP_EK_WeaponBond</ability><level>3</level></li><li><ability>LP_EK_Shield</ability><level>3</level></li><li><ability>LP_EK_ThunderBlade</ability><level>3</level></li><li><ability>LP_EK_AbsorbElements</ability><level>3</level></li>
+      <li><ability>LP_EK_WarMagic</ability><level>7</level></li><li><ability>LP_EK_ArcaneCharge</ability><level>11</level></li><li><ability>LP_EK_EldritchStrike</ability><level>11</level></li><li><ability>LP_EK_Bladestorm</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_PsiWarrior</defName>
+    <label>灵能战士</label>
+    <description>用心灵之力打仗。有灵能器时能力不耗斗志、改加神经热（神经热放不下时照常耗斗志）；没有灵能器就只耗斗志。效果乘心灵敏感度。</description>
+    <parent>LP_Class_Fighter</parent><order>2</order><emblem>LP/Classes/Subclass/Emblem_PsiWarrior</emblem><color>(0.45,0.85,0.9)</color>
+    <abilities><li><ability>LP_PW_PsionicStrike</ability><level>3</level></li><li><ability>LP_PW_ProtectiveField</ability><level>3</level></li><li><ability>LP_PW_TeleJump</ability><level>3</level></li>
+      <li><ability>LP_PW_PsiAdept</ability><level>7</level></li><li><ability>LP_PW_Shove</ability><level>7</level></li><li><ability>LP_PW_GuardianField</ability><level>11</level></li><li><ability>LP_PW_TeleStorm</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Hemomancy</defName>
+    <label>血咒学派</label>
+    <description>以血代法：血咒法术不耗法力，而是让自己失血（失血到 45% 就不能再施；血族改扣血原质）。自己伤得越重，血咒伤害越高（最多 +30%）。巫妖和不死者没有血，不能选。</description>
+    <parent>LP_Class_Wizard</parent><order>1</order><emblem>LP/Classes/Subclass/Emblem_Hemomancy</emblem><color>(0.8,0.2,0.25)</color>
+    <abilities><li><ability>LP_HM_BloodSpear</ability><level>3</level></li><li><ability>LP_HM_BloodBind</ability><level>3</level></li><li><ability>LP_HM_FleshShaping</ability><level>7</level></li><li><ability>LP_HM_Siphon</ability><level>7</level></li>
+      <li><ability>LP_HM_BloodBoil</ability><level>11</level></li><li><ability>LP_HM_FleshPrison</ability><level>11</level></li><li><ability>LP_HM_BloodRite</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_BattleSmith</defName>
+    <label>战铸师</label>
+    <description>带一台自己造的钢铁卫士：小型构装，不吃不睡，跟着主人打仗，等级越高越结实。被打烂留下残骸，1 天内用 20 钢就能重造。</description>
+    <parent>LP_Class_Artificer</parent><order>1</order><emblem>LP/Classes/Subclass/Emblem_BattleSmith</emblem><color>(0.85,0.7,0.4)</color>
+    <abilities><li><ability>LP_BS_SteelDefender</ability><level>3</level></li><li><ability>LP_BS_BattleReady</ability><level>3</level></li><li><ability>LP_BS_ArcaneJolt</ability><level>7</level></li>
+      <li><ability>LP_BS_ImprovedDefender</ability><level>11</level></li><li><ability>LP_BS_MasterSmith</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_AberrantMind</defName>
+    <label>异变心灵</label>
+    <description>血里有灵吸怪的影子：安抚崩溃的殖民者、用灵能尖刺伤敌、长出触手，最后能支配一个敌人为你所用。</description>
+    <parent>LP_Class_Sorcerer</parent><order>1</order><emblem>LP/Classes/Subclass/Emblem_AberrantMind</emblem><color>(0.35,0.6,0.45)</color>
+    <abilities><li><ability>LP_AM_CalmMind</ability><level>3</level></li><li><ability>LP_AM_PsychicSpike</ability><level>3</level></li><li><ability>LP_AM_PsychicDefense</ability><level>7</level></li>
+      <li><ability>LP_AM_FleshRevelation</ability><level>11</level></li><li><ability>LP_AM_MindDominion</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Conquest</defName>
+    <label>征服之誓</label>
+    <description>以恐惧统治。誓言之力每天 1 次（11 级 2 次、15 级 3 次），不耗神恩。戒律：不释放囚犯——殖民地释放囚犯时背誓（1 天内神恩恢复减半、誓言之力不能用；1 天内第三次背誓再加心情 −10）。</description>
+    <parent>LP_Class_Paladin</parent><order>1</order><emblem>LP/Classes/Subclass/Emblem_Conquest</emblem><color>(0.55,0.5,0.55)</color>
+    <abilities><li><ability>LP_CQ_ConqueringPresence</ability><level>3</level></li><li><ability>LP_CQ_GuidedStrike</ability><level>3</level></li><li><ability>LP_CQ_AuraOfConquest</ability><level>7</level></li>
+      <li><ability>LP_CQ_ScornfulRebuke</ability><level>11</level></li><li><ability>LP_CQ_InvincibleConqueror</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Redemption</defName>
+    <label>救赎之誓</label>
+    <description>以和止战。誓言之力每天 1 次（11 级 2 次、15 级 3 次），不耗神恩。戒律：不亲手杀死倒地的人、囚犯或奴隶（处决也算）——违背就背誓（1 天内神恩恢复减半、誓言之力不能用；1 天内第三次背誓再加心情 −10）。</description>
+    <parent>LP_Class_Paladin</parent><order>2</order><emblem>LP/Classes/Subclass/Emblem_Redemption</emblem><color>(0.9,0.92,0.95)</color>
+    <abilities><li><ability>LP_RD_EmissaryOfPeace</ability><level>3</level></li><li><ability>LP_RD_RebukeViolent</ability><level>3</level></li><li><ability>LP_RD_AuraOfGuardian</ability><level>7</level></li>
+      <li><ability>LP_RD_ProtectiveSpirit</ability><level>11</level></li><li><ability>LP_RD_EmissaryOfRedemption</ability><level>15</level></li><li><ability>LP_RD_Reconcile</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+
+  <!-- ===================== 状态 ===================== -->
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_EK_ThunderReady</defName>
+    <label>雷鸣斩</label>
+    <description>下一次近战命中附加 12 × 强度 钝器伤害，并把体型 2 以下的目标震退 1 格。</description>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_EK_Absorb</defName>
+    <label>吸收元素</label>
+    <description>受到的火焰、寒冰、闪电伤害 ×0.5。</description>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_EK_SpellVuln</defName>
+    <label>法术易伤</label>
+    <description>被奥法骑士的武器打中：受到的法术伤害（元素、心灵、奥术力）×1.25。</description>
+    <isBad>true</isBad>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_EK_BladestormBuff</defName>
+    <label>法刃风暴</label>
+    <description>每次近战命中，对 3 格内另一个敌人放一枚魔能飞弹（6 × 强度 奥术力伤害）。</description>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_PW_StrikeBuff</defName>
+    <label>灵能打击</label>
+    <description>每次近战命中附加 6 × 强度 心灵伤害。</description>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_PW_FieldBuff</defName>
+    <label>护卫念场</label>
+    <description>受到的远程伤害 ×0.5。</description>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_PW_AdeptBuff</defName>
+    <label>念动适应</label>
+    <description>心灵敏感度 +15%，冥想获得的专注 +25%。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.45,0.85,0.9)</defaultLabelColor>
+    <stages><li><statOffsets><PsychicSensitivity>0.15</PsychicSensitivity><MeditationFocusGain>0.25</MeditationFocusGain></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_PW_MindBuff</defName>
+    <label>念场心防</label>
+    <description>心智抗性 +20%。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.45,0.85,0.9)</defaultLabelColor>
+    <stages><li><statOffsets><LP_MindResist>0.2</LP_MindResist></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_PW_StormBuff</defName>
+    <label>念动宗师</label>
+    <description>神经热上限 ×1.3。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.45,0.85,0.9)</defaultLabelColor>
+    <stages><li><statFactors><PsychicEntropyMax>1.3</PsychicEntropyMax></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_HM_Ward</defName>
+    <label>猩红化身</label>
+    <description>刚施放完血咒：受到的伤害 ×0.5。</description>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_HM_BloodBoil</defName>
+    <hediffClass>LichPhylactery.Hediff_BloodBoil</hediffClass>
+    <label>血沸</label>
+    <description>血在血管里沸腾：每秒受到一次伤害。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.8,0.2,0.25)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_DefenderCore</defName>
+    <label>构装核心</label>
+    <description>战铸师造的钢铁卫士：不吃不睡，跟主人一起打仗；受到的伤害随主人的器械师等级降低（每级 −10% 的倍率）。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.85,0.7,0.4)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_DefenderImproved</defName>
+    <label>改良卫士</label>
+    <description>加厚的装甲和加力的拳头：利器与钝器护甲 +20%，近战伤害 +50%。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.85,0.7,0.4)</defaultLabelColor>
+    <stages><li><statOffsets><ArmorRating_Sharp>0.2</ArmorRating_Sharp><ArmorRating_Blunt>0.2</ArmorRating_Blunt></statOffsets><statFactors><MeleeDamageFactor>1.5</MeleeDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_AM_DefenseBuff</defName>
+    <label>灵能防护</label>
+    <description>心智抗性 +25%，受到的心灵伤害 ×0.5。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.35,0.6,0.45)</defaultLabelColor>
+    <stages><li><statOffsets><LP_MindResist>0.25</LP_MindResist></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_AM_Tentacles</defName>
+    <label>变形之身</label>
+    <description>长出触手：多一种近战攻击（12 钝器），近战命中有 30% 的成功率缠住目标 2 秒；移动 +15%，伤口不流血。</description>
+    <defaultLabelColor>(0.35,0.6,0.45)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>1.15</MoveSpeed></statFactors><totalBleedFactor>0</totalBleedFactor></li></stages>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver"><tools><li><label>触手</label><capacities><li>Blunt</li></capacities><power>12</power><cooldownTime>2</cooldownTime></li></tools></li>
+    </comps>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CQ_Guided</defName>
+    <label>必胜一击</label>
+    <description>近战命中 +50%，远程命中 +2%（每格）。</description>
+    <stages><li><statOffsets><MeleeHitChance>0.5</MeleeHitChance><ShootingAccuracyPawn>0.02</ShootingAccuracyPawn></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CQ_Pinned</defName>
+    <label>征服灵光</label>
+    <description>在征服者面前吓得挪不动步：移动 ×0.2。</description>
+    <isBad>true</isBad>
+    <stages><li><statFactors><MoveSpeed>0.2</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CQ_Invincible</defName>
+    <label>不败征服者</label>
+    <description>受到的伤害 ×0.5（神圣伤害除外），近战冷却 ×0.8。</description>
+    <stages><li><statFactors><MeleeCooldownFactor>0.8</MeleeCooldownFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CQ_Yielded</defName>
+    <label>降服</label>
+    <description>丢下武器跪地投降，可以直接俘虏。</description>
+    <isBad>true</isBad>
+    <stages><li><capMods><li><capacity>Consciousness</capacity><setMax>0.1</setMax></li></capMods></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_RD_Emissary</defName>
+    <label>和平使者</label>
+    <description>社交影响 +30%，谈判能力 +20%。</description>
+    <stages><li><statOffsets><SocialImpact>0.3</SocialImpact><NegotiationAbility>0.2</NegotiationAbility></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_RD_Rebuke</defName>
+    <hediffClass>LichPhylactery.Hediff_Rebuke</hediffClass>
+    <label>斥责暴力</label>
+    <description>下一个近战打中自己或 15 格内友军的敌人，受到同等的神圣伤害（最多为严重度）。</description>
+    <maxSeverity>10000</maxSeverity>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_RD_SpiritBuff</defName>
+    <label>坚韧之魂</label>
+    <description>精神崩溃阈值 −10%；伤势超过一半时持续治疗。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.9,0.92,0.95)</defaultLabelColor>
+    <stages><li><statOffsets><MentalBreakThreshold>-0.1</MentalBreakThreshold></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_Oathbroken</defName>
+    <label>背誓</label>
+    <description>违背了誓言：神恩恢复减半，誓言之力不能用。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.6,0.4,0.4)</defaultLabelColor>
+  </HediffDef>
+  <ThoughtDef>
+    <defName>LP_OathForsaken</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>3</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>背弃誓言</label><description>一天之内三次违背自己的誓言。我还算什么圣武士？</description><baseMoodEffect>-10</baseMoodEffect></li></stages>
+  </ThoughtDef>
+
+  <!-- ===================== 钢铁卫士 ===================== -->
+  <ThingDef ParentName="AnimalThingBase">
+    <defName>LP_SteelDefender</defName>
+    <label>钢铁卫士</label>
+    <description>战铸师用钢和零部件拼起来的小型构装，体型和一条狗差不多。不吃不睡，跟着主人打仗，主人被近战攻击时会挡上去。被打烂后只剩一堆钢。</description>
+    <statBases><MoveSpeed>4.4</MoveSpeed><MarketValue>300</MarketValue><ComfyTemperatureMin>-60</ComfyTemperatureMin><ComfyTemperatureMax>80</ComfyTemperatureMax><Wildness>0</Wildness>
+      <ArmorRating_Sharp>0.3</ArmorRating_Sharp><ArmorRating_Blunt>0.2</ArmorRating_Blunt><ToxicResistance>1</ToxicResistance><Flammability>0</Flammability></statBases>
+    <tools>
+      <li><label>铁拳</label><capacities><li>Blunt</li></capacities><power>10</power><cooldownTime>2</cooldownTime><linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup></li>
+      <li><label>铁拳</label><capacities><li>Blunt</li></capacities><power>10</power><cooldownTime>2</cooldownTime><linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup></li>
+    </tools>
+    <race>
+      <body>QuadrupedAnimalWithPawsAndTail</body>
+      <bloodDef>Filth_MachineBits</bloodDef>
+      <predator>false</predator>
+      <petness>0</petness>
+      <baseBodySize>0.8</baseBodySize>
+      <baseHungerRate>0.1</baseHungerRate>
+      <baseHealthScale>1.5</baseHealthScale>
+      <foodType>None</foodType>
+      <needsRest>false</needsRest>
+      <trainability>Advanced</trainability>
+      <manhunterOnTameFailChance>0</manhunterOnTameFailChance>
+      <manhunterOnDamageChance>0</manhunterOnDamageChance>
+      <lifeExpectancy>1000</lifeExpectancy>
+      <lifeStageAges><li><def>AnimalAdult</def><minAge>0</minAge><soundWounded>Pawn_Mech_Scyther_Wounded</soundWounded><soundDeath>Pawn_Mech_Scyther_Death</soundDeath><soundCall>Pawn_Mech_Scyther_Call</soundCall></li></lifeStageAges>
+      <soundMeleeHitPawn>Pawn_Melee_Punch_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_Punch_Miss</soundMeleeMiss>
+    </race>
+  </ThingDef>
+  <PawnKindDef ParentName="AnimalKindBase">
+    <defName>LP_SteelDefenderKind</defName>
+    <label>钢铁卫士</label>
+    <race>LP_SteelDefender</race>
+    <combatPower>60</combatPower>
+    <ecoSystemWeight>0</ecoSystemWeight>
+    <canArriveManhunter>false</canArriveManhunter>
+    <lifeStages>
+      <li><bodyGraphicData><texPath>LP/SteelDefender/SteelDefender</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.3</drawSize><shadowData><volume>(0.35, 0.3, 0.3)</volume><offset>(0,0,-0.2)</offset></shadowData></bodyGraphicData></li>
+    </lifeStages>
+  </PawnKindDef>
+
+  <!-- ===================== 奥法骑士 ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_EK_WeaponBond</defName>
+    <label>武器羁绊</label>
+    <description>手里拿着的武器和自己绑定（替换原来的绑定）：绑定的武器不会被缴械。手里不是绑定的武器时，把同一张地图上的绑定武器召回到手里（原来手上的放到脚下）。不耗法力，冷却 1 小时。奥法骑士，战士 3 级。</description>
+    <iconPath>LP/Classes/Subclass2/WeaponBond</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S2Bond</effect><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_EK_Shield</defName>
+    <label>护盾术（奥法骑士）</label>
+    <description>10 秒内身外多一层奥术护盾，先吸收 20 × 战技强度 点伤害。法力 1，冷却 10 秒。奥法骑士，战士 3 级。</description>
+    <iconPath>LP/Classes/Subclass2/EKShield</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PowerBuff</effect><hediff>LP_ShieldSpell</hediff><cost>1</cost><power>20</power><duration>600</duration><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_EK_ThunderBlade</defName>
+    <label>雷鸣斩</label>
+    <description>10 秒内下一次近战命中附加 12 × 战技强度 钝器伤害，并把体型 2 以下的目标震退 1 格。法力 1，冷却 5 秒。奥法骑士，战士 3 级。</description>
+    <iconPath>LP/Classes/Subclass2/ThunderBlade</iconPath>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_EK_ThunderReady</hediff><cost>1</cost><duration>600</duration><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_EK_AbsorbElements</defName>
+    <label>吸收元素</label>
+    <description>1 小时内受到的火焰、寒冰、闪电伤害 ×0.5。法力 1，冷却 1 小时。奥法骑士，战士 3 级。</description>
+    <iconPath>LP/Classes/Subclass2/AbsorbElements</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_EK_Absorb</hediff><cost>1</cost><duration>2500</duration><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_EK_WarMagic</defName>
+    <label>战争魔法</label>
+    <description>被动：每放一个奥法骑士法术，立刻对身边的敌人再打一下（一次完整的近战结算）；学会法刃风暴后打两下。奥法骑士，战士 7 级。</description>
+    <iconPath>LP/Classes/Subclass2/WarMagic</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_EK_ArcaneCharge</defName>
+    <label>奥术冲锋</label>
+    <description>瞬移到 12 格内的空格（不需要视线）。法力 1，冷却 15 秒。奥法骑士，战士 11 级。</description>
+    <iconPath>LP/Classes/Subclass2/ArcaneCharge</iconPath>
+    <hostile>false</hostile>
+    <cooldownTicksRange>900</cooldownTicksRange>
+    <verbProperties><range>12</range><warmupTime>0</warmupTime><requireLineOfSight>false</requireLineOfSight><targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S2Blink</effect><cost>1</cost><range>12</range><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_EK_EldritchStrike</defName>
+    <label>法术打击</label>
+    <description>被动：近战打中敌人后，它 10 秒内受到的法术伤害（火焰、寒冰、闪电、心灵、奥术力）×1.25。奥法骑士，战士 11 级。</description>
+    <iconPath>LP/Classes/Subclass2/EldritchStrike</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_EK_Bladestorm</defName>
+    <label>法刃风暴</label>
+    <description>8 秒内每次近战命中，对 3 格内另一个敌人放一枚魔能飞弹（6 × 战技强度 奥术力伤害）。法力 3，每天一次。被动：法力上限 +2，战争魔法改为打两下。奥法骑士，战士 15 级。</description>
+    <iconPath>LP/Classes/Subclass2/Bladestorm</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_EK_BladestormBuff</hediff><cost>3</cost><duration>480</duration><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===================== 灵能战士 ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PW_PsionicStrike</defName>
+    <label>灵能打击</label>
+    <description>30 秒内每次近战命中附加 6 × 战技强度 心灵伤害。斗志 1（有灵能器时改为神经热 8），冷却 30 秒。灵能战士，战士 3 级。</description>
+    <iconPath>LP/Classes/Subclass2/PsionicStrike</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_PW_StrikeBuff</hediff><cost>1</cost><heat>8</heat><duration>1800</duration><stat>LP_MartialPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PW_ProtectiveField</defName>
+    <label>护体念力</label>
+    <description>被动：有灵能器时，每次受伤 ×0.7，同时加 4 点神经热（神经热放不下时不生效）；没有灵能器时每次受伤 ×0.85。灵能战士，战士 3 级。</description>
+    <iconPath>LP/Classes/Subclass2/ProtectiveField</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_PW_TeleJump</defName>
+    <label>念动跳跃</label>
+    <description>用念力把自己抛到 10 格内的空格，无视障碍。斗志 1（有灵能器时改为神经热 10），冷却 10 秒。灵能战士，战士 3 级。</description>
+    <iconPath>LP/Classes/Subclass2/TeleJump</iconPath>
+    <hostile>false</hostile>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>10</range><warmupTime>0</warmupTime><requireLineOfSight>false</requireLineOfSight><targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S2Blink</effect><cost>1</cost><heat>10</heat><range>10</range><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PW_PsiAdept</defName>
+    <label>念动适应</label>
+    <description>被动：心灵敏感度 +15%，冥想获得的专注 +25%。灵能战士，战士 7 级。</description>
+    <iconPath>LP/Classes/Subclass2/PsiAdept</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_PW_Shove</defName>
+    <label>念动推送</label>
+    <description>15 格内一个敌人，成功率 70%（机械体 40%）被推开 3 格并击倒 2 秒。目标每比你高 1 级成功率 −5%，最低 10%。斗志 1（有灵能器时改为神经热 10），冷却 10 秒。灵能战士，战士 7 级。</description>
+    <iconPath>LP/Classes/Subclass2/Shove</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>15</range><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S2Shove</effect><cost>1</cost><heat>10</heat><duration>120</duration><stat>LP_MartialPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PW_GuardianField</defName>
+    <label>护卫念场</label>
+    <description>半径 6 内的友军（含自己）10 秒内受到的远程伤害 ×0.5。被动：心智抗性 +20%。斗志 2（有灵能器时改为神经热 30），冷却 1 小时。灵能战士，战士 11 级。</description>
+    <iconPath>LP/Classes/Subclass2/GuardianField</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S2PsiField</effect><cost>2</cost><heat>30</heat><radius>6</radius><duration>600</duration><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PW_TeleStorm</defName>
+    <label>念动风暴</label>
+    <description>半径 8 内所有敌人被念力抬起又摔下：击晕 3 秒，受 15 × 战技强度 钝器伤害。被动：神经热上限 ×1.3。斗志 3（有灵能器时改为神经热 40），每天一次。灵能战士，战士 15 级。</description>
+    <iconPath>LP/Classes/Subclass2/TeleStorm</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S2TeleStorm</effect><cost>3</cost><heat>40</heat><radius>8</radius><power>15</power><stat>LP_MartialPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+
+  <!-- ===================== 血咒学派 ===================== -->
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_HM_BloodSpear</defName>
+    <label>血矛</label>
+    <description>把自己的血凝成长矛掷出：25 格内一个敌人受 12 × 奥术强度 穿刺伤害，无视 30% 护甲。自己伤得越重伤害越高（伤势每 10% +5%，最多 +30%）。失血 8%（血族：血原质 10），冷却 5 秒。血咒学派，法师 3 级。</description>
+    <iconPath>LP/Classes/Subclass2/BloodSpear</iconPath>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <verbProperties><range>25</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S2BloodSpear</effect><power>12</power><stat>LP_ArcanePower</stat><psychic>true</psychic><single>true</single></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_HM_BloodBind</defName>
+    <label>血缚</label>
+    <description>攥住 20 格内一个敌人的血：成功率 65% 定身 4 秒（目标每比你高 1 级 −5%，最低 10%）。机械体、亡灵等没有血的目标无效。失血 8%，冷却 15 秒。血咒学派，法师 3 级。</description>
+    <iconPath>LP/Classes/Subclass2/BloodBind</iconPath>
+    <cooldownTicksRange>900</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S2BloodBind</effect><duration>240</duration><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_HM_FleshShaping</defName>
+    <label>血肉塑形</label>
+    <description>对 15 格内一名友军：缝合所有出血的伤口，并治疗 15 × 奥术强度。对自己：不失血，反而把失血减少 20%。失血 16%（对自己免费），冷却 1 小时。血咒学派，法师 7 级。</description>
+    <iconPath>LP/Classes/Subclass2/FleshShaping</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><range>15</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S2FleshShape</effect><power>15</power><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_HM_Siphon</defName>
+    <label>汲血</label>
+    <description>被动：你杀死有血的敌人时，自己的失血 −10%（血族：血原质 +10）。血咒学派，法师 7 级。</description>
+    <iconPath>LP/Classes/Subclass2/Siphon</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArcanePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_HM_BloodBoil</defName>
+    <label>血沸</label>
+    <description>20 格内一点半径 3：有血的敌人 10 秒内每秒受 4 × 奥术强度 灼伤（自己伤得越重越高）。失血 24%，冷却 1 小时。血咒学派，法师 11 级。</description>
+    <iconPath>LP/Classes/Subclass2/BloodBoil</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S2BloodBoil</effect><radius>3</radius><power>4</power><duration>600</duration><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_HM_FleshPrison</defName>
+    <label>血肉禁锢</label>
+    <description>让 20 格内一个敌人的血肉僵死：成功率 60% 动弹不得 30 秒（受伤也不解除；目标每比你高 1 级 −5%，最低 10%）。机械体、没有血的、体型超过 2 的无效。失血 24%，冷却 1 小时。血咒学派，法师 11 级。</description>
+    <iconPath>LP/Classes/Subclass2/FleshPrison</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S2FleshPrison</effect><duration>1800</duration><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_HM_BloodRite</defName>
+    <label>血之秘仪</label>
+    <description>对身边一名友军（或自己）施行血之秘仪，自动选最需要的一项：长回一个缺失的部位；没有缺失就治好所有疾病、成瘾、慢性病和疤痕；都没有就年轻 10 岁（不低于 18 岁）。失血 30%，每年一次。被动：失血上限从 45% 提到 60%；每次施放血咒后 5 秒内受到的伤害 ×0.5。血咒学派，法师 15 级。</description>
+    <iconPath>LP/Classes/Subclass2/BloodRite</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>3600000</cooldownTicksRange>
+    <verbProperties><range>3</range><warmupTime>5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S2BloodRite</effect><stat>LP_ArcanePower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===================== 战铸师 ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BS_SteelDefender</defName>
+    <label>钢铁卫士</label>
+    <description>用地图上没被禁止的 100 钢 + 2 零部件造一台钢铁卫士（被打烂后 1 天内重造只要 20 钢），它认你做主人、跟着你打仗。已经有卫士时，改为把卫士召回到身边。冷却 1 小时。战铸师，器械师 3 级。</description>
+    <iconPath>LP/Classes/Subclass2/SteelDefender</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S2Defender</effect><stat>LP_ArtificePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BS_BattleReady</defName>
+    <label>魔武训练</label>
+    <description>被动：用武器造成的伤害 +10%。卫士护主：你被近战攻击时，紧挨着你的钢铁卫士有 40% 的成功率挡下这一下。战铸师，器械师 3 级。</description>
+    <iconPath>LP/Classes/Subclass2/BattleReady</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BS_ArcaneJolt</defName>
+    <label>奥术震击</label>
+    <description>被动：你或钢铁卫士打中敌人时（每 10 秒一次），15 格内有伤势超过 30% 的友军就治疗最需要的一个 8 + 器械师等级；没有就让目标再受 8 + 器械师等级 奥术力伤害。战铸师，器械师 7 级。</description>
+    <iconPath>LP/Classes/Subclass2/ArcaneJolt</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BS_ImprovedDefender</defName>
+    <label>改良卫士</label>
+    <description>被动：钢铁卫士护甲 +20%、近战伤害 +50%、受到的伤害再 ×0.8，并学会搬运。战铸师，器械师 11 级。</description>
+    <iconPath>LP/Classes/Subclass2/ImprovedDefender</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BS_MasterSmith</defName>
+    <label>战铸大师</label>
+    <description>被动：可以同时有 2 台钢铁卫士；卫士每天第一次倒下时自动重构（治好一半伤势）；卫士 2 格内的友军受到的伤害 ×0.8。战铸师，器械师 15 级。</description>
+    <iconPath>LP/Classes/Subclass2/MasterSmith</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===================== 异变心灵 ===================== -->
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_AM_CalmMind</defName>
+    <label>安抚心灵</label>
+    <description>隔着整张地图触碰一名精神崩溃的友军：成功率 40% 立刻结束崩溃。法力 1，冷却 10 秒。异变心灵，术士 3 级。</description>
+    <iconPath>LP/Classes/Subclass2/CalmMind</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>200</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S2CalmMind</effect><cost>1</cost><stat>LP_InnatePower</stat><sorcery>true</sorcery></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_AM_PsychicSpike</defName>
+    <label>灵能尖刺</label>
+    <description>25 格内一个敌人受 15 × 天赋强度 心灵伤害；机械体无效。法力 1，冷却 5 秒。异变心灵，术士 3 级。</description>
+    <iconPath>LP/Classes/Subclass2/PsychicSpike</iconPath>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <verbProperties><range>25</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S2Spike</effect><cost>1</cost><power>15</power><stat>LP_InnatePower</stat><psychic>true</psychic><sorcery>true</sorcery><single>true</single></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AM_PsychicDefense</defName>
+    <label>灵能防护</label>
+    <description>被动：心智抗性 +25%，受到的心灵伤害 ×0.5。异变心灵，术士 7 级。</description>
+    <iconPath>LP/Classes/Subclass2/PsychicDefense</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_InnatePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AM_FleshRevelation</defName>
+    <label>变形之身</label>
+    <description>1 小时内长出触手：多一种近战攻击（12 钝器），近战命中有 30% 的成功率缠住目标 2 秒；移动 +15%，伤口不流血。法力 2，冷却 2 小时。异变心灵，术士 11 级。</description>
+    <iconPath>LP/Classes/Subclass2/FleshRevelation</iconPath>
+    <cooldownTicksRange>5000</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_AM_Tentacles</hediff><cost>2</cost><duration>2500</duration><stat>LP_InnatePower</stat><fixedSeverity>true</fixedSeverity></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_AM_MindDominion</defName>
+    <label>心灵支配</label>
+    <description>20 格内一个人形敌人，成功率 60%（目标每比你高 1 级 −5%，最低 10%）被支配 1 天：暂时加入殖民地、可以征召。结束时成功率 30% 自愿留下，否则变回敌人、击晕 10 秒后逃走。剧情首领和传奇单位无效。法力 4，冷却 3 天。异变心灵，术士 15 级。</description>
+    <iconPath>LP/Classes/Subclass2/MindDominion</iconPath>
+    <cooldownTicksRange>180000</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S2Dominion</effect><cost>4</cost><stat>LP_InnatePower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+
+  <!-- ===================== 征服之誓 ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CQ_ConqueringPresence</defName>
+    <label>誓言之力·征服者之威</label>
+    <description>半径 6 内的敌人（机械体除外）成功率 60% 被震慑并逃跑 8 秒（目标每比你高 1 级 −5%，最低 10%）。誓言之力 1，不耗神恩。征服之誓，圣武士 3 级。</description>
+    <iconPath>LP/Classes/Subclass2/ConqueringPresence</iconPath>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <verbProperties><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S2CQPresence</effect><radius>6</radius><duration>480</duration><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CQ_GuidedStrike</defName>
+    <label>誓言之力·必胜一击</label>
+    <description>30 秒内近战命中 +50%，远程命中 +2%（每格）。誓言之力 1，不耗神恩。征服之誓，圣武士 3 级。</description>
+    <iconPath>LP/Classes/Subclass2/GuidedStrike</iconPath>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_CQ_Guided</hediff><duration>1800</duration><stat>LP_MartialPower</stat><fixedSeverity>true</fixedSeverity></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CQ_AuraOfConquest</defName>
+    <label>征服灵光</label>
+    <description>被动：半径 5 内被震慑或在逃跑的敌人移动 ×0.2，每 4 秒受 8 × 神恩强度 心灵伤害。征服之誓，圣武士 7 级。</description>
+    <iconPath>LP/Classes/Subclass2/AuraOfConquest</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CQ_ScornfulRebuke</defName>
+    <label>威慑斩</label>
+    <description>被动：近战打中没被震慑的敌人时，成功率 25% 让它震慑 5 秒；打已经被震慑的敌人伤害 ×1.25。征服之誓，圣武士 11 级。</description>
+    <iconPath>LP/Classes/Subclass2/ScornfulRebuke</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CQ_InvincibleConqueror</defName>
+    <label>不败征服者</label>
+    <description>1 小时内受到的伤害 ×0.5（神圣伤害除外），近战冷却 ×0.8。神恩 3，每天一次。被动「降服」：半径 10 内伤势超过一半的人形敌人（首领除外），每 4 秒约 8% 的成功率丢下武器跪地投降，可以直接俘虏。征服之誓，圣武士 15 级。</description>
+    <iconPath>LP/Classes/Subclass2/InvincibleConqueror</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_CQ_Invincible</hediff><cost>3</cost><duration>2500</duration><stat>LP_MartialPower</stat><fixedSeverity>true</fixedSeverity></li></comps>
+  </AbilityDef>
+
+  <!-- ===================== 救赎之誓 ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_RD_EmissaryOfPeace</defName>
+    <label>誓言之力·和平使者</label>
+    <description>1 小时内社交影响 +30%、谈判能力 +20%（招募、交易、通讯台交涉都受益）。誓言之力 1，不耗神恩。救赎之誓，圣武士 3 级。</description>
+    <iconPath>LP/Classes/Subclass2/EmissaryOfPeace</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_RD_Emissary</hediff><duration>2500</duration><stat>LP_DivinePower</stat><fixedSeverity>true</fixedSeverity></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_RD_RebukeViolent</defName>
+    <label>誓言之力·斥责暴力</label>
+    <description>1 天内有效：下一个近战打中自己或 15 格内友军的敌人，受到和这一下同等的神圣伤害（最多 30 × 神恩强度）。誓言之力 1，不耗神恩。救赎之誓，圣武士 3 级。</description>
+    <iconPath>LP/Classes/Subclass2/RebukeViolent</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <verbProperties><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PowerBuff</effect><hediff>LP_RD_Rebuke</hediff><power>30</power><duration>60000</duration><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_RD_AuraOfGuardian</defName>
+    <label>守护者灵光</label>
+    <description>被动：征召时，半径 5 内的友军被敌人打中，这一下改由你承担（转过来的伤害 ×0.75）。救赎之誓，圣武士 7 级。</description>
+    <iconPath>LP/Classes/Subclass2/AuraOfGuardian</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_RD_ProtectiveSpirit</defName>
+    <label>坚韧之魂</label>
+    <description>被动：伤势超过一半时每 4 秒治疗 1 × 神恩强度；精神崩溃阈值 −10%。救赎之誓，圣武士 11 级。</description>
+    <iconPath>LP/Classes/Subclass2/ProtectiveSpirit</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_RD_EmissaryOfRedemption</defName>
+    <label>救赎天使</label>
+    <description>被动：受到的伤害 ×0.75（神圣、心灵伤害除外）；近战打你的敌人受 4 × 神恩强度 神圣反伤。救赎之誓，圣武士 15 级。</description>
+    <iconPath>LP/Classes/Subclass2/EmissaryOfRedemption</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_RD_Reconcile</defName>
+    <label>和解</label>
+    <description>向整张地图的敌人伸出手：每个人形敌人（首领、囚犯除外）成功率 40% 丢下武器离开，他们的派系好感 +15。机械体和疯兽无效。神恩 3，冷却 15 天。救赎之誓，圣武士 15 级。</description>
+    <iconPath>LP/Classes/Subclass2/Reconcile</iconPath>
+    <cooldownTicksRange>900000</cooldownTicksRange>
+    <verbProperties><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S2Reconcile</effect><cost>3</cost><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===================== 1.104.0 术士：龙魂、恶鬼之血（Peter 定的等级：4 / 10 / 14，4 / 8 / 12） ===================== -->
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_DraconicSoul</defName>
+    <label>龙魂</label>
+    <description>血里流着真龙的魂：4 级龙血（体质 +2），10 级龙翼（走路无视地形），14 级龙威（和真龙一样的骇人威仪，能让敌人惊惧、恐慌逃跑）。</description>
+    <parent>LP_Class_Sorcerer</parent><order>2</order><emblem>LP/Classes/Subclass/Emblem_DraconicSoul</emblem><color>(0.85,0.45,0.25)</color>
+    <abilities><li><ability>LP_DS_DragonBlood</ability><level>4</level></li><li><ability>LP_DS_DragonFlight</ability><level>10</level></li><li><ability>LP_DS_DragonPresence</ability><level>14</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_FiendBlood</defName>
+    <label>恶鬼之血</label>
+    <description>把血脉里的恶鬼关在身体里，用法力上限换身体强化：眼睛（魅力）、皮肤（变红，伤口愈合更快并持续回复）、舌头（心灵敏感度）。每开一个强化，术士法力上限 −2。4 级同时只能开 1 个；8 级能开 2 个，强化效果翻倍；12 级选一个永久固化（一直开着、不占名额、不扣法力），另外两个照常维持。</description>
+    <parent>LP_Class_Sorcerer</parent><order>3</order><emblem>LP/Classes/Subclass/Emblem_FiendBlood</emblem><color>(0.7,0.15,0.18)</color>
+    <abilities><li><ability>LP_FB_Eyes</ability><level>4</level></li><li><ability>LP_FB_Skin</ability><level>4</level></li><li><ability>LP_FB_Tongue</ability><level>4</level></li>
+      <li><ability>LP_FB_Awaken</ability><level>8</level></li><li><ability>LP_FB_Bound</ability><level>12</level></li></abilities>
+    <choices><li><key>fbFixed</key><label>永久固化的强化</label><level>12</level><options><li>恶鬼之眼</li><li>恶鬼之皮</li><li>恶鬼之舌</li></options>
+      <tips><li>魅力 +4，一直开着，不扣法力上限。</li><li>皮肤变红，伤口愈合 ×2 并持续回复，一直开着，不扣法力上限。</li><li>心灵敏感度 +60%，一直开着，不扣法力上限。</li></tips></li></choices>
+  </LichPhylactery.LP_SubclassDef>
+
+  <HediffDef>
+    <defName>LP_FB_EyesBuff</defName>
+    <label>恶鬼之眼</label>
+    <description>眼睛里燃着恶鬼的光：魅力 +2（8 级起 +4）。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.7,0.15,0.18)</defaultLabelColor>
+    <initialSeverity>1</initialSeverity><maxSeverity>2</maxSeverity>
+    <stages><li><label>初醒</label></li><li><minSeverity>1.5</minSeverity><label>强化</label></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_FB_SkinBuff</defName>
+    <label>恶鬼之皮</label>
+    <description>皮肤变成恶鬼的红色：伤口愈合 ×1.5，每 4 秒回复 0.5 伤势（8 级起 ×2、回复 1）。</description>
+    <hediffClass>LichPhylactery.Hediff_FiendSkin</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.7,0.15,0.18)</defaultLabelColor>
+    <initialSeverity>1</initialSeverity><maxSeverity>2</maxSeverity>
+    <stages><li><label>初醒</label><statFactors><InjuryHealingFactor>1.5</InjuryHealingFactor></statFactors></li><li><minSeverity>1.5</minSeverity><label>强化</label><statFactors><InjuryHealingFactor>2</InjuryHealingFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_FB_TongueBuff</defName>
+    <label>恶鬼之舌</label>
+    <description>分叉的舌头尝得到别人的心思：心灵敏感度 +30%（8 级起 +60%）。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.7,0.15,0.18)</defaultLabelColor>
+    <initialSeverity>1</initialSeverity><maxSeverity>2</maxSeverity>
+    <stages><li><label>初醒</label><statOffsets><PsychicSensitivity>0.3</PsychicSensitivity></statOffsets></li><li><minSeverity>1.5</minSeverity><label>强化</label><statOffsets><PsychicSensitivity>0.6</PsychicSensitivity></statOffsets></li></stages>
+  </HediffDef>
+
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DS_DragonBlood</defName>
+    <label>龙血</label>
+    <description>被动：真龙的血让身体更结实，体质 +2（加在上限之后）。龙魂，术士 4 级。</description>
+    <iconPath>LP/Classes/Subclass2/DragonBlood</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_InnatePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DS_DragonFlight</defName>
+    <label>龙翼</label>
+    <description>被动：半飞半走，地形、积雪、植物都不再拖慢移动（墙、深水这类不能通行的地方照旧过不去）。龙魂，术士 10 级。</description>
+    <iconPath>LP/Classes/Subclass2/DragonFlight</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_InnatePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DS_DragonPresence</defName>
+    <label>龙威</label>
+    <description>被动：和真龙一样的骇人威仪。半径 10 内看得见你的敌人做一次感知豁免（难度看你的魅力）：失败就惊惧 1 分钟，人形还有机会恐慌逃跑；不管成败，同一个人 1 天内不再判定。机械体、亡灵、屠龙者等免疫。龙魂，术士 14 级。</description>
+    <iconPath>LP/Classes/Subclass2/DragonPresence</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_InnatePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_FB_Eyes</defName>
+    <label>血脉囚笼·恶鬼之眼</label>
+    <description>开 / 关：魅力 +2（8 级起 +4）。开着时术士法力上限 −2。同时能开的强化数：4 级 1 个，8 级 2 个（永久固化的那个不算）。恶鬼之血，术士 4 级。</description>
+    <iconPath>LP/Classes/Subclass2/FiendEyes</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S2Fiend</effect><hediff>LP_FB_EyesBuff</hediff><stat>LP_InnatePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_FB_Skin</defName>
+    <label>血脉囚笼·恶鬼之皮</label>
+    <description>开 / 关：皮肤变红，伤口愈合 ×1.5 并每 4 秒回复 0.5 伤势（8 级起 ×2、回复 1）。开着时术士法力上限 −2。恶鬼之血，术士 4 级。</description>
+    <iconPath>LP/Classes/Subclass2/FiendSkin</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S2Fiend</effect><hediff>LP_FB_SkinBuff</hediff><stat>LP_InnatePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_FB_Tongue</defName>
+    <label>血脉囚笼·恶鬼之舌</label>
+    <description>开 / 关：心灵敏感度 +30%（8 级起 +60%）。开着时术士法力上限 −2。恶鬼之血，术士 4 级。</description>
+    <iconPath>LP/Classes/Subclass2/FiendTongue</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S2Fiend</effect><hediff>LP_FB_TongueBuff</hediff><stat>LP_InnatePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_FB_Awaken</defName>
+    <label>血脉觉醒</label>
+    <description>被动：可以同时维持 2 个身体强化，所有强化效果翻倍（魅力 +4、愈合 ×2 并回复 1、心灵敏感度 +60%）。恶鬼之血，术士 8 级。</description>
+    <iconPath>LP/Classes/Subclass2/FiendAwaken</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_InnatePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_FB_Bound</defName>
+    <label>血肉固化</label>
+    <description>被动：在子职业窗口里选一个身体强化永久固化：一直开着、不占名额、不扣法力上限；另外两个照常开关维持。恶鬼之血，术士 12 级。</description>
+    <iconPath>LP/Classes/Subclass2/FiendBound</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_InnatePower</stat></li></comps>
+  </AbilityDef>
+</Defs>

@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.106.0 武僧子职业（Peter 的设计，见 Source/ClassSubclass3.cs）：暗影宗、散打宗。职业 3 级选，能力在武僧 3 / 6 / 11 / 17 级获得。 -->
+<Defs>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_ShadowWay</defName>
+    <label>暗影宗</label>
+    <description>在黑暗里修行的武僧：放出魔法黑暗、在暗处之间瞬移、化身幽影隐形，并抓住同伴打中敌人的破绽补上一击。“暗处”指光照低于 30% 的格子（夜里的户外、不开灯的房间）。</description>
+    <parent>LP_Class_Monk</parent><order>1</order><emblem>LP/Classes/Subclass/Emblem_ShadowWay</emblem><color>(0.45,0.4,0.6)</color>
+    <abilities><li><ability>LP_SH_ShadowArts</ability><level>3</level></li><li><ability>LP_SH_ShadowStep</ability><level>6</level></li><li><ability>LP_SH_Cloak</ability><level>11</level></li><li><ability>LP_SH_Opportunist</ability><level>17</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_OpenHandWay</defName>
+    <label>散打宗</label>
+    <description>终极的战技大师：疾风连击的每一拳都能击倒、推开或封住敌人，能用气治疗自己，睡醒后带着庇护的灵光，最后学会能隔天引爆的渗透劲。</description>
+    <parent>LP_Class_Monk</parent><order>2</order><emblem>LP/Classes/Subclass/Emblem_OpenHandWay</emblem><color>(0.95,0.8,0.4)</color>
+    <abilities><li><ability>LP_OH_Technique</ability><level>3</level></li><li><ability>LP_OH_Wholeness</ability><level>6</level></li><li><ability>LP_OH_Tranquility</ability><level>11</level></li>
+      <li><ability>LP_OH_Palm</ability><level>17</level></li><li><ability>LP_OH_Detonate</ability><level>17</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+
+  <!-- ===== 状态 ===== -->
+  <HediffDef>
+    <defName>LP_SH_DarkSight</defName>
+    <label>暗影视觉</label>
+    <description>站在暗处时视觉 +30%，不受魔法黑暗影响。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.45,0.4,0.6)</defaultLabelColor>
+    <stages><li><capMods><li><capacity>Sight</capacity><offset>0.3</offset></li></capMods></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_SH_StepStrike</defName>
+    <label>暗影步</label>
+    <description>刚从阴影里钻出来：下一次近战命中伤害 ×1.5，近战命中 +30%。</description>
+    <defaultLabelColor>(0.45,0.4,0.6)</defaultLabelColor>
+    <stages><li><statOffsets><MeleeHitChance>0.3</MeleeHitChance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_SH_Cloaked</defName>
+    <label>幽影斗篷</label>
+    <description>化身幽影：隐形，出手攻击或走进亮处就现形。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.45,0.4,0.6)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Invisibility"><visibleToPlayer>true</visibleToPlayer><affectedByDisruptor>true</affectedByDisruptor></li></comps>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_OH_Sealed</defName>
+    <label>封招</label>
+    <description>气被散打武僧打乱：近战命中 −30%。</description>
+    <isBad>true</isBad>
+    <stages><li><statOffsets><MeleeHitChance>-0.3</MeleeHitChance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_OH_Tranquil</defName>
+    <label>宁神境</label>
+    <description>周身环绕和平的灵光：敌人打来的每一下有 50% 的成功率落空（对方每比你高 1 级 −5%）。你攻击敌人就结束，睡一觉醒来重新获得。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.95,0.8,0.4)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_OH_Palm</defName>
+    <hediffClass>LichPhylactery.Hediff_ClassMark</hediffClass>
+    <label>渗透劲</label>
+    <description>体内潜伏着一股致命的劲力，散打武僧随时可以引爆它。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.95,0.8,0.4)</defaultLabelColor>
+  </HediffDef>
+
+  <!-- ===== 暗影宗 ===== -->
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_SH_ShadowArts</defName>
+    <label>暗影技艺</label>
+    <description>在 20 格内一点放出半径 3 的魔法黑暗：里面的敌人视觉 −50%，持续 10 秒 × 战技强度。被动：站在暗处时自己视觉 +30%、不受魔法黑暗影响。气 2，冷却 20 秒。暗影宗，武僧 3 级。</description>
+    <iconPath>LP/Classes/Subclass3/ShadowArts</iconPath>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3ShadowArts</effect><cost>2</cost><radius>3</radius><duration>600</duration><durationScales>true</durationScales><stat>LP_MartialPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_SH_ShadowStep</defName>
+    <label>暗影步</label>
+    <description>站在暗处时，瞬移到 12 格内看得见的另一个暗处空格；之后 5 秒内下一次近战命中伤害 ×1.5、命中 +30%。不耗气，冷却 10 秒。暗影宗，武僧 6 级。</description>
+    <iconPath>LP/Classes/Subclass3/ShadowStep</iconPath>
+    <hostile>false</hostile>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>12</range><warmupTime>0</warmupTime><targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3ShadowStep</effect><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SH_Cloak</defName>
+    <label>幽影斗篷</label>
+    <description>站在暗处时化身幽影：隐形，直到你出手攻击或走进亮处（光照 30% 以上）。不耗气，冷却 10 秒。暗影宗，武僧 11 级。</description>
+    <iconPath>LP/Classes/Subclass3/Cloak</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3Cloak</effect><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SH_Opportunist</defName>
+    <label>灵机一斩</label>
+    <description>被动：紧挨着你的敌人被别人打中时，你立刻对它补一次近战（完整的近战结算），每 2 秒一次。暗影宗，武僧 17 级。</description>
+    <iconPath>LP/Classes/Subclass3/Opportunist</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===== 散打宗 ===== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_OH_Technique</defName>
+    <label>散打技巧</label>
+    <description>疾风连击的每一拳附加一种效果，点这个按钮在三种之间切换：击倒（成功率 70%，击晕 1.5 秒）、推开（成功率 70%，推开 3 格）、封招（必定生效，6 秒内对方近战命中 −30%）。目标每比你高 1 级成功率 −5%，最低 10%。不耗气。散打宗，武僧 3 级。</description>
+    <iconPath>LP/Classes/Subclass3/Technique</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>30</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3TechMode</effect><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_OH_Wholeness</defName>
+    <label>混元体</label>
+    <description>运气自疗：立刻治疗 3 × 武僧等级 的伤势。不耗气，每天一次。散打宗，武僧 6 级。</description>
+    <iconPath>LP/Classes/Subclass3/Wholeness</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3Wholeness</effect><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_OH_Tranquility</defName>
+    <label>宁神境</label>
+    <description>被动：每次睡醒都带着和平的灵光——敌人打来的每一下有 50% 的成功率落空（对方每比你高 1 级 −5%，最低 10%）。你一攻击敌人灵光就散，下次睡醒再有。散打宗，武僧 11 级。</description>
+    <iconPath>LP/Classes/Subclass3/Tranquility</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_OH_Palm</defName>
+    <label>渗透劲</label>
+    <description>一拳把致命的劲力打进相邻敌人体内（一次完整的近战结算）：劲力潜伏 武僧等级 天，不产生任何效果，直到你用“引爆渗透劲”。同一时间只能有一个人身中渗透劲。气 3，冷却 10 秒。散打宗，武僧 17 级。</description>
+    <iconPath>LP/Classes/Subclass3/Palm</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3Palm</effect><cost>3</cost><stat>LP_MartialPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_OH_Detonate</defName>
+    <label>引爆渗透劲</label>
+    <description>引爆同一张地图上身中你渗透劲的敌人（不用看得见）：成功率 50%（首领 25%，目标每比你高 1 级 −5%，最低 10%）直接倒下；没成功也受 55 × 战技强度 力场伤害。不耗气，冷却 10 秒。散打宗，武僧 17 级。</description>
+    <iconPath>LP/Classes/Subclass3/Detonate</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3Detonate</effect><stat>LP_MartialPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+
+  <!-- ===================== 1.107.0 法师：塑能学派、书士会（Peter 的设计，法师 2 / 6 / 10 / 14 级；法师 2 级就能选子职业） ===================== -->
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Evocation</defName>
+    <label>塑能学派</label>
+    <description>把毁灭的法术打磨到极致：塑能法术（魔法飞弹、火球术、闪电束、解离术）不伤友军，魔法飞弹更强，伤害加上智力，还能超限导能让一发法术翻倍——代价是同一天再用会反噬。</description>
+    <parent>LP_Class_Wizard</parent><order>2</order><emblem>LP/Classes/Subclass/Emblem_Evocation</emblem><color>(0.95,0.5,0.3)</color>
+    <abilities><li><ability>LP_EV_Savant</ability><level>2</level></li><li><ability>LP_EV_Sculpt</ability><level>2</level></li><li><ability>LP_EV_Potent</ability><level>6</level></li>
+      <li><ability>LP_EV_Empowered</ability><level>10</level></li><li><ability>LP_EV_Overchannel</ability><level>14</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Scribes</defName>
+    <label>书士会</label>
+    <description>与法术书对话的法师：法师笔让读卷轴从不失误，觉醒魔典能改变火球和闪电的伤害类型，思维具现让法术暂时不耗法力，每天醒来多一张卷轴，危急时法术书替你挡下一击。</description>
+    <parent>LP_Class_Wizard</parent><order>3</order><emblem>LP/Classes/Subclass/Emblem_Scribes</emblem><color>(0.6,0.75,0.95)</color>
+    <abilities><li><ability>LP_SC_Quill</ability><level>2</level></li><li><ability>LP_SC_Tome</ability><level>2</level></li><li><ability>LP_SC_Manifest</ability><level>6</level></li>
+      <li><ability>LP_SC_MasterScrivener</ability><level>10</level></li><li><ability>LP_SC_OneWord</ability><level>14</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+
+  <HediffDef>
+    <defName>LP_EV_SavantBuff</defName>
+    <label>塑能学者</label>
+    <description>研究速度 +20%。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.95,0.5,0.3)</defaultLabelColor>
+    <stages><li><statOffsets><ResearchSpeed>0.2</ResearchSpeed></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_EV_Overchannel</defName>
+    <label>超限导能</label>
+    <description>下一个塑能法术伤害 ×2。</description>
+    <defaultLabelColor>(0.95,0.5,0.3)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_SC_QuillBuff</defName>
+    <label>法师笔</label>
+    <description>魔法羽毛笔：读卷轴不会失误，研究速度 +10%。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.6,0.75,0.95)</defaultLabelColor>
+    <stages><li><statOffsets><ResearchSpeed>0.1</ResearchSpeed></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_SC_Manifest</defName>
+    <label>思维具现</label>
+    <description>魔典里的意识浮在身边：接下来的法师法术不耗法力（严重度 = 剩余次数），15 格内的敌人无法隐形。</description>
+    <defaultLabelColor>(0.6,0.75,0.95)</defaultLabelColor>
+    <maxSeverity>10</maxSeverity>
+  </HediffDef>
+
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_EV_Savant</defName>
+    <label>塑能学者</label>
+    <description>被动：研究速度 +20%（钻研法术理论）。塑能学派，法师 2 级。</description>
+    <iconPath>LP/Classes/Subclass3/EvoSavant</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArcanePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_EV_Sculpt</defName>
+    <label>法术塑形（学派）</label>
+    <description>被动：你的法术伤害（火焰、寒冰、闪电、心灵、奥术力，不是武器打的）打不到友军，火球术、闪电束可以放心往混战里扔。和职业专长「法术塑形」（法力 −1、冷却 ×0.85）不同，可以同时有。塑能学派，法师 2 级。</description>
+    <iconPath>LP/Classes/Subclass3/EvoSculpt</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArcanePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_EV_Potent</defName>
+    <label>强力戏法</label>
+    <description>被动：魔法飞弹（法师的戏法）伤害 ×1.5。塑能学派，法师 6 级。</description>
+    <iconPath>LP/Classes/Subclass3/EvoPotent</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArcanePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_EV_Empowered</defName>
+    <label>强效塑能</label>
+    <description>被动：塑能法术（魔法飞弹、火球术、闪电束、解离术）伤害 + 智力调整值 × 10%（智力 16 → +30%）。塑能学派，法师 10 级。</description>
+    <iconPath>LP/Classes/Subclass3/EvoEmpowered</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArcanePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_EV_Overchannel</defName>
+    <label>超限导能</label>
+    <description>10 秒内放的下一个塑能法术伤害 ×2。每次睡觉之间第一次用没有代价；之后每多用一次，施法后自己受 26 / 39 / 52…点奥术力反噬（第 2 次 26，每次再 +13，无视抗性）。不耗法力，冷却 10 秒。塑能学派，法师 14 级。</description>
+    <iconPath>LP/Classes/Subclass3/EvoOverchannel</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_EV_Overchannel</hediff><duration>600</duration><stat>LP_ArcanePower</stat><fixedSeverity>true</fixedSeverity></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SC_Quill</defName>
+    <label>法师笔</label>
+    <description>被动：一支不用墨水的魔法羽毛笔——读卷轴不会失误，研究速度 +10%。书士会，法师 2 级。</description>
+    <iconPath>LP/Classes/Subclass3/ScribeQuill</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArcanePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SC_Tome</defName>
+    <label>觉醒魔典</label>
+    <description>点按钮切换火球术和闪电束的伤害类型：原样 → 火焰 → 寒冰 → 闪电 → 奥术力（用来打怕某种元素、或者不怕火的敌人）。不耗法力。书士会，法师 2 级。</description>
+    <iconPath>LP/Classes/Subclass3/ScribeTome</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>30</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3Tome</effect><stat>LP_ArcanePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SC_Manifest</defName>
+    <label>思维具现</label>
+    <description>召出魔典里的意识 1 小时：接下来 3 个法师法术不耗法力，15 格内的敌人无法隐形。每天一次。书士会，法师 6 级。</description>
+    <iconPath>LP/Classes/Subclass3/ScribeManifest</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3Manifest</effect><duration>2500</duration><stat>LP_ArcanePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SC_MasterScrivener</defName>
+    <label>大书士</label>
+    <description>被动：每次睡醒，背包里多一张卷轴（火球术、真知术、防护邪恶、传送术里随机一张），谁都能读。书士会，法师 10 级。</description>
+    <iconPath>LP/Classes/Subclass3/ScribeMaster</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArcanePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SC_OneWord</defName>
+    <label>一字同心</label>
+    <description>被动：每次睡觉之间一次，伤势已经过半时，挡下一次 10 点以上的伤害；代价是法力随机少 3～18 点（不够就扣到 0）。书士会，法师 14 级。</description>
+    <iconPath>LP/Classes/Subclass3/ScribeOneWord</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArcanePower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===================== 1.108.0 武僧：神龙宗（Peter 的设计，武僧 3 / 6 / 11 / 17 级） ===================== -->
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_DragonWay</defName>
+    <label>神龙宗</label>
+    <description>以气模仿巨龙的武僧：徒手打击带上龙的元素，喷吐龙息，乘风步时展开虚幻的龙翼，最后化身古龙、让敌人恐慌、护住同伴。龙的元素用“龙之打击”按钮在火焰、寒冰、闪电、强酸、毒素之间切换，龙之息和古龙姿都跟着它。</description>
+    <parent>LP_Class_Monk</parent><order>3</order><emblem>LP/Classes/Subclass/Emblem_DragonWay</emblem><color>(0.85,0.5,0.25)</color>
+    <abilities><li><ability>LP_DM_Disciple</ability><level>3</level></li><li><ability>LP_DM_Element</ability><level>3</level></li><li><ability>LP_DM_Breath</ability><level>3</level></li>
+      <li><ability>LP_DM_Wings</ability><level>6</level></li><li><ability>LP_DM_Aspect</ability><level>11</level></li><li><ability>LP_DM_Ascendant</ability><level>17</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+
+  <HediffDef>
+    <defName>LP_DM_PresenceBuff</defName>
+    <label>龙之威仪</label>
+    <description>举手投足带着巨龙的气势：社交影响 +15%，谈判能力 +10%。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.85,0.5,0.25)</defaultLabelColor>
+    <stages><li><statOffsets><SocialImpact>0.15</SocialImpact><NegotiationAbility>0.1</NegotiationAbility></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_DM_AspectResist</defName>
+    <label>古龙姿</label>
+    <description>古龙的灵光护着你：所选元素的伤害 ×0.5。</description>
+    <defaultLabelColor>(0.85,0.5,0.25)</defaultLabelColor>
+    <stages><li><label>火焰</label></li><li><minSeverity>1.5</minSeverity><label>寒冰</label></li><li><minSeverity>2.5</minSeverity><label>闪电</label></li><li><minSeverity>3.5</minSeverity><label>强酸</label></li><li><minSeverity>4.5</minSeverity><label>毒素</label></li></stages>
+  </HediffDef>
+
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DM_Disciple</defName>
+    <label>龙之徒</label>
+    <description>被动：龙之打击——徒手命中附加 4 × 战技强度 所选元素伤害；龙之威仪——社交影响 +15%、谈判能力 +10%。神龙宗，武僧 3 级。</description>
+    <iconPath>LP/Classes/Subclass3/DragonDisciple</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DM_Element</defName>
+    <label>龙之打击·元素</label>
+    <description>点按钮切换龙的元素：火焰 → 寒冰 → 闪电 → 强酸 → 毒素。龙之打击、龙之息、古龙姿都用它。不耗气。神龙宗，武僧 3 级。</description>
+    <iconPath>LP/Classes/Subclass3/DragonElement</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>30</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3DragonEl</effect><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_DM_Breath</defName>
+    <label>龙之息</label>
+    <description>朝一个方向喷出 6 格锥形的龙息（17 级起 12 格）：每个敌人受 12 × 战技强度 所选元素伤害（11 级 18、17 级 24），成功率 50% 被闪开一半（目标每比你高 1 级，闪开的成功率 +5%）。每天免费 2 + (武僧等级 − 1) ÷ 4 次，用完后每次 2 点气。冷却 5 秒。神龙宗，武僧 3 级。</description>
+    <iconPath>LP/Classes/Subclass3/DragonBreath</iconPath>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <verbProperties><range>12</range><warmupTime>0.5</warmupTime><requireLineOfSight>false</requireLineOfSight></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3Breath</effect><cost>2</cost><stat>LP_MartialPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DM_Wings</defName>
+    <label>龙翼翱翔</label>
+    <description>被动：乘风步期间背后展开虚幻的龙翼，走路时地形、积雪、植物都不减速。神龙宗，武僧 6 级。</description>
+    <iconPath>LP/Classes/Subclass3/DragonWings</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DM_Aspect</defName>
+    <label>古龙姿</label>
+    <description>散发 1 分钟的龙力灵光：半径 3 内的友军（含自己）所选元素伤害 ×0.5；灵光里的敌人成功率 50% 恐慌逃跑 10 秒（目标每比你高 1 级 −5%）。每天第一次免费，之后每次 3 点气。冷却 10 秒。神龙宗，武僧 11 级。</description>
+    <iconPath>LP/Classes/Subclass3/DragonAspect</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3Aspect</effect><cost>3</cost><duration>3600</duration><stat>LP_MartialPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DM_Ascendant</defName>
+    <label>神龙身</label>
+    <description>被动：强化吐息——龙之息 12 格、伤害 24 × 战技强度；盲视——3 格内的敌人无法隐形；怒气爆发——古龙姿时灵光里每个敌人受 16 × 战技强度 所选元素伤害。神龙宗，武僧 17 级。</description>
+    <iconPath>LP/Classes/Subclass3/DragonAscendant</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===================== 1.109.0 德鲁伊：大地、孢子、群星结社（德鲁伊 2 级选，能力在 2 / 6 / 10 / 14 级） ===================== -->
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_CircleLand</defName>
+    <label>大地结社</label>
+    <description>与脚下的土地相连：大地法术随地图气候变化（寒带 / 温带 / 沙漠 / 湿热，按地块的气温和降雨判断，Alpha Biomes 等模组的生物群系也一样），还能永久改造地形——挖出湖泊、造出沼泽、把泥地变成沃土。</description>
+    <parent>LP_Class_Druid</parent><order>1</order><emblem>LP/Classes/Subclass/Emblem_CircleLand</emblem><color>(0.45,0.75,0.4)</color>
+    <abilities><li><ability>LP_LD_LandSpell</ability><level>2</level></li><li><ability>LP_LD_NaturalRecovery</ability><level>2</level></li>
+      <li><ability>LP_LD_Terraform</ability><level>6</level></li><li><ability>LP_LD_TerraMode</ability><level>6</level></li><li><ability>LP_LD_LandStride</ability><level>6</level></li>
+      <li><ability>LP_LD_NatureWard</ability><level>10</level></li><li><ability>LP_LD_Sanctuary</ability><level>14</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_CircleSpores</defName>
+    <label>孢子结社</label>
+    <description>在腐烂里看见生命：死亡光环、腐烂之触、和孢子共生，敌人的尸体会长出真菌站起来替你作战。身边有光菌、玉菇等真菌植物时死亡光环更强。</description>
+    <parent>LP_Class_Druid</parent><order>2</order><emblem>LP/Classes/Subclass/Emblem_CircleSpores</emblem><color>(0.6,0.55,0.4)</color>
+    <abilities><li><ability>LP_SP_Halo</ability><level>2</level></li><li><ability>LP_SP_RotTouch</ability><level>2</level></li><li><ability>LP_SP_Symbiotic</ability><level>6</level></li>
+      <li><ability>LP_SP_Infestation</ability><level>10</level></li><li><ability>LP_SP_FungalBody</ability><level>14</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_CircleStars</defName>
+    <label>群星结社</label>
+    <description>读星象的德鲁伊：星光指引箭、化身星座（弓手放箭、圣杯治疗、巨龙稳住心神），每天的宇宙预兆庇佑友军或诅咒敌人。夜里在户外施法更强。</description>
+    <parent>LP_Class_Druid</parent><order>3</order><emblem>LP/Classes/Subclass/Emblem_CircleStars</emblem><color>(0.7,0.8,1)</color>
+    <abilities><li><ability>LP_ST_StarBolt</ability><level>2</level></li><li><ability>LP_ST_StarryForm</ability><level>6</level></li><li><ability>LP_ST_FormMode</ability><level>6</level></li>
+      <li><ability>LP_ST_CosmicOmen</ability><level>10</level></li><li><ability>LP_ST_FullOfStars</ability><level>14</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_LD_Frozen</defName>
+    <label>寒霜之握</label>
+    <description>脚下结冰：移动 ×0.4（升级后 ×0.2）。</description>
+    <isBad>true</isBad>
+    <stages><li><statFactors><MoveSpeed>0.4</MoveSpeed></statFactors></li><li><minSeverity>1.5</minSeverity><statFactors><MoveSpeed>0.2</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_LD_StrideBuff</defName>
+    <label>大地行者</label>
+    <description>地形、积雪、植物不减速，不会被藤蔓缠住；种植速度 +20%。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.45,0.75,0.4)</defaultLabelColor>
+    <stages><li><statOffsets><PlantWorkSpeed>0.2</PlantWorkSpeed></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_LD_WardBuff</defName>
+    <label>自然守护</label>
+    <description>免疫食物中毒和毒素积累，免疫力增长 ×1.5。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.45,0.75,0.4)</defaultLabelColor>
+    <stages><li><statFactors><ImmunityGainSpeed>1.5</ImmunityGainSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_SP_HaloOn</defName>
+    <label>死亡光环</label>
+    <description>身边飘着孢子：半径 2 内的敌人每 4 秒受坏死伤害；开着时法力恢复减半。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.6,0.55,0.4)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_SP_Rotting</defName>
+    <label>腐烂</label>
+    <description>伤口被孢子侵蚀：伤口不愈合。</description>
+    <isBad>true</isBad>
+    <stages><li><statFactors><InjuryHealingFactor>0</InjuryHealingFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_SP_SymbioticBuff</defName>
+    <label>共生实体</label>
+    <description>和孢子共生：近战附加坏死伤害，死亡光环伤害 ×2。</description>
+    <defaultLabelColor>(0.6,0.55,0.4)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_SP_Puppet</defName>
+    <label>真菌傀儡</label>
+    <description>被真菌重新拉起来的尸体，一天后就会腐烂。不会精神崩溃。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.6,0.55,0.4)</defaultLabelColor>
+    <stages><li><statOffsets><MentalBreakThreshold>-1</MentalBreakThreshold></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_SP_BodyBuff</defName>
+    <label>真菌之躯</label>
+    <description>身体被真菌改造：不会流血，免疫毒素和恐惧，利器伤害 ×0.75。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.6,0.55,0.4)</defaultLabelColor>
+    <stages><li><totalBleedFactor>0</totalBleedFactor></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_ST_MapBuff</defName>
+    <label>星图</label>
+    <description>研究速度 +10%；夜里在户外，德鲁伊法术强度 ×1.25。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.7,0.8,1)</defaultLabelColor>
+    <stages><li><statOffsets><ResearchSpeed>0.1</ResearchSpeed></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ST_Guided</defName>
+    <label>星光指引</label>
+    <description>被星光照亮：下一次受到的伤害 ×1.25。</description>
+    <isBad>true</isBad>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ST_Form</defName>
+    <label>星象形态</label>
+    <description>化身星座：弓手每 4 秒朝最近的敌人射一箭；圣杯每 4 秒治疗身边伤得最重的友军；巨龙让心神稳如磐石（心智抗性 +30%、疼痛休克阈值 +30%）。</description>
+    <defaultLabelColor>(0.7,0.8,1)</defaultLabelColor>
+    <stages><li><label>弓手</label></li><li><minSeverity>1.5</minSeverity><label>圣杯</label></li><li><minSeverity>2.5</minSeverity><label>巨龙</label><statOffsets><LP_MindResist>0.3</LP_MindResist><PainShockThreshold>0.3</PainShockThreshold></statOffsets></li></stages>
+  </HediffDef>
+
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_LD_LandSpell</defName>
+    <label>大地法术</label>
+    <description>按所在地图的气候放出不同的法术（20 格内一点）：寒带——寒霜之握（半径 3，8 × 生长强度 冰冻，移动 ×0.4 10 秒）；温带——缠根（半径 3，6 钝器并被藤蔓缠住 10 秒）；沙漠——烈日光柱（朝那里一条 10 格的线，15 火焰并视觉 −50% 3 秒）；湿热——疫病之雾（半径 3 毒素积累 +15%）。10 级起升级：寒霜 ×0.2 并 50% 冻住 3 秒，缠根和疫病半径 5、毒素 +25%，烈日白天 ×1.5。法力 2，冷却 20 秒。大地结社，德鲁伊 2 级。</description>
+    <iconPath>LP/Classes/Subclass3/LandSpell</iconPath>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3LandSpell</effect><cost>2</cost><stat>LP_VerdantPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_LD_NaturalRecovery</defName>
+    <label>自然恢复</label>
+    <description>静坐 5 秒和大地交流，回复一半的法力上限。每天一次。大地结社，德鲁伊 2 级。</description>
+    <iconPath>LP/Classes/Subclass3/NaturalRecovery</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3NatRecover</effect><stat>LP_VerdantPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_LD_Terraform</defName>
+    <label>大地塑形</label>
+    <description>永久改造 20 格内一点半径 2 的地形（10 级起半径 3），变成“地形”按钮选的那种：深水（挖成湖）、浅水、沼泽、泥地、土壤、沃土、沙地。只改自然地面——玩家铺的地板、有建筑 / 物品 / 小人的格子、熔岩和丙烷湖（Alpha Biomes）这类特殊地形不动；变成水时上面的植物会被冲掉。法力 2，冷却 10 秒。大地结社，德鲁伊 6 级。</description>
+    <iconPath>LP/Classes/Subclass3/Terraform</iconPath>
+    <hostile>false</hostile>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>2</warmupTime><requireLineOfSight>false</requireLineOfSight></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3Terraform</effect><cost>2</cost><radius>2</radius><stat>LP_VerdantPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_LD_TerraMode</defName>
+    <label>大地塑形·地形</label>
+    <description>点按钮切换大地塑形要造的地形：深水 → 浅水 → 沼泽 → 泥地 → 土壤 → 沃土 → 沙地。不耗法力。大地结社，德鲁伊 6 级。</description>
+    <iconPath>LP/Classes/Subclass3/TerraMode</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>30</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3TerraMode</effect><stat>LP_VerdantPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_LD_LandStride</defName>
+    <label>大地行者</label>
+    <description>被动：地形、积雪、植物都不减速，不会被藤蔓缠住；种植速度 +20%。大地结社，德鲁伊 6 级。</description>
+    <iconPath>LP/Classes/Subclass3/LandStride</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_VerdantPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_LD_NatureWard</defName>
+    <label>自然守护</label>
+    <description>被动：免疫食物中毒和毒素积累，免疫力增长 ×1.5；大地法术升级，大地塑形半径 +1。大地结社，德鲁伊 10 级。</description>
+    <iconPath>LP/Classes/Subclass3/NatureWard</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_VerdantPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_LD_Sanctuary</defName>
+    <label>自然庇护所</label>
+    <description>被动：动物（野生的、狂暴的、敌人的）的攻击伤不了你；站在自然地面（不是地板）上时每 4 秒治疗 1。大地结社，德鲁伊 14 级。</description>
+    <iconPath>LP/Classes/Subclass3/Sanctuary</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_VerdantPower</stat></li></comps>
+  </AbilityDef>
+
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SP_Halo</defName>
+    <label>死亡光环</label>
+    <description>开 / 关：半径 2 内的敌人每 4 秒受 3 × 生长强度 坏死伤害（身边有真菌植物时 ×1.5）。开着时法力恢复减半。孢子结社，德鲁伊 2 级。</description>
+    <iconPath>LP/Classes/Subclass3/SporeHalo</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>30</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3Halo</effect><stat>LP_VerdantPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_SP_RotTouch</defName>
+    <label>腐烂之触</label>
+    <description>相邻敌人受 8 × 生长强度 坏死伤害，1 小时内伤口不愈合。法力 1，冷却 5 秒。孢子结社，德鲁伊 2 级。</description>
+    <iconPath>LP/Classes/Subclass3/RotTouch</iconPath>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3RotTouch</effect><cost>1</cost><power>8</power><stat>LP_VerdantPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SP_Symbiotic</defName>
+    <label>共生实体</label>
+    <description>1 小时：得到 4 × 德鲁伊等级 的护盾，近战附加 4 × 生长强度 坏死伤害，死亡光环伤害 ×2。法力 2，冷却 1 小时。孢子结社，德鲁伊 6 级。</description>
+    <iconPath>LP/Classes/Subclass3/Symbiotic</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3Symbiotic</effect><cost>2</cost><duration>2500</duration><stat>LP_VerdantPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SP_Infestation</defName>
+    <label>真菌滋长</label>
+    <description>被动：10 格内的人形敌人死后，成功率 50% 长出真菌站起来，替你作战 1 天（不会精神崩溃，到期化成腐土）；它的装备先掉在地上。同一张地图最多 4 个。孢子结社，德鲁伊 10 级。</description>
+    <iconPath>LP/Classes/Subclass3/Infestation</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_VerdantPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SP_FungalBody</defName>
+    <label>真菌之躯</label>
+    <description>被动：不会流血，免疫毒素和恐惧，受到的利器伤害 ×0.75。孢子结社，德鲁伊 14 级。</description>
+    <iconPath>LP/Classes/Subclass3/FungalBody</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_VerdantPower</stat></li></comps>
+  </AbilityDef>
+
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_ST_StarBolt</defName>
+    <label>指引箭</label>
+    <description>24 格内一个敌人受 14 × 生长强度 光耀伤害，被星光照亮：下一次受到的伤害 ×1.25。每天免费 2 + (德鲁伊等级 − 1) ÷ 4 次，用完后每次 1 法力。被动「星图」：研究速度 +10%；夜里在户外，德鲁伊法术强度 ×1.25。冷却 5 秒。群星结社，德鲁伊 2 级。</description>
+    <iconPath>LP/Classes/Subclass3/StarBolt</iconPath>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <verbProperties><range>24</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3StarBolt</effect><cost>1</cost><power>14</power><stat>LP_VerdantPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_ST_StarryForm</defName>
+    <label>星象形态</label>
+    <description>化身“星座”按钮选的那个星座 1 小时：弓手（每 4 秒朝 15 格内最近的敌人射一箭，8 × 生长强度 光耀）、圣杯（每 4 秒治疗 6 格内伤得最重的友军 4 × 生长强度）、巨龙（心智抗性 +30%、疼痛休克阈值 +30%）。形态中途也能切换星座。法力 2，冷却 2 小时。群星结社，德鲁伊 6 级。</description>
+    <iconPath>LP/Classes/Subclass3/StarryForm</iconPath>
+    <cooldownTicksRange>5000</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3StarryForm</effect><cost>2</cost><duration>2500</duration><stat>LP_VerdantPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_ST_FormMode</defName>
+    <label>星象形态·星座</label>
+    <description>点按钮切换星座：弓手 → 圣杯 → 巨龙。不耗法力。群星结社，德鲁伊 6 级。</description>
+    <iconPath>LP/Classes/Subclass3/FormMode</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>30</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3FormMode</effect><stat>LP_VerdantPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_ST_CosmicOmen</defName>
+    <label>宇宙预兆</label>
+    <description>被动：每天醒来抽一个预兆。吉日：10 格内的友军受到的伤害 ×0.9；凶日：10 格内的敌人受到的伤害 ×1.1。群星结社，德鲁伊 10 级。</description>
+    <iconPath>LP/Classes/Subclass3/CosmicOmen</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_VerdantPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_ST_FullOfStars</defName>
+    <label>全星辉</label>
+    <description>被动：星象形态中半透明，受到的伤害 ×0.5（心灵伤害除外），走路不受地形影响。群星结社，德鲁伊 14 级。</description>
+    <iconPath>LP/Classes/Subclass3/FullOfStars</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_VerdantPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===================== 1.110.0 牧师：生命、光明、熔炉领域（牧师 1 级选，能力在 1 / 2 / 6 / 8 / 17 级） ===================== -->
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_LifeDomain</defName>
+    <label>生命领域</label>
+    <description>守护生命的牧师：治疗法术更强，医疗和手术更好；引导神力「保全生命」一次治疗一片友军。引导神力每天 1 次（6 级 2 次、18 级 3 次），不耗神恩。</description>
+    <parent>LP_Class_Cleric</parent><order>1</order><emblem>LP/Classes/Subclass/Emblem_LifeDomain</emblem><color>(0.95,0.85,0.5)</color>
+    <abilities><li><ability>LP_LF_Disciple</ability><level>1</level></li><li><ability>LP_LF_Preserve</ability><level>2</level></li><li><ability>LP_LF_BlessedHealer</ability><level>6</level></li>
+      <li><ability>LP_LF_DivineStrike</ability><level>8</level></li><li><ability>LP_LF_Supreme</ability><level>17</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_LightDomain</defName>
+    <label>光明领域</label>
+    <description>带来光明的牧师：强光让敌人的攻击落空，光亮术照亮黑暗，破晓之光驱散魔法黑暗和隐形。克制暗影宗、暗影魔法、幽域追踪者这类靠“暗处”的敌人。引导神力每天 1 次（6 级 2 次、18 级 3 次）。</description>
+    <parent>LP_Class_Cleric</parent><order>2</order><emblem>LP/Classes/Subclass/Emblem_LightDomain</emblem><color>(1,0.9,0.4)</color>
+    <abilities><li><ability>LP_LT_WardingFlare</ability><level>1</level></li><li><ability>LP_LT_Light</ability><level>1</level></li><li><ability>LP_LT_Dawn</ability><level>2</level></li>
+      <li><ability>LP_LT_ImprovedFlare</ability><level>6</level></li><li><ability>LP_LT_Potent</ability><level>8</level></li><li><ability>LP_LT_Corona</ability><level>17</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_ForgeDomain</defName>
+    <label>熔炉领域</label>
+    <description>锻炉之神的牧师：每天给装备附魔强化 +1，用钢变出优秀品质的兵器，穿重甲时更抗打，最后不惧火焰。制作速度 +10%。</description>
+    <parent>LP_Class_Cleric</parent><order>3</order><emblem>LP/Classes/Subclass/Emblem_ForgeDomain</emblem><color>(0.85,0.45,0.3)</color>
+    <abilities><li><ability>LP_FG_Blessing</ability><level>1</level></li><li><ability>LP_FG_Artisan</ability><level>2</level></li><li><ability>LP_FG_Soul</ability><level>6</level></li>
+      <li><ability>LP_FG_DivineStrike</ability><level>8</level></li><li><ability>LP_FG_Saint</ability><level>17</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+
+  <ThingDef>
+    <defName>LP_LT_LightOrb</defName>
+    <label>光亮术</label>
+    <description>牧师点亮的一团光，一天后熄灭。</description>
+    <thingClass>ThingWithComps</thingClass>
+    <category>Ethereal</category>
+    <drawerType>None</drawerType>
+    <tickerType>Normal</tickerType>
+    <useHitPoints>false</useHitPoints>
+    <selectable>false</selectable>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <comps>
+      <li Class="CompProperties_Glower"><glowRadius>6</glowRadius><glowColor>(255,240,200,0)</glowColor></li>
+      <li Class="CompProperties_Lifespan"><lifespanTicks>60000</lifespanTicks></li>
+    </comps>
+  </ThingDef>
+  <HediffDef>
+    <defName>LP_LF_DiscipleBuff</defName>
+    <label>生命门徒</label>
+    <description>治疗法术 ×1.3；缝合速度、缝合质量 +15%，手术成功率 +10%。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.95,0.85,0.5)</defaultLabelColor>
+    <stages><li><statOffsets><MedicalTendSpeed>0.15</MedicalTendSpeed><MedicalTendQuality>0.15</MedicalTendQuality><MedicalSurgerySuccessChance>0.1</MedicalSurgerySuccessChance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_FG_CraftBuff</defName>
+    <label>熔炉之子</label>
+    <description>制作和其他手工活速度 +10%。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.85,0.45,0.3)</defaultLabelColor>
+    <stages><li><statOffsets><GeneralLaborSpeed>0.1</GeneralLaborSpeed></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_LT_CoronaOn</defName>
+    <label>晨光之冕</label>
+    <description>周身燃着晨光：半径 6 内的敌人每 4 秒受光耀伤害、视觉 −30%。</description>
+    <defaultLabelColor>(1,0.9,0.4)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_LT_Dazzled</defName>
+    <label>晨光刺目</label>
+    <description>被晨光刺得睁不开眼：视觉 −30%。</description>
+    <isBad>true</isBad>
+    <stages><li><capMods><li><capacity>Sight</capacity><offset>-0.3</offset></li></capMods></li></stages>
+  </HediffDef>
+
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_LF_Disciple</defName>
+    <label>生命门徒</label>
+    <description>被动：治疗伤口、群体治疗的治疗量 ×1.3；缝合速度、缝合质量 +15%，手术成功率 +10%。生命领域，牧师 1 级。</description>
+    <iconPath>LP/Classes/Subclass3/LifeDisciple</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_LF_Preserve</defName>
+    <label>引导神力·保全生命</label>
+    <description>半径 6 内伤势过半的友军分享 5 × 牧师等级 的治疗，先给伤得最重的，每人最多治回一半伤势。引导神力 1，不耗神恩。生命领域，牧师 2 级。</description>
+    <iconPath>LP/Classes/Subclass3/LifePreserve</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3Preserve</effect><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_LF_BlessedHealer</defName>
+    <label>受祝的治疗者</label>
+    <description>被动：每放一次治疗伤口或群体治疗，自己也治疗 2 + 这个法术的神恩消耗。生命领域，牧师 6 级。</description>
+    <iconPath>LP/Classes/Subclass3/LifeBlessed</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_LF_DivineStrike</defName>
+    <label>神圣打击·光耀</label>
+    <description>被动：每 2 秒第一次武器命中附加 8 × 神恩强度 光耀伤害（14 级起 16）。生命领域，牧师 8 级。</description>
+    <iconPath>LP/Classes/Subclass3/LifeStrike</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_LF_Supreme</defName>
+    <label>至高治疗</label>
+    <description>被动：治疗法术的治疗量再 ×1.5（总计 ×1.95）。生命领域，牧师 17 级。</description>
+    <iconPath>LP/Classes/Subclass3/LifeSupreme</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_LT_WardingFlare</defName>
+    <label>守护之光</label>
+    <description>被动：敌人打你时，用掉一次守护之光，成功率 50%（攻击者每比你高 1 级 −5%）被强光闪得落空。每天次数 = 感知调整值（至少 1）。光明领域，牧师 1 级。</description>
+    <iconPath>LP/Classes/Subclass3/LightFlare</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_LT_Light</defName>
+    <label>光亮术</label>
+    <description>戏法：让 20 格内一个格子发光 1 天（照明半径 6）。不耗神恩，冷却 5 秒。光明领域，牧师 1 级。</description>
+    <iconPath>LP/Classes/Subclass3/LightOrb</iconPath>
+    <hostile>false</hostile>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>0.5</warmupTime><requireLineOfSight>false</requireLineOfSight><targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3Light</effect><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_LT_Dawn</defName>
+    <label>引导神力·破晓之光</label>
+    <description>半径 6 内驱散魔法黑暗，隐形的敌人现形 1 小时，每个敌人受 10 × 神恩强度 + 牧师等级 光耀伤害（6 级起对亡灵、邪魔、夺心魔 ×2）。引导神力 1，不耗神恩。光明领域，牧师 2 级。</description>
+    <iconPath>LP/Classes/Subclass3/LightDawn</iconPath>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3Dawn</effect><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_LT_ImprovedFlare</defName>
+    <label>光之守卫强化</label>
+    <description>被动：守护之光也护 15 格内的友军；破晓之光对亡灵、邪魔、夺心魔 ×2。光明领域，牧师 6 级。</description>
+    <iconPath>LP/Classes/Subclass3/LightImproved</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_LT_Potent</defName>
+    <label>强力施法</label>
+    <description>被动：神圣打击（牧师戏法）伤害 + 感知调整值 × 10%。光明领域，牧师 8 级。</description>
+    <iconPath>LP/Classes/Subclass3/LightPotent</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_LT_Corona</defName>
+    <label>晨光之冕</label>
+    <description>1 分钟晨光光环：半径 6 内的敌人每 4 秒受 8 × 神恩强度 光耀伤害、视觉 −30%。还有引导神力时用掉一次、不耗神恩，否则神恩 3。冷却 10 秒。光明领域，牧师 17 级。</description>
+    <iconPath>LP/Classes/Subclass3/LightCorona</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3Corona</effect><cost>3</cost><duration>3600</duration><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_FG_Blessing</defName>
+    <label>熔炉祝福</label>
+    <description>给手里的武器（没有武器就选身上护甲最好的一件衣服）附魔强化 +1（上限 +10）；换一件祝福时，上一件的 +1 收回。被动：制作和手工活速度 +10%。每天一次。熔炉领域，牧师 1 级。</description>
+    <iconPath>LP/Classes/Subclass3/ForgeBlessing</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3ForgeBless</effect><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_FG_Artisan</defName>
+    <label>引导神力·工匠祝福</label>
+    <description>用地图上没被禁止的 50 钢，在脚边变出一件优秀品质的钢制长剑、长矛或钉锤（弹窗选）。引导神力 1，不耗神恩。熔炉领域，牧师 2 级。</description>
+    <iconPath>LP/Classes/Subclass3/ForgeArtisan</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <verbProperties><warmupTime>3</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S3Artisan</effect><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_FG_Soul</defName>
+    <label>熔炉之魂</label>
+    <description>被动：火焰伤害 ×0.5；穿重甲（利器护甲 60% 以上）时受到的伤害再 ×0.9。熔炉领域，牧师 6 级。</description>
+    <iconPath>LP/Classes/Subclass3/ForgeSoul</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_FG_DivineStrike</defName>
+    <label>神圣打击·熔火</label>
+    <description>被动：每 2 秒第一次武器命中附加 8 × 神恩强度 火焰伤害（14 级起 16）。熔炉领域，牧师 8 级。</description>
+    <iconPath>LP/Classes/Subclass3/ForgeStrike</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_FG_Saint</defName>
+    <label>熔炉圣徒</label>
+    <description>被动：免疫火焰和燃烧；穿重甲时受到的非法术伤害 ×0.5（取代熔炉之魂的 ×0.9）。熔炉领域，牧师 17 级。</description>
+    <iconPath>LP/Classes/Subclass3/ForgeSaint</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+</Defs>

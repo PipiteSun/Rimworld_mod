@@ -11,39 +11,20 @@ namespace LichPhylactery.HARBridge {
  public static class BridgeChecks {
   static int n;
   static void Check(bool ok,string message){if(!ok)throw new Exception(message);n++;Log.Message("[LICH-TEST] OK "+message);}
+  // 1.102.0：六臂蛇人、双头巨人、独眼巨人不再是 HAR 种族，是原版人类 + 异种型。HAR 启用时人类也是 ThingDef_AlienRace：确认它不拦这三个异种型、背景与 Isekai 特性，旧种族定义不在了。
+  static readonly string[] kins={"LP_MarilithKin","LP_EttinKin","LP_CyclopsKin"};
+  static bool HumanTakes(string kin){var x=DefDatabase<XenotypeDef>.GetNamedSilentFail(kin);return x!=null && RaceRestrictionSettings.CanUseXenotype(x,ThingDefOf.Human);}
   public static int Run(){
    n=0;
-   var race=DefDatabase<ThingDef>.GetNamed(Marilith.Race) as ThingDef_AlienRace;
-   Check(race!=null && race.alienRace.generalSettings.maleGenderProbability<.16f && race.alienRace.generalSettings.maleGenderProbability>.14f && race.alienRace.generalSettings.humanRecipeImport && race.alienRace.generalSettings.allowHumanBios,"HAR race LP_Marilith: 85% female, human recipes imported, human backstories allowed");
-   var addons=race.alienRace.generalSettings.alienPartGenerator.bodyAddons;
-   var arms=addons.Where(a=>a.path.Contains("/Arm")).ToList();var tails=addons.Where(a=>a.path.Contains("/Tail")).ToList();
-   Check(addons.Count==10 && arms.Count==8 && tails.Count==2 && arms.All(a=>a.conditions.OfType<AlienRace.ExtendedGraphics.ConditionBodyPart>().Any(c=>c.bodyPart==BodyPartDefOf.Arm && !c.bodyPartLabel.NullOrEmpty())) && tails.All(a=>a.conditions.OfType<AlienRace.ExtendedGraphics.ConditionBodyPart>().Any(c=>c.bodyPart?.defName=="LP_SerpentTail")),"HAR body addons: four extra arms bound to their arm parts and a serpent tail bound to LP_SerpentTail (adult and child sets)");
-   var kin=DefDatabase<XenotypeDef>.GetNamed("LP_MarilithKin");
-   Check(RaceRestrictionSettings.CanUseXenotype(kin,race) && !RaceRestrictionSettings.CanUseXenotype(XenotypeDefOf.Baseliner,race) && !RaceRestrictionSettings.CanUseXenotype(kin,ThingDefOf.Human),"only marilith kin for the race, and the xenotype is race-restricted");
-   // 1.32.0 背景特性与其他模组的特性：HAR 不限制这个种族的特性。
+   var human=ThingDefOf.Human as ThingDef_AlienRace;
    var traits=DefDatabase<TraitDef>.AllDefsListForReading.Where(t=>t.defName.StartsWith("LP_Background_") || t.defName.StartsWith("IKM_") || t.defName.StartsWith("Isekai")).ToList();
-   Check(traits.Count>0 && traits.All(t=>RaceRestrictionSettings.CanGetTrait(t,race,t.degreeDatas?.FirstOrDefault()?.degree??0,null)),"HAR does not restrict background/Isekai traits for the race ("+traits.Count+" traits)");
-   var settings=DefDatabase<RaceSettings>.GetNamed("LP_MarilithRaceSettings");
-   Check(settings.pawnKindSettings.startingColonists.Any(e=>e.factionDefs.Contains(FactionDefOf.PlayerColony) && e.pawnKindEntries.Any(k=>k.kindDefs.Any(d=>d.race==race))) && settings.pawnKindSettings.alienwandererkinds.Any() && settings.pawnKindSettings.alienrefugeekinds.Any(),"marilith colonists are offered at game start, as wanderers and as refugees");
-   Check(RaceRestrictionSettings.CanReproduce(race,ThingDefOf.Human) && RaceRestrictionSettings.CanReproduce(ThingDefOf.Human,race),"marilith and humans can have children together");
+   Check(human!=null && kins.All(HumanTakes) && DefDatabase<ThingDef>.GetNamedSilentFail(Marilith.Race)==null && traits.All(t=>RaceRestrictionSettings.CanGetTrait(t,human,t.degreeDatas?.FirstOrDefault()?.degree??0,null)),"HAR on: humans (HAR alien race) can use the marilith/ettin/cyclops xenotypes and background/Isekai traits; the old HAR races are gone");
    return n;
   }
-  // 1.44.0 双头巨人、独眼巨人（GiantKinHAR 组调用）：一条合并检查。
+  // GiantKinHAR 组调用：同上，只看两族巨人。
   public static int RunGiants(){
    n=0;
-   var ettin=DefDatabase<ThingDef>.GetNamed(Ettin.Race) as ThingDef_AlienRace;var cyclops=DefDatabase<ThingDef>.GetNamed(Cyclops.Race) as ThingDef_AlienRace;
-   var ea=ettin.alienRace.generalSettings.alienPartGenerator.bodyAddons;var ca=cyclops.alienRace.generalSettings.alienPartGenerator.bodyAddons;
-   bool boundHead=ea.All(a=>a.conditions.OfType<AlienRace.ExtendedGraphics.ConditionBodyPart>().Any(c=>c.bodyPart?.defName==Ettin.SecondHead));
-   bool boundEye=ca.Count==1 && ca[0].alignWithHead && ca[0].conditions.OfType<AlienRace.ExtendedGraphics.ConditionBodyPart>().Any(c=>c.bodyPart?.defName==Cyclops.Eye);
-   var ek=DefDatabase<XenotypeDef>.GetNamed("LP_EttinKin");var ck=DefDatabase<XenotypeDef>.GetNamed("LP_CyclopsKin");
-   var settings=DefDatabase<RaceSettings>.GetNamed("LP_HARGiantsRaceSettings");
-   bool offered=new[]{ettin,cyclops}.All(r=>settings.pawnKindSettings.startingColonists.Any(e=>e.factionDefs.Contains(FactionDefOf.PlayerColony) && e.pawnKindEntries.Any(k=>k.chance==3f && k.kindDefs.Any(d=>d.race==r)))) && settings.pawnKindSettings.alienwandererkinds.Any() && settings.pawnKindSettings.alienrefugeekinds.Count==2;
-   var traits=DefDatabase<TraitDef>.AllDefsListForReading.Where(t=>t.defName.StartsWith("LP_Background_") || t.defName.StartsWith("IKM_") || t.defName.StartsWith("Isekai")).ToList();
-   bool traitsOk=traits.Count>0 && traits.All(t=>RaceRestrictionSettings.CanGetTrait(t,ettin,t.degreeDatas?.FirstOrDefault()?.degree??0,null) && RaceRestrictionSettings.CanGetTrait(t,cyclops,t.degreeDatas?.FirstOrDefault()?.degree??0,null));
-   Check(ettin!=null && cyclops!=null && ea.Count==8 && boundHead && boundEye && traitsOk && ettin.alienRace.generalSettings.allowHumanBios && cyclops.alienRace.generalSettings.allowHumanBios && ettin.alienRace.generalSettings.humanRecipeImport && cyclops.alienRace.generalSettings.humanRecipeImport
-    && RaceRestrictionSettings.CanUseXenotype(ek,ettin) && RaceRestrictionSettings.CanUseXenotype(ck,cyclops) && !RaceRestrictionSettings.CanUseXenotype(XenotypeDefOf.Baseliner,ettin) && !RaceRestrictionSettings.CanUseXenotype(ck,ThingDefOf.Human)
-    && offered && RaceRestrictionSettings.CanReproduce(ettin,ThingDefOf.Human) && RaceRestrictionSettings.CanReproduce(ThingDefOf.Human,cyclops),
-    "HAR ettin and cyclops: second-head add-ons bound to LP_EttinHead (8), cyclops eye add-on bound to LP_CyclopsEye; race-restricted xenotypes; background/Isekai traits and human backstories allowed; offered at start/as wanderers/refugees at weight 3; can have children with humans");
+   Check(HumanTakes("LP_EttinKin") && HumanTakes("LP_CyclopsKin") && DefDatabase<ThingDef>.GetNamedSilentFail(Ettin.Race)==null && DefDatabase<ThingDef>.GetNamedSilentFail(Cyclops.Race)==null,"HAR on: humans can use the ettin and cyclops xenotypes; the old HAR races are gone");
    return n;
   }
   // 1.52.0 五色真龙（ChromaticDragons 组调用）：种族存在、只用自带攻击（不穿衣服不拿武器）、不用人类背景、龙头型、身体贴图路径、不染肤色。

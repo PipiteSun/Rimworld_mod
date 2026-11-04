@@ -42,7 +42,7 @@ namespace LichPhylactery {
    new AbyssTarget{key="succubus",label="魅魔",kind="LP_AH_Succubus",tier=3,bind=true,startLevel=8,demon="succubus",gender=Gender.Female},
    new AbyssTarget{key="incubus",label="梦魔",kind="LP_AH_Succubus",tier=3,bind=true,startLevel=8,demon="succubus",gender=Gender.Male},
    new AbyssTarget{key="nabassu",label="纳巴苏",kind="LP_AH_Nabassu",tier=3,bind=true,startLevel=10,demon="nabassu"},
-   new AbyssTarget{key="marilith",label="六臂蛇魔",kind="LP_MarilithColonist",tier=3,bind=true,startLevel=10,demon="marilith",needHAR=true},
+   new AbyssTarget{key="marilith",label="六臂蛇魔",kind="LP_MarilithColonist",tier=3,bind=true,startLevel=10,demon="marilith"},
    new AbyssTarget{key="balor",label="炎魔",kind="LP_FH_Balor",tier=4,thrallDays=1,demon="balor"},
   };
   public static AbyssTarget Target(string key)=>Targets.FirstOrDefault(t=>t.key==key);
@@ -437,9 +437,9 @@ namespace LichPhylactery {
   public static PortalPlaneDef AbyssPlane=>plane??(plane=DefDatabase<PortalPlaneDef>.GetNamedSilentFail("LP_Plane_Abyss"));
   public const float CoinLichFeed=Souls.BaseValue*.25f+Souls.PerSkillLevel*60f*.25f; // 献祭一具普通尸体（技能合计约 60）的 25%
   public const int ScreamCoins=10,BookTicks=GenDate.TicksPerHour*4;
-  // 典籍记载的恶魔：巴路古拉 / 哈兹魔 / 魅魔 / 纳巴苏 / 六臂蛇魔 / 炎魔 = 3/3/2/2/1/0.5；没 HAR 不出六臂蛇魔。
+  // 典籍记载的恶魔：巴路古拉 / 哈兹魔 / 魅魔 / 纳巴苏 / 六臂蛇魔 / 炎魔 = 3/3/2/2/1/0.5。
   public static string RandomDemon(){
-   var w=new List<(string d,float w)>{("barlgura",3f),("hezrou",3f),("succubus",2f),("nabassu",2f),("balor",.5f)};if(Marilith.Loaded)w.Add(("marilith",1f));
+   var w=new List<(string d,float w)>{("barlgura",3f),("hezrou",3f),("succubus",2f),("nabassu",2f),("balor",.5f)};w.Add(("marilith",1f)); // 1.102.0 起六臂蛇人是异种型，不再需要 HAR
    return w.RandomElementByWeight(x=>x.w).d;
   }
  }

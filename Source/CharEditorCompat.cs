@@ -29,7 +29,9 @@ namespace LichPhylactery {
     personXProp=UiType.GetProperty("PersonX",flags);personWProp=UiType.GetProperty("PersonW",flags);
     var m=UiType.GetMethod("DoWindowContents",flags);
     if(m==null || apiProp==null || pawnProp==null){Log.Warning("[LichPhylactery] 角色编辑器：接口对不上，DND 面板不可用。");return;}
-    new Harmony("local.lich.phylactery.chareditor").Patch(m,postfix:new HarmonyMethod(typeof(CharEditorCompat),nameof(Postfix)));
+    var harmony=new Harmony("local.lich.phylactery.chareditor");
+    harmony.Patch(m,postfix:new HarmonyMethod(typeof(CharEditorCompat),nameof(Postfix)));
+    PatchTraitTool(harmony);
     isekaiButton=ModsConfig.IsActive(IsekaiPatchId) && ModsConfig.IsActive(Adventurer.IsekaiId);
     Active=true;
    }catch(Exception e){Log.Warning("[LichPhylactery] 角色编辑器联动初始化失败："+e);}
@@ -52,6 +54,36 @@ namespace LichPhylactery {
     GUI.color=Color.white;
     TooltipHandler.TipRegion(r,"打开 DND 编辑面板：冒险者等级、六维属性、职业与子职业、专长、史诗恩赐、强力特性与武艺天赋。");
    }catch(Exception e){GUI.color=Color.white;if(logged.Add(e.GetType()))Log.Error("[LichPhylactery] 角色编辑器 DND 按钮出错（同类错误不再提示）："+e);}
+  }
+
+  // ---------- 编辑器自己的特性栏 ----------
+  // 编辑器的 TraitTool.AddTrait / RemoveTrait 直接改 allTraits，不走 TraitSet.GainTrait / RemoveTrait，模组的特性缓存（强力特性、性格 / 诅咒、武艺天赋、稀有天赋）
+  // 和获得 / 失去时的处理都不会触发：加的特性不生效、DND 面板看不到，去掉的还在算。这里比较前后的特性表，把增减补发给同一套后缀。
+  public static MethodInfo TraitAdd,TraitRemove;
+  static void PatchTraitTool(Harmony harmony){
+   var tt=AccessTools.TypeByName("CharacterEditor.TraitTool");
+   TraitAdd=tt==null?null:AccessTools.Method(tt,"AddTrait");TraitRemove=tt==null?null:AccessTools.Method(tt,"RemoveTrait",new[]{typeof(Pawn),typeof(Trait)});
+   var pre=new HarmonyMethod(typeof(CharEditorCompat),nameof(TraitPrefix));var post=new HarmonyMethod(typeof(CharEditorCompat),nameof(TraitPostfix));
+   foreach(var mi in new[]{TraitAdd,TraitRemove}){if(mi==null){Log.Warning("[LichPhylactery] 角色编辑器：找不到 TraitTool 的增减特性函数，编辑器里加的特性不会同步 DND 效果。");continue;}harmony.Patch(mi,prefix:pre,postfix:post);}
+  }
+  static void TraitPrefix(Pawn __0,out List<Trait> __state){__state=__0?.story?.traits?.allTraits?.ToList();}
+  static void TraitPostfix(Pawn __0,List<Trait> __state){
+   var p=__0;var now=p?.story?.traits?.allTraits;if(now==null)return;
+   try{
+    var before=__state??new List<Trait>();
+    foreach(var t in before.Where(t=>!now.Contains(t)).ToList())TraitLost(p,t);
+    foreach(var t in now.Where(t=>!before.Contains(t)).ToList())TraitGained(p,t);
+   }catch(Exception e){if(logged.Add(e.GetType()))Log.Error("[LichPhylactery] 角色编辑器特性同步出错（同类错误不再提示）："+e);}
+  }
+  public static void TraitGained(Pawn p,Trait t){
+   if(t==null)return;t.pawn=p;
+   HeroGain.Postfix(p,t);DndGain.Postfix(p,t);MoreGain.Postfix(p,t);CombatGiftGain.Postfix(p,t);TalentGain.Postfix(p,t);
+   HeroTraits.Invalidate(p);CombatGifts.Invalidate(p);DndTraits.Invalidate(p);MoreTraits.Invalidate(p);Adventurer.Get(p)?.Dirty();
+  }
+  public static void TraitLost(Pawn p,Trait t){
+   if(t==null)return;
+   HeroLose.Postfix(p,t);DndLose.Postfix(p,t);MoreLose.Postfix(p,t);CombatGiftLose.Postfix(p,t);TalentLose.Postfix(p,t);
+   HeroTraits.Invalidate(p);CombatGifts.Invalidate(p);DndTraits.Invalidate(p);MoreTraits.Invalidate(p);Adventurer.Get(p)?.Dirty();
   }
 
   // ---------- 修改（面板和自检共用） ----------
@@ -221,7 +253,7 @@ namespace LichPhylactery {
    y=Head(y+4f,w,"待分配点数");
    y=IntRow(y,w,"属性提升",h.pendingASI,v=>{h.pendingASI=v;h.Dirty();},0,99,"每次 "+h.ASIPoints+" 点，或换一个专长");
    y=IntRow(y,w,"拆开剩余的点",h.asiLeft,v=>{h.asiLeft=v;h.Dirty();},0,99);
-   y=IntRow(y,w,"战士奖励专长",h.fighterFeats,v=>{h.fighterFeats=v;h.Dirty();},0,99);
+   y=IntRow(y,w,"职业奖励专长",h.fighterFeats,v=>{h.fighterFeats=v;h.Dirty();},0,99);
    y=IntRow(y,w,"史诗恩赐点",h.boonPoints,v=>{h.boonPoints=v;h.Dirty();},0,99);
    y=IntRow(y,w,"传奇属性点",h.legendPoints,v=>{h.legendPoints=v;h.Dirty();},0,999);
    if(h.classes==null)h.classes=new ClassData();

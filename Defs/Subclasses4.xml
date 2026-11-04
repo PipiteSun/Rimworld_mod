@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.111.0 器械师子职业（子职业设计稿，见 Source/ClassSubclass4.cs）：炼金师、装甲师、堡垒工程师。器械师 3 级选一个（选定不能改），能力在器械师 3 / 7 / 11 / 15 级获得。
+     没有资源，只看冷却。数值是器械强度 100% 时的值。 -->
+<Defs>
+  <!-- ===================== 子职业 ===================== -->
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Alchemist</defName>
+    <label>炼金师</label>
+    <description>做药的器械师：每天早上背包里多出实验药剂（治愈、迅捷、坚韧、轻盈、清醒、勇气，谁都能喝，3 天就坏），还能做复原试剂治病解毒，最后学会长回断肢的大复原药剂、不怕毒酸火。</description>
+    <parent>LP_Class_Artificer</parent><order>2</order><emblem>LP/Classes/Subclass/Emblem_Alchemist</emblem><color>(0.95,0.6,0.25)</color>
+    <abilities><li><ability>LP_AL_Experimental</ability><level>3</level></li><li><ability>LP_AL_Savant</ability><level>7</level></li><li><ability>LP_AL_Restorative</ability><level>11</level></li>
+      <li><ability>LP_AL_Chemist</ability><level>15</level></li><li><ability>LP_AL_PickPotion</ability><level>15</level></li><li><ability>LP_AL_GreaterRestorative</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Armorer</defName>
+    <label>装甲师</label>
+    <description>把身上的护甲改成奥术装甲：不再拖慢脚步，两种模式随时切换——守护者用雷霆拳套嘲讽敌人、展开防御力场；渗透者用内置的闪电发射器远程点射、跑得更快、更难被打中。等级越高装甲越硬，最后完全密封。</description>
+    <parent>LP_Class_Artificer</parent><order>3</order><emblem>LP/Classes/Subclass/Emblem_Armorer</emblem><color>(0.62,0.66,0.74)</color>
+    <abilities><li><ability>LP_AR_ArcaneArmor</ability><level>3</level></li><li><ability>LP_AR_ArmorMode</ability><level>3</level></li><li><ability>LP_AR_Field</ability><level>3</level></li><li><ability>LP_AR_Launcher</ability><level>3</level></li>
+      <li><ability>LP_AR_Modifications</ability><level>7</level></li><li><ability>LP_AR_Upgrade</ability><level>11</level></li><li><ability>LP_AR_Perfected</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_FortEngineer</defName>
+    <label>堡垒工程师</label>
+    <description>守家的器械师（为边缘世界新设的专精）：自己建的墙、门、掩体、炮台更结实，修得更快；埋下隐藏的符文地雷，建奥术电容给炮台提速，临战加固一片建筑，最后建起要塞核心自动修防线、给炮台全线升级。</description>
+    <parent>LP_Class_Artificer</parent><order>4</order><emblem>LP/Classes/Subclass/Emblem_FortEngineer</emblem><color>(0.72,0.6,0.42)</color>
+    <abilities><li><ability>LP_FE_Reinforce</ability><level>3</level></li><li><ability>LP_FE_RuneMine</ability><level>3</level></li><li><ability>LP_FE_Capacitor</ability><level>7</level></li>
+      <li><ability>LP_FE_Fortify</ability><level>11</level></li><li><ability>LP_FE_Citadel</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+
+  <!-- ===================== 炼金师：药剂 ===================== -->
+  <ThingDef Name="LP_ALPotionBase" ParentName="LP_PotionBase" Abstract="True">
+    <stackLimit>10</stackLimit>
+    <tradeability>None</tradeability>
+    <tradeTags Inherit="False" />
+    <thingCategories><li>Drugs</li></thingCategories>
+    <statBases><MarketValue>40</MarketValue></statBases>
+    <comps>
+      <li Class="CompProperties_Rottable"><daysToRotStart>3</daysToRotStart><rotDestroys>true</rotDestroys></li>
+      <li Class="LichPhylactery.CompProperties_AlchemistPotion" />
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ALPotionBase">
+    <defName>LP_ALP_Healing</defName>
+    <label>治愈药剂</label>
+    <description>炼金师的实验药剂。喝下后止住所有出血，立刻治疗 20 点伤口。谁都能喝，3 天就坏。精炼药剂治疗量 ×1.3。</description>
+    <graphicData><texPath>Items/Alchemist/Healing</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <ingestible><outcomeDoers><li Class="LichPhylactery.IngestionOutcomeDoer_Alchemist"><effect>heal</effect></li></outcomeDoers></ingestible>
+    <comps><li Class="CompProperties_Drug"><listOrder>2400</listOrder></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ALPotionBase">
+    <defName>LP_ALP_Swift</defName>
+    <label>迅捷药剂</label>
+    <description>炼金师的实验药剂。1 天内移动 +25%。谁都能喝，3 天就坏。精炼药剂持续时间 ×1.3。</description>
+    <descriptionHyperlinks><HediffDef>LP_ALB_Swift</HediffDef></descriptionHyperlinks>
+    <graphicData><texPath>Items/Alchemist/Swift</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <ingestible><outcomeDoers><li Class="LichPhylactery.IngestionOutcomeDoer_Alchemist"><effect>Swift</effect></li></outcomeDoers></ingestible>
+    <comps><li Class="CompProperties_Drug"><listOrder>2401</listOrder></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ALPotionBase">
+    <defName>LP_ALP_Tough</defName>
+    <label>坚韧药剂</label>
+    <description>炼金师的实验药剂。1 天内受到的伤害 −15%。谁都能喝，3 天就坏。精炼药剂持续时间 ×1.3。</description>
+    <descriptionHyperlinks><HediffDef>LP_ALB_Tough</HediffDef></descriptionHyperlinks>
+    <graphicData><texPath>Items/Alchemist/Tough</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <ingestible><outcomeDoers><li Class="LichPhylactery.IngestionOutcomeDoer_Alchemist"><effect>Tough</effect></li></outcomeDoers></ingestible>
+    <comps><li Class="CompProperties_Drug"><listOrder>2402</listOrder></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ALPotionBase">
+    <defName>LP_ALP_Light</defName>
+    <label>轻盈药剂</label>
+    <description>炼金师的实验药剂。1 天内走路无视地形、积雪、植物的减速。谁都能喝，3 天就坏。精炼药剂持续时间 ×1.3。</description>
+    <descriptionHyperlinks><HediffDef>LP_ALB_Light</HediffDef></descriptionHyperlinks>
+    <graphicData><texPath>Items/Alchemist/Light</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <ingestible><outcomeDoers><li Class="LichPhylactery.IngestionOutcomeDoer_Alchemist"><effect>Light</effect></li></outcomeDoers></ingestible>
+    <comps><li Class="CompProperties_Drug"><listOrder>2403</listOrder></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ALPotionBase">
+    <defName>LP_ALP_Lucid</defName>
+    <label>清醒药剂</label>
+    <description>炼金师的实验药剂。1 天内意识 +10%，不会困。谁都能喝，3 天就坏。精炼药剂持续时间 ×1.3。</description>
+    <descriptionHyperlinks><HediffDef>LP_ALB_Lucid</HediffDef></descriptionHyperlinks>
+    <graphicData><texPath>Items/Alchemist/Lucid</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <ingestible><outcomeDoers><li Class="LichPhylactery.IngestionOutcomeDoer_Alchemist"><effect>Lucid</effect></li></outcomeDoers></ingestible>
+    <comps><li Class="CompProperties_Drug"><listOrder>2404</listOrder></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ALPotionBase">
+    <defName>LP_ALP_Courage</defName>
+    <label>勇气药剂</label>
+    <description>炼金师的实验药剂。1 天内心情 +10，精神崩溃阈值 −5%。谁都能喝，3 天就坏。精炼药剂持续时间 ×1.3。</description>
+    <descriptionHyperlinks><HediffDef>LP_ALB_Courage</HediffDef></descriptionHyperlinks>
+    <graphicData><texPath>Items/Alchemist/Courage</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <ingestible><outcomeDoers><li Class="LichPhylactery.IngestionOutcomeDoer_Alchemist"><effect>Courage</effect></li></outcomeDoers></ingestible>
+    <comps><li Class="CompProperties_Drug"><listOrder>2405</listOrder></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_PotionBase">
+    <defName>LP_ALP_Restorative</defName>
+    <label>复原试剂</label>
+    <description>炼金师的复原试剂。喝下后治好身上最重的一种疾病（流感、瘟疫、疟疾、昏睡病、肠道或肌肉寄生虫、纤维 / 感官机械虫、食物中毒、伤口感染、肺腐病）；没有病就清除毒素累积。谁都能喝，不会坏。</description>
+    <graphicData><texPath>Items/Alchemist/Restorative</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>10</stackLimit>
+    <tradeTags Inherit="False" />
+    <thingCategories><li>Drugs</li></thingCategories>
+    <statBases><MarketValue>150</MarketValue></statBases>
+    <ingestible><outcomeDoers><li Class="LichPhylactery.IngestionOutcomeDoer_Alchemist"><effect>restore</effect></li></outcomeDoers></ingestible>
+    <comps><li Class="CompProperties_Drug"><listOrder>2406</listOrder></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_PotionBase">
+    <defName>LP_ALP_GreaterRestorative</defName>
+    <label>大复原药剂</label>
+    <description>化学大师每季只做得出一瓶的药剂。喝下后长回一个缺失的肢体或器官（最大的那个），并清除所有疾病、成瘾和毒素累积。谁都能喝，不会坏。</description>
+    <graphicData><texPath>Items/Alchemist/GreaterRestorative</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <stackLimit>5</stackLimit>
+    <tradeTags Inherit="False" />
+    <thingCategories><li>Drugs</li></thingCategories>
+    <statBases><MarketValue>1200</MarketValue></statBases>
+    <ingestible><outcomeDoers><li Class="LichPhylactery.IngestionOutcomeDoer_Alchemist"><effect>greater</effect></li></outcomeDoers></ingestible>
+    <comps><li Class="CompProperties_Drug"><listOrder>2407</listOrder></li></comps>
+  </ThingDef>
+
+  <!-- 药物实验室：1 草药 + 5 钢 → 1 瓶指定药剂，只有炼金师能做。 -->
+  <RecipeDef Name="LP_ALRecipeBase" Abstract="True">
+    <workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+    <workSkill>Intellectual</workSkill>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_Drug</soundWorking>
+    <recipeUsers><li>DrugLab</li></recipeUsers>
+    <workAmount>1250</workAmount>
+    <allowMixingIngredients>false</allowMixingIngredients>
+    <ingredients>
+      <li><filter><thingDefs><li>MedicineHerbal</li></thingDefs></filter><count>1</count></li>
+      <li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>5</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>MedicineHerbal</li><li>Steel</li></thingDefs></fixedIngredientFilter>
+    <modExtensions><li Class="LichPhylactery.AlchemistRecipeExtension" /></modExtensions>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_ALRecipeBase"><defName>LP_Make_ALP_Healing</defName><label>调配治愈药剂</label><description>用 1 份草药和 5 钢调配 1 瓶治愈药剂。只有炼金师能做（器械师 7 级起是精炼药剂）。</description><jobString>正在调配治愈药剂。</jobString><products><LP_ALP_Healing>1</LP_ALP_Healing></products></RecipeDef>
+  <RecipeDef ParentName="LP_ALRecipeBase"><defName>LP_Make_ALP_Swift</defName><label>调配迅捷药剂</label><description>用 1 份草药和 5 钢调配 1 瓶迅捷药剂。只有炼金师能做（器械师 7 级起是精炼药剂）。</description><jobString>正在调配迅捷药剂。</jobString><products><LP_ALP_Swift>1</LP_ALP_Swift></products></RecipeDef>
+  <RecipeDef ParentName="LP_ALRecipeBase"><defName>LP_Make_ALP_Tough</defName><label>调配坚韧药剂</label><description>用 1 份草药和 5 钢调配 1 瓶坚韧药剂。只有炼金师能做（器械师 7 级起是精炼药剂）。</description><jobString>正在调配坚韧药剂。</jobString><products><LP_ALP_Tough>1</LP_ALP_Tough></products></RecipeDef>
+  <RecipeDef ParentName="LP_ALRecipeBase"><defName>LP_Make_ALP_Light</defName><label>调配轻盈药剂</label><description>用 1 份草药和 5 钢调配 1 瓶轻盈药剂。只有炼金师能做（器械师 7 级起是精炼药剂）。</description><jobString>正在调配轻盈药剂。</jobString><products><LP_ALP_Light>1</LP_ALP_Light></products></RecipeDef>
+  <RecipeDef ParentName="LP_ALRecipeBase"><defName>LP_Make_ALP_Lucid</defName><label>调配清醒药剂</label><description>用 1 份草药和 5 钢调配 1 瓶清醒药剂。只有炼金师能做（器械师 7 级起是精炼药剂）。</description><jobString>正在调配清醒药剂。</jobString><products><LP_ALP_Lucid>1</LP_ALP_Lucid></products></RecipeDef>
+  <RecipeDef ParentName="LP_ALRecipeBase"><defName>LP_Make_ALP_Courage</defName><label>调配勇气药剂</label><description>用 1 份草药和 5 钢调配 1 瓶勇气药剂。只有炼金师能做（器械师 7 级起是精炼药剂）。</description><jobString>正在调配勇气药剂。</jobString><products><LP_ALP_Courage>1</LP_ALP_Courage></products></RecipeDef>
+
+  <!-- 药剂状态（时长由代码给：1 天，精炼 1.3 天） -->
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ALB_Swift</defName>
+    <label>迅捷药剂</label>
+    <description>移动 +25%。</description>
+    <defaultLabelColor>(0.95,0.6,0.25)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>1.25</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ALB_Tough</defName>
+    <label>坚韧药剂</label>
+    <description>受到的伤害 −15%。</description>
+    <defaultLabelColor>(0.95,0.6,0.25)</defaultLabelColor>
+    <stages><li><statFactors><IncomingDamageFactor>0.85</IncomingDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ALB_Light</defName>
+    <hediffClass>LichPhylactery.Hediff_LightFoot</hediffClass>
+    <label>轻盈药剂</label>
+    <description>脚下轻得像风：走路无视地形、积雪、植物的减速。</description>
+    <defaultLabelColor>(0.95,0.6,0.25)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ALB_Lucid</defName>
+    <label>清醒药剂</label>
+    <description>脑子清清楚楚：意识 +10%，不会困。</description>
+    <defaultLabelColor>(0.95,0.6,0.25)</defaultLabelColor>
+    <stages><li><capMods><li><capacity>Consciousness</capacity><offset>0.1</offset></li></capMods><disablesNeeds><li>Rest</li></disablesNeeds></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ALB_Courage</defName>
+    <label>勇气药剂</label>
+    <description>胆气上涌：心情 +10，精神崩溃阈值 −5%。</description>
+    <defaultLabelColor>(0.95,0.6,0.25)</defaultLabelColor>
+    <stages><li><statOffsets><MentalBreakThreshold>-0.05</MentalBreakThreshold></statOffsets></li></stages>
+  </HediffDef>
+  <ThoughtDef>
+    <defName>LP_ALB_CourageMood</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>LP_ALB_Courage</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages><li><label>勇气药剂</label><description>炼金师的药剂让我浑身是胆。</description><baseMoodEffect>10</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <HediffDef>
+    <defName>LP_AL_SavantBuff</defName>
+    <label>炼金学识</label>
+    <description>做药的手艺：做原版药物（药物实验室的配方）速度 +30%。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.95,0.6,0.25)</defaultLabelColor>
+    <stages><li><statFactors><DrugSynthesisSpeed>1.3</DrugSynthesisSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_AL_ResistBuff</defName>
+    <label>炼金抗性</label>
+    <description>身体早就泡惯了药：受到的毒、酸伤害 −50%，在毒尘、毒雾里不积累毒素。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.95,0.6,0.25)</defaultLabelColor>
+    <stages><li><statOffsets><ToxicEnvironmentResistance>1</ToxicEnvironmentResistance></statOffsets></li></stages>
+  </HediffDef>
+
+  <!-- ===================== 装甲师：状态 ===================== -->
+  <HediffDef>
+    <defName>LP_AR_ArmorOn</defName>
+    <hediffClass>LichPhylactery.Hediff_ArcaneArmor</hediffClass>
+    <label>奥术装甲</label>
+    <description>穿着装甲师亲手改过的奥术装甲：装甲不再拖慢移动。渗透者模式移动 +10%；甲胄升级后三种护甲各 +15%；完美装甲完全密封（毒尘、毒雾、真空都不怕）。脱下或换甲就失效。</description>
+    <isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.62,0.66,0.74)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_AR_Marked</defName>
+    <label>渗透者标记</label>
+    <description>被装甲师的追踪符标上了：隐形不了，受到队友的下一击伤害 +50%。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.62,0.66,0.74)</defaultLabelColor>
+  </HediffDef>
+
+  <!-- ===================== 堡垒工程师：建筑 ===================== -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_RuneMine</defName>
+    <label>符文地雷</label>
+    <description>堡垒工程师埋下的符文：敌人踩上去受 20 × 器械强度 奥术力伤害、倒地 2 秒，然后符文消散。藏在地面里，敌人很难察觉。</description>
+    <thingClass>LichPhylactery.Building_RuneMine</thingClass>
+    <graphicData><texPath>Things/Building/LP_RuneMine</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <rotatable>false</rotatable>
+    <tickerType>Normal</tickerType>
+    <stealable>false</stealable>
+    <passability>Standable</passability>
+    <statBases><MaxHitPoints>30</MaxHitPoints><Flammability>0</Flammability><Beauty>0</Beauty><TrapSpringChance>1</TrapSpringChance></statBases>
+    <building><isTrap>true</isTrap><trapDestroyOnSpring>true</trapDestroyOnSpring><expandHomeArea>false</expandHomeArea><ai_chillDestination>false</ai_chillDestination></building>
+  </ThingDef>
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_ArcaneCapacitor</defName>
+    <label>奥术电容</label>
+    <description>堡垒工程师的符文电容：不用燃料，一直输出 300 瓦。3 格内的炮台射速 +15%。每个会「奥术电容」的工程师最多支撑 器械师等级 ÷ 3 台（全殖民地合计）。</description>
+    <thingClass>LichPhylactery.Building_ArcaneCapacitor</thingClass>
+    <graphicData><texPath>Things/Building/LP_ArcaneCapacitor</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(1,1)</drawSize></graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.4</fillPercent>
+    <pathCost>42</pathCost>
+    <rotatable>false</rotatable>
+    <tickerType>Normal</tickerType>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases><MaxHitPoints>150</MaxHitPoints><WorkToBuild>1500</WorkToBuild><Flammability>0</Flammability><Mass>10</Mass><Beauty>0</Beauty></statBases>
+    <costList><Steel>20</Steel><ComponentIndustrial>1</ComponentIndustrial></costList>
+    <designationCategory>Power</designationCategory>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <placeWorkers><li>LichPhylactery.PlaceWorker_ArcaneCapacitor</li></placeWorkers>
+    <building><ai_chillDestination>false</ai_chillDestination></building>
+    <comps>
+      <li Class="CompProperties_Power"><compClass>CompPowerPlant</compClass><basePowerConsumption>-300</basePowerConsumption><transmitsPower>true</transmitsPower></li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower"><glowRadius>3</glowRadius><glowColor>(140,170,255,0)</glowColor></li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_FortressCore</defName>
+    <label>要塞核心</label>
+    <description>堡垒工程师的要塞之心：半径 20 格内工程师加固过的防御建筑每小时自动修复 5%。每场袭击可以发动一次「全线升级」：范围内所有炮台（含符文炮台）伤害 +30%，持续 1 小时。每个殖民地只能有 1 个，要有会「要塞之心」的工程师才能建。</description>
+    <thingClass>LichPhylactery.Building_FortressCore</thingClass>
+    <graphicData><texPath>Things/Building/LP_FortressCore</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(3,3)</drawSize></graphicData>
+    <size>(3,3)</size>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>Impassable</passability>
+    <fillPercent>1</fillPercent>
+    <blockWind>true</blockWind>
+    <rotatable>false</rotatable>
+    <tickerType>Rare</tickerType>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases><MaxHitPoints>1500</MaxHitPoints><WorkToBuild>20000</WorkToBuild><Flammability>0</Flammability><Mass>300</Mass><Beauty>5</Beauty></statBases>
+    <costList><Steel>500</Steel><ComponentIndustrial>10</ComponentIndustrial><ComponentSpacer>2</ComponentSpacer></costList>
+    <designationCategory>Security</designationCategory>
+    <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+    <placeWorkers><li>LichPhylactery.PlaceWorker_FortressCore</li></placeWorkers>
+    <building><ai_chillDestination>false</ai_chillDestination></building>
+    <comps><li Class="CompProperties_Glower"><glowRadius>5</glowRadius><glowColor>(255,210,150,0)</glowColor></li></comps>
+  </ThingDef>
+
+  <!-- ===================== 炼金师 ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AL_Experimental</defName>
+    <label>实验药剂</label>
+    <description>被动：醒着时每个新的一天，背包里自动出现 1 瓶随机实验药剂（治愈、迅捷、坚韧、轻盈、清醒、勇气）。药物实验室里还能用 1 草药 + 5 钢做指定的药剂（30 分钟）。药剂谁都能喝，3 天就坏。炼金师，器械师 3 级。</description>
+    <iconPath>LP/Classes/Subclass4/AlchExperimental</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AL_Savant</defName>
+    <label>炼金学识</label>
+    <description>被动：每天的实验药剂改为 2 瓶。自己做的药剂都是精炼药剂（治疗量、持续时间 ×1.3）；做原版药物速度 +30%。炼金师，器械师 7 级。</description>
+    <iconPath>LP/Classes/Subclass4/AlchSavant</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AL_Restorative</defName>
+    <label>复原试剂</label>
+    <description>做一瓶复原试剂放进背包：喝下后立刻治好一种疾病（流感、瘟疫、寄生虫、食物中毒等）或清除毒素累积。被动：自己受到的毒、酸伤害 −50%，在毒尘、毒雾里不积累毒素。冷却 1 天。炼金师，器械师 11 级。</description>
+    <iconPath>LP/Classes/Subclass4/AlchRestorative</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S4Restorative</effect><stat>LP_ArtificePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AL_Chemist</defName>
+    <label>化学大师</label>
+    <description>终极被动：每天的实验药剂改为 3 瓶，可以用「指定药剂」选种类。自己免疫毒、酸、火焰和燃烧伤害。炼金师，器械师 15 级。</description>
+    <iconPath>LP/Classes/Subclass4/AlchChemist</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AL_PickPotion</defName>
+    <label>指定药剂</label>
+    <description>切换每天自动出现的药剂种类：随机 → 治愈 → 迅捷 → 坚韧 → 轻盈 → 清醒 → 勇气。炼金师，器械师 15 级。</description>
+    <iconPath>LP/Classes/Subclass4/AlchPick</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>30</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S4Pick</effect><stat>LP_ArtificePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AL_GreaterRestorative</defName>
+    <label>大复原药剂</label>
+    <description>做一瓶大复原药剂放进背包：喝下后长回一个缺失的肢体或器官，并清除所有疾病与成瘾。每季（15 天）一次。炼金师，器械师 15 级。</description>
+    <iconPath>LP/Classes/Subclass4/AlchGreater</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>900000</cooldownTicksRange>
+    <verbProperties><warmupTime>3</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S4Greater</effect><stat>LP_ArtificePower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===================== 装甲师 ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AR_ArcaneArmor</defName>
+    <label>奥术装甲</label>
+    <description>站在工作台旁（3 格内）花 4 小时，把身上一件躯干护甲（防弹衣、海军装甲、动力甲之类，挑护甲最好的一件）改成奥术装甲：不再拖慢移动。换了别的护甲要重改。守护者：近战命中附加 6 × 器械强度 闪电伤害并嘲讽目标。渗透者：移动 +10%，敌人远程攻击有 10% 打不中你。装甲师，器械师 3 级。</description>
+    <iconPath>LP/Classes/Subclass4/ArmArcane</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60</cooldownTicksRange>
+    <verbProperties><warmupTime>166.7</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S4Armor</effect><stat>LP_ArtificePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AR_ArmorMode</defName>
+    <label>切换装甲模式</label>
+    <description>奥术装甲在守护者和渗透者之间切换。冷却 30 秒。装甲师，器械师 3 级。</description>
+    <iconPath>LP/Classes/Subclass4/ArmMode</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S4ArmorMode</effect><stat>LP_ArtificePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AR_Field</defName>
+    <label>防御力场</label>
+    <description>守护者：展开 10 + 器械师等级 × 2 点的临时护盾（甲胄升级后翻倍），持续 1 小时。冷却 1 小时。装甲师，器械师 3 级。</description>
+    <iconPath>LP/Classes/Subclass4/ArmField</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S4Field</effect><stat>LP_ArtificePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_AR_Launcher</defName>
+    <label>闪电发射器</label>
+    <description>渗透者：22 格内一个敌人受 12 × 器械强度 闪电伤害（甲胄升级后 ×1.5，打还没开过火的敌人再翻倍）。冷却 2 秒。装甲师，器械师 3 级。</description>
+    <iconPath>LP/Classes/Subclass4/ArmLauncher</iconPath>
+    <cooldownTicksRange>120</cooldownTicksRange>
+    <verbProperties><range>22</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S4Launcher</effect><stat>LP_ArtificePower</stat><single>true</single></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AR_Modifications</defName>
+    <label>甲胄改装</label>
+    <description>被动：奥术装甲的附魔强化立刻 +2（每件一次，上限仍是 +10）。奥术装甲和头盔不会被打烂掉落（最多剩 1 点耐久）。装甲师，器械师 7 级。</description>
+    <iconPath>LP/Classes/Subclass4/ArmModify</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AR_Upgrade</defName>
+    <label>甲胄升级</label>
+    <description>被动：穿着奥术装甲时三种护甲值各 +15%。守护者的防御力场翻倍；渗透者的闪电发射器伤害 +50%，打还没开过火的敌人再翻倍。装甲师，器械师 11 级。</description>
+    <iconPath>LP/Classes/Subclass4/ArmUpgrade</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AR_Perfected</defName>
+    <label>完美装甲</label>
+    <description>终极被动：奥术装甲完全密封，不怕毒尘、毒雾和真空。守护者：每 10 秒把 6 格内一个敌人磁力拉到身边并嘲讽。渗透者：打中的敌人被标记 10 秒，隐形不了，受到队友的下一击伤害 +50%。装甲师，器械师 15 级。</description>
+    <iconPath>LP/Classes/Subclass4/ArmPerfect</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===================== 堡垒工程师 ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_FE_Reinforce</defName>
+    <label>加固施工</label>
+    <description>被动：自己建成的墙、门、沙袋这类掩体、炮台最大生命 +50%；自己修理建筑的速度 ×2。堡垒工程师，器械师 3 级。</description>
+    <iconPath>LP/Classes/Subclass4/FortReinforce</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_FE_RuneMine</defName>
+    <label>符文地雷</label>
+    <description>在 10 格内的空地埋下一枚隐藏的符文地雷（不耗材料，同时最多 3 枚）：敌人踩上去受 20 × 器械强度 奥术力伤害并倒地 2 秒。冷却半天。堡垒工程师，器械师 3 级。</description>
+    <iconPath>LP/Classes/Subclass4/FortMine</iconPath>
+    <hostile>false</hostile>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>30000</cooldownTicksRange>
+    <verbProperties><range>10</range><warmupTime>2</warmupTime><targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S4Mine</effect><stat>LP_ArtificePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_FE_Capacitor</defName>
+    <label>奥术电容</label>
+    <description>被动：能建奥术电容（电力页，20 钢 + 1 零部件）：不用燃料输出 300 瓦，3 格内的炮台射速 +15%。每个工程师最多支撑 器械师等级 ÷ 3 台。堡垒工程师，器械师 7 级。</description>
+    <iconPath>LP/Classes/Subclass4/FortCapacitor</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_FE_Fortify</defName>
+    <label>战地加固</label>
+    <description>选中 20 格内一处 5×5 区域，里面的建筑 12 小时内受到的伤害 −75%，专治工兵挖墙和爆破。被动：殖民者紧挨着自己建的掩体时，受到的远程伤害再 −15%。冷却 1 天。堡垒工程师，器械师 11 级。</description>
+    <iconPath>LP/Classes/Subclass4/FortFortify</iconPath>
+    <hostile>false</hostile>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime><requireLineOfSight>false</requireLineOfSight><targetParams><canTargetPawns>false</canTargetPawns></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S4Fortify</effect><stat>LP_ArtificePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_FE_Citadel</defName>
+    <label>要塞之心</label>
+    <description>终极被动：能建要塞核心（防卫页，3×3，每个殖民地 1 个，500 钢 + 10 零部件 + 2 高级零部件）：半径 20 格内自己建的防御建筑每小时自动修复 5%；每场袭击一次「全线升级」，范围内所有炮台（含符文炮台）伤害 +30%、持续 1 小时。堡垒工程师，器械师 15 级。</description>
+    <iconPath>LP/Classes/Subclass4/FortCitadel</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
+  </AbilityDef>
+</Defs>

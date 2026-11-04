@@ -6,7 +6,7 @@ using Verse;
 using UnityEngine;
 
 namespace LichPhylactery {
- // 1.44.0 截图（Test.ps1 -Only GiantKinHAR，自测通过后）：上排双头巨人（裸身、牛仔帽、双盔、没了右头、没了左头、儿童），下排独眼巨人（裸身、牛仔帽、简易头盔+透镜、没了独眼、儿童）和一个人类对照；
+ // 1.44.0 截图（Test.ps1 -Only GiantKinHAR，自测通过后）：上排双头巨人（裸身、牛仔帽、双盔、孤首、主头被打掉（第二个头顶上）、儿童），下排独眼巨人（裸身、牛仔帽、简易头盔+透镜、没了独眼、儿童）和一个人类对照；
  // 依次朝南、朝东、朝北、朝西各截一张：HARGiants-south.png / -east.png / -north.png / -west.png。另外导出原版头型与简易头盔的三向贴图作画图参考（HARGiantsRef-*.png）。
  public partial class LichChecks {
   static int harGiantFrames;
@@ -29,7 +29,7 @@ namespace LichPhylactery {
     for(int i=0;i<6;i++){
      var p=HARGallery("LP_EttinColonist",i==5?8:30);
      if(i<5)Dress(p,i==1?new[]{"Apparel_Pants","Apparel_CollarShirt","Apparel_CowboyHat"}:i==2?new[]{"Apparel_Pants","Apparel_CollarShirt",Ettin.Helm}:new[]{"Apparel_Pants"});
-     if(i==3)p.health.AddHediff(HediffDefOf.MissingBodyPart,p.RaceProps.body.AllParts.First(x=>x.def.defName==Ettin.SecondHead));
+     if(i==3)p.health.AddHediff(Items.Hediff(Ettin.LoneHead)); // 1.102.0：孤首（第二个头不画、主头回到正中）
      if(i==4)p.health.AddHediff(HediffDefOf.MissingBodyPart,p.RaceProps.body.AllParts.First(x=>x.def==BodyPartDefOf.Head));
      GenSpawn.Spawn(p,harGiantCenter+new IntVec3(i*3-8,0,2),map);harGiantShots.Add(p);
     }
@@ -39,7 +39,7 @@ namespace LichPhylactery {
      else{
       p=HARGallery("LP_CyclopsColonist",i==4?8:30);
       if(i<4)Dress(p,i==1?new[]{"Apparel_Pants","Apparel_CollarShirt","Apparel_CowboyHat"}:i==2?new[]{"Apparel_Pants","Apparel_CollarShirt","Apparel_SimpleHelmet",Cyclops.Lens}:new[]{"Apparel_Pants"});
-      if(i==3)p.health.AddHediff(HediffDefOf.MissingBodyPart,p.RaceProps.body.AllParts.First(x=>x.def.defName==Cyclops.Eye));
+      if(i==3)p.health.AddHediff(HediffDefOf.MissingBodyPart,p.RaceProps.body.AllParts.First(x=>x.def==BodyPartDefOf.Eye));
      }
      GenSpawn.Spawn(p,harGiantCenter+new IntVec3(i*3-8,0,-2),map);harGiantShots.Add(p);
     }

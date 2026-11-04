@@ -60,8 +60,11 @@ namespace LichPhylactery {
     if(!TestSuppressed)Messages.Message(who+"强化"+gear.LabelNoCount+"失败了，材料没了，装备不受影响（成功率"+chance.ToStringPercent()+"）。",gear,MessageTypeDefOf.NeutralEvent,false);
    }
    ClearStatCache(gear);
+   LastResult=result;
    return result;
   }
+  // 最近一次 Apply 的结果，给工作单计数用（失败不消耗“做 X 次”的次数）。
+  public static Result LastResult;
   public static bool TestSuppressed;
   public static readonly List<StatDef> Stats=new List<StatDef>();
   public static void ClearStatCache(Thing t){foreach(var s in Stats)s.Worker.ClearCacheForThing(t);}
@@ -92,6 +95,8 @@ namespace LichPhylactery {
     if(d.comps==null)d.comps=new List<CompProperties>();
     if(!d.comps.Any(c=>c is CompProperties_GearEnhance))d.comps.Add(new CompProperties_GearEnhance());
    }
+   var bench=DefDatabase<ThingDef>.GetNamedSilentFail(Workbenches.Enchanting);
+   if(bench!=null){if(bench.comps==null)bench.comps=new List<CompProperties>();if(!bench.comps.Any(c=>c is CompProperties_EnhanceBench))bench.comps.Add(new CompProperties_EnhanceBench());}
    void Add(string stat,string kind){
     var d=DefDatabase<StatDef>.GetNamedSilentFail(stat);if(d==null)return;
     if(d.parts==null)d.parts=new List<StatPart>();
@@ -119,23 +124,7 @@ namespace LichPhylactery {
   public override IEnumerable<StatDrawEntry> SpecialDisplayStats(){
    if(level>0)yield return new StatDrawEntry(StatCategoryDefOf.BasicsImportant,"附魔强化","+"+level,"在附魔台上强化过的等级。"+GearEnhance.Effects(parent,level)+"。",4990);
   }
-  public override IEnumerable<Gizmo> CompGetGizmosExtra(){
-   foreach(var g in base.CompGetGizmosExtra())yield return g;
-   int allowed=GearEnhance.Allowed;
-   if(!parent.Spawned || allowed==0 || parent.Faction!=null && parent.Faction!=Faction.OfPlayer)yield break;
-   var icon=DefDatabase<ThingDef>.GetNamedSilentFail(Workbenches.Enchanting)?.uiIcon;
-   yield return new Command_Action{
-    defaultLabel=target>level?"强化目标 +"+target:"附魔强化",
-    defaultDesc="选这件装备在附魔台上强化到几级（现在+"+level+"，研究允许到+"+allowed+"）。附魔台上要有“附魔强化”工作单，并备好材料；到达目标后自动取消。",
-    icon=icon??BaseContent.BadTex,
-    action=()=>{
-     var opts=new List<FloatMenuOption>{new FloatMenuOption("不强化",()=>target=0)};
-     for(int t=level+1;t<=allowed;t++){int v=t;opts.Add(new FloatMenuOption("强化到 +"+v,()=>target=v));}
-     if(level>=allowed)opts.Add(new FloatMenuOption(level>=GearEnhance.Max?"已经是+10":"需要“高阶强化”研究才能超过+5",null));
-     Find.WindowStack.Add(new FloatMenu(opts));
-    }
-   };
-  }
+  // 1.114.0 热修：选目标的按钮挪到附魔台的强化窗口（GearEnhanceWindow.cs）；旧档里挂着的目标仍由旧工作单做完。
  }
 
  public class StatPart_GearEnhance : StatPart {
@@ -156,6 +145,8 @@ namespace LichPhylactery {
  public class RecipeWorker_GearEnhance : RecipeWorker {
   // 装备本身不消耗：留在附魔台旁边，搬运工会把它送回储存区。
   public override void ConsumeIngredient(Thing ingredient,RecipeDef recipe,Map map){if(GearEnhance.Comp(ingredient)!=null)return;base.ConsumeIngredient(ingredient,recipe,map);}
+  // 强化改在附魔台窗口里做，不再能新加这两张工作单。
+  public override bool AvailableOnNow(Thing thing,BodyPartRecord part=null)=>false;
  }
 
  [HarmonyPatch(typeof(GenRecipe),nameof(GenRecipe.MakeRecipeProducts))]
@@ -163,6 +154,7 @@ namespace LichPhylactery {
   static bool Prefix(RecipeDef recipeDef,Pawn worker,List<Thing> ingredients,IBillGiver billGiver,ref IEnumerable<Thing> __result){
    if(!(recipeDef?.Worker is RecipeWorker_GearEnhance))return true;
    var gear=ingredients?.FirstOrDefault(t=>GearEnhance.Comp(t)!=null);
+   GearEnhance.LastResult=GearEnhance.Result.None;
    if(gear!=null)GearEnhance.Apply(gear,worker,billGiver as Thing);
    __result=Enumerable.Empty<Thing>();return false;
   }
@@ -170,6 +162,20 @@ namespace LichPhylactery {
  [HarmonyPatch(typeof(Bill),nameof(Bill.IsFixedOrAllowedIngredient),new[]{typeof(Thing)})]
  public static class GearEnhanceIngredient {
   static void Postfix(Bill __instance,Thing __0,ref bool __result){if(!__result || !(__instance.recipe?.Worker is RecipeWorker_GearEnhance))return;if(GearEnhance.Comp(__0)!=null)__result=GearEnhance.Wants(__0,__instance.recipe);}
+ }
+ // 热修：失败（或掉级）那次不算“做 X 次”的次数——以前 +4 选到 +5、做 5 次，中途失败一次，工作单就在 +4 用完了。
+ [HarmonyPatch(typeof(Bill_Production),nameof(Bill_Production.Notify_IterationCompleted))]
+ public static class GearEnhanceBillCount {
+  static void Prefix(Bill_Production __instance){
+   if(!(__instance.recipe?.Worker is RecipeWorker_GearEnhance))return;
+   var r=GearEnhance.LastResult;GearEnhance.LastResult=GearEnhance.Result.None;
+   if((r==GearEnhance.Result.Fail || r==GearEnhance.Result.Drop) && __instance.repeatMode==BillRepeatModeDefOf.RepeatCount)__instance.repeatCount++;
+  }
+ }
+ // 新挂的附魔强化工作单默认“一直做”：到目标自动停，不用自己数次数。
+ [HarmonyPatch(typeof(Bill_Production),MethodType.Constructor,new[]{typeof(RecipeDef),typeof(Precept_ThingStyle)})]
+ public static class GearEnhanceBillForever {
+  static void Postfix(Bill_Production __instance,RecipeDef __0){if(__0?.Worker is RecipeWorker_GearEnhance)__instance.repeatMode=BillRepeatModeDefOf.Forever;}
  }
 
  [StaticConstructorOnStartup]

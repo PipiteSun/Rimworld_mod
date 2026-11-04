@@ -12,7 +12,7 @@ namespace LichPhylactery {
   // 1.33.0：六臂蛇人的蛇尾代替双腿，也能强化。1.44.0：双头巨人的第二个头、独眼巨人的独眼同样算主要部位。
   static readonly HashSet<string> MajorParts=new HashSet<string>{"Torso","Head","Brain","Spine","Heart","Lung","Liver","Kidney","Stomach","Eye","Ear","Arm","Leg","LP_SerpentTail","LP_EttinHead","LP_CyclopsEye"};
   public static bool IsMajorPart(BodyPartRecord part)=>part!=null && MajorParts.Contains(part.def.defName);
-  public bool CanStrengthenPart(BodyPartRecord part)=>IsMajorPart(part) && pawn.RaceProps.body.AllParts.Contains(part) && !part.def.conceptual && !pawn.health.hediffSet.PartIsMissing(part);
+  public bool CanStrengthenPart(BodyPartRecord part)=>IsMajorPart(part) && pawn.RaceProps.body.AllParts.Contains(part) && !part.def.conceptual && !pawn.health.hediffSet.PartIsMissing(part) && !DndImplants.ArtifactOn(pawn,part); // 1.114.0 维克那神器自带意志，不能强化
   public IEnumerable<BodyPartRecord> StrengthenableParts=>pawn.RaceProps.body.AllParts.Where(CanStrengthenPart);
   public string StrengthenLabel(BodyPartRecord part){var h=pawn.health.hediffSet.hediffs.OfType<Hediff_Limb>().FirstOrDefault(x=>x.Part==part);return part.Label+"（"+(h?.Severity??0).ToString("0")+"/5层；生命 "+pawn.health.hediffSet.GetPartHealth(part).ToString("0")+"/"+PartHealth.Maximum(part,pawn).ToString("0")+"）：强化一层";}
   // Migrate retired small-part upgrades once. Scale wounds with the reduced maximum
@@ -39,7 +39,7 @@ namespace LichPhylactery {
   // 1.23.0：火巨人与龙体的生命加成改由巨躯规则放进 HealthScale（BodySize.cs），原版 GetMaxHealth 已含在内。
   // 这里的旧系数只在迁移时测量 1.22.1 的旧最大值（火巨人、龙体各×1.5，相乘，只取整一次）。
   // 1.48.0：冒险者等级与体质的部位生命成长也乘在这里（与巫妖强化、巨躯规则相乘，只取整一次）。
-  public static float WithoutReinforcement(BodyPartRecord part,Pawn pawn){float health=TemperingCompatibility.Apply(part.def.GetMaxHealth(pawn),part,pawn);float factor=BodySize.LegacyPartFactor(pawn)*Adventurer.PartHealthFactor(pawn)*Subraces.PartHealthFactor(pawn)*BeastLevels.PartHealthFactor(pawn);return factor!=1f?Mathf.Ceil(health*factor):health;}
+  public static float WithoutReinforcement(BodyPartRecord part,Pawn pawn){float health=TemperingCompatibility.Apply(part.def.GetMaxHealth(pawn),part,pawn);float factor=BodySize.LegacyPartFactor(pawn)*Adventurer.PartHealthFactor(pawn)*Subraces.PartHealthFactor(pawn)*BeastLevels.PartHealthFactor(pawn)*DndImplants.PartFactor(part,pawn);return factor!=1f?Mathf.Ceil(health*factor):health;}
   public static float Maximum(BodyPartRecord part,Pawn pawn){
    float original=WithoutReinforcement(part,pawn);
    var enhancements=pawn.health?.hediffSet?.hediffs;

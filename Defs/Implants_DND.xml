@@ -1,0 +1,1446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.112.0 DND 植入物（ArtSource/Implants/gen_implants.py 生成，不要手改）：器械师义肢、伊奥恩颅石、调谐、器械师注能。代码在 Source/DndImplants.cs。 -->
+<Defs>
+  <ResearchProjectDef>
+    <defName>LP_Research_InfusedProsthetics</defName>
+    <label>注能义肢</label>
+    <description>把魔像学的灌注技术用在血肉之躯上：在符文铁砧锻造注能义肢、寒铁 / 秘银 / 精金义肢、机关眼和秘银心核；器械师还能给原版仿生和考古科技部件注能（效率 +10%）。</description>
+    <baseCost>2500</baseCost>
+    <techLevel>Medieval</techLevel>
+    <prerequisites><li>LP_Research_GolemManual</li></prerequisites>
+    <tab>LP_FireGiantTech</tab>
+    <researchViewX>6</researchViewX>
+    <researchViewY>0.7</researchViewY>
+  </ResearchProjectDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Imp_InfusedArm</defName><label>注能义臂</label><description>器械师用钢和少量秘银锻成、再灌注魔力的义臂。替换整条手臂，部位效率 115%。普通档，不占调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/InfusedArm</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>700</MarketValue><Mass>1.5</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>LP_Imp_InfusedArm</defName><label>注能义臂</label><description>器械师用钢和少量秘银锻成、再灌注魔力的义臂。替换整条手臂，部位效率 115%。普通档，不占调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <spawnThingOnRemoved>LP_Imp_InfusedArm</spawnThingOnRemoved>
+    <addedPartProps><solid>true</solid><partEfficiency>1.15</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
+    
+    <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps>
+    <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Infused</flag><attune>false</attune></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>LP_Install_InfusedArm</defName><label>安装注能义臂</label><description>器械师用钢和少量秘银锻成、再灌注魔力的义臂。替换整条手臂，部位效率 115%。普通档，不占调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description><jobString>正在安装注能义臂。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndPart</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Imp_InfusedArm</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Imp_InfusedArm</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Shoulder</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Imp_InfusedArm</addsHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Make_InfusedArm</defName><label>锻造注能义臂</label><description>在符文铁砧锻造注能义臂。</description><jobString>正在锻造注能义臂。</jobString>
+    <workAmount>12000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking><soundWorking>Recipe_Smith</soundWorking><unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+    <researchPrerequisite>LP_Research_InfusedProsthetics</researchPrerequisite><skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>LP_RuneAnvil</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>50</count></li><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>Steel</li><li>LP_Mithral</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Imp_InfusedArm>1</LP_Imp_InfusedArm></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Imp_InfusedLeg</defName><label>注能义腿</label><description>器械师用钢和少量秘银锻成、再灌注魔力的义腿。替换整条腿，部位效率 115%。普通档，不占调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/InfusedLeg</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>700</MarketValue><Mass>1.5</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>LP_Imp_InfusedLeg</defName><label>注能义腿</label><description>器械师用钢和少量秘银锻成、再灌注魔力的义腿。替换整条腿，部位效率 115%。普通档，不占调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <spawnThingOnRemoved>LP_Imp_InfusedLeg</spawnThingOnRemoved>
+    <addedPartProps><solid>true</solid><partEfficiency>1.15</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
+    
+    <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps>
+    <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Infused</flag><attune>false</attune></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>LP_Install_InfusedLeg</defName><label>安装注能义腿</label><description>器械师用钢和少量秘银锻成、再灌注魔力的义腿。替换整条腿，部位效率 115%。普通档，不占调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description><jobString>正在安装注能义腿。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndPart</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Imp_InfusedLeg</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Imp_InfusedLeg</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Leg</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Imp_InfusedLeg</addsHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Make_InfusedLeg</defName><label>锻造注能义腿</label><description>在符文铁砧锻造注能义腿。</description><jobString>正在锻造注能义腿。</jobString>
+    <workAmount>12000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking><soundWorking>Recipe_Smith</soundWorking><unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+    <researchPrerequisite>LP_Research_InfusedProsthetics</researchPrerequisite><skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>LP_RuneAnvil</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>50</count></li><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>Steel</li><li>LP_Mithral</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Imp_InfusedLeg>1</LP_Imp_InfusedLeg></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Imp_ColdIronArm</defName><label>寒铁义臂</label><description>淬炼寒铁锻成的义臂，摸上去总是冰凉。替换整条手臂，部位效率 125%；近战打寒铁克制的目标（妖精血统、精灵、灵能者）和邪魔时伤害 +30%。普通档，不占调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/ColdIronArm</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>1300</MarketValue><Mass>1.5</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>LP_Imp_ColdIronArm</defName><label>寒铁义臂</label><description>淬炼寒铁锻成的义臂，摸上去总是冰凉。替换整条手臂，部位效率 125%；近战打寒铁克制的目标（妖精血统、精灵、灵能者）和邪魔时伤害 +30%。普通档，不占调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <spawnThingOnRemoved>LP_Imp_ColdIronArm</spawnThingOnRemoved>
+    <addedPartProps><solid>true</solid><partEfficiency>1.25</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
+    
+    <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps>
+    <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>ColdArm</flag><attune>false</attune></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>LP_Install_ColdIronArm</defName><label>安装寒铁义臂</label><description>淬炼寒铁锻成的义臂，摸上去总是冰凉。替换整条手臂，部位效率 125%；近战打寒铁克制的目标（妖精血统、精灵、灵能者）和邪魔时伤害 +30%。普通档，不占调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description><jobString>正在安装寒铁义臂。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndPart</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Imp_ColdIronArm</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Imp_ColdIronArm</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Shoulder</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Imp_ColdIronArm</addsHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Make_ColdIronArm</defName><label>锻造寒铁义臂</label><description>在符文铁砧锻造寒铁义臂。</description><jobString>正在锻造寒铁义臂。</jobString>
+    <workAmount>12000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking><soundWorking>Recipe_Smith</soundWorking><unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+    <researchPrerequisite>LP_Research_InfusedProsthetics</researchPrerequisite><skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>LP_RuneAnvil</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_ColdIron</li></thingDefs></filter><count>40</count></li><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_ColdIron</li><li>LP_Mithral</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Imp_ColdIronArm>1</LP_Imp_ColdIronArm></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Imp_MithralLeg</defName><label>秘银义腿</label><description>轻得几乎没有重量的秘银义腿。替换整条腿，部位效率 130%；穿着的衣物带来的移速惩罚减半（重甲最明显）。稀有档，占 1 个调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/MithralLeg</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>2600</MarketValue><Mass>1.5</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>LP_Imp_MithralLeg</defName><label>秘银义腿</label><description>轻得几乎没有重量的秘银义腿。替换整条腿，部位效率 130%；穿着的衣物带来的移速惩罚减半（重甲最明显）。稀有档，占 1 个调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <spawnThingOnRemoved>LP_Imp_MithralLeg</spawnThingOnRemoved>
+    <addedPartProps><solid>true</solid><partEfficiency>1.30</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
+    
+    <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps>
+    <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>MithralLeg</flag><attune>true</attune></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>LP_Install_MithralLeg</defName><label>安装秘银义腿</label><description>轻得几乎没有重量的秘银义腿。替换整条腿，部位效率 130%；穿着的衣物带来的移速惩罚减半（重甲最明显）。稀有档，占 1 个调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description><jobString>正在安装秘银义腿。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndPart</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Imp_MithralLeg</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Imp_MithralLeg</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Leg</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Imp_MithralLeg</addsHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Make_MithralLeg</defName><label>锻造秘银义腿</label><description>在符文铁砧锻造秘银义腿。</description><jobString>正在锻造秘银义腿。</jobString>
+    <workAmount>12000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking><soundWorking>Recipe_Smith</soundWorking><unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+    <researchPrerequisite>LP_Research_InfusedProsthetics</researchPrerequisite><skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>LP_RuneAnvil</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>40</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_Mithral</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Imp_MithralLeg>1</LP_Imp_MithralLeg></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Imp_AdamantArm</defName><label>精金义臂</label><description>精金锻成的义臂，几乎砍不坏。替换整条手臂，部位效率 140%；这条手臂上受的伤 −50%，近战护甲穿透 +25%。稀有档，占 1 个调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/AdamantArm</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>3600</MarketValue><Mass>1.5</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>LP_Imp_AdamantArm</defName><label>精金义臂</label><description>精金锻成的义臂，几乎砍不坏。替换整条手臂，部位效率 140%；这条手臂上受的伤 −50%，近战护甲穿透 +25%。稀有档，占 1 个调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <spawnThingOnRemoved>LP_Imp_AdamantArm</spawnThingOnRemoved>
+    <addedPartProps><solid>true</solid><partEfficiency>1.40</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
+    
+    <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps>
+    <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>AdamArm</flag><attune>true</attune></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>LP_Install_AdamantArm</defName><label>安装精金义臂</label><description>精金锻成的义臂，几乎砍不坏。替换整条手臂，部位效率 140%；这条手臂上受的伤 −50%，近战护甲穿透 +25%。稀有档，占 1 个调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description><jobString>正在安装精金义臂。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndPart</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Imp_AdamantArm</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Imp_AdamantArm</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Shoulder</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Imp_AdamantArm</addsHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Make_AdamantArm</defName><label>锻造精金义臂</label><description>在符文铁砧锻造精金义臂。</description><jobString>正在锻造精金义臂。</jobString>
+    <workAmount>12000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking><soundWorking>Recipe_Smith</soundWorking><unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+    <researchPrerequisite>LP_Research_InfusedProsthetics</researchPrerequisite><skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>LP_RuneAnvil</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_Adamantine</li></thingDefs></filter><count>40</count></li><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>10</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_Adamantine</li><li>LP_Mithral</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Imp_AdamantArm>1</LP_Imp_AdamantArm></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Imp_ClockEye</defName><label>精工机关眼</label><description>秘银齿轮和玉石镜片组成的机关眼。替换一只眼睛，部位效率 125%；射击精度 +5%，光线昏暗时不受惩罚。普通档，不占调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/ClockEye</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>1400</MarketValue><Mass>1.5</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>LP_Imp_ClockEye</defName><label>精工机关眼</label><description>秘银齿轮和玉石镜片组成的机关眼。替换一只眼睛，部位效率 125%；射击精度 +5%，光线昏暗时不受惩罚。普通档，不占调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <spawnThingOnRemoved>LP_Imp_ClockEye</spawnThingOnRemoved>
+    <addedPartProps><solid>true</solid><partEfficiency>1.25</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
+    <stages><li><statFactors><ShootingAccuracyPawn>1.05</ShootingAccuracyPawn></statFactors></li></stages>
+    <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps>
+    <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>ClockEye</flag><attune>false</attune></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>LP_Install_ClockEye</defName><label>安装精工机关眼</label><description>秘银齿轮和玉石镜片组成的机关眼。替换一只眼睛，部位效率 125%；射击精度 +5%，光线昏暗时不受惩罚。普通档，不占调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description><jobString>正在安装精工机关眼。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndPart</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Imp_ClockEye</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Imp_ClockEye</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Eye</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Imp_ClockEye</addsHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Make_ClockEye</defName><label>锻造精工机关眼</label><description>在符文铁砧锻造精工机关眼。</description><jobString>正在锻造精工机关眼。</jobString>
+    <workAmount>12000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking><soundWorking>Recipe_Smith</soundWorking><unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+    <researchPrerequisite>LP_Research_InfusedProsthetics</researchPrerequisite><skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>LP_RuneAnvil</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>10</count></li><li><filter><thingDefs><li>Jade</li></thingDefs></filter><count>10</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_Mithral</li><li>Jade</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Imp_ClockEye>1</LP_Imp_ClockEye></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Imp_MithralHeart</defName><label>秘银心核</label><description>秘银和精金打成的心核，跳得又稳又有力。替换心脏，部位效率 130%；毒素积累 −50%，不会再犯心脏病。稀有档，占 1 个调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/MithralHeart</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>3200</MarketValue><Mass>1.5</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>LP_Imp_MithralHeart</defName><label>秘银心核</label><description>秘银和精金打成的心核，跳得又稳又有力。替换心脏，部位效率 130%；毒素积累 −50%，不会再犯心脏病。稀有档，占 1 个调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <spawnThingOnRemoved>LP_Imp_MithralHeart</spawnThingOnRemoved>
+    <addedPartProps><solid>true</solid><partEfficiency>1.30</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
+    <stages><li><statOffsets><ToxicResistance>0.5</ToxicResistance></statOffsets></li></stages>
+    <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps>
+    <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>MithralHeart</flag><attune>true</attune></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>LP_Install_MithralHeart</defName><label>安装秘银心核</label><description>秘银和精金打成的心核，跳得又稳又有力。替换心脏，部位效率 130%；毒素积累 −50%，不会再犯心脏病。稀有档，占 1 个调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description><jobString>正在安装秘银心核。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndPart</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Imp_MithralHeart</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Imp_MithralHeart</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Heart</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Imp_MithralHeart</addsHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Make_MithralHeart</defName><label>锻造秘银心核</label><description>在符文铁砧锻造秘银心核。</description><jobString>正在锻造秘银心核。</jobString>
+    <workAmount>12000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking><soundWorking>Recipe_Smith</soundWorking><unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+    <researchPrerequisite>LP_Research_InfusedProsthetics</researchPrerequisite><skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>LP_RuneAnvil</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>30</count></li><li><filter><thingDefs><li>LP_Adamantine</li></thingDefs></filter><count>10</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_Mithral</li><li>LP_Adamantine</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Imp_MithralHeart>1</LP_Imp_MithralHeart></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_IounBlank</defName><label>伊奥恩原石</label>
+    <description>还没刻纹的伊奥恩石。在附魔台用 5 秘银刻成任意一种伊奥恩颅石；迷锁地牢和探索公告板的魔法奖励里偶尔能拿到，也能在附魔台做（需要研究“神奇器物”）。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/IounBlank</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></graphicData>
+    <statBases><MarketValue>1200</MarketValue><Mass>0.2</Mass></statBases>
+  </ThingDef>
+  <RecipeDef>
+    <defName>LP_Make_IounBlank</defName><label>制作伊奥恩原石</label><description>用 20 秘银、15 玉石和 10 金子在附魔台做一颗伊奥恩原石。</description><jobString>正在制作伊奥恩原石。</jobString>
+    <workAmount>10000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking><soundWorking>Recipe_Smith</soundWorking><unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+    <researchPrerequisite>LP_Research_WondrousDevices</researchPrerequisite><skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>LP_EnchantingTable</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>20</count></li><li><filter><thingDefs><li>Jade</li></thingDefs></filter><count>15</count></li><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>10</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_Mithral</li><li>Jade</li><li>Gold</li></thingDefs></fixedIngredientFilter>
+    <products><LP_IounBlank>1</LP_IounBlank></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Ioun_Str</defName><label>伊奥恩颅石·力量之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者力量 +2（最多加到 20；力量超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/IounStr</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></graphicData>
+    <statBases><MarketValue>2500</MarketValue><Mass>0.2</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>LP_Ioun_Str</defName><label>伊奥恩颅石·力量之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者力量 +2（最多加到 20；力量超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <spawnThingOnRemoved>LP_Ioun_Str</spawnThingOnRemoved>
+    
+    <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps>
+    <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Str</flag><attune>true</attune><ionStone>true</ionStone></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>LP_Install_LP_Ioun_Str</defName><label>镶嵌伊奥恩颅石·力量之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者力量 +2（最多加到 20；力量超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description><jobString>正在镶嵌伊奥恩颅石·力量之石。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Ioun_Str</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Ioun_Str</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Ioun_Str</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>LP_Remove_LP_Ioun_Str</defName><label>取出伊奥恩颅石·力量之石</label><description>从额骨里取出伊奥恩颅石·力量之石，石头还能再用。</description><jobString>正在取出伊奥恩颅石·力量之石。</jobString>
+    <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
+    <removesHediff>LP_Ioun_Str</removesHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Make_LP_Ioun_Str</defName><label>刻纹：力量之石</label><description>用 1 颗伊奥恩原石和 5 秘银刻成伊奥恩颅石·力量之石。</description><jobString>正在刻纹伊奥恩颅石·力量之石。</jobString>
+    <workAmount>3000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking><soundWorking>Recipe_Smith</soundWorking>
+    <researchPrerequisite>LP_Research_WondrousDevices</researchPrerequisite><skillRequirements><Crafting>6</Crafting></skillRequirements>
+    <recipeUsers><li>LP_EnchantingTable</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_IounBlank</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_IounBlank</li><li>LP_Mithral</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Ioun_Str>1</LP_Ioun_Str></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Ioun_Dex</defName><label>伊奥恩颅石·敏捷之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者敏捷 +2（最多加到 20；敏捷超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/IounDex</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></graphicData>
+    <statBases><MarketValue>2500</MarketValue><Mass>0.2</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>LP_Ioun_Dex</defName><label>伊奥恩颅石·敏捷之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者敏捷 +2（最多加到 20；敏捷超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <spawnThingOnRemoved>LP_Ioun_Dex</spawnThingOnRemoved>
+    
+    <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps>
+    <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Dex</flag><attune>true</attune><ionStone>true</ionStone></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>LP_Install_LP_Ioun_Dex</defName><label>镶嵌伊奥恩颅石·敏捷之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者敏捷 +2（最多加到 20；敏捷超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description><jobString>正在镶嵌伊奥恩颅石·敏捷之石。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Ioun_Dex</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Ioun_Dex</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Ioun_Dex</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>LP_Remove_LP_Ioun_Dex</defName><label>取出伊奥恩颅石·敏捷之石</label><description>从额骨里取出伊奥恩颅石·敏捷之石，石头还能再用。</description><jobString>正在取出伊奥恩颅石·敏捷之石。</jobString>
+    <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
+    <removesHediff>LP_Ioun_Dex</removesHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Make_LP_Ioun_Dex</defName><label>刻纹：敏捷之石</label><description>用 1 颗伊奥恩原石和 5 秘银刻成伊奥恩颅石·敏捷之石。</description><jobString>正在刻纹伊奥恩颅石·敏捷之石。</jobString>
+    <workAmount>3000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking><soundWorking>Recipe_Smith</soundWorking>
+    <researchPrerequisite>LP_Research_WondrousDevices</researchPrerequisite><skillRequirements><Crafting>6</Crafting></skillRequirements>
+    <recipeUsers><li>LP_EnchantingTable</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_IounBlank</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_IounBlank</li><li>LP_Mithral</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Ioun_Dex>1</LP_Ioun_Dex></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Ioun_Con</defName><label>伊奥恩颅石·体质之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者体质 +2（最多加到 20；体质超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/IounCon</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></graphicData>
+    <statBases><MarketValue>2500</MarketValue><Mass>0.2</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>LP_Ioun_Con</defName><label>伊奥恩颅石·体质之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者体质 +2（最多加到 20；体质超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <spawnThingOnRemoved>LP_Ioun_Con</spawnThingOnRemoved>
+    
+    <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps>
+    <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Con</flag><attune>true</attune><ionStone>true</ionStone></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>LP_Install_LP_Ioun_Con</defName><label>镶嵌伊奥恩颅石·体质之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者体质 +2（最多加到 20；体质超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description><jobString>正在镶嵌伊奥恩颅石·体质之石。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Ioun_Con</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Ioun_Con</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Ioun_Con</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>LP_Remove_LP_Ioun_Con</defName><label>取出伊奥恩颅石·体质之石</label><description>从额骨里取出伊奥恩颅石·体质之石，石头还能再用。</description><jobString>正在取出伊奥恩颅石·体质之石。</jobString>
+    <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
+    <removesHediff>LP_Ioun_Con</removesHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Make_LP_Ioun_Con</defName><label>刻纹：体质之石</label><description>用 1 颗伊奥恩原石和 5 秘银刻成伊奥恩颅石·体质之石。</description><jobString>正在刻纹伊奥恩颅石·体质之石。</jobString>
+    <workAmount>3000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking><soundWorking>Recipe_Smith</soundWorking>
+    <researchPrerequisite>LP_Research_WondrousDevices</researchPrerequisite><skillRequirements><Crafting>6</Crafting></skillRequirements>
+    <recipeUsers><li>LP_EnchantingTable</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_IounBlank</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_IounBlank</li><li>LP_Mithral</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Ioun_Con>1</LP_Ioun_Con></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Ioun_Int</defName><label>伊奥恩颅石·智力之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者智力 +2（最多加到 20；智力超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/IounInt</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></graphicData>
+    <statBases><MarketValue>2500</MarketValue><Mass>0.2</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>LP_Ioun_Int</defName><label>伊奥恩颅石·智力之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者智力 +2（最多加到 20；智力超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <spawnThingOnRemoved>LP_Ioun_Int</spawnThingOnRemoved>
+    
+    <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps>
+    <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Int</flag><attune>true</attune><ionStone>true</ionStone></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>LP_Install_LP_Ioun_Int</defName><label>镶嵌伊奥恩颅石·智力之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者智力 +2（最多加到 20；智力超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description><jobString>正在镶嵌伊奥恩颅石·智力之石。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Ioun_Int</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Ioun_Int</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Ioun_Int</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>LP_Remove_LP_Ioun_Int</defName><label>取出伊奥恩颅石·智力之石</label><description>从额骨里取出伊奥恩颅石·智力之石，石头还能再用。</description><jobString>正在取出伊奥恩颅石·智力之石。</jobString>
+    <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
+    <removesHediff>LP_Ioun_Int</removesHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Make_LP_Ioun_Int</defName><label>刻纹：智力之石</label><description>用 1 颗伊奥恩原石和 5 秘银刻成伊奥恩颅石·智力之石。</description><jobString>正在刻纹伊奥恩颅石·智力之石。</jobString>
+    <workAmount>3000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking><soundWorking>Recipe_Smith</soundWorking>
+    <researchPrerequisite>LP_Research_WondrousDevices</researchPrerequisite><skillRequirements><Crafting>6</Crafting></skillRequirements>
+    <recipeUsers><li>LP_EnchantingTable</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_IounBlank</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_IounBlank</li><li>LP_Mithral</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Ioun_Int>1</LP_Ioun_Int></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Ioun_Wis</defName><label>伊奥恩颅石·感知之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者感知 +2（最多加到 20；感知超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/IounWis</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></graphicData>
+    <statBases><MarketValue>2500</MarketValue><Mass>0.2</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>LP_Ioun_Wis</defName><label>伊奥恩颅石·感知之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者感知 +2（最多加到 20；感知超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <spawnThingOnRemoved>LP_Ioun_Wis</spawnThingOnRemoved>
+    
+    <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps>
+    <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Wis</flag><attune>true</attune><ionStone>true</ionStone></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>LP_Install_LP_Ioun_Wis</defName><label>镶嵌伊奥恩颅石·感知之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者感知 +2（最多加到 20；感知超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description><jobString>正在镶嵌伊奥恩颅石·感知之石。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Ioun_Wis</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Ioun_Wis</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Ioun_Wis</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>LP_Remove_LP_Ioun_Wis</defName><label>取出伊奥恩颅石·感知之石</label><description>从额骨里取出伊奥恩颅石·感知之石，石头还能再用。</description><jobString>正在取出伊奥恩颅石·感知之石。</jobString>
+    <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
+    <removesHediff>LP_Ioun_Wis</removesHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Make_LP_Ioun_Wis</defName><label>刻纹：感知之石</label><description>用 1 颗伊奥恩原石和 5 秘银刻成伊奥恩颅石·感知之石。</description><jobString>正在刻纹伊奥恩颅石·感知之石。</jobString>
+    <workAmount>3000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking><soundWorking>Recipe_Smith</soundWorking>
+    <researchPrerequisite>LP_Research_WondrousDevices</researchPrerequisite><skillRequirements><Crafting>6</Crafting></skillRequirements>
+    <recipeUsers><li>LP_EnchantingTable</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_IounBlank</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_IounBlank</li><li>LP_Mithral</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Ioun_Wis>1</LP_Ioun_Wis></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Ioun_Cha</defName><label>伊奥恩颅石·魅力之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者魅力 +2（最多加到 20；魅力超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/IounCha</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></graphicData>
+    <statBases><MarketValue>2500</MarketValue><Mass>0.2</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>LP_Ioun_Cha</defName><label>伊奥恩颅石·魅力之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者魅力 +2（最多加到 20；魅力超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <spawnThingOnRemoved>LP_Ioun_Cha</spawnThingOnRemoved>
+    
+    <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps>
+    <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Cha</flag><attune>true</attune><ionStone>true</ionStone></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>LP_Install_LP_Ioun_Cha</defName><label>镶嵌伊奥恩颅石·魅力之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者魅力 +2（最多加到 20；魅力超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description><jobString>正在镶嵌伊奥恩颅石·魅力之石。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Ioun_Cha</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Ioun_Cha</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Ioun_Cha</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>LP_Remove_LP_Ioun_Cha</defName><label>取出伊奥恩颅石·魅力之石</label><description>从额骨里取出伊奥恩颅石·魅力之石，石头还能再用。</description><jobString>正在取出伊奥恩颅石·魅力之石。</jobString>
+    <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
+    <removesHediff>LP_Ioun_Cha</removesHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Make_LP_Ioun_Cha</defName><label>刻纹：魅力之石</label><description>用 1 颗伊奥恩原石和 5 秘银刻成伊奥恩颅石·魅力之石。</description><jobString>正在刻纹伊奥恩颅石·魅力之石。</jobString>
+    <workAmount>3000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking><soundWorking>Recipe_Smith</soundWorking>
+    <researchPrerequisite>LP_Research_WondrousDevices</researchPrerequisite><skillRequirements><Crafting>6</Crafting></skillRequirements>
+    <recipeUsers><li>LP_EnchantingTable</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_IounBlank</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_IounBlank</li><li>LP_Mithral</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Ioun_Cha>1</LP_Ioun_Cha></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Ioun_Sustain</defName><label>伊奥恩颅石·维生之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。饥饿速度 ×0.2。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/IounSustain</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></graphicData>
+    <statBases><MarketValue>2500</MarketValue><Mass>0.2</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>LP_Ioun_Sustain</defName><label>伊奥恩颅石·维生之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。饥饿速度 ×0.2。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <spawnThingOnRemoved>LP_Ioun_Sustain</spawnThingOnRemoved>
+    <stages><li><hungerRateFactor>0.2</hungerRateFactor></li></stages>
+    <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps>
+    <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Sustain</flag><attune>true</attune><ionStone>true</ionStone></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>LP_Install_LP_Ioun_Sustain</defName><label>镶嵌伊奥恩颅石·维生之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。饥饿速度 ×0.2。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description><jobString>正在镶嵌伊奥恩颅石·维生之石。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Ioun_Sustain</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Ioun_Sustain</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Ioun_Sustain</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>LP_Remove_LP_Ioun_Sustain</defName><label>取出伊奥恩颅石·维生之石</label><description>从额骨里取出伊奥恩颅石·维生之石，石头还能再用。</description><jobString>正在取出伊奥恩颅石·维生之石。</jobString>
+    <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
+    <removesHediff>LP_Ioun_Sustain</removesHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Make_LP_Ioun_Sustain</defName><label>刻纹：维生之石</label><description>用 1 颗伊奥恩原石和 5 秘银刻成伊奥恩颅石·维生之石。</description><jobString>正在刻纹伊奥恩颅石·维生之石。</jobString>
+    <workAmount>3000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking><soundWorking>Recipe_Smith</soundWorking>
+    <researchPrerequisite>LP_Research_WondrousDevices</researchPrerequisite><skillRequirements><Crafting>6</Crafting></skillRequirements>
+    <recipeUsers><li>LP_EnchantingTable</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_IounBlank</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_IounBlank</li><li>LP_Mithral</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Ioun_Sustain>1</LP_Ioun_Sustain></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Ioun_Regen</defName><label>伊奥恩颅石·再生之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。每天额外治好一处伤口（最重的那处，旧伤疤不算）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/IounRegen</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></graphicData>
+    <statBases><MarketValue>2500</MarketValue><Mass>0.2</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>LP_Ioun_Regen</defName><label>伊奥恩颅石·再生之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。每天额外治好一处伤口（最重的那处，旧伤疤不算）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <spawnThingOnRemoved>LP_Ioun_Regen</spawnThingOnRemoved>
+    
+    <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps>
+    <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Regen</flag><attune>true</attune><ionStone>true</ionStone></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>LP_Install_LP_Ioun_Regen</defName><label>镶嵌伊奥恩颅石·再生之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。每天额外治好一处伤口（最重的那处，旧伤疤不算）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description><jobString>正在镶嵌伊奥恩颅石·再生之石。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Ioun_Regen</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Ioun_Regen</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Ioun_Regen</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>LP_Remove_LP_Ioun_Regen</defName><label>取出伊奥恩颅石·再生之石</label><description>从额骨里取出伊奥恩颅石·再生之石，石头还能再用。</description><jobString>正在取出伊奥恩颅石·再生之石。</jobString>
+    <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
+    <removesHediff>LP_Ioun_Regen</removesHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Make_LP_Ioun_Regen</defName><label>刻纹：再生之石</label><description>用 1 颗伊奥恩原石和 5 秘银刻成伊奥恩颅石·再生之石。</description><jobString>正在刻纹伊奥恩颅石·再生之石。</jobString>
+    <workAmount>3000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking><soundWorking>Recipe_Smith</soundWorking>
+    <researchPrerequisite>LP_Research_WondrousDevices</researchPrerequisite><skillRequirements><Crafting>6</Crafting></skillRequirements>
+    <recipeUsers><li>LP_EnchantingTable</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_IounBlank</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_IounBlank</li><li>LP_Mithral</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Ioun_Regen>1</LP_Ioun_Regen></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Ioun_Mastery</defName><label>伊奥恩颅石·精通之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。熟练加值 +1（职业强度、检定都按新的熟练加值算）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/IounMastery</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></graphicData>
+    <statBases><MarketValue>2500</MarketValue><Mass>0.2</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>LP_Ioun_Mastery</defName><label>伊奥恩颅石·精通之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。熟练加值 +1（职业强度、检定都按新的熟练加值算）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <spawnThingOnRemoved>LP_Ioun_Mastery</spawnThingOnRemoved>
+    
+    <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps>
+    <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Mastery</flag><attune>true</attune><ionStone>true</ionStone></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>LP_Install_LP_Ioun_Mastery</defName><label>镶嵌伊奥恩颅石·精通之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。熟练加值 +1（职业强度、检定都按新的熟练加值算）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description><jobString>正在镶嵌伊奥恩颅石·精通之石。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Ioun_Mastery</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Ioun_Mastery</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Ioun_Mastery</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>LP_Remove_LP_Ioun_Mastery</defName><label>取出伊奥恩颅石·精通之石</label><description>从额骨里取出伊奥恩颅石·精通之石，石头还能再用。</description><jobString>正在取出伊奥恩颅石·精通之石。</jobString>
+    <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
+    <removesHediff>LP_Ioun_Mastery</removesHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Make_LP_Ioun_Mastery</defName><label>刻纹：精通之石</label><description>用 1 颗伊奥恩原石和 5 秘银刻成伊奥恩颅石·精通之石。</description><jobString>正在刻纹伊奥恩颅石·精通之石。</jobString>
+    <workAmount>3000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking><soundWorking>Recipe_Smith</soundWorking>
+    <researchPrerequisite>LP_Research_WondrousDevices</researchPrerequisite><skillRequirements><Crafting>6</Crafting></skillRequirements>
+    <recipeUsers><li>LP_EnchantingTable</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_IounBlank</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_IounBlank</li><li>LP_Mithral</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Ioun_Mastery>1</LP_Ioun_Mastery></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Ioun_Absorb</defName><label>伊奥恩颅石·吸收之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。每天抵消一次灵能或法术伤害（不带武器的火焰、寒冰、闪电、心灵、奥术力伤害）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/IounAbsorb</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></graphicData>
+    <statBases><MarketValue>2500</MarketValue><Mass>0.2</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>LP_Ioun_Absorb</defName><label>伊奥恩颅石·吸收之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。每天抵消一次灵能或法术伤害（不带武器的火焰、寒冰、闪电、心灵、奥术力伤害）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <spawnThingOnRemoved>LP_Ioun_Absorb</spawnThingOnRemoved>
+    
+    <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps>
+    <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Absorb</flag><attune>true</attune><ionStone>true</ionStone></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>LP_Install_LP_Ioun_Absorb</defName><label>镶嵌伊奥恩颅石·吸收之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。每天抵消一次灵能或法术伤害（不带武器的火焰、寒冰、闪电、心灵、奥术力伤害）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description><jobString>正在镶嵌伊奥恩颅石·吸收之石。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Ioun_Absorb</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Ioun_Absorb</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Ioun_Absorb</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>LP_Remove_LP_Ioun_Absorb</defName><label>取出伊奥恩颅石·吸收之石</label><description>从额骨里取出伊奥恩颅石·吸收之石，石头还能再用。</description><jobString>正在取出伊奥恩颅石·吸收之石。</jobString>
+    <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
+    <removesHediff>LP_Ioun_Absorb</removesHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Make_LP_Ioun_Absorb</defName><label>刻纹：吸收之石</label><description>用 1 颗伊奥恩原石和 5 秘银刻成伊奥恩颅石·吸收之石。</description><jobString>正在刻纹伊奥恩颅石·吸收之石。</jobString>
+    <workAmount>3000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking><soundWorking>Recipe_Smith</soundWorking>
+    <researchPrerequisite>LP_Research_WondrousDevices</researchPrerequisite><skillRequirements><Crafting>6</Crafting></skillRequirements>
+    <recipeUsers><li>LP_EnchantingTable</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_IounBlank</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_IounBlank</li><li>LP_Mithral</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Ioun_Absorb>1</LP_Ioun_Absorb></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Ioun_Alert</defName><label>伊奥恩颅石·警觉之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。不会被偷袭（刺客、隐匿伏击的偷袭加成对你无效），意识 +5%。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/IounAlert</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></graphicData>
+    <statBases><MarketValue>2500</MarketValue><Mass>0.2</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>LP_Ioun_Alert</defName><label>伊奥恩颅石·警觉之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。不会被偷袭（刺客、隐匿伏击的偷袭加成对你无效），意识 +5%。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <spawnThingOnRemoved>LP_Ioun_Alert</spawnThingOnRemoved>
+    <stages><li><capMods><li><capacity>Consciousness</capacity><offset>0.05</offset></li></capMods></li></stages>
+    <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps>
+    <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Alert</flag><attune>true</attune><ionStone>true</ionStone></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>LP_Install_LP_Ioun_Alert</defName><label>镶嵌伊奥恩颅石·警觉之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。不会被偷袭（刺客、隐匿伏击的偷袭加成对你无效），意识 +5%。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description><jobString>正在镶嵌伊奥恩颅石·警觉之石。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Ioun_Alert</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Ioun_Alert</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Ioun_Alert</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>LP_Remove_LP_Ioun_Alert</defName><label>取出伊奥恩颅石·警觉之石</label><description>从额骨里取出伊奥恩颅石·警觉之石，石头还能再用。</description><jobString>正在取出伊奥恩颅石·警觉之石。</jobString>
+    <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
+    <removesHediff>LP_Ioun_Alert</removesHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Make_LP_Ioun_Alert</defName><label>刻纹：警觉之石</label><description>用 1 颗伊奥恩原石和 5 秘银刻成伊奥恩颅石·警觉之石。</description><jobString>正在刻纹伊奥恩颅石·警觉之石。</jobString>
+    <workAmount>3000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking><soundWorking>Recipe_Smith</soundWorking>
+    <researchPrerequisite>LP_Research_WondrousDevices</researchPrerequisite><skillRequirements><Crafting>6</Crafting></skillRequirements>
+    <recipeUsers><li>LP_EnchantingTable</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_IounBlank</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_IounBlank</li><li>LP_Mithral</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Ioun_Alert>1</LP_Ioun_Alert></products>
+  </RecipeDef>
+  <HediffDef>
+    <defName>LP_Infused</defName>
+    <hediffClass>LichPhylactery.Hediff_CapBonus</hediffClass>
+    <label>注能</label>
+    <description>器械师给这件义体灌注了魔力：效率 +10%（成对的部位按一半折算到对应能力）。义体拆掉就消失。</description>
+    <isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.6,0.75,1)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_ArtificerTuned</defName>
+    <hediffClass>LichPhylactery.Hediff_CapBonus</hediffClass>
+    <label>器械师调校</label>
+    <description>器械师亲手调校自己身上的 DND 义肢：每 4 个器械师等级效率 +3%（最多 +15%，成对的部位按一半折算到对应能力）。</description>
+    <isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.95,0.8,0.45)</defaultLabelColor>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryFlesh">
+    <defName>LP_InfuseBionic</defName>
+    <label>注能义体</label>
+    <description>器械师用 10 秘银给一件原版仿生或考古科技部件注能：效率 +10%。只有器械师能主刀（成功率 +15%）。</description>
+    <jobString>正在给义体注能。</jobString>
+    <workerClass>LichPhylactery.Recipe_InfuseBionic</workerClass>
+    <workAmount>2500</workAmount>
+    <researchPrerequisite>LP_Research_InfusedProsthetics</researchPrerequisite>
+    <skillRequirements><Medicine>5</Medicine></skillRequirements>
+    <recipeUsers><li>Human</li></recipeUsers>
+    <ingredients><li><filter><categories><li>Medicine</li></categories></filter><count>1</count></li><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>10</count></li></ingredients>
+    <fixedIngredientFilter><categories><li>Medicine</li></categories><thingDefs><li>LP_Mithral</li></thingDefs></fixedIngredientFilter>
+    <modExtensions><li Class="LichPhylactery.ArtificerSurgeryExtension" /></modExtensions>
+  </RecipeDef>
+<!-- ===================== 1.113.0 巫妖血肉植入扩充 ===================== -->
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Flesh_HellHeart</defName><label>冥火之心</label><description>冥火在胸腔里代替心跳。替换心脏，部位效率 120%；流血速度 ×0.2。在死灵仪式台用 800 份生肉和 150 白银培育，巫妖和活人都能装，可以叠肢体强化。普通档，不占调谐位。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/FleshHellHeart</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>2000</MarketValue><Mass>1</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>LP_Flesh_HellHeart</defName><label>冥火之心</label><description>冥火在胸腔里代替心跳。替换心脏，部位效率 120%；流血速度 ×0.2。在死灵仪式台用 800 份生肉和 150 白银培育，巫妖和活人都能装，可以叠肢体强化。普通档，不占调谐位。</description>
+    <spawnThingOnRemoved>LP_Flesh_HellHeart</spawnThingOnRemoved>
+    <addedPartProps><solid>false</solid><partEfficiency>1.20</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
+    <stages><li><totalBleedFactor>0.2</totalBleedFactor></li></stages> <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps> <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>HellHeart</flag><attune>false</attune></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>LP_Install_LP_Flesh_HellHeart</defName><label>安装冥火之心</label><description>冥火在胸腔里代替心跳。替换心脏，部位效率 120%；流血速度 ×0.2。在死灵仪式台用 800 份生肉和 150 白银培育，巫妖和活人都能装，可以叠肢体强化。普通档，不占调谐位。</description><jobString>正在安装冥火之心。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndPart</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Flesh_HellHeart</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Flesh_HellHeart</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Heart</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Flesh_HellHeart</addsHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Craft_HellHeart</defName><label>培育冥火之心</label><description>消耗 800 份新鲜生肉与 150 白银培育冥火之心。</description><jobString>正在培育冥火之心。</jobString>
+    <workerClass>LichPhylactery.FleshImplantRecipe</workerClass><ingredientValueGetterClass>LichPhylactery.RitualCount</ingredientValueGetterClass>
+    <workAmount>16000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill><skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>LP_Altar</li></recipeUsers><allowMixingIngredients>true</allowMixingIngredients>
+    <ingredients><li><filter><categories><li>MeatRaw</li></categories></filter><count>800</count></li><li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>150</count></li></ingredients>
+    <fixedIngredientFilter><categories><li>MeatRaw</li></categories><thingDefs><li>Silver</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Flesh_HellHeart>1</LP_Flesh_HellHeart></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Flesh_BoneCage</defName><label>骸骨肋笼</label><description>在肋骨外再长一层骨笼。躯干附加，不替换部位：躯干最大生命 +50%，受到的利器伤害 −20%。在死灵仪式台用 600 份生肉和 150 白银培育，巫妖和活人都能装，可以叠肢体强化。普通档，不占调谐位。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/FleshBoneCage</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>1800</MarketValue><Mass>1</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>LP_Flesh_BoneCage</defName><label>骸骨肋笼</label><description>在肋骨外再长一层骨笼。躯干附加，不替换部位：躯干最大生命 +50%，受到的利器伤害 −20%。在死灵仪式台用 600 份生肉和 150 白银培育，巫妖和活人都能装，可以叠肢体强化。普通档，不占调谐位。</description>
+    <spawnThingOnRemoved>LP_Flesh_BoneCage</spawnThingOnRemoved>
+     <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps> <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>BoneCage</flag><attune>false</attune></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>LP_Install_LP_Flesh_BoneCage</defName><label>安装骸骨肋笼</label><description>在肋骨外再长一层骨笼。躯干附加，不替换部位：躯干最大生命 +50%，受到的利器伤害 −20%。在死灵仪式台用 600 份生肉和 150 白银培育，巫妖和活人都能装，可以叠肢体强化。普通档，不占调谐位。</description><jobString>正在安装骸骨肋笼。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Flesh_BoneCage</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Flesh_BoneCage</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Torso</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Flesh_BoneCage</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>LP_Remove_LP_Flesh_BoneCage</defName><label>取出骸骨肋笼</label><description>取出骸骨肋笼。</description><jobString>正在取出骸骨肋笼。</jobString>
+    <appliedOnFixedBodyParts><li>Torso</li></appliedOnFixedBodyParts>
+    <removesHediff>LP_Flesh_BoneCage</removesHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Craft_BoneCage</defName><label>培育骸骨肋笼</label><description>消耗 600 份新鲜生肉与 150 白银培育骸骨肋笼。</description><jobString>正在培育骸骨肋笼。</jobString>
+    <workerClass>LichPhylactery.FleshImplantRecipe</workerClass><ingredientValueGetterClass>LichPhylactery.RitualCount</ingredientValueGetterClass>
+    <workAmount>16000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill><skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>LP_Altar</li></recipeUsers><allowMixingIngredients>true</allowMixingIngredients>
+    <ingredients><li><filter><categories><li>MeatRaw</li></categories></filter><count>600</count></li><li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>150</count></li></ingredients>
+    <fixedIngredientFilter><categories><li>MeatRaw</li></categories><thingDefs><li>Silver</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Flesh_BoneCage>1</LP_Flesh_BoneCage></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Flesh_DeadEar</defName><label>亡者低语之耳</label><description>听得见死人说话的耳朵。替换一只耳朵，部位效率 125%；能力“亡者之语”：对一具人形尸体使用，学到它最高那项技能总经验的 10%（每具尸体一次；照常折算冒险者经验）。在死灵仪式台用 400 份生肉和 150 白银培育，巫妖和活人都能装，可以叠肢体强化。普通档，不占调谐位。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/FleshDeadEar</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>1600</MarketValue><Mass>1</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>LP_Flesh_DeadEar</defName><label>亡者低语之耳</label><description>听得见死人说话的耳朵。替换一只耳朵，部位效率 125%；能力“亡者之语”：对一具人形尸体使用，学到它最高那项技能总经验的 10%（每具尸体一次；照常折算冒险者经验）。在死灵仪式台用 400 份生肉和 150 白银培育，巫妖和活人都能装，可以叠肢体强化。普通档，不占调谐位。</description>
+    <spawnThingOnRemoved>LP_Flesh_DeadEar</spawnThingOnRemoved>
+    <addedPartProps><solid>false</solid><partEfficiency>1.25</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
+     <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps> <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>DeadEar</flag><attune>false</attune><ability>LP_DeadSpeak</ability></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>LP_Install_LP_Flesh_DeadEar</defName><label>安装亡者低语之耳</label><description>听得见死人说话的耳朵。替换一只耳朵，部位效率 125%；能力“亡者之语”：对一具人形尸体使用，学到它最高那项技能总经验的 10%（每具尸体一次；照常折算冒险者经验）。在死灵仪式台用 400 份生肉和 150 白银培育，巫妖和活人都能装，可以叠肢体强化。普通档，不占调谐位。</description><jobString>正在安装亡者低语之耳。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndPart</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Flesh_DeadEar</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Flesh_DeadEar</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Ear</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Flesh_DeadEar</addsHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Craft_DeadEar</defName><label>培育亡者低语之耳</label><description>消耗 400 份新鲜生肉与 150 白银培育亡者低语之耳。</description><jobString>正在培育亡者低语之耳。</jobString>
+    <workerClass>LichPhylactery.FleshImplantRecipe</workerClass><ingredientValueGetterClass>LichPhylactery.RitualCount</ingredientValueGetterClass>
+    <workAmount>16000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill><skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>LP_Altar</li></recipeUsers><allowMixingIngredients>true</allowMixingIngredients>
+    <ingredients><li><filter><categories><li>MeatRaw</li></categories></filter><count>400</count></li><li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>150</count></li></ingredients>
+    <fixedIngredientFilter><categories><li>MeatRaw</li></categories><thingDefs><li>Silver</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Flesh_DeadEar>1</LP_Flesh_DeadEar></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Flesh_SoulJaw</defName><label>吞魂之颌</label><description>满口尖牙的下颌。替换下颌，部位效率 120%；多一个近战咬击（14 伤害）；用它咬死血肉活物时回复 10% 精神力。在死灵仪式台用 600 份生肉和 150 白银培育，巫妖和活人都能装，可以叠肢体强化。普通档，不占调谐位。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/FleshSoulJaw</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>1800</MarketValue><Mass>1</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>LP_Flesh_SoulJaw</defName><label>吞魂之颌</label><description>满口尖牙的下颌。替换下颌，部位效率 120%；多一个近战咬击（14 伤害）；用它咬死血肉活物时回复 10% 精神力。在死灵仪式台用 600 份生肉和 150 白银培育，巫妖和活人都能装，可以叠肢体强化。普通档，不占调谐位。</description>
+    <spawnThingOnRemoved>LP_Flesh_SoulJaw</spawnThingOnRemoved>
+    <addedPartProps><solid>false</solid><partEfficiency>1.20</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
+     <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /><li Class="HediffCompProperties_VerbGiver"><tools><li><label>吞魂之颌</label><capacities><li>Bite</li></capacities><power>14</power><cooldownTime>2</cooldownTime></li></tools></li></comps> <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>SoulJaw</flag><attune>false</attune></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>LP_Install_LP_Flesh_SoulJaw</defName><label>安装吞魂之颌</label><description>满口尖牙的下颌。替换下颌，部位效率 120%；多一个近战咬击（14 伤害）；用它咬死血肉活物时回复 10% 精神力。在死灵仪式台用 600 份生肉和 150 白银培育，巫妖和活人都能装，可以叠肢体强化。普通档，不占调谐位。</description><jobString>正在安装吞魂之颌。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndPart</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Flesh_SoulJaw</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Flesh_SoulJaw</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Jaw</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Flesh_SoulJaw</addsHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Craft_SoulJaw</defName><label>培育吞魂之颌</label><description>消耗 600 份新鲜生肉与 150 白银培育吞魂之颌。</description><jobString>正在培育吞魂之颌。</jobString>
+    <workerClass>LichPhylactery.FleshImplantRecipe</workerClass><ingredientValueGetterClass>LichPhylactery.RitualCount</ingredientValueGetterClass>
+    <workAmount>16000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Crafting</workSkill><skillRequirements><Crafting>8</Crafting></skillRequirements>
+    <recipeUsers><li>LP_Altar</li></recipeUsers><allowMixingIngredients>true</allowMixingIngredients>
+    <ingredients><li><filter><categories><li>MeatRaw</li></categories></filter><count>600</count></li><li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>150</count></li></ingredients>
+    <fixedIngredientFilter><categories><li>MeatRaw</li></categories><thingDefs><li>Silver</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Flesh_SoulJaw>1</LP_Flesh_SoulJaw></products>
+  </RecipeDef>
+<!-- ===================== 1.113.0 异怪嫁接 ===================== -->
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_GraftTrollStalled</defName>
+    <label>再生停滞</label>
+    <description>火焰或强酸烧坏了巨魔再生腺：12 小时内自然愈合恢复正常速度，也不会长回部位。</description>
+    <isBad>true</isBad>
+    <stages><li><naturalHealingFactor>0.334</naturalHealingFactor></li></stages>
+  </HediffDef>
+  <ThoughtDef>
+    <defName>LP_GraftMood_Beholder</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>LP_Graft_BeholderEye</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages><li><label>异怪凝视</label><description>眼窝里那只眼睛总在看着不该看的东西。</description><baseMoodEffect>-5</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_GraftOther_Beholder</defName>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <workerClass>LichPhylactery.ThoughtWorker_GraftOther</workerClass>
+    <hediff>LP_Graft_BeholderEye</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages><li><label>异怪凝视</label><baseOpinionOffset>-10</baseOpinionOffset></li></stages>
+  </ThoughtDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Graft_BeholderEye</defName><label>眼魔之眼</label><description>从眼魔身上取下的一只眼睛，接进眼窝还在转。替换一只眼睛，部位效率 110%；能力“眼魔射线”（20 格，冷却 1 天）：装上时随机定下是死灵射线（30 坏死伤害）、石化射线（开始石化）还是魅惑射线（恍惚 25 秒）。副作用：自己心情 −5（异怪凝视），别人对你的印象 −10。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/GraftBeholderEye</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>6000</MarketValue><Mass>1</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>LP_Graft_BeholderEye</defName><label>眼魔之眼</label><description>从眼魔身上取下的一只眼睛，接进眼窝还在转。替换一只眼睛，部位效率 110%；能力“眼魔射线”（20 格，冷却 1 天）：装上时随机定下是死灵射线（30 坏死伤害）、石化射线（开始石化）还是魅惑射线（恍惚 25 秒）。副作用：自己心情 −5（异怪凝视），别人对你的印象 −10。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <spawnThingOnRemoved>LP_Graft_BeholderEye</spawnThingOnRemoved>
+    <addedPartProps><solid>false</solid><partEfficiency>1.10</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
+     <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps> <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Beholder</flag><attune>true</attune><ability>LP_GraftRay</ability><graft>true</graft></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>LP_Install_LP_Graft_BeholderEye</defName><label>安装眼魔之眼</label><description>从眼魔身上取下的一只眼睛，接进眼窝还在转。替换一只眼睛，部位效率 110%；能力“眼魔射线”（20 格，冷却 1 天）：装上时随机定下是死灵射线（30 坏死伤害）、石化射线（开始石化）还是魅惑射线（恍惚 25 秒）。副作用：自己心情 −5（异怪凝视），别人对你的印象 −10。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description><jobString>正在安装眼魔之眼。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndPart</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Graft_BeholderEye</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Graft_BeholderEye</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Eye</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Graft_BeholderEye</addsHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Grow_Graft_BeholderEye</defName><label>培养眼魔之眼</label><description>在炼金台用怪物材料培养眼魔之眼（嫁接物只能装在活人身上）。</description><jobString>正在培养眼魔之眼。</jobString>
+    <workAmount>9000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Intellectual</workSkill><effectWorking>Cook</effectWorking><soundWorking>Recipe_Drug</soundWorking>
+    <researchPrerequisite>LP_DNDAlchemy</researchPrerequisite><skillRequirements><Intellectual>8</Intellectual></skillRequirements>
+    <recipeUsers><li>LP_AlchemyTable</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_BeholderEye</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>MedicineHerbal</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_BeholderEye</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Graft_BeholderEye>1</LP_Graft_BeholderEye></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Graft_DemonArm</defName><label>恶魔之臂</label><description>浸过恶魔血长出来的手臂，皮下透着火光。替换整条手臂，部位效率 130%；近战命中附加 5 点火焰伤害。副作用：每天 1% 陷入狂怒崩溃；天界血统（阿斯莫、天界契约种族）装不上。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/GraftDemonArm</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>2800</MarketValue><Mass>1</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>LP_Graft_DemonArm</defName><label>恶魔之臂</label><description>浸过恶魔血长出来的手臂，皮下透着火光。替换整条手臂，部位效率 130%；近战命中附加 5 点火焰伤害。副作用：每天 1% 陷入狂怒崩溃；天界血统（阿斯莫、天界契约种族）装不上。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <spawnThingOnRemoved>LP_Graft_DemonArm</spawnThingOnRemoved>
+    <addedPartProps><solid>false</solid><partEfficiency>1.30</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
+     <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps> <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>DemonArm</flag><attune>false</attune><graft>true</graft><noCelestial>true</noCelestial></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>LP_Install_LP_Graft_DemonArm</defName><label>安装恶魔之臂</label><description>浸过恶魔血长出来的手臂，皮下透着火光。替换整条手臂，部位效率 130%；近战命中附加 5 点火焰伤害。副作用：每天 1% 陷入狂怒崩溃；天界血统（阿斯莫、天界契约种族）装不上。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description><jobString>正在安装恶魔之臂。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndPart</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Graft_DemonArm</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Graft_DemonArm</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Shoulder</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Graft_DemonArm</addsHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Grow_Graft_DemonArm</defName><label>培养恶魔之臂</label><description>在炼金台用怪物材料培养恶魔之臂（嫁接物只能装在活人身上）。</description><jobString>正在培养恶魔之臂。</jobString>
+    <workAmount>9000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Intellectual</workSkill><effectWorking>Cook</effectWorking><soundWorking>Recipe_Drug</soundWorking>
+    <researchPrerequisite>LP_Research_Abyssology</researchPrerequisite><skillRequirements><Intellectual>8</Intellectual></skillRequirements>
+    <recipeUsers><li>LP_AlchemyTable</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_DemonBlood</li></thingDefs></filter><count>3</count></li><li><filter><thingDefs><li>MedicineHerbal</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_DemonBlood</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Graft_DemonArm>1</LP_Graft_DemonArm></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Graft_TrollGland</defName><label>巨魔再生腺</label><description>巨魔的再生腺体，缝在躯干上。躯干附加：伤口自然愈合 ×3；每 15 天长回一个缺失的小部位。副作用：饥饿速度 +50%；受到火焰、强酸伤害后再生停止 12 小时。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/GraftTrollGland</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>2200</MarketValue><Mass>1</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>LP_Graft_TrollGland</defName><label>巨魔再生腺</label><description>巨魔的再生腺体，缝在躯干上。躯干附加：伤口自然愈合 ×3；每 15 天长回一个缺失的小部位。副作用：饥饿速度 +50%；受到火焰、强酸伤害后再生停止 12 小时。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <spawnThingOnRemoved>LP_Graft_TrollGland</spawnThingOnRemoved>
+    <stages><li><naturalHealingFactor>3</naturalHealingFactor><hungerRateFactorOffset>0.5</hungerRateFactorOffset></li></stages> <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps> <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Troll</flag><attune>false</attune><graft>true</graft></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>LP_Install_LP_Graft_TrollGland</defName><label>安装巨魔再生腺</label><description>巨魔的再生腺体，缝在躯干上。躯干附加：伤口自然愈合 ×3；每 15 天长回一个缺失的小部位。副作用：饥饿速度 +50%；受到火焰、强酸伤害后再生停止 12 小时。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description><jobString>正在安装巨魔再生腺。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Graft_TrollGland</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Graft_TrollGland</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Torso</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Graft_TrollGland</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>LP_Remove_LP_Graft_TrollGland</defName><label>取出巨魔再生腺</label><description>取出巨魔再生腺。</description><jobString>正在取出巨魔再生腺。</jobString>
+    <appliedOnFixedBodyParts><li>Torso</li></appliedOnFixedBodyParts>
+    <removesHediff>LP_Graft_TrollGland</removesHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Grow_Graft_TrollGland</defName><label>培养巨魔再生腺</label><description>在炼金台用怪物材料培养巨魔再生腺（嫁接物只能装在活人身上）。</description><jobString>正在培养巨魔再生腺。</jobString>
+    <workAmount>9000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Intellectual</workSkill><effectWorking>Cook</effectWorking><soundWorking>Recipe_Drug</soundWorking>
+    <researchPrerequisite>LP_DNDAlchemy</researchPrerequisite><skillRequirements><Intellectual>8</Intellectual></skillRequirements>
+    <recipeUsers><li>LP_AlchemyTable</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_TrollHide</li></thingDefs></filter><count>10</count></li><li><filter><thingDefs><li>MedicineHerbal</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_TrollHide</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Graft_TrollGland>1</LP_Graft_TrollGland></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Graft_ScaleRed</defName><label>赤龙鳞皮下甲</label><description>赤龙的鳞片嵌在皮下。躯干附加：利器护甲 +15%，火焰伤害 −50%，寒冰伤害 +20%。同时只能装一件龙鳞皮下甲。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/GraftScaleRed</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>2400</MarketValue><Mass>1</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>LP_Graft_ScaleRed</defName><label>赤龙鳞皮下甲</label><description>赤龙的鳞片嵌在皮下。躯干附加：利器护甲 +15%，火焰伤害 −50%，寒冰伤害 +20%。同时只能装一件龙鳞皮下甲。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <spawnThingOnRemoved>LP_Graft_ScaleRed</spawnThingOnRemoved>
+    <stages><li><statOffsets><ArmorRating_Sharp>0.15</ArmorRating_Sharp></statOffsets></li></stages> <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps> <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Scale</flag><attune>false</attune><graft>true</graft><group>Scale</group><element>0</element></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>LP_Install_LP_Graft_ScaleRed</defName><label>安装赤龙鳞皮下甲</label><description>赤龙的鳞片嵌在皮下。躯干附加：利器护甲 +15%，火焰伤害 −50%，寒冰伤害 +20%。同时只能装一件龙鳞皮下甲。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description><jobString>正在安装赤龙鳞皮下甲。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Graft_ScaleRed</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Graft_ScaleRed</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Torso</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Graft_ScaleRed</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>LP_Remove_LP_Graft_ScaleRed</defName><label>取出赤龙鳞皮下甲</label><description>取出赤龙鳞皮下甲。</description><jobString>正在取出赤龙鳞皮下甲。</jobString>
+    <appliedOnFixedBodyParts><li>Torso</li></appliedOnFixedBodyParts>
+    <removesHediff>LP_Graft_ScaleRed</removesHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Grow_Graft_ScaleRed</defName><label>培养赤龙鳞皮下甲</label><description>在炼金台用怪物材料培养赤龙鳞皮下甲（嫁接物只能装在活人身上）。</description><jobString>正在培养赤龙鳞皮下甲。</jobString>
+    <workAmount>9000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Intellectual</workSkill><effectWorking>Cook</effectWorking><soundWorking>Recipe_Drug</soundWorking>
+    <researchPrerequisite>LP_DNDAlchemy</researchPrerequisite><skillRequirements><Intellectual>8</Intellectual></skillRequirements>
+    <recipeUsers><li>LP_AlchemyTable</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_DragonScale_Red</li></thingDefs></filter><count>10</count></li><li><filter><thingDefs><li>MedicineHerbal</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_DragonScale_Red</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Graft_ScaleRed>1</LP_Graft_ScaleRed></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Graft_ScaleWhite</defName><label>白龙鳞皮下甲</label><description>白龙的鳞片嵌在皮下。躯干附加：利器护甲 +15%，寒冰伤害 −50%，火焰伤害 +20%。同时只能装一件龙鳞皮下甲。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/GraftScaleWhite</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>2400</MarketValue><Mass>1</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>LP_Graft_ScaleWhite</defName><label>白龙鳞皮下甲</label><description>白龙的鳞片嵌在皮下。躯干附加：利器护甲 +15%，寒冰伤害 −50%，火焰伤害 +20%。同时只能装一件龙鳞皮下甲。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <spawnThingOnRemoved>LP_Graft_ScaleWhite</spawnThingOnRemoved>
+    <stages><li><statOffsets><ArmorRating_Sharp>0.15</ArmorRating_Sharp></statOffsets></li></stages> <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps> <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Scale</flag><attune>false</attune><graft>true</graft><group>Scale</group><element>1</element></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>LP_Install_LP_Graft_ScaleWhite</defName><label>安装白龙鳞皮下甲</label><description>白龙的鳞片嵌在皮下。躯干附加：利器护甲 +15%，寒冰伤害 −50%，火焰伤害 +20%。同时只能装一件龙鳞皮下甲。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description><jobString>正在安装白龙鳞皮下甲。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Graft_ScaleWhite</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Graft_ScaleWhite</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Torso</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Graft_ScaleWhite</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>LP_Remove_LP_Graft_ScaleWhite</defName><label>取出白龙鳞皮下甲</label><description>取出白龙鳞皮下甲。</description><jobString>正在取出白龙鳞皮下甲。</jobString>
+    <appliedOnFixedBodyParts><li>Torso</li></appliedOnFixedBodyParts>
+    <removesHediff>LP_Graft_ScaleWhite</removesHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Grow_Graft_ScaleWhite</defName><label>培养白龙鳞皮下甲</label><description>在炼金台用怪物材料培养白龙鳞皮下甲（嫁接物只能装在活人身上）。</description><jobString>正在培养白龙鳞皮下甲。</jobString>
+    <workAmount>9000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Intellectual</workSkill><effectWorking>Cook</effectWorking><soundWorking>Recipe_Drug</soundWorking>
+    <researchPrerequisite>LP_DNDAlchemy</researchPrerequisite><skillRequirements><Intellectual>8</Intellectual></skillRequirements>
+    <recipeUsers><li>LP_AlchemyTable</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_DragonScale_White</li></thingDefs></filter><count>10</count></li><li><filter><thingDefs><li>MedicineHerbal</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_DragonScale_White</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Graft_ScaleWhite>1</LP_Graft_ScaleWhite></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Graft_ScaleBlue</defName><label>蓝龙鳞皮下甲</label><description>蓝龙的鳞片嵌在皮下。躯干附加：利器护甲 +15%，闪电伤害 −50%，强酸伤害 +20%。同时只能装一件龙鳞皮下甲。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/GraftScaleBlue</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>2400</MarketValue><Mass>1</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>LP_Graft_ScaleBlue</defName><label>蓝龙鳞皮下甲</label><description>蓝龙的鳞片嵌在皮下。躯干附加：利器护甲 +15%，闪电伤害 −50%，强酸伤害 +20%。同时只能装一件龙鳞皮下甲。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <spawnThingOnRemoved>LP_Graft_ScaleBlue</spawnThingOnRemoved>
+    <stages><li><statOffsets><ArmorRating_Sharp>0.15</ArmorRating_Sharp></statOffsets></li></stages> <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps> <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Scale</flag><attune>false</attune><graft>true</graft><group>Scale</group><element>2</element></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>LP_Install_LP_Graft_ScaleBlue</defName><label>安装蓝龙鳞皮下甲</label><description>蓝龙的鳞片嵌在皮下。躯干附加：利器护甲 +15%，闪电伤害 −50%，强酸伤害 +20%。同时只能装一件龙鳞皮下甲。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description><jobString>正在安装蓝龙鳞皮下甲。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Graft_ScaleBlue</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Graft_ScaleBlue</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Torso</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Graft_ScaleBlue</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>LP_Remove_LP_Graft_ScaleBlue</defName><label>取出蓝龙鳞皮下甲</label><description>取出蓝龙鳞皮下甲。</description><jobString>正在取出蓝龙鳞皮下甲。</jobString>
+    <appliedOnFixedBodyParts><li>Torso</li></appliedOnFixedBodyParts>
+    <removesHediff>LP_Graft_ScaleBlue</removesHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Grow_Graft_ScaleBlue</defName><label>培养蓝龙鳞皮下甲</label><description>在炼金台用怪物材料培养蓝龙鳞皮下甲（嫁接物只能装在活人身上）。</description><jobString>正在培养蓝龙鳞皮下甲。</jobString>
+    <workAmount>9000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Intellectual</workSkill><effectWorking>Cook</effectWorking><soundWorking>Recipe_Drug</soundWorking>
+    <researchPrerequisite>LP_DNDAlchemy</researchPrerequisite><skillRequirements><Intellectual>8</Intellectual></skillRequirements>
+    <recipeUsers><li>LP_AlchemyTable</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_DragonScale_Blue</li></thingDefs></filter><count>10</count></li><li><filter><thingDefs><li>MedicineHerbal</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_DragonScale_Blue</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Graft_ScaleBlue>1</LP_Graft_ScaleBlue></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Graft_ScaleBlack</defName><label>黑龙鳞皮下甲</label><description>黑龙的鳞片嵌在皮下。躯干附加：利器护甲 +15%，强酸伤害 −50%，闪电伤害 +20%。同时只能装一件龙鳞皮下甲。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/GraftScaleBlack</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>2400</MarketValue><Mass>1</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>LP_Graft_ScaleBlack</defName><label>黑龙鳞皮下甲</label><description>黑龙的鳞片嵌在皮下。躯干附加：利器护甲 +15%，强酸伤害 −50%，闪电伤害 +20%。同时只能装一件龙鳞皮下甲。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <spawnThingOnRemoved>LP_Graft_ScaleBlack</spawnThingOnRemoved>
+    <stages><li><statOffsets><ArmorRating_Sharp>0.15</ArmorRating_Sharp></statOffsets></li></stages> <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps> <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Scale</flag><attune>false</attune><graft>true</graft><group>Scale</group><element>3</element></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>LP_Install_LP_Graft_ScaleBlack</defName><label>安装黑龙鳞皮下甲</label><description>黑龙的鳞片嵌在皮下。躯干附加：利器护甲 +15%，强酸伤害 −50%，闪电伤害 +20%。同时只能装一件龙鳞皮下甲。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description><jobString>正在安装黑龙鳞皮下甲。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Graft_ScaleBlack</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Graft_ScaleBlack</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Torso</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Graft_ScaleBlack</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>LP_Remove_LP_Graft_ScaleBlack</defName><label>取出黑龙鳞皮下甲</label><description>取出黑龙鳞皮下甲。</description><jobString>正在取出黑龙鳞皮下甲。</jobString>
+    <appliedOnFixedBodyParts><li>Torso</li></appliedOnFixedBodyParts>
+    <removesHediff>LP_Graft_ScaleBlack</removesHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Grow_Graft_ScaleBlack</defName><label>培养黑龙鳞皮下甲</label><description>在炼金台用怪物材料培养黑龙鳞皮下甲（嫁接物只能装在活人身上）。</description><jobString>正在培养黑龙鳞皮下甲。</jobString>
+    <workAmount>9000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Intellectual</workSkill><effectWorking>Cook</effectWorking><soundWorking>Recipe_Drug</soundWorking>
+    <researchPrerequisite>LP_DNDAlchemy</researchPrerequisite><skillRequirements><Intellectual>8</Intellectual></skillRequirements>
+    <recipeUsers><li>LP_AlchemyTable</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_DragonScale_Black</li></thingDefs></filter><count>10</count></li><li><filter><thingDefs><li>MedicineHerbal</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_DragonScale_Black</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Graft_ScaleBlack>1</LP_Graft_ScaleBlack></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Graft_ScaleGreen</defName><label>绿龙鳞皮下甲</label><description>绿龙的鳞片嵌在皮下。躯干附加：利器护甲 +15%，毒素伤害 −50%，火焰伤害 +20%。同时只能装一件龙鳞皮下甲。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/GraftScaleGreen</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>2400</MarketValue><Mass>1</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>LP_Graft_ScaleGreen</defName><label>绿龙鳞皮下甲</label><description>绿龙的鳞片嵌在皮下。躯干附加：利器护甲 +15%，毒素伤害 −50%，火焰伤害 +20%。同时只能装一件龙鳞皮下甲。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <spawnThingOnRemoved>LP_Graft_ScaleGreen</spawnThingOnRemoved>
+    <stages><li><statOffsets><ArmorRating_Sharp>0.15</ArmorRating_Sharp></statOffsets></li></stages> <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps> <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Scale</flag><attune>false</attune><graft>true</graft><group>Scale</group><element>4</element></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>LP_Install_LP_Graft_ScaleGreen</defName><label>安装绿龙鳞皮下甲</label><description>绿龙的鳞片嵌在皮下。躯干附加：利器护甲 +15%，毒素伤害 −50%，火焰伤害 +20%。同时只能装一件龙鳞皮下甲。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description><jobString>正在安装绿龙鳞皮下甲。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Graft_ScaleGreen</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Graft_ScaleGreen</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Torso</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Graft_ScaleGreen</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>LP_Remove_LP_Graft_ScaleGreen</defName><label>取出绿龙鳞皮下甲</label><description>取出绿龙鳞皮下甲。</description><jobString>正在取出绿龙鳞皮下甲。</jobString>
+    <appliedOnFixedBodyParts><li>Torso</li></appliedOnFixedBodyParts>
+    <removesHediff>LP_Graft_ScaleGreen</removesHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Grow_Graft_ScaleGreen</defName><label>培养绿龙鳞皮下甲</label><description>在炼金台用怪物材料培养绿龙鳞皮下甲（嫁接物只能装在活人身上）。</description><jobString>正在培养绿龙鳞皮下甲。</jobString>
+    <workAmount>9000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Intellectual</workSkill><effectWorking>Cook</effectWorking><soundWorking>Recipe_Drug</soundWorking>
+    <researchPrerequisite>LP_DNDAlchemy</researchPrerequisite><skillRequirements><Intellectual>8</Intellectual></skillRequirements>
+    <recipeUsers><li>LP_AlchemyTable</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_DragonScale_Green</li></thingDefs></filter><count>10</count></li><li><filter><thingDefs><li>MedicineHerbal</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_DragonScale_Green</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Graft_ScaleGreen>1</LP_Graft_ScaleGreen></products>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Graft_BreathRed</defName><label>赤龙息腺</label><description>赤龙心里剖出的龙息腺，缝在颈部。颈部附加：能力“龙息”（锥形 6 格，敌人受 30 点火焰伤害，冷却 1 天）。副作用：嘴里总冒着余烬，别人对你的印象 −5。同时只能装一件龙息腺。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/GraftBreathRed</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>4500</MarketValue><Mass>1</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>LP_Graft_BreathRed</defName><label>赤龙息腺</label><description>赤龙心里剖出的龙息腺，缝在颈部。颈部附加：能力“龙息”（锥形 6 格，敌人受 30 点火焰伤害，冷却 1 天）。副作用：嘴里总冒着余烬，别人对你的印象 −5。同时只能装一件龙息腺。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <spawnThingOnRemoved>LP_Graft_BreathRed</spawnThingOnRemoved>
+     <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps> <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Breath</flag><attune>true</attune><graft>true</graft><group>Breath</group><element>0</element><ability>LP_GraftBreath</ability></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>LP_Install_LP_Graft_BreathRed</defName><label>安装赤龙息腺</label><description>赤龙心里剖出的龙息腺，缝在颈部。颈部附加：能力“龙息”（锥形 6 格，敌人受 30 点火焰伤害，冷却 1 天）。副作用：嘴里总冒着余烬，别人对你的印象 −5。同时只能装一件龙息腺。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description><jobString>正在安装赤龙息腺。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Graft_BreathRed</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Graft_BreathRed</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Neck</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Graft_BreathRed</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>LP_Remove_LP_Graft_BreathRed</defName><label>取出赤龙息腺</label><description>取出赤龙息腺。</description><jobString>正在取出赤龙息腺。</jobString>
+    <appliedOnFixedBodyParts><li>Neck</li></appliedOnFixedBodyParts>
+    <removesHediff>LP_Graft_BreathRed</removesHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Grow_Graft_BreathRed</defName><label>培养赤龙息腺</label><description>在炼金台用怪物材料培养赤龙息腺（嫁接物只能装在活人身上）。</description><jobString>正在培养赤龙息腺。</jobString>
+    <workAmount>9000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Intellectual</workSkill><effectWorking>Cook</effectWorking><soundWorking>Recipe_Drug</soundWorking>
+    <researchPrerequisite>LP_DNDAlchemy</researchPrerequisite><skillRequirements><Intellectual>8</Intellectual></skillRequirements>
+    <recipeUsers><li>LP_AlchemyTable</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_DragonHeart_Red</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>MedicineHerbal</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_DragonHeart_Red</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Graft_BreathRed>1</LP_Graft_BreathRed></products>
+  </RecipeDef>
+  <ThoughtDef>
+    <defName>LP_GraftOther_BreathRed</defName>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <workerClass>LichPhylactery.ThoughtWorker_GraftOther</workerClass>
+    <hediff>LP_Graft_BreathRed</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages><li><label>口吐余烬</label><baseOpinionOffset>-5</baseOpinionOffset></li></stages>
+  </ThoughtDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Graft_BreathWhite</defName><label>白龙息腺</label><description>白龙心里剖出的龙息腺，缝在颈部。颈部附加：能力“龙息”（锥形 6 格，敌人受 30 点寒冰伤害，冷却 1 天）。副作用：嘴里总冒着余烬，别人对你的印象 −5。同时只能装一件龙息腺。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/GraftBreathWhite</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>4500</MarketValue><Mass>1</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>LP_Graft_BreathWhite</defName><label>白龙息腺</label><description>白龙心里剖出的龙息腺，缝在颈部。颈部附加：能力“龙息”（锥形 6 格，敌人受 30 点寒冰伤害，冷却 1 天）。副作用：嘴里总冒着余烬，别人对你的印象 −5。同时只能装一件龙息腺。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <spawnThingOnRemoved>LP_Graft_BreathWhite</spawnThingOnRemoved>
+     <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps> <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Breath</flag><attune>true</attune><graft>true</graft><group>Breath</group><element>1</element><ability>LP_GraftBreath</ability></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>LP_Install_LP_Graft_BreathWhite</defName><label>安装白龙息腺</label><description>白龙心里剖出的龙息腺，缝在颈部。颈部附加：能力“龙息”（锥形 6 格，敌人受 30 点寒冰伤害，冷却 1 天）。副作用：嘴里总冒着余烬，别人对你的印象 −5。同时只能装一件龙息腺。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description><jobString>正在安装白龙息腺。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Graft_BreathWhite</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Graft_BreathWhite</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Neck</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Graft_BreathWhite</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>LP_Remove_LP_Graft_BreathWhite</defName><label>取出白龙息腺</label><description>取出白龙息腺。</description><jobString>正在取出白龙息腺。</jobString>
+    <appliedOnFixedBodyParts><li>Neck</li></appliedOnFixedBodyParts>
+    <removesHediff>LP_Graft_BreathWhite</removesHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Grow_Graft_BreathWhite</defName><label>培养白龙息腺</label><description>在炼金台用怪物材料培养白龙息腺（嫁接物只能装在活人身上）。</description><jobString>正在培养白龙息腺。</jobString>
+    <workAmount>9000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Intellectual</workSkill><effectWorking>Cook</effectWorking><soundWorking>Recipe_Drug</soundWorking>
+    <researchPrerequisite>LP_DNDAlchemy</researchPrerequisite><skillRequirements><Intellectual>8</Intellectual></skillRequirements>
+    <recipeUsers><li>LP_AlchemyTable</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_DragonHeart_White</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>MedicineHerbal</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_DragonHeart_White</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Graft_BreathWhite>1</LP_Graft_BreathWhite></products>
+  </RecipeDef>
+  <ThoughtDef>
+    <defName>LP_GraftOther_BreathWhite</defName>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <workerClass>LichPhylactery.ThoughtWorker_GraftOther</workerClass>
+    <hediff>LP_Graft_BreathWhite</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages><li><label>口吐余烬</label><baseOpinionOffset>-5</baseOpinionOffset></li></stages>
+  </ThoughtDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Graft_BreathBlue</defName><label>蓝龙息腺</label><description>蓝龙心里剖出的龙息腺，缝在颈部。颈部附加：能力“龙息”（锥形 6 格，敌人受 30 点闪电伤害，冷却 1 天）。副作用：嘴里总冒着余烬，别人对你的印象 −5。同时只能装一件龙息腺。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/GraftBreathBlue</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>4500</MarketValue><Mass>1</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>LP_Graft_BreathBlue</defName><label>蓝龙息腺</label><description>蓝龙心里剖出的龙息腺，缝在颈部。颈部附加：能力“龙息”（锥形 6 格，敌人受 30 点闪电伤害，冷却 1 天）。副作用：嘴里总冒着余烬，别人对你的印象 −5。同时只能装一件龙息腺。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <spawnThingOnRemoved>LP_Graft_BreathBlue</spawnThingOnRemoved>
+     <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps> <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Breath</flag><attune>true</attune><graft>true</graft><group>Breath</group><element>2</element><ability>LP_GraftBreath</ability></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>LP_Install_LP_Graft_BreathBlue</defName><label>安装蓝龙息腺</label><description>蓝龙心里剖出的龙息腺，缝在颈部。颈部附加：能力“龙息”（锥形 6 格，敌人受 30 点闪电伤害，冷却 1 天）。副作用：嘴里总冒着余烬，别人对你的印象 −5。同时只能装一件龙息腺。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description><jobString>正在安装蓝龙息腺。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Graft_BreathBlue</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Graft_BreathBlue</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Neck</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Graft_BreathBlue</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>LP_Remove_LP_Graft_BreathBlue</defName><label>取出蓝龙息腺</label><description>取出蓝龙息腺。</description><jobString>正在取出蓝龙息腺。</jobString>
+    <appliedOnFixedBodyParts><li>Neck</li></appliedOnFixedBodyParts>
+    <removesHediff>LP_Graft_BreathBlue</removesHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Grow_Graft_BreathBlue</defName><label>培养蓝龙息腺</label><description>在炼金台用怪物材料培养蓝龙息腺（嫁接物只能装在活人身上）。</description><jobString>正在培养蓝龙息腺。</jobString>
+    <workAmount>9000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Intellectual</workSkill><effectWorking>Cook</effectWorking><soundWorking>Recipe_Drug</soundWorking>
+    <researchPrerequisite>LP_DNDAlchemy</researchPrerequisite><skillRequirements><Intellectual>8</Intellectual></skillRequirements>
+    <recipeUsers><li>LP_AlchemyTable</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_DragonHeart_Blue</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>MedicineHerbal</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_DragonHeart_Blue</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Graft_BreathBlue>1</LP_Graft_BreathBlue></products>
+  </RecipeDef>
+  <ThoughtDef>
+    <defName>LP_GraftOther_BreathBlue</defName>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <workerClass>LichPhylactery.ThoughtWorker_GraftOther</workerClass>
+    <hediff>LP_Graft_BreathBlue</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages><li><label>口吐余烬</label><baseOpinionOffset>-5</baseOpinionOffset></li></stages>
+  </ThoughtDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Graft_BreathBlack</defName><label>黑龙息腺</label><description>黑龙心里剖出的龙息腺，缝在颈部。颈部附加：能力“龙息”（锥形 6 格，敌人受 30 点强酸伤害，冷却 1 天）。副作用：嘴里总冒着余烬，别人对你的印象 −5。同时只能装一件龙息腺。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/GraftBreathBlack</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>4500</MarketValue><Mass>1</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>LP_Graft_BreathBlack</defName><label>黑龙息腺</label><description>黑龙心里剖出的龙息腺，缝在颈部。颈部附加：能力“龙息”（锥形 6 格，敌人受 30 点强酸伤害，冷却 1 天）。副作用：嘴里总冒着余烬，别人对你的印象 −5。同时只能装一件龙息腺。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <spawnThingOnRemoved>LP_Graft_BreathBlack</spawnThingOnRemoved>
+     <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps> <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Breath</flag><attune>true</attune><graft>true</graft><group>Breath</group><element>3</element><ability>LP_GraftBreath</ability></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>LP_Install_LP_Graft_BreathBlack</defName><label>安装黑龙息腺</label><description>黑龙心里剖出的龙息腺，缝在颈部。颈部附加：能力“龙息”（锥形 6 格，敌人受 30 点强酸伤害，冷却 1 天）。副作用：嘴里总冒着余烬，别人对你的印象 −5。同时只能装一件龙息腺。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description><jobString>正在安装黑龙息腺。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Graft_BreathBlack</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Graft_BreathBlack</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Neck</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Graft_BreathBlack</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>LP_Remove_LP_Graft_BreathBlack</defName><label>取出黑龙息腺</label><description>取出黑龙息腺。</description><jobString>正在取出黑龙息腺。</jobString>
+    <appliedOnFixedBodyParts><li>Neck</li></appliedOnFixedBodyParts>
+    <removesHediff>LP_Graft_BreathBlack</removesHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Grow_Graft_BreathBlack</defName><label>培养黑龙息腺</label><description>在炼金台用怪物材料培养黑龙息腺（嫁接物只能装在活人身上）。</description><jobString>正在培养黑龙息腺。</jobString>
+    <workAmount>9000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Intellectual</workSkill><effectWorking>Cook</effectWorking><soundWorking>Recipe_Drug</soundWorking>
+    <researchPrerequisite>LP_DNDAlchemy</researchPrerequisite><skillRequirements><Intellectual>8</Intellectual></skillRequirements>
+    <recipeUsers><li>LP_AlchemyTable</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_DragonHeart_Black</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>MedicineHerbal</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_DragonHeart_Black</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Graft_BreathBlack>1</LP_Graft_BreathBlack></products>
+  </RecipeDef>
+  <ThoughtDef>
+    <defName>LP_GraftOther_BreathBlack</defName>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <workerClass>LichPhylactery.ThoughtWorker_GraftOther</workerClass>
+    <hediff>LP_Graft_BreathBlack</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages><li><label>口吐余烬</label><baseOpinionOffset>-5</baseOpinionOffset></li></stages>
+  </ThoughtDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Graft_BreathGreen</defName><label>绿龙息腺</label><description>绿龙心里剖出的龙息腺，缝在颈部。颈部附加：能力“龙息”（锥形 6 格，敌人受 30 点毒素伤害，冷却 1 天）。副作用：嘴里总冒着余烬，别人对你的印象 −5。同时只能装一件龙息腺。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsBionic</li></thingCategories>
+    <graphicData><texPath>Items/Implants/GraftBreathGreen</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>4500</MarketValue><Mass>1</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>LP_Graft_BreathGreen</defName><label>绿龙息腺</label><description>绿龙心里剖出的龙息腺，缝在颈部。颈部附加：能力“龙息”（锥形 6 格，敌人受 30 点毒素伤害，冷却 1 天）。副作用：嘴里总冒着余烬，别人对你的印象 −5。同时只能装一件龙息腺。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description>
+    <spawnThingOnRemoved>LP_Graft_BreathGreen</spawnThingOnRemoved>
+     <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps> <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Breath</flag><attune>true</attune><graft>true</graft><group>Breath</group><element>4</element><ability>LP_GraftBreath</ability></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>LP_Install_LP_Graft_BreathGreen</defName><label>安装绿龙息腺</label><description>绿龙心里剖出的龙息腺，缝在颈部。颈部附加：能力“龙息”（锥形 6 格，敌人受 30 点毒素伤害，冷却 1 天）。副作用：嘴里总冒着余烬，别人对你的印象 −5。同时只能装一件龙息腺。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。</description><jobString>正在安装绿龙息腺。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Graft_BreathGreen</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Graft_BreathGreen</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Neck</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Graft_BreathGreen</addsHediff>
+  </RecipeDef>
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>LP_Remove_LP_Graft_BreathGreen</defName><label>取出绿龙息腺</label><description>取出绿龙息腺。</description><jobString>正在取出绿龙息腺。</jobString>
+    <appliedOnFixedBodyParts><li>Neck</li></appliedOnFixedBodyParts>
+    <removesHediff>LP_Graft_BreathGreen</removesHediff>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_Grow_Graft_BreathGreen</defName><label>培养绿龙息腺</label><description>在炼金台用怪物材料培养绿龙息腺（嫁接物只能装在活人身上）。</description><jobString>正在培养绿龙息腺。</jobString>
+    <workAmount>9000</workAmount><workSpeedStat>GeneralLaborSpeed</workSpeedStat><workSkill>Intellectual</workSkill><effectWorking>Cook</effectWorking><soundWorking>Recipe_Drug</soundWorking>
+    <researchPrerequisite>LP_DNDAlchemy</researchPrerequisite><skillRequirements><Intellectual>8</Intellectual></skillRequirements>
+    <recipeUsers><li>LP_AlchemyTable</li></recipeUsers>
+    <ingredients><li><filter><thingDefs><li>LP_DragonHeart_Green</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>MedicineHerbal</li></thingDefs></filter><count>5</count></li></ingredients><fixedIngredientFilter><thingDefs><li>LP_DragonHeart_Green</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_Graft_BreathGreen>1</LP_Graft_BreathGreen></products>
+  </RecipeDef>
+  <ThoughtDef>
+    <defName>LP_GraftOther_BreathGreen</defName>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <workerClass>LichPhylactery.ThoughtWorker_GraftOther</workerClass>
+    <hediff>LP_Graft_BreathGreen</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages><li><label>口吐余烬</label><baseOpinionOffset>-5</baseOpinionOffset></li></stages>
+  </ThoughtDef>
+  <AbilityDef>
+    <defName>LP_GraftRay</defName><label>眼魔射线</label>
+    <description>眼魔之眼射出一道射线：死灵射线（30 坏死伤害）、石化射线（开始石化）或魅惑射线（恍惚 25 秒），种类在装上眼睛时定下。20 格，冷却 1 天。</description>
+    <iconPath>Items/Implants/GraftBeholderEye</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange><hostile>true</hostile><aiCanUse>false</aiCanUse><showPsycastEffects>false</showPsycastEffects><sendMessageOnCooldownComplete>true</sendMessageOnCooldownComplete>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>20</range><warmupTime>1</warmupTime><requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_GraftAbility"><effect>ray</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef>
+    <defName>LP_GraftBreath</defName><label>龙息</label>
+    <description>喷出一道龙息：锥形 6 格内的敌人受 30 点伤害，元素随龙息腺的颜色（赤 火焰、白 寒冰、蓝 闪电、黑 强酸、绿 毒素）。冷却 1 天。</description>
+    <iconPath>Items/Implants/GraftBreathRed</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange><hostile>true</hostile><aiCanUse>false</aiCanUse><showPsycastEffects>false</showPsycastEffects><sendMessageOnCooldownComplete>true</sendMessageOnCooldownComplete>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>6</range><warmupTime>0.5</warmupTime><requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetBuildings>true</canTargetBuildings><canTargetLocations>true</canTargetLocations><canTargetSelf>false</canTargetSelf></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_GraftAbility"><effect>breath</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef>
+    <defName>LP_DeadSpeak</defName><label>亡者之语</label>
+    <description>贴近一具人形尸体听它说话：学到它最高那项技能总经验的 10%（每具尸体一次；照常折算冒险者经验）。</description>
+    <iconPath>Items/Implants/FleshDeadEar</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange><hostile>false</hostile><aiCanUse>false</aiCanUse><showPsycastEffects>false</showPsycastEffects><displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>2.9</range><warmupTime>3</warmupTime><requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetItems>true</canTargetItems><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_GraftAbility"><effect>speak</effect></li></comps>
+  </AbilityDef>
+<!-- ===================== 1.114.0 维克那神器、叛徒卡斯 ===================== -->
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Vecna_Hand</defName><label>维克那之手</label><description>传说中巫妖神维克那被背叛者砍下的左手，干枯发黑，却还在动。替换左手（必须先截掉自己的左手才能装），部位效率 150%；冒险者力量至少 20；能力“寒冰触”（近身，30 寒冰伤害并降温，冷却 10 秒）和“指挥亡灵”（20 格内一个敌方亡灵为你作战 30 秒，冷却 1 天）。诅咒：每 60 天有 10% 陷入“邪恶意志”杀戮狂暴（巫妖减半）。神器档，占 1 个调谐位；不能叠巫妖肢体强化。拆下来神器就掉在地上，宿主心情 −15、持续 30 天。两件都装在同一个人身上时触发“维克那的意志”：统御上限 +50%，巫妖带死灵之躯时命匣复活 3 天缩到 1 天——但叛徒卡斯会带着卡斯之剑找上门（第一次在 3～7 天后，之后每 30 天）。世上各只有一件：探索公告板传奇委托、迷锁 60 层以后的守卫极少给。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsArchotech</li></thingCategories>
+    <graphicData><texPath>Items/Implants/VecnaHand</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>9000</MarketValue><Mass>1</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>LP_Vecna_Hand</defName><label>维克那之手</label><description>传说中巫妖神维克那被背叛者砍下的左手，干枯发黑，却还在动。替换左手（必须先截掉自己的左手才能装），部位效率 150%；冒险者力量至少 20；能力“寒冰触”（近身，30 寒冰伤害并降温，冷却 10 秒）和“指挥亡灵”（20 格内一个敌方亡灵为你作战 30 秒，冷却 1 天）。诅咒：每 60 天有 10% 陷入“邪恶意志”杀戮狂暴（巫妖减半）。神器档，占 1 个调谐位；不能叠巫妖肢体强化。拆下来神器就掉在地上，宿主心情 −15、持续 30 天。两件都装在同一个人身上时触发“维克那的意志”：统御上限 +50%，巫妖带死灵之躯时命匣复活 3 天缩到 1 天——但叛徒卡斯会带着卡斯之剑找上门（第一次在 3～7 天后，之后每 30 天）。世上各只有一件：探索公告板传奇委托、迷锁 60 层以后的守卫极少给。</description>
+    <spawnThingOnRemoved>LP_Vecna_Hand</spawnThingOnRemoved>
+    <addedPartProps><solid>false</solid><partEfficiency>1.50</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
+     <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps> <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>VecnaHand</flag><attune>true</attune><group>Vecna</group><ability>LP_VecnaFrostTouch</ability><ability2>LP_VecnaCommand</ability2></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>LP_Install_LP_Vecna_Hand</defName><label>安装维克那之手</label><description>传说中巫妖神维克那被背叛者砍下的左手，干枯发黑，却还在动。替换左手（必须先截掉自己的左手才能装），部位效率 150%；冒险者力量至少 20；能力“寒冰触”（近身，30 寒冰伤害并降温，冷却 10 秒）和“指挥亡灵”（20 格内一个敌方亡灵为你作战 30 秒，冷却 1 天）。诅咒：每 60 天有 10% 陷入“邪恶意志”杀戮狂暴（巫妖减半）。神器档，占 1 个调谐位；不能叠巫妖肢体强化。拆下来神器就掉在地上，宿主心情 −15、持续 30 天。两件都装在同一个人身上时触发“维克那的意志”：统御上限 +50%，巫妖带死灵之躯时命匣复活 3 天缩到 1 天——但叛徒卡斯会带着卡斯之剑找上门（第一次在 3～7 天后，之后每 30 天）。世上各只有一件：探索公告板传奇委托、迷锁 60 层以后的守卫极少给。</description><jobString>正在安装维克那之手。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallVecna</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Vecna_Hand</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Vecna_Hand</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Hand</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Vecna_Hand</addsHediff>
+  </RecipeDef>
+  <ThingDef ParentName="BodyPartBase">
+    <defName>LP_Vecna_Eye</defName><label>维克那之眼</label><description>维克那被剜出的左眼，像一块暗红的宝石。替换左眼，部位效率 150%；黑暗中视物如常（不受光照惩罚）；能力“支配人类”（和夺心魔的支配一样：30 秒内只攻击原来的同伴，冷却 1 天）。诅咒：自己心情 −8（维克那凝视），别人对你的印象 −20。神器档，占 1 个调谐位；不能叠巫妖肢体强化。拆下来神器就掉在地上，宿主心情 −15、持续 30 天。两件都装在同一个人身上时触发“维克那的意志”：统御上限 +50%，巫妖带死灵之躯时命匣复活 3 天缩到 1 天——但叛徒卡斯会带着卡斯之剑找上门（第一次在 3～7 天后，之后每 30 天）。世上各只有一件：探索公告板传奇委托、迷锁 60 层以后的守卫极少给。</description>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>BodyPartsArchotech</li></thingCategories>
+    <graphicData><texPath>Items/Implants/VecnaEye</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>9000</MarketValue><Mass>1</Mass></statBases>
+  </ThingDef>
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>LP_Vecna_Eye</defName><label>维克那之眼</label><description>维克那被剜出的左眼，像一块暗红的宝石。替换左眼，部位效率 150%；黑暗中视物如常（不受光照惩罚）；能力“支配人类”（和夺心魔的支配一样：30 秒内只攻击原来的同伴，冷却 1 天）。诅咒：自己心情 −8（维克那凝视），别人对你的印象 −20。神器档，占 1 个调谐位；不能叠巫妖肢体强化。拆下来神器就掉在地上，宿主心情 −15、持续 30 天。两件都装在同一个人身上时触发“维克那的意志”：统御上限 +50%，巫妖带死灵之躯时命匣复活 3 天缩到 1 天——但叛徒卡斯会带着卡斯之剑找上门（第一次在 3～7 天后，之后每 30 天）。世上各只有一件：探索公告板传奇委托、迷锁 60 层以后的守卫极少给。</description>
+    <spawnThingOnRemoved>LP_Vecna_Eye</spawnThingOnRemoved>
+    <addedPartProps><solid>false</solid><partEfficiency>1.50</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
+     <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps> <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>VecnaEye</flag><attune>true</attune><group>Vecna</group><ability>LP_VecnaDominate</ability></li></modExtensions>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>LP_Install_LP_Vecna_Eye</defName><label>安装维克那之眼</label><description>维克那被剜出的左眼，像一块暗红的宝石。替换左眼，部位效率 150%；黑暗中视物如常（不受光照惩罚）；能力“支配人类”（和夺心魔的支配一样：30 秒内只攻击原来的同伴，冷却 1 天）。诅咒：自己心情 −8（维克那凝视），别人对你的印象 −20。神器档，占 1 个调谐位；不能叠巫妖肢体强化。拆下来神器就掉在地上，宿主心情 −15、持续 30 天。两件都装在同一个人身上时触发“维克那的意志”：统御上限 +50%，巫妖带死灵之躯时命匣复活 3 天缩到 1 天——但叛徒卡斯会带着卡斯之剑找上门（第一次在 3～7 天后，之后每 30 天）。世上各只有一件：探索公告板传奇委托、迷锁 60 层以后的守卫极少给。</description><jobString>正在安装维克那之眼。</jobString>
+    <workerClass>LichPhylactery.Recipe_InstallVecna</workerClass>
+    <ingredients><li><filter><thingDefs><li>LP_Vecna_Eye</li></thingDefs></filter><count>1</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_Vecna_Eye</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts><li>Eye</li></appliedOnFixedBodyParts>
+    <addsHediff>LP_Vecna_Eye</addsHediff>
+  </RecipeDef>
+  <ThoughtDef>
+    <defName>LP_GraftOther_Vecna</defName>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <workerClass>LichPhylactery.ThoughtWorker_GraftOther</workerClass>
+    <hediff>LP_Vecna_Eye</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages><li><label>维克那凝视</label><baseOpinionOffset>-20</baseOpinionOffset></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_VecnaMood</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>LP_Vecna_Eye</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages><li><label>维克那凝视</label><description>这只眼睛看见的东西都在低语。</description><baseMoodEffect>-8</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_VecnaLoss</defName>
+    <durationDays>30</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>失去了维克那的神器</label><description>它被从我身上割了下来。那股力量……我还想要。</description><baseMoodEffect>-15</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <AbilityDef>
+    <defName>LP_VecnaFrostTouch</defName><label>寒冰触</label>
+    <description>维克那之手按在一个敌人身上：30 点寒冰伤害并让它失温。冷却 10 秒。</description>
+    <iconPath>Items/Implants/VecnaHand</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange><hostile>true</hostile><aiCanUse>false</aiCanUse><showPsycastEffects>false</showPsycastEffects>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>1.9</range><warmupTime>0.3</warmupTime><requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_GraftAbility"><effect>frost</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef>
+    <defName>LP_VecnaCommand</defName><label>指挥亡灵</label>
+    <description>维克那之手向 20 格内一个敌方亡灵下令：它在 30 秒内转而攻击原来的同伴（可能被抵抗）。冷却 1 天。</description>
+    <iconPath>Items/Implants/VecnaHand</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange><hostile>true</hostile><aiCanUse>false</aiCanUse><showPsycastEffects>false</showPsycastEffects><sendMessageOnCooldownComplete>true</sendMessageOnCooldownComplete>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>20</range><warmupTime>1</warmupTime><requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_GraftAbility"><effect>command</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef>
+    <defName>LP_VecnaDominate</defName><label>支配人类</label>
+    <description>维克那之眼盯住 20 格内一个人形敌人：它在 30 秒内只攻击原来的同伴，时间到精疲力竭倒地（可能被抵抗）。冷却 1 天。</description>
+    <iconPath>Items/Implants/VecnaEye</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange><hostile>true</hostile><aiCanUse>false</aiCanUse><showPsycastEffects>false</showPsycastEffects><sendMessageOnCooldownComplete>true</sendMessageOnCooldownComplete>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>20</range><warmupTime>1</warmupTime><requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_GraftAbility"><effect>dominate</effect></li></comps>
+  </AbilityDef>
+  <HediffDef>
+    <defName>LP_KasBlood</defName>
+    <label>吸血鬼之躯</label>
+    <description>卡斯早已是吸血鬼：受到的伤害 −50%，近战伤害 +50%，伤口愈合 ×5。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.7,0.15,0.2)</defaultLabelColor>
+    <stages><li><naturalHealingFactor>5</naturalHealingFactor><statFactors><IncomingDamageFactor>0.5</IncomingDamageFactor><MeleeDamageFactor>1.5</MeleeDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <PawnKindDef ParentName="LP_FighterBase">
+    <defName>LP_Kas</defName>
+    <label>叛徒卡斯</label>
+    <defaultFactionDef>Pirate</defaultFactionDef>
+    <combatPower>600</combatPower>
+    <minGenerationAge>40</minGenerationAge><maxGenerationAge>60</maxGenerationAge>
+    <apparelMoney>3000~4000</apparelMoney>
+    <apparelTags><li>IndustrialMilitaryAdvanced</li><li>IndustrialMilitaryBasic</li></apparelTags>
+    <apparelRequired><li>Apparel_PlateArmor</li></apparelRequired>
+    <weaponMoney>0</weaponMoney>
+    <canBeSapper>false</canBeSapper>
+    <chemicalAddictionChance>0</chemicalAddictionChance>
+    <combatEnhancingDrugsChance>0</combatEnhancingDrugsChance>
+    <skills><li><skill>Melee</skill><range>18~20</range></li></skills>
+  </PawnKindDef>
+  <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+    <defName>LP_SwordOfKas</defName>
+    <label>卡斯之剑</label>
+    <description>维克那亲手交给卡斯、卡斯又用它砍下维克那左手的魔剑。剑身里封着一个渴血的灵魂。锋利、沉重，对维克那神器（维克那之手、维克那之眼）的宿主伤害翻倍。不能制作。</description>
+    <techLevel>Medieval</techLevel>
+    <graphicData><texPath>Items/Implants/SwordOfKas</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><WorkToMake>60000</WorkToMake><Mass>2.5</Mass><MarketValue>5000</MarketValue></statBases>
+    <tradeability>Sellable</tradeability>
+    <weaponTags Inherit="False" />
+    <recipeMaker IsNull="True" />
+    <costList Inherit="False" />
+    <tools>
+      <li><label>剑刃</label><capacities><li>Cut</li></capacities><power>30</power><cooldownTime>2</cooldownTime><armorPenetration>0.6</armorPenetration></li>
+      <li><label>剑尖</label><capacities><li>Stab</li></capacities><power>26</power><cooldownTime>2</cooldownTime><armorPenetration>0.7</armorPenetration></li>
+      <li><label>剑柄</label><capacities><li>Blunt</li></capacities><power>10</power><cooldownTime>2</cooldownTime></li>
+    </tools>
+  </ThingDef>
+</Defs>

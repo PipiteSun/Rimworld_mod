@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -438,7 +438,7 @@ namespace LichPhylactery {
   public int LegendCapBonus=>legendary && level>Adventurer.MaxLevel?(level-Adventurer.MaxLevel)/5*Epic.LegendCapPer5:0;
   public int DemigodLevel{get{if(demigodLevel<0)demigodLevel=Demigods.Of(pawn)?.Level??0;return demigodLevel;}}
   public int Cap(int a)=>Adventurer.ScoreCap+(mightAbility==a && HasBoon(Epic.Might)?Epic.MightBonus:0)+LegendCapBonus+HeroTraits.CapBonus(this,a)+(a>=0 && a<6?(tomes[a]?Growth.TomeBonus:0)+(wishAbility==a?1:0):0); // 1.58.0 英雄之资 +2、极致 26、灵光 +2、弑神者 +1
-  public int Eff(int a)=>Math.Min(scores[a],Cap(a))+CombatGifts.ScoreBonus(this,a)+Feats.ScoreBonus(this,a)+ClassMartial2.ScoreBonus(this,a); // 1.66.0 武艺天赋属性 +2/+3/+4、1.67.0 专长 +1 加在上限之后（上限同样提高）
+  public int Eff(int a){int v=Math.Min(scores[a],Cap(a))+CombatGifts.ScoreBonus(this,a)+Feats.ScoreBonus(this,a)+ClassMartial2.ScoreBonus(this,a)+Subclass2.ScoreBonus(this,a);return v+DndImplants.ScoreBonus(this,a,v);} // 1.112.0 伊奥恩属性石（最多加到 20，超凡不限）；1.104.0 龙血、恶鬼之眼；1.66.0 武艺天赋属性 +2/+3/+4、1.67.0 专长 +1 加在上限之后（上限同样提高）
   // 半神等级变化：刷新缓存；每个新的半神等级送一次属性提升（只送一次，失去神格不收回）。
   public int SyncDemigod(){
    int now=Demigods.Of(pawn)?.Level??0;int gave=0;
@@ -469,7 +469,7 @@ namespace LichPhylactery {
   }
   bool Npc=>pawn.Faction==null || !pawn.Faction.IsPlayer;
   public int Mod(int a)=>Adventurer.Mod(Eff(a));
-  public int Proficiency=>Legendary.Proficiency(level); // 1.52.0：传奇等级也按 28 / 36 级继续涨（与豁免检定一致）
+  public int Proficiency=>Legendary.Proficiency(level)+DndImplants.ProfBonus(pawn); // 1.112.0 精通之石 +1；1.52.0：传奇等级也按 28 / 36 级继续涨（与豁免检定一致）
   // 下一级的经验下限（20 级非传奇时指向 21 级：经验照常累积）。
   public float NextXp=>Legend.XpFor(Math.Min(level+1,Legend.MaxLevel));
   public bool CappedAt20=>level>=Adventurer.MaxLevel && LevelCap<=Adventurer.MaxLevel;
@@ -516,9 +516,10 @@ namespace LichPhylactery {
   // 能不能用一次属性提升换这个专长：null = 可以。
   // 2026-10-31 热修（照 3.5 战士奖励专长）：fighterFeats = 待选的免费专长（ClassSystem.SyncFighterFeats 发放），fighterFeatGranted = 已按战士等级发过的个数（水位线）。选专长先用免费的。
   public int fighterFeats,fighterFeatGranted;
+  public int monkFeatGranted,paladinFeatGranted; // 2026-11-03 热修：武僧、圣武士 1、2 级的免费专长也进 fighterFeats，各自记水位线
   public int FeatPicks=>pendingASI+fighterFeats;
   public string CanTakeFeat(LP_FeatDef f){
-   if(f==null)return "没有这个专长";if(HasFeat(f))return "已经有了";if(FeatPicks<=0)return "没有可用的属性提升或战士奖励专长";
+   if(f==null)return "没有这个专长";if(HasFeat(f))return "已经有了";if(FeatPicks<=0)return "没有可用的属性提升或职业奖励专长";
    return f.Worker.Unmet(pawn,this);
   }
   public bool TakeFeat(LP_FeatDef f){if(CanTakeFeat(f)!=null)return false;if(fighterFeats>0)fighterFeats--;else pendingASI--;AddFeat(f);return true;}
@@ -793,6 +794,7 @@ namespace LichPhylactery {
    Scribe_Values.Look(ref legendary,"lpLegendary");Scribe_Values.Look(ref nemesis,"lpNemesis");
    Scribe_Values.Look(ref asiLeft,"lpAsiLeft");
    Scribe_Values.Look(ref fighterFeats,"lpFighterFeats");Scribe_Values.Look(ref fighterFeatGranted,"lpFighterFeatGranted"); // 2026-10-31 战士奖励专长
+   Scribe_Values.Look(ref monkFeatGranted,"lpMonkFeatGranted");Scribe_Values.Look(ref paladinFeatGranted,"lpPaladinFeatGranted"); // 2026-11-03
    Scribe_Values.Look(ref vpeGranted,"lpVpeGranted");Scribe_Values.Look(ref vpeBanked,"lpVpeBanked");
    var list=scores?.ToList();Scribe_Collections.Look(ref list,"lpScores",LookMode.Value);
    var bb=buyBase?.ToList();Scribe_Collections.Look(ref bb,"lpBuyBase",LookMode.Value);Scribe_Values.Look(ref buyOpen,"lpBuyOpen");Scribe_Values.Look(ref buyNoted,"lpBuyNoted"); // 1.76.0

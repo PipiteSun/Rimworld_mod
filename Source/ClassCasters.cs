@@ -70,7 +70,7 @@ namespace LichPhylactery {
    switch(e.effect){
     // 法师
     case "MagicMissile":if(Hostile(p,t))MagicMissile(p,t,s);return;
-    case "Fireball":if(cell.IsValid && p.Map!=null)GenExplosion.DoExplosion(cell,p.Map,rad,DamageDefOf.Flame,p,damAmount:Mathf.RoundToInt(pw),armorPenetration:.3f);return;
+    case "Fireball":if(cell.IsValid && p.Map!=null)GenExplosion.DoExplosion(cell,p.Map,rad,Subclass3.Retype(p,DamageDefOf.Flame),p,damAmount:Mathf.RoundToInt(pw),armorPenetration:.3f,explosionSound:DamageDefOf.Flame.soundExplosion);return;
     case "Sleep":if(SleepCannot(t)!=null)return;if(DNDMind.TryResist(t)){Items.Mote(t,"抵抗了睡眠术",Arcane);return;}Items.Give(t,"LP_MagicSleep",dur,s);Items.Mote(t,"睡眠",Arcane);return;
     case "LightningBolt":if(cell.IsValid && p.Map!=null)LightningBolt(p,cell,pw);return;
     case "TargetBuff":
@@ -177,7 +177,7 @@ namespace LichPhylactery {
     FleckMaker.ThrowLightningGlow(c.ToVector3Shifted(),map,1f);
     foreach(var t in c.GetThingList(map).OfType<Pawn>().ToList()){
      if(!Hostile(caster,t))continue;bool mech=t.RaceProps.IsMechanoid;
-     t.TakeDamage(new DamageInfo(mech?DamageDefOf.EMP:(Lightning??DamageDefOf.Burn),power,.5f,-1f,caster));
+     t.TakeDamage(new DamageInfo(mech?DamageDefOf.EMP:Subclass3.Retype(caster,Lightning??DamageDefOf.Burn),power,.5f,-1f,caster));
      if(!mech)t.stances?.stunner?.StunFor(60,caster);
      hits++;
     }

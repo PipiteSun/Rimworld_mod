@@ -17,6 +17,8 @@ CELL = 128
 ROWS = ["Warg", "Muffalo", "AcidBlob", "Basilisk", "BlackPudding", "BrownPudding", "Bulette", "CarrionCrawler", "GelatinousCube",
         "GrayOoze", "GreenSlime", "Manticore", "MoldJelly", "RustMonster", "Shoggoth", "ToughBlob", "BuletteHide"]
 GAME = {"RustMonster", "GelatinousCube", "Basilisk", "Manticore", "Bulette", "CarrionCrawler"}
+# 表里这几只的 east 格画成朝左，游戏要求 east 朝右（west 才是镜像），切出来时左右翻转（1.106.0 热修）
+FACES_LEFT = {"Basilisk", "CarrionCrawler", "Manticore", "GreenSlime", "MoldJelly"}
 
 
 def cutout(img):
@@ -60,6 +62,8 @@ def main():
         os.makedirs(folder, exist_ok=True)
         for col, rot in ((1, "south"), (2, "east"), (3, "north")):
             img = cutout(cell(sheet, row, col))
+            if rot == "east" and name in FACES_LEFT:
+                img = img.transpose(Image.FLIP_LEFT_RIGHT)
             img.save(os.path.join(folder, f"{name}_{rot}.png"))
             if game:
                 wm.dessicate(img, name).save(os.path.join(folder, f"Dessicated_{name}_{rot}.png"))

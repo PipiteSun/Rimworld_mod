@@ -62,7 +62,22 @@ namespace LichPhylactery {
      Check(j!=null,"native work giver creates the enhancing job at the enchanting table; "+JobFailReason.Reason);
      GearEnhance.TestRoll=0f;crafter.jobs.StartJob(j,JobCondition.InterruptForced);for(int i=0;i<6000 && b.repeatCount>0;i++)Step(1);
      Check(b.repeatCount==0 && silver.Destroyed && mith.Destroyed && !blade.Destroyed && blade.Spawned && GearEnhance.Level(blade)==1 && GearEnhance.Comp(blade).target==0,"native bill uses up the silver and mithral, leaves the sword on the map at +"+GearEnhance.Level(blade));
+     // 热修：失败那次不扣“做 X 次”；新挂的强化工作单默认一直做。
+     b.repeatCount=2;GearEnhance.LastResult=GearEnhance.Result.Fail;b.Notify_IterationCompleted(crafter,new List<Thing>());int afterFail=b.repeatCount;
+     GearEnhance.LastResult=GearEnhance.Result.Success;b.Notify_IterationCompleted(crafter,new List<Thing>());int afterOk=b.repeatCount;
+     Check(afterFail==2 && afterOk==1 && GearEnhance.LastResult==GearEnhance.Result.None,"failed enhance keeps the bill count ("+afterFail+"), success uses one ("+afterOk+")");
+     Check(new Bill_Production(rl).repeatMode==BillRepeatModeDefOf.Forever && new Bill_Production(DefDatabase<RecipeDef>.GetNamed("Make_ComponentIndustrial")).repeatMode==BillRepeatModeDefOf.RepeatCount,"new enhance bills default to forever, other bills unchanged");
      bench.BillStack.Delete(b);
+     // 热修：附魔台窗口当场强化（Isekai 式）——附魔台有按钮，装备在候选列表里，扣地图材料、按成功率升级；工作单不再能新加。
+     bool benchGizmo=bench.GetGizmos().OfType<Command_Action>().Any(g=>g.defaultLabel=="附魔强化");bool noGearGizmo=!blade.GetGizmos().OfType<Command_Action>().Any(g=>g.defaultLabel!=null && g.defaultLabel.Contains("强化"));
+     bool hidden=!rl.AvailableOnNow(bench);
+     var ws=ThingMaker.MakeThing(D("Silver"));ws.stackCount=25;GenPlace.TryPlaceThing(ws,bench.InteractionCell+IntVec3.East,map,ThingPlaceMode.Near);ws.SetForbidden(false,false);
+     var wm=ThingMaker.MakeThing(D("LP_Mithral"));wm.stackCount=4;GenPlace.TryPlaceThing(wm,bench.InteractionCell+IntVec3.East*2,map,ThingPlaceMode.Near);wm.SetForbidden(false,false);
+     bool listed=GearEnhanceBench.Candidates(map).Contains(blade);var op=GearEnhanceBench.Operator(map,rl);
+     GearEnhance.TestRoll=0f;var wr=GearEnhanceBench.TryEnhance(blade,bench);int wl=GearEnhance.Level(blade);
+     bool used=ws.Destroyed && wm.Destroyed;var wr2=GearEnhanceBench.TryEnhance(blade,bench);
+     Check(benchGizmo && noGearGizmo && hidden && listed && op!=null && wr==GearEnhance.Result.Success && wl==2 && used && wr2==GearEnhance.Result.None && GearEnhance.Level(blade)==2 && GearEnhanceBench.Blocked(blade,map)=="材料不够","bench window: gizmo "+benchGizmo+", gear gizmo gone "+noGearGizmo+", bills hidden "+hidden+", listed "+listed+", op "+op+", enhance → +"+wl+", mats used "+used+", second try "+wr2);
+     GearEnhance.TestRoll=null;
     }finally{GearEnhance.TestRoll=null;rl.workAmount=work;foreach(var other in map.mapPawns.FreeColonistsSpawned.ToList())if(other.drafter!=null)other.drafter.Drafted=false;}
     // 8. 存读档：等级和目标保留
     GearEnhance.Comp(blade).level=4;GearEnhance.Comp(blade).target=5;geSwordId=blade.ThingID;made.Remove(blade);

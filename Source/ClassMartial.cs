@@ -140,7 +140,7 @@ namespace LichPhylactery {
    float c=Mathf.Clamp(.5f+.1f*(ModProf(caster,ability)-ModProf(t,Adventurer.Str))+.2f*(power-1f),.15f,.9f);
    return t.BodySize>=2f?c*.5f:c;
   }
-  public static bool CanDisarm(Pawn t)=>t!=null && !t.Dead && t.RaceProps.Humanlike && t.equipment?.Primary!=null;
+  public static bool CanDisarm(Pawn t)=>t!=null && !t.Dead && t.RaceProps.Humanlike && t.equipment?.Primary!=null && !Subclass2.Bound(t); // 1.103.0 奥法骑士的绑定武器
   public static bool Disarm(Pawn caster,Pawn t,float chance){
    if(!CanDisarm(t) || !Rand.Chance(chance))return false;
    var map=t.Map;var at=t.Position;

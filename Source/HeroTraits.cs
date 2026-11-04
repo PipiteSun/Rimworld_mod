@@ -521,9 +521,9 @@ namespace LichPhylactery {
 
  // ---------- Harmony：特性变动、生成、成年、说明 ----------
  [HarmonyPatch(typeof(TraitSet),nameof(TraitSet.GainTrait))]
- public static class HeroGain {static void Postfix(Pawn ___pawn,Trait trait){if(trait==null || !HeroTraits.Is(trait.def) || ___pawn?.story?.traits?.allTraits.Contains(trait)!=true)return;HeroTraits.Gained(___pawn,trait);Adventurer.Get(___pawn)?.Dirty();}} // 被别的前缀拦下（Isekai 互斥）时不算
+ public static class HeroGain {public static void Postfix(Pawn ___pawn,Trait trait){if(trait==null || !HeroTraits.Is(trait.def) || ___pawn?.story?.traits?.allTraits.Contains(trait)!=true)return;HeroTraits.Gained(___pawn,trait);Adventurer.Get(___pawn)?.Dirty();}} // 被别的前缀拦下（Isekai 互斥）时不算
  [HarmonyPatch(typeof(TraitSet),nameof(TraitSet.RemoveTrait))]
- public static class HeroLose {static void Postfix(Pawn ___pawn,Trait trait){if(trait==null || !HeroTraits.Is(trait.def))return;HeroTraits.Lost(___pawn,trait);Adventurer.Get(___pawn)?.Dirty();}}
+ public static class HeroLose {public static void Postfix(Pawn ___pawn,Trait trait){if(trait==null || !HeroTraits.Is(trait.def))return;HeroTraits.Lost(___pawn,trait);Adventurer.Get(___pawn)?.Dirty();}}
  // 13 岁生日补掷一次（和冒险者 1 级同一个时刻）。
  [HarmonyPatch(typeof(Pawn_AgeTracker),"BirthdayBiological")]
  public static class HeroBirthday {static void Postfix(Pawn ___pawn,int birthdayAge){if(birthdayAge==Adventurer.MinAge && ___pawn!=null && !___pawn.Dead)HeroTraits.OnGenerated(___pawn);}}

@@ -6,7 +6,7 @@ using Verse;
 using UnityEngine;
 
 namespace LichPhylactery {
- // 1.33.0 截图（Test.ps1 -Only Marilith，自测通过后）：地图上 5 个蛇人（裸身、防弹衣+防弹头盔、风衣+牛仔帽、板甲+简易头盔、断了左下臂）和一个人类对照，
+ // 1.33.0 截图（Test.ps1 -Only Marilith，自测通过后）：地图上 5 个蛇人（裸身、防弹衣+防弹头盔、风衣+牛仔帽、板甲+简易头盔、没了左肩）和一个人类对照，
  // 依次朝南、朝东、朝北各截一张：Marilith-south.png / -east.png / -north.png。另外导出原版 Naked_Hulk / Naked_Child 三向贴图作画图参考（MarilithRef-*.png）。
  public partial class LichChecks {
   static int marilithFrames;
@@ -31,7 +31,7 @@ namespace LichPhylactery {
       p=PawnGenerator.GeneratePawn(new PawnGenerationRequest(DefDatabase<PawnKindDef>.GetNamed("LP_MarilithColonist"),Faction.OfPlayer,fixedBiologicalAge:30,fixedChronologicalAge:30,canGeneratePawnRelations:false));
       p.apparel.DestroyAll();
       foreach(var a in outfits[i]){var d=DefDatabase<ThingDef>.GetNamedSilentFail(a);if(d!=null)p.apparel.Wear((Apparel)ThingMaker.MakeThing(d,d.MadeFromStuff?GenStuff.DefaultStuffFor(d):null),false);}
-      if(i==4)p.health.AddHediff(HediffDefOf.MissingBodyPart,p.RaceProps.body.AllParts.First(x=>x.untranslatedCustomLabel=="左下臂"));
+      if(i==4)p.health.AddHediff(HediffDefOf.MissingBodyPart,Marilith.Shoulders(p)[0]); // 1.102.0：没了左肩（左边两条额外手臂跟着没了）
      }
      GenSpawn.Spawn(p,marilithShotCenter+new IntVec3(i*3-9,0,0),map);marilithShots.Add(p);
     }

@@ -162,9 +162,9 @@ namespace LichPhylactery {
 
  // ==================== Harmony ====================
  [HarmonyPatch(typeof(TraitSet),nameof(TraitSet.GainTrait))]
- public static class MoreGain {static void Postfix(Pawn ___pawn,Trait trait){if(trait==null || !MoreTraits.Is(trait.def))return;MoreTraits.Invalidate(___pawn);GameComponent_MoreTraits.Get?.MarkDirty();}}
+ public static class MoreGain {public static void Postfix(Pawn ___pawn,Trait trait){if(trait==null || !MoreTraits.Is(trait.def))return;MoreTraits.Invalidate(___pawn);GameComponent_MoreTraits.Get?.MarkDirty();}}
  [HarmonyPatch(typeof(TraitSet),nameof(TraitSet.RemoveTrait))]
- public static class MoreLose {static void Postfix(Pawn ___pawn,Trait trait){if(trait==null || !MoreTraits.Is(trait.def))return;MoreTraits.Invalidate(___pawn);GameComponent_MoreTraits.Get?.MarkDirty();if(trait.def==MoreTraitDefOf.LP_Vampirism)Items.Remove(___pawn,"LP_MT_Sunburn");}}
+ public static class MoreLose {public static void Postfix(Pawn ___pawn,Trait trait){if(trait==null || !MoreTraits.Is(trait.def))return;MoreTraits.Invalidate(___pawn);GameComponent_MoreTraits.Get?.MarkDirty();if(trait.def==MoreTraitDefOf.LP_Vampirism)Items.Remove(___pawn,"LP_MT_Sunburn");}}
  // 伤害：处刑者（攻击方）、狱火烙印的火 / 寒（受害方）。
  [HarmonyPatch(typeof(Pawn),nameof(Pawn.PreApplyDamage))]
  public static class MoreDamage {

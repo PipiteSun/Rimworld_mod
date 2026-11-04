@@ -24,9 +24,9 @@ namespace LichPhylactery {
    var s=LichMod.Settings;bool oOn=s.questBoard,oAdv=s.adventurer,oSup=Adventurer.TestSuppressed;
    s.questBoard=true;s.adventurer=true;Adventurer.TestSuppressed=false;
    Rand.PushState(17101);
-   try{QbDefs();QbTiers();QbRefresh();QbRewards();QbDefense();QbHunt();QbCamp();QbLimits();}
+   try{QbDefs();QbTiers();QbRefresh();QbRewards();QbDefense();QbHunt();QbCamp();QbLimits();QbMonsterOffers();foreach(var t in QuestBoardMonsters.Themes)QbMonster(t);}
    finally{
-    Rand.PopState();s.questBoard=oOn;s.adventurer=oAdv;Adventurer.TestSuppressed=oSup;QuestBoard.TestLevel=null;
+    Rand.PopState();s.questBoard=oOn;s.adventurer=oAdv;Adventurer.TestSuppressed=oSup;QuestBoard.TestLevel=null;QuestBoardMonsters.TestTheme=null;
     var st=QuestBoard.State;if(st!=null){foreach(var c in st.active.ToList())QuestBoard.Fail(c,"检查结束。");st.offers.Clear();}
     foreach(var t in qbMade)if(t!=null && !t.Destroyed)t.Destroy();qbMade.Clear();
    }
@@ -132,6 +132,52 @@ namespace LichPhylactery {
    QuestBoard.TestLevel=1;var high=st.offers.FirstOrDefault(o=>o.tier>1);var low=high==null?true:QuestBoard.CanAccept(high).Accepted;QuestBoard.TestLevel=9;
    LichMod.Settings.questBoard=false;var off=QuestBoard.CanAccept(offer);QuestBoard.Refresh();int offCount=st.offers.Count;LichMod.Settings.questBoard=true;
    Check(offer!=null && !full.Accepted && full.Reason.Contains("最多") && !low && !off.Accepted && offCount==0,"[quest board] at most "+QuestBoard.MaxActive+" active contracts; higher tiers need the level; turning the setting off empties the board and blocks accepting");
+  }
+
+  // 8. 1.105.0 魔物来袭：青铜只出魔兽群；每种魔物到了解锁等阶才出，阵容全是本模组的怪物、按点数配；报酬 ×1.25；文字中文、没有骰子。
+  void QbMonsterOffers(){
+   QuestBoardMonsters.TestTheme=null;
+   var low=Enumerable.Range(0,30).Select(i=>QuestBoard.MakeOffer(QuestBoard.Monster,1,map)).Where(o=>o!=null).ToList();
+   Check(low.Count==30 && low.All(o=>o.theme==QuestBoardMonsters.Beasts && o.kinds.Count>=2 && o.kinds.All(n=>QuestBoardMonsters.BeastKinds.Contains(n))) && low.All(o=>Near(o.points,300f)),
+    "[quest board] bronze 魔物来袭 offers are always DND beast packs ("+string.Join(" ",low.Take(4).Select(o=>string.Join("+",o.kinds)))+"…)");
+   var made=new List<string>();bool gate=true,text=true,shape=true;
+   foreach(var t in QuestBoardMonsters.Themes){
+    QuestBoardMonsters.TestTheme=t;
+    if(!QuestBoardMonsters.Available(t)){made.Add(t+":off");continue;}
+    int min=QuestBoardMonsters.MinTier(t);
+    if(min>1 && QuestBoard.MakeOffer(QuestBoard.Monster,min-1,map)!=null)gate=false;
+    var c=QuestBoard.MakeOffer(QuestBoard.Monster,QuestBoard.MaxTier,map);
+    if(c==null || c.theme!=t){shape=false;made.Add(t+":null");continue;}
+    float cp=c.kinds.Sum(n=>DefDatabase<PawnKindDef>.GetNamed(n).combatPower);
+    if((t==QuestBoardMonsters.Dragon || t==QuestBoardMonsters.Legend)?c.lead==null:(c.kinds.Count<2 || cp<c.points*.5f || cp>c.points*1.3f))shape=false;
+    string all=QuestBoard.Title(c)+QuestBoard.Describe(c);
+    if(!QbChinese(QuestBoard.Title(c)) || !all.Contains("预计阵容") || qbBanned.Any(w=>all.Contains(w)))text=false;
+    made.Add(t+":"+QuestBoardMonsters.Roster(c));
+   }
+   QuestBoardMonsters.TestTheme=null;
+   Check(gate && text && shape && Mathf.Approximately(QuestBoard.KindMult(QuestBoard.Monster),1.25f),"[quest board] each 魔物来袭 theme unlocks at its tier and fills its roster from the points; legendary offers: "+string.Join(" | ",made));
+  }
+  // 9. 每种魔物：接取 → 来袭（敌对、全是 DND 怪物）→ 全部打倒 → 成功。
+  void QbMonster(string t){
+   if(!QuestBoardMonsters.Available(t))return;
+   var st=QuestBoard.State;QuestBoardMonsters.TestTheme=t;QuestBoard.TestLevel=20;
+   try{
+    var c=QuestBoard.MakeOffer(QuestBoard.Monster,QuestBoardMonsters.MinTier(t),map);
+    if(c==null){Check(false,"[quest board] 魔物来袭 "+t+": no offer");return;}
+    st.offers.Add(c);var q=QuestBoard.Accept(c,null);
+    if(q==null){Check(false,"[quest board] 魔物来袭 "+t+": could not accept");return;}
+    c.raidTick=QuestBoard.Now;QuestBoard.Tick(c);
+    var raiders=c.raiders.ToList();qbMade.AddRange(raiders);
+    bool dnd=raiders.All(p=>p.kindDef.defName.StartsWith("LP_"));
+    bool roster=c.kinds.All(n=>raiders.Any(p=>p.kindDef.defName==n));
+    bool hostile=raiders.All(p=>p.Spawned && p.Map==map && p.HostileTo(Faction.OfPlayer));
+    bool lead=t!=QuestBoardMonsters.Dragon || raiders.Any(Dragons.IsChromatic);
+    if(t==QuestBoardMonsters.Legend)lead=raiders.Any(p=>Monsters.Is(p,c.lead));
+    Check(c.raidSent && raiders.Count>=2 && dnd && roster && hostile && lead && q.State==QuestState.Ongoing,
+     "[quest board] 魔物来袭 "+t+" (tier "+c.tier+"): "+raiders.Count+" hostile DND monsters arrive ("+string.Join(",",raiders.Select(p=>p.kindDef.defName).Distinct())+")");
+    QbKill(raiders);QuestBoard.Tick(c);
+    Check(q.State==QuestState.EndedSuccess && !st.active.Contains(c),"[quest board] 魔物来袭 "+t+": all monsters down → contract succeeds");
+   }finally{QuestBoardMonsters.TestTheme=null;}
   }
 
   // 存读档：一份已接的远征讨伐（站点）和今天的委托。

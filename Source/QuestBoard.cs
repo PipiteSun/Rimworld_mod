@@ -14,14 +14,16 @@ namespace LichPhylactery {
  // 完成时任务以 Success 结束，Adventurer.QuestDone（AdventurerQuest 补丁）照“任务点数 × 0.5”给接取人经验、殖民地其他人 ×0.25；报酬用空投舱送到殖民地。
  // 做法参考 Isekai 公会公告板（每日刷新的委托 + 手工拼的任务），但不引用 Isekai，没装也照常工作。
  public static class QuestBoard {
-  public const string Defense="defense",Hunt="hunt",Camp="camp";
-  public static readonly string[] Kinds={Defense,Hunt,Camp};
+  public const string Defense="defense",Hunt="hunt",Camp="camp",Monster="monster";
+  public static readonly string[] Kinds={Defense,Hunt,Camp,Monster};
+  // 在殖民地打的委托（守卫家园、1.105.0 魔物来袭）：不建站点，到点来袭。
+  public static bool AtHome(string kind)=>kind==Defense || kind==Monster;
   public static readonly string[] TierNames={"青铜","白银","黄金","秘银","传说"};
   public static readonly Color[] TierColors={new Color(.72f,.48f,.28f),new Color(.75f,.78f,.82f),new Color(.9f,.75f,.3f),new Color(.55f,.8f,.9f),new Color(.82f,.45f,.9f)};
   public static readonly float[] TierPoints={300f,700f,1400f,2500f,4000f};
   public static readonly int[] TierMinLevel={1,5,9,13,17};
   public static readonly int[] TierSilver={200,450,800,1400,2400};
-  public const int MaxTier=5,OffersPerDay=6,MaxActive=3,RefreshTicks=GenDate.TicksPerDay,TickInterval=250;
+  public const int MaxTier=5,OffersPerDay=7,MaxActive=3,RefreshTicks=GenDate.TicksPerDay,TickInterval=250;
   public const float HuntPoints=.8f,HuntSilver=1.2f,CampSilver=1.3f;
   public static int SiteMin(int tier)=>2+tier;
   public static int SiteMax(int tier)=>5+tier*2;
@@ -40,7 +42,7 @@ namespace LichPhylactery {
   public static int ColonyLevel=>TestLevel??AdventurerEnemies.ColonyMaxLevel();
   public static int UnlockedTier(){if(!Adventurer.Enabled)return MaxTier;int lv=ColonyLevel,t=1;while(t<MaxTier && lv>=TierMinLevel[t])t++;return t;}
   public static string TierLabel(int tier)=>TierNames[Mathf.Clamp(tier,1,MaxTier)-1];
-  public static string KindLabel(string kind)=>kind==Defense?"守卫家园":kind==Hunt?"远征讨伐":"清剿据点";
+  public static string KindLabel(string kind)=>kind==Defense?"守卫家园":kind==Hunt?"远征讨伐":kind==Monster?"魔物来袭":"清剿据点";
   public static float XpFor(float points)=>points*Adventurer.QuestShare;
 
   public static Map Home=>Find.Maps.Where(m=>m.IsPlayerHome).OrderByDescending(m=>m.listerThings.ThingsOfDef(BoardDef).Any()).ThenByDescending(m=>m.mapPawns.FreeColonistsSpawnedCount).FirstOrDefault();
@@ -68,16 +70,17 @@ namespace LichPhylactery {
   // 品质照原版奖励规则），价值按等阶 × 委托类型 × 0.8～1.3 浮动；DND 物品改成按概率出现。物品在贴出委托时就生成好并存进委托里，面板上看到的就是到手的。
   public const float SilverShare=.5f,GoodsShare=1.1f;
   public static readonly float[] DndChance={.35f,.5f,.6f,.75f,.9f};
-  public static float KindMult(string kind)=>kind==Hunt?HuntSilver:kind==Camp?CampSilver:1f;
-  public static List<string> RollItems(int tier){
+  public static float KindMult(string kind)=>kind==Hunt?HuntSilver:kind==Camp?CampSilver:kind==Monster?QuestBoardMonsters.MonsterSilver:1f;
+  public static List<string> RollItems(int tier,float bonus=0f){
    var l=new List<string>();
    Action<string[]> add=pool=>{var ok=pool.Where(n=>Items.Thing(n)!=null).ToList();if(ok.Count>0)l.Add(ok.RandomElement());};
-   if(Rand.Chance(DndChance[Mathf.Clamp(tier,1,MaxTier)-1])){
+   if(Rand.Chance(Mathf.Min(1f,DndChance[Mathf.Clamp(tier,1,MaxTier)-1]+bonus))){
     if(tier>=4 && Rand.Chance(tier==5?.7f:.45f))add(IsekaiLoot.MagicLoot);
     else if(tier>=3 && Rand.Chance(.5f))add(IsekaiLoot.RareLoot);
     else add(IsekaiLoot.CommonLoot);
    }
    if(tier==5 && Rand.Chance(.4f))add(IsekaiLoot.RareLoot);
+   if(tier==5){var art=DndImplants.RollArtifact(.04f);if(art!=null)l.Add(art);} // 1.114.0 维克那神器：传奇委托极少给（世上各一件）
    return l;
   }
   public static float GoodsBudget(int tier,string kind)=>TierSilver[Mathf.Clamp(tier,1,MaxTier)-1]*KindMult(kind)*GoodsShare;
@@ -98,7 +101,7 @@ namespace LichPhylactery {
    float budget=GoodsBudget(c.tier,c.kind)*Rand.Range(.8f,1.3f);
    c.goods=RollGoods(budget,out int extra);
    c.silver=Mathf.RoundToInt((TierSilver[c.tier-1]*KindMult(c.kind)*SilverShare+extra)/10f)*10;
-   c.items=RollItems(c.tier);
+   c.items=RollItems(c.tier,c.kind==Monster?QuestBoardMonsters.MonsterDndBonus:0f);
    // 原版生成器偶尔什么都给不出（被别的模组过滤空了）：那就照旧全给银子。
    if(c.goods.Count==0)c.silver+=Mathf.RoundToInt(budget/10f)*10;
   }
@@ -124,6 +127,7 @@ namespace LichPhylactery {
    float pts=TierPoints[tier-1];
    if(kind==Defense){c.points=pts;c.faction=PickFaction(pts,false);if(c.faction==null){var a=PickAnimal(pts,home.Tile);if(a==null)return null;c.animal=a.defName;}}
    else if(kind==Hunt){c.points=pts*HuntPoints;var a=PickAnimal(c.points,home.Tile);if(a==null)return null;c.animal=a.defName;}
+   else if(kind==Monster){c.points=pts;if(!QuestBoardMonsters.Setup(c,tier))return null;}
    else{c.points=pts;c.faction=PickFaction(pts,true);if(c.faction==null)return null;}
    RollReward(c);
    return c;
@@ -149,12 +153,14 @@ namespace LichPhylactery {
   public static string Title(BoardContract c){
    if(c.kind==Defense)return "守卫家园："+(c.faction!=null?c.faction.Name:AnimalLabel(c)+"兽群");
    if(c.kind==Hunt)return "远征讨伐："+AnimalLabel(c)+"群";
+   if(c.kind==Monster)return QuestBoardMonsters.Title(c);
    return "清剿据点："+(c.faction?.Name??"敌对据点");
   }
   static string AnimalLabel(BoardContract c)=>DefDatabase<PawnKindDef>.GetNamedSilentFail(c.animal??"")?.label??"野兽";
   public static string Describe(BoardContract c){
    string body;
    if(c.kind==Defense)body="冒险者公会得到消息："+(c.faction!=null?c.faction.Name+"的一伙人":"一群狂暴的"+AnimalLabel(c))+"正朝殖民地逼近。接下委托后 6～12 小时内来袭，打退所有来犯者（杀死、打倒、俘虏或赶走）就算完成。";
+   else if(c.kind==Monster)body=QuestBoardMonsters.Describe(c);
    else if(c.kind==Hunt)body="荒野里出现了一群狂暴的"+AnimalLabel(c)+"，威胁着过往的商旅。接下委托后世界地图上会出现「怪物巢穴」（离殖民地 "+SiteMin(c.tier)+"～"+SiteMax(c.tier)+" 格），组织远征队前往，消灭所有怪物（杀死或打倒）。"+SiteDays(c.tier)+" 天内不去，巢穴就会散去，委托失败。";
    else body=(c.faction?.Name??"敌对派系")+"在附近建了一处前哨据点。接下委托后据点会出现在世界地图上（离殖民地 "+SiteMin(c.tier)+"～"+SiteMax(c.tier)+" 格），前往并消灭所有守军。"+SiteDays(c.tier)+" 天内不去，据点就会撤走，委托失败。";
    return body+"\n\n等阶："+TierLabel(c.tier)+"（推荐冒险者等级 "+TierMinLevel[c.tier-1]+"+）\n威胁点数："+Mathf.RoundToInt(c.points)+"\n报酬："+RewardText(c)+(c.goods!=null && c.goods.Count>0?"（物品约值 "+Mathf.RoundToInt(GoodsValue(c))+" 银）":"")+"\n冒险者经验：接取人约 "+Mathf.RoundToInt(XpFor(c.points)*Adventurer.XpScale)+" 点，殖民地其他人各约 "+Mathf.RoundToInt(XpFor(c.points)*Adventurer.QuestHomeShare*Adventurer.XpScale)+" 点。";
@@ -172,8 +178,8 @@ namespace LichPhylactery {
   public static Quest Accept(BoardContract c,Pawn by){
    var ok=CanAccept(c);if(!ok.Accepted){if(!ok.Reason.NullOrEmpty())Messages.Message(ok.Reason,MessageTypeDefOf.RejectInput,false);return null;}
    var st=State;var home=Home;
-   if(c.kind!=Defense && !MakeSite(c,home)){Messages.Message("附近找不到合适的地点，换一份委托试试。",MessageTypeDefOf.RejectInput,false);return null;}
-   if(c.kind==Defense)c.raidTick=Now+Mathf.RoundToInt(Rand.Range(.25f,.5f)*GenDate.TicksPerDay);
+   if(!AtHome(c.kind) && !MakeSite(c,home)){Messages.Message("附近找不到合适的地点，换一份委托试试。",MessageTypeDefOf.RejectInput,false);return null;}
+   if(AtHome(c.kind))c.raidTick=Now+Mathf.RoundToInt(Rand.Range(.25f,.5f)*GenDate.TicksPerDay);
    else c.deadline=Now+SiteDays(c.tier)*GenDate.TicksPerDay;
    var q=Quest.MakeRaw();
    q.name="【"+TierLabel(c.tier)+"】"+Title(c);q.description=Describe(c);q.root=RootDef;
@@ -181,8 +187,8 @@ namespace LichPhylactery {
    q.AddPart(new QuestPart_QuestBoard{contractId=c.id});
    Find.QuestManager.Add(q);q.Accept(by);
    c.quest=q;st.offers.Remove(c);st.active.Add(c);
-   string where=c.kind==Defense?"敌人将在 6～12 小时内到达。":"目标已经标在世界地图上，"+SiteDays(c.tier)+" 天内完成。";
-   Find.LetterStack.ReceiveLetter("接下委托："+Title(c),(by!=null?by.LabelShort+"在探索公告板上揭下了这份委托。":"")+where+"\n\n"+Describe(c),c.kind==Defense?LetterDefOf.ThreatSmall:LetterDefOf.NeutralEvent,c.site!=null?new LookTargets(c.site):LookTargets.Invalid,null,q);
+   string where=AtHome(c.kind)?"敌人将在 6～12 小时内到达。":"目标已经标在世界地图上，"+SiteDays(c.tier)+" 天内完成。";
+   Find.LetterStack.ReceiveLetter("接下委托："+Title(c),(by!=null?by.LabelShort+"在探索公告板上揭下了这份委托。":"")+where+"\n\n"+Describe(c),AtHome(c.kind)?LetterDefOf.ThreatSmall:LetterDefOf.NeutralEvent,c.site!=null?new LookTargets(c.site):LookTargets.Invalid,null,q);
    return q;
   }
   static bool MakeSite(BoardContract c,Map home){
@@ -207,7 +213,7 @@ namespace LichPhylactery {
   public static void Tick(BoardContract c){
    var q=c.quest;
    if(q==null || q.State!=QuestState.Ongoing){Drop(c);return;}
-   if(c.kind==Defense){
+   if(AtHome(c.kind)){
     var home=Home;if(home==null){Fail(c,"殖民地已经不在了。");return;}
     if(!c.raidSent){if(Now>=c.raidTick)SendRaid(c,home);return;}
     if(c.raiders.All(Gone))Complete(c);
@@ -226,9 +232,10 @@ namespace LichPhylactery {
 
   public static List<Pawn> SendRaid(BoardContract c,Map home){
    c.raidSent=true;var pawns=new List<Pawn>();
-   var f=c.faction!=null && RaidCapable(c.faction,c.points)?c.faction:(c.animal==null?PickFaction(c.points,false):null);
+   var f=c.kind==Monster?null:c.faction!=null && RaidCapable(c.faction,c.points)?c.faction:(c.animal==null?PickFaction(c.points,false):null);
    if(!Events2.EdgeCell(home,out var entry)){Complete(c);return pawns;}
-   if(f!=null){
+   if(c.kind==Monster)pawns=QuestBoardMonsters.Spawn(c,home,entry,out f);
+   else if(f!=null){
     pawns=PawnGroupMakerUtility.GeneratePawns(new PawnGroupMakerParms{groupKind=PawnGroupKindDefOf.Combat,tile=home.Tile,faction=f,points=c.points},false).ToList();
     foreach(var p in pawns)GenSpawn.Spawn(p,CellFinder.RandomClosewalkCellNear(entry,home,6),home);
     if(pawns.Count>0)LordMaker.MakeNewLord(f,new LordJob_AssaultColony(f,false,true,false,false,false,false,false),home,pawns);
@@ -239,7 +246,7 @@ namespace LichPhylactery {
    }
    c.raiders=pawns;
    if(pawns.Count==0){Complete(c);return pawns;}
-   Find.LetterStack.ReceiveLetter("委托：敌人来袭","探索公告板上的委托「"+Title(c)+"」：敌人到了！打退所有来犯者就算完成。",LetterDefOf.ThreatBig,new LookTargets(pawns.Cast<Thing>()),f,c.quest);
+   Find.LetterStack.ReceiveLetter(c.kind==Monster?"委托：魔物来袭":"委托：敌人来袭","探索公告板上的委托「"+Title(c)+"」："+(c.kind==Monster?"魔物到了（"+QuestBoardMonsters.Roster(c)+"）":"敌人到了")+"！打退所有来犯者就算完成。",LetterDefOf.ThreatBig,new LookTargets(pawns.Cast<Thing>()),f,c.quest);
    return pawns;
   }
 
@@ -263,7 +270,7 @@ namespace LichPhylactery {
   static void Drop(BoardContract c){var st=State;st?.active.Remove(c);c.done=true;if(c.site!=null && !c.site.Destroyed && !c.site.HasMap)c.site.Destroy();}
 
   public static string Status(BoardContract c){
-   if(c.kind==Defense){
+   if(AtHome(c.kind)){
     if(!c.raidSent)return "敌人约 "+Mathf.Max(1,Mathf.CeilToInt((c.raidTick-Now)/(float)GenDate.TicksPerHour))+" 小时后到达";
     return "敌人来袭中，还剩 "+c.raiders.Count(p=>!Gone(p))+" 名";
    }
@@ -279,13 +286,15 @@ namespace LichPhylactery {
   public Faction faction;public string animal;public int offerExpires=-1;
   public Quest quest;public Site site;public List<Pawn> raiders=new List<Pawn>();
   public int raidTick=-1,deadline=-1,mapTick=-1;public bool raidSent,sawEnemies,done;
+  public string theme,lead;public List<string> kinds=new List<string>(); // 1.105.0 魔物来袭：魔物种类、领头（龙的颜色 / 传奇怪）、阵容
   public void ExposeData(){
    Scribe_Values.Look(ref id,"id");Scribe_Values.Look(ref kind,"kind");Scribe_Values.Look(ref tier,"tier",1);Scribe_Values.Look(ref points,"points");Scribe_Values.Look(ref silver,"silver");
    Scribe_Collections.Look(ref items,"items",LookMode.Value);Scribe_Collections.Look(ref goods,"goods",LookMode.Deep);Scribe_References.Look(ref faction,"faction");Scribe_Values.Look(ref animal,"animal");Scribe_Values.Look(ref offerExpires,"offerExpires",-1);
    Scribe_References.Look(ref quest,"quest");Scribe_References.Look(ref site,"site");Scribe_Collections.Look(ref raiders,"raiders",LookMode.Reference);
    Scribe_Values.Look(ref raidTick,"raidTick",-1);Scribe_Values.Look(ref deadline,"deadline",-1);Scribe_Values.Look(ref mapTick,"mapTick",-1);
    Scribe_Values.Look(ref raidSent,"raidSent");Scribe_Values.Look(ref sawEnemies,"sawEnemies");Scribe_Values.Look(ref done,"done");
-   if(Scribe.mode==LoadSaveMode.PostLoadInit){if(items==null)items=new List<string>();if(goods==null)goods=new List<Thing>();goods.RemoveAll(t=>t==null);if(raiders==null)raiders=new List<Pawn>();raiders.RemoveAll(p=>p==null);}
+   Scribe_Values.Look(ref theme,"theme");Scribe_Values.Look(ref lead,"lead");Scribe_Collections.Look(ref kinds,"kinds",LookMode.Value);
+   if(Scribe.mode==LoadSaveMode.PostLoadInit){if(items==null)items=new List<string>();if(kinds==null)kinds=new List<string>();if(goods==null)goods=new List<Thing>();goods.RemoveAll(t=>t==null);if(raiders==null)raiders=new List<Pawn>();raiders.RemoveAll(p=>p==null);}
   }
  }
 
@@ -375,7 +384,7 @@ namespace LichPhylactery {
    Badge(new Rect(inner.x,inner.y,52f,24f),c.tier);
    Widgets.Label(new Rect(inner.x+60f,inner.y+2f,inner.width-200f,24f),QuestBoard.KindLabel(c.kind)+" · "+QuestBoard.Title(c));
    GUI.color=new Color(.8f,.8f,.8f);
-   Widgets.Label(new Rect(inner.x,inner.y+28f,inner.width-150f,24f),"推荐等级 "+QuestBoard.TierMinLevel[c.tier-1]+"+ · 威胁点数 "+Mathf.RoundToInt(c.points)+" · 经验约 "+Mathf.RoundToInt(QuestBoard.XpFor(c.points)*Adventurer.XpScale)+(c.kind==QuestBoard.Defense?" · 在殖民地":" · 要远征"));
+   Widgets.Label(new Rect(inner.x,inner.y+28f,inner.width-150f,24f),"推荐等级 "+QuestBoard.TierMinLevel[c.tier-1]+"+ · 威胁点数 "+Mathf.RoundToInt(c.points)+" · 经验约 "+Mathf.RoundToInt(QuestBoard.XpFor(c.points)*Adventurer.XpScale)+(QuestBoard.AtHome(c.kind)?" · 在殖民地":" · 要远征"));
    var rr=new Rect(inner.x,inner.y+52f,inner.width-150f,24f);Widgets.Label(rr,("报酬："+QuestBoard.RewardText(c)).Truncate(rr.width));
    GUI.color=Color.white;
    TooltipHandler.TipRegion(new Rect(inner.x,inner.y,inner.width-150f,inner.height),QuestBoard.Describe(c));

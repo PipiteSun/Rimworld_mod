@@ -83,8 +83,9 @@ namespace LichPhylactery {
    // 1.20.0：吞噬活人时施法者就是凶手，我方夺心魔吞噬同盟矮人也记血债（尸体不算）。
    bool debt=!corpse && !p.Dead && BloodDebt.CountsAsDebt(p,caster);
    // 1.44.0：两个头都在的双头巨人只被吃掉一颗大脑——那个头整个毁掉，另一个头还活着（得到孤首）。
+   // 1.102.0：第二个头不是身体部位了：照样加上大脑缺失，Ettin.TryLoseHead（判死之前）让第二个头顶上，伤口和缺失清掉、得到孤首。
    bool ettinSurvives=!corpse && !p.Dead && Ettin.BothHeads(p);
-   if(ettinSurvives){var neck=Ettin.Necks(p).FirstOrDefault(k=>Ettin.BrainOf(k)==brain);var head=Ettin.HeadOf(neck);if(head!=null)brain=head;debt=false;}
+   if(ettinSurvives)debt=false;
    p.health.AddHediff(HediffMaker.MakeHediff(HediffDefOf.MissingBodyPart,p,brain),brain);
    if(ettinSurvives)Ettin.Sync(p);
    if(!p.Dead && !corpse && !ettinSurvives)p.Kill(null,null);

@@ -11,6 +11,7 @@
     <mainSkill>Intellectual</mainSkill>
     <primary>Int</primary>
     <order>4</order>
+    <subclassLevel>2</subclassLevel> <!-- 1.107.0 塑能学派、书士会 2 级就有能力 -->
     <resource>Mana</resource>
     <caster>true</caster>
     <legacyPath>LP_Path_Wizard</legacyPath>
@@ -39,6 +40,7 @@
     <description>DND 牧师的神术：治疗伤口、祝福、次级复原术、神导术、神圣打击、驱散亡灵、群体治疗、死亡守卫，终极 复生术。强度看“神恩强度”（社交），伤害与治疗（设置开着时）乘心灵敏感度。资源：神恩（和圣武士共用一条：祈祷、冥想时恢复，信奉神明的人快 25%，睡觉时恢复）。</description>
     <mainSkill>Social</mainSkill>
     <primary>Wis</primary>
+    <subclassLevel>1</subclassLevel> <!-- 1.110.0 牧师领域 1 级选 -->
     <order>5</order>
     <resource>Grace</resource>
     <caster>true</caster>
@@ -66,6 +68,7 @@
     <mainSkill>Plants</mainSkill>
     <alternateSkill>Animals</alternateSkill>
     <primary>Wis</primary>
+    <subclassLevel>2</subclassLevel> <!-- 1.109.0 德鲁伊结社 2 级选 -->
     <order>6</order>
     <resource>Mana</resource>
     <caster>true</caster>
