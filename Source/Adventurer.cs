@@ -60,7 +60,9 @@ namespace LichPhylactery {
   static bool? isekai;public static bool IsekaiActive=>isekai??(isekai=ModsConfig.IsActive(IsekaiId)).Value;
   public static bool EffectsHandedToIsekai=>IsekaiActive && (LichMod.Settings?.adventurerIsekaiCoexist??true);
   public static float EffectScale{get{var s=LichMod.Settings;if(s==null)return 1f;if(!s.adventurer || EffectsHandedToIsekai)return 0f;return s.adventurerEffectPercent/100f;}}
-  public static float XpScale=>LichMod.Settings==null?1f:LichMod.Settings.adventurerXpPercent/100f;
+  // 2026-11-04 热修：全部冒险者 / 职业经验 ×1.5（乘在设置倍率之上；自测进程置 1 以保留原有数值检查）
+  public static float BaseXpBoost=1.5f;
+  public static float XpScale=>BaseXpBoost*(LichMod.Settings==null?1f:LichMod.Settings.adventurerXpPercent/100f);
   public static bool AutoASI(Pawn p)=>p.Faction==null || !p.Faction.IsPlayer || (LichMod.Settings?.adventurerAutoASI??false);
 
   // VPE 桥登记：升级给路径点、职业主属性、额外路径点说明。
@@ -182,7 +184,7 @@ namespace LichPhylactery {
   // ---------- 经验 ----------
   public static float GainXP(Pawn p,float amount,bool scaled=true){
    if(!Enabled || amount<=0f)return 0f;var h=Get(p);if(h==null)return 0f;
-   if(scaled)amount*=XpScale*Talents.XpFactor(h)*ClassSystem.XpFactor(p);h.AddXp(amount);return amount; // 1.51.0 凡人之志 +25%；1.73.0 背景 / 特性的职业经验加成
+   if(scaled)amount*=XpScale*Talents.XpFactor(h)*ClassSystem.XpFactor(p);else amount*=BaseXpBoost;h.AddXp(amount);return amount; // 1.51.0 凡人之志 +25%；1.73.0 背景 / 特性的职业经验加成
   }
   // 训练（冒险者手册等）：最多练到 3 级。
   public static float GainTrainingXP(Pawn p,float amount){
@@ -854,6 +856,7 @@ namespace LichPhylactery {
    Adventurer.appliedScale=Adventurer.EffectScale;Legend.appliedOn=Legend.On;Adventurer.appliedAffinity=Affinity.On;
    Styles.ResetCaches(); // 1.53.0：静态缓存不跨存档，250 刻内由各人的冒险者状态重建
    Exalted.Reset(); // 1.59.0：超凡掩码登记同上
+   Feats.ResetCaches();Legendary.painWindow.Clear();ClassLegendary.OathHolders.Clear(); // 2026-11-04 审计：这几张静态表以前不清，跨存档攥着旧小人；誓约名单 250 刻内由 Passives 重建
    TryBackfill();
   }
   // 只补一次：读档时给还没有冒险者状态的人补上（之后靠生成、13 岁生日）。pawns 为空时处理所有活着的人；检查只传测试角色。

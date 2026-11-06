@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.121.0 法术特效：所有 DND 能力施放时的通用特效（Source/SpellVfx.cs 按元素着色）。贴图自绘（ArtSource/SpellVfx/draw_vfx.py），不依赖 VPE。 -->
+<Defs>
+  <FleckDef ParentName="FleckBase">
+    <defName>LP_Vfx_Circle</defName>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <fadeInTime>0.08</fadeInTime>
+    <solidTime>0.35</solidTime>
+    <fadeOutTime>0.45</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Circle</texPath><shaderType>MoteGlow</shaderType></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase">
+    <defName>LP_Vfx_Glow</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.03</fadeInTime>
+    <solidTime>0.2</solidTime>
+    <fadeOutTime>0.6</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Glow</texPath><shaderType>MoteGlow</shaderType></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Orb</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.02</fadeInTime>
+    <solidTime>0.3</solidTime>
+    <fadeOutTime>0.08</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Glow</texPath><shaderType>MoteGlow</shaderType></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase">
+    <defName>LP_Vfx_Ring</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.02</fadeInTime>
+    <solidTime>0.08</solidTime>
+    <fadeOutTime>0.4</fadeOutTime>
+    <growthRate>5</growthRate>
+    <graphicData><texPath>LP/Vfx/Ring</texPath><shaderType>MoteGlow</shaderType></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Spark</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.02</fadeInTime>
+    <solidTime>0.15</solidTime>
+    <fadeOutTime>0.35</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Spark</texPath><shaderType>MoteGlow</shaderType><renderInstanced>true</renderInstanced></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Rune</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.1</fadeInTime>
+    <solidTime>0.35</solidTime>
+    <fadeOutTime>0.6</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Rune</texPath><shaderType>MoteGlow</shaderType><renderInstanced>true</renderInstanced></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Flake</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.05</fadeInTime>
+    <solidTime>0.3</solidTime>
+    <fadeOutTime>0.6</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Flake</texPath><shaderType>MoteGlow</shaderType><renderInstanced>true</renderInstanced></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase">
+    <defName>LP_Vfx_Beam</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.02</fadeInTime>
+    <solidTime>0.08</solidTime>
+    <fadeOutTime>0.3</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Beam</texPath><shaderType>MoteGlow</shaderType></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase">
+    <defName>LP_Vfx_Bolt</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.01</fadeInTime>
+    <solidTime>0.1</solidTime>
+    <fadeOutTime>0.25</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Bolt</texPath><shaderType>MoteGlow</shaderType></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase">
+    <defName>LP_Vfx_Slash</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.01</fadeInTime>
+    <solidTime>0.07</solidTime>
+    <fadeOutTime>0.22</fadeOutTime>
+    <growthRate>1.5</growthRate>
+    <graphicData><texPath>LP/Vfx/Slash</texPath><shaderType>MoteGlow</shaderType></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Smoke</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.15</fadeInTime>
+    <solidTime>0.5</solidTime>
+    <fadeOutTime>1.2</fadeOutTime>
+    <growthRate>0.4</growthRate>
+    <graphicData><texPath>Things/Mote/Smoke</texPath><renderInstanced>true</renderInstanced></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckGlowDistortBackground">
+    <defName>LP_Vfx_Wave</defName>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <fadeInTime>0.02</fadeInTime>
+    <solidTime>0.15</solidTime>
+    <fadeOutTime>0.5</fadeOutTime>
+    <growthRate>3</growthRate>
+    <graphicData>
+      <texPath>Things/Mote/Black</texPath>
+      <shaderParameters><_distortionIntensity>0.04</_distortionIntensity><_brightnessMultiplier>1.15</_brightnessMultiplier></shaderParameters>
+      <drawSize>2</drawSize>
+    </graphicData>
+  </FleckDef>
+</Defs>

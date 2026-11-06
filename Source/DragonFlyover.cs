@@ -293,14 +293,14 @@ namespace LichPhylactery {
  public class DragonVisit : IExposable {
   public Map map;public Lord lord;public Pawn dragon,host,champion;public List<Pawn> servants=new List<Pawn>();public IntVec3 spot;public string stage="arriving";public bool answered;public int arriveTick=-1,duelTick=-1;
   public void ExposeData(){
-   Scribe_References.Look(ref map,"map");Scribe_References.Look(ref lord,"lord");Scribe_References.Look(ref dragon,"dragon");Scribe_References.Look(ref host,"host");Scribe_References.Look(ref champion,"champion");
+   Scribe_References.Look(ref map,"map");ScribeLord.Look(ref lord,"lord");Scribe_References.Look(ref dragon,"dragon");Scribe_References.Look(ref host,"host");Scribe_References.Look(ref champion,"champion");
    ScribePawns.Look(ref servants,"servants");Scribe_Values.Look(ref spot,"spot");Scribe_Values.Look(ref stage,"stage","arriving");Scribe_Values.Look(ref answered,"answered");Scribe_Values.Look(ref arriveTick,"arriveTick",-1);Scribe_Values.Look(ref duelTick,"duelTick",-1);
   }
  }
  public class DragonRaid : IExposable {
   public Map map;public Lord lord;public Pawn dragon,host;public List<Pawn> servants=new List<Pawn>();public int tick;public bool fired;
   public void ExposeData(){
-   Scribe_References.Look(ref map,"map");Scribe_References.Look(ref lord,"lord");Scribe_References.Look(ref dragon,"dragon");Scribe_References.Look(ref host,"host");
+   Scribe_References.Look(ref map,"map");ScribeLord.Look(ref lord,"lord");Scribe_References.Look(ref dragon,"dragon");Scribe_References.Look(ref host,"host");
    ScribePawns.Look(ref servants,"servants");Scribe_Values.Look(ref tick,"tick");Scribe_Values.Look(ref fired,"fired");
   }
  }

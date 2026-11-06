@@ -210,7 +210,7 @@ namespace LichPhylactery {
    if(Affinity.LegendaryRace(p) || Demigods.Is(p))return Tier.Legendary;
    return CommonKeys.Contains(Affinity.For(p).key)?Tier.Common:Tier.Medium;
   }
-  public static float GoldChance(Tier t)=>t==Tier.Common?.01f:t==Tier.Medium?.004f:0f;
+  public static float GoldChance(Tier t)=>t==Tier.Common?.01f:t==Tier.Medium?.004f:.002f; // 2026-11-04 热修：传奇种族也能出金色（0.2%，普通的五分之一），池子相同
   public static float PurpleChance(Tier t)=>t==Tier.Common?.04f:t==Tier.Medium?.03f:.01f;
   // 1.51.0 的四个天赋并进同一次掷骰：普通 / 中等种族 2%（原来 commonality 0.15 在特性池里约这个量级），传奇种族不出（同 1.51.0）。
   public static float TalentChance(Tier t)=>t==Tier.Legendary?0f:.02f;
@@ -295,14 +295,14 @@ namespace LichPhylactery {
    var t=Give(p,Pick(p,k));if(t!=null && TestKind==null)Extra(p);
    return t;
   }
-  // 敌人：剧情首领、宿敌冠军 50% 带一个金 / 紫（人类优先金色，其他普通 / 中等种族各半，传奇种族只出紫色）；袭击领队 10% 带紫。
-  public const float BossChance=.5f,LeaderChance=.1f,ChampionDeedChance=.3f;
+  // 敌人：剧情首领、宿敌冠军 50% 带一个金 / 紫（人类优先金色，其他普通 / 中等种族各半，传奇种族 25% 金色）；袭击领队 10% 带紫。
+  public const float BossChance=.5f,LeaderChance=.1f,ChampionDeedChance=.3f,LegendaryBossGold=.25f;
   public static Trait EnemyBoss(Pawn p,float? roll=null){
    if(roll==null)CombatGifts.Boss(p); // 1.66.0 首领 / 冠军 50% 一个武艺天赋（独立名额）
    if(TestSuppressed || !EnemiesOn || !Eligible(p) || HasSlot(p))return null;
    if((roll??Rand.Value)>=BossChance)return null;
    if(DndTraits.CurseOn && Rand.Chance(DndTraits.BossCurseChance)){var c=DndTraits.BossCurse(p);if(c!=null){if(roll==null)Extra(p);return c;}} // 1.62.0：15% 红色（不给复仇亡魂）
-   var tier=TierOf(p);bool gold=tier!=Tier.Legendary && (Affinity.For(p).key==Affinity.HumanKey || Rand.Chance(.5f));
+   var tier=TierOf(p);bool gold=tier==Tier.Legendary?Rand.Chance(LegendaryBossGold):(Affinity.For(p).key==Affinity.HumanKey || Rand.Chance(.5f));
    var t=Give(p,Pick(p,gold?KindGold:KindPurple)??Pick(p,KindPurple));if(t!=null && roll==null)Extra(p);
    return t;
   }
@@ -563,7 +563,7 @@ namespace LichPhylactery {
   public static void Draw(Listing_Standard l){
    var s=LichMod.Settings;l.GapLine();l.Label("DND 特性");
    l.Label(TraitRarityLegend,-1f,(TipSignal)"特性名字的颜色按稀有度：普通（白）、优秀（绿）、稀有（蓝）、史诗（紫）、传说（橙）、神话（金）；诅咒之力是红色，传说事迹是青色，它们的档位写在悬停说明第一行。"); // 2026-10-29 特性稀有度
-   l.CheckboxLabeled("DND 强力特性",ref s.heroTraits,"（1.58.0）新生成的人有很小的机会带一个强力特性：英雄之资系与天命（英雄之资、极致是传说，四个天命是神话）、加点与强化天赋（天赋、金刚之躯、锋芒、灵光、传奇之胚和六个强化天赋是稀有，反骨、勤勉是史诗），1.51.0 的四个稀有天赋（史诗）也并进这一次随机。得到一个之后，每次按“额外强力特性”的成功率再得一个，直到失败或达到上限（天命之间、稀有天赋之间、诅咒之间仍然互斥）；传说事迹（青色）由事件授予，不占名额。\n第一个：普通种族 英雄之资系与天命 1% / 加点与强化天赋 4%，中等 0.4% / 3%，传奇种族只有后者 1%；四个稀有天赋 2%（传奇种族没有）。\n关闭后不再生成，已有的保留。");
+   l.CheckboxLabeled("DND 强力特性",ref s.heroTraits,"（1.58.0）新生成的人有很小的机会带一个强力特性：英雄之资系与天命（英雄之资、极致是传说，四个天命是神话）、加点与强化天赋（天赋、金刚之躯、锋芒、灵光、传奇之胚和六个强化天赋是稀有，反骨、勤勉是史诗），1.51.0 的四个稀有天赋（史诗）也并进这一次随机。得到一个之后，每次按“额外强力特性”的成功率再得一个，直到失败或达到上限（天命之间、稀有天赋之间、诅咒之间仍然互斥）；传说事迹（青色）由事件授予，不占名额。\n第一个：普通种族 英雄之资系与天命 1% / 加点与强化天赋 4%，中等 0.4% / 3%，传奇种族 0.2% / 1%；四个稀有天赋 2%（传奇种族没有）。\n关闭后不再生成，已有的保留。");
    l.Label("强力特性出现率："+s.heroTraitRate+"%");s.heroTraitRate=Mathf.RoundToInt(l.Slider(s.heroTraitRate,0,300)/5f)*5;
    l.Label("每人最多强力特性："+s.heroTraitMax+" 个");s.heroTraitMax=Mathf.RoundToInt(l.Slider(s.heroTraitMax,1,6));
    l.Label("额外强力特性成功率："+s.heroTraitExtra+"%（得到一个之后，每次再得一个的几率）");s.heroTraitExtra=Mathf.RoundToInt(l.Slider(s.heroTraitExtra,0,100)/5f)*5;

@@ -67,7 +67,7 @@ namespace LichPhylactery {
    Scribe_Collections.Look(ref counters,"counters",LookMode.Value,LookMode.Value);
    Scribe_Defs.Look(ref patronGod,"patronGod");Scribe_Values.Look(ref stageStartTick,"stageStart",-1);Scribe_Values.Look(ref done,"done");
    Scribe_Defs.Look(ref portfolio,"portfolio");
-   Scribe_References.Look(ref lord,"lord");Scribe_References.Look(ref lordMap,"lordMap");Scribe_References.Look(ref leader,"leader");
+   ScribeLord.Look(ref lord,"lord");Scribe_References.Look(ref lordMap,"lordMap");Scribe_References.Look(ref leader,"leader");
    Scribe_Values.Look(ref wave,"wave");Scribe_Values.Look(ref nextWaveTick,"nextWave",-1);Scribe_Values.Look(ref awayTicks,"away");Scribe_Values.Look(ref waiting,"waiting");
    Scribe_References.Look(ref box,"box");Scribe_Values.Look(ref kingDamage,"kingDamage");
    if(Scribe.mode==LoadSaveMode.PostLoadInit && counters==null)counters=new Dictionary<string,int>();

@@ -10,7 +10,7 @@ using Verse;
 using Verse.AI.Group;
 
 namespace LichPhylactery {
- // 1.52.0 五色真龙（组名 ChromaticDragons：Test.ps1 -Only ChromaticDragons；需要 HAR，没有 HAR 时只做加载检查）。
+ // 1.52.0 五色真龙（组名 ChromaticDragons：Test.ps1 -Only ChromaticDragons）。1.116.0 起是动物型怪物，不需要 HAR；启用 HAR 时多一项联动检查。
  public partial class LichChecks {
   readonly List<Thing> dragMade=new List<Thing>();
   Pawn DragMake(string color,int stage,IntVec3? at=null){
@@ -46,9 +46,9 @@ namespace LichPhylactery {
 
   void CheckChromaticDragons(){
    bool har=ModsConfig.IsActive(HARId);
-   Check(har==Dragons.Available && har==(DefDatabase<BodyDef>.GetNamedSilentFail("LP_DragonBody")!=null) && har==(Dragons.Kind("White",2)!=null) && Items.Thing("LP_DragonHeart_Green")!=null && Items.Thing("LP_DragonBlood_Black")!=null && Items.Thing("LP_DragonFang")!=null,
-    "five chromatic dragon races / body / 15 kinds load exactly when HAR is active ("+har+"); loot items always load");
-   if(!har)return;
+   Check(Dragons.Available && DefDatabase<BodyDef>.GetNamedSilentFail("LP_DragonBody")!=null && Dragons.Colors.All(c=>Enumerable.Range(0,3).All(s=>Dragons.Kind(c,s)!=null)) && Items.Thing("LP_DragonHeart_Green")!=null && Items.Thing("LP_DragonBlood_Black")!=null && Items.Thing("LP_DragonFang")!=null
+    && Dragons.Colors.All(c=>{var r=Dragons.Race(c);return r.race.Animal && !r.race.Humanlike && r.race.lifeStageAges.Count==3 && !r.race.canBePredatorPrey;}) && Dragons.Colors.All(c=>!Dragons.Kind(c,1).canArriveManhunter && Dragons.Kind(c,1).lifeStages.Count==3),
+    "five chromatic dragon races / body / 15 kinds always load (HAR "+har+"): animal-style, not humanlike, three life stages, never prey, never a manhunter pack; loot items load");
    var oSet=(LichMod.Settings.dragonStrength,LichMod.Settings.chromaticDragons,LichMod.Settings.dragonExtortion,LichMod.Settings.dragonRaid,LichMod.Settings.dragonLair,LichMod.Settings.dragonFlyoverLink);
    LichMod.Settings.dragonStrength=100;LichMod.Settings.chromaticDragons=LichMod.Settings.dragonExtortion=LichMod.Settings.dragonRaid=LichMod.Settings.dragonLair=LichMod.Settings.dragonFlyoverLink=true;
    try{CheckChromaticInner();}
@@ -58,7 +58,7 @@ namespace LichPhylactery {
    }
   }
   void CheckChromaticInner(){
-   RunDragonBridge();
+   if(ModsConfig.IsActive(HARId))RunDragonBridge();
    // 1 五色成年龙：种族、身体、年龄档、体型、生命倍率、免疫
    var expect=new Dictionary<string,string>{{"Red","Flame"},{"Blue","LP_Shock"},{"Green","LP_DragonPoison"},{"Black","LP_AlchemyAcid"},{"White","LP_Frost"}};
    foreach(var c in Dragons.Colors){
@@ -67,19 +67,20 @@ namespace LichPhylactery {
     var body=Items.Hediff("LP_DragonBody_"+c);
     bool immune=body.stages[0].damageFactors.Any(f=>f.damageDef==dmg && f.factor==0f);
     float hpBefore=d.health.summaryHealth.SummaryHealthPercent;d.TakeDamage(new DamageInfo(dmg,30f,0f,-1f,null));bool untouched=Near(d.health.summaryHealth.SummaryHealthPercent,hpBefore) && !d.health.hediffSet.hediffs.OfType<Hediff_Injury>().Any();
-    Check(Dragons.ColorOf(d)==c && d.RaceProps.body.defName=="LP_DragonBody" && d.RaceProps.Humanlike && Dragons.Stage(d)==1 && Near(d.BodySize,4f) && Near(d.HealthScale,24f*Dragons.ScoreHealth) && immune && untouched && Items.Has(d,"LP_DragonBody_"+c)
-     && d.needs.food==null && d.needs.rest==null && d.story.headType.defName=="LP_DragonHead_"+c && d.apparel.WornApparelCount==0 && d.equipment.Primary==null && Legendary.PartCount(d,"LP_DragonWing")==2 && Legendary.HasTail(d),
-     "[stage "+Dragons.Stage(d)+" size "+d.BodySize+" hs "+d.HealthScale+" immune "+immune+" untouched "+untouched+" food "+(d.needs.food==null)+" head "+d.story.headType?.defName+" app "+d.apparel.WornApparelCount+" wings "+Legendary.PartCount(d,"LP_DragonWing")+" tail "+Legendary.HasTail(d)+"] adult "+Dragons.Info[c].label+": HAR race with LP_DragonBody (two wings, tail), adult life stage, body size 4, health scale 24 × six-score health ×"+Dragons.ScoreHealth+" (balance pass: spec 16; 1.65.0 ×3), immune to "+dmg.defName+", no food/rest need, dragon head, no gear");
+    var gfx=d.ageTracker.CurKindLifeStage?.bodyGraphicData?.Graphic;bool tex=gfx!=null && gfx.MatSouth?.mainTexture!=null && gfx.MatSouth.mainTexture!=BaseContent.BadTex && gfx.MatEast.mainTexture!=BaseContent.BadTex;
+    Check(Dragons.ColorOf(d)==c && d.RaceProps.body.defName=="LP_DragonBody" && !d.RaceProps.Humanlike && tex && Dragons.Stage(d)==1 && Near(d.BodySize,4f) && Near(d.HealthScale,24f*Dragons.ScoreHealth) && immune && untouched && Items.Has(d,"LP_DragonBody_"+c)
+     && d.needs.food==null && d.needs.rest==null && d.story==null && d.apparel==null && d.equipment==null && Adventurer.Get(d)==null && d.Name is NameSingle && Legendary.PartCount(d,"LP_DragonWing")==2 && Legendary.HasTail(d) && d.GetStatValue(StatDefOf.MeleeHitChance)>=.9f,
+     "[stage "+Dragons.Stage(d)+" size "+d.BodySize+" hs "+d.HealthScale+" immune "+immune+" untouched "+untouched+" food "+(d.needs.food==null)+" tex "+tex+" story "+(d.story!=null)+" wings "+Legendary.PartCount(d,"LP_DragonWing")+" tail "+Legendary.HasTail(d)+" hit "+d.GetStatValue(StatDefOf.MeleeHitChance).ToStringPercent()+"] adult "+Dragons.Info[c].label+": animal-style race with LP_DragonBody (two wings, tail) and its own body texture, adult life stage, body size 4, health scale 24 × six-score health ×"+Dragons.ScoreHealth+", immune to "+dmg.defName+", no food/rest need, no story / gear / adventurer hediff, a dragon name, melee hit ≥90% like its old melee 16");
    }
    // 2 年龄档：青年 / 远古的体型、生命、近战；等级、CR、固定六维；传奇抗性次数
    var young=DragMake("Red",0);var adult=DragMake("Red",1);var ancient=DragMake("Red",2);
-   var ha=Adventurer.Get(adult);var hn=Adventurer.Get(ancient);var hy=Adventurer.Get(young);
+   int ly=Legendary.LevelOf(young),la=Legendary.LevelOf(adult),ln=Legendary.LevelOf(ancient);float legendMelee=LegendaryBeasts.MeleeFactor(ancient);
    Check(Near(young.BodySize,2.5f) && Near(young.HealthScale,6f*Dragons.ScoreHealth) && Near(ancient.BodySize,6f) && Near(ancient.HealthScale,40f*Dragons.ScoreHealth) && Near(ancient.ageTracker.CurLifeStage.meleeDamageFactor,2.5f)
-    && hy.level>=10 && hy.level<=12 && ha.level>=18 && ha.level<=20 && hn.level>=31 && hn.level<=35 && hn.legendary && hn.legendSpent[Legend.Melee]>0 && hn.scores[Adventurer.Str]==30 && ha.scores[Adventurer.Cha]==21
+    && ly==10 && la==18 && ln==31 && (!Adventurer.Enabled || Near(legendMelee,1f+Legend.MeleePer*Legend.PointsPerLevel*11)) && Near(LegendaryBeasts.MeleeFactor(adult),1f) && Legendary.Score(ancient,Adventurer.Str)==30 && Legendary.Score(adult,Adventurer.Cha)==21
     && Legendary.Resistance(young)==null && Legendary.Resistance(adult)?.Max==3 && Legendary.Resistance(ancient)?.Max==3 && Legendary.Actions(young)==null && Legendary.Ext(ancient).actions.Any(x=>x.action=="Glance")
     && Legendary.InspectLine(ancient).StartsWith("挑战等级 CR 24") && Legendary.InspectLine(young).StartsWith("挑战等级 CR 10") && Epic.ShowsCR(adult) && young.Name is NameSingle,
-    "red dragon ages: young 2.5/×6 L"+hy.level+", adult L"+ha.level+", ancient 6/×40 melee ×2.5 L"+hn.level+" (legendary, legend points spent); 5e scores (ancient Str 30), CR 10/17/24 in the inspect line; resistance 0/3/3, actions only adult+ (ancient adds 骇人一瞥)");
-   if(Adventurer.IsekaiActive)Check(Legendary.IsekaiLocked(adult),"Isekai: dragons are forge-locked");
+    "red dragon ages: young 2.5/×6 L"+ly+", adult L"+la+", ancient 6/×40 melee ×2.5 L"+ln+" (legend melee ×"+legendMelee.ToString("0.00")+" in place of the old legend points); 5e scores (ancient Str 30), CR 10/17/24 in the inspect line; resistance 0/3/3, actions only adult+ (ancient adds 骇人一瞥)");
+   if(Adventurer.IsekaiActive)Check(Legendary.IsekaiLocked(adult) || adult.AllComps.All(x=>x.GetType().Name!="IsekaiComponent"),"Isekai: dragons are forge-locked (or, as animal-style monsters, carry no Isekai component)");
 
    // 3 吐息形状与伤害：红龙锥 / 蓝龙线；豁免减半；建筑受伤；白龙寒气；黑龙衣甲耐久；蓝龙打机械 ×2
    var arena=DragArena();
@@ -200,6 +201,15 @@ namespace LichPhylactery {
     "loot: adult red corpse → 50 red scales, a heart, fangs, no meat; red-scale plate armor heat ×"+heatRatio.ToString("0.00")+" sharp ×"+sharpRatio.ToString("0.00")+" vs steel; red dragon blood halves fire for 7 days; black-scale armor halves acid; 1 heart → 3 bloods at the alchemy table");
    foreach(var t in products)t.Destroy();scaleArmor.Destroy();steelArmor.Destroy();
 
+   // 12 旧存档（1.116.0）：以前的 HAR 龙读档后带着背景、技能、衣物和冒险者 hediff；读档补丁把它们去掉
+   var legacy=DragMake("Green",2);legacy.story=new Pawn_StoryTracker(legacy);legacy.skills=new Pawn_SkillTracker(legacy);legacy.apparel=new Pawn_ApparelTracker(legacy);legacy.equipment=new Pawn_EquipmentTracker(legacy);
+   var oldAdv=(Hediff_Adventurer)HediffMaker.MakeHediff(Adventurer.Def,legacy);legacy.health.hediffSet.hediffs.Add(oldAdv);Adventurer.Register(oldAdv);
+   bool hadAdv=Adventurer.Get(legacy)!=null;float meleeWithAdv=LegendaryBeasts.MeleeFactor(legacy);
+   bool stripped=LegendaryBeasts.StripHumanlike(legacy);
+   Check(hadAdv && Near(meleeWithAdv,1f) && stripped && legacy.story==null && legacy.skills==null && legacy.apparel==null && legacy.equipment==null && Adventurer.Get(legacy)==null && !legacy.health.hediffSet.hediffs.OfType<Hediff_Adventurer>().Any()
+    && Items.Has(legacy,"LP_DragonBody_Green") && Legendary.Resistance(legacy)!=null && (!Adventurer.Enabled || LegendaryBeasts.MeleeFactor(legacy)>1f) && !LegendaryBeasts.StripHumanlike(legacy),
+    "old save: a pre-1.116.0 dragon loaded with story / skills / apparel / adventurer hediff gets them stripped (dragon body and legendary resistance stay, legend melee bonus switches to the beast version); a second pass does nothing");
+
    // 11 数值核对（不打仗，只算）：有效生命 = 生命 × 100 / (1 − 利器护甲)；5 名标准殖民者的每秒伤害 = 12 × 近战伤害系数
    var ad=DragMake("Red",1);var an=DragMake("Red",2);
    float Ehp(Pawn d)=>d.HealthScale*100f/(1f-d.GetStatValue(StatDefOf.ArmorRating_Sharp));
@@ -208,7 +218,7 @@ namespace LichPhylactery {
    h20.level=40;h20.legendary=true;h20.legendSpent[Legend.Melee]=20;h20.Dirty();float f40=h20.BuildStage(1f).statFactors?.GetStatFactorFromList(StatDefOf.MeleeDamageFactor)??1f;
    float t20=Ehp(ad)/(5f*12f*f20),t40=Ehp(an)/(5f*12f*f40);
    Log.Message("[LICH-TEST] dragon numbers: adult EHP "+Ehp(ad).ToString("0")+" vs 5×L20 dps "+(60f*f20).ToString("0.0")+" = "+t20.ToString("0")+" s; ancient EHP "+Ehp(an).ToString("0")+" vs 5×L40 dps "+(60f*f40).ToString("0.0")+" = "+t40.ToString("0")+" s");
-   Check(t20>=60f && t20<=150f && t40>=60f && t40<=150f,"balance: adult dragon vs five level-20 colonists "+t20.ToString("0")+" s, ancient vs five level-40 legends "+t40.ToString("0")+" s (target 60-150 s)");
+   Check(t20>=60f && t20<=150f && t40>=60f && t40<=150f,"[adult hs "+ad.HealthScale.ToString("0.0")+" sharp "+ad.GetStatValue(StatDefOf.ArmorRating_Sharp).ToString("0.00")+" ehp "+Ehp(ad).ToString("0")+" f20 "+f20.ToString("0.00")+"; ancient hs "+an.HealthScale.ToString("0.0")+" sharp "+an.GetStatValue(StatDefOf.ArmorRating_Sharp).ToString("0.00")+" f40 "+f40.ToString("0.00")+"] balance: adult dragon vs five level-20 colonists "+t20.ToString("0")+" s, ancient vs five level-40 legends "+t40.ToString("0")+" s (target 60-150 s)");
   }
   static Type DragonBridge=>GenTypes.GetTypeInAnyAssembly("LichPhylactery.HARBridge.BridgeChecks");
   void RunDragonBridge(){

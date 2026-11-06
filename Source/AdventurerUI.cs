@@ -10,7 +10,7 @@ namespace LichPhylactery {
  [StaticConstructorOnStartup]
  public static class AdventurerStartup {
   static AdventurerStartup(){
-   if(GenCommandLine.CommandLineArgPassed("lichtest"))Adventurer.TestSuppressed=Talents.StripAll=HeroTraits.TestSuppressed=true; // 自测进程：冒险者 / 强力特性检查组自己临时打开
+   if(GenCommandLine.CommandLineArgPassed("lichtest")){Adventurer.TestSuppressed=Talents.StripAll=HeroTraits.TestSuppressed=true;Adventurer.BaseXpBoost=1f;} // 自测进程：冒险者 / 强力特性检查组自己临时打开
    foreach(var d in DefDatabase<ThingDef>.AllDefsListForReading){
     if(d.race==null || !d.race.Humanlike)continue;
     if(d.inspectorTabs==null)d.inspectorTabs=new List<Type>();
@@ -123,7 +123,7 @@ namespace LichPhylactery {
    }
    if(Epic.NemesisOn)sb.AppendLine("· 击杀宿敌冠军：下一级所需的 "+(Epic.NemesisShare*100f).ToString("0")+"%（现在 "+K(Epic.NextLevelXp(h)*Epic.NemesisShare)+"）"+(h.legendary?"，传奇 +"+Legend.NemesisBonus+" 传奇属性点":""));
    sb.AppendLine();
-   sb.Append("当前经验倍率 "+(mult*100f).ToString("0")+"%（设置 "+(Adventurer.XpScale*100f).ToString("0")+"%"+(Talents.XpFactor(h)!=1f?" × 凡人之志 "+Talents.XpFactor(h).ToString("0.##"):"")+"；击杀里程碑和宿敌不乘倍率）");
+   sb.Append("当前经验倍率 "+(mult*100f).ToString("0")+"%（设置 "+(Adventurer.XpScale/Adventurer.BaseXpBoost*100f).ToString("0")+"%"+(Adventurer.BaseXpBoost!=1f?" × 基础 "+Adventurer.BaseXpBoost.ToString("0.##"):"")+(Talents.XpFactor(h)!=1f?" × 凡人之志 "+Talents.XpFactor(h).ToString("0.##"):"")+"；击杀里程碑和宿敌不乘倍率）");
    return sb.ToString();
   }
   // 预览：临时加点，取这项的效果说明（含种族亲和）。

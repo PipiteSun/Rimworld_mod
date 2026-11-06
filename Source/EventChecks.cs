@@ -323,7 +323,7 @@ namespace LichPhylactery {
    }
    else{WorldTick311(world);Check(world.startTick>0 && world.rolledYear==year,"yearly roll happens once a year (year "+year+")");}
    world.startTick=-1;Twilight.TestRoll=1f;
-   Check(WorldComponent_Twilight.FirstYearMinDay>=1 && WorldComponent_Twilight.FirstYearMaxDay+Twilight.OmenDays<=60,"first-year roll day 5～45: the omen's twilight still begins inside year 1");
+   Check(WorldComponent_Twilight.FirstYearMinDay>=1 && WorldComponent_Twilight.FirstYearMinDay+Twilight.OmenDays>=16 && WorldComponent_Twilight.FirstYearMaxDay+Twilight.OmenDays<=45,"first-year roll day 1～30: twilight can begin from day 16 and always inside year 1");
 
    CheckInfusions();CheckGenerationHook();CheckVessels();
   }

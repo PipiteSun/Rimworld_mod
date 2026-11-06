@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 1.52.1 传奇怪（规则在 Source/LegendaryMonsters.cs，传奇层在 Source/Legendary.cs）。
-     贝希尔、眼魔、半巫妖的种族和兵种在 Bridges/HAR/Defs/LegendaryMonsters_Race.xml（只在启用 HAR 时加载）；
-     这里是不需要 HAR 的部分：派系「传奇怪物」、死亡骑士、各自的“XX之躯”、掉落物、两个世界地点、龙的猎手事件。 -->
+     贝希尔、眼魔、半巫妖的种族和兵种在 LegendaryMonsters_Races.xml（1.116.0 起是动物型怪物，不再需要 HAR）；
+     这里是派系「传奇怪物」、死亡骑士、各自的“XX之躯”、掉落物、两个世界地点、龙的猎手事件。 -->
 <Defs>
 
   <FactionDef ParentName="LP_FactionBase">

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 1.52.0 五色真龙的战利品与身体状态（由 ArtSource/ChromaticDragons-gen_defs.py 生成）。不依赖 HAR：物品照常加载，只是没装 HAR 时得不到。 -->
+<!-- 1.52.0 五色真龙的战利品与身体状态（由 ArtSource/ChromaticDragons-gen_defs.py 生成）。不依赖 HAR。 -->
 <Defs>
 
   <DamageDef>
@@ -14,7 +14,7 @@
     <defaultArmorPenetration>0.2</defaultArmorPenetration>
   </DamageDef>
 
-  <!-- 真龙之躯：不饿不困、没有心情、不会自发精神崩溃；本色元素免疫。年龄档的护甲、移速、体型、生命、近战在 HAR 种族的生命阶段里。 -->
+  <!-- 真龙之躯：不饿不困、没有心情、不会自发精神崩溃；本色元素免疫。年龄档的护甲、移速、体型、生命、近战在种族的生命阶段里（ChromaticDragons_Races.xml）。 -->
   <HediffDef Name="LP_DragonBodyBase" Abstract="True">
     <hediffClass>LichPhylactery.Hediff_DragonBody</hediffClass>
     <description>真龙的身体：不需要吃饭睡觉，不会自己精神崩溃（外力造成的精神状态由传奇抗性处理），对本色元素免疫。吐息每 6 秒有 1/3 几率充好。倒地即死，不能俘虏。</description>

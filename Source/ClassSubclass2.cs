@@ -141,7 +141,7 @@ namespace LichPhylactery {
   public static float PowerFactor(Pawn p,CompProperties_ClassEffect e)=>e!=null && p?.health!=null && HemoEffects.Contains(e.effect)?WoundFactor(p):1f;
 
   // ---------- 誓言 ----------
-  static readonly HashSet<string> OathAbilities=new HashSet<string>{"LP_CQ_ConqueringPresence","LP_CQ_GuidedStrike","LP_RD_EmissaryOfPeace","LP_RD_RebukeViolent"};
+  static readonly HashSet<string> OathAbilities=new HashSet<string>{"LP_CQ_ConqueringPresence","LP_CQ_GuidedStrike","LP_RD_EmissaryOfPeace","LP_RD_RebukeViolent","LP_OB_DreadfulAspect","LP_OB_ControlUndead"}; // 1.120.0 破誓者（Subclass_Oathbreaker.cs）也用誓言之力
   public static bool Oath(AbilityDef d)=>d!=null && OathAbilities.Contains(d.defName);
   public static int OathMax(Hediff_Adventurer h){int lv=ClassSystem.Level(h,ClassSystem.Paladin);return lv<=0?0:1+(lv>=11?1:0)+(lv>=15?1:0);}
   public static void OathRefill(Hediff_Adventurer h,SubclassData d){
@@ -164,7 +164,7 @@ namespace LichPhylactery {
 
   // ---------- 资源挂钩（ClassSystem.CannotCast / Pay / FreeCast，Ability_Class.Tooltip） ----------
   public static string CannotCast(Pawn p,AbilityDef def,CompProperties_ClassEffect props){
-   if(Users.Count==0 && !ClassSubclass.Has(p,Hemomancy) && !ClassSubclass.Has(p,Conquest) && !ClassSubclass.Has(p,Redemption))return null;
+   if(Users.Count==0 && !ClassSubclass.Has(p,Hemomancy) && !ClassSubclass.Has(p,Conquest) && !ClassSubclass.Has(p,Redemption) && !ClassSubclass.Has(p,Oathbreaker.Sub))return null;
    int b=BloodOf(def);if(b>0){var w=BloodCannot(p,b);if(w!=null)return w;}
    if(Oath(def)){if(Items.Has(p,"LP_Oathbroken"))return "背誓中，誓言之力不能用";if(OathLeft(p)<=0)return "今天的誓言之力用完了";}
    return null;

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.119.0 扭曲肉资源化：配方。炼金桌 / 地狱铸炉 / 圣坛 / 死灵仪式台。 -->
+<Defs>
+
+  <!-- ==================== B. 腐羹稳定 ==================== -->
+  <RecipeDef ParentName="LP_AlchemyRecipeBase">
+    <defName>LP_StabilizeRot</defName>
+    <label>腐羹稳定</label>
+    <description>把 20 份扭曲肉和 2 份化学燃料熬成 2 份畸变膏。畸变膏不会腐烂。</description>
+    <jobString>正在熬制畸变膏。</jobString>
+    <workAmount>1600</workAmount>
+    <ingredients>
+      <li><filter><thingDefs><li>Meat_Twisted</li></thingDefs></filter><count>20</count></li>
+      <li><filter><thingDefs><li>Chemfuel</li></thingDefs></filter><count>2</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>Meat_Twisted</li><li>Chemfuel</li></thingDefs></fixedIngredientFilter>
+    <products><LP_AberrantPaste>2</LP_AberrantPaste></products>
+    <modExtensions><li Class="LichPhylactery.AlchemyRecipeExtension" /></modExtensions>
+  </RecipeDef>
+
+  <!-- ==================== C. 炼金配方 ==================== -->
+  <RecipeDef ParentName="LP_PotionRecipeBase">
+    <defName>LP_BrewTrollRegenAberrant</defName>
+    <label>调配巨魔再生剂（畸变膏）</label>
+    <description>用 3 份畸变膏代替 4 瓶巨魔血：畸变膏 3 + 巨魔血 1 调配 1 剂巨魔再生剂。</description>
+    <jobString>正在调配巨魔再生剂。</jobString>
+    <workAmount>2000</workAmount>
+    <ingredients>
+      <li><filter><thingDefs><li>LP_AberrantPaste</li></thingDefs></filter><count>3</count></li>
+      <li><filter><thingDefs><li>LP_TrollBlood</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_AberrantPaste</li><li>LP_TrollBlood</li></thingDefs></fixedIngredientFilter>
+    <products><LP_PotionTrollRegen>1</LP_PotionTrollRegen></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_AlchemyRecipeBase">
+    <defName>LP_BrewAberrantSalve</defName>
+    <label>调配畸变再生膏</label>
+    <description>用 4 份畸变膏和 1 份草药调配 1 份畸变再生膏（医疗品，效果接近工业药；包扎时有 15% 可能留下畸变瘤块）。</description>
+    <jobString>正在调配畸变再生膏。</jobString>
+    <workAmount>1400</workAmount>
+    <ingredients>
+      <li><filter><thingDefs><li>LP_AberrantPaste</li></thingDefs></filter><count>4</count></li>
+      <li><filter><thingDefs><li>MedicineHerbal</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_AberrantPaste</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
+    <products><LP_AberrantSalve>1</LP_AberrantSalve></products>
+    <modExtensions><li Class="LichPhylactery.AlchemyRecipeExtension" /></modExtensions>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_PotionRecipeBase">
+    <defName>LP_BrewMorphDraught</defName>
+    <label>调配蜕形药剂</label>
+    <description>用 5 份畸变膏和 1 瓶巨魔血调配 1 瓶蜕形药剂。</description>
+    <jobString>正在调配蜕形药剂。</jobString>
+    <workAmount>1800</workAmount>
+    <ingredients>
+      <li><filter><thingDefs><li>LP_AberrantPaste</li></thingDefs></filter><count>5</count></li>
+      <li><filter><thingDefs><li>LP_TrollBlood</li></thingDefs></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_AberrantPaste</li><li>LP_TrollBlood</li></thingDefs></fixedIngredientFilter>
+    <products><LP_MorphDraught>1</LP_MorphDraught></products>
+  </RecipeDef>
+  <RecipeDef ParentName="LP_ThrowableRecipeBase">
+    <defName>LP_MakeFrenzyFlask</defName>
+    <label>制作狂乱之瓶</label>
+    <description>用 3 份畸变膏和 5 份布制作 2 个狂乱之瓶。</description>
+    <jobString>正在制作狂乱之瓶。</jobString>
+    <ingredients>
+      <li><filter><thingDefs><li>LP_AberrantPaste</li></thingDefs></filter><count>3</count></li>
+      <li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>5</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>LP_AberrantPaste</li><li>Cloth</li></thingDefs></fixedIngredientFilter>
+    <products><LP_FrenzyFlask>2</LP_FrenzyFlask></products>
+  </RecipeDef>
+
+  <!-- ==================== D4. 远域解剖 ==================== -->
+  <RecipeDef ParentName="LP_AlchemyRecipeBase">
+    <defName>LP_FarDissection</defName>
+    <label>远域解剖</label>
+    <description>把 50 份扭曲肉一块块切开，研究远域是怎么把血肉拧歪的：获得少量异象知识（基础）。殖民地累计解剖 500 份后自动完成研究“异怪学”。\n\n解剖者有 5% 的可能听见“远域低语”（心情 -5，3 天）。</description>
+    <jobString>正在解剖扭曲肉。</jobString>
+    <workerClass>LichPhylactery.RecipeWorker_FarDissection</workerClass>
+    <workAmount>2400</workAmount>
+    <ingredients>
+      <li><filter><thingDefs><li>Meat_Twisted</li></thingDefs></filter><count>50</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>Meat_Twisted</li></thingDefs></fixedIngredientFilter>
+  </RecipeDef>
+
+  <!-- ==================== D1. 生物铁析出（地狱铸炉） ==================== -->
+  <RecipeDef>
+    <defName>LP_ExtractBioferrite</defName>
+    <label>生物铁析出</label>
+    <description>在地狱铸炉的冥火里把 60 份扭曲肉和 5 份化学燃料烧成 10 份生物铁。冥火要歇：每个殖民地每天最多析出 30 份（3 次）。</description>
+    <jobString>正在析出生物铁。</jobString>
+    <workerClass>LichPhylactery.RecipeWorker_Bioferrite</workerClass>
+    <workAmount>2000</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Smith</soundWorking>
+    <recipeUsers><li>LP_InfernalForge</li></recipeUsers>
+    <researchPrerequisite>LP_Research_FleshShaping</researchPrerequisite>
+    <ingredients>
+      <li><filter><thingDefs><li>Meat_Twisted</li></thingDefs></filter><count>60</count></li>
+      <li><filter><thingDefs><li>Chemfuel</li></thingDefs></filter><count>5</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>Meat_Twisted</li><li>Chemfuel</li></thingDefs></fixedIngredientFilter>
+    <products><Bioferrite>10</Bioferrite></products>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>LP_TemperColdIronBio</defName>
+    <label>淬炼寒铁（生物铁）</label>
+    <description>用 3 份生物铁和 10 份钢在地狱铸炉里淬出 5 份寒铁。</description>
+    <jobString>正在淬炼寒铁。</jobString>
+    <workAmount>1600</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Smith</soundWorking>
+    <recipeUsers><li>LP_InfernalForge</li></recipeUsers>
+    <researchPrerequisite>LP_Research_FleshShaping</researchPrerequisite>
+    <ingredients>
+      <li><filter><thingDefs><li>Bioferrite</li></thingDefs></filter><count>3</count></li>
+      <li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>10</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>Bioferrite</li><li>Steel</li></thingDefs></fixedIngredientFilter>
+    <products><LP_ColdIron>5</LP_ColdIron></products>
+  </RecipeDef>
+
+  <!-- ==================== D3. 凯兰沃净化焚化（信仰圣坛） ==================== -->
+  <RecipeDef ParentName="LP_OfferingBase">
+    <defName>LP_Offer_Twisted</defName>
+    <label>焚化扭曲肉</label>
+    <description>把 30 份扭曲肉当着守护神的面烧干净：神眷 +1，每天最多 +3。只有守护神是凯兰沃、拉山德或莎尔时才有用（凯兰沃和拉山德憎恶这种不自然的血肉，莎尔喜欢它带来的遗忘）。</description>
+    <jobString>正在焚化扭曲肉。</jobString>
+    <workerClass>LichPhylactery.RecipeWorker_TwistedOffering</workerClass>
+    <ingredients>
+      <li><filter><thingDefs><li>Meat_Twisted</li></thingDefs></filter><count>30</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>Meat_Twisted</li></thingDefs></fixedIngredientFilter>
+  </RecipeDef>
+
+  <!-- ==================== F4. 畸变巨像胚体（死灵仪式台） ==================== -->
+  <RecipeDef ParentName="LP_RitualBase">
+    <defName>LP_MakeAberrantGolem</defName>
+    <label>制作畸变巨像胚体</label>
+    <description>消耗 200 份扭曲肉和 10 份畸变膏制作一具血肉巨像胚体。唤醒后的巨像带“畸变血肉”：受到的伤害 -17%（相当于生命 +20%），缓慢自愈，死亡时裂成 2 只小血肉兽仆从（1 天后烂掉）。其余与普通血肉巨像相同。</description>
+    <jobString>正在制作畸变巨像胚体。</jobString>
+    <workAmount>6000</workAmount>
+    <researchPrerequisite>LP_Research_FleshShaping</researchPrerequisite>
+    <ingredients>
+      <li><filter><thingDefs><li>Meat_Twisted</li></thingDefs></filter><count>200</count></li>
+      <li><filter><thingDefs><li>LP_AberrantPaste</li></thingDefs></filter><count>10</count></li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>Meat_Twisted</li><li>LP_AberrantPaste</li></thingDefs></fixedIngredientFilter>
+  </RecipeDef>
+
+</Defs>

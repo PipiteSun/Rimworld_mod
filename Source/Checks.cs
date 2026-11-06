@@ -27,6 +27,7 @@ namespace LichPhylactery {
    if(CaptureMarilith())return;
    if(CaptureHARGiants())return;
    if(CaptureCharEditor())return;
+   if(CaptureSpellVfx())return;
    if(ran || !GenCommandLine.CommandLineArgPassed("lichtest") || Current.ProgramState!=ProgramState.Playing || Find.CurrentMap==null || LongEventHandler.AnyEventNowOrWaiting)return;
    // 1.28.0：自测里神力灌注不随机发生（事件检查自己设定随机数），保证老的袭击检查结果确定。
    ran=true;Find.TickManager.Pause();Twilight.TestRoll=1f;SuppressBackgroundsForTests();string output=Path.Combine(GenFilePaths.SaveDataFolderPath,"LichResult.txt");
@@ -34,6 +35,7 @@ namespace LichPhylactery {
    catch(Exception e){File.WriteAllText(output,"FAIL after "+checks+" checks\n"+e);Log.Error("[LICH-TEST] "+e);}
    if(GenCommandLine.CommandLineArgPassed("lichuitest") && OnlyMode && OnlyGroups.Contains("Marilith") && Marilith.Loaded && !System.IO.File.ReadAllText(output).StartsWith("FAIL")){marilithFrames=1;return;}
    if(GenCommandLine.CommandLineArgPassed("lichuitest") && OnlyMode && OnlyGroups.Contains("GiantKinHAR") && DefDatabase<XenotypeDef>.GetNamedSilentFail("LP_EttinKin")!=null && !System.IO.File.ReadAllText(output).StartsWith("FAIL")){harGiantFrames=1;return;}
+   if(GenCommandLine.CommandLineArgPassed("lichuitest") && OnlyMode && OnlyGroups.Contains("SpellVfx") && !System.IO.File.ReadAllText(output).StartsWith("FAIL")){vfxFrames=1;return;} // 1.121.0 法术特效截图
    if(GenCommandLine.CommandLineArgPassed("lichuitest") && OnlyMode && OnlyGroups.Contains("CharEditor") && CharEditorCompat.Active && !System.IO.File.ReadAllText(output).StartsWith("FAIL")){charEditorFrames=1;return;}
    if(GenCommandLine.CommandLineArgPassed("lichuitest") && !ItemsOnly && !ClassesOnly && !OnlyMode && !System.IO.File.ReadAllText(output).StartsWith("FAIL")){ShowDesignerForScreenshot();return;}Application.Quit();
   }

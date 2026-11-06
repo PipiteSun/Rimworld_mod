@@ -10,6 +10,16 @@ namespace LichPhylactery {
  // 1.112.0 DND 植入物（Test.ps1 -Only Implants）。
  public partial class LichChecks {
   Hediff Implant(Pawn p,string def,string part){var d=DefDatabase<HediffDef>.GetNamed(def);var bp=part==null?null:p.health.hediffSet.GetNotMissingParts().First(x=>x.def.defName==part);var h=HediffMaker.MakeHediff(d,p,bp);p.health.AddHediff(h,bp);return h;}
+  void CheckImplantMenu(){
+   var made=new List<Thing>();Pawn Add(Pawn x){made.Add(x);return x;}
+   try{
+    // 10. 颅石能摘：摘除手术在人类的手术列表里，装了颅石后有可用部位。
+    var rm=Add(S2Pawn("LP_Class_Fighter",1,null));rm.SetFaction(Faction.OfPlayer);ScSpawn(rm,ScCell(-6,-14));Implant(rm,"LP_Ioun_Str","Skull");var rr=DefDatabase<RecipeDef>.GetNamed("LP_Remove_LP_Ioun_Str");
+    bool inList=rm.def.AllRecipes.Contains(rr);int rparts=rr.Worker.GetPartsToApplyOn(rm,rr).Count();var rpart=rr.Worker.GetPartsToApplyOn(rm,rr).FirstOrDefault();bool avail=rr.AvailableNow && rr.Worker.AvailableReport(rm,null).Accepted && rpart!=null && rr.AvailableOnNow(rm,rpart) && rr.targetsBodyPart;
+    var cls=AccessTools.TypeByName("RimWorld.HealthCardUtility+<>c__DisplayClass27_0");string menu="?";if(cls!=null){var o=Activator.CreateInstance(cls);AccessTools.Field(cls,"pawn").SetValue(o,rm);AccessTools.Field(cls,"thingForMedBills").SetValue(o,rm);var opts=AccessTools.Method(cls,"<DrawMedOperationsTab>b__0").Invoke(o,null) as List<FloatMenuOption>;menu=opts==null?"null":string.Join(" | ",opts.Select(x=>x.Label).Where(l=>l.Contains("伊奥恩")||l.Contains("颅石")));if(opts!=null && !opts.Any(x=>x.Label.Contains(rr.label)))avail=false;}
+    Check(inList && rparts==1 && avail,"menu ["+menu+"] "+"ioun stone removal surgery is offered (in list "+inList+", parts "+rparts+", available "+avail+", users "+string.Join(",",rr.AllRecipeUsers.Select(u=>u.defName))+")");
+   }finally{foreach(var t in made)if(t!=null && !t.Destroyed)t.Destroy();}
+  }
   void CheckImplants(){
    var made=new List<Thing>();
    Pawn Add(Pawn x){made.Add(x);return x;}

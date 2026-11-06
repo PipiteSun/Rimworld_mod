@@ -305,7 +305,7 @@ namespace LichPhylactery {
   public Faction origin;public Faction Origin=>origin??lord?.faction;
   public IEnumerable<Pawn> Alive=>pawns.Where(p=>p!=null && !p.Dead && !p.Destroyed && p.Faction!=Faction.OfPlayer);
   public void ExposeData(){
-   Scribe_References.Look(ref lord,"lord");Scribe_References.Look(ref map,"map");Scribe_Values.Look(ref camp,"camp");Scribe_Values.Look(ref kind,"kind");
+   ScribeLord.Look(ref lord,"lord");Scribe_References.Look(ref map,"map");Scribe_Values.Look(ref camp,"camp");Scribe_Values.Look(ref kind,"kind");
    Scribe_Values.Look(ref camped,"camped");Scribe_Values.Look(ref answered,"answered");Scribe_Values.Look(ref fed,"fed");Scribe_Values.Look(ref left,"left");Scribe_Values.Look(ref stayAsked,"stayAsked");
    Scribe_Values.Look(ref campTick,"campTick",-1);Scribe_Values.Look(ref theftTick,"theftTick",-1);Scribe_Values.Look(ref need,"need");Scribe_Values.Look(ref meatNeed,"meatNeed");
    if(Scribe.mode==LoadSaveMode.Saving){pawns.RemoveAll(p=>p==null || p.Destroyed || p.Discarded);campThings.RemoveAll(t=>t==null || t.Destroyed);stolen.RemoveAll(t=>t==null || t.Destroyed);}

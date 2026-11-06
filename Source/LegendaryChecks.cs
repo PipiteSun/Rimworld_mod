@@ -39,14 +39,11 @@ namespace LichPhylactery {
   }
   void CheckLegendaryInner(){
    bool har=ModsConfig.IsActive(HARId);
-   // 1 加载：传奇层定义在主模组；五色龙只在有 HAR 时存在；没有 HAR 时真龙事件不触发
+   // 1 加载：传奇层定义在主模组；五色龙 1.116.0 起是动物型怪物，装不装 HAR 都有
    var ext=Items.Hediff("LP_LegendaryResistance");
-   var extortion=DefDatabase<IncidentDef>.GetNamed("LP_DragonExtortion");var raid=DefDatabase<IncidentDef>.GetNamed("LP_DragonRaid");
-   var parms=new IncidentParms{target=map,points=20000f};
-   bool firesWithout=har || !extortion.Worker.CanFireNow(parms) && !raid.Worker.CanFireNow(parms);
    Check(ext!=null && Items.Hediff("LP_LegendaryActions")!=null && Items.Hediff("LP_Frightened")!=null && Legendary.Rules!=null && Legendary.Rules.controlHediffs.Count>=10
-    && Dragons.Available==har && Dragons.On==har && firesWithout && Dragons.FactionDef!=null && Items.Thing("LP_DragonScale_Red")!=null,
-    "legendary layer defs load without HAR; chromatic dragons exist exactly when HAR is active ("+har+"); without HAR the dragon events never fire and the settings group is greyed out");
+    && Dragons.Available && Dragons.On && Dragons.FactionDef!=null && Items.Thing("LP_DragonScale_Red")!=null,
+    "legendary layer defs load; chromatic dragons exist with or without HAR (HAR "+har+")");
 
    // 2 豁免公式：熟练加值（含 21～40 级）、DC；同一 DC 下属性/等级越高成功越多；没有等级的人按 0
    Check(Legendary.Proficiency(1)==2 && Legendary.Proficiency(5)==3 && Legendary.Proficiency(17)==6 && Legendary.Proficiency(20)==6 && Legendary.Proficiency(28)==7 && Legendary.Proficiency(36)==8 && Legendary.Proficiency(0)==0,"proficiency bonus 2+(L-1)/4 up to 20, then 6+(L-20)/8 (L28 = 7, L36 = 8)");

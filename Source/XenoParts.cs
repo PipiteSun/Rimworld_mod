@@ -49,6 +49,7 @@ namespace LichPhylactery {
   public static bool Visible(Pawn p,PawnRenderNodeProperties_LPPart props,PawnDrawParms parms){
    if(p==null)return false;
    bool child=Child(p);if(props.stage=="adult" && child || props.stage=="child" && !child)return false;
+   if(props.part!="cyclopsEye" && WarcasketFit.Encased(p))return false; // 1.115.0 热修：装着战棺时额外手臂、蛇尾、第二个头都收在战棺里
    switch(props.part){
     case "marilithArmLeft":return Marilith.SideUsable(p,0);
     case "marilithArmRight":return Marilith.SideUsable(p,1);

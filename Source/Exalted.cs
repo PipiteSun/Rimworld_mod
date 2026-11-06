@@ -23,7 +23,7 @@ namespace LichPhylactery {
   public const float WisFocus=1.3f,WisTend=1.1f,WisRadius=8f,MythicWisRadius=15f,PsychicHalf=.5f;
   public const float ChaTrade=.05f,ChaPersuade=1.15f,ChaRadius=10f,MythicChaRadius=15f,ChaBreak=-.03f,ChaEnemyRadius=6f,ChaEnemyHit=.08f,RoutRadius=8f,RoutChance=.15f,RepFactor=1.5f;
   public const float CostPer=.04f,MythicCostPer=.08f;
-  public const int StaggerTicks=90,HoldTicks=480,MythicHoldTicks=720,HoldPeriod=GenDate.TicksPerDay,EvadeWindow=600,ScarTicks=5*GenDate.TicksPerDay,MythicScarTicks=2*GenDate.TicksPerDay;
+  public const int StaggerTicks=90,HoldTicks=480,MythicHoldTicks=720,HoldPeriod=GenDate.TicksPerDay,EvadeWindow=600,ScarTicks=GenDate.TicksPerDay,MythicScarTicks=GenDate.TicksPerDay/2;
   public static readonly string[] ExaltedNames={"巨人之力","疾影","不屈之躯","洞彻心智","明察","威仪"};
   public static readonly string[] MythicNames={"撼山","无影","金刚不坏","天才","先知","君临"};
   // 神话的传奇属性点：力→近战+血量；敏→远程+近战；体→血量+承受；智→学习+工作；感→心灵+回复；魅→心灵+工作。
@@ -107,7 +107,7 @@ namespace LichPhylactery {
    switch(a){
     case 0:return mythic?"撼山：负重 +25%、采矿 +20%；近战护甲穿透 +30%；近战命中 15% 让体型 ≤3 的目标踉跄 1.5 秒；近战打建筑 ×2；免疫踉跄和击倒类状态。":"巨人之力：负重 +25%、采矿速度 +20%；近战护甲穿透 +15%；近战命中 15% 让体型 ≤1.5 的目标踉跄 1.5 秒（移速 ×0.1、近战冷却 ×1.5）。";
     case 1:return mythic?"无影：在疾影之上，敌人射击的命中 ×0.75；每 10 秒受到的第一次近战或投射物伤害有 25% 完全落空。":"疾影：瞄准时间 −20%，近战闪避 +10；敌人射击他的命中 ×0.85；不会被哨兵借机攻击（已有“灵活”则改为移速 +0.2）。";
-    case 2:return mythic?"金刚不坏：在不屈之躯之上，硬撑每天 2 次、每次 12 秒；失血封顶在极重之前；伤疤消除加快到每 2 天一处。":"不屈之躯：失血速度 −30%，疼痛休克阈值 +15%；食物中毒、流感、瘟疫、疟疾、睡眠病等可致死的疾病停在致死之前；硬撑：每天一次，本该倒地时撑 8 秒再倒；身上有伤疤或旧伤时，每 5 天消除最重的一处。";
+    case 2:return mythic?"金刚不坏：在不屈之躯之上，硬撑每天 2 次、每次 12 秒；失血封顶在极重之前；伤疤消除加快到每半天一处。":"不屈之躯：失血速度 −30%，疼痛休克阈值 +15%；食物中毒、流感、瘟疫、疟疾、睡眠病等可致死的疾病停在致死之前；硬撑：每天一次，本该倒地时撑 8 秒再倒；身上有伤疤或旧伤时，每 1 天消除最重的一处。";
     case 3:return mythic?"天才：在洞彻心智之上，全局学习速度 ×1.2；没有热情的技能按小热情学习；举一反三 50%。":"洞彻心智：读书、研读卷轴和典籍速度 +50%；技能不衰退；举一反三：技能升级时随机另一项技能得到这次升级所需经验的 25%。";
     case 4:return mythic?"先知：在明察之上，显形半径 15 格；免疫心灵震爆；敌对袭击到来时收到一封先知的预感。":"明察：冥想心灵专注 +30%，医疗品质 +10%；8 格内隐形或伪装的敌人显形；心灵震爆、夺心魔支配、魅惑等心灵效果持续时间减半。";
     default:return mythic?"君临：光环 15 格、心情 +6；他击倒或击杀敌人时，8 格内的敌方人形 15% 逃跑（首领、宿敌冠军、神力灌注 3 级以上、传奇怪物除外）；派系声望获得 ×1.5。":"威仪：交易价格 +5%，招募 / 说服 +15%；10 格内己方人形心情 +3、精神崩溃阈值 −3%；6 格内敌方人形命中 −8%。多个威仪不叠加。";
@@ -160,7 +160,7 @@ namespace LichPhylactery {
    HealScar(h,mythic);
    return n;
   }
-  // 1.91.0 去疤：身上有伤疤 / 旧伤时计时，不屈之躯满 5 天、金刚不坏满 2 天消除最重的一处（意识形态的仪式疤痕不动）；没有伤疤时计时归零，新疤从头算。
+  // 1.91.0 去疤：身上有伤疤 / 旧伤时计时，不屈之躯满 1 天、金刚不坏满半天消除最重的一处（热修：原 5 / 2 天）（意识形态的仪式疤痕不动）；没有伤疤时计时归零，新疤从头算。
   public static Hediff_Injury HealScar(Hediff_Adventurer h,bool mythic){
    var p=h.pawn;int now=GenTicks.TicksGame;Hediff_Injury scar=null;
    foreach(var x in p.health.hediffSet.hediffs)if(x is Hediff_Injury i && i.IsPermanent() && i.def.defName!="Scarification" && (scar==null || i.Severity>scar.Severity))scar=i;

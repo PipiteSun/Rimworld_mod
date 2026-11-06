@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.120.0 战士第四个子职业「奥术射手」（见 Source/Subclass_ArcaneArcher.cs）。战士 3 级选（选定不能改），能力在战士 3 / 7 / 11 / 15 级获得。数值是射术强度 100% 时的值。 -->
+<Defs>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_ArcaneArcher</defName>
+    <label>奥术射手</label>
+    <description>把奥术灌进箭矢和子弹的射手：拿远程武器时射击伤害随战士等级提高，能打出束缚、爆裂、暗影三种奥术射击，远距离更致命，最后召来一场箭雨。奥术射击都用当前武器打出必中的一发，需要远程武器。</description>
+    <parent>LP_Class_Fighter</parent><order>4</order><emblem>LP/Classes/ArcaneArcher/Emblem_ArcaneArcher</emblem><color>(0.4,0.75,0.95)</color>
+    <abilities><li><ability>LP_AA_ArcaneLore</ability><level>3</level></li><li><ability>LP_AA_GraspingArrow</ability><level>3</level></li><li><ability>LP_AA_BurstingArrow</ability><level>3</level></li>
+      <li><ability>LP_AA_KeenEye</ability><level>7</level></li><li><ability>LP_AA_ShadowArrow</ability><level>11</level></li><li><ability>LP_AA_ArrowStorm</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+
+  <!-- ===================== 状态 ===================== -->
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_AA_Grasped</defName>
+    <label>束缚荆棘</label>
+    <description>被奥术荆棘缠住：移动速度 ×0.5。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.4,0.75,0.95)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>0.5</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_AA_Shadowed</defName>
+    <label>暗影蒙眼</label>
+    <description>被暗影箭蒙住双眼：视觉 −60%。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.4,0.75,0.95)</defaultLabelColor>
+    <stages><li><capMods><li><capacity>Sight</capacity><offset>-0.6</offset></li></capMods></li></stages>
+  </HediffDef>
+
+  <!-- ===================== 能力 ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AA_ArcaneLore</defName>
+    <label>奥术箭术</label>
+    <description>被动：拿远程武器射击（包括奥术射击）时伤害 +1.5% × 战士等级（20 级 +30%）。奥术射手，战士 3 级。</description>
+    <iconPath>LP/Classes/ArcaneArcher/ArcaneLore</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_MarksmanPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_AA_GraspingArrow</defName>
+    <label>奥术射击·束缚箭</label>
+    <description>用当前武器对一个敌人打出必中的一发，命中后长出奥术荆棘：另加 8 × 射术强度 划伤，移动速度 ×0.5 持续 10 秒。射程 = 当前武器射程，需要远程武器。斗志 1，冷却 10 秒。奥术射手，战士 3 级。</description>
+    <iconPath>LP/Classes/ArcaneArcher/GraspingArrow</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>45</range><warmupTime>0.4</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>AAGrasp</effect><cost>1</cost><power>8</power><stat>LP_MarksmanPower</stat><ranged>true</ranged></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_AA_BurstingArrow</defName>
+    <label>奥术射击·爆裂箭</label>
+    <description>用当前武器对一个敌人打出必中的一发，命中时奥术炸开：命中点半径 2 内的敌人（包括目标，不含倒地的）各受 10 × 射术强度 力场伤害，不伤友军。射程 = 当前武器射程，需要远程武器。斗志 2，冷却 15 秒。奥术射手，战士 3 级。</description>
+    <iconPath>LP/Classes/ArcaneArcher/BurstingArrow</iconPath>
+    <cooldownTicksRange>900</cooldownTicksRange>
+    <verbProperties><range>45</range><warmupTime>0.4</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>AABurst</effect><cost>2</cost><power>10</power><radius>2</radius><stat>LP_MarksmanPower</stat><ranged>true</ranged></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AA_KeenEye</defName>
+    <label>鹰眼</label>
+    <description>被动：远程射击离自己 12 格以上的敌人时伤害 ×1.15（和奥术箭术相乘）。奥术射手，战士 7 级。</description>
+    <iconPath>LP/Classes/ArcaneArcher/KeenEye</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_MarksmanPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_AA_ShadowArrow</defName>
+    <label>奥术射击·暗影箭</label>
+    <description>用当前武器对一个敌人打出必中的一发，箭上缠着暗影：另加 12 × 射术强度 心灵伤害，视觉 −60% 持续 15 秒。射程 = 当前武器射程，需要远程武器。斗志 2，冷却 20 秒。奥术射手，战士 11 级。</description>
+    <iconPath>LP/Classes/ArcaneArcher/ShadowArrow</iconPath>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><range>45</range><warmupTime>0.4</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>AAShadow</effect><cost>2</cost><power>12</power><stat>LP_MarksmanPower</stat><ranged>true</ranged></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_AA_ArrowStorm</defName>
+    <label>箭雨</label>
+    <description>朝一点射出漫天奥术箭：目标点半径 4 内离中心最近的 10 个敌人（不含倒地的）各中一发当前武器的必中子弹。射程 = 当前武器射程，需要远程武器。斗志 3，冷却 60 秒。奥术射手，战士 15 级。</description>
+    <iconPath>LP/Classes/ArcaneArcher/ArrowStorm</iconPath>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><range>45</range><warmupTime>0.8</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>AAStorm</effect><cost>3</cost><radius>4</radius><stat>LP_MarksmanPower</stat><ranged>true</ranged></li></comps>
+  </AbilityDef>
+</Defs>

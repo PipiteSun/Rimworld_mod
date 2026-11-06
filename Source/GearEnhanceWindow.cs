@@ -16,9 +16,24 @@ namespace LichPhylactery {
   static IEnumerable<Thing> Stacks(Map map,ThingDef d)=>map.listerThings.ThingsOfDef(d).Where(t=>t.Spawned && !t.IsForbidden(Faction.OfPlayer));
   public static int CountOnMap(Map map,ThingDef d)=>map==null?0:Stacks(map,d).Sum(t=>t.stackCount);
   public static bool HasCosts(Map map,RecipeDef r)=>Costs(r).All(c=>CountOnMap(map,c.Key)>=c.Value);
-  static void Consume(Map map,RecipeDef r){
-   foreach(var c in Costs(r)){int need=c.Value;foreach(var t in Stacks(map,c.Key).ToList()){if(need<=0)break;int k=Mathf.Min(need,t.stackCount);t.SplitOff(k).Destroy();need-=k;}}
+  static void Consume(Map map,RecipeDef r){foreach(var c in Costs(r))Consume(map,c.Key,c.Value);}
+  static void Consume(Map map,ThingDef d,int need){foreach(var t in Stacks(map,d).ToList()){if(need<=0)break;int k=Mathf.Min(need,t.stackCount);t.SplitOff(k).Destroy();need-=k;}}
+
+  // 1.118.0 修复耐久（照 Isekai 精炼炉的“修复”）：每缺 20% 耐久要 10 白银（不足 20% 也算一份），当场修满。
+  // 不用研究、不用工匠、不会失败，Isekai 没开也一样能用。
+  public const int RepairSilverPer=10;
+  public static bool NeedsRepair(Thing t)=>t!=null && !t.Destroyed && t.def.useHitPoints && t.HitPoints<t.MaxHitPoints;
+  public static int RepairCost(Thing t){
+   if(!NeedsRepair(t))return 0;int max=t.MaxHitPoints,missing=max-t.HitPoints;
+   return RepairSilverPer*Mathf.Max(1,(missing*5+max-1)/max);
   }
+  public static bool CanRepair(Thing t,Map map)=>NeedsRepair(t) && CountOnMap(map,ThingDefOf.Silver)>=RepairCost(t);
+  public static bool Repair(Thing t,Map map){
+   if(!CanRepair(t,map))return false;
+   Consume(map,ThingDefOf.Silver,RepairCost(t));t.HitPoints=t.MaxHitPoints;return true;
+  }
+  // 按列表顺序修，白银用完为止；返回修好的件数。
+  public static int RepairAll(Map map){int n=0;foreach(var t in Candidates(map))if(Repair(t,map))n++;return n;}
   // 执行的工匠：能做智识工作、智识达到本档要求的殖民者里，智识和手工平均最高的那个。
   public static Pawn Operator(Map map,RecipeDef r){
    if(map==null)return null;int need=SkillNeed(r);
@@ -59,22 +74,21 @@ namespace LichPhylactery {
   public override IEnumerable<Gizmo> CompGetGizmosExtra(){
    foreach(var g in base.CompGetGizmosExtra())yield return g;
    if(parent.Faction!=Faction.OfPlayer || !parent.Spawned)yield break;
-   int allowed=GearEnhance.Allowed;
-   var cmd=new Command_Action{defaultLabel="附魔强化",defaultDesc="打开附魔强化窗口：挑一件武器或衣服（地上、储存区里的，或殖民者手里、身上的），用地图上的材料当场强化一级。",icon=parent.def.uiIcon??BaseContent.BadTex,action=()=>Find.WindowStack.Add(new Window_GearEnhance(parent))};
-   if(allowed==0)cmd.Disable("需要先研究“装备强化”。");
-   yield return cmd;
+   // 1.118.0：窗口里还能修耐久，所以没研究“装备强化”也能打开（强化那边会写着要先研究）。
+   yield return new Command_Action{defaultLabel="附魔强化",defaultDesc="打开附魔强化窗口：挑一件武器或衣服（地上、储存区里的，或殖民者手里、身上的），用地图上的材料当场强化一级（要先研究“装备强化”）；也可以用白银当场修满耐久（每缺 20% 耐久 "+GearEnhanceBench.RepairSilverPer+" 白银）。",icon=parent.def.uiIcon??BaseContent.BadTex,action=()=>Find.WindowStack.Add(new Window_GearEnhance(parent))};
   }
  }
 
  public class Window_GearEnhance : Window {
   readonly Thing bench;Thing selected;Vector2 scroll;string search="";string result;Color resultColor=Color.white;List<Thing> cache;int cacheFrame;
   const float ListW=250f,Row=40f;
-  public override Vector2 InitialSize=>new Vector2(800f,520f);
+  const float RepairH=112f;
+  public override Vector2 InitialSize=>new Vector2(800f,580f);
   public Window_GearEnhance(Thing bench){this.bench=bench;doCloseX=true;forcePause=false;absorbInputAroundWindow=false;closeOnClickedOutside=false;draggable=true;}
   Map Map=>bench?.Map;
   public override void DoWindowContents(Rect r){
    if(bench==null || bench.Destroyed || !bench.Spawned){Close();return;}
-   Text.Font=GameFont.Medium;Widgets.Label(new Rect(r.x,r.y,r.width,32f),"附魔强化");Text.Font=GameFont.Small;
+   Text.Font=GameFont.Medium;Widgets.Label(new Rect(r.x,r.y,r.width,32f),"附魔强化 · 修复");Text.Font=GameFont.Small;
    var body=new Rect(r.x,r.y+38f,r.width,r.height-38f);
    var left=new Rect(body.x,body.y,ListW,body.height);var mid=new Rect(left.xMax+8f,body.y,(body.width-ListW-16f)*.5f,body.height);var right=new Rect(mid.xMax+8f,body.y,body.xMax-mid.xMax-8f,body.height);
    DrawList(left);DrawDetail(mid);DrawAction(right);
@@ -87,7 +101,17 @@ namespace LichPhylactery {
    var items=cache;
    if(!search.NullOrEmpty())items=items.Where(t=>t.LabelNoCount.Contains(search) || (GearEnhanceBench.Owner(t)?.LabelShort?.Contains(search)??false)).ToList();
    if(selected!=null && (selected.Destroyed || !items.Contains(selected) && search.NullOrEmpty()))selected=null;
-   var outRect=new Rect(inner.x,inner.y+28f,inner.width,inner.height-28f);var view=new Rect(0f,0f,outRect.width-16f,items.Count*Row);
+   // 1.118.0：底部“全部修复”。
+   int damaged=0,allCost=0;foreach(var t in cache)if(GearEnhanceBench.NeedsRepair(t)){damaged++;allCost+=GearEnhanceBench.RepairCost(t);}
+   var allBtn=new Rect(inner.x,inner.yMax-28f,inner.width,28f);
+   if(damaged==0){GUI.color=Color.gray;Text.Anchor=TextAnchor.MiddleCenter;Widgets.Label(allBtn,"没有要修的装备");Text.Anchor=TextAnchor.UpperLeft;GUI.color=Color.white;}
+   else if(Widgets.ButtonText(allBtn,"全部修复："+damaged+" 件，"+allCost+" 白银")){
+    int n=GearEnhanceBench.RepairAll(Map);cache=null;
+    if(n>0){result="修好了 "+n+" 件装备"+(n<damaged?"（白银不够，还剩 "+(damaged-n)+" 件）":"");resultColor=new Color(.4f,.9f,.4f);SoundDefOf.Quest_Concluded.PlayOneShotOnCamera();}
+    else{result="白银不够，一件都没修";resultColor=Color.gray;SoundDefOf.ClickReject.PlayOneShotOnCamera();}
+    return;
+   }
+   var outRect=new Rect(inner.x,inner.y+28f,inner.width,inner.height-60f);var view=new Rect(0f,0f,outRect.width-16f,items.Count*Row);
    Widgets.BeginScrollView(outRect,ref scroll,view);
    for(int i=0;i<items.Count;i++){
     var t=items[i];var row=new Rect(0f,i*Row,view.width,Row);
@@ -95,18 +119,24 @@ namespace LichPhylactery {
     Widgets.ThingIcon(new Rect(row.x+2f,row.y+4f,32f,32f),t);
     var owner=GearEnhanceBench.Owner(t);
     Text.Font=GameFont.Small;Widgets.Label(new Rect(row.x+38f,row.y+1f,row.width-38f,22f),t.LabelCapNoCount.Truncate(row.width-40f));
-    Text.Font=GameFont.Tiny;GUI.color=Color.gray;Widgets.Label(new Rect(row.x+38f,row.y+21f,row.width-38f,18f),owner!=null?owner.LabelShort+(t.ParentHolder is Pawn_EquipmentTracker?" 手持":" 穿着"):"在地上 / 储存区");GUI.color=Color.white;Text.Font=GameFont.Small;
+    string where=owner!=null?owner.LabelShort+(t.ParentHolder is Pawn_EquipmentTracker?" 手持":" 穿着"):"在地上 / 储存区";bool hurt=GearEnhanceBench.NeedsRepair(t);
+    if(hurt)where+="，耐久 "+((float)t.HitPoints/t.MaxHitPoints).ToStringPercent();
+    Text.Font=GameFont.Tiny;GUI.color=hurt?new Color(.95f,.6f,.3f):Color.gray;Widgets.Label(new Rect(row.x+38f,row.y+21f,row.width-38f,18f),where);GUI.color=Color.white;Text.Font=GameFont.Small;
     if(Widgets.ButtonInvisible(row)){selected=t;result=null;}
    }
    Widgets.EndScrollView();
   }
   void DrawDetail(Rect r){
    Widgets.DrawMenuSection(r);var inner=r.ContractedBy(8f);
-   if(selected==null){Text.Anchor=TextAnchor.MiddleCenter;GUI.color=Color.gray;Widgets.Label(inner,"从左边选一件装备");GUI.color=Color.white;Text.Anchor=TextAnchor.UpperLeft;return;}
+   if(selected==null){
+    Text.Anchor=TextAnchor.MiddleCenter;GUI.color=Color.gray;Widgets.Label(inner,"从左边选一件装备");GUI.color=Color.white;Text.Anchor=TextAnchor.UpperLeft;
+    if(result!=null){GUI.color=resultColor;Widgets.Label(new Rect(inner.x,inner.y,inner.width,Text.CalcHeight(result,inner.width)),result);GUI.color=Color.white;}
+    return;
+   }
    int l=GearEnhance.Level(selected);float y=inner.y;
    Text.Font=GameFont.Medium;float h=Text.CalcHeight(selected.LabelCapNoCount,inner.width);Widgets.Label(new Rect(inner.x,y,inner.width,h),selected.LabelCapNoCount);Text.Font=GameFont.Small;y+=h+4f;
    if(selected.TryGetQuality(out var q)){GUI.color=Color.gray;Widgets.Label(new Rect(inner.x,y,inner.width,22f),"品质："+q.GetLabel());GUI.color=Color.white;y+=22f;}
-   if(selected.def.useHitPoints){GUI.color=Color.gray;Widgets.Label(new Rect(inner.x,y,inner.width,22f),"耐久："+selected.HitPoints+" / "+selected.MaxHitPoints+"（强化成功会修满）");GUI.color=Color.white;y+=22f;}
+   if(selected.def.useHitPoints){GUI.color=GearEnhanceBench.NeedsRepair(selected)?new Color(.95f,.6f,.3f):Color.gray;Widgets.Label(new Rect(inner.x,y,inner.width,22f),"耐久："+selected.HitPoints+" / "+selected.MaxHitPoints+"（强化成功会修满）");GUI.color=Color.white;y+=22f;}
    y+=6f;
    string now="现在 +"+l+"："+GearEnhance.Effects(selected,l);h=Text.CalcHeight(now,inner.width);Widgets.Label(new Rect(inner.x,y,inner.width,h),now);y+=h+6f;
    if(l<GearEnhance.Max){GUI.color=new Color(.4f,.9f,.4f);string next="强化到 +"+(l+1)+"："+GearEnhance.Effects(selected,l+1);h=Text.CalcHeight(next,inner.width);Widgets.Label(new Rect(inner.x,y,inner.width,h),next);GUI.color=Color.white;y+=h+6f;}
@@ -114,6 +144,7 @@ namespace LichPhylactery {
   }
   void DrawAction(Rect r){
    Widgets.DrawMenuSection(r);var inner=r.ContractedBy(8f);if(selected==null)return;
+   DrawRepair(new Rect(inner.x,inner.yMax-RepairH,inner.width,RepairH));inner.height-=RepairH+6f;
    int l=GearEnhance.Level(selected);float y=inner.y;
    if(l>=GearEnhance.Max){Text.Anchor=TextAnchor.MiddleCenter;Widgets.Label(new Rect(inner.x,y,inner.width,40f),"已经是+"+GearEnhance.Max);Text.Anchor=TextAnchor.UpperLeft;return;}
    var rec=GearEnhanceBench.RecipeFor(l);var op=GearEnhanceBench.Operator(Map,rec);
@@ -138,6 +169,22 @@ namespace LichPhylactery {
     var gear=selected;
     if(l>GearEnhance.LowMax)Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation("强化到 +"+(l+1)+"，成功率 "+chance.ToStringPercent()+"。失败会掉回 +"+(l-1)+"，确定？",()=>Do(gear)));
     else Do(gear);
+   }
+  }
+  // 1.118.0 修复耐久：右栏底部，和强化分开。
+  void DrawRepair(Rect r){
+   Widgets.DrawLineHorizontal(r.x,r.y,r.width);float y=r.y+6f;
+   Text.Font=GameFont.Small;Widgets.Label(new Rect(r.x,y,r.width,22f),"修复耐久");y+=24f;
+   if(!selected.def.useHitPoints || !GearEnhanceBench.NeedsRepair(selected)){GUI.color=Color.gray;Widgets.Label(new Rect(r.x,y,r.width,22f),selected.def.useHitPoints?"耐久是满的":"这件没有耐久");GUI.color=Color.white;return;}
+   int cost=GearEnhanceBench.RepairCost(selected),have=GearEnhanceBench.CountOnMap(Map,ThingDefOf.Silver);
+   Widgets.ThingIcon(new Rect(r.x+4f,y+1f,20f,20f),ThingDefOf.Silver);
+   GUI.color=have>=cost?Color.white:new Color(.9f,.3f,.3f);Widgets.Label(new Rect(r.x+28f,y,r.width-28f,22f),"白银 ×"+cost+"（有 "+have+"）");GUI.color=Color.white;y+=22f;
+   GUI.color=Color.gray;Text.Font=GameFont.Tiny;Widgets.Label(new Rect(r.x,y,r.width,18f),"每缺 20% 耐久 "+GearEnhanceBench.RepairSilverPer+" 白银，当场修满");Text.Font=GameFont.Small;GUI.color=Color.white;y+=20f;
+   var btn=new Rect(r.x,y,r.width,30f);
+   if(have<cost){GUI.color=Color.gray;Text.Anchor=TextAnchor.MiddleCenter;Widgets.Label(btn,"白银不够");Text.Anchor=TextAnchor.UpperLeft;GUI.color=Color.white;return;}
+   if(Widgets.ButtonText(btn,"修复（"+cost+" 白银）")){
+    if(GearEnhanceBench.Repair(selected,Map)){result="修复完成！耐久 "+selected.HitPoints+" / "+selected.MaxHitPoints;resultColor=new Color(.4f,.9f,.4f);SoundDefOf.Quest_Concluded.PlayOneShotOnCamera();}
+    else{result="没能修复";resultColor=Color.gray;SoundDefOf.ClickReject.PlayOneShotOnCamera();}
    }
   }
   void Do(Thing gear){

@@ -84,6 +84,7 @@ namespace LichPhylactery {
    if(p==null || d==null || !d.IsApparel)return true;
    // 1.44.0：带 GeneWearExtension 的装备（独眼透镜）只有带那个基因的人能戴。
    var g=d.GetModExtension<GeneWearExtension>();if(g!=null && !Races124.Has(p,g.gene))return false;
+   if(WarcasketFit.IsCasket(d))return true; // 1.115.0 热修：战棺是专门例外，巨人（含火巨人）都能穿（WarcasketFit.cs）
    bool giant=GiantKin.Is(p);
    if(Exclusive(d))return giant;
    return !giant || NormalAllowed;

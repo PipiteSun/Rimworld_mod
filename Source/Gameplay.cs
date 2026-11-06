@@ -106,7 +106,7 @@ namespace LichPhylactery {
    var lich=Necro.Lich(box.soul);if(lich==null || !lich.Active)return "命匣主人必须存活并已绑定。";
    if(name=="LP_Offer"){
     if(box.level>=LichMod.Settings.levelCap)return "命匣已达当前等级上限。";
-    if(ingredients!=null && ingredients.Any(t=>!ConstructSeed.RawMeat(t)))return "献祭只接受新鲜生肉。";
+    if(ingredients!=null && ingredients.Any(t=>!TwistedMeat.FleshOk(t)))return "献祭只接受新鲜生肉或畸变膏。";
    }
    if(name=="LP_OfferSoul"){
     if(box.level>=LichMod.Settings.levelCap)return "命匣已达当前等级上限。";
@@ -119,7 +119,7 @@ namespace LichPhylactery {
    if(name=="LP_OfferSpiritStone"){if(box.level>=LichMod.Settings.levelCap)return "命匣已达当前等级上限。";if(ingredients!=null && !ingredients.Any(t=>SpiritStones.Soul(t)!=null))return "需要一颗封着灵魂的魂石。";return null;}
    // 1.45.1 死灵仪式台锻甲：消耗命匣攒下的献祭经验。
    var forge=recipe.GetModExtension<AltarForgeExtension>();if(forge!=null && box.experience+.001f<forge.experience)return "命匣攒下的献祭经验不足"+forge.experience.ToString("0")+"（当前"+box.experience.ToString("0")+"）。";
-   if(name.StartsWith("LP_Make") && ingredients!=null && ingredients.Any(t=>!ConstructSeed.RawMeat(t)))return "造物胚体只使用新鲜生肉。";
+   if(name.StartsWith("LP_Make") && ingredients!=null && ingredients.Any(t=>!TwistedMeat.FleshOk(t)))return "造物胚体只使用新鲜生肉或畸变膏。";
    return null;
   }
   public static Phylactery Ascend(Pawn p){
@@ -137,7 +137,7 @@ namespace LichPhylactery {
    if(name=="LP_Ascend"){Phylactery box=Ascend(worker);altar.selected=box;yield return box;yield break;}
    if(name.StartsWith("LP_Harvest")){yield return ThingMaker.MakeThing(Necro.Def<ThingDef>(name.Substring(3)));yield break;}
    var selected=altar.Box;
-   if(name=="LP_Offer")selected.Feed(ingredients.Where(ConstructSeed.RawMeat).Sum(t=>t.stackCount));
+   if(name=="LP_Offer")selected.Feed(TwistedMeat.FleshUnits(ingredients)); // 1.119.0：扭曲肉 ×2、畸变膏 ×20
    else if(name=="LP_OfferSoul"){Pawn victim=ingredients.OfType<Corpse>().First().InnerPawn;float gained=Souls.Value(victim);selected.Feed(gained);IdeoEvents.Record("LP_HE_SoulDrained",worker);Messages.Message(victim.LabelShort+"的灵魂被汲入命匣：+"+gained.ToString("0")+"献祭经验。",MessageTypeDefOf.PositiveEvent,false);}
    else if(name=="LP_Rebuild"){if(!selected.Rebuild(altar))throw new InvalidOperationException("Resurrection failed");}
    else if(name=="LP_Refill"){var target=Necro.LivingConstructs(selected.soul).Where(p=>p.Map==altar.Map && Necro.Construct(p).kind=="Golem" && Necro.Construct(p).flesh<=400).OrderBy(p=>Necro.Construct(p).flesh).First();Necro.Construct(target).flesh+=100;target.health.Notify_HediffChanged(Necro.Construct(target));}
@@ -161,7 +161,7 @@ namespace LichPhylactery {
  public static class RitualWorkerAllowed {static void Postfix(Bill __instance,Pawn p,ref bool __result){if(__result && __instance.recipe.Worker is RitualRecipe)__result=Rituals.Blocked(__instance.recipe,__instance.billStack.billGiver as Building_Altar,p)==null;}}
  [HarmonyPatch(typeof(Bill),nameof(Bill.IsFixedOrAllowedIngredient),new[]{typeof(Thing)})]
  public static class RitualIngredientAllowed {
-  static void Postfix(Bill __instance,Thing __0,ref bool __result){if(!__result || !(__instance.recipe.Worker is RitualRecipe))return;string name=__instance.recipe.defName;if(name=="LP_MakeStoneGolem")__result=__0.def.IsWithinCategory(ThingCategoryDefOf.StoneBlocks);else if(name=="LP_OfferSpiritStone")__result=SpiritStones.Soul(__0)!=null;else if(name=="LP_Offer" || name.StartsWith("LP_Make") || name=="LP_Refill")__result=ConstructSeed.RawMeat(__0);else if(name=="LP_OfferSoul")__result=Souls.Unfit(__0)==null;}
+  static void Postfix(Bill __instance,Thing __0,ref bool __result){if(!__result || !(__instance.recipe.Worker is RitualRecipe))return;string name=__instance.recipe.defName;if(name=="LP_MakeStoneGolem")__result=__0.def.IsWithinCategory(ThingCategoryDefOf.StoneBlocks);else if(name=="LP_OfferSpiritStone")__result=SpiritStones.Soul(__0)!=null;else if(name=="LP_Offer" || name.StartsWith("LP_Make") || name=="LP_Refill")__result=TwistedMeat.FleshOk(__0);else if(name=="LP_OfferSoul")__result=Souls.Unfit(__0)==null;}
 
  }
  public class LichPsycast : Psycast {

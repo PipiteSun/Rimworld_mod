@@ -12,6 +12,6 @@ namespace LichPhylactery {
    for(int i=1;i<=cells;i++){var c=(from.ToVector3Shifted()+dir*i).ToIntVec3();if(!c.InBounds(map) || !c.Standable(map) || (c.GetFirstPawn(map)!=null && c!=from) || !GenSight.LineOfSight(from,c,map,true))break;dest=c;}
    return dest;
   }
-  public static void Move(Pawn p,IntVec3 dest){if(dest==p.Position || !p.Spawned)return;p.pather?.StopDead();p.Position=dest;p.Notify_Teleported(true,false);}
+  public static void Move(Pawn p,IntVec3 dest){if(dest==p.Position || !p.Spawned || TitanWarrior.Immovable(p))return;p.pather?.StopDead();p.Position=dest;p.Notify_Teleported(true,false);} // 1.115.0 泰坦战士·不动如山：免疫击退
  }
 }

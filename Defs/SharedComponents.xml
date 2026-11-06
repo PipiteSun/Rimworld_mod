@@ -15,6 +15,7 @@
     <showOnAnimals>false</showOnAnimals>
     <showOnMechanoids>false</showOnMechanoids>
     <displayPriorityInCategory>4013</displayPriorityInCategory>
+    <parts><li Class="LichPhylactery.StatPart_MonkStillMind" /></parts>
   </StatDef>
 
   <!-- 冷却保命的通用冷却状态。时长由基因上的 OncePerCooldownExtension.cooldownDays 决定，这里的数值只是占位。 -->

@@ -354,6 +354,8 @@ namespace LichPhylactery {
    twilightStrength=Math.Max(50,Math.Min(200,twilightStrength));twilightDays=Math.Max(15,Math.Min(120,twilightDays));
    ExposeEvents2(); // 1.31.0
    ExposeNetheril(); // 1.37.0
+   ExposeEvents3(); // 1.117.0
+   ExposeExtraRaids(); // 1.118.0 热修
   }
  }
  public static class EventSettings {
@@ -362,12 +364,14 @@ namespace LichPhylactery {
    l.GapLine();l.Label("事件");
    l.CheckboxLabeled("传送门失控",ref s.portalBreach,"殖民地外偶尔撕开一道位面裂口（九狱、元素火位面、妖精荒野、幽影界），每8小时涌出一波生物，3天不关会崩溃。打掉裂口、扔驱散粉尘或让巨灵命令都能关上。");
    l.CheckboxLabeled("巨人迁徙",ref s.giantMigration,"一队饿着的巨人（余烬氏族的火巨人或食人魔一家、费伦拓荒同盟的泰坦或霜巨人战帮）路过扎营，会找你讨吃的，有可能有人想留下来。");
-   l.CheckboxLabeled("黄昏之年",ref s.twilightYear,"每年有25%概率出现“黄昏之兆”（第1年在随机一天，第2年起在每年第一天），15天后开始黄昏之年：神力灌注者和神明附体的敌人大幅增多。关闭后不再触发（已经开始的照常结束）；平时的神力灌注不受影响。");
+   l.CheckboxLabeled("黄昏之年",ref s.twilightYear,"每年有25%概率出现“黄昏之兆”（第1年在第1～30天里随机一天，第2年起在每年第一天），15天后开始黄昏之年（最早第16天）：神力灌注者和神明附体的敌人大幅增多。关闭后不再触发（已经开始的照常结束）；平时的神力灌注不受影响。");
    l.Label("黄昏之年持续："+s.twilightDays+"天");s.twilightDays=(int)l.Slider(s.twilightDays,15,120);
    l.Label("黄昏强度："+s.twilightStrength+"%（缩放灌注/附体概率和黄昏之年里的神力效果）");s.twilightStrength=(int)l.Slider(s.twilightStrength,50,200);
    l.CheckboxLabeled("原版派系也有神力（海盗→塔洛斯、部落→马拉尔）",ref s.twilightVanilla,"默认关闭。开启后原版海盗和野蛮部落的袭击者也会被神力灌注、附体。");
    l.CheckboxLabeled("平时没有神力灌注",ref s.infusionNormalZero,"开启后只有黄昏之年里才会出现神力灌注者（平时的3%改为0）。");
    Events2Settings.Draw(l);
+   Events3Settings.Draw(l); // 1.117.0
+   ExtraRaidSettings.Draw(l); // 1.118.0 热修
    NetherilSettings.Draw(l); // 1.37.0
    EpicSettings.Draw(l); // 1.49.0 冒险者击杀里程碑、宿敌冠军
   }

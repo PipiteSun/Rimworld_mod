@@ -13,7 +13,7 @@ namespace LichPhylactery {
  // 性能：Cache 只在职业者自己的冒险者状态每 250 刻（ClassSystem.Tick250）和加点时更新；所有命中、伤害、击杀挂钩第一步都是 Is(p) 或空字典判断。
  public class MartialInfo {public bool fighter,paladin,monk;public int tier,fighterLevel,best,total;public float bonus;public int barbarian,ranger,rogue,flags;public float damage,pen;} // 新职业等级与被动能力位（ClassMartial2）；1.81.0 热修3 伤害 / 近战穿甲成长
  public enum PrecisionMode{Vital,Leg,Hand}
- public class ShotMod {public float damage=1f,ap,power=1f;public PrecisionMode mode;public bool precision;public Pawn caster;}
+ public class ShotMod {public float damage=1f,ap,power=1f;public PrecisionMode mode;public bool precision;public Pawn caster;public Action<Thing,IntVec3> onHit;} // 1.120.0 onHit：奥术射手的奥术射击（命中物、命中格）
 
  [StaticConstructorOnStartup]
  public static class ClassStartup {
@@ -121,6 +121,7 @@ namespace LichPhylactery {
   }
   public static void Impacted(Projectile proj,Thing hit){
    if(!Shots.TryGetValue(proj,out var m))return;Shots.Remove(proj);
+   if(m.onHit!=null){try{m.onHit(hit,hit!=null && hit.Spawned?hit.Position:proj.Position);}catch(Exception ex){Log.Error("[LichPhylactery] shot onHit: "+ex);}}
    if(!m.precision || !(hit is Pawn t) || t.Dead)return;
    if(m.mode==PrecisionMode.Leg){Items.Give(t,"LP_Hobbled",600);Items.Mote(t,"打腿",Color);}
    else if(m.mode==PrecisionMode.Hand && CanDisarm(t))Disarm(m.caster,t,DisarmChance(m.caster,t,m.power,Adventurer.Dex));

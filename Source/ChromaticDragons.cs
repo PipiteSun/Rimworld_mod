@@ -10,9 +10,8 @@ using Verse.AI;
 using Verse.AI.Group;
 
 namespace LichPhylactery {
- // 1.52.0 五色真龙（见 ArtSource/ChromaticDragons-1.52.0-spec.md 第三节）。种族、身体、贴图、兵种都在 Bridges/HAR（只在启用 HAR 时加载）；
- // 这里是不需要 HAR 类型的规则：吐息、魅惑、飞跃、撤退、勒索 / 来袭 / 龙巢远征 / 龙过境联动、巢穴动作、战利品、龙鳞与龙之血的元素抗性、设置。
- // 没装 HAR 时种族不存在（Dragons.Available = false）：事件不触发、设置灰显，所有查询用 GetNamedSilentFail。
+ // 1.52.0 五色真龙（见 ArtSource/ChromaticDragons-1.52.0-spec.md 第三节）。种族、身体、兵种在 Defs/ChromaticDragons_Races.xml（1.116.0 起是动物型怪物，不再需要 HAR）；
+ // 这里是规则：吐息、魅惑、飞跃、撤退、勒索 / 来袭 / 龙巢远征 / 龙过境联动、巢穴动作、战利品、龙鳞与龙之血的元素抗性、设置。查询仍用 GetNamedSilentFail。
  public class LP_DragonExtension : DefModExtension {public string color;}
 
  public class DragonColorInfo {
@@ -459,7 +458,7 @@ namespace LichPhylactery {
  public class DragonEncounter : IExposable {
   public Map map;public Pawn dragon;public List<Pawn> guards=new List<Pawn>();public Lord lord;public string color,kind;public int stage,deadline=-1;public float demand,factor=1f,paid;public bool answered,negotiated,fighting,fled,resolved;
   public void ExposeData(){
-   Scribe_References.Look(ref map,"map");Scribe_References.Look(ref dragon,"dragon");ScribePawns.Look(ref guards,"guards");Scribe_References.Look(ref lord,"lord");
+   Scribe_References.Look(ref map,"map");Scribe_References.Look(ref dragon,"dragon");ScribePawns.Look(ref guards,"guards");ScribeLord.Look(ref lord,"lord");
    Scribe_Values.Look(ref color,"color");Scribe_Values.Look(ref kind,"kind");Scribe_Values.Look(ref stage,"stage");Scribe_Values.Look(ref deadline,"deadline",-1);
    Scribe_Values.Look(ref demand,"demand");Scribe_Values.Look(ref factor,"factor",1f);Scribe_Values.Look(ref paid,"paid");
    Scribe_Values.Look(ref answered,"answered");Scribe_Values.Look(ref negotiated,"negotiated");Scribe_Values.Look(ref fighting,"fighting");Scribe_Values.Look(ref fled,"fled");Scribe_Values.Look(ref resolved,"resolved");
@@ -653,7 +652,7 @@ namespace LichPhylactery {
  }
  public class CompUseEffect_DragonLairMap : CompUseEffect {
   public override void DoEffect(Pawn usedBy){base.DoEffect(usedBy);Dragons.RevealLair(Dragons.Colors.RandomElement(),2,usedBy.LabelShort+"读懂了龙巢情报");}
-  public override AcceptanceReport CanBeUsedBy(Pawn p)=>Dragons.LairOn?true:new AcceptanceReport("真龙内容没有开启（需要 Humanoid Alien Races）");
+  public override AcceptanceReport CanBeUsedBy(Pawn p)=>Dragons.LairOn?true:new AcceptanceReport("真龙内容没有开启（设置里的“五色真龙”或“龙巢远征”）");
  }
 
  // ---------- 钩子 ----------
@@ -697,9 +696,9 @@ namespace LichPhylactery {
  [HarmonyPatch(typeof(Thing),nameof(Thing.TakeDamage))]
  public static class DragonElementResist {
   static void Prefix(Thing __instance,ref DamageInfo dinfo){
-   if(!(__instance is Pawn p) || !p.RaceProps.Humanlike)return;
-   float mf=Monsters.DamageFactor(p,dinfo);if(mf!=1f)dinfo.SetAmount(dinfo.Amount*mf); // 1.52.1：贝希尔打龙 ×1.5、半巫妖怕圣水银器 ×2
-   if(Dragons.IsChromatic(p))return;
+   if(!(__instance is Pawn p))return;
+   float mf=Monsters.DamageFactor(p,dinfo);if(mf!=1f)dinfo.SetAmount(dinfo.Amount*mf); // 1.52.1：贝希尔打龙 ×1.5、半巫妖怕圣水银器 ×2（1.116.0：龙和半巫妖是动物型，不再只看人形）
+   if(!p.RaceProps.Humanlike || Dragons.IsChromatic(p))return;
    float f=Dragons.ElementFactor(p,dinfo.Def);if(f<1f)dinfo.SetAmount(dinfo.Amount*f);
   }
   // 被魅惑的人受到伤害立刻醒。
@@ -721,7 +720,7 @@ namespace LichPhylactery {
  public static class ChromaticSettings {
   public static void Draw(Listing_Standard l){
    var s=LichMod.Settings;l.GapLine();l.Label("真龙与传奇怪");
-   bool har=Dragons.Available;var old=GUI.color;if(!har){GUI.color=Color.gray;l.Label("需要 Humanoid Alien Races（五色真龙是 HAR 种族；没装时真龙事件全部关闭）");}
+   var old=GUI.color; // 1.116.0：真龙不再需要 HAR，不再灰显
    l.CheckboxLabeled("五色真龙",ref s.chromaticDragons,"红、蓝、绿、黑、白五色真龙（青年 / 成年 / 远古）。有传奇抗性、传奇动作、骇人威仪和吐息，是冒险者等级的终局对手。关闭后下面的事件都不出现。");
    l.CheckboxLabeled("　真龙勒索",ref s.dragonExtortion,"一条青年或成年龙（白龙不勒索）落在地图边上要贡品：付、谈或拒绝。需要殖民地最高冒险者等级 ≥8。");
    l.CheckboxLabeled("　真龙来袭",ref s.dragonRaid,"龙带着本色护卫直接进攻。青年：最高等级 ≥8、点数 ≥1500；成年：≥16、≥4000；远古：≥"+s.dragonAncientLevel+"、≥9000，每年最多一次。冷却 20～30 天。");
@@ -734,7 +733,7 @@ namespace LichPhylactery {
    }
    l.Label("远古龙来袭需要的殖民地最高等级："+s.dragonAncientLevel);s.dragonAncientLevel=Mathf.RoundToInt(l.Slider(s.dragonAncientLevel,21,40));
    GUI.color=old;
-   MonsterSettings.Draw(l); // 1.52.1 传奇怪（死亡骑士不需要 HAR，不灰显）
+   MonsterSettings.Draw(l); // 1.52.1 传奇怪
   }
  }
 }

@@ -11,10 +11,10 @@ using UnityEngine;
 
 namespace LichPhylactery {
  // 1.37.0 拉洛克的邀约：NetherilQuestState 驱动（阶段、倒计时、选择全部存档），每一步都有信件说明下一步。
- // 阶段 stage：idle（没触发）→ scheduled（使者在路上）→ envoy（使者在殖民地边上等回复）→ errand（三件差事）/ refused（拒绝后等 60 天）/ crypt（古墓已显露）→ scroll（卷轴到手）。
+ // 阶段 stage：idle（没触发）→ scheduled（使者在路上）→ envoy（使者在殖民地边上等回复）→ errand（三件差事）/ refused（拒绝后等 RefuseDays 天，热修前 60）/ crypt（古墓已显露）→ scroll（卷轴到手）。
  // 卡苏斯之卷的下落 karsusStatus：none 未出现 / larloch 在拉洛克手里（古墓里）/ site 在浮城残骸里 / player 在玩家手里 / lost 已毁待重现；已解读另记 deciphered。
  public static class NetherilQuest {
-  public const int EnvoyDaysMin=3,EnvoyDaysMax=10,EnvoyStayTicks=GenDate.TicksPerDay,RefuseDays=60,MaxRefusals=3,ErrandDays=30,ResidueNeed=20,ShardNeed=3,CasketRaidTicks=6*GenDate.TicksPerHour,CasketStayTicks=GenDate.TicksPerDay,ReappearMin=30,ReappearMax=60,WreckDays=30,RaidMin=60,RaidMax=90;
+  public const int EnvoyDaysMin=3,EnvoyDaysMax=10,EnvoyStayTicks=GenDate.TicksPerDay,RefuseDays=5,MaxRefusals=3,ErrandDays=30,ResidueNeed=20,ShardNeed=3,CasketRaidTicks=6*GenDate.TicksPerHour,CasketStayTicks=GenDate.TicksPerDay,ReappearMin=30,ReappearMax=60,WreckDays=30,RaidMin=60,RaidMax=90;
   public const float ReadHoursNeed=20f,CampPoints=1f,CryptPoints=1.5f,WreckPoints=1.2f,CasketRaidPoints=1.2f,UndeadRaidPoints=.6f,ThayScrollWeight=1.25f;
   public const int ASendPsylink=4,ASendVPE=10,ErrandGoodwill=30,SilverReward=1000;
   public const int ErrandGapDays=15; // 1.97.0 补丁 选项 C：办完一件差事，隔 15 天才交代下一件
@@ -149,7 +149,7 @@ namespace LichPhylactery {
    l.Label="拉洛克的邀约";l.lookTargets=new LookTargets(envoy);l.relatedFaction=f;l.envoy=envoy;
    l.Text=reappear
     ?"影巫王拉洛克的使者又来了。这一次他开门见山：卡苏斯之卷又落回了拉洛克手里，他愿意再给你一次机会。\n\n以人换卷：交出一名心灵链接≥"+ASendPsylink+"（装了 VPE 时灵能等级≥"+ASendVPE+"）的殖民者，他会随使者永远离开（不算死亡），你立刻得到卷轴。\n以命匣换卷：交出一名巫妖的命匣。巫妖保留能力和等级，但从此死了不再复活。\n去古墓硬抢：拉洛克的古墓会显露在世界地图上，卷轴就放在中央大厅里。\n\n使者在殖民地边上等一天。不回复就当作你要去古墓硬抢。"
-    :"一个半巫妖带着两名骷髅护卫停在殖民地边上。他自称影巫王拉洛克的使者：主人察觉到你们在读耐瑟瑞尔的卷轴，愿意把真正的宝贝——卡苏斯之卷——交给配得上的人。\n\n以人换卷：交出一名心灵链接≥"+ASendPsylink+"（装了 VPE 时灵能等级≥"+ASendVPE+"）的殖民者，他会随使者永远离开（不算死亡，全体心情 -5 持续 10 天），你立刻得到卷轴。\n以命匣换卷：交出一名巫妖的命匣。命匣会被带走；巫妖保留能力和等级，但从此死了不再复活，也不能再向命匣献祭。\n为他办三件事：献上位面遗物、斩杀一名红袍法师、守护一次命匣转移（每件办完隔 "+ErrandGapDays+" 天再交代下一件），办完就把卷轴送来。\n拒绝：使者 60 天后再来，最多再来 2 次。\n\n也可以去古墓硬抢——第三次拒绝以后，拉洛克的古墓就会显露在世界地图上。\n\n使者在殖民地边上等一天。不回复就当作拒绝。";
+    :"一个半巫妖带着两名骷髅护卫停在殖民地边上。他自称影巫王拉洛克的使者：主人察觉到你们在读耐瑟瑞尔的卷轴，愿意把真正的宝贝——卡苏斯之卷——交给配得上的人。\n\n以人换卷：交出一名心灵链接≥"+ASendPsylink+"（装了 VPE 时灵能等级≥"+ASendVPE+"）的殖民者，他会随使者永远离开（不算死亡，全体心情 -5 持续 10 天），你立刻得到卷轴。\n以命匣换卷：交出一名巫妖的命匣。命匣会被带走；巫妖保留能力和等级，但从此死了不再复活，也不能再向命匣献祭。\n为他办三件事：献上位面遗物、斩杀一名红袍法师、守护一次命匣转移（每件办完隔 "+ErrandGapDays+" 天再交代下一件），办完就把卷轴送来。\n拒绝：使者 "+RefuseDays+" 天后再来，最多再来 2 次。\n\n也可以去古墓硬抢——第三次拒绝以后，拉洛克的古墓就会显露在世界地图上。\n\n使者在殖民地边上等一天。不回复就当作拒绝。";
    Find.LetterStack.ReceiveLetter(l);
    return lord;
   }
@@ -367,6 +367,7 @@ namespace LichPhylactery {
    int now=Now;var s=LichMod.Settings;
    if(now>=st.nextDailyCheck){st.nextDailyCheck=now+GenDate.TicksPerDay;if(st.stage=="idle")DailyCheck(st);}
    if(st.envoyPending && (st.envoy==null || st.envoy.Dead || !st.envoy.Spawned || st.envoy.Faction!=Larloch || st.envoyLord==null || !st.envoyLord.ownedPawns.Contains(st.envoy)))OnEnvoyGone(st);
+   if(st.stage=="refused" && st.envoyTick>now+RefuseDays*GenDate.TicksPerDay)st.envoyTick=now+RefuseDays*GenDate.TicksPerDay; // 热修：旧档里拒绝后还在等 60 天的，缩到 RefuseDays
    if(s.netherilQuest && (st.stage=="scheduled" || st.stage=="refused") && st.envoyTick>=0 && now>=st.envoyTick && !st.envoyPending){var map=Home;if(map==null || SendEnvoy(map,false)==null)st.envoyTick=now+GenDate.TicksPerDay;}
    if(st.stage=="errand")ErrandTick(st);
    if(st.cryptSite!=null && st.cryptSite.Destroyed){st.cryptSite=null;if(!st.larlochDefeated || st.karsusStatus=="larloch")CreateCryptQuiet(st);}
@@ -449,7 +450,7 @@ namespace LichPhylactery {
    if(Scribe.mode==LoadSaveMode.LoadingVars){Dictionary<int,int> oldHours=null;Scribe_Collections.Look(ref oldHours,"lpKarsusHours",LookMode.Value,LookMode.Value);if(oldHours!=null && oldHours.Count>0){if(karsusTicks==null)karsusTicks=new Dictionary<int,int>();foreach(var kv in oldHours)if(!karsusTicks.ContainsKey(kv.Key))karsusTicks[kv.Key]=kv.Value*Netheril.HourTicks;}}
    Scribe_References.Look(ref karsus,"lpKarsus");Scribe_Values.Look(ref karsusStatus,"lpKarsusStatus","none");Scribe_Values.Look(ref deciphered,"lpDeciphered");Scribe_Values.Look(ref reappearTick,"lpReappearTick",-1);
    Scribe_Values.Look(ref stage,"lpStage","idle");Scribe_Values.Look(ref deal,"lpDeal");Scribe_Values.Look(ref envoyTick,"lpEnvoyTick",-1);Scribe_Values.Look(ref nextDailyCheck,"lpNextDailyCheck");Scribe_Values.Look(ref refusals,"lpRefusals");Scribe_Values.Look(ref errand,"lpErrand");Scribe_Values.Look(ref errandDeadline,"lpErrandDeadline",-1);Scribe_Values.Look(ref nextErrand,"lpNextErrand");Scribe_Values.Look(ref nextErrandTick,"lpNextErrandTick",-1);
-   Scribe_Values.Look(ref envoyPending,"lpEnvoyPending");Scribe_Values.Look(ref intelEnvoyId,"lpIntelEnvoyId",-1);Scribe_Values.Look(ref reappearMode,"lpReappearMode");Scribe_References.Look(ref envoy,"lpEnvoy");Scribe_References.Look(ref envoyLord,"lpEnvoyLord");Scribe_Values.Look(ref envoyStand,"lpEnvoyStand",IntVec3.Invalid);
+   Scribe_Values.Look(ref envoyPending,"lpEnvoyPending");Scribe_Values.Look(ref intelEnvoyId,"lpIntelEnvoyId",-1);Scribe_Values.Look(ref reappearMode,"lpReappearMode");Scribe_References.Look(ref envoy,"lpEnvoy");ScribeLord.Look(ref envoyLord,"lpEnvoyLord");Scribe_Values.Look(ref envoyStand,"lpEnvoyStand",IntVec3.Invalid);
    Scribe_References.Look(ref offeringBox,"lpOfferingBox");Scribe_References.Look(ref campSite,"lpCampSite");Scribe_References.Look(ref cryptSite,"lpCryptSite");Scribe_References.Look(ref wreckSite,"lpWreckSite");Scribe_References.Look(ref campLeader,"lpCampLeader");Scribe_Values.Look(ref wreckDeadline,"lpWreckDeadline",-1);
    Scribe_References.Look(ref casket,"lpCasket");ScribePawns.Look(ref casketGuards,"lpCasketGuards");Scribe_Values.Look(ref casketRaidTick,"lpCasketRaidTick",-1);Scribe_Values.Look(ref casketDoneTick,"lpCasketDoneTick",-1);Scribe_Values.Look(ref casketRaidSent,"lpCasketRaidSent");
    Scribe_Values.Look(ref larlochDefeated,"lpLarlochDefeated");Scribe_Values.Look(ref nextUndeadRaid,"lpNextUndeadRaid",-1);Scribe_References.Look(ref larlochMaster,"lpLarlochMaster");

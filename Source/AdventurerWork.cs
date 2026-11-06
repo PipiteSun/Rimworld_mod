@@ -32,8 +32,11 @@ namespace LichPhylactery {
  }
  [HarmonyPatch(typeof(Pawn_SkillTracker),nameof(Pawn_SkillTracker.Learn))]
  public static class AdventurerWorkLearn {
+  // 2026-11-04 热修：前缀只记原始值，后缀才入账。别的模组在 Learn 里抛异常（Ducks' Insane Skills 在 1.7 上每次都抛）时后缀不跑，
+  // 不然每 tick 重试的社交互动 / 近战会每次都白送冒险者经验（存档里两人一天刷到 18464）。
   [HarmonyPriority(Priority.First)]
-  static void Prefix(Pawn ___pawn,SkillDef sDef,float xp,bool direct){if(xp>0f && !direct)AdventurerWork.Learned(___pawn,sDef,xp);}
+  static void Prefix(float xp,bool direct,out float __state){__state=xp>0f && !direct?xp:0f;}
+  static void Postfix(Pawn ___pawn,SkillDef sDef,float __state){if(__state>0f)AdventurerWork.Learned(___pawn,sDef,__state);}
  }
 
  public partial class Settings {

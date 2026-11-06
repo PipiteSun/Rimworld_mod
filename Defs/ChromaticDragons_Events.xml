@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 1.52.0 五色真龙的登场（规则在 Source/ChromaticDragons.cs）：隐藏派系「五色龙群」、龙教徒、勒索 / 来袭事件、龙巢世界地点、背景故事。
-     真龙种族和兵种在 Bridges/HAR（只在启用 HAR 时加载）；没装 HAR 时这里的事件不会触发（IncidentWorker 先看 Dragons.Available）。 -->
+     真龙种族和兵种在 ChromaticDragons_Races.xml（1.116.0 起是动物型怪物，不再需要 HAR）。 -->
 <Defs>
 
   <!-- 隐藏、永久敌对；袭击组只由事件代码生成。 -->

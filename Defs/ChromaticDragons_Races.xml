@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 五色真龙的种族、身体、年龄档和兵种。1.52.0～1.115.0 是 HAR 人形种族（Bridges/HAR，只在启用 Humanoid Alien Races 时加载）；
+     1.116.0 起改成主模组里的动物型怪物（同 WildMonsters.xml 的写法），不再需要 HAR。defName 没变，旧存档里的龙读档时由 Source/LegendaryBeasts.cs 去掉人形才有的部件。
+     身体贴图是整条龙（按颜色画好，ChromaticDragons/<颜色>/Naked_Hulk），画面大小由主程序集的根节点补丁按年龄档放大（Dragons.RenderScale）。
+     体型 / 生命 / 近战 / 护甲在三个生命阶段里；动物没有格斗技能，生命阶段补上原来格斗 12/16/20 时的近战命中和闪避。规则代码在 Source/ChromaticDragons.cs、Source/Legendary.cs。
+     头型 LP_DragonHead_* 只给旧存档读档用。 -->
+<Defs>
+
+  <!-- ==================== 身体 ==================== -->
+  <BodyPartDef>
+    <defName>LP_DragonWing</defName>
+    <label>龙翼</label>
+    <hitPoints>45</hitPoints>
+    <skinCovered>true</skinCovered>
+    <solid>false</solid>
+    <bleedRate>1</bleedRate>
+    <permanentInjuryChanceFactor>2</permanentInjuryChanceFactor>
+  </BodyPartDef>
+
+  <BodyPartGroupDef>
+    <defName>LP_DragonTail</defName>
+    <label>龙尾</label>
+    <labelShort>尾</labelShort>
+    <listOrder>40</listOrder>
+  </BodyPartGroupDef>
+  <BodyPartGroupDef>
+    <defName>LP_DragonWings</defName>
+    <label>龙翼</label>
+    <labelShort>翼</labelShort>
+    <listOrder>41</listOrder>
+  </BodyPartGroupDef>
+
+  <BodyDef>
+    <defName>LP_DragonBody</defName>
+    <label>真龙</label>
+    <corePart>
+      <def>Torso</def>
+      <customLabel>龙躯</customLabel>
+      <height>Middle</height>
+      <depth>Outside</depth>
+      <groups><li>Torso</li></groups>
+      <parts>
+        <li><def>Tail</def><customLabel>龙尾</customLabel><coverage>0.08</coverage><groups><li>LP_DragonTail</li></groups></li>
+        <li><def>LP_DragonWing</def><customLabel>左翼</customLabel><coverage>0.07</coverage><height>Top</height><groups><li>LP_DragonWings</li></groups></li>
+        <li><def>LP_DragonWing</def><customLabel>右翼</customLabel><coverage>0.07</coverage><height>Top</height><groups><li>LP_DragonWings</li></groups></li>
+        <li><def>Spine</def><customLabel>脊椎</customLabel><coverage>0.03</coverage><depth>Inside</depth></li>
+        <li><def>Stomach</def><customLabel>胃</customLabel><coverage>0.03</coverage><depth>Inside</depth></li>
+        <li><def>Heart</def><customLabel>龙心</customLabel><coverage>0.03</coverage><depth>Inside</depth></li>
+        <li><def>Lung</def><customLabel>左肺</customLabel><coverage>0.03</coverage><depth>Inside</depth></li>
+        <li><def>Lung</def><customLabel>右肺</customLabel><coverage>0.03</coverage><depth>Inside</depth></li>
+        <li><def>Kidney</def><customLabel>左肾</customLabel><coverage>0.02</coverage><depth>Inside</depth></li>
+        <li><def>Kidney</def><customLabel>右肾</customLabel><coverage>0.02</coverage><depth>Inside</depth></li>
+        <li><def>Liver</def><customLabel>肝</customLabel><coverage>0.03</coverage><depth>Inside</depth></li>
+        <li>
+          <def>Neck</def>
+          <customLabel>龙颈</customLabel>
+          <coverage>0.14</coverage>
+          <height>Top</height>
+          <groups><li>Neck</li></groups>
+          <parts>
+            <li>
+              <def>Head</def>
+              <customLabel>龙首</customLabel>
+              <coverage>0.75</coverage>
+              <groups><li>HeadAttackTool</li><li>UpperHead</li><li>FullHead</li></groups>
+              <parts>
+                <li>
+                  <def>Skull</def>
+                  <customLabel>颅骨</customLabel>
+                  <coverage>0.25</coverage>
+                  <depth>Inside</depth>
+                  <groups><li>UpperHead</li><li>FullHead</li></groups>
+                  <parts>
+                    <li><def>Brain</def><customLabel>脑</customLabel><coverage>0.7</coverage><depth>Inside</depth><groups><li>UpperHead</li><li>FullHead</li></groups></li>
+                  </parts>
+                </li>
+                <li><def>Eye</def><customLabel>左眼</customLabel><coverage>0.1</coverage><groups><li>FullHead</li><li>Eyes</li></groups></li>
+                <li><def>Eye</def><customLabel>右眼</customLabel><coverage>0.1</coverage><groups><li>FullHead</li><li>Eyes</li></groups></li>
+                <li><def>Ear</def><customLabel>左耳</customLabel><coverage>0.06</coverage><groups><li>UpperHead</li><li>FullHead</li></groups></li>
+                <li><def>Ear</def><customLabel>右耳</customLabel><coverage>0.06</coverage><groups><li>UpperHead</li><li>FullHead</li></groups></li>
+                <li><def>Nose</def><customLabel>鼻</customLabel><coverage>0.08</coverage><groups><li>FullHead</li></groups></li>
+                <li><def>AnimalJaw</def><customLabel>龙颚</customLabel><coverage>0.12</coverage><groups><li>Teeth</li><li>FullHead</li></groups></li>
+              </parts>
+            </li>
+          </parts>
+        </li>
+        <li><def>Leg</def><customLabel>左前腿</customLabel><coverage>0.06</coverage><height>Bottom</height><groups><li>Legs</li></groups>
+          <parts><li><def>Paw</def><customLabel>左前爪</customLabel><coverage>0.15</coverage><groups><li>FrontLeftPaw</li><li>Feet</li></groups></li></parts></li>
+        <li><def>Leg</def><customLabel>右前腿</customLabel><coverage>0.06</coverage><height>Bottom</height><groups><li>Legs</li></groups>
+          <parts><li><def>Paw</def><customLabel>右前爪</customLabel><coverage>0.15</coverage><groups><li>FrontRightPaw</li><li>Feet</li></groups></li></parts></li>
+        <li><def>Leg</def><customLabel>左后腿</customLabel><coverage>0.06</coverage><height>Bottom</height><groups><li>Legs</li></groups>
+          <parts><li><def>Paw</def><customLabel>左后爪</customLabel><coverage>0.15</coverage><groups><li>Feet</li></groups></li></parts></li>
+        <li><def>Leg</def><customLabel>右后腿</customLabel><coverage>0.06</coverage><height>Bottom</height><groups><li>Legs</li></groups>
+          <parts><li><def>Paw</def><customLabel>右后爪</customLabel><coverage>0.15</coverage><groups><li>Feet</li></groups></li></parts></li>
+      </parts>
+    </corePart>
+  </BodyDef>
+
+  <!-- ==================== 种族 ==================== -->
+  <ThingDef ParentName="AnimalThingBase" Name="LP_ChromaticDragonBase" Abstract="True">
+    <statBases>
+      <MarketValue>8000</MarketValue>
+      <PsychicSensitivity>0.8</PsychicSensitivity>
+      <Wildness>1</Wildness>
+      <LeatherAmount>0</LeatherAmount>
+      <MeatAmount>0</MeatAmount>
+      <FilthRate>1</FilthRate>
+      <MoveSpeed>4.6</MoveSpeed>
+      <ComfyTemperatureMin>-40</ComfyTemperatureMin>
+      <ComfyTemperatureMax>60</ComfyTemperatureMax>
+    </statBases>
+    <tradeability>None</tradeability>
+    <race>
+      <body>LP_DragonBody</body>
+      <baseBodySize>1</baseBodySize>
+      <baseHealthScale>1</baseHealthScale>
+      <baseHungerRate>0.5</baseHungerRate>
+      <foodType>CarnivoreAnimal</foodType>
+      <useMeatFrom>Thrumbo</useMeatFrom>
+      <lifeExpectancy>3000</lifeExpectancy>
+      <hasGenders>false</hasGenders>
+      <trainability>None</trainability>
+      <petness>0</petness>
+      <nameOnTameChance>0</nameOnTameChance>
+      <manhunterOnDamageChance>0</manhunterOnDamageChance>
+      <manhunterOnTameFailChance>0</manhunterOnTameFailChance>
+      <canBePredatorPrey>false</canBePredatorPrey>
+      <herdAnimal>false</herdAnimal>
+      <canBecomeShambler>false</canBecomeShambler>
+      <soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+      <hediffGiverSets Inherit="False" />
+      <lifeStageAges Inherit="False">
+        <li><def>LP_DragonYoung</def><minAge>0</minAge><soundDeath>Pawn_Thrumbo_Death</soundDeath><soundCall>Pawn_Thrumbo_Call</soundCall><soundAngry>Pawn_Thrumbo_Angry</soundAngry></li>
+        <li><def>LP_DragonAdult</def><minAge>100</minAge><soundDeath>Pawn_Thrumbo_Death</soundDeath><soundCall>Pawn_Thrumbo_Call</soundCall><soundAngry>Pawn_Thrumbo_Angry</soundAngry></li>
+        <li><def>LP_DragonAncient</def><minAge>800</minAge><soundDeath>Pawn_Thrumbo_Death</soundDeath><soundCall>Pawn_Thrumbo_Call</soundCall><soundAngry>Pawn_Thrumbo_Angry</soundAngry></li>
+      </lifeStageAges>
+    </race>
+    <tools Inherit="False">
+      <li><label>咬</label><capacities><li>Bite</li></capacities><power>28</power><cooldownTime>2.2</cooldownTime><armorPenetration>0.45</armorPenetration><linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup></li>
+      <li><label>左前爪</label><capacities><li>Scratch</li></capacities><power>18</power><cooldownTime>1.6</cooldownTime><armorPenetration>0.3</armorPenetration><linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup></li>
+      <li><label>右前爪</label><capacities><li>Scratch</li></capacities><power>18</power><cooldownTime>1.6</cooldownTime><armorPenetration>0.3</armorPenetration><linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup></li>
+      <li><label>尾巴</label><capacities><li>Blunt</li></capacities><power>22</power><cooldownTime>2.4</cooldownTime><armorPenetration>0.25</armorPenetration><linkedBodyPartsGroup>LP_DragonTail</linkedBodyPartsGroup></li>
+    </tools>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_AdventurerAffinityExt"><legendary>true</legendary></li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_ChromaticDragonBase">
+    <defName>LP_RedDragon</defName>
+    <label>红龙</label>
+    <description>最强大也最贪婪的五色龙。红龙住在火山和高山里，睡在金山上，喷吐烈焰。它们傲慢、残忍，认为世上一切财宝本来就该属于自己。
+
+真龙有智慧，会说话，活上千年。它们有传奇抗性、传奇动作和骇人威仪，倒下就会死去，不会投降。</description>
+    <modExtensions Inherit="True">
+      <li Class="LichPhylactery.LP_DragonExtension"><color>Red</color></li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_ChromaticDragonBase">
+    <defName>LP_BlueDragon</defName>
+    <label>蓝龙</label>
+    <description>沙漠与荒原的主人。蓝龙能在沙地下潜行，从地底钻出伏击猎物，喷出一道笔直的闪电。它们虚荣而讲究秩序，喜欢役使龙教徒。
+
+真龙有智慧，会说话，活上千年。它们有传奇抗性、传奇动作和骇人威仪，倒下就会死去，不会投降。</description>
+    <modExtensions Inherit="True">
+      <li Class="LichPhylactery.LP_DragonExtension"><color>Blue</color></li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_ChromaticDragonBase">
+    <defName>LP_GreenDragon</defName>
+    <label>绿龙</label>
+    <description>森林里最狡诈的龙。绿龙喷吐毒气，擅长谎言和魅惑，会在水里潜行。它们宁可让猎物自己走进巢穴。
+
+真龙有智慧，会说话，活上千年。它们有传奇抗性、传奇动作和骇人威仪，倒下就会死去，不会投降。</description>
+    <modExtensions Inherit="True">
+      <li Class="LichPhylactery.LP_DragonExtension"><color>Green</color></li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_ChromaticDragonBase">
+    <defName>LP_BlackDragon</defName>
+    <label>黑龙</label>
+    <description>沼泽里最阴毒的龙。黑龙的头骨般的脸上满是腐蚀的痕迹，喷出一道强酸，能溶穿铠甲。它们的巢穴总是一片漆黑。
+
+真龙有智慧，会说话，活上千年。它们有传奇抗性、传奇动作和骇人威仪，倒下就会死去，不会投降。</description>
+    <modExtensions Inherit="True">
+      <li Class="LichPhylactery.LP_DragonExtension"><color>Black</color></li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="LP_ChromaticDragonBase">
+    <defName>LP_WhiteDragon</defName>
+    <label>白龙</label>
+    <description>最小也最野蛮的五色龙。白龙住在冰原和冰川里，喷吐寒冰，不屑于讨价还价，看到猎物就扑上去。
+
+真龙有智慧，会说话，活上千年。它们有传奇抗性、传奇动作和骇人威仪，倒下就会死去，不会投降。</description>
+    <modExtensions Inherit="True">
+      <li Class="LichPhylactery.LP_DragonExtension"><color>White</color></li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- ==================== 年龄档 ==================== -->
+  <LifeStageDef>
+    <defName>LP_DragonYoung</defName>
+    <label>青年龙</label>
+    <adjective>青年</adjective>
+    <developmentalStage>Adult</developmentalStage>
+    <reproductive>false</reproductive>
+    <bodySizeFactor>2.5</bodySizeFactor>
+    <healthScaleFactor>6</healthScaleFactor>
+    <meleeDamageFactor>1.0</meleeDamageFactor>
+    <statOffsets><ArmorRating_Sharp>0.4</ArmorRating_Sharp><ArmorRating_Blunt>0.3</ArmorRating_Blunt><MoveSpeed>0</MoveSpeed><MeleeHitChance>20</MeleeHitChance><MeleeDodgeChance>12</MeleeDodgeChance></statOffsets>
+    <voxPitch>0.5</voxPitch>
+  </LifeStageDef>
+  <LifeStageDef>
+    <defName>LP_DragonAdult</defName>
+    <label>成年龙</label>
+    <adjective>成年</adjective>
+    <developmentalStage>Adult</developmentalStage>
+    <reproductive>false</reproductive>
+    <bodySizeFactor>4.0</bodySizeFactor>
+    <healthScaleFactor>24</healthScaleFactor>
+    <meleeDamageFactor>1.6</meleeDamageFactor>
+    <statOffsets><ArmorRating_Sharp>0.55</ArmorRating_Sharp><ArmorRating_Blunt>0.4</ArmorRating_Blunt><MoveSpeed>0.2</MoveSpeed><MeleeHitChance>24</MeleeHitChance><MeleeDodgeChance>16</MeleeDodgeChance></statOffsets>
+    <voxPitch>0.5</voxPitch>
+  </LifeStageDef>
+  <LifeStageDef>
+    <defName>LP_DragonAncient</defName>
+    <label>远古龙</label>
+    <adjective>远古</adjective>
+    <developmentalStage>Adult</developmentalStage>
+    <reproductive>false</reproductive>
+    <bodySizeFactor>6.0</bodySizeFactor>
+    <healthScaleFactor>40</healthScaleFactor>
+    <meleeDamageFactor>2.5</meleeDamageFactor>
+    <statOffsets><ArmorRating_Sharp>0.7</ArmorRating_Sharp><ArmorRating_Blunt>0.55</ArmorRating_Blunt><MoveSpeed>0.4</MoveSpeed><MeleeHitChance>28</MeleeHitChance><MeleeDodgeChance>20</MeleeDodgeChance></statOffsets>
+    <voxPitch>0.5</voxPitch>
+  </LifeStageDef>
+
+  <!-- 旧存档：1.115.0 以前的龙身上记着这些头型（读档后随人形部件一起去掉）。 -->
+  <HeadTypeDef>
+    <defName>LP_DragonHead_Red</defName>
+    <graphicPath>ChromaticDragons/Heads/Red</graphicPath>
+    <gender>None</gender>
+    <randomChosen>false</randomChosen>
+  </HeadTypeDef>
+  <HeadTypeDef>
+    <defName>LP_DragonHead_Blue</defName>
+    <graphicPath>ChromaticDragons/Heads/Blue</graphicPath>
+    <gender>None</gender>
+    <randomChosen>false</randomChosen>
+  </HeadTypeDef>
+  <HeadTypeDef>
+    <defName>LP_DragonHead_Green</defName>
+    <graphicPath>ChromaticDragons/Heads/Green</graphicPath>
+    <gender>None</gender>
+    <randomChosen>false</randomChosen>
+  </HeadTypeDef>
+  <HeadTypeDef>
+    <defName>LP_DragonHead_Black</defName>
+    <graphicPath>ChromaticDragons/Heads/Black</graphicPath>
+    <gender>None</gender>
+    <randomChosen>false</randomChosen>
+  </HeadTypeDef>
+  <HeadTypeDef>
+    <defName>LP_DragonHead_White</defName>
+    <graphicPath>ChromaticDragons/Heads/White</graphicPath>
+    <gender>None</gender>
+    <randomChosen>false</randomChosen>
+  </HeadTypeDef>
+
+  <!-- ==================== 兵种：每色三档（青年 / 成年 / 远古）。传奇扩展：固定等级、固定六维（5e 怪物书）、CR、传奇抗性 / 动作、骇人威仪半径、击杀奖励。 ==================== -->
+  <PawnKindDef Name="LP_ChromaticDragonKindBase" Abstract="True">
+    <defaultFactionDef>LP_ChromaticDragons</defaultFactionDef>
+    <isFighter>true</isFighter>
+    <canArriveManhunter>false</canArriveManhunter>
+    <canBeSapper>false</canBeSapper>
+    <ecoSystemWeight>0</ecoSystemWeight>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_RedDragon_Young</defName>
+    <label>青年红龙</label>
+    <race>LP_RedDragon</race>
+    <combatPower>600</combatPower>
+    <lifeStages>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Red/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Red/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Red/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Red/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Red/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Red/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+    </lifeStages>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>青年红龙</title>
+        <level>10~12</level>
+        <scores><li>23</li><li>10</li><li>21</li><li>14</li><li>11</li><li>19</li></scores>
+        <cr>10</cr>
+        <resistance>0</resistance>
+        <actionPoints>0</actionPoints>
+        <actions></actions>
+        <presenceRadius>0</presenceRadius>
+        <milestone>false</milestone>
+        <legendPoints>0</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_RedDragon_Adult</defName>
+    <label>成年红龙</label>
+    <race>LP_RedDragon</race>
+    <combatPower>1500</combatPower>
+    <lifeStages>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Red/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Red/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Red/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Red/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Red/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Red/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+    </lifeStages>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>成年红龙</title>
+        <level>18~20</level>
+        <scores><li>27</li><li>10</li><li>25</li><li>16</li><li>13</li><li>21</li></scores>
+        <cr>17</cr>
+        <resistance>3</resistance>
+        <actionPoints>3</actionPoints>
+        <actions><li><action>Detect</action><cost>1</cost></li><li><action>Wing</action><cost>2</cost></li><li><action>Tail</action><cost>1</cost></li></actions>
+        <presenceRadius>18</presenceRadius>
+        <milestone>true</milestone>
+        <legendPoints>2</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_RedDragon_Ancient</defName>
+    <label>远古红龙</label>
+    <race>LP_RedDragon</race>
+    <combatPower>3500</combatPower>
+    <lifeStages>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Red/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Red/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Red/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Red/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Red/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Red/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+    </lifeStages>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>远古红龙</title>
+        <level>31~35</level>
+        <scores><li>30</li><li>10</li><li>29</li><li>18</li><li>15</li><li>23</li></scores>
+        <cr>24</cr>
+        <resistance>3</resistance>
+        <actionPoints>3</actionPoints>
+        <actions><li><action>Glance</action><cost>1</cost><cooldown>600</cooldown></li><li><action>Detect</action><cost>1</cost></li><li><action>Wing</action><cost>2</cost></li><li><action>Tail</action><cost>1</cost></li></actions>
+        <presenceRadius>24</presenceRadius>
+        <milestone>true</milestone>
+        <legendPoints>4</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_BlueDragon_Young</defName>
+    <label>青年蓝龙</label>
+    <race>LP_BlueDragon</race>
+    <combatPower>600</combatPower>
+    <lifeStages>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Blue/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Blue/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Blue/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Blue/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Blue/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Blue/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+    </lifeStages>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>青年蓝龙</title>
+        <level>10~12</level>
+        <scores><li>21</li><li>10</li><li>19</li><li>14</li><li>13</li><li>17</li></scores>
+        <cr>9</cr>
+        <resistance>0</resistance>
+        <actionPoints>0</actionPoints>
+        <actions></actions>
+        <presenceRadius>0</presenceRadius>
+        <milestone>false</milestone>
+        <legendPoints>0</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_BlueDragon_Adult</defName>
+    <label>成年蓝龙</label>
+    <race>LP_BlueDragon</race>
+    <combatPower>1500</combatPower>
+    <lifeStages>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Blue/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Blue/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Blue/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Blue/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Blue/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Blue/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+    </lifeStages>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>成年蓝龙</title>
+        <level>18~20</level>
+        <scores><li>25</li><li>10</li><li>23</li><li>16</li><li>15</li><li>19</li></scores>
+        <cr>16</cr>
+        <resistance>3</resistance>
+        <actionPoints>3</actionPoints>
+        <actions><li><action>Detect</action><cost>1</cost></li><li><action>Wing</action><cost>2</cost></li><li><action>Tail</action><cost>1</cost></li></actions>
+        <presenceRadius>18</presenceRadius>
+        <milestone>true</milestone>
+        <legendPoints>2</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_BlueDragon_Ancient</defName>
+    <label>远古蓝龙</label>
+    <race>LP_BlueDragon</race>
+    <combatPower>3500</combatPower>
+    <lifeStages>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Blue/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Blue/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Blue/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Blue/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Blue/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Blue/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+    </lifeStages>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>远古蓝龙</title>
+        <level>31~35</level>
+        <scores><li>29</li><li>10</li><li>27</li><li>18</li><li>17</li><li>21</li></scores>
+        <cr>23</cr>
+        <resistance>3</resistance>
+        <actionPoints>3</actionPoints>
+        <actions><li><action>Glance</action><cost>1</cost><cooldown>600</cooldown></li><li><action>Detect</action><cost>1</cost></li><li><action>Wing</action><cost>2</cost></li><li><action>Tail</action><cost>1</cost></li></actions>
+        <presenceRadius>24</presenceRadius>
+        <milestone>true</milestone>
+        <legendPoints>4</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_GreenDragon_Young</defName>
+    <label>青年绿龙</label>
+    <race>LP_GreenDragon</race>
+    <combatPower>600</combatPower>
+    <lifeStages>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Green/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Green/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Green/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Green/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Green/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Green/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+    </lifeStages>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>青年绿龙</title>
+        <level>10~12</level>
+        <scores><li>19</li><li>12</li><li>17</li><li>16</li><li>13</li><li>15</li></scores>
+        <cr>8</cr>
+        <resistance>0</resistance>
+        <actionPoints>0</actionPoints>
+        <actions></actions>
+        <presenceRadius>0</presenceRadius>
+        <milestone>false</milestone>
+        <legendPoints>0</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_GreenDragon_Adult</defName>
+    <label>成年绿龙</label>
+    <race>LP_GreenDragon</race>
+    <combatPower>1500</combatPower>
+    <lifeStages>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Green/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Green/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Green/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Green/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Green/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Green/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+    </lifeStages>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>成年绿龙</title>
+        <level>18~20</level>
+        <scores><li>23</li><li>12</li><li>21</li><li>18</li><li>15</li><li>17</li></scores>
+        <cr>15</cr>
+        <resistance>3</resistance>
+        <actionPoints>3</actionPoints>
+        <actions><li><action>Detect</action><cost>1</cost></li><li><action>Wing</action><cost>2</cost></li><li><action>Tail</action><cost>1</cost></li></actions>
+        <presenceRadius>18</presenceRadius>
+        <milestone>true</milestone>
+        <legendPoints>2</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_GreenDragon_Ancient</defName>
+    <label>远古绿龙</label>
+    <race>LP_GreenDragon</race>
+    <combatPower>3500</combatPower>
+    <lifeStages>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Green/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Green/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Green/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Green/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Green/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Green/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+    </lifeStages>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>远古绿龙</title>
+        <level>31~35</level>
+        <scores><li>27</li><li>12</li><li>25</li><li>20</li><li>17</li><li>19</li></scores>
+        <cr>22</cr>
+        <resistance>3</resistance>
+        <actionPoints>3</actionPoints>
+        <actions><li><action>Glance</action><cost>1</cost><cooldown>600</cooldown></li><li><action>Detect</action><cost>1</cost></li><li><action>Wing</action><cost>2</cost></li><li><action>Tail</action><cost>1</cost></li></actions>
+        <presenceRadius>24</presenceRadius>
+        <milestone>true</milestone>
+        <legendPoints>4</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_BlackDragon_Young</defName>
+    <label>青年黑龙</label>
+    <race>LP_BlackDragon</race>
+    <combatPower>600</combatPower>
+    <lifeStages>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Black/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Black/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Black/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Black/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Black/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Black/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+    </lifeStages>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>青年黑龙</title>
+        <level>10~12</level>
+        <scores><li>19</li><li>14</li><li>17</li><li>12</li><li>11</li><li>15</li></scores>
+        <cr>7</cr>
+        <resistance>0</resistance>
+        <actionPoints>0</actionPoints>
+        <actions></actions>
+        <presenceRadius>0</presenceRadius>
+        <milestone>false</milestone>
+        <legendPoints>0</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_BlackDragon_Adult</defName>
+    <label>成年黑龙</label>
+    <race>LP_BlackDragon</race>
+    <combatPower>1500</combatPower>
+    <lifeStages>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Black/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Black/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Black/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Black/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Black/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Black/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+    </lifeStages>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>成年黑龙</title>
+        <level>18~20</level>
+        <scores><li>23</li><li>14</li><li>21</li><li>14</li><li>13</li><li>17</li></scores>
+        <cr>14</cr>
+        <resistance>3</resistance>
+        <actionPoints>3</actionPoints>
+        <actions><li><action>Detect</action><cost>1</cost></li><li><action>Wing</action><cost>2</cost></li><li><action>Tail</action><cost>1</cost></li></actions>
+        <presenceRadius>18</presenceRadius>
+        <milestone>true</milestone>
+        <legendPoints>2</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_BlackDragon_Ancient</defName>
+    <label>远古黑龙</label>
+    <race>LP_BlackDragon</race>
+    <combatPower>3500</combatPower>
+    <lifeStages>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Black/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Black/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Black/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Black/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/Black/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/Black/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+    </lifeStages>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>远古黑龙</title>
+        <level>31~35</level>
+        <scores><li>27</li><li>14</li><li>25</li><li>16</li><li>15</li><li>19</li></scores>
+        <cr>21</cr>
+        <resistance>3</resistance>
+        <actionPoints>3</actionPoints>
+        <actions><li><action>Glance</action><cost>1</cost><cooldown>600</cooldown></li><li><action>Detect</action><cost>1</cost></li><li><action>Wing</action><cost>2</cost></li><li><action>Tail</action><cost>1</cost></li></actions>
+        <presenceRadius>24</presenceRadius>
+        <milestone>true</milestone>
+        <legendPoints>4</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_WhiteDragon_Young</defName>
+    <label>青年白龙</label>
+    <race>LP_WhiteDragon</race>
+    <combatPower>600</combatPower>
+    <lifeStages>
+      <li><bodyGraphicData><texPath>ChromaticDragons/White/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/White/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/White/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/White/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/White/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/White/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+    </lifeStages>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>青年白龙</title>
+        <level>10~12</level>
+        <scores><li>18</li><li>10</li><li>18</li><li>6</li><li>11</li><li>12</li></scores>
+        <cr>6</cr>
+        <resistance>0</resistance>
+        <actionPoints>0</actionPoints>
+        <actions></actions>
+        <presenceRadius>0</presenceRadius>
+        <milestone>false</milestone>
+        <legendPoints>0</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_WhiteDragon_Adult</defName>
+    <label>成年白龙</label>
+    <race>LP_WhiteDragon</race>
+    <combatPower>1500</combatPower>
+    <lifeStages>
+      <li><bodyGraphicData><texPath>ChromaticDragons/White/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/White/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/White/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/White/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/White/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/White/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+    </lifeStages>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>成年白龙</title>
+        <level>18~20</level>
+        <scores><li>22</li><li>10</li><li>22</li><li>8</li><li>12</li><li>12</li></scores>
+        <cr>13</cr>
+        <resistance>3</resistance>
+        <actionPoints>3</actionPoints>
+        <actions><li><action>Detect</action><cost>1</cost></li><li><action>Wing</action><cost>2</cost></li><li><action>Tail</action><cost>1</cost></li></actions>
+        <presenceRadius>18</presenceRadius>
+        <milestone>true</milestone>
+        <legendPoints>2</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_ChromaticDragonKindBase">
+    <defName>LP_WhiteDragon_Ancient</defName>
+    <label>远古白龙</label>
+    <race>LP_WhiteDragon</race>
+    <combatPower>3500</combatPower>
+    <lifeStages>
+      <li><bodyGraphicData><texPath>ChromaticDragons/White/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/White/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/White/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/White/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+      <li><bodyGraphicData><texPath>ChromaticDragons/White/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize></bodyGraphicData><dessicatedBodyGraphicData><texPath>ChromaticDragons/White/Naked_Hulk</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>1.5</drawSize><color>(0.55,0.52,0.48)</color></dessicatedBodyGraphicData></li>
+    </lifeStages>
+    <modExtensions>
+      <li Class="LichPhylactery.LP_LegendaryExtension">
+        <title>远古白龙</title>
+        <level>31~35</level>
+        <scores><li>26</li><li>10</li><li>26</li><li>10</li><li>13</li><li>14</li></scores>
+        <cr>20</cr>
+        <resistance>3</resistance>
+        <actionPoints>3</actionPoints>
+        <actions><li><action>Glance</action><cost>1</cost><cooldown>600</cooldown></li><li><action>Detect</action><cost>1</cost></li><li><action>Wing</action><cost>2</cost></li><li><action>Tail</action><cost>1</cost></li></actions>
+        <presenceRadius>24</presenceRadius>
+        <milestone>true</milestone>
+        <legendPoints>4</legendPoints>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+
+</Defs>

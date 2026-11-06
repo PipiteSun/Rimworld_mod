@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.120.0 圣武士第三个子职业「破誓者」（见 Source/Subclass_Oathbreaker.cs）。圣武士 3 级选（选定不能改），能力在圣武士 3 / 7 / 11 / 15 级获得。数值是神恩强度 100% 时的值。 -->
+<Defs>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Oathbreaker</defName>
+    <label>破誓者</label>
+    <description>背弃誓言、投身黑暗的堕落圣武士：没有戒律，也不会背誓。誓言之力每天 1 次（11 级 2 次、15 级 3 次），不耗神恩，用来散布恐惧、操控亡者和邪魔；憎恨灵光让自己和身边的亡者、邪魔近战更狠，最后化身恐惧之王。</description>
+    <parent>LP_Class_Paladin</parent><order>3</order><emblem>LP/Classes/Oathbreaker/Emblem_Oathbreaker</emblem><color>(0.6,0.15,0.2)</color>
+    <abilities><li><ability>LP_OB_DreadfulAspect</ability><level>3</level></li><li><ability>LP_OB_ControlUndead</ability><level>3</level></li><li><ability>LP_OB_AuraOfHate</ability><level>7</level></li>
+      <li><ability>LP_OB_SupernaturalResistance</ability><level>11</level></li><li><ability>LP_OB_DreadLord</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+
+  <!-- ===================== 状态 ===================== -->
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_OB_DreadLord</defName>
+    <label>恐惧之王</label>
+    <description>黑暗笼罩全身：每 4 秒半径 6 内的敌人受到死灵伤害（严重度 = 每次伤害），自己受到的远程伤害 ×0.5。</description>
+    <defaultLabelColor>(0.6,0.15,0.2)</defaultLabelColor>
+    <maxSeverity>1000</maxSeverity>
+    <everCurableByItem>false</everCurableByItem>
+  </HediffDef>
+
+  <!-- ===================== 能力 ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_OB_DreadfulAspect</defName>
+    <label>誓言之力·恐惧面容</label>
+    <description>露出黑暗的真容：半径 6 内的敌人（机械体除外）成功率 60% 被震慑并逃跑 10 秒（目标每比你高 1 级 −5%，最低 10%）。誓言之力 1，不耗神恩。破誓者，圣武士 3 级。</description>
+    <iconPath>LP/Classes/Oathbreaker/DreadfulAspect</iconPath>
+    <hostile>true</hostile>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <verbProperties><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>OBAspect</effect><radius>6</radius><duration>600</duration><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_OB_ControlUndead</defName>
+    <label>誓言之力·操控亡者</label>
+    <description>让 15 格内一个敌对的亡者或邪魔（巫妖、死灵造物、蹒跚尸等变异体、死亡骑士、半巫妖、深渊与九狱的生物）倒戈：成功率 80%（目标每比你高 1 级 −5%，最低 10%），成功后加入你的阵营 1 天，到期多半挣脱、有 30% 愿意留下。剧情首领和传奇单位不受影响。誓言之力 1，不耗神恩。破誓者，圣武士 3 级。</description>
+    <iconPath>LP/Classes/Oathbreaker/ControlUndead</iconPath>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <verbProperties><range>15</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>OBControl</effect><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_OB_AuraOfHate</defName>
+    <label>憎恨灵光</label>
+    <description>被动：你和半径 5 内同阵营的亡者、邪魔近战伤害 ×(1.1 + 魅力调整值 × 0.02)（魅力调整值为负按 0 算）。几个破誓者的灵光不叠加，取最强的。破誓者，圣武士 7 级。</description>
+    <iconPath>LP/Classes/Oathbreaker/AuraOfHate</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_OB_SupernaturalResistance</defName>
+    <label>超凡抗性</label>
+    <description>被动：受到的利器、钝器伤害（刀剑、钝器、子弹、箭等）×0.75；神圣伤害和银武器不受这个减免。破誓者，圣武士 11 级。</description>
+    <iconPath>LP/Classes/Oathbreaker/SupernaturalResistance</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_OB_DreadLord</defName>
+    <label>恐惧之王</label>
+    <description>化身恐惧之王 60 秒：施放时先对半径 6 放一次恐惧面容（不耗誓言之力）；之后每 4 秒半径 6 内的敌人（不含倒地的）受 6 × 神恩强度 死灵伤害，自己受到的远程伤害 ×0.5。不耗神恩，每天一次。破誓者，圣武士 15 级。</description>
+    <iconPath>LP/Classes/Oathbreaker/DreadLord</iconPath>
+    <hostile>true</hostile>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>OBDreadLord</effect><power>6</power><radius>6</radius><duration>3600</duration><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+</Defs>

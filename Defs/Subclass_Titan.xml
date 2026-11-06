@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.115.0 战士第三个子职业「泰坦战士」（见 Source/Subclass_Titan.cs）。战士 3 级选（选定不能改），能力在战士 3 / 7 / 11 / 15 级获得。 -->
+<Defs>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Titan</defName>
+    <label>泰坦战士</label>
+    <description>身怀远古巨人血脉的战士：等级越高身体越大（体型 ×(1 + 2.5% × 战士等级)，20 级 ×1.5，传奇等级接着长，最多 ×2.0；画面一起变大），部位生命额外 +3%/级。近战欺负个子小的，跺脚震倒一片，最后能短暂化身泰坦。</description>
+    <parent>LP_Class_Fighter</parent><order>3</order><emblem>LP/Classes/Titan/Emblem_Titan</emblem><color>(0.78,0.62,0.42)</color>
+    <abilities><li><ability>LP_TT_TitanBody</ability><level>3</level></li><li><ability>LP_TT_MightyGrip</ability><level>3</level></li><li><ability>LP_TT_Stomp</ability><level>3</level></li>
+      <li><ability>LP_TT_Immovable</ability><level>7</level></li><li><ability>LP_TT_Titanize</ability><level>11</level></li><li><ability>LP_TT_AncientTitan</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+
+  <!-- ===================== 状态 ===================== -->
+  <HediffDef>
+    <defName>LP_TT_BodyOn</defName>
+    <label>泰坦之躯</label>
+    <description>远古巨人的血脉：体型、部位生命随战士等级增长；巨力之握让搬运容量变大，不动如山让疼痛休克阈值 +10%。</description>
+    <hediffClass>LichPhylactery.Hediff_TitanBody</hediffClass><isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.78,0.62,0.42)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_TT_Titanized</defName>
+    <label>泰坦化</label>
+    <description>化身泰坦：体型再 ×1.25、部位生命 ×1.25、近战伤害 ×1.25、移动速度 ×0.9。结束后疲惫（休息值 −20%；远古泰坦不会）。</description>
+    <hediffClass>LichPhylactery.Hediff_Titanized</hediffClass>
+    <defaultLabelColor>(0.78,0.62,0.42)</defaultLabelColor>
+    <stages><li><statFactors><MeleeDamageFactor>1.25</MeleeDamageFactor><MoveSpeed>0.9</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+
+  <!-- ===================== 能力 ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_TT_TitanBody</defName>
+    <label>泰坦之躯</label>
+    <description>被动：体型 ×(1 + 2.5% × 战士等级)（20 级 ×1.5；战士满 20 级后冒险者传奇等级接着算，最多 ×2.0），影响被近战击中的概率、食量、背包负重等原版效果，画面（身体、头、衣服、武器）按 √体型 放大。部位生命在职业等级成长之外再 +3% × 战士等级（20 级 +60%）。泰坦战士，战士 3 级。</description>
+    <iconPath>LP/Classes/Titan/TitanBody</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_TT_MightyGrip</defName>
+    <label>巨力之握</label>
+    <description>被动：搬运容量 +2% × 战士等级。近战打中体型比自己小的敌人时伤害 ×1.15，并有 25% 成功率把它击退 1 格。泰坦战士，战士 3 级。</description>
+    <iconPath>LP/Classes/Titan/MightyGrip</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_TT_Stomp</defName>
+    <label>撼地践踏</label>
+    <description>重重一跺：半径 2.9 内的敌人受到 10 + 力量调整值 × 3 点钝器伤害；体型比自己小的敌人还会被震倒（眩晕 2 秒），成功率 60% + 体型差 × 30%，最高 95%。不伤友军。斗志 2，冷却 15 秒。泰坦战士，战士 3 级。</description>
+    <iconPath>LP/Classes/Titan/Stomp</iconPath>
+    <cooldownTicksRange>900</cooldownTicksRange>
+    <verbProperties><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>TTStomp</effect><cost>2</cost><radius>2.9</radius><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_TT_Immovable</defName>
+    <label>不动如山</label>
+    <description>被动：疼痛休克阈值 +10%，不会被击退、推开、绊开，被眩晕的时长减半。泰坦战士，战士 7 级。</description>
+    <iconPath>LP/Classes/Titan/Immovable</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_TT_Titanize</defName>
+    <label>泰坦化</label>
+    <description>60 秒内化身泰坦：体型再 ×1.25、部位生命 ×1.25、近战伤害 ×1.25、移动速度 ×0.9。结束后疲惫：休息值 −20%。斗志 3，每天一次。泰坦战士，战士 11 级。</description>
+    <iconPath>LP/Classes/Titan/Titanize</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>TTTitanize</effect><cost>3</cost><duration>3600</duration><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_TT_AncientTitan</defName>
+    <label>远古泰坦</label>
+    <description>被动：泰坦化持续 120 秒，结束后不再疲惫；泰坦化期间每次近战命中有 20% 成功率触发一次小型践踏（半径 1.9，伤害减半，不耗斗志）。泰坦战士，战士 15 级。</description>
+    <iconPath>LP/Classes/Titan/AncientTitan</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+</Defs>

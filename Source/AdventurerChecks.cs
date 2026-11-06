@@ -77,6 +77,9 @@ namespace LichPhylactery {
     float m1=Adventurer.Milestone(c1,"testMilestone",100f),m2=Adventurer.Milestone(c1,"testMilestone",100f);
     s.adventurerXpPercent=200;float doubled=Adventurer.GainXP(c2,100f);s.adventurerXpPercent=100;
     Check(Near(m1,100f) && m2==0f && Near(doubled,200f),"milestone pays once per key; XP multiplier 200% doubles XP");
+    // 2026-11-04 热修：基础 ×1.5 同时作用于按比例的经验和不乘设置的经验（里程碑份额等）
+    Adventurer.BaseXpBoost=1.5f;float bs=Adventurer.GainXP(c2,100f),bu=Adventurer.GainXP(c2,100f,false);Adventurer.BaseXpBoost=1f;
+    Check(Near(bs,150f) && Near(bu,150f),"base adventurer XP boost ×1.5 applies to scaled and unscaled XP");
     // 训练只到 3 级
     var t=AdvPawn();Adventurer.GainTrainingXP(t,250f);Adventurer.GainTrainingXP(t,250f);
     Check(Adventurer.Get(t).level==3 && Near(Adventurer.Get(t).xp,300f),"training XP stops at level 3");

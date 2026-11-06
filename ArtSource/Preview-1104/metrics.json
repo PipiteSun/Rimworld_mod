@@ -1,0 +1,10376 @@
+{
+ "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   7,
+   0.261
+  ],
+  "after": [
+   7,
+   0.186
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   5,
+   0.207
+  ],
+  "after": [
+   7,
+   0.164
+  ],
+  "geom": "None",
+  "outline_add": 0.98,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   7,
+   0.316
+  ],
+  "after": [
+   14,
+   0.265
+  ],
+  "geom": "None",
+  "outline_add": 0.88,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Female_east.png": {
+  "role": "worn",
+  "before": [
+   7,
+   0.283
+  ],
+  "after": [
+   6,
+   0.203
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Female_north.png": {
+  "role": "worn",
+  "before": [
+   5,
+   0.224
+  ],
+  "after": [
+   7,
+   0.198
+  ],
+  "geom": "None",
+  "outline_add": 0.97,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Female_south.png": {
+  "role": "worn",
+  "before": [
+   7,
+   0.352
+  ],
+  "after": [
+   11,
+   0.299
+  ],
+  "geom": "None",
+  "outline_add": 0.86,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   7,
+   0.251
+  ],
+  "after": [
+   7,
+   0.196
+  ],
+  "geom": "None",
+  "outline_add": 0.82,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   5,
+   0.185
+  ],
+  "after": [
+   7,
+   0.148
+  ],
+  "geom": "None",
+  "outline_add": 0.97,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   7,
+   0.29
+  ],
+  "after": [
+   14,
+   0.234
+  ],
+  "geom": "None",
+  "outline_add": 0.92,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Icon.png": {
+  "role": "icon",
+  "before": [
+   5,
+   0.457
+  ],
+  "after": [
+   5,
+   0.431
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Male_east.png": {
+  "role": "worn",
+  "before": [
+   7,
+   0.304
+  ],
+  "after": [
+   6,
+   0.222
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Male_north.png": {
+  "role": "worn",
+  "before": [
+   5,
+   0.235
+  ],
+  "after": [
+   7,
+   0.208
+  ],
+  "geom": "None",
+  "outline_add": 0.98,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Male_south.png": {
+  "role": "worn",
+  "before": [
+   6,
+   0.358
+  ],
+  "after": [
+   9,
+   0.309
+  ],
+  "geom": "None",
+  "outline_add": 0.82,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   7,
+   0.317
+  ],
+  "after": [
+   6,
+   0.233
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   5,
+   0.294
+  ],
+  "after": [
+   7,
+   0.269
+  ],
+  "geom": "None",
+  "outline_add": 0.98,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\AdventurerClothes\\AdventurerClothes_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   6,
+   0.458
+  ],
+  "after": [
+   9,
+   0.337
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   280,
+   0.304
+  ],
+  "after": [
+   10,
+   0.217
+  ],
+  "geom": "None",
+  "outline_add": 2.36,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   140,
+   0.215
+  ],
+  "after": [
+   9,
+   0.178
+  ],
+  "geom": "None",
+  "outline_add": 2.53,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   315,
+   0.376
+  ],
+  "after": [
+   13,
+   0.261
+  ],
+  "geom": "None",
+  "outline_add": 2.4,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Female_east.png": {
+  "role": "worn",
+  "before": [
+   225,
+   0.434
+  ],
+  "after": [
+   12,
+   0.323
+  ],
+  "geom": "None",
+  "outline_add": 2.01,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Female_north.png": {
+  "role": "worn",
+  "before": [
+   118,
+   0.237
+  ],
+  "after": [
+   11,
+   0.194
+  ],
+  "geom": "None",
+  "outline_add": 2.24,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Female_south.png": {
+  "role": "worn",
+  "before": [
+   274,
+   0.536
+  ],
+  "after": [
+   12,
+   0.371
+  ],
+  "geom": "None",
+  "outline_add": 2.29,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   276,
+   0.36
+  ],
+  "after": [
+   14,
+   0.258
+  ],
+  "geom": "None",
+  "outline_add": 2.12,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   151,
+   0.233
+  ],
+  "after": [
+   10,
+   0.228
+  ],
+  "geom": "None",
+  "outline_add": 3.05,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   319,
+   0.435
+  ],
+  "after": [
+   13,
+   0.301
+  ],
+  "geom": "None",
+  "outline_add": 2.73,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Icon.png": {
+  "role": "icon",
+  "before": [
+   205,
+   0.628
+  ],
+  "after": [
+   14,
+   0.603
+  ],
+  "geom": "('fit', (27, 3, 101, 125), 0.9)",
+  "outline_add": 1.25,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Male_east.png": {
+  "role": "worn",
+  "before": [
+   222,
+   0.443
+  ],
+  "after": [
+   14,
+   0.334
+  ],
+  "geom": "None",
+  "outline_add": 2.44,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Male_north.png": {
+  "role": "worn",
+  "before": [
+   122,
+   0.236
+  ],
+  "after": [
+   10,
+   0.198
+  ],
+  "geom": "None",
+  "outline_add": 2.42,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Male_south.png": {
+  "role": "worn",
+  "before": [
+   262,
+   0.526
+  ],
+  "after": [
+   13,
+   0.389
+  ],
+  "geom": "None",
+  "outline_add": 2.41,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   188,
+   0.45
+  ],
+  "after": [
+   12,
+   0.359
+  ],
+  "geom": "None",
+  "outline_add": 2.77,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   97,
+   0.261
+  ],
+  "after": [
+   11,
+   0.222
+  ],
+  "geom": "None",
+  "outline_add": 2.92,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ArchmageRobe\\ArchmageRobe_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   217,
+   0.603
+  ],
+  "after": [
+   13,
+   0.394
+  ],
+  "geom": "None",
+  "outline_add": 2.91,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BardBeret\\BardBeret_east.png": {
+  "role": "worn",
+  "before": [
+   188,
+   0.269
+  ],
+  "after": [
+   11,
+   0.265
+  ],
+  "geom": "None",
+  "outline_add": 1.64,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BardBeret\\BardBeret_Icon.png": {
+  "role": "icon",
+  "before": [
+   135,
+   0.398
+  ],
+  "after": [
+   12,
+   0.398
+  ],
+  "geom": "('fit', (3, 32, 125, 96), 0.9)",
+  "outline_add": 0.44,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BardBeret\\BardBeret_north.png": {
+  "role": "worn",
+  "before": [
+   65,
+   0.162
+  ],
+  "after": [
+   9,
+   0.165
+  ],
+  "geom": "None",
+  "outline_add": 1.53,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BardBeret\\BardBeret_south.png": {
+  "role": "worn",
+  "before": [
+   140,
+   0.286
+  ],
+  "after": [
+   13,
+   0.294
+  ],
+  "geom": "None",
+  "outline_add": 2.08,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   275,
+   0.435
+  ],
+  "after": [
+   12,
+   0.382
+  ],
+  "geom": "None",
+  "outline_add": 2.99,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   144,
+   0.286
+  ],
+  "after": [
+   12,
+   0.248
+  ],
+  "geom": "None",
+  "outline_add": 3.17,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   348,
+   0.444
+  ],
+  "after": [
+   13,
+   0.381
+  ],
+  "geom": "None",
+  "outline_add": 2.86,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Female_east.png": {
+  "role": "worn",
+  "before": [
+   208,
+   0.515
+  ],
+  "after": [
+   14,
+   0.422
+  ],
+  "geom": "None",
+  "outline_add": 2.47,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Female_north.png": {
+  "role": "worn",
+  "before": [
+   109,
+   0.346
+  ],
+  "after": [
+   12,
+   0.265
+  ],
+  "geom": "None",
+  "outline_add": 2.8,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Female_south.png": {
+  "role": "worn",
+  "before": [
+   271,
+   0.539
+  ],
+  "after": [
+   14,
+   0.462
+  ],
+  "geom": "None",
+  "outline_add": 2.89,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   244,
+   0.457
+  ],
+  "after": [
+   12,
+   0.34
+  ],
+  "geom": "None",
+  "outline_add": 2.35,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   167,
+   0.285
+  ],
+  "after": [
+   13,
+   0.225
+  ],
+  "geom": "None",
+  "outline_add": 2.81,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   348,
+   0.462
+  ],
+  "after": [
+   13,
+   0.367
+  ],
+  "geom": "None",
+  "outline_add": 2.79,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Icon.png": {
+  "role": "icon",
+  "before": [
+   188,
+   0.675
+  ],
+  "after": [
+   16,
+   0.658
+  ],
+  "geom": "('fit', (24, 15, 103, 113), 1.0840816326530611)",
+  "outline_add": 0.94,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Male_east.png": {
+  "role": "worn",
+  "before": [
+   189,
+   0.523
+  ],
+  "after": [
+   14,
+   0.436
+  ],
+  "geom": "None",
+  "outline_add": 2.61,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Male_north.png": {
+  "role": "worn",
+  "before": [
+   119,
+   0.339
+  ],
+  "after": [
+   12,
+   0.276
+  ],
+  "geom": "None",
+  "outline_add": 2.92,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Male_south.png": {
+  "role": "worn",
+  "before": [
+   266,
+   0.538
+  ],
+  "after": [
+   14,
+   0.45
+  ],
+  "geom": "None",
+  "outline_add": 2.81,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   166,
+   0.558
+  ],
+  "after": [
+   14,
+   0.489
+  ],
+  "geom": "None",
+  "outline_add": 2.9,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   103,
+   0.425
+  ],
+  "after": [
+   12,
+   0.294
+  ],
+  "geom": "None",
+  "outline_add": 3.09,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BardFinery\\BardFinery_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   209,
+   0.645
+  ],
+  "after": [
+   14,
+   0.521
+  ],
+  "geom": "None",
+  "outline_add": 3.24,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   180,
+   0.456
+  ],
+  "after": [
+   14,
+   0.345
+  ],
+  "geom": "None",
+  "outline_add": 1.74,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   159,
+   0.329
+  ],
+  "after": [
+   12,
+   0.275
+  ],
+  "geom": "None",
+  "outline_add": 2.59,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   253,
+   0.403
+  ],
+  "after": [
+   13,
+   0.317
+  ],
+  "geom": "None",
+  "outline_add": 2.51,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Female_east.png": {
+  "role": "worn",
+  "before": [
+   157,
+   0.511
+  ],
+  "after": [
+   13,
+   0.419
+  ],
+  "geom": "None",
+  "outline_add": 2.29,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Female_north.png": {
+  "role": "worn",
+  "before": [
+   127,
+   0.371
+  ],
+  "after": [
+   13,
+   0.283
+  ],
+  "geom": "None",
+  "outline_add": 2.95,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Female_south.png": {
+  "role": "worn",
+  "before": [
+   224,
+   0.468
+  ],
+  "after": [
+   13,
+   0.345
+  ],
+  "geom": "None",
+  "outline_add": 2.89,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   182,
+   0.448
+  ],
+  "after": [
+   13,
+   0.342
+  ],
+  "geom": "None",
+  "outline_add": 1.55,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   168,
+   0.31
+  ],
+  "after": [
+   13,
+   0.24
+  ],
+  "geom": "None",
+  "outline_add": 2.27,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   267,
+   0.387
+  ],
+  "after": [
+   14,
+   0.303
+  ],
+  "geom": "None",
+  "outline_add": 2.26,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Icon.png": {
+  "role": "icon",
+  "before": [
+   174,
+   0.641
+  ],
+  "after": [
+   14,
+   0.593
+  ],
+  "geom": "('fit', (28, 23, 99, 105), 1.295609756097561)",
+  "outline_add": 0.62,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Male_east.png": {
+  "role": "worn",
+  "before": [
+   161,
+   0.537
+  ],
+  "after": [
+   13,
+   0.44
+  ],
+  "geom": "None",
+  "outline_add": 2.53,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Male_north.png": {
+  "role": "worn",
+  "before": [
+   145,
+   0.376
+  ],
+  "after": [
+   12,
+   0.289
+  ],
+  "geom": "None",
+  "outline_add": 3.04,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Male_south.png": {
+  "role": "worn",
+  "before": [
+   213,
+   0.479
+  ],
+  "after": [
+   14,
+   0.355
+  ],
+  "geom": "None",
+  "outline_add": 2.83,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   145,
+   0.567
+  ],
+  "after": [
+   13,
+   0.457
+  ],
+  "geom": "None",
+  "outline_add": 2.5,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   117,
+   0.47
+  ],
+  "after": [
+   13,
+   0.326
+  ],
+  "geom": "None",
+  "outline_add": 3.44,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BattleClericBreastplate\\BattleClericBreastplate_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   186,
+   0.6
+  ],
+  "after": [
+   13,
+   0.409
+  ],
+  "geom": "None",
+  "outline_add": 3.29,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BeardedHelm\\BeardedHelm_east.png": {
+  "role": "worn",
+  "before": [
+   253,
+   0.51
+  ],
+  "after": [
+   14,
+   0.386
+  ],
+  "geom": "None",
+  "outline_add": 2.08,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BeardedHelm\\BeardedHelm_Icon.png": {
+  "role": "icon",
+  "before": [
+   224,
+   0.708
+  ],
+  "after": [
+   13,
+   0.657
+  ],
+  "geom": "('fit', (30, 3, 98, 125), 0.9)",
+  "outline_add": 0.64,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BeardedHelm\\BeardedHelm_north.png": {
+  "role": "worn",
+  "before": [
+   82,
+   0.456
+  ],
+  "after": [
+   11,
+   0.364
+  ],
+  "geom": "None",
+  "outline_add": 2.56,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\BeardedHelm\\BeardedHelm_south.png": {
+  "role": "worn",
+  "before": [
+   275,
+   0.635
+  ],
+  "after": [
+   14,
+   0.431
+  ],
+  "geom": "None",
+  "outline_add": 1.86,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   297,
+   0.445
+  ],
+  "after": [
+   12,
+   0.282
+  ],
+  "geom": "None",
+  "outline_add": 1.46,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   210,
+   0.36
+  ],
+  "after": [
+   12,
+   0.26
+  ],
+  "geom": "None",
+  "outline_add": 2.38,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   282,
+   0.529
+  ],
+  "after": [
+   13,
+   0.347
+  ],
+  "geom": "None",
+  "outline_add": 2.41,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Female_east.png": {
+  "role": "worn",
+  "before": [
+   262,
+   0.486
+  ],
+  "after": [
+   14,
+   0.344
+  ],
+  "geom": "None",
+  "outline_add": 2.22,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Female_north.png": {
+  "role": "worn",
+  "before": [
+   197,
+   0.419
+  ],
+  "after": [
+   12,
+   0.29
+  ],
+  "geom": "None",
+  "outline_add": 2.78,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Female_south.png": {
+  "role": "worn",
+  "before": [
+   253,
+   0.6
+  ],
+  "after": [
+   13,
+   0.369
+  ],
+  "geom": "None",
+  "outline_add": 2.86,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   311,
+   0.436
+  ],
+  "after": [
+   12,
+   0.276
+  ],
+  "geom": "None",
+  "outline_add": 0.97,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   215,
+   0.346
+  ],
+  "after": [
+   12,
+   0.241
+  ],
+  "geom": "None",
+  "outline_add": 1.88,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   300,
+   0.504
+  ],
+  "after": [
+   13,
+   0.344
+  ],
+  "geom": "None",
+  "outline_add": 2.1,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Icon.png": {
+  "role": "icon",
+  "before": [
+   217,
+   0.699
+  ],
+  "after": [
+   14,
+   0.715
+  ],
+  "geom": "('fit', (22, 3, 105, 125), 0.9)",
+  "outline_add": 1.69,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Male_east.png": {
+  "role": "worn",
+  "before": [
+   252,
+   0.506
+  ],
+  "after": [
+   12,
+   0.341
+  ],
+  "geom": "None",
+  "outline_add": 2.13,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Male_north.png": {
+  "role": "worn",
+  "before": [
+   187,
+   0.414
+  ],
+  "after": [
+   13,
+   0.306
+  ],
+  "geom": "None",
+  "outline_add": 2.77,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Male_south.png": {
+  "role": "worn",
+  "before": [
+   257,
+   0.607
+  ],
+  "after": [
+   14,
+   0.391
+  ],
+  "geom": "None",
+  "outline_add": 2.75,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   242,
+   0.528
+  ],
+  "after": [
+   14,
+   0.355
+  ],
+  "geom": "None",
+  "outline_add": 2.38,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   169,
+   0.503
+  ],
+  "after": [
+   12,
+   0.321
+  ],
+  "geom": "None",
+  "outline_add": 3.19,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CelestialPanoply\\CelestialPanoply_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   226,
+   0.676
+  ],
+  "after": [
+   13,
+   0.453
+  ],
+  "geom": "None",
+  "outline_add": 3.32,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   263,
+   0.9
+  ],
+  "after": [
+   7,
+   0.219
+  ],
+  "geom": "None",
+  "outline_add": 0.92,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   189,
+   0.899
+  ],
+  "after": [
+   8,
+   0.194
+  ],
+  "geom": "None",
+  "outline_add": 2.25,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   269,
+   0.9
+  ],
+  "after": [
+   9,
+   0.203
+  ],
+  "geom": "None",
+  "outline_add": 2.12,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Female_east.png": {
+  "role": "worn",
+  "before": [
+   223,
+   0.882
+  ],
+  "after": [
+   9,
+   0.25
+  ],
+  "geom": "None",
+  "outline_add": 1.97,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Female_north.png": {
+  "role": "worn",
+  "before": [
+   159,
+   0.828
+  ],
+  "after": [
+   9,
+   0.218
+  ],
+  "geom": "None",
+  "outline_add": 2.9,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Female_south.png": {
+  "role": "worn",
+  "before": [
+   228,
+   0.828
+  ],
+  "after": [
+   8,
+   0.229
+  ],
+  "geom": "None",
+  "outline_add": 2.65,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   260,
+   0.895
+  ],
+  "after": [
+   8,
+   0.207
+  ],
+  "geom": "None",
+  "outline_add": 1.37,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   197,
+   0.897
+  ],
+  "after": [
+   9,
+   0.159
+  ],
+  "geom": "None",
+  "outline_add": 2.24,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   285,
+   0.896
+  ],
+  "after": [
+   9,
+   0.171
+  ],
+  "geom": "None",
+  "outline_add": 2.07,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Icon.png": {
+  "role": "icon",
+  "before": [
+   190,
+   0.722
+  ],
+  "after": [
+   11,
+   0.236
+  ],
+  "geom": "('fit', (18, 5, 109, 122), 0.908034188034188)",
+  "outline_add": 1.22,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Male_east.png": {
+  "role": "worn",
+  "before": [
+   208,
+   0.859
+  ],
+  "after": [
+   9,
+   0.223
+  ],
+  "geom": "None",
+  "outline_add": 2.2,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Male_north.png": {
+  "role": "worn",
+  "before": [
+   155,
+   0.771
+  ],
+  "after": [
+   8,
+   0.227
+  ],
+  "geom": "None",
+  "outline_add": 2.96,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Male_south.png": {
+  "role": "worn",
+  "before": [
+   214,
+   0.747
+  ],
+  "after": [
+   9,
+   0.169
+  ],
+  "geom": "None",
+  "outline_add": 2.56,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   197,
+   0.8
+  ],
+  "after": [
+   9,
+   0.224
+  ],
+  "geom": "None",
+  "outline_add": 2.37,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   130,
+   0.677
+  ],
+  "after": [
+   9,
+   0.164
+  ],
+  "geom": "None",
+  "outline_add": 3.11,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ChainShirt\\ChainShirt_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   179,
+   0.671
+  ],
+  "after": [
+   9,
+   0.223
+  ],
+  "geom": "None",
+  "outline_add": 2.97,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   317,
+   0.317
+  ],
+  "after": [
+   13,
+   0.227
+  ],
+  "geom": "None",
+  "outline_add": 1.8,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   240,
+   0.28
+  ],
+  "after": [
+   9,
+   0.173
+  ],
+  "geom": "None",
+  "outline_add": 2.48,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   340,
+   0.397
+  ],
+  "after": [
+   12,
+   0.278
+  ],
+  "geom": "None",
+  "outline_add": 2.58,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Female_east.png": {
+  "role": "worn",
+  "before": [
+   284,
+   0.335
+  ],
+  "after": [
+   12,
+   0.253
+  ],
+  "geom": "None",
+  "outline_add": 2.32,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Female_north.png": {
+  "role": "worn",
+  "before": [
+   205,
+   0.321
+  ],
+  "after": [
+   8,
+   0.212
+  ],
+  "geom": "None",
+  "outline_add": 2.84,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Female_south.png": {
+  "role": "worn",
+  "before": [
+   304,
+   0.444
+  ],
+  "after": [
+   12,
+   0.321
+  ],
+  "geom": "None",
+  "outline_add": 2.92,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   315,
+   0.31
+  ],
+  "after": [
+   11,
+   0.215
+  ],
+  "geom": "None",
+  "outline_add": 1.56,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   244,
+   0.267
+  ],
+  "after": [
+   10,
+   0.174
+  ],
+  "geom": "None",
+  "outline_add": 2.59,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   346,
+   0.387
+  ],
+  "after": [
+   14,
+   0.281
+  ],
+  "geom": "None",
+  "outline_add": 2.5,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Icon.png": {
+  "role": "icon",
+  "before": [
+   239,
+   0.535
+  ],
+  "after": [
+   14,
+   0.585
+  ],
+  "geom": "('fit', (20, 3, 107, 125), 0.9)",
+  "outline_add": 1.58,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Male_east.png": {
+  "role": "worn",
+  "before": [
+   248,
+   0.357
+  ],
+  "after": [
+   10,
+   0.273
+  ],
+  "geom": "None",
+  "outline_add": 2.3,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Male_north.png": {
+  "role": "worn",
+  "before": [
+   194,
+   0.332
+  ],
+  "after": [
+   8,
+   0.203
+  ],
+  "geom": "None",
+  "outline_add": 3.07,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Male_south.png": {
+  "role": "worn",
+  "before": [
+   270,
+   0.464
+  ],
+  "after": [
+   11,
+   0.319
+  ],
+  "geom": "None",
+  "outline_add": 3.16,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   238,
+   0.364
+  ],
+  "after": [
+   12,
+   0.291
+  ],
+  "geom": "None",
+  "outline_add": 2.9,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   159,
+   0.398
+  ],
+  "after": [
+   10,
+   0.267
+  ],
+  "geom": "None",
+  "outline_add": 3.67,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CourtAttire\\CourtAttire_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   241,
+   0.57
+  ],
+  "after": [
+   12,
+   0.384
+  ],
+  "geom": "None",
+  "outline_add": 3.56,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CrownOfBone\\CrownOfBone_east.png": {
+  "role": "worn",
+  "before": [
+   158,
+   0.699
+  ],
+  "after": [
+   14,
+   0.539
+  ],
+  "geom": "None",
+  "outline_add": 2.9,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CrownOfBone\\CrownOfBone_Icon.png": {
+  "role": "icon",
+  "before": [
+   250,
+   0.698
+  ],
+  "after": [
+   11,
+   0.633
+  ],
+  "geom": "('fit', (21, 30, 106, 98), 1.2498823529411764)",
+  "outline_add": 0.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CrownOfBone\\CrownOfBone_north.png": {
+  "role": "worn",
+  "before": [
+   84,
+   0.985
+  ],
+  "after": [
+   14,
+   0.801
+  ],
+  "geom": "None",
+  "outline_add": 2.44,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\CrownOfBone\\CrownOfBone_south.png": {
+  "role": "worn",
+  "before": [
+   208,
+   0.726
+  ],
+  "after": [
+   13,
+   0.52
+  ],
+  "geom": "None",
+  "outline_add": 2.35,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   203,
+   0.454
+  ],
+  "after": [
+   14,
+   0.25
+  ],
+  "geom": "None",
+  "outline_add": 0.85,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   207,
+   0.381
+  ],
+  "after": [
+   13,
+   0.261
+  ],
+  "geom": "None",
+  "outline_add": 1.85,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   238,
+   0.496
+  ],
+  "after": [
+   13,
+   0.327
+  ],
+  "geom": "None",
+  "outline_add": 1.92,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Female_east.png": {
+  "role": "worn",
+  "before": [
+   183,
+   0.505
+  ],
+  "after": [
+   14,
+   0.302
+  ],
+  "geom": "None",
+  "outline_add": 2.12,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Female_north.png": {
+  "role": "worn",
+  "before": [
+   194,
+   0.439
+  ],
+  "after": [
+   12,
+   0.287
+  ],
+  "geom": "None",
+  "outline_add": 2.49,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Female_south.png": {
+  "role": "worn",
+  "before": [
+   224,
+   0.569
+  ],
+  "after": [
+   14,
+   0.354
+  ],
+  "geom": "None",
+  "outline_add": 2.44,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   200,
+   0.453
+  ],
+  "after": [
+   14,
+   0.274
+  ],
+  "geom": "None",
+  "outline_add": 1.17,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   219,
+   0.38
+  ],
+  "after": [
+   14,
+   0.28
+  ],
+  "geom": "None",
+  "outline_add": 1.93,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   241,
+   0.488
+  ],
+  "after": [
+   14,
+   0.328
+  ],
+  "geom": "None",
+  "outline_add": 1.49,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Icon.png": {
+  "role": "icon",
+  "before": [
+   185,
+   0.682
+  ],
+  "after": [
+   15,
+   0.697
+  ],
+  "geom": "('fit', (14, 3, 112, 125), 0.9)",
+  "outline_add": 1.1,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Male_east.png": {
+  "role": "worn",
+  "before": [
+   179,
+   0.521
+  ],
+  "after": [
+   13,
+   0.298
+  ],
+  "geom": "None",
+  "outline_add": 2.39,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Male_north.png": {
+  "role": "worn",
+  "before": [
+   193,
+   0.44
+  ],
+  "after": [
+   11,
+   0.285
+  ],
+  "geom": "None",
+  "outline_add": 2.42,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Male_south.png": {
+  "role": "worn",
+  "before": [
+   208,
+   0.566
+  ],
+  "after": [
+   13,
+   0.343
+  ],
+  "geom": "None",
+  "outline_add": 2.44,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   158,
+   0.553
+  ],
+  "after": [
+   14,
+   0.331
+  ],
+  "geom": "None",
+  "outline_add": 2.72,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   162,
+   0.535
+  ],
+  "after": [
+   12,
+   0.371
+  ],
+  "geom": "None",
+  "outline_add": 3.14,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DeathknightPlate\\DeathknightPlate_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   192,
+   0.673
+  ],
+  "after": [
+   12,
+   0.441
+  ],
+  "geom": "None",
+  "outline_add": 3.12,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DragonHeadHelm\\DragonHeadHelm_east.png": {
+  "role": "worn",
+  "before": [
+   220,
+   0.496
+  ],
+  "after": [
+   14,
+   0.412
+  ],
+  "geom": "None",
+  "outline_add": 2.15,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DragonHeadHelm\\DragonHeadHelm_Icon.png": {
+  "role": "icon",
+  "before": [
+   219,
+   0.697
+  ],
+  "after": [
+   10,
+   0.594
+  ],
+  "geom": "('fit', (19, 18, 109, 110), 1.154782608695652)",
+  "outline_add": 0.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DragonHeadHelm\\DragonHeadHelm_north.png": {
+  "role": "worn",
+  "before": [
+   122,
+   0.506
+  ],
+  "after": [
+   13,
+   0.31
+  ],
+  "geom": "None",
+  "outline_add": 2.05,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DragonHeadHelm\\DragonHeadHelm_south.png": {
+  "role": "worn",
+  "before": [
+   253,
+   0.579
+  ],
+  "after": [
+   13,
+   0.414
+  ],
+  "geom": "None",
+  "outline_add": 2.01,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   239,
+   0.534
+  ],
+  "after": [
+   12,
+   0.326
+  ],
+  "geom": "None",
+  "outline_add": 0.95,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   212,
+   0.516
+  ],
+  "after": [
+   13,
+   0.311
+  ],
+  "geom": "None",
+  "outline_add": 1.48,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   327,
+   0.514
+  ],
+  "after": [
+   13,
+   0.32
+  ],
+  "geom": "None",
+  "outline_add": 1.44,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Female_east.png": {
+  "role": "worn",
+  "before": [
+   222,
+   0.564
+  ],
+  "after": [
+   13,
+   0.364
+  ],
+  "geom": "None",
+  "outline_add": 1.91,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Female_north.png": {
+  "role": "worn",
+  "before": [
+   194,
+   0.542
+  ],
+  "after": [
+   14,
+   0.333
+  ],
+  "geom": "None",
+  "outline_add": 2.18,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Female_south.png": {
+  "role": "worn",
+  "before": [
+   302,
+   0.55
+  ],
+  "after": [
+   12,
+   0.337
+  ],
+  "geom": "None",
+  "outline_add": 2.24,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   249,
+   0.518
+  ],
+  "after": [
+   12,
+   0.319
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   209,
+   0.49
+  ],
+  "after": [
+   13,
+   0.311
+  ],
+  "geom": "None",
+  "outline_add": 1.16,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   341,
+   0.49
+  ],
+  "after": [
+   13,
+   0.327
+  ],
+  "geom": "None",
+  "outline_add": 1.2,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Icon.png": {
+  "role": "icon",
+  "before": [
+   217,
+   0.7
+  ],
+  "after": [
+   13,
+   0.716
+  ],
+  "geom": "('fit', (21, 3, 106, 125), 0.9)",
+  "outline_add": 1.34,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Male_east.png": {
+  "role": "worn",
+  "before": [
+   211,
+   0.584
+  ],
+  "after": [
+   13,
+   0.369
+  ],
+  "geom": "None",
+  "outline_add": 2.07,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Male_north.png": {
+  "role": "worn",
+  "before": [
+   191,
+   0.558
+  ],
+  "after": [
+   14,
+   0.317
+  ],
+  "geom": "None",
+  "outline_add": 2.33,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Male_south.png": {
+  "role": "worn",
+  "before": [
+   289,
+   0.561
+  ],
+  "after": [
+   13,
+   0.316
+  ],
+  "geom": "None",
+  "outline_add": 2.24,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   199,
+   0.595
+  ],
+  "after": [
+   14,
+   0.375
+  ],
+  "geom": "None",
+  "outline_add": 2.28,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   169,
+   0.609
+  ],
+  "after": [
+   13,
+   0.376
+  ],
+  "geom": "None",
+  "outline_add": 2.86,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DragonknightArmor\\DragonknightArmor_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   238,
+   0.624
+  ],
+  "after": [
+   14,
+   0.404
+  ],
+  "geom": "None",
+  "outline_add": 2.98,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   354,
+   0.5
+  ],
+  "after": [
+   11,
+   0.268
+  ],
+  "geom": "None",
+  "outline_add": 1.48,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   185,
+   0.502
+  ],
+  "after": [
+   13,
+   0.302
+  ],
+  "geom": "None",
+  "outline_add": 1.75,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   302,
+   0.535
+  ],
+  "after": [
+   13,
+   0.375
+  ],
+  "geom": "None",
+  "outline_add": 2.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Female_east.png": {
+  "role": "worn",
+  "before": [
+   281,
+   0.535
+  ],
+  "after": [
+   14,
+   0.31
+  ],
+  "geom": "None",
+  "outline_add": 2.24,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Female_north.png": {
+  "role": "worn",
+  "before": [
+   171,
+   0.538
+  ],
+  "after": [
+   13,
+   0.325
+  ],
+  "geom": "None",
+  "outline_add": 2.4,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Female_south.png": {
+  "role": "worn",
+  "before": [
+   280,
+   0.57
+  ],
+  "after": [
+   13,
+   0.351
+  ],
+  "geom": "None",
+  "outline_add": 2.51,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   342,
+   0.482
+  ],
+  "after": [
+   13,
+   0.286
+  ],
+  "geom": "None",
+  "outline_add": 1.1,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   185,
+   0.477
+  ],
+  "after": [
+   11,
+   0.294
+  ],
+  "geom": "None",
+  "outline_add": 1.46,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   327,
+   0.509
+  ],
+  "after": [
+   13,
+   0.345
+  ],
+  "geom": "None",
+  "outline_add": 1.43,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Icon.png": {
+  "role": "icon",
+  "before": [
+   220,
+   0.672
+  ],
+  "after": [
+   14,
+   0.661
+  ],
+  "geom": "('fit', (11, 3, 116, 125), 0.9)",
+  "outline_add": 1.2,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Male_east.png": {
+  "role": "worn",
+  "before": [
+   271,
+   0.559
+  ],
+  "after": [
+   11,
+   0.299
+  ],
+  "geom": "None",
+  "outline_add": 2.53,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Male_north.png": {
+  "role": "worn",
+  "before": [
+   164,
+   0.554
+  ],
+  "after": [
+   11,
+   0.317
+  ],
+  "geom": "None",
+  "outline_add": 2.49,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Male_south.png": {
+  "role": "worn",
+  "before": [
+   263,
+   0.578
+  ],
+  "after": [
+   12,
+   0.365
+  ],
+  "geom": "None",
+  "outline_add": 2.36,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   258,
+   0.571
+  ],
+  "after": [
+   12,
+   0.321
+  ],
+  "geom": "None",
+  "outline_add": 2.58,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   147,
+   0.608
+  ],
+  "after": [
+   12,
+   0.377
+  ],
+  "geom": "None",
+  "outline_add": 3.05,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\DwarvenRuneplate\\DwarvenRuneplate_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   215,
+   0.648
+  ],
+  "after": [
+   13,
+   0.387
+  ],
+  "geom": "None",
+  "outline_add": 3.05,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   211,
+   0.393
+  ],
+  "after": [
+   12,
+   0.225
+  ],
+  "geom": "None",
+  "outline_add": 2.22,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   149,
+   0.415
+  ],
+  "after": [
+   11,
+   0.218
+  ],
+  "geom": "None",
+  "outline_add": 2.27,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   307,
+   0.458
+  ],
+  "after": [
+   13,
+   0.298
+  ],
+  "geom": "None",
+  "outline_add": 2.46,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Female_east.png": {
+  "role": "worn",
+  "before": [
+   194,
+   0.57
+  ],
+  "after": [
+   14,
+   0.308
+  ],
+  "geom": "None",
+  "outline_add": 2.4,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Female_north.png": {
+  "role": "worn",
+  "before": [
+   137,
+   0.532
+  ],
+  "after": [
+   12,
+   0.282
+  ],
+  "geom": "None",
+  "outline_add": 2.31,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Female_south.png": {
+  "role": "worn",
+  "before": [
+   272,
+   0.623
+  ],
+  "after": [
+   13,
+   0.39
+  ],
+  "geom": "None",
+  "outline_add": 2.38,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   210,
+   0.479
+  ],
+  "after": [
+   12,
+   0.279
+  ],
+  "geom": "None",
+  "outline_add": 1.94,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   167,
+   0.427
+  ],
+  "after": [
+   12,
+   0.228
+  ],
+  "geom": "None",
+  "outline_add": 2.08,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   324,
+   0.509
+  ],
+  "after": [
+   13,
+   0.288
+  ],
+  "geom": "None",
+  "outline_add": 2.11,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Icon.png": {
+  "role": "icon",
+  "before": [
+   203,
+   0.726
+  ],
+  "after": [
+   17,
+   0.642
+  ],
+  "geom": "('fit', (22, 3, 106, 125), 0.9)",
+  "outline_add": 1.24,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Male_east.png": {
+  "role": "worn",
+  "before": [
+   184,
+   0.586
+  ],
+  "after": [
+   13,
+   0.31
+  ],
+  "geom": "None",
+  "outline_add": 2.39,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Male_north.png": {
+  "role": "worn",
+  "before": [
+   134,
+   0.539
+  ],
+  "after": [
+   12,
+   0.281
+  ],
+  "geom": "None",
+  "outline_add": 2.38,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Male_south.png": {
+  "role": "worn",
+  "before": [
+   258,
+   0.625
+  ],
+  "after": [
+   13,
+   0.387
+  ],
+  "geom": "None",
+  "outline_add": 2.5,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   168,
+   0.602
+  ],
+  "after": [
+   13,
+   0.328
+  ],
+  "geom": "None",
+  "outline_add": 2.62,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   130,
+   0.583
+  ],
+  "after": [
+   14,
+   0.298
+  ],
+  "geom": "None",
+  "outline_add": 3.03,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ElementalWeave\\ElementalWeave_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   211,
+   0.69
+  ],
+  "after": [
+   14,
+   0.407
+  ],
+  "geom": "None",
+  "outline_add": 3.03,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   113,
+   0.263
+  ],
+  "after": [
+   10,
+   0.15
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   99,
+   0.223
+  ],
+  "after": [
+   9,
+   0.16
+  ],
+  "geom": "None",
+  "outline_add": 1.91,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   108,
+   0.306
+  ],
+  "after": [
+   12,
+   0.2
+  ],
+  "geom": "None",
+  "outline_add": 1.96,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Female_east.png": {
+  "role": "worn",
+  "before": [
+   103,
+   0.266
+  ],
+  "after": [
+   12,
+   0.186
+  ],
+  "geom": "None",
+  "outline_add": 1.64,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Female_north.png": {
+  "role": "worn",
+  "before": [
+   84,
+   0.262
+  ],
+  "after": [
+   9,
+   0.159
+  ],
+  "geom": "None",
+  "outline_add": 2.53,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Female_south.png": {
+  "role": "worn",
+  "before": [
+   99,
+   0.349
+  ],
+  "after": [
+   12,
+   0.212
+  ],
+  "geom": "None",
+  "outline_add": 2.27,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   112,
+   0.258
+  ],
+  "after": [
+   10,
+   0.143
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   107,
+   0.221
+  ],
+  "after": [
+   9,
+   0.134
+  ],
+  "geom": "None",
+  "outline_add": 1.52,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   112,
+   0.296
+  ],
+  "after": [
+   10,
+   0.183
+  ],
+  "geom": "None",
+  "outline_add": 1.43,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Male_east.png": {
+  "role": "worn",
+  "before": [
+   94,
+   0.277
+  ],
+  "after": [
+   12,
+   0.196
+  ],
+  "geom": "None",
+  "outline_add": 1.97,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Male_north.png": {
+  "role": "worn",
+  "before": [
+   87,
+   0.256
+  ],
+  "after": [
+   9,
+   0.159
+  ],
+  "geom": "None",
+  "outline_add": 2.62,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Male_south.png": {
+  "role": "worn",
+  "before": [
+   103,
+   0.344
+  ],
+  "after": [
+   11,
+   0.211
+  ],
+  "geom": "None",
+  "outline_add": 2.32,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   94,
+   0.278
+  ],
+  "after": [
+   11,
+   0.214
+  ],
+  "geom": "None",
+  "outline_add": 2.52,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   71,
+   0.341
+  ],
+  "after": [
+   10,
+   0.201
+  ],
+  "geom": "None",
+  "outline_add": 3.1,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\ElvenChain\\ElvenChain_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   77,
+   0.42
+  ],
+  "after": [
+   11,
+   0.288
+  ],
+  "geom": "None",
+  "outline_add": 3.3,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   316,
+   0.485
+  ],
+  "after": [
+   12,
+   0.292
+  ],
+  "geom": "None",
+  "outline_add": 3.09,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   133,
+   0.388
+  ],
+  "after": [
+   13,
+   0.256
+  ],
+  "geom": "None",
+  "outline_add": 3.2,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   321,
+   0.489
+  ],
+  "after": [
+   13,
+   0.323
+  ],
+  "geom": "None",
+  "outline_add": 3.24,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Female_east.png": {
+  "role": "worn",
+  "before": [
+   228,
+   0.502
+  ],
+  "after": [
+   12,
+   0.347
+  ],
+  "geom": "None",
+  "outline_add": 3.11,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Female_north.png": {
+  "role": "worn",
+  "before": [
+   107,
+   0.4
+  ],
+  "after": [
+   12,
+   0.263
+  ],
+  "geom": "None",
+  "outline_add": 3.22,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Female_south.png": {
+  "role": "worn",
+  "before": [
+   236,
+   0.518
+  ],
+  "after": [
+   14,
+   0.321
+  ],
+  "geom": "None",
+  "outline_add": 3.17,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   314,
+   0.463
+  ],
+  "after": [
+   12,
+   0.26
+  ],
+  "geom": "None",
+  "outline_add": 2.53,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   130,
+   0.362
+  ],
+  "after": [
+   13,
+   0.234
+  ],
+  "geom": "None",
+  "outline_add": 3.01,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   324,
+   0.463
+  ],
+  "after": [
+   12,
+   0.279
+  ],
+  "geom": "None",
+  "outline_add": 2.59,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Icon.png": {
+  "role": "icon",
+  "before": [
+   162,
+   0.646
+  ],
+  "after": [
+   11,
+   0.591
+  ],
+  "geom": "('fit', (36, 27, 92, 101), 1.4356756756756757)",
+  "outline_add": 0.63,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Male_east.png": {
+  "role": "worn",
+  "before": [
+   234,
+   0.52
+  ],
+  "after": [
+   13,
+   0.374
+  ],
+  "geom": "None",
+  "outline_add": 3.17,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Male_north.png": {
+  "role": "worn",
+  "before": [
+   113,
+   0.417
+  ],
+  "after": [
+   13,
+   0.294
+  ],
+  "geom": "None",
+  "outline_add": 3.47,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Male_south.png": {
+  "role": "worn",
+  "before": [
+   242,
+   0.53
+  ],
+  "after": [
+   14,
+   0.357
+  ],
+  "geom": "None",
+  "outline_add": 3.2,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   206,
+   0.526
+  ],
+  "after": [
+   13,
+   0.389
+  ],
+  "geom": "None",
+  "outline_add": 3.23,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   93,
+   0.426
+  ],
+  "after": [
+   12,
+   0.339
+  ],
+  "geom": "None",
+  "outline_add": 3.57,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\EmberCollarPlate\\EmberCollarPlate_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   185,
+   0.573
+  ],
+  "after": [
+   14,
+   0.397
+  ],
+  "geom": "None",
+  "outline_add": 3.47,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\EmberRivetHelm\\EmberRivetHelm_east.png": {
+  "role": "worn",
+  "before": [
+   105,
+   0.371
+  ],
+  "after": [
+   12,
+   0.257
+  ],
+  "geom": "None",
+  "outline_add": 2.49,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\EmberRivetHelm\\EmberRivetHelm_Icon.png": {
+  "role": "icon",
+  "before": [
+   116,
+   0.48
+  ],
+  "after": [
+   8,
+   0.464
+  ],
+  "geom": "('fit', (17, 27, 110, 101), 1.1423655913978494)",
+  "outline_add": 0.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\EmberRivetHelm\\EmberRivetHelm_north.png": {
+  "role": "worn",
+  "before": [
+   50,
+   0.364
+  ],
+  "after": [
+   13,
+   0.267
+  ],
+  "geom": "None",
+  "outline_add": 2.45,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\EmberRivetHelm\\EmberRivetHelm_south.png": {
+  "role": "worn",
+  "before": [
+   105,
+   0.408
+  ],
+  "after": [
+   12,
+   0.286
+  ],
+  "geom": "None",
+  "outline_add": 2.52,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   153,
+   0.482
+  ],
+  "after": [
+   13,
+   0.252
+  ],
+  "geom": "None",
+  "outline_add": 1.24,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   161,
+   0.43
+  ],
+  "after": [
+   13,
+   0.228
+  ],
+  "geom": "None",
+  "outline_add": 1.76,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   155,
+   0.46
+  ],
+  "after": [
+   12,
+   0.243
+  ],
+  "geom": "None",
+  "outline_add": 1.69,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Female_east.png": {
+  "role": "worn",
+  "before": [
+   129,
+   0.509
+  ],
+  "after": [
+   12,
+   0.294
+  ],
+  "geom": "None",
+  "outline_add": 2.12,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Female_north.png": {
+  "role": "worn",
+  "before": [
+   140,
+   0.464
+  ],
+  "after": [
+   14,
+   0.256
+  ],
+  "geom": "None",
+  "outline_add": 2.43,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Female_south.png": {
+  "role": "worn",
+  "before": [
+   140,
+   0.495
+  ],
+  "after": [
+   14,
+   0.267
+  ],
+  "geom": "None",
+  "outline_add": 2.2,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   151,
+   0.466
+  ],
+  "after": [
+   13,
+   0.229
+  ],
+  "geom": "None",
+  "outline_add": 1.18,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   154,
+   0.392
+  ],
+  "after": [
+   13,
+   0.219
+  ],
+  "geom": "None",
+  "outline_add": 1.47,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   166,
+   0.42
+  ],
+  "after": [
+   11,
+   0.224
+  ],
+  "geom": "None",
+  "outline_add": 1.49,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Male_east.png": {
+  "role": "worn",
+  "before": [
+   130,
+   0.546
+  ],
+  "after": [
+   12,
+   0.325
+  ],
+  "geom": "None",
+  "outline_add": 2.16,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Male_north.png": {
+  "role": "worn",
+  "before": [
+   137,
+   0.487
+  ],
+  "after": [
+   14,
+   0.276
+  ],
+  "geom": "None",
+  "outline_add": 2.49,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Male_south.png": {
+  "role": "worn",
+  "before": [
+   132,
+   0.517
+  ],
+  "after": [
+   14,
+   0.277
+  ],
+  "geom": "None",
+  "outline_add": 2.19,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   108,
+   0.551
+  ],
+  "after": [
+   13,
+   0.343
+  ],
+  "geom": "None",
+  "outline_add": 2.39,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   113,
+   0.559
+  ],
+  "after": [
+   13,
+   0.358
+  ],
+  "geom": "None",
+  "outline_add": 3.02,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\GithAstralArmor\\GithAstralArmor_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   119,
+   0.589
+  ],
+  "after": [
+   14,
+   0.384
+  ],
+  "geom": "None",
+  "outline_add": 2.85,
+  "mask": false
+ },
+ "Textures\\LP\\Apparel\\GithCrestedHelm\\GithCrestedHelm_east.png": {
+  "role": "worn",
+  "before": [
+   130,
+   0.393
+  ],
+  "after": [
+   12,
+   0.373
+  ],
+  "geom": "None",
+  "outline_add": 2.8,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\GithCrestedHelm\\GithCrestedHelm_Icon.png": {
+  "role": "icon",
+  "before": [
+   126,
+   0.637
+  ],
+  "after": [
+   9,
+   0.558
+  ],
+  "geom": "('fit', (41, 28, 87, 100), 1.4755555555555555)",
+  "outline_add": 0.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\GithCrestedHelm\\GithCrestedHelm_north.png": {
+  "role": "worn",
+  "before": [
+   83,
+   0.311
+  ],
+  "after": [
+   13,
+   0.255
+  ],
+  "geom": "None",
+  "outline_add": 2.5,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\GithCrestedHelm\\GithCrestedHelm_south.png": {
+  "role": "worn",
+  "before": [
+   174,
+   0.472
+  ],
+  "after": [
+   13,
+   0.39
+  ],
+  "geom": "None",
+  "outline_add": 2.84,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\GreatHelmOath\\GreatHelmOath_east.png": {
+  "role": "worn",
+  "before": [
+   95,
+   0.417
+  ],
+  "after": [
+   12,
+   0.339
+  ],
+  "geom": "None",
+  "outline_add": 2.51,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\GreatHelmOath\\GreatHelmOath_Icon.png": {
+  "role": "icon",
+  "before": [
+   152,
+   0.522
+  ],
+  "after": [
+   11,
+   0.525
+  ],
+  "geom": "('fit', (28, 3, 99, 125), 0.9)",
+  "outline_add": 1.21,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\GreatHelmOath\\GreatHelmOath_north.png": {
+  "role": "worn",
+  "before": [
+   78,
+   0.306
+  ],
+  "after": [
+   9,
+   0.282
+  ],
+  "geom": "None",
+  "outline_add": 2.87,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\GreatHelmOath\\GreatHelmOath_south.png": {
+  "role": "worn",
+  "before": [
+   175,
+   0.436
+  ],
+  "after": [
+   12,
+   0.324
+  ],
+  "geom": "None",
+  "outline_add": 2.4,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   127,
+   0.178
+  ],
+  "after": [
+   12,
+   0.153
+  ],
+  "geom": "None",
+  "outline_add": 3.03,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   117,
+   0.122
+  ],
+  "after": [
+   12,
+   0.106
+  ],
+  "geom": "None",
+  "outline_add": 2.97,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   157,
+   0.279
+  ],
+  "after": [
+   12,
+   0.168
+  ],
+  "geom": "None",
+  "outline_add": 2.82,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Female_east.png": {
+  "role": "worn",
+  "before": [
+   117,
+   0.169
+  ],
+  "after": [
+   11,
+   0.138
+  ],
+  "geom": "None",
+  "outline_add": 2.27,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Female_north.png": {
+  "role": "worn",
+  "before": [
+   100,
+   0.166
+  ],
+  "after": [
+   8,
+   0.132
+  ],
+  "geom": "None",
+  "outline_add": 2.62,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Female_south.png": {
+  "role": "worn",
+  "before": [
+   134,
+   0.306
+  ],
+  "after": [
+   11,
+   0.183
+  ],
+  "geom": "None",
+  "outline_add": 2.9,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   133,
+   0.197
+  ],
+  "after": [
+   10,
+   0.149
+  ],
+  "geom": "None",
+  "outline_add": 2.32,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   149,
+   0.18
+  ],
+  "after": [
+   11,
+   0.11
+  ],
+  "geom": "None",
+  "outline_add": 2.91,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   157,
+   0.283
+  ],
+  "after": [
+   12,
+   0.182
+  ],
+  "geom": "None",
+  "outline_add": 3.37,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Icon.png": {
+  "role": "icon",
+  "before": [
+   111,
+   0.408
+  ],
+  "after": [
+   13,
+   0.364
+  ],
+  "geom": "('fit', (24, 3, 104, 125), 0.9)",
+  "outline_add": 1.63,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Male_east.png": {
+  "role": "worn",
+  "before": [
+   103,
+   0.169
+  ],
+  "after": [
+   9,
+   0.14
+  ],
+  "geom": "None",
+  "outline_add": 2.25,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Male_north.png": {
+  "role": "worn",
+  "before": [
+   106,
+   0.165
+  ],
+  "after": [
+   9,
+   0.152
+  ],
+  "geom": "None",
+  "outline_add": 2.84,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Male_south.png": {
+  "role": "worn",
+  "before": [
+   125,
+   0.304
+  ],
+  "after": [
+   10,
+   0.175
+  ],
+  "geom": "None",
+  "outline_add": 2.81,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   100,
+   0.18
+  ],
+  "after": [
+   9,
+   0.137
+  ],
+  "geom": "None",
+  "outline_add": 2.62,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   94,
+   0.187
+  ],
+  "after": [
+   9,
+   0.144
+  ],
+  "geom": "None",
+  "outline_add": 3.35,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\HarperCloak\\HarperCloak_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   117,
+   0.355
+  ],
+  "after": [
+   12,
+   0.257
+  ],
+  "geom": "None",
+  "outline_add": 3.39,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\HelmRestlessDead\\HelmRestlessDead_east.png": {
+  "role": "worn",
+  "before": [
+   134,
+   0.278
+  ],
+  "after": [
+   12,
+   0.258
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\HelmRestlessDead\\HelmRestlessDead_Icon.png": {
+  "role": "icon",
+  "before": [
+   139,
+   0.513
+  ],
+  "after": [
+   10,
+   0.523
+  ],
+  "geom": "('fit', (13, 7, 115, 121), 0.9319298245614035)",
+  "outline_add": 0.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\HelmRestlessDead\\HelmRestlessDead_north.png": {
+  "role": "worn",
+  "before": [
+   57,
+   0.242
+  ],
+  "after": [
+   11,
+   0.22
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\HelmRestlessDead\\HelmRestlessDead_south.png": {
+  "role": "worn",
+  "before": [
+   185,
+   0.385
+  ],
+  "after": [
+   12,
+   0.348
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   273,
+   0.331
+  ],
+  "after": [
+   13,
+   0.233
+  ],
+  "geom": "None",
+  "outline_add": 2.49,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   129,
+   0.212
+  ],
+  "after": [
+   12,
+   0.163
+  ],
+  "geom": "None",
+  "outline_add": 2.1,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   359,
+   0.34
+  ],
+  "after": [
+   11,
+   0.267
+  ],
+  "geom": "None",
+  "outline_add": 2.24,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Female_east.png": {
+  "role": "worn",
+  "before": [
+   226,
+   0.461
+  ],
+  "after": [
+   13,
+   0.362
+  ],
+  "geom": "None",
+  "outline_add": 2.53,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Female_north.png": {
+  "role": "worn",
+  "before": [
+   109,
+   0.243
+  ],
+  "after": [
+   11,
+   0.203
+  ],
+  "geom": "None",
+  "outline_add": 2.24,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Female_south.png": {
+  "role": "worn",
+  "before": [
+   283,
+   0.478
+  ],
+  "after": [
+   12,
+   0.356
+  ],
+  "geom": "None",
+  "outline_add": 2.25,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   253,
+   0.354
+  ],
+  "after": [
+   13,
+   0.243
+  ],
+  "geom": "None",
+  "outline_add": 2.37,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   140,
+   0.22
+  ],
+  "after": [
+   12,
+   0.154
+  ],
+  "geom": "None",
+  "outline_add": 2.38,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   339,
+   0.392
+  ],
+  "after": [
+   12,
+   0.275
+  ],
+  "geom": "None",
+  "outline_add": 2.25,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Icon.png": {
+  "role": "icon",
+  "before": [
+   223,
+   0.6
+  ],
+  "after": [
+   14,
+   0.608
+  ],
+  "geom": "('fit', (20, 3, 108, 125), 0.9)",
+  "outline_add": 0.96,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Male_east.png": {
+  "role": "worn",
+  "before": [
+   203,
+   0.483
+  ],
+  "after": [
+   13,
+   0.381
+  ],
+  "geom": "None",
+  "outline_add": 2.77,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Male_north.png": {
+  "role": "worn",
+  "before": [
+   109,
+   0.254
+  ],
+  "after": [
+   10,
+   0.207
+  ],
+  "geom": "None",
+  "outline_add": 2.25,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Male_south.png": {
+  "role": "worn",
+  "before": [
+   270,
+   0.486
+  ],
+  "after": [
+   12,
+   0.361
+  ],
+  "geom": "None",
+  "outline_add": 2.25,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   188,
+   0.521
+  ],
+  "after": [
+   14,
+   0.395
+  ],
+  "geom": "None",
+  "outline_add": 2.92,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   110,
+   0.274
+  ],
+  "after": [
+   11,
+   0.222
+  ],
+  "geom": "None",
+  "outline_add": 2.87,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\KnightMantle\\KnightMantle_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   220,
+   0.558
+  ],
+  "after": [
+   14,
+   0.417
+  ],
+  "geom": "None",
+  "outline_add": 2.95,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   206,
+   0.355
+  ],
+  "after": [
+   12,
+   0.266
+  ],
+  "geom": "None",
+  "outline_add": 2.12,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   196,
+   0.32
+  ],
+  "after": [
+   12,
+   0.228
+  ],
+  "geom": "None",
+  "outline_add": 1.98,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   202,
+   0.444
+  ],
+  "after": [
+   13,
+   0.32
+  ],
+  "geom": "None",
+  "outline_add": 2.23,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Female_east.png": {
+  "role": "worn",
+  "before": [
+   196,
+   0.512
+  ],
+  "after": [
+   13,
+   0.371
+  ],
+  "geom": "None",
+  "outline_add": 1.53,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Female_north.png": {
+  "role": "worn",
+  "before": [
+   177,
+   0.39
+  ],
+  "after": [
+   12,
+   0.278
+  ],
+  "geom": "None",
+  "outline_add": 2.27,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Female_south.png": {
+  "role": "worn",
+  "before": [
+   181,
+   0.616
+  ],
+  "after": [
+   14,
+   0.398
+  ],
+  "geom": "None",
+  "outline_add": 1.98,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   217,
+   0.39
+  ],
+  "after": [
+   13,
+   0.305
+  ],
+  "geom": "None",
+  "outline_add": 1.92,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   193,
+   0.295
+  ],
+  "after": [
+   11,
+   0.193
+  ],
+  "geom": "None",
+  "outline_add": 1.97,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   203,
+   0.455
+  ],
+  "after": [
+   13,
+   0.316
+  ],
+  "geom": "None",
+  "outline_add": 1.99,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Icon.png": {
+  "role": "icon",
+  "before": [
+   157,
+   0.746
+  ],
+  "after": [
+   14,
+   0.684
+  ],
+  "geom": "('fit', (24, 3, 103, 125), 0.9)",
+  "outline_add": 1.01,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Male_east.png": {
+  "role": "worn",
+  "before": [
+   193,
+   0.527
+  ],
+  "after": [
+   13,
+   0.379
+  ],
+  "geom": "None",
+  "outline_add": 1.61,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Male_north.png": {
+  "role": "worn",
+  "before": [
+   172,
+   0.383
+  ],
+  "after": [
+   12,
+   0.281
+  ],
+  "geom": "None",
+  "outline_add": 2.22,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Male_south.png": {
+  "role": "worn",
+  "before": [
+   187,
+   0.614
+  ],
+  "after": [
+   14,
+   0.391
+  ],
+  "geom": "None",
+  "outline_add": 1.48,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   189,
+   0.552
+  ],
+  "after": [
+   14,
+   0.408
+  ],
+  "geom": "None",
+  "outline_add": 2.05,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   151,
+   0.48
+  ],
+  "after": [
+   13,
+   0.31
+  ],
+  "geom": "None",
+  "outline_add": 2.91,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LichShroud\\LichShroud_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   168,
+   0.71
+  ],
+  "after": [
+   13,
+   0.444
+  ],
+  "geom": "None",
+  "outline_add": 2.31,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   327,
+   0.395
+  ],
+  "after": [
+   14,
+   0.29
+  ],
+  "geom": "None",
+  "outline_add": 1.81,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   192,
+   0.341
+  ],
+  "after": [
+   11,
+   0.241
+  ],
+  "geom": "None",
+  "outline_add": 2.21,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   358,
+   0.441
+  ],
+  "after": [
+   14,
+   0.273
+  ],
+  "geom": "None",
+  "outline_add": 2.26,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Female_east.png": {
+  "role": "worn",
+  "before": [
+   287,
+   0.445
+  ],
+  "after": [
+   12,
+   0.303
+  ],
+  "geom": "None",
+  "outline_add": 2.48,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Female_north.png": {
+  "role": "worn",
+  "before": [
+   178,
+   0.376
+  ],
+  "after": [
+   13,
+   0.258
+  ],
+  "geom": "None",
+  "outline_add": 2.56,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Female_south.png": {
+  "role": "worn",
+  "before": [
+   310,
+   0.492
+  ],
+  "after": [
+   13,
+   0.305
+  ],
+  "geom": "None",
+  "outline_add": 2.73,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   318,
+   0.395
+  ],
+  "after": [
+   14,
+   0.284
+  ],
+  "geom": "None",
+  "outline_add": 1.6,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   196,
+   0.32
+  ],
+  "after": [
+   13,
+   0.249
+  ],
+  "geom": "None",
+  "outline_add": 2.12,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   388,
+   0.422
+  ],
+  "after": [
+   13,
+   0.274
+  ],
+  "geom": "None",
+  "outline_add": 1.98,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Icon.png": {
+  "role": "icon",
+  "before": [
+   251,
+   0.615
+  ],
+  "after": [
+   16,
+   0.647
+  ],
+  "geom": "('fit', (20, 3, 108, 125), 0.9)",
+  "outline_add": 1.32,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Male_east.png": {
+  "role": "worn",
+  "before": [
+   261,
+   0.463
+  ],
+  "after": [
+   13,
+   0.322
+  ],
+  "geom": "None",
+  "outline_add": 2.75,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Male_north.png": {
+  "role": "worn",
+  "before": [
+   168,
+   0.383
+  ],
+  "after": [
+   12,
+   0.259
+  ],
+  "geom": "None",
+  "outline_add": 2.57,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Male_south.png": {
+  "role": "worn",
+  "before": [
+   311,
+   0.495
+  ],
+  "after": [
+   14,
+   0.324
+  ],
+  "geom": "None",
+  "outline_add": 2.8,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   242,
+   0.489
+  ],
+  "after": [
+   13,
+   0.332
+  ],
+  "geom": "None",
+  "outline_add": 2.76,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   148,
+   0.435
+  ],
+  "after": [
+   11,
+   0.316
+  ],
+  "geom": "None",
+  "outline_add": 3.22,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\LoxodonWardenArmor\\LoxodonWardenArmor_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   276,
+   0.579
+  ],
+  "after": [
+   14,
+   0.398
+  ],
+  "geom": "None",
+  "outline_add": 2.98,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\MinotaurHornHelm\\MinotaurHornHelm_east.png": {
+  "role": "worn",
+  "before": [
+   200,
+   0.365
+  ],
+  "after": [
+   14,
+   0.366
+  ],
+  "geom": "None",
+  "outline_add": 2.43,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\MinotaurHornHelm\\MinotaurHornHelm_north.png": {
+  "role": "worn",
+  "before": [
+   214,
+   0.329
+  ],
+  "after": [
+   14,
+   0.383
+  ],
+  "geom": "None",
+  "outline_add": 2.06,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\MinotaurHornHelm\\MinotaurHornHelm_south.png": {
+  "role": "worn",
+  "before": [
+   264,
+   0.463
+  ],
+  "after": [
+   14,
+   0.498
+  ],
+  "geom": "None",
+  "outline_add": 2.18,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   337,
+   0.291
+  ],
+  "after": [
+   10,
+   0.221
+  ],
+  "geom": "None",
+  "outline_add": 2.11,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   126,
+   0.185
+  ],
+  "after": [
+   8,
+   0.177
+  ],
+  "geom": "None",
+  "outline_add": 2.62,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   364,
+   0.364
+  ],
+  "after": [
+   11,
+   0.234
+  ],
+  "geom": "None",
+  "outline_add": 2.2,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Female_east.png": {
+  "role": "worn",
+  "before": [
+   281,
+   0.374
+  ],
+  "after": [
+   13,
+   0.3
+  ],
+  "geom": "None",
+  "outline_add": 1.82,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Female_north.png": {
+  "role": "worn",
+  "before": [
+   107,
+   0.256
+  ],
+  "after": [
+   10,
+   0.235
+  ],
+  "geom": "None",
+  "outline_add": 2.51,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Female_south.png": {
+  "role": "worn",
+  "before": [
+   316,
+   0.443
+  ],
+  "after": [
+   12,
+   0.3
+  ],
+  "geom": "None",
+  "outline_add": 2.31,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   343,
+   0.295
+  ],
+  "after": [
+   12,
+   0.218
+  ],
+  "geom": "None",
+  "outline_add": 1.73,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   122,
+   0.168
+  ],
+  "after": [
+   11,
+   0.16
+  ],
+  "geom": "None",
+  "outline_add": 2.79,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   355,
+   0.365
+  ],
+  "after": [
+   11,
+   0.23
+  ],
+  "geom": "None",
+  "outline_add": 2.23,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Icon.png": {
+  "role": "icon",
+  "before": [
+   240,
+   0.559
+  ],
+  "after": [
+   15,
+   0.541
+  ],
+  "geom": "('fit', (24, 3, 102, 125), 0.9)",
+  "outline_add": 1.28,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Male_east.png": {
+  "role": "worn",
+  "before": [
+   268,
+   0.384
+  ],
+  "after": [
+   13,
+   0.294
+  ],
+  "geom": "None",
+  "outline_add": 2.12,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Male_north.png": {
+  "role": "worn",
+  "before": [
+   96,
+   0.264
+  ],
+  "after": [
+   11,
+   0.228
+  ],
+  "geom": "None",
+  "outline_add": 2.54,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Male_south.png": {
+  "role": "worn",
+  "before": [
+   321,
+   0.441
+  ],
+  "after": [
+   13,
+   0.317
+  ],
+  "geom": "None",
+  "outline_add": 2.41,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   250,
+   0.394
+  ],
+  "after": [
+   14,
+   0.279
+  ],
+  "geom": "None",
+  "outline_add": 2.21,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   91,
+   0.298
+  ],
+  "after": [
+   9,
+   0.248
+  ],
+  "geom": "None",
+  "outline_add": 3.26,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\MorninglordVestments\\MorninglordVestments_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   261,
+   0.54
+  ],
+  "after": [
+   13,
+   0.36
+  ],
+  "geom": "None",
+  "outline_add": 2.95,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   265,
+   0.345
+  ],
+  "after": [
+   13,
+   0.259
+  ],
+  "geom": "None",
+  "outline_add": 1.77,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   140,
+   0.259
+  ],
+  "after": [
+   10,
+   0.18
+  ],
+  "geom": "None",
+  "outline_add": 2.4,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   293,
+   0.393
+  ],
+  "after": [
+   12,
+   0.275
+  ],
+  "geom": "None",
+  "outline_add": 2.33,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Female_east.png": {
+  "role": "worn",
+  "before": [
+   218,
+   0.381
+  ],
+  "after": [
+   12,
+   0.273
+  ],
+  "geom": "None",
+  "outline_add": 2.52,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Female_north.png": {
+  "role": "worn",
+  "before": [
+   128,
+   0.279
+  ],
+  "after": [
+   11,
+   0.194
+  ],
+  "geom": "None",
+  "outline_add": 2.45,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Female_south.png": {
+  "role": "worn",
+  "before": [
+   250,
+   0.443
+  ],
+  "after": [
+   14,
+   0.286
+  ],
+  "geom": "None",
+  "outline_add": 2.57,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   262,
+   0.337
+  ],
+  "after": [
+   12,
+   0.263
+  ],
+  "geom": "None",
+  "outline_add": 1.73,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   152,
+   0.241
+  ],
+  "after": [
+   10,
+   0.175
+  ],
+  "geom": "None",
+  "outline_add": 1.86,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   327,
+   0.371
+  ],
+  "after": [
+   14,
+   0.258
+  ],
+  "geom": "None",
+  "outline_add": 2.03,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Icon.png": {
+  "role": "icon",
+  "before": [
+   219,
+   0.536
+  ],
+  "after": [
+   15,
+   0.549
+  ],
+  "geom": "('fit', (18, 6, 110, 122), 0.9158620689655173)",
+  "outline_add": 0.96,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Male_east.png": {
+  "role": "worn",
+  "before": [
+   208,
+   0.403
+  ],
+  "after": [
+   12,
+   0.305
+  ],
+  "geom": "None",
+  "outline_add": 2.83,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Male_north.png": {
+  "role": "worn",
+  "before": [
+   129,
+   0.287
+  ],
+  "after": [
+   11,
+   0.173
+  ],
+  "geom": "None",
+  "outline_add": 2.54,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Male_south.png": {
+  "role": "worn",
+  "before": [
+   258,
+   0.45
+  ],
+  "after": [
+   13,
+   0.31
+  ],
+  "geom": "None",
+  "outline_add": 2.54,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   201,
+   0.417
+  ],
+  "after": [
+   13,
+   0.286
+  ],
+  "geom": "None",
+  "outline_add": 2.34,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   105,
+   0.298
+  ],
+  "after": [
+   11,
+   0.222
+  ],
+  "geom": "None",
+  "outline_add": 2.83,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\OgreTrophyHide\\OgreTrophyHide_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   208,
+   0.517
+  ],
+  "after": [
+   12,
+   0.356
+  ],
+  "geom": "None",
+  "outline_add": 3.05,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   7,
+   0.378
+  ],
+  "after": [
+   10,
+   0.223
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   5,
+   0.291
+  ],
+  "after": [
+   7,
+   0.22
+  ],
+  "geom": "None",
+  "outline_add": 0.8,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   7,
+   0.382
+  ],
+  "after": [
+   12,
+   0.269
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Female_east.png": {
+  "role": "worn",
+  "before": [
+   7,
+   0.415
+  ],
+  "after": [
+   8,
+   0.278
+  ],
+  "geom": "None",
+  "outline_add": 0.87,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Female_north.png": {
+  "role": "worn",
+  "before": [
+   5,
+   0.347
+  ],
+  "after": [
+   7,
+   0.268
+  ],
+  "geom": "None",
+  "outline_add": 0.81,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Female_south.png": {
+  "role": "worn",
+  "before": [
+   7,
+   0.451
+  ],
+  "after": [
+   11,
+   0.332
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   7,
+   0.37
+  ],
+  "after": [
+   8,
+   0.24
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   6,
+   0.275
+  ],
+  "after": [
+   6,
+   0.226
+  ],
+  "geom": "None",
+  "outline_add": 0.81,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   8,
+   0.368
+  ],
+  "after": [
+   12,
+   0.274
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Icon.png": {
+  "role": "icon",
+  "before": [
+   7,
+   0.587
+  ],
+  "after": [
+   13,
+   0.631
+  ],
+  "geom": "('fit', (19, 4, 108, 124), 0.9)",
+  "outline_add": 0.6,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Male_east.png": {
+  "role": "worn",
+  "before": [
+   7,
+   0.449
+  ],
+  "after": [
+   8,
+   0.296
+  ],
+  "geom": "None",
+  "outline_add": 0.88,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Male_north.png": {
+  "role": "worn",
+  "before": [
+   5,
+   0.349
+  ],
+  "after": [
+   6,
+   0.266
+  ],
+  "geom": "None",
+  "outline_add": 0.82,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Male_south.png": {
+  "role": "worn",
+  "before": [
+   7,
+   0.456
+  ],
+  "after": [
+   12,
+   0.325
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   5,
+   0.474
+  ],
+  "after": [
+   6,
+   0.33
+  ],
+  "geom": "None",
+  "outline_add": 0.85,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   5,
+   0.404
+  ],
+  "after": [
+   5,
+   0.31
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\PaladinPlate\\PaladinPlate_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   7,
+   0.529
+  ],
+  "after": [
+   12,
+   0.427
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   349,
+   0.476
+  ],
+  "after": [
+   14,
+   0.31
+  ],
+  "geom": "None",
+  "outline_add": 0.95,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   237,
+   0.411
+  ],
+  "after": [
+   13,
+   0.33
+  ],
+  "geom": "None",
+  "outline_add": 2.15,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   356,
+   0.49
+  ],
+  "after": [
+   13,
+   0.343
+  ],
+  "geom": "None",
+  "outline_add": 2.01,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Female_east.png": {
+  "role": "worn",
+  "before": [
+   298,
+   0.528
+  ],
+  "after": [
+   12,
+   0.381
+  ],
+  "geom": "None",
+  "outline_add": 2.07,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Female_north.png": {
+  "role": "worn",
+  "before": [
+   201,
+   0.476
+  ],
+  "after": [
+   14,
+   0.347
+  ],
+  "geom": "None",
+  "outline_add": 3.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Female_south.png": {
+  "role": "worn",
+  "before": [
+   308,
+   0.539
+  ],
+  "after": [
+   12,
+   0.422
+  ],
+  "geom": "None",
+  "outline_add": 2.78,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   347,
+   0.479
+  ],
+  "after": [
+   13,
+   0.344
+  ],
+  "geom": "None",
+  "outline_add": 0.95,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   236,
+   0.398
+  ],
+  "after": [
+   13,
+   0.319
+  ],
+  "geom": "None",
+  "outline_add": 2.02,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   385,
+   0.477
+  ],
+  "after": [
+   14,
+   0.349
+  ],
+  "geom": "None",
+  "outline_add": 1.94,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Icon.png": {
+  "role": "icon",
+  "before": [
+   258,
+   0.613
+  ],
+  "after": [
+   14,
+   0.631
+  ],
+  "geom": "('fit', (15, 6, 113, 122), 0.9158620689655173)",
+  "outline_add": 1.09,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Male_east.png": {
+  "role": "worn",
+  "before": [
+   277,
+   0.546
+  ],
+  "after": [
+   14,
+   0.397
+  ],
+  "geom": "None",
+  "outline_add": 2.18,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Male_north.png": {
+  "role": "worn",
+  "before": [
+   208,
+   0.467
+  ],
+  "after": [
+   13,
+   0.337
+  ],
+  "geom": "None",
+  "outline_add": 2.96,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Male_south.png": {
+  "role": "worn",
+  "before": [
+   300,
+   0.542
+  ],
+  "after": [
+   13,
+   0.394
+  ],
+  "geom": "None",
+  "outline_add": 2.76,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   254,
+   0.576
+  ],
+  "after": [
+   13,
+   0.376
+  ],
+  "geom": "None",
+  "outline_add": 2.32,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   166,
+   0.575
+  ],
+  "after": [
+   13,
+   0.395
+  ],
+  "geom": "None",
+  "outline_add": 3.19,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RangerLeathers\\RangerLeathers_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   254,
+   0.636
+  ],
+  "after": [
+   14,
+   0.474
+  ],
+  "geom": "None",
+  "outline_add": 3.09,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   259,
+   0.356
+  ],
+  "after": [
+   12,
+   0.272
+  ],
+  "geom": "None",
+  "outline_add": 2.24,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   134,
+   0.201
+  ],
+  "after": [
+   9,
+   0.164
+  ],
+  "geom": "None",
+  "outline_add": 2.9,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   332,
+   0.435
+  ],
+  "after": [
+   11,
+   0.305
+  ],
+  "geom": "None",
+  "outline_add": 2.2,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Female_east.png": {
+  "role": "worn",
+  "before": [
+   196,
+   0.444
+  ],
+  "after": [
+   12,
+   0.356
+  ],
+  "geom": "None",
+  "outline_add": 2.01,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Female_north.png": {
+  "role": "worn",
+  "before": [
+   117,
+   0.209
+  ],
+  "after": [
+   9,
+   0.166
+  ],
+  "geom": "None",
+  "outline_add": 2.69,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Female_south.png": {
+  "role": "worn",
+  "before": [
+   295,
+   0.57
+  ],
+  "after": [
+   14,
+   0.414
+  ],
+  "geom": "None",
+  "outline_add": 2.32,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   259,
+   0.331
+  ],
+  "after": [
+   11,
+   0.235
+  ],
+  "geom": "None",
+  "outline_add": 1.62,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   139,
+   0.179
+  ],
+  "after": [
+   9,
+   0.154
+  ],
+  "geom": "None",
+  "outline_add": 2.53,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   328,
+   0.446
+  ],
+  "after": [
+   12,
+   0.3
+  ],
+  "geom": "None",
+  "outline_add": 2.58,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Icon.png": {
+  "role": "icon",
+  "before": [
+   196,
+   0.653
+  ],
+  "after": [
+   17,
+   0.615
+  ],
+  "geom": "('fit', (25, 3, 102, 125), 0.9)",
+  "outline_add": 1.25,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Male_east.png": {
+  "role": "worn",
+  "before": [
+   187,
+   0.451
+  ],
+  "after": [
+   14,
+   0.358
+  ],
+  "geom": "None",
+  "outline_add": 2.07,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Male_north.png": {
+  "role": "worn",
+  "before": [
+   124,
+   0.213
+  ],
+  "after": [
+   10,
+   0.171
+  ],
+  "geom": "None",
+  "outline_add": 2.16,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Male_south.png": {
+  "role": "worn",
+  "before": [
+   284,
+   0.57
+  ],
+  "after": [
+   13,
+   0.42
+  ],
+  "geom": "None",
+  "outline_add": 2.34,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   176,
+   0.476
+  ],
+  "after": [
+   12,
+   0.343
+  ],
+  "geom": "None",
+  "outline_add": 2.3,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   102,
+   0.246
+  ],
+  "after": [
+   10,
+   0.198
+  ],
+  "geom": "None",
+  "outline_add": 3.28,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RedWizardRobe\\RedWizardRobe_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   233,
+   0.631
+  ],
+  "after": [
+   13,
+   0.469
+  ],
+  "geom": "None",
+  "outline_add": 3.07,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RogueMask\\RogueMask_east.png": {
+  "role": "worn",
+  "before": [
+   57,
+   0.425
+  ],
+  "after": [
+   14,
+   0.408
+  ],
+  "geom": "None",
+  "outline_add": 2.85,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RogueMask\\RogueMask_Icon.png": {
+  "role": "icon",
+  "before": [
+   61,
+   0.36
+  ],
+  "after": [
+   9,
+   0.304
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RogueMask\\RogueMask_north.png": {
+  "role": "worn",
+  "before": [
+   32,
+   1.0
+  ],
+  "after": [
+   13,
+   0.638
+  ],
+  "geom": "None",
+  "outline_add": 2.94,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\RogueMask\\RogueMask_south.png": {
+  "role": "worn",
+  "before": [
+   56,
+   0.264
+  ],
+  "after": [
+   11,
+   0.277
+  ],
+  "geom": "None",
+  "outline_add": 2.47,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   145,
+   0.166
+  ],
+  "after": [
+   11,
+   0.152
+  ],
+  "geom": "None",
+  "outline_add": 2.3,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   113,
+   0.086
+  ],
+  "after": [
+   9,
+   0.113
+  ],
+  "geom": "None",
+  "outline_add": 2.62,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   149,
+   0.219
+  ],
+  "after": [
+   14,
+   0.165
+  ],
+  "geom": "None",
+  "outline_add": 2.36,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Female_east.png": {
+  "role": "worn",
+  "before": [
+   114,
+   0.253
+  ],
+  "after": [
+   12,
+   0.241
+  ],
+  "geom": "None",
+  "outline_add": 1.97,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Female_north.png": {
+  "role": "worn",
+  "before": [
+   98,
+   0.128
+  ],
+  "after": [
+   9,
+   0.141
+  ],
+  "geom": "None",
+  "outline_add": 2.56,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Female_south.png": {
+  "role": "worn",
+  "before": [
+   121,
+   0.267
+  ],
+  "after": [
+   13,
+   0.212
+  ],
+  "geom": "None",
+  "outline_add": 2.36,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   145,
+   0.173
+  ],
+  "after": [
+   13,
+   0.162
+  ],
+  "geom": "None",
+  "outline_add": 2.24,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   134,
+   0.156
+  ],
+  "after": [
+   11,
+   0.146
+  ],
+  "geom": "None",
+  "outline_add": 2.83,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   142,
+   0.237
+  ],
+  "after": [
+   13,
+   0.196
+  ],
+  "geom": "None",
+  "outline_add": 2.79,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Icon.png": {
+  "role": "icon",
+  "before": [
+   107,
+   0.398
+  ],
+  "after": [
+   13,
+   0.356
+  ],
+  "geom": "('fit', (27, 3, 100, 125), 0.9)",
+  "outline_add": 0.97,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Male_east.png": {
+  "role": "worn",
+  "before": [
+   111,
+   0.256
+  ],
+  "after": [
+   12,
+   0.241
+  ],
+  "geom": "None",
+  "outline_add": 1.97,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Male_north.png": {
+  "role": "worn",
+  "before": [
+   95,
+   0.121
+  ],
+  "after": [
+   9,
+   0.15
+  ],
+  "geom": "None",
+  "outline_add": 2.5,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Male_south.png": {
+  "role": "worn",
+  "before": [
+   117,
+   0.264
+  ],
+  "after": [
+   12,
+   0.216
+  ],
+  "geom": "None",
+  "outline_add": 2.31,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   108,
+   0.269
+  ],
+  "after": [
+   12,
+   0.244
+  ],
+  "geom": "None",
+  "outline_add": 2.21,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   84,
+   0.156
+  ],
+  "after": [
+   9,
+   0.188
+  ],
+  "geom": "None",
+  "outline_add": 3.28,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\ShadowweaveCloak\\ShadowweaveCloak_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   109,
+   0.342
+  ],
+  "after": [
+   13,
+   0.311
+  ],
+  "geom": "None",
+  "outline_add": 3.05,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   313,
+   0.546
+  ],
+  "after": [
+   12,
+   0.323
+  ],
+  "geom": "None",
+  "outline_add": 2.98,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   299,
+   0.523
+  ],
+  "after": [
+   10,
+   0.251
+  ],
+  "geom": "None",
+  "outline_add": 2.96,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   333,
+   0.572
+  ],
+  "after": [
+   12,
+   0.324
+  ],
+  "geom": "None",
+  "outline_add": 2.98,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Female_east.png": {
+  "role": "worn",
+  "before": [
+   261,
+   0.569
+  ],
+  "after": [
+   14,
+   0.35
+  ],
+  "geom": "None",
+  "outline_add": 2.95,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Female_north.png": {
+  "role": "worn",
+  "before": [
+   246,
+   0.551
+  ],
+  "after": [
+   11,
+   0.288
+  ],
+  "geom": "None",
+  "outline_add": 2.99,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Female_south.png": {
+  "role": "worn",
+  "before": [
+   298,
+   0.608
+  ],
+  "after": [
+   11,
+   0.365
+  ],
+  "geom": "None",
+  "outline_add": 3.07,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   318,
+   0.528
+  ],
+  "after": [
+   12,
+   0.313
+  ],
+  "geom": "None",
+  "outline_add": 2.81,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   324,
+   0.495
+  ],
+  "after": [
+   10,
+   0.249
+  ],
+  "geom": "None",
+  "outline_add": 2.78,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   353,
+   0.554
+  ],
+  "after": [
+   10,
+   0.316
+  ],
+  "geom": "None",
+  "outline_add": 2.42,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Icon.png": {
+  "role": "icon",
+  "before": [
+   220,
+   0.713
+  ],
+  "after": [
+   13,
+   0.664
+  ],
+  "geom": "('fit', (36, 25, 90, 103), 1.362051282051282)",
+  "outline_add": 0.73,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Male_east.png": {
+  "role": "worn",
+  "before": [
+   250,
+   0.597
+  ],
+  "after": [
+   12,
+   0.359
+  ],
+  "geom": "None",
+  "outline_add": 3.07,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Male_north.png": {
+  "role": "worn",
+  "before": [
+   243,
+   0.585
+  ],
+  "after": [
+   11,
+   0.295
+  ],
+  "geom": "None",
+  "outline_add": 3.11,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Male_south.png": {
+  "role": "worn",
+  "before": [
+   297,
+   0.626
+  ],
+  "after": [
+   11,
+   0.388
+  ],
+  "geom": "None",
+  "outline_add": 3.13,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   237,
+   0.604
+  ],
+  "after": [
+   13,
+   0.379
+  ],
+  "geom": "None",
+  "outline_add": 3.11,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   208,
+   0.611
+  ],
+  "after": [
+   11,
+   0.314
+  ],
+  "geom": "None",
+  "outline_add": 3.37,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\SkyguardHarness\\SkyguardHarness_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   239,
+   0.696
+  ],
+  "after": [
+   12,
+   0.426
+  ],
+  "geom": "None",
+  "outline_add": 3.36,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\WizardHat\\WizardHat_east.png": {
+  "role": "worn",
+  "before": [
+   5,
+   0.187
+  ],
+  "after": [
+   6,
+   0.197
+  ],
+  "geom": "None",
+  "outline_add": 1.08,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\WizardHat\\WizardHat_Icon.png": {
+  "role": "icon",
+  "before": [
+   7,
+   0.421
+  ],
+  "after": [
+   12,
+   0.391
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\WizardHat\\WizardHat_north.png": {
+  "role": "worn",
+  "before": [
+   5,
+   0.185
+  ],
+  "after": [
+   6,
+   0.196
+  ],
+  "geom": "None",
+  "outline_add": 1.08,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\WizardHat\\WizardHat_south.png": {
+  "role": "worn",
+  "before": [
+   7,
+   0.275
+  ],
+  "after": [
+   14,
+   0.233
+  ],
+  "geom": "None",
+  "outline_add": 1.05,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   166,
+   0.159
+  ],
+  "after": [
+   11,
+   0.157
+  ],
+  "geom": "None",
+  "outline_add": 2.41,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   126,
+   0.164
+  ],
+  "after": [
+   10,
+   0.159
+  ],
+  "geom": "None",
+  "outline_add": 1.81,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   206,
+   0.227
+  ],
+  "after": [
+   12,
+   0.186
+  ],
+  "geom": "None",
+  "outline_add": 2.33,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Female_east.png": {
+  "role": "worn",
+  "before": [
+   173,
+   0.265
+  ],
+  "after": [
+   12,
+   0.242
+  ],
+  "geom": "None",
+  "outline_add": 2.08,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Female_north.png": {
+  "role": "worn",
+  "before": [
+   114,
+   0.184
+  ],
+  "after": [
+   12,
+   0.164
+  ],
+  "geom": "None",
+  "outline_add": 1.9,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Female_south.png": {
+  "role": "worn",
+  "before": [
+   172,
+   0.28
+  ],
+  "after": [
+   12,
+   0.223
+  ],
+  "geom": "None",
+  "outline_add": 2.28,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   187,
+   0.206
+  ],
+  "after": [
+   11,
+   0.192
+  ],
+  "geom": "None",
+  "outline_add": 2.37,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   141,
+   0.136
+  ],
+  "after": [
+   11,
+   0.142
+  ],
+  "geom": "None",
+  "outline_add": 1.84,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   205,
+   0.219
+  ],
+  "after": [
+   10,
+   0.184
+  ],
+  "geom": "None",
+  "outline_add": 2.17,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Icon.png": {
+  "role": "icon",
+  "before": [
+   147,
+   0.393
+  ],
+  "after": [
+   12,
+   0.436
+  ],
+  "geom": "('fit', (23, 5, 104, 123), 0.9003389830508474)",
+  "outline_add": 1.35,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Male_east.png": {
+  "role": "worn",
+  "before": [
+   148,
+   0.267
+  ],
+  "after": [
+   12,
+   0.236
+  ],
+  "geom": "None",
+  "outline_add": 2.19,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Male_north.png": {
+  "role": "worn",
+  "before": [
+   116,
+   0.187
+  ],
+  "after": [
+   11,
+   0.19
+  ],
+  "geom": "None",
+  "outline_add": 1.92,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Male_south.png": {
+  "role": "worn",
+  "before": [
+   189,
+   0.279
+  ],
+  "after": [
+   13,
+   0.211
+  ],
+  "geom": "None",
+  "outline_add": 2.36,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   145,
+   0.284
+  ],
+  "after": [
+   12,
+   0.253
+  ],
+  "geom": "None",
+  "outline_add": 2.5,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   114,
+   0.201
+  ],
+  "after": [
+   11,
+   0.192
+  ],
+  "geom": "None",
+  "outline_add": 2.89,
+  "mask": true
+ },
+ "Textures\\LP\\Apparel\\WoodwalkerCloak\\WoodwalkerCloak_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   150,
+   0.336
+  ],
+  "after": [
+   12,
+   0.272
+  ],
+  "geom": "None",
+  "outline_add": 3.0,
+  "mask": true
+ },
+ "Textures\\LP\\Weapons\\Doom.png": {
+  "role": "weapon",
+  "before": [
+   150,
+   0.305
+  ],
+  "after": [
+   11,
+   0.319
+  ],
+  "geom": "('fit', (0, 41, 128, 87), 0.9)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\LP\\Weapons\\FireStaff.png": {
+  "role": "weapon",
+  "before": [
+   172,
+   0.38
+  ],
+  "after": [
+   10,
+   0.303
+  ],
+  "geom": "('fit', (5, 5, 116, 125), 0.9)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\LP\\Weapons\\FrostStaff.png": {
+  "role": "weapon",
+  "before": [
+   237,
+   0.531
+  ],
+  "after": [
+   38,
+   0.539
+  ],
+  "geom": "('fit', (5, 9, 118, 125), 0.9158620689655173)",
+  "outline_add": 0.47,
+  "mask": false
+ },
+ "Textures\\LP\\Weapons\\HammerCannon.png": {
+  "role": "weapon",
+  "before": [
+   201,
+   0.537
+  ],
+  "after": [
+   11,
+   0.517
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\LP\\Weapons\\LavaPiercer.png": {
+  "role": "weapon",
+  "before": [
+   212,
+   0.465
+  ],
+  "after": [
+   10,
+   0.389
+  ],
+  "geom": "('fit', (0, 49, 128, 88), 0.9)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\LP\\Weapons\\MissileStaff.png": {
+  "role": "weapon",
+  "before": [
+   225,
+   0.458
+  ],
+  "after": [
+   12,
+   0.411
+  ],
+  "geom": "('fit', (5, 9, 118, 125), 0.9158620689655173)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\LP\\Weapons\\MountainWrath.png": {
+  "role": "weapon",
+  "before": [
+   180,
+   0.525
+  ],
+  "after": [
+   11,
+   0.527
+  ],
+  "geom": "('fit', (0, 44, 128, 89), 0.9)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\LP\\Weapons\\RunicMusket.png": {
+  "role": "weapon",
+  "before": [
+   207,
+   0.545
+  ],
+  "after": [
+   12,
+   0.509
+  ],
+  "geom": "('fit', (0, 49, 128, 89), 0.9)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\LP\\Weapons\\RunicPistol.png": {
+  "role": "weapon",
+  "before": [
+   205,
+   0.605
+  ],
+  "after": [
+   11,
+   0.567
+  ],
+  "geom": "('fit', (20, 41, 111, 98), 1.1674725274725275)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\LP\\Weapons\\RunicRepeater.png": {
+  "role": "weapon",
+  "before": [
+   200,
+   0.641
+  ],
+  "after": [
+   12,
+   0.567
+  ],
+  "geom": "('fit', (0, 49, 127, 90), 0.9)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\LP\\Weapons\\SilverPistol.png": {
+  "role": "weapon",
+  "before": [
+   224,
+   0.6
+  ],
+  "after": [
+   11,
+   0.524
+  ],
+  "geom": "('fit', (27, 38, 117, 98), 1.1804444444444444)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\LP\\Weapons\\Skyfire.png": {
+  "role": "weapon",
+  "before": [
+   242,
+   0.492
+  ],
+  "after": [
+   12,
+   0.43
+  ],
+  "geom": "('fit', (0, 44, 128, 87), 0.9)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\LP\\Weapons\\ThunderGun.png": {
+  "role": "weapon",
+  "before": [
+   252,
+   0.507
+  ],
+  "after": [
+   66,
+   0.59
+  ],
+  "geom": "('fit', (5, 45, 124, 88), 0.9)",
+  "outline_add": 0.42,
+  "mask": false
+ },
+ "Textures\\LP\\Weapons\\Legacy\\Bow.png": {
+  "role": "weapon",
+  "before": [
+   140,
+   0.612
+  ],
+  "after": [
+   40,
+   0.678
+  ],
+  "geom": "('fit', (39, 8, 81, 119), 0.9571171171171171)",
+  "outline_add": 0.59,
+  "mask": false
+ },
+ "Textures\\LP\\Weapons\\Legacy\\Hammer.png": {
+  "role": "weapon",
+  "before": [
+   169,
+   0.348
+  ],
+  "after": [
+   12,
+   0.296
+  ],
+  "geom": "('fit', (15, 0, 128, 119), 0.9)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\LP\\Weapons\\Legacy\\Staff.png": {
+  "role": "weapon",
+  "before": [
+   159,
+   0.422
+  ],
+  "after": [
+   11,
+   0.287
+  ],
+  "geom": "('fit', (21, 12, 106, 125), 0.9401769911504424)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\LP\\Weapons\\Legacy\\Sword.png": {
+  "role": "weapon",
+  "before": [
+   214,
+   0.694
+  ],
+  "after": [
+   11,
+   0.593
+  ],
+  "geom": "('fit', (20, 21, 106, 107), 1.2353488372093022)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\AmuletPlanes.png": {
+  "role": "icon",
+  "before": [
+   281,
+   0.578
+  ],
+  "after": [
+   41,
+   0.533
+  ],
+  "geom": "('fit', (36, 20, 92, 115), 1.1183157894736842)",
+  "outline_add": 2.04,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\AmuletProofDetection.png": {
+  "role": "icon",
+  "before": [
+   117,
+   0.457
+  ],
+  "after": [
+   37,
+   0.488
+  ],
+  "geom": "('fit', (37, 20, 91, 115), 1.1183157894736842)",
+  "outline_add": 1.43,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\BagOfTricks.png": {
+  "role": "icon",
+  "before": [
+   81,
+   0.215
+  ],
+  "after": [
+   11,
+   0.235
+  ],
+  "geom": "('fit', (14, 16, 114, 114), 1.0624)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\BracersArchery.png": {
+  "role": "icon",
+  "before": [
+   186,
+   0.381
+  ],
+  "after": [
+   12,
+   0.374
+  ],
+  "geom": "('fit', (19, 32, 112, 103), 1.1423655913978494)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\BracersDefense.png": {
+  "role": "icon",
+  "before": [
+   322,
+   0.526
+  ],
+  "after": [
+   12,
+   0.502
+  ],
+  "geom": "('fit', (18, 31, 112, 105), 1.1302127659574468)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\BroochShielding.png": {
+  "role": "icon",
+  "before": [
+   412,
+   0.425
+  ],
+  "after": [
+   30,
+   0.391
+  ],
+  "geom": "('fit', (21, 28, 106, 110), 1.2498823529411764)",
+  "outline_add": 1.13,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\CogOfMakers.png": {
+  "role": "icon",
+  "before": [
+   210,
+   0.45
+  ],
+  "after": [
+   22,
+   0.416
+  ],
+  "geom": "None",
+  "outline_add": 0.99,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\CrystalBall.png": {
+  "role": "icon",
+  "before": [
+   81,
+   0.237
+  ],
+  "after": [
+   8,
+   0.241
+  ],
+  "geom": "('fit', (21, 9, 107, 122), 0.9401769911504424)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\DecanterEndlessWater.png": {
+  "role": "icon",
+  "before": [
+   153,
+   0.229
+  ],
+  "after": [
+   26,
+   0.269
+  ],
+  "geom": "('fit', (26, 0, 102, 122), 0.9)",
+  "outline_add": 1.02,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\DefenderSword.png": {
+  "role": "icon",
+  "before": [
+   219,
+   0.613
+  ],
+  "after": [
+   31,
+   0.614
+  ],
+  "geom": "None",
+  "outline_add": 1.8,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\DragonSlayer.png": {
+  "role": "icon",
+  "before": [
+   248,
+   0.442
+  ],
+  "after": [
+   25,
+   0.429
+  ],
+  "geom": "None",
+  "outline_add": 1.61,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\EverburningTorch.png": {
+  "role": "icon",
+  "before": [
+   198,
+   0.39
+  ],
+  "after": [
+   26,
+   0.358
+  ],
+  "geom": "('fit', (42, 0, 91, 123), 0.9)",
+  "outline_add": 1.3,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\EversmokingBottle.png": {
+  "role": "icon",
+  "before": [
+   167,
+   0.27
+  ],
+  "after": [
+   30,
+   0.379
+  ],
+  "geom": "('fit', (41, 0, 87, 120), 0.9)",
+  "outline_add": 1.99,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\EyesEagle.png": {
+  "role": "icon",
+  "before": [
+   255,
+   0.657
+  ],
+  "after": [
+   31,
+   0.639
+  ],
+  "geom": "('fit', (17, 35, 110, 72), 1.1423655913978494)",
+  "outline_add": 1.73,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\EyesMinuteSeeing.png": {
+  "role": "icon",
+  "before": [
+   139,
+   0.521
+  ],
+  "after": [
+   28,
+   0.376
+  ],
+  "geom": "('fit', (17, 59, 112, 99), 1.1183157894736842)",
+  "outline_add": 1.62,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\FlameTongue.png": {
+  "role": "icon",
+  "before": [
+   353,
+   0.675
+  ],
+  "after": [
+   43,
+   0.658
+  ],
+  "geom": "None",
+  "outline_add": 1.41,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\FrostBrand.png": {
+  "role": "icon",
+  "before": [
+   270,
+   0.491
+  ],
+  "after": [
+   44,
+   0.562
+  ],
+  "geom": "None",
+  "outline_add": 2.6,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\GauntletsOgrePower.png": {
+  "role": "icon",
+  "before": [
+   104,
+   0.364
+  ],
+  "after": [
+   24,
+   0.345
+  ],
+  "geom": "('fit', (37, 27, 108, 125), 1.0840816326530611)",
+  "outline_add": 0.7,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\GlovesMissileSnaring.png": {
+  "role": "icon",
+  "before": [
+   157,
+   0.357
+  ],
+  "after": [
+   51,
+   0.399
+  ],
+  "geom": "('fit', (22, 1, 126, 125), 0.9)",
+  "outline_add": 1.79,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\GogglesNight.png": {
+  "role": "icon",
+  "before": [
+   209,
+   0.474
+  ],
+  "after": [
+   21,
+   0.483
+  ],
+  "geom": "None",
+  "outline_add": 1.11,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\HaloGlow.png": {
+  "role": "icon",
+  "before": [
+   5,
+   0.0
+  ],
+  "after": [
+   61,
+   0.344
+  ],
+  "geom": "('fit', (7, 43, 121, 85), 0.9319298245614035)",
+  "outline_add": 2.6,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\HaloOfLight.png": {
+  "role": "icon",
+  "before": [
+   222,
+   0.709
+  ],
+  "after": [
+   27,
+   0.762
+  ],
+  "geom": "('fit', (0, 29, 128, 98), 0.9)",
+  "outline_add": 1.57,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\HelmTelepathy.png": {
+  "role": "icon",
+  "before": [
+   273,
+   0.456
+  ],
+  "after": [
+   29,
+   0.404
+  ],
+  "geom": "('fit', (13, 34, 114, 100), 1.051881188118812)",
+  "outline_add": 1.75,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\HornValhalla.png": {
+  "role": "icon",
+  "before": [
+   229,
+   0.627
+  ],
+  "after": [
+   36,
+   0.668
+  ],
+  "geom": "None",
+  "outline_add": 1.85,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\ImmovableRod.png": {
+  "role": "icon",
+  "before": [
+   42,
+   0.53
+  ],
+  "after": [
+   4,
+   0.383
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\ImmovableRodActive.png": {
+  "role": "icon",
+  "before": [
+   71,
+   0.446
+  ],
+  "after": [
+   41,
+   0.342
+  ],
+  "geom": "None",
+  "outline_add": 1.73,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\InquisitorSeal.png": {
+  "role": "icon",
+  "before": [
+   303,
+   0.425
+  ],
+  "after": [
+   21,
+   0.415
+  ],
+  "geom": "None",
+  "outline_add": 1.04,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\JavelinLightning.png": {
+  "role": "icon",
+  "before": [
+   207,
+   0.588
+  ],
+  "after": [
+   91,
+   0.724
+  ],
+  "geom": "('fit', (6, 11, 117, 126), 0.9238260869565217)",
+  "outline_add": 2.11,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\JavelinLightningFlight.png": {
+  "role": "icon",
+  "before": [
+   130,
+   0.711
+  ],
+  "after": [
+   6,
+   0.697
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\ManualOfGolems.png": {
+  "role": "icon",
+  "before": [
+   101,
+   0.243
+  ],
+  "after": [
+   10,
+   0.253
+  ],
+  "geom": "None",
+  "outline_add": 0.41,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\MarkBlood.png": {
+  "role": "icon",
+  "before": [
+   249,
+   0.399
+  ],
+  "after": [
+   12,
+   0.395
+  ],
+  "geom": "('fit', (15, 12, 113, 107), 1.0840816326530611)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\MarkChange.png": {
+  "role": "icon",
+  "before": [
+   170,
+   0.375
+  ],
+  "after": [
+   9,
+   0.378
+  ],
+  "geom": "('fit', (15, 12, 113, 107), 1.0840816326530611)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\MarkDecay.png": {
+  "role": "icon",
+  "before": [
+   229,
+   0.399
+  ],
+  "after": [
+   12,
+   0.363
+  ],
+  "geom": "('fit', (15, 12, 113, 107), 1.0840816326530611)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\MarkRapture.png": {
+  "role": "icon",
+  "before": [
+   203,
+   0.405
+  ],
+  "after": [
+   12,
+   0.401
+  ],
+  "geom": "('fit', (15, 12, 113, 107), 1.0840816326530611)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\MartyrsBeads.png": {
+  "role": "icon",
+  "before": [
+   206,
+   0.621
+  ],
+  "after": [
+   37,
+   0.628
+  ],
+  "geom": "('fit', (21, 4, 107, 121), 0.908034188034188)",
+  "outline_add": 1.87,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\MartyrsBeadsBroken.png": {
+  "role": "icon",
+  "before": [
+   45,
+   0.506
+  ],
+  "after": [
+   10,
+   0.613
+  ],
+  "geom": "('fit', (17, 4, 111, 119), 0.9238260869565217)",
+  "outline_add": 1.24,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\NecklaceAdaptation.png": {
+  "role": "icon",
+  "before": [
+   215,
+   0.54
+  ],
+  "after": [
+   38,
+   0.494
+  ],
+  "geom": "('fit', (36, 20, 92, 115), 1.1183157894736842)",
+  "outline_add": 2.09,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\NecklaceFireballs.png": {
+  "role": "icon",
+  "before": [
+   211,
+   0.641
+  ],
+  "after": [
+   47,
+   0.665
+  ],
+  "geom": "('fit', (26, 0, 102, 100), 1.0624)",
+  "outline_add": 2.14,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\PeriaptWoundClosure.png": {
+  "role": "icon",
+  "before": [
+   239,
+   0.53
+  ],
+  "after": [
+   43,
+   0.55
+  ],
+  "geom": "('fit', (37, 20, 91, 116), 1.1066666666666667)",
+  "outline_add": 1.99,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\PrayerBeads.png": {
+  "role": "icon",
+  "before": [
+   114,
+   0.623
+  ],
+  "after": [
+   29,
+   0.733
+  ],
+  "geom": "('fit', (23, 4, 105, 121), 0.908034188034188)",
+  "outline_add": 1.83,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\PsychicHood.png": {
+  "role": "icon",
+  "before": [
+   122,
+   0.252
+  ],
+  "after": [
+   10,
+   0.263
+  ],
+  "geom": "('fit', (23, 18, 105, 120), 1.0415686274509803)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\PuritySeal.png": {
+  "role": "icon",
+  "before": [
+   152,
+   0.359
+  ],
+  "after": [
+   8,
+   0.323
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\RevivalCore.png": {
+  "role": "icon",
+  "before": [
+   237,
+   0.353
+  ],
+  "after": [
+   12,
+   0.326
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\RingAnimalInfluence.png": {
+  "role": "icon",
+  "before": [
+   157,
+   0.555
+  ],
+  "after": [
+   22,
+   0.589
+  ],
+  "geom": "None",
+  "outline_add": 1.01,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\RingFreeAction.png": {
+  "role": "icon",
+  "before": [
+   359,
+   0.594
+  ],
+  "after": [
+   24,
+   0.556
+  ],
+  "geom": "('fit', (18, 11, 109, 122), 0.9571171171171171)",
+  "outline_add": 1.13,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\RingProtection.png": {
+  "role": "icon",
+  "before": [
+   276,
+   0.614
+  ],
+  "after": [
+   26,
+   0.584
+  ],
+  "geom": "('fit', (18, 11, 109, 122), 0.9571171171171171)",
+  "outline_add": 1.2,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\RingRegeneration.png": {
+  "role": "icon",
+  "before": [
+   381,
+   0.625
+  ],
+  "after": [
+   23,
+   0.592
+  ],
+  "geom": "('fit', (18, 11, 109, 122), 0.9571171171171171)",
+  "outline_add": 1.07,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\RingShootingStars.png": {
+  "role": "icon",
+  "before": [
+   299,
+   0.616
+  ],
+  "after": [
+   25,
+   0.611
+  ],
+  "geom": "('fit', (18, 11, 109, 122), 0.9571171171171171)",
+  "outline_add": 1.05,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\RingSpellStoring.png": {
+  "role": "icon",
+  "before": [
+   323,
+   0.668
+  ],
+  "after": [
+   31,
+   0.625
+  ],
+  "geom": "None",
+  "outline_add": 0.95,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\RingSpellTurning.png": {
+  "role": "icon",
+  "before": [
+   314,
+   0.672
+  ],
+  "after": [
+   25,
+   0.631
+  ],
+  "geom": "None",
+  "outline_add": 1.05,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\RingWardingBond.png": {
+  "role": "icon",
+  "before": [
+   383,
+   0.696
+  ],
+  "after": [
+   25,
+   0.644
+  ],
+  "geom": "None",
+  "outline_add": 1.1,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\ScarabProtection.png": {
+  "role": "icon",
+  "before": [
+   191,
+   0.314
+  ],
+  "after": [
+   41,
+   0.321
+  ],
+  "geom": "None",
+  "outline_add": 1.32,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\SpiritStone.png": {
+  "role": "icon",
+  "before": [
+   180,
+   0.246
+  ],
+  "after": [
+   39,
+   0.323
+  ],
+  "geom": "('fit', (35, 20, 92, 121), 1.051881188118812)",
+  "outline_add": 1.6,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\SwordVengeance.png": {
+  "role": "icon",
+  "before": [
+   207,
+   0.38
+  ],
+  "after": [
+   21,
+   0.357
+  ],
+  "geom": "None",
+  "outline_add": 0.85,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\VorpalSword.png": {
+  "role": "icon",
+  "before": [
+   137,
+   0.626
+  ],
+  "after": [
+   26,
+   0.639
+  ],
+  "geom": "None",
+  "outline_add": 1.59,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\WaaaghTotem.png": {
+  "role": "icon",
+  "before": [
+   250,
+   0.442
+  ],
+  "after": [
+   65,
+   0.536
+  ],
+  "geom": "('fit', (22, 1, 106, 122), 0.9)",
+  "outline_add": 2.02,
+  "mask": false
+ },
+ "Textures\\Items\\Magic\\WardingBondCase.png": {
+  "role": "icon",
+  "before": [
+   124,
+   0.321
+  ],
+  "after": [
+   8,
+   0.331
+  ],
+  "geom": "('fit', (14, 24, 114, 114), 1.0624)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Items\\Wondrous\\AmuletHealth.png": {
+  "role": "icon",
+  "before": [
+   187,
+   0.459
+  ],
+  "after": [
+   33,
+   0.489
+  ],
+  "geom": "('fit', (30, 2, 98, 116), 0.9319298245614035)",
+  "outline_add": 2.11,
+  "mask": false
+ },
+ "Textures\\Items\\Wondrous\\BagOfHolding.png": {
+  "role": "icon",
+  "before": [
+   176,
+   0.221
+  ],
+  "after": [
+   12,
+   0.198
+  ],
+  "geom": "('fit', (17, 27, 110, 122), 1.1183157894736842)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Items\\Wondrous\\BootsElvenkind.png": {
+  "role": "icon",
+  "before": [
+   131,
+   0.279
+  ],
+  "after": [
+   19,
+   0.366
+  ],
+  "geom": "('fit', (29, 17, 104, 117), 1.0624)",
+  "outline_add": 0.71,
+  "mask": false
+ },
+ "Textures\\Items\\Wondrous\\BootsSpeed.png": {
+  "role": "icon",
+  "before": [
+   172,
+   0.252
+  ],
+  "after": [
+   12,
+   0.256
+  ],
+  "geom": "('fit', (32, 17, 102, 117), 1.0624)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Items\\Wondrous\\CloakElvenkind.png": {
+  "role": "icon",
+  "before": [
+   133,
+   0.267
+  ],
+  "after": [
+   22,
+   0.22
+  ],
+  "geom": "None",
+  "outline_add": 1.2,
+  "mask": false
+ },
+ "Textures\\Items\\Wondrous\\IntellectFortress.png": {
+  "role": "icon",
+  "before": [
+   212,
+   0.73
+  ],
+  "after": [
+   36,
+   0.712
+  ],
+  "geom": "('fit', (16, 9, 111, 80), 1.1183157894736842)",
+  "outline_add": 1.31,
+  "mask": false
+ },
+ "Textures\\Items\\Wondrous\\IounGlow.png": {
+  "role": "icon",
+  "before": [
+   22,
+   0.09
+  ],
+  "after": [
+   50,
+   0.131
+  ],
+  "geom": "('fit', (7, 7, 121, 121), 0.9319298245614035)",
+  "outline_add": 2.6,
+  "mask": false
+ },
+ "Textures\\Items\\Wondrous\\IounStone.png": {
+  "role": "icon",
+  "before": [
+   100,
+   0.229
+  ],
+  "after": [
+   16,
+   0.263
+  ],
+  "geom": "None",
+  "outline_add": 0.96,
+  "mask": false
+ },
+ "Textures\\Items\\Wondrous\\RingAcid.png": {
+  "role": "icon",
+  "before": [
+   348,
+   0.641
+  ],
+  "after": [
+   28,
+   0.647
+  ],
+  "geom": "('fit', (18, 11, 110, 122), 0.9571171171171171)",
+  "outline_add": 0.97,
+  "mask": false
+ },
+ "Textures\\Items\\Wondrous\\RingCold.png": {
+  "role": "icon",
+  "before": [
+   244,
+   0.68
+  ],
+  "after": [
+   26,
+   0.628
+  ],
+  "geom": "None",
+  "outline_add": 1.06,
+  "mask": false
+ },
+ "Textures\\Items\\Wondrous\\RingFire.png": {
+  "role": "icon",
+  "before": [
+   385,
+   0.63
+  ],
+  "after": [
+   23,
+   0.566
+  ],
+  "geom": "None",
+  "outline_add": 0.93,
+  "mask": false
+ },
+ "Textures\\Items\\Wondrous\\RingMind.png": {
+  "role": "icon",
+  "before": [
+   324,
+   0.658
+  ],
+  "after": [
+   32,
+   0.623
+  ],
+  "geom": "('fit', (18, 11, 110, 122), 0.9571171171171171)",
+  "outline_add": 1.15,
+  "mask": false
+ },
+ "Textures\\Items\\Wondrous\\WandDetection.png": {
+  "role": "icon",
+  "before": [
+   121,
+   0.512
+  ],
+  "after": [
+   34,
+   0.518
+  ],
+  "geom": "None",
+  "outline_add": 0.42,
+  "mask": false
+ },
+ "Textures\\Items\\Throwables\\AcidVial.png": {
+  "role": "icon",
+  "before": [
+   278,
+   0.237
+  ],
+  "after": [
+   43,
+   0.322
+  ],
+  "geom": "None",
+  "outline_add": 2.6,
+  "mask": false
+ },
+ "Textures\\Items\\Throwables\\AlchemistFire.png": {
+  "role": "icon",
+  "before": [
+   360,
+   0.282
+  ],
+  "after": [
+   39,
+   0.349
+  ],
+  "geom": "('fit', (24, 0, 104, 123), 0.9)",
+  "outline_add": 2.14,
+  "mask": false
+ },
+ "Textures\\Items\\Throwables\\DispelDust.png": {
+  "role": "icon",
+  "before": [
+   142,
+   0.302
+  ],
+  "after": [
+   79,
+   0.244
+  ],
+  "geom": "('fit', (27, 28, 101, 116), 1.2072727272727273)",
+  "outline_add": 1.32,
+  "mask": false
+ },
+ "Textures\\Items\\Throwables\\HolyWater.png": {
+  "role": "icon",
+  "before": [
+   291,
+   0.448
+  ],
+  "after": [
+   39,
+   0.413
+  ],
+  "geom": "('fit', (37, 21, 91, 121), 1.0624)",
+  "outline_add": 2.43,
+  "mask": false
+ },
+ "Textures\\Items\\Throwables\\TanglefootBag.png": {
+  "role": "icon",
+  "before": [
+   154,
+   0.35
+  ],
+  "after": [
+   28,
+   0.33
+  ],
+  "geom": "('fit', (22, 26, 106, 126), 1.0624)",
+  "outline_add": 1.22,
+  "mask": false
+ },
+ "Textures\\Items\\Throwables\\Thunderstone.png": {
+  "role": "icon",
+  "before": [
+   162,
+   0.341
+  ],
+  "after": [
+   11,
+   0.31
+  ],
+  "geom": "('fit', (31, 23, 104, 109), 1.2353488372093022)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Items\\RaceGear\\BoneTalisman.png": {
+  "role": "icon",
+  "before": [
+   194,
+   0.528
+  ],
+  "after": [
+   76,
+   0.562
+  ],
+  "geom": "('fit', (31, 1, 97, 124), 0.9)",
+  "outline_add": 2.6,
+  "mask": false
+ },
+ "Textures\\Items\\RaceGear\\DragonShedArmor.png": {
+  "role": "icon",
+  "before": [
+   87,
+   0.301
+  ],
+  "after": [
+   7,
+   0.309
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Items\\RaceGear\\DwarvenRuneShield.png": {
+  "role": "icon",
+  "before": [
+   118,
+   0.441
+  ],
+  "after": [
+   9,
+   0.433
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Items\\RaceGear\\DwarvenThrowingHammer.png": {
+  "role": "icon",
+  "before": [
+   105,
+   0.534
+  ],
+  "after": [
+   26,
+   0.56
+  ],
+  "geom": "None",
+  "outline_add": 1.68,
+  "mask": false
+ },
+ "Textures\\Items\\RaceGear\\ElvenChain.png": {
+  "role": "icon",
+  "before": [
+   75,
+   0.463
+  ],
+  "after": [
+   10,
+   0.496
+  ],
+  "geom": "('fit', (20, 10, 107, 123), 0.9401769911504424)",
+  "outline_add": 1.07,
+  "mask": false
+ },
+ "Textures\\Items\\RaceGear\\ElvenLongbow.png": {
+  "role": "icon",
+  "before": [
+   162,
+   0.719
+  ],
+  "after": [
+   14,
+   0.565
+  ],
+  "geom": "('fit', (34, 0, 69, 127), 0.9)",
+  "outline_add": 2.6,
+  "mask": false
+ },
+ "Textures\\Items\\RaceGear\\GithAstralArmor.png": {
+  "role": "icon",
+  "before": [
+   111,
+   0.663
+  ],
+  "after": [
+   14,
+   0.64
+  ],
+  "geom": "('fit', (20, 10, 108, 123), 0.9401769911504424)",
+  "outline_add": 1.1,
+  "mask": false
+ },
+ "Textures\\Items\\RaceGear\\IllithidTendrilCloak.png": {
+  "role": "icon",
+  "before": [
+   98,
+   0.213
+  ],
+  "after": [
+   9,
+   0.202
+  ],
+  "geom": "('fit', (14, 16, 114, 128), 0.9485714285714285)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Items\\RaceGear\\MinotaurHornHelm.png": {
+  "role": "icon",
+  "before": [
+   93,
+   0.263
+  ],
+  "after": [
+   5,
+   0.266
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Items\\RaceGear\\OrcishGreataxe.png": {
+  "role": "icon",
+  "before": [
+   99,
+   0.374
+  ],
+  "after": [
+   29,
+   0.489
+  ],
+  "geom": "('fit', (15, 0, 104, 116), 0.9158620689655173)",
+  "outline_add": 2.07,
+  "mask": false
+ },
+ "Textures\\Giants\\Abilities\\CallWind.png": {
+  "role": "icon",
+  "before": [
+   197,
+   0.462
+  ],
+  "after": [
+   12,
+   0.528
+  ],
+  "geom": "('fit', (1, 2, 124, 105), 0.9)",
+  "outline_add": 0.74,
+  "mask": false
+ },
+ "Textures\\Giants\\Abilities\\CloudFog.png": {
+  "role": "icon",
+  "before": [
+   160,
+   0.598
+  ],
+  "after": [
+   15,
+   0.652
+  ],
+  "geom": "('fit', (4, 6, 126, 124), 0.9)",
+  "outline_add": 0.47,
+  "mask": false
+ },
+ "Textures\\Giants\\Abilities\\LightningBolt.png": {
+  "role": "icon",
+  "before": [
+   162,
+   0.492
+  ],
+  "after": [
+   7,
+   0.524
+  ],
+  "geom": "('fit', (0, 0, 128, 128), 0.9)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Giants\\Abilities\\MistyStep.png": {
+  "role": "icon",
+  "before": [
+   171,
+   0.45
+  ],
+  "after": [
+   11,
+   0.502
+  ],
+  "geom": "('fit', (2, 24, 128, 120), 0.9)",
+  "outline_add": 0.78,
+  "mask": false
+ },
+ "Textures\\Giants\\Abilities\\SummonStorm.png": {
+  "role": "icon",
+  "before": [
+   169,
+   0.335
+  ],
+  "after": [
+   9,
+   0.36
+  ],
+  "geom": "('fit', (9, 0, 120, 128), 0.9)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Giants\\Abilities\\WinterHorn.png": {
+  "role": "icon",
+  "before": [
+   236,
+   0.556
+  ],
+  "after": [
+   9,
+   0.628
+  ],
+  "geom": "('fit', (7, 0, 123, 122), 0.9)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Giants\\CloudCrown\\CloudCrown_east.png": {
+  "role": "worn",
+  "before": [
+   165,
+   0.929
+  ],
+  "after": [
+   3,
+   0.783
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Giants\\CloudCrown\\CloudCrown_north.png": {
+  "role": "worn",
+  "before": [
+   93,
+   0.956
+  ],
+  "after": [
+   4,
+   0.844
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Giants\\CloudCrown\\CloudCrown_south.png": {
+  "role": "worn",
+  "before": [
+   153,
+   0.929
+  ],
+  "after": [
+   3,
+   0.57
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Giants\\FrostBraids\\FrostBraids_east.png": {
+  "role": "worn",
+  "before": [
+   107,
+   0.848
+  ],
+  "after": [
+   3,
+   0.648
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Giants\\FrostBraids\\FrostBraids_north.png": {
+  "role": "worn",
+  "before": [
+   111,
+   0.849
+  ],
+  "after": [
+   5,
+   0.771
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Giants\\FrostBraids\\FrostBraids_south.png": {
+  "role": "worn",
+  "before": [
+   128,
+   0.891
+  ],
+  "after": [
+   4,
+   0.782
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Giants\\Genes\\CloudGiantCore.png": {
+  "role": "icon",
+  "before": [
+   101,
+   0.254
+  ],
+  "after": [
+   18,
+   0.284
+  ],
+  "geom": "('fit', (10, 12, 118, 126), 0.9319298245614035)",
+  "outline_add": 0.88,
+  "mask": false
+ },
+ "Textures\\Giants\\Genes\\CloudGift.png": {
+  "role": "icon",
+  "before": [
+   117,
+   0.235
+  ],
+  "after": [
+   19,
+   0.286
+  ],
+  "geom": "('fit', (6, 11, 122, 124), 0.9158620689655173)",
+  "outline_add": 0.66,
+  "mask": false
+ },
+ "Textures\\Giants\\Genes\\CloudGrace.png": {
+  "role": "icon",
+  "before": [
+   92,
+   0.32
+  ],
+  "after": [
+   15,
+   0.329
+  ],
+  "geom": "('fit', (8, 12, 120, 122), 0.9485714285714285)",
+  "outline_add": 0.83,
+  "mask": false
+ },
+ "Textures\\Giants\\Genes\\CloudNoble.png": {
+  "role": "icon",
+  "before": [
+   119,
+   0.279
+  ],
+  "after": [
+   17,
+   0.328
+  ],
+  "geom": "('fit', (10, 15, 122, 122), 0.9485714285714285)",
+  "outline_add": 0.75,
+  "mask": false
+ },
+ "Textures\\Giants\\Genes\\FrostGiantCore.png": {
+  "role": "icon",
+  "before": [
+   181,
+   0.516
+  ],
+  "after": [
+   17,
+   0.546
+  ],
+  "geom": "('fit', (23, 2, 121, 128), 0.9)",
+  "outline_add": 1.0,
+  "mask": false
+ },
+ "Textures\\Giants\\Genes\\FrostGiantFrailty.png": {
+  "role": "icon",
+  "before": [
+   217,
+   0.334
+  ],
+  "after": [
+   18,
+   0.326
+  ],
+  "geom": "('fit', (18, 2, 128, 128), 0.9)",
+  "outline_add": 0.7,
+  "mask": false
+ },
+ "Textures\\Giants\\Genes\\FrostLootHeart.png": {
+  "role": "icon",
+  "before": [
+   141,
+   0.535
+  ],
+  "after": [
+   18,
+   0.562
+  ],
+  "geom": "('fit', (16, 3, 122, 120), 0.908034188034188)",
+  "outline_add": 0.74,
+  "mask": false
+ },
+ "Textures\\Giants\\Genes\\FrostSnowWalker.png": {
+  "role": "icon",
+  "before": [
+   111,
+   0.547
+  ],
+  "after": [
+   14,
+   0.581
+  ],
+  "geom": "('fit', (9, 2, 119, 127), 0.9)",
+  "outline_add": 0.73,
+  "mask": false
+ },
+ "Textures\\Giants\\Genes\\FrostWolfLord.png": {
+  "role": "icon",
+  "before": [
+   183,
+   0.364
+  ],
+  "after": [
+   17,
+   0.399
+  ],
+  "geom": "('fit', (20, 10, 123, 126), 0.9158620689655173)",
+  "outline_add": 0.88,
+  "mask": false
+ },
+ "Textures\\Giants\\Genes\\StormBody.png": {
+  "role": "icon",
+  "before": [
+   100,
+   0.311
+  ],
+  "after": [
+   17,
+   0.335
+  ],
+  "geom": "('fit', (24, 0, 119, 128), 0.9)",
+  "outline_add": 0.96,
+  "mask": false
+ },
+ "Textures\\Giants\\Genes\\StormChild.png": {
+  "role": "icon",
+  "before": [
+   150,
+   0.331
+  ],
+  "after": [
+   19,
+   0.372
+  ],
+  "geom": "('fit', (12, 8, 126, 128), 0.9)",
+  "outline_add": 0.78,
+  "mask": false
+ },
+ "Textures\\Giants\\Genes\\StormGiantCore.png": {
+  "role": "icon",
+  "before": [
+   186,
+   0.341
+  ],
+  "after": [
+   15,
+   0.373
+  ],
+  "geom": "('fit', (23, 0, 126, 128), 0.9)",
+  "outline_add": 1.0,
+  "mask": false
+ },
+ "Textures\\Giants\\Genes\\StormMelancholy.png": {
+  "role": "icon",
+  "before": [
+   135,
+   0.231
+  ],
+  "after": [
+   18,
+   0.261
+  ],
+  "geom": "('fit', (4, 18, 118, 120), 0.9319298245614035)",
+  "outline_add": 0.75,
+  "mask": false
+ },
+ "Textures\\Giants\\Genes\\StormOmen.png": {
+  "role": "icon",
+  "before": [
+   154,
+   0.421
+  ],
+  "after": [
+   18,
+   0.455
+  ],
+  "geom": "('fit', (8, 0, 120, 109), 0.9485714285714285)",
+  "outline_add": 0.66,
+  "mask": false
+ },
+ "Textures\\Giants\\Items\\AbyssCoralArmor.png": {
+  "role": "icon",
+  "before": [
+   220,
+   0.528
+  ],
+  "after": [
+   10,
+   0.505
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Giants\\Items\\CloudMorningstar.png": {
+  "role": "icon",
+  "before": [
+   200,
+   0.565
+  ],
+  "after": [
+   34,
+   0.637
+  ],
+  "geom": "('fit', (4, 15, 128, 88), 0.9)",
+  "outline_add": 1.93,
+  "mask": false
+ },
+ "Textures\\Giants\\Items\\CloudRobe.png": {
+  "role": "icon",
+  "before": [
+   92,
+   0.3
+  ],
+  "after": [
+   9,
+   0.318
+  ],
+  "geom": "('fit', (9, 11, 119, 124), 0.9401769911504424)",
+  "outline_add": 0.76,
+  "mask": false
+ },
+ "Textures\\Giants\\Items\\FogFlask.png": {
+  "role": "icon",
+  "before": [
+   155,
+   0.232
+  ],
+  "after": [
+   36,
+   0.35
+  ],
+  "geom": "('fit', (24, 0, 104, 123), 0.9)",
+  "outline_add": 2.17,
+  "mask": false
+ },
+ "Textures\\Giants\\Items\\FrostGiantAxe.png": {
+  "role": "icon",
+  "before": [
+   110,
+   0.463
+  ],
+  "after": [
+   32,
+   0.535
+  ],
+  "geom": "('fit', (2, 9, 128, 111), 0.9)",
+  "outline_add": 2.12,
+  "mask": false
+ },
+ "Textures\\Giants\\Items\\FrostGiantHorn.png": {
+  "role": "icon",
+  "before": [
+   237,
+   0.612
+  ],
+  "after": [
+   40,
+   0.571
+  ],
+  "geom": "('fit', (1, 16, 118, 123), 0.908034188034188)",
+  "outline_add": 1.86,
+  "mask": false
+ },
+ "Textures\\Giants\\Items\\SkyAmber.png": {
+  "role": "icon",
+  "before": [
+   194,
+   0.248
+  ],
+  "after": [
+   8,
+   0.251
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Giants\\Items\\StormBolt.png": {
+  "role": "icon",
+  "before": [
+   135,
+   0.412
+  ],
+  "after": [
+   57,
+   0.503
+  ],
+  "geom": "('fit', (36, 0, 95, 126), 0.9)",
+  "outline_add": 2.6,
+  "mask": false
+ },
+ "Textures\\Giants\\Items\\StormOrb.png": {
+  "role": "icon",
+  "before": [
+   242,
+   0.391
+  ],
+  "after": [
+   8,
+   0.385
+  ],
+  "geom": "('fit', (21, 11, 107, 122), 0.9571171171171171)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Giants\\Items\\StormTrident.png": {
+  "role": "icon",
+  "before": [
+   194,
+   0.644
+  ],
+  "after": [
+   58,
+   0.782
+  ],
+  "geom": "('fit', (4, 30, 122, 86), 0.9003389830508474)",
+  "outline_add": 1.79,
+  "mask": false
+ },
+ "Textures\\Giants\\Items\\WinterWolfCloak.png": {
+  "role": "icon",
+  "before": [
+   148,
+   0.226
+  ],
+  "after": [
+   11,
+   0.236
+  ],
+  "geom": "None",
+  "outline_add": 0.56,
+  "mask": false
+ },
+ "Textures\\Giants\\Items\\WinterWolfLeather\\WinterWolfLeather_a.png": {
+  "role": "icon",
+  "before": [
+   98,
+   0.19
+  ],
+  "after": [
+   7,
+   0.221
+  ],
+  "geom": "None",
+  "outline_add": 0.62,
+  "mask": false
+ },
+ "Textures\\Giants\\Items\\WinterWolfLeather\\WinterWolfLeather_b.png": {
+  "role": "icon",
+  "before": [
+   108,
+   0.278
+  ],
+  "after": [
+   9,
+   0.285
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Giants\\Items\\WinterWolfLeather\\WinterWolfLeather_c.png": {
+  "role": "icon",
+  "before": [
+   111,
+   0.319
+  ],
+  "after": [
+   11,
+   0.34
+  ],
+  "geom": "None",
+  "outline_add": 0.43,
+  "mask": false
+ },
+ "Textures\\Giants\\StormCrown\\StormCrown_east.png": {
+  "role": "worn",
+  "before": [
+   84,
+   0.823
+  ],
+  "after": [
+   3,
+   0.346
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Giants\\StormCrown\\StormCrown_north.png": {
+  "role": "worn",
+  "before": [
+   71,
+   0.8
+  ],
+  "after": [
+   4,
+   0.424
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Giants\\StormCrown\\StormCrown_south.png": {
+  "role": "worn",
+  "before": [
+   88,
+   0.79
+  ],
+  "after": [
+   2,
+   0.323
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\AbyssCoralArmor_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   388,
+   0.268
+  ],
+  "after": [
+   9,
+   0.281
+  ],
+  "geom": "None",
+  "outline_add": 2.33,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\AbyssCoralArmor_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   370,
+   0.254
+  ],
+  "after": [
+   9,
+   0.27
+  ],
+  "geom": "None",
+  "outline_add": 1.93,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\AbyssCoralArmor_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   421,
+   0.258
+  ],
+  "after": [
+   8,
+   0.28
+  ],
+  "geom": "None",
+  "outline_add": 2.19,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\AbyssCoralArmor_Female_east.png": {
+  "role": "worn",
+  "before": [
+   353,
+   0.336
+  ],
+  "after": [
+   7,
+   0.299
+  ],
+  "geom": "None",
+  "outline_add": 2.3,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\AbyssCoralArmor_Female_north.png": {
+  "role": "worn",
+  "before": [
+   319,
+   0.334
+  ],
+  "after": [
+   8,
+   0.279
+  ],
+  "geom": "None",
+  "outline_add": 1.89,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\AbyssCoralArmor_Female_south.png": {
+  "role": "worn",
+  "before": [
+   437,
+   0.339
+  ],
+  "after": [
+   7,
+   0.29
+  ],
+  "geom": "None",
+  "outline_add": 2.23,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\AbyssCoralArmor_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   378,
+   0.278
+  ],
+  "after": [
+   9,
+   0.294
+  ],
+  "geom": "None",
+  "outline_add": 2.31,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\AbyssCoralArmor_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   357,
+   0.239
+  ],
+  "after": [
+   9,
+   0.259
+  ],
+  "geom": "None",
+  "outline_add": 1.92,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\AbyssCoralArmor_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   457,
+   0.245
+  ],
+  "after": [
+   8,
+   0.267
+  ],
+  "geom": "None",
+  "outline_add": 1.94,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\AbyssCoralArmor_Male_east.png": {
+  "role": "worn",
+  "before": [
+   390,
+   0.36
+  ],
+  "after": [
+   7,
+   0.318
+  ],
+  "geom": "None",
+  "outline_add": 2.32,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\AbyssCoralArmor_Male_north.png": {
+  "role": "worn",
+  "before": [
+   367,
+   0.316
+  ],
+  "after": [
+   7,
+   0.281
+  ],
+  "geom": "None",
+  "outline_add": 2.27,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\AbyssCoralArmor_Male_south.png": {
+  "role": "worn",
+  "before": [
+   437,
+   0.309
+  ],
+  "after": [
+   7,
+   0.274
+  ],
+  "geom": "None",
+  "outline_add": 2.2,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\AbyssCoralArmor_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   406,
+   0.376
+  ],
+  "after": [
+   8,
+   0.308
+  ],
+  "geom": "None",
+  "outline_add": 1.94,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\AbyssCoralArmor_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   362,
+   0.347
+  ],
+  "after": [
+   7,
+   0.303
+  ],
+  "geom": "None",
+  "outline_add": 2.31,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\AbyssCoralArmor_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   432,
+   0.358
+  ],
+  "after": [
+   7,
+   0.299
+  ],
+  "geom": "None",
+  "outline_add": 2.23,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\CloudRobe_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   85,
+   0.114
+  ],
+  "after": [
+   8,
+   0.092
+  ],
+  "geom": "None",
+  "outline_add": 2.52,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\CloudRobe_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   82,
+   0.161
+  ],
+  "after": [
+   7,
+   0.13
+  ],
+  "geom": "None",
+  "outline_add": 2.61,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\CloudRobe_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   82,
+   0.165
+  ],
+  "after": [
+   8,
+   0.122
+  ],
+  "geom": "None",
+  "outline_add": 2.42,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\CloudRobe_Female_east.png": {
+  "role": "worn",
+  "before": [
+   69,
+   0.12
+  ],
+  "after": [
+   7,
+   0.121
+  ],
+  "geom": "None",
+  "outline_add": 2.77,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\CloudRobe_Female_north.png": {
+  "role": "worn",
+  "before": [
+   85,
+   0.187
+  ],
+  "after": [
+   7,
+   0.147
+  ],
+  "geom": "None",
+  "outline_add": 2.74,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\CloudRobe_Female_south.png": {
+  "role": "worn",
+  "before": [
+   78,
+   0.205
+  ],
+  "after": [
+   7,
+   0.165
+  ],
+  "geom": "None",
+  "outline_add": 2.8,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\CloudRobe_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   81,
+   0.116
+  ],
+  "after": [
+   8,
+   0.095
+  ],
+  "geom": "None",
+  "outline_add": 2.55,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\CloudRobe_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   88,
+   0.157
+  ],
+  "after": [
+   8,
+   0.104
+  ],
+  "geom": "None",
+  "outline_add": 2.47,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\CloudRobe_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   88,
+   0.157
+  ],
+  "after": [
+   9,
+   0.119
+  ],
+  "geom": "None",
+  "outline_add": 2.46,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\CloudRobe_Male_east.png": {
+  "role": "worn",
+  "before": [
+   71,
+   0.15
+  ],
+  "after": [
+   8,
+   0.147
+  ],
+  "geom": "None",
+  "outline_add": 3.05,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\CloudRobe_Male_north.png": {
+  "role": "worn",
+  "before": [
+   82,
+   0.194
+  ],
+  "after": [
+   9,
+   0.137
+  ],
+  "geom": "None",
+  "outline_add": 2.73,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\CloudRobe_Male_south.png": {
+  "role": "worn",
+  "before": [
+   79,
+   0.185
+  ],
+  "after": [
+   8,
+   0.155
+  ],
+  "geom": "None",
+  "outline_add": 2.73,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\CloudRobe_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   77,
+   0.128
+  ],
+  "after": [
+   8,
+   0.135
+  ],
+  "geom": "None",
+  "outline_add": 2.81,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\CloudRobe_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   77,
+   0.194
+  ],
+  "after": [
+   7,
+   0.158
+  ],
+  "geom": "None",
+  "outline_add": 2.78,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\CloudRobe_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   79,
+   0.203
+  ],
+  "after": [
+   6,
+   0.17
+  ],
+  "geom": "None",
+  "outline_add": 2.77,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\WinterWolfCloak_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   139,
+   0.076
+  ],
+  "after": [
+   11,
+   0.076
+  ],
+  "geom": "None",
+  "outline_add": 2.45,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\WinterWolfCloak_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   139,
+   0.084
+  ],
+  "after": [
+   12,
+   0.086
+  ],
+  "geom": "None",
+  "outline_add": 2.35,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\WinterWolfCloak_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   150,
+   0.122
+  ],
+  "after": [
+   9,
+   0.089
+  ],
+  "geom": "None",
+  "outline_add": 2.4,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\WinterWolfCloak_Female_east.png": {
+  "role": "worn",
+  "before": [
+   136,
+   0.111
+  ],
+  "after": [
+   7,
+   0.118
+  ],
+  "geom": "None",
+  "outline_add": 2.57,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\WinterWolfCloak_Female_north.png": {
+  "role": "worn",
+  "before": [
+   132,
+   0.121
+  ],
+  "after": [
+   8,
+   0.121
+  ],
+  "geom": "None",
+  "outline_add": 2.78,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\WinterWolfCloak_Female_south.png": {
+  "role": "worn",
+  "before": [
+   150,
+   0.196
+  ],
+  "after": [
+   8,
+   0.137
+  ],
+  "geom": "None",
+  "outline_add": 2.72,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\WinterWolfCloak_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   135,
+   0.085
+  ],
+  "after": [
+   10,
+   0.096
+  ],
+  "geom": "None",
+  "outline_add": 2.98,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\WinterWolfCloak_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   135,
+   0.072
+  ],
+  "after": [
+   10,
+   0.078
+  ],
+  "geom": "None",
+  "outline_add": 2.9,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\WinterWolfCloak_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   150,
+   0.111
+  ],
+  "after": [
+   12,
+   0.089
+  ],
+  "geom": "None",
+  "outline_add": 3.03,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\WinterWolfCloak_Male_east.png": {
+  "role": "worn",
+  "before": [
+   126,
+   0.119
+  ],
+  "after": [
+   7,
+   0.113
+  ],
+  "geom": "None",
+  "outline_add": 2.28,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\WinterWolfCloak_Male_north.png": {
+  "role": "worn",
+  "before": [
+   140,
+   0.112
+  ],
+  "after": [
+   9,
+   0.111
+  ],
+  "geom": "None",
+  "outline_add": 2.25,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\WinterWolfCloak_Male_south.png": {
+  "role": "worn",
+  "before": [
+   148,
+   0.154
+  ],
+  "after": [
+   9,
+   0.129
+  ],
+  "geom": "None",
+  "outline_add": 2.29,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\WinterWolfCloak_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   126,
+   0.148
+  ],
+  "after": [
+   6,
+   0.129
+  ],
+  "geom": "None",
+  "outline_add": 2.39,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\WinterWolfCloak_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   128,
+   0.137
+  ],
+  "after": [
+   7,
+   0.137
+  ],
+  "geom": "None",
+  "outline_add": 2.84,
+  "mask": false
+ },
+ "Textures\\Giants\\Worn\\WinterWolfCloak_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   150,
+   0.212
+  ],
+  "after": [
+   6,
+   0.14
+  ],
+  "geom": "None",
+  "outline_add": 2.89,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\BalorHeart.png": {
+  "role": "icon",
+  "before": [
+   131,
+   0.344
+  ],
+  "after": [
+   7,
+   0.262
+  ],
+  "geom": "('fit', (27, 14, 101, 108), 1.1302127659574468)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\BalorLash.png": {
+  "role": "icon",
+  "before": [
+   44,
+   0.394
+  ],
+  "after": [
+   132,
+   0.441
+  ],
+  "geom": "('fit', (25, 55, 111, 72), 1.2353488372093022)",
+  "outline_add": 2.6,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\BalorWhip.png": {
+  "role": "icon",
+  "before": [
+   115,
+   0.615
+  ],
+  "after": [
+   9,
+   0.451
+  ],
+  "geom": "('fit', (0, 47, 128, 74), 0.9)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\EmpyreanBlade.png": {
+  "role": "icon",
+  "before": [
+   326,
+   0.507
+  ],
+  "after": [
+   43,
+   0.508
+  ],
+  "geom": "('fit', (0, 34, 128, 93), 0.9)",
+  "outline_add": 2.6,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\FeatherCloak.png": {
+  "role": "icon",
+  "before": [
+   69,
+   0.613
+  ],
+  "after": [
+   11,
+   0.555
+  ],
+  "geom": "None",
+  "outline_add": 1.36,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\FocusAir.png": {
+  "role": "icon",
+  "before": [
+   132,
+   0.329
+  ],
+  "after": [
+   21,
+   0.333
+  ],
+  "geom": "('fit', (36, 18, 110, 111), 1.1423655913978494)",
+  "outline_add": 0.68,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\FocusEarth.png": {
+  "role": "icon",
+  "before": [
+   110,
+   0.343
+  ],
+  "after": [
+   10,
+   0.328
+  ],
+  "geom": "('fit', (28, 20, 99, 109), 1.1937078651685393)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\FocusFire.png": {
+  "role": "icon",
+  "before": [
+   229,
+   0.319
+  ],
+  "after": [
+   19,
+   0.317
+  ],
+  "geom": "('fit', (28, 20, 99, 109), 1.1937078651685393)",
+  "outline_add": 0.93,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\FocusWater.png": {
+  "role": "icon",
+  "before": [
+   220,
+   0.297
+  ],
+  "after": [
+   17,
+   0.306
+  ],
+  "geom": "('fit', (28, 20, 99, 109), 1.1937078651685393)",
+  "outline_add": 0.93,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\FrostSpear.png": {
+  "role": "icon",
+  "before": [
+   190,
+   0.735
+  ],
+  "after": [
+   32,
+   0.741
+  ],
+  "geom": "('fit', (0, 50, 127, 77), 0.9)",
+  "outline_add": 2.1,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\IvoryHorn.png": {
+  "role": "icon",
+  "before": [
+   257,
+   0.595
+  ],
+  "after": [
+   31,
+   0.548
+  ],
+  "geom": "('fit', (7, 2, 126, 112), 0.9)",
+  "outline_add": 1.79,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\OgreClub.png": {
+  "role": "icon",
+  "before": [
+   92,
+   0.532
+  ],
+  "after": [
+   27,
+   0.484
+  ],
+  "geom": "('fit', (0, 36, 125, 82), 0.9)",
+  "outline_add": 1.73,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\WonderLamp_Asleep.png": {
+  "role": "icon",
+  "before": [
+   179,
+   0.437
+  ],
+  "after": [
+   15,
+   0.498
+  ],
+  "geom": "('fit', (2, 26, 121, 103), 0.9)",
+  "outline_add": 1.12,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\WonderLamp_Bound.png": {
+  "role": "icon",
+  "before": [
+   218,
+   0.394
+  ],
+  "after": [
+   36,
+   0.469
+  ],
+  "geom": "('fit', (2, 1, 121, 103), 0.9)",
+  "outline_add": 1.63,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\WonderLamp_Dim.png": {
+  "role": "icon",
+  "before": [
+   61,
+   0.409
+  ],
+  "after": [
+   9,
+   0.436
+  ],
+  "geom": "('fit', (2, 43, 121, 103), 0.9)",
+  "outline_add": 1.08,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\IceDevilStinger\\IceDevilStinger_a.png": {
+  "role": "icon",
+  "before": [
+   124,
+   0.632
+  ],
+  "after": [
+   7,
+   0.445
+  ],
+  "geom": "('fit', (26, 52, 97, 76), 1.496338028169014)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\IceDevilStinger\\IceDevilStinger_b.png": {
+  "role": "icon",
+  "before": [
+   181,
+   0.697
+  ],
+  "after": [
+   7,
+   0.439
+  ],
+  "geom": "('fit', (16, 39, 105, 111), 1.1937078651685393)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\IceDevilStinger\\IceDevilStinger_c.png": {
+  "role": "icon",
+  "before": [
+   210,
+   0.714
+  ],
+  "after": [
+   7,
+   0.584
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\Worn\\FeatherCloak_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   62,
+   0.536
+  ],
+  "after": [
+   13,
+   0.41
+  ],
+  "geom": "None",
+  "outline_add": 0.82,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\Worn\\FeatherCloak_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   61,
+   0.669
+  ],
+  "after": [
+   9,
+   0.582
+  ],
+  "geom": "None",
+  "outline_add": 1.19,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\Worn\\FeatherCloak_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   63,
+   0.699
+  ],
+  "after": [
+   8,
+   0.622
+  ],
+  "geom": "None",
+  "outline_add": 0.81,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\Worn\\FeatherCloak_Female_east.png": {
+  "role": "worn",
+  "before": [
+   59,
+   0.577
+  ],
+  "after": [
+   9,
+   0.492
+  ],
+  "geom": "None",
+  "outline_add": 0.83,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\Worn\\FeatherCloak_Female_north.png": {
+  "role": "worn",
+  "before": [
+   60,
+   0.631
+  ],
+  "after": [
+   8,
+   0.579
+  ],
+  "geom": "None",
+  "outline_add": 0.96,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\Worn\\FeatherCloak_Female_south.png": {
+  "role": "worn",
+  "before": [
+   65,
+   0.703
+  ],
+  "after": [
+   9,
+   0.637
+  ],
+  "geom": "None",
+  "outline_add": 0.77,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\Worn\\FeatherCloak_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   63,
+   0.537
+  ],
+  "after": [
+   8,
+   0.419
+  ],
+  "geom": "None",
+  "outline_add": 0.89,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\Worn\\FeatherCloak_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   68,
+   0.607
+  ],
+  "after": [
+   11,
+   0.555
+  ],
+  "geom": "None",
+  "outline_add": 1.12,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\Worn\\FeatherCloak_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   63,
+   0.599
+  ],
+  "after": [
+   9,
+   0.586
+  ],
+  "geom": "None",
+  "outline_add": 1.09,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\Worn\\FeatherCloak_Male_east.png": {
+  "role": "worn",
+  "before": [
+   61,
+   0.591
+  ],
+  "after": [
+   6,
+   0.396
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\Worn\\FeatherCloak_Male_north.png": {
+  "role": "worn",
+  "before": [
+   63,
+   0.644
+  ],
+  "after": [
+   11,
+   0.581
+  ],
+  "geom": "None",
+  "outline_add": 0.96,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\Worn\\FeatherCloak_Male_south.png": {
+  "role": "worn",
+  "before": [
+   64,
+   0.773
+  ],
+  "after": [
+   7,
+   0.694
+  ],
+  "geom": "None",
+  "outline_add": 0.83,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\Worn\\FeatherCloak_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   58,
+   0.596
+  ],
+  "after": [
+   8,
+   0.514
+  ],
+  "geom": "None",
+  "outline_add": 0.75,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\Worn\\FeatherCloak_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   57,
+   0.664
+  ],
+  "after": [
+   6,
+   0.257
+  ],
+  "geom": "None",
+  "outline_add": 0.85,
+  "mask": false
+ },
+ "Textures\\Races124\\Items\\Worn\\FeatherCloak_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   58,
+   0.869
+  ],
+  "after": [
+   5,
+   0.711
+  ],
+  "geom": "None",
+  "outline_add": 0.77,
+  "mask": false
+ },
+ "Textures\\FireGiant\\FireGiantGene.png": {
+  "role": "icon",
+  "before": [
+   109,
+   0.366
+  ],
+  "after": [
+   15,
+   0.405
+  ],
+  "geom": "('fit', (20, 1, 108, 128), 0.9)",
+  "outline_add": 0.88,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Forge.png": {
+  "role": "icon",
+  "before": [
+   786,
+   0.167
+  ],
+  "after": [
+   17,
+   0.337
+  ],
+  "geom": "('resize', (256, 171))",
+  "outline_add": 4.16,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Tunic.png": {
+  "role": "icon",
+  "before": [
+   490,
+   0.062
+  ],
+  "after": [
+   9,
+   0.159
+  ],
+  "geom": "('resize', (256, 256))",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Equipment\\Armor.png": {
+  "role": "icon",
+  "before": [
+   153,
+   0.482
+  ],
+  "after": [
+   7,
+   0.481
+  ],
+  "geom": "('fit', (10, 8, 118, 120), 0.9485714285714285)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Equipment\\Helmet.png": {
+  "role": "icon",
+  "before": [
+   116,
+   0.329
+  ],
+  "after": [
+   9,
+   0.329
+  ],
+  "geom": "('fit', (10, 8, 118, 120), 0.9485714285714285)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Equipment\\Maul.png": {
+  "role": "icon",
+  "before": [
+   198,
+   0.187
+  ],
+  "after": [
+   12,
+   0.071
+  ],
+  "geom": "('fit', (21, 8, 255, 243), 0.9041702127659574)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Equipment\\Worn\\Armor_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   193,
+   0.333
+  ],
+  "after": [
+   7,
+   0.267
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Equipment\\Worn\\Armor_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   185,
+   0.334
+  ],
+  "after": [
+   5,
+   0.224
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Equipment\\Worn\\Armor_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   183,
+   0.352
+  ],
+  "after": [
+   6,
+   0.218
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Equipment\\Worn\\Armor_Female_east.png": {
+  "role": "worn",
+  "before": [
+   175,
+   0.391
+  ],
+  "after": [
+   6,
+   0.271
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Equipment\\Worn\\Armor_Female_north.png": {
+  "role": "worn",
+  "before": [
+   162,
+   0.402
+  ],
+  "after": [
+   12,
+   0.183
+  ],
+  "geom": "None",
+  "outline_add": 1.28,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Equipment\\Worn\\Armor_Female_south.png": {
+  "role": "worn",
+  "before": [
+   171,
+   0.452
+  ],
+  "after": [
+   5,
+   0.243
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Equipment\\Worn\\Armor_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   186,
+   0.35
+  ],
+  "after": [
+   6,
+   0.294
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Equipment\\Worn\\Armor_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   184,
+   0.321
+  ],
+  "after": [
+   6,
+   0.24
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Equipment\\Worn\\Armor_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   193,
+   0.341
+  ],
+  "after": [
+   7,
+   0.239
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Equipment\\Worn\\Armor_Male_east.png": {
+  "role": "worn",
+  "before": [
+   167,
+   0.41
+  ],
+  "after": [
+   4,
+   0.268
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Equipment\\Worn\\Armor_Male_north.png": {
+  "role": "worn",
+  "before": [
+   164,
+   0.386
+  ],
+  "after": [
+   4,
+   0.235
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Equipment\\Worn\\Armor_Male_south.png": {
+  "role": "worn",
+  "before": [
+   169,
+   0.409
+  ],
+  "after": [
+   5,
+   0.225
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Equipment\\Worn\\Armor_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   153,
+   0.425
+  ],
+  "after": [
+   3,
+   0.208
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Equipment\\Worn\\Armor_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   155,
+   0.44
+  ],
+  "after": [
+   12,
+   0.186
+  ],
+  "geom": "None",
+  "outline_add": 1.57,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Equipment\\Worn\\Armor_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   156,
+   0.47
+  ],
+  "after": [
+   4,
+   0.229
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Equipment\\Worn\\Helmet_east.png": {
+  "role": "worn",
+  "before": [
+   116,
+   0.341
+  ],
+  "after": [
+   8,
+   0.264
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Equipment\\Worn\\Helmet_north.png": {
+  "role": "worn",
+  "before": [
+   92,
+   0.247
+  ],
+  "after": [
+   6,
+   0.21
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Equipment\\Worn\\Helmet_south.png": {
+  "role": "worn",
+  "before": [
+   99,
+   0.448
+  ],
+  "after": [
+   6,
+   0.399
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\MoltenGuard\\Armor.png": {
+  "role": "icon",
+  "before": [
+   293,
+   0.612
+  ],
+  "after": [
+   8,
+   0.601
+  ],
+  "geom": "('fit', (10, 8, 118, 120), 0.9485714285714285)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\MoltenGuard\\Helmet.png": {
+  "role": "icon",
+  "before": [
+   207,
+   0.45
+  ],
+  "after": [
+   7,
+   0.442
+  ],
+  "geom": "('fit', (10, 8, 118, 120), 0.9485714285714285)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\MoltenGuard\\Maul.png": {
+  "role": "icon",
+  "before": [
+   274,
+   0.197
+  ],
+  "after": [
+   11,
+   0.109
+  ],
+  "geom": "('fit', (16, 3, 256, 247), 0.9)",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   330,
+   0.404
+  ],
+  "after": [
+   8,
+   0.336
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   341,
+   0.451
+  ],
+  "after": [
+   15,
+   0.337
+  ],
+  "geom": "None",
+  "outline_add": 1.02,
+  "mask": false
+ },
+ "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   330,
+   0.458
+  ],
+  "after": [
+   6,
+   0.31
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Female_east.png": {
+  "role": "worn",
+  "before": [
+   278,
+   0.479
+  ],
+  "after": [
+   13,
+   0.328
+  ],
+  "geom": "None",
+  "outline_add": 1.09,
+  "mask": false
+ },
+ "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Female_north.png": {
+  "role": "worn",
+  "before": [
+   292,
+   0.538
+  ],
+  "after": [
+   3,
+   0.219
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Female_south.png": {
+  "role": "worn",
+  "before": [
+   268,
+   0.568
+  ],
+  "after": [
+   13,
+   0.302
+  ],
+  "geom": "None",
+  "outline_add": 1.65,
+  "mask": false
+ },
+ "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   318,
+   0.424
+  ],
+  "after": [
+   6,
+   0.329
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   340,
+   0.433
+  ],
+  "after": [
+   15,
+   0.348
+  ],
+  "geom": "None",
+  "outline_add": 0.88,
+  "mask": false
+ },
+ "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   338,
+   0.443
+  ],
+  "after": [
+   6,
+   0.306
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Male_east.png": {
+  "role": "worn",
+  "before": [
+   269,
+   0.492
+  ],
+  "after": [
+   13,
+   0.312
+  ],
+  "geom": "None",
+  "outline_add": 1.26,
+  "mask": false
+ },
+ "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Male_north.png": {
+  "role": "worn",
+  "before": [
+   298,
+   0.517
+  ],
+  "after": [
+   14,
+   0.323
+  ],
+  "geom": "None",
+  "outline_add": 1.94,
+  "mask": false
+ },
+ "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Male_south.png": {
+  "role": "worn",
+  "before": [
+   279,
+   0.53
+  ],
+  "after": [
+   13,
+   0.287
+  ],
+  "geom": "None",
+  "outline_add": 1.4,
+  "mask": false
+ },
+ "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   245,
+   0.518
+  ],
+  "after": [
+   12,
+   0.226
+  ],
+  "geom": "None",
+  "outline_add": 1.26,
+  "mask": false
+ },
+ "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   260,
+   0.568
+  ],
+  "after": [
+   13,
+   0.325
+  ],
+  "geom": "None",
+  "outline_add": 2.26,
+  "mask": false
+ },
+ "Textures\\FireGiant\\MoltenGuard\\Worn\\Armor_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   261,
+   0.586
+  ],
+  "after": [
+   13,
+   0.323
+  ],
+  "geom": "None",
+  "outline_add": 2.22,
+  "mask": false
+ },
+ "Textures\\FireGiant\\MoltenGuard\\Worn\\Helmet_east.png": {
+  "role": "worn",
+  "before": [
+   158,
+   0.53
+  ],
+  "after": [
+   5,
+   0.477
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\MoltenGuard\\Worn\\Helmet_north.png": {
+  "role": "worn",
+  "before": [
+   129,
+   0.428
+  ],
+  "after": [
+   4,
+   0.355
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\MoltenGuard\\Worn\\Helmet_south.png": {
+  "role": "worn",
+  "before": [
+   144,
+   0.581
+  ],
+  "after": [
+   5,
+   0.449
+  ],
+  "geom": "None",
+  "outline_add": 0.0,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Worn\\Tunic_Fat_east.png": {
+  "role": "worn",
+  "before": [
+   89,
+   0.059
+  ],
+  "after": [
+   6,
+   0.099
+  ],
+  "geom": "None",
+  "outline_add": 2.53,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Worn\\Tunic_Fat_north.png": {
+  "role": "worn",
+  "before": [
+   79,
+   0.092
+  ],
+  "after": [
+   8,
+   0.102
+  ],
+  "geom": "None",
+  "outline_add": 2.4,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Worn\\Tunic_Fat_south.png": {
+  "role": "worn",
+  "before": [
+   124,
+   0.071
+  ],
+  "after": [
+   9,
+   0.115
+  ],
+  "geom": "None",
+  "outline_add": 2.33,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Worn\\Tunic_Female_east.png": {
+  "role": "worn",
+  "before": [
+   80,
+   0.089
+  ],
+  "after": [
+   7,
+   0.133
+  ],
+  "geom": "None",
+  "outline_add": 2.49,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Worn\\Tunic_Female_north.png": {
+  "role": "worn",
+  "before": [
+   91,
+   0.143
+  ],
+  "after": [
+   8,
+   0.139
+  ],
+  "geom": "None",
+  "outline_add": 2.37,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Worn\\Tunic_Female_south.png": {
+  "role": "worn",
+  "before": [
+   130,
+   0.114
+  ],
+  "after": [
+   7,
+   0.159
+  ],
+  "geom": "None",
+  "outline_add": 2.39,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Worn\\Tunic_Hulk_east.png": {
+  "role": "worn",
+  "before": [
+   90,
+   0.068
+  ],
+  "after": [
+   7,
+   0.11
+  ],
+  "geom": "None",
+  "outline_add": 2.51,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Worn\\Tunic_Hulk_north.png": {
+  "role": "worn",
+  "before": [
+   81,
+   0.087
+  ],
+  "after": [
+   8,
+   0.096
+  ],
+  "geom": "None",
+  "outline_add": 2.38,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Worn\\Tunic_Hulk_south.png": {
+  "role": "worn",
+  "before": [
+   128,
+   0.067
+  ],
+  "after": [
+   7,
+   0.105
+  ],
+  "geom": "None",
+  "outline_add": 2.35,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Worn\\Tunic_Male_east.png": {
+  "role": "worn",
+  "before": [
+   80,
+   0.086
+  ],
+  "after": [
+   6,
+   0.124
+  ],
+  "geom": "None",
+  "outline_add": 2.49,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Worn\\Tunic_Male_north.png": {
+  "role": "worn",
+  "before": [
+   95,
+   0.144
+  ],
+  "after": [
+   7,
+   0.139
+  ],
+  "geom": "None",
+  "outline_add": 2.39,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Worn\\Tunic_Male_south.png": {
+  "role": "worn",
+  "before": [
+   117,
+   0.095
+  ],
+  "after": [
+   7,
+   0.146
+  ],
+  "geom": "None",
+  "outline_add": 2.34,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Worn\\Tunic_Thin_east.png": {
+  "role": "worn",
+  "before": [
+   76,
+   0.101
+  ],
+  "after": [
+   6,
+   0.146
+  ],
+  "geom": "None",
+  "outline_add": 2.51,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Worn\\Tunic_Thin_north.png": {
+  "role": "worn",
+  "before": [
+   92,
+   0.168
+  ],
+  "after": [
+   7,
+   0.159
+  ],
+  "geom": "None",
+  "outline_add": 2.46,
+  "mask": false
+ },
+ "Textures\\FireGiant\\Worn\\Tunic_Thin_south.png": {
+  "role": "worn",
+  "before": [
+   118,
+   0.119
+  ],
+  "after": [
+   7,
+   0.17
+  ],
+  "geom": "None",
+  "outline_add": 2.4,
+  "mask": false
+ }
+}

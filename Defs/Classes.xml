@@ -42,7 +42,7 @@
   <LichPhylactery.LP_ClassDef>
     <defName>LP_Class_Monk</defName>
     <label>武僧</label>
-    <description>DND 武僧以气御身：武艺（被动）、疾风连击、拨挡箭矢、震慑拳、乘风步、开掌技、金刚之躯、颤心掌，终极 空灵之身。徒手（或拿短棍）时最强；拳脚走原版近战结算，Isekai 的力量与武器精通照常生效。强度看“战技强度”；“气”的效果（设置开着时）乘心灵敏感度。资源：气（冥想时恢复，睡觉时回满）。物理职业：额外攻击（只在徒手时）、战斗风格。</description>
+    <description>DND 武僧以气御身：武艺（被动）、疾风连击、拨挡箭矢、震慑拳、乘风步、开掌技、金刚之躯、颤心掌，终极 空灵之身。10 级起被动“心如止水”：心智抗性 +50%。徒手（或拿短棍）时最强；拳脚走原版近战结算，Isekai 的力量与武器精通照常生效。强度看“战技强度”；“气”的效果（设置开着时）乘心灵敏感度。资源：气（冥想时恢复，睡觉时回满）。物理职业：额外攻击（只在徒手时）、战斗风格。</description>
     <mainSkill>Melee</mainSkill>
     <primary>Dex</primary>
     <order>3</order>

@@ -101,7 +101,7 @@ namespace LichPhylactery {
     Exalted.CapDiseases(hc);Exalted.CapDiseases(hc2);
     Check(plague.Severity<HediffDefOf.Plague.lethalSeverity-.01f && Near(blood.Severity,Exalted.BloodCap) && Near(plague2.Severity,.97f) && Near(hc.CurStage.totalBleedFactor,.7f) && Near(ExOffset(hc,"PainShockThreshold"),.15f+.05f*3f),"不屈之躯 holds plague at "+plague.Severity.ToString("0.000")+"; 金刚不坏 holds blood loss at 0.58; bleeding ×0.7, pain shock +15%");
     c1.health.RemoveHediff(plague);c2.health.RemoveHediff(blood);a19.health.RemoveHediff(plague2);
-    // 13b. 1.91.0 去疤：不屈之躯有疤时满 5 天消除最重的一处，金刚不坏 2 天；没疤时计时归零；没有超凡体质不去疤
+    // 13b. 1.91.0 去疤：不屈之躯有疤时满 1 天消除最重的一处，金刚不坏半天；没疤时计时归零；没有超凡体质不去疤
     var clean=HtPawn();var hcl=ExAdv(clean,Adventurer.Con,20);
     foreach(var cp in new[]{c1,c2,clean,a19})foreach(var oi in cp.health.hediffSet.hediffs.OfType<Hediff_Injury>().Where(x=>x.IsPermanent()).ToList())cp.health.RemoveHediff(oi); // 生成时自带的旧伤
     var small=ExScar(c1,2f);var worst=ExScar(c1,4f);hc.scarTick=int.MinValue;var g0=Exalted.HealScar(hc,false);
@@ -109,7 +109,7 @@ namespace LichPhylactery {
     var ms=ExScar(c2,3f);hc2.scarTick=now-Exalted.MythicScarTicks;Exalted.CapDiseases(hc2);bool myGone=!c2.health.hediffSet.hediffs.Contains(ms);
     hcl.scarTick=now-Exalted.ScarTicks*3;Exalted.HealScar(hcl,false);bool reset=hcl.scarTick==now;
     var keep=ExScar(a19,3f);Adventurer.Get(a19).scarTick=now-Exalted.ScarTicks*3;Exalted.Tick(Adventurer.Get(a19));
-    Check(g0==null && hc.scarTick==now && g1==null && g2==worst && c1.health.hediffSet.hediffs.Contains(small) && !c1.health.hediffSet.hediffs.Contains(worst) && myGone && reset && a19.health.hediffSet.hediffs.Contains(keep) && Exalted.Describe(2,false).Contains("5 天") && Exalted.Describe(2,true).Contains("2 天"),"去疤: 不屈之躯 removes the worst scar (4 of 2/4) after 5 scarred days, not a tick earlier; 金刚不坏 after 2 days; no scars resets the timer; a pawn without 超凡体质 keeps its scar");
+    Check(g0==null && hc.scarTick==now && g1==null && g2==worst && c1.health.hediffSet.hediffs.Contains(small) && !c1.health.hediffSet.hediffs.Contains(worst) && myGone && reset && a19.health.hediffSet.hediffs.Contains(keep) && Exalted.Describe(2,false).Contains("1 天") && Exalted.Describe(2,true).Contains("半天"),"去疤: 不屈之躯 removes the worst scar (4 of 2/4) after 1 scarred day, not a tick earlier; 金刚不坏 after half a day; no scars resets the timer; a pawn without 超凡体质 keeps its scar");
     c1.health.RemoveHediff(small);a19.health.RemoveHediff(keep);
     // 14. 技能不衰退
     var it=HtPawn();ExAdv(it,Adventurer.Int,20);var sk=it.skills.skills.First(x=>!x.TotallyDisabled);sk.Level=18;sk.xpSinceLastLevel=1000f;float before=sk.xpSinceLastLevel;sk.Interval();

@@ -78,6 +78,16 @@ namespace LichPhylactery {
      bool used=ws.Destroyed && wm.Destroyed;var wr2=GearEnhanceBench.TryEnhance(blade,bench);
      Check(benchGizmo && noGearGizmo && hidden && listed && op!=null && wr==GearEnhance.Result.Success && wl==2 && used && wr2==GearEnhance.Result.None && GearEnhance.Level(blade)==2 && GearEnhanceBench.Blocked(blade,map)=="材料不够","bench window: gizmo "+benchGizmo+", gear gizmo gone "+noGearGizmo+", bills hidden "+hidden+", listed "+listed+", op "+op+", enhance → +"+wl+", mats used "+used+", second try "+wr2);
      GearEnhance.TestRoll=null;
+     // 1.118.0 修复耐久：每缺 20% 10 白银（向上取整），扣地图白银当场修满；白银不够不修；全部修复。
+     int max=blade.MaxHitPoints;blade.HitPoints=max-1;int c1=GearEnhanceBench.RepairCost(blade);blade.HitPoints=1;int c5=GearEnhanceBench.RepairCost(blade);
+     blade.HitPoints=max/2;int cost=GearEnhanceBench.RepairCost(blade);int have0=GearEnhanceBench.CountOnMap(map,ThingDefOf.Silver);
+     bool shortOk=have0>=cost || !GearEnhanceBench.Repair(blade,map) && blade.HitPoints==max/2;
+     var rs=MakeItem("Silver",cost+5);GenPlace.TryPlaceThing(rs,bench.InteractionCell+IntVec3.East,map,ThingPlaceMode.Near);rs.SetForbidden(false,false);
+     int have1=GearEnhanceBench.CountOnMap(map,ThingDefOf.Silver);bool rep=GearEnhanceBench.Repair(blade,map);int have2=GearEnhanceBench.CountOnMap(map,ThingDefOf.Silver);
+     bool full=blade.HitPoints==max && GearEnhanceBench.RepairCost(blade)==0 && !GearEnhanceBench.Repair(blade,map);
+     blade.HitPoints=max-1;var rs2=MakeItem("Silver",10);GenPlace.TryPlaceThing(rs2,bench.InteractionCell+IntVec3.East,map,ThingPlaceMode.Near);rs2.SetForbidden(false,false);int all=GearEnhanceBench.RepairAll(map);
+     Check(c1==10 && c5==50 && cost==30 && shortOk && rep && have1-have2==cost && full && all>=1 && blade.HitPoints==max && bench.GetGizmos().OfType<Command_Action>().First(g=>g.defaultLabel=="附魔强化").Disabled==false,"repair: 1 hp missing "+c1+", 1 hp left "+c5+", half "+cost+" silver; short silver blocked "+shortOk+", repaired "+rep+" used "+(have1-have2)+", full "+full+", repair all "+all);
+     foreach(var t in new[]{rs,rs2})if(!t.Destroyed)t.Destroy();
     }finally{GearEnhance.TestRoll=null;rl.workAmount=work;foreach(var other in map.mapPawns.FreeColonistsSpawned.ToList())if(other.drafter!=null)other.drafter.Drafted=false;}
     // 8. 存读档：等级和目标保留
     GearEnhance.Comp(blade).level=4;GearEnhance.Comp(blade).target=5;geSwordId=blade.ThingID;made.Remove(blade);

@@ -11,7 +11,7 @@ namespace LichPhylactery {
  // 六种魔物，按等阶解锁：魔兽群（青铜起：猫头鹰熊、座狼、蝎尾狮、掘地兽……，永久狂暴）、巨人劫掠队（白银起：食人魔、双头巨人、霜巨人、风暴巨人，红袍法师会派系）、
  // 深渊魔群（白银起：劣魔、巴路古拉、影魔、魅魔、哈兹魔、纳巴苏）、九狱魔军（黄金起：链魔、骨魔、艾林魔、角魔、阿姆尼祖）、
  // 真龙来袭（秘银起：青年五色龙，传说是成年龙，带本色护卫，照 1.52.0 的真龙来袭生成）、传奇魔物（传说：贝希尔带魔兽，或死亡骑士带红袍亡灵）。
- // 阵容在贴出委托时就按威胁点数配好（存在委托里），公告板上写着会来什么；对应系统在设置里关掉、或缺少需要的模组（如 HAR 真龙）时，这种魔物不出。
+ // 阵容在贴出委托时就按威胁点数配好（存在委托里），公告板上写着会来什么；对应系统在设置里关掉、或缺少需要的模组时，这种魔物不出。
  public static class QuestBoardMonsters {
   public const string Beasts="beasts",Giants="giants",Abyss="abyss",Hell="hell",Dragon="dragon",Legend="legend";
   public static readonly string[] Themes={Beasts,Giants,Abyss,Hell,Dragon,Legend};
@@ -36,7 +36,7 @@ namespace LichPhylactery {
     case Abyss:return AbyssSettings.Enabled && AbyssRaces.HordeDef!=null && Any(AbyssKinds);
     case Hell:return Pacts.Enabled && PactEvents.LegionDef!=null && Any(HellKinds);
     case Dragon:return Dragons.On;
-    case Legend:return Monsters.On && (Monsters.HarAvailable || Monsters.DeathKnightOn);
+    case Legend:return Monsters.On && (Monsters.Available || Monsters.DeathKnightOn);
    }
    return false;
   }
@@ -71,7 +71,7 @@ namespace LichPhylactery {
     case Hell:c.kinds=Compose(HellKinds,c.points,false);break;
     case Dragon:c.lead=Dragons.PickColor(QuestBoard.Home,false);break;
     case Legend:
-     c.lead=Monsters.HarAvailable && (!Monsters.DeathKnightOn || Rand.Chance(.5f))?Monsters.Behir:Monsters.DeathKnight;
+     c.lead=Monsters.Available && (!Monsters.DeathKnightOn || Rand.Chance(.5f))?Monsters.Behir:Monsters.DeathKnight;
      c.kinds=c.lead==Monsters.Behir?Compose(BeastKinds,c.points*EscortShare,true):Compose(UndeadKinds,c.points*EscortShare,false);
      break;
    }

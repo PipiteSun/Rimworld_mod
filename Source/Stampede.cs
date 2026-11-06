@@ -23,7 +23,7 @@ namespace LichPhylactery {
   // 访客被殖民者打：古龙一行按“拒绝”处理；云游导师离开（桥接程序集往这里登记）。
   public static Action<Pawn,Pawn> MentorHarmed;
   public static void Harmed(Pawn victim,Pawn attacker,string kind){
-   try{if(kind=="dragon")DragonFlyover.OnVisitorHarmed(victim,attacker);else if(kind=="mentor")MentorHarmed?.Invoke(victim,attacker);}
+   try{if(kind=="dragon")DragonFlyover.OnVisitorHarmed(victim,attacker);else if(kind=="mentor")MentorHarmed?.Invoke(victim,attacker);else if(kind=="e3")Events3.Harmed(victim,attacker,kind);}
    catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 访客受伤处理出错："+e,74120611);}
   }
   public static Hediff_EventVisitor MarkVisitor(Pawn p,string kind){var h=Items.Give(p,"LP_EventVisitor") as Hediff_EventVisitor;if(h!=null)h.kind=kind;return h;}
@@ -89,6 +89,15 @@ namespace LichPhylactery {
    if(Scribe.mode==LoadSaveMode.Saving)list.RemoveAll(p=>p==null || p.Destroyed || p.Discarded);
    Scribe_Collections.Look(ref list,label,LookMode.Reference);
    if(Scribe.mode==LoadSaveMode.PostLoadInit)list=list?.Where(p=>p!=null).ToList()??new List<Pawn>();
+  }
+ }
+ // 2026-11-04 审计：小队（Lord）结束后已从地图移除，存档里却还记着引用 → 读档报"Could not resolve reference to object with loadID Lord_N"。
+ // 存档时已移除的小队按 null 写（读档结果和原来一样是 null，只是不再报警告）；运行中的字段不改。
+ static class ScribeLord {
+  public static bool Alive(Lord l){var m=l?.lordManager?.map;return m!=null && Find.Maps.Contains(m) && m.lordManager.lords.Contains(l);}
+  public static void Look(ref Lord lord,string label){
+   if(Scribe.mode==LoadSaveMode.Saving){var l=Alive(lord)?lord:null;Scribe_References.Look(ref l,label);return;}
+   Scribe_References.Look(ref lord,label);
   }
  }
 
@@ -214,7 +223,7 @@ namespace LichPhylactery {
  public class StampedeGroup : IExposable {
   public Map map;public Lord lord;public Vector3 dir;public List<Pawn> pawns=new List<Pawn>(),hit=new List<Pawn>();public List<string> kinds=new List<string>();public float lastDamage; // 只给检查用，不存档
   public void ExposeData(){
-   Scribe_References.Look(ref map,"map");Scribe_References.Look(ref lord,"lord");Scribe_Values.Look(ref dir,"dir");
+   Scribe_References.Look(ref map,"map");ScribeLord.Look(ref lord,"lord");Scribe_Values.Look(ref dir,"dir");
    ScribePawns.Look(ref pawns,"pawns");ScribePawns.Look(ref hit,"hit");
    Scribe_Collections.Look(ref kinds,"kinds",LookMode.Value);if(Scribe.mode==LoadSaveMode.PostLoadInit && kinds==null)kinds=new List<string>();
   }

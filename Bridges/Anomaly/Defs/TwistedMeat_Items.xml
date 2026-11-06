@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.119.0 扭曲肉资源化：物品、状态、想法。只在装了 Anomaly（异象）时加载。 -->
+<Defs>
+
+  <!-- ==================== B. 畸变膏 ==================== -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_AberrantPaste</defName>
+    <label>畸变膏</label>
+    <description>扭曲肉加化学燃料熬干、稳定下来的暗红色膏体，装在蜡封的陶罐里。远域的侵染被压住了，不会腐烂，但摸起来仍然有一点温热。\n\n炼金师和死灵法师都拿它当浓缩的“血肉”：死灵仪式台的生肉配方里 1 份畸变膏算 20 份生肉；血肉催转时 1 份算 10 份扭曲肉。普通商队不收，九狱掮客、妖精集市和鬼婆集市按 1.5 倍价收购。</description>
+    <graphicData>
+      <texPath>TwistedMeat/AberrantPaste</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <stackLimit>50</stackLimit>
+    <statBases>
+      <MarketValue>12</MarketValue>
+      <Mass>0.15</Mass>
+      <Flammability>0.6</Flammability>
+      <DeteriorationRate>0.5</DeteriorationRate>
+    </statBases>
+    <thingCategories>
+      <li>LP_AlchemyMaterials</li>
+    </thingCategories>
+    <tradeability>All</tradeability>
+    <healthAffectsPrice>false</healthAffectsPrice>
+  </ThingDef>
+
+  <!-- ==================== C2. 畸变再生膏（医疗品） ==================== -->
+  <ThingDef ParentName="MedicineBase">
+    <defName>LP_AberrantSalve</defName>
+    <label>畸变再生膏</label>
+    <description>混了草药的畸变膏，抹在伤口上会自己往里钻、把肉缝起来。治疗效果和工业药差不多。\n\n代价：每次包扎有 15% 的可能在治疗的部位留下一块“畸变瘤块”（美观 -1，可以手术切除）。</description>
+    <graphicData>
+      <texPath>TwistedMeat/AberrantSalve</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.85</drawSize>
+    </graphicData>
+    <techLevel>Industrial</techLevel>
+    <stackLimit>25</stackLimit>
+    <statBases>
+      <MarketValue>40</MarketValue>
+      <Mass>0.4</Mass>
+      <Flammability>0.7</Flammability>
+      <MedicalPotency>1.00</MedicalPotency>
+      <MedicalQualityMax>1.00</MedicalQualityMax>
+      <DeteriorationRate>1</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  <HediffDef>
+    <defName>LP_AberrantTumor</defName>
+    <label>畸变瘤块</label>
+    <description>畸变再生膏留下的一团多余的肉，会自己微微抽动。不痛不痒，就是难看。可以手术切除。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.75, 0.45, 0.5)</defaultLabelColor>
+    <isBad>true</isBad>
+    <makesSickThought>false</makesSickThought>
+    <tendable>false</tendable>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <statOffsets><PawnBeauty>-1</PawnBeauty></statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+  <RecipeDef ParentName="SurgeryFlesh">
+    <defName>LP_RemoveAberrantTumor</defName>
+    <label>切除畸变瘤块</label>
+    <description>把畸变再生膏留下的瘤块切掉。</description>
+    <workerClass>Recipe_RemoveHediff</workerClass>
+    <jobString>正在切除畸变瘤块。</jobString>
+    <workAmount>1500</workAmount>
+    <removesHediff>LP_AberrantTumor</removesHediff>
+    <successfullyRemovedHediffMessage>{0}切除了{1}身上的畸变瘤块。</successfullyRemovedHediffMessage>
+    <isViolation>false</isViolation>
+    <recipeUsers><li>Human</li></recipeUsers>
+    <ingredients>
+      <li><filter><categories><li>Medicine</li></categories></filter><count>1</count></li>
+    </ingredients>
+    <fixedIngredientFilter><categories><li>Medicine</li></categories></fixedIngredientFilter>
+  </RecipeDef>
+
+  <!-- ==================== C3. 蜕形药剂 ==================== -->
+  <ThingDef ParentName="LP_PotionBase">
+    <defName>LP_MorphDraught</defName>
+    <label>蜕形药剂</label>
+    <description>畸变膏兑巨魔血的浑浊药剂。喝下后 12 小时里肌肉和神经一起“长歪”：近战伤害 +20%，疼痛阈值 +20%，但脸也跟着走形，社交影响 -30%。巫妖和死灵造物不能喝。</description>
+    <descriptionHyperlinks><HediffDef>LP_MorphDraught</HediffDef></descriptionHyperlinks>
+    <graphicData><texPath>TwistedMeat/MorphDraught</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>130</MarketValue></statBases>
+    <ingestible><outcomeDoers><li Class="LichPhylactery.IngestionOutcomeDoer_LPPotion"><hediff>LP_MorphDraught</hediff></li></outcomeDoers></ingestible>
+    <comps><li Class="CompProperties_Drug"><listOrder>2210</listOrder><isCombatEnhancingDrug>true</isCombatEnhancingDrug></li></comps>
+  </ThingDef>
+  <HediffDef ParentName="LP_PotionHediffBase">
+    <defName>LP_MorphDraught</defName>
+    <label>蜕形</label>
+    <description>肌肉一鼓一鼓地往外长，脸也跟着走了形。近战伤害 +20%，疼痛阈值 +20%，社交影响 -30%。</description>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>30000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+    <stages>
+      <li>
+        <painFactor>0.8333</painFactor>
+        <statOffsets><MeleeDamageFactor>0.2</MeleeDamageFactor><SocialImpact>-0.3</SocialImpact></statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- ==================== C4. 狂乱之瓶 ==================== -->
+  <ThingDef ParentName="LP_ThrowableBase">
+    <defName>LP_FrenzyFlask</defName>
+    <label>狂乱之瓶</label>
+    <description>用布裹着的畸变膏陶瓶，摔碎后散出一股远域的腥气。3 格内的生物各有 60% 成功率被吓得逃窜 8 秒（敌我不分）。喝了心智护盾药水的人不受影响；机械体不受影响。</description>
+    <graphicData><texPath>TwistedMeat/FrenzyFlask</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>40</MarketValue></statBases>
+    <weaponTags><li>LP_FrenzyFlask</li></weaponTags>
+    <verbs>
+      <li>
+        <label>投掷狂乱之瓶</label>
+        <verbClass>Verb_LaunchProjectile</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <range>12.9</range>
+        <warmupTime>1.5</warmupTime>
+        <noiseRadius>4</noiseRadius>
+        <soundCast>ThrowGrenade</soundCast>
+        <targetParams><canTargetLocations>true</canTargetLocations></targetParams>
+        <defaultProjectile>LP_Proj_FrenzyFlask</defaultProjectile>
+        <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+      </li>
+    </verbs>
+  </ThingDef>
+  <ThingDef ParentName="LP_ThrowableProjectileBase">
+    <defName>LP_Proj_FrenzyFlask</defName>
+    <label>狂乱之瓶</label>
+    <thingClass>LichPhylactery.Projectile_FrenzyFlask</thingClass>
+    <graphicData><texPath>TwistedMeat/FrenzyFlask</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <projectile>
+      <damageDef>Smoke</damageDef>
+      <damageAmountBase>0</damageAmountBase>
+      <explosionRadius>3</explosionRadius>
+    </projectile>
+  </ThingDef>
+
+  <!-- ==================== D2. 远域饱食（食尸鬼吃扭曲肉） ==================== -->
+  <HediffDef>
+    <defName>LP_FarRealmSated</defName>
+    <label>远域饱食</label>
+    <description>食尸鬼吞下了扭曲肉，远域的血肉在胃里翻腾。近战伤害 +10%，移动速度 +5%。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.8, 0.35, 0.4)</defaultLabelColor>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>15000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+    <stages>
+      <li>
+        <statOffsets><MeleeDamageFactor>0.1</MeleeDamageFactor></statOffsets>
+        <statFactors><MoveSpeed>1.05</MoveSpeed></statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- ==================== 远域低语（解剖、血肉催转的副作用） ==================== -->
+  <ThoughtDef>
+    <defName>LP_FarWhispers</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>3</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>远域低语</label>
+        <description>切开那堆肉的时候，我好像听见它在说话。不是对着我说的。</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ==================== D6. 哈达之眼（远域献飨的稀有遗物） ==================== -->
+  <ThingDef ParentName="LP_MagicEyesBase">
+    <defName>LP_EyeOfHadar</defName>
+    <label>哈达之眼</label>
+    <description>远域里那颗“黑暗饥渴”之星的一片碎光，嵌在一只干枯的眼眶形骨框里。戴上它的人能看见远域的潮汐：心灵敏感度 +30%，冥想专注获取 +20%，瞄准时间 -10%；对远域实体和异怪类敌人造成的伤害 +15%。\n\n代价：它一直在“饿”。佩戴者精神崩溃阈值 +6%。戴在奇物层的眼部。</description>
+    <graphicData><texPath>TwistedMeat/EyeOfHadar</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <statBases><MarketValue>2600</MarketValue></statBases>
+    <equippedStatOffsets>
+      <PsychicSensitivity>0.3</PsychicSensitivity>
+      <MeditationFocusGain>0.2</MeditationFocusGain>
+      <AimingDelayFactor>-0.1</AimingDelayFactor>
+      <MentalBreakThreshold>0.06</MentalBreakThreshold>
+    </equippedStatOffsets>
+  </ThingDef>
+
+  <!-- ==================== F3. 畸变皮甲 ==================== -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>LP_AberrantHideArmor</defName>
+    <label>畸变皮甲</label>
+    <description>用皮革做底、畸变膏一层层“长”上去的护甲，摸上去像活的。利器护甲略低于防弹背心。穿着者每天愈合一处小伤。\n\n别人看着就不舒服：其他人对穿着者好感 -5。</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>TwistedMeat/AberrantHideArmor</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>16000</WorkToMake>
+      <MaxHitPoints>220</MaxHitPoints>
+      <Mass>4</Mass>
+      <Flammability>0.6</Flammability>
+      <ArmorRating_Sharp>0.85</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.15</ArmorRating_Heat>
+      <Insulation_Cold>6</Insulation_Cold>
+      <EquipDelay>3</EquipDelay>
+      <MarketValue>620</MarketValue>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>-0.08</MoveSpeed>
+    </equippedStatOffsets>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <costList>
+      <LP_AberrantPaste>40</LP_AberrantPaste>
+      <Leather_Plain>30</Leather_Plain>
+    </costList>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <researchPrerequisite>LP_Research_FleshShaping</researchPrerequisite>
+      <skillRequirements><Crafting>6</Crafting></skillRequirements>
+      <recipeUsers Inherit="False"><li>LP_AlchemyTable</li></recipeUsers>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <displayPriority>520</displayPriority>
+    </recipeMaker>
+    <apparel>
+      <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li></bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest</wornGraphicPath>
+      <layers><li>Middle</li></layers>
+      <tags><li>LP_AberrantArmor</li></tags>
+      <defaultOutfitTags><li>Soldier</li></defaultOutfitTags>
+    </apparel>
+    <colorGenerator Class="ColorGenerator_Options">
+      <options><li><weight>1</weight><only>(146,72,78)</only></li></options>
+    </colorGenerator>
+    <tradeability>Sellable</tradeability>
+  </ThingDef>
+  <ThoughtDef>
+    <defName>LP_AberrantHideSocial</defName>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <workerClass>LichPhylactery.ThoughtWorker_AberrantHide</workerClass>
+    <stages>
+      <li>
+        <label>穿着畸变皮甲</label>
+        <baseOpinionOffset>-5</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- ==================== F1 / F4 血肉兽仆从、畸变巨像 ==================== -->
+  <HediffDef>
+    <defName>LP_FleshMinion</defName>
+    <label>孵化血肉兽</label>
+    <description>从血肉孵化槽（或畸变巨像的残躯）里爬出来的小血肉兽，听命于殖民地，到时间就会烂掉。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.8, 0.45, 0.45)</defaultLabelColor>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="LichPhylactery.HediffCompProperties_FleshMinion" />
+    </comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_AberrantGolem</defName>
+    <label>畸变血肉</label>
+    <description>这具血肉巨像掺了远域的扭曲肉：更耐打（受到的伤害 -17%，相当于生命 +20%），伤口会慢慢自己长好；死的时候裂成 2 只小血肉兽，1 天后烂掉。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.8, 0.35, 0.4)</defaultLabelColor>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="LichPhylactery.HediffCompProperties_AberrantGolem" />
+    </comps>
+    <stages>
+      <li>
+        <statFactors><IncomingDamageFactor>0.833</IncomingDamageFactor></statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- ==================== F5. 死灵滋养 ==================== -->
+  <HediffDef>
+    <defName>LP_FleshNourished</defName>
+    <label>扭曲肉滋养</label>
+    <description>今天喂过 5 份扭曲肉。工作效率 +10%。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>66000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+    <stages>
+      <li><statOffsets><WorkSpeedGlobal>0.1</WorkSpeedGlobal></statOffsets></li>
+    </stages>
+  </HediffDef>
+
+</Defs>

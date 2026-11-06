@@ -10,7 +10,7 @@ using Verse.AI;
 using Verse.AI.Group;
 
 namespace LichPhylactery {
- // 1.52.1 传奇怪（见 ArtSource/ChromaticDragons-1.52.0-spec.md 第四节）：贝希尔、眼魔、半巫妖是 HAR 种族（Bridges/HAR，只在启用 HAR 时有），
+ // 1.52.1 传奇怪（见 ArtSource/ChromaticDragons-1.52.0-spec.md 第四节）：贝希尔、眼魔、半巫妖的种族在 Defs/LegendaryMonsters_Races.xml（1.116.0 起是动物型怪物，不再需要 HAR），
  // 死亡骑士是主模组里的人类兵种（不需要 HAR）。全部复用 Source/Legendary.cs 的传奇层（LP_LegendaryExtension、传奇抗性、传奇动作、豁免）。
  // 招牌攻击都写在各自的“XX之躯”hediff 里（同 1.52.0 的龙吐息）：每 60 刻判定一次，先看有没有出生、附近有没有敌人。
  // 反魔法锥、亡灵统领只读 MapComponent_Legendary 的缓存（每 60 刻刷新一次），地图上没有眼魔就直接返回。
@@ -28,7 +28,7 @@ namespace LichPhylactery {
   public static bool IsMonster(Pawn p)=>KindOf(p)!=null;
   public static string Label(string k)=>k==Behir?"贝希尔":k==Beholder?"眼魔":k==DeathKnight?"死亡骑士":k==Demilich?"半巫妖":k;
   public static PawnKindDef Kind(string k)=>DefDatabase<PawnKindDef>.GetNamedSilentFail(k==Behir?"LP_LM_Behir":k==Beholder?"LP_LM_Beholder":k==Demilich?"LP_LM_Demilich":"LP_LM_DeathKnight");
-  public static bool HarAvailable=>DefDatabase<ThingDef>.GetNamedSilentFail("LP_Behir")!=null;
+  public static bool Available=>DefDatabase<ThingDef>.GetNamedSilentFail("LP_Behir")!=null; // 1.116.0 前叫 HarAvailable（种族只在启用 HAR 时有）
   public static float HealthMult(Pawn p){var e=Ext(p);return e==null?1f:e.healthFactor*Dragons.HealthMult;} // 传奇怪共用“真龙强度”
   public static float RenderScale(Pawn p)=>Ext(p)?.renderScale??1f;
   public static bool NoButcher(Pawn p)=>p!=null && (Is(p,Behir) || Is(p,Beholder) || Is(p,Demilich));
@@ -37,9 +37,9 @@ namespace LichPhylactery {
   // ---------- 开关 ----------
   static Settings S=>LichMod.Settings;
   public static bool On=>S?.legendaryMonsters??true;
-  public static bool BehirOn=>On && HarAvailable && (S?.behirHunt??true);
-  public static bool BeholderOn=>On && HarAvailable && (S?.beholderLair??true);
-  public static bool DemilichOn=>On && HarAvailable && (S?.demilichTomb??true);
+  public static bool BehirOn=>On && Available && (S?.behirHunt??true);
+  public static bool BeholderOn=>On && Available && (S?.beholderLair??true);
+  public static bool DemilichOn=>On && Available && (S?.demilichTomb??true);
   public static bool DeathKnightOn=>On && (S?.deathKnightThay??true);
 
   // ---------- 派系 ----------
@@ -456,7 +456,7 @@ namespace LichPhylactery {
  public class CompUseEffect_MonsterIntel : CompUseEffect {
   string K=>((CompProperties_UseEffectMonsterIntel)props).kind;
   public override void DoEffect(Pawn usedBy){base.DoEffect(usedBy);Monsters.RevealSite(K,usedBy.LabelShort+"读懂了情报");}
-  public override AcceptanceReport CanBeUsedBy(Pawn p)=>(K==Monsters.Beholder?Monsters.BeholderOn:Monsters.DemilichOn)?true:new AcceptanceReport("传奇怪没有开启（需要 Humanoid Alien Races）");
+  public override AcceptanceReport CanBeUsedBy(Pawn p)=>(K==Monsters.Beholder?Monsters.BeholderOn:Monsters.DemilichOn)?true:new AcceptanceReport("传奇怪没有开启（设置里的“传奇怪”）");
  }
  // 灵魂宝石：巫妖用 → 命匣获得 100 点献祭经验；其他人摔碎 → 放出灵魂，地图上的殖民者心情 +5。
  public class CompUseEffect_SoulGem : CompUseEffect {
@@ -538,12 +538,10 @@ namespace LichPhylactery {
   public static void Draw(Listing_Standard l){
    var s=LichMod.Settings;l.Gap(6f);
    l.CheckboxLabeled("传奇怪",ref s.legendaryMonsters,"贝希尔、眼魔、死亡骑士、半巫妖。都有传奇抗性和传奇动作，强度跟着上面的“真龙强度”。关闭后下面的登场都不出现。");
-   bool har=Monsters.HarAvailable;var old=GUI.color;if(!har)GUI.color=Color.gray;
-   l.CheckboxLabeled("　龙的猎手（贝希尔）"+(har?"":"（需要 HAR）"),ref s.behirHunt,"殖民地有成年力能龙裔、或有人杀过成年以上的真龙时，低概率来一条贝希尔。它也会出现在青年 / 成年龙巢附近，和龙打起来。");
-   l.CheckboxLabeled("　眼魔巢穴"+(har?"":"（需要 HAR）"),ref s.beholderLair,"击杀幽暗殖巢的夺心魔首领后 20% 显露（或同盟商队卖情报）。");
-   l.CheckboxLabeled("　无尽墓穴（半巫妖）"+(har?"":"（需要 HAR）"),ref s.demilichTomb,"殖民地最高冒险者等级 ≥24 时，同盟商队会卖墓穴情报。");
-   GUI.color=old;
-   l.CheckboxLabeled("　死亡骑士",ref s.deathKnightThay,"塞伊远征军 ≥5000 点的袭击 10% 由死亡骑士带队；拉洛克古墓里 50% 多一名死亡骑士守卫。不需要 HAR。");
+   l.CheckboxLabeled("　龙的猎手（贝希尔）",ref s.behirHunt,"殖民地有成年力能龙裔、或有人杀过成年以上的真龙时，低概率来一条贝希尔。它也会出现在青年 / 成年龙巢附近，和龙打起来。");
+   l.CheckboxLabeled("　眼魔巢穴",ref s.beholderLair,"击杀幽暗殖巢的夺心魔首领后 20% 显露（或同盟商队卖情报）。");
+   l.CheckboxLabeled("　无尽墓穴（半巫妖）",ref s.demilichTomb,"殖民地最高冒险者等级 ≥24 时，同盟商队会卖墓穴情报。");
+   l.CheckboxLabeled("　死亡骑士",ref s.deathKnightThay,"塞伊远征军 ≥5000 点的袭击 10% 由死亡骑士带队；拉洛克古墓里 50% 多一名死亡骑士守卫。");
   }
  }
 }

@@ -158,10 +158,10 @@ namespace LichPhylactery {
   }
  }
 
- // ---------- 黄昏之兆：每年掷一次（25%），15 天后开始。第 2 年起在每年第 1 天掷；第 1 年在第 5～45 天里随机一天掷（1.97.0 补丁） ----------
+ // ---------- 黄昏之兆：每年掷一次（25%），15 天后开始。第 2 年起在每年第 1 天掷；第 1 年在第 1～30 天里随机一天掷（1.97.0 补丁；1.117.0 改成 1～30 天，黄昏之年最早第 16 天开始） ----------
  public class WorldComponent_Twilight : WorldComponent {
   public const float YearChance=.25f;
-  public const int FirstYearMinDay=5,FirstYearMaxDay=45;
+  public const int FirstYearMinDay=1,FirstYearMaxDay=30;
   public int startTick=-1,rolledYear=-1,firstRollTick=-1;
   public WorldComponent_Twilight(World world):base(world){}
   public override void WorldComponentTick(){
@@ -169,6 +169,7 @@ namespace LichPhylactery {
    if(startTick>=0 && now>=startTick){startTick=-1;Twilight.Start();return;}
    int year=GenDate.YearsPassed;
    if(year==0 && rolledYear<0){
+    if(firstRollTick>FirstYearMaxDay*GenDate.TicksPerDay)firstRollTick=-1; // 1.117.0：旧存档里定在第 30 天以后的判定重新挑一天
     if(firstRollTick<0)firstRollTick=Rand.RangeInclusive(FirstYearMinDay,FirstYearMaxDay)*GenDate.TicksPerDay;
     if(now>=firstRollTick){rolledYear=0;YearRoll();}
    }

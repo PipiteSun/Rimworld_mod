@@ -129,7 +129,7 @@ namespace LichPhylactery {
    if(lord?.LordJob is LordJob_NetherilAscension j && Map.lordManager.lords.Contains(lord))lines.Add("升神仪式进行中：还剩 "+Mathf.Max(0f,(j.startTick+NetherilAscension.DurationTicks-Find.TickManager.TicksGame)/2500f).ToString("0.#")+" 小时");
    return string.Join("\n",lines);
   }
-  public override void ExposeData(){base.ExposeData();Scribe_References.Look(ref lord,"lpAscensionLord");}
+  public override void ExposeData(){base.ExposeData();ScribeLord.Look(ref lord,"lpAscensionLord");}
  }
 
  public class Dialog_NetherilAscension : Window {

@@ -147,6 +147,8 @@ namespace LichPhylactery {
 
   // ---------- 警觉：征召后 2 秒内射击预热 −50% ----------
   static readonly Dictionary<Pawn,int> drafted=new Dictionary<Pawn,int>();
+  // 2026-11-04 审计：警觉计时、巨武器大师待追击的静态表跨存档不清，会一直攥着上一个存档的小人（整张旧地图都释放不掉）。读档时清空。
+  public static void ResetCaches(){drafted.Clear();gwmPending.Clear();}
   public static void NoteDrafted(Pawn p){if(Has(p,Alert))drafted[p]=Find.TickManager.TicksGame;}
   public static bool AlertFresh(Pawn p)=>p!=null && p.Drafted && drafted.TryGetValue(p,out int t) && Find.TickManager.TicksGame-t<=AlertTicks && Has(p,Alert);
   public static int AlertWarmup(Verb verb,int ticks){

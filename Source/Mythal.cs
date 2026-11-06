@@ -74,7 +74,7 @@ namespace LichPhylactery {
    var pool=DefDatabase<MythalRuleDef>.AllDefsListForReading.Where(r=>floor>=r.minFloor && r!=not).ToList();
    return pool.Count==0?none:pool.RandomElementByWeight(r=>r.weight);
   }
-  // 每 10 层的里程碑首领：每组按顺序找第一个存在的兵种（不装 HAR 时五色龙、眼魔不存在，退到后面的替身）；第 70 层起轮回。
+  // 每 10 层的里程碑首领：每组按顺序找第一个存在的兵种（找不到兵种时退到后面的替身）；第 70 层起轮回。
   public static readonly string[][] Bosses={
    new[]{"LP_RedDragon_Young","LP_BlueDragon_Young","LP_GreenDragon_Young","LP_BlackDragon_Young","LP_WhiteDragon_Young","|","LP_WildDragon"},
    new[]{"LP_FH_RedWizard"},
@@ -394,6 +394,7 @@ namespace LichPhylactery {
    Scribe_Defs.Look(ref theme,"mythalTheme");Scribe_Defs.Look(ref rule,"mythalRule");
    Scribe_Values.Look(ref rewardCell,"mythalRewardCell",IntVec3.Invalid);Scribe_Values.Look(ref entryCell,"mythalEntryCell",IntVec3.Invalid);
    Scribe_Collections.Look(ref guardians,"mythalGuardians",LookMode.Reference);Scribe_Collections.Look(ref healed,"mythalHealed",LookMode.Reference);
+   if(Scribe.mode==LoadSaveMode.Saving)timeInside.RemoveAll(kv=>kv.Key==null || kv.Key.Destroyed); // 2026-11-04 审计：死在地牢里的人按 null 键写进存档，读档报"Null key while loading dictionary"；结算本来也跳过他们
    Scribe_Collections.Look(ref timeInside,"mythalTimeInside",LookMode.Reference,LookMode.Value,ref tmpPawns,ref tmpTicks);
    if(Scribe.mode==LoadSaveMode.PostLoadInit){
     guardians=guardians?.Where(p=>p!=null).ToList()??new List<Pawn>();healed=healed?.Where(p=>p!=null).ToList()??new List<Pawn>();

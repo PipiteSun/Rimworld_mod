@@ -9,7 +9,7 @@ using Verse.AI;
 
 namespace LichPhylactery {
  // 1.52.0 通用传奇层（见 ArtSource/ChromaticDragons-1.52.0-spec.md 第二节）：豁免检定、传奇抗性、传奇动作、骇人威仪、巢穴动作框架、传奇单位的等级/显示/击杀奖励。
- // 只在主程序集，不依赖 HAR：所有配置写在 PawnKindDef（或种族 ThingDef）上的 LP_LegendaryExtension。五色真龙（Bridges/HAR）和 1.52.1 的传奇怪只写 XML。
+ // 只在主程序集，不依赖 HAR：所有配置写在 PawnKindDef（或种族 ThingDef）上的 LP_LegendaryExtension。五色真龙和 1.52.1 的传奇怪只写 XML（1.116.0 起是动物型怪物，没有冒险者 hediff：等级、六维直接读扩展，见 LegendaryBeasts.cs）。
  public class LegendaryActionEntry {public string action;public int cost=1;public int cooldown;}
  public class LP_LegendaryExtension : DefModExtension {
   public int resistance,lairBonus=1,actionPoints=3,cr,legendPoints;

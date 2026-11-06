@@ -206,7 +206,7 @@ namespace LichPhylactery {
    base.ExposeData();
    Scribe_Values.Look(ref crashTick,"lpCrashTick",-1);Scribe_Values.Look(ref salvageTick,"lpSalvageTick",-1);Scribe_Values.Look(ref choice,"lpChoice","none");Scribe_Values.Look(ref salvageBy,"lpSalvageBy");
    Scribe_Values.Look(ref setup,"lpSetup");Scribe_Values.Look(ref salvageSent,"lpSalvageSent");Scribe_Values.Look(ref autoThay,"lpAutoThay");
-   Scribe_References.Look(ref master,"lpMaster",true);Scribe_References.Look(ref salvageLord,"lpSalvageLord");ScribePawns.Look(ref guards,"lpGuards");
+   Scribe_References.Look(ref master,"lpMaster",true);ScribeLord.Look(ref salvageLord,"lpSalvageLord");ScribePawns.Look(ref guards,"lpGuards");
    Scribe_Collections.Look(ref nextRoll,"lpWildMagic",LookMode.Value,LookMode.Value);
    if(Scribe.mode==LoadSaveMode.PostLoadInit && nextRoll==null)nextRoll=new Dictionary<int,int>();
   }

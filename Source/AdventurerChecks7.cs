@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using HarmonyLib;
 using RimWorld;
 using Verse;
 namespace LichPhylactery {
@@ -37,10 +38,28 @@ namespace LichPhylactery {
     var esk=e==null?null:DefDatabase<SkillDef>.AllDefsListForReading.FirstOrDefault(d=>!e.skills.GetSkill(d).TotallyDisabled);
     if(esk!=null)e.skills.Learn(esk,1000f,false,false);
     Check(directNone && (he==null || Near(he.xp,ex0) && Near(he.workXpToday,0f)),"direct skill XP and non-colony pawns give no work XP");
+    // f. 2026-11-04 热修：别的模组让 Learn 抛异常时不给经验（Ducks' Insane Skills 让社交斗殴每 tick 刷经验）
+    var hp=new HarmonyLib.Harmony("local.lich.workthrowtest");var learn=HarmonyLib.AccessTools.Method(typeof(SkillRecord),nameof(SkillRecord.Learn));
+    hp.Patch(learn,prefix:new HarmonyLib.HarmonyMethod(typeof(LichChecks),nameof(ThrowingLearn)));
+    h.workXpRem=0f;h.workXpDay=day;h.workXpToday=0f;x0=h.xp;bool threw=false;
+    try{a.skills.Learn(sk,1000f,false,false);}catch(InvalidOperationException){threw=true;}finally{hp.Unpatch(learn,HarmonyLib.HarmonyPatchType.Prefix,"local.lich.workthrowtest");}
+    Check(threw && Near(h.xp,x0) && Near(h.workXpRem,0f) && Near(h.workXpToday,0f),"a skill Learn that throws (another mod) gives no work XP (threw "+threw+", today "+h.workXpToday+")");
     // 悬停说明
     h.workXpDay=day;h.workXpToday=12f;string tip=ITab_Adventurer.XpSourcesTip(h);
     Check(tip.Contains("日常工作：每 50 技能经验") && tip.Contains("今日 12 / 80 全额，之后 ×0.5"),"XP tooltip lists 日常工作 with today's 12 / 80");
    }finally{s.adventurerWorkXp=oldWork;}
+  }
+  static void ThrowingLearn(){throw new InvalidOperationException("test: broken Learn");}
+
+  // 2026-11-04 热修：Test.ps1 -Only DucksCompat（-Full 时 Peter 的列表里有 Ducks' Insane Skills）。
+  void CheckDucksCompat(){
+   Check(DucksSkillsCompat.Compiles(AccessTools.Method(typeof(LichChecks),nameof(ThrowingLearn))),"compile probe accepts a normal method");
+   bool ducks=Harmony.GetAllPatchedMethods().Any(m=>Harmony.GetPatchInfo(m)?.Owners.Contains(DucksSkillsCompat.Owner)==true);
+   var p=HtPawn();var sk=p.skills.skills.First(r=>!r.TotallyDisabled);sk.Level=5;sk.xpSinceLastLevel=0f;int lv0=sk.levelInt;Exception err=null;
+   try{p.skills.Learn(sk.def,500f,true,true);}catch(Exception e){err=e;}
+   Check(err==null && (sk.levelInt>lv0 || sk.xpSinceLastLevel>0f),"colonist skill Learn runs without throwing (ducks loaded "+ducks+", removed: "+string.Join(",",DucksSkillsCompat.Removed)+(err!=null?", error "+err.GetType().Name:"")+")");
+   if(ducks)Check(DucksSkillsCompat.Removed.Contains("SkillRecord.LearnRateFactor"),"Ducks' broken LearnRateFactor prefix was removed");
+   foreach(var x in htMade){if(!x.Destroyed)x.Destroy();}htMade.Clear();
   }
  }
 }

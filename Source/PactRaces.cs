@@ -34,7 +34,8 @@ namespace LichPhylactery {
   public static bool Celestial(Pawn p)=>Outsiders.Of(p)?.plane==OutsiderPlane.Celestia;
   public static bool Fiendish(Pawn p)=>Outsiders.IsDemon(p) || Outsiders.IsDevil(p) || Items.Undead(p);
   public static Gene_DryadTree TreeGene(Pawn p)=>p?.genes?.GenesListForReading.OfType<Gene_DryadTree>().FirstOrDefault(g=>g.Active);
-  public static Gene_ChangelingFaces Faces(Pawn p)=>p?.genes?.GenesListForReading.OfType<Gene_ChangelingFaces>().FirstOrDefault(g=>g.Active);
+  // 2026-11-06：渲染节点 CanDrawNow（每帧、并行线程）也调这里，改成不分配的循环。
+  public static Gene_ChangelingFaces Faces(Pawn p){var list=p?.genes?.GenesListForReading;if(list==null)return null;for(int i=0;i<list.Count;i++)if(list[i] is Gene_ChangelingFaces g && g.Active)return g;return null;}
   public static void Teleport(Pawn p,IntVec3 c){var map=p.Map;FleckMaker.Static(p.Position,map,FleckDefOf.PsycastAreaEffect,1.2f);p.pather?.StopDead();p.Position=c;p.Notify_Teleported(false,true);FleckMaker.Static(c,map,FleckDefOf.PsycastAreaEffect,1.2f);}
   public static IntVec3 Beside(Pawn caster,Thing t)=>GenAdj.CellsAdjacent8Way(t).Where(c=>c.InBounds(t.Map) && c.Standable(t.Map) && c.GetFirstPawn(t.Map)==null).OrderBy(c=>c.DistanceToSquared(caster.Position)).FirstOrDefault(IntVec3.Invalid);
 

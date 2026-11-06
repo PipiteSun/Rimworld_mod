@@ -21,7 +21,7 @@ namespace LichPhylactery {
    base.CompExposeData();
    Scribe_Values.Look(ref level,"lpLevel",1);Scribe_Defs.Look(ref portfolio,"lpPortfolio");Scribe_Values.Look(ref divinePower,"lpDivinePower");Scribe_Values.Look(ref lastTrialTick,"lpLastTrial",-9999999);Scribe_Values.Look(ref path,"lpPath");
    Scribe_Values.Look(ref trialActive,"lpTrialActive");Scribe_Values.Look(ref trialDowned,"lpTrialDowned");Scribe_Values.Look(ref trialRaidTick,"lpTrialRaid",-1);
-   Scribe_References.Look(ref trialLord,"lpTrialLord");Scribe_References.Look(ref trialMap,"lpTrialMap");
+   ScribeLord.Look(ref trialLord,"lpTrialLord");Scribe_References.Look(ref trialMap,"lpTrialMap");
   }
  }
  public class Hediff_Demigod : HediffWithComps,IIndexedHediff {

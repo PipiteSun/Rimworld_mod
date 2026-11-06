@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.119.0 扭曲肉资源化：研究、建筑、灵能仪式、鬼婆集市、作业。 -->
+<Defs>
+
+  <!-- ==================== 研究（DND边缘大陆 页签） ==================== -->
+  <ResearchProjectDef>
+    <defName>LP_Research_FleshShaping</defName>
+    <label>血肉塑形术</label>
+    <description>把扭曲肉当成材料：血肉孵化槽、血肉壁垒、畸变皮甲、畸变巨像胚体、地狱铸炉里的生物铁析出，以及“远域献飨”灵能仪式。\n\n装了异象时，还要先研究任意一项异象的血肉研究（召唤血肉兽、食尸鬼灌注或突变武器）。</description>
+    <baseCost>1600</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>LP_DNDAlchemy</li>
+    </prerequisites>
+    <tab>LP_FireGiantTech</tab>
+    <researchViewX>1.0</researchViewX>
+    <researchViewY>5.6</researchViewY>
+  </ResearchProjectDef>
+  <ResearchProjectDef>
+    <defName>LP_Research_Aberrology</defName>
+    <label>异怪学</label>
+    <description>研究远域怎样拧歪血肉之后，殖民者知道该往哪里砍：对异象实体和异怪类敌人（眼魔、夺心魔、远域来客等）造成的伤害 +10%。\n\n不能直接研究：殖民地在炼金桌上“远域解剖”累计 500 份扭曲肉后自动完成。</description>
+    <baseCost>500</baseCost>
+    <techLevel>Industrial</techLevel>
+    <tab>LP_FireGiantTech</tab>
+    <researchViewX>2.0</researchViewX>
+    <researchViewY>5.6</researchViewY>
+  </ResearchProjectDef>
+
+  <!-- ==================== F1. 血肉孵化槽 ==================== -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_FleshIncubator</defName>
+    <label>血肉孵化槽</label>
+    <description>一口泡着畸变膏的肉槽。往里填扭曲肉，每 30 份孵出 1 只友好的小血肉兽（指刺兽），听殖民地的话，3 天后烂掉；同时最多 4 只。孵一只要 6 小时。\n\n又腥又难看：周围美观 -10。</description>
+    <thingClass>LichPhylactery.Building_FleshIncubator</thingClass>
+    <graphicData>
+      <texPath>TwistedMeat/FleshIncubator</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+      <shadowData><volume>(1.8, 0.5, 1.8)</volume></shadowData>
+    </graphicData>
+    <size>(2,2)</size>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <rotatable>false</rotatable>
+    <tickerType>Rare</tickerType>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <WorkToBuild>4000</WorkToBuild>
+      <Flammability>0.8</Flammability>
+      <Beauty>-10</Beauty>
+      <Mass>40</Mass>
+    </statBases>
+    <costList>
+      <LP_AberrantPaste>20</LP_AberrantPaste>
+      <Steel>60</Steel>
+    </costList>
+    <designationCategory>Misc</designationCategory>
+    <researchPrerequisites><li>LP_Research_FleshShaping</li></researchPrerequisites>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>0</fuelConsumptionRate>
+        <fuelCapacity>120</fuelCapacity>
+        <fuelFilter><thingDefs><li>Meat_Twisted</li></thingDefs></fuelFilter>
+        <initialFuelPercent>0</initialFuelPercent>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <fuelLabel>扭曲肉</fuelLabel>
+        <fuelGizmoLabel>扭曲肉</fuelGizmoLabel>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>120</initialConfigurableTargetFuelLevel>
+        <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- ==================== F2. 血肉壁垒 ==================== -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_FleshWall</defName>
+    <label>血肉壁垒</label>
+    <description>用畸变膏“种”出来的墙，一直在慢慢跳动。和石墙差不多结实，每天自己长回 10% 生命；怕酸（酸液伤害 ×2）。能撑住屋顶。</description>
+    <thingClass>LichPhylactery.Building_FleshWall</thingClass>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Things/Building/Linked/Fleshmass_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <linkType>CornerFiller</linkType>
+      <linkFlags><li>Wall</li><li>Rock</li></linkFlags>
+      <shaderType>CutoutComplex</shaderType>
+      <color>(205,150,150)</color>
+      <damageData>
+        <rect>(0.15, 0.15, 0.75, 0.75)</rect>
+        <scratches><li>Damage/FleshScratch1</li><li>Damage/FleshScratch2</li><li>Damage/FleshScratch3</li></scratches>
+      </damageData>
+    </graphicData>
+    <uiIconPath>TwistedMeat/FleshWall_MenuIcon</uiIconPath>
+    <statBases>
+      <MaxHitPoints>480</MaxHitPoints>
+      <WorkToBuild>200</WorkToBuild>
+      <Flammability>0.5</Flammability>
+      <Beauty>-2</Beauty>
+    </statBases>
+    <costList><LP_AberrantPaste>5</LP_AberrantPaste></costList>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>Impassable</passability>
+    <blockWind>true</blockWind>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>1</fillPercent>
+    <coversFloor>true</coversFloor>
+    <tickerType>Rare</tickerType>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <neverMultiSelect>true</neverMultiSelect>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <holdsRoof>true</holdsRoof>
+    <designationCategory>Structure</designationCategory>
+    <uiOrder>2050</uiOrder>
+    <staticSunShadowHeight>1.0</staticSunShadowHeight>
+    <blockLight>true</blockLight>
+    <canOverlapZones>false</canOverlapZones>
+    <fertility>0</fertility>
+    <soundImpactDefault>Fleshmass_Damaged</soundImpactDefault>
+    <filthLeaving>Filth_Fleshmass</filthLeaving>
+    <researchPrerequisites><li>LP_Research_FleshShaping</li></researchPrerequisites>
+    <building>
+      <isInert>true</isInert>
+      <isWall>true</isWall>
+      <blueprintGraphicData><texPath>Things/Building/Linked/Wall_Blueprint_Atlas</texPath></blueprintGraphicData>
+      <supportsWallAttachments>true</supportsWallAttachments>
+      <destroyEffecter>FleshmassDestroyed</destroyEffecter>
+      <artificialForMeditationPurposes>false</artificialForMeditationPurposes>
+    </building>
+    <damageMultipliers>
+      <li><damageDef>Bomb</damageDef><multiplier>2</multiplier></li>
+      <li><damageDef>Thump</damageDef><multiplier>2</multiplier></li>
+    </damageMultipliers>
+  </ThingDef>
+
+  <!-- ==================== D6. 远域献飨（灵能仪式） ==================== -->
+  <LichPhylactery.PsychicRitualDef_FarRealmFeast>
+    <defName>LP_FarRealmFeast</defName>
+    <label>远域献飨</label>
+    <description>把一大堆扭曲肉献给远域，换远域深处的金属或遗物。仪式质量越高，奖励越好：秘银（15–40）、精金（8–20），质量很高时有机会得到稀有遗物“哈达之眼”。\n\n旧日支配者宗主的邪术师主持时质量 +25%。仪式可能失败：失败率 =（1 − 质量）× 25%，失败会引来血肉兽群或一场心灵哭嚎。</description>
+    <iconPath>TwistedMeat/RitualFarFeast</iconPath>
+    <outcomeDescription>以现在的质量：{0}。</outcomeDescription>
+    <hoursUntilOutcome>4</hoursUntilOutcome>
+    <cooldownHours>240</cooldownHours>
+    <researchPrerequisite>LP_Research_FleshShaping</researchPrerequisite>
+    <layerWhitelist><li>Surface</li></layerWhitelist>
+    <requiredOffering>
+      <filter><thingDefs><li>Meat_Twisted</li></thingDefs></filter>
+      <count>150</count>
+    </requiredOffering>
+  </LichPhylactery.PsychicRitualDef_FarRealmFeast>
+
+  <!-- ==================== D5. 鬼婆集市 ==================== -->
+  <TraderKindDef>
+    <defName>LP_HagMarketTrader</defName>
+    <label>鬼婆集市</label>
+    <commonality>0</commonality>
+    <stockGenerators>
+      <li Class="StockGenerator_SingleDef"><thingDef>Silver</thingDef><countRange>400~900</countRange></li>
+      <li Class="StockGenerator_Tag"><tradeTag>LP_Potion</tradeTag><thingDefCountRange>2~4</thingDefCountRange><countRange>1~3</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_MorphDraught</thingDef><countRange>1~3</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_Demonomicon</thingDef><countRange>0~1</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_MarkDecay</thingDef><countRange>0~1</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_MarkChange</thingDef><countRange>0~1</countRange></li>
+      <li Class="StockGenerator_SingleDef"><thingDef>LP_SwordVengeance</thingDef><countRange>0~1</countRange></li>
+      <li Class="StockGenerator_BuySingleDef"><thingDef>Meat_Twisted</thingDef></li>
+      <li Class="StockGenerator_BuySingleDef"><thingDef>LP_AberrantPaste</thingDef></li>
+    </stockGenerators>
+  </TraderKindDef>
+  <IncidentDef>
+    <defName>LP_HagMarket</defName>
+    <label>鬼婆集市</label>
+    <category>FactionArrival</category>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>LichPhylactery.IncidentWorker_HagMarket</workerClass>
+    <baseChance>0.6</baseChance>
+    <minRefireDays>15</minRefireDays>
+    <earliestDay>20</earliestDay>
+  </IncidentDef>
+
+  <!-- ==================== E. 血肉催转 ==================== -->
+  <JobDef>
+    <defName>LP_FleshCatalysis</defName>
+    <driverClass>LichPhylactery.JobDriver_FleshCatalysis</driverClass>
+    <reportString>正在献祭扭曲肉催转仪式。</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+
+</Defs>

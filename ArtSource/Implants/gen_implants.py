@@ -134,7 +134,7 @@ for key, label, flag, stage, eff in STONES:
     <addsHediff>%s</addsHediff>
   </RecipeDef>
   <RecipeDef ParentName="SurgeryRemoveImplantBase">
-    <defName>LP_Remove_%s</defName><label>取出%s</label><description>从额骨里取出%s，石头还能再用。</description><jobString>正在取出%s。</jobString>
+    <defName>LP_Remove_%s</defName><label>摘除%s</label><description>从额骨里取出%s，石头还能再用。</description><jobString>正在摘除%s。</jobString>
     <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
     <removesHediff>%s</removesHediff>
   </RecipeDef>
@@ -217,7 +217,7 @@ def install(d, label, desc, kind, part):
     if kind != 'part':
         s += '''
   <RecipeDef ParentName="SurgeryRemoveImplantBase">
-    <defName>LP_Remove_%s</defName><label>取出%s</label><description>取出%s。</description><jobString>正在取出%s。</jobString>
+    <defName>LP_Remove_%s</defName><label>摘除%s</label><description>取出%s。</description><jobString>正在摘除%s。</jobString>
     <appliedOnFixedBodyParts><li>%s</li></appliedOnFixedBodyParts>
     <removesHediff>%s</removesHediff>
   </RecipeDef>''' % (d, label, label, label, part, d)

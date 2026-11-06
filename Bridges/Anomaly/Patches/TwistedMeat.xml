@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.119.0 扭曲肉资源化 A 节：死灵仪式台 / 血肉义体的生肉配方改用 FleshCount（扭曲肉 ×2、畸变膏 ×20），并接受畸变膏。描述在 C# 启动时追加一句。 -->
+<Patch>
+  <Operation Class="PatchOperationAdd"><xpath>Defs/RecipeDef[defName="LP_Offer"]</xpath><value><ingredientValueGetterClass>LichPhylactery.FleshCount</ingredientValueGetterClass></value></Operation>
+  <Operation Class="PatchOperationAdd"><xpath>Defs/RecipeDef[defName="LP_Offer"]/ingredients/li[1]/filter</xpath><value><thingDefs><li>LP_AberrantPaste</li></thingDefs></value></Operation>
+  <Operation Class="PatchOperationAdd"><xpath>Defs/RecipeDef[defName="LP_Offer"]/fixedIngredientFilter</xpath><value><thingDefs><li>LP_AberrantPaste</li></thingDefs></value></Operation>
+  <Operation Class="PatchOperationAdd"><xpath>Defs/RecipeDef[defName="LP_MakeGolem"]</xpath><value><ingredientValueGetterClass>LichPhylactery.FleshCount</ingredientValueGetterClass></value></Operation>
+  <Operation Class="PatchOperationAdd"><xpath>Defs/RecipeDef[defName="LP_MakeGolem"]/ingredients/li[1]/filter</xpath><value><thingDefs><li>LP_AberrantPaste</li></thingDefs></value></Operation>
+  <Operation Class="PatchOperationAdd"><xpath>Defs/RecipeDef[defName="LP_MakeGolem"]/fixedIngredientFilter</xpath><value><thingDefs><li>LP_AberrantPaste</li></thingDefs></value></Operation>
+  <Operation Class="PatchOperationAdd"><xpath>Defs/RecipeDef[defName="LP_Refill"]</xpath><value><ingredientValueGetterClass>LichPhylactery.FleshCount</ingredientValueGetterClass></value></Operation>
+  <Operation Class="PatchOperationAdd"><xpath>Defs/RecipeDef[defName="LP_Refill"]/ingredients/li[1]/filter</xpath><value><thingDefs><li>LP_AberrantPaste</li></thingDefs></value></Operation>
+  <Operation Class="PatchOperationAdd"><xpath>Defs/RecipeDef[defName="LP_Refill"]/fixedIngredientFilter</xpath><value><thingDefs><li>LP_AberrantPaste</li></thingDefs></value></Operation>
+  <Operation Class="PatchOperationReplace"><xpath>Defs/RecipeDef[defName="LP_CraftBlindSight"]/ingredientValueGetterClass</xpath><value><ingredientValueGetterClass>LichPhylactery.FleshCount</ingredientValueGetterClass></value></Operation>
+  <Operation Class="PatchOperationAdd"><xpath>Defs/RecipeDef[defName="LP_CraftBlindSight"]/ingredients/li[filter/categories/li="MeatRaw"]/filter</xpath><value><thingDefs><li>LP_AberrantPaste</li></thingDefs></value></Operation>
+  <Operation Class="PatchOperationAdd"><xpath>Defs/RecipeDef[defName="LP_CraftBlindSight"]/fixedIngredientFilter/thingDefs</xpath><value><li>LP_AberrantPaste</li></value></Operation>
+  <Operation Class="PatchOperationReplace"><xpath>Defs/RecipeDef[defName="LP_CraftWitheringHand"]/ingredientValueGetterClass</xpath><value><ingredientValueGetterClass>LichPhylactery.FleshCount</ingredientValueGetterClass></value></Operation>
+  <Operation Class="PatchOperationAdd"><xpath>Defs/RecipeDef[defName="LP_CraftWitheringHand"]/ingredients/li[filter/categories/li="MeatRaw"]/filter</xpath><value><thingDefs><li>LP_AberrantPaste</li></thingDefs></value></Operation>
+  <Operation Class="PatchOperationAdd"><xpath>Defs/RecipeDef[defName="LP_CraftWitheringHand"]/fixedIngredientFilter/thingDefs</xpath><value><li>LP_AberrantPaste</li></value></Operation>
+  <Operation Class="PatchOperationReplace"><xpath>Defs/RecipeDef[defName="LP_CraftDeadPersonality"]/ingredientValueGetterClass</xpath><value><ingredientValueGetterClass>LichPhylactery.FleshCount</ingredientValueGetterClass></value></Operation>
+  <Operation Class="PatchOperationAdd"><xpath>Defs/RecipeDef[defName="LP_CraftDeadPersonality"]/ingredients/li[filter/categories/li="MeatRaw"]/filter</xpath><value><thingDefs><li>LP_AberrantPaste</li></thingDefs></value></Operation>
+  <Operation Class="PatchOperationAdd"><xpath>Defs/RecipeDef[defName="LP_CraftDeadPersonality"]/fixedIngredientFilter/thingDefs</xpath><value><li>LP_AberrantPaste</li></value></Operation>
+  <Operation Class="PatchOperationReplace"><xpath>Defs/RecipeDef[defName="LP_CraftShadowLeg"]/ingredientValueGetterClass</xpath><value><ingredientValueGetterClass>LichPhylactery.FleshCount</ingredientValueGetterClass></value></Operation>
+  <Operation Class="PatchOperationAdd"><xpath>Defs/RecipeDef[defName="LP_CraftShadowLeg"]/ingredients/li[filter/categories/li="MeatRaw"]/filter</xpath><value><thingDefs><li>LP_AberrantPaste</li></thingDefs></value></Operation>
+  <Operation Class="PatchOperationAdd"><xpath>Defs/RecipeDef[defName="LP_CraftShadowLeg"]/fixedIngredientFilter/thingDefs</xpath><value><li>LP_AberrantPaste</li></value></Operation>
+  <!-- F7 / D5：九狱掮客、妖精集市收畸变膏（售价 ×1.5 在 C# 里算）。 -->
+  <Operation Class="PatchOperationAdd"><xpath>Defs/TraderKindDef[defName="LP_InfernalCaravanTrader" or defName="LP_FeyMarketTrader"]/stockGenerators</xpath><value><li Class="StockGenerator_BuySingleDef"><thingDef>LP_AberrantPaste</thingDef></li></value></Operation>
+</Patch>

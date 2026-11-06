@@ -276,7 +276,7 @@
     <addsHediff>LP_Ioun_Str</addsHediff>
   </RecipeDef>
   <RecipeDef ParentName="SurgeryRemoveImplantBase">
-    <defName>LP_Remove_LP_Ioun_Str</defName><label>取出伊奥恩颅石·力量之石</label><description>从额骨里取出伊奥恩颅石·力量之石，石头还能再用。</description><jobString>正在取出伊奥恩颅石·力量之石。</jobString>
+    <defName>LP_Remove_LP_Ioun_Str</defName><label>摘除伊奥恩颅石·力量之石</label><description>从额骨里取出伊奥恩颅石·力量之石，石头还能再用。</description><jobString>正在摘除伊奥恩颅石·力量之石。</jobString>
     <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
     <removesHediff>LP_Ioun_Str</removesHediff>
   </RecipeDef>
@@ -312,7 +312,7 @@
     <addsHediff>LP_Ioun_Dex</addsHediff>
   </RecipeDef>
   <RecipeDef ParentName="SurgeryRemoveImplantBase">
-    <defName>LP_Remove_LP_Ioun_Dex</defName><label>取出伊奥恩颅石·敏捷之石</label><description>从额骨里取出伊奥恩颅石·敏捷之石，石头还能再用。</description><jobString>正在取出伊奥恩颅石·敏捷之石。</jobString>
+    <defName>LP_Remove_LP_Ioun_Dex</defName><label>摘除伊奥恩颅石·敏捷之石</label><description>从额骨里取出伊奥恩颅石·敏捷之石，石头还能再用。</description><jobString>正在摘除伊奥恩颅石·敏捷之石。</jobString>
     <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
     <removesHediff>LP_Ioun_Dex</removesHediff>
   </RecipeDef>
@@ -348,7 +348,7 @@
     <addsHediff>LP_Ioun_Con</addsHediff>
   </RecipeDef>
   <RecipeDef ParentName="SurgeryRemoveImplantBase">
-    <defName>LP_Remove_LP_Ioun_Con</defName><label>取出伊奥恩颅石·体质之石</label><description>从额骨里取出伊奥恩颅石·体质之石，石头还能再用。</description><jobString>正在取出伊奥恩颅石·体质之石。</jobString>
+    <defName>LP_Remove_LP_Ioun_Con</defName><label>摘除伊奥恩颅石·体质之石</label><description>从额骨里取出伊奥恩颅石·体质之石，石头还能再用。</description><jobString>正在摘除伊奥恩颅石·体质之石。</jobString>
     <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
     <removesHediff>LP_Ioun_Con</removesHediff>
   </RecipeDef>
@@ -384,7 +384,7 @@
     <addsHediff>LP_Ioun_Int</addsHediff>
   </RecipeDef>
   <RecipeDef ParentName="SurgeryRemoveImplantBase">
-    <defName>LP_Remove_LP_Ioun_Int</defName><label>取出伊奥恩颅石·智力之石</label><description>从额骨里取出伊奥恩颅石·智力之石，石头还能再用。</description><jobString>正在取出伊奥恩颅石·智力之石。</jobString>
+    <defName>LP_Remove_LP_Ioun_Int</defName><label>摘除伊奥恩颅石·智力之石</label><description>从额骨里取出伊奥恩颅石·智力之石，石头还能再用。</description><jobString>正在摘除伊奥恩颅石·智力之石。</jobString>
     <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
     <removesHediff>LP_Ioun_Int</removesHediff>
   </RecipeDef>
@@ -420,7 +420,7 @@
     <addsHediff>LP_Ioun_Wis</addsHediff>
   </RecipeDef>
   <RecipeDef ParentName="SurgeryRemoveImplantBase">
-    <defName>LP_Remove_LP_Ioun_Wis</defName><label>取出伊奥恩颅石·感知之石</label><description>从额骨里取出伊奥恩颅石·感知之石，石头还能再用。</description><jobString>正在取出伊奥恩颅石·感知之石。</jobString>
+    <defName>LP_Remove_LP_Ioun_Wis</defName><label>摘除伊奥恩颅石·感知之石</label><description>从额骨里取出伊奥恩颅石·感知之石，石头还能再用。</description><jobString>正在摘除伊奥恩颅石·感知之石。</jobString>
     <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
     <removesHediff>LP_Ioun_Wis</removesHediff>
   </RecipeDef>
@@ -456,7 +456,7 @@
     <addsHediff>LP_Ioun_Cha</addsHediff>
   </RecipeDef>
   <RecipeDef ParentName="SurgeryRemoveImplantBase">
-    <defName>LP_Remove_LP_Ioun_Cha</defName><label>取出伊奥恩颅石·魅力之石</label><description>从额骨里取出伊奥恩颅石·魅力之石，石头还能再用。</description><jobString>正在取出伊奥恩颅石·魅力之石。</jobString>
+    <defName>LP_Remove_LP_Ioun_Cha</defName><label>摘除伊奥恩颅石·魅力之石</label><description>从额骨里取出伊奥恩颅石·魅力之石，石头还能再用。</description><jobString>正在摘除伊奥恩颅石·魅力之石。</jobString>
     <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
     <removesHediff>LP_Ioun_Cha</removesHediff>
   </RecipeDef>
@@ -492,7 +492,7 @@
     <addsHediff>LP_Ioun_Sustain</addsHediff>
   </RecipeDef>
   <RecipeDef ParentName="SurgeryRemoveImplantBase">
-    <defName>LP_Remove_LP_Ioun_Sustain</defName><label>取出伊奥恩颅石·维生之石</label><description>从额骨里取出伊奥恩颅石·维生之石，石头还能再用。</description><jobString>正在取出伊奥恩颅石·维生之石。</jobString>
+    <defName>LP_Remove_LP_Ioun_Sustain</defName><label>摘除伊奥恩颅石·维生之石</label><description>从额骨里取出伊奥恩颅石·维生之石，石头还能再用。</description><jobString>正在摘除伊奥恩颅石·维生之石。</jobString>
     <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
     <removesHediff>LP_Ioun_Sustain</removesHediff>
   </RecipeDef>
@@ -528,7 +528,7 @@
     <addsHediff>LP_Ioun_Regen</addsHediff>
   </RecipeDef>
   <RecipeDef ParentName="SurgeryRemoveImplantBase">
-    <defName>LP_Remove_LP_Ioun_Regen</defName><label>取出伊奥恩颅石·再生之石</label><description>从额骨里取出伊奥恩颅石·再生之石，石头还能再用。</description><jobString>正在取出伊奥恩颅石·再生之石。</jobString>
+    <defName>LP_Remove_LP_Ioun_Regen</defName><label>摘除伊奥恩颅石·再生之石</label><description>从额骨里取出伊奥恩颅石·再生之石，石头还能再用。</description><jobString>正在摘除伊奥恩颅石·再生之石。</jobString>
     <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
     <removesHediff>LP_Ioun_Regen</removesHediff>
   </RecipeDef>
@@ -564,7 +564,7 @@
     <addsHediff>LP_Ioun_Mastery</addsHediff>
   </RecipeDef>
   <RecipeDef ParentName="SurgeryRemoveImplantBase">
-    <defName>LP_Remove_LP_Ioun_Mastery</defName><label>取出伊奥恩颅石·精通之石</label><description>从额骨里取出伊奥恩颅石·精通之石，石头还能再用。</description><jobString>正在取出伊奥恩颅石·精通之石。</jobString>
+    <defName>LP_Remove_LP_Ioun_Mastery</defName><label>摘除伊奥恩颅石·精通之石</label><description>从额骨里取出伊奥恩颅石·精通之石，石头还能再用。</description><jobString>正在摘除伊奥恩颅石·精通之石。</jobString>
     <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
     <removesHediff>LP_Ioun_Mastery</removesHediff>
   </RecipeDef>
@@ -600,7 +600,7 @@
     <addsHediff>LP_Ioun_Absorb</addsHediff>
   </RecipeDef>
   <RecipeDef ParentName="SurgeryRemoveImplantBase">
-    <defName>LP_Remove_LP_Ioun_Absorb</defName><label>取出伊奥恩颅石·吸收之石</label><description>从额骨里取出伊奥恩颅石·吸收之石，石头还能再用。</description><jobString>正在取出伊奥恩颅石·吸收之石。</jobString>
+    <defName>LP_Remove_LP_Ioun_Absorb</defName><label>摘除伊奥恩颅石·吸收之石</label><description>从额骨里取出伊奥恩颅石·吸收之石，石头还能再用。</description><jobString>正在摘除伊奥恩颅石·吸收之石。</jobString>
     <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
     <removesHediff>LP_Ioun_Absorb</removesHediff>
   </RecipeDef>
@@ -636,7 +636,7 @@
     <addsHediff>LP_Ioun_Alert</addsHediff>
   </RecipeDef>
   <RecipeDef ParentName="SurgeryRemoveImplantBase">
-    <defName>LP_Remove_LP_Ioun_Alert</defName><label>取出伊奥恩颅石·警觉之石</label><description>从额骨里取出伊奥恩颅石·警觉之石，石头还能再用。</description><jobString>正在取出伊奥恩颅石·警觉之石。</jobString>
+    <defName>LP_Remove_LP_Ioun_Alert</defName><label>摘除伊奥恩颅石·警觉之石</label><description>从额骨里取出伊奥恩颅石·警觉之石，石头还能再用。</description><jobString>正在摘除伊奥恩颅石·警觉之石。</jobString>
     <appliedOnFixedBodyParts><li>Skull</li></appliedOnFixedBodyParts>
     <removesHediff>LP_Ioun_Alert</removesHediff>
   </RecipeDef>
@@ -729,7 +729,7 @@
     <addsHediff>LP_Flesh_BoneCage</addsHediff>
   </RecipeDef>
   <RecipeDef ParentName="SurgeryRemoveImplantBase">
-    <defName>LP_Remove_LP_Flesh_BoneCage</defName><label>取出骸骨肋笼</label><description>取出骸骨肋笼。</description><jobString>正在取出骸骨肋笼。</jobString>
+    <defName>LP_Remove_LP_Flesh_BoneCage</defName><label>摘除骸骨肋笼</label><description>取出骸骨肋笼。</description><jobString>正在摘除骸骨肋笼。</jobString>
     <appliedOnFixedBodyParts><li>Torso</li></appliedOnFixedBodyParts>
     <removesHediff>LP_Flesh_BoneCage</removesHediff>
   </RecipeDef>
@@ -904,7 +904,7 @@
     <addsHediff>LP_Graft_TrollGland</addsHediff>
   </RecipeDef>
   <RecipeDef ParentName="SurgeryRemoveImplantBase">
-    <defName>LP_Remove_LP_Graft_TrollGland</defName><label>取出巨魔再生腺</label><description>取出巨魔再生腺。</description><jobString>正在取出巨魔再生腺。</jobString>
+    <defName>LP_Remove_LP_Graft_TrollGland</defName><label>摘除巨魔再生腺</label><description>取出巨魔再生腺。</description><jobString>正在摘除巨魔再生腺。</jobString>
     <appliedOnFixedBodyParts><li>Torso</li></appliedOnFixedBodyParts>
     <removesHediff>LP_Graft_TrollGland</removesHediff>
   </RecipeDef>
@@ -937,7 +937,7 @@
     <addsHediff>LP_Graft_ScaleRed</addsHediff>
   </RecipeDef>
   <RecipeDef ParentName="SurgeryRemoveImplantBase">
-    <defName>LP_Remove_LP_Graft_ScaleRed</defName><label>取出赤龙鳞皮下甲</label><description>取出赤龙鳞皮下甲。</description><jobString>正在取出赤龙鳞皮下甲。</jobString>
+    <defName>LP_Remove_LP_Graft_ScaleRed</defName><label>摘除赤龙鳞皮下甲</label><description>取出赤龙鳞皮下甲。</description><jobString>正在摘除赤龙鳞皮下甲。</jobString>
     <appliedOnFixedBodyParts><li>Torso</li></appliedOnFixedBodyParts>
     <removesHediff>LP_Graft_ScaleRed</removesHediff>
   </RecipeDef>
@@ -970,7 +970,7 @@
     <addsHediff>LP_Graft_ScaleWhite</addsHediff>
   </RecipeDef>
   <RecipeDef ParentName="SurgeryRemoveImplantBase">
-    <defName>LP_Remove_LP_Graft_ScaleWhite</defName><label>取出白龙鳞皮下甲</label><description>取出白龙鳞皮下甲。</description><jobString>正在取出白龙鳞皮下甲。</jobString>
+    <defName>LP_Remove_LP_Graft_ScaleWhite</defName><label>摘除白龙鳞皮下甲</label><description>取出白龙鳞皮下甲。</description><jobString>正在摘除白龙鳞皮下甲。</jobString>
     <appliedOnFixedBodyParts><li>Torso</li></appliedOnFixedBodyParts>
     <removesHediff>LP_Graft_ScaleWhite</removesHediff>
   </RecipeDef>
@@ -1003,7 +1003,7 @@
     <addsHediff>LP_Graft_ScaleBlue</addsHediff>
   </RecipeDef>
   <RecipeDef ParentName="SurgeryRemoveImplantBase">
-    <defName>LP_Remove_LP_Graft_ScaleBlue</defName><label>取出蓝龙鳞皮下甲</label><description>取出蓝龙鳞皮下甲。</description><jobString>正在取出蓝龙鳞皮下甲。</jobString>
+    <defName>LP_Remove_LP_Graft_ScaleBlue</defName><label>摘除蓝龙鳞皮下甲</label><description>取出蓝龙鳞皮下甲。</description><jobString>正在摘除蓝龙鳞皮下甲。</jobString>
     <appliedOnFixedBodyParts><li>Torso</li></appliedOnFixedBodyParts>
     <removesHediff>LP_Graft_ScaleBlue</removesHediff>
   </RecipeDef>
@@ -1036,7 +1036,7 @@
     <addsHediff>LP_Graft_ScaleBlack</addsHediff>
   </RecipeDef>
   <RecipeDef ParentName="SurgeryRemoveImplantBase">
-    <defName>LP_Remove_LP_Graft_ScaleBlack</defName><label>取出黑龙鳞皮下甲</label><description>取出黑龙鳞皮下甲。</description><jobString>正在取出黑龙鳞皮下甲。</jobString>
+    <defName>LP_Remove_LP_Graft_ScaleBlack</defName><label>摘除黑龙鳞皮下甲</label><description>取出黑龙鳞皮下甲。</description><jobString>正在摘除黑龙鳞皮下甲。</jobString>
     <appliedOnFixedBodyParts><li>Torso</li></appliedOnFixedBodyParts>
     <removesHediff>LP_Graft_ScaleBlack</removesHediff>
   </RecipeDef>
@@ -1069,7 +1069,7 @@
     <addsHediff>LP_Graft_ScaleGreen</addsHediff>
   </RecipeDef>
   <RecipeDef ParentName="SurgeryRemoveImplantBase">
-    <defName>LP_Remove_LP_Graft_ScaleGreen</defName><label>取出绿龙鳞皮下甲</label><description>取出绿龙鳞皮下甲。</description><jobString>正在取出绿龙鳞皮下甲。</jobString>
+    <defName>LP_Remove_LP_Graft_ScaleGreen</defName><label>摘除绿龙鳞皮下甲</label><description>取出绿龙鳞皮下甲。</description><jobString>正在摘除绿龙鳞皮下甲。</jobString>
     <appliedOnFixedBodyParts><li>Torso</li></appliedOnFixedBodyParts>
     <removesHediff>LP_Graft_ScaleGreen</removesHediff>
   </RecipeDef>
@@ -1102,7 +1102,7 @@
     <addsHediff>LP_Graft_BreathRed</addsHediff>
   </RecipeDef>
   <RecipeDef ParentName="SurgeryRemoveImplantBase">
-    <defName>LP_Remove_LP_Graft_BreathRed</defName><label>取出赤龙息腺</label><description>取出赤龙息腺。</description><jobString>正在取出赤龙息腺。</jobString>
+    <defName>LP_Remove_LP_Graft_BreathRed</defName><label>摘除赤龙息腺</label><description>取出赤龙息腺。</description><jobString>正在摘除赤龙息腺。</jobString>
     <appliedOnFixedBodyParts><li>Neck</li></appliedOnFixedBodyParts>
     <removesHediff>LP_Graft_BreathRed</removesHediff>
   </RecipeDef>
@@ -1143,7 +1143,7 @@
     <addsHediff>LP_Graft_BreathWhite</addsHediff>
   </RecipeDef>
   <RecipeDef ParentName="SurgeryRemoveImplantBase">
-    <defName>LP_Remove_LP_Graft_BreathWhite</defName><label>取出白龙息腺</label><description>取出白龙息腺。</description><jobString>正在取出白龙息腺。</jobString>
+    <defName>LP_Remove_LP_Graft_BreathWhite</defName><label>摘除白龙息腺</label><description>取出白龙息腺。</description><jobString>正在摘除白龙息腺。</jobString>
     <appliedOnFixedBodyParts><li>Neck</li></appliedOnFixedBodyParts>
     <removesHediff>LP_Graft_BreathWhite</removesHediff>
   </RecipeDef>
@@ -1184,7 +1184,7 @@
     <addsHediff>LP_Graft_BreathBlue</addsHediff>
   </RecipeDef>
   <RecipeDef ParentName="SurgeryRemoveImplantBase">
-    <defName>LP_Remove_LP_Graft_BreathBlue</defName><label>取出蓝龙息腺</label><description>取出蓝龙息腺。</description><jobString>正在取出蓝龙息腺。</jobString>
+    <defName>LP_Remove_LP_Graft_BreathBlue</defName><label>摘除蓝龙息腺</label><description>取出蓝龙息腺。</description><jobString>正在摘除蓝龙息腺。</jobString>
     <appliedOnFixedBodyParts><li>Neck</li></appliedOnFixedBodyParts>
     <removesHediff>LP_Graft_BreathBlue</removesHediff>
   </RecipeDef>
@@ -1225,7 +1225,7 @@
     <addsHediff>LP_Graft_BreathBlack</addsHediff>
   </RecipeDef>
   <RecipeDef ParentName="SurgeryRemoveImplantBase">
-    <defName>LP_Remove_LP_Graft_BreathBlack</defName><label>取出黑龙息腺</label><description>取出黑龙息腺。</description><jobString>正在取出黑龙息腺。</jobString>
+    <defName>LP_Remove_LP_Graft_BreathBlack</defName><label>摘除黑龙息腺</label><description>取出黑龙息腺。</description><jobString>正在摘除黑龙息腺。</jobString>
     <appliedOnFixedBodyParts><li>Neck</li></appliedOnFixedBodyParts>
     <removesHediff>LP_Graft_BreathBlack</removesHediff>
   </RecipeDef>
@@ -1266,7 +1266,7 @@
     <addsHediff>LP_Graft_BreathGreen</addsHediff>
   </RecipeDef>
   <RecipeDef ParentName="SurgeryRemoveImplantBase">
-    <defName>LP_Remove_LP_Graft_BreathGreen</defName><label>取出绿龙息腺</label><description>取出绿龙息腺。</description><jobString>正在取出绿龙息腺。</jobString>
+    <defName>LP_Remove_LP_Graft_BreathGreen</defName><label>摘除绿龙息腺</label><description>取出绿龙息腺。</description><jobString>正在摘除绿龙息腺。</jobString>
     <appliedOnFixedBodyParts><li>Neck</li></appliedOnFixedBodyParts>
     <removesHediff>LP_Graft_BreathGreen</removesHediff>
   </RecipeDef>

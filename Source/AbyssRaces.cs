@@ -30,7 +30,8 @@ namespace LichPhylactery {
   public static bool IsSuccubus(Pawn p)=>Races124.Has(p,"LP_SuccubusNature");
   public static bool IsCambion(Pawn p)=>Races124.Has(p,"LP_CambionBlood");
   public static void ClearCache(Pawn p){}
-  public static Gene_SuccubusGuise Guise(Pawn p)=>p?.genes?.GenesListForReading.OfType<Gene_SuccubusGuise>().FirstOrDefault(g=>g.Active);
+  // 2026-11-06：渲染节点（CanDrawNow，每帧每个节点、并行线程）也调这里，改成不分配的循环。
+  public static Gene_SuccubusGuise Guise(Pawn p){var list=p?.genes?.GenesListForReading;if(list==null)return null;for(int i=0;i<list.Count;i++)if(list[i] is Gene_SuccubusGuise g && g.Active)return g;return null;}
   public static bool Guised(Pawn p){var g=Guise(p);return g!=null && g.on;}
 
   // ---------- 生成 ----------
@@ -194,16 +195,30 @@ namespace LichPhylactery {
 
   // ---------- 影魔半透明（约 50%，原版透明着色器；头像、造型台不变） ----------
   public const float ShadowAlpha=.5f;
-  static readonly Dictionary<Material,Material> shadowMats=new Dictionary<Material,Material>();
+  // 2026-11-06 审查：GetFinalizedMaterial 在 1.7 的并行渲染任务（DynamicDrawManager.PreDrawVisibleThings）里被多线程调用。
+  // 原来的普通 Dictionary 会被同时写坏（同战棺头部偏移那次），而且 new Material / src.name 只能在主线程调。
+  // 改成：并发字典查；工作线程上没查到就排队、这一帧先用原材质，下一帧画之前由主线程（ShadowMatFlush）建好。
+  static readonly System.Collections.Concurrent.ConcurrentDictionary<Material,Material> shadowMats=new System.Collections.Concurrent.ConcurrentDictionary<Material,Material>();
+  static readonly System.Collections.Concurrent.ConcurrentQueue<Material> shadowPending=new System.Collections.Concurrent.ConcurrentQueue<Material>();
+  static readonly System.Collections.Concurrent.ConcurrentDictionary<Material,byte> shadowQueued=new System.Collections.Concurrent.ConcurrentDictionary<Material,byte>();
   public static bool Translucent(PawnDrawParms parms)=>!parms.dead && (parms.flags&(PawnRenderFlags.Portrait|PawnRenderFlags.StylingStation|PawnRenderFlags.Invisible))==0 && Is(parms.pawn,ShadowDemon);
+  static Material MakeShadow(Material src){var m=new Material(src){shader=ShaderDatabase.Transparent,name=src.name+"_LPShadow"};var c=src.color;c.a*=ShadowAlpha;m.color=c;return m;}
   public static Material ShadowMat(Material src){
    if(src==null)return null;
-   if(!shadowMats.TryGetValue(src,out var m)){
-    m=new Material(src){shader=ShaderDatabase.Transparent,name=src.name+"_LPShadow"};var c=src.color;c.a*=ShadowAlpha;m.color=c;
-    shadowMats[src]=m;
-   }
-   return m;
+   if(shadowMats.TryGetValue(src,out var m))return m;
+   if(UnityData.IsInMainThread)return shadowMats.GetOrAdd(src,MakeShadow);
+   if(shadowQueued.TryAdd(src,0))shadowPending.Enqueue(src);
+   return src;
   }
+  public static void FlushShadowMats(){
+   while(shadowPending.TryDequeue(out var src)){shadowQueued.TryRemove(src,out _);if(src!=null)shadowMats.GetOrAdd(src,MakeShadow);}
+  }
+  public static bool ShadowPending=>!shadowPending.IsEmpty;
+ }
+ // 主线程：每张地图画动态物体之前，把上一帧工作线程排队的半透明材质建好。
+ [HarmonyPatch(typeof(DynamicDrawManager),nameof(DynamicDrawManager.DrawDynamicThings))]
+ public static class ShadowMatFlush {
+  static void Prefix(){if(AbyssRaces.ShadowPending)AbyssRaces.FlushShadowMats();}
  }
  [HarmonyPatch(typeof(PawnRenderNodeWorker),nameof(PawnRenderNodeWorker.GetFinalizedMaterial))]
  public static class ShadowDemonRender {

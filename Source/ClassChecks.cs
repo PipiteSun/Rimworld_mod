@@ -66,7 +66,10 @@ namespace LichPhylactery {
      var mk_om=ClsPawn(7,10,10);var mk_hom=Adventurer.Get(mk_om);mk_hom.classes.levels[ClassSystem.Monk]=5;mk_hom.classes.levels[ClassSystem.Paladin]=1;int mk_oback=ClassSystem.SyncFighterFeats(mk_hom);int mk_oagain=ClassSystem.SyncFighterFeats(mk_hom);
      var mk_cleric=DefDatabase<LP_ClassDef>.GetNamedSilentFail("LP_Class_Cleric");var mk_oc=ClsPawn(7,0,10);var mk_hoc=Adventurer.Get(mk_oc);if(mk_cleric!=null)mk_hoc.classes.levels[mk_cleric]=2;int mk_cl=ClassSystem.SyncFighterFeats(mk_hoc);
      Check(mk_m1==1 && mk_m2==2 && mk_m3==2 && mk_mp==4 && mk_hm.monkFeatGranted==2 && mk_hm.paladinFeatGranted==2 && mk_oback==3 && mk_oagain==0 && mk_hom.fighterFeats==3 && mk_cl==0 && Near(ClassSystem.DefaultPartPer("LP_Class_Monk"),.07f),
-      "monk / paladin bonus feats: monk 1 → 1, 2 → 2, 3 still 2; + paladin 3 → 4; old save monk 5 + paladin 1 gets 3 once; cleric gets none; monk part HP growth 7%");}
+      "monk / paladin bonus feats: monk 1 → 1, 2 → 2, 3 still 2; + paladin 3 → 4; old save monk 5 + paladin 1 gets 3 once; cleric gets none; monk part HP growth 7%");
+     // 5f. 2026-11-04 热修：武僧 10 级“心如止水”心智抗性 +50%（9 级没有）。
+     mk_hom.level=20;mk_hom.classes.levels[ClassSystem.Monk]=9;float mk_r9=DNDMind.Resistance(mk_om);mk_hom.classes.levels[ClassSystem.Monk]=10;float mk_r10=DNDMind.Resistance(mk_om);
+     Check(Near(mk_r10-mk_r9,.5f) && DNDMind.Stat.Worker.GetExplanationFull(StatRequest.For(mk_om),ToStringNumberSense.Absolute,mk_r10).Contains("心如止水"),"monk 10 still mind: mind resist +50% ("+mk_r9.ToStringPercent()+" → "+mk_r10.ToStringPercent()+"), shown in the stat explanation");}
     // 6. 施放：扣资源、生效；资源不够时按钮灰掉。
     GenSpawn.Spawn(a,altar.InteractionCell+IntVec3.East*3,map);
     var sw=a.abilities.GetAbility(DefDatabase<AbilityDef>.GetNamed("LP_SecondWind"));

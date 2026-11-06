@@ -243,7 +243,7 @@ namespace LichPhylactery {
    NResetQuest(st);
    // 18 差事超时 → 拒绝计数 +1。
    NResetQuest(st);st.stage="errand";st.errand=1;st.errandDeadline=Find.TickManager.TicksGame-1;NetherilQuest.ErrandTick(st);
-   Check(st.refusals==1 && st.stage=="refused" && st.envoyTick>=Find.TickManager.TicksGame+59*GenDate.TicksPerDay,"netheril 18: an errand past its 30-day deadline counts as a refusal (refusals "+st.refusals+", envoy back in 60 days)");
+   Check(st.refusals==1 && st.stage=="refused" && st.envoyTick>=Find.TickManager.TicksGame+(NetherilQuest.RefuseDays-1)*GenDate.TicksPerDay,"netheril 18: an errand past its 30-day deadline counts as a refusal (refusals "+st.refusals+", envoy back in "+NetherilQuest.RefuseDays+" days)");
    // 19 第三次拒绝 → 古墓站点。
    NResetQuest(st);st.refusals=2;NetherilQuest.Refuse();
    Check(st.refusals==3 && st.stage=="crypt" && st.cryptSite!=null && st.cryptSite.parts.Any(p=>p.def.defName=="LP_LarlochCrypt") && st.karsusStatus=="larloch" && Find.WorldObjects.Contains(st.cryptSite),"netheril 19: the third refusal reveals Larloch's crypt on the world map");

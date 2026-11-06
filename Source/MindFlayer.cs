@@ -45,15 +45,15 @@ namespace LichPhylactery {
    if(p.RaceProps.IsMechanoid)return "机械体没有大脑。";
    if(!p.RaceProps.IsFlesh || Brain(p)==null)return "目标没有可吞噬的大脑。";
    // 1.31.1：尸体只要求新鲜（未开始腐烂）、人形、有大脑；不再限6小时，心灵失聪的尸体也能吞噬。
-   if(t is Corpse c){if(c.GetRotStage()!=RotStage.Fresh)return "尸体已不新鲜（开始腐烂）。";if(!p.RaceProps.Humanlike)return "动物尸体的大脑不值得吞噬。";return null;}
+   if(t is Corpse c){if(c.GetRotStage()!=RotStage.Fresh)return "尸体已不新鲜（开始腐烂）。";if(!p.RaceProps.Humanlike && !LegendaryBeasts.IsRace(p.def))return "动物尸体的大脑不值得吞噬。";return null;} // 1.116.0：五色龙、眼魔等传奇怪改成动物型后照旧算有智慧的大脑
    if(p.Dead || !p.Downed)return "目标必须倒地。";
    if(!Necro.Undead(p) && PsychicallyDeaf(p))return "心灵失聪者的大脑无法吞噬。";
    return null;
   }
-  // 吞噬获得的脑髓。人形：(20+3×智识)×心灵敏感度，最多80；动物3～10；新鲜尸体三分之一。
+  // 吞噬获得的脑髓。人形：(20+3×智识)×心灵敏感度，最多80；动物3～10；新鲜尸体三分之一。1.116.0：传奇怪（动物型）按人形算，没有技能时智识按智力的一半。
   public static float Value(Pawn p,bool corpse){
    float v;
-   if(p.RaceProps.Humanlike){int intel=p.skills?.GetSkill(SkillDefOf.Intellectual)?.Level??0;v=Mathf.Min(HumanCap,(HumanBase+PerIntellect*intel)*Mathf.Max(0,p.GetStatValue(StatDefOf.PsychicSensitivity)));}
+   if(p.RaceProps.Humanlike || LegendaryBeasts.IsRace(p.def)){int intel=p.skills?.GetSkill(SkillDefOf.Intellectual)?.Level??(LegendaryBeasts.IsRace(p.def)?Legendary.Score(p,Adventurer.Int)/2:0); v=Mathf.Min(HumanCap,(HumanBase+PerIntellect*intel)*Mathf.Max(0,p.GetStatValue(StatDefOf.PsychicSensitivity)));}
    else v=Mathf.Clamp(AnimalMin+3.5f*p.BodySize,AnimalMin,AnimalMax);
    // 1.28.0：伊尔斯维离体后“脑髓烧尽”的大脑多 60。
    if(p.health?.hediffSet?.hediffs.OfType<Hediff_FormerVessel>().Any(h=>h.deity?.key=="Ilsvi")==true)v+=TwilightSkills.IlsviDevourBonus;

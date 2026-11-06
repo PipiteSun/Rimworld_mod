@@ -9,7 +9,7 @@ using Verse;
 using Verse.AI.Group;
 
 namespace LichPhylactery {
- // 1.52.1 传奇怪（组名 LegendaryMonsters：Test.ps1 -Only LegendaryMonsters）。死亡骑士不需要 HAR；贝希尔 / 眼魔 / 半巫妖只在有 HAR 时检查。
+ // 1.52.1 传奇怪（组名 LegendaryMonsters：Test.ps1 -Only LegendaryMonsters）。1.116.0 起贝希尔 / 眼魔 / 半巫妖是动物型怪物，不需要 HAR；启用 HAR 时多一项联动检查。
  public partial class LichChecks {
   readonly List<Thing> lmMade=new List<Thing>();
   Pawn LmMake(string k,IntVec3? at=null,Faction f=null){var p=Monsters.Make(k,f,map.Tile);lmMade.Add(p);if(at.HasValue)GenSpawn.Spawn(p,at.Value,map);return p;}
@@ -42,11 +42,36 @@ namespace LichPhylactery {
   void CheckLegendaryMonsters(){
    bool har=ModsConfig.IsActive(HARId);
    var parms=new IncidentParms{target=map,points=20000f};
-   Check(har==Monsters.HarAvailable && har==(Monsters.Kind(Monsters.Behir)!=null) && har==(Monsters.Kind(Monsters.Beholder)!=null) && har==(Monsters.Kind(Monsters.Demilich)!=null) && Monsters.Kind(Monsters.DeathKnight)!=null
-    && Items.Thing("LP_SoulGem")!=null && Items.Thing("LP_HellfireOrb")!=null && Items.Thing("LP_AntiMagicAmulet")!=null && (har || !DefDatabase<IncidentDef>.GetNamed("LP_BehirHunt").Worker.CanFireNow(parms) && Monsters.RevealSite(Monsters.Beholder,"自检")==null),
-    "legendary monsters: behir / beholder / demilich exist exactly when HAR is active ("+har+"); the death knight and all loot load without HAR; without HAR the hunter event and the sites stay off");
-   try{CheckDeathKnight();if(har)CheckHarMonsters();}
+   var kinds=new[]{Monsters.Behir,Monsters.Beholder,Monsters.Demilich}.Select(Monsters.Kind).ToList();
+   Check(Monsters.Available && kinds.All(k=>k!=null && k.RaceProps.Animal && !k.RaceProps.Humanlike && !k.canArriveManhunter && k.lifeStages.Count==1) && Monsters.Kind(Monsters.DeathKnight)!=null
+    && Items.Thing("LP_SoulGem")!=null && Items.Thing("LP_HellfireOrb")!=null && Items.Thing("LP_AntiMagicAmulet")!=null,
+    "legendary monsters: behir / beholder / demilich always load as animal-style races (HAR "+har+"), never a manhunter pack; the death knight and all loot load");
+   try{CheckDeathKnight();CheckBeastMonsters(har);}
    finally{Legendary.TestD20=null;Legendary.TestRoll=null;Monsters.TestRoll=null;LmClean();}
+   PrepareLegendaryBeastSave();
+  }
+
+  // 1.116.0 存读档：动物型的贝希尔、龙（世界角色）和眼魔尸体照常存读；带着旧版人形部件存下去的，读档补丁把部件去掉。
+  static string lbBehir,lbDragon,lbCorpse;
+  void PrepareLegendaryBeastSave(){
+   var behir=Monsters.Make(Monsters.Behir);var dragon=Dragons.Make("Red",0);var bh=Monsters.Make(Monsters.Beholder);
+   foreach(var p in new[]{behir,dragon}){
+    p.story=new Pawn_StoryTracker(p);p.skills=new Pawn_SkillTracker(p);
+    var adv=(Hediff_Adventurer)HediffMaker.MakeHediff(Adventurer.Def,p);p.health.hediffSet.hediffs.Add(adv);Adventurer.Register(adv);
+    Find.WorldPawns.PassToWorld(p,PawnDiscardDecideMode.KeepForever);
+   }
+   GenSpawn.Spawn(bh,CellFinder.RandomClosewalkCellNear(altar.Position+IntVec3.West*8,map,3),map);bh.Kill(null);
+   lbBehir=behir.ThingID;lbDragon=dragon.ThingID;lbCorpse=bh.Corpse?.ThingID;
+  }
+  void CheckLegendaryMonstersAfterLoad(){
+   if(lbBehir==null)return;
+   var world=Find.WorldPawns.AllPawnsAliveOrDead;var behir=world.FirstOrDefault(p=>p.ThingID==lbBehir);var dragon=world.FirstOrDefault(p=>p.ThingID==lbDragon);
+   var corpse=map.listerThings.ThingsInGroup(ThingRequestGroup.Corpse).OfType<Corpse>().FirstOrDefault(c=>c.ThingID==lbCorpse);
+   bool Clean(Pawn p)=>p!=null && p.story==null && p.skills==null && Adventurer.Get(p)==null && !p.health.hediffSet.hediffs.OfType<Hediff_Adventurer>().Any() && Legendary.Is(p) && p.health.hediffSet.hediffs.Any(h=>h is Hediff_MonsterBody || h is Hediff_DragonBody) && !p.RaceProps.Humanlike;
+   Check(Clean(behir) && Clean(dragon) && Monsters.Is(behir,Monsters.Behir) && Dragons.ColorOf(dragon)=="Red" && corpse!=null && Monsters.Is(corpse.InnerPawn,Monsters.Beholder) && corpse.InnerPawn.RaceProps.Animal,
+    "save/load: an animal-style behir and red dragon (world pawns saved with old humanlike story / skills / adventurer hediff) load clean and keep their legendary layer and body hediff; a beholder corpse loads ("+(behir!=null)+","+(dragon!=null)+","+(corpse!=null)+")");
+   foreach(var p in new[]{behir,dragon})if(p!=null && !p.Destroyed){Find.WorldPawns.RemovePawn(p);p.Destroy();}
+   corpse?.Destroy();
   }
 
   void CheckDeathKnight(){
@@ -103,20 +128,25 @@ namespace LichPhylactery {
    LmClean();
   }
 
-  void CheckHarMonsters(){
-   var m=DragonBridgeMonsters?.GetMethod("RunMonsters");if(m==null)throw new Exception("HAR bridge RunMonsters missing");
-   try{checks+=(int)m.Invoke(null,null);}catch(TargetInvocationException e){if(e.InnerException==null)throw;System.Runtime.ExceptionServices.ExceptionDispatchInfo.Capture(e.InnerException).Throw();}
+  void CheckBeastMonsters(bool har){
+   if(har){
+    var m=DragonBridgeMonsters?.GetMethod("RunMonsters");if(m==null)throw new Exception("HAR bridge RunMonsters missing");
+    try{checks+=(int)m.Invoke(null,null);}catch(TargetInvocationException e){if(e.InnerException==null)throw;System.Runtime.ExceptionServices.ExceptionDispatchInfo.Capture(e.InnerException).Throw();}
+   }
+   var texOk=new List<string>();
+   foreach(var k in new[]{Monsters.Behir,Monsters.Beholder,Monsters.Demilich}){var p=LmMake(k);var g=p.ageTracker.CurKindLifeStage?.bodyGraphicData?.Graphic;if(g!=null && g.MatSouth.mainTexture!=BaseContent.BadTex && g.MatEast.mainTexture!=BaseContent.BadTex && g.MatNorth.mainTexture!=BaseContent.BadTex && p.Name is NameSingle && p.needs.food==null)texOk.Add(k);}
+   Check(texOk.Count==3,"behir / beholder / demilich draw their own body textures (south / east / north), have a monster name and no food need ("+string.Join(",",texOk)+")");
    var arena=LmArena();
    // 6 贝希尔：体型、生命、护甲、等级、不是龙、十二足、龙之死敌、闪电吐息
-   var behir=LmMake(Monsters.Behir,arena);behir.Rotation=Rot4.East;var hb=Adventurer.Get(behir);
+   var behir=LmMake(Monsters.Behir,arena);behir.Rotation=Rot4.East;int hb=Legendary.LevelOf(behir);
    int legs=behir.RaceProps.body.AllParts.Count(x=>x.def.defName=="Leg");
    var adultDragon=Dragons.Available?Dragons.Make("Red",1):null;if(adultDragon!=null)lmMade.Add(adultDragon);
    float foe=adultDragon==null?1.5f:Monsters.DamageFactor(adultDragon,new DamageInfo(DamageDefOf.Bite,10f,0f,-1f,behir));
    var line1=LmColonist(arena+new IntVec3(6,0,0),5);var off=LmColonist(arena+new IntVec3(5,0,3));
    Legendary.TestD20=1;var br=Monsters.BehirBreath(behir,line1.Position);Legendary.TestD20=null;
-   Check(Near(behir.BodySize,3.5f) && Near(behir.HealthScale,12f*Dragons.ScoreHealth) && Near(behir.GetStatValue(StatDefOf.ArmorRating_Sharp),.45f) && hb.level>=15 && hb.level<=17 && Legendary.InspectLine(behir).StartsWith("挑战等级 CR 11") && legs==12
+   Check(Near(behir.BodySize,3.5f) && Near(behir.HealthScale,12f*Dragons.ScoreHealth) && Near(behir.GetStatValue(StatDefOf.ArmorRating_Sharp),.45f) && hb==15 && behir.story==null && Adventurer.Get(behir)==null && Legendary.InspectLine(behir).StartsWith("挑战等级 CR 11") && legs==12
     && !Dragons.Is(behir) && !MagicEffects.IsDragon(behir) && Near(foe,1.5f) && Legendary.FearImmune(behir) && br.dealt.ContainsKey(line1) && !br.dealt.ContainsKey(off) && Near(br.dealt[line1],12f) && Legendary.Resistance(behir)?.Max==2,
-    "behir: size 3.5, health ×12, armor 45%, L"+hb.level+", CR 11, 12 legs, not a dragon (dragon slayer ignores it), ×1.5 damage vs dragons, fear immune; lightning line hits on-axis only (4×12)");
+    "behir: animal-style, size 3.5, health ×12, armor 45%, L"+hb+", CR 11, 12 legs, not a dragon (dragon slayer ignores it), ×1.5 damage vs dragons, fear immune; lightning line hits on-axis only (4×12)");
    LmOff(off);
    // 7 吞噬：敏捷豁免失败被吞（离开地图）；每秒酸蚀；外面打 60 点吐出来
    var body=behir.health.hediffSet.hediffs.OfType<Hediff_MonsterBody>().First();
@@ -128,14 +158,14 @@ namespace LichPhylactery {
    Check(swallowed && gone && acid && spat,"behir swallows an adjacent colonist on a failed Dex save (off the map), digests 4 acid per second, spits them out after 60 damage from outside");
    LmOff(food);LmOff(line1);LmOff(behir);
    // 8 眼魔：10 根眼柄 10 种射线、打掉眼柄少一种、反魔法锥、护盾腰带失效
-   var bh=LmMake(Monsters.Beholder,arena);bh.Rotation=Rot4.East;var hbh=Adventurer.Get(bh);
+   var bh=LmMake(Monsters.Beholder,arena);bh.Rotation=Rot4.East;int hbh=Legendary.LevelOf(bh);
    var front=LmColonist(arena+new IntVec3(8,0,0),5);var back=LmColonist(arena+new IntVec3(-6,0,0),5);
    var mc=map.GetComponent<MapComponent_Legendary>();mc.Refresh();
    var belt=(Apparel)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("Apparel_ShieldBelt"));front.apparel.Wear(belt);var sh=belt.TryGetComp<CompShield>();
    bool inCone=Monsters.InAntiMagic(front),behind=Monsters.InAntiMagic(back);
-   Check(Near(bh.BodySize,2.5f) && Near(bh.HealthScale,9f*Dragons.ScoreHealth) && hbh.level>=20 && hbh.level<=22 && Monsters.Stalks(bh).Count==10 && Monsters.LiveRays(bh).Count==10 && Monsters.MainEye(bh) && !bh.Downed && bh.health.capacities.CapableOf(PawnCapacityDefOf.Moving)
+   Check(Near(bh.BodySize,2.5f) && Near(bh.HealthScale,9f*Dragons.ScoreHealth) && hbh==20 && Monsters.Stalks(bh).Count==10 && Monsters.LiveRays(bh).Count==10 && Monsters.MainEye(bh) && !bh.Downed && bh.health.capacities.CapableOf(PawnCapacityDefOf.Moving)
     && mc.beholders.Contains(bh) && inCone && !behind && sh.ShieldState==ShieldState.Disabled,
-    "beholder: size 2.5, health ×9, L"+hbh.level+", 10 eye stalks = 10 rays, floats (moving "+bh.health.capacities.GetLevel(PawnCapacityDefOf.Moving).ToStringPercent()+"); anti-magic cone covers a colonist in front (shield belt off), not one behind");
+    "beholder: size 2.5, health ×9, L"+hbh+", 10 eye stalks = 10 rays, floats (moving "+bh.health.capacities.GetLevel(PawnCapacityDefOf.Moving).ToStringPercent()+"); anti-magic cone covers a colonist in front (shield belt off), not one behind");
    Legendary.TestD20=1;Legendary.TestRoll=.99f;
    var targets=new List<Pawn>();for(int i=0;i<10;i++){targets.Add(LmColonist(DragOpen(arena+new IntVec3(4+i%5,0,i<5?-4:4),1),3));}
    targets[7].TakeDamage(new DamageInfo(DamageDefOf.Cut,1f,0f,-1f,null));foreach(var part in targets[7].health.hediffSet.GetNotMissingParts().Where(x=>x.depth==BodyPartDepth.Outside).Take(14).ToList()){var cut=(Hediff_Injury)HediffMaker.MakeHediff(HediffDefOf.Cut,targets[7],part);cut.Severity=Mathf.Min(part.def.hitPoints*.5f,10f);targets[7].health.AddHediff(cut);if(targets[7].health.summaryHealth.SummaryHealthPercent<.25f)break;}
@@ -150,7 +180,7 @@ namespace LichPhylactery {
    Check(disp!=null && disp.removeHediffs.Contains("LP_BeholderPetrified"),"dispel dust cures beholder petrification");
    foreach(var t in targets)LmOff(t);LmOff(front);LmOff(back);LmOff(bh);mc.Refresh();
    // 9 半巫妖：体型 0.8、生命 ×3、护甲 80%；吞魂之嚎（DC 21）；巫妖免疫；30 秒不救治就死、包扎后活；圣水银器 ×2
-   var dl=LmMake(Monsters.Demilich,arena);var hd=Adventurer.Get(dl);
+   var dl=LmMake(Monsters.Demilich,arena);int hd=Legendary.LevelOf(dl);
    var v1=LmColonist(arena+new IntVec3(5,0,0),5);var v2=LmColonist(arena+new IntVec3(5,0,2),5);
    Legendary.TestD20=1;int torn=Monsters.Howl(dl);Legendary.TestD20=null;
    bool down1=Items.Has(v1,"LP_SoulTorn") && v1.Downed,down2=Items.Has(v2,"LP_SoulTorn") && v2.Downed;
@@ -158,9 +188,9 @@ namespace LichPhylactery {
    st2.Tended(1f,1f);
    st1.ageTicks=Hediff_SoulTorn.DeathTicks;st2.ageTicks=Hediff_SoulTorn.DeathTicks;st1.TickInterval(60);st2.TickInterval(60);
    bool lichImmune=Monsters.SoulImmune(dl);
-   Check(Near(dl.BodySize,.8f) && Near(dl.HealthScale,3f*Dragons.ScoreHealth) && Near(dl.GetStatValue(StatDefOf.ArmorRating_Sharp),.8f) && hd.level>=26 && hd.level<=28 && Legendary.InspectLine(dl).StartsWith("挑战等级 CR 18") && !dl.Downed
+   Check(Near(dl.BodySize,.8f) && Near(dl.HealthScale,3f*Dragons.ScoreHealth) && Near(dl.GetStatValue(StatDefOf.ArmorRating_Sharp),.8f) && hd==26 && Legendary.InspectLine(dl).StartsWith("挑战等级 CR 18") && !dl.Downed
     && torn>=2 && down1 && down2 && v1.Dead && !v2.Dead && lichImmune && Near(Monsters.DamageFactor(dl,new DamageInfo(DefDatabase<DamageDef>.GetNamed("LP_Radiant"),10f,0f,-1f,null)),2f) && Near(Monsters.DamageFactor(dl,new DamageInfo(DamageDefOf.Cut,10f)),1f),
-    "demilich: size 0.8, health ×3, armor 80%, L"+hd.level+", CR 18; soul-devouring howl downs both colonists (DC 21), the untreated one dies after 30 s, the tended one lives; radiant / holy damage ×2");
+    "demilich: size 0.8, health ×3, armor 80%, L"+hd+", CR 18; soul-devouring howl downs both colonists (DC 21), the untreated one dies after 30 s, the tended one lives; radiant / holy damage ×2");
    LmOff(v1);LmOff(v2);
    // 10 掉落、灵魂宝石、半巫妖头骨
    var loot=Monsters.Loot(dl).Concat(Monsters.Loot(LmMake(Monsters.Beholder))).Concat(Monsters.Loot(LmMake(Monsters.Behir))).ToList();lmMade.AddRange(loot);

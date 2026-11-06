@@ -209,7 +209,9 @@ namespace LichPhylactery {
   public override void ExposeData(){base.ExposeData();if(Scribe.mode==LoadSaveMode.PostLoadInit){Live++;if(pawn!=null)Warlock.Hexed.Add(pawn);}}
  }
  public class GameComponent_Warlock : GameComponent {
-  public GameComponent_Warlock(Game game){}
+  // 2026-11-04 审计：新建 / 读档时组件先构造，状态的 PostLoadInit 在后面才重新登记。在这里清零，免得咒术名单和
+  // Live 计数（含法师结界 Hediff_Ward）跨存档累加——旧存档的小人一直留在名单里，计数只增不减，快速返回永远失效。
+  public GameComponent_Warlock(Game game){Warlock.Hexed.Clear();Hediff_Hex.Live=0;Hediff_Ward.Live=0;}
   public override void FinalizeInit(){base.FinalizeInit();Warlock.Users.Clear();}
   public override void GameComponentTick(){if(Find.TickManager.TicksGame%Martial.HourTicks==2 && Warlock.Hexed.Count>0)Warlock.Hexed.RemoveWhere(x=>x==null || x.Destroyed || Warlock.Hex(x)==null);}
  }

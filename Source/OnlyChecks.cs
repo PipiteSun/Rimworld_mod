@@ -29,7 +29,7 @@ namespace LichPhylactery {
   }
   // 1.63.0：知识回馈、造物设计的检查用完整检查里那位巫妖（worker）和他的骷髅、魔像、四个知识亡灵。
   // -Only 时没有这些，所以照完整检查的流程（同样的仪式账单）先做一份；完整检查不走这里。
-  static readonly HashSet<string> LichFixtureGroups=new HashSet<string>{"KnowledgeFeedback","ConstructDesign"};
+  static readonly HashSet<string> LichFixtureGroups=new HashSet<string>{"KnowledgeFeedback","ConstructDesign","Events3"}; // 1.117.0 命匣窃贼、敌对巫妖的战书要一位有命匣的巫妖
   void LichWorkerFixture(){Rand.PushState(16301);try{LichWorkerFixtureInner();}finally{Rand.PopState();}}
   void LichWorkerFixtureInner(){
    worker=Person();

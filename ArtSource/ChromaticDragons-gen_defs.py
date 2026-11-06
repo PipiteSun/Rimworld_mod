@@ -202,7 +202,8 @@ def race():
                   f'        <presenceRadius>{pres}</presenceRadius>', f'        <milestone>{"true" if ms else "false"}</milestone>', f'        <legendPoints>{lp}</legendPoints>',
                   '      </li>', '    </modExtensions>', '  </PawnKindDef>']
     o += ['', '</Defs>', '']
-    w(os.path.join(ROOT, "Bridges", "HAR", "Defs", "ChromaticDragons_Race.xml"), "\n".join(o))
+    # 1.116.0：龙改成动物型怪物，种族和兵种在 Defs/ChromaticDragons_Races.xml（手工维护），这里不再写 HAR 版本。
+    return "\n".join(o)
 
 
 items()
