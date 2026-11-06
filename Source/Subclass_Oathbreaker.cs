@@ -71,7 +71,7 @@ namespace LichPhylactery {
   }
 
   // ---------- 憎恨灵光 ----------
-  public static float HateFactor(Pawn holder){var h=Adventurer.Get(holder);return 1f+HateBase+HatePerCha*Mathf.Max(0f,h?.AMod(Adventurer.Cha)??0f);}
+  public static float HateFactor(Pawn holder){var h=Adventurer.Get(holder);return 1f+HateBase+HatePerCha*Mathf.Max(0f,h?.AModRace(Adventurer.Cha)??0f);}
   // 近战攻击方：破誓者本人，或半径 5 内同阵营的亡者 / 邪魔。取最强的一个灵光，不叠加。
   public static float HateFor(Pawn a){
    if(a==null || Haters.Count==0)return 1f;float best=1f;

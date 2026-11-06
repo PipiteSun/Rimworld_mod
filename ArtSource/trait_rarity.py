@@ -17,6 +17,8 @@ add("LP_CG_Mighty LP_CG_Swift LP_CG_Stalwart LP_CG_Brilliant LP_CG_Eagle LP_CG_C
 add("LP_DefyFate LP_Diligent LP_TalentGifted LP_TalentLateBloomer LP_TalentTempered LP_TalentMortalWill","Epic","强力特性")
 add("LP_HeroicSpark LP_Paragon","Legendary","强力特性")
 add("LP_DivineInfusion","Legendary","神力灌注")
+add("LP_SecondLife","Rare","奇遇特性")  # 1.122.0 二周目
+add("LP_SystemHost","Epic","奇遇特性")  # 1.122.0 系统宿主
 add("LP_Prophesied LP_PactDestiny LP_WeaveChild LP_DivineChampion","Mythic","天命")
 add("LP_Revenant","Epic","诅咒之力","Curse",{"1":("Uncommon","None")})
 add("LP_Lycanthrope","Epic","诅咒之力","Curse")

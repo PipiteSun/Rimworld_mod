@@ -41,7 +41,7 @@ namespace LichPhylactery {
     // 4. 火巨人（传奇种族）传奇血量 10 点 = +35%（×1.75）；属性数值和上限不变
     var giant=AdvPawn(DefDatabase<XenotypeDef>.GetNamed("LP_FireGiant"));var hg=AdvAt(giant,10);hg.legendSpent[Legend.Health]=10;
     hg.scores[Adventurer.Con]=14;hg.Dirty();
-    Check(hg.Affinity.key=="LP_FireGiant" && Near(Legend.HealthFactor(hg),1.35f) && Near(hg.AMod(Adventurer.Con),3.5f) && hg.Mod(Adventurer.Con)==2 && hg.Cap(Adventurer.Con)==20,"fire giant (legendary tier): legend health 10 = ×"+Legend.HealthFactor(hg).ToString("0.###")+", Con +2 counts as +3.5 for effects while the score/modifier/cap stay 14/+2/20");
+    Check(hg.Affinity.key=="LP_FireGiant" && Near(Legend.HealthFactor(hg),1.35f) && Near(hg.AMod(Adventurer.Con),2f) && Near(Affinity.WholeMult(hg,Adventurer.Con),1.75f) && hg.Mod(Adventurer.Con)==2 && hg.Cap(Adventurer.Con)==20,"fire giant (legendary tier): legend health 10 = ×"+Legend.HealthFactor(hg).ToString("0.###")+", Con +2 with the whole linear effect ×1.75 (1.121.0) while the score/modifier/cap stay 14/+2/20");
     // 5. 双头巨人（1.102.0 起是人类 + 异种型）按异种型查表
     var ettinKind=DefDatabase<PawnKindDef>.GetNamedSilentFail("LP_EttinColonist");
     if(ettinKind!=null){

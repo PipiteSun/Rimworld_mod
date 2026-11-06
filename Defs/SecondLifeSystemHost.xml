@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.122.0 二周目（LP_SecondLife，稀有）与系统宿主（LP_SystemHost，史诗）、改命符、系统惩罚。逻辑在 Source/SecondLife.cs、SystemHost*.cs。 -->
+<Defs>
+
+  <TraitDef>
+    <defName>LP_SecondLife</defName>
+    <commonality>0.1</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#5B9BD5>二周目</color>]]></label>
+        <description>前世走到过更远的地方。这一世重走一遍，进步飞快，偶尔想起前世的事。\n\n- 前世等级 8～14 级（第一次获得这个特性时决定）\n- 冒险者等级低于前世等级时，所有冒险者经验 ×2；到达前世等级后加成结束\n- 前世等级以内每次升级有 25% 几率想起前世的事：当前研究项目进度 +30%，或一项技能热情 +1\n- 冒险者系统关闭时不生效</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Rare</tier><kind>奇遇特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>LP_SystemHost</defName>
+    <commonality>0.05</commonality>
+    <degreeDatas>
+      <li>
+        <label><![CDATA[<color=#B070E0>系统宿主</color>]]></label>
+        <description>脑海里有个声音不停发布任务。\n\n- 每 7 天发布 3 个任务（击杀、制作、治疗、收获、研究、俘获，数量随冒险者等级增加），选 1 个接受，期限 7 天\n- 完成后领取一次奖励，三选一：+1 冒险者属性点、改命符 ×1、随机物品 ×1\n- 超时受到 3 天系统惩罚（全局工作速度 ×0.85）；主动放弃没有惩罚\n- 点人物下方的「系统面板」按钮查看任务和奖励</description>
+      </li>
+    </degreeDatas>
+    <modExtensions>
+      <li Class="LichPhylactery.TraitRarityExt"><tier>Epic</tier><kind>奇遇特性</kind></li>
+    </modExtensions>
+  </TraitDef>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_FateRewriteCharm</defName>
+    <label>改命符</label>
+    <description>系统发下的一张朱砂符纸，边缘泛着淡淡的青光。对自己或同一处的另一名殖民者使用，可以把一个特性改写成同一档位的另一个特性（诅咒只能换成诅咒；传说事迹、基因赋予的特性和剧情特性不能改写）。用后燃尽。\n\n背包里有改命符时，点人物下方的「改命符」按钮使用；放在地上时选中它使用。</description>
+    <graphicData>
+      <texPath>LP/SystemHost/FateCharm</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Silver_Drop</soundInteract>
+    <soundDrop>Silver_Drop</soundDrop>
+    <stackLimit>10</stackLimit>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <statBases>
+      <MarketValue>2000</MarketValue>
+      <Mass>0.05</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <thingCategories>
+      <li>ItemsMisc</li>
+    </thingCategories>
+    <tradeability>None</tradeability>
+    <generateCommonality>0</generateCommonality>
+    <burnableByRecipe>false</burnableByRecipe>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_FateCharm"/>
+    </comps>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>LP_SystemPenalty</defName>
+    <label>系统惩罚</label>
+    <description>没能在期限内完成系统任务。脑海里的声音不停地数落，干什么都提不起劲。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.85,0.45,0.45)</defaultLabelColor>
+    <isBad>true</isBad>
+    <makesSickThought>false</makesSickThought>
+    <everCurableByItem>false</everCurableByItem>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>180000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statFactors>
+          <WorkSpeedGlobal>0.85</WorkSpeedGlobal>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

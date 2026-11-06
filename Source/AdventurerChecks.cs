@@ -27,7 +27,7 @@ namespace LichPhylactery {
     Check(ThingDefOf.Human.inspectorTabsResolved.Any(t=>t is ITab_Adventurer),"冒险者 inspect tab is attached to humans");
     // 1.52.0 热修：设置窗口两栏的分组都在表里（1.58.0 起 18 个）（各画一次、不会自动换栏），冒险者在右栏第一位。
     var sg=LichMod.SettingsLeft.Concat(LichMod.SettingsRight).ToList();
-    Check(sg.Count==19 && sg.All(g=>g.draw!=null) && sg.Select(g=>g.draw.Method).Distinct().Count()==19 && sg.Select(g=>g.name).Distinct().Count()==19 && LichMod.SettingsRight[0].name=="冒险者" && new[]{"命匣等","事件","信仰","成神","冒险者","六臂蛇人","五色龙","DND 特性"}.All(n=>sg.Any(g=>g.name==n)),"settings window lists all 18 groups once (1.58.0 DND 特性), 冒险者 first in the right column");
+    Check(sg.Count==20 && sg.All(g=>g.draw!=null) && sg.Select(g=>g.draw.Method).Distinct().Count()==20 && sg.Select(g=>g.name).Distinct().Count()==20 && LichMod.SettingsRight[0].name=="冒险者" && new[]{"命匣等","事件","信仰","成神","冒险者","六臂蛇人","五色龙","DND 特性"}.All(n=>sg.Any(g=>g.name==n)),"settings window lists all 20 groups once (1.58.0 DND 特性, 1.121.0 法术特效), 冒险者 first in the right column");
     // 1. 新殖民者：标准数组 + 种族 + 背景
     var a=AdvPawn();var h=Adventurer.Get(a);
     Check(h!=null && h.level==1 && h.initialized && Near(h.xp,0f) && !h.Visible,"new colonist gets a hidden level-1 LP_Adventurer");

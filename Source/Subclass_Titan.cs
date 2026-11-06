@@ -77,7 +77,7 @@ namespace LichPhylactery {
 
   // ---------- 撼地践踏 ----------
   public static float StunChance(float mine,float theirs)=>Mathf.Min(StunMax,StunBase+StunPerSize*Mathf.Max(0f,mine-theirs));
-  public static float StompDamage(Pawn p){var h=Adventurer.Get(p);return Mathf.Max(1f,10f+3f*(h?.AMod(Adventurer.Str)??0f));}
+  public static float StompDamage(Pawn p){var h=Adventurer.Get(p);return Mathf.Max(1f,10f+3f*(h?.AModRace(Adventurer.Str)??0f));}
   public static bool Busy;
   // 半径内（不含倒地的）敌人受钝伤；比自己小的按成功率眩晕 2 秒。友军、中立不受影响。返回打中的数量。
   public static int Stomp(Pawn p,float radius,float factor,string label){

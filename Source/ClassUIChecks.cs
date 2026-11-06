@@ -53,7 +53,7 @@ namespace LichPhylactery {
    //    奥术强度 = 0.5 + 15/20 + 4×10% + (4−2)×2% + 9×5% = 1.25 + 0.40 + 0.04 + 0.45 = ×2.14（旧 ×1.67）；器械强度的智力项仍 5%；下一级预算 +5%。
    {var p=ClsPawn(10);p.skills.GetSkill(SkillDefOf.Intellectual).Level=15;var h=Adventurer.Get(p);h.scores[Adventurer.Int]=18;h.Dirty();var W=Cls("Wizard");ClassSystem.SetLevel(h,W,10);
     var ap=DefDatabase<StatDef>.GetNamed("LP_ArcanePower");var part=ClassLevelInfo.Part(ap);var art=ClassLevelInfo.Part(DefDatabase<StatDef>.GetNamed("LP_ArtificePower"));
-    float v=p.GetStatValue(ap),mod=h.AMod(Adventurer.Int),tm=Affinity.TalentMult(h,Adventurer.Int),sc=Adventurer.EffectScale;
+    float v=p.GetStatValue(ap),mod=h.AMod(Adventurer.Int),tm=Affinity.WholeMult(h,Adventurer.Int),sc=Adventurer.EffectScale;
     float want=1.25f+(Affinity.Talented(1f+.1f*mod,tm)-1f)*sc+.04f+.45f,next=ClassLevelInfo.PowerWith(p,h,ap,W,ClassLevelInfo.NextAdventurerLevel(h));
     bool plain=Near(mod,4f) && Near(tm,1f) && Near(sc,1f);string tip=ClassLevelInfo.ClassTip(p,h,W),expl=part.ExplanationPart(StatRequest.For(p));
     Check(part!=null && Near(part.abilityPer,.1f) && Near(part.LevelPer,.05f) && Near(part.LevelMax,.95f) && art!=null && Near(art.abilityPer,.05f) && Near(art.LevelPer,.02f)
@@ -63,7 +63,7 @@ namespace LichPhylactery {
    //    天赋强度 = 0.5 + 12/20 + 4×10% + (4−2)×2% + 9×5% = 1.10 + 0.40 + 0.04 + 0.45 = ×1.99（旧 ×1.52）；神恩强度的魅力项仍 5%、等级 2%。
    {var p=ClsPawn(10,0,12);var h=Adventurer.Get(p);h.scores[Adventurer.Cha]=18;h.Dirty();var S=Cls("Sorcerer");ClassSystem.SetLevel(h,S,10);
     var ip=DefDatabase<StatDef>.GetNamed("LP_InnatePower");var part=ClassLevelInfo.Part(ip);var div=ClassLevelInfo.Part(DefDatabase<StatDef>.GetNamed("LP_DivinePower"));
-    float v=p.GetStatValue(ip),mod=h.AMod(Adventurer.Cha),tm=Affinity.TalentMult(h,Adventurer.Cha),sc=Adventurer.EffectScale;
+    float v=p.GetStatValue(ip),mod=h.AMod(Adventurer.Cha),tm=Affinity.WholeMult(h,Adventurer.Cha),sc=Adventurer.EffectScale;
     float want=1.10f+(Affinity.Talented(1f+.1f*mod,tm)-1f)*sc+.04f+.45f+(ClassSystem.Bloodline(p)?ClassSystem.BloodlineBonus:0f),next=ClassLevelInfo.PowerWith(p,h,ip,S,ClassLevelInfo.NextAdventurerLevel(h));
     bool plain=Near(mod,4f) && Near(tm,1f) && Near(sc,1f) && !ClassSystem.Bloodline(p);string tip=ClassLevelInfo.ClassTip(p,h,S),expl=part.ExplanationPart(StatRequest.For(p));
     Check(part!=null && Near(part.abilityPer,.1f) && Near(part.LevelPer,.05f) && Near(part.LevelMax,.95f) && div!=null && Near(div.abilityPer,.05f) && Near(div.LevelPer,.02f)

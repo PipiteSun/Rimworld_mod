@@ -100,17 +100,21 @@ namespace LichPhylactery {
     var orcStr=Make(DefDatabase<XenotypeDef>.GetNamed("LP_HalfOrc"),HeroDefOf.LP_Paragon,1,new[]{18,10,10,10,10,10});
     var gStr=Make(null,Talents.Gifted,0,new[]{18,10,10,10,10,10});
     float v0=plain.FxValue(melee,1f),v1=pStr.FxValue(melee,1f),v2=orcStr.FxValue(melee,1f),v3=gStr.FxValue(melee,1f);
-    Check(Near(v0,1.4f) && Near(v1,3.5f) && Near(v2,4f) && Near(v3,2.1f) && Near(pStr.AMod(Adventurer.Str),4f) && Near(orcStr.AMod(Adventurer.Str),6f) && Near(Affinity.TalentMult(orcStr,Adventurer.Str),2.5f) && Near(Affinity.ScoreMult(orcStr,Adventurer.Str),2.5f),
-     "[hotfix5] Str 18 melee: plain ×"+v0.ToString("0.###")+" (1.4), paragon ×"+v1.ToString("0.###")+" (3.5), half-orc strong + paragon ×"+v2.ToString("0.###")+" (1.6×2.5 = 4.0), gifted ×"+v3.ToString("0.###")+" (2.1); table effects still take the larger (×2.5)");
+    Check(Near(v0,1.4f) && Near(v1,3.5f) && Near(v2,5.25f) && Near(v3,2.1f) && Near(pStr.AMod(Adventurer.Str),4f) && Near(orcStr.AMod(Adventurer.Str),4f) && Near(Affinity.WholeMult(orcStr,Adventurer.Str),3.75f) && Near(Affinity.TalentMult(orcStr,Adventurer.Str),2.5f) && Near(Affinity.ScoreMult(orcStr,Adventurer.Str),2.5f),
+     "[hotfix5] Str 18 melee: plain ×"+v0.ToString("0.###")+" (1.4), paragon ×"+v1.ToString("0.###")+" (3.5), half-orc strong + paragon ×"+v2.ToString("0.###")+" (1.4×1.5×2.5 = 5.25, 1.121.0 strong is whole), gifted ×"+v3.ToString("0.###")+" (2.1); table effects still take the larger (×2.5)");
     string sheet=plain.EffectSheet(Adventurer.Str),src=Affinity.SourceTag(orcStr,Adventurer.Str);
-    Check(sheet.Contains("近战伤害") && sheet.Contains("×1.4") && sheet.Contains("负重") && Affinity.SourceTag(plain,Adventurer.Str)=="" && src.Contains("种族擅长：调整值 ×1.5") && src.Contains("极致：整体 ×2.5"),"[hotfix5] tab effect table: Str 18 '"+sheet.Replace("\n"," | ")+"'; half-orc paragon source '"+src+"'");
+    Check(sheet.Contains("近战伤害") && sheet.Contains("×1.4") && sheet.Contains("负重") && Affinity.SourceTag(plain,Adventurer.Str)=="" && src.Contains("种族擅长：整体 ×1.5") && src.Contains("极致：整体 ×2.5"),"[hotfix5] tab effect table: Str 18 '"+sheet.Replace("\n"," | ")+"'; half-orc paragon source '"+src+"'");
     var pWis=Make(null,HeroDefOf.LP_Paragon,5,new[]{10,10,10,10,20,10});
     var pCon=Make(null,HeroDefOf.LP_Paragon,3,new[]{10,10,20,10,10,10});
     var pInt=Make(null,HeroDefOf.LP_Paragon,4,new[]{10,10,10,20,10,10});
     float ps=pWis.FxValue(psy,1f),psHalf=pWis.FxValue(psy,.5f),pf=pCon.PartFactor(1f),cp=Adventurer.ClassPowerBonus(pInt.pawn,Adventurer.Int);
     Check(Near(ps,3.75f) && Near(psHalf,2.375f) && Near(pf,4.375f) && Near(cp,2.125f),
      "[hotfix5] paragon: Wis 20 psychic sensitivity ×"+ps.ToString("0.###")+" (1.5×2.5 = 3.75, half effect strength ×2.375), Con 20 part health ×"+pf.ToString("0.###")+" (1.75×2.5 = 4.375, level 1), Int 20 class power +"+cp.ToString("0.###")+" (1.25×2.5 − 1 = 2.125)");
-    var lowG=Make(null,Talents.Gifted,0,new[]{6,10,6,6,10,10});
+    // 1.121.0 热修（Peter：普通属性天赋也整个倍率之后乘）：半兽人擅长力量 ×1.5 乘整体，力量 18 近战 (1 + 0.4) × 1.5 = ×2.1；擅长不再放大调整值。
+    var orc=Make(DefDatabase<XenotypeDef>.GetNamed("LP_HalfOrc"),null,0,new[]{18,10,10,10,10,10});
+    float ov=orc.FxValue(melee,1f);int weakA=-1;for(int k=0;k<6;k++)if(Affinity.RaceMult(orc,k)<.9999f){weakA=k;break;}
+    string wk="";bool weakOk=true;if(weakA>=0){orc.scores=new[]{10,10,10,10,10,10};orc.scores[weakA]=18;orc.Dirty();weakOk=Near(orc.AMod(weakA),2f) && Near(Affinity.WholeMult(orc,weakA),1f);wk=" weak "+Adventurer.Names[weakA]+" 18 mod′ "+orc.AMod(weakA).ToString("0.##")+" (2)";}
+    Check(Near(ov,2.1f) && weakOk && Affinity.Tip(orc,Adventurer.Str).Contains("整个 ×1.5"),"[1.121.0] half-orc strong Str 18 melee ×"+ov.ToString("0.###")+" (1.4 × 1.5 = 2.1);"+wk);    var lowG=Make(null,Talents.Gifted,0,new[]{6,10,6,6,10,10});
     float lm=lowG.FxValue(melee,1f),lc=lowG.ConPart(1f),lp=Adventurer.ClassPowerBonus(lowG.pawn,Adventurer.Int);
     Check(Near(lm,.8f) && Near(lc,1f) && Near(lp,-.1f),"[hotfix5] talent never lifts a below-×1 linear effect: gifted Str 6 melee ×"+lm.ToString("0.##")+" (0.8), Con 6 part ×"+lc.ToString("0.##")+" (1), Int 6 class power "+lp.ToString("0.###")+" (−0.1)");
    }finally{s.adventurerAffinity=oAff;}
