@@ -83,13 +83,17 @@ namespace LichPhylactery {
   readonly Thing bench;Thing selected;Vector2 scroll;string search="";string result;Color resultColor=Color.white;List<Thing> cache;int cacheFrame;
   const float ListW=250f,Row=40f;
   const float RepairH=112f;
-  public override Vector2 InitialSize=>new Vector2(800f,580f);
+  public override Vector2 InitialSize=>LPUI.Fit(800f,580f);
   public Window_GearEnhance(Thing bench){this.bench=bench;doCloseX=true;forcePause=false;absorbInputAroundWindow=false;closeOnClickedOutside=false;draggable=true;}
   Map Map=>bench?.Map;
-  public override void DoWindowContents(Rect r){
+  // 1.124.0 UI 整理：中栏说明可滚动（效果说明很长时不再画出框外）；列表第二行、材料行放不下时截断（悬停看全文）；
+  // 窗口被压矮时整块滚动；画完复位文字状态。
+  Vector2 outerScroll,detailScroll;float detailH;
+  public override void DoWindowContents(Rect r){bool sc=LPUI.BeginMinHeight(ref r,480f,ref outerScroll);try{Draw(r);}finally{if(sc)Widgets.EndScrollView();LPUI.Reset();}}
+  void Draw(Rect r){
    if(bench==null || bench.Destroyed || !bench.Spawned){Close();return;}
-   Text.Font=GameFont.Medium;Widgets.Label(new Rect(r.x,r.y,r.width,32f),"附魔强化 · 修复");Text.Font=GameFont.Small;
-   var body=new Rect(r.x,r.y+38f,r.width,r.height-38f);
+   float top=LPUI.Title(r,"附魔强化 · 修复");
+   var body=new Rect(r.x,top,r.width,r.yMax-top);
    var left=new Rect(body.x,body.y,ListW,body.height);var mid=new Rect(left.xMax+8f,body.y,(body.width-ListW-16f)*.5f,body.height);var right=new Rect(mid.xMax+8f,body.y,body.xMax-mid.xMax-8f,body.height);
    DrawList(left);DrawDetail(mid);DrawAction(right);
   }
@@ -118,11 +122,11 @@ namespace LichPhylactery {
     if(t==selected)Widgets.DrawHighlightSelected(row);else Widgets.DrawHighlightIfMouseover(row);
     Widgets.ThingIcon(new Rect(row.x+2f,row.y+4f,32f,32f),t);
     var owner=GearEnhanceBench.Owner(t);
-    Text.Font=GameFont.Small;Widgets.Label(new Rect(row.x+38f,row.y+1f,row.width-38f,22f),t.LabelCapNoCount.Truncate(row.width-40f));
+    Text.Font=GameFont.Small;LPUI.LabelFit(new Rect(row.x+38f,row.y+1f,row.width-40f,22f),t.LabelCapNoCount);
     string where=owner!=null?owner.LabelShort+(t.ParentHolder is Pawn_EquipmentTracker?" 手持":" 穿着"):"在地上 / 储存区";bool hurt=GearEnhanceBench.NeedsRepair(t);
     if(hurt)where+="，耐久 "+((float)t.HitPoints/t.MaxHitPoints).ToStringPercent();
-    Text.Font=GameFont.Tiny;GUI.color=hurt?new Color(.95f,.6f,.3f):Color.gray;Widgets.Label(new Rect(row.x+38f,row.y+21f,row.width-38f,18f),where);GUI.color=Color.white;Text.Font=GameFont.Small;
-    if(Widgets.ButtonInvisible(row)){selected=t;result=null;}
+    Text.Font=GameFont.Tiny;GUI.color=hurt?new Color(.95f,.6f,.3f):Color.gray;LPUI.LabelFit(new Rect(row.x+38f,row.y+21f,row.width-38f,18f),where);GUI.color=Color.white;Text.Font=GameFont.Small;
+    if(Widgets.ButtonInvisible(row)){selected=t;result=null;detailScroll=Vector2.zero;}
    }
    Widgets.EndScrollView();
   }
@@ -133,6 +137,11 @@ namespace LichPhylactery {
     if(result!=null){GUI.color=resultColor;Widgets.Label(new Rect(inner.x,inner.y,inner.width,Text.CalcHeight(result,inner.width)),result);GUI.color=Color.white;}
     return;
    }
+   bool bar=detailH>inner.height;var view=new Rect(0f,0f,inner.width-(bar?LPUI.ScrollBarW:0f),Mathf.Max(detailH,inner.height));
+   Widgets.BeginScrollView(inner,ref detailScroll,view);
+   try{detailH=DetailBody(view);}finally{Widgets.EndScrollView();}
+  }
+  float DetailBody(Rect inner){
    int l=GearEnhance.Level(selected);float y=inner.y;
    Text.Font=GameFont.Medium;float h=Text.CalcHeight(selected.LabelCapNoCount,inner.width);Widgets.Label(new Rect(inner.x,y,inner.width,h),selected.LabelCapNoCount);Text.Font=GameFont.Small;y+=h+4f;
    if(selected.TryGetQuality(out var q)){GUI.color=Color.gray;Widgets.Label(new Rect(inner.x,y,inner.width,22f),"品质："+q.GetLabel());GUI.color=Color.white;y+=22f;}
@@ -140,7 +149,8 @@ namespace LichPhylactery {
    y+=6f;
    string now="现在 +"+l+"："+GearEnhance.Effects(selected,l);h=Text.CalcHeight(now,inner.width);Widgets.Label(new Rect(inner.x,y,inner.width,h),now);y+=h+6f;
    if(l<GearEnhance.Max){GUI.color=new Color(.4f,.9f,.4f);string next="强化到 +"+(l+1)+"："+GearEnhance.Effects(selected,l+1);h=Text.CalcHeight(next,inner.width);Widgets.Label(new Rect(inner.x,y,inner.width,h),next);GUI.color=Color.white;y+=h+6f;}
-   if(result!=null){y+=8f;GUI.color=resultColor;h=Text.CalcHeight(result,inner.width);Widgets.Label(new Rect(inner.x,y,inner.width,h),result);GUI.color=Color.white;}
+   if(result!=null){y+=8f;GUI.color=resultColor;h=Text.CalcHeight(result,inner.width);Widgets.Label(new Rect(inner.x,y,inner.width,h),result);GUI.color=Color.white;y+=h;}
+   return y-inner.y+4f;
   }
   void DrawAction(Rect r){
    Widgets.DrawMenuSection(r);var inner=r.ContractedBy(8f);if(selected==null)return;
@@ -152,7 +162,7 @@ namespace LichPhylactery {
    Widgets.Label(new Rect(inner.x,y,inner.width,22f),"每次材料：");y+=22f;
    foreach(var c in GearEnhanceBench.Costs(rec)){
     int have=GearEnhanceBench.CountOnMap(Map,c.Key);Widgets.ThingIcon(new Rect(inner.x+4f,y+1f,20f,20f),c.Key);
-    GUI.color=have>=c.Value?Color.white:new Color(.9f,.3f,.3f);Widgets.Label(new Rect(inner.x+28f,y,inner.width-28f,22f),c.Key.LabelCap+" ×"+c.Value+"（有 "+have+"）");GUI.color=Color.white;y+=22f;
+    GUI.color=have>=c.Value?Color.white:new Color(.9f,.3f,.3f);LPUI.LabelFit(new Rect(inner.x+28f,y,inner.width-28f,22f),c.Key.LabelCap+" ×"+c.Value+"（有 "+have+"）");GUI.color=Color.white;y+=22f;
    }
    y+=6f;
    float chance=GearEnhance.Chance(l,op,bench);
@@ -164,7 +174,7 @@ namespace LichPhylactery {
    GUI.color=Color.gray;float h=Text.CalcHeight(who+extra,inner.width);Widgets.Label(new Rect(inner.x,y,inner.width,h),who+extra);GUI.color=Color.white;y+=h+10f;
    string block=GearEnhanceBench.Blocked(selected,Map);
    var btn=new Rect(inner.x,y,inner.width,36f);
-   if(block!=null){GUI.color=Color.gray;Text.Anchor=TextAnchor.MiddleCenter;Widgets.Label(btn,block);Text.Anchor=TextAnchor.UpperLeft;GUI.color=Color.white;return;}
+   if(block!=null){LPUI.Unavailable(btn,block);return;}
    if(Widgets.ButtonText(btn,"强化到 +"+(l+1))){
     var gear=selected;
     if(l>GearEnhance.LowMax)Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation("强化到 +"+(l+1)+"，成功率 "+chance.ToStringPercent()+"。失败会掉回 +"+(l-1)+"，确定？",()=>Do(gear)));

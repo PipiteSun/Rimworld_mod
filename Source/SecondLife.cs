@@ -6,7 +6,7 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 namespace LichPhylactery {
- // 1.122.0 二周目（LP_SecondLife，稀有）：前世等级 8～14（第一次见到这个特性时决定，存在 GameComponent_SecondLife 里）。
+ // 1.122.0 二周目（LP_SecondLife，传说；1.127.0 热修前为稀有）：前世等级 8～14（第一次见到这个特性时决定，存在 GameComponent_SecondLife 里）。
  // 冒险者等级低于前世等级时冒险者经验 ×2（Adventurer.GainXP / GainTrainingXP 里乘，在其他倍率之后）；
  // 前世等级以内每次升级 25% 几率想起前世（研究进度 +30% 或一项技能热情 +1，各半）；到达前世等级发一封信，之后没有加成。
  // 冒险者系统关闭时 GainXP 直接返回、也不会升级，所以特性只显示不生效。

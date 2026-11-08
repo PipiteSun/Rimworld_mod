@@ -175,8 +175,8 @@
     <tradeTags><li>LP_OgreGear</li></tradeTags>
     <weaponClasses><li>Melee</li></weaponClasses>
     <tools>
-      <li><label>棒柄</label><capacities><li>Poke</li></capacities><power>10</power><cooldownTime>2.6</cooldownTime></li>
-      <li><label>棒头</label><labelUsedInLogging>false</labelUsedInLogging><capacities><li>Blunt</li></capacities><power>30</power><cooldownTime>3.2</cooldownTime></li>
+      <li><label>棒柄</label><capacities><li>Poke</li></capacities><power>12</power><cooldownTime>2.6</cooldownTime></li>
+      <li><label>棒头</label><labelUsedInLogging>false</labelUsedInLogging><capacities><li>Blunt</li></capacities><power>36</power><cooldownTime>3.0</cooldownTime><armorPenetration>0.4</armorPenetration></li>
     </tools>
     <modExtensions>
       <li Class="LichPhylactery.RaceGearExtension"><race>Ogre</race></li>
@@ -253,8 +253,8 @@
     <weaponTags><li>LP_FrostSpear</li></weaponTags>
     <tradeTags><li>LP_FiendLoot</li></tradeTags>
     <tools>
-      <li><label>枪杆</label><capacities><li>Blunt</li></capacities><power>12</power><cooldownTime>2</cooldownTime></li>
-      <li><label>枪尖</label><labelUsedInLogging>false</labelUsedInLogging><capacities><li>Stab</li></capacities><power>24</power><cooldownTime>2.4</cooldownTime></li>
+      <li><label>枪杆</label><capacities><li>Blunt</li></capacities><power>14</power><cooldownTime>2</cooldownTime></li>
+      <li><label>枪尖</label><labelUsedInLogging>false</labelUsedInLogging><capacities><li>Stab</li></capacities><power>33</power><cooldownTime>2.2</cooldownTime><armorPenetration>0.65</armorPenetration></li>
     </tools>
     <recipeMaker>
       <recipeUsers Inherit="False"><li>LP_RuneAnvil</li></recipeUsers>
@@ -347,9 +347,9 @@
     <weaponTags><li>LP_EmpyreanBlade</li></weaponTags>
     <tradeTags><li>LP_TitanGear</li></tradeTags>
     <tools>
-      <li><label>剑柄</label><capacities><li>Blunt</li></capacities><power>12</power><cooldownTime>2</cooldownTime></li>
-      <li><label>剑尖</label><capacities><li>Stab</li></capacities><power>26</power><cooldownTime>2.6</cooldownTime></li>
-      <li><label>剑刃</label><labelUsedInLogging>false</labelUsedInLogging><capacities><li>Cut</li></capacities><power>32</power><cooldownTime>2.6</cooldownTime></li>
+      <li><label>剑柄</label><capacities><li>Blunt</li></capacities><power>15</power><cooldownTime>2</cooldownTime></li>
+      <li><label>剑尖</label><capacities><li>Stab</li></capacities><power>34</power><cooldownTime>2.4</cooldownTime><armorPenetration>0.65</armorPenetration></li>
+      <li><label>剑刃</label><labelUsedInLogging>false</labelUsedInLogging><capacities><li>Cut</li></capacities><power>42</power><cooldownTime>2.4</cooldownTime><armorPenetration>0.7</armorPenetration></li>
     </tools>
     <recipeMaker>
       <researchPrerequisite>LP_RacialBlades</researchPrerequisite>

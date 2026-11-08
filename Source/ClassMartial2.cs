@@ -271,19 +271,25 @@ namespace LichPhylactery {
 
  // 选宿敌的窗口（不用浮动菜单）。
  public class Dialog_ChooseFavored : Window {
-  readonly Pawn pawn;
-  public override Vector2 InitialSize=>new Vector2(420f,480f);
+  readonly Pawn pawn;Vector2 scroll;
+  public override Vector2 InitialSize=>LPUI.Fit(420f,480f);
   public Dialog_ChooseFavored(Pawn p){pawn=p;doCloseX=true;doCloseButton=true;absorbInputAroundWindow=true;forcePause=true;}
+  // 1.124.0 UI 整理：统一标题；选项区可滚动（小屏幕下九个按钮不会压到关闭按钮）。
   public override void DoWindowContents(Rect r){
    var h=Adventurer.Get(pawn);if(h?.classes==null){Close();return;}
-   Text.Font=GameFont.Medium;Widgets.Label(new Rect(r.x,r.y,r.width,32f),pawn.LabelShort+" 的宿敌");Text.Font=GameFont.Small;
-   float y=r.y+36f;int open=ClassMartial2.OpenFoeSlots(h);
-   Widgets.Label(new Rect(r.x,y,r.width,24f),open>0?"还能选 "+open+" 种（选定后不能更改）":"宿敌已经选满");y+=28f;
-   foreach(var t in ClassMartial2.FoeTypes){
-    bool have=h.classes.favored.Contains(t);var b=new Rect(r.x,y,r.width,30f);
-    if(Widgets.ButtonText(b,ClassMartial2.FoeLabel(t)+(have?"（已选）":""),active:!have && open>0) && !have && open>0){ClassMartial2.PickFoe(h,t);Messages.Message(pawn.LabelShort+"把"+ClassMartial2.FoeLabel(t)+"定为宿敌。",pawn,MessageTypeDefOf.PositiveEvent,false);if(ClassMartial2.OpenFoeSlots(h)<=0)Close();}
-    y+=34f;
-   }
+   float y=LPUI.Title(r,pawn.LabelShort+" 的宿敌");int open=ClassMartial2.OpenFoeSlots(h);
+   LPUI.LabelFit(new Rect(r.x,y,r.width,LPUI.RowH),open>0?"还能选 "+open+" 种（选定后不能更改）":"宿敌已经选满");y+=LPUI.RowH+4f;
+   var outRect=new Rect(r.x,y,r.width,r.yMax-y);float need=ClassMartial2.FoeTypes.Length*34f;
+   var view=new Rect(0f,0f,outRect.width-(need>outRect.height?LPUI.ScrollBarW:0f),need);
+   Widgets.BeginScrollView(outRect,ref scroll,view);
+   try{
+    float by=0f;
+    foreach(var t in ClassMartial2.FoeTypes){
+     bool have=h.classes.favored.Contains(t);var b=new Rect(0f,by,view.width,30f);
+     if(Widgets.ButtonText(b,ClassMartial2.FoeLabel(t)+(have?"（已选）":""),active:!have && open>0) && !have && open>0){ClassMartial2.PickFoe(h,t);Messages.Message(pawn.LabelShort+"把"+ClassMartial2.FoeLabel(t)+"定为宿敌。",pawn,MessageTypeDefOf.PositiveEvent,false);if(ClassMartial2.OpenFoeSlots(h)<=0)Close();}
+     by+=34f;
+    }
+   }finally{Widgets.EndScrollView();LPUI.Reset();}
   }
  }
 

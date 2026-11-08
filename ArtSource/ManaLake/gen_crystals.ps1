@@ -1,9 +1,9 @@
-# 1.100.0 魔力湖泊：按 Defs/ManaLake_Arcana.xml 里的秘传能力生成 Defs/ManaLake_Crystals.xml（每个能力一枚结晶），并写出 icons.json 给 draw_manalake.py 画图标。
+﻿# 1.100.0 魔力湖泊：按 Defs/ManaLake_Arcana.xml 里的秘传能力生成 Defs/ManaLake_Crystals.xml（每个能力一枚结晶），并写出 icons.json 给 draw_manalake.py 画图标。
 # 用法：pwsh ArtSource/ManaLake/gen_crystals.ps1（在模组根目录）。改了能力的名字、环数、职业后重新跑一次。
 $ErrorActionPreference='Stop'
 $root=Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
 $classColor=@{}
-foreach($f in 'Classes.xml','Classes2.xml','Classes4.xml','ClassWarlock.xml'){
+foreach($f in 'Classes.xml','Classes2.xml','Classes4.xml','ClassWarlock.xml','ClassBard.xml'){
  $t=[IO.File]::ReadAllText((Join-Path $root "Defs\$f"))
  foreach($m in [regex]::Matches($t,'<defName>(LP_Class_\w+)</defName>\s*<label>([^<]*)</label>[\s\S]*?<color>([^<]+)</color>')){$classColor[$m.Groups[1].Value]=@{label=$m.Groups[2].Value;color=$m.Groups[3].Value}}
 }

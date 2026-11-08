@@ -306,4 +306,29 @@
     <statOffsets><LP_MindResist>0.25</LP_MindResist></statOffsets>
     <bonusAbilities><li>Cha</li><li>Con</li></bonusAbilities>
   </LichPhylactery.LP_FeatDef>
+
+  <!-- ===== 吟游诗人（1.123.0） ===== -->
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_BardVoice</defName>
+    <label>天生歌喉</label>
+    <description>声音天生就能抓住人心。激昂强度 +10%；乐韵获取 ×1.5；乐韵上限 +3；社交影响 +10%。吟游诗人专属。附带魅力或敏捷 +1。</description>
+    <iconPath>LP/Feats/Class/BardVoice</iconPath>
+    <order>84</order>
+    <requiredClass>LP_Class_Bard</requiredClass><classLevel>3</classLevel>
+    <powerStats><li>LP_BardicPower</li></powerStats><powerBonus>0.1</powerBonus>
+    <resourceBonus>3</resourceBonus><gainFactor>1.5</gainFactor>
+    <statOffsets><SocialImpact>0.1</SocialImpact></statOffsets>
+    <bonusAbilities><li>Cha</li><li>Dex</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_BardRenown</defName>
+    <label>名动四方</label>
+    <description>你的名字被唱遍了大陆。激昂强度 +25%；吟游诗人能力冷却 ×0.9；每季度所有非敌对派系好感 +2（好感已到 +50 的不再加）。吟游诗人专属。附带魅力 +1。</description>
+    <iconPath>LP/Feats/Class/BardRenown</iconPath>
+    <order>85</order>
+    <requiredClass>LP_Class_Bard</requiredClass><classLevel>7</classLevel>
+    <powerStats><li>LP_BardicPower</li></powerStats><powerBonus>0.25</powerBonus>
+    <cooldownFactor>0.9</cooldownFactor>
+    <bonusAbilities><li>Cha</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
 </Defs>

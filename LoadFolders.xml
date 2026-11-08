@@ -10,5 +10,7 @@
     <li IfModActive="erdelf.humanoidalienraces">Bridges/HAR</li>
     <li IfModActive="kikohi.jewelry">Bridges/Jewelry</li>
     <li IfModActive="ludeon.rimworld.anomaly">Bridges/Anomaly</li>
+    <!-- 暂未加入游戏（Peter 2026-11-07）：1.126.0 奥能动力甲 + 1.127.0 DND 野兽第三批。去掉下一行的注释即可恢复。 -->
+    <!-- <li>Shelved/NewContent-1.126-1.127</li> -->
   </v1.7>
 </loadFolders>

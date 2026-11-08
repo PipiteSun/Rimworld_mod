@@ -711,4 +711,47 @@
     <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>9</ring><cls>LP_Class_Warlock</cls></li></modExtensions>
   </AbilityDef>
 
+  <!-- 吟游诗人（1.123.0，效果在 Source/ClassBard.cs） -->
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_AC_IrresistibleDance</defName>
+    <label>不可抗拒之舞</label>
+    <description>秘传（6 环吟游诗人）：15 格内一个敌人被迫跳舞 20 秒 × 激昂强度：不能攻击、不能走开，受到的伤害 ×1.3。成功率 = 65% + (激昂强度 − 1) × 40%，目标每 1 点感知调整值 −5%、心智抗性也会抵消；剧情首领和传奇单位最多跳 5 秒。机械体无效。冷却 2 天。</description>
+    <iconPath>LP/Arcana/IrresistibleDance</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <verbProperties><range>15</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>BdDance</effect><duration>1200</duration><durationScales>true</durationScales><stat>LP_BardicPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>6</ring><cls>LP_Class_Bard</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AC_MassInvisibility</defName>
+    <label>群体隐形</label>
+    <description>秘传（7 环吟游诗人）：10 格内所有友方人形（含自己）隐形 30 秒，攻击或施法就会现形。冷却 3 天。</description>
+    <iconPath>LP/Arcana/MassInvisibility</iconPath>
+    <cooldownTicksRange>180000</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>BdMassInvis</effect><radius>10</radius><duration>1800</duration><stat>LP_BardicPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>7</ring><cls>LP_Class_Bard</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_AC_PowerWordStun</defName>
+    <label>力量真言·震慑</label>
+    <description>秘传（8 环吟游诗人）：20 格内一点半径 5 格内的敌人全部眩晕 6 秒 × 激昂强度；剧情首领和传奇单位时间减半。机械体也有效。冷却 5 天。</description>
+    <iconPath>LP/Arcana/PowerWordStun</iconPath>
+    <cooldownTicksRange>300000</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>BdStun</effect><radius>5</radius><duration>360</duration><durationScales>true</durationScales><stat>LP_BardicPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>8</ring><cls>LP_Class_Bard</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_AC_Foresight</defName>
+    <label>预知术</label>
+    <description>秘传（9 环吟游诗人）：一名友方（可以是自己）1 天内看得见片刻之后的事：近战命中 +25%，射击精度提高，近战闪避 +25%，心智抗性 +50%，不会被偷袭。冷却 7 天。</description>
+    <iconPath>LP/Arcana/Foresight</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>420000</cooldownTicksRange>
+    <verbProperties><range>10</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>TargetBuff</effect><hediff>LP_ACB_Foresight</hediff><duration>60000</duration><fixedSeverity>true</fixedSeverity><stat>LP_BardicPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>9</ring><cls>LP_Class_Bard</cls></li></modExtensions>
+  </AbilityDef>
+
 </Defs>

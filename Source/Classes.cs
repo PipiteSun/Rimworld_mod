@@ -13,7 +13,7 @@ namespace LichPhylactery {
  // 第一个职业：主或副技能 ≥ 6（或主属性 ≥ 13）；兼修第 2、3 个：冒险者 ≥ 3 级且那门技能 ≥ 8（或主属性 ≥ 13）；最多 3 个。冒险者手册给一次跳过门槛。
  // 能力在职业等级 1/3/5/7/10/13/15 自动获得（15 级终极另要那门技能 15 级；1.87.0 前是 1/3/5/9/13/17/20 与技能 18）；施放消耗职业资源（斗志 / 气 / 神恩），资源上限 = 2 + 职业等级/2（四舍五入）。
  // 1.73.0：法师、牧师、德鲁伊、术士、器械师也移过来（Classes2.xml / ClassCasters.cs）。法力（Mana）每个职业一条；神恩牧师和圣武士共用一条（PoolKey）；器械师没有资源。
- public enum ClassResource{None,Fury,Ki,Grace,Mana,Rage,Pact} // Rage：野蛮人的怒气（Classes4.xml / ClassMartial2.cs）；Pact：邪术师的契约法力（ClassWarlock.xml / ClassWarlock.cs）
+ public enum ClassResource{None,Fury,Ki,Grace,Mana,Rage,Pact,Melody} // Rage：野蛮人的怒气（Classes4.xml / ClassMartial2.cs）；Pact：邪术师的契约法力（ClassWarlock.xml / ClassWarlock.cs）；Melody：1.123.0 吟游诗人的乐韵（ClassBard.xml / ClassBard.cs）
  public class ClassAbilityEntry {public AbilityDef ability;public int level=1;public SkillDef capstoneSkill;}
  public class LP_ClassDef : Def {
   public SkillDef mainSkill,alternateSkill;public int order;public ClassResource resource;public bool martial,caster,bloodline;
@@ -86,6 +86,8 @@ namespace LichPhylactery {
   static Dictionary<AbilityDef,(LP_ClassDef cls,ClassAbilityEntry entry)> byAbility;
   static Dictionary<AbilityDef,(LP_ClassDef cls,ClassAbilityEntry entry)> ByAbility{get{var a=All;if(byAbility==null){byAbility=new Dictionary<AbilityDef,(LP_ClassDef,ClassAbilityEntry)>();foreach(var c in a)foreach(var e in c.abilities)if(e.ability!=null)byAbility[e.ability]=(c,e);}return byAbility;}}
   public static LP_ClassDef ClassOf(AbilityDef d)=>d!=null && ByAbility.TryGetValue(d,out var v)?v.cls:ClassLegendary.ClassOf(d)??ClassSubclass.ClassOf(d)??LakeArcana.ClassOf(d); // 子职业能力算所属职业；1.100.0 职业水晶算那个职业
+  // 1.123.0：施放时扣哪个职业的资源。魔法奥秘学来的别家法术（自己没有那个职业）算吟游诗人、扣乐韵。
+  public static LP_ClassDef CastClassOf(Pawn p,AbilityDef d)=>Bard.SecretClass(p,d)??ClassOf(d);
   public static ClassAbilityEntry EntryOf(AbilityDef d)=>d!=null && ByAbility.TryGetValue(d,out var v)?v.entry:null;
   public static LP_ClassDef ByLegacyPath(string path)=>path==null?null:All.FirstOrDefault(c=>c.legacyPath==path);
   // 1.81.0 热修2（Peter）：部位生命成长按职业生命骰（d12 野蛮人 7%，d10 6%，d8 5%，d6 4%）；没分配职业点的等级按 Hediff_Adventurer.PartPerLevel。
@@ -251,6 +253,7 @@ namespace LichPhylactery {
    foreach(var a in h.classes.legendary)if(p.abilities.GetAbility(a)==null){p.abilities.GainAbility(a);n++;} // 1.74.0
    n+=ClassSubclass.Sync(h); // 子职业与通用能力
    n+=LakeArcana.Sync(h); // 1.100.0 秘传
+   n+=Bard.Sync(h); // 1.123.0 吟游诗人的魔法奥秘
    return n;
   }
   // 1.87.0（Peter：最终特性下调到 15 级左右）：旧存档的人按新等级表补一次够格的能力（只加不减），玩家的人发一条消息列出补上的能力。
@@ -270,7 +273,7 @@ namespace LichPhylactery {
 
   // ---------- 资源 ----------
   public static int MaxResource(int level)=>level<=0?0:2+(level+1)/2;
-  public static string ResourceLabel(ClassResource r){switch(r){case ClassResource.Fury:return "斗志";case ClassResource.Ki:return "气";case ClassResource.Grace:return "神恩";case ClassResource.Mana:return "法力";case ClassResource.Rage:return "怒气";case ClassResource.Pact:return "契约法力";default:return "";}}
+  public static string ResourceLabel(ClassResource r){switch(r){case ClassResource.Fury:return "斗志";case ClassResource.Ki:return "气";case ClassResource.Grace:return "神恩";case ClassResource.Mana:return "法力";case ClassResource.Rage:return "怒气";case ClassResource.Pact:return "契约法力";case ClassResource.Melody:return "乐韵";default:return "";}}
   // 1.73.0：神恩是牧师和圣武士共用的一条（存在圣武士名下），上限按两个职业等级之和（最多按 20 级算）；其他资源每个职业一条。
   public static LP_ClassDef PoolKey(LP_ClassDef c)=>c!=null && c.resource==ClassResource.Grace && Paladin!=null?Paladin:c;
   public static int PoolLevel(Hediff_Adventurer h,LP_ClassDef c){
@@ -282,14 +285,14 @@ namespace LichPhylactery {
   public static float Resource(Pawn p,LP_ClassDef c)=>Resource(Adventurer.Get(p),c);
   // 1.81.0 热修4：法力（法师、术士、德鲁伊，各自一条）上限 2 + 职业等级（20 级 22，照 5e 的法术位数）；斗志 / 气 / 神恩 / 怒气仍是 2 + (等级+1)/2。
   public static int MaxMana(int level)=>level<=0?0:2+level;
-  public static int MaxResource(Hediff_Adventurer h,LP_ClassDef c)=>c==null || c.resource==ClassResource.None?0:Mathf.Max(0,(c.resource==ClassResource.Mana?MaxMana(PoolLevel(h,c)):c.resource==ClassResource.Pact?Warlock.MaxPact(PoolLevel(h,c)):MaxResource(PoolLevel(h,c)))+ClassLegendary.ResourceFor(h,c)+ClassFeats.ResourceBonus(h,c)-Subclass2.ResourcePenalty(h,c)); // 1.104.0 恶鬼之血的身体强化扣上限；1.74.0 每个传奇能力 +2；契约法力 2 + 等级/4；1.88.0 职业专属专长
+  public static int MaxResource(Hediff_Adventurer h,LP_ClassDef c)=>c==null || c.resource==ClassResource.None?0:Mathf.Max(0,(c.resource==ClassResource.Mana?MaxMana(PoolLevel(h,c)):c.resource==ClassResource.Pact?Warlock.MaxPact(PoolLevel(h,c)):c.resource==ClassResource.Melody?Bard.MaxMelody(h):MaxResource(PoolLevel(h,c)))+ClassLegendary.ResourceFor(h,c)+ClassFeats.ResourceBonus(h,c)-Subclass2.ResourcePenalty(h,c)+(c.resource==ClassResource.Melody?Bard.ResourceBonus(h):0)); // 1.123.0 乐韵 2 + 等级 + 魅力调整值；不朽传奇另 +3 // 1.104.0 恶鬼之血的身体强化扣上限；1.74.0 每个传奇能力 +2；契约法力 2 + 等级/4；1.88.0 职业专属专长
   public static float AddResource(Hediff_Adventurer h,LP_ClassDef c,float amount){
    int max=MaxResource(h,c);if(max<=0 || amount==0f)return 0f;
    if(amount>0f)amount*=ClassFeats.GainFactor(h,c); // 1.88.0 职业专属专长：资源获取
    float cur=Resource(h,c),next=Mathf.Clamp(cur+amount,0f,max);h.classes.res[PoolKey(c)]=next;return next-cur;
   }
   // 1.99.0：靠睡觉恢复的资源补一句不睡觉种族的恢复方式（ClassRestless）。
-  public static string ResourceTip(LP_ClassDef c){var s=ResourceTipBase(c);var r=c?.resource;return r==ClassResource.Fury || r==ClassResource.Ki || r==ClassResource.Grace || r==ClassResource.Mana || r==ClassResource.Pact?s+"不需要睡觉的种族：不在战斗中、未征召时每 6 小时回上限的 1/4，或用“冥想调息”原地静坐 2 小时回满。":s;}
+  public static string ResourceTip(LP_ClassDef c){var s=ResourceTipBase(c);var r=c?.resource;return r==ClassResource.Fury || r==ClassResource.Ki || r==ClassResource.Grace || r==ClassResource.Mana || r==ClassResource.Pact || r==ClassResource.Melody?s+"不需要睡觉的种族：不在战斗中、未征召时每 6 小时回上限的 1/4，或用“冥想调息”原地静坐 2 小时回满。":s;}
   static string ResourceTipBase(LP_ClassDef c){
    switch(c?.resource){
     case ClassResource.Fury:return "斗志：命中敌对、未倒地的目标 +"+(Martial.FuryHit*Martial.FuryResourcePer).ToString("0.##")+"，击杀敌人 +"+(Martial.FuryKill*Martial.FuryResourcePer).ToString("0.##")+"（每人每游戏小时最多 +"+(Martial.FuryCap*Martial.FuryResourcePer).ToString("0.#")+"）；睡觉时每 250 刻 +"+SleepRegen+"。有心灵链接时照旧另加精神力。";
@@ -298,6 +301,7 @@ namespace LichPhylactery {
     case ClassResource.Mana:return "法力（每个职业一条，上限 2 + 职业等级）：醒着时每小时约 +0.5，睡觉时每 250 刻 +"+SleepRegen+(c.defName=="LP_Class_Wizard"?"；法师在研究、读书或在卷轴书桌干活时每 250 刻另 +"+StudyRegen:"")+"。";
     case ClassResource.Rage:return "怒气：受到敌人伤害 +"+ClassMartial2.RageTaken+"，命中敌人 +"+ClassMartial2.RageDealt+"；不在狂暴中、10 秒没有攻防时每小时 −1（原初斗士不衰减）。睡觉不恢复。";
     case ClassResource.Pact:return "契约法力（上限 2 + 邪术师等级/4）：连续 1 小时冥想、娱乐或睡觉（短休）就回满，中断要重来；其他时候不恢复。";
+    case ClassResource.Melody:return "乐韵（上限 2 + 吟游诗人等级 + 魅力调整值，最少 2）：醒着时每 250 刻 +"+Bard.AwakeRegen+"（每小时约 +0.5），睡觉时每 250 刻 +"+SleepRegen+"；演奏乐器、听音乐或做艺术品时每 250 刻另 +"+Bard.ActivityRegen+"；每次和人闲聊、深谈 +"+Bard.ChatGain+"。";
     case ClassResource.None:return c.defName=="LP_Class_Artificer"?"器械师没有资源，能力只看冷却。":c.label+"没有资源，能力只看冷却。";
    }
    return "";
@@ -312,7 +316,7 @@ namespace LichPhylactery {
    var p=h.pawn;if(p==null || p.Dead)return;bool asleep=!p.Awake(),med=!asleep && Meditating(p);
    var done=new HashSet<LP_ClassDef>();
    foreach(var kv in h.classes.levels.ToList()){
-    var c=kv.Key;if(kv.Value<=0 || c.resource==ClassResource.None || c.resource==ClassResource.Rage || c.resource==ClassResource.Pact || !done.Add(PoolKey(c)))continue; // 共用的神恩只恢复一次；怒气不靠睡觉；契约法力靠短休（Warlock.Rest）
+    var c=kv.Key;if(kv.Value<=0 || c.resource==ClassResource.None || c.resource==ClassResource.Rage || c.resource==ClassResource.Pact || c.resource==ClassResource.Melody || !done.Add(PoolKey(c)))continue; // 1.123.0 乐韵在 Bard.Tick250 // 共用的神恩只恢复一次；怒气不靠睡觉；契约法力靠短休（Warlock.Rest）
     float add=0f;
     if(asleep)add=SleepRegen;
     else if(med && c.resource==ClassResource.Ki)add=MeditateRegen;
@@ -336,6 +340,7 @@ namespace LichPhylactery {
    Regen(h);
    ClassRestless.Tick250(h); // 1.99.0 不睡觉的种族：平时慢慢回（代替睡觉）
    Warlock.Tick250(h); // 邪术师：短休回满契约法力、被动
+   Bard.Tick250(h); // 1.123.0 吟游诗人：乐韵、被动、学院
    Subclass3.Tick250(h); // 1.106.0 暗影宗、散打宗
    Subclass4.Tick250(h); // 1.111.0 炼金师、装甲师、堡垒工程师
    Subclass2.Tick250(h); // 1.103.0 第二批子职业的被动、钢铁卫士、誓言之力
@@ -353,14 +358,14 @@ namespace LichPhylactery {
   public static float PsychicFactor(Pawn p,CompProperties_ClassEffect props)=>p==null || props==null || !props.psychic || !(LichMod.Settings?.classPsychic??true)?1f:Mathf.Max(PsychicMin,p.GetStatValue(StatDefOf.PsychicSensitivity));
   public static float StatValue(Pawn p,CompProperties_ClassEffect props){
    if(p==null || props?.stat==null)return 1f;
-   float v=p.GetStatValue(props.stat);
+   float v=p.GetStatValue(Bard.StatFor(p,props)); // 1.123.0 魔法奥秘学来的法术用激昂强度
    if(props.bestSkill){var m=DefCache<StatDef>.Get("LP_MarksmanPower");if(m!=null)v=Mathf.Max(v,p.GetStatValue(m));}
    return v;
   }
   public static float Strength(Pawn p,CompProperties_ClassEffect props)=>StatValue(p,props)*PsychicFactor(p,props);
   public static string CannotCast(Pawn p,AbilityDef def,CompProperties_ClassEffect props){
    if(props==null || props.passive)return null;
-   var h=Adventurer.Get(p);var c=ClassOf(def);
+   var h=Adventurer.Get(p);var c=CastClassOf(p,def);
    var arc=LakeArcana.CannotCast(p,def);if(arc!=null)return arc; // 1.100.0 秘传公共冷却
    if(c==null || h==null)return null;
    if(c.caster && ClassMartial2.Raging(p))return "狂暴中无法施法";
@@ -373,7 +378,7 @@ namespace LichPhylactery {
   }
   public static void Pay(Pawn p,AbilityDef def,CompProperties_ClassEffect props){
    if(props!=null && !props.passive && (Subclass2.Pay(p,def,props) || Subclass3.Pay(p,def,props)))return; // 1.103.0 失血、誓言之力；1.110.0 引导神力（定义里 cost 为 0）
-   if(props==null || props.cost<=0 || FreeCast(p,props))return;var h=Adventurer.Get(p);var c=ClassOf(def);
+   if(props==null || props.cost<=0 || FreeCast(p,props))return;var h=Adventurer.Get(p);var c=CastClassOf(p,def);
    if(ClassSubclass.PayMana(h,def,ClassLegendary.Cost(p,def,props)))return; // 诡术师的法力
    if(c==null || c.resource==ClassResource.None)return;
    int cost=ClassLegendary.Cost(p,def,props);
@@ -431,7 +436,7 @@ namespace LichPhylactery {
   public static void PromptLetter(){
    if(!Adventurer.Enabled)return;
    var list=PawnsFinder.AllMaps_FreeColonists.Where(p=>Points(p)>0).ToList();if(list.Count==0)return;
-   Find.LetterStack.ReceiveLetter("冒险者职业","DND边缘大陆：十二个 DND 职业（战士、圣武士、武僧、法师、牧师、德鲁伊、术士、器械师、野蛮人、游侠、游荡者、邪术师）不再需要 VPE，改成冒险者的职业等级。每个冒险者等级给 1 点职业点（最多 20），可以分给最多 3 个职业。\n\n"+string.Join("\n",list.Select(p=>"· "+p.LabelShort+"：职业点 "+Points(p)))+"\n\n选中殖民者点“选择职业”按钮，或在“冒险者”分页的“职业”页里加点。",LetterDefOf.NeutralEvent,new LookTargets(list.Where(p=>p.Spawned)));
+   Find.LetterStack.ReceiveLetter("冒险者职业","DND边缘大陆：十三个 DND 职业（战士、圣武士、武僧、法师、牧师、德鲁伊、术士、器械师、野蛮人、游侠、游荡者、邪术师、吟游诗人）不再需要 VPE，改成冒险者的职业等级。每个冒险者等级给 1 点职业点（最多 20），可以分给最多 3 个职业。\n\n"+string.Join("\n",list.Select(p=>"· "+p.LabelShort+"：职业点 "+Points(p)))+"\n\n选中殖民者点“选择职业”按钮，或在“冒险者”分页的“职业”页里加点。",LetterDefOf.NeutralEvent,new LookTargets(list.Where(p=>p.Spawned)));
   }
  }
 

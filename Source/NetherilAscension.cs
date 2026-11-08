@@ -134,19 +134,22 @@ namespace LichPhylactery {
 
  public class Dialog_NetherilAscension : Window {
   readonly Building_NetherilAltar altar;Pawn principal;readonly HashSet<Pawn> co=new HashSet<Pawn>();Vector2 scroll;
-  public override Vector2 InitialSize=>new Vector2(520f,560f);
+  float contentH=400f;
+  public override Vector2 InitialSize=>LPUI.Fit(520f,560f);
   public Dialog_NetherilAscension(Building_NetherilAltar altar){this.altar=altar;doCloseX=true;forcePause=true;absorbInputAroundWindow=true;principal=NetherilAscension.Principals(altar.Map).FirstOrDefault();}
+  // 1.124.0 UI 整理：标题固定，主祭 / 协祭 / 成功率 / 按钮整块滚动（原来主祭很多时会把按钮挤出窗口，协祭列表另有一层小滚动区）。
   public override void DoWindowContents(Rect inRect){
-   var l=new Listing_Standard();l.Begin(inRect);
-   Text.Font=GameFont.Medium;l.Label("升神仪式");Text.Font=GameFont.Small;
+   float top=LPUI.Title(inRect,"升神仪式");
+   var l=LPUI.BeginScroll(new Rect(inRect.x,top,inRect.width,inRect.yMax-top),ref scroll,contentH);
+   try{Body(l);}finally{contentH=LPUI.EndScroll(l);LPUI.Reset();}
+  }
+  void Body(Listing_Standard l){
    l.Label("主祭：");
    foreach(var p in NetherilAscension.Principals(altar.Map))if(l.RadioButton(p.LabelShort+"（"+Netheril.State.Passes(p)+" 遍，心灵敏感度 "+p.GetStatValue(StatDefOf.PsychicSensitivity).ToStringPercent()+"）",principal==p)){principal=p;co.Remove(p);}
    l.GapLine();l.Label("协祭（至少 "+NetherilAscension.MinCo+" 名有心灵链接的殖民者）：");
    var cands=NetherilAscension.CoCandidates(altar.Map,principal);
-   var outRect=l.GetRect(220f);var view=new Rect(0f,0f,outRect.width-20f,cands.Count*26f);
-   Widgets.BeginScrollView(outRect,ref scroll,view);float y=0f;
-   foreach(var p in cands){bool on=co.Contains(p);Widgets.CheckboxLabeled(new Rect(0f,y,view.width,24f),p.LabelShort+"（精神力 "+(p.psychicEntropy?.CurrentPsyfocus??0f).ToStringPercent()+"）",ref on);if(on)co.Add(p);else co.Remove(p);y+=26f;}
-   Widgets.EndScrollView();
+   if(cands.Count==0){GUI.color=Color.gray;l.Label("没有可以当协祭的殖民者。");GUI.color=Color.white;}
+   foreach(var p in cands){bool on=co.Contains(p);l.CheckboxLabeled(p.LabelShort+"（精神力 "+(p.psychicEntropy?.CurrentPsyfocus??0f).ToStringPercent()+"）",ref on);if(on)co.Add(p);else co.Remove(p);}
    co.RemoveWhere(p=>!cands.Contains(p));
    l.GapLine();
    var list=co.ToList();
@@ -157,7 +160,6 @@ namespace LichPhylactery {
     float chance=NetherilAscension.Chance(principal,list.Count);var p0=principal;
     Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation("由 "+p0.LabelShort+" 主祭、"+list.Count+" 名协祭发起升神仪式。\n\n成功率 "+chance.ToStringPercent()+"。\n失败时 "+p0.LabelShort+" 会化为不可复原的石像，这张地图魔网崩溃 15 天，卡苏斯之卷化为灰烬。\n\n确定开始吗？",()=>{NetherilAscension.Start(altar,p0,list);Close();},true));
    }
-   l.End();
   }
  }
 

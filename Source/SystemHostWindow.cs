@@ -8,22 +8,24 @@ namespace LichPhylactery {
  // 上方：当前任务进度条，或「接受任务」三选一；下方三个奖励框：属性成长 / 改命符 / 随机物品。
  public sealed class SystemHostWindow : Window {
   readonly Pawn pawn;Vector2 scroll;
-  public override Vector2 InitialSize=>new Vector2(840f,710f);
+  public override Vector2 InitialSize=>LPUI.Fit(840f,710f);
   public SystemHostWindow(Pawn pawn){
    this.pawn=pawn;forcePause=true;absorbInputAroundWindow=true;doCloseX=true;doCloseButton=true;closeOnClickedOutside=false;
   }
-  public override void DoWindowContents(Rect rect){
+  // 1.124.0 UI 整理：统计行、任务名、记录行放不下时截断（悬停看全文）；画完复位文字状态。
+  // 小屏幕上窗口被压矮时（内容区不到 560），整块可滚动，记录区保持至少 90 高。
+  Vector2 outerScroll;
+  public override void DoWindowContents(Rect rect){bool sc=LPUI.BeginMinHeight(ref rect,560f,ref outerScroll);try{Draw(rect);}finally{if(sc)Widgets.EndScrollView();LPUI.Reset();}}
+  void Draw(Rect rect){
    var st=SystemHost.State;
    if(pawn==null || st==null){Close();return;}
    var e=st.Lookup(pawn)??(SystemHost.Has(pawn)?st.For(pawn):null);
    if(e==null){Close();return;}
    bool host=SystemHost.Has(pawn);
-   Text.Font=GameFont.Medium;
-   Widgets.Label(new Rect(0,0,rect.width-30,36),pawn.LabelShortCap+" · 系统宿主");
-   Text.Font=GameFont.Small;
+   LPUI.Title(rect,pawn.LabelShortCap+" · 系统宿主");
    int now=Find.TickManager.TicksGame;
    string next=!host?"没有“系统宿主”特性，不再发布任务":e.active!=null?"任务进行中，完成或结束后再发布":e.nextOfferTick<0?"即将发布":"下次发布：约 "+((e.nextOfferTick-now)/(float)GenDate.TicksPerDay).ToString("0.0")+" 天后";
-   Widgets.Label(new Rect(0,44,rect.width,28),$"已完成任务 {e.completed} 次    超时 {e.failed} 次    放弃 {e.abandoned} 次    已领奖 {e.claimed} 次    {next}");
+   LPUI.LabelFit(new Rect(0,44,rect.width,28),$"已完成任务 {e.completed} 次    超时 {e.failed} 次    放弃 {e.abandoned} 次    已领奖 {e.claimed} 次    {next}");
    // 任务区（78–150）
    if(e.active!=null){
     var t=e.active;float done=SystemHost.Done(pawn,t);
@@ -40,7 +42,7 @@ namespace LichPhylactery {
     for(int i=0;i<e.offers.Count && i<3;i++){
      var t=e.offers[i];var box=new Rect(i*(w+12),78,w,62);
      Widgets.DrawMenuSection(box);
-     Widgets.Label(new Rect(box.x+8,box.y+4,box.width-16,24),t.Label);
+     LPUI.LabelFit(new Rect(box.x+8,box.y+4,box.width-16,24),t.Label);
      if(Widgets.ButtonText(new Rect(box.x+8,box.y+30,box.width-16,26),"接受任务")){
       var cap=t;
       Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation($"确认接受任务「{cap.Label}」？期限 7 天，超时会受到 3 天系统惩罚；另外两个任务将放弃。",()=>{
@@ -70,21 +72,21 @@ namespace LichPhylactery {
    bool wasEnabled=GUI.enabled;GUI.enabled=wasEnabled && adv!=null;
    if(Widgets.ButtonText(new Rect(0,380,180,30),"打开冒险者分页")){Close();ITab_Adventurer.OpenFor(pawn);}
    GUI.enabled=wasEnabled;
-   Widgets.Label(new Rect(192,382,rect.width-192,28),offer!=null?$"当前领取：{offer.Label}":host?"完成系统任务可获得下一次奖励。":"没有“系统宿主”特性，不再有新的奖励。");
+   LPUI.LabelFit(new Rect(192,382,rect.width-192,28),offer!=null?$"当前领取：{offer.Label}":host?"完成系统任务可获得下一次奖励。":"没有“系统宿主”特性，不再有新的奖励。");
    // 记录
    var view=new Rect(0,420,rect.width,Math.Max(30,rect.height-470));
    var content=new Rect(0,0,view.width-20,40+e.history.Count*27);
    Widgets.BeginScrollView(view,ref scroll,content);
    float y=0;
    Widgets.Label(new Rect(0,y,content.width,27),"系统记录（任务与领奖，保留 60 条）");y+=30;
-   foreach(var line in e.history){Widgets.Label(new Rect(0,y,content.width,27),line);y+=27;}
+   foreach(var line in e.history){LPUI.LabelFit(new Rect(0,y,content.width,27),line);y+=27;}
    Widgets.EndScrollView();
   }
   void DrawChoice(Rect box,string title,string reward,string description,HostReward offer,int choice,bool enabled){
    Widgets.DrawMenuSection(box);
    var inner=box.ContractedBy(12);
-   Widgets.Label(new Rect(inner.x,inner.y,inner.width,28),title);
-   Widgets.Label(new Rect(inner.x,inner.y+34,inner.width,50),reward);
+   LPUI.LabelFit(new Rect(inner.x,inner.y,inner.width,28),title);
+   LPUI.LabelFit(new Rect(inner.x,inner.y+34,inner.width,50),reward);
    TooltipHandler.TipRegion(box,description);
    Widgets.Label(new Rect(inner.x,inner.y+88,inner.width,24),"悬停查看详情");
    bool wasEnabled=GUI.enabled;

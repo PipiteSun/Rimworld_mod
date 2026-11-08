@@ -7,7 +7,7 @@
   <statBases><MaxHitPoints>500</MaxHitPoints><Mass>12</Mass><WorkToMake>22000</WorkToMake><Flammability>0</Flammability></statBases>
   <costList><Steel>200</Steel><Plasteel>40</Plasteel></costList>
   <recipeMaker><recipeUsers Inherit="False"><li>LP_FireGiantForge</li></recipeUsers><researchPrerequisite>LP_GiantForging</researchPrerequisite><skillRequirements><Crafting>6</Crafting></skillRequirements></recipeMaker>
-  <tools><li><label>锤头</label><capacities><li>Blunt</li></capacities><power>40</power><armorPenetration>0.35</armorPenetration><cooldownTime>3.6</cooldownTime></li></tools>
+  <tools><li><label>锤头</label><capacities><li>Blunt</li></capacities><power>54</power><armorPenetration>0.55</armorPenetration><cooldownTime>3.4</cooldownTime></li></tools>
  </ThingDef>
  <ThingDef ParentName="ApparelBase">
   <defName>LP_FireGiantHelmet</defName><label>火巨人熔铁战盔</label>

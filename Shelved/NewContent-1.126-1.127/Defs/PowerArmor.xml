@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.124.0 奥能动力甲：奥术核心驱动的秘铸骑士装甲（侏儒奇械师 + 耐瑟瑞尔奥术科技）。代码在 Source/PowerArmor.cs，贴图由 ArtSource/RaceArt/draw_power_armor_124.py 生成。
+     三档：奥械侍从甲（≈原版海军装甲）、秘铸骑士动力甲（略高于原版重甲）、誓约堡垒重甲（最高档，体型 1 以上才能穿）；三个职业变体：圣誓型、秘法炮手型、奇械型。
+     双色：CutoutComplex + _m 遮罩（红=甲色，绿=纹章色；纹章色由 HeraldryExtension 给出）。研究在「DND边缘大陆」页 (4,3.5) (5,3.5) (6,3.5)。 -->
+<Defs>
+  <!-- ==================== 研究 ==================== -->
+  <ResearchProjectDef>
+    <defName>LP_Research_ArcanePowerArmor</defName>
+    <label>奥能动力学</label>
+    <description>把奥术核心装进骑士板甲：奥能驱动的伺服关节和推进器。解锁奥械锻炉、奥能充能座、奥能电池，以及第一档奥能动力甲「奥械侍从甲」和配套头盔。</description>
+    <baseCost>2000</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>LP_Research_KnightForging</li>
+      <li>MicroelectronicsBasics</li>
+    </prerequisites>
+    <tab>LP_FireGiantTech</tab>
+    <researchViewX>4</researchViewX>
+    <researchViewY>3.5</researchViewY>
+  </ResearchProjectDef>
+  <ResearchProjectDef>
+    <defName>LP_Research_ArcaneKnightArmor</defName>
+    <label>秘铸骑士甲</label>
+    <description>用秘银和精金秘铸的全身动力甲，核心带力场发生器。解锁「秘铸骑士动力甲」、骑士盔和三种职业变体：圣誓型（圣武士）、秘法炮手型（法师）、奇械型（器械师）。</description>
+    <baseCost>3000</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>LP_Research_ArcanePowerArmor</li>
+      <li>LP_Research_LegendaryArmor</li>
+    </prerequisites>
+    <tab>LP_FireGiantTech</tab>
+    <researchViewX>5</researchViewX>
+    <researchViewY>3.5</researchViewY>
+  </ResearchProjectDef>
+  <ResearchProjectDef>
+    <defName>LP_Research_OathBastion</defName>
+    <label>誓约堡垒</label>
+    <description>骑士团最后的堡垒：一身会走路的城墙，核心能过载放出冲击。解锁「誓约堡垒重甲」和堡垒巨盔（体型 1 以上才能穿）。</description>
+    <baseCost>4500</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>LP_Research_ArcaneKnightArmor</li>
+    </prerequisites>
+    <tab>LP_FireGiantTech</tab>
+    <researchViewX>6</researchViewX>
+    <researchViewY>3.5</researchViewY>
+  </ResearchProjectDef>
+
+  <!-- ==================== 状态 ==================== -->
+  <HediffDef>
+    <defName>LP_PA_Husk</defName>
+    <label>铁壳</label>
+    <description>奥能动力甲的核心耗尽了：伺服关节失去动力，整身甲变成沉重的铁壳。移动 -35%、操作 -25%，装甲能力不能用。充能或脱下后恢复。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.62,0.64,0.68)</defaultLabelColor>
+    <isBad>true</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <stages><li><capMods><li><capacity>Moving</capacity><offset>-0.35</offset></li><li><capacity>Manipulation</capacity><offset>-0.25</offset></li></capMods></li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_PA_Field</defName>
+    <label>奥能力场</label>
+    <description>贴身的奥能力场：所有伤害都被挡下，每挡一点伤害消耗核心的奥能；奥能耗尽时力场崩溃。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.45,0.85,1)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>600</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+  </HediffDef>
+
+  <!-- ==================== 跃击飞行物 / 充能工作 ==================== -->
+  <ThingDef ParentName="PawnFlyerBase">
+    <defName>LP_PA_LeapFlyer</defName>
+    <label>推进跃击</label>
+    <thingClass>LichPhylactery.LP_PA_LeapFlyer</thingClass>
+  </ThingDef>
+  <JobDef>
+    <defName>LP_PA_Charge</defName>
+    <driverClass>LichPhylactery.JobDriver_ArcaneCharge</driverClass>
+    <reportString>正在奥能充能座充能。</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+
+  <!-- ==================== 建筑 ==================== -->
+  <ThingDef ParentName="BenchBase">
+    <defName>LP_ArcaneFoundry</defName>
+    <label>奥械锻炉</label>
+    <description>侏儒奇械师式样的电炉：一座刻着耐瑟瑞尔符文的奥能熔炉，旁边是机械臂和压铸台。在这里锻造奥能动力甲、配套头盔和奥能电池。需要电力。可连接工具柜。</description>
+    <thingClass>Building_WorkTable</thingClass>
+    <graphicData>
+      <texPath>LP/PowerArmor/Foundry/ArcaneFoundry</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>Cutout</shaderType>
+      <drawSize>(3,2)</drawSize>
+      <damageData><cornerTL>Damage/Corner</cornerTL><cornerTR>Damage/Corner</cornerTR><cornerBL>Damage/Corner</cornerBL><cornerBR>Damage/Corner</cornerBR></damageData>
+    </graphicData>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.30</staticSunShadowHeight>
+    <size>(3,2)</size>
+    <costList>
+      <Steel>200</Steel>
+      <Plasteel>60</Plasteel>
+      <LP_Mithral>30</LP_Mithral>
+      <ComponentIndustrial>6</ComponentIndustrial>
+    </costList>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <WorkToBuild>8000</WorkToBuild>
+      <MaxHitPoints>320</MaxHitPoints>
+      <Flammability>0.4</Flammability>
+      <Cleanliness>-2</Cleanliness>
+    </statBases>
+    <designationCategory>Production</designationCategory>
+    <uiOrder>2614</uiOrder>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <inspectorTabs><li>ITab_Bills</li></inspectorTabs>
+    <building>
+      <workTableRoomRole>Workshop</workTableRoomRole>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+    </building>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>350</basePowerConsumption>
+        <idlePowerDraw>60</idlePowerDraw>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Glower">
+        <glowRadius>3</glowRadius>
+        <glowColor>(110,200,255,0)</glowColor>
+      </li>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities><li>ToolCabinet</li></linkableFacilities>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <researchPrerequisites><li>LP_Research_ArcanePowerArmor</li></researchPrerequisites>
+  </ThingDef>
+  <WorkGiverDef>
+    <defName>LP_DoBillsArcaneFoundry</defName>
+    <label>在奥械锻炉锻造</label>
+    <giverClass>WorkGiver_DoBill</giverClass>
+    <workType>Crafting</workType>
+    <priorityInType>74</priorityInType>
+    <fixedBillGiverDefs><li>LP_ArcaneFoundry</li></fixedBillGiverDefs>
+    <verb>锻造</verb>
+    <gerund>正在奥械锻炉锻造</gerund>
+    <requiredCapacities><li>Manipulation</li></requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+  </WorkGiverDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_ArcaneCradle</defName>
+    <label>奥能充能座</label>
+    <description>一座齐胸高的符文立柱，顶上嵌着一颗发光的奥能晶。穿着奥能动力甲的人站到它前面，就能把电力转成奥能灌进核心（每小时 +120）。右键充能座或用盔甲上的「充能」按钮去充能。需要电力（150 瓦）。</description>
+    <thingClass>Building</thingClass>
+    <graphicData>
+      <texPath>LP/PowerArmor/Cradle/ArcaneCradle</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.3,1.6)</drawSize>
+      <drawOffset>(0,0,0.25)</drawOffset>
+      <damageData><rect>(0.2,0.1,0.6,0.8)</rect></damageData>
+    </graphicData>
+    <size>(1,1)</size>
+    <rotatable>true</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>42</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <tickerType>Never</tickerType>
+    <costList>
+      <Steel>80</Steel>
+      <LP_Mithral>10</LP_Mithral>
+      <ComponentIndustrial>3</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <WorkToBuild>3000</WorkToBuild>
+      <MaxHitPoints>180</MaxHitPoints>
+      <Flammability>0.3</Flammability>
+      <Beauty>2</Beauty>
+    </statBases>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <designationCategory>Misc</designationCategory>
+    <uiOrder>2615</uiOrder>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>150</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Glower">
+        <glowRadius>2.5</glowRadius>
+        <glowColor>(110,200,255,0)</glowColor>
+      </li>
+      <li Class="LichPhylactery.CompProperties_ArcaneCradle"/>
+    </comps>
+    <placeWorkers><li>PlaceWorker_PreventInteractionSpotOverlap</li></placeWorkers>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+    <researchPrerequisites><li>LP_Research_ArcanePowerArmor</li></researchPrerequisites>
+  </ThingDef>
+
+  <!-- ==================== 奥能电池 ==================== -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_ArcaneCell</defName>
+    <label>奥能电池</label>
+    <description>拳头大的黄铜壳奥能晶匣，里面封着一团静止的蓝光。给身上的奥能动力甲换上一块：奥能 +60。身上带着电池时，盔甲的「充能」按钮会立刻换上。</description>
+    <graphicData>
+      <texPath>LP/PowerArmor/Cell/ArcaneCell</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <stackLimit>10</stackLimit>
+    <techLevel>Spacer</techLevel>
+    <thingCategories><li>Manufactured</li></thingCategories>
+    <tradeability>Sellable</tradeability>
+    <statBases>
+      <MaxHitPoints>60</MaxHitPoints>
+      <Mass>0.4</Mass>
+      <Flammability>0.2</Flammability>
+      <WorkToMake>1500</WorkToMake>
+      <DeteriorationRate>0.5</DeteriorationRate>
+    </statBases>
+    <costList>
+      <Steel>10</Steel>
+      <LP_Mithral>3</LP_Mithral>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Machining</soundWorking>
+      <recipeUsers><li>LP_ArcaneFoundry</li></recipeUsers>
+      <researchPrerequisite>LP_Research_ArcanePowerArmor</researchPrerequisite>
+      <skillRequirements><Crafting>5</Crafting></skillRequirements>
+      <displayPriority>470</displayPriority>
+      <bulkRecipeCount>5</bulkRecipeCount>
+    </recipeMaker>
+    <comps>
+      <li Class="CompProperties_Usable">
+        <useJob>UseItem</useJob>
+        <useLabel>给奥能动力甲换上电池</useLabel>
+        <useDuration>120</useDuration>
+      </li>
+      <li Class="LichPhylactery.CompProperties_ArcaneCell"/>
+    </comps>
+  </ThingDef>
+
+  <!-- ==================== 盔甲基类 ==================== -->
+  <ThingDef Name="LP_PowerArmorBase" ParentName="ArmorMachineableBase" Abstract="True">
+    <techLevel>Spacer</techLevel>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <tradeTags Inherit="False"><li>LP_PowerArmor</li></tradeTags>
+    <graphicData><graphicClass>Graphic_Single</graphicClass><shaderType>CutoutComplex</shaderType></graphicData>
+    <recipeMaker>
+      <recipeUsers Inherit="False"><li>LP_ArcaneFoundry</li></recipeUsers>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+    </recipeMaker>
+    <apparel>
+      <useWornGraphicMask>true</useWornGraphicMask>
+      <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li><li>Legs</li></bodyPartGroups>
+      <layers><li>Middle</li><li>Shell</li></layers>
+      <defaultOutfitTags><li>Soldier</li></defaultOutfitTags>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+      <soundWear>Wear_PowerArmor</soundWear>
+      <soundRemove>Remove_PowerArmor</soundRemove>
+      <tags><li>LP_PowerArmorGear</li></tags>
+    </apparel>
+    <modExtensions><li Class="LichPhylactery.HeraldryExtension" /></modExtensions>
+  </ThingDef>
+  <ThingDef Name="LP_PowerHelmBase" ParentName="ArmorMachineableBase" Abstract="True">
+    <techLevel>Spacer</techLevel>
+    <thingCategories><li>ArmorHeadgear</li></thingCategories>
+    <tradeTags Inherit="False"><li>LP_PowerArmor</li></tradeTags>
+    <graphicData><graphicClass>Graphic_Single</graphicClass><shaderType>CutoutComplex</shaderType></graphicData>
+    <recipeMaker>
+      <recipeUsers Inherit="False"><li>LP_ArcaneFoundry</li></recipeUsers>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+    </recipeMaker>
+    <apparel>
+      <useWornGraphicMask>true</useWornGraphicMask>
+      <parentTagDef>ApparelHead</parentTagDef>
+      <bodyPartGroups><li>FullHead</li></bodyPartGroups>
+      <layers><li>Overhead</li></layers>
+      <renderSkipFlags><li>Hair</li><li>Beard</li></renderSkipFlags>
+      <defaultOutfitTags><li>Soldier</li></defaultOutfitTags>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+      <tags><li>LP_PowerArmorGear</li></tags>
+    </apparel>
+    <comps><li Class="LichPhylactery.CompProperties_ArcaneHelm"/></comps>
+    <modExtensions><li Class="LichPhylactery.HeraldryExtension" /></modExtensions>
+  </ThingDef>
+
+  <!-- ==================== 第一档：奥械侍从甲 ==================== -->
+  <ThingDef ParentName="LP_PowerArmorBase">
+    <defName>LP_PA_SquireArmor</defName>
+    <label>奥械侍从甲</label>
+    <description>侏儒奇械师给骑士团侍从造的入门动力甲：分节肩甲、颈上一条旧围巾、呼吸软管通到胸前滤罐，胸口一颗黄铜框的蓝色奥能核心，背后两支短推进管。护甲和移速惩罚约同原版海军装甲。\n\n奥能核心 100：受到伤害时每点伤害 -0.25，征召时每小时 -10；耗尽变成铁壳（移动 -35%、操作 -25%）。在通电的奥能充能座充能，或换上奥能电池（+60）。戴任意奥能头盔时核心上限 +20%。\n\n装甲能力：推进跃击（20 奥能，跃到 2～12 格外，落地 1.9 格内的敌人受 10 点钝击，成功率 60% 被震倒）。</description>
+    <graphicData><texPath>LP/PowerArmor/SquireArmor/SquireArmor_Icon</texPath><color>(0.46,0.49,0.42)</color></graphicData>
+    <costList><Plasteel>80</Plasteel><Steel>40</Steel><LP_Mithral>25</LP_Mithral><ComponentSpacer>3</ComponentSpacer></costList>
+    <statBases>
+      <WorkToMake>58000</WorkToMake><MaxHitPoints>340</MaxHitPoints><Mass>12</Mass><Flammability>0.4</Flammability>
+      <ArmorRating_Sharp>1.04</ArmorRating_Sharp><ArmorRating_Blunt>0.46</ArmorRating_Blunt><ArmorRating_Heat>0.52</ArmorRating_Heat>
+      <Insulation_Cold>66</Insulation_Cold><Insulation_Heat>10</Insulation_Heat><EquipDelay>14</EquipDelay>
+    </statBases>
+    <equippedStatOffsets><MoveSpeed>-0.25</MoveSpeed><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.3</VacuumResistance></equippedStatOffsets>
+    <recipeMaker><researchPrerequisite>LP_Research_ArcanePowerArmor</researchPrerequisite><skillRequirements><Crafting>7</Crafting></skillRequirements><displayPriority>471</displayPriority></recipeMaker>
+    <apparel><wornGraphicPath>LP/PowerArmor/SquireArmor/SquireArmor</wornGraphicPath></apparel>
+    <comps><li Class="LichPhylactery.CompProperties_ArcaneCore"><capacity>100</capacity><leap>true</leap></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_PowerHelmBase">
+    <defName>LP_PA_SquireHelm</defName>
+    <label>奥械侍从盔</label>
+    <description>盔顶一排凸节的全盔，深色斜面罩上一道淡蓝 V 形目缝，下面是前凸的呼吸口罩和两根软管。头部护甲约同原版海军头盔。和任意奥能动力甲一起穿时，盔甲的核心上限 +20%。</description>
+    <graphicData><texPath>LP/PowerArmor/SquireHelm/SquireHelm_Icon</texPath><color>(0.46,0.49,0.42)</color></graphicData>
+    <costList><Plasteel>30</Plasteel><LP_Mithral>8</LP_Mithral><ComponentSpacer>1</ComponentSpacer></costList>
+    <statBases>
+      <WorkToMake>20000</WorkToMake><MaxHitPoints>120</MaxHitPoints><Mass>1.5</Mass><Flammability>0.4</Flammability>
+      <ArmorRating_Sharp>1.04</ArmorRating_Sharp><ArmorRating_Blunt>0.46</ArmorRating_Blunt><ArmorRating_Heat>0.52</ArmorRating_Heat>
+      <Insulation_Cold>4</Insulation_Cold><Insulation_Heat>2</Insulation_Heat><EquipDelay>2</EquipDelay>
+    </statBases>
+    <recipeMaker><researchPrerequisite>LP_Research_ArcanePowerArmor</researchPrerequisite><skillRequirements><Crafting>6</Crafting></skillRequirements><displayPriority>472</displayPriority></recipeMaker>
+    <apparel><wornGraphicPath>LP/PowerArmor/SquireHelm/SquireHelm</wornGraphicPath></apparel>
+  </ThingDef>
+
+  <!-- ==================== 第二档：秘铸骑士动力甲（及三个职业变体） ==================== -->
+  <ThingDef Name="LP_PowerKnightBase" ParentName="LP_PowerArmorBase" Abstract="True">
+    <statBases>
+      <WorkToMake>82000</WorkToMake><MaxHitPoints>420</MaxHitPoints><Mass>16</Mass><Flammability>0.35</Flammability>
+      <ArmorRating_Sharp>1.24</ArmorRating_Sharp><ArmorRating_Blunt>0.54</ArmorRating_Blunt><ArmorRating_Heat>0.62</ArmorRating_Heat>
+      <Insulation_Cold>70</Insulation_Cold><Insulation_Heat>12</Insulation_Heat><EquipDelay>17</EquipDelay>
+    </statBases>
+    <equippedStatOffsets><MoveSpeed>-0.4</MoveSpeed><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.3</VacuumResistance></equippedStatOffsets>
+    <recipeMaker><researchPrerequisite>LP_Research_ArcaneKnightArmor</researchPrerequisite><skillRequirements><Crafting>8</Crafting></skillRequirements></recipeMaker>
+  </ThingDef>
+  <ThingDef ParentName="LP_PowerKnightBase">
+    <defName>LP_PA_KnightArmor</defName>
+    <label>秘铸骑士动力甲</label>
+    <description>秘银与精金秘铸的全身动力甲：层叠的分节肩甲、银色辅甲条、胸口一颗圆形发光奥能核心、收窄的分节腹甲，腰扣是展翼太阳，背后两支推进管。护甲比原版重甲略高，移速惩罚略小。\n\n奥能核心 150：受到伤害时每点伤害 -0.25，征召时每小时 -10；耗尽变成铁壳（移动 -35%、操作 -25%）。在通电的奥能充能座充能，或换上奥能电池（+60）。戴任意奥能头盔时核心上限 +20%。\n\n装甲能力：推进跃击（20 奥能）；奥能力场（30 奥能，10 秒内挡下所有伤害，每挡 1 点伤害 -0.5 奥能）。</description>
+    <graphicData><texPath>LP/PowerArmor/KnightArmor/KnightArmor_Icon</texPath><color>(0.58,0.16,0.15)</color></graphicData>
+    <costList><Plasteel>130</Plasteel><LP_Mithral>40</LP_Mithral><LP_Adamantine>20</LP_Adamantine><ComponentSpacer>5</ComponentSpacer></costList>
+    <recipeMaker><displayPriority>473</displayPriority></recipeMaker>
+    <apparel><wornGraphicPath>LP/PowerArmor/KnightArmor/KnightArmor</wornGraphicPath></apparel>
+    <comps><li Class="LichPhylactery.CompProperties_ArcaneCore"><capacity>150</capacity><leap>true</leap><field>true</field></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_PowerHelmBase">
+    <defName>LP_PA_KnightHelm</defName>
+    <label>秘铸骑士盔</label>
+    <description>流线全盔，银色尖颌面甲上一道 V 形的蓝色目镜，盔顶一条银脊，耳侧各一枚圆护。头部护甲比原版重甲头盔略高。和任意奥能动力甲一起穿时，盔甲的核心上限 +20%。</description>
+    <graphicData><texPath>LP/PowerArmor/KnightHelm/KnightHelm_Icon</texPath><color>(0.58,0.16,0.15)</color></graphicData>
+    <costList><Plasteel>40</Plasteel><LP_Adamantine>8</LP_Adamantine><ComponentSpacer>2</ComponentSpacer></costList>
+    <statBases>
+      <WorkToMake>26000</WorkToMake><MaxHitPoints>150</MaxHitPoints><Mass>2</Mass><Flammability>0.35</Flammability>
+      <ArmorRating_Sharp>1.24</ArmorRating_Sharp><ArmorRating_Blunt>0.54</ArmorRating_Blunt><ArmorRating_Heat>0.62</ArmorRating_Heat>
+      <Insulation_Cold>4</Insulation_Cold><Insulation_Heat>2</Insulation_Heat><EquipDelay>2</EquipDelay>
+    </statBases>
+    <recipeMaker><researchPrerequisite>LP_Research_ArcaneKnightArmor</researchPrerequisite><skillRequirements><Crafting>7</Crafting></skillRequirements><displayPriority>474</displayPriority></recipeMaker>
+    <apparel><wornGraphicPath>LP/PowerArmor/KnightHelm/KnightHelm</wornGraphicPath></apparel>
+  </ThingDef>
+  <ThingDef ParentName="LP_PowerKnightBase">
+    <defName>LP_PA_OathArmor</defName>
+    <label>圣誓骑士动力甲</label>
+    <description>给圣武士秘铸的骑士动力甲：黑色甲面配金色辅甲和活塞关节，胸口的六角奥能核心外围铸着一圈八芒旭日。数值同秘铸骑士动力甲，另外神恩强度 +15%、受到的死灵伤害 -30%；奥能力场更省（每挡 1 点伤害只要 0.35 奥能）。\n\n奥能核心 150（规则同秘铸骑士动力甲）。装甲能力：推进跃击、奥能力场。</description>
+    <graphicData><texPath>LP/PowerArmor/OathArmor/OathArmor_Icon</texPath><color>(0.22,0.22,0.24)</color></graphicData>
+    <costList><Plasteel>130</Plasteel><LP_Mithral>40</LP_Mithral><LP_Adamantine>20</LP_Adamantine><Gold>30</Gold><ComponentSpacer>5</ComponentSpacer></costList>
+    <recipeMaker><displayPriority>475</displayPriority></recipeMaker>
+    <apparel><wornGraphicPath>LP/PowerArmor/OathArmor/OathArmor</wornGraphicPath></apparel>
+    <comps><li Class="LichPhylactery.CompProperties_ArcaneCore"><capacity>150</capacity><leap>true</leap><field>true</field><fieldCost>0.35</fieldCost><divinePower>0.15</divinePower></li></comps>
+    <modExtensions><li Class="LichPhylactery.ItemDamageFactors"><factor>0.7</factor><damageDefs><li>LP_Necrotic</li></damageDefs><keywords><li>Necro</li></keywords></li></modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="LP_PowerKnightBase">
+    <defName>LP_PA_ArcanistArmor</defName>
+    <label>秘法炮手动力甲</label>
+    <description>给战斗法师秘铸的骑士动力甲：深蓝甲面，两肩各架一根导能晶管，胸口的奥能核心直接连着施法手甲。数值同秘铸骑士动力甲（移速惩罚多 0.05），另外奥术强度 +20%、心灵敏感度 +10%；没有推进器，换成能过载的核心。\n\n奥能核心 150（规则同秘铸骑士动力甲）。装甲能力：奥能力场；过载冲击（40 奥能，3.9 格内的敌人受 14 × 奥术强度点钝击，成功率 70% 被震晕 2.5 秒）。</description>
+    <graphicData><texPath>LP/PowerArmor/ArcanistArmor/ArcanistArmor_Icon</texPath><color>(0.31,0.27,0.53)</color></graphicData>
+    <costList><Plasteel>130</Plasteel><LP_Mithral>70</LP_Mithral><LP_Adamantine>20</LP_Adamantine><ComponentSpacer>5</ComponentSpacer></costList>
+    <equippedStatOffsets><MoveSpeed>-0.45</MoveSpeed><PsychicSensitivity>0.1</PsychicSensitivity></equippedStatOffsets>
+    <recipeMaker><displayPriority>476</displayPriority></recipeMaker>
+    <apparel><wornGraphicPath>LP/PowerArmor/ArcanistArmor/ArcanistArmor</wornGraphicPath></apparel>
+    <comps><li Class="LichPhylactery.CompProperties_ArcaneCore"><capacity>150</capacity><field>true</field><overload>true</overload><overloadScale>1</overloadScale><arcanePower>0.2</arcanePower></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_PowerKnightBase">
+    <defName>LP_PA_ArtificerArmor</defName>
+    <label>奇械动力甲</label>
+    <description>器械师给自己改的骑士动力甲：青铜色甲面，背上一台加大的双联奥能核心，腰间挂满工具和备用线圈。数值同秘铸骑士动力甲，核心容量多一半（225），穿着时植入物调谐位 +1。\n\n奥能核心 225（规则同秘铸骑士动力甲）。装甲能力：推进跃击、奥能力场。</description>
+    <graphicData><texPath>LP/PowerArmor/ArtificerArmor/ArtificerArmor_Icon</texPath><color>(0.66,0.52,0.34)</color></graphicData>
+    <costList><Plasteel>130</Plasteel><LP_Mithral>60</LP_Mithral><LP_Adamantine>20</LP_Adamantine><ComponentSpacer>7</ComponentSpacer></costList>
+    <recipeMaker><displayPriority>477</displayPriority></recipeMaker>
+    <apparel><wornGraphicPath>LP/PowerArmor/ArtificerArmor/ArtificerArmor</wornGraphicPath></apparel>
+    <comps><li Class="LichPhylactery.CompProperties_ArcaneCore"><capacity>225</capacity><leap>true</leap><field>true</field><attuneBonus>1</attuneBonus></li></comps>
+  </ThingDef>
+
+  <!-- ==================== 第三档：誓约堡垒重甲 ==================== -->
+  <ThingDef ParentName="LP_PowerArmorBase">
+    <defName>LP_PA_BastionArmor</defName>
+    <label>誓约堡垒重甲</label>
+    <description>骑士团的移动城墙：比人宽出一圈的方肩塔盾式肩甲、加厚的胸甲上并排三颗奥能核心，腿甲粗得像城柱。护甲是所有动力甲里最高的，但非常沉重（移速 -0.8）。只有体型 1 以上的人穿得上。\n\n奥能核心 200：受到伤害时每点伤害 -0.25，征召时每小时 -10；耗尽变成铁壳（移动 -35%、操作 -25%）。在通电的奥能充能座充能，或换上奥能电池（+60）。戴任意奥能头盔时核心上限 +20%。\n\n装甲能力：奥能力场（30 奥能，10 秒内挡下所有伤害）；过载冲击（40 奥能，3.9 格内的敌人受 14 点钝击，成功率 70% 被震晕 2.5 秒）。没有推进器。</description>
+    <graphicData><texPath>LP/PowerArmor/BastionArmor/BastionArmor_Icon</texPath><color>(0.4,0.41,0.45)</color></graphicData>
+    <uiIconScale>1.2</uiIconScale>
+    <costList><Plasteel>200</Plasteel><LP_Adamantine>60</LP_Adamantine><LP_Mithral>40</LP_Mithral><ComponentSpacer>8</ComponentSpacer></costList>
+    <statBases>
+      <WorkToMake>120000</WorkToMake><MaxHitPoints>560</MaxHitPoints><Mass>26</Mass><Flammability>0.3</Flammability>
+      <ArmorRating_Sharp>1.45</ArmorRating_Sharp><ArmorRating_Blunt>0.68</ArmorRating_Blunt><ArmorRating_Heat>0.78</ArmorRating_Heat>
+      <Insulation_Cold>75</Insulation_Cold><Insulation_Heat>14</Insulation_Heat><EquipDelay>24</EquipDelay>
+    </statBases>
+    <equippedStatOffsets><MoveSpeed>-0.8</MoveSpeed><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.3</VacuumResistance></equippedStatOffsets>
+    <recipeMaker><researchPrerequisite>LP_Research_OathBastion</researchPrerequisite><skillRequirements><Crafting>10</Crafting></skillRequirements><displayPriority>478</displayPriority></recipeMaker>
+    <apparel><wornGraphicPath>LP/PowerArmor/BastionArmor/BastionArmor</wornGraphicPath></apparel>
+    <comps><li Class="LichPhylactery.CompProperties_ArcaneCore"><capacity>200</capacity><field>true</field><overload>true</overload></li></comps>
+    <modExtensions><li Class="LichPhylactery.ApparelGate"><minBodySize>1</minBodySize></li></modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="LP_PowerHelmBase">
+    <defName>LP_PA_BastionHelm</defName>
+    <label>堡垒巨盔</label>
+    <description>和肩甲连成一体的方形巨盔，只露出一条窄窄的蓝色目镜，两侧各伸出一片护颊翼。头部护甲最高；视野受限，瞄准时间 +5%。只有体型 1 以上的人戴得上。和任意奥能动力甲一起穿时，盔甲的核心上限 +20%。</description>
+    <graphicData><texPath>LP/PowerArmor/BastionHelm/BastionHelm_Icon</texPath><color>(0.4,0.41,0.45)</color></graphicData>
+    <costList><Plasteel>60</Plasteel><LP_Adamantine>15</LP_Adamantine><ComponentSpacer>2</ComponentSpacer></costList>
+    <statBases>
+      <WorkToMake>32000</WorkToMake><MaxHitPoints>190</MaxHitPoints><Mass>3</Mass><Flammability>0.3</Flammability>
+      <ArmorRating_Sharp>1.45</ArmorRating_Sharp><ArmorRating_Blunt>0.68</ArmorRating_Blunt><ArmorRating_Heat>0.78</ArmorRating_Heat>
+      <Insulation_Cold>5</Insulation_Cold><Insulation_Heat>2</Insulation_Heat><EquipDelay>3</EquipDelay>
+    </statBases>
+    <equippedStatOffsets><AimingDelayFactor>0.05</AimingDelayFactor></equippedStatOffsets>
+    <recipeMaker><researchPrerequisite>LP_Research_OathBastion</researchPrerequisite><skillRequirements><Crafting>9</Crafting></skillRequirements><displayPriority>479</displayPriority></recipeMaker>
+    <apparel><wornGraphicPath>LP/PowerArmor/BastionHelm/BastionHelm</wornGraphicPath></apparel>
+    <modExtensions><li Class="LichPhylactery.ApparelGate"><minBodySize>1</minBodySize></li></modExtensions>
+  </ThingDef>
+</Defs>

@@ -10,7 +10,7 @@ namespace LichPhylactery {
   public const float PerLevel=.1f;
   public static float? TestRoll;
   static System.Reflection.MethodBase TargetMethod()=>AccessTools.GetDeclaredMethods(typeof(QualityUtility)).Find(m=>m.Name==nameof(QualityUtility.GenerateQualityCreatedByPawn) && m.GetParameters().Length>=2 && m.GetParameters()[0].ParameterType==typeof(Pawn) && m.GetParameters()[1].ParameterType==typeof(SkillDef));
-  public static float Tiers(Pawn p)=>p==null || !Adventurer.Enabled?0f:ClassSystem.Level(p,Artificer.Class)*PerLevel;
+  public static float Tiers(Pawn p)=>p==null || !Adventurer.Enabled?0f:ClassSystem.Level(p,Artificer.Class)*PerLevel+Bard.QualityTiers(p); // 1.123.0 无双技艺 +0.3 档
   public static QualityCategory Boost(Pawn p,QualityCategory q){
    if(q>=QualityCategory.Legendary)return q;float up=Tiers(p);if(up<=0f)return q;
    int n=Mathf.FloorToInt(up+.0001f);if((TestRoll??Rand.Value)<up-n)n++;

@@ -95,9 +95,9 @@
     <weaponClasses><li>Melee</li></weaponClasses>
     <recipeMaker IsNull="True" />
     <tools>
-      <li><label>剑柄</label><capacities><li>Blunt</li></capacities><power>9</power><cooldownTime>2</cooldownTime></li>
-      <li><label>剑尖</label><capacities><li>Stab</li></capacities><power>22</power><cooldownTime>2.6</cooldownTime><armorPenetration>0.32</armorPenetration></li>
-      <li><label>剑刃</label><labelUsedInLogging>false</labelUsedInLogging><capacities><li>Cut</li></capacities><power>24</power><cooldownTime>2.6</cooldownTime><armorPenetration>0.32</armorPenetration></li>
+      <li><label>剑柄</label><capacities><li>Blunt</li></capacities><power>12</power><cooldownTime>1.6</cooldownTime></li>
+      <li><label>剑尖</label><capacities><li>Stab</li></capacities><power>30</power><cooldownTime>1.8</cooldownTime><armorPenetration>0.8</armorPenetration></li>
+      <li><label>剑刃</label><labelUsedInLogging>false</labelUsedInLogging><capacities><li>Cut</li></capacities><power>32</power><cooldownTime>1.8</cooldownTime><armorPenetration>0.8</armorPenetration></li>
     </tools>
     <comps><li Class="LichPhylactery.CompProperties_LegacyWeapon"><kind>Sword</kind><ability>LP_LegacyDawnStrike</ability></li></comps>
   </ThingDef>
@@ -112,8 +112,8 @@
     <weaponClasses><li>Melee</li></weaponClasses>
     <recipeMaker IsNull="True" />
     <tools>
-      <li><label>锤柄</label><capacities><li>Poke</li></capacities><power>9</power><cooldownTime>2</cooldownTime></li>
-      <li><label>锤头</label><labelUsedInLogging>false</labelUsedInLogging><capacities><li>Blunt</li></capacities><power>28</power><cooldownTime>2.8</cooldownTime><armorPenetration>0.25</armorPenetration></li>
+      <li><label>锤柄</label><capacities><li>Poke</li></capacities><power>13</power><cooldownTime>1.8</cooldownTime></li>
+      <li><label>锤头</label><labelUsedInLogging>false</labelUsedInLogging><capacities><li>Blunt</li></capacities><power>44</power><cooldownTime>2.3</cooldownTime><armorPenetration>0.55</armorPenetration></li>
     </tools>
     <comps><li Class="LichPhylactery.CompProperties_LegacyWeapon"><kind>Hammer</kind><ability>LP_LegacyQuake</ability></li></comps>
   </ThingDef>

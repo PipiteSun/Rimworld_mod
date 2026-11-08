@@ -42,7 +42,7 @@
   <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
     <defName>LP_InfernalPitchfork</defName>
     <label>地狱钢叉</label>
-    <description>角魔用的三股长叉，叉齿是九狱的黑钢，握柄烫手。需要双手握持。命中有 25% 留下“地狱之伤”：流血 ×2，普通包扎止不住，只有圣水、信仰治疗或手术能止住。伤害是钢长矛的 1.2 倍。不能制作。</description>
+    <description>角魔用的三股长叉，叉齿是九狱的黑钢，握柄烫手。需要双手握持。命中有 25% 留下“地狱之伤”：流血 ×2，普通包扎止不住，只有圣水、信仰治疗或手术能止住。伤害和穿甲接近原版动能锤 / 等离子剑上沿。不能制作。</description>
     <graphicData><texPath>Pact/Items/InfernalPitchfork</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
     <techLevel>Medieval</techLevel>
     <recipeMaker IsNull="True" />
@@ -54,8 +54,8 @@
     <thingSetMakerTags Inherit="False" />
     <tradeTags Inherit="False"><li>LP_Pact</li></tradeTags>
     <tools>
-      <li><label>叉柄</label><capacities><li>Blunt</li><li>Poke</li></capacities><power>16</power><cooldownTime>2.6</cooldownTime></li>
-      <li><label>叉齿</label><capacities><li>Stab</li></capacities><power>28</power><armorPenetration>0.6</armorPenetration><cooldownTime>2.6</cooldownTime></li>
+      <li><label>叉柄</label><capacities><li>Blunt</li><li>Poke</li></capacities><power>18</power><cooldownTime>2.4</cooldownTime></li>
+      <li><label>叉齿</label><capacities><li>Stab</li></capacities><power>37</power><armorPenetration>0.75</armorPenetration><cooldownTime>2.4</cooldownTime></li>
     </tools>
   </ThingDef>
   <HediffDef>

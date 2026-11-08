@@ -94,7 +94,7 @@ namespace LichPhylactery {
   // 这些效果 AI 不用：要开窗口、要特殊目标、放建筑 / 陷阱、自我位移、招募倒地的人。
   static readonly HashSet<string> Skip=new HashSet<string>{"Passive","ControlWeather","Raise","PlantGrowth","AnimalFriendship","Teleport","DragonWings","WallOfStone","RuneTurret","WarGolem","ThornTrap","MageHand",
    "Training","Intercept","WLThrall","WLMaster","QuickRepair","TotemAttune","RageCharge","CharmPerson","Pilfer","SuppressingFire","DivineIntervention",
-   "S2Bond","S2Blink","S2Defender","S2CalmMind","S2Dominion","S2Reconcile","S2BloodRite","S2FleshShape","S2Fiend","S3ShadowStep","S3TechMode","S3Cloak"}; // 1.103.0、1.106.0
+   "S2Bond","S2Blink","S2Defender","S2CalmMind","S2Dominion","S2Reconcile","S2BloodRite","S2FleshShape","S2Fiend","S3ShadowStep","S3TechMode","S3Cloak","BdBallad","BdFlourishMode","BdTruce","BdMislead","BdRest"}; // 1.123.0 吟游诗人：要开窗口、切换招式、停战、脱身 // 1.103.0、1.106.0
   static int Now=>Find.TickManager.TicksGame;
   public static bool InCombat(Pawn p){var m=p.mindState;if(m==null)return false;return m.enemyTarget!=null || Now-m.lastHarmTick<CombatGap || Now-p.LastAttackTargetTick<CombatGap;}
   static bool Busy(Pawn p){var j=p.CurJob;return j?.ability!=null || p.Downed || p.InMentalState || p.stances?.stunner?.Stunned==true || p.Drafted;}

@@ -78,11 +78,14 @@ namespace LichPhylactery {
  public partial class Dialog_ConstructDesign : Window {
   readonly ConstructSeed seed;readonly Hediff_Construct finished;readonly string kind;
   ConstructDesign plan;Vector2 scroll;
-  public override Vector2 InitialSize=>new Vector2(940,660);
+  public override Vector2 InitialSize=>LPUI.Fit(940f,660f);
+  // 1.124.0 UI 整理：窗口被屏幕压矮（内容区不到 460）时整块滚动；画完复位文字状态。
+  Vector2 outerScroll;
+  public override void DoWindowContents(Rect rect){bool sc=LPUI.BeginMinHeight(ref rect,460f,ref outerScroll);try{Draw(rect);}finally{if(sc)Widgets.EndScrollView();LPUI.Reset();GUI.enabled=true;}}
   public Dialog_ConstructDesign(ConstructSeed seed){this.seed=seed;kind=seed.kind;plan=seed.design.Copy();Setup();}
   public Dialog_ConstructDesign(Hediff_Construct finished){this.finished=finished;kind=finished.kind;plan=finished.design?.Copy()??new ConstructDesign{specialty=finished.specialty};Setup();}
   void Setup(){if(Editable)plan.LimitPassions(kind);forcePause=true;absorbInputAroundWindow=true;doCloseX=true;closeOnClickedOutside=false;}
-  public override void DoWindowContents(Rect rect){
+  void Draw(Rect rect){
    Text.Font=GameFont.Medium;Widgets.Label(new Rect(0,0,rect.width-40,38),IsRemolding?"死灵重塑 · 已有造物":finished==null?"死灵塑形 · 初始配置":"死灵造物 · 躯体档案");Text.Font=GameFont.Small;
    Widgets.Label(new Rect(0,42,rect.width,44),IsRemolding?"保留原角色、技能经验、关系和植入体。耗时1日；增加材料补差额，减少不返还，另消耗50生肉。":finished==null?"先塑造躯体，再赋予灵魂。调整投入即可预览结果；保存方案不扣材料。":"初始配置已固定，以下为本个体的材料与强化记录。");
    if(Widgets.ButtonText(new Rect(0,78,180,30),skillsTab?"躯体材料":"✓ 躯体材料"))skillsTab=false;

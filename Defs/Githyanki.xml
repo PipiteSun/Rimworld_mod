@@ -88,7 +88,7 @@
         <capacities>
           <li>Blunt</li>
         </capacities>
-        <power>9</power>
+        <power>12</power>
         <cooldownTime>2</cooldownTime>
       </li>
       <li>
@@ -96,16 +96,18 @@
         <capacities>
           <li>Stab</li>
         </capacities>
-        <power>23</power>
-        <cooldownTime>2.6</cooldownTime>
+        <power>30</power>
+        <cooldownTime>2.4</cooldownTime>
+        <armorPenetration>0.6</armorPenetration>
       </li>
       <li>
         <label>剑刃</label>
         <capacities>
           <li>Cut</li>
         </capacities>
-        <power>23</power>
-        <cooldownTime>2.6</cooldownTime>
+        <power>30</power>
+        <cooldownTime>2.4</cooldownTime>
+        <armorPenetration>0.6</armorPenetration>
       </li>
     </tools>
     <recipeMaker>

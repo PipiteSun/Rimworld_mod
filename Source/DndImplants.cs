@@ -40,7 +40,7 @@ namespace LichPhylactery {
 
   // ---------- 调谐 ----------
   static readonly DefRef<LP_ClassDef> artificer=new DefRef<LP_ClassDef>("LP_Class_Artificer");
-  public static int AttuneMax(Pawn p){int lv=ClassSystem.Level(p,artificer.Def);return AttuneBase+(lv>=11?1:0)+(lv>=18?1:0);}
+  public static int AttuneMax(Pawn p){int lv=ClassSystem.Level(p,artificer.Def);return AttuneBase+(lv>=11?1:0)+(lv>=18?1:0)+PowerArmor.AttuneBonus(p);} // 1.124.0 奇械动力甲 +1
   public static int Attuned(Pawn p)=>p?.health?.hediffSet==null?0:p.health.hediffSet.hediffs.Count(h=>Ext(h.def)?.attune==true);
   public static int Stones(Pawn p)=>p?.health?.hediffSet==null?0:p.health.hediffSet.hediffs.Count(h=>Ext(h.def)?.ionStone==true);
   // 能不能再装这个植入物：返回 null 表示可以。

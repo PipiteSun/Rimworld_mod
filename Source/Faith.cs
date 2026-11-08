@@ -425,11 +425,13 @@ namespace LichPhylactery {
  }
  public class Dialog_ChosenRitual : Window {
   readonly Pawn pawn;readonly Building_FaithAltar altar;bool convert=true;
-  public override Vector2 InitialSize=>new Vector2(520f,300f);
+  public override Vector2 InitialSize=>LPUI.Fit(520f,340f);
   public Dialog_ChosenRitual(Pawn p,Building_FaithAltar a){pawn=p;altar=a;forcePause=true;doCloseX=true;absorbInputAroundWindow=true;}
+  // 1.124.0 UI 整理：加上和其他窗口一致的标题（窗口相应加高 40）。
   public override void DoWindowContents(Rect r){
    var god=FaithUtility.Patron;var x=FaithRaces.ConversionFor(god);string cannot=FaithRaces.ConversionBlocked(pawn,god);
-   var l=new Listing_Standard();l.Begin(r);
+   float top=LPUI.Title(r,"神选仪式 · "+pawn.LabelShort);
+   var l=new Listing_Standard();l.Begin(new Rect(r.x,top,r.width,r.yMax-top));
    l.Label("为"+pawn.LabelShort+"举行神选仪式（"+god?.FullLabel+"）：消耗神眷"+Faith.ChosenFavorCost+"和"+Faith.ChosenShards+"片神迹残片，2小时，可打断（打断不扣资源）。");
    l.Gap();
    if(cannot==null){l.CheckboxLabeled("同时改换血脉为"+x.label+"（只替换异种基因，内生基因保留）",ref convert);}

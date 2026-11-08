@@ -433,15 +433,15 @@
   <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
     <defName>LP_SkySpear</defName>
     <label>天穹之矛</label>
-    <description>觉醒泰坦的长矛，矛尖映着天穹的光，只认它的主人（绑定）。伤害是普通长矛的1.6倍，每次命中附带8点父神神职的伤害（黎明、正义：神圣；风暴：电击加短暂眩晕；野性：割伤流血；火焰：烧伤，可能点燃；其他：神圣）。不吃心灵敏感度，走武器品质（和 Isekai 的近战加成）。</description>
+    <description>觉醒泰坦的长矛，矛尖映着天穹的光，只认它的主人（绑定）。伤害和穿甲比原版灵能武器还高一截（1.125.0），每次命中附带8点父神神职的伤害（黎明、正义：神圣；风暴：电击加短暂眩晕；野性：割伤流血；火焰：烧伤，可能点燃；其他：神圣）。不吃心灵敏感度，走武器品质（和 Isekai 的近战加成）。</description>
     <graphicData><texPath>Ascension/Weapons/SkySpear</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
     <techLevel>Medieval</techLevel>
     <statBases><MarketValue>4000</MarketValue><Mass>3</Mass><MaxHitPoints>400</MaxHitPoints></statBases>
     <tradeability>None</tradeability>
     <equippedAngleOffset>-25</equippedAngleOffset>
     <tools>
-      <li><label>矛杆</label><capacities><li>Blunt</li></capacities><power>14</power><cooldownTime>2</cooldownTime></li>
-      <li><label>矛尖</label><capacities><li>Stab</li></capacities><power>38</power><cooldownTime>2.6</cooldownTime><armorPenetration>0.6</armorPenetration></li>
+      <li><label>矛杆</label><capacities><li>Blunt</li></capacities><power>16</power><cooldownTime>1.8</cooldownTime></li>
+      <li><label>矛尖</label><capacities><li>Stab</li></capacities><power>48</power><cooldownTime>2.2</cooldownTime><armorPenetration>0.9</armorPenetration></li>
     </tools>
     <weaponTags Inherit="False"><li>LP_AscensionRelic</li></weaponTags>
     <thingSetMakerTags Inherit="False" />
@@ -455,16 +455,16 @@
   <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
     <defName>LP_Godsbane</defName>
     <label>诸神之祸</label>
-    <description>篡火者的长剑，剑身里锁着一缕被篡夺的神火，只认它的主人（绑定）。对神力灌注者、神明附体者和半神伤害×2；其余和精工长剑的1.3倍一样。</description>
+    <description>篡火者的长剑，剑身里锁着一缕被篡夺的神火，只认它的主人（绑定）。对神力灌注者、神明附体者和半神伤害×2；平时也比原版灵能武器略强（1.125.0）。</description>
     <graphicData><texPath>Ascension/Weapons/Godsbane</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
     <techLevel>Medieval</techLevel>
     <statBases><MarketValue>4000</MarketValue><Mass>2</Mass><MaxHitPoints>400</MaxHitPoints></statBases>
     <tradeability>None</tradeability>
     <equippedAngleOffset>-65</equippedAngleOffset>
     <tools>
-      <li><label>剑柄</label><capacities><li>Poke</li></capacities><power>12</power><cooldownTime>2</cooldownTime></li>
-      <li><label>剑尖</label><capacities><li>Stab</li></capacities><power>30</power><cooldownTime>2.6</cooldownTime><armorPenetration>0.5</armorPenetration></li>
-      <li><label>剑刃</label><capacities><li>Cut</li></capacities><power>30</power><cooldownTime>2.6</cooldownTime><armorPenetration>0.5</armorPenetration></li>
+      <li><label>剑柄</label><capacities><li>Poke</li></capacities><power>15</power><cooldownTime>1.6</cooldownTime></li>
+      <li><label>剑尖</label><capacities><li>Stab</li></capacities><power>38</power><cooldownTime>2</cooldownTime><armorPenetration>0.85</armorPenetration></li>
+      <li><label>剑刃</label><capacities><li>Cut</li></capacities><power>38</power><cooldownTime>2</cooldownTime><armorPenetration>0.85</armorPenetration></li>
     </tools>
     <weaponTags Inherit="False"><li>LP_AscensionRelic</li></weaponTags>
     <thingSetMakerTags Inherit="False" />

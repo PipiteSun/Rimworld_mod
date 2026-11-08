@@ -6,7 +6,7 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 namespace LichPhylactery {
- // 1.122.0 系统宿主（LP_SystemHost，史诗）：照百战觉醒（IsekaiKillMilestones 的 ProgressStore / Rewards / MilestoneWindow）移植，不依赖那个模组。
+ // 1.122.0 系统宿主（LP_SystemHost，传说；1.127.0 热修前为史诗）：照百战觉醒（IsekaiKillMilestones 的 ProgressStore / Rewards / MilestoneWindow）移植，不依赖那个模组。
  // 每 7 天发布 3 个任务，选 1 个接受（期限 7 天，同时只有一个）；进度 = pawn.records 的快照差值，不加 Harmony。
  // 完成 → 一次待领取奖励（三选一：+1 属性点 / 改命符 ×1 / 随机物品 ×1），排队弹窗；超时 → 系统惩罚 3 天（全局工作速度 ×0.85）；主动放弃不罚。
  // 失去特性后不再发任务（进行中的任务作废、不罚），已有的待领取奖励仍可领。

@@ -163,7 +163,7 @@ namespace LichPhylactery {
 
  public class Dialog_FleshCatalysis : Window {
   readonly Thing building;string selectedKey;int days=1;Pawn selectedPawn;Vector2 scrollA,scrollB;string result;
-  public override Vector2 InitialSize=>new Vector2(720f,540f);
+  public override Vector2 InitialSize=>LPUI.Fit(720f,540f);
   public Dialog_FleshCatalysis(Thing b){building=b;doCloseX=true;forcePause=true;absorbInputAroundWindow=true;draggable=true;closeOnClickedOutside=false;}
   // 2026-11-06 审查：原来每帧对每个殖民者算三遍 PawnBlocked（含 CanReach 寻路可达）、扫两遍地图上的扭曲肉并排序。
   // 现在每 30 帧（或改了仪式 / 天数 / 人选）重算一次；点“开始献祭”时 Order 还会完整再查一遍。
@@ -177,10 +177,13 @@ namespace LichPhylactery {
    blockKey=default;
   }
   string Why(Pawn p)=>p!=null && whyCache.TryGetValue(p,out var w)?w:FleshCatalysis.PawnBlocked(building,p);
-  public override void DoWindowContents(Rect r){
+  // 1.124.0 UI 整理：价格行、殖民者行、说明放不下时截断（悬停看全文）；窗口被压矮时整块滚动；画完复位文字状态。
+  Vector2 outerScroll;
+  public override void DoWindowContents(Rect r){bool sc=LPUI.BeginMinHeight(ref r,440f,ref outerScroll);try{Draw(r);}finally{if(sc)Widgets.EndScrollView();LPUI.Reset();}}
+  void Draw(Rect r){
    if(building==null || !building.Spawned){Close();return;}
    if(Stale || srcCache==null)Refresh();
-   Text.Font=GameFont.Medium;Widgets.Label(new Rect(r.x,r.y,r.width,32f),"血肉催转 · "+building.LabelCap);Text.Font=GameFont.Small;
+   LPUI.Title(r,"血肉催转 · "+building.LabelCap);
    var sources=srcCache;
    if(selectedKey==null || !sources.Any(s=>s.key==selectedKey))selectedKey=sources.FirstOrDefault()?.key;
    var left=new Rect(r.x,r.y+38f,300f,r.height-38f);var right=new Rect(left.xMax+8f,left.y,r.xMax-left.xMax-8f,left.height);
@@ -193,7 +196,7 @@ namespace LichPhylactery {
     if(s.key==selectedKey)Widgets.DrawHighlightSelected(row);else Widgets.DrawHighlightIfMouseover(row);
     Widgets.Label(new Rect(row.x+4f,row.y+2f,row.width-8f,22f),s.label.Truncate(row.width-8f));
     var cy=FleshCatalysis.CycleOf(s);Text.Font=GameFont.Tiny;GUI.color=Color.gray;
-    Widgets.Label(new Rect(row.x+4f,row.y+24f,row.width-8f,20f),"剩 "+s.Remaining.ToStringTicksToPeriod()+(cy.reduced>0?"，本周期已缩短 "+(cy.reduced/(float)GenDate.TicksPerDay).ToString("0.#")+" 天":""));
+    LPUI.LabelFit(new Rect(row.x+4f,row.y+24f,row.width-8f,20f),"剩 "+s.Remaining.ToStringTicksToPeriod()+(cy.reduced>0?"，本周期已缩短 "+(cy.reduced/(float)GenDate.TicksPerDay).ToString("0.#")+" 天":""));
     GUI.color=Color.white;Text.Font=GameFont.Small;
     if(Widgets.ButtonInvisible(row)){selectedKey=s.key;days=1;result=null;}
    }
@@ -203,8 +206,8 @@ namespace LichPhylactery {
    var ri=right.ContractedBy(8f);float y=ri.y;var src=sources.FirstOrDefault(s=>s.key==selectedKey);
    if(src==null){if(result!=null)Widgets.Label(new Rect(ri.x,y,ri.width,60f),result);return;}
    int max=FleshCatalysis.MaxDays(src);days=Mathf.Clamp(days,max>0?1:0,Mathf.Max(0,max));
-   Widgets.Label(new Rect(ri.x,y,ri.width,24f),src.label);y+=26f;
-   GUI.color=Color.gray;Widgets.Label(new Rect(ri.x,y,ri.width,22f),"完整冷却 "+(FleshCatalysis.CycleOf(src).full/(float)GenDate.TicksPerDay).ToString("0.#")+" 天，本周期还能缩短 "+max+" 天");GUI.color=Color.white;y+=26f;
+   LPUI.LabelFit(new Rect(ri.x,y,ri.width,24f),src.label);y+=26f;
+   GUI.color=Color.gray;LPUI.LabelFit(new Rect(ri.x,y,ri.width,22f),"完整冷却 "+(FleshCatalysis.CycleOf(src).full/(float)GenDate.TicksPerDay).ToString("0.#")+" 天，本周期还能缩短 "+max+" 天");GUI.color=Color.white;y+=26f;
    if(Widgets.ButtonText(new Rect(ri.x,y,32f,28f),"-") && days>1)days--;
    Text.Anchor=TextAnchor.MiddleCenter;Widgets.Label(new Rect(ri.x+36f,y,100f,28f),"缩短 "+days+" 天");Text.Anchor=TextAnchor.UpperLeft;
    if(Widgets.ButtonText(new Rect(ri.x+140f,y,32f,28f),"+") && days<max)days++;
@@ -212,8 +215,8 @@ namespace LichPhylactery {
    int cost=FleshCatalysis.Cost(src,days,out int ticks);int have=haveCache;
    var cy2=FleshCatalysis.CycleOf(src);var prices=new List<string>();for(int i=0;i<days;i++)prices.Add(FleshCatalysis.Price(cy2.steps+i).ToString());
    GUI.color=have>=cost?Color.white:new Color(.9f,.3f,.3f);
-   Widgets.Label(new Rect(ri.x,y,ri.width,22f),"要扭曲肉 "+cost+" 份当量（"+string.Join(" + ",prices)+"），12 格内有 "+have);GUI.color=Color.white;y+=24f;
-   GUI.color=Color.gray;Text.Font=GameFont.Tiny;Widgets.Label(new Rect(ri.x,y,ri.width,32f),"实际缩短 "+(ticks/(float)GenDate.TicksPerDay).ToString("0.#")+" 天。1 份畸变膏算 10 份扭曲肉。献祭者有 10% 可能听见远域低语。");Text.Font=GameFont.Small;GUI.color=Color.white;y+=34f;
+   LPUI.LabelFit(new Rect(ri.x,y,ri.width,22f),"要扭曲肉 "+cost+" 份当量（"+string.Join(" + ",prices)+"），12 格内有 "+have);GUI.color=Color.white;y+=24f;
+   GUI.color=Color.gray;Text.Font=GameFont.Tiny;LPUI.LabelFit(new Rect(ri.x,y,ri.width,32f),"实际缩短 "+(ticks/(float)GenDate.TicksPerDay).ToString("0.#")+" 天。1 份畸变膏算 10 份扭曲肉。献祭者有 10% 可能听见远域低语。");Text.Font=GameFont.Small;GUI.color=Color.white;y+=34f;
    Widgets.Label(new Rect(ri.x,y,ri.width,22f),"谁去献祭（在建筑旁工作 1 小时）：");y+=24f;
    var pawns=pawnCache;
    if(selectedPawn!=null && !pawns.Contains(selectedPawn))selectedPawn=null;
@@ -231,7 +234,7 @@ namespace LichPhylactery {
    y=ri.yMax-76f;
    var bk=(src.key,days,selectedPawn);if(!bk.Equals(blockKey)){blockKey=bk;blockCache=FleshCatalysis.Blocked(building,src,days,selectedPawn);}
    string block=blockCache;var btn=new Rect(ri.x,y,ri.width,34f);
-   if(block!=null){GUI.color=Color.gray;Text.Anchor=TextAnchor.MiddleCenter;Widgets.Label(btn,block);Text.Anchor=TextAnchor.UpperLeft;GUI.color=Color.white;}
+   if(block!=null)LPUI.Unavailable(btn,block);
    else if(Widgets.ButtonText(btn,"开始献祭（"+cost+" 份）")){
     if(FleshCatalysis.Order(building,src.key,days,selectedPawn)){SoundDefOf.Click.PlayOneShotOnCamera();Close();Messages.Message(selectedPawn.LabelShort+"去"+building.LabelShort+"献祭扭曲肉了。",selectedPawn,MessageTypeDefOf.SilentInput,false);return;}
     result="没能派人去";

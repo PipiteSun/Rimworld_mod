@@ -112,6 +112,7 @@ namespace LichPhylactery {
    if(option<0 || option>=ch.options.Count)return "没有这个选项";
    if(!ch.distinctFrom.NullOrEmpty() && Choice(h,ch.distinctFrom)==option)return "已经选过「"+ch.options[option]+"」";
    var s=d.picks.First(x=>x.choices.Contains(ch));if(ClassSystem.Level(h,s.parent)<ch.level)return "需要"+s.parent.label+" "+ch.level+" 级";
+   var bd=Bard.ChoiceBlock(h,key,option);if(bd!=null)return bd; // 1.123.0 魔法奥秘不能选已经会的法术
    return null;
   }
   public static bool Choose(Hediff_Adventurer h,string key,int option,bool message=false){
@@ -200,7 +201,7 @@ namespace LichPhylactery {
    Items.Give(t,"LP_Shaken",ticks,1f);return false;
   }
   public static bool NotInCombat(Pawn v){var m=v?.mindState;if(m==null || v.Downed)return false;int now=Now;return m.enemyTarget==null && now-m.lastHarmTick>600 && now-v.LastAttackTargetTick>600;}
-  public static bool Unsurprisable(Pawn v)=>Users.Count>0 && S(v,SInstinct) || DndImplants.Alert(v); // 1.112.0 警觉之石
+  public static bool Unsurprisable(Pawn v)=>Users.Count>0 && S(v,SInstinct) || DndImplants.Alert(v) || Bard.Foreseeing(v); // 1.123.0 预知术 // 1.112.0 警觉之石
   public static bool Controlled(Pawn v)=>v.Downed || !v.Awake() || v.stances?.stunner?.Stunned==true || v.InMentalState || Items.Has(v,"LP_MagicSleep") || Items.Has(v,"LP_Entangled");
   public static bool Dark(Pawn t)=>t.Spawned && t.Map.glowGrid.GroundGlowAt(t.Position)<.3f;
   public static bool Psychic(DamageDef d)=>d!=null && (d.defName.Contains("Psychic") || d.defName.Contains("Psy"));

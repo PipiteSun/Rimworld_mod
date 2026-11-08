@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.123.0 吟游诗人（第 13 个职业，见 ArtSource/Bard-1.123.0-report.md / Source/ClassBard.cs）：社交（副 艺术），主属性魅力，施法职业（能力乘心灵敏感度）。
+     资源：乐韵（上限 2 + 吟游等级 + 魅力调整值，最少 2）：醒着慢慢回，睡觉快；演奏乐器、听音乐、做艺术品时恢复 ×1.5；每次闲聊 / 深谈 +0.2。
+     能力在 1/3/5/7/10/13/15 级；学院（子职业）3 级选，能力在 3/7/11/15 级；魔法奥秘是学院定义里的分支（secret1 10 级、secret2 13 级、学识学院 secret3 11 级）。 -->
+<Defs>
+  <!-- ===== 职业 ===== -->
+  <LichPhylactery.LP_ClassDef>
+    <defName>LP_Class_Bard</defName>
+    <label>吟游诗人</label>
+    <description>DND 吟游诗人用歌声与言语施法：恶毒嘲讽（戏法）、吟游激励、治疗真言、狂笑术、安歇之歌、万事通（被动）、反迷惑之歌、困惑术、传颂之歌、魔法奥秘（10 / 13 级各从别的施法职业学一个法术）、惑心幻景，终极 创世之言。3 级选学院：学识、勇气、剑舞或雄辩。强度看“激昂强度”（社交或艺术，魅力），伤害与治疗（设置开着时）乘心灵敏感度。资源：乐韵（上限 2 + 吟游等级 + 魅力调整值；醒着慢慢回、睡觉快，演奏乐器、听音乐、做艺术品时更快，每次和人聊天 +0.2）。</description>
+    <mainSkill>Social</mainSkill>
+    <alternateSkill>Artistic</alternateSkill>
+    <primary>Cha</primary>
+    <order>13</order>
+    <resource>Melody</resource>
+    <caster>true</caster>
+    <subclassLevel>3</subclassLevel>
+    <background>LP/Classes/Bard/Background</background>
+    <color>(0.85,0.4,0.6)</color>
+    <abilities>
+      <li><ability>LP_BD_ViciousMockery</ability><level>1</level></li>
+      <li><ability>LP_BD_Inspiration</ability><level>1</level></li>
+      <li><ability>LP_BD_HealingWord</ability><level>1</level></li>
+      <li><ability>LP_BD_HideousLaughter</ability><level>3</level></li>
+      <li><ability>LP_BD_SongOfRest</ability><level>3</level></li>
+      <li><ability>LP_BD_JackOfAllTrades</ability><level>5</level></li>
+      <li><ability>LP_BD_Countercharm</ability><level>5</level></li>
+      <li><ability>LP_BD_Confusion</ability><level>7</level></li>
+      <li><ability>LP_BD_Ballad</ability><level>7</level></li>
+      <li><ability>LP_BD_MagicalSecrets</ability><level>10</level></li>
+      <li><ability>LP_BD_MagicalSecrets2</ability><level>13</level></li>
+      <li><ability>LP_BD_Mislead</ability><level>13</level></li>
+      <li><ability>LP_BD_WordsOfCreation</ability><level>15</level><capstoneSkill>Social</capstoneSkill></li>
+    </abilities>
+    <legendary><li>LP_LegUndyingLegend</li><li>LP_LegFinalSong</li></legendary>
+  </LichPhylactery.LP_ClassDef>
+
+  <!-- ===== 职业强度 ===== -->
+  <StatDef ParentName="LP_ClassPowerBase">
+    <defName>LP_BardicPower</defName>
+    <label>激昂强度</label>
+    <description>吟游诗人能力的强度倍率：0.5 +（社交、艺术里较高的等级）/20，另加冒险者魅力调整值 × 0.10 与熟练加值，吟游诗人等职业等级合计每比 1 高 1 级 +5%（最多 +95%）。传奇「不朽传奇」+20%。魔法奥秘学来的法术也用这个强度。</description>
+    <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Social</skill><alternateSkill>Artistic</alternateSkill><ability>Cha</ability><levelPer>0.05</levelPer><levelMax>0.95</levelMax><abilityPer>0.10</abilityPer></li><li Class="LichPhylactery.StatPart_LegendaryClassPower"><ability>LP_LegUndyingLegend</ability><bonus>0.2</bonus></li></parts>
+    <displayPriorityInCategory>4217</displayPriorityInCategory>
+  </StatDef>
+
+  <!-- ===== 状态 ===== -->
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_BD_Inspired</defName>
+    <hediffClass>LichPhylactery.Hediff_BardInspired</hediffClass>
+    <label>吟游激励</label>
+    <description>吟游诗人的歌声在心里回响：近战命中、射击精度、工作速度提高（越强的激励越多），精神崩溃阈值 −5%。</description>
+    <defaultLabelColor>(0.85,0.4,0.6)</defaultLabelColor>
+    <stages>
+      <li><label>×1</label><statOffsets><MeleeHitChance>0.10</MeleeHitChance><ShootingAccuracyPawn>0.02</ShootingAccuracyPawn><WorkSpeedGlobal>0.10</WorkSpeedGlobal><MentalBreakThreshold>-0.05</MentalBreakThreshold></statOffsets></li>
+      <li><minSeverity>1.25</minSeverity><label>×1.5</label><statOffsets><MeleeHitChance>0.15</MeleeHitChance><ShootingAccuracyPawn>0.03</ShootingAccuracyPawn><WorkSpeedGlobal>0.15</WorkSpeedGlobal><MentalBreakThreshold>-0.05</MentalBreakThreshold></statOffsets></li>
+      <li><minSeverity>1.75</minSeverity><label>×2</label><statOffsets><MeleeHitChance>0.20</MeleeHitChance><ShootingAccuracyPawn>0.04</ShootingAccuracyPawn><WorkSpeedGlobal>0.20</WorkSpeedGlobal><MentalBreakThreshold>-0.05</MentalBreakThreshold></statOffsets></li>
+      <li><minSeverity>2.25</minSeverity><label>×2.5</label><statOffsets><MeleeHitChance>0.25</MeleeHitChance><ShootingAccuracyPawn>0.05</ShootingAccuracyPawn><WorkSpeedGlobal>0.25</WorkSpeedGlobal><MentalBreakThreshold>-0.05</MentalBreakThreshold></statOffsets></li>
+      <li><minSeverity>2.75</minSeverity><label>×3</label><statOffsets><MeleeHitChance>0.30</MeleeHitChance><ShootingAccuracyPawn>0.06</ShootingAccuracyPawn><WorkSpeedGlobal>0.30</WorkSpeedGlobal><MentalBreakThreshold>-0.05</MentalBreakThreshold></statOffsets></li>
+    </stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_BD_ValorInspired</defName>
+    <label>战斗激励</label>
+    <description>勇气学院的战歌：受到的伤害 ×0.9，近战伤害 ×1.15。和吟游激励一起消失。</description>
+    <defaultLabelColor>(0.9,0.55,0.35)</defaultLabelColor>
+    <stages><li><statFactors><IncomingDamageFactor>0.9</IncomingDamageFactor><MeleeDamageFactor>1.15</MeleeDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_BD_Mocked</defName>
+    <label>动摇</label>
+    <description>被尖刻的话刺中，心神不宁：近战命中 −20%，射击精度下降。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.85,0.4,0.6)</defaultLabelColor>
+    <stages><li><statOffsets><MeleeHitChance>-0.20</MeleeHitChance><ShootingAccuracyPawn>-0.06</ShootingAccuracyPawn></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_BD_Laughing</defName>
+    <hediffClass>LichPhylactery.Hediff_BardLaughter</hediffClass>
+    <label>狂笑</label>
+    <description>笑得停不下来，倒在地上动弹不得。受到伤害立刻清醒。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.95,0.75,0.4)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_BD_Resting</defName>
+    <label>安歇之歌</label>
+    <description>吟游诗人唱了一整夜的安眠曲：睡眠恢复 ×1.3，伤口愈合加快（越强越快）。</description>
+    <defaultLabelColor>(0.6,0.75,0.95)</defaultLabelColor>
+    <stages>
+      <li><label>×1.5 愈合</label><statFactors><RestRateMultiplier>1.3</RestRateMultiplier><InjuryHealingFactor>1.5</InjuryHealingFactor></statFactors></li>
+      <li><minSeverity>1.25</minSeverity><label>×1.75 愈合</label><statFactors><RestRateMultiplier>1.3</RestRateMultiplier><InjuryHealingFactor>1.75</InjuryHealingFactor></statFactors></li>
+      <li><minSeverity>1.75</minSeverity><label>×2 愈合</label><statFactors><RestRateMultiplier>1.3</RestRateMultiplier><InjuryHealingFactor>2</InjuryHealingFactor></statFactors></li>
+      <li><minSeverity>2.25</minSeverity><label>×2.25 愈合</label><statFactors><RestRateMultiplier>1.3</RestRateMultiplier><InjuryHealingFactor>2.25</InjuryHealingFactor></statFactors></li>
+      <li><minSeverity>2.75</minSeverity><label>×2.5 愈合</label><statFactors><RestRateMultiplier>1.3</RestRateMultiplier><InjuryHealingFactor>2.5</InjuryHealingFactor></statFactors></li>
+    </stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_BD_JackPassive</defName>
+    <label>万事通</label>
+    <description>什么都会一点：所有技能 +2 级，学习速度 +15%。</description>
+    <defaultLabelColor>(0.85,0.4,0.6)</defaultLabelColor>
+    <aptitudes><Shooting>2</Shooting><Melee>2</Melee><Construction>2</Construction><Mining>2</Mining><Cooking>2</Cooking><Plants>2</Plants><Animals>2</Animals><Crafting>2</Crafting><Artistic>2</Artistic><Medicine>2</Medicine><Social>2</Social><Intellectual>2</Intellectual></aptitudes>
+    <stages><li><statOffsets><GlobalLearningFactor>0.15</GlobalLearningFactor></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_BD_Countercharmed</defName>
+    <label>反迷惑之歌</label>
+    <description>心里一直回响着吟游诗人的旋律：心智抗性 +30%，心灵敏感度 −30%（心灵冲击带来的坏心情也随之减轻）。</description>
+    <defaultLabelColor>(0.6,0.75,0.95)</defaultLabelColor>
+    <stages><li><statOffsets><LP_MindResist>0.3</LP_MindResist><PsychicSensitivity>-0.3</PsychicSensitivity></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_BD_Confused</defName>
+    <hediffClass>LichPhylactery.Hediff_BardConfused</hediffClass>
+    <label>困惑</label>
+    <description>脑子里一团乱麻：每 2 秒随机发呆、乱走，或者攻击身边的任何人。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.85,0.4,0.6)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_BD_CuttingWords</defName>
+    <hediffClass>LichPhylactery.Hediff_BardCutting</hediffClass>
+    <label>刻薄之语</label>
+    <description>被学识学院的吟游诗人挖苦得抬不起头：近战命中 −25%，射击精度下降，造成的伤害 ×0.75。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.85,0.4,0.6)</defaultLabelColor>
+    <stages><li><statOffsets><MeleeHitChance>-0.25</MeleeHitChance><ShootingAccuracyPawn>-0.08</ShootingAccuracyPawn></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_BD_LorePassive</defName>
+    <label>博闻强识</label>
+    <description>学识学院的博学：研究速度提高（越强越快）。</description>
+    <defaultLabelColor>(0.55,0.6,0.95)</defaultLabelColor>
+    <stages>
+      <li><label>+10%</label><statOffsets><ResearchSpeed>0.10</ResearchSpeed></statOffsets></li>
+      <li><minSeverity>1.25</minSeverity><label>+15%</label><statOffsets><ResearchSpeed>0.15</ResearchSpeed></statOffsets></li>
+      <li><minSeverity>1.75</minSeverity><label>+20%</label><statOffsets><ResearchSpeed>0.20</ResearchSpeed></statOffsets></li>
+      <li><minSeverity>2.25</minSeverity><label>+25%</label><statOffsets><ResearchSpeed>0.25</ResearchSpeed></statOffsets></li>
+      <li><minSeverity>2.75</minSeverity><label>+30%</label><statOffsets><ResearchSpeed>0.30</ResearchSpeed></statOffsets></li>
+    </stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_BD_PeerlessPassive</defName>
+    <label>无双技艺</label>
+    <description>学识学院的大师：社交影响、谈判能力 +15%，手术成功率 +10%；做出的物品有 30% 的成功率品质 +1 档。</description>
+    <defaultLabelColor>(0.55,0.6,0.95)</defaultLabelColor>
+    <stages><li><statOffsets><SocialImpact>0.15</SocialImpact><NegotiationAbility>0.15</NegotiationAbility><MedicalSurgerySuccessChance>0.10</MedicalSurgerySuccessChance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_BD_ValorPassive</defName>
+    <label>勇气学院</label>
+    <description>战歌手的武艺：射击、格斗 +3 级。</description>
+    <defaultLabelColor>(0.9,0.55,0.35)</defaultLabelColor>
+    <aptitudes><Shooting>3</Shooting><Melee>3</Melee></aptitudes>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_BD_ExtraAttackPassive</defName>
+    <label>额外攻击</label>
+    <description>出手更快：近战攻击冷却 ×0.8，瞄准时间 ×0.8。</description>
+    <defaultLabelColor>(0.9,0.55,0.35)</defaultLabelColor>
+    <stages><li><statFactors><MeleeCooldownFactor>0.8</MeleeCooldownFactor><AimingDelayFactor>0.8</AimingDelayFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_BD_BattleMagicBuff</defName>
+    <label>战斗魔法</label>
+    <description>施法的余韵还在指尖：下一次攻击几乎不用瞄准、出手更快，伤害 ×1.25（打中一次就消失）。</description>
+    <defaultLabelColor>(0.9,0.55,0.35)</defaultLabelColor>
+    <stages><li><statFactors><AimingDelayFactor>0.1</AimingDelayFactor><MeleeCooldownFactor>0.5</MeleeCooldownFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_BD_Anthem</defName>
+    <label>勇气战吼</label>
+    <description>战歌让人热血沸腾：痛觉 ×0.5，移动 ×1.2，心智抗性 +50%。</description>
+    <defaultLabelColor>(0.9,0.55,0.35)</defaultLabelColor>
+    <stages><li><painFactor>0.5</painFactor><statFactors><MoveSpeed>1.2</MoveSpeed></statFactors><statOffsets><LP_MindResist>0.5</LP_MindResist></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_BD_BladePassive</defName>
+    <label>刀光剑舞</label>
+    <description>剑舞学院的步法：移动 ×1.15；近战命中时按当前招式触发剑花。</description>
+    <defaultLabelColor>(0.75,0.75,0.9)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>1.15</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_BD_SilverPassive</defName>
+    <label>银舌</label>
+    <description>雄辩学院的口才：谈判能力 ×1.5（招募、说服更容易），交易价格 +10%，社交影响 +20%。</description>
+    <defaultLabelColor>(0.95,0.8,0.45)</defaultLabelColor>
+    <stages><li><statFactors><NegotiationAbility>1.5</NegotiationAbility></statFactors><statOffsets><TradePriceImprovement>0.10</TradePriceImprovement><SocialImpact>0.20</SocialImpact></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_BD_FinalSong</defName>
+    <hediffClass>LichPhylactery.Hediff_BardFinale</hediffClass>
+    <label>终焉之歌</label>
+    <description>史诗的最后一段：不会精神崩溃，命中提高，痛觉 ×0.5；期间倒地会立刻治好一半伤势、尽力站起来一次。</description>
+    <defaultLabelColor>(1,0.8,0.5)</defaultLabelColor>
+    <stages><li><blocksMentalBreaks>true</blocksMentalBreaks><painFactor>0.5</painFactor><statOffsets><MeleeHitChance>0.20</MeleeHitChance><ShootingAccuracyPawn>0.05</ShootingAccuracyPawn></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_BD_FinaleAura</defName>
+    <hediffClass>LichPhylactery.Hediff_BardFinaleAura</hediffClass>
+    <label>唱响终焉之歌</label>
+    <description>正在唱终焉之歌：30 格内的敌人每 5 秒有 25% 的成功率吓得逃跑（机械体不受影响）。</description>
+    <defaultLabelColor>(1,0.8,0.5)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ACB_Dancing</defName>
+    <hediffClass>LichPhylactery.Hediff_BardDance</hediffClass>
+    <label>不可抗拒之舞</label>
+    <description>身体不听使唤地跳个不停：不能攻击、不能走开，受到的伤害 ×1.3。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.85,0.4,0.6)</defaultLabelColor>
+    <stages><li><statFactors><IncomingDamageFactor>1.3</IncomingDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_ACB_Foresight</defName>
+    <label>预知术</label>
+    <description>看得见片刻之后的事：近战命中 +25%，射击精度提高，近战闪避 +25%，心智抗性 +50%，不会被偷袭。</description>
+    <defaultLabelColor>(0.85,0.4,0.6)</defaultLabelColor>
+    <stages><li><statOffsets><MeleeHitChance>0.25</MeleeHitChance><ShootingAccuracyPawn>0.06</ShootingAccuracyPawn><MeleeDodgeChance>0.25</MeleeDodgeChance><LP_MindResist>0.5</LP_MindResist></statOffsets></li></stages>
+  </HediffDef>
+
+  <!-- ===== 心情 ===== -->
+  <ThoughtDef>
+    <defName>LP_BD_RestSongMood</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>安歇之歌</label><description>昨晚听着吟游诗人的歌睡着的，睡得特别香。</description><baseMoodEffect>4</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_BD_LegendMood</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>3</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>我们的传说</label><description>我们的故事被写成了歌，传遍了大陆。</description><baseMoodEffect>5</baseMoodEffect></li></stages>
+  </ThoughtDef>
+
+  <!-- ===== 幻象分身（惑心幻景） ===== -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_BD_Phantasm</defName>
+    <label>幻象分身</label>
+    <description>吟游诗人留下的幻象，一直在嘲笑附近的敌人。10 秒后或受到几次攻击就会消散。</description>
+    <thingClass>LichPhylactery.Building_BardPhantasm</thingClass>
+    <graphicData><texPath>LP/Classes/Bard/Phantasm</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(1.4,1.4)</drawSize></graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <tickerType>Normal</tickerType>
+    <useHitPoints>true</useHitPoints>
+    <rotatable>false</rotatable>
+    <statBases><MaxHitPoints>45</MaxHitPoints><Flammability>0</Flammability><Beauty>0</Beauty></statBases>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <building><claimable>false</claimable></building>
+  </ThingDef>
+
+  <!-- ===== 职业能力 ===== -->
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_BD_ViciousMockery</defName>
+    <label>恶毒嘲讽</label>
+    <description>戏法，不耗乐韵：对 24 格内一个敌人说一句刺耳的话，造成 6 × 激昂强度 心灵伤害（无视护甲），并让它动摇 6 秒（近战命中 −20%，射击精度下降；机械体不会动摇）。冷却 4 秒。吟游诗人 1 级。</description>
+    <iconPath>LP/Classes/Bard/ViciousMockery</iconPath>
+    <cooldownTicksRange>240</cooldownTicksRange>
+    <verbProperties><range>24</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>BdMockery</effect><power>6</power><duration>360</duration><stat>LP_BardicPower</stat><psychic>true</psychic><single>true</single></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_BD_Inspiration</defName>
+    <label>吟游激励</label>
+    <description>给 20 格内一名友方人形（不能是自己）吟游激励 12 小时：近战命中 +10% × 激昂强度，射击精度提高，工作速度 +10% × 激昂强度，精神崩溃阈值 −5%。吟游诗人 5 级起，另有（吟游等级 × 2）% 的成功率直接给对方一个原版灵感。消耗 1 点乐韵，冷却 30 秒。吟游诗人 1 级。</description>
+    <iconPath>LP/Classes/Bard/Inspiration</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>BdInspire</effect><cost>1</cost><hediff>LP_BD_Inspired</hediff><duration>30000</duration><stat>LP_BardicPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_BD_HealingWord</defName>
+    <label>治疗真言</label>
+    <description>远远喊一句治愈的话：立即治疗 30 格内一名目标（可以是自己）共 10 × 激昂强度点伤势，优先流血最严重的伤口。消耗 1 点乐韵，冷却 20 秒。吟游诗人 1 级。</description>
+    <iconPath>LP/Classes/Bard/HealingWord</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><range>30</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Heal</effect><cost>1</cost><power>10</power><stat>LP_BardicPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_BD_HideousLaughter</defName>
+    <label>狂笑术</label>
+    <description>让 20 格内一个敌人笑倒在地 8 秒 × 激昂强度（动弹不得，受到伤害立刻清醒）。成功率 = 55% + (激昂强度 − 1) × 40%，目标每 1 点感知调整值 −5%、心智抗性也会抵消，范围 5%～95%；失败也会动摇 6 秒。机械体、虫族和没有心智的目标无效。消耗 1 点乐韵，冷却 1 分钟。吟游诗人 3 级。</description>
+    <iconPath>LP/Classes/Bard/HideousLaughter</iconPath>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>BdLaughter</effect><cost>1</cost><duration>480</duration><durationScales>true</durationScales><stat>LP_BardicPower</stat><psychic>true</psychic><single>true</single></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BD_SongOfRest</defName>
+    <label>安歇之歌</label>
+    <description>为 12 格内的友方唱一夜安眠曲：12 小时内睡眠恢复 ×1.3，伤口愈合 ×(1 + 0.5 × 激昂强度)，每人得到心情“安歇之歌”+4（1 天）。消耗 2 点乐韵，冷却 1 天。吟游诗人 3 级。</description>
+    <iconPath>LP/Classes/Bard/SongOfRest</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>BdRest</effect><cost>2</cost><radius>12</radius><duration>30000</duration><hediff>LP_BD_Resting</hediff><stat>LP_BardicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BD_JackOfAllTrades</defName>
+    <label>万事通</label>
+    <description>被动：所有技能 +2 级，学习速度 +15%。吟游诗人 5 级。</description>
+    <iconPath>LP/Classes/Bard/JackOfAllTrades</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_BardicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BD_Countercharm</defName>
+    <label>反迷惑之歌</label>
+    <description>唱一段坚定心志的旋律：15 格内的友方立刻摆脱恐惧和被魅惑、被支配的状态；正在精神崩溃（非极端崩溃）的人按成功率 55% + (激昂强度 − 1) × 40% 当场恢复；之后 1 天心智抗性 +30%、心灵敏感度 −30%（心灵冲击的坏心情随之减轻）。消耗 2 点乐韵，冷却 6 小时。吟游诗人 5 级。</description>
+    <iconPath>LP/Classes/Bard/Countercharm</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>15000</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>BdCountercharm</effect><cost>2</cost><radius>15</radius><duration>60000</duration><hediff>LP_BD_Countercharmed</hediff><stat>LP_BardicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_BD_Confusion</defName>
+    <label>困惑术</label>
+    <description>在 20 格内一点半径 3 的敌人各自按成功率（55% + (激昂强度 − 1) × 40%，感知调整值与心智抗性抵消）陷入困惑 10 秒 × 激昂强度：每 2 秒随机发呆、乱走，或者攻击身边的任何人。机械体、虫族无效。消耗 2 点乐韵，冷却 2 分钟。吟游诗人 7 级。</description>
+    <iconPath>LP/Classes/Bard/Confusion</iconPath>
+    <cooldownTicksRange>7200</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>BdConfusion</effect><cost>2</cost><radius>3</radius><duration>600</duration><durationScales>true</durationScales><stat>LP_BardicPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BD_Ballad</defName>
+    <label>传颂之歌</label>
+    <description>把殖民地的功绩写成歌谣传出去：选一个派系，好感 +(5 + 5 × 激昂强度)（最多 +20），殖民地全员心情“我们的传说”+5（3 天）。殖民地恶名在外（有巫妖、蓄养奴隶）时只能唱成威名之歌，对象只能选敌对派系：好感照样加一半，那个派系下一次袭击的规模 −10%。消耗 3 点乐韵，冷却 7 天（没选派系就关掉窗口会退还）。吟游诗人 7 级。</description>
+    <iconPath>LP/Classes/Bard/Ballad</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>420000</cooldownTicksRange>
+    <verbProperties><warmupTime>3</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>BdBallad</effect><cost>3</cost><stat>LP_BardicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BD_MagicalSecrets</defName>
+    <label>魔法奥秘</label>
+    <description>被动：吟游诗人 10 级时，从法师、牧师、德鲁伊、术士、邪术师的法术里选一个（职业 7 级及以下）永久学会；13 级再选一个（职业 10 级及以下）。在“选择分支”里选（学院的分支）。学来的法术用激昂强度、消耗乐韵（原来的法力 / 神恩 / 契约法力 1:1 换成乐韵）。吟游诗人 10 级。</description>
+    <iconPath>LP/Classes/Bard/MagicalSecrets</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_BardicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BD_MagicalSecrets2</defName>
+    <label>魔法奥秘·二</label>
+    <description>被动：第二个魔法奥秘，范围放宽到职业 10 级及以下的法术（群体治疗、石墙术、兽王号令、群体暗示也能选），不能和第一个重复。吟游诗人 13 级。</description>
+    <iconPath>LP/Classes/Bard/MagicalSecrets2</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_BardicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BD_Mislead</defName>
+    <label>惑心幻景</label>
+    <description>自己隐形 10 秒，原地留下一个会嘲讽的幻象分身：15 格内的敌人转而攻击分身（10 秒后或挨了几下就消散）。用来脱身。消耗 3 点乐韵，冷却 4 小时。吟游诗人 13 级。</description>
+    <iconPath>LP/Classes/Bard/Mislead</iconPath>
+    <cooldownTicksRange>10000</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>BdMislead</effect><cost>3</cost><radius>15</radius><duration>600</duration><stat>LP_BardicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAbilityBase">
+    <defName>LP_BD_WordsOfCreation</defName>
+    <label>创世之言</label>
+    <description>说出创世时的真言，对 20 格内的一个目标：
+友方——力量真言·疗愈：治好所有伤口（缺失的部位除外），清除痛苦休克、眩晕、恐惧和困惑，倒地的人站起来。
+敌人——力量真言·杀：目标整体健康低于 35% × 激昂强度（最多 70%）时直接死亡；否则受到 40 × 激昂强度 心灵伤害并眩晕 6 秒。剧情首领和传奇单位只吃伤害和眩晕。
+消耗 5 点乐韵，冷却 1 天。吟游诗人 15 级，另要社交 15。</description>
+    <iconPath>LP/Classes/Bard/WordsOfCreation</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>20</range><warmupTime>1</warmupTime><requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations><canTargetSelf>true</canTargetSelf><canTargetAnimals>true</canTargetAnimals><canTargetMechs>true</canTargetMechs><canTargetHumans>true</canTargetHumans></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>BdCreation</effect><cost>5</cost><power>40</power><stat>LP_BardicPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+
+  <!-- ===== 传奇 ===== -->
+  <AbilityDef ParentName="LP_LegendaryBase">
+    <defName>LP_LegUndyingLegend</defName>
+    <label>不朽传奇</label>
+    <description>传奇被动：吟游激励一次给 12 格内所有友方人形（消耗不变，选中的那位照常要在 20 格内）；乐韵上限再 +3（传奇能力本身 +2，共 +5）；激昂强度 +20%。传奇吟游诗人。</description>
+    <iconPath>LP/Classes/Legendary/UndyingLegend</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_BardicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_LegendaryBase">
+    <defName>LP_LegFinalSong</defName>
+    <label>终焉之歌</label>
+    <description>传奇：唱 30 秒的史诗。全地图的友方不会精神崩溃、命中提高、痛觉 ×0.5，30 秒内倒地的人立刻治好一半伤势、尽力站起来一次；30 格内的敌人每 5 秒有 25% 的成功率吓得逃跑（机械体不受影响）。消耗 3 点乐韵，冷却 1 天。传奇吟游诗人。</description>
+    <iconPath>LP/Classes/Legendary/FinalSong</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>BdFinale</effect><cost>3</cost><duration>1800</duration><hediff>LP_BD_FinaleAura</hediff><stat>LP_BardicPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===== 学识学院 ===== -->
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_BD_CuttingWords</defName>
+    <label>刻薄之语</label>
+    <description>挖苦 20 格内一个敌人 20 秒：近战命中 −25%，射击精度下降，造成的伤害 ×0.75。机械体也有效（嘲讽它的设计缺陷）。消耗 1 点乐韵，冷却 20 秒。学识学院，吟游诗人 3 级。</description>
+    <iconPath>LP/Classes/Bard/CuttingWords</iconPath>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>BdCutting</effect><cost>1</cost><duration>1200</duration><stat>LP_BardicPower</stat><psychic>true</psychic><single>true</single></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BD_LoreMastery</defName>
+    <label>博闻强识</label>
+    <description>被动：研究速度 +10% × 激昂强度；学会时，兴趣最低的 3 个技能（能用的）兴趣各升一档（无 → 一般 → 浓厚）、等级各 +2（只发一次）。学识学院，吟游诗人 7 级。</description>
+    <iconPath>LP/Classes/Bard/LoreMastery</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_BardicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BD_ExtraSecrets</defName>
+    <label>额外魔法奥秘</label>
+    <description>被动：多一个魔法奥秘（职业 7 级及以下的法术，不能和已学的重复），在“选择分支”里选。学识学院，吟游诗人 11 级。</description>
+    <iconPath>LP/Classes/Bard/ExtraSecrets</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_BardicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BD_PeerlessSkill</defName>
+    <label>无双技艺</label>
+    <description>被动：做出的物品（艺术品、制作）有 30% 的成功率品质 +1 档（最高传说）；社交影响、谈判能力 +15%，手术成功率 +10%。学识学院，吟游诗人 15 级。</description>
+    <iconPath>LP/Classes/Bard/PeerlessSkill</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_BardicPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===== 勇气学院 ===== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BD_CombatInspiration</defName>
+    <label>战斗激励</label>
+    <description>被动：你的吟游激励另给“战斗激励”（受到的伤害 ×0.9，近战伤害 ×1.15，同样持续）；你自己射击、格斗 +3 级。勇气学院，吟游诗人 3 级。</description>
+    <iconPath>LP/Classes/Bard/CombatInspiration</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_BardicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BD_ExtraAttack</defName>
+    <label>额外攻击</label>
+    <description>被动：近战攻击冷却 ×0.8，瞄准时间 ×0.8。勇气学院，吟游诗人 7 级。</description>
+    <iconPath>LP/Classes/Bard/ExtraAttack</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_BardicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BD_BattleMagic</defName>
+    <label>战斗魔法</label>
+    <description>被动：每次施放吟游诗人能力后 5 秒内，下一次攻击几乎不用瞄准、出手更快，伤害 ×1.25。勇气学院，吟游诗人 11 级。</description>
+    <iconPath>LP/Classes/Bard/BattleMagic</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_BardicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BD_ValorAnthem</defName>
+    <label>勇气战吼</label>
+    <description>高唱战歌：15 格内的友方 30 秒痛觉 ×0.5、移动 ×1.2、心智抗性 +50%，正在恐惧逃跑的立刻回过神；你自己得到一层吸收 20 × 激昂强度 伤害的护盾（和“鼓舞领袖”的护盾取高，不叠加）。消耗 3 点乐韵，冷却 4 小时。勇气学院，吟游诗人 15 级。</description>
+    <iconPath>LP/Classes/Bard/ValorAnthem</iconPath>
+    <cooldownTicksRange>10000</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>BdAnthem</effect><cost>3</cost><power>20</power><radius>15</radius><duration>1800</duration><hediff>LP_BD_Anthem</hediff><stat>LP_BardicPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===== 剑舞学院 ===== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BD_BladeFlourish</defName>
+    <label>刀光剑舞</label>
+    <description>被动 + 按钮：移动 ×1.15；近战命中时有 30% 的成功率按当前招式打出剑花（防御：得到 10 × 激昂强度 的吸收护盾 5 秒；斩击：对相邻另一个敌人造成同样伤害；机动：把目标击退 2 格）。点按钮依次切换 防御 / 斩击 / 机动，以及“花乐韵”（每朵剑花花 1 点乐韵、必定触发）开或关。剑舞学院，吟游诗人 3 级。</description>
+    <iconPath>LP/Classes/Bard/BladeFlourish</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>BdFlourishMode</effect><power>10</power><stat>LP_BardicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BD_ExtraAttackBlade</defName>
+    <label>额外攻击</label>
+    <description>被动：近战攻击冷却 ×0.8，瞄准时间 ×0.8（和勇气学院的同名能力相同）。剑舞学院，吟游诗人 7 级。</description>
+    <iconPath>LP/Classes/Bard/ExtraAttack</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_BardicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_BD_BladeWhirl</defName>
+    <label>刃舞旋风</label>
+    <description>选中 8 格内一个敌人，舞着剑冲过它和它身边的敌人（最多 5 个），每个各吃一次当前近战武器的结算，伤害 × 激昂强度，最后停在最后一个敌人身边。消耗 2 点乐韵，冷却 1 分钟。剑舞学院，吟游诗人 11 级。</description>
+    <iconPath>LP/Classes/Bard/BladeWhirl</iconPath>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><range>8</range><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>BdBladeWhirl</effect><cost>2</cost><radius>8</radius><stat>LP_BardicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BD_MasterFlourish</defName>
+    <label>大师花招</label>
+    <description>被动：战斗中乐韵低于 2 时每 10 秒回 1 点；刀光剑舞的触发率 30% → 60%。剑舞学院，吟游诗人 15 级。</description>
+    <iconPath>LP/Classes/Bard/MasterFlourish</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_BardicPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===== 雄辩学院 ===== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BD_SilverTongue</defName>
+    <label>银舌</label>
+    <description>被动：谈判能力 ×1.5（招募、说服更容易），交易价格 +10%，社交影响 +20%。雄辩学院，吟游诗人 3 级。</description>
+    <iconPath>LP/Classes/Bard/SilverTongue</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_BardicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BD_InfectiousInspiration</defName>
+    <label>感染性激励</label>
+    <description>被动：你给的吟游激励到期、或者对方倒地时，激励转给 10 格内另一个没被激励的友方人形（每次激励最多转一次，时间重新算）。雄辩学院，吟游诗人 7 级。</description>
+    <iconPath>LP/Classes/Bard/InfectiousInspiration</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_BardicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_BD_UniversalSpeech</defName>
+    <label>普世言谈</label>
+    <description>被动：和访客、商队等非敌对派系的人聊天时，对方派系好感 +1（每天最多 +5）；你给的吟游激励持续 3 天。雄辩学院，吟游诗人 11 级。</description>
+    <iconPath>LP/Classes/Bard/UniversalSpeech</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_BardicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_BD_Truce</defName>
+    <label>停战之言</label>
+    <description>对一支正在袭击的人形队伍里的任何一人（30 格内）喊话。成功率 = 30% + (激昂强度 − 1) × 40%，对方队伍每有一人倒地或死亡 +5%（最多 90%）。成功：整支队伍放弃袭击、离开地图，那个派系好感 +10。失败：那人动摇 30 秒。机械族、虫族、亡灵、异界来客和剧情首领带队的袭击无效。消耗 5 点乐韵，冷却 15 天。雄辩学院，吟游诗人 15 级。</description>
+    <iconPath>LP/Classes/Bard/Truce</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <cooldownTicksRange>900000</cooldownTicksRange>
+    <verbProperties><range>30</range><warmupTime>2</warmupTime><requireLineOfSight>false</requireLineOfSight></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>BdTruce</effect><cost>5</cost><duration>1800</duration><stat>LP_BardicPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===== 学院（子职业，吟游诗人 3 级选） ===== -->
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Lore</defName>
+    <label>学识学院</label>
+    <description>什么书都读过、什么人都见过的学者：用刻薄的话削弱敌人，研究更快，多学一个魔法奥秘，做的东西更精。</description>
+    <parent>LP_Class_Bard</parent><order>1</order><emblem>LP/Classes/Subclass/Emblem_Lore</emblem><color>(0.55,0.6,0.95)</color>
+    <abilities><li><ability>LP_BD_CuttingWords</ability><level>3</level></li><li><ability>LP_BD_LoreMastery</ability><level>7</level></li><li><ability>LP_BD_ExtraSecrets</ability><level>11</level></li><li><ability>LP_BD_PeerlessSkill</ability><level>15</level></li></abilities>
+    <choices>
+      <li><key>secret1</key><label>魔法奥秘</label><level>10</level><options><li>火球术</li><li>迷踪步</li><li>镜影术</li><li>急速术</li><li>闪电束</li><li>治疗伤口</li><li>祝福</li><li>次级复原术</li><li>树肤术</li><li>纠缠术</li><li>龙族之翼</li><li>咒术</li></options>
+        <tips><li>法师 3 级：火焰爆炸。</li><li>法师 3 级：短距离瞬移。</li><li>法师 5 级：分身挡攻击。</li><li>法师 7 级：给友军加速。</li><li>法师 7 级：一道直线闪电。</li><li>牧师 1 级：近身治疗。</li><li>牧师 1 级：命中、心情。</li><li>牧师 3 级：解除疾病、中毒。</li><li>德鲁伊 5 级：护甲。</li><li>德鲁伊 1 级：缠住一片敌人。</li><li>术士 7 级：飞到远处。</li><li>邪术师 7 级：增伤、降低豁免。</li></tips></li>
+      <li><key>secret2</key><label>魔法奥秘·二</label><level>13</level><distinctFrom>secret1</distinctFrom><options><li>火球术</li><li>迷踪步</li><li>镜影术</li><li>急速术</li><li>闪电束</li><li>治疗伤口</li><li>祝福</li><li>次级复原术</li><li>树肤术</li><li>纠缠术</li><li>龙族之翼</li><li>咒术</li><li>群体治疗</li><li>石墙术</li><li>兽王号令</li><li>群体暗示</li></options>
+        <tips><li>法师 3 级：火焰爆炸。</li><li>法师 3 级：短距离瞬移。</li><li>法师 5 级：分身挡攻击。</li><li>法师 7 级：给友军加速。</li><li>法师 7 级：一道直线闪电。</li><li>牧师 1 级：近身治疗。</li><li>牧师 1 级：命中、心情。</li><li>牧师 3 级：解除疾病、中毒。</li><li>德鲁伊 5 级：护甲。</li><li>德鲁伊 1 级：缠住一片敌人。</li><li>术士 7 级：飞到远处。</li><li>邪术师 7 级：增伤、降低豁免。</li><li>牧师 10 级：治疗身边所有友军。</li><li>法师 10 级：立起石墙。</li><li>德鲁伊 10 级：身边的动物狂暴。</li><li>术士 10 级：一片敌人恍惚游荡。</li></tips></li>
+      <li><key>secret3</key><label>额外魔法奥秘</label><level>11</level><distinctFrom>secret1</distinctFrom><options><li>火球术</li><li>迷踪步</li><li>镜影术</li><li>急速术</li><li>闪电束</li><li>治疗伤口</li><li>祝福</li><li>次级复原术</li><li>树肤术</li><li>纠缠术</li><li>龙族之翼</li><li>咒术</li></options>
+        <tips><li>法师 3 级：火焰爆炸。</li><li>法师 3 级：短距离瞬移。</li><li>法师 5 级：分身挡攻击。</li><li>法师 7 级：给友军加速。</li><li>法师 7 级：一道直线闪电。</li><li>牧师 1 级：近身治疗。</li><li>牧师 1 级：命中、心情。</li><li>牧师 3 级：解除疾病、中毒。</li><li>德鲁伊 5 级：护甲。</li><li>德鲁伊 1 级：缠住一片敌人。</li><li>术士 7 级：飞到远处。</li><li>邪术师 7 级：增伤、降低豁免。</li></tips></li>
+    </choices>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Valor</defName>
+    <label>勇气学院</label>
+    <description>冲在前排的战歌手：激励带上战斗加成，自己也能打，施法后紧接着出手，最后用战吼稳住全队。</description>
+    <parent>LP_Class_Bard</parent><order>2</order><emblem>LP/Classes/Subclass/Emblem_Valor</emblem><color>(0.9,0.55,0.35)</color>
+    <abilities><li><ability>LP_BD_CombatInspiration</ability><level>3</level></li><li><ability>LP_BD_ExtraAttack</ability><level>7</level></li><li><ability>LP_BD_BattleMagic</ability><level>11</level></li><li><ability>LP_BD_ValorAnthem</ability><level>15</level></li></abilities>
+    <choices>
+      <li><key>secret1</key><label>魔法奥秘</label><level>10</level><options><li>火球术</li><li>迷踪步</li><li>镜影术</li><li>急速术</li><li>闪电束</li><li>治疗伤口</li><li>祝福</li><li>次级复原术</li><li>树肤术</li><li>纠缠术</li><li>龙族之翼</li><li>咒术</li></options>
+        <tips><li>法师 3 级：火焰爆炸。</li><li>法师 3 级：短距离瞬移。</li><li>法师 5 级：分身挡攻击。</li><li>法师 7 级：给友军加速。</li><li>法师 7 级：一道直线闪电。</li><li>牧师 1 级：近身治疗。</li><li>牧师 1 级：命中、心情。</li><li>牧师 3 级：解除疾病、中毒。</li><li>德鲁伊 5 级：护甲。</li><li>德鲁伊 1 级：缠住一片敌人。</li><li>术士 7 级：飞到远处。</li><li>邪术师 7 级：增伤、降低豁免。</li></tips></li>
+      <li><key>secret2</key><label>魔法奥秘·二</label><level>13</level><distinctFrom>secret1</distinctFrom><options><li>火球术</li><li>迷踪步</li><li>镜影术</li><li>急速术</li><li>闪电束</li><li>治疗伤口</li><li>祝福</li><li>次级复原术</li><li>树肤术</li><li>纠缠术</li><li>龙族之翼</li><li>咒术</li><li>群体治疗</li><li>石墙术</li><li>兽王号令</li><li>群体暗示</li></options>
+        <tips><li>法师 3 级：火焰爆炸。</li><li>法师 3 级：短距离瞬移。</li><li>法师 5 级：分身挡攻击。</li><li>法师 7 级：给友军加速。</li><li>法师 7 级：一道直线闪电。</li><li>牧师 1 级：近身治疗。</li><li>牧师 1 级：命中、心情。</li><li>牧师 3 级：解除疾病、中毒。</li><li>德鲁伊 5 级：护甲。</li><li>德鲁伊 1 级：缠住一片敌人。</li><li>术士 7 级：飞到远处。</li><li>邪术师 7 级：增伤、降低豁免。</li><li>牧师 10 级：治疗身边所有友军。</li><li>法师 10 级：立起石墙。</li><li>德鲁伊 10 级：身边的动物狂暴。</li><li>术士 10 级：一片敌人恍惚游荡。</li></tips></li>
+    </choices>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Swords</defName>
+    <label>剑舞学院</label>
+    <description>刀光里的表演者：近战命中打出剑花（护盾、横扫或击退），出手更快，冲进敌群舞出旋风。</description>
+    <parent>LP_Class_Bard</parent><order>3</order><emblem>LP/Classes/Subclass/Emblem_Swords</emblem><color>(0.75,0.75,0.9)</color>
+    <abilities><li><ability>LP_BD_BladeFlourish</ability><level>3</level></li><li><ability>LP_BD_ExtraAttackBlade</ability><level>7</level></li><li><ability>LP_BD_BladeWhirl</ability><level>11</level></li><li><ability>LP_BD_MasterFlourish</ability><level>15</level></li></abilities>
+    <choices>
+      <li><key>secret1</key><label>魔法奥秘</label><level>10</level><options><li>火球术</li><li>迷踪步</li><li>镜影术</li><li>急速术</li><li>闪电束</li><li>治疗伤口</li><li>祝福</li><li>次级复原术</li><li>树肤术</li><li>纠缠术</li><li>龙族之翼</li><li>咒术</li></options>
+        <tips><li>法师 3 级：火焰爆炸。</li><li>法师 3 级：短距离瞬移。</li><li>法师 5 级：分身挡攻击。</li><li>法师 7 级：给友军加速。</li><li>法师 7 级：一道直线闪电。</li><li>牧师 1 级：近身治疗。</li><li>牧师 1 级：命中、心情。</li><li>牧师 3 级：解除疾病、中毒。</li><li>德鲁伊 5 级：护甲。</li><li>德鲁伊 1 级：缠住一片敌人。</li><li>术士 7 级：飞到远处。</li><li>邪术师 7 级：增伤、降低豁免。</li></tips></li>
+      <li><key>secret2</key><label>魔法奥秘·二</label><level>13</level><distinctFrom>secret1</distinctFrom><options><li>火球术</li><li>迷踪步</li><li>镜影术</li><li>急速术</li><li>闪电束</li><li>治疗伤口</li><li>祝福</li><li>次级复原术</li><li>树肤术</li><li>纠缠术</li><li>龙族之翼</li><li>咒术</li><li>群体治疗</li><li>石墙术</li><li>兽王号令</li><li>群体暗示</li></options>
+        <tips><li>法师 3 级：火焰爆炸。</li><li>法师 3 级：短距离瞬移。</li><li>法师 5 级：分身挡攻击。</li><li>法师 7 级：给友军加速。</li><li>法师 7 级：一道直线闪电。</li><li>牧师 1 级：近身治疗。</li><li>牧师 1 级：命中、心情。</li><li>牧师 3 级：解除疾病、中毒。</li><li>德鲁伊 5 级：护甲。</li><li>德鲁伊 1 级：缠住一片敌人。</li><li>术士 7 级：飞到远处。</li><li>邪术师 7 级：增伤、降低豁免。</li><li>牧师 10 级：治疗身边所有友军。</li><li>法师 10 级：立起石墙。</li><li>德鲁伊 10 级：身边的动物狂暴。</li><li>术士 10 级：一片敌人恍惚游荡。</li></tips></li>
+    </choices>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Eloquence</defName>
+    <label>雄辩学院</label>
+    <description>用嘴解决问题：招募、交易、外交样样在行，激励会传给下一个人，最后一句话能让整支袭击队撤退。</description>
+    <parent>LP_Class_Bard</parent><order>4</order><emblem>LP/Classes/Subclass/Emblem_Eloquence</emblem><color>(0.95,0.8,0.45)</color>
+    <abilities><li><ability>LP_BD_SilverTongue</ability><level>3</level></li><li><ability>LP_BD_InfectiousInspiration</ability><level>7</level></li><li><ability>LP_BD_UniversalSpeech</ability><level>11</level></li><li><ability>LP_BD_Truce</ability><level>15</level></li></abilities>
+    <choices>
+      <li><key>secret1</key><label>魔法奥秘</label><level>10</level><options><li>火球术</li><li>迷踪步</li><li>镜影术</li><li>急速术</li><li>闪电束</li><li>治疗伤口</li><li>祝福</li><li>次级复原术</li><li>树肤术</li><li>纠缠术</li><li>龙族之翼</li><li>咒术</li></options>
+        <tips><li>法师 3 级：火焰爆炸。</li><li>法师 3 级：短距离瞬移。</li><li>法师 5 级：分身挡攻击。</li><li>法师 7 级：给友军加速。</li><li>法师 7 级：一道直线闪电。</li><li>牧师 1 级：近身治疗。</li><li>牧师 1 级：命中、心情。</li><li>牧师 3 级：解除疾病、中毒。</li><li>德鲁伊 5 级：护甲。</li><li>德鲁伊 1 级：缠住一片敌人。</li><li>术士 7 级：飞到远处。</li><li>邪术师 7 级：增伤、降低豁免。</li></tips></li>
+      <li><key>secret2</key><label>魔法奥秘·二</label><level>13</level><distinctFrom>secret1</distinctFrom><options><li>火球术</li><li>迷踪步</li><li>镜影术</li><li>急速术</li><li>闪电束</li><li>治疗伤口</li><li>祝福</li><li>次级复原术</li><li>树肤术</li><li>纠缠术</li><li>龙族之翼</li><li>咒术</li><li>群体治疗</li><li>石墙术</li><li>兽王号令</li><li>群体暗示</li></options>
+        <tips><li>法师 3 级：火焰爆炸。</li><li>法师 3 级：短距离瞬移。</li><li>法师 5 级：分身挡攻击。</li><li>法师 7 级：给友军加速。</li><li>法师 7 级：一道直线闪电。</li><li>牧师 1 级：近身治疗。</li><li>牧师 1 级：命中、心情。</li><li>牧师 3 级：解除疾病、中毒。</li><li>德鲁伊 5 级：护甲。</li><li>德鲁伊 1 级：缠住一片敌人。</li><li>术士 7 级：飞到远处。</li><li>邪术师 7 级：增伤、降低豁免。</li><li>牧师 10 级：治疗身边所有友军。</li><li>法师 10 级：立起石墙。</li><li>德鲁伊 10 级：身边的动物狂暴。</li><li>术士 10 级：一片敌人恍惚游荡。</li></tips></li>
+    </choices>
+  </LichPhylactery.LP_SubclassDef>
+</Defs>

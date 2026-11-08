@@ -13,8 +13,8 @@ namespace LichPhylactery {
    try{
     // 1. 定义：24 个，十二个职业各两个（3 级、7 级），都有图标、附带属性、能被 NPC 选到
     var all=ClassFeats.All.ToList();
-    Check(all.Count==24 && ClassSystem.All.Count==12 && ClassSystem.All.All(c=>ClassFeats.For(c).Select(f=>f.classLevel).OrderBy(x=>x).SequenceEqual(new[]{3,7}))
-     && all.All(f=>f.Icon!=BaseContent.BadTex && f.BonusOptions.Count>0 && f.enemyTags!=null && f.enemyTags.Contains("any") && f.category=="Class"),"24 class feats: every class has one at level 3 and one at level 7, all with icons, +1 ability and NPC tags (classes "+ClassSystem.All.Count+", feats "+all.Count+")");
+    Check(all.Count==26 && ClassSystem.All.Count==13 && ClassSystem.All.All(c=>ClassFeats.For(c).Select(f=>f.classLevel).OrderBy(x=>x).SequenceEqual(new[]{3,7}))
+     && all.All(f=>f.Icon!=BaseContent.BadTex && f.BonusOptions.Count>0 && f.enemyTags!=null && f.enemyTags.Contains("any") && f.category=="Class"),"26 class feats: every class has one at level 3 and one at level 7, all with icons, +1 ability and NPC tags (classes "+ClassSystem.All.Count+", feats "+all.Count+")");
     // 2. 显示与前置：只对有这个职业的人显示；战士 2 级选不了，3 级可以；前置文字写职业等级
     var vet=FD("LP_Feat_Class_FighterVeteran");var wizF=FD("LP_Feat_Class_WizardScholar");
     var a=CfPawn(7);var ha=Adventurer.Get(a);bool hidden=!Feats2.Visible(vet,a);
@@ -54,7 +54,7 @@ namespace LichPhylactery {
     Check(acd==750 && off==1000,"工坊大师: "+ab?.def.label+" cooldown 1000 → "+acd+"; adventurer switch off → "+off);
     // 9. 1.92.0：每个 3 级职业专长都带本职业强度（内息调和、魔力之泉、怒火中烧补上 +10%），契约深化多冷却 ×0.9
     var lv3=DefDatabase<LP_FeatDef>.AllDefsListForReading.Where(f=>f.ClassFeat && f.classLevel==3).ToList();
-    Check(lv3.Count==12 && lv3.All(f=>f.powerBonus>0f && f.powerStats!=null && f.powerStats.Count>0) && Near(FD("LP_Feat_Class_WarlockDeepPact").cooldownFactor,.9f) && FD("LP_Feat_Class_SorcererWellspring").resourceBonus==3,"every class-level-3 feat raises its class power (missing: "+string.Join(",",lv3.Where(f=>f.powerBonus<=0f).Select(f=>f.label))+"); 契约深化 cooldown ×0.9; 魔力之泉 mana +3");
+    Check(lv3.Count==13 && lv3.All(f=>f.powerBonus>0f && f.powerStats!=null && f.powerStats.Count>0) && Near(FD("LP_Feat_Class_WarlockDeepPact").cooldownFactor,.9f) && FD("LP_Feat_Class_SorcererWellspring").resourceBonus==3,"every class-level-3 feat raises its class power (missing: "+string.Join(",",lv3.Where(f=>f.powerBonus<=0f).Select(f=>f.label))+"); 契约深化 cooldown ×0.9; 魔力之泉 mana +3");
    }finally{
     s.adventurer=oldOn;foreach(var p in advMade)if(!p.Destroyed)p.Destroy();advMade.Clear();Adventurer.TestSuppressed=sup;
    }

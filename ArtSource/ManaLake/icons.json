@@ -334,5 +334,33 @@
     "color": "(0.6,0.4,0.85)",
     "ring": 9,
     "passive": true
+  },
+  {
+    "key": "IrresistibleDance",
+    "label": "不可抗拒之舞",
+    "color": "(0.85,0.4,0.6)",
+    "ring": 6,
+    "passive": false
+  },
+  {
+    "key": "MassInvisibility",
+    "label": "群体隐形",
+    "color": "(0.85,0.4,0.6)",
+    "ring": 7,
+    "passive": false
+  },
+  {
+    "key": "PowerWordStun",
+    "label": "力量真言·震慑",
+    "color": "(0.85,0.4,0.6)",
+    "ring": 8,
+    "passive": false
+  },
+  {
+    "key": "Foresight",
+    "label": "预知术",
+    "color": "(0.85,0.4,0.6)",
+    "ring": 9,
+    "passive": false
   }
 ]

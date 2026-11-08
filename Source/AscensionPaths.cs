@@ -458,21 +458,27 @@ namespace LichPhylactery {
  // ---------- 圣徒的奉献窗口 ----------
  public class Dialog_SaintOffering : Window {
   readonly AscensionProgress pr;readonly List<Thing> items;readonly HashSet<Thing> chosen=new HashSet<Thing>();Vector2 scroll;
-  public override Vector2 InitialSize=>new Vector2(560f,620f);
+  public override Vector2 InitialSize=>LPUI.Fit(560f,620f);
   public Dialog_SaintOffering(AscensionProgress pr){
    this.pr=pr;doCloseX=true;forcePause=true;absorbInputAroundWindow=true;var map=pr.pawn.MapHeld;
    items=map==null?new List<Thing>():map.listerThings.ThingsInGroup(ThingRequestGroup.HaulableEver).Where(t=>t.Spawned && !t.IsForbidden(Faction.OfPlayer) && t.def!=Faith.ShardDef && t.TryGetComp<CompDivineSpark>()==null && t.MarketValue>0f && map.areaManager.Home[t.Position] && !(t is Corpse)).OrderByDescending(t=>t.MarketValue*t.stackCount).Take(200).ToList();
   }
   float Total=>chosen.Sum(t=>t.MarketValue*t.stackCount);
   public override void DoWindowContents(Rect r){
-   var top=new Rect(r.x,r.y,r.width,60f);Widgets.Label(top,"选择献给"+pr.patronGod?.label+"的祭品（整堆献上），合计市场价要≥"+AscensionPaths.SaintValue+"；另外消耗"+AscensionPaths.SaintShards+"片神迹残片。\n已选："+Total.ToString("0")+" / "+AscensionPaths.SaintValue);
-   var outRect=new Rect(r.x,r.y+64f,r.width,r.height-110f);var view=new Rect(0,0,outRect.width-20f,items.Count*26f);
+   // 1.124.0 UI 整理：标题；说明按实际高度排；物品名太长时截断（悬停看全名）；列表空时给提示。
+   try{
+   float y=LPUI.Title(r,"圣徒的奉献");
+   y+=LPUI.Para(r.x,y,r.width,"选择献给"+pr.patronGod?.label+"的祭品（整堆献上），合计市场价要≥"+AscensionPaths.SaintValue+"；另外消耗"+AscensionPaths.SaintShards+"片神迹残片。\n已选："+Total.ToString("0")+" / "+AscensionPaths.SaintValue)+LPUI.Gap;
+   var outRect=new Rect(r.x,y,r.width,r.yMax-LPUI.MainButtonH-LPUI.SectionGap-y);var view=new Rect(0,0,outRect.width-LPUI.ScrollBarW,items.Count*26f);
+   Widgets.DrawMenuSection(outRect);outRect=outRect.ContractedBy(4f);view.width=outRect.width-LPUI.ScrollBarW;
+   if(items.Count==0){GUI.color=Color.gray;Widgets.Label(outRect,"家园区里没有可以献上的物品。");GUI.color=Color.white;}
    Widgets.BeginScrollView(outRect,ref scroll,view);
-   for(int i=0;i<items.Count;i++){var t=items[i];bool on=chosen.Contains(t);var row=new Rect(0,i*26f,view.width,24f);bool was=on;Widgets.CheckboxLabeled(row,t.LabelCap+" · "+(t.MarketValue*t.stackCount).ToString("0"),ref on);if(on!=was){if(on)chosen.Add(t);else chosen.Remove(t);}}
+   for(int i=0;i<items.Count;i++){var t=items[i];bool on=chosen.Contains(t);var row=new Rect(0,i*26f,view.width,24f);bool was=on;string label=t.LabelCap+" · "+(t.MarketValue*t.stackCount).ToString("0");Widgets.CheckboxLabeled(row,label.Truncate(row.width-30f),ref on);if(Text.CalcSize(label).x>row.width-30f)TooltipHandler.TipRegion(row,label);if(on!=was){if(on)chosen.Add(t);else chosen.Remove(t);}}
    Widgets.EndScrollView();
-   var btn=new Rect(r.x,r.yMax-38f,r.width,36f);
+   var btn=new Rect(r.x,r.yMax-LPUI.MainButtonH,r.width,LPUI.MainButtonH);
    bool ok=Total>=AscensionPaths.SaintValue && Faith.ShardsOn(pr.pawn.MapHeld)>=AscensionPaths.SaintShards;
    if(Widgets.ButtonText(btn,ok?"献上":"还不够",true,true,ok)){if(ok){AscensionPaths.SaintOffer(pr,chosen.ToList());Close();}}
+   }finally{LPUI.Reset();}
   }
  }
 

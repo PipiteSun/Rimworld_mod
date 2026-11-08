@@ -72,6 +72,7 @@ namespace LichPhylactery {
    switch(c?.resource){
     case ClassResource.Mana:return "上限 = 2 + 职业等级";
     case ClassResource.Pact:return "上限 = 2 + 邪术师等级 / 4（向下取整）";
+    case ClassResource.Melody:return "上限 = 2 + 吟游诗人等级 + 魅力调整值（最少 2）";
     case ClassResource.Grace:return "上限 = 2 + (牧师 + 圣武士等级) / 2（向上取整，合计最多按 "+ClassSystem.CapLevel+" 级）";
     case ClassResource.Fury:case ClassResource.Ki:case ClassResource.Rage:return "上限 = 2 + 职业等级 / 2（向上取整）";
    }
@@ -81,6 +82,7 @@ namespace LichPhylactery {
    switch(c?.resource){
     case ClassResource.Mana:return ClassSystem.MaxMana(level);
     case ClassResource.Pact:return Warlock.MaxPact(level);
+    case ClassResource.Melody:return Bard.MaxMelody(level,0);
     case ClassResource.None:case null:return 0;
     default:return ClassSystem.MaxResource(level);
    }

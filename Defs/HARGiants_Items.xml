@@ -70,7 +70,7 @@
   <ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
     <defName>LP_CyclopsMaul</defName>
     <label>独眼巨锤</label>
-    <description>独眼巨人锻打铁砧用的大锤，也拿来砸开敌人的脑袋。钝击32，攻击间隔3秒；命中有15%的概率把目标砸晕1秒。只有巨人能用。在巨人铁砧用100钢或150木头制作（材料决定锤子的材质）。</description>
+    <description>独眼巨人锻打铁砧用的大锤，也拿来砸开敌人的脑袋。钝击42，攻击间隔2.9秒；命中有15%的概率把目标砸晕1秒。只有巨人能用。在巨人铁砧用100钢或150木头制作（材料决定锤子的材质）。</description>
     <graphicData>
       <texPath>HARGiants/Items/CyclopsMaul</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -97,8 +97,9 @@
         <capacities>
           <li>Blunt</li>
         </capacities>
-        <power>32</power>
-        <cooldownTime>3.0</cooldownTime>
+        <power>42</power>
+        <cooldownTime>2.9</cooldownTime>
+        <armorPenetration>0.55</armorPenetration>
       </li>
     </tools>
     <recipeMaker><recipeUsers Inherit="False"><li>LP_GiantAnvil</li></recipeUsers><researchPrerequisite>LP_GiantForging</researchPrerequisite></recipeMaker>

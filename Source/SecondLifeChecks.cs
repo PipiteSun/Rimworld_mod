@@ -29,9 +29,9 @@ namespace LichPhylactery {
   void SlBody(){
    // 1. 定义与档位
    var d=SecondLife.Def;var hd=SystemHost.Def;
-   Check(d!=null && TraitRarity.Tier(d,0)==2 && TraitRarity.Hex(d,0)=="#5B9BD5" && d.degreeDatas[0].label.Contains("二周目") && Mathf.Approximately(SecondLifeStartup.XmlSecond,.1f)
-    && hd!=null && TraitRarity.Tier(hd,0)==3 && hd.degreeDatas[0].label.StartsWith("<color=#B070E0>") && Mathf.Approximately(SecondLifeStartup.XmlHost,.05f),
-    "[second life] 二周目 is a blue Rare trait (commonality 0.1), 系统宿主 a purple Epic trait (0.05)");
+   Check(d!=null && TraitRarity.Tier(d,0)==4 && TraitRarity.Hex(d,0)=="#E08A3A" && d.degreeDatas[0].label.StartsWith("<color=#E08A3A>") && d.degreeDatas[0].label.Contains("二周目") && Mathf.Approximately(SecondLifeStartup.XmlSecond,.1f)
+    && hd!=null && TraitRarity.Tier(hd,0)==4 && hd.degreeDatas[0].label.StartsWith("<color=#E08A3A>") && Mathf.Approximately(SecondLifeStartup.XmlHost,.05f),
+    "[second life] 二周目 and 系统宿主 are orange Legendary traits (commonality 0.1 / 0.05)");
    Check(!slBanned.Any(b=>d.degreeDatas[0].description.Contains(b) || hd.degreeDatas[0].description.Contains(b)),"[second life] descriptions contain no dice wording");
    // 2. 前世等级 8～14，重复查询不变；没有特性 = 0
    var p=SlColonist(3);var plain=SlColonist(3);

@@ -52,16 +52,16 @@ namespace LichPhylactery {
    var def=ManaLake.Def;var fac=ManaLake.Faction;var ext=Factions.Ext(def);
    bool defs=def!=null && fac!=null && def.techLevel==TechLevel.Medieval && !def.permanentEnemy && ext?.toggle=="manalake" && ext.initialGoodwill==0 && Factions.Toggles.Contains("manalake")
     && ext.enemyFactions.Select(d=>d.defName).OrderBy(x=>x).SequenceEqual(new[]{"LP_FaerunHostile","LP_Zealots"}) && def.caravanTraderKinds.Single().defName==ManaLake.Caravan && def.baseTraderKinds.Single().defName==ManaLake.Base
-    && ContentFinder<Texture2D>.Get(def.factionIconPath,false)!=null && def.leaderTitle=="湖主" && LichMod.SettingsLeft.Length+LichMod.SettingsRight.Length==19;
+    && ContentFinder<Texture2D>.Get(def.factionIconPath,false)!=null && def.leaderTitle=="湖主" && LichMod.SettingsLeft.Length+LichMod.SettingsRight.Length==20; // 后来的版本多了一组设置（与魔力湖泊无关）
    var hostile=Factions.Hostile;bool enemies=hostile==null || fac.RelationKindWith(hostile)==FactionRelationKind.Hostile;
-   Check(defs && enemies,"mana lake faction loads: medieval, neutral (0), toggle manalake, enemies of the Thayan expedition and the zealots, caravan + lakeside market, icon; still 19 settings groups ("+defs+" "+enemies+" "+(fac==null?"nofac":fac.RelationKindWith(hostile).ToString())+" "+(LichMod.SettingsLeft.Length+LichMod.SettingsRight.Length)+")");
+   Check(defs && enemies,"mana lake faction loads: medieval, neutral (0), toggle manalake, enemies of the Thayan expedition and the zealots, caravan + lakeside market, icon; still 20 settings groups ("+defs+" "+enemies+" "+(fac==null?"nofac":fac.RelationKindWith(hostile).ToString())+" "+(LichMod.SettingsLeft.Length+LichMod.SettingsRight.Length)+")");
 
    // 2. 48 枚职业水晶：12 个职业各 4 枚、6 / 7 / 8 / 9 环各 1；能力有图标、Ability_Class；结晶价格按环。
    var all=LakeArcana.All;var crystals=LakeArcana.Crystals;
    bool perClass=ClassSystem.All.All(c=>LakeArcana.OfClass(c).Select(a=>LakeArcana.Ext(a).ring).SequenceEqual(new[]{6,7,8,9}));
    bool icons=all.All(a=>a.uiIcon!=null && a.uiIcon!=BaseContent.BadTex && a.abilityClass==typeof(Ability_Class) && a.comps.OfType<CompProperties_ClassEffect>().Any());
    bool prices=crystals.All(c=>Mathf.Abs(c.BaseMarketValue-LakeArcana.PriceFor(LakeArcana.Ext(LakeArcana.AbilityOf(c)).ring))<1f && c.label.StartsWith("职业水晶") && c.graphicData.color!=Color.white);
-   Check(all.Count==48 && crystals.Count==48 && ClassSystem.All.Count==12 && perClass && icons && prices && all.All(a=>LakeArcana.CrystalFor(a)!=null),"48 class crystals: 12 classes × rings 6/7/8/9, abilities with icons, crystals priced 8000/12000/16000/25000 and tinted by class colour");
+   Check(all.Count==52 && crystals.Count==52 && ClassSystem.All.Count==13 && perClass && icons && prices && all.All(a=>LakeArcana.CrystalFor(a)!=null),"52 class crystals: 13 classes × rings 6/7/8/9, abilities with icons, crystals priced 8000/12000/16000/25000 and tinted by class colour");
 
    // 3. 秘传槽：冒险者 10 级 0 个，11 / 15 / 20 级 1 / 2 / 3 个，传奇 30 级 4 个。
    var ha=new Hediff_Adventurer();int[] slots=new[]{10,11,15,20,30}.Select(l=>{ha.level=l;return LakeArcana.Slots(ha);}).ToArray();

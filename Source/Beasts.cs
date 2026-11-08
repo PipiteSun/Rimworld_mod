@@ -57,6 +57,7 @@ namespace LichPhylactery {
     k.canArriveManhunter=d && on;
    }
    WildMonsters.ApplySettings();
+   BeastsDND2.ApplySettings(); // 1.127.0 DND 野兽第二批
   }
   public static bool DefaultManhunter(PawnKindDef k){ApplySettings();return manhunterDefault.TryGetValue(k,out bool d) && d;}
  }
@@ -242,7 +243,7 @@ namespace LichPhylactery {
   void ExposeBeasts(){Scribe_Values.Look(ref dndBeastsWild,"dndBeastsWild",true);ExposeBeastLevels();ExposeWildMonsters();}
  }
  public static class BeastSettings {
-  public static void Draw(Listing_Standard l){l.GapLine();l.Label("DND野兽");l.CheckboxLabeled("野外刷新 DND 野兽",ref LichMod.Settings.dndBeastsWild,"猫头鹰熊、邪座狼、冬狼、地狱犬、魔化兽、闪光犬会在各自的生态区野外刷新，前五种也会以狂暴兽群出现。关闭后不再刷新、也不会以狂暴兽群出现；保存设置后立即生效，已经在地图上的野兽不受影响。");
+  public static void Draw(Listing_Standard l){l.GapLine();l.Label("DND野兽");l.CheckboxLabeled("野外刷新 DND 野兽",ref LichMod.Settings.dndBeastsWild,"猫头鹰熊、邪座狼、冬狼、地狱犬、魔化兽、闪光犬，以及伪龙、翼猫、巨型火甲虫、罗斯牛、鹰头马身兽、斧喙鸟、狮鹫、钩爪恐兽、相位蜘蛛、暗斗篷、血蝠蝇会在各自的生态区野外刷新，其中凶猛的也会以狂暴兽群出现。关闭后不再刷新、也不会以狂暴兽群出现；保存设置后立即生效，已经在地图上的野兽不受影响。");
    WildMonsterSettings.Draw(l); // DND 怪物第二批
    // 1.70.0 野兽强化
    var s=LichMod.Settings;

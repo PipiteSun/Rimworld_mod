@@ -30,7 +30,7 @@
   <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
     <defName>LP_FrostGiantAxe</defName>
     <label>霜巨人斧</label>
-    <description>霜巨人掠夺者的双刃巨斧，斧刃上永远结着一层霜。劈砍30、钝击14，攻击间隔2.8秒；命中让目标寒霜迟缓4秒（移动速度减半，霜巨人自己免疫）。只有巨人能用。在巨人铁砧用80钢或80寒铁锻造。</description>
+    <description>霜巨人掠夺者的双刃巨斧，斧刃上永远结着一层霜。劈砍40（斧刃攻击间隔2.6秒）、钝击17；命中让目标寒霜迟缓4秒（移动速度减半，霜巨人自己免疫）。只有巨人能用。在巨人铁砧用80钢或80寒铁锻造。</description>
     <graphicData>
       <texPath>Giants/Items/FrostGiantAxe</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -56,15 +56,16 @@
         <capacities>
           <li>Cut</li>
         </capacities>
-        <power>30</power>
-        <cooldownTime>2.8</cooldownTime>
+        <power>40</power>
+        <cooldownTime>2.6</cooldownTime>
+        <armorPenetration>0.6</armorPenetration>
       </li>
       <li>
         <label>斧柄</label>
         <capacities>
           <li>Blunt</li>
         </capacities>
-        <power>14</power>
+        <power>17</power>
         <cooldownTime>2</cooldownTime>
       </li>
     </tools>
@@ -194,7 +195,7 @@
   <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
     <defName>LP_StormTrident</defName>
     <label>风暴三叉戟</label>
-    <description>风暴巨人的三叉戟，等离子钢的戟杆里嵌着秘银导线，戟尖上跳着细小的电弧。刺击28，攻击间隔2.5秒；风暴巨人拿着它时，雷霆一击的 EMP ×1.5。只有巨人能用。在巨人铁砧用40等离子钢和20秘银锻造（需要秘金冶炼）。</description>
+    <description>风暴巨人的三叉戟，等离子钢的戟杆里嵌着秘银导线，戟尖上跳着细小的电弧。刺击38，攻击间隔2.3秒；风暴巨人拿着它时，雷霆一击的 EMP ×1.5。只有巨人能用。在巨人铁砧用40等离子钢和20秘银锻造（需要秘金冶炼）。</description>
     <graphicData>
       <texPath>Giants/Items/StormTrident</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -231,15 +232,16 @@
         <capacities>
           <li>Stab</li>
         </capacities>
-        <power>28</power>
-        <cooldownTime>2.5</cooldownTime>
+        <power>38</power>
+        <cooldownTime>2.3</cooldownTime>
+        <armorPenetration>0.7</armorPenetration>
       </li>
       <li>
         <label>戟杆</label>
         <capacities>
           <li>Blunt</li>
         </capacities>
-        <power>12</power>
+        <power>16</power>
         <cooldownTime>2</cooldownTime>
       </li>
     </tools>
@@ -360,7 +362,7 @@
   <ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
     <defName>LP_CloudMorningstar</defName>
     <label>云巨人晨星锤</label>
-    <description>云巨人贵族的仪仗晨星锤，钢铸的锤头上镶着金色的云纹。钝击30，攻击间隔2.6秒；命中有15%概率把目标击退2格。只有巨人能用。在巨人铁砧用70钢和10金锻造。</description>
+    <description>云巨人贵族的仪仗晨星锤，钢铸的锤头上镶着金色的云纹。钝击40，攻击间隔2.4秒；命中有15%概率把目标击退2格。只有巨人能用。在巨人铁砧用70钢和10金锻造。</description>
     <graphicData>
       <texPath>Giants/Items/CloudMorningstar</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -397,15 +399,16 @@
         <capacities>
           <li>Blunt</li>
         </capacities>
-        <power>30</power>
-        <cooldownTime>2.6</cooldownTime>
+        <power>40</power>
+        <cooldownTime>2.4</cooldownTime>
+        <armorPenetration>0.55</armorPenetration>
       </li>
       <li>
         <label>锤柄</label>
         <capacities>
           <li>Poke</li>
         </capacities>
-        <power>10</power>
+        <power>14</power>
         <cooldownTime>2</cooldownTime>
       </li>
     </tools>

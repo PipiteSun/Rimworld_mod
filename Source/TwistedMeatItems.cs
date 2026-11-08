@@ -117,11 +117,13 @@ namespace LichPhylactery {
  }
  public class Window_FleshRegen : Window {
   readonly Thing bench;Thing selected;Vector2 scroll;string result;List<Thing> cache;int cacheFrame;
-  public override Vector2 InitialSize=>new Vector2(620f,520f);
+  public override Vector2 InitialSize=>LPUI.Fit(620f,520f);
   public Window_FleshRegen(Thing bench){this.bench=bench;doCloseX=true;forcePause=false;absorbInputAroundWindow=false;draggable=true;}
-  public override void DoWindowContents(Rect r){
+  // 1.124.0 UI 整理：统一标题；列表第二行放不下时截断（悬停看全文）；画完复位文字状态。
+  public override void DoWindowContents(Rect r){try{Draw(r);}finally{LPUI.Reset();}}
+  void Draw(Rect r){
    if(bench==null || !bench.Spawned){Close();return;}var map=bench.Map;
-   Text.Font=GameFont.Medium;Widgets.Label(new Rect(r.x,r.y,r.width,32f),"附魔词条 · 血肉再生");Text.Font=GameFont.Small;
+   LPUI.Title(r,"附魔词条 · 血肉再生");
    var left=new Rect(r.x,r.y+38f,260f,r.height-38f);var right=new Rect(left.xMax+8f,left.y,r.xMax-left.xMax-8f,left.height);
    Widgets.DrawMenuSection(left);Widgets.DrawMenuSection(right);
    if(cache==null || Time.frameCount-cacheFrame>30){cache=GearEnhanceBench.Candidates(map).Where(t=>t is Apparel).ToList();cacheFrame=Time.frameCount;}
@@ -133,7 +135,7 @@ namespace LichPhylactery {
     Widgets.ThingIcon(new Rect(row.x+2f,row.y+4f,32f,32f),t);
     Widgets.Label(new Rect(row.x+38f,row.y+1f,row.width-38f,22f),t.LabelCapNoCount.Truncate(row.width-40f));
     Text.Font=GameFont.Tiny;GUI.color=FleshRegen.Marked(t)?new Color(.85f,.45f,.45f):Color.gray;var o=GearEnhanceBench.Owner(t);
-    Widgets.Label(new Rect(row.x+38f,row.y+21f,row.width-38f,18f),(FleshRegen.Marked(t)?"血肉再生 · ":"")+(o!=null?o.LabelShort+" 穿着":"在地上 / 储存区"));GUI.color=Color.white;Text.Font=GameFont.Small;
+    LPUI.LabelFit(new Rect(row.x+38f,row.y+21f,row.width-38f,18f),(FleshRegen.Marked(t)?"血肉再生 · ":"")+(o!=null?o.LabelShort+" 穿着":"在地上 / 储存区"));GUI.color=Color.white;Text.Font=GameFont.Small;
     if(Widgets.ButtonInvisible(row)){selected=t;result=null;}
    }
    Widgets.EndScrollView();
@@ -143,7 +145,7 @@ namespace LichPhylactery {
    if(selected!=null){
     Widgets.Label(new Rect(inner.x,y,inner.width,24f),selected.LabelCapNoCount);y+=28f;
     string block=FleshRegen.Blocked(selected,map);var btn=new Rect(inner.x,y,inner.width,34f);
-    if(block!=null){GUI.color=Color.gray;Text.Anchor=TextAnchor.MiddleCenter;Widgets.Label(btn,block);Text.Anchor=TextAnchor.UpperLeft;GUI.color=Color.white;}
+    if(block!=null)LPUI.Unavailable(btn,block);
     else if(Widgets.ButtonText(btn,"刻上血肉再生")){if(FleshRegen.Apply(selected,map)){result="完成：“"+selected.LabelCapNoCount+"”有了血肉再生。";SoundDefOf.Quest_Concluded.PlayOneShotOnCamera();cache=null;}}
     y+=40f;
    }

@@ -320,12 +320,16 @@ namespace LichPhylactery {
 
  // ---------- 窗口 ----------
  public class Dialog_Ascension : Window {
-  readonly Pawn pawn;
-  public override Vector2 InitialSize=>new Vector2(620f,520f);
+  readonly Pawn pawn;Vector2 scroll;float contentH=400f;
+  public override Vector2 InitialSize=>LPUI.Fit(620f,520f);
   public Dialog_Ascension(Pawn p){pawn=p;doCloseX=true;forcePause=true;absorbInputAroundWindow=true;closeOnClickedOutside=true;}
+  // 1.124.0 UI 整理：标题固定在上面，下面整块可滚动（三条路线的说明较长时不再溢出窗口）。
   public override void DoWindowContents(Rect r){
-   var l=new Listing_Standard();l.Begin(r);
-   Text.Font=GameFont.Medium;l.Label(pawn.LabelShort+" · 成神之路");Text.Font=GameFont.Small;l.GapLine();
+   float y=LPUI.Title(r,pawn.LabelShort+" · 成神之路");Widgets.DrawLineHorizontal(r.x,y-LPUI.Gap*.5f,r.width);
+   var l=LPUI.BeginScroll(new Rect(r.x,y,r.width,r.yMax-y),ref scroll,contentH);
+   try{Body(l);}finally{contentH=LPUI.EndScroll(l);LPUI.Reset();}
+  }
+  void Body(Listing_Standard l){
    var pr=Ascension.Tracker?.Of(pawn);
    if(pr==null){
     foreach(var path in new[]{Ascension.Saint,Ascension.Lich,Ascension.Titan}){
@@ -351,13 +355,12 @@ namespace LichPhylactery {
      if(l.ButtonText(b.label)){b.action();Close();}
     }
    }
-   l.End();
   }
  }
  public class AscensionButton {public string label,disabled;public Action action;}
  public class Dialog_UsurperShards : Window {
   readonly Pawn pawn;int shards;
-  public override Vector2 InitialSize=>new Vector2(480f,260f);
+  public override Vector2 InitialSize=>LPUI.Fit(480f,260f);
   public Dialog_UsurperShards(Pawn p){pawn=p;doCloseX=true;forcePause=true;absorbInputAroundWindow=true;shards=Math.Min(AscensionPaths.UsurperShardsMax,Faith.ShardsOn(p.MapHeld));}
   public override void DoWindowContents(Rect r){
    var l=new Listing_Standard();l.Begin(r);

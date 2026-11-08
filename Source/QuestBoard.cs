@@ -357,15 +357,18 @@ namespace LichPhylactery {
  public class Window_QuestBoard : Window {
   readonly Building board;Vector2 scroll;
   public Window_QuestBoard(Building b){board=b;doCloseX=true;doCloseButton=false;absorbInputAroundWindow=false;forcePause=true;closeOnClickedOutside=true;}
-  public override Vector2 InitialSize=>new Vector2(820f,640f);
+  public override Vector2 InitialSize=>LPUI.Fit(820f,640f);
   public override void PreOpen(){base.PreOpen();QuestBoard.EnsureFresh();}
-  public override void DoWindowContents(Rect inRect){
+  // 1.124.0 UI 整理：说明文字按实际高度排；委托标题、数据行、已接委托的标题和状态放不下时截断（悬停看全文）；画完复位文字状态。
+  public override void DoWindowContents(Rect inRect){try{Draw(inRect);}finally{LPUI.Reset();}}
+  void Draw(Rect inRect){
    var st=QuestBoard.State;if(st==null)return;
-   Text.Font=GameFont.Medium;Widgets.Label(new Rect(0f,0f,inRect.width,34f),"探索公告板");Text.Font=GameFont.Small;
+   float headY=LPUI.Title(inRect,"探索公告板");
    int top=QuestBoard.UnlockedTier();
    string head=QuestBoard.Enabled?"殖民地最高冒险者等级 "+QuestBoard.ColonyLevel+"，可接等阶：青铜～"+QuestBoard.TierLabel(top)+(top<QuestBoard.MaxTier?"（"+QuestBoard.TierLabel(top+1)+"需要 "+QuestBoard.TierMinLevel[top]+" 级）":"")+"。委托每天刷新，约 "+Mathf.Max(1,Mathf.CeilToInt((st.nextRefresh-QuestBoard.Now)/(float)GenDate.TicksPerHour))+" 小时后换一批；同时最多接 "+QuestBoard.MaxActive+" 份。":"探索公告板已在设置（冒险者分组）里关闭。";
-   GUI.color=Color.gray;Widgets.Label(new Rect(0f,36f,inRect.width,44f),head);GUI.color=Color.white;
-   var outer=new Rect(0f,84f,inRect.width,inRect.height-84f);
+   GUI.color=Color.gray;float headH=LPUI.Para(inRect.x,headY,inRect.width,head);GUI.color=Color.white;
+   float listY=headY+Mathf.Max(44f,headH)+4f;
+   var outer=new Rect(inRect.x,listY,inRect.width,inRect.yMax-listY);
    float rowH=96f;float h=30f+st.offers.Count*rowH+40f+Mathf.Max(1,st.active.Count)*56f+20f;
    var view=new Rect(0f,0f,outer.width-18f,h);
    Widgets.BeginScrollView(outer,ref scroll,view);
@@ -382,9 +385,9 @@ namespace LichPhylactery {
   void DrawOffer(Rect r,BoardContract c){
    Widgets.DrawMenuSection(r);var inner=r.ContractedBy(6f);
    Badge(new Rect(inner.x,inner.y,52f,24f),c.tier);
-   Widgets.Label(new Rect(inner.x+60f,inner.y+2f,inner.width-200f,24f),QuestBoard.KindLabel(c.kind)+" · "+QuestBoard.Title(c));
+   LPUI.LabelFit(new Rect(inner.x+60f,inner.y+2f,inner.width-200f,24f),QuestBoard.KindLabel(c.kind)+" · "+QuestBoard.Title(c));
    GUI.color=new Color(.8f,.8f,.8f);
-   Widgets.Label(new Rect(inner.x,inner.y+28f,inner.width-150f,24f),"推荐等级 "+QuestBoard.TierMinLevel[c.tier-1]+"+ · 威胁点数 "+Mathf.RoundToInt(c.points)+" · 经验约 "+Mathf.RoundToInt(QuestBoard.XpFor(c.points)*Adventurer.XpScale)+(QuestBoard.AtHome(c.kind)?" · 在殖民地":" · 要远征"));
+   LPUI.LabelFit(new Rect(inner.x,inner.y+28f,inner.width-150f,24f),"推荐等级 "+QuestBoard.TierMinLevel[c.tier-1]+"+ · 威胁点数 "+Mathf.RoundToInt(c.points)+" · 经验约 "+Mathf.RoundToInt(QuestBoard.XpFor(c.points)*Adventurer.XpScale)+(QuestBoard.AtHome(c.kind)?" · 在殖民地":" · 要远征"));
    var rr=new Rect(inner.x,inner.y+52f,inner.width-150f,24f);Widgets.Label(rr,("报酬："+QuestBoard.RewardText(c)).Truncate(rr.width));
    GUI.color=Color.white;
    TooltipHandler.TipRegion(new Rect(inner.x,inner.y,inner.width-150f,inner.height),QuestBoard.Describe(c));
@@ -406,8 +409,8 @@ namespace LichPhylactery {
   void DrawActive(Rect r,BoardContract c){
    Widgets.DrawMenuSection(r);var inner=r.ContractedBy(6f);
    Badge(new Rect(inner.x,inner.y+6f,52f,24f),c.tier);
-   Widgets.Label(new Rect(inner.x+60f,inner.y,inner.width-200f,22f),QuestBoard.Title(c)+(c.quest?.AccepterPawn!=null?"（"+c.quest.AccepterPawn.LabelShort+"）":""));
-   GUI.color=new Color(.8f,.8f,.8f);Widgets.Label(new Rect(inner.x+60f,inner.y+20f,inner.width-200f,22f),QuestBoard.Status(c));GUI.color=Color.white;
+   LPUI.LabelFit(new Rect(inner.x+60f,inner.y,inner.width-200f,22f),QuestBoard.Title(c)+(c.quest?.AccepterPawn!=null?"（"+c.quest.AccepterPawn.LabelShort+"）":""));
+   GUI.color=new Color(.8f,.8f,.8f);LPUI.LabelFit(new Rect(inner.x+60f,inner.y+20f,inner.width-200f,22f),QuestBoard.Status(c));GUI.color=Color.white;
    var btn=new Rect(inner.xMax-130f,inner.y+3f,130f,32f);
    if(c.site!=null && !c.site.Destroyed){if(Widgets.ButtonText(btn,"定位目标")){Close();CameraJumper.TryJumpAndSelect(c.site);}}
    else if(c.raiders.Any(p=>!QuestBoard.Gone(p)) && Widgets.ButtonText(btn,"定位敌人")){Close();CameraJumper.TryJumpAndSelect(c.raiders.First(p=>!QuestBoard.Gone(p)));}

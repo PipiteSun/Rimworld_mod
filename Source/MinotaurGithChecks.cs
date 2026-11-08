@@ -138,7 +138,10 @@ namespace LichPhylactery {
    var sword=Githyanki.Sword;var longsword=DefDatabase<ThingDef>.GetNamed("MeleeWeapon_LongSword");
    Check(!sword.MadeFromStuff && sword.HasComp(typeof(CompQuality)) && sword.IsMeleeWeapon,"silver sword is a fixed-material melee weapon with quality");
    // 原版长剑是按材料缩放的：钢的锐器/钝器伤害倍率为1，所以钢长剑的伤害就是工具的基础值。
-   Check(sword.tools.Select(t=>t.power).OrderBy(x=>x).SequenceEqual(longsword.tools.Select(t=>t.power).OrderBy(x=>x)) && sword.tools.Select(t=>t.cooldownTime).OrderBy(x=>x).SequenceEqual(longsword.tools.Select(t=>t.cooldownTime).OrderBy(x=>x)) && Near(ThingDefOf.Steel.GetStatValueAbstract(StatDefOf.SharpDamageMultiplier),1f) && Near(ThingDefOf.Steel.GetStatValueAbstract(StatDefOf.BluntDamageMultiplier),1f),"silver sword tools match a steel longsword");
+   // 1.125.0 近战武器后期化：银剑抬到原版单分子剑档（剑尖/剑刃 30、间隔 2.4、穿甲 60%），每个部位都不低于钢长剑、也不更慢。
+   var sp=sword.tools.Select(t=>t.power).OrderBy(x=>x).ToList();var lp=longsword.tools.Select(t=>t.power).OrderBy(x=>x).ToList();
+   var sc=sword.tools.Select(t=>t.cooldownTime).OrderBy(x=>x).ToList();var lc=longsword.tools.Select(t=>t.cooldownTime).OrderBy(x=>x).ToList();
+   Check(sp.Count==lp.Count && sp.Zip(lp,(a,b)=>a>=b).All(x=>x) && sp.Max()>lp.Max() && sc.Zip(lc,(a,b)=>a<=b).All(x=>x) && sword.tools.Where(t=>t.power>=30f).All(t=>Near(t.armorPenetration,.6f)) && Near(ThingDefOf.Steel.GetStatValueAbstract(StatDefOf.SharpDamageMultiplier),1f) && Near(ThingDefOf.Steel.GetStatValueAbstract(StatDefOf.BluntDamageMultiplier),1f),"silver sword out-hits a steel longsword (late-game tier, 1.125.0)");
    Check(!sword.tradeability.TraderCanSell() && sword.tradeability.PlayerCanSell(),"traders never sell silver swords but the player can sell one");
    var recipe=DefDatabase<RecipeDef>.AllDefsListForReading.FirstOrDefault(r=>r.ProducedThingDef==sword);
    Check(recipe!=null && recipe.AllRecipeUsers.Any(u=>u.defName=="LP_RuneAnvil") && recipe.ingredients.Any(i=>i.IsFixedIngredient && i.FixedIngredient==ThingDefOf.Plasteel) && recipe.ingredients.Any(i=>i.IsFixedIngredient && i.FixedIngredient==ThingDefOf.Silver) && recipe.researchPrerequisite?.defName=="LP_RacialBlades" && recipe.researchPrerequisite.prerequisites.Any(r=>r.defName=="LongBlades"),"silver sword is forged at the rune anvil from plasteel and silver after racial blades (long blades)");
@@ -165,7 +168,9 @@ namespace LichPhylactery {
    var steel=(ThingWithComps)ThingMaker.MakeThing(longsword,ThingDefOf.Steel);human.equipment.Remove(silverHeld);human.equipment.AddEquipment(steel);
    float steelCut=MeleeSample(CutVerb(human,steel),flayer,200,55);
    human.equipment.DestroyEquipment(steel);human.equipment.AddEquipment(silverHeld);
-   Check(!hHits.Any(d=>d.Def==Githyanki.Psychic) && Math.Abs(silverCut/steelCut-1f)<.01f,"in non-githyanki hands the silver sword is a plain steel longsword: "+silverCut+" vs "+steelCut);
+   // 1.125.0：银剑剑刃比钢长剑高（30 vs 23），非吉斯洋基手里只差这个工具倍率，没有任何灵能 / 额外加成。
+   float cutRatio=sword.tools.First(t=>t.capacities.Any(c=>c.defName=="Cut")).power/longsword.tools.First(t=>t.capacities.Any(c=>c.defName=="Cut")).power;
+   Check(!hHits.Any(d=>d.Def==Githyanki.Psychic) && Math.Abs(silverCut/steelCut/cutRatio-1f)<.01f,"in non-githyanki hands the silver sword is just its own blade (no psychic bonus): "+silverCut+" vs steel "+steelCut+" × "+cutRatio);
    int injuries=flayer.health.hediffSet.hediffs.Count(h=>h.def.defName=="LP_PsychicWound");
    flayer.TakeDamage(gHits.First(d=>d.Def==Githyanki.Psychic));
    Check(flayer.Dead || flayer.health.hediffSet.hediffs.Count(h=>h.def.defName=="LP_PsychicWound")>injuries || flayer.health.hediffSet.hediffs.OfType<Hediff_MissingPart>().Any(),"psychic damage leaves a psychic wound");

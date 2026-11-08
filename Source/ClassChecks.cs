@@ -107,9 +107,9 @@ namespace LichPhylactery {
    try{
     // 1. 定义：8 个职业、79 个原版能力；五个强度属性在主程序集（天赋强度带血脉）；冒险者手册在主程序集。
     var all=ClassSystem.All;var abilities=all.SelectMany(c=>c.abilities).ToList();
-    Check(all.Count==12 && abilities.Count==110 && abilities.Select(e=>e.ability).Distinct().Count()==110 && abilities.All(e=>e.ability.abilityClass==typeof(Ability_Class) && e.ability.uiIcon!=null && e.ability.uiIcon!=BaseContent.BadTex) && all.All(c=>c.Background!=null && c.primary!=null)
+    Check(all.Count==13 && abilities.Count==123 && abilities.Select(e=>e.ability).Distinct().Count()==123 && abilities.All(e=>e.ability.abilityClass==typeof(Ability_Class) && e.ability.uiIcon!=null && e.ability.uiIcon!=BaseContent.BadTex) && all.All(c=>c.Background!=null && c.primary!=null)
      && new[]{"LP_ArcanePower","LP_PrimalPower","LP_VerdantPower","LP_InnatePower","LP_ArtificePower"}.All(n=>DefDatabase<StatDef>.GetNamed(n).parts.Any(x=>x is StatPart_ClassPower)) && DefDatabase<StatDef>.GetNamed("LP_InnatePower").parts.Any(x=>x is StatPart_SorcererBloodline)
-     && DefDatabase<ThingDef>.GetNamed("LP_AdventurersManual").GetCompProperties<CompProperties_UseEffect_Manual>()!=null,"12 classes, 110 vanilla abilities with icons (1.81.0 hotfix4 +3 wizard defences; +7 warlock), 5 caster power stats (innate has the bloodline part) and the manual live in the main assembly");
+     && DefDatabase<ThingDef>.GetNamed("LP_AdventurersManual").GetCompProperties<CompProperties_UseEffect_Manual>()!=null,"13 classes, 123 vanilla abilities with icons (1.81.0 hotfix4 +3 wizard defences; +7 warlock; 1.123.0 +13 bard), 5 caster power stats (innate has the bloodline part) and the manual live in the main assembly");
     // 2. 门槛：德鲁伊看种植或驯兽 6；巫妖不能当德鲁伊；术士血脉（力能龙裔）社交 4 就行，人类不行。
     var dr=ClsPawn(1);dr.skills.GetSkill(SkillDefOf.Animals).Level=6;var hdr=Adventurer.Get(dr);
     var lich=ClsPawn(1);lich.skills.GetSkill(SkillDefOf.Plants).Level=10;lich.genes.AddGene(DefDatabase<GeneDef>.GetNamed("LP_LichGene"),true);
@@ -166,7 +166,7 @@ namespace LichPhylactery {
   void CheckClassesLegendary(){
    // 1. 定义：16 个，每个职业 1 主动 + 1 被动，都有图标。
    var legs=ClassSystem.All.SelectMany(c=>c.legendary).ToList();
-   Check(legs.Count==24 && legs.Distinct().Count()==24 && ClassSystem.All.All(c=>c.legendary.Count==2 && c.legendary.Count(a=>a.comps.OfType<CompProperties_ClassEffect>().First().passive)==1) && legs.All(a=>a.abilityClass==typeof(Ability_Class) && a.uiIcon!=null && a.uiIcon!=BaseContent.BadTex && ClassLegendary.ClassOf(a)!=null),"24 legendary class abilities (warlock +2): one active and one passive per class, all with icons");
+   Check(legs.Count==26 && legs.Distinct().Count()==26 && ClassSystem.All.All(c=>c.legendary.Count==2 && c.legendary.Count(a=>a.comps.OfType<CompProperties_ClassEffect>().First().passive)==1) && legs.All(a=>a.abilityClass==typeof(Ability_Class) && a.uiIcon!=null && a.uiIcon!=BaseContent.BadTex && ClassLegendary.ClassOf(a)!=null),"26 legendary class abilities (warlock +2, bard +2): one active and one passive per class, all with icons");
    // 2. 传奇职业点：25 / 30 / 35 / 40 级各 1 点（升级时发）。
    var a=ClsPawn(20,10);var ha=Adventurer.Get(a);ha.legendary=true;ha.level=24;ha.xp=Legend.XpFor(24);int at24=ClassLegendary.SyncPoints(ha);
    ha.LevelUp();int at25=ClassLegendary.Points(ha);for(int i=0;i<15;i++)ha.LevelUp();

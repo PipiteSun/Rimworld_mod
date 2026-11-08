@@ -35,6 +35,8 @@ FEATS = {
     'RogueDeadlyPrecision': ('Rogue', 'SneakAttack', (84, 84, 100), 2),
     'WarlockDeepPact': ('Warlock', 'Invocations', (110, 80, 130), 1),
     'WarlockPatronFavor': ('Warlock', 'DarkBlessing', (110, 80, 130), 2),
+    'BardVoice': ('Bard', 'Inspiration', (176, 96, 132), 1),
+    'BardRenown': ('Bard', 'Ballad', (176, 96, 132), 2),
 }
 
 def dark(c, k=.72):

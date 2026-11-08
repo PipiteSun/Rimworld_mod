@@ -346,8 +346,8 @@
     <statBases><MarketValue>2500</MarketValue><Mass>2.5</Mass><MaxHitPoints>300</MaxHitPoints></statBases>
     <tradeability>Sellable</tradeability>
     <tools>
-      <li><label>握柄</label><capacities><li>Poke</li></capacities><power>9</power><cooldownTime>2</cooldownTime></li>
-      <li><label>锤头</label><capacities><li>Blunt</li></capacities><power>21</power><cooldownTime>2</cooldownTime><armorPenetration>0.3</armorPenetration></li>
+      <li><label>握柄</label><capacities><li>Poke</li></capacities><power>13</power><cooldownTime>1.8</cooldownTime></li>
+      <li><label>锤头</label><capacities><li>Blunt</li></capacities><power>33</power><cooldownTime>1.8</cooldownTime><armorPenetration>0.5</armorPenetration></li>
     </tools>
     <weaponTags Inherit="False"><li>LP_FaithRelic</li></weaponTags>
     <thingSetMakerTags Inherit="False" />
@@ -363,8 +363,8 @@
     <statBases><MarketValue>2500</MarketValue><Mass>2.6</Mass><MaxHitPoints>300</MaxHitPoints></statBases>
     <tradeability>Sellable</tradeability>
     <tools>
-      <li><label>矛杆</label><capacities><li>Blunt</li></capacities><power>9</power><cooldownTime>2</cooldownTime></li>
-      <li><label>矛尖</label><capacities><li>Stab</li></capacities><power>22</power><cooldownTime>2.3</cooldownTime><armorPenetration>0.45</armorPenetration></li>
+      <li><label>矛杆</label><capacities><li>Blunt</li></capacities><power>13</power><cooldownTime>1.8</cooldownTime></li>
+      <li><label>矛尖</label><capacities><li>Stab</li></capacities><power>33</power><cooldownTime>1.9</cooldownTime><armorPenetration>0.75</armorPenetration></li>
     </tools>
     <weaponTags Inherit="False"><li>LP_FaithRelic</li></weaponTags>
     <thingSetMakerTags Inherit="False" />

@@ -436,13 +436,16 @@ namespace LichPhylactery {
 
  // 掌控天气的窗口（Peter 的游戏里浮动菜单选不了，改成按钮）。
  public class Dialog_ControlWeather : Window {
-  readonly Map map;
-  public override Vector2 InitialSize=>new Vector2(360f,330f);
-  public Dialog_ControlWeather(Map m){map=m;doCloseX=true;closeOnClickedOutside=true;absorbInputAroundWindow=true;}
+  readonly Map map;readonly List<WeatherDef> choices;Vector2 scroll;
+  // 1.124.0 UI 整理：窗口高度按天气数量（夹在屏幕内），放不下时按钮区滚动。
+  public override Vector2 InitialSize=>LPUI.Fit(360f,Mathf.Max(330f,36f+LPUI.TitleH+LPUI.Gap+(choices?.Count??0)*40f+8f));
+  public Dialog_ControlWeather(Map m){map=m;choices=ClassCasters.WeatherChoices(m);doCloseX=true;closeOnClickedOutside=true;absorbInputAroundWindow=true;}
   public override void DoWindowContents(Rect r){
-   Text.Font=GameFont.Medium;Widgets.Label(new Rect(r.x,r.y,r.width,32f),"选择天气（维持 1 天）");Text.Font=GameFont.Small;
-   float y=r.y+40f;
-   foreach(var w in ClassCasters.WeatherChoices(map)){if(Widgets.ButtonText(new Rect(r.x,y,r.width,34f),w.LabelCap)){ClassCasters.SetWeather(map,w);Close();}y+=40f;}
+   float top=LPUI.Title(r,"选择天气（维持 1 天）");
+   var outRect=new Rect(r.x,top,r.width,r.yMax-top);var view=new Rect(0f,0f,outRect.width-(choices.Count*40f>outRect.height?LPUI.ScrollBarW:0f),choices.Count*40f);
+   Widgets.BeginScrollView(outRect,ref scroll,view);
+   try{float y=0f;foreach(var w in choices){if(LPUI.Button(new Rect(0f,y,view.width,34f),w.LabelCap)){ClassCasters.SetWeather(map,w);Close();}y+=40f;}}
+   finally{Widgets.EndScrollView();LPUI.Reset();}
   }
  }
 

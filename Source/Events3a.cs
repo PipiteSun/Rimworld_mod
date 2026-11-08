@@ -186,6 +186,7 @@ namespace LichPhylactery {
   public static E3Record Start(Map map){
    var f=Events3.Wayfarers();if(f==null)return null;
    var list=new List<Pawn>();int n=Rand.RangeInclusive(2,4);for(int i=0;i<n;i++)list.Add(Events3.MakePawn(PawnKindDefOf.Villager,f,map,Rand.Range(18f,40f)));
+   foreach(var b in list)Bard.MakeNpcBard(b,Rand.RangeInclusive(3,7)); // 1.123.0 巡演的吟游诗人是 3～7 级的吟游诗人职业
    var lord=Events3.Visit(map,list,f,"e3");if(lord==null)return null;
    var r=Events3.Add(Kind,map);r.pawns=list.Where(p=>p!=null).ToList();r.lord=lord;r.until=Events3.Now+(int)(1.5f*GenDate.TicksPerDay);
    return r;

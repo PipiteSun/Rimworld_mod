@@ -34,11 +34,11 @@ namespace LichPhylactery {
    if(ClassSystem.CannotCast(pawn,def,Props)!=null)return false;
    ClassSystem.Pay(pawn,def,Props);
    bool ok=base.Activate(target,dest);
-   if(ok){ClassCasters.AfterCast(this);ClassLegendary.AfterCast(this);ClassSubclass.AfterCast(this);Subclass2.AfterCast(this);Subclass3.AfterCast(this);LakeArcana.AfterCast(this,target);} // 1.100.0 秘传
+   if(ok){ClassCasters.AfterCast(this);ClassLegendary.AfterCast(this);ClassSubclass.AfterCast(this);Subclass2.AfterCast(this);Subclass3.AfterCast(this);LakeArcana.AfterCast(this,target);Bard.AfterCast(this);} // 1.100.0 秘传；1.123.0 吟游诗人（战斗魔法、施法现形）
    return ok;
   }
   public override string Tooltip{get{
-   var p=Props;var c=ClassSystem.ClassOf(def);string s=base.Tooltip;
+   var p=Props;var c=ClassSystem.CastClassOf(pawn,def);string s=base.Tooltip+Bard.Tip(pawn,def); // 1.123.0 魔法奥秘扣乐韵；刀光剑舞显示当前招式
    if(p==null || c==null)return s;
    var s2=p.passive?null:Subclass2.CostText(pawn,def)??Subclass3.CostText(pawn,def);if(s2!=null)return s+"\n\n"+s2+"\n强度："+ClassEffects.Strength(pawn,p).ToStringPercent(); // 1.103.0 失血、誓言之力、神经热
    if(ClassSubclass.UsesMana(def) && !p.passive)return s+"\n\n消耗：法力 "+ClassLegendary.Cost(pawn,def,p)+"（现有 "+ClassSubclass.Mana(pawn).ToString("0.#")+"）\n强度："+ClassEffects.Strength(pawn,p).ToStringPercent(); // 诡术师
@@ -80,7 +80,7 @@ namespace LichPhylactery {
      if(t.HostileTo(caster))return "只能对友军使用。";
      break;
    }
-   var cw=ClassCasters.Invalid(caster,e,target)??ClassLegendary.Invalid(caster,e,target)??ClassMartial2.Invalid(caster,e,target)??ClassSubclass.Invalid(caster,e,target)??Warlock.Invalid(caster,e,target)??Subclass2.Invalid(caster,e,target)??Subclass3.Invalid(caster,e,target)??Subclass4.Invalid(caster,e,target)??ArcanaEffects.Invalid(caster,e,target);if(cw!=null)return cw; // 1.73.0 施法职业；1.74.0 传奇；新职业；子职业；邪术师
+   var cw=ClassCasters.Invalid(caster,e,target)??ClassLegendary.Invalid(caster,e,target)??ClassMartial2.Invalid(caster,e,target)??ClassSubclass.Invalid(caster,e,target)??Warlock.Invalid(caster,e,target)??Subclass2.Invalid(caster,e,target)??Subclass3.Invalid(caster,e,target)??Subclass4.Invalid(caster,e,target)??ArcanaEffects.Invalid(caster,e,target)??Bard.Invalid(caster,e,target);if(cw!=null)return cw; // 1.123.0 吟游诗人 // 1.73.0 施法职业；1.74.0 传奇；新职业；子职业；邪术师
    if(e.ranged){var v=Martial.RangedVerb(caster);if(v?.Projectile==null)return "需要远程武器。";if(target.Cell.IsValid && caster.Position.DistanceTo(target.Cell)>v.EffectiveRange)return "超出当前武器的射程（"+v.EffectiveRange.ToString("0")+" 格）。";}
    switch(e.effect){
     case "Charge":if(!t.Position.AdjacentTo8WayOrInside(caster.Position) && !Charge.LandingCell(caster,t).IsValid)return "目标身边没有能落脚的格子。";break;
@@ -128,6 +128,7 @@ namespace LichPhylactery {
    if(Subclass3.Apply(p,def,e,target))return; // 1.106.0 暗影宗、散打宗
    if(Subclass4.Apply(p,def,e,target))return; // 1.111.0 炼金师、装甲师、堡垒工程师
    if(ArcanaEffects.Apply(p,def,e,target))return; // 1.100.0 秘传
+   if(Bard.Apply(p,def,e,target))return; // 1.123.0 吟游诗人
    Log.ErrorOnce("[DND边缘大陆] 未知的职业能力效果："+e.effect,e.effect?.GetHashCode()??0);
   }
   public static int BattleCry(Pawn p,float radius,int ticks,float s){

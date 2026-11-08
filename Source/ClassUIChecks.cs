@@ -28,7 +28,7 @@ namespace LichPhylactery {
    {var bad=new List<string>();
     foreach(var c in ClassSystem.All.Where(x=>x.resource!=ClassResource.None)){
      var p=ClsPawn(4);var h=Adventurer.Get(p);ClassSystem.SetLevel(h,c,4);int max=ClassSystem.MaxResource(h,c);string tip=ClassLevelInfo.ResourceTip(h,c);
-     int want=c.resource==ClassResource.Mana?6:c.resource==ClassResource.Pact?3:4;
+     int want=c.resource==ClassResource.Mana || c.resource==ClassResource.Melody?6:c.resource==ClassResource.Pact?3:4; // 1.123.0 乐韵 2 + 等级 + 魅力调整值（魅力 10 → 6）
      if(max!=want || !tip.Contains(ClassLevelInfo.ResourceFormula(c)) || !tip.Contains("= "+max+"。") || tip.Contains("四舍五入"))bad.Add(c.label+" "+max);
     }
     Check(bad.Count==0,"[1.89.0] resource tooltip uses each resource's own cap formula (mana 2 + level, pact 2 + level/4, others 2 + level/2)"+(bad.Count>0?": "+string.Join("、",bad):""));}

@@ -2,7 +2,7 @@
   <ThingDef ParentName="BaseMeleeWeapon_Blunt_Quality">
     <defName>LP_MoltenMaul</defName>
     <label>熔核破城锤</label>
-    <description>熔核禁卫的破城重锤。基础钝伤48、穿甲55%、攻击间隔3.6秒。仅限火巨人装备，在熔火锻炉制作。与炉心战盔、熔核重甲共同解锁炉心过载。</description>
+    <description>熔核禁卫的破城重锤。基础钝伤62、穿甲70%、攻击间隔3.3秒。仅限火巨人装备，在熔火锻炉制作。与炉心战盔、熔核重甲共同解锁炉心过载。</description>
     <graphicData>
       <texPath>FireGiant/MoltenGuard/Maul</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -28,9 +28,9 @@
         <capacities>
           <li>Blunt</li>
         </capacities>
-        <power>48</power>
-        <armorPenetration>0.55</armorPenetration>
-        <cooldownTime>3.6</cooldownTime>
+        <power>62</power>
+        <armorPenetration>0.7</armorPenetration>
+        <cooldownTime>3.3</cooldownTime>
       </li>
     </tools>
     <recipeMaker IsNull="True" />

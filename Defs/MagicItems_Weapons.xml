@@ -12,9 +12,9 @@
     <!-- 1.47.0：魔化兵器在符文铁砧锻造（火焰舌自己改回熔火锻炉）。 -->
     <recipeMaker><recipeUsers Inherit="False"><li>LP_RuneAnvil</li></recipeUsers></recipeMaker>
     <tools>
-      <li><label>剑柄</label><capacities><li>Blunt</li></capacities><power>9</power><cooldownTime>2</cooldownTime></li>
-      <li><label>剑尖</label><capacities><li>Stab</li></capacities><power>21</power><cooldownTime>2.6</cooldownTime><armorPenetration>0.3</armorPenetration></li>
-      <li><label>剑刃</label><labelUsedInLogging>false</labelUsedInLogging><capacities><li>Cut</li></capacities><power>23</power><cooldownTime>2.6</cooldownTime><armorPenetration>0.3</armorPenetration></li>
+      <li><label>剑柄</label><capacities><li>Blunt</li></capacities><power>12</power><cooldownTime>1.8</cooldownTime></li>
+      <li><label>剑尖</label><capacities><li>Stab</li></capacities><power>29</power><cooldownTime>2.2</cooldownTime><armorPenetration>0.65</armorPenetration></li>
+      <li><label>剑刃</label><labelUsedInLogging>false</labelUsedInLogging><capacities><li>Cut</li></capacities><power>31</power><cooldownTime>2.2</cooldownTime><armorPenetration>0.65</armorPenetration></li>
     </tools>
   </ThingDef>
 
@@ -71,6 +71,12 @@
     <graphicData><texPath>Items/Magic/VorpalSword</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
     <statBases><MarketValue>3500</MarketValue></statBases>
     <recipeMaker IsNull="True" />
+    <!-- 1.125.0：锐锋剑是传奇神兵，单独覆盖成略高于原版灵能单分子剑的数值。 -->
+    <tools Inherit="False">
+      <li><label>剑柄</label><capacities><li>Blunt</li></capacities><power>12</power><cooldownTime>1.6</cooldownTime></li>
+      <li><label>剑尖</label><capacities><li>Stab</li></capacities><power>32</power><cooldownTime>1.8</cooldownTime><armorPenetration>0.9</armorPenetration></li>
+      <li><label>剑刃</label><labelUsedInLogging>false</labelUsedInLogging><capacities><li>Cut</li></capacities><power>34</power><cooldownTime>1.8</cooldownTime><armorPenetration>0.9</armorPenetration></li>
+    </tools>
     <modExtensions><li Class="LichPhylactery.MagicWeaponExtension"><vorpal>true</vorpal></li></modExtensions>
   </ThingDef>
 

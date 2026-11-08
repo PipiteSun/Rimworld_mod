@@ -16,7 +16,7 @@ namespace LichPhylactery {
   public static bool NoSleep(Pawn p)=>p!=null && (p.needs==null || p.needs.rest==null);
   public static bool Calm(Pawn p)=>p!=null && p.Spawned && !p.Dead && !p.Downed && !p.Drafted && p.Awake() && ClassSubclass.NotInCombat(p);
   // 睡觉会回的资源（怒气不靠睡觉，不算）。
-  static bool SleepResource(ClassResource r)=>r==ClassResource.Fury || r==ClassResource.Ki || r==ClassResource.Grace || r==ClassResource.Mana || r==ClassResource.Pact;
+  static bool SleepResource(ClassResource r)=>r==ClassResource.Fury || r==ClassResource.Ki || r==ClassResource.Grace || r==ClassResource.Mana || r==ClassResource.Pact || r==ClassResource.Melody;
   static IEnumerable<LP_ClassDef> Pools(Hediff_Adventurer h){
    var done=new HashSet<LP_ClassDef>();
    if(h?.classes?.levels==null)yield break;

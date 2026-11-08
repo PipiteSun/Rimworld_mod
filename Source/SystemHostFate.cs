@@ -112,35 +112,38 @@ namespace LichPhylactery {
  public sealed class Dialog_FateRewrite : Window {
   readonly Thing charm;readonly Pawn holder;Pawn target;Trait picked;TraitDef newDef;int newDegree;
   Vector2 s0,s1,s2;
-  public override Vector2 InitialSize=>new Vector2(940f,660f);
+  public override Vector2 InitialSize=>LPUI.Fit(940f,660f);
   public Dialog_FateRewrite(Thing charm,Pawn holder){
    this.charm=charm;this.holder=holder;forcePause=true;absorbInputAroundWindow=true;doCloseX=true;doCloseButton=true;closeOnClickedOutside=false;
    target=FateRewrite.Targets(charm,holder).FirstOrDefault();
   }
-  public override void DoWindowContents(Rect rect){
+  // 1.124.0 UI 整理：人物 / 特性 / 候选名字放不下时截断（悬停看全文）；窗口被压矮时整块滚动；画完复位文字状态。
+  Vector2 outerScroll;
+  public override void DoWindowContents(Rect rect){bool sc=LPUI.BeginMinHeight(ref rect,420f,ref outerScroll);try{Draw(rect);}finally{if(sc)Widgets.EndScrollView();LPUI.Reset();}}
+  void Draw(Rect rect){
    if(charm==null || charm.Destroyed){Close();return;}
-   Text.Font=GameFont.Medium;Widgets.Label(new Rect(0,0,rect.width-30,36),"改命");Text.Font=GameFont.Small;
-   Widgets.Label(new Rect(0,40,rect.width,44),"把一个特性改写成同一档位的另一个特性（光谱特性按程度各算档位）。诅咒只能换成诅咒；传说事迹、基因赋予的特性和剧情特性不能改。消耗 1 个改命符（剩 "+charm.stackCount+" 个）。");
+   LPUI.Title(rect,"改命");
+   LPUI.LabelFit(new Rect(0,40,rect.width,44),"把一个特性改写成同一档位的另一个特性（光谱特性按程度各算档位）。诅咒只能换成诅咒；传说事迹、基因赋予的特性和剧情特性不能改。消耗 1 个改命符（剩 "+charm.stackCount+" 个）。");
    float top=90,h=rect.height-top-110,w0=180,w1=(rect.width-w0-24)/2;
    var targets=FateRewrite.Targets(charm,holder);
    // 人物
    var r0=new Rect(0,top,w0,h);Widgets.DrawMenuSection(r0);
-   var c0=new Rect(0,0,w0-20,Mathf.Max(h,targets.Count*30+6));
+   var c0=new Rect(0,0,w0-20,Mathf.Max(h-8,targets.Count*30+6));
    Widgets.BeginScrollView(r0.ContractedBy(4),ref s0,c0);
-   float y=0;foreach(var q in targets){var b=new Rect(0,y,c0.width,28);if(q==target)Widgets.DrawHighlightSelected(b);if(Widgets.ButtonText(b,q.LabelShortCap,false)){target=q;picked=null;newDef=null;}y+=30;}
+   float y=0;foreach(var q in targets){var b=new Rect(0,y,c0.width,28);if(q==target)Widgets.DrawHighlightSelected(b);if(LPUI.Button(b,q.LabelShortCap,background:false)){target=q;picked=null;newDef=null;}y+=30;}
    Widgets.EndScrollView();
    // 特性
    var r1=new Rect(w0+12,top,w1,h);Widgets.DrawMenuSection(r1);
    var traits=target?.story?.traits?.allTraits??new List<Trait>();
-   var c1=new Rect(0,0,w1-20,Mathf.Max(h,traits.Count*52+6));
+   var c1=new Rect(0,0,w1-20,Mathf.Max(h-8,traits.Count*52+6));
    Widgets.BeginScrollView(r1.ContractedBy(4),ref s1,c1);
    y=0;
    foreach(var t in traits){
     var b=new Rect(0,y,c1.width,50);var why=FateRewrite.Locked(target,t);
     if(t==picked)Widgets.DrawHighlightSelected(b);else if(Mouse.IsOver(b))Widgets.DrawHighlight(b);
     var old=GUI.color;if(why!=null)GUI.color=new Color(1,1,1,.45f);
-    Widgets.Label(new Rect(b.x+6,b.y+2,b.width-12,24),t.LabelCap);
-    Widgets.Label(new Rect(b.x+6,b.y+24,b.width-12,24),"<color=#B0B0B0>"+(why??FateRewrite.TierName(t.def,t.Degree))+"</color>");
+    LPUI.LabelFit(new Rect(b.x+6,b.y+2,b.width-12,24),t.LabelCap);
+    GUI.color=GUI.color*new Color(.69f,.69f,.69f);LPUI.LabelFit(new Rect(b.x+6,b.y+24,b.width-12,24),why??FateRewrite.TierName(t.def,t.Degree));GUI.color=old*(why!=null?new Color(1,1,1,.45f):Color.white);
     GUI.color=old;
     TooltipHandler.TipRegion(b,()=>t.TipString(target),t.GetHashCode());
     if(why==null && Widgets.ButtonInvisible(b)){picked=t;newDef=null;}
@@ -150,7 +153,7 @@ namespace LichPhylactery {
    // 可选
    var r2=new Rect(w0+w1+24,top,w1,h);Widgets.DrawMenuSection(r2);
    var cands=picked!=null?FateRewrite.Candidates(target,picked):new List<KeyValuePair<TraitDef,int>>();
-   var c2=new Rect(0,0,w1-20,Mathf.Max(h,cands.Count*30+30));
+   var c2=new Rect(0,0,w1-20,Mathf.Max(h-8,cands.Count*30+30));
    Widgets.BeginScrollView(r2.ContractedBy(4),ref s2,c2);
    y=0;
    if(picked==null)Widgets.Label(new Rect(4,0,c2.width-8,60),"先在中间选一个要改写的特性。");
@@ -158,7 +161,7 @@ namespace LichPhylactery {
    foreach(var kv in cands){
     var b=new Rect(0,y,c2.width,28);bool on=kv.Key==newDef && kv.Value==newDegree;
     if(on)Widgets.DrawHighlightSelected(b);else if(Mouse.IsOver(b))Widgets.DrawHighlight(b);
-    Widgets.Label(new Rect(b.x+6,b.y+3,b.width-12,24),FateRewrite.Label(kv.Key,kv.Value));
+    LPUI.LabelFit(new Rect(b.x+6,b.y+3,b.width-12,24),FateRewrite.Label(kv.Key,kv.Value));
     var d=kv.Key;int g=kv.Value;
     TooltipHandler.TipRegion(b,()=>(TraitRarity.Header(d,g)??"")+"\n"+d.DataAtDegree(g).description.Formatted(target.Named("PAWN")).AdjustedFor(target).Resolve(),d.index*64+g+32);
     if(Widgets.ButtonInvisible(b)){newDef=kv.Key;newDegree=kv.Value;}
@@ -167,7 +170,7 @@ namespace LichPhylactery {
    Widgets.EndScrollView();
    // 确认
    string sum=picked==null?"未选择特性":newDef==null?"「"+picked.LabelCap.StripTags()+"」→ ？":"「"+picked.LabelCap.StripTags()+"」→「"+FateRewrite.Label(newDef,newDegree).StripTags()+"」（"+FateRewrite.TierName(newDef,newDegree)+"）";
-   Widgets.Label(new Rect(0,rect.height-100,rect.width-200,28),(target!=null?target.LabelShortCap+"：":"")+sum);
+   LPUI.LabelFit(new Rect(0,rect.height-100,rect.width-200,28),(target!=null?target.LabelShortCap+"：":"")+sum);
    bool was=GUI.enabled;GUI.enabled=was && target!=null && picked!=null && newDef!=null;
    if(Widgets.ButtonText(new Rect(rect.width-190,rect.height-104,190,32),"确认改命")){
     var p=target;var t=picked;var d=newDef;int g=newDegree;
