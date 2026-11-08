@@ -63,7 +63,7 @@ namespace LichPhylactery {
    if(def.defName=="LP_Raise" && HasLeg(p,guardian))cost=2;
    if(ClassSystem.ClassOf(def)?.defName=="LP_Class_Wizard" && HasLeg(p,mastery))cost=Math.Max(1,cost-1);
    int fr=ClassFeats.CostReduce(p,def);if(fr>0)cost=Math.Max(1,cost-fr); // 1.88.0 职业专属专长
-   return LakeArcana.Cost(p,def,cost); // 1.100.0 咒法精通
+   return CasterSpells.Cost(p,def,props,LakeArcana.Cost(p,def,cost)+Spellbook.UpcastCost(p,def)); // 1.130.0 别的职业法术表：按施放职业的环位收费；秘法玄奥不花资源 // 1.100.0 咒法精通；1.128.0 升环每环 +1 法力
   }
   public static float PowerFactor(Pawn p,CompProperties_ClassEffect e)=>e?.stat!=null && e.stat.defName=="LP_ArcanePower" && HasLeg(p,mastery)?MasteryFactor:1f;
   public static bool Torrent(Pawn p)=>Items.Has(p,"LP_LegArcaneTorrent");

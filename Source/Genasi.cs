@@ -34,8 +34,8 @@ namespace LichPhylactery {
   public static string CannotSpark(Pawn caster,LocalTargetInfo t){
    var map=caster.Map;var c=t.Cell;
    if(!c.IsValid || !c.InBounds(map))return "需要地图上的目标。";
-   if(c.DistanceTo(caster.Position)>SparkRange+.5f)return "超出火花距离（6格）。";
-   if(!GenSight.LineOfSight(caster.Position,c,map,true))return "看不到目标。";
+   if(CastApproach.TooFar(c.DistanceTo(caster.Position),SparkRange+.5f))return "超出火花距离（6格）。";
+   if(!CastApproach.IgnoreDistance && !GenSight.LineOfSight(caster.Position,c,map,true))return "看不到目标。";
    return null;
   }
   public static bool Spark(Pawn caster,LocalTargetInfo t){

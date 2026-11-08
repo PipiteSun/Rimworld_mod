@@ -139,6 +139,7 @@ namespace LichPhylactery {
     // 原版能力（皇权 DLC 的止痛灵能）：CanCast / GizmoDisabled 都会经过提尔审判之庭钩子。
     var ad=DefDatabase<AbilityDef>.GetNamedSilentFail("Painblock");
     if(ad!=null){b.abilities.GainAbility(ad);var ab=b.abilities.GetAbility(ad);if(ab!=null){Bench("ability CanCast",20000,()=>sink=ab.CanCast);Bench("ability GizmoDisabled",20000,()=>sink=ab.GizmoDisabled(out _));}b.abilities.RemoveAbility(ad);}
+    SpellBench(plain);
     ExtraBench?.Invoke(a,b,enemy);
    }
    finally{
@@ -149,6 +150,33 @@ namespace LichPhylactery {
     file=null;
    }
    return summary;
+  }
+  // 1.131.0 性能热修：法术书 / 法术表的按钮栏热路径（选中的人每帧每个能力：Hidden、GizmoDisabled → CannotCast → 施放职业 / 费用 / 次数）和窗口里的法术列表。
+  // 17 级法师（法术书写满、戏法学满）、9 级牧师（备法备满）。"recompute" 的几条先 Touch（法术数据版本 +1）再问，和不带的那条对照（现在两者应该一样：按帧记忆试过后去掉了）。
+  static void SpellBench(List<Pawn> cleanup){
+   try{
+    var wizard=DefDatabase<LP_ClassDef>.GetNamedSilentFail("LP_Class_Wizard");var cleric=DefDatabase<LP_ClassDef>.GetNamedSilentFail("LP_Class_Cleric");var clericList=CasterSpells.ListOf(cleric);
+    if(wizard==null || cleric==null || clericList==null){Line("spell bench: skipped (no wizard / cleric class)");return;}
+    var wz=Gen(Faction.OfPlayer,null);cleanup.Add(wz);var wh=Adventurer.TryAdd(wz,20,true);wh.scores=new[]{10,10,10,18,10,10};wh.Dirty();ClassSystem.SetLevel(wh,wizard,17);Spellbook.Sync(wh);
+    foreach(var sp in Spellbook.PickCandidates(wh).ToList()){if(Spellbook.PicksDue(wh)<=0)break;Spellbook.Pick(wh,sp);}
+    foreach(var sp in Spellbook.CantripCandidates(wh).ToList()){if(Spellbook.CantripsDue(wh)<=0)break;Spellbook.LearnCantrip(wh,sp);}
+    var cl=Gen(Faction.OfPlayer,null);cleanup.Add(cl);var clh=Adventurer.TryAdd(cl,20,true);clh.scores=new[]{10,10,10,10,18,10};clh.Dirty();ClassSystem.SetLevel(clh,cleric,9);CasterSpells.Sync(clh);
+    foreach(var sp in CasterSpells.Preparable(clh,clericList).ToList())if(CasterSpells.PreparedCount(clh,clericList)<CasterSpells.PrepCap(clh,clericList))CasterSpells.SetPrepared(clh,clericList,sp,true);
+    var wAbs=wz.abilities.abilities.ToList();var cAbs=cl.abilities.abilities.ToList();
+    Line("spell bench subjects: wizard17 "+wAbs.Count+" abilities ("+Spellbook.PreparedCount(wh)+" prepared), cleric9 "+cAbs.Count+" abilities ("+CasterSpells.PreparedCount(clh,clericList)+" prepared)");
+    Bench("wizard17 Spellbook.Hidden x"+wAbs.Count,500,()=>{foreach(var ab in wAbs)sink=Spellbook.Hidden(wz,ab.def);});
+    Bench("wizard17 GizmoDisabled x"+wAbs.Count,500,()=>{foreach(var ab in wAbs)sink=ab.GizmoDisabled(out _);});
+    Bench("wizard17 GetGizmos x"+wAbs.Count,500,()=>{foreach(var ab in wAbs)foreach(var g in ab.GetGizmos())sink=g;});
+    Bench("cleric9 Spellbook.Hidden x"+cAbs.Count,500,()=>{foreach(var ab in cAbs)sink=Spellbook.Hidden(cl,ab.def);});
+    Bench("cleric9 Spellbook.Hidden recompute x"+cAbs.Count,500,()=>{CasterSpells.Touch();foreach(var ab in cAbs)sink=Spellbook.Hidden(cl,ab.def);});
+    Bench("cleric9 GizmoDisabled x"+cAbs.Count,500,()=>{foreach(var ab in cAbs)sink=ab.GizmoDisabled(out _);});
+    Bench("cleric9 GizmoDisabled recompute x"+cAbs.Count,500,()=>{CasterSpells.Touch();foreach(var ab in cAbs)sink=ab.GizmoDisabled(out _);});
+    Bench("cleric9 CasterSpells.CastList recompute x"+cAbs.Count,500,()=>{CasterSpells.Touch();foreach(var ab in cAbs)sink=CasterSpells.CastList(cl,ab.def);});
+    Bench("wizard17 spellbook window rows (book + picks + cantrips)",200,()=>{sink=Spellbook.BookList(wh);sink=Spellbook.PickCandidates(wh).OrderBy(Spellbook.Circle).ThenBy(x=>x.label).ToList();sink=Spellbook.CantripCandidates(wh).ToList();});
+    Bench("cleric9 caster window rows (preparable + secret candidates)",200,()=>{sink=CasterSpells.Preparable(clh,clericList).ToList();sink=CasterSpells.SecretCandidates(clh,clericList).ToList();});
+    Bench("ClassSystem.ClassOf over both pawns' abilities",500,()=>{foreach(var ab in wAbs)sink=ClassSystem.ClassOf(ab.def);foreach(var ab in cAbs)sink=ClassSystem.ClassOf(ab.def);});
+    Bench("Spellbook.Tags over wizard abilities",500,()=>{foreach(var ab in wAbs)sink=Spellbook.Tags(ab.def);});
+   }catch(Exception e){Line("spell bench: ERROR "+e.GetType().Name+" "+e.Message);}
   }
  }
  public partial class LichChecks {

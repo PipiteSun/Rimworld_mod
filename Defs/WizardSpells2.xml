@@ -1,0 +1,762 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.129.0 法师法术第二版：反制法术（3 环补做）+ 4～9 环。见 ArtSource/WizardSpells-1.129.0-spec.md / report.md，代码在 Source/WizardSpells2.cs。
+     环位 → 法师等级 / 法力：4 环 7/2，5 环 9/3，6 环 11/4，7 环 13/5，8 环 15/6（8 环合计每天 2 次），9 环 17/9（9 环合计每天 1 次）。
+     数值都 × 奥术强度（设置开着时 × 心灵敏感度）。图标在 Textures/LP/Classes/WizardSpells（ArtSource/RaceArt/draw_wizard_spells.py）。 -->
+<Defs>
+  <!-- ===== 状态 ===== -->
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WS_Counterspell</defName>
+    <hediffClass>LichPhylactery.Hediff_WS</hediffClass>
+    <label>反制法术</label>
+    <description>凝神戒备：20 格内下一次敌方的法术或心灵能力会被打断（对方能力等级高于 3 时每高 1 级成功率 −15%）。</description>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WS_Polymorphed</defName>
+    <hediffClass>LichPhylactery.Hediff_WS</hediffClass>
+    <label>变形术：兔形</label>
+    <description>被变成了一只兔子：拿不了武器、放不了能力，操作 −90%，移动 ×0.6，只能咬一口 1 点伤害。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.85,0.7,0.5)</defaultLabelColor>
+    <stages><li><capMods><li><capacity>Manipulation</capacity><offset>-0.9</offset></li></capMods><statFactors><MoveSpeed>0.6</MoveSpeed></statFactors></li></stages>
+    <comps><li Class="HediffCompProperties_VerbGiver"><tools><li><label>兔牙</label><capacities><li>Bite</li></capacities><power>1</power><cooldownTime>1.5</cooldownTime></li></tools></li></comps>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WS_Stoneskin</defName>
+    <hediffClass>LichPhylactery.Hediff_WS</hediffClass>
+    <label>石肤术</label>
+    <description>皮肤硬如岩石（专注）：受到的利器、钝器、穿刺伤害 ×0.6。</description>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WS_Phantasm</defName>
+    <hediffClass>LichPhylactery.Hediff_WS</hediffClass>
+    <label>魅影杀手</label>
+    <description>只有它自己看得见的恐怖幻影（专注）：每 2 秒成功率 55% 受心灵伤害并惊惧。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.8,0.55,0.9)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WS_Dominated</defName>
+    <hediffClass>LichPhylactery.Hediff_WS</hediffClass>
+    <label>被支配</label>
+    <description>心智被法师支配，暂时为殖民地作战；结束后回到原阵营并眩晕 5 秒。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.8,0.55,0.9)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WS_Summoned</defName>
+    <hediffClass>LichPhylactery.Hediff_WS</hediffClass>
+    <label>召唤物</label>
+    <description>被法术召来的生物，时间到就会消散。</description>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WS_Hound</defName>
+    <hediffClass>LichPhylactery.Hediff_WS</hediffClass>
+    <label>忠犬守卫</label>
+    <description>看不见的魔法守门犬：敌人进入 15 格时报警，咬得更狠；时间到就消散。</description>
+    <stages><li><statFactors><MeleeDamageFactor>1.5</MeleeDamageFactor></statFactors></li></stages>
+    <comps><li Class="HediffCompProperties_Invisibility"><visibleToPlayer>true</visibleToPlayer><affectedByDisruptor>false</affectedByDisruptor></li></comps>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WS_TrueSeeing</defName>
+    <hediffClass>LichPhylactery.Hediff_WS</hediffClass>
+    <label>真知术</label>
+    <description>看穿一切幻象：30 格内隐形的敌人现形；不受魔法黑暗和失明影响。</description>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WS_Blinded</defName>
+    <label>目盲</label>
+    <description>被强光刺瞎了眼：视力 −80%。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(1,0.9,0.5)</defaultLabelColor>
+    <stages><li><capMods><li><capacity>Sight</capacity><offset>-0.8</offset></li></capMods></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WS_SunbeamCharge</defName>
+    <label>阳炎射线</label>
+    <description>掌心握着一道阳光（专注）：期间阳炎射线不耗法力、冷却 6 秒。</description>
+    <defaultLabelColor>(1,0.9,0.5)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WS_StoneCurse</defName>
+    <label>石化诅咒</label>
+    <description>石化术留下的石痕（严重度 = 已经成功的次数）：累计 3 次就会彻底石化。</description>
+    <isBad>true</isBad>
+    <maxSeverity>3</maxSeverity>
+    <defaultLabelColor>(0.75,0.75,0.7)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>0.8</MoveSpeed></statFactors></li><li><minSeverity>1.5</minSeverity><label>两处</label><statFactors><MoveSpeed>0.6</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WS_Levitating</defName>
+    <hediffClass>LichPhylactery.Hediff_WS</hediffClass>
+    <label>反转重力</label>
+    <description>飘在半空动弹不得；结束时摔下来受钝器伤害。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.6,0.6,0.85)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WS_Ethereal</defName>
+    <hediffClass>LichPhylactery.Hediff_WS</hediffClass>
+    <label>以太化</label>
+    <description>身处以太位面：不会被当成目标、不受伤害；攻击或施放伤害法术就会回到物质位面。</description>
+    <comps><li Class="HediffCompProperties_Invisibility"><visibleToPlayer>true</visibleToPlayer><affectedByDisruptor>false</affectedByDisruptor></li></comps>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WS_Mansion</defName>
+    <label>魔法宅邸</label>
+    <description>在法师的异次元宅邸里休整：休息恢复 ×1.2，商队不会遇袭。</description>
+    <stages><li><statFactors><RestRateMultiplier>1.2</RestRateMultiplier></statFactors></li></stages>
+  </HediffDef>
+  <ThoughtDef>
+    <defName>LP_WS_MansionThought</defName>
+    <durationDays>0.34</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>魔法宅邸</label><description>在法师的宅邸里吃了一顿盛宴、睡了一张好床。</description><baseMoodEffect>10</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WS_Feebleminded</defName>
+    <hediffClass>LichPhylactery.Hediff_Feebleminded</hediffClass>
+    <label>弱智术</label>
+    <description>心智被打碎：30 天内不能施放法术和心灵能力。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.8,0.55,0.9)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WS_MindBlank</defName>
+    <hediffClass>LichPhylactery.Hediff_WS</hediffClass>
+    <label>心灵屏障</label>
+    <description>心智被完全封闭：免疫心灵伤害、精神崩溃和一切心智控制。</description>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WS_TimeStop</defName>
+    <label>时间停止</label>
+    <description>时间为施法者停下：法师法术施放后不进冷却。</description>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WS_WishStress</defName>
+    <label>祈愿反噬</label>
+    <description>扭曲现实的代价：操作和移动大降。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.9,0.5,0.5)</defaultLabelColor>
+    <stages><li><capMods><li><capacity>Manipulation</capacity><offset>-0.5</offset></li><li><capacity>Moving</capacity><offset>-0.5</offset></li></capMods></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WS_Foresight</defName>
+    <hediffClass>LichPhylactery.Hediff_WS</hediffClass>
+    <label>预警术</label>
+    <description>看见了下一刻：被攻击时成功率 50% 躲开，近战命中 +25%，射击精度 ×1.25。</description>
+    <stages><li><statOffsets><MeleeHitChance>0.25</MeleeHitChance></statOffsets><statFactors><ShootingAccuracyPawn>1.25</ShootingAccuracyPawn></statFactors></li></stages>
+  </HediffDef>
+
+  <!-- ===== 建筑：力场墙、传送法阵 ===== -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_WS_ForceWall</defName>
+    <label>力场墙</label>
+    <description>法师召出的透明力场，挡子弹和近战，过一会儿消散。</description>
+    <thingClass>Building</thingClass>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Things/Building/Linked/Wall</texPath>
+      <graphicClass>Graphic_Appearances</graphicClass>
+      <linkType>CornerFiller</linkType>
+      <linkFlags><li>Wall</li></linkFlags>
+      <color>(140,190,255)</color>
+    </graphicData>
+    <uiIconPath>Things/Building/Linked/WallSmooth_MenuIcon</uiIconPath>
+    <statBases><MaxHitPoints>3000</MaxHitPoints><Flammability>0</Flammability></statBases>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>Impassable</passability>
+    <fillPercent>1</fillPercent>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <useHitPoints>true</useHitPoints>
+    <holdsRoof>false</holdsRoof>
+    <canOverlapZones>false</canOverlapZones>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <building><isInert>true</isInert><claimable>false</claimable><deconstructible>false</deconstructible><ai_chillDestination>false</ai_chillDestination></building>
+    <comps><li Class="CompProperties_Lifespan"><lifespanTicks>1800</lifespanTicks></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_WS_TeleportCircle</defName>
+    <label>传送法阵</label>
+    <description>法师刻下的永久传送法阵（3×3）。法师对着法阵施放“传送法阵”，就把阵上 3×3 的人和物送到另一座传送法阵（优先主基地的）。</description>
+    <thingClass>Building</thingClass>
+    <category>Building</category>
+    <graphicData>
+      <texPath>LP/Abyss/BindingCircle</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(3,3)</drawSize>
+      <color>(150,200,255)</color>
+    </graphicData>
+    <uiIconPath>LP/Abyss/BindingCircle</uiIconPath>
+    <size>(3,3)</size>
+    <statBases><MaxHitPoints>300</MaxHitPoints><Flammability>0</Flammability></statBases>
+    <altitudeLayer>FloorEmplacement</altitudeLayer>
+    <passability>Standable</passability>
+    <useHitPoints>true</useHitPoints>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <clearBuildingArea>false</clearBuildingArea>
+    <building><isInert>true</isInert><ai_chillDestination>false</ai_chillDestination><deconstructible>true</deconstructible></building>
+  </ThingDef>
+
+  <!-- ===== 3 环补做 ===== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WS_Counterspell</defName>
+    <label>反制法术</label>
+    <description>3 环（防护）：凝神戒备 30 秒：20 格内下一次敌方施放的法术或心灵能力被打断（对方能力等级高于 3 时每高 1 级成功率 −15%）。</description>
+    <iconPath>LP/Classes/WizardSpells/Counterspell</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_WS_Counterspell</hediff><cost>2</cost><duration>1800</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>3</circle><school>防护</school></li></modExtensions>
+  </AbilityDef>
+
+  <!-- ===== 4 环（法师 7 级，法力 2） ===== -->
+  <AbilityDef ParentName="LP_ClassAbilityBase">
+    <defName>LP_WS_Polymorph</defName>
+    <label>变形术</label>
+    <description>4 环（变化）：敌人成功率 50% 变成兔形 1 分钟（拿不了武器、放不了能力，操作 −90%，移动 ×0.6，只能咬 1 点伤害）；友军则变成灰熊 1 小时（同德鲁伊的荒野变形）。</description>
+    <iconPath>LP/Classes/WizardSpells/Polymorph</iconPath>
+    <hostile>false</hostile>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>20</range><warmupTime>1</warmupTime><requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations><canTargetSelf>true</canTargetSelf><canTargetAnimals>true</canTargetAnimals><canTargetMechs>false</canTargetMechs><canTargetHumans>true</canTargetHumans></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_Polymorph</effect><cost>2</cost><duration>3600</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>4</circle><school>变化</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_WS_Stoneskin</defName>
+    <label>石肤术</label>
+    <description>4 环（防护，专注）：20 格内的一名友军 1 小时，受到的利器、钝器、穿刺伤害 ×0.6。</description>
+    <iconPath>LP/Classes/WizardSpells/Stoneskin</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_Stoneskin</effect><hediff>LP_WS_Stoneskin</hediff><cost>2</cost><duration>2500</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>4</circle><school>防护</school><concentration>true</concentration></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_WS_WallOfFire</defName>
+    <label>火墙术</label>
+    <description>4 环（塑能，专注）：20 格内一点立起一道 8 格长的火墙（垂直于施法方向），持续 1 分钟：墙上的敌人每秒受 10 × 奥术强度点火焰伤害。</description>
+    <iconPath>LP/Classes/WizardSpells/WallOfFire</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_WallOfFire</effect><cost>2</cost><power>10</power><duration>3600</duration><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>4</circle><school>塑能</school><concentration>true</concentration></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_WS_BlackTentacles</defName>
+    <label>黑触手</label>
+    <description>4 环（咒法，专注）：20 格内一点半径 3 冒出黑色触手，持续 1 分钟：敌人成功率 55% 被缠住（定身 5 秒），被缠住的每秒受 6 × 奥术强度点钝器伤害。</description>
+    <iconPath>LP/Classes/WizardSpells/BlackTentacles</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_BlackTentacles</effect><cost>2</cost><power>6</power><radius>3</radius><duration>3600</duration><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>4</circle><school>咒法</school><concentration>true</concentration></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_WS_Banishment</defName>
+    <label>放逐术</label>
+    <description>4 环（防护，专注）：20 格内一个敌人成功率 60% 被放逐：恶魔、魔鬼、元素和其他外来者永久送回老家（连同装备消失，不留尸体）；其他目标消失 1 分钟后回到原地（施法者失去专注时提前回来）。</description>
+    <iconPath>LP/Classes/WizardSpells/Banishment</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_Banishment</effect><cost>2</cost><duration>3600</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>4</circle><school>防护</school><concentration>true</concentration></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_WS_Confusion</defName>
+    <label>困惑术</label>
+    <description>4 环（惑控）：20 格内一点半径 3，每个敌人成功率 55% 狂乱 15 秒（攻击身边的任何人）。</description>
+    <iconPath>LP/Classes/WizardSpells/Confusion</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_Confusion</effect><cost>2</cost><radius>3</radius><duration>900</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>4</circle><school>惑控</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_WS_PhantasmalKiller</defName>
+    <label>魅影杀手</label>
+    <description>4 环（幻术，专注）：20 格内一个敌人 30 秒内每 2 秒成功率 55% 受 10 × 奥术强度点心灵伤害并惊惧。</description>
+    <iconPath>LP/Classes/WizardSpells/PhantasmalKiller</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_PhantasmalKiller</effect><cost>2</cost><power>10</power><duration>1800</duration><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>4</circle><school>幻术</school><concentration>true</concentration></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAbilityBase">
+    <defName>LP_WS_ArcaneEye</defName>
+    <label>秘法之眼</label>
+    <description>4 环（预言）：派一只隐形的魔法眼睛飞到 60 格内一点，揭开半径 15 的迷雾。</description>
+    <iconPath>LP/Classes/WizardSpells/ArcaneEye</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>60</range><warmupTime>1</warmupTime><requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>true</canTargetLocations></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_ArcaneEye</effect><cost>2</cost><radius>15</radius><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>4</circle><school>预言</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAbilityBase">
+    <defName>LP_WS_Fabricate</defName>
+    <label>急制术</label>
+    <description>4 环（变化·仪式）：对 10 格内一台工作台：它第一个能做的账单立即完成一件（工作量 ≤ 3000 × 奥术强度，品质按法师自己的技能），材料照扣。每天一次。</description>
+    <iconPath>LP/Classes/WizardSpells/Fabricate</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>10</range><warmupTime>2</warmupTime><requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>true</canTargetBuildings><canTargetLocations>false</canTargetLocations><mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_Fabricate</effect><cost>2</cost><power>3000</power><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>4</circle><school>变化</school><ritual>true</ritual></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WS_FaithfulHound</defName>
+    <label>忠犬守卫</label>
+    <description>4 环（咒法·仪式）：在身边召一只看不见的守门犬 8 小时（殖民地的猎犬，隐形，咬得更狠；不能驯养、带走，时间到消散）：敌人进入它 15 格内时来信报警。</description>
+    <iconPath>LP/Classes/WizardSpells/FaithfulHound</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_FaithfulHound</effect><cost>2</cost><duration>20000</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>4</circle><school>咒法</school><ritual>true</ritual></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_WS_Blight</defName>
+    <label>枯萎术</label>
+    <description>4 环（死灵）：20 格内一个敌人受 30 × 奥术强度点死灵伤害（虫族和植物系生物 ×1.5）；它身边半径 3 的植物枯死。</description>
+    <iconPath>LP/Classes/WizardSpells/Blight</iconPath>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_Blight</effect><cost>2</cost><power>30</power><radius>3</radius><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>4</circle><school>死灵</school></li></modExtensions>
+  </AbilityDef>
+
+  <!-- ===== 5 环（法师 9 级，法力 3） ===== -->
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_WS_ConeOfCold</defName>
+    <label>锥形寒冰</label>
+    <description>5 环（塑能）：朝一个方向喷出 10 格的锥形寒气，里面的敌人受 40 × 奥术强度点寒冷伤害并冻伤。</description>
+    <iconPath>LP/Classes/WizardSpells/ConeOfCold</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>10</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_ConeOfCold</effect><cost>3</cost><power>40</power><range>10</range><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>5</circle><school>塑能</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_WS_DominatePerson</defName>
+    <label>支配人类</label>
+    <description>5 环（惑控，专注）：20 格内一个人形敌人成功率 50% 被支配，1 分钟内加入殖民地作战（可以征召）；结束后回到原阵营并眩晕 5 秒。</description>
+    <iconPath>LP/Classes/WizardSpells/DominatePerson</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_Dominate</effect><cost>3</cost><duration>3600</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>5</circle><school>惑控</school><concentration>true</concentration></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_WS_HoldMonster</defName>
+    <label>定身怪物</label>
+    <description>5 环（惑控，可升环）：20 格内一个敌对生物（人形、动物、虫族、怪物都行，机械体除外）成功率 50% 麻痹 6 秒。升环：每多 1 环多定住它 6 格内另一个。</description>
+    <iconPath>LP/Classes/WizardSpells/HoldMonster</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_HoldMonster</effect><cost>3</cost><duration>360</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>5</circle><school>惑控</school><upcast>target</upcast></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAbilityBase">
+    <defName>LP_WS_Telekinesis</defName>
+    <label>心灵遥控</label>
+    <description>5 环（变化）：10 格内——一件物品被拿到自己身边（不限重量）；一名友军被拉到身边；一个敌人成功率 55% 被抛飞 6 格，受 10 × 奥术强度点钝器伤害并眩晕 2 秒。</description>
+    <iconPath>LP/Classes/WizardSpells/Telekinesis</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>900</cooldownTicksRange>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>10</range><warmupTime>0.5</warmupTime><requireLineOfSight>true</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetItems>true</canTargetItems><canTargetLocations>false</canTargetLocations><mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_Telekinesis</effect><cost>3</cost><power>10</power><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>5</circle><school>变化</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WS_ConjureElemental</defName>
+    <label>召唤元素</label>
+    <description>5 环（咒法，专注）：窗口里选火 / 水 / 土 / 风，身边召来一个对应的元素裔战士为殖民地作战 1 小时（施法者失去专注时提前消散）。</description>
+    <iconPath>LP/Classes/WizardSpells/ConjureElemental</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_ConjureElemental</effect><cost>3</cost><duration>2500</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>5</circle><school>咒法</school><concentration>true</concentration></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAbilityBase">
+    <defName>LP_WS_TeleportationCircle</defName>
+    <label>传送法阵</label>
+    <description>5 环（咒法·仪式）：对着一块空地施放——刻下一座永久的传送法阵（3×3）；对着已有的法阵施放——把阵上 3×3 的人和物送到另一座传送法阵（优先主基地的）。</description>
+    <iconPath>LP/Classes/WizardSpells/TeleportationCircle</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>6</range><warmupTime>2</warmupTime><requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>true</canTargetBuildings><canTargetLocations>true</canTargetLocations><mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_TeleportCircle</effect><cost>3</cost><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>5</circle><school>咒法</school><ritual>true</ritual></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAbilityBase">
+    <defName>LP_WS_ModifyMemory</defName>
+    <label>修改记忆</label>
+    <description>5 环（惑控·仪式）：对 5 格内一个人——囚犯：招募抗拒 × (1 − 50% × 奥术强度)（最低 0）；殖民者：窗口里选一条负面记忆删掉。</description>
+    <iconPath>LP/Classes/WizardSpells/ModifyMemory</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>5</range><warmupTime>2</warmupTime><requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations><canTargetAnimals>false</canTargetAnimals><canTargetMechs>false</canTargetMechs><canTargetHumans>true</canTargetHumans></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_ModifyMemory</effect><cost>3</cost><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>5</circle><school>惑控</school><ritual>true</ritual></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WS_Scrying</defName>
+    <label>探知术</label>
+    <description>5 环（预言·仪式）：每 3 天一次：来信列出 3 天内已经排定的威胁事件（还有几天、什么事件），并按殖民地现在的财富和人口估计一次袭击的规模。</description>
+    <iconPath>LP/Classes/WizardSpells/Scrying</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>180000</cooldownTicksRange>
+    <verbProperties><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_Scrying</effect><cost>3</cost><duration>180000</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>5</circle><school>预言</school><ritual>true</ritual></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WS_LegendLore</defName>
+    <label>通晓传奇</label>
+    <description>5 环（预言·仪式）：每 15 天一次：查到一处传说宝藏的下落——生成一个原版“物资藏匿点”任务，藏匿点里另外多一件优秀品质的 DND 魔法物品（生成不了任务时物品直接出现在法师身边）。</description>
+    <iconPath>LP/Classes/WizardSpells/LegendLore</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>900000</cooldownTicksRange>
+    <verbProperties><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_LegendLore</effect><cost>3</cost><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>5</circle><school>预言</school><ritual>true</ritual></li></modExtensions>
+  </AbilityDef>
+
+  <!-- ===== 6 环（法师 11 级，法力 4） ===== -->
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_WS_ChainLightning</defName>
+    <label>连锁闪电</label>
+    <description>6 环（塑能）：24 格内的目标受 30 × 奥术强度点闪电伤害，再跳向 10 格内另外最多 5 个敌人，每跳 ×0.85；机械体额外短路（眩晕 2 秒）。冷却 30 秒。</description>
+    <iconPath>LP/Classes/WizardSpells/ChainLightning</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>24</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_ChainLightning</effect><cost>4</cost><power>30</power><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>6</circle><school>塑能</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_WS_WallOfForce</defName>
+    <label>力场墙</label>
+    <description>6 环（塑能）：20 格内一点立起一道 8 格长的透明力场墙（垂直于施法方向），挡子弹和近战，每格 300 × 奥术强度点耐久，30 秒后消散。冷却 60 秒。</description>
+    <iconPath>LP/Classes/WizardSpells/WallOfForce</iconPath>
+    <hostile>false</hostile>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime><targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_WallOfForce</effect><cost>4</cost><power>300</power><duration>1800</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>6</circle><school>塑能</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_WS_TrueSeeing</defName>
+    <label>真知术</label>
+    <description>6 环（预言）：20 格内的一名友军 1 小时看穿隐形（30 格内隐形的敌人现形），不受魔法黑暗和失明影响；施放时像识破卷轴一样驱散地图上夺心魔的控制、鉴定诅咒物品。</description>
+    <iconPath>LP/Classes/WizardSpells/TrueSeeing</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_TrueSeeing</effect><hediff>LP_WS_TrueSeeing</hediff><cost>4</cost><duration>2500</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>6</circle><school>预言</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_WS_CircleOfDeath</defName>
+    <label>死亡法阵</label>
+    <description>6 环（死灵）：20 格内一点半径 6 的死亡之环，只伤敌人：35 × 奥术强度点死灵伤害。</description>
+    <iconPath>LP/Classes/WizardSpells/CircleOfDeath</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_CircleOfDeath</effect><cost>4</cost><power>35</power><radius>6</radius><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>6</circle><school>死灵</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_WS_FleshToStone</defName>
+    <label>石化术</label>
+    <description>6 环（变化）：20 格内一个敌人成功率 45% 身上多一道石痕（越来越慢），失败也减速 10 秒；累计 3 道就开始彻底石化（同石化卷轴，体型 2 以下）。</description>
+    <iconPath>LP/Classes/WizardSpells/FleshToStone</iconPath>
+    <cooldownTicksRange>900</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_FleshToStone</effect><cost>4</cost><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>6</circle><school>变化</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAbilityBase">
+    <defName>LP_WS_MoveEarth</defName>
+    <label>移山术</label>
+    <description>6 环（变化·仪式）：20 格内一点附近最多 30 格天然岩壁直接被挖走，矿物产量 50%（不动建筑和有人造墙的格子）。</description>
+    <iconPath>LP/Classes/WizardSpells/MoveEarth</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>20</range><warmupTime>2</warmupTime><requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>true</canTargetBuildings><canTargetLocations>true</canTargetLocations><mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_MoveEarth</effect><cost>4</cost><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>6</circle><school>变化</school><ritual>true</ritual></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WS_Contingency</defName>
+    <label>应急术</label>
+    <description>6 环（咒法）：窗口里预存一个自身法术（护盾术、虚假生命、闪现术、石肤术、法师护甲、镜影术），10 天内倒地或伤势过半时自动免费施放；只能存一个。</description>
+    <iconPath>LP/Classes/WizardSpells/Contingency</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_Contingency</effect><cost>4</cost><duration>600000</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>6</circle><school>咒法</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_WS_Sunbeam</defName>
+    <label>阳炎射线</label>
+    <description>6 环（塑能，专注）：从自己射出一道 20 格的阳光，线上的敌人受 30 × 奥术强度点光耀伤害并失明 10 秒；1 分钟内（保持专注）再射不耗法力、冷却 6 秒。</description>
+    <iconPath>LP/Classes/WizardSpells/Sunbeam</iconPath>
+    <cooldownTicksRange>360</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_Sunbeam</effect><cost>4</cost><power>30</power><duration>3600</duration><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>6</circle><school>塑能</school><concentration>true</concentration></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAbilityBase">
+    <defName>LP_WS_CreateUndead</defName>
+    <label>创造不死生物</label>
+    <description>6 环（死灵）：把 10 格内一具人形尸体和它附近 5 格内另外最多 2 具变成永久的食尸鬼仆役（巫妖的骷髅仆役，算作亡灵仆从）。</description>
+    <iconPath>LP/Classes/WizardSpells/CreateUndead</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>10</range><warmupTime>2</warmupTime><requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetItems>true</canTargetItems><canTargetCorpses>true</canTargetCorpses><canTargetLocations>false</canTargetLocations><mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_CreateUndead</effect><cost>4</cost><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>6</circle><school>死灵</school></li></modExtensions>
+  </AbilityDef>
+
+  <!-- ===== 7 环（法师 13 级，法力 5） ===== -->
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_WS_DelayedBlastFireball</defName>
+    <label>延时爆裂火球</label>
+    <description>7 环（塑能，可蓄力）：在 24 格内一点放下一颗发光的火珠，蓄力秒数后炸开（右键按钮或在法术书里选 0～5 秒）：半径 5，伤害 (20 + 10 × 蓄力秒数) × 奥术强度点火焰（满蓄 70）。</description>
+    <iconPath>LP/Classes/WizardSpells/DelayedBlastFireball</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><range>24</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_DelayedBlast</effect><cost>5</cost><power>20</power><radius>5</radius><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>7</circle><school>塑能</school><upcast>charge</upcast></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAbilityBase">
+    <defName>LP_WS_DimensionDoor</defName>
+    <label>次元门</label>
+    <description>7 环（咒法，每天 2 次）：自己和身边最多 2 名友军一起瞬移到地图上任意已探索、能站立的位置，不需要视线。</description>
+    <iconPath>LP/Classes/WizardSpells/DimensionDoor</iconPath>
+    <hostile>false</hostile>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>500</range><warmupTime>1</warmupTime><requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>true</canTargetLocations></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_DimensionDoor</effect><cost>5</cost><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>7</circle><school>咒法</school><perDay>2</perDay></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_WS_FingerOfDeath</defName>
+    <label>指死术</label>
+    <description>7 环（死灵）：24 格内一个敌人受 60 × 奥术强度点死灵伤害；被杀死的人形立刻爬起来，成为殖民地永久的僵尸仆役（巫妖的骷髅仆役）。</description>
+    <iconPath>LP/Classes/WizardSpells/FingerOfDeath</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><range>24</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_FingerOfDeath</effect><cost>5</cost><power>60</power><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>7</circle><school>死灵</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_WS_ReverseGravity</defName>
+    <label>反转重力</label>
+    <description>7 环（变化，专注）：20 格内一点半径 5 的重力反转：敌人飘起 10 秒动弹不得，落地受 15 × 奥术强度点钝器伤害（施法者失去专注时提前落地）。</description>
+    <iconPath>LP/Classes/WizardSpells/ReverseGravity</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_ReverseGravity</effect><cost>5</cost><power>15</power><radius>5</radius><duration>600</duration><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>7</circle><school>变化</school><concentration>true</concentration></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WS_Etherealness</defName>
+    <label>以太化</label>
+    <description>7 环（变化）：自己踏入以太位面 1 小时：敌人不会把你当目标，你不受任何伤害；攻击或施放伤害法术就会提前回来（不能穿墙）。</description>
+    <iconPath>LP/Classes/WizardSpells/Etherealness</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_WS_Ethereal</hediff><cost>5</cost><duration>2500</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>7</circle><school>变化</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_WS_PlaneShift</defName>
+    <label>异界传送</label>
+    <description>7 环（咒法）：20 格内一个敌人成功率 50% 被永久送往别的位面（连同装备消失）。在商队里时，商队按钮“异界传送”让全队瞬间回到殖民地（消耗这位法师 5 点法力）。</description>
+    <iconPath>LP/Classes/WizardSpells/PlaneShift</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_PlaneShift</effect><cost>5</cost><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>7</circle><school>咒法</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WS_MagnificentMansion</defName>
+    <label>魔法宅邸</label>
+    <description>7 环（咒法·仪式）：商队在外时用商队按钮“魔法宅邸”施放（消耗 5 点法力）：8 小时内商队不会遇袭，全员休息恢复 ×1.2、心情 +10。在地图上施放时只给身边 5 格内的友军这个效果。</description>
+    <iconPath>LP/Classes/WizardSpells/MagnificentMansion</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_Mansion</effect><cost>5</cost><duration>20000</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>7</circle><school>咒法</school><ritual>true</ritual></li></modExtensions>
+  </AbilityDef>
+
+  <!-- ===== 8 环（法师 15 级，法力 6，8 环合计每天 2 次） ===== -->
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_WS_ForceCage</defName>
+    <label>力场牢笼</label>
+    <description>8 环（塑能）：在 20 格内一点围起半径 2 的力场牢笼，20 秒：里面的敌人出不来，内外子弹不通，不能抵抗。</description>
+    <iconPath>LP/Classes/WizardSpells/ForceCage</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_ForceCage</effect><cost>6</cost><radius>2</radius><duration>1200</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>8</circle><school>塑能</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_WS_Maze</defName>
+    <label>迷宫放逐</label>
+    <description>8 环（咒法）：20 格内一个敌人被关进异次元迷宫，30 秒后回到原地；普通敌人成功率 90%，传奇生物和剧情首领 50%。</description>
+    <iconPath>LP/Classes/WizardSpells/Maze</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_Maze</effect><cost>6</cost><duration>1800</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>8</circle><school>咒法</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_WS_DominateMonster</defName>
+    <label>支配怪物</label>
+    <description>8 环（惑控，专注）：20 格内任何一个敌对生物（含动物、虫族、机械体）成功率 45% 被支配 1 分钟，为殖民地作战；结束后回到原阵营并眩晕 5 秒。</description>
+    <iconPath>LP/Classes/WizardSpells/DominateMonster</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_Dominate</effect><cost>6</cost><duration>3600</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>8</circle><school>惑控</school><concentration>true</concentration></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_WS_Feeblemind</defName>
+    <label>弱智术</label>
+    <description>8 环（惑控）：20 格内一个敌人受 30 × 奥术强度点心灵伤害，并且成功率 50% 在 30 天内不能施法、不能用心灵能力。</description>
+    <iconPath>LP/Classes/WizardSpells/Feeblemind</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_Feeblemind</effect><cost>6</cost><power>30</power><duration>1800000</duration><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>8</circle><school>惑控</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_WS_MindBlank</defName>
+    <label>心灵屏障</label>
+    <description>8 环（防护）：20 格内的一名友军 1 天免疫心灵伤害、精神崩溃和一切心智控制。</description>
+    <iconPath>LP/Classes/WizardSpells/MindBlank</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>TargetBuff</effect><hediff>LP_WS_MindBlank</hediff><fixedSeverity>true</fixedSeverity><cost>6</cost><duration>60000</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>8</circle><school>防护</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WS_Antipathy</defName>
+    <label>厌恶之地</label>
+    <description>8 环（惑控·仪式）：以自己为中心半径 12，持续 10 天，窗口里选一类（人形 / 虫族 / 动物 / 机械体）：这类敌对单位进入时成功率 50% 被一股厌恶感赶出去（推出区域并停下 1 秒）。</description>
+    <iconPath>LP/Classes/WizardSpells/Antipathy</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_Antipathy</effect><cost>6</cost><radius>12</radius><duration>600000</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>8</circle><school>惑控</school><ritual>true</ritual></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_WS_Sunburst</defName>
+    <label>阳炎爆</label>
+    <description>8 环（塑能）：24 格内一点半径 6 爆开烈日之光，只伤敌人：40 × 奥术强度点光耀伤害并失明 10 秒。</description>
+    <iconPath>LP/Classes/WizardSpells/Sunburst</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><range>24</range><warmupTime>1.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_Sunburst</effect><cost>6</cost><power>40</power><radius>6</radius><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>8</circle><school>塑能</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WS_Clone</defName>
+    <label>克隆体</label>
+    <description>8 环（死灵·仪式）：需要生物科技 DLC，并且地图上有一座生长缸：开始培养自己的克隆体，15 天长成。克隆体长成后法师死亡，灵魂移入克隆体：在主基地醒来，保留技能、等级、职业和特性，身上的装备留在死去的地方。巫妖不能用。</description>
+    <iconPath>LP/Classes/WizardSpells/Clone</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_Clone</effect><cost>6</cost><duration>900000</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>8</circle><school>死灵</school><ritual>true</ritual></li></modExtensions>
+  </AbilityDef>
+
+  <!-- ===== 9 环（法师 17 级，法力 9，9 环合计每天 1 次） ===== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WS_TimeStop</defName>
+    <label>时间停止</label>
+    <description>9 环（变化）：除自己外，地图上所有人定住 6 秒（受伤也不解除）；这 6 秒里法师法术施放后不进冷却。</description>
+    <iconPath>LP/Classes/WizardSpells/TimeStop</iconPath>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_TimeStop</effect><cost>9</cost><duration>360</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>9</circle><school>变化</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WS_Wish</defName>
+    <label>祈愿术</label>
+    <description>9 环（咒法，每 7 天一次）：窗口里选一：免费施放任意一个 8 环以下的法师法术 / 地图上全体殖民者痊愈 / 复活一名殖民者 / 召来一件传说品质的 DND 魔法物品。后两项有 33% 反噬：3 天操作和移动大降，并且再 33% 永久失去祈愿术。</description>
+    <iconPath>LP/Classes/WizardSpells/Wish</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>420000</cooldownTicksRange>
+    <verbProperties><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_Wish</effect><cost>9</cost><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>9</circle><school>咒法</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WS_Gate</defName>
+    <label>异界之门</label>
+    <description>9 环（咒法）：在身边打开一道位面之门，窗口里选一：从深渊或九狱召来一个恶魔 / 魔鬼为殖民地作战 1 小时，或让一支友善派系的商队直接从门里走出来。</description>
+    <iconPath>LP/Classes/WizardSpells/Gate</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_Gate</effect><cost>9</cost><duration>2500</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>9</circle><school>咒法</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_WS_PowerWordKill</defName>
+    <label>强力真言·杀</label>
+    <description>9 环（惑控）：24 格内一个伤势已经过半（健康 ≤ 50%）的敌人直接死亡；传奇生物和剧情首领改受 100 × 奥术强度点心灵伤害。还没过半的普通敌人只受 30 × 奥术强度点心灵伤害。</description>
+    <iconPath>LP/Classes/WizardSpells/PowerWordKill</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><range>24</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_PowerWordKill</effect><cost>9</cost><power>100</power><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>9</circle><school>惑控</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_WS_Foresight</defName>
+    <label>预警术</label>
+    <description>9 环（预言）：20 格内的一名友军 8 小时：被攻击时成功率 50% 躲开，近战命中 +25%，射击精度 ×1.25。</description>
+    <iconPath>LP/Classes/WizardSpells/Foresight</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>TargetBuff</effect><hediff>LP_WS_Foresight</hediff><fixedSeverity>true</fixedSeverity><cost>9</cost><duration>20000</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>9</circle><school>预言</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_WS_MassPolymorph</defName>
+    <label>群体变形</label>
+    <description>9 环（变化）：20 格内一点半径 4 内最多 10 个敌人，各自成功率 50% 变成兔形 1 分钟（同变形术）。</description>
+    <iconPath>LP/Classes/WizardSpells/MassPolymorph</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WS_MassPolymorph</effect><cost>9</cost><radius>4</radius><duration>3600</duration><stat>LP_ArcanePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.WizardSpellExt"><circle>9</circle><school>变化</school></li></modExtensions>
+  </AbilityDef>
+</Defs>

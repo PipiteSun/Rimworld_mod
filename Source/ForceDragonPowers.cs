@@ -141,7 +141,7 @@ namespace LichPhylactery {
    switch(Props.effect){
     case "breath":
      if(!target.Cell.IsValid || !target.Cell.InBounds(map))return "需要地图上的目标位置。";
-     if(target.Cell.DistanceTo(Caster.Position)>ForceDragon.BreathRange(Math.Max(1,ForceDragon.Age(Caster)))+.5f)return "超出当前龙龄的吐息射程（"+ForceDragon.BreathRange(Math.Max(1,ForceDragon.Age(Caster))).ToString("0.#")+"格）。";
+     if(CastApproach.TooFar(target.Cell.DistanceTo(Caster.Position),ForceDragon.BreathRange(Math.Max(1,ForceDragon.Age(Caster)))+.5f))return "超出当前龙龄的吐息射程（"+ForceDragon.BreathRange(Math.Max(1,ForceDragon.Age(Caster))).ToString("0.#")+"格）。";
      return null;
     case "devour":
      return ForceDragonPowers.DevourValue(target.Thing)>0?null:"只能吞噬地上未装备的护盾腰带、护盾背包等力场装置。";

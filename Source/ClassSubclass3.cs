@@ -66,7 +66,7 @@ namespace LichPhylactery {
   }
 
   // ---------- 塑能学派 ----------
-  static readonly HashSet<string> EvoEffects=new HashSet<string>{"MagicMissile","Fireball","LightningBolt","Disintegrate"};
+  static readonly HashSet<string> EvoEffects=new HashSet<string>{"MagicMissile","Fireball","LightningBolt","Disintegrate","WS_FireBolt","WS_RayOfFrost","WS_ShockingGrasp","WS_Thunderwave","WS_ScorchingRay","WS_Shatter","WS_WallOfFire","WS_ConeOfCold","WS_ChainLightning","WS_Sunbeam","WS_DelayedBlast","WS_Sunburst"}; // 1.128.0 / 1.129.0 新塑能法术
   public static bool Evo(CompProperties_ClassEffect e)=>e!=null && EvoEffects.Contains(e.effect);
   // 伤害倍率（ClassEffects.Power）：强力戏法 魔法飞弹 ×1.5；强效塑能 + 智力调整值 × 10%；超限导能 ×2。
   public static float PowerFactor(Pawn p,CompProperties_ClassEffect e){

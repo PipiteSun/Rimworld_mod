@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- 1.129.0 热修：射程外施放——先走到射程内、看得见目标的位置，再换成原版施放工作（Source/CastRange.cs）。 -->
+  <JobDef>
+    <defName>LP_CastAbilityApproach</defName>
+    <driverClass>LichPhylactery.JobDriver_CastApproach</driverClass>
+    <reportString>走近以施放。</reportString>
+    <casualInterruptible>false</casualInterruptible>
+    <alwaysShowWeapon>true</alwaysShowWeapon>
+    <suspendable>false</suspendable>
+  </JobDef>
+</Defs>

@@ -1,0 +1,1170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.130.0 施法职业法术扩充：由 ArtSource/CasterSpells/gen_casterspells.py 生成，不要手改。 -->
+<Defs>
+
+  <!-- Cleric -->
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_Thaumaturgy</defName>
+    <label>奇术</label>
+    <description>戏法（变化）：在 15 格内一点显出神迹：半径 2 内的污物清理干净，并点起一团持续 1 小时的圣光。冷却 5 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/Thaumaturgy</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <hostile>false</hostile>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <verbProperties><range>15</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Util</effect><cost>0</cost><radius>2</radius><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>0</circle><school>变化</school><kind>thaumaturgy</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_CS_TollTheDead</defName>
+    <label>亡者丧钟</label>
+    <description>戏法（死灵）：24 格内一个敌人耳边响起丧钟，受 8 × 强度点死灵伤害；目标已经受伤时伤害翻倍。冷却 4 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/TollTheDead</iconPath>
+    <cooldownTicksRange>240</cooldownTicksRange>
+    <verbProperties><range>24</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Bolt</effect><cost>0</cost><power>8</power><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>0</circle><school>死灵</school><damage>Necrotic</damage><vs>Wounded</vs><ap>0.3</ap></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_CS_Resistance</defName>
+    <label>抗性术</label>
+    <description>戏法（防护）：10 格内一名友军 30 秒内受到的伤害 ×0.85。冷却 10 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/Resistance</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>10</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>TargetBuff</effect><cost>0</cost><duration>1800</duration><hediff>LP_CS_Resistance</hediff><fixedSeverity>true</fixedSeverity><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>0</circle><school>防护</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_CS_HealingWord</defName>
+    <label>治疗真言</label>
+    <description>1 环（塑能·可升环）：远远念一句治愈真言：30 格内一名友军立即治疗 10 × 强度点伤势（优先流血伤口）。升环：每环效果 +25%。冷却 10 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/HealingWord</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>30</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Heal</effect><cost>1</cost><power>10</power><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>1</circle><school>塑能</school><upcast>power</upcast></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_CS_Command</defName>
+    <label>命令术</label>
+    <description>1 环（惑控·可升环）：对 20 格内一个敌人下一句命令，成功率 60%：随机“趴下”（倒地 3 秒）、“滚开”（逃跑）或“放下”（丢下武器）。目标每比施法者高 1 级 −5%（最低 10%），传奇生物和剧情首领减半，心智抗性也能抵抗。对机械体无效。升环：每环多命令 6 格内另一个敌人。冷却 20 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/Command</iconPath>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Hex</effect><cost>1</cost><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>1</circle><school>惑控</school><upcast>target</upcast><kind>command</kind><chance>0.6</chance><mind>true</mind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_CS_ShieldOfFaith</defName>
+    <label>虔诚护盾</label>
+    <description>1 环（防护·专注）：20 格内一名友军被闪光的护盾环绕 10 分钟：利器与钝器护甲 +20%（专注）。冷却 20 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/ShieldOfFaith</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Buff</effect><cost>1</cost><duration>36000</duration><hediff>LP_CS_ShieldOfFaith</hediff><fixedSeverity>true</fixedSeverity><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>1</circle><school>防护</school><concentration>true</concentration></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_CreateWater</defName>
+    <label>造水术</label>
+    <description>1 环（咒法·仪式）：20 格内半径 3 降下一阵清水：扑灭范围内的火（包括身上着火的人），浇灌作物（生长 +5%）。冷却 10 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/CreateWater</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <hostile>false</hostile>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Util</effect><cost>1</cost><radius>3</radius><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>1</circle><school>咒法</school><ritual>true</ritual><kind>createWater</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_PurifyFood</defName>
+    <label>净化饮食</label>
+    <description>1 环（变化·仪式）：净化 10 格内半径 3 的食物：腐烂进度归零；范围内友方的人治好食物中毒。冷却 10 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/PurifyFood</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <hostile>false</hostile>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>10</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Util</effect><cost>1</cost><radius>3</radius><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>1</circle><school>变化</school><ritual>true</ritual><kind>purify</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_CS_GuidingBolt</defName>
+    <label>指引之箭</label>
+    <description>1 环（塑能·可升环）：一道光箭射向 24 格内一个敌人，14 × 强度点光耀伤害；之后 10 秒内它下一次被攻击伤害 ×1.3。升环：每环效果 +25%。冷却 15 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/GuidingBolt</iconPath>
+    <cooldownTicksRange>900</cooldownTicksRange>
+    <verbProperties><range>24</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Bolt</effect><cost>1</cost><power>14</power><duration>600</duration><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>1</circle><school>塑能</school><upcast>power</upcast><damage>Radiant</damage><hediff2>LP_CS_Outlined</hediff2><ap>0.3</ap></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_CS_Aid</defName>
+    <label>援助术</label>
+    <description>2 环（防护·可升环）：20 格内一名友军和它身边 6 格内另外 2 名友军各得 10 × 强度点临时生命（先扣临时生命再受伤），持续 8 小时。升环：每环效果 +25%。冷却 40 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/Aid</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2400</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Buff</effect><cost>1</cost><power>10</power><radius>6</radius><duration>20000</duration><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>2</circle><school>防护</school><upcast>power</upcast><kind>tempHp</kind><count>3</count></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_SpiritualWeapon</defName>
+    <label>灵体武器</label>
+    <description>2 环（塑能·专注）：召出一把飘浮的光耀之锤，1 分钟内每 2 秒敲打施法者 15 格内最近的一个敌人，8 × 强度点伤害（专注）。冷却 30 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/SpiritualWeapon</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Aura</effect><cost>1</cost><power>8</power><duration>3600</duration><hediff>LP_CS_SpiritWeapon</hediff><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>2</circle><school>塑能</school><concentration>true</concentration></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_PrayerOfHealing</defName>
+    <label>祈祷治疗</label>
+    <description>2 环（塑能·仪式）：带领身边 8 格内最多 10 名友军祈祷：每人治疗 25 × 强度点伤势。可以仪式施法（原地引导 1 小时，不耗资源）。冷却 1 分钟。</description>
+    <iconPath>LP/Classes/CasterSpells/PrayerOfHealing</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_HealArea</effect><cost>1</cost><power>25</power><radius>8</radius><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>2</circle><school>塑能</school><ritual>true</ritual><count>10</count></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_Silence</defName>
+    <label>静默术</label>
+    <description>2 环（幻术·仪式·专注）：20 格内半径 3 的区域 1 分钟内鸦雀无声：里面的任何人都念不出咒语，放不了职业法术（专注）。冷却 30 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/Silence</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Zone</effect><cost>1</cost><radius>3</radius><duration>3600</duration><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>2</circle><school>幻术</school><ritual>true</ritual><concentration>true</concentration><zone>Silence</zone></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAbilityBase">
+    <defName>LP_CS_Revivify</defName>
+    <label>复苏术</label>
+    <description>3 环（死灵）：让 5 格内一具死亡不超过 1 天的人形尸体复活，复活者 3 天“复生虚弱”。对巫妖、死灵造物和大脑不在的尸体无效。冷却 1 分钟。</description>
+    <iconPath>LP/Classes/CasterSpells/Revivify</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>5</range><warmupTime>2</warmupTime><requireLineOfSight>false</requireLineOfSight><targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetItems>true</canTargetItems><canTargetCorpses>true</canTargetCorpses><canTargetLocations>false</canTargetLocations><mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Revive</effect><cost>2</cost><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>3</circle><school>死灵</school><days>1</days></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_SpiritGuardians</defName>
+    <label>守护灵</label>
+    <description>3 环（咒法·专注）：守护灵绕身飞舞 1 分钟：每秒对身边 3 格内的敌人造成 4 × 强度点光耀伤害，并让它们移动 ×0.5（专注）。冷却 30 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/SpiritGuardians</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Aura</effect><cost>2</cost><power>8</power><radius>3</radius><duration>3600</duration><hediff>LP_CS_SpiritGuardians</hediff><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>3</circle><school>咒法</school><concentration>true</concentration></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_CreateFood</defName>
+    <label>造粮术</label>
+    <description>3 环（咒法·仪式）：变出 15 份简单餐，放在施法者身边。冷却 1 分钟。</description>
+    <iconPath>LP/Classes/CasterSpells/CreateFood</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Spawn</effect><cost>2</cost><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>3</circle><school>咒法</school><ritual>true</ritual><thing>MealSimple</thing><count>15</count></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_MassHealingWord</defName>
+    <label>群体治疗真言</label>
+    <description>3 环（塑能·可升环）：20 格内最多 6 名受伤最重的友军各治疗 10 × 强度点伤势。升环：每环效果 +25%。冷却 30 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/MassHealingWord</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_HealArea</effect><cost>2</cost><power>10</power><radius>20</radius><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>3</circle><school>塑能</school><upcast>power</upcast><count>6</count></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_Daylight</defName>
+    <label>昼明术</label>
+    <description>3 环（塑能）：30 格内一点升起三团明亮的光球，照亮一大片地方，持续 1 天。冷却 40 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/Daylight</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <hostile>false</hostile>
+    <cooldownTicksRange>2400</cooldownTicksRange>
+    <verbProperties><range>30</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Util</effect><cost>2</cost><duration>60000</duration><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>3</circle><school>塑能</school><kind>daylight</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_CS_RemoveCurse</defName>
+    <label>移除诅咒</label>
+    <description>3 环（防护）：解除 5 格内一名友军身上的诅咒类状态（咒术、各种诅咒、神力支配），以及它装备的一件诅咒物品的诅咒。冷却 20 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/RemoveCurse</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><range>5</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Restore</effect><cost>2</cost><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>3</circle><school>防护</school><kind>curse</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_CS_FreedomOfMovement</defName>
+    <label>自由行动</label>
+    <description>4 环（防护）：10 格内一名友军 1 小时内不受减速、束缚和眩晕（每秒解除一次）。冷却 40 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/FreedomOfMovement</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2400</cooldownTicksRange>
+    <verbProperties><range>10</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>TargetBuff</effect><cost>2</cost><duration>2500</duration><hediff>LP_CS_Freedom</hediff><fixedSeverity>true</fixedSeverity><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>4</circle><school>防护</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_GuardianOfFaith</defName>
+    <label>信仰守卫</label>
+    <description>4 环（咒法）：在 20 格内一点召出光辉的守卫（半径 2.5）：靠近的敌人受 20 × 强度点光耀伤害（每个敌人每 5 秒一次）；打出 4 次或过了 8 小时就消散。冷却 1 分钟。</description>
+    <iconPath>LP/Classes/CasterSpells/GuardianOfFaith</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <hostile>false</hostile>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Zone</effect><cost>2</cost><power>20</power><radius>2.5</radius><duration>20000</duration><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>4</circle><school>咒法</school><zone>Guardian</zone></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_Divination</defName>
+    <label>占卜术</label>
+    <description>4 环（预言·仪式）：向神明求问：列出 3 天内已经排定的威胁事件，并估计一次袭击的规模。每天一次。冷却 1 天。</description>
+    <iconPath>LP/Classes/CasterSpells/Divination</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Util</effect><cost>2</cost><duration>180000</duration><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>4</circle><school>预言</school><ritual>true</ritual><kind>divination</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_FlameStrike</defName>
+    <label>焰击术</label>
+    <description>5 环（塑能·可升环）：一道火柱从天而降：24 格内半径 2.5 的敌人受 18 × 强度点火焰伤害和 18 × 强度点光耀伤害。升环：每环效果 +25%。冷却 30 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/FlameStrike</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>24</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Area</effect><cost>3</cost><power>18</power><radius>2.5</radius><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>5</circle><school>塑能</school><upcast>power</upcast><damage>Flame</damage><damage2>Radiant</damage2><ap>0.3</ap></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_CS_GreaterRestoration</defName>
+    <label>高等复原术</label>
+    <description>5 环（防护）：除去 5 格内一名友军身上的一个顽疾：弱智术、咒术和诅咒，大脑上的旧伤，痴呆、阿尔茨海默症、白内障、听力损伤、虚弱、背痛、哮喘，或者最重的一处旧伤疤。冷却 1 分钟。</description>
+    <iconPath>LP/Classes/CasterSpells/GreaterRestoration</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><range>5</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Restore</effect><cost>3</cost><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>5</circle><school>防护</school><kind>greater</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAbilityBase">
+    <defName>LP_CS_RaiseDead</defName>
+    <label>死者复活</label>
+    <description>5 环（死灵）：让 5 格内一具死亡不超过 10 天的人形尸体复活，复活者 3 天“复生虚弱”。对巫妖、死灵造物和大脑不在的尸体无效。冷却 1 天。</description>
+    <iconPath>LP/Classes/CasterSpells/RaiseDead</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>5</range><warmupTime>3</warmupTime><requireLineOfSight>false</requireLineOfSight><targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetItems>true</canTargetItems><canTargetCorpses>true</canTargetCorpses><canTargetLocations>false</canTargetLocations><mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Revive</effect><cost>3</cost><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>5</circle><school>死灵</school><days>10</days></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_Hallow</defName>
+    <label>圣居</label>
+    <description>5 环（塑能·仪式）：把 10 格内半径 6 的地方祝圣 10 天：亡灵、恶魔、魔鬼和异常生物进来就每秒受 10 × 强度点光耀伤害，并被推出去。冷却 1 天。</description>
+    <iconPath>LP/Classes/CasterSpells/Hallow</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <hostile>false</hostile>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><range>10</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Zone</effect><cost>3</cost><power>10</power><radius>6</radius><duration>600000</duration><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>5</circle><school>塑能</school><ritual>true</ritual><zone>Hallow</zone></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_BladeBarrier</defName>
+    <label>剑刃屏障</label>
+    <description>6 环（塑能·专注）：在 24 格内立起一道 10 格长的旋转刀墙 1 分钟：站在墙上的敌人每秒受 15 × 强度点割伤（专注）。冷却 1 分钟。</description>
+    <iconPath>LP/Classes/CasterSpells/BladeBarrier</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><range>24</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Zone</effect><cost>4</cost><power>15</power><radius>0.5</radius><duration>3600</duration><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>6</circle><school>塑能</school><concentration>true</concentration><zone>Blades</zone><line>true</line><cells>10</cells><damage>Cut</damage></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_HeroesFeast</defName>
+    <label>英雄宴</label>
+    <description>6 环（咒法·仪式）：摆出一桌神赐的宴席：身边 8 格内最多 12 名友方人形吃饱，治好食物中毒和毒素，24 小时内毒素抗性 +100%、精神崩溃阈值 −15%，并得到 20 × 强度点临时生命。每天一次。冷却 1 天。</description>
+    <iconPath>LP/Classes/CasterSpells/HeroesFeast</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Util</effect><cost>4</cost><power>20</power><radius>8</radius><duration>60000</duration><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>6</circle><school>咒法</school><ritual>true</ritual><kind>feast</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_CS_Heal</defName>
+    <label>治愈术</label>
+    <description>6 环（塑能）：20 格内一名友军治疗 70 × 强度点伤势，并治好疾病、失明、食物中毒和毒素。冷却 1 分钟。</description>
+    <iconPath>LP/Classes/CasterSpells/Heal</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Heal</effect><cost>4</cost><power>70</power><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>6</circle><school>塑能</school><kind>full</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_ConjureCelestial</defName>
+    <label>天界守卫</label>
+    <description>7 环（咒法·专注）：召来一位狄瓦为施法者作战 1 小时（专注）。冷却 1 分钟。</description>
+    <iconPath>LP/Classes/CasterSpells/ConjureCelestial</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <hostile>false</hostile>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><range>15</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Summon</effect><cost>5</cost><duration>2500</duration><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>7</circle><school>咒法</school><concentration>true</concentration><thing>LP_CE_Deva</thing></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAbilityBase">
+    <defName>LP_CS_Resurrection</defName>
+    <label>复活术</label>
+    <description>7 环（死灵）：让 5 格内一具人形尸体复活，不论死了多久（尸体还在就行），伤势和缺失的部位全部恢复。冷却 1 天。</description>
+    <iconPath>LP/Classes/CasterSpells/Resurrection</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>5</range><warmupTime>3</warmupTime><requireLineOfSight>false</requireLineOfSight><targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetItems>true</canTargetItems><canTargetCorpses>true</canTargetCorpses><canTargetLocations>false</canTargetLocations><mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Revive</effect><cost>5</cost><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>7</circle><school>死灵</school><kind>full</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_DivineWord</defName>
+    <label>神圣之言</label>
+    <description>7 环（塑能）：念出神之真名：身边 8 格内的敌人眩晕 4 秒并失明 10 秒（伤势过半的眩晕 10 秒、失明 30 秒）；外来者（恶魔、魔鬼、元素、妖精）成功率 60% 直接被放逐回原来的位面（剧情首领除外）。冷却 1 分钟。</description>
+    <iconPath>LP/Classes/CasterSpells/DivineWord</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Area</effect><cost>5</cost><radius>8</radius><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>7</circle><school>塑能</school><kind>divineWord</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_HolyAura</defName>
+    <label>神圣光环</label>
+    <description>8 环（防护·专注）：施法者和身边 6 格内最多 9 名友军被圣光笼罩 1 分钟：受到的伤害 ×0.7（专注）。冷却 1 分钟。</description>
+    <iconPath>LP/Classes/CasterSpells/HolyAura</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Buff</effect><cost>6</cost><radius>6</radius><duration>3600</duration><hediff>LP_CS_HolyAura</hediff><fixedSeverity>true</fixedSeverity><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>8</circle><school>防护</school><concentration>true</concentration><count>10</count></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_DivineColumn</defName>
+    <label>神罚之柱</label>
+    <description>8 环（塑能）：天上落下一根光柱：30 格内半径 3 的敌人受 45 × 强度点光耀伤害并眩晕 2 秒。冷却 1 分钟。</description>
+    <iconPath>LP/Classes/CasterSpells/DivineColumn</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><range>30</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Area</effect><cost>6</cost><power>45</power><radius>3</radius><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>8</circle><school>塑能</school><damage>Radiant</damage><stun>120</stun><ap>0.4</ap></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_MassHeal9</defName>
+    <label>群体治愈术</label>
+    <description>9 环（塑能）：15 格内最多 12 名受伤最重的友军各治疗 60 × 强度点伤势，并治好疾病、失明和毒素。冷却 1 分钟。</description>
+    <iconPath>LP/Classes/CasterSpells/MassHeal9</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_HealArea</effect><cost>9</cost><power>60</power><radius>15</radius><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>9</circle><school>塑能</school><kind>full</kind><count>12</count></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_TrueResurrection</defName>
+    <label>真复活</label>
+    <description>9 环（死灵）：让一名死去的殖民者复活——不需要尸体，伤势和缺失的部位全部恢复，在施法者身边醒来。每 7 天一次。冷却 7 天。</description>
+    <iconPath>LP/Classes/CasterSpells/TrueResurrection</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>420000</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Util</effect><cost>9</cost><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>9</circle><school>死灵</school><kind>trueRes</kind></li></modExtensions>
+  </AbilityDef>
+
+  <!-- Druid -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_Druidcraft</defName>
+    <label>德鲁伊伎俩</label>
+    <description>戏法（变化）：读出天象：报告现在的天气还会持续多久、接下来一天的气温大约多少和正在持续的天气事件；身边 2 格的植物长快一点。冷却 10 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/Druidcraft</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Util</effect><cost>0</cost><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>0</circle><school>变化</school><kind>druidcraft</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_Shillelagh</defName>
+    <label>橡棍术</label>
+    <description>戏法（变化）：手里的棍棒或拳头注入自然之力，1 分钟内近战伤害 ×1.4。冷却 1 分钟。</description>
+    <iconPath>LP/Classes/CasterSpells/Shillelagh</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><cost>0</cost><duration>3600</duration><hediff>LP_CS_Shillelagh</hediff><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>0</circle><school>变化</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_CS_ProduceFlame</defName>
+    <label>造焰术</label>
+    <description>戏法（咒法）：掌心燃起火焰，掷向 20 格内一个敌人，8 × 强度点火焰伤害。冷却 4 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/ProduceFlame</iconPath>
+    <cooldownTicksRange>240</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Bolt</effect><cost>0</cost><power>8</power><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>0</circle><school>咒法</school><damage>Flame</damage></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_CS_ThornWhip</defName>
+    <label>荆棘鞭</label>
+    <description>戏法（变化）：荆棘长鞭抽中 12 格内一个敌人，7 × 强度点割伤，并把它往施法者这边拉近最多 3 格。冷却 5 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/ThornWhip</iconPath>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <verbProperties><range>12</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Bolt</effect><cost>0</cost><power>7</power><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>0</circle><school>变化</school><damage>Cut</damage><pull>true</pull></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_MoldEarth</defName>
+    <label>塑土术</label>
+    <description>戏法（变化）：10 格内一格：岩石立刻挖开；浅水、泥地、沼泽填成泥土；否则清理地面。冷却 5 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/MoldEarth</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <hostile>false</hostile>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <verbProperties><range>10</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Util</effect><cost>0</cost><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>0</circle><school>变化</school><kind>moldEarth</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_Goodberry</defName>
+    <label>良莓术</label>
+    <description>1 环（变化）：变出 10 颗良莓（15 天后枯萎）：每颗都有一顿饭的营养，吃下去 5 秒内治疗 5 点伤势。冷却 1 分钟。</description>
+    <iconPath>LP/Classes/CasterSpells/Goodberry</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Spawn</effect><cost>1</cost><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>1</circle><school>变化</school><thing>LP_CS_Goodberry</thing><count>10</count></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_CS_Jump</defName>
+    <label>跳跃术</label>
+    <description>1 环（变化）：10 格内一名友军 1 小时内跑跳如飞：移动 ×1.3。冷却 20 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/Jump</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><range>10</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>TargetBuff</effect><cost>1</cost><duration>2500</duration><hediff>LP_CS_Jump</hediff><fixedSeverity>true</fixedSeverity><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>1</circle><school>变化</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_Moonbeam</defName>
+    <label>月华术</label>
+    <description>2 环（塑能·专注）：24 格内一点落下半径 1.5 的银色月光柱 1 分钟：里面的敌人每秒受 10 × 强度点光耀伤害（专注）。光柱不会移动。冷却 30 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/Moonbeam</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>24</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Zone</effect><cost>1</cost><power>10</power><radius>1.5</radius><duration>3600</duration><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>2</circle><school>塑能</school><concentration>true</concentration><zone>Moon</zone><damage>Radiant</damage></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_SpikeGrowth</defName>
+    <label>荆棘丛生</label>
+    <description>2 环（变化·专注）：24 格内半径 3 的地面长满尖刺 1 分钟：里面的敌人移动 ×0.5，每秒受 4 × 强度点割伤（专注）。冷却 30 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/SpikeGrowth</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>24</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Zone</effect><cost>1</cost><power>4</power><radius>3</radius><duration>3600</duration><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>2</circle><school>变化</school><concentration>true</concentration><zone>Spikes</zone><damage>Cut</damage><hediff2>LP_CS_SpikeSlowed</hediff2></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_FlamingSphere</defName>
+    <label>炽焰法球</label>
+    <description>2 环（咒法·专注）：在 20 格内一点召出一团滚烫的火球（半径 1.5），1 分钟内每秒对里面的敌人造成 8 × 强度点火焰伤害（专注）。火球不会移动。冷却 30 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/FlamingSphere</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Zone</effect><cost>1</cost><power>8</power><radius>1.5</radius><duration>3600</duration><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>2</circle><school>咒法</school><concentration>true</concentration><zone>Fire</zone><damage>Flame</damage></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_FindTraps</defName>
+    <label>寻找陷阱</label>
+    <description>2 环（预言）：察觉地图上敌对的陷阱，并揭开 40 格内隐形的敌人，来信列出位置。冷却 40 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/FindTraps</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2400</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Util</effect><cost>1</cost><radius>40</radius><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>2</circle><school>预言</school><kind>findTraps</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_AnimalMessenger</defName>
+    <label>动物信使</label>
+    <description>2 环（惑控·仪式）：让一只小动物带口信给一个派系的首领：打开和它的通话（同通讯台）。每天一次。冷却 1 天。</description>
+    <iconPath>LP/Classes/CasterSpells/AnimalMessenger</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Util</effect><cost>1</cost><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>2</circle><school>惑控</school><ritual>true</ritual><kind>messenger</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_WindWall</defName>
+    <label>风墙</label>
+    <description>3 环（塑能·专注）：在 20 格内立起一道 8 格长的狂风墙 1 分钟：墙上的敌人被吹退 2 格并受 6 × 强度点钝器伤害（每秒一次）；墙边 1 格内的友军受到的远程伤害减半（专注）。冷却 30 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/WindWall</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Zone</effect><cost>2</cost><power>6</power><radius>0.5</radius><duration>3600</duration><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>3</circle><school>塑能</school><concentration>true</concentration><zone>Wind</zone><line>true</line><cells>8</cells></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_StoneShape</defName>
+    <label>塑石术</label>
+    <description>4 环（变化）：15 格内一格：岩石立刻开凿掉（掉落石块）；空地上立起一面石墙。冷却 20 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/StoneShape</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <hostile>false</hostile>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><range>15</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Util</effect><cost>2</cost><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>4</circle><school>变化</school><kind>stoneShape</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_ConjureWoodland</defName>
+    <label>召唤林地生物</label>
+    <description>4 环（咒法·专注）：召来 2 个林地生物（树精，没有时是萨提尔）为施法者作战 1 小时（专注）。冷却 1 分钟。</description>
+    <iconPath>LP/Classes/CasterSpells/ConjureWoodland</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <hostile>false</hostile>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><range>15</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Summon</effect><cost>2</cost><duration>2500</duration><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>4</circle><school>咒法</school><concentration>true</concentration><thing>LP_FY_Dryad,LP_FY_Satyr</thing><count>2</count></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_CS_DominateBeast</defName>
+    <label>支配野兽</label>
+    <description>4 环（惑控·专注）：20 格内一只敌对的动物（发狂的、敌人带来的）成功率 50% 被支配，1 分钟内听施法者指挥（专注）。冷却 40 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/DominateBeast</iconPath>
+    <cooldownTicksRange>2400</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Hex</effect><cost>2</cost><duration>3600</duration><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>4</circle><school>惑控</school><concentration>true</concentration><kind>dominate</kind><chance>0.5</chance><vs>Animal</vs></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_InsectPlague</defName>
+    <label>虫群</label>
+    <description>5 环（咒法·专注）：24 格内半径 4 涌出蝗虫群 1 分钟：里面的敌人每秒受 5 × 强度点割伤，移动 ×0.5（专注）。冷却 40 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/InsectPlague</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2400</cooldownTicksRange>
+    <verbProperties><range>24</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Zone</effect><cost>3</cost><power>5</power><radius>4</radius><duration>3600</duration><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>5</circle><school>咒法</school><concentration>true</concentration><zone>Insects</zone><damage>Cut</damage><hediff2>LP_CS_SpikeSlowed</hediff2></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_TreeStride</defName>
+    <label>树跃</label>
+    <description>5 环（咒法）：站在树旁（2 格内）时，走进树里、从地图上另一棵树旁出来（目的地 1 格内要有树、已探索）。冷却 10 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/TreeStride</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <hostile>false</hostile>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>300</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Util</effect><cost>3</cost><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>5</circle><school>咒法</school><kind>treeStride</kind></li><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_CS_Awaken</defName>
+    <label>唤醒术</label>
+    <description>5 环（变化·仪式）：唤醒 5 格内一只已经驯服的动物的心智：能学的训练全部学会，之后永远不会遗忘（不会野性复归）。冷却 1 天。</description>
+    <iconPath>LP/Classes/CasterSpells/Awaken</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><range>5</range><warmupTime>3</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Util</effect><cost>3</cost><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>5</circle><school>变化</school><ritual>true</ritual><kind>awaken</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAbilityBase">
+    <defName>LP_CS_Reincarnate</defName>
+    <label>转生术</label>
+    <description>5 环（变化）：让 5 格内一具死亡不超过 10 天的人形尸体在新的身体里复活：伤势和缺失的部位全部恢复，但种族随机换成另一个（精灵、矮人、半兽人、元素裔、提夫林……，需要 Biotech）。冷却 1 天。</description>
+    <iconPath>LP/Classes/CasterSpells/Reincarnate</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>5</range><warmupTime>3</warmupTime><requireLineOfSight>false</requireLineOfSight><targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetItems>true</canTargetItems><canTargetCorpses>true</canTargetCorpses><canTargetLocations>false</canTargetLocations><mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Revive</effect><cost>3</cost><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>5</circle><school>变化</school><kind>reincarnate</kind><days>10</days></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_ControlEnvironment</defName>
+    <label>控制环境</label>
+    <description>5 环（变化）：结束地图上一个坏天气事件（寒潮、热浪、毒尘、火山冬天……），并让天气转晴。每天一次。冷却 1 天。</description>
+    <iconPath>LP/Classes/CasterSpells/ControlEnvironment</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Util</effect><cost>3</cost><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>5</circle><school>变化</school><kind>controlEnv</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_WindWalk</defName>
+    <label>风行术</label>
+    <description>6 环（变化）：施法者和身边 8 格内最多 9 名友军化身清风 1 小时：移动 ×2。冷却 1 分钟。</description>
+    <iconPath>LP/Classes/CasterSpells/WindWalk</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Buff</effect><cost>4</cost><radius>8</radius><duration>2500</duration><hediff>LP_CS_WindWalk</hediff><fixedSeverity>true</fixedSeverity><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>6</circle><school>变化</school><count>10</count></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_Whirlwind</defName>
+    <label>召唤龙卷风</label>
+    <description>7 环（塑能）：在 30 格内一点召来一股龙卷风，30 秒后消散（它会自己乱走，敌我不分）。冷却 1 分钟。</description>
+    <iconPath>LP/Classes/CasterSpells/Whirlwind</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><range>30</range><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Util</effect><cost>5</cost><duration>1800</duration><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>7</circle><school>塑能</school><kind>tornado</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_Earthquake</defName>
+    <label>地震术</label>
+    <description>8 环（塑能）：30 格内半径 6 大地震动：敌人受 20 × 强度点钝器伤害并眩晕 2 秒，范围内不属于施法者一方的建筑受 40 × 强度点伤害。冷却 1 分钟。</description>
+    <iconPath>LP/Classes/CasterSpells/Earthquake</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><range>30</range><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Area</effect><cost>6</cost><power>20</power><radius>6</radius><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>8</circle><school>塑能</school><kind>quake</kind><damage>Blunt</damage><ap>0.2</ap></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_AnimalShapes</defName>
+    <label>上古兽形</label>
+    <description>8 环（变化）：施法者和身边 8 格内最多 9 名友军变成野兽 1 小时（同荒野变形）。冷却 1 分钟。</description>
+    <iconPath>LP/Classes/CasterSpells/AnimalShapes</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Buff</effect><cost>6</cost><radius>8</radius><duration>2500</duration><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>8</circle><school>变化</school><kind>wildShape</kind><count>10</count></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_StormOfVengeance</defName>
+    <label>复仇风暴</label>
+    <description>9 环（咒法·专注）：40 格内半径 10 的上空聚起风暴云 1 分钟：每 2 秒向区域里一个敌人劈下一道 25 × 强度点的落雷（专注）。冷却 1 分钟。</description>
+    <iconPath>LP/Classes/CasterSpells/StormOfVengeance</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><range>40</range><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Zone</effect><cost>9</cost><power>25</power><radius>10</radius><duration>3600</duration><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>9</circle><school>咒法</school><concentration>true</concentration><zone>Storm</zone></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_TreeOfLife</defName>
+    <label>生命之树</label>
+    <description>9 环（变化）：在 15 格内种下一棵发光的生命之树（半径 6）：1 天内里面的友军每秒治疗 3 × 强度点伤势。冷却 1 天。</description>
+    <iconPath>LP/Classes/CasterSpells/TreeOfLife</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <hostile>false</hostile>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><range>15</range><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Zone</effect><cost>9</cost><power>3</power><radius>6</radius><duration>60000</duration><stat>LP_PrimalPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>9</circle><school>变化</school><zone>Heal</zone></li></modExtensions>
+  </AbilityDef>
+
+  <!-- Sorcerer -->
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_CS_MindSliver</defName>
+    <label>心灵之楔</label>
+    <description>戏法（惑控）：一根看不见的心灵之楔刺进 24 格内一个敌人的脑子：7 × 强度点心灵伤害（无视护甲），10 秒内视力 −20%（射击、近战都变差）。冷却 5 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/MindSliver</iconPath>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <verbProperties><range>24</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Bolt</effect><cost>0</cost><power>7</power><duration>600</duration><stat>LP_InnatePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>0</circle><school>惑控</school><damage>Psychic</damage><ap>1</ap><hediff2>LP_CS_Slivered</hediff2></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_MetaPierce</defName>
+    <label>超魔·穿透</label>
+    <description>1 环（超魔）：术士 3 级获得：30 秒内放出的下一个法术，控制成功率 +25%（放完就用掉）。冷却 5 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/MetaPierce</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><cost>1</cost><duration>1800</duration><hediff>LP_CS_MetaPierce</hediff><stat>LP_InnatePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>1</circle><school>超魔</school><grant>3</grant><kind>meta</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_DragonsBreath</defName>
+    <label>龙息术</label>
+    <description>2 环（变化·可升环）：喷出 6 格锥形的龙息，里面的敌人受 16 × 强度点伤害；元素看血脉（冰 / 水 → 寒冷，风 / 雷 → 闪电，黑 → 强酸，绿 → 毒素，力能龙 → 力场，其他 → 火焰）。升环：每环效果 +25%。冷却 20 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/DragonsBreath</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><range>8</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Cone</effect><cost>1</cost><power>16</power><range>6</range><stat>LP_InnatePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>2</circle><school>变化</school><upcast>power</upcast><kind>breath</kind><ap>0.2</ap></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_MetaExtend</defName>
+    <label>超魔·扩展</label>
+    <description>2 环（超魔）：术士 5 级获得：30 秒内放出的下一个法术，持续时间 ×2（放完就用掉）。冷却 5 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/MetaExtend</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><cost>1</cost><duration>1800</duration><hediff>LP_CS_MetaExtend</hediff><stat>LP_InnatePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>2</circle><school>超魔</school><grant>5</grant><kind>meta</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_MetaQuicken</defName>
+    <label>超魔·即时</label>
+    <description>3 环（超魔）：术士 9 级获得：30 秒内放出的下一个法术不进冷却（放完就用掉）。冷却 30 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/MetaQuicken</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><cost>2</cost><duration>1800</duration><hediff>LP_CS_MetaQuicken</hediff><stat>LP_InnatePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>3</circle><school>超魔</school><grant>9</grant><kind>meta</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_BloodlineBreath</defName>
+    <label>血脉龙息</label>
+    <description>6 环（变化）：倾泻 10 格锥形的血脉龙息，里面的敌人受 45 × 强度点伤害；元素看血脉（同龙息术）。冷却 40 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/BloodlineBreath</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2400</cooldownTicksRange>
+    <verbProperties><range>12</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Cone</effect><cost>4</cost><power>45</power><range>10</range><stat>LP_InnatePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>6</circle><school>变化</school><kind>breath</kind><ap>0.3</ap></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_PsychicBlast</defName>
+    <label>心灵震爆</label>
+    <description>7 环（惑控）：24 格内半径 3 的敌人受 35 × 强度点心灵伤害（无视护甲）并眩晕 2 秒。冷却 40 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/PsychicBlast</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2400</cooldownTicksRange>
+    <verbProperties><range>24</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Area</effect><cost>5</cost><power>35</power><radius>3</radius><stat>LP_InnatePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>7</circle><school>惑控</school><damage>Psychic</damage><ap>1</ap><stun>120</stun></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_ElementalStorm</defName>
+    <label>元素风暴</label>
+    <description>8 环（塑能·专注）：30 格内半径 5 卷起火、冰、雷交织的风暴 30 秒：里面的敌人每秒受 12 × 强度点随机元素伤害（专注）。冷却 1 分钟。</description>
+    <iconPath>LP/Classes/CasterSpells/ElementalStorm</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><range>30</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Zone</effect><cost>6</cost><power>12</power><radius>5</radius><duration>1800</duration><stat>LP_InnatePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>8</circle><school>塑能</school><concentration>true</concentration><zone>Elements</zone><ap>0.2</ap></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_BloodlineAwakening</defName>
+    <label>血脉觉醒</label>
+    <description>9 环（变化）：血脉彻底觉醒 1 分钟：所有职业法术和能力的伤害、治疗 ×1.5。每天一次。冷却 1 天。</description>
+    <iconPath>LP/Classes/CasterSpells/BloodlineAwakening</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><cost>9</cost><duration>3600</duration><hediff>LP_CS_BloodlineAwakened</hediff><stat>LP_InnatePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>9</circle><school>变化</school></li></modExtensions>
+  </AbilityDef>
+
+  <!-- Warlock -->
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_CS_ChillTouch</defName>
+    <label>冻寒之触</label>
+    <description>戏法（死灵）：鬼手抓住 24 格内一个敌人：8 × 强度点死灵伤害，10 秒内它的伤口不能愈合。冷却 4 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/ChillTouch</iconPath>
+    <cooldownTicksRange>240</cooldownTicksRange>
+    <verbProperties><range>24</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Bolt</effect><cost>0</cost><power>8</power><duration>600</duration><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>0</circle><school>死灵</school><damage>Necrotic</damage><hediff2>LP_CS_ChillTouched</hediff2><ap>0.3</ap></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_MinorIllusion</defName>
+    <label>次级幻象</label>
+    <description>戏法（幻术）：在 24 格内一点变出逼真的幻象：半径 4 内的敌人分了神，10 秒内视力 −15%。冷却 10 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/MinorIllusion</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>24</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Util</effect><cost>0</cost><radius>4</radius><duration>600</duration><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>0</circle><school>幻术</school><kind>illusion</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_HellishRebuke</defName>
+    <label>地狱斥责</label>
+    <description>1 环（塑能）：1 小时内下一次被敌人打伤时，地狱之火立刻反烧对方 15 × 强度点火焰伤害（之后消失）。冷却 20 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/HellishRebuke</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Util</effect><cost>1</cost><power>15</power><duration>2500</duration><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>1</circle><school>塑能</school><kind>rebuke</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_ArmsOfHadar</defName>
+    <label>哈达之臂</label>
+    <description>1 环（咒法·可升环）：黑暗触手从身边涌出：2.5 格内的敌人受 12 × 强度点寒冷伤害并僵住 1 秒。升环：每环效果 +25%。冷却 15 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/ArmsOfHadar</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>900</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Area</effect><cost>1</cost><power>12</power><radius>2.5</radius><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>1</circle><school>咒法</school><upcast>power</upcast><damage>Frost</damage><stun>60</stun></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_CS_SpiderClimb</defName>
+    <label>蛛行术</label>
+    <description>2 环（变化）：10 格内一名友军 1 小时内像蜘蛛一样爬行：不受地形、雪和植物减速，移动 ×1.1。冷却 20 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/SpiderClimb</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><range>10</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>TargetBuff</effect><cost>1</cost><duration>2500</duration><hediff>LP_CS_SpiderClimb</hediff><fixedSeverity>true</fixedSeverity><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>2</circle><school>变化</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_HungerOfHadar</defName>
+    <label>哈达之饥</label>
+    <description>3 环（咒法·专注）：24 格内半径 3 撕开通往虚空的口子 1 分钟：里面一片漆黑（远程精度大降），敌人每秒受 6 × 强度点寒冷和 3 × 强度点强酸伤害（专注）。冷却 30 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/HungerOfHadar</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>24</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Zone</effect><cost>2</cost><power>6</power><radius>3</radius><duration>3600</duration><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>3</circle><school>咒法</school><concentration>true</concentration><zone>Hunger</zone><damage>Frost</damage><hediff2>LP_WL_Darkened</hediff2></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_ContactOtherPlane</defName>
+    <label>接触异界</label>
+    <description>5 环（预言·仪式）：向异界的存在求知，成功率 55% + 智力调整值 × 5% + (强度 − 1) × 20%：成功就列出 3 天内已经排定的威胁事件，并获得 500 × 强度点研究进度；失败就精神错乱、乱走一阵。每天一次。冷却 1 天。</description>
+    <iconPath>LP/Classes/CasterSpells/ContactOtherPlane</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Util</effect><cost>3</cost><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>5</circle><school>预言</school><ritual>true</ritual><kind>contact</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_CS_Dream</defName>
+    <label>梦境术</label>
+    <description>5 环（幻术·仪式）：潜入地图上一名友方的人的梦里：它心情 +8（1 天）。每天一次。冷却 1 天。</description>
+    <iconPath>LP/Classes/CasterSpells/Dream</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><range>80</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Util</effect><cost>3</cost><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>5</circle><school>幻术</school><ritual>true</ritual><kind>dream</kind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CS_Eyebite</defName>
+    <label>目光术</label>
+    <description>6 环（死灵·专注）：双眼化作虚空 1 分钟：每 3 秒注视 12 格内最近的一个敌人，成功率 50% 让它昏睡 10 秒、恐慌逃跑，或者虚弱 30 秒（近战伤害 ×0.5）（专注）。冷却 1 分钟。</description>
+    <iconPath>LP/Classes/CasterSpells/Eyebite</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Aura</effect><cost>4</cost><duration>3600</duration><hediff>LP_CS_Eyebite</hediff><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>6</circle><school>死灵</school><concentration>true</concentration></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_CS_SummonFiend</defName>
+    <label>魔鬼召唤</label>
+    <description>6 环（咒法·专注）：从九狱召来一只链魔为施法者作战 1 小时（专注）。冷却 1 分钟。</description>
+    <iconPath>LP/Classes/CasterSpells/SummonFiend</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <hostile>false</hostile>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><range>15</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Summon</effect><cost>4</cost><duration>2500</duration><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>6</circle><school>咒法</school><concentration>true</concentration><thing>LP_HL_ChainDevil,LP_AH_Hezrou</thing></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_CS_PowerWordStun</defName>
+    <label>强力震慑</label>
+    <description>8 环（惑控）：对 24 格内一个敌人说出震慑真言：伤势过半（健康 ≤ 60%）的敌人眩晕 8 秒；还没受多少伤的不受影响。冷却 1 分钟。</description>
+    <iconPath>LP/Classes/CasterSpells/PowerWordStun</iconPath>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><range>24</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Hex</effect><cost>6</cost><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>8</circle><school>惑控</school><kind>stunWord</kind><stun>480</stun></li></modExtensions>
+  </AbilityDef>
+
+  <!-- 状态 -->
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_Resistance</defName>
+    <label>抗性术</label>
+    <description>受到的伤害 ×0.85。</description>
+    <defaultLabelColor>(0.55,0.8,1)</defaultLabelColor>
+    <stages><li><statFactors><IncomingDamageFactor>0.85</IncomingDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_ShieldOfFaith</defName>
+    <label>虔诚护盾</label>
+    <description>闪光的护盾：利器与钝器护甲 +20%。</description>
+    <defaultLabelColor>(0.55,0.8,1)</defaultLabelColor>
+    <stages><li><statOffsets><ArmorRating_Sharp>0.2</ArmorRating_Sharp><ArmorRating_Blunt>0.2</ArmorRating_Blunt></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_Outlined</defName>
+    <hediffClass>LichPhylactery.Hediff_CS</hediffClass>
+    <label>指引之光</label>
+    <description>被指引之箭的光芒标记：下一次被敌人攻击时伤害 ×1.3。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.85,0.55,0.55)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_TempHP</defName>
+    <hediffClass>LichPhylactery.Hediff_CS</hediffClass>
+    <label>临时生命</label>
+    <description>受到伤害时先扣临时生命。</description>
+    <defaultLabelColor>(0.55,0.8,1)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_SpiritWeapon</defName>
+    <hediffClass>LichPhylactery.Hediff_CS</hediffClass>
+    <label>灵体武器</label>
+    <description>一把光耀之锤飘在身边，每 2 秒敲打最近的敌人。</description>
+    <defaultLabelColor>(0.55,0.8,1)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_SpiritGuardians</defName>
+    <hediffClass>LichPhylactery.Hediff_CS</hediffClass>
+    <label>守护灵</label>
+    <description>守护灵绕身飞舞：身边的敌人每秒受光耀伤害、行动迟缓。</description>
+    <defaultLabelColor>(0.55,0.8,1)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_SpiritSlowed</defName>
+    <label>守护灵缠绕</label>
+    <description>被守护灵缠住：移动 ×0.5。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.85,0.55,0.55)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>0.5</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_Silenced</defName>
+    <hediffClass>LichPhylactery.Hediff_CS</hediffClass>
+    <label>静默</label>
+    <description>身处静默术里：念不出咒语，放不了职业法术。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.85,0.55,0.55)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_Freedom</defName>
+    <hediffClass>LichPhylactery.Hediff_CS</hediffClass>
+    <label>自由行动</label>
+    <description>不受减速、束缚和眩晕。</description>
+    <defaultLabelColor>(0.55,0.8,1)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_HeroesFeast</defName>
+    <label>英雄宴</label>
+    <description>吃过神赐的宴席：毒素抗性 +100%，精神崩溃阈值 −15%。</description>
+    <defaultLabelColor>(0.55,0.8,1)</defaultLabelColor>
+    <stages><li><statOffsets><ToxicResistance>1</ToxicResistance><MentalBreakThreshold>-0.15</MentalBreakThreshold></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_HolyAura</defName>
+    <label>神圣光环</label>
+    <description>圣光笼罩：受到的伤害 ×0.7。</description>
+    <defaultLabelColor>(0.55,0.8,1)</defaultLabelColor>
+    <stages><li><statFactors><IncomingDamageFactor>0.7</IncomingDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_Shillelagh</defName>
+    <label>橡棍术</label>
+    <description>武器注入自然之力：近战伤害 ×1.4。</description>
+    <defaultLabelColor>(0.55,0.8,1)</defaultLabelColor>
+    <stages><li><statFactors><MeleeDamageFactor>1.4</MeleeDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_Jump</defName>
+    <label>跳跃术</label>
+    <description>跑跳如飞：移动 ×1.3。</description>
+    <defaultLabelColor>(0.55,0.8,1)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>1.3</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_SpikeSlowed</defName>
+    <label>刺足</label>
+    <description>脚下全是尖刺 / 被虫群包围：移动 ×0.5。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.85,0.55,0.55)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>0.5</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_WindWard</defName>
+    <hediffClass>LichPhylactery.Hediff_CS</hediffClass>
+    <label>风墙庇护</label>
+    <description>靠着风墙：受到的远程伤害减半。</description>
+    <defaultLabelColor>(0.55,0.8,1)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_WindWalk</defName>
+    <label>风行术</label>
+    <description>化身清风：移动 ×2。</description>
+    <defaultLabelColor>(0.55,0.8,1)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>2</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_Slivered</defName>
+    <label>心灵之楔</label>
+    <description>脑子里扎着一根心灵之楔：视力 −20%。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.85,0.55,0.55)</defaultLabelColor>
+    <stages><li><capMods><li><capacity>Sight</capacity><offset>-0.2</offset></li></capMods></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_MetaPierce</defName>
+    <hediffClass>LichPhylactery.Hediff_CS</hediffClass>
+    <label>超魔·穿透</label>
+    <description>下一个法术的控制成功率 +25%。</description>
+    <defaultLabelColor>(0.55,0.8,1)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_MetaExtend</defName>
+    <hediffClass>LichPhylactery.Hediff_CS</hediffClass>
+    <label>超魔·扩展</label>
+    <description>下一个法术的持续时间 ×2。</description>
+    <defaultLabelColor>(0.55,0.8,1)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_MetaQuicken</defName>
+    <hediffClass>LichPhylactery.Hediff_CS</hediffClass>
+    <label>超魔·即时</label>
+    <description>下一个法术不进冷却。</description>
+    <defaultLabelColor>(0.55,0.8,1)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_BloodlineAwakened</defName>
+    <hediffClass>LichPhylactery.Hediff_CS</hediffClass>
+    <label>血脉觉醒</label>
+    <description>血脉彻底觉醒：职业法术和能力的伤害、治疗 ×1.5。</description>
+    <defaultLabelColor>(0.55,0.8,1)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_ChillTouched</defName>
+    <label>冻寒之触</label>
+    <description>鬼手的寒意：伤口不能愈合。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.85,0.55,0.55)</defaultLabelColor>
+    <stages><li><statFactors><InjuryHealingFactor>0</InjuryHealingFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_Distracted</defName>
+    <label>分神</label>
+    <description>被幻象吸引了注意：视力 −15%。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.85,0.55,0.55)</defaultLabelColor>
+    <stages><li><capMods><li><capacity>Sight</capacity><offset>-0.15</offset></li></capMods></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_Rebuke</defName>
+    <hediffClass>LichPhylactery.Hediff_CS</hediffClass>
+    <label>地狱斥责</label>
+    <description>下一次被敌人打伤时，地狱之火反烧对方。</description>
+    <defaultLabelColor>(0.55,0.8,1)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_SpiderClimb</defName>
+    <hediffClass>LichPhylactery.Hediff_CS</hediffClass>
+    <label>蛛行术</label>
+    <description>像蜘蛛一样爬行：不受地形减速，移动 ×1.1。</description>
+    <defaultLabelColor>(0.55,0.8,1)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>1.1</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_Eyebite</defName>
+    <hediffClass>LichPhylactery.Hediff_CS</hediffClass>
+    <label>目光术</label>
+    <description>双眼化作虚空，注视身边的敌人。</description>
+    <defaultLabelColor>(0.55,0.8,1)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_Weakened</defName>
+    <label>虚弱</label>
+    <description>被目光术吸走了力气：近战伤害 ×0.5。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.85,0.55,0.55)</defaultLabelColor>
+    <stages><li><statFactors><MeleeDamageFactor>0.5</MeleeDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CS_Goodberry</defName>
+    <hediffClass>LichPhylactery.Hediff_CS</hediffClass>
+    <label>良莓</label>
+    <description>吃了良莓：几秒内伤势慢慢愈合。</description>
+    <defaultLabelColor>(0.55,0.8,1)</defaultLabelColor>
+    <comps Inherit="False"><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>300~300</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_CS_Awakened</defName>
+    <hediffClass>LichPhylactery.Hediff_CS</hediffClass>
+    <label>唤醒</label>
+    <description>被唤醒术唤醒了心智：能学的训练都会了，永远不会遗忘。</description>
+    <defaultLabelColor>(0.55,0.85,0.45)</defaultLabelColor>
+    <isBad>false</isBad>
+    <scenarioCanAdd>false</scenarioCanAdd>
+  </HediffDef>
+  <ThoughtDef>
+    <defName>LP_CS_SweetDream</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>美梦</label><description>昨晚做了一个很美的梦，醒来心里暖洋洋的。</description><baseMoodEffect>8</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_CS_FeastThought</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>英雄宴</label><description>吃了一桌神赐的宴席，浑身是劲。</description><baseMoodEffect>10</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThingDef ParentName="PlantFoodRawBase">
+    <defName>LP_CS_Goodberry</defName>
+    <label>良莓</label>
+    <description>德鲁伊用良莓术变出来的浆果：一颗就有一顿饭的营养，吃下去几秒内伤势慢慢愈合。15 天后枯萎。</description>
+    <graphicData><texPath>Things/Item/Resource/PlantFoodRaw/Berries</texPath><color>(0.75,0.95,0.6)</color></graphicData>
+    <statBases><MarketValue>6</MarketValue><Mass>0.03</Mass><Nutrition>0.9</Nutrition></statBases>
+    <ingestible><foodType>VegetableOrFruit</foodType><preferability>MealSimple</preferability><outcomeDoers><li Class="IngestionOutcomeDoer_GiveHediff"><hediffDef>LP_CS_Goodberry</hediffDef><severity>1</severity></li></outcomeDoers></ingestible>
+    <comps><li Class="CompProperties_Rottable"><daysToRotStart>15</daysToRotStart><rotDestroys>true</rotDestroys></li></comps>
+    <tradeability>None</tradeability>
+  </ThingDef>
+</Defs>

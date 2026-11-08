@@ -53,8 +53,12 @@ namespace LichPhylactery {
   public List<AbilityDef> autocast=new List<AbilityDef>(); // 开了自动施放的职业能力（ClassAutoCast.cs）
   public int table=ClassSystem.TableVersion; // 1.87.0 等级表版本：旧存档读进来是 0，Tick250 里补一次新表下够格的能力
   public List<AbilityDef> arcana=new List<AbilityDef>();public int arcanaLast;public bool arcanaShaped; // 1.100.0 魔力湖泊的秘传（ManaLake.cs）：学会的、上次施放秘传的刻、再生之环记着上次是否在荒野变形
+  public SpellbookData book; // 1.128.0 法师法术书（WizardSpellbook.cs）
+  public List<SpellbookData> casterBooks=new List<SpellbookData>(); // 1.130.0 其他施法职业的法术表数据（CasterSpells.cs，每个职业一份，SpellbookData.cls = 法术表 defName）
   public bool Any=>levels.Count>0;
   public void ExposeData(){
+   Scribe_Deep.Look(ref book,"spellbook");
+   Scribe_Collections.Look(ref casterBooks,"casterBooks",LookMode.Deep);if(Scribe.mode==LoadSaveMode.PostLoadInit){if(casterBooks==null)casterBooks=new List<SpellbookData>();casterBooks.RemoveAll(x=>x==null || x.cls.NullOrEmpty());}
    Scribe_Collections.Look(ref levels,"levels",LookMode.Def,LookMode.Value);
    Scribe_Collections.Look(ref res,"res",LookMode.Def,LookMode.Value);
    Scribe_Collections.Look(ref kept,"kept",LookMode.Def);
@@ -85,9 +89,18 @@ namespace LichPhylactery {
   public static List<LP_ClassDef> All{get{if(all==null || allCount!=DefDatabase<LP_ClassDef>.DefCount){all=DefDatabase<LP_ClassDef>.AllDefsListForReading.OrderBy(d=>d.order).ToList();allCount=DefDatabase<LP_ClassDef>.DefCount;byAbility=null;}return all;}}
   static Dictionary<AbilityDef,(LP_ClassDef cls,ClassAbilityEntry entry)> byAbility;
   static Dictionary<AbilityDef,(LP_ClassDef cls,ClassAbilityEntry entry)> ByAbility{get{var a=All;if(byAbility==null){byAbility=new Dictionary<AbilityDef,(LP_ClassDef,ClassAbilityEntry)>();foreach(var c in a)foreach(var e in c.abilities)if(e.ability!=null)byAbility[e.ability]=(c,e);}return byAbility;}}
-  public static LP_ClassDef ClassOf(AbilityDef d)=>d!=null && ByAbility.TryGetValue(d,out var v)?v.cls:ClassLegendary.ClassOf(d)??ClassSubclass.ClassOf(d)??LakeArcana.ClassOf(d); // 子职业能力算所属职业；1.100.0 职业水晶算那个职业
+  // 1.131.0 性能热修：能力归属只取决于定义，按能力记住（原来不在职业表里的法术每次都要顺着传奇 / 子职业 / 秘传 / 法术书 / 全部法术表再查一遍；按钮栏每帧每个能力都要问几次）。Def 数量变了（自检注册新 Def）就重建。
+  static readonly System.Collections.Concurrent.ConcurrentDictionary<AbilityDef,LP_ClassDef> classOf=new System.Collections.Concurrent.ConcurrentDictionary<AbilityDef,LP_ClassDef>();static int classOfStamp=-1;
+  public static LP_ClassDef ClassOf(AbilityDef d){
+   if(d==null)return null;
+   int stamp=DefDatabase<AbilityDef>.DefCount*31+DefDatabase<LP_ClassDef>.DefCount*7919+DefDatabase<CasterListDef>.DefCount*104729+DefDatabase<LP_SubclassDef>.DefCount*1299709;
+   if(classOfStamp!=stamp){classOf.Clear();classOfStamp=stamp;}
+   if(classOf.TryGetValue(d,out var c))return c;
+   c=ByAbility.TryGetValue(d,out var v)?v.cls:ClassLegendary.ClassOf(d)??ClassSubclass.ClassOf(d)??LakeArcana.ClassOf(d)??Spellbook.ClassOf(d)??CasterSpells.ClassOf(d); // 1.130.0 施法职业法术表的新法术算法术表的第一个职业；子职业能力算所属职业；1.100.0 职业水晶算那个职业；1.128.0 法术书的新法术算法师
+   classOf[d]=c;return c;
+  }
   // 1.123.0：施放时扣哪个职业的资源。魔法奥秘学来的别家法术（自己没有那个职业）算吟游诗人、扣乐韵。
-  public static LP_ClassDef CastClassOf(Pawn p,AbilityDef d)=>Bard.SecretClass(p,d)??ClassOf(d);
+  public static LP_ClassDef CastClassOf(Pawn p,AbilityDef d)=>Bard.SecretClass(p,d)??Spellbook.CastClass(p,d)??CasterSpells.CastClass(p,d)??ClassOf(d); // 1.130.0 从别的职业法术表学来 / 备好的法术算那个职业 // 1.128.0 写进法术书的术士法术（没有术士等级）算法师
   public static ClassAbilityEntry EntryOf(AbilityDef d)=>d!=null && ByAbility.TryGetValue(d,out var v)?v.entry:null;
   public static LP_ClassDef ByLegacyPath(string path)=>path==null?null:All.FirstOrDefault(c=>c.legacyPath==path);
   // 1.81.0 热修2（Peter）：部位生命成长按职业生命骰（d12 野蛮人 7%，d10 6%，d8 5%，d6 4%）；没分配职业点的等级按 Hediff_Adventurer.PartPerLevel。
@@ -200,6 +213,7 @@ namespace LichPhylactery {
    bool fresh=Level(h,c)==0;
    if(level<=0){h.classes.levels.Remove(c);if(PoolLevel(h,c)<=0)h.classes.res.Remove(PoolKey(c));}
    else{h.classes.levels[c]=level;if(fresh && c.resource!=ClassResource.None)h.classes.res[PoolKey(c)]=MaxResource(h,c);}
+   CasterSpells.Touch(); // 1.131.0 性能热修：职业等级变了，按帧记忆的施放职业 / 窗口法术列表作废
    Sync(h);
    if(h.pawn!=null)Martial.Refresh(h.pawn);
    SyncFighterFeats(h);
@@ -254,6 +268,8 @@ namespace LichPhylactery {
    n+=ClassSubclass.Sync(h); // 子职业与通用能力
    n+=LakeArcana.Sync(h); // 1.100.0 秘传
    n+=Bard.Sync(h); // 1.123.0 吟游诗人的魔法奥秘
+   n+=Spellbook.Sync(h); // 1.128.0 法术书：自选 / 抄录的法术、戏法，备法初始化
+   n+=CasterSpells.Sync(h); // 1.130.0 施法职业法术表：备好 / 已知的法术
    return n;
   }
   // 1.87.0（Peter：最终特性下调到 15 级左右）：旧存档的人按新等级表补一次够格的能力（只加不减），玩家的人发一条消息列出补上的能力。
@@ -341,6 +357,8 @@ namespace LichPhylactery {
    ClassRestless.Tick250(h); // 1.99.0 不睡觉的种族：平时慢慢回（代替睡觉）
    Warlock.Tick250(h); // 邪术师：短休回满契约法力、被动
    Bard.Tick250(h); // 1.123.0 吟游诗人：乐韵、被动、学院
+   Spellbook.Tick250(h); // 1.128.0 法术书：睡醒可备法、专注、魔宠、待选提醒
+   CasterSpells.Tick250(h); // 1.130.0 施法职业法术表：睡醒可备法、专注、法术能量、待选提醒
    Subclass3.Tick250(h); // 1.106.0 暗影宗、散打宗
    Subclass4.Tick250(h); // 1.111.0 炼金师、装甲师、堡垒工程师
    Subclass2.Tick250(h); // 1.103.0 第二批子职业的被动、钢铁卫士、誓言之力
@@ -358,7 +376,7 @@ namespace LichPhylactery {
   public static float PsychicFactor(Pawn p,CompProperties_ClassEffect props)=>p==null || props==null || !props.psychic || !(LichMod.Settings?.classPsychic??true)?1f:Mathf.Max(PsychicMin,p.GetStatValue(StatDefOf.PsychicSensitivity));
   public static float StatValue(Pawn p,CompProperties_ClassEffect props){
    if(p==null || props?.stat==null)return 1f;
-   float v=p.GetStatValue(Bard.StatFor(p,props)); // 1.123.0 魔法奥秘学来的法术用激昂强度
+   float v=p.GetStatValue(CasterSpells.StatFor(p,props)??Spellbook.StatFor(p,props)??Bard.StatFor(p,props)); // 1.130.0 法术表里别家的法术用施放职业的强度 // 1.123.0 魔法奥秘学来的法术用激昂强度；1.128.0 法师写进书里的术士法术用奥术强度
    if(props.bestSkill){var m=DefCache<StatDef>.Get("LP_MarksmanPower");if(m!=null)v=Mathf.Max(v,p.GetStatValue(m));}
    return v;
   }
@@ -367,6 +385,8 @@ namespace LichPhylactery {
    if(props==null || props.passive)return null;
    var h=Adventurer.Get(p);var c=CastClassOf(p,def);
    var arc=LakeArcana.CannotCast(p,def);if(arc!=null)return arc; // 1.100.0 秘传公共冷却
+   var sb=Spellbook.CannotCast(p,def);if(sb!=null)return sb; // 1.128.0 没准备的法师法术
+   var csb=CasterSpells.CannotCast(p,def,props);if(csb!=null)return csb; // 1.130.0 静默、法术能量（器械师 / 游侠）
    if(c==null || h==null)return null;
    if(c.caster && ClassMartial2.Raging(p))return "狂暴中无法施法";
    int cost=ClassLegendary.Cost(p,def,props);
@@ -378,6 +398,7 @@ namespace LichPhylactery {
   }
   public static void Pay(Pawn p,AbilityDef def,CompProperties_ClassEffect props){
    if(props!=null && !props.passive && (Subclass2.Pay(p,def,props) || Subclass3.Pay(p,def,props)))return; // 1.103.0 失血、誓言之力；1.110.0 引导神力（定义里 cost 为 0）
+   if(props!=null && !props.passive && CasterSpells.Pay(p,def,props))return; // 1.130.0 没有资源的半施法者（器械师 / 游侠）用法术能量
    if(props==null || props.cost<=0 || FreeCast(p,props))return;var h=Adventurer.Get(p);var c=CastClassOf(p,def);
    if(ClassSubclass.PayMana(h,def,ClassLegendary.Cost(p,def,props)))return; // 诡术师的法力
    if(c==null || c.resource==ClassResource.None)return;
@@ -402,7 +423,7 @@ namespace LichPhylactery {
   }
   public static int ClassBonusLevels(Pawn p,SkillDef s){var h=Adventurer.Get(p);int n=0;if(h?.classes!=null)foreach(var kv in h.classes.levels)if(kv.Key.mainSkill==s || kv.Key.alternateSkill==s)n+=kv.Value;return n;}
   // 魔涌期间术士法术不耗法力。
-  public static bool FreeCast(Pawn p,CompProperties_ClassEffect props)=>props!=null && (props.sorcery && Items.Has(p,"LP_SorcerousSurge") || props.effect!="ArcaneTorrent" && ClassLegendary.Torrent(p) || Warlock.Free(p,props) || Subclass2.Free(p,props) || Subclass3.Free(p,props)); // 1.74.0 魔力奔流；宗主化身；1.103.0 灵能战士（神经热）；1.107.0 思维具现
+  public static bool FreeCast(Pawn p,CompProperties_ClassEffect props)=>props!=null && (props.sorcery && Items.Has(p,"LP_SorcerousSurge") || props.effect!="ArcaneTorrent" && ClassLegendary.Torrent(p) || Warlock.Free(p,props) || Subclass2.Free(p,props) || Subclass3.Free(p,props) || Spellbook.Free(p,props)); // 1.128.0 吸血之触专注期间；1.74.0 魔力奔流；宗主化身；1.103.0 灵能战士（神经热）；1.107.0 思维具现
   // 1.73.0：背景 / 特性的职业经验加成（原来加在 VPE 路径经验上）改成冒险者经验 ×，取所学职业里最高的一项。
   public static float XpFactor(Pawn p){
    var h=Adventurer.Get(p);if(h?.classes==null || h.classes.levels.Count==0)return 1f;float f=1f;

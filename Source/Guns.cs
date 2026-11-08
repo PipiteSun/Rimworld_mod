@@ -9,7 +9,8 @@ using Verse.AI;
 using UnityEngine;
 
 namespace LichPhylactery {
- // 1.29.0 DND 枪械与法杖。D 组魔法枪、E 组高级魔法枪是普通枪；F 组魔力矮人枪械、G 组法杖按射手的心灵敏感度算“魔力系数”乘进自己投射物的伤害。
+ // 1.29.0 DND 枪械与法杖。F 组魔力矮人枪械、G 组法杖按射手的心灵敏感度算“魔力系数”乘进自己投射物的伤害。
+ // 1.129.0 热修：D 组魔法枪、E 组高级魔法枪也吃心灵敏感度加成（只加不减，不封顶）；F 组高敏感度时同样不封顶。
  // 魔力系数只乘在 LP_ArcaneBullet / LP_ArcaneShell 的 DamageAmount 上，并且是在原版 getter（含 Isekai 的后缀与武器精炼属性）算完之后再乘，所以 Isekai 的强化照常生效。
  public class CompProperties_ArcaneWeapon : CompProperties {
   public string group="D";      // D 魔法枪 / E 高级魔法枪 / F 魔力矮人枪械 / G 法杖
@@ -22,12 +23,12 @@ namespace LichPhylactery {
   public Pawn Wielder=>(parent.ParentHolder as Pawn_EquipmentTracker)?.pawn;
   public override IEnumerable<StatDrawEntry> SpecialDisplayStats(){
    var inherited=base.SpecialDisplayStats();if(inherited!=null)foreach(var e in inherited)yield return e;
-   if(!Arcana.Magic(Props.group))yield break;
+   if(!Arcana.Scales(Props.group))yield break;
    var p=Wielder;
    string value=p==null?"按持有者计算":Arcana.FactorLine(p,parent.def);
    yield return new StatDrawEntry(StatCategoryDefOf.Weapon_Ranged,"魔力系数",value,Arcana.Explain(Props.group),5100);
   }
-  public override string CompInspectStringExtra(){var p=Wielder;return p==null || !Arcana.Magic(Props.group)?null:"魔力系数 "+Arcana.FactorLine(p,parent.def);}
+  public override string CompInspectStringExtra(){var p=Wielder;return p==null || !Arcana.Scales(Props.group)?null:"魔力系数 "+Arcana.FactorLine(p,parent.def);}
  }
  // 投射物附加效果：点燃、EMP 爆发 + 人形眩晕、命中状态、穿透、必中。
  public class ArcaneShotExt : DefModExtension {
@@ -51,10 +52,16 @@ namespace LichPhylactery {
   public static CompProperties_ArcaneWeapon Props(ThingDef d)=>d?.GetCompProperties<CompProperties_ArcaneWeapon>();
   public static string Group(ThingDef d)=>Props(d)?.group;
   public static bool Magic(string g)=>g=="F" || g=="G";
-  // 魔力系数公式（敏感度已含保底）。法杖：敏感度本身，下限 0.2、不封顶（1.30.1 去掉 2.5 上限），敏感度 0 不能用；矮人枪械：0.5 + 0.5 × 敏感度，上限 2。
+  // 吃心灵敏感度加成的组：全部 DND 枪械（D、E、F）和法杖（G）。寒铁/心智抗性减伤、符文灼印、魔力充能仍只对 F、G（Magic）。
+  public static bool Scales(string g)=>g=="D" || g=="E" || g=="F" || g=="G";
+  // 魔力系数公式（敏感度已含保底）。法杖：敏感度本身，下限 0.2、不封顶（1.30.1 去掉 2.5 上限），敏感度 0 不能用。
+  // 1.129.0 热修（Peter：DND 火枪吃心灵敏感度加成，不设上限）：
+  //  D、E 组：取 1 和敏感度中较大的（敏感度低于 100% 不减伤，高于 100% 按敏感度乘，不封顶）；
+  //  F 组：取 0.5 + 0.5 × 敏感度 和 敏感度 中较大的（低敏感度时保持原来的半伤保底，100% 以上按敏感度乘，去掉原来的 2 倍上限）。
   public static float Factor(string group,float sens){
    if(group=="G")return sens<=0f?0f:Mathf.Max(sens,StaffMin);
-   if(group=="F")return Mathf.Min(GunMax,GunBase+GunSlope*Mathf.Max(0f,sens));
+   if(group=="F"){float s=Mathf.Max(0f,sens);return Mathf.Max(GunBase+GunSlope*s,s);}
+   if(group=="D" || group=="E")return Mathf.Max(1f,sens);
    return 1f;
   }
   public static bool RedRobe(Pawn p){var player=Faction.OfPlayerSilentFail;return p?.kindDef?.defName=="LP_FH_RedWizard" && p.Faction!=null && player!=null && p.Faction!=player && p.Faction.HostileTo(player);}
@@ -72,9 +79,9 @@ namespace LichPhylactery {
   public static bool Linked(Pawn p)=>p!=null && p.GetPsylinkLevel()>0;
   // 实际倍率：公式 + 魔力充能（+0.5，只对 F、G）；法杖持有者没有心灵链接时 ×0.7。
   public static float FactorFor(Pawn p,ThingDef weapon){
-   var g=Group(weapon);if(!Magic(g) || p==null)return 1f;
+   var g=Group(weapon);if(!Scales(g) || p==null)return 1f;
    float f=Factor(g,Sensitivity(p,g));if(f<=0f)return 0f;
-   if(Charged(p))f+=ChargeBonus;
+   if(Charged(p) && Magic(g))f+=ChargeBonus;
    if(g=="G" && !Linked(p))f*=NoLinkFactor;
    if(g=="G")f*=HeroDestiny.StaffFactor(p); // 1.58.0 魔网之子 法杖伤害 +20%
    return f;
@@ -83,11 +90,12 @@ namespace LichPhylactery {
    var g=Group(weapon);float s=Sensitivity(p,g);
    var line="×"+FactorFor(p,weapon).ToString("0.##")+"（心灵敏感度 "+s.ToStringPercent()+"）";
    if(g=="G" && !Linked(p))line+="，没有心灵链接 ×0.7";
-   if(Charged(p))line+="，魔力充能 +0.5";
+   if(Charged(p) && Magic(g))line+="，魔力充能 +0.5";
    return line;
   }
   public static string Explain(string g)=>g=="G"?"法杖的伤害 × 魔力系数。魔力系数 = 心灵敏感度（最低 0.2，不封顶）；敏感度为 0 时法杖毫无回应。有心灵链接的持有者每次施放增加心灵熵（模组设置），熵满时不能施放；没有心灵链接时伤害只有 70%。穿寒铁护甲或有心智抗性的目标受到的伤害 -25%。"
-   :"矮人枪械的伤害 × 魔力系数。魔力系数 = 0.5 + 0.5 × 心灵敏感度，最高 2；矮人不足 100% 按 100% 算。不加心灵熵。穿寒铁护甲或有心智抗性的目标受到的伤害 -25%。";
+   :g=="F"?"矮人枪械的伤害 × 魔力系数。魔力系数 = 0.5 + 0.5 × 心灵敏感度 与 心灵敏感度 中较大的一个，不封顶（敏感度 0 也有半伤，100% 以上按敏感度乘）；矮人不足 100% 按 100% 算。不加心灵熵。穿寒铁护甲或有心智抗性的目标受到的伤害 -25%。"
+   :"魔法枪的伤害 × 魔力系数。魔力系数 = 心灵敏感度，最低 1，不封顶（敏感度低于 100% 不减伤，200% 打 2 倍伤害）。不加心灵熵。";
   public static int Scaled(int raw,float factor){if(factor==1f)return raw;if(factor<=0f)return 0;return Mathf.Max(1,Mathf.RoundToInt(raw*factor));}
 
   // ---------- 法杖能否施放 ----------
@@ -198,7 +206,7 @@ namespace LichPhylactery {
   }
  }
 
- // 公共投射物：伤害 = 原版伤害（已含武器精炼、Isekai 敏捷加成等）× 魔力系数。D、E 组的系数恒为 1。
+ // 公共投射物：伤害 = 原版伤害（已含武器精炼、Isekai 敏捷加成等）× 魔力系数（1.129.0 热修起 D、E 组也按敏感度，最低 1）。
  public class LP_ArcaneBullet : Bullet {
   float arcane=-1f;
   public float ArcaneFactor{get{if(arcane<0f)arcane=launcher is IArcanePowerSource s?s.ArcanePower:Arcana.FactorFor(launcher as Pawn,equipmentDef);return arcane;}}

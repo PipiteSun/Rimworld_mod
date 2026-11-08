@@ -122,7 +122,7 @@ namespace LichPhylactery {
     case "EldritchBlast":case "WLHex":case "WLRebuke":case "WLHurl":case "WLDelirium":case "WLWhispers":case "WLDominate":case "WLThrall":
      if(t==null || t.Dead)return "需要选择一个活着的目标。";
      if(!t.HostileTo(caster))return "只能对敌人使用。";
-     if(e.effect=="EldritchBlast"){float r=Range(caster);if(caster.Position.DistanceTo(t.Position)>r)return "超出魔能爆的射程（"+r.ToString("0")+" 格）。";}
+     if(e.effect=="EldritchBlast"){float r=Range(caster);if(CastApproach.TooFar(caster.Position.DistanceTo(t.Position),r))return "超出魔能爆的射程（"+r.ToString("0")+" 格）。";}
      if(e.effect=="WLDominate" && !t.RaceProps.Humanlike)return "只能支配人形。";
      if(e.effect=="WLThrall"){if(!t.RaceProps.Humanlike)return "只能对人形使用。";if(!t.Downed)return "目标要先倒地。";if(Boss(t))return "剧情首领和传奇单位不会变成奴仆。";}
      return null;

@@ -46,7 +46,7 @@ namespace LichPhylactery {
     var d=DefDatabase<ThingDef>.GetNamedSilentFail(n);
     Check(d!=null && !d.ConfigErrors().Any() && d.IsRangedWeapon && Arcana.Group(d)==group,"weapon definition loads in group "+group+": "+n+(d==null?"":" "+string.Join(";",d.ConfigErrors())+" ranged="+d.IsRangedWeapon+" group="+Arcana.Group(d)));
     Check(d.graphic!=null && d.graphic!=BaseContent.BadGraphic && d.graphic.MatSingle!=BaseContent.BadMat && d.uiIcon!=null && d.uiIcon!=BaseContent.BadTex && d.graphicData.texPath=="LP/Weapons/"+n.Substring(3),"weapon has its own 64px texture: "+n);
-    Check(d.uiIcon.width==64 && d.uiIcon.height==64,"weapon texture is 64x64: "+n);
+    Check(d.uiIcon.width>=64 && d.uiIcon.width==d.uiIcon.height,"weapon texture is square, at least 64px: "+n+" "+d.uiIcon.width+"x"+d.uiIcon.height);
     var v=d.Verbs[0];bool magic=Arcana.Magic(group);
     Check(magic==(v.verbClass==typeof(Verb_ArcaneShoot)) && (magic || v.verbClass==typeof(Verb_Shoot)),"weapon uses the "+(magic?"arcane":"plain")+" shooting verb: "+n);
     Check(v.defaultProjectile!=null && (v.defaultProjectile.thingClass==typeof(LP_ArcaneBullet) || v.defaultProjectile.thingClass==typeof(LP_ArcaneShell)),"weapon fires the shared arcane projectile class: "+n);
@@ -104,11 +104,11 @@ namespace LichPhylactery {
   }
 
   void CheckGunFormula(){
-   float[] s={0f,.5f,1f,2f,3f,5f};float[] g={0f,.5f,1f,2f,3f,5f};float[] f={.5f,.75f,1f,1.5f,2f,2f};
+   float[] s={0f,.5f,1f,2f,3f,5f};float[] g={0f,.5f,1f,2f,3f,5f};float[] f={.5f,.75f,1f,2f,3f,5f};float[] de={1f,1f,1f,2f,3f,5f};
    for(int i=0;i<s.Length;i++){
     Check(Near(Arcana.Factor("G",s[i]),g[i]),"staff factor at sensitivity "+s[i].ToStringPercent()+" is x"+g[i]);
     Check(Near(Arcana.Factor("F",s[i]),f[i]),"dwarf gun factor at sensitivity "+s[i].ToStringPercent()+" is x"+f[i]);
-    Check(Arcana.Factor("D",s[i])==1f && Arcana.Factor("E",s[i])==1f,"groups D/E ignore sensitivity "+s[i].ToStringPercent());
+    Check(Near(Arcana.Factor("D",s[i]),de[i]) && Near(Arcana.Factor("E",s[i]),de[i]),"groups D/E gun factor at sensitivity "+s[i].ToStringPercent()+" is x"+de[i]+" (never below 1, no cap)");
    }
    Check(Near(Arcana.Factor("G",.1f),.2f),"staff factor never drops below 0.2 while sensitivity is above 0");
    Check(Arcana.Scaled(16,.7f)==11 && Arcana.Scaled(1,.2f)==1 && Arcana.Scaled(16,0f)==0,"scaled damage rounds and stays at least 1");
@@ -174,7 +174,7 @@ namespace LichPhylactery {
    Check(p2.DamageAmount==Arcana.Scaled(18,Arcana.FactorFor(gunner,musket.def)),"runic musket damage = 18 x arcane factor ("+p2.DamageAmount+")");
    p2.Destroy();
    var plain=Arm(gunner,"LP_SilverPistol");var p3=(LP_ArcaneBullet)Fire(gunner,plain,foe);
-   Check(Near(p3.ArcaneFactor,1f) && p3.DamageAmount==14,"silver pistol ignores sensitivity");
+   Check(Near(p3.ArcaneFactor,Mathf.Max(1f,Arcana.RawSensitivity(gunner))) && p3.DamageAmount==Arcana.Scaled(14,p3.ArcaneFactor),"silver pistol damage = 14 x max(1, sensitivity) ("+p3.DamageAmount+", factor "+p3.ArcaneFactor.ToString("0.##")+")");
    p3.Destroy();
   }
 

@@ -89,11 +89,11 @@ namespace LichPhylactery {
    var map=Caster?.Map;if(map==null)return "施法者不在地图上。";
    switch(Props.effect){
     case "spark":return Genasi.CannotSpark(Caster,target);
-    case "tide":return !target.Cell.IsValid || !target.Cell.InBounds(map)?"需要地图上的目标位置。":target.Cell.DistanceTo(Caster.Position)>Genasi.TideRange+.5f?"超出距离（"+Genasi.TideRange+"格）。":null;
+    case "tide":return !target.Cell.IsValid || !target.Cell.InBounds(map)?"需要地图上的目标位置。":CastApproach.TooFar(target.Cell.DistanceTo(Caster.Position),Genasi.TideRange+.5f)?"超出距离（"+Genasi.TideRange+"格）。":null;
     case "windleap":return Genasi.CannotLeap(Caster,target.Cell);
     case "soar":return Aarakocra.CannotSoar(Caster,target.Cell);
     case "buffet":return target.Pawn!=null && target.Pawn.Position.DistanceTo(Caster.Position)>Fiends.BuffetRadius+.5f?"超出振翼范围（4格）。":null;
-    case "smite":return !target.Cell.IsValid || !target.Cell.InBounds(map)?"需要地图上的目标位置。":target.Cell.DistanceTo(Caster.Position)>Titan.SmiteRange+.5f?"超出神罚距离（10格）。":target.Cell.Roofed(map) && target.Cell.GetRoof(map).isThickRoof?"闪电打不穿山体。":null;
+    case "smite":return !target.Cell.IsValid || !target.Cell.InBounds(map)?"需要地图上的目标位置。":CastApproach.TooFar(target.Cell.DistanceTo(Caster.Position),Titan.SmiteRange+.5f)?"超出神罚距离（10格）。":target.Cell.Roofed(map) && target.Cell.GetRoof(map).isThickRoof?"闪电打不穿山体。":null;
     case "breath":case "wish":case "horn":return null;
    }
    return "未知的能力。";

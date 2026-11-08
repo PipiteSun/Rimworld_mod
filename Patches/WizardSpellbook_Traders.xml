@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.128.0 法术书残页：奇物商人（商队、轨道）偶尔出售；魔力湖泊的商队靠 LP_Scroll 标签出售（残页继承卷轴的交易标签）。 -->
+<Patch>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/TraderKindDef[defName="Caravan_Outlander_Exotic"]/stockGenerators</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>/Defs/TraderKindDef[defName="Caravan_Outlander_Exotic"]/stockGenerators</xpath>
+      <value>
+        <li Class="StockGenerator_SingleDef"><thingDef>LP_WS_SpellPage1</thingDef><countRange>0~2</countRange></li>
+        <li Class="StockGenerator_SingleDef"><thingDef>LP_WS_SpellPage2</thingDef><countRange>0~1</countRange></li>
+        <li Class="StockGenerator_SingleDef"><thingDef>LP_WS_SpellPage3</thingDef><countRange>0~1</countRange></li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/TraderKindDef[defName="Orbital_Exotic"]/stockGenerators</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>/Defs/TraderKindDef[defName="Orbital_Exotic"]/stockGenerators</xpath>
+      <value>
+        <li Class="StockGenerator_SingleDef"><thingDef>LP_WS_SpellPage1</thingDef><countRange>0~2</countRange></li>
+        <li Class="StockGenerator_SingleDef"><thingDef>LP_WS_SpellPage2</thingDef><countRange>0~1</countRange></li>
+        <li Class="StockGenerator_SingleDef"><thingDef>LP_WS_SpellPage3</thingDef><countRange>0~1</countRange></li>
+      </value>
+    </match>
+  </Operation>
+</Patch>

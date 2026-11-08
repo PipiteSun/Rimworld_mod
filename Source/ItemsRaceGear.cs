@@ -97,7 +97,7 @@ namespace LichPhylactery {
   public string Invalid(LocalTargetInfo target){
    var map=Caster?.Map;if(map==null)return "施法者不在地图上。";
    switch(Props.effect){
-    case "hammer":if(RaceGear.HammerDamage(Caster)<=0)return "需要手持矮人投掷锤。";var p=target.Pawn;if(p==null || p.Dead || p==Caster || !p.Spawned || p.Map!=map)return "需要地图上的其他存活角色。";return p.Position.DistanceTo(Caster.Position)>RaceGear.HammerRange+.5f?"超出投掷距离（8格）。":null;
+    case "hammer":if(RaceGear.HammerDamage(Caster)<=0)return "需要手持矮人投掷锤。";var p=target.Pawn;if(p==null || p.Dead || p==Caster || !p.Spawned || p.Map!=map)return "需要地图上的其他存活角色。";return CastApproach.TooFar(p.Position.DistanceTo(Caster.Position),RaceGear.HammerRange+.5f)?"超出投掷距离（8格）。":null;
     case "helmcharge":var c=target.Cell;if(!c.IsValid || !c.InBounds(map) || c==Caster.Position)return "需要冲撞的方向。";return c.DistanceTo(Caster.Position)>Props.range+.5f?"超出冲撞距离（"+Props.range+"格）。":null;
     case "speed":return null;
    }

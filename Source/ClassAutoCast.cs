@@ -52,6 +52,7 @@ namespace LichPhylactery {
   bool Shown=>ClassAutoCast.Supports(A);
   static Rect Box(Rect r)=>new Rect(r.x+3f,r.y+3f,20f,20f);
   protected override GizmoResult GizmoOnGUIInt(Rect r,GizmoRenderParms parms){
+   Spellbook.RightClick(A,r); // 1.128.0 可升环的法师法术：右键选环位（窗口，不用浮动菜单）
    if(!Shown)return base.GizmoOnGUIInt(r,parms);
    var box=Box(r);
    if(Event.current.type==EventType.MouseDown && Event.current.button==0 && Mouse.IsOver(box)){
