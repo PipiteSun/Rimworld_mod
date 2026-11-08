@@ -26,111 +26,48 @@
 
 ---
 
-## 二、奥能动力甲（1.126.0）
+## 二、奥能动力甲（1.126.0）—— 2026-11-08 按当前第七版贴图重写
 
-共同轮廓（按 Peter 给的 40K 重甲参考图）：**超大圆顶肩甲**（每侧比身宽多出约 1/3，宽边滚边 + 一圈铆钉，下沿再垂一层甲片）、方正厚胸甲、分节腰甲、粗腿甲 + 圆徽护膝、满身铆钉；胸口一颗嵌在黄铜框里的蓝色奥能核心（发柔和蓝光）；背后推进管或核心背包。整体是「侏儒奇械师 + 耐瑟瑞尔奥术」的秘铸骑士，不是机械科幻：用黄铜、铆钉、符文代替电线和屏幕。
+当前设计方向：钢铁侠 × 战锤 40K × 光环混合，但不用三者的标志、头盔和文字；造型按游戏内截图的比例和画风——Q 版比例（头盔约占全身一半多）、圆润外形、叶片式肩甲从肩后往两侧斜着撑开。徽记仍是 DND 风格（展翼太阳、八芒旭日、齿轮、符文）。
 
-### 1. 奥械侍从甲（入门档，参考图③）
-- **外形**：最朴素的一档。圆顶大肩甲（单层，没有尖刺），方胸甲上两排铆钉，胸口小号蓝色核心（黄铜方框），背后两支短粗推进管。
-- **配色**：甲色主体做旧铁灰；黄铜色铆钉和核心框；推进管口发暗。
-- **材质 / 细节**：工地式做旧——刮痕、凹坑、掉漆露出底下的暗铁；肩甲上一块警示斜纹板（纹章色 + 黑色斜条）。
-- **徽记**：左肩小小的齿轮印（侏儒工坊标）。
+**通用画风（每条提示词末尾都加上）**
+- 中文：RimWorld 游戏内角色贴图风格，Q 版比例，头盔约占全身一半多；外形圆润：圆角胶囊形躯干、圆头胶囊形手臂和腿、圆拳套、圆护膝、圆底靴子；干净平涂加柔和明暗（边缘略暗、左上亮右下暗），大部件描粗黑边，小细节不描边；低饱和；正交视角。三视图并排：正面、右侧面、背面，同一比例对齐。透明背景，不要文字、水印、地面阴影，不要钢铁侠 / 战锤40K / 光环的原作标志和头盔造型。
+- English: RimWorld in-game pawn sprite style, chibi proportions with the helmet about half the total height; rounded shapes: rounded-capsule torso, capsule arms and legs, round fists, round knee pads, round-soled boots; clean flat colors with soft shading (slightly darker edges, light from top-left), thick black outline on the major pieces only, muted palette, orthographic. Turnaround sheet: front, right side, back, same scale and aligned. Transparent background, no text, no watermark, no ground shadow, no Iron Man / Warhammer 40K / Halo logos or helmet designs.
 
-**中文提示词**
-> 一套厚重的奇幻动力盔甲，DND 侏儒工坊制造的入门侍从款，只画盔甲本身、不画头和皮肤（像穿在隐形人身上，领口空着）。超大的圆顶肩甲带宽滚边和一圈铆钉，方正厚胸甲上两排铆钉，胸口一颗嵌在黄铜方框里的发蓝光的奥术核心，分节腰甲，粗壮腿甲配圆形护膝，背后两支短粗的推进管。做旧铁灰色金属，有刮痕凹坑和掉漆，肩上一块黄黑警示斜纹板，左肩一个小齿轮徽记。RimWorld 游戏贴图风格：粗深色描边、平涂加一层体积阴影、低饱和、正交视角、无透视。三视图并排：正面、右侧面、背面，同一比例对齐。透明背景，不要文字、水印和地面阴影，不要任何战锤40K标志。
+**通用盔甲结构**：胶囊形躯干从肩一直包到腰下，胸前两块胸板 + 中缝，胸口一颗发蓝光的奥能核心；三节收窄的腹甲；腰带 + 两片圆头胯甲 + 护裆；手臂贴着躯干两侧（上臂藏在肩甲后、深色肘关节、粗前臂护甲外侧一条辅色条、圆拳套）；两条腿分开（大腿外侧辅色条、圆护膝、小腿、圆底靴）；肩甲是每侧 3～5 片圆头叶片，从肩后斜向外下方层层展开，压在身体和手臂后面。
 
-**English prompt**
-> Heavy fantasy power armor, entry-level "squire" model built by D&D gnome artificers. Armor only, no head or skin (as if worn by an invisible person, empty neck opening). Oversized rounded pauldrons with thick rims and rivet rows, boxy chest plate with two rows of rivets, a glowing blue arcane core set in a brass square frame on the chest, segmented waist, thick leg armor with round knee guards, two short stubby thrusters on the back. Weathered iron-grey metal with scratches, dents and chipped paint, a yellow-and-black hazard stripe plate on one shoulder, small gear emblem on the left pauldron. RimWorld game sprite style: thick dark outline, flat colors with one layer of cel shading, muted low saturation, orthographic, no perspective. Turnaround sheet: front, right side, back, same scale and aligned. Transparent background, no text, no watermark, no ground shadow, no Warhammer 40K insignia.
+### 1. 奥械侍从甲 + 奥械侍从盔（入门款，光环战地甲味道）
+- 甲：橄榄绿甲色、铁灰色叶片肩甲、颈上一条旧围巾（土黄）、帆布腰带挂一排弹药袋、黄铜框圆形蓝核心、背上一根细天线和两支短推进管。
+- 盔：橄榄绿圆角胶囊盔，前面一大块琥珀色反光面罩（带一道斜高光），下巴是深灰呼吸格栅，两侧各一根短软管。
+- 提示词：一套奇幻动力盔甲入门款，橄榄绿甲片，铁灰色叶片肩甲每侧三片从肩后斜着往外下方展开，颈上一条旧土黄围巾，帆布腰带挂着弹药袋，胸口一颗黄铜框的蓝色发光核心，背上一根细天线和两支短推进管；头盔是橄榄绿圆角胶囊盔，前面一大块琥珀色反光面罩，下巴深灰呼吸格栅和两根短软管。【加通用画风】
+- English: Fantasy power armor, entry model: olive green plates, iron-grey leaf-shaped pauldrons (three per side fanning out and down from behind the shoulders), an old khaki scarf, canvas belt with ammo pouches, a brass-framed glowing blue core on the chest, a thin antenna and two short thrusters on the back; helmet is an olive rounded-capsule helm with a large reflective amber visor, dark grey rebreather grille at the chin and two short hoses. [+ style]
 
-### 2. 奥械侍从盔（配侍从甲）
-- **外形**（重画方向）：呼吸管面罩盔——圆顶全盔，脸前两只圆形镜片（发淡蓝光），下面一块格栅口罩，两根软管从口罩绕到后脑。
-- **配色**：同侍从甲做旧铁灰；镜框和软管接头黄铜色；软管深橡胶色。
-- **注**：Def 里旧描述写的是「一条横贯的蓝色目镜缝」，重画时改成了双圆镜，下次改描述时同步。
+### 2. 秘铸骑士动力甲 + 秘铸骑士盔（主力款，红金）
+- 甲：红色甲色、金色叶片肩甲、前臂和大腿外侧金色辅甲条、金框圆形蓝核心、三节腹甲、展翼太阳金腰扣、金护膝、背后两支推进管。
+- 盔：红色圆角胶囊盔，甲色尖颌面甲镶一圈金边，一道 V 形蓝色发光目镜，盔顶一条金脊，耳侧各一枚金圆护（不是金色整张面具）。
+- 提示词：一套红色奇幻骑士动力盔甲，金色叶片肩甲每侧三片斜着往外下方展开，前臂和大腿外侧有金色辅甲条，胸口一颗金框的圆形蓝色发光核心，三节腹甲，腰扣是金色展翼太阳，金色圆护膝，背后两支推进管；头盔是红色圆角胶囊盔，红色尖颌面甲镶金边，一道 V 形蓝色发光目镜，盔顶一条金脊，耳侧金色圆护。【加通用画风】
+- English: Red fantasy knight power armor: gold leaf pauldrons (three per side), gold trim strips on forearms and outer thighs, gold-framed round glowing blue chest core, three-segment abdomen, gold winged-sun belt buckle, round gold knee pads, two thrusters on the back; helmet: red rounded-capsule helm with a red pointed-chin faceplate rimmed in gold, a V-shaped glowing blue visor, a gold crest ridge, round gold ear guards. [+ style]
 
-**中文提示词**
-> 奇幻动力盔甲的头盔，侏儒工坊入门款：圆顶全盔，脸前两只发淡蓝光的圆形镜片，下方一块格栅呼吸口罩，两根黑色软管从口罩绕到后脑，黄铜镜框和接头，做旧铁灰色金属带刮痕和铆钉。只画头盔，不画脖子和人。RimWorld 游戏贴图风格：粗深色描边、平涂加一层阴影、低饱和、正交视角。三视图：正面、右侧面、背面，同一比例。透明背景，不要文字水印，不要战锤40K标志。
+### 3. 圣誓骑士动力甲（圣武士款，黑金）
+- 甲：黑色甲色、金色叶片肩甲、六角形蓝核心外一圈金色八芒旭日、腰侧金色活塞关节、金护膝、腰前一片白色纹章布帘（中间印旭日），背后两支推进管。配黑色的骑士盔。
+- 提示词：一套黑色奇幻圣武士动力盔甲，金色叶片肩甲每侧三片斜着展开，胸口一颗六角形蓝色发光核心，外面一圈金色八芒旭日，腰两侧金色活塞关节，金色圆护膝，腰前垂一片白色布帘，中间印着金色旭日，背后两支推进管；头盔同骑士盔造型，黑色配金边。【加通用画风】
+- English: Black fantasy paladin power armor: gold leaf pauldrons, a hexagonal glowing blue core surrounded by a gold eight-pointed sunburst, gold piston joints at the waist, round gold knee pads, a white cloth tabard at the waist with a gold sun emblem, two thrusters; helmet same design as the knight helm in black with gold trim. [+ style]
 
-**English prompt**
-> Fantasy power-armor helmet, gnome artificer entry model: rounded full helm, two round faintly glowing blue goggle lenses, a grilled rebreather mask below, two black hoses running from the mask to the back of the helm, brass lens rims and fittings, weathered iron-grey metal with scratches and rivets. Helmet only, no neck or person. RimWorld sprite style: thick dark outline, flat colors with one layer of shading, muted palette, orthographic. Turnaround: front, right side, back, same scale. Transparent background, no text, no watermark, no Warhammer 40K insignia.
+### 4. 秘法炮手动力甲（法师款，紫银）
+- 甲：深紫蓝甲色、银色叶片肩甲上一道发光符文线、两肩后各立一根紫色导能晶（黄铜杆）、紫框圆核心、胸前和大腿上的发光符文线、背后一颗大核心外套一圈符文环，没有推进器。配深紫的骑士盔。
+- 提示词：一套深紫蓝色的奇幻战斗法师动力盔甲，银色叶片肩甲上有一道发光的淡紫符文线，两肩后各立一根黄铜杆顶着的紫色水晶，胸口一颗紫框的蓝色发光核心，胸前和大腿上有发光符文线，背后一颗大核心外面套一圈符文环，没有推进器；头盔同骑士盔造型，深紫配银边。【加通用画风】
+- English: Deep purple-blue battle-mage power armor: silver leaf pauldrons with a glowing violet rune line, a purple crystal on a brass rod behind each shoulder, purple-framed glowing blue chest core, glowing rune lines on chest and thighs, a large back core ringed by runes, no thrusters; helmet same as the knight helm in deep purple with silver trim. [+ style]
 
-### 3. 秘铸骑士动力甲（主力档，参考图②）
-- **外形**：标准轮廓里最「骑士」的一件。双层圆顶大肩甲，胸甲厚而方，腰前一片铆钉挂帘（纹章色布面 + 金属铆钉），圆徽护膝，背后两支推进管。
-- **配色**：甲色主体宝蓝（游戏默认，可染色）；金色宽滚边、金铆钉；挂帘纹章色（暗红）。
-- **材质**：秘银 + 精金，干净的打磨甲面，不做旧。
-- **徽记**：胸前 DND 展翼太阳浮雕（核心就在太阳中心）；护膝上小圆徽。
+### 5. 奇械动力甲（器械师款，青铜）
+- 甲：青铜色甲色、深铁色尖头叶片肩甲、胸前一个黄铜齿轮中间嵌着核心、腰侧黄铜活塞、腰上皮质工具袋、背上双核心背包（两颗核心并排）。配青铜色侍从盔。
+- 提示词：一套青铜色的奇幻器械师动力盔甲，深铁色尖头叶片肩甲每侧三片，胸前一个黄铜齿轮中间嵌着蓝色发光核心，腰两侧黄铜活塞关节，腰上挂皮质工具袋，背上一台双核心背包（两颗蓝核心并排）；头盔同侍从盔造型，青铜色配琥珀面罩。【加通用画风】
+- English: Bronze artificer power armor: dark-iron pointed leaf pauldrons, a brass gear on the chest with a glowing blue core in its hub, brass piston joints at the waist, leather tool pouches, a twin-core backpack; helmet same as the squire helm in bronze with an amber visor. [+ style]
 
-**中文提示词**
-> 一套厚重的奇幻骑士动力盔甲，秘银精金秘铸，只画盔甲、不画头和皮肤（像穿在隐形人身上，领口空着）。双层超大圆顶肩甲，宽宽的金色滚边和金铆钉，方正厚胸甲中央一个展翼太阳浮雕，太阳中心嵌着发蓝光的奥术核心，分节腰甲，腰前垂一片暗红色带铆钉的纹章挂帘，粗腿甲和圆徽护膝，背后两支推进管。甲面宝蓝色、干净打磨。RimWorld 游戏贴图风格：粗深色描边、平涂加一层体积阴影、低饱和、正交视角。三视图并排：正面、右侧面、背面，同一比例对齐。透明背景，不要文字、水印、地面阴影，不要任何战锤40K标志。
-
-**English prompt**
-> Heavy fantasy knight power armor forged from mithral and adamantine. Armor only, no head or skin (invisible wearer, empty neck opening). Double-layered oversized rounded pauldrons with wide gold trim and gold rivets, boxy thick breastplate with a winged-sun relief in the center, a glowing blue arcane core set in the sun's center, segmented waist, a dark red riveted heraldic tabard flap hanging in front, thick greaves with round medallion knee guards, two thrusters on the back. Royal blue polished plates. RimWorld sprite style: thick dark outline, flat colors with one layer of cel shading, muted palette, orthographic. Turnaround sheet: front, right side, back, aligned. Transparent background, no text, no watermark, no ground shadow, no Warhammer 40K insignia.
-
-### 4. 秘铸骑士盔（骑士 / 三种变体通用）
-- **外形**（重画方向）：鬃冠骑士盔——前突的楔形面甲，T 形目缝（缝里透淡蓝光），盔顶一条纹章色短鬃冠，两颊铆钉。
-- **配色**：甲色主体宝蓝（可染色）；面甲金色；鬃冠暗红。
-- **注**：Def 旧描述是「十字形目镜」，重画改成 T 形目缝。
-
-**中文提示词**
-> 奇幻骑士动力盔甲的头盔：前突的楔形金色面甲，T 形目缝透出淡蓝光，盔体宝蓝色，盔顶一条暗红色短鬃冠，两颊各一排铆钉，金色滚边。只画头盔，不画脖子和人。RimWorld 游戏贴图风格：粗深色描边、平涂加一层阴影、低饱和、正交视角。三视图：正面、右侧面、背面，同一比例。透明背景，不要文字水印，不要战锤40K标志。
-
-**English prompt**
-> Fantasy knight power-armor helmet: forward-jutting wedge-shaped gold faceplate with a T-shaped visor slit glowing faint blue, royal blue helm shell, short dark red crest along the top, rivet rows on the cheeks, gold trim. Helmet only, no neck or person. RimWorld sprite style: thick dark outline, flat colors with one layer of shading, muted palette, orthographic. Turnaround: front, right side, back, same scale. Transparent background, no text, no watermark, no Warhammer 40K insignia.
-
-### 5. 圣誓骑士动力甲（圣武士变体，参考图①）
-- **外形**：骑士轮廓外罩一件破旧褐色长袍——袍子从腰下开衩成几片下摆，背后有一个卷起的兜帽；胸甲做成骨白色的肋骨浮雕；挂着羊皮纸誓约条（红蜡封）和几段铁链；宽皮带；**头后方一圈铜色尖刺光环**（光环画在身甲贴图里，位置在头的后面）。
-- **配色**：甲色主体深黑（可染色）；骨白肋骨；褐袍；羊皮纸米黄 + 红蜡；铜色光环。
-- **徽记**：誓约条上用印章图形（八芒旭日小印）代替文字。
-- **注**：Def 旧描述是「亮银甲面镶金边、八芒旭日」，重画走了参考图①的暗色朝圣骑士方向，下次改描述时同步。
-
-**中文提示词**
-> 一套厚重的奇幻圣武士动力盔甲，只画盔甲和衣物、不画头和皮肤（像穿在隐形人身上，领口空着）。超大圆顶肩甲带铆钉滚边，深黑色甲面，胸甲是骨白色肋骨浮雕，外罩一件破旧的褐色长袍，腰下开衩成几片下摆，背后有卷起的兜帽，宽皮带，身上挂着几条带红色蜡封的羊皮纸誓约条（只画印章图案，不要文字）和铁链，头部后方立着一圈铜色尖刺光环。RimWorld 游戏贴图风格：粗深色描边、平涂加一层体积阴影、低饱和、正交视角。三视图并排：正面、右侧面、背面，同一比例对齐。透明背景，不要文字、水印、地面阴影，不要任何战锤40K标志。
-
-**English prompt**
-> Heavy fantasy paladin power armor. Armor and cloth only, no head or skin (invisible wearer, empty neck opening). Oversized rounded riveted pauldrons, black armor plates, bone-white ribcage relief on the breastplate, a tattered brown robe over it split into several tails below the waist with a rolled hood on the back, wide leather belt, parchment oath strips with red wax seals (seal symbols only, no writing) and iron chains hanging from the armor, a copper spiked halo standing behind the head. RimWorld sprite style: thick dark outline, flat colors with one layer of cel shading, muted palette, orthographic. Turnaround sheet: front, right side, back, aligned. Transparent background, no text, no watermark, no ground shadow, no Warhammer 40K insignia.
-
-### 6. 秘法炮手动力甲（法师变体）
-- **外形**：骑士轮廓，**没有推进管**；背后一颗大奥能核心外套一个旋转的符文环；两肩各架一根导能晶管（淡紫水晶）；胸甲、肩甲上刻发光的符文线；手甲接着胸口核心的导能线。
-- **配色**：甲色主体深紫蓝（可染色）；符文线和晶体淡青紫光；黄铜框。
-- **徽记**：胸前一颗八角星辰 + 耐瑟瑞尔符文。
-
-**中文提示词**
-> 一套厚重的奇幻战斗法师动力盔甲，只画盔甲、不画头和皮肤（像穿在隐形人身上，领口空着）。超大圆顶肩甲带铆钉滚边，每侧肩上架一根淡紫色导能水晶管，深紫蓝色甲面，胸甲和肩甲上刻着发青紫光的符文线条，胸前一颗八角星辰徽记，胸口奥术核心连着导线通到手甲，背后一颗大奥术核心外面套一个符文环，没有推进器。黄铜框和铆钉。RimWorld 游戏贴图风格：粗深色描边、平涂加一层体积阴影、低饱和、正交视角，发光部分只用浅色平涂表现。三视图并排：正面、右侧面、背面，同一比例对齐。透明背景，不要文字、水印、地面阴影，不要任何战锤40K标志。
-
-**English prompt**
-> Heavy fantasy battle-mage power armor. Armor only, no head or skin (invisible wearer, empty neck opening). Oversized rounded riveted pauldrons each carrying a pale violet focusing-crystal tube, deep purple-blue plates engraved with softly glowing cyan-violet rune lines on chest and shoulders, an eight-pointed star emblem on the chest, conduits running from the chest core to the gauntlets, a large arcane core on the back ringed by a rune circle, no thrusters. Brass frames and rivets. RimWorld sprite style: thick dark outline, flat colors with one layer of cel shading, muted palette, orthographic; show glow with light flat colors only. Turnaround sheet: front, right side, back, aligned. Transparent background, no text, no watermark, no ground shadow, no Warhammer 40K insignia.
-
-### 7. 奇械动力甲（器械师变体，参考图③）
-- **外形**：侍从甲同款粗犷轮廓，但肩甲上加一排短尖钉；胸前一个大齿轮，核心嵌在齿轮中心；背后一台双联核心背包（两颗核心并排、外露管线）；腰间挂工具袋、扳手、备用线圈。
-- **配色**：甲色主体青铜色（可染色）；黄铜齿轮；皮质工具袋。
-- **徽记**：胸前齿轮本身就是徽记（侏儒工坊）。
-
-**中文提示词**
-> 一套厚重的奇幻器械师动力盔甲，只画盔甲、不画头和皮肤（像穿在隐形人身上，领口空着）。超大圆顶肩甲带一排短尖钉和铆钉滚边，青铜色甲面，胸前一个大黄铜齿轮，齿轮中心嵌着发蓝光的奥术核心，背后一台双联核心背包（两颗核心并排、露着铜管），腰间挂满皮质工具袋、扳手和铜线圈，粗腿甲和圆护膝。略带使用痕迹。RimWorld 游戏贴图风格：粗深色描边、平涂加一层体积阴影、低饱和、正交视角。三视图并排：正面、右侧面、背面，同一比例对齐。透明背景，不要文字、水印、地面阴影，不要任何战锤40K标志。
-
-**English prompt**
-> Heavy fantasy artificer power armor. Armor only, no head or skin (invisible wearer, empty neck opening). Oversized rounded pauldrons with a row of short spikes and riveted rims, bronze plates, a large brass gear on the chest with a glowing blue arcane core in its hub, a twin-core backpack (two cores side by side with exposed copper pipes), leather tool pouches, wrenches and copper coils hanging from the belt, thick greaves with round knee guards, lightly worn. RimWorld sprite style: thick dark outline, flat colors with one layer of cel shading, muted palette, orthographic. Turnaround sheet: front, right side, back, aligned. Transparent background, no text, no watermark, no ground shadow, no Warhammer 40K insignia.
-
-### 8. 誓约堡垒重甲（最高档）
-- **外形**：所有动力甲里最宽最厚——躯干比别的甲宽约 24%；肩甲不是圆顶，而是**方形塔盾式肩甲**（像两面竖着的小塔盾，金边，顶上各三根尖刺）；胸甲上并排三颗奥能核心；腿甲粗得像城柱；腰前一段铁链，腰下褐色布袍下摆。
-- **配色**：甲色主体深钢灰（可染色）；金边；褐袍；三颗蓝核心。
-- **徽记**：两面塔盾肩甲上各一个盾形纹章（城垛图案，代表「移动城墙」）。
-
-**中文提示词**
-> 一套极其厚重宽大的奇幻堡垒动力盔甲，比普通盔甲宽出一圈，只画盔甲、不画头和皮肤（像穿在隐形人身上，领口空着）。两边肩甲是方形塔盾式（像竖着的小塔盾，金色滚边，顶上各三根尖刺，盾面有城垛纹章），加宽加厚的胸甲上并排三颗发蓝光的奥术核心，满身铆钉，腰前挂一段铁链，腰下褐色布袍下摆，腿甲粗得像城柱。深钢灰色甲面。RimWorld 游戏贴图风格：粗深色描边、平涂加一层体积阴影、低饱和、正交视角。三视图并排：正面、右侧面、背面，同一比例对齐。透明背景，不要文字、水印、地面阴影，不要任何战锤40K标志。
-
-**English prompt**
-> Extremely massive, extra-wide fantasy "bastion" power armor, noticeably wider than normal armor. Armor only, no head or skin (invisible wearer, empty neck opening). Square tower-shield pauldrons (like small upright tower shields with gold trim, three spikes on top of each, a battlement heraldic emblem on each face), widened thick breastplate with three glowing blue arcane cores side by side, rivets everywhere, an iron chain across the waist, brown cloth tails below the waist, pillar-thick leg armor. Dark steel-grey plates. RimWorld sprite style: thick dark outline, flat colors with one layer of cel shading, muted palette, orthographic. Turnaround sheet: front, right side, back, aligned. Transparent background, no text, no watermark, no ground shadow, no Warhammer 40K insignia.
-
-### 9. 堡垒巨盔（配堡垒甲，体型 ≥1）
-- **外形**（重画方向）：骷髅面盔——方形厚盔，正面铸成骨白色骷髅面（眼窝里一条窄窄的蓝色光缝），两侧护颊翼，盔后一圈铜色尖刺光环。下沿和肩甲连成一体的厚颈甲。
-- **配色**：盔体深钢灰；骷髅面骨白；铜色光环；眼缝淡蓝。
-- **注**：骷髅面是 DND 死亡守望 / 誓约骑士的意象，画成普通人类骷髅即可，不要加翅膀（避免像 40K 的骷髅翼）。
-
-**中文提示词**
-> 奇幻堡垒动力盔甲的巨型头盔：方形厚重盔体，深钢灰色，正面铸成骨白色的骷髅面，眼窝里一条窄窄的蓝色光缝，两侧伸出护颊翼，下沿是厚颈甲，盔后立一圈铜色尖刺光环，铆钉滚边。不要翅膀。只画头盔，不画人。RimWorld 游戏贴图风格：粗深色描边、平涂加一层阴影、低饱和、正交视角。三视图：正面、右侧面、背面，同一比例。透明背景，不要文字水印，不要战锤40K标志。
-
-**English prompt**
-> Massive fantasy bastion power-armor helmet: square heavy dark steel-grey helm, front cast as a bone-white skull face with a narrow glowing blue slit in the eye sockets, cheek-guard wings on both sides, thick gorget at the bottom, a copper spiked halo behind the helm, riveted rims. No wings on the skull. Helmet only, no person. RimWorld sprite style: thick dark outline, flat colors with one layer of shading, muted palette, orthographic. Turnaround: front, right side, back, same scale. Transparent background, no text, no watermark, no Warhammer 40K insignia.
+### 6. 誓约堡垒重甲 + 堡垒巨盔（最高档，钢灰金）
+- 甲：钢灰甲色、最宽最厚，每侧 5 片金色尖头叶片肩甲、胸前并排三颗金框蓝核心、腰前白色布帘、更粗的腿、背后大推进器。
+- 盔：比别的头盔方一点的圆角宽盔，一条窄窄的蓝色目缝，下面呼吸格栅，两侧护颊翼，金色盔脊和金颈甲带一排铆钉。
+- 提示词：一套极其厚重的奇幻堡垒动力盔甲，钢灰色，比普通动力甲宽一圈，金色尖头叶片肩甲每侧五片斜着往外下方展开，胸前并排三颗金框的蓝色发光核心，腰前垂一片白色布帘，腿特别粗，背后一对大推进器；头盔是方一点的圆角宽盔，一条窄窄的蓝色发光目缝，下面是呼吸格栅，两侧护颊翼，金色盔脊和金色颈甲带一排铆钉。【加通用画风】
+- English: Extremely heavy bastion power armor in steel grey, noticeably wider than the others: five gold pointed leaf pauldrons per side, three gold-framed glowing blue cores side by side on the chest, a white cloth tabard, very thick legs, a pair of big thrusters on the back; helmet: a squarer rounded wide helm with a narrow glowing blue visor slit, a rebreather grille below, cheek guards on both sides, a gold crest ridge and a gold riveted gorget. [+ style]
 
 ---
 
@@ -310,4 +247,4 @@
 - 每件发三视图（驮兽另加鞍袋版），原图分辨率越高越好，不要压缩成 JPG（PNG 最好）。
 - 不满意的部位直接标注（例如「肩甲再大一点」），我们处理时一起改。
 - 我们这边会做：抠图 → 统一描边粗细和饱和度 → 缩到 256 → 身甲拉伸出 5 种体型 → 做可染色遮罩 → 覆盖进 `Textures/LP/PowerArmor/**` 和 `Textures/Things/Pawn/Animal/LP_BeastsDND2/**`，换之前先备份现有贴图。
-- 两处 Def 描述和当前贴图不一致（侍从盔 / 骑士盔的目镜写法、圣誓甲的亮银配色），新图定下来后一并改描述。
+- 动力甲部分已按 2026-11-08 第七版贴图重写；Def 描述已同步。

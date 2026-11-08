@@ -1,13 +1,10 @@
-# 1.126.0 奥能动力甲贴图（2026-11-08 第三版：按 Peter 的第二批三张参考图重绘成流线分节动力甲）：6 件身甲 × 五体型 × 南/东/北（256px）+ 3 顶头盔 × 3 向 + _m 遮罩
-# （红=甲色，绿=纹章色，黑=固定色）+ 图标；奥械锻炉（3×2，三向）、奥能充能座、奥能电池、4 个按钮图标。
-# 预览：ArtSource/Preview/PowerArmor-1.126.0.png（全部）与 PowerArmor-1.126.0-views.png（正 / 侧 / 背 + 旧版对比）。
-# 造型：棱角分节肩甲（两三层叠片 + 辅色滚边）、左右两块棱角胸板、收窄的分节腹甲、腰侧辅色活塞关节、大腿外侧辅色条、护膝；胸口发光核心放在头盔下沿下面（CORE_T）。
-#   奥械侍从甲（参考①）：做旧橄榄灰、旧围巾（纹章色）、呼吸软管通到左胸滤罐、帆布腰带弹药袋、背上天线。
-#   秘铸骑士动力甲（参考③）：甲色（默认红）+ 银色辅甲、圆形发光核心、胸前两盏小灯、展翼太阳腰扣。
-#   圣誓骑士动力甲（参考②）：黑甲金饰、六角核心外一圈八芒旭日、金色活塞关节。秘法炮手：银辅甲 + 符文线 + 背后大核心 + 肩上导能晶。
-#   奇械动力甲：青铜甲、深铁辅甲、黄铜齿轮关节、双核心背包、工具袋。誓约堡垒重甲：同款放大加厚，三层尖刺大肩甲、三核心。
-#   头盔：侍从盔 = 凸节盔顶 + V 形目缝 + 呼吸口罩软管；骑士盔 = 银色尖颌面甲 + V 形发光目镜 + 银脊 + 耳侧圆护；堡垒巨盔 = 宽方盔 + 窄目缝 + 护颊翼 + 金颈甲。
-#   徽记只用 DND 风格（展翼太阳、八芒旭日、齿轮、符文）。上一版（40K 重甲风）在 ArtSource/backup-1.126.0-powerarmor-art2。
+# 1.126.0 奥能动力甲贴图（2026-11-08 第四版：参考钢铁侠 × 战锤40K × 光环混合，原创造型）：6 件身甲 × 五体型 × 南/东/北（256px）+ 3 顶头盔 × 3 向 + _m 遮罩
+# （红=甲色，绿=纹章色，黑=固定色）+ 图标；奥械锻炉（3×2，三向）、奥能充能座、奥能电池、4 个按钮图标（这些没变）。
+# 预览：ArtSource/Preview/PowerArmor-1.126.0.png（全部）与 PowerArmor-1.126.0-views.png（上一版正面 / 新版正 / 侧 / 背）。
+# 混合方式：40K = 大圆肩甲 + 宽辅色滚边、胯甲、纹章布帘、堡垒的塔盾肩甲；光环 = 整件深色内衬在关节和甲片缝里露出来、侍从盔的琥珀反光面罩；
+#   钢铁侠 = 流线甲片、发光胸核、双色辅甲条、分节腹甲。头盔面甲、徽记都是原创（V 形目镜、展翼太阳、八芒旭日、齿轮、符文）。
+# 无缝接缝：甲片用 soft()（只有体积明暗，不画黑线），片与片之间只露内衬或画同色加深的细缝（seam），黑描边只在整件外轮廓（finish）。
+# 上一版（第三版，流线分节甲）备份在 ArtSource/backup-1.126.0-powerarmor-art3。
 # 渲染器用 ArtRedraw-1030/apparel.py（原版画风：粗深描边、上亮下暗、左上高光、板甲纹理），身体框沿用 draw_apparel_145.py。
 # 用法（要 numpy / scipy）：$env:PATH="E:\Python;E:\Python\Library\bin;"+$env:PATH; E:\Python\python.exe -I ArtSource/RaceArt/draw_power_armor_124.py <模组根目录>
 import importlib.util, math, os, sys
@@ -25,7 +22,7 @@ A.TEX = os.path.join(ROOT, "Textures")
 R.TEX = A.TEX
 PREVIEW = os.path.join(ROOT, "ArtSource", "Preview", "PowerArmor-1.126.0.png")
 VIEWS_PNG = os.path.join(ROOT, "ArtSource", "Preview", "PowerArmor-1.126.0-views.png")
-OLD = os.path.join(ROOT, "ArtSource", "backup-1.126.0-powerarmor-art2", "Textures")
+OLD = os.path.join(ROOT, "ArtSource", "backup-1.126.0-powerarmor-art3", "Textures")
 Fit, Head, poly, ell, rect = A.Fit, A.Head, A.poly, A.ell, A.rect
 FlatCanvas = A.Canvas
 LT, MD, DK = A.LT, (198, 198, 196), (158, 158, 156)
@@ -52,7 +49,7 @@ LEATHER = (104, 78, 52)
 
 
 def Canvas(view="south"):
-    return R.Canvas(view, "plate")
+    return R.Canvas(view, None)   # 截图式干净平涂：不叠板甲纹理
 
 
 def sc(col, k):
@@ -159,311 +156,432 @@ def halo(c, x, y, r, spikes=12):
     c.add([("ell", (x - r * .94, y - r * .94, x + r * .94, y + r * .94)), ("-ell", (x - r * .84, y - r * .84, x + r * .84, y + r * .84))], BRASS_DK, FIXED, 0)
 
 
-# ---------------- 身体结构（2026-11-08 第三版：流线分节动力甲） ----------------
+# ---------------- 身体结构（2026-11-08 第四版：钢铁侠 × 战锤40K × 光环 混合，原创造型） ----------------
+# 40K：大圆肩甲 + 宽滚边、厚重轮廓；光环：深色内衬在关节处露出来、头盔大面罩；钢铁侠：流线甲片、发光胸核、双色辅甲。
+# 接缝不画黑线：甲片之间只露深色内衬或画一道同色加深的细缝，黑描边只画在整件的外轮廓上（finish）。
+import numpy as np
+from scipy import ndimage as ndi
+
 SILVER = (200, 204, 210)
 SILVER_DK = (142, 148, 158)
 KHAKI = (150, 136, 100)
 KHAKI_DK = (112, 100, 72)
 HOSE = (46, 46, 50)
+UNDER = (62, 64, 68)
+UNDER_DK = (46, 47, 51)
+VISOR = (208, 150, 58)
+VISOR_LT = (246, 212, 132)
+CORE_T = .27
 
 
-def pauldron_geom(f, size=.26, off=.46, cap=57.0):
-    r, o = f.w * size, f.w * off
+def soft(c, parts, color, chan=FIXED, shade=.2, ow=0.0, under=False):
+    """截图式画法：干净的明暗（离边缘越近越暗、左上亮右下暗），没有颗粒和板甲纹理。
+    ow>0 时先描一圈黑边；under=True 时只画在还空着的地方（压在已画部件的后面）。"""
+    if parts and isinstance(parts[0], str):
+        parts = [parts]
+    m0 = c._maskarr(parts)
+    if not m0.any():
+        return
+    free = (c.a <= 0) if under else None
+    if ow:
+        ring = (ndi.distance_transform_edt(~m0) <= ow * S * .95) & ~m0
+        if under:
+            ring &= free
+        c.rgb[ring] = R.INK
+        c.a[ring] = 1
+        c.ch[ring] = FIXED
+    m = m0 & free if under else m0
+    if not m.any():
+        return
+    col = np.asarray(color, np.float32)
+    ys, xs = np.nonzero(m0)
+    size = min(np.ptp(xs) + 1, np.ptp(ys) + 1) / S
+    y0, y1 = ys.min(), ys.max() + 1
+    f = np.ones(m.shape, np.float32)
+    if size > 3:
+        d = ndi.distance_transform_edt(m0)
+        dm = max(1.0, min(float(d.max()), 5.0 * S))
+        f *= .8 + .2 * np.clip(d / dm, 0, 1) ** .6
+        sd = max(1.2, min(5.0, size * .16)) * S
+        band = m0 & ~R._shift(m0, -.35 * sd, -1.0 * sd)
+        f *= 1 - shade * ndi.gaussian_filter(band.astype(np.float32), S * .9)
+        hb = m0 & ~R._shift(m0, .35 * sd * .6, 1.0 * sd * .6)
+        f *= 1 + .14 * ndi.gaussian_filter(hb.astype(np.float32), S * .7)
+    f *= 1 + .08 * (.5 - (R._yy - y0) / max(1, y1 - y0))
+    cc = col[None, None, :] * f[..., None]
+    c.rgb[m] = np.clip(cc[m], 0, 255)
+    c.a[m] = 1
+    c.ch[m] = chan
+
+
+def squircle(cx, cy, rx_top, rx_bot, ry_top, ry_bot, p=2.6, n=56):
+    """圆角方形 / 胶囊：上下半宽可以不同（倒梯形躯干），四角是圆的。"""
+    pts = []
+    for i in range(n):
+        a = 2 * math.pi * i / n
+        ca, sa = math.cos(a), math.sin(a)
+        rx = rx_top + (rx_bot - rx_top) * (1 + sa) / 2
+        ry = ry_bot if sa > 0 else ry_top
+        pts.append((cx + rx * math.copysign(abs(ca) ** (2 / p), ca), cy + ry * math.copysign(abs(sa) ** (2 / p), sa)))
+    return pts
+
+
+def leaf(x, y, ang, L, w, tip=.35, n=28):
+    """叶片：从 (x,y) 朝 ang 方向伸出 L 长、w 宽的圆头叶片，尖端收窄。"""
+    ca, sa = math.cos(ang), math.sin(ang)
+    pts = []
+    for i in range(n):
+        t = 2 * math.pi * i / n
+        u = L / 2 * math.cos(t)
+        v = w / 2 * math.sin(t) * (1 - tip * math.cos(t))
+        px, py = L / 2 + u, v
+        pts.append((x + px * ca - py * sa, y + px * sa + py * ca))
+    return pts
+
+
+def seam(c, pts, col, chan=STUFF, w=.6):
+    """甲片之间的细缝：同色加深的一道线，不是黑描边。"""
+    c.add(("line", pts, w), col, chan, 0)
+
+
+def finish(c, ow=1.5):
+    """只在整件的外轮廓上描一圈深色边。"""
+    m = c.a > 0
+    ring = (ndi.distance_transform_edt(~m) <= ow * S * .95) & ~m
+    c.rgb[ring] = R.INK
+    c.a[ring] = 1
+    c.ch[ring] = FIXED
+
+
+def pauldron_geom(f, size=.32, off=.5, cap=57.0):
+    ww = min(f.w, 66.0)   # 宽体型肩甲不跟着无限放大，各体型肩甲大小接近
+    r, o = ww * size, max(f.w * .5, ww * off * 1.1)   # 肩甲往两侧撑开（按游戏内截图比例）
     k = min(1.0, cap / (o + r))
     return r * k, o * k
 
 
-def plate_pauldrons(c, f, size=.29, off=.5, accent=SILVER, layers=2, spikes=0, trim=True, glow_lines=False, rugged=False):
-    """分节肩甲：棱角肩壳 + 下面两三层叠片，每层下沿一道辅色滚边。"""
+def big_pauldrons(c, f, size=.32, off=.5, accent=GOLD, rim=True, layers=1, spikes=0, glow_lines=False, square=False):
+    """截图式叶片肩甲：每侧几片圆头叶片从肩后斜向外下方撑开、层层叠住，压在身体和手臂后面；
+    侧面是一块盖在肩上的圆肩甲。rim=True 用辅色（金 / 银 / 铁）整片，False 用甲色。"""
     r, o = pauldron_geom(f, size, off)
-    ty = f.y(-.02)
-    sides = [(f.cx + f.w * .05, 1)] if f.east else [(f.cx + s * o, s) for s in (-1, 1)]
+    col, ch = (accent, FIXED) if rim else (LT, STUFF)
     if f.east:
-        r *= 1.12
-    for cx, s in sides:
-        for k in range(layers, 0, -1):
-            yk = ty + r * (.42 + .3 * k)
-            wk = r * (.92 - .1 * k)
-            dx = s * r * .06 * k
-            pts = [(cx - wk + dx, yk - r * .3), (cx + wk + dx, yk - r * .3), (cx + wk * .9 + dx, yk + r * .14), (cx - wk * .9 + dx, yk + r * .14)]
-            c.add(poly(pts), sc(LT, .93 if k % 2 else 1.0), STUFF, 1.1)
-            if trim:
-                c.add(("line", [(pts[3][0] + 1, pts[3][1] - .7), (pts[2][0] - 1, pts[2][1] - .7)], .8), accent, FIXED, 0)
-        cap = []
-        for i in range(13):
-            a = math.radians(180 + i * 15)
-            cap.append((cx + math.cos(a) * r, ty + math.sin(a) * r * .72))
-        cap += [(cx + r * 1.04, ty + r * .5), (cx + r * .7, ty + r * .78), (cx - r * .7, ty + r * .78), (cx - r * 1.04, ty + r * .5)]
-        if spikes:
-            for k in range(spikes):
-                u = (k + .5) / spikes
-                a = math.radians(205 + u * 130)
-                bx, by = cx + math.cos(a) * r * .75, ty + math.sin(a) * r * .55
-                tx, ty2 = cx + math.cos(a) * r * 1.35, ty + math.sin(a) * r * 1.2
-                c.add(poly([(bx - 1.6, by), (tx, ty2), (bx + 1.6, by)]), accent, FIXED, .9)
-        c.add(poly(cap), LT, STUFF, 1.5)
-        # 棱线：从内上角斜到外下角，外侧一块稍暗的斜面
-        edge = [(cx - s * r * .2, ty - r * .66), (cx + s * r * .55, ty + r * .05), (cx + s * r * .45, ty + r * .78)]
-        if f.east:
-            edge = [(cx - r * .1, ty - r * .7), (cx + r * .5, ty + r * .05), (cx + r * .4, ty + r * .78)]
-        c.add(("line", edge, .7), sc(LT, .78), STUFF, 0)
-        if trim:
-            c.add(("line", [(cx - r * 1.0, ty + r * .5), (cx - r * .68, ty + r * .74), (cx + r * .68, ty + r * .74), (cx + r * 1.0, ty + r * .5)], 1.0), accent, FIXED, 0)
-        if glow_lines:
-            c.add(("line", [(cx - r * .6, ty + r * .1), (cx - r * .15, ty - r * .3), (cx + r * .25, ty + r * .05), (cx + r * .6, ty - r * .2)], .6), RUNE, FIXED, 0)
-        if rugged:
-            for k in range(3):
-                px = cx + (k - 1) * r * .45
-                c.add(ell((px - .6, ty + r * .45, px + .6, ty + r * .45 + 1.2)), BRASS_DK, FIXED, .3)
-
-
-def chest(c, f, accent, collar=True):
-    """左右两块棱角胸板 + 领口辅色护颈；东向是前凸的胸板；北向是两块肩胛板 + 脊柱节。"""
-    if f.east:
-        pts = [(f.cx - f.w * .02, f.y(.0)), (f.cx + f.w * .48, f.y(.03)), (f.cx + f.w * .62, f.y(.18)), (f.cx + f.w * .56, f.y(.36)), (f.cx + f.w * .06, f.y(.41))]
-        c.add(poly(pts), LT, STUFF, 1.3)
-        c.add(("line", [(f.cx + f.w * .1, f.y(.37)), (f.cx + f.w * .52, f.y(.335))], .8), accent, FIXED, 0)
-        if collar:
-            c.add(poly([(f.cx - f.w * .12, f.y(-.04)), (f.cx + f.w * .32, f.y(-.04)), (f.cx + f.w * .36, f.y(.06)), (f.cx - f.w * .1, f.y(.06))]), accent, FIXED, 1.0)
+        x, y = U(f, .02, .1)
+        box = squircle(x, y, r * .95, r * 1.05, r * .62, r * .7, 2.4)
+        soft(c, poly(box), col, ch, ow=1.2)
+        for k in (.15, .45):
+            seam(c, [(x - r * .8, y + r * k), (x, y + r * (k + .16)), (x + r * .85, y + r * k)], sc(col, .7), ch, .55)
         return
+    n = 3 + (1 if layers >= 2 else 0) + (1 if square else 0)
     for s in (-1, 1):
-        if f.view == "north":
-            pts = [(f.cx + s * 1.2, f.y(.03)), (f.cx + s * f.w * .54, f.y(.02)), (f.cx + s * f.w * .56, f.y(.24)), (f.cx + s * f.w * .36, f.y(.4)), (f.cx + s * 1.2, f.y(.42))]
-        else:
-            pts = [(f.cx + s * 1.0, f.y(.06)), (f.cx + s * f.w * .56, f.y(.02)), (f.cx + s * f.w * .6, f.y(.2)), (f.cx + s * f.w * .44, f.y(.38)), (f.cx + s * 2.2, f.y(.42))]
-        c.add(poly(pts), LT, STUFF, 1.3)
-        c.add(("line", [(pts[4][0] + s * .6, pts[4][1] - .8), (pts[3][0] - s * .4, pts[3][1] - .6), (pts[2][0] - s * .8, pts[2][1])], .8), accent, FIXED, 0)
+        bx, by = U(f, s * .3, .1)
+        for k in range(n - 1, -1, -1):
+            ang = math.radians(12 + k * 15)
+            if s < 0:
+                ang = math.pi - ang
+            L = min(r * (1.75 - .1 * k), 58 - abs(bx - 64) * .2 - r * .2)
+            L = min(L, (60 - abs(bx - 64)) / max(.4, abs(math.cos(ang))))
+            w = r * (.62 - .04 * k)
+            pts = leaf(bx, by + k * r * .12, ang, L, w, .45 if spikes else .3)
+            soft(c, poly(pts), sc(col, 1.0 - .05 * k), ch, ow=1.1, under=True)
+            mx, my = bx + math.cos(ang) * L * .15, by + k * r * .12 + math.sin(ang) * L * .15
+            ex, ey = bx + math.cos(ang) * L * .8, by + k * r * .12 + math.sin(ang) * L * .8
+            soft(c, ("line", [(mx, my), (ex, ey)], .6), sc(col, .72), ch, 0, under=True)
+            if glow_lines and k == 0:
+                soft(c, ("line", [(bx + math.cos(ang) * L * .3, by + math.sin(ang) * L * .3 - 1.4), (bx + math.cos(ang) * L * .75, by + math.sin(ang) * L * .75 - 1.4)], .7), RUNE, FIXED, 0, under=True)
+
+
+def U(f, u, t):
+    """部件坐标：u 是相对甲框宽度的横向位置（乘以 f.k 体格系数），t 是纵向 0..1。"""
+    return (f.cx + u * f.w * getattr(f, "k", 1.0), f.y(t))
+
+
+def P(f, pts):
+    return poly([U(f, u, t) for u, t in pts])
+
+
+def M(pts, s):
+    return [(u * s, t) for u, t in pts]
+
+
+def chest(c, f, accent, e=.12):
+    """胶囊形躯干：宽肩收腰的圆角倒梯形，一直包到腰下；胸肌缝、领口护颈、侧肋辅色条、腹部分节都画在里面。"""
+    cy = f.y(.28)
+    if f.east:
+        x = f.cx + f.w * .03
+        soft(c, poly(squircle(x, cy, f.w * .37, f.w * .33, f.y(.28) - f.y(-.04), f.y(.6) - cy, 2.4)), LT, STUFF, ow=1.3)
+        seam(c, [U(f, .06, .34), U(f, .22, .32), U(f, .34, .22)], sc(LT, .72))
+        soft(c, poly(squircle(*U(f, .04, .0), f.w * .2, f.w * .2, 2.2, 2.6, 2.2)), accent, FIXED, ow=.9)
+        for i in range(3):
+            seam(c, [U(f, -.18, .4 + i * .055), U(f, .32 - i * .02, .4 + i * .055)], sc(LT, .76))
+        return
+    soft(c, poly(squircle(f.cx, cy, f.w * .42 * f.k, f.w * .33 * f.k, cy - f.y(-.04), f.y(.6) - cy, 2.6)), LT, STUFF, ow=1.3)
     if f.view == "north":
-        for k in range(5):
-            y = f.y(.06 + k * .085)
-            c.add(rect((f.cx - 2.2, y, f.cx + 2.2, y + f.h * .055)), accent, FIXED, .7)
-    elif collar:
-        c.add(poly([(f.cx - f.w * .3, f.y(-.04)), (f.cx + f.w * .3, f.y(-.04)), (f.cx + f.w * .17, f.y(.09)), (f.cx - f.w * .17, f.y(.09))]), accent, FIXED, 1.0)
+        seam(c, [U(f, 0, .02), U(f, 0, .56)], sc(LT, .7))
+        for s in (-1, 1):
+            seam(c, [U(f, s * .06, .06), U(f, s * .2, .2), U(f, s * .32, .3)], sc(LT, .72))
+        for k in range(4):
+            x, y = U(f, 0, .08 + k * .08)
+            soft(c, ell((x - 2.4, y - 1.6, x + 2.4, y + 1.6)), UNDER, FIXED)
+        return
+    seam(c, [U(f, 0, .12), U(f, 0, .37)], sc(LT, .7))
+    for s in (-1, 1):
+        seam(c, [U(f, s * .02, .36), U(f, s * .18, .34), U(f, s * .33, .22)], sc(LT, .7))
+        soft(c, ("line", [U(f, s * .33, .24), U(f, s * .3, .36)], 1.6), accent, FIXED, 0)
+    x, y = U(f, 0, .0)
+    soft(c, poly(squircle(x, y, f.w * .24, f.w * .16, 2.4, 3.4, 2.2)), accent, FIXED, ow=.9)
 
 
-def abdomen(c, f, accent, joints=None, n=3):
-    """收窄的分节腹甲；腰两侧可选辅色关节 / 活塞（joints=颜色）。"""
+def abdomen(c, f, joints=None, n=3):
+    """腹部分节：胶囊躯干里几条圆头横片（不描黑边），腰两侧活塞关节。"""
+    if f.east:
+        return
     for i in range(n):
-        t = .44 + i * .05
-        hwid = f.w * (.34 - i * .03)
-        if f.east:
-            x0, x1 = f.cx + f.w * .02, f.cx + f.w * (.5 - i * .02)
-            c.add(rect((x0, f.y(t), x1, f.y(t + .042))), sc(LT, .96), STUFF, .9)
-        else:
-            c.add(poly([(f.cx - hwid, f.y(t)), (f.cx + hwid, f.y(t)), (f.cx + hwid * .94, f.y(t + .042)), (f.cx - hwid * .94, f.y(t + .042))]), sc(LT, .96), STUFF, .9)
+        t = .4 + i * .05
+        hw_ = (.24 - i * .02) * f.k
+        soft(c, ("line", [U(f, -hw_, t), U(f, hw_, t)], f.h * .036), sc(LT, .94), STUFF, 0)
+        seam(c, [U(f, -hw_ - .02, t + .024), U(f, hw_ + .02, t + .024)], sc(LT, .66), STUFF, .5)
     if joints and f.view == "south":
         for s in (-1, 1):
-            x = f.cx + s * f.w * .44
             for k in range(3):
-                y = f.y(.46 + k * .045)
-                c.add(ell((x - 2, y - 1.6, x + 2, y + 1.6)), joints, FIXED, .6)
-            c.add(("line", [(x, f.y(.44)), (x, f.y(.58))], .7), sc(joints, .7), FIXED, 0)
-    elif joints and f.east:
-        x = f.cx - f.w * .1
-        for k in range(3):
-            y = f.y(.46 + k * .045)
-            c.add(ell((x - 2, y - 1.6, x + 2, y + 1.6)), joints, FIXED, .6)
+                x, y = U(f, s * .3, .4 + k * .045)
+                soft(c, ell((x - 1.8, y - 1.4, x + 1.8, y + 1.4)), joints, FIXED, ow=.5)
 
 
 def belt(c, f, col, buckle=None, e=.14):
-    A.band(c, f, .6, .045, col, FIXED, e + .02)
-    if buckle and f.view != "north":
-        x, y = A.chest_xy(f, .6)
-        if f.east:
-            x = f.cx + f.w * .42
-        c.add(rect((x - 2.6, y - 2.2, x + 2.6, y + 2.2)), buckle, FIXED, .7)
-
-
-def sleek_legs(c, f, accent, thick=.15, knee=None, panel=True):
-    """大腿甲 + 外侧辅色竖条 + 护膝 + 小腿甲 + 脚踝辅色。"""
-    knee = knee or accent
     if f.east:
-        x = f.cx + f.w * .06
-        wl = f.w * (thick + .08)
-        c.add(poly([(x - wl, f.y(.63)), (x + wl, f.y(.63)), (x + wl * .95, f.y(.8)), (x - wl * .9, f.y(.8))]), LT, STUFF, 1.2)
-        if panel:
-            c.add(poly([(x - wl * .3, f.y(.65)), (x + wl * .5, f.y(.65)), (x + wl * .4, f.y(.78)), (x - wl * .2, f.y(.78))]), accent, FIXED, .6)
-        c.add(poly([(x - wl * .9, f.y(.81)), (x + wl * .95, f.y(.81)), (x + wl, f.y(1.02)), (x - wl, f.y(1.02))]), sc(LT, .95), STUFF, 1.2)
-        kx = x + wl * .55
-        c.add(poly([(kx - 3.2, f.y(.77)), (kx + 3.0, f.y(.77)), (kx + 3.6, f.y(.84)), (kx, f.y(.87)), (kx - 3.4, f.y(.84))]), knee, FIXED, .8)
-        c.add(rect((x - wl, f.y(.97), x + wl, f.y(1.02))), accent, FIXED, .6)
+        soft(c, poly(squircle(*U(f, .03, .58), f.w * .35, f.w * .35, f.h * .028, f.h * .028, 3.0)), col, FIXED, ow=1.0)
+    else:
+        soft(c, poly(squircle(*U(f, 0, .58), f.w * .33 * f.k, f.w * .33 * f.k, f.h * .028, f.h * .028, 3.0)), col, FIXED, ow=1.0)
+    if buckle and f.view != "north":
+        x, y = U(f, .3 if f.east else 0, .58)
+        soft(c, poly(squircle(x, y, 3.0, 3.0, 2.6, 2.6, 2.4)), buckle, FIXED, ow=.8)
+
+
+def arms(c, f, accent):
+    """手臂：圆头胶囊的上臂和粗前臂（贴着躯干、内侧压在躯干外框上），深色肘关节，前臂外侧辅色条，圆拳套带指节缝。"""
+    W = f.w
+    if f.east:
+        soft(c, ("line", [U(f, .0, .08), U(f, .02, .26)], W * .17), sc(LT, .95), STUFF, ow=1.1)
+        x, y = U(f, .03, .29)
+        soft(c, ell((x - W * .08, y - f.h * .022, x + W * .08, y + f.h * .022)), UNDER, FIXED)
+        soft(c, ("line", [U(f, .04, .32), U(f, .09, .46)], W * .2), LT, STUFF, ow=1.1)
+        soft(c, ("line", [U(f, .12, .33), U(f, .16, .45)], 1.3), accent, FIXED, 0)
+        x, y = U(f, .1, .52)
+        soft(c, ell((x - W * .09, y - W * .08, x + W * .09, y + W * .08)), sc(LT, .88), STUFF, ow=1.0)
+        for k in range(3):
+            seam(c, [(x + W * (.0 + k * .035), y - 1.5), (x + W * (.02 + k * .035), y + 1.5)], sc(LT, .6), STUFF, .45)
         return
     for s in (-1, 1):
-        x = f.cx + s * f.w * .22
-        wl = f.w * thick * .5 + 1.6
-        c.add(poly([(x - wl, f.y(.63)), (x + wl, f.y(.63)), (x + wl * .92, f.y(.8)), (x - wl * .92, f.y(.8))]), LT, STUFF, 1.2)
-        if panel:
-            xo = x + s * wl * .45
-            c.add(poly([(xo - wl * .16, f.y(.65)), (xo + wl * .16, f.y(.65)), (xo + wl * .12, f.y(.79)), (xo - wl * .12, f.y(.79))]), accent, FIXED, .4)
-        c.add(poly([(x - wl * .9, f.y(.81)), (x + wl * .9, f.y(.81)), (x + wl, f.y(1.02)), (x - wl, f.y(1.02))]), sc(LT, .95), STUFF, 1.2)
+        soft(c, ("line", [U(f, s * .46, .1), U(f, s * .48, .26)], W * .16), sc(LT, .95), STUFF, ow=1.1)
+        x, y = U(f, s * .48, .29)
+        soft(c, ell((x - W * .08, y - f.h * .022, x + W * .08, y + f.h * .022)), UNDER, FIXED)
+        soft(c, ("line", [U(f, s * .47, .32), U(f, s * .49, .45)], W * .2), LT, STUFF, ow=1.1)
         if f.view == "south":
-            c.add(poly([(x - wl * .7, f.y(.77)), (x + wl * .7, f.y(.77)), (x + wl * .8, f.y(.84)), (x, f.y(.87)), (x - wl * .8, f.y(.84))]), knee, FIXED, .8)
-        c.add(rect((x - wl, f.y(.97), x + wl, f.y(1.02))), accent, FIXED, .6)
+            soft(c, ("line", [U(f, s * .55, .33), U(f, s * .56, .44)], 1.3), accent, FIXED, 0)
+        else:
+            seam(c, [U(f, s * .48, .33), U(f, s * .49, .44)], sc(LT, .72))
+        x, y = U(f, s * .5, .52)
+        soft(c, ell((x - W * .085, y - W * .08, x + W * .085, y + W * .08)), sc(LT, .88), STUFF, ow=1.0)
+        if f.view == "south":
+            for k in range(3):
+                xx = x + s * W * (-.04 + k * .04)
+                seam(c, [(xx, y - 1.0), (xx, y + 2.0)], sc(LT, .6), STUFF, .45)
 
 
-def bulk(c, f, e=.12, flare=.03):
-    A.torso(c, f, .0, 1.0, STUFF, LT, e=e, flare=flare)
+def legs(c, f, accent, thick=.34, knee=None):
+    """腿：圆头胶囊的大腿和小腿，深色膝关节 + 圆护膝，大腿外侧辅色条，圆底靴子；两腿之间留空。"""
+    knee = knee or accent
+    W = f.w
+    q = 1.18 if f.body in ("Fat", "Hulk") else 1.0
+    tw = W * (thick * .78) * q
+    if f.east:
+        for u0, tone in ((-.07, .8), (.06, 1.0)):
+            soft(c, ("line", [U(f, u0, .66), U(f, u0 + .01, .79)], tw), sc(LT, tone), STUFF, ow=1.1)
+            x, y = U(f, u0 + .01, .81)
+            soft(c, ell((x - tw * .4, y - f.h * .02, x + tw * .4, y + f.h * .02)), UNDER, FIXED)
+            soft(c, ("line", [U(f, u0 + .01, .84), U(f, u0, .93)], tw * .92), sc(LT, tone), STUFF, ow=1.1)
+            soft(c, poly(squircle(*U(f, u0 + .06, .975), W * .2, W * .2, f.h * .045, f.h * .03, 2.6)), sc(LT, .8 * tone), STUFF, ow=1.1)
+        x, y = U(f, .16, .81)
+        soft(c, ell((x - 2.6, y - 3.0, x + 2.8, y + 3.0)), knee, FIXED, ow=.8)
+        soft(c, ("line", [U(f, .0, .68), U(f, .01, .77)], 1.3), accent, FIXED, 0)
+        return
+    for s in (-1, 1):
+        cxu = s * .19 * q
+        soft(c, ("line", [U(f, cxu, .66), U(f, cxu * 1.03, .78)], tw), LT, STUFF, ow=1.1)
+        soft(c, ("line", [U(f, cxu + s * .1, .67), U(f, cxu + s * .1, .77)], 1.3), accent, FIXED, 0)
+        x, y = U(f, cxu * 1.03, .805)
+        soft(c, ell((x - tw * .42, y - f.h * .02, x + tw * .42, y + f.h * .02)), UNDER, FIXED)
+        soft(c, ("line", [U(f, cxu * 1.03, .84), U(f, cxu * 1.03, .925)], tw * .92), LT, STUFF, ow=1.1)
+        seam(c, [U(f, cxu * 1.03, .86), U(f, cxu * 1.03, .92)], sc(LT, .72))
+        if f.view == "south":
+            soft(c, ell((x - tw * .3, y - tw * .26, x + tw * .3, y + tw * .26)), knee, FIXED, ow=.8)
+        soft(c, poly(squircle(*U(f, cxu * 1.03, .975), tw * .58, tw * .62, f.h * .04, f.h * .028, 2.6)), sc(LT, .8), STUFF, ow=1.1)
 
 
 def thrusters(c, f, length=.3, big=False):
     w = f.w * (.12 if big else .09)
     if f.view == "east":
-        x = f.cx - f.w * .5
-        c.add(rect((x - w, f.y(-.02), x + w, f.y(length + .08))), DARKSTEEL, FIXED, 1.2)
-        c.add(rect((x - w * 1.25, f.y(length + .04), x + w * 1.25, f.y(length + .13))), SILVER_DK, FIXED, 1.0)
+        x = f.cx - f.w * .36
+        soft(c, rect((x - w, f.y(-.02), x + w, f.y(length + .08))), DARKSTEEL, FIXED)
+        soft(c, rect((x - w * 1.25, f.y(length + .04), x + w * 1.25, f.y(length + .13))), SILVER_DK, FIXED)
         return
     if f.view != "north":
         return
     for s in (-1, 1):
         x = f.cx + s * f.w * .2
-        c.add(rect((x - w, f.y(.02), x + w, f.y(length))), DARKSTEEL, FIXED, 1.2)
-        c.add(rect((x - w * 1.3, f.y(length - .04), x + w * 1.3, f.y(length + .05))), SILVER_DK, FIXED, 1.0)
-        c.add(ell((x - w * .8, f.y(length + .03), x + w * .8, f.y(length + .1))), GLOW, FIXED, .6)
+        soft(c, rect((x - w, f.y(.02), x + w, f.y(length))), DARKSTEEL, FIXED)
+        soft(c, rect((x - w * 1.3, f.y(length - .04), x + w * 1.3, f.y(length + .05))), SILVER_DK, FIXED)
+        soft(c, ell((x - w * .8, f.y(length + .03), x + w * .8, f.y(length + .1))), GLOW, FIXED)
 
 
 def hex_core(c, x, y, r, ring=GOLD):
     def hexa(rr, rot=90):
         return [(x + rr * math.cos(math.radians(rot + i * 60)), y + rr * math.sin(math.radians(rot + i * 60))) for i in range(6)]
-    c.add(poly(hexa(r * 1.55)), ring, FIXED, 1.0)
-    c.add(poly(hexa(r)), GLOW, FIXED, .6)
-    c.add(poly(hexa(r * .45)), GLOW_LT, FIXED, 0)
+    soft(c, poly(hexa(r * 1.55)), ring, FIXED)
+    soft(c, poly(hexa(r)), GLOW, FIXED)
+    soft(c, poly(hexa(r * .45)), GLOW_LT, FIXED)
+
+
+def round_core(c, x, y, r, ring=SILVER):
+    soft(c, ell((x - r * 1.45, y - r * 1.45, x + r * 1.45, y + r * 1.45)), ring, FIXED)
+    soft(c, ell((x - r * 1.12, y - r * 1.12, x + r * 1.12, y + r * 1.12)), sc(ring, .62), FIXED)
+    soft(c, ell((x - r, y - r, x + r, y + r)), GLOW, FIXED, .05)
+    soft(c, ell((x - r * .5, y - r * .5, x + r * .5, y + r * .5)), GLOW_LT, FIXED, 0)
 
 
 def sunburst(c, x, y, r, col=GOLD, n=8):
     for i in range(n):
         a = math.radians(-90 + i * 360 / n)
         b1, b2 = math.radians(-90 + i * 360 / n - 9), math.radians(-90 + i * 360 / n + 9)
-        c.add(poly([(x + r * .55 * math.cos(b1), y + r * .55 * math.sin(b1)), (x + r * math.cos(a), y + r * math.sin(a)), (x + r * .55 * math.cos(b2), y + r * .55 * math.sin(b2))]), col, FIXED, .6)
-
-
-CORE_T = .33
+        soft(c, poly([(x + r * .55 * math.cos(b1), y + r * .55 * math.sin(b1)), (x + r * math.cos(a), y + r * math.sin(a)), (x + r * .55 * math.cos(b2), y + r * .55 * math.sin(b2))]), col, FIXED)
 
 
 def front_core(c, f, r_s, kind="round", ring=SILVER):
-    """胸口核心（南向正中、东向在胸板前沿）。"""
     if f.view == "north":
         return
     x, y = A.chest_xy(f, CORE_T)
     if f.east:
-        x = f.cx + f.w * .54
-        c.add(ell((x - 1.4, y - r_s * .9, x + 1.8, y + r_s * .9)), ring, FIXED, .8)
-        c.add(ell((x - .4, y - r_s * .6, x + 1.6, y + r_s * .6)), GLOW, FIXED, 0)
+        x = f.cx + f.w * .36
+        soft(c, ell((x - 1.6, y - r_s * .95, x + 1.8, y + r_s * .95)), ring, FIXED)
+        soft(c, ell((x - .5, y - r_s * .62, x + 1.6, y + r_s * .62)), GLOW, FIXED, 0)
         return
-    if kind == "hex":
-        hex_core(c, x, y, r_s, ring)
-    else:
-        core(c, x, y, r_s, ring)
+    (hex_core if kind == "hex" else round_core)(c, x, y, r_s, ring)
 
 
-def suit(c, f, accent, e=.12, flare=.03, joints=None, belt_col=IRON, buckle=None, knee=None, thick=.15):
-    bulk(c, f, e, flare)
-    sleek_legs(c, f, accent, thick, knee)
-    abdomen(c, f, accent, joints)
+def suit(c, f, accent, e=.12, flare=.03, joints=None, belt_col=UNDER_DK, buckle=None, knee=None, thick=.34, k=1.0):
+    """由部件拼出的身体：先用深色内衬盖住原版裸体轮廓（不露皮肤），再画腿、腹、腰带、胯甲、胸甲、双臂；外轮廓跟着部件走。"""
+    f.k = k
+    fo = Fit(f.body, f.view)
+    soft(c, poly(fo.shape(.02, 1.0, .04)), sc(LT, .62), STUFF, .24)   # 裸体轮廓垫底：用加深的甲色，缝里看着是凹下去的甲，不是黑泡
+    legs(c, f, accent, thick, knee)
+    if f.east:
+        # 侧面：背板 + 后腰臀甲，盖住原版裸体轮廓的后半边
+        soft(c, P(f, [(-.46, .0), (-.22, .0), (-.22, .5), (-.42, .52)]), sc(LT, .9), STUFF)
+        seam(c, [U(f, -.4, .18), U(f, -.26, .18)], sc(LT, .66))
+        seam(c, [U(f, -.41, .34), U(f, -.26, .34)], sc(LT, .66))
+        soft(c, P(f, [(-.45, .5), (-.12, .5), (-.12, .64), (-.38, .72), (-.45, .66)]), sc(LT, .86), STUFF)
+    abdomen(c, f, joints)
     belt(c, f, belt_col, buckle, e)
-    chest(c, f, accent)
+    tassets(c, f, accent, e)
+    chest(c, f, accent, e)
+    arms(c, f, accent)
+
+
+def tassets(c, f, accent, e=.12):
+    """胯甲：腰带下两片圆头垂片 + 中间护裆，下沿辅色。"""
+    if f.east:
+        x, y = U(f, .02, .63)
+        soft(c, poly(squircle(x, y, f.w * .3, f.w * .26, f.h * .03, f.h * .045, 2.4)), sc(LT, .96), STUFF, ow=1.0)
+        seam(c, [U(f, -.24, .655), U(f, .28, .655)], accent, FIXED, .9)
+        return
+    q = 1.18 if f.body in ("Fat", "Hulk") else 1.0
+    for s in (-1, 1):
+        x, y = U(f, s * .22 * q, .635)
+        soft(c, poly(squircle(x, y, f.w * .15 * q, f.w * .13 * q, f.h * .03, f.h * .05, 2.4)), sc(LT, .96), STUFF, ow=1.0)
+        seam(c, [(x - f.w * .1 * q, y + f.h * .03), (x + f.w * .1 * q, y + f.h * .03)], accent, FIXED, .9)
+    x, y = U(f, 0, .635)
+    soft(c, poly(squircle(x, y, f.w * .07, f.w * .05, f.h * .03, f.h * .05, 2.4)), sc(LT, .9), STUFF, ow=1.0)
+
+
+def tabard(c, f, col_chan=HERALD, t0=.6, t1=.95, w=.26, emblem=None):
+    """40K 式腰前布帘（纹章色），可带徽记。"""
+    if f.view == "north":
+        return
+    x = f.cx if not f.east else f.cx + f.w * .4
+    hw_ = f.w * (w if not f.east else w * .45)
+    soft(c, poly([(x - hw_, f.y(t0)), (x + hw_, f.y(t0)), (x + hw_ * 1.05, f.y(t1)), (x, f.y(t1) - 2), (x - hw_ * 1.05, f.y(t1))]), LT, col_chan)
+    seam(c, [(x - hw_ * .9, f.y(t0 + .04)), (x + hw_ * .9, f.y(t0 + .04))], sc(LT, .72), col_chan, .5)
+    if emblem and not f.east:
+        emblem(c, x, f.y((t0 + t1) / 2 + .02), hw_ * .55)
 
 
 # ================= 身甲 =================
 def scarf(c, f):
-    """参考①的破围巾（纹章色）：绕颈一圈，一角搭到左肩后垂下。"""
     if f.view == "north":
-        c.add(poly([(f.cx - f.w * .34, f.y(-.04)), (f.cx + f.w * .34, f.y(-.04)), (f.cx + f.w * .2, f.y(.1)), (f.cx - f.w * .2, f.y(.1))]), LT, HERALD, 1.1)
-        c.add(poly([(f.cx - f.w * .26, f.y(.04)), (f.cx - f.w * .08, f.y(.06)), (f.cx - f.w * .2, f.y(.4)), (f.cx - f.w * .3, f.y(.36)), (f.cx - f.w * .36, f.y(.42))]), sc(LT, .9), HERALD, 1.0)
+        soft(c, poly([(f.cx - f.w * .34, f.y(-.04)), (f.cx + f.w * .34, f.y(-.04)), (f.cx + f.w * .2, f.y(.1)), (f.cx - f.w * .2, f.y(.1))]), LT, HERALD)
+        soft(c, poly([(f.cx - f.w * .26, f.y(.04)), (f.cx - f.w * .08, f.y(.06)), (f.cx - f.w * .2, f.y(.4)), (f.cx - f.w * .3, f.y(.36)), (f.cx - f.w * .36, f.y(.42))]), sc(LT, .9), HERALD)
         return
     if f.east:
-        c.add(poly([(f.cx - f.w * .2, f.y(-.05)), (f.cx + f.w * .3, f.y(-.04)), (f.cx + f.w * .34, f.y(.08)), (f.cx - f.w * .22, f.y(.1))]), LT, HERALD, 1.1)
-        c.add(poly([(f.cx - f.w * .18, f.y(.04)), (f.cx - f.w * .02, f.y(.06)), (f.cx - f.w * .3, f.y(.36)), (f.cx - f.w * .42, f.y(.3))]), sc(LT, .9), HERALD, 1.0)
+        soft(c, poly([(f.cx - f.w * .2, f.y(-.05)), (f.cx + f.w * .3, f.y(-.04)), (f.cx + f.w * .34, f.y(.08)), (f.cx - f.w * .22, f.y(.1))]), LT, HERALD)
+        soft(c, poly([(f.cx - f.w * .18, f.y(.04)), (f.cx - f.w * .02, f.y(.06)), (f.cx - f.w * .3, f.y(.36)), (f.cx - f.w * .42, f.y(.3))]), sc(LT, .9), HERALD)
         return
-    c.add(poly([(f.cx - f.w * .34, f.y(-.05)), (f.cx + f.w * .34, f.y(-.05)), (f.cx + f.w * .26, f.y(.08)), (f.cx, f.y(.13)), (f.cx - f.w * .26, f.y(.08))]), LT, HERALD, 1.1)
-    for k in range(3):
-        c.add(("line", [(f.cx - f.w * (.24 - k * .12), f.y(-.02)), (f.cx - f.w * (.2 - k * .12), f.y(.08))], .45), sc(LT, .72), HERALD, 0)
-    c.add(poly([(f.cx + f.w * .14, f.y(.04)), (f.cx + f.w * .34, f.y(.02)), (f.cx + f.w * .4, f.y(.34)), (f.cx + f.w * .33, f.y(.3)), (f.cx + f.w * .27, f.y(.4)), (f.cx + f.w * .22, f.y(.3))]), sc(LT, .9), HERALD, 1.0)
-
-
-def hoses(c, f):
-    """呼吸软管：从面罩下沿垂到左胸的滤罐（参考①）。"""
-    if f.view == "north":
-        return
-    if f.east:
-        c.add(("line", [(f.cx + f.w * .34, f.y(-.08)), (f.cx + f.w * .52, f.y(.12)), (f.cx + f.w * .36, f.y(.3))], 1.7), HOSE, FIXED, .4)
-        c.add(rect((f.cx + f.w * .2, f.y(.26), f.cx + f.w * .4, f.y(.38))), DARKSTEEL, FIXED, .9)
-        return
-    x = f.cx - f.w * .3
-    c.add(("line", [(f.cx - f.w * .1, f.y(-.08)), (f.cx - f.w * .22, f.y(.12)), (x, f.y(.27))], 1.7), HOSE, FIXED, .4)
-    c.add(("line", [(f.cx + f.w * .1, f.y(-.08)), (f.cx + f.w * .02, f.y(.16)), (x + 3, f.y(.29))], 1.7), HOSE, FIXED, .4)
-    c.add(rect((x - 3.4, f.y(.26), x + 3.4, f.y(.38))), DARKSTEEL, FIXED, .9)
-    c.add(rect((x - 3.4, f.y(.26), x + 3.4, f.y(.28))), BRASS_DK, FIXED, 0)
+    soft(c, poly([(f.cx - f.w * .34, f.y(-.05)), (f.cx + f.w * .34, f.y(-.05)), (f.cx + f.w * .26, f.y(.08)), (f.cx, f.y(.13)), (f.cx - f.w * .26, f.y(.08))]), LT, HERALD)
+    soft(c, poly([(f.cx + f.w * .14, f.y(.04)), (f.cx + f.w * .34, f.y(.02)), (f.cx + f.w * .4, f.y(.34)), (f.cx + f.w * .33, f.y(.3)), (f.cx + f.w * .27, f.y(.4)), (f.cx + f.w * .22, f.y(.3))]), sc(LT, .9), HERALD)
 
 
 def webbing(c, f):
-    """参考①的帆布战术腰带 + 几个弹药袋。"""
-    A.band(c, f, .6, .055, KHAKI, FIXED, .16)
-    xs = ([f.cx + f.w * k for k in (-.36, -.12, .12, .36)] if not f.east else [f.cx + f.w * .3])
-    if f.view == "north":
-        xs = [f.cx + f.w * k for k in (-.3, .3)]
-    for x in xs:
-        c.add(rect((x - 2.6, f.y(.59), x + 2.6, f.y(.67))), KHAKI_DK, FIXED, .7)
-        c.add(rect((x - 2.6, f.y(.59), x + 2.6, f.y(.61))), sc(KHAKI_DK, .8), FIXED, 0)
+    """帆布战术腰带 + 弹药袋（挂在腰带上）。"""
+    belt(c, f, KHAKI)
+    us = [-.24, -.08, .08, .24] if f.view == "south" else ([.14] if f.east else [-.2, .2])
+    for u in us:
+        x0, y0 = U(f, u, .52)
+        soft(c, rect((x0 - 2.6, y0, x0 + 2.6, y0 + f.h * .075)), KHAKI_DK, FIXED)
+        seam(c, [(x0 - 2.4, y0 + f.h * .02), (x0 + 2.4, y0 + f.h * .02)], sc(KHAKI_DK, .75), FIXED, .5)
 
 
 def antenna(c, f):
     if f.east:
-        x = f.cx - f.w * .42
+        x = f.cx - f.w * .3
         c.add(("line", [(x, f.y(.2)), (x - 2, f.y(-.62))], .6), HOSE, FIXED, .3)
     elif f.view == "north":
         x = f.cx + f.w * .34
-        c.add(rect((x - 3.4, f.y(.06), x + 3.4, f.y(.3))), DARKSTEEL, FIXED, 1.0)
+        soft(c, rect((x - 3.4, f.y(.06), x + 3.4, f.y(.3))), DARKSTEEL, FIXED)
         c.add(("line", [(x + 1.6, f.y(.08)), (x + 3.6, f.y(-.62))], .6), HOSE, FIXED, .3)
-    else:
-        x = f.cx - f.w * .34
-        c.add(("line", [(x, f.y(.0)), (x - 2, f.y(-.62))], .6), HOSE, FIXED, .3)
 
 
 def squire(c, f):
-    """奥械侍从甲（参考①）：做旧橄榄灰分节甲、破围巾、呼吸软管、帆布腰带、背上天线。"""
-    if f.view == "south":
-        antenna(c, f)
-    suit(c, f, DARKSTEEL, e=.13, belt_col=KHAKI, knee=DARKSTEEL, thick=.16)
+    """奥械侍从甲：光环式战地甲——橄榄绿甲片、深色内衬、旧围巾、帆布腰带弹药袋、背上电台天线；40K 式圆肩甲但不带金边。"""
+    suit(c, f, DARKSTEEL, e=.13, belt_col=KHAKI, knee=DARKSTEEL)
     webbing(c, f)
-    scratches(c, f, 11 + len(f.body), 10, .45, .02, .95)
     front_core(c, f, f.w * (.05 if not f.east else .04), "round", BRASS)
-    if f.view != "north":
-        x, y = A.chest_xy(f, CORE_T)
-        if not f.east:
-            c.add(("line", [(x - f.w * .14, y + 2), (x - f.w * .3, y + 4)], .7), BRASS_DK, FIXED, 0)
     scarf(c, f)
-    hoses(c, f)
-    plate_pauldrons(c, f, .28, .5, DARKSTEEL, layers=2, rugged=True)
-    if f.view != "south":
-        antenna(c, f)
+    big_pauldrons(c, f, .3, .5, DARKSTEEL, rim=True, layers=1)
+    antenna(c, f)
     thrusters(c, f, .28)
 
 
 def knight(c, f):
-    """秘铸骑士动力甲（参考③）：流线分节甲 + 银色辅甲条、圆形发光胸核、肩前小灯，腰扣展翼太阳。"""
-    suit(c, f, SILVER, joints=SILVER_DK, belt_col=IRON, buckle=GOLD, knee=SILVER)
-    front_core(c, f, f.w * (.075 if not f.east else .05), "round", SILVER)
+    """秘铸骑士动力甲：钢铁侠式红金流线甲 + 40K 大圆肩甲金滚边 + 光环式深色内衬关节；圆形发光胸核，展翼太阳腰扣。"""
+    suit(c, f, GOLD, joints=GOLD_DK, buckle=GOLD, knee=GOLD)
+    front_core(c, f, f.w * (.075 if not f.east else .05), "round", GOLD)
     if f.view == "south":
-        for s in (-1, 1):
-            x = f.cx + s * f.w * .4
-            c.add(rect((x - 1.4, f.y(.3), x + 1.4, f.y(.34))), GLOW_LT, FIXED, .5)
-        winged_sun(c, f.cx, f.y(.6), f.w * .035)
-    elif f.east:
-        winged_sun(c, f.cx + f.w * .42, f.y(.6), f.w * .03, True)
-    plate_pauldrons(c, f, .29, .5, SILVER, layers=2)
+        winged_sun(c, f.cx, f.y(.532), f.w * .035)
+    big_pauldrons(c, f, .32, .5, GOLD, layers=1)
     thrusters(c, f, .3)
 
 
 def oath(c, f):
-    """圣誓骑士动力甲（参考②）：黑甲金饰、六角胸核外一圈八芒旭日、腰侧金色活塞关节、金色腿甲条。"""
-    suit(c, f, GOLD, joints=GOLD, belt_col=GOLD_DK, buckle=GOLD, knee=GOLD)
+    """圣誓骑士动力甲：40K 圣骑士味——黑甲金滚边大肩甲、六角胸核外一圈八芒旭日、腰前白色纹章布帘（带旭日）。"""
+    suit(c, f, GOLD, joints=GOLD, buckle=GOLD, knee=GOLD)
     if f.view == "south":
         x, y = A.chest_xy(f, CORE_T)
         sunburst(c, x, y, f.w * .2, GOLD, 8)
     front_core(c, f, f.w * (.06 if not f.east else .05), "hex", GOLD)
+    tabard(c, f, HERALD, .62, .96, .2, lambda c, x, y, r: sunburst(c, x, y, r, GOLD_DK, 8))
     if f.view == "north":
         sunburst(c, f.cx, f.y(.22), f.w * .16, GOLD_DK, 8)
-    plate_pauldrons(c, f, .3, .5, GOLD, layers=2)
+    big_pauldrons(c, f, .33, .5, GOLD, layers=1)
     thrusters(c, f, .3)
 
 
@@ -471,21 +589,19 @@ def runes_ring(c, x, y, r, n=10):
     for i in range(n):
         a = math.radians(i * 360 / n)
         px, py = x + math.cos(a) * r, y + math.sin(a) * r
-        c.add(rect((px - .8, py - .8, px + .8, py + .8)), RUNE, FIXED, 0)
+        soft(c, rect((px - .8, py - .8, px + .8, py + .8)), RUNE, FIXED, 0)
 
 
 def arcanist(c, f):
-    """秘法炮手动力甲：流线甲 + 银辅甲、胸前符文线、背后大核心套符文环、肩上导能晶，没有推进器。"""
+    """秘法炮手动力甲：紫甲银辅甲、胸前与腿上符文线、背后大核心套符文环、肩上导能晶，没有推进器。"""
+    suit(c, f, SILVER, joints=(150, 130, 200), buckle=(150, 130, 200), knee=SILVER)
     if f.view == "north":
-        pass
-    suit(c, f, SILVER, joints=(150, 130, 200), belt_col=IRON, buckle=(150, 130, 200), knee=SILVER)
-    if f.view == "north":
-        c.add(ell((f.cx - f.w * .25, f.y(.04), f.cx + f.w * .25, f.y(.44))), DARKSTEEL, FIXED, 1.3)
-        core(c, f.cx, f.y(.24), f.w * .13, (150, 130, 200))
+        soft(c, ell((f.cx - f.w * .25, f.y(.04), f.cx + f.w * .25, f.y(.44))), DARKSTEEL, FIXED)
+        round_core(c, f.cx, f.y(.24), f.w * .12, (150, 130, 200))
         runes_ring(c, f.cx, f.y(.24), f.w * .21)
     elif f.east:
-        c.add(ell((f.cx - f.w * .72, f.y(.02), f.cx - f.w * .28, f.y(.44))), DARKSTEEL, FIXED, 1.3)
-        core(c, f.cx - f.w * .5, f.y(.23), f.w * .09, (150, 130, 200))
+        soft(c, ell((f.cx - f.w * .72, f.y(.02), f.cx - f.w * .28, f.y(.44))), DARKSTEEL, FIXED)
+        round_core(c, f.cx - f.w * .5, f.y(.23), f.w * .085, (150, 130, 200))
     front_core(c, f, f.w * (.07 if not f.east else .05), "round", (150, 130, 200))
     if f.view == "south":
         x, y = A.chest_xy(f, CORE_T)
@@ -493,162 +609,181 @@ def arcanist(c, f):
             c.add(("line", [(x + s * f.w * .1, y + 1), (x + s * f.w * .3, y - 2), (x + s * f.w * .42, y + 5)], .6), RUNE, FIXED, 0)
             xl = f.cx + s * f.w * .22
             c.add(("line", [(xl, f.y(.66)), (xl, f.y(.76))], .6), RUNE, FIXED, 0)
-        c.add(("line", [(x, y + f.w * .1), (x, f.y(.56))], .6), RUNE, FIXED, 0)
-    plate_pauldrons(c, f, .29, .5, SILVER, layers=2, glow_lines=True)
-    tops = [(f.cx + f.w * .05, 1)] if f.east else [(f.cx + s * pauldron_geom(f, .29, .5)[1], s) for s in (-1, 1)]
+    big_pauldrons(c, f, .31, .5, SILVER, layers=1, glow_lines=True)
+    tops = [(f.cx + f.w * .05, 1)] if f.east else [(f.cx + s * pauldron_geom(f, .31, .5)[1], s) for s in (-1, 1)]
     for x, s in tops:
-        c.add(rect((x - 1.4, f.y(-.28), x + 1.4, f.y(-.08))), BRASS_DK, FIXED, .9)
-        c.add(poly([(x - 2.4, f.y(-.28)), (x, f.y(-.42)), (x + 2.4, f.y(-.28))]), RUNE, FIXED, .9)
+        soft(c, rect((x - 1.4, f.y(-.3), x + 1.4, f.y(-.1))), BRASS_DK, FIXED)
+        soft(c, poly([(x - 2.4, f.y(-.3)), (x, f.y(-.44)), (x + 2.4, f.y(-.3))]), RUNE, FIXED, .05)
 
 
 def artificer(c, f):
-    """奇械动力甲（参考②的外露机械关节）：青铜甲、深铁辅甲、黄铜齿轮关节、胸前齿轮核心、双核心背包、工具袋。"""
+    """奇械动力甲：青铜甲、深铁辅甲、黄铜齿轮关节、胸前齿轮核心、双核心背包、工具袋、带铆钉尖刺的大肩甲。"""
     suit(c, f, IRON, joints=BRASS, belt_col=LEATHER, buckle=BRASS, knee=BRASS)
     if f.view == "north":
-        c.add(rect((f.cx - f.w * .32, f.y(.02), f.cx + f.w * .32, f.y(.42))), DARKSTEEL, FIXED, 1.3)
+        soft(c, rect((f.cx - f.w * .32, f.y(.02), f.cx + f.w * .32, f.y(.42))), DARKSTEEL, FIXED)
         for s in (-1, 1):
-            core(c, f.cx + s * f.w * .15, f.y(.2), f.w * .075)
-        c.add(rect((f.cx - f.w * .32, f.y(.4), f.cx + f.w * .32, f.y(.45))), BRASS, FIXED, .8)
+            round_core(c, f.cx + s * f.w * .15, f.y(.2), f.w * .07, BRASS)
+        soft(c, rect((f.cx - f.w * .32, f.y(.4), f.cx + f.w * .32, f.y(.45))), BRASS, FIXED)
     elif f.east:
-        c.add(rect((f.cx - f.w * .68, f.y(.0), f.cx - f.w * .3, f.y(.44))), DARKSTEEL, FIXED, 1.3)
-        core(c, f.cx - f.w * .49, f.y(.18), f.w * .065)
+        soft(c, rect((f.cx - f.w * .68, f.y(.0), f.cx - f.w * .3, f.y(.44))), DARKSTEEL, FIXED)
+        round_core(c, f.cx - f.w * .49, f.y(.18), f.w * .06, BRASS)
     if f.view == "south":
         x, y = A.chest_xy(f, CORE_T)
         gear(c, x, y, f.w * .13)
-        core(c, x, y, f.w * .045)
+        round_core(c, x, y, f.w * .045, BRASS)
     else:
         front_core(c, f, f.w * .04, "round", BRASS)
-    for k in ((-1, 1) if not f.east else (1,)):
-        if f.view == "north":
-            continue
-        x = f.cx + k * f.w * (.36 if not f.east else .14)
-        c.add(rect((x - 2.8, f.y(.6), x + 2.8, f.y(.71))), LEATHER, FIXED, .9)
-        c.add(rect((x - 2.8, f.y(.6), x + 2.8, f.y(.63))), sc(LEATHER, .75), FIXED, 0)
-    if f.view == "south":
-        c.add(("line", [(f.cx + f.w * .5, f.y(.63)), (f.cx + f.w * .56, f.y(.74))], 1.1), DARKSTEEL, FIXED, .4)  # 扳手
-    plate_pauldrons(c, f, .28, .5, IRON, layers=2, spikes=3)
-    if f.view == "south":
-        r, o = pauldron_geom(f, .28, .5)
-        for s in (-1, 1):
-            gear(c, f.cx + s * o, f.y(.02), f.w * .07)
+    if f.view != "north":
+        for k in ((-1, 1) if not f.east else (1,)):
+            x = f.cx + k * f.w * (.22 if not f.east else .14)
+            soft(c, rect((x - 2.8, f.y(.555), x + 2.8, f.y(.64))), LEATHER, FIXED)
+            seam(c, [(x - 2.6, f.y(.58)), (x + 2.6, f.y(.58))], sc(LEATHER, .7), FIXED, .5)
+    big_pauldrons(c, f, .3, .5, IRON, layers=1, spikes=3)
 
 
 def bastion(c, f):
-    """誓约堡垒重甲：同一套流线分节甲放大加厚——三层大肩甲带尖刺和金滚边、并排三核心、粗腿、背后大推进器。"""
-    suit(c, f, GOLD, e=.22, flare=.08, joints=GOLD_DK, belt_col=IRON, buckle=GOLD, knee=GOLD, thick=.21)
+    """誓约堡垒重甲：最厚重的 40K 终结者味——方形塔盾大肩甲带尖刺金边、加宽躯干、并排三核心、粗腿、大推进器。"""
+    suit(c, f, GOLD, e=.22, flare=.08, joints=GOLD_DK, buckle=GOLD, knee=GOLD, thick=.4, k=1.1)
     if f.view == "south":
         x, y = A.chest_xy(f, CORE_T)
         for k in (-1, 0, 1):
-            core(c, x + k * f.w * .2, y + (0 if k == 0 else 1.5), f.w * .05, GOLD)
+            round_core(c, x + k * f.w * .2, y + (0 if k == 0 else 1.5), f.w * .05, GOLD)
     elif f.east:
         front_core(c, f, f.w * .05, "round", GOLD)
     else:
-        core(c, f.cx, f.y(.46), f.w * .06, GOLD)
-    plate_pauldrons(c, f, .36, .54, GOLD, layers=3, spikes=3)
+        round_core(c, f.cx, f.y(.46), f.w * .06, GOLD)
+    tabard(c, f, HERALD, .62, .97, .18, None)
+    big_pauldrons(c, f, .36, .55, GOLD, layers=2, spikes=3, square=True)
     thrusters(c, f, .3, big=True)
+
+
+class BigFit(Fit):
+    """动力甲比人大一圈：身体画框按 Peter 给的游戏内截图比例：只加高 6%、不加宽（接近原版身体），宽度靠肩甲往两侧撑开；超出画布的体型按画布截住。"""
+    def __init__(self, body, view):
+        super().__init__(body, view)
+        h = min(126 - self.y0, self.h * 1.06)
+        self.y1 = self.y0 + h
+        self.h = h
+        # 同一件甲在不同体型上只差一点宽度（Peter 的三张游戏截图）：瘦 / 女体型撑到至少 58，宽体型不能比原版裸体窄（否则露皮肤）
+        w = min(max(self.w, 58.0), 2 * (64 - 4) - 2)
+        self.x0, self.x1 = self.cx - w / 2, self.cx + w / 2
+        self.w = w
 
 
 BODY_ITEMS = {"SquireArmor": squire, "KnightArmor": knight, "OathArmor": oath, "ArcanistArmor": arcanist, "ArtificerArmor": artificer, "BastionArmor": bastion}
 
 
 # ================= 头盔 =================
+def shell(c, h, v1=.98, e=.06, col=LT, chan=STUFF):
+    """截图式头盔：比头略高的圆角胶囊，下巴圆收到脖子。"""
+    pts = squircle(h.cx, h.Y(.52), h.w * (.5 + e), h.w * (.47 + e), h.h * .56, h.h * .55, 2.3)
+    soft(c, poly(pts), col, chan, ow=1.4)
+    return pts
+
+
+def visor_glass(c, pts, base=VISOR, hi=VISOR_LT):
+    """光环式反光面罩：琥珀色玻璃 + 一道斜高光，四周一圈深色内框（不是黑描边）。"""
+    c.add(("line", pts + [pts[0]], 1.4), UNDER_DK, FIXED, 0)
+    soft(c, poly(pts), base, FIXED, .3)
+    xs = [p[0] for p in pts]
+    ys = [p[1] for p in pts]
+    x0, x1, y0, y1 = min(xs), max(xs), min(ys), max(ys)
+    hl = clip([(x0 + (x1 - x0) * .18, y0), (x0 + (x1 - x0) * .32, y0), (x0 + (x1 - x0) * .2, y1), (x0 + (x1 - x0) * .06, y1)], x0, y0, x1, y1)
+    if len(hl) >= 3:
+        soft(c, poly(hl), hi, FIXED, 0)
+
+
 def breather_helm(c, h):
-    """奥械侍从盔（参考①）：棱角盔、盔顶一排凸节、深色斜面罩带一条淡蓝目缝、前凸呼吸口罩 + 两根软管。"""
-    A.dome(c, h, .98, STUFF, LT, e=.07)
+    """奥械侍从盔：光环式圆滑全盔 + 大块琥珀反光面罩，下巴是 40K 式呼吸格栅，两侧短软管。"""
+    shell(c, h, .98, .02)
     if h.view == "north":
-        for k in range(4):
-            c.add(ell((h.cx - 2, h.Y(.0 + k * .16), h.cx + 2, h.Y(.1 + k * .16))), DARKSTEEL, FIXED, .6)
-        c.add(rect((h.X(.3), h.Y(.62), h.X(.7), h.Y(.95))), DARKSTEEL, FIXED, .9)
-        for s in (-1, 1):
-            c.add(("line", [(h.cx + s * h.w * .2, h.Y(.92)), (h.cx + s * h.w * .5, h.Y(.78))], 1.6), HOSE, FIXED, .4)
+        seam(c, [(h.cx, h.Y(.0)), (h.cx, h.Y(.9))], sc(LT, .74))
+        soft(c, rect((h.X(.3), h.Y(.66), h.X(.7), h.Y(.95))), DARKSTEEL, FIXED)
         return
     if h.east:
-        for k in range(4):
-            x = h.X(.25 + k * .17)
-            c.add(ell((x - 2, h.Y(-.06 + abs(k - 1.5) * .03), x + 2, h.Y(.05 + abs(k - 1.5) * .03))), DARKSTEEL, FIXED, .6)
-        c.add(poly([(h.X(.55), h.Y(.32)), (h.X(1.1), h.Y(.38)), (h.X(1.08), h.Y(.62)), (h.X(.56), h.Y(.6))]), DARKSTEEL, FIXED, 1.1)
-        c.add(rect((h.X(.75), h.Y(.44), h.X(1.06), h.Y(.49))), GLOW, FIXED, 0)
-        c.add(poly([(h.X(.62), h.Y(.64)), (h.X(1.2), h.Y(.7)), (h.X(1.16), h.Y(1.0)), (h.X(.64), h.Y(1.02))]), DARKSTEEL, FIXED, 1.2)
+        soft(c, poly([(h.X(.5), h.Y(.62)), (h.X(1.06), h.Y(.62)), (h.X(1.16), h.Y(.74)), (h.X(1.12), h.Y(1.02)), (h.X(.56), h.Y(1.04))]), DARKSTEEL, FIXED)
         for k in range(3):
-            c.add(rect((h.X(.95 + k * .07), h.Y(.76), h.X(.98 + k * .07), h.Y(.94))), BLACK, FIXED, 0)
-        c.add(("line", [(h.X(.7), h.Y(.98)), (h.X(.3), h.Y(1.1)), (h.X(.05), h.Y(.86))], 1.8), HOSE, FIXED, .4)
-    else:
-        for k in range(4):
-            c.add(ell((h.cx - 2, h.Y(-.08 + k * .1), h.cx + 2, h.Y(.02 + k * .1))), DARKSTEEL, FIXED, .6)
-        c.add(poly([(h.X(.08), h.Y(.34)), (h.X(.92), h.Y(.34)), (h.X(.88), h.Y(.6)), (h.cx, h.Y(.66)), (h.X(.12), h.Y(.6))]), DARKSTEEL, FIXED, 1.1)
-        c.add(poly([(h.X(.16), h.Y(.44)), (h.cx, h.Y(.5)), (h.X(.84), h.Y(.44)), (h.X(.84), h.Y(.48)), (h.cx, h.Y(.54)), (h.X(.16), h.Y(.48))]), GLOW, FIXED, 0)
-        c.add(poly([(h.X(.3), h.Y(.64)), (h.X(.7), h.Y(.64)), (h.X(.64), h.Y(1.04)), (h.X(.36), h.Y(1.04))]), DARKSTEEL, FIXED, 1.2)
-        for k in range(3):
-            x = h.X(.41 + k * .09)
-            c.add(rect((x - .5, h.Y(.74), x + .5, h.Y(.96))), BLACK, FIXED, 0)
-        for s in (-1, 1):
-            c.add(("line", [(h.cx + s * h.w * .16, h.Y(.98)), (h.cx + s * h.w * .42, h.Y(1.08)), (h.cx + s * h.w * .56, h.Y(.84))], 1.8), HOSE, FIXED, .4)
-    rivet_row(c, h.X(.0), h.Y(.26), h.X(1.0), 6 if not h.east else 3, .55, BRASS_DK)
+            soft(c, rect((h.X(.92 + k * .07), h.Y(.76), h.X(.95 + k * .07), h.Y(.94))), BLACK, FIXED, 0)
+        visor_glass(c, [(h.X(.6), h.Y(.3)), (h.X(1.1), h.Y(.34)), (h.X(1.12), h.Y(.58)), (h.X(.62), h.Y(.6))])
+        c.add(("line", [(h.X(.6), h.Y(.98)), (h.X(.3), h.Y(1.08)), (h.X(.08), h.Y(.86))], 1.8), HOSE, FIXED, .4)
+        return
+    soft(c, poly([(h.X(.22), h.Y(.6)), (h.X(.78), h.Y(.6)), (h.X(.7), h.Y(1.04)), (h.X(.3), h.Y(1.04))]), DARKSTEEL, FIXED)
+    for k in range(4):
+        x = h.X(.38 + k * .08)
+        soft(c, rect((x - .5, h.Y(.72), x + .5, h.Y(.96))), BLACK, FIXED, 0)
+    visor_glass(c, [(h.X(.08), h.Y(.3)), (h.X(.92), h.Y(.3)), (h.X(.9), h.Y(.5)), (h.X(.66), h.Y(.62)), (h.X(.34), h.Y(.62)), (h.X(.1), h.Y(.5))])
+    for s in (-1, 1):
+        c.add(("line", [(h.cx + s * h.w * .22, h.Y(.98)), (h.cx + s * h.w * .44, h.Y(1.08)), (h.cx + s * h.w * .56, h.Y(.84))], 1.8), HOSE, FIXED, .4)
 
 
 def knight_helm(c, h):
-    """秘铸骑士盔（参考③的流线全盔，但面甲是自己的：银色尖颌面甲、一道 V 形发光目镜、盔顶银脊、耳侧圆护）。"""
-    A.dome(c, h, .98, STUFF, LT, e=.05)
+    """秘铸骑士盔：钢铁侠式流线盔 + 金色尖颌面甲，一道蓝色发光 V 形目镜（原创形状），盔顶 40K 式短金脊，耳侧圆护。"""
+    shell(c, h, .98, .01)
     if h.view == "north":
-        c.add(("line", [(h.cx, h.Y(-.02)), (h.cx, h.Y(.9))], 2.2), SILVER, FIXED, .5)
-        c.add(rect((h.X(-.04), h.Y(.86), h.X(1.04), h.Y(.98))), SILVER_DK, FIXED, .7)
+        soft(c, poly([(h.cx - 1.6, h.Y(-.04)), (h.cx + 1.6, h.Y(-.04)), (h.cx + 1.2, h.Y(.9)), (h.cx - 1.2, h.Y(.9))]), GOLD, FIXED)
+        soft(c, rect((h.X(-.04), h.Y(.86), h.X(1.04), h.Y(.98))), GOLD_DK, FIXED)
         return
     if h.east:
-        c.add(("line", [(h.X(.6), h.Y(-.02)), (h.X(.95), h.Y(.2)), (h.X(1.06), h.Y(.36))], 2.0), SILVER, FIXED, .5)
-        face = [(h.X(.56), h.Y(.32)), (h.X(1.1), h.Y(.36)), (h.X(1.13), h.Y(.72)), (h.X(.92), h.Y(1.04)), (h.X(.58), h.Y(1.0))]
-        c.add(poly(face), SILVER, FIXED, 1.2)
-        c.add(poly([(h.X(.74), h.Y(.45)), (h.X(1.11), h.Y(.49)), (h.X(1.11), h.Y(.56)), (h.X(.74), h.Y(.53))]), GLOW, FIXED, .5)
+        soft(c, poly([(h.X(.5), h.Y(-.04)), (h.X(.95), h.Y(.18)), (h.X(1.06), h.Y(.34)), (h.X(.98), h.Y(.36)), (h.X(.86), h.Y(.22)), (h.X(.46), h.Y(.02))]), GOLD, FIXED)
+        soft(c, poly([(h.X(.56), h.Y(.32)), (h.X(1.1), h.Y(.36)), (h.X(1.13), h.Y(.72)), (h.X(.92), h.Y(1.04)), (h.X(.58), h.Y(1.0))]), sc(LT, .8), STUFF)
+        seam(c, [(h.X(.58), h.Y(.33)), (h.X(.6), h.Y(.99))], GOLD, FIXED, .9)
+        soft(c, poly([(h.X(.74), h.Y(.45)), (h.X(1.11), h.Y(.49)), (h.X(1.11), h.Y(.56)), (h.X(.74), h.Y(.53))]), GLOW, FIXED, 0)
         for k in range(3):
-            c.add(("line", [(h.X(.8 + k * .08), h.Y(.8)), (h.X(.8 + k * .08), h.Y(.92))], .5), SILVER_DK, FIXED, 0)
-        c.add(ell((h.X(.3), h.Y(.48), h.X(.56), h.Y(.72))), SILVER, FIXED, .9)
-        c.add(ell((h.X(.37), h.Y(.55), h.X(.49), h.Y(.65))), SILVER_DK, FIXED, 0)
+            seam(c, [(h.X(.8 + k * .08), h.Y(.8)), (h.X(.8 + k * .08), h.Y(.92))], sc(LT, .6), STUFF, .5)
+        soft(c, ell((h.X(.28), h.Y(.48), h.X(.54), h.Y(.72))), GOLD_DK, FIXED)
+        soft(c, ell((h.X(.35), h.Y(.55), h.X(.47), h.Y(.65))), GLOW, FIXED, 0)
         return
+    soft(c, poly([(h.cx - 1.8, h.Y(-.05)), (h.cx + 1.8, h.Y(-.05)), (h.cx + 1.4, h.Y(.34)), (h.cx - 1.4, h.Y(.34))]), GOLD, FIXED)
     face = [(h.X(.1), h.Y(.32)), (h.X(.9), h.Y(.32)), (h.X(.92), h.Y(.7)), (h.X(.66), h.Y(1.04)), (h.X(.34), h.Y(1.04)), (h.X(.08), h.Y(.7))]
-    c.add(poly(face), SILVER, FIXED, 1.2)
-    c.add(("line", [(h.cx, h.Y(-.04)), (h.cx, h.Y(.34))], 2.2), SILVER, FIXED, .5)
-    c.add(poly([(h.X(.14), h.Y(.42)), (h.cx, h.Y(.5)), (h.X(.86), h.Y(.42)), (h.X(.86), h.Y(.5)), (h.cx, h.Y(.58)), (h.X(.14), h.Y(.5))]), GLOW, FIXED, .6)
-    c.add(poly([(h.X(.3), h.Y(.44)), (h.cx, h.Y(.5)), (h.X(.36), h.Y(.47))]), GLOW_LT, FIXED, 0)
+    soft(c, poly(face), sc(LT, .8), STUFF)
+    seam(c, face + [face[0]], GOLD, FIXED, .9)
+    soft(c, poly([(h.X(.38), h.Y(.86)), (h.X(.62), h.Y(.86)), (h.X(.6), h.Y(1.03)), (h.X(.4), h.Y(1.03))]), GOLD, FIXED)
+    soft(c, poly([(h.X(.14), h.Y(.42)), (h.cx, h.Y(.5)), (h.X(.86), h.Y(.42)), (h.X(.86), h.Y(.5)), (h.cx, h.Y(.58)), (h.X(.14), h.Y(.5))]), GLOW, FIXED, 0)
+    soft(c, poly([(h.X(.3), h.Y(.44)), (h.cx, h.Y(.5)), (h.X(.36), h.Y(.47))]), GLOW_LT, FIXED, 0)
     for k in range(3):
-        x = h.X(.42 + k * .08)
-        c.add(("line", [(x, h.Y(.78)), (x, h.Y(.92))], .5), SILVER_DK, FIXED, 0)
+        seam(c, [(h.X(.44 + k * .06), h.Y(.7)), (h.X(.44 + k * .06), h.Y(.82))], sc(LT, .6), STUFF, .5)
     for s in (-1, 1):
         x = h.X(-.04) if s < 0 else h.X(1.04)
-        c.add(ell((x - 3, h.Y(.5), x + 3, h.Y(.68))), SILVER, FIXED, .9)
+        soft(c, ell((x - 3, h.Y(.5), x + 3, h.Y(.68))), GOLD_DK, FIXED)
 
 
 def bastion_helm(c, h):
-    """堡垒巨盔：方肩宽盔、一条窄蓝目缝、两侧护颊翼、金色盔脊和颈甲（与 Def 描述一致）。"""
+    """堡垒巨盔：40K 终结者式宽盔缩在颈甲里——窄蓝目缝、呼吸格栅、两侧护颊翼、金色盔脊和颈甲。"""
     for s in ((-1, 1) if not h.east else (-1,)):
-        x = h.X(-.12) if s < 0 else h.X(1.12)
-        c.add(poly([(x, h.Y(.4)), (x + s * h.w * .2, h.Y(.52)), (x + s * h.w * .18, h.Y(1.0)), (x, h.Y(1.06))]), MD, STUFF, 1.2)
-        c.add(("line", [(x + s * h.w * .04, h.Y(.5)), (x + s * h.w * .14, h.Y(.58)), (x + s * h.w * .13, h.Y(.98))], .8), GOLD, FIXED, 0)
-    shell = [(h.X(-.13), h.Y(1.02)), (h.X(-.15), h.Y(.3)), (h.X(-.06), h.Y(.08)), (h.X(.14), h.Y(-.06)), (h.X(.86), h.Y(-.06)), (h.X(1.06), h.Y(.08)), (h.X(1.15), h.Y(.3)), (h.X(1.13), h.Y(1.02))]
-    c.add(poly(shell), LT, STUFF, 1.5)
-    c.add(poly([(h.X(1.15), h.Y(.32)), (h.X(.95), h.Y(-.06)), (h.X(.82), h.Y(-.06)), (h.X(1.0), h.Y(.34)), (h.X(.98), h.Y(1.02)), (h.X(1.13), h.Y(1.02))]), sc(LT, .86), STUFF, 0)
-    c.add(rect((h.X(-.14), h.Y(.9), h.X(1.14), h.Y(1.04))), GOLD, FIXED, .9)
-    rivet_row(c, h.X(-.06), h.Y(.97), h.X(1.06), 7 if not h.east else 4, .6, GOLD_DK)
+        x = h.X(-.03) if s < 0 else h.X(1.03)
+        soft(c, poly([(x, h.Y(.42)), (x + s * h.w * .1, h.Y(.52)), (x + s * h.w * .09, h.Y(.98)), (x, h.Y(1.02))]), MD, STUFF)
+        seam(c, [(x + s * h.w * .02, h.Y(.52)), (x + s * h.w * .07, h.Y(.58)), (x + s * h.w * .065, h.Y(.96))], GOLD, FIXED, .8)
+    sh = squircle(h.cx, h.Y(.5), h.w * .56, h.w * .55, h.h * .56, h.h * .53, 3.2)
+    soft(c, poly(sh), LT, STUFF, ow=1.4)
+    soft(c, rect((h.X(-.05), h.Y(.9), h.X(1.05), h.Y(1.02))), GOLD, FIXED)
+    rivet_row(c, h.X(.0), h.Y(.96), h.X(1.0), 7 if not h.east else 4, .6, GOLD_DK)
     if h.view == "north":
-        c.add(("line", [(h.cx, h.Y(-.08)), (h.cx, h.Y(.88))], 2.4), GOLD, FIXED, .5)
+        soft(c, poly([(h.cx - 2, h.Y(-.08)), (h.cx + 2, h.Y(-.08)), (h.cx + 1.6, h.Y(.88)), (h.cx - 1.6, h.Y(.88))]), GOLD, FIXED)
         return
     if h.east:
-        c.add(("line", [(h.X(.3), h.Y(-.08)), (h.X(.95), h.Y(-.04)), (h.X(1.14), h.Y(.3))], 2.2), GOLD, FIXED, .5)
-        c.add(poly([(h.X(.6), h.Y(.3)), (h.X(1.16), h.Y(.34)), (h.X(1.16), h.Y(.88)), (h.X(.62), h.Y(.88))]), sc(LT, .9), STUFF, 1.1)
-        c.add(rect((h.X(.72), h.Y(.46), h.X(1.15), h.Y(.52))), BLACK, FIXED, 0)
-        c.add(rect((h.X(.78), h.Y(.475), h.X(1.13), h.Y(.505))), GLOW, FIXED, 0)
+        soft(c, poly([(h.X(.3), h.Y(-.09)), (h.X(.95), h.Y(-.06)), (h.X(1.05), h.Y(.3)), (h.X(1.0), h.Y(.32)), (h.X(.9), h.Y(-.01)), (h.X(.3), h.Y(-.03))]), GOLD, FIXED)
+        soft(c, poly([(h.X(.6), h.Y(.3)), (h.X(1.06), h.Y(.34)), (h.X(1.06), h.Y(.88)), (h.X(.62), h.Y(.88))]), sc(LT, .9), STUFF)
+        soft(c, rect((h.X(.72), h.Y(.45), h.X(1.05), h.Y(.53))), UNDER_DK, FIXED, 0)
+        soft(c, rect((h.X(.78), h.Y(.475), h.X(1.04), h.Y(.505))), GLOW, FIXED, 0)
+        for k in range(3):
+            soft(c, rect((h.X(.9 + k * .08), h.Y(.64), h.X(.93 + k * .08), h.Y(.82))), UNDER_DK, FIXED, 0)
         return
-    c.add(("line", [(h.cx, h.Y(-.08)), (h.cx, h.Y(.3))], 2.4), GOLD, FIXED, .5)
-    c.add(poly([(h.X(.04), h.Y(.3)), (h.X(.96), h.Y(.3)), (h.X(.96), h.Y(.88)), (h.X(.04), h.Y(.88))]), sc(LT, .9), STUFF, 1.1)
-    c.add(rect((h.X(.12), h.Y(.45), h.X(.88), h.Y(.53))), BLACK, FIXED, 0)
-    c.add(rect((h.X(.16), h.Y(.475), h.X(.84), h.Y(.505))), GLOW, FIXED, 0)
+    soft(c, poly([(h.cx - 2.2, h.Y(-.08)), (h.cx + 2.2, h.Y(-.08)), (h.cx + 1.8, h.Y(.3)), (h.cx - 1.8, h.Y(.3))]), GOLD, FIXED)
+    face = [(h.X(.04), h.Y(.3)), (h.X(.96), h.Y(.3)), (h.X(.96), h.Y(.88)), (h.X(.04), h.Y(.88))]
+    soft(c, poly(face), sc(LT, .9), STUFF)
+    seam(c, face + [face[0]], sc(LT, .66), STUFF, .7)
+    soft(c, rect((h.X(.12), h.Y(.44), h.X(.88), h.Y(.54))), UNDER_DK, FIXED, 0)
+    soft(c, rect((h.X(.16), h.Y(.475), h.X(.84), h.Y(.505))), GLOW, FIXED, 0)
+    soft(c, poly([(h.X(.32), h.Y(.62)), (h.X(.68), h.Y(.62)), (h.X(.62), h.Y(.84)), (h.X(.38), h.Y(.84))]), UNDER, FIXED)
     for k in range(4):
-        x = h.X(.32 + k * .12)
-        c.add(rect((x - .5, h.Y(.64), x + .5, h.Y(.82))), BLACK, FIXED, 0)
+        x = h.X(.38 + k * .08)
+        soft(c, rect((x - .5, h.Y(.65), x + .5, h.Y(.81))), UNDER_DK, FIXED, 0)
 
 
 HEAD_ITEMS = {"SquireHelm": breather_helm, "KnightHelm": knight_helm, "BastionHelm": bastion_helm}
-COLORS = {"SquireArmor": (118, 124, 108), "SquireHelm": (118, 124, 108), "KnightArmor": (148, 40, 38), "KnightHelm": (148, 40, 38), "OathArmor": (56, 56, 62),
+COLORS = {"SquireArmor": (104, 116, 88), "SquireHelm": (104, 116, 88), "KnightArmor": (148, 40, 38), "KnightHelm": (148, 40, 38), "OathArmor": (56, 56, 62),
           "ArcanistArmor": (78, 70, 136), "ArtificerArmor": (168, 133, 87), "BastionArmor": (102, 105, 115), "BastionHelm": (102, 105, 115)}
-HERALD_PREVIEW = (150, 112, 74)
+HERALD_PREVIEW = (214, 204, 180)
 LABELS = {"SquireArmor": "奥械侍从甲", "KnightArmor": "秘铸骑士动力甲", "OathArmor": "圣誓骑士动力甲", "ArcanistArmor": "秘法炮手动力甲", "ArtificerArmor": "奇械动力甲",
           "BastionArmor": "誓约堡垒重甲", "SquireHelm": "奥械侍从盔", "KnightHelm": "秘铸骑士盔", "BastionHelm": "堡垒巨盔"}
 HELM_FOR = {"SquireArmor": "SquireHelm", "ArtificerArmor": "SquireHelm", "BastionArmor": "BastionHelm"}
@@ -821,7 +956,8 @@ if __name__ == "__main__":
         for body in A.BODIES:
             for view in A.VIEWS:
                 c = Canvas(view)
-                fn(c, Fit(body, view))
+                fn(c, BigFit(body, view))
+                finish(c)
                 out.append(c.save("LP/PowerArmor/%s/%s_%s_%s" % (name, name, body, view), 256, True))
                 if view == "south" or body == "Male":
                     row.append((body, view, c.col, c.msk))
@@ -834,6 +970,7 @@ if __name__ == "__main__":
         for view in A.VIEWS:
             c = Canvas(view)
             fn(c, Head(view))
+            finish(c)
             out.append(c.save("LP/PowerArmor/%s/%s_%s" % (name, name, view), 256, True))
             row.append(("Male", view, c.col, c.msk))
             helm_imgs[(name, view)] = (c.col, c.msk)

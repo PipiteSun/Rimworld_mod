@@ -308,8 +308,8 @@
   <ThingDef ParentName="LP_PowerArmorBase">
     <defName>LP_PA_SquireArmor</defName>
     <label>奥械侍从甲</label>
-    <description>侏儒奇械师给骑士团侍从造的入门动力甲：分节肩甲、颈上一条旧围巾、呼吸软管通到胸前滤罐，胸口一颗黄铜框的蓝色奥能核心，背后两支短推进管。护甲和移速惩罚约同原版海军装甲。\n\n奥能核心 100：受到伤害时每点伤害 -0.25，征召时每小时 -10；耗尽变成铁壳（移动 -35%、操作 -25%）。在通电的奥能充能座充能，或换上奥能电池（+60）。戴任意奥能头盔时核心上限 +20%。\n\n装甲能力：推进跃击（20 奥能，跃到 2～12 格外，落地 1.9 格内的敌人受 10 点钝击，成功率 60% 被震倒）。</description>
-    <graphicData><texPath>LP/PowerArmor/SquireArmor/SquireArmor_Icon</texPath><color>(0.46,0.49,0.42)</color></graphicData>
+    <description>侏儒奇械师给骑士团侍从造的入门动力甲：圆鼓的大肩甲、深色内衬在关节处露出来，颈上一条旧围巾、腰上帆布弹药袋，胸口一颗黄铜框的蓝色奥能核心，背后两支短推进管和一根天线。护甲和移速惩罚约同原版海军装甲。\n\n奥能核心 100：受到伤害时每点伤害 -0.25，征召时每小时 -10；耗尽变成铁壳（移动 -35%、操作 -25%）。在通电的奥能充能座充能，或换上奥能电池（+60）。戴任意奥能头盔时核心上限 +20%。\n\n装甲能力：推进跃击（20 奥能，跃到 2～12 格外，落地 1.9 格内的敌人受 10 点钝击，成功率 60% 被震倒）。</description>
+    <graphicData><texPath>LP/PowerArmor/SquireArmor/SquireArmor_Icon</texPath><color>(0.41,0.45,0.35)</color></graphicData>
     <costList><Plasteel>80</Plasteel><Steel>40</Steel><LP_Mithral>25</LP_Mithral><ComponentSpacer>3</ComponentSpacer></costList>
     <statBases>
       <WorkToMake>58000</WorkToMake><MaxHitPoints>340</MaxHitPoints><Mass>12</Mass><Flammability>0.4</Flammability>
@@ -324,8 +324,8 @@
   <ThingDef ParentName="LP_PowerHelmBase">
     <defName>LP_PA_SquireHelm</defName>
     <label>奥械侍从盔</label>
-    <description>盔顶一排凸节的全盔，深色斜面罩上一道淡蓝 V 形目缝，下面是前凸的呼吸口罩和两根软管。头部护甲约同原版海军头盔。和任意奥能动力甲一起穿时，盔甲的核心上限 +20%。</description>
-    <graphicData><texPath>LP/PowerArmor/SquireHelm/SquireHelm_Icon</texPath><color>(0.46,0.49,0.42)</color></graphicData>
+    <description>圆滑全盔，前面一大块琥珀色反光面罩，下巴是呼吸格栅和两根短软管。头部护甲约同原版海军头盔。和任意奥能动力甲一起穿时，盔甲的核心上限 +20%。</description>
+    <graphicData><texPath>LP/PowerArmor/SquireHelm/SquireHelm_Icon</texPath><color>(0.41,0.45,0.35)</color></graphicData>
     <costList><Plasteel>30</Plasteel><LP_Mithral>8</LP_Mithral><ComponentSpacer>1</ComponentSpacer></costList>
     <statBases>
       <WorkToMake>20000</WorkToMake><MaxHitPoints>120</MaxHitPoints><Mass>1.5</Mass><Flammability>0.4</Flammability>
@@ -349,7 +349,7 @@
   <ThingDef ParentName="LP_PowerKnightBase">
     <defName>LP_PA_KnightArmor</defName>
     <label>秘铸骑士动力甲</label>
-    <description>秘银与精金秘铸的全身动力甲：层叠的分节肩甲、银色辅甲条、胸口一颗圆形发光奥能核心、收窄的分节腹甲，腰扣是展翼太阳，背后两支推进管。护甲比原版重甲略高，移速惩罚略小。\n\n奥能核心 150：受到伤害时每点伤害 -0.25，征召时每小时 -10；耗尽变成铁壳（移动 -35%、操作 -25%）。在通电的奥能充能座充能，或换上奥能电池（+60）。戴任意奥能头盔时核心上限 +20%。\n\n装甲能力：推进跃击（20 奥能）；奥能力场（30 奥能，10 秒内挡下所有伤害，每挡 1 点伤害 -0.5 奥能）。</description>
+    <description>秘银与精金秘铸的全身动力甲：金滚边的大圆肩甲、金色辅甲条、胸口一颗圆形发光奥能核心、收窄的分节腹甲和胯甲，腰扣是展翼太阳，背后两支推进管。护甲比原版重甲略高，移速惩罚略小。\n\n奥能核心 150：受到伤害时每点伤害 -0.25，征召时每小时 -10；耗尽变成铁壳（移动 -35%、操作 -25%）。在通电的奥能充能座充能，或换上奥能电池（+60）。戴任意奥能头盔时核心上限 +20%。\n\n装甲能力：推进跃击（20 奥能）；奥能力场（30 奥能，10 秒内挡下所有伤害，每挡 1 点伤害 -0.5 奥能）。</description>
     <graphicData><texPath>LP/PowerArmor/KnightArmor/KnightArmor_Icon</texPath><color>(0.58,0.16,0.15)</color></graphicData>
     <costList><Plasteel>130</Plasteel><LP_Mithral>40</LP_Mithral><LP_Adamantine>20</LP_Adamantine><ComponentSpacer>5</ComponentSpacer></costList>
     <recipeMaker><displayPriority>473</displayPriority></recipeMaker>
@@ -359,7 +359,7 @@
   <ThingDef ParentName="LP_PowerHelmBase">
     <defName>LP_PA_KnightHelm</defName>
     <label>秘铸骑士盔</label>
-    <description>流线全盔，银色尖颌面甲上一道 V 形的蓝色目镜，盔顶一条银脊，耳侧各一枚圆护。头部护甲比原版重甲头盔略高。和任意奥能动力甲一起穿时，盔甲的核心上限 +20%。</description>
+    <description>流线全盔，金边尖颌面甲上一道 V 形的蓝色目镜，盔顶一条金脊，耳侧各一枚圆护。头部护甲比原版重甲头盔略高。和任意奥能动力甲一起穿时，盔甲的核心上限 +20%。</description>
     <graphicData><texPath>LP/PowerArmor/KnightHelm/KnightHelm_Icon</texPath><color>(0.58,0.16,0.15)</color></graphicData>
     <costList><Plasteel>40</Plasteel><LP_Adamantine>8</LP_Adamantine><ComponentSpacer>2</ComponentSpacer></costList>
     <statBases>
@@ -373,7 +373,7 @@
   <ThingDef ParentName="LP_PowerKnightBase">
     <defName>LP_PA_OathArmor</defName>
     <label>圣誓骑士动力甲</label>
-    <description>给圣武士秘铸的骑士动力甲：黑色甲面配金色辅甲和活塞关节，胸口的六角奥能核心外围铸着一圈八芒旭日。数值同秘铸骑士动力甲，另外神恩强度 +15%、受到的死灵伤害 -30%；奥能力场更省（每挡 1 点伤害只要 0.35 奥能）。\n\n奥能核心 150（规则同秘铸骑士动力甲）。装甲能力：推进跃击、奥能力场。</description>
+    <description>给圣武士秘铸的骑士动力甲：黑色甲面配金滚边大肩甲和金色活塞关节，胸口的六角奥能核心外围铸着一圈八芒旭日，腰前一片带旭日的纹章布帘。数值同秘铸骑士动力甲，另外神恩强度 +15%、受到的死灵伤害 -30%；奥能力场更省（每挡 1 点伤害只要 0.35 奥能）。\n\n奥能核心 150（规则同秘铸骑士动力甲）。装甲能力：推进跃击、奥能力场。</description>
     <graphicData><texPath>LP/PowerArmor/OathArmor/OathArmor_Icon</texPath><color>(0.22,0.22,0.24)</color></graphicData>
     <costList><Plasteel>130</Plasteel><LP_Mithral>40</LP_Mithral><LP_Adamantine>20</LP_Adamantine><Gold>30</Gold><ComponentSpacer>5</ComponentSpacer></costList>
     <recipeMaker><displayPriority>475</displayPriority></recipeMaker>
