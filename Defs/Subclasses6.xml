@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.140.0 热门子职业 15 个（Source/ClassSubclass6.cs）：德鲁伊月亮结社；战士勇士；圣武士奉献之誓 / 复仇之誓；牧师战争 / 知识 / 坟墓领域；
+     邪术师咒剑 / 天界宗主；法师死灵 / 预言 / 防护 / 幻术学派；游荡者风流剑客 / 魂刃。
+     能力等级沿用各职业原有节奏：德鲁伊、法师 2/6/10/14；牧师 1/2/6/8/17；邪术师 1/3/7/11/15；战士、圣武士、游荡者 3/7/11/15。
+     被动（effect=Passive）和新效果（S6_ 开头）在 ClassSubclass6.cs；其余复用 ClassAbilities / ClassCasters 的通用效果。图标：ArtSource/RaceArt/draw_subclasses6.py。 -->
+<Defs>
+  <!-- ===================== 子职业 ===================== -->
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_CircleMoon</defName>
+    <label>月亮结社</label>
+    <description>月光下的变形者：化为猛兽作战（近战伤害、护甲、移速都提高），兽形下的爪牙穿透护甲，10 级起能化为元素之形灼烧身边的敌人，14 级起变形中伤口不断愈合。</description>
+    <parent>LP_Class_Druid</parent><order>4</order><emblem>LP/Classes/Subclass/Emblem_CircleMoon</emblem><color>(0.75,0.8,0.95)</color>
+    <abilities><li><ability>LP_MO_CombatShape</ability><level>2</level></li><li><ability>LP_MO_PrimalStrike</ability><level>6</level></li>
+      <li><ability>LP_MO_ElementalForm</ability><level>10</level></li><li><ability>LP_MO_ThousandForms</ability><level>14</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Champion</defName>
+    <label>勇士</label>
+    <description>把武艺练到极致的战士：武器命中有 10%（15 级 15%）造成双倍伤害，身手比谁都好，多一套战斗姿态，最后伤重时也能自己缓过来。全是被动，不用操作。</description>
+    <parent>LP_Class_Fighter</parent><order>5</order><emblem>LP/Classes/Subclass/Emblem_Champion</emblem><color>(0.85,0.7,0.35)</color>
+    <abilities><li><ability>LP_CP_ImprovedCritical</ability><level>3</level></li><li><ability>LP_CP_Athlete</ability><level>7</level></li>
+      <li><ability>LP_CP_SecondStyle</ability><level>11</level></li><li><ability>LP_CP_Survivor</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Devotion</defName>
+    <label>奉献之誓</label>
+    <description>最经典的圣武士：圣化武器附加光耀伤害，驱散亡灵与邪魔，守护身边的人不被魅惑恐吓，净化友军身上的毒与恐惧，最后披上圣光之轮。</description>
+    <parent>LP_Class_Paladin</parent><order>4</order><emblem>LP/Classes/Subclass/Emblem_Devotion</emblem><color>(0.95,0.92,0.75)</color>
+    <abilities><li><ability>LP_DT_SacredWeapon</ability><level>3</level></li><li><ability>LP_DT_TurnUnholy</ability><level>3</level></li><li><ability>LP_DT_AuraDevotion</ability><level>7</level></li>
+      <li><ability>LP_DT_PurityOfSpirit</ability><level>11</level></li><li><ability>LP_DT_HolyNimbus</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Vengeance</defName>
+    <label>复仇之誓</label>
+    <description>追讨恶徒的圣武士：立誓追讨一个敌人、吓退它的同伙，追杀誓仇目标时越打越快，最后化身复仇天使。</description>
+    <parent>LP_Class_Paladin</parent><order>5</order><emblem>LP/Classes/Subclass/Emblem_Vengeance</emblem><color>(0.5,0.2,0.25)</color>
+    <abilities><li><ability>LP_VN_VowOfEnmity</ability><level>3</level></li><li><ability>LP_VN_AbjureEnemy</ability><level>3</level></li><li><ability>LP_VN_RelentlessAvenger</ability><level>7</level></li>
+      <li><ability>LP_VN_SoulOfVengeance</ability><level>11</level></li><li><ability>LP_VN_AvengingAngel</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_WarDomain</defName>
+    <label>战争领域</label>
+    <description>战神的牧师：穿甲持械也能施法，引导神力让下一轮攻击必中，为友军祝福武器，武器命中附加神圣打击，最后化身战神。引导神力每天 1 次（6 级 2 次、18 级 3 次）。</description>
+    <parent>LP_Class_Cleric</parent><order>4</order><emblem>LP/Classes/Subclass/Emblem_WarDomain</emblem><color>(0.75,0.3,0.25)</color>
+    <abilities><li><ability>LP_WD_WarPriest</ability><level>1</level></li><li><ability>LP_WD_GuidedStrike</ability><level>2</level></li><li><ability>LP_WD_WarGodBlessing</ability><level>6</level></li>
+      <li><ability>LP_WD_DivineStrike</ability><level>8</level></li><li><ability>LP_WD_Avatar</ability><level>17</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_KnowledgeDomain</defName>
+    <label>知识领域</label>
+    <description>学识之神的牧师：研究和学习更快，引导神力借来先贤的手艺，读出敌人的心思让它破绽百出，神术更强，最后用过往之景震住一片敌人。</description>
+    <parent>LP_Class_Cleric</parent><order>5</order><emblem>LP/Classes/Subclass/Emblem_KnowledgeDomain</emblem><color>(0.4,0.55,0.85)</color>
+    <abilities><li><ability>LP_KD_Blessings</ability><level>1</level></li><li><ability>LP_KD_KnowledgeOfAges</ability><level>2</level></li><li><ability>LP_KD_ReadThoughts</ability><level>6</level></li>
+      <li><ability>LP_KD_PotentSpellcasting</ability><level>8</level></li><li><ability>LP_KD_Visions</ability><level>17</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_GraveDomain</defName>
+    <label>坟墓领域</label>
+    <description>守在生死之间的牧师：不惧死灵之力，引导神力标记一个敌人让它受到的下一击加倍，濒死的友军得到双倍治疗，神术更强，最后身边有人死去就化为生者的疗愈。</description>
+    <parent>LP_Class_Cleric</parent><order>6</order><emblem>LP/Classes/Subclass/Emblem_GraveDomain</emblem><color>(0.35,0.4,0.35)</color>
+    <abilities><li><ability>LP_GD_EyesOfGrave</ability><level>1</level></li><li><ability>LP_GD_PathToGrave</ability><level>2</level></li><li><ability>LP_GD_SentinelAtDeath</ability><level>6</level></li>
+      <li><ability>LP_GD_Potent</ability><level>8</level></li><li><ability>LP_GD_KeeperOfSouls</ability><level>17</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Hexblade</defName>
+    <label>咒剑宗主</label>
+    <description>与影界的一柄有灵之剑立约：诅咒一个敌人让它更脆、杀死它就回血，穿甲持械作战，披上咒甲，身边浮现幽影劈砍敌人，最后成为诅咒大师。</description>
+    <parent>LP_Class_Warlock</parent><order>4</order><emblem>LP/Classes/Subclass/Emblem_Hexblade</emblem><color>(0.55,0.45,0.7)</color>
+    <abilities><li><ability>LP_HX_Curse</ability><level>1</level></li><li><ability>LP_HX_Warrior</ability><level>3</level></li><li><ability>LP_HX_Armor</ability><level>7</level></li>
+      <li><ability>LP_HX_Specter</ability><level>11</level></li><li><ability>LP_HX_MasterOfHexes</ability><level>15</level></li></abilities>
+    <choices>
+      <li><key>invoc1</key><label>魔能祈唤</label><level>5</level><options><li>苦痛魔能爆</li><li>魔鬼视觉</li><li>魔能长矛</li></options>
+        <tips><li>每道魔能爆 + 魅力调整值 × 2 伤害（至少 +2）。</li><li>暗处视觉 +30%，不受魔法黑暗影响。</li><li>魔能爆射程 24 → 36 格。</li></tips></li>
+    </choices>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Celestial</defName>
+    <label>天界宗主</label>
+    <description>与上界的天使立约：治愈之光医治友军，光耀之魂让治疗和圣焰更强，天界抗性给大家护盾，光耀之怒烧灼敌人，最后倒下时在灼热复仇中站起。</description>
+    <parent>LP_Class_Warlock</parent><order>5</order><emblem>LP/Classes/Subclass/Emblem_Celestial</emblem><color>(0.95,0.85,0.55)</color>
+    <abilities><li><ability>LP_CE_HealingLight</ability><level>1</level></li><li><ability>LP_CE_RadiantSoul</ability><level>3</level></li><li><ability>LP_CE_Resilience</ability><level>7</level></li>
+      <li><ability>LP_CE_RadiantBurst</ability><level>11</level></li><li><ability>LP_CE_SearingVengeance</ability><level>15</level></li></abilities>
+    <choices>
+      <li><key>invoc1</key><label>魔能祈唤</label><level>5</level><options><li>苦痛魔能爆</li><li>魔鬼视觉</li><li>魔能长矛</li></options>
+        <tips><li>每道魔能爆 + 魅力调整值 × 2 伤害（至少 +2）。</li><li>暗处视觉 +30%，不受魔法黑暗影响。</li><li>魔能爆射程 24 → 36 格。</li></tips></li>
+    </choices>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Necromancy</defName>
+    <label>死灵学派</label>
+    <description>巫妖的学问：杀死敌人就收割它的生命力，从尸体里拉起仆役，不惧死灵之力，最后能把敌对的亡灵收为己用。</description>
+    <parent>LP_Class_Wizard</parent><order>4</order><emblem>LP/Classes/Subclass/Emblem_Necromancy</emblem><color>(0.35,0.5,0.35)</color>
+    <abilities><li><ability>LP_NM_GrimHarvest</ability><level>2</level></li><li><ability>LP_NM_UndeadThralls</ability><level>6</level></li>
+      <li><ability>LP_NM_InuredToUndeath</ability><level>10</level></li><li><ability>LP_NM_CommandUndead</ability><level>14</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Divination</defName>
+    <label>预言学派</label>
+    <description>看见未来的法师：每天有几次失败的豁免可以重来，奥术法术冷却更短，睁开第三只眼看清一切，最后预兆更多。</description>
+    <parent>LP_Class_Wizard</parent><order>5</order><emblem>LP/Classes/Subclass/Emblem_Divination</emblem><color>(0.75,0.7,0.95)</color>
+    <abilities><li><ability>LP_DI_Portent</ability><level>2</level></li><li><ability>LP_DI_ExpertDivination</ability><level>6</level></li>
+      <li><ability>LP_DI_ThirdEye</ability><level>10</level></li><li><ability>LP_DI_GreaterPortent</ability><level>14</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Abjuration</defName>
+    <label>防护学派</label>
+    <description>守护者的学问：奥术守护吸收伤害，还能投射到友军身上，心智与护甲更稳，最后一切伤害都减一成半。</description>
+    <parent>LP_Class_Wizard</parent><order>6</order><emblem>LP/Classes/Subclass/Emblem_Abjuration</emblem><color>(0.5,0.7,0.95)</color>
+    <abilities><li><ability>LP_AJ_ArcaneWard</ability><level>2</level></li><li><ability>LP_AJ_ProjectedWard</ability><level>6</level></li>
+      <li><ability>LP_AJ_ImprovedAbjuration</ability><level>10</level></li><li><ability>LP_AJ_SpellResistance</ability><level>14</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Illusion</defName>
+    <label>幻术学派</label>
+    <description>骗过眼睛的法师：身形晃动难以命中，变化幻象吓跑一片敌人，濒死时留下幻影自己闪到别处，最后幻象成真——镜影更多更久。</description>
+    <parent>LP_Class_Wizard</parent><order>7</order><emblem>LP/Classes/Subclass/Emblem_Illusion</emblem><color>(0.85,0.55,0.85)</color>
+    <abilities><li><ability>LP_IU_ImprovedMinor</ability><level>2</level></li><li><ability>LP_IU_MalleableIllusions</ability><level>6</level></li>
+      <li><ability>LP_IU_IllusorySelf</ability><level>10</level></li><li><ability>LP_IU_IllusoryReality</ability><level>14</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Swashbuckler</defName>
+    <label>风流剑客</label>
+    <description>潇洒的决斗者：步法轻快，单挑时下手更狠，一句话就能让敌人放下敌意，优雅的策略，最后成为决斗大师。</description>
+    <parent>LP_Class_Rogue</parent><order>4</order><emblem>LP/Classes/Subclass/Emblem_Swashbuckler</emblem><color>(0.85,0.45,0.35)</color>
+    <abilities><li><ability>LP_SB_FancyFootwork</ability><level>3</level></li><li><ability>LP_SB_RakishAudacity</ability><level>3</level></li><li><ability>LP_SB_Panache</ability><level>7</level></li>
+      <li><ability>LP_SB_ElegantManeuver</ability><level>11</level></li><li><ability>LP_SB_MasterDuelist</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Soulknife</defName>
+    <label>魂刃</label>
+    <description>用念力凝成刀刃的游荡者：灵能刀刃加强近战，灵能之力护住心神，把魂刃掷向远处的敌人，灵能帷幕让自己难以捉摸，最后撕裂敌人的心灵。</description>
+    <parent>LP_Class_Rogue</parent><order>5</order><emblem>LP/Classes/Subclass/Emblem_Soulknife</emblem><color>(0.6,0.5,0.9)</color>
+    <abilities><li><ability>LP_SN_PsychicBlades</ability><level>3</level></li><li><ability>LP_SN_PsionicPower</ability><level>3</level></li><li><ability>LP_SN_SoulThrow</ability><level>7</level></li>
+      <li><ability>LP_SN_PsychicVeil</ability><level>11</level></li><li><ability>LP_SN_RendMind</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+
+  <!-- ===================== 永久被动状态（不用 LP_ClassBuffBase：那个会自己消失） ===================== -->
+  <HediffDef Name="LP_S6PassiveBase" Abstract="True">
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <initialSeverity>1</initialSeverity>
+  </HediffDef>
+  <HediffDef ParentName="LP_S6PassiveBase">
+    <defName>LP_CP_AthleteBuff</defName><label>卓越运动家</label><description>勇士：移动 +0.3、负重 +15、近战闪避 +5。</description>
+    <defaultLabelColor>(0.85,0.7,0.35)</defaultLabelColor>
+    <stages><li><statOffsets><MoveSpeed>0.3</MoveSpeed><CarryingCapacity>15</CarryingCapacity><MeleeDodgeChance>5</MeleeDodgeChance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_S6PassiveBase">
+    <defName>LP_CP_StyleBuff</defName><label>额外战斗风格</label><description>勇士：近战命中 ×1.08、射击精度 ×1.08，护甲 +5%。</description>
+    <defaultLabelColor>(0.85,0.7,0.35)</defaultLabelColor>
+    <stages><li><statFactors><MeleeHitChance>1.08</MeleeHitChance><ShootingAccuracyPawn>1.08</ShootingAccuracyPawn></statFactors><statOffsets><ArmorRating_Sharp>0.05</ArmorRating_Sharp><ArmorRating_Blunt>0.05</ArmorRating_Blunt></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_S6PassiveBase">
+    <defName>LP_DT_AuraOn</defName><label>奉献灵光</label><description>奉献之誓：3 格内的友军心智抗性 +30%、崩溃阈值 −5%。</description>
+    <defaultLabelColor>(0.95,0.92,0.75)</defaultLabelColor>
+    <comps><li Class="LichPhylactery.HediffCompProperties_ClassAura"><interval>120</interval><radius>3</radius><healAllies>true</healAllies><healFactor>0</healFactor><allyHediff>LP_DT_AuraBuff</allyHediff></li></comps>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_DT_AuraBuff</defName><label>奉献庇护</label><description>圣武士的奉献灵光：心智抗性 +30%、崩溃阈值 −5%。</description>
+    <defaultLabelColor>(0.95,0.92,0.75)</defaultLabelColor>
+    <stages><li><statOffsets><LP_MindResist>0.3</LP_MindResist><MentalBreakThreshold>-0.05</MentalBreakThreshold></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_S6PassiveBase">
+    <defName>LP_WD_PriestBuff</defName><label>战争祭司</label><description>战争领域：近战命中 +10%、射击精度 +4%、护甲 +8%。</description>
+    <defaultLabelColor>(0.75,0.3,0.25)</defaultLabelColor>
+    <stages><li><statOffsets><MeleeHitChance>0.1</MeleeHitChance><ShootingAccuracyPawn>0.04</ShootingAccuracyPawn><ArmorRating_Sharp>0.08</ArmorRating_Sharp><ArmorRating_Blunt>0.08</ArmorRating_Blunt></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_S6PassiveBase">
+    <defName>LP_KD_BlessBuff</defName><label>学识祝福</label><description>知识领域：研究速度 ×1.25、学习速度 ×1.2。</description>
+    <defaultLabelColor>(0.4,0.55,0.85)</defaultLabelColor>
+    <stages><li><statFactors><ResearchSpeed>1.25</ResearchSpeed><GlobalLearningFactor>1.2</GlobalLearningFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_S6PassiveBase">
+    <defName>LP_GD_EyesBuff</defName><label>坟墓之眼</label><description>坟墓领域：受到的死灵伤害减半。</description>
+    <defaultLabelColor>(0.35,0.4,0.35)</defaultLabelColor>
+    <stages><li><damageFactors><LP_Necrotic>0.5</LP_Necrotic></damageFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_S6PassiveBase">
+    <defName>LP_HX_WarriorBuff</defName><label>咒剑战士</label><description>咒剑宗主：近战命中 +15%、护甲 +10%。</description>
+    <defaultLabelColor>(0.55,0.45,0.7)</defaultLabelColor>
+    <stages><li><statOffsets><MeleeHitChance>0.15</MeleeHitChance><ArmorRating_Sharp>0.1</ArmorRating_Sharp><ArmorRating_Blunt>0.1</ArmorRating_Blunt></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_S6PassiveBase">
+    <defName>LP_NM_InuredBuff</defName><label>不惧死亡</label><description>死灵学派：受到的死灵伤害减半，毒性抗性 +50%。</description>
+    <defaultLabelColor>(0.35,0.5,0.35)</defaultLabelColor>
+    <stages><li><damageFactors><LP_Necrotic>0.5</LP_Necrotic></damageFactors><statOffsets><ToxicResistance>0.5</ToxicResistance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_S6PassiveBase">
+    <defName>LP_AJ_ImprovedBuff</defName><label>强化防护</label><description>防护学派：心智抗性 +25%、护甲 +8%。</description>
+    <defaultLabelColor>(0.5,0.7,0.95)</defaultLabelColor>
+    <stages><li><statOffsets><LP_MindResist>0.25</LP_MindResist><ArmorRating_Sharp>0.08</ArmorRating_Sharp><ArmorRating_Blunt>0.08</ArmorRating_Blunt></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_S6PassiveBase">
+    <defName>LP_AJ_ResistBuff</defName><label>法术抗力</label><description>防护学派：受到的一切伤害 ×0.85。</description>
+    <defaultLabelColor>(0.5,0.7,0.95)</defaultLabelColor>
+    <stages><li><statFactors><IncomingDamageFactor>0.85</IncomingDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_S6PassiveBase">
+    <defName>LP_IU_SavantBuff</defName><label>幻术学者</label><description>幻术学派：身形晃动，近战闪避 +8。</description>
+    <defaultLabelColor>(0.85,0.55,0.85)</defaultLabelColor>
+    <stages><li><statOffsets><MeleeDodgeChance>8</MeleeDodgeChance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_S6PassiveBase">
+    <defName>LP_SB_FootworkBuff</defName><label>华丽步法</label><description>风流剑客：移动 +0.3、近战闪避 +10。</description>
+    <defaultLabelColor>(0.85,0.45,0.35)</defaultLabelColor>
+    <stages><li><statOffsets><MoveSpeed>0.3</MoveSpeed><MeleeDodgeChance>10</MeleeDodgeChance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_S6PassiveBase">
+    <defName>LP_SN_PowerBuff</defName><label>灵能之力</label><description>魂刃：心灵敏感度 +20%、心智抗性 +20%。</description>
+    <defaultLabelColor>(0.6,0.5,0.9)</defaultLabelColor>
+    <stages><li><statOffsets><PsychicSensitivity>0.2</PsychicSensitivity><LP_MindResist>0.2</LP_MindResist></statOffsets></li></stages>
+  </HediffDef>
+
+  <!-- ===================== 临时状态 ===================== -->
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_MO_BeastForm</defName><label>战斗变形</label><description>化为猛兽：近战伤害 ×1.4、护甲 +15%、移动 ×1.15。6 级起爪牙穿透护甲，14 级起伤口不断愈合。</description>
+    <maxSeverity>100</maxSeverity><defaultLabelColor>(0.75,0.8,0.95)</defaultLabelColor>
+    <stages><li><statFactors><MeleeDamageFactor>1.4</MeleeDamageFactor><MoveSpeed>1.15</MoveSpeed></statFactors><statOffsets><ArmorRating_Sharp>0.15</ArmorRating_Sharp><ArmorRating_Blunt>0.15</ArmorRating_Blunt></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_MO_ElementalForm</defName><label>元素之形</label><description>化为元素：火焰与寒冷伤害减半，半径 2 内的敌人每 2 秒受灼烧。</description>
+    <maxSeverity>100</maxSeverity><defaultLabelColor>(0.95,0.6,0.35)</defaultLabelColor>
+    <stages><li><damageFactors><Flame>0.5</Flame><Burn>0.5</Burn><LP_Frost>0.5</LP_Frost></damageFactors></li></stages>
+    <comps><li Class="LichPhylactery.HediffCompProperties_ClassAura"><interval>120</interval><radius>2</radius><damageEnemies>true</damageEnemies></li></comps>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_DT_SacredWeaponBuff</defName><label>神圣武器</label><description>武器被圣化：近战命中 +25%，每 2 秒第一次武器命中附加光耀伤害（= 严重度）。</description>
+    <maxSeverity>100</maxSeverity><defaultLabelColor>(0.95,0.92,0.75)</defaultLabelColor>
+    <stages><li><statOffsets><MeleeHitChance>0.25</MeleeHitChance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_DT_Nimbus</defName><label>神圣光轮</label><description>圣光环绕：半径 3 内的敌人每 2 秒受光耀伤害（= 严重度），自己受到的伤害 ×0.8。</description>
+    <maxSeverity>100</maxSeverity><defaultLabelColor>(0.95,0.92,0.75)</defaultLabelColor>
+    <stages><li><statFactors><IncomingDamageFactor>0.8</IncomingDamageFactor></statFactors></li></stages>
+    <comps><li Class="LichPhylactery.HediffCompProperties_ClassAura"><interval>120</interval><radius>3</radius><damageEnemies>true</damageEnemies></li></comps>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_VN_Relentless</defName><label>无情复仇者</label><description>追上去：移动 +0.5。</description>
+    <defaultLabelColor>(0.5,0.2,0.25)</defaultLabelColor>
+    <stages><li><statOffsets><MoveSpeed>0.5</MoveSpeed></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_VN_SoulBuff</defName><label>复仇之魂</label><description>近战冷却 ×0.7、近战闪避 +10。</description>
+    <defaultLabelColor>(0.5,0.2,0.25)</defaultLabelColor>
+    <stages><li><statFactors><MeleeCooldownFactor>0.7</MeleeCooldownFactor></statFactors><statOffsets><MeleeDodgeChance>10</MeleeDodgeChance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_VN_AngelBuff</defName><label>复仇天使</label><description>展开复仇之翼：移动 ×1.4、近战伤害 ×1.2。</description>
+    <defaultLabelColor>(0.5,0.2,0.25)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>1.4</MoveSpeed><MeleeDamageFactor>1.2</MeleeDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WD_GuidedBuff</defName><label>导引打击</label><description>神力引导下一轮攻击：近战命中 +50%、射击精度 +30%。</description>
+    <defaultLabelColor>(0.75,0.3,0.25)</defaultLabelColor>
+    <stages><li><statOffsets><MeleeHitChance>0.5</MeleeHitChance><ShootingAccuracyPawn>0.3</ShootingAccuracyPawn></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WD_BlessingBuff</defName><label>战神祝福</label><description>近战命中 +30%、射击精度 +10%。</description>
+    <defaultLabelColor>(0.75,0.3,0.25)</defaultLabelColor>
+    <stages><li><statOffsets><MeleeHitChance>0.3</MeleeHitChance><ShootingAccuracyPawn>0.1</ShootingAccuracyPawn></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_WD_AvatarBuff</defName><label>战神化身</label><description>受到的伤害 ×0.75、近战伤害 ×1.3、近战冷却 ×0.8。</description>
+    <maxSeverity>100</maxSeverity><defaultLabelColor>(0.75,0.3,0.25)</defaultLabelColor>
+    <stages><li><statFactors><IncomingDamageFactor>0.75</IncomingDamageFactor><MeleeDamageFactor>1.3</MeleeDamageFactor><MeleeCooldownFactor>0.8</MeleeCooldownFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_KD_AgesBuff</defName><label>先贤知识</label><description>借来先贤的手艺：手工速度 ×1.3、全局工作速度 ×1.2。</description>
+    <defaultLabelColor>(0.4,0.55,0.85)</defaultLabelColor>
+    <stages><li><statFactors><GeneralLaborSpeed>1.3</GeneralLaborSpeed><WorkSpeedGlobal>1.2</WorkSpeedGlobal></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_KD_Read</defName><hediffClass>LichPhylactery.Hediff_ClassMark</hediffClass><label>心思被读出</label><description>牧师读出了它的心思：近战闪避 −20，受到的伤害 ×1.15。</description>
+    <isBad>true</isBad><defaultLabelColor>(0.4,0.55,0.85)</defaultLabelColor>
+    <stages><li><statOffsets><MeleeDodgeChance>-20</MeleeDodgeChance></statOffsets><statFactors><IncomingDamageFactor>1.15</IncomingDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_GD_Marked</defName><hediffClass>LichPhylactery.Hediff_ClassMark</hediffClass><label>通往坟墓</label><description>被坟墓牧师标记：下一次被攻击受到的伤害 ×2。</description>
+    <isBad>true</isBad><defaultLabelColor>(0.35,0.4,0.35)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_HX_Cursed</defName><hediffClass>LichPhylactery.Hediff_ClassMark</hediffClass><label>咒剑诅咒</label><description>被咒剑宗主诅咒：受到的伤害 ×1.25；它死时咒剑宗主回血。</description>
+    <isBad>true</isBad><defaultLabelColor>(0.55,0.45,0.7)</defaultLabelColor>
+    <stages><li><statFactors><IncomingDamageFactor>1.25</IncomingDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_HX_ArmorBuff</defName><label>咒剑护甲</label><description>影界之甲：受到的伤害 ×0.8。</description>
+    <maxSeverity>100</maxSeverity><defaultLabelColor>(0.55,0.45,0.7)</defaultLabelColor>
+    <stages><li><statFactors><IncomingDamageFactor>0.8</IncomingDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_HX_SpecterBuff</defName><label>幽影仆从</label><description>一道幽影在身边劈砍：半径 2.5 内的敌人每 2 秒受光耀伤害（= 严重度）。</description>
+    <maxSeverity>100</maxSeverity><defaultLabelColor>(0.55,0.45,0.7)</defaultLabelColor>
+    <comps><li Class="LichPhylactery.HediffCompProperties_ClassAura"><interval>120</interval><radius>2.5</radius><damageEnemies>true</damageEnemies></li></comps>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_DI_ThirdEyeBuff</defName><label>第三只眼</label><description>看清一切：视觉 +30%、射击精度 +10%、近战闪避 +10。</description>
+    <defaultLabelColor>(0.75,0.7,0.95)</defaultLabelColor>
+    <stages><li><capMods><li><capacity>Sight</capacity><offset>0.3</offset></li></capMods><statOffsets><ShootingAccuracyPawn>0.1</ShootingAccuracyPawn><MeleeDodgeChance>10</MeleeDodgeChance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_SB_ElegantBuff</defName><label>优雅策略</label><description>近战命中 +20%、近战闪避 +15。</description>
+    <defaultLabelColor>(0.85,0.45,0.35)</defaultLabelColor>
+    <stages><li><statOffsets><MeleeHitChance>0.2</MeleeHitChance><MeleeDodgeChance>15</MeleeDodgeChance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_SB_DuelistBuff</defName><label>决斗大师</label><description>近战伤害 ×1.3、近战闪避 +25。</description>
+    <maxSeverity>100</maxSeverity><defaultLabelColor>(0.85,0.45,0.35)</defaultLabelColor>
+    <stages><li><statFactors><MeleeDamageFactor>1.3</MeleeDamageFactor></statFactors><statOffsets><MeleeDodgeChance>25</MeleeDodgeChance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_SN_BladesBuff</defName><label>灵能刀刃</label><description>念力凝成的刀刃：近战伤害 ×1.25、近战冷却 ×0.9。</description>
+    <maxSeverity>100</maxSeverity><defaultLabelColor>(0.6,0.5,0.9)</defaultLabelColor>
+    <stages><li><statFactors><MeleeDamageFactor>1.25</MeleeDamageFactor><MeleeCooldownFactor>0.9</MeleeCooldownFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_SN_VeilBuff</defName><label>灵能帷幕</label><description>难以捉摸：移动 ×1.2、近战闪避 +20。</description>
+    <defaultLabelColor>(0.6,0.5,0.9)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>1.2</MoveSpeed></statFactors><statOffsets><MeleeDodgeChance>20</MeleeDodgeChance></statOffsets></li></stages>
+  </HediffDef>
+
+  <!-- ===================== 月亮结社（德鲁伊，翠绿强度，法力） ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_MO_CombatShape</defName><label>战斗变形</label>
+    <description>化为猛兽 1 小时：近战伤害 ×1.4、护甲 +15%、移动 ×1.15。法力 1，冷却 10 秒。月亮结社，德鲁伊 2 级。</description>
+    <iconPath>LP/Classes/Subclass6/MOShape</iconPath><displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted><cooldownTicksRange>600</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_MO_BeastForm</hediff><cost>1</cost><duration>2500</duration><stat>LP_VerdantPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_MO_PrimalStrike</defName><label>原初打击</label>
+    <description>被动：战斗变形或元素之形中，近战攻击的护甲穿透 +30%。月亮结社，德鲁伊 6 级。</description>
+    <iconPath>LP/Classes/Subclass6/MOStrike</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_VerdantPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_MO_ElementalForm</defName><label>元素荒野变形</label>
+    <description>化为元素 1 小时：火焰与寒冷伤害减半，半径 2 内的敌人每 2 秒受 6 × 翠绿强度 的灼烧。法力 2，冷却 30 秒。月亮结社，德鲁伊 10 级。</description>
+    <iconPath>LP/Classes/Subclass6/MOElemental</iconPath><displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted><cooldownTicksRange>1800</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PowerBuff</effect><hediff>LP_MO_ElementalForm</hediff><cost>2</cost><power>6</power><duration>2500</duration><stat>LP_VerdantPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_MO_ThousandForms</defName><label>千面变形</label>
+    <description>被动：变形中每 250 刻治疗 3 + 德鲁伊等级 × 0.3 点伤势。月亮结社，德鲁伊 14 级。</description>
+    <iconPath>LP/Classes/Subclass6/MOForms</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_VerdantPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===================== 勇士（战士，战技强度，斗志） ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CP_ImprovedCritical</defName><label>精益求精</label>
+    <description>被动：武器命中有 10% 造成双倍伤害（15 级卓越生存者后 15%）。勇士，战士 3 级。</description>
+    <iconPath>LP/Classes/Subclass6/CPCrit</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CP_Athlete</defName><label>卓越运动家</label>
+    <description>被动：移动 +0.3、负重 +15、近战闪避 +5。勇士，战士 7 级。</description>
+    <iconPath>LP/Classes/Subclass6/CPAthlete</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CP_SecondStyle</defName><label>额外战斗风格</label>
+    <description>被动：近战命中 ×1.08、射击精度 ×1.08，护甲 +5%。勇士，战士 11 级。</description>
+    <iconPath>LP/Classes/Subclass6/CPStyle</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CP_Survivor</defName><label>卓越生存者</label>
+    <description>被动：伤势总量超过 20 时，每 250 刻治疗 5 + 体质调整值 点；精益求精的双倍伤害几率提到 15%。勇士，战士 15 级。</description>
+    <iconPath>LP/Classes/Subclass6/CPSurvivor</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_MartialPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===================== 奉献之誓（圣武士，神恩强度，神恩） ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DT_SacredWeapon</defName><label>神圣武器</label>
+    <description>圣化武器 30 秒：近战命中 +25%，每 2 秒第一次武器命中附加 6 × 神恩强度 光耀伤害（对亡灵、邪魔翻倍）。神恩 1，冷却 30 秒。奉献之誓，圣武士 3 级。</description>
+    <iconPath>LP/Classes/Subclass6/DTWeapon</iconPath><cooldownTicksRange>1800</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PowerBuff</effect><hediff>LP_DT_SacredWeaponBuff</hediff><cost>1</cost><power>6</power><duration>1800</duration><stat>LP_DivinePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DT_TurnUnholy</defName><label>驱散邪秽</label>
+    <description>半径 6 内的敌对亡灵逃跑 10 秒。神恩 1，冷却 30 秒。奉献之誓，圣武士 3 级。</description>
+    <iconPath>LP/Classes/Subclass6/DTTurn</iconPath><cooldownTicksRange>1800</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>TurnUndead</effect><cost>1</cost><radius>6</radius><duration>600</duration><stat>LP_DivinePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DT_AuraDevotion</defName><label>奉献灵光</label>
+    <description>被动：3 格内的友军心智抗性 +30%、崩溃阈值 −5%。奉献之誓，圣武士 7 级。</description>
+    <iconPath>LP/Classes/Subclass6/DTAura</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_DT_PurityOfSpirit</defName><label>净化之触</label>
+    <description>净化 12 格内一名友军（可以是自己）：清除毒素、震慑、恐慌。神恩 1，冷却 20 秒。奉献之誓，圣武士 11 级。</description>
+    <iconPath>LP/Classes/Subclass6/DTPurity</iconPath><displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted><cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><range>12</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S6_Purify</effect><cost>1</cost><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DT_HolyNimbus</defName><label>神圣光轮</label>
+    <description>披上圣光 30 秒：半径 3 内的敌人每 2 秒受 8 × 神恩强度 光耀伤害（对亡灵、邪魔翻倍），自己受到的伤害 ×0.8。神恩 3，冷却 1 小时。奉献之誓，圣武士 15 级。</description>
+    <iconPath>LP/Classes/Subclass6/DTNimbus</iconPath><cooldownTicksRange>2500</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PowerBuff</effect><hediff>LP_DT_Nimbus</hediff><cost>3</cost><power>8</power><duration>1800</duration><stat>LP_DivinePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+
+  <!-- ===================== 复仇之誓 ===================== -->
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_VN_VowOfEnmity</defName><label>复仇誓言</label>
+    <description>立誓追讨 12 格内一个敌人 1 小时：自己对它的伤害提高（随神恩强度）。神恩 1，冷却 30 秒。复仇之誓，圣武士 3 级。</description>
+    <iconPath>LP/Classes/Subclass6/VNVow</iconPath><cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>12</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Vow</effect><cost>1</cost><duration>2500</duration><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_VN_AbjureEnemy</defName><label>驱逐敌人</label>
+    <description>怒喝一声：半径 5 内的敌人震慑 10 秒（移动 ×0.7、命中下降）。神恩 1，冷却 30 秒。复仇之誓，圣武士 3 级。</description>
+    <iconPath>LP/Classes/Subclass6/VNAbjure</iconPath><cooldownTicksRange>1800</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>BattleCry</effect><cost>1</cost><radius>5</radius><duration>600</duration><stat>LP_DivinePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_VN_RelentlessAvenger</defName><label>无情复仇者</label>
+    <description>被动：近战命中誓仇目标时伤害 ×1.2，并且 5 秒内移动 +0.5。复仇之誓，圣武士 7 级。</description>
+    <iconPath>LP/Classes/Subclass6/VNRelentless</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_VN_SoulOfVengeance</defName><label>复仇之魂</label>
+    <description>30 秒内近战冷却 ×0.7、近战闪避 +10。神恩 2，冷却 1 小时。复仇之誓，圣武士 11 级。</description>
+    <iconPath>LP/Classes/Subclass6/VNSoul</iconPath><cooldownTicksRange>2500</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_VN_SoulBuff</hediff><cost>2</cost><duration>1800</duration><stat>LP_DivinePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_VN_AvengingAngel</defName><label>复仇天使</label>
+    <description>化身复仇天使 1 小时：移动 ×1.4、近战伤害 ×1.2；展翼的瞬间半径 6 内的敌人震慑 10 秒。神恩 3，冷却 1 小时。复仇之誓，圣武士 15 级。</description>
+    <iconPath>LP/Classes/Subclass6/VNAngel</iconPath><cooldownTicksRange>2500</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S6_AvengingAngel</effect><cost>3</cost><radius>6</radius><duration>2500</duration><stat>LP_DivinePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+
+  <!-- ===================== 战争领域（牧师，神恩强度，神恩） ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WD_WarPriest</defName><label>战争祭司</label>
+    <description>被动：近战命中 +10%、射击精度 +4%、护甲 +8%。战争领域，牧师 1 级。</description>
+    <iconPath>LP/Classes/Subclass6/WDPriest</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WD_GuidedStrike</defName><label>引导神力·导引打击</label>
+    <description>10 秒内近战命中 +50%、射击精度 +30%。引导神力 1，不耗神恩，冷却 1 小时。战争领域，牧师 2 级。</description>
+    <iconPath>LP/Classes/Subclass6/WDGuided</iconPath><cooldownTicksRange>2500</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_WD_GuidedBuff</hediff><duration>600</duration><stat>LP_DivinePower</stat><fixedSeverity>true</fixedSeverity></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_WD_WarGodBlessing</defName><label>战神祝福</label>
+    <description>20 格内一名友军 30 秒内近战命中 +30%、射击精度 +10%。神恩 1，冷却 20 秒。战争领域，牧师 6 级。</description>
+    <iconPath>LP/Classes/Subclass6/WDBlessing</iconPath><displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted><cooldownTicksRange>1200</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>TargetBuff</effect><hediff>LP_WD_BlessingBuff</hediff><cost>1</cost><duration>1800</duration><stat>LP_DivinePower</stat><fixedSeverity>true</fixedSeverity></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WD_DivineStrike</defName><label>神圣打击·武器</label>
+    <description>被动：每 2 秒第一次武器命中附加 8 × 神恩强度 同类伤害（14 级起 16）。战争领域，牧师 8 级。</description>
+    <iconPath>LP/Classes/Subclass6/WDStrike</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_WD_Avatar</defName><label>战神化身</label>
+    <description>化身战神 1 小时：受到的伤害 ×0.75、近战伤害 ×1.3、近战冷却 ×0.8。神恩 3，冷却 1 小时。战争领域，牧师 17 级。</description>
+    <iconPath>LP/Classes/Subclass6/WDAvatar</iconPath><cooldownTicksRange>2500</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_WD_AvatarBuff</hediff><cost>3</cost><duration>2500</duration><stat>LP_DivinePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+
+  <!-- ===================== 知识领域 ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_KD_Blessings</defName><label>学识祝福</label>
+    <description>被动：研究速度 ×1.25、学习速度 ×1.2。知识领域，牧师 1 级。</description>
+    <iconPath>LP/Classes/Subclass6/KDBless</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_KD_KnowledgeOfAges</defName><label>引导神力·先贤知识</label>
+    <description>1 小时内手工速度 ×1.3、全局工作速度 ×1.2。引导神力 1，不耗神恩，每天 1 次。知识领域，牧师 2 级。</description>
+    <iconPath>LP/Classes/Subclass6/KDAges</iconPath><displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted><cooldownTicksRange>60000</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_KD_AgesBuff</hediff><duration>2500</duration><stat>LP_DivinePower</stat><fixedSeverity>true</fixedSeverity></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_KD_ReadThoughts</defName><label>读心</label>
+    <description>读出 15 格内一个敌人的心思 30 秒：近战闪避 −20，受到的伤害 ×1.15；人形目标心智抗性没挡住时再震慑 10 秒。神恩 1，冷却 20 秒。知识领域，牧师 6 级。</description>
+    <iconPath>LP/Classes/Subclass6/KDRead</iconPath><cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><range>15</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S6_ReadThoughts</effect><cost>1</cost><duration>1800</duration><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_KD_PotentSpellcasting</defName><label>强效施法</label>
+    <description>被动：牧师神术的威力 ×1.15。知识领域，牧师 8 级。</description>
+    <iconPath>LP/Classes/Subclass6/KDPotent</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_KD_Visions</defName><label>过往之景</label>
+    <description>半径 8 内的敌人被过往的景象震住：震慑 10 秒，心智抗性没挡住的再眩晕 3 秒。神恩 3，冷却 1 小时。知识领域，牧师 17 级。</description>
+    <iconPath>LP/Classes/Subclass6/KDVisions</iconPath><cooldownTicksRange>2500</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S6_Visions</effect><cost>3</cost><radius>8</radius><duration>600</duration><stat>LP_DivinePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+
+  <!-- ===================== 坟墓领域 ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GD_EyesOfGrave</defName><label>坟墓之眼</label>
+    <description>被动：受到的死灵伤害减半。坟墓领域，牧师 1 级。</description>
+    <iconPath>LP/Classes/Subclass6/GDEyes</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_GD_PathToGrave</defName><label>引导神力·通往坟墓</label>
+    <description>标记 15 格内一个敌人 10 秒：它下一次被攻击受到的伤害 ×2。引导神力 1，不耗神恩，冷却 1 小时。坟墓领域，牧师 2 级。</description>
+    <iconPath>LP/Classes/Subclass6/GDPath</iconPath><cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><range>15</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S6_GraveMark</effect><duration>600</duration><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GD_SentinelAtDeath</defName><label>死亡哨兵</label>
+    <description>被动：对伤势超过 20 的友军施放治疗类神术时，再额外治疗一次同样的量。坟墓领域，牧师 6 级。</description>
+    <iconPath>LP/Classes/Subclass6/GDSentinel</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GD_Potent</defName><label>强效施法</label>
+    <description>被动：牧师神术的威力 ×1.15。坟墓领域，牧师 8 级。</description>
+    <iconPath>LP/Classes/Subclass6/GDPotent</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GD_KeeperOfSouls</defName><label>灵魂守护</label>
+    <description>被动：10 格内有敌人死去时，自己和 4 格内的友军各治疗 10 + 牧师等级 点伤势（每 10 秒最多一次）。坟墓领域，牧师 17 级。</description>
+    <iconPath>LP/Classes/Subclass6/GDKeeper</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_DivinePower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===================== 咒剑宗主（邪术师，契约强度，契约法力） ===================== -->
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_HX_Curse</defName><label>咒剑诅咒</label>
+    <description>诅咒 15 格内一个敌人 30 秒：它受到的伤害 ×1.25（15 级诅咒大师 ×1.5）；它死时自己治疗 5 + 邪术师等级 点伤势。契约法力 1，冷却 10 秒。咒剑宗主，邪术师 1 级。</description>
+    <iconPath>LP/Classes/Subclass6/HXCurse</iconPath><cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>15</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S6_HexCurse</effect><cost>1</cost><duration>1800</duration><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_HX_Warrior</defName><label>咒剑战士</label>
+    <description>被动：近战命中 +15%、护甲 +10%。咒剑宗主，邪术师 3 级。</description>
+    <iconPath>LP/Classes/Subclass6/HXWarrior</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PactPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_HX_Armor</defName><label>咒剑护甲</label>
+    <description>披上影界之甲 30 秒：受到的伤害 ×0.8。契约法力 1，冷却 30 秒。咒剑宗主，邪术师 7 级。</description>
+    <iconPath>LP/Classes/Subclass6/HXArmor</iconPath><cooldownTicksRange>1800</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_HX_ArmorBuff</hediff><cost>1</cost><duration>1800</duration><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_HX_Specter</defName><label>幽影仆从</label>
+    <description>一道幽影在身边劈砍 30 秒：半径 2.5 内的敌人每 2 秒受 6 × 契约强度 伤害。契约法力 2，冷却 1 小时。咒剑宗主，邪术师 11 级。</description>
+    <iconPath>LP/Classes/Subclass6/HXSpecter</iconPath><cooldownTicksRange>2500</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PowerBuff</effect><hediff>LP_HX_SpecterBuff</hediff><cost>2</cost><power>6</power><duration>1800</duration><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_HX_MasterOfHexes</defName><label>诅咒大师</label>
+    <description>被动：咒剑诅咒的目标受到的伤害 ×1.5（原来 ×1.25），它打自己的伤害 ×0.8。咒剑宗主，邪术师 15 级。</description>
+    <iconPath>LP/Classes/Subclass6/HXMaster</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PactPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===================== 天界宗主 ===================== -->
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_CE_HealingLight</defName><label>治愈之光</label>
+    <description>12 格内一名友军（可以是自己）立即治疗 12 × 契约强度 点伤势，优先流血伤口。契约法力 1，冷却 15 秒。天界宗主，邪术师 1 级。</description>
+    <iconPath>LP/Classes/Subclass6/CEHeal</iconPath><displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted><cooldownTicksRange>900</cooldownTicksRange>
+    <verbProperties><range>12</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Heal</effect><cost>1</cost><power>12</power><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CE_RadiantSoul</defName><label>光耀之魂</label>
+    <description>被动：治愈之光与光耀之怒的威力 ×1.2。天界宗主，邪术师 3 级。</description>
+    <iconPath>LP/Classes/Subclass6/CESoul</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PactPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CE_Resilience</defName><label>天界抗性</label>
+    <description>自己和 4 格内的友军各得到吸收 6 + 邪术师等级 点伤害的护盾（1 小时）。契约法力 1，冷却 1 小时。天界宗主，邪术师 7 级。</description>
+    <iconPath>LP/Classes/Subclass6/CEResilience</iconPath><displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted><cooldownTicksRange>2500</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S6_CelestialWard</effect><cost>1</cost><radius>4</radius><duration>2500</duration><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_CE_RadiantBurst</defName><label>光耀之怒</label>
+    <description>20 格内一个敌人受 16 × 契约强度 光耀伤害（亡灵、邪魔翻倍）。契约法力 1，冷却 10 秒。天界宗主，邪术师 11 级。</description>
+    <iconPath>LP/Classes/Subclass6/CEBurst</iconPath><cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SacredFlame</effect><cost>1</cost><power>16</power><stat>LP_PactPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CE_SearingVengeance</defName><label>灼热复仇</label>
+    <description>被动：每天第一次本应倒地时，治好一半伤口站起来，并让半径 4 内的敌人受 10 × 契约强度 光耀伤害。天界宗主，邪术师 15 级。</description>
+    <iconPath>LP/Classes/Subclass6/CEVengeance</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><power>10</power><stat>LP_PactPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===================== 死灵学派（法师，奥术强度，法力） ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_NM_GrimHarvest</defName><label>收割亡魂</label>
+    <description>被动：自己杀死的敌人在 10 格内时，治疗 5 + 法师等级 点伤势。死灵学派，法师 2 级。</description>
+    <iconPath>LP/Classes/Subclass6/NMHarvest</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArcanePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_NM_UndeadThralls</defName><label>死灵仆役</label>
+    <description>把 10 格内一具人形尸体拉起来当仆役。法力 2，冷却 1 小时。死灵学派，法师 6 级。</description>
+    <iconPath>LP/Classes/Subclass6/NMThralls</iconPath><hostile>false</hostile><displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted><cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><range>10</range><warmupTime>1</warmupTime><targetParams><canTargetPawns>false</canTargetPawns><canTargetItems>true</canTargetItems><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S6_Thralls</effect><cost>2</cost><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_NM_InuredToUndeath</defName><label>不惧死亡</label>
+    <description>被动：受到的死灵伤害减半，毒性抗性 +50%。死灵学派，法师 10 级。</description>
+    <iconPath>LP/Classes/Subclass6/NMInured</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArcanePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_NM_CommandUndead</defName><label>亡灵统御</label>
+    <description>把 15 格内一个敌对的亡灵收为己用 1 小时（亡灵军团、死灵造物、死亡骑士等；首领减半成功率）。法力 3，冷却 1 小时。死灵学派，法师 14 级。</description>
+    <iconPath>LP/Classes/Subclass6/NMCommand</iconPath><cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><range>15</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S6_CommandUndead</effect><cost>3</cost><duration>2500</duration><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+
+  <!-- ===================== 预言学派 ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DI_Portent</defName><label>预兆</label>
+    <description>被动：每天 2 次，自己失败的豁免重新判定一次。预言学派，法师 2 级。</description>
+    <iconPath>LP/Classes/Subclass6/DIPortent</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArcanePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DI_ExpertDivination</defName><label>专家预言家</label>
+    <description>被动：法师法术施放后冷却 ×0.85。预言学派，法师 6 级。</description>
+    <iconPath>LP/Classes/Subclass6/DIExpert</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArcanePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DI_ThirdEye</defName><label>第三只眼</label>
+    <description>1 小时内视觉 +30%、射击精度 +10%、近战闪避 +10。不耗法力，每天 1 次。预言学派，法师 10 级。</description>
+    <iconPath>LP/Classes/Subclass6/DIEye</iconPath><displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted><cooldownTicksRange>60000</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_DI_ThirdEyeBuff</hediff><duration>2500</duration><stat>LP_ArcanePower</stat><fixedSeverity>true</fixedSeverity></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DI_GreaterPortent</defName><label>更强预兆</label>
+    <description>被动：预兆改为每天 3 次。预言学派，法师 14 级。</description>
+    <iconPath>LP/Classes/Subclass6/DIGreater</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArcanePower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===================== 防护学派 ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AJ_ArcaneWard</defName><label>奥术守护</label>
+    <description>自己得到吸收 8 + 法师等级 × 2 点伤害的护盾（1 小时，不叠加，刷新）。法力 1，冷却 30 秒。防护学派，法师 2 级。</description>
+    <iconPath>LP/Classes/Subclass6/AJWard</iconPath><displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted><cooldownTicksRange>1800</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S6_Ward</effect><cost>1</cost><duration>2500</duration><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_AJ_ProjectedWard</defName><label>投射守护</label>
+    <description>12 格内一名友军得到吸收 8 + 法师等级 × 2 点伤害的护盾（1 小时）。法力 1，冷却 30 秒。防护学派，法师 6 级。</description>
+    <iconPath>LP/Classes/Subclass6/AJProjected</iconPath><displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted><cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>12</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S6_Ward</effect><cost>1</cost><duration>2500</duration><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AJ_ImprovedAbjuration</defName><label>强化防护</label>
+    <description>被动：心智抗性 +25%、护甲 +8%。防护学派，法师 10 级。</description>
+    <iconPath>LP/Classes/Subclass6/AJImproved</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArcanePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AJ_SpellResistance</defName><label>法术抗力</label>
+    <description>被动：受到的一切伤害 ×0.85。防护学派，法师 14 级。</description>
+    <iconPath>LP/Classes/Subclass6/AJResist</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArcanePower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===================== 幻术学派 ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_IU_ImprovedMinor</defName><label>幻术学者</label>
+    <description>被动：身形晃动，近战闪避 +8。幻术学派，法师 2 级。</description>
+    <iconPath>LP/Classes/Subclass6/IUSavant</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArcanePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_IU_MalleableIllusions</defName><label>变化幻象</label>
+    <description>半径 5 内的敌人被幻象吓跑 10 秒（心智抗性能挡住；首领不受影响）。法力 2，冷却 30 秒。幻术学派，法师 6 级。</description>
+    <iconPath>LP/Classes/Subclass6/IUPhantasm</iconPath><cooldownTicksRange>1800</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S6_Phantasm</effect><cost>2</cost><radius>5</radius><duration>600</duration><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_IU_IllusorySelf</defName><label>幻影自我</label>
+    <description>被动：每天第一次本应倒地时，留下一个幻影、自己闪到 5 格内的别处，并治好四分之一伤口。幻术学派，法师 10 级。</description>
+    <iconPath>LP/Classes/Subclass6/IUSelf</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArcanePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_IU_IllusoryReality</defName><label>幻象现实</label>
+    <description>幻象成真：30 秒内得到 5 × 奥术强度 个镜影分身（每次被命中消耗一个、这一下落空）。法力 3，冷却 1 小时。幻术学派，法师 14 级。</description>
+    <iconPath>LP/Classes/Subclass6/IUReality</iconPath><cooldownTicksRange>2500</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PowerBuff</effect><hediff>LP_MirrorImage</hediff><cost>3</cost><power>5</power><duration>1800</duration><stat>LP_ArcanePower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+
+  <!-- ===================== 风流剑客（游荡者，诡术强度，无资源） ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SB_FancyFootwork</defName><label>华丽步法</label>
+    <description>被动：移动 +0.3、近战闪避 +10。风流剑客，游荡者 3 级。</description>
+    <iconPath>LP/Classes/Subclass6/SBFootwork</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SB_RakishAudacity</defName><label>无畏剑客</label>
+    <description>被动：单挑时（目标身边没有自己的其他友军）近战伤害 ×1.2。风流剑客，游荡者 3 级。</description>
+    <iconPath>LP/Classes/Subclass6/SBAudacity</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_SB_Panache</defName><label>魅惑言辞</label>
+    <description>对 10 格内一个人形敌人说几句漂亮话：魅惑它 30 秒（放下敌意；心智抗性能挡住）。不耗资源，冷却 1 小时。风流剑客，游荡者 7 级。</description>
+    <iconPath>LP/Classes/Subclass6/SBPanache</iconPath><cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><range>10</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CharmPerson</effect><duration>1800</duration><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SB_ElegantManeuver</defName><label>优雅策略</label>
+    <description>10 秒内近战命中 +20%、近战闪避 +15。不耗资源，冷却 20 秒。风流剑客，游荡者 11 级。</description>
+    <iconPath>LP/Classes/Subclass6/SBElegant</iconPath><cooldownTicksRange>1200</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_SB_ElegantBuff</hediff><duration>600</duration><stat>LP_CunningPower</stat><fixedSeverity>true</fixedSeverity></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SB_MasterDuelist</defName><label>决斗大师</label>
+    <description>20 秒内近战伤害 ×1.3、近战闪避 +25。不耗资源，冷却 1 小时。风流剑客，游荡者 15 级。</description>
+    <iconPath>LP/Classes/Subclass6/SBDuelist</iconPath><cooldownTicksRange>2500</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_SB_DuelistBuff</hediff><duration>1200</duration><stat>LP_CunningPower</stat><fixedSeverity>true</fixedSeverity></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+
+  <!-- ===================== 魂刃 ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SN_PsychicBlades</defName><label>灵能刀刃</label>
+    <description>念力凝成刀刃 1 小时：近战伤害 ×1.25、近战冷却 ×0.9。不耗资源，冷却 10 秒。魂刃，游荡者 3 级。</description>
+    <iconPath>LP/Classes/Subclass6/SNBlades</iconPath><displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted><cooldownTicksRange>600</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_SN_BladesBuff</hediff><duration>2500</duration><stat>LP_CunningPower</stat><fixedSeverity>true</fixedSeverity></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SN_PsionicPower</defName><label>灵能之力</label>
+    <description>被动：心灵敏感度 +20%、心智抗性 +20%。魂刃，游荡者 3 级。</description>
+    <iconPath>LP/Classes/Subclass6/SNPower</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_CunningPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_SN_SoulThrow</defName><label>魂刃投掷</label>
+    <description>把魂刃掷向 12 格内一个敌人：10 × 诡术强度 灵能伤害。不耗资源，冷却 6 秒。魂刃，游荡者 7 级。</description>
+    <iconPath>LP/Classes/Subclass6/SNThrow</iconPath><cooldownTicksRange>360</cooldownTicksRange>
+    <verbProperties><range>12</range><warmupTime>0.3</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S6_SoulThrow</effect><power>10</power><stat>LP_CunningPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SN_PsychicVeil</defName><label>灵能帷幕</label>
+    <description>10 秒内移动 ×1.2、近战闪避 +20。不耗资源，冷却 1 小时。魂刃，游荡者 11 级。</description>
+    <iconPath>LP/Classes/Subclass6/SNVeil</iconPath><cooldownTicksRange>2500</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_SN_VeilBuff</hediff><duration>600</duration><stat>LP_CunningPower</stat><fixedSeverity>true</fixedSeverity></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_SN_RendMind</defName><label>撕裂心灵</label>
+    <description>撕裂 12 格内一个敌人的心灵：20 × 诡术强度 灵能伤害，心智抗性没挡住的再眩晕 3 秒。不耗资源，冷却 1 小时。魂刃，游荡者 15 级。</description>
+    <iconPath>LP/Classes/Subclass6/SNRend</iconPath><cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><range>12</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S6_RendMind</effect><power>20</power><stat>LP_CunningPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+</Defs>

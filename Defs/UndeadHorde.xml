@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.140.0 不死生物怪物线「亡灵军团」（Source/UndeadHorde.cs）：噬尸鬼、尸妖、怨灵、吸血鬼四种人形亡灵，加上 1.52.1 的死亡骑士当首领，
+     作为塞伊远征军的一种袭击编组出现（Factions.xml 里 commonality 30 的那组，红袍法师带队）。
+     每种的规则都在它的「之躯」hediff（Hediff_UndeadBody，kind 来自兵种的 LP_UndeadExt）：生成时自动挂上，不吃不睡、不崩溃、死灵免疫。
+     异种型只给外表（灰皮、白皮、墨黑皮、惨白皮），不进玩家的开局选项（EnemyRaces.Always）。 -->
+<Defs>
+  <!-- ===================== 外表 ===================== -->
+  <XenotypeDef>
+    <defName>LP_UH_GhoulXeno</defName><label>噬尸鬼</label>
+    <description>啃食尸体的亡灵：灰皮、瘦骨嶙峋、没有头发。爪子带着让人麻痹的尸毒。</description>
+    <iconPath>LP/Undead/Xeno_Ghoul</iconPath><inheritable>false</inheritable><factionlessGenerationWeight>0</factionlessGenerationWeight><displayPriority>-100</displayPriority>
+    <genes><li>Skin_SlateGray</li><li>Body_Thin</li><li>Hair_BaldOnly</li><li>Beard_NoBeardOnly</li><li>Sterile</li></genes>
+  </XenotypeDef>
+  <XenotypeDef>
+    <defName>LP_UH_WightXeno</defName><label>尸妖</label>
+    <description>保留着生前武艺的亡灵战士：灰白的皮肤、灰白的头发，一击就能抽走活人的生命力。</description>
+    <iconPath>LP/Undead/Xeno_Wight</iconPath><inheritable>false</inheritable><factionlessGenerationWeight>0</factionlessGenerationWeight><displayPriority>-100</displayPriority>
+    <genes><li>Skin_LightGray</li><li>Hair_Gray</li><li>Sterile</li></genes>
+  </XenotypeDef>
+  <XenotypeDef>
+    <defName>LP_UH_WraithXeno</defName><label>怨灵</label>
+    <description>只剩怨恨的游魂：墨黑的身影，半实体，普通刀枪只能伤到它一半。</description>
+    <iconPath>LP/Undead/Xeno_Wraith</iconPath><inheritable>false</inheritable><factionlessGenerationWeight>0</factionlessGenerationWeight><displayPriority>-100</displayPriority>
+    <genes><li>Skin_InkBlack</li><li>Body_Thin</li><li>Hair_BaldOnly</li><li>Beard_NoBeardOnly</li><li>Sterile</li></genes>
+  </XenotypeDef>
+  <XenotypeDef>
+    <defName>LP_UH_VampireXeno</defName><label>吸血鬼</label>
+    <description>惨白的皮肤、乌黑的头发：吸血的亡灵贵族，伤口会自己愈合，怕圣光、火焰和日光。</description>
+    <iconPath>LP/Undead/Xeno_Vampire</iconPath><inheritable>false</inheritable><factionlessGenerationWeight>0</factionlessGenerationWeight><displayPriority>-100</displayPriority>
+    <genes><li>Skin_SheerWhite</li><li>Hair_DarkBlack</li><li>Sterile</li></genes>
+  </XenotypeDef>
+
+  <!-- ===================== 之躯 ===================== -->
+  <HediffDef Name="LP_UndeadBodyBase" Abstract="True">
+    <hediffClass>LichPhylactery.Hediff_UndeadBody</hediffClass>
+    <defaultLabelColor>(0.6,0.7,0.6)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <initialSeverity>1</initialSeverity>
+  </HediffDef>
+  <HediffDef ParentName="LP_UndeadBodyBase">
+    <defName>LP_UH_GhoulBody</defName><label>噬尸鬼之躯</label>
+    <description>啃食尸体的亡灵：不吃不睡、不会崩溃、不怕冷、死灵伤害无效。爪子命中时目标要做体质豁免，失败全身麻痹 3 秒。光耀与火焰伤害 ×1.5。</description>
+    <stages><li>
+      <painFactor>0.5</painFactor><blocksMentalBreaks>true</blocksMentalBreaks>
+      <disablesNeeds><li>Food</li><li>Rest</li><li>Joy</li><li>Beauty</li><li>Comfort</li><li>Outdoors</li><li>RoomSize</li><li MayRequire="Ludeon.RimWorld.Ideology">Indoors</li></disablesNeeds>
+      <damageFactors><LP_Necrotic>0</LP_Necrotic><LP_Radiant>1.5</LP_Radiant><Flame>1.5</Flame><Burn>1.5</Burn></damageFactors>
+      <statFactors><MoveSpeed>1.15</MoveSpeed></statFactors>
+      <statOffsets><ToxicResistance>1</ToxicResistance><ComfyTemperatureMin>-60</ComfyTemperatureMin><ComfyTemperatureMax>40</ComfyTemperatureMax></statOffsets>
+    </li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_UndeadBodyBase">
+    <defName>LP_UH_WightBody</defName><label>尸妖之躯</label>
+    <description>保留着武艺的亡灵战士：不吃不睡、不会崩溃、死灵伤害无效，护甲 +15%。每次武器命中吸走伤害的 30% 治疗自己。光耀与火焰伤害 ×1.5。</description>
+    <stages><li>
+      <painFactor>0.4</painFactor><blocksMentalBreaks>true</blocksMentalBreaks>
+      <disablesNeeds><li>Food</li><li>Rest</li><li>Joy</li><li>Beauty</li><li>Comfort</li><li>Outdoors</li><li>RoomSize</li><li MayRequire="Ludeon.RimWorld.Ideology">Indoors</li></disablesNeeds>
+      <damageFactors><LP_Necrotic>0</LP_Necrotic><LP_Radiant>1.5</LP_Radiant><Flame>1.5</Flame><Burn>1.5</Burn></damageFactors>
+      <statOffsets><ArmorRating_Sharp>0.15</ArmorRating_Sharp><ArmorRating_Blunt>0.15</ArmorRating_Blunt><ToxicResistance>1</ToxicResistance><ComfyTemperatureMin>-60</ComfyTemperatureMin><ComfyTemperatureMax>50</ComfyTemperatureMax></statOffsets>
+    </li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_UndeadBodyBase">
+    <defName>LP_UH_WraithBody</defName><label>怨灵之躯</label>
+    <description>半实体的游魂：不吃不睡、不会崩溃、死灵伤害无效，刀枪箭矢的伤害减半（光耀、火焰、银器、魔法照常），移动 ×1.3。身边 2 格内的活人每 2 秒被抽走 3 点生命，抽来的治疗它自己。</description>
+    <stages><li>
+      <painFactor>0.2</painFactor><blocksMentalBreaks>true</blocksMentalBreaks>
+      <disablesNeeds><li>Food</li><li>Rest</li><li>Joy</li><li>Beauty</li><li>Comfort</li><li>Outdoors</li><li>RoomSize</li><li MayRequire="Ludeon.RimWorld.Ideology">Indoors</li></disablesNeeds>
+      <damageFactors><LP_Necrotic>0</LP_Necrotic><LP_Radiant>1.5</LP_Radiant><Flame>1.5</Flame><Burn>1.5</Burn></damageFactors>
+      <statFactors><MoveSpeed>1.3</MoveSpeed></statFactors>
+      <statOffsets><ToxicResistance>1</ToxicResistance><ComfyTemperatureMin>-100</ComfyTemperatureMin><ComfyTemperatureMax>100</ComfyTemperatureMax></statOffsets>
+    </li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_UndeadBodyBase">
+    <defName>LP_UH_VampireBody</defName><label>吸血鬼之躯</label>
+    <description>吸血的亡灵贵族：不吃不睡、不会崩溃、死灵伤害无效。每 250 刻愈合 4 点伤势，但 10 秒内挨过光耀或火焰就停止；武器命中吸走伤害的 50% 治疗自己。白天站在露天受到的伤害 ×1.5、不再愈合。光耀与火焰伤害 ×1.5。</description>
+    <stages><li>
+      <painFactor>0.5</painFactor><blocksMentalBreaks>true</blocksMentalBreaks>
+      <disablesNeeds><li>Food</li><li>Rest</li><li>Joy</li><li>Beauty</li><li>Comfort</li><li>Outdoors</li><li>RoomSize</li><li MayRequire="Ludeon.RimWorld.Ideology">Indoors</li></disablesNeeds>
+      <damageFactors><LP_Necrotic>0</LP_Necrotic><LP_Radiant>1.5</LP_Radiant><Flame>1.5</Flame><Burn>1.5</Burn></damageFactors>
+      <statFactors><MoveSpeed>1.2</MoveSpeed></statFactors>
+      <statOffsets><MeleeDodgeChance>10</MeleeDodgeChance><ToxicResistance>1</ToxicResistance><ComfyTemperatureMin>-60</ComfyTemperatureMin><ComfyTemperatureMax>50</ComfyTemperatureMax></statOffsets>
+    </li></stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_UH_Paralysis</defName><label>尸毒麻痹</label>
+    <description>噬尸鬼的尸毒：全身麻痹，3 秒后才能动弹。</description>
+    <hediffClass>HediffWithComps</hediffClass><isBad>true</isBad><scenarioCanAdd>false</scenarioCanAdd>
+    <defaultLabelColor>(0.6,0.7,0.6)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>180</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><capMods><li><capacity>Moving</capacity><setMax>0</setMax></li><li><capacity>Manipulation</capacity><setMax>0.05</setMax></li></capMods></li></stages>
+  </HediffDef>
+
+  <!-- ===================== 兵种（塞伊远征军） ===================== -->
+  <PawnKindDef ParentName="LP_FHBase">
+    <defName>LP_UH_Ghoul</defName><label>噬尸鬼</label>
+    <combatPower>55</combatPower>
+    <xenotypeSet><xenotypeChances><LP_UH_GhoulXeno>1</LP_UH_GhoulXeno></xenotypeChances></xenotypeSet>
+    <apparelMoney>0~80</apparelMoney><apparelTags><li>Neolithic</li></apparelTags>
+    <weaponMoney>0</weaponMoney>
+    <forcedHair>Shaved</forcedHair><humanPregnancyChance>0</humanPregnancyChance>
+    <initialResistanceRange>100~100</initialResistanceRange>
+    <skills><li><skill>Melee</skill><range>6~10</range></li></skills>
+    <modExtensions><li Class="LichPhylactery.LP_UndeadExt"><kind>ghoul</kind></li></modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_FHBase">
+    <defName>LP_UH_Wight</defName><label>尸妖</label>
+    <combatPower>120</combatPower>
+    <xenotypeSet><xenotypeChances><LP_UH_WightXeno>1</LP_UH_WightXeno></xenotypeChances></xenotypeSet>
+    <itemQuality>Good</itemQuality><apparelMoney>300~600</apparelMoney><apparelTags><li>Medieval</li></apparelTags>
+    <weaponMoney>200~500</weaponMoney><weaponTags><li>MedievalMeleeDecent</li><li>MedievalMeleeAdvanced</li></weaponTags>
+    <humanPregnancyChance>0</humanPregnancyChance>
+    <initialResistanceRange>100~100</initialResistanceRange>
+    <skills><li><skill>Melee</skill><range>10~15</range></li></skills>
+    <modExtensions><li Class="LichPhylactery.LP_UndeadExt"><kind>wight</kind></li></modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_FHBase">
+    <defName>LP_UH_Wraith</defName><label>怨灵</label>
+    <combatPower>150</combatPower>
+    <xenotypeSet><xenotypeChances><LP_UH_WraithXeno>1</LP_UH_WraithXeno></xenotypeChances></xenotypeSet>
+    <apparelMoney>0</apparelMoney>
+    <weaponMoney>0</weaponMoney>
+    <forcedHair>Shaved</forcedHair><humanPregnancyChance>0</humanPregnancyChance>
+    <initialResistanceRange>100~100</initialResistanceRange>
+    <skills><li><skill>Melee</skill><range>8~14</range></li></skills>
+    <modExtensions><li Class="LichPhylactery.LP_UndeadExt"><kind>wraith</kind></li></modExtensions>
+  </PawnKindDef>
+  <PawnKindDef ParentName="LP_FHBase">
+    <defName>LP_UH_Vampire</defName><label>吸血鬼</label>
+    <combatPower>260</combatPower>
+    <xenotypeSet><xenotypeChances><LP_UH_VampireXeno>1</LP_UH_VampireXeno></xenotypeChances></xenotypeSet>
+    <itemQuality>Excellent</itemQuality><apparelMoney>500~900</apparelMoney><apparelTags><li>Medieval</li></apparelTags>
+    <weaponMoney>300~600</weaponMoney><weaponTags><li>MedievalMeleeAdvanced</li></weaponTags>
+    <humanPregnancyChance>0</humanPregnancyChance>
+    <initialResistanceRange>100~100</initialResistanceRange>
+    <skills><li><skill>Melee</skill><range>12~18</range></li><li><skill>Social</skill><range>8~14</range></li></skills>
+    <modExtensions><li Class="LichPhylactery.LP_UndeadExt"><kind>vampire</kind></li></modExtensions>
+  </PawnKindDef>
+</Defs>

@@ -285,7 +285,7 @@ namespace LichPhylactery {
    // 热修2：可选专长（有完整的属性提升时）。一行一个：图标、名字、效果、前置；不满足的灰色并写原因；“选择”点两次确认。
    featPickY=y;
    if(own && h.FeatPicks>0){
-    GUI.color=Gold;Widgets.Label(new Rect(0f,y,w,24f),h.fighterFeats>0?"可选专长（职业奖励专长，免费，剩 "+h.fighterFeats+" 个"+(h.pendingASI>0?"；之后消耗属性提升，剩 "+h.pendingASI+" 次":"")+"）":"可选专长（消耗一次属性提升，剩 "+h.pendingASI+" 次）");GUI.color=Color.white;y+=26f;
+    GUI.color=Gold;Widgets.Label(new Rect(0f,y,w,24f),(h.fighterFeats>0?"可选专长（职业奖励专长，免费，剩 "+h.fighterFeats+" 个"+(h.pendingASI>0?"；之后消耗属性提升，剩 "+h.pendingASI+" 次":"")+"）":h.pendingASI>0?"可选专长（消耗一次属性提升，剩 "+h.pendingASI+" 次）":"可选专长")+(h.casterFeats>0?"　施法奖励专长 "+h.casterFeats+" 个（只能换法术类专长）":"")); // 1.140.0GUI.color=Color.white;y+=26f;
     foreach(var f in Feats.All){
      if(!Feats2.Visible(f,p))continue; // 1.58.1 种族专长只对对应种族显示
      var row=new Rect(0f,y,w,54f);string why=h.CanTakeFeat(f);bool ok=why==null;
@@ -301,7 +301,7 @@ namespace LichPhylactery {
      Text.Font=GameFont.Small;GUI.color=Color.white;
      {var tr=new Rect(row.x,row.y,row.width-90f,row.height);if(Mouse.IsOver(tr))TooltipHandler.TipRegion(tr,f.LabelCap+"\n\n"+f.description+"\n\n前置："+f.PrereqText()+(ok?"":"\n不能选："+why));}
      string key=FeatKey(f);var b=new Rect(row.xMax-84f,row.y+13f,80f,28f);
-     if(ok && armed==key)TooltipHandler.TipRegion(b,"再点一次确认："+(h.fighterFeats>0?"用一个职业奖励专长":"消耗一次属性提升")+"换“"+f.label+"”。");
+     if(ok && armed==key)TooltipHandler.TipRegion(b,"再点一次确认："+(h.casterFeats>0 && CasterFeats.IsCasterFeat(f)?"用一个施法奖励专长":h.fighterFeats>0?"用一个职业奖励专长":"消耗一次属性提升")+"换“"+f.label+"”。");
      if(Widgets.ButtonText(b,h.HasFeat(f)?"已有":armed==key?"确定？":"选择",active:ok) && ok)PickFeat(h,f,ref armed);
      y+=56f;
     }
@@ -482,6 +482,7 @@ namespace LichPhylactery {
    if(h.buyOpen)parts.Add("初始属性分配"); // 1.76.0
    if(h.AvailablePoints>0)parts.Add("属性点 "+h.AvailablePoints);
    if(h.fighterFeats>0)parts.Add("职业奖励专长 "+h.fighterFeats); // 2026-10-31
+   if(h.casterFeats>0)parts.Add("施法奖励专长 "+h.casterFeats); // 1.140.0
    if(h.boonPoints>0)parts.Add("史诗恩赐 "+h.boonPoints);
    if(h.legendPoints>0)parts.Add("传奇属性点 "+h.legendPoints);
    if(ClassSystem.Points(h)>0)parts.Add("职业点 "+ClassSystem.Points(h)); // 1.72.0

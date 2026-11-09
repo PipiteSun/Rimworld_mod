@@ -254,6 +254,7 @@ namespace LichPhylactery {
    y=IntRow(y,w,"属性提升",h.pendingASI,v=>{h.pendingASI=v;h.Dirty();},0,99,"每次 "+h.ASIPoints+" 点，或换一个专长");
    y=IntRow(y,w,"拆开剩余的点",h.asiLeft,v=>{h.asiLeft=v;h.Dirty();},0,99);
    y=IntRow(y,w,"职业奖励专长",h.fighterFeats,v=>{h.fighterFeats=v;h.Dirty();},0,99);
+   y=IntRow(y,w,"施法奖励专长",h.casterFeats,v=>{h.casterFeats=v;h.Dirty();},0,99); // 1.140.0
    y=IntRow(y,w,"史诗恩赐点",h.boonPoints,v=>{h.boonPoints=v;h.Dirty();},0,99);
    y=IntRow(y,w,"传奇属性点",h.legendPoints,v=>{h.legendPoints=v;h.Dirty();},0,999);
    if(h.classes==null)h.classes=new ClassData();

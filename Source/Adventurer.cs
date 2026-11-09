@@ -522,20 +522,24 @@ namespace LichPhylactery {
   // 2026-10-31 热修（照 3.5 战士奖励专长）：fighterFeats = 待选的免费专长（ClassSystem.SyncFighterFeats 发放），fighterFeatGranted = 已按战士等级发过的个数（水位线）。选专长先用免费的。
   public int fighterFeats,fighterFeatGranted;
   public int monkFeatGranted,paladinFeatGranted; // 2026-11-03 热修：武僧、圣武士 1、2 级的免费专长也进 fighterFeats，各自记水位线
-  public int FeatPicks=>pendingASI+fighterFeats;
+  public int casterFeats,casterFeatGranted; // 1.140.0 施法奖励专长（只能换法术类专长，CasterFeats）
+  public int FeatPicks=>pendingASI+fighterFeats+casterFeats;
+  public int FreePicksFor(LP_FeatDef f)=>pendingASI+fighterFeats+(CasterFeats.IsCasterFeat(f)?casterFeats:0);
   public string CanTakeFeat(LP_FeatDef f){
    if(f==null)return "没有这个专长";if(HasFeat(f))return "已经有了";if(FeatPicks<=0)return "没有可用的属性提升或职业奖励专长";
+   if(FreePicksFor(f)<=0)return "只剩施法奖励专长：只能换法术类专长"; // 1.140.0
    return f.Worker.Unmet(pawn,this);
   }
-  public bool TakeFeat(LP_FeatDef f){if(CanTakeFeat(f)!=null)return false;if(fighterFeats>0)fighterFeats--;else pendingASI--;AddFeat(f);return true;}
+  public bool TakeFeat(LP_FeatDef f){if(CanTakeFeat(f)!=null)return false;if(casterFeats>0 && CasterFeats.IsCasterFeat(f))casterFeats--;else if(fighterFeats>0)fighterFeats--;else pendingASI--;AddFeat(f);return true;} // 1.140.0 法术类专长先用施法奖励
   public Dictionary<string,int> featScore=new Dictionary<string,int>(); // 1.67.0 专长附带的 +1 加在哪项属性
   public void AddFeat(LP_FeatDef f){if(f==null || HasFeat(f))return;feats.Add(f);Feats.AssignScore(this,f);f.Worker.Gained(pawn,this);HeroTraits.Invalidate(pawn);Feats2.Sync(pawn);Dirty();} // 1.58.1：专长也进 1.58 的快速返回缓存
   public void RemoveFeat(LP_FeatDef f){if(!HasFeat(f))return;feats.Remove(f);featUsed.Remove(f.defName);featScore.Remove(f.defName);if(originFeat==f)originFeat=null;f.Worker.Lost(pawn,this);HeroTraits.Invalidate(pawn);Feats2.Sync(pawn);Dirty();}
   // 敌人（非玩家阵营）的属性提升：按兵种类别随机一个满足前置的专长。
   public bool TryEnemyFeat(bool bonus=false){
    var roles=Feats.EnemyRoles(pawn);
-   var pick=DefDatabase<LP_FeatDef>.AllDefsListForReading.Where(f=>!HasFeat(f) && f.enemyTags!=null && f.enemyTags.Any(t=>t=="any" || roles.Contains(t)) && f.Worker.Unmet(pawn,this)==null).ToList();
-   if(pick.Count==0)return false;if(bonus)fighterFeats--;else pendingASI--;AddFeat(pick.RandomElement());return true; // bonus：用战士奖励专长
+   bool caster=bonus && fighterFeats<=0 && casterFeats>0; // 1.140.0 施法奖励专长：只在法术类里挑
+   var pick=DefDatabase<LP_FeatDef>.AllDefsListForReading.Where(f=>!HasFeat(f) && f.enemyTags!=null && f.enemyTags.Any(t=>t=="any" || roles.Contains(t)) && (!caster || CasterFeats.IsCasterFeat(f)) && f.Worker.Unmet(pawn,this)==null).ToList();
+   if(pick.Count==0){if(caster)casterFeats=0;return false;}if(caster)casterFeats--;else if(bonus)fighterFeats--;else pendingASI--;AddFeat(pick.RandomElement());return true; // bonus：用战士奖励专长
   }
 
   // 属性提升：second<0 时 first +2（不超过该项上限，平时 20）；否则两项各 +1。
@@ -773,6 +777,7 @@ namespace LichPhylactery {
    if(holdUntil>0 && GenTicks.TicksGame>=holdUntil)Exalted.HoldExpired(this); // 1.59.0 硬撑到期：重新判定倒地
    if((syncAcc+=delta)<250)return;syncAcc=0;
    Styles.Refresh(this); // 1.53.0 战斗风格的掩码与条件状态（没有风格的人直接返回）
+   if(boons.Count>0)Boons2.Tick250(this); // 1.140.0 恢复之恩
    ClassSystem.Tick250(this); // 1.72.0 职业资源、物理职业缓存、武僧架势、圣武士灵光（没有职业的人直接返回）
    if(pawn!=null)Exalted.Tick(this); // 1.59.0 超凡：补算掩码、发信、光环 / 显形 / 封顶（掩码为 0 时只比较一次）
    if(pawn!=null && !pawn.Dead)CombatGifts.Tick250(this); // 1.66.0 狂暴之血阈值、再生之体长回肢体（没有武艺天赋的人一次缓存查找）
@@ -800,6 +805,7 @@ namespace LichPhylactery {
    Scribe_Values.Look(ref asiLeft,"lpAsiLeft");
    Scribe_Values.Look(ref fighterFeats,"lpFighterFeats");Scribe_Values.Look(ref fighterFeatGranted,"lpFighterFeatGranted"); // 2026-10-31 战士奖励专长
    Scribe_Values.Look(ref monkFeatGranted,"lpMonkFeatGranted");Scribe_Values.Look(ref paladinFeatGranted,"lpPaladinFeatGranted"); // 2026-11-03
+   Scribe_Values.Look(ref casterFeats,"lpCasterFeats");Scribe_Values.Look(ref casterFeatGranted,"lpCasterFeatGranted"); // 1.140.0
    Scribe_Values.Look(ref vpeGranted,"lpVpeGranted");Scribe_Values.Look(ref vpeBanked,"lpVpeBanked");
    var list=scores?.ToList();Scribe_Collections.Look(ref list,"lpScores",LookMode.Value);
    var bb=buyBase?.ToList();Scribe_Collections.Look(ref bb,"lpBuyBase",LookMode.Value);Scribe_Values.Look(ref buyOpen,"lpBuyOpen");Scribe_Values.Look(ref buyNoted,"lpBuyNoted"); // 1.76.0
@@ -859,7 +865,7 @@ namespace LichPhylactery {
    Adventurer.appliedScale=Adventurer.EffectScale;Legend.appliedOn=Legend.On;Adventurer.appliedAffinity=Affinity.On;
    Styles.ResetCaches(); // 1.53.0：静态缓存不跨存档，250 刻内由各人的冒险者状态重建
    Exalted.Reset(); // 1.59.0：超凡掩码登记同上
-   Feats.ResetCaches();Legendary.painWindow.Clear();ClassLegendary.OathHolders.Clear(); // 2026-11-04 审计：这几张静态表以前不清，跨存档攥着旧小人；誓约名单 250 刻内由 Passives 重建
+   Feats.ResetCaches();Feats3.ResetCaches();Boons2.ResetCaches();Legendary.painWindow.Clear();ClassLegendary.OathHolders.Clear(); // 2026-11-04 审计：这几张静态表以前不清，跨存档攥着旧小人；誓约名单 250 刻内由 Passives 重建
    TryBackfill();
   }
   // 只补一次：读档时给还没有冒险者状态的人补上（之后靠生成、13 岁生日）。pawns 为空时处理所有活着的人；检查只传测试角色。

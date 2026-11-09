@@ -55,7 +55,7 @@ namespace LichPhylactery {
    return Mathf.Min(b,HeroTraits.TypeCap);
   }
   public static float OutFactor(Pawn a,HeroInfo i,Pawn v,DamageInfo d){
-   float ff=Feats2.OutFactor(a,i,v,d); // 1.58.1 酒馆斗殴者（含社交斗殴）、元素使
+   float ff=Feats2.OutFactor(a,i,v,d)*Feats3.OutFactor(a,i,v,d); // 1.140.0 冲锋者、擒抱者 // 1.58.1 酒馆斗殴者（含社交斗殴）、元素使
    if(!a.HostileTo(v))return ff;
    float f=ff*(1f+TypeBonus(a,i,v,Melee(d)));
    if(i.element>0 && !extra && Element(d.Def)==i.element && Spell(d))f*=ElementSpell;
@@ -226,7 +226,7 @@ namespace LichPhylactery {
    if(!(__instance is Pawn v) || !(dinfo.Instigator is Pawn a) || a==v)return;
    var ai=HeroTraits.Info(a);var vi=HeroTraits.Info(v);
    if(ai==null && vi==null || __result==null || __result.totalDamageDealt<=0f)return;
-   if(ai!=null){HeroCombat.AfterHit(v,a,ai,dinfo);Feats2.AfterHit(v,a,ai,dinfo);}
+   if(ai!=null){HeroCombat.AfterHit(v,a,ai,dinfo);Feats2.AfterHit(v,a,ai,dinfo);Feats3.AfterHit(v,a,ai,dinfo);} // 1.140.0 盾牌大师、冲锋者、擒抱者、长柄武器大师
    if(vi!=null && !v.Dead){HeroCombat.Reflect(v,vi,a);Feats2.Struck(v,vi,a);}
   }
  }

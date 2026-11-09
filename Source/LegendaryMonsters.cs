@@ -542,6 +542,7 @@ namespace LichPhylactery {
    l.CheckboxLabeled("　眼魔巢穴",ref s.beholderLair,"击杀幽暗殖巢的夺心魔首领后 20% 显露（或同盟商队卖情报）。");
    l.CheckboxLabeled("　无尽墓穴（半巫妖）",ref s.demilichTomb,"殖民地最高冒险者等级 ≥24 时，同盟商队会卖墓穴情报。");
    l.CheckboxLabeled("　死亡骑士",ref s.deathKnightThay,"塞伊远征军 ≥5000 点的袭击 10% 由死亡骑士带队；拉洛克古墓里 50% 多一名死亡骑士守卫。");
+   l.CheckboxLabeled("　亡灵军团",ref s.undeadHorde,"1.140.0：塞伊远征军的袭击有一种「亡灵军团」编组（约 1/4）：红袍死灵法师带着噬尸鬼、尸妖、怨灵、吸血鬼。关闭后这一组里的亡灵换成普通远征军。"); // 1.140.0
   }
  }
 }

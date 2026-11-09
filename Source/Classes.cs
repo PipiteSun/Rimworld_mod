@@ -228,8 +228,8 @@ namespace LichPhylactery {
   public static readonly int[] MonkPaladinFeatLevels={1,2};
   public static int FighterFeatsDue(int fighterLevel)=>FeatsDue(FighterFeatLevels,fighterLevel);
   public static int FeatsDue(int[] levels,int classLevel){int n=0;foreach(int l in levels)if(l<=classLevel)n++;return n;}
-  public static bool BonusFeatsPending(Hediff_Adventurer h)=>h.fighterFeatGranted<FighterFeatLevels.Length || h.monkFeatGranted<MonkPaladinFeatLevels.Length || h.paladinFeatGranted<MonkPaladinFeatLevels.Length;
-  public static int[] BonusFeatLevels(LP_ClassDef c)=>c==null?null:c==Fighter?FighterFeatLevels:c==Monk || c==Paladin?MonkPaladinFeatLevels:null;
+  public static bool BonusFeatsPending(Hediff_Adventurer h)=>h.fighterFeatGranted<FighterFeatLevels.Length || h.monkFeatGranted<MonkPaladinFeatLevels.Length || h.paladinFeatGranted<MonkPaladinFeatLevels.Length || CasterFeats.Pending(h); // 1.140.0
+  public static int[] BonusFeatLevels(LP_ClassDef c)=>c==null?null:c==Fighter?FighterFeatLevels:c==Monk || c==Paladin?MonkPaladinFeatLevels:c.caster?CasterFeats.Levels:null; // 1.140.0 施法职业 1/5/10/15
   static int GrantFrom(Hediff_Adventurer h,LP_ClassDef c,int[] levels,ref int granted,List<string> who){
    if(c==null)return 0;int due=FeatsDue(levels,Level(h,c));if(due<=granted)return 0;
    int gave=due-granted;granted=due;who.Add(c.label+" "+Level(h,c)+" 级");return gave;
@@ -238,12 +238,13 @@ namespace LichPhylactery {
    if(h==null)return 0;
    var who=new List<string>();
    int gave=GrantFrom(h,Fighter,FighterFeatLevels,ref h.fighterFeatGranted,who)+GrantFrom(h,Monk,MonkPaladinFeatLevels,ref h.monkFeatGranted,who)+GrantFrom(h,Paladin,MonkPaladinFeatLevels,ref h.paladinFeatGranted,who);
-   if(gave==0)return 0;
-   h.fighterFeats+=gave;
+   int cf=CasterFeats.Grant(h,who); // 1.140.0 施法奖励专长（另一个池，只能换法术类专长）
+   if(gave==0 && cf==0)return 0;
+   h.fighterFeats+=gave;gave+=cf;
    var p=h.pawn;
-   if(p==null || p.Faction==null || !p.Faction.IsPlayer){while(h.fighterFeats>0 && h.TryEnemyFeat(true)){}}
+   if(p==null || p.Faction==null || !p.Faction.IsPlayer){while(h.fighterFeats>0 && h.TryEnemyFeat(true)){}while(h.casterFeats>0 && h.TryEnemyFeat(true)){}}
    else if(!p.Dead && !Adventurer.TestSuppressed){
-    string text=p.LabelShort+"（"+string.Join("、",who)+"）获得 "+gave+" 个职业奖励专长：免费选一个专长，不占属性提升。战士 1、2 级和之后每个偶数级各 1 个；武僧、圣武士 1、2 级各 1 个。\n\n在“冒险者”分页的“可选专长”里选择。";
+    string text=p.LabelShort+"（"+string.Join("、",who)+"）获得 "+gave+" 个职业奖励专长：免费选一个专长，不占属性提升。战士 1、2 级和之后每个偶数级各 1 个；武僧、圣武士 1、2 级各 1 个。"+(cf>0?"\n\n"+CasterFeats.Text:"")+"\n\n在“冒险者”分页的“可选专长”里选择。";
     if(letter)Find.LetterStack.ReceiveLetter("职业奖励专长",text,LetterDefOf.PositiveEvent,p);
     else Messages.Message(p.LabelShort+"获得 "+gave+" 个职业奖励专长（在冒险者分页选择）",p,MessageTypeDefOf.PositiveEvent,false);
    }
@@ -364,6 +365,7 @@ namespace LichPhylactery {
    Subclass3.Tick250(h); // 1.106.0 暗影宗、散打宗
    Subclass4.Tick250(h); // 1.111.0 炼金师、装甲师、堡垒工程师
    Subclass5.Tick250(h); // 1.135.0 术士子职业补完
+   Subclass6.Tick250(h); // 1.140.0 热门子职业 15 个
    Subclass2.Tick250(h); // 1.103.0 第二批子职业的被动、钢铁卫士、誓言之力
    if((d.syncAcc+=1)>=4){d.syncAcc=0;Sync(h);}
    Martial.Refresh(p);

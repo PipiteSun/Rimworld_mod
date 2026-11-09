@@ -10,7 +10,7 @@ namespace LichPhylactery {
  // 只影响建角下拉（PactStart.Choosable），敌人生成照旧读派系 / 兵种的异种表。契约种族另由 PactStart 处理。
  public static class EnemyRaces {
   // Peter：狂猎（骑手、首领）只当敌人，连立约者开局也不列
-  public static readonly HashSet<string> Always=new HashSet<string>{"LP_WildHunter","LP_WildHuntLord"};
+  public static readonly HashSet<string> Always=new HashSet<string>{"LP_WildHunter","LP_WildHuntLord","LP_UH_GhoulXeno","LP_UH_WightXeno","LP_UH_WraithXeno","LP_UH_VampireXeno"}; // 1.140.0 亡灵军团的四种外表
   static Dictionary<XenotypeDef,string> why; // 敌人专用 → 出现的派系；不在表里的都可选
   public static bool TestDisable; // 测试用：关掉过滤
   static List<XenotypeChance> Chances(XenotypeSet s)=>s==null?null:Traverse.Create(s).Field("xenotypeChances").GetValue<List<XenotypeChance>>();

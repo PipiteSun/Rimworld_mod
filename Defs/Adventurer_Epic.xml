@@ -48,6 +48,32 @@
     <description>每击倒或击杀一个敌人，自身的每处伤口各治疗该部位生命的 5%。</description>
     <order>6</order>
   </LichPhylactery.LP_EpicBoonDef>
+  <!-- 1.140.0 照 5e 2024 补的四个史诗恩赐（规则在 Source/AdventurerFeats3.cs 的 Boons2） -->
+  <LichPhylactery.LP_EpicBoonDef>
+    <defName>LP_Boon_Resistance</defName>
+    <label>能量抗性之恩</label>
+    <description>火焰、寒冷、闪电、酸蚀、光耀、死灵伤害减半。</description>
+    <order>7</order>
+  </LichPhylactery.LP_EpicBoonDef>
+  <LichPhylactery.LP_EpicBoonDef>
+    <defName>LP_Boon_Recovery</defName>
+    <label>恢复之恩</label>
+    <description>每天第一次伤势总量超过 30 时，立刻治好一半伤口并止血；平时每 250 刻多治疗 1 点伤势。</description>
+    <order>8</order>
+  </LichPhylactery.LP_EpicBoonDef>
+  <LichPhylactery.LP_EpicBoonDef>
+    <defName>LP_Boon_Offense</defName>
+    <label>不可抗之攻</label>
+    <description>武器攻击的护甲穿透 +50%；近战伤害 ×1.1。</description>
+    <order>9</order>
+    <statFactors><MeleeDamageFactor>1.1</MeleeDamageFactor></statFactors>
+  </LichPhylactery.LP_EpicBoonDef>
+  <LichPhylactery.LP_EpicBoonDef>
+    <defName>LP_Boon_SpellRecall</defName>
+    <label>法术追忆之恩</label>
+    <description>职业能力的资源消耗 −1（最少 1），冷却 ×0.8。</description>
+    <order>10</order>
+  </LichPhylactery.LP_EpicBoonDef>
 
   <HediffDef>
     <defName>LP_BoonFateDowned</defName>

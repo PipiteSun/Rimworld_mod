@@ -15,7 +15,7 @@ namespace LichPhylactery {
    s.adventurerKillMilestones=1;s.adventurerNemesis=1;
    try{
     var torsoOf=(Func<Pawn,BodyPartRecord>)(p=>p.RaceProps.body.AllParts.First(x=>x.def.defName=="Torso"));
-    Check(Epic.Boons.Count()==6 && Epic.Fate!=null && Epic.Might!=null && Epic.Combat!=null && !Epic.Immortal.enemy && DefDatabase<IncidentDef>.GetNamedSilentFail("LP_NemesisChampion")?.Worker is IncidentWorker_NemesisChampion && Items.Hediff("LP_BoonFateDowned")!=null,"6 epic boon defs (immortal not for enemies), nemesis incident and fate hediff");
+    Check(Epic.Boons.Count()==10 && Epic.Fate!=null && Epic.Might!=null && Epic.Combat!=null && !Epic.Immortal.enemy && DefDatabase<IncidentDef>.GetNamedSilentFail("LP_NemesisChampion")?.Worker is IncidentWorker_NemesisChampion && Items.Hediff("LP_BoonFateDowned")!=null,"10 epic boon defs (1.140.0 +4) (immortal not for enemies), nemesis incident and fate hediff");
     // 1. 19 级恩赐点、选择、旧存档补点、不朽
     var a=AdvPawn();var h=Adventurer.Get(a);
     Adventurer.GainXP(a,Adventurer.XpTable[18]-h.xp);

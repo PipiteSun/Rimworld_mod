@@ -296,6 +296,18 @@
           <LP_FH_DrowBlade>2.5</LP_FH_DrowBlade>
         </options>
       </li>
+      <!-- 1.140.0 亡灵军团：红袍死灵法师带着噬尸鬼、尸妖、怨灵、吸血鬼来袭（Defs/UndeadHorde.xml）；设置里关掉「亡灵军团」时代码把亡灵换成普通远征军。 -->
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>30</commonality>
+        <options>
+          <LP_FH_RedWizard>3</LP_FH_RedWizard>
+          <LP_UH_Ghoul>12</LP_UH_Ghoul>
+          <LP_UH_Wight>5</LP_UH_Wight>
+          <LP_UH_Wraith>2</LP_UH_Wraith>
+          <LP_UH_Vampire>1</LP_UH_Vampire>
+        </options>
+      </li>
       <li>
         <kindDef>Peaceful</kindDef>
         <options>

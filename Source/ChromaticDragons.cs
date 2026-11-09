@@ -711,6 +711,7 @@ namespace LichPhylactery {
   public int dragonStrength=100,dragonIsekaiHealth=200,dragonIsekaiDamage=150,dragonAncientLevel=28;
   void ExposeChromatic(){
    ExposeMonsters(); // 1.52.1 传奇怪
+   ExposeUndeadHorde(); // 1.140.0 亡灵军团
    Scribe_Values.Look(ref chromaticDragons,"lpChromaticDragons",true);Scribe_Values.Look(ref dragonExtortion,"lpDragonExtortion",true);Scribe_Values.Look(ref dragonRaid,"lpDragonRaid",true);
    Scribe_Values.Look(ref dragonLair,"lpDragonLair",true);Scribe_Values.Look(ref dragonFlyoverLink,"lpDragonFlyoverLink",true);
    Scribe_Values.Look(ref dragonStrength,"lpDragonStrength",100);Scribe_Values.Look(ref dragonIsekaiHealth,"lpDragonIsekaiHealth",200);Scribe_Values.Look(ref dragonIsekaiDamage,"lpDragonIsekaiDamage",150);Scribe_Values.Look(ref dragonAncientLevel,"lpDragonAncientLevel",28);

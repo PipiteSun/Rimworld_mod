@@ -23,8 +23,8 @@ namespace LichPhylactery {
    var made=new List<Thing>();
    try{
     // 1. 定义：9 个子职业（每个职业 3 个，徽记，能力在 3/7/11/15）、3 组通用（7/11）；45 个能力（Ability_Class、图标、所属职业）。
-    var subs=ClassSubclass.All.Where(s=>s.parent==Barb || s.parent==Rang || s.parent==Rog).ToList();/* 邪术师的宗主在 CheckWarlock */var gens=subs.Where(s=>s.general).ToList();var opts=subs.Where(s=>!s.general).ToList();var abs=subs.SelectMany(s=>s.abilities).ToList();
-    Check(gens.Count==3 && opts.Count==9 && new[]{Barb,Rang,Rog}.All(c=>ClassSubclass.Options(c).Count()==3 && ClassSubclass.General(c)!=null)
+    var subs=ClassSubclass.All.Where(s=>(s.parent==Barb || s.parent==Rang || s.parent==Rog) && !Subclass6.Names.Contains(s.defName)).ToList();/* 1.140.0 风流剑客、魂刃另在 Subclass6 里查；邪术师的宗主在 CheckWarlock */var gens=subs.Where(s=>s.general).ToList();var opts=subs.Where(s=>!s.general).ToList();var abs=subs.SelectMany(s=>s.abilities).ToList();
+    Check(gens.Count==3 && opts.Count==9 && new[]{Barb,Rang,Rog}.All(c=>ClassSubclass.Options(c).Count(x=>!Subclass6.Names.Contains(x.defName))==3 && ClassSubclass.General(c)!=null)
      && opts.All(s=>s.Emblem!=null && s.Emblem!=s.parent.Background && s.abilities.Select(e=>e.level).Distinct().OrderBy(x=>x).SequenceEqual(new[]{3,7,11,15}))
      && gens.All(s=>s.abilities.Select(e=>e.level).OrderBy(x=>x).SequenceEqual(new[]{7,11})) && abs.Count==45 && abs.Select(e=>e.ability).Distinct().Count()==45
      && abs.All(e=>e.ability.abilityClass==typeof(Ability_Class) && e.ability.uiIcon!=null && e.ability.uiIcon!=BaseContent.BadTex && ClassSystem.ClassOf(e.ability)==ClassSubclass.SubOf(e.ability).parent)

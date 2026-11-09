@@ -42,6 +42,7 @@ namespace LichPhylactery {
      case "LP_Feat_ElvenAccuracy":i.elven=true;break;case "LP_Feat_DragonFear":i.dragonFear=true;break;case "LP_Feat_PhylacteryOath":i.oath=true;break;
      case "LP_Feat_BountifulLuck":i.bountiful=true;break;case "LP_Feat_DwarvenFortitude":i.dwarven=true;break;
      case "LP_Feat_Slasher":i.weaponType=1;break;case "LP_Feat_Piercer":i.weaponType=2;break;case "LP_Feat_Crusher":i.weaponType=3;break;case "LP_Feat_MageSlayer":i.mageSlayer=true;break;
+     default:i.f3|=Feats3.Flag(f.defName);break; // 1.140.0 战斗专长
     }
     if(f.element>0)i.adept=f.element;
    }

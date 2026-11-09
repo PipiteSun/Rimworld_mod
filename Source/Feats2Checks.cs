@@ -18,7 +18,7 @@ namespace LichPhylactery {
    try{
     // 1. 定义：27 个新专长（通用 18 个 def = 13 种，元素使 4 支、坚毅心智 3 支），种族 9；图标都在；元素使 / 坚毅心智同组。1.67.0 再加 8 个（斩 / 刺 / 碎同组）= 35
     var news=DefDatabase<LP_FeatDef>.AllDefsListForReading.Where(f=>Feats2.Is(f) && !f.ClassFeat).ToList(); // 1.88.0 职业专属专长另在 -Only ClassFeats
-    Check(news.Count==35 && news.Count(f=>f.exclusiveGroup=="WeaponType")==3 && news.Count(f=>f.Racial)==9 && news.All(f=>f.Icon!=BaseContent.BadTex) && news.Count(f=>f.exclusiveGroup=="ElementalAdept")==4 && news.Count(f=>f.exclusiveGroup=="Resilient")==3 && Feats2.OriginPool.All(n=>FD(n)!=null) && new Settings().originFeats,"35 feats from 1.58.1 / 1.67.0 (26 general defs, 9 racial) with icons; adept / resilient variants are exclusive groups; origin pool and setting default on (got "+news.Count+", bad icons "+news.Count(f=>f.Icon==BaseContent.BadTex)+")");
+    Check(news.Count==41 && news.Count(f=>f.exclusiveGroup=="WeaponType")==3 && news.Count(f=>f.Racial)==9 && news.All(f=>f.Icon!=BaseContent.BadTex) && news.Count(f=>f.exclusiveGroup=="ElementalAdept")==4 && news.Count(f=>f.exclusiveGroup=="Resilient")==3 && Feats2.OriginPool.All(n=>FD(n)!=null) && new Settings().originFeats,"41 feats from 1.58.1 / 1.67.0 / 1.140.0 (32 general defs, 9 racial) with icons; adept / resilient variants are exclusive groups; origin pool and setting default on (got "+news.Count+", bad icons "+news.Count(f=>f.Icon==BaseContent.BadTex)+")");
     // 2. 种族专长只对对应种族可选（分页也只显示给对应种族）；巫妖专长看巫妖基因
     var human=HtPawn();var hh=F2Adv(human);hh.pendingASI=3;var dwarf=HtPawn("LP_HillDwarf");var hd=F2Adv(dwarf);hd.pendingASI=1;
     var dwf=FD("LP_Feat_DwarvenFortitude");

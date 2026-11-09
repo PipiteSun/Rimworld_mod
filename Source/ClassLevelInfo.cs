@@ -110,7 +110,7 @@ namespace LichPhylactery {
    var gen=ClassSubclass.General(c);if(gen!=null)foreach(var e in gen.abilities)if(e.level==level)l.Add(e.ability.label);
    if(c.martial && c!=ClassMartial2.Rogue && level==Martial.TierLevels[0])l.Add("额外攻击 第 1 档"+(c==ClassSystem.Monk?"（徒手）":""));
    if(c==ClassSystem.Fighter){if(level==Martial.TierLevels[1])l.Add("额外攻击 第 2 档");if(level==Martial.TierLevels[2])l.Add("额外攻击 第 3 档");}
-   var bonusFeat=ClassSystem.BonusFeatLevels(c);if(bonusFeat!=null && bonusFeat.Contains(level))l.Add("职业奖励专长"); // 2026-11-03 含武僧、圣武士 1、2 级
+   var bonusFeat=ClassSystem.BonusFeatLevels(c);if(bonusFeat!=null && bonusFeat.Contains(level))l.Add(c.caster?"施法奖励专长（法术类）":"职业奖励专长"); // 2026-11-03 含武僧、圣武士 1、2 级
    if(c==Warlock.Class && level>1 && Warlock.Beams(level)>Warlock.Beams(level-1))l.Add("魔能爆 "+Warlock.Beams(level)+" 道光束");
    if(c==ClassMartial2.Ranger && (level==1 || level==ClassMartial2.SecondFoeLevel))l.Add("宿敌 "+(level==1?1:2)+" 种");
    return l;

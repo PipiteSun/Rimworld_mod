@@ -36,6 +36,7 @@ namespace LichPhylactery {
   // 1.58.1 专长（冒险者状态里的），同样走这个缓存：专长变动时失效。
   public bool brawler,crafter,observant,musician,ritual,magma,bloodRegen,infernal,elven,dragonFear,oath,bountiful,dwarven,poisoner;public int adept;
   public bool gwm,sharp,mageSlayer;public int weaponType; // 1.67.0 巨武器大师 / 神射手伤害、斩刺碎（1/2/3）、法师杀手
+  public int f3; // 1.140.0 战斗专长位（Feats3.FDual…）
   public bool Destiny=>prophesied || pact>0 || weave || champion>0;
   public bool Gold=>power!=null && HeroTraits.IsGold(power);
   public int Stage=>rec?.stage??0;

@@ -15,7 +15,7 @@ namespace LichPhylactery {
    var made=new List<Pawn>();
    try{
     // 1. 定义：7 个职业能力（1.87.0：1/3/5/7/11/13/15，秘法奥秘 11 / 13）、3 个宗主各 5 个（1/3/7/11/15）、2 个传奇，都有图标；契约强度；契约法力 2 + 等级/4。
-    var subs=ClassSubclass.Options(WL).ToList();var abs=WL.abilities.Select(e=>e.ability).Concat(subs.SelectMany(s=>s.abilities.Select(e=>e.ability))).Concat(WL.legendary).ToList();
+    var subs=ClassSubclass.Options(WL).Where(s=>!Subclass6.Names.Contains(s.defName)).ToList();/* 1.140.0 咒剑、天界另在 -Only Subclass6 */var abs=WL.abilities.Select(e=>e.ability).Concat(subs.SelectMany(s=>s.abilities.Select(e=>e.ability))).Concat(WL.legendary).ToList();
     Check(WL!=null && WL.resource==ClassResource.Pact && WL.caster && WL.subclassLevel==1 && WL.abilities.Select(e=>e.level).SequenceEqual(new[]{1,3,5,7,11,13,15}) && subs.Count==3
      && subs.All(s=>s.Emblem!=null && s.Emblem!=WL.Background && s.abilities.Select(e=>e.level).SequenceEqual(new[]{1,3,7,11,15}) && s.choices.Count==2) && abs.Count==24 && abs.Distinct().Count()==24
      && abs.All(a=>a.abilityClass==typeof(Ability_Class) && a.uiIcon!=null && a.uiIcon!=BaseContent.BadTex) && WL.Background!=null && DefDatabase<StatDef>.GetNamed("LP_PactPower").parts.Any(x=>x is StatPart_ClassPower)

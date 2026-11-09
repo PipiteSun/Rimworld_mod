@@ -35,7 +35,7 @@ namespace LichPhylactery {
    ClassSystem.Pay(pawn,def,Props);
    Spellbook.BeginCast(this); // 1.128.0 升环（Pay 已经按升环扣了法力）
    bool ok;try{ok=base.Activate(target,dest);}finally{Spellbook.EndCast();}
-   if(ok){ClassCasters.AfterCast(this);ClassLegendary.AfterCast(this);ClassSubclass.AfterCast(this);Subclass2.AfterCast(this);Subclass3.AfterCast(this);LakeArcana.AfterCast(this,target);Subclass5.AfterCast(this,target);Bard.AfterCast(this);Spellbook.AfterCast(this);CasterSpells.AfterCast(this);} // 1.100.0 秘传；1.123.0 吟游诗人（战斗魔法、施法现形）；1.128.0 隐形术施法现形
+   if(ok){ClassCasters.AfterCast(this);ClassLegendary.AfterCast(this);ClassSubclass.AfterCast(this);Subclass2.AfterCast(this);Subclass3.AfterCast(this);LakeArcana.AfterCast(this,target);Subclass5.AfterCast(this,target);Subclass6.AfterCast(this,target);Bard.AfterCast(this);Spellbook.AfterCast(this);CasterSpells.AfterCast(this);} // 1.100.0 秘传；1.123.0 吟游诗人（战斗魔法、施法现形）；1.128.0 隐形术施法现形
    return ok;
   }
   public override string Tooltip{get{
@@ -61,7 +61,7 @@ namespace LichPhylactery {
  public static class ClassEffects {
   public static readonly Color MartialColor=new Color(.95f,.6f,.4f);
   public static float Strength(Pawn p,CompProperties_ClassEffect e)=>ClassSystem.Strength(p,e);
-  public static float Power(Pawn p,CompProperties_ClassEffect e)=>e.power*Strength(p,e)*(e.sorcery && Items.Has(p,"LP_Empowered")?1.5f:1f)*ClassLegendary.PowerFactor(p,e)*Warlock.PowerFactor(p,e)*LakeArcana.PowerFactor(p,e)*Subclass2.PowerFactor(p,e)*Subclass3.PowerFactor(p,e)*Spellbook.PowerFactor(e)*CasterSpells.PowerFactor(p,e)*Subclass5.PowerFactor(p,e); // 1.130.0 血脉觉醒 // 1.128.0 升环 +25%/环；1.73.0 超魔·强效；1.74.0 法术强效 ×1.3；邪术师（宗主化身、邪魔 + 契约）；1.100.0 超魔·追踪、元素化身
+  public static float Power(Pawn p,CompProperties_ClassEffect e)=>e.power*Strength(p,e)*(e.sorcery && Items.Has(p,"LP_Empowered")?1.5f:1f)*ClassLegendary.PowerFactor(p,e)*Warlock.PowerFactor(p,e)*LakeArcana.PowerFactor(p,e)*Subclass2.PowerFactor(p,e)*Subclass3.PowerFactor(p,e)*Spellbook.PowerFactor(e)*CasterSpells.PowerFactor(p,e)*Subclass5.PowerFactor(p,e)*Subclass6.PowerFactor(p,e); // 1.140.0 强效施法、光耀之魂 // 1.130.0 血脉觉醒 // 1.128.0 升环 +25%/环；1.73.0 超魔·强效；1.74.0 法术强效 ×1.3；邪术师（宗主化身、邪魔 + 契约）；1.100.0 超魔·追踪、元素化身
   public static int Duration(Pawn p,CompProperties_ClassEffect e)=>Mathf.RoundToInt(e.duration*(e.durationScales?ClassSystem.StatValue(p,e):1f)*LakeArcana.DurationFactor(p,e)*CasterSpells.DurationFactor(p,e)); // 1.130.0 超魔·扩展 // 1.100.0 超魔·延效
   public static float Radius(Pawn p,CompProperties_ClassEffect e)=>e.radius*(e.radiusScales?ClassSystem.StatValue(p,e):1f);
   static bool Hostile(Pawn caster,Pawn t)=>AnyTarget.Hostile(caster,t); // 1.136.0 热修：手动选的目标不分敌我
@@ -84,7 +84,7 @@ namespace LichPhylactery {
      if(t.HostileTo(caster))return "只能对友军使用。";
      break;
    }
-   var cw=ClassCasters.Invalid(caster,e,target)??ClassLegendary.Invalid(caster,e,target)??ClassMartial2.Invalid(caster,e,target)??ClassSubclass.Invalid(caster,e,target)??Warlock.Invalid(caster,e,target)??Subclass2.Invalid(caster,e,target)??Subclass3.Invalid(caster,e,target)??Subclass4.Invalid(caster,e,target)??Subclass5.Invalid(caster,e,target)??ArcanaEffects.Invalid(caster,e,target)??Bard.Invalid(caster,e,target)??WizardSpells.Invalid(caster,e,target)??CasterEffects.Invalid(caster,e,target);if(cw!=null)return cw; // 1.130.0 施法职业法术表的新法术 // 1.128.0 法师新法术 // 1.123.0 吟游诗人 // 1.73.0 施法职业；1.74.0 传奇；新职业；子职业；邪术师
+   var cw=ClassCasters.Invalid(caster,e,target)??ClassLegendary.Invalid(caster,e,target)??ClassMartial2.Invalid(caster,e,target)??ClassSubclass.Invalid(caster,e,target)??Warlock.Invalid(caster,e,target)??Subclass2.Invalid(caster,e,target)??Subclass3.Invalid(caster,e,target)??Subclass4.Invalid(caster,e,target)??Subclass5.Invalid(caster,e,target)??Subclass6.Invalid(caster,e,target)??ArcanaEffects.Invalid(caster,e,target)??Bard.Invalid(caster,e,target)??WizardSpells.Invalid(caster,e,target)??CasterEffects.Invalid(caster,e,target);if(cw!=null)return cw; // 1.130.0 施法职业法术表的新法术 // 1.128.0 法师新法术 // 1.123.0 吟游诗人 // 1.73.0 施法职业；1.74.0 传奇；新职业；子职业；邪术师
    if(e.ranged){var v=Martial.RangedVerb(caster);if(v?.Projectile==null)return "需要远程武器。";if(target.Cell.IsValid && CastApproach.TooFar(caster.Position.DistanceTo(target.Cell),v.EffectiveRange))return "超出当前武器的射程（"+v.EffectiveRange.ToString("0")+" 格）。";}
    switch(e.effect){
     case "Charge":if(!t.Position.AdjacentTo8WayOrInside(caster.Position) && !Charge.LandingCell(caster,t).IsValid)return "目标身边没有能落脚的格子。";break;
@@ -131,6 +131,7 @@ namespace LichPhylactery {
    if(Subclass2.Apply(p,def,e,target))return; // 1.103.0 第二批子职业
    if(Subclass3.Apply(p,def,e,target))return; // 1.106.0 暗影宗、散打宗
    if(Subclass5.Apply(p,def,e,target))return; // 1.135.0 神圣之魂、暗影魔法、时钟之魂
+   if(Subclass6.Apply(p,def,e,target))return; // 1.140.0 热门子职业 15 个
    if(Subclass4.Apply(p,def,e,target))return; // 1.111.0 炼金师、装甲师、堡垒工程师
    if(ArcanaEffects.Apply(p,def,e,target))return; // 1.100.0 秘传
    if(Bard.Apply(p,def,e,target))return; // 1.123.0 吟游诗人
