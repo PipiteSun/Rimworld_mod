@@ -18,8 +18,8 @@ namespace LichPhylactery {
  public static class WizardSpells2 {
   static readonly Color C=new Color(.7f,.5f,1f),Sun=new Color(1f,.9f,.5f),Death=new Color(.55f,.8f,.55f);
   static int Now=>Find.TickManager.TicksGame;
-  static bool Hostile(Pawn a,Pawn t)=>t!=null && t!=a && !t.Dead && t.HostileTo(a);
-  static bool Friendly(Pawn a,Pawn t)=>t!=null && !t.Dead && !t.HostileTo(a);
+  static bool Hostile(Pawn a,Pawn t)=>AnyTarget.Hostile(a,t); // 1.136.0 热修：手动选的目标不分敌我
+  static bool Friendly(Pawn a,Pawn t)=>AnyTarget.Friendly(a,t);
   static IEnumerable<Pawn> Near(Map m,IntVec3 c,float r)=>m==null || !c.IsValid?Enumerable.Empty<Pawn>():Races124.PawnsNear(m,c,r).ToList();
   public static DamageDef Psychic=>DefCache<DamageDef>.Get("LP_WS_Psychic")??DamageDefOf.Burn;
   public static DamageDef Radiant=>PaladinCore.Radiant;

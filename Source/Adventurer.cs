@@ -1095,7 +1095,7 @@ namespace LichPhylactery {
    ExposeExalted(); // 1.59.0 超凡属性特性
    ExposeWork(); // 1.61.0 热修：日常工作经验
    ExposeExtraXp(); // 1.75.0 非战斗经验
-   ExposeQuestBoard(); // 1.71.0 探索公告板
+   ExposeQuestBoard(); // 1.71.0 探索公告板ExposeAdventureBoard(); // 1.134.0 冒险委托板
    ExposeClasses(); // 1.72.0 职业
    adventurerEnemyLevels=ExposeMergedToggle(adventurerEnemyLevels,"lpEnemyLevels163","adventurerEnemyLevels","adventurerEnemyLevelsCoexist");
    Scribe_Values.Look(ref adventurerEnemyCap,"adventurerEnemyCap",true);Scribe_Values.Look(ref adventurerEnemyCapOffset,"adventurerEnemyCapOffset",3);
@@ -1113,6 +1113,7 @@ namespace LichPhylactery {
    TooltipHandler.TipRegion(l.Label("日常工作经验倍率："+(s.adventurerWorkXp<=0f?"关闭":"×"+s.adventurerWorkXp.ToString("0.0"))),"每 50 点技能经验 = 1 × 倍率 冒险者经验；每天前 80 点全额，之后 ×0.5。0 = 关闭。");s.adventurerWorkXp=Mathf.Round(l.Slider(s.adventurerWorkXp,0f,3f)*10f)/10f; // 1.61.0 热修
     Settings.DrawExtraXp(l); // 1.75.0 非战斗经验
    l.CheckboxLabeled("探索公告板",ref s.questBoard,"1.71.0：建筑“探索公告板”（杂项）每天贴出 6 份分等阶的委托：守卫家园、远征讨伐（怪物巢穴）、清剿据点。等阶青铜 / 白银 / 黄金 / 秘银 / 传说，需要殖民地最高冒险者等级 1 / 5 / 9 / 13 / 17；完成给银币和物品报酬，接取人得到“任务点数 × 0.5”的冒险者经验。关闭后不再刷新委托，已接的委托照常进行。"); // 1.71.0
+   AdventureBoardSettings.Draw(l); // 1.134.0 冒险委托板
    l.Label("属性效果强度："+s.adventurerEffectPercent+"%（六维的数值效果、技能学习速度、部位生命成长；0% 等于只看等级）");s.adventurerEffectPercent=Mathf.RoundToInt(l.Slider(s.adventurerEffectPercent,0,200)/5f)*5;
    l.CheckboxLabeled("种族亲和",ref s.adventurerAffinity,"每个种族有擅长和笨拙的属性：擅长的六维属性线性效果（近战伤害、心灵敏感度、部位生命、职业强度等）整个 ×1.5（传奇种族 ×1.75，和天赋特性相乘；效果低于 ×1 时不乘），负重、采矿等其他效果的倍率 ×1.5；笨拙的每点正调整值 ×0.5（负调整值不乘）；擅长的传奇属性每点 ×1.5（传奇种族 ×1.75），人类所有传奇属性 ×1.1。只改效果，不改属性数值、上限和专长门槛。在“冒险者”分页每项后面标“擅长 / 笨拙”。\n关闭后所有种族 ×1（天赋特性照常）。");
    ClassSettings.Draw(l); // 1.72.0 职业

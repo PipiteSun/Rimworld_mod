@@ -6,9 +6,9 @@
     <match Class="PatchOperationAdd">
       <xpath>/Defs/TraderKindDef[defName="Caravan_Outlander_Exotic"]/stockGenerators</xpath>
       <value>
-        <li Class="StockGenerator_SingleDef"><thingDef>LP_WS_SpellPage1</thingDef><countRange>0~2</countRange></li>
-        <li Class="StockGenerator_SingleDef"><thingDef>LP_WS_SpellPage2</thingDef><countRange>0~1</countRange></li>
-        <li Class="StockGenerator_SingleDef"><thingDef>LP_WS_SpellPage3</thingDef><countRange>0~1</countRange></li>
+        <li Class="StockGenerator_SingleDef"><thingDef>LP_WS_SpellPageA</thingDef><countRange>0~2</countRange></li>
+        <li Class="StockGenerator_SingleDef"><thingDef>LP_WS_SpellPageB</thingDef><countRange>0~1</countRange></li>
+        <li Class="StockGenerator_SingleDef"><thingDef>LP_WS_SpellPageC</thingDef><countRange>0~1</countRange></li>
       </value>
     </match>
   </Operation>
@@ -17,9 +17,9 @@
     <match Class="PatchOperationAdd">
       <xpath>/Defs/TraderKindDef[defName="Orbital_Exotic"]/stockGenerators</xpath>
       <value>
-        <li Class="StockGenerator_SingleDef"><thingDef>LP_WS_SpellPage1</thingDef><countRange>0~2</countRange></li>
-        <li Class="StockGenerator_SingleDef"><thingDef>LP_WS_SpellPage2</thingDef><countRange>0~1</countRange></li>
-        <li Class="StockGenerator_SingleDef"><thingDef>LP_WS_SpellPage3</thingDef><countRange>0~1</countRange></li>
+        <li Class="StockGenerator_SingleDef"><thingDef>LP_WS_SpellPageA</thingDef><countRange>0~2</countRange></li>
+        <li Class="StockGenerator_SingleDef"><thingDef>LP_WS_SpellPageB</thingDef><countRange>0~1</countRange></li>
+        <li Class="StockGenerator_SingleDef"><thingDef>LP_WS_SpellPageC</thingDef><countRange>0~1</countRange></li>
       </value>
     </match>
   </Operation>

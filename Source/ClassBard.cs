@@ -53,8 +53,8 @@ namespace LichPhylactery {
   public static bool Succeed(float chance,Pawn t)=>t!=null && !HeroCombat.MindResist(t) && Roll<chance;
   public static bool Mindless(Pawn t)=>t==null || t.RaceProps.IsMechanoid || t.RaceProps.FleshType==FleshTypeDefOf.Insectoid || t.RaceProps.IsAnomalyEntity;
   static bool Boss(Pawn t)=>ClassLegendary.Boss(t) || Legendary.Is(t);
-  static bool Hostile(Pawn a,Pawn t)=>t!=null && t!=a && !t.Dead && t.HostileTo(a);
-  static bool Friendly(Pawn a,Pawn t)=>t!=null && !t.Dead && !t.HostileTo(a);
+  static bool Hostile(Pawn a,Pawn t)=>AnyTarget.Hostile(a,t); // 1.136.0 热修：手动选的目标不分敌我
+  static bool Friendly(Pawn a,Pawn t)=>AnyTarget.Friendly(a,t);
   static IEnumerable<Pawn> Near(Map map,IntVec3 c,float r)=>map==null?Enumerable.Empty<Pawn>():Races124.PawnsNear(map,c,r);
 
   // ---------- 魔法奥秘 ----------
@@ -529,16 +529,32 @@ namespace LichPhylactery {
  // 传颂之歌：选一个派系（不用浮动菜单）。没选就关掉：退还乐韵、清掉冷却。
  public class Dialog_BardBallad : Window {
   readonly Pawn pawn;readonly AbilityDef def;bool done;Vector2 scroll;
-  public override Vector2 InitialSize=>new Vector2(520f,560f);
+  // 1.132.0 改版（LPUI）：派系图标 / 颜色、好感与关系一行、说明按实际高度，按钮风格统一。只改界面。
+  public const float RowH=44f;
+  public override Vector2 InitialSize=>LPUI.Fit(580f,600f);
   public Dialog_BardBallad(Pawn p,AbilityDef d){pawn=p;def=d;doCloseX=true;doCloseButton=true;absorbInputAroundWindow=true;forcePause=true;}
+  public Vector2 Scroll{get=>scroll;set=>scroll=value;}
   public override void DoWindowContents(Rect r){
-   Text.Font=GameFont.Medium;Widgets.Label(new Rect(r.x,r.y,r.width,32f),"传颂之歌：唱给谁听？");Text.Font=GameFont.Small;
-   var bad=Bard.Notorious(pawn);float s=pawn.GetStatValue(Bard.Power);int amount=Bard.BalladAmount(s,bad!=null);
-   Widgets.Label(new Rect(r.x,r.y+34f,r.width,44f),bad!=null?"殖民地恶名在外（"+bad+"），只能唱成威名之歌给敌对派系：好感 +"+amount+"，他们下一次袭击的规模 −10%。":"选中的派系好感 +"+amount+"，殖民者心情“我们的传说”+5。");
-   var list=Bard.BalladTargets(pawn);var outer=new Rect(r.x,r.y+82f,r.width,r.height-82f-48f);var view=new Rect(0f,0f,outer.width-16f,list.Count*36f);
-   Widgets.BeginScrollView(outer,ref scroll,view);
-   try{float y=0f;foreach(var f in list){var row=new Rect(0f,y,view.width,32f);Widgets.DrawLightHighlight(row);Widgets.Label(new Rect(8f,y+5f,row.width-120f,24f),f.Name+"（好感 "+f.PlayerGoodwill+"）");if(Widgets.ButtonText(new Rect(row.xMax-104f,y+2f,96f,28f),"唱给他们")){done=true;Bard.Ballad(pawn,f);Close();}y+=36f;}}
-   finally{Widgets.EndScrollView();}
+   try{
+    float y=LPUI.Title(r,"传颂之歌：唱给谁听？");
+    var bad=Bard.Notorious(pawn);float s=pawn.GetStatValue(Bard.Power);int amount=Bard.BalladAmount(s,bad!=null);
+    y+=LPUI.Para(r.x,y,r.width,bad!=null?"殖民地恶名在外（"+bad+"），只能唱成威名之歌给敌对派系：好感 +"+amount+"，他们下一次袭击的规模 −10%。":"选中的派系好感 +"+amount+"，殖民者心情“我们的传说”+5。")+LPUI.Gap;
+    LPUI.Tiny(new Rect(r.x,y,r.width,20f),"歌者："+pawn.LabelShort+"　"+Bard.Power.LabelCap+" ×"+s.ToString("0.00"),true);y+=20f+LPUI.Gap;
+    var list=Bard.BalladTargets(pawn);
+    y=LPUI.Bar(new Rect(r.x,y,r.width,LPUI.RowH),"可以传颂的派系（"+list.Count+"）");
+    var outer=new Rect(r.x,y,r.width,r.yMax-y-48f);
+    if(list.Count==0){LPUI.Unavailable(new Rect(outer.x,outer.y,outer.width,LPUI.RowH*2f),"没有可以传颂的派系。");return;}
+    var view=new Rect(0f,0f,outer.width-LPUI.ScrollBarW,list.Count*(RowH+4f));
+    Widgets.BeginScrollView(outer,ref scroll,view);
+    try{float yy=0f;foreach(var f in list){
+     var row=new Rect(0f,yy,view.width,RowH);Widgets.DrawLightHighlight(row);Widgets.DrawHighlightIfMouseover(row);
+     var ic=f.def?.FactionIcon;if(ic!=null){GUI.color=f.Color;GUI.DrawTexture(new Rect(row.x+6f,row.y+6f,32f,32f),ic,ScaleMode.ScaleToFit);GUI.color=Color.white;}
+     LPUI.LabelFit(new Rect(row.x+46f,row.y+3f,row.width-46f-112f,22f),f.Name);
+     LPUI.Tiny(new Rect(row.x+46f,row.y+24f,row.width-46f-112f,18f),"好感 "+f.PlayerGoodwill+"（"+f.PlayerRelationKind.GetLabelCap()+"）"+(f.leader!=null?"　首领 "+f.leader.LabelShort:""),true);
+     if(LPUI.Button(new Rect(row.xMax-104f,row.y+6f,98f,32f),"唱给他们",true,"好感 +"+amount)){done=true;Bard.Ballad(pawn,f);Close();}
+     yy+=RowH+4f;}}
+    finally{Widgets.EndScrollView();}
+   }finally{LPUI.Reset();}
   }
   public override void PostClose(){
    base.PostClose();if(done)return;

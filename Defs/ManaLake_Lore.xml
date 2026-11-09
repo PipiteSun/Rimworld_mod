@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.133.0 魔力湖泊第三批：通用秘传（任何职业都能学）——12 个法术、2 个武技、4 个被动（Source/ManaLakeLore.cs）。
+     和职业水晶共用秘传槽（最多 4 个）、两个秘传之间 1 小时公共冷却；不耗资源，只看冷却（6 环 2 天、7 环 3 天、8 环 5 天、9 环 7 天，许愿术 15 天）。
+     门槛：冒险者 11 / 13 / 15 / 17 级，施法属性 15 / 16 / 17 / 18（武技另需格斗或射击 10 / 12 / 14 / 16）。基础吸收成功率 80 / 70 / 60 / 50%，属性每超过门槛 1 点 +5%。
+     强度 = 属性强度（每 1 点调整值 +5%，最多 +50%）和对应职业强度取较高；法术再乘心灵敏感度。数值写的是强度 ×1 时的基础值。
+     结晶由 ArtSource/ManaLake/gen_lore.ps1 生成到 ManaLake_Crystals2.xml。 -->
+<Defs>
+
+  <!-- ==================== 状态 ==================== -->
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_LO_Slowed</defName>
+    <label>刃墙割伤</label>
+    <description>被剑刃屏障割伤：移动 ×0.5。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.9,0.6,0.5)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>0.5</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_LO_Thrall</defName>
+    <label>亡仆</label>
+    <description>被死亡之指杀死后爬起来的亡仆：效忠施法者的阵营，不会精神崩溃，不知疼痛（疼痛 ×0.5）。</description>
+    <defaultLabelColor>(0.55,0.75,0.5)</defaultLabelColor>
+    <comps Inherit="False" />
+    <stages><li><blocksMentalBreaks>true</blocksMentalBreaks><painFactor>0.5</painFactor></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_LO_Regenerating</defName>
+    <hediffClass>LichPhylactery.Hediff_LoreRegen</hediffClass>
+    <label>再生术</label>
+    <description>再生的魔力在体内流动：3 天后长回一个失去的肢体或器官。</description>
+    <comps Inherit="False" />
+    <defaultLabelColor>(0.6,0.95,0.6)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_LO_Levitated</defName>
+    <hediffClass>LichPhylactery.Hediff_LoreLevitate</hediffClass>
+    <label>反转重力</label>
+    <description>被反转的重力抛到半空、动弹不得；落地时受到钝器伤害（严重度 = 伤害）。</description>
+    <isBad>true</isBad>
+    <maxSeverity>999</maxSeverity>
+    <comps Inherit="False" />
+    <defaultLabelColor>(0.75,0.6,1)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>0</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_LO_MindBlank</defName>
+    <label>心灵空白</label>
+    <description>心灵被抹成一片空白：免疫心灵控制、魅惑、精神崩溃和心灵伤害（心灵敏感度 ×0，心智抗性 +100%）。</description>
+    <defaultLabelColor>(0.75,0.85,1)</defaultLabelColor>
+    <stages><li><blocksMentalBreaks>true</blocksMentalBreaks><statFactors><PsychicSensitivity>0</PsychicSensitivity></statFactors><statOffsets><LP_MindResist>1</LP_MindResist></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_LO_BoneBreak</defName>
+    <label>断骨击</label>
+    <description>下一次近战命中打断目标一条腿或一只手臂（传奇生物改为一记重击）。</description>
+    <defaultLabelColor>(0.95,0.6,0.4)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_LO_Fracture</defName>
+    <label>骨折</label>
+    <labelNoun>骨折</labelNoun>
+    <description>被断骨击打断的骨头：这个部位几乎用不了，10 天后长好。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.9,0.55,0.5)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>600000~600000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><partEfficiencyOffset>-0.8</partEfficiencyOffset><painOffset>0.15</painOffset></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_LO_Backlash</defName>
+    <label>秘传反噬</label>
+    <description>吸收秘传结晶失败，湖水的魔力倒灌回来：意识 -30%。之后 7 天内不能再吸收秘传结晶。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.85,0.55,0.75)</defaultLabelColor>
+    <comps Inherit="False"><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>180000~180000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><capMods><li><capacity>Consciousness</capacity><offset>-0.30</offset></li></capMods></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_LO_Weakened</defName>
+    <label>许愿虚弱</label>
+    <description>大愿望抽走了太多生命力：意识 -20%，移动与工作速度 ×0.8。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.85,0.6,0.5)</defaultLabelColor>
+    <comps Inherit="False"><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>600000~600000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><capMods><li><capacity>Consciousness</capacity><offset>-0.20</offset></li></capMods><statFactors><MoveSpeed>0.8</MoveSpeed><WorkSpeedGlobal>0.8</WorkSpeedGlobal></statFactors></li></stages>
+  </HediffDef>
+
+  <!-- ==================== 秘传法术 ==================== -->
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_AC_ChainLightning</defName>
+    <label>连锁闪电</label>
+    <description>通用秘传（6 环法术，智力）：一道闪电从目标开始跳过 4 个敌人，每个受 25 点电击伤害，机械体 ×1.5。冷却 2 天。</description>
+    <iconPath>LP/Arcana/ChainLightning</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <verbProperties><range>30</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LO_ChainLightning</effect><power>25</power><range>6</range></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>6</ring><ability>Int</ability><price>7000</price></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_AC_BladeBarrier</defName>
+    <label>剑刃屏障</label>
+    <description>通用秘传（6 环法术，感知）：在目标处立起一道 8 格长的旋转刃墙，持续 1 小时；墙上的敌人每秒受 20 点割伤并减速 50%。冷却 2 天。</description>
+    <iconPath>LP/Arcana/BladeBarrier</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <verbProperties><range>25</range><warmupTime>1</warmupTime><requireLineOfSight>false</requireLineOfSight></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LO_BladeBarrier</effect><power>20</power><duration>2500</duration></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>6</ring><ability>Wis</ability><price>7000</price></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_AC_Heal</defName>
+    <label>治愈术</label>
+    <description>通用秘传（6 环法术，感知）：目标治好 70% 伤势（乘强度），并清除失明、疾病和食物中毒。冷却 2 天。</description>
+    <iconPath>LP/Arcana/Heal</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LO_Heal</effect><power>0.7</power></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>6</ring><ability>Wis</ability><price>8000</price></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_AC_FingerOfDeath</defName>
+    <label>死亡之指</label>
+    <description>通用秘传（7 环法术，魅力）：50 点死灵伤害；被它杀死的人形会作为施法者阵营的亡仆爬起来（永久，不会精神崩溃）。冷却 3 天。</description>
+    <iconPath>LP/Arcana/FingerOfDeath</iconPath>
+    <cooldownTicksRange>180000</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LO_FingerOfDeath</effect><power>50</power></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>7</ring><ability>Cha</ability><price>10000</price></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_AC_Regenerate</defName>
+    <label>再生术</label>
+    <description>通用秘传（7 环法术，感知）：立刻消除目标一处旧伤疤；3 天后长回一个失去的肢体或器官。冷却 3 天。</description>
+    <iconPath>LP/Arcana/Regenerate</iconPath>
+    <cooldownTicksRange>180000</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LO_Regenerate</effect><duration>180000</duration></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>7</ring><ability>Wis</ability><price>12000</price></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_AC_ReverseGravity</defName>
+    <label>反转重力</label>
+    <description>通用秘传（7 环法术，智力）：目标处半径 5 格的敌人飞起 10 秒、动弹不得，落地时各受 20 点钝器伤害。冷却 3 天。</description>
+    <iconPath>LP/Arcana/ReverseGravity</iconPath>
+    <cooldownTicksRange>180000</cooldownTicksRange>
+    <verbProperties><range>30</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LO_ReverseGravity</effect><power>20</power><radius>5</radius><duration>600</duration></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>7</ring><ability>Int</ability><price>11000</price></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_AC_Sunburst</defName>
+    <label>炎阳爆</label>
+    <description>通用秘传（8 环法术，感知）：30 格内一点半径 6 格烈阳爆发——45 点神圣灼烧伤害并失明 1 分钟；对亡灵 ×2。友军也会被波及（施法者自己除外）。冷却 5 天。</description>
+    <iconPath>LP/Arcana/Sunburst</iconPath>
+    <cooldownTicksRange>300000</cooldownTicksRange>
+    <verbProperties><range>30</range><warmupTime>1.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LO_Sunburst</effect><power>45</power><radius>6</radius><duration>3600</duration></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>8</ring><ability>Wis</ability><price>16000</price></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_AC_MindBlank</defName>
+    <label>心灵空白</label>
+    <description>通用秘传（8 环法术，智力）：目标 1 天内免疫心灵控制、魅惑、精神崩溃和心灵伤害。冷却 5 天。</description>
+    <iconPath>LP/Arcana/MindBlank</iconPath>
+    <cooldownTicksRange>300000</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LO_MindBlank</effect><duration>60000</duration></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>8</ring><ability>Int</ability><price>14000</price></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_AC_Maze</defName>
+    <label>迷宫术</label>
+    <description>通用秘传（8 环法术，智力）：把一个敌人放逐到异界迷宫 30 秒（从地图上消失，之后回到原处）；传奇生物 10 秒。施法者死亡或地图卸载时会立刻放回。冷却 5 天。</description>
+    <iconPath>LP/Arcana/Maze</iconPath>
+    <cooldownTicksRange>300000</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LO_Maze</effect><duration>1800</duration></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>8</ring><ability>Int</ability><price>15000</price></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AC_TimeStop</defName>
+    <label>时间停止</label>
+    <description>通用秘传（9 环法术，智力）：除施法者外，本地图所有人和飞行中的弹丸停顿 6 秒（传奇生物和剧情首领 3 秒）；施法者伤害别人会让时间提前恢复。冷却 7 天。</description>
+    <iconPath>LP/Arcana/TimeStop</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>420000</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LO_TimeStop</effect><duration>360</duration></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>9</ring><ability>Int</ability><price>25000</price></li><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_AC_PowerWordKill</defName>
+    <label>真言·杀</label>
+    <description>通用秘传（9 环法术，魅力）：剩余健康 ≤ 40% 的非传奇生物当场死亡；否则受 40 点心灵伤害。冷却 7 天。</description>
+    <iconPath>LP/Arcana/PowerWordKill</iconPath>
+    <cooldownTicksRange>420000</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LO_PowerWordKill</effect><power>40</power></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>9</ring><ability>Cha</ability><price>24000</price></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AC_Wish</defName>
+    <label>许愿术</label>
+    <description>通用秘传（9 环法术，魅力）：打开许愿窗口选一个愿望。安全愿望：直接施放任意一个 8 环或以下的通用秘传法术（包括没学过的）；本地图所有殖民者伤势全愈、疾病清除；变出市场价合计 3000 银以内的物品。大愿望：复活 1 名死亡不超过 30 天的殖民者、永久 +1 属性，或驱散一个长期事件——有 33% 的概率让施法者永久失去许愿术并虚弱 10 天。没选就关掉窗口不进冷却。和神灯的许愿是两回事。冷却 15 天。</description>
+    <iconPath>LP/Arcana/Wish</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>900000</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LO_Wish</effect></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>9</ring><ability>Cha</ability><price>50000</price></li><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+
+  <!-- ==================== 通用武技（不是法术：心灵聋也能用，不乘心灵敏感度） ==================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AC_BoneBreak</defName>
+    <label>断骨击</label>
+    <description>通用秘传（6 环武技，力量）：1 小时内下一次近战命中打断目标一条腿或一只手臂（骨折 10 天）；传奇生物改为 30 点钝器伤害。冷却 2 天。</description>
+    <iconPath>LP/Arcana/BoneBreak</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <verbProperties><warmupTime>0.2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LO_BoneBreak</effect><power>30</power><duration>2500</duration></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>6</ring><ability>Str</ability><kind>martial</kind><price>6500</price></li><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_AC_SunArrow</defName>
+    <label>贯日一箭</label>
+    <description>通用秘传（7 环武技，敏捷）：一发直线穿透 40 格，沿线所有敌人各受 4 倍武器伤害；只能用远程武器。冷却 3 天。</description>
+    <iconPath>LP/Arcana/SunArrow</iconPath>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <cooldownTicksRange>180000</cooldownTicksRange>
+    <verbProperties><range>40</range><warmupTime>1.5</warmupTime><requireLineOfSight>false</requireLineOfSight></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LO_SunArrow</effect><power>4</power><range>40</range></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>7</ring><ability>Dex</ability><kind>martial</kind><price>10000</price></li></modExtensions>
+  </AbilityDef>
+
+  <!-- ==================== 秘传被动 ==================== -->
+  <AbilityDef ParentName="LP_ArcanaPassiveBase">
+    <defName>LP_AC_TrueSight</defName>
+    <label>真视</label>
+    <description>通用秘传被动（7 环）：30 格内的隐形敌人对你可见（被识破 1 小时）；免疫失明和幻象。</description>
+    <iconPath>LP/Arcana/TrueSight</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>7</ring><ability>Any</ability><kind>passive</kind><price>10000</price></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ArcanaPassiveBase">
+    <defName>LP_AC_ArcaneBulwark</defName>
+    <label>秘法壁垒</label>
+    <description>通用秘传被动（8 环）：受到的法术、灵能伤害 -40%，所有豁免成功率 +15%。</description>
+    <iconPath>LP/Arcana/ArcaneBulwark</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>8</ring><ability>Any</ability><kind>passive</kind><price>16000</price></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ArcanaPassiveBase">
+    <defName>LP_AC_LegendaryResistance</defName>
+    <label>传奇抵抗</label>
+    <description>通用秘传被动（9 环）：每天 3 次，把一次失败的豁免改为成功。</description>
+    <iconPath>LP/Arcana/LegendaryResistance</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>9</ring><ability>Any</ability><kind>passive</kind><price>22000</price></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ArcanaPassiveBase">
+    <defName>LP_AC_SecondHeart</defName>
+    <label>第二心脏</label>
+    <description>通用秘传被动（9 环）：每 10 天一次，本应死亡时改为倒地并止血（治好一半伤势）。</description>
+    <iconPath>LP/Arcana/SecondHeart</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>9</ring><ability>Any</ability><kind>passive</kind><price>25000</price></li></modExtensions>
+  </AbilityDef>
+
+</Defs>

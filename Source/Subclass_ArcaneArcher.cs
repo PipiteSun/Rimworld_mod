@@ -22,7 +22,7 @@ namespace LichPhylactery {
   public static Entry Of(Pawn p){if(p==null || Users.Count==0)return null;Users.TryGetValue(p.thingIDNumber,out var e);return e;}
   static readonly DefRef<LP_ClassDef> fighter=new DefRef<LP_ClassDef>("LP_Class_Fighter");
   public static int Level(Pawn p)=>ClassSystem.Level(p,fighter.Def);
-  static bool Hostile(Pawn a,Pawn t)=>t!=null && t!=a && !t.Dead && t.HostileTo(a);
+  static bool Hostile(Pawn a,Pawn t)=>AnyTarget.Hostile(a,t); // 1.136.0 热修：手动选的目标不分敌我
   public static bool Busy;public static int LastBurst; // LastBurst：上一次爆裂箭打中几个（自检用）
 
   public static int Refresh(Hediff_Adventurer h){

@@ -1,0 +1,296 @@
+[
+  {
+    "key": "ChainLightning",
+    "label": "连锁闪电",
+    "color": "(0.95,0.85,0.55)",
+    "ring": 6,
+    "passive": false
+  },
+  {
+    "key": "BladeBarrier",
+    "label": "剑刃屏障",
+    "color": "(0.95,0.85,0.55)",
+    "ring": 6,
+    "passive": false
+  },
+  {
+    "key": "Heal",
+    "label": "治愈术",
+    "color": "(0.95,0.85,0.55)",
+    "ring": 6,
+    "passive": false
+  },
+  {
+    "key": "FingerOfDeath",
+    "label": "死亡之指",
+    "color": "(0.95,0.85,0.55)",
+    "ring": 7,
+    "passive": false
+  },
+  {
+    "key": "Regenerate",
+    "label": "再生术",
+    "color": "(0.95,0.85,0.55)",
+    "ring": 7,
+    "passive": false
+  },
+  {
+    "key": "ReverseGravity",
+    "label": "反转重力",
+    "color": "(0.95,0.85,0.55)",
+    "ring": 7,
+    "passive": false
+  },
+  {
+    "key": "Sunburst",
+    "label": "炎阳爆",
+    "color": "(0.95,0.85,0.55)",
+    "ring": 8,
+    "passive": false
+  },
+  {
+    "key": "MindBlank",
+    "label": "心灵空白",
+    "color": "(0.95,0.85,0.55)",
+    "ring": 8,
+    "passive": false
+  },
+  {
+    "key": "Maze",
+    "label": "迷宫术",
+    "color": "(0.95,0.85,0.55)",
+    "ring": 8,
+    "passive": false
+  },
+  {
+    "key": "TimeStop",
+    "label": "时间停止",
+    "color": "(0.95,0.85,0.55)",
+    "ring": 9,
+    "passive": false
+  },
+  {
+    "key": "PowerWordKill",
+    "label": "真言·杀",
+    "color": "(0.95,0.85,0.55)",
+    "ring": 9,
+    "passive": false
+  },
+  {
+    "key": "Wish",
+    "label": "许愿术",
+    "color": "(0.95,0.85,0.55)",
+    "ring": 9,
+    "passive": false
+  },
+  {
+    "key": "BoneBreak",
+    "label": "断骨击",
+    "color": "(0.95,0.85,0.55)",
+    "ring": 6,
+    "passive": false
+  },
+  {
+    "key": "SunArrow",
+    "label": "贯日一箭",
+    "color": "(0.95,0.85,0.55)",
+    "ring": 7,
+    "passive": false
+  },
+  {
+    "key": "TrueSight",
+    "label": "真视",
+    "color": "(0.95,0.85,0.55)",
+    "ring": 7,
+    "passive": true
+  },
+  {
+    "key": "ArcaneBulwark",
+    "label": "秘法壁垒",
+    "color": "(0.95,0.85,0.55)",
+    "ring": 8,
+    "passive": true
+  },
+  {
+    "key": "LegendaryResistance",
+    "label": "传奇抵抗",
+    "color": "(0.95,0.85,0.55)",
+    "ring": 9,
+    "passive": true
+  },
+  {
+    "key": "SecondHeart",
+    "label": "第二心脏",
+    "color": "(0.95,0.85,0.55)",
+    "ring": 9,
+    "passive": true
+  },
+  {
+    "key": "Mending",
+    "label": "修补术",
+    "color": "(0.45,0.85,0.8)",
+    "ring": 1,
+    "passive": false
+  },
+  {
+    "key": "PurifyFood",
+    "label": "净化饮食",
+    "color": "(0.45,0.85,0.8)",
+    "ring": 1,
+    "passive": false
+  },
+  {
+    "key": "Alarm",
+    "label": "警报术",
+    "color": "(0.45,0.85,0.8)",
+    "ring": 1,
+    "passive": false
+  },
+  {
+    "key": "Darkvision",
+    "label": "暗视术",
+    "color": "(0.45,0.85,0.8)",
+    "ring": 1,
+    "passive": false
+  },
+  {
+    "key": "Longstrider",
+    "label": "长步术",
+    "color": "(0.45,0.85,0.8)",
+    "ring": 1,
+    "passive": false
+  },
+  {
+    "key": "Thunderwave",
+    "label": "雷鸣波",
+    "color": "(0.45,0.85,0.8)",
+    "ring": 1,
+    "passive": false
+  },
+  {
+    "key": "ArcaneLock",
+    "label": "秘法锁",
+    "color": "(0.45,0.85,0.8)",
+    "ring": 2,
+    "passive": false
+  },
+  {
+    "key": "Augury",
+    "label": "卜问",
+    "color": "(0.45,0.85,0.8)",
+    "ring": 2,
+    "passive": false
+  },
+  {
+    "key": "FalseLife",
+    "label": "虚假生命",
+    "color": "(0.45,0.85,0.8)",
+    "ring": 2,
+    "passive": false
+  },
+  {
+    "key": "CreateFood",
+    "label": "造粮术",
+    "color": "(0.45,0.85,0.8)",
+    "ring": 2,
+    "passive": false
+  },
+  {
+    "key": "CalmMind",
+    "label": "宁神术",
+    "color": "(0.45,0.85,0.8)",
+    "ring": 2,
+    "passive": false
+  },
+  {
+    "key": "Shatter",
+    "label": "粉碎音波",
+    "color": "(0.45,0.85,0.8)",
+    "ring": 2,
+    "passive": false
+  },
+  {
+    "key": "Counterspell",
+    "label": "反制法术",
+    "color": "(0.45,0.85,0.8)",
+    "ring": 3,
+    "passive": false
+  },
+  {
+    "key": "TinyHut",
+    "label": "小屋术",
+    "color": "(0.45,0.85,0.8)",
+    "ring": 3,
+    "passive": false
+  },
+  {
+    "key": "LakeBody",
+    "label": "湖泽体质",
+    "color": "(0.45,0.85,0.8)",
+    "ring": 1,
+    "passive": true
+  },
+  {
+    "key": "ManaDigest",
+    "label": "魔力消化",
+    "color": "(0.45,0.85,0.8)",
+    "ring": 1,
+    "passive": true
+  },
+  {
+    "key": "ScholarHeart",
+    "label": "学者之心",
+    "color": "(0.45,0.85,0.8)",
+    "ring": 1,
+    "passive": true
+  },
+  {
+    "key": "DreamlessSleep",
+    "label": "无梦之眠",
+    "color": "(0.45,0.85,0.8)",
+    "ring": 1,
+    "passive": true
+  },
+  {
+    "key": "HealingFlow",
+    "label": "疗愈之流",
+    "color": "(0.45,0.85,0.8)",
+    "ring": 2,
+    "passive": true
+  },
+  {
+    "key": "ArcaneResist",
+    "label": "奥术抗性",
+    "color": "(0.45,0.85,0.8)",
+    "ring": 2,
+    "passive": true
+  },
+  {
+    "key": "RuneSkin",
+    "label": "符文皮肤",
+    "color": "(0.45,0.85,0.8)",
+    "ring": 2,
+    "passive": true
+  },
+  {
+    "key": "ManaConduit",
+    "label": "法力导体",
+    "color": "(0.45,0.85,0.8)",
+    "ring": 2,
+    "passive": true
+  },
+  {
+    "key": "LakeHeart",
+    "label": "湖心",
+    "color": "(0.45,0.85,0.8)",
+    "ring": 3,
+    "passive": true
+  },
+  {
+    "key": "WeaveSense",
+    "label": "魔网感知",
+    "color": "(0.45,0.85,0.8)",
+    "ring": 3,
+    "passive": true
+  }
+]

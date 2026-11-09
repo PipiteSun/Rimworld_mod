@@ -51,13 +51,15 @@ namespace LichPhylactery {
   public SubclassData sub=new SubclassData(); // 子职业（ClassSubclass.cs）
   public bool npc; // NPC 职业已经分过（NpcClasses.cs）
   public List<AbilityDef> autocast=new List<AbilityDef>(); // 开了自动施放的职业能力（ClassAutoCast.cs）
+  public Dictionary<string,int> autoModes=new Dictionary<string,int>(); // 1.136.0 每个能力：未征召时自动施放（位 1）、资源低于 X% 不自动用（X = 值 / 256）（AutoCastPlus.cs）
   public int table=ClassSystem.TableVersion; // 1.87.0 等级表版本：旧存档读进来是 0，Tick250 里补一次新表下够格的能力
   public List<AbilityDef> arcana=new List<AbilityDef>();public int arcanaLast;public bool arcanaShaped; // 1.100.0 魔力湖泊的秘传（ManaLake.cs）：学会的、上次施放秘传的刻、再生之环记着上次是否在荒野变形
   public SpellbookData book; // 1.128.0 法师法术书（WizardSpellbook.cs）
+  public LakeData lake; // 1.133.0 魔力湖泊：湖印、湖息、通用秘传的失败冷却 / 传奇抵抗 / 第二心脏（ManaLakeSeals.cs）
   public List<SpellbookData> casterBooks=new List<SpellbookData>(); // 1.130.0 其他施法职业的法术表数据（CasterSpells.cs，每个职业一份，SpellbookData.cls = 法术表 defName）
   public bool Any=>levels.Count>0;
   public void ExposeData(){
-   Scribe_Deep.Look(ref book,"spellbook");
+   Scribe_Deep.Look(ref book,"spellbook");Scribe_Deep.Look(ref lake,"lakeSeals");
    Scribe_Collections.Look(ref casterBooks,"casterBooks",LookMode.Deep);if(Scribe.mode==LoadSaveMode.PostLoadInit){if(casterBooks==null)casterBooks=new List<SpellbookData>();casterBooks.RemoveAll(x=>x==null || x.cls.NullOrEmpty());}
    Scribe_Collections.Look(ref levels,"levels",LookMode.Def,LookMode.Value);
    Scribe_Collections.Look(ref res,"res",LookMode.Def,LookMode.Value);
@@ -66,10 +68,10 @@ namespace LichPhylactery {
    Scribe_Values.Look(ref legendaryPoints,"legendaryPoints");Scribe_Values.Look(ref legendaryGranted,"legendaryGranted");
    Scribe_Collections.Look(ref legendary,"legendary",LookMode.Def);Scribe_Collections.Look(ref legendaryTicks,"legendaryTicks",LookMode.Value,LookMode.Value);
    Scribe_Values.Look(ref rageTick,"rageTick");Scribe_Collections.Look(ref favored,"favored",LookMode.Value);
-   Scribe_Deep.Look(ref sub,"sub");Scribe_Values.Look(ref npc,"npc");Scribe_Collections.Look(ref autocast,"autocast",LookMode.Def);Scribe_Values.Look(ref table,"table");
+   Scribe_Deep.Look(ref sub,"sub");Scribe_Values.Look(ref npc,"npc");Scribe_Collections.Look(ref autocast,"autocast",LookMode.Def);Scribe_Collections.Look(ref autoModes,"autoModes",LookMode.Value,LookMode.Value);Scribe_Values.Look(ref table,"table");
    Scribe_Collections.Look(ref arcana,"arcana",LookMode.Def);Scribe_Values.Look(ref arcanaLast,"arcanaLast");Scribe_Values.Look(ref arcanaShaped,"arcanaShaped");
    if(Scribe.mode==LoadSaveMode.PostLoadInit){
-    if(autocast==null)autocast=new List<AbilityDef>();autocast.RemoveAll(x=>x==null);
+    if(autocast==null)autocast=new List<AbilityDef>();autocast.RemoveAll(x=>x==null);if(autoModes==null)autoModes=new Dictionary<string,int>();
     if(arcana==null)arcana=new List<AbilityDef>();arcana.RemoveAll(x=>x==null);
     if(favored==null)favored=new List<int>();if(sub==null)sub=new SubclassData();
     if(levels==null)levels=new Dictionary<LP_ClassDef,int>();if(res==null)res=new Dictionary<LP_ClassDef,float>();if(kept==null)kept=new List<AbilityDef>();
@@ -361,6 +363,7 @@ namespace LichPhylactery {
    CasterSpells.Tick250(h); // 1.130.0 施法职业法术表：睡醒可备法、专注、法术能量、待选提醒
    Subclass3.Tick250(h); // 1.106.0 暗影宗、散打宗
    Subclass4.Tick250(h); // 1.111.0 炼金师、装甲师、堡垒工程师
+   Subclass5.Tick250(h); // 1.135.0 术士子职业补完
    Subclass2.Tick250(h); // 1.103.0 第二批子职业的被动、钢铁卫士、誓言之力
    if((d.syncAcc+=1)>=4){d.syncAcc=0;Sync(h);}
    Martial.Refresh(p);
@@ -490,55 +493,90 @@ namespace LichPhylactery {
 
  // 选职业的窗口（不用浮动菜单：Peter 的游戏里浮动菜单的选择会失效）。
  public class Dialog_ChooseClass : Window {
-  readonly Pawn pawn;string armed;Vector2 scroll;
-  public override Vector2 InitialSize=>new Vector2(620f,620f);
+  // 1.132.0 改版（LPUI）：左栏职业列表（可点选，加点按钮不变），右栏选中职业的详情 +「法术与能力一览」。只改界面。
+  readonly Pawn pawn;string armed;Vector2 scroll,scrollR;public LP_ClassDef selected;float rightH=600f;
+  List<OverviewRow> rows;LP_ClassDef rowsFor;int rowsVersion=-1,rowsFrame=-999;
+  public const float LeftW=390f,ClassRowH=78f,LegRowH=48f;
+  public override Vector2 InitialSize=>LPUI.Fit(1020f,740f);
   public Dialog_ChooseClass(Pawn p){pawn=p;doCloseX=true;doCloseButton=true;closeOnClickedOutside=false;absorbInputAroundWindow=true;forcePause=true;}
+  public Vector2 RightScroll{get=>scrollR;set=>scrollR=value;}
+  public List<OverviewRow> Rows(Hediff_Adventurer h){
+   if(rows==null || rowsFor!=selected || rowsVersion!=CasterSpells.Version || Time.frameCount-rowsFrame>30){rows=ClassOverview.Build(h,selected);rowsFor=selected;rowsVersion=CasterSpells.Version;rowsFrame=Time.frameCount;}
+   return rows;
+  }
   public override void DoWindowContents(Rect r){
-   var h=Adventurer.Get(pawn);if(h==null){Close();return;}
-   Text.Font=GameFont.Medium;Widgets.Label(new Rect(r.x,r.y,r.width,32f),pawn.LabelShort+" 的职业");Text.Font=GameFont.Small;
-   float y=r.y+36f;int pts=ClassSystem.Points(h);
-   Widgets.Label(new Rect(r.x,y,r.width,24f),"职业点：可用 "+pts+"（冒险者 Lv "+h.level+"，已用 "+ClassSystem.Total(h)+" / "+ClassSystem.Budget(h)+"）"+(ClassLegendary.Points(h)>0?"　传奇职业点 "+ClassLegendary.Points(h):"")+(h.classes.freeUnlocks>0?"　冒险者手册：下一个职业跳过门槛":""));y+=28f;
-   // 1.73.0：八个职业，放进滚动区。
+   try{
+    var h=Adventurer.Get(pawn);if(h==null){Close();return;}
+    float y=LPUI.Title(r,pawn.LabelShort+" 的职业");int pts=ClassSystem.Points(h);
+    LPUI.LabelFit(new Rect(r.x,y,r.width,LPUI.RowH),"职业点：可用 "+pts+"（冒险者 Lv "+h.level+"，已用 "+ClassSystem.Total(h)+" / "+ClassSystem.Budget(h)+"）"+(ClassLegendary.Points(h)>0?"　传奇职业点 "+ClassLegendary.Points(h):"")+(h.classes.freeUnlocks>0?"　冒险者手册：下一个职业跳过门槛":""));y+=LPUI.RowH+LPUI.Gap;
+    if(selected==null)selected=ClassSystem.Taken(h).FirstOrDefault()??ClassSystem.All.FirstOrDefault();
+    var body=new Rect(r.x,y,r.width,r.yMax-y-48f);float lw=Mathf.Min(LeftW,body.width*.42f);
+    DrawLeft(new Rect(body.x,body.y,lw,body.height),h,pts);
+    DrawRight(new Rect(body.x+lw+LPUI.SectionGap,body.y,body.width-lw-LPUI.SectionGap,body.height),h);
+   }finally{LPUI.Reset();}
+  }
+  void DrawLeft(Rect outer,Hediff_Adventurer h,int pts){
    // 1.74.0：有传奇职业点时，最上面列出能学的传奇职业能力。
    var legend=ClassLegendary.Points(h)>0?ClassSystem.Taken(h).SelectMany(c=>c.legendary.Where(a=>!ClassLegendary.Knows(h,a)).Select(a=>(c,a))).ToList():new List<(LP_ClassDef,AbilityDef)>();
-   float legendH=legend.Count>0?28f+legend.Count*46f+8f:0f;
-   var outer=new Rect(r.x,y,r.width,r.yMax-y-48f);var view=new Rect(0f,0f,outer.width-16f,legendH+ClassSystem.All.Count*104f);
-   Widgets.BeginScrollView(outer,ref scroll,view);r=new Rect(0f,0f,view.width,view.height);y=0f;
-   try{if(legend.Count>0)y=DrawLegend(r,y,h,legend);DrawRows(r,y,h,pts);}finally{Widgets.EndScrollView();}
+   float legendH=legend.Count>0?LPUI.RowH+LPUI.Gap+legend.Count*(LegRowH+4f)+LPUI.SectionGap:0f;
+   var view=new Rect(0f,0f,outer.width-LPUI.ScrollBarW,legendH+LPUI.RowH+LPUI.Gap+ClassSystem.All.Count*(ClassRowH+4f));
+   Widgets.BeginScrollView(outer,ref scroll,view);
+   try{float y=0f;if(legend.Count>0)y=DrawLegend(view.width,y,h,legend);y=LPUI.Bar(new Rect(0f,y,view.width,LPUI.RowH),"职业（点选查看一览）",null,"点职业行在右边查看它的等级表；加点按钮点两次确认。");DrawRows(view.width,y,h);}
+   finally{Widgets.EndScrollView();}
   }
-  float DrawLegend(Rect r,float y,Hediff_Adventurer h,List<(LP_ClassDef c,AbilityDef a)> list){
-   GUI.color=new Color(1f,.82f,.35f);Widgets.Label(new Rect(r.x,y,r.width,24f),"传奇职业能力（传奇职业点 "+ClassLegendary.Points(h)+"）");GUI.color=Color.white;y+=28f;
+  float DrawLegend(float w,float y,Hediff_Adventurer h,List<(LP_ClassDef c,AbilityDef a)> list){
+   y=LPUI.Bar(new Rect(0f,y,w,LPUI.RowH),"传奇职业能力（传奇职业点 "+ClassLegendary.Points(h)+"）",LPUI.Gold);
    foreach(var (c,a) in list){
-    var row=new Rect(r.x,y,r.width,44f);Widgets.DrawLightHighlight(row);
-    GUI.DrawTexture(new Rect(row.x+4f,row.y+4f,36f,36f),a.uiIcon??BaseContent.BadTex);
-    string why=ClassLegendary.CanLearn(h,c,a);bool ok=why==null;if(!ok)GUI.color=Color.gray;
-    Widgets.Label(new Rect(row.x+46f,row.y+2f,row.width-160f,22f),c.label+"·"+a.LabelCap+(ok?"":"　— "+why));
-    Text.Font=GameFont.Tiny;Widgets.Label(new Rect(row.x+46f,row.y+24f,row.width-160f,18f),(a.description??"").Truncate(row.width-160f));Text.Font=GameFont.Small;GUI.color=Color.white;
-    TooltipHandler.TipRegion(new Rect(row.x,row.y,row.width-110f,row.height),a.LabelCap+"\n\n"+a.description+"\n\n学会后"+c.label+"的资源上限 +"+ClassLegendary.ResourceBonus+"。");
-    string key="leg:"+a.defName;var b=new Rect(row.xMax-104f,row.y+7f,96f,30f);
-    if(Widgets.ButtonText(b,armed==key?"确定？":"学习",active:ok) && ok){if(armed==key){armed=null;ClassLegendary.Learn(h,c,a,true);}else armed=key;}
-    y+=46f;
+    var row=new Rect(0f,y,w,LegRowH);Widgets.DrawLightHighlight(row);
+    string why=ClassLegendary.CanLearn(h,c,a);bool ok=why==null;LPUI.Icon(new Rect(row.x+4f,row.y+6f,36f,36f),a.uiIcon,!ok);
+    var tr=new Rect(row.x+46f,row.y+3f,row.width-46f-92f,22f);if(!ok)GUI.color=LPUI.Locked;LPUI.LabelFit(tr,c.label+"·"+a.LabelCap);GUI.color=Color.white;
+    LPUI.Tiny(new Rect(row.x+46f,row.y+25f,row.width-46f-92f,20f),ok?(a.description??""):why,!ok);
+    TooltipHandler.TipRegion(new Rect(row.x,row.y,row.width-90f,row.height),a.LabelCap+"\n\n"+a.description+"\n\n学会后"+c.label+"的资源上限 +"+ClassLegendary.ResourceBonus+"。"+(ok?"":"\n\n"+why));
+    string key="leg:"+a.defName;
+    if(LPUI.Button(new Rect(row.xMax-86f,row.y+9f,80f,30f),armed==key?"确定？":"学习",ok,ok?(armed==key?"再点一次确认":"点两次确认"):why)){if(armed==key){armed=null;ClassLegendary.Learn(h,c,a,true);}else armed=key;}
+    y+=LegRowH+4f;
    }
-   return y+8f;
+   return y+LPUI.SectionGap-4f;
   }
-  void DrawRows(Rect r,float y,Hediff_Adventurer h,int pts){
+  void DrawRows(float w,float y,Hediff_Adventurer h){
    foreach(var c in ClassSystem.All){
-    var row=new Rect(r.x,y,r.width,100f);Widgets.DrawLightHighlight(row);
-    var icon=c.Background;if(icon!=null){GUI.color=new Color(1f,1f,1f,.85f);GUI.DrawTexture(new Rect(row.x+4f,row.y+4f,48f,92f),icon,ScaleMode.ScaleAndCrop);GUI.color=Color.white;}
+    var row=new Rect(0f,y,w,ClassRowH);LPUI.RowBg(row,c==selected);
     int lv=ClassSystem.Level(h,c);string why=ClassSystem.CanAdd(h,c);bool ok=why==null;
-    GUI.color=c.color;Widgets.Label(new Rect(row.x+60f,row.y+4f,260f,24f),c.LabelCap+(lv>0?" Lv "+lv:"（未学）"));GUI.color=Color.white;
-    if(lv>0)Widgets.Label(new Rect(row.x+300f,row.y+4f,160f,24f),ClassSystem.ResourceLabel(c.resource)+" "+ClassSystem.Resource(h,c).ToString("0.#")+" / "+ClassSystem.MaxResource(h,c));
-    Text.Font=GameFont.Tiny;
-    var next=c.abilities.Where(e=>e.level==lv+1).Select(e=>e.ability.label).ToList();
-    string line=ok?ClassLevelInfo.RowLine(pawn,h,c):null; // 1.89.0 部位生命 / 职业强度 现在 → 下一级
-    Widgets.Label(new Rect(row.x+60f,row.y+28f,row.width-180f,68f),(ok?"":"不能加："+why+"\n")+(next.Count>0?"下一级获得："+string.Join("、",next):"下一级没有新能力")+"\n"+c.SkillText+" "+c.SkillLevel(pawn)+" 级"+(line!=null?"\n"+line:""));
-    Text.Font=GameFont.Small;
-    {var tr=new Rect(row.x,row.y,row.width-110f,row.height);if(Mouse.IsOver(tr))TooltipHandler.TipRegion(tr,ClassLevelInfo.ClassTip(pawn,h,c)+"\n\n"+ClassLevelInfo.ResourceTip(h,c));}
-    string key=c.defName;var b=new Rect(row.xMax-104f,row.y+34f,96f,32f);
-    if(Widgets.ButtonText(b,armed==key?"确定？":lv>0?"+1 级":"学习",active:ok) && ok){if(armed==key){armed=null;ClassLevelInfo.AddLevel(h,c);}else armed=key;}
-    if(ok)TooltipHandler.TipRegion(b,armed==key?"再点一次确认":"点两次确认："+c.label+" "+(lv+1)+" 级");
-    y+=104f;
+    var icon=c.Background;if(icon!=null){GUI.color=new Color(1f,1f,1f,lv>0?.9f:.55f);GUI.DrawTexture(new Rect(row.x+4f,row.y+4f,40f,ClassRowH-8f),icon,ScaleMode.ScaleAndCrop);GUI.color=Color.white;}
+    float tx=row.x+52f,tw=row.width-52f-92f;
+    GUI.color=c.color;LPUI.LabelFit(new Rect(tx,row.y+3f,tw,22f),c.LabelCap+(lv>0?" Lv "+lv:"（未学）"));GUI.color=Color.white;
+    LPUI.Tiny(new Rect(tx,row.y+25f,tw,18f),lv>0 && c.resource!=ClassResource.None?ClassSystem.ResourceLabel(c.resource)+" "+ClassSystem.Resource(h,c).ToString("0.#")+" / "+ClassSystem.MaxResource(h,c)+"　"+c.SkillText+" "+c.SkillLevel(pawn)+" 级":c.SkillText+" "+c.SkillLevel(pawn)+" 级");
+    var next=c.abilities.Where(e=>e.level==lv+1 && e.ability!=null).Select(e=>e.ability.label).ToList();
+    LPUI.Tiny(new Rect(tx,row.y+43f,tw,32f),ok?(next.Count>0?"下一级获得："+string.Join("、",next):"下一级没有新职业能力"):"不能加："+why,!ok);
+    string key=c.defName;var b=new Rect(row.xMax-86f,row.y+(ClassRowH-32f)/2f,80f,32f);
+    if(LPUI.Button(b,armed==key?"确定？":lv>0?"+1 级":"学习",ok,ok?(armed==key?"再点一次确认":"点两次确认："+c.label+" "+(lv+1)+" 级"):why)){if(armed==key){armed=null;ClassLevelInfo.AddLevel(h,c);}else armed=key;selected=c;}
+    var tr=new Rect(row.x,row.y,row.width-90f,row.height);
+    if(Mouse.IsOver(tr))TooltipHandler.TipRegion(tr,ClassLevelInfo.ClassTip(pawn,h,c)+"\n\n"+ClassLevelInfo.ResourceTip(h,c));
+    if(Widgets.ButtonInvisible(tr)){if(selected!=c)scrollR=Vector2.zero;selected=c;}
+    y+=ClassRowH+4f;
    }
+  }
+  void DrawRight(Rect outer,Hediff_Adventurer h){
+   var c=selected;if(c==null){LPUI.Unavailable(outer,"没有职业");return;}
+   var view=new Rect(0f,0f,outer.width-LPUI.ScrollBarW,Mathf.Max(rightH,outer.height-1f));
+   Widgets.BeginScrollView(outer,ref scrollR,view);
+   try{
+    float w=view.width,y=0f;int lv=ClassSystem.Level(h,c);
+    var icon=c.Background;if(icon!=null)GUI.DrawTexture(new Rect(0f,0f,48f,72f),icon,ScaleMode.ScaleAndCrop);
+    Text.Font=GameFont.Medium;GUI.color=c.color;LPUI.LabelFit(new Rect(56f,0f,w-56f,32f),c.LabelCap+(lv>0?" Lv "+lv:"（未学）"));GUI.color=Color.white;Text.Font=GameFont.Small;
+    string res=c.resource==ClassResource.None?"无职业资源":ClassSystem.ResourceLabel(c.resource)+(lv>0?" "+ClassSystem.Resource(h,c).ToString("0.#")+" / "+ClassSystem.MaxResource(h,c):"")+(ClassLevelInfo.ResourceFormula(c) is string f?"（"+f+"）":"");
+    LPUI.LabelFit(new Rect(56f,34f,w-56f,LPUI.RowH),res,ClassLevelInfo.ResourceTip(h,c));
+    LPUI.Tiny(new Rect(56f,56f,w-56f,18f),c.SkillText+" "+c.SkillLevel(pawn)+" 级",false,ClassLevelInfo.ClassTip(pawn,h,c));
+    y=78f;
+    if(Adventurer.Enabled && lv<ClassSystem.CapLevel && ClassSystem.CanAdd(h,c)==null){
+     int al=ClassLevelInfo.NextAdventurerLevel(h);
+     y=LPUI.Bar(new Rect(0f,y,w,LPUI.RowH),"下一级（"+c.label+" Lv "+(lv+1)+(al>h.level?"，冒险者需先升到 "+al+" 级":"")+"）");
+     Text.Font=GameFont.Tiny;y+=LPUI.Para(6f,y,w-6f,string.Join("\n",ClassLevelInfo.NextLines(pawn,h,c,al).Select(x=>"· "+x)))+LPUI.Gap;Text.Font=GameFont.Small;
+    }
+    y=LPUI.Bar(new Rect(0f,y,w,LPUI.RowH),"法术与能力一览",LPUI.Gold,"按职业等级列出每级获得的能力和法术：已获得的高亮，未获得的灰显并写所需等级。悬停看完整说明。");
+    y=ClassOverview.Draw(0f,y,w,Rows(h),h,c);
+    rightH=y+LPUI.Gap;
+   }finally{Widgets.EndScrollView();}
   }
  }
 

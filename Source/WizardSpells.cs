@@ -17,8 +17,8 @@ namespace LichPhylactery {
  public static class WizardSpells {
   public static readonly Color Arcane=new Color(.7f,.5f,1f);
   static int Now=>Find.TickManager.TicksGame;
-  static bool Hostile(Pawn a,Pawn t)=>t!=null && t!=a && !t.Dead && t.HostileTo(a);
-  static bool Friendly(Pawn a,Pawn t)=>t!=null && !t.Dead && !t.HostileTo(a);
+  static bool Hostile(Pawn a,Pawn t)=>AnyTarget.Hostile(a,t); // 1.136.0 热修：手动选的目标不分敌我
+  static bool Friendly(Pawn a,Pawn t)=>AnyTarget.Friendly(a,t);
   static IEnumerable<Pawn> Near(Map m,IntVec3 c,float r)=>m==null?Enumerable.Empty<Pawn>():Races124.PawnsNear(m,c,r);
   public static float? RollOverride;static float Roll=>RollOverride??Rand.Value;
   public static float Chance(float b,Pawn caster,Pawn t){float c=Subclass2.Chance(b,caster,t)+CasterSpells.ChanceBonus(caster); /* 1.130.0 超魔·穿透 */if(ClassSubclass.Bossy(t))c*=.5f;return Mathf.Max(.05f,c);}

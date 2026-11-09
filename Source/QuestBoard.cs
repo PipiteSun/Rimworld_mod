@@ -102,6 +102,7 @@ namespace LichPhylactery {
    c.goods=RollGoods(budget,out int extra);
    c.silver=Mathf.RoundToInt((TierSilver[c.tier-1]*KindMult(c.kind)*SilverShare+extra)/10f)*10;
    c.items=RollItems(c.tier,c.kind==Monster?QuestBoardMonsters.MonsterDndBonus:0f);
+   if(Rand.Chance(.05f)){var seal=LakeSeals.Crystals.Where(d=>LakeSeals.Ext(LakeSeals.AbilityOf(d))?.tier<=2).RandomElementWithFallback();if(seal!=null)c.items.Add(seal.defName);} // 1.133.0 一二阶湖印结晶 5% 进奖励
    // 原版生成器偶尔什么都给不出（被别的模组过滤空了）：那就照旧全给银子。
    if(c.goods.Count==0)c.silver+=Mathf.RoundToInt(budget/10f)*10;
   }

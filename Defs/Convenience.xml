@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.136.0 便利三件：怪物图鉴的主界面按钮（Source/Bestiary.cs）。自动施法与资源条在 Source/AutoCastPlus.cs，DND 角色卡在 Source/DndCard.cs。 -->
+<Defs>
+  <MainButtonDef>
+    <defName>LP_Bestiary</defName>
+    <label>怪物图鉴</label>
+    <description>殖民地记录的本模组怪物、野兽、传奇兽和真龙：击杀越多，知道得越多。</description>
+    <tabWindowClass>LichPhylactery.MainTabWindow_Bestiary</tabWindowClass>
+    <order>95</order>
+    <buttonVisible>true</buttonVisible>
+  </MainButtonDef>
+</Defs>

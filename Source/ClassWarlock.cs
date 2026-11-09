@@ -112,7 +112,7 @@ namespace LichPhylactery {
   }
 
   // ---------- 主动能力 ----------
-  static bool Hostile(Pawn a,Pawn t)=>t!=null && t!=a && !t.Dead && t.HostileTo(a);
+  static bool Hostile(Pawn a,Pawn t)=>AnyTarget.Hostile(a,t); // 1.136.0 热修：手动选的目标不分敌我
   static IEnumerable<Pawn> Near(Pawn p,IntVec3 c,float r)=>p.Map==null?Enumerable.Empty<Pawn>():Races124.PawnsNear(p.Map,c,r);
   static bool Boss(Pawn t)=>ClassLegendary.Boss(t) || Legendary.Is(t);
   static readonly HashSet<string> Known=new HashSet<string>{"EldritchBlast","WLDarkness","WLHex","WLDominate","WLForceCage","WLMaster","WLRebuke","WLHurl","WLFeyPresence","WLDelirium","WLWhispers","WLThrall"};

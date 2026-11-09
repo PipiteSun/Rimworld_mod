@@ -14,6 +14,8 @@ namespace LichPhylactery {
  // 派系与货单在 Defs/ManaLake.xml；能力在 Defs/ManaLake_Arcana.xml，结晶在 Defs/ManaLake_Crystals.xml（ArtSource/ManaLake/gen_crystals.ps1 生成）；效果在 ManaLakeEffects.cs。
  public class ArcanumExt : DefModExtension {
   public int ring=6;public LP_ClassDef cls;
+  public string ability="Any",kind="spell";public int price; // 1.133.0 通用秘传（cls 为空）：施法属性（Int / Wis / Cha / Str / Dex / Any）、类别（spell / martial / passive）、价格
+  public bool Universal=>cls==null;public bool Martial=>kind=="martial";public bool Passive=>kind=="passive";
   public override IEnumerable<string> ConfigErrors(){foreach(var e in base.ConfigErrors())yield return e;if(ring<6 || ring>9)yield return "arcanum ring must be 6..9";}
  }
  public class CompProperties_Arcanum : CompProperties_UseEffect {
@@ -26,7 +28,8 @@ namespace LichPhylactery {
   public override AcceptanceReport CanBeUsedBy(Pawn p){var r=LakeArcana.CannotLearn(p,Props.ability);return r!=null?(AcceptanceReport)r:base.CanBeUsedBy(p);}
   public override void DoEffect(Pawn usedBy){
    base.DoEffect(usedBy);
-   if(!LakeArcana.Learn(usedBy,Props.ability,true))return;
+   if(LakeArcana.Ext(Props.ability)?.Universal==true){if(!LakeLore.TryAbsorb(usedBy,Props.ability,Rand.Value,true))return;} // 1.133.0 通用秘传：按成功率吸收，失败结晶不碎
+   else if(!LakeArcana.Learn(usedBy,Props.ability,true))return;
    if(parent.stackCount>1)parent.SplitOff(1).Destroy();else parent.Destroy();
   }
   public override TaggedString ConfirmMessage(Pawn p)=>null;
@@ -69,6 +72,7 @@ namespace LichPhylactery {
    if(h.classes==null)h.classes=new ClassData();
    if(Knows(h,d))return "已经学会「"+d.label+"」";
    if(e.cls!=null){int need=ClassLevelFor(e.ring);if(ClassSystem.Level(h,e.cls)<need)return "需要"+e.cls.label+" "+need+" 级（"+e.ring+" 环职业水晶）";}
+   else{var why=LakeLore.CannotLearn(p,h,e);if(why!=null)return why;} // 1.133.0 通用秘传的等级 / 属性 / 武技门槛、失败后 7 天
    int slots=Slots(h);if(slots<=0)return "冒险者 "+SlotLevels[0]+" 级才有秘传槽";
    if(Used(h)>=slots)return "秘传槽已满（"+Used(h)+" / "+slots+"）";
    return null;
@@ -92,6 +96,7 @@ namespace LichPhylactery {
   public static bool Touched;
   public static void Reset(){Touched=false;all=null;crystals=null;}
   public static string CannotCast(Pawn p,AbilityDef def){
+   if(LakeLore.Live){var lw=LakeLore.CannotCast(p,def)??LakeSeals.CannotCast(p,def);if(lw!=null)return lw;} // 1.133.0 沉默、湖息
    if(!Is(def))return null;var h=Adventurer.Get(p);if(h?.classes==null)return null;
    int left=h.classes.arcanaLast+PublicCooldown-Find.TickManager.TicksGame;
    if(h.classes.arcanaLast>0 && left>0)return "秘传公共冷却（还要 "+left.ToStringTicksToPeriod()+"）";
@@ -119,8 +124,10 @@ namespace LichPhylactery {
 
   // ---------- 被动（每 250 刻） ----------
   public static void Passives(Hediff_Adventurer h){
-   var p=h?.pawn;if(p==null || p.Dead || h.classes?.arcana==null || h.classes.arcana.Count==0)return;
-   Touched=true;
+   var p=h?.pawn;if(p==null || p.Dead)return;
+   if(h.classes?.lake!=null)LakeSeals.Tick250(h); // 1.133.0 湖息回复、湖印被动
+   if(h.classes?.arcana==null || h.classes.arcana.Count==0)return;
+   Touched=true;LakeLore.Tick250(h); // 1.133.0 通用秘传被动
    bool cloud=Has(p,"CloudBody");if(cloud && !Items.Has(p,"LP_ACP_CloudBody"))Items.Give(p,"LP_ACP_CloudBody");else if(!cloud)Items.Remove(p,"LP_ACP_CloudBody");
    ArcanaEffects.Tick250(h);
   }
@@ -152,15 +159,15 @@ namespace LichPhylactery {
  }
 
  public class StockGenerator_Arcana : StockGenerator {
-  public IntRange rings=new IntRange(6,7);public int minGoodwill=75;public float classBias=.5f;
+  public IntRange rings=new IntRange(6,7);public int minGoodwill=75;public float classBias=.5f;public bool universal; // 1.133.0 universal=true 出通用秘传（不含许愿术），否则只出职业水晶
   public static int? TestGoodwill;
-  public IEnumerable<ThingDef> Pool=>LakeArcana.Crystals.Where(d=>{var e=LakeArcana.Ext(LakeArcana.AbilityOf(d));return e!=null && e.ring>=rings.min && e.ring<=rings.max && d.tradeability.TraderCanSell();});
+  public IEnumerable<ThingDef> Pool=>LakeArcana.Crystals.Where(d=>{var a=LakeArcana.AbilityOf(d);var e=LakeArcana.Ext(a);return e!=null && e.Universal==universal && a.defName!=LakeLore.WishName && e.ring>=rings.min && e.ring<=rings.max && d.tradeability.TraderCanSell();});
   public override IEnumerable<Thing> GenerateThings(PlanetTile forTile,Faction faction=null){
    int gw=TestGoodwill??ManaLake.Goodwill(faction??ManaLake.Faction);if(gw<minGoodwill)yield break;
    var pool=Pool.ToList();var mine=LakeArcana.ColonyClasses();
    int n=countRange.RandomInRange;
    for(int i=0;i<n && pool.Count>0;i++){
-    var biased=mine.Count>0 && Rand.Chance(classBias)?pool.Where(d=>mine.Contains(LakeArcana.Ext(LakeArcana.AbilityOf(d)).cls)).ToList():null;
+    var biased=!universal && mine.Count>0 && Rand.Chance(classBias)?pool.Where(d=>mine.Contains(LakeArcana.Ext(LakeArcana.AbilityOf(d)).cls)).ToList():null;
     var pick=(biased!=null && biased.Count>0?biased:pool).RandomElement();pool.Remove(pick);
     yield return ThingMaker.MakeThing(pick);
    }
@@ -170,7 +177,11 @@ namespace LichPhylactery {
 
  // 学过秘传的人读档后重新打开挂钩；新游戏清空缓存。
  public class GameComponent_Arcana : GameComponent {
-  public GameComponent_Arcana(Game g){}
-  public override void FinalizeInit(){LakeArcana.Reset();ArcanaEffects.Reset();}
+  public bool wishSeen; // 1.133.0 许愿术结晶每个存档最多上架一次
+  public static GameComponent_Arcana Instance;
+  public GameComponent_Arcana(Game g){Instance=this;LakeLore.Reset();}
+  public override void FinalizeInit(){Instance=this;LakeArcana.Reset();ArcanaEffects.Reset();LakeLore.Reset();LakeLore.Rescan();}
+  public override void GameComponentTick(){if(LakeTime.Active)LakeTime.Tick();}
+  public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref wishSeen,"lpWishSeen");}
  }
 }

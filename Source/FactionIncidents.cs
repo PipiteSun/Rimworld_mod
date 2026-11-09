@@ -21,7 +21,7 @@ namespace LichPhylactery {
    l.CheckboxLabeled("幽暗殖巢",ref s.factionIllithid,"夺心魔和被支配的奴仆，会从地下钻出。");
    l.CheckboxLabeled("黑网",ref s.factionBlackNet,"隐藏的走私商队，大约每季来一次。");
    l.CheckboxLabeled("红鹰商业联盟",ref s.factionRedHawk,"（1.64.0）中立的贸易联盟：奴隶商队（十几个不同种族）、魔法材料商队、契约卷轴商队，还有据点和飞空商船。");
-   l.CheckboxLabeled("魔力湖泊",ref s.factionManaLake,"（1.100.0）中立的湖畔法术匠人：出售秘传结晶（职业水晶要和他们结盟），塞伊远征军和猎巫狂热分子是他们的死敌。");
+   l.CheckboxLabeled("魔力湖泊",ref s.factionManaLake,"（1.100.0）中立的湖畔法术匠人：出售秘传结晶（职业水晶要和他们结盟），塞伊远征军和猎巫狂热分子是他们的死敌。");LakeSettings.Draw(l); // 1.133.0 湖印槽位倍率
    l.GapLine();
    l.CheckboxLabeled("竖琴手袭击预警",ref s.harperWarning,"与费伦拓荒同盟好感≥60时，大型敌对袭击推迟1～2天落地，并提前来信说明来自哪个派系。");
    l.CheckboxLabeled("斩首：符印巨魔狂暴",ref s.decapTrollBerserk,"红袍法师倒下时，他的符印巨魔失控狂暴、攻击所有人。关闭后改为逃跑。");

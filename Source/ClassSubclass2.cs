@@ -47,8 +47,8 @@ namespace LichPhylactery {
   static float Roll=>ClassMartial2.RollOverride??Rand.Value;
   static bool Ready(SubclassData d,string key,int ticks){if(d==null)return false;d.ticks.TryGetValue(key,out int t);int now=Now;return t<=0 || now-t>=ticks || now<t;}
   static void Use(SubclassData d,string key){if(d!=null)d.ticks[key]=Math.Max(1,Now);}
-  static bool Hostile(Pawn a,Pawn t)=>t!=null && t!=a && !t.Dead && t.HostileTo(a);
-  static bool Friendly(Pawn a,Pawn t)=>t!=null && !t.Dead && !t.HostileTo(a);
+  static bool Hostile(Pawn a,Pawn t)=>AnyTarget.Hostile(a,t); // 1.136.0 热修：手动选的目标不分敌我
+  static bool Friendly(Pawn a,Pawn t)=>AnyTarget.Friendly(a,t);
   static bool Ally(Pawn a,Pawn t)=>t!=null && !t.Dead && t.Faction!=null && t.Faction==a.Faction && !t.HostileTo(a);
   static IEnumerable<Pawn> Near(Pawn p,IntVec3 c,float r)=>p.Map==null?Enumerable.Empty<Pawn>():Races124.PawnsNear(p.Map,c,r);
   static bool Boss(Pawn t)=>ClassSubclass.Bossy(t);

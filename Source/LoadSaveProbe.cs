@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using HarmonyLib;
 using RimWorld;
 using Verse;
@@ -33,6 +34,12 @@ namespace LichPhylactery {
    }
    if(frames==200)UnityEngine.ScreenCapture.CaptureScreenshot(Path.Combine(GenFilePaths.SaveDataFolderPath,"LoadSave-pawns.png"));
    if(frames==260)Find.TickManager.CurTimeSpeed=TimeSpeed.Superfast;
+   if(frames==300){ // 1.136.0 热修：和地图上的商人建立交易（同交易窗口），确认不再空引用
+    var map=Find.CurrentMap;var trader=map?.mapPawns.AllPawnsSpawned.FirstOrDefault(p=>p.trader?.traderKind!=null && p.CanTradeNow);var neg=map?.mapPawns.FreeColonistsSpawned.FirstOrDefault();
+    if(trader==null || neg==null)Log.Message("[LICH-TRADE] no trader on map ("+(trader==null?"trader":"negotiator")+" missing)");
+    else{try{TradeSession.SetupWith(trader,neg,false);Log.Message("[LICH-TRADE] trade with "+trader.LabelShort+" ("+trader.Faction?.Name+", "+trader.TraderKind?.defName+") ok: "+TradeSession.deal.AllTradeables.Count+" tradeables");TradeSession.Close();}
+     catch(Exception e){Log.Error("[LICH-TRADE] trade with "+trader.LabelShort+" failed: "+e);}}
+   }
    if(frames<1500)return;done=true;
    string res="PASS: loaded save "+Name+", ran "+Find.TickManager.TicksGame+" ticks game time, maps "+Find.Maps.Count;
    File.WriteAllText(Path.Combine(GenFilePaths.SaveDataFolderPath,"LichResult.txt"),res);Log.Message("[LICH-TEST] "+res);

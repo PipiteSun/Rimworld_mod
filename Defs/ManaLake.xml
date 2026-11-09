@@ -247,6 +247,20 @@
         <rings>6~7</rings>
         <minGoodwill>75</minGoodwill>
       </li>
+      <!-- 1.133.0 湖印 3～4 枚（不重复，三阶要盟友）、澄湖结晶；盟友时 0～1 枚 6～7 环通用秘传 -->
+      <li Class="LichPhylactery.StockGenerator_LakeSeal">
+        <countRange>3~4</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>LP_ClearLakeCrystal</thingDef>
+        <countRange>1~2</countRange>
+      </li>
+      <li Class="LichPhylactery.StockGenerator_Arcana">
+        <countRange>0~1</countRange>
+        <rings>6~7</rings>
+        <minGoodwill>75</minGoodwill>
+        <universal>true</universal>
+      </li>
       <li Class="StockGenerator_Tag">
         <tradeTag>LP_Scroll</tradeTag>
         <thingDefCountRange>2~3</thingDefCountRange>
@@ -281,6 +295,27 @@
         <rings>8~9</rings>
         <minGoodwill>75</minGoodwill>
       </li>
+      <!-- 1.133.0 湖印 6～8 枚、澄湖结晶；盟友时通用秘传 6～7 环 1～2 枚、8～9 环 0～1 枚；许愿术：好感 100 时 10%，每个存档最多一次 -->
+      <li Class="LichPhylactery.StockGenerator_LakeSeal">
+        <countRange>6~8</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>LP_ClearLakeCrystal</thingDef>
+        <countRange>2~3</countRange>
+      </li>
+      <li Class="LichPhylactery.StockGenerator_Arcana">
+        <countRange>1~2</countRange>
+        <rings>6~7</rings>
+        <minGoodwill>75</minGoodwill>
+        <universal>true</universal>
+      </li>
+      <li Class="LichPhylactery.StockGenerator_Arcana">
+        <countRange>0~1</countRange>
+        <rings>8~9</rings>
+        <minGoodwill>75</minGoodwill>
+        <universal>true</universal>
+      </li>
+      <li Class="LichPhylactery.StockGenerator_LoreWish" />
       <li Class="StockGenerator_Tag">
         <tradeTag>LP_Scroll</tradeTag>
         <thingDefCountRange>3~4</thingDefCountRange>

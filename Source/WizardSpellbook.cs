@@ -362,7 +362,7 @@ namespace LichPhylactery {
   }
   // 敌方施法者死亡 15% 掉一张残页（按等级决定最高环）。
   public const float PageDrop=.15f;
-  public static ThingDef PageDef(int circle)=>DefCache<ThingDef>.Get("LP_WS_SpellPage"+Mathf.Clamp(circle,1,3));
+  public static ThingDef PageDef(int circle)=>DefCache<ThingDef>.Get("LP_WS_SpellPage"+"ABC"[Mathf.Clamp(circle,1,3)-1]); // 1.136.0 热修：defName 不能以数字结尾（原版把物品 ID 尾部的数字全当编号，SpellPage1 + 110 读回来成了 1110）
   public static Thing MakePage(int circle,AbilityDef spell=null){
    var def=PageDef(circle);if(def==null)return null;var t=ThingMaker.MakeThing(def);var c=t.TryGetComp<CompSpellPage>();if(c!=null && spell!=null)c.spell=spell;return t;
   }

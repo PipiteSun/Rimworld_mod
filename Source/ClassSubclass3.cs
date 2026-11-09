@@ -29,7 +29,7 @@ namespace LichPhylactery {
   public static bool S(Pawn p,int f)=>(Flags(p) & f)!=0;
   static int Now=>Find.TickManager.TicksGame;
   static float Roll=>ClassMartial2.RollOverride??Rand.Value;
-  static bool Hostile(Pawn a,Pawn t)=>t!=null && t!=a && !t.Dead && t.HostileTo(a);
+  static bool Hostile(Pawn a,Pawn t)=>AnyTarget.Hostile(a,t); // 1.136.0 热修：手动选的目标不分敌我
   static bool Mine(Hediff_Adventurer h)=>ClassSubclass.Has(h,Shadow) || ClassSubclass.Has(h,OpenHand) || ClassSubclass.Has(h,Evocation) || ClassSubclass.Has(h,Scribes) || ClassSubclass.Has(h,Dragon) || ClassSubclass.Has(h,Land) || ClassSubclass.Has(h,Spores) || ClassSubclass.Has(h,Stars) || ClassSubclass.Has(h,Life) || ClassSubclass.Has(h,Light) || ClassSubclass.Has(h,Forge);
   static void Passive(Pawn p,string hediff,bool on){if(on){if(!Items.Has(p,hediff))Items.Give(p,hediff);}else if(Items.Has(p,hediff))Items.Remove(p,hediff);}
   public static bool DarkCell(Map map,IntVec3 c)=>map!=null && c.InBounds(map) && map.glowGrid.GroundGlowAt(c)<DarkGlow;

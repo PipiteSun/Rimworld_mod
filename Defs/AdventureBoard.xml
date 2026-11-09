@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.134.0 冒险委托板（Source/AdventureBoard.cs）：冒险者告示板每 5 天（设置 3 / 5 / 10）贴出 3 条委托，同时最多接 2 条；
+     接下后世界地图上 2～8 格出现地点，7 天内完成，失败名声 -3。委托类型是 Def + Worker（LP_AdventureKindDef），以后的组织声望、闲暇活动、神祇任务可以往里加类型。
+     不依赖 Isekai，也和 1.71.0 的探索公告板互不影响。 -->
+<Defs>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_AdventurerBoard</defName>
+    <label>冒险者告示板</label>
+    <description>一块钉着悬赏和求助信的告示板。附近的村镇、商旅、通缉令和魔力湖泊的湖民会把需要冒险者的活计贴在这里：清剿怪物巢穴、讨伐通缉犯、救援被困的冒险者、寻回失物、调查闹鬼的废墟。\n\n选中后「查看委托」：每 5 天换 3 条委托，显示推荐等级和危险度；接下后世界地图上出现地点，7 天内完成。完成委托给参与者冒险者经验、银子、卷轴，并提高殖民地的名声——名声越高，危险的委托越多、报酬越好。每张地图只能放一块。</description>
+    <thingClass>LichPhylactery.Building_AdventurerBoard</thingClass>
+    <graphicData>
+      <texPath>LP/QuestBoard/QuestBoard</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(2,2)</drawSize>
+      <drawOffsetSouth>(0,0,0.35)</drawOffsetSouth>
+      <drawOffsetNorth>(0,0,0.35)</drawOffsetNorth>
+      <shadowData><volume>(0.4,0.4,1.6)</volume></shadowData>
+    </graphicData>
+    <size>(1,2)</size>
+    <rotatable>true</rotatable>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>1800</WorkToBuild>
+      <Mass>20</Mass>
+      <Flammability>1.0</Flammability>
+      <Beauty>3</Beauty>
+    </statBases>
+    <stuffCategories>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>50</costStuffCount>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories><li>BuildingsMisc</li></thingCategories>
+    <designationCategory>Misc</designationCategory>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <placeWorkers><li>LichPhylactery.PlaceWorker_OnePerMap</li></placeWorkers>
+  </ThingDef>
+
+  <!-- 委托地点：没有派系的通用站点，地图内容由 GenStep_AdventureSite 按委托类型的 Worker 生成。 -->
+  <SitePartDef>
+    <defName>LP_AB_Site</defName>
+    <label>委托地点</label>
+    <description>冒险者告示板上委托的目的地。</description>
+    <workerClass>SitePartWorker</workerClass>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
+    <expandingIconTexture>World/WorldObjects/Expanding/Sites/Manhunters</expandingIconTexture>
+    <requiresFaction>false</requiresFaction>
+    <approachOrderString>前往{0}</approachOrderString>
+    <approachingReportString>正在前往{0}。</approachingReportString>
+    <arrivedLetter>这里就是委托的地点。完成目标后，委托会自动结算。</arrivedLetter>
+    <arrivedLetterDef>ThreatBig</arrivedLetterDef>
+    <wantsThreatPoints>true</wantsThreatPoints>
+    <considerEnteringAsAttack>true</considerEnteringAsAttack>
+  </SitePartDef>
+  <GenStepDef>
+    <defName>LP_AB_Site</defName>
+    <linkWithSite>LP_AB_Site</linkWithSite>
+    <order>1600</order>
+    <genStep Class="LichPhylactery.GenStep_AdventureSite" />
+  </GenStepDef>
+
+  <QuestScriptDef>
+    <defName>LP_AdventureContract</defName>
+    <label>冒险委托</label>
+    <isRootSpecial>true</isRootSpecial>
+    <autoAccept>false</autoAccept>
+    <sendAvailableLetter>false</sendAvailableLetter>
+    <defaultChallengeRating>1</defaultChallengeRating>
+    <root Class="QuestNode_Sequence"><nodes /></root>
+  </QuestScriptDef>
+
+  <!-- 寻回失物：要带回殖民地的遗物 -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_AB_LostRelic</defName>
+    <label>委托遗物</label>
+    <description>委托人遗失的家传遗物，被一伙人看守着。带回殖民地（放在殖民地地图上或拿在殖民者身上）委托就算完成，遗物会交还给委托人。</description>
+    <graphicData><texPath>LP/Items/ArcanumCrystal</texPath><graphicClass>Graphic_Single</graphicClass><color>(0.9,0.75,0.4)</color></graphicData>
+    <stackLimit>1</stackLimit>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>Items</li></thingCategories>
+    <tradeability>None</tradeability>
+    <statBases><Mass>1</Mass><MaxHitPoints>300</MaxHitPoints><Flammability>0</Flammability><MarketValue>10</MarketValue><DeteriorationRate>0</DeteriorationRate></statBases>
+    <alwaysHaulable>true</alwaysHaulable>
+  </ThingDef>
+
+  <!-- 调查闹鬼废墟：可摧毁的亡灵之源 -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_AB_UndeadSource</defName>
+    <label>亡灵之源</label>
+    <description>一块渗着死气的黑色方尖碑，附近的死者因它不得安息。摧毁它，闹鬼的废墟就会平静下来。</description>
+    <thingClass>Building</thingClass>
+    <graphicData><texPath>LP/Arcana/ForceFieldPylon</texPath><graphicClass>Graphic_Single</graphicClass><color>(0.35,0.6,0.35)</color><drawSize>(1.3,1.3)</drawSize></graphicData>
+    <size>(1,1)</size>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>Impassable</passability>
+    <fillPercent>0.6</fillPercent>
+    <statBases><MaxHitPoints>500</MaxHitPoints><Flammability>0</Flammability><Beauty>-20</Beauty></statBases>
+    <building><claimable>false</claimable><deconstructible>false</deconstructible><isInert>true</isInert></building>
+    <killedLeavings><Steel>15</Steel></killedLeavings>
+    <rotatable>false</rotatable>
+  </ThingDef>
+
+  <!-- 委托类型（Def + Worker）：weight = 刷新时的权重；legendary = 只在名声「传奇」时偶尔出现。 -->
+  <LichPhylactery.AdventureKindDef>
+    <defName>LP_AK_Lair</defName>
+    <label>清剿怪物巢穴</label>
+    <description>荒野里的怪物筑了巢，威胁着往来的商旅。消灭地点里所有怪物（杀死或打倒）就算完成。</description>
+    <workerClass>LichPhylactery.AdventureWorker_Lair</workerClass>
+    <weight>1.2</weight>
+  </LichPhylactery.AdventureKindDef>
+  <LichPhylactery.AdventureKindDef>
+    <defName>LP_AK_Bounty</defName>
+    <label>讨伐通缉犯</label>
+    <description>一名带职业的敌对首领带着护卫藏身荒野。击杀或俘获首领就算完成；俘获（关进殖民地的囚室）报酬 ×1.25。</description>
+    <workerClass>LichPhylactery.AdventureWorker_Bounty</workerClass>
+  </LichPhylactery.AdventureKindDef>
+  <LichPhylactery.AdventureKindDef>
+    <defName>LP_AK_Rescue</defName>
+    <label>救援被困冒险者</label>
+    <description>一名冒险者倒在荒野里，四周围着怪物。把他救回殖民地（活着带到殖民地地图上）就算完成，之后可以招募他，或者领一笔赏金。</description>
+    <workerClass>LichPhylactery.AdventureWorker_Rescue</workerClass>
+  </LichPhylactery.AdventureKindDef>
+  <LichPhylactery.AdventureKindDef>
+    <defName>LP_AK_Recover</defName>
+    <label>寻回失物</label>
+    <description>委托人的遗物落在一伙人手里。把遗物带回殖民地就算完成。</description>
+    <workerClass>LichPhylactery.AdventureWorker_Recover</workerClass>
+  </LichPhylactery.AdventureKindDef>
+  <LichPhylactery.AdventureKindDef>
+    <defName>LP_AK_Haunted</defName>
+    <label>调查闹鬼废墟</label>
+    <description>废墟里的死者爬了起来。摧毁亡灵之源就算完成。</description>
+    <workerClass>LichPhylactery.AdventureWorker_Haunted</workerClass>
+  </LichPhylactery.AdventureKindDef>
+  <LichPhylactery.AdventureKindDef>
+    <defName>LP_AK_Legend</defName>
+    <label>讨伐传奇魔物</label>
+    <description>传说中的魔物出现了。消灭（或赶走）地点里所有敌人就算完成。只有名声达到「传奇」时偶尔出现。</description>
+    <workerClass>LichPhylactery.AdventureWorker_Legend</workerClass>
+    <legendary>true</legendary>
+  </LichPhylactery.AdventureKindDef>
+</Defs>

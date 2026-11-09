@@ -18,8 +18,8 @@ namespace LichPhylactery {
   public static int Live; // Hediff_CS 的数量（伤害钩子快速返回）
   static readonly Color C=new Color(.55f,.8f,1f),Holy=new Color(1f,.92f,.6f),Nature=new Color(.55f,.85f,.45f),Dark=new Color(.6f,.45f,.8f);
   static int Now=>Find.TickManager.TicksGame;
-  static bool Hostile(Pawn a,Pawn t)=>t!=null && t!=a && !t.Dead && t.HostileTo(a);
-  static bool Friendly(Pawn a,Pawn t)=>t!=null && !t.Dead && !t.HostileTo(a);
+  static bool Hostile(Pawn a,Pawn t)=>AnyTarget.Hostile(a,t); // 1.136.0 热修：手动选的目标不分敌我
+  static bool Friendly(Pawn a,Pawn t)=>AnyTarget.Friendly(a,t);
   static List<Pawn> Near(Map m,IntVec3 c,float r)=>m==null || !c.IsValid?new List<Pawn>():Races124.PawnsNear(m,c,r).ToList();
   public static float? RollOverride;static float Roll=>RollOverride??Rand.Value;
   static CasterSpellExt X(AbilityDef d)=>CasterSpells.CExt(d)??Empty;static readonly CasterSpellExt Empty=new CasterSpellExt();

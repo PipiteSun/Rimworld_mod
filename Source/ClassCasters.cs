@@ -13,8 +13,8 @@ namespace LichPhylactery {
  // 由 ClassEffects.Apply / Invalid 转过来（effect 名字见 Defs/Classes2.xml）；施放后的处理（超魔、魔涌、召雷冷却、魔网之子 / 仪式余韵）在 AfterCast。
  public static class ClassCasters {
   public static readonly Color Arcane=new Color(.7f,.5f,1f),Divine=new Color(1f,.9f,.5f),Nature=new Color(.55f,.85f,.45f),Chaos=new Color(.9f,.45f,.75f),Artisan=new Color(.95f,.8f,.45f);
-  static bool Hostile(Pawn caster,Pawn t)=>t!=null && t!=caster && !t.Dead && t.HostileTo(caster);
-  static bool Friendly(Pawn caster,Pawn t)=>t!=null && !t.Dead && !t.HostileTo(caster);
+  static bool Hostile(Pawn caster,Pawn t)=>AnyTarget.Hostile(caster,t); // 1.136.0 热修：手动选的目标不分敌我
+  static bool Friendly(Pawn caster,Pawn t)=>AnyTarget.Friendly(caster,t);
   static float Stat(Pawn p,CompProperties_ClassEffect e)=>ClassSystem.StatValue(p,e);
 
   // ---------- 选目标 ----------

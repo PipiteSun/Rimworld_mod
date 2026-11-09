@@ -23,7 +23,7 @@ namespace LichPhylactery {
   public static bool S(Pawn p,int f)=>(Flags(p) & f)!=0;
   static float Roll=>ClassMartial2.RollOverride??Rand.Value;
   static int Now=>Find.TickManager.TicksGame;
-  static bool Hostile(Pawn a,Pawn t)=>t!=null && t!=a && !t.Dead && t.HostileTo(a);
+  static bool Hostile(Pawn a,Pawn t)=>AnyTarget.Hostile(a,t); // 1.136.0 热修：手动选的目标不分敌我
   static float Divine(Pawn p){var s=DefCache<StatDef>.Get("LP_DivinePower");return s==null?1f:p.GetStatValue(s);}
   static DamageDef Necrotic=>DefCache<DamageDef>.Get("LP_Necrotic")??DamageDefOf.Burn;
   // 亡者或邪魔：巫妖、构装 / 死灵造物、异象的蹒跚尸等变异体、死亡骑士、半巫妖、深渊与九狱的异界生物。

@@ -21,6 +21,7 @@ namespace LichPhylactery {
     if(own && pts>0 && Widgets.ButtonText(new Rect(w-124f,y,124f,26f),"选择职业"))Find.WindowStack.Add(new Dialog_ChooseClass(p));}
    y+=30f;
    if(LakeArcana.Slots(h)>0){var ar=new Rect(0f,y,w,22f);GUI.color=new Color(.55f,.8f,1f);Widgets.Label(ar,LakeArcana.SlotLine(h));GUI.color=Color.white;TooltipHandler.TipRegion(ar,LakeArcana.SlotTip);y+=24f;} // 1.100.0
+   y=LakeSeals.DrawRows(y,w,p,h); // 1.133.0 通用秘传、湖印
    foreach(var c in ClassSystem.All)y=DrawClass(y,w,p,h,c,own,pts);
    return y;
   }

@@ -57,7 +57,7 @@ namespace LichPhylactery {
    Check(defs && enemies,"mana lake faction loads: medieval, neutral (0), toggle manalake, enemies of the Thayan expedition and the zealots, caravan + lakeside market, icon; still 20 settings groups ("+defs+" "+enemies+" "+(fac==null?"nofac":fac.RelationKindWith(hostile).ToString())+" "+(LichMod.SettingsLeft.Length+LichMod.SettingsRight.Length)+")");
 
    // 2. 48 枚职业水晶：12 个职业各 4 枚、6 / 7 / 8 / 9 环各 1；能力有图标、Ability_Class；结晶价格按环。
-   var all=LakeArcana.All;var crystals=LakeArcana.Crystals;
+   var all=LakeArcana.All.Where(a=>LakeArcana.Ext(a).cls!=null).ToList();var crystals=LakeArcana.Crystals.Where(c=>LakeArcana.Ext(LakeArcana.AbilityOf(c)).cls!=null).ToList(); // 1.133.0 通用秘传另算（-Only LakeLore）
    bool perClass=ClassSystem.All.All(c=>LakeArcana.OfClass(c).Select(a=>LakeArcana.Ext(a).ring).SequenceEqual(new[]{6,7,8,9}));
    bool icons=all.All(a=>a.uiIcon!=null && a.uiIcon!=BaseContent.BadTex && a.abilityClass==typeof(Ability_Class) && a.comps.OfType<CompProperties_ClassEffect>().Any());
    bool prices=crystals.All(c=>Mathf.Abs(c.BaseMarketValue-LakeArcana.PriceFor(LakeArcana.Ext(LakeArcana.AbilityOf(c)).ring))<1f && c.label.StartsWith("职业水晶") && c.graphicData.color!=Color.white);

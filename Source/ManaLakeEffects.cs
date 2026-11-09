@@ -15,14 +15,15 @@ namespace LichPhylactery {
   public const int CamouflageTicks=240,EternalCombat=600;
   static readonly Dictionary<int,(IntVec3 cell,int since)> still=new Dictionary<int,(IntVec3,int)>();
   public static void Reset(){still.Clear();}
-  static bool Hostile(Pawn caster,Pawn t)=>t!=null && t!=caster && !t.Dead && t.HostileTo(caster);
-  static bool Friendly(Pawn caster,Pawn t)=>t!=null && !t.Dead && !t.HostileTo(caster);
+  static bool Hostile(Pawn caster,Pawn t)=>AnyTarget.Hostile(caster,t); // 1.136.0 热修：手动选的目标不分敌我
+  static bool Friendly(Pawn caster,Pawn t)=>AnyTarget.Friendly(caster,t);
   static IEnumerable<Pawn> Near(Map map,IntVec3 c,float r)=>map==null?Enumerable.Empty<Pawn>():Races124.PawnsNear(map,c,r);
   public static bool Steadfast(Pawn p)=>Items.Has(p,"LP_ACB_Immovable") || Items.Has(p,"LP_ACP_CloudBody") || Items.Has(p,"LP_ACB_Unstoppable");
   public static float Health(Pawn p)=>p?.health?.summaryHealth?.SummaryHealthPercent??1f;
 
   // ---------- 选目标 ----------
   public static string Invalid(Pawn caster,CompProperties_ClassEffect e,LocalTargetInfo target){
+   if(e.effect!=null && e.effect.Length>3 && e.effect[2]=='_'){if(e.effect.StartsWith("LO_"))return LakeLore.Invalid(caster,e,target);if(e.effect.StartsWith("LS_"))return LakeSeals.Invalid(caster,e,target);} // 1.133.0 通用秘传、湖印
    var t=target.Thing as Pawn;var map=caster.Map;
    switch(e.effect){
     case "ArCloudStep":case "ArForceField":
@@ -55,6 +56,7 @@ namespace LichPhylactery {
 
   // ---------- 施放 ----------
   public static bool Apply(Pawn p,AbilityDef def,CompProperties_ClassEffect e,LocalTargetInfo target){
+   if(e.effect!=null && e.effect.Length>3 && e.effect[2]=='_'){if(e.effect.StartsWith("LO_"))return LakeLore.Apply(p,def,e,target);if(e.effect.StartsWith("LS_"))return LakeSeals.Apply(p,def,e,target);} // 1.133.0 通用秘传、湖印
    var t=target.Thing as Pawn;float s=ClassEffects.Strength(p,e);
    switch(e.effect){
     case "ArWarlord":Warlord(p,ClassEffects.Duration(p,e));return true;
@@ -349,14 +351,14 @@ namespace LichPhylactery {
   public void ExposeData(){Scribe_Values.Look(ref kind,"kind");Scribe_Values.Look(ref center,"center");Scribe_Values.Look(ref radius,"radius");Scribe_Values.Look(ref power,"power");Scribe_Values.Look(ref ticksLeft,"ticksLeft");Scribe_References.Look(ref caster,"caster",true);Scribe_References.Look(ref faction,"faction");Scribe_Collections.Look(ref cells,"cells",LookMode.Value);if(Scribe.mode==LoadSaveMode.PostLoadInit && cells==null)cells=new List<IntVec3>();}
  }
  public class ArcanaZones : MapComponent {
-  public const int Sanctuary=1,Prism=2,Interval=60,WallLength=10;
+  public const int Sanctuary=1,Prism=2,Blade=3,Alarm=4,Interval=60,WallLength=10,BladeLength=8; // 1.133.0 剑刃屏障（8 格刃墙）、警报术（湖印）
   public List<ArcanaZone> zones=new List<ArcanaZone>();int acc;
   public ArcanaZones(Map map):base(map){}
   public static ArcanaZone Add(Pawn caster,int kind,IntVec3 c,float radius,int ticks,float power){
    var comp=caster?.Map?.GetComponent<ArcanaZones>();if(comp==null)return null;
    var z=new ArcanaZone{kind=kind,center=c,radius=radius,power=power,ticksLeft=ticks,caster=caster,faction=caster.Faction};
-   if(kind==Prism){var dir=(c-caster.Position).ToVector3();dir.y=0;if(dir.sqrMagnitude<.01f)dir=new Vector3(0,0,1);dir.Normalize();var perp=new Vector3(-dir.z,0,dir.x);
-    for(int i=-WallLength/2;i<WallLength/2;i++){var cell=(c.ToVector3Shifted()+perp*i).ToIntVec3();if(cell.InBounds(caster.Map) && !z.cells.Contains(cell))z.cells.Add(cell);}}
+   if(kind==Prism || kind==Blade){var dir=(c-caster.Position).ToVector3();dir.y=0;if(dir.sqrMagnitude<.01f)dir=new Vector3(0,0,1);dir.Normalize();var perp=new Vector3(-dir.z,0,dir.x);int len=kind==Blade?BladeLength:WallLength;
+    for(int i=-len/2;i<len/2;i++){var cell=(c.ToVector3Shifted()+perp*i).ToIntVec3();if(cell.InBounds(caster.Map) && !z.cells.Contains(cell))z.cells.Add(cell);}}
    comp.zones.Add(z);return z;
   }
   bool Hostile(ArcanaZone z,Pawn t)=>t!=null && !t.Dead && (z.faction==null?t.HostileTo(Faction.OfPlayer):t.HostileTo(z.faction));
@@ -378,6 +380,14 @@ namespace LichPhylactery {
      if(!c.InBounds(map))continue;if(Rand.Chance(.3f))FleckMaker.ThrowLightningGlow(c.ToVector3Shifted(),map,.7f);
      foreach(var t in c.GetThingList(map).OfType<Pawn>().ToList())if(Hostile(z,t))foreach(var k in kinds){if(t.Dead)break;t.TakeDamage(new DamageInfo(k,z.power,0f,-1f,z.caster));}
     }
+   }else if(z.kind==Blade){ // 1.133.0 剑刃屏障：墙上的敌人每秒割伤 + 减速
+    foreach(var c in z.cells){
+     if(!c.InBounds(map))continue;if(Rand.Chance(.25f))FleckMaker.ThrowMicroSparks(c.ToVector3Shifted(),map);
+     foreach(var t in c.GetThingList(map).OfType<Pawn>().ToList())if(Hostile(z,t)){t.TakeDamage(new DamageInfo(DamageDefOf.Cut,z.power,.2f,-1f,z.caster));if(!t.Dead)Items.Give(t,"LP_LO_Slowed",180);}
+    }
+   }else if(z.kind==Alarm){ // 1.133.0 警报术：敌人进入就发信、叫醒殖民者，触发一次就消失
+    var foe=Races124.PawnsNear(map,z.center,z.radius).FirstOrDefault(t=>Hostile(z,t) && !t.Downed);
+    if(foe!=null){z.ticksLeft=0;LakeSeals.AlarmTriggered(map,foe,z.center);}
    }
   }
   public override void ExposeData(){base.ExposeData();Scribe_Collections.Look(ref zones,"lpArcanaZones",LookMode.Deep);if(Scribe.mode==LoadSaveMode.PostLoadInit && zones==null)zones=new List<ArcanaZone>();}

@@ -189,8 +189,8 @@ namespace LichPhylactery {
   public static int LevelOf(Pawn t){var h=Adventurer.Get(t);if(h!=null)return h.level;return BeastLevels.Get(t)?.level??1;}
   public static bool Bossy(Pawn t)=>ClassMartial2.Boss(t) || HeroDestiny.Boss(t);
   public static float ResistChance(Pawn t)=>Bossy(t)?BossResist:Mathf.Clamp(.1f+.02f*LevelOf(t),.1f,.5f);
-  static bool Hostile(Pawn a,Pawn t)=>t!=null && t!=a && !t.Dead && t.HostileTo(a);
-  static bool Friendly(Pawn a,Pawn t)=>t!=null && !t.Dead && !t.HostileTo(a);
+  static bool Hostile(Pawn a,Pawn t)=>AnyTarget.Hostile(a,t); // 1.136.0 热修：手动选的目标不分敌我
+  static bool Friendly(Pawn a,Pawn t)=>AnyTarget.Friendly(a,t);
   public static bool FearState(MentalStateDef d)=>d!=null && (d==MentalStateDefOf.PanicFlee || d.defName.Contains("Flee") || d.defName.Contains("Panic") || d.defName.Contains("Terror"));
   // 恐惧：能逃的人形 / 动物逃跑 ticks 刻，否则震慑。
   public static bool Fear(Pawn t,int ticks,string reason,bool allowBoss=false){
@@ -605,66 +605,132 @@ namespace LichPhylactery {
 
  // 选子职业 / 分支的窗口（不用浮动菜单）。
  public class Dialog_ChooseSubclass : Window {
-  readonly Pawn pawn;string armed;Vector2 scroll;
-  public override Vector2 InitialSize=>new Vector2(680f,640f);
+  // 1.132.0 改版（LPUI）：左栏可选项（子职业 / 分支），右栏选中项的完整说明、按等级的能力表和「选择」按钮。只改界面。
+  readonly Pawn pawn;string armed;public string selected;Vector2 scrollL,scrollR;float rightH=400f;
+  public const float LeftW=330f,ItemH=56f;
+  public override Vector2 InitialSize=>LPUI.Fit(920f,680f);
   public Dialog_ChooseSubclass(Pawn p){pawn=p;doCloseX=true;doCloseButton=true;closeOnClickedOutside=false;absorbInputAroundWindow=true;forcePause=true;}
+  public Vector2 RightScroll{get=>scrollR;set=>scrollR=value;}
+  public class Item{public string key,header;public LP_SubclassDef s;public SubclassChoice ch;public int idx;public LP_ClassDef c;}
+  public static List<Item> Items(Hediff_Adventurer h){
+   var l=new List<Item>();
+   foreach(var c in ClassSubclass.NeedPick(h)){string hd=c.LabelCap+" "+ClassSystem.Level(h,c)+" 级：选一个子职业";foreach(var s in ClassSubclass.Options(c))l.Add(new Item{key="sub:"+s.defName,header=hd,s=s,c=c});}
+   foreach(var (s,ch) in ClassSubclass.PendingChoices(h)){string hd=s.LabelCap+"·"+ch.label+"：选一个";for(int i=0;i<ch.options.Count;i++)l.Add(new Item{key="ch:"+ch.key+":"+i,header=hd,s=s,ch=ch,idx=i,c=s.parent});}
+   return l;
+  }
   public override void DoWindowContents(Rect r){
-   var h=Adventurer.Get(pawn);if(h?.classes==null){Close();return;}
-   Text.Font=GameFont.Medium;Widgets.Label(new Rect(r.x,r.y,r.width,32f),pawn.LabelShort+" 的子职业");Text.Font=GameFont.Small;
-   float y=r.y+36f;
-   var need=ClassSubclass.NeedPick(h).ToList();var pend=ClassSubclass.PendingChoices(h).ToList();
-   if(need.Count==0 && pend.Count==0){Widgets.Label(new Rect(r.x,y,r.width,48f),"现在没有要选的子职业或分支（职业 "+ClassSubclass.PickLevel+" 级可以选子职业；有些分支到更高等级才能选）。");return;}
-   float viewH=need.Sum(c=>30f+ClassSubclass.Options(c).Count()*112f)+pend.Sum(t=>30f+t.ch.options.Count*52f)+10f;
-   var outer=new Rect(r.x,y,r.width,r.yMax-y-48f);var view=new Rect(0f,0f,outer.width-16f,viewH);
-   Widgets.BeginScrollView(outer,ref scroll,view);
    try{
-    float yy=0f;
-    foreach(var c in need){
-     GUI.color=c.color;Widgets.Label(new Rect(0f,yy,view.width,26f),c.LabelCap+" "+ClassSystem.Level(h,c)+" 级：选一个子职业（选定后不能更改）");GUI.color=Color.white;yy+=30f;
-     foreach(var s in ClassSubclass.Options(c)){
-      var row=new Rect(0f,yy,view.width,108f);Widgets.DrawLightHighlight(row);
-      var em=s.Emblem;if(em!=null)GUI.DrawTexture(new Rect(row.x+4f,row.y+4f,64f,64f),em);
-      GUI.color=s.color;Widgets.Label(new Rect(row.x+74f,row.y+2f,row.width-190f,24f),s.LabelCap);GUI.color=Color.white;
-      Text.Font=GameFont.Tiny;Widgets.Label(new Rect(row.x+74f,row.y+24f,row.width-190f,82f),s.description+"\n"+string.Join("　",s.abilities.OrderBy(e=>e.level).Select(e=>e.level+" "+e.ability.label)));Text.Font=GameFont.Small;
-      TooltipHandler.TipRegion(new Rect(row.x,row.y,row.width-110f,row.height),s.LabelCap+"\n\n"+string.Join("\n\n",s.abilities.OrderBy(e=>e.level).Select(e=>e.level+" 级 "+e.ability.LabelCap+"：\n"+e.ability.description)));
-      string why=ClassSubclass.CanPick(h,s);bool ok=why==null;string key="sub:"+s.defName;var b=new Rect(row.xMax-104f,row.y+36f,96f,32f);
-      if(Widgets.ButtonText(b,armed==key?"确定？":"选择",active:ok) && ok){if(armed==key){armed=null;ClassSubclass.Pick(h,s,true);}else armed=key;}
-      TooltipHandler.TipRegion(b,ok?(armed==key?"再点一次确认":"点两次确认："+s.label):why);
-      yy+=112f;
+    var h=Adventurer.Get(pawn);if(h?.classes==null){Close();return;}
+    float y=LPUI.Title(r,pawn.LabelShort+" 的子职业");
+    var items=Items(h);
+    if(items.Count==0){LPUI.Para(r.x,y,r.width,"现在没有要选的子职业或分支（职业 "+ClassSubclass.PickLevel+" 级可以选子职业；有些分支到更高等级才能选）。");return;}
+    LPUI.Tiny(new Rect(r.x,y,r.width,20f),"选定后不能更改。左边点选查看，右边按钮点两次确认。",true);y+=20f+LPUI.Gap;
+    var sel=items.FirstOrDefault(i=>i.key==selected);if(sel==null){sel=items[0];selected=sel.key;}
+    var body=new Rect(r.x,y,r.width,r.yMax-y-48f);float lw=Mathf.Min(LeftW,body.width*.4f);
+    DrawLeft(new Rect(body.x,body.y,lw,body.height),items);
+    DrawRight(new Rect(body.x+lw+LPUI.SectionGap,body.y,body.width-lw-LPUI.SectionGap,body.height),h,sel);
+   }finally{LPUI.Reset();}
+  }
+  void DrawLeft(Rect outer,List<Item> items){
+   int headers=items.Select(i=>i.header).Distinct().Count();
+   var view=new Rect(0f,0f,outer.width-LPUI.ScrollBarW,headers*(LPUI.RowH+LPUI.Gap)+items.Count*(ItemH+4f));
+   Widgets.BeginScrollView(outer,ref scrollL,view);
+   try{
+    float y=0f;string last=null;
+    foreach(var it in items){
+     if(it.header!=last){last=it.header;y=LPUI.Bar(new Rect(0f,y,view.width,LPUI.RowH),it.header,it.ch==null?it.c?.color:it.s.color);}
+     var row=new Rect(0f,y,view.width,ItemH);LPUI.RowBg(row,it.key==selected);
+     if(it.ch==null){
+      LPUI.Icon(new Rect(row.x+4f,row.y+4f,48f,48f),it.s.Emblem);
+      GUI.color=it.s.color;LPUI.LabelFit(new Rect(row.x+58f,row.y+4f,row.width-62f,22f),it.s.LabelCap);GUI.color=Color.white;
+      LPUI.Tiny(new Rect(row.x+58f,row.y+28f,row.width-62f,24f),it.s.description,true);
+     }else{
+      LPUI.Icon(new Rect(row.x+4f,row.y+8f,40f,40f),it.s.Emblem);
+      LPUI.LabelFit(new Rect(row.x+52f,row.y+4f,row.width-56f,22f),it.ch.options[it.idx]);
+      LPUI.Tiny(new Rect(row.x+52f,row.y+28f,row.width-56f,24f),it.idx<it.ch.tips.Count?it.ch.tips[it.idx]:"",true);
      }
-    }
-    foreach(var (s,ch) in pend){
-     GUI.color=s.color;Widgets.Label(new Rect(0f,yy,view.width,26f),s.LabelCap+"·"+ch.label+"：选一个（选定后不能更改）");GUI.color=Color.white;yy+=30f;
-     for(int i=0;i<ch.options.Count;i++){
-      var row=new Rect(0f,yy,view.width,48f);Widgets.DrawLightHighlight(row);
-      Widgets.Label(new Rect(row.x+8f,row.y+2f,160f,24f),ch.options[i]);
-      string tip=i<ch.tips.Count?ch.tips[i]:"";Text.Font=GameFont.Tiny;Widgets.Label(new Rect(row.x+8f,row.y+22f,row.width-130f,26f),tip.Truncate(row.width-130f));Text.Font=GameFont.Small;
-      if(!tip.NullOrEmpty())TooltipHandler.TipRegion(new Rect(row.x,row.y,row.width-110f,row.height),ch.options[i]+"\n\n"+tip);
-      string key="ch:"+ch.key+":"+i;var b=new Rect(row.xMax-104f,row.y+8f,96f,30f);
-      if(Widgets.ButtonText(b,armed==key?"确定？":"选择")){if(armed==key){armed=null;ClassSubclass.Choose(h,ch.key,i,true);}else armed=key;}
-      yy+=52f;
-     }
+     if(Widgets.ButtonInvisible(row)){if(selected!=it.key){scrollR=Vector2.zero;armed=null;}selected=it.key;}
+     y+=ItemH+4f;
     }
    }finally{Widgets.EndScrollView();}
   }
+  void DrawRight(Rect outer,Hediff_Adventurer h,Item it){
+   var btn=new Rect(outer.x,outer.yMax-LPUI.MainButtonH,outer.width,LPUI.MainButtonH);
+   var area=new Rect(outer.x,outer.y,outer.width,outer.height-LPUI.MainButtonH-LPUI.Gap);
+   var view=new Rect(0f,0f,area.width-LPUI.ScrollBarW,Mathf.Max(rightH,area.height-1f));
+   Widgets.BeginScrollView(area,ref scrollR,view);
+   try{
+    float w=view.width,y=0f;var s=it.s;
+    LPUI.Icon(new Rect(0f,0f,72f,72f),s.Emblem);
+    Text.Font=GameFont.Medium;GUI.color=s.color;LPUI.LabelFit(new Rect(80f,4f,w-80f,32f),it.ch==null?s.LabelCap:it.ch.label+"："+it.ch.options[it.idx]);GUI.color=Color.white;Text.Font=GameFont.Small;
+    LPUI.Tiny(new Rect(80f,40f,w-80f,20f),it.ch==null?s.parent.label+"的子职业（"+ClassSubclass.PickLevelFor(s.parent)+" 级选择）":"「"+s.label+"」的分支（"+s.parent.label+" "+it.ch.level+" 级）",true);
+    y=80f;
+    if(it.ch!=null){
+     string tip=it.idx<it.ch.tips.Count?it.ch.tips[it.idx]:"";y+=LPUI.Para(0f,y,w,tip.NullOrEmpty()?"（没有更多说明）":tip)+LPUI.SectionGap;
+     y=LPUI.Bar(new Rect(0f,y,w,LPUI.RowH),"其他选项");
+     for(int i=0;i<it.ch.options.Count;i++)if(i!=it.idx){LPUI.LabelFit(new Rect(6f,y,w-6f,LPUI.RowH),"· "+it.ch.options[i],i<it.ch.tips.Count?it.ch.tips[i]:null);y+=LPUI.RowH;}
+    }else{
+     y+=LPUI.Para(0f,y,w,s.description)+LPUI.SectionGap;
+     int lv=ClassSystem.Level(h,s.parent);
+     y=LPUI.Bar(new Rect(0f,y,w,LPUI.RowH),"子职业能力（"+s.parent.label+"现在 "+lv+" 级）",LPUI.Gold);
+     foreach(var e in s.abilities.Where(x=>x.ability!=null).OrderBy(x=>x.level)){
+      bool reach=lv>=e.level;LPUI.Icon(new Rect(0f,y+2f,32f,32f),e.ability.uiIcon,!reach);
+      GUI.color=reach?Color.white:LPUI.Locked;LPUI.LabelFit(new Rect(40f,y,w-40f,LPUI.RowH),"Lv "+e.level+"　"+e.ability.LabelCap+(reach?"":"（还差 "+(e.level-lv)+" 级）"));GUI.color=Color.white;
+      Text.Font=GameFont.Tiny;float ph=LPUI.Para(40f,y+LPUI.RowH,w-40f,e.ability.description??"");Text.Font=GameFont.Small;
+      var rr=new Rect(0f,y,w,Mathf.Max(36f,LPUI.RowH+ph));if(Mouse.IsOver(rr))TooltipHandler.TipRegion(rr,e.ability.LabelCap+"\n\n"+e.ability.description);
+      y+=Mathf.Max(36f,LPUI.RowH+ph)+LPUI.Gap;
+     }
+     if(s.choices.Count>0){
+      y=LPUI.Bar(new Rect(0f,y,w,LPUI.RowH),"之后还要选择");
+      foreach(var ch in s.choices){LPUI.LabelFit(new Rect(6f,y,w-6f,LPUI.RowH),"Lv "+ch.level+"　"+ch.label+"："+string.Join("、",ch.options),string.Join("\n",ch.options.Select((o,i)=>o+(i<ch.tips.Count?"："+ch.tips[i]:""))));y+=LPUI.RowH;}
+     }
+    }
+    rightH=y+LPUI.Gap;
+   }finally{Widgets.EndScrollView();}
+   // 选择按钮（固定在右栏底部）
+   string why=it.ch==null?ClassSubclass.CanPick(h,it.s):null;bool ok=why==null;string label=it.ch==null?it.s.label:it.ch.options[it.idx];
+   if(!ok)LPUI.Unavailable(btn,why);
+   else if(LPUI.Button(btn,armed==it.key?"确定选择「"+label+"」？":"选择「"+label+"」",true,armed==it.key?"再点一次确认":"点两次确认（选定后不能更改）")){
+    if(armed==it.key){armed=null;if(it.ch==null)ClassSubclass.Pick(h,it.s,true);else ClassSubclass.Choose(h,it.ch.key,it.idx,true);selected=null;}else armed=it.key;
+   }
+  }
  }
- // 兽王：选伙伴（同地图、自己阵营的动物）。
+ // 兽王：选伙伴（同地图、自己阵营的动物）。1.132.0 改版（LPUI）：头像、种类 / 野性等级 / 主人 / 健康一行，按钮风格统一。
  public class Dialog_ChooseCompanion : Window {
   readonly Pawn pawn;Vector2 scroll;
-  public override Vector2 InitialSize=>new Vector2(440f,520f);
+  public const float RowH=52f;
+  public override Vector2 InitialSize=>LPUI.Fit(560f,620f);
   public Dialog_ChooseCompanion(Pawn p){pawn=p;doCloseX=true;doCloseButton=true;absorbInputAroundWindow=true;forcePause=true;}
+  public Vector2 Scroll{get=>scroll;set=>scroll=value;}
+  public static List<Pawn> Candidates(Pawn pawn)=>pawn.Map==null?new List<Pawn>():pawn.Map.mapPawns.SpawnedColonyAnimals.Where(a=>!a.Dead && !Martial.Conjured(a)).OrderByDescending(a=>a.playerSettings?.Master==pawn).ThenBy(a=>a.LabelShort).ToList();
+  static string Info(Pawn a,Pawn pawn){
+   var bl=BeastLevels.Get(a);var m=a.playerSettings?.Master;
+   return a.KindLabel+(bl!=null?"　野性等级 "+bl.level:"")+"　体型 "+a.BodySize.ToString("0.##")+"　健康 "+a.health.summaryHealth.SummaryHealthPercent.ToStringPercent()+(m!=null?"　主人："+(m==pawn?"你":m.LabelShort):"");
+  }
   public override void DoWindowContents(Rect r){
-   Text.Font=GameFont.Medium;Widgets.Label(new Rect(r.x,r.y,r.width,32f),pawn.LabelShort+" 的游侠伙伴");Text.Font=GameFont.Small;
-   float y=r.y+36f;var cur=ClassSubclass.Companion(pawn);
-   Widgets.Label(new Rect(r.x,y,r.width,24f),"现在："+(cur==null?"没有":cur.LabelShort)+"（换一只会解除原来的）");y+=28f;
-   var list=pawn.Map==null?new List<Pawn>():pawn.Map.mapPawns.SpawnedColonyAnimals.Where(a=>!a.Dead && !Martial.Conjured(a)).OrderByDescending(a=>a.playerSettings?.Master==pawn).ThenBy(a=>a.LabelShort).ToList();
-   if(list.Count==0){Widgets.Label(new Rect(r.x,y,r.width,48f),"这张地图上没有殖民地的动物。");return;}
-   var outer=new Rect(r.x,y,r.width,r.yMax-y-48f);var view=new Rect(0f,0f,outer.width-16f,list.Count*34f);
-   Widgets.BeginScrollView(outer,ref scroll,view);
-   try{float yy=0f;foreach(var a in list){var b=new Rect(0f,yy,view.width,30f);
-    if(Widgets.ButtonText(b,a.LabelShort+"（"+a.KindLabel+(BeastLevels.Get(a)!=null?"，野性等级 "+BeastLevels.Get(a).level:"")+(a==cur?"，当前":"")+"）",active:a!=cur) && a!=cur){ClassSubclass.Bond(pawn,a);Messages.Message(pawn.LabelShort+"和"+a.LabelShort+"结成了游侠伙伴。",pawn,MessageTypeDefOf.PositiveEvent,false);Close();}
-    yy+=34f;}}
-   finally{Widgets.EndScrollView();}
+   try{
+    float y=LPUI.Title(r,pawn.LabelShort+" 的游侠伙伴");var cur=ClassSubclass.Companion(pawn);
+    var cr=new Rect(r.x,y,r.width,44f);Widgets.DrawLightHighlight(cr);
+    if(cur!=null){Widgets.ThingIcon(new Rect(cr.x+4f,cr.y+2f,40f,40f),cur);LPUI.LabelFit(new Rect(cr.x+50f,cr.y+2f,cr.width-54f,22f),"现在的伙伴："+cur.LabelShort);LPUI.Tiny(new Rect(cr.x+50f,cr.y+24f,cr.width-54f,18f),Info(cur,pawn),true);}
+    else LPUI.Unavailable(cr,"现在没有游侠伙伴");
+    y+=44f+LPUI.Gap;
+    LPUI.Tiny(new Rect(r.x,y,r.width,20f),"换一只会解除原来的。伙伴的野性等级跟着你的冒险者等级成长，对你的宿敌伤害 +20%。",true);y+=20f+LPUI.Gap;
+    var list=Candidates(pawn);
+    y=LPUI.Bar(new Rect(r.x,y,r.width,LPUI.RowH),"这张地图上殖民地的动物（"+list.Count+"）");
+    var outer=new Rect(r.x,y,r.width,r.yMax-y-48f);
+    if(list.Count==0){LPUI.Unavailable(new Rect(outer.x,outer.y,outer.width,LPUI.RowH*2f),"这张地图上没有殖民地的动物。");return;}
+    var view=new Rect(0f,0f,outer.width-LPUI.ScrollBarW,list.Count*(RowH+4f));
+    Widgets.BeginScrollView(outer,ref scroll,view);
+    try{float yy=0f;foreach(var a in list){
+     var row=new Rect(0f,yy,view.width,RowH);LPUI.RowBg(row,a==cur);
+     Widgets.ThingIcon(new Rect(row.x+4f,row.y+4f,44f,44f),a);
+     LPUI.LabelFit(new Rect(row.x+54f,row.y+4f,row.width-54f-110f,22f),a.LabelShort+(a==cur?"（当前）":""));
+     LPUI.Tiny(new Rect(row.x+54f,row.y+28f,row.width-54f-110f,20f),Info(a,pawn),true);
+     if(Mouse.IsOver(row))TooltipHandler.TipRegion(row,a.LabelCap+"\n"+Info(a,pawn));
+     if(LPUI.Button(new Rect(row.xMax-104f,row.y+10f,98f,32f),a==cur?"当前伙伴":"结为伙伴",a!=cur)){ClassSubclass.Bond(pawn,a);Messages.Message(pawn.LabelShort+"和"+a.LabelShort+"结成了游侠伙伴。",pawn,MessageTypeDefOf.PositiveEvent,false);Close();}
+     yy+=RowH+4f;}}
+    finally{Widgets.EndScrollView();}
+   }finally{LPUI.Reset();}
   }
  }
 

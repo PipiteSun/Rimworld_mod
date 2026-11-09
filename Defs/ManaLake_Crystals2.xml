@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.133.0 魔力湖泊的秘传结晶（通用秘传）与湖印结晶：由 ArtSource/ManaLake/gen_lore.ps1 按 ManaLake_Lore.xml、ManaLake_Seals.xml 生成，不要手改。 -->
+<Defs>
+  <ThingDef Name="LP_LakeSealCrystalBase" ParentName="ResourceBase" Abstract="True">
+    <graphicData>
+      <texPath>LP/Items/ArcanumCrystal</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <stackLimit>5</stackLimit>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>Items</li></thingCategories>
+    <tradeTags><li>LP_LakeSealCrystal</li></tradeTags>
+    <statBases>
+      <Mass>0.1</Mass>
+      <MaxHitPoints>150</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <Beauty>2</Beauty>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Usable">
+        <useJob>UseItem</useJob>
+        <useLabel>吸收{0_label}</useLabel>
+        <useDuration>2500</useDuration>
+      </li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_ChainLightning</defName>
+    <label>秘传结晶：连锁闪电</label>
+    <description>魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 11 级、智力 15，占 1 个秘传槽；基础吸收成功率 80%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（6 环法术，智力）：一道闪电从目标开始跳过 4 个敌人，每个受 25 点电击伤害，机械体 ×1.5。冷却 2 天。</description>
+    <graphicData><color>(0.95,0.85,0.55)</color></graphicData>
+    <tradeTags Inherit="False"><li>LP_ArcanumCrystalLore</li></tradeTags>
+    <statBases><MarketValue>7000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_ChainLightning</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_BladeBarrier</defName>
+    <label>秘传结晶：剑刃屏障</label>
+    <description>魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 11 级、感知 15，占 1 个秘传槽；基础吸收成功率 80%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（6 环法术，感知）：在目标处立起一道 8 格长的旋转刃墙，持续 1 小时；墙上的敌人每秒受 20 点割伤并减速 50%。冷却 2 天。</description>
+    <graphicData><color>(0.95,0.85,0.55)</color></graphicData>
+    <tradeTags Inherit="False"><li>LP_ArcanumCrystalLore</li></tradeTags>
+    <statBases><MarketValue>7000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_BladeBarrier</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_Heal</defName>
+    <label>秘传结晶：治愈术</label>
+    <description>魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 11 级、感知 15，占 1 个秘传槽；基础吸收成功率 80%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（6 环法术，感知）：目标治好 70% 伤势（乘强度），并清除失明、疾病和食物中毒。冷却 2 天。</description>
+    <graphicData><color>(0.95,0.85,0.55)</color></graphicData>
+    <tradeTags Inherit="False"><li>LP_ArcanumCrystalLore</li></tradeTags>
+    <statBases><MarketValue>8000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_Heal</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_FingerOfDeath</defName>
+    <label>秘传结晶：死亡之指</label>
+    <description>魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 13 级、魅力 16，占 1 个秘传槽；基础吸收成功率 70%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（7 环法术，魅力）：50 点死灵伤害；被它杀死的人形会作为施法者阵营的亡仆爬起来（永久，不会精神崩溃）。冷却 3 天。</description>
+    <graphicData><color>(0.95,0.85,0.55)</color></graphicData>
+    <tradeTags Inherit="False"><li>LP_ArcanumCrystalLore</li></tradeTags>
+    <statBases><MarketValue>10000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_FingerOfDeath</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_Regenerate</defName>
+    <label>秘传结晶：再生术</label>
+    <description>魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 13 级、感知 16，占 1 个秘传槽；基础吸收成功率 70%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（7 环法术，感知）：立刻消除目标一处旧伤疤；3 天后长回一个失去的肢体或器官。冷却 3 天。</description>
+    <graphicData><color>(0.95,0.85,0.55)</color></graphicData>
+    <tradeTags Inherit="False"><li>LP_ArcanumCrystalLore</li></tradeTags>
+    <statBases><MarketValue>12000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_Regenerate</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_ReverseGravity</defName>
+    <label>秘传结晶：反转重力</label>
+    <description>魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 13 级、智力 16，占 1 个秘传槽；基础吸收成功率 70%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（7 环法术，智力）：目标处半径 5 格的敌人飞起 10 秒、动弹不得，落地时各受 20 点钝器伤害。冷却 3 天。</description>
+    <graphicData><color>(0.95,0.85,0.55)</color></graphicData>
+    <tradeTags Inherit="False"><li>LP_ArcanumCrystalLore</li></tradeTags>
+    <statBases><MarketValue>11000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_ReverseGravity</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_Sunburst</defName>
+    <label>秘传结晶：炎阳爆</label>
+    <description>魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 15 级、感知 17，占 1 个秘传槽；基础吸收成功率 60%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（8 环法术，感知）：30 格内一点半径 6 格烈阳爆发——45 点神圣灼烧伤害并失明 1 分钟；对亡灵 ×2。友军也会被波及（施法者自己除外）。冷却 5 天。</description>
+    <graphicData><color>(0.95,0.85,0.55)</color></graphicData>
+    <tradeTags Inherit="False"><li>LP_ArcanumCrystalLore</li></tradeTags>
+    <statBases><MarketValue>16000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_Sunburst</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_MindBlank</defName>
+    <label>秘传结晶：心灵空白</label>
+    <description>魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 15 级、智力 17，占 1 个秘传槽；基础吸收成功率 60%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（8 环法术，智力）：目标 1 天内免疫心灵控制、魅惑、精神崩溃和心灵伤害。冷却 5 天。</description>
+    <graphicData><color>(0.95,0.85,0.55)</color></graphicData>
+    <tradeTags Inherit="False"><li>LP_ArcanumCrystalLore</li></tradeTags>
+    <statBases><MarketValue>14000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_MindBlank</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_Maze</defName>
+    <label>秘传结晶：迷宫术</label>
+    <description>魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 15 级、智力 17，占 1 个秘传槽；基础吸收成功率 60%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（8 环法术，智力）：把一个敌人放逐到异界迷宫 30 秒（从地图上消失，之后回到原处）；传奇生物 10 秒。施法者死亡或地图卸载时会立刻放回。冷却 5 天。</description>
+    <graphicData><color>(0.95,0.85,0.55)</color></graphicData>
+    <tradeTags Inherit="False"><li>LP_ArcanumCrystalLore</li></tradeTags>
+    <statBases><MarketValue>15000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_Maze</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_TimeStop</defName>
+    <label>秘传结晶：时间停止</label>
+    <description>魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 17 级、智力 18，占 1 个秘传槽；基础吸收成功率 50%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（9 环法术，智力）：除施法者外，本地图所有人和飞行中的弹丸停顿 6 秒（传奇生物和剧情首领 3 秒）；施法者伤害别人会让时间提前恢复。冷却 7 天。</description>
+    <graphicData><color>(0.95,0.85,0.55)</color></graphicData>
+    <tradeTags Inherit="False"><li>LP_ArcanumCrystalLore</li></tradeTags>
+    <statBases><MarketValue>25000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_TimeStop</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_PowerWordKill</defName>
+    <label>秘传结晶：真言·杀</label>
+    <description>魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 17 级、魅力 18，占 1 个秘传槽；基础吸收成功率 50%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（9 环法术，魅力）：剩余健康 ≤ 40% 的非传奇生物当场死亡；否则受 40 点心灵伤害。冷却 7 天。</description>
+    <graphicData><color>(0.95,0.85,0.55)</color></graphicData>
+    <tradeTags Inherit="False"><li>LP_ArcanumCrystalLore</li></tradeTags>
+    <statBases><MarketValue>24000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_PowerWordKill</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_Wish</defName>
+    <label>秘传结晶：许愿术</label>
+    <description>魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 17 级、魅力 18，占 1 个秘传槽；基础吸收成功率 50%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（9 环法术，魅力）：打开许愿窗口选一个愿望。安全愿望：直接施放任意一个 8 环或以下的通用秘传法术（包括没学过的）；本地图所有殖民者伤势全愈、疾病清除；变出市场价合计 3000 银以内的物品。大愿望：复活 1 名死亡不超过 30 天的殖民者、永久 +1 属性，或驱散一个长期事件——有 33% 的概率让施法者永久失去许愿术并虚弱 10 天。没选就关掉窗口不进冷却。和神灯的许愿是两回事。冷却 15 天。</description>
+    <graphicData><color>(0.95,0.85,0.55)</color></graphicData>
+    <tradeTags Inherit="False"><li>LP_ArcanumCrystalLore</li></tradeTags>
+    <statBases><MarketValue>50000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_Wish</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_BoneBreak</defName>
+    <label>秘传结晶：断骨击</label>
+    <description>魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 11 级、力量 15、格斗或射击 10 级，占 1 个秘传槽；基础吸收成功率 80%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（6 环武技，力量）：1 小时内下一次近战命中打断目标一条腿或一只手臂（骨折 10 天）；传奇生物改为 30 点钝器伤害。冷却 2 天。</description>
+    <graphicData><color>(0.95,0.85,0.55)</color></graphicData>
+    <tradeTags Inherit="False"><li>LP_ArcanumCrystalLore</li></tradeTags>
+    <statBases><MarketValue>6500</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_BoneBreak</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_SunArrow</defName>
+    <label>秘传结晶：贯日一箭</label>
+    <description>魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 13 级、敏捷 16、格斗或射击 12 级，占 1 个秘传槽；基础吸收成功率 70%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（7 环武技，敏捷）：一发直线穿透 40 格，沿线所有敌人各受 4 倍武器伤害；只能用远程武器。冷却 3 天。</description>
+    <graphicData><color>(0.95,0.85,0.55)</color></graphicData>
+    <tradeTags Inherit="False"><li>LP_ArcanumCrystalLore</li></tradeTags>
+    <statBases><MarketValue>10000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_SunArrow</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_TrueSight</defName>
+    <label>秘传结晶：真视</label>
+    <description>魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 13 级、最高的一项属性 16，占 1 个秘传槽；基础吸收成功率 70%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传被动（7 环）：30 格内的隐形敌人对你可见（被识破 1 小时）；免疫失明和幻象。</description>
+    <graphicData><color>(0.95,0.85,0.55)</color></graphicData>
+    <tradeTags Inherit="False"><li>LP_ArcanumCrystalLore</li></tradeTags>
+    <statBases><MarketValue>10000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_TrueSight</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_ArcaneBulwark</defName>
+    <label>秘传结晶：秘法壁垒</label>
+    <description>魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 15 级、最高的一项属性 17，占 1 个秘传槽；基础吸收成功率 60%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传被动（8 环）：受到的法术、灵能伤害 -40%，所有豁免成功率 +15%。</description>
+    <graphicData><color>(0.95,0.85,0.55)</color></graphicData>
+    <tradeTags Inherit="False"><li>LP_ArcanumCrystalLore</li></tradeTags>
+    <statBases><MarketValue>16000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_ArcaneBulwark</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_LegendaryResistance</defName>
+    <label>秘传结晶：传奇抵抗</label>
+    <description>魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 17 级、最高的一项属性 18，占 1 个秘传槽；基础吸收成功率 50%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传被动（9 环）：每天 3 次，把一次失败的豁免改为成功。</description>
+    <graphicData><color>(0.95,0.85,0.55)</color></graphicData>
+    <tradeTags Inherit="False"><li>LP_ArcanumCrystalLore</li></tradeTags>
+    <statBases><MarketValue>22000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_LegendaryResistance</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_SecondHeart</defName>
+    <label>秘传结晶：第二心脏</label>
+    <description>魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 17 级、最高的一项属性 18，占 1 个秘传槽；基础吸收成功率 50%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传被动（9 环）：每 10 天一次，本应死亡时改为倒地并止血（治好一半伤势）。</description>
+    <graphicData><color>(0.95,0.85,0.55)</color></graphicData>
+    <tradeTags Inherit="False"><li>LP_ArcanumCrystalLore</li></tradeTags>
+    <statBases><MarketValue>25000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_SecondHeart</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_LakeSealCrystalBase">
+    <defName>LP_SealCrystal_Mending</defName>
+    <label>湖印结晶：修补术</label>
+    <description>魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「修补术」，占 1 个湖印法术槽。冒险者 1 级、智识 4 级，吸收成功率 100%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（一阶法术，智力，湖息 1）：一件服装或武器恢复 30% 耐久。选人时修他身上最破的一件；也可以直接选地上的物品。</description>
+    <graphicData><color>(0.45,0.85,0.8)</color><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>600</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_LakeSeal"><ability>LP_LS_Mending</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_LakeSealCrystalBase">
+    <defName>LP_SealCrystal_PurifyFood</defName>
+    <label>湖印结晶：净化饮食</label>
+    <description>魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「净化饮食」，占 1 个湖印法术槽。冒险者 1 级、智识 4 级，吸收成功率 100%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（一阶法术，感知，湖息 1）：移除目标的食物中毒；之后 2 天不会食物中毒。</description>
+    <graphicData><color>(0.45,0.85,0.8)</color><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>600</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_LakeSeal"><ability>LP_LS_PurifyFood</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_LakeSealCrystalBase">
+    <defName>LP_SealCrystal_Alarm</defName>
+    <label>湖印结晶：警报术</label>
+    <description>魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「警报术」，占 1 个湖印法术槽。冒险者 1 级、智识 4 级，吸收成功率 100%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（一阶法术，智力，湖息 1）：在目标处画一个半径 6 格的隐形符文，持续 3 天；敌人进入时发一封信并叫醒殖民者（触发一次就消失）。</description>
+    <graphicData><color>(0.45,0.85,0.8)</color><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>650</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_LakeSeal"><ability>LP_LS_Alarm</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_LakeSealCrystalBase">
+    <defName>LP_SealCrystal_Darkvision</defName>
+    <label>湖印结晶：暗视术</label>
+    <description>魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「暗视术」，占 1 个湖印法术槽。冒险者 1 级、智识 4 级，吸收成功率 100%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（一阶法术，感知，湖息 1）：目标 1 天内无视黑暗对工作和瞄准的惩罚（持续时间随施法属性延长）。</description>
+    <graphicData><color>(0.45,0.85,0.8)</color><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>650</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_LakeSeal"><ability>LP_LS_Darkvision</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_LakeSealCrystalBase">
+    <defName>LP_SealCrystal_Longstrider</defName>
+    <label>湖印结晶：长步术</label>
+    <description>魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「长步术」，占 1 个湖印法术槽。冒险者 1 级、智识 4 级，吸收成功率 100%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（一阶法术，智力，湖息 1）：目标移速 +15%，持续 1 天（持续时间随施法属性延长）。</description>
+    <graphicData><color>(0.45,0.85,0.8)</color><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>700</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_LakeSeal"><ability>LP_LS_Longstrider</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_LakeSealCrystalBase">
+    <defName>LP_SealCrystal_Thunderwave</defName>
+    <label>湖印结晶：雷鸣波</label>
+    <description>魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「雷鸣波」，占 1 个湖印法术槽。冒险者 1 级、智识 4 级，吸收成功率 100%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（一阶法术，智力，湖息 2）：前方 4 格锥形，8 点钝器伤害，击退 2 格，30% 概率眩晕 2 秒。</description>
+    <graphicData><color>(0.45,0.85,0.8)</color><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>900</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_LakeSeal"><ability>LP_LS_Thunderwave</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_LakeSealCrystalBase">
+    <defName>LP_SealCrystal_ArcaneLock</defName>
+    <label>湖印结晶：秘法锁</label>
+    <description>魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「秘法锁」，占 1 个湖印法术槽。冒险者 5 级、智识 6 级，吸收成功率 90% + 智识 ×1%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（二阶法术，智力，湖息 1）：给一扇门上锁 5 天：敌人砸门的伤害 ×0.33。</description>
+    <graphicData><color>(0.45,0.85,0.8)</color><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>1400</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_LakeSeal"><ability>LP_LS_ArcaneLock</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_LakeSealCrystalBase">
+    <defName>LP_SealCrystal_Augury</defName>
+    <label>湖印结晶：卜问</label>
+    <description>魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「卜问」，占 1 个湖印法术槽。冒险者 5 级、智识 6 级，吸收成功率 90% + 智识 ×1%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（二阶法术，感知，湖息 2）：成功率 60% + 感知调整值 × 3%：告诉你 3 天内最大威胁的类型和大概时间。</description>
+    <graphicData><color>(0.45,0.85,0.8)</color><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>1500</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_LakeSeal"><ability>LP_LS_Augury</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_LakeSealCrystalBase">
+    <defName>LP_SealCrystal_FalseLife</defName>
+    <label>湖印结晶：虚假生命</label>
+    <description>魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「虚假生命」，占 1 个湖印法术槽。冒险者 5 级、智识 6 级，吸收成功率 90% + 智识 ×1%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（二阶法术，智力，湖息 1）：目标得到吸收 20 点伤害的护盾（随施法属性提高），持续 1 天。</description>
+    <graphicData><color>(0.45,0.85,0.8)</color><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>1500</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_LakeSeal"><ability>LP_LS_FalseLife</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_LakeSealCrystalBase">
+    <defName>LP_SealCrystal_CreateFood</defName>
+    <label>湖印结晶：造粮术</label>
+    <description>魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「造粮术」，占 1 个湖印法术槽。冒险者 5 级、智识 6 级，吸收成功率 90% + 智识 ×1%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（二阶法术，感知，湖息 3）：在脚下变出 5 份简单餐。</description>
+    <graphicData><color>(0.45,0.85,0.8)</color><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>1600</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_LakeSeal"><ability>LP_LS_CreateFood</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_LakeSealCrystalBase">
+    <defName>LP_SealCrystal_CalmMind</defName>
+    <label>湖印结晶：宁神术</label>
+    <description>魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「宁神术」，占 1 个湖印法术槽。冒险者 5 级、智识 6 级，吸收成功率 90% + 智识 ×1%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（二阶法术，魅力，湖息 2）：结束目标的非暴力精神崩溃；没有崩溃时让目标 1 天内精神崩溃阈值 -5%。</description>
+    <graphicData><color>(0.45,0.85,0.8)</color><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>1800</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_LakeSeal"><ability>LP_LS_CalmMind</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_LakeSealCrystalBase">
+    <defName>LP_SealCrystal_Shatter</defName>
+    <label>湖印结晶：粉碎音波</label>
+    <description>魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「粉碎音波」，占 1 个湖印法术槽。冒险者 5 级、智识 6 级，吸收成功率 90% + 智识 ×1%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（二阶法术，智力，湖息 2）：目标处半径 2 格，15 点钝器伤害；对机械体和建筑 ×3。</description>
+    <graphicData><color>(0.45,0.85,0.8)</color><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>1800</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_LakeSeal"><ability>LP_LS_Shatter</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_LakeSealCrystalBase">
+    <defName>LP_SealCrystal_Counterspell</defName>
+    <label>湖印结晶：反制法术</label>
+    <description>魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「反制法术」，占 1 个湖印法术槽。冒险者 10 级、智识 8 级，吸收成功率 70% + 智识 ×2%（要和魔力湖泊结盟才买得到）；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（三阶法术，智力，湖息 2）：打断一个敌人正在读条的灵能 / 职业能力，并沉默 10 秒；对传奇生物成功率 50%。</description>
+    <graphicData><color>(0.45,0.85,0.8)</color><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>3200</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_LakeSeal"><ability>LP_LS_Counterspell</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_LakeSealCrystalBase">
+    <defName>LP_SealCrystal_TinyHut</defName>
+    <label>湖印结晶：小屋术</label>
+    <description>魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「小屋术」，占 1 个湖印法术槽。冒险者 10 级、智识 8 级，吸收成功率 70% + 智识 ×2%（要和魔力湖泊结盟才买得到）；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（三阶法术，感知，湖息 3）：撑起半径 3 格的力场穹顶 8 小时：挡住外面射来的弹丸，里面的人恒温；施法者离开穹顶即消失。</description>
+    <graphicData><color>(0.45,0.85,0.8)</color><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>3800</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_LakeSeal"><ability>LP_LS_TinyHut</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_LakeSealCrystalBase">
+    <defName>LP_SealCrystal_LakeBody</defName>
+    <label>湖印结晶：湖泽体质</label>
+    <description>魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印被动「湖泽体质」，占 1 个湖印被动槽。冒险者 1 级、智识 4 级，吸收成功率 100%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印被动（一阶）：舒适温度范围上下各扩 8°C。</description>
+    <graphicData><color>(0.45,0.85,0.8)</color><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>800</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_LakeSeal"><ability>LP_LS_LakeBody</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_LakeSealCrystalBase">
+    <defName>LP_SealCrystal_ManaDigest</defName>
+    <label>湖印结晶：魔力消化</label>
+    <description>魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印被动「魔力消化」，占 1 个湖印被动槽。冒险者 1 级、智识 4 级，吸收成功率 100%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印被动（一阶）：饥饿速率 -10%。</description>
+    <graphicData><color>(0.45,0.85,0.8)</color><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>900</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_LakeSeal"><ability>LP_LS_ManaDigest</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_LakeSealCrystalBase">
+    <defName>LP_SealCrystal_ScholarHeart</defName>
+    <label>湖印结晶：学者之心</label>
+    <description>魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印被动「学者之心」，占 1 个湖印被动槽。冒险者 1 级、智识 4 级，吸收成功率 100%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印被动（一阶）：全局学习速度 +12%。</description>
+    <graphicData><color>(0.45,0.85,0.8)</color><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>1000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_LakeSeal"><ability>LP_LS_ScholarHeart</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_LakeSealCrystalBase">
+    <defName>LP_SealCrystal_DreamlessSleep</defName>
+    <label>湖印结晶：无梦之眠</label>
+    <description>魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印被动「无梦之眠」，占 1 个湖印被动槽。冒险者 1 级、智识 4 级，吸收成功率 100%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印被动（一阶）：休息下降速率 -15%。</description>
+    <graphicData><color>(0.45,0.85,0.8)</color><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>1000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_LakeSeal"><ability>LP_LS_DreamlessSleep</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_LakeSealCrystalBase">
+    <defName>LP_SealCrystal_HealingFlow</defName>
+    <label>湖印结晶：疗愈之流</label>
+    <description>魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印被动「疗愈之流」，占 1 个湖印被动槽。冒险者 5 级、智识 6 级，吸收成功率 90% + 智识 ×1%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印被动（二阶）：自然愈合 +20%，受到的包扎质量 +5%。</description>
+    <graphicData><color>(0.45,0.85,0.8)</color><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>1800</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_LakeSeal"><ability>LP_LS_HealingFlow</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_LakeSealCrystalBase">
+    <defName>LP_SealCrystal_ArcaneResist</defName>
+    <label>湖印结晶：奥术抗性</label>
+    <description>魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印被动「奥术抗性」，占 1 个湖印被动槽。冒险者 5 级、智识 6 级，吸收成功率 90% + 智识 ×1%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印被动（二阶）：受到职业能力、灵能、魔法物品的伤害 -15%（和心智抗性不重叠：这个管伤害，心智抗性管控制）。</description>
+    <graphicData><color>(0.45,0.85,0.8)</color><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>2000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_LakeSeal"><ability>LP_LS_ArcaneResist</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_LakeSealCrystalBase">
+    <defName>LP_SealCrystal_RuneSkin</defName>
+    <label>湖印结晶：符文皮肤</label>
+    <description>魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印被动「符文皮肤」，占 1 个湖印被动槽。冒险者 5 级、智识 6 级，吸收成功率 90% + 智识 ×1%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印被动（二阶）：利器、钝器护甲 +6%。</description>
+    <graphicData><color>(0.45,0.85,0.8)</color><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>2200</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_LakeSeal"><ability>LP_LS_RuneSkin</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_LakeSealCrystalBase">
+    <defName>LP_SealCrystal_ManaConduit</defName>
+    <label>湖印结晶：法力导体</label>
+    <description>魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印被动「法力导体」，占 1 个湖印被动槽。冒险者 5 级、智识 6 级，吸收成功率 90% + 智识 ×1%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印被动（二阶）：每次命中有 15% 概率附加 4 点奥术伤害。</description>
+    <graphicData><color>(0.45,0.85,0.8)</color><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>2400</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_LakeSeal"><ability>LP_LS_ManaConduit</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_LakeSealCrystalBase">
+    <defName>LP_SealCrystal_LakeHeart</defName>
+    <label>湖印结晶：湖心</label>
+    <description>魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印被动「湖心」，占 1 个湖印被动槽。冒险者 10 级、智识 8 级，吸收成功率 70% + 智识 ×2%（要和魔力湖泊结盟才买得到）；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印被动（三阶）：湖息上限 +1，回复 ×1.5。</description>
+    <graphicData><color>(0.45,0.85,0.8)</color><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>3500</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_LakeSeal"><ability>LP_LS_LakeHeart</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_LakeSealCrystalBase">
+    <defName>LP_SealCrystal_WeaveSense</defName>
+    <label>湖印结晶：魔网感知</label>
+    <description>魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印被动「魔网感知」，占 1 个湖印被动槽。冒险者 10 级、智识 8 级，吸收成功率 70% + 智识 ×2%（要和魔力湖泊结盟才买得到）；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印被动（三阶）：8 格内的隐形敌人对你可见。</description>
+    <graphicData><color>(0.45,0.85,0.8)</color><drawSize>0.8</drawSize></graphicData>
+    <statBases><MarketValue>4000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_LakeSeal"><ability>LP_LS_WeaveSense</ability></li></comps>
+  </ThingDef>
+</Defs>

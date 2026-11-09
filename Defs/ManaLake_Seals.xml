@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.133.0 魔力湖泊第四批：湖印常规货（Source/ManaLakeSeals.cs）。14 个湖印法术、10 个湖印被动；结晶在 ManaLake_Crystals2.xml（gen_lore.ps1 生成）。
+     湖印不进职业树，冒险者页签单独一栏。法术槽 = 1 + 冒险者等级 ÷ 7（最多 4），被动槽 = 1 + 冒险者等级 ÷ 12（最多 3），再乘设置里的「湖印槽位倍率」。
+     湖印法术用独立资源「湖息」：上限 3，每 24 小时回 1。效果按施法属性：每 1 点调整值 +5%，最多 +25%；不吃职业强度、超魔、储法戒指。
+     三阶门槛：冒险者 1 / 5 / 10 级，智识 4 / 6 / 8；吸收成功率 100% / 90% + 智识 ×1% / 70% + 智识 ×2%（巫妖不会失败）。 -->
+<Defs>
+
+  <!-- ==================== 状态 ==================== -->
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_LS_Echo</defName>
+    <label>湖音回响</label>
+    <description>吸收湖印结晶失败，耳边一直回响着湖水声：意识 -10%。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.6,0.75,0.9)</defaultLabelColor>
+    <comps Inherit="False"><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>60000~60000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
+    <stages><li><capMods><li><capacity>Consciousness</capacity><offset>-0.10</offset></li></capMods></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_LS_Purified</defName>
+    <label>净化饮食</label>
+    <description>湖印的净化：不会食物中毒。</description>
+    <defaultLabelColor>(0.5,0.85,0.8)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_LS_Darkvision</defName>
+    <label>暗视术</label>
+    <description>湖印的暗视：无视黑暗对工作和瞄准的惩罚。</description>
+    <defaultLabelColor>(0.5,0.85,0.8)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_LS_Longstrider</defName>
+    <label>长步术</label>
+    <description>湖印的长步：移动 +15%。</description>
+    <defaultLabelColor>(0.5,0.85,0.8)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>1.15</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_LS_Calm</defName>
+    <label>宁神术</label>
+    <description>湖印的宁神：精神崩溃阈值 -5%。</description>
+    <defaultLabelColor>(0.5,0.85,0.8)</defaultLabelColor>
+    <stages><li><statOffsets><MentalBreakThreshold>-0.05</MentalBreakThreshold></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_LS_Silenced</defName>
+    <label>沉默</label>
+    <description>被反制法术打断并沉默：不能施放灵能和职业能力。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.75,0.6,0.9)</defaultLabelColor>
+    <stages><li><statFactors><PsychicSensitivity>0</PsychicSensitivity></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_LS_Sheltered</defName>
+    <label>小屋庇护</label>
+    <description>在小屋术的力场穹顶里：恒温，舒适温度范围上下各扩 30°C。</description>
+    <defaultLabelColor>(0.5,0.85,0.8)</defaultLabelColor>
+    <stages><li><statOffsets><ComfyTemperatureMin>-30</ComfyTemperatureMin><ComfyTemperatureMax>30</ComfyTemperatureMax></statOffsets></li></stages>
+  </HediffDef>
+
+  <!-- 湖印被动：学会就一直挂着（ManaLakeSeals.Sync 按湖印自动加 / 减） -->
+  <HediffDef Name="LP_LSPBase" Abstract="True">
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <defaultLabelColor>(0.45,0.85,0.8)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_LSPBase">
+    <defName>LP_LSP_LakeBody</defName><label>湖印·湖泽体质</label><description>湖印被动：舒适温度范围上下各扩 8°C。</description>
+    <stages><li><statOffsets><ComfyTemperatureMin>-8</ComfyTemperatureMin><ComfyTemperatureMax>8</ComfyTemperatureMax></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_LSPBase">
+    <defName>LP_LSP_ManaDigest</defName><label>湖印·魔力消化</label><description>湖印被动：饥饿速率 -10%。</description>
+    <stages><li><hungerRateFactor>0.9</hungerRateFactor></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_LSPBase">
+    <defName>LP_LSP_ScholarHeart</defName><label>湖印·学者之心</label><description>湖印被动：全局学习速度 +12%。</description>
+    <stages><li><statOffsets><GlobalLearningFactor>0.12</GlobalLearningFactor></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_LSPBase">
+    <defName>LP_LSP_DreamlessSleep</defName><label>湖印·无梦之眠</label><description>湖印被动：休息下降速率 -15%。</description>
+    <stages><li><statFactors><RestFallRateFactor>0.85</RestFallRateFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_LSPBase">
+    <defName>LP_LSP_HealingFlow</defName><label>湖印·疗愈之流</label><description>湖印被动：自然愈合 +20%，受到的包扎质量 +5%。</description>
+    <stages><li><statFactors><InjuryHealingFactor>1.2</InjuryHealingFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_LSPBase">
+    <defName>LP_LSP_ArcaneResist</defName><label>湖印·奥术抗性</label><description>湖印被动：受到职业能力、灵能、魔法物品的伤害 -15%。</description>
+  </HediffDef>
+  <HediffDef ParentName="LP_LSPBase">
+    <defName>LP_LSP_RuneSkin</defName><label>湖印·符文皮肤</label><description>湖印被动：利器、钝器护甲 +6%。</description>
+    <stages><li><statOffsets><ArmorRating_Sharp>0.06</ArmorRating_Sharp><ArmorRating_Blunt>0.06</ArmorRating_Blunt></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_LSPBase">
+    <defName>LP_LSP_ManaConduit</defName><label>湖印·法力导体</label><description>湖印被动：每次命中有 15% 概率附加 4 点奥术伤害。</description>
+  </HediffDef>
+  <HediffDef ParentName="LP_LSPBase">
+    <defName>LP_LSP_LakeHeart</defName><label>湖印·湖心</label><description>湖印被动：湖息上限 +1，回复 ×1.5。</description>
+  </HediffDef>
+  <HediffDef ParentName="LP_LSPBase">
+    <defName>LP_LSP_WeaveSense</defName><label>湖印·魔网感知</label><description>湖印被动：8 格内的隐形敌人对你可见。</description>
+  </HediffDef>
+
+  <!-- 小屋术的力场穹顶 -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_LS_TinyHut</defName>
+    <label>小屋术穹顶</label>
+    <description>湖印「小屋术」撑起的半径 3 格力场穹顶：外面射来的弹丸进不来，里面的人恒温。施法者离开穹顶或 8 小时后消失。</description>
+    <thingClass>LichPhylactery.Building_TinyHut</thingClass>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <pathCost>0</pathCost>
+    <passability>Standable</passability>
+    <fillPercent>0</fillPercent>
+    <graphicData>
+      <texPath>LP/Arcana/ForceFieldPylon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.5</drawSize>
+      <color>(0.5,0.9,0.85)</color>
+    </graphicData>
+    <statBases><MaxHitPoints>500</MaxHitPoints><Flammability>0</Flammability></statBases>
+    <tickerType>Normal</tickerType>
+    <killedLeavings/>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <useHitPoints>false</useHitPoints>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
+    <building><claimable>false</claimable><ai_chillDestination>false</ai_chillDestination><isEdifice>false</isEdifice></building>
+    <comps>
+      <li Class="CompProperties_ProjectileInterceptor">
+        <radius>3</radius>
+        <interceptGroundProjectiles>true</interceptGroundProjectiles>
+        <interceptNonHostileProjectiles>false</interceptNonHostileProjectiles>
+        <interceptOutgoingProjectiles>false</interceptOutgoingProjectiles>
+        <color>(0.5, 0.9, 0.85)</color>
+        <idlePulseSpeed>3</idlePulseSpeed>
+        <minIdleAlpha>0.05</minIdleAlpha>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- 澄湖结晶：抹掉一个湖印（不退费） -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>LP_ClearLakeCrystal</defName>
+    <label>澄湖结晶</label>
+    <description>魔力湖泊的澄湖结晶。使用后打开窗口，选一个已学会的湖印抹掉（不退费），空出槽位。</description>
+    <graphicData><texPath>LP/Items/ArcanumCrystal</texPath><graphicClass>Graphic_Single</graphicClass><color>(0.85,0.95,1)</color></graphicData>
+    <stackLimit>10</stackLimit>
+    <techLevel>Medieval</techLevel>
+    <thingCategories><li>Items</li></thingCategories>
+    <tradeTags><li>LP_LakeSealCrystal</li></tradeTags>
+    <statBases><Mass>0.2</Mass><MaxHitPoints>200</MaxHitPoints><Flammability>0</Flammability><Beauty>2</Beauty><MarketValue>300</MarketValue></statBases>
+    <comps>
+      <li Class="CompProperties_Usable"><useJob>UseItem</useJob><useLabel>用{0_label}抹掉一个湖印</useLabel><useDuration>600</useDuration></li>
+      <li Class="CompProperties_UseEffect"><compClass>LichPhylactery.CompUseEffect_ClearLake</compClass></li>
+    </comps>
+  </ThingDef>
+
+  <!-- ==================== 湖印法术 ==================== -->
+  <AbilityDef Name="LP_LSAllyBase" ParentName="LP_ClassAllyBase" Abstract="True">
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>600</cooldownTicksRange>
+  </AbilityDef>
+  <AbilityDef Name="LP_LSSelfBase" ParentName="LP_ClassSelfBase" Abstract="True">
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>600</cooldownTicksRange>
+  </AbilityDef>
+
+  <AbilityDef ParentName="LP_LSAllyBase">
+    <defName>LP_LS_Mending</defName>
+    <label>修补术</label>
+    <description>湖印（一阶法术，智力，湖息 1）：一件服装或武器恢复 30% 耐久。选人时修他身上最破的一件；也可以直接选地上的物品。</description>
+    <iconPath>LP/Arcana/Mending</iconPath>
+    <verbProperties><range>10</range>
+      <targetParams><canTargetPawns>true</canTargetPawns><canTargetItems>true</canTargetItems><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations><canTargetSelf>true</canTargetSelf><canTargetAnimals>false</canTargetAnimals><canTargetMechs>false</canTargetMechs><canTargetHumans>true</canTargetHumans></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LS_Mending</effect><power>0.3</power></li></comps>
+    <modExtensions><li Class="LichPhylactery.LakeSealExt"><tier>1</tier><ability>Int</ability><breath>1</breath><price>600</price></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_LSAllyBase">
+    <defName>LP_LS_PurifyFood</defName>
+    <label>净化饮食</label>
+    <description>湖印（一阶法术，感知，湖息 1）：移除目标的食物中毒；之后 2 天不会食物中毒。</description>
+    <iconPath>LP/Arcana/PurifyFood</iconPath>
+    <verbProperties><range>10</range></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LS_PurifyFood</effect><duration>120000</duration></li></comps>
+    <modExtensions><li Class="LichPhylactery.LakeSealExt"><tier>1</tier><ability>Wis</ability><breath>1</breath><price>600</price></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_LS_Alarm</defName>
+    <label>警报术</label>
+    <description>湖印（一阶法术，智力，湖息 1）：在目标处画一个半径 6 格的隐形符文，持续 3 天；敌人进入时发一封信并叫醒殖民者（触发一次就消失）。</description>
+    <iconPath>LP/Arcana/Alarm</iconPath>
+    <hostile>false</hostile>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>15</range><requireLineOfSight>false</requireLineOfSight></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LS_Alarm</effect><radius>6</radius><duration>180000</duration></li></comps>
+    <modExtensions><li Class="LichPhylactery.LakeSealExt"><tier>1</tier><ability>Int</ability><breath>1</breath><price>650</price></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_LSAllyBase">
+    <defName>LP_LS_Darkvision</defName>
+    <label>暗视术</label>
+    <description>湖印（一阶法术，感知，湖息 1）：目标 1 天内无视黑暗对工作和瞄准的惩罚（持续时间随施法属性延长）。</description>
+    <iconPath>LP/Arcana/Darkvision</iconPath>
+    <verbProperties><range>10</range></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LS_Buff</effect><hediff>LP_LS_Darkvision</hediff><duration>60000</duration></li></comps>
+    <modExtensions><li Class="LichPhylactery.LakeSealExt"><tier>1</tier><ability>Wis</ability><breath>1</breath><price>650</price></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_LSAllyBase">
+    <defName>LP_LS_Longstrider</defName>
+    <label>长步术</label>
+    <description>湖印（一阶法术，智力，湖息 1）：目标移速 +15%，持续 1 天（持续时间随施法属性延长）。</description>
+    <iconPath>LP/Arcana/Longstrider</iconPath>
+    <verbProperties><range>10</range></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LS_Buff</effect><hediff>LP_LS_Longstrider</hediff><duration>60000</duration></li></comps>
+    <modExtensions><li Class="LichPhylactery.LakeSealExt"><tier>1</tier><ability>Int</ability><breath>1</breath><price>700</price></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_LS_Thunderwave</defName>
+    <label>雷鸣波</label>
+    <description>湖印（一阶法术，智力，湖息 2）：前方 4 格锥形，8 点钝器伤害，击退 2 格，30% 概率眩晕 2 秒。</description>
+    <iconPath>LP/Arcana/Thunderwave</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>4.9</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LS_Thunderwave</effect><power>8</power><radius>4</radius></li></comps>
+    <modExtensions><li Class="LichPhylactery.LakeSealExt"><tier>1</tier><ability>Int</ability><breath>2</breath><price>900</price></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAbilityBase">
+    <defName>LP_LS_ArcaneLock</defName>
+    <label>秘法锁</label>
+    <description>湖印（二阶法术，智力，湖息 1）：给一扇门上锁 5 天：敌人砸门的伤害 ×0.33。</description>
+    <iconPath>LP/Arcana/ArcaneLock</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>10</range><warmupTime>1</warmupTime><requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>true</canTargetBuildings><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LS_ArcaneLock</effect><duration>300000</duration></li></comps>
+    <modExtensions><li Class="LichPhylactery.LakeSealExt"><tier>2</tier><ability>Int</ability><breath>1</breath><price>1400</price></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_LSSelfBase">
+    <defName>LP_LS_Augury</defName>
+    <label>卜问</label>
+    <description>湖印（二阶法术，感知，湖息 2）：成功率 60% + 感知调整值 × 3%：告诉你 3 天内最大威胁的类型和大概时间。</description>
+    <iconPath>LP/Arcana/Augury</iconPath>
+    <verbProperties><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LS_Augury</effect></li></comps>
+    <modExtensions><li Class="LichPhylactery.LakeSealExt"><tier>2</tier><ability>Wis</ability><breath>2</breath><price>1500</price></li><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_LSAllyBase">
+    <defName>LP_LS_FalseLife</defName>
+    <label>虚假生命</label>
+    <description>湖印（二阶法术，智力，湖息 1）：目标得到吸收 20 点伤害的护盾（随施法属性提高），持续 1 天。</description>
+    <iconPath>LP/Arcana/FalseLife</iconPath>
+    <verbProperties><range>10</range></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LS_FalseLife</effect><power>20</power><duration>60000</duration></li></comps>
+    <modExtensions><li Class="LichPhylactery.LakeSealExt"><tier>2</tier><ability>Int</ability><breath>1</breath><price>1500</price></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_LSSelfBase">
+    <defName>LP_LS_CreateFood</defName>
+    <label>造粮术</label>
+    <description>湖印（二阶法术，感知，湖息 3）：在脚下变出 5 份简单餐。</description>
+    <iconPath>LP/Arcana/CreateFood</iconPath>
+    <verbProperties><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LS_CreateFood</effect><power>5</power></li></comps>
+    <modExtensions><li Class="LichPhylactery.LakeSealExt"><tier>2</tier><ability>Wis</ability><breath>3</breath><price>1600</price></li><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_LSAllyBase">
+    <defName>LP_LS_CalmMind</defName>
+    <label>宁神术</label>
+    <description>湖印（二阶法术，魅力，湖息 2）：结束目标的非暴力精神崩溃；没有崩溃时让目标 1 天内精神崩溃阈值 -5%。</description>
+    <iconPath>LP/Arcana/CalmMind</iconPath>
+    <verbProperties><range>10</range></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LS_CalmMind</effect><duration>60000</duration></li></comps>
+    <modExtensions><li Class="LichPhylactery.LakeSealExt"><tier>2</tier><ability>Cha</ability><breath>2</breath><price>1800</price></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_LS_Shatter</defName>
+    <label>粉碎音波</label>
+    <description>湖印（二阶法术，智力，湖息 2）：目标处半径 2 格，15 点钝器伤害；对机械体和建筑 ×3。</description>
+    <iconPath>LP/Arcana/Shatter</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>0.8</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LS_Shatter</effect><power>15</power><radius>2</radius></li></comps>
+    <modExtensions><li Class="LichPhylactery.LakeSealExt"><tier>2</tier><ability>Int</ability><breath>2</breath><price>1800</price></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_LS_Counterspell</defName>
+    <label>反制法术</label>
+    <description>湖印（三阶法术，智力，湖息 2）：打断一个敌人正在读条的灵能 / 职业能力，并沉默 10 秒；对传奇生物成功率 50%。</description>
+    <iconPath>LP/Arcana/Counterspell</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>0.1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LS_Counterspell</effect><duration>600</duration></li></comps>
+    <modExtensions><li Class="LichPhylactery.LakeSealExt"><tier>3</tier><ability>Int</ability><breath>2</breath><price>3200</price></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_LSSelfBase">
+    <defName>LP_LS_TinyHut</defName>
+    <label>小屋术</label>
+    <description>湖印（三阶法术，感知，湖息 3）：撑起半径 3 格的力场穹顶 8 小时：挡住外面射来的弹丸，里面的人恒温；施法者离开穹顶即消失。</description>
+    <iconPath>LP/Arcana/TinyHut</iconPath>
+    <verbProperties><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>LS_TinyHut</effect><duration>20000</duration><radius>3</radius></li></comps>
+    <modExtensions><li Class="LichPhylactery.LakeSealExt"><tier>3</tier><ability>Wis</ability><breath>3</breath><price>3800</price></li><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+
+  <!-- ==================== 湖印被动 ==================== -->
+  <AbilityDef Name="LP_LSPassiveBase" ParentName="LP_ClassSelfBase" Abstract="True" />
+  <AbilityDef ParentName="LP_LSPassiveBase"><defName>LP_LS_LakeBody</defName><label>湖泽体质</label><description>湖印被动（一阶）：舒适温度范围上下各扩 8°C。</description><iconPath>LP/Arcana/LakeBody</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive></li></comps>
+    <modExtensions><li Class="LichPhylactery.LakeSealExt"><tier>1</tier><price>800</price></li></modExtensions></AbilityDef>
+  <AbilityDef ParentName="LP_LSPassiveBase"><defName>LP_LS_ManaDigest</defName><label>魔力消化</label><description>湖印被动（一阶）：饥饿速率 -10%。</description><iconPath>LP/Arcana/ManaDigest</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive></li></comps>
+    <modExtensions><li Class="LichPhylactery.LakeSealExt"><tier>1</tier><price>900</price></li></modExtensions></AbilityDef>
+  <AbilityDef ParentName="LP_LSPassiveBase"><defName>LP_LS_ScholarHeart</defName><label>学者之心</label><description>湖印被动（一阶）：全局学习速度 +12%。</description><iconPath>LP/Arcana/ScholarHeart</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive></li></comps>
+    <modExtensions><li Class="LichPhylactery.LakeSealExt"><tier>1</tier><price>1000</price></li></modExtensions></AbilityDef>
+  <AbilityDef ParentName="LP_LSPassiveBase"><defName>LP_LS_DreamlessSleep</defName><label>无梦之眠</label><description>湖印被动（一阶）：休息下降速率 -15%。</description><iconPath>LP/Arcana/DreamlessSleep</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive></li></comps>
+    <modExtensions><li Class="LichPhylactery.LakeSealExt"><tier>1</tier><price>1000</price></li></modExtensions></AbilityDef>
+  <AbilityDef ParentName="LP_LSPassiveBase"><defName>LP_LS_HealingFlow</defName><label>疗愈之流</label><description>湖印被动（二阶）：自然愈合 +20%，受到的包扎质量 +5%。</description><iconPath>LP/Arcana/HealingFlow</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive></li></comps>
+    <modExtensions><li Class="LichPhylactery.LakeSealExt"><tier>2</tier><price>1800</price></li></modExtensions></AbilityDef>
+  <AbilityDef ParentName="LP_LSPassiveBase"><defName>LP_LS_ArcaneResist</defName><label>奥术抗性</label><description>湖印被动（二阶）：受到职业能力、灵能、魔法物品的伤害 -15%（和心智抗性不重叠：这个管伤害，心智抗性管控制）。</description><iconPath>LP/Arcana/ArcaneResist</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive></li></comps>
+    <modExtensions><li Class="LichPhylactery.LakeSealExt"><tier>2</tier><price>2000</price></li></modExtensions></AbilityDef>
+  <AbilityDef ParentName="LP_LSPassiveBase"><defName>LP_LS_RuneSkin</defName><label>符文皮肤</label><description>湖印被动（二阶）：利器、钝器护甲 +6%。</description><iconPath>LP/Arcana/RuneSkin</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive></li></comps>
+    <modExtensions><li Class="LichPhylactery.LakeSealExt"><tier>2</tier><price>2200</price></li></modExtensions></AbilityDef>
+  <AbilityDef ParentName="LP_LSPassiveBase"><defName>LP_LS_ManaConduit</defName><label>法力导体</label><description>湖印被动（二阶）：每次命中有 15% 概率附加 4 点奥术伤害。</description><iconPath>LP/Arcana/ManaConduit</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive></li></comps>
+    <modExtensions><li Class="LichPhylactery.LakeSealExt"><tier>2</tier><price>2400</price></li></modExtensions></AbilityDef>
+  <AbilityDef ParentName="LP_LSPassiveBase"><defName>LP_LS_LakeHeart</defName><label>湖心</label><description>湖印被动（三阶）：湖息上限 +1，回复 ×1.5。</description><iconPath>LP/Arcana/LakeHeart</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive></li></comps>
+    <modExtensions><li Class="LichPhylactery.LakeSealExt"><tier>3</tier><price>3500</price></li></modExtensions></AbilityDef>
+  <AbilityDef ParentName="LP_LSPassiveBase"><defName>LP_LS_WeaveSense</defName><label>魔网感知</label><description>湖印被动（三阶）：8 格内的隐形敌人对你可见。</description><iconPath>LP/Arcana/WeaveSense</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive></li></comps>
+    <modExtensions><li Class="LichPhylactery.LakeSealExt"><tier>3</tier><price>4000</price></li></modExtensions></AbilityDef>
+
+</Defs>

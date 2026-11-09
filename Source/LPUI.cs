@@ -96,6 +96,26 @@ namespace LichPhylactery {
    var view=new Rect(0f,0f,rect.width-ScrollBarW,minH);Widgets.BeginScrollView(rect,ref scroll,view);rect=view;return true;
   }
 
+  // 1.132.0：区块标题条（淡色底 + 彩色字，悬停可看说明）。返回下一行的 y。
+  public static readonly Color BarBg=new Color(1f,1f,1f,.07f),Have=new Color(.55f,.9f,.55f),Locked=new Color(.55f,.55f,.55f),Gold=new Color(1f,.82f,.35f);
+  public static float Bar(Rect r,string text,Color? color=null,string tip=null){
+   var br=new Rect(r.x,r.y,r.width,RowH);Widgets.DrawBoxSolid(br,BarBg);
+   var c=GUI.color;GUI.color=color??Color.white;try{LabelFit(new Rect(br.x+6f,br.y+2f,br.width-12f,RowH-2f),text,tip);}finally{GUI.color=c;}
+   return r.y+RowH+Gap;
+  }
+  // 1.132.0：图标（缺图画占位）；gray=true 时灰显（未获得 / 不可用）。
+  public static void Icon(Rect r,Texture d,bool gray=false){
+   var c=GUI.color;if(gray)GUI.color=new Color(.42f,.42f,.42f,.9f);
+   try{GUI.DrawTexture(r,d??BaseContent.BadTex,ScaleMode.ScaleToFit);}finally{GUI.color=c;}
+  }
+  // 1.132.0：可点选的列表行背景（选中 / 悬停高亮）。点选要在画完行里的按钮之后用 Widgets.ButtonInvisible 判断，免得抢按钮的点击。
+  public static void RowBg(Rect r,bool selected){if(selected)Widgets.DrawHighlightSelected(r);else Widgets.DrawLightHighlight(r);Widgets.DrawHighlightIfMouseover(r);}
+  // 1.132.0：小字一行（灰色可选），放不下截断 + 悬停。
+  public static void Tiny(Rect r,string s,bool gray=false,string tip=null){
+   var f=Text.Font;var c=GUI.color;Text.Font=GameFont.Tiny;if(gray)GUI.color=Locked;
+   try{LabelFit(r,s,tip);}finally{Text.Font=f;GUI.color=c;}
+  }
+
   // 一行均分成 n 个按钮位。
   public static Rect[] Row(Rect r,int n,float gap=SectionGap){
    var res=new Rect[Math.Max(1,n)];float w=(r.width-gap*(res.Length-1))/res.Length;

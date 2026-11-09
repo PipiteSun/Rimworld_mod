@@ -196,21 +196,21 @@
     <graphicData><texPath>Items/Scrolls/RemoveCurse</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
   </ThingDef>
   <ThingDef ParentName="LP_WS_SpellPageBase">
-    <defName>LP_WS_SpellPage1</defName>
+    <defName>LP_WS_SpellPageA</defName>
     <label>法术书残页（一环）</label>
     <description>从别人的法术书上撕下来的一页，抄着一个一环法师法术（检视时能看到是哪个）。法师可以在卷轴书桌上把它抄进自己的法术书。</description>
     <statBases><MarketValue>150</MarketValue></statBases>
     <comps><li Class="LichPhylactery.CompProperties_SpellPage"><circle>1</circle></li></comps>
   </ThingDef>
   <ThingDef ParentName="LP_WS_SpellPageBase">
-    <defName>LP_WS_SpellPage2</defName>
+    <defName>LP_WS_SpellPageB</defName>
     <label>法术书残页（二环）</label>
     <description>从别人的法术书上撕下来的一页，抄着一个二环法师法术（检视时能看到是哪个）。法师 3 级起可以在卷轴书桌上把它抄进自己的法术书。</description>
     <statBases><MarketValue>300</MarketValue></statBases>
     <comps><li Class="LichPhylactery.CompProperties_SpellPage"><circle>2</circle></li></comps>
   </ThingDef>
   <ThingDef ParentName="LP_WS_SpellPageBase">
-    <defName>LP_WS_SpellPage3</defName>
+    <defName>LP_WS_SpellPageC</defName>
     <label>法术书残页（三环）</label>
     <description>从别人的法术书上撕下来的一页，抄着一个三环法师法术（检视时能看到是哪个）。法师 5 级起可以在卷轴书桌上把它抄进自己的法术书。</description>
     <statBases><MarketValue>500</MarketValue></statBases>
@@ -234,10 +234,10 @@
     <jobString>正在抄录法术。</jobString>
     <workAmount>5000</workAmount>
     <ingredients>
-      <li><filter><thingDefs><li>LP_WS_SpellPage1</li><li>LP_ScrollTrueSeeing</li></thingDefs></filter><count>1</count></li>
+      <li><filter><thingDefs><li>LP_WS_SpellPageA</li><li>LP_ScrollTrueSeeing</li></thingDefs></filter><count>1</count></li>
       <li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>50</count></li>
     </ingredients>
-    <fixedIngredientFilter><thingDefs><li>LP_WS_SpellPage1</li><li>LP_ScrollTrueSeeing</li><li>Silver</li></thingDefs></fixedIngredientFilter>
+    <fixedIngredientFilter><thingDefs><li>LP_WS_SpellPageA</li><li>LP_ScrollTrueSeeing</li><li>Silver</li></thingDefs></fixedIngredientFilter>
   </RecipeDef>
   <RecipeDef ParentName="LP_WS_CopyBase">
     <defName>LP_WS_CopySpell2</defName>
@@ -246,10 +246,10 @@
     <jobString>正在抄录法术。</jobString>
     <workAmount>10000</workAmount>
     <ingredients>
-      <li><filter><thingDefs><li>LP_WS_SpellPage2</li><li>LP_ScrollFleshToStone</li></thingDefs></filter><count>1</count></li>
+      <li><filter><thingDefs><li>LP_WS_SpellPageB</li><li>LP_ScrollFleshToStone</li></thingDefs></filter><count>1</count></li>
       <li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>100</count></li>
     </ingredients>
-    <fixedIngredientFilter><thingDefs><li>LP_WS_SpellPage2</li><li>LP_ScrollFleshToStone</li><li>Silver</li></thingDefs></fixedIngredientFilter>
+    <fixedIngredientFilter><thingDefs><li>LP_WS_SpellPageB</li><li>LP_ScrollFleshToStone</li><li>Silver</li></thingDefs></fixedIngredientFilter>
   </RecipeDef>
   <RecipeDef ParentName="LP_WS_CopyBase">
     <defName>LP_WS_CopySpell3</defName>
@@ -258,10 +258,10 @@
     <jobString>正在抄录法术。</jobString>
     <workAmount>15000</workAmount>
     <ingredients>
-      <li><filter><thingDefs><li>LP_WS_SpellPage3</li><li>LP_ScrollFearGaze</li><li>LP_ScrollProtectionEvil</li><li>LP_ScrollNecroticBlast</li></thingDefs></filter><count>1</count></li>
+      <li><filter><thingDefs><li>LP_WS_SpellPageC</li><li>LP_ScrollFearGaze</li><li>LP_ScrollProtectionEvil</li><li>LP_ScrollNecroticBlast</li></thingDefs></filter><count>1</count></li>
       <li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>150</count></li>
     </ingredients>
-    <fixedIngredientFilter><thingDefs><li>LP_WS_SpellPage3</li><li>LP_ScrollFearGaze</li><li>LP_ScrollProtectionEvil</li><li>LP_ScrollNecroticBlast</li><li>Silver</li></thingDefs></fixedIngredientFilter>
+    <fixedIngredientFilter><thingDefs><li>LP_WS_SpellPageC</li><li>LP_ScrollFearGaze</li><li>LP_ScrollProtectionEvil</li><li>LP_ScrollNecroticBlast</li><li>Silver</li></thingDefs></fixedIngredientFilter>
   </RecipeDef>
 
   <!-- ===== 工作：仪式施法、研读法术书 ===== -->

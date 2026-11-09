@@ -29,7 +29,7 @@ namespace LichPhylactery {
   public static bool Immovable(Pawn p)=>Users.Count>0 && S(p,FUnmoving);
   public static bool Titanized(Pawn p)=>Items.Has(p,"LP_TT_Titanized");
   static float Roll=>ClassMartial2.RollOverride??Rand.Value;
-  static bool Hostile(Pawn a,Pawn t)=>t!=null && t!=a && !t.Dead && t.HostileTo(a);
+  static bool Hostile(Pawn a,Pawn t)=>AnyTarget.Hostile(a,t); // 1.136.0 热修：手动选的目标不分敌我
   static readonly DefRef<LP_ClassDef> fighter=new DefRef<LP_ClassDef>("LP_Class_Fighter");
   public static int Level(Pawn p)=>ClassSystem.Level(p,fighter.Def);
 

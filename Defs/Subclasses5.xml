@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.135.0 术士子职业补完：神圣之魂、暗影魔法、时钟之魂（Source/ClassSubclass5.cs）。术士 3 级选，能力 3 / 7 / 11 / 15 级；消耗术士法力，强度看天赋强度。
+     图标与徽记：ArtSource/RaceArt/draw_subclasses5.py。 -->
+<Defs>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_DivineSoul</defName>
+    <label>神圣之魂</label>
+    <description>血脉里流着神恩：会牧师的治疗伤口，选一种神恩亲和（光明、黄昏、守护），冥想祈祷时法力回得更快，化身天使，最后能在倒下时自愈并降下神迹。</description>
+    <parent>LP_Class_Sorcerer</parent><order>4</order><emblem>LP/Classes/Subclass/Emblem_DivineSoul</emblem><color>(0.95,0.85,0.5)</color>
+    <abilities><li><ability>LP_DS_CureWounds</ability><level>3</level></li><li><ability>LP_DS_Favored</ability><level>3</level></li><li><ability>LP_DS_Resonance</ability><level>7</level></li>
+      <li><ability>LP_DS_AngelForm</ability><level>11</level></li><li><ability>LP_DS_Miracle</ability><level>15</level></li></abilities>
+    <choices><li><key>dsAffinity</key><label>神恩亲和</label><level>3</level>
+      <options><li>光明</li><li>黄昏</li><li>守护</li></options>
+      <tips><li>术士和神恩之选的治疗 +25%。</li><li>术士法术对活物（血肉生物）的伤害 +20%。</li><li>每施放一个术士法术，自己得到吸收 8 点伤害的护盾（1 小时，不叠加，刷新）。</li></tips></li></choices>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_ShadowMagic</defName>
+    <label>暗影魔法</label>
+    <description>出生在黑暗里的术士：看得见黑暗、在黑暗中法术更强、硬撑着不倒，召唤影犬追猎敌人，在黑暗之间瞬移，最后化为影之形态。「黑暗」= 光照低于 30% 的格子。</description>
+    <parent>LP_Class_Sorcerer</parent><order>5</order><emblem>LP/Classes/Subclass/Emblem_ShadowMagic</emblem><color>(0.45,0.32,0.65)</color>
+    <abilities><li><ability>LP_SM_EyesDark</ability><level>3</level></li><li><ability>LP_SM_Hound</ability><level>7</level></li>
+      <li><ability>LP_SM_ShadowStep</ability><level>11</level></li><li><ability>LP_SM_ShadowForm</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_ClockworkSoul</defName>
+    <label>时钟之魂</label>
+    <description>机械之境的秩序流进了血脉：为队友重掷失败的豁免、修理机械更快，给队友套上秩序护盾，展开秩序领域，最后召来秩序构装；魔涌的狂野魔法不再出坏结果。</description>
+    <parent>LP_Class_Sorcerer</parent><order>6</order><emblem>LP/Classes/Subclass/Emblem_ClockworkSoul</emblem><color>(0.85,0.62,0.35)</color>
+    <abilities><li><ability>LP_CW_Balance</ability><level>3</level></li><li><ability>LP_CW_Ward</ability><level>7</level></li>
+      <li><ability>LP_CW_Domain</ability><level>11</level></li><li><ability>LP_CW_Legion</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+
+  <!-- ===================== 状态 ===================== -->
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_DS_FavoredBuff</defName>
+    <label>神恩庇佑</label>
+    <description>神明看顾着这一刻：手术成功率 +20%，包扎质量 +20%。</description>
+    <defaultLabelColor>(0.95,0.85,0.5)</defaultLabelColor>
+    <stages><li><statOffsets><MedicalSurgerySuccessChance>0.2</MedicalSurgerySuccessChance><MedicalTendQuality>0.2</MedicalTendQuality></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_DS_Angelic</defName>
+    <label>天使形态</label>
+    <description>天使之翼展开：3 格内的队友每 10 秒治疗 2 点伤势（严重度），自己移动 +20%。</description>
+    <maxSeverity>100</maxSeverity>
+    <defaultLabelColor>(0.95,0.9,0.6)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>1.2</MoveSpeed></statFactors></li></stages>
+    <comps><li Class="LichPhylactery.HediffCompProperties_ClassAura"><interval>600</interval><radius>3</radius><healAllies>true</healAllies><healFactor>1</healFactor></li></comps>
+  </HediffDef>
+  <ThoughtDef>
+    <defName>LP_DS_MiracleThought</defName>
+    <durationDays>3</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>见证神迹</label><description>天空裂开一道光，伤口在我眼前愈合了。</description><baseMoodEffect>10</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_SM_Prey</defName>
+    <label>影犬猎物</label>
+    <description>被影犬盯上了：无法隐形。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.6,0.45,0.85)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_SM_HoundMark</defName>
+    <label>影犬</label>
+    <description>暗影凝成的猎犬：咬中目标时有 30% 的成功率让它恐惧逃跑 5 秒。</description>
+    <comps Inherit="False" />
+    <defaultLabelColor>(0.6,0.45,0.85)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_SM_StepBuff</defName>
+    <label>暗影步余势</label>
+    <description>刚从暗影中走出：下一个术士法术威力 +20%。</description>
+    <defaultLabelColor>(0.6,0.45,0.85)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_SM_Form</defName>
+    <label>影之形态</label>
+    <description>身体化为暗影：除火焰、神圣、力场外受到的伤害减半；站在黑暗里时，敌人的远程攻击有 30% 落空。</description>
+    <defaultLabelColor>(0.6,0.45,0.85)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef>
+    <defName>LP_CW_Affinity</defName>
+    <label>机械亲和</label>
+    <description>时钟之魂：修理建筑和机械体的速度 +30%，受到机械体的伤害 -10%。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <defaultLabelColor>(0.85,0.62,0.35)</defaultLabelColor>
+    <stages><li><statFactors><ConstructionSpeed>1.3</ConstructionSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CW_Bandwidth</defName>
+    <label>秩序带宽</label>
+    <description>秩序护盾让机械师的思绪更有条理：控制带宽 +2。</description>
+    <defaultLabelColor>(0.85,0.62,0.35)</defaultLabelColor>
+    <stages><li><statOffsets><MechBandwidth MayRequire="Ludeon.RimWorld.Biotech">2</MechBandwidth></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_CW_DomainBuff</defName>
+    <label>秩序领域</label>
+    <description>秩序之力校准了每一次出手：近战命中 +30%、射击精度提高，不会被暴击。</description>
+    <defaultLabelColor>(0.85,0.62,0.35)</defaultLabelColor>
+    <stages><li><statOffsets><MeleeHitChance>0.3</MeleeHitChance><ShootingAccuracyPawn>0.06</ShootingAccuracyPawn></statOffsets></li></stages>
+  </HediffDef>
+
+  <!-- ===================== 神圣之魂 ===================== -->
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_DS_CureWounds</defName>
+    <label>神恩之选·治疗伤口</label>
+    <description>立即治疗一名目标（可以是自己）共 20 × 天赋强度点伤势，优先流血最严重的伤口。法力 1，冷却 30 秒。神圣之魂，术士 3 级。</description>
+    <iconPath>LP/Classes/Subclass5/DSCure</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>12</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Heal</effect><cost>1</cost><power>20</power><stat>LP_InnatePower</stat><psychic>true</psychic><sorcery>true</sorcery></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DS_Favored</defName>
+    <label>神恩庇佑</label>
+    <description>1 小时内手术成功率 +20%、包扎质量 +20%。不耗法力，每天 1 次。神圣之魂，术士 3 级。</description>
+    <iconPath>LP/Classes/Subclass5/DSFavored</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_DS_FavoredBuff</hediff><duration>2500</duration><stat>LP_InnatePower</stat><fixedSeverity>true</fixedSeverity></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DS_Resonance</defName>
+    <label>神恩共鸣</label>
+    <description>被动：冥想或祈祷时每 250 刻多回 0.2 术士法力（信奉神明的再多 25%）；每用 1 点法力治疗别人，自己也恢复那次治疗量的 25%。神圣之魂，术士 7 级。</description>
+    <iconPath>LP/Classes/Subclass5/DSResonance</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_InnatePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DS_AngelForm</defName>
+    <label>天使形态</label>
+    <description>1 小时内化身天使：3 格内的队友每 10 秒治疗 2 × 天赋强度点伤势，自己移动 +20%。法力 3，冷却 1 小时。神圣之魂，术士 11 级。</description>
+    <iconPath>LP/Classes/Subclass5/DSAngel</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S5_Angel</effect><cost>3</cost><power>2</power><duration>2500</duration><stat>LP_InnatePower</stat><psychic>true</psychic><sorcery>true</sorcery></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_DS_Miracle</defName>
+    <label>神迹</label>
+    <description>主动：本地图所有殖民者伤口治疗 50%、疾病进度 -30%、心情 +10（3 天）。每季 1 次（冷却 15 天），不耗法力。被动：每天第一次倒地或将死时，自动治好一半伤口并站起。神圣之魂，术士 15 级。</description>
+    <iconPath>LP/Classes/Subclass5/DSMiracle</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>900000</cooldownTicksRange>
+    <verbProperties><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S5_Miracle</effect><stat>LP_InnatePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+
+  <!-- ===================== 暗影魔法 ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SM_EyesDark</defName>
+    <label>暗视之眼·坟墓之力</label>
+    <description>被动：黑暗不扣工作速度和瞄准；站在黑暗里时术士法术威力 +20%；受到会倒地或致死的伤害时，成功率 50% 硬撑不倒（每天判定 1 次，火焰、神圣伤害无效）。暗影魔法，术士 3 级。</description>
+    <iconPath>LP/Classes/Subclass5/SMEyes</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_InnatePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_SM_Hound</defName>
+    <label>影犬</label>
+    <description>召唤一只影犬（1 小时），追咬指定的敌人：目标无法隐形，被咬中有 30% 的成功率恐惧逃跑 5 秒。法力 2，冷却 1 小时。暗影魔法，术士 7 级。</description>
+    <iconPath>LP/Classes/Subclass5/SMHound</iconPath>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><range>25</range><warmupTime>1</warmupTime><requireLineOfSight>false</requireLineOfSight></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S5_Hound</effect><cost>2</cost><duration>2500</duration><stat>LP_InnatePower</stat><sorcery>true</sorcery></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_SM_ShadowStep</defName>
+    <label>暗影步</label>
+    <description>站在黑暗里时，瞬移到 20 格内另一处黑暗；之后下一个术士法术威力 +20%。不耗法力，冷却 30 秒。暗影魔法，术士 11 级。</description>
+    <iconPath>LP/Classes/Subclass5/SMStep</iconPath>
+    <hostile>false</hostile>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>0.2</warmupTime><requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>true</canTargetLocations></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S5_ShadowStep</effect><duration>1800</duration><stat>LP_InnatePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_SM_ShadowForm</defName>
+    <label>影之形态</label>
+    <description>主动：1 小时内除火焰、神圣、力场外受到的伤害减半，站在黑暗里时敌人的远程攻击有 30% 落空。法力 3，冷却 2 小时。被动：22～6 点睡觉时法力恢复 ×2。暗影魔法，术士 15 级。</description>
+    <iconPath>LP/Classes/Subclass5/SMForm</iconPath>
+    <cooldownTicksRange>5000</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>SelfBuff</effect><hediff>LP_SM_Form</hediff><cost>3</cost><duration>2500</duration><stat>LP_InnatePower</stat><fixedSeverity>true</fixedSeverity><sorcery>true</sorcery></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+
+  <!-- ===================== 时钟之魂 ===================== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CW_Balance</defName>
+    <label>秩序之手·机械亲和</label>
+    <description>被动：每天 2 次，同一张地图上的己方人员豁免失败时自动重新判定一次。机械亲和：修理建筑和机械体的速度 +30%（建造速度 ×1.3），受到机械体的伤害 -10%。时钟之魂，术士 3 级。</description>
+    <iconPath>LP/Classes/Subclass5/CWBalance</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_InnatePower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_CW_Ward</defName>
+    <label>秩序护盾</label>
+    <description>15 格内一名队友得到吸收 10 + 术士等级 × 2 点伤害的护盾（1 小时）；是机械师的话控制带宽 +2。法力 1，冷却 10 秒。时钟之魂，术士 7 级。</description>
+    <iconPath>LP/Classes/Subclass5/CWWard</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>15</range></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S5_Ward</effect><cost>1</cost><duration>2500</duration><stat>LP_InnatePower</stat><sorcery>true</sorcery></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CW_Domain</defName>
+    <label>秩序领域</label>
+    <description>1 小时内近战命中 +30%、射击精度提高；展开时 10 格内的敌方机械体有 30% 的成功率停机 3 秒。法力 3，冷却 2 小时。时钟之魂，术士 11 级。</description>
+    <iconPath>LP/Classes/Subclass5/CWDomain</iconPath>
+    <cooldownTicksRange>5000</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S5_Domain</effect><cost>3</cost><duration>2500</duration><radius>10</radius><stat>LP_InnatePower</stat><sorcery>true</sorcery></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_CW_Legion</defName>
+    <label>秩序军团</label>
+    <description>主动：召来 3 台秩序构装（原版机械体做成的友方临时单位）协战 1 天，到时消散。不耗法力，冷却 3 天。被动：魔涌触发狂野魔法时不会出坏结果（自燃、熵涌、混乱精魂改为重新抽）。时钟之魂，术士 15 级。</description>
+    <iconPath>LP/Classes/Subclass5/CWLegion</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>180000</cooldownTicksRange>
+    <verbProperties><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S5_Legion</effect><duration>60000</duration><stat>LP_InnatePower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.CastRangeExt"><approach>false</approach></li></modExtensions>
+  </AbilityDef>
+</Defs>

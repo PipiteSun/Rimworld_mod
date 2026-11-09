@@ -27,7 +27,7 @@ namespace LichPhylactery {
   static int Now=>Find.TickManager.TicksGame;
   static int Day=>GenDate.DaysPassed+1;
   static float Roll=>ClassMartial2.RollOverride??Rand.Value;
-  static bool Hostile(Pawn a,Pawn t)=>t!=null && t!=a && !t.Dead && t.HostileTo(a);
+  static bool Hostile(Pawn a,Pawn t)=>AnyTarget.Hostile(a,t); // 1.136.0 热修：手动选的目标不分敌我
   static bool Mine(Hediff_Adventurer h)=>ClassSubclass.Has(h,Alchemist) || ClassSubclass.Has(h,Armorer) || ClassSubclass.Has(h,Fortress);
   static void Passive(Pawn p,string hediff,bool on){if(on){if(!Items.Has(p,hediff))Items.Give(p,hediff);}else if(Items.Has(p,hediff))Items.Remove(p,hediff);}
   static readonly DefRef<LP_ClassDef> artificer=new DefRef<LP_ClassDef>("LP_Class_Artificer");
