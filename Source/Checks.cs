@@ -31,6 +31,7 @@ namespace LichPhylactery {
    if(CaptureLPUI())return; // 1.124.0 UI 整理截图
    if(CaptureClassWindows())return; // 1.132.0 职业 / 子职业 / 伙伴 / 传颂之歌窗口
    if(CaptureAbilityBar())return; // 1.136.0 热修：能力栏自动施放角标截图
+   if(CaptureAbilityGroups())return; // 1.137.0 技能分组截图
    if(ran || !GenCommandLine.CommandLineArgPassed("lichtest") || Current.ProgramState!=ProgramState.Playing || Find.CurrentMap==null || LongEventHandler.AnyEventNowOrWaiting)return;
    // 1.28.0：自测里神力灌注不随机发生（事件检查自己设定随机数），保证老的袭击检查结果确定。
    ran=true;Find.TickManager.Pause();Twilight.TestRoll=1f;SuppressBackgroundsForTests();string output=Path.Combine(GenFilePaths.SaveDataFolderPath,"LichResult.txt");
@@ -43,6 +44,7 @@ namespace LichPhylactery {
    if(GenCommandLine.CommandLineArgPassed("lichuitest") && OnlyMode && OnlyGroups.Contains("LPUI") && !System.IO.File.ReadAllText(output).StartsWith("FAIL")){lpuiFrames=1;return;} // 1.124.0 UI 整理截图
    if(GenCommandLine.CommandLineArgPassed("lichuitest") && OnlyMode && OnlyGroups.Contains("ClassWindows") && !System.IO.File.ReadAllText(output).StartsWith("FAIL")){cwFrames=1;return;} // 1.132.0 窗口改版
    if(GenCommandLine.CommandLineArgPassed("lichuitest") && OnlyMode && OnlyGroups.Contains("Convenience") && !System.IO.File.ReadAllText(output).StartsWith("FAIL")){cvFrames=1;return;} // 1.136.0 热修
+   if(GenCommandLine.CommandLineArgPassed("lichuitest") && OnlyMode && OnlyGroups.Contains("AbilityGroups") && !System.IO.File.ReadAllText(output).StartsWith("FAIL")){agFrames=1;return;} // 1.137.0 技能分组
    if(GenCommandLine.CommandLineArgPassed("lichuitest") && !ItemsOnly && !ClassesOnly && !OnlyMode && !System.IO.File.ReadAllText(output).StartsWith("FAIL")){ShowDesignerForScreenshot();return;}Application.Quit();
   }
   Pawn Person(){var generated=PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist,Faction.OfPlayer,PawnGenerationContext.NonPlayer,-1,forceGenerateNewPawn:true,allowDead:false,allowDowned:false,canGeneratePawnRelations:false,forcedXenotype:XenotypeDefOf.Baseliner,mustBeCapableOfViolence:true,forceNoBackstory:true,fixedBiologicalAge:25,fixedChronologicalAge:25));foreach(var implant in generated.health.hediffSet.hediffs.OfType<Hediff_AddedPart>().ToList())generated.health.RestorePart(implant.Part);foreach(var injury in generated.health.hediffSet.hediffs.OfType<Hediff_Injury>().ToList())generated.health.RemoveHediff(injury);foreach(var missing in generated.health.hediffSet.GetMissingPartsCommonAncestors().ToList())generated.health.RestorePart(missing.Part);return generated;}

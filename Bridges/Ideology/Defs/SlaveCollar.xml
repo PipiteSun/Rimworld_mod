@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- 1.138.0 奴隶麻醉项圈：奴隶叛乱（或发狂伤人）时项圈注入麻醉剂把戴的人放倒。逻辑在 Source/SlaveCollar.cs。奴隶只在意识形态 DLC 里有，所以放在 Bridges/Ideology。 -->
+  <ThingDef ParentName="HatMakeableBase">
+    <defName>LP_AnestheticCollar</defName>
+    <label>奴隶麻醉项圈</label>
+    <description>内藏一枚压缩麻药囊和感应针头的钢制奴隶项圈。戴着它的奴隶一旦开始叛乱、煽动叛乱或发狂伤人，项圈立刻把麻醉剂注入颈部，让他当场昏睡约半天；醒来后奴隶会更加顺从（压制度+30%）。\n\n麻药囊用完后要大约两天才能重新充填好，充填期间项圈不会再次触发（检视面板显示剩余时间）。只对奴隶起作用；比普通奴隶项圈略重，压制效果相同。</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/SlaveCollar/SlaveCollar</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.8</drawSize>
+      <color>(0.55,0.42,0.75)</color>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToMake>4000</WorkToMake>
+      <Mass>0.4</Mass>
+      <EquipDelay>2</EquipDelay>
+    </statBases>
+    <costList>
+      <Steel>30</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+      <MedicineIndustrial>1</MedicineIndustrial>
+    </costList>
+    <equippedStatOffsets>
+      <SlaveSuppressionOffset>0.15</SlaveSuppressionOffset>
+    </equippedStatOffsets>
+    <apparel>
+      <slaveApparel>true</slaveApparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <bodyPartGroups>
+        <li>Neck</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/SlaveCollar/SlaveCollar</wornGraphicPath>
+      <layers>
+        <li>Overhead</li>
+      </layers>
+      <renderSkipFlags>
+        <li>None</li>
+      </renderSkipFlags>
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+      <canBeGeneratedToSatisfyToxicEnvironmentResistance>false</canBeGeneratedToSatisfyToxicEnvironmentResistance>
+      <drawData>
+        <defaultData>
+          <layer>48</layer>
+        </defaultData>
+        <dataNorth>
+          <layer>68</layer>
+        </dataNorth>
+      </drawData>
+    </apparel>
+    <comps>
+      <li Class="LichPhylactery.CompProperties_AnestheticCollar">
+        <rechargeTicks>120000</rechargeTicks>
+        <suppressionGain>0.3</suppressionGain>
+      </li>
+    </comps>
+    <techLevel>Industrial</techLevel>
+    <recipeMaker>
+      <researchPrerequisite>LP_DNDAlchemy</researchPrerequisite>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Machining</soundWorking>
+      <recipeUsers Inherit="False">
+        <li>TableMachining</li>
+      </recipeUsers>
+      <skillRequirements>
+        <Crafting>5</Crafting>
+      </skillRequirements>
+      <displayPriority>176</displayPriority>
+    </recipeMaker>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>LP_CollarAnesthetic</defName>
+    <label>项圈麻醉</label>
+    <description>奴隶麻醉项圈注入的强效麻醉剂。昏睡不醒，药效过后会自己醒来。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.7,0.55,0.95)</defaultLabelColor>
+    <isBad>false</isBad>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>30000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>昏睡</label>
+        <painFactor>0.5</painFactor>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.1</setMax>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+</Defs>

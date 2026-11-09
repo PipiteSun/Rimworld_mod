@@ -441,7 +441,7 @@ namespace LichPhylactery {
   public override void DoWindowContents(Rect r){try{Draw(r);}finally{LPUI.Reset();}}
   void Draw(Rect r){
    var h=Adventurer.Get(pawn);var d=Spellbook.Data(h);if(d==null){Close();return;}
-   float y=LPUI.Title(r,pawn.LabelShort+" 的法术书",false);
+   float y=LPUI.Title(r,pawn.LabelShort+" 的法术书",false);AbilityGroups.WindowButton(r,pawn); // 1.137.0 技能分组
    int lvl=Spellbook.Level(h);
    Widgets.Label(new Rect(r.x,y,r.width,24f),"法师 "+lvl+" 级　最高 "+Spellbook.CircleName(Spellbook.MaxCircle(lvl))+"　法力 "+ClassSystem.Resource(h,Spellbook.Wizard).ToString("0.#")+" / "+ClassSystem.MaxResource(h,Spellbook.Wizard)+"　已备 "+Spellbook.PreparedCount(h)+" / "+Spellbook.PrepCap(h)+"（法师等级 + 智力调整值）");y+=26f;
    if(d.conc!=null){var cr=new Rect(r.x,y,r.width-130f,24f);GUI.color=Spellbook.Color;Widgets.Label(cr,"专注中："+d.conc.label+"（受到 10 点以上伤害时维持成功率 "+Spellbook.ConcChance(pawn).ToStringPercent()+"）");GUI.color=Color.white;

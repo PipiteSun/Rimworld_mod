@@ -368,7 +368,7 @@ namespace LichPhylactery {
   }
   void Draw(Rect r){
    var h=Adventurer.Get(pawn);var b=CasterSpells.Book(h,list,false);if(b==null){Close();return;}
-   float y=LPUI.Title(r,pawn.LabelShort+" 的法术",false);
+   float y=LPUI.Title(r,pawn.LabelShort+" 的法术",false);AbilityGroups.WindowButton(r,pawn); // 1.137.0 技能分组
    if(mineCache==null || Stale(ref mineVer,ref mineTick))mineCache=CasterSpells.ListsOf(pawn).ToList();var mine=mineCache;bool wiz=Spellbook.Level(h)>0;
    if(mine.Count>1 || wiz){
     var cls=LPUI.Row(new Rect(r.x,y,r.width,28f),mine.Count+(wiz?1:0));

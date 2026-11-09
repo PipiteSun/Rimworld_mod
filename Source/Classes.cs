@@ -507,7 +507,7 @@ namespace LichPhylactery {
   public override void DoWindowContents(Rect r){
    try{
     var h=Adventurer.Get(pawn);if(h==null){Close();return;}
-    float y=LPUI.Title(r,pawn.LabelShort+" 的职业");int pts=ClassSystem.Points(h);
+    float y=LPUI.Title(r,pawn.LabelShort+" 的职业");AbilityGroups.WindowButton(r,pawn,LPUI.CloseXRoom); /* 1.137.0 技能分组 */int pts=ClassSystem.Points(h);
     LPUI.LabelFit(new Rect(r.x,y,r.width,LPUI.RowH),"职业点：可用 "+pts+"（冒险者 Lv "+h.level+"，已用 "+ClassSystem.Total(h)+" / "+ClassSystem.Budget(h)+"）"+(ClassLegendary.Points(h)>0?"　传奇职业点 "+ClassLegendary.Points(h):"")+(h.classes.freeUnlocks>0?"　冒险者手册：下一个职业跳过门槛":""));y+=LPUI.RowH+LPUI.Gap;
     if(selected==null)selected=ClassSystem.Taken(h).FirstOrDefault()??ClassSystem.All.FirstOrDefault();
     var body=new Rect(r.x,y,r.width,r.yMax-y-48f);float lw=Mathf.Min(LeftW,body.width*.42f);
