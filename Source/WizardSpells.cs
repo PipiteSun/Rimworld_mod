@@ -489,6 +489,7 @@ namespace LichPhylactery {
   protected override void Tick(){
    base.Tick();if(!Spawned)return;
    if(Now>=endTick){End();return;}
+   if(this.IsHashIntervalTick(20))SpellVfx2.ZoneTick(this); // 1.144.0 持续区域特效
    if(!this.IsHashIntervalTick(30))return;
    var map=Map;
    switch(kind){

@@ -139,7 +139,7 @@ namespace LichPhylactery {
    var c=Faith.Comp;var god=FaithUtility.Patron;if(c==null || god==null || TrialTarget(god.key)<=0f)return false;
    c.trialGod=god;c.trialUntil=Faith.Now+TrialDays*GenDate.TicksPerDay;c.trialProgress=0f;c.trialTarget=TrialTarget(god.key);
    if(god.key=="Talos")TwilightSkills.Storm(map);
-   Find.LetterStack.ReceiveLetter("神谕试炼："+god.label,"祭司们得到了"+god.FullLabel+"的神谕：在"+TrialDays+"天内"+TrialText(god.key)+"。\n\n成功：神眷+"+TrialReward+"，30%的几率得到"+god.label+"的神赐遗物（已经有的话换成2片神迹残片）。失败：神眷-"+TrialFail+"。",LetterDefOf.NeutralEvent);
+   Find.LetterStack.ReceiveLetter("神谕试炼："+god.label,"祭司们得到了"+god.FullLabel+"的神谕：在"+TrialDays+"天内"+TrialText(god.key)+"。\n\n成功：神眷+"+TrialReward+"，30%的几率得到2片神迹残片。失败：神眷-"+TrialFail+"。",LetterDefOf.NeutralEvent);
    return true;
   }
   public static void TrialSucceeded(WorldComponent_Faith c){

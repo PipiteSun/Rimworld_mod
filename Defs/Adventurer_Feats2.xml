@@ -59,25 +59,25 @@
   <LichPhylactery.LP_FeatDef ParentName="LP_ElementalAdeptBase">
     <defName>LP_Feat_ElementalAdept_Fire</defName>
     <label>元素使·火</label>
-    <description>火焰听从这个施法者。火焰类伤害无视目标对火焰的抗性（连火巨人也烧得伤），并且 +25%。需要施法职业（法师、牧师、德鲁伊、术士、邪术师、圣武士、器械师或诡术师）或佩戴圣徽。只能选一种元素。附带智力、感知或魅力 +1。</description>
+    <description>火焰听从这个施法者。火焰类伤害无视目标对火焰的抗性（连火巨人也烧得伤），并且 +25%。需要施法职业（法师、牧师、德鲁伊、术士、邪术师、圣武士或诡术师）或佩戴圣徽。只能选一种元素。附带智力、感知或魅力 +1。</description>
     <iconPath>LP/Feats/ElementalAdept_Fire</iconPath><element>1</element>
   </LichPhylactery.LP_FeatDef>
   <LichPhylactery.LP_FeatDef ParentName="LP_ElementalAdeptBase">
     <defName>LP_Feat_ElementalAdept_Cold</defName>
     <label>元素使·冰</label>
-    <description>寒冰听从这个施法者。寒冷类伤害无视目标对寒冷的抗性，并且 +25%。需要施法职业（法师、牧师、德鲁伊、术士、邪术师、圣武士、器械师或诡术师）或佩戴圣徽。只能选一种元素。附带智力、感知或魅力 +1。</description>
+    <description>寒冰听从这个施法者。寒冷类伤害无视目标对寒冷的抗性，并且 +25%。需要施法职业（法师、牧师、德鲁伊、术士、邪术师、圣武士或诡术师）或佩戴圣徽。只能选一种元素。附带智力、感知或魅力 +1。</description>
     <iconPath>LP/Feats/ElementalAdept_Cold</iconPath><element>2</element>
   </LichPhylactery.LP_FeatDef>
   <LichPhylactery.LP_FeatDef ParentName="LP_ElementalAdeptBase">
     <defName>LP_Feat_ElementalAdept_Lightning</defName>
     <label>元素使·雷</label>
-    <description>雷电听从这个施法者。雷电类伤害无视目标对雷电的抗性，并且 +25%。需要施法职业（法师、牧师、德鲁伊、术士、邪术师、圣武士、器械师或诡术师）或佩戴圣徽。只能选一种元素。附带智力、感知或魅力 +1。</description>
+    <description>雷电听从这个施法者。雷电类伤害无视目标对雷电的抗性，并且 +25%。需要施法职业（法师、牧师、德鲁伊、术士、邪术师、圣武士或诡术师）或佩戴圣徽。只能选一种元素。附带智力、感知或魅力 +1。</description>
     <iconPath>LP/Feats/ElementalAdept_Lightning</iconPath><element>3</element>
   </LichPhylactery.LP_FeatDef>
   <LichPhylactery.LP_FeatDef ParentName="LP_ElementalAdeptBase">
     <defName>LP_Feat_ElementalAdept_Acid</defName>
     <label>元素使·酸</label>
-    <description>强酸听从这个施法者。强酸类伤害无视目标对强酸的抗性，并且 +25%。需要施法职业（法师、牧师、德鲁伊、术士、邪术师、圣武士、器械师或诡术师）或佩戴圣徽。只能选一种元素。附带智力、感知或魅力 +1。</description>
+    <description>强酸听从这个施法者。强酸类伤害无视目标对强酸的抗性，并且 +25%。需要施法职业（法师、牧师、德鲁伊、术士、邪术师、圣武士或诡术师）或佩戴圣徽。只能选一种元素。附带智力、感知或魅力 +1。</description>
     <iconPath>LP/Feats/ElementalAdept_Acid</iconPath><element>4</element>
   </LichPhylactery.LP_FeatDef>
   <LichPhylactery.LP_FeatDef>
@@ -218,7 +218,7 @@
   <LichPhylactery.LP_FeatDef>
     <defName>LP_Feat_MagmaGrip</defName>
     <label>熔岩之握</label>
-    <description>拳头里流着熔岩。徒手和锤、棒类近战命中 50% 点燃目标；在熔火锻炉做东西时品质再提升一档的概率 +20%。只有火巨人能选。附带力量 +1。</description>
+    <description>拳头里流着熔岩。徒手和锤、棒类近战命中 50% 点燃目标。只有火巨人能选。附带力量 +1。</description>
     <bonusAbilities><li>Str</li></bonusAbilities>
     <iconPath>LP/Feats/MagmaGrip</iconPath>
     <order>44</order><category>Racial</category>

@@ -56,7 +56,7 @@ namespace LichPhylactery {
   public static float Integrity(Corpse corpse){
    Pawn p=corpse?.InnerPawn;if(p==null || !p.RaceProps.IsFlesh || Undead(p))return 0;
    float value=0,total=0;
-   foreach(var part in p.RaceProps.body.AllParts){float w=Math.Max(.001f,part.coverageAbs);total+=w;if(!p.health.hediffSet.PartIsMissing(part))value+=w*Mathf.Clamp01(p.health.hediffSet.GetPartHealth(part)/Math.Max(1,part.def.GetMaxHealth(p)));}
+   foreach(var part in p.RaceProps.body.AllParts){float w=Math.Max(.001f,part.coverageAbs);total+=w;if(!p.health.hediffSet.PartIsMissing(part))value+=w*Mathf.Clamp01(p.health.hediffSet.GetPartHealth(part)/Math.Max(1f,PartHealth.Maximum(part,p)));}
    float rot=corpse.GetRotStage()==RotStage.Dessicated?.1f:corpse.GetRotStage()==RotStage.Rotting?.5f:1f;
    return total<=0?0:100f*Mathf.Clamp(p.BodySize,.1f,4f)*value/total*rot;
   }

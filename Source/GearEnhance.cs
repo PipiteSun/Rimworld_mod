@@ -13,7 +13,7 @@ namespace LichPhylactery {
  public static class GearEnhance {
   public const int Max=10,LowMax=5;
   public const string LowRecipe="LP_EnhanceGearLow",HighRecipe="LP_EnhanceGearHigh",LowResearch="LP_Research_GearEnhancing",HighResearch="LP_Research_GearEnhancingHigh";
-  public const float DamagePer=.06f,AccuracyPer=.015f,ArmorPer=.05f,ArmorFlatPer=.01f,ValuePer=.15f,SkillPer=.015f,SkillCap=.18f,SkillFloor=-.1f,FocusBonus=.05f;
+  public const float HpPer=.1f,DamagePer=.06f,AccuracyPer=.015f,ArmorPer=.05f,ArmorFlatPer=.01f,ValuePer=.15f,SkillPer=.015f,SkillCap=.18f,SkillFloor=-.1f,FocusBonus=.05f;
   // 从 L 强化到 L+1 的基础成功率。
   public static readonly float[] BaseChance={1f,.95f,.9f,.8f,.7f,.6f,.5f,.4f,.3f,.2f};
   public static float? TestRoll;
@@ -48,7 +48,7 @@ namespace LichPhylactery {
    int from=c.level;float chance=Chance(from,worker,bench);float roll=TestRoll??Rand.Value;
    string who=worker?.LabelShort??"工匠";Result result;
    if(roll<chance){
-    c.level++;if(gear.def.useHitPoints)gear.HitPoints=gear.MaxHitPoints;
+    c.level++;ClearStatCache(gear);if(gear.def.useHitPoints)gear.HitPoints=gear.MaxHitPoints;
     if(c.target<=c.level)c.target=0;
     result=Result.Success;
     if(!TestSuppressed)Messages.Message(who+"把"+gear.LabelNoCount+"强化到了+"+c.level+"。",gear,MessageTypeDefOf.PositiveEvent,false);
@@ -67,7 +67,22 @@ namespace LichPhylactery {
   public static Result LastResult;
   public static bool TestSuppressed;
   public static readonly List<StatDef> Stats=new List<StatDef>();
-  public static void ClearStatCache(Thing t){foreach(var s in Stats)s.Worker.ClearCacheForThing(t);}
+  // 1.145.0：耐久上限是原版“不变属性”，按物品永久缓存（StatWorker.immutableStatCache），等级变了要单独清掉；
+  // 等级变了按耐久百分比换算当前耐久（满的还是满的，不会因为上限变高显得破损、掉价或变成破衣），最后夹在上限内。
+  static readonly AccessTools.FieldRef<StatWorker,System.Collections.Concurrent.ConcurrentDictionary<Thing,float>> hpCache=AccessTools.FieldRefAccess<StatWorker,System.Collections.Concurrent.ConcurrentDictionary<Thing,float>>("immutableStatCache");
+  public static void ClearHpCache(Thing t){if(t==null)return;StatDefOf.MaxHitPoints.Worker.ClearCacheForThing(t);var c=hpCache(StatDefOf.MaxHitPoints.Worker);c?.TryRemove(t,out _);}
+  public static void ClearStatCache(Thing t){
+   if(t==null)return;foreach(var s in Stats)s.Worker.ClearCacheForThing(t);
+   ClearHpCache(t);SyncHp(t);
+  }
+  public static void SyncHp(Thing t){
+   var c=Comp(t);if(c==null || !t.def.useHitPoints)return;
+   if(c.hpLevel!=c.level){
+    float f=(1f+HpPer*c.level)/(1f+HpPer*Mathf.Max(0,c.hpLevel));
+    t.HitPoints=Mathf.Max(1,Mathf.RoundToInt(t.HitPoints*f));c.hpLevel=c.level;
+   }
+   if(t.HitPoints>t.MaxHitPoints)t.HitPoints=t.MaxHitPoints;
+  }
 
   // 属性变化。
   public static float Transform(string kind,float val,int l){
@@ -76,15 +91,17 @@ namespace LichPhylactery {
     case "acc":return Mathf.Max(val,Mathf.Min(val+AccuracyPer*l,.99f));
     case "armor":return val*(1f+ArmorPer*l)+ArmorFlatPer*l;
     case "value":return val*(1f+ValuePer*l);
+    case "hp":return val*(1f+HpPer*l);
    }
    return val;
   }
-  public static bool Applies(string kind,Thing t)=>kind=="value" || (kind=="armor"?t.def.IsApparel:IsWeapon(t));
+  public static bool Applies(string kind,Thing t)=>kind=="value" || kind=="hp" || (kind=="armor"?t.def.IsApparel:IsWeapon(t));
   public static string Effects(Thing t,int l){
    if(l<=0)return "无";
    var parts=new List<string>();
    if(IsWeapon(t)){parts.Add("伤害+"+(DamagePer*l).ToStringPercent());if(t.def.IsRangedWeapon)parts.Add("命中+"+(AccuracyPer*l).ToStringPercent());}
    if(t.def.IsApparel)parts.Add("护甲×"+(1f+ArmorPer*l).ToString("0.##")+"再+"+(ArmorFlatPer*l).ToStringPercent());
+   if(t.def.useHitPoints)parts.Add("耐久上限+"+(HpPer*l).ToStringPercent());
    parts.Add("价值+"+(ValuePer*l).ToStringPercent());
    return string.Join("，",parts);
   }
@@ -107,13 +124,19 @@ namespace LichPhylactery {
    Add("AccuracyTouch","acc");Add("AccuracyShort","acc");Add("AccuracyMedium","acc");Add("AccuracyLong","acc");
    Add("ArmorRating_Sharp","armor");Add("ArmorRating_Blunt","armor");Add("ArmorRating_Heat","armor");
    Add("MarketValue","value");
+   Add("MaxHitPoints","hp");
   }
  }
 
  public class CompProperties_GearEnhance : CompProperties {public CompProperties_GearEnhance(){compClass=typeof(CompGearEnhance);}}
  public class CompGearEnhance : ThingComp {
   public int level,target;
-  public override void PostExposeData(){Scribe_Values.Look(ref level,"lpEnhance",0);Scribe_Values.Look(ref target,"lpEnhanceTarget",0);}
+  // 当前耐久是按哪个等级的上限算的（1.145.0 之前的存档没有这项 = 0，读档时按比例换算一次）。
+  public int hpLevel;
+  public override void PostExposeData(){
+   Scribe_Values.Look(ref level,"lpEnhance",0);Scribe_Values.Look(ref target,"lpEnhanceTarget",0);Scribe_Values.Look(ref hpLevel,"lpEnhanceHpLevel",0);
+   if(Scribe.mode==LoadSaveMode.PostLoadInit && (level>0 || hpLevel>0)){GearEnhance.ClearHpCache(parent);GearEnhance.SyncHp(parent);}
+  }
   public override string TransformLabel(string label)=>level>0?"+"+level+" "+label:label;
   public override string CompInspectStringExtra(){
    if(level<=0 && target<=level)return null;
@@ -137,6 +160,7 @@ namespace LichPhylactery {
     case "acc":return "附魔强化 +"+l+"：+"+(GearEnhance.AccuracyPer*l).ToStringPercent()+"（最高99%）";
     case "armor":return "附魔强化 +"+l+"：×"+(1f+GearEnhance.ArmorPer*l).ToString("0.##")+"，+"+(GearEnhance.ArmorFlatPer*l).ToStringPercent();
     case "value":return "附魔强化 +"+l+"：×"+(1f+GearEnhance.ValuePer*l).ToString("0.##");
+    case "hp":return "附魔强化 +"+l+"：×"+(1f+GearEnhance.HpPer*l).ToString("0.##");
    }
    return null;
   }

@@ -114,7 +114,7 @@ namespace LichPhylactery {
    sb.AppendLine("· 研习卷：每读 1 小时 "+(Adventurer.StudyXP*mult).ToString("0")+(Adventurer.VPELoaded?"；云游导师：每课 "+(Adventurer.LessonXP*mult).ToString("0"):""));
    sb.AppendLine("· 冒险者手册："+(h.level>=Adventurer.TrainingCapLevel?"已超过（只练到 "+Adventurer.TrainingCapLevel+" 级）":"每本 "+(Adventurer.ManualXP*mult).ToString("0")+"，最多练到 "+Adventurer.TrainingCapLevel+" 级"));
    float wm=AdventurerWork.Mult; // 1.61.0 热修：日常工作
-   sb.AppendLine(wm<=0f?"· 日常工作：已关闭":"· 日常工作：每 "+AdventurerWork.SkillPerXp.ToString("0")+" 技能经验 +"+(wm*mult).ToString("0.##")+"（今日 "+AdventurerWork.Today(h).ToString("0.#")+" / "+AdventurerWork.DailyFull.ToString("0")+" 全额，之后 ×"+AdventurerWork.OverFactor+"；累计 "+K(h.workXpTotal*mult)+"）");
+   sb.AppendLine(wm<=0f?"· 日常工作：已关闭":"· 日常工作：每 "+AdventurerWork.SkillPerXp.ToString("0")+" 技能经验 +"+(wm*mult).ToString("0.##")+"（今日 "+AdventurerWork.Today(h).ToString("0.#")+" / "+Feats5.DailyFull(h.pawn).ToString("0")+" 全额，之后 ×"+AdventurerWork.OverFactor+"；累计 "+K(h.workXpTotal*mult)+"）");
    AdventurerExtraXp.Tip(sb,h,mult); // 1.75.0 非战斗经验
    if(Epic.KillMilestonesOn){
     sb.Append("· 击杀里程碑（下一级所需的 "+(Epic.KillMilestoneShare*100f).ToString("0")+"%，现在 "+K(Epic.NextLevelXp(h)*Epic.KillMilestoneShare)+"）：");

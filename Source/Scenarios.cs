@@ -65,20 +65,15 @@ namespace LichPhylactery {
   public override string Summary(Scenario scen)=>"开局附近有一座尚存"+fuel.ToString("0")+"燃料的熔火锻炉；每个火巨人穿着锻工外衣，近战最好的火巨人手持熔炉重锤。";
   public override void PostGameStart(){var map=Find.AnyPlayerHomeMap;if(map!=null)Apply(map,fuel);}
   public static Thing Apply(Map map,float fuel){
-   var forge=StartingBuildings.Place(DefDatabase<ThingDef>.GetNamed("LP_FireGiantForge"),null,StartingBuildings.Center(map),map);
+   var forgeDef=DefDatabase<ThingDef>.GetNamedSilentFail("LP_FireGiantForge");if(forgeDef==null)return null; // 1.146.0：熔火锻炉与锻工外衣已移除
+   var forge=StartingBuildings.Place(forgeDef,null,StartingBuildings.Center(map),map);
    if(forge!=null && fuel>0)forge.TryGetComp<CompRefuelable>()?.Refuel(fuel);
    var giants=map.mapPawns.FreeColonistsSpawned.Where(FireGiant.Active).ToList();
-   var tunic=DefDatabase<ThingDef>.GetNamed("LP_FireGiantTunic");
+   var tunic=DefDatabase<ThingDef>.GetNamedSilentFail("LP_FireGiantTunic");if(tunic==null)return forge;
    foreach(var giant in giants){
     if(giant.apparel==null || giant.apparel.WornApparel.Any(a=>a.def==tunic))continue;
     var worn=(Apparel)ThingMaker.MakeThing(tunic,ThingDefOf.Cloth);worn.TryGetComp<CompQuality>()?.SetQuality(QualityCategory.Good,ArtGenerationContext.Colony);
     giant.apparel.Wear(worn);
-   }
-   var bearer=giants.Where(p=>p.equipment!=null && !p.WorkTagIsDisabled(WorkTags.Violent)).OrderByDescending(p=>p.skills?.GetSkill(SkillDefOf.Melee)?.Level??0).FirstOrDefault();
-   if(bearer!=null){
-    var maul=(ThingWithComps)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("LP_FireGiantMaul"));maul.TryGetComp<CompQuality>()?.SetQuality(QualityCategory.Good,ArtGenerationContext.Colony);
-    if(bearer.equipment.Primary!=null)bearer.equipment.TryDropEquipment(bearer.equipment.Primary,out _,bearer.Position,false);
-    bearer.equipment.AddEquipment(maul);
    }
    return forge;
   }

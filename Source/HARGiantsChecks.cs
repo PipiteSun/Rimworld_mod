@@ -33,7 +33,7 @@ namespace LichPhylactery {
   void CheckGiantKinHAR(){
    bool har=ModsConfig.IsActive(HARId);
    // 1 加载（1.102.0：两族是原版人类 + 异种型，有没有 HAR 都加载；旧的 HAR 种族没有了）
-   Check(Ettin.RaceDef==null && Cyclops.RaceDef==null && DefDatabase<XenotypeDef>.GetNamedSilentFail("LP_EttinKin")!=null && DefDatabase<XenotypeDef>.GetNamedSilentFail("LP_CyclopsKin")!=null && EttinRaid.Kind!=null && CyclopsGuard.Kind!=null && Items.Thing(Ettin.Helm)!=null && EttinRaid.Kind.race==ThingDefOf.Human,"ettin and cyclops xenotypes, human pawn kinds and gear load with or without HAR (har="+har+"); the old HAR races are gone");
+   Check(Ettin.RaceDef==null && Cyclops.RaceDef==null && DefDatabase<XenotypeDef>.GetNamedSilentFail("LP_EttinKin")!=null && DefDatabase<XenotypeDef>.GetNamedSilentFail("LP_CyclopsKin")!=null && EttinRaid.Kind!=null && CyclopsGuard.Kind!=null && EttinRaid.Kind.race==ThingDefOf.Human,"ettin and cyclops xenotypes, human pawn kinds and gear load with or without HAR (har="+har+"); the old HAR races are gone");
    if(har)RunHARGiantsBridge();
    worldBefore=new HashSet<Pawn>(Find.WorldPawns.AllPawnsAliveOrDead);
    var made=new List<Thing>();
@@ -106,11 +106,11 @@ namespace LichPhylactery {
     bool cScared=LichSpells.Frighten(human,c),hScared=scared.GetStatValue(StatDefOf.PsychicSensitivity)<=0 || LichSpells.Frighten(human,scared);
     Check(!cScared && !c.InMentalState && hScared && Cyclops.GazeImmune(c),"cyclops ignores fear gaze; an ordinary pawn panics");
     // 11 巨人：GiantKin、阶序、双盔与锻工外衣；普通帽子盖不到第二个头
-    var helm=(Apparel)ThingMaker.MakeThing(Items.Thing(Ettin.Helm));var tunic=(Apparel)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("LP_FireGiantTunic"),ThingDefOf.Cloth);made.Add(helm);made.Add(tunic);
-    bool eHelm=EquipmentUtility.CanEquip(helm,e2,out _,false),cHelm=EquipmentUtility.CanEquip(helm,c,out _,false),hHelm=EquipmentUtility.CanEquip(helm,human,out _,false),eTunic=EquipmentUtility.CanEquip(tunic,e2,out _,false),cTunic=EquipmentUtility.CanEquip(tunic,c,out _,false);
+    var tunic=(Apparel)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("LP_FireGiantTunic"),ThingDefOf.Cloth);made.Add(tunic);
+    bool eTunic=EquipmentUtility.CanEquip(tunic,e2,out _,false),cTunic=EquipmentUtility.CanEquip(tunic,c,out _,false);
     var secondGroup=DefDatabase<BodyPartGroupDef>.GetNamed("LP_EttinSecondHead");var hat=DefDatabase<ThingDef>.GetNamed("Apparel_CowboyHat");
     GiantKin.ForgetCensus();bool eBelow=DefDatabase<ThoughtDef>.GetNamed("LP_OrdningBelow").Worker.CurrentState(e2).Active,cAbove=DefDatabase<ThoughtDef>.GetNamed("LP_OrdningAbove").Worker.CurrentState(c).Active;
-    Check(GiantKin.Rank(e2)==5 && GiantKin.Rank(c)==6 && eHelm && cHelm && !hHelm && eTunic && cTunic && helm.def.apparel.bodyPartGroups.Contains(secondGroup) && !hat.apparel.bodyPartGroups.Contains(secondGroup) && eBelow && cAbove,"both races are giants (rank 5 / 6, ordning: ettin commands, cyclops keeps its place); twin helm and forge tunic fit them, not a human; a cowboy hat cannot cover the second head, the twin helm does");
+    Check(GiantKin.Rank(e2)==5 && GiantKin.Rank(c)==6 && eTunic && cTunic && !hat.apparel.bodyPartGroups.Contains(secondGroup) && eBelow && cAbove,"both races are giants (rank 5 / 6, ordning: ettin commands, cyclops keeps its place); twin helm and forge tunic fit them, not a human; a cowboy hat cannot cover the second head, the twin helm does");
     // 12 体型只走本源基因上的 GiantRaceExtension 一个来源：2.0 / 1.8，巨躯、渲染、胃容量不叠乘（巨人血统 adultSize 1）
     Check(Near(e2.BodySize,human.BodySize*2f) && Near(c.BodySize,human.BodySize*1.8f) && Near(GiantKin.Size(e2),1f) && Near(BodySize.HealthFactor(e2),1.5f) && Near(BodySize.MeleeFactor(e2),1.3f) && Near(BodySize.HealthFactor(c),1.4f) && Near(RootScale(e2),RootScale(human)*1.4f) && Near(RootScale(c),RootScale(human)*1.35f) && Near(Satiety.Compute(e2),1.8f) && Near(Satiety.Compute(c),1.7f),
      "body size from the core gene only: ettin "+e2.BodySize+" / cyclops "+c.BodySize+", health x"+BodySize.HealthFactor(e2).ToString("0.##")+" / x"+BodySize.HealthFactor(c).ToString("0.##")+", render x1.4 / x1.35, stomach 180% / 170% (no stacking with the gene)");

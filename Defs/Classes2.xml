@@ -117,30 +117,6 @@
     <legendary><li>LP_LegBloodlineAwakening</li><li>LP_LegArcaneSurge</li></legendary>
   </LichPhylactery.LP_ClassDef>
 
-  <LichPhylactery.LP_ClassDef>
-    <defName>LP_Class_Artificer</defName>
-    <label>器械师</label>
-    <description>DND 器械师把魔力锻进器械：奥术工坊、符文铭刻、大师工艺、山岳锻造、魔力共鸣（被动），快速维修、过载射击、魔力充能、符文炮台。强度看“器械强度”（手工）。没有资源，只看冷却。模组设置“DND武器需要器械师”开着时，可制作的 DND 武器要器械师才能做：奥术工坊那一档要器械师 1 级，符文铭刻那一档要 5 级，“山岳之怒”要学会山岳锻造。每个器械师等级让制作的物品期望品质 +0.1 档（10 级 +1 档，20 级 +2 档；整数部分必定提升，小数部分按几率再升一档，最高传说）。</description>
-    <mainSkill>Crafting</mainSkill>
-    <primary>Int</primary>
-    <order>8</order>
-    <resource>None</resource>
-    <legacyPath>LP_Path_Artificer</legacyPath>
-    <background>LP/Classes/Artificer/Background</background>
-    <color>(0.95,0.8,0.45)</color>
-    <abilities>
-      <li><ability>LP_ArcaneWorkshop</ability><level>1</level></li>
-      <li><ability>LP_QuickRepair</ability><level>1</level></li>
-      <li><ability>LP_Overcharge</ability><level>3</level></li>
-      <li><ability>LP_RuneInscription</ability><level>5</level></li>
-      <li><ability>LP_ArcaneCharge</ability><level>7</level></li>
-      <li><ability>LP_MasterCraft</ability><level>7</level></li>
-      <li><ability>LP_MountainForge</ability><level>10</level></li>
-      <li><ability>LP_RuneTurretAbility</ability><level>13</level></li>
-      <li><ability>LP_ArcaneResonance</ability><level>15</level><capstoneSkill>Crafting</capstoneSkill></li>
-    </abilities>
-    <legendary><li>LP_LegSoulforge</li><li>LP_LegWarGolem</li></legendary>
-  </LichPhylactery.LP_ClassDef>
 
   <!-- ===== 强度属性 ===== -->
   <StatDef ParentName="LP_ClassPowerBase">
@@ -173,6 +149,7 @@
   </StatDef>
   <StatDef ParentName="LP_ClassPowerBase">
     <defName>LP_ArtificePower</defName>
+    <alwaysHide>true</alwaysHide>
     <label>器械强度</label>
     <description>器械师能力的强度倍率：0.5 + 手工等级/20，另加冒险者智力调整值 × 0.05 与 (熟练加值 − 2) × 0.02（不吃奥术强度的 10%）、器械师职业等级合计每比 1 高 1 级 +2%（最多 +40%）。过载射击的伤害加成、符文炮台的伤害都乘这个倍率。</description>
     <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Crafting</skill></li></parts>
@@ -985,7 +962,7 @@
   <AbilityDef ParentName="LP_ClassSelfBase">
     <defName>LP_ArcaneWorkshop</defName>
     <label>奥术工坊</label>
-    <description>被动：能制作魔法飞弹杖、火焰法杖、寒霜法杖、符文手铳和符文火铳（还需要研究“奥术法杖”/“符文火器”），以及食人魔大棒、矮人投掷锤、精灵长弓、半兽人巨斧、银剑、霜巨人斧等奥术工坊那一档的 DND 武器（各自的研究照旧）。器械师 1 级。</description>
+    <description>被动：能制作制伏短棍、缚网弩、安眠短弓和安眠法杖这些奥术工坊那一档的 DND 武器（还需要研究“制伏战术”）。器械师 1 级。</description>
     <iconPath>LP/Classes/Artificer/ArcaneWorkshop</iconPath>
     <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
   </AbilityDef>
@@ -1011,7 +988,7 @@
   <AbilityDef ParentName="LP_ClassSelfBase">
     <defName>LP_RuneInscription</defName>
     <label>符文铭刻</label>
-    <description>被动：能制作圣银手枪、熔岩穿甲枪、雷鸣铳、雷锤手炮和符文连珠铳（还需要研究“符文火器”），以及霜刺长枪、天穹之剑、云巨人晨星锤、风暴三叉戟、火巨人熔炉重锤、熔核破城锤等符文铭刻那一档的 DND 武器（各自的研究照旧）。器械师 5 级。</description>
+    <description>被动：符文铭刻那一档的 DND 武器（1.146.0 起符文火器已移除，这一档暂时没有可制作的武器）。器械师 5 级。</description>
     <iconPath>LP/Classes/Artificer/RuneInscription</iconPath>
     <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
   </AbilityDef>
@@ -1027,14 +1004,14 @@
   <AbilityDef ParentName="LP_ClassSelfBase">
     <defName>LP_MasterCraft</defName>
     <label>大师工艺</label>
-    <description>被动：制作“符文火器”“奥术法杖”研究解锁的所有武器品质 +1（与矮人的加成叠加，最高传说）。器械师 7 级。</description>
+    <description>被动：制作安眠法杖时品质 +1（最高传说；1.146.0 起符文火器和其他法杖已移除）。器械师 7 级。</description>
     <iconPath>LP/Classes/Artificer/MasterCraft</iconPath>
     <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
   </AbilityDef>
   <AbilityDef ParentName="LP_ClassSelfBase">
     <defName>LP_MountainForge</defName>
     <label>山岳锻造</label>
-    <description>被动：能制作矮人王族的重铳“山岳之怒”。器械师 10 级。</description>
+    <description>被动：矮人王族重铳的锻法（1.146.0 起“山岳之怒”已移除，这个能力暂时没有可制作的武器）。器械师 10 级。</description>
     <iconPath>LP/Classes/Artificer/MountainForge</iconPath>
     <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
   </AbilityDef>

@@ -28,8 +28,8 @@ namespace LichPhylactery {
   void CheckTwistedMeat(){
    TwistedMeat.TestSuppressed=true;var c=TwistedMeat.Comp;var meat=TwistedMeat.Meat;var paste=TwistedMeat.Paste;
    // 1 桥接加载
-   bool things=new[]{"LP_AberrantPaste","LP_AberrantSalve","LP_MorphDraught","LP_FrenzyFlask","LP_EyeOfHadar","LP_FleshIncubator","LP_FleshWall","LP_AberrantHideArmor"}.All(n=>DefDatabase<ThingDef>.GetNamedSilentFail(n)!=null);
-   bool recs=new[]{"LP_StabilizeRot","LP_BrewTrollRegenAberrant","LP_BrewAberrantSalve","LP_BrewMorphDraught","LP_MakeFrenzyFlask","LP_FarDissection","LP_ExtractBioferrite","LP_TemperColdIronBio","LP_Offer_Twisted","LP_MakeAberrantGolem","LP_RemoveAberrantTumor"}.All(n=>DefDatabase<RecipeDef>.GetNamedSilentFail(n)!=null);
+   bool things=new[]{"LP_AberrantPaste","LP_AberrantSalve","LP_MorphDraught","LP_EyeOfHadar","LP_FleshIncubator","LP_FleshWall","LP_AberrantHideArmor"}.All(n=>DefDatabase<ThingDef>.GetNamedSilentFail(n)!=null);
+   bool recs=new[]{"LP_StabilizeRot","LP_BrewTrollRegenAberrant","LP_BrewAberrantSalve","LP_BrewMorphDraught","LP_FarDissection","LP_ExtractBioferrite","LP_TemperColdIronBio","LP_Offer_Twisted","LP_MakeAberrantGolem","LP_RemoveAberrantTumor"}.All(n=>DefDatabase<RecipeDef>.GetNamedSilentFail(n)!=null);
    var rd=DefDatabase<PsychicRitualDef>.GetNamedSilentFail("LP_FarRealmFeast") as PsychicRitualDef_FarRealmFeast;
    Check(TwistedMeat.Active && c!=null && things && recs && rd!=null && rd.RequiredOffering?.GetBaseCount()==150 && rd.cooldownHours==240 && DefDatabase<TraderKindDef>.GetNamedSilentFail("LP_HagMarketTrader")!=null && DefDatabase<JobDef>.GetNamedSilentFail("LP_FleshCatalysis")!=null,"twisted meat: Anomaly bridge loads items, 11 recipes, the far-realm feast ritual (150 meat, 10 days), hag market and catalysis job");
    // 2 A 节折算
@@ -52,8 +52,8 @@ namespace LichPhylactery {
    var seed2=GenRecipe.MakeRecipeProducts(gr,worker,new List<Thing>(),null,altar).OfType<ConstructSeed>().FirstOrDefault();if(seed2!=null){GenPlace.TryPlaceThing(seed2,altar.InteractionCell,map,ThingPlaceMode.Near);tmSeedId=seed2.thingIDNumber;}
    LichMod.Settings.levelCap=oldCap;
    // 9 B / C 配方
-   R("LP_StabilizeRot",out var stab);R("LP_BrewTrollRegenAberrant",out var troll);R("LP_MakeFrenzyFlask",out var fl);
-   Check(stab.products[0].thingDef==paste && stab.products[0].count==2 && stab.ingredients.Any(i=>i.filter.Allows(meat) && i.GetBaseCount()==20) && stab.AllRecipeUsers.Any(u=>u.defName=="LP_AlchemyTable") && paste.GetCompProperties<CompProperties_Rottable>()==null && paste.stackLimit==50 && Near(paste.BaseMarketValue,12f) && troll.products[0].thingDef.defName=="LP_PotionTrollRegen" && fl.products[0].count==2,"twisted meat: 20 meat + 2 chemfuel → 2 paste at the alchemy table; paste never rots, stacks 50, 12 silver; troll regen and frenzy flask recipes");
+   R("LP_StabilizeRot",out var stab);R("LP_BrewTrollRegenAberrant",out var troll);
+   Check(stab.products[0].thingDef==paste && stab.products[0].count==2 && stab.ingredients.Any(i=>i.filter.Allows(meat) && i.GetBaseCount()==20) && stab.AllRecipeUsers.Any(u=>u.defName=="LP_AlchemyTable") && paste.GetCompProperties<CompProperties_Rottable>()==null && paste.stackLimit==50 && Near(paste.BaseMarketValue,12f) && troll.products[0].thingDef.defName=="LP_PotionTrollRegen","twisted meat: 20 meat + 2 chemfuel → 2 paste at the alchemy table; paste never rots, stacks 50, 12 silver; troll regen and frenzy flask recipes");
    // 10 畸变再生膏
    var cellA=TMCell(16);var doc=TMPawn(cellA);var pat=TMPawn(cellA);var torso=pat.health.hediffSet.GetNotMissingParts().First(x=>x.def==BodyPartDefOf.Torso);
    var cut=HediffMaker.MakeHediff(HediffDefOf.Cut,pat,torso);cut.Severity=4f;pat.health.AddHediff(cut,torso);float b0=pat.GetStatValue(StatDefOf.PawnBeauty);

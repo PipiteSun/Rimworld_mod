@@ -31,7 +31,6 @@
       <li Class="StockGenerator_SingleDef"><thingDef>LP_ScrollRemoveCurse</thingDef><countRange>1~3</countRange></li>
       <li Class="StockGenerator_SingleDef"><thingDef>LP_WardingBondCase</thingDef><countRange>-2~1</countRange></li>
       <li Class="StockGenerator_SingleDef"><thingDef>LP_PrayerBeads</thingDef><countRange>-1~1</countRange></li>
-      <li Class="StockGenerator_SingleDef"><thingDef>LP_MartyrsBeads</thingDef><countRange>-3~1</countRange><price>Expensive</price></li>
       <li Class="StockGenerator_SingleDef"><thingDef>LP_ScarabProtection</thingDef><countRange>-4~1</countRange></li>
       <li Class="StockGenerator_SingleDef"><thingDef>LP_PuritySeal</thingDef><countRange>-2~4</countRange></li>
     </value>
@@ -57,18 +56,15 @@
           <li>LP_RingShootingStars</li>
           <li>LP_AmuletPlanes</li>
           <li>LP_BagOfTricks</li>
-          <li>LP_EversmokingBottle</li>
           <li>LP_BroochShielding</li>
         </goods>
         <cursed>
-          <li>LP_SwordVengeance</li>
           <li>LP_MarkBlood</li>
           <li>LP_MarkDecay</li>
           <li>LP_MarkChange</li>
           <li>LP_MarkRapture</li>
         </cursed>
       </li>
-      <li Class="StockGenerator_SingleDef"><thingDef>LP_VorpalSword</thingDef><countRange>-6~1</countRange><price>Expensive</price></li>
     </value>
   </Operation>
 </Patch>

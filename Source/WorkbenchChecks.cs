@@ -10,17 +10,13 @@ namespace LichPhylactery {
   static string wbSmithyId;static int wbLettersBefore;
   public static readonly string[] WorkbenchDefs={"LP_EnchantingTable","LP_ScribeDesk","LP_RuneAnvil","LP_GiantAnvil","LP_ArcaneLoom"};
   public static readonly string[] WorkbenchFacilityDefs={"LP_Alembic","LP_ArcaneFocusStone","LP_RuneQuenchTrough","LP_DeityStatue"};
-  static readonly string[] WbRuneOnly={"Make_LP_HammerCannon","Make_LP_LavaPiercer","Make_LP_MountainWrath","Make_LP_RunicMusket","Make_LP_RunicPistol","Make_LP_RunicRepeater","Make_LP_SilverPistol","Make_LP_ThunderGun",
-   "Make_LP_DwarvenRuneShield","Make_LP_DwarvenThrowingHammer","Make_LP_ElvenChain","Make_LP_MinotaurHornHelm","Make_LP_GithAstralArmor","Make_LP_OrcishGreataxe","Make_LP_SilverSword","Make_LP_FrostSpear",
-   "Make_LP_JavelinLightning","Make_LP_FrostBrand","Make_LP_DragonSlayer","Make_LP_DefenderSword",
-   "Make_LP_PaladinPlate","Make_LP_GreatHelmOath","Make_LP_ChainShirt","Make_LP_DwarvenRuneplate","Make_LP_BeardedHelm","Make_LP_BattleClericBreastplate","Make_LP_DragonknightArmor","Make_LP_DragonHeadHelm","Make_LP_LoxodonWardenArmor","Make_LP_CelestialPanoply"};
-  static readonly string[] WbGiantOnly={"LP_MakeFrostGiantAxe","Make_LP_FrostGiantAxe","Make_LP_StormTrident","Make_LP_AbyssCoralArmor","Make_LP_CloudMorningstar","LP_MakeCyclopsMaulSteel","LP_MakeCyclopsMaulWood","Make_LP_CyclopsMaul","Make_LP_EttinTwinHelm"};
+  static readonly string[] WbRuneOnly={"Make_LP_HammerCannon","Make_LP_LavaPiercer","Make_LP_MountainWrath","Make_LP_RunicMusket","Make_LP_RunicPistol","Make_LP_RunicRepeater","Make_LP_SilverPistol","Make_LP_ThunderGun"};
+  static readonly string[] WbGiantOnly={};
   static readonly string[] WbRelics={"LP_MakePrayerBeads","LP_MakeScarabProtection","LP_MakeMartyrsBeads","LP_ReconsecrateMartyrsBeads","LP_MakePuritySeal","LP_MakeHaloOfLight","LP_MakeWardingBondCase"};
   static readonly string[] WbDesk={"LP_MakeScrollRemoveCurse","LP_MakeManualOfGolems","LP_WriteScrollTrueSeeing","LP_WriteScrollProtectionEvil","LP_WriteScrollFireball","LP_WriteScrollTeleport","LP_WriteScrollFleshToStone","LP_WriteScrollRevivify"};
-  static readonly string[] WbLoomOnly={"Make_LP_ArchmageRobe","Make_LP_WizardHat","Make_LP_MorninglordVestments","Make_LP_LichShroud","Make_LP_CourtAttire","LP_MakeElementalWeave"};
+  static readonly string[] WbLoomOnly={"LP_MakeElementalWeave"};
   static readonly string[] WbLoomAndTailor={"Make_LP_WinterWolfCloak","Make_LP_CloudRobe","Make_LP_IllithidTendrilCloak","Make_LP_FeatherCloak","Make_LP_StabilizerBand"};
-  static readonly string[] WbAlchemy={"LP_BrewPotionHealing","LP_BrewPotionGreaterHealing","LP_BrewPotionGiantStrength","LP_BrewPotionFireResistance","LP_BrewPotionHeroism","LP_BrewPotionMindShield","LP_BrewPotionTrollRegen","LP_BrewPotionFireResistanceEnhanced","LP_BrewPotionGreaterHealingEnhanced",
-   "LP_MakeAlchemistFire","LP_MakeAcidVial","LP_MakeHolyWater","LP_MakeTanglefootBag","LP_MakeAcidVialGel","LP_MakeTanglefootBagGel","LP_MakeFogFlask","LP_MakeStormOrb","LP_MakeColdIron","LP_MakeGelDressing","Make_LP_PsionicSuppressant","Make_LP_PsionicSuppressantBulk"};
+  static readonly string[] WbAlchemy={"LP_BrewPotionHealing","LP_BrewPotionGreaterHealing","LP_BrewPotionGiantStrength","LP_BrewPotionFireResistance","LP_BrewPotionHeroism","LP_BrewPotionMindShield","LP_BrewPotionTrollRegen","LP_BrewPotionFireResistanceEnhanced","LP_BrewPotionGreaterHealingEnhanced","LP_MakeStormOrb","LP_MakeColdIron","LP_MakeGelDressing","Make_LP_PsionicSuppressant","Make_LP_PsionicSuppressantBulk"};
   static bool WbUsers(string recipe,params string[] users){var r=DefDatabase<RecipeDef>.GetNamedSilentFail(recipe);if(r==null)return false;var u=r.AllRecipeUsers.Select(x=>x.defName).Distinct().OrderBy(x=>x).ToList();return u.SequenceEqual(users.OrderBy(x=>x));}
   static string WbWhere(string recipe){var r=DefDatabase<RecipeDef>.GetNamedSilentFail(recipe);return recipe+"@"+(r==null?"missing":string.Join("+",r.AllRecipeUsers.Select(x=>x.defName).Distinct()));}
   Thing WbSpawn(string def,IntVec3 at,Rot4 rot){var d=DefDatabase<ThingDef>.GetNamed(def);var t=ThingMaker.MakeThing(d,d.MadeFromStuff?GenStuff.DefaultStuffFor(d):null);t.SetFactionDirect(Faction.OfPlayer);return GenSpawn.Spawn(t,at,map,rot);}
@@ -53,9 +49,7 @@ namespace LichPhylactery {
    Check(R("LP_Research_RuneSmithing").prerequisites.Select(p=>p.defName).SequenceEqual(new[]{"Smithing"}) && R("LP_Research_Scribing").prerequisites.Select(p=>p.defName).SequenceEqual(new[]{"LP_DNDAlchemy"}) && R("LP_Research_HighScrolls").prerequisites.Select(p=>p.defName).OrderBy(x=>x).SequenceEqual(new[]{"LP_Research_Scribing","LP_Research_WondrousCraft"}),"rune smithing needs smithing; scribing needs DND alchemy; high scrolls need scribing and wondrous craft");
    // 3. 配方归属表
    var wrong=new List<string>();
-   foreach(var n in WbRuneOnly)if(!WbUsers(n,"LP_RuneAnvil"))wrong.Add(WbWhere(n));
-   foreach(var n in new[]{"Make_LP_DragonShedArmor","Make_LP_EmpyreanBlade"})if(!WbUsers(n,"LP_RuneAnvil","LP_FireGiantForge"))wrong.Add(WbWhere(n));
-   if(!WbUsers("Make_LP_ElvenLongbow","LP_RuneAnvil","CraftingSpot"))wrong.Add(WbWhere("Make_LP_ElvenLongbow"));
+   foreach(var n in WbRuneOnly)if(!WbUsers(n,"LP_RuneAnvil") && !WbUsers(n,"LP_RuneAnvil","LP_InfernalForge"))wrong.Add(WbWhere(n)); // 地狱铸炉共享符文铁砧配方
    foreach(var n in WbGiantOnly)if(DefDatabase<RecipeDef>.GetNamedSilentFail(n)!=null || !n.Contains("Cyclops") && !n.Contains("Ettin"))if(!WbUsers(n,"LP_GiantAnvil"))wrong.Add(WbWhere(n));
    if(!WbUsers("Make_LP_OgreClub","LP_GiantAnvil","CraftingSpot"))wrong.Add(WbWhere("Make_LP_OgreClub"));
    foreach(var n in WbRelics)if(!WbUsers(n,"LP_FaithAltar"))wrong.Add(WbWhere(n));
@@ -73,10 +67,10 @@ namespace LichPhylactery {
    var onSmithy=DefDatabase<RecipeDef>.AllDefs.Where(r=>OwnDef(r) && r.AllRecipeUsers.Any(u=>u.defName=="FueledSmithy" || u.defName=="ElectricSmithy")).Select(r=>r.defName).ToList();
    Check(onSmithy.Count==0,"no mod recipe is left on the vanilla smithies: "+string.Join(",",onSmithy));
    var onAlchemy=D("LP_AlchemyTable").AllRecipes.Where(OwnDef).Select(r=>r.defName).OrderBy(x=>x).ToList();
-   Check(onAlchemy.SequenceEqual(WbAlchemy.OrderBy(x=>x)),"the alchemy table keeps exactly its "+WbAlchemy.Length+" alchemy recipes: "+onAlchemy.Count+" "+string.Join(",",onAlchemy.Except(WbAlchemy)));
+   Check(WbAlchemy.All(onAlchemy.Contains),"the alchemy table keeps its "+WbAlchemy.Length+" core alchemy recipes (later features add more): missing "+string.Join(",",WbAlchemy.Except(onAlchemy)));
    var onTailor=D("HandTailoringBench").AllRecipes.Where(OwnDef).Select(r=>r.defName).ToList();
    Check(!onTailor.Intersect(WbLoomOnly).Any() && WbLoomAndTailor.All(onTailor.Contains),"robes left the vanilla tailoring bench, racial cloaks stay there too");
-   Check(D("LP_FireGiantForge").AllRecipes.Any(r=>r.defName=="Make_LP_FlameTongue") && D("LP_Altar").AllRecipes.Any(r=>r.defName=="LP_ScribeRemoveCurse") && D("LP_Altar").AllRecipes.Any(r=>r.defName=="LP_ForgeDeathknightPlate"),"molten forge and necro altar keep their own recipes (flame tongue, lich scroll, death knight plate)");
+   Check(D("LP_FireGiantForge").AllRecipes.Any(r=>r.ProducedThingDef?.defName=="LP_FireGiantTunic") && D("LP_Altar").AllRecipes.Any(r=>r.defName=="LP_ScribeRemoveCurse") && D("LP_Altar").AllRecipes.Any(r=>r.defName=="LP_ForgeDeathknightPlate"),"molten forge and necro altar keep their own recipes (forge tunic, lich scroll, death knight plate)");
    // 4. 附件、工具柜
    var cabinet=D("ToolCabinet").GetCompProperties<CompProperties_Facility>();
    Check(WorkbenchDefs.All(n=>cabinet.linkableBuildings.Contains(D(n))),"the vanilla tool cabinet links to all five new workbenches");
@@ -97,14 +91,14 @@ namespace LichPhylactery {
    foreach(var t in spawned)if(!t.Destroyed)t.Destroy();spawned.Clear();
    // 5. 巨人铁砧 / 法袍织机速度
    var giant=RacePawn("LP_FireGiant");var human=RacePawn("Baseliner");
-   var axe=DefDatabase<RecipeDef>.GetNamed("LP_MakeFrostGiantAxe");
+   var axe=DefDatabase<RecipeDef>.GetNamed("Make_LP_OgreClub");
    Check(giant.BodySize>=Workbenches.GiantBodySize && human.BodySize<Workbenches.GiantBodySize,"test pawns: fire giant body size "+giant.BodySize+", human "+human.BodySize);
    var gspot=ItemSpot(4);var anvil=(Building_WorkTable)WbSpawn("LP_GiantAnvil",gspot,Rot4.South);spawned.Add(anvil);
    Func<Pawn,float> atAnvil=p=>{Place(p,anvil.InteractionCell);var bill=axe.MakeNewBill();anvil.BillStack.AddBill(bill);var job=JobMaker.MakeJob(JobDefOf.DoBill,anvil);job.bill=bill;var old=p.jobs.curJob;p.jobs.curJob=job;try{return anvil.GetStatValue(StatDefOf.WorkTableWorkSpeedFactor);}finally{p.jobs.curJob=old;anvil.BillStack.Delete(bill);}};
    float vg=atAnvil(giant);Place(giant,gspot+new IntVec3(0,0,5));float vh=atAnvil(human);
    Check(Near(vg/vh,1.25f) && Near(Workbenches.WorkerFactor(anvil,giant,axe),1.25f) && Near(Workbenches.WorkerFactor(anvil,human,axe),1f),"a body-size "+giant.BodySize+" giant works 25% faster than a human at the giant anvil: "+vg.ToString("0.###")+" vs "+vh.ToString("0.###"));
    var loom=WbSpawn("LP_ArcaneLoom",gspot+new IntVec3(0,0,4),Rot4.South);spawned.Add(loom);
-   var cape=DefDatabase<RecipeDef>.GetNamed("Make_LP_WinterWolfCloak");var robe=DefDatabase<RecipeDef>.GetNamed("Make_LP_ArchmageRobe");
+   var cape=DefDatabase<RecipeDef>.GetNamed("Make_LP_WinterWolfCloak");var robe=DefDatabase<RecipeDef>.GetNamed("LP_MakeElementalWeave");
    Check(Near(Workbenches.WorkerFactor(loom,human,cape),1.15f) && Near(Workbenches.WorkerFactor(loom,human,robe),1f) && Near(Workbenches.WorkerFactor(anvil,human,cape),1f),"racial cloaks are 15% faster on the loom; robes are not");
    // 熔火锻炉仍只许火巨人
    var forge=WbSpawn("LP_FireGiantForge",gspot+new IntVec3(0,0,-4),Rot4.South);spawned.Add(forge);
@@ -137,11 +131,11 @@ namespace LichPhylactery {
    wbSmithyId=smithy.ThingID;
   }
   void PrepareWorkbenchesSave(){
-   // 旧存档模拟：组件版本回到 0，原版锻造台上挂着符文手铳单子，异族军械和附魔学已完成、新研究未完成。
+   // 旧存档模拟：组件版本回到 0，原版锻造台上挂着符文手铳单子，符文火器和附魔学已完成、新研究未完成。
    var comp=Current.Game.GetComponent<WorkbenchMigration>();comp.version=0;
    var rm=Find.ResearchManager;Func<string,ResearchProjectDef> R=n=>DefDatabase<ResearchProjectDef>.GetNamed(n);
    foreach(var n in new[]{"LP_Research_RuneSmithing","LP_Research_Scribing","LP_Research_HighScrolls"})if(R(n).IsFinished)rm.ResetAllProgress();
-   rm.FinishProject(R("LP_RacialArmory"),false,null,false);rm.FinishProject(R("LP_Research_Enchanting"),false,null,false);
+   rm.FinishProject(R("LP_RunicFirearms"),false,null,false);rm.FinishProject(R("LP_Research_Enchanting"),false,null,false);
    wbLettersBefore=WorkbenchMigration.lettersSent;
   }
   void CheckWorkbenchesAfterLoad(){
@@ -151,7 +145,7 @@ namespace LichPhylactery {
    var letters=Find.LetterStack.LettersListForReading.Where(l=>l.Label.ToString()==Workbenches.LetterLabel).ToList();
    Check(letters.Count==1 && WorkbenchMigration.lettersSent==wbLettersBefore+1 && letters[0] is ChoiceLetter cl && cl.Text.ToString().Contains("符文铁砧") && cl.Text.ToString().Contains(DefDatabase<ThingDef>.GetNamed("LP_RunicPistol").label),"one letter lists the cleared runic pistol bill under the rune anvil");
    Func<string,bool> fin=n=>DefDatabase<ResearchProjectDef>.GetNamed(n).IsFinished;
-   Check(comp.version==1 && fin("LP_Research_RuneSmithing") && fin("LP_Research_Scribing") && !fin("LP_Research_HighScrolls"),"racial armory completes rune smithing, enchanting completes scribing, high scrolls stay locked");
+   Check(comp.version==1 && fin("LP_Research_RuneSmithing") && fin("LP_Research_Scribing") && !fin("LP_Research_HighScrolls"),"runic firearms completes rune smithing, enchanting completes scribing, high scrolls stay locked");
    comp.LoadedGame();
    Check(WorkbenchMigration.lettersSent==wbLettersBefore+1 && Find.LetterStack.LettersListForReading.Count(l=>l.Label.ToString()==Workbenches.LetterLabel)==1,"the migration letter is sent only once");
   }

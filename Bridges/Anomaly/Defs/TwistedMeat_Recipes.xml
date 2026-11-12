@@ -59,18 +59,6 @@
     <fixedIngredientFilter><thingDefs><li>LP_AberrantPaste</li><li>LP_TrollBlood</li></thingDefs></fixedIngredientFilter>
     <products><LP_MorphDraught>1</LP_MorphDraught></products>
   </RecipeDef>
-  <RecipeDef ParentName="LP_ThrowableRecipeBase">
-    <defName>LP_MakeFrenzyFlask</defName>
-    <label>制作狂乱之瓶</label>
-    <description>用 3 份畸变膏和 5 份布制作 2 个狂乱之瓶。</description>
-    <jobString>正在制作狂乱之瓶。</jobString>
-    <ingredients>
-      <li><filter><thingDefs><li>LP_AberrantPaste</li></thingDefs></filter><count>3</count></li>
-      <li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>5</count></li>
-    </ingredients>
-    <fixedIngredientFilter><thingDefs><li>LP_AberrantPaste</li><li>Cloth</li></thingDefs></fixedIngredientFilter>
-    <products><LP_FrenzyFlask>2</LP_FrenzyFlask></products>
-  </RecipeDef>
 
   <!-- ==================== D4. 远域解剖 ==================== -->
   <RecipeDef ParentName="LP_AlchemyRecipeBase">

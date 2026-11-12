@@ -15,8 +15,8 @@ namespace LichPhylactery {
    return coreGene!=null && pawn.genes.HasActiveGene(coreGene);
   }
   // 1.30.0：穿衣规则改走 GiantGear（GiantApparelExtension）；这张表只剩“熔火锻炉出品的衣甲”的含义（力能龙宝库计价用）。
-  public static bool ForgeApparel(ThingDef apparel) => apparel?.defName=="LP_FireGiantTunic" || apparel?.defName=="LP_FireGiantHelmet" || apparel?.defName=="LP_FireGiantArmor" || apparel?.defName==MoltenGuard.Helmet || apparel?.defName==MoltenGuard.Armor;
-  public static bool GiantWeapon(ThingDef weapon) => weapon?.defName=="LP_FireGiantMaul" || weapon?.defName==MoltenGuard.Maul;
+  public static bool ForgeApparel(ThingDef apparel) => apparel?.defName=="LP_FireGiantTunic"; // 1.143.0：熔铁/熔核装备已移除
+  public static bool GiantWeapon(ThingDef weapon) => false; // 1.143.0：火巨人熔炉重锤、熔核破城锤已移除
   public static void ReleaseWeapon(Pawn pawn) {
    if(pawn?.equipment==null)return;
    foreach(var item in pawn.equipment.AllEquipmentListForReading.ToArray()) {

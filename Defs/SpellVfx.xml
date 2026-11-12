@@ -105,4 +105,174 @@
       <drawSize>2</drawSize>
     </graphicData>
   </FleckDef>
+
+  <!-- 1.144.0 第二批：4 环以上专属特效与持续区域特效（Source/SpellVfx2.cs，贴图 ArtSource/SpellVfx/draw_vfx2.py） -->
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Tentacle</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.05</fadeInTime>
+    <solidTime>0.6</solidTime>
+    <fadeOutTime>0.4</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Tentacle</texPath><shaderType>Mote</shaderType><drawSize>(0.5,1)</drawSize></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Skull</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.06</fadeInTime>
+    <solidTime>0.5</solidTime>
+    <fadeOutTime>0.6</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Skull</texPath><shaderType>Mote</shaderType><drawSize>1</drawSize></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Eye</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.08</fadeInTime>
+    <solidTime>0.6</solidTime>
+    <fadeOutTime>0.6</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Eye</texPath><shaderType>MoteGlow</shaderType><drawSize>(2,1)</drawSize></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Pillar</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.05</fadeInTime>
+    <solidTime>0.5</solidTime>
+    <fadeOutTime>0.5</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Pillar</texPath><shaderType>MoteGlow</shaderType><drawSize>1</drawSize></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Crack</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.04</fadeInTime>
+    <solidTime>0.8</solidTime>
+    <fadeOutTime>0.9</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Crack</texPath><shaderType>Mote</shaderType><drawSize>1</drawSize></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Swirl</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.05</fadeInTime>
+    <solidTime>0.4</solidTime>
+    <fadeOutTime>0.6</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Swirl</texPath><shaderType>MoteGlow</shaderType><drawSize>1</drawSize></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Hand</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.05</fadeInTime>
+    <solidTime>0.4</solidTime>
+    <fadeOutTime>0.5</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Hand</texPath><shaderType>Mote</shaderType><drawSize>1</drawSize></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Arrow</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.02</fadeInTime>
+    <solidTime>0.3</solidTime>
+    <fadeOutTime>0.1</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Arrow</texPath><shaderType>MoteGlow</shaderType><drawSize>(0.25,1)</drawSize></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Leaf</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.05</fadeInTime>
+    <solidTime>0.5</solidTime>
+    <fadeOutTime>0.6</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Leaf</texPath><shaderType>Mote</shaderType><drawSize>1</drawSize></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Feather</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.05</fadeInTime>
+    <solidTime>0.5</solidTime>
+    <fadeOutTime>0.6</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Feather</texPath><shaderType>Mote</shaderType><drawSize>(0.5,1)</drawSize></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Clock</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.1</fadeInTime>
+    <solidTime>0.8</solidTime>
+    <fadeOutTime>0.6</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Clock</texPath><shaderType>MoteGlow</shaderType><drawSize>1</drawSize></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Chain</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.05</fadeInTime>
+    <solidTime>0.6</solidTime>
+    <fadeOutTime>0.5</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Chain</texPath><shaderType>MoteGlow</shaderType><drawSize>1</drawSize></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Hex</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.05</fadeInTime>
+    <solidTime>0.5</solidTime>
+    <fadeOutTime>0.6</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Hex</texPath><shaderType>MoteGlow</shaderType><drawSize>1</drawSize></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Portal</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.15</fadeInTime>
+    <solidTime>0.8</solidTime>
+    <fadeOutTime>0.6</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Portal</texPath><shaderType>MoteGlow</shaderType><drawSize>(1,0.8)</drawSize></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Shard</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.03</fadeInTime>
+    <solidTime>0.4</solidTime>
+    <fadeOutTime>0.5</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Shard</texPath><shaderType>Mote</shaderType><drawSize>(0.375,1)</drawSize></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Note</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.05</fadeInTime>
+    <solidTime>0.5</solidTime>
+    <fadeOutTime>0.6</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Note</texPath><shaderType>MoteGlow</shaderType><drawSize>1</drawSize></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Blade</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.03</fadeInTime>
+    <solidTime>0.3</solidTime>
+    <fadeOutTime>0.3</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Blade</texPath><shaderType>MoteGlow</shaderType><drawSize>1</drawSize></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Sun</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.03</fadeInTime>
+    <solidTime>0.3</solidTime>
+    <fadeOutTime>0.6</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Sun</texPath><shaderType>MoteGlow</shaderType><drawSize>1</drawSize></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Mask</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.08</fadeInTime>
+    <solidTime>0.5</solidTime>
+    <fadeOutTime>0.6</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Mask</texPath><shaderType>Mote</shaderType><drawSize>1</drawSize></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Dome</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.1</fadeInTime>
+    <solidTime>0.4</solidTime>
+    <fadeOutTime>0.5</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Dome</texPath><shaderType>MoteGlow</shaderType><drawSize>1</drawSize></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LP_Vfx_Insect</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.02</fadeInTime>
+    <solidTime>0.4</solidTime>
+    <fadeOutTime>0.2</fadeOutTime>
+    <graphicData><texPath>LP/Vfx/Insect</texPath><shaderType>Mote</shaderType><drawSize>1</drawSize></graphicData>
+  </FleckDef>
 </Defs>

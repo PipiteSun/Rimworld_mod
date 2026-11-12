@@ -44,7 +44,7 @@ namespace LichPhylactery {
     Check(f.Dead,"fate boon works once per 60 days: the second lethal wound kills");
     // 战斗之恩
     var cb=AdvPawn();Adventurer.Get(cb).AddBoon(Epic.Combat);var torso=torsoOf(cb);var cut=(Hediff_Injury)HediffMaker.MakeHediff(HediffDefOf.Cut,cb,torso);cut.Severity=10f;cb.health.AddHediff(cut);
-    var enemy=AdvEnemy;var foe=AdvPawn(null,enemy);float heal=torso.def.GetMaxHealth(cb)*Epic.CombatHealFraction;
+    var enemy=AdvEnemy;var foe=AdvPawn(null,enemy);float heal=PartHealth.Maximum(torso,cb)*Epic.CombatHealFraction; // 2026-11-10：按放大后的部位上限
     Check(Epic.CombatHeal(cb,foe)==1 && Near(cut.Severity,10f-heal),"combat boon: a takedown heals each wound by 5% of the part (10 → "+cut.Severity+")");
     // 敌人 19 级以上带一个恩赐（不朽除外）
     var gunner=DefDatabase<PawnKindDef>.GetNamedSilentFail("Mercenary_Gunner")??PawnKindDefOf.Drifter;bool enemyOk=true;

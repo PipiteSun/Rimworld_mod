@@ -66,7 +66,7 @@ namespace LichPhylactery {
    foreach(var part in parts){var inj=HediffMaker.MakeHediff(HediffDefOf.Cut,p,part);inj.Severity=Mathf.Min(6f,part.def.GetMaxHealth(p)*.4f);p.health.AddHediff(inj,part);}
    Items.Give(p,"LP_DevaStupor");Items.Give(p,"LP_FallenDevaGuest");
    DropPodUtility.DropThingsNear(cell,map,new List<Thing>{p},110,false,false,true,false,true,null);
-   Find.LetterStack.ReceiveLetter("坠落天使","一道光从天上斜斜地砸下来：一名狄瓦重伤坠地，翅膀折断，昏迷不醒。\n\n把它的伤都包扎好，它就会醒来，作为客人留 "+GuestDays+" 天（可以征召）；离开时守护神神眷 +"+GuestFavor.ToString("0")+"，有 10% 会留下一件天界羽披。\n\n小心：腐化到恶魔之印的人靠近它（10 格内）时，它每天有 10% 堕落成敌对的艾林魔。",LetterDefOf.PositiveEvent,new TargetInfo(cell,map));
+   Find.LetterStack.ReceiveLetter("坠落天使","一道光从天上斜斜地砸下来：一名狄瓦重伤坠地，翅膀折断，昏迷不醒。\n\n把它的伤都包扎好，它就会醒来，作为客人留 "+GuestDays+" 天（可以征召）；离开时守护神神眷 +"+GuestFavor.ToString("0")+"。\n\n小心：腐化到恶魔之印的人靠近它（10 格内）时，它每天有 10% 堕落成敌对的艾林魔。",LetterDefOf.PositiveEvent,new TargetInfo(cell,map));
    return p;
   }
   public static void GuestRescued(Pawn p){

@@ -183,29 +183,6 @@
   </LichPhylactery.LP_FeatDef>
 
   <!-- ===== 器械师 ===== -->
-  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
-    <defName>LP_Feat_Class_ArtificerTinker</defName>
-    <label>熟练工匠</label>
-    <description>工具在手里就像身体的一部分。器械强度 +15%；器械师能力冷却 ×0.85；一般劳动速度 ×1.1。器械师专属。附带智力或体质 +1。</description>
-    <iconPath>LP/Feats/Class/ArtificerTinker</iconPath>
-    <order>74</order>
-    <requiredClass>LP_Class_Artificer</requiredClass><classLevel>3</classLevel>
-    <powerStats><li>LP_ArtificePower</li></powerStats><powerBonus>0.15</powerBonus>
-    <cooldownFactor>0.85</cooldownFactor>
-    <statFactors><GeneralLaborSpeed>1.1</GeneralLaborSpeed></statFactors>
-    <bonusAbilities><li>Int</li><li>Con</li></bonusAbilities>
-  </LichPhylactery.LP_FeatDef>
-  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
-    <defName>LP_Feat_Class_ArtificerMasterwork</defName>
-    <label>工坊大师</label>
-    <description>符文和机关都改到了极致。器械强度 +20%；器械师能力冷却 ×0.75。器械师专属。附带智力 +1。</description>
-    <iconPath>LP/Feats/Class/ArtificerMasterwork</iconPath>
-    <order>75</order>
-    <requiredClass>LP_Class_Artificer</requiredClass><classLevel>7</classLevel>
-    <powerStats><li>LP_ArtificePower</li></powerStats><powerBonus>0.2</powerBonus>
-    <cooldownFactor>0.75</cooldownFactor>
-    <bonusAbilities><li>Int</li></bonusAbilities>
-  </LichPhylactery.LP_FeatDef>
 
   <!-- ===== 野蛮人 ===== -->
   <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">

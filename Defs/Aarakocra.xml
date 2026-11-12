@@ -61,7 +61,7 @@
   <AbilityDef ParentName="LP_Races124AbilityBase">
     <defName>LP_Soar</defName>
     <label>翱翔</label>
-    <description>张开羽翼飞到12格内任意能站人的地方（穿着风羽披风的鸟人16格），不需要视线，墙、栅栏、水和建筑都拦不住；但不能落到山体（厚岩顶）下面。冷却4小时（穿风羽披风×75%）。</description>
+    <description>张开羽翼飞到12格内任意能站人的地方，不需要视线，墙、栅栏、水和建筑都拦不住；但不能落到山体（厚岩顶）下面。冷却4小时。</description>
     <iconPath>Races124/Abilities/Soar</iconPath>
     <cooldownTicksRange>10000</cooldownTicksRange>
     <hostile>false</hostile>

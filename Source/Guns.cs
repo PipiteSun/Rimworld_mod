@@ -44,7 +44,7 @@ namespace LichPhylactery {
  public static class Arcana {
   public const float StaffMin=.2f,GunBase=.5f,GunSlope=.5f,GunMax=2f,NoLinkFactor=.7f,ChargeBonus=.5f,ResistFactor=.75f,BrandFactor=1.15f,SilverFactor=1.5f;
   public const int DispelLockTicks=600,EmpStunHumanlike=60;
-  public static readonly string[] GroupD={"LP_SilverPistol","LP_LavaPiercer","LP_ThunderGun"},GroupE={"LP_Doom","LP_Skyfire"},GroupF={"LP_RunicMusket","LP_RunicPistol","LP_HammerCannon","LP_RunicRepeater","LP_MountainWrath"},GroupG={"LP_MissileStaff","LP_FireStaff","LP_FrostStaff"};
+  public static readonly string[] GroupD=new string[0],GroupE=new string[0],GroupF=new string[0],GroupG=new string[0]; // 1.146.0：13 件符文火器与法杖已移除，只剩安眠法杖（Defs/Nonlethal.xml）
   public static IEnumerable<string> All=>GroupD.Concat(GroupE).Concat(GroupF).Concat(GroupG);
   // 联动登记：敏感度保底（VPE 魔力共鸣 1.5）、制作品质加成（VPE 大师工艺 +1）。
   public static readonly List<Func<Pawn,string,float>> SensitivityFloorHooks=new List<Func<Pawn,string,float>>();
@@ -311,8 +311,6 @@ namespace LichPhylactery {
  public static class GunGear {
   public const float DwarfChance=.3f,FireStaffChance=.7f;
   public static string Choose(string kind,float roll){
-   if(kind=="LP_FC_DwarfGuard")return roll<DwarfChance/2f?"LP_RunicMusket":roll<DwarfChance?"LP_RunicPistol":null;
-   if(kind=="LP_FH_RedWizard")return roll<FireStaffChance?"LP_FireStaff":"LP_FrostStaff";
    return null;
   }
   public static string OnGenerated(Pawn p){
@@ -342,8 +340,8 @@ namespace LichPhylactery {
   public static string[] Common=>Arcana.GroupD.Concat(Arcana.GroupF).Concat(Arcana.GroupG).ToArray();
   public static List<string> Roll(int tier,Func<float> rand){
    var list=new List<string>();var common=Common;
-   if(tier>=2 && rand()<CommonChance)list.Add(common[Math.Min(common.Length-1,(int)(rand()*common.Length))]);
-   if(tier>=4 && rand()<LegendaryChance)list.Add(Arcana.GroupE[Math.Min(Arcana.GroupE.Length-1,(int)(rand()*Arcana.GroupE.Length))]);
+   if(common.Length>0 && tier>=2 && rand()<CommonChance)list.Add(common[Math.Min(common.Length-1,(int)(rand()*common.Length))]);
+   if(Arcana.GroupE.Length>0 && tier>=4 && rand()<LegendaryChance)list.Add(Arcana.GroupE[Math.Min(Arcana.GroupE.Length-1,(int)(rand()*Arcana.GroupE.Length))]);
    return list;
   }
   public static List<string> ForChest(Thing chest){int seed=chest.thingIDNumber^0x4755,i=0;return Roll(IsekaiLoot.Tier(chest),()=>Rand.ValueSeeded(seed+(i++)*7919));}
@@ -358,12 +356,11 @@ namespace LichPhylactery {
  public static class GunSettings {
   public static void Draw(Listing_Standard l){
    l.GapLine();
-   l.CheckboxLabeled("敌人携带魔法火器",ref LichMod.Settings.enemyMagicGuns,"费伦拓荒同盟的矮人护卫30%带符文火铳或符文手铳，塞伊远征军的红袍法师带火焰法杖（70%）或寒霜法杖（30%）；Isekai 地下城宝箱也会掉 DND 枪械与法杖。");
+   l.CheckboxLabeled("敌人携带魔法火器",ref LichMod.Settings.enemyMagicGuns,"1.146.0 起符文火器和攻击法杖已移除，这个开关暂时没有效果。");
    l.Label("法杖每发心灵熵："+LichMod.Settings.staffEntropy.ToString("0.#")+"（有心灵链接的持有者每次施放增加；熵满时不能施放）");
    LichMod.Settings.staffEntropy=Mathf.Round(l.Slider(LichMod.Settings.staffEntropy,0f,20f)*2f)/2f;
-   l.Label("制伏伤害倍率："+LichMod.Settings.subdueDamagePercent+"%（制伏短棍、缚网弩、安眠短弓、安眠法杖、安眠粉囊让目标昏迷的速度）");
+   l.Label("制伏伤害倍率："+LichMod.Settings.subdueDamagePercent+"%（制伏短棍、缚网弩、安眠短弓、安眠法杖让目标昏迷的速度）");
    LichMod.Settings.subdueDamagePercent=Mathf.RoundToInt(l.Slider(LichMod.Settings.subdueDamagePercent,50f,200f)/5f)*5;
-   l.CheckboxLabeled("DND武器需要器械师",ref LichMod.Settings.dndWeaponsNeedArtificer,"符文枪械、法杖、DND 近战武器和精灵长弓要器械师才能制作：奥术工坊那一档要器械师 1 级，符文铭刻那一档要器械师 5 级，“山岳之怒”要学会山岳锻造（1.73.0 起不需要 VPE）。关掉后谁都能做（研究和技能要求照旧）。");
   }
  }
 }

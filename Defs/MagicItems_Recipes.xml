@@ -68,27 +68,15 @@
     <fixedIngredientFilter><thingDefs><li>Cloth</li><li>Gold</li></thingDefs></fixedIngredientFilter>
     <products><LP_ScrollRemoveCurse>1</LP_ScrollRemoveCurse></products>
   </RecipeDef>
-  <RecipeDef ParentName="LP_MagicRecipeBase">
-    <defName>LP_MakeSpiritStone</defName>
-    <label>制作魂石</label>
-    <description>用2块玉石和10银打磨一颗魂石。只有精灵能做，需要手工8级。</description>
-    <jobString>正在打磨魂石。</jobString>
-    <researchPrerequisite>LP_Research_Enchanting</researchPrerequisite>
-    <workSkill>Crafting</workSkill>
-    <skillRequirements Inherit="False"><Crafting>8</Crafting></skillRequirements>
-    <ingredients><li><filter><thingDefs><li>Jade</li></thingDefs></filter><count>2</count></li><li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>10</count></li></ingredients>
-    <fixedIngredientFilter><thingDefs><li>Jade</li><li>Silver</li></thingDefs></fixedIngredientFilter>
-    <products><LP_SpiritStone>1</LP_SpiritStone></products>
-  </RecipeDef>
 
   <!-- ===== 奇物工艺 ===== -->
   <RecipeDef ParentName="LP_MagicRecipeBase">
     <defName>LP_MakeGauntletsOgrePower</defName>
     <label>制作食人魔之力手套</label>
-    <description>用20份皮革、15钢和1块熔岩结晶制作一副食人魔之力手套。</description>
+    <description>用20份皮革、15钢和10化合燃料制作一副食人魔之力手套。</description>
     <jobString>正在制作食人魔之力手套。</jobString>
-    <ingredients><li><filter><categories><li>Leathers</li></categories></filter><count>20</count></li><li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>15</count></li><li><filter><thingDefs><li>LP_LavaCrystal</li></thingDefs></filter><count>1</count></li></ingredients>
-    <fixedIngredientFilter><categories><li>Leathers</li></categories><thingDefs><li>Steel</li><li>LP_LavaCrystal</li></thingDefs></fixedIngredientFilter>
+    <ingredients><li><filter><categories><li>Leathers</li></categories></filter><count>20</count></li><li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>15</count></li><li><filter><thingDefs><li>Chemfuel</li></thingDefs></filter><count>10</count></li></ingredients>
+    <fixedIngredientFilter><categories><li>Leathers</li></categories><thingDefs><li>Steel</li><li>Chemfuel</li></thingDefs></fixedIngredientFilter>
     <products><LP_GauntletsOgrePower>1</LP_GauntletsOgrePower></products>
   </RecipeDef>
   <RecipeDef ParentName="LP_MagicRecipeBase">
@@ -222,36 +210,14 @@
     <products><LP_ScarabProtection>1</LP_ScarabProtection></products>
   </RecipeDef>
   <RecipeDef ParentName="LP_RelicRecipeBase">
-    <defName>LP_MakeMartyrsBeads</defName>
-    <label>制作殉道者念珠</label>
-    <description>用30银和10金串一副殉道者念珠，并祝圣。</description>
-    <jobString>正在祝圣殉道者念珠。</jobString>
-    <researchPrerequisite>LP_Research_SacredRelics</researchPrerequisite>
-    <ingredients><li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>30</count></li><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>10</count></li></ingredients>
-    <fixedIngredientFilter><thingDefs><li>Silver</li><li>Gold</li></thingDefs></fixedIngredientFilter>
-    <products><LP_MartyrsBeads>1</LP_MartyrsBeads></products>
-  </RecipeDef>
-  <RecipeDef ParentName="LP_RelicRecipeBase">
-    <defName>LP_ReconsecrateMartyrsBeads</defName>
-    <label>重新祝圣殉道者念珠</label>
-    <description>为碎裂的殉道者念珠重新祝圣（2小时），护盾恢复到300。另需5金。</description>
-    <jobString>正在重新祝圣殉道者念珠。</jobString>
-    <workAmount>5000</workAmount>
-    <researchPrerequisite>LP_Research_SacredRelics</researchPrerequisite>
-    <skillRequirements Inherit="False" />
-    <ingredients><li><filter><thingDefs><li>LP_MartyrsBeadsBroken</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>5</count></li></ingredients>
-    <fixedIngredientFilter><thingDefs><li>LP_MartyrsBeadsBroken</li><li>Gold</li></thingDefs></fixedIngredientFilter>
-    <products><LP_MartyrsBeads>1</LP_MartyrsBeads></products>
-  </RecipeDef>
-  <RecipeDef ParentName="LP_RelicRecipeBase">
     <defName>LP_MakePuritySeal</defName>
     <label>制作净化封印</label>
-    <description>用1瓶圣水和5份布写3张净化封印。</description>
+    <description>用30银和5份布写3张净化封印。</description>
     <jobString>正在制作净化封印。</jobString>
     <workAmount>2000</workAmount>
     <researchPrerequisite>LP_Research_SacredRelics</researchPrerequisite>
-    <ingredients><li><filter><thingDefs><li>LP_HolyWater</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>5</count></li></ingredients>
-    <fixedIngredientFilter><thingDefs><li>LP_HolyWater</li><li>Cloth</li></thingDefs></fixedIngredientFilter>
+    <ingredients><li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>30</count></li><li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>5</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Silver</li><li>Cloth</li></thingDefs></fixedIngredientFilter>
     <products><LP_PuritySeal>3</LP_PuritySeal></products>
   </RecipeDef>
   <RecipeDef ParentName="LP_RelicRecipeBase">
@@ -289,24 +255,14 @@
     <products><LP_ImmovableRod>1</LP_ImmovableRod></products>
   </RecipeDef>
   <RecipeDef ParentName="LP_MagicRecipeBase">
-    <defName>LP_MakeEversmokingBottle</defName>
-    <label>制作迷雾瓶</label>
-    <description>用20钢和10份化学燃料制作一只迷雾瓶。</description>
-    <jobString>正在制作迷雾瓶。</jobString>
-    <researchPrerequisite>LP_Research_WondrousDevices</researchPrerequisite>
-    <ingredients><li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>20</count></li><li><filter><thingDefs><li>Chemfuel</li></thingDefs></filter><count>10</count></li></ingredients>
-    <fixedIngredientFilter><thingDefs><li>Steel</li><li>Chemfuel</li></thingDefs></fixedIngredientFilter>
-    <products><LP_EversmokingBottle>1</LP_EversmokingBottle></products>
-  </RecipeDef>
-  <RecipeDef ParentName="LP_MagicRecipeBase">
     <defName>LP_MakeEverburningTorch</defName>
     <label>制作不灭火把</label>
-    <description>用5份木材、3金和1块熔岩结晶制作一支不灭火把。</description>
+    <description>用5份木材、3金和10化合燃料制作一支不灭火把。</description>
     <jobString>正在制作不灭火把。</jobString>
     <workAmount>3000</workAmount>
     <researchPrerequisite>LP_Research_WondrousDevices</researchPrerequisite>
-    <ingredients><li><filter><thingDefs><li>WoodLog</li></thingDefs></filter><count>5</count></li><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>3</count></li><li><filter><thingDefs><li>LP_LavaCrystal</li></thingDefs></filter><count>1</count></li></ingredients>
-    <fixedIngredientFilter><thingDefs><li>WoodLog</li><li>Gold</li><li>LP_LavaCrystal</li></thingDefs></fixedIngredientFilter>
+    <ingredients><li><filter><thingDefs><li>WoodLog</li></thingDefs></filter><count>5</count></li><li><filter><thingDefs><li>Gold</li></thingDefs></filter><count>3</count></li><li><filter><thingDefs><li>Chemfuel</li></thingDefs></filter><count>10</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>WoodLog</li><li>Gold</li><li>Chemfuel</li></thingDefs></fixedIngredientFilter>
     <products><LP_EverburningTorch>1</LP_EverburningTorch></products>
   </RecipeDef>
   <RecipeDef ParentName="LP_MagicRecipeBase">

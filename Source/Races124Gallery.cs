@@ -21,11 +21,11 @@ namespace LichPhylactery {
     var p=PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist,Faction.OfPlayer,fixedBiologicalAge:30,fixedChronologicalAge:30,forcedXenotype:DefDatabase<XenotypeDef>.GetNamed(parts[0]),canGeneratePawnRelations:false));
     if(parts.Length>1)Genie.SetElement(p,parts[1]);
     if(p.apparel!=null)foreach(var a in p.apparel.WornApparel.Where(a=>a.def.apparel.layers.Any(l=>l==ApparelLayerDefOf.Overhead || l==ApparelLayerDefOf.EyeCover)).ToList())p.apparel.Remove(a);
-    if(parts[0]=="LP_Aarakocra"){var cloak=(Apparel)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("LP_FeatherCloak"),ThingDefOf.Leather_Plain);foreach(var a in p.apparel.WornApparel.Where(a=>a.def.apparel.layers.Contains(ApparelLayerDefOf.Shell)).ToList())p.apparel.Remove(a);p.apparel.Wear(cloak,false);}
+    if(parts[0]=="LP_Aarakocra" && DefDatabase<ThingDef>.GetNamedSilentFail("LP_FeatherCloak")!=null){var cloak=(Apparel)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("LP_FeatherCloak"),ThingDefOf.Leather_Plain);foreach(var a in p.apparel.WornApparel.Where(a=>a.def.apparel.layers.Contains(ApparelLayerDefOf.Shell)).ToList())p.apparel.Remove(a);p.apparel.Wear(cloak,false);}
     GenPlace.TryPlaceThing(p,map.Center,map,ThingPlaceMode.Near);p.Drawer.renderer.SetAllGraphicsDirty();samples.Add(p);
    }
    Find.WindowStack.TryRemove(typeof(GeneIconGallery));Find.WindowStack.TryRemove(typeof(CommonRaceGallery));Find.WindowStack.TryRemove(typeof(TextureGallery));
-   Find.WindowStack.Add(new CommonRaceGallery(samples,"1.24.0 种族图鉴（"+(page+1)+"/4）：不戴帽子；鸟人穿风羽披风；巨灵为火/水两种血脉"));
+   Find.WindowStack.Add(new CommonRaceGallery(samples,"1.24.0 种族图鉴（"+(page+1)+"/4）：不戴帽子；巨灵为火/水两种血脉"));
   }
   static void ShowRaces124Icons(int page){
    Find.WindowStack.TryRemove(typeof(CommonRaceGallery));Find.WindowStack.TryRemove(typeof(TextureGallery));
@@ -49,7 +49,7 @@ namespace LichPhylactery {
      var p=PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist,Faction.OfPlayer,fixedBiologicalAge:30,fixedChronologicalAge:30,forcedXenotype:DefDatabase<XenotypeDef>.GetNamed(parts[0]),canGeneratePawnRelations:false));
      if(parts.Length>1)Genie.SetElement(p,parts[1]);
      if(p.apparel!=null)foreach(var a in p.apparel.WornApparel.Where(a=>a.def.apparel.layers.Any(l=>l==ApparelLayerDefOf.Overhead || l==ApparelLayerDefOf.EyeCover)).ToList())p.apparel.Remove(a);
-     if(parts[0]=="LP_Aarakocra"){foreach(var a in p.apparel.WornApparel.Where(a=>a.def.apparel.layers.Contains(ApparelLayerDefOf.Shell)).ToList())p.apparel.Remove(a);p.apparel.Wear((Apparel)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("LP_FeatherCloak"),ThingDefOf.Leather_Plain),false);}
+     if(parts[0]=="LP_Aarakocra" && DefDatabase<ThingDef>.GetNamedSilentFail("LP_FeatherCloak")!=null){foreach(var a in p.apparel.WornApparel.Where(a=>a.def.apparel.layers.Contains(ApparelLayerDefOf.Shell)).ToList())p.apparel.Remove(a);p.apparel.Wear((Apparel)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("LP_FeatherCloak"),ThingDefOf.Leather_Plain),false);}
      GenSpawn.Spawn(p,center+new IntVec3((i%6)*4-10,0,(i/6)*-5+2),map);races124MapPawns.Add(p);
     }
    }

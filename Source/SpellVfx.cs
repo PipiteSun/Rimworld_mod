@@ -14,7 +14,8 @@ namespace LichPhylactery {
  // 范围法术按半径放大光环；自身增益是升起的符文柱；近战是弧光斩击。元素由能力名 / 描述关键词 + 所在文件推断，
  // 也可以在 AbilityDef 上加 <modExtensions><li Class="LichPhylactery.SpellVfxExtension"><theme>Fire</theme></li></modExtensions> 指定。
  // 贴图自绘（Textures/LP/Vfx，ArtSource/SpellVfx/draw_vfx.py），风格参考 VPE 但不依赖 VPE。设置里可以关闭或调大小。
- public enum VfxTheme { Arcane, Fire, Frost, Lightning, Necrotic, Holy, Heal, Shadow, Poison, Blood, Nature, Psychic, Force, Martial, Infernal, Eldritch }
+ public enum VfxTheme { Arcane, Fire, Frost, Lightning, Necrotic, Holy, Heal, Shadow, Poison, Blood, Nature, Psychic, Force, Martial, Infernal, Eldritch,
+  Divination, Abjuration, Conjuration, Transmutation, Enchantment, Illusion, Song, Moon, Wind } // 1.144.0 后九种：按法术学派 / 吟游诗人 / 月光与风
  public enum VfxKind { Self, Target, Melee, Projectile, Jump }
  public class SpellVfxExtension : DefModExtension { public VfxTheme theme=VfxTheme.Arcane; public bool off; }
 
@@ -41,7 +42,7 @@ namespace LichPhylactery {
 
  public static class SpellVfx {
   public static bool On=>LichMod.Settings?.spellVfx!=false;
-  static float K=>(LichMod.Settings?.spellVfxScale??100)/100f;
+  internal static float K=>(LichMod.Settings?.spellVfxScale??100)/100f;
   static readonly Dictionary<AbilityDef,VfxProfile> cache=new Dictionary<AbilityDef,VfxProfile>();
   static string ownPackage;
   public static bool Ours(AbilityDef d){
@@ -72,10 +73,19 @@ namespace LichPhylactery {
     case VfxTheme.Martial:return new Color(1f,.7f,.4f);
     case VfxTheme.Infernal:return new Color(1f,.3f,.1f);
     case VfxTheme.Eldritch:return new Color(.5f,1f,.8f);
+    case VfxTheme.Divination:return new Color(1f,.95f,.7f);
+    case VfxTheme.Abjuration:return new Color(.6f,.85f,1f);
+    case VfxTheme.Conjuration:return new Color(.75f,.5f,1f);
+    case VfxTheme.Transmutation:return new Color(.4f,.95f,.75f);
+    case VfxTheme.Enchantment:return new Color(1f,.55f,.85f);
+    case VfxTheme.Illusion:return new Color(.8f,.6f,1f);
+    case VfxTheme.Song:return new Color(1f,.75f,.95f);
+    case VfxTheme.Moon:return new Color(.85f,.9f,1f);
+    case VfxTheme.Wind:return new Color(.8f,1f,.95f);
     default:return new Color(.45f,.65f,1f);
    }
   }
-  static Color Smoke(VfxTheme t){
+  internal static Color Smoke(VfxTheme t){
    switch(t){
     case VfxTheme.Necrotic:return new Color(.1f,.25f,.12f,.8f);
     case VfxTheme.Shadow:return new Color(.08f,.04f,.12f,.85f);
@@ -120,6 +130,7 @@ namespace LichPhylactery {
   }
   public static VfxTheme Classify(AbilityDef d){
    var ext=d.GetModExtension<SpellVfxExtension>();if(ext!=null)return ext.theme;
+   if(SpellVfx2.Override.TryGetValue(d.defName,out var ov))return ov; // 1.144.0 逐个指定
    var score=new Dictionary<VfxTheme,int>();
    void Add(VfxTheme t,int n){score.TryGetValue(t,out var o);score[t]=o+n;}
    string label=d.label??"",desc=d.description??"";
@@ -133,9 +144,9 @@ namespace LichPhylactery {
    var ce=d.comps?.OfType<CompProperties_ClassEffect>().FirstOrDefault();
    bool martial=ce?.stat!=null && (ce.stat.defName=="LP_MartialPower" || ce.stat.defName=="LP_MarksmanPower");
    if(martial)Add(VfxTheme.Martial,4);
-   if(score.Count==0)return VfxTheme.Arcane;
+   if(score.Count==0)return martial?VfxTheme.Martial:SpellVfx2.Fallback(d);
    int best=score.Values.Max();
-   if(best<2)return martial?VfxTheme.Martial:VfxTheme.Arcane;
+   if(best<2)return martial?VfxTheme.Martial:SpellVfx2.Fallback(d);
    foreach(var k in Keys)if(score.TryGetValue(k.t,out var v) && v==best)return k.t; // 同分按关键词表顺序
    return score.First(kv=>kv.Value==best).Key;
   }
@@ -166,7 +177,7 @@ namespace LichPhylactery {
   }
 
   // ===== 播放 =====
-  static void Fleck(Map map,FleckDef def,Vector3 pos,float scale,Color col,float rot=0,float rotRate=0,float? solid=null,float vAngle=0,float vSpeed=0){
+  internal static void Fleck(Map map,FleckDef def,Vector3 pos,float scale,Color col,float rot=0,float rotRate=0,float? solid=null,float vAngle=0,float vSpeed=0){
    if(map==null || def==null || !pos.ShouldSpawnMotesAt(map))return;
    var data=FleckMaker.GetDataStatic(pos,map,def,scale);
    data.instanceColor=col;data.rotation=rot;data.rotationRate=rotRate;
@@ -174,7 +185,7 @@ namespace LichPhylactery {
    if(vSpeed>0){data.velocityAngle=vAngle;data.velocitySpeed=vSpeed;}
    map.flecks.CreateFleck(data);
   }
-  static void Line(Map map,FleckDef def,Vector3 a,Vector3 b,float width,Color col){
+  internal static void Line(Map map,FleckDef def,Vector3 a,Vector3 b,float width,Color col){
    if(map==null || !a.ShouldSpawnMotesAt(map))return;
    var dir=b-a;dir.y=0;float len=dir.magnitude;if(len<.3f)return;
    var data=FleckMaker.GetDataStatic(a+dir*.5f,map,def,1f);
@@ -183,12 +194,12 @@ namespace LichPhylactery {
    data.instanceColor=col;
    map.flecks.CreateFleck(data);
   }
-  static float AngleTo(Vector3 a,Vector3 b)=>Mathf.Atan2(b.x-a.x,b.z-a.z)*Mathf.Rad2Deg;
-  static Color A(Color c,float a){c.a=a;return c;}
-  static void Burst(Map map,FleckDef def,Vector3 pos,int n,float speedMin,float speedMax,float size,Color col){
+  internal static float AngleTo(Vector3 a,Vector3 b)=>Mathf.Atan2(b.x-a.x,b.z-a.z)*Mathf.Rad2Deg;
+  internal static Color A(Color c,float a){c.a=a;return c;}
+  internal static void Burst(Map map,FleckDef def,Vector3 pos,int n,float speedMin,float speedMax,float size,Color col){
    for(int i=0;i<n;i++)Fleck(map,def,pos+new Vector3(Rand.Range(-.2f,.2f),0,Rand.Range(-.2f,.2f)),size*Rand.Range(.7f,1.3f),col,Rand.Range(0f,360f),Rand.Range(-200f,200f),null,Rand.Range(0f,360f),Rand.Range(speedMin,speedMax));
   }
-  static void Rising(Map map,FleckDef def,Vector3 pos,int n,float spread,float size,Color col){
+  internal static void Rising(Map map,FleckDef def,Vector3 pos,int n,float spread,float size,Color col){
    for(int i=0;i<n;i++)Fleck(map,def,pos+new Vector3(Rand.Range(-spread,spread),0,Rand.Range(-spread*.6f,spread*.4f)),size*Rand.Range(.7f,1.2f),col,0,0,Rand.Range(.2f,.5f),Rand.Range(-15f,15f),Rand.Range(.6f,1.3f));
   }
 
@@ -209,7 +220,7 @@ namespace LichPhylactery {
    }
   }
 
-  public static void Cast(Pawn caster,Vector3 from,Map map,VfxProfile p,LocalTargetInfo target,float radius){
+  public static void Cast(Pawn caster,Vector3 from,Map map,VfxProfile p,LocalTargetInfo target,float radius,bool casterOnly=false){
    if(map==null)return;
    var col=ColorOf(p.theme);float k=K;
    // 施法者身上
@@ -220,6 +231,7 @@ namespace LichPhylactery {
     Fleck(map,LP_VfxDefOf.LP_Vfx_Glow,from,3f*k,col);
     Fleck(map,LP_VfxDefOf.LP_Vfx_Wave,from,1.2f*k,Color.white);
    }
+   if(casterOnly)return; // 1.144.0 有专属特效的法术只放施法者身上这一下
    bool selfTarget=!target.IsValid || target.Thing==caster || (target.Cell==caster.Position && p.kind==VfxKind.Self);
    switch(p.kind){
     case VfxKind.Projectile:return; // 自带弹丸
@@ -279,7 +291,7 @@ namespace LichPhylactery {
    Extras(map,pos,p.theme,Math.Max(1f,radius*.6f));
   }
 
-  static void Extras(Map map,Vector3 pos,VfxTheme t,float s){
+  internal static void Extras(Map map,Vector3 pos,VfxTheme t,float s){
    var col=ColorOf(t);float k=K;int n=Mathf.Clamp(Mathf.RoundToInt(3*s),2,10);
    switch(t){
     case VfxTheme.Fire:case VfxTheme.Infernal:
@@ -300,8 +312,14 @@ namespace LichPhylactery {
      Rising(map,LP_VfxDefOf.LP_Vfx_Rune,pos,3,.6f,.5f*k,col);Fleck(map,LP_VfxDefOf.LP_Vfx_Glow,pos,4f*k,A(Color.white,.6f));break;
     case VfxTheme.Nature:
      FleckMaker.ThrowDustPuffThick(pos,map,1.2f*k,new Color(.6f,.5f,.35f,.7f));Rising(map,LP_VfxDefOf.LP_Vfx_Spark,pos,5,.6f,.5f*k,col);break;
-    case VfxTheme.Psychic:case VfxTheme.Arcane:
+    case VfxTheme.Psychic:case VfxTheme.Arcane:case VfxTheme.Divination:case VfxTheme.Enchantment:case VfxTheme.Illusion:case VfxTheme.Conjuration:case VfxTheme.Abjuration:case VfxTheme.Transmutation:
      Rising(map,LP_VfxDefOf.LP_Vfx_Rune,pos,3,.6f,.45f*k,col);break;
+    case VfxTheme.Song:
+     Rising(map,LP_VfxDefOf.LP_Vfx_Rune,pos,2,.6f,.45f*k,col);SpellVfx2.Notes(map,pos,3,col);break;
+    case VfxTheme.Moon:
+     Rising(map,LP_VfxDefOf.LP_Vfx_Spark,pos,6,.6f,.5f*k,col);Fleck(map,LP_VfxDefOf.LP_Vfx_Glow,pos,3f*k,A(Color.white,.5f));break;
+    case VfxTheme.Wind:
+     for(int i=0;i<3;i++)FleckMaker.ThrowAirPuffUp(pos,map);SpellVfx2.Swirl(map,pos,1.2f*s*k,A(col,.6f));break;
     case VfxTheme.Force:
      SpellVfxQueue.Add(6,()=>Fleck(map,LP_VfxDefOf.LP_Vfx_Ring,pos,.5f*s*k,col));for(int i=0;i<3;i++)FleckMaker.ThrowAirPuffUp(pos,map);break;
    }
@@ -415,7 +433,10 @@ namespace LichPhylactery {
     float r=prof.radius;
     var ce=__instance.def.comps?.OfType<CompProperties_ClassEffect>().FirstOrDefault();
     if(ce!=null && ce.radius>0)r=ClassEffects.Radius(__instance.pawn,ce);
-    SpellVfx.Cast(__instance.pawn,__state.pos,__state.map,prof,target,Mathf.Min(r,12f));
+    bool sig=SpellVfx2.Has(__instance.def);
+    SpellVfx.Cast(__instance.pawn,__state.pos,__state.map,prof,target,Mathf.Min(r,12f),sig);
+    if(sig)SpellVfx2.Play(__instance.pawn,__state.pos,__state.map,__instance.def,prof,target,Mathf.Min(r,12f));
+    SpellVfx2.OnCast(__instance.pawn,__instance.def,prof);
     SpellVfx.LastDef=__instance.def;SpellVfx.LastTick=Find.TickManager.TicksGame;SpellVfx.Played++;
    }catch(Exception e){Log.ErrorOnce("[LP] 法术特效出错："+e,0x5f7a1c4);}
   }

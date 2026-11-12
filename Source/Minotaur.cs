@@ -28,8 +28,8 @@ namespace LichPhylactery {
 
   // ---------- 蛮牛冲撞 ----------
   // 从施法者出发、朝目标方向的直线格子（最多8格，不超过目标距离）。
-  // 1.22.0：牛头人戴角盔冲撞+3格；角盔给其他人的弱化冲撞也走这里（cells、damageFactor）。
-  public static int ChargeRange(Pawn caster)=>ChargeCells+(RaceGear.HelmBoost(caster)?3:0);
+  // 1.143.0：牛头人角盔已移除，冲撞距离固定。
+  public static int ChargeRange(Pawn caster)=>ChargeCells;
   public static List<IntVec3> ChargeLine(Pawn caster,IntVec3 target)=>ChargeLine(caster,target,ChargeRange(caster));
   public static List<IntVec3> ChargeLine(Pawn caster,IntVec3 target,int range){
    var cells=new List<IntVec3>();var origin=caster.Position;Vector3 dir=(target-origin).ToVector3();dir.y=0;

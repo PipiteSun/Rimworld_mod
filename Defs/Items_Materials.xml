@@ -1,37 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 1.22.0 新材料：熔岩结晶、龙鳞蜕、巨魔皮、秘银、精金、寒铁及两种新矿脉。 -->
 <Defs>
-  <ThingDef ParentName="ResourceBase">
-    <defName>LP_LavaCrystal</defName>
-    <label>熔岩结晶</label>
-    <description>火巨人在熔火锻炉旁锻打时偶尔凝出的暗红晶体，摸上去仍然发烫。是巨人之力药水和抗火药水的主料。\n\n火巨人在熔火锻炉完成一件作品时有15%概率得到1块；余烬氏族的商队也卖。</description>
-    <graphicData>
-      <texPath>Items/Materials/LavaCrystal</texPath>
-      <graphicClass>Graphic_StackCount</graphicClass>
-    </graphicData>
-    <soundInteract>Stone_Drop</soundInteract>
-    <soundDrop>Stone_Drop</soundDrop>
-    <stackLimit>75</stackLimit>
-    <useHitPoints>false</useHitPoints>
-    <healthAffectsPrice>false</healthAffectsPrice>
-    <statBases>
-      <MarketValue>18</MarketValue>
-      <Mass>0.3</Mass>
-      <Flammability>0</Flammability>
-    </statBases>
-    <thingCategories>
-      <li>ResourcesRaw</li>
-    </thingCategories>
-    <tradeTags>
-      <li>LP_Material</li>
-    </tradeTags>
-    <burnableByRecipe>false</burnableByRecipe>
-  </ThingDef>
 
   <ThingDef ParentName="ResourceBase">
     <defName>LP_DragonShed</defName>
     <label>龙鳞蜕</label>
-    <description>力能龙裔蜕下的鳞片，轻而坚韧，隐约带着力场的余韵。可以在符文铁砧或熔火锻炉打造成蜕鳞甲。\n\n力能龙裔每晋升一级龙龄蜕下3片；住在宝库里的龙每满60天自然蜕1片。龙不喜欢自己的鳞片被卖掉。</description>
+    <description>力能龙裔蜕下的鳞片，轻而坚韧，隐约带着力场的余韵。红鹰商队和各路商人都肯收购。\n\n力能龙裔每晋升一级龙龄蜕下3片；住在宝库里的龙每满60天自然蜕1片。龙不喜欢自己的鳞片被卖掉。</description>
     <graphicData>
       <texPath>Items/Materials/DragonShed</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>

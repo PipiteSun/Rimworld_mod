@@ -119,7 +119,7 @@ namespace LichPhylactery {
  public class ScenPart_FallenEmpyrean : ScenPart {
   public QualityCategory bladeQuality=QualityCategory.Good;
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref bladeQuality,"bladeQuality",QualityCategory.Good);}
-  public override string Summary(Scenario scen)=>"开局的泰坦近战与社交都很出色，手持一把"+bladeQuality.GetLabel()+"品质的天穹之剑；开局就认下一位父神（七位可信奉的神里随机），泰坦觉醒之路已经开启。";
+  public override string Summary(Scenario scen)=>"开局的泰坦近战与社交都很出色；开局就认下一位父神（七位可信奉的神里随机），泰坦觉醒之路已经开启。";
   public override void PostGameStart(){var map=Find.AnyPlayerHomeMap;if(map==null)return;var titan=Apply(ScenEdit.Starters(map).ToList());if(titan!=null)Awaken(titan);}
   // 1.41.0：父神存进成神进度（AscensionPaths.Father），开泰坦觉醒之路，开局信件写出父神。
   public static AscensionProgress Awaken(Pawn titan){

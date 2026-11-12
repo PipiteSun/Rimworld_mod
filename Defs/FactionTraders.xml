@@ -301,23 +301,6 @@
         <thingDef>Steel</thingDef>
         <countRange>300~700</countRange>
       </li>
-      <!-- 熔铁装备（火巨人专用） -->
-      <li Class="StockGenerator_SingleDef">
-        <thingDef>LP_FireGiantMaul</thingDef>
-        <countRange>-1~1</countRange>
-      </li>
-      <li Class="StockGenerator_SingleDef">
-        <thingDef>LP_FireGiantHelmet</thingDef>
-        <countRange>-1~1</countRange>
-      </li>
-      <li Class="StockGenerator_SingleDef">
-        <thingDef>LP_FireGiantArmor</thingDef>
-        <countRange>-1~1</countRange>
-      </li>
-      <li Class="StockGenerator_SingleDef">
-        <thingDef>LP_FireGiantTunic</thingDef>
-        <countRange>0~1</countRange>
-      </li>
       <!-- 普通体型能用的火巨人锻造品：熔炉锻出的钢制近战武器与板甲 -->
       <li Class="StockGenerator_Category">
         <categoryDef>WeaponsMelee</categoryDef>

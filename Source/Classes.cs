@@ -143,7 +143,7 @@ namespace LichPhylactery {
   public static int Points(Pawn p)=>Points(Adventurer.Get(p));
   public static bool Any(Pawn p)=>Data(p)?.Any==true;
   // 1.90.0 会施法的职业：施法职业（法师、牧师、德鲁伊、术士、邪术师）、圣武士（神术）、器械师，或诡术师子职业。专长“战争施法者”等的前置用它。
-  public const string SpellcasterText="施法职业（法师、牧师、德鲁伊、术士、邪术师、圣武士、器械师或诡术师）";
+  public const string SpellcasterText="施法职业（法师、牧师、德鲁伊、术士、邪术师、圣武士或诡术师）";
   public static bool Spellcaster(Pawn p){
    var h=Adventurer.Get(p);if(h?.classes==null || h.classes.levels.Count==0)return false;
    foreach(var kv in h.classes.levels)if(kv.Value>0 && kv.Key!=null && (kv.Key.caster || kv.Key==Paladin || kv.Key.defName=="LP_Class_Artificer"))return true;
@@ -462,7 +462,7 @@ namespace LichPhylactery {
   public static void PromptLetter(){
    if(!Adventurer.Enabled)return;
    var list=PawnsFinder.AllMaps_FreeColonists.Where(p=>Points(p)>0).ToList();if(list.Count==0)return;
-   Find.LetterStack.ReceiveLetter("冒险者职业","DND边缘大陆：十三个 DND 职业（战士、圣武士、武僧、法师、牧师、德鲁伊、术士、器械师、野蛮人、游侠、游荡者、邪术师、吟游诗人）不再需要 VPE，改成冒险者的职业等级。每个冒险者等级给 1 点职业点（最多 20），可以分给最多 3 个职业。\n\n"+string.Join("\n",list.Select(p=>"· "+p.LabelShort+"：职业点 "+Points(p)))+"\n\n选中殖民者点“选择职业”按钮，或在“冒险者”分页的“职业”页里加点。",LetterDefOf.NeutralEvent,new LookTargets(list.Where(p=>p.Spawned)));
+   Find.LetterStack.ReceiveLetter("冒险者职业","DND边缘大陆：十二个 DND 职业（战士、圣武士、武僧、法师、牧师、德鲁伊、术士、野蛮人、游侠、游荡者、邪术师、吟游诗人）不再需要 VPE，改成冒险者的职业等级。每个冒险者等级给 1 点职业点（最多 20），可以分给最多 3 个职业。\n\n"+string.Join("\n",list.Select(p=>"· "+p.LabelShort+"：职业点 "+Points(p)))+"\n\n选中殖民者点“选择职业”按钮，或在“冒险者”分页的“职业”页里加点。",LetterDefOf.NeutralEvent,new LookTargets(list.Where(p=>p.Spawned)));
   }
  }
 

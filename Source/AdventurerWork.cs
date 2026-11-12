@@ -14,17 +14,18 @@ namespace LichPhylactery {
   public static bool Counts(Pawn p)=>p!=null && !p.Dead && (p.Faction!=null && p.Faction.IsPlayer || p.IsSlaveOfColony);
   // 今天已计入的量（倍率之后、折算之前；换日后为 0）。
   public static float Today(Hediff_Adventurer h)=>h.workXpDay==Feats.LocalDay(h.pawn)?h.workXpToday:0f;
-  // amount（倍率之后）按今天剩下的全额额度折算，并记入今日计数。
+  // amount（倍率之后）按今天剩下的全额额度折算，并记入今日计数。1.141.0 学以致用：全额 80 → 120（Feats5.DailyFull）。
   public static float Diminish(Hediff_Adventurer h,float amount){
    int d=Feats.LocalDay(h.pawn);if(d!=h.workXpDay){h.workXpDay=d;h.workXpToday=0f;}
-   float full=Mathf.Clamp(DailyFull-h.workXpToday,0f,amount);h.workXpToday+=amount;
+   float full=Mathf.Clamp(Feats5.DailyFull(h.pawn)-h.workXpToday,0f,amount);h.workXpToday+=amount;
    return full+(amount-full)*OverFactor;
   }
-  // 返回这次折算出的冒险者经验（倍率前的基础值，含攒着不满 1 点的部分）。
+  // 返回这次折算出的冒险者经验（倍率前的基础值，含攒着不满 1 点的部分）。1.141.0 学以致用：倍率再 ×1.5（Feats5.WorkMult）。
   public static float Learned(Pawn p,SkillDef sDef,float skillXp){
    float m=Mult;if(m<=0f || skillXp<=0f || !Adventurer.Enabled || !Counts(p))return 0f;
    var h=Adventurer.Get(p);if(h==null)return 0f;
    var rec=p.skills?.GetSkill(sDef);if(rec==null || rec.TotallyDisabled)return 0f;
+   m*=Feats5.WorkMult(p);
    float got=Diminish(h,skillXp/SkillPerXp*m);h.workXpRem+=got;h.workXpTotal+=got;
    if(h.workXpRem>=1f){float whole=Mathf.Floor(h.workXpRem);h.workXpRem-=whole;Adventurer.GainXP(p,whole);}
    return got;

@@ -121,17 +121,15 @@ namespace LichPhylactery {
    Check(n>=80 && human>.2f && human<.65f /* 1.63.0：1.57.0 的半精灵、半身人、侏儒也从人类份额里分走，下限 25% → 20% */ && dwarf>.08f && dwarf<.35f && elf>.08f && elf<.35f && orc>.04f && orc<.30f && holy<.2f,"Faerun colony race mix is roughly 40/20/20/15 + 5 holy: "+ratio);
    Check(people.Where(p=>p.kindDef.defName=="LP_FC_Paladin" || p.kindDef.defName=="LP_FC_Priest").All(p=>Xeno(p)=="Baseliner"),"paladins and priests are always human");
    var pal=FactionPawn("LP_FC_Paladin",colony);var priest=FactionPawn("LP_FC_Priest",colony);
-   Check(pal.apparel.WornApparel.Any(a=>a.def.defName=="LP_PaladinPlate") && pal.equipment.Primary!=null && pal.equipment.Primary.def.IsMeleeWeapon,"paladin wears paladin plate (1.45.1) and carries a melee weapon");
-   Check(priest.apparel.WornApparel.Any(a=>a.def.defName=="LP_MorninglordVestments") && (priest.equipment.Primary==null || priest.equipment.Primary.def.IsMeleeWeapon),"priest wears the vestments of the Morninglord (1.45.1)");
+   Check(pal.apparel.WornApparel.Any(a=>a.def.defName=="Apparel_PlateArmor") && pal.apparel.WornApparel.Any(a=>a.def.defName=="LP_KnightMantle") && pal.equipment.Primary!=null && pal.equipment.Primary.def.IsMeleeWeapon,"paladin wears plate armor with the knight mantle (1.143.0) and carries a melee weapon");
+   Check(priest.equipment.Primary==null || priest.equipment.Primary.def.IsMeleeWeapon,"priest carries no gun");
    CleanFactionPawns();
    // 余烬氏族：每组火巨人 1～2 个
    int minG=99,maxG=0;
    for(int i=0;i<100;i++){var g=FactionGroup(ember,PawnGroupKindDefOf.Combat,Rand.Range(150f,2500f));int c=g.Count(FireGiant.Active);minG=Math.Min(minG,c);maxG=Math.Max(maxG,c);if(i%10==9)CleanFactionPawns();}
    Check(minG>=1 && maxG<=FactionGroups.MaxGiants,"ember clan raids always have 1-2 fire giants (seen "+minG+"-"+maxG+")");
    var eg=FactionGroup(ember,PawnGroupKindDefOf.Combat,1200);
-   Check(eg.Where(FireGiant.Active).All(p=>p.equipment.Primary?.def.defName=="LP_FireGiantMaul"),"ember fire giants carry forge mauls");
    Check(eg.Where(p=>!FireGiant.Active(p)).All(p=>p.kindDef.defName=="LP_EC_HumanSlave"?Xeno(p)=="Baseliner":p.kindDef.defName=="LP_EC_OgreSlave"?Xeno(p)=="LP_Ogre":Xeno(p)=="LP_HalfOrc"),"ember slaves are humans, half-orcs and (1.24.0) ogres");
-   Check(eg.Where(p=>p.kindDef.defName=="LP_EC_HumanSlave").All(p=>p.apparel.WornApparel.Any(a=>a.def.defName=="LP_EmberCollarPlate")),"human slave soldiers wear the ember collar plate (1.45.1)");
    CleanFactionPawns();
    // 塞伊远征军
    int wizards=0,bound=0;bool redRobes=true;
@@ -149,9 +147,8 @@ namespace LichPhylactery {
    Check(wizards>0 && bound==wizards,"every red wizard brings 2-3 bound undead constructs ("+bound+"/"+wizards+")");
    Check(redRobes,"red wizards wear red-dyed robes");
    Check(DefDatabase<PawnKindDef>.GetNamed("LP_FH_OrcWarrior").label=="兽人战士","half-orc raiders are labelled 兽人战士");
-   int swords=0;bool githOk=true;for(int i=0;i<40;i++){var gith=FactionPawn("LP_FH_GithMercenary",hostile);if(Xeno(gith)!="LP_Githyanki")githOk=false;if(Githyanki.HoldsSword(gith))swords++;}
+   bool githOk=true;for(int i=0;i<10;i++){var gith=FactionPawn("LP_FH_GithMercenary",hostile);if(Xeno(gith)!="LP_Githyanki")githOk=false;}
    Check(githOk,"githyanki mercenaries generate as githyanki");
-   Check(swords>0 && swords<30,"githyanki mercenaries sometimes carry a silver sword ("+swords+"/40)");
    CleanFactionPawns();
    // 幽暗殖巢：夺心魔 1～3，奴仆带 LP_Thralled，没有 30 秒支配
    int minF=99,maxF=0;bool thralls=true;string thrallWhy="";

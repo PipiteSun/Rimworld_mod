@@ -22,8 +22,8 @@ namespace LichPhylactery {
   public static ThingDef TomeDef(int a)=>a>=0 && a<6?DefDatabase<ThingDef>.GetNamedSilentFail("LP_Tome_"+Keys[a]):null;
   public static int TomeIndex(ThingDef d)=>d==null || !d.defName.StartsWith("LP_Tome_")?-1:Array.IndexOf(Keys,d.defName.Substring(8));
   public static Thing MakeTome(int a=-1){var d=TomeDef(a>=0?a:Rand.Range(0,6));return d==null?null:ThingMaker.MakeThing(d);}
-  public static readonly string[] LegacyNames={"LP_Legacy_Sword","LP_Legacy_Hammer","LP_Legacy_Bow","LP_Legacy_Staff"};
-  public static Thing MakeLegacy(string name=null){var d=DefDatabase<ThingDef>.GetNamedSilentFail(name??LegacyNames.RandomElement());if(d==null)return null;var t=ThingMaker.MakeThing(d,d.MadeFromStuff?GenStuff.DefaultStuffFor(d):null);t.TryGetComp<CompQuality>()?.SetQuality(QualityCategory.Masterwork,ArtGenerationContext.Outsider);return t;}
+  public static readonly string[] LegacyNames=new string[0]; // 1.146.0：四件传承武器已移除
+  public static Thing MakeLegacy(string name=null){if(name==null && LegacyNames.Length==0)return null;var d=DefDatabase<ThingDef>.GetNamedSilentFail(name??LegacyNames.RandomElement());if(d==null)return null;var t=ThingMaker.MakeThing(d,d.MadeFromStuff?GenStuff.DefaultStuffFor(d):null);t.TryGetComp<CompQuality>()?.SetQuality(QualityCategory.Masterwork,ArtGenerationContext.Outsider);return t;}
   public static void Drop(Thing t,Map map,IntVec3 at,Pawn fallback=null){if(t==null)return;if(map!=null && at.IsValid)GenPlace.TryPlaceThing(t,at,map,ThingPlaceMode.Near);else fallback?.inventory?.innerContainer.TryAdd(t);}
 
   // ---------- 典籍 ----------
@@ -146,12 +146,10 @@ namespace LichPhylactery {
   public static int nemesisDrops,legendDrops;
   public static void NemesisDrop(Pawn killer,Map map,IntVec3 at){
    if(Roll<TomeNemesis){Drop(MakeTome(),map,at,killer);nemesisDrops++;}
-   if(Roll<LegacyNemesis){Drop(MakeLegacy(),map,at,killer);nemesisDrops++;}
   }
   public static void LegendDrop(Pawn victim,Map map,IntVec3 at){
    if(map==null || victim?.Faction==null || !victim.HostileTo(Faction.OfPlayer))return;
    if(Roll<TomeLegend){Drop(MakeTome(),map,at);legendDrops++;}
-   if(Roll<LegacyLegend){Drop(MakeLegacy(),map,at);legendDrops++;}
   }
 
   // ---------- 派系声望 ----------
@@ -162,7 +160,7 @@ namespace LichPhylactery {
    {"LP_FaerunColony",new[]{"竖琴手线人","竖琴手","竖琴大师","竖琴之主"}},
    {"LP_EmberClan",new[]{"余烬之友","炉边客","熔铁誓友","炉心之主"}},
    {"LP_BlackNetwork",new[]{"黑网熟客","黑网掮客","暗影掮主","黑网之主"}}};
-  public static readonly Dictionary<string,string> RepItems=new Dictionary<string,string>{{"LP_FaerunColony","LP_PotionHeroism"},{"LP_EmberClan","LP_LavaPiercer"},{"LP_BlackNetwork","LP_Doom"}};
+  public static readonly Dictionary<string,string> RepItems=new Dictionary<string,string>{{"LP_FaerunColony","LP_PotionHeroism"}};
   public static bool Tracked(Faction f)=>f!=null && !f.IsPlayer && RepFactions.Contains(f.def.defName);
   public static GameComponent_Growth State=>GameComp<GameComponent_Growth>.Get();
   public static int Rep(Faction f)=>State?.Get(f)??0;

@@ -15,12 +15,12 @@
   <RecipeDef ParentName="LP_DeskScrollRecipeBase">
     <defName>LP_WriteScrollTrueSeeing</defName>
     <label>抄写识破卷轴</label>
-    <description>用10份布和1块熔岩结晶抄写一张识破卷轴。需要智识6。</description>
+    <description>用10份布和10化合燃料抄写一张识破卷轴。需要智识6。</description>
     <jobString>正在抄写识破卷轴。</jobString>
     <workAmount>1800</workAmount>
     <skillRequirements><Intellectual>6</Intellectual></skillRequirements>
-    <ingredients><li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>10</count></li><li><filter><thingDefs><li>LP_LavaCrystal</li></thingDefs></filter><count>1</count></li></ingredients>
-    <fixedIngredientFilter><thingDefs><li>Cloth</li><li>LP_LavaCrystal</li></thingDefs></fixedIngredientFilter>
+    <ingredients><li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>10</count></li><li><filter><thingDefs><li>Chemfuel</li></thingDefs></filter><count>10</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Cloth</li><li>Chemfuel</li></thingDefs></fixedIngredientFilter>
     <products><LP_ScrollTrueSeeing>1</LP_ScrollTrueSeeing></products>
   </RecipeDef>
   <RecipeDef ParentName="LP_DeskScrollRecipeBase">
@@ -37,12 +37,12 @@
   <RecipeDef ParentName="LP_DeskScrollRecipeBase">
     <defName>LP_WriteScrollFireball</defName>
     <label>抄写火球卷轴</label>
-    <description>用10份布和2块熔岩结晶抄写一张火球卷轴。需要智识8。</description>
+    <description>用10份布和20化合燃料抄写一张火球卷轴。需要智识8。</description>
     <jobString>正在抄写火球卷轴。</jobString>
     <workAmount>2200</workAmount>
     <skillRequirements><Intellectual>8</Intellectual></skillRequirements>
-    <ingredients><li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>10</count></li><li><filter><thingDefs><li>LP_LavaCrystal</li></thingDefs></filter><count>2</count></li></ingredients>
-    <fixedIngredientFilter><thingDefs><li>Cloth</li><li>LP_LavaCrystal</li></thingDefs></fixedIngredientFilter>
+    <ingredients><li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>10</count></li><li><filter><thingDefs><li>Chemfuel</li></thingDefs></filter><count>20</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Cloth</li><li>Chemfuel</li></thingDefs></fixedIngredientFilter>
     <products><LP_ScrollFireball>1</LP_ScrollFireball></products>
   </RecipeDef>
   <RecipeDef ParentName="LP_DeskScrollRecipeBase">

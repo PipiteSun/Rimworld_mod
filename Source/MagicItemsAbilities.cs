@@ -22,7 +22,6 @@ namespace LichPhylactery {
    var map=Caster?.Map;if(map==null)return "施法者不在地图上。";var p=target.Pawn;
    switch(Props.effect){
     case "flametoggle":return Caster.equipment?.Primary?.GetComp<CompMagicWeapon>()==null?"需要手持火焰舌。":null;
-    case "defend":return Items.Holds(Caster,"LP_DefenderSword")?null:"需要手持守护者之剑。";
     case "readmind":return p==null || p==Caster || p.Dead || !p.Spawned || !p.RaceProps.Humanlike?"需要地图上活着的人形目标。":null;
     case "storedspell":var ring=SpellStoring.Ring(Caster);if(ring==null || ring.stored==null)return "储法戒指是空的。";return MagicEffects.StoredInvalid(ring.stored,Caster,target);
     case "soothe":return p==null || !p.RaceProps.Animal || !p.InMentalState?"需要一只发狂的动物。":null;
@@ -371,10 +370,8 @@ namespace LichPhylactery {
   // ---------- 敌人死亡掉落 ----------
   public static readonly Dictionary<string,(string def,float chance)[]> Drops=new Dictionary<string,(string,float)[]>{
    {"LP_FH_RedWizard",new[]{("LP_NecklaceFireballs",.08f),("LP_MarkBlood",.025f),("LP_MarkDecay",.025f),("LP_MarkChange",.025f),("LP_MarkRapture",.025f)}},
-   {"LP_FH_GithMercenary",new[]{("LP_VorpalSword",.05f),("LP_AmuletPlanes",.06f)}},
-   {"LP_FC_Paladin",new[]{("LP_HaloOfLight",.05f)}},
-   {"LP_FH_OrcWarrior",new[]{("LP_WaaaghTotem",.1f)}},
-   {"LP_EC_OrcSlave",new[]{("LP_WaaaghTotem",.1f)}}};
+   {"LP_FH_GithMercenary",new[]{("LP_AmuletPlanes",.06f)}},
+   {"LP_FC_Paladin",new[]{("LP_HaloOfLight",.05f)}}};
   public static List<string> RollDrops(string kind,Func<float> rand){var l=new List<string>();if(kind!=null && Drops.TryGetValue(kind,out var table))foreach(var (def,chance) in table)if(rand()<chance)l.Add(def);return l;}
   public static void OnDeath(Pawn p){
    SpiritStones.Capture(p);

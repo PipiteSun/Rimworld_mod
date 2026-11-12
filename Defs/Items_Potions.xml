@@ -50,7 +50,7 @@
   <ThingDef ParentName="LP_PotionBase">
     <defName>LP_PotionGiantStrength</defName>
     <label>巨人之力药水</label>
-    <description>熔岩结晶溶成的橙色药水，喝下去像吞了一团火。12小时内近战伤害×1.3、搬运量×1.5，身形看上去也大了一圈。</description>
+    <description>橙色的药水，喝下去像吞了一团火。12小时内近战伤害×1.3、搬运量×1.5，身形看上去也大了一圈。</description>
     <descriptionHyperlinks><HediffDef>LP_PotionGiantStrength</HediffDef></descriptionHyperlinks>
     <graphicData><texPath>Items/Potions/GiantStrength</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
     <statBases><MarketValue>120</MarketValue></statBases>

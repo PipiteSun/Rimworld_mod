@@ -4,7 +4,7 @@
   <ResearchProjectDef>
     <defName>LP_Research_InfusedProsthetics</defName>
     <label>注能义肢</label>
-    <description>把魔像学的灌注技术用在血肉之躯上：在符文铁砧锻造注能义肢、寒铁 / 秘银 / 精金义肢、机关眼和秘银心核；器械师还能给原版仿生和考古科技部件注能（效率 +10%）。</description>
+    <description>把魔像学的灌注技术用在血肉之躯上：在符文铁砧锻造注能义肢、寒铁 / 秘银 / 精金义肢、机关眼和秘银心核。</description>
     <baseCost>2500</baseCost>
     <techLevel>Medieval</techLevel>
     <prerequisites><li>LP_Research_GolemManual</li></prerequisites>
@@ -13,14 +13,14 @@
     <researchViewY>0.7</researchViewY>
   </ResearchProjectDef>
   <ThingDef ParentName="BodyPartBase">
-    <defName>LP_Imp_InfusedArm</defName><label>注能义臂</label><description>器械师用钢和少量秘银锻成、再灌注魔力的义臂。替换整条手臂，部位效率 115%。普通档，不占调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <defName>LP_Imp_InfusedArm</defName><label>注能义臂</label><description>用钢和少量秘银锻成、再灌注魔力的义臂。替换整条手臂，部位效率 115%。普通档，不占调谐位。</description>
     <techLevel>Medieval</techLevel>
     <thingCategories><li>BodyPartsBionic</li></thingCategories>
     <graphicData><texPath>Items/Implants/InfusedArm</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
     <statBases><MarketValue>700</MarketValue><Mass>1.5</Mass></statBases>
   </ThingDef>
   <HediffDef ParentName="AddedBodyPartBase">
-    <defName>LP_Imp_InfusedArm</defName><label>注能义臂</label><description>器械师用钢和少量秘银锻成、再灌注魔力的义臂。替换整条手臂，部位效率 115%。普通档，不占调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <defName>LP_Imp_InfusedArm</defName><label>注能义臂</label><description>用钢和少量秘银锻成、再灌注魔力的义臂。替换整条手臂，部位效率 115%。普通档，不占调谐位。</description>
     <spawnThingOnRemoved>LP_Imp_InfusedArm</spawnThingOnRemoved>
     <addedPartProps><solid>true</solid><partEfficiency>1.15</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
     
@@ -28,7 +28,7 @@
     <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Infused</flag><attune>false</attune></li></modExtensions>
   </HediffDef>
   <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
-    <defName>LP_Install_InfusedArm</defName><label>安装注能义臂</label><description>器械师用钢和少量秘银锻成、再灌注魔力的义臂。替换整条手臂，部位效率 115%。普通档，不占调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description><jobString>正在安装注能义臂。</jobString>
+    <defName>LP_Install_InfusedArm</defName><label>安装注能义臂</label><description>用钢和少量秘银锻成、再灌注魔力的义臂。替换整条手臂，部位效率 115%。普通档，不占调谐位。</description><jobString>正在安装注能义臂。</jobString>
     <workerClass>LichPhylactery.Recipe_InstallDndPart</workerClass>
     <ingredients><li><filter><thingDefs><li>LP_Imp_InfusedArm</li></thingDefs></filter><count>1</count></li></ingredients>
     <fixedIngredientFilter><thingDefs><li>LP_Imp_InfusedArm</li></thingDefs></fixedIngredientFilter>
@@ -45,14 +45,14 @@
     <products><LP_Imp_InfusedArm>1</LP_Imp_InfusedArm></products>
   </RecipeDef>
   <ThingDef ParentName="BodyPartBase">
-    <defName>LP_Imp_InfusedLeg</defName><label>注能义腿</label><description>器械师用钢和少量秘银锻成、再灌注魔力的义腿。替换整条腿，部位效率 115%。普通档，不占调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <defName>LP_Imp_InfusedLeg</defName><label>注能义腿</label><description>用钢和少量秘银锻成、再灌注魔力的义腿。替换整条腿，部位效率 115%。普通档，不占调谐位。</description>
     <techLevel>Medieval</techLevel>
     <thingCategories><li>BodyPartsBionic</li></thingCategories>
     <graphicData><texPath>Items/Implants/InfusedLeg</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
     <statBases><MarketValue>700</MarketValue><Mass>1.5</Mass></statBases>
   </ThingDef>
   <HediffDef ParentName="AddedBodyPartBase">
-    <defName>LP_Imp_InfusedLeg</defName><label>注能义腿</label><description>器械师用钢和少量秘银锻成、再灌注魔力的义腿。替换整条腿，部位效率 115%。普通档，不占调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <defName>LP_Imp_InfusedLeg</defName><label>注能义腿</label><description>用钢和少量秘银锻成、再灌注魔力的义腿。替换整条腿，部位效率 115%。普通档，不占调谐位。</description>
     <spawnThingOnRemoved>LP_Imp_InfusedLeg</spawnThingOnRemoved>
     <addedPartProps><solid>true</solid><partEfficiency>1.15</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
     
@@ -60,7 +60,7 @@
     <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Infused</flag><attune>false</attune></li></modExtensions>
   </HediffDef>
   <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
-    <defName>LP_Install_InfusedLeg</defName><label>安装注能义腿</label><description>器械师用钢和少量秘银锻成、再灌注魔力的义腿。替换整条腿，部位效率 115%。普通档，不占调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description><jobString>正在安装注能义腿。</jobString>
+    <defName>LP_Install_InfusedLeg</defName><label>安装注能义腿</label><description>用钢和少量秘银锻成、再灌注魔力的义腿。替换整条腿，部位效率 115%。普通档，不占调谐位。</description><jobString>正在安装注能义腿。</jobString>
     <workerClass>LichPhylactery.Recipe_InstallDndPart</workerClass>
     <ingredients><li><filter><thingDefs><li>LP_Imp_InfusedLeg</li></thingDefs></filter><count>1</count></li></ingredients>
     <fixedIngredientFilter><thingDefs><li>LP_Imp_InfusedLeg</li></thingDefs></fixedIngredientFilter>
@@ -77,14 +77,14 @@
     <products><LP_Imp_InfusedLeg>1</LP_Imp_InfusedLeg></products>
   </RecipeDef>
   <ThingDef ParentName="BodyPartBase">
-    <defName>LP_Imp_ColdIronArm</defName><label>寒铁义臂</label><description>淬炼寒铁锻成的义臂，摸上去总是冰凉。替换整条手臂，部位效率 125%；近战打寒铁克制的目标（妖精血统、精灵、灵能者）和邪魔时伤害 +30%。普通档，不占调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <defName>LP_Imp_ColdIronArm</defName><label>寒铁义臂</label><description>淬炼寒铁锻成的义臂，摸上去总是冰凉。替换整条手臂，部位效率 125%；近战打寒铁克制的目标（妖精血统、精灵、灵能者）和邪魔时伤害 +30%。普通档，不占调谐位。</description>
     <techLevel>Medieval</techLevel>
     <thingCategories><li>BodyPartsBionic</li></thingCategories>
     <graphicData><texPath>Items/Implants/ColdIronArm</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
     <statBases><MarketValue>1300</MarketValue><Mass>1.5</Mass></statBases>
   </ThingDef>
   <HediffDef ParentName="AddedBodyPartBase">
-    <defName>LP_Imp_ColdIronArm</defName><label>寒铁义臂</label><description>淬炼寒铁锻成的义臂，摸上去总是冰凉。替换整条手臂，部位效率 125%；近战打寒铁克制的目标（妖精血统、精灵、灵能者）和邪魔时伤害 +30%。普通档，不占调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <defName>LP_Imp_ColdIronArm</defName><label>寒铁义臂</label><description>淬炼寒铁锻成的义臂，摸上去总是冰凉。替换整条手臂，部位效率 125%；近战打寒铁克制的目标（妖精血统、精灵、灵能者）和邪魔时伤害 +30%。普通档，不占调谐位。</description>
     <spawnThingOnRemoved>LP_Imp_ColdIronArm</spawnThingOnRemoved>
     <addedPartProps><solid>true</solid><partEfficiency>1.25</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
     
@@ -92,7 +92,7 @@
     <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>ColdArm</flag><attune>false</attune></li></modExtensions>
   </HediffDef>
   <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
-    <defName>LP_Install_ColdIronArm</defName><label>安装寒铁义臂</label><description>淬炼寒铁锻成的义臂，摸上去总是冰凉。替换整条手臂，部位效率 125%；近战打寒铁克制的目标（妖精血统、精灵、灵能者）和邪魔时伤害 +30%。普通档，不占调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description><jobString>正在安装寒铁义臂。</jobString>
+    <defName>LP_Install_ColdIronArm</defName><label>安装寒铁义臂</label><description>淬炼寒铁锻成的义臂，摸上去总是冰凉。替换整条手臂，部位效率 125%；近战打寒铁克制的目标（妖精血统、精灵、灵能者）和邪魔时伤害 +30%。普通档，不占调谐位。</description><jobString>正在安装寒铁义臂。</jobString>
     <workerClass>LichPhylactery.Recipe_InstallDndPart</workerClass>
     <ingredients><li><filter><thingDefs><li>LP_Imp_ColdIronArm</li></thingDefs></filter><count>1</count></li></ingredients>
     <fixedIngredientFilter><thingDefs><li>LP_Imp_ColdIronArm</li></thingDefs></fixedIngredientFilter>
@@ -109,14 +109,14 @@
     <products><LP_Imp_ColdIronArm>1</LP_Imp_ColdIronArm></products>
   </RecipeDef>
   <ThingDef ParentName="BodyPartBase">
-    <defName>LP_Imp_MithralLeg</defName><label>秘银义腿</label><description>轻得几乎没有重量的秘银义腿。替换整条腿，部位效率 130%；穿着的衣物带来的移速惩罚减半（重甲最明显）。稀有档，占 1 个调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <defName>LP_Imp_MithralLeg</defName><label>秘银义腿</label><description>轻得几乎没有重量的秘银义腿。替换整条腿，部位效率 130%；穿着的衣物带来的移速惩罚减半（重甲最明显）。稀有档，占 1 个调谐位。</description>
     <techLevel>Medieval</techLevel>
     <thingCategories><li>BodyPartsBionic</li></thingCategories>
     <graphicData><texPath>Items/Implants/MithralLeg</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
     <statBases><MarketValue>2600</MarketValue><Mass>1.5</Mass></statBases>
   </ThingDef>
   <HediffDef ParentName="AddedBodyPartBase">
-    <defName>LP_Imp_MithralLeg</defName><label>秘银义腿</label><description>轻得几乎没有重量的秘银义腿。替换整条腿，部位效率 130%；穿着的衣物带来的移速惩罚减半（重甲最明显）。稀有档，占 1 个调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <defName>LP_Imp_MithralLeg</defName><label>秘银义腿</label><description>轻得几乎没有重量的秘银义腿。替换整条腿，部位效率 130%；穿着的衣物带来的移速惩罚减半（重甲最明显）。稀有档，占 1 个调谐位。</description>
     <spawnThingOnRemoved>LP_Imp_MithralLeg</spawnThingOnRemoved>
     <addedPartProps><solid>true</solid><partEfficiency>1.30</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
     
@@ -124,7 +124,7 @@
     <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>MithralLeg</flag><attune>true</attune></li></modExtensions>
   </HediffDef>
   <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
-    <defName>LP_Install_MithralLeg</defName><label>安装秘银义腿</label><description>轻得几乎没有重量的秘银义腿。替换整条腿，部位效率 130%；穿着的衣物带来的移速惩罚减半（重甲最明显）。稀有档，占 1 个调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description><jobString>正在安装秘银义腿。</jobString>
+    <defName>LP_Install_MithralLeg</defName><label>安装秘银义腿</label><description>轻得几乎没有重量的秘银义腿。替换整条腿，部位效率 130%；穿着的衣物带来的移速惩罚减半（重甲最明显）。稀有档，占 1 个调谐位。</description><jobString>正在安装秘银义腿。</jobString>
     <workerClass>LichPhylactery.Recipe_InstallDndPart</workerClass>
     <ingredients><li><filter><thingDefs><li>LP_Imp_MithralLeg</li></thingDefs></filter><count>1</count></li></ingredients>
     <fixedIngredientFilter><thingDefs><li>LP_Imp_MithralLeg</li></thingDefs></fixedIngredientFilter>
@@ -141,14 +141,14 @@
     <products><LP_Imp_MithralLeg>1</LP_Imp_MithralLeg></products>
   </RecipeDef>
   <ThingDef ParentName="BodyPartBase">
-    <defName>LP_Imp_AdamantArm</defName><label>精金义臂</label><description>精金锻成的义臂，几乎砍不坏。替换整条手臂，部位效率 140%；这条手臂上受的伤 −50%，近战护甲穿透 +25%。稀有档，占 1 个调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <defName>LP_Imp_AdamantArm</defName><label>精金义臂</label><description>精金锻成的义臂，几乎砍不坏。替换整条手臂，部位效率 140%；这条手臂上受的伤 −50%，近战护甲穿透 +25%。稀有档，占 1 个调谐位。</description>
     <techLevel>Medieval</techLevel>
     <thingCategories><li>BodyPartsBionic</li></thingCategories>
     <graphicData><texPath>Items/Implants/AdamantArm</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
     <statBases><MarketValue>3600</MarketValue><Mass>1.5</Mass></statBases>
   </ThingDef>
   <HediffDef ParentName="AddedBodyPartBase">
-    <defName>LP_Imp_AdamantArm</defName><label>精金义臂</label><description>精金锻成的义臂，几乎砍不坏。替换整条手臂，部位效率 140%；这条手臂上受的伤 −50%，近战护甲穿透 +25%。稀有档，占 1 个调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <defName>LP_Imp_AdamantArm</defName><label>精金义臂</label><description>精金锻成的义臂，几乎砍不坏。替换整条手臂，部位效率 140%；这条手臂上受的伤 −50%，近战护甲穿透 +25%。稀有档，占 1 个调谐位。</description>
     <spawnThingOnRemoved>LP_Imp_AdamantArm</spawnThingOnRemoved>
     <addedPartProps><solid>true</solid><partEfficiency>1.40</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
     
@@ -156,7 +156,7 @@
     <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>AdamArm</flag><attune>true</attune></li></modExtensions>
   </HediffDef>
   <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
-    <defName>LP_Install_AdamantArm</defName><label>安装精金义臂</label><description>精金锻成的义臂，几乎砍不坏。替换整条手臂，部位效率 140%；这条手臂上受的伤 −50%，近战护甲穿透 +25%。稀有档，占 1 个调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description><jobString>正在安装精金义臂。</jobString>
+    <defName>LP_Install_AdamantArm</defName><label>安装精金义臂</label><description>精金锻成的义臂，几乎砍不坏。替换整条手臂，部位效率 140%；这条手臂上受的伤 −50%，近战护甲穿透 +25%。稀有档，占 1 个调谐位。</description><jobString>正在安装精金义臂。</jobString>
     <workerClass>LichPhylactery.Recipe_InstallDndPart</workerClass>
     <ingredients><li><filter><thingDefs><li>LP_Imp_AdamantArm</li></thingDefs></filter><count>1</count></li></ingredients>
     <fixedIngredientFilter><thingDefs><li>LP_Imp_AdamantArm</li></thingDefs></fixedIngredientFilter>
@@ -173,14 +173,14 @@
     <products><LP_Imp_AdamantArm>1</LP_Imp_AdamantArm></products>
   </RecipeDef>
   <ThingDef ParentName="BodyPartBase">
-    <defName>LP_Imp_ClockEye</defName><label>精工机关眼</label><description>秘银齿轮和玉石镜片组成的机关眼。替换一只眼睛，部位效率 125%；射击精度 +5%，光线昏暗时不受惩罚。普通档，不占调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <defName>LP_Imp_ClockEye</defName><label>精工机关眼</label><description>秘银齿轮和玉石镜片组成的机关眼。替换一只眼睛，部位效率 125%；射击精度 +5%，光线昏暗时不受惩罚。普通档，不占调谐位。</description>
     <techLevel>Medieval</techLevel>
     <thingCategories><li>BodyPartsBionic</li></thingCategories>
     <graphicData><texPath>Items/Implants/ClockEye</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
     <statBases><MarketValue>1400</MarketValue><Mass>1.5</Mass></statBases>
   </ThingDef>
   <HediffDef ParentName="AddedBodyPartBase">
-    <defName>LP_Imp_ClockEye</defName><label>精工机关眼</label><description>秘银齿轮和玉石镜片组成的机关眼。替换一只眼睛，部位效率 125%；射击精度 +5%，光线昏暗时不受惩罚。普通档，不占调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <defName>LP_Imp_ClockEye</defName><label>精工机关眼</label><description>秘银齿轮和玉石镜片组成的机关眼。替换一只眼睛，部位效率 125%；射击精度 +5%，光线昏暗时不受惩罚。普通档，不占调谐位。</description>
     <spawnThingOnRemoved>LP_Imp_ClockEye</spawnThingOnRemoved>
     <addedPartProps><solid>true</solid><partEfficiency>1.25</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
     <stages><li><statFactors><ShootingAccuracyPawn>1.05</ShootingAccuracyPawn></statFactors></li></stages>
@@ -188,7 +188,7 @@
     <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>ClockEye</flag><attune>false</attune></li></modExtensions>
   </HediffDef>
   <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
-    <defName>LP_Install_ClockEye</defName><label>安装精工机关眼</label><description>秘银齿轮和玉石镜片组成的机关眼。替换一只眼睛，部位效率 125%；射击精度 +5%，光线昏暗时不受惩罚。普通档，不占调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description><jobString>正在安装精工机关眼。</jobString>
+    <defName>LP_Install_ClockEye</defName><label>安装精工机关眼</label><description>秘银齿轮和玉石镜片组成的机关眼。替换一只眼睛，部位效率 125%；射击精度 +5%，光线昏暗时不受惩罚。普通档，不占调谐位。</description><jobString>正在安装精工机关眼。</jobString>
     <workerClass>LichPhylactery.Recipe_InstallDndPart</workerClass>
     <ingredients><li><filter><thingDefs><li>LP_Imp_ClockEye</li></thingDefs></filter><count>1</count></li></ingredients>
     <fixedIngredientFilter><thingDefs><li>LP_Imp_ClockEye</li></thingDefs></fixedIngredientFilter>
@@ -205,14 +205,14 @@
     <products><LP_Imp_ClockEye>1</LP_Imp_ClockEye></products>
   </RecipeDef>
   <ThingDef ParentName="BodyPartBase">
-    <defName>LP_Imp_MithralHeart</defName><label>秘银心核</label><description>秘银和精金打成的心核，跳得又稳又有力。替换心脏，部位效率 130%；毒素积累 −50%，不会再犯心脏病。稀有档，占 1 个调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <defName>LP_Imp_MithralHeart</defName><label>秘银心核</label><description>秘银和精金打成的心核，跳得又稳又有力。替换心脏，部位效率 130%；毒素积累 −50%，不会再犯心脏病。稀有档，占 1 个调谐位。</description>
     <techLevel>Medieval</techLevel>
     <thingCategories><li>BodyPartsBionic</li></thingCategories>
     <graphicData><texPath>Items/Implants/MithralHeart</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.8</drawSize></graphicData>
     <statBases><MarketValue>3200</MarketValue><Mass>1.5</Mass></statBases>
   </ThingDef>
   <HediffDef ParentName="AddedBodyPartBase">
-    <defName>LP_Imp_MithralHeart</defName><label>秘银心核</label><description>秘银和精金打成的心核，跳得又稳又有力。替换心脏，部位效率 130%；毒素积累 −50%，不会再犯心脏病。稀有档，占 1 个调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description>
+    <defName>LP_Imp_MithralHeart</defName><label>秘银心核</label><description>秘银和精金打成的心核，跳得又稳又有力。替换心脏，部位效率 130%；毒素积累 −50%，不会再犯心脏病。稀有档，占 1 个调谐位。</description>
     <spawnThingOnRemoved>LP_Imp_MithralHeart</spawnThingOnRemoved>
     <addedPartProps><solid>true</solid><partEfficiency>1.30</partEfficiency><betterThanNatural>true</betterThanNatural></addedPartProps>
     <stages><li><statOffsets><ToxicResistance>0.5</ToxicResistance></statOffsets></li></stages>
@@ -220,7 +220,7 @@
     <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>MithralHeart</flag><attune>true</attune></li></modExtensions>
   </HediffDef>
   <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
-    <defName>LP_Install_MithralHeart</defName><label>安装秘银心核</label><description>秘银和精金打成的心核，跳得又稳又有力。替换心脏，部位效率 130%；毒素积累 −50%，不会再犯心脏病。稀有档，占 1 个调谐位。器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。</description><jobString>正在安装秘银心核。</jobString>
+    <defName>LP_Install_MithralHeart</defName><label>安装秘银心核</label><description>秘银和精金打成的心核，跳得又稳又有力。替换心脏，部位效率 130%；毒素积累 −50%，不会再犯心脏病。稀有档，占 1 个调谐位。</description><jobString>正在安装秘银心核。</jobString>
     <workerClass>LichPhylactery.Recipe_InstallDndPart</workerClass>
     <ingredients><li><filter><thingDefs><li>LP_Imp_MithralHeart</li></thingDefs></filter><count>1</count></li></ingredients>
     <fixedIngredientFilter><thingDefs><li>LP_Imp_MithralHeart</li></thingDefs></fixedIngredientFilter>
@@ -663,20 +663,6 @@
     <description>器械师亲手调校自己身上的 DND 义肢：每 4 个器械师等级效率 +3%（最多 +15%，成对的部位按一半折算到对应能力）。</description>
     <isBad>false</isBad><everCurableByItem>false</everCurableByItem><scenarioCanAdd>false</scenarioCanAdd><defaultLabelColor>(0.95,0.8,0.45)</defaultLabelColor>
   </HediffDef>
-  <RecipeDef ParentName="SurgeryFlesh">
-    <defName>LP_InfuseBionic</defName>
-    <label>注能义体</label>
-    <description>器械师用 10 秘银给一件原版仿生或考古科技部件注能：效率 +10%。只有器械师能主刀（成功率 +15%）。</description>
-    <jobString>正在给义体注能。</jobString>
-    <workerClass>LichPhylactery.Recipe_InfuseBionic</workerClass>
-    <workAmount>2500</workAmount>
-    <researchPrerequisite>LP_Research_InfusedProsthetics</researchPrerequisite>
-    <skillRequirements><Medicine>5</Medicine></skillRequirements>
-    <recipeUsers><li>Human</li></recipeUsers>
-    <ingredients><li><filter><categories><li>Medicine</li></categories></filter><count>1</count></li><li><filter><thingDefs><li>LP_Mithral</li></thingDefs></filter><count>10</count></li></ingredients>
-    <fixedIngredientFilter><categories><li>Medicine</li></categories><thingDefs><li>LP_Mithral</li></thingDefs></fixedIngredientFilter>
-    <modExtensions><li Class="LichPhylactery.ArtificerSurgeryExtension" /></modExtensions>
-  </RecipeDef>
 <!-- ===================== 1.113.0 巫妖血肉植入扩充 ===================== -->
   <ThingDef ParentName="BodyPartBase">
     <defName>LP_Flesh_HellHeart</defName><label>冥火之心</label><description>冥火在胸腔里代替心跳。替换心脏，部位效率 120%；流血速度 ×0.2。在死灵仪式台用 800 份生肉和 150 白银培育，巫妖和活人都能装，可以叠肢体强化。普通档，不占调谐位。</description>

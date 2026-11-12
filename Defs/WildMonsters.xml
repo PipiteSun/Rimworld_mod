@@ -46,7 +46,7 @@
   <HediffDef>
     <defName>LP_BasiliskPetrified</defName>
     <label>石化</label>
-    <description>在石化蜥的凝视下变成了石头：半天之内一动不动，之后石皮才会剥落。驱散粉尘可以立刻解除。</description>
+    <description>在石化蜥的凝视下变成了石头：半天之内一动不动，之后石皮才会剥落。</description>
     <hediffClass>HediffWithComps</hediffClass>
     <isBad>true</isBad>
     <defaultLabelColor>(0.7, 0.7, 0.7)</defaultLabelColor>
@@ -390,7 +390,7 @@
   <ThingDef ParentName="LP_WildMonsterBase">
     <defName>LP_Basilisk</defName>
     <label>石化蜥</label>
-    <description>八条腿的巨蜥，行动迟缓，眼睛泛着黄绿色的光。打起来时，7格内看得见它的敌人每秒都会和它对上眼、身体逐渐僵硬变慢；完全僵住时要靠体质撑过去（豁免失败就变成石头半天，驱散粉尘能解）。瞎子、机械体和别的石化蜥不受影响。巢穴附近常有栩栩如生的“石像”。</description>
+    <description>八条腿的巨蜥，行动迟缓，眼睛泛着黄绿色的光。打起来时，7格内看得见它的敌人每秒都会和它对上眼、身体逐渐僵硬变慢；完全僵住时要靠体质撑过去（豁免失败就变成石头半天）。瞎子、机械体和别的石化蜥不受影响。巢穴附近常有栩栩如生的“石像”。</description>
     <statBases>
       <MoveSpeed>3.0</MoveSpeed>
       <MarketValue>700</MarketValue>

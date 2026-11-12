@@ -19,7 +19,7 @@
   <ThingDef ParentName="BuildingBase">
     <defName>LP_PlanarRift</defName>
     <label>位面裂口</label>
-    <description>一道撕开现实的紫黑色旋涡，另一边是别的位面。每隔一段时间就会有生物从里面涌出来。\n\n打碎它（600 生命）、把驱散粉尘扔到它旁边，或者让巨灵命令它闭合，都能把它关上。开了三天还没关的裂口会崩溃。</description>
+    <description>一道撕开现实的紫黑色旋涡，另一边是别的位面。每隔一段时间就会有生物从里面涌出来。\n\n打碎它（600 生命），或者让巨灵命令它闭合，都能把它关上。开了三天还没关的裂口会崩溃。</description>
     <thingClass>LichPhylactery.Building_PlanarRift</thingClass>
     <graphicData>
       <texPath>Things/Building/LP_PlanarRift</texPath>
@@ -141,7 +141,7 @@
   <HediffDef>
     <defName>LP_ShadowVeil</defName>
     <label>幽影隐匿</label>
-    <description>幽影界的阴影裹着它，肉眼看不见。驱散粉尘、识破卷轴能让它现形。</description>
+    <description>幽影界的阴影裹着它，肉眼看不见。识破卷轴能让它现形。</description>
     <hediffClass>HediffWithComps</hediffClass>
     <isBad>false</isBad>
     <everCurableByItem>false</everCurableByItem>

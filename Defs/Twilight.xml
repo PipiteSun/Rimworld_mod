@@ -6,14 +6,14 @@
        1.39.0 信仰字段（alignment、worshippable、enemies、domainAbility、relic、likedOfferings、blessing/curse、iconPath、epithet）见 Source/Faith.cs；凯兰沃、密斯特拉、莎尔在 Defs/Faith.xml。 -->
   <LichPhylactery.LP_DeityDef>
     <defName>LP_Deity_Bane</defName><key>Bane</key>
-    <devoteeDegree>7</devoteeDegree><alignment>Evil</alignment><worshippable>true</worshippable><epithet>暴政之神</epithet><enemies><li>LP_Deity_Tyr</li></enemies><domainAbility>LP_Miracle_Dread</domainAbility><relic>LP_Relic_BlackHand</relic><likedOfferings><li>WeaponsMelee</li><li>Steel</li></likedOfferings><blessing>LichPhylactery.Manifest_Bane</blessing><curse>LichPhylactery.Manifest_Bane</curse><iconPath>Faith/Deities/Bane</iconPath><degree>1</degree>
+    <devoteeDegree>7</devoteeDegree><alignment>Evil</alignment><worshippable>true</worshippable><epithet>暴政之神</epithet><enemies><li>LP_Deity_Tyr</li></enemies><domainAbility>LP_Miracle_Dread</domainAbility><likedOfferings><li>WeaponsMelee</li><li>Steel</li></likedOfferings><blessing>LichPhylactery.Manifest_Bane</blessing><curse>LichPhylactery.Manifest_Bane</curse><iconPath>Faith/Deities/Bane</iconPath><degree>1</degree>
     <label>班恩</label><color>(0.55, 0.35, 0.9)</color>
     <infusionTitle>暴君之仆</infusionTitle><vesselTitle>黑手</vesselTitle>
     <description>暴政之神班恩，塞伊远征军所崇奉。附体者带着恐惧光环（12格内敌人射击精度-15%、移速×0.85），每20秒命令视线内最近3名敌人扔下武器（心智抗性可抵抗）；20格内的塞伊兵不逃跑、符印巨魔不狂暴。倒下时神力被抽走，20格内的随从立刻逃散。</description>
   </LichPhylactery.LP_DeityDef>
   <LichPhylactery.LP_DeityDef>
     <defName>LP_Deity_Surtr</defName><key>Surtr</key>
-    <devoteeDegree>9</devoteeDegree><alignment>Evil</alignment><worshippable>true</worshippable><epithet>火巨人之王</epithet><domainAbility>LP_Miracle_ForgeWrath</domainAbility><relic>LP_Relic_ForgeHeart</relic><likedOfferings><li>Steel</li><li>Plasteel</li><li>Chemfuel</li></likedOfferings><blessing>LichPhylactery.Manifest_Surtr</blessing><curse>LichPhylactery.Manifest_Surtr</curse><iconPath>Faith/Deities/Surtr</iconPath><degree>2</degree>
+    <devoteeDegree>9</devoteeDegree><alignment>Evil</alignment><worshippable>true</worshippable><epithet>火巨人之王</epithet><domainAbility>LP_Miracle_ForgeWrath</domainAbility><likedOfferings><li>Steel</li><li>Plasteel</li><li>Chemfuel</li></likedOfferings><blessing>LichPhylactery.Manifest_Surtr</blessing><curse>LichPhylactery.Manifest_Surtr</curse><iconPath>Faith/Deities/Surtr</iconPath><degree>2</degree>
     <label>苏尔特</label><color>(1, 0.42, 0.12)</color>
     <infusionTitle>余烬之血</infusionTitle><vesselTitle>苏尔特之焰</vesselTitle>
     <description>火巨人之王苏尔特，余烬氏族所崇奉。附体者完全免疫火焰，走过的地块20%起火；周围有敌人时每25秒焰剑横扫（半径3格20点火焰并点燃）；每受一次伤害近战伤害+5%（最多+50%）。倒下时体内爆燃（半径4格25点火焰），自己严重烧伤但存活。</description>
@@ -27,14 +27,14 @@
   </LichPhylactery.LP_DeityDef>
   <LichPhylactery.LP_DeityDef>
     <defName>LP_Deity_Tyr</defName><key>Tyr</key>
-    <devoteeDegree>2</devoteeDegree><alignment>Good</alignment><worshippable>true</worshippable><epithet>正义之神</epithet><enemies><li>LP_Deity_Bane</li></enemies><domainAbility>LP_Miracle_Judgment</domainAbility><relic>LP_Relic_HandOfTyr</relic><likedOfferings><li>Gold</li><li>Silver</li></likedOfferings><blessing>LichPhylactery.Manifest_Tyr</blessing><curse>LichPhylactery.Manifest_Tyr</curse><iconPath>Faith/Deities/Tyr</iconPath><degree>4</degree>
+    <devoteeDegree>2</devoteeDegree><alignment>Good</alignment><worshippable>true</worshippable><epithet>正义之神</epithet><enemies><li>LP_Deity_Bane</li></enemies><domainAbility>LP_Miracle_Judgment</domainAbility><likedOfferings><li>Gold</li><li>Silver</li></likedOfferings><blessing>LichPhylactery.Manifest_Tyr</blessing><curse>LichPhylactery.Manifest_Tyr</curse><iconPath>Faith/Deities/Tyr</iconPath><degree>4</degree>
     <label>提尔</label><color>(1, 0.9, 0.45)</color>
     <infusionTitle>律法之眼</infusionTitle><vesselTitle>正义之手</vesselTitle>
     <description>正义之神提尔，猎巫狂热分子所崇奉。附体者周围10格是审判之庭：敌人不能使用任何能力；每30秒以罪罚打击视线内罪行最多的敌人（10+罪行×5，最多60）；不会眩晕，不会因疼痛倒地。倒下时服从审判、直接投降：不再流血，可以俘虏，招募难度减半。</description>
   </LichPhylactery.LP_DeityDef>
   <LichPhylactery.LP_DeityDef>
     <defName>LP_Deity_Lathander</defName><key>Lathander</key>
-    <devoteeDegree>1</devoteeDegree><alignment>Good</alignment><worshippable>true</worshippable><epithet>晨曦之神</epithet><enemies><li>LP_Deity_Shar</li></enemies><domainAbility>LP_Miracle_Dawn</domainAbility><relic>LP_Relic_MorningStar</relic><likedOfferings><li>PlantFoodRaw</li></likedOfferings><blessing>LichPhylactery.Manifest_Lathander</blessing><curse>LichPhylactery.Manifest_Lathander</curse><iconPath>Faith/Deities/Lathander</iconPath><degree>5</degree>
+    <devoteeDegree>1</devoteeDegree><alignment>Good</alignment><worshippable>true</worshippable><epithet>晨曦之神</epithet><enemies><li>LP_Deity_Shar</li></enemies><domainAbility>LP_Miracle_Dawn</domainAbility><likedOfferings><li>PlantFoodRaw</li></likedOfferings><blessing>LichPhylactery.Manifest_Lathander</blessing><curse>LichPhylactery.Manifest_Lathander</curse><iconPath>Faith/Deities/Lathander</iconPath><degree>5</degree>
     <label>洛山达</label><color>(1, 0.72, 0.55)</color>
     <infusionTitle>晨光之子</infusionTitle><vesselTitle>黎明</vesselTitle>
     <description>晨曦之神洛山达，费伦拓荒同盟所崇奉（只在同盟与你敌对时出现）。附体者10格内的友方每小时每处伤口-5；每30秒用光柱打击视线内一名敌人（20点神圣伤害，不死者×2）；第一次被打倒时满血爬起。第二次倒下时黎明退去，可以正常俘虏。</description>
@@ -48,14 +48,14 @@
   </LichPhylactery.LP_DeityDef>
   <LichPhylactery.LP_DeityDef>
     <defName>LP_Deity_Talos</defName><key>Talos</key>
-    <devoteeDegree>6</devoteeDegree><alignment>Evil</alignment><worshippable>true</worshippable><epithet>风暴之神</epithet><enemies><li>LP_Deity_Lathander</li></enemies><domainAbility>LP_Miracle_Thunder</domainAbility><relic>LP_Relic_StormSpear</relic><likedOfferings><li>Chemfuel</li><li>ComponentIndustrial</li></likedOfferings><blessing>LichPhylactery.Manifest_Talos</blessing><curse>LichPhylactery.Manifest_Talos</curse><iconPath>Faith/Deities/Talos</iconPath><degree>7</degree>
+    <devoteeDegree>6</devoteeDegree><alignment>Evil</alignment><worshippable>true</worshippable><epithet>风暴之神</epithet><enemies><li>LP_Deity_Lathander</li></enemies><domainAbility>LP_Miracle_Thunder</domainAbility><likedOfferings><li>Chemfuel</li><li>ComponentIndustrial</li></likedOfferings><blessing>LichPhylactery.Manifest_Talos</blessing><curse>LichPhylactery.Manifest_Talos</curse><iconPath>Faith/Deities/Talos</iconPath><degree>7</degree>
     <label>塔洛斯</label><color>(0.5, 0.7, 1)</color>
     <infusionTitle>风暴之怒</infusionTitle><vesselTitle>风暴之主</vesselTitle>
     <description>风暴之神塔洛斯，原版海盗所崇奉（模组设置里开启后才有）。附体者每40秒在一名殖民者附近3格落雷，在地图上时天气强制雷雨，10格内敌人射击精度-10%。倒下时一道雷劈在他自己身上，存活但重伤。</description>
   </LichPhylactery.LP_DeityDef>
   <LichPhylactery.LP_DeityDef>
     <defName>LP_Deity_Malar</defName><key>Malar</key>
-    <devoteeDegree>5</devoteeDegree><alignment>Evil</alignment><worshippable>true</worshippable><epithet>狩猎之神</epithet><enemies><li>LP_Deity_Lathander</li></enemies><domainAbility>LP_Miracle_Hunt</domainAbility><relic>LP_Relic_BeastClaw</relic><likedOfferings><li>MeatRaw</li><li>Leathers</li></likedOfferings><blessing>LichPhylactery.Manifest_Malar</blessing><curse>LichPhylactery.Manifest_Malar</curse><iconPath>Faith/Deities/Malar</iconPath><degree>8</degree>
+    <devoteeDegree>5</devoteeDegree><alignment>Evil</alignment><worshippable>true</worshippable><epithet>狩猎之神</epithet><enemies><li>LP_Deity_Lathander</li></enemies><domainAbility>LP_Miracle_Hunt</domainAbility><likedOfferings><li>MeatRaw</li><li>Leathers</li></likedOfferings><blessing>LichPhylactery.Manifest_Malar</blessing><curse>LichPhylactery.Manifest_Malar</curse><iconPath>Faith/Deities/Malar</iconPath><degree>8</degree>
     <label>马拉尔</label><color>(0.75, 0.25, 0.2)</color>
     <infusionTitle>兽血</infusionTitle><vesselTitle>野兽之主</vesselTitle>
     <description>狩猎之神马拉尔，原版野蛮部落所崇奉（模组设置里开启后才有）。附体者进场时让地图上2～4只野生动物猎杀殖民者（没有野生动物就从地图边缘来2只狼），近战伤害+25%，每60秒让15格内一只殖民地动物失控30秒（驯兽≥10的人就在旁边时不会）。倒下时野性退散，被驱使的野兽恢复平静。</description>
@@ -91,7 +91,7 @@
       </li>
       <li>
         <label><![CDATA[<color=#E08A3A>神力灌注（维拉基斯）</color>]]></label><degree>6</degree><commonality>0</commonality>
-        <description>[PAWN_nameDef]是巫妖女王维拉基斯的宠儿：星界跳跃冷却减半，银剑灵能伤害+20%；受到致命伤时20%星界跳跃到8格外，躲开这一下。黄昏之年里更容易躲开。</description>
+        <description>[PAWN_nameDef]是巫妖女王维拉基斯的宠儿：星界跳跃冷却减半；受到致命伤时20%星界跳跃到8格外，躲开这一下。黄昏之年里更容易躲开。</description>
       </li>
       <li>
         <label><![CDATA[<color=#E08A3A>神力灌注（塔洛斯）</color>]]></label><degree>7</degree><commonality>0</commonality>

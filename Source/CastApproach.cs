@@ -38,7 +38,7 @@ namespace LichPhylactery {
   // 同上，按 defName 再兜一层（效果名以后改了也不会漏）。
   public static readonly HashSet<string> MoveDefs=new HashSet<string>{
    "LP_MistyStep","LP_Teleport","LP_WL_MistyEscape","LP_CloudMistyStep","LP_EK_ArcaneCharge","LP_PW_TeleJump","LP_SH_ShadowStep","LP_AC_CloudStep",
-   "LP_WS_DimensionDoor","LP_DA_ShadowStep","LP_Charge","LP_RecklessCharge","LP_BullRush","LP_SatyrCharge","LP_HelmCharge","LP_BarlguraLeap",
+   "LP_WS_DimensionDoor","LP_DA_ShadowStep","LP_Charge","LP_RecklessCharge","LP_BullRush","LP_SatyrCharge","LP_BarlguraLeap",
    "LP_CambionGlide","LP_ElementWindLeap","LP_Soar","LP_AstralStep","LP_MI_AstralStep","LP_HeroFeyStep","LP_DragonWings","LP_RadiantSoulLeap",
    "LP_Intercept","LP_OozeSeep"};
   // 启动时建好，之后只读（渲染 / 选目标线程里不写任何共享状态）。

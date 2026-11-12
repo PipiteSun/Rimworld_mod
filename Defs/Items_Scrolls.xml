@@ -75,7 +75,7 @@
   <ThingDef ParentName="LP_ScrollBase">
     <defName>LP_ScrollFleshToStone</defName>
     <label>石化卷轴</label>
-    <description>对30格内的一个敌人（体型不超过2）使用：对方行动迟缓，30秒后化成一尊石像物品，人完整地封在石像里。对石像扬驱散粉尘可以让他复原。</description>
+    <description>对30格内的一个敌人（体型不超过2）使用：对方行动迟缓，30秒后化成一尊石像物品，人完整地封在石像里，一天后自动恢复。</description>
     <graphicData><texPath>Items/Scrolls/FleshToStone</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
     <statBases><MarketValue>450</MarketValue></statBases>
     <comps>
@@ -120,7 +120,7 @@
   <HediffDef>
     <defName>LP_Petrifying</defName>
     <label>石化中</label>
-    <description>皮肤正在变成石头。30秒后会彻底化成石像；被驱散粉尘覆盖时石化中止。</description>
+    <description>皮肤正在变成石头。30秒后会彻底化成石像。</description>
     <hediffClass>LichPhylactery.Hediff_Petrifying</hediffClass>
     <isBad>true</isBad>
     <defaultLabelColor>(0.7, 0.7, 0.65)</defaultLabelColor>
@@ -132,8 +132,9 @@
   <ThingDef ParentName="ResourceBase">
     <defName>LP_PetrifiedStatue</defName>
     <label>石像</label>
-    <description>一个被石化卷轴化成石头的人，完整地封在石像里。对它扬驱散粉尘可以让他复原；石像被毁时里面的人也就没了。</description>
+    <description>一个被石化卷轴化成石头的人，完整地封在石像里，一天后自己恢复血肉。石像被毁时里面的人也就没了。</description>
     <thingClass>LichPhylactery.PetrifiedStatue</thingClass>
+    <tickerType>Rare</tickerType>
     <graphicData><texPath>Items/PetrifiedStatue</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(1.3,1.3)</drawSize></graphicData>
     <stackLimit>1</stackLimit>
     <useHitPoints>true</useHitPoints>

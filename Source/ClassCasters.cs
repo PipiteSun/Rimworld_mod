@@ -564,15 +564,7 @@ namespace LichPhylactery {
   public static LP_ClassDef Class=>cls.Def;
   // 门槛的器械师等级：奥术工坊 1 级，符文铭刻 5 级；山岳锻造要学会这个能力。
   public static readonly Dictionary<string,int> TierLevel=new Dictionary<string,int>{{Workshop,1},{Inscription,5}};
-  public static readonly Dictionary<string,string> RequiredAbility=new Dictionary<string,string>{
-   {"LP_MissileStaff",Workshop},{"LP_FireStaff",Workshop},{"LP_FrostStaff",Workshop},{"LP_RunicPistol",Workshop},{"LP_RunicMusket",Workshop},
-   {"LP_SilverPistol",Inscription},{"LP_LavaPiercer",Inscription},{"LP_ThunderGun",Inscription},{"LP_HammerCannon",Inscription},{"LP_RunicRepeater",Inscription},
-   {"LP_MountainWrath",MountainForge},
-   {"LP_OgreClub",Workshop},{"LP_DwarvenThrowingHammer",Workshop},{"LP_ElvenLongbow",Workshop},{"LP_OrcishGreataxe",Workshop},{"LP_SilverSword",Workshop},{"LP_FrostGiantAxe",Workshop},
-   {"LP_FrostSpear",Inscription},{"LP_EmpyreanBlade",Inscription},{"LP_CloudMorningstar",Inscription},{"LP_StormTrident",Inscription},{"LP_FireGiantMaul",Inscription},{"LP_MoltenMaul",Inscription},
-   {"LP_CyclopsMaul",Workshop},
-   {"LP_FlameTongue",Inscription},{"LP_FrostBrand",Inscription},{"LP_DragonSlayer",Inscription},{"LP_DefenderSword",Inscription},{"LP_JavelinLightning",Workshop},
-   {"LP_SubduingCudgel",Workshop},{"LP_NetCrossbow",Workshop},{"LP_SleepBow",Workshop},{"LP_SleepStaff",Workshop},{"LP_SleepDustPouch",Workshop}};
+  public static readonly Dictionary<string,string> RequiredAbility=new Dictionary<string,string>{}; // 1.148.0：器械师职业已移除，DND 武器不再有职业门槛
   public const string NeedPrefix="制作需要：器械师";
   static Artificer(){
    Arcana.SensitivityFloorHooks.Add((p,g)=>Arcana.Magic(g) && Knows(p,Resonance)?ResonanceFloor:0f);

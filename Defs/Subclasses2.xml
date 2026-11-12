@@ -28,14 +28,6 @@
       <li><ability>LP_HM_BloodBoil</ability><level>11</level></li><li><ability>LP_HM_FleshPrison</ability><level>11</level></li><li><ability>LP_HM_BloodRite</ability><level>15</level></li></abilities>
   </LichPhylactery.LP_SubclassDef>
   <LichPhylactery.LP_SubclassDef>
-    <defName>LP_Sub_BattleSmith</defName>
-    <label>战铸师</label>
-    <description>带一台自己造的钢铁卫士：小型构装，不吃不睡，跟着主人打仗，等级越高越结实。被打烂留下残骸，1 天内用 20 钢就能重造。</description>
-    <parent>LP_Class_Artificer</parent><order>1</order><emblem>LP/Classes/Subclass/Emblem_BattleSmith</emblem><color>(0.85,0.7,0.4)</color>
-    <abilities><li><ability>LP_BS_SteelDefender</ability><level>3</level></li><li><ability>LP_BS_BattleReady</ability><level>3</level></li><li><ability>LP_BS_ArcaneJolt</ability><level>7</level></li>
-      <li><ability>LP_BS_ImprovedDefender</ability><level>11</level></li><li><ability>LP_BS_MasterSmith</ability><level>15</level></li></abilities>
-  </LichPhylactery.LP_SubclassDef>
-  <LichPhylactery.LP_SubclassDef>
     <defName>LP_Sub_AberrantMind</defName>
     <label>异变心灵</label>
     <description>血里有灵吸怪的影子：安抚崩溃的殖民者、用灵能尖刺伤敌、长出触手，最后能支配一个敌人为你所用。</description>

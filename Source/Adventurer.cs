@@ -282,12 +282,19 @@ namespace LichPhylactery {
   // 1.81.0 热修4：伤口疼痛 ÷ 部位生命倍率（只算 ≥1 的部分），否则等级、体质给的部位生命只推迟断肢和死亡，不推迟因疼痛倒地。
   // 冒险者用 PartHealthFactor（传奇单位是 1），动物用野性等级的 PartHealthFactor。只改伤口和缺失部位的疼痛（AdventurerPainScale）。
   public static bool PainScaleOn=>LichMod.Settings?.adventurerPainScale!=false;
-  public static float PainDivisor(Pawn p){
-   if(p==null || !PainScaleOn)return 1f;
+  public static float PainDivisor(Pawn p)=>p==null || !PainScaleOn?1f:PartScale(p);
+  // 冒险者 / 野性等级给的部位生命倍率（只算 ≥1 的部分）。不看设置，疼痛和总生命各自判断开关。
+  public static float PartScale(Pawn p){
+   if(p==null)return 1f;
    if(Get(p)!=null)return Math.Max(1f,PartHealthFactor(p));
    if(p.RaceProps?.Animal==true)return Math.Max(1f,BeastLevels.PartHealthFactor(p));
    return 1f;
   }
+  // 2026-11-10（Peter：部位生命和总生命不一致）：原版致死伤害阈值（150 × HealthScale）、健康%（每处伤口扣 严重度 ÷ 75 × HealthScale）、
+  // 总失血速度（÷ HealthScale）都只看 HealthScale，不看本模组的部位生命倍率。20 级战士体质 20 躯干 152，比全身致死阈值 150 还高，
+  // 部位血量根本用不完就死于“伤势过重”。开启时这三项按同一个倍率缩放（AdventurerTotalHealth）。
+  public static bool TotalScaleOn=>LichMod.Settings?.adventurerTotalScale!=false;
+  public static float TotalDivisor(Pawn p)=>p==null || !TotalScaleOn?1f:PartScale(p);
   public static float LevelGapFactor(Pawn attacker,Thing target){
    if(!(target is Pawn t) || attacker==null || !LevelGapOn)return 1f;
    int lt=CombatLevel(t);if(lt<=1)return 1f; // 目标 1 级或没有等级：不可能更高
@@ -752,6 +759,7 @@ namespace LichPhylactery {
    if(a==Adventurer.Con){
     Row("部位生命（体质）",X(ConPart(s)));Row("等级成长",X(1f+LevelGrowth(level)*s));Row("部位生命合计",X(Adventurer.PartHealthFactor(pawn)));
     if(LichMod.Settings?.adventurerPainScale??true)Row("伤口疼痛","÷"+Adventurer.PainDivisor(pawn).ToString("0.00"));
+    if(Adventurer.TotalScaleOn)Row("致死伤害阈值",pawn?.health!=null?pawn.health.LethalDamageThreshold.ToString("0"):"—"); // 2026-11-10
    }
    foreach(var e in Table)if(e.a==a && S(e.stat)!=null){float v=FxValue(e,s);Row(e.label,e.kind!=FxKind.Offset?X(v):e.num?(v>=0?"+":"")+v.ToString("0.#"):Pct(v));}
    string skills=a==0?"格斗":a==1?"射击":a==3?"智识":a==4?"医疗 / 种植 / 驯兽":a==5?"社交":null;
@@ -1044,6 +1052,20 @@ namespace LichPhylactery {
   static bool Prepare()=>TargetMethods().Any();
   static void Postfix(Hediff __instance,ref float __result){if(__result<=0f)return;float d=Adventurer.PainDivisor(__instance.pawn);if(d>1f)__result/=d;}
  }
+ // 2026-11-10 总生命随部位生命缩放（见 Adventurer.TotalDivisor）：致死伤害阈值 ×倍率，伤口扣的健康% ÷倍率，总失血速度 ÷倍率。
+ // 只加不减：倍率 ≥1，关掉设置就回到原版。失血走 HediffSet 的缓存，倍率变化后下一次伤口增减时刷新。
+ [HarmonyPatch(typeof(Pawn_HealthTracker),"get_LethalDamageThreshold")]
+ public static class AdventurerLethalThreshold {
+  static void Postfix(Pawn ___pawn,ref float __result){float d=Adventurer.TotalDivisor(___pawn);if(d>1f)__result*=d;}
+ }
+ [HarmonyPatch(typeof(Hediff_Injury),"get_SummaryHealthPercentImpact")]
+ public static class AdventurerSummaryHealth {
+  static void Postfix(Hediff_Injury __instance,ref float __result){if(__result<=0f)return;float d=Adventurer.TotalDivisor(__instance.pawn);if(d>1f)__result/=d;}
+ }
+ [HarmonyPatch(typeof(HediffSet),"CalculateBleedRate")]
+ public static class AdventurerBleedScale {
+  static void Postfix(HediffSet __instance,ref float __result){if(__result<=0f)return;float d=Adventurer.TotalDivisor(__instance.pawn);if(d>1f)__result/=d;}
+ }
  // 1.81.0 热修3 等级差防御（远程）：乘 ShotReport 的“射手与距离”系数（同 SubraceShotReport），瞄准提示里也看得到。
  [HarmonyPatch(typeof(ShotReport),nameof(ShotReport.HitReportFor))]
  public static class AdventurerShotLevelGap {
@@ -1091,8 +1113,9 @@ namespace LichPhylactery {
   public bool adventurerPointBuy=true;public int adventurerPointBuyPoints=Adventurer.BuyDefault; // 1.76.0 初始属性购点
   public bool adventurerLevelGap=true; // 1.81.0 热修3 等级差防御
   public bool adventurerPainScale=true; // 1.81.0 热修4 疼痛随部位生命缩放
+  public bool adventurerTotalScale=true; // 2026-11-10 总生命（致死阈值、健康%、失血）随部位生命缩放
   void ExposeAdventurer(){
-   Scribe_Values.Look(ref adventurerLevelGap,"adventurerLevelGap",true);Scribe_Values.Look(ref adventurerPainScale,"adventurerPainScale",true);
+   Scribe_Values.Look(ref adventurerLevelGap,"adventurerLevelGap",true);Scribe_Values.Look(ref adventurerPainScale,"adventurerPainScale",true);Scribe_Values.Look(ref adventurerTotalScale,"adventurerTotalScale",true);
    Scribe_Values.Look(ref adventurerPointBuy,"adventurerPointBuy",true);Scribe_Values.Look(ref adventurerPointBuyPoints,"adventurerPointBuyPoints",Adventurer.BuyDefault);
    adventurerPointBuyPoints=Math.Max(Adventurer.BuyMin,Math.Min(54,adventurerPointBuyPoints));
    ExposeEpic(); // 1.49.0 击杀里程碑、宿敌冠军
@@ -1138,6 +1161,7 @@ namespace LichPhylactery {
    if(s.adventurerEnemyCap){s.adventurerEnemyCapOffset=Mathf.RoundToInt(l.Slider(s.adventurerEnemyCapOffset,0,10));}
    l.CheckboxLabeled("等级差防御",ref s.adventurerLevelGap,"攻击者每比目标低 1 级，近战和远程命中率 ×(1 − 2%)，最多 −50%（低 10 级 ×0.8，低 25 级以上 ×0.5）。等级按冒险者等级（含传奇等级 21～40），动物按野性等级；机械体、炮塔、传奇怪物没有等级，不参与。"); // 1.81.0 热修3
    l.CheckboxLabeled("疼痛随部位生命缩放",ref s.adventurerPainScale,"伤口和缺失部位的疼痛 ÷ 部位生命倍率：部位生命 ×2 的人受同样的伤只有一半疼痛，因此更晚因疼痛倒地。冒险者按等级、体质、传奇血量等的部位生命倍率，动物按野性等级；传奇怪物不变。关闭后疼痛照原版，只按伤口大小算。"); // 1.81.0 热修4
+   l.CheckboxLabeled("总生命随部位生命缩放",ref s.adventurerTotalScale,"原版的致死伤害阈值（全身伤口合计 150 × 体型生命倍率就死）、健康百分比和失血速度都不看部位生命倍率，部位血再厚也会先死于“伤势过重”或失血。开启时：致死阈值 × 部位生命倍率，伤口扣的健康% 和总失血速度 ÷ 部位生命倍率。冒险者按等级、体质、传奇血量等的部位生命倍率，动物按野性等级；传奇怪物不变。关闭后照原版。"); // 2026-11-10
    LegendSettings.Draw(l); // 1.50.0
    ExaltedSettings.Draw(l); // 1.59.0
   }

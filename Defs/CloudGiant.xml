@@ -55,7 +55,6 @@
       <AbilityDef>LP_CloudMistyStep</AbilityDef>
       <AbilityDef>LP_CloudFog</AbilityDef>
       <AbilityDef>LP_CloudCallWind</AbilityDef>
-      <ThingDef>LP_CloudMorningstar</ThingDef>
     </descriptionHyperlinks>
     <customEffectDescriptions>
       <li>巨人血统：云巨人（阶序第2位）。</li>
@@ -379,10 +378,6 @@
       <li Class="StockGenerator_SingleDef">
         <thingDef>LP_SkyAmber</thingDef>
         <countRange>2~5</countRange>
-      </li>
-      <li Class="StockGenerator_SingleDef">
-        <thingDef>LP_CloudRobe</thingDef>
-        <countRange>0~1</countRange>
       </li>
       <li Class="StockGenerator_SingleDef">
         <thingDef>Jade</thingDef>

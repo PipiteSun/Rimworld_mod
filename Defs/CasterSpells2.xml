@@ -362,7 +362,7 @@
   <AbilityDef ParentName="LP_ClassSelfBase">
     <defName>LP_CS_Creation</defName>
     <label>造物术</label>
-    <description>5 环（幻术·仪式）：凭空造出一种普通材料：器械师等级 × 10 份钢铁、木材、布料或花岗岩砖块，或者等级 / 2 个零部件。每天一次。冷却 1 天。</description>
+    <description>5 环（幻术·仪式）：凭空造出一种普通材料：施法职业等级 × 10 份钢铁、木材、布料或花岗岩砖块，或者等级 / 2 个零部件。每天一次。冷却 1 天。</description>
     <iconPath>LP/Classes/CasterSpells/Creation</iconPath>
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
     <cooldownTicksRange>60000</cooldownTicksRange>

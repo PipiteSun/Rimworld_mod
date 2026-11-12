@@ -3,30 +3,6 @@
      没有资源，只看冷却。数值是器械强度 100% 时的值。 -->
 <Defs>
   <!-- ===================== 子职业 ===================== -->
-  <LichPhylactery.LP_SubclassDef>
-    <defName>LP_Sub_Alchemist</defName>
-    <label>炼金师</label>
-    <description>做药的器械师：每天早上背包里多出实验药剂（治愈、迅捷、坚韧、轻盈、清醒、勇气，谁都能喝，3 天就坏），还能做复原试剂治病解毒，最后学会长回断肢的大复原药剂、不怕毒酸火。</description>
-    <parent>LP_Class_Artificer</parent><order>2</order><emblem>LP/Classes/Subclass/Emblem_Alchemist</emblem><color>(0.95,0.6,0.25)</color>
-    <abilities><li><ability>LP_AL_Experimental</ability><level>3</level></li><li><ability>LP_AL_Savant</ability><level>7</level></li><li><ability>LP_AL_Restorative</ability><level>11</level></li>
-      <li><ability>LP_AL_Chemist</ability><level>15</level></li><li><ability>LP_AL_PickPotion</ability><level>15</level></li><li><ability>LP_AL_GreaterRestorative</ability><level>15</level></li></abilities>
-  </LichPhylactery.LP_SubclassDef>
-  <LichPhylactery.LP_SubclassDef>
-    <defName>LP_Sub_Armorer</defName>
-    <label>装甲师</label>
-    <description>把身上的护甲改成奥术装甲：不再拖慢脚步，两种模式随时切换——守护者用雷霆拳套嘲讽敌人、展开防御力场；渗透者用内置的闪电发射器远程点射、跑得更快、更难被打中。等级越高装甲越硬，最后完全密封。</description>
-    <parent>LP_Class_Artificer</parent><order>3</order><emblem>LP/Classes/Subclass/Emblem_Armorer</emblem><color>(0.62,0.66,0.74)</color>
-    <abilities><li><ability>LP_AR_ArcaneArmor</ability><level>3</level></li><li><ability>LP_AR_ArmorMode</ability><level>3</level></li><li><ability>LP_AR_Field</ability><level>3</level></li><li><ability>LP_AR_Launcher</ability><level>3</level></li>
-      <li><ability>LP_AR_Modifications</ability><level>7</level></li><li><ability>LP_AR_Upgrade</ability><level>11</level></li><li><ability>LP_AR_Perfected</ability><level>15</level></li></abilities>
-  </LichPhylactery.LP_SubclassDef>
-  <LichPhylactery.LP_SubclassDef>
-    <defName>LP_Sub_FortEngineer</defName>
-    <label>堡垒工程师</label>
-    <description>守家的器械师（为边缘世界新设的专精）：自己建的墙、门、掩体、炮台更结实，修得更快；埋下隐藏的符文地雷，建奥术电容给炮台提速，临战加固一片建筑，最后建起要塞核心自动修防线、给炮台全线升级。</description>
-    <parent>LP_Class_Artificer</parent><order>4</order><emblem>LP/Classes/Subclass/Emblem_FortEngineer</emblem><color>(0.72,0.6,0.42)</color>
-    <abilities><li><ability>LP_FE_Reinforce</ability><level>3</level></li><li><ability>LP_FE_RuneMine</ability><level>3</level></li><li><ability>LP_FE_Capacitor</ability><level>7</level></li>
-      <li><ability>LP_FE_Fortify</ability><level>11</level></li><li><ability>LP_FE_Citadel</ability><level>15</level></li></abilities>
-  </LichPhylactery.LP_SubclassDef>
 
   <!-- ===================== 炼金师：药剂 ===================== -->
   <ThingDef Name="LP_ALPotionBase" ParentName="LP_PotionBase" Abstract="True">
@@ -124,7 +100,6 @@
     <workSkill>Intellectual</workSkill>
     <effectWorking>Cook</effectWorking>
     <soundWorking>Recipe_Drug</soundWorking>
-    <recipeUsers><li>DrugLab</li></recipeUsers>
     <workAmount>1250</workAmount>
     <allowMixingIngredients>false</allowMixingIngredients>
     <ingredients>
@@ -245,7 +220,6 @@
     <canOverlapZones>false</canOverlapZones>
     <statBases><MaxHitPoints>150</MaxHitPoints><WorkToBuild>1500</WorkToBuild><Flammability>0</Flammability><Mass>10</Mass><Beauty>0</Beauty></statBases>
     <costList><Steel>20</Steel><ComponentIndustrial>1</ComponentIndustrial></costList>
-    <designationCategory>Power</designationCategory>
     <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
     <placeWorkers><li>LichPhylactery.PlaceWorker_ArcaneCapacitor</li></placeWorkers>
     <building><ai_chillDestination>false</ai_chillDestination></building>
@@ -271,7 +245,6 @@
     <canOverlapZones>false</canOverlapZones>
     <statBases><MaxHitPoints>1500</MaxHitPoints><WorkToBuild>20000</WorkToBuild><Flammability>0</Flammability><Mass>300</Mass><Beauty>5</Beauty></statBases>
     <costList><Steel>500</Steel><ComponentIndustrial>10</ComponentIndustrial><ComponentSpacer>2</ComponentSpacer></costList>
-    <designationCategory>Security</designationCategory>
     <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
     <placeWorkers><li>LichPhylactery.PlaceWorker_FortressCore</li></placeWorkers>
     <building><ai_chillDestination>false</ai_chillDestination></building>
@@ -310,26 +283,6 @@
     <iconPath>LP/Classes/Subclass4/AlchChemist</iconPath>
     <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
   </AbilityDef>
-  <AbilityDef ParentName="LP_ClassSelfBase">
-    <defName>LP_AL_PickPotion</defName>
-    <label>指定药剂</label>
-    <description>切换每天自动出现的药剂种类：随机 → 治愈 → 迅捷 → 坚韧 → 轻盈 → 清醒 → 勇气。炼金师，器械师 15 级。</description>
-    <iconPath>LP/Classes/Subclass4/AlchPick</iconPath>
-    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
-    <cooldownTicksRange>30</cooldownTicksRange>
-    <verbProperties><warmupTime>0</warmupTime></verbProperties>
-    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S4Pick</effect><stat>LP_ArtificePower</stat></li></comps>
-  </AbilityDef>
-  <AbilityDef ParentName="LP_ClassSelfBase">
-    <defName>LP_AL_GreaterRestorative</defName>
-    <label>大复原药剂</label>
-    <description>做一瓶大复原药剂放进背包：喝下后长回一个缺失的肢体或器官，并清除所有疾病与成瘾。每季（15 天）一次。炼金师，器械师 15 级。</description>
-    <iconPath>LP/Classes/Subclass4/AlchGreater</iconPath>
-    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
-    <cooldownTicksRange>900000</cooldownTicksRange>
-    <verbProperties><warmupTime>3</warmupTime></verbProperties>
-    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S4Greater</effect><stat>LP_ArtificePower</stat></li></comps>
-  </AbilityDef>
 
   <!-- ===================== 装甲师 ===================== -->
   <AbilityDef ParentName="LP_ClassSelfBase">
@@ -341,34 +294,6 @@
     <cooldownTicksRange>60</cooldownTicksRange>
     <verbProperties><warmupTime>166.7</warmupTime></verbProperties>
     <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S4Armor</effect><stat>LP_ArtificePower</stat></li></comps>
-  </AbilityDef>
-  <AbilityDef ParentName="LP_ClassSelfBase">
-    <defName>LP_AR_ArmorMode</defName>
-    <label>切换装甲模式</label>
-    <description>奥术装甲在守护者和渗透者之间切换。冷却 30 秒。装甲师，器械师 3 级。</description>
-    <iconPath>LP/Classes/Subclass4/ArmMode</iconPath>
-    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
-    <cooldownTicksRange>1800</cooldownTicksRange>
-    <verbProperties><warmupTime>0.25</warmupTime></verbProperties>
-    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S4ArmorMode</effect><stat>LP_ArtificePower</stat></li></comps>
-  </AbilityDef>
-  <AbilityDef ParentName="LP_ClassSelfBase">
-    <defName>LP_AR_Field</defName>
-    <label>防御力场</label>
-    <description>守护者：展开 10 + 器械师等级 × 2 点的临时护盾（甲胄升级后翻倍），持续 1 小时。冷却 1 小时。装甲师，器械师 3 级。</description>
-    <iconPath>LP/Classes/Subclass4/ArmField</iconPath>
-    <cooldownTicksRange>2500</cooldownTicksRange>
-    <verbProperties><warmupTime>0.25</warmupTime></verbProperties>
-    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S4Field</effect><stat>LP_ArtificePower</stat></li></comps>
-  </AbilityDef>
-  <AbilityDef ParentName="LP_ClassMeleeBase">
-    <defName>LP_AR_Launcher</defName>
-    <label>闪电发射器</label>
-    <description>渗透者：22 格内一个敌人受 12 × 器械强度 闪电伤害（甲胄升级后 ×1.5，打还没开过火的敌人再翻倍）。冷却 2 秒。装甲师，器械师 3 级。</description>
-    <iconPath>LP/Classes/Subclass4/ArmLauncher</iconPath>
-    <cooldownTicksRange>120</cooldownTicksRange>
-    <verbProperties><range>22</range><warmupTime>0.5</warmupTime></verbProperties>
-    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S4Launcher</effect><stat>LP_ArtificePower</stat><single>true</single></li></comps>
   </AbilityDef>
   <AbilityDef ParentName="LP_ClassSelfBase">
     <defName>LP_AR_Modifications</defName>
@@ -399,17 +324,6 @@
     <description>被动：自己建成的墙、门、沙袋这类掩体、炮台最大生命 +50%；自己修理建筑的速度 ×2。堡垒工程师，器械师 3 级。</description>
     <iconPath>LP/Classes/Subclass4/FortReinforce</iconPath>
     <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
-  </AbilityDef>
-  <AbilityDef ParentName="LP_ClassLocBase">
-    <defName>LP_FE_RuneMine</defName>
-    <label>符文地雷</label>
-    <description>在 10 格内的空地埋下一枚隐藏的符文地雷（不耗材料，同时最多 3 枚）：敌人踩上去受 20 × 器械强度 奥术力伤害并倒地 2 秒。冷却半天。堡垒工程师，器械师 3 级。</description>
-    <iconPath>LP/Classes/Subclass4/FortMine</iconPath>
-    <hostile>false</hostile>
-    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
-    <cooldownTicksRange>30000</cooldownTicksRange>
-    <verbProperties><range>10</range><warmupTime>2</warmupTime><targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings></targetParams></verbProperties>
-    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>S4Mine</effect><stat>LP_ArtificePower</stat></li></comps>
   </AbilityDef>
   <AbilityDef ParentName="LP_ClassSelfBase">
     <defName>LP_FE_Capacitor</defName>

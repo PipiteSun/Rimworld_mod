@@ -168,7 +168,7 @@
   <GeneDef>
     <defName>LP_DragonHoarder</defName>
     <label>囤积癖</label>
-    <description>龙与宝库密不可分。力能龙裔自己独占的卧室会被视为宝库，房间里所有物品的市值（火巨人锻造品按双倍计）就是宝库价值，决定龙龄晋升和心情。宝库越富有、越美观，龙的心情越好；从宝库里拿走东西不会让它心情变差，但外人动它的宝库，会直接触发一次锁定小偷的杀意狂暴。</description>
+    <description>龙与宝库密不可分。力能龙裔自己独占的卧室会被视为宝库，房间里所有物品的市值就是宝库价值，决定龙龄晋升和心情。宝库越富有、越美观，龙的心情越好；从宝库里拿走东西不会让它心情变差，但外人动它的宝库，会直接触发一次锁定小偷的杀意狂暴。</description>
     <iconPath>UI/Icons/Genes/Gene_Pretty</iconPath>
     <displayCategory>Miscellaneous</displayCategory>
     <selectionWeight>0</selectionWeight>

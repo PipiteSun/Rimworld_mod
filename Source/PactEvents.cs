@@ -330,7 +330,7 @@ namespace LichPhylactery {
    // 规格：阿姆尼祖 + 2 骨魔护卫（原版按点数配护卫，点数低时补齐）
    var lord=made.Select(p=>p.GetLord()).FirstOrDefault(l=>l!=null);
    for(int i=made.Count(p=>PactRaces.Is(p,"LP_BoneDevil"));i<2 && made.Count>0;i++){var g=AbyssRaces.Make("LP_HB_BoneDevil",f,map.Tile);if(g==null)break;GenSpawn.Spawn(g,CellFinder.RandomClosewalkCellNear(made[0].Position,map,3),map);lord?.AddPawn(g);made.Add(g);}
-   if(made.Count>0)Find.LetterStack.ReceiveLetter("九狱商队","九狱掮客的商队来了：一名干瘪的魔鬼律师（阿姆尼祖）带着骨魔护卫。卖契约书、灵魂币、恶魔学典籍、地狱钢叉；收囚犯、灵魂币、真名卷、神迹残片。\n\n右键阿姆尼祖：赎回被拖进九狱的人、被收走的命匣（各 "+Pacts.RansomSilver.ToString("0")+" 银）。\n\n抢劫商队：所有九狱契约债务 +2，掮客从此敌对。",LetterDefOf.PositiveEvent,new LookTargets(made.Cast<Thing>()));
+   if(made.Count>0)Find.LetterStack.ReceiveLetter("九狱商队","九狱掮客的商队来了：一名干瘪的魔鬼律师（阿姆尼祖）带着骨魔护卫。卖契约书、灵魂币、恶魔学典籍；收囚犯、灵魂币、真名卷、神迹残片。\n\n右键阿姆尼祖：赎回被拖进九狱的人、被收走的命匣（各 "+Pacts.RansomSilver.ToString("0")+" 银）。\n\n抢劫商队：所有九狱契约债务 +2，掮客从此敌对。",LetterDefOf.PositiveEvent,new LookTargets(made.Cast<Thing>()));
    return made.Count>0;
   }
  }
@@ -350,7 +350,7 @@ namespace LichPhylactery {
    var kind=DefDatabase<TraderKindDef>.GetNamedSilentFail("LP_FeyMarketTrader");
    var made=PactEvents.SpawnCaravan(map,f,kind,parms.points);if(made.Count==0)return false;
    c.market=new PactMarket{map=map,pawns=made,leaveTick=Pacts.Now+PactEvents.MarketStay,offers=PactEvents.RollOffers()};
-   Find.LetterStack.ReceiveLetter("妖精集市","月亮升起时，林边亮起了一串小灯笼：妖精集市开张了，天亮前就走。卖妖精银弓、小精灵，还有自愿来当仆人的萨特和调换儿。\n\n右键妖精商人：代价交易（每次集市 3 笔，各一次）——拿记忆、寿命、名字或笑声，换魔法物品、小精灵、解约、萨特，或者赎回被拖进妖精荒野的人。",LetterDefOf.PositiveEvent,new LookTargets(made.Cast<Thing>()));
+   Find.LetterStack.ReceiveLetter("妖精集市","月亮升起时，林边亮起了一串小灯笼：妖精集市开张了，天亮前就走。卖小精灵，还有自愿来当仆人的萨特和调换儿。\n\n右键妖精商人：代价交易（每次集市 3 笔，各一次）——拿记忆、寿命、名字或笑声，换魔法物品、小精灵、解约、萨特，或者赎回被拖进妖精荒野的人。",LetterDefOf.PositiveEvent,new LookTargets(made.Cast<Thing>()));
    return true;
   }
  }

@@ -6,7 +6,7 @@
     <defName>LP_FrostGiant</defName>
     <label>霜巨人</label>
     <description>住在冰原与雪山上的巨人族，血脉会遗传给子女。成年霜巨人的体型是常人的2.0倍，皮肤是冻土般的浅蓝灰色，霜白的头发编成结满冰碴的发辫。他们在零下八十度也不会失温，踩着积雪照样大步走，冬狼会像猎犬一样追随他们；他们最怕的是火，也受不了一点暖和天气。霜巨人是天生的掠夺者，打退一场袭击、看着库房里堆满抢来的兵甲，就是他们最大的乐趣。在巨人的阶序里，霜巨人排在火巨人之下——两族是几千年的世仇。</description>
-    <descriptionShort>可遗传的巨人种族。2倍巨躯、极耐寒、免疫冻伤失温与寒气、雪地不减速、驯服冬狼、怕火怕热、热爱战利品；冬之号角。</descriptionShort>
+    <descriptionShort>可遗传的巨人种族。2倍巨躯、极耐寒、免疫冻伤失温与寒气、雪地不减速、驯服冬狼、怕火怕热、热爱战利品。</descriptionShort>
     <iconPath>Giants/Genes/FrostGiantCore</iconPath>
     <inheritable>true</inheritable>
     <combatPowerFactor>1.6</combatPowerFactor>
@@ -32,7 +32,7 @@
   <GeneDef ParentName="LP_FrostGiantGeneBase">
     <defName>LP_FrostGiantCore</defName>
     <label>霜巨人本源</label>
-    <description>霜巨人的冰原血脉，可随种族遗传。成年后体型为常人的2.0倍（显示1.4倍，儿童随年龄长大）；体型越大，生命和近战越强（巨躯规则：成年生命×150%、近战×130%），步子大却不快。霜巨人不怕冷：舒适温度下限-80℃，不会失温、不会冻伤，寒冰魔的寒气和冬狼咬的寒霜迟缓对他们无效。他们不在乎赤身裸体，能穿普通衣服，也有只有巨人能穿的专属衣甲。戴上霜巨人号角就能吹响“冬之号角”。</description>
+    <description>霜巨人的冰原血脉，可随种族遗传。成年后体型为常人的2.0倍（显示1.4倍，儿童随年龄长大）；体型越大，生命和近战越强（巨躯规则：成年生命×150%、近战×130%），步子大却不快。霜巨人不怕冷：舒适温度下限-80℃，不会失温、不会冻伤，寒冰魔的寒气和冬狼咬的寒霜迟缓对他们无效。他们不在乎赤身裸体，能穿普通衣服。</description>
     <geneClass>LichPhylactery.Gene_FrostGiant</geneClass>
     <iconPath>Giants/Genes/FrostGiantCore</iconPath>
     <displayCategory>ResistanceAndWeakness</displayCategory>
@@ -47,13 +47,6 @@
     <damageFactors>
       <Frostbite>0</Frostbite>
     </damageFactors>
-    <abilities>
-      <li>LP_WinterHornBlast</li>
-    </abilities>
-    <descriptionHyperlinks>
-      <AbilityDef>LP_WinterHornBlast</AbilityDef>
-      <ThingDef>LP_FrostGiantHorn</ThingDef>
-    </descriptionHyperlinks>
     <customEffectDescriptions>
       <li>巨人血统：霜巨人（阶序第4位，低于火巨人）。</li>
       <li>体型随年龄增长，成年达到×2.0（显示×1.4）。</li>
@@ -62,7 +55,6 @@
       <li>移动速度：×85%。</li>
       <li>不会失温、不会冻伤；不受“寒气侵体”和“寒霜迟缓”影响。</li>
       <li>不会因裸体产生负面心情；能穿普通衣服，巨人专属衣甲每件心情+2（最多+6）。</li>
-      <li>冬之号角：装备霜巨人号角后可用。</li>
     </customEffectDescriptions>
     <modExtensions>
       <li Class="LichPhylactery.GiantKinExtension">
@@ -164,56 +156,6 @@
   </GeneDef>
 
   <!-- ==================== 冬之号角 ==================== -->
-  <AbilityDef Name="LP_WinterHornBase" Abstract="True">
-    <iconPath>Giants/Abilities/WinterHorn</iconPath>
-    <hostile>false</hostile>
-    <targetRequired>false</targetRequired>
-    <cooldownTicksRange>60000</cooldownTicksRange>
-    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
-    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
-    <aiCanUse>false</aiCanUse>
-    <verbProperties>
-      <verbClass>Verb_CastAbility</verbClass>
-      <warmupTime>0.5</warmupTime>
-      <range>0</range>
-      <targetParams><canTargetSelf>true</canTargetSelf></targetParams>
-    </verbProperties>
-  </AbilityDef>
-  <AbilityDef ParentName="LP_WinterHornBase">
-    <defName>LP_WinterHornBlast</defName>
-    <label>冬之号角</label>
-    <description>霜巨人吹响霜巨人号角（需要装备）：15格内的友方60秒内近战命中+15%、不会被吓倒；15格内的冬狼另外“狂猎”，移动速度×130%。冷却1天。</description>
-    <comps>
-      <li Class="LichPhylactery.CompProperties_WinterHorn" />
-    </comps>
-  </AbilityDef>
-  <AbilityDef ParentName="LP_WinterHornBase">
-    <defName>LP_WinterHornCall</defName>
-    <label>狂猎号角</label>
-    <description>吹响霜巨人号角。不是霜巨人吹不出号角的全部力量：只有15格内的冬狼会“狂猎”，60秒内移动速度×130%。冷却1天。</description>
-    <comps>
-      <li Class="LichPhylactery.CompProperties_WinterHorn"><wolvesOnly>true</wolvesOnly></li>
-    </comps>
-  </AbilityDef>
-  <HediffDef>
-    <defName>LP_WinterHorn</defName>
-    <label>冬之号角</label>
-    <description>冬之号角的长鸣还在耳边：近战命中+15%，不会被吓倒。</description>
-    <hediffClass>HediffWithComps</hediffClass>
-    <defaultLabelColor>(0.75, 0.9, 1)</defaultLabelColor>
-    <isBad>false</isBad>
-    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>3600</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
-  </HediffDef>
-  <HediffDef>
-    <defName>LP_WildHunt</defName>
-    <label>狂猎</label>
-    <description>号角一响，冬狼就成了猎群：移动速度×130%。</description>
-    <hediffClass>HediffWithComps</hediffClass>
-    <defaultLabelColor>(0.75, 0.9, 1)</defaultLabelColor>
-    <isBad>false</isBad>
-    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>3600</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
-    <stages><li><statFactors><MoveSpeed>1.3</MoveSpeed></statFactors></li></stages>
-  </HediffDef>
 
   <!-- ==================== 战利品之心 ==================== -->
   <ThoughtDef>

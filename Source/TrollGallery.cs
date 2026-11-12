@@ -19,7 +19,6 @@ namespace LichPhylactery {
     }
     p.drafter.Drafted=true;p.Drawer.renderer.SetAllGraphicsDirty();samples.Add(p);
    }
-   Find.WindowStack.TryRemove(typeof(FireGiantGearGallery));
    Find.WindowStack.Add(new TrollGallery(samples));
   }
  }

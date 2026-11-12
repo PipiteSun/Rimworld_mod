@@ -13,15 +13,6 @@
     <maxUses>1</maxUses>
   </ScenPartDef>
 
-  <ScenPartDef>
-    <defName>LP_FireGiantClan</defName>
-    <label>火巨人锻炉氏族</label>
-    <scenPartClass>LichPhylactery.ScenPart_FireGiantClan</scenPartClass>
-    <category>StartingImportant</category>
-    <selectionWeight>0</selectionWeight>
-    <summaryPriority>490</summaryPriority>
-    <maxUses>1</maxUses>
-  </ScenPartDef>
 
   <ScenPartDef>
     <defName>LP_ForceDragonClutch</defName>
@@ -248,9 +239,9 @@
   <ScenarioDef ParentName="ScenarioBase">
     <defName>LP_FireGiantScenario</defName>
     <label>熔炉流亡</label>
-    <description>火山喷发吞没了你们氏族的锻炉大厅。三名火巨人背着炉中尚未熄灭的余火逃了出来，在这片陌生的土地上重新点燃锻炉。火山灰遮住了天空，而火巨人最怕的就是冷。\n\n开局带有一座已经添了燃料的熔火锻炉和锻造研究；每个火巨人穿着锻工外衣，近战最好的火巨人手持熔炉重锤。\n\n注意：火巨人行动迟缓且怕冷，开局数天的火山冬天会让保暖成为第一要务。</description>
+    <description>火山喷发吞没了你们氏族的锻炉大厅。三名火巨人背着炉中尚未熄灭的余火逃了出来，在这片陌生的土地上重新点燃锻炉。火山灰遮住了天空，而火巨人最怕的就是冷。\n\n（1.146.0 起熔火锻炉和锻工外衣已移除。）\n\n注意：火巨人行动迟缓且怕冷，开局数天的火山冬天会让保暖成为第一要务。</description>
     <scenario>
-      <summary>三名火巨人、一座带余火的熔火锻炉和锻造知识。怕冷，有难度。</summary>
+      <summary>三名火巨人。怕冷，有难度。</summary>
       <parts>
 
         <li Class="ScenPart_ConfigPage_ConfigureStartingPawns_Xenotypes">
@@ -280,11 +271,6 @@
           <goodwill>-40</goodwill>
         </li>
 
-        <li Class="LichPhylactery.ScenPart_FireGiantClan">
-          <def>LP_FireGiantClan</def>
-          <fuel>30</fuel>
-        </li>
-
         <li Class="LichPhylactery.ScenPart_TimedCondition">
           <def>LP_TimedCondition</def>
           <condition>VolcanicWinter</condition>
@@ -294,11 +280,6 @@
         <li Class="ScenPart_StartingResearch">
           <def>StartingResearch</def>
           <project>Smithing</project>
-        </li>
-
-        <li Class="ScenPart_StartingResearch">
-          <def>StartingResearch</def>
-          <project>LP_GiantForging</project>
         </li>
 
         <li Class="ScenPart_StartingThing_Defined">
@@ -1027,9 +1008,9 @@
   <ScenarioDef ParentName="ScenarioBase">
     <defName>LP_GithyankiScenario</defName>
     <label>银剑小队</label>
-    <description>三名吉斯洋基星界战士一路追猎夺心魔，迷失在这颗陌生的星球上。一位落难的巫妖收留了他们——吉斯洋基世代侍奉不死的巫妖女王，这份恩情他们不会忘。如今巫妖沉睡在远方的墓室里，小队要在这里替自己找一个立足之地。\n\n近战最好的战士手持优秀品质的银剑，其余两人持钢长剑，全员穿钢板甲、带1级心灵链接。与费伦拓荒同盟的好感是0；幽暗殖巢照旧是死敌，大约第8天，“触须在地下蠕动”——殖巢的袭击者会从地下钻出来。\n\n注意：战力强、人手少、缺少生产技能，属于中等难度。</description>
+    <description>三名吉斯洋基星界战士一路追猎夺心魔，迷失在这颗陌生的星球上。一位落难的巫妖收留了他们——吉斯洋基世代侍奉不死的巫妖女王，这份恩情他们不会忘。如今巫妖沉睡在远方的墓室里，小队要在这里替自己找一个立足之地。\n\n近战最好的战士手持优秀品质的白银长剑，其余两人持钢长剑，全员穿钢板甲、带1级心灵链接。与费伦拓荒同盟的好感是0；幽暗殖巢照旧是死敌，大约第8天，“触须在地下蠕动”——殖巢的袭击者会从地下钻出来。\n\n注意：战力强、人手少、缺少生产技能，属于中等难度。</description>
     <scenario>
-      <summary>三名吉斯洋基星界战士、一把银剑；第8天幽暗殖巢就会从地下钻出来。</summary>
+      <summary>三名吉斯洋基星界战士、一把白银长剑；第8天幽暗殖巢就会从地下钻出来。</summary>
       <parts>
 
         <li Class="ScenPart_ConfigPage_ConfigureStartingPawns_Xenotypes">
@@ -1061,7 +1042,8 @@
 
         <li Class="LichPhylactery.ScenPart_StarterKit">
           <def>LP_StarterKit</def>
-          <champion>LP_SilverSword</champion>
+          <champion>MeleeWeapon_LongSword</champion>
+          <championStuff>Silver</championStuff>
           <championQuality>Excellent</championQuality>
           <championSkill>Melee</championSkill>
           <weapons>
@@ -1370,7 +1352,7 @@
   <ScenarioDef ParentName="ScenarioBase">
     <defName>LP_PilgrimageScenario</defName>
     <label>朝圣之路</label>
-    <description>三名信徒追随着同一个启示走了几百里路：他们的神要在这片土地上立起一座圣坛，而他们之中的一个人，是神亲手选中的。\n\n推荐路线：圣徒。难度：中。\n\n开局人物都是同一位神的信徒——这位神从九位可信奉的神里随机，跟着人物页第一位走（重新随机第一位时神也会跟着换），第一位就是这位神的神选者。这位神已经是殖民地的守护神，神眷60；圣徒之路已经开启，停在试炼一“虔信”。“信仰与神术”和“神格学”研究已经完成。开局带一座小型化的圣坛（选中后点“安装”即可）、一枚圣徽、五瓶祝圣圣水和五片神迹残片。\n\n注意：圣徒之路的证道和圣火降临都会引来强敌；神眷掉到60以下就要先补回来。</description>
+    <description>三名信徒追随着同一个启示走了几百里路：他们的神要在这片土地上立起一座圣坛，而他们之中的一个人，是神亲手选中的。\n\n推荐路线：圣徒。难度：中。\n\n开局人物都是同一位神的信徒——这位神从九位可信奉的神里随机，跟着人物页第一位走（重新随机第一位时神也会跟着换），第一位就是这位神的神选者。这位神已经是殖民地的守护神，神眷60；圣徒之路已经开启，停在试炼一“虔信”。“信仰与神术”和“神格学”研究已经完成。开局带一座小型化的圣坛（选中后点“安装”即可）、一枚圣徽和五片神迹残片。\n\n注意：圣徒之路的证道和圣火降临都会引来强敌；神眷掉到60以下就要先补回来。</description>
     <scenario>
       <summary>一位神选者和两名同信的信徒，带着一座小型化的圣坛。推荐路线：圣徒，难度中。</summary>
       <parts>
@@ -1404,11 +1386,6 @@
         <li Class="ScenPart_StartingThing_Defined">
           <def>StartingThing_Defined</def>
           <thingDef>LP_HolySymbol</thingDef>
-        </li>
-        <li Class="ScenPart_StartingThing_Defined">
-          <def>StartingThing_Defined</def>
-          <thingDef>LP_BlessedWater</thingDef>
-          <count>5</count>
         </li>
         <li Class="ScenPart_StartingThing_Defined">
           <def>StartingThing_Defined</def>

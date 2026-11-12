@@ -10,10 +10,10 @@
   <RecipeDef ParentName="LP_EnchantJewelryBase">
     <defName>LP_EnchantJewelry_Fire</defName>
     <label>附魔首饰：抗火戒指</label>
-    <description>把一枚珠宝戒指、2颗红宝石和1块熔岩结晶附魔成抗火戒指（原首饰消耗）。</description>
+    <description>把一枚珠宝戒指、2颗红宝石和10化合燃料附魔成抗火戒指（原首饰消耗）。</description>
     <jobString>正在附魔首饰。</jobString>
-    <ingredients><li><filter><thingDefs><li>Jewelry_Ring</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>Ruby</li></thingDefs></filter><count>2</count></li><li><filter><thingDefs><li>LP_LavaCrystal</li></thingDefs></filter><count>1</count></li></ingredients>
-    <fixedIngredientFilter><thingDefs><li>Jewelry_Ring</li><li>Ruby</li><li>LP_LavaCrystal</li></thingDefs></fixedIngredientFilter>
+    <ingredients><li><filter><thingDefs><li>Jewelry_Ring</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>Ruby</li></thingDefs></filter><count>2</count></li><li><filter><thingDefs><li>Chemfuel</li></thingDefs></filter><count>10</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Jewelry_Ring</li><li>Ruby</li><li>Chemfuel</li></thingDefs></fixedIngredientFilter>
     <products><LP_RingResistanceFire>1</LP_RingResistanceFire></products>
   </RecipeDef>
   <RecipeDef ParentName="LP_EnchantJewelryBase">
@@ -28,19 +28,19 @@
   <RecipeDef ParentName="LP_EnchantJewelryBase">
     <defName>LP_EnchantJewelry_Acid</defName>
     <label>附魔首饰：抗酸戒指</label>
-    <description>把一枚珠宝戒指、2块玉石和1块熔岩结晶附魔成抗酸戒指（原首饰消耗）。</description>
+    <description>把一枚珠宝戒指、2块玉石和10化合燃料附魔成抗酸戒指（原首饰消耗）。</description>
     <jobString>正在附魔首饰。</jobString>
-    <ingredients><li><filter><thingDefs><li>Jewelry_Ring</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>Jade</li></thingDefs></filter><count>2</count></li><li><filter><thingDefs><li>LP_LavaCrystal</li></thingDefs></filter><count>1</count></li></ingredients>
-    <fixedIngredientFilter><thingDefs><li>Jewelry_Ring</li><li>Jade</li><li>LP_LavaCrystal</li></thingDefs></fixedIngredientFilter>
+    <ingredients><li><filter><thingDefs><li>Jewelry_Ring</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>Jade</li></thingDefs></filter><count>2</count></li><li><filter><thingDefs><li>Chemfuel</li></thingDefs></filter><count>10</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Jewelry_Ring</li><li>Jade</li><li>Chemfuel</li></thingDefs></fixedIngredientFilter>
     <products><LP_RingResistanceAcid>1</LP_RingResistanceAcid></products>
   </RecipeDef>
   <RecipeDef ParentName="LP_EnchantJewelryBase">
     <defName>LP_EnchantJewelry_Protection</defName>
     <label>附魔首饰：守护戒指</label>
-    <description>把一枚珠宝戒指、2颗钻石和1块熔岩结晶附魔成守护戒指（原首饰消耗）。</description>
+    <description>把一枚珠宝戒指、2颗钻石和10化合燃料附魔成守护戒指（原首饰消耗）。</description>
     <jobString>正在附魔首饰。</jobString>
-    <ingredients><li><filter><thingDefs><li>Jewelry_Ring</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>Diamond</li></thingDefs></filter><count>2</count></li><li><filter><thingDefs><li>LP_LavaCrystal</li></thingDefs></filter><count>1</count></li></ingredients>
-    <fixedIngredientFilter><thingDefs><li>Jewelry_Ring</li><li>Diamond</li><li>LP_LavaCrystal</li></thingDefs></fixedIngredientFilter>
+    <ingredients><li><filter><thingDefs><li>Jewelry_Ring</li></thingDefs></filter><count>1</count></li><li><filter><thingDefs><li>Diamond</li></thingDefs></filter><count>2</count></li><li><filter><thingDefs><li>Chemfuel</li></thingDefs></filter><count>10</count></li></ingredients>
+    <fixedIngredientFilter><thingDefs><li>Jewelry_Ring</li><li>Diamond</li><li>Chemfuel</li></thingDefs></fixedIngredientFilter>
     <products><LP_RingProtection>1</LP_RingProtection></products>
   </RecipeDef>
 </Defs>

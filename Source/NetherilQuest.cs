@@ -252,7 +252,7 @@ namespace LichPhylactery {
    Adventurer.MilestoneColony("larloch"+n,Adventurer.LarlochXP); // 1.48.0 冒险者里程碑：每件差事全体殖民者各一次
    switch(n){
     case 1:
-     if(map!=null)Messenger(map,new List<Thing>{Netheril.MakeArcane("Necromancy",QualityCategory.Good),Growth.MakeLegacy()}.Where(t=>t!=null).ToList(),"拉洛克收下了位面遗物，骷髅信使送来了一卷死灵学派的秘术残卷和一件沉睡的传承武器。"+GapNote); // 1.58.3 传承武器
+     if(map!=null)Messenger(map,new List<Thing>{Netheril.MakeArcane("Necromancy",QualityCategory.Good),Growth.MakeLegacy()}.Where(t=>t!=null).ToList(),"拉洛克收下了位面遗物，骷髅信使送来了一卷死灵学派的秘术残卷。"+GapNote); // 1.58.3 传承武器
      QueueErrand(st,2);break;
     case 2:
      DestroySite(ref st.campSite);st.campLeader=null;

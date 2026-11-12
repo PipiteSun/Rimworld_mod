@@ -195,10 +195,15 @@ namespace LichPhylactery {
   public ThingOwner<Pawn> inner;
   // 1.37.0：升神失败化成的石像不可复原（驱散粉尘无效）。
   public bool permanent;
+  // 1.147.0：普通石像一天后自动复原（驱散粉尘已移除）。
+  public const int RestoreTicks=GenDate.TicksPerDay;
+  public int restoreTick=-1;
+  public override void SpawnSetup(Map map,bool respawningAfterLoad){base.SpawnSetup(map,respawningAfterLoad);if(restoreTick<0)restoreTick=Find.TickManager.TicksGame+RestoreTicks;}
+  public override void TickRare(){base.TickRare();if(!permanent && Spawned && Pawn!=null && restoreTick>=0 && Find.TickManager.TicksGame>=restoreTick)Restore();}
   public PetrifiedStatue(){inner=new ThingOwner<Pawn>(this,true,LookMode.Deep,false);}
   public Pawn Pawn=>inner.Count>0?inner[0]:null;
   public override string LabelNoCount=>Pawn!=null?"石化的"+Pawn.LabelShort:base.LabelNoCount;
-  public override string GetInspectString(){var s=base.GetInspectString();var line=Pawn==null?"空的石像。":permanent?Pawn.LabelShort+"在升神仪式失败时化成了石像。魔网的反噬把血肉彻底变成了石头，不可复原（驱散粉尘无效）。":Pawn.LabelShort+"被石化在里面。对它扬驱散粉尘可以复原。";return string.IsNullOrEmpty(s)?line:s+"\n"+line;}
+  public override string GetInspectString(){var s=base.GetInspectString();var line=Pawn==null?"空的石像。":permanent?Pawn.LabelShort+"在升神仪式失败时化成了石像。魔网的反噬把血肉彻底变成了石头，不可复原。":Pawn.LabelShort+"被石化在里面，"+(restoreTick>Find.TickManager.TicksGame?(restoreTick-Find.TickManager.TicksGame).ToStringTicksToPeriod()+"后":"很快")+"会自己恢复血肉。";return string.IsNullOrEmpty(s)?line:s+"\n"+line;}
   public Pawn Restore(){
    var p=Pawn;var map=MapHeld;if(p==null || map==null)return null;var cell=PositionHeld;
    if(permanent){Messages.Message(p.LabelShort+"的石像纹丝不动：这尊石像不可复原。",this,MessageTypeDefOf.RejectInput,false);return null;}
@@ -208,7 +213,7 @@ namespace LichPhylactery {
   }
   public ThingOwner GetDirectlyHeldThings()=>inner;
   public void GetChildHolders(List<IThingHolder> outChildren){ThingOwnerUtility.AppendThingHoldersFromThings(outChildren,inner);}
-  public override void ExposeData(){base.ExposeData();Scribe_Deep.Look(ref inner,"petrified",this);Scribe_Values.Look(ref permanent,"lpPermanent");if(Scribe.mode==LoadSaveMode.PostLoadInit && inner==null)inner=new ThingOwner<Pawn>(this,true,LookMode.Deep,false);}
+  public override void ExposeData(){base.ExposeData();Scribe_Deep.Look(ref inner,"petrified",this);Scribe_Values.Look(ref permanent,"lpPermanent");Scribe_Values.Look(ref restoreTick,"lpRestoreTick",-1);if(Scribe.mode==LoadSaveMode.PostLoadInit && inner==null)inner=new ThingOwner<Pawn>(this,true,LookMode.Deep,false);}
   public override void Destroy(DestroyMode mode=DestroyMode.Vanish){base.Destroy(mode);inner.ClearAndDestroyContentsOrPassToWorld();}
  }
  // 巫妖抄写卷轴：只有巫妖能做，开工前要有30点精神力，完成时扣除。

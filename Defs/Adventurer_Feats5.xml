@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.141.0 生产专长 8 个（ArtSource/ProductionFeats-1.141.0-spec.md）：学以致用、名匠、符文锻师、炼金大师、筑城大师、丰收之手、外科圣手、造物之手。
+     每个都附带 +1 属性（bonusAbilities），没有 enemyTags（敌人不选）。数值效果（statOffsets / statFactors）合进冒险者状态；规则效果在 Source/AdventurerFeats5.cs（Feats5）。
+     图标：ArtSource/RaceArt/draw_feats5_1141.py → Textures/LP/Feats/。 -->
+<Defs>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_PracticedHand</defName>
+    <label>学以致用</label>
+    <description>干活也是修行。日常工作换算的冒险者经验 ×1.5；每天全额计入的部分从 80 点提高到 120 点（之后仍按一半计）。附带感知或智力 +1。</description>
+    <iconPath>LP/Feats/PracticedHand</iconPath>
+    <order>49</order>
+    <origin>true</origin>
+    <bonusAbilities><li>Wis</li><li>Int</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_MasterArtisan</defName>
+    <label>名匠</label>
+    <description>出自名匠之手。亲手制作的所有物品 30% 几率品质提升一档（最高传说）；做出大师级或传说级作品时心情 +4「得意之作」1 天。需要敏捷或智力 13。附带敏捷或智力 +1。</description>
+    <iconPath>LP/Feats/MasterArtisan</iconPath>
+    <order>50</order>
+    <minLevel>8</minLevel>
+    <skillReqs><li><skill>Crafting</skill><level>12</level></li></skillReqs>
+    <workerClass>LichPhylactery.FeatWorker_MasterArtisan</workerClass>
+    <bonusAbilities><li>Dex</li><li>Int</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_RuneSmith</defName>
+    <label>符文锻师</label>
+    <description>锤起锤落都有讲究。在符文铁砧工作时速度 ×1.4；在符文铁砧上做出的东西 25% 几率品质提升一档（与名匠只按较高的一个几率算，只提一档）；每件完成时 20% 几率返还四分之一的金属材料。需要力量或智力 13。附带力量或智力 +1。</description>
+    <iconPath>LP/Feats/RuneSmith</iconPath>
+    <order>51</order>
+    <minLevel>4</minLevel>
+    <skillReqs><li><skill>Crafting</skill><level>10</level></li></skillReqs>
+    <workerClass>LichPhylactery.FeatWorker_RuneSmith</workerClass>
+    <bonusAbilities><li>Str</li><li>Int</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_MasterAlchemist</defName>
+    <label>炼金大师</label>
+    <description>火候、配比，分毫不差。在炼金桌工作速度 ×1.35；在炼金桌做出的产品 30% 几率多出一份（按配方的第一种产品算）。需要手工或医疗 6。附带智力或体质 +1。</description>
+    <iconPath>LP/Feats/MasterAlchemist</iconPath>
+    <order>52</order>
+    <origin>true</origin>
+    <workerClass>LichPhylactery.FeatWorker_MasterAlchemist</workerClass>
+    <bonusAbilities><li>Int</li><li>Con</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_MasterBuilder</defName>
+    <label>筑城大师</label>
+    <description>一砖一瓦都砌得牢。建造速度 ×1.35，建造成功率 +15%；修理建筑时建造速度再 ×1.5。附带力量或体质 +1。</description>
+    <iconPath>LP/Feats/MasterBuilder</iconPath>
+    <order>53</order>
+    <minLevel>4</minLevel>
+    <skillReqs><li><skill>Construction</skill><level>8</level></li></skillReqs>
+    <bonusAbilities><li>Str</li><li>Con</li></bonusAbilities>
+    <statFactors><ConstructionSpeed>1.35</ConstructionSpeed></statFactors>
+    <statOffsets><ConstructSuccessChance>0.15</ConstructSuccessChance></statOffsets>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_GreenThumb</defName>
+    <label>丰收之手</label>
+    <description>经手的庄稼都长得好。种植工作速度 ×1.3，收获量 +15%；获得主动能力「催生」（每天 1 次，午夜恢复）：自身周围 6 格内所有植物的生长进度 +20%（最高到成熟）。附带感知或体质 +1。</description>
+    <iconPath>LP/Feats/GreenThumb</iconPath>
+    <order>54</order>
+    <origin>true</origin>
+    <usesPerDay>1</usesPerDay>
+    <skillReqs><li><skill>Plants</skill><level>6</level></li></skillReqs>
+    <grantAbility>LP_FeatGrowth</grantAbility>
+    <bonusAbilities><li>Wis</li><li>Con</li></bonusAbilities>
+    <statFactors><PlantWorkSpeed>1.3</PlantWorkSpeed></statFactors>
+    <statOffsets><PlantHarvestYield>0.15</PlantHarvestYield></statOffsets>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_Surgeon</defName>
+    <label>外科圣手</label>
+    <description>刀下从不出大错。手术成功率 ×1.25（与治疗者叠加，仍受原版上限），手术速度 ×1.5；手术失败不会致命、不会是灾难性的，最多只是轻微失败。需要敏捷 13。附带敏捷或感知 +1。</description>
+    <iconPath>LP/Feats/Surgeon</iconPath>
+    <order>55</order>
+    <minLevel>8</minLevel>
+    <skillReqs><li><skill>Medicine</skill><level>12</level></li></skillReqs>
+    <ability>Dex</ability><abilityMin>13</abilityMin>
+    <bonusAbilities><li>Dex</li><li>Wis</li></bonusAbilities>
+    <statFactors><MedicalSurgerySuccessChance>1.25</MedicalSurgerySuccessChance><MedicalOperationSpeed>1.5</MedicalOperationSpeed></statFactors>
+  </LichPhylactery.LP_FeatDef>
+  <LichPhylactery.LP_FeatDef>
+    <defName>LP_Feat_Fabricate</defName>
+    <label>造物之手</label>
+    <description>心念一动，器物自成。获得主动能力「造物术」（每天 1 次，午夜恢复）：正在工作台前制作时按下，立刻完成剩余工作量的一半（最多相当于 60000 点工作），并且这件作品的品质至少为「优秀」（效果保留 1 天，用在下一件做出的作品上）。需要已学名匠。附带智力 +1。</description>
+    <iconPath>LP/Feats/Fabricate</iconPath>
+    <order>56</order>
+    <minLevel>12</minLevel>
+    <usesPerDay>1</usesPerDay>
+    <skillReqs><li><skill>Crafting</skill><level>15</level></li></skillReqs>
+    <ability>Int</ability><abilityMin>15</abilityMin>
+    <workerClass>LichPhylactery.FeatWorker_Fabricate</workerClass>
+    <grantAbility>LP_FeatFabricate</grantAbility>
+    <bonusAbilities><li>Int</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+
+  <ThoughtDef>
+    <defName>LP_FeatMasterworkPride</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>得意之作</label><description>这件作品足以传世。</description><baseMoodEffect>4</baseMoodEffect></li></stages>
+  </ThoughtDef>
+
+  <HediffDef>
+    <defName>LP_FeatFabricated</defName>
+    <label>造物术</label>
+    <description>造物术的余韵：下一件亲手做出的作品品质至少为「优秀」。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad><everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <defaultLabelColor>(0.95,0.85,0.45)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>60000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li><li Class="HediffCompProperties_DisappearsOnDeath" /></comps>
+  </HediffDef>
+
+  <AbilityDef>
+    <defName>LP_FeatGrowth</defName>
+    <label>催生</label>
+    <description>丰收之手专长：自身周围 6 格内所有植物的生长进度 +20%（最高到成熟）。每天 1 次，午夜恢复。</description>
+    <iconPath>LP/Feats/GreenThumb</iconPath>
+    <aiCanUse>false</aiCanUse>
+    <hostile>false</hostile>
+    <targetRequired>false</targetRequired>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <showPsycastEffects>false</showPsycastEffects>
+    <statBases><Ability_EffectRadius>6</Ability_EffectRadius></statBases>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>1</warmupTime>
+      <range>0.9</range>
+      <drawAimPie>false</drawAimPie>
+      <requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetSelf>true</canTargetSelf><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_Feat5"><effect>growth</effect></li></comps>
+  </AbilityDef>
+  <AbilityDef>
+    <defName>LP_FeatFabricate</defName>
+    <label>造物术</label>
+    <description>造物之手专长：正在工作台前制作时按下，立刻完成剩余工作量的一半（最多相当于 60000 点工作），这件作品的品质至少为「优秀」。不打断正在做的账单。每天 1 次，午夜恢复。</description>
+    <iconPath>LP/Feats/Fabricate</iconPath>
+    <abilityClass>LichPhylactery.Ability_Fabricate</abilityClass>
+    <aiCanUse>false</aiCanUse>
+    <hostile>false</hostile>
+    <targetRequired>false</targetRequired>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <showPsycastEffects>false</showPsycastEffects>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>0</warmupTime>
+      <range>0.9</range>
+      <drawAimPie>false</drawAimPie>
+      <requireLineOfSight>false</requireLineOfSight>
+      <targetParams><canTargetSelf>true</canTargetSelf><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations></targetParams>
+    </verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_Feat5"><effect>fabricate</effect></li></comps>
+  </AbilityDef>
+</Defs>

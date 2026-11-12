@@ -58,38 +58,6 @@
   </ThingDef>
 
   <!-- 迷雾瓶 -->
-  <ThingDef ParentName="LP_ThrowableBase">
-    <defName>LP_EversmokingBottle</defName>
-    <label>迷雾瓶</label>
-    <description>永远冒烟的黄铜瓶，拔掉塞子一扔就是一大片浓雾：落点约7×7的范围里致盲烟雾维持2分钟，穿过烟雾的远程攻击命中-70%（原版烟雾规则）。瓶子不会摔坏，可以反复使用。</description>
-    <graphicData><texPath>Items/Magic/EversmokingBottle</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
-    <statBases><MarketValue>500</MarketValue></statBases>
-    <tradeTags Inherit="False"><li>LP_MagicItem</li></tradeTags>
-    <weaponTags><li>LP_EversmokingBottle</li></weaponTags>
-    <verbs>
-      <li>
-        <label>投掷迷雾瓶</label>
-        <verbClass>Verb_LaunchProjectile</verbClass>
-        <hasStandardCommand>true</hasStandardCommand>
-        <range>14.9</range>
-        <forcedMissRadius>1.9</forcedMissRadius>
-        <warmupTime>1.2</warmupTime>
-        <noiseRadius>4</noiseRadius>
-        <soundCast>ThrowGrenade</soundCast>
-        <targetParams><canTargetLocations>true</canTargetLocations></targetParams>
-        <defaultProjectile>LP_Proj_EversmokingBottle</defaultProjectile>
-        <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
-      </li>
-    </verbs>
-  </ThingDef>
-  <ThingDef ParentName="LP_ThrowableProjectileBase">
-    <defName>LP_Proj_EversmokingBottle</defName>
-    <label>迷雾瓶</label>
-    <thingClass>LichPhylactery.Projectile_LPAlchemy</thingClass>
-    <graphicData><texPath>Items/Magic/EversmokingBottle</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
-    <projectile><damageDef>Stun</damageDef><damageAmountBase>0</damageAmountBase><explosionRadius>3.5</explosionRadius></projectile>
-    <modExtensions><li Class="LichPhylactery.ThrowableEffectExtension"><effect>smoke</effect></li></modExtensions>
-  </ThingDef>
 
   <!-- 不灭火把 -->
   <ThingDef ParentName="LP_WondrousApparelBase">
@@ -185,7 +153,7 @@
   <ThingDef ParentName="ResourceBase">
     <defName>LP_ManualOfGolems</defName>
     <label>魔像手册</label>
-    <description>石板封面的厚书，写着怎样把石头唤作仆从。只有巫妖读得懂：巫妖读完后，死灵仪式台为他解锁“制作石魔像胚体”（第四种死灵造物：300石块，体型2，不吃不睡不腐，怕驱散粉尘）。读完书就碎成石屑。</description>
+    <description>石板封面的厚书，写着怎样把石头唤作仆从。只有巫妖读得懂：巫妖读完后，死灵仪式台为他解锁“制作石魔像胚体”（第四种死灵造物：300石块，体型2，不吃不睡不腐）。读完书就碎成石屑。</description>
     <graphicData><texPath>Items/Magic/ManualOfGolems</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
     <stackLimit>1</stackLimit>
     <techLevel>Medieval</techLevel>
@@ -212,7 +180,7 @@
   <ThingDef ParentName="Human">
     <defName>LP_StoneGolem</defName>
     <label>石魔像</label>
-    <description>由死灵仪式唤醒、受命匣主人统御的石魔像。不吃不睡不腐，但驱散粉尘会伤到它。</description>
+    <description>由死灵仪式唤醒、受命匣主人统御的石魔像。不吃不睡不腐。</description>
     <statBases>
       <MoveSpeed>3.0</MoveSpeed>
       <ArmorRating_Blunt>0.45</ArmorRating_Blunt>
@@ -256,7 +224,7 @@
   <RecipeDef ParentName="LP_RitualBase">
     <defName>LP_MakeStoneGolem</defName>
     <label>制作石魔像胚体</label>
-    <description>消耗300石块制作石魔像胚体（只有读过魔像手册的巫妖能为自己的命匣做）。石魔像体型2，统御占用4，每天精神力维护0.5，不吃不睡不腐、不消耗血肉；驱散粉尘会伤到它。选中胚体打开配置界面，确认后唤醒。</description>
+    <description>消耗300石块制作石魔像胚体（只有读过魔像手册的巫妖能为自己的命匣做）。石魔像体型2，统御占用4，每天精神力维护0.5，不吃不睡不腐、不消耗血肉。选中胚体打开配置界面，确认后唤醒。</description>
     <jobString>正在制作石魔像胚体。</jobString>
     <workAmount>6000</workAmount>
     <ingredients>
@@ -266,17 +234,6 @@
   </RecipeDef>
 
   <!-- 魂石献给命匣 -->
-  <RecipeDef ParentName="LP_RitualBase">
-    <defName>LP_OfferSpiritStone</defName>
-    <label>汲取魂石里的灵魂</label>
-    <description>把一颗封着灵魂的魂石献给命匣，相当于汲取一份完整灵魂（按那个人的技能总和与心灵敏感度计算献祭经验）。魂石随之碎掉。</description>
-    <jobString>正在汲取魂石里的灵魂。</jobString>
-    <workAmount>1500</workAmount>
-    <ingredients>
-      <li><filter><thingDefs><li>LP_SpiritStone</li></thingDefs></filter><count>1</count></li>
-    </ingredients>
-    <fixedIngredientFilter><thingDefs><li>LP_SpiritStone</li></thingDefs></fixedIngredientFilter>
-  </RecipeDef>
 
   <!-- 解除诅咒卷轴 -->
   <ThingDef ParentName="LP_ScrollBase">

@@ -458,7 +458,7 @@
   <AbilityDef ParentName="LP_PactAbilityBase">
     <defName>LP_SummerTouch</defName>
     <label>夏日之触</label>
-    <description>手心按在伤口上，夏天的光就把它合上了：治好一名殖民者最严重的一处伤（不含缺失部位；也能止住地狱之伤）。冷却 1 天（欠债时 ×2）。</description>
+    <description>手心按在伤口上，夏天的光就把它合上了：治好一名殖民者最严重的一处伤（不含缺失部位）。冷却 1 天（欠债时 ×2）。</description>
     <iconPath>Pact/Abilities/SummerTouch</iconPath>
     <cooldownTicksRange>60000</cooldownTicksRange>
     <hostile>false</hostile>

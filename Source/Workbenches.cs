@@ -54,7 +54,7 @@ namespace LichPhylactery {
    }
    return removed;
   }
-  public static readonly string[] RuneSmithingFrom={"LP_RacialArmory","LP_RunicFirearms","LP_MythicMetallurgy"};
+  public static readonly string[] RuneSmithingFrom={"LP_RunicFirearms","LP_MythicMetallurgy"};
   public static int CompleteResearch(){
    int n=0;Func<string,ResearchProjectDef> P=DefDatabase<ResearchProjectDef>.GetNamedSilentFail;
    var rune=P("LP_Research_RuneSmithing");if(rune!=null && !rune.IsFinished && RuneSmithingFrom.Any(s=>P(s)?.IsFinished==true)){Find.ResearchManager.FinishProject(rune,false,null,false);n++;}

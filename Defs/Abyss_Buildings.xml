@@ -71,7 +71,7 @@
   <ThingDef ParentName="LP_AbyssFloorBase">
     <defName>LP_WardingGlyph</defName>
     <label>驱魔结界</label>
-    <description>一枚刻在地上、浇过圣水的银色符文。半径 6 格内：敌对外来者移速 ×0.7；睡在里面的人深渊腐化每天 -1%；位面裂口不会在这里打开。地图上每个结界让位面薄弱度每天 -1（最多算 5 个）。</description>
+    <description>一枚刻在地上的银色符文。半径 6 格内：敌对外来者移速 ×0.7；睡在里面的人深渊腐化每天 -1%；位面裂口不会在这里打开。地图上每个结界让位面薄弱度每天 -1（最多算 5 个）。</description>
     <thingClass>LichPhylactery.Building_WardingGlyph</thingClass>
     <graphicData>
       <texPath>LP/Abyss/WardingGlyph</texPath>
@@ -87,7 +87,7 @@
       <Beauty>1</Beauty>
       <Flammability>0</Flammability>
     </statBases>
-    <costList><Silver>10</Silver><LP_HolyWater>1</LP_HolyWater></costList>
+    <costList><Silver>40</Silver></costList>
     <placeWorkers><li>LichPhylactery.PlaceWorker_WardRadius</li></placeWorkers>
   </ThingDef>
 

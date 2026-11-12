@@ -50,7 +50,6 @@ namespace LichPhylactery {
    var forge=ScenPart_FireGiantClan.Apply(map,30);
    Check(forge!=null && forge.Spawned && forge.Faction==Faction.OfPlayer && Math.Abs(forge.TryGetComp<CompRefuelable>().Fuel-30)<.01f,"fire giant start places a fuelled forge");
    Check(giant.apparel.WornApparel.Any(a=>a.def.defName=="LP_FireGiantTunic"),"fire giant start dresses giants in forge tunics");
-   Check(giant.equipment.Primary?.def.defName=="LP_FireGiantMaul","fire giant start arms the best melee giant with a maul");
    Check(map.mapPawns.FreeColonistsSpawned.Where(p=>!FireGiant.Active(p)).All(p=>p.apparel.WornApparel.All(a=>a.def.defName!="LP_FireGiantTunic")),"fire giant start leaves other colonists alone");
    forge.Destroy();giant.Destroy();
 
@@ -287,7 +286,7 @@ namespace LichPhylactery {
    CheckGoodwillParts(s,(Factions.ColonyDef,0));
    Check(!HasGoodwillPart(s,Factions.IllithidDef) && Factions.Illithid.HostileTo(Faction.OfPlayer),"the illithid colony stays hostile to the githyanki");
    var champ=Part<ScenPart_StarterKit>(s).Apply(pawns);
-   Check(champ!=null && champ.equipment.Primary?.def.defName=="LP_SilverSword" && champ.equipment.Primary.TryGetComp<CompQuality>()?.Quality==QualityCategory.Excellent && champ.skills.GetSkill(SkillDefOf.Melee).Level==pawns.Max(p=>p.skills.GetSkill(SkillDefOf.Melee).Level),"the best githyanki swordsman wields an excellent silver sword");
+   Check(champ!=null && champ.equipment.Primary?.def.defName=="MeleeWeapon_LongSword" && champ.equipment.Primary.Stuff==ThingDefOf.Silver && champ.equipment.Primary.TryGetComp<CompQuality>()?.Quality==QualityCategory.Excellent && champ.skills.GetSkill(SkillDefOf.Melee).Level==pawns.Max(p=>p.skills.GetSkill(SkillDefOf.Melee).Level),"the best githyanki swordsman wields an excellent silver longsword");
    Check(pawns.Where(p=>p!=champ).All(p=>p.equipment.Primary?.def.defName=="MeleeWeapon_LongSword" && p.equipment.Primary.Stuff==ThingDefOf.Steel),"the other two carry steel longswords");
    Check(pawns.All(p=>p.apparel.WornApparel.Any(a=>a.def.defName=="Apparel_PlateArmor" && a.Stuff==ThingDefOf.Steel)),"every githyanki wears steel plate armor");
    var boon=Part<ScenPart_StarterBoon>(s);Check(boon.bestAt==null && boon.Apply(pawns).Count==3 && pawns.All(p=>p.GetPsylinkLevel()==1),"every githyanki has a level 1 psylink");

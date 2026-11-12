@@ -482,7 +482,7 @@ namespace LichPhylactery {
   static void Creation(Pawn p,AbilityDef def){
    var opts=CreationMats.Select(n=>DefCache<ThingDef>.Get(n)).Where(d=>d!=null).ToList();if(opts.Count==0)return;
    if(!Spellbook.Player(p) || Adventurer.TestSuppressed){SpawnThings(p,opts[0].defName,CreationAmount(p,opts[0].defName),p.Position);return;}
-   Find.WindowStack.Add(new Dialog_SpellChoice("造物术","选一种材料（器械师等级 × 10 份；零部件 等级/2 个）。",opts.Select(d=>(d.LabelCap+" ×"+CreationAmount(p,d.defName),(string)null,(Action)(()=>SpawnThings(p,d.defName,CreationAmount(p,d.defName),p.Position)))).ToList()));
+   Find.WindowStack.Add(new Dialog_SpellChoice("造物术","选一种材料（施法职业等级 × 10 份；零部件 等级/2 个）。",opts.Select(d=>(d.LabelCap+" ×"+CreationAmount(p,d.defName),(string)null,(Action)(()=>SpawnThings(p,d.defName,CreationAmount(p,d.defName),p.Position)))).ToList()));
   }
   // 惩击 / 武器附魔 / 下一击：给目标（多半是自己）一个带强度的状态，命中时在 CasterOnHit 里结算。
   public static Hediff_CS Imbue(Pawn p,AbilityDef def,CompProperties_ClassEffect e,Pawn t,int dur,float pw){

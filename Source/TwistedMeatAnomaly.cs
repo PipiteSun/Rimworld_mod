@@ -185,7 +185,7 @@ namespace LichPhylactery {
  }
  public static class HagMarket {
   public const float GiftChance=.1f;public static bool ForceGift;
-  public static readonly string[] Gifts={"LP_MarkBlood","LP_MarkDecay","LP_MarkChange","LP_MarkRapture","LP_SwordVengeance"};
+  public static readonly string[] Gifts={"LP_MarkBlood","LP_MarkDecay","LP_MarkChange","LP_MarkRapture"};
   public const string TraderKind="LP_HagMarketTrader";
   static HashSet<string> buyers;
   // 收畸变膏的商人：九狱掮客、妖精集市、鬼婆集市，以及深渊 / 契约阵营自己的商队。

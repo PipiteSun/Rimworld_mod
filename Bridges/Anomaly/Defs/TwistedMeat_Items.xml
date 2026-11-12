@@ -107,39 +107,6 @@
   </HediffDef>
 
   <!-- ==================== C4. 狂乱之瓶 ==================== -->
-  <ThingDef ParentName="LP_ThrowableBase">
-    <defName>LP_FrenzyFlask</defName>
-    <label>狂乱之瓶</label>
-    <description>用布裹着的畸变膏陶瓶，摔碎后散出一股远域的腥气。3 格内的生物各有 60% 成功率被吓得逃窜 8 秒（敌我不分）。喝了心智护盾药水的人不受影响；机械体不受影响。</description>
-    <graphicData><texPath>TwistedMeat/FrenzyFlask</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
-    <statBases><MarketValue>40</MarketValue></statBases>
-    <weaponTags><li>LP_FrenzyFlask</li></weaponTags>
-    <verbs>
-      <li>
-        <label>投掷狂乱之瓶</label>
-        <verbClass>Verb_LaunchProjectile</verbClass>
-        <hasStandardCommand>true</hasStandardCommand>
-        <range>12.9</range>
-        <warmupTime>1.5</warmupTime>
-        <noiseRadius>4</noiseRadius>
-        <soundCast>ThrowGrenade</soundCast>
-        <targetParams><canTargetLocations>true</canTargetLocations></targetParams>
-        <defaultProjectile>LP_Proj_FrenzyFlask</defaultProjectile>
-        <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
-      </li>
-    </verbs>
-  </ThingDef>
-  <ThingDef ParentName="LP_ThrowableProjectileBase">
-    <defName>LP_Proj_FrenzyFlask</defName>
-    <label>狂乱之瓶</label>
-    <thingClass>LichPhylactery.Projectile_FrenzyFlask</thingClass>
-    <graphicData><texPath>TwistedMeat/FrenzyFlask</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
-    <projectile>
-      <damageDef>Smoke</damageDef>
-      <damageAmountBase>0</damageAmountBase>
-      <explosionRadius>3</explosionRadius>
-    </projectile>
-  </ThingDef>
 
   <!-- ==================== D2. 远域饱食（食尸鬼吃扭曲肉） ==================== -->
   <HediffDef>

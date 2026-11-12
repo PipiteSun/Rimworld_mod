@@ -17,7 +17,7 @@ namespace LichPhylactery {
   Pawn SensitivePawn(){Pawn p=null;for(int i=0;i<20;i++){p?.Destroy();p=SharedPawn();if(p.GetStatValue(StatDefOf.PsychicSensitivity)>.5f)break;}return p;}
   void CheckMinotaurGith(){
    var before=new HashSet<Thing>(map.listerThings.AllThings);var goodwill=Find.FactionManager.AllFactions.Where(f=>!f.IsPlayer && f.def.humanlikeFaction).ToDictionary(f=>f,f=>f.PlayerGoodwill);
-   CheckMinotaurGithDefs();CheckBullRush();CheckMinotaurBody();CheckSilverSword();CheckAstralStep();CheckGithNemesis();CheckMinotaurGithRelations();
+   CheckMinotaurGithDefs();CheckBullRush();CheckMinotaurBody();CheckAstralStep();CheckGithNemesis();CheckMinotaurGithRelations();
    var leftovers=map.listerThings.AllThings.Where(t=>!before.Contains(t) && !t.Destroyed && !(t is Filth) && !(t is Mote) && t.def.category!=ThingCategory.Ethereal).ToList();
    foreach(var t in leftovers)if(!t.Destroyed)t.Destroy();
    foreach(var kv in goodwill)if(kv.Key.PlayerGoodwill!=kv.Value)kv.Key.TryAffectGoodwillWith(Faction.OfPlayer,kv.Value-kv.Key.PlayerGoodwill,false,false);
@@ -30,7 +30,7 @@ namespace LichPhylactery {
     Check(!x.ConfigErrors().Any() && x.inheritable && x.factionlessGenerationWeight==0 && x.genes.All(g=>g!=null),name+" is an inheritable xenotype with resolved genes and no random generation");
     Check(x.genes.All(g=>g.biostatArc==0),name+" uses no archite genes");
     int met=x.genes.Sum(g=>g.biostatMet);
-    Check(name=="LP_Minotaur"?met==-1:met==-2,name+" metabolism total "+met);
+    Check(met==-1,name+" metabolism total "+met);
     Check(ContentFinder<Texture2D>.Get(x.iconPath,false)!=null && x.genes.Where(g=>g.defName.StartsWith("LP_") && g.iconPath!=null).All(g=>ContentFinder<Texture2D>.Get(g.iconPath,false)!=null),name+" xenotype and custom gene icons load");
     foreach(var gene in x.genes.Where(q=>q.defName.StartsWith("LP_")))Check(!gene.ConfigErrors().Any() && (gene.modExtensions.NullOrEmpty() || gene.modExtensions.All(e=>!e.ConfigErrors().Any())),name+" gene validates: "+gene.defName);
     var p=RacePawn(name);
@@ -40,7 +40,6 @@ namespace LichPhylactery {
    foreach(var n in new[]{"Body_Hulk","MeleeDamage_Strong","AptitudeStrong_Melee","Furskin","Hair_DarkBrown","Learning_Slow","Aggression_Aggressive","LP_MinotaurHorns","LP_MinotaurSnout"})Check(Minotaur.Xenotype.genes.Any(g=>g.defName==n),"minotaur xenotype includes "+n);
    foreach(var n in new[]{"PsychicAbility_Enhanced","AptitudeStrong_Melee","Body_Thin","Ears_Pointed","Beard_NoBeardOnly","AptitudePoor_Social","Aggression_Aggressive","LP_GithSkin"})Check(Githyanki.Xenotype.genes.Any(g=>g.defName==n),"githyanki xenotype includes "+n);
    Check(Minotaur.HornsGene.exclusionTags.Contains("Headbone") && DefDatabase<GeneDef>.GetNamed("Headbone_MiniHorns").ConflictsWith(Minotaur.HornsGene),"minotaur horns replace vanilla headbone genes");
-   Check(Githyanki.SwordGene.exclusionTags.Contains("DND_GithLineage") && Githyanki.Xenotype.genes.Count(g=>g.exclusionTags?.Contains("DND_GithLineage")==true)==1,"githyanki reserves the DND_GithLineage exclusion tag on exactly one gene");
    foreach(var a in new[]{"LP_BullRush","LP_AstralStep"}){var def=DefDatabase<AbilityDef>.GetNamed(a);Check(!def.ConfigErrors().Any() && ContentFinder<Texture2D>.Get(def.iconPath,false)!=null && def.comps.OfType<CompProperties_MinotaurGithAbility>().Any(),"ability validates with icon: "+a);}
    Check(DefDatabase<AbilityDef>.GetNamed("LP_BullRush").cooldownTicksRange.min==60000 && DefDatabase<AbilityDef>.GetNamed("LP_AstralStep").cooldownTicksRange.min==30000,"bull rush cools down for a day and astral step for 12 hours");
    foreach(var path in new[]{"MinotaurGith/Horns/BullHorns_south","MinotaurGith/Horns/BullHorns_east","MinotaurGith/Horns/BullHorns_north","MinotaurGith/Snout/BullSnout_south","MinotaurGith/Snout/BullSnout_east","MinotaurGith/Weapons/SilverSword"}){var tex=ContentFinder<Texture2D>.Get(path,false);Check(tex!=null && tex.width==128 && tex.height==128,"minotaur/githyanki art loads at vanilla 128px size: "+path);}
@@ -134,54 +133,6 @@ namespace LichPhylactery {
    m.Destroy();human.Destroy();
   }
 
-  void CheckSilverSword(){
-   var sword=Githyanki.Sword;var longsword=DefDatabase<ThingDef>.GetNamed("MeleeWeapon_LongSword");
-   Check(!sword.MadeFromStuff && sword.HasComp(typeof(CompQuality)) && sword.IsMeleeWeapon,"silver sword is a fixed-material melee weapon with quality");
-   // 原版长剑是按材料缩放的：钢的锐器/钝器伤害倍率为1，所以钢长剑的伤害就是工具的基础值。
-   // 1.125.0 近战武器后期化：银剑抬到原版单分子剑档（剑尖/剑刃 30、间隔 2.4、穿甲 60%），每个部位都不低于钢长剑、也不更慢。
-   var sp=sword.tools.Select(t=>t.power).OrderBy(x=>x).ToList();var lp=longsword.tools.Select(t=>t.power).OrderBy(x=>x).ToList();
-   var sc=sword.tools.Select(t=>t.cooldownTime).OrderBy(x=>x).ToList();var lc=longsword.tools.Select(t=>t.cooldownTime).OrderBy(x=>x).ToList();
-   Check(sp.Count==lp.Count && sp.Zip(lp,(a,b)=>a>=b).All(x=>x) && sp.Max()>lp.Max() && sc.Zip(lc,(a,b)=>a<=b).All(x=>x) && sword.tools.Where(t=>t.power>=30f).All(t=>Near(t.armorPenetration,.6f)) && Near(ThingDefOf.Steel.GetStatValueAbstract(StatDefOf.SharpDamageMultiplier),1f) && Near(ThingDefOf.Steel.GetStatValueAbstract(StatDefOf.BluntDamageMultiplier),1f),"silver sword out-hits a steel longsword (late-game tier, 1.125.0)");
-   Check(!sword.tradeability.TraderCanSell() && sword.tradeability.PlayerCanSell(),"traders never sell silver swords but the player can sell one");
-   var recipe=DefDatabase<RecipeDef>.AllDefsListForReading.FirstOrDefault(r=>r.ProducedThingDef==sword);
-   Check(recipe!=null && recipe.AllRecipeUsers.Any(u=>u.defName=="LP_RuneAnvil") && recipe.ingredients.Any(i=>i.IsFixedIngredient && i.FixedIngredient==ThingDefOf.Plasteel) && recipe.ingredients.Any(i=>i.IsFixedIngredient && i.FixedIngredient==ThingDefOf.Silver) && recipe.researchPrerequisite?.defName=="LP_RacialBlades" && recipe.researchPrerequisite.prerequisites.Any(r=>r.defName=="LongBlades"),"silver sword is forged at the rune anvil from plasteel and silver after racial blades (long blades)");
-   var gith=RacePawn("LP_Githyanki");var human=SensitivePawn();
-   foreach(var crafter in new[]{gith,human}){crafter.skills.GetSkill(SkillDefOf.Crafting).Level=12;}
-   var bill=new Bill_Production(recipe);
-   Check(bill.PawnAllowedToStartAnew(gith) && !bill.PawnAllowedToStartAnew(human),"only a pawn with the silver sword gene may forge the silver sword");
-   var flayer=MindFlayerPawn();var victim=SensitivePawn();
-   ThingWithComps Arm(Pawn p){var s=(ThingWithComps)ThingMaker.MakeThing(sword);p.equipment.DestroyAllEquipment();p.equipment.AddEquipment(s);return s;}
-   Arm(gith);Arm(human);
-   float sv=victim.GetStatValue(StatDefOf.PsychicSensitivity),sf=flayer.GetStatValue(StatDefOf.PsychicSensitivity);
-   Check(Near(Githyanki.SwordPsychicDamage(gith,victim),8f*Mathf.Min(2.5f,sv)) && Near(Githyanki.SwordPsychicDamage(gith,flayer),16f*Mathf.Min(2.5f,sf)),"attuned silver sword adds 8 x psychic sensitivity, doubled against mind flayers: "+Githyanki.SwordPsychicDamage(gith,victim)+" / "+Githyanki.SwordPsychicDamage(gith,flayer));
-   var deaf=SharedPawn();deaf.genes.AddGene(DefDatabase<GeneDef>.GetNamed("PsychicAbility_Deaf"),true);
-   // 1.20.0：完整模组列表里失聪基因不一定能把心灵敏感度压到0（有模组加固定值），只在夹具真的失聪时检查。
-   Check(MindFlayer.PsychicallyDeaf(deaf)?Githyanki.SwordPsychicDamage(gith,deaf)==0f:FullModList,"psychically deaf targets take no silver sword psychic damage");
-   var method=AccessTools.Method(typeof(Verb_MeleeAttackDamage),"DamageInfosToApply");
-   List<DamageInfo> Hits(Pawn p,Pawn target){var verb=p.meleeVerbs.GetUpdatedAvailableVerbsList(false).Select(v=>v.verb).OfType<Verb_MeleeAttackDamage>().First(v=>v.EquipmentSource?.def==sword && v.tool.capacities.Any(c=>c.defName=="Cut"));return ((IEnumerable<DamageInfo>)method.Invoke(verb,new object[]{new LocalTargetInfo(target)})).ToList();}
-   var gHits=Hits(gith,flayer);var hHits=Hits(human,flayer);
-   Check(gHits.Any(d=>d.Def==Githyanki.Psychic && Near(d.Amount,16f*Mathf.Min(2.5f,sf))),"githyanki silver sword hit includes the psychic damage instance against a mind flayer");
-   // 同一个人换成普通品质的钢长剑：剑刃伤害应与银剑相同。
-   // 单次近战伤害带随机浮动：用同一随机种子取平均。
-   Verb_MeleeAttackDamage CutVerb(Pawn p,Thing weapon)=>p.meleeVerbs.GetUpdatedAvailableVerbsList(false).Select(v=>v.verb).OfType<Verb_MeleeAttackDamage>().First(v=>v.EquipmentSource==weapon && v.tool.capacities.Any(c=>c.defName=="Cut"));
-   var silverHeld=human.equipment.Primary;float silverCut=MeleeSample(CutVerb(human,silverHeld),flayer,200,55);
-   var steel=(ThingWithComps)ThingMaker.MakeThing(longsword,ThingDefOf.Steel);human.equipment.Remove(silverHeld);human.equipment.AddEquipment(steel);
-   float steelCut=MeleeSample(CutVerb(human,steel),flayer,200,55);
-   human.equipment.DestroyEquipment(steel);human.equipment.AddEquipment(silverHeld);
-   // 1.125.0：银剑剑刃比钢长剑高（30 vs 23），非吉斯洋基手里只差这个工具倍率，没有任何灵能 / 额外加成。
-   float cutRatio=sword.tools.First(t=>t.capacities.Any(c=>c.defName=="Cut")).power/longsword.tools.First(t=>t.capacities.Any(c=>c.defName=="Cut")).power;
-   Check(!hHits.Any(d=>d.Def==Githyanki.Psychic) && Math.Abs(silverCut/steelCut/cutRatio-1f)<.01f,"in non-githyanki hands the silver sword is just its own blade (no psychic bonus): "+silverCut+" vs steel "+steelCut+" × "+cutRatio);
-   int injuries=flayer.health.hediffSet.hediffs.Count(h=>h.def.defName=="LP_PsychicWound");
-   flayer.TakeDamage(gHits.First(d=>d.Def==Githyanki.Psychic));
-   Check(flayer.Dead || flayer.health.hediffSet.hediffs.Count(h=>h.def.defName=="LP_PsychicWound")>injuries || flayer.health.hediffSet.hediffs.OfType<Hediff_MissingPart>().Any(),"psychic damage leaves a psychic wound");
-   var reject=DefDatabase<ThoughtDef>.GetNamed("LP_SilverSwordRejects");
-   Check(reject.Worker.CurrentState(human).Active && !reject.Worker.CurrentState(gith).Active && reject.stages[0].baseMoodEffect==-2,"a non-githyanki holding the silver sword feels rejected (-2), a githyanki does not");
-   var raider=RacePawn("LP_Githyanki");raider.SetFaction(EnemyFaction());
-   Check(!Githyanki.MaybeArm(raider,.9f) && Githyanki.MaybeArm(raider,.1f) && raider.equipment.Primary?.def==sword,"enemy githyanki may be generated holding a silver sword to capture");
-   Check(!Githyanki.MaybeArm(gith,.0f),"player githyanki are not re-armed by generation");
-   foreach(var p in new[]{gith,human,flayer,victim,deaf,raider})if(!p.Destroyed){p.equipment?.DestroyAllEquipment();p.Destroy();}
-  }
-
   void CheckAstralStep(){
    var start=ClearLine(9);var g=RacePawn("LP_Githyanki");Place(g,start);
    Check(Githyanki.CannotStep(g,start+IntVec3.East*10)!=null && Githyanki.CannotStep(g,start)!=null,"astral step rejects targets beyond 8 cells or its own cell");
@@ -245,7 +196,7 @@ namespace LichPhylactery {
 
   void PrepareMinotaurGithSave(){
    var m=RacePawn("LP_Minotaur");var ability=m.abilities.GetAbility(DefDatabase<AbilityDef>.GetNamed("LP_BullRush"));ability.StartCooldown(12345);minotaurSavedCooldown=ability.CooldownTicksRemaining;minotaurSaveId=m.ThingID;minotaurGeneCount=m.genes.GenesListForReading.Count;
-   var g=RacePawn("LP_Githyanki");var s=(ThingWithComps)ThingMaker.MakeThing(Githyanki.Sword);s.TryGetComp<CompQuality>().SetQuality(QualityCategory.Excellent,ArtGenerationContext.Colony);g.equipment.AddEquipment(s);githSavedQuality=QualityCategory.Excellent;githSaveId=g.ThingID;githGeneCount=g.genes.GenesListForReading.Count;
+   var g=RacePawn("LP_Githyanki");githSaveId=g.ThingID;githGeneCount=g.genes.GenesListForReading.Count;
   }
   void CheckMinotaurGithAfterLoad(){
    map=Find.CurrentMap;Pawn Find1(string id)=>map.mapPawns.AllPawnsSpawned.Single(x=>x.ThingID==id);
@@ -253,7 +204,7 @@ namespace LichPhylactery {
    Check(m.genes.Xenotype==Minotaur.Xenotype && g.genes.Xenotype==Githyanki.Xenotype && m.genes.GenesListForReading.Count==minotaurGeneCount && g.genes.GenesListForReading.Count==githGeneCount,"minotaur and githyanki xenotypes and genes survive save/load");
    Check(Near(m.BodySize,human.BodySize*1.3f) && m.health.hediffSet.GetFirstHediffOfDef(Minotaur.HornWeapon)!=null && m.health.hediffSet.GetFirstHediffOfDef(Minotaur.Appetite)!=null,"loaded minotaur keeps size, horns and appetite");
    Check(Math.Abs(m.abilities.GetAbility(DefDatabase<AbilityDef>.GetNamed("LP_BullRush")).CooldownTicksRemaining-minotaurSavedCooldown)<=5,"bull rush cooldown survives save/load");
-   Check(g.equipment.Primary?.def==Githyanki.Sword && g.equipment.Primary.TryGetComp<CompQuality>().Quality==githSavedQuality && Githyanki.Attuned(g) && Near(DNDMind.Resistance(g),.3f),"loaded githyanki keeps the attuned excellent silver sword and mind resistance");
+   Check(Near(DNDMind.Resistance(g),.3f),"loaded githyanki keeps mind resistance");
    g.equipment.DestroyAllEquipment();m.Destroy();g.Destroy();human.Destroy();
   }
  }

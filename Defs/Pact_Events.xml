@@ -403,7 +403,6 @@
       <li Class="StockGenerator_SingleDef"><thingDef>LP_PactScroll</thingDef><countRange>2~2</countRange></li>
       <li Class="StockGenerator_SingleDef"><thingDef>LP_SoulCoin</thingDef><countRange>10~25</countRange></li>
       <li Class="StockGenerator_SingleDef"><thingDef>LP_Demonomicon</thingDef><countRange>1~1</countRange></li>
-      <li Class="StockGenerator_SingleDef"><thingDef>LP_InfernalPitchfork</thingDef><countRange>1~1</countRange></li>
       <li Class="StockGenerator_SingleDef"><thingDef>LP_EntanglingRope</thingDef><countRange>0~1</countRange></li>
       <li Class="StockGenerator_Animals"><tradeTagsSell><li>LP_HellsAnimal</li></tradeTagsSell><kindCountRange>1~1</kindCountRange><countRange>0~1</countRange><checkTemperature>false</checkTemperature></li>
       <li Class="StockGenerator_Slaves"><countRange>0~0</countRange></li>
@@ -417,7 +416,6 @@
     <commonality>1</commonality>
     <stockGenerators>
       <li Class="StockGenerator_SingleDef"><thingDef>Silver</thingDef><countRange>300~700</countRange></li>
-      <li Class="StockGenerator_SingleDef"><thingDef>LP_FeySilverBow</thingDef><countRange>1~2</countRange></li>
       <li Class="StockGenerator_SingleDef"><thingDef>LP_WildHuntHorn</thingDef><countRange>0~1</countRange></li>
       <li Class="StockGenerator_Animals"><tradeTagsSell><li>LP_FeyAnimal</li></tradeTagsSell><kindCountRange>1~1</kindCountRange><countRange>1~2</countRange><checkTemperature>false</checkTemperature></li>
       <li Class="StockGenerator_Slaves"><slaveKindDef>LP_FY_SatyrVolunteer</slaveKindDef><countRange>1~1</countRange></li>

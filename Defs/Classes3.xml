@@ -143,16 +143,6 @@
     <iconPath>LP/Classes/Legendary/Soulforge</iconPath>
     <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
   </AbilityDef>
-  <AbilityDef ParentName="LP_ClassLocBase">
-    <defName>LP_LegWarGolem</defName>
-    <label>战争傀儡</label>
-    <description>传奇：在 10 格内的空格子拼起一座符文战争傀儡炮台，存在 2 天：耐久 600，符文火铳的数值 × 2 × 器械强度。冷却 3 天。传奇器械师。</description>
-    <iconPath>LP/Classes/Legendary/WarGolem</iconPath>
-    <hostile>false</hostile>
-    <cooldownTicksRange>180000</cooldownTicksRange>
-    <verbProperties><range>9.9</range><warmupTime>2</warmupTime><targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings></targetParams></verbProperties>
-    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>WarGolem</effect><power>2</power><stat>LP_ArtificePower</stat></li></comps>
-  </AbilityDef>
 
   <!-- ===== 状态与建筑 ===== -->
   <HediffDef ParentName="LP_ClassBuffBase">

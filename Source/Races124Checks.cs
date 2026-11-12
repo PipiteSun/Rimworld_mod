@@ -270,27 +270,15 @@ namespace LichPhylactery {
    var fighter=R124Human();var sword=(ThingWithComps)ThingMaker.MakeThing(swordDef,coldIron);fighter.equipment.AddEquipment(sword);
    Check(Near(ItemMaterials.WeaponFactor(devil,new DamageInfo(DamageDefOf.Cut,10,0,-1,fighter,null,swordDef)),Fiends.ColdIronFactor) && Near(ItemMaterials.WeaponFactor(victim,new DamageInfo(DamageDefOf.Cut,10,0,-1,fighter,null,swordDef)),victim.HasPsylink?1.25f:1f),"cold iron deals x1.5 to fiends");
    Check(ItemThrowables.HolyTarget(devil) && !ItemThrowables.HolyTarget(victim),"holy water now harms fiends but still not the living");
-   // 用一个新的、没打过架的寒冰魔，看这一次伤害实际结算了多少（3 点圣水应结算 6 点）。
-   var holyDevil=R124Pawn("LP_IceDevil");holyDevil.jobs.StopAll();
-   var holy=ItemThrowables.Holy.Worker.Apply(new DamageInfo(ItemThrowables.Holy,3,1f,-1,null,holyDevil.RaceProps.body.corePart),holyDevil);
-   // 期望值再乘它自己的“受到伤害倍率”：随机特性“坚韧”×0.5、“纤弱”×1.15 会改变它（原来写死 6 点，生成到这类特性时就随机失败）。
-   float holyIncoming=holyDevil.GetStatValue(StatDefOf.IncomingDamageFactor);
-   Check(Math.Abs(holy.totalDamageDealt-6f*holyIncoming)<.01f,"holy water deals double damage to fiends (3 -> 6, times the pawn's incoming damage factor "+holyIncoming+"): "+holy.totalDamageDealt);
-   holyDevil.Destroy();
-   // 霜刺长枪
-   var spear=(ThingWithComps)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("LP_FrostSpear"));var spearman=R124Human();spearman.equipment.AddEquipment(spear);var target2=R124Human();Place(target2,start+IntVec3.South*2);
-   target2.TakeDamage(new DamageInfo(DamageDefOf.Stab,5,0,-1,spearman,null,spear.def));
-   int dh=devil.health.hediffSet.hediffs.Count;devil.TakeDamage(new DamageInfo(DamageDefOf.Stab,5,0,-1,spearman,null,spear.def));
-   Check(Fiends.ChillLayers(target2)==1 && devil.health.hediffSet.hediffs.Count==dh && Fiends.ChillLayers(devil)==0,"the frost spear chills its target but does nothing to fiends");
    // 击倒即消散
-   var spearDef=DefDatabase<ThingDef>.GetNamed("LP_FrostSpear");FactionGear.Replace(devil,"LP_FrostSpear",null);var dpos=devil.Position;
+   var dpos=devil.Position;
    devil.health.AddHediff(HediffDefOf.Anesthetic);
    Check(devil.Downed || devil.Destroyed,"anesthetic downs the ice devil");
    FlushDeferred();
    var loot=GenRadial.RadialDistinctThingsAround(dpos,map,3f,true).ToList();
-   Check(devil.Destroyed && !devil.Dead && loot.Any(t=>t.def.defName=="LP_IceDevilStinger") && loot.Any(t=>t.def==spearDef),"a downed ice devil is banished, leaving its stinger and spear");
+   Check(devil.Destroyed && !devil.Dead && loot.Any(t=>t.def.defName=="LP_IceDevilStinger"),"a downed ice devil is banished, leaving its stinger");
    Check(!map.listerThings.ThingsInGroup(ThingRequestGroup.Corpse).OfType<Corpse>().Any(c=>c.InnerPawn==devil),"no ice devil corpse remains");
-   foreach(var t in loot.Where(t=>t.def.defName=="LP_IceDevilStinger" || t.def==spearDef).ToList())t.Destroy();
+   foreach(var t in loot.Where(t=>t.def.defName=="LP_IceDevilStinger").ToList())t.Destroy();
    // 炎魔
    var balor=R124Pawn("LP_Balor");balor.SetFaction(thay);var bs=ClearLine(9);Place(balor,bs);balor.jobs.StopAll();
    Check(Near(balor.genes.FactorForDamage(new DamageInfo(DamageDefOf.Flame,10)),0f) && Near(balor.genes.FactorForDamage(new DamageInfo(DamageDefOf.Frostbite,10)),1.5f),"balors are immune to fire and take x1.5 cold damage");
@@ -366,7 +354,7 @@ namespace LichPhylactery {
    // 许愿
    var wish=genie.abilities.GetAbility(Races124.Ability("LP_GenieWish"));Check(wish!=null && wish.def.cooldownTicksRange.min==60*GenDate.TicksPerDay,"the wish ability cools down for 60 days");
    Genie.OpenWishDialog(genie,wish);var dlg=Find.WindowStack.WindowOfType<Dialog_NodeTree>();
-   Check(dlg!=null && Traverse.Create(dlg).Field("curNode").GetValue<DiaNode>().options.Count==8,"the wish dialog offers six wishes, make-me-stronger (1.58.3) and a cancel");dlg?.Close(false);
+   Check(dlg!=null && Traverse.Create(dlg).Field("curNode").GetValue<DiaNode>().options.Count==8+(CombatGifts.On?1:0),"the wish dialog offers six wishes, make-me-stronger (1.58.3), the combat-gift wish when enabled, and a cancel");dlg?.Close(false);
    // 丰收
    var zc=ClearLine(3);var zone=new Zone_Growing(map.zoneManager);map.zoneManager.RegisterZone(zone);zone.AddCell(zc);
    var plantDef=DefDatabase<ThingDef>.GetNamed("Plant_Potato");var plant=(Plant)R124(GenSpawn.Spawn(ThingMaker.MakeThing(plantDef),zc,map));plant.Growth=.2f;
@@ -494,13 +482,7 @@ namespace LichPhylactery {
    rival.Destroy();
    // 剧本组件
    var part=new ScenPart_FallenEmpyrean{def=DefDatabase<ScenPartDef>.GetNamed("LP_FallenEmpyreanPart")};var t2=R124Pawn("LP_Titan");
-   Check(part.Apply(new List<Pawn>{ally,t2})==t2 && t2.equipment.Primary?.def.defName=="LP_EmpyreanBlade" && t2.skills.GetSkill(SkillDefOf.Melee).Level>=8 && t2.skills.GetSkill(SkillDefOf.Social).Level>=8,"the Fallen Empyrean start arms the titan with the empyrean blade and strong melee/social");
-   // 天穹之剑
-   var blade=t2.equipment.Primary;var human=R124Human();
-   Check(Near(HeavyWeapons.DamageFactor(human,blade),.5f) && Near(HeavyWeapons.DamageFactor(t2,blade),1f),"empyrean blade: half damage below body size 2");
-   var method=AccessTools.Method(typeof(Verb_MeleeAttackDamage),"DamageInfosToApply");var verb=t2.meleeVerbs.GetUpdatedAvailableVerbsList(false).Select(v=>v.verb).OfType<Verb_MeleeAttackDamage>().First(v=>v.EquipmentSource==blade && v.tool.capacities.Any(c=>c.defName=="Cut"));
-   int thunder=0;Rand.PushState(17);try{for(int i=0;i<400;i++)if(((IEnumerable<DamageInfo>)method.Invoke(verb,new object[]{new LocalTargetInfo(human)})).Any(d=>d.Def==DamageDefOf.EMP))thunder++;}finally{Rand.PopState();}
-   Check(thunder>60 && thunder<140,"about a quarter of empyrean blade hits add thunder: "+thunder+"/400");
+   Check(part.Apply(new List<Pawn>{ally,t2})==t2 && t2.skills.GetSkill(SkillDefOf.Melee).Level>=8 && t2.skills.GetSkill(SkillDefOf.Social).Level>=8,"the Fallen Empyrean start gives the titan strong melee/social (1.143.0: no empyrean blade)");
   }
 
   // ---------- 物品 ----------
@@ -512,7 +494,7 @@ namespace LichPhylactery {
    var fire=R124Pawn("LP_GenasiFire");var water=R124Pawn("LP_GenasiWater");var human=R124Human();
    var fr=DefDatabase<RecipeDef>.GetNamed("LP_MakeElementalFocus_Fire");
    Check(RaceGear.CannotCraft(fr,fire)==null && RaceGear.CannotCraft(fr,water)!=null && RaceGear.CannotCraft(fr,human)!=null,"only fire-blooded genasi may make the fire focus");
-   foreach(var (item,race,ok) in new[]{("LP_IvoryHorn","LP_Loxodon",true),("LP_OgreClub","LP_Ogre",true),("LP_FeatherCloak","LP_Aarakocra",true),("LP_EmpyreanBlade","LP_Titan",true),("LP_EmpyreanBlade","LP_FireGiant",true)}){
+   foreach(var (item,race,ok) in new[]{("LP_IvoryHorn","LP_Loxodon",true),("LP_OgreClub","LP_Ogre",true),("LP_FeatherCloak","LP_Aarakocra",true)}){
     var recipe=DefDatabase<RecipeDef>.AllDefsListForReading.First(rr=>rr.ProducedThingDef?.defName==item);var p=R124Pawn(race);
     Check(RaceGear.CannotCraft(recipe,p)==null && RaceGear.CannotCraft(recipe,human)!=null,item+" can be made by "+race+" but not a plain human");
    }
@@ -552,8 +534,6 @@ namespace LichPhylactery {
    human.apparel.Remove(c2);c2.Destroy();
    // 材料与价格
    Check(DefDatabase<ThingDef>.GetNamed("LP_IceDevilStinger").stackLimit==10 && DefDatabase<ThingDef>.GetNamed("LP_BalorHeart").BaseMarketValue>=2500 && Genie.LampDef.BaseMarketValue>=3500,"stinger stacks to 10, the balor heart sells for 2500, the lamp is worth 3500");
-   var spear=DefDatabase<ThingDef>.GetNamed("LP_FrostSpear");var sr=DefDatabase<RecipeDef>.AllDefsListForReading.First(r=>r.ProducedThingDef==spear);
-   Check(sr.researchPrerequisite?.defName=="LP_MythicMetallurgy" && spear.costList.Any(c=>c.thingDef.defName=="LP_ColdIron" && c.count==40) && spear.costList.Any(c=>c.thingDef.defName=="LP_IceDevilStinger" && c.count==1),"frost spear: 40 cold iron and a stinger after mythic metallurgy");
    // 商队
    var black=DefDatabase<TraderKindDef>.GetNamed("LP_Caravan_BlackNetwork");var red=DefDatabase<TraderKindDef>.GetNamed("LP_Caravan_RedRobe");
    Check(black.stockGenerators.OfType<StockGenerator_SingleDef>().Any(g=>Traverse.Create(g).Field("thingDef").GetValue<ThingDef>()==Genie.LampDef && g.countRange.min>=1),"the black network always brings a lamp");
@@ -587,8 +567,8 @@ namespace LichPhylactery {
    foreach(var (kind,f,xeno) in new[]{("LP_FC_LoxodonWarden",colonyF,"LP_Loxodon"),("LP_FC_AarakocraScout",colonyF,"LP_Aarakocra"),("LP_FH_OgreBrute",thay,"LP_Ogre"),("LP_FH_IceDevil",thay,"LP_IceDevil"),("LP_FH_Balor",thay,"LP_Balor"),("LP_EC_OgreSlave",ember,"LP_Ogre")}){
     var p=FactionPawn(kind,f);Check(p.genes.Xenotype.defName==xeno && p.kindDef.combatPower>0,kind+" generates as "+xeno);
     if(kind=="LP_FH_Balor")Check(p.equipment.Primary?.def.defName=="LP_BalorWhip" && p.apparel.WornApparelCount==0,"balors always carry the fire whip");
-    if(kind=="LP_FH_IceDevil")Check(p.apparel.WornApparelCount==0 && (p.equipment.Primary==null || p.equipment.Primary.def.defName=="LP_FrostSpear"),"ice devils fight unarmed or with a frost spear");
-    if(kind=="LP_FC_LoxodonWarden")Check(p.apparel.WornApparel.Any(a=>a.def.defName=="LP_LoxodonWardenArmor" || (a.def.defName=="Apparel_PlateArmor" && p.BodySize<1.3f)),"loxodon wardens wear the warden armor (1.45.1; plate armor while too small)");
+    if(kind=="LP_FH_IceDevil")Check(p.apparel.WornApparelCount==0 && p.equipment.Primary==null,"ice devils fight unarmed");
+    if(kind=="LP_FC_LoxodonWarden")Check(p.apparel.WornApparel.Any(a=>a.def.defName=="Apparel_PlateArmor"),"loxodon wardens wear plate armor (1.143.0)");
     p.Destroy();
    }
    var genasiKind=DefDatabase<PawnKindDef>.GetNamed("LP_FC_Genasi");

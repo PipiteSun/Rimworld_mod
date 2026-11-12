@@ -40,10 +40,10 @@ namespace LichPhylactery {
     var tunic=(Apparel)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("LP_FireGiantTunic"),ThingDefOf.Cloth);made.Add(tunic);
     bool humanCan=EquipmentUtility.CanEquip(tunic,human,out string why,false);
     Check(!ApparelUtility.HasPartsToWear(human,tunic.def) && !humanCan && (why??"").Contains("只有巨人能穿"),"ordinary pawn cannot wear the forge tunic ("+why+")");
-    var helmet=(Apparel)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("LP_FireGiantHelmet"));var cloak=(Apparel)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed(FrostGiant.Cloak));
-    foreach(var a in new[]{helmet,tunic,cloak})fire.apparel.Wear(a,false);
+    var cloak=(Apparel)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed(FrostGiant.Cloak));
+    foreach(var a in new[]{tunic,cloak})fire.apparel.Wear(a,false);
     var attire=DefDatabase<ThoughtDef>.GetNamed("LP_GiantAttire");var attireState=attire.Worker.CurrentState(fire);
-    Check(fire.apparel.WornApparel.Count(a=>GiantGear.Exclusive(a.def))==3 && GiantGear.AttireMood(fire)==6 && attireState.Active && Near(attire.stages[attireState.StageIndex].baseMoodEffect,6f),"three giant-only garments (helmet, tunic, wolf cloak) give +6 mood");
+    Check(fire.apparel.WornApparel.Count(a=>GiantGear.Exclusive(a.def))==2 && GiantGear.AttireMood(fire)==4 && attireState.Active && Near(attire.stages[attireState.StageIndex].baseMoodEffect,4f),"two giant-only garments (tunic, wolf cloak) give +4 mood");
 
     // ---------- 阶序（2） ----------
     RacialRelations.Tracker.Census(map).Rebuild(map);
@@ -88,10 +88,6 @@ namespace LichPhylactery {
     GenSpawn.Spawn(wolf,CellFinder.RandomClosewalkCellNear(frost.Position,map,3),map);
     bool fired=ability!=null && !ability.GizmoDisabled(out _) && ability.Activate(frost,LocalTargetInfo.Invalid);
     Check(lockedWithout && fired && Items.Has(human,"LP_WinterHorn") && Loxodon.FearImmune(human) && Items.Has(wolf,"LP_WildHunt") && ability.OnCooldown && ability.CooldownTicksRemaining>GenDate.TicksPerDay-10,"winter horn needs the frost giant horn; it rallies allies (fear immune) and sends winter wolves on the wild hunt; one-day cooldown");
-    // 霜巨人斧只有巨人能用。
-    var axe=ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed(FrostGiant.Axe),ThingDefOf.Steel);made.Add(axe);
-    bool humanAxe=EquipmentUtility.CanEquip(axe,human,out string axeWhy,false);
-    Check(!humanAxe && (axeWhy??"").Contains("只有巨人") && EquipmentUtility.CanEquip(axe,fire,out _,false) && EquipmentUtility.CanEquip(axe,frost,out _,false),"frost giant axe is for giants only ("+axeWhy+")");
     // 塞伊远征军：≥800点才有霜巨人掠夺者（随行冬狼、披冬狼皮大氅）。
     var thay=Factions.Hostile;Check(thay!=null,"Thayan expedition exists for the frost giant raid check");
     FrostGiantRaid.TestRoll=0f;
@@ -175,7 +171,7 @@ namespace LichPhylactery {
      var caravan=FactionGroup(colony,PawnGroupKindDefOf.Trader,1000f,DefDatabase<TraderKindDef>.GetNamed(CloudGiant.LuxuryCaravan));
      var raid=FactionGroup(colony,PawnGroupKindDefOf.Combat,3000f);
      var noble=caravan.FirstOrDefault(CloudGiant.Active);
-     Check(noble!=null && noble.kindDef.defName==CloudGiant.NobleTraderKind && Items.Holds(noble,CloudGiant.Morningstar) && Items.Worn(noble,CloudGiant.Robe)!=null && raid.Count>0 && !raid.Any(CloudGiant.Active),"alliance luxury caravan is led by a cloud giant noble (morningstar, cloud robe); a 3000-point alliance raid has no cloud giant ("+raid.Count+" raiders)");
+     Check(noble!=null && noble.kindDef.defName==CloudGiant.NobleTraderKind && Items.Worn(noble,CloudGiant.Robe)!=null && raid.Count>0 && !raid.Any(CloudGiant.Active),"alliance luxury caravan is led by a cloud giant noble (cloud robe); a 3000-point alliance raid has no cloud giant ("+raid.Count+" raiders)");
     }finally{CleanFactionPawns();}
 
     // 6 上位者的使节（承认阶序）：殖民地只有火巨人时会来；接受后同盟好感 +20，火巨人“俯首”，15 天后“名列阶序”。
@@ -257,8 +253,7 @@ namespace LichPhylactery {
     var verb=storm.meleeVerbs.TryGetMeleeVerb(mech) as Verb_MeleeAttackDamage;
     if(verb!=null)AccessTools.Method(typeof(Verb_MeleeAttackDamage),"ApplyMeleeDamageToTarget").Invoke(verb,new object[]{new LocalTargetInfo(mech)});
     float bare=StormGiant.ThunderAmount(storm);
-    var trident=(ThingWithComps)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed(StormGiant.Trident));storm.equipment.DestroyAllEquipment();storm.equipment.AddEquipment(trident);
-    Check(verb!=null && mech.stances.stunner.Stunned && Near(bare,15f) && Near(StormGiant.ThunderAmount(storm),22.5f) && !EquipmentUtility.CanEquip(trident,human,out _,false),"thunder strike: a melee hit adds EMP 15 that stuns a mechanoid; x1.5 with the storm trident, which only giants can wield");
+    Check(verb!=null && mech.stances.stunner.Stunned && Near(bare,15f),"thunder strike: a melee hit adds EMP 15 that stuns a mechanoid");
 
     // 4 召唤风暴：天气转雷雨并锁定（召来的天气状况，带落雷），冷却7天。
     var call=storm.abilities.GetAbility(DefDatabase<AbilityDef>.GetNamed("LP_SummonStorm"));

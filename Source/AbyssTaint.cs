@@ -127,7 +127,7 @@ namespace LichPhylactery {
    var s=base.TipStringExtra;var lines=new List<string>();if(!s.NullOrEmpty())lines.Add(s);
    lines.Add("阶段："+AbyssTaint.StageLabel(AbyssTaint.Stage(Severity))+"。种族系数 ×"+AbyssTaint.RaceFactor(pawn).ToString("0.##"));
    lines.Add(Severity<AbyssTaint.Mark?"每天自然消退 0.5%。":"到了“恶魔之印”以后不再自然消退。");
-   lines.Add("去除：向善神祈祷 -5%、喝祝圣圣水 -10%、阿斯莫的治疗之手 -8%、睡在驱魔结界里每天 -1%。");
+   lines.Add("去除：向善神祈祷 -5%、阿斯莫的治疗之手 -8%、睡在驱魔结界里每天 -1%。");
    return string.Join("\n",lines);
   }}
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref acc,"lpAcc");Scribe_Values.Look(ref Locked,"lpLocked");}

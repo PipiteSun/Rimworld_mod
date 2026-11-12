@@ -240,16 +240,16 @@ namespace LichPhylactery {
    var list=new List<Thing>();
    Thing Make(string name,int n=1,ThingDef stuff=null){var d=Items.Thing(name);if(d==null)return null;var t=ThingMaker.MakeThing(d,d.MadeFromStuff?(stuff??GenStuff.DefaultStuffFor(d)):null);t.stackCount=n;t.TryGetComp<CompQuality>()?.SetQuality(QualityCategory.Normal,ArtGenerationContext.Outsider);return t;}
    switch(kind){
-    case "ember":list.Add(Rand.Bool?Make("LP_LavaCrystal",3):Make(new[]{"LP_FireGiantMaul","LP_FireGiantArmor","LP_FireGiantHelmet"}.RandomElement()));break;
-    case "ogre":list.Add(Make("LP_OgreClub",1,ThingDefOf.WoodLog));break;
+    case "ember":list.Add(Make("Steel",100));break; // 1.147.0：熔岩结晶已移除，改送 100 钢 // 1.143.0：熔铁装备已移除，只送熔岩结晶
+    case "ogre":list.Add(Make("WoodLog",80));break; // 1.146.0：食人魔大棒已移除，改送 80 木材
     case "titan":list.Add(Make(new[]{"LP_ScrollTeleport","LP_ScrollRevivify","LP_ScrollProtectionEvil","LP_ScrollFireball","LP_ScrollTrueSeeing","LP_ScrollFleshToStone"}.RandomElement()));list.Add(Make("LP_MiracleShard"));break;
-    // 1.30.0：已驯服的冬狼幼崽（70%）或霜巨人斧（30%）。
-    case "frost":list.Add(Rand.Chance(.7f)?WolfPup():Make(FrostGiant.Axe,1,ThingDefOf.Steel));break;
+    // 1.30.0：已驯服的冬狼幼崽（1.143.0 霜巨人斧已移除）。
+    case "frost":list.Add(WolfPup());break;
     // 1.34.1：云纹长袍（60%）或天空琥珀（40%）。
-    case "cloud":list.Add(Rand.Chance(.6f)?Make(CloudGiant.Robe):Make(CloudGiant.Amber));break;
-    // 1.44.0：双头巨人送一顶双盔；独眼巨人送 2 只绵羊（已归殖民地）或一把独眼巨锤（钢）。
-    case "ettin":list.Add(Make(Ettin.Helm));break;
-    case "cyclops":if(Rand.Bool && K("Sheep")!=null){for(int i=0;i<2;i++)list.Add(PawnGenerator.GeneratePawn(new PawnGenerationRequest(K("Sheep"),Faction.OfPlayer,PawnGenerationContext.NonPlayer,-1,forceGenerateNewPawn:true)));}else list.Add(Make(Cyclops.Maul,1,ThingDefOf.Steel));break;
+    case "cloud":list.Add(Make(CloudGiant.Amber));break; // 1.146.0：云纹长袍已移除，只送天空琥珀
+    // 1.44.0：双头巨人送 80 钢；独眼巨人送 2 只绵羊（已归殖民地）或一枚独眼透镜（1.143.0 双盔、独眼巨锤已移除）。
+    case "ettin":list.Add(Make("Steel",80));break;
+    case "cyclops":if(K("Sheep")!=null){for(int i=0;i<2;i++)list.Add(PawnGenerator.GeneratePawn(new PawnGenerationRequest(K("Sheep"),Faction.OfPlayer,PawnGenerationContext.NonPlayer,-1,forceGenerateNewPawn:true)));}else list.Add(Make("Steel",60));break; // 1.146.0：独眼透镜已移除
    }
    list.RemoveAll(t=>t==null);return list;
   }

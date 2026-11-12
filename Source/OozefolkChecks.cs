@@ -35,7 +35,7 @@ namespace LichPhylactery {
    // 本版新增的定义都没有配置错误（完整套 Checks.cs 第 43、44 行对 LP_ 物品和配方做同样的检查）。
    var newDefs=new List<Def>();
    foreach(var n in new[]{"LP_ProtoplasmGel","LP_GelDressing","LP_StabilizerBand"})newDefs.Add(DefDatabase<ThingDef>.GetNamed(n));
-   foreach(var n in new[]{"LP_MakeGelDressing","LP_MakeAcidVialGel","LP_MakeTanglefootBagGel"})newDefs.Add(DefDatabase<RecipeDef>.GetNamed(n));
+   foreach(var n in new[]{"LP_MakeGelDressing"})newDefs.Add(DefDatabase<RecipeDef>.GetNamed(n));
    newDefs.AddRange(DefDatabase<RecipeDef>.AllDefs.Where(r=>r.ProducedThingDef==Oozefolk.Band));
    newDefs.AddRange(DefDatabase<GeneDef>.AllDefs.Where(g=>g.defName.StartsWith("LP_Ooze") || Oozefolk.SkinNames.Contains(g.defName)));
    newDefs.AddRange(DefDatabase<AbilityDef>.AllDefs.Where(a=>a.defName.StartsWith("LP_Ooze")));

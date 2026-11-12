@@ -11,7 +11,7 @@ namespace LichPhylactery {
  public partial class LichChecks {
   static string itemPotionSaveId;static int itemPotionSavedTicks,itemTonicSavedTicks;
   public static readonly string[] ItemPotionDefs={"LP_PotionHealing","LP_PotionGreaterHealing","LP_PotionGiantStrength","LP_PotionFireResistance","LP_PotionInvisibility","LP_PotionHeroism","LP_PotionMindShield","LP_PotionTrollRegen"};
-  public static readonly string[] ItemThrowableDefs={"LP_AlchemistFire","LP_AcidVial","LP_HolyWater","LP_Thunderstone","LP_TanglefootBag","LP_DispelDust"};
+  public static readonly string[] ItemThrowableDefs={"LP_Thunderstone","LP_DispelDust"};
   // 一块 (2r+1)×(2r+1) 的空地：可站立、已探索、无人无物无建筑。
   IntVec3 ItemSpot(int r=2)=>map.AllCells.Where(c=>c.x>r+6 && c.z>r+6 && c.x<map.Size.x-r-6 && c.z<map.Size.z-r-6 && CellRect.CenteredOn(c,r).Cells.All(x=>x.Standable(map) && !x.Fogged(map) && x.GetFirstPawn(map)==null && x.GetFirstItem(map)==null && x.GetEdifice(map)==null && !x.Roofed(map))).OrderBy(c=>c.DistanceToSquared(map.Center)).First();
   Pawn ItemPawn(IntVec3 at){var p=SharedPawn();Place(p,at);p.jobs.StopAll();return p;}
@@ -79,10 +79,6 @@ namespace LichPhylactery {
     {"LP_BrewPotionHeroism",("LP_PotionHeroism",1,new[]{"Beer:3","Gold:2"})},
     {"LP_BrewPotionMindShield",("LP_PotionMindShield",3,new[]{"LP_BrainJar:1"})},
     {"LP_BrewPotionTrollRegen",("LP_PotionTrollRegen",1,new[]{"LP_TrollBlood:5"})},
-    {"LP_MakeAlchemistFire",("LP_AlchemistFire",1,new[]{"Chemfuel:20","Cloth:10"})},
-    {"LP_MakeAcidVial",("LP_AcidVial",1,new[]{"Chemfuel:20","Steel:10"})},
-    {"LP_MakeHolyWater",("LP_HolyWater",1,new[]{"Silver:15","MedicineHerbal:2"})},
-    {"LP_MakeTanglefootBag",("LP_TanglefootBag",1,new[]{"Cloth:15","Chemfuel:10"})},
    };
    foreach(var kv in expect){
     var r=DefDatabase<RecipeDef>.GetNamed(kv.Key);
@@ -217,36 +213,11 @@ namespace LichPhylactery {
   }
   void CheckThrowables(){
    var spot=ItemSpot(4);var thrower=ItemPawn(spot+IntVec3.West*4);Hold(thrower);
-   // 炼金之火：巨魔被火烧→再生中断6小时、死后不复活。
-   var troll=RacePawn("LP_Troll");Place(troll,spot);Hold(troll);
-   Launch("LP_AlchemistFire",thrower,troll);
-   var gene=Troll.Gene(troll);int now=Find.TickManager.TicksGame;
-   Check(gene.suppressedUntilTick>now+14000 && Items.Has(troll,"LP_TrollBurned"),"alchemist fire marks the troll as burned and stops regeneration for 6 hours; until="+(gene.suppressedUntilTick-now)+" pos="+troll.Position+"/"+spot+" burning="+troll.IsBurning()+" hediffs="+string.Join(",",troll.health.hediffSet.hediffs.Select(h=>h.def.defName)));
-   CleanFires();troll.Kill(null);Check(troll.Dead && gene.reviveTick<0,"a troll killed while burned by alchemist fire does not revive");
-   troll.Corpse?.Destroy();
-   // 强酸瓶：酸蚀标记，阻断再生；服装损伤×3。
-   // 脱掉随机生成的衣服：强酸按锐器护甲结算，偶尔会被衣服整个挡掉（伤害为0就不会留下酸蚀）。
-   troll=RacePawn("LP_Troll");Place(troll,spot);Hold(troll);troll.apparel?.DestroyAll();
-   Launch("LP_AcidVial",thrower,troll);gene=Troll.Gene(troll);now=Find.TickManager.TicksGame;
-   Check(Items.Has(troll,"LP_TrollAcid") && gene.suppressedUntilTick>now+14000,"acid vial marks the troll with acid and stops regeneration");
-   troll.Kill(null);Check(troll.Dead && gene.reviveTick<0,"a troll killed while acid-burned does not revive");troll.Corpse?.Destroy();
    var a=ItemPawn(spot+IntVec3.North*3);var b=ItemPawn(spot+IntVec3.South*3);
    var va=(Apparel)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("Apparel_FlakVest"));var vb=(Apparel)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("Apparel_FlakVest"));a.apparel.Wear(va);b.apparel.Wear(vb);
    int ha=va.HitPoints,hb=vb.HitPoints;va.TakeDamage(new DamageInfo(ItemThrowables.Acid,5f));vb.TakeDamage(new DamageInfo(DefDatabase<DamageDef>.GetNamed("AcidBurn"),5f));
    Check(ha-va.HitPoints==15 && hb-vb.HitPoints==5,"acid vial deals triple damage to worn apparel: "+(ha-va.HitPoints)+" vs "+(hb-vb.HitPoints));
    a.Destroy();b.Destroy();
-   // 圣水：造物和巫妖受伤，巫妖扣15精神力；活人无伤。
-   var master=ItemPawn(spot+IntVec3.East*3);master.SetFaction(EnemyFaction());Hold(master);var skel=FactionConstructs.MakeBound("Skeleton",master,master.Faction);GenSpawn.Spawn(skel,spot,map);Hold(skel);
-   var human=ItemPawn(spot+IntVec3.South);Hold(human);int humanHediffs=human.health.hediffSet.hediffs.Count;float skelHp=skel.health.summaryHealth.SummaryHealthPercent;
-   Launch("LP_HolyWater",thrower,spot);
-   Check(skel.Dead || skel.health.summaryHealth.SummaryHealthPercent<skelHp-.05f,"holy water burns a necromantic construct: dead="+skel.Dead+" destroyed="+skel.Destroyed+" pos="+skel.PositionHeld+"/"+spot);
-   Check(!human.health.hediffSet.hediffs.Any(h=>h is Hediff_Injury || h is Hediff_MissingPart),"holy water does not hurt the living: "+string.Join(",",human.health.hediffSet.hediffs.Select(h=>h.def.defName)));
-   // 巫妖：直接命中躯干（爆炸随机部位可能把测试巫妖打死，精神力随之清零）。
-   var lich=ItemPawn(spot+IntVec3.North*3);lich.ChangePsylinkLevel(1,false);var box=Rituals.Ascend(lich);Necro.Registry.boxes.Remove(box);var lh=Necro.Lich(lich);lh.autoRepair=false;lich.psychicEntropy.OffsetPsyfocusDirectly(1f);float focus=lich.psychicEntropy.CurrentPsyfocus;Hold(lich);
-   lich.TakeDamage(new DamageInfo(ItemThrowables.Holy,30f,0f,-1f,thrower,lich.RaceProps.body.corePart));
-   Check(!lich.Dead && lich.health.hediffSet.hediffs.Any(h=>h.def.defName=="LP_HolyBurn") && Math.Abs((focus-lich.psychicEntropy.CurrentPsyfocus)*lh.Power-15f)<.5f,"holy water burns a lich and drains 15 psyfocus points: "+(focus-lich.psychicEntropy.CurrentPsyfocus)*lh.Power);
-   var living=ItemPawn(spot+IntVec3.North*4);int lh0=living.health.hediffSet.hediffs.Count;living.TakeDamage(new DamageInfo(ItemThrowables.Holy,30f,0f,-1f,thrower,living.RaceProps.body.corePart));Check(!living.health.hediffSet.hediffs.Any(h=>h is Hediff_Injury || h is Hediff_MissingPart),"a direct holy water hit does nothing to the living");living.Destroy();
-   Check(DefDatabase<RecipeDef>.GetNamed("LP_MakeHolyWater").researchPrerequisite.defName=="LP_DNDAlchemy","holy water requires DND alchemy");   if(!skel.Destroyed)skel.Destroy();lich.Destroy();human.Destroy();master.Destroy();
    // 雷鸣石：3×3 眩晕2秒并打断预热，范围外不受影响。
    var inside=ItemPawn(spot+IntVec3.East);var outside=ItemPawn(spot+IntVec3.East*3);var target=ItemPawn(spot+IntVec3.North*3);
    var mv=inside.meleeVerbs.TryGetMeleeVerb(target);inside.stances.SetStance(new Stance_Warmup(300,target,mv));Check(inside.stances.curStance is Stance_Busy,"thunderstone fixture is warming up an attack");
@@ -276,13 +247,11 @@ namespace LichPhylactery {
    var timer=((HediffWithComps)belted.health.hediffSet.GetFirstHediffOfDef(Items.Hediff("LP_MagicDispelled"))).TryGetComp<HediffComp_Disappears>();timer.ticksToDisappear=2;Step(3);
    Check(!Items.Dispelled(belted) && shield.ShieldState==ShieldState.Active && Near(shield.Energy,energy),"shield belt recovers with its energy after the dispel ends");
    belted.Destroy();dragon.Destroy();far.Destroy();
-   // 投弹手与掉落。
-   var guard=SharedPawn();guard.kindDef=PawnKindDef.Named("LP_FC_Guard");var orc=SharedPawn();orc.kindDef=PawnKindDef.Named("LP_FH_OrcWarrior");
-   Check(ItemGear.GrenadeFor(guard,.01f)=="LP_HolyWater" && ItemGear.GrenadeFor(guard,.06f)=="LP_AlchemistFire" && ItemGear.GrenadeFor(guard,.5f)==null && ItemGear.GrenadeFor(orc,.01f)=="LP_AlchemistFire","alliance soldiers sometimes carry holy water or alchemist fire, Thay warriors alchemist fire");
-   Check(ItemGear.Arm(guard,"LP_HolyWater") && guard.equipment.Primary.def.defName=="LP_HolyWater","grenadier is armed with the throwable");
+   // 掉落（1.143.0：炼金之火、圣水已移除，投弹手不再出现）。
+   var orc=SharedPawn();orc.kindDef=PawnKindDef.Named("LP_FH_OrcWarrior");Check(ItemGear.GrenadeFor(orc,.01f)==null,"no grenadiers after the alchemy throwables were removed");
    orc.SetFaction(EnemyFaction());var carried=ItemGear.Carry(orc,.01f);Check(carried?.def.defName=="LP_Thunderstone" && orc.inventory.innerContainer.Contains(carried),"enemies sometimes carry a thunderstone that drops on death");
    Check(ItemGear.Carry(orc,.03f)?.def.defName=="LP_DispelDust" && ItemGear.Carry(orc,.5f)==null,"enemies sometimes carry dispel dust");
-   guard.Destroy();orc.Destroy();thrower.Destroy();
+   orc.Destroy();thrower.Destroy();
   }
 
   // ---------- 新材料 ----------
@@ -370,7 +339,7 @@ namespace LichPhylactery {
    psy.Destroy();elf.Destroy();plainP.Destroy();victim.Destroy();human.Destroy();
   }
   // ---------- 种族装备 ----------
-  public static readonly (string def,string race,string bench)[] ItemRaceGear={("LP_DwarvenThrowingHammer","Dwarf","LP_RuneAnvil"),("LP_DwarvenRuneShield","Dwarf","LP_RuneAnvil"),("LP_ElvenLongbow","Elf","CraftingSpot"),("LP_ElvenChain","Elf","LP_RuneAnvil"),("LP_OrcishGreataxe","HalfOrc","LP_RuneAnvil"),("LP_MinotaurHornHelm","Minotaur","LP_RuneAnvil"),("LP_GithAstralArmor","Githyanki","LP_RuneAnvil"),("LP_DragonShedArmor",null,"LP_RuneAnvil"),("LP_IllithidTendrilCloak","MindFlayer","HandTailoringBench"),("LP_BoneTalisman","Lich","LP_Altar")};
+  public static readonly (string def,string race,string bench)[] ItemRaceGear={("LP_IllithidTendrilCloak","MindFlayer","HandTailoringBench"),("LP_BoneTalisman","Lich","LP_Altar")};
   static RecipeDef RecipeFor(string def)=>DefDatabase<RecipeDef>.AllDefsListForReading.First(r=>r.ProducedThingDef?.defName==def);
   Pawn RacedPawn(string race){switch(race){case "Dwarf":return RacePawn("LP_Dwarf");case "Elf":return RacePawn("LP_Elf");case "HalfOrc":return RacePawn("LP_HalfOrc");case "Minotaur":return RacePawn("LP_Minotaur");case "Githyanki":return RacePawn("LP_Githyanki");case "MindFlayer":return RacePawn("LP_MindFlayer");case "Lich":{var p=SharedPawn();p.genes.AddGene(DefDatabase<GeneDef>.GetNamed("LP_LichGene"),true);return p;}}return SharedPawn();}
   Apparel WearItem(Pawn p,string def){var d=DefDatabase<ThingDef>.GetNamed(def);var a=(Apparel)ThingMaker.MakeThing(d,d.MadeFromStuff?GenStuff.DefaultStuffFor(d):null);p.apparel.Wear(a,false);return a;}
@@ -388,76 +357,7 @@ namespace LichPhylactery {
      Check(Harmony.GetPatchInfo(AccessTools.Method(typeof(RimWorld.Bill),nameof(RimWorld.Bill.PawnAllowedToStartAnew)))?.Postfixes.Any(x=>x.PatchMethod.DeclaringType==typeof(RaceGearCrafting))==true,"crafting restriction is hooked into native bills");}
     maker.Destroy();
    }
-   Check(RecipeFor("LP_ElvenChain").researchPrerequisite?.defName=="LP_MythicMetallurgy" && DefDatabase<ThingDef>.GetNamed("LP_ElvenChain").CostList.Count==1 && DefDatabase<ThingDef>.GetNamed("LP_ElvenChain").CostList[0].thingDef==ItemMaterials.Mithral,"elven chain is made only of mithral after mythic metallurgy");
-   Check(DefDatabase<ThingDef>.GetNamed("LP_DragonShedArmor").CostList.Any(c=>c.thingDef==ItemMaterials.Shed),"dragon shed armor is made from dragon scales");
-   // 矮人投掷锤：拿起获得投掷能力，卸下失去；8格；矮人无冷却。
-   var dwarf=RacePawn("LP_Dwarf");Place(dwarf,spot);Hold(dwarf);var enemy=ItemPawn(spot+IntVec3.East*3);enemy.SetFaction(EnemyFaction());Hold(enemy);
-   HoldItem(dwarf,"LP_DwarvenThrowingHammer");Check(HasAbility(dwarf,"LP_HammerThrow"),"holding the throwing hammer grants the throw ability");
-   float hp=enemy.health.summaryHealth.SummaryHealthPercent;var throwAbility=dwarf.abilities.GetAbility(DefDatabase<AbilityDef>.GetNamed("LP_HammerThrow"));
-   Check(throwAbility.Activate(new LocalTargetInfo(enemy),new LocalTargetInfo(enemy)) && enemy.health.summaryHealth.SummaryHealthPercent<hp,"thrown hammer hurts the target");
-   Check(!throwAbility.OnCooldown,"dwarves throw the hammer without cooldown");
-   HoldItem(human,"LP_DwarvenThrowingHammer");var humanThrow=human.abilities.GetAbility(DefDatabase<AbilityDef>.GetNamed("LP_HammerThrow"));Place(human,spot+IntVec3.West*2);
-   Check(humanThrow!=null && humanThrow.Activate(new LocalTargetInfo(enemy),new LocalTargetInfo(enemy)) && humanThrow.OnCooldown && humanThrow.CooldownTicksRemaining>1700,"others must wait 30 seconds between throws");
-   var far=ItemPawn(spot+IntVec3.West*4+IntVec3.North*0);far.SetFaction(EnemyFaction());Place(far,dwarf.Position+IntVec3.North*4+IntVec3.East*4+IntVec3.North*4);Hold(far);
-   Check(new CompItemAbility{props=new CompProperties_ItemAbility{effect="hammer"},parent=throwAbility}.Invalid(far)!=null,"throwing hammer reaches only 8 cells");
-   dwarf.equipment.DestroyAllEquipment();Check(!HasAbility(dwarf,"LP_HammerThrow"),"putting the hammer away removes the ability");human.equipment.DestroyAllEquipment();far.Destroy();
-   // 矮人符文盾：远程格挡25%，山体厚岩顶下45%。
-   WearItem(dwarf,"LP_DwarvenRuneShield");Check(Near(RaceGear.BlockChance(dwarf),.25f) && RaceGear.BlockChance(human)==0,"rune shield blocks 25% of ranged attacks in the open");
-   map.roofGrid.SetRoof(dwarf.Position,RoofDefOf.RoofRockThick);Check(Near(RaceGear.BlockChance(dwarf),.45f),"rune shield blocks 45% under a thick mountain roof");
-   var block=AccessTools.Method(typeof(RuneShieldBlock),"Prefix");var shot=new DamageInfo(DamageDefOf.Bullet,5f,0f,-1f,enemy,null,DefDatabase<ThingDef>.GetNamed("Gun_Revolver"));int blocked=0;
-   Rand.PushState(11);try{for(int i=0;i<400;i++){var args=new object[]{dwarf,shot,false};if(!(bool)block.Invoke(null,args))blocked++;}}finally{Rand.PopState();}
-   map.roofGrid.SetRoof(dwarf.Position,null);
-   Check(blocked>140 && blocked<220,"real block rolls under the mountain match 45% ("+blocked+"/400)");
-   var punch=new DamageInfo(DamageDefOf.Blunt,5f,0f,-1f,enemy);var pargs=new object[]{dwarf,punch,false};Check((bool)block.Invoke(null,pargs),"rune shield never blocks melee");
-   dwarf.Destroy();
-   // 精灵长弓：射程+4、瞄准更快；精灵用时没有黑暗惩罚。
-   var bow=DefDatabase<ThingDef>.GetNamed("LP_ElvenLongbow");var great=DefDatabase<ThingDef>.GetNamed("Bow_Great");
-   Check(bow.Verbs.Count==1 && Near(bow.Verbs[0].range,great.Verbs[0].range+4f) && bow.Verbs[0].warmupTime<great.Verbs[0].warmupTime,"elven longbow shoots 4 cells farther and aims faster");
-   var elf=RacePawn("LP_Elf");Place(elf,spot);Hold(elf);HoldItem(elf,"LP_ElvenLongbow");HoldItem(human,"LP_ElvenLongbow");
-   var dark=AccessTools.Method(typeof(ElvenLongbowDarkness),"Postfix");var darkField=AccessTools.Field(typeof(ShotReport),"offsetFromDarkness");
-   object rep=new ShotReport();darkField.SetValue(rep,-.3f);var eargs=new object[]{elf,rep};dark.Invoke(null,eargs);object rep2=new ShotReport();darkField.SetValue(rep2,-.3f);var hargs=new object[]{human,rep2};dark.Invoke(null,hargs);
-   Check(Near((float)darkField.GetValue(eargs[1]),0f) && Near((float)darkField.GetValue(hargs[1]),-.3f),"only elves ignore darkness with the elven longbow");
-   human.equipment.DestroyAllEquipment();
-   // 精灵锁子甲：精灵+5%近战闪避；无移速惩罚。
-   // 先去掉随机的闪避特性（如“敏捷”+15）：它们把人推到原版闪避曲线的平缓段，同样 +2.5 只多约 1.25%，检查就随机失败。
-   foreach(var tp in new[]{elf,human})foreach(var tr in tp.story.traits.allTraits.Where(x=>x.CurrentData.statOffsets?.Any(s=>s.stat==StatDefOf.MeleeDodgeChance)==true).ToList())tp.story.traits.RemoveTrait(tr);
-   elf.skills.GetSkill(SkillDefOf.Melee).Level=12;human.skills.GetSkill(SkillDefOf.Melee).Level=12;elf.drafter.Drafted=false;human.drafter.Drafted=false;
-   float dodge=elf.GetStatValue(StatDefOf.MeleeDodgeChance),hd=human.GetStatValue(StatDefOf.MeleeDodgeChance),ms=human.GetStatValue(StatDefOf.MoveSpeed);
-   var chainE=WearItem(elf,"LP_ElvenChain");var chainH=WearItem(human,"LP_ElvenChain");
-   Check(Math.Abs(elf.GetStatValue(StatDefOf.MeleeDodgeChance)-dodge-.05f)<.006f && Near(StatWorker.StatOffsetFromGear(chainE,StatDefOf.MeleeDodgeChance),2.5f) && Near(human.GetStatValue(StatDefOf.MeleeDodgeChance),hd) && Near(StatWorker.StatOffsetFromGear(chainH,StatDefOf.MeleeDodgeChance),0f),"elven chain gives elves (only) +5% melee dodge: elf "+dodge+"->"+elf.GetStatValue(StatDefOf.MeleeDodgeChance)+" human "+hd+"->"+human.GetStatValue(StatDefOf.MeleeDodgeChance)+" gear="+StatWorker.StatOffsetFromGear(chainE,StatDefOf.MeleeDodgeChance)+" owner="+RaceGear.Owner(chainE)+" isElf="+Items.IsElf(elf));
-   Check(Near(human.GetStatValue(StatDefOf.MoveSpeed),ms) && chainH.GetStatValue(StatDefOf.ArmorRating_Sharp)>=.9f && chainH.GetStatValue(StatDefOf.Mass)<=5f,"elven chain protects near plate without movement penalty");
-   human.apparel.Remove(chainH);chainH.Destroy();elf.Destroy();
-   // 半兽人巨斧：野蛮重击概率翻倍；击倒敌人后5秒近战冷却-30%。
-   var orc=RacePawn("LP_HalfOrc");Place(orc,spot);Hold(orc);bool savage;
-   CommonRaces.MeleeFactor(orc,enemy,.15f,out savage);Check(!savage,"half-orc savage attack is 10% without the greataxe");
-   HoldItem(orc,"LP_OrcishGreataxe");CommonRaces.MeleeFactor(orc,enemy,.15f,out savage);bool savage2;CommonRaces.MeleeFactor(orc,enemy,.21f,out savage2);
-   Check(savage && !savage2,"half-orc savage attack doubles to 20% with the greataxe");
-   var foe=ItemPawn(spot+IntVec3.North*2);foe.SetFaction(EnemyFaction());Hold(foe);float cd=orc.GetStatValue(StatDefOf.MeleeCooldownFactor);
-   foe.TakeDamage(new DamageInfo(DamageDefOf.Cut,200f,999f,-1f,orc,foe.health.hediffSet.GetBrain(),DefDatabase<ThingDef>.GetNamed("LP_OrcishGreataxe")));
-   Check((foe.Dead || foe.Downed) && TicksLeft(orc,"LP_AxeFrenzy")==300 && Near(orc.GetStatValue(StatDefOf.MeleeCooldownFactor),cd*.7f),"felling an enemy with the greataxe cuts melee cooldown by 30% for 5 seconds: dead="+foe.Dead+" downed="+foe.Downed+" ticks="+TicksLeft(orc,"LP_AxeFrenzy")+" cd="+cd+"->"+orc.GetStatValue(StatDefOf.MeleeCooldownFactor)+" holds="+Items.Holds(orc,"LP_OrcishGreataxe")+" hostile="+orc.HostileTo(foe));
-   if(foe.Corpse!=null)foe.Corpse.Destroy();else foe.Destroy();orc.Destroy();
-   // 牛头人角盔：其他人获得弱化冲撞（4格、伤害减半），牛头人自身冲撞+3格。
-   var mino=RacePawn("LP_Minotaur");Place(mino,spot);Hold(mino);WearItem(mino,"LP_MinotaurHornHelm");
-   Check(Minotaur.ChargeRange(mino)==Minotaur.ChargeCells+3 && !HasAbility(mino,"LP_HelmCharge"),"a minotaur wearing the horn helm charges 3 cells farther (and gets no weaker charge)");
-   var helm=WearItem(human,"LP_MinotaurHornHelm");Check(HasAbility(human,"LP_HelmCharge") && Minotaur.ChargeRange(human)==Minotaur.ChargeCells,"the horn helm gives others the weaker charge");
-   var line=ClearLine(6);Place(human,line);Hold(human);var target=ItemPawn(line+IntVec3.East*3);target.SetFaction(EnemyFaction());Hold(target);
-   var helmCharge=human.abilities.GetAbility(DefDatabase<AbilityDef>.GetNamed("LP_HelmCharge"));var cr=Minotaur.Charge(human,line+IntVec3.East*6,4,.5f);
-   Check(cr.hit==target && Near(cr.damage,Minotaur.ChargeDamage*human.BodySize*.5f),"helm charge hits for half the minotaur damage: "+cr.damage);
-   Check(DefDatabase<AbilityDef>.GetNamed("LP_HelmCharge").cooldownTicksRange.min==60000 && DefDatabase<AbilityDef>.GetNamed("LP_HelmCharge").comps.OfType<CompProperties_ItemAbility>().First().range==4,"helm charge reaches 4 cells and cools down for a day");
-   human.apparel.Remove(helm);helm.Destroy();Check(!HasAbility(human,"LP_HelmCharge"),"removing the helm removes the charge");
-   target.Destroy();mino.Destroy();
-   // 星界战甲：吉斯洋基星界跳跃后3秒受伤减半，只有吉斯洋基能触发。
-   var gith=RacePawn("LP_Githyanki");Place(gith,spot);Hold(gith);WearItem(gith,"LP_GithAstralArmor");
-   Check(Githyanki.Step(gith,spot+IntVec3.North*2,0f) && TicksLeft(gith,"LP_AstralWard")==180 && Near(ItemDamage.Factor(gith,DamageDefOf.Cut),.5f),"astral step in astral armor halves damage for 3 seconds");
-   var astral=WearItem(human,"LP_GithAstralArmor");Place(human,spot+IntVec3.West*2);Githyanki.Step(human,spot+IntVec3.West*3,0f);Check(!Items.Has(human,"LP_AstralWard"),"only githyanki trigger the astral ward");
-   human.apparel.Remove(astral);astral.Destroy();gith.Destroy();
-   // 蜕鳞甲：免疫EMP眩晕，力场伤害-50%，力能龙穿不了。
-   var shedA=WearItem(human,"LP_DragonShedArmor");var bare=ItemPawn(spot+IntVec3.East*2);Hold(bare);
-   human.stances.stunner.StopStun();human.TakeDamage(new DamageInfo(DamageDefOf.EMP,20f));bare.TakeDamage(new DamageInfo(DamageDefOf.EMP,20f));
-   Check(!human.stances.stunner.Stunned && Near(ItemDamage.Factor(human,ForceDragon.Force),.5f) && Near(ItemDamage.Factor(human,DamageDefOf.Cut),1f),"dragon shed armor ignores EMP stun and halves force damage");
-   var dragon=RacePawn("LP_ForceDragon");Place(dragon,spot+IntVec3.South*2);Hold(dragon);
-   Check(!ApparelUtility.HasPartsToWear(dragon,DefDatabase<ThingDef>.GetNamed("LP_DragonShedArmor")) && ApparelUtility.HasPartsToWear(human,DefDatabase<ThingDef>.GetNamed("LP_DragonShedArmor")),"force dragons cannot wear dragon shed armor");
-   human.apparel.Remove(shedA);shedA.Destroy();dragon.Destroy();bare.Destroy();
+   var enemy=ItemPawn(spot+IntVec3.East*3);enemy.SetFaction(EnemyFaction());Hold(enemy);
    // 夺心魔触须披风：恐惧更强；夺心魔心灵震爆+2格；同图殖民者-2心情。
    var flayer=RacePawn("LP_MindFlayer");Place(flayer,spot);Hold(flayer);float range0=MindFlayer.BlastRangeFor(flayer);
    var cloak=WearItem(flayer,"LP_IllithidTendrilCloak");RaceGear.ResetCloakCensus();

@@ -139,7 +139,7 @@ namespace LichPhylactery {
     case RitualResult.Rift:{
      var cell=RiftSpot(map,center);var plane=AbyssItems.AbyssPlane;
      if(cell.IsValid && plane!=null){circle.lockRift=PortalEvent.Open(map,cell,plane,StorytellerUtility.DefaultThreatPointsNow(map),tier==4);}
-     Find.LetterStack.ReceiveLetter("深渊仪式失败：裂口","仪式彻底失控了（成功率 "+chance.ToStringPercent()+"，本次结果 "+roll.ToStringPercent()+"）：法阵旁撕开了一道通往深渊的裂口！"+(tier==4?"第一波里就有炎魔。":"")+"\n\n裂口关上之前法阵不能再用。关闭方法：打掉它、驱散粉尘、巨灵或六臂蛇人命令、3 格内落下 5 瓶圣水，或者用真名卷。",LetterDefOf.ThreatBig,new LookTargets(circle.lockRift!=null?(Thing)circle.lockRift:circle));
+     Find.LetterStack.ReceiveLetter("深渊仪式失败：裂口","仪式彻底失控了（成功率 "+chance.ToStringPercent()+"，本次结果 "+roll.ToStringPercent()+"）：法阵旁撕开了一道通往深渊的裂口！"+(tier==4?"第一波里就有炎魔。":"")+"\n\n裂口关上之前法阵不能再用。关闭方法：打掉它、巨灵或六臂蛇人命令，或者用真名卷。",LetterDefOf.ThreatBig,new LookTargets(circle.lockRift!=null?(Thing)circle.lockRift:circle));
      break;
     }
    }

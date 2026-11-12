@@ -149,7 +149,7 @@
   <HediffDef ParentName="LP_MonsterBodyBase">
     <defName>LP_DemilichBody</defName>
     <label>半巫妖之躯</label>
-    <description>只剩一颗镶着宝石的头骨：每 60 秒发出一次吞魂之嚎（20 格内活人体质豁免难度 21、基础成功率 10%，失败灵魂撕裂、倒地，30 秒内不救治就死；巫妖和死灵造物免疫）。圣水、银器伤害 ×2。倒地即死。</description>
+    <description>只剩一颗镶着宝石的头骨：每 60 秒发出一次吞魂之嚎（20 格内活人体质豁免难度 21、基础成功率 10%，失败灵魂撕裂、倒地，30 秒内不救治就死；巫妖和死灵造物免疫）。银器伤害 ×2。倒地即死。</description>
     <stages><li>
       <painFactor>0.3</painFactor><blocksMentalBreaks>true</blocksMentalBreaks>
       <disablesNeeds><li>Food</li><li>Rest</li><li>Joy</li><li>Beauty</li><li>Comfort</li><li>Outdoors</li><li>RoomSize</li><li MayRequire="Ludeon.RimWorld.Ideology">Indoors</li></disablesNeeds>
@@ -170,7 +170,7 @@
   <HediffDef>
     <defName>LP_BeholderPetrified</defName>
     <label>石化</label>
-    <description>被眼魔的石化射线定住了，全身像石头一样僵硬：一天之内动不了。驱散粉尘可以解除。</description>
+    <description>被眼魔的石化射线定住了，全身像石头一样僵硬：一天之内动不了。</description>
     <hediffClass>HediffWithComps</hediffClass>
     <isBad>true</isBad>
     <defaultLabelColor>(0.7, 0.7, 0.7)</defaultLabelColor>
@@ -274,37 +274,6 @@
       <tags><li>LP_AntiMagic</li></tags>
       <careIfWornByCorpse>false</careIfWornByCorpse>
     </apparel>
-  </ThingDef>
-  <ThingDef ParentName="LP_ThrowableBase">
-    <defName>LP_HellfireOrb</defName>
-    <label>地狱火宝珠</label>
-    <description>死亡骑士化灰后留下的暗红色宝珠，里面翻滚着地狱火。投出去会炸开一个半径 4 的地狱火球：一半火焰、一半死灵伤害（敏捷豁免减半）。只能用一次。</description>
-    <graphicData><texPath>LegendaryMonsters/Items/HellfireOrb</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
-    <statBases><MarketValue>900</MarketValue><Mass>0.5</Mass></statBases>
-    <weaponTags><li>LP_HellfireOrb</li></weaponTags>
-    <verbs>
-      <li>
-        <label>投出地狱火宝珠</label>
-        <verbClass>Verb_LaunchProjectile</verbClass>
-        <hasStandardCommand>true</hasStandardCommand>
-        <range>12.9</range>
-        <forcedMissRadius>1</forcedMissRadius>
-        <warmupTime>1.5</warmupTime>
-        <noiseRadius>4</noiseRadius>
-        <soundCast>ThrowGrenade</soundCast>
-        <targetParams><canTargetLocations>true</canTargetLocations></targetParams>
-        <defaultProjectile>LP_Proj_HellfireOrb</defaultProjectile>
-        <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
-      </li>
-    </verbs>
-  </ThingDef>
-  <ThingDef ParentName="LP_ThrowableProjectileBase">
-    <defName>LP_Proj_HellfireOrb</defName>
-    <label>地狱火宝珠</label>
-    <thingClass>LichPhylactery.Projectile_LPAlchemy</thingClass>
-    <graphicData><texPath>LegendaryMonsters/Items/HellfireOrb</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
-    <projectile><damageDef>Flame</damageDef><damageAmountBase>0</damageAmountBase><explosionRadius>4</explosionRadius></projectile>
-    <modExtensions><li Class="LichPhylactery.ThrowableEffectExtension"><effect>hellfire</effect></li></modExtensions>
   </ThingDef>
   <ThingDef ParentName="ResourceBase">
     <defName>LP_SoulGem</defName>
@@ -411,7 +380,7 @@
     <requiresFaction>true</requiresFaction>
     <approachOrderString>闯入{0}</approachOrderString>
     <approachingReportString>正在闯入{0}。</approachingReportString>
-    <arrivedLetter>这里是无尽墓穴。半巫妖每 60 秒发出一次吞魂之嚎：带上医生，灵魂撕裂的人 30 秒内必须包扎。圣水和银器伤害 ×2。</arrivedLetter>
+    <arrivedLetter>这里是无尽墓穴。半巫妖每 60 秒发出一次吞魂之嚎：带上医生，灵魂撕裂的人 30 秒内必须包扎。银器伤害 ×2。</arrivedLetter>
     <arrivedLetterDef>ThreatBig</arrivedLetterDef>
     <wantsThreatPoints>true</wantsThreatPoints>
   </SitePartDef>

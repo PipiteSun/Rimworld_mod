@@ -194,7 +194,7 @@ namespace LichPhylactery {
   protected override bool TryExecuteWorker(IncidentParms parms){
    var map=(Map)parms.target;if(!PortalEvent.TryFindSpot(map,out var cell))return false;
    var rift=PortalEvent.Open(map,cell,AbyssItems.AbyssPlane,parms.points,false);
-   SendStandardLetter("深渊入侵","位面薄得像一层纸：一道深渊裂口在殖民地外撕开了！劣魔先冲出来，然后是巴路古拉、哈兹魔，夜里还有影魔；再往后魅魔和（袭击点数够高时）炎魔也会亲自走出来。每 8 小时一波，开了 3 天不关就会崩溃。\n\n关上它：打掉裂口（600 生命）、扔驱散粉尘、让巨灵或六臂蛇人命令它闭合、在它 3 格内落下 5 瓶圣水，或者用一张真名卷直接封住。关上后会留下位面残渣和恶魔血。",LetterDefOf.ThreatBig,parms,new LookTargets(rift));
+   SendStandardLetter("深渊入侵","位面薄得像一层纸：一道深渊裂口在殖民地外撕开了！劣魔先冲出来，然后是巴路古拉、哈兹魔，夜里还有影魔；再往后魅魔和（袭击点数够高时）炎魔也会亲自走出来。每 8 小时一波，开了 3 天不关就会崩溃。\n\n关上它：打掉裂口（600 生命）、让巨灵或六臂蛇人命令它闭合，或者用一张真名卷直接封住。关上后会留下位面残渣和恶魔血。",LetterDefOf.ThreatBig,parms,new LookTargets(rift));
    return true;
   }
  }

@@ -76,9 +76,9 @@ namespace LichPhylactery {
    var hs=p.health.hediffSet;
    // 1. 致命的缺失部位（心脏、大脑等）恢复
    foreach(var m in hs.hediffs.OfType<Hediff_MissingPart>().Where(m=>m.Part!=null && Vital(m.Part)).ToList())p.health.RemoveHediff(m);
-   // 2. 伤口：要害部位最多剩一半伤害，其他部位至少留 1 点生命
+   // 2. 伤口：要害部位最多剩一半伤害，其他部位至少留 1 点生命（2026-11-10：开着「总生命随部位生命缩放」时按放大后的上限；关着时致死阈值是原版 150，仍按原版上限压伤，免得救不回来）
    foreach(var g in hs.hediffs.OfType<Hediff_Injury>().Where(i=>i.Part!=null).GroupBy(i=>i.Part).ToList()){
-    float max=g.Key.def.GetMaxHealth(p),dmg=g.Sum(i=>i.Severity),limit=Vital(g.Key)?max*.5f:Mathf.Max(0f,max-1f);
+    float max=Adventurer.TotalScaleOn?PartHealth.Maximum(g.Key,p):g.Key.def.GetMaxHealth(p),dmg=g.Sum(i=>i.Severity),limit=Vital(g.Key)?max*.5f:Mathf.Max(0f,max-1f);
     if(dmg>limit && dmg>0f)foreach(var i in g)i.Severity*=limit/dmg;
    }
    var loss=hs.GetFirstHediffOfDef(HediffDefOf.BloodLoss);if(loss!=null && loss.Severity>.4f)loss.Severity=.4f;
@@ -95,7 +95,8 @@ namespace LichPhylactery {
    if(a==null || a.Dead || victim==null || a==victim || !Has(a,Combat) || !victim.HostileTo(a))return 0;
    int n=0;
    foreach(var i in a.health.hediffSet.hediffs.OfType<Hediff_Injury>().Where(i=>!i.IsPermanent() && i.Severity>0f).ToList()){
-    float max=i.Part==null?10f:i.Part.def.GetMaxHealth(a);i.Heal(Mathf.Max(.5f,max*CombatHealFraction));n++;
+    float max=i.Part==null?10f:PartHealth.Maximum(i.Part,a); // 2026-11-10：按放大后的部位上限回 5%
+    i.Heal(Mathf.Max(.5f,max*CombatHealFraction));n++;
    }
    if(n>0)Text(a,"战斗之恩");
    return n;

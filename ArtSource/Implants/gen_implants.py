@@ -8,9 +8,9 @@ ROOT = sys.argv[1] if len(sys.argv) > 1 else '.'
 # 部件（替换整个部位）：defName 后缀、名称、部位、效率、植入物位、是否调谐、配方台、研究、材料、额外阶段、说明
 PARTS = [
     ('InfusedArm', '注能义臂', 'Shoulder', 1.15, 'Infused', False, 'LP_RuneAnvil', 'LP_Research_InfusedProsthetics', {'Steel': 50, 'LP_Mithral': 5}, '', 700,
-     '器械师用钢和少量秘银锻成、再灌注魔力的义臂。替换整条手臂，部位效率 115%。普通档，不占调谐位。'),
+     '用钢和少量秘银锻成、再灌注魔力的义臂。替换整条手臂，部位效率 115%。普通档，不占调谐位。'),
     ('InfusedLeg', '注能义腿', 'Leg', 1.15, 'Infused', False, 'LP_RuneAnvil', 'LP_Research_InfusedProsthetics', {'Steel': 50, 'LP_Mithral': 5}, '', 700,
-     '器械师用钢和少量秘银锻成、再灌注魔力的义腿。替换整条腿，部位效率 115%。普通档，不占调谐位。'),
+     '用钢和少量秘银锻成、再灌注魔力的义腿。替换整条腿，部位效率 115%。普通档，不占调谐位。'),
     ('ColdIronArm', '寒铁义臂', 'Shoulder', 1.25, 'ColdArm', False, 'LP_RuneAnvil', 'LP_Research_InfusedProsthetics', {'LP_ColdIron': 40, 'LP_Mithral': 5}, '', 1300,
      '淬炼寒铁锻成的义臂，摸上去总是冰凉。替换整条手臂，部位效率 125%；近战打寒铁克制的目标（妖精血统、精灵、灵能者）和邪魔时伤害 +30%。普通档，不占调谐位。'),
     ('MithralLeg', '秘银义腿', 'Leg', 1.30, 'MithralLeg', True, 'LP_RuneAnvil', 'LP_Research_InfusedProsthetics', {'LP_Mithral': 40}, '', 2600,
@@ -46,7 +46,7 @@ out = ['<?xml version="1.0" encoding="utf-8"?>', '<!-- 1.112.0 DND 植入物（A
 out.append('''  <ResearchProjectDef>
     <defName>LP_Research_InfusedProsthetics</defName>
     <label>注能义肢</label>
-    <description>把魔像学的灌注技术用在血肉之躯上：在符文铁砧锻造注能义肢、寒铁 / 秘银 / 精金义肢、机关眼和秘银心核；器械师还能给原版仿生和考古科技部件注能（效率 +10%）。</description>
+    <description>把魔像学的灌注技术用在血肉之躯上：在符文铁砧锻造注能义肢、寒铁 / 秘银 / 精金义肢、机关眼和秘银心核。</description>
     <baseCost>2500</baseCost>
     <techLevel>Medieval</techLevel>
     <prerequisites><li>LP_Research_GolemManual</li></prerequisites>
@@ -55,7 +55,7 @@ out.append('''  <ResearchProjectDef>
     <researchViewY>0.7</researchViewY>
   </ResearchProjectDef>''')
 for key, label, part, eff, flag, att, bench, res, mats, stage, value, desc in PARTS:
-    d = 'LP_Imp_' + key; dd = esc(desc + ('器械师主刀安装成功率 +15%；器械师自己装上后每 4 级效率再 +3%（最多 +15%）。'))
+    d = 'LP_Imp_' + key; dd = esc(desc + (''))
     out.append('''  <ThingDef ParentName="BodyPartBase">
     <defName>%s</defName><label>%s</label><description>%s</description>
     <techLevel>Medieval</techLevel>

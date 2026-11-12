@@ -89,7 +89,6 @@ namespace LichPhylactery {
  public static class LavaCrystalByproduct {
   static IEnumerable<Thing> Postfix(IEnumerable<Thing> values,Pawn worker,IBillGiver billGiver){
    foreach(var t in values)yield return t;
-   if(ItemMaterials.Lava!=null && ItemMaterials.LavaFrom(worker,billGiver as Thing,Rand.Value)){var lava=ThingMaker.MakeThing(ItemMaterials.Lava);lava.stackCount=1;yield return lava;}
   }
  }
  // 巨魔皮：屠宰巨魔（按基因）得到巨魔皮而不是人皮。

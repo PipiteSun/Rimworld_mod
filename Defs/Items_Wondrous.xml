@@ -30,65 +30,6 @@
       <layers><li>Belt</li></layers>
     </apparel>
   </ThingDef>
-  <ThingDef ParentName="LP_WondrousApparelBase">
-    <defName>LP_CloakElvenkind</defName>
-    <label>精灵斗篷</label>
-    <description>颜色随环境变幻的精灵斗篷。穿着者站着不动时，被远程攻击命中的概率-15%；精灵穿着时-30%。</description>
-    <graphicData><texPath>Items/Wondrous/CloakElvenkind</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
-    <statBases><MaxHitPoints>120</MaxHitPoints><Mass>1</Mass><MarketValue>800</MarketValue><Insulation_Cold>8</Insulation_Cold></statBases>
-    <colorGenerator Class="ColorGenerator_Single"><color>(0.38,0.55,0.33)</color></colorGenerator>
-    <apparel>
-      <bodyPartGroups><li>Torso</li><li>Shoulders</li><li>Arms</li></bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Duster/Duster</wornGraphicPath>
-      <layers><li>Shell</li></layers>
-    </apparel>
-  </ThingDef>
-  <ThingDef ParentName="LP_WondrousApparelBase">
-    <defName>LP_BootsElvenkind</defName>
-    <label>精灵靴</label>
-    <description>软底的精灵靴，走起路来悄无声息：穿着者走动不会吵醒睡着的人或动物。</description>
-    <graphicData><texPath>Items/Wondrous/BootsElvenkind</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
-    <statBases><MaxHitPoints>100</MaxHitPoints><Mass>0.6</Mass><MarketValue>450</MarketValue></statBases>
-    <apparel>
-      <bodyPartGroups><li>Feet</li></bodyPartGroups>
-      <layers><li>OnSkin</li></layers>
-    </apparel>
-  </ThingDef>
-  <ThingDef ParentName="LP_WondrousApparelBase">
-    <defName>LP_BootsSpeed</defName>
-    <label>疾行靴</label>
-    <description>后跟带着小小羽翼的红靴。穿着者获得“疾行”能力：1分钟内移动速度×2，冷却1天。</description>
-    <graphicData><texPath>Items/Wondrous/BootsSpeed</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
-    <statBases><MaxHitPoints>100</MaxHitPoints><Mass>0.6</Mass><MarketValue>700</MarketValue></statBases>
-    <apparel>
-      <bodyPartGroups><li>Feet</li></bodyPartGroups>
-      <layers><li>OnSkin</li></layers>
-    </apparel>
-    <comps>
-      <li Class="LichPhylactery.CompProperties_GrantAbility"><ability>LP_SpeedBurst</ability></li>
-    </comps>
-  </ThingDef>
-  <AbilityDef>
-    <defName>LP_SpeedBurst</defName>
-    <label>疾行</label>
-    <description>疾行靴的魔力涌入双腿：1分钟内移动速度×2。冷却1天。</description>
-    <iconPath>Items/Abilities/SpeedBurst</iconPath>
-    <hostile>false</hostile>
-    <targetRequired>false</targetRequired>
-    <cooldownTicksRange>60000</cooldownTicksRange>
-    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
-    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
-    <aiCanUse>false</aiCanUse>
-    <verbProperties>
-      <verbClass>Verb_CastAbility</verbClass>
-      <warmupTime>0</warmupTime>
-      <range>0</range>
-      <targetParams><canTargetSelf>true</canTargetSelf></targetParams>
-    </verbProperties>
-    <comps>
-      <li Class="LichPhylactery.CompProperties_ItemAbility"><effect>speed</effect></li>
-    </comps>
-  </AbilityDef>
   <HediffDef>
     <defName>LP_SpeedBurst</defName>
     <label>疾行</label>
@@ -98,19 +39,6 @@
     <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>3600</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
     <stages><li><statFactors><MoveSpeed>2</MoveSpeed></statFactors></li></stages>
   </HediffDef>
-  <ThingDef ParentName="LP_WondrousApparelBase">
-    <defName>LP_IntellectFortress</defName>
-    <label>心灵屏障头环</label>
-    <description>镶着蓝晶的银头环。心智抗性+40%；夺心魔对佩戴者读心时会被反噬：眩晕2秒并陷入“心灵震荡”。</description>
-    <graphicData><texPath>Items/Wondrous/IntellectFortress</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
-    <statBases><MaxHitPoints>100</MaxHitPoints><Mass>0.2</Mass><MarketValue>1200</MarketValue></statBases>
-    <equippedStatOffsets><LP_MindResist>0.4</LP_MindResist></equippedStatOffsets>
-    <apparel>
-      <countsAsClothingForNudity>false</countsAsClothingForNudity>
-      <bodyPartGroups><li>UpperHead</li></bodyPartGroups>
-      <layers><li>Overhead</li></layers>
-    </apparel>
-  </ThingDef>
 
   <ThingDef Name="LP_RingBase" ParentName="LP_AccessoryBase" Abstract="True">
     <statBases><MarketValue>700</MarketValue></statBases>

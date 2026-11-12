@@ -25,7 +25,7 @@ namespace LichPhylactery {
    // 旧存档迁移：只完成原版前置都已完成的新研究。
    Find.ResearchManager.ResetAllProgress();Find.ResearchManager.FinishProject(DefDatabase<ResearchProjectDef>.GetNamed("Smithing"),false,null,false);
    int n=ResearchTab.MigrateLegacy();Func<string,bool> fin=s=>DefDatabase<ResearchProjectDef>.GetNamed(s).IsFinished;
-   Check(n==2 && fin("LP_GiantForging") && fin("LP_RacialArmory") && !fin("LP_GiantPlate") && !fin("LP_RacialBlades") && !fin("LP_GeneWorkbenchTech") && DefDatabase<ThingDef>.GetNamed("LP_FireGiantForge").IsResearchFinished,"legacy save with smithing keeps giant forge and racial armory, nothing more: "+n);
+   Check(n==1 && fin("LP_GiantForging") && !fin("LP_GeneWorkbenchTech") && DefDatabase<ThingDef>.GetNamed("LP_FireGiantForge").IsResearchFinished,"legacy save with smithing keeps giant forge, nothing more: "+n);
    Find.ResearchManager.ResetAllProgress();
   }
  }

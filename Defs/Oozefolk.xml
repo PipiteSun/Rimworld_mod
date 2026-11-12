@@ -57,7 +57,7 @@
     </damageFactors>
     <customEffectDescriptions>
       <li>算作流浆人（吞没、分裂、稳形护带、种族判定）。</li>
-      <li>酸蚀伤害：×25%（伤害名含 Acid 的全部，包括强酸瓶和其他模组的酸）。</li>
+      <li>酸蚀伤害：×25%（伤害名含 Acid 的全部，包括本模组与其他模组的酸）。</li>
       <li>出血速度：×50%。</li>
       <li>伤口不会感染，旧伤不会变成永久伤疤。</li>
       <li>夺心魔蝌蚪无法寄生（会被溶解）。</li>
@@ -215,7 +215,7 @@
   <GeneDef ParentName="LP_OozeGeneBase">
     <defName>LP_OozeChill</defName>
     <label>凝滞</label>
-    <description>原生质遇冷会变稠。流浆人怕冷：舒适温度下限高8°C；站在0°C以下的地方，身体会“凝滞”，走得慢、手也不灵活，回暖1小时后才能恢复。冻伤、冬狼的寒霜撕咬、寒霜法杖和寒冰魔的寒气对他们都格外伤。</description>
+    <description>原生质遇冷会变稠。流浆人怕冷：舒适温度下限高8°C；站在0°C以下的地方，身体会“凝滞”，走得慢、手也不灵活，回暖1小时后才能恢复。冻伤、冬狼的寒霜撕咬和寒冰魔的寒气对他们都格外伤。</description>
     <geneClass>LichPhylactery.Gene_OozeChill</geneClass>
     <iconPath>Oozefolk/Genes/Chill</iconPath>
     <displayCategory>Temperature</displayCategory>
@@ -475,7 +475,7 @@
   <AbilityDef ParentName="LP_OozeAbilityBase">
     <defName>LP_OozeExtractGel</defName>
     <label>析出凝胶</label>
-    <description>把一部分原生质挤出体外，凝成1份原生质凝胶（可做凝胶敷料、强酸瓶、黏胶袋和稳形护带）。消耗25原生质，需要30秒。</description>
+    <description>把一部分原生质挤出体外，凝成1份原生质凝胶（可做凝胶敷料和稳形护带）。消耗25原生质，需要30秒。</description>
     <iconPath>Oozefolk/Abilities/ExtractGel</iconPath>
     <cooldownTicksRange>60</cooldownTicksRange>
     <hostile>false</hostile>
@@ -512,7 +512,7 @@
   <ThingDef ParentName="ResourceBase">
     <defName>LP_ProtoplasmGel</defName>
     <label>原生质凝胶</label>
-    <description>流浆人析出的一团半透明凝胶，摸上去凉凉的、会微微蠕动。可以在炼金桌做成凝胶敷料、强酸瓶和黏胶袋，也能在缝纫台做成流浆人用的稳形护带。\n\n流浆人用“析出凝胶”能力产出；屠宰流浆人的尸体也能得到3份（不出肉和皮）。黑网商队偶尔会卖。</description>
+    <description>流浆人析出的一团半透明凝胶，摸上去凉凉的、会微微蠕动。可以在炼金桌做成凝胶敷料，也能在缝纫台做成流浆人用的稳形护带。\n\n流浆人用“析出凝胶”能力产出；屠宰流浆人的尸体也能得到3份（不出肉和皮）。黑网商队偶尔会卖。</description>
     <graphicData>
       <texPath>Oozefolk/Items/ProtoplasmGel</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -601,7 +601,6 @@
       <recipeUsers>
         <li>ElectricTailoringBench</li>
         <li>HandTailoringBench</li>
-        <li>LP_ArcaneLoom</li>
       </recipeUsers>
       <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
       <researchPrerequisite>LP_DNDAlchemy</researchPrerequisite>
@@ -621,30 +620,6 @@
     </ingredients>
     <fixedIngredientFilter><thingDefs><li>LP_ProtoplasmGel</li><li>Cloth</li></thingDefs></fixedIngredientFilter>
     <products><LP_GelDressing>2</LP_GelDressing></products>
-  </RecipeDef>
-  <RecipeDef ParentName="LP_ThrowableRecipeBase">
-    <defName>LP_MakeAcidVialGel</defName>
-    <label>用凝胶制作强酸瓶</label>
-    <description>用2份原生质凝胶和5份钢制作一组强酸瓶（替代化学燃料配方）。</description>
-    <jobString>正在制作强酸瓶。</jobString>
-    <ingredients>
-      <li><filter><thingDefs><li>LP_ProtoplasmGel</li></thingDefs></filter><count>2</count></li>
-      <li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>5</count></li>
-    </ingredients>
-    <fixedIngredientFilter><thingDefs><li>LP_ProtoplasmGel</li><li>Steel</li></thingDefs></fixedIngredientFilter>
-    <products><LP_AcidVial>1</LP_AcidVial></products>
-  </RecipeDef>
-  <RecipeDef ParentName="LP_ThrowableRecipeBase">
-    <defName>LP_MakeTanglefootBagGel</defName>
-    <label>用凝胶制作黏胶袋</label>
-    <description>用2份原生质凝胶和5份布制作一组黏胶袋（替代化学燃料配方）。</description>
-    <jobString>正在制作黏胶袋。</jobString>
-    <ingredients>
-      <li><filter><thingDefs><li>LP_ProtoplasmGel</li></thingDefs></filter><count>2</count></li>
-      <li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>5</count></li>
-    </ingredients>
-    <fixedIngredientFilter><thingDefs><li>LP_ProtoplasmGel</li><li>Cloth</li></thingDefs></fixedIngredientFilter>
-    <products><LP_TanglefootBag>1</LP_TanglefootBag></products>
   </RecipeDef>
 
   <!-- ==================== 费伦拓荒同盟兵种 ==================== -->
@@ -694,7 +669,7 @@
   <ScenarioDef ParentName="ScenarioBase">
     <defName>LP_OozeScenario</defName>
     <label>实验池逃亡</label>
-    <description>塞伊的红袍法师在地下实验室里养着一池原生质，想把它们培育成听话的仆役。三个流浆人在一次失败的实验里有了自己的意识，溶开池壁的封印，带着一点能抢到的东西逃了出来。\n\n其中一人在实验池里多泡了几天，开局原生质有60；另外带着凝胶敷料、强酸瓶和一条稳形护带。流浆人不怕感染、什么都能吃，能吞没尸体、分裂繁衍；但很怕冷。大约第6天，塞伊会派一支小追捕队（约300点）来把实验品抓回去。\n\n注意：三人都很怕冷，冬天来得早的地方要先解决取暖；追捕队不强但来得快，属于中等难度。</description>
+    <description>塞伊的红袍法师在地下实验室里养着一池原生质，想把它们培育成听话的仆役。三个流浆人在一次失败的实验里有了自己的意识，溶开池壁的封印，带着一点能抢到的东西逃了出来。\n\n其中一人在实验池里多泡了几天，开局原生质有60；另外带着凝胶敷料和一条稳形护带。流浆人不怕感染、什么都能吃，能吞没尸体、分裂繁衍；但很怕冷。大约第6天，塞伊会派一支小追捕队（约300点）来把实验品抓回去。\n\n注意：三人都很怕冷，冬天来得早的地方要先解决取暖；追捕队不强但来得快，属于中等难度。</description>
     <scenario>
       <summary>三名从塞伊实验池里逃出来的流浆人；第6天红袍的追捕队就会找上门。</summary>
       <parts>
@@ -732,11 +707,6 @@
           <def>StartingThing_Defined</def>
           <thingDef>LP_GelDressing</thingDef>
           <count>10</count>
-        </li>
-        <li Class="ScenPart_StartingThing_Defined">
-          <def>StartingThing_Defined</def>
-          <thingDef>LP_AcidVial</thingDef>
-          <count>4</count>
         </li>
         <li Class="ScenPart_StartingThing_Defined">
           <def>StartingThing_Defined</def>

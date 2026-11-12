@@ -42,8 +42,8 @@
   <XenotypeDef ParentName="LP_PactFiendBase">
     <defName>LP_HornedDevil</defName>
     <label>角魔</label>
-    <description>蝠翼、大角、满身鳞甲的魔鬼，九狱军团的重步兵。角魔握着三股的地狱钢叉，还能把一团地狱火扔到 10 格外。</description>
-    <descriptionShort>九狱重步兵。地狱钢叉（地狱之伤）、地狱火投掷；倒下即遣返九狱，30% 留下钢叉。</descriptionShort>
+    <description>蝠翼、大角、满身鳞甲的魔鬼，九狱军团的重步兵。角魔能把一团地狱火扔到 10 格外。</description>
+    <descriptionShort>九狱重步兵。地狱火投掷；倒下即遣返九狱。</descriptionShort>
     <iconPath>Pact/Xenotypes/HornedDevil</iconPath>
     <combatPowerFactor>2</combatPowerFactor>
     <genes>
@@ -221,11 +221,11 @@
   <GeneDef ParentName="LP_PactGeneBase">
     <defName>LP_HellsCore</defName>
     <label>九狱之躯</label>
-    <description>九狱魔鬼的身体：被击倒或杀死时化作黑烟遣返九狱（被束缚的、戴着位面锚链的除外）。银武器伤害 ×1.5，圣水 ×2，寒铁对它没有额外效果。不会被深渊腐化。九狱的造物守契约：束缚者的服从度不会下降，到 0 时也只会要求重新谈判。</description>
+    <description>九狱魔鬼的身体：被击倒或杀死时化作黑烟遣返九狱（被束缚的、戴着位面锚链的除外）。银武器伤害 ×1.5，寒铁对它没有额外效果。不会被深渊腐化。九狱的造物守契约：束缚者的服从度不会下降，到 0 时也只会要求重新谈判。</description>
     <iconPath>Pact/Genes/HellsCore</iconPath>
     <customEffectDescriptions>
       <li>倒下或死亡：遣返九狱。</li>
-      <li>银武器伤害 ×1.5，圣水伤害 ×2。</li>
+      <li>银武器伤害 ×1.5。</li>
       <li>束缚者服从度不下降；到 0 时要求重新谈判，不会开打。</li>
     </customEffectDescriptions>
     <modExtensions>
@@ -248,12 +248,12 @@
   <GeneDef ParentName="LP_PactGeneBase">
     <defName>LP_CelestialCore</defName>
     <label>天界之躯</label>
-    <description>天界的造物：免疫深渊腐化，圣水伤不到它；它的攻击对恶魔、魔鬼和亡灵 ×1.5；看得穿隐身和伪装（真知）。被击倒或杀死时化作光回到天界。</description>
+    <description>天界的造物：免疫深渊腐化；它的攻击对恶魔、魔鬼和亡灵 ×1.5；看得穿隐身和伪装（真知）。被击倒或杀死时化作光回到天界。</description>
     <iconPath>Pact/Genes/CelestialCore</iconPath>
     <customEffectDescriptions>
       <li>造成的伤害对恶魔 / 魔鬼 / 亡灵 ×1.5。</li>
       <li>真知：看穿隐身和伪装（算作魔鬼之眼）。</li>
-      <li>免疫深渊腐化；圣水无效。</li>
+      <li>免疫深渊腐化。</li>
     </customEffectDescriptions>
     <modExtensions>
       <li Class="LichPhylactery.LP_OutsiderExtension"><plane>Celestia</plane><holy>0</holy><taintImmune>true</taintImmune></li>
@@ -399,7 +399,7 @@
   <GeneDef ParentName="LP_PactGeneBase">
     <defName>LP_HornedDevilStature</defName>
     <label>角魔体型</label>
-    <description>魁梧的鳞甲身躯：实际体型 ×180%，显示 ×140%，一对大角、一对蝠翼。生成时手握地狱钢叉。</description>
+    <description>魁梧的鳞甲身躯：实际体型 ×180%，显示 ×140%，一对大角、一对蝠翼。</description>
     <iconPath>Pact/Genes/HornedDevilStature</iconPath>
     <exclusionTags><li>Headbone</li></exclusionTags>
     <modExtensions>
@@ -974,7 +974,7 @@
   <GeneDef ParentName="LP_PactGeneBase">
     <defName>LP_DevaHealing</defName>
     <label>治疗之触</label>
-    <description>能力“治疗之触”：治好一个人最严重的一处伤（也能止住地狱之伤）。冷却 8 小时（一天 3 次）。</description>
+    <description>能力“治疗之触”：治好一个人最严重的一处伤。冷却 8 小时（一天 3 次）。</description>
     <iconPath>Pact/Abilities/HealingTouch</iconPath>
     <abilities><li>LP_DevaHealingTouch</li></abilities>
     <descriptionHyperlinks><AbilityDef>LP_DevaHealingTouch</AbilityDef></descriptionHyperlinks>
@@ -1280,7 +1280,7 @@
   <AbilityDef ParentName="LP_PactAbilityBase">
     <defName>LP_DevaHealingTouch</defName>
     <label>治疗之触</label>
-    <description>手按在伤口上：治好一个人最严重的一处伤（也能止住地狱之伤）。冷却 8 小时（一天 3 次）。</description>
+    <description>手按在伤口上：治好一个人最严重的一处伤。冷却 8 小时（一天 3 次）。</description>
     <iconPath>Pact/Abilities/HealingTouch</iconPath>
     <cooldownTicksRange>20000</cooldownTicksRange>
     <hostile>false</hostile>

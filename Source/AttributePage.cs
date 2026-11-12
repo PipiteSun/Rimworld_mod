@@ -91,6 +91,8 @@ namespace LichPhylactery {
     var extra=new List<string>();if(Math.Abs(leg-1f)>.0001f)extra.Add("传奇血量 "+X(leg));if(Math.Abs(tough-1f)>.0001f)extra.Add("坚韧 "+X(tough));
     list.Add(new Line{label="部位生命合计",formula="体质 × 等级成长"+(extra.Count>0?" × 传奇血量 / 坚韧":""),value=X(Adventurer.PartHealthFactor(h.pawn)),extra=string.Join("，",extra)});
     if(Adventurer.PainScaleOn)list.Add(new Line{label="伤口疼痛",formula="÷ 部位生命合计（≥1 的部分）",value="÷"+Adventurer.PainDivisor(h.pawn).ToString("0.00"),tip="伤口和缺失部位的疼痛除以部位生命倍率，免得血厚却因疼痛先倒地。"});
+    if(Adventurer.TotalScaleOn && h.pawn?.health!=null)list.Add(new Line{label="致死伤害阈值",formula="150 × 体型生命倍率 × 部位生命合计（≥1 的部分）",value=h.pawn.health.LethalDamageThreshold.ToString("0"),
+     tip="全身伤口合计达到这个数就会死于伤势过重。健康百分比和失血速度同样按部位生命合计缩放（设置「总生命随部位生命缩放」）。"}); // 2026-11-10
    }
    foreach(var e in Hediff_Adventurer.Table){
     if(e.a!=a || S(e.stat)==null)continue;
@@ -102,7 +104,7 @@ namespace LichPhylactery {
    list.Add(new Line{label="职业强度（主属性）",formula="(1 + "+P(Adventurer.ClassAbilityPer)+" × 调整值′) × 擅长 × 天赋 − 1",value=Pct(cp),tip="以"+Adventurer.Names[a]+"为主属性的职业（施法、职业能力）强度：(1 + "+P(Adventurer.ClassAbilityPer)+" × "+N(h.AMod(a))+")"+(tm>1.0001f?Whole(h,a):"")+" − 1 = "+Pct(cp)+"\n熟练加值另加 "+P(Adventurer.ProfClassPer)+" ×（熟练 − 2）。"});
    if(a==Adventurer.Int){ // 1.97.0 奥术强度的智力项 10%
     float ap=Adventurer.ClassPowerBonus(h.pawn,a,Adventurer.ArcaneAbilityPer)-Adventurer.ProfClassPer*Math.Max(0,h.Proficiency-2);
-    list.Add(new Line{label="奥术强度（智力）",formula="(1 + "+P(Adventurer.ArcaneAbilityPer)+" × 调整值′) × 擅长 × 天赋 − 1",value=Pct(ap),tip="奥术强度（法师、术士智识支）的智力项每点调整值 "+P(Adventurer.ArcaneAbilityPer)+"：(1 + "+P(Adventurer.ArcaneAbilityPer)+" × "+N(h.AMod(a))+")"+(tm>1.0001f?Whole(h,a):"")+" − 1 = "+Pct(ap)+"\n器械强度等其他用智力的强度仍按 "+P(Adventurer.ClassAbilityPer)+"。"});
+    list.Add(new Line{label="奥术强度（智力）",formula="(1 + "+P(Adventurer.ArcaneAbilityPer)+" × 调整值′) × 擅长 × 天赋 − 1",value=Pct(ap),tip="奥术强度（法师、术士智识支）的智力项每点调整值 "+P(Adventurer.ArcaneAbilityPer)+"：(1 + "+P(Adventurer.ArcaneAbilityPer)+" × "+N(h.AMod(a))+")"+(tm>1.0001f?Whole(h,a):"")+" − 1 = "+Pct(ap)+"\n其他用智力的强度仍按 "+P(Adventurer.ClassAbilityPer)+"。"});
    }
    if(a==Adventurer.Cha){ // 1.98.0 天赋强度的魅力项 10%
     float ip=Adventurer.ClassPowerBonus(h.pawn,a,Adventurer.InnateAbilityPer)-Adventurer.ProfClassPer*Math.Max(0,h.Proficiency-2);

@@ -8,7 +8,7 @@ using Verse.AI;
 namespace LichPhylactery {
  // 1.85.0 附魔强化：Test.ps1 -Only GearEnhance。
  public partial class LichChecks {
-  static string geSwordId;
+  static string geSwordId;static int geSwordHp;
   void CheckGearEnhance(){
    Func<string,ThingDef> D=n=>DefDatabase<ThingDef>.GetNamedSilentFail(n);Func<string,ResearchProjectDef> R=n=>DefDatabase<ResearchProjectDef>.GetNamedSilentFail(n);Func<string,RecipeDef> Rc=n=>DefDatabase<RecipeDef>.GetNamedSilentFail(n);
    bool oldSup=GearEnhance.TestSuppressed;GearEnhance.TestSuppressed=true;
@@ -25,11 +25,17 @@ namespace LichPhylactery {
     // 3. 属性
     var sword=ThingMaker.MakeThing(D("MeleeWeapon_LongSword"),ThingDefOf.Steel);var rifle=ThingMaker.MakeThing(D("Gun_AssaultRifle"));var vest=ThingMaker.MakeThing(D("Apparel_FlakVest"));made.Add(sword);made.Add(rifle);made.Add(vest);
     var dmg=StatDefOf.MeleeWeapon_DamageMultiplier;var rdmg=DefDatabase<StatDef>.GetNamed("RangedWeapon_DamageMultiplier");var accM=StatDefOf.AccuracyMedium;var sharp=StatDefOf.ArmorRating_Sharp;var val=StatDefOf.MarketValue;
-    float d0=sword.GetStatValue(dmg),v0=sword.GetStatValue(val),r0=rifle.GetStatValue(rdmg),a0=rifle.GetStatValue(accM),s0=vest.GetStatValue(sharp),vs0=vest.GetStatValue(StatDefOf.ArmorRating_Blunt);string l0=sword.LabelNoCount;
+    float d0=sword.GetStatValue(dmg),v0=sword.GetStatValue(val),r0=rifle.GetStatValue(rdmg),a0=rifle.GetStatValue(accM),s0=vest.GetStatValue(sharp),vs0=vest.GetStatValue(StatDefOf.ArmorRating_Blunt);string l0=sword.LabelNoCount;int hv0=vest.MaxHitPoints,hs0=sword.MaxHitPoints;
     GearEnhance.Comp(sword).level=3;GearEnhance.Comp(rifle).level=4;GearEnhance.Comp(vest).level=5;foreach(var t in made)GearEnhance.ClearStatCache(t);
     float d1=sword.GetStatValue(dmg),v1=sword.GetStatValue(val),r1=rifle.GetStatValue(rdmg),a1=rifle.GetStatValue(accM),s1=vest.GetStatValue(sharp);
     Check(Mathf.Abs(d1/d0-1.18f)<.001f && Mathf.Abs(v1/v0-1.45f)<.01f && Mathf.Abs(r1/r0-1.24f)<.001f && Mathf.Abs(a1-Mathf.Min(a0+.06f,.99f))<.001f && Mathf.Abs(s1-(s0*1.25f+.05f))<.001f,"stats: +3 sword dmg ×"+(d1/d0).ToString("0.###")+" value ×"+(v1/v0).ToString("0.###")+", +4 rifle dmg ×"+(r1/r0).ToString("0.###")+" acc "+a0.ToString("0.###")+"→"+a1.ToString("0.###")+", +5 vest sharp "+s0.ToString("0.###")+"→"+s1.ToString("0.###"));
     Check(sword.LabelNoCount=="+3 "+l0 && GearEnhance.Comp(sword).CompInspectStringExtra().Contains("伤害+18%") && vest.def.IsApparel && GearEnhance.Effects(vest,5).Contains("护甲×1.25"),"label '"+sword.LabelNoCount+"' and inspect text show the enhancement");
+    // 3b. 1.145.0 耐久上限每级 +10%：等级变化按耐久百分比换算当前耐久（满的仍是满的），说明里写着
+    int hv1=vest.MaxHitPoints,hs1=sword.MaxHitPoints;int keep=sword.HitPoints;
+    GearEnhance.Comp(vest).level=0;GearEnhance.ClearStatCache(vest);int hvBack=vest.MaxHitPoints,hpBack=vest.HitPoints;
+    vest.HitPoints=hv0/2;GearEnhance.Comp(vest).level=5;GearEnhance.ClearStatCache(vest);int halfUp=vest.HitPoints;vest.HitPoints=vest.MaxHitPoints;
+    string hpExp=StatDefOf.MaxHitPoints.Worker.GetExplanationFull(StatRequest.For(vest),ToStringNumberSense.Absolute,vest.GetStatValue(StatDefOf.MaxHitPoints));
+    Check(hv1==Mathf.RoundToInt(hv0*1.5f) && hs1==Mathf.RoundToInt(hs0*1.3f) && keep==hs1 && hvBack==hv0 && hpBack==hv0 && Mathf.Abs(halfUp-hv0/2*1.5f)<=1f && vest.MaxHitPoints==hv1 && hpExp.Contains("附魔强化 +5") && GearEnhance.Effects(vest,5).Contains("耐久上限+50%"),"max HP: vest "+hv0+"→"+hv1+" (+5), sword "+hs0+"→"+hs1+" (+3, full stays full: "+keep+"), drop to +0 "+hv1+"→"+hpBack+", half "+(hv0/2)+"→"+halfUp+" at +5, explanation lists it");
     // 4. 工作单只接选了目标、等级在本档的装备
     GearEnhance.Comp(sword).level=0;GearEnhance.Comp(rifle).level=5;
     var bl=new Bill_Production(rl);var bh=new Bill_Production(rh);var silver=MakeItem("Silver",25);var mith=MakeItem("LP_Mithral",4);made.Add(silver);made.Add(mith);
@@ -90,7 +96,7 @@ namespace LichPhylactery {
      foreach(var t in new[]{rs,rs2})if(!t.Destroyed)t.Destroy();
     }finally{GearEnhance.TestRoll=null;rl.workAmount=work;foreach(var other in map.mapPawns.FreeColonistsSpawned.ToList())if(other.drafter!=null)other.drafter.Drafted=false;}
     // 8. 存读档：等级和目标保留
-    GearEnhance.Comp(blade).level=4;GearEnhance.Comp(blade).target=5;geSwordId=blade.ThingID;made.Remove(blade);
+    GearEnhance.Comp(blade).level=4;GearEnhance.Comp(blade).target=5;GearEnhance.ClearStatCache(blade);blade.HitPoints=blade.MaxHitPoints;geSwordHp=blade.HitPoints;geSwordId=blade.ThingID;made.Remove(blade);
    }finally{
     GearEnhance.TestRoll=null;GearEnhance.TestSuppressed=oldSup;
     foreach(var t in made)if(!t.Destroyed)t.Destroy();
@@ -99,6 +105,7 @@ namespace LichPhylactery {
   void CheckGearEnhanceAfterLoad(){
    var blade=map.listerThings.AllThings.FirstOrDefault(t=>t.ThingID==geSwordId);
    Check(blade!=null && GearEnhance.Level(blade)==4 && GearEnhance.Comp(blade).target==5 && blade.LabelNoCount.StartsWith("+4 "),"enhance level and target survive save/load: "+blade?.LabelNoCount);
+   Check(blade!=null && geSwordHp>0 && blade.HitPoints==geSwordHp && blade.MaxHitPoints==geSwordHp,"enhanced hit points above the base max survive save/load: "+blade?.HitPoints+" / "+blade?.MaxHitPoints+" (saved "+geSwordHp+")");
    blade?.Destroy();
   }
  }

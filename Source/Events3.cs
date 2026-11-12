@@ -375,7 +375,7 @@ namespace LichPhylactery {
    l.CheckboxLabeled("全灭的冒险小队",ref s.e3Party,"世界地图上出现一支全灭冒险小队的营地，杀死他们的怪物还在。装备、冒险日志，复活他们就能招募。");
    l.CheckboxLabeled("魔网潮汐",ref s.e3Surge,"5天极光：每次施放能力 20% 触发野魔法（好坏都有），施法职业每天额外得冒险者经验。");
    l.CheckboxLabeled("命匣窃贼",ref s.e3Thief,"隐身的盗贼夜里潜入偷巫妖的命匣。偷走了要在15天内去藏身处抢回来，否则命匣被卖到九狱掮客手里（可赎回）。");
-   l.CheckboxLabeled("冒险者的天命",ref s.e3Calling,"冒险者第一次到5、10、15级时，各有一半几率接到个人任务；完成后三选一：属性+1、武艺天赋、传承武器。");
+   l.CheckboxLabeled("冒险者的天命",ref s.e3Calling,"冒险者第一次到5、10、15级时，各有一半几率接到个人任务；完成后二选一：属性+1、武艺天赋。");
    l.CheckboxLabeled("骑士比武大会",ref s.e3Tourney,"同盟邀请你参加比武：剑术、长枪、射箭、摔角各派一人，按技能和属性掷骰。赢了拿奖杯和经验，三项以上得冠军称号。");
    l.CheckboxLabeled("敌对巫妖的战书",ref s.e3Rival,"殖民地有命匣5级以上的巫妖时，一名塞伊巫妖下战书：法术决斗、命匣狩猎或拒绝。");
    l.CheckboxLabeled("树人苏醒",ref s.e3Treant,"林木多的地图上，最老的树站了起来：砍树少就送一棵森林之心（周围作物生长+20%），砍得多就带着苏醒的树来报复。");

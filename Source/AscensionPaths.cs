@@ -209,7 +209,7 @@ namespace LichPhylactery {
    var seal=Items.Thing("LP_SaintSeal");if(seal!=null){var s=ThingMaker.MakeThing(seal);s.TryGetComp<CompBiocodable>()?.CodeFor(p);if(p.apparel!=null && ApparelUtility.HasPartsToWear(p,seal))p.apparel.Wear((Apparel)s,false);else GenPlace.TryPlaceThing(s,p.PositionHeld,p.MapHeld,ThingPlaceMode.Near);}
    if(g!=null)FaithUtility.AddFavor(g,SaintReward,p.LabelShort+"证道成圣");
    pr.Set("saintTick",Now);
-   Advance(pr,"打败了异端勇者，成为"+g?.label+"的圣徒：心灵敏感度+15%、社交+2，"+g?.label+"神眷+"+SaintReward+"、之后每天+"+SaintDaily+"；得到圣徒圣印（已为"+p.LabelShort+"绑定）。");
+   Advance(pr,"打败了异端勇者，成为"+g?.label+"的圣徒：心灵敏感度+15%、社交+2，"+g?.label+"神眷+"+SaintReward+"、之后每天+"+SaintDaily+"。");
   }
   public static void Heretics(AscensionProgress pr){
    var p=pr.pawn;var map=p.MapHeld;if(map==null)return;
@@ -428,13 +428,11 @@ namespace LichPhylactery {
      var k=Faith.God("Kelemvor");if(k!=null && !t.kelemvorFixed.Contains(k)){t.kelemvorFixed.Add(k);Demigods.FixFavor(k);}
      var box=Necro.Lich(p)?.box;if(box!=null && !t.shrines.Contains(box.ThingID)){t.shrines.Add(box.ThingID);box.HitPoints=Math.Min(box.MaxHitPoints,box.HitPoints*2);}
      t.githBetrayed=true;
-     GiveBound(p,"LP_EternalNightCrown");
-     Ascension.Letter("半神巫妖",p.LabelShort+"夺取了神位。命匣化为神龛：复生只要1天，神力≥50时可以立刻复生（扣50神力），命匣生命×2。\n\n得到永夜冠冕。凯兰沃的神眷从此固定为-100；吉斯洋基不再把"+p.LabelShort+"当作巫妖女王的同类。",LetterDefOf.PositiveEvent,p);
+     Ascension.Letter("半神巫妖",p.LabelShort+"夺取了神位。命匣化为神龛：复生只要1天，神力≥50时可以立刻复生（扣50神力），命匣生命×2。\n\n凯兰沃的神眷从此固定为-100；吉斯洋基不再把"+p.LabelShort+"当作巫妖女王的同类。",LetterDefOf.PositiveEvent,p);
      break;}
     case Ascension.Usurper:{
      var x=pr.patronGod;if(x!=null && !t.usurped.Contains(x)){t.usurped.Add(x);Demigods.FixFavor(x);}
-     var w=GiveBound(p,"LP_Godsbane");
-     Ascension.Letter("篡火者",p.LabelShort+"篡夺了"+x?.label+"的神火。"+x?.label+"的神眷从此固定为-100，信奉祂的派系袭击更频繁（×1.5）。\n\n得到诸神之祸。",LetterDefOf.PositiveEvent,p);
+     Ascension.Letter("篡火者",p.LabelShort+"篡夺了"+x?.label+"的神火。"+x?.label+"的神眷从此固定为-100，信奉祂的派系袭击更频繁（×1.5）。",LetterDefOf.PositiveEvent,p);
      break;}
    }
   }

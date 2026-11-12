@@ -310,7 +310,7 @@ namespace LichPhylactery {
    var map=parms.target as Map;if(map==null || !PortalEvent.TryFindSpot(map,out var cell))return false;
    var plane=DefDatabase<PortalPlaneDef>.AllDefsListForReading.Where(d=>d.randomPool).RandomElement(); // 1.54.0 深渊不进随机池
    var rift=PortalEvent.Open(map,cell,plane);
-   SendStandardLetter("传送门失控","一道位面裂口在殖民地外撕开了！裂口另一边是"+plane.label+"，"+plane.description+"\n\n每过 8 小时就会有一波生物从裂口里涌出来，而且一波比一波多；开了 3 天还没关上的话，它会崩溃，一口气喷出双倍的生物。\n\n关上它：打掉裂口（600 生命），或者把驱散粉尘扔到它 3 格以内。法师路径的殖民者攻击裂口时伤害 ×3；巨灵可以试着直接命令它关闭（只能试一次）。关上后会留下位面残渣，野兽也会安静下来。",LetterDefOf.ThreatBig,parms,new LookTargets(rift));
+   SendStandardLetter("传送门失控","一道位面裂口在殖民地外撕开了！裂口另一边是"+plane.label+"，"+plane.description+"\n\n每过 8 小时就会有一波生物从裂口里涌出来，而且一波比一波多；开了 3 天还没关上的话，它会崩溃，一口气喷出双倍的生物。\n\n关上它：打掉裂口（600 生命）。法师路径的殖民者攻击裂口时伤害 ×3；巨灵可以试着直接命令它关闭（只能试一次）。关上后会留下位面残渣，野兽也会安静下来。",LetterDefOf.ThreatBig,parms,new LookTargets(rift));
    return true;
   }
  }
@@ -362,7 +362,7 @@ namespace LichPhylactery {
   public static void Draw(Listing_Standard l){
    var s=LichMod.Settings;
    l.GapLine();l.Label("事件");
-   l.CheckboxLabeled("传送门失控",ref s.portalBreach,"殖民地外偶尔撕开一道位面裂口（九狱、元素火位面、妖精荒野、幽影界），每8小时涌出一波生物，3天不关会崩溃。打掉裂口、扔驱散粉尘或让巨灵命令都能关上。");
+   l.CheckboxLabeled("传送门失控",ref s.portalBreach,"殖民地外偶尔撕开一道位面裂口（九狱、元素火位面、妖精荒野、幽影界），每8小时涌出一波生物，3天不关会崩溃。打掉裂口或让巨灵命令都能关上。");
    l.CheckboxLabeled("巨人迁徙",ref s.giantMigration,"一队饿着的巨人（余烬氏族的火巨人或食人魔一家、费伦拓荒同盟的泰坦或霜巨人战帮）路过扎营，会找你讨吃的，有可能有人想留下来。");
    l.CheckboxLabeled("黄昏之年",ref s.twilightYear,"每年有25%概率出现“黄昏之兆”（第1年在第1～30天里随机一天，第2年起在每年第一天），15天后开始黄昏之年（最早第16天）：神力灌注者和神明附体的敌人大幅增多。关闭后不再触发（已经开始的照常结束）；平时的神力灌注不受影响。");
    l.Label("黄昏之年持续："+s.twilightDays+"天");s.twilightDays=(int)l.Slider(s.twilightDays,15,120);

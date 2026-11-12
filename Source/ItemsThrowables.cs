@@ -98,15 +98,13 @@ namespace LichPhylactery {
    if(f!=1f)__0.SetAmount(__0.Amount*f);
   }
  }
- // 同盟士兵、塞伊远征军战士小概率成为投弹手（主武器换成炼金之火或圣水，比照原版投弹手）；敌对派系成员小概率随身带雷鸣石或驱散粉尘（死后掉落）。
+ // 敌对派系成员小概率随身带雷鸣石或驱散粉尘（死后掉落）。1.143.0：炼金之火、圣水已移除，同盟/塞伊投弹手不再出现。
  public static class ItemGear {
   public const float GrenadierChance=.08f,DropChance=.04f;
   public static readonly string[] AllianceSoldiers={"LP_FC_Guard","LP_FC_Archer","LP_FC_DwarfGuard","LP_FC_ElfRanger"};
   public static readonly string[] ThaySoldiers={"LP_FH_OrcWarrior","LP_FH_GithMercenary"};
   public static string GrenadeFor(Pawn p,float roll){
    var kind=p?.kindDef?.defName;if(kind==null || roll>=GrenadierChance)return null;
-   if(AllianceSoldiers.Contains(kind))return roll<GrenadierChance/2?"LP_HolyWater":"LP_AlchemistFire";
-   if(ThaySoldiers.Contains(kind))return "LP_AlchemistFire";
    return null;
   }
   public static bool Arm(Pawn p,string name){
@@ -115,7 +113,7 @@ namespace LichPhylactery {
   }
   public static Thing Carry(Pawn p,float roll){
    if(p?.inventory==null || roll>=DropChance || p.Faction==null || p.Faction.IsPlayer || !p.RaceProps.Humanlike)return null;
-   var t=ThingMaker.MakeThing(Items.Thing(roll<DropChance/2?"LP_Thunderstone":"LP_DispelDust"));p.inventory.innerContainer.TryAdd(t);return t;
+   return null; // 1.146.0：雷鸣石、驱散粉尘已移除，敌人不再随身携带
   }
   public static void OnGenerated(Pawn p){
    if(p?.kindDef==null || !p.kindDef.defName.StartsWith("LP_") || p.Faction==null || p.Faction.IsPlayer)return;

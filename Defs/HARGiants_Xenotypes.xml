@@ -328,7 +328,7 @@
   <GeneDef ParentName="LP_HARGiantGeneBase">
     <defName>LP_CyclopsCraft</defName>
     <label>独眼匠心</label>
-    <description>独眼巨人天生是好工匠：建造速度+20%；在锻造台、熔火锻炉、符文铁砧、巨人铁砧上干活（锻造类配方）的工作速度+15%。</description>
+    <description>独眼巨人天生是好工匠：建造速度+20%；在锻造台、符文铁砧上干活（锻造类配方）的工作速度+15%。</description>
     <iconPath>HARGiants/Cyclops/Genes/Craft</iconPath>
     <displayCategory>Miscellaneous</displayCategory>
     <biostatMet>-1</biostatMet>
@@ -371,7 +371,7 @@
   <GeneDef ParentName="LP_HARGiantGeneBase">
     <defName>LP_CyclopsFlatSight</defName>
     <label>单眼视界</label>
-    <description>只有一只眼睛，看不准远近：射击精度-3.5点（原版的精度点数，射击10级、20格时命中率约×70%），远程瞄准时间+10%。戴上独眼透镜后精度惩罚减半（约×85%）。</description>
+    <description>只有一只眼睛，看不准远近：射击精度-3.5点（原版的精度点数，射击10级、20格时命中率约×70%），远程瞄准时间+10%。</description>
     <iconPath>HARGiants/Cyclops/Genes/FlatSight</iconPath>
     <displayCategory>Violence</displayCategory>
     <biostatCpx>1</biostatCpx>
@@ -380,7 +380,7 @@
       <AimingDelayFactor>0.1</AimingDelayFactor>
     </statOffsets>
     <customEffectDescriptions>
-      <li>射击精度：-3.5点（触发欢是-5点）；戴独眼透镜时-1.75点。</li>
+      <li>射击精度：-3.5点（触发欢是-5点）。</li>
     </customEffectDescriptions>
   </GeneDef>
 

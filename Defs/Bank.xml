@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.142.0 银行：2×2 金库，只收银与金，每格 20 堆（共 80 堆）。研究 LP_Banking 在 Research.xml。
+     储存用原版 maxItemsInCell；格里的银/金不画、不显示数量标签、不能点选，由建筑在两个玻璃柜窗里按堆数摆原版银 / 金物品图（Source/BankVault.cs）。
+     银行格里的银/金不受伤害（爆炸、火）；拆除时钱留在原地附近。 -->
+<Defs>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>LP_BankVault</defName>
+    <label>银行</label>
+    <description>两座带玻璃窗的加固金柜，只收银与金，每格可存放 20 堆，整座共 80 堆。\n\n存进去的钱照常能用于交易、建造和配方，不用先取出来。玻璃柜里看得到存着的银和金，存得越多堆得越满；鼠标悬停或选中时显示银、金的总数与总价值，「金库清单」里能逐堆禁止或取出。\n\n金库不会着火，爆炸也伤不到里面的钱；拆除后钱会留在原地。轨道交易仍须把银行放在轨道交易信标的范围内。</description>
+    <thingClass>LichPhylactery.Building_LPBank</thingClass>
+    <graphicData>
+      <texPath>LP/Bank/BankVault</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>Cutout</shaderType>
+      <drawSize>(2,2)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <uiIconPath>LP/Bank/BankVault_Icon</uiIconPath>
+    <size>(2,2)</size>
+    <rotatable>false</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>70</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.35</staticSunShadowHeight>
+    <tickerType>Rare</tickerType>
+    <useHitPoints>true</useHitPoints>
+    <costList>
+      <Steel>200</Steel>
+      <Plasteel>50</Plasteel>
+      <Gold>20</Gold>
+      <ComponentIndustrial>4</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <MaxHitPoints>1500</MaxHitPoints>
+      <WorkToBuild>8000</WorkToBuild>
+      <Flammability>0</Flammability>
+      <Beauty>6</Beauty>
+      <Mass>300</Mass>
+    </statBases>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <designationCategory>Furniture</designationCategory>
+    <uiOrder>2060</uiOrder>
+    <surfaceType>Item</surfaceType>
+    <canOverlapZones>false</canOverlapZones>
+    <building>
+      <preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+      <ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+      <maxItemsInCell>20</maxItemsInCell>
+      <blueprintClass>Blueprint_Storage</blueprintClass>
+      <fixedStorageSettings>
+        <filter>
+          <thingDefs>
+            <li>Silver</li>
+            <li>Gold</li>
+          </thingDefs>
+        </filter>
+      </fixedStorageSettings>
+      <defaultStorageSettings>
+        <priority>Preferred</priority>
+        <filter>
+          <thingDefs>
+            <li>Silver</li>
+            <li>Gold</li>
+          </thingDefs>
+        </filter>
+      </defaultStorageSettings>
+    </building>
+    <inspectorTabs>
+      <li>ITab_Storage</li>
+      <li>LichPhylactery.ITab_BankLedger</li>
+    </inspectorTabs>
+    <researchPrerequisites>
+      <li>LP_Banking</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+</Defs>

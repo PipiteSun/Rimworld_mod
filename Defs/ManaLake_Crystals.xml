@@ -249,38 +249,6 @@
     <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_SourceBurst</ability></li></comps>
   </ThingDef>
   <ThingDef ParentName="LP_ArcanumCrystalBase">
-    <defName>LP_Crystal_Replicate</defName>
-    <label>职业水晶：完美复刻</label>
-    <description>魔力湖泊的职业水晶。器械师吸收后永久学会秘传「完美复刻」（6 环，需要器械师 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（6 环器械师）：复刻 3 格内一件 DND 物品（服装、武器或奇物，品质相同，传说品质除外），花掉地图上相当于它市价一半的白银。冷却 15 天。</description>
-    <graphicData><color>(0.95,0.8,0.45)</color></graphicData>
-    <statBases><MarketValue>8000</MarketValue></statBases>
-    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_Replicate</ability></li></comps>
-  </ThingDef>
-  <ThingDef ParentName="LP_ArcanumCrystalBase">
-    <defName>LP_Crystal_ForceField</defName>
-    <label>职业水晶：力场发生器</label>
-    <description>魔力湖泊的职业水晶。器械师吸收后永久学会秘传「力场发生器」（7 环，需要器械师 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（7 环器械师）：在 10 格内一处空地放下力场柱，展开半径 5 格的拦弹护盾（外面射进来的子弹被挡住，里面可以往外打），1 天后崩解。冷却 3 天。</description>
-    <graphicData><color>(0.95,0.8,0.45)</color></graphicData>
-    <statBases><MarketValue>12000</MarketValue></statBases>
-    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_ForceField</ability></li></comps>
-  </ThingDef>
-  <ThingDef ParentName="LP_ArcanumCrystalBase">
-    <defName>LP_Crystal_SoulCore</defName>
-    <label>职业水晶：灵魂之核</label>
-    <description>魔力湖泊的职业水晶。器械师吸收后永久学会被动秘传「灵魂之核」（8 环，需要器械师 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（8 环器械师）：你放下的符文炮台和战争傀儡伤害 ×1.5。</description>
-    <graphicData><color>(0.95,0.8,0.45)</color></graphicData>
-    <statBases><MarketValue>16000</MarketValue></statBases>
-    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_SoulCore</ability></li></comps>
-  </ThingDef>
-  <ThingDef ParentName="LP_ArcanumCrystalBase">
-    <defName>LP_Crystal_MasterArtisan</defName>
-    <label>职业水晶：万能匠魂</label>
-    <description>魔力湖泊的职业水晶。器械师吸收后永久学会被动秘传「万能匠魂」（9 环，需要器械师 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（9 环器械师）：可以多戴一枚魔法戒指。</description>
-    <graphicData><color>(0.95,0.8,0.45)</color></graphicData>
-    <statBases><MarketValue>25000</MarketValue></statBases>
-    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_MasterArtisan</ability></li></comps>
-  </ThingDef>
-  <ThingDef ParentName="LP_ArcanumCrystalBase">
     <defName>LP_Crystal_BloodFury</defName>
     <label>职业水晶：血怒</label>
     <description>魔力湖泊的职业水晶。野蛮人吸收后永久学会被动秘传「血怒」（6 环，需要野蛮人 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（6 环野蛮人）：狂暴中，自己每损失 10% 的健康，造成的伤害 +5%（最多 +50%）。</description>

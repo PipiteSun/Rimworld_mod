@@ -15,7 +15,7 @@
   <ResearchProjectDef>
     <defName>LP_DNDAlchemy</defName>
     <label>DND炼金术</label>
-    <description>把费伦大陆的炼金术用在边缘世界：用巨魔血、熔岩结晶、草药等调配药水，并制作炼金之火、强酸瓶、圣水等投掷物，以及压制灵能寄生体的抑灵剂。解锁炼金桌和蒸馏器（炼金桌旁的附件，速度+15%）。</description>
+    <description>把费伦大陆的炼金术用在边缘世界：用巨魔血、草药等调配药水，以及压制灵能寄生体的抑灵剂。解锁炼金桌和蒸馏器（炼金桌旁的附件，速度+15%）。</description>
     <baseCost>1200</baseCost>
     <techLevel>Industrial</techLevel>
     <prerequisites>
@@ -26,22 +26,9 @@
     <researchViewY>0.7</researchViewY>
   </ResearchProjectDef>
   <ResearchProjectDef>
-    <defName>LP_ArcaneStaves</defName>
-    <label>奥术法杖</label>
-    <description>在附魔台上把魔力封进杖身：魔法飞弹杖、火焰法杖、寒霜法杖。法杖的威力随持有者的心灵敏感度变化。</description>
-    <baseCost>1000</baseCost>
-    <techLevel>Medieval</techLevel>
-    <prerequisites>
-      <li>LP_DNDAlchemy</li>
-    </prerequisites>
-    <tab>LP_FireGiantTech</tab>
-    <researchViewX>1</researchViewX>
-    <researchViewY>0</researchViewY>
-  </ResearchProjectDef>
-  <ResearchProjectDef>
     <defName>LP_MythicMetallurgy</defName>
     <label>秘金冶炼</label>
-    <description>学会处理秘银与精金这两种传说金属，并在炼金桌上用白银淬炼寒铁。解锁精灵锁子甲等秘金装备（在符文铁砧锻造）。</description>
+    <description>学会处理秘银与精金这两种传说金属，并在炼金桌上用白银淬炼寒铁。秘金可以当金属材料做各种装备。</description>
     <baseCost>2500</baseCost>
     <techLevel>Industrial</techLevel>
     <prerequisites>
@@ -67,25 +54,11 @@
     <researchViewX>5</researchViewX>
     <researchViewY>1.4</researchViewY>
   </ResearchProjectDef>
-  <ResearchProjectDef>
-    <defName>LP_RunicFirearms</defName>
-    <label>符文火器</label>
-    <description>把矮人的符文锻造和费伦炼金术用到火器上：在符文铁砧制作圣银手枪、熔岩穿甲枪、雷鸣铳，以及五种吃魔力的符文矮人枪械（符文铁砧要先研究“符文锻造”）。</description>
-    <baseCost>1200</baseCost>
-    <techLevel>Industrial</techLevel>
-    <prerequisites>
-      <li>LP_DNDAlchemy</li>
-      <li>Smithing</li>
-    </prerequisites>
-    <tab>LP_FireGiantTech</tab>
-    <researchViewX>1</researchViewX>
-    <researchViewY>1.4</researchViewY>
-  </ResearchProjectDef>
   <!-- 1.47.0：符文锻造。前置原版锻造，放在 (0,1.4)；旧存档完成了异族军械、符文火器或秘金冶炼的直接补完。 -->
   <ResearchProjectDef>
     <defName>LP_Research_RuneSmithing</defName>
     <label>符文锻造</label>
-    <description>矮人锻炉的门道：建造符文铁砧和符文淬火槽。符文火器、异族军械、魔化兵器、骑士锻造和传奇战甲的东西都在符文铁砧上打。</description>
+    <description>矮人锻炉的门道：建造符文铁砧和符文淬火槽。制伏武器和符文义肢在符文铁砧上打。</description>
     <baseCost>500</baseCost>
     <techLevel>Medieval</techLevel>
     <prerequisites>
@@ -131,7 +104,7 @@
     <baseCost>1500</baseCost>
     <techLevel>Industrial</techLevel>
     <prerequisites>
-      <li>LP_ArcaneStaves</li>
+      <li>LP_DNDAlchemy</li>
     </prerequisites>
     <tab>LP_FireGiantTech</tab>
     <researchViewX>2</researchViewX>
@@ -142,7 +115,7 @@
   <ResearchProjectDef>
     <defName>LP_Research_Enchanting</defName>
     <label>附魔学</label>
-    <description>把魔力封进金属与宝石的基础功课：解锁附魔台，在附魔台制作守护戒指、自由行动戒指、适应项链、夜视护目镜和魂石（精灵）；解除诅咒卷轴在卷轴书桌抄写。研究者可以在研究台或卷轴书桌鉴定未鉴定的物品，看穿诅咒。</description>
+    <description>把魔力封进金属与宝石的基础功课：解锁附魔台，在附魔台制作守护戒指、自由行动戒指、适应项链和夜视护目镜；解除诅咒卷轴在卷轴书桌抄写。研究者可以在研究台或卷轴书桌鉴定未鉴定的物品，看穿诅咒。</description>
     <baseCost>1200</baseCost>
     <techLevel>Medieval</techLevel>
     <prerequisites>
@@ -152,20 +125,6 @@
     <tab>LP_FireGiantTech</tab>
     <researchViewX>2</researchViewX>
     <researchViewY>0.7</researchViewY>
-  </ResearchProjectDef>
-  <ResearchProjectDef>
-    <defName>LP_Research_EnchantedArms</defName>
-    <label>魔化兵器</label>
-    <description>把附魔用在兵刃上：火焰舌（熔火锻炉）、霜寒之刃、龙杀手、守护者之剑和闪电标枪（符文铁砧）。装了灵能扩展时还要器械师的对应被动能力。</description>
-    <baseCost>2000</baseCost>
-    <techLevel>Medieval</techLevel>
-    <prerequisites>
-      <li>LP_Research_Enchanting</li>
-      <li>LP_ArcaneStaves</li>
-    </prerequisites>
-    <tab>LP_FireGiantTech</tab>
-    <researchViewX>3</researchViewX>
-    <researchViewY>0</researchViewY>
   </ResearchProjectDef>
   <ResearchProjectDef>
     <defName>LP_Research_WondrousCraft</defName>
@@ -183,7 +142,7 @@
   <ResearchProjectDef>
     <defName>LP_Research_SacredRelics</defName>
     <label>圣物祝圣</label>
-    <description>在圣坛为护身圣物祝圣：祈祷念珠、圣甲虫护符、殉道者念珠、净化封印、圣光冠环和护佑誓约戒指。</description>
+    <description>在圣坛为护身圣物祝圣：祈祷念珠、圣甲虫护符、净化封印、圣光冠环和护佑誓约戒指。</description>
     <baseCost>1500</baseCost>
     <techLevel>Medieval</techLevel>
     <prerequisites>
@@ -197,7 +156,7 @@
   <ResearchProjectDef>
     <defName>LP_Research_WondrousDevices</defName>
     <label>神奇器物</label>
-    <description>不戴在身上的魔法器物：不可移动之杖、无尽水瓶、迷雾瓶、不灭火把、英灵号角（在附魔台制作）。</description>
+    <description>不戴在身上的魔法器物：不可移动之杖、无尽水瓶、不灭火把、英灵号角（在附魔台制作）。</description>
     <baseCost>2500</baseCost>
     <techLevel>Medieval</techLevel>
     <prerequisites>
@@ -249,57 +208,12 @@
   </ResearchProjectDef>
 
   <!-- ==================== 巨人谱系（火巨人 / 熔火 / 霜 / 风暴 / 云巨人） ==================== -->
-  <ResearchProjectDef>
-    <defName>LP_GiantForging</defName>
-    <label>巨人锻造</label>
-    <description>学会为巨人打造合身的兵器与护具：建造熔火锻炉（火巨人专用）和巨人铁砧（谁都能用，体型1.8以上快25%），制作火巨人熔炉重锤、霜巨人斧、海渊珊瑚甲、云巨人晨星锤和风暴三叉戟。</description>
-    <baseCost>600</baseCost>
-    <techLevel>Medieval</techLevel>
-    <prerequisites>
-      <li>Smithing</li>
-    </prerequisites>
-    <tab>LP_FireGiantTech</tab>
-    <researchViewX>0</researchViewX>
-    <researchViewY>2.1</researchViewY>
-  </ResearchProjectDef>
-  <ResearchProjectDef>
-    <defName>LP_GiantPlate</defName>
-    <label>巨人重甲</label>
-    <description>在熔火锻炉上锻造巨人尺寸的板甲：火巨人熔铁战盔和火巨人熔铁重甲。</description>
-    <baseCost>900</baseCost>
-    <techLevel>Medieval</techLevel>
-    <prerequisites>
-      <li>LP_GiantForging</li>
-      <li>PlateArmor</li>
-    </prerequisites>
-    <tab>LP_FireGiantTech</tab>
-    <researchViewX>1</researchViewX>
-    <researchViewY>2.1</researchViewY>
-  </ResearchProjectDef>
-  <ResearchProjectDef>
-    <defName>LP_MoltenForging</defName>
-    <label>熔核锻造</label>
-    <description>解锁火巨人专属熔核禁卫套装：熔核破城锤、炉心战盔、熔核重甲。全部在熔火锻炉制作，全套装备可激活炉心过载。</description>
-    <baseCost>4000</baseCost>
-    <techLevel>Spacer</techLevel>
-    <prerequisites>
-      <li>PlateArmor</li>
-      <li>AdvancedFabrication</li>
-    </prerequisites>
-    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
-    <requiredResearchFacilities>
-      <li>MultiAnalyzer</li>
-    </requiredResearchFacilities>
-    <tab>LP_FireGiantTech</tab>
-    <researchViewX>2</researchViewX>
-    <researchViewY>2.1</researchViewY>
-  </ResearchProjectDef>
 
   <!-- ==================== 1.39.0 信仰（Y 2.8：巨人谱系和种族兵装之间的空行） ==================== -->
   <ResearchProjectDef>
     <defName>LP_Research_Faith</defName>
     <label>信仰与神术</label>
-    <description>按费伦诸神的教义建起圣坛：选择殖民地的守护神、祈祷、献祭，制作圣徽和祝圣圣水。解锁守护神像（圣坛旁的附件：圣坛速度+10%、祈祷娱乐+20%）。佩戴圣徽的人能消耗神眷施放神术。</description>
+    <description>按费伦诸神的教义建起圣坛：选择殖民地的守护神、祈祷、献祭，制作圣徽。解锁守护神像（圣坛旁的附件：圣坛速度+10%、祈祷娱乐+20%）。佩戴圣徽的人能消耗神眷施放神术。</description>
     <baseCost>800</baseCost>
     <techLevel>Medieval</techLevel>
     <tab>LP_FireGiantTech</tab>
@@ -335,89 +249,8 @@
     <researchViewY>2.8</researchViewY>
   </ResearchProjectDef>
 
-  <!-- ==================== 其他种族兵装 ==================== -->  <ResearchProjectDef>
-    <defName>LP_RacialArmory</defName>
-    <label>异族军械</label>
-    <description>学习矮人、精灵、牛头人和龙裔的传统手艺：矮人投掷锤、矮人符文盾、精灵长弓、牛头人角盔、蜕鳞甲（在符文铁砧锻造）。</description>
-    <baseCost>600</baseCost>
-    <techLevel>Medieval</techLevel>
-    <prerequisites>
-      <li>Smithing</li>
-    </prerequisites>
-    <tab>LP_FireGiantTech</tab>
-    <researchViewX>0</researchViewX>
-    <researchViewY>3.5</researchViewY>
-  </ResearchProjectDef>
-  <ResearchProjectDef>
-    <defName>LP_RacialBlades</defName>
-    <label>异族利刃</label>
-    <description>锻造各族的名刃：半兽人巨斧、吉斯洋基银剑、天穹之剑。</description>
-    <baseCost>900</baseCost>
-    <techLevel>Medieval</techLevel>
-    <prerequisites>
-      <li>LP_RacialArmory</li>
-      <li>LongBlades</li>
-    </prerequisites>
-    <tab>LP_FireGiantTech</tab>
-    <researchViewX>1</researchViewX>
-    <researchViewY>3.5</researchViewY>
-  </ResearchProjectDef>
-  <ResearchProjectDef>
-    <defName>LP_AstralPlate</defName>
-    <label>星界板甲</label>
-    <description>按吉斯洋基的星界工艺锻造板甲：星界战甲。</description>
-    <baseCost>900</baseCost>
-    <techLevel>Medieval</techLevel>
-    <prerequisites>
-      <li>LP_RacialArmory</li>
-      <li>PlateArmor</li>
-    </prerequisites>
-    <tab>LP_FireGiantTech</tab>
-    <researchViewX>1</researchViewX>
-    <researchViewY>4.2</researchViewY>
-  </ResearchProjectDef>
 
   <!-- ==================== 1.45.1 魔法盔甲衣服 ==================== -->
-  <ResearchProjectDef>
-    <defName>LP_Research_KnightForging</defName>
-    <label>骑士锻造</label>
-    <description>同盟骑士团的锻甲手艺：在符文铁砧打造圣武士板甲、誓约巨盔、锁子甲衫和战斗牧师胸甲。</description>
-    <baseCost>900</baseCost>
-    <techLevel>Medieval</techLevel>
-    <prerequisites>
-      <li>LP_RacialArmory</li>
-    </prerequisites>
-    <tab>LP_FireGiantTech</tab>
-    <researchViewX>2</researchViewX>
-    <researchViewY>3.5</researchViewY>
-  </ResearchProjectDef>
-  <ResearchProjectDef>
-    <defName>LP_Research_ArcaneTailoring</defName>
-    <label>法袍织造</label>
-    <description>把附魔织进布料：解锁法袍织机，在织机上织大法师长袍、尖顶法师帽、晨主圣袍、巫妖裹尸长袍和费伦宫廷礼服。元素织袍也只在织机上织，只要元素符。</description>
-    <baseCost>900</baseCost>
-    <techLevel>Medieval</techLevel>
-    <prerequisites>
-      <li>LP_Research_Enchanting</li>
-    </prerequisites>
-    <tab>LP_FireGiantTech</tab>
-    <researchViewX>3</researchViewX>
-    <researchViewY>2.8</researchViewY>
-  </ResearchProjectDef>
-  <ResearchProjectDef>
-    <defName>LP_Research_LegendaryArmor</defName>
-    <label>传奇战甲</label>
-    <description>只在传说里出现的战甲：矮人符文重铠与胡须面甲盔（矮人）、龙骑士战甲与龙首盔、象人卫士重铠（象人）、天穹神铠（泰坦），都在符文铁砧锻造。</description>
-    <baseCost>2500</baseCost>
-    <techLevel>Medieval</techLevel>
-    <prerequisites>
-      <li>LP_Research_KnightForging</li>
-      <li>LP_MythicMetallurgy</li>
-    </prerequisites>
-    <tab>LP_FireGiantTech</tab>
-    <researchViewX>3</researchViewX>
-    <researchViewY>3.5</researchViewY>
-  </ResearchProjectDef>
 
   <!-- ==================== 基因工作台 ==================== -->  <ResearchProjectDef>
     <defName>LP_GeneWorkbenchTech</defName>
@@ -436,7 +269,7 @@
   <ResearchProjectDef>
     <defName>LP_Research_Subduing</defName>
     <label>制伏战术</label>
-    <description>抓活口的门道：在符文铁砧制作制伏短棍、缚网弩、安眠短弓和安眠粉囊。再研究过奥术法杖的话，还能在附魔台制作安眠法杖。这些武器只会让目标昏迷倒地，不会造成伤口，也不会杀死目标。</description>
+    <description>抓活口的门道：在符文铁砧制作制伏短棍、缚网弩和安眠短弓，在附魔台制作安眠法杖。这些武器只会让目标昏迷倒地，不会造成伤口，也不会杀死目标。</description>
     <baseCost>800</baseCost>
     <techLevel>Medieval</techLevel>
     <prerequisites>
@@ -459,5 +292,19 @@
     <tab>LP_FireGiantTech</tab>
     <researchViewX>4</researchViewX>
     <researchViewY>2.8</researchViewY>
+  </ResearchProjectDef>
+  <!-- 1.142.0 银行：银行业（前置原版复杂家具），放在制伏战术右边 (2,4.9)。 -->
+  <ResearchProjectDef>
+    <defName>LP_Banking</defName>
+    <label>银行业</label>
+    <description>学会剑湾商会那一套：铁筋柜台、地下金库和记账的规矩。解锁银行：一座只收银与金的 2×2 金库，每格可存放 20 堆。</description>
+    <baseCost>1200</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>ComplexFurniture</li>
+    </prerequisites>
+    <tab>LP_FireGiantTech</tab>
+    <researchViewX>2</researchViewX>
+    <researchViewY>4.9</researchViewY>
   </ResearchProjectDef>
 </Defs>

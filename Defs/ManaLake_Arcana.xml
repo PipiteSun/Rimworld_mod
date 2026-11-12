@@ -522,47 +522,6 @@
   </AbilityDef>
 
   <!-- 器械师 -->
-  <AbilityDef ParentName="LP_ClassAbilityBase">
-    <defName>LP_AC_Replicate</defName>
-    <label>完美复刻</label>
-    <description>秘传（6 环器械师）：复刻 3 格内一件 DND 物品（服装、武器或奇物，品质相同，传说品质除外），花掉地图上相当于它市价一半的白银。冷却 15 天。</description>
-    <iconPath>LP/Arcana/Replicate</iconPath>
-    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
-    <cooldownTicksRange>900000</cooldownTicksRange>
-    <verbProperties><verbClass>Verb_CastAbility</verbClass><range>3</range><warmupTime>5</warmupTime><requireLineOfSight>false</requireLineOfSight>
-      <targetParams><canTargetPawns>false</canTargetPawns><canTargetItems>true</canTargetItems><canTargetBuildings>false</canTargetBuildings><canTargetLocations>false</canTargetLocations><mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable></targetParams></verbProperties>
-    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ArReplicate</effect><stat>LP_ArtificePower</stat></li></comps>
-    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>6</ring><cls>LP_Class_Artificer</cls></li></modExtensions>
-  </AbilityDef>
-  <AbilityDef ParentName="LP_ClassLocBase">
-    <defName>LP_AC_ForceField</defName>
-    <label>力场发生器</label>
-    <description>秘传（7 环器械师）：在 10 格内一处空地放下力场柱，展开半径 5 格的拦弹护盾（外面射进来的子弹被挡住，里面可以往外打），1 天后崩解。冷却 3 天。</description>
-    <iconPath>LP/Arcana/ForceField</iconPath>
-    <hostile>false</hostile>
-    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
-    <cooldownTicksRange>180000</cooldownTicksRange>
-    <verbProperties><range>10</range><warmupTime>1</warmupTime><requireLineOfSight>false</requireLineOfSight>
-      <targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>true</canTargetLocations></targetParams></verbProperties>
-    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>ArForceField</effect><stat>LP_ArtificePower</stat></li></comps>
-    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>7</ring><cls>LP_Class_Artificer</cls></li></modExtensions>
-  </AbilityDef>
-  <AbilityDef ParentName="LP_ArcanaPassiveBase">
-    <defName>LP_AC_SoulCore</defName>
-    <label>灵魂之核</label>
-    <description>秘传被动（8 环器械师）：你放下的符文炮台和战争傀儡伤害 ×1.5。</description>
-    <iconPath>LP/Arcana/SoulCore</iconPath>
-    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
-    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>8</ring><cls>LP_Class_Artificer</cls></li></modExtensions>
-  </AbilityDef>
-  <AbilityDef ParentName="LP_ArcanaPassiveBase">
-    <defName>LP_AC_MasterArtisan</defName>
-    <label>万能匠魂</label>
-    <description>秘传被动（9 环器械师）：可以多戴一枚魔法戒指。</description>
-    <iconPath>LP/Arcana/MasterArtisan</iconPath>
-    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_ArtificePower</stat></li></comps>
-    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>9</ring><cls>LP_Class_Artificer</cls></li></modExtensions>
-  </AbilityDef>
 
   <!-- 野蛮人 -->
   <AbilityDef ParentName="LP_ArcanaPassiveBase">

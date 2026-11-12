@@ -105,7 +105,7 @@ namespace LichPhylactery {
    if(map!=null && CollapseDef!=null)map.gameConditionManager.RegisterCondition(GameConditionMaker.MakeCondition(CollapseDef,CollapseDays*GenDate.TicksPerDay));
    var k=NetherilQuest.Karsus;if(k!=null){if(k.Spawned)FleckMaker.ThrowDustPuffThick(k.DrawPos,k.Map,2f,Color.gray);k.Destroy(DestroyMode.Vanish);NetherilQuest.OnKarsusLost("在失败的仪式里化成了灰");}
    var t=DefDatabase<ThoughtDef>.GetNamedSilentFail("LP_AscensionFailed");if(t!=null)foreach(var c in PawnsFinder.AllMaps_FreeColonists)c.needs?.mood?.thoughts?.memories?.TryGainMemory(t);
-   Find.LetterStack.ReceiveLetter("升神失败",(p?.LabelShort??"主祭")+"没能撑住魔网的重量，化成了一尊石像——这尊石像不可复原，驱散粉尘也救不回来。\n\n这张地图陷入“魔网崩溃”，持续 "+CollapseDays+" 天：所有心灵法术（原版和 VPE）、职业法术、巫妖法术和法杖射击都用不了。卡苏斯之卷在仪式里化成了灰，30～60 天后会传来它的下落；各人读过的遍数都还记着。全体殖民者“升神失败”心情 -8，持续 10 天。",LetterDefOf.NegativeEvent,statue!=null?new LookTargets(statue):LookTargets.Invalid);
+   Find.LetterStack.ReceiveLetter("升神失败",(p?.LabelShort??"主祭")+"没能撑住魔网的重量，化成了一尊石像——这尊石像不可复原。\n\n这张地图陷入“魔网崩溃”，持续 "+CollapseDays+" 天：所有心灵法术（原版和 VPE）、职业法术、巫妖法术和法杖射击都用不了。卡苏斯之卷在仪式里化成了灰，30～60 天后会传来它的下落；各人读过的遍数都还记着。全体殖民者“升神失败”心情 -8，持续 10 天。",LetterDefOf.NegativeEvent,statue!=null?new LookTargets(statue):LookTargets.Invalid);
   }
   public static void Abort(Building_NetherilAltar altar,List<Pawn> all,string why){
    ClearFocus(all);

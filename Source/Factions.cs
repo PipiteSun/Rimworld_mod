@@ -248,17 +248,8 @@ namespace LichPhylactery {
   static void Discard(Pawn p){if(p==null || p.Destroyed)return;if(Find.WorldPawns.Contains(p))Find.WorldPawns.RemovePawn(p);p.Destroy();}
   public static void Thrall(Pawn p){if(p!=null && MindFlayer.IsMindFlayer(p))return;if(Thralled!=null && p?.health!=null && !p.health.hediffSet.HasHediff(Thralled))p.health.AddHediff(Thralled);}
   public static bool IsThralled(Pawn p)=>Thralled!=null && p?.health?.hediffSet?.HasHediff(Thralled)==true;
-  // 火巨人领队：熔炉重锤、熔铁战盔、熔铁重甲。
-  public static void EquipGiant(Pawn p){
-   if(p?.equipment==null || p.apparel==null || !FireGiant.Active(p))return;
-   var maul=DefDatabase<ThingDef>.GetNamedSilentFail("LP_FireGiantMaul");
-   if(maul!=null && p.equipment.Primary?.def!=maul && !p.WorkTagIsDisabled(WorkTags.Violent)){p.equipment.DestroyAllEquipment();var w=(ThingWithComps)ThingMaker.MakeThing(maul);w.TryGetComp<CompQuality>()?.SetQuality(QualityUtility.GenerateQualityTraderItem(),ArtGenerationContext.Outsider);p.equipment.AddEquipment(w);}
-   foreach(var name in new[]{"LP_FireGiantArmor","LP_FireGiantHelmet"}){
-    var d=DefDatabase<ThingDef>.GetNamedSilentFail(name);if(d==null || p.apparel.WornApparel.Any(a=>a.def==d))continue;
-    var a=(Apparel)ThingMaker.MakeThing(d,d.MadeFromStuff?GenStuff.DefaultStuffFor(d):null);a.TryGetComp<CompQuality>()?.SetQuality(QualityCategory.Normal,ArtGenerationContext.Outsider);
-    if(ApparelUtility.HasPartsToWear(p,d))p.apparel.Wear(a,false);else a.Destroy();
-   }
-  }
+  // 火巨人领队：1.143.0 起熔炉重锤、熔铁战盔、熔铁重甲已移除，领队用原版生成的装备。
+  public static void EquipGiant(Pawn p){}
  }
 
  // 死灵造物（单名、人类种族）不能被原版生成亲属关系时选作配偶/亲属：原版给配偶改姓时假定对方是三段名，会空引用。
@@ -280,22 +271,16 @@ namespace LichPhylactery {
  public static class FactionGear {
   public static void Ensure(Pawn p){
    switch(p.kindDef.defName){
-    // 1.45.1 派系换装：圣武士板甲 + 誓约巨盔 + 骑士披风；骑士加披风；牧师穿晨主圣袍 + 战斗牧师胸甲；余烬奴兵制服；吉斯洋基星界战甲；红袍法师穿塞伊红袍。
-    case "LP_FC_Paladin":Wear(p,"LP_PaladinPlate",ThingDefOf.Steel);Wear(p,"LP_GreatHelmOath",ThingDefOf.Steel);Wear(p,"LP_KnightMantle",ThingDefOf.Cloth);Arm(p,"MeleeWeapon_LongSword",ThingDefOf.Steel);break;
-    case "LP_FC_Knight":Wear(p,"Apparel_PlateArmor",ThingDefOf.Steel);Wear(p,"LP_KnightMantle",ThingDefOf.Cloth);Arm(p,"MeleeWeapon_LongSword",ThingDefOf.Steel);break;
-    case "LP_FC_Priest":case "LP_FC_ChurchPriest":Wear(p,"LP_MorninglordVestments",ThingDefOf.Cloth);Wear(p,"LP_BattleClericBreastplate",ThingDefOf.Steel);break;
-    case "LP_FC_ElfRanger":Wear(p,"LP_RangerLeathers",DefDatabase<ThingDef>.GetNamedSilentFail("Leather_Plain"));Wear(p,"LP_WoodwalkerCloak",ThingDefOf.Cloth);break;
-    case "LP_EC_HumanSlave":Wear(p,"LP_EmberCollarPlate",ThingDefOf.Steel);Wear(p,"LP_EmberRivetHelm",ThingDefOf.Steel);break;
-    case "LP_FH_GithMercenary":Wear(p,"LP_GithAstralArmor",ThingDefOf.Steel);break;
-    case "LP_FH_RedWizard":Wear(p,"LP_RedWizardRobe",null);break;
+    // 1.45.1 派系换装：骑士/圣武士加骑士披风；红袍法师穿塞伊红袍。1.143.0 起圣武士板甲、晨主圣袍、余烬奴兵制服、星界战甲、象人卫士重铠已移除，这些人穿回原版装备。
+    case "LP_FC_Paladin":Wear(p,"Apparel_PlateArmor",ThingDefOf.Steel);Arm(p,"MeleeWeapon_LongSword",ThingDefOf.Steel);break;
+    case "LP_FC_Knight":Wear(p,"Apparel_PlateArmor",ThingDefOf.Steel);Arm(p,"MeleeWeapon_LongSword",ThingDefOf.Steel);break;
     case "LP_FH_RedTrader":FactionGroups.RedRobe(p);break;
-    // 1.24.0：象人卫士重甲；食人魔打手60%拿食人魔大棒；寒冰魔30%拿霜刺长枪；炎魔必带火鞭。用按角色编号播种的随机数，不扰动全局随机流。
-    case "LP_FC_LoxodonWarden":Wear(p,"LP_LoxodonWardenArmor",ThingDefOf.Steel);if(Items.Worn(p,"LP_LoxodonWardenArmor")==null)Wear(p,"Apparel_PlateArmor",ThingDefOf.Steel);Wear(p,"Apparel_SimpleHelmet",ThingDefOf.Steel);break; // 体型不到1.3（未成年）时退回原版板甲
-    case "LP_FH_OgreBrute":if(Rand.ValueSeeded(p.thingIDNumber^0x0617)<.6f)Replace(p,"LP_OgreClub",ThingDefOf.WoodLog);Wear(p,"LP_OgreTrophyHide",DefDatabase<ThingDef>.GetNamedSilentFail("Leather_Plain"));break;
-    case "LP_FH_IceDevil":if(Rand.ValueSeeded(p.thingIDNumber^0x1CED)<.3f)Replace(p,"LP_FrostSpear",null);else p.equipment?.DestroyAllEquipment();p.apparel?.DestroyAll();break;
-    case "LP_FH_Balor":Replace(p,"LP_BalorWhip",null);p.apparel?.DestroyAll();break;
-    // 1.30.0：霜巨人掠夺者60%霜巨人斧、40%钢长矛，穿冬狼皮大氅；迁徙的霜巨人战士同样打扮。
-    case "LP_FH_FrostGiantRaider":case "LP_FC_FrostGiantWanderer":if(Rand.ValueSeeded(p.thingIDNumber^0x0F05)<.6f)Replace(p,FrostGiant.Axe,ThingDefOf.Steel);else Replace(p,"MeleeWeapon_Spear",ThingDefOf.Steel);Wear(p,FrostGiant.Cloak,null);break;
+    // 1.24.0：象人卫士原版板甲；食人魔打手60%拿食人魔大棒；寒冰魔空手（1.143.0 霜刺长枪已移除）；炎魔必带火鞭。用按角色编号播种的随机数，不扰动全局随机流。
+    case "LP_FC_LoxodonWarden":Wear(p,"Apparel_PlateArmor",ThingDefOf.Steel);Wear(p,"Apparel_SimpleHelmet",ThingDefOf.Steel);break;
+    case "LP_FH_IceDevil":p.equipment?.DestroyAllEquipment();p.apparel?.DestroyAll();break;
+    case "LP_FH_Balor":p.equipment?.DestroyAllEquipment();p.apparel?.DestroyAll();break; // 1.146.0：炎魔火鞭已移除，炎魔空手
+    // 1.30.0：霜巨人掠夺者拿钢长矛（1.143.0 霜巨人斧已移除），穿冬狼皮大氅；迁徙的霜巨人战士同样打扮。
+    case "LP_FH_FrostGiantRaider":case "LP_FC_FrostGiantWanderer":Replace(p,"MeleeWeapon_Spear",ThingDefOf.Steel);break; // 1.146.0：冬狼皮大氅已移除
    }
   }
   public static void Replace(Pawn p,string name,ThingDef stuff){

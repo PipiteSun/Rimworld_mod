@@ -35,7 +35,6 @@
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>cleric</kind><label>有神官主持</label><qualityOffset>0.15</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>temple</kind><label>在神殿里</label><qualityOffset>0.1</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>statue</kind><label>神像在8格内</label><qualityOffset>0.1</qualityOffset></li>
-      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>relic</kind><label>神赐遗物在8格内</label><qualityOffset>0.15</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>dawn</kind><label>白天开始</label><qualityOffset>0.1</qualityOffset></li>
     </comps>
     <modExtensions>
@@ -87,7 +86,6 @@
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>cleric</kind><label>有神官主持</label><qualityOffset>0.15</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>temple</kind><label>在神殿里</label><qualityOffset>0.1</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>statue</kind><label>神像在8格内</label><qualityOffset>0.1</qualityOffset></li>
-      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>relic</kind><label>神赐遗物在8格内</label><qualityOffset>0.15</qualityOffset></li>
     </comps>
     <modExtensions>
       <li Class="LichPhylactery.LP_FestivalExtension">
@@ -138,7 +136,6 @@
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>cleric</kind><label>有神官主持</label><qualityOffset>0.15</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>temple</kind><label>在神殿里</label><qualityOffset>0.1</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>statue</kind><label>神像在8格内</label><qualityOffset>0.1</qualityOffset></li>
-      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>relic</kind><label>神赐遗物在8格内</label><qualityOffset>0.15</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>night10</kind><label>夜里开始</label><qualityOffset>0.1</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>casters</kind><label>会施法的参与者</label><qualityOffset>0.03</qualityOffset></li>
     </comps>
@@ -191,7 +188,6 @@
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>cleric</kind><label>有神官主持</label><qualityOffset>0.15</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>temple</kind><label>在神殿里</label><qualityOffset>0.1</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>statue</kind><label>神像在8格内</label><qualityOffset>0.1</qualityOffset></li>
-      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>relic</kind><label>神赐遗物在8格内</label><qualityOffset>0.15</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>graves</kind><label>已入葬的墓</label><qualityOffset>0.1</qualityOffset></li>
     </comps>
     <modExtensions>
@@ -243,7 +239,6 @@
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>cleric</kind><label>有神官主持</label><qualityOffset>0.15</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>temple</kind><label>在神殿里</label><qualityOffset>0.1</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>statue</kind><label>神像在8格内</label><qualityOffset>0.1</qualityOffset></li>
-      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>relic</kind><label>神赐遗物在8格内</label><qualityOffset>0.15</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>consumeBody</kind><label>动物尸体（献祭）</label><qualityOffset>0</qualityOffset></li>
     </comps>
     <modExtensions>
@@ -295,7 +290,6 @@
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>cleric</kind><label>有神官主持</label><qualityOffset>0.15</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>temple</kind><label>在神殿里</label><qualityOffset>0.1</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>statue</kind><label>神像在8格内</label><qualityOffset>0.1</qualityOffset></li>
-      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>relic</kind><label>神赐遗物在8格内</label><qualityOffset>0.15</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>storm</kind><label>雷暴中</label><qualityOffset>0.25</qualityOffset></li>
     </comps>
     <modExtensions>
@@ -347,7 +341,6 @@
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>cleric</kind><label>有神官主持</label><qualityOffset>0.15</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>temple</kind><label>在神殿里</label><qualityOffset>0.1</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>statue</kind><label>神像在8格内</label><qualityOffset>0.1</qualityOffset></li>
-      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>relic</kind><label>神赐遗物在8格内</label><qualityOffset>0.15</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>slaves</kind><label>在场的奴隶</label><qualityOffset>0.05</qualityOffset></li>
     </comps>
     <modExtensions>
@@ -399,7 +392,6 @@
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>cleric</kind><label>有神官主持</label><qualityOffset>0.15</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>temple</kind><label>在神殿里</label><qualityOffset>0.1</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>statue</kind><label>神像在8格内</label><qualityOffset>0.1</qualityOffset></li>
-      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>relic</kind><label>神赐遗物在8格内</label><qualityOffset>0.15</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>night20</kind><label>夜里开始</label><qualityOffset>0.2</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>dark</kind><label>圣坛在黑暗中</label><qualityOffset>0.1</qualityOffset></li>
     </comps>
@@ -452,7 +444,6 @@
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>cleric</kind><label>有神官主持</label><qualityOffset>0.15</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>temple</kind><label>在神殿里</label><qualityOffset>0.1</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>statue</kind><label>神像在8格内</label><qualityOffset>0.1</qualityOffset></li>
-      <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>relic</kind><label>神赐遗物在8格内</label><qualityOffset>0.15</qualityOffset></li>
       <li Class="LichPhylactery.RitualOutcomeComp_LPFestival"><kind>consumeValue</kind><label>武器或护甲（献祭）</label><qualityOffset>0</qualityOffset></li>
     </comps>
     <modExtensions>

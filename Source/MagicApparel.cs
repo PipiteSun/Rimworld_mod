@@ -25,27 +25,9 @@ namespace LichPhylactery {
   public const float BannerRadius=5f,BannerOffset=.02f,IntimidateRadius=3f,IntimidateOffset=.05f,RedRobeSpeed=1.1f,RiseHealth=.3f,DragonBreathFactor=.85f,SneakFactor=1.5f;
   public const int RiseCooldown=3*GenDate.TicksPerDay,RedRobeGoodwill=-5;
   public static readonly Dictionary<string,(string[] pieces,string ability)> Sets=new Dictionary<string,(string[],string)>{
-   {"LP_Set_SilverOrder",(new[]{"LP_PaladinPlate","LP_GreatHelmOath","LP_KnightMantle"},"LP_AS_HoldOath")},
-   {"LP_Set_Ranger",(new[]{"LP_RangerLeathers","LP_WoodwalkerCloak"},null)},
-   {"LP_Set_Shadow",(new[]{"LP_ShadowweaveCloak","LP_RogueMask","LP_BootsElvenkind"},null)},
-   {"LP_Set_Archmage",(new[]{"LP_ArchmageRobe","LP_WizardHat"},null)},
-   {"LP_Set_Dawn",(new[]{"LP_MorninglordVestments","LP_BattleClericBreastplate"},"LP_AS_TurnUndead")},
-   {"LP_Set_Deathknight",(new[]{"LP_DeathknightPlate","LP_HelmRestlessDead"},null)},
-   {"LP_Set_Dragonknight",(new[]{"LP_DragonknightArmor","LP_DragonHeadHelm"},null)}};
+   {"LP_Set_Deathknight",(new[]{"LP_DeathknightPlate","LP_HelmRestlessDead"},null)}}; // 1.143.0：白银骑士团、大法师、晨光、龙骑士四套随装备移除
   // 派系换装的概率件（必穿件写在 Patches/MagicApparel.xml 的 apparelRequired 里）。
-  public static readonly Dictionary<string,(string def,float chance)[]> Outfits=new Dictionary<string,(string,float)[]>{
-   {"LP_FC_Guard",new[]{("LP_ChainShirt",.5f)}},
-   {"LP_FC_Archer",new[]{("LP_ChainShirt",.3f),("LP_RangerLeathers",.3f)}},
-   {"LP_FC_Villager",new[]{("LP_AdventurerClothes",.4f)}},
-   {"LP_FC_Trader",new[]{("LP_AdventurerClothes",.5f),("LP_CourtAttire",.15f)}},
-   {"LP_FC_DwarfGuard",new[]{("LP_DwarvenRuneplate",.35f),("LP_BeardedHelm",.5f)}},
-   {"LP_FC_AarakocraScout",new[]{("LP_SkyguardHarness",.6f)}},
-   {"LP_FC_Genasi",new[]{("LP_ElementalWeave",.5f)}},
-   {"LP_FH_OrcWarrior",new[]{("LP_ChainShirt",.6f)}},
-   {"LP_FH_GithMercenary",new[]{("LP_GithCrestedHelm",.5f)}},
-   {"LP_FH_RedTrader",new[]{("LP_RedWizardRobe",.7f)}},
-   {"LP_BN_Broker",new[]{("LP_ShadowweaveCloak",.6f),("LP_RogueMask",.5f)}},
-   {"LP_BN_Enforcer",new[]{("LP_ShadowweaveCloak",.4f),("LP_RogueMask",.4f)}}};
+  public static readonly Dictionary<string,(string def,float chance)[]> Outfits=new Dictionary<string,(string,float)[]>{}; // 1.146.0：概率穿戴的衣甲已全部移除
   static MagicApparel(){
    AddPart(StatDefOf.MentalBreakThreshold,new StatPart_KnightBanner());
    AddPart(StatDefOf.MoveSpeed,new StatPart_RedRobeCommand());
@@ -75,11 +57,8 @@ namespace LichPhylactery {
   }
   public static Hediff_ApparelSet SetHediff(Pawn p,string set)=>p?.health?.hediffSet?.GetFirstHediffOfDef(Items.Hediff(set)) as Hediff_ApparelSet;
   // ---------- 卷轴 ----------
-  public static float ScrollFailFactor(Pawn p)=>Items.Worn(p,"LP_ArchmageRobe")!=null || Items.Worn(p,"LP_RedWizardRobe")!=null?.5f:1f;
-  public static bool KeepScroll(Pawn p,float roll){
-   var h=SetHediff(p,"LP_Set_Archmage");if(h==null)return false;int day=Find.TickManager.TicksGame/GenDate.TicksPerDay;if(h.lastFreeDay==day)return false;h.lastFreeDay=day;
-   if(roll>=.5f)return false;Items.Mote(p,"大法师：卷轴没有消耗",new Color(.6f,.75f,1f));return true;
-  }
+  public static float ScrollFailFactor(Pawn p)=>Items.Worn(p,"LP_RedWizardRobe")!=null?.5f:1f;
+  public static bool KeepScroll(Pawn p,float roll)=>false; // 1.143.0：大法师套装已移除
   // ---------- 死亡骑士：再站起来 ----------
   public static bool TryRise(Pawn p){
    var h=SetHediff(p,"LP_Set_Deathknight");if(h==null || p.Dead || !p.Downed || Items.IsLich(p))return false;
@@ -233,9 +212,6 @@ namespace LichPhylactery {
  }
  [HarmonyPatch(typeof(StunHandler),nameof(StunHandler.Notify_DamageApplied))]
  public static class ApparelEmpImmunity {static bool Prefix(Pawn ___parentPawn,DamageInfo __0)=>__0.Def!=DamageDefOf.EMP || ___parentPawn?.apparel==null || !___parentPawn.apparel.WornApparel.Any(a=>a.def.HasModExtension<EmpStunImmunity>());}
- // 矮人穿符文重铠：移速惩罚减半。
- [HarmonyPatch(typeof(StatWorker),nameof(StatWorker.StatOffsetFromGear))]
- public static class DwarfRuneplateSpeed {static void Postfix(Thing gear,StatDef stat,ref float __result){if(__result<0 && stat==StatDefOf.MoveSpeed && gear?.def.defName=="LP_DwarvenRuneplate" && CommonRaces.IsDwarf((gear as Apparel)?.Wearer))__result*=.5f;}}
  // 林行者斗篷、暗影斗篷：被远程命中的概率。
  [HarmonyPatch(typeof(ShotReport),nameof(ShotReport.HitReportFor))]
  public static class MagicApparelShotReport {
@@ -259,7 +235,6 @@ namespace LichPhylactery {
   static void Postfix(Pawn ___pawn,DamageInfo dinfo,float totalDamageDealt){
    var p=___pawn;if(p?.apparel==null || p.Dead || !(dinfo.Instigator is Pawn att) || att==p || !att.HostileTo(p))return;
    if(!ForceDragon.IsRanged(dinfo) && Items.Worn(p,"LP_DeathknightPlate")!=null && Rand.Chance(.1f) && !Items.IsMinotaur(att) && !Races124.IsLoxodon(att))LichSpells.Frighten(p,att);
-   if(totalDamageDealt>0 && MagicApparel.SetHediff(p,"LP_Set_Dragonknight")!=null && p.Spawned)CallDragons(p,att);
   }
   public static int CallDragons(Pawn knight,Pawn att){
    int n=0,now=Find.TickManager.TicksGame;
@@ -276,21 +251,8 @@ namespace LichPhylactery {
  public static class MagicApparelCooldowns {
   static void Postfix(Ability __instance,bool __result){
    if(!__result || __instance.CooldownTicksRemaining<=0)return;var p=__instance.pawn;var name=__instance.def.defName;float f=1f;
-   if(name=="LP_NecroticBlast" && Items.IsLich(p) && Items.Worn(p,"LP_ArchmageRobe")!=null)f*=.9f;
    if(name=="LP_AstralStep" && Items.IsGith(p) && Items.Worn(p,"LP_GithCrestedHelm")!=null)f*=.9f;
-   if(name=="LP_ForceBreath" && p?.Map!=null && p.Map.mapPawns.AllPawnsSpawned.Any(o=>o.Faction==p.Faction && o.Position.InHorDistOf(p.Position,10f) && MagicApparel.SetHediff(o,"LP_Set_Dragonknight")!=null))f*=MagicApparel.DragonBreathFactor;
    if(f!=1f)__instance.StartCooldown(Mathf.RoundToInt(__instance.CooldownTicksRemaining*f));
-  }
- }
- // 巫妖裹尸长袍：命匣献祭经验+10%。
- [HarmonyPatch(typeof(Phylactery),nameof(Phylactery.Feed))]
- public static class LichShroudFeed {static void Prefix(Phylactery __instance,ref float amount){if(amount>0 && Items.Worn(__instance.soul,"LP_LichShroud")!=null)amount*=1.1f;}}
- // 龙骑士战甲：龙不嫌弃同住的骑士。
- [HarmonyPatch(typeof(ThoughtWorker_DragonSharedRoom),nameof(ThoughtWorker_DragonSharedRoom.Shares))]
- public static class DragonknightRoommate {
-  static void Postfix(Pawn p,ref bool __result){
-   if(!__result)return;var room=p.ownership?.OwnedBed?.GetRoom();if(room==null)return;
-   __result=DragonHoard.BedOwners(room).Any(o=>o!=p && !ForceDragon.Active(o) && Items.Worn(o,"LP_DragonknightArmor")==null);
   }
  }
  // 鸟人羽翼轻甲：翱翔落地后3秒闪避+10。

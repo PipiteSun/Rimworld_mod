@@ -11,7 +11,7 @@ namespace LichPhylactery {
  public partial class LichChecks {
   static string magicGolemId,magicLichId,magicCursedId;
   public static readonly string[] MagicItemDefs={
-   "LP_FlameTongue","LP_FrostBrand","LP_VorpalSword","LP_DragonSlayer","LP_DefenderSword","LP_JavelinLightning","LP_SwordVengeance",
+   "LP_VorpalSword","LP_SwordVengeance",
    "LP_GauntletsOgrePower","LP_GlovesMissileSnaring","LP_BracersArchery","LP_BracersDefense","LP_HelmTelepathy","LP_EyesEagle","LP_EyesMinuteSeeing","LP_PeriaptWoundClosure","LP_AmuletProofDetection","LP_RingSpellTurning","LP_RingFreeAction","LP_RingRegeneration",
    "LP_RingProtection","LP_RingWardingBond","LP_WardingBondCase","LP_RingSpellStoring","LP_RingAnimalInfluence","LP_RingShootingStars","LP_NecklaceAdaptation","LP_NecklaceFireballs","LP_PrayerBeads","LP_BroochShielding","LP_ScarabProtection","LP_AmuletPlanes","LP_GogglesNight",
    "LP_HaloOfLight","LP_MartyrsBeads","LP_MartyrsBeadsBroken","LP_PuritySeal","LP_SpiritStone","LP_PsychicHood","LP_CogOfMakers","LP_InquisitorSeal","LP_WaaaghTotem","LP_RevivalCore","LP_MarkBlood","LP_MarkDecay","LP_MarkChange","LP_MarkRapture",
@@ -23,11 +23,11 @@ namespace LichPhylactery {
    var bad=new List<string>();
    foreach(var n in MagicItemDefs){var d=DefDatabase<ThingDef>.GetNamedSilentFail(n);if(d==null || d.ConfigErrors().Any() || d.uiIcon==null || d.uiIcon==BaseContent.BadTex || d.graphic==BaseContent.BadGraphic)bad.Add(n+(d==null?"":"("+string.Join(";",d.ConfigErrors())+")"));}
    Check(bad.Count==0,"all "+MagicItemDefs.Length+" magic item definitions load with their own textures: "+string.Join(",",bad));
-   Check(ContentFinder<Texture2D>.Get("Items/Magic/HaloGlow",false)!=null && ContentFinder<Texture2D>.Get("Necromancy/StoneGolem",false)!=null && ContentFinder<Texture2D>.Get("Items/Magic/JavelinLightningFlight",false)!=null,"halo glow, javelin flight and stone golem icon textures load");
-   // 2. 研究：6项都在 DND 页签，前置在左边。
-   var res=new[]{("LP_Research_Enchanting",2f,.7f),("LP_Research_EnchantedArms",3f,0f),("LP_Research_WondrousCraft",3f,.7f),("LP_Research_SacredRelics",3f,1.4f),("LP_Research_WondrousDevices",4f,.7f),("LP_Research_GolemManual",5f,.7f)};
-   Check(res.All(r=>{var d=DefDatabase<ResearchProjectDef>.GetNamedSilentFail(r.Item1);return d!=null && d.tab?.defName=="LP_FireGiantTech" && Near(d.ResearchViewX,r.Item2) && Near(d.ResearchViewY,r.Item3);}),"six magic item research projects sit in the DND tab at their planned cells");
-   Check(DefDatabase<ApparelLayerDef>.GetNamed("LP_Accessory").label=="奇物" && DefDatabase<RecipeDef>.GetNamed("Make_LP_FlameTongue").AllRecipeUsers.Any(u=>u.defName=="LP_FireGiantForge") && DefDatabase<RecipeDef>.GetNamed("LP_MakeHaloOfLight").researchPrerequisite.defName=="LP_Research_SacredRelics","accessory layer is renamed 奇物; flame tongue is forged at the molten forge; halo is a sacred relic recipe");
+   Check(ContentFinder<Texture2D>.Get("Items/Magic/HaloGlow",false)!=null && ContentFinder<Texture2D>.Get("Necromancy/StoneGolem",false)!=null,"halo glow and stone golem icon textures load");
+   // 2. 研究：5项都在 DND 页签，前置在左边。
+   var res=new[]{("LP_Research_Enchanting",2f,.7f),("LP_Research_WondrousCraft",3f,.7f),("LP_Research_SacredRelics",3f,1.4f),("LP_Research_WondrousDevices",4f,.7f),("LP_Research_GolemManual",5f,.7f)};
+   Check(res.All(r=>{var d=DefDatabase<ResearchProjectDef>.GetNamedSilentFail(r.Item1);return d!=null && d.tab?.defName=="LP_FireGiantTech" && Near(d.ResearchViewX,r.Item2) && Near(d.ResearchViewY,r.Item3);}),"five magic item research projects sit in the DND tab at their planned cells");
+   Check(DefDatabase<ApparelLayerDef>.GetNamed("LP_Accessory").label=="奇物" && DefDatabase<RecipeDef>.GetNamed("LP_MakeHaloOfLight").researchPrerequisite.defName=="LP_Research_SacredRelics","accessory layer is renamed 奇物; halo is a sacred relic recipe");
    var spot=ItemSpot(3);var p=ItemPawn(spot);Hold(p);
    // 3. 两枚戒指
    var body=p.RaceProps.body;Func<string,ThingDef> D=n=>DefDatabase<ThingDef>.GetNamed(n);
@@ -54,30 +54,13 @@ namespace LichPhylactery {
    var vengeance=(ThingWithComps)ThingMaker.MakeThing(D("LP_SwordVengeance"));p.equipment.AddEquipment(vengeance);
    Check(!p.equipment.TryDropEquipment(vengeance,out _,p.Position,false) && p.equipment.Primary==vengeance && !EquipmentUtility.CanEquip(ThingMaker.MakeThing(D("MeleeWeapon_LongSword"),ThingDefOf.Steel),p),"the sword of vengeance cannot be dropped or swapped");
    magicCursedId=vengeance.ThingID;
-   // 7. 火焰舌：命中巨魔让再生中断；关掉燃火就不附带。
-   var troll=RacePawn("LP_Troll");Place(troll,spot+IntVec3.East*2);Hold(troll);var gene=Troll.Gene(troll);gene.suppressedUntilTick=0;
-   var flame=(ThingWithComps)ThingMaker.MakeThing(D("LP_FlameTongue"));var fext=flame.def.GetModExtension<MagicWeaponExtension>();var swordsman=ItemPawn(spot+IntVec3.West*2);Hold(swordsman);swordsman.equipment.AddEquipment(flame);
-   Check(swordsman.abilities.GetAbility(DefDatabase<AbilityDef>.GetNamed("LP_FlameToggle"))!=null,"holding the flame tongue grants the 燃火 toggle");
-   flame.GetComp<CompMagicWeapon>().active=false;MagicEffects.OnWeaponHit(swordsman,flame,fext,troll,new DamageWorker.DamageResult());bool offBurn=gene.suppressedUntilTick>Find.TickManager.TicksGame;
-   flame.GetComp<CompMagicWeapon>().active=true;MagicEffects.OnWeaponHit(swordsman,flame,fext,troll,new DamageWorker.DamageResult());
-   Check(!offBurn && gene.suppressedUntilTick>Find.TickManager.TicksGame,"a lit flame tongue hit counts as fire for the troll (regeneration suppressed), an unlit one does not");
-   troll.Destroy();
+   var swordsman=ItemPawn(spot+IntVec3.West*2);Hold(swordsman);
    // 8. 锐锋剑：生命<25%、命中头部、体型<2、非巫妖。
    var victim=ItemPawn(spot+IntVec3.North*2);Hold(victim);
    Check(MagicEffects.BeheadBlocked(victim,true,.2f)==null && MagicEffects.BeheadBlocked(victim,true,.3f)!=null && MagicEffects.BeheadBlocked(victim,false,.2f)!=null,"vorpal beheading needs a head hit below 25% health");
    var giant=RacePawn("LP_FireGiant");Place(giant,spot+IntVec3.South*2);Hold(giant);bool bigBlocked=giant.BodySize>=2f && MagicEffects.BeheadBlocked(giant,true,.1f)!=null;giant.Destroy();
    Check(bigBlocked && MagicEffects.Behead(swordsman,victim) && victim.Dead,"the vorpal sword beheads a normal victim and spares big bodies");
    victim.Corpse?.Destroy();
-   // 9. 龙杀手：对龙 ×1.5，对人 ×1；伤害 -30% 的守御。
-   var dragon=RacePawn("LP_ForceDragon");Place(dragon,spot+IntVec3.North*3);Hold(dragon);
-   Check(Near(MagicEffects.DragonFactor(D("LP_DragonSlayer"),dragon),1.5f) && Near(MagicEffects.DragonFactor(D("LP_DragonSlayer"),swordsman),1f),"dragon slayer deals x1.5 to dragons only");
-   MagicEffects.OnWeaponHit(swordsman,(ThingWithComps)ThingMaker.MakeThing(D("LP_DragonSlayer")),D("LP_DragonSlayer").GetModExtension<MagicWeaponExtension>(),dragon,new DamageWorker.DamageResult());
-   Check(Items.Has(dragon,"LP_DeflectSuppressed") && TicksLeft(dragon,"LP_DeflectSuppressed")==300,"a dragon slayer hit suppresses deflection for 5 seconds");
-   dragon.Destroy();
-   swordsman.equipment.DestroyAllEquipment();swordsman.equipment.AddEquipment((ThingWithComps)ThingMaker.MakeThing(D("LP_DefenderSword")));float md=swordsman.GetStatValue(StatDefOf.MeleeDamageFactor);
-   swordsman.abilities.GetAbility(DefDatabase<AbilityDef>.GetNamed("LP_DefenderStance")).Activate(new LocalTargetInfo(swordsman),LocalTargetInfo.Invalid);
-   Check(Items.Has(swordsman,"LP_DefenderStance") && Near(swordsman.GetStatValue(StatDefOf.MeleeDamageFactor),md*.7f),"defender stance cuts melee damage by 30%");
-   swordsman.equipment.DestroyAllEquipment();swordsman.health.hediffSet.hediffs.RemoveAll(h=>h.def.defName=="LP_DefenderStance");
    // 10. 护盾胸针、圣甲虫、伤口闭合护符、食人魔手套。
    MWear(swordsman,"LP_BroochShielding");float force=ItemDamage.Factor(swordsman,DefDatabase<DamageDef>.GetNamed("LP_Force"));var scarab=MWear(swordsman,"LP_ScarabProtection");
    Check(Near(force,.25f) && Near(ItemDamage.Factor(swordsman,LichSpells.Necrotic),.5f) && Items.Worn(swordsman,"LP_BroochShielding")==null,"brooch of shielding cuts force damage by 75%, scarab cuts necrotic by 50% (both pin to the chest, one at a time)");

@@ -15,7 +15,7 @@ namespace LichPhylactery {
    bool sup=Adventurer.TestSuppressed;Adventurer.TestSuppressed=false;var s=LichMod.Settings;bool oldOn=s.adventurer;s.adventurer=true;
    try{
     var all=ClassSystem.All;
-    Check(all.Count==13,"[1.132.0] 13 classes for the overview ("+all.Count+")");
+    Check(all.Count==12,"[1.148.0] 12 classes for the overview ("+all.Count+")");
     // 1. 13 个职业各生成一次一览：每个职业 10 级（冒险者 20 级）。
     var bad=new List<string>();var counts=new List<string>();
     foreach(var c in all){

@@ -105,7 +105,6 @@ namespace LichPhylactery {
    Verse.AI.Job forgeJob;
    try {forgeJob=workgiver.JobOnThing(giant,forge,true);} finally {FloatMenuMakerMap.makingFor=null;}
    Check(forgeJob!=null,"fire giant receives native forge bill job");
-   CheckFireGiantEquipment(giant,forge,workgiver);
    CheckFireGiantWarcasket(giant);
    giant.genes.RemoveGene(added);
    Check(giant.equipment.Primary==null && !giant.apparel.WornApparel.Any(a=>GiantGear.Exclusive(a.def)),"removing fire giant gene releases all exclusive armor and weapon");

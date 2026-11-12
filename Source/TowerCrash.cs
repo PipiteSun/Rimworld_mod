@@ -16,7 +16,7 @@ namespace LichPhylactery {
   public const int InvisibleTicks=1800,HasteTicks=3600,TeleportCells=5;
   public const float WildMagicRadius=15f,WildMagicChance=.25f,WondrousChance=.5f,StudyScrollChance=.15f;
   public static readonly string[] ScrollPool={"LP_ScrollTeleport","LP_ScrollRevivify","LP_ScrollProtectionEvil","LP_ScrollFireball","LP_ScrollTrueSeeing","LP_ScrollFleshToStone"};
-  public static readonly string[] WondrousPool={"LP_BagOfHolding","LP_CloakElvenkind","LP_BootsElvenkind","LP_BootsSpeed","LP_IntellectFortress","LP_RingResistanceFire","LP_RingResistanceCold","LP_RingResistanceAcid","LP_RingResistanceMind","LP_AmuletHealth","LP_WandDetection"};
+  public static readonly string[] WondrousPool={"LP_BagOfHolding","LP_RingResistanceFire","LP_RingResistanceCold","LP_RingResistanceAcid","LP_RingResistanceMind","LP_AmuletHealth","LP_WandDetection"};
   public static readonly string[] Effects={"invisible","haste","teleport","bloom","hiccup","hue"};
   static ThingDef wreck,incoming;
   public static ThingDef WreckDef=>wreck??(wreck=DefDatabase<ThingDef>.GetNamedSilentFail("LP_TowerWreck"));

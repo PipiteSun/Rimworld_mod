@@ -34,7 +34,7 @@
   <ThingDef ParentName="BenchBase">
     <defName>LP_AlchemyTable</defName>
     <label>炼金桌</label>
-    <description>摆满烧瓶、蒸馏器和研钵的工作台。在这里调配DND药水、炼金投掷物、雾瓶、风暴宝珠、凝胶敷料和抑灵剂，并淬炼寒铁；魔法物品改在附魔台、圣物在圣坛、卷轴和手册在卷轴书桌制作。配方速度按智识与医疗的平均等级计算。可连接蒸馏器（+15%）和工具柜。</description>
+    <description>摆满烧瓶、蒸馏器和研钵的工作台。在这里调配DND药水、风暴宝珠、凝胶敷料和抑灵剂，并淬炼寒铁；魔法物品改在附魔台、圣物在圣坛、卷轴和手册在卷轴书桌制作。配方速度按智识与医疗的平均等级计算。可连接蒸馏器（+15%）和工具柜。</description>
     <thingClass>Building_WorkTable</thingClass>
     <graphicData>
       <texPath>Items/AlchemyTable</texPath>
@@ -175,25 +175,25 @@
   <RecipeDef ParentName="LP_PotionRecipeBase">
     <defName>LP_BrewPotionGiantStrength</defName>
     <label>调配巨人之力药水</label>
-    <description>用2块熔岩结晶和1份草药调配1瓶巨人之力药水。</description>
+    <description>用20化合燃料和1份草药调配1瓶巨人之力药水。</description>
     <jobString>正在调配巨人之力药水。</jobString>
     <ingredients>
-      <li><filter><thingDefs><li>LP_LavaCrystal</li></thingDefs></filter><count>2</count></li>
+      <li><filter><thingDefs><li>Chemfuel</li></thingDefs></filter><count>20</count></li>
       <li><filter><thingDefs><li>MedicineHerbal</li></thingDefs></filter><count>1</count></li>
     </ingredients>
-    <fixedIngredientFilter><thingDefs><li>LP_LavaCrystal</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
+    <fixedIngredientFilter><thingDefs><li>Chemfuel</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
     <products><LP_PotionGiantStrength>1</LP_PotionGiantStrength></products>
   </RecipeDef>
   <RecipeDef ParentName="LP_PotionRecipeBase">
     <defName>LP_BrewPotionFireResistance</defName>
     <label>调配抗火药水</label>
-    <description>用1块熔岩结晶和1份草药调配1瓶抗火药水。</description>
+    <description>用10化合燃料和1份草药调配1瓶抗火药水。</description>
     <jobString>正在调配抗火药水。</jobString>
     <ingredients>
-      <li><filter><thingDefs><li>LP_LavaCrystal</li></thingDefs></filter><count>1</count></li>
+      <li><filter><thingDefs><li>Chemfuel</li></thingDefs></filter><count>10</count></li>
       <li><filter><thingDefs><li>MedicineHerbal</li></thingDefs></filter><count>1</count></li>
     </ingredients>
-    <fixedIngredientFilter><thingDefs><li>LP_LavaCrystal</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
+    <fixedIngredientFilter><thingDefs><li>Chemfuel</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
     <products><LP_PotionFireResistance>1</LP_PotionFireResistance></products>
   </RecipeDef>
   <RecipeDef ParentName="LP_PotionRecipeBase">
@@ -233,52 +233,4 @@
     <products><LP_PotionTrollRegen>1</LP_PotionTrollRegen></products>
   </RecipeDef>
 
-  <RecipeDef ParentName="LP_ThrowableRecipeBase">
-    <defName>LP_MakeAlchemistFire</defName>
-    <label>制作炼金之火</label>
-    <description>用20份化学燃料和10份布制作一组炼金之火。</description>
-    <jobString>正在制作炼金之火。</jobString>
-    <ingredients>
-      <li><filter><thingDefs><li>Chemfuel</li></thingDefs></filter><count>20</count></li>
-      <li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>10</count></li>
-    </ingredients>
-    <fixedIngredientFilter><thingDefs><li>Chemfuel</li><li>Cloth</li></thingDefs></fixedIngredientFilter>
-    <products><LP_AlchemistFire>1</LP_AlchemistFire></products>
-  </RecipeDef>
-  <RecipeDef ParentName="LP_ThrowableRecipeBase">
-    <defName>LP_MakeAcidVial</defName>
-    <label>制作强酸瓶</label>
-    <description>用20份化学燃料和10份钢制作一组强酸瓶。</description>
-    <jobString>正在制作强酸瓶。</jobString>
-    <ingredients>
-      <li><filter><thingDefs><li>Chemfuel</li></thingDefs></filter><count>20</count></li>
-      <li><filter><thingDefs><li>Steel</li></thingDefs></filter><count>10</count></li>
-    </ingredients>
-    <fixedIngredientFilter><thingDefs><li>Chemfuel</li><li>Steel</li></thingDefs></fixedIngredientFilter>
-    <products><LP_AcidVial>1</LP_AcidVial></products>
-  </RecipeDef>
-  <RecipeDef ParentName="LP_ThrowableRecipeBase">
-    <defName>LP_MakeHolyWater</defName>
-    <label>制作圣水</label>
-    <description>用15份白银和2份草药祝圣一组圣水。</description>
-    <jobString>正在制作圣水。</jobString>
-    <ingredients>
-      <li><filter><thingDefs><li>Silver</li></thingDefs></filter><count>15</count></li>
-      <li><filter><thingDefs><li>MedicineHerbal</li></thingDefs></filter><count>2</count></li>
-    </ingredients>
-    <fixedIngredientFilter><thingDefs><li>Silver</li><li>MedicineHerbal</li></thingDefs></fixedIngredientFilter>
-    <products><LP_HolyWater>1</LP_HolyWater></products>
-  </RecipeDef>
-  <RecipeDef ParentName="LP_ThrowableRecipeBase">
-    <defName>LP_MakeTanglefootBag</defName>
-    <label>制作黏胶袋</label>
-    <description>用15份布和10份化学燃料熬出黏胶，装成一组黏胶袋。</description>
-    <jobString>正在制作黏胶袋。</jobString>
-    <ingredients>
-      <li><filter><thingDefs><li>Cloth</li></thingDefs></filter><count>15</count></li>
-      <li><filter><thingDefs><li>Chemfuel</li></thingDefs></filter><count>10</count></li>
-    </ingredients>
-    <fixedIngredientFilter><thingDefs><li>Cloth</li><li>Chemfuel</li></thingDefs></fixedIngredientFilter>
-    <products><LP_TanglefootBag>1</LP_TanglefootBag></products>
-  </RecipeDef>
 </Defs>

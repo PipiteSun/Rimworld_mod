@@ -77,24 +77,10 @@ namespace LichPhylactery {
   public static bool Nemesis(Pawn attacker,Pawn target)=>target!=null && attacker!=null && attacker!=target && Has(attacker,NemesisGene) && MindFlayer.IsMindFlayer(target);
  }
 
- public class ThoughtWorker_SilverSwordRejects : ThoughtWorker {
-  protected override ThoughtState CurrentStateInternal(Pawn p)=>Githyanki.HoldsSword(p) && !Githyanki.Has(p,Githyanki.SwordGene)?ThoughtState.ActiveAtStage(0):ThoughtState.Inactive;
- }
  public class ThoughtWorker_GithSeesLich : ThoughtWorker {
   protected override ThoughtState CurrentStateInternal(Pawn p)=>Githyanki.SeesLich(p)?ThoughtState.ActiveAtStage(0):ThoughtState.Inactive;
  }
 
- // 银剑命中：在原有伤害之后追加一段灵能伤害。
- [HarmonyPatch(typeof(Verb_MeleeAttackDamage),"DamageInfosToApply")]
- public static class SilverSwordPsychic {
-  static IEnumerable<DamageInfo> Postfix(IEnumerable<DamageInfo> values,Verb_MeleeAttackDamage __instance,LocalTargetInfo __0){
-   foreach(var d in values)yield return d;
-   var caster=__instance.CasterPawn;
-   if(__instance.EquipmentSource?.def!=Githyanki.Sword || Githyanki.Psychic==null)yield break;
-   float amount=Githyanki.SwordPsychicDamage(caster,__0.Thing as Pawn);
-   if(amount>0)yield return new DamageInfo(Githyanki.Psychic,amount,0f,-1f,caster,null,Githyanki.Sword);
-  }
- }
  // 宿敌：对夺心魔的一切伤害×125%。
  [HarmonyPatch(typeof(Pawn),nameof(Pawn.PreApplyDamage))]
  public static class GithNemesisDamage {
@@ -105,15 +91,6 @@ namespace LichPhylactery {
  public static class GithNemesisHit {
   static void Postfix(Verb_MeleeAttack __instance,LocalTargetInfo __0,ref float __result){if(Githyanki.Nemesis(__instance.CasterPawn,__0.Thing as Pawn))__result=Mathf.Min(1f,__result+Githyanki.NemesisHit);}
  }
- // 银剑只能由银剑传承基因持有者锻造。
- [HarmonyPatch(typeof(Bill),nameof(Bill.PawnAllowedToStartAnew))]
- public static class SilverSwordForge {
-  static void Postfix(Bill __instance,Pawn p,ref bool __result){
-   if(!__result || Githyanki.Sword==null || __instance.recipe?.ProducedThingDef!=Githyanki.Sword)return;
-   string reason=Githyanki.CannotForge(p);if(reason==null)return;
-   __result=false;JobFailReason.Is(reason);
-  }
- }
  // 巫妖劝降吉斯洋基俘虏：这次谈话降低的抵抗×130%。
  [HarmonyPatch(typeof(InteractionWorker_RecruitAttempt),nameof(InteractionWorker_RecruitAttempt.Interacted))]
  public static class GithLichRecruit {
@@ -123,9 +100,5 @@ namespace LichPhylactery {
    float drop=__state-__1.guest.resistance;if(drop<=0)return;
    __1.guest.resistance=Mathf.Max(0f,__1.guest.resistance-drop*(Githyanki.RecruitFactor-1f));
   }
- }
- [HarmonyPatch(typeof(PawnGenerator),nameof(PawnGenerator.GeneratePawn),new[]{typeof(PawnGenerationRequest)})]
- public static class GithArmOnGeneration {
-  static void Postfix(Pawn __result){if(__result!=null && Githyanki.Has(__result,Githyanki.SwordGene))Githyanki.MaybeArm(__result,Rand.Value);}
  }
 }

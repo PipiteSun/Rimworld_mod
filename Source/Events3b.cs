@@ -437,7 +437,7 @@ namespace LichPhylactery {
    string task;
    if(IsMartial(p)){r.stage=0;task="30 天内亲手击杀 "+Kills+" 个敌人。";}
    else{r.stage=1;r.skill=MainSkill(p);var sr=p.skills.GetSkill(r.skill);r.val=Growth.Progress(sr);r.val2=XpBase+level*XpPerLevel;task="30 天内在"+r.skill.label+"上得到 "+r.val2.ToString("0")+" 点经验。";}
-   Find.LetterStack.ReceiveLetter("天命："+p.LabelShort,p.LabelShort+"到了 "+level+" 级。那天夜里"+p.gender.GetPronoun()+"做了一个很长的梦，醒来时知道自己该去做一件事：\n\n"+task+"\n\n完成后可以三选一：主属性 +1、武艺天赋、一件沉睡的传承武器。",LetterDefOf.PositiveEvent,p);
+   Find.LetterStack.ReceiveLetter("天命："+p.LabelShort,p.LabelShort+"到了 "+level+" 级。那天夜里"+p.gender.GetPronoun()+"做了一个很长的梦，醒来时知道自己该去做一件事：\n\n"+task+"\n\n完成后可以二选一：主属性 +1、武艺天赋。",LetterDefOf.PositiveEvent,p);
    return r;
   }
   public static float Progress(E3Record r){if(r.stage==0)return r.count/(float)Kills;var sr=r.a?.skills?.GetSkill(r.skill);return sr==null?0f:Mathf.Clamp01((Growth.Progress(sr)-r.val)/Mathf.Max(1f,r.val2));}
@@ -457,7 +457,6 @@ namespace LichPhylactery {
    var p=r.a;if(p==null || !r.flag)yield break;var h=Adventurer.Get(p);int a=Primary(p);
    yield return l.Choice("主属性 +1（"+(a>=0?Adventurer.Names[a]:"")+"）",()=>{r.done=true;if(h!=null && a>=0){h.scores[a]++;h.Dirty();}},h==null || a<0?"没有冒险者等级":null);
    yield return l.Choice("武艺天赋（已有则升一阶）",()=>{r.done=true;CombatGifts.Wish(p);},CombatGifts.CannotWish(p));
-   yield return l.Choice("一件沉睡的传承武器",()=>{r.done=true;Growth.Drop(Growth.MakeLegacy(),p.MapHeld,p.PositionHeld,p);});
   }
  }
 

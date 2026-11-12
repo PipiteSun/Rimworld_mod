@@ -31,25 +31,6 @@
       <li Class="LichPhylactery.CompProperties_WornGlow"><texPath>Items/Magic/HaloGlow</texPath></li>
     </comps>
   </ThingDef>
-  <ThingDef ParentName="LP_MagicNeckBase">
-    <defName>LP_MartyrsBeads</defName>
-    <label>殉道者念珠</label>
-    <description>红玫瑰念珠，罩着一层看不见的护盾：吸收300点伤害（近战、远程都挡），而且不妨碍佩戴者开枪。护盾打碎后念珠变成“碎裂的殉道者念珠”，要在圣坛重新祝圣（2小时）。戴在奇物层的颈部。</description>
-    <graphicData><texPath>Items/Magic/MartyrsBeads</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
-    <statBases><MarketValue>2200</MarketValue></statBases>
-    <comps><li Class="LichPhylactery.CompProperties_MagicCharges"><maxCharges>300</maxCharges><chargeLabel>护盾</chargeLabel></li></comps>
-  </ThingDef>
-  <ThingDef ParentName="ResourceBase">
-    <defName>LP_MartyrsBeadsBroken</defName>
-    <label>碎裂的殉道者念珠</label>
-    <description>护盾被打碎后的殉道者念珠，珠子上全是裂纹。在圣坛重新祝圣（2小时）就能恢复。</description>
-    <graphicData><texPath>Items/Magic/MartyrsBeadsBroken</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
-    <stackLimit>1</stackLimit>
-    <techLevel>Medieval</techLevel>
-    <useHitPoints>true</useHitPoints>
-    <statBases><MaxHitPoints>60</MaxHitPoints><Mass>0.1</Mass><MarketValue>600</MarketValue><Flammability>0.5</Flammability></statBases>
-    <thingCategories><li>ItemsMisc</li></thingCategories>
-  </ThingDef>
   <ThingDef ParentName="ResourceBase">
     <defName>LP_PuritySeal</defName>
     <label>净化封印</label>
@@ -80,15 +61,6 @@
       <li><minSeverity>3</minSeverity><label>3张</label><statOffsets><MentalBreakThreshold>-0.09</MentalBreakThreshold></statOffsets></li>
     </stages>
   </HediffDef>
-  <ThingDef ParentName="LP_MagicNeckBase">
-    <defName>LP_SpiritStone</defName>
-    <label>魂石</label>
-    <description>精灵的魂石，乳白的石心里像有雾在流动。佩戴者死亡时灵魂被吸进石头：巫妖没法汲取这具尸体的灵魂。装着灵魂的魂石可以在死灵仪式台献给命匣（相当于一份完整灵魂）；或者对尸体使用复生卷轴，不论死了多久都能复活此人（尸体必须还在，魂石随之碎掉）。只有精灵能制作。戴在奇物层的颈部。</description>
-    <graphicData><texPath>Items/Magic/SpiritStone</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
-    <statBases><MarketValue>1500</MarketValue></statBases>
-    <comps><li Class="LichPhylactery.CompProperties_SpiritStone" /></comps>
-    <modExtensions><li Class="LichPhylactery.RaceGearExtension"><race>Elf</race></li></modExtensions>
-  </ThingDef>
   <ThingDef ParentName="LP_MagicHeadBase">
     <defName>LP_PsychicHood</defName>
     <label>灵能兜帽</label>
@@ -111,15 +83,6 @@
     <graphicData><texPath>Items/Magic/InquisitorSeal</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
     <statBases><MarketValue>1600</MarketValue></statBases>
     <comps><li Class="LichPhylactery.CompProperties_WornHediff"><hediff>LP_MI_InquisitorSeal</hediff></li></comps>
-  </ThingDef>
-  <ThingDef ParentName="LP_MagicNeckBase">
-    <defName>LP_WaaaghTotem</defName>
-    <label>战嚎图腾</label>
-    <description>兽牙串成的半兽人图腾。只有半兽人能戴。6格内每多一个戴图腾的半兽人，全体近战伤害+5%（最多+25%）；但戴着它的人射击命中-10%（一心只想冲上去砍）。戴在奇物层的颈部。</description>
-    <graphicData><texPath>Items/Magic/WaaaghTotem</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
-    <statBases><MarketValue>500</MarketValue></statBases>
-    <comps><li Class="LichPhylactery.CompProperties_WornHediff"><hediff>LP_MI_WaaaghTotem</hediff></li></comps>
-    <modExtensions><li Class="LichPhylactery.ApparelGate"><race>HalfOrc</race></li></modExtensions>
   </ThingDef>
   <ThingDef ParentName="LP_MagicChestBase">
     <defName>LP_RevivalCore</defName>
@@ -198,20 +161,6 @@
       <li><label>无效</label></li>
       <li><statFactors><NegotiationAbility>1.2</NegotiationAbility></statFactors></li>
     </stages>
-  </HediffDef>
-  <HediffDef ParentName="LP_MagicItemHediffBase">
-    <defName>LP_MI_WaaaghTotem</defName>
-    <label>战嚎</label>
-    <description>6格内每多一个戴图腾的半兽人，近战伤害+5%（最多+25%）；射击命中-10%。</description>
-    <stages>
-      <li><label>孤身</label></li>
-      <li><label>+5%</label><statFactors><MeleeDamageFactor>1.05</MeleeDamageFactor></statFactors></li>
-      <li><label>+10%</label><statFactors><MeleeDamageFactor>1.10</MeleeDamageFactor></statFactors></li>
-      <li><label>+15%</label><statFactors><MeleeDamageFactor>1.15</MeleeDamageFactor></statFactors></li>
-      <li><label>+20%</label><statFactors><MeleeDamageFactor>1.20</MeleeDamageFactor></statFactors></li>
-      <li><label>+25%</label><statFactors><MeleeDamageFactor>1.25</MeleeDamageFactor></statFactors></li>
-    </stages>
-    <modExtensions><li Class="LichPhylactery.MagicHediffExtension"><condition>waaagh</condition></li></modExtensions>
   </HediffDef>
   <HediffDef ParentName="LP_MagicItemHediffBase">
     <defName>LP_MI_MarkBlood</defName>

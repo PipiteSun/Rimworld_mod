@@ -190,7 +190,7 @@
   <ThingDef ParentName="BenchBase">
     <defName>LP_RuneAnvil</defName>
     <label>符文铁砧</label>
-    <description>矮人式样的石砌炉膛，配一块刻满符文的黑铁砧，锤钳挂在一旁。在这里锻造符文火器、魔化兵器、各族兵装和骑士、传奇盔甲。烧木头或化学燃料，只在工作时消耗（每天约40）。可连接符文淬火槽和工具柜。</description>
+    <description>矮人式样的石砌炉膛，配一块刻满符文的黑铁砧，锤钳挂在一旁。在这里锻造制伏武器和符文义肢。烧木头或化学燃料，只在工作时消耗（每天约40）。可连接符文淬火槽和工具柜。</description>
     <thingClass>Building_WorkTable</thingClass>
     <drawerType>MapMeshAndRealTime</drawerType>
     <graphicData>
@@ -293,176 +293,8 @@
   </WorkGiverDef>
 
   <!-- ==================== 巨人铁砧 ==================== -->
-  <ThingDef ParentName="BenchBase">
-    <defName>LP_GiantAnvil</defName>
-    <label>巨人铁砧</label>
-    <description>比人还高的粗凿石砧，几乎是一整块山岩，上面嵌着巨大的铁钳和链条。在这里锻造霜巨人斧、风暴三叉戟、云巨人晨星锤、海渊珊瑚甲、食人魔大棒、独眼巨锤和双盔。谁都能用，但体型1.8以上的工匠（巨人、双头巨人、独眼巨人、泰坦）在这里干活快25%。可连接符文淬火槽和工具柜。</description>
-    <thingClass>Building_WorkTable</thingClass>
-    <graphicData>
-      <texPath>LP/Workbenches/GiantAnvil</texPath>
-      <shaderType>CutoutComplex</shaderType>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(4,3)</drawSize>
-      <damageData>
-        <cornerTL>Damage/Corner</cornerTL>
-        <cornerTR>Damage/Corner</cornerTR>
-        <cornerBL>Damage/Corner</cornerBL>
-        <cornerBR>Damage/Corner</cornerBR>
-      </damageData>
-    </graphicData>
-    <castEdgeShadows>true</castEdgeShadows>
-    <staticSunShadowHeight>0.45</staticSunShadowHeight>
-    <size>(4,3)</size>
-    <stuffCategories>
-      <li>Stony</li>
-    </stuffCategories>
-    <costStuffCount>250</costStuffCount>
-    <costList>
-      <Steel>150</Steel>
-    </costList>
-    <altitudeLayer>Building</altitudeLayer>
-    <passability>PassThroughOnly</passability>
-    <pathCost>60</pathCost>
-    <fillPercent>0.6</fillPercent>
-    <useHitPoints>True</useHitPoints>
-    <statBases>
-      <WorkToBuild>7000</WorkToBuild>
-      <MaxHitPoints>500</MaxHitPoints>
-      <Flammability>0</Flammability>
-      <Cleanliness>-3</Cleanliness>
-    </statBases>
-    <designationCategory>Production</designationCategory>
-    <uiOrder>2613</uiOrder>
-    <hasInteractionCell>true</hasInteractionCell>
-    <interactionCellOffset>(0,0,-2)</interactionCellOffset>
-    <surfaceType>Item</surfaceType>
-    <inspectorTabs>
-      <li>ITab_Bills</li>
-    </inspectorTabs>
-    <building>
-      <workTableRoomRole>Workshop</workTableRoomRole>
-      <workTableNotInRoomRoleFactor>0.8</workTableNotInRoomRoleFactor>
-      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
-    </building>
-    <comps>
-      <li Class="CompProperties_AffectedByFacilities">
-        <linkableFacilities>
-          <li>ToolCabinet</li>
-          <li>LP_RuneQuenchTrough</li>
-        </linkableFacilities>
-      </li>
-    </comps>
-    <placeWorkers>
-      <li>PlaceWorker_ShowFacilitiesConnections</li>
-      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
-    </placeWorkers>
-    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
-    <researchPrerequisites>
-      <li>LP_GiantForging</li>
-    </researchPrerequisites>
-  </ThingDef>
-  <WorkGiverDef>
-    <defName>LP_DoBillsGiantAnvil</defName>
-    <label>在巨人铁砧锻造</label>
-    <giverClass>WorkGiver_DoBill</giverClass>
-    <workType>Smithing</workType>
-    <priorityInType>89</priorityInType>
-    <fixedBillGiverDefs>
-      <li>LP_GiantAnvil</li>
-    </fixedBillGiverDefs>
-    <verb>锻造</verb>
-    <gerund>正在巨人铁砧锻造</gerund>
-    <requiredCapacities>
-      <li>Manipulation</li>
-    </requiredCapacities>
-    <prioritizeSustains>true</prioritizeSustains>
-  </WorkGiverDef>
 
   <!-- ==================== 法袍织机 ==================== -->
-  <ThingDef ParentName="BenchBase">
-    <defName>LP_ArcaneLoom</defName>
-    <label>法袍织机</label>
-    <description>木制立式织机，经线里掺着发光的银线，挂着一匹深蓝星纹布。法袍织造的大法师长袍、尖顶法师帽、晨主圣袍、巫妖裹尸长袍、宫廷礼服和元素织袍只能在这里织。冬狼皮大氅、云纹长袍、触须披风、风羽披风和稳形护带在原版裁缝台也能做，在织机上快15%。可连接工具柜。</description>
-    <thingClass>Building_WorkTable</thingClass>
-    <graphicData>
-      <texPath>LP/Workbenches/ArcaneLoom</texPath>
-      <shaderType>CutoutComplex</shaderType>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(3,1)</drawSize>
-      <damageData>
-        <cornerTL>Damage/Corner</cornerTL>
-        <cornerTR>Damage/Corner</cornerTR>
-        <cornerBL>Damage/Corner</cornerBL>
-        <cornerBR>Damage/Corner</cornerBR>
-      </damageData>
-    </graphicData>
-    <castEdgeShadows>true</castEdgeShadows>
-    <staticSunShadowHeight>0.30</staticSunShadowHeight>
-    <size>(3,1)</size>
-    <costList>
-      <WoodLog>120</WoodLog>
-      <LP_Mithral>10</LP_Mithral>
-      <ComponentIndustrial>2</ComponentIndustrial>
-    </costList>
-    <altitudeLayer>Building</altitudeLayer>
-    <passability>PassThroughOnly</passability>
-    <pathCost>50</pathCost>
-    <fillPercent>0.5</fillPercent>
-    <useHitPoints>True</useHitPoints>
-    <statBases>
-      <WorkToBuild>3000</WorkToBuild>
-      <MaxHitPoints>150</MaxHitPoints>
-      <Flammability>1.0</Flammability>
-      <Beauty>2</Beauty>
-    </statBases>
-    <designationCategory>Production</designationCategory>
-    <uiOrder>2614</uiOrder>
-    <hasInteractionCell>true</hasInteractionCell>
-    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
-    <surfaceType>Item</surfaceType>
-    <inspectorTabs>
-      <li>ITab_Bills</li>
-    </inspectorTabs>
-    <building>
-      <workTableRoomRole>Workshop</workTableRoomRole>
-      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
-    </building>
-    <comps>
-      <li Class="CompProperties_Glower">
-        <glowRadius>2</glowRadius>
-        <glowColor>(130,180,255,0)</glowColor>
-      </li>
-      <li Class="CompProperties_AffectedByFacilities">
-        <linkableFacilities>
-          <li>ToolCabinet</li>
-        </linkableFacilities>
-      </li>
-    </comps>
-    <placeWorkers>
-      <li>PlaceWorker_ShowFacilitiesConnections</li>
-      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
-    </placeWorkers>
-    <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
-    <researchPrerequisites>
-      <li>LP_Research_ArcaneTailoring</li>
-    </researchPrerequisites>
-  </ThingDef>
-  <WorkGiverDef>
-    <defName>LP_DoBillsArcaneLoom</defName>
-    <label>在法袍织机织布</label>
-    <giverClass>WorkGiver_DoBill</giverClass>
-    <workType>Tailoring</workType>
-    <priorityInType>90</priorityInType>
-    <fixedBillGiverDefs>
-      <li>LP_ArcaneLoom</li>
-    </fixedBillGiverDefs>
-    <verb>织</verb>
-    <gerund>正在法袍织机织布</gerund>
-    <requiredCapacities>
-      <li>Manipulation</li>
-    </requiredCapacities>
-    <prioritizeSustains>true</prioritizeSustains>
-  </WorkGiverDef>
 
   <!-- ==================== 附件 ==================== -->
   <ThingDef Name="LP_WorkbenchFacilityBase" ParentName="BuildingBase" Abstract="True">
@@ -562,7 +394,7 @@
   <ThingDef ParentName="LP_WorkbenchFacilityBase">
     <defName>LP_RuneQuenchTrough</defName>
     <label>符文淬火槽</label>
-    <description>盛满泛蓝光的淬火水的石槽，槽壁刻着冷却符文。放在符文铁砧或巨人铁砧旁边，锻造速度+10%（每张铁砧最多连一个）。</description>
+    <description>盛满泛蓝光的淬火水的石槽，槽壁刻着冷却符文。放在符文铁砧旁边，锻造速度+10%（每张铁砧最多连一个）。</description>
     <graphicData>
       <texPath>LP/Workbenches/RuneQuenchTrough</texPath>
       <shaderType>CutoutComplex</shaderType>

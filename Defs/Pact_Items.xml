@@ -39,53 +39,6 @@
   </ThingDef>
 
   <!-- 地狱钢叉：原版长矛（钢）×1.2，25% 地狱之伤。不能制作：角魔 30% 掉落、九狱商队。 -->
-  <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
-    <defName>LP_InfernalPitchfork</defName>
-    <label>地狱钢叉</label>
-    <description>角魔用的三股长叉，叉齿是九狱的黑钢，握柄烫手。需要双手握持。命中有 25% 留下“地狱之伤”：流血 ×2，普通包扎止不住，只有圣水、信仰治疗或手术能止住。伤害和穿甲接近原版动能锤 / 等离子剑上沿。不能制作。</description>
-    <graphicData><texPath>Pact/Items/InfernalPitchfork</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
-    <techLevel>Medieval</techLevel>
-    <recipeMaker IsNull="True" />
-    <smeltable>false</smeltable>
-    <statBases><MarketValue>900</MarketValue><Mass>3</Mass><MaxHitPoints>220</MaxHitPoints></statBases>
-    <equippedAngleOffset>-25</equippedAngleOffset>
-    <weaponTags Inherit="False"><li>LP_InfernalPitchfork</li></weaponTags>
-    <weaponClasses><li>Neolithic</li></weaponClasses>
-    <thingSetMakerTags Inherit="False" />
-    <tradeTags Inherit="False"><li>LP_Pact</li></tradeTags>
-    <tools>
-      <li><label>叉柄</label><capacities><li>Blunt</li><li>Poke</li></capacities><power>18</power><cooldownTime>2.4</cooldownTime></li>
-      <li><label>叉齿</label><capacities><li>Stab</li></capacities><power>37</power><armorPenetration>0.75</armorPenetration><cooldownTime>2.4</cooldownTime></li>
-    </tools>
-  </ThingDef>
-  <HediffDef>
-    <defName>LP_InfernalWound</defName>
-    <label>地狱之伤</label>
-    <description>九狱黑钢留下的伤口：全身流血 ×2。普通包扎止不住，喝祝圣圣水、阿斯莫的治疗之手、夏日之触 / 狄瓦的治疗之触，或者手术“清理地狱之伤”能止住。两天后自己消退。</description>
-    <hediffClass>HediffWithComps</hediffClass>
-    <isBad>true</isBad>
-    <defaultLabelColor>(0.85, 0.3, 0.2)</defaultLabelColor>
-    <comps><li Class="HediffCompProperties_Disappears"><disappearsAfterTicks>120000</disappearsAfterTicks><showRemainingTime>true</showRemainingTime></li></comps>
-    <stages><li><totalBleedFactor>2</totalBleedFactor></li></stages>
-  </HediffDef>
-  <RecipeDef ParentName="SurgeryFlesh">
-    <defName>LP_CleanseInfernalWound</defName>
-    <label>清理地狱之伤</label>
-    <description>把地狱之伤里残留的九狱黑钢挑出来，止住流血。</description>
-    <workerClass>Recipe_RemoveHediff</workerClass>
-    <jobString>正在清理地狱之伤。</jobString>
-    <workAmount>800</workAmount>
-    <removesHediff>LP_InfernalWound</removesHediff>
-    <successfullyRemovedHediffMessage>{0}清理了{1}的地狱之伤。</successfullyRemovedHediffMessage>
-    <anesthetize>false</anesthetize>
-    <deathOnFailedSurgeryChance>0</deathOnFailedSurgeryChance>
-    <isViolation>false</isViolation>
-    <targetsBodyPart>false</targetsBodyPart>
-    <recipeUsers><li>Human</li></recipeUsers>
-    <skillRequirements><Medicine>4</Medicine></skillRequirements>
-    <ingredients><li><filter><categories><li>Medicine</li></categories></filter><count>1</count></li></ingredients>
-    <fixedIngredientFilter><categories><li>Medicine</li></categories></fixedIngredientFilter>
-  </RecipeDef>
 
   <!-- 缚绳：挂在腰间的奇物，能力“缚绳”（8 格，敏捷豁免否则定身 4 秒），10 次耐久。 -->
   <ThingDef ParentName="LP_AccessoryBase">
@@ -129,49 +82,8 @@
   </HediffDef>
 
   <!-- 天界羽披：披风层（1.45.1 的 LP_Cape）。 -->
-  <ThingDef ParentName="ApparelBase">
-    <defName>LP_CelestialMantle</defName>
-    <label>天界羽披</label>
-    <description>狄瓦留下的白金羽毛披风，摸上去是温的。挂在“披风”层，可以套在盔甲外面。穿戴者造成的光辉伤害 +10%，深渊腐化获得 ×0.5；保暖 +6℃。不能制作：坠落天使的谢礼（10%），守护天使离开时也可能留下。</description>
-    <techLevel>Medieval</techLevel>
-    <smeltable>false</smeltable>
-    <graphicData><texPath>Pact/Items/CelestialMantle</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
-    <thingCategories><li>Apparel</li></thingCategories>
-    <tradeTags><li>LP_MagicItem</li></tradeTags>
-    <tradeability>Sellable</tradeability>
-    <statBases><MarketValue>1800</MarketValue><MaxHitPoints>200</MaxHitPoints><Mass>1.2</Mass><ArmorRating_Sharp>0.06</ArmorRating_Sharp><Insulation_Cold>6</Insulation_Cold><Beauty>4</Beauty><EquipDelay>2</EquipDelay><Flammability>0.4</Flammability></statBases>
-    <apparel>
-      <bodyPartGroups><li>Torso</li><li>Shoulders</li></bodyPartGroups>
-      <wornGraphicPath>Pact/Apparel/CelestialMantle/CelestialMantle</wornGraphicPath>
-      <layers><li>LP_Cape</li></layers>
-      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
-      <canBeGeneratedToSatisfyToxicEnvironmentResistance>false</canBeGeneratedToSatisfyToxicEnvironmentResistance>
-    </apparel>
-  </ThingDef>
 
   <!-- 妖精银弓：原版巨弓，射程 ×1.1；对恶魔 / 妖精 / 魔鬼 +20%。 -->
-  <ThingDef ParentName="Bow_Great">
-    <defName>LP_FeySilverBow</defName>
-    <label>妖精银弓</label>
-    <description>妖精宫廷的长弓，弓臂缠着银丝，弦是月光拧成的。射程比巨弓远一成；射中恶魔、魔鬼和妖精（外来者）时伤害 +20%。只在妖精集市上卖，不能制作。</description>
-    <graphicData><texPath>Pact/Items/FeySilverBow</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
-    <costList Inherit="False" />
-    <recipeMaker IsNull="True" />
-    <weaponTags Inherit="False"><li>LP_FeyBow</li></weaponTags>
-    <thingSetMakerTags Inherit="False" />
-    <tradeTags><li>LP_Pact</li></tradeTags>
-    <statBases><MarketValue>1100</MarketValue><AccuracyLong>0.55</AccuracyLong></statBases>
-    <verbs Inherit="False">
-      <li>
-        <verbClass>Verb_Shoot</verbClass>
-        <hasStandardCommand>true</hasStandardCommand>
-        <defaultProjectile>Arrow_Great</defaultProjectile>
-        <warmupTime>1.9</warmupTime>
-        <range>32.9</range>
-        <soundCast>Bow_Large</soundCast>
-      </li>
-    </verbs>
-  </ThingDef>
 
   <!-- ==================== 建筑 ==================== -->
   <ThingDef ParentName="BuildingBase">

@@ -103,11 +103,11 @@
   <GeneDef ParentName="LP_AbyssGeneBase">
     <defName>LP_AbyssCore</defName>
     <label>深渊之躯</label>
-    <description>深渊恶魔的身体：被击倒或杀死时化作黑烟遣返深渊（被束缚的、戴着位面锚链的除外），不会因赤身裸体而不快。寒铁武器对它的伤害 ×1.5，圣水 ×2。</description>
+    <description>深渊恶魔的身体：被击倒或杀死时化作黑烟遣返深渊（被束缚的、戴着位面锚链的除外），不会因赤身裸体而不快。寒铁武器对它的伤害 ×1.5。</description>
     <iconPath>Abyss/Genes/AbyssCore</iconPath>
     <customEffectDescriptions>
       <li>倒下或死亡：遣返深渊，敌人掉落灵魂币、恶魔血等。</li>
-      <li>寒铁武器伤害 ×1.5，圣水伤害 ×2，信仰的光辉伤害 ×1.25。</li>
+      <li>寒铁武器伤害 ×1.5，信仰的光辉伤害 ×1.25。</li>
       <li>不受深渊腐化以外的心灵影响……也不会被腐化。</li>
     </customEffectDescriptions>
     <modExtensions>

@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.150.0 以太动力甲：两套 DND 后期动力甲（Peter 11-12 出的设计图）。
+     奇械动力甲 + 奇械呼吸盔（青铜，不能染色）；誓约堡垒重甲 + 堡垒巨盔（钢灰金，灰色甲面可以染色）。
+     研究在「魔法与炼金」页 (6,0.7) (7,0.7)；在原版制造台上做。
+     不依赖搁置中的 Shelved/NewContent-1.126-1.127，也不依赖已删除的器械师/巨人锻造等内容。 -->
+<Defs>
+
+  <ResearchProjectDef>
+    <defName>LP_Research_AetherArmor</defName>
+    <label>以太动力甲</label>
+    <description>把秘银织进动力甲的关节与伺服结构，用以太核心代替普通电池。能在制造台上制作「奇械动力甲」和「奇械呼吸盔」。</description>
+    <baseCost>4000</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>PoweredArmor</li>
+      <li>LP_MythicMetallurgy</li>
+      <li>LP_Research_WondrousCraft</li>
+    </prerequisites>
+    <tab>LP_FireGiantTech</tab>
+    <researchViewX>6</researchViewX>
+    <researchViewY>0.7</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>LP_Research_AetherBastion</defName>
+    <label>誓约堡垒甲</label>
+    <description>以精金铸造整块胸甲与肩甲，再刻上守誓符文，做出最厚重的动力甲。能在制造台上制作「誓约堡垒重甲」和「堡垒巨盔」。</description>
+    <baseCost>6000</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>LP_Research_AetherArmor</li>
+    </prerequisites>
+    <tab>LP_FireGiantTech</tab>
+    <researchViewX>7</researchViewX>
+    <researchViewY>0.7</researchViewY>
+  </ResearchProjectDef>
+
+  <ThingDef ParentName="ArmorMachineableBase">
+    <defName>LP_AetherArtificerArmor</defName>
+    <label>奇械动力甲</label>
+    <description>青铜外壳、胸口嵌着以太核心的动力甲。秘银伺服让它比原版动力甲更灵活，背后的工具挂件和以太辅助让穿戴者干活更快。\n\n比海军动力甲略强，移动只慢一点。</description>
+    <techLevel>Spacer</techLevel>
+    <recipeMaker>
+      <researchPrerequisite>LP_Research_AetherArmor</researchPrerequisite>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <skillRequirements><Crafting>8</Crafting></skillRequirements>
+      <recipeUsers Inherit="False"><li>FabricationBench</li></recipeUsers>
+      <displayPriority>110</displayPriority>
+    </recipeMaker>
+    <graphicData>
+      <texPath>LP/AetherArmor/ArtificerArmor/ArtificerArmor_Icon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <tradeTags><li>HiTechArmor</li><li>Armor</li></tradeTags>
+    <generateCommonality>0</generateCommonality>
+    <statBases>
+      <WorkToMake>60000</WorkToMake>
+      <MaxHitPoints>380</MaxHitPoints>
+      <Mass>12</Mass>
+      <Flammability>0.3</Flammability>
+      <ArmorRating_Sharp>1.1</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.48</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.56</ArmorRating_Heat>
+      <Insulation_Cold>40</Insulation_Cold>
+      <Insulation_Heat>12</Insulation_Heat>
+      <EquipDelay>10</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>-0.2</MoveSpeed>
+      <WorkSpeedGlobal>0.08</WorkSpeedGlobal>
+      <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.3</SlaveSuppressionOffset>
+      <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.3</VacuumResistance>
+    </equippedStatOffsets>
+    <costList>
+      <Plasteel>100</Plasteel>
+      <LP_Mithral>40</LP_Mithral>
+      <ComponentSpacer>4</ComponentSpacer>
+    </costList>
+    <apparel>
+      <wornGraphicPath>LP/AetherArmor/ArtificerArmor/ArtificerArmor</wornGraphicPath>
+      <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li><li>Legs</li></bodyPartGroups>
+      <layers><li>Middle</li><li>Shell</li></layers>
+      <defaultOutfitTags><li>Soldier</li></defaultOutfitTags>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+    </apparel>
+  </ThingDef>
+  <ThingDef ParentName="ArmorHelmetMakeableBase">
+    <defName>LP_AetherAcolyteHelm</defName>
+    <label>奇械呼吸盔</label>
+    <description>配套奇械动力甲的全封闭头盔，琥珀色目镜内置瞄准辅助，能缩短瞄准时间。</description>
+    <techLevel>Spacer</techLevel>
+    <recipeMaker>
+      <researchPrerequisite>LP_Research_AetherArmor</researchPrerequisite>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <skillRequirements><Crafting>8</Crafting></skillRequirements>
+      <recipeUsers Inherit="False"><li>FabricationBench</li></recipeUsers>
+      <displayPriority>109</displayPriority>
+    </recipeMaker>
+    <graphicData>
+      <texPath>LP/AetherArmor/AcolyteHelm/AcolyteHelm_Icon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <tradeTags><li>HiTechArmor</li><li>Armor</li></tradeTags>
+    <generateCommonality>0</generateCommonality>
+    <statBases>
+      <WorkToMake>22000</WorkToMake>
+      <MaxHitPoints>140</MaxHitPoints>
+      <Mass>1.5</Mass>
+      <Flammability>0.3</Flammability>
+      <ArmorRating_Sharp>1.1</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.48</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.56</ArmorRating_Heat>
+      <Insulation_Cold>5</Insulation_Cold>
+      <Insulation_Heat>3</Insulation_Heat>
+      <EquipDelay>2</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <AimingDelayFactor>-0.1</AimingDelayFactor>
+      <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.1</SlaveSuppressionOffset>
+      <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.65</VacuumResistance>
+    </equippedStatOffsets>
+    <costList>
+      <Plasteel>35</Plasteel>
+      <LP_Mithral>10</LP_Mithral>
+      <ComponentSpacer>1</ComponentSpacer>
+    </costList>
+    <apparel>
+      <wornGraphicPath>LP/AetherArmor/AcolyteHelm/AcolyteHelm</wornGraphicPath>
+      <bodyPartGroups><li>FullHead</li></bodyPartGroups>
+      <layers><li>Overhead</li></layers>
+      <renderSkipFlags><li>Hair</li><li>Beard</li></renderSkipFlags>
+      <!-- 瘦体型头盔缩小到 85%，免得头显得太大 -->
+      <drawData>
+        <bodyTypeScales>
+          <li><bodyType>Thin</bodyType><scale>0.85</scale></li>
+        </bodyTypeScales>
+      </drawData>
+      <defaultOutfitTags><li>Soldier</li></defaultOutfitTags>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+    </apparel>
+  </ThingDef>
+  <ThingDef ParentName="ArmorMachineableBase">
+    <defName>LP_AetherBastionArmor</defName>
+    <label>誓约堡垒重甲</label>
+    <description>钢灰色精金板甲，镶金饰边，胸前和肩上排着以太晶格。比任何原版护甲都厚重，穿着的人几乎感觉不到疼，但走得很慢。\n\n灰色甲面可以染色。</description>
+    <techLevel>Spacer</techLevel>
+    <recipeMaker>
+      <researchPrerequisite>LP_Research_AetherBastion</researchPrerequisite>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <skillRequirements><Crafting>10</Crafting></skillRequirements>
+      <recipeUsers Inherit="False"><li>FabricationBench</li></recipeUsers>
+      <displayPriority>108</displayPriority>
+    </recipeMaker>
+    <graphicData>
+      <texPath>LP/AetherArmor/BastionArmor/BastionArmor_Icon</texPath>
+      <graphicClass>Graphic_Single</graphicClass><shaderType>CutoutComplex</shaderType>
+    </graphicData>
+    <thingCategories><li>ApparelArmor</li></thingCategories>
+    <tradeTags><li>HiTechArmor</li><li>Armor</li></tradeTags>
+    <generateCommonality>0</generateCommonality>
+    <statBases>
+      <WorkToMake>80000</WorkToMake>
+      <MaxHitPoints>520</MaxHitPoints>
+      <Mass>20</Mass>
+      <Flammability>0.2</Flammability>
+      <ArmorRating_Sharp>1.3</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.6</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.7</ArmorRating_Heat>
+      <Insulation_Cold>48</Insulation_Cold>
+      <Insulation_Heat>14</Insulation_Heat>
+      <EquipDelay>14</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>-0.45</MoveSpeed>
+      <PainShockThreshold>0.1</PainShockThreshold>
+      <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.3</SlaveSuppressionOffset>
+      <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.3</VacuumResistance>
+    </equippedStatOffsets>
+    <costList>
+      <Plasteel>150</Plasteel>
+      <LP_Adamantine>50</LP_Adamantine>
+      <LP_Mithral>30</LP_Mithral>
+      <ComponentSpacer>6</ComponentSpacer>
+    </costList>
+    <apparel>
+      <wornGraphicPath>LP/AetherArmor/BastionArmor/BastionArmor</wornGraphicPath><useWornGraphicMask>true</useWornGraphicMask>
+      <bodyPartGroups><li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li><li>Legs</li></bodyPartGroups>
+      <layers><li>Middle</li><li>Shell</li></layers>
+      <defaultOutfitTags><li>Soldier</li></defaultOutfitTags>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+    </apparel>
+    <colorGenerator Class="ColorGenerator_Single"><color>(1,1,1)</color></colorGenerator>
+  </ThingDef>
+  <ThingDef ParentName="ArmorHelmetMakeableBase">
+    <defName>LP_AetherBastionHelm</defName>
+    <label>堡垒巨盔</label>
+    <description>配套誓约堡垒重甲的镶金巨盔，面甲后面是一道发光的观察缝。厚重但不遮挡视线，能让人在冲击中保持清醒。\n\n灰色部分可以染色。</description>
+    <techLevel>Spacer</techLevel>
+    <recipeMaker>
+      <researchPrerequisite>LP_Research_AetherBastion</researchPrerequisite>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <skillRequirements><Crafting>10</Crafting></skillRequirements>
+      <recipeUsers Inherit="False"><li>FabricationBench</li></recipeUsers>
+      <displayPriority>107</displayPriority>
+    </recipeMaker>
+    <graphicData>
+      <texPath>LP/AetherArmor/BastionHelm/BastionHelm_Icon</texPath>
+      <graphicClass>Graphic_Single</graphicClass><shaderType>CutoutComplex</shaderType>
+    </graphicData>
+    <tradeTags><li>HiTechArmor</li><li>Armor</li></tradeTags>
+    <generateCommonality>0</generateCommonality>
+    <statBases>
+      <WorkToMake>28000</WorkToMake>
+      <MaxHitPoints>180</MaxHitPoints>
+      <Mass>2.5</Mass>
+      <Flammability>0.2</Flammability>
+      <ArmorRating_Sharp>1.3</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.6</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.7</ArmorRating_Heat>
+      <Insulation_Cold>6</Insulation_Cold>
+      <Insulation_Heat>3</Insulation_Heat>
+      <EquipDelay>3</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <PainShockThreshold>0.05</PainShockThreshold>
+      <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.1</SlaveSuppressionOffset>
+      <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.65</VacuumResistance>
+    </equippedStatOffsets>
+    <costList>
+      <Plasteel>50</Plasteel>
+      <LP_Adamantine>15</LP_Adamantine>
+      <ComponentSpacer>2</ComponentSpacer>
+    </costList>
+    <apparel>
+      <wornGraphicPath>LP/AetherArmor/BastionHelm/BastionHelm</wornGraphicPath><useWornGraphicMask>true</useWornGraphicMask>
+      <bodyPartGroups><li>FullHead</li></bodyPartGroups>
+      <layers><li>Overhead</li></layers>
+      <renderSkipFlags><li>Hair</li><li>Beard</li></renderSkipFlags>
+      <!-- 瘦体型头盔缩小到 85%，免得头显得太大 -->
+      <drawData>
+        <bodyTypeScales>
+          <li><bodyType>Thin</bodyType><scale>0.85</scale></li>
+        </bodyTypeScales>
+      </drawData>
+      <defaultOutfitTags><li>Soldier</li></defaultOutfitTags>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+    </apparel>
+    <colorGenerator Class="ColorGenerator_Single"><color>(1,1,1)</color></colorGenerator>
+  </ThingDef>
+</Defs>

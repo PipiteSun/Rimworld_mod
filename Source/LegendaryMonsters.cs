@@ -211,7 +211,6 @@ namespace LichPhylactery {
    if(k==null || k.Destroyed)return;var map=k.MapHeld;var at=k.PositionHeld;
    var drop=new List<Thing>();
    if(k.apparel!=null)foreach(var a in k.apparel.WornApparel.Where(a=>a.def.defName=="LP_DeathknightPlate" || a.def.defName=="LP_HelmRestlessDead").ToList()){k.apparel.Remove(a);a.TryGetComp<CompQuality>()?.SetQuality(QualityCategory.Excellent,ArtGenerationContext.Outsider);drop.Add(a);}
-   var orb=DefDatabase<ThingDef>.GetNamedSilentFail("LP_HellfireOrb");if(orb!=null)drop.Add(ThingMaker.MakeThing(orb));
    if(!k.Dead)k.Kill(null);
    var corpse=k.Corpse;if(corpse!=null && !corpse.Destroyed)corpse.Destroy();
    if(map!=null){foreach(var t in drop)GenPlace.TryPlaceThing(t,at,map,ThingPlaceMode.Near);FilthMaker.TryMakeFilth(at,map,ThingDefOf.Filth_Ash,4);FleckMaker.ThrowSmoke(at.ToVector3Shifted(),map,2f);}
@@ -262,7 +261,7 @@ namespace LichPhylactery {
    st.sites.Add(new MonsterSite{site=site,kind=k,expire=Find.TickManager.TicksGame+LairDays*GenDate.TicksPerDay});
    if(!Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter(k==Beholder?"眼魔巢穴":"无尽墓穴",why+"，"+(k==Beholder?"眼魔巢穴（地下洞穴）":"无尽墓穴（半巫妖的坟墓）")+"显露在世界地图上（离殖民地 6～15 格），"+LairDays+"天后消失。\n\n"
     +(k==Beholder?"眼魔每 3 秒从眼柄射出 1～2 道射线（魅惑、麻痹、恐惧、减速、衰弱、石化、解离、死亡、睡眠、念动，全部可以豁免）；打掉一根眼柄就少一种射线。它正面 60° 锥形 20 格内不能施法、护盾腰带失效——从侧面和背后打。"
-     :"半巫妖每 60 秒发出一次吞魂之嚎：20 格内所有活人做体质豁免（难度 21，基础成功率 10%，属性调整值和熟练加值每点 +5%），失败倒地、灵魂撕裂，30 秒内不救治就死。巫妖和死灵造物免疫。它只有一颗头骨，圣水和银器伤害 ×2。"),LetterDefOf.PositiveEvent,new LookTargets(site));
+     :"半巫妖每 60 秒发出一次吞魂之嚎：20 格内所有活人做体质豁免（难度 21，基础成功率 10%，属性调整值和熟练加值每点 +5%），失败倒地、灵魂撕裂，30 秒内不救治就死。巫妖和死灵造物免疫。它只有一颗头骨，银器伤害 ×2。"),LetterDefOf.PositiveEvent,new LookTargets(site));
    return site;
   }
   public static MonsterSite SiteOf(Site s)=>s==null?null:State?.sites.FirstOrDefault(x=>x.site==s);
