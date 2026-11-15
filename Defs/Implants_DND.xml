@@ -254,21 +254,21 @@
     <products><LP_IounBlank>1</LP_IounBlank></products>
   </RecipeDef>
   <ThingDef ParentName="BodyPartBase">
-    <defName>LP_Ioun_Str</defName><label>伊奥恩颅石·力量之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者力量 +2（最多加到 20；力量超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <defName>LP_Ioun_Str</defName><label>伊奥恩颅石·力量之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者力量 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
     <techLevel>Medieval</techLevel>
     <thingCategories><li>BodyPartsBionic</li></thingCategories>
     <graphicData><texPath>Items/Implants/IounStr</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></graphicData>
     <statBases><MarketValue>2500</MarketValue><Mass>0.2</Mass></statBases>
   </ThingDef>
   <HediffDef ParentName="ImplantHediffBase">
-    <defName>LP_Ioun_Str</defName><label>伊奥恩颅石·力量之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者力量 +2（最多加到 20；力量超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <defName>LP_Ioun_Str</defName><label>伊奥恩颅石·力量之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者力量 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
     <spawnThingOnRemoved>LP_Ioun_Str</spawnThingOnRemoved>
     
     <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps>
     <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Str</flag><attune>true</attune><ionStone>true</ionStone></li></modExtensions>
   </HediffDef>
   <RecipeDef ParentName="SurgeryInstallImplantBase">
-    <defName>LP_Install_LP_Ioun_Str</defName><label>镶嵌伊奥恩颅石·力量之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者力量 +2（最多加到 20；力量超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description><jobString>正在镶嵌伊奥恩颅石·力量之石。</jobString>
+    <defName>LP_Install_LP_Ioun_Str</defName><label>镶嵌伊奥恩颅石·力量之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者力量 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description><jobString>正在镶嵌伊奥恩颅石·力量之石。</jobString>
     <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
     <ingredients><li><filter><thingDefs><li>LP_Ioun_Str</li></thingDefs></filter><count>1</count></li></ingredients>
     <fixedIngredientFilter><thingDefs><li>LP_Ioun_Str</li></thingDefs></fixedIngredientFilter>
@@ -290,21 +290,21 @@
     <products><LP_Ioun_Str>1</LP_Ioun_Str></products>
   </RecipeDef>
   <ThingDef ParentName="BodyPartBase">
-    <defName>LP_Ioun_Dex</defName><label>伊奥恩颅石·敏捷之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者敏捷 +2（最多加到 20；敏捷超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <defName>LP_Ioun_Dex</defName><label>伊奥恩颅石·敏捷之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者敏捷 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
     <techLevel>Medieval</techLevel>
     <thingCategories><li>BodyPartsBionic</li></thingCategories>
     <graphicData><texPath>Items/Implants/IounDex</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></graphicData>
     <statBases><MarketValue>2500</MarketValue><Mass>0.2</Mass></statBases>
   </ThingDef>
   <HediffDef ParentName="ImplantHediffBase">
-    <defName>LP_Ioun_Dex</defName><label>伊奥恩颅石·敏捷之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者敏捷 +2（最多加到 20；敏捷超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <defName>LP_Ioun_Dex</defName><label>伊奥恩颅石·敏捷之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者敏捷 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
     <spawnThingOnRemoved>LP_Ioun_Dex</spawnThingOnRemoved>
     
     <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps>
     <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Dex</flag><attune>true</attune><ionStone>true</ionStone></li></modExtensions>
   </HediffDef>
   <RecipeDef ParentName="SurgeryInstallImplantBase">
-    <defName>LP_Install_LP_Ioun_Dex</defName><label>镶嵌伊奥恩颅石·敏捷之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者敏捷 +2（最多加到 20；敏捷超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description><jobString>正在镶嵌伊奥恩颅石·敏捷之石。</jobString>
+    <defName>LP_Install_LP_Ioun_Dex</defName><label>镶嵌伊奥恩颅石·敏捷之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者敏捷 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description><jobString>正在镶嵌伊奥恩颅石·敏捷之石。</jobString>
     <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
     <ingredients><li><filter><thingDefs><li>LP_Ioun_Dex</li></thingDefs></filter><count>1</count></li></ingredients>
     <fixedIngredientFilter><thingDefs><li>LP_Ioun_Dex</li></thingDefs></fixedIngredientFilter>
@@ -326,21 +326,21 @@
     <products><LP_Ioun_Dex>1</LP_Ioun_Dex></products>
   </RecipeDef>
   <ThingDef ParentName="BodyPartBase">
-    <defName>LP_Ioun_Con</defName><label>伊奥恩颅石·体质之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者体质 +2（最多加到 20；体质超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <defName>LP_Ioun_Con</defName><label>伊奥恩颅石·体质之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者体质 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
     <techLevel>Medieval</techLevel>
     <thingCategories><li>BodyPartsBionic</li></thingCategories>
     <graphicData><texPath>Items/Implants/IounCon</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></graphicData>
     <statBases><MarketValue>2500</MarketValue><Mass>0.2</Mass></statBases>
   </ThingDef>
   <HediffDef ParentName="ImplantHediffBase">
-    <defName>LP_Ioun_Con</defName><label>伊奥恩颅石·体质之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者体质 +2（最多加到 20；体质超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <defName>LP_Ioun_Con</defName><label>伊奥恩颅石·体质之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者体质 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
     <spawnThingOnRemoved>LP_Ioun_Con</spawnThingOnRemoved>
     
     <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps>
     <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Con</flag><attune>true</attune><ionStone>true</ionStone></li></modExtensions>
   </HediffDef>
   <RecipeDef ParentName="SurgeryInstallImplantBase">
-    <defName>LP_Install_LP_Ioun_Con</defName><label>镶嵌伊奥恩颅石·体质之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者体质 +2（最多加到 20；体质超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description><jobString>正在镶嵌伊奥恩颅石·体质之石。</jobString>
+    <defName>LP_Install_LP_Ioun_Con</defName><label>镶嵌伊奥恩颅石·体质之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者体质 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description><jobString>正在镶嵌伊奥恩颅石·体质之石。</jobString>
     <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
     <ingredients><li><filter><thingDefs><li>LP_Ioun_Con</li></thingDefs></filter><count>1</count></li></ingredients>
     <fixedIngredientFilter><thingDefs><li>LP_Ioun_Con</li></thingDefs></fixedIngredientFilter>
@@ -362,21 +362,21 @@
     <products><LP_Ioun_Con>1</LP_Ioun_Con></products>
   </RecipeDef>
   <ThingDef ParentName="BodyPartBase">
-    <defName>LP_Ioun_Int</defName><label>伊奥恩颅石·智力之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者智力 +2（最多加到 20；智力超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <defName>LP_Ioun_Int</defName><label>伊奥恩颅石·智力之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者智力 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
     <techLevel>Medieval</techLevel>
     <thingCategories><li>BodyPartsBionic</li></thingCategories>
     <graphicData><texPath>Items/Implants/IounInt</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></graphicData>
     <statBases><MarketValue>2500</MarketValue><Mass>0.2</Mass></statBases>
   </ThingDef>
   <HediffDef ParentName="ImplantHediffBase">
-    <defName>LP_Ioun_Int</defName><label>伊奥恩颅石·智力之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者智力 +2（最多加到 20；智力超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <defName>LP_Ioun_Int</defName><label>伊奥恩颅石·智力之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者智力 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
     <spawnThingOnRemoved>LP_Ioun_Int</spawnThingOnRemoved>
     
     <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps>
     <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Int</flag><attune>true</attune><ionStone>true</ionStone></li></modExtensions>
   </HediffDef>
   <RecipeDef ParentName="SurgeryInstallImplantBase">
-    <defName>LP_Install_LP_Ioun_Int</defName><label>镶嵌伊奥恩颅石·智力之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者智力 +2（最多加到 20；智力超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description><jobString>正在镶嵌伊奥恩颅石·智力之石。</jobString>
+    <defName>LP_Install_LP_Ioun_Int</defName><label>镶嵌伊奥恩颅石·智力之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者智力 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description><jobString>正在镶嵌伊奥恩颅石·智力之石。</jobString>
     <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
     <ingredients><li><filter><thingDefs><li>LP_Ioun_Int</li></thingDefs></filter><count>1</count></li></ingredients>
     <fixedIngredientFilter><thingDefs><li>LP_Ioun_Int</li></thingDefs></fixedIngredientFilter>
@@ -398,21 +398,21 @@
     <products><LP_Ioun_Int>1</LP_Ioun_Int></products>
   </RecipeDef>
   <ThingDef ParentName="BodyPartBase">
-    <defName>LP_Ioun_Wis</defName><label>伊奥恩颅石·感知之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者感知 +2（最多加到 20；感知超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <defName>LP_Ioun_Wis</defName><label>伊奥恩颅石·感知之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者感知 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
     <techLevel>Medieval</techLevel>
     <thingCategories><li>BodyPartsBionic</li></thingCategories>
     <graphicData><texPath>Items/Implants/IounWis</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></graphicData>
     <statBases><MarketValue>2500</MarketValue><Mass>0.2</Mass></statBases>
   </ThingDef>
   <HediffDef ParentName="ImplantHediffBase">
-    <defName>LP_Ioun_Wis</defName><label>伊奥恩颅石·感知之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者感知 +2（最多加到 20；感知超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <defName>LP_Ioun_Wis</defName><label>伊奥恩颅石·感知之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者感知 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
     <spawnThingOnRemoved>LP_Ioun_Wis</spawnThingOnRemoved>
     
     <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps>
     <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Wis</flag><attune>true</attune><ionStone>true</ionStone></li></modExtensions>
   </HediffDef>
   <RecipeDef ParentName="SurgeryInstallImplantBase">
-    <defName>LP_Install_LP_Ioun_Wis</defName><label>镶嵌伊奥恩颅石·感知之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者感知 +2（最多加到 20；感知超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description><jobString>正在镶嵌伊奥恩颅石·感知之石。</jobString>
+    <defName>LP_Install_LP_Ioun_Wis</defName><label>镶嵌伊奥恩颅石·感知之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者感知 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description><jobString>正在镶嵌伊奥恩颅石·感知之石。</jobString>
     <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
     <ingredients><li><filter><thingDefs><li>LP_Ioun_Wis</li></thingDefs></filter><count>1</count></li></ingredients>
     <fixedIngredientFilter><thingDefs><li>LP_Ioun_Wis</li></thingDefs></fixedIngredientFilter>
@@ -434,21 +434,21 @@
     <products><LP_Ioun_Wis>1</LP_Ioun_Wis></products>
   </RecipeDef>
   <ThingDef ParentName="BodyPartBase">
-    <defName>LP_Ioun_Cha</defName><label>伊奥恩颅石·魅力之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者魅力 +2（最多加到 20；魅力超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <defName>LP_Ioun_Cha</defName><label>伊奥恩颅石·魅力之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者魅力 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
     <techLevel>Medieval</techLevel>
     <thingCategories><li>BodyPartsBionic</li></thingCategories>
     <graphicData><texPath>Items/Implants/IounCha</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></graphicData>
     <statBases><MarketValue>2500</MarketValue><Mass>0.2</Mass></statBases>
   </ThingDef>
   <HediffDef ParentName="ImplantHediffBase">
-    <defName>LP_Ioun_Cha</defName><label>伊奥恩颅石·魅力之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者魅力 +2（最多加到 20；魅力超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
+    <defName>LP_Ioun_Cha</defName><label>伊奥恩颅石·魅力之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者魅力 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description>
     <spawnThingOnRemoved>LP_Ioun_Cha</spawnThingOnRemoved>
     
     <comps><li Class="LichPhylactery.HediffCompProperties_DndImplant" /></comps>
     <modExtensions><li Class="LichPhylactery.ImplantExtension"><flag>Cha</flag><attune>true</attune><ionStone>true</ionStone></li></modExtensions>
   </HediffDef>
   <RecipeDef ParentName="SurgeryInstallImplantBase">
-    <defName>LP_Install_LP_Ioun_Cha</defName><label>镶嵌伊奥恩颅石·魅力之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者魅力 +2（最多加到 20；魅力超凡时不受限）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description><jobString>正在镶嵌伊奥恩颅石·魅力之石。</jobString>
+    <defName>LP_Install_LP_Ioun_Cha</defName><label>镶嵌伊奥恩颅石·魅力之石</label><description>原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者魅力 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。</description><jobString>正在镶嵌伊奥恩颅石·魅力之石。</jobString>
     <workerClass>LichPhylactery.Recipe_InstallDndImplant</workerClass>
     <ingredients><li><filter><thingDefs><li>LP_Ioun_Cha</li></thingDefs></filter><count>1</count></li></ingredients>
     <fixedIngredientFilter><thingDefs><li>LP_Ioun_Cha</li></thingDefs></fixedIngredientFilter>

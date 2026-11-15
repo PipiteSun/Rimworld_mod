@@ -100,7 +100,7 @@
   <XenotypeDef>
     <defName>LP_Elf</defName>
     <label>高等精灵</label>
-    <description>修长美丽的长寿种族，血脉会遗传给子女（1.57.0 起称"高等精灵"，旧存档里的精灵就是高等精灵）。白皙的皮肤、金发或银发，尖耳、纤瘦、天生的好射手，学东西快，擅长艺术；睡得少，成年后衰老速度只有常人的四分之一；心智坚定，不易被心灵类效果影响。身体比较脆弱，受伤更重，近战力量也弱，也不屑于粗重活。精灵在睡眠中进入冥想般的"出神"，有灵能的精灵睡觉时会慢慢恢复精神力，醒来时心情更好。</description>
+    <description>修长美丽的长寿种族，血脉会遗传给子女（1.57.0 起称"高等精灵"，旧存档里的精灵就是高等精灵）。白皙的皮肤、金发或银发，尖耳、纤瘦、天生的好射手，学东西快，擅长艺术；睡得少，成年后衰老速度只有常人的5%；心智坚定，不易被心灵类效果影响。身体比较脆弱，受伤更重，近战力量也弱，也不屑于粗重活。精灵在睡眠中进入冥想般的"出神"，有灵能的精灵睡觉时会慢慢恢复精神力，醒来时心情更好。</description>
     <descriptionShort>可遗传的长寿种族。射击、艺术强，学得快，睡得少、成年后衰老极慢、心智抗性高；身体脆弱、近战弱、体力活慢。睡眠时冥想，醒来心情更好。</descriptionShort>
     <iconPath>CommonRaces/Xenotypes/Elf</iconPath>
     <inheritable>true</inheritable>
@@ -159,7 +159,7 @@
   <GeneDef>
     <defName>LP_ElfLongevity</defName>
     <label>精灵长寿</label>
-    <description>缓慢的新陈代谢让精灵在成年后衰老得极慢。13岁起衰老逐渐放缓，18岁后生理年龄增长速度只有常人的25%。童年成长不受影响。</description>
+    <description>缓慢的新陈代谢让精灵在成年后衰老得极慢。18岁前与常人一样成长；18岁起生理年龄增长速度只有常人的5%（常人过20年，精灵只老1岁）。</description>
     <iconPath>CommonRaces/Genes/ElfLongevity</iconPath>
     <displayCategory>Miscellaneous</displayCategory>
     <biostatCpx>2</biostatCpx>
@@ -167,8 +167,8 @@
     <selectionWeight>0</selectionWeight>
     <biologicalAgeTickFactorFromAgeCurve>
       <points>
-        <li>(13, 1)</li>
-        <li>(18.5, 0.25)</li>
+        <li>(18, 1)</li>
+        <li>(18.01, 0.05)</li>
       </points>
     </biologicalAgeTickFactorFromAgeCurve>
   </GeneDef>

@@ -73,8 +73,8 @@
           <drawSize>0.7</drawSize>
         </openGraphic>
         <verticalGraphic>
-          <texPath>Things/Item/LP_NetherilStudyScroll</texPath>
-          <graphicClass>Graphic_Single</graphicClass>
+          <texPath>Things/Item/Vertical/LP_NetherilStudyScroll_Vertical</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
           <addTopAltitudeBias>true</addTopAltitudeBias>
         </verticalGraphic>
         <doers>
@@ -111,8 +111,8 @@
           <drawSize>0.7</drawSize>
         </openGraphic>
         <verticalGraphic>
-          <texPath>Things/Item/LP_NetherilArcaneScroll</texPath>
-          <graphicClass>Graphic_Single</graphicClass>
+          <texPath>Things/Item/Vertical/LP_NetherilArcaneScroll_Vertical</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
           <addTopAltitudeBias>true</addTopAltitudeBias>
         </verticalGraphic>
         <doers>
@@ -154,8 +154,8 @@
           <drawSize>0.8</drawSize>
         </openGraphic>
         <verticalGraphic>
-          <texPath>Things/Item/LP_KarsusScroll</texPath>
-          <graphicClass>Graphic_Single</graphicClass>
+          <texPath>Things/Item/Vertical/LP_KarsusScroll_Vertical</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
           <addTopAltitudeBias>true</addTopAltitudeBias>
         </verticalGraphic>
         <doers>

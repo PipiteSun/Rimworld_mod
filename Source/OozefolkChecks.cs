@@ -61,7 +61,7 @@ namespace LichPhylactery {
    Check(Near(Oozefolk.Points(p0),30f) && Near(Oozefolk.MaxPoints(p0),100f),"protoplasm starts at 30 of 100: "+Oozefolk.Points(p0)+"/"+Oozefolk.MaxPoints(p0));
    Check(new[]{"LP_OozeEngulf","LP_OozeFission","LP_OozeSeep","LP_OozeReshape","LP_OozeExtractGel"}.All(n=>p0.abilities.GetAbility(Races124.Ability(n))!=null),"oozefolk have engulf, fission, seep, reshape and extract gel");
    var custom=xeno.genes.Where(g=>g.defName.StartsWith("LP_Ooze") && g.defName!="LP_OozeSheen").ToList();
-   Check(custom.Count==8 && custom.All(g=>g.selectionWeight==0 && GeneWorkbench.Extractable(g)),"all 8 oozefolk genes are non-random and extractable");
+   Check(custom.Count==8 && custom.All(g=>g.selectionWeight==0 && g.biostatArc==0 && g.endogeneCategory!=EndogeneCategory.Melanin && g.biostatMet>=GeneTuning.BiostatRange.min && g.biostatMet<=GeneTuning.BiostatRange.max),"all 8 oozefolk genes are non-random and extractable");
   }
 
   // 2 伤害：钝击×0.5、强酸×0.25、火焰×1.5、寒冷×1.5（实际伤害对比普通人）；出血×0.5。

@@ -30,8 +30,8 @@ namespace LichPhylactery {
    switch(e.kind){
     case Hediff_Adventurer.FxKind.Inverse:return "÷M，最低 ×"+N(e.cap);
     case Hediff_Adventurer.FxKind.Offset:return (e.num?N(e.per):P(e.per))+" ×(M − 1)，限 "+(e.num?N(e.lo)+"～"+N(e.hi):Pct(e.lo)+"～"+Pct(e.hi));
-    case Hediff_Adventurer.FxKind.Linear:return "(1 + "+P(e.per)+" × 调整值′) × 擅长 × 天赋，最低 ×"+N(Adventurer.MeleeMin);
-    case Hediff_Adventurer.FxKind.PerPoint:return "(1 + "+P(e.per)+" ×(属性 − 10)′) × 擅长 × 天赋，最低 ×0.5"+(e.cap>0f?"，超 ×"+N(e.cap)+" 收敛":"");
+    case Hediff_Adventurer.FxKind.Linear:return "(1 + "+P(Adventurer.Step(e.per))+" × 调整值′) × 擅长 × 天赋，最低 ×"+N(Adventurer.MeleeMin);
+    case Hediff_Adventurer.FxKind.PerPoint:return "(1 + "+P(Adventurer.Step(e.per))+" ×(属性 − 10)′) × 擅长 × 天赋，最低 ×0.5"+(e.cap>0f?"，超 ×"+N(e.cap)+" 收敛":"");
     default:return "×M"+(e.cap>0f?"，超 ×"+N(e.cap)+" 收敛":"")+(e.stat=="CarryingCapacity"?"，最低 ×0.1":"")+(SharesWork(e)?"（已含工作速度）":"");
    }
   }
@@ -41,9 +41,9 @@ namespace LichPhylactery {
    switch(e.kind){
     case Hediff_Adventurer.FxKind.Inverse:r="1 ÷ "+N(m)+" = "+X(1f/Mathf.Max(.0001f,m))+(1f/Mathf.Max(.0001f,m)<e.cap?" → 最低 "+X(e.cap):"");break;
     case Hediff_Adventurer.FxKind.Offset:{float raw=e.per*(m-1f);r=N(e.per)+" × ("+N(m)+" − 1) = "+N(raw)+(raw<e.lo || raw>e.hi?" → 限在 "+N(Mathf.Clamp(raw,e.lo,e.hi)):"");break;}
-    case Hediff_Adventurer.FxKind.Linear:{float b=1f+e.per*h.AMod(e.a);r="1 + "+P(e.per)+" × "+N(h.AMod(e.a))+" = "+X(b)+(b<Adventurer.MeleeMin?" → 最低 "+X(Adventurer.MeleeMin):"")+(tm>1.0001f && b>=1f?"；"+X(b)+Whole(h,e.a):"")+" = "+X(h.LinearValue(e.a,e.per));break;}
-    case Hediff_Adventurer.FxKind.PerPoint:{int d=h.Eff(e.a)-10;float pts=d>0?d*Affinity.RaceModMult(h,e.a):d,b=Mathf.Max(.5f,1f+e.per*pts);
-     r="(属性 − 10)′ = "+N(pts)+(d>0 && Affinity.RaceModMult(h,e.a)<.9999f?"（"+d+" × 笨拙 "+N(Affinity.RaceModMult(h,e.a))+"）":"")+"；1 + "+P(e.per)+" × "+N(pts)+" = "+X(b)+(tm>1.0001f && b>=1f?"；"+X(b)+Whole(h,e.a):"")+" = "+X(h.PerPointValue(e))+"\n另外照常乘全局工作速度（和 Isekai 一样）。";break;}
+    case Hediff_Adventurer.FxKind.Linear:{float b=1f+Adventurer.Step(e.per)*h.AMod(e.a);r="1 + "+P(Adventurer.Step(e.per))+" × "+N(h.AMod(e.a))+" = "+X(b)+(b<Adventurer.MeleeMin?" → 最低 "+X(Adventurer.MeleeMin):"")+(tm>1.0001f && b>=1f?"；"+X(b)+Whole(h,e.a):"")+" = "+X(h.LinearValue(e.a,e.per));break;}
+    case Hediff_Adventurer.FxKind.PerPoint:{int d=h.Eff(e.a)-10;float pts=d>0?d*Affinity.RaceModMult(h,e.a):d,b=Mathf.Max(.5f,1f+Adventurer.Step(e.per)*pts);
+     r="(属性 − 10)′ = "+N(pts)+(d>0 && Affinity.RaceModMult(h,e.a)<.9999f?"（"+d+" × 笨拙 "+N(Affinity.RaceModMult(h,e.a))+"）":"")+"；1 + "+P(Adventurer.Step(e.per))+" × "+N(pts)+" = "+X(b)+(tm>1.0001f && b>=1f?"；"+X(b)+Whole(h,e.a):"")+" = "+X(h.PerPointValue(e))+"\n另外照常乘全局工作速度（和 Isekai 一样）。";break;}
     default:r="M = "+X(m)+(e.cap>0f && m>e.cap?" → 超过 ×"+N(e.cap)+" 收敛为 "+X(Hediff_Adventurer.SoftCap(m,e.cap)):"")+(SharesWork(e)?"\n原版这一项本身乘全局工作速度（已吃智力倍率），这里除掉一份，智力只算一次。":"");break;
    }
    if(s<.9999f)r+="\n属性效果强度 "+P(s)+"：1 + (完整值 − 1) × "+P(s)+" = "+Value(e,h.FxValue(e,s));
@@ -79,9 +79,9 @@ namespace LichPhylactery {
    float tm=Affinity.WholeMult(h,a);
    if(a==Adventurer.Con){
     float con=h.ConPart(s),lv=1f+h.LevelGrowth(h.level)*s,leg=Legend.HealthFactor(h),tough=Feats.ToughFactor(h);
-    float cb=1f+Hediff_Adventurer.ConPartPerMod*h.AMod(a); // 1.99.0：公式写成 (1 + 15% × 调整值′) × 天赋，免得看成只有后半乘天赋；1.121.0 热修：× 擅长 × 天赋
-    list.Add(new Line{label="部位生命（体质）",formula="(1 + "+P(Hediff_Adventurer.ConPartPerMod)+" × 调整值′) × 擅长 × 天赋，最低 ×1",value=X(con),
-     tip="(1 + "+P(Hediff_Adventurer.ConPartPerMod)+" × "+N(h.AMod(a))+")"+(tm>1.0001f && cb>=1f?Whole(h,a):"")+" = "+X(con)+(s<.9999f?"（已按属性效果强度 "+P(s)+" 插值）":"")+"\n体质低于 10 不减少部位生命。"});
+    float cb=1f+Adventurer.Step(Hediff_Adventurer.ConPartPerMod)*h.AMod(a); // 1.99.0：公式写成 (1 + 15% × 调整值′) × 天赋，免得看成只有后半乘天赋；1.121.0 热修：× 擅长 × 天赋
+    list.Add(new Line{label="部位生命（体质）",formula="(1 + "+P(Adventurer.Step(Hediff_Adventurer.ConPartPerMod))+" × 调整值′) × 擅长 × 天赋，最低 ×1",value=X(con),
+     tip="(1 + "+P(Adventurer.Step(Hediff_Adventurer.ConPartPerMod))+" × "+N(h.AMod(a))+")"+(tm>1.0001f && cb>=1f?Whole(h,a):"")+" = "+X(con)+(s<.9999f?"（已按属性效果强度 "+P(s)+" 插值）":"")+"\n体质低于 10 不减少部位生命。"});
     // 1.99.0：等级成长的说明照 1.93.0 的实际公式（Hediff_Adventurer.PartGrowth），以前还写着“平均 ×(等级 − 1)”和未分配 5%。
     int lvc=Math.Min(h.level,Adventurer.MaxLevel),spent=0;var gs=new List<string>();
     if(h.classes?.levels!=null)foreach(var kv in h.classes.levels){if(kv.Key==null)continue;int c=Math.Min(kv.Value,lvc-spent);if(c<=0)continue;gs.Add(kv.Key.label+" "+c+" × "+P(kv.Key.PartPerLevel));spent+=c;}
@@ -101,14 +101,14 @@ namespace LichPhylactery {
    string skills=a==0?"格斗":a==1?"射击":a==3?"智识":a==4?"医疗 / 种植 / 驯兽":a==5?"社交":null;
    if(skills!=null)list.Add(new Line{label=skills+"学习",formula="×M，最低 ×"+N(Adventurer.LearnMin),value=X(Mathf.Max(Adventurer.LearnMin,h.Fx(a,s))),tip="技能学习速度 = 属性倍率 M = "+X(h.AMult(a))});
    float cp=Adventurer.ClassPowerBonus(h.pawn,a)-Adventurer.ProfClassPer*Math.Max(0,h.Proficiency-2);
-   list.Add(new Line{label="职业强度（主属性）",formula="(1 + "+P(Adventurer.ClassAbilityPer)+" × 调整值′) × 擅长 × 天赋 − 1",value=Pct(cp),tip="以"+Adventurer.Names[a]+"为主属性的职业（施法、职业能力）强度：(1 + "+P(Adventurer.ClassAbilityPer)+" × "+N(h.AMod(a))+")"+(tm>1.0001f?Whole(h,a):"")+" − 1 = "+Pct(cp)+"\n熟练加值另加 "+P(Adventurer.ProfClassPer)+" ×（熟练 − 2）。"});
+   list.Add(new Line{label="职业强度（主属性）",formula="(1 + "+P(Adventurer.Step(Adventurer.ClassAbilityPer))+" × 调整值′) × 擅长 × 天赋 − 1",value=Pct(cp),tip="以"+Adventurer.Names[a]+"为主属性的职业（施法、职业能力）强度：(1 + "+P(Adventurer.Step(Adventurer.ClassAbilityPer))+" × "+N(h.AMod(a))+")"+(tm>1.0001f?Whole(h,a):"")+" − 1 = "+Pct(cp)+"\n熟练加值另加 "+P(Adventurer.ProfClassPer)+" ×（熟练 − 2）。"});
    if(a==Adventurer.Int){ // 1.97.0 奥术强度的智力项 10%
     float ap=Adventurer.ClassPowerBonus(h.pawn,a,Adventurer.ArcaneAbilityPer)-Adventurer.ProfClassPer*Math.Max(0,h.Proficiency-2);
-    list.Add(new Line{label="奥术强度（智力）",formula="(1 + "+P(Adventurer.ArcaneAbilityPer)+" × 调整值′) × 擅长 × 天赋 − 1",value=Pct(ap),tip="奥术强度（法师、术士智识支）的智力项每点调整值 "+P(Adventurer.ArcaneAbilityPer)+"：(1 + "+P(Adventurer.ArcaneAbilityPer)+" × "+N(h.AMod(a))+")"+(tm>1.0001f?Whole(h,a):"")+" − 1 = "+Pct(ap)+"\n其他用智力的强度仍按 "+P(Adventurer.ClassAbilityPer)+"。"});
+    list.Add(new Line{label="奥术强度（智力）",formula="(1 + "+P(Adventurer.Step(Adventurer.ArcaneAbilityPer))+" × 调整值′) × 擅长 × 天赋 − 1",value=Pct(ap),tip="奥术强度（法师、术士智识支）的智力项每点调整值 "+P(Adventurer.Step(Adventurer.ArcaneAbilityPer))+"：(1 + "+P(Adventurer.Step(Adventurer.ArcaneAbilityPer))+" × "+N(h.AMod(a))+")"+(tm>1.0001f?Whole(h,a):"")+" − 1 = "+Pct(ap)+"\n其他用智力的强度仍按 "+P(Adventurer.Step(Adventurer.ClassAbilityPer))+"。"});
    }
    if(a==Adventurer.Cha){ // 1.98.0 天赋强度的魅力项 10%
     float ip=Adventurer.ClassPowerBonus(h.pawn,a,Adventurer.InnateAbilityPer)-Adventurer.ProfClassPer*Math.Max(0,h.Proficiency-2);
-    list.Add(new Line{label="天赋强度（魅力）",formula="(1 + "+P(Adventurer.InnateAbilityPer)+" × 调整值′) × 擅长 × 天赋 − 1",value=Pct(ip),tip="天赋强度（术士社交支）的魅力项每点调整值 "+P(Adventurer.InnateAbilityPer)+"：(1 + "+P(Adventurer.InnateAbilityPer)+" × "+N(h.AMod(a))+")"+(tm>1.0001f?Whole(h,a):"")+" − 1 = "+Pct(ip)+"\n神恩、契约等其他用魅力的强度仍按 "+P(Adventurer.ClassAbilityPer)+"。"});
+    list.Add(new Line{label="天赋强度（魅力）",formula="(1 + "+P(Adventurer.Step(Adventurer.InnateAbilityPer))+" × 调整值′) × 擅长 × 天赋 − 1",value=Pct(ip),tip="天赋强度（术士社交支）的魅力项每点调整值 "+P(Adventurer.Step(Adventurer.InnateAbilityPer))+"：(1 + "+P(Adventurer.Step(Adventurer.InnateAbilityPer))+" × "+N(h.AMod(a))+")"+(tm>1.0001f?Whole(h,a):"")+" − 1 = "+Pct(ip)+"\n神恩、契约等其他用魅力的强度仍按 "+P(Adventurer.Step(Adventurer.ClassAbilityPer))+"。"});
    }
    return list;
   }
@@ -121,7 +121,7 @@ namespace LichPhylactery {
    return s+" = 有效 "+h.Eff(a)+"　调整值 "+Adventurer.Signed(h.Mod(a))+"，调整值′ "+N(h.AMod(a))+(Affinity.RaceModMult(h,a)<.9999f && h.Mod(a)>0?"（× 笨拙 "+N(Affinity.RaceModMult(h,a))+"）":"");
   }
   public static string MultText(Hediff_Adventurer h,int a){
-   float c=Adventurer.Curve(h.Eff(a)),m=h.AMult(a),k=Affinity.ScoreMult(h,a),t=Affinity.TalentMult(h,a),r=Affinity.RaceMult(h,a);
+   float c=Adventurer.ScoreCurve(h.Eff(a)),m=h.AMult(a),k=Affinity.ScoreMult(h,a),t=Affinity.TalentMult(h,a),r=Affinity.RaceMult(h,a);
    string s="M = 3.5 表（有效 "+h.Eff(a)+"）"+X(c);
    // 1.99.0：写明 M 只取种族、天赋中较大的一个；线性效果是“调整值′（含种族）× 天赋”，两者相乘，不是同一处重复乘。
    bool both=t>1.0001f && Math.Abs(r-1f)>.0001f;

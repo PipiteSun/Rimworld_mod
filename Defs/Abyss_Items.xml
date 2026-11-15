@@ -116,7 +116,7 @@
         <ageYearsRange>200~900</ageYearsRange>
         <pickWeight>0</pickWeight>
         <openGraphic><texPath>Items/Abyss/DemonomiconOpen</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></openGraphic>
-        <verticalGraphic><texPath>Items/Abyss/Demonomicon</texPath><graphicClass>Graphic_Single</graphicClass><addTopAltitudeBias>true</addTopAltitudeBias></verticalGraphic>
+        <verticalGraphic><texPath>Items/Abyss/Vertical/Demonomicon_Vertical</texPath><graphicClass>Graphic_Multi</graphicClass><addTopAltitudeBias>true</addTopAltitudeBias></verticalGraphic>
         <doers><li Class="LichPhylactery.BookOutcomeProperties_Demonomicon" /></doers>
       </li>
     </comps>

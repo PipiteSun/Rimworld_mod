@@ -17,7 +17,7 @@
     <uiIconPath>LP/Items/Tomes/Tome_STR</uiIconPath>
     <comps><li Class="CompProperties_Book"><nameMaker>LP_Namer_TomeSTR</nameMaker><descriptionMaker>LP_Description_Tome</descriptionMaker><ageYearsRange>300~900</ageYearsRange><pickWeight>0</pickWeight>
       <openGraphic><texPath>LP/Items/Tomes/Tome_STR</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></openGraphic>
-      <verticalGraphic><texPath>LP/Items/Tomes/Tome_STR</texPath><graphicClass>Graphic_Single</graphicClass><addTopAltitudeBias>true</addTopAltitudeBias></verticalGraphic>
+      <verticalGraphic><texPath>LP/Items/Tomes/Vertical/Tome_STR_Vertical</texPath><graphicClass>Graphic_Multi</graphicClass><addTopAltitudeBias>true</addTopAltitudeBias></verticalGraphic>
       <doers><li Class="LichPhylactery.BookOutcomeProperties_Netheril"><doerClass>LichPhylactery.BookOutcome_Tome</doerClass></li></doers></li></comps>
   </ThingDef>
   <ThingDef ParentName="LP_TomeBase">
@@ -28,7 +28,7 @@
     <uiIconPath>LP/Items/Tomes/Tome_DEX</uiIconPath>
     <comps><li Class="CompProperties_Book"><nameMaker>LP_Namer_TomeDEX</nameMaker><descriptionMaker>LP_Description_Tome</descriptionMaker><ageYearsRange>300~900</ageYearsRange><pickWeight>0</pickWeight>
       <openGraphic><texPath>LP/Items/Tomes/Tome_DEX</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></openGraphic>
-      <verticalGraphic><texPath>LP/Items/Tomes/Tome_DEX</texPath><graphicClass>Graphic_Single</graphicClass><addTopAltitudeBias>true</addTopAltitudeBias></verticalGraphic>
+      <verticalGraphic><texPath>LP/Items/Tomes/Vertical/Tome_DEX_Vertical</texPath><graphicClass>Graphic_Multi</graphicClass><addTopAltitudeBias>true</addTopAltitudeBias></verticalGraphic>
       <doers><li Class="LichPhylactery.BookOutcomeProperties_Netheril"><doerClass>LichPhylactery.BookOutcome_Tome</doerClass></li></doers></li></comps>
   </ThingDef>
   <ThingDef ParentName="LP_TomeBase">
@@ -39,7 +39,7 @@
     <uiIconPath>LP/Items/Tomes/Tome_CON</uiIconPath>
     <comps><li Class="CompProperties_Book"><nameMaker>LP_Namer_TomeCON</nameMaker><descriptionMaker>LP_Description_Tome</descriptionMaker><ageYearsRange>300~900</ageYearsRange><pickWeight>0</pickWeight>
       <openGraphic><texPath>LP/Items/Tomes/Tome_CON</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></openGraphic>
-      <verticalGraphic><texPath>LP/Items/Tomes/Tome_CON</texPath><graphicClass>Graphic_Single</graphicClass><addTopAltitudeBias>true</addTopAltitudeBias></verticalGraphic>
+      <verticalGraphic><texPath>LP/Items/Tomes/Vertical/Tome_CON_Vertical</texPath><graphicClass>Graphic_Multi</graphicClass><addTopAltitudeBias>true</addTopAltitudeBias></verticalGraphic>
       <doers><li Class="LichPhylactery.BookOutcomeProperties_Netheril"><doerClass>LichPhylactery.BookOutcome_Tome</doerClass></li></doers></li></comps>
   </ThingDef>
   <ThingDef ParentName="LP_TomeBase">
@@ -50,7 +50,7 @@
     <uiIconPath>LP/Items/Tomes/Tome_INT</uiIconPath>
     <comps><li Class="CompProperties_Book"><nameMaker>LP_Namer_TomeINT</nameMaker><descriptionMaker>LP_Description_Tome</descriptionMaker><ageYearsRange>300~900</ageYearsRange><pickWeight>0</pickWeight>
       <openGraphic><texPath>LP/Items/Tomes/Tome_INT</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></openGraphic>
-      <verticalGraphic><texPath>LP/Items/Tomes/Tome_INT</texPath><graphicClass>Graphic_Single</graphicClass><addTopAltitudeBias>true</addTopAltitudeBias></verticalGraphic>
+      <verticalGraphic><texPath>LP/Items/Tomes/Vertical/Tome_INT_Vertical</texPath><graphicClass>Graphic_Multi</graphicClass><addTopAltitudeBias>true</addTopAltitudeBias></verticalGraphic>
       <doers><li Class="LichPhylactery.BookOutcomeProperties_Netheril"><doerClass>LichPhylactery.BookOutcome_Tome</doerClass></li></doers></li></comps>
   </ThingDef>
   <ThingDef ParentName="LP_TomeBase">
@@ -61,7 +61,7 @@
     <uiIconPath>LP/Items/Tomes/Tome_WIS</uiIconPath>
     <comps><li Class="CompProperties_Book"><nameMaker>LP_Namer_TomeWIS</nameMaker><descriptionMaker>LP_Description_Tome</descriptionMaker><ageYearsRange>300~900</ageYearsRange><pickWeight>0</pickWeight>
       <openGraphic><texPath>LP/Items/Tomes/Tome_WIS</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></openGraphic>
-      <verticalGraphic><texPath>LP/Items/Tomes/Tome_WIS</texPath><graphicClass>Graphic_Single</graphicClass><addTopAltitudeBias>true</addTopAltitudeBias></verticalGraphic>
+      <verticalGraphic><texPath>LP/Items/Tomes/Vertical/Tome_WIS_Vertical</texPath><graphicClass>Graphic_Multi</graphicClass><addTopAltitudeBias>true</addTopAltitudeBias></verticalGraphic>
       <doers><li Class="LichPhylactery.BookOutcomeProperties_Netheril"><doerClass>LichPhylactery.BookOutcome_Tome</doerClass></li></doers></li></comps>
   </ThingDef>
   <ThingDef ParentName="LP_TomeBase">
@@ -72,7 +72,7 @@
     <uiIconPath>LP/Items/Tomes/Tome_CHA</uiIconPath>
     <comps><li Class="CompProperties_Book"><nameMaker>LP_Namer_TomeCHA</nameMaker><descriptionMaker>LP_Description_Tome</descriptionMaker><ageYearsRange>300~900</ageYearsRange><pickWeight>0</pickWeight>
       <openGraphic><texPath>LP/Items/Tomes/Tome_CHA</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>0.7</drawSize></openGraphic>
-      <verticalGraphic><texPath>LP/Items/Tomes/Tome_CHA</texPath><graphicClass>Graphic_Single</graphicClass><addTopAltitudeBias>true</addTopAltitudeBias></verticalGraphic>
+      <verticalGraphic><texPath>LP/Items/Tomes/Vertical/Tome_CHA_Vertical</texPath><graphicClass>Graphic_Multi</graphicClass><addTopAltitudeBias>true</addTopAltitudeBias></verticalGraphic>
       <doers><li Class="LichPhylactery.BookOutcomeProperties_Netheril"><doerClass>LichPhylactery.BookOutcome_Tome</doerClass></li></doers></li></comps>
   </ThingDef>
   <RulePackDef><defName>LP_Namer_TomeSTR</defName><rulePack><rulesStrings><li>title->力量手册</li></rulesStrings></rulePack></RulePackDef>

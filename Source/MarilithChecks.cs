@@ -127,7 +127,7 @@ namespace LichPhylactery {
     var torso=body.First(x=>x.def==BodyPartDefOf.Torso);
     Check(Near(BodySize.HealthFactor(m),1.3f) && Near(BodySize.MeleeFactor(m),1.18f) && Near(BodySize.HealthFactor(human),1f) && (FullModList || Near(m.HealthScale,human.HealthScale*1.3f)) && PartHealth.Maximum(torso,m)>PartHealth.Maximum(torso,human)*1.25f,"giant-body rule from the gene's size 1.6: health x1.3, melee x1.18; part health uses it ("+m.HealthScale.ToString("0.##")+" vs human "+human.HealthScale.ToString("0.##")+", torso "+PartHealth.Maximum(torso,m)+")");
     // ---------- 基因提取、手术、尸体（1） ----------
-    var genes=GeneWorkbench.ExtractableGenes(m).Select(g=>g.defName).ToList();
+    var genes=m.genes.GenesListForReading.Select(x=>x.def).Where(g=>g.biostatArc==0 && g.endogeneCategory!=EndogeneCategory.Melanin && g.biostatMet>=GeneTuning.BiostatRange.min && g.biostatMet<=GeneTuning.BiostatRange.max).Distinct().Select(g=>g.defName).ToList();
     var bionic=DefDatabase<RecipeDef>.GetNamed("InstallBionicArm");var tadpole=DefDatabase<RecipeDef>.GetNamedSilentFail("LP_ImplantTadpole");
     var corpsePawn=MarilithSpawn(MarilithPawn(null));made.Add(corpsePawn);corpsePawn.Kill(null);var corpse=corpsePawn.Corpse;if(corpse!=null)made.Insert(0,corpse);
     Check(new[]{Marilith.Core,Marilith.Blades,Marilith.Glide,"LP_SerpentConstrict","LP_BladeStorm","LP_AbyssalHide",Marilith.ColdBlood}.All(genes.Contains) && m.def.AllRecipes.Contains(bionic) && bionic.Worker.GetPartsToApplyOn(m,bionic).Count()==2 && (tadpole==null || m.def.AllRecipes.Contains(tadpole))

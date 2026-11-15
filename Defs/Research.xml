@@ -2,7 +2,7 @@
 <!-- 1.35.0 研究统一：本模组所有研究都在“DND边缘大陆”一个页签里（内部名 LP_FireGiantTech 不变，旧存档进度保留；原“熔火锻造”页签 LP_ForgeTab 已删除）。
      原来直接挂在原版研究（锻造、长剑、板甲、异种胚芽植入）下的 DND 装备与建筑，改由本页签的新研究解锁，新研究再以原版研究为前置。
      坐标按主题分横排（X 步长 1，Y 步长 0.7），前置都在左边；布局表见 ArtSource/ResearchTab-1.35.0-spec.md。
-     Y 0.0~1.4 炼金/物品/枪械/法杖；2.1 巨人谱系（火巨人/熔火）；2.8 信仰（1.39.0）；3.5~4.2 其他种族兵装；4.9 基因工作台；
+     Y 0.0~1.4 炼金/物品/枪械/法杖；2.1 巨人谱系（火巨人/熔火）；2.8 信仰（1.39.0）；3.5~4.2 其他种族兵装；4.9 （原基因工作台，1.152.0 拆到「基因操作」模组）；
      1.47.0 DND工作台：符文锻造 (0,1.4)、卷轴抄写 (2,1.4)、高阶卷轴 (4,1.4)。1.101.0 秘金深掘 (5,1.4)（秘金冶炼 + 原版深层钻探）。
      5.6 起留给联动（VPE 职业 5.6~6.3、HAR 7.0~7.7、神兽血裔 8.4~9.1、Isekai 9.8），目前联动没有研究，只是空着。 -->
 <Defs>
@@ -252,24 +252,12 @@
 
   <!-- ==================== 1.45.1 魔法盔甲衣服 ==================== -->
 
-  <!-- ==================== 基因工作台 ==================== -->  <ResearchProjectDef>
-    <defName>LP_GeneWorkbenchTech</defName>
-    <label>基因工作台</label>
-    <description>把基因提取器、基因装配器和基因库合成一台 5×5 的工作台，并学会从活人身上定向提取单个基因。解锁基因工作台。</description>
-    <baseCost>800</baseCost>
-    <techLevel>Industrial</techLevel>
-    <prerequisites>
-      <li>Xenogermination</li>
-    </prerequisites>
-    <tab>LP_FireGiantTech</tab>
-    <researchViewX>0</researchViewX>
-    <researchViewY>4.9</researchViewY>
-  </ResearchProjectDef>
-  <!-- 1.61.0 制伏武器：制伏战术（前置符文锻造 (0,1.4)），放在基因工作台右边 (1,4.9)。 -->
+  <!-- 基因工作台 1.152.0 起拆到独立模组「基因操作」（GeneOperations）。 -->
+  <!-- 1.61.0 制伏武器：制伏战术（前置符文锻造 (0,1.4)），放在 (1,4.9)。 -->
   <ResearchProjectDef>
     <defName>LP_Research_Subduing</defName>
     <label>制伏战术</label>
-    <description>抓活口的门道：在符文铁砧制作制伏短棍、缚网弩和安眠短弓，在附魔台制作安眠法杖。这些武器只会让目标昏迷倒地，不会造成伤口，也不会杀死目标。</description>
+    <description>抓活口的门道：在符文铁砧制作制伏短棍、缚网弩和安眠短弓，在附魔台制作安眠法杖。这些武器只会让目标昏迷倒地，不会造成伤口，也不会杀死目标。装了意识形态时，还能在机械加工台制作奴隶麻醉项圈。</description>
     <baseCost>800</baseCost>
     <techLevel>Medieval</techLevel>
     <prerequisites>

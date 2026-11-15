@@ -69,7 +69,7 @@ namespace LichPhylactery {
  public static class RaceSizeGeneChanged {
   static void Postfix(Pawn_GeneTracker __instance){RaceSize.Invalidate(__instance.pawn);}
  }
- // 两族巨人本源：拿掉时放下巨人专属衣甲和武器（同霜巨人）。1.102.0：加上时换成本族的头型（原版生成时基因的 forcedHeadTypes 已经管了，这里管基因工作台植入）。
+ // 两族巨人本源：拿掉时放下巨人专属衣甲和武器（同霜巨人）。1.102.0：加上时换成本族的头型（原版生成时基因的 forcedHeadTypes 已经管了，这里管异种胚芽植入）。
  public class Gene_HARGiant : Gene {
   public override void PostAdd(){
    base.PostAdd();GiantKin.Invalidate(pawn);RaceSize.Invalidate(pawn);
@@ -134,7 +134,7 @@ namespace LichPhylactery {
    }
    return null;
   }
-  // 生成时补本族头型（原版按基因 forcedHeadTypes 挑头，这里管其他来路，例如基因工作台植入）：主头只用四种普通头型，第二个头的款式跟着它。
+  // 生成时补本族头型（原版按基因 forcedHeadTypes 挑头，这里管其他来路，例如异种胚芽植入）：主头只用四种普通头型，第二个头的款式跟着它。
   public static readonly string[] Heads={"Male_AverageNormal","Male_AverageWide","Female_AverageNormal","Female_AverageWide"};
   public static bool EnsureHead(Pawn p){
    var s=p?.story;if(s==null || !Is(p) || s.headType!=null && Heads.Contains(s.headType.defName))return false;

@@ -7,7 +7,7 @@ using RimWorld;
 using Verse;
 namespace LichPhylactery {
  // 1.28.0：Test.ps1 -Only <组名>（多个用逗号隔开）只跑指定的检查组和它自己的存读档部分，默认行为不变。
- // 组名就是检查方法名去掉 Check：Events → CheckEvents()、PrepareEventsSave()、CheckEventsAfterLoad()；Beasts、Items、Races124、GeneWorkbench 等同理。
+ // 组名就是检查方法名去掉 Check：Events → CheckEvents()、PrepareEventsSave()、CheckEventsAfterLoad()；Beasts、Items、Races124 等同理。
  public partial class LichChecks {
   static string OnlyArg{get{return GenCommandLine.TryGetCommandLineArg("lichonly",out var v)?v:null;}}
   static bool OnlyMode=>!OnlyArg.NullOrEmpty();

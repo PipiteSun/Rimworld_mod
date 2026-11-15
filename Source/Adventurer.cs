@@ -30,6 +30,13 @@ namespace LichPhylactery {
   // 体型：原版负重本来就按体型线性相乘（StatPart_BodySize），正好是 3.5 双足生物的 大型 ×2 / 超大型 ×4 / 巨型 ×8，不再另乘。
   static readonly float[] CurveTens={1f,1.15f,1.3f,1.5f,1.75f,2f,2.3f,2.6f,3f,3.5f};
   public static float Curve(int score){if(score<=0)return 0f;if(score<10)return score/10f;int k=score-10;return CurveTens[k%10]*Mathf.Pow(4f,k/10);}
+  // 1.155.0（Peter）：设置「每级属性效果」k。线性效果每点调整值的百分比 × k（近战 +10% → +10%×k），负重表曲线 M → M^k（每 +2 属性的倍数开 k 次方，默认约 ×1.32）。
+  // k = 1（100%）就是原来的数值。只管冒险者的六维；野兽的虚拟属性（BeastLevels 直接用 Curve / MeleeFactor）不变。
+  public static float stepForced=-1f;
+  public static float StepScale{get{if(stepForced>=0f)return stepForced;var s=LichMod.Settings;return s==null?1f:s.adventurerStepPercent/100f;}}
+  public static float Step(float per)=>per*StepScale;
+  public static float ScoreCurve(int score){float c=Curve(score),k=StepScale;return c<=0f || Math.Abs(k-1f)<.0001f?c:Mathf.Pow(c,k);}
+  public static float StepCurve=>Mathf.Pow(Mathf.Pow(4f,.2f),StepScale); // 表类每 +2 属性约乘多少（每 +10 ×4 的五分之一次方）
   // 1.81.0 热修（Peter，照 3.5 规则）：3.5 的这张表只管负重，从来不管伤害。近战伤害改为 1 + 调整值 × 10%（力量 18 = ×1.4，20 = ×1.5，30 = ×2），最低 ×0.5；负重、采矿等仍用上面的表。
   public const float MeleePerMod=.1f,MeleeMin=.5f;
   public static float MeleeFactor(float mod)=>Mathf.Max(MeleeMin,1f+MeleePerMod*mod);
@@ -257,7 +264,7 @@ namespace LichPhylactery {
   public static float ClassPowerBonus(Pawn p,int ability)=>ClassPowerBonus(p,ability,ClassAbilityPer);
   public static float ClassPowerBonus(Pawn p,int ability,float per){
    if(!Enabled || ability<0)return 0f;var h=Get(p);if(h==null)return 0f;
-   return (Affinity.Talented(1f+per*h.AMod(ability),Affinity.WholeMult(h,ability))-1f)*EffectScale+ProfClassPer*Math.Max(0,h.Proficiency-2); // 1.81.0 热修5：天赋乘整个 (1 + 5% × 调整值)；1.121.0 热修：种族擅长也乘整个（WholeMult）
+   return (Affinity.Talented(1f+Step(per)*h.AMod(ability),Affinity.WholeMult(h,ability))-1f)*EffectScale+ProfClassPer*Math.Max(0,h.Proficiency-2); // 1.81.0 热修5：天赋乘整个 (1 + 5% × 调整值)；1.121.0 热修：种族擅长也乘整个（WholeMult）
   }
   // 1.52.0 热修：熟练加值每比 +2 高 1 点 —— 近战命中 +2%（加在最终命中率上，见 AdventurerMeleeHit）、射击精度 ×+1%（合进状态的属性系数）、VPE 职业强度 +0.02。
   // 只看等级，不乘“属性效果强度”，Isekai 共存时也生效；传奇怪物（Legendary）不算。
@@ -325,11 +332,23 @@ namespace LichPhylactery {
    if(Current.Game!=null && Current.ProgramState==ProgramState.Playing){
     if(appliedScale>=0f && now<appliedScale)RescaleWounds(PawnsFinder.AllMapsWorldAndTemporary_Alive,appliedScale,now);
     // 1.51.0：关掉“种族亲和”时擅长体质 / 擅长血量的部位生命变少，伤口按比例缩小。
+    if(appliedStep>=0f && StepScale<appliedStep-.0001f)RescaleStep(PawnsFinder.AllMapsWorldAndTemporary_Alive,appliedStep);
     bool aff=Affinity.On;if(appliedAffinity && !aff)RescaleAffinity(PawnsFinder.AllMapsWorldAndTemporary_Alive);appliedAffinity=aff;
     Legend.ApplySettings(PawnsFinder.AllMapsWorldAndTemporary_Alive);
     foreach(var p in PawnsFinder.AllMapsWorldAndTemporary_Alive)Get(p)?.Dirty();
    }
-   appliedScale=now;
+   appliedScale=now;appliedStep=StepScale;
+  }
+  // 1.155.0：调低“每级属性效果”时部位生命变少，伤口按比例缩小（同上）。
+  public static float appliedStep=-1f;
+  public static int RescaleStep(IEnumerable<Pawn> pawns,float from){
+   int n=0;
+   foreach(var p in pawns.ToList()){
+    if(Get(p)==null || Legendary.Is(p))continue;stepForced=from;float a=PartHealthFactor(p);stepForced=-1f;float b=PartHealthFactor(p);if(b>=a-.0001f)continue;
+    foreach(var injury in p.health.hediffSet.hediffs.OfType<Hediff_Injury>().Where(x=>x.Part!=null).ToList())injury.Severity*=b/a;
+    n++;
+   }
+   return n;
   }
   public static int RescaleWounds(IEnumerable<Pawn> pawns,float from,float to){
    int n=0;
@@ -439,7 +458,7 @@ namespace LichPhylactery {
   // 按调整值点数线性加的固定数值（破誓者憎恨、泰坦践踏）保持热修前：正调整值 × 种族倍率（擅长 ×1.5 / 笨拙 ×0.5）。
   public float AModRace(int a)=>LichPhylactery.Affinity.Apply(Mod(a),LichPhylactery.Affinity.RaceMult(this,a));
   // 有效倍率（1.66.0 热修）：属性倍率 × 种族亲和 / 天赋（擅长 ×1.5 时力量 24 = 7 × 1.5 = ×10.5）。属性低于 10（倍率 <1）时不乘；笨拙 ×0.5 不会把 ≥×1 的倍率压到 ×1 以下。
-  public float AMult(int a){float m=Adventurer.Curve(Eff(a));if(m<1f)return m;float k=LichPhylactery.Affinity.ScoreMult(this,a);return k>=1f?m*k:Mathf.Max(1f,m*k);}
+  public float AMult(int a){float m=Adventurer.ScoreCurve(Eff(a));if(m<1f)return m;float k=LichPhylactery.Affinity.ScoreMult(this,a);return k>=1f?m*k:Mathf.Max(1f,m*k);}
   // 某项效果的完整倍率，按“属性效果强度” s 在 ×1 和它之间插值。
   public float Fx(int a,float s)=>1f+(AMult(a)-1f)*s;
   void RefreshAffinity(){var a=LichPhylactery.Affinity.For(pawn);var t=Talents.Of(pawn);if(affinity==null || !talentKnown){affinity=a;talent=t;talentKnown=true;return;}if(a!=affinity || t!=talent || !talentKnown){Dirty();affinity=a;talent=t;talentKnown=true;}}
@@ -449,7 +468,7 @@ namespace LichPhylactery {
   public int LegendCapBonus=>legendary && level>Adventurer.MaxLevel?(level-Adventurer.MaxLevel)/5*Epic.LegendCapPer5:0;
   public int DemigodLevel{get{if(demigodLevel<0)demigodLevel=Demigods.Of(pawn)?.Level??0;return demigodLevel;}}
   public int Cap(int a)=>Adventurer.ScoreCap+(mightAbility==a && HasBoon(Epic.Might)?Epic.MightBonus:0)+LegendCapBonus+HeroTraits.CapBonus(this,a)+(a>=0 && a<6?(tomes[a]?Growth.TomeBonus:0)+(wishAbility==a?1:0):0); // 1.58.0 英雄之资 +2、极致 26、灵光 +2、弑神者 +1
-  public int Eff(int a){int v=Math.Min(scores[a],Cap(a))+CombatGifts.ScoreBonus(this,a)+Feats.ScoreBonus(this,a)+ClassMartial2.ScoreBonus(this,a)+Subclass2.ScoreBonus(this,a);return v+DndImplants.ScoreBonus(this,a,v);} // 1.112.0 伊奥恩属性石（最多加到 20，超凡不限）；1.104.0 龙血、恶鬼之眼；1.66.0 武艺天赋属性 +2/+3/+4、1.67.0 专长 +1 加在上限之后（上限同样提高）
+  public int Eff(int a){int v=Math.Min(scores[a],Cap(a))+CombatGifts.ScoreBonus(this,a)+Feats.ScoreBonus(this,a)+ClassMartial2.ScoreBonus(this,a)+Subclass2.ScoreBonus(this,a);return v+DndImplants.ScoreBonus(this,a,v);} // 1.112.0 伊奥恩属性石 +2（1.154.0 起可超过 20）；1.104.0 龙血、恶鬼之眼；1.66.0 武艺天赋属性 +2/+3/+4、1.67.0 专长 +1 加在上限之后（上限同样提高）
   // 半神等级变化：刷新缓存；每个新的半神等级送一次属性提升（只送一次，失去神格不收回）。
   public int SyncDemigod(){
    int now=Demigods.Of(pawn)?.Level??0;int gave=0;
@@ -617,9 +636,9 @@ namespace LichPhylactery {
   }
 
   // ---------- 效果缓存 ----------
-  HediffStage stage;float stageScale=-1f;
+  HediffStage stage;float stageScale=-1f,stageStep=-1f;
   public void Dirty(){stage=null;affinity=null;talentKnown=false;if(pawn?.health?.hediffSet!=null && pawn.health.hediffSet.hediffs.Contains(this))pawn.health.Notify_HediffChanged(this);}
-  public override HediffStage CurStage{get{float s=Adventurer.EffectScale;if(stage==null || stageScale!=s){stage=BuildStage(s);stageScale=s;}return stage;}}
+  public override HediffStage CurStage{get{float s=Adventurer.EffectScale;float k=Adventurer.StepScale;if(stage==null || stageScale!=s || stageStep!=k){stage=BuildStage(s);stageScale=s;stageStep=k;}return stage;}}
   static StatDef S(string n)=>DefDatabase<StatDef>.GetNamedSilentFail(n);
   static void Add(List<StatModifier> list,string stat,float v,float neutral){var d=S(stat);if(d!=null && Math.Abs(v-neutral)>.0001f)list.Add(new StatModifier{stat=d,value=v});}
   // 1.66.0 热修：六维效果表（对象与 Isekai 六维一致）。每项都乘整个属性倍率 M（AMult）；
@@ -711,12 +730,12 @@ namespace LichPhylactery {
   // 1.81.0 热修3：体质对部位生命改成线性，每点有效调整值 +15%（14 = ×1.3，20 = ×1.75），低于 10 不减少。
   public const float ConPartPerMod=.15f;
   // 1.81.0 热修5：天赋（天赋异禀 / 天赋·某项 / 极致）乘整个体质系数，再按属性效果强度插值，最低 ×1。
-  public float ConPart(float s)=>Math.Max(1f,1f+(LichPhylactery.Affinity.Talented(1f+ConPartPerMod*AMod(Adventurer.Con),LichPhylactery.Affinity.WholeMult(this,Adventurer.Con))-1f)*s);
+  public float ConPart(float s)=>Math.Max(1f,1f+(LichPhylactery.Affinity.Talented(1f+Adventurer.Step(ConPartPerMod)*AMod(Adventurer.Con),LichPhylactery.Affinity.WholeMult(this,Adventurer.Con))-1f)*s);
   // 线性效果完整值（未插值）：max(0.5, 1 + per × AMod) × 擅长 × 天赋（WholeMult，低于 ×1 时不乘）。
-  public float LinearValue(int a,float per)=>LichPhylactery.Affinity.Talented(Mathf.Max(Adventurer.MeleeMin,1f+per*AMod(a)),LichPhylactery.Affinity.WholeMult(this,a));
+  public float LinearValue(int a,float per)=>LichPhylactery.Affinity.Talented(Mathf.Max(Adventurer.MeleeMin,1f+Adventurer.Step(per)*AMod(a)),LichPhylactery.Affinity.WholeMult(this,a));
   public float PerPointValue(ScoreFx e){
    int d=Eff(e.a)-10;float pts=d>0?d*LichPhylactery.Affinity.RaceModMult(this,e.a):d;
-   float v=LichPhylactery.Affinity.Talented(Mathf.Max(.5f,1f+e.per*pts),LichPhylactery.Affinity.WholeMult(this,e.a));
+   float v=LichPhylactery.Affinity.Talented(Mathf.Max(.5f,1f+Adventurer.Step(e.per)*pts),LichPhylactery.Affinity.WholeMult(this,e.a));
    return SoftCap(v,e.cap);
   }
   public float PartFactor(float s){
@@ -735,7 +754,8 @@ namespace LichPhylactery {
    if(Legendary.Is(pawn)){sb.AppendLine("传奇单位：六维不提供数值效果（强度已经算在兵种里）。");return sb.ToString().TrimEnd();}
    Func<float,string> x=v=>"×"+v.ToString("0.##");
    Func<float,string> pct=v=>(v>=0?"+":"")+(v*100f).ToString("0.#")+"%";
-   sb.AppendLine("属性倍率 "+x(Adventurer.Curve(Eff(a)))+(Math.Abs(AMult(a)-Adventurer.Curve(Eff(a)))>.001f?"（种族亲和后 "+x(AMult(a))+"）":"")+"：10 = ×1，每 +5 约翻倍，每 +10 ×4"+(a==Adventurer.Str?"（近战伤害不用这张表：每点调整值 +10%）":a==Adventurer.Wis?"（心灵敏感度不用这张表：每点调整值 +10%）":a==Adventurer.Con?"（部位生命不用这张表：每点调整值 +15%）":a==Adventurer.Int?"（研究速度不用这张表：照 Isekai 每点 +6%，×5 后收敛，另乘全局工作速度）":""));
+   bool k1=Math.Abs(Adventurer.StepScale-1f)<.0001f;Func<float,string> pp=v=>(Adventurer.Step(v)*100f).ToString("0.#")+"%";
+   sb.AppendLine("属性倍率 "+x(Adventurer.ScoreCurve(Eff(a)))+(Math.Abs(AMult(a)-Adventurer.ScoreCurve(Eff(a)))>.001f?"（种族亲和后 "+x(AMult(a))+"）":"")+(k1?"：10 = ×1，每 +5 约翻倍，每 +10 ×4":"：10 = ×1，每 +2 约 ×"+Adventurer.StepCurve.ToString("0.###")+"（每级属性效果 "+(Adventurer.StepScale*100f).ToString("0")+"%）")+(a==Adventurer.Str?"（近战伤害不用这张表：每点调整值 +"+pp(.1f)+"）":a==Adventurer.Wis?"（心灵敏感度不用这张表：每点调整值 +"+pp(.1f)+"）":a==Adventurer.Con?"（部位生命不用这张表：每点调整值 +"+pp(ConPartPerMod)+"）":a==Adventurer.Int?"（研究速度不用这张表：照 Isekai 每点 +"+pp(IsekaiResearchPer)+"，×5 后收敛，另乘全局工作速度）":""));
    float tm=LichPhylactery.Affinity.WholeMult(this,a); // 1.81.0 热修5；1.121.0 热修：擅长 × 天赋
    if(tm>1.0001f)sb.AppendLine("擅长 / 天赋：线性效果（"+(a==Adventurer.Str?"近战伤害、":a==Adventurer.Wis?"心灵敏感度、":a==Adventurer.Con?"部位生命的体质系数、":"")+"以这项为主属性时职业强度的属性部分）整个 ×"+tm.ToString("0.##")+"（种族擅长 × 天赋相乘；笨拙只压正的调整值）");
    var parts=new List<string>();
@@ -870,7 +890,7 @@ namespace LichPhylactery {
   public override void FinalizeInit(){
    base.FinalizeInit();
    if(hpVersion<HpVersion){hpVersion=HpVersion;Adventurer.RescaleHpFix3(PawnsFinder.AllMapsWorldAndTemporary_Alive);}
-   Adventurer.appliedScale=Adventurer.EffectScale;Legend.appliedOn=Legend.On;Adventurer.appliedAffinity=Affinity.On;
+   Adventurer.appliedScale=Adventurer.EffectScale;Adventurer.appliedStep=Adventurer.StepScale;Legend.appliedOn=Legend.On;Adventurer.appliedAffinity=Affinity.On;
    Styles.ResetCaches(); // 1.53.0：静态缓存不跨存档，250 刻内由各人的冒险者状态重建
    Exalted.Reset(); // 1.59.0：超凡掩码登记同上
    Feats.ResetCaches();Feats3.ResetCaches();Boons2.ResetCaches();Legendary.painWindow.Clear();ClassLegendary.OathHolders.Clear(); // 2026-11-04 审计：这几张静态表以前不清，跨存档攥着旧小人；誓约名单 250 刻内由 Passives 重建
@@ -1106,7 +1126,7 @@ namespace LichPhylactery {
 
  // ---------- 设置 ----------
  public partial class Settings {
-  public bool adventurer=true,adventurerAutoASI=false,adventurerIsekaiCoexist=true;public int adventurerXpPercent=100,adventurerEffectPercent=100;
+  public bool adventurer=true,adventurerAutoASI=false,adventurerIsekaiCoexist=true;public int adventurerXpPercent=100,adventurerEffectPercent=100,adventurerStepPercent=100;
   // 1.48.1 敌人等级，上限 = 殖民地最高等级 + N。
   // 1.63.0：原来开关分两份存（平时一份、Isekai 共存模式一份），玩家关掉其中一份后切换模式就以为“打不开”，敌人全是 1 级。合并成一个，两种模式都用，默认开。
   public bool adventurerEnemyLevels=true,adventurerEnemyCap=true;public int adventurerEnemyCapOffset=3;
@@ -1130,8 +1150,8 @@ namespace LichPhylactery {
    Scribe_Values.Look(ref adventurerEnemyCap,"adventurerEnemyCap",true);Scribe_Values.Look(ref adventurerEnemyCapOffset,"adventurerEnemyCapOffset",3);
    adventurerEnemyCapOffset=Math.Max(0,Math.Min(19,adventurerEnemyCapOffset));
    Scribe_Values.Look(ref adventurer,"adventurer",true);Scribe_Values.Look(ref adventurerAutoASI,"adventurerAutoASI",false);Scribe_Values.Look(ref adventurerIsekaiCoexist,"adventurerIsekaiCoexist",true);
-   Scribe_Values.Look(ref adventurerXpPercent,"adventurerXpPercent",100);Scribe_Values.Look(ref adventurerEffectPercent,"adventurerEffectPercent",100);
-   adventurerXpPercent=Math.Max(25,Math.Min(400,adventurerXpPercent));adventurerEffectPercent=Math.Max(0,Math.Min(200,adventurerEffectPercent));
+   Scribe_Values.Look(ref adventurerXpPercent,"adventurerXpPercent",100);Scribe_Values.Look(ref adventurerEffectPercent,"adventurerEffectPercent",100);Scribe_Values.Look(ref adventurerStepPercent,"adventurerStepPercent",100);
+   adventurerXpPercent=Math.Max(25,Math.Min(400,adventurerXpPercent));adventurerEffectPercent=Math.Max(0,Math.Min(200,adventurerEffectPercent));adventurerStepPercent=Math.Max(0,Math.Min(300,adventurerStepPercent));
   }
  }
  public static class AdventurerSettings {
@@ -1144,6 +1164,11 @@ namespace LichPhylactery {
    l.CheckboxLabeled("探索公告板",ref s.questBoard,"1.71.0：建筑“探索公告板”（杂项）每天贴出 6 份分等阶的委托：守卫家园、远征讨伐（怪物巢穴）、清剿据点。等阶青铜 / 白银 / 黄金 / 秘银 / 传说，需要殖民地最高冒险者等级 1 / 5 / 9 / 13 / 17；完成给银币和物品报酬，接取人得到“任务点数 × 0.5”的冒险者经验。关闭后不再刷新委托，已接的委托照常进行。"); // 1.71.0
    AdventureBoardSettings.Draw(l); // 1.134.0 冒险委托板
    l.Label("属性效果强度："+s.adventurerEffectPercent+"%（六维的数值效果、技能学习速度、部位生命成长；0% 等于只看等级）");s.adventurerEffectPercent=Mathf.RoundToInt(l.Slider(s.adventurerEffectPercent,0,200)/5f)*5;
+   // 1.155.0（Peter）：每级属性效果——每 +2 属性（每 1 点调整值）带来的倍率大小。100% = 原来的数值。
+   {float k=s.adventurerStepPercent/100f;Func<float,string> pc=x=>"+"+(x*k*100f).ToString("0.#")+"%";
+    TooltipHandler.TipRegion(l.Label("每级属性效果："+s.adventurerStepPercent+"%（每 +2 属性：近战伤害 "+pc(Adventurer.MeleePerMod)+"，部位生命 "+pc(Hediff_Adventurer.ConPartPerMod)+"，负重等 ×"+Mathf.Pow(Mathf.Pow(4f,.2f),k).ToString("0.###")+"）"),
+     "调每 1 点属性调整值（每 +2 属性）带来多少效果。100% 是原来的数值，越低属性差距越小，0% 等于属性没有数值效果。\n\n线性效果按比例缩放：近战伤害 / 移速 / 心灵敏感度每点 "+pc(.1f)+"，部位生命（体质）"+pc(Hediff_Adventurer.ConPartPerMod)+"，研究速度每 1 点智力 "+pc(Hediff_Adventurer.IsekaiResearchPer)+"，职业强度 "+pc(Adventurer.ClassAbilityPer)+"（奥术 / 天赋强度 "+pc(Adventurer.ArcaneAbilityPer)+"）。\n负重表类效果（负重、采矿、射击精度、工作速度、医疗、社交等）每 +2 属性的倍数开同样的次方：100% 约 ×1.32（每 +10 ×4），50% 约 ×1.15，10% 约 ×1.03。\n\n和上面的“属性效果强度”相乘；不改属性数值、上限、专长门槛和豁免。野兽的野性等级不受影响。");
+    int sv=Mathf.RoundToInt(l.Slider(s.adventurerStepPercent,0,300));s.adventurerStepPercent=sv<20?sv:Mathf.RoundToInt(sv/5f)*5;}
    l.CheckboxLabeled("种族亲和",ref s.adventurerAffinity,"每个种族有擅长和笨拙的属性：擅长的六维属性线性效果（近战伤害、心灵敏感度、部位生命、职业强度等）整个 ×1.5（传奇种族 ×1.75，和天赋特性相乘；效果低于 ×1 时不乘），负重、采矿等其他效果的倍率 ×1.5；笨拙的每点正调整值 ×0.5（负调整值不乘）；擅长的传奇属性每点 ×1.5（传奇种族 ×1.75），人类所有传奇属性 ×1.1。只改效果，不改属性数值、上限和专长门槛。在“冒险者”分页每项后面标“擅长 / 笨拙”。\n关闭后所有种族 ×1（天赋特性照常）。");
    ClassSettings.Draw(l); // 1.72.0 职业
    l.CheckboxLabeled("手动分配初始属性（购点制）",ref s.adventurerPointBuy,"开启后新的殖民者（开局、加入、招募）的六维由玩家在“冒险者”分页按 5e 购点制分配：基础值 8～15，9～13 每点 1、14 / 15 每点 2，种族和背景加值另算。预填按技能推荐的标准数组（15/14/13/12/10/8 = 27 点），确认后锁定。每人只有一次。关闭后直接用推荐分配。1.76.0 之前生成的小人没有这一项。"); // 1.76.0

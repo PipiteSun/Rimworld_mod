@@ -54,10 +54,10 @@ namespace LichPhylactery {
   }
 
   // ---------- 六维 / 熟练 ----------
-  // 属性石：对应属性 +2，最多加到 20；那项属性超凡时不受限。
+  // 属性石：对应属性 +2，直接加在上限之后（1.154.0 起不再停在 20）。
   public static int ScoreBonus(Hediff_Adventurer h,int a,int current){
    if(Live<=0 || h?.pawn==null || a<0 || a>5)return 0;long f=Flags(h.pawn);int b=0;
-   if((f & ScoreFlags[a])!=0)b=Exalted.Has(h.pawn,a)?2:Mathf.Clamp(ScoreCapPlain-current,0,2);
+   if((f & ScoreFlags[a])!=0)b=2;
    if(a==Adventurer.Str && (f & FVecnaHand)!=0)b=Mathf.Max(b,VecnaStr-current); // 维克那之手：力量至少 20
    return b;
   }

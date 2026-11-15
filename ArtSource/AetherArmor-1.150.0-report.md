@@ -32,3 +32,6 @@ Peter 要求：把 `output\AetherPowerArmors\` 里保留的两套（堡垒重甲
 - 没改 C#，无需编译；XML 已在本地校验格式。未进游戏实测。
 - 研究位置 (6,0.7)(7,0.7) 只对照了 Research.xml，别的文件里如果有研究占了同一格会重叠（只影响显示）。
 - 不依赖搁置的 Shelved/NewContent-1.126-1.127，也不依赖已删除的器械师/巨人锻造等。
+
+## 热修
+热修：两顶头盔的 bodyTypeScales 写法错误导致加载时整条丢弃，已改为 <Thin>0.85</Thin>，备份 ArtSource/backup-1.150.0-helmfix。

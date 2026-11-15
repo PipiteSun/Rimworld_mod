@@ -20,6 +20,17 @@ namespace LichPhylactery {
     Check(inList && rparts==1 && avail,"menu ["+menu+"] "+"ioun stone removal surgery is offered (in list "+inList+", parts "+rparts+", available "+avail+", users "+string.Join(",",rr.AllRecipeUsers.Select(u=>u.defName))+")");
    }finally{foreach(var t in made)if(t!=null && !t.Destroyed)t.Destroy();}
   }
+  // 1.154.0 属性颅石不再停在 20（Test.ps1 -Only IounUncap）：14→16、19→21、20→22。
+  void CheckIounUncap(){
+   Pawn a=null;
+   try{
+    a=S2Pawn("LP_Class_Fighter",1,null);var ha=Adventurer.Get(a);ha.scores[Adventurer.Str]=14;ha.scores[Adventurer.Dex]=19;ha.scores[Adventurer.Con]=20;ha.Dirty();
+    int s0=ha.Eff(Adventurer.Str),d0=ha.Eff(Adventurer.Dex),c0=ha.Eff(Adventurer.Con);
+    Implant(a,"LP_Ioun_Str","Skull");Implant(a,"LP_Ioun_Dex","Skull");Implant(a,"LP_Ioun_Con","Skull");ha.Dirty();
+    int s1=ha.Eff(Adventurer.Str),d1=ha.Eff(Adventurer.Dex),c1=ha.Eff(Adventurer.Con);
+    Check(s1==s0+2 && d1==d0+2 && c1==c0+2 && d1>20 && c1>20,"ioun uncap: str "+s0+"→"+s1+", dex "+d0+"→"+d1+", con "+c0+"→"+c1+" (stones go past 20)");
+   }finally{if(a!=null && !a.Destroyed)a.Destroy();}
+  }
   void CheckImplants(){
    var made=new List<Thing>();
    Pawn Add(Pawn x){made.Add(x);return x;}
@@ -34,7 +45,7 @@ namespace LichPhylactery {
     var a=Add(S2Pawn("LP_Class_Fighter",1,null));var ha=Adventurer.Get(a);ha.scores[Adventurer.Str]=14;ha.scores[Adventurer.Dex]=19;ha.Dirty();int s0=ha.Eff(Adventurer.Str),pr0=ha.Proficiency;
     Implant(a,"LP_Ioun_Str","Skull");Implant(a,"LP_Ioun_Dex","Skull");Implant(a,"LP_Ioun_Mastery","Skull");int s1=ha.Eff(Adventurer.Str),d1=ha.Eff(Adventurer.Dex),pr1=ha.Proficiency;
     string fourth=DndImplants.CanAttune(a,DefDatabase<HediffDef>.GetNamed("LP_Ioun_Alert"));
-    Check(s0==14 && s1==16 && d1==20 && pr1==pr0+1 && fourth!=null && DndImplants.Attuned(a)==3,"ioun stones: str 14→"+s1+", dex 19→"+d1+", proficiency +1, a fourth stone is refused ("+fourth+")");
+    Check(s0==14 && s1==16 && d1==21 && pr1==pr0+1 && fourth!=null && DndImplants.Attuned(a)==3,"ioun stones: str 14→"+s1+", dex 19→"+d1+" (no 20 cap since 1.154.0), proficiency +1, a fourth stone is refused ("+fourth+")");
     // 3. 调谐：普通人 3 个；器械师 11 级 4 个；不占位的注能义臂随便装。
     var art=Add(S2Pawn("LP_Class_Artificer",11,null,11));Implant(art,"LP_Imp_MithralLeg","Leg");Implant(art,"LP_Imp_AdamantArm","Shoulder");Implant(art,"LP_Imp_MithralHeart","Heart");
     string fourth2=DndImplants.CanAttune(art,DefDatabase<HediffDef>.GetNamed("LP_Ioun_Con"));string plain=DndImplants.CanAttune(art,DefDatabase<HediffDef>.GetNamed("LP_Imp_InfusedArm"));

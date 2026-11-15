@@ -482,7 +482,7 @@ namespace LichPhylactery {
   public override string ExplanationPart(StatRequest req){
    if(!(req.Thing is Pawn p))return null;int l=ClassSystem.PowerSkill(p,skill,alternateSkill);float a=AbilityBonus(p),v=LevelBonus(p);
    var sk=alternateSkill!=null && ClassSystem.Skill(p,alternateSkill)>ClassSystem.Skill(p,skill)?alternateSkill:skill;
-   return sk.LabelCap+" "+l+" 级：0.5 + "+l+"/20 = "+ClassSystem.Power(l).ToStringPercent()+(a!=0f?"\n冒险者（主属性调整值 ×"+(abilityPer*100f).ToString("0")+"% 与熟练加值）："+(a>0f?"+":"")+a.ToStringPercent():"")
+   return sk.LabelCap+" "+l+" 级：0.5 + "+l+"/20 = "+ClassSystem.Power(l).ToStringPercent()+(a!=0f?"\n冒险者（主属性调整值 ×"+(Adventurer.Step(abilityPer)*100f).ToString("0.#")+"% 与熟练加值）："+(a>0f?"+":"")+a.ToStringPercent():"")
     +(v!=0f?"\n"+(MartialSkill?"物理职业等级 "+(Martial.Info(p)?.total??0):"相关职业等级 "+ClassSystem.ClassBonusLevels(p,skill))+"（每比 1 高 1 级 +"+(LevelPer*100f).ToString("0")+"%，最多 +"+(LevelMax*100f).ToString("0")+"%）：+"+v.ToStringPercent():"")
     +ClassFeats.PowerText(p,parentStat);
   }

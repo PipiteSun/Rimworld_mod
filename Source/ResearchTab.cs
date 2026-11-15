@@ -9,7 +9,7 @@ namespace LichPhylactery {
  public static class ResearchTab {
   public const string Tab="LP_FireGiantTech";
   // 按前置顺序排：巨人重甲要在巨人锻造之后判断。
-  public static readonly string[] Added={"LP_GiantForging","LP_GeneWorkbenchTech"};
+  public static readonly string[] Added={"LP_GiantForging"};
   public static int MigrateLegacy(){
    int done=0;
    foreach(var name in Added){

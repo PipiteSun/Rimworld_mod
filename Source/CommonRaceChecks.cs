@@ -82,12 +82,12 @@ namespace LichPhylactery {
    var elf=RacePawn("LP_Elf");var human=Person();GenSpawn.Spawn(human,CellFinder.RandomClosewalkCellNear(map.Center,map,10),map);
    Check(Near(DNDMind.Resistance(elf),.5f),"elf bloodline gives 50% mind resistance");
    var longevity=DefDatabase<GeneDef>.GetNamed("LP_ElfLongevity");
-   Check(Near(longevity.biologicalAgeTickFactorFromAgeCurve.Evaluate(10),1f) && Near(longevity.biologicalAgeTickFactorFromAgeCurve.Evaluate(30),.25f),"elf childhood grows normally and adults age at 25%");
-   Check(Math.Abs(elf.ageTracker.BiologicalTicksPerTick/human.ageTracker.BiologicalTicksPerTick-.25f)<.01f,"adult elf biological ticks per tick are a quarter of a human's: "+elf.ageTracker.BiologicalTicksPerTick+" vs "+human.ageTracker.BiologicalTicksPerTick);
+   Check(Near(longevity.biologicalAgeTickFactorFromAgeCurve.Evaluate(10),1f) && Near(longevity.biologicalAgeTickFactorFromAgeCurve.Evaluate(30),.05f) && Near(longevity.biologicalAgeTickFactorFromAgeCurve.Evaluate(17.9f),1f),"elf grows normally until 18 and adults age at 5%");
+   Check(Math.Abs(elf.ageTracker.BiologicalTicksPerTick/human.ageTracker.BiologicalTicksPerTick-.05f)<.005f,"adult elf biological ticks per tick are 5% of a human's: "+elf.ageTracker.BiologicalTicksPerTick+" vs "+human.ageTracker.BiologicalTicksPerTick);
    long e0=elf.ageTracker.AgeBiologicalTicks,h0=human.ageTracker.AgeBiologicalTicks;elf.ageTracker.AgeTickInterval(6000);human.ageTracker.AgeTickInterval(6000);
    float ratio=(elf.ageTracker.AgeBiologicalTicks-e0)/(float)Math.Max(1,human.ageTracker.AgeBiologicalTicks-h0);
-   // 完整模组列表里有其他模组改原版的衰老推进（实测比例约0.28），只在核心环境里要求精确的四分之一。
-   Check(FullModList?ratio>.15f && ratio<.4f:Math.Abs(ratio-.25f)<.02f,"native aging tick advances the elf four times slower: "+ratio);
+   // 完整模组列表里有其他模组改原版的衰老推进，只在核心环境里要求精确的5%。
+   Check(FullModList?ratio>.02f && ratio<.1f:Math.Abs(ratio-.05f)<.01f,"native aging tick advances the elf twenty times slower: "+ratio);
    var trance=elf.genes.GetFirstGeneOfType<Gene_ElfTrance>();
    if(elf.GetPsylinkLevel()<1)elf.ChangePsylinkLevel(1,false);elf.psychicEntropy.OffsetPsyfocusDirectly(-1);
    elf.jobs.StartJob(JobMaker.MakeJob(JobDefOf.LayDown,elf.Position),JobCondition.InterruptForced);elf.jobs.curDriver.asleep=true;
