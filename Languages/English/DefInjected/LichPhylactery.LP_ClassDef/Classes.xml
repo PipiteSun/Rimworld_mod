@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 战士 -->
+  <LP_Class_Fighter.label>fighter</LP_Class_Fighter.label>
+  <!-- DND 战士：格斗支（回气、冲锋、战吼、绊摔、动作如潮、武器专精、不屈意志、缴械击、旋风斩、守护姿态，终极 战意再临）与射击支（稳固瞄准、压制射击、精准射击、连射，终极 死神之眼）。格斗支的强度看“战技强度”，射击支看“射术强度”。资源：斗志（命中、击杀敌人时积攒，睡觉时回满）。物理职业：额外攻击、战斗风格。 -->
+  <LP_Class_Fighter.description>DND fighter: a Melee branch (Second Wind, Charge, War Cry, Trip Attack, Action Surge, Weapon Specialization, Indomitable, Disarming Strike, Whirlwind Attack, Guardian Stance, and ultimately Renewed Fighting Spirit) and a Shooting branch (Steady Aim, Suppressing Fire, Precise Shot, Rapid Shot, and ultimately Eye of Death). The Melee branch uses "martial power", the Shooting branch "marksman power". Resource: grit (built up by hitting and killing enemies, fully restored by sleep). Martial class: Extra Attack, fighting style.</LP_Class_Fighter.description>
+  <!-- 武僧 -->
+  <LP_Class_Monk.label>monk</LP_Class_Monk.label>
+  <!-- DND 武僧以气御身：武艺（被动）、疾风连击、拨挡箭矢、震慑拳、乘风步、开掌技、金刚之躯、颤心掌，终极 空灵之身。10 级起被动“心如止水”：心智抗性 +50%。徒手（或拿短棍）时最强；拳脚走原版近战结算，Isekai 的力量与武器精通照常生效。强度看“战技强度”；“气”的效果（设置开着时）乘心灵敏感度。资源：气（冥想时恢复，睡觉时回满）。物理职业：额外攻击（只在徒手时）、战斗风格。 -->
+  <LP_Class_Monk.description>The DND monk masters the body with ki: Martial Arts (passive), Flurry of Blows, Deflect Missiles, Stunning Strike, Step of the Wind, Open Hand Technique, Diamond Body, Quivering Palm, and ultimately Empty Body. From level 10 the passive "Still Mind": mind resistance +50%. Strongest unarmed (or with a quarterstaff); fists and kicks use vanilla melee resolution, and Isekai's Strength and weapon mastery apply as usual. Power uses "martial power"; ki effects are multiplied by psychic sensitivity (when the setting is on). Resource: ki (recovered by meditation, fully restored by sleep). Martial class: Extra Attack (unarmed only), fighting style.</LP_Class_Monk.description>
+  <!-- 圣武士 -->
+  <LP_Class_Paladin.label>paladin</LP_Class_Paladin.label>
+  <!-- DND 圣武士以誓言为剑：至圣斩、誓仇、神圣武器、援护换位（格斗，战技强度），圣疗、守护灵光、勇气灵光、放逐邪恶（社交，神恩强度），终极 圣光化身。武器那一下照常结算，追加的神圣伤害和治疗（设置开着时）乘心灵敏感度。资源：神恩（祈祷、冥想时恢复，信奉神明的人快 25%，睡觉时回满）。巫妖不能当圣武士。物理职业：额外攻击、战斗风格。 -->
+  <LP_Class_Paladin.description>The DND paladin wields the oath as a sword: Divine Smite, Vow of Enmity, Sacred Weapon, Swap Guard (Melee, martial power), Lay on Hands, Aura of Protection, Aura of Courage, Banish Evil (Social, divine power), and ultimately Holy Avatar. The weapon hit resolves as usual; the extra holy damage and healing are multiplied by psychic sensitivity (when the setting is on). Resource: divinity (recovered by prayer and meditation, 25% faster for believers of a god, fully restored by sleep). Liches cannot be paladins. Martial class: Extra Attack, fighting style.</LP_Class_Paladin.description>
+</LanguageData>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 被支配 -->
+  <LP_Thralled.label>dominated</LP_Thralled.label>
+  <!-- 这个人的心智被夺心魔牢牢攥住，像傀儡一样替殖巢作战。支配他的夺心魔一旦死亡或倒地，支配就会解除。 -->
+  <LP_Thralled.description>This person's mind is held tight by a mind flayer, fighting for the colony like a puppet. Once the dominating mind flayer dies or is downed, the domination ends.</LP_Thralled.description>
+  <!-- 支配解除 -->
+  <LP_ThrallAwakening.label>domination broken</LP_ThrallAwakening.label>
+  <!-- 夺心魔的支配突然断开，这个人的心智一时还收不回来，瘫倒在地。过一阵子就会清醒。 -->
+  <LP_ThrallAwakening.description>The mind flayer's domination suddenly snapped; this person's mind can't come back yet and they collapsed. They'll come to after a while.</LP_ThrallAwakening.description>
+</LanguageData>

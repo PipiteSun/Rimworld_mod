@@ -32,7 +32,7 @@ namespace LichPhylactery {
   public override AcceptanceReport CanCast{get{var b=base.CanCast;if(!b.Accepted)return b;var r=Miracles.Blocked(pawn,def);return r==null?b:(AcceptanceReport)r;}}
   public override bool Activate(LocalTargetInfo target,LocalTargetInfo dest){
    var god=FaithUtility.Patron;if(god==null || Miracles.Blocked(pawn,def)!=null)return false;
-   FaithUtility.AddFavor(god,-Cost,pawn.LabelShort+"施放"+def.label);
+   FaithUtility.AddFavor(god,-Cost,pawn.LabelShort+"施放".Loc()+def.label);
    return base.Activate(target,dest);
   }
  }
@@ -43,9 +43,9 @@ namespace LichPhylactery {
    if(!base.Valid(target,throwMessages))return false;
    var p=target.Pawn;
    switch(Props.effect){
-    case "Sanctuary":case "Weave":if(p==null || p.HostileTo(parent.pawn)){if(throwMessages)Messages.Message("只能对友军施放。",MessageTypeDefOf.RejectInput,false);return false;}break;
-    case "Banish":if(p==null || !p.HostileTo(parent.pawn)){if(throwMessages)Messages.Message("只能对敌人施放。",MessageTypeDefOf.RejectInput,false);return false;}break;
-    case "Judgment":if(p==null || !(p.HostileTo(parent.pawn) || p.IsPrisonerOfColony)){if(throwMessages)Messages.Message("只能对敌人或殖民地的囚犯施放。",MessageTypeDefOf.RejectInput,false);return false;}break;
+    case "Sanctuary":case "Weave":if(p==null || p.HostileTo(parent.pawn)){if(throwMessages)Messages.Message("只能对友军施放。".Loc(),MessageTypeDefOf.RejectInput,false);return false;}break;
+    case "Banish":if(p==null || !p.HostileTo(parent.pawn)){if(throwMessages)Messages.Message("只能对敌人施放。".Loc(),MessageTypeDefOf.RejectInput,false);return false;}break;
+    case "Judgment":if(p==null || !(p.HostileTo(parent.pawn) || p.IsPrisonerOfColony)){if(throwMessages)Messages.Message("只能对敌人或殖民地的囚犯施放。".Loc(),MessageTypeDefOf.RejectInput,false);return false;}break;
    }
    return true;
   }
@@ -79,13 +79,13 @@ namespace LichPhylactery {
 
   // ---------- 能不能放 ----------
   public static string Blocked(Pawn p,AbilityDef def){
-   if(!Faith.Enabled)return "信仰系统已关闭。";
-   var god=FaithUtility.Patron;if(god==null)return "殖民地没有守护神：圣徽是沉寂的。";
-   if(FaithUtility.IsAtheist(p))return "无神者不能施放神术。";
+   if(!Faith.Enabled)return "信仰系统已关闭。".Loc();
+   var god=FaithUtility.Patron;if(god==null)return "殖民地没有守护神：圣徽是沉寂的。".Loc();
+   if(FaithUtility.IsAtheist(p))return "无神者不能施放神术。".Loc();
    var props=def.comps?.OfType<CompProperties_Miracle>().FirstOrDefault();if(props==null)return null;
    float favor=FaithUtility.GetFavor(god);
-   if(props.domain && favor<Faith.DomainThreshold)return god.label+"的神眷不到"+Faith.DomainThreshold+"，领域神术不回应。";
-   float cost=FaithUtility.MiracleCost(p,def);if(favor<cost)return "神眷不足：需要"+cost.ToString("0.#")+"，现在"+favor.ToString("0.#")+"。";
+   if(props.domain && favor<Faith.DomainThreshold)return god.label+"的神眷不到".Loc()+Faith.DomainThreshold+"，领域神术不回应。".Loc();
+   float cost=FaithUtility.MiracleCost(p,def);if(favor<cost)return "神眷不足：需要".Loc()+cost.ToString("0.#")+"，现在".Loc()+favor.ToString("0.#")+"。".Loc();
    return null;
   }
 
@@ -126,7 +126,7 @@ namespace LichPhylactery {
    }
   }
   public static Hediff Sanctuary(Pawn t,float shield){
-   if(t==null)return null;var h=Items.Give(t,"LP_SanctuaryShield",ShieldTicks);if(h!=null){h.Severity=Mathf.Max(h.Severity,shield);Mote(t,"护盾 "+shield.ToString("0"));}
+   if(t==null)return null;var h=Items.Give(t,"LP_SanctuaryShield",ShieldTicks);if(h!=null){h.Severity=Mathf.Max(h.Severity,shield);Mote(t,"护盾 ".Loc()+shield.ToString("0"));}
    return h;
   }
   // 驱逐邪祟的伤害：不死者/邪魔 ×2，神明附体者再 ×1.5，无神者 ×0.5。
@@ -136,7 +136,7 @@ namespace LichPhylactery {
    amount=BanishAmount(t,amount);
    float dealt=t.TakeDamage(new DamageInfo(Faith.Radiant,amount,.4f,-1f,c)).totalDamageDealt;
    if(t.Spawned)FleckMaker.Static(t.Position,t.Map,FleckDefOf.PsycastAreaEffect,1.5f);
-   if(!t.Dead && Twilight.Infused(t)!=null && Rand.Chance(RemoveInfusion*Power(c))){var tr=t.story?.traits?.GetTrait(Twilight.Trait);if(tr!=null){t.story.traits.RemoveTrait(tr);Mote(t,"灌注被驱逐");}}
+   if(!t.Dead && Twilight.Infused(t)!=null && Rand.Chance(RemoveInfusion*Power(c))){var tr=t.story?.traits?.GetTrait(Twilight.Trait);if(tr!=null){t.story.traits.RemoveTrait(tr);Mote(t,"灌注被驱逐".Loc());}}
    return dealt;
   }
   public static void Consecrate(Map map,IntVec3 cell,float radius,float dps,Faction f){
@@ -162,25 +162,25 @@ namespace LichPhylactery {
    if(t.IsPrisonerOfColony && t.guest!=null){
     t.guest.resistance=Mathf.Max(0f,t.guest.resistance-JudgeResist*P*Taken(t));
     try{t.guest.will=Mathf.Max(0f,t.guest.will-JudgeWill*P*Taken(t));}catch{}
-    Mote(t,"真言审判");return 0f;
+    Mote(t,"真言审判".Loc());return 0f;
    }
    float dmg=JudgmentDamage(t,P)*Taken(t);
    t.TakeDamage(new DamageInfo(TwilightSkills.Divine,dmg,1f,-1f,c));
    if(t.Spawned)FleckMaker.Static(t.Position,t.Map,FleckDefOf.PsycastAreaEffect,1.5f);
-   Mote(t,"罪罚 "+dmg.ToString("0"));
+   Mote(t,"罪罚 ".Loc()+dmg.ToString("0"));
    return dmg;
   }
   public static int Weave(Pawn t,float focus){
    if(t?.abilities==null)return 0;int n=0;
    foreach(var a in t.abilities.AllAbilitiesForReading)if(a.CooldownTicksRemaining>0 && !(a is Ability_Miracle)){a.ResetCooldown();n++;}
    if(t.psychicEntropy?.Psylink!=null)t.psychicEntropy.OffsetPsyfocusDirectly(focus*Taken(t));
-   Mote(t,"魔网涌流");
+   Mote(t,"魔网涌流".Loc());
    return n;
   }
   public static int Rest(Pawn c,float radius,float amount){
    int n=0;var comp=Faith.Comp;
    foreach(var o in Near(c,radius).Where(o=>o!=c && o.HostileTo(c) && Items.Undead(o)).ToList()){o.TakeDamage(new DamageInfo(Faith.Radiant,amount*Taken(o),.4f,-1f,c));n++;}
-   if(c.Map!=null && comp!=null)foreach(var corpse in GenRadial.RadialDistinctThingsAround(c.Position,c.Map,radius,true).OfType<Corpse>().ToList())if(corpse.InnerPawn!=null && corpse.InnerPawn.RaceProps.Humanlike && !comp.rested.Contains(corpse.InnerPawn.ThingID)){comp.rested.Add(corpse.InnerPawn.ThingID);Mote(corpse,"已安息");}
+   if(c.Map!=null && comp!=null)foreach(var corpse in GenRadial.RadialDistinctThingsAround(c.Position,c.Map,radius,true).OfType<Corpse>().ToList())if(corpse.InnerPawn!=null && corpse.InnerPawn.RaceProps.Humanlike && !comp.rested.Contains(corpse.InnerPawn.ThingID)){comp.rested.Add(corpse.InnerPawn.ThingID);Mote(corpse,"已安息".Loc());}
    if(Items.IsLich(c))c.TakeDamage(new DamageInfo(Faith.Radiant,LichSelfDamage,0f,-1f,c));
    if(c.Spawned)FleckMaker.Static(c.Position,c.Map,FleckDefOf.PsycastAreaEffect,radius);
    return n;
@@ -206,9 +206,9 @@ namespace LichPhylactery {
   public static int Dread(Pawn c,float radius){
    int n=0;
    foreach(var o in Near(c,radius).Where(o=>o.HostileTo(c) && !o.Downed && o.RaceProps.Humanlike).ToList()){
-    if(BodySize.Size(o)>1.01f || Twilight.Vessel(o)!=null){Mote(o,"不为所动");continue;}
-    if(DNDMind.TryResist(o)){Mote(o,"抵抗");continue;}
-    if(Flee(o,DreadTicks,"暴君之令"))n++;
+    if(BodySize.Size(o)>1.01f || Twilight.Vessel(o)!=null){Mote(o,"不为所动".Loc());continue;}
+    if(DNDMind.TryResist(o)){Mote(o,"抵抗".Loc());continue;}
+    if(Flee(o,DreadTicks,"暴君之令".Loc()))n++;
    }
    return n;
   }
@@ -216,7 +216,7 @@ namespace LichPhylactery {
    if(o?.mindState?.mentalStateHandler==null || o.Dead)return false;
    if(!o.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.PanicFlee,reason,true,false,false,null,true))return false;
    if(o.MentalState!=null)o.MentalState.forceRecoverAfterTicks=ticks;
-   Mote(o,"惊逃");return true;
+   Mote(o,"惊逃".Loc());return true;
   }
   public static int Veil(Pawn c,float radius,float seconds){
    int n=0;
@@ -269,12 +269,12 @@ namespace LichPhylactery {
 
  // ---------- 神术留下的状态 ----------
  public class Hediff_SanctuaryShield : HediffWithComps {
-  public override string LabelInBrackets=>"剩余 "+Severity.ToString("0");
+  public override string LabelInBrackets=>"剩余 ".Loc()+Severity.ToString("0");
   public override bool ShouldRemove=>base.ShouldRemove || Severity<=.5f;
  }
  public class Hediff_HuntFury : HediffWithComps {
   HediffStage stage;float cached=-1f;
-  public override string LabelInBrackets=>"近战 +"+Severity.ToStringPercent("0");
+  public override string LabelInBrackets=>"近战 +".Loc()+Severity.ToStringPercent("0");
   public override HediffStage CurStage{get{if(stage==null || cached!=Severity){cached=Severity;stage=new HediffStage{statOffsets=new List<StatModifier>{new StatModifier{stat=StatDefOf.MeleeDamageFactor,value=Severity}},statFactors=new List<StatModifier>{new StatModifier{stat=StatDefOf.MoveSpeed,value=1.2f}}};}return stage;}}
  }
 
@@ -325,10 +325,10 @@ namespace LichPhylactery {
     if(Items.Holds(c,"LP_Relic_MorningStar") && Rand.Chance(.1f) && t.Spawned)t.TryAttachFire(.4f,c);
     if(Items.Holds(c,"LP_Relic_StormSpear") && Rand.Chance(.2f) && t.Spawned){var map=t.Map;var cell=t.Position;map.weatherManager.eventHandler.AddEvent(new WeatherEvent_LightningFlash(map));GenExplosion.DoExplosion(cell,map,1.5f,DamageDefOf.Flame,c,25,.3f,SoundDefOf.Thunder_OnMap,ignoredThings:new List<Thing>{c});}
     if(t.Dead)return;
-    if(Items.Worn(c,"LP_Relic_BlackHand")!=null && Rand.Chance(.25f) && t.RaceProps.Humanlike && !DNDMind.TryResist(t))Miracles.Flee(t,300,"黑手护手");
+    if(Items.Worn(c,"LP_Relic_BlackHand")!=null && Rand.Chance(.25f) && t.RaceProps.Humanlike && !DNDMind.TryResist(t))Miracles.Flee(t,300,"黑手护手".Loc());
     if(Items.Worn(c,"LP_Relic_ForgeHeart")!=null)t.TakeDamage(new DamageInfo(DamageDefOf.Burn,5f,0f,-1f,c));
     if(!t.Dead && Items.Worn(c,"LP_Relic_BeastClaw")!=null)t.TakeDamage(new DamageInfo(DamageDefOf.Cut,3f,0f,-1f,c));
-   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 遗物近战效果："+e,8814215);}
+   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 遗物近战效果：".Loc()+e,8814215);}
   }
  }
 }

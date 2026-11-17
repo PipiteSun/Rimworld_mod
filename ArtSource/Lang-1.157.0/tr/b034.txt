@@ -1,0 +1,201 @@
+s07487	With a ranged weapon: up to 8 enemies within 12 cells (not beyond range) each take one guaranteed-hit bullet from your current weapon; with a melee weapon: resolve an attack against every adjacent enemy. No resource cost. Cooldown 30 seconds. Hunter, ranger level 11.
+s07488	multiattack
+s07489	Passive: storm aura damage ×2, radius 5; each hit has a 25% chance of an added effect (desert ignites, sea stuns 1 second, tundra slows 2 seconds). Path of the Storm Herald, barbarian level 15.
+s07490	raging storm
+s07491	Passive: use the "choose companion" button to bond with a colony animal (set as its master). The companion's beast level directly follows your adventurer level (up to 40, not limited by the normal master's level 20 growth cap), and it deals +20% damage against your favored enemy. If the companion dies you can choose again. Beast Master, ranger level 3.
+s07492	ranger's companion
+s07493	Charge to an empty cell within 8 cells; enemies along the way take 5 × rage power blunt damage and are knocked down for 2 seconds. Costs 1 rage. Cooldown 20 seconds. Barbarian level 11 (general).
+s07494	rampaging charge
+s07495	Passive: counterattack once immediately when hit by an enemy in melee (at most once per second). Path of the Berserker, barbarian level 15.
+s07496	retaliation
+s07497	Passive: explosion and area damage ×0.5. Rogue level 7 (general).
+s07498	evasion
+s07499	Lined up the shot: the next attack always hits and meets sneak attack conditions.
+s07500	steady target
+s07501	Light on your feet: movement ×1.15, and terrain, snow and plants can't slow you down.
+s07502	second-story work
+s07503	Passive: completely immune to movement slowdown from terrain, snow and plants (stronger than land's stride), movement ×1.15. Thief, rogue level 7.
+s07504	Passive: when attacked by an enemy, 30% chance to dodge the hit completely (at most once every 5 seconds). Gloom Stalker, ranger level 15.
+s07505	shadowy dodge
+s07506	Passive: class buffs you give yourself (rage, hide in plain sight, cunning action and so on) are also applied to your companion within 30 cells; when the companion is downed, it's automatically revived once per day (heals 100). Beast Master, ranger level 15.
+s07507	share spells
+s07508	Passive: allies of your side in the storm aura get half of the storm soul (chosen element damage ×0.75, comfortable temperature widened by half). Path of the Storm Herald, barbarian level 11.
+s07509	shielding storm
+s07510	Passive: when an enemy casts an ability on you (vanilla psycasts, etc.), there's a 35% + mind resistance chance to resist it and steal the spell: you can cast it once within 8 hours. Arcane Trickster, rogue level 15.
+s07511	spell thief
+s07512	Summon spirits of your totem animal to fight for 60 seconds: bear, a grizzly; eagle, two eagle spirits (vanilla has no eagles, so they look like cassowaries); wolf, two timber wolves (three at rage power 125%+). Cooldown 2 hours. Path of the Totem Warrior, barbarian level 11.
+s07513	spirit walker
+s07514	The ranger's eye of the wilds has spotted it.
+s07515	spotted
+s07516	Passive: when an attack misses, follow up with another strike at once (both melee and ranged hits re-roll once on a miss). Gloom Stalker, ranger level 11.
+s07517	stalker's flurry
+s07518	Stand and aim for 2 seconds: the next attack within 30 seconds always hits and meets sneak attack conditions. No resource cost. Cooldown 15 seconds. Rogue level 11 (general).
+s07519	Passive: while raging, every second enemies within radius 3 take (1.5 + 0.1 × barbarian level) × rage power elemental damage (desert burn, sea lightning (EMP for mechanoids), tundra frost). Path of the Storm Herald, barbarian level 3.
+s07520	storm aura
+s07521	In a Storm Herald's aura: damage of the corresponding element ×0.75, comfortable temperature widened by half.
+s07522	desert
+s07523	sea
+s07524	tundra
+s07525	Passive: damage of the chosen element ×0.5; desert, max comfortable temperature +40°C; sea, ±20°C at both ends; tundra, min comfortable temperature -40°C. Path of the Storm Herald, barbarian level 7.
+s07526	storm soul
+s07527	The power of the storm protects the body: damage of the corresponding element ×0.5, comfortable temperature widened.
+s07528	A rogue who learned some arcana: has their own mana (same rules as wizards), knows Mage Hand, Magic Missile, Invisibility and Sleep, and can steal enemies' spells.
+s07529	Arcane Trickster
+s07530	A one-hit-kill specialist: enemies not yet in combat take a critical hit, and downed or controlled targets are as good as dead.
+s07531	Assassin
+s07532	Two abilities every barbarian knows.
+s07533	barbarian general
+s07534	Form a ranger's bond with an animal: it grows with you (beast level follows your adventurer level), learns tricks, doubles its attacks, and can share your buffs.
+s07535	Raging for the slaughter: strikes faster while raging, an unshakable will, a glare that drives enemies off, and always hits back when struck.
+s07536	Path of the Berserker
+s07537	A ranger who hunts in the dark: the first strike of each fight is the deadliest, hard to hit in darkness, a will of iron, and an instant follow-up on a miss.
+s07538	Gloom Stalker
+s07539	colossus slayer
+s07540	horde breaker
+s07541	×1.25 damage against already-wounded targets.
+s07542	With 3 or more enemies up close, after a melee hit strike another adjacent enemy once more (once per second).
+s07543	multiattack defense
+s07544	escape the horde
+s07545	From the second hit by the same enemy within 3 seconds, damage ×0.5.
+s07546	Damage you can dodge, such as explosions and fire, ×0.5.
+s07547	A hunter specializing in threats: pick a hunter's prey (level 3) and a defensive tactic (level 7), and can attack all nearby enemies at once.
+s07548	Hunter
+s07549	Two abilities every ranger knows.
+s07550	ranger general
+s07551	Two abilities every rogue knows.
+s07552	rogue general
+s07553	desert (fire)
+s07554	sea (lightning)
+s07555	tundra (ice)
+s07556	Aura burns; fire damage ×0.5, max comfortable temperature +40°C; raging storm may ignite enemies.
+s07557	Aura shocks (EMP for mechanoids); lightning damage ×0.5, comfortable temperature ±20°C at both ends; raging storm may stun enemies.
+s07558	Aura frost; frost damage ×0.5, min comfortable temperature -40°C; raging storm may slow enemies.
+s07559	Become a storm while raging (choose desert fire, sea lightning or tundra ice once, can't change): nearby enemies keep taking damage, and allies get shelter.
+s07560	Path of the Storm Herald
+s07561	Quick hands, quick feet, sharp eyes: pickpocketing, climbing over walls and roofs, finding treasure, and astonishingly fast in the first seconds of a fight.
+s07562	totem
+s07563	bear
+s07564	eagle
+s07565	wolf
+s07566	While raging, all damage except psychic ×0.5; carry capacity ×2; spirit walker summons a grizzly; totemic attunement taunts nearby enemies.
+s07567	While raging, ranged hits against you ×0.7, movement ×1.2; ranged range +3; spirit walker summons eagle spirits (cassowary-shaped); totemic attunement glides while raging.
+s07568	While raging, allies within 5 cells get melee hit +15%; movement ×1.1, tracks fleeing enemies; spirit walker summons timber wolves; totemic attunement makes melee hits knock targets down.
+s07569	Ally with the spirit of a totem animal (choose bear, eagle or wolf once, can't change); every ability changes with the totem.
+s07570	Path of the Totem Warrior
+s07571	Passive: within 10 seconds after being hurt, taking the same type of damage again deals ×0.5 for that hit. Hunter, ranger level 15.
+s07572	superior hunter's defense
+s07573	Attention drawn by a bear totem warrior; only wants to hit them.
+s07574	taunted
+s07575	The fight has just begun and your hands are faster than anyone's: melee and shooting cooldowns ×0.5.
+s07576	thief's reflexes
+s07577	Passive: for the first 10 seconds of each fight (a new fight starts after an hour without attacking or being attacked), melee and shooting cooldowns ×0.5. Thief, rogue level 15.
+s07578	Bury a thorn trap within 15 cells: an enemy stepping on it is entangled for 5 seconds (vine entangle and stun), and it falls apart after triggering once. At most 3 per person; placing another removes the oldest. Cooldown 10 seconds. Ranger level 11 (general).
+s07579	thorn trap
+s07580	A clump of thorny vines buried by a ranger. An enemy stepping on it is entangled for 5 seconds, and it falls apart after triggering once. Each ranger can have at most 3 at a time.
+s07581	Aspect of the totem beast: bear, carry capacity ×2; eagle, ranged weapon range +3 and slightly better shooting accuracy; wolf, movement ×1.1 and can track fleeing enemies.
+s07582	By totem: bear, taunt enemies within 8 cells for 10 seconds (they only want to hit you); eagle, glide to an empty cell within 10 cells while raging; wolf, for 20 seconds melee hits knock targets of body size up to 2 down for 2 seconds. For bear and wolf, click any location. Cooldown 20 seconds. Path of the Totem Warrior, barbarian level 15.
+s07583	totemic attunement
+s07584	An eagle spirit possesses you while raging: movement ×1.2, ranged attacks have a harder time hitting you (×0.7).
+s07585	eagle spirit
+s07586	Passive, by totem: bear, while raging all damage except psychic ×0.5 (replacing rage's ×0.7); eagle, while raging ranged hits against you ×0.7, movement ×1.2; wolf, while raging allies within 5 cells get melee hit +15%. Path of the Totem Warrior, barbarian level 3.
+s07587	totem spirit
+s07588	A wolf totem warrior is on its trail: movement ×0.8.
+s07589	tracked
+s07590	Passive: mythal dungeon treasure rooms and guardian rewards each give one extra item (a healing potion). Thief, rogue level 11.
+s07591	treasure instinct
+s07592	Grab an enemy within 10 cells with mage hand: for 5 seconds it counts as a sneak attack target (anyone hitting it meets sneak attack conditions). No mana cost. Cooldown 15 seconds. Arcane Trickster, rogue level 11.
+s07593	versatile trickster
+s07594	A raging wolf totem warrior is nearby: melee hit +15%.
+s07595	wolf pack spirit
+s07596	Melee hits knock targets of body size up to 2 down for 2 seconds.
+s07597	wolf's takedown
+s07598	Touch a friendly colonist having a mental break from anywhere on the map: 40% chance to end the break at once. Mana 1, cooldown 10 seconds. Aberrant Mind, sorcerer level 3.
+s07599	Mind resistance +25%, psychic damage taken ×0.5.
+s07600	psionic defense
+s07601	Grow tentacles for 1 hour: an extra melee attack (12 blunt), melee hits have a 30% chance to entangle the target for 2 seconds; movement +15%, wounds don't bleed. Mana 2, cooldown 2 hours. Aberrant Mind, sorcerer level 11.
+s07602	revelation in flesh
+s07603	One humanlike enemy within 20 cells has a 60% chance (-5% per level the target is above you, minimum 10%) to be dominated for 1 day: temporarily joins the colony and can be drafted. At the end, 30% chance it chooses to stay; otherwise it turns hostile again, is stunned for 10 seconds and flees. No effect on story bosses and legendary units. Mana 4, cooldown 3 days. Aberrant Mind, sorcerer level 15.
+s07604	psychic domination
+s07605	Passive: mind resistance +25%, psychic damage taken ×0.5. Aberrant Mind, sorcerer level 7.
+s07606	One enemy within 25 cells takes 15 × innate power psychic damage; no effect on mechanoids. Mana 1, cooldown 5 seconds. Aberrant Mind, sorcerer level 3.
+s07607	psionic spike
+s07608	tentacle
+s07609	Grew tentacles: an extra melee attack (12 blunt), melee hits have a 30% chance to entangle the target for 2 seconds; movement +15%, wounds don't bleed.
+s07610	Passive: when you or your steel defender hit an enemy (once every 10 seconds), if there's an ally within 15 cells with over 30% injuries, heal the one who needs it most for 8 + artificer level; otherwise the target takes another 8 + artificer level arcane force damage. Battle Smith, artificer level 7.
+s07611	arcane jolt
+s07612	Passive: damage dealt with weapons +10%. Defender's guard: when you're attacked in melee, a steel defender right next to you has a 40% chance to block the hit. Battle Smith, artificer level 3.
+s07613	battle ready
+s07614	Passive: steel defender armor +20%, melee damage +50%, damage taken another ×0.8, and it learns to haul. Battle Smith, artificer level 11.
+s07615	improved defender
+s07616	Passive: can have 2 steel defenders at once; a defender automatically rebuilds the first time it falls each day (half its injuries healed); allies within 2 cells of a defender take ×0.8 damage. Battle Smith, artificer level 15.
+s07617	battle smith master
+s07618	Build a steel defender from 100 steel + 2 components that aren't forbidden on the map (rebuilding within 1 day after it's destroyed costs only 20 steel); it takes you as its master and fights alongside you. If you already have a defender, recall it to your side instead. Cooldown 1 hour. Battle Smith, artificer level 3.
+s07619	steel defender
+s07620	Passive: shaken or fleeing enemies within radius 5 move ×0.2 and take 8 × divine power psychic damage every 4 seconds. Oath of Conquest, paladin level 7.
+s07621	aura of conquest
+s07622	Enemies within radius 6 (except mechanoids) have a 60% chance to be shaken and flee for 8 seconds (-5% per level the target is above you, minimum 10%). Channel Oath 1, no divinity cost. Oath of Conquest, paladin level 3.
+s07623	channel oath: conquering presence
+s07624	Melee hit +50%, ranged hit +2% (per cell).
+s07625	guided strike
+s07626	For 30 seconds, melee hit +50% and ranged hit +2% (per cell). Channel Oath 1, no divinity cost. Oath of Conquest, paladin level 3.
+s07627	channel oath: guided strike
+s07628	Damage taken ×0.5 (except holy damage), melee cooldown ×0.8.
+s07629	invincible conqueror
+s07630	For 1 hour damage taken ×0.5 (except holy damage), melee cooldown ×0.8. Divinity 3, once per day. Passive "Submission": humanlike enemies within radius 10 with over half their health lost (except bosses) have about an 8% chance every 4 seconds to drop their weapons and kneel in surrender, and can be captured directly. Oath of Conquest, paladin level 15.
+s07631	Too terrified before the conqueror to move: movement ×0.2.
+s07632	Passive: melee hits against enemies not shaken have a 25% chance to shake them for 5 seconds; ×1.25 damage against already-shaken enemies. Oath of Conquest, paladin level 11.
+s07633	scornful rebuke
+s07634	Dropped weapons and knelt in surrender; can be captured directly.
+s07635	submission
+s07636	Passive: true dragon blood makes the body sturdier, Constitution +2 (applied after the cap). Draconic Soul, sorcerer level 4.
+s07637	dragon blood
+s07638	Passive: half flying, half walking: terrain, snow and plants no longer slow movement (impassable places like walls and deep water are still impassable). Draconic Soul, sorcerer level 10.
+s07639	Passive: a frightful presence like a true dragon's. Enemies within radius 10 who can see you make a Wisdom save once (difficulty based on your Charisma): on failure they're frightened for 1 minute, and humanlikes may also panic and flee; success or not, the same person isn't checked again for 1 day. Mechanoids, undead, dragonslayers and others are immune. Draconic Soul, sorcerer level 14.
+s07640	A steel defender built by a Battle Smith: doesn't eat or sleep, fights alongside its master; damage taken decreases with the master's artificer level (multiplier -10% per level).
+s07641	construct core
+s07642	Thickened armor and reinforced fists: sharp and blunt armor +20%, melee damage +50%.
+s07643	Fire, cold and lightning damage taken ×0.5.
+s07644	For 1 hour, fire, cold and lightning damage taken ×0.5. Mana 1, cooldown 1 hour. Eldritch Knight, fighter level 3.
+s07645	Teleport to an empty cell within 12 cells (no line of sight needed). Mana 1, cooldown 15 seconds. Eldritch Knight, fighter level 11.
+s07646	arcane charge
+s07647	For 8 seconds, each melee hit fires a magic missile at another enemy within 3 cells (6 × martial power arcane force damage). Mana 3, once per day. Passive: max mana +2, war magic strikes twice instead. Eldritch Knight, fighter level 15.
+s07648	spellblade storm
+s07649	Each melee hit fires a magic missile at another enemy within 3 cells (6 × power arcane force damage).
+s07650	Passive: after you hit an enemy in melee, spell damage it takes (fire, cold, lightning, psychic, arcane force) ×1.25 for 10 seconds. Eldritch Knight, fighter level 11.
+s07651	eldritch strike
+s07652	For 10 seconds an extra arcane shield surrounds you, absorbing 20 × martial power damage first. Mana 1, cooldown 10 seconds. Eldritch Knight, fighter level 3.
+s07653	shield (eldritch knight)
+s07654	Hit by an Eldritch Knight's weapon: spell damage taken (elemental, psychic, arcane force) ×1.25.
+s07655	spell vulnerability
+s07656	Within 10 seconds, the next melee hit adds 12 × martial power blunt damage and knocks targets of body size 2 or less back 1 cell. Mana 1, cooldown 5 seconds. Eldritch Knight, fighter level 3.
+s07657	The next melee hit adds 12 × power blunt damage and knocks targets of body size 2 or less back 1 cell.
+s07658	Passive: each Eldritch Knight spell you cast is immediately followed by another hit on a nearby enemy (a full melee resolution); two hits after learning spellblade storm. Eldritch Knight, fighter level 7.
+s07659	war magic
+s07660	Bind the weapon in your hands to yourself (replacing the previous bond): a bound weapon can't be disarmed. When not holding your bound weapon, summon the bound weapon on the same map back into your hands (the one in hand is put at your feet). No mana cost, cooldown 1 hour. Eldritch Knight, fighter level 3.
+s07661	weapon bond
+s07662	Passive: can maintain 2 body enhancements at once, and all enhancement effects are doubled (Charisma +4, healing ×2 with 1 regen, psychic sensitivity +60%). Fiendish Blood, sorcerer level 8.
+s07663	Passive: in the subclass window, pick one body enhancement to fix permanently: always on, not counting toward the limit, not reducing max mana; the other two toggle as usual. Fiendish Blood, sorcerer level 12.
+s07664	flesh fixation
+s07665	On / off: Charisma +2 (+4 from level 8). While on, sorcerer max mana -2. Enhancements that can be on at once: 1 at level 4, 2 at level 8 (the permanently fixed one doesn't count). Fiendish Blood, sorcerer level 4.
+s07666	blood cage: fiend's eyes
+s07667	Fiendish light burns in the eyes: Charisma +2 (+4 from level 8).
+s07668	fiend's eyes
+s07669	enhancement
+s07670	On / off: skin turns red, wound healing ×1.5 and 0.5 injury regained every 4 seconds (×2 and 1 from level 8). While on, sorcerer max mana -2. Fiendish Blood, sorcerer level 4.
+s07671	blood cage: fiend's skin
+s07672	Skin turned fiend-red: wound healing ×1.5, 0.5 injury regained every 4 seconds (×2 and 1 from level 8).
+s07673	fiend's skin
+s07674	On / off: psychic sensitivity +30% (+60% from level 8). While on, sorcerer max mana -2. Fiendish Blood, sorcerer level 4.
+s07675	blood cage: fiend's tongue
+s07676	A forked tongue that tastes others' thoughts: psychic sensitivity +30% (+60% from level 8).
+s07677	fiend's tongue
+s07678	Seize the blood of an enemy within 20 cells: 65% chance to root it for 4 seconds (-5% per level the target is above you, minimum 10%). No effect on bloodless targets such as mechanoids and undead. Blood loss 8%, cooldown 15 seconds. School of Hemomancy, wizard level 3.
+s07679	blood bind
+s07680	Blood boils in the veins: taking damage every second.
+s07681	Radius 3 at a point within 20 cells: enemies with blood take 4 × arcane power burn damage per second for 10 seconds (higher the more you're hurt yourself). Blood loss 24%, cooldown 1 hour. School of Hemomancy, wizard level 11.
+s07682	blood boil
+s07683	Perform the blood rite on a nearby ally (or yourself), automatically picking what's needed most: regrow a missing part; with nothing missing, cure all diseases, addictions, chronic conditions and scars; with none of those, become 10 years younger (not below 18). Blood loss 30%, once per year. Passive: blood loss cap raised from 45% to 60%; for 5 seconds after each hemomancy cast, damage taken ×0.5. School of Hemomancy, wizard level 15.
+s07684	blood rite
+s07685	Congeal your own blood into a spear and hurl it: one enemy within 25 cells takes 12 × arcane power piercing damage, ignoring 30% armor. The more you're hurt yourself, the higher the damage (+5% per 10% injury, up to +30%). Blood loss 8% (vampires: 10 hemogen), cooldown 5 seconds. School of Hemomancy, wizard level 3.
+s07686	blood spear
+s07687	Petrify the flesh of an enemy within 20 cells: 60% chance it can't move for 30 seconds (damage doesn't break it; -5% per level the target is above you, minimum 10%). No effect on mechanoids, the bloodless or body size over 2. Blood loss 24%, cooldown 1 hour. School of Hemomancy, wizard level 11.

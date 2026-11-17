@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 魔法黑暗 -->
+  <LP_WL_Darkened.label>magical darkness</LP_WL_Darkened.label>
+  <!-- 被邪术师的魔法黑暗笼罩：视觉 −50%。有魔鬼视觉的邪术师不受影响。 -->
+  <LP_WL_Darkened.description>Shrouded in a warlock's magical darkness: sight -50%. Warlocks with Devil's Sight are unaffected.</LP_WL_Darkened.description>
+  <!-- 咒术 -->
+  <LP_WL_Hexed.label>hex</LP_WL_Hexed.label>
+  <!-- 被邪术师下了咒：受到那名邪术师的伤害 ×1.25，各种豁免的成功率 −15%。 -->
+  <LP_WL_Hexed.description>Hexed by a warlock: damage taken from that warlock ×1.25, success of all saves -15%.</LP_WL_Hexed.description>
+  <!-- 力场监牢 -->
+  <LP_WL_Caged.label>forcecage</LP_WL_Caged.label>
+  <!-- 被关在看不见的力场里：动弹不得，受到的伤害 ×0.5。 -->
+  <LP_WL_Caged.description>Locked in an invisible cage of force: unable to move, damage taken ×0.5.</LP_WL_Caged.description>
+  <!-- 宗主化身 -->
+  <LP_LegPatronAvatarBuff.label>patron's avatar</LP_LegPatronAvatarBuff.label>
+  <!-- 宗主的力量借你一用：邪术师能力不耗契约法力，强度 ×1.5。 -->
+  <LP_LegPatronAvatarBuff.description>The patron lends you its power: warlock abilities cost no pact mana, ×1.5 power.</LP_LegPatronAvatarBuff.description>
+  <!-- 魔鬼视觉 -->
+  <LP_WL_DevilSightBuff.label>devil's sight</LP_WL_DevilSightBuff.label>
+  <!-- 暗处看得一清二楚：在黑暗里视觉 +30%，不受魔法黑暗影响。 -->
+  <LP_WL_DevilSightBuff.description>Sees clearly in the dark: sight in darkness +30%, unaffected by magical darkness.</LP_WL_DevilSightBuff.description>
+  <!-- 黑暗之运 -->
+  <LP_WL_DarkLuckBuff.label>dark one's own luck</LP_WL_DarkLuckBuff.label>
+  <!-- 邪魔的眷顾：心智抗性 +10%，受到的伤害 ×0.9。 -->
+  <LP_WL_DarkLuckBuff.description>The fiend's favor: mind resistance +10%, damage taken ×0.9.</LP_WL_DarkLuckBuff.description>
+  <!-- 魅惑防御 -->
+  <LP_WL_FeyDefenseBuff.label>beguiling defenses</LP_WL_FeyDefenseBuff.label>
+  <!-- 妖精宗主的庇护：心智抗性 +30%；近战打你的敌人有 20% 的成功率被迷住 2 秒。 -->
+  <LP_WL_FeyDefenseBuff.description>The Archfey's protection: mind resistance +30%; enemies that hit you in melee have a 20% chance to be beguiled for 2 seconds.</LP_WL_FeyDefenseBuff.description>
+  <!-- 觉醒心灵 -->
+  <LP_WL_AwakenedMindBuff.label>awakened mind</LP_WL_AwakenedMindBuff.label>
+  <!-- 星界之外的低语打开了心灵：心灵敏感度 +20%，心智抗性 +10%（灵能控制也更容易抵抗、时间更短）。 -->
+  <LP_WL_AwakenedMindBuff.description>Whispers from beyond the stars have opened the mind: psychic sensitivity +20%, mind resistance +10% (psychic control is also easier to resist and shorter).</LP_WL_AwakenedMindBuff.description>
+  <!-- 思维屏障 -->
+  <LP_WL_ThoughtShieldBuff.label>thought shield</LP_WL_ThoughtShieldBuff.label>
+  <!-- 心灵被屏障护住：心智抗性 +20%，受到的心灵伤害 ×0.5。 -->
+  <LP_WL_ThoughtShieldBuff.description>The mind is guarded by a barrier: mind resistance +20%, psychic damage taken ×0.5.</LP_WL_ThoughtShieldBuff.description>
+</LanguageData>

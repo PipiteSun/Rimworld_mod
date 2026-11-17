@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 恶魔血 -->
+  <LP_DemonBloodRush.label>demon blood</LP_DemonBloodRush.label>
+  <!-- 恶魔血在血管里烧：近战伤害 +15%，疼痛 -10%。 -->
+  <LP_DemonBloodRush.description>Demon blood burns in the veins: +15% melee damage, -10% pain.</LP_DemonBloodRush.description>
+  <!-- 抽过恶魔血 -->
+  <LP_DemonBloodDrawn.label>demon blood drawn</LP_DemonBloodDrawn.label>
+  <!-- 最近被抽过血，5 天内不能再抽。 -->
+  <LP_DemonBloodDrawn.description>Had blood drawn recently; cannot be drawn again for 5 days.</LP_DemonBloodDrawn.description>
+  <!-- 戴着饱魂之牙 -->
+  <LP_FangWearer.label>wearing a soul-gorged fang</LP_FangWearer.label>
+  <!-- 獠牙贴着皮肤，像在低声要求更多的灵魂：每杀一个人形叠一层伤害加成；深渊腐化每天 +0.2%。 -->
+  <LP_FangWearer.description>The fang presses against the skin as if whispering for more souls: each humanlike kill adds a stack of damage bonus; abyssal taint +0.2% per day.</LP_FangWearer.description>
+  <!-- 饱魂之牙 -->
+  <LP_FangGorged.label>soul-gorged fang</LP_FangGorged.label>
+  <!-- 獠牙里存着被杀者的灵魂：每层伤害 +1%，最多 10 层，死亡清零。 -->
+  <LP_FangGorged.description>The fang stores the souls of the slain: +1% damage per stack, up to 10 stacks, cleared on death.</LP_FangGorged.description>
+</LanguageData>

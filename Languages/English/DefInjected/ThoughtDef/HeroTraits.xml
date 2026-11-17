@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 预言兑现 -->
+  <LP_ProphecyFulfilled.stages.0.label>prophecy fulfilled</LP_ProphecyFulfilled.stages.0.label>
+  <!-- 我们亲眼见证了预言成真。 -->
+  <LP_ProphecyFulfilled.stages.0.description>We witnessed the prophecy come true with our own eyes.</LP_ProphecyFulfilled.stages.0.description>
+  <!-- 宗主之怒 -->
+  <LP_PatronWrathMood.stages.0.label>patron's wrath</LP_PatronWrathMood.stages.0.label>
+  <!-- 宗主对我很不满意。我能感觉到那股寒意。 -->
+  <LP_PatronWrathMood.stages.0.description>The patron is very displeased with me. I can feel that chill.</LP_PatronWrathMood.stages.0.description>
+  <!-- 背弃之契 -->
+  <LP_PactForsaken.stages.0.label>forsaken pact</LP_PactForsaken.stages.0.label>
+  <!-- 宗主抛弃了我，连同{PAWN_possessive}给我的一切。 -->
+  <LP_PactForsaken.stages.0.description>The patron abandoned me, along with everything {PAWN_possessive} gave me.</LP_PactForsaken.stages.0.description>
+</LanguageData>

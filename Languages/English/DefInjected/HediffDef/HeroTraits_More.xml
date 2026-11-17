@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 百折不挠（冷却） -->
+  <LP_MT_UnyieldingSpent.label>indomitable (cooldown)</LP_MT_UnyieldingSpent.label>
+  <!-- 刚从鬼门关爬回来，下一次就没这么走运了：冷却结束前百折不挠不会再救命。 -->
+  <LP_MT_UnyieldingSpent.description>Just crawled back from death's door; won't be so lucky next time: Indomitable won't save a life again until the cooldown ends.</LP_MT_UnyieldingSpent.description>
+  <!-- 乘胜追击 -->
+  <LP_MT_Momentum.label>press the advantage</LP_MT_Momentum.label>
+  <!-- 刚刚亲手了结了一个敌人，手感正热：近战与射击命中 +10%。 -->
+  <LP_MT_Momentum.description>Just finished off an enemy personally, and I'm on a roll: melee and shooting hit +10%.</LP_MT_Momentum.description>
+  <!-- 日光灼身 -->
+  <LP_MT_Sunburn.label>sunburnt</LP_MT_Sunburn.label>
+  <!-- 吸血鬼之咒：阳光像针一样扎在皮肤上。移动 -15%、意识 -10%，每小时受到 1 点烧伤。进屋或天黑就消退。 -->
+  <LP_MT_Sunburn.description>Vampire's curse: sunlight stings the skin like needles. Movement -15%, consciousness -10%, 1 burn damage per hour. Fades indoors or after dark.</LP_MT_Sunburn.description>
+</LanguageData>

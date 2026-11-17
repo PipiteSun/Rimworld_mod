@@ -44,9 +44,9 @@ namespace LichPhylactery {
    var parms=new IncidentParms{target=map,points=20000f};
    var kinds=new[]{Monsters.Behir,Monsters.Beholder,Monsters.Demilich}.Select(Monsters.Kind).ToList();
    Check(Monsters.Available && kinds.All(k=>k!=null && k.RaceProps.Animal && !k.RaceProps.Humanlike && !k.canArriveManhunter && k.lifeStages.Count==1) && Monsters.Kind(Monsters.DeathKnight)!=null
-    && Items.Thing("LP_SoulGem")!=null && Items.Thing("LP_HellfireOrb")!=null && Items.Thing("LP_AntiMagicAmulet")!=null,
+    && Items.Thing("LP_SoulGem")!=null && Items.Thing("LP_AntiMagicAmulet")!=null,
     "legendary monsters: behir / beholder / demilich always load as animal-style races (HAR "+har+"), never a manhunter pack; the death knight and all loot load");
-   try{CheckDeathKnight();CheckBeastMonsters(har);}
+   try{CheckDeathKnight();CheckBeastMonsters(har);CheckLegendaryMoves();}
    finally{Legendary.TestD20=null;Legendary.TestRoll=null;Monsters.TestRoll=null;LmClean();}
    PrepareLegendaryBeastSave();
   }
@@ -105,7 +105,7 @@ namespace LichPhylactery {
    var drop=at.GetThingList(map).Concat(GenRadial.RadialCellsAround(at,3f,true).Where(x=>x.InBounds(map)).SelectMany(x=>x.GetThingList(map))).Distinct().ToList();
    var armor=drop.FirstOrDefault(t=>t.def.defName=="LP_DeathknightPlate");var orb=drop.FirstOrDefault(t=>t.def.defName=="LP_HellfireOrb");
    if(armor!=null)lmMade.Add(armor);if(orb!=null)lmMade.Add(orb);
-   Check(downed && Monsters.Ashed==ashed+1 && k.Dead && (k.Corpse==null || k.Corpse.Destroyed) && armor!=null && armor.TryGetComp<CompQuality>()?.Quality==QualityCategory.Excellent && orb!=null,"[downed "+downed+" ashed "+(Monsters.Ashed-ashed)+" dead "+k.Dead+" corpse "+(k.Corpse!=null && !k.Corpse.Destroyed)+" armor "+(armor!=null)+" q "+armor?.TryGetComp<CompQuality>()?.Quality+" orb "+(orb!=null)+" downTick "+body.downTick+" dt1 "+dt1+" now "+Find.TickManager.TicksGame+" downNow "+downNow+" kind "+kk+"] a downed death knight turns to ash after an hour (no corpse), leaving its excellent plate and a hellfire orb");
+   Check(downed && Monsters.Ashed==ashed+1 && k.Dead && (k.Corpse==null || k.Corpse.Destroyed) && armor!=null && armor.TryGetComp<CompQuality>()?.Quality==QualityCategory.Excellent,"[downed "+downed+" ashed "+(Monsters.Ashed-ashed)+" dead "+k.Dead+" corpse "+(k.Corpse!=null && !k.Corpse.Destroyed)+" armor "+(armor!=null)+" q "+armor?.TryGetComp<CompQuality>()?.Quality+" orb "+(orb!=null)+" downTick "+body.downTick+" dt1 "+dt1+" now "+Find.TickManager.TicksGame+" downNow "+downNow+" kind "+kk+"] a downed death knight turns to ash after an hour (no corpse), leaving its excellent plate (hellfire orb removed in 1.146.0)");
    // 4 塞伊 ≥5000 点 10% 死亡骑士带队：抵消点数、和红袍法师一起带队，倒下时原来的斩首规则照旧生效
    if(thay!=null && Factions.HostileDef!=null){
     var gp=new PawnGroupMakerParms{groupKind=PawnGroupKindDefOf.Combat,tile=map.Tile,faction=thay,points=6000f};
@@ -128,6 +128,37 @@ namespace LichPhylactery {
    LmClean();
   }
 
+  // 1.161.0 招牌连招：直接调用（不等冷却），TestNoFlyer 让跳跃瞬间完成，TestD20=1 让豁免全失败。
+  void CheckLegendaryMoves(){
+   var arena=LmArena();MonsterMoves.TestNoFlyer=true;Legendary.TestD20=1;
+   try{
+    int vfx0=SpellVfx2.MonsterVfxPlayed;
+    // 贝希尔：钻到 10 格外的人身边 → 缠绕重压 → 吐息
+    var be=LmMake(Monsters.Behir,arena);var c1=LmColonist(arena+new IntVec3(10,0,0),5);var body=be.health.hediffSet.hediffs.OfType<Hediff_MonsterBody>().First();
+    bool leapt=MonsterMoves.BehirLunge(be,c1);bool near=be.Position.DistanceTo(c1.Position)<=2.9f;bool pending=body.landing==Monsters.Behir;int hit=MonsterMoves.Land(be,body);
+    Check(leapt && near && pending && hit>=1 && body.landing==null && !body.charged && c1.health.hediffSet.hediffs.OfType<Hediff_Injury>().Any() && (c1.Dead || c1.stances.stunner.Stunned),
+     "behir burrow lunge: surfaces next to a target 10 cells away, constricts (blunt + stun on failed Str save) and breathes lightning right away [leapt "+leapt+" near "+near+" pending "+pending+" hit "+hit+"]");
+    LmOff(be);LmOff(c1);
+    // 死亡骑士：冲到 9 格外 → 落地震击、击退、震晕
+    var k=LmMake(Monsters.DeathKnight,arena,Factions.Hostile??LegEnemy());var c2=LmColonist(arena+new IntVec3(9,0,0),5);var kb=k.health.hediffSet.hediffs.OfType<Hediff_MonsterBody>().First();
+    leapt=MonsterMoves.KnightCharge(k,c2);float d0=k.Position.DistanceTo(c2.Position);hit=MonsterMoves.Land(k,kb);float d1=k.Position.DistanceTo(c2.Position);
+    Check(leapt && d0<=2.9f && hit>=1 && (c2.Dead || d1>d0 && c2.stances.stunner.Stunned) && c2.health.hediffSet.hediffs.OfType<Hediff_Injury>().Any(),
+     "death knight infernal charge: leaps beside a target 9 cells away, the landing slam injures, knocks back and stuns it [d0 "+d0+" d1 "+d1+" hit "+hit+"]");
+    LmOff(k);LmOff(c2);
+    // 眼魔：把 12 格外的人拖到身前，眼柄齐射
+    var bhAt=CellFinder.RandomClosewalkCellNear(arena,map,2);var bh=LmMake(Monsters.Beholder,bhAt);var c3=LmColonist(CellFinder.RandomClosewalkCellNear(bhAt+new IntVec3(12,0,0),map,1),5);int rays=Monsters.RaysFired;
+    float before=c3.Position.DistanceTo(bh.Position);bool pulled=MonsterMoves.BeholderPull(bh,c3);float after=c3.Position.DistanceTo(bh.Position);
+    Check(pulled && after<before-5f && (Monsters.RaysFired-rays>=3 || c3.Dead && Monsters.RaysFired-rays>=1),"beholder telekinetic pull: drags a target 12 cells away to its face (failed Str save), then fires at least 3 eye rays at once (fewer only if the volley already killed it) [dead "+c3.Dead+" spawned "+bh.Spawned+"/"+c3.Spawned+" before "+before+" after "+after+" rays "+(Monsters.RaysFired-rays)+"]");
+    LmOff(bh);LmOff(c3);
+    // 半巫妖：被贴身 → 骨尘爆开、闪到 8 格外、诅咒
+    var dl=LmMake(Monsters.Demilich,arena);var c4=LmColonist(arena+new IntVec3(1,0,0),5);
+    bool blink=MonsterMoves.DemilichBlink(dl);float gap=dl.Position.DistanceTo(c4.Position);
+    Check(blink && gap>=7f && c4.health.hediffSet.hediffs.OfType<Hediff_Injury>().Any() && Items.Has(c4,"LP_DemilichCurse"),"demilich dust blink: bone-dust burst hurts an adjacent foe, blinks 8+ cells away and curses it [gap "+gap+"]");
+    LmOff(dl);LmOff(c4);
+    int vfx=SpellVfx2.MonsterVfxPlayed-vfx0;
+    Check(Monsters.MovesOn && (!SpellVfx.On || vfx>=8),"legendary signature moves are on by default (setting 招牌连招) and each step plays its VFX [vfx "+vfx+"]");
+   }finally{MonsterMoves.TestNoFlyer=false;Legendary.TestD20=null;}
+  }
   void CheckBeastMonsters(bool har){
    if(har){
     var m=DragonBridgeMonsters?.GetMethod("RunMonsters");if(m==null)throw new Exception("HAR bridge RunMonsters missing");
@@ -202,12 +233,12 @@ namespace LichPhylactery {
    var hoard=GenStep_MonsterLair.Hoard(Monsters.Demilich);lmMade.AddRange(hoard);
    Check(site1!=null && site2!=null && Monsters.SiteOf(site1)?.kind==Monsters.Beholder && Monsters.SiteOf(site2)?.kind==Monsters.Demilich && hoard.Any(t=>t.def.defName=="LP_LegendRespecStone") && hoard.Count(t=>t.def.tradeTags?.Contains("LP_MagicItem")==true)==2,
     "beholder lair and endless tomb sites appear on the world map; the tomb hoard has 2 magic items and a respec stone");
-   // 12 龙的猎手：要有人杀过真龙（或有成年力能龙裔）
+   // 12 龙的猎手：要有人杀过真龙
    var inc=DefDatabase<IncidentDef>.GetNamed("LP_BehirHunt");var colonist=map.mapPawns.FreeColonistsSpawned.First();var rec=DefDatabase<RecordDef>.GetNamed("LP_DragonsSlain");
    float old=colonist.records.GetValue(rec);bool before=Monsters.HunterReady(map);colonist.records.AddTo(rec,1f);bool after=Monsters.HunterReady(map);
    bool fired=inc.Worker.TryExecute(new IncidentParms{target=map,points=3000f});colonist.records.AddTo(rec,-1f);
    var hunter=map.mapPawns.AllPawnsSpawned.FirstOrDefault(p=>Monsters.Is(p,Monsters.Behir));if(hunter!=null)lmMade.Add(hunter);
-   Check((before || DragonFlyover.AdultDragons(map).Count>0) || !before && after && fired && hunter!=null && hunter.GetLord()?.LordJob is LordJob_AssaultColony,"dragon hunter: a behir only comes after someone has slain a true dragon (or the colony has an adult force dragon), and assaults");
+   Check(before || !before && after && fired && hunter!=null && hunter.GetLord()?.LordJob is LordJob_AssaultColony,"dragon hunter: a behir only comes after someone has slain a true dragon, and assaults");
   }
   static Type DragonBridgeMonsters=>GenTypes.GetTypeInAnyAssembly("LichPhylactery.HARBridge.BridgeChecks");
  }

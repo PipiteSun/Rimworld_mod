@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 木精灵 -->
+  <LP_WoodElf.label>wood elf</LP_WoodElf.label>
+  <!-- 住在古林深处的精灵亚种，血脉会遗传给子女。皮肤偏棕、头发深褐或火红，脚步轻快，擅长射箭和照料植物；和其他精灵一样睡得少、成年后衰老极慢、心智坚定，身体也同样脆弱。木精灵不爱钻研书本，研究速度较慢。 -->
+  <LP_WoodElf.description>An elven subrace living deep in ancient forests; the bloodline is passed on to children. Brownish skin, dark brown or fiery red hair, light on their feet, good at archery and tending plants; like other elves they sleep little, age extremely slowly after adulthood and are strong-minded, and are just as fragile. Wood elves dislike poring over books and research more slowly.</LP_WoodElf.description>
+  <!-- 可遗传的精灵亚种。射击、种植强，跑得快；睡得少、衰老极慢、心智抗性高；身体脆弱、近战弱、研究慢。 -->
+  <LP_WoodElf.descriptionShort>Inheritable elven subrace. Strong shooting and plants, fast; sleeps little, ages extremely slowly, high mind resistance; fragile, weak melee, slow research.</LP_WoodElf.descriptionShort>
+  <!-- 卓尔精灵 -->
+  <LP_Drow.label>drow</LP_Drow.label>
+  <!-- 从幽暗地域爬上来的精灵亚种，血脉会遗传给子女。深灰或黑紫的皮肤、雪白的头发，能在黑暗中视物，灵能敏感，擅长近战；刀刃上常抹着蛛后之毒，还天生会召出魔法黑暗。卓尔怕光：受不了紫外线，白天在露天处命中率下降。卓尔与地表精灵世代为敌。 -->
+  <LP_Drow.description>An elven subrace that climbed up from the Underdark; the bloodline is passed on to children. Dark grey or purple-black skin, snow-white hair, sees in the dark, psychically sensitive, good at melee; their blades are often coated with spider queen venom, and they can call magical darkness by birth. Drow fear light: they can't stand ultraviolet light, and their hit chance drops outdoors by day. Drow and surface elves have been enemies for generations.</LP_Drow.description>
+  <!-- 可遗传的精灵亚种。近战强、夜视、灵能敏感，近战偶尔下毒，会黑暗术；怕光，白天露天命中下降；与其他精灵互相敌视。 -->
+  <LP_Drow.descriptionShort>Inheritable elven subrace. Strong melee, night vision, psychically sensitive, melee occasionally poisons, can cast darkness; light-sensitive, lower hit chance outdoors by day; mutually hostile with other elves.</LP_Drow.descriptionShort>
+  <!-- 丘陵矮人 -->
+  <LP_HillDwarf.label>hill dwarf</LP_HillDwarf.label>
+  <!-- 住在丘陵与浅山里的矮人亚种，血脉会遗传给子女。和山地矮人一样矮小敦实、蓄着胡子、能在黑暗中视物，是天生的矿工和工匠；免疫力特别强，骨肉也格外结实，每个部位能多挨几下。矮人喝酒不上瘾，住在山腹里更快乐，也从不忘记血债。 -->
+  <LP_HillDwarf.description>A dwarf subrace living in hills and low mountains; the bloodline is passed on to children. Like mountain dwarves: short, stocky, bearded, able to see in the dark, born miners and craftsmen; especially strong immunity and extra-sturdy flesh and bones, so each part can take a few more hits. Dwarves never get addicted to alcohol, are happier inside the mountain, and never forget a blood debt.</LP_HillDwarf.description>
+  <!-- 可遗传的矮人亚种。采矿、手工强，身体结实、免疫强、部位生命×115%，夜视；走得慢、体型小；记仇。 -->
+  <LP_HillDwarf.descriptionShort>Inheritable dwarf subrace. Strong at mining and crafting, sturdy, strong immunity, part health ×115%, night vision; slow, small; holds grudges.</LP_HillDwarf.descriptionShort>
+  <!-- 轻足半身人 -->
+  <LP_HalflingLightfoot.label>lightfoot halfling</LP_HalflingLightfoot.label>
+  <!-- 喜欢四处游历的半身人亚种，血脉会遗传给子女。只有常人七成高，跑得快，擅长种地、做饭和交际，长得讨喜、天性乐观；胃口很大，饿得快。半身人勇敢又走运：不会恐慌逃跑，致命一击偶尔只擦破点皮。轻足族身子骨轻，受伤更重，但很会躲到大个子身后。 -->
+  <LP_HalflingLightfoot.description>A halfling subrace that loves to travel; the bloodline is passed on to children. Only 70% as tall as others, fast runners, good at farming, cooking and socializing, pleasant-looking and optimistic by nature; big appetites and get hungry fast. Halflings are brave and lucky: they never panic and flee, and a lethal blow sometimes only grazes them. Lightfoots are light of build and take worse injuries, but are good at hiding behind big folk.</LP_HalflingLightfoot.description>
+  <!-- 可遗传的小个子种族。跑得快、种植烹饪社交强、乐观好看；勇敢、幸运、会躲在大个子身后；胃口大、身体脆弱。 -->
+  <LP_HalflingLightfoot.descriptionShort>Inheritable small race. Fast, strong at plants, cooking and social, optimistic and good-looking; brave, lucky, hides behind big folk; big appetite, fragile body.</LP_HalflingLightfoot.descriptionShort>
+  <!-- 敦实半身人 -->
+  <LP_HalflingStout.label>stout halfling</LP_HalflingStout.label>
+  <!-- 传说带着矮人血统的半身人亚种，血脉会遗传给子女。和轻足族一样小个子、跑得快、擅长种地做饭、乐观勇敢又走运；敦实族更圆更结实，耐毒、免疫力强，只是走得慢一点，也更爱睡懒觉。 -->
+  <LP_HalflingStout.description>A halfling subrace said to carry dwarven blood; the bloodline is passed on to children. Like lightfoots: small, fast, good at farming and cooking, cheerful, brave and lucky; stouts are rounder and sturdier, poison-resistant with strong immunity, just a little slower and fonder of sleeping in.</LP_HalflingStout.description>
+  <!-- 可遗传的小个子种族。跑得快、种植烹饪强、乐观；勇敢、幸运、耐毒、免疫强；胃口大、贪睡。 -->
+  <LP_HalflingStout.descriptionShort>Inheritable small race. Fast, strong at plants and cooking, optimistic; brave, lucky, poison-resistant, strong immunity; big appetite, sleepy.</LP_HalflingStout.descriptionShort>
+  <!-- 岩侏儒 -->
+  <LP_RockGnome.label>rock gnome</LP_RockGnome.label>
+  <!-- 住在丘陵里的侏儒亚种，血脉会遗传给子女。只有常人六成高，尖耳朵、乐天派，学东西极快，擅长研究和手工，是天生的发明家；心智狡黠，很难被心灵效果影响。侏儒力气小、不擅长近战，腿也短，走得慢。 -->
+  <LP_RockGnome.description>A gnome subrace living in the hills; the bloodline is passed on to children. Only 60% as tall as others, pointy-eared optimists who learn extremely fast and excel at research and crafting; born inventors; cunning of mind and hard to affect with psychic effects. Gnomes are weak, poor at melee, and short-legged, so they walk slowly.</LP_RockGnome.description>
+  <!-- 可遗传的小个子种族。智识、手工强，学得快，乐观，心智抗性+60%；近战弱、走得慢。 -->
+  <LP_RockGnome.descriptionShort>Inheritable small race. Strong Intellectual and Crafting, quick learners, optimistic, mind resistance +60%; weak melee, slow.</LP_RockGnome.descriptionShort>
+  <!-- 森林侏儒 -->
+  <LP_ForestGnome.label>forest gnome</LP_ForestGnome.label>
+  <!-- 隐居在林间的侏儒亚种，血脉会遗传给子女。和岩侏儒一样聪明、乐观、学得快、心智狡黠；森林侏儒擅长和动物打交道，能和小动物说上话，驯服它们格外容易。侏儒力气小、不擅长近战，走得慢。 -->
+  <LP_ForestGnome.description>A gnome subrace that lives hidden in the woods; the bloodline is passed on to children. Like rock gnomes: clever, cheerful, quick learners and cunning of mind; forest gnomes are good with animals, can talk to small animals and tame them especially easily. Gnomes are weak, poor at melee and slow.</LP_ForestGnome.description>
+  <!-- 可遗传的小个子种族。智识、驯兽强，学得快，能和小动物交谈；心智抗性+60%；近战弱、走得慢。 -->
+  <LP_ForestGnome.descriptionShort>Inheritable small race. Strong Intellectual and Animals, quick learners, can talk with small animals; mind resistance +60%; weak melee, slow.</LP_ForestGnome.descriptionShort>
+  <!-- 地侏 -->
+  <LP_DeepGnome.label>deep gnome</LP_DeepGnome.label>
+  <!-- 幽暗地域里的侏儒亚种，血脉会遗传给子女。皮肤灰得像岩石，大多是光头；能在黑暗中视物，不太受得了紫外线；一动不动时几乎和石头分不出来。和其他侏儒一样聪明、乐观、学得快、心智狡黠，力气小、走得慢。 -->
+  <LP_DeepGnome.description>A gnome subrace of the Underdark; the bloodline is passed on to children. Skin grey as rock, mostly bald; sees in the dark, can't stand ultraviolet light well; nearly indistinguishable from stone when motionless. Like other gnomes: clever, cheerful, quick learners and cunning of mind, weak and slow.</LP_DeepGnome.description>
+  <!-- 可遗传的小个子种族。智识强、学得快、夜视、静止时石肤伪装；心智抗性+60%；轻度怕光、近战弱、走得慢。 -->
+  <LP_DeepGnome.descriptionShort>Inheritable small race. Strong Intellectual, quick learners, night vision, stone camouflage when still; mind resistance +60%; mildly light-sensitive, weak melee, slow.</LP_DeepGnome.descriptionShort>
+  <!-- 半精灵 -->
+  <LP_HalfElf.label>half-elf</LP_HalfElf.label>
+  <!-- 人类与精灵的混血后代，血脉会遗传给子女。尖耳、长相讨喜，天生会和人打交道；继承了一点精灵的长寿与坚定心智。半精灵多才多艺：每个半精灵出生时随机带两项不同的技能天赋（在基因编辑器里也可以自选）。有半精灵在的殖民地，精灵和矮人吵得少些。 -->
+  <LP_HalfElf.description>The mixed offspring of humans and elves; the bloodline is passed on to children. Pointed ears, pleasant looks, natural people persons; they inherit a little elven longevity and steadfastness of mind. Half-elves are versatile: each is born with two different random skill talents (selectable in the gene editor). In a colony with a half-elf, elves and dwarves quarrel less.</LP_HalfElf.description>
+  <!-- 可遗传的混血种族。社交强、好看，两项随机技能天赋，衰老较慢，心智抗性+25%；能缓和精灵与矮人的矛盾。 -->
+  <LP_HalfElf.descriptionShort>Inheritable mixed race. Strong Social, good-looking, two random skill talents, ages more slowly, mind resistance +25%; eases friction between elves and dwarves.</LP_HalfElf.descriptionShort>
+  <!-- 狗头人 -->
+  <LP_Kobold.label>kobold</LP_Kobold.label>
+  <!-- 自称龙之后裔的小个子爬行类人，血脉会遗传给子女。红褐或蓝灰的鳞皮、短尾、小角，只有常人六成高；擅长挖矿和手工，是天生的陷阱匠，打架时一拥而上。狗头人能在黑暗中视物，但受不了紫外线；身体脆弱、力气小，长得也不讨喜。他们崇拜巨龙，殖民地有龙时干劲十足。 -->
+  <LP_Kobold.description>Small reptilian humanoids who claim descent from dragons; the bloodline is passed on to children. Red-brown or blue-grey scaly skin, short tails, small horns, only 60% as tall as others; good at mining and crafting, born trapmakers who swarm together in fights. Kobolds see in the dark but can't stand ultraviolet light; fragile, weak and not pleasant to look at. They worship dragons and are full of drive when the colony has one.</LP_Kobold.description>
+  <!-- 可遗传的小个子种族。采矿、手工强，夜视，陷阱匠，群体战术，侍奉巨龙；怕光、身体脆弱、近战伤害低、难看。 -->
+  <LP_Kobold.descriptionShort>Inheritable small race. Strong at mining and crafting, night vision, trapmakers, pack tactics, serve dragons; light-sensitive, fragile, low melee damage, ugly.</LP_Kobold.descriptionShort>
+  <!-- 地精 -->
+  <LP_Goblin.label>goblin</LP_Goblin.label>
+  <!-- 成群出没的小个子类人，血脉会遗传给子女。绿皮、尖耳，只有常人六成高，跑得飞快，能在黑暗中视物；挨了打就溜，最恨被大个子看扁。地精长得难看，力气小，不擅长交际，也没什么艺术细胞。 -->
+  <LP_Goblin.description>Small humanoids that roam in packs; the bloodline is passed on to children. Green skin, pointed ears, only 60% as tall as others, fast runners who see in the dark; they flee when hit and hate being looked down on by big folk. Goblins are ugly, weak, poor at socializing and have no artistic bone in their bodies.</LP_Goblin.description>
+  <!-- 可遗传的小个子种族。跑得快、夜视，被打后溜得更快，打大个子伤害+15%；难看、近战伤害低、不擅社交与艺术。 -->
+  <LP_Goblin.descriptionShort>Inheritable small race. Fast, night vision, flee faster after being hit, +15% damage against bigger targets; ugly, low melee damage, poor at social and art.</LP_Goblin.descriptionShort>
+  <!-- 大地精 -->
+  <LP_Hobgoblin.label>hobgoblin</LP_Hobgoblin.label>
+  <!-- 纪律严明的地精族战士，血脉会遗传给子女。橙红的皮肤、尖耳，个头和人类相当；擅长射击，脾气暴躁，能在黑暗中视物。大地精讲究军阵，身边同伴越多越能打，被征召时也不会精神崩溃。 -->
+  <LP_Hobgoblin.description>Disciplined goblinoid warriors; the bloodline is passed on to children. Orange-red skin, pointed ears, about human size; good at shooting, hot-tempered, see in the dark. Hobgoblins value battle formations: the more companions around them, the better they fight, and they never have mental breaks while drafted.</LP_Hobgoblin.description>
+  <!-- 可遗传的地精族。射击强、夜视，身边有同伴时命中与工作速度提高，征召时不崩溃；暴躁。 -->
+  <LP_Hobgoblin.descriptionShort>Inheritable goblinoid. Strong shooting, night vision, higher hit chance and work speed with companions nearby, no breaks while drafted; hot-tempered.</LP_Hobgoblin.descriptionShort>
+  <!-- 熊地精 -->
+  <LP_Bugbear.label>bugbear</LP_Bugbear.label>
+  <!-- 地精族里最高大的一支，血脉会遗传给子女。浑身长毛、膀大腰圆，胳膊长得出奇，近战伤害高、命中准，最擅长从暗处突袭；只是学东西慢，又贪睡。 -->
+  <LP_Bugbear.description>The tallest branch of the goblinoids; the bloodline is passed on to children. Hairy all over, broad-shouldered, with unusually long arms; high melee damage and accuracy, best at ambushing from the dark; but slow learners and sleepy.</LP_Bugbear.description>
+  <!-- 可遗传的地精族。魁梧、毛皮、近战伤害高、长臂近战命中+10%，突袭伤害×125%；学得慢、贪睡。 -->
+  <LP_Bugbear.descriptionShort>Inheritable goblinoid. Burly, furred, high melee damage, long arms give +10% melee hit, ambush damage ×125%; slow learners, sleepy.</LP_Bugbear.descriptionShort>
+</LanguageData>

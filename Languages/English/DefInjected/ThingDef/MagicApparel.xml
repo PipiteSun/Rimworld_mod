@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 死亡骑士铠甲 -->
+  <LP_DeathknightPlate.label>death knight armor</LP_DeathknightPlate.label>
+  <!-- 发黑的铁色板甲，肩甲是向上翘起的锯齿尖刺，左肩挂一个小骷髅饰，胸甲中间的裂纹里透出幽绿；背后一件破成几条的黑披风（占披风层）。护甲为原版板甲的110%；寒冷伤害-20%；近战攻击穿戴者的敌人每次有10%概率陷入恐惧（牛头人、象人和不受心灵影响的不会）。不是亡灵的人穿着心情-3（“冰冷的铠甲在低语”）。只能由巫妖在死灵仪式台锻造（钢150 + 命匣200献祭经验）。\n\n套装“死亡骑士”（铠甲 + 亡魂巨盔）：倒地时以30%生命“再站起来”，每3天一次；巫妖本人穿不触发。 -->
+  <LP_DeathknightPlate.description>Blackened iron-grey plate armor with upturned jagged spikes on the pauldrons, a small skull ornament on the left shoulder and eerie green light seeping through a crack in the breastplate; a black cloak torn into strips on the back (takes the cape layer). Armor 110% of vanilla plate armor; cold damage -20%; enemies attacking the wearer in melee each have a 10% chance to become frightened (not minotaurs, loxodons or the psychically immune). Non-undead wearers get mood -3 ("the cold armor whispers"). Can only be forged by a lich at the necromantic ritual table (steel 150 + 200 phylactery sacrifice XP).\n\nSet "Death Knight" (armor + revenant great helm): when downed, "rises again" with 30% health, once every 3 days; doesn't trigger when worn by the lich themself.</LP_DeathknightPlate.description>
+  <!-- 亡魂巨盔 -->
+  <LP_HelmRestlessDead.label>revenant great helm</LP_HelmRestlessDead.label>
+  <!-- 黑铁全盔，前额两根后掠的角，面甲是骷髅牙齿造型，眼缝里两点幽绿。厚重全盔，心智抗性+10%。只能由巫妖在死灵仪式台锻造（钢50 + 命匣80献祭经验）。 -->
+  <LP_HelmRestlessDead.description>A black iron full helm with two swept-back horns on the forehead, a visor shaped like skull teeth and two points of eerie green in the eye slits. A heavy full helm, mind resistance +10%. Can only be forged by a lich at the necromantic ritual table (steel 50 + 80 phylactery sacrifice XP).</LP_HelmRestlessDead.description>
+  <!-- 骸骨王冠 -->
+  <LP_CrownOfBone.label>bone crown</LP_CrownOfBone.label>
+  <!-- 黑铁细冠，前面竖着五根磨亮的指骨，中间镶一颗紫色宝石。社交影响+10%；巫妖戴着时恐惧凝视的范围+1格。只能由巫妖在死灵仪式台制作（金20 + 人皮10）。 -->
+  <LP_CrownOfBone.description>A thin black iron circlet with five polished finger bones standing up in front and a purple gem in the middle. Social impact +10%; when worn by a lich, fear gaze range +1 cell. Can only be made by a lich at the necromantic ritual table (gold 20 + human leather 10).</LP_CrownOfBone.description>
+</LanguageData>

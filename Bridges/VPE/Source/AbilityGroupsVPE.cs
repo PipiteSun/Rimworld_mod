@@ -23,8 +23,8 @@ namespace LichPhylactery.VPEBridge {
    var seen=new HashSet<VEF.Abilities.AbilityDef>();
    foreach(Ability a in comp.LearnedAbilities){
     var d=a?.def;if(d==null || !seen.Add(d))continue;
-    string tag="灵能";
-    try{var path=d.Psycast()?.path;if(path!=null)tag="灵能·"+path.label;}catch{}
+    string tag="灵能".Loc();
+    try{var path=d.Psycast()?.path;if(path!=null)tag="灵能·".Loc()+path.label;}catch{}
     int lv=0;try{lv=d.Psycast()?.level??0;}catch{}
     yield return new AbilityGroupEntry{key=KeyOf(d),label=d.LabelCap,desc=d.description,icon=d.icon,tag=tag,sort=lv};
    }

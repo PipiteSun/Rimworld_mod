@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 坠落的云堡 -->
+  <LP_FallenCloudKeep.label>fallen cloud castle</LP_FallenCloudKeep.label>
+  <!-- 云端城堡的锚链断了。城堡沉进大地之前，一位云巨人带着三名仆从、一箱白银和几件心爱的艺术品逃了下来。\n\n没有武器，只有钱、体面和一张好嘴；费伦拓荒同盟早就和云堡有生意往来（好感+40）。\n\n云巨人讲究卧室，尽快给他盖一间配得上身份的房间吧。 -->
+  <LP_FallenCloudKeep.description>The anchor chain of the cloud castle has snapped. Before the castle sank into the earth, a cloud giant escaped with three servants, a chest of silver and a few beloved artworks.\n\nNo weapons, only money, dignity and a silver tongue; Faerûn's pioneer league has long traded with the cloud castle (goodwill +40).\n\nCloud giants are particular about bedrooms, so build them a room befitting their status as soon as possible.</LP_FallenCloudKeep.description>
+  <!-- 云端城堡的锚链断了。城堡沉进大地之前，一位云巨人带着三名仆从、一箱白银和几件心爱的艺术品逃了下来。\n\n没有武器，只有钱、体面和一张好嘴；费伦拓荒同盟早就和云堡有生意往来（好感+40）。\n\n云巨人讲究卧室，尽快给他盖一间配得上身份的房间吧。 -->
+  <LP_FallenCloudKeep.scenario.description>The anchor chain of the cloud castle has snapped. Before the castle sank into the earth, a cloud giant escaped with three servants, a chest of silver and a few beloved artworks.\n\nNo weapons, only money, dignity and a silver tongue; Faerûn's pioneer league has long traded with the cloud castle (goodwill +40).\n\nCloud giants are particular about bedrooms, so build them a room befitting their status as soon as possible.</LP_FallenCloudKeep.scenario.description>
+  <!-- 坠落的云堡 -->
+  <LP_FallenCloudKeep.scenario.name>fallen cloud castle</LP_FallenCloudKeep.scenario.name>
+  <!-- 一位云巨人和三名人类仆从。 -->
+  <LP_FallenCloudKeep.scenario.parts.ConfigurePawnsXenotypes.customSummary>One cloud giant and three human servants.</LP_FallenCloudKeep.scenario.parts.ConfigurePawnsXenotypes.customSummary>
+  <!-- 云巨人 -->
+  <LP_FallenCloudKeep.scenario.parts.ConfigurePawnsXenotypes.xenotypeCounts.0.description>cloud giant</LP_FallenCloudKeep.scenario.parts.ConfigurePawnsXenotypes.xenotypeCounts.0.description>
+  <!-- 人类仆从 -->
+  <LP_FallenCloudKeep.scenario.parts.ConfigurePawnsXenotypes.xenotypeCounts.1.description>human servant</LP_FallenCloudKeep.scenario.parts.ConfigurePawnsXenotypes.xenotypeCounts.1.description>
+  <!-- 锚链崩断的声音像一声雷。\n\n你只来得及抓起钱箱和两尊最喜欢的雕像，带着三个仆从跳下了下沉的云堡。现在你们站在泥地里，四周是陌生的荒野。\n\n没有剑，没有护卫。可云巨人从来不靠剑——靠的是体面、礼物，和一张能说动任何人的嘴。 -->
+  <LP_FallenCloudKeep.scenario.parts.GameStartDialog.text>The snapping of the anchor chain sounded like thunder.\n\nYou only had time to grab the money chest and two favorite statues and jump from the sinking cloud castle with three servants. Now you stand in the mud, surrounded by strange wilderness.\n\nNo swords, no guards. But cloud giants never relied on swords: they rely on dignity, gifts and a tongue that can move anyone.</LP_FallenCloudKeep.scenario.parts.GameStartDialog.text>
+  <!-- 一位云巨人与三名人类仆从，带着白银、黄金和艺术品，但没有武器。 -->
+  <LP_FallenCloudKeep.scenario.summary>A cloud giant and three human servants with silver, gold and art, but no weapons.</LP_FallenCloudKeep.scenario.summary>
+</LanguageData>

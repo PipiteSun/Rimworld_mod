@@ -1,0 +1,623 @@
+s12803	With Faerûn Frontier Alliance goodwill ≥60, large hostile raids are delayed 1-2 days before landing, with a letter in advance saying which faction they're from.
+s12804	Decapitation: sigil trolls go berserk
+s12805	When a Red Wizard falls, his sigil trolls go berserk out of control and attack everyone. When off, they flee instead.
+s12806	When the colony has a lich or mind flayer, zealots in the alliance occasionally come witch-hunting.
+s12807	Red Wizards recruit liches
+s12808	With a lich present, the Thayan expedition writes to recruit your allegiance.
+s12809	Tribute to the Red Wizards
+s12810	With no lich and hostile relations with the Thayan expedition, they write demanding tribute silver.
+s12811	Add enabled new factions to the current save
+s12812	Added\s
+s12813	 factions, and placed 3 settlements on the world map for each.
+s12814	The current save already has all enabled factions.
+s12815	)
+s12816	)
+s12817	 (\s
+s12818	 days left)
+s12819	You killed a dwarf of the Faerûn Frontier Alliance
+s12820	: the dwarves have recorded a blood debt (alliance goodwill cap -
+s12821	). It can be repaid at the comms console.
+s12822	Repay a dwarven blood debt (
+s12823	 silver,\s
+s12824	Not enough silver near the beacons
+s12825	The dwarf elder accepted the payment and struck one entry from the ledger.
+s12826	Good
+s12827	At the start, goodwill with\s
+s12828	 is\s
+s12829	; the "old covenant" keeps this goodwill for\s
+s12830	 days, after which it falls back as usual
+s12831	Old covenant days\s
+s12832	about\s
+s12833	 hours later
+s12834	The Harpers' warning
+s12835	The Harpers of the Faerûn Frontier Alliance send a secret letter:\n\n
+s12836	 is gathering forces, and\s
+s12837	 will attack\s
+s12838	.\n\nPrepare while you can.
+s12839	 looks at the clouds on the horizon, face darkening:\n\n"The wind blows from the\s
+s12840	, carrying the smell of\s
+s12841	. They'll be here\s
+s12842	."
+s12843	\n\n(The Harpers' letter and the storm giant's omen foretold the same thing; the raid delays add up.)
+s12844	\n\nThe hostile raid of ≥1000 points is delayed 12 hours by the storm omen.
+s12845	The seer's prophecy comes true
+s12846	The storm giant seer's words have come true:\n\n
+s12847	 is closing in,\s
+s12848	. The prophecy gave you an extra day to prepare.
+s12849	east
+s12850	west
+s12851	north
+s12852	south
+s12853	Zealots of the Faerûn Frontier Alliance have come witch-hunting despite their leaders' objections! A band of paladins and clerics heard a lich or mind flayer is hiding here and wants to burn them to ash.
+s12854	\n\nThey'll charge liches, mind flayers and phylacteries first.
+s12855	\n\nKilling them won't affect your relations with the alliance; if you capture and release them, the alliance leaders will appreciate your restraint.
+s12856	You released the zealots
+s12857	: the leaders of the Faerûn Frontier Alliance appreciate your restraint (goodwill +
+s12858	 will make\s
+s12859	's phylactery drop from level\s
+s12860	 to\s
+s12861	Refuse the Red Wizards' recruitment
+s12862	Refuse to hand over souls
+s12863	Swear allegiance to Thay
+s12864	You swore allegiance to the Red Wizards: the Thayan expedition is no longer hostile to you (goodwill set to 0). Every season they'll come to collect souls.
+s12865	Hand over\s
+s12866	 sacrifice XP
+s12867	The phylactery is only level 1, and sacrifice XP isn't enough either
+s12868	Refuse (goodwill\s
+s12869	silver
+s12870	The Red Wizards' recruitment
+s12871	A Red Wizard sent a messenger with a letter sealed in skull-shaped wax:\n\n"Thay welcomes those who master the way of undeath. Swear allegiance to the archmage, and the expedition will no longer be your enemy. We ask only a little in return: some souls each season."\n\nAllegiance: goodwill with the Thayan expedition set to 0 (neutral), after which each season you must hand over\s
+s12872	 phylactery sacrifice XP; refusing costs goodwill\s
+s12873	.\nRefuse: goodwill\s
+s12874	Hand over souls
+s12875	The Red Wizards' messenger has come to collect this season's souls: hand over\s
+s12876	 phylactery sacrifice XP.\n\nSacrifice XP currently in the phylactery:\s
+s12877	. If current XP isn't enough, phylactery levels are deducted (dropping a level returns that level's XP).
+s12878	Tribute demand
+s12879	An envoy of the Thayan expedition arrived outside the colony with a squad of orcs:\n\n"Hand over\s
+s12880	 silver, and the expedition will bother you less this season."\n\nFor one season (15 days) after paying, the chance of Thayan expedition raids is halved. Refusing has no other consequence.
+s12881	The witch-hunting zealots were repelled (\s
+s12882	 times in total).
+s12883	good
+s12884	evil
+s12885	neutral
+s12886	Faith system
+s12887	Altars, patron deities, favor, divine miracles, faith quests and seasonal manifestations. When off, favor no longer changes, miracles can't be cast, faith quests don't appear, and believers and the godless no longer appear randomly (existing ones are kept).
+s12888	Favor gain multiplier:\s
+s12889	% (favor from prayer, sacrifices, each god's deeds and quest rewards; favor losses aren't affected)
+s12890	Faith quest frequency:\s
+s12891	% (pilgrims, oracle trials, relic recovery, desecrators; multiplied by "DND event frequency")
+s12892	Seasonal manifestation
+s12893	Settled every 15 days by the patron deity's favor: ≥50 gives a 3-day blessing, ≤-30 a 1-day punishment.
+s12894	The faith system is off.
+s12895	The godless don't pray.
+s12896	The colony has no patron deity yet: pick one at an altar first.
+s12897	Only colonists pray here.
+s12898	Pray
+s12899	The colony has no patron deity.
+s12900	Not\s
+s12901	Already a chosen.
+s12902	 already has\s
+s12903	 chosen in the colony.
+s12904	Not enough favor
+s12905	 fragments.
+s12906	's chosen ritual
+s12907	's bloodline was reshaped by divine power, becoming\s
+s12908	Chosen:\s
+s12909	 was chosen by\s
+s12910	 before the altar and became a chosen: divine favor power +0.25, miracle costs halved, mental resistance +20%.
+s12911	[DND Rimlands] Favor\s
+s12912	) →\s
+s12913	[DND Rimlands] FavorChanged subscriber error:\s
+s12914	No world
+s12915	 doesn't accept mortal worship.
+s12916	Already the patron deity.
+s12917	Just changed patron deity; must wait another\s
+s12918	 days.
+s12919	Divine relic:\s
+s12920	 is pleased with the colony's devotion and sent down beside the altar\s
+s12921	The colony now worships\s
+s12922	falls back each day
+s12923	The colony serves\s
+s12924	 necromantic constructs
+s12925	The colony has a lich
+s12926	[DND Rimlands] Altar glow:\s
+s12927	The faith system is off
+s12928	Patron deity: not chosen
+s12929	Patron deity:\s
+s12930	; favor\s
+s12931	Choose patron deity
+s12932	Choose a patron deity for the colony (one per colony). When changing, the old god's favor -30, and it can't be changed again for\s
+s12933	 days.\n\nCurrent:\s
+s12934	 · favor\s
+s12935	Favor overview
+s12936	Chosen ritual
+s12937	When patron favor ≥
+s12938	, hold a chosen ritual for a believer of the patron deity (2 hours, can be interrupted without spending resources): costs favor\s
+s12939	 miracle fragments. The chosen get divine favor power +0.25, miracle costs halved, mental resistance +20%; at most\s
+s12940	 per god in the colony. After researching "celestial and infernal bloodlines", the bloodline can be changed along the way (good gods → aasimar, evil gods → tiefling).
+s12941	[DND Rimlands] Altar gizmo error:\s
+s12942	Pray at the altar (
+s12943	Pray at the altar (can't reach the altar)
+s12944	Pray at the altar (1 hour)
+s12945	Favor with each god (-100 to 100):
+s12946	 (doesn't accept worship)
+s12947	 (hostile)
+s12948	Patron deity thresholds: ≥
+s12949	 domain miracles can be cast; ≥
+s12950	 seasonal blessings; ≥
+s12951	 chosen ritual possible (a relic granted the first time reaching\s
+s12952	); ≤
+s12953	 seasonal punishment. When any god is ≤
+s12954	, its believers get mood -6.
+s12955	Non-patron gods fall back toward 0 each day
+s12956	; the patron's enemy god -
+s12957	 per day
+s12958	(No favor change records yet)
+s12959	Recent changes:\n
+s12960	 ago ·\s
+s12961	 believer of\s
+s12962	Chosen ritual ·\s
+s12963	Hold a chosen ritual for\s
+s12964	 (
+s12965	): costs favor\s
+s12966	 miracle fragments, 2 hours, can be interrupted (no resources spent if interrupted).
+s12967	Also change bloodline to\s
+s12968	 (only xenogenes are replaced; endogenes kept)
+s12969	Change bloodline: unavailable (
+s12970	 favor
+s12971	market value\s
+s12972	patron deity
+s12973	favorite things
+s12974	drank consecrated holy water
+s12975	 eased a little.
+s12976	[DND Rimlands] Seasonal manifestation error:\s
+s12977	Blessing:\s
+s12978	Punishment:\s
+s12979	 is pleased with the colony's devotion and grants a blessing (
+s12980	 days):\n\n
+s12981	 is displeased with the colony and sends a punishment (
+s12982	god
+s12983	Crop growth +25%, colonist mood +4 (dawn's favor).
+s12984	Crop growth -25%.
+s12985	Prisoner resistance drops ×1.5 faster during recruitment.
+s12986	The colonist with the most sins has a guilty conscience (mood -8, 1 day).
+s12987	Colonist psychic sensitivity +10%, psyfocus recovery (meditation) +20%.
+s12988	A spellcaster's psyfocus is drained.
+s12989	psyfocus cleared
+s12990	Seeing corpses causes no distress; colonists dealt a fatal wound have a 25% chance to escape death (at most once during this manifestation).
+s12991	2-3 corpses on the map vanished.
+s12992	Hunting hit +15%, animal training success ×1.5.
+s12993	Two beasts go mad.
+s12994	Malar's punishment
+s12995	The colony's buildings aren't struck by lightning during thunderstorms.
+s12996	A thunderstorm arrives at once, with lightning striking near the colony.
+s12997	Slave suppression falls ×0.5 as fast.
+s12998	A slave starts rebelling.
+s12999	[DND Rimlands] Bane's punishment: slave rebellion failed\s
+s13000	No distress in darkness; work speed +10% at night (22:00-5:00).
+s13001	A colonist loses one non-blood relationship.
+s13002	Shar's punishment:\s
+s13003	 relationship was forgotten.
+s13004	Smithing speed +25%, smithy fuel consumption ×0.5.
+s13005	A building in the colony catches fire.
+s13006	Chosen (
+s13007	Morning star (early morning) ×1.05
+s13008	Shar's blessing (night) ×1.1
+s13009	Surtur believer (smithing) ×1.1
+s13010	Heart of the forge (smithing) ×1.3
+s13011	Surtur's blessing (smithing) ×1.25
+s13012	Mystra's blessing ×1.1
+s13013	Mystra's blessing ×1.2
+s13014	Devil's pact ×1.2
+s13015	Malar believer (hunting) ×1.1
+s13016	Malar's blessing (hunting) ×1.15
+s13017	Malar's blessing ×1.5
+s13018	Bane's blessing ×0.5
+s13019	Black gauntlet ×0.5
+s13020	Tears of the night (in darkness) +15%
+s13021	Faith:\s
+s13022	someone
+s13023	became an arcane demigod
+s13024	harvested crops
+s13025	put out fires
+s13026	buried corpses
+s13027	tamed animals
+s13028	[DND Rimlands] Faith kill hook:\s
+s13029	killed undead
+s13030	killed hostile undead
+s13031	hunted
+s13032	melee kill
+s13033	holy light killed an enemy
+s13034	a colonist lost family
+s13035	executed a prisoner
+s13036	harvested organs
+s13037	judgment ritual
+s13038	released\s
+s13039	released a slave
+s13040	enslaved\s
+s13041	cast\s
+s13042	consecrated holy water
+s13043	alchemy table product
+s13044	product
+s13045	forged\s
+s13046	revived as a lich
+s13047	resurrected
+s13048	frostbite
+s13049	lightning struck the map
+s13050	Weave collapse
+s13051	Kelemvor pushed\s
+s13052	 back from the brink of death.
+s13053	This corpse is already at rest and can't be revived.
+s13054	This corpse is already at rest (Kelemvor); its soul can't be drained.
+s13055	[DND Rimlands] Faith generation hook:\s
+s13056	 believers from\s
+s13057	 want to pray before the colony's altar for 1 day.\n\nReceive them:\s
+s13058	 (patron deity +
+s13059	, and one may ask to stay. Refuse:\s
+s13060	 favor -
+s13061	.\n\nNote: if the altar is destroyed or a pilgrim is attacked during the pilgrimage, favor -
+s13062	, and they'll leave in anger.
+s13063	Receive
+s13064	The altar is gone
+s13065	Refused the pilgrims
+s13066	A pilgrim was injured by the colony's people
+s13067	The altar was destroyed
+s13068	Received the pilgrims
+s13069	 asks to stay in the colony and serve the altar: they're your colonist now.
+s13070	Pilgrimage over
+s13071	The pilgrims prayed before the altar for a day and left satisfied:\s
+s13072	Pilgrims insulted:\s
+s13073	The pilgrims left in anger
+s13074	. The pilgrims left in anger:\s
+s13075	harvest 200 crops
+s13076	release 1 prisoner, or hold a judgment ritual
+s13077	cast miracles or spells 10 times
+s13078	bury 3 corpses
+s13079	hunt 5 animals
+s13080	survive a thunderstorm (the storm is coming right away)
+s13081	enslave 1 prisoner
+s13082	pray 5 times at night (22:00-5:00)
+s13083	forge 3 weapons or armor at the smithy
+s13084	Oracle trial:\s
+s13085	The priests received an oracle from\s
+s13086	: within\s
+s13087	 days,\s
+s13088	.\n\nSuccess: favor +
+s13089	, with a 30% chance of 2 miracle fragments. Failure: favor -
+s13090	Oracle trial succeeded
+s13091	 sent down a divine relic:\s
+s13092	\n\n2 miracle fragments appeared beside the altar.
+s13093	Oracle trial complete
+s13094	's trial is complete: favor +
+s13095	Recover the relic:\s
+s13096	's divine relic\s
+s13097	 has fallen into the hands of\s
+s13098	, hidden in a settlement nearby.\n\n
+s13099	 days to bring it back and place it beside the altar (within\s
+s13100	 cells) counts as an offering: favor +
+s13101	, and the relic can be kept for use. If not brought back in time: favor -
+s13102	Believers come to desecrate
+s13103	's altar! Leader\s
+s13104	 carries the divine power of\s
+s13105	\s
+s13106	.\n\nIf the altar is destroyed: favor -
+s13107	. Repel them: favor +
+s13108	, and they drop a miracle fragment.
+s13109	The desecrators destroyed the altar
+s13110	Repelled the desecrators
+s13111	The altar was saved:\s
+s13112	, and a miracle fragment was left beside the altar.
+s13113	Offered the recovered\s
+s13114	The relic returns
+s13115	 returned to the altar of\s
+s13116	: favor +
+s13117	. The relic can be kept for use.
+s13118	Oracle trial failed
+s13119	's trial wasn't completed:\s
+s13120	Failed to recover the relic
+s13121	Relic lost
+s13122	's relic wasn't recovered: favor -
+s13123	Can only be cast on allies.
+s13124	Can only be cast on enemies or the colony's prisoners.
+s13125	The colony has no patron deity: the holy symbol is silent.
+s13126	The godless can't cast miracles.
+s13127	; domain miracles don't answer.
+s13128	Not enough favor: needs\s
+s13129	Shield\s
+s13130	infusion expelled
+s13131	Penance\s
+s13132	laid to rest
+s13133	stampede
+s13134	melee +
+s13135	black gauntlet
+s13136	[DND Rimlands] Relic melee effect:\s
+s13137	no one
+s13138	A lich's body no longer belongs to mortals
+s13139	A mind flayer's body can't change bloodline
+s13140	A genie's body can't change bloodline
+s13141	A titan's body can't change bloodline
+s13142	A giant's bloodline can't be changed
+s13143	An arcane demigod's body can't change bloodline
+s13144	no genes
+s13145	Don't change believers' bloodlines
+s13146	Needs "celestial and infernal bloodlines" researched first
+s13147	Already\s
+s13148	\s
+s13149	child of the heavens
+s13150	 was born carrying\s
+s13151	celestial light
+s13152	the mark of the Nine Hells
+s13153	's divine power made the child\s
+s13154	Can only heal allies.
+s13155	Radiance cost
+s13156	When on, enemies within 2 cells take 2 radiant damage per second (×2 against undead and fiends), and you take 1 burn damage every 10 seconds.
+s13157	Abyssal rift·
+s13158	Only fire giants can use this weapon.
+s13159	Only giants can use this weapon.
+s13160	Needs blindsight already installed.
+s13161	young dragon
+s13162	ancient dragon
+s13163	great wyrm
+s13164	force orb
+s13165	deflect
+s13166	displacement
+s13167	blur
+s13168	 grasped\s
+s13169	Dragon age-up
+s13170	 endured long years in the hoard and advanced to\s
+s13171	. Body size, scales, claws and force cap all increased.
+s13172	Dragon age:\s
+s13173	)\nHoard:\s
+s13174	 silver, beauty\s
+s13175	none (assign it a private bedroom)
+s13176	\nDays guarding the hoard:\s
+s13177	\nAdvancing to\s
+s13178	 needs:\s
+s13179	 days, hoard\s
+s13180	 silver
+s13181	\nDeflect:\s
+s13182	 (not enough force, turned off)
+s13183	 (force depleted)
+s13184	\nNesting:\s
+s13185	 days
+s13186	Force:\s
+s13187	\nRecovers\s
+s13188	 per day naturally; breaking or devouring shields recovers a lot.
+s13189	damage ×
+s13190	Someone touched the hoard
+s13191	 nested in the hoard and laid\s
+s13192	 force dragon eggs. The eggs must stay in the hoard to hatch.
+s13193	There isn't enough open space near the start to build a hoard; please build a private bedroom for the force dragonborn yourself.
+s13194	A force dragon egg hatched:\s
+s13195	 broke out of the shell.
+s13196	Hatching progress:\s
+s13197	\nMust be placed in a force dragonborn's hoard to hatch.
+s13198	\nThe hoard keeps it warm, hatching speed ×
+s13199	The force dragonborn on the starting character page is already a\s
+s13200	, guarding a small roofed hoard (\s
+s13201	 gold,\s
+s13202	 silver) and\s
+s13203	 dragon eggs about to hatch.
+s13204	's force breath shattered\s
+s13205	 shields and swallowed\s
+s13206	 force.
+s13207	Break free of the force cage
+s13208	 will dissipate in\s
+s13209	 hours
+s13210	.
+s13211	Needs a force dragon heart.
+s13212	Not enough force: needs\s
+s13213	, current\s
+s13214	.
+s13215	Beyond the breath range for the current dragon age (
+s13216	 cells).
+s13217	Can only devour unequipped force devices on the ground, such as shield belts and shield packs.
+s13218	Needs a living character on the map.
+s13219	Can't be used on yourself.
+s13220	Force\s
+s13221	Horn of winter!
+s13222	Hounds of the winter wolf lord: ×
+s13223	Needs a frost giant horn equipped.
+s13224	Starts with\s
+s13225	 tamed winter wolves, each bonded to a frost giant master.
+s13226	dormant;\s
+s13227	flesh\s
+s13228	 / 500;\s
+s13229	command\s
+s13230	\nPsyfocus upkeep:\s
+s13231	 per day.
+s13232	\nFlesh reserve costs 25 per day, plus 2 per point of damage repaired; below 25 self-healing stops, and when empty, moving and manipulation are halved.
+s13233	\nSpecialty:\s
+s13234	. Learning and work multiplier\s
+s13235	; skills build up on their own as usual.
+s13236	Knowledge necro·
+s13237	Serving phylactery:\s
+s13238	not chosen or more than 12 cells away
+s13239	\nThe lich ritual binds the bill's worker.
+s13240	Choose serving phylactery
+s13241	Sacrifices, construct embryos and supplies serve this phylactery. The phylactery must stay within 12 cells of the ritual table; different liches can use different ritual tables.
+s13242	ownerless
+s13243	 · level\s
+s13244	No phylactery within 12 cells
+s13245	Needs a completed necromantic ritual table.
+s13246	The worker must be an unconverted humanlike colonist.
+s13247	Psychic sensitivity must be above 0.
+s13248	Organ sealing is disabled; knowledge necros are now grown from raw-meat embryos.
+s13249	First choose a phylactery within 12 cells.
+s13250	Necromantic bodies revive automatically 3 days after death; this bill isn't needed.
+s13251	The phylactery owner must be alive and bound.
+s13252	The phylactery has reached the current level cap.
+s13253	Sacrifices only accept fresh raw meat or twisted flesh paste.
+s13254	Drain soul needs a whole humanlike corpse.
+s13255	No colossus on the same map needs at least 100 flesh supply.
+s13256	The phylactery owner hasn't read the golem manual yet.
+s13257	Stone golem embryos only use stone blocks.
+s13258	Needs a soul stone with a sealed soul.
+s13259	Not enough sacrifice XP stored in the phylactery
+s13260	 (current\s
+s13261	Construct embryos only use fresh raw meat or twisted flesh paste.
+s13262	's soul was drawn into the phylactery: +
+s13263	 sacrifice XP.
+s13264	's soul was drawn from the soul stone into the phylactery: +
+s13265	Needs a validly bound phylactery.
+s13266	Needs a hostile living creature.
+s13267	Needs your own injured necromantic construct.
+s13268	 enhanced to +
+s13269	Enhancement failed;\s
+s13270	 dropped back to +
+s13271	 (success chance\s
+s13272	 failed; the materials are gone, the gear is unaffected (success chance\s
+s13273	damage +
+s13274	hit +
+s13275	armor ×
+s13276	, plus +
+s13277	max durability +
+s13278	value +
+s13279	\nEnhancement target: +
+s13280	Enchantment enhancement
+s13281	Levels enhanced at the enchanting table.
+s13282	: +
+s13283	 (max 99%)
+s13284	, +
+s13285	This item can't be enhanced
+s13286	Already +
+s13287	Needs "gear enhancement" researched first
+s13288	Needs "advanced enhancement" research to go beyond +
+s13289	No colonist with Intellectual\s
+s13290	 or higher who can do intellectual work
+s13291	Not enough materials
+s13292	Open the enchantment window: pick a weapon or apparel (on the ground, in stockpiles, or held or worn by a colonist) and enhance it one level on the spot with materials on the map (requires "gear enhancement" research first); you can also repair durability to full with silver on the spot (\s
+s13293	 silver per 20% missing durability).
+s13294	Enchantment · repair
+s13295	Search...
+s13296	No gear needs repair
+s13297	Repair all:\s
+s13298	 items,\s
+s13299	 silver
+s13300	Repaired\s
+s13301	 pieces of gear
+s13302	 (not enough silver,\s
+s13303	 left)
+s13304	Not enough silver; nothing repaired
+s13305	 held
+s13306	 worn
+s13307	on the ground / in stockpile
+s13308	, durability\s
+s13309	Pick a piece of gear on the left
+s13310	Durability:\s
+s13311	 (a successful enhancement repairs it fully)
+s13312	Now +
+s13313	Enhance to +
+s13314	Materials per attempt:\s
+s13315	 (have\s
+s13316	Success chance\s
+s13317	Failure: drops back to +
+s13318	Failure: only materials lost
+s13319	Artisan:\s
+s13320	 (Intellectual\s
+s13321	, Crafting\s
+s13322	Artisan: none (needs Intellectual\s
+s13323	\nLinked arcane focus stone +
+s13324	, success chance\s
+s13325	. Failure drops back to +
+s13326	. Sure?
+s13327	Repair durability
+s13328	Durability is full
+s13329	This item has no durability
+s13330	silver ×
+s13331	\s
+s13332	 silver per 20% missing durability, repaired fully on the spot
+s13333	Not enough silver
+s13334	Repair (
+s13335	Repair complete! Durability\s
+s13336	Couldn't repair
+s13337	Success! Now +
+s13338	Failed; the materials are gone, still +
+s13339	Failed; dropped back to +
+s13340	Couldn't enhance
+s13341	fire
+s13342	water
+s13343	earth
+s13344	air
+s13345	Needs a target on the map.
+s13346	Beyond spark range (6 cells).
+s13347	Can't see the target.
+s13348	unaffected by fire
+s13349	Wind leap needs line of sight and can't pass through walls.
+s13350	Elemental charm / wind feather cloak: ×
+s13351	Rock bloodline: +10% (max 100%)
+s13352	efreeti
+s13353	marid
+s13354	dao
+s13355	djinni
+s13356	harvest
+s13357	peace
+s13358	healing
+s13359	wealth
+s13360	clear skies
+s13361	epiphany
+s13362	A genie appears
+s13363	A wisp of blue smoke rose from the lamp and condensed into\s
+s13364	 genie\s
+s13365	).\n\nThe genie will stay as your colonist and can grant a wish once every 60 days. The lamp must stay in your hands: if the lamp is sold, stolen or destroyed, the genie turns to smoke and departs a day later. When downed or killed, the genie doesn't die but returns to sleep in the lamp for 15 days (sealed off from the outside, it won't be hurt or starve); while dim, it can also be woken immediately for\s
+s13366	 silver.
+s13367	 turned into a wisp of blue smoke and returned to the lamp. The lamp will be dim for\s
+s13368	 crosses their arms, floating in midair:\n\n"Speak your wish, mortal. One is enough."\n\nAfter a wish the genie is weary for 15 days (work speed halved, bloodline abilities unavailable, mood -5).
+s13369	Make me stronger: +1 to one ability of one colonist (once per person per lifetime; can exceed the cap by 1)
+s13370	Make me stronger · martial: one colonist gains a random combat gift (raised one stage if already owned)
+s13371	All crops on the map ripen immediately
+s13372	No hostile raids for 15 days
+s13373	Heal all colonists' wounds and diseases
+s13374	2000 silver appears at the genie's feet
+s13375	The weather clears and stays clear for 5 days
+s13376	Each colonist +2 levels in a random skill
+s13377	Genie's barrier
+s13378	An invisible barrier covers this land. For the next\s
+s13379	 days, no enemy raid can reach here.
+s13380	 turned to smoke and departed.
+s13381	 senses the lamp has left your control. If it isn't recovered within a day, the genie will depart.
+s13382	 lost the lamp's binding and turned to smoke and departed.
+s13383	owned
+s13384	dim
+s13385	State:\s
+s13386	 is out)
+s13387	, another\s
+s13388	 days before it can be rubbed out again
+s13389	 is in the lamp, can be rubbed out)
+s13390	The lamp is faintly warm; the genie\s
+s13391	 is already out, and nothing happened.
+s13392	The lamp is still dim;\s
+s13393	 days until\s
+s13394	 can be rubbed out.
+s13395	The genie can't be released here.
+s13396	 reappeared from the lamp.
+s13397	The lamp doesn't respond.
+s13398	 appeared from the lamp!
+s13399	The lamp isn't dim; no need to wake it.
+s13400	Not enough silver: needs\s
+s13401	, only this much usable on this map:\s
+s13402	 spent\s
+s13403	 silver to wake the lamp:\s
+s13404	Spend\s
+s13405	 silver to wake
+s13406	End the dimness at once and call\s
+s13407	 back from the lamp (deducts from unforbidden silver on this map:\s
+s13408	The lamp isn't on the map.
+s13409	Rub the lamp (unreachable)
+s13410	Rub the lamp
+s13411	's body dispersed into blue smoke.
+s13412	The genie's barrier blocked a raid.
+s13413	 can wear it.
+s13414	Only giants can wear this.
+s13415	Giants can only wear giant-exclusive apparel (mod setting "giants wear normal clothes" is off).
+s13416	's skill now surpasses that of\s
+s13417	, and publicly challenged this\s
+s13418	 leader.
+s13419	Giants wear normal clothes
+s13420	Fire giants and frost giants (and future giants too) can wear any normal clothes, which are drawn scaled up with the giant frame. (Giant-exclusive apparel was all removed in 1.146.0.) When off, it returns to the old 1.29.0 rule: giants can only wear exclusive apparel; after saving settings, normal clothes already worn come off at the next outfit change.
+s13421	Ordning moods
+s13422	The giant ordning (storm > cloud > fire > frost > ettin > cyclops): with a higher-ranking giant in the colony, "orderly ordning" +3; with a lower one, "commander of giants" +2; the giant with the highest Melee or Crafting among the same kind is "clan head" +3; with two or more giants, "kindred tongue" +2; someone whose skill surpasses the head will challenge the head (once per 30 days). When off, these moods and challenges don't appear (the fire giant and frost giant "ancient feud" racial relationship is unaffected).
+s13423	(1.34.0) When the home map has an adult storm giant (with the "storm omen" gene), hostile raids of ≥1000 points are delayed 12 hours before landing, with a letter in advance about the faction and direction. Stacks with the Harpers' warning (when both trigger, the delays add up).
+s13424	an ogre family
+s13425	a frost giant war band

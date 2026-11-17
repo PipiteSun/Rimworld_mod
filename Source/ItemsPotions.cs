@@ -24,7 +24,7 @@ namespace LichPhylactery {
   // 返回 false 表示没有生效（巫妖、造物）。
   public static bool Apply(Pawn pawn,ThingDef potion,string effect,HediffDef hediff,float durationFactor=1f){
    if(pawn?.health==null || pawn.Dead)return false;
-   if(Items.Undead(pawn)){if(pawn.Faction==Faction.OfPlayer)Messages.Message(pawn.LabelShort+"是不死之躯，"+potion.label+"对它毫无作用。",pawn,MessageTypeDefOf.RejectInput,false);return false;}
+   if(Items.Undead(pawn)){if(pawn.Faction==Faction.OfPlayer)Messages.Message(pawn.LabelShort+"是不死之躯，".Loc()+potion.label+"对它毫无作用。".Loc(),pawn,MessageTypeDefOf.RejectInput,false);return false;}
    float potency=Items.PotionPotency(pawn,potion);
    switch(effect){
     case "heal":Heal(pawn,potency,false,durationFactor);break;
@@ -48,7 +48,7 @@ namespace LichPhylactery {
    Items.Give(pawn,"LP_PotionHealing",Ticks(Items.Hediff("LP_PotionHealing"),durationFactor),Mathf.Clamp(potency,1f,2f));
    if(!greater)return;
    var part=Necro.Missing(pawn).FirstOrDefault(SmallPart);
-   if(part!=null){pawn.health.RestorePart(part);if(pawn.Faction==Faction.OfPlayer)Messages.Message(pawn.LabelShort+"的"+part.Label+"在强效治疗药水作用下长了回来。",pawn,MessageTypeDefOf.PositiveEvent,false);}
+   if(part!=null){pawn.health.RestorePart(part);if(pawn.Faction==Faction.OfPlayer)Messages.Message(pawn.LabelShort+"的".Loc()+part.Label+"在强效治疗药水作用下长了回来。".Loc(),pawn,MessageTypeDefOf.PositiveEvent,false);}
   }
   public static bool SmallPart(BodyPartRecord b)=>b?.def!=null && (b.def.defName.IndexOf("Finger",StringComparison.OrdinalIgnoreCase)>=0 || b.def.defName.IndexOf("Toe",StringComparison.OrdinalIgnoreCase)>=0);
   // 巨魔再生剂结束时，roll<10% 得巨魔血瘾。
@@ -57,7 +57,7 @@ namespace LichPhylactery {
    var chem=DefDatabase<ChemicalDef>.GetNamedSilentFail("LP_TrollBloodChem");if(chem?.addictionHediff==null)return false;
    if(p.health.hediffSet.HasHediff(chem.addictionHediff))return false;
    p.health.AddHediff(chem.addictionHediff);p.needs?.AddOrRemoveNeedsAsAppropriate();
-   if(p.Faction==Faction.OfPlayer)Find.LetterStack.ReceiveLetter("巨魔血瘾",p.LabelShort+"的身体习惯了巨魔血的再生力，再生剂药效一过就开始渴求它。需要定期喝巨魔再生剂，否则会出现戒断反应；长时间不喝可以戒掉。",LetterDefOf.NegativeEvent,p);
+   if(p.Faction==Faction.OfPlayer)Find.LetterStack.ReceiveLetter("巨魔血瘾".Loc(),p.LabelShort+"的身体习惯了巨魔血的再生力，再生剂药效一过就开始渴求它。需要定期喝巨魔再生剂，否则会出现戒断反应；长时间不喝可以戒掉。".Loc(),LetterDefOf.NegativeEvent,p);
    return true;
   }
  }
@@ -72,14 +72,14 @@ namespace LichPhylactery {
    foreach(var injury in pawn.health.hediffSet.hediffs.OfType<Hediff_Injury>().Where(h=>!h.IsPermanent()).OrderByDescending(h=>h.BleedRate>0).ThenByDescending(h=>h.Severity).ToList()){float heal=Math.Min(injury.Severity,budget);injury.Heal(heal);budget-=heal;healed+=heal;if(budget<=0)break;}
    return healed;
   }
-  public override string LabelInBrackets=>Blocked?"暂停":base.LabelInBrackets;
+  public override string LabelInBrackets=>Blocked?"暂停".Loc():base.LabelInBrackets;
   public override void PostRemoved(){base.PostRemoved();if(pawn!=null && !pawn.Dead && (this.TryGetComp<HediffComp_Disappears>()?.ticksToDisappear??1)<=0)ItemPotions.TryAddict(pawn,Rand.Value);}
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref accumulated,"tonicTicks",0);}
  }
  // 心智护盾药水：在其他来源之上 +40%，与种族抗性相加后最多 95%（原本就超过 95% 的不降低）。
  public class StatPart_MindShield : StatPart {
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p && Items.Has(p,"LP_PotionMindShield") && val<ItemPotions.MindShieldCap)val=Mathf.Min(ItemPotions.MindShieldCap,val+ItemPotions.MindShieldOffset);}
-  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Items.Has(p,"LP_PotionMindShield")?"心智护盾药水：+40%（合计最多95%）":null;
+  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Items.Has(p,"LP_PotionMindShield")?"心智护盾药水：+40%（合计最多95%）".Loc():null;
  }
  [StaticConstructorOnStartup]
  public static class ItemPotionStartup {
@@ -100,7 +100,7 @@ namespace LichPhylactery {
   public static bool Fear(MentalStateDef def)=>def!=null && (def==MentalStateDefOf.PanicFlee || def.defName.IndexOf("Panic",StringComparison.OrdinalIgnoreCase)>=0 || def.defName.IndexOf("Terror",StringComparison.OrdinalIgnoreCase)>=0);
   static bool Prefix(MentalStateDef __0,Pawn ___pawn,ref bool __result){
    if(!Fear(__0) || !Items.Has(___pawn,"LP_PotionHeroism"))return true;
-   Items.Mote(___pawn,"无所畏惧！",new Color(1f,.85f,.4f));__result=false;return false;
+   Items.Mote(___pawn,"无所畏惧！".Loc(),new Color(1f,.85f,.4f));__result=false;return false;
   }
  }
  // 隐形药水：攻击就现形（药效直接结束）。

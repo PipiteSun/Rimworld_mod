@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 眼魔射线 -->
+  <LP_GraftRay.label>beholder ray</LP_GraftRay.label>
+  <!-- 眼魔之眼射出一道射线：死灵射线（30 坏死伤害）、石化射线（开始石化）或魅惑射线（恍惚 25 秒），种类在装上眼睛时定下。20 格，冷却 1 天。 -->
+  <LP_GraftRay.description>The beholder eye fires a ray: necrotic ray (30 necrotic damage), petrification ray (begins petrification) or charm ray (dazed 25 seconds); the type is set when the eye is installed. 20 cells, cooldown 1 day.</LP_GraftRay.description>
+  <!-- 龙息 -->
+  <LP_GraftBreath.label>dragon breath</LP_GraftBreath.label>
+  <!-- 喷出一道龙息：锥形 6 格内的敌人受 30 点伤害，元素随龙息腺的颜色（赤 火焰、白 寒冰、蓝 闪电、黑 强酸、绿 毒素）。冷却 1 天。 -->
+  <LP_GraftBreath.description>Breathe dragon breath: enemies in a 6-cell cone take 30 damage, with the element matching the breath gland's color (red fire, white cold, blue lightning, black acid, green poison). Cooldown 1 day.</LP_GraftBreath.description>
+  <!-- 亡者之语 -->
+  <LP_DeadSpeak.label>speak with dead</LP_DeadSpeak.label>
+  <!-- 贴近一具人形尸体听它说话：学到它最高那项技能总经验的 10%（每具尸体一次；照常折算冒险者经验）。 -->
+  <LP_DeadSpeak.description>Get close to a humanlike corpse and listen to it speak: learn 10% of the total XP of its highest skill (once per corpse; converted to adventurer XP as usual).</LP_DeadSpeak.description>
+  <!-- 寒冰触 -->
+  <LP_VecnaFrostTouch.label>frost touch</LP_VecnaFrostTouch.label>
+  <!-- 维克那之手按在一个敌人身上：30 点寒冰伤害并让它失温。冷却 10 秒。 -->
+  <LP_VecnaFrostTouch.description>The Hand of Vecna presses on an enemy: 30 cold damage and hypothermia. Cooldown 10 seconds.</LP_VecnaFrostTouch.description>
+  <!-- 指挥亡灵 -->
+  <LP_VecnaCommand.label>command undead</LP_VecnaCommand.label>
+  <!-- 维克那之手向 20 格内一个敌方亡灵下令：它在 30 秒内转而攻击原来的同伴（可能被抵抗）。冷却 1 天。 -->
+  <LP_VecnaCommand.description>The Hand of Vecna commands one enemy undead within 20 cells: for 30 seconds it turns to attack its former companions (may be resisted). Cooldown 1 day.</LP_VecnaCommand.description>
+  <!-- 支配人类 -->
+  <LP_VecnaDominate.label>dominate person</LP_VecnaDominate.label>
+  <!-- 维克那之眼盯住 20 格内一个人形敌人：它在 30 秒内只攻击原来的同伴，时间到精疲力竭倒地（可能被抵抗）。冷却 1 天。 -->
+  <LP_VecnaDominate.description>The Eye of Vecna fixes on one humanlike enemy within 20 cells: for 30 seconds it only attacks its former companions, then collapses exhausted when time is up (may be resisted). Cooldown 1 day.</LP_VecnaDominate.description>
+</LanguageData>

@@ -1,0 +1,268 @@
+s00000	A winged avian race with hollow bones. Aarakocra can spread their wings and soar more than 12 cells away; walls, fences and rivers cannot stop them. They have keen eyes, excel at archery and are happiest working under the open sky. The price is a frail body, poor melee and a sour mood when cooped up under a roof for too long. The bloodline is passed on to children.
+s00001	Inheritable. Can "Soar" over walls and water (12 cells), +10% move speed, good at shooting; body size 0.9, brittle bones, delicate, poor at melee, claustrophobic.
+s00002	aarakocra
+s00003	Nothing but rafters overhead, I can't even spread my wings. I want to see the sky.
+s00004	trapped under a roof
+s00005	Actual body size: ×90% (drawn size unchanged).
+s00006	The light, hollow bones of the aarakocra. Actual body size is 90% of a normal human (eats less, harder to hit), but the bones are brittle: +10% blunt damage taken.
+s00007	hollow bones
+s00008	The sky is right above me and the wind runs through my feathers. Work feels easy.
+s00009	sky above
+s00010	Aarakocra born under the sky walk fast (move speed ×110%) and get +2 mood when working without a roof. But staying awake under a roof for a full hour makes them feel caged (mood -3); a short while outdoors fixes it. Sleeping does not count.
+s00011	born to fly
+s00012	A pair of broad wings on the back. Aarakocra can "Soar" to any standable spot within 12 cells; walls, fences, water and buildings cannot stop them, but they cannot fly under a mountain. Usable drafted or undrafted, handy for hopping walls during work.
+s00013	wings
+s00014	That elf loves heights and wind too. We often chat in the treetops.
+s00015	treetop friend
+s00016	That mind flayer crawled up from depths that never see the sun. Just thinking of it makes my feathers stand on end.
+s00017	monster from below
+s00018	That aarakocra's feathers are the color of the forest, and it talks like birdsong.
+s00019	aarakocra on elves
+s00020	aarakocra on mind flayers
+s00021	elves on aarakocra
+s00022	The light brown skin of the aarakocra, close to the color of their feathers.
+s00023	aarakocra skin
+s00024	light brown
+s00025	Spread your wings and fly to any standable spot within 12 cells. No line of sight needed; walls, fences, water and buildings cannot stop you, but you cannot land under a mountain (thick rock roof). Cooldown 4 hours.
+s00026	soar
+s00027	Repair your own wounded necromantic constructs. Heals 15 × the caster's current psychic sensitivity (100% = 1), growing linearly with no multiplier or heal cap; can repair several wounds in a row, never healing more than the existing injuries. Base psyfocus cost 10, not increased by psychic sensitivity; neural heat 8. Phylactery growth lowers the same number of points as a share of the psyfocus bar.
+s00028	soul stitch
+s00029	Uses vanilla psyfocus and neural heat. The effect gets a diminishing bonus from psychic sensitivity; phylactery growth lowers the same number of points as a share of the psyfocus bar.
+s00030	soulfire bolt
+s00031	A 5×5 dark red rune circle inlaid in the floor with silver and cold iron. Hold abyssal rituals here to summon demons: tier 1 manes swarms and quasits, tier 2 barlguras and hezrous, tier 3 succubi / incubi, nabassus (and mariliths), tier 4 balors. Tier 2 and above require first reading a demonology tome that records that demon. Souls can also be refined here. Only one per map.\n\nYou can spend another 40 silver on a silver rim: +5% success chance.
+s00032	abyssal circle
+s00033	Refining souls: TargetB.
+s00034	Leading an abyssal ritual.
+s00035	Guarding the circle for an abyssal ritual.
+s00036	Putting a planar anchor chain on TargetB.
+s00037	A 3×3 silver chain rune. When a bound one's bed is on the circle (or right next to it), obedience +3 per day. Outsider prisoners wearing a planar anchor chain will not escape from a room with a binding circle, and demon blood can only be drawn in such a room. At most 4 per map.
+s00038	binding circle
+s00039	Each time a warden talks to it there is a 15% chance to pry out its true name (yielding a true name scroll), then it switches back to "Maintain". Only works on outsider prisoners wearing a planar anchor chain.
+s00040	interrogate true name
+s00041	Interrogating TargetA for its true name.
+s00042	Redeeming a soul at the altar.
+s00043	Speaking a true name.
+s00044	interrogate
+s00045	A silver rune carved into the floor. Within 6 cells: hostile outsiders move ×0.7; people sleeping inside lose 1% abyssal taint per day; planar rifts will not open here. Each ward on the map lowers planar thinness by 1 per day (up to 5 count).
+s00046	exorcism ward
+s00047	barlgura
+s00048	manes
+s00049	hezrou
+s00050	nabassu
+s00051	shadow demon
+s00052	succubus
+s00053	The abyssal aura on that person is so thick. The celestial blood in me is burning.
+s00054	abyss-favored nearby
+s00055	It's gone. And I still miss it.
+s00056	abandoned
+s00057	Fully embraced the Abyss: +10% damage. Aasimar feel uneasy seeing it.
+s00058	abyss-favored
+s00059	Mental state: abyssal frenzy
+s00060	The voice of the Abyss roars too loudly in {0}'s head: [PAWN_pronoun] has fallen into an abyssal frenzy and will attack anyone in sight.
+s00061	abyssal frenzy
+s00062	{0}'s abyssal frenzy has subsided.
+s00063	Demons crawled out of the Abyss: those summoned by rituals but never bound, those who broke their bonds, and those pouring from abyssal rifts. They have no bases and do not negotiate; they only want to drag this world into the Abyss.
+s00064	abyssal horde
+s00065	Everything falls. Everything will belong to the Abyss.
+s00066	bottomless pit
+s00067	demon
+s00068	abyssal invasion
+s00069	A timed summoned servant: obeys orders, can be drafted, has no mood, does not count toward raid points, and no one mourns its death. It is banished when time runs out.
+s00070	abyssal servant
+s00071	abyssal whispers
+s00072	There is always a voice in my ear, saying things I don't want to hear.
+s00073	whispers in my ear
+s00074	A stain the Abyss has left on this person's soul. Whispers (10%): mood -3, melee +3%. Shadow (30%): melee +6%, pain threshold +10%, social impact -10%, divine favor from praying to good gods halved. Demon mark (60%): small horns grow, eyes turn red, fire damage ×0.8, occasional abyssal frenzy, no longer fades naturally. Fallen (90%): becomes a demon at 100%.
+s00075	abyssal taint
+s00076	latent
+s00077	whispers
+s00078	shadow
+s00079	demon mark
+s00080	fallen
+s00081	That cut just now was beautiful.
+s00082	drew blood
+s00083	[PAWN_nameDef] took shape between the fire seas and ice caverns of the Abyss and has been tearing at other demons since day one.
+s00084	abyss-born
+s00085	[PAWN_nameDef] survived the endless war of the Abyss. A mortal who knows its true name can leash it, and it hates mortals for that.
+s00086	abyssal demon
+s00087	That thing stinks like a pool of rotten mud.
+s00088	manes stench
+s00089	Dreamt the same dream all night and woke more tired than before.
+s00090	haunted by nightmares
+s00091	nabassu soul hunt
+s00092	An outsider tied to this world by an abyssal ritual; the number in brackets is obedience (0-100). Obedience drops every day; at 0 it breaks free and joins the abyssal horde. The master reaffirming its true name, putting its bed in a binding circle and holding its true name scroll all keep it obedient. Bound ones do not age and are not banished when knocked down; on death the body turns to black smoke and returns to the Abyss.
+s00093	planar binding
+s00094	Shackles of anchoring runes lock it to this plane: it is not banished when downed and can be captured; it leaves a corpse when it dies.
+s00095	planar anchor chain
+s00096	Countless screams come from the swirling dark red and purple-black rift: the abyssal horde is crawling out of it.
+s00097	Abyss
+s00098	reaffirm true name
+s00099	r_logentry->[INITIATOR_nameDef] whispered [RECIPIENT_nameDef]'s true name, reminding it whose servant it is.
+s00100	r_logentry->[INITIATOR_nameDef] called [RECIPIENT_nameDef] by its true name, and it lowered its head unwillingly.
+s00101	I threw that book into the fire, and the voice finally went quiet.
+s00102	rejected the Abyss
+s00103	The leader of the abyssal ritual has pinned him in place with an incantation: unable to move.
+s00104	abyssal hold
+s00105	Those soul coins in my pack keep screaming, and only I can hear them.
+s00106	they are screaming
+s00107	This person's soul is mortgaged to the Abyss: cannot be resurrected after death, and the corpse turns to black smoke. Can be redeemed from a good god at an altar (30 divine favor).
+s00108	soul mortgage
+s00109	(hidden)
+s00110	disguise
+s00111	That holy symbol is blindingly bright.
+s00112	saw a holy symbol
+s00113	charming kiss
+s00114	I ate very well last night.
+s00115	sated
+s00116	Haven't fed for several nights now.
+s00117	thirsting
+s00118	succubus visit
+s00119	abyssal taint race factor
+s00120	The stain of the Abyss has seeped into the phylactery: time needed to revive ×1.5.
+s00121	tainted phylactery
+s00122	abyssal items
+s00123	A small steaming vial of black-red blood. Drinking it: +15% melee damage and -10% pain for 1 day, but +8% abyssal taint. One of the tier 2 offerings for abyssal rituals; alchemy table recipes will use it later.
+s00124	drink {0}
+s00125	Drinking {0}.
+s00126	demon blood
+s00127	Had blood drawn recently; cannot be drawn again for 5 days.
+s00128	demon blood drawn
+s00129	Demon blood burns in the veins: +15% melee damage, -10% pain.
+s00130	A forbidden book recording the true names, habits and summoning rituals of abyssal demons. Each copy details only one kind of demon (barlgura, hezrou, succubus, nabassu, marilith or balor). After 4 hours of reading the colony learns to summon it at the abyssal circle; reading adds +0.5% abyssal taint per hour. Keeping it on the map slowly thins the plane.
+s00131	demonology tome
+s00132	desc->A book bound in unknown leather; the pages are warm to the touch. The writing squirms softly when you look away.
+s00133	desc->A ring of scorched runes on the flyleaf; the reader's name appears beneath it on its own once the book is finished.
+s00134	Silver and cold iron shackles covered in anchoring runes. Put them on a downed outsider and it will no longer be banished and can be captured. When a colonist carries an anchor chain in their pack, hostile outsiders that fall within 5 cells are chained automatically. Outsider prisoners in anchor chains held in a room with a binding circle will not escape and can be interrogated for their true name.
+s00135	Draw a vial of demon blood from a demon prisoner wearing a planar anchor chain and held in a room with a binding circle. Not lethal; once every 5 days.
+s00136	Drawing demon blood.
+s00137	draw demon blood
+s00138	The fang stores the souls of the slain: +1% damage per stack, up to 10 stacks, cleared on death.
+s00139	soul-gorged fang
+s00140	The fang presses against the skin as if whispering for more souls: each humanlike kill adds a stack of damage bonus; abyssal taint +0.2% per day.
+s00141	wearing a soul-gorged fang
+s00142	A long nabassu fang strung on a leather cord around the neck. The wearer gains a "soul-gorged fang" stack for each humanlike killed (+1% damage, up to 10 stacks, cleared on death), but abyssal taint +0.2% per day while worn. Worn on the neck in the trinket layer.
+s00143	Forge a planar anchor chain from 30 silver, 20 cold iron and 2 planar residue.
+s00144	Forging a planar anchor chain.
+s00145	forge planar anchor chain
+s00146	title->demonology tome
+s00147	absorb soul (lich)
+s00148	The currency of the Abyss: a cold black iron coin with a screaming soul locked in its face. Abyssal rituals use it in place of live sacrifices; a lich can absorb it into the phylactery (each worth 25% of sacrificing an ordinary corpse). Carrying 10 or more in a pack is unsettling. Cannot be crafted; only obtained by soul refining or from demons.
+s00149	soul coin
+s00150	A parchment bearing an outsider's true name. Holding the true name scroll of your own bound one halves its obedience decay. Speak the true name to an enemy recorded on the scroll and it must make a Charisma save or be banished to its home plane at once. Rituals summoning the same kind of outsider get +10% success chance. It can also seal an abyssal rift outright (uses up the scroll).
+s00151	true name scroll
+s00152	Downed or killed: banished to the Abyss; enemies drop soul coins, demon blood and more.
+s00153	Cold iron weapons deal ×1.5 damage, holy radiance from faith ×1.25.
+s00154	Immune to psychic effects other than abyssal taint... and cannot be tainted.
+s00155	The body of an abyssal demon: turns into black smoke and is banished to the Abyss when knocked down or killed (except bound ones or those in a planar anchor chain); not bothered by being naked. Cold iron weapons deal ×1.5 damage to it.
+s00156	abyssal body
+s00157	Creatures of the Abyss need neither food nor sleep.
+s00158	sleepless and foodless
+s00159	An ape-like abyssal demon with brute strength under orange-brown fur. A barlgura can leap onto an enemy up to 8 cells away and knock down those around; standing still, it melts into the shadows. It likes watching others bleed.
+s00160	Ape demon. Melee +20%, carry capacity +40%, leap strike, invisible when still; banished when downed (except bound ones).
+s00161	Barlguras cannot learn to read, paint, tend wounds or sweet-talk; +5 mood when watching an execution.
+s00162	bloodthirsty
+s00163	The motionless barlgura has melted into the shadows.
+s00164	shadow blend
+s00165	Ability "Leap strike": leap next to a target within 8 cells; on landing, enemies within 1 cell make a Dexterity save (difficulty 13, base success 50%) or fall for 1 second. Cooldown 6 hours.
+s00166	Leap next to a target within 8 cells; on landing, enemies within 1 cell make a Dexterity save (difficulty 13, base success 50%) or fall for 1 second. Cooldown 6 hours.
+s00167	leap strike
+s00168	The barlgura's brute strength: +20% melee damage, +40% carry capacity.
+s00169	ape strength
+s00170	A hulking ape-like body: actual body size ×160%, drawn ×130%, ape face and jutting tusks. Giant-body rules make its health and melee stronger.
+s00171	barlgura build
+s00172	After standing still without attacking for 3 seconds it melts into the shadows and cannot be seen; moving or attacking reveals it.
+s00173	still invisibility
+s00174	Children of demons and mortals, or mortals who became demons after being fully soaked by the Abyss. Cambions have horns, small bat wings and golden-red eyes; they fear no fire and instinctively know how to make others afraid or obedient. Cambions are mortal-born and are never banished. The bloodline is inheritable.
+s00175	Inheritable. Cold iron ×1.25, abyssal taint ×0.5, fire ×0.5, gliding leap, social talent.
+s00176	cambion
+s00177	Cold iron weapons deal ×1.25 damage.
+s00178	Abyssal taint gain ×0.5.
+s00179	VPE: Sorcerer path skill requirement -2.
+s00180	Demon blood runs in the veins: cold iron deals ×1.25 damage, abyssal taint ×0.5; with VPE installed it counts as a sorcerer bloodline (path requirement -2). Anyone with this gene counts as a cambion.
+s00181	abyssal lineage
+s00182	Fire knows demon blood: fire and burn damage ×0.5.
+s00183	abyssal fire
+s00184	Spread the small wings and glide to a spot within 6 cells. Cooldown 4 hours.
+s00185	gliding leap
+s00186	A pair of backward-curving horns and golden-red eyes.
+s00187	cambion horns
+s00188	Born knowing how to make people afraid or obedient: social talent +2.
+s00189	abyssal presence
+s00190	A pair of small bat wings; cannot fly, but can glide. Ability "Gliding leap": jump to a spot within 6 cells, cooldown 4 hours.
+s00191	demon wings
+s00192	The lowest demons of the Abyss: squat, ashen, reeking of rot, with just enough brain to follow the simplest orders. Manes are best summoned as laborers: hauling, mining, cleaning, and good for nothing else. Anyone within 2 cells of them is put in a worse mood by the stench.
+s00193	The lowest demon of the Abyss. Only does menial work, work speed ×0.8, foul stench; banished when downed.
+s00194	A short, fat body: actual body size ×70%, drawn ×80%, a pair of small horns on top.
+s00195	manes build
+s00196	Other humanlikes within 2 cells: mood -2.
+s00197	Manes reek of rot: other humanlikes within 2 cells get mood -2.
+s00198	manes stench
+s00199	Manes only understand the simplest orders: they can only haul, mine, clean and do menial work; global work speed ×0.8.
+s00200	drudge
+s00201	A toad-like abyssal demon with thick, tough, warty green-grey hide. The hezrou's stench makes enemies within 3 cells too nauseous to hold their weapons; it is as at home in water as in mud.
+s00202	Toad demon. Sharp/blunt armor +20%, stench nauseates enemies, moves freely in water; banished when downed (except bound ones).
+s00203	Thick, tough, warty hide: sharp and blunt armor +20% each; no slowdown in shallow water or marsh.
+s00204	warty hide
+s00205	A huge toad-like body: actual body size ×180%, drawn ×140%, a wide-mouthed toad head.
+s00206	hezrou build
+s00207	Every 5 seconds, hostile humanlikes within 3 cells make a Constitution save (difficulty 13, base success 50%) or are "nauseated" for 10 seconds (manipulation -20%, move speed ×0.9). Those who succeed are unaffected for 1 minute.
+s00208	hezrou stench
+s00209	A gargoyle-like abyssal demon: grey-black stone skin, bat wings, long fangs. Nabassus hunt souls: the souls of those it kills are devoured and can never be resurrected, and it grows stronger with each one. Its gaze can make limbs stiff as stone.
+s00210	Soul-eating demon. Its victims cannot be resurrected, soul-gorged stacks build up, petrifying gaze; banished when downed (except bound ones).
+s00211	Kills a humanlike: the soul is devoured, gaining 1 soul-gorged stack.
+s00212	The souls of humanlikes it kills are devoured: they cannot be resurrected by any means (resurrector serum, divine magic and a lich's phylactery all fail), and after 24 hours there is a 30% chance they rise as hostile manes. Each soul it devours grants 1 "soul-gorged" stack (+5% health, +5% damage, up to 10 stacks).
+s00213	soul devour
+s00214	Ability "Petrifying gaze" (6 cells, cooldown 30 seconds): one person makes a Constitution save (difficulty 14, base success 45%) or has move speed ×0.5 for 10 seconds.
+s00215	Gaze at one person within 6 cells: they make a Constitution save (difficulty 14, base success 45%) or move speed ×0.5 for 10 seconds. Cooldown 30 seconds.
+s00216	petrifying gaze
+s00217	The nabassu's gaze makes limbs stiff as stone: move speed ×0.5.
+s00218	petrifying
+s00219	A gargoyle-like body: actual body size ×160%, drawn ×130%, bat wings on the back and long fangs.
+s00220	nabassu build
+s00221	The hezrou's stench makes you want to throw up: manipulation -20%, move speed ×0.9.
+s00222	nauseated
+s00223	An imp-like abyssal demon only as big as a cat, with bat wings and a barbed tail. Quasits cannot be tamed; they can only be summoned as familiars through an abyssal ritual: it follows its master and turns invisible when not fighting.
+s00224	quasit
+s00225	quasit meat
+s00226	The quasit is by my side, and the whispers of the Abyss are clearer: psychic sensitivity +10%.
+s00227	familiar pact
+s00228	A familiar summoned by an abyssal ritual: invisible when not fighting; while master and familiar are on the same map, psychic sensitivity +10% and abyssal taint +0.3% per day.
+s00229	quasit familiar
+s00230	When not fighting, the quasit cannot be seen.
+s00231	invisible
+s00232	An incorporeal abyssal demon, like a human-shaped black shadow. Ordinary weapons only deal half damage to it; but it fears light: standing in bright areas it takes ×1.5 damage and moves slower. Shadow demons only come out of abyssal rifts at night and cannot be summoned or bound.
+s00233	Night enemy. Non-magic weapon damage halved; in light takes ×1.5 damage, move speed ×0.7.
+s00234	Shadow demons are almost incorporeal: weapons (including claws and fangs) that are non-magic, below masterwork quality and not cold iron or silver deal only half damage. It fears light: standing on a cell with 50%+ light it takes ×1.5 damage and moves ×0.7.
+s00235	formless shadow
+s00236	The coarse orange-brown hide of a barlgura.
+s00237	orange-brown skin
+s00238	orange-brown
+s00239	The dead-fish ashen skin of manes.
+s00240	ashen skin
+s00241	ashen
+s00242	The green-grey, warty hide of a hezrou.
+s00243	green-grey warty hide
+s00244	green-grey
+s00245	The grey-black hide of a nabassu, like weathered rock.
+s00246	grey-black stone skin
+s00247	grey-black
+s00248	A shadow demon's body is like congealed black smoke.
+s00249	pitch-black shadow
+s00250	pitch black
+s00251	A succubus's skin is tinged crimson. (60% of succubi have normal skin.)
+s00252	crimson skin
+s00253	crimson
+s00254	A nabassu devoured this person's soul: they can never be resurrected by any means.
+s00255	soul devoured
+s00256	Swallowed souls churn inside it: +5% health per stack (damage taken reduced proportionally), +5% damage, up to 10 stacks.
+s00257	soul-gorged
+s00258	Abyssal demons that feed on seduction; females are called succubi, males incubi. They have bat wings, thin tails and small horns, and can shapeshift into ordinary people to blend into crowds. A charming kiss leaves victims defenseless, and whoever shares their bed at night has their energy drained. Succubi can have children with mortals; the children are cambions.
+s00259	Playable demon. Shapeshift disguise, charming kiss, dream drain; fire/toxin resistance, social +25%; fears altars and holy symbols; children are cambions.
+s00260	Succubi live by draining others' energy and eat very little real food: hunger rate ×20%.
+s00261	succubus appetite
+s00262	Settled every day at 6 AM: whoever slept in its bed the previous night gets rest -20%, abyssal taint +3% and nightmares; it heals some wounds and gains the "sated" mood +6 for two days. After 3 days without draining, "thirsting" mood -4.
+s00263	dream drain
+s00264	A toggleable illusion: while on, horns, wings, tail and crimson skin are hidden and it looks like an ordinary person. Being seen by a devil's eye (8 cells) or an aasimar (5 cells) dispels it automatically.
+s00265	shapeshift disguise
+s00266	A pair of small curved horns. Hidden during shapeshift disguise.
+s00267	succubus horns

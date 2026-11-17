@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 读心 -->
+  <LP_ReadMind.label>read mind</LP_ReadMind.label>
+  <!-- 窥探一个人形生物的心思：看到对方的特质、最擅长的技能、当前心情和最在意的事。对殖民地的囚犯使用还会动摇其意志：抵抗-3。消耗3点脑髓（半夺心魔免费），冷却1小时。 -->
+  <LP_ReadMind.description>Peek into a humanlike's thoughts: see their traits, best skills, current mood and what they care about most. Used on colony prisoners it also shakes their will: resistance -3. Costs 3 brain matter (free for half-illithids), cooldown 1 hour.</LP_ReadMind.description>
+  <!-- 支配人类 -->
+  <LP_Dominate.label>dominate person</LP_Dominate.label>
+  <!-- 夺取一个非本殖民地人形生物的意志30秒：被支配者只会攻击自己原来的同伴，30秒后精疲力竭倒地。心智抗性可以抵抗；心灵失聪者不受影响。消耗25点脑髓，冷却2天。 -->
+  <LP_Dominate.description>Seize the will of a humanlike not from this colony for 30 seconds: the dominated only attacks its former companions, then collapses exhausted after 30 seconds. Mind resistance can resist it; the psychically deaf are unaffected. Costs 25 brain matter, cooldown 2 days.</LP_Dominate.description>
+  <!-- 心灵束缚 -->
+  <LP_PsychicBind.label>psychic binding</LP_PsychicBind.label>
+  <!-- 把群脑的教义直接压进对方的心智：信仰不同的人形生物信念-40%，信念归零时改信施法者的意识形态。心智抗性可以抵抗。仅在加载《意识形态》时可用。消耗20点脑髓，冷却1天。 -->
+  <LP_PsychicBind.description>Press the hivemind's doctrine straight into the other's mind: a humanlike of a different belief loses 40 certainty, converting to the caster's ideoligion when certainty reaches zero. Mind resistance can resist it. Only available with Ideology loaded. Costs 20 brain matter, cooldown 1 day.</LP_PsychicBind.description>
+  <!-- 念力投掷 -->
+  <LP_TelekineticThrow.label>telekinetic throw</LP_TelekineticThrow.label>
+  <!-- 用念力把一个生物甩出去最多4格，造成10点钝击伤害并让其踉跄1秒。消耗8点脑髓，冷却6小时。 -->
+  <LP_TelekineticThrow.description>Fling a creature up to 4 cells with telekinesis, dealing 10 blunt damage and staggering it for 1 second. Costs 8 brain matter, cooldown 6 hours.</LP_TelekineticThrow.description>
+  <!-- 灵能隐匿 -->
+  <LP_Unseen.label>psionic concealment</LP_Unseen.label>
+  <!-- 让周围所有心智都看不见自己，隐形1小时（使用原版的心灵隐形效果，攻击或受伤可能暴露）。消耗15点脑髓，冷却1天。 -->
+  <LP_Unseen.description>Make yourself invisible to all minds around you for 1 hour (uses vanilla psychic invisibility; attacking or being hurt may reveal you). Costs 15 brain matter, cooldown 1 day.</LP_Unseen.description>
+  <!-- 心灵风暴 -->
+  <LP_PsychicStorm.label>psychic storm</LP_PsychicStorm.label>
+  <!-- 向周围8格释放狂暴的心灵风暴：所有敌对目标被击晕约6秒并陷入心灵震荡，比心灵震爆更难抵抗（心智抗性只有一半效果）。消耗40点脑髓，冷却5天。 -->
+  <LP_PsychicStorm.description>Release a raging psychic storm in 8 cells around you: all hostile targets are stunned for about 6 seconds and suffer psychic concussion, harder to resist than a psychic blast (mind resistance has only half effect). Costs 40 brain matter, cooldown 5 days.</LP_PsychicStorm.description>
+</LanguageData>

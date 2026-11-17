@@ -83,35 +83,35 @@ namespace LichPhylactery {
    string label,text;LetterDef ld;IncidentDef fired=null;var extra=new List<string>();
    var colonists=map.mapPawns.FreeColonistsSpawned.ToList();
    if(roll==1){
-    label="命运之骰：1！大失败";ld=LetterDefOf.ThreatBig;
-    text="屏风后传来一声闷响。塔莉亚低头看了看骰子，然后慢慢露出笑容。\n\n「一点。很遗憾，诸位。」";
+    label="命运之骰：1！大失败".Loc();ld=LetterDefOf.ThreatBig;
+    text="屏风后传来一声闷响。塔莉亚低头看了看骰子，然后慢慢露出笑容。\n\n「一点。很遗憾，诸位。」".Loc();
     if(!DungeonMaster.TryFire(DungeonMaster.Bad(true),map,out fired))DungeonMaster.TryFire(DungeonMaster.Bad(false),map,out fired);
     if(fired==null){var raid=IncidentDefOf.RaidEnemy;var p=StorytellerUtility.DefaultParmsNow(raid.category,map);if(raid.Worker.CanFireNow(p) && raid.Worker.TryExecute(p))fired=raid;}
    }else if(roll<=5){
-    label="命运之骰："+roll+"（厄运）";ld=LetterDefOf.NegativeEvent;
-    text="骰子滚到桌角停下。塔莉亚翻了一页笔记：「运气不太好啊……路上遇到点麻烦吧。」";
+    label="命运之骰：".Loc()+roll+"（厄运）".Loc();ld=LetterDefOf.NegativeEvent;
+    text="骰子滚到桌角停下。塔莉亚翻了一页笔记：「运气不太好啊……路上遇到点麻烦吧。」".Loc();
     DungeonMaster.TryFire(DungeonMaster.Bad(false),map,out fired);
    }else if(roll<=15){
     // 平常点数只发一条消息，不占信件栏。
-    Messages.Message("命运之骰掷出 "+roll+"：塔莉亚瞥了一眼骰子，继续往下讲故事。",MessageTypeDefOf.NeutralEvent,false);
+    Messages.Message("命运之骰掷出 ".Loc()+roll+"：塔莉亚瞥了一眼骰子，继续往下讲故事。".Loc(),MessageTypeDefOf.NeutralEvent,false);
     return true;
    }else if(roll<20){
-    label="命运之骰："+roll+"（好运）";ld=LetterDefOf.PositiveEvent;
-    text="骰子的数字闪着微光。塔莉亚点点头：「不错的检定。这一段旅程，诸神站在你们那边。」";
+    label="命运之骰：".Loc()+roll+"（好运）".Loc();ld=LetterDefOf.PositiveEvent;
+    text="骰子的数字闪着微光。塔莉亚点点头：「不错的检定。这一段旅程，诸神站在你们那边。」".Loc();
     DungeonMaster.TryFire(DungeonMaster.Good(),map,out fired);
     var who=colonists.Where(p=>!p.Inspired && !p.InMentalState).InRandomOrder().FirstOrDefault();
-    if(who!=null && Inspire(who))extra.Add(who.LabelShort+" 受到了启发。");
+    if(who!=null && Inspire(who))extra.Add(who.LabelShort+" 受到了启发。".Loc());
    }else{
-    label="命运之骰：20！大成功";ld=LetterDefOf.PositiveEvent;
-    text="骰子落定的一刻，屏风后的烛火全都亮了一下。塔莉亚拍桌而起：「自然二十！」";
+    label="命运之骰：20！大成功".Loc();ld=LetterDefOf.PositiveEvent;
+    text="骰子落定的一刻，屏风后的烛火全都亮了一下。塔莉亚拍桌而起：「自然二十！」".Loc();
     DungeonMaster.TryFire(DungeonMaster.Good(),map,out fired);
-    int n=0;foreach(var p in colonists.Where(p=>!p.Inspired && !p.InMentalState).InRandomOrder().Take(3))if(Inspire(p)){n++;extra.Add(p.LabelShort+" 受到了启发。");}
+    int n=0;foreach(var p in colonists.Where(p=>!p.Inspired && !p.InMentalState).InRandomOrder().Take(3))if(Inspire(p)){n++;extra.Add(p.LabelShort+" 受到了启发。".Loc());}
     float xp=0f;foreach(var p in colonists){xp=System.Math.Max(xp,Adventurer.GainXP(p,300f));}
-    if(xp>0f)extra.Add("所有冒险者获得了经验（每人约 "+(int)xp+" 点）。");
+    if(xp>0f)extra.Add("所有冒险者获得了经验（每人约 ".Loc()+(int)xp+" 点）。".Loc());
     var defName=IsekaiLoot.MagicLoot[Rand.Range(0,IsekaiLoot.MagicLoot.Length)];var td=DefDatabase<ThingDef>.GetNamedSilentFail(defName);
-    if(td!=null){var item=ThingMaker.MakeThing(td,GenStuff.DefaultStuffFor(td));var cell=DropCellFinder.TradeDropSpot(map);DropPodUtility.DropThingsNear(cell,map,new[]{item},110,false,false,true);extra.Add("一件魔法物品从天而降："+item.LabelCap+"。");}
+    if(td!=null){var item=ThingMaker.MakeThing(td,GenStuff.DefaultStuffFor(td));var cell=DropCellFinder.TradeDropSpot(map);DropPodUtility.DropThingsNear(cell,map,new[]{item},110,false,false,true);extra.Add("一件魔法物品从天而降：".Loc()+item.LabelCap+"。".Loc());}
    }
-   if(fired!=null){LastFired=fired.defName;text+="\n\n接下来："+fired.LabelCap+"。";}
+   if(fired!=null){LastFired=fired.defName;text+="\n\n接下来：".Loc()+fired.LabelCap+"。".Loc();}
    if(extra.Count>0)text+="\n\n"+string.Join("\n",extra);
    Find.LetterStack.ReceiveLetter(label,text,ld,new LookTargets(colonists.FirstOrDefault()));
    return true;
@@ -119,7 +119,7 @@ namespace LichPhylactery {
   static bool Inspire(Pawn p){
    var h=p.mindState?.inspirationHandler;if(h==null)return false;
    var d=h.GetRandomAvailableInspirationDef();
-   return d!=null && h.TryStartInspiration(d,"命运之骰",false);
+   return d!=null && h.TryStartInspiration(d,"命运之骰".Loc(),false);
   }
  }
 }

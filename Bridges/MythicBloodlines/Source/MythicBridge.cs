@@ -43,7 +43,6 @@ namespace LichPhylactery.MythicBridge {
     case "Jumang":return BloodlineAPI.GetBloodline(p)==MythicBloodline.Jumang;
     case "Baize":return BloodlineAPI.GetBloodline(p)==MythicBloodline.Baize;
     case "FireGiant":return FireGiant.Active(p);
-    case "ForceDragon":return ForceDragon.Active(p);
     case "Elf":return IsElf(p);
     case "MindFlayer":return MindFlayer.IsMindFlayer(p);
     case "Lich":return IsLich(p);
@@ -63,21 +62,20 @@ namespace LichPhylactery.MythicBridge {
    int until=acid>now?Math.Min(gene.suppressedUntilTick,acid):now;
    if(until>=gene.suppressedUntilTick)return;
    gene.suppressedUntilTick=until;
-   if(victim.Faction==Faction.OfPlayer)Messages.Message(until>now?"甘霖浇灭了"+victim.LabelShort+"身上的火，但酸蚀仍在阻断巨魔再生。":"甘霖浇灭了"+victim.LabelShort+"身上的火，巨魔再生恢复了。",victim,MessageTypeDefOf.PositiveEvent,false);
+   if(victim.Faction==Faction.OfPlayer)Messages.Message(until>now?"甘霖浇灭了".Loc()+victim.LabelShort+"身上的火，但酸蚀仍在阻断巨魔再生。".Loc():"甘霖浇灭了".Loc()+victim.LabelShort+"身上的火，巨魔再生恢复了。".Loc(),victim,MessageTypeDefOf.PositiveEvent,false);
   }
   static void OnTaotieAte(Pawn eater,Thing food,ThingDef def){
    if(eater==null || eater.Dead)return;
    if(def!=null && def==TrollBlood)Give(eater,"LPMB_TrollBloodRegen");
    switch(State?.MeatSource(food)){
     case "FireGiant":Give(eater,"LPMB_FireGiantFlesh");break;
-    case "ForceDragon":Give(eater,"LPMB_DragonFlesh");break;
    }
   }
   // 重复进食只刷新时间，不叠加。
   public static Hediff Give(Pawn p,string name){
    var def=DefDatabase<HediffDef>.GetNamedSilentFail(name);if(def==null || p.health==null)return null;
    var h=p.health.hediffSet.GetFirstHediffOfDef(def);
-   if(h==null){h=p.health.AddHediff(def);if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"获得了"+def.label+"。",p,MessageTypeDefOf.PositiveEvent,false);}
+   if(h==null){h=p.health.AddHediff(def);if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"获得了".Loc()+def.label+"。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);}
    else{var timer=(h as HediffWithComps)?.TryGetComp<HediffComp_Disappears>();if(timer!=null)timer.ticksToDisappear=timer.Props.disappearsAfterTicks.max;}
    return h;
   }
@@ -87,7 +85,7 @@ namespace LichPhylactery.MythicBridge {
   static bool OnReveal(Pawn caster,Pawn target,bool execute){
    if(target==null || target.Dead || target.health==null)return false;
    if(FactionGroups.IsThralled(target)){
-    if(execute){Decapitation.Free(target);Messages.Message(caster.LabelShort+"识破了夺心魔的控制，"+target.LabelShort+"清醒过来。",target,MessageTypeDefOf.PositiveEvent,false);}
+    if(execute){Decapitation.Free(target);Messages.Message(caster.LabelShort+"识破了夺心魔的控制，".Loc()+target.LabelShort+"清醒过来。".Loc(),target,MessageTypeDefOf.PositiveEvent,false);}
     return true;
    }
    var dominated=target.health.hediffSet.GetFirstHediffOfDef(MindFlayerPowers.DominatedHediff);
@@ -96,7 +94,7 @@ namespace LichPhylactery.MythicBridge {
   }
  }
 
- // 存档数据：天工点化标记、火巨人/力能龙肉的来源、巨魔酸蚀阻断时间。地图普查不存档。
+ // 存档数据：天工点化标记、火巨人肉的来源、巨魔酸蚀阻断时间。地图普查不存档。
  public class BridgeState : GameComponent {
   HashSet<Thing> masterworks=new HashSet<Thing>();
   Dictionary<Thing,string> meat=new Dictionary<Thing,string>();
@@ -143,7 +141,7 @@ namespace LichPhylactery.MythicBridge {
  public class Census {
   public int tick=-99999;
   readonly Dictionary<string,int> counts=new Dictionary<string,int>();
-  public static readonly string[] Races={"Taotie","Suanni","Jumang","Baize","FireGiant","ForceDragon","Elf","MindFlayer","Lich","Troll","Dwarf"};
+  public static readonly string[] Races={"Taotie","Suanni","Jumang","Baize","FireGiant","Elf","MindFlayer","Lich","Troll","Dwarf"};
   public static bool Counted(Pawn p)=>p!=null && !p.Dead && p.RaceProps.Humanlike && (p.Faction==Faction.OfPlayer || p.IsPrisonerOfColony);
   public int Count(string race)=>counts.TryGetValue(race,out int n)?n:0;
   public void Rebuild(Map map){
@@ -185,7 +183,7 @@ namespace LichPhylactery.MythicBridge {
   }
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref accumulated,"mbRegenTicks",0);}
  }
- // 火巨人/力能龙之肉：对应伤害乘以 factor。名单写在 XML。
+ // 火巨人之肉：对应伤害乘以 factor。名单写在 XML。
  public class DamageFactorExtension : DefModExtension {
   public float factor=.5f;
   public List<string> damageDefs=new List<string>();
@@ -212,11 +210,11 @@ namespace LichPhylactery.MythicBridge {
    MythicBridge.State?.RecordAcid(___pawn,Find.TickManager.TicksGame+Gene_TrollRegeneration.FireSuppressionTicks);
   }
  }
- // 屠宰火巨人、力能龙得到的肉记下来源；来源不同的肉不合并，拆分时保留来源。
+ // 屠宰火巨人得到的肉记下来源；来源不同的肉不合并，拆分时保留来源。
  [HarmonyPatch(typeof(Corpse),nameof(Corpse.ButcherProducts))]
  public static class MarkButcheredMeat {
   static IEnumerable<Thing> Postfix(IEnumerable<Thing> values,Corpse __instance){
-   var p=__instance?.InnerPawn;string race=p==null?null:FireGiant.Active(p)?"FireGiant":ForceDragon.Active(p)?"ForceDragon":null;
+   var p=__instance?.InnerPawn;string race=p==null?null:FireGiant.Active(p)?"FireGiant":null;
    foreach(var t in values){if(race!=null && t!=null && t.def==p.RaceProps.meatDef)MythicBridge.State?.MarkMeat(t,race);yield return t;}
   }
  }
@@ -232,19 +230,6 @@ namespace LichPhylactery.MythicBridge {
   static void Postfix(Thing __instance,Thing __result){
    if(__result==null || __result==__instance)return;var s=MythicBridge.State;if(s==null || !s.AnyMeat)return;
    var source=s.MeatSource(__instance);if(source!=null)s.MarkMeat(__result,source);
-  }
- }
- // 宝库：天工点化过的物品按 110% 计价（在原有市值和火巨人锻造品双倍之后）。
- [HarmonyPatch(typeof(DragonHoard),nameof(DragonHoard.Value))]
- public static class MasterworkHoardValue {
-  public const float Bonus=.1f;
-  static void Postfix(Room room,ref float __result){
-   var s=MythicBridge.State;if(__result<=0 || s==null || !s.AnyMasterworks || !DragonHoard.Valid(room))return;
-   foreach(var t in s.Masterworks){
-    Thing item=t;if(item==null || item.Destroyed)continue;
-    if(!item.Spawned && item.ParentHolder is MinifiedThing m)item=m;
-    if(item.Spawned && item.Map==room.Map && item.GetRoom()==room && DragonHoard.Counts(item))__result+=Bonus*DragonHoard.ItemValue(item);
-   }
   }
  }
  // 句芒做药水：退还的草药作为额外产物放在炼金桌旁。

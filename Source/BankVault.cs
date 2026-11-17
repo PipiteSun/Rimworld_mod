@@ -130,8 +130,8 @@ namespace LichPhylactery {
    }
   }
 
-  public string Summary()=>"银 "+Count(ThingDefOf.Silver).ToString("N0")+" · 金 "+Count(ThingDefOf.Gold).ToString("N0")+" · 库存 "+StackCount+"/"+Capacity+" 堆 · 总价值 "+TotalValue.ToString("N0");
-  public override string LabelMouseover=>LabelCap+"（"+Summary()+"）";
+  public string Summary()=>"银 ".Loc()+Count(ThingDefOf.Silver).ToString("N0")+" · 金 ".Loc()+Count(ThingDefOf.Gold).ToString("N0")+" · 库存 ".Loc()+StackCount+"/"+Capacity+" 堆 · 总价值 ".Loc()+TotalValue.ToString("N0");
+  public override string LabelMouseover=>LabelCap+"（".Loc()+Summary()+"）".Loc();
   public override string GetInspectString(){
    var s=base.GetInspectString();
    return (s.NullOrEmpty()?"":s.TrimEndNewlines()+"\n")+Summary();
@@ -154,7 +154,7 @@ namespace LichPhylactery {
 
  public class StatPart_BankBeauty : StatPart {
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Building_LPBank b)val+=b.GoldBeauty;}
-  public override string ExplanationPart(StatRequest req){if(req.Thing is Building_LPBank b && b.GoldBeauty>0f)return "金库里的金子：+"+b.GoldBeauty.ToString("0");return null;}
+  public override string ExplanationPart(StatRequest req){if(req.Thing is Building_LPBank b && b.GoldBeauty>0f)return "金库里的金子：+".Loc()+b.GoldBeauty.ToString("0");return null;}
  }
 
  // ==================== Harmony ====================
@@ -209,32 +209,32 @@ namespace LichPhylactery {
   protected override void FillTab(){
    var b=Bank;if(b==null)return;
    var rect=new Rect(0f,0f,size.x,size.y).ContractedBy(12f);
-   Text.Font=GameFont.Medium;Widgets.Label(new Rect(rect.x,rect.y,rect.width,32f),"金库清单");
+   Text.Font=GameFont.Medium;Widgets.Label(new Rect(rect.x,rect.y,rect.width,32f),"金库清单".Loc());
    Text.Font=GameFont.Small;float y=rect.y+36f;
    var coins=b.Coins().ToList();
    foreach(var d in new[]{ThingDefOf.Silver,ThingDefOf.Gold}){
     var of=coins.Where(t=>t.def==d).ToList();int n=of.Sum(t=>t.stackCount);float v=of.Sum(t=>t.stackCount*t.MarketValue);
     Widgets.ThingIcon(new Rect(rect.x,y,28f,28f),d);
-    Widgets.Label(new Rect(rect.x+34f,y+4f,rect.width-34f,24f),d.LabelCap+"："+n.ToString("N0")+"（"+of.Count+" 堆，价值 "+v.ToString("N0")+"）");
+    Widgets.Label(new Rect(rect.x+34f,y+4f,rect.width-34f,24f),d.LabelCap+"：".Loc()+n.ToString("N0")+"（".Loc()+of.Count+" 堆，价值 ".Loc()+v.ToString("N0")+"）".Loc());
     y+=30f;
    }
-   Widgets.Label(new Rect(rect.x,y+2f,rect.width,24f),"库存 "+coins.Count+"/"+b.Capacity+" 堆 · 总价值 "+b.TotalValue.ToString("N0"));
+   Widgets.Label(new Rect(rect.x,y+2f,rect.width,24f),"库存 ".Loc()+coins.Count+"/"+b.Capacity+" 堆 · 总价值 ".Loc()+b.TotalValue.ToString("N0"));
    y+=30f;Widgets.DrawLineHorizontal(rect.x,y,rect.width);y+=6f;
    var outRect=new Rect(rect.x,y,rect.width,rect.yMax-y);var view=new Rect(0f,0f,outRect.width-16f,Mathf.Max(viewH,outRect.height));
    Widgets.BeginScrollView(outRect,ref scroll,view);
    float ry=0f;
-   if(coins.Count==0){Widgets.Label(new Rect(0f,0f,view.width,24f),"金库是空的。");ry=24f;}
+   if(coins.Count==0){Widgets.Label(new Rect(0f,0f,view.width,24f),"金库是空的。".Loc());ry=24f;}
    foreach(var t in coins.OrderBy(x=>x.def==ThingDefOf.Gold).ThenByDescending(x=>x.stackCount)){
     var row=new Rect(0f,ry,view.width,28f);if(Mouse.IsOver(row))Widgets.DrawHighlight(row);
     Widgets.ThingIcon(new Rect(row.x,row.y,28f,28f),t);
     Widgets.Label(new Rect(row.x+34f,row.y+4f,170f,24f),t.LabelCapNoCount+" ×"+t.stackCount);
     bool allowed=!t.IsForbidden(Faction.OfPlayer);bool was=allowed;
-    Widgets.CheckboxLabeled(new Rect(row.x+210f,row.y+2f,90f,24f),"可用",ref allowed);
+    Widgets.CheckboxLabeled(new Rect(row.x+210f,row.y+2f,90f,24f),"可用".Loc(),ref allowed);
     if(allowed!=was)t.SetForbidden(!allowed,false);
-    TooltipHandler.TipRegion(new Rect(row.x+210f,row.y,90f,28f),"取消勾选＝禁止：小人和交易都不会动这一堆。");
+    TooltipHandler.TipRegion(new Rect(row.x+210f,row.y,90f,28f),"取消勾选＝禁止：小人和交易都不会动这一堆。".Loc());
     var btn=new Rect(row.xMax-80f,row.y+2f,78f,24f);
-    if(Widgets.ButtonText(btn,"取出")){if(!Bank_TakeOut(b,t))Messages.Message("银行旁边没有空地可放。",b,MessageTypeDefOf.RejectInput,false);}
-    TooltipHandler.TipRegion(btn,"把这一堆放到银行旁边的空地上，并设为禁止（免得又被搬回来）。");
+    if(Widgets.ButtonText(btn,"取出".Loc())){if(!Bank_TakeOut(b,t))Messages.Message("银行旁边没有空地可放。".Loc(),b,MessageTypeDefOf.RejectInput,false);}
+    TooltipHandler.TipRegion(btn,"把这一堆放到银行旁边的空地上，并设为禁止（免得又被搬回来）。".Loc());
     ry+=30f;
    }
    viewH=ry;

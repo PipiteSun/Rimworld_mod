@@ -49,7 +49,7 @@ namespace LichPhylactery {
   public static bool Is(Pawn p)=>Of(p)!=null;
   public static bool Is(Pawn p,string element)=>Of(p)?.element==element;
   public static int Rank(Pawn p)=>Of(p)?.rank??0;
-  public static string Label(Pawn p)=>Of(p)?.label??"巨人";
+  public static string Label(Pawn p)=>Of(p)?.label??"巨人".Loc();
   // 儿童随年龄长大：成年（18岁）达到 adultSize。原来写在 FireGiant.Size 里。
   public static float Growth(Pawn p)=>Mathf.Clamp01((p?.ageTracker?.AgeBiologicalYearsFloat??AdultAge)/AdultAge);
   public static float Size(Pawn p,float adultSize)=>1f+(adultSize-1f)*Growth(p);
@@ -89,7 +89,7 @@ namespace LichPhylactery {
    if(Exclusive(d))return giant;
    return !giant || NormalAllowed;
   }
-  public static string WearReason(Pawn p,ThingDef d){var g=d?.GetModExtension<GeneWearExtension>();if(g!=null && !Races124.Has(p,g.gene))return "只有"+g.label+"能戴。";return Exclusive(d)?"只有巨人能穿。":"巨人只能穿巨人专属衣甲（模组设置“巨人穿普通衣服”已关闭）。";}
+  public static string WearReason(Pawn p,ThingDef d){var g=d?.GetModExtension<GeneWearExtension>();if(g!=null && !Races124.Has(p,g.gene))return "只有".Loc()+g.label+"能戴。".Loc();return Exclusive(d)?"只有巨人能穿。".Loc():"巨人只能穿巨人专属衣甲（模组设置“巨人穿普通衣服”已关闭）。".Loc();}
   // 失去巨人血统（或改了设置）后，脱下不合规矩的衣甲、放下巨人武器。
   public static void Release(Pawn p){
    if(p==null)return;GiantKin.Invalidate(p);
@@ -178,7 +178,7 @@ namespace LichPhylactery {
    bool done=insult!=null && challenger.interactions!=null && challenger.interactions.TryInteractWith(head,insult);
    var insulted=DefDatabase<ThoughtDef>.GetNamedSilentFail("Insulted");
    if(!done && insulted!=null)head.needs?.mood?.thoughts?.memories?.TryGainMemory(insulted,challenger);
-   Messages.Message(challenger.LabelShort+"的本事已经超过了"+head.LabelShort+"，当众向这位"+GiantKin.Label(head)+"首领发起了挑战。",new LookTargets(challenger,head),MessageTypeDefOf.NeutralEvent,false);
+   Messages.Message(challenger.LabelShort+"的本事已经超过了".Loc()+head.LabelShort+"，当众向这位".Loc()+GiantKin.Label(head)+"首领发起了挑战。".Loc(),new LookTargets(challenger,head),MessageTypeDefOf.NeutralEvent,false);
    return true;
   }
   public override void ExposeData(){
@@ -196,10 +196,10 @@ namespace LichPhylactery {
  }
  public static class GiantSettings {
   public static void Draw(Listing_Standard l){
-   l.GapLine();l.Label("巨人");
-   l.CheckboxLabeled("巨人穿普通衣服",ref LichMod.Settings.giantsWearNormal,"火巨人、霜巨人（以后的巨人也一样）能穿任何普通衣服，普通衣服随巨躯一起放大显示。（1.146.0 起巨人专属衣甲已全部移除。）关闭后回到1.29.0的旧规则：巨人只能穿专属衣甲；保存设置后，已穿着的普通衣服会在下次换装时脱下。");
-   l.CheckboxLabeled("阶序心情",ref LichMod.Settings.ordningMood,"巨人的阶序（风暴＞云＞火＞霜＞双头＞独眼）：殖民地有更高位的巨人“阶序井然”+3、有更低位的“统领众巨”+2，同种巨人里近战或手工最高的“氏族之首”+3，有两个以上巨人时“同族之语”+2；有人本事超过首领时会挑战首领（30天一次）。关闭后这些心情和挑战都不出现（火巨人与霜巨人的“世仇”种族关系不受影响）。");
-   l.CheckboxLabeled("风暴预兆",ref LichMod.Settings.stormOmen,"（1.34.0）家园地图上有成年的风暴巨人（带“风暴预兆”基因）时，点数≥1000的敌对袭击推迟12小时落地，并提前来信说明派系和方向。与竖琴手预警叠加（两者都触发时推迟时间相加）。");
+   l.GapLine();l.Label("巨人".Loc());
+   l.CheckboxLabeled("巨人穿普通衣服".Loc(),ref LichMod.Settings.giantsWearNormal,"火巨人、霜巨人（以后的巨人也一样）能穿任何普通衣服，普通衣服随巨躯一起放大显示。（1.146.0 起巨人专属衣甲已全部移除。）关闭后回到1.29.0的旧规则：巨人只能穿专属衣甲；保存设置后，已穿着的普通衣服会在下次换装时脱下。".Loc());
+   l.CheckboxLabeled("阶序心情".Loc(),ref LichMod.Settings.ordningMood,"巨人的阶序（风暴＞云＞火＞霜＞双头＞独眼）：殖民地有更高位的巨人“阶序井然”+3、有更低位的“统领众巨”+2，同种巨人里近战或手工最高的“氏族之首”+3，有两个以上巨人时“同族之语”+2；有人本事超过首领时会挑战首领（30天一次）。关闭后这些心情和挑战都不出现（火巨人与霜巨人的“世仇”种族关系不受影响）。".Loc());
+   l.CheckboxLabeled("风暴预兆".Loc(),ref LichMod.Settings.stormOmen,"（1.34.0）家园地图上有成年的风暴巨人（带“风暴预兆”基因）时，点数≥1000的敌对袭击推迟12小时落地，并提前来信说明派系和方向。与竖琴手预警叠加（两者都触发时推迟时间相加）。".Loc());
   }
  }
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 魂火箭 -->
+  <LP_SoulBolt.label>soulfire bolt</LP_SoulBolt.label>
+  <!-- 使用原版精神力与心灵熵。效果受心灵敏感度递减加成影响；命匣成长降低相同点数占精神力条的比例。 -->
+  <LP_SoulBolt.description>Uses vanilla psyfocus and neural heat. The effect gets a diminishing bonus from psychic sensitivity; phylactery growth lowers the same number of points as a share of the psyfocus bar.</LP_SoulBolt.description>
+  <!-- 魂能缝合 -->
+  <LP_MendConstruct.label>soul stitch</LP_MendConstruct.label>
+  <!-- 修复自己的受伤死灵造物。治疗量为15×施法者当前心灵敏感度（100%=1），线性增长，无倍率或治疗量上限；可连续修复多个伤口，实际恢复不超过现有伤势。基础精神力消耗10点，不随心灵敏感度增加；心灵熵8点。命匣成长降低相同点数占精神力条的比例。 -->
+  <LP_MendConstruct.description>Repair your own wounded necromantic constructs. Heals 15 × the caster's current psychic sensitivity (100% = 1), growing linearly with no multiplier or heal cap; can repair several wounds in a row, never healing more than the existing injuries. Base psyfocus cost 10, not increased by psychic sensitivity; neural heat 8. Phylactery growth lowers the same number of points as a share of the psyfocus bar.</LP_MendConstruct.description>
+</LanguageData>

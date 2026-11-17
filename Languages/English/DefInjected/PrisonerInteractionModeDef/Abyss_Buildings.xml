@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 审讯真名 -->
+  <LP_InterrogateTrueName.label>interrogate true name</LP_InterrogateTrueName.label>
+  <!-- 狱卒每次和它交谈有 15% 的机会撬出它的真名（得到真名卷），之后自动切回“维持”。只对戴位面锚链的外来者囚犯有效。 -->
+  <LP_InterrogateTrueName.description>Each time a warden talks to it there is a 15% chance to pry out its true name (yielding a true name scroll), then it switches back to "Maintain". Only works on outsider prisoners wearing a planar anchor chain.</LP_InterrogateTrueName.description>
+</LanguageData>

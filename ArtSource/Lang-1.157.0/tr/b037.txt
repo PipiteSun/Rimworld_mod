@@ -1,0 +1,215 @@
+s08059	Each sorcerer spell cast gives yourself a shield absorbing 8 damage (1 hour, doesn't stack, refreshes).
+s08060	Divine grace flows in the bloodline: knows the cleric's cure wounds, picks a divine affinity (light, twilight, protection), regains mana faster when meditating or praying, becomes an angel, and finally heals themself when falling and calls down a miracle.
+s08061	Divine Soul
+s08062	A sorcerer born in darkness: sees in the dark, casts stronger spells in darkness, holds on without falling, summons a hound of ill omen to hunt enemies, teleports between dark places, and finally takes umbral form. "Darkness" = cells with under 30% light.
+s08063	Shadow Magic
+s08064	Give yourself a shield absorbing 8 + wizard level × 2 damage (1 hour, doesn't stack, refreshes). Mana 1, cooldown 30 seconds. School of Abjuration, wizard level 2.
+s08065	arcane ward
+s08066	Passive: mind resistance +25%, armor +8%. School of Abjuration, wizard level 10.
+s08067	improved abjuration
+s08068	School of Abjuration: mind resistance +25%, armor +8%.
+s08069	One ally within 12 cells gets a shield absorbing 8 + wizard level × 2 damage (1 hour). Mana 1, cooldown 30 seconds. School of Abjuration, wizard level 6.
+s08070	projected ward
+s08071	School of Abjuration: all damage taken ×0.85.
+s08072	spell resistance
+s08073	Passive: all damage taken ×0.85. School of Abjuration, wizard level 14.
+s08074	One ally within 12 cells (can be yourself) instantly heals 12 × pact power injury, bleeding wounds first. Pact mana 1, cooldown 15 seconds. The Celestial patron, warlock level 1.
+s08075	healing light
+s08076	One enemy within 20 cells takes 16 × pact power radiant damage (doubled against undead and fiends). Pact mana 1, cooldown 10 seconds. The Celestial patron, warlock level 11.
+s08077	radiant wrath
+s08078	Passive: healing light and radiant wrath power ×1.2. The Celestial patron, warlock level 3.
+s08079	radiant soul
+s08080	You and allies within 4 cells each get a shield absorbing 6 + warlock level damage (1 hour). Pact mana 1, cooldown 1 hour. The Celestial patron, warlock level 7.
+s08081	Passive: the first time each day you'd be downed, heal half your wounds and stand back up, and enemies within radius 4 take 10 × pact power radiant damage. The Celestial patron, warlock level 15.
+s08082	searing vengeance
+s08083	Passive: movement +0.3, carry capacity +15, melee dodge +5. Champion, fighter level 7.
+s08084	remarkable athlete
+s08085	Champion: movement +0.3, carry capacity +15, melee dodge +5.
+s08086	Passive: weapon hits have a 10% chance to deal double damage (15% after superior survivor at level 15). Champion, fighter level 3.
+s08087	improved critical
+s08088	Passive: melee hit ×1.08, shooting accuracy ×1.08, armor +5%. Champion, fighter level 11.
+s08089	additional fighting style
+s08090	Champion: melee hit ×1.08, shooting accuracy ×1.08, armor +5%.
+s08091	Passive: while total injuries exceed 20, heal 5 + Constitution modifier every 250 ticks; improved critical's double damage chance rises to 15%. Champion, fighter level 15.
+s08092	survivor
+s08093	Passive: wizard spell cooldowns ×0.85 after casting. School of Divination, wizard level 6.
+s08094	expert divination
+s08095	Passive: portent becomes 3 times per day. School of Divination, wizard level 14.
+s08096	greater portent
+s08097	Passive: twice per day, re-roll one of your own failed saves. School of Divination, wizard level 2.
+s08098	portent
+s08099	For 1 hour sight +30%, shooting accuracy +10%, melee dodge +10. No mana cost, once per day. School of Divination, wizard level 10.
+s08100	the third eye
+s08101	Seeing everything clearly: sight +30%, shooting accuracy +10%, melee dodge +10.
+s08102	A paladin's aura of devotion: mind resistance +30%, break threshold -5%.
+s08103	devotion's shelter
+s08104	Passive: allies within 3 cells get mind resistance +30%, break threshold -5%. Oath of Devotion, paladin level 7.
+s08105	aura of devotion
+s08106	Oath of Devotion: allies within 3 cells get mind resistance +30%, break threshold -5%.
+s08107	Wreathe yourself in holy light for 30 seconds: enemies within radius 3 take 8 × divine power radiant damage every 2 seconds (doubled against undead and fiends), and you take ×0.8 damage. Divinity 3, cooldown 1 hour. Oath of Devotion, paladin level 15.
+s08108	holy nimbus
+s08109	Surrounded by holy light: enemies within radius 3 take radiant damage every 2 seconds (= severity), and you take ×0.8 damage.
+s08110	Purify one ally within 12 cells (can be yourself): removes toxins, shaken and panic. Divinity 1, cooldown 20 seconds. Oath of Devotion, paladin level 11.
+s08111	purifying touch
+s08112	Sanctify your weapon for 30 seconds: melee hit +25%, the first weapon hit every 2 seconds adds 6 × divine power radiant damage (doubled against undead and fiends). Divinity 1, cooldown 30 seconds. Oath of Devotion, paladin level 3.
+s08113	Weapon sanctified: melee hit +25%, the first weapon hit every 2 seconds adds radiant damage (= severity).
+s08114	Hostile undead within radius 6 flee for 10 seconds. Divinity 1, cooldown 30 seconds. Oath of Devotion, paladin level 3.
+s08115	turn the unholy
+s08116	Grave Domain: necrotic damage taken halved.
+s08117	eyes of the grave
+s08118	Passive: necrotic damage taken halved. Grave Domain, cleric level 1.
+s08119	Passive: when an enemy dies within 10 cells, you and allies within 4 cells each heal 10 + cleric level injury (at most once every 10 seconds). Grave Domain, cleric level 17.
+s08120	keeper of souls
+s08121	Marked by a Grave cleric: the next attack against it deals ×2 damage.
+s08122	path to the grave
+s08123	Mark one enemy within 15 cells for 10 seconds: the next attack against it deals ×2 damage. Channel Divinity 1, no divinity cost, cooldown 1 hour. Grave Domain, cleric level 2.
+s08124	channel divinity: path to the grave
+s08125	Passive: cleric divine magic power ×1.15. Grave Domain, cleric level 8.
+s08126	potent spellcasting
+s08127	Passive: when casting healing divine magic on an ally with over 20 injuries, heal the same amount once more. Grave Domain, cleric level 6.
+s08128	sentinel at death's door
+s08129	Don armor of the Shadowfell for 30 seconds: damage taken ×0.8. Pact mana 1, cooldown 30 seconds. The Hexblade patron, warlock level 7.
+s08130	armor of hexes
+s08131	Armor of the Shadowfell: damage taken ×0.8.
+s08132	Curse one enemy within 15 cells for 30 seconds: it takes ×1.25 damage (×1.5 with master of hexes at level 15); when it dies you heal 5 + warlock level injury. Pact mana 1, cooldown 10 seconds. The Hexblade patron, warlock level 1.
+s08133	hexblade's curse
+s08134	Cursed by a Hexblade: damage taken ×1.25; when it dies the Hexblade heals.
+s08135	Passive: targets of hexblade's curse take ×1.5 damage (originally ×1.25), and its damage against you ×0.8. The Hexblade patron, warlock level 15.
+s08136	master of hexes
+s08137	A spectral shadow slashes around you for 30 seconds: enemies within radius 2.5 take 6 × pact power damage every 2 seconds. Pact mana 2, cooldown 1 hour. The Hexblade patron, warlock level 11.
+s08138	accursed specter
+s08139	A spectral shadow slashes around you: enemies within radius 2.5 take radiant damage every 2 seconds (= severity).
+s08140	Passive: melee hit +15%, armor +10%. The Hexblade patron, warlock level 3.
+s08141	hex warrior
+s08142	The Hexblade: melee hit +15%, armor +10%.
+s08143	Illusions made real: for 30 seconds gain 5 × arcane power mirror images (each hit consumes one and misses). Mana 3, cooldown 1 hour. School of Illusion, wizard level 14.
+s08144	illusory reality
+s08145	Passive: the first time each day you'd be downed, leave an illusion behind and flicker to another spot within 5 cells, healing a quarter of your wounds. School of Illusion, wizard level 10.
+s08146	illusory self
+s08147	Passive: a wavering form, melee dodge +8. School of Illusion, wizard level 2.
+s08148	illusion savant
+s08149	Enemies within radius 5 are scared off by illusions for 10 seconds (mind resistance can block it; bosses unaffected). Mana 2, cooldown 30 seconds. School of Illusion, wizard level 6.
+s08150	malleable illusions
+s08151	School of Illusion: a wavering form, melee dodge +8.
+s08152	Borrowing the skill of the ancients: crafting speed ×1.3, global work speed ×1.2.
+s08153	knowledge of the ages
+s08154	Knowledge Domain: research speed ×1.25, learning speed ×1.2.
+s08155	blessings of knowledge
+s08156	Passive: research speed ×1.25, learning speed ×1.2. Knowledge Domain, cleric level 1.
+s08157	For 1 hour crafting speed ×1.3, global work speed ×1.2. Channel Divinity 1, no divinity cost, once per day. Knowledge Domain, cleric level 2.
+s08158	channel divinity: knowledge of the ages
+s08159	Passive: cleric divine magic power ×1.15. Knowledge Domain, cleric level 8.
+s08160	The cleric read its thoughts: melee dodge -20, damage taken ×1.15.
+s08161	thoughts read
+s08162	Read the thoughts of one enemy within 15 cells for 30 seconds: melee dodge -20, damage taken ×1.15; humanlike targets who fail to block it with mind resistance are also shaken for 10 seconds. Divinity 1, cooldown 20 seconds. Knowledge Domain, cleric level 6.
+s08163	Enemies within radius 8 are stunned by visions of the past: shaken for 10 seconds, and those who fail to block it with mind resistance are also stunned for 3 seconds. Divinity 3, cooldown 1 hour. Knowledge Domain, cleric level 17.
+s08164	visions of the past
+s08165	Become a fierce beast: melee damage ×1.4, armor +15%, movement ×1.15. From level 6 claws and fangs pierce armor, from level 14 wounds keep healing.
+s08166	combat wild shape
+s08167	Become a fierce beast for 1 hour: melee damage ×1.4, armor +15%, movement ×1.15. Mana 1, cooldown 10 seconds. Circle of the Moon, druid level 2.
+s08168	Become an elemental: fire and cold damage halved, enemies within radius 2 are burned every 2 seconds.
+s08169	Become an elemental for 1 hour: fire and cold damage halved, enemies within radius 2 take 6 × verdant power burn damage every 2 seconds. Mana 2, cooldown 30 seconds. Circle of the Moon, druid level 10.
+s08170	elemental form
+s08171	elemental wild shape
+s08172	Passive: in combat wild shape or elemental form, melee armor penetration +30%. Circle of the Moon, druid level 6.
+s08173	primal strike
+s08174	Passive: while shapeshifted, heal 3 + druid level × 0.3 injury every 250 ticks. Circle of the Moon, druid level 14.
+s08175	thousand forms
+s08176	Take a hostile undead within 15 cells under your control for 1 hour (undead horde, necromantic constructs, death knights, etc.; half success against bosses). Mana 3, cooldown 1 hour. School of Necromancy, wizard level 14.
+s08177	command undead
+s08178	Passive: when an enemy you killed is within 10 cells, heal 5 + wizard level injury. School of Necromancy, wizard level 2.
+s08179	grim harvest
+s08180	School of Necromancy: necrotic damage taken halved, toxic resistance +50%.
+s08181	inured to undeath
+s08182	Passive: necrotic damage taken halved, toxic resistance +50%. School of Necromancy, wizard level 10.
+s08183	Raise a humanlike corpse within 10 cells as a servant. Mana 2, cooldown 1 hour. School of Necromancy, wizard level 6.
+s08184	undead thralls
+s08185	Melee damage ×1.3, melee dodge +25.
+s08186	master duelist
+s08187	Melee hit +20%, melee dodge +15.
+s08188	elegant maneuver
+s08189	For 10 seconds melee hit +20%, melee dodge +15. No resource cost, cooldown 20 seconds. Swashbuckler, rogue level 11.
+s08190	Passive: movement +0.3, melee dodge +10. Swashbuckler, rogue level 3.
+s08191	fancy footwork
+s08192	Swashbuckler: movement +0.3, melee dodge +10.
+s08193	For 20 seconds melee damage ×1.3, melee dodge +25. No resource cost, cooldown 1 hour. Swashbuckler, rogue level 15.
+s08194	Say a few charming words to one humanlike enemy within 10 cells: charm it for 30 seconds (it lays down its hostility; mind resistance can block it). No resource cost, cooldown 1 hour. Swashbuckler, rogue level 7.
+s08195	panache
+s08196	Passive: in single combat (no other allies of yours next to the target), melee damage ×1.2. Swashbuckler, rogue level 3.
+s08197	rakish audacity
+s08198	A blade congealed from psychic force: melee damage ×1.25, melee cooldown ×0.9.
+s08199	psychic blades
+s08200	Soulknife: psychic sensitivity +20%, mind resistance +20%.
+s08201	psionic power
+s08202	Passive: psychic sensitivity +20%, mind resistance +20%. Soulknife, rogue level 3.
+s08203	Congeal a blade from psychic force for 1 hour: melee damage ×1.25, melee cooldown ×0.9. No resource cost, cooldown 10 seconds. Soulknife, rogue level 3.
+s08204	For 10 seconds movement ×1.2, melee dodge +20. No resource cost, cooldown 1 hour. Soulknife, rogue level 11.
+s08205	psychic veil
+s08206	Rend the mind of one enemy within 12 cells: 20 × cunning power psychic damage, and those who fail to block it with mind resistance are also stunned for 3 seconds. No resource cost, cooldown 1 hour. Soulknife, rogue level 15.
+s08207	rend mind
+s08208	Hurl a soul blade at one enemy within 12 cells: 10 × cunning power psychic damage. No resource cost, cooldown 6 seconds. Soulknife, rogue level 7.
+s08209	soul blade throw
+s08210	Elusive: movement ×1.2, melee dodge +20.
+s08211	The lore of protectors: arcane wards absorb damage and can be projected onto allies, mind and armor grow steadier, and finally all damage is reduced by 15%.
+s08212	School of Abjuration
+s08213	A pact with an angel of the upper planes: healing light mends allies, radiant soul strengthens healing and holy flame, celestial resilience shields everyone, radiant wrath scorches enemies, and finally you rise again in searing vengeance when you fall.
+s08214	The Celestial
+s08215	A fighter who has perfected martial skill: weapon hits have a 10% (15% at level 15) chance of double damage, more athletic than anyone, an extra fighting stance, and finally recovers on their own even when badly hurt. All passive, no input needed.
+s08216	Champion
+s08217	A shapeshifter under the moonlight: fights as a fierce beast (higher melee damage, armor and move speed), claws and fangs pierce armor in beast form, from level 10 can take elemental form and burn nearby enemies, and from level 14 wounds keep healing while shapeshifted.
+s08218	Circle of the Moon
+s08219	The most classic paladin: sacred weapon adds radiant damage, turns away undead and fiends, protects those nearby from charm and intimidation, purifies poison and fear from allies, and finally wreathes themself in a holy nimbus.
+s08220	Oath of Devotion
+s08221	A wizard who sees the future: a few failed saves each day can be redone, arcane spell cooldowns are shorter, the third eye opens to see everything, and finally more portents.
+s08222	School of Divination
+s08223	A cleric standing between life and death: unafraid of necrotic power, Channel Divinity marks an enemy so its next hit taken is doubled, dying allies receive double healing, divine magic is stronger, and finally deaths nearby turn into healing for the living.
+s08224	Grave Domain
+s08225	A pact with a sentient sword of the Shadowfell: curse an enemy to make it more fragile and heal when it dies, fight in armor with weapons, don armor of hexes, a spectral shadow appears to slash enemies, and finally become a master of hexes.
+s08226	The Hexblade
+s08227	A wizard who fools the eye: a wavering form hard to hit, malleable illusions scare off groups of enemies, leaves an illusion behind and flickers elsewhere when about to fall, and finally illusions become reality: more mirror images that last longer.
+s08228	School of Illusion
+s08229	A cleric of the god of knowledge: researches and learns faster, Channel Divinity borrows the skill of the ancients, reads an enemy's thoughts to expose its every weakness, divine magic is stronger, and finally stuns groups of enemies with visions of the past.
+s08230	Knowledge Domain
+s08231	The lore of liches: harvests the life force of enemies you kill, raises servants from corpses, unafraid of necrotic power, and finally takes hostile undead under your control.
+s08232	School of Necromancy
+s08233	A rogue who congeals blades from psychic force: psychic blades strengthen melee, psionic power guards the mind, soul blades are hurled at distant enemies, the psychic veil makes you elusive, and finally you rend enemies' minds.
+s08234	Soulknife
+s08235	A dashing duelist: light footwork, fiercer in single combat, a word that makes enemies lay down their hostility, elegant maneuvers, and finally a master duelist.
+s08236	Swashbuckler
+s08237	A paladin who hunts down evildoers: swears a vow against an enemy, scares off its accomplices, strikes ever faster while chasing the vowed target, and finally becomes an avenging angel.
+s08238	Oath of Vengeance
+s08239	A cleric of the war god: casts even in armor with weapons, Channel Divinity makes the next round of attacks always hit, blesses allies' weapons, weapon hits add divine strike, and finally becomes an avatar of battle. Channel Divinity once per day (twice at level 6, three times at 18).
+s08240	War Domain
+s08241	A furious roar: enemies within radius 5 are shaken for 10 seconds (movement ×0.7, lower hit chance). Divinity 1, cooldown 30 seconds. Oath of Vengeance, paladin level 3.
+s08242	abjure enemy
+s08243	Spread the wings of vengeance: movement ×1.4, melee damage ×1.2.
+s08244	avenging angel
+s08245	Become an avenging angel for 1 hour: movement ×1.4, melee damage ×1.2; the moment the wings spread, enemies within radius 6 are shaken for 10 seconds. Divinity 3, cooldown 1 hour. Oath of Vengeance, paladin level 15.
+s08246	Chase them down: movement +0.5.
+s08247	relentless avenger
+s08248	Passive: melee hits on the vowed target deal ×1.2 damage, and movement +0.5 for 5 seconds. Oath of Vengeance, paladin level 7.
+s08249	Melee cooldown ×0.7, melee dodge +10.
+s08250	soul of vengeance
+s08251	For 30 seconds melee cooldown ×0.7, melee dodge +10. Divinity 2, cooldown 1 hour. Oath of Vengeance, paladin level 11.
+s08252	Swear a vow against one enemy within 12 cells for 1 hour: your damage against it rises (with divine power). Divinity 1, cooldown 30 seconds. Oath of Vengeance, paladin level 3.
+s08253	vow of vengeance
+s08254	Become an avatar of battle for 1 hour: damage taken ×0.75, melee damage ×1.3, melee cooldown ×0.8. Divinity 3, cooldown 1 hour. War Domain, cleric level 17.
+s08255	avatar of battle
+s08256	Damage taken ×0.75, melee damage ×1.3, melee cooldown ×0.8.
+s08257	Melee hit +30%, shooting accuracy +10%.
+s08258	war god's blessing
+s08259	Passive: the first weapon hit every 2 seconds adds 8 × divine power damage of the same type (16 from level 14). War Domain, cleric level 8.
+s08260	divine strike: weapon
+s08261	Divine power guides the next round of attacks: melee hit +50%, shooting accuracy +30%.
+s08262	guided strike
+s08263	For 10 seconds melee hit +50%, shooting accuracy +30%. Channel Divinity 1, no divinity cost, cooldown 1 hour. War Domain, cleric level 2.
+s08264	channel divinity: guided strike
+s08265	War Domain: melee hit +10%, shooting accuracy +4%, armor +8%.
+s08266	war priest
+s08267	One ally within 20 cells gets melee hit +30% and shooting accuracy +10% for 30 seconds. Divinity 1, cooldown 20 seconds. War Domain, cleric level 6.
+s08268	Passive: melee hit +10%, shooting accuracy +4%, armor +8%. War Domain, cleric level 1.
+s08269	Walk to the target and spend some tender time together. Afterwards both get the same mood as vanilla lovin' ("got some lovin'"), and it also counts as lovin': the next lovin' cooldown is recalculated as in vanilla, and a highmate's lovin' dependency is satisfied; with Biotech, opposite-sex couples have the same pregnancy chance as vanilla (depending on both parties' family planning, sterilization, etc.).\n\nUnlike "promiscuous lovin'", this doesn't count as cheating: both parties' existing lover, partner, fiancé and spouse relationships stay unchanged.\n\nThe target must be an adult humanlike, conscious and not hostile, in the same faction or a prisoner / slave of this colony; can't be asexual or a blood relative, and their opinion of the caster must be at least 0 (no limit between lovers).
+s08270	tender lovin'
+s08271	Spending tender time with TargetA.
+s08272	Necrotic power keeps my mind steady. The turmoil of the living still affects me, but I have a calm that comes from an undying body.
+s08273	necromantic mind

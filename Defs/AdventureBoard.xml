@@ -1,54 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 1.134.0 冒险委托板（Source/AdventureBoard.cs）：冒险者告示板每 5 天（设置 3 / 5 / 10）贴出 3 条委托，同时最多接 2 条；
+<!-- 1.134.0 冒险委托板（Source/AdventureBoard.cs）：探索公告板每 5 天（设置 3 / 5 / 10）贴出 3 条委托，同时最多接 2 条；
      接下后世界地图上 2～8 格出现地点，7 天内完成，失败名声 -3。委托类型是 Def + Worker（LP_AdventureKindDef），以后的组织声望、闲暇活动、神祇任务可以往里加类型。
      不依赖 Isekai，也和 1.71.0 的探索公告板互不影响。 -->
 <Defs>
 
-  <ThingDef ParentName="BuildingBase">
-    <defName>LP_AdventurerBoard</defName>
-    <label>冒险者告示板</label>
-    <description>一块钉着悬赏和求助信的告示板。附近的村镇、商旅、通缉令和魔力湖泊的湖民会把需要冒险者的活计贴在这里：清剿怪物巢穴、讨伐通缉犯、救援被困的冒险者、寻回失物、调查闹鬼的废墟。\n\n选中后「查看委托」：每 5 天换 3 条委托，显示推荐等级和危险度；接下后世界地图上出现地点，7 天内完成。完成委托给参与者冒险者经验、银子、卷轴，并提高殖民地的名声——名声越高，危险的委托越多、报酬越好。每张地图只能放一块。</description>
-    <thingClass>LichPhylactery.Building_AdventurerBoard</thingClass>
-    <graphicData>
-      <texPath>LP/QuestBoard/QuestBoard</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(2,2)</drawSize>
-      <drawOffsetSouth>(0,0,0.35)</drawOffsetSouth>
-      <drawOffsetNorth>(0,0,0.35)</drawOffsetNorth>
-      <shadowData><volume>(0.4,0.4,1.6)</volume></shadowData>
-    </graphicData>
-    <size>(1,2)</size>
-    <rotatable>true</rotatable>
-    <defaultPlacingRot>South</defaultPlacingRot>
-    <altitudeLayer>Building</altitudeLayer>
-    <passability>PassThroughOnly</passability>
-    <pathCost>50</pathCost>
-    <fillPercent>0.5</fillPercent>
-    <canOverlapZones>false</canOverlapZones>
-    <statBases>
-      <MaxHitPoints>150</MaxHitPoints>
-      <WorkToBuild>1800</WorkToBuild>
-      <Mass>20</Mass>
-      <Flammability>1.0</Flammability>
-      <Beauty>3</Beauty>
-    </statBases>
-    <stuffCategories>
-      <li>Woody</li>
-      <li>Stony</li>
-    </stuffCategories>
-    <costStuffCount>50</costStuffCount>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <thingCategories><li>BuildingsMisc</li></thingCategories>
-    <designationCategory>Misc</designationCategory>
-    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-    <placeWorkers><li>LichPhylactery.PlaceWorker_OnePerMap</li></placeWorkers>
-  </ThingDef>
+  <!-- 1.169.0：告示板建筑合并进探索公告板 LP_QuestBoard（见 Defs/QuestBoard.xml），这里只剩名声委托的站点和类型。 -->
 
   <!-- 委托地点：没有派系的通用站点，地图内容由 GenStep_AdventureSite 按委托类型的 Worker 生成。 -->
   <SitePartDef>
     <defName>LP_AB_Site</defName>
     <label>委托地点</label>
-    <description>冒险者告示板上委托的目的地。</description>
+    <description>探索公告板上委托的目的地。</description>
     <workerClass>SitePartWorker</workerClass>
     <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
     <expandingIconTexture>World/WorldObjects/Expanding/Sites/Manhunters</expandingIconTexture>

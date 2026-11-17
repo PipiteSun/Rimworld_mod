@@ -139,66 +139,45 @@
       <li>
         <label>猫头鹰熊幼崽</label>
         <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Bear/Bear</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/Owlbear/Owlbear</texPath>
           <drawSize>1.4</drawSize>
-          <color>(128,112,84)</color>
           <shadowData>
             <volume>(0.4, 0.3, 0.3)</volume>
             <offset>(0,0,-0.2)</offset>
           </shadowData>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Bear/Dessicated_Bear</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/Owlbear/Dessicated_Owlbear</texPath>
           <drawSize>1.4</drawSize>
         </dessicatedBodyGraphicData>
-        <swimmingGraphicData>
-          <texPath>Things/Pawn/Animal/Bear/SwimmingBear</texPath>
-          <graphicClass>Graphic_Multi</graphicClass>
-          <drawSize>1.4</drawSize>
-          <color>(128,112,84)</color>
-        </swimmingGraphicData>
       </li>
       <li>
         <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Bear/Bear</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/Owlbear/Owlbear</texPath>
           <drawSize>2</drawSize>
-          <color>(128,112,84)</color>
           <shadowData>
             <volume>(0.6, 0.45, 0.45)</volume>
             <offset>(0,0,-0.25)</offset>
           </shadowData>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Bear/Dessicated_Bear</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/Owlbear/Dessicated_Owlbear</texPath>
           <drawSize>2</drawSize>
         </dessicatedBodyGraphicData>
-        <swimmingGraphicData>
-          <texPath>Things/Pawn/Animal/Bear/SwimmingBear</texPath>
-          <graphicClass>Graphic_Multi</graphicClass>
-          <drawSize>2</drawSize>
-          <color>(128,112,84)</color>
-        </swimmingGraphicData>
       </li>
       <li>
         <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Bear/Bear</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/Owlbear/Owlbear</texPath>
           <drawSize>2.7</drawSize>
-          <color>(128,112,84)</color>
           <shadowData>
             <volume>(0.8, 0.6, 0.6)</volume>
             <offset>(0,0,-0.3)</offset>
           </shadowData>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Bear/Dessicated_Bear</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/Owlbear/Dessicated_Owlbear</texPath>
           <drawSize>2.7</drawSize>
         </dessicatedBodyGraphicData>
-        <swimmingGraphicData>
-          <texPath>Things/Pawn/Animal/Bear/SwimmingBear</texPath>
-          <graphicClass>Graphic_Multi</graphicClass>
-          <drawSize>2.7</drawSize>
-          <color>(128,112,84)</color>
-        </swimmingGraphicData>
       </li>
     </lifeStages>
   </PawnKindDef>
@@ -365,42 +344,39 @@
       <li>
         <label>邪座狼幼崽</label>
         <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Warg/Warg</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/Worg/Worg</texPath>
           <drawSize>1.0</drawSize>
-          <color>(52,50,50)</color>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Warg/Dessicated_Warg</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/Worg/Dessicated_Worg</texPath>
           <drawSize>1.0</drawSize>
         </dessicatedBodyGraphicData>
       </li>
       <li>
         <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Warg/Warg</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/Worg/Worg</texPath>
           <drawSize>1.6</drawSize>
-          <color>(52,50,50)</color>
           <shadowData>
             <volume>(0.25, 0.3, 0.25)</volume>
             <offset>(0,0,-0.15)</offset>
           </shadowData>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Warg/Dessicated_Warg</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/Worg/Dessicated_Worg</texPath>
           <drawSize>1.6</drawSize>
         </dessicatedBodyGraphicData>
       </li>
       <li>
         <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Warg/Warg</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/Worg/Worg</texPath>
           <drawSize>2.0</drawSize>
-          <color>(52,50,50)</color>
           <shadowData>
             <volume>(0.3, 0.4, 0.3)</volume>
             <offset>(0,0,-0.15)</offset>
           </shadowData>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Warg/Dessicated_Warg</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/Worg/Dessicated_Worg</texPath>
           <drawSize>2.0</drawSize>
         </dessicatedBodyGraphicData>
       </li>
@@ -520,42 +496,39 @@
       <li>
         <label>冬狼幼崽</label>
         <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Wolf_Arctic/Wolf_Arctic</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/WinterWolf/WinterWolf</texPath>
           <drawSize>1.05</drawSize>
-          <color>(190,222,242)</color>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Wolf_Arctic/Dessicated_Wolf_Arctic</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/WinterWolf/Dessicated_WinterWolf</texPath>
           <drawSize>1.05</drawSize>
         </dessicatedBodyGraphicData>
       </li>
       <li>
         <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Wolf_Arctic/Wolf_Arctic</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/WinterWolf/WinterWolf</texPath>
           <drawSize>1.6</drawSize>
-          <color>(190,222,242)</color>
           <shadowData>
             <volume>(0.25, 0.3, 0.25)</volume>
             <offset>(0,0,-0.15)</offset>
           </shadowData>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Wolf_Arctic/Dessicated_Wolf_Arctic</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/WinterWolf/Dessicated_WinterWolf</texPath>
           <drawSize>1.6</drawSize>
         </dessicatedBodyGraphicData>
       </li>
       <li>
         <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Wolf_Arctic/Wolf_Arctic</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/WinterWolf/WinterWolf</texPath>
           <drawSize>2.1</drawSize>
-          <color>(190,222,242)</color>
           <shadowData>
             <volume>(0.3, 0.4, 0.3)</volume>
             <offset>(0,0,-0.15)</offset>
           </shadowData>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Wolf_Arctic/Dessicated_Wolf_Arctic</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/WinterWolf/Dessicated_WinterWolf</texPath>
           <drawSize>2.1</drawSize>
         </dessicatedBodyGraphicData>
       </li>
@@ -678,42 +651,39 @@
       <li>
         <label>地狱犬幼崽</label>
         <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Wolf_Timber/Wolf_Timber</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/HellHound/HellHound</texPath>
           <drawSize>1.05</drawSize>
-          <color>(96,34,28)</color>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Wolf_Timber/Dessicated_Wolf_Timber</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/HellHound/Dessicated_HellHound</texPath>
           <drawSize>1.05</drawSize>
         </dessicatedBodyGraphicData>
       </li>
       <li>
         <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Wolf_Timber/Wolf_Timber</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/HellHound/HellHound</texPath>
           <drawSize>1.5</drawSize>
-          <color>(96,34,28)</color>
           <shadowData>
             <volume>(0.25, 0.3, 0.25)</volume>
             <offset>(0,0,-0.15)</offset>
           </shadowData>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Wolf_Timber/Dessicated_Wolf_Timber</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/HellHound/Dessicated_HellHound</texPath>
           <drawSize>1.5</drawSize>
         </dessicatedBodyGraphicData>
       </li>
       <li>
         <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Wolf_Timber/Wolf_Timber</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/HellHound/HellHound</texPath>
           <drawSize>1.95</drawSize>
-          <color>(96,34,28)</color>
           <shadowData>
             <volume>(0.3, 0.4, 0.3)</volume>
             <offset>(0,0,-0.15)</offset>
           </shadowData>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Wolf_Timber/Dessicated_Wolf_Timber</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/HellHound/Dessicated_HellHound</texPath>
           <drawSize>1.95</drawSize>
         </dessicatedBodyGraphicData>
       </li>
@@ -758,42 +728,39 @@
       <li>
         <label>魔化兽幼崽</label>
         <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Cougar/Cougar</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/DisplacerBeast/DisplacerBeast</texPath>
           <drawSize>1.1</drawSize>
-          <color>(62,48,104)</color>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Cougar/Dessicated_Cougar</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/DisplacerBeast/Dessicated_DisplacerBeast</texPath>
           <drawSize>1.1</drawSize>
         </dessicatedBodyGraphicData>
       </li>
       <li>
         <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Cougar/Cougar</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/DisplacerBeast/DisplacerBeast</texPath>
           <drawSize>1.5</drawSize>
-          <color>(62,48,104)</color>
           <shadowData>
             <volume>(0.3, 0.3, 0.3)</volume>
             <offset>(0,0,-0.3)</offset>
           </shadowData>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Cougar/Dessicated_Cougar</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/DisplacerBeast/Dessicated_DisplacerBeast</texPath>
           <drawSize>1.5</drawSize>
         </dessicatedBodyGraphicData>
       </li>
       <li>
         <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Cougar/Cougar</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/DisplacerBeast/DisplacerBeast</texPath>
           <drawSize>2.3</drawSize>
-          <color>(62,48,104)</color>
           <shadowData>
             <volume>(0.4, 0.4, 0.4)</volume>
             <offset>(0,0,-0.1)</offset>
           </shadowData>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Cougar/Dessicated_Cougar</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/DisplacerBeast/Dessicated_DisplacerBeast</texPath>
           <drawSize>2.3</drawSize>
         </dessicatedBodyGraphicData>
       </li>
@@ -933,45 +900,39 @@
       <li>
         <label>闪光犬幼崽</label>
         <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Husky/Husky</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/BlinkDog/BlinkDog</texPath>
           <drawSize>1.0</drawSize>
-          <color>(226,200,128)</color>
-          <shaderType>CutoutComplex</shaderType>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Husky/Dessicated_Husky</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/BlinkDog/Dessicated_BlinkDog</texPath>
           <drawSize>1.0</drawSize>
         </dessicatedBodyGraphicData>
       </li>
       <li>
         <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Husky/Husky</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/BlinkDog/BlinkDog</texPath>
           <drawSize>1.45</drawSize>
-          <color>(226,200,128)</color>
-          <shaderType>CutoutComplex</shaderType>
           <shadowData>
             <volume>(0.25, 0.3, 0.25)</volume>
             <offset>(0,0,-0.15)</offset>
           </shadowData>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Husky/Dessicated_Husky</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/BlinkDog/Dessicated_BlinkDog</texPath>
           <drawSize>1.45</drawSize>
         </dessicatedBodyGraphicData>
       </li>
       <li>
         <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Husky/Husky</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/BlinkDog/BlinkDog</texPath>
           <drawSize>1.65</drawSize>
-          <color>(226,200,128)</color>
-          <shaderType>CutoutComplex</shaderType>
           <shadowData>
             <volume>(0.3, 0.4, 0.3)</volume>
             <offset>(0,0,-0.15)</offset>
           </shadowData>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Husky/Dessicated_Husky</texPath>
+          <texPath>Things/Pawn/Animal/LP_Beasts/BlinkDog/Dessicated_BlinkDog</texPath>
           <drawSize>1.65</drawSize>
         </dessicatedBodyGraphicData>
       </li>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 洛山达的庆典：在晨光里欢庆新生。白天开始品质+10%。难忘时：3天「黎明的眷顾」（洛山达赐福）。 -->
+  <LP_FestivalPattern_Lathander.descOverride>Lathander's festival: celebrate rebirth in the morning light. +10% quality when started by day. When unforgettable: 3 days of "favor of the dawn" (Lathander's blessing).</LP_FestivalPattern_Lathander.descOverride>
+  <!-- 每年{DATE}，{MEMBERS}要向洛山达举行绿草节。 -->
+  <LP_FestivalPattern_Lathander.ritualExpectedDesc>Every year on {DATE}, {MEMBERS} hold Greengrass for Lathander.</LP_FestivalPattern_Lathander.ritualExpectedDesc>
+  <!-- 绿草节 -->
+  <LP_FestivalPattern_Lathander.shortDescOverride>Greengrass</LP_FestivalPattern_Lathander.shortDescOverride>
+  <!-- 提尔的庆典：重申誓言、裁决纷争。每4年（年份能被4整除）是大盾会：神眷结果×1.5。难忘时：主持人立下誓言（30天：近战命中+5，社交冲突几率×0.5）。 -->
+  <LP_FestivalPattern_Tyr.descOverride>Tyr's festival: reaffirm vows and settle disputes. Every 4 years (years divisible by 4) is a Great Shieldmeet: divine favor result ×1.5. When unforgettable: the leader swears a vow (30 days: melee hit +5, social fight chance ×0.5).</LP_FestivalPattern_Tyr.descOverride>
+  <!-- 每年{DATE}，{MEMBERS}要向提尔举行盾会。 -->
+  <LP_FestivalPattern_Tyr.ritualExpectedDesc>Every year on {DATE}, {MEMBERS} hold the Shieldmeet for Tyr.</LP_FestivalPattern_Tyr.ritualExpectedDesc>
+  <!-- 盾会 -->
+  <LP_FestivalPattern_Tyr.shortDescOverride>Shieldmeet</LP_FestivalPattern_Tyr.shortDescOverride>
+  <!-- 密斯特拉的庆典：在星光下向魔网致意。夜里开始品质+10%，每名会施法的参与者+3%。难忘时：参与者精神力补满，3天心灵敏感度+10%。 -->
+  <LP_FestivalPattern_Mystra.descOverride>Mystra's festival: salute the Weave under the stars. +10% quality when started at night, +3% for each spellcasting participant. When unforgettable: participants' psyfocus is refilled, psychic sensitivity +10% for 3 days.</LP_FestivalPattern_Mystra.descOverride>
+  <!-- 每年{DATE}，{MEMBERS}要向密斯特拉举行魔网之夜。 -->
+  <LP_FestivalPattern_Mystra.ritualExpectedDesc>Every year on {DATE}, {MEMBERS} hold the Night of the Weave for Mystra.</LP_FestivalPattern_Mystra.ritualExpectedDesc>
+  <!-- 魔网之夜 -->
+  <LP_FestivalPattern_Mystra.shortDescOverride>Night of the Weave</LP_FestivalPattern_Mystra.shortDescOverride>
+  <!-- 凯兰沃的庆典：与逝者共进一餐，送别不得安息的魂灵。地图上有已入葬的墓或石棺时品质+10%。难忘时：地图上所有人形尸体得到安息，参与者心情+5（10天）。 -->
+  <LP_FestivalPattern_Kelemvor.descOverride>Kelemvor's festival: share a meal with the departed and send off restless spirits. +10% quality when there's an occupied grave or sarcophagus on the map. When unforgettable: all humanlike corpses on the map are laid to rest, participants get mood +5 (10 days).</LP_FestivalPattern_Kelemvor.descOverride>
+  <!-- 每年{DATE}，{MEMBERS}要向凯兰沃举行亡者之宴。 -->
+  <LP_FestivalPattern_Kelemvor.ritualExpectedDesc>Every year on {DATE}, {MEMBERS} hold the Feast of the Dead for Kelemvor.</LP_FestivalPattern_Kelemvor.ritualExpectedDesc>
+  <!-- 亡者之宴 -->
+  <LP_FestivalPattern_Kelemvor.shortDescOverride>Feast of the Dead</LP_FestivalPattern_Kelemvor.shortDescOverride>
+  <!-- 马拉尔的庆典：把猎物献给兽王。开始时圣坛3格内要有一具体型≥0.7的动物尸体，庆典结束时献上。难忘时：参与者5天近战命中+5、射击精度+5%。 -->
+  <LP_FestivalPattern_Malar.descOverride>Malar's festival: offer prey to the Beastlord. At the start there must be an animal corpse of body size ≥0.7 within 3 cells of the altar, offered when the festival ends. When unforgettable: participants get melee hit +5 and shooting accuracy +5% for 5 days.</LP_FestivalPattern_Malar.descOverride>
+  <!-- 每年{DATE}，{MEMBERS}要向马拉尔举行大猎。 -->
+  <LP_FestivalPattern_Malar.ritualExpectedDesc>Every year on {DATE}, {MEMBERS} hold the Great Hunt for Malar.</LP_FestivalPattern_Malar.ritualExpectedDesc>
+  <!-- 大猎 -->
+  <LP_FestivalPattern_Malar.shortDescOverride>Great Hunt</LP_FestivalPattern_Malar.shortDescOverride>
+  <!-- 塔洛斯的庆典：在狂风中高歌。雷暴中品质+25%。难忘时：3天塔洛斯赐福。 -->
+  <LP_FestivalPattern_Talos.descOverride>Talos's festival: sing loud in the gale. +25% quality in a thunderstorm. When unforgettable: 3 days of Talos's blessing.</LP_FestivalPattern_Talos.descOverride>
+  <!-- 每年{DATE}，{MEMBERS}要向塔洛斯举行风暴之歌。 -->
+  <LP_FestivalPattern_Talos.ritualExpectedDesc>Every year on {DATE}, {MEMBERS} hold the Storm Song for Talos.</LP_FestivalPattern_Talos.ritualExpectedDesc>
+  <!-- 风暴之歌 -->
+  <LP_FestivalPattern_Talos.shortDescOverride>Storm Song</LP_FestivalPattern_Talos.shortDescOverride>
+  <!-- 班恩的庆典：向黑手宣誓服从。每名在场的奴隶品质+5%（最多+20%）。难忘时：地图上所有奴隶的压制度+20%。 -->
+  <LP_FestivalPattern_Bane.descOverride>Bane's festival: swear obedience to the Black Hand. +5% quality for each slave present (up to +20%). When unforgettable: suppression of all slaves on the map +20%.</LP_FestivalPattern_Bane.descOverride>
+  <!-- 每年{DATE}，{MEMBERS}要向班恩举行暴政之日。 -->
+  <LP_FestivalPattern_Bane.ritualExpectedDesc>Every year on {DATE}, {MEMBERS} hold the Day of Tyranny for Bane.</LP_FestivalPattern_Bane.ritualExpectedDesc>
+  <!-- 暴政之日 -->
+  <LP_FestivalPattern_Bane.shortDescOverride>Day of Tyranny</LP_FestivalPattern_Bane.shortDescOverride>
+  <!-- 莎尔的庆典：在黑暗中忘却痛苦。夜里品质+20%，圣坛所在格亮度低于30%再+10%。难忘时：参与者5天近战闪避+8。 -->
+  <LP_FestivalPattern_Shar.descOverride>Shar's festival: forget pain in darkness. +20% quality at night, another +10% when the altar's cell has under 30% light. When unforgettable: participants get melee dodge +8 for 5 days.</LP_FestivalPattern_Shar.descOverride>
+  <!-- 每年{DATE}，{MEMBERS}要向莎尔举行无光守夜。 -->
+  <LP_FestivalPattern_Shar.ritualExpectedDesc>Every year on {DATE}, {MEMBERS} hold the Lightless Vigil for Shar.</LP_FestivalPattern_Shar.ritualExpectedDesc>
+  <!-- 无光守夜 -->
+  <LP_FestivalPattern_Shar.shortDescOverride>Lightless Vigil</LP_FestivalPattern_Shar.shortDescOverride>
+  <!-- 苏尔特的庆典：把最好的兵甲投进熔炉。开始时圣坛3格内要有市值合计≥300的武器或护甲，庆典结束时献上。难忘时：参与者5天锻造速度+25%。 -->
+  <LP_FestivalPattern_Surtr.descOverride>Surtur's festival: cast the finest arms and armor into the forge. At the start there must be weapons or armor worth ≥300 in total within 3 cells of the altar, offered when the festival ends. When unforgettable: participants get smithing speed +25% for 5 days.</LP_FestivalPattern_Surtr.descOverride>
+  <!-- 每年{DATE}，{MEMBERS}要向苏尔特举行熔炉之火。 -->
+  <LP_FestivalPattern_Surtr.ritualExpectedDesc>Every year on {DATE}, {MEMBERS} hold the Forgefire for Surtur.</LP_FestivalPattern_Surtr.ritualExpectedDesc>
+  <!-- 熔炉之火 -->
+  <LP_FestivalPattern_Surtr.shortDescOverride>Forgefire</LP_FestivalPattern_Surtr.shortDescOverride>
+  <!-- 可以为{PAWN_nameDef}举行灰袍葬礼。 -->
+  <LP_FuneralGreyRobe.ritualExpectedDesc>A grey-robed funeral can be held for {PAWN_nameDef}.</LP_FuneralGreyRobe.ritualExpectedDesc>
+  <!-- 可以为{PAWN_nameDef}举行灰袍葬礼。 -->
+  <LP_FuneralGreyRobe.ritualExpectedDescNoAdjective>A grey-robed funeral can be held for {PAWN_nameDef}.</LP_FuneralGreyRobe.ritualExpectedDescNoAdjective>
+  <!-- 灰袍葬礼 -->
+  <LP_FuneralGreyRobe.shortDescOverride>grey-robed funeral</LP_FuneralGreyRobe.shortDescOverride>
+</LanguageData>

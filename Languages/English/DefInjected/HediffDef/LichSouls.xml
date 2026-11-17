@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 死灵蚀伤 -->
+  <LP_NecroticWound.label>necrotic erosion</LP_NecroticWound.label>
+  <!-- 被死灵能量侵蚀的血肉。 -->
+  <LP_NecroticWound.description>Flesh corroded by necrotic energy.</LP_NecroticWound.description>
+  <!-- 已处理 -->
+  <LP_NecroticWound.comps.HediffComp_TendDuration.labelSolidTendedWell>treated</LP_NecroticWound.comps.HediffComp_TendDuration.labelSolidTendedWell>
+  <!-- 已包扎 -->
+  <LP_NecroticWound.comps.HediffComp_TendDuration.labelTendedWell>bandaged</LP_NecroticWound.comps.HediffComp_TendDuration.labelTendedWell>
+  <!-- 已处理 -->
+  <LP_NecroticWound.comps.HediffComp_TendDuration.labelTendedWellInner>treated</LP_NecroticWound.comps.HediffComp_TendDuration.labelTendedWellInner>
+  <!-- 死灵疤痕 -->
+  <LP_NecroticWound.comps.HediffComp_GetsPermanent.permanentLabel>necrotic scar</LP_NecroticWound.comps.HediffComp_GetsPermanent.permanentLabel>
+  <!-- 被侵蚀殆尽 -->
+  <LP_NecroticWound.injuryProps.destroyedLabel>corroded away</LP_NecroticWound.injuryProps.destroyedLabel>
+  <!-- 被侵蚀殆尽 -->
+  <LP_NecroticWound.injuryProps.destroyedOutLabel>corroded away</LP_NecroticWound.injuryProps.destroyedOutLabel>
+  <!-- 一处死灵蚀伤 -->
+  <LP_NecroticWound.labelNoun>a necrotic erosion</LP_NecroticWound.labelNoun>
+</LanguageData>

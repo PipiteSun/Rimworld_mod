@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 传送卷轴 -->
+  <LP_ScrollTeleport.label>scroll of teleportation</LP_ScrollTeleport.label>
+  <!-- 写满空间符文的卷轴。读完后立刻回到玩家主基地，落在自己的床边（没有床就落在殖民地中心附近）。已经在主基地时读它没有效果，卷轴也不会消耗。 -->
+  <LP_ScrollTeleport.description>A scroll covered in spatial runes. After reading it you instantly return to the player's main base, landing beside your bed (or near the colony center without a bed). Reading it while already at the main base has no effect and doesn't use up the scroll.</LP_ScrollTeleport.description>
+  <!-- 阅读{0_label} -->
+  <LP_ScrollTeleport.comps.CompUsable.useLabel>read {0_label}</LP_ScrollTeleport.comps.CompUsable.useLabel>
+  <!-- 复生卷轴 -->
+  <LP_ScrollRevivify.label>scroll of revivify</LP_ScrollRevivify.label>
+  <!-- 极其稀有的金印卷轴。对一具死亡不超过1天的人形尸体使用，可以让对方复活，之后3天处于“复生虚弱”（意识-30%）。对巫妖、死灵造物和大脑被吞噬的尸体无效。 -->
+  <LP_ScrollRevivify.description>An extremely rare gold-sealed scroll. Use on a humanlike corpse dead no more than 1 day to revive it; afterwards it has "resurrection sickness" for 3 days (consciousness -30%). No effect on liches, necromantic constructs and corpses whose brains were devoured.</LP_ScrollRevivify.description>
+  <!-- 对尸体阅读{0_label} -->
+  <LP_ScrollRevivify.comps.CompUsable.useLabel>read {0_label} on a corpse</LP_ScrollRevivify.comps.CompUsable.useLabel>
+  <!-- 防护邪恶卷轴 -->
+  <LP_ScrollProtectionEvil.label>scroll of protection from evil</LP_ScrollProtectionEvil.label>
+  <!-- 读出后在自己脚下展开一片5×5的金色结界，持续1天。敌对的死灵造物、夺心魔，以及被支配、被奴役的人都不能走进结界。 -->
+  <LP_ScrollProtectionEvil.description>Reading it spreads a 5×5 golden ward under your feet for 1 day. Hostile necromantic constructs, mind flayers, and dominated or enslaved people can't walk into the ward.</LP_ScrollProtectionEvil.description>
+  <!-- 阅读{0_label} -->
+  <LP_ScrollProtectionEvil.comps.CompUsable.useLabel>read {0_label}</LP_ScrollProtectionEvil.comps.CompUsable.useLabel>
+  <!-- 火球卷轴 -->
+  <LP_ScrollFireball.label>scroll of fireball</LP_ScrollFireball.label>
+  <!-- 封着一团火球的卷轴。读出后在30格内的目标点引发半径3格的火焰爆炸。 -->
+  <LP_ScrollFireball.description>A scroll sealing a fireball. Reading it sets off a fire explosion of radius 3 at a target point within 30 cells.</LP_ScrollFireball.description>
+  <!-- 阅读{0_label} -->
+  <LP_ScrollFireball.comps.CompUsable.useLabel>read {0_label}</LP_ScrollFireball.comps.CompUsable.useLabel>
+  <!-- 识破卷轴 -->
+  <LP_ScrollTrueSeeing.label>scroll of true seeing</LP_ScrollTrueSeeing.label>
+  <!-- 读出后1小时内揭示当前地图上所有隐形的人（包括隐形药水、伟龙、灵能隐匿和心灵隐形），并立刻解除地图上所有人被夺心魔施加的“被支配”状态（包括殖巢奴仆）。 -->
+  <LP_ScrollTrueSeeing.description>After reading, reveals all invisible people on the current map for 1 hour (including invisibility potions, great wyrms, psionic concealment and psychic invisibility), and instantly removes the "dominated" state imposed by mind flayers from everyone on the map (including colony thralls).</LP_ScrollTrueSeeing.description>
+  <!-- 阅读{0_label} -->
+  <LP_ScrollTrueSeeing.comps.CompUsable.useLabel>read {0_label}</LP_ScrollTrueSeeing.comps.CompUsable.useLabel>
+  <!-- 石化卷轴 -->
+  <LP_ScrollFleshToStone.label>scroll of flesh to stone</LP_ScrollFleshToStone.label>
+  <!-- 对30格内的一个敌人（体型不超过2）使用：对方行动迟缓，30秒后化成一尊石像物品，人完整地封在石像里，一天后自动恢复。 -->
+  <LP_ScrollFleshToStone.description>Use on one enemy within 30 cells (body size up to 2): it slows down, and after 30 seconds turns into a statue item with the person sealed whole inside, restored automatically after a day.</LP_ScrollFleshToStone.description>
+  <!-- 阅读{0_label} -->
+  <LP_ScrollFleshToStone.comps.CompUsable.useLabel>read {0_label}</LP_ScrollFleshToStone.comps.CompUsable.useLabel>
+  <!-- 恐惧凝视卷轴 -->
+  <LP_ScrollFearGaze.label>scroll of fear gaze</LP_ScrollFearGaze.label>
+  <!-- 巫妖抄写的法术卷轴。非巫妖读出也能施展3级巫妖法术“恐惧凝视”：目标点4.9格内的敌对人形陷入恐慌逃跑，敌对动物眩晕5秒。 -->
+  <LP_ScrollFearGaze.description>A spell scroll copied by a lich. Even a non-lich reading it can cast the level 3 lich spell "Fear gaze": hostile humanlikes within 4.9 cells of the target point panic and flee, and hostile animals are stunned for 5 seconds.</LP_ScrollFearGaze.description>
+  <!-- 阅读{0_label} -->
+  <LP_ScrollFearGaze.comps.CompUsable.useLabel>read {0_label}</LP_ScrollFearGaze.comps.CompUsable.useLabel>
+  <!-- 死灵冲击卷轴 -->
+  <LP_ScrollNecroticBlast.label>scroll of necrotic blast</LP_ScrollNecroticBlast.label>
+  <!-- 巫妖抄写的法术卷轴。非巫妖读出也能施展6级巫妖法术“死灵冲击”：目标点3.9格内的每个敌对目标受到15点死灵伤害，无视护甲。 -->
+  <LP_ScrollNecroticBlast.description>A spell scroll copied by a lich. Even a non-lich reading it can cast the level 6 lich spell "Necrotic blast": every hostile target within 3.9 cells of the target point takes 15 necrotic damage, ignoring armor.</LP_ScrollNecroticBlast.description>
+  <!-- 阅读{0_label} -->
+  <LP_ScrollNecroticBlast.comps.CompUsable.useLabel>read {0_label}</LP_ScrollNecroticBlast.comps.CompUsable.useLabel>
+  <!-- 石像 -->
+  <LP_PetrifiedStatue.label>statue</LP_PetrifiedStatue.label>
+  <!-- 一个被石化卷轴化成石头的人，完整地封在石像里，一天后自己恢复血肉。石像被毁时里面的人也就没了。 -->
+  <LP_PetrifiedStatue.description>A person turned to stone by a petrification scroll, sealed whole inside the statue; returns to flesh by itself after a day. If the statue is destroyed, the person inside is gone too.</LP_PetrifiedStatue.description>
+</LanguageData>

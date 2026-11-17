@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（Growth.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>已经从典籍得到过</zh><en>Already gained from a tome: </en></s>
+  <s><zh>典籍读完：</zh><en>Tome finished: </en></s>
+  <s><zh>读完了</zh><en> finished reading </en></s>
+  <s><zh>），上限 +</zh><en>), cap +</en></s>
+  <s><zh>）。书化成了灰。</zh><en>). The book turned to ash.</en></s>
+  <s><zh>已经许过这个愿了</zh><en>Already made this wish</en></s>
+  <s><zh>“谁想变得更强？”</zh><en>"Who wants to become stronger?"</en></s>
+  <s><zh>，你想要哪一份力量？”（+1，可以超过上限 1 点）</zh><en>, which power do you want?" (+1, can exceed the cap by 1)</en></s>
+  <s><zh> +1。</zh><en> +1.</en></s>
+  <s><zh>格斗经验 + 采矿经验 ×0.5</zh><en>Melee XP + Mining XP ×0.5</en></s>
+  <s><zh>射击经验</zh><en>Shooting XP</en></s>
+  <s><zh>受到的伤害 ×100</zh><en>damage taken ×100</en></s>
+  <s><zh>智识经验</zh><en>Intellectual XP</en></s>
+  <s><zh>（医疗 + 驯兽 + 种植经验）×0.5</zh><en>(Medicine + Animals + Plants XP) ×0.5</en></s>
+  <s><zh>社交经验</zh><en>Social XP</en></s>
+  <s><zh>在实战中磨砺出了更好的</zh><en> honed a better </en></s>
+  <s><zh>（+1，现在 </zh><en> in real combat (+1, now </en></s>
+  <s><zh>；这一项还能磨砺 </zh><en>; this one can still be honed </en></s>
+  <s><zh> 次）。</zh><en> times).</en></s>
+  <s><zh>实战磨砺：</zh><en>Combat honing: </en></s>
+  <s><zh>\n满了这一项 +1（一生最多 +</zh><en>\nWhen full, this one +1 (at most +</en></s>
+  <s><zh>，不超过上限；已得 </zh><en> per lifetime, not beyond the cap; gained </en></s>
+  <s><zh>）。实时累计。</zh><en>). Accumulates in real time.</en></s>
+  <s><zh>\nIsekai 共存模式：照常累计，但不加属性。</zh><en>\nIsekai coexistence mode: accumulates as usual, but doesn't add abilities.</en></s>
+  <s><zh>\n“实战磨砺”已在设置里关闭。</zh><en>\n"Combat honing" is turned off in settings.</en></s>
+  <s><zh> 典籍 +2</zh><en> tome +2</en></s>
+  <s><zh> 许愿 +1</zh><en> wish +1</en></s>
+  <s><zh>成长：</zh><en>Growth: </en></s>
+  <s><zh>属性典籍：该项 +2、上限 +2（每项一生一次）。巨灵“让我更强”：该项 +1、上限 +1（每人一生一次）。</zh><en>Ability tome: that ability +2, cap +2 (once per ability per lifetime). Genie "make me stronger": that ability +1, cap +1 (once per person per lifetime).</en></s>
+  <s><zh> 磨砺</zh><en> honing</en></s>
+  <s><zh>传承武器：</zh><en>Heritage weapon: </en></s>
+  <s><zh>认可了</zh><en> acknowledged </en></s>
+  <s><zh>：从今天起，</zh><en>: from today on, </en></s>
+  <s><zh>是它的主人。\n\n冒险者 10 级时它会觉醒（伤害 +15%，获得能力），成为传奇冒险者时升华（再 +15%，被动光环）。</zh><en> is its master.\n\nIt awakens at adventurer level 10 (damage +15%, gains an ability), and ascends when they become a legendary adventurer (another +15%, passive aura).</en></s>
+  <s><zh>失去了主人，重新沉睡。</zh><en> lost its master and fell back asleep.</en></s>
+  <s><zh>竖琴手线人</zh><en>Harper informant</en></s>
+  <s><zh>竖琴手</zh><en>Harper</en></s>
+  <s><zh>竖琴大师</zh><en>Harper master</en></s>
+  <s><zh>竖琴之主</zh><en>Lord of the Harpers</en></s>
+  <s><zh>余烬之友</zh><en>Friend of the Embers</en></s>
+  <s><zh>炉边客</zh><en>Hearthside guest</en></s>
+  <s><zh>熔铁誓友</zh><en>Iron-oath friend</en></s>
+  <s><zh>炉心之主</zh><en>Lord of the forge heart</en></s>
+  <s><zh>黑网熟客</zh><en>Dark net regular</en></s>
+  <s><zh>黑网掮客</zh><en>Black Network broker</en></s>
+  <s><zh>暗影掮主</zh><en>Shadow broker</en></s>
+  <s><zh>黑网之主</zh><en>Lord of the dark net</en></s>
+  <s><zh>派系声望：</zh><en>Faction reputation: </en></s>
+  <s><zh>殖民地在</zh><en>The colony's reputation with </en></s>
+  <s><zh>的声望到了 </zh><en> reached </en></s>
+  <s><zh>），获得头衔“</zh><en>), gaining the title "</en></s>
+  <s><zh>”。\n\n</zh><en>".\n\n</en></s>
+  <s><zh>该派系商队卖给你的东西 -5%</zh><en>That faction's caravans sell to you -5%</en></s>
+  <s><zh>每季一封情报信</zh><en>An intel letter every season</en></s>
+  <s><zh>请求援兵冷却减半，商队带一件专属物品</zh><en>Reinforcement request cooldown halved, caravans bring an exclusive item</en></s>
+  <s><zh>每季一份礼物（魔法物品，5% 是属性典籍）</zh><en>A gift every season (a magic item, 5% chance of an ability tome)</en></s>
+  <s><zh>头衔奖励：</zh><en>Title rewards: </en></s>
+  <s><zh>送礼</zh><en>Gifts</en></s>
+  <s><zh>援助</zh><en>Aid</en></s>
+  <s><zh>眼下没有哪个派系对殖民地怀有敌意。</zh><en>Right now no faction harbors hostility toward the colony.</en></s>
+  <s><zh>线人说，下一次来犯的多半是</zh><en>The informant says the next attackers will most likely be </en></s>
+  <s><zh>，规模大约 </zh><en>, about </en></s>
+  <s><zh> 点（按殖民地现在的威胁点数估算）。</zh><en> points in size (estimated from the colony's current threat points).</en></s>
+  <s><zh>情报：</zh><en>Intel: </en></s>
+  <s><zh>（你的头衔：“</zh><en> (your title: "</en></s>
+  <s><zh>”）送来了一封情报信：\n\n</zh><en>") sent an intel letter:\n\n</en></s>
+  <s><zh>送来了一份礼物：</zh><en> sent a gift: </en></s>
+  <s><zh>累计研读 30 小时后：</zh><en>After 30 hours of study in total: </en></s>
+  <s><zh> +2，上限 +2（同一项属性一生只能从典籍得一次），书随即化为灰烬。\n</zh><en> +2, cap +2 (each ability can only be raised by a tome once per lifetime), and the book turns to ash.\n</en></s>
+  <s><zh>\n不能读：</zh><en>\nCan't read: </en></s>
+  <s><zh>：已读 </zh><en>: read </en></s>
+  <s><zh> / 30 小时。</zh><en> / 30 hours.</en></s>
+  <s><zh>沉睡（无主）</zh><en>dormant (ownerless)</en></s>
+  <s><zh>升华</zh><en>ascended</en></s>
+  <s><zh>觉醒</zh><en>awakened</en></s>
+  <s><zh>沉睡：第一个用它击杀 </zh><en>Dormant: the first person to kill </en></s>
+  <s><zh> 个敌人的人成为主人（目前最多 </zh><en> enemies with it becomes its master (current most </en></s>
+  <s><zh>要握着觉醒的传承武器。</zh><en>Must hold an awakened heritage weapon.</en></s>
+  <s><zh>完成了任务：</zh><en> completed a quest: </en></s>
+  <s><zh>\n\n殖民地声望：</zh><en>\n\nColony reputation: </en></s>
+  <s><zh>（头衔：</zh><en> (title: </en></s>
+</LPStrings>

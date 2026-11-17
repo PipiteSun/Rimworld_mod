@@ -59,10 +59,10 @@ namespace LichPhylactery {
    float value=gift.MarketValue*gift.stackCount;int gw=GiftGoodwill(value);var f=GiftFaction(receiver);
    if(gift.Spawned)gift.DeSpawn();else gift.holdingOwner?.Remove(gift);
    if(receiver.inventory==null || !receiver.inventory.innerContainer.TryAdd(gift))gift.Destroy();
-   if(gw>0)Factions.ChangeGoodwillExact(f,gw,"云巨人的赠礼");
+   if(gw>0)Factions.ChangeGoodwillExact(f,gw,"云巨人的赠礼".Loc());
    var thought=DefDatabase<ThoughtDef>.GetNamedSilentFail("LP_CloudGiftReceived");
    if(thought!=null)receiver.needs?.mood?.thoughts?.memories?.TryGainMemory(thought,giver);
-   if(giver!=null)Messages.Message(giver.LabelShort+"把"+gift.LabelCap+"（约"+value.ToString("0")+"银）送给了"+receiver.LabelShort+"："+(f?.Name??"对方")+"好感 +"+gw+"。",new LookTargets(receiver),MessageTypeDefOf.PositiveEvent,false);
+   if(giver!=null)Messages.Message(giver.LabelShort+"把".Loc()+gift.LabelCap+"（约".Loc()+value.ToString("0")+"银）送给了".Loc()+receiver.LabelShort+"：".Loc()+(f?.Name??"对方".Loc())+"好感 +".Loc()+gw+"。".Loc(),new LookTargets(receiver),MessageTypeDefOf.PositiveEvent,false);
    return gw;
   }
   // 可以送的东西：自己背包里的，和身边4格内地上没被禁止的。
@@ -84,7 +84,7 @@ namespace LichPhylactery {
 
   // ---------- 唤风驱云 ----------
   public static readonly string[] WindChoices={"Clear","Fog","Rain"};
-  public static string WindLabel(string w)=>w=="Clear"?"晴天":w=="Fog"?"雾":"下雨";
+  public static string WindLabel(string w)=>w=="Clear"?"晴天".Loc():w=="Fog"?"雾".Loc():"下雨".Loc();
   public static GameCondition_LPWeather CallWind(Pawn caster,string weather)=>StormGiant.CallWeather(caster?.Map,StormGiant.W(weather),1f,false,caster?.Faction);
 
   // ---------- 云巨人贵族的装备：晨星锤 + 云纹长袍 ----------
@@ -96,24 +96,6 @@ namespace LichPhylactery {
    if(robe!=null && Items.Worn(p,robe)==null){var a=(Apparel)ThingMaker.MakeThing(robe,GenStuff.DefaultStuffFor(robe));a.TryGetComp<CompQuality>()?.SetQuality(QualityCategory.Good,ArtGenerationContext.Outsider);if(ApparelUtility.HasPartsToWear(p,robe))p.apparel.Wear(a,false);else a.Destroy();}
   }
 
-  // ---------- 收购龙蛋 ----------
-  public const float EggOfferChance=.15f,EggPriceFactor=2f;
-  public static Thing EggOn(Map map){var d=DragonHoard.EggDef;return d==null || map==null?null:map.listerThings.ThingsOfDef(d).FirstOrDefault(t=>t.Spawned);}
-  public static Letter_CloudChoice OfferForEgg(Map map,Pawn buyer){
-   var egg=EggOn(map);var f=Factions.Colony;if(egg==null || f==null || f.HostileTo(Faction.OfPlayer))return null;
-   int price=Mathf.RoundToInt(egg.MarketValue*EggPriceFactor);
-   var l=CloudLetter("收购龙蛋","egg",map,f);l.egg=egg;l.price=price;l.pawn=buyer;l.lookTargets=new LookTargets(buyer!=null?(Thing)buyer:egg);
-   l.Text=(buyer!=null?buyer.LabelShort+"（"+f.Name+"）":f.Name+"的商人")+"打听到殖民地有一枚力能龙蛋，愿意出"+price+"白银收购（龙蛋市值的两倍）。云巨人的宫廷最喜欢收藏这种稀世珍宝。\n\n接受：龙蛋交给他们，"+price+"白银放在龙蛋原来的位置。\n拒绝：没有后果。";
-   Find.LetterStack.ReceiveLetter(l);return l;
-  }
-  public static bool SellEgg(Letter_CloudChoice l){
-   var egg=l?.egg;if(egg==null || egg.Destroyed || !egg.Spawned){Messages.Message("那枚龙蛋已经不在了。",MessageTypeDefOf.RejectInput,false);return false;}
-   var map=egg.Map;var cell=egg.Position;egg.Destroy();
-   var silver=ThingMaker.MakeThing(ThingDefOf.Silver);silver.stackCount=l.price;GenPlace.TryPlaceThing(silver,cell,map,ThingPlaceMode.Near);
-   Messages.Message("龙蛋卖出，得到"+l.price+"白银。",new LookTargets(cell,map),MessageTypeDefOf.PositiveEvent,false);
-   return true;
-  }
-  public static void MaybeOfferForEgg(Map map,Pawn buyer){if(EggOn(map)!=null && Rand.Chance(EggOfferChance))OfferForEgg(map,buyer);}
 
   // ---------- 上位者的使节 ----------
   public const float EnvoyChance=.2f;public const int EnvoyGoodwill=20,EnvoyRefuse=-30,BowDays=15;
@@ -130,22 +112,21 @@ namespace LichPhylactery {
    GenSpawn.Spawn(p,entry,map);
    if(!RCellFinder.TryFindRandomSpotJustOutsideColony(p,out var chill))chill=CellFinder.RandomClosewalkCellNear(map.Center,map,10);
    LordMaker.MakeNewLord(c,new LordJob_VisitColony(c,chill,GenDate.TicksPerDay),map,new List<Pawn>{p});
-   var l=CloudLetter("上位者的使节","envoy",map,c);l.lookTargets=new LookTargets(p);l.pawn=p;
-   l.Text=c.Name+"派来了一位云巨人贵族"+p.LabelShort+"。他看着殖民地里的火巨人、霜巨人，慢条斯理地说：\n\n“巨人的阶序不会因为离开故土就消失。承认云巨人在你们之上，同盟就当你们是体面的邻居。”\n\n承认阶序：同盟好感 +"+EnvoyGoodwill+"；殖民地里的火巨人、霜巨人"+BowDays+"天“俯首”-3，之后永久“名列阶序”+2。\n拒绝："+c.Name+"好感 "+EnvoyRefuse+"，30天内同盟会来一次袭击（袭击结束后好感回到0，不会永久敌对）。";
+   var l=CloudLetter("上位者的使节".Loc(),"envoy",map,c);l.lookTargets=new LookTargets(p);l.pawn=p;
+   l.Text=c.Name+"派来了一位云巨人贵族".Loc()+p.LabelShort+"。他看着殖民地里的火巨人、霜巨人，慢条斯理地说：\n\n“巨人的阶序不会因为离开故土就消失。承认云巨人在你们之上，同盟就当你们是体面的邻居。”\n\n承认阶序：同盟好感 +".Loc()+EnvoyGoodwill+"；殖民地里的火巨人、霜巨人".Loc()+BowDays+"天“俯首”-3，之后永久“名列阶序”+2。\n拒绝：".Loc()+c.Name+"好感 ".Loc()+EnvoyRefuse+"，30天内同盟会来一次袭击（袭击结束后好感回到0，不会永久敌对）。".Loc();
    Find.LetterStack.ReceiveLetter(l);
-   MaybeOfferForEgg(map,p);
    return p;
   }
   public static void AcceptOrdning(Map map){
-   var s=CloudGiantState.Get;Factions.ChangeGoodwillExact(Factions.Colony,EnvoyGoodwill,"承认巨人阶序");
+   var s=CloudGiantState.Get;Factions.ChangeGoodwillExact(Factions.Colony,EnvoyGoodwill,"承认巨人阶序".Loc());
    if(s!=null){s.ordningAccepted=Find.TickManager.TicksGame;s.ordningAcknowledged=true;}
    var bow=DefDatabase<ThoughtDef>.GetNamedSilentFail("LP_OrdningBowed");
    foreach(var g in GiantKin.ColonyGiants(map).Where(LowGiant))g.needs?.mood?.thoughts?.memories?.TryGainMemory(bow);
   }
   public static ScheduledRaid RefuseOrdning(){
-   var c=Factions.Colony;Factions.ChangeGoodwillExact(c,EnvoyRefuse,"拒绝承认巨人阶序");
+   var c=Factions.Colony;Factions.ChangeGoodwillExact(c,EnvoyRefuse,"拒绝承认巨人阶序".Loc());
    var ev=Tribute.Events;if(ev==null || c==null)return null;
-   var r=new ScheduledRaid{faction=c.def,fireTick=Find.TickManager.TicksGame+Rand.Range(5,30)*GenDate.TicksPerDay,pointsFactor=.8f,letterLabel="阶序之怒",temporaryHostile=true};
+   var r=new ScheduledRaid{faction=c.def,fireTick=Find.TickManager.TicksGame+Rand.Range(5,30)*GenDate.TicksPerDay,pointsFactor=.8f,letterLabel="阶序之怒".Loc(),temporaryHostile=true};
    ev.scheduledRaids.Add(r);return r;
   }
   public static bool Listed(Pawn p){var s=CloudGiantState.Get;return s!=null && s.ordningAcknowledged && Find.TickManager.TicksGame-s.ordningAccepted>=BowDays*GenDate.TicksPerDay && LowGiant(p);}
@@ -185,10 +166,6 @@ namespace LichPhylactery {
    int s=CloudGiant.NobleStage(CloudGiant.Bedroom(p));return s<0?ThoughtState.Inactive:ThoughtState.ActiveAtStage(s);
   }
  }
- // 稀世珍藏：玩家的云巨人所在地图上有力能龙蛋。
- public class ThoughtWorker_CloudTreasure : ThoughtWorker {
-  protected override ThoughtState CurrentStateInternal(Pawn p)=>CloudGiant.Active(p) && GiantKin.ColonyMember(p) && CloudGiant.EggOn(p.Map)!=null?ThoughtState.ActiveAtStage(0):ThoughtState.Inactive;
- }
  // 名列阶序：承认阶序15天后，殖民地的火巨人、霜巨人永久 +2。
  public class ThoughtWorker_OrdningListed : ThoughtWorker {
   protected override ThoughtState CurrentStateInternal(Pawn p)=>GiantKin.ColonyMember(p) && CloudGiant.Listed(p)?ThoughtState.ActiveAtStage(0):ThoughtState.Inactive;
@@ -223,11 +200,11 @@ namespace LichPhylactery {
   protected override FloatMenuOption GetSingleOptionFor(Pawn clickedPawn,FloatMenuContext context){
    var giver=context.FirstSelectedPawn;
    if(giver==null || !CloudGiant.Has(giver,CloudGiant.GiftGene) || giver.Faction!=Faction.OfPlayer || clickedPawn==giver || !CloudGiant.CanReceive(clickedPawn))return null;
-   if(!giver.CanReach(clickedPawn,PathEndMode.Touch,Danger.Deadly))return new FloatMenuOption("赠礼给"+clickedPawn.LabelShort+"（无法到达）",null);
+   if(!giver.CanReach(clickedPawn,PathEndMode.Touch,Danger.Deadly))return new FloatMenuOption("赠礼给".Loc()+clickedPawn.LabelShort+"（无法到达）".Loc(),null);
    var items=CloudGiant.GiftCandidates(giver).Distinct().OrderByDescending(t=>t.MarketValue*t.stackCount).Take(12).ToList();
-   if(items.Count==0)return new FloatMenuOption("赠礼给"+clickedPawn.LabelShort+"（背包和身边4格内没有可以送的东西）",null);
-   return new FloatMenuOption("赠礼给"+clickedPawn.LabelShort+"……",()=>{
-    var opts=items.Select(t=>{float v=t.MarketValue*t.stackCount;return new FloatMenuOption(t.LabelCap+"（约"+v.ToString("0")+"银，好感+"+CloudGiant.GiftGoodwill(v)+"）",()=>{
+   if(items.Count==0)return new FloatMenuOption("赠礼给".Loc()+clickedPawn.LabelShort+"（背包和身边4格内没有可以送的东西）".Loc(),null);
+   return new FloatMenuOption("赠礼给".Loc()+clickedPawn.LabelShort+"……",()=>{
+    var opts=items.Select(t=>{float v=t.MarketValue*t.stackCount;return new FloatMenuOption(t.LabelCap+"（约".Loc()+v.ToString("0")+"银，好感+".Loc()+CloudGiant.GiftGoodwill(v)+"）".Loc(),()=>{
      var job=JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("LP_CloudGiveGift"),t,clickedPawn);job.count=t.stackCount;giver.jobs.TryTakeOrderedJob(job,JobTag.Misc);
     });}).ToList();
     Find.WindowStack.Add(new FloatMenu(opts));
@@ -259,14 +236,14 @@ namespace LichPhylactery {
   public CompProperties_CloudAbility Props=>(CompProperties_CloudAbility)props;
   Pawn Caster=>parent.pawn;
   public override bool GizmoDisabled(out string reason){
-   if(Props.effect=="wind" && !CloudGiant.Adult(Caster)){reason="只有成年的云巨人能唤风驱云。";return true;}
+   if(Props.effect=="wind" && !CloudGiant.Adult(Caster)){reason="只有成年的云巨人能唤风驱云。".Loc();return true;}
    return base.GizmoDisabled(out reason);
   }
   public string Invalid(LocalTargetInfo target){
-   var map=Caster?.Map;if(map==null)return "施法者不在地图上。";
+   var map=Caster?.Map;if(map==null)return "施法者不在地图上。".Loc();
    switch(Props.effect){
-    case "step":{var r=Races124.BasicLanding(Caster,target.Cell,CloudGiant.StepRange);if(r!=null)return r;return GenSight.LineOfSight(Caster.Position,target.Cell,map,true)?null:"看不见那里。";}
-    case "fog":return !target.Cell.IsValid || !target.Cell.InBounds(map)?"需要地图上的目标位置。":null;
+    case "step":{var r=Races124.BasicLanding(Caster,target.Cell,CloudGiant.StepRange);if(r!=null)return r;return GenSight.LineOfSight(Caster.Position,target.Cell,map,true)?null:"看不见那里。".Loc();}
+    case "fog":return !target.Cell.IsValid || !target.Cell.InBounds(map)?"需要地图上的目标位置。".Loc():null;
    }
    return null;
   }
@@ -285,8 +262,8 @@ namespace LichPhylactery {
     case "wind":
      // 选天气；关掉菜单没选就退还冷却。
      bool chosen=false;var ability=parent;var caster=Caster;
-     var opts=CloudGiant.WindChoices.Select(w=>new FloatMenuOption("唤来"+CloudGiant.WindLabel(w)+"（持续1天）",()=>{chosen=true;if(CloudGiant.CallWind(caster,w)!=null)Messages.Message(caster.LabelShort+"唤风驱云：天气转为"+CloudGiant.WindLabel(w)+"，持续一天。",caster,MessageTypeDefOf.NeutralEvent,false);})).ToList();
-     var menu=new FloatMenu(opts,"唤风驱云",false);menu.onCloseCallback=()=>{if(!chosen)ability.ResetCooldown();};
+     var opts=CloudGiant.WindChoices.Select(w=>new FloatMenuOption("唤来".Loc()+CloudGiant.WindLabel(w)+"（持续1天）".Loc(),()=>{chosen=true;if(CloudGiant.CallWind(caster,w)!=null)Messages.Message(caster.LabelShort+"唤风驱云：天气转为".Loc()+CloudGiant.WindLabel(w)+"，持续一天。".Loc(),caster,MessageTypeDefOf.NeutralEvent,false);})).ToList();
+     var menu=new FloatMenu(opts,"唤风驱云".Loc(),false);menu.onCloseCallback=()=>{if(!chosen)ability.ResetCooldown();};
      Find.WindowStack.Add(menu);break;
    }
   }
@@ -328,7 +305,7 @@ namespace LichPhylactery {
    if(now-temporaryRaidTick<2500)return;
    if(Find.Maps.Any(m=>m.lordManager.lords.Any(l=>l.faction==f && l.ownedPawns.Any(p=>p.Spawned && !p.Dead && !p.Downed))))return;
    temporaryRaid=null;
-   if(f.HostileTo(Faction.OfPlayer)){Factions.SetRelation(f,Faction.OfPlayer,0);Messages.Message(f.Name+"的怒气消了：好感回到0，不再敌对。",MessageTypeDefOf.NeutralEvent,false);}
+   if(f.HostileTo(Faction.OfPlayer)){Factions.SetRelation(f,Faction.OfPlayer,0);Messages.Message(f.Name+"的怒气消了：好感回到0，不再敌对。".Loc(),MessageTypeDefOf.NeutralEvent,false);}
   }
   public override void ExposeData(){
    base.ExposeData();
@@ -340,48 +317,23 @@ namespace LichPhylactery {
  }
 
  public class Letter_CloudChoice : LP_EventLetter {
-  public string kind;public Map map;public Thing egg;public int price;public Pawn pawn;
-  // 1.69.0 事件小人入口：使节 / 买主还在地图上（没有买主的收购信两天内有效，也能右键龙蛋）。
-  public const int NoBuyerTicks=2*GenDate.TicksPerDay;
-  protected override bool Live=>kind=="egg"?egg!=null && !egg.Destroyed && egg.Spawned && (pawn!=null?Here(pawn):Find.TickManager.TicksGame-arrivalTick<NoBuyerTicks):kind=="envoy" && Here(pawn);
-  public override IEnumerable<Thing> EventThings{get{if(pawn!=null)yield return pawn;if(kind=="egg" && egg!=null)yield return egg;}}
+  public string kind;public Map map;public Pawn pawn;
+  protected override bool Live=>kind=="envoy" && Here(pawn);
+  public override IEnumerable<Thing> EventThings{get{if(pawn!=null)yield return pawn;}}
   public override IEnumerable<DiaOption> Choices{get{
    if(Closed){yield return Option_Close;yield break;}
-   if(kind=="egg"){
-    var sell=Choice("接受（"+price+"白银）",()=>CloudGiant.SellEgg(this));if(egg==null || egg.Destroyed || !egg.Spawned)sell.Disable("那枚龙蛋已经不在了");yield return sell;
-    yield return Choice("拒绝",null);
-   }else if(kind=="envoy"){
-    yield return Choice("承认阶序",()=>CloudGiant.AcceptOrdning(map));
-    yield return Choice("拒绝",()=>CloudGiant.RefuseOrdning());
+   if(kind=="envoy"){
+    yield return Choice("承认阶序".Loc(),()=>CloudGiant.AcceptOrdning(map));
+    yield return Choice("拒绝".Loc(),()=>CloudGiant.RefuseOrdning());
    }
    yield return Option_Postpone;
   }}
   DiaOption Choice(string text,Action act)=>new DiaOption(text){action=()=>{act?.Invoke();Resolve();},resolveTree=true};
-  public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref kind,"kind");Scribe_References.Look(ref map,"map");Scribe_References.Look(ref egg,"egg");Scribe_Values.Look(ref price,"price");Scribe_References.Look(ref pawn,"lpPawn");}
- }
- // 事件：收购龙蛋（开发者模式可手动触发；平时由访客、商队到达时 15% 触发）。
- public class IncidentWorker_CloudEggOffer : IncidentWorker {
-  protected override bool CanFireNowSub(IncidentParms parms)=>CloudGiant.EggOn(parms.target as Map)!=null && Factions.Colony!=null && !Factions.Colony.HostileTo(Faction.OfPlayer);
-  protected override bool TryExecuteWorker(IncidentParms parms)=>CloudGiant.OfferForEgg(parms.target as Map,null)!=null;
+  public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref kind,"kind");Scribe_References.Look(ref map,"map");Scribe_References.Look(ref pawn,"lpPawn");}
  }
  // 事件：上位者的使节（平时每年一次 20% 由 CloudGiantState 判定；开发者模式可手动触发）。
  public class IncidentWorker_OrdningEnvoy : IncidentWorker {
   protected override bool CanFireNowSub(IncidentParms parms)=>CloudGiant.EnvoyWanted(parms.target as Map);
   protected override bool TryExecuteWorker(IncidentParms parms)=>CloudGiant.SendEnvoy(parms.target as Map)!=null;
- }
- // 云巨人访客或同盟商队到达：15% 出价收购龙蛋。
- [HarmonyPatch(typeof(IncidentWorker_VisitorGroup),"TryExecuteWorker")]
- public static class CloudEggOnVisitors {
-  static void Postfix(IncidentParms parms,bool __result){
-   if(!__result || parms?.faction==null || parms.faction!=Factions.Colony || !(parms.target is Map map))return;
-   var noble=map.mapPawns.SpawnedPawnsInFaction(parms.faction).FirstOrDefault(CloudGiant.Active);if(noble!=null)CloudGiant.MaybeOfferForEgg(map,noble);
-  }
- }
- [HarmonyPatch(typeof(IncidentWorker_TraderCaravanArrival),"TryExecuteWorker")]
- public static class CloudEggOnCaravans {
-  static void Postfix(IncidentParms parms,bool __result){
-   if(!__result || parms?.faction==null || parms.faction!=Factions.Colony || !(parms.target is Map map))return;
-   CloudGiant.MaybeOfferForEgg(map,map.mapPawns.SpawnedPawnsInFaction(parms.faction).FirstOrDefault(CloudGiant.Active));
-  }
  }
 }

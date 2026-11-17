@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 祈祷祝福 -->
+  <LP_MI_Blessed.label>prayer blessing</LP_MI_Blessed.label>
+  <!-- 念珠的祷文还在耳边：命中+5%，心智抗性+10%。 -->
+  <LP_MI_Blessed.description>The prayer of the beads still rings in the ears: hit +5%, mind resistance +10%.</LP_MI_Blessed.description>
+  <!-- 食人魔之力 -->
+  <LP_MI_OgrePower.label>ogre power</LP_MI_OgrePower.label>
+  <!-- 食人魔之力手套：搬运量×1.5，近战伤害+15%。体型1.5以上时无效。 -->
+  <LP_MI_OgrePower.description>Gauntlets of ogre power: carrying capacity ×1.5, melee damage +15%. No effect at body size 1.5+.</LP_MI_OgrePower.description>
+  <!-- 无效 -->
+  <LP_MI_OgrePower.stages.0.label>no effect</LP_MI_OgrePower.stages.0.label>
+  <!-- 箭术护腕 -->
+  <LP_MI_ArcheryBracers.label>bracers of archery</LP_MI_ArcheryBracers.label>
+  <!-- 手持弓弩时瞄准时间-15%、命中+10%。 -->
+  <LP_MI_ArcheryBracers.description>With a bow or crossbow in hand, aiming time -15%, hit +10%.</LP_MI_ArcheryBracers.description>
+  <!-- 未持弓 -->
+  <LP_MI_ArcheryBracers.stages.0.label>no bow held</LP_MI_ArcheryBracers.stages.0.label>
+  <!-- 防御护腕 -->
+  <LP_MI_DefenseBracers.label>bracers of defense</LP_MI_DefenseBracers.label>
+  <!-- 躯干没穿中层或外层衣甲时，锐器和钝器护甲各+25%。 -->
+  <LP_MI_DefenseBracers.description>When the torso wears no middle or outer layer, sharp and blunt armor +25% each.</LP_MI_DefenseBracers.description>
+  <!-- 穿着衣甲 -->
+  <LP_MI_DefenseBracers.stages.0.label>wearing armor</LP_MI_DefenseBracers.stages.0.label>
+  <!-- 动物影响 -->
+  <LP_MI_AnimalInfluence.label>animal influence</LP_MI_AnimalInfluence.label>
+  <!-- 动物影响戒指：驯服和训练成功率×1.25。 -->
+  <LP_MI_AnimalInfluence.description>Ring of animal influence: taming and training success ×1.25.</LP_MI_AnimalInfluence.description>
+  <!-- 无效 -->
+  <LP_MI_AnimalInfluence.stages.0.label>no effect</LP_MI_AnimalInfluence.stages.0.label>
+</LanguageData>

@@ -34,10 +34,10 @@ namespace LichPhylactery {
    var p=h?.pawn;if(p==null || p.Dead || p.Faction==null || !p.Faction.IsPlayer || !Adventurer.Enabled)return;
    int past=Past(p);if(past<=0 || h.level>past)return;
    bool fire=TestMemory??Rand.Chance(MemoryChance);
-   if(fire){var text=Memory(p,TestKind??(Rand.Bool?0:1));if(text!=null)Find.LetterStack.ReceiveLetter("前世记忆："+p.LabelShort,text,LetterDefOf.PositiveEvent,p);}
+   if(fire){var text=Memory(p,TestKind??(Rand.Bool?0:1));if(text!=null)Find.LetterStack.ReceiveLetter("前世记忆：".Loc()+p.LabelShort,text,LetterDefOf.PositiveEvent,p);}
    var st=State;
    if(h.level>=past && st!=null && st.done.Add(p.thingIDNumber))
-    Find.LetterStack.ReceiveLetter("前世的路走完了",p.LabelShortCap+"到了 "+past+" 级，追上了前世走到过的地方。\n\n从这里开始的路前世没有走过：冒险者经验不再翻倍，升级时也不会再想起前世的事。",LetterDefOf.NeutralEvent,p);
+    Find.LetterStack.ReceiveLetter("前世的路走完了".Loc(),p.LabelShortCap+"到了 ".Loc()+past+" 级，追上了前世走到过的地方。\n\n从这里开始的路前世没有走过：冒险者经验不再翻倍，升级时也不会再想起前世的事。".Loc(),LetterDefOf.NeutralEvent,p);
    TestMemory=null;TestKind=null;
   }
 
@@ -49,19 +49,19 @@ namespace LichPhylactery {
   static string Research(Pawn p){
    var rm=Find.ResearchManager;var proj=rm?.GetProject(null);if(proj==null || proj.IsFinished)return null;
    float add=proj.Cost*ResearchFraction;rm.AddProgress(proj,add,p);
-   return p.LabelShortCap+"在梦里回到了前世的书房，醒来后把记得的东西都写了下来。\n\n研究项目「"+proj.LabelCap+"」进度 +"+Mathf.RoundToInt(add)+"（该项目花费的 30%）。";
+   return p.LabelShortCap+"在梦里回到了前世的书房，醒来后把记得的东西都写了下来。\n\n研究项目「".Loc()+proj.LabelCap+"」进度 +".Loc()+Mathf.RoundToInt(add)+"（该项目花费的 30%）。".Loc();
   }
   static string Passion(Pawn p){
    var list=p.skills?.skills?.Where(s=>!s.TotallyDisabled && s.passion!=RimWorld.Passion.Major).ToList();
    if(list==null || list.Count==0)return null;
    var s0=list.RandomElement();var before=s0.passion;s0.passion=before==RimWorld.Passion.None?RimWorld.Passion.Minor:RimWorld.Passion.Major;
-   return p.LabelShortCap+"拿起工具的那一刻，手好像自己想起了前世的事。\n\n技能「"+s0.def.LabelCap+"」热情："+(before==RimWorld.Passion.None?"无 → 小火":"小火 → 大火")+"。";
+   return p.LabelShortCap+"拿起工具的那一刻，手好像自己想起了前世的事。\n\n技能「".Loc()+s0.def.LabelCap+"」热情：".Loc()+(before==RimWorld.Passion.None?"无 → 小火".Loc():"小火 → 大火".Loc())+"。".Loc();
   }
 
   public static string TipLine(Pawn p){
    if(p==null)return null;int past=Past(p);if(past<=0)return null;var h=Adventurer.Get(p);
-   if(!Adventurer.Enabled || h==null)return "前世等级 "+past+"（冒险者系统未启用，此特性暂不生效）";
-   return "前世等级 "+past+"，当前 "+h.level+" 级，"+(Active(p,h)?"冒险者经验 ×2":"经验加成已结束");
+   if(!Adventurer.Enabled || h==null)return "前世等级 ".Loc()+past+"（冒险者系统未启用，此特性暂不生效）".Loc();
+   return "前世等级 ".Loc()+past+"，当前 ".Loc()+h.level+" 级，".Loc()+(Active(p,h)?"冒险者经验 ×2".Loc():"经验加成已结束".Loc());
   }
  }
 

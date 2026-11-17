@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 流星雨 -->
+  <LP_Starfall.label>meteor shower</LP_Starfall.label>
+  <!-- 夜空里划过一道又一道银色的流星。天亮前会有陨石落下。 -->
+  <LP_Starfall.description>Silver shooting stars streak across the night sky one after another. Meteorites will fall before dawn.</LP_Starfall.description>
+  <!-- 流星雨停了，最后几颗陨石砸了下来。 -->
+  <LP_Starfall.endMessage>The meteor shower has ended; the last few meteorites crashed down.</LP_Starfall.endMessage>
+  <!-- 魔网潮汐 -->
+  <LP_WeaveSurge.label>Weave tide</LP_WeaveSurge.label>
+  <!-- 天上挂着彩色的极光，魔网在涨潮：每次施放能力都有 20% 几率引发野魔法。施法职业每天额外得到冒险者经验。 -->
+  <LP_WeaveSurge.description>Colorful auroras hang in the sky and the Weave is at high tide: every ability cast has a 20% chance to trigger wild magic. Spellcasting classes gain extra adventurer XP each day.</LP_WeaveSurge.description>
+  <!-- 极光散去，魔网平静了。 -->
+  <LP_WeaveSurge.endMessage>The aurora has faded and the Weave is calm.</LP_WeaveSurge.endMessage>
+</LanguageData>

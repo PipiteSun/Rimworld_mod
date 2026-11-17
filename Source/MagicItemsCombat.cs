@@ -16,12 +16,12 @@ namespace LichPhylactery {
  public class CompProperties_MagicWeapon : CompProperties {public CompProperties_MagicWeapon(){compClass=typeof(CompMagicWeapon);}}
  public class CompMagicWeapon : ThingComp {
   public bool active=true;
-  public override string CompInspectStringExtra()=>"燃火："+(active?"开启":"关闭");
+  public override string CompInspectStringExtra()=>"燃火：".Loc()+(active?"开启".Loc():"关闭".Loc());
   public override void PostExposeData(){base.PostExposeData();Scribe_Values.Look(ref active,"lpFlameActive",true);}
  }
  public static partial class MagicEffects {
   public static bool transferring;
-  public static bool IsDragon(Pawn p)=>Dragons.Is(p); // 1.52.0：统一成 Dragons.Is（力能龙裔、五色龙、非人形的“Dragon”生物；龙教徒之类的人形兵种不算）
+  public static bool IsDragon(Pawn p)=>Dragons.Is(p); // 1.52.0：统一成 Dragons.Is（五色龙、非人形的“Dragon”生物；龙教徒之类的人形兵种不算）
   public static float DragonFactor(ThingDef weapon,Thing target){var e=weapon?.GetModExtension<MagicWeaponExtension>();return e!=null && e.dragonFactor>1f && target is Pawn p && IsDragon(p)?e.dragonFactor:1f;}
   public static void OnWeaponHit(Pawn caster,ThingWithComps weapon,MagicWeaponExtension ext,Thing target,DamageWorker.DamageResult hit){
    if(caster==null || target==null || target.Destroyed)return;
@@ -39,12 +39,12 @@ namespace LichPhylactery {
   public static BodyPartRecord Head(Pawn p)=>p?.health?.hediffSet?.GetNotMissingParts().FirstOrDefault(b=>b.def==BodyPartDefOf.Head);
   public static bool UnderHead(BodyPartRecord part,BodyPartRecord head){for(var b=part;b!=null;b=b.parent)if(b==head)return true;return false;}
   public static string BeheadBlocked(Pawn victim,bool hitHead,float health){
-   if(victim==null || victim.Dead)return "目标已死。";
-   if(Head(victim)==null)return "没有头。";
-   if(victim.BodySize>=2f)return "体型太大。";
-   if(Items.IsLich(victim))return "巫妖不靠头活着。";
-   if(!hitHead)return "没有砍中头部。";
-   if(health>=.25f)return "生命还高于25%。";
+   if(victim==null || victim.Dead)return "目标已死。".Loc();
+   if(Head(victim)==null)return "没有头。".Loc();
+   if(victim.BodySize>=2f)return "体型太大。".Loc();
+   if(Items.IsLich(victim))return "巫妖不靠头活着。".Loc();
+   if(!hitHead)return "没有砍中头部。".Loc();
+   if(health>=.25f)return "生命还高于25%。".Loc();
    return null;
   }
   public static bool TryBehead(Pawn attacker,Pawn victim,DamageWorker.DamageResult hit){
@@ -57,25 +57,25 @@ namespace LichPhylactery {
    bool show=victim.Spawned;var map=victim.Map;var pos=victim.DrawPos;
    victim.health.AddHediff(HediffMaker.MakeHediff(HediffDefOf.MissingBodyPart,victim,head),head);
    if(!victim.Dead)victim.Kill(new DamageInfo(DamageDefOf.Cut,99f,1f,-1f,attacker));
-   if(show && map!=null)MoteMaker.ThrowText(pos,map,"锐锋斩首！",new Color(1f,.4f,.35f));
-   if(attacker?.Faction==Faction.OfPlayer || victim.Faction==Faction.OfPlayer)Messages.Message((attacker?.LabelShort??"锐锋剑")+"一剑斩下了"+victim.LabelShort+"的头颅。",victim.Corpse!=null?new LookTargets(victim.Corpse):LookTargets.Invalid,MessageTypeDefOf.NeutralEvent,false);
+   if(show && map!=null)MoteMaker.ThrowText(pos,map,"锐锋斩首！".Loc(),new Color(1f,.4f,.35f));
+   if(attacker?.Faction==Faction.OfPlayer || victim.Faction==Faction.OfPlayer)Messages.Message((attacker?.LabelShort??"锐锋剑".Loc())+"一剑斩下了".Loc()+victim.LabelShort+"的头颅。".Loc(),victim.Corpse!=null?new LookTargets(victim.Corpse):LookTargets.Invalid,MessageTypeDefOf.NeutralEvent,false);
    return true;
   }
   // ---------- 防御 ----------
   public static bool HaloBlocks(Pawn p,float roll){
    var halo=Items.Worn(p,"LP_HaloOfLight");var c=halo?.GetComp<CompMagicCharges>();if(c==null || roll>=MagicItems.HaloChance || !c.TryUse())return false;
-   Items.Mote(p,"圣光挡下（今天还剩"+c.charges+"次）",new Color(1f,.92f,.55f));return true;
+   Items.Mote(p,"圣光挡下（今天还剩".Loc()+c.charges+"次）".Loc(),new Color(1f,.92f,.55f));return true;
   }
   public static bool Snares(Pawn p,DamageInfo dinfo,float roll){
    if(Items.Worn(p,"LP_GlovesMissileSnaring")==null || dinfo.Def.isExplosive || dinfo.Instigator is Building || dinfo.Weapon?.building!=null || p.Downed || !MagicItems.OneHanded(p) || roll>=MagicItems.SnareChance)return false;
-   Items.Mote(p,"徒手接住！",new Color(.85f,.9f,1f));return true;
+   Items.Mote(p,"徒手接住！".Loc(),new Color(.85f,.9f,1f));return true;
   }
   // 殉道者念珠：护盾吸收；打碎后变成碎念珠放进背包。返回 true 表示整次伤害都被吸收。
   public static bool MartyrAbsorb(Pawn p,ref DamageInfo dinfo){
    var beads=Items.Worn(p,"LP_MartyrsBeads");var c=beads?.GetComp<CompMagicCharges>();if(c==null || c.Charges<=0 || dinfo.Amount<=0)return false;
    int cost=Mathf.CeilToInt(dinfo.Amount);bool all=cost<=c.charges;
    if(all)c.charges-=cost;else{dinfo.SetAmount(dinfo.Amount-c.charges);c.charges=0;}
-   Items.Mote(p,all?"念珠护盾 "+c.charges:"念珠护盾碎裂！",new Color(1f,.6f,.6f));
+   Items.Mote(p,all?"念珠护盾 ".Loc()+c.charges:"念珠护盾碎裂！".Loc(),new Color(1f,.6f,.6f));
    if(c.charges<=0)BreakBeads(p,beads);
    return all;
   }
@@ -83,14 +83,14 @@ namespace LichPhylactery {
    p.apparel.Remove(beads);beads.Destroy();
    var broken=ThingMaker.MakeThing(Items.Thing("LP_MartyrsBeadsBroken"));
    if(p.inventory==null || !p.inventory.innerContainer.TryAdd(broken)){if(p.MapHeld!=null)GenPlace.TryPlaceThing(broken,p.PositionHeld,p.MapHeld,ThingPlaceMode.Near);}
-   if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"的殉道者念珠护盾被打碎了，需要在炼金桌重新祝圣。",p,MessageTypeDefOf.NegativeEvent,false);
+   if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"的殉道者念珠护盾被打碎了，需要在炼金桌重新祝圣。".Loc(),p,MessageTypeDefOf.NegativeEvent,false);
   }
   // 护佑誓约：甲戒佩戴者受到的伤害一半转给同地图的乙戒佩戴者。返回转走的伤害。
   public static float WardingTransfer(Pawn p,ref DamageInfo dinfo){
    var partner=WardingBond.PartnerWearer(p);if(partner==null || dinfo.Amount<=0)return 0f;
    float half=dinfo.Amount/2f;dinfo.SetAmount(dinfo.Amount-half);
    transferring=true;try{partner.TakeDamage(new DamageInfo(dinfo.Def,half,dinfo.ArmorPenetrationInt,-1f,null));}finally{transferring=false;}
-   Items.Mote(partner,"誓约分担",new Color(.8f,.85f,1f));
+   Items.Mote(partner,"誓约分担".Loc(),new Color(.8f,.85f,1f));
    return half;
   }
   // ---------- 法术转向 / 灵能兜帽 ----------
@@ -110,7 +110,7 @@ namespace LichPhylactery {
    bool lung=d.defName.IndexOf("LungRot",StringComparison.OrdinalIgnoreCase)>=0;
    if(lung && Items.Worn(p,"LP_NecklaceAdaptation")!=null)return true;
    if((ItemWondrous.Disease(d) || d==HediffDefOf.ToxicBuildup || lung) && Items.Worn(p,"LP_MarkDecay")!=null)return true;
-   if(d==MindFlayerPowers.DominatedHediff && Hediff_PuritySeals.TryBreak(p,"支配"))return true;
+   if(d==MindFlayerPowers.DominatedHediff && Hediff_PuritySeals.TryBreak(p,"支配".Loc()))return true;
    return false;
   }
  }
@@ -127,9 +127,9 @@ namespace LichPhylactery {
  public static class MagicDefense {
   static bool Prefix(Pawn __instance,ref DamageInfo __0,ref bool __1){
    var p=__instance;if(__1 || p?.apparel==null || __0.Def==null || MagicEffects.transferring)return true;
-   bool attack=ForceDragon.IsAttack(p,__0);
+   bool attack=AttackKind.IsAttack(p,__0);
    if(attack && MagicEffects.HaloBlocks(p,Rand.Value)){__1=true;return false;}
-   if(attack && ForceDragon.IsRanged(__0) && MagicEffects.Snares(p,__0,Rand.Value)){__1=true;return false;}
+   if(attack && AttackKind.IsRanged(__0) && MagicEffects.Snares(p,__0,Rand.Value)){__1=true;return false;}
    if(attack && MagicEffects.MartyrAbsorb(p,ref __0)){__1=true;return false;}
    if(__0.Def.harmsHealth)MagicEffects.WardingTransfer(p,ref __0);
    return true;
@@ -183,7 +183,7 @@ namespace LichPhylactery {
  public static class PuritySealMentalState {
   static bool Prefix(MentalStateDef stateDef,Pawn ___pawn,ref bool __result){
    if(stateDef!=MentalStateDefOf.PanicFlee && stateDef!=MindFlayerPowers.Dominated)return true;
-   if(!Hediff_PuritySeals.TryBreak(___pawn,stateDef==MentalStateDefOf.PanicFlee?"恐惧":"支配"))return true;
+   if(!Hediff_PuritySeals.TryBreak(___pawn,stateDef==MentalStateDefOf.PanicFlee?"恐惧".Loc():"支配".Loc()))return true;
    __result=false;return false;
   }
  }
@@ -194,9 +194,9 @@ namespace LichPhylactery {
    var caster=__instance.pawn;var target=__0.Pawn;
    if(caster==null || target==null || target==caster || target.Dead || !caster.HostileTo(target))return true;
    if(MagicEffects.Psychic(__instance.def) && MagicEffects.HoodProtects(target,Rand.Value)){
-    Items.Mote(target,"灵能兜帽：法术落空",new Color(.75f,.6f,1f));__instance.StartCooldown(__instance.def.cooldownTicksRange.RandomInRange);__result=true;return false;
+    Items.Mote(target,"灵能兜帽：法术落空".Loc(),new Color(.75f,.6f,1f));__instance.StartCooldown(__instance.def.cooldownTicksRange.RandomInRange);__result=true;return false;
    }
-   if(__instance.def.hostile && MagicEffects.TurnSpell(target)){Items.Mote(target,"法术转向！",new Color(.7f,.95f,1f));__0=new LocalTargetInfo(caster);}
+   if(__instance.def.hostile && MagicEffects.TurnSpell(target)){Items.Mote(target,"法术转向！".Loc(),new Color(.7f,.95f,1f));__0=new LocalTargetInfo(caster);}
    return true;
   }
  }
@@ -216,8 +216,8 @@ namespace LichPhylactery {
  public static class ProofAgainstReadMind {
   static bool Prefix(Pawn caster,Pawn target,ref string __result){
    if(!MagicItems.HidesFromDetection(target))return true;
-   __result="";Items.Mote(target,"读心落空",new Color(.7f,.7f,.75f));
-   if(caster?.Faction==Faction.OfPlayer)Messages.Message(caster.LabelShort+"的读心落空了："+target.LabelShort+"的心思像被一层铅隔开。",target,MessageTypeDefOf.NeutralEvent,false);
+   __result="";Items.Mote(target,"读心落空".Loc(),new Color(.7f,.7f,.75f));
+   if(caster?.Faction==Faction.OfPlayer)Messages.Message(caster.LabelShort+"的读心落空了：".Loc()+target.LabelShort+"的心思像被一层铅隔开。".Loc(),target,MessageTypeDefOf.NeutralEvent,false);
    return false;
   }
  }
@@ -262,7 +262,7 @@ namespace LichPhylactery {
   public static bool TryBreak(Pawn p,string what){
    var h=p?.health?.hediffSet?.GetFirstHediffOfDef(Items.Hediff("LP_PuritySeals")) as Hediff_PuritySeals;if(h==null)return false;
    int day=Find.TickManager.TicksGame/GenDate.TicksPerDay;if(h.lastBreakDay==day)return false;h.lastBreakDay=day;
-   Items.Mote(p,"净化封印：挣脱"+what,new Color(1f,.95f,.7f));return true;
+   Items.Mote(p,"净化封印：挣脱".Loc()+what,new Color(1f,.95f,.7f));return true;
   }
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref lastBreakDay,"lpLastBreakDay",-1);}
  }

@@ -71,11 +71,11 @@ namespace LichPhylactery {
     plant.Growth=Mathf.Min(1f,plant.Growth+GrowthAmount);plant.DirtyMapMesh(map);n++;
     if(n%3==0)FleckMaker.ThrowDustPuffThick(cell.ToVector3Shifted(),map,1.2f,Green);
    }
-   FleckMaker.ThrowDustPuffThick(p.DrawPos,map,2f,Green);Items.Mote(p,"催生",Green);Grown+=n;return n;
+   FleckMaker.ThrowDustPuffThick(p.DrawPos,map,2f,Green);Items.Mote(p,"催生".Loc(),Green);Grown+=n;return n;
   }
 
   // ---------- 造物之手「造物术」：正在做账单时立刻完成剩余工作量的一半（最多 60000），这件作品至少优秀 ----------
-  public const string FabricateNeed="需要正在工作台前制作";
+  public static readonly string FabricateNeed="需要正在工作台前制作".Loc();
   static float WorkLeft(Pawn p,out JobDriver_DoBill d,out UnfinishedThing uft){
    d=p?.jobs?.curDriver as JobDriver_DoBill;uft=null;if(d==null)return 0f;
    uft=p.CurJob?.GetTarget(TargetIndex.B).Thing as UnfinishedThing;
@@ -89,7 +89,7 @@ namespace LichPhylactery {
    float done=Mathf.Min(left*FabricatePart,FabricateMax);
    if(d.workLeft>0f){d.workLeft=Mathf.Max(0f,d.workLeft-done);if(uft!=null)uft.workLeft=d.workLeft;}
    else uft.workLeft=Mathf.Max(0f,uft.workLeft-done);
-   Items.Give(p,"LP_FeatFabricated");Fabricated++;Items.Mote(p,"造物术",Gold);
+   Items.Give(p,"LP_FeatFabricated");Fabricated++;Items.Mote(p,"造物术".Loc(),Gold);
    if(p.Map!=null)FleckMaker.ThrowLightningGlow(p.DrawPos,p.Map,1.5f);
    return done;
   }
@@ -103,7 +103,7 @@ namespace LichPhylactery {
      var extra=ThingMaker.MakeThing(pc.thingDef,pc.thingDef.MadeFromStuff?(first?.Stuff??GenStuff.DefaultStuffFor(pc.thingDef)):null);
      extra.stackCount=Mathf.Min(pc.count,Mathf.Max(1,pc.thingDef.stackLimit));
      var cq=extra.TryGetComp<CompQuality>();if(cq!=null)cq.SetQuality(first?.TryGetComp<CompQuality>()?.Quality??QualityCategory.Normal,ArtGenerationContext.Colony);
-     if(list==null)list=made.ToList();list.Add(extra);Extra++;Items.Mote(p,"炼金大师",Violet);
+     if(list==null)list=made.ToList();list.Add(extra);Extra++;Items.Mote(p,"炼金大师".Loc(),Violet);
     }
    }
    if(Feats.Has(p,RuneSmith) && AtRuneBench(p) && ingredients!=null && Roll<RuneRefund){
@@ -113,7 +113,7 @@ namespace LichPhylactery {
      var back=ThingMaker.MakeThing(ing.def);back.stackCount=n;
      if(list==null)list=made.ToList();list.Add(back);Refunds+=n;
     }
-    if(list!=null)Items.Mote(p,"符文锻师",Gold);
+    if(list!=null)Items.Mote(p,"符文锻师".Loc(),Gold);
    }
    return list;
   }
@@ -121,20 +121,20 @@ namespace LichPhylactery {
 
  // ---------- 前置 ----------
  public class FeatWorker_MasterArtisan : FeatWorker {
-  public override string ExtraPrereq=>"敏捷或智力 13";
-  public override string Unmet(Pawn p,Hediff_Adventurer h)=>base.Unmet(p,h)??(h.scores[Adventurer.Dex]>=13 || h.scores[Adventurer.Int]>=13?null:"需要敏捷或智力 13");
+  public override string ExtraPrereq=>"敏捷或智力 13".Loc();
+  public override string Unmet(Pawn p,Hediff_Adventurer h)=>base.Unmet(p,h)??(h.scores[Adventurer.Dex]>=13 || h.scores[Adventurer.Int]>=13?null:"需要敏捷或智力 13".Loc());
  }
  public class FeatWorker_RuneSmith : FeatWorker {
-  public override string ExtraPrereq=>"力量或智力 13";
-  public override string Unmet(Pawn p,Hediff_Adventurer h)=>base.Unmet(p,h)??(h.scores[Adventurer.Str]>=13 || h.scores[Adventurer.Int]>=13?null:"需要力量或智力 13");
+  public override string ExtraPrereq=>"力量或智力 13".Loc();
+  public override string Unmet(Pawn p,Hediff_Adventurer h)=>base.Unmet(p,h)??(h.scores[Adventurer.Str]>=13 || h.scores[Adventurer.Int]>=13?null:"需要力量或智力 13".Loc());
  }
  public class FeatWorker_MasterAlchemist : FeatWorker {
-  public override string ExtraPrereq=>"手工或医疗 6";
-  public override string Unmet(Pawn p,Hediff_Adventurer h)=>base.Unmet(p,h)??(p?.skills?.GetSkill(SkillDefOf.Crafting)?.Level>=6 || p?.skills?.GetSkill(SkillDefOf.Medicine)?.Level>=6?null:"需要手工或医疗 6");
+  public override string ExtraPrereq=>"手工或医疗 6".Loc();
+  public override string Unmet(Pawn p,Hediff_Adventurer h)=>base.Unmet(p,h)??(p?.skills?.GetSkill(SkillDefOf.Crafting)?.Level>=6 || p?.skills?.GetSkill(SkillDefOf.Medicine)?.Level>=6?null:"需要手工或医疗 6".Loc());
  }
  public class FeatWorker_Fabricate : FeatWorker {
-  public override string ExtraPrereq=>"已学名匠";
-  public override string Unmet(Pawn p,Hediff_Adventurer h)=>base.Unmet(p,h)??(h.HasFeat(Feats5.MasterArtisan)?null:"需要先学名匠");
+  public override string ExtraPrereq=>"已学名匠".Loc();
+  public override string Unmet(Pawn p,Hediff_Adventurer h)=>base.Unmet(p,h)??(h.HasFeat(Feats5.MasterArtisan)?null:"需要先学名匠".Loc());
  }
 
  // ---------- 能力 ----------
@@ -148,8 +148,8 @@ namespace LichPhylactery {
   }
   public override bool GizmoDisabled(out string reason){
    var p=parent.pawn;var f=Feat;var h=Adventurer.Get(p);
-   if(h==null || f==null || !Feats.Has(p,f)){reason="没有"+(f?.label??"对应")+"专长。";return true;}
-   if(h.UsesLeft(f)<=0){reason="今天的次数用完了（午夜恢复）。";return true;}
+   if(h==null || f==null || !Feats.Has(p,f)){reason="没有".Loc()+(f?.label??"对应".Loc())+"专长。".Loc();return true;}
+   if(h.UsesLeft(f)<=0){reason="今天的次数用完了（午夜恢复）。".Loc();return true;}
    if(Effect=="fabricate"){var why=Feats5.FabricateReason(p);if(why!=null){reason=why;return true;}}
    return base.GizmoDisabled(out reason);
   }
@@ -163,8 +163,8 @@ namespace LichPhylactery {
   public Ability_Fabricate(Pawn pawn,Precept sourcePrecept,AbilityDef def):base(pawn,sourcePrecept,def){}
   public override void QueueCastingJob(LocalTargetInfo target,LocalTargetInfo destination){
    var why=Feats5.FabricateReason(pawn);
-   if(why!=null){Messages.Message(why+"。",pawn,MessageTypeDefOf.RejectInput,false);return;}
-   if(Feats5.Fabricate(pawn)<=0f)Messages.Message("今天的次数用完了（午夜恢复）。",pawn,MessageTypeDefOf.RejectInput,false);
+   if(why!=null){Messages.Message(why+"。".Loc(),pawn,MessageTypeDefOf.RejectInput,false);return;}
+   if(Feats5.Fabricate(pawn)<=0f)Messages.Message("今天的次数用完了（午夜恢复）。".Loc(),pawn,MessageTypeDefOf.RejectInput,false);
   }
  }
 
@@ -179,12 +179,12 @@ namespace LichPhylactery {
    return 1f;
   }
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p){float f=Factor(p);if(f!=1f)val*=f;}}
-  public override string ExplanationPart(StatRequest req){if(!(req.Thing is Pawn p))return null;float f=Factor(p);return f==1f?null:(f==Feats5.RuneSpeed?"符文锻师（锻台）":"炼金大师（炼金桌）")+"：×"+(f*100f).ToString("0")+"%";}
+  public override string ExplanationPart(StatRequest req){if(!(req.Thing is Pawn p))return null;float f=Factor(p);return f==1f?null:(f==Feats5.RuneSpeed?"符文锻师（锻台）".Loc():"炼金大师（炼金桌）".Loc())+"：×".Loc()+(f*100f).ToString("0")+"%";}
  }
  public class StatPart_Feats5Repair : StatPart {
   public static float Factor(Pawn p)=>p?.jobs?.curDriver is JobDriver_Repair && Feats.Has(p,Feats5.MasterBuilder)?Feats5.RepairSpeed:1f;
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p){float f=Factor(p);if(f!=1f)val*=f;}}
-  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Factor(p)!=1f?"筑城大师（修理）：×"+(Feats5.RepairSpeed*100f).ToString("0")+"%":null;
+  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Factor(p)!=1f?"筑城大师（修理）：×".Loc()+(Feats5.RepairSpeed*100f).ToString("0")+"%":null;
  }
  [StaticConstructorOnStartup]
  public static class Feats5Startup {

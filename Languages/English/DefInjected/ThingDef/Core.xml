@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 死灵仪式台 -->
+  <LP_Altar.label>necromantic ritual table</LP_Altar.label>
+  <!-- 3×3的死灵仪式工作台。添加巫妖仪式工作单，由预定角色执行完成转化。其他工作单服务于按钮选定的12格内命匣。 -->
+  <LP_Altar.description>A 3×3 necromantic ritual workbench. Add a lich ritual bill and the assigned pawn performs the transformation. Other bills serve the phylactery within 12 cells selected with the button.</LP_Altar.description>
+  <!-- 命匣 -->
+  <LP_Phylactery.label>phylactery</LP_Phylactery.label>
+  <!-- 巫妖的灵魂容器。可搬运、储藏，必须保护免于摧毁。生肉献祭提高等级；主人拥有死灵之躯时，死亡3日后自动复活。工作单服务时放在台子12格内。 -->
+  <LP_Phylactery.description>The lich's soul vessel. Can be carried and stored, and must be protected from destruction. Raw meat sacrifices raise its level; when the owner has an undead body, it automatically revives them 3 days after death. Keep it within 12 cells of the table for bills to serve it.</LP_Phylactery.description>
+</LanguageData>

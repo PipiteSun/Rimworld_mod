@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 暗影宗 -->
+  <LP_Sub_ShadowWay.label>Way of Shadow</LP_Sub_ShadowWay.label>
+  <!-- 在黑暗里修行的武僧：放出魔法黑暗、在暗处之间瞬移、化身幽影隐形，并抓住同伴打中敌人的破绽补上一击。“暗处”指光照低于 30% 的格子（夜里的户外、不开灯的房间）。 -->
+  <LP_Sub_ShadowWay.description>A monk who trains in darkness: releases magical darkness, teleports between dark places, becomes an invisible shadow, and seizes the openings when companions hit enemies to follow up. "Darkness" means cells with under 30% light (outdoors at night, rooms without lights).</LP_Sub_ShadowWay.description>
+  <!-- 散打宗 -->
+  <LP_Sub_OpenHandWay.label>Way of the Open Hand</LP_Sub_OpenHandWay.label>
+  <!-- 终极的战技大师：疾风连击的每一拳都能击倒、推开或封住敌人，能用气治疗自己，睡醒后带着庇护的灵光，最后学会能隔天引爆的渗透劲。 -->
+  <LP_Sub_OpenHandWay.description>The ultimate master of martial technique: every punch of Flurry of Blows can knock down, push or disrupt enemies, heals oneself with ki, carries a protective aura after waking, and finally learns the quivering palm that can be detonated days later.</LP_Sub_OpenHandWay.description>
+  <!-- 塑能学派 -->
+  <LP_Sub_Evocation.label>School of Evocation</LP_Sub_Evocation.label>
+  <!-- 把毁灭的法术打磨到极致：塑能法术（魔法飞弹、火球术、闪电束、解离术）不伤友军，魔法飞弹更强，伤害加上智力，还能超限导能让一发法术翻倍——代价是同一天再用会反噬。 -->
+  <LP_Sub_Evocation.description>Hone destructive spells to perfection: evocation spells (magic missile, fireball, lightning bolt, disintegrate) don't hurt allies, magic missile is stronger, damage adds Intelligence, and overchannel can double a spell; the price is backlash when used again the same day.</LP_Sub_Evocation.description>
+  <!-- 书士会 -->
+  <LP_Sub_Scribes.label>Order of Scribes</LP_Sub_Scribes.label>
+  <!-- 与法术书对话的法师：法师笔让读卷轴从不失误，觉醒魔典能改变火球和闪电的伤害类型，思维具现让法术暂时不耗法力，每天醒来多一张卷轴，危急时法术书替你挡下一击。 -->
+  <LP_Sub_Scribes.description>A wizard who converses with the spellbook: the wizardly quill makes reading scrolls never fail, the awakened spellbook changes fireball and lightning damage types, manifest mind makes spells temporarily free, an extra scroll appears each day on waking, and the spellbook takes a hit for you in a crisis.</LP_Sub_Scribes.description>
+  <!-- 神龙宗 -->
+  <LP_Sub_DragonWay.label>Way of the Ascendant Dragon</LP_Sub_DragonWay.label>
+  <!-- 以气模仿巨龙的武僧：徒手打击带上龙的元素，喷吐龙息，乘风步时展开虚幻的龙翼，最后化身古龙、让敌人恐慌、护住同伴。龙的元素用“龙之打击”按钮在火焰、寒冰、闪电、强酸、毒素之间切换，龙之息和古龙姿都跟着它。 -->
+  <LP_Sub_DragonWay.description>A monk who imitates great dragons with ki: unarmed strikes carry a dragon's element, breathe dragon breath, spectral dragon wings unfold during Step of the Wind, and finally become an ancient dragon, panicking enemies and protecting companions. The dragon's element is switched with the "draconic strike" button between fire, cold, lightning, acid and poison, and breath of the dragon and ancient dragon stance follow it.</LP_Sub_DragonWay.description>
+  <!-- 大地结社 -->
+  <LP_Sub_CircleLand.label>Circle of the Land</LP_Sub_CircleLand.label>
+  <!-- 与脚下的土地相连：大地法术随地图气候变化（寒带 / 温带 / 沙漠 / 湿热，按地块的气温和降雨判断，Alpha Biomes 等模组的生物群系也一样），还能永久改造地形——挖出湖泊、造出沼泽、把泥地变成沃土。 -->
+  <LP_Sub_CircleLand.description>Bound to the land underfoot: land's spell changes with the map's climate (cold / temperate / desert / humid, judged by the tile's temperature and rainfall; biomes from mods like Alpha Biomes work too), and can permanently reshape terrain: dig lakes, make marshes, turn mud into rich soil.</LP_Sub_CircleLand.description>
+  <!-- 孢子结社 -->
+  <LP_Sub_CircleSpores.label>Circle of Spores</LP_Sub_CircleSpores.label>
+  <!-- 在腐烂里看见生命：死亡光环、腐烂之触、和孢子共生，敌人的尸体会长出真菌站起来替你作战。身边有光菌、玉菇等真菌植物时死亡光环更强。 -->
+  <LP_Sub_CircleSpores.description>Sees life in decay: halo of spores, touch of rot, symbiosis with spores, and enemy corpses sprout fungus and stand up to fight for you. The halo of spores is stronger with fungal plants such as glowstool and agarilux nearby.</LP_Sub_CircleSpores.description>
+  <!-- 群星结社 -->
+  <LP_Sub_CircleStars.label>Circle of Stars</LP_Sub_CircleStars.label>
+  <!-- 读星象的德鲁伊：星光指引箭、化身星座（弓手放箭、圣杯治疗、巨龙稳住心神），每天的宇宙预兆庇佑友军或诅咒敌人。夜里在户外施法更强。 -->
+  <LP_Sub_CircleStars.description>A druid who reads the stars: guiding bolts of starlight, becoming constellations (the archer shoots, the chalice heals, the dragon steadies the mind), and a daily cosmic omen that protects allies or curses enemies. Casting is stronger outdoors at night.</LP_Sub_CircleStars.description>
+  <!-- 生命领域 -->
+  <LP_Sub_LifeDomain.label>Life Domain</LP_Sub_LifeDomain.label>
+  <!-- 守护生命的牧师：治疗法术更强，医疗和手术更好；引导神力「保全生命」一次治疗一片友军。引导神力每天 1 次（6 级 2 次、18 级 3 次），不耗神恩。 -->
+  <LP_Sub_LifeDomain.description>A cleric who protects life: stronger healing spells, better medicine and surgery; Channel Divinity "preserve life" heals a group of allies at once. Channel Divinity once per day (twice at level 6, three times at 18), no divinity cost.</LP_Sub_LifeDomain.description>
+  <!-- 光明领域 -->
+  <LP_Sub_LightDomain.label>Light Domain</LP_Sub_LightDomain.label>
+  <!-- 带来光明的牧师：强光让敌人的攻击落空，光亮术照亮黑暗，破晓之光驱散魔法黑暗和隐形。克制暗影宗、暗影魔法、幽域追踪者这类靠“暗处”的敌人。引导神力每天 1 次（6 级 2 次、18 级 3 次）。 -->
+  <LP_Sub_LightDomain.description>A cleric who brings light: a dazzling flare makes enemy attacks miss, light illuminates the dark, and radiance of the dawn dispels magical darkness and invisibility. A counter to enemies who rely on "darkness" such as Way of Shadow, shadow magic and Gloom Stalkers. Channel Divinity once per day (twice at level 6, three times at 18).</LP_Sub_LightDomain.description>
+  <!-- 熔炉领域 -->
+  <LP_Sub_ForgeDomain.label>Forge Domain</LP_Sub_ForgeDomain.label>
+  <!-- 锻炉之神的牧师：每天给装备附魔强化 +1，用钢变出优秀品质的兵器，穿重甲时更抗打，最后不惧火焰。制作速度 +10%。 -->
+  <LP_Sub_ForgeDomain.description>A cleric of the forge god: enchants gear +1 each day, conjures excellent-quality weapons from steel, is tougher in heavy armor, and finally fears no fire. Crafting speed +10%.</LP_Sub_ForgeDomain.description>
+</LanguageData>

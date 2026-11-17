@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 奥术强度 -->
+  <LP_ArcanePower.label>arcane power</LP_ArcanePower.label>
+  <!-- 法师法术与术士智识支的强度倍率：0.5 + 智识等级/20，另加冒险者智力调整值 × 0.10（× 天赋）与 (熟练加值 − 2) × 0.02、法师 / 术士职业等级合计每比 1 高 1 级 +5%（最多 +95%，即 20 级）。 -->
+  <LP_ArcanePower.description>Power multiplier for wizard spells and the sorcerer's Intellectual branch: 0.5 + Intellectual level / 20, plus adventurer Intelligence modifier × 0.10 (× talent) and (proficiency bonus - 2) × 0.02, +5% for each level the combined wizard / sorcerer class levels exceed 1 (up to +95%, i.e. level 20).</LP_ArcanePower.description>
+  <!-- 野性强度 -->
+  <LP_PrimalPower.label>primal power</LP_PrimalPower.label>
+  <!-- 德鲁伊驯兽一支的强度倍率：0.5 + 驯兽等级/20，另加冒险者感知调整值 × 0.05 与 (熟练加值 − 2) × 0.02、德鲁伊职业等级合计每比 1 高 1 级 +2%（最多 +40%）。 -->
+  <LP_PrimalPower.description>Power multiplier of the druid's Animals branch: 0.5 + Animals level / 20, plus adventurer Wisdom modifier × 0.05 and (proficiency bonus - 2) × 0.02, +2% for each level the combined druid class levels exceed 1 (up to +40%).</LP_PrimalPower.description>
+  <!-- 生长强度 -->
+  <LP_VerdantPower.label>verdant power</LP_VerdantPower.label>
+  <!-- 德鲁伊种植一支的强度倍率：0.5 + 种植等级/20，另加冒险者感知调整值 × 0.05 与 (熟练加值 − 2) × 0.02、德鲁伊职业等级合计每比 1 高 1 级 +2%（最多 +40%）。 -->
+  <LP_VerdantPower.description>Power multiplier of the druid's Plants branch: 0.5 + Plants level / 20, plus adventurer Wisdom modifier × 0.05 and (proficiency bonus - 2) × 0.02, +2% for each level the combined druid class levels exceed 1 (up to +40%).</LP_VerdantPower.description>
+  <!-- 天赋强度 -->
+  <LP_InnatePower.label>innate power</LP_InnatePower.label>
+  <!-- 术士社交一支的强度倍率：0.5 + 社交等级/20，另加冒险者魅力调整值 × 0.10（× 天赋）与 (熟练加值 − 2) × 0.02、术士等用社交的职业等级合计每比 1 高 1 级 +5%（最多 +95%，即 20 级）；有术士血脉的再 +15%。 -->
+  <LP_InnatePower.description>Power multiplier of the sorcerer's Social branch: 0.5 + Social level / 20, plus adventurer Charisma modifier × 0.10 (× talent) and (proficiency bonus - 2) × 0.02, +5% for each level the combined Social-based class levels such as sorcerer exceed 1 (up to +95%, i.e. level 20); +15% more with a sorcerer bloodline.</LP_InnatePower.description>
+  <!-- 器械强度 -->
+  <LP_ArtificePower.label>artifice power</LP_ArtificePower.label>
+  <!-- 器械师能力的强度倍率：0.5 + 手工等级/20，另加冒险者智力调整值 × 0.05 与 (熟练加值 − 2) × 0.02（不吃奥术强度的 10%）、器械师职业等级合计每比 1 高 1 级 +2%（最多 +40%）。过载射击的伤害加成、符文炮台的伤害都乘这个倍率。 -->
+  <LP_ArtificePower.description>Artificer ability power multiplier: 0.5 + Crafting level / 20, plus adventurer Intelligence modifier × 0.05 and (proficiency bonus - 2) × 0.02 (doesn't get the 10% of arcane power), +2% for each level the combined artificer class levels exceed 1 (up to +40%). Overcharged Shot's damage bonus and Rune Turret's damage are multiplied by it.</LP_ArtificePower.description>
+</LanguageData>

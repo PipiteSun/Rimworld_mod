@@ -19,17 +19,17 @@ namespace LichPhylactery {
   };
   public static int TierOf(TraitDef d,int degree){int t=TraitRarity.Tier(d,degree);return t<0?0:t;}
   public static string MarkOf(TraitDef d,int degree)=>TraitRarity.Mark(d,degree);
-  public static string TierName(TraitDef d,int degree){var m=MarkOf(d,degree);string n=TraitRarity.Names[TierOf(d,degree)];return m=="Curse"?"诅咒 · "+n:m=="Deed"?"事迹 · "+n:n;}
+  public static string TierName(TraitDef d,int degree){var m=MarkOf(d,degree);string n=TraitRarity.Names[TierOf(d,degree)];return m=="Curse"?"诅咒 · ".Loc()+n:m=="Deed"?"事迹 · ".Loc()+n:n;}
   public static bool DefLocked(TraitDef d)=>d==null || Story.Contains(d.defName) || d.defName.StartsWith("Isekai_") || d.defName.StartsWith("IKM_");
   // 这个特性能不能被改掉：null = 可以。
   public static string Locked(Pawn p,Trait t){
-   if(t?.def==null)return "没有这个特性";
-   if(t.sourceGene!=null)return "由基因「"+t.sourceGene.LabelCap+"」赋予";
-   if(t.ScenForced)return "由开局剧本指定";
-   if(MarkOf(t.def,t.Degree)=="Deed")return "传说事迹不能改写";
-   if(t.def==SystemHost.Def)return "系统宿主不能改写自己";
-   if(t.def.defName.StartsWith("Isekai_") || t.def.defName.StartsWith("IKM_"))return "Isekai / 百战觉醒的特性由那边的系统管理";
-   if(DefLocked(t.def))return "由剧情授予，记着剧情进度";
+   if(t?.def==null)return "没有这个特性".Loc();
+   if(t.sourceGene!=null)return "由基因「".Loc()+t.sourceGene.LabelCap+"」赋予".Loc();
+   if(t.ScenForced)return "由开局剧本指定".Loc();
+   if(MarkOf(t.def,t.Degree)=="Deed")return "传说事迹不能改写".Loc();
+   if(t.def==SystemHost.Def)return "系统宿主不能改写自己".Loc();
+   if(t.def.defName.StartsWith("Isekai_") || t.def.defName.StartsWith("IKM_"))return "Isekai / 百战觉醒的特性由那边的系统管理".Loc();
+   if(DefLocked(t.def))return "由剧情授予，记着剧情进度".Loc();
    return null;
   }
   static bool Disallowed(Pawn p,TraitDef d,int degree){
@@ -69,16 +69,16 @@ namespace LichPhylactery {
 
   // 改写：检查改命符还在、目标和特性都合法，然后换特性、消耗 1 个改命符、发信。
   public static bool Apply(Pawn p,Trait old,TraitDef d,int degree,Thing charm,out string error){
-   error="改命符或特性已经变化，请重新打开窗口。";
+   error="改命符或特性已经变化，请重新打开窗口。".Loc();
    if(charm==null || charm.Destroyed || charm.def!=SystemHost.CharmDef || charm.stackCount<1)return false;
    if(p?.story?.traits==null || old==null || !p.story.traits.allTraits.Contains(old))return false;
-   var why=Locked(p,old);if(why!=null){error="这个特性不能改写："+why;return false;}
-   if(!Allowed(p,old,d,degree)){error="不能换成这个特性（档位不同、冲突或已拥有）。";return false;}
+   var why=Locked(p,old);if(why!=null){error="这个特性不能改写：".Loc()+why;return false;}
+   if(!Allowed(p,old,d,degree)){error="不能换成这个特性（档位不同、冲突或已拥有）。".Loc();return false;}
    string from=old.LabelCap.StripTags(),to=Label(d,degree).StripTags();
    p.story.traits.RemoveTrait(old);
    p.story.traits.GainTrait(new Trait(d,degree,false));
    charm.SplitOff(1).Destroy();
-   Find.LetterStack.ReceiveLetter("改命："+p.LabelShort,p.LabelShortCap+"的命数被改写了。\n\n特性「"+from+"」→「"+to+"」（"+TierName(d,degree)+"）。\n\n改命符燃尽，化作一缕青烟。",LetterDefOf.PositiveEvent,p);
+   Find.LetterStack.ReceiveLetter("改命：".Loc()+p.LabelShort,p.LabelShortCap+"的命数被改写了。\n\n特性「".Loc()+from+"」→「".Loc()+to+"」（".Loc()+TierName(d,degree)+"）。\n\n改命符燃尽，化作一缕青烟。".Loc(),LetterDefOf.PositiveEvent,p);
    error=null;return true;
   }
 
@@ -102,7 +102,7 @@ namespace LichPhylactery {
    foreach(var g in base.CompGetGizmosExtra())yield return g;
    if(!parent.Spawned || parent.MapHeld==null)yield break;
    yield return new Command_Action{
-    defaultLabel="使用改命符",defaultDesc="选一名这张地图上的殖民者，把他的一个特性改写成同一档位的另一个特性。消耗 1 个改命符。",
+    defaultLabel="使用改命符".Loc(),defaultDesc="选一名这张地图上的殖民者，把他的一个特性改写成同一档位的另一个特性。消耗 1 个改命符。".Loc(),
     icon=parent.def.uiIcon,action=()=>Find.WindowStack.Add(new Dialog_FateRewrite(parent,null))
    };
   }
@@ -122,8 +122,8 @@ namespace LichPhylactery {
   public override void DoWindowContents(Rect rect){bool sc=LPUI.BeginMinHeight(ref rect,420f,ref outerScroll);try{Draw(rect);}finally{if(sc)Widgets.EndScrollView();LPUI.Reset();}}
   void Draw(Rect rect){
    if(charm==null || charm.Destroyed){Close();return;}
-   LPUI.Title(rect,"改命");
-   LPUI.LabelFit(new Rect(0,40,rect.width,44),"把一个特性改写成同一档位的另一个特性（光谱特性按程度各算档位）。诅咒只能换成诅咒；传说事迹、基因赋予的特性和剧情特性不能改。消耗 1 个改命符（剩 "+charm.stackCount+" 个）。");
+   LPUI.Title(rect,"改命".Loc());
+   LPUI.LabelFit(new Rect(0,40,rect.width,44),"把一个特性改写成同一档位的另一个特性（光谱特性按程度各算档位）。诅咒只能换成诅咒；传说事迹、基因赋予的特性和剧情特性不能改。消耗 1 个改命符（剩 ".Loc()+charm.stackCount+" 个）。".Loc());
    float top=90,h=rect.height-top-110,w0=180,w1=(rect.width-w0-24)/2;
    var targets=FateRewrite.Targets(charm,holder);
    // 人物
@@ -156,8 +156,8 @@ namespace LichPhylactery {
    var c2=new Rect(0,0,w1-20,Mathf.Max(h-8,cands.Count*30+30));
    Widgets.BeginScrollView(r2.ContractedBy(4),ref s2,c2);
    y=0;
-   if(picked==null)Widgets.Label(new Rect(4,0,c2.width-8,60),"先在中间选一个要改写的特性。");
-   else if(cands.Count==0)Widgets.Label(new Rect(4,0,c2.width-8,60),"没有同一档位、可以换成的特性。");
+   if(picked==null)Widgets.Label(new Rect(4,0,c2.width-8,60),"先在中间选一个要改写的特性。".Loc());
+   else if(cands.Count==0)Widgets.Label(new Rect(4,0,c2.width-8,60),"没有同一档位、可以换成的特性。".Loc());
    foreach(var kv in cands){
     var b=new Rect(0,y,c2.width,28);bool on=kv.Key==newDef && kv.Value==newDegree;
     if(on)Widgets.DrawHighlightSelected(b);else if(Mouse.IsOver(b))Widgets.DrawHighlight(b);
@@ -169,12 +169,12 @@ namespace LichPhylactery {
    }
    Widgets.EndScrollView();
    // 确认
-   string sum=picked==null?"未选择特性":newDef==null?"「"+picked.LabelCap.StripTags()+"」→ ？":"「"+picked.LabelCap.StripTags()+"」→「"+FateRewrite.Label(newDef,newDegree).StripTags()+"」（"+FateRewrite.TierName(newDef,newDegree)+"）";
-   LPUI.LabelFit(new Rect(0,rect.height-100,rect.width-200,28),(target!=null?target.LabelShortCap+"：":"")+sum);
+   string sum=picked==null?"未选择特性".Loc():newDef==null?"「".Loc()+picked.LabelCap.StripTags()+"」→ ？".Loc():"「".Loc()+picked.LabelCap.StripTags()+"」→「".Loc()+FateRewrite.Label(newDef,newDegree).StripTags()+"」（".Loc()+FateRewrite.TierName(newDef,newDegree)+"）".Loc();
+   LPUI.LabelFit(new Rect(0,rect.height-100,rect.width-200,28),(target!=null?target.LabelShortCap+"：".Loc():"")+sum);
    bool was=GUI.enabled;GUI.enabled=was && target!=null && picked!=null && newDef!=null;
-   if(Widgets.ButtonText(new Rect(rect.width-190,rect.height-104,190,32),"确认改命")){
+   if(Widgets.ButtonText(new Rect(rect.width-190,rect.height-104,190,32),"确认改命".Loc())){
     var p=target;var t=picked;var d=newDef;int g=newDegree;
-    Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation(p.LabelShortCap+"："+sum+"？\n\n旧特性会被移除，消耗 1 个改命符。",()=>{
+    Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation(p.LabelShortCap+"：".Loc()+sum+"？\n\n旧特性会被移除，消耗 1 个改命符。".Loc(),()=>{
      if(FateRewrite.Apply(p,t,d,g,charm,out var err)){picked=null;newDef=null;if(charm.Destroyed)Close();}
      else Messages.Message(err,MessageTypeDefOf.RejectInput,false);
     }));

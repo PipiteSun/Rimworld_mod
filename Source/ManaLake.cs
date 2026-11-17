@@ -65,16 +65,16 @@ namespace LichPhylactery {
   public static bool Knows(Pawn p,AbilityDef d)=>Knows(Adventurer.Get(p),d);
   public static bool Has(Pawn p,string key){if(p==null)return false;var h=Adventurer.Get(p);var l=h?.classes?.arcana;if(l==null || l.Count==0)return false;foreach(var a in l)if(a!=null && a.defName.EndsWith(key) && a.defName.Length==key.Length+6)return true;return false;} // key 是 LP_AC_ 后面那段
   public static string CannotLearn(Pawn p,AbilityDef d){
-   var e=Ext(d);if(e==null)return "这枚结晶里没有秘传";
-   if(p?.RaceProps?.Humanlike!=true)return "只有人形生物能吸收秘传结晶";
-   if(!Adventurer.Enabled)return "冒险者系统没有开启";
-   var h=Adventurer.Get(p);if(h==null)return "没有冒险者等级";
+   var e=Ext(d);if(e==null)return "这枚结晶里没有秘传".Loc();
+   if(p?.RaceProps?.Humanlike!=true)return "只有人形生物能吸收秘传结晶".Loc();
+   if(!Adventurer.Enabled)return "冒险者系统没有开启".Loc();
+   var h=Adventurer.Get(p);if(h==null)return "没有冒险者等级".Loc();
    if(h.classes==null)h.classes=new ClassData();
-   if(Knows(h,d))return "已经学会「"+d.label+"」";
-   if(e.cls!=null){int need=ClassLevelFor(e.ring);if(ClassSystem.Level(h,e.cls)<need)return "需要"+e.cls.label+" "+need+" 级（"+e.ring+" 环职业水晶）";}
+   if(Knows(h,d))return "已经学会「".Loc()+d.label+"」".Loc();
+   if(e.cls!=null){int need=ClassLevelFor(e.ring);if(ClassSystem.Level(h,e.cls)<need)return "需要".Loc()+e.cls.label+" "+need+" 级（".Loc()+e.ring+" 环职业水晶）".Loc();}
    else{var why=LakeLore.CannotLearn(p,h,e);if(why!=null)return why;} // 1.133.0 通用秘传的等级 / 属性 / 武技门槛、失败后 7 天
-   int slots=Slots(h);if(slots<=0)return "冒险者 "+SlotLevels[0]+" 级才有秘传槽";
-   if(Used(h)>=slots)return "秘传槽已满（"+Used(h)+" / "+slots+"）";
+   int slots=Slots(h);if(slots<=0)return "冒险者 ".Loc()+SlotLevels[0]+" 级才有秘传槽".Loc();
+   if(Used(h)>=slots)return "秘传槽已满（".Loc()+Used(h)+" / "+slots+"）".Loc();
    return null;
   }
   public static bool Learn(Pawn p,AbilityDef d,bool message=false){
@@ -82,7 +82,7 @@ namespace LichPhylactery {
    h.classes.arcana.Add(d);Touched=true;
    if(p.abilities!=null && p.abilities.GetAbility(d)==null)p.abilities.GainAbility(d);
    Passives(h);
-   if(message && p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"吸收了秘传结晶，学会了「"+d.label+"」（秘传 "+Used(h)+" / "+Slots(h)+"）。",p,MessageTypeDefOf.PositiveEvent,false);
+   if(message && p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"吸收了秘传结晶，学会了「".Loc()+d.label+"」（秘传 ".Loc()+Used(h)+" / "+Slots(h)+"）。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);
    return true;
   }
   public static int Sync(Hediff_Adventurer h){
@@ -99,7 +99,7 @@ namespace LichPhylactery {
    if(LakeLore.Live){var lw=LakeLore.CannotCast(p,def)??LakeSeals.CannotCast(p,def);if(lw!=null)return lw;} // 1.133.0 沉默、湖息
    if(!Is(def))return null;var h=Adventurer.Get(p);if(h?.classes==null)return null;
    int left=h.classes.arcanaLast+PublicCooldown-Find.TickManager.TicksGame;
-   if(h.classes.arcanaLast>0 && left>0)return "秘传公共冷却（还要 "+left.ToStringTicksToPeriod()+"）";
+   if(h.classes.arcanaLast>0 && left>0)return "秘传公共冷却（还要 ".Loc()+left.ToStringTicksToPeriod()+"）".Loc();
    return null;
   }
   public static void AfterCast(Ability_Class a,LocalTargetInfo target){
@@ -137,18 +137,18 @@ namespace LichPhylactery {
   public static float DrawClassRow(float y,float w,Pawn p,Hediff_Adventurer h,LP_ClassDef c){
    var list=OfClass(c).ToList();if(list.Count==0)return y;
    var row=new Rect(0f,y,w,44f);Widgets.DrawBoxSolid(row,new Color(.12f,.25f,.4f,.25f));
-   GUI.color=new Color(.55f,.8f,1f);Widgets.Label(new Rect(6f,y+12f,50f,24f),"秘传");GUI.color=Color.white;
+   GUI.color=new Color(.55f,.8f,1f);Widgets.Label(new Rect(6f,y+12f,50f,24f),"秘传".Loc());GUI.color=Color.white;
    float x=60f,cw=(w-60f)/list.Count;
    foreach(var a in list){
     var cell=new Rect(x,y+2f,cw-6f,40f);x+=cw;var e=Ext(a);bool have=Knows(h,a);
     if(!have)GUI.color=new Color(.5f,.5f,.5f);GUI.DrawTexture(new Rect(cell.x,cell.y+2f,36f,36f),a.uiIcon??BaseContent.BadTex);GUI.color=Color.white;
-    if(!have)GUI.color=Color.gray;Text.Font=GameFont.Tiny;Widgets.Label(new Rect(cell.x+40f,cell.y+4f,cell.width-40f,36f),a.LabelCap+"\n"+(have?"已掌握":e.ring+" 环 · "+c.label+" "+ClassLevelFor(e.ring)+" 级"));Text.Font=GameFont.Small;GUI.color=Color.white;
-    TooltipHandler.TipRegion(cell,a.LabelCap+"（"+e.ring+" 环职业水晶）\n\n"+a.description+"\n\n"+(have?"已掌握":"需要「"+a.label+"」秘传结晶（魔力湖泊出售），"+c.label+" "+ClassLevelFor(e.ring)+" 级，并占 1 个秘传槽。"));
+    if(!have)GUI.color=Color.gray;Text.Font=GameFont.Tiny;Widgets.Label(new Rect(cell.x+40f,cell.y+4f,cell.width-40f,36f),a.LabelCap+"\n"+(have?"已掌握".Loc():e.ring+" 环 · ".Loc()+c.label+" "+ClassLevelFor(e.ring)+" 级".Loc()));Text.Font=GameFont.Small;GUI.color=Color.white;
+    TooltipHandler.TipRegion(cell,a.LabelCap+"（".Loc()+e.ring+" 环职业水晶）\n\n".Loc()+a.description+"\n\n"+(have?"已掌握".Loc():"需要「".Loc()+a.label+"」秘传结晶（魔力湖泊出售），".Loc()+c.label+" "+ClassLevelFor(e.ring)+" 级，并占 1 个秘传槽。".Loc()));
    }
    return y+46f;
   }
-  public static string SlotLine(Hediff_Adventurer h)=>"秘传槽 "+Used(h)+" / "+Slots(h);
-  public const string SlotTip="秘传槽：冒险者 11 / 15 / 20 级、传奇 30 级各 1 个，最多 4 个。\n秘传结晶由魔力湖泊出售（职业水晶要和他们结盟），吸收后永久学会，不占职业点。\n秘传不耗资源，只看冷却；两个秘传之间另有 1 小时公共冷却。";
+  public static string SlotLine(Hediff_Adventurer h)=>"秘传槽 ".Loc()+Used(h)+" / "+Slots(h);
+  public static readonly string SlotTip="秘传槽：冒险者 11 / 15 / 20 级、传奇 30 级各 1 个，最多 4 个。\n秘传结晶由魔力湖泊出售（职业水晶要和他们结盟），吸收后永久学会，不占职业点。\n秘传不耗资源，只看冷却；两个秘传之间另有 1 小时公共冷却。".Loc();
 
   // ---------- 货单：按环出结晶，好感不够不出；一半机会偏向殖民者已有的职业 ----------
   public static HashSet<LP_ClassDef> ColonyClasses(){

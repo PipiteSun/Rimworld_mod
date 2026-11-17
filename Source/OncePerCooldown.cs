@@ -49,7 +49,7 @@ namespace LichPhylactery {
  public class Hediff_OncePerCooldown : HediffWithComps {
   public GeneDef sourceGene;
   public int triggeredTick=-1;
-  public override string LabelInBrackets{get{var b=base.LabelInBrackets;return sourceGene==null?b:(b.NullOrEmpty()?sourceGene.label:sourceGene.label+"，"+b);}}
+  public override string LabelInBrackets{get{var b=base.LabelInBrackets;return sourceGene==null?b:(b.NullOrEmpty()?sourceGene.label:sourceGene.label+"，".Loc()+b);}}
   public override void ExposeData(){base.ExposeData();Scribe_Defs.Look(ref sourceGene,"sourceGene");Scribe_Values.Look(ref triggeredTick,"triggeredTick",-1);}
  }
  public static class OncePerCooldown {

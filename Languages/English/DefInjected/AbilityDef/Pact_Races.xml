@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 锁链拽 -->
+  <LP_ChainLash.label>chain pull</LP_ChainLash.label>
+  <!-- 甩出锁链：4 格内一个目标挨一链子（钝器 14），并被拽到身边。冷却 10 秒。 -->
+  <LP_ChainLash.description>Fling a chain: one target within 4 cells takes a chain hit (blunt 14) and is yanked to its side. Cooldown 10 seconds.</LP_ChainLash.description>
+  <!-- 地狱火 -->
+  <LP_HellfireHurl.label>hellfire</LP_HellfireHurl.label>
+  <!-- 把一团地狱火扔向 10 格内的目标：火焰 15，可能点燃。冷却 30 秒。 -->
+  <LP_HellfireHurl.description>Hurl a ball of hellfire at a target within 10 cells: fire 15, may ignite. Cooldown 30 seconds.</LP_HellfireHurl.description>
+  <!-- 追猎 -->
+  <LP_HuntersMark.label>hunt</LP_HuntersMark.label>
+  <!-- 标记一个敌人 3 天：艾林魔对它的伤害 +15%。冷却 1 天。 -->
+  <LP_HuntersMark.description>Mark an enemy for 3 days: the erinyes deals +15% damage to it. Cooldown 1 day.</LP_HuntersMark.description>
+  <!-- 缚绳 -->
+  <LP_ErinyesEntangle.label>binding rope</LP_ErinyesEntangle.label>
+  <!-- 甩出金色的绳索：8 格内一个目标做敏捷豁免（豁免难度随艾林魔的熟练加值和敏捷提高；目标的属性调整值和熟练加值每点 +5% 成功率），失败被缚住 4 秒。冷却 2 小时。 -->
+  <LP_ErinyesEntangle.description>Throw a golden rope: one target within 8 cells makes a Dexterity save (difficulty rises with the erinyes's proficiency bonus and Dexterity; each point of the target's ability modifier and proficiency bonus gives +5% success) or is bound for 4 seconds. Cooldown 2 hours.</LP_ErinyesEntangle.description>
+  <!-- 缚绳 -->
+  <LP_RopeEntangle.label>binding rope</LP_RopeEntangle.label>
+  <!-- 甩出缚绳：8 格内一个目标做敏捷豁免（豁免难度随使用者的熟练加值和敏捷提高；目标的属性调整值和熟练加值每点 +5% 成功率），失败被缚住 4 秒。用掉缚绳 1 点耐久。冷却 2 小时。 -->
+  <LP_RopeEntangle.description>Throw the binding rope: one target within 8 cells makes a Dexterity save (difficulty rises with the user's proficiency bonus and Dexterity; each point of the target's ability modifier and proficiency bonus gives +5% success) or is bound for 4 seconds. Uses 1 point of the rope's durability. Cooldown 2 hours.</LP_RopeEntangle.description>
+  <!-- 冲撞 -->
+  <LP_SatyrCharge.label>ram</LP_SatyrCharge.label>
+  <!-- 低头冲到 6 格内的目标身边：目标做力量豁免（豁免难度随萨特的熟练加值和力量提高；目标的属性调整值和熟练加值每点 +5% 成功率），失败倒地 1 秒。冷却 4 小时。 -->
+  <LP_SatyrCharge.description>Lower your head and charge next to a target within 6 cells: the target makes a Strength save (difficulty rises with the satyr's proficiency bonus and Strength; each point of the target's ability modifier and proficiency bonus gives +5% success) or falls for 1 second. Cooldown 4 hours.</LP_SatyrCharge.description>
+  <!-- 树行 -->
+  <LP_TreeStride.label>tree stride</LP_TreeStride.label>
+  <!-- 走进身边的树，从 30 格内另一棵成年的树旁边走出来。冷却 2 小时。 -->
+  <LP_TreeStride.description>Walk into a nearby tree and come out next to another adult tree within 30 cells. Cooldown 2 hours.</LP_TreeStride.description>
+  <!-- 绑定此树 -->
+  <LP_BindTree.label>bind to this tree</LP_BindTree.label>
+  <!-- 和身边一棵成年的树（成长 ≥80%、不在种植区里、没被别的林仙占着）结下绑定。冷却 1 小时。 -->
+  <LP_BindTree.description>Bind yourself to an adult tree nearby (growth ≥80%, not in a growing zone, not claimed by another dryad). Cooldown 1 hour.</LP_BindTree.description>
+  <!-- 千面 -->
+  <LP_ChangelingFaces.label>thousand faces</LP_ChangelingFaces.label>
+  <!-- 复制 12 格内一名看得见的人形的外观和名字，持续 24 小时；被魔鬼之眼或狄瓦的真知看到会提前解除。冷却 1 天。 -->
+  <LP_ChangelingFaces.description>Copy the appearance and name of a visible humanlike within 12 cells for 24 hours; ends early when seen by a devil's eye or a deva's truesight. Cooldown 1 day.</LP_ChangelingFaces.description>
+  <!-- 治疗之触 -->
+  <LP_DevaHealingTouch.label>healing touch</LP_DevaHealingTouch.label>
+  <!-- 手按在伤口上：治好一个人最严重的一处伤。冷却 8 小时（一天 3 次）。 -->
+  <LP_DevaHealingTouch.description>Lay a hand on the wound: heals a person's worst wound. Cooldown 8 hours (3 per day).</LP_DevaHealingTouch.description>
+  <!-- 天界之怒 -->
+  <LP_PlanetarWrath.label>celestial wrath</LP_PlanetarWrath.label>
+  <!-- 举剑向天：8 格内的敌人受到 30 点光辉伤害。冷却 1 天。 -->
+  <LP_PlanetarWrath.description>Raise the sword to the heavens: enemies within 8 cells take 30 radiant damage. Cooldown 1 day.</LP_PlanetarWrath.description>
+  <!-- 驱散 -->
+  <LP_PlanetarBanish.label>dispel</LP_PlanetarBanish.label>
+  <!-- 命令一个外来者（恶魔、魔鬼、妖精）离开：它做魅力豁免（难度 20，基础成功率 15%），失败被逐回自己的位面；传奇首领先消耗一次传奇抗性。冷却 1 小时。 -->
+  <LP_PlanetarBanish.description>Command an outsider (demon, devil, fey) to leave: it makes a Charisma save (difficulty 20, base success 15%) or is driven back to its own plane; legendary bosses spend one legendary resistance first. Cooldown 1 hour.</LP_PlanetarBanish.description>
+</LanguageData>

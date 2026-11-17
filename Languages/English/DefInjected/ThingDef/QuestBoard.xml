@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 探索公告板 -->
+  <LP_QuestBoard.label>exploration board</LP_QuestBoard.label>
+  <!-- 一块钉满羊皮纸告示的木板。附近的冒险者公会、商旅、村镇、通缉令和魔力湖泊的湖民都会把需要冒险者的活计贴在这里。板上有两类委托：
+
+【每日委托】每天刷新一批分等阶（青铜、白银、黄金、秘银、传说）的委托，例如守住即将来袭的敌人、远征世界地图上的怪物巢穴、清剿敌对据点。殖民地最高冒险者等级越高，能接的等阶越高。完成给银币和物品报酬，接取人得到“任务点数 × 0.5”的冒险者经验，殖民地其他人得到其中的四分之一。
+
+【名声委托】每 5 天换 3 条：清剿怪物巢穴、讨伐通缉犯、救援被困的冒险者、寻回失物、调查闹鬼的废墟。接下后世界地图上出现地点，7 天内完成。完成给参与者冒险者经验、银子、卷轴，并提高殖民地的名声——名声越高，危险的委托越多、报酬越好；失败扣名声。
+
+每张地图只能放一块。 -->
+  <LP_QuestBoard.description>A wooden board nailed full of parchment notices. Nearby adventurers' guilds, caravans, towns, wanted posters and the lakefolk of the Mana Lake post jobs for adventurers here. The board holds two kinds of commissions:
+
+[Daily commissions] Each day a batch of tiered commissions (bronze, silver, gold, mithril, legendary) refreshes, such as holding off incoming enemies, expeditions to monster nests on the world map, and clearing hostile outposts. The higher the colony's highest adventurer level, the higher the tiers you can take. Completing one pays silver and items; the taker gets "quest points × 0.5" adventurer XP, and the colony's other members get a quarter of that.
+
+[Renown commissions] 3 new ones every 5 days: clearing monster nests, hunting outlaws, rescuing trapped adventurers, recovering lost items, investigating haunted ruins. Once accepted, a site appears on the world map and must be completed within 7 days. Completing one gives the participants adventurer XP, silver and scrolls and raises the colony's renown: the higher the renown, the more dangerous the commissions and the better the pay; failing costs renown.
+
+Only one per map.</LP_QuestBoard.description>
+</LanguageData>

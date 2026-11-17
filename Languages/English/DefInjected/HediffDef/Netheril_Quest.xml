@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 半巫妖之躯 -->
+  <LP_NetherilUndead.label>demilich body</LP_NetherilUndead.label>
+  <!-- 拉洛克用耐瑟奥术维系的不死之躯：不知疼痛、不需进食和睡眠。附近有敌人时会施放恐惧凝视和死灵冲击。 -->
+  <LP_NetherilUndead.description>An undead body Larloch sustains with Netherese arcana: feels no pain, needs no food or sleep. Casts fear gaze and necrotic blast when enemies are nearby.</LP_NetherilUndead.description>
+  <!-- 影巫王的化身 -->
+  <LP_LarlochAvatar.label>avatar of the Shadow King</LP_LarlochAvatar.label>
+  <!-- 这不是拉洛克本人，只是他的一具化身：部件生命 ×2、不知疼痛，会恐惧凝视、死灵冲击，身边始终笼罩着生命汲取光环。化身死后不会复活。 -->
+  <LP_LarlochAvatar.description>This isn't Larloch himself, only one of his avatars: part health ×2, feels no pain, can use fear gaze and necrotic blast, and is always shrouded in a life-draining aura. The avatar won't revive when it dies.</LP_LarlochAvatar.description>
+  <!-- 塞伊精英法师 -->
+  <LP_ThayEliteMage.label>Thayan elite wizard</LP_ThayEliteMage.label>
+  <!-- 塞伊精心培养的红袍法师，护身咒文让受到的伤害 -40%。 -->
+  <LP_ThayEliteMage.description>A Red Wizard carefully trained by Thay; protective incantations reduce damage taken by 40%.</LP_ThayEliteMage.description>
+  <!-- 失匣巫妖 -->
+  <LP_PhylacteryLost.label>lich without phylactery</LP_PhylacteryLost.label>
+  <!-- 这名巫妖的命匣交到了影巫王拉洛克手里。巫妖保留全部能力和命匣等级，但死后不会再复活，也不能再向命匣献祭。 -->
+  <LP_PhylacteryLost.description>This lich's phylactery is in the hands of Larloch the Shadow King. The lich keeps all abilities and phylactery level, but will no longer revive after death and can't make sacrifices to the phylactery anymore.</LP_PhylacteryLost.description>
+  <!-- 奥术半神 -->
+  <LP_ArcaneDemigod.label>arcane demigod</LP_ArcaneDemigod.label>
+  <!-- 魔网接纳了这个人：心灵熵上限 ×2、精神力回复 ×2、不再衰老、不需进食，心灵法术冷却减半，每天一次“神谕”。世上只能有一位奥术半神。 -->
+  <LP_ArcaneDemigod.description>The Weave has accepted this person: max neural heat ×2, psyfocus regain ×2, no longer ages, needs no food, psycast cooldowns halved, one "oracle" per day. There can be only one arcane demigod in the world.</LP_ArcaneDemigod.description>
+</LanguageData>

@@ -42,10 +42,10 @@ namespace LichPhylactery {
  public static class ExtraRaidSettings {
   public static void Draw(Listing_Standard l){
    var s=LichMod.Settings;
-   l.CheckboxLabeled("额外袭击",ref s.extraRaids,"不管用哪个说书人，每隔下面设的天数额外来一次敌对袭击（派系和来法随机，DND 派系也在里面）。第 15 天以前不来。不影响说书人自己安排的袭击。");
+   l.CheckboxLabeled("额外袭击".Loc(),ref s.extraRaids,"不管用哪个说书人，每隔下面设的天数额外来一次敌对袭击（派系和来法随机，DND 派系也在里面）。第 15 天以前不来。不影响说书人自己安排的袭击。".Loc());
    if(!s.extraRaids)return;
-   l.Label("额外袭击间隔："+s.extraRaidDays+" 天");s.extraRaidDays=(int)l.Slider(s.extraRaidDays,ExtraRaids.MinDays,ExtraRaids.MaxDays);
-   l.Label("额外袭击强度："+s.extraRaidPoints+"%（乘当前威胁点数）");s.extraRaidPoints=(int)l.Slider(s.extraRaidPoints,25,300);
+   l.Label("额外袭击间隔：".Loc()+s.extraRaidDays+" 天".Loc());s.extraRaidDays=(int)l.Slider(s.extraRaidDays,ExtraRaids.MinDays,ExtraRaids.MaxDays);
+   l.Label("额外袭击强度：".Loc()+s.extraRaidPoints+"%（乘当前威胁点数）".Loc());s.extraRaidPoints=(int)l.Slider(s.extraRaidPoints,25,300);
   }
  }
 }

@@ -19,8 +19,8 @@ namespace LichPhylactery.VPEBridge {
   static void Postfix(Ability __instance){
    var p=__instance?.pawn;if(p==null || __instance.def?.Psycast()==null || __instance.cooldown<=Find.TickManager.TicksGame)return;
    var i=HeroTraits.Info(p);if(i==null)return;
-   if(i.ritual && Feats2.Primed(p)){__instance.cooldown=0;Items.Remove(p,"LP_RitualPrimed");Items.Mote(p,"仪式余韵：不进冷却",new UnityEngine.Color(.6f,.55f,.85f));return;}
-   if(HeroDestiny.VpeSkipCooldown(p)){__instance.cooldown=0;Items.Mote(p,"魔网之子：不进冷却",new UnityEngine.Color(.5f,.7f,1f));}
+   if(i.ritual && Feats2.Primed(p)){__instance.cooldown=0;Items.Remove(p,"LP_RitualPrimed");Items.Mote(p,"仪式余韵：不进冷却".Loc(),new UnityEngine.Color(.6f,.55f,.85f));return;}
+   if(HeroDestiny.VpeSkipCooldown(p)){__instance.cooldown=0;Items.Mote(p,"魔网之子：不进冷却".Loc(),new UnityEngine.Color(.5f,.7f,1f));}
   }
  }
  [StaticConstructorOnStartup]

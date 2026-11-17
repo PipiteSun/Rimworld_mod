@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 献上白银 -->
+  <LP_Offer_Silver.label>offer silver</LP_Offer_Silver.label>
+  <!-- 在圣坛上献上100白银：守护神神眷+1（按白银市值，每100+1）。 -->
+  <LP_Offer_Silver.description>Offer 100 silver at the altar: patron deity divine favor +1 (by silver market value, +1 per 100).</LP_Offer_Silver.description>
+  <!-- 正在向守护神献祭。 -->
+  <LP_Offer_Silver.jobString>Making an offering to the patron deity.</LP_Offer_Silver.jobString>
+  <!-- 献上神迹残片 -->
+  <LP_Offer_Shard.label>offer a miracle fragment</LP_Offer_Shard.label>
+  <!-- 把一片神迹残片还给神：守护神神眷+10。 -->
+  <LP_Offer_Shard.description>Return a fragment of a miracle to the god: patron deity divine favor +10.</LP_Offer_Shard.description>
+  <!-- 正在向守护神献祭。 -->
+  <LP_Offer_Shard.jobString>Making an offering to the patron deity.</LP_Offer_Shard.jobString>
+  <!-- 献上守护神喜爱的祭品 -->
+  <LP_Offer_Liked.label>offer a favored sacrifice to the patron deity</LP_Offer_Liked.label>
+  <!-- 献上一份（市值60）守护神喜爱的东西，神眷按市值×3计算（每份约+1.8）。各神喜欢的东西不同，见圣坛上的神眷一览；更换守护神后配方自动换成新神喜欢的东西。 -->
+  <LP_Offer_Liked.description>Offer one portion (market value 60) of something the patron deity loves; divine favor = market value × 3 (about +1.8 per portion). Each god likes different things; see the divine favor overview on the altar. After changing patron deity, the recipe switches automatically to what the new god likes.</LP_Offer_Liked.description>
+  <!-- 正在向守护神献祭。 -->
+  <LP_Offer_Liked.jobString>Making an offering to the patron deity.</LP_Offer_Liked.jobString>
+</LanguageData>

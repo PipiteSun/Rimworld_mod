@@ -57,7 +57,7 @@ namespace LichPhylactery {
     Check(race.GetCompProperties<CompProperties_Beast>()!=null && Beasts.IsBeastKind(kind),pair.Key+" carries the beast component");
     foreach(var stage in kind.lifeStages){
      var g=stage.bodyGraphicData;
-     Check(g!=null && ContentFinder<Texture2D>.Get(g.texPath+"_south",false)!=null && g.color!=Color.white,pair.Key+" life stage uses a recolored vanilla texture: "+g?.texPath);
+     Check(g!=null && ContentFinder<Texture2D>.Get(g.texPath+"_south",false)!=null && g.texPath.StartsWith("Things/Pawn/Animal/LP_Beasts/") && g.color==Color.white,pair.Key+" life stage uses its own DND texture (1.159.0): "+g?.texPath);
      Check(ContentFinder<Texture2D>.Get(stage.dessicatedBodyGraphicData.texPath+"_south",false)!=null,pair.Key+" dessicated texture resolves: "+stage.dessicatedBodyGraphicData.texPath);
     }
     Check(Near(race.race.baseBodySize,s.size) && Near(race.race.baseHealthScale,s.health) && Near(kind.combatPower,s.power),pair.Key+" body size, health scale and combat power: "+race.race.baseBodySize+"/"+race.race.baseHealthScale+"/"+kind.combatPower);

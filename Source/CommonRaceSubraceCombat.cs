@@ -78,7 +78,7 @@ namespace LichPhylactery {
   static bool Prefix(MentalStateDef __0,Pawn ___pawn,ref bool __result){
    if(__0==null || ___pawn==null)return true;
    if(Subraces.calmTaming!=null && ___pawn==Subraces.calmTaming && (__0==MentalStateDefOf.Manhunter || __0==MentalStateDefOf.ManhunterPermanent)){__result=false;return false;}
-   if(HeroismFearImmunity.Fear(__0) && Subraces.IsHalfling(___pawn)){Items.Mote(___pawn,"勇敢！",new Color(1f,.85f,.45f));__result=false;return false;}
+   if(HeroismFearImmunity.Fear(__0) && Subraces.IsHalfling(___pawn)){Items.Mote(___pawn,"勇敢！".Loc(),new Color(1f,.85f,.45f));__result=false;return false;}
    return true;
   }
  }
@@ -117,30 +117,30 @@ namespace LichPhylactery {
    return s;
   }
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p && Subraces.Has(p,Subraces.ArmorTraining))val-=.5f*Penalty(p);}
-  public override string ExplanationPart(StatRequest req){if(!(req.Thing is Pawn p) || !Subraces.Has(p,Subraces.ArmorTraining))return null;float b=-.5f*Penalty(p);return b<=0f?null:"矮人护甲训练：+"+b.ToString("0.##");}
+  public override string ExplanationPart(StatRequest req){if(!(req.Thing is Pawn p) || !Subraces.Has(p,Subraces.ArmorTraining))return null;float b=-.5f*Penalty(p);return b<=0f?null:"矮人护甲训练：+".Loc()+b.ToString("0.##");}
  }
  // 大地精群体之助：全局工作速度 ×(1+3%×身边本方人形数)，最多 ×109%。
  public class StatPart_HobgoblinNumbers : StatPart {
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p && Subraces.Has(p,"LP_HobgoblinNumbers"))val*=Subraces.HobFactor(p);}
-  public override string ExplanationPart(StatRequest req){if(!(req.Thing is Pawn p) || !Subraces.Has(p,"LP_HobgoblinNumbers"))return null;float f=Subraces.HobFactor(p);return f==1f?null:"群体之助：×"+f.ToStringPercent();}
+  public override string ExplanationPart(StatRequest req){if(!(req.Thing is Pawn p) || !Subraces.Has(p,"LP_HobgoblinNumbers"))return null;float f=Subraces.HobFactor(p);return f==1f?null:"群体之助：×".Loc()+f.ToStringPercent();}
  }
  // 狗头人陷阱匠：正在建陷阱时建造速度 ×2。
  public class StatPart_KoboldTrapBuilding : StatPart {
   public static bool BuildingTrap(Pawn p)=>p.CurJob?.targetA.Thing is Frame f && (f.def.entityDefToBuild as ThingDef)?.building?.isTrap==true;
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p && Subraces.Has(p,Subraces.Trapsmith) && BuildingTrap(p))val*=Subraces.TrapBuildFactor;}
-  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Subraces.Has(p,Subraces.Trapsmith) && BuildingTrap(p)?"陷阱匠（建陷阱）：×200%":null;
+  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Subraces.Has(p,Subraces.Trapsmith) && BuildingTrap(p)?"陷阱匠（建陷阱）：×200%".Loc():null;
  }
  // 狗头人建成的陷阱：陷阱伤害 ×1.3。
  public class StatPart_KoboldTrap : StatPart {
   public static bool Marked(Thing t)=>t!=null && Subraces.State?.koboldTraps.Contains(t.thingIDNumber)==true;
   public override void TransformValue(StatRequest req,ref float val){if(Marked(req.Thing))val*=Subraces.TrapFactor;}
-  public override string ExplanationPart(StatRequest req)=>Marked(req.Thing)?"狗头人建造：×130%":null;
+  public override string ExplanationPart(StatRequest req)=>Marked(req.Thing)?"狗头人建造：×130%".Loc():null;
  }
  // 岩侏儒修补匠：做发条玩具时一般劳动速度再 ×2。
  public class StatPart_TinkerToy : StatPart {
   public static bool MakingToy(Pawn p)=>p.CurJob?.bill?.recipe?.defName=="LP_MakeClockworkToy";
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p && Subraces.Has(p,Subraces.Tinker) && MakingToy(p))val*=Subraces.TinkerToyFactor;}
-  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Subraces.Has(p,Subraces.Tinker) && MakingToy(p)?"修补匠（发条玩具）：×200%":null;
+  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Subraces.Has(p,Subraces.Tinker) && MakingToy(p)?"修补匠（发条玩具）：×200%".Loc():null;
  }
 
  // ---------- 卓尔：黑暗术 ----------

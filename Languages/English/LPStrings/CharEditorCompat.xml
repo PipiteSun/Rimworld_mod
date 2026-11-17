@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（CharEditorCompat.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>[LichPhylactery] 角色编辑器联动初始化失败：</zh><en>[LichPhylactery] Character Editor link initialization failed: </en></s>
+  <s><zh>打开 DND 编辑面板：冒险者等级、六维属性、职业与子职业、专长、史诗恩赐、强力特性与武艺天赋。</zh><en>Open the DND edit panel: adventurer level, six abilities, classes and subclasses, feats, epic boons, power traits and combat gifts.</en></s>
+  <s><zh>[LichPhylactery] 角色编辑器 DND 按钮出错（同类错误不再提示）：</zh><en>[LichPhylactery] Character Editor DND button error (similar errors won't be shown again): </en></s>
+  <s><zh>[LichPhylactery] 角色编辑器特性同步出错（同类错误不再提示）：</zh><en>[LichPhylactery] Character Editor trait sync error (similar errors won't be shown again): </en></s>
+  <s><zh>等级与属性</zh><en>Level and abilities</en></s>
+  <s><zh>专长与恩赐</zh><en>Feats and boons</en></s>
+  <s><zh>特性</zh><en>Traits</en></s>
+  <s><zh>DND：</zh><en>DND: </en></s>
+  <s><zh>没有冒险者状态</zh><en>No adventurer status</en></s>
+  <s><zh>模组设置里关掉了冒险者等级。</zh><en>Adventurer levels are turned off in mod settings.</en></s>
+  <s><zh>这个角色不能成为冒险者（需要类人、满 </zh><en>This character can't become an adventurer (needs to be humanlike, at least </en></s>
+  <s><zh> 岁，且不是构装体 / 召唤物）。</zh><en> years old, and not a construct / summon).</en></s>
+  <s><zh>这个角色还没有冒险者等级和六维属性。</zh><en>This character has no adventurer level or six abilities yet.</en></s>
+  <s><zh>添加冒险者状态</zh><en>Add adventurer status</en></s>
+  <s><zh>，熟练加值 +</zh><en>, proficiency bonus +</en></s>
+  <s><zh>升级照常发属性提升、传奇属性点和恩赐点；降级不收回已经发的（可以在下面直接改点数）。Shift 点 ±5。</zh><en>Leveling up grants ability score improvements, legend attribute points and boon points as usual; leveling down doesn't take back what was granted (points can be edited directly below). Shift-click for ±5.</en></s>
+  <s><zh>传奇冒险者（解锁 21～40 级）</zh><en>Legendary adventurer (unlocks levels 21-40)</en></s>
+  <s><zh>关掉时等级降回 20。</zh><en>Turning it off drops the level back to 20.</en></s>
+  <s><zh>\n模组设置里关掉了传奇等级：开着也只到 20 级。</zh><en>\nLegend levels are turned off in mod settings: even when on, it only goes to 20.</en></s>
+  <s><zh> / 下一级 </zh><en> / next level </en></s>
+  <s><zh>（设等级时经验取该级下限）</zh><en> (setting the level sets XP to that level's minimum)</en></s>
+  <s><zh>六维属性</zh><en>Six abilities</en></s>
+  <s><zh>有效 </zh><en>effective </en></s>
+  <s><zh> / 上限 </zh><en> / cap </en></s>
+  <s><zh>　×</zh><en>  ×</en></s>
+  <s><zh>基础值（专长、武艺天赋、职业的加值另算）。超过上限的部分保留，但效果按上限算。</zh><en>Base value (bonuses from feats, combat gifts and classes are counted separately). The part above the cap is kept, but effects count at the cap.</en></s>
+  <s><zh>正在分配初始购点（还剩 </zh><en>Assigning starting point buy ( </en></s>
+  <s><zh> 点）。</zh><en> points left).</en></s>
+  <s><zh>结束初始购点</zh><en>Finish starting point buy</en></s>
+  <s><zh>待分配点数</zh><en>Points to assign</en></s>
+  <s><zh>属性提升</zh><en>Ability score improvements</en></s>
+  <s><zh>每次 </zh><en>each </en></s>
+  <s><zh> 点，或换一个专长</zh><en> points, or one feat</en></s>
+  <s><zh>拆开剩余的点</zh><en>split remaining points</en></s>
+  <s><zh>职业奖励专长</zh><en>Class bonus feats</en></s>
+  <s><zh>施法奖励专长</zh><en>Spellcasting bonus feats</en></s>
+  <s><zh>史诗恩赐点</zh><en>Epic boon points</en></s>
+  <s><zh>传奇属性点</zh><en>Legend attribute points</en></s>
+  <s><zh>传奇职业点</zh><en>Legendary class points</en></s>
+  <s><zh>职业免门槛次数</zh><en>Class prerequisite waivers</en></s>
+  <s><zh>下一个新职业跳过技能 / 兼修门槛（冒险者手册）。</zh><en>The next new class skips the skill / multiclass requirements (adventurer's manual).</en></s>
+  <s><zh>这些点在原版「冒险者」分页里分配。</zh><en>These points are spent on the vanilla "Adventurer" tab.</en></s>
+  <s><zh>传奇属性点（已投）</zh><en>Legend attribute points (spent)</en></s>
+  <s><zh>已用职业等级 </zh><en>Class levels used </en></s>
+  <s><zh> / 冒险者等级给的 </zh><en> / granted by adventurer level </en></s>
+  <s><zh>。这里改不看技能和兼修门槛，也可以超过预算或兼修超过 </zh><en>. Edits here ignore skill and multiclass requirements and can exceed the budget or multiclass beyond </en></s>
+  <s><zh> 个；降级会收回不再应得的职业能力。</zh><en> classes; leveling down takes back class abilities no longer earned.</en></s>
+  <s><zh>子职业</zh><en>Subclass</en></s>
+  <s><zh>（未选）</zh><en>(not chosen)</en></s>
+  <s><zh>（不选）</zh><en>(none)</en></s>
+  <s><zh>平时 </zh><en>Normally chosen at level </en></s>
+  <s><zh> 级才选</zh><en>.</en></s>
+  <s><zh>已有职业能力（</zh><en>Existing class abilities (</en></s>
+  <s><zh>专长（</zh><en>Feats (</en></s>
+  <s><zh>勾选直接获得、取消直接失去，不看等级和前置，也不占属性提升。</zh><en>Tick to gain directly, untick to lose directly, ignoring level and prerequisites and not using ability score improvements.</en></s>
+  <s><zh>〔起源〕</zh><en>[origin]</en></s>
+  <s><zh>〔种族〕</zh><en>[race]</en></s>
+  <s><zh>\n\n平时的条件：</zh><en>\n\nNormal requirements: </en></s>
+  <s><zh>史诗恩赐（</zh><en>Epic boons (</en></s>
+  <s><zh>强力特性（金 / 紫 / 稀有天赋 / 诅咒）</zh><en>Power traits (gold / purple / rare talents / curses)</en></s>
+  <s><zh>，武艺天赋 </zh><en>, combat gifts </en></s>
+  <s><zh>：满了再加会顶掉最早的一个（上限在模组设置里改）；互斥的（天命之间、稀有天赋之间、诅咒之间）会替换。其他特性在角色编辑器自己的特性页也能改。</zh><en>: adding more when full pushes out the earliest one (the cap is changed in mod settings); mutually exclusive ones (between destinies, between rare talents, between curses) replace each other. Other traits can also be edited on Character Editor's own trait page.</en></s>
+  <s><zh>金色强力特性</zh><en>Gold power traits</en></s>
+  <s><zh>紫色强力特性</zh><en>Purple power traits</en></s>
+  <s><zh>稀有天赋</zh><en>Rare talents</en></s>
+  <s><zh>武艺天赋</zh><en>combat gift</en></s>
+  <s><zh>事迹</zh><en>Deeds</en></s>
+  <s><zh>诅咒之力</zh><en>cursed power</en></s>
+  <s><zh>性格特性</zh><en>personality trait</en></s>
+  <s><zh>没能</zh><en>Failed to </en></s>
+  <s><zh>加上</zh><en>add </en></s>
+  <s><zh>去掉</zh><en>remove </en></s>
+  <s><zh>「</zh><en>"</en></s>
+  <s><zh>」（和已有特性冲突）</zh><en>" (conflicts with an existing trait)</en></s>
+</LPStrings>

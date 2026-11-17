@@ -25,42 +25,42 @@ namespace LichPhylactery {
    var p=h?.pawn;int lv=ClassSystem.Level(h,c);var used=new HashSet<string>();
    // 1. 职业能力
    foreach(var e in c.abilities){
-    if(e.ability==null)continue;string lab=e.ability.label+(e.capstoneSkill!=null?"（另要"+e.capstoneSkill.label+" "+ClassSystem.CapstoneSkill+" 级）":"");used.Add(lab);
-    rows.Add(new OverviewRow{level=e.level,tag="职业能力",label=e.ability.LabelCap+(e.capstoneSkill!=null?"（另要"+e.capstoneSkill.label+" "+ClassSystem.CapstoneSkill+" 级）":""),tip=AbTip(e.ability),icon=e.ability.uiIcon,have=Knows(p,e.ability) || lv>=e.level && e.capstoneSkill==null});
+    if(e.ability==null)continue;string lab=e.ability.label+(e.capstoneSkill!=null?"（另要".Loc()+e.capstoneSkill.label+" "+ClassSystem.CapstoneSkill+" 级）".Loc():"");used.Add(lab);
+    rows.Add(new OverviewRow{level=e.level,tag="职业能力".Loc(),label=e.ability.LabelCap+(e.capstoneSkill!=null?"（另要".Loc()+e.capstoneSkill.label+" "+ClassSystem.CapstoneSkill+" 级）".Loc():""),tip=AbTip(e.ability),icon=e.ability.uiIcon,have=Knows(p,e.ability) || lv>=e.level && e.capstoneSkill==null});
    }
    // 2. 子职业
    var opts=ClassSubclass.Options(c).ToList();var picked=ClassSubclass.Picked(h,c);int pl=ClassSubclass.PickLevelFor(c);
    if(opts.Count>0){
-    used.Add("选择子职业");if(picked!=null)used.Add("子职业「"+picked.label+"」");
-    rows.Add(new OverviewRow{level=pl,tag="子职业",label=picked==null?"选择子职业（"+string.Join("、",opts.Select(s=>s.label))+"）":"子职业「"+picked.label+"」",icon=(picked??opts[0]).Emblem,have=picked!=null,pending=picked==null && lv>=pl,
-     tip=string.Join("\n\n",opts.Select(s=>s.LabelCap+(s==picked?"（已选）":"")+"\n"+s.description))});
+    used.Add("选择子职业".Loc());if(picked!=null)used.Add("子职业「".Loc()+picked.label+"」".Loc());
+    rows.Add(new OverviewRow{level=pl,tag="子职业".Loc(),label=picked==null?"选择子职业（".Loc()+string.Join("、".Loc(),opts.Select(s=>s.label))+"）".Loc():"子职业「".Loc()+picked.label+"」".Loc(),icon=(picked??opts[0]).Emblem,have=picked!=null,pending=picked==null && lv>=pl,
+     tip=string.Join("\n\n",opts.Select(s=>s.LabelCap+(s==picked?"（已选）".Loc():"")+"\n"+s.description))});
     if(picked!=null){
      foreach(var e in picked.abilities.Where(x=>x.ability!=null)){used.Add(e.ability.label);rows.Add(new OverviewRow{level=e.level,tag=picked.label,label=e.ability.LabelCap,tip=AbTip(e.ability),icon=e.ability.uiIcon,have=Knows(p,e.ability) || lv>=e.level});}
-     foreach(var ch in picked.choices){used.Add("选择"+ch.label);string cur=ClassSubclass.ChoiceLabel(h,ch);
-      rows.Add(new OverviewRow{level=ch.level,tag=picked.label,label=cur!=null?ch.label+"：「"+cur+"」":"选择"+ch.label+"（"+string.Join("、",ch.options)+"）",have=cur!=null,pending=cur==null && lv>=ch.level,icon=picked.Emblem,tip=ch.label+"\n\n"+string.Join("\n",ch.options.Select((o,i)=>"· "+o+(i<ch.tips.Count && !ch.tips[i].NullOrEmpty()?"："+ch.tips[i]:"")))});}
+     foreach(var ch in picked.choices){used.Add("选择".Loc()+ch.label);string cur=ClassSubclass.ChoiceLabel(h,ch);
+      rows.Add(new OverviewRow{level=ch.level,tag=picked.label,label=cur!=null?ch.label+"：「".Loc()+cur+"」".Loc():"选择".Loc()+ch.label+"（".Loc()+string.Join("、".Loc(),ch.options)+"）".Loc(),have=cur!=null,pending=cur==null && lv>=ch.level,icon=picked.Emblem,tip=ch.label+"\n\n"+string.Join("\n",ch.options.Select((o,i)=>"· "+o+(i<ch.tips.Count && !ch.tips[i].NullOrEmpty()?"：".Loc()+ch.tips[i]:"")))});}
     }else{
      foreach(int l in opts.SelectMany(s=>s.abilities.Select(e=>e.level)).Distinct().OrderBy(x=>x))
-      rows.Add(new OverviewRow{level=l,tag="子职业",label="子职业能力（按所选子职业）",icon=opts[0].Emblem,have=false,
-       tip=string.Join("\n",opts.Select(s=>s.label+"："+string.Join("、",s.abilities.Where(e=>e.level==l && e.ability!=null).Select(e=>e.ability.label))))});
+      rows.Add(new OverviewRow{level=l,tag="子职业".Loc(),label="子职业能力（按所选子职业）".Loc(),icon=opts[0].Emblem,have=false,
+       tip=string.Join("\n",opts.Select(s=>s.label+"：".Loc()+string.Join("、".Loc(),s.abilities.Where(e=>e.level==l && e.ability!=null).Select(e=>e.ability.label))))});
     }
    }
    var gen=ClassSubclass.General(c);
-   if(gen!=null)foreach(var e in gen.abilities.Where(x=>x.ability!=null)){used.Add(e.ability.label);rows.Add(new OverviewRow{level=e.level,tag="职业特性",label=e.ability.LabelCap,tip=AbTip(e.ability),icon=e.ability.uiIcon,have=Knows(p,e.ability) || lv>=e.level});}
+   if(gen!=null)foreach(var e in gen.abilities.Where(x=>x.ability!=null)){used.Add(e.ability.label);rows.Add(new OverviewRow{level=e.level,tag="职业特性".Loc(),label=e.ability.LabelCap,tip=AbTip(e.ability),icon=e.ability.uiIcon,have=Knows(p,e.ability) || lv>=e.level});}
    // 3. 其他等级特性（额外攻击、奖励专长、魔能爆光束、宿敌……）：沿用职业名悬停里的等级表
    for(int l=1;l<=ClassSystem.CapLevel;l++)foreach(var g in ClassLevelInfo.GainsAt(h,c,l))
-    if(!used.Contains(g) && !g.StartsWith("子职业「"))rows.Add(new OverviewRow{level=l,tag="特性",label=g,have=lv>=l,icon=c.Background});
+    if(!used.Contains(g) && !g.StartsWith("子职业「".Loc()))rows.Add(new OverviewRow{level=l,tag="特性".Loc(),label=g,have=lv>=l,icon=c.Background});
    // 4. 法术环位
    Spells(rows,h,c,lv);
    // 5. 职业水晶（魔力湖泊秘传，职业等级 11 / 13 / 15 / 17）
    foreach(var a in LakeArcana.OfClass(c)){var e=LakeArcana.Ext(a);bool have=LakeArcana.Knows(h,a);
-    rows.Add(new OverviewRow{level=LakeArcana.ClassLevelFor(e.ring),tag="职业水晶",label=a.LabelCap+"（"+e.ring+" 环）",icon=a.uiIcon,have=have,
-     tip=AbTip(a)+"\n\n"+(have?"已掌握":"需要「"+a.label+"」秘传结晶（魔力湖泊出售），"+c.label+" "+LakeArcana.ClassLevelFor(e.ring)+" 级，并占 1 个秘传槽。")});}
+    rows.Add(new OverviewRow{level=LakeArcana.ClassLevelFor(e.ring),tag="职业水晶".Loc(),label=a.LabelCap+"（".Loc()+e.ring+" 环）".Loc(),icon=a.uiIcon,have=have,
+     tip=AbTip(a)+"\n\n"+(have?"已掌握".Loc():"需要「".Loc()+a.label+"」秘传结晶（魔力湖泊出售），".Loc()+c.label+" "+LakeArcana.ClassLevelFor(e.ring)+" 级，并占 1 个秘传槽。".Loc())});}
    // 6. 传奇职业能力（传奇职业点）
    foreach(var a in c.legendary.Where(x=>x!=null))
-    rows.Add(new OverviewRow{group=2,level=0,tag="传奇",label=a.LabelCap,icon=a.uiIcon,have=ClassLegendary.Knows(h,a),tip=AbTip(a)+"\n\n冒险者 "+string.Join(" / ",ClassLegendary.Thresholds)+" 级各得 1 个传奇职业点；第一个要"+c.label+" "+ClassLegendary.FirstLevel+" 级，第二个 "+ClassLegendary.SecondLevel+" 级。"});
+    rows.Add(new OverviewRow{group=2,level=0,tag="传奇".Loc(),label=a.LabelCap,icon=a.uiIcon,have=ClassLegendary.Knows(h,a),tip=AbTip(a)+"\n\n冒险者 ".Loc()+string.Join(" / ",ClassLegendary.Thresholds)+" 级各得 1 个传奇职业点；第一个要".Loc()+c.label+" "+ClassLegendary.FirstLevel+" 级，第二个 ".Loc()+ClassLegendary.SecondLevel+" 级。".Loc()});
    // 7. 秘传槽（冒险者等级，所有职业共用）
    for(int i=0;i<LakeArcana.SlotLevels.Length;i++){int al=LakeArcana.SlotLevels[i];
-    rows.Add(new OverviewRow{group=1,level=al,tag="秘传槽",label="秘传槽 第 "+(i+1)+" 个"+(al>=30?"（传奇）":""),have=h!=null && h.level>=al,tip=LakeArcana.SlotTip,icon=LakeArcana.All.FirstOrDefault()?.uiIcon});}
+    rows.Add(new OverviewRow{group=1,level=al,tag="秘传槽".Loc(),label="秘传槽 第 ".Loc()+(i+1)+" 个".Loc()+(al>=30?"（传奇）".Loc():""),have=h!=null && h.level>=al,tip=LakeArcana.SlotTip,icon=LakeArcana.All.FirstOrDefault()?.uiIcon});}
    return rows.OrderBy(r=>r.group).ThenBy(r=>r.level).ToList();
   }
 
@@ -70,7 +70,7 @@ namespace LichPhylactery {
     var book=Spellbook.Bookable.Concat(Spellbook.CantripList).ToList();
     for(int k=0;k<=9;k++){
      var list=book.Where(d=>Spellbook.Circle(d)==k).OrderBy(d=>d.label).ToList();if(list.Count==0)continue;int need=k==0?1:Spellbook.LevelFor(k);
-     rows.Add(SpellRow(p,need,lv,k,list,"法术书",k==0?"每级可学的戏法：1 级 3 个，4 / 10 级各 +1。":"写进法术书（每级 "+Spellbook.PicksPerLevel+" 个，也可抄录卷轴），每天备法（法师等级 + 智力调整值）。"));
+     rows.Add(SpellRow(p,need,lv,k,list,"法术书".Loc(),k==0?"每级可学的戏法：1 级 3 个，4 / 10 级各 +1。".Loc():"写进法术书（每级 ".Loc()+Spellbook.PicksPerLevel+" 个，也可抄录卷轴），每天备法（法师等级 + 智力调整值）。".Loc()));
     }
     return;
    }
@@ -81,23 +81,23 @@ namespace LichPhylactery {
     int need=CasterSpells.LevelFor(l,k);if(need>ClassSystem.CapLevel)continue;
     if(l.Pact && k>5){
      var b=CasterSpells.Book(h,l,false);var pick=CasterSpells.ArcanumAt(b,l,k);
-     rows.Add(new OverviewRow{level=need,tag="秘法玄奥",label="秘法玄奥·"+Spellbook.CircleName(k)+(pick!=null?"：「"+pick.label+"」":"（选 1 个，每天 1 次）"),icon=(pick??list[0]).uiIcon,have=pick!=null,pending=pick==null && lv>=need,
-      tip="邪术师 "+need+" 级从这些"+Spellbook.CircleName(k)+"法术里选 1 个，每天施放 1 次、不耗契约法力：\n"+string.Join("、",list.Select(d=>d.label))});
+     rows.Add(new OverviewRow{level=need,tag="秘法玄奥".Loc(),label="秘法玄奥·".Loc()+Spellbook.CircleName(k)+(pick!=null?"：「".Loc()+pick.label+"」".Loc():"（选 1 个，每天 1 次）".Loc()),icon=(pick??list[0]).uiIcon,have=pick!=null,pending=pick==null && lv>=need,
+      tip="邪术师 ".Loc()+need+" 级从这些".Loc()+Spellbook.CircleName(k)+"法术里选 1 个，每天施放 1 次、不耗契约法力：\n".Loc()+string.Join("、".Loc(),list.Select(d=>d.label))});
      continue;
     }
-    string how=l.prepared?"备法职业：自动知道表里能施放环位的全部法术，每天准备一部分。":"已知职业：已知上限 = 职业等级 + 1，每升一级可替换 1 个。";
-    rows.Add(SpellRow(p,need,lv,k,list,"法术表",how));
+    string how=l.prepared?"备法职业：自动知道表里能施放环位的全部法术，每天准备一部分。".Loc():"已知职业：已知上限 = 职业等级 + 1，每升一级可替换 1 个。".Loc();
+    rows.Add(SpellRow(p,need,lv,k,list,"法术表".Loc(),how));
    }
    foreach(int sl in l.secretLevels){
     var b=CasterSpells.Book(h,l,false);
-    rows.Add(new OverviewRow{level=sl,tag="秘法奥秘",label="秘法奥秘（从任意职业的法术表选 "+l.secretsPer+" 个）",icon=l.Icon,have=lv>=sl,pending=lv>=sl && CasterSpells.SecretsDue(h,l)>0,
-     tip="吟游诗人 "+string.Join(" / ",l.secretLevels)+" 级各从任意职业的法术表（含法师法术书）选 "+l.secretsPer+" 个，按自己能施放的环位；算吟游诗人法术、扣乐韵。"+(b!=null && b.secrets.Count>0?"\n已选："+string.Join("、",b.secrets.Select(d=>d.label)):"")});
+    rows.Add(new OverviewRow{level=sl,tag="秘法奥秘".Loc(),label="秘法奥秘（从任意职业的法术表选 ".Loc()+l.secretsPer+" 个）".Loc(),icon=l.Icon,have=lv>=sl,pending=lv>=sl && CasterSpells.SecretsDue(h,l)>0,
+     tip="吟游诗人 ".Loc()+string.Join(" / ",l.secretLevels)+" 级各从任意职业的法术表（含法师法术书）选 ".Loc()+l.secretsPer+" 个，按自己能施放的环位；算吟游诗人法术、扣乐韵。".Loc()+(b!=null && b.secrets.Count>0?"\n已选：".Loc()+string.Join("、".Loc(),b.secrets.Select(d=>d.label)):"")});
    }
   }
   static OverviewRow SpellRow(Pawn p,int need,int lv,int k,List<AbilityDef> list,string tag,string how){
    int known=list.Count(d=>Knows(p,d));
-   return new OverviewRow{level=need,tag=tag,label=Spellbook.CircleName(k)+(k==0?"":"法术")+"（"+list.Count+" 个"+(known>0?"，已会 "+known:"")+"）",icon=list[0].uiIcon,have=lv>=need,
-    tip=Spellbook.CircleName(k)+(k==0?"":"法术")+"："+need+" 级起可用。"+how+"\n\n"+string.Join("、",list.Select(d=>(Knows(p,d)?"✓":"")+d.label))};
+   return new OverviewRow{level=need,tag=tag,label=Spellbook.CircleName(k)+(k==0?"":"法术".Loc())+"（".Loc()+list.Count+" 个".Loc()+(known>0?"，已会 ".Loc()+known:"")+"）".Loc(),icon=list[0].uiIcon,have=lv>=need,
+    tip=Spellbook.CircleName(k)+(k==0?"":"法术".Loc())+"：".Loc()+need+" 级起可用。".Loc()+how+"\n\n"+string.Join("、".Loc(),list.Select(d=>(Knows(p,d)?"✓":"")+d.label))};
   }
 
   // 一览的总高度（不用 GUI 量字，测试里也能算）。
@@ -107,14 +107,14 @@ namespace LichPhylactery {
    return groups*(GroupH+GroupGap)+rows.Count*RowH;
   }
   static string GroupLabel(OverviewRow r,Hediff_Adventurer h,int lv){
-   if(r.group==2)return "传奇职业能力（传奇职业点 "+ClassLegendary.Points(h)+"）";
-   if(r.group==1)return "冒险者 "+r.level+" 级"+(h!=null && h.level>=r.level?"":"（现在 "+(h?.level??0)+" 级）");
-   return "Lv "+r.level+(lv>=r.level?"":"（还差 "+(r.level-lv)+" 级）");
+   if(r.group==2)return "传奇职业能力（传奇职业点 ".Loc()+ClassLegendary.Points(h)+"）".Loc();
+   if(r.group==1)return "冒险者 ".Loc()+r.level+" 级".Loc()+(h!=null && h.level>=r.level?"":"（现在 ".Loc()+(h?.level??0)+" 级）".Loc());
+   return "Lv "+r.level+(lv>=r.level?"":"（还差 ".Loc()+(r.level-lv)+" 级）".Loc());
   }
   // 画在 (x, y) 起、宽 w 的区域（滚动区里），返回画完后的 y。
   public static float Draw(float x,float y,float w,List<OverviewRow> rows,Hediff_Adventurer h,LP_ClassDef c){
    int lv=ClassSystem.Level(h,c);int last=int.MinValue;
-   if(rows==null || rows.Count==0){LPUI.Unavailable(new Rect(x,y,w,RowH),"这个职业没有可列出的能力");return y+RowH;}
+   if(rows==null || rows.Count==0){LPUI.Unavailable(new Rect(x,y,w,RowH),"这个职业没有可列出的能力".Loc());return y+RowH;}
    foreach(var r in rows){
     int key=r.group*1000+r.level;
     if(key!=last){
@@ -127,7 +127,7 @@ namespace LichPhylactery {
     var c0=GUI.color;GUI.color=r.have?Color.white:r.pending?LPUI.Gold:LPUI.Locked;
     LPUI.LabelFit(new Rect(row.x+32f,row.y+3f,row.width-32f-stW-tagW-8f,RowH-4f),r.label);GUI.color=c0;
     LPUI.Tiny(new Rect(row.xMax-stW-tagW-4f,row.y+7f,tagW,RowH-6f),r.tag,true);
-    string st=r.have?"已获得":r.pending?"待选择":r.group==2?"需传奇职业点":r.group==1?"需冒险者 "+r.level+" 级":"需要 Lv "+r.level;
+    string st=r.have?"已获得".Loc():r.pending?"待选择".Loc():r.group==2?"需传奇职业点".Loc():r.group==1?"需冒险者 ".Loc()+r.level+" 级".Loc():"需要 Lv ".Loc()+r.level;
     var a=Text.Anchor;Text.Anchor=TextAnchor.MiddleRight;GUI.color=r.have?LPUI.Have:r.pending?LPUI.Gold:LPUI.Locked;
     LPUI.LabelFit(new Rect(row.xMax-stW-4f,row.y,stW,RowH-2f),st);GUI.color=c0;Text.Anchor=a;
     if(!r.tip.NullOrEmpty() && Mouse.IsOver(row))TooltipHandler.TipRegion(row,r.tip);

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（Classes.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>施法职业（法师、牧师、德鲁伊、术士、邪术师、圣武士或诡术师）</zh><en>Spellcasting class (wizard, cleric, druid, sorcerer, warlock, paladin or arcane trickster)</en></s>
+  <s><zh>亡灵无法立下圣誓</zh><en>The undead can't swear holy oaths</en></s>
+  <s><zh>死亡之躯与自然相斥</zh><en>A body of death is repelled by nature</en></s>
+  <s><zh> 级（或</zh><en> level (or </en></s>
+  <s><zh>兼修需要冒险者 </zh><en>Multiclassing needs adventurer </en></s>
+  <s><zh> 级，且</zh><en> level, and </en></s>
+  <s><zh>已经 </zh><en>Already </en></s>
+  <s><zh>传奇等级不给职业点</zh><en>Legend levels don't give class points</en></s>
+  <s><zh>没有职业点（每个冒险者等级 1 点）</zh><en>No class points (1 per adventurer level)</en></s>
+  <s><zh>最多兼修 </zh><en>At most </en></s>
+  <s><zh> 个职业</zh><en> classes multiclassed</en></s>
+  <s><zh>）获得 </zh><en>) gained </en></s>
+  <s><zh> 个职业奖励专长：免费选一个专长，不占属性提升。战士 1、2 级和之后每个偶数级各 1 个；武僧、圣武士 1、2 级各 1 个。</zh><en> class bonus feats: pick a feat for free without using an ability score improvement. Fighters get 1 at levels 1, 2 and each even level after; monks and paladins 1 each at levels 1 and 2.</en></s>
+  <s><zh>\n\n在“冒险者”分页的“可选专长”里选择。</zh><en>\n\nPick them in "available feats" on the "Adventurer" tab.</en></s>
+  <s><zh>获得 </zh><en>Gained </en></s>
+  <s><zh> 个职业奖励专长（在冒险者分页选择）</zh><en> class bonus feats (pick on the adventurer tab)</en></s>
+  <s><zh> 级获得</zh><en> level grants</en></s>
+  <s><zh>还需要</zh><en>Still needs </en></s>
+  <s><zh>：职业能力等级下调（终极 15 级），补上 </zh><en>: class ability levels lowered (capstone at 15), filled in </en></s>
+  <s><zh>斗志</zh><en>fighting spirit</en></s>
+  <s><zh>气</zh><en>ki</en></s>
+  <s><zh>神恩</zh><en>divine favor</en></s>
+  <s><zh>法力</zh><en>mana</en></s>
+  <s><zh>怒气</zh><en>rage</en></s>
+  <s><zh>契约法力</zh><en>pact mana</en></s>
+  <s><zh>乐韵</zh><en>rhythm</en></s>
+  <s><zh>不需要睡觉的种族：不在战斗中、未征召时每 6 小时回上限的 1/4，或用“冥想调息”原地静坐 2 小时回满。</zh><en>Races that don't need sleep: recover 1/4 of the cap every 6 hours when not in combat and undrafted, or refill fully by sitting in "meditative rest" for 2 hours.</en></s>
+  <s><zh>斗志：命中敌对、未倒地的目标 +</zh><en>Fighting spirit: hitting a hostile, non-downed target +</en></s>
+  <s><zh>，击杀敌人 +</zh><en>, killing an enemy +</en></s>
+  <s><zh>（每人每游戏小时最多 +</zh><en> (at most +</en></s>
+  <s><zh>）；睡觉时每 250 刻 +</zh><en> per person per game hour); while sleeping +</en></s>
+  <s><zh>。有心灵链接时照旧另加精神力。</zh><en> per 250 ticks. With a psylink, psyfocus is still added on top as before.</en></s>
+  <s><zh>气：冥想时每 250 刻 +</zh><en>Ki: while meditating +</en></s>
+  <s><zh>，睡觉时每 250 刻 +</zh><en> per 250 ticks, while sleeping +</en></s>
+  <s><zh>神恩（牧师和圣武士共用一条，上限按两个职业等级之和）：祈祷或冥想时每 250 刻 +</zh><en>Divine favor (clerics and paladins share one bar, cap by the sum of both class levels): while praying or meditating +</en></s>
+  <s><zh>（信奉神明的人 ×</zh><en> per 250 ticks (×</en></s>
+  <s><zh>），睡觉时每 250 刻 +</zh><en> for believers), while sleeping +</en></s>
+  <s><zh>法力（每个职业一条，上限 2 + 职业等级）：醒着时每小时约 +0.5，睡觉时每 250 刻 +</zh><en>Mana (one bar per class, cap 2 + class level): about +0.5 per hour awake, while sleeping +</en></s>
+  <s><zh>；法师在研究、读书或在卷轴书桌干活时每 250 刻另 +</zh><en> per 250 ticks; wizards researching, reading or working at the scroll desk get another +</en></s>
+  <s><zh>怒气：受到敌人伤害 +</zh><en>Rage: taking damage from enemies +</en></s>
+  <s><zh>，命中敌人 +</zh><en>, hitting enemies +</en></s>
+  <s><zh>；不在狂暴中、10 秒没有攻防时每小时 −1（原初斗士不衰减）。睡觉不恢复。</zh><en>; −1 per hour when not raging and without attacking or defending for 10 seconds (no decay for primal fighters). Sleep doesn't recover it.</en></s>
+  <s><zh>契约法力（上限 2 + 邪术师等级/4）：连续 1 小时冥想、娱乐或睡觉（短休）就回满，中断要重来；其他时候不恢复。</zh><en>Pact mana (cap 2 + warlock level/4): refills after 1 continuous hour of meditation, recreation or sleep (a short rest); interruption restarts it; doesn't recover otherwise.</en></s>
+  <s><zh>乐韵（上限 2 + 吟游诗人等级 + 魅力调整值，最少 2）：醒着时每 250 刻 +</zh><en>Rhythm (cap 2 + bard level + Charisma modifier, at least 2): awake +</en></s>
+  <s><zh>（每小时约 +0.5），睡觉时每 250 刻 +</zh><en> per 250 ticks (about +0.5 per hour), while sleeping +</en></s>
+  <s><zh>；演奏乐器、听音乐或做艺术品时每 250 刻另 +</zh><en> per 250 ticks; playing instruments, listening to music or making art gives another +</en></s>
+  <s><zh>；每次和人闲聊、深谈 +</zh><en> per 250 ticks; each chitchat or deep talk +</en></s>
+  <s><zh>器械师没有资源，能力只看冷却。</zh><en>Artificers have no resource; abilities only use cooldowns.</en></s>
+  <s><zh>没有资源，能力只看冷却。</zh><en> has no resource; abilities only use cooldowns.</en></s>
+  <s><zh>狂暴中无法施法</zh><en>Can't cast while raging</en></s>
+  <s><zh>不足（</zh><en> not enough (</en></s>
+  <s><zh>需要远程武器</zh><en>Needs a ranged weapon</en></s>
+  <s><zh>冒险者职业</zh><en>Adventurer classes</en></s>
+  <s><zh>DND边缘大陆：十二个 DND 职业（战士、圣武士、武僧、法师、牧师、德鲁伊、术士、野蛮人、游侠、游荡者、邪术师、吟游诗人）不再需要 VPE，改成冒险者的职业等级。每个冒险者等级给 1 点职业点（最多 20），可以分给最多 3 个职业。\n\n</zh><en>DND Rimlands: the twelve DND classes (fighter, paladin, monk, wizard, cleric, druid, sorcerer, barbarian, ranger, rogue, warlock, bard) no longer need VPE and are now adventurer class levels. Each adventurer level gives 1 class point (max 20), which can be split among up to 3 classes.\n\n</en></s>
+  <s><zh>：职业点 </zh><en>: class points </en></s>
+  <s><zh>\n\n选中殖民者点“选择职业”按钮，或在“冒险者”分页的“职业”页里加点。</zh><en>\n\nSelect a colonist and click the "choose class" button, or add points on the "Class" page of the "Adventurer" tab.</en></s>
+  <s><zh> 级：0.5 + </zh><en> level: 0.5 + </en></s>
+  <s><zh>\n冒险者（主属性调整值 ×</zh><en>\nAdventurer (main ability modifier ×</en></s>
+  <s><zh>% 与熟练加值）：</zh><en>% and proficiency bonus): </en></s>
+  <s><zh>相关职业等级 </zh><en>Related class levels </en></s>
+  <s><zh>（每比 1 高 1 级 +</zh><en> (+</en></s>
+  <s><zh>%，最多 +</zh><en>% per level above 1, up to +</en></s>
+  <s><zh>%）：+</zh><en>%): +</en></s>
+  <s><zh>术士血脉：+</zh><en>Sorcerer bloodline: +</en></s>
+  <s><zh> 的职业</zh><en>'s classes</en></s>
+  <s><zh>（冒险者 Lv </zh><en> (adventurer Lv </en></s>
+  <s><zh>，已用 </zh><en>, used </en></s>
+  <s><zh>　冒险者手册：下一个职业跳过门槛</zh><en>  Adventurer's manual: next class skips requirements</en></s>
+  <s><zh>职业（点选查看一览）</zh><en>Classes (click to view overview)</en></s>
+  <s><zh>点职业行在右边查看它的等级表；加点按钮点两次确认。</zh><en>Click a class row to see its level table on the right; click the add-point button twice to confirm.</en></s>
+  <s><zh>\n\n学会后</zh><en>\n\nAfter learning, </en></s>
+  <s><zh>（未学）</zh><en> (not learned)</en></s>
+  <s><zh>下一级获得：</zh><en>Next level grants: </en></s>
+  <s><zh>下一级没有新职业能力</zh><en>No new class abilities next level</en></s>
+  <s><zh>不能加：</zh><en>Can't add: </en></s>
+  <s><zh>没有职业</zh><en>No class</en></s>
+  <s><zh>无职业资源</zh><en>No class resource</en></s>
+  <s><zh>下一级（</zh><en>Next level (</en></s>
+  <s><zh>法术与能力一览</zh><en>Spells and abilities overview</en></s>
+  <s><zh>按职业等级列出每级获得的能力和法术：已获得的高亮，未获得的灰显并写所需等级。悬停看完整说明。</zh><en>Lists abilities and spells gained at each class level: gained ones are highlighted, not-yet-gained ones are greyed with the required level. Hover for the full description.</en></s>
+  <s><zh>施法类能力受心灵敏感度影响</zh><en>Spellcasting abilities affected by psychic sensitivity</en></s>
+  <s><zh>1.72.0 职业：武僧的气功（拨挡箭矢、震慑拳、金刚之躯、颤心掌、空灵之身）和圣武士的神术（至圣斩、圣疗、神圣武器、放逐邪恶、圣光化身）的伤害、治疗再乘心灵敏感度（最低 ×0.2，不封顶）。战士的战技永远不乘。</zh><en>1.72.0 classes: damage and healing of the monk's ki techniques (deflect missiles, stunning strike, diamond soul, quivering palm, empty body) and the paladin's divine arts (divine smite, lay on hands, sacred weapon, banish evil, holy avatar) are also multiplied by psychic sensitivity (minimum ×0.2, uncapped). Fighter maneuvers are never multiplied.</en></s>
+  <s><zh>职业能力消耗心灵熵</zh><en>Class abilities cost psyfocus</en></s>
+  <s><zh>1.72.0 职业：打开时，有心灵链接的人施放职业能力另外增加心灵熵（每 1 点资源消耗 +5）。默认关闭：职业能力只消耗斗志 / 气 / 神恩。</zh><en>1.72.0 classes: when on, people with a psylink casting class abilities also gain neural heat (+5 per resource point spent). Off by default: class abilities only cost fighting spirit / ki / divine favor.</en></s>
+</LPStrings>

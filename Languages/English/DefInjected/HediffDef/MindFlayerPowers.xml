@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 被支配 -->
+  <LP_Dominated.label>dominated</LP_Dominated.label>
+  <!-- 意志被夺心魔夺走，只会攻击自己原来的同伴。支配结束后会精疲力竭倒地。 -->
+  <LP_Dominated.description>Will taken by a mind flayer; only attacks its former companions. Collapses exhausted when the domination ends.</LP_Dominated.description>
+  <!-- 灵能隐匿 -->
+  <LP_Unseen.label>psionic concealment</LP_Unseen.label>
+  <!-- 周围的心智看不见这个人。 -->
+  <LP_Unseen.description>The minds around can't see this person.</LP_Unseen.description>
+  <!-- 抑灵剂 -->
+  <LP_PsionicSuppression.label>psionic suppressant</LP_PsionicSuppression.label>
+  <!-- 抑灵剂正在压制脑中的蝌蚪。化形进度低于50%时会被冻结。药效结束3天内不再服药，化形就会恢复。 -->
+  <LP_PsionicSuppression.description>The suppressant is holding down the tadpole in the brain. Ceremorphosis is frozen while below 50%. If no pill is taken within 3 days after the effect ends, the transformation resumes.</LP_PsionicSuppression.description>
+</LanguageData>

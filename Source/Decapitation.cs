@@ -31,7 +31,7 @@ namespace LichPhylactery {
      if(!p.Dead){if(p.Spawned)FleckMaker.ThrowDustPuffThick(p.DrawPos,p.Map,2f,new UnityEngine.Color(.8f,.85f,.75f));p.Kill(null);}
      break;
     case Reaction.Berserk:
-     if(p.Downed || !p.Spawned || !(p.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.Berserk,"主人倒下，符印失控",forced:true,forceWake:true)??false))r=Flee(p)?Reaction.Flee:Reaction.None;
+     if(p.Downed || !p.Spawned || !(p.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.Berserk,"主人倒下，符印失控".Loc(),forced:true,forceWake:true)??false))r=Flee(p)?Reaction.Flee:Reaction.None;
      break;
     case Reaction.Freed:
      Free(p);break;
@@ -43,7 +43,7 @@ namespace LichPhylactery {
   static bool Flee(Pawn p){
    if(p.Dead || p.Downed || !p.Spawned)return false;
    if(p.InMentalState && p.MentalStateDef==MentalStateDefOf.PanicFlee)return true;
-   return p.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.PanicFlee,"领队倒下，士气崩溃",forced:true,forceWake:true)??false;
+   return p.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.PanicFlee,"领队倒下，士气崩溃".Loc(),forced:true,forceWake:true)??false;
   }
   // 被支配奴仆：支配解除，倒地，脱离派系（不再敌对，可以俘虏）。
   public static void Free(Pawn p){
@@ -99,11 +99,11 @@ namespace LichPhylactery {
    int total=collapsed+berserk+fled+freed;
    if(total>0 && (leader.MapHeld?.IsPlayerHome==true || leader.Corpse?.MapHeld?.IsPlayerHome==true)){
     var parts=new List<string>();
-    if(collapsed>0)parts.Add(collapsed+"具死灵造物崩解");
-    if(berserk>0)parts.Add(berserk+"个符印巨魔失控狂暴");
-    if(freed>0)parts.Add(freed+"名奴仆从支配中醒来、瘫倒在地");
-    if(fled>0)parts.Add(fled+"名随从士气崩溃、四散奔逃");
-    Messages.Message(leader.LabelShort+(leader.Dead?"死了":"倒下了")+"："+string.Join("，",parts)+"。",new LookTargets(list.Where(p=>p.SpawnedOrAnyParentSpawned)),MessageTypeDefOf.PositiveEvent,false);
+    if(collapsed>0)parts.Add(collapsed+"具死灵造物崩解".Loc());
+    if(berserk>0)parts.Add(berserk+"个符印巨魔失控狂暴".Loc());
+    if(freed>0)parts.Add(freed+"名奴仆从支配中醒来、瘫倒在地".Loc());
+    if(fled>0)parts.Add(fled+"名随从士气崩溃、四散奔逃".Loc());
+    Messages.Message(leader.LabelShort+(leader.Dead?"死了".Loc():"倒下了".Loc())+"：".Loc()+string.Join("，".Loc(),parts)+"。".Loc(),new LookTargets(list.Where(p=>p.SpawnedOrAnyParentSpawned)),MessageTypeDefOf.PositiveEvent,false);
    }
    return total;
   }

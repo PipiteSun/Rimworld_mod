@@ -34,7 +34,7 @@ namespace LichPhylactery {
    if(!Live(t) || t.RaceProps==null || !t.RaceProps.IsFlesh || t.BodySize>SleepMaxBody || Items.Has(t,"LP_PseudoSleep"))return false;
    if(Legendary.Save(t,Adventurer.Con,SleepDC,pd))return false;
    Items.Give(t,"LP_PseudoSleep");
-   Items.Mote(t,"沉睡",SleepColor);
+   Items.Mote(t,"沉睡".Loc(),SleepColor);
    return true;
   }
 
@@ -44,7 +44,7 @@ namespace LichPhylactery {
    if(!Live(t) || Items.Has(t,"LP_Hooked"))return false;
    if(Legendary.Save(t,Adventurer.Str,HookDC,h))return false;
    Items.Give(t,"LP_Hooked");
-   Items.Mote(t,"被钩住",HookColor);
+   Items.Mote(t,"被钩住".Loc(),HookColor);
    return true;
   }
 
@@ -54,7 +54,7 @@ namespace LichPhylactery {
    if(!Live(t) || roll>=ShroudChance || Items.Has(t,"LP_Darkmantled") || !t.health.capacities.CapableOf(PawnCapacityDefOf.Sight))return false;
    if(Legendary.Save(t,Adventurer.Dex,ShroudDC,d))return false;
    Items.Give(t,"LP_Darkmantled");
-   Items.Mote(t,"蒙头",DarkColor);
+   Items.Mote(t,"蒙头".Loc(),DarkColor);
    return true;
   }
 
@@ -68,8 +68,8 @@ namespace LichPhylactery {
    else h.Severity=Mathf.Min(1f,h.Severity+add);
    var inj=s.health.hediffSet.hediffs.OfType<Hediff_Injury>().OrderByDescending(i=>i.Severity).FirstOrDefault();
    inj?.Heal(DrainHeal);
-   if(comp!=null && ++comp.drains>=DrainsToFull){comp.drains=0;var food=s.needs?.food;if(food!=null)food.CurLevel=food.MaxLevel;Items.Mote(s,"吸饱了",BloodColor);}
-   else Items.Mote(t,"吸血",BloodColor);
+   if(comp!=null && ++comp.drains>=DrainsToFull){comp.drains=0;var food=s.needs?.food;if(food!=null)food.CurLevel=food.MaxLevel;Items.Mote(s,"吸饱了".Loc(),BloodColor);}
+   else Items.Mote(t,"吸血".Loc(),BloodColor);
    return true;
   }
 
@@ -82,10 +82,10 @@ namespace LichPhylactery {
    foreach(var o in Races124.PawnsNear(hurt.Map,hurt.Position,RallyRadius).ToList()){
     if(o==hurt || o.def!=hurt.def || o.Dead || o.Downed || o.Faction!=hurt.Faction || Items.Has(o,"LP_RotheRage"))continue;
     Items.Give(o,"LP_RotheRage");n++;
-    if(o.Faction==null && !o.InMentalState)o.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.Manhunter,"罗斯牛护群",true);
+    if(o.Faction==null && !o.InMentalState)o.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.Manhunter,"罗斯牛护群".Loc(),true);
    }
-   if(hurt.Faction==null && !hurt.InMentalState && !hurt.Downed)hurt.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.Manhunter,"罗斯牛护群",true);
-   if(n>0)Items.Mote(hurt,"群牛之怒",RageColor);
+   if(hurt.Faction==null && !hurt.InMentalState && !hurt.Downed)hurt.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.Manhunter,"罗斯牛护群".Loc(),true);
+   if(n>0)Items.Mote(hurt,"群牛之怒".Loc(),RageColor);
    return n;
   }
 
@@ -100,7 +100,7 @@ namespace LichPhylactery {
    if(cell.IsValid)Races124.Blink(a,cell);
    a.stances?.stunner?.StunFor(BuffetStun,h,false,false);
    for(int i=0;i<2;i++)FleckMaker.ThrowDustPuffThick(a.Position.ToVector3Shifted(),map,1.4f,WindColor);
-   Items.Mote(h,"振翼",WindColor);
+   Items.Mote(h,"振翼".Loc(),WindColor);
    return true;
   }
 
@@ -108,7 +108,7 @@ namespace LichPhylactery {
   public static bool Sprint(Pawn b){
    if(!Live(b) || b.Downed || b.health.summaryHealth.SummaryHealthPercent>=SprintHealth || Items.Has(b,"LP_AxeBeakSprint"))return false;
    Items.Give(b,"LP_AxeBeakSprint");
-   Items.Mote(b,"惊逃疾奔",SprintColor);
+   Items.Mote(b,"惊逃疾奔".Loc(),SprintColor);
    return true;
   }
 
@@ -120,7 +120,7 @@ namespace LichPhylactery {
    FleckMaker.ThrowDustPuffThick(from.ToVector3Shifted(),map,1.2f,PhaseColor);
    Races124.Blink(p,cell);
    FleckMaker.ThrowDustPuffThick(cell.ToVector3Shifted(),map,1.2f,PhaseColor);
-   Items.Mote(p,"相位跳跃",PhaseColor);
+   Items.Mote(p,"相位跳跃".Loc(),PhaseColor);
    return true;
   }
 
@@ -129,10 +129,10 @@ namespace LichPhylactery {
   public static bool Dive(Pawn p,Pawn t){
    var cell=Charge.LandingCell(p,t);if(!cell.IsValid)return false;var map=p.Map;
    var def=DefDatabase<ThingDef>.GetNamedSilentFail("LP_GriffonFlyer");
-   Items.Mote(p,"俯冲",WindColor);
+   Items.Mote(p,"俯冲".Loc(),WindColor);
    PawnFlyer flyer=null;
    try{flyer=def==null?null:PawnFlyer.MakeFlyer(def,p,cell,null,null);}
-   catch(Exception e){Log.WarningOnce("[DND边缘大陆] 狮鹫俯冲失败："+e.Message,74177124);}
+   catch(Exception e){Log.WarningOnce("[DND边缘大陆] 狮鹫俯冲失败：".Loc()+e.Message,74177124);}
    if(flyer==null){Races124.Blink(p,cell);DiveLand(p,t);return true;}
    if(flyer is LP_GriffonFlyer g)g.diveTarget=t;
    GenSpawn.Spawn(flyer,cell,map); // MakeFlyer 已经把狮鹫从地图上拿走了
@@ -144,7 +144,7 @@ namespace LichPhylactery {
    bool saved=Legendary.Save(t,Adventurer.Dex,DiveDC,p);
    t.TakeDamage(new DamageInfo(DamageDefOf.Cut,saved?DiveDamage/2:DiveDamage,0.2f,-1f,p));
    for(int i=0;i<3;i++)FleckMaker.ThrowDustPuffThick(p.Position.ToVector3Shifted(),p.Map,1.6f,WindColor);
-   Items.Mote(p,"俯冲扑击",WindColor);
+   Items.Mote(p,"俯冲扑击".Loc(),WindColor);
    if(saved || t.Dead)return false;
    t.stances?.stunner?.StunFor(DiveStun,p,false,false);
    return true;
@@ -220,16 +220,16 @@ namespace LichPhylactery {
   }
   public override void PostSpawnSetup(bool respawningAfterLoad){base.PostSpawnSetup(respawningAfterLoad);glowCell=IntVec3.Invalid;}
 
-  static string Cd(string label,int tick){int now=Now;return now<tick?label+"冷却："+((tick-now)/60f).ToString("0.#")+"秒":null;}
+  static string Cd(string label,int tick){int now=Now;return now<tick?label+"冷却：".Loc()+((tick-now)/60f).ToString("0.#")+"秒".Loc():null;}
   public override string CompInspectStringExtra(){
    switch(Props.kind){
-    case "Pseudodrake":return Cd("催眠尾刺",stingReadyTick);
-    case "Darkmantle":return Cd("蒙头",shroudReadyTick);
-    case "Hippogriff":return Cd("振翼",buffetReadyTick);
-    case "AxeBeak":return Cd("惊逃疾奔",sprintReadyTick);
-    case "PhaseSpider":return Cd("相位跳跃",phaseReadyTick);
-    case "Griffon":return Cd("俯冲扑击",diveReadyTick);
-    case "Stirge":return drains>0?"吸血："+drains+" / "+BeastsDND2.DrainsToFull:null;
+    case "Pseudodrake":return Cd("催眠尾刺".Loc(),stingReadyTick);
+    case "Darkmantle":return Cd("蒙头".Loc(),shroudReadyTick);
+    case "Hippogriff":return Cd("振翼".Loc(),buffetReadyTick);
+    case "AxeBeak":return Cd("惊逃疾奔".Loc(),sprintReadyTick);
+    case "PhaseSpider":return Cd("相位跳跃".Loc(),phaseReadyTick);
+    case "Griffon":return Cd("俯冲扑击".Loc(),diveReadyTick);
+    case "Stirge":return drains>0?"吸血：".Loc()+drains+" / "+BeastsDND2.DrainsToFull:null;
    }
    return null;
   }

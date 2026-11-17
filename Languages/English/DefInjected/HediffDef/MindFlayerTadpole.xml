@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 夺心魔蝌蚪 -->
+  <LP_TadpoleParasite.label>mind flayer tadpole</LP_TadpoleParasite.label>
+  <!-- 一条夺心魔蝌蚪寄生在大脑里，正一点点改写宿主。进度到100%时宿主化形为夺心魔。可以通过手术摘除。 -->
+  <LP_TadpoleParasite.description>A mind flayer tadpole is parasitizing the brain, rewriting its host bit by bit. At 100% progress the host turns into a mind flayer. Can be removed by surgery.</LP_TadpoleParasite.description>
+  <!-- 潜伏 -->
+  <LP_TadpoleParasite.stages.0.label>latent</LP_TadpoleParasite.stages.0.label>
+  <!-- 触须 -->
+  <LP_TadpoleParasite.stages.1.label>tendrils</LP_TadpoleParasite.stages.1.label>
+  <!-- 侵蚀 -->
+  <LP_TadpoleParasite.stages.2.label>erosion</LP_TadpoleParasite.stages.2.label>
+  <!-- 改写 -->
+  <LP_TadpoleParasite.stages.3.label>rewriting</LP_TadpoleParasite.stages.3.label>
+  <!-- 化形 -->
+  <LP_TadpoleParasite.stages.4.label>ceremorphosis</LP_TadpoleParasite.stages.4.label>
+</LanguageData>

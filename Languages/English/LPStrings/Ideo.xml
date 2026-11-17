@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（Ideo.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>未启用文化 DLC</zh><en>Ideology DLC not enabled</en></s>
+  <s><zh>文化联动</zh><en>Ideology integration</en></s>
+  <s><zh>DND 模因的被动、DND 戒律的心情、确信度漂移、改宗修正、守护神锁定、神像效果。关闭后这些全部停用（模因和戒律仍然加载，存档不会报错）；派系补的模因保留。</zh><en>Passives of DND memes, moods of DND precepts, certainty drift, conversion modifiers, patron deity lock, and deity statue effects. When off, all of these are disabled (memes and precepts still load, and saves won't error); memes added to factions are kept.</en></s>
+  <s><zh>DND 模因出现在随机 NPC 文化的权重：</zh><en>Weight of DND memes in random NPC ideoligions: </en></s>
+  <s><zh>（0～1；伊尔斯维、维拉基斯两个 NPC 专用模因永远不随机出现）</zh><en> (0-1; the two NPC-only memes of Ilsensine and Vlaakith never appear randomly)</en></s>
+  <s><zh>神眷影响确信度</zh><en>Favor affects certainty</en></s>
+  <s><zh>信奉带神祇模因（或众神殿）的主文化的殖民者，每天按守护神神眷改变确信度：≥80 +1%，≥50 +0.5%，≤-30 -1%；季度显圣赐福 +5%、降罚 -5%；神选仪式 +3%。</zh><en>Colonists of a primary ideoligion with a deity meme (or a pantheon) change certainty each day by the patron's favor: ≥80 +1%, ≥50 +0.5%, ≤-30 -1%; seasonal blessing +5%, punishment -5%; chosen ritual +3%.</en></s>
+  <s><zh>文化锁定守护神</zh><en>Ideoligion locks patron deity</en></s>
+  <s><zh>主文化带神祇模因时，殖民地的守护神就是那位神，不能在圣坛上手动换；重塑文化换了神时自动改奉（旧神神眷只扣15，没有冷却）。</zh><en>When the primary ideoligion has a deity meme, the colony's patron deity is that god and can't be changed by hand at the altar; when a reformed ideoligion changes god, the colony switches automatically (the old god only loses 15 favor, no cooldown).</en></s>
+  <s><zh>重建 DND 派系文化</zh><en>Rebuild DND faction ideoligions</en></s>
+  <s><zh>重建 DND 派系文化（需要在游戏中）</zh><en>Rebuild DND faction ideoligions (must be in a game)</en></s>
+  <s><zh>给缺少 DND 模因的 DND 派系（费伦拓荒同盟、塞伊远征军、余烬氏族、幽暗殖巢、猎巫狂热分子、拉洛克、凯兰沃教会）按派系定义重新生成一个文化，设为主文化。旧文化保留：已有的 NPC 仍信旧文化，之后新出现的人用新文化。\n\n用于 1.56.0 之前的存档。继续吗？</zh><en>For DND factions missing DND memes (Faerûn Frontier Alliance, Thayan expedition, Ember Clan, Underdark Hive, witch-hunting zealots, Larloch, Church of Kelemvor), generate a new ideoligion from the faction definition and set it as primary. The old ideoligion is kept: existing NPCs still follow it, and people appearing later use the new one.\n\nFor saves from before 1.56.0. Continue?</en></s>
+  <s><zh>守护神由文化「</zh><en>The patron deity is decided by the ideoligion "</en></s>
+  <s><zh>」决定（</zh><en>" (</en></s>
+  <s><zh>完成神谕的指示</zh><en>Fulfilled the oracle's instruction</en></s>
+  <s><zh>满意地回应了：神谕的指示完成了（神眷+5）。</zh><en> answered with satisfaction: the oracle's instruction is fulfilled (favor +5).</en></s>
+  <s><zh>家园里的神像</zh><en>deity statue in the home</en></s>
+  <s><zh>供在圣物柜里</zh><en>enshrined in the reliquary</en></s>
+  <s><zh>[DND边缘大陆] 文化日结算出错：</zh><en>[DND Rimlands] Ideoligion daily tick error: </en></s>
+  <s><zh>[DND边缘大陆] 文化历史事件 </zh><en>[DND Rimlands] Ideoligion history event </en></s>
+  <s><zh>[DND边缘大陆] 文化同步出错：</zh><en>[DND Rimlands] Ideoligion sync error: </en></s>
+  <s><zh>殖民地正式改奉</zh><en>The colony formally converts to </en></s>
+  <s><zh>殖民地的主文化「</zh><en>The colony's primary ideoligion "</en></s>
+  <s><zh>」信奉</zh><en>" worships </en></s>
+  <s><zh>，殖民地的守护神随之定为</zh><en>, so the colony's patron deity is set to </en></s>
+  <s><zh>的神眷-15（文化改宗，不设冷却）。</zh><en>'s favor -15 (ideoligion conversion, no cooldown).</en></s>
+  <s><zh>大祭司</zh><en>high priest</en></s>
+  <s><zh>[DND边缘大陆] 圣物换成神赐遗物失败：</zh><en>[DND Rimlands] Failed to turn relic into divine relic: </en></s>
+  <s><zh>[DND边缘大陆] 重建</zh><en>[DND Rimlands] Rebuilding the ideoligion of </en></s>
+  <s><zh>的文化失败：</zh><en> failed: </en></s>
+  <s><zh>所有 DND 派系的主文化都已经带着应有的 DND 模因，不需要重建。</zh><en>All DND factions' primary ideoligions already have the proper DND memes; no rebuild needed.</en></s>
+  <s><zh>重建了这些派系的文化：\n\n</zh><en>Rebuilt the ideoligions of these factions:\n\n</en></s>
+  <s><zh>\n\n旧文化保留：已有的 NPC 仍信旧文化，之后新出现的人用新文化。</zh><en>\n\nThe old ideoligions are kept: existing NPCs still follow them, and people appearing later use the new ones.</en></s>
+  <s><zh>[DND边缘大陆] 文化补丁失败：</zh><en>[DND Rimlands] Ideoligion patch failed: </en></s>
+</LPStrings>

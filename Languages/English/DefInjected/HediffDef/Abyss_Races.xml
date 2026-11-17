@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 魅魔食量 -->
+  <LP_SuccubusAppetite.label>succubus appetite</LP_SuccubusAppetite.label>
+  <!-- 魅魔靠吸取别人的精力过活，正经饭只吃一点点：饥饿速度 ×20%。 -->
+  <LP_SuccubusAppetite.description>Succubi live by draining others' energy and eat very little real food: hunger rate ×20%.</LP_SuccubusAppetite.description>
+  <!-- 恶心 -->
+  <LP_Nauseated.label>nauseated</LP_Nauseated.label>
+  <!-- 哈兹魔的恶臭让人想吐：操作 -20%，移速 ×0.9。 -->
+  <LP_Nauseated.description>The hezrou's stench makes you want to throw up: manipulation -20%, move speed ×0.9.</LP_Nauseated.description>
+  <!-- 石化中 -->
+  <LP_NabassuPetrify.label>petrifying</LP_NabassuPetrify.label>
+  <!-- 纳巴苏的凝视让四肢像石头一样僵硬：移速 ×0.5。 -->
+  <LP_NabassuPetrify.description>The nabassu's gaze makes limbs stiff as stone: move speed ×0.5.</LP_NabassuPetrify.description>
+  <!-- 融入阴影 -->
+  <LP_BarlguraHidden.label>shadow blend</LP_BarlguraHidden.label>
+  <!-- 静静站着的巴路古拉融进了阴影里。 -->
+  <LP_BarlguraHidden.description>The motionless barlgura has melted into the shadows.</LP_BarlguraHidden.description>
+  <!-- 灵魂被吞噬 -->
+  <LP_SoulDevoured.label>soul devoured</LP_SoulDevoured.label>
+  <!-- 纳巴苏吞掉了这个人的灵魂：任何方式都无法再让他复活。 -->
+  <LP_SoulDevoured.description>A nabassu devoured this person's soul: they can never be resurrected by any means.</LP_SoulDevoured.description>
+  <!-- 饱魂 -->
+  <LP_SoulGorged.label>soul-gorged</LP_SoulGorged.label>
+  <!-- 吞下的灵魂在它身体里翻腾：每层生命 +5%（受到伤害按比例减少）、伤害 +5%，最多 10 层。 -->
+  <LP_SoulGorged.description>Swallowed souls churn inside it: +5% health per stack (damage taken reduced proportionally), +5% damage, up to 10 stacks.</LP_SoulGorged.description>
+  <!-- 夸塞魔魔宠 -->
+  <LP_QuasitNature.label>quasit familiar</LP_QuasitNature.label>
+  <!-- 通过深渊仪式召来的魔宠：不战斗时隐身；主人和它在同一张地图时心灵敏感度 +10%，深渊腐化每天 +0.3%。 -->
+  <LP_QuasitNature.description>A familiar summoned by an abyssal ritual: invisible when not fighting; while master and familiar are on the same map, psychic sensitivity +10% and abyssal taint +0.3% per day.</LP_QuasitNature.description>
+  <!-- 隐身 -->
+  <LP_QuasitVeil.label>invisible</LP_QuasitVeil.label>
+  <!-- 不打架的时候，夸塞魔看不见。 -->
+  <LP_QuasitVeil.description>When not fighting, the quasit cannot be seen.</LP_QuasitVeil.description>
+  <!-- 魔宠之契 -->
+  <LP_QuasitBond.label>familiar pact</LP_QuasitBond.label>
+  <!-- 夸塞魔就在身边，深渊的低语也更清楚了：心灵敏感度 +10%。 -->
+  <LP_QuasitBond.description>The quasit is by my side, and the whispers of the Abyss are clearer: psychic sensitivity +10%.</LP_QuasitBond.description>
+</LanguageData>

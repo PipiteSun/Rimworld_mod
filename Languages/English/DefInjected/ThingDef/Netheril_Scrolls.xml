@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 耐瑟瑞尔研习卷 -->
+  <LP_NetherilStudyScroll.label>Netherese study scroll</LP_NetherilStudyScroll.label>
+  <!-- 耐瑟瑞尔奥术师留下的入门讲义。需要心灵链接和至少 6 级智识才能读：每读 1 小时增加 8 点心灵熵，换来灵能经验（装了 VPE）或“耐瑟研习度”（没装 VPE 时，研习度到 100/200/400/800/1600 时心灵链接升一级，最高 6 级）。每人每天最多从耐瑟卷轴获得 40 点。不会读坏。 -->
+  <LP_NetherilStudyScroll.description>An introductory lecture left by Netherese arcanists. Requires a psylink and at least Intellectual 6 to read: each hour of reading adds 8 neural heat in exchange for psycaster XP (with VPE) or "Netherese study" (without VPE, the psylink rises one level at 100/200/400/800/1600 study, up to level 6). Each person can gain at most 40 points per day from Netherese scrolls. Can't be worn out by reading.</LP_NetherilStudyScroll.description>
+  <!-- 耐瑟瑞尔秘术残卷 -->
+  <LP_NetherilArcaneScroll.label>Netherese arcane fragment</LP_NetherilArcaneScroll.label>
+  <!-- 记着某个奥术学派法术的残卷，学派写在名字里。读满 24 小时（按品质加快）就能领悟一个本学派、等级不超过自己灵能等级的心灵法术——不占 VPE 路径点，也不需要先解锁路径。每人每卷最多领悟 2 个，之后只剩研习余效。每读 1 小时增加 4 点心灵熵。 -->
+  <LP_NetherilArcaneScroll.description>A fragment recording a spell from some arcane school, with the school written in its name. After 24 hours of reading (faster with quality) you comprehend a psycast of that school no higher than your psylink level, taking no VPE path point and needing no path unlocked first. Each person can comprehend at most 2 per scroll, after which only the study afterglow remains. Each hour of reading adds 4 neural heat.</LP_NetherilArcaneScroll.description>
+  <!-- 卡苏斯之卷 -->
+  <LP_KarsusScroll.label>Scroll of Karsus</LP_KarsusScroll.label>
+  <!-- 耐瑟瑞尔大法师卡苏斯妄图夺取魔网神格时写下的卷轴，世上只有这一卷。读完一遍要 40 小时，每遍留下一层“卡苏斯的回响”。有人读满 7 遍、心灵链接 6 级（VPE 灵能等级 20）时，可以在耐瑟祭坛发起升神仪式。不能交易。 -->
+  <LP_KarsusScroll.description>The scroll written by the Netherese archmage Karsus when he tried to seize the Weave's divinity; there is only one in the world. One full reading takes 40 hours, and each reading leaves a stack of "echo of Karsus". Someone who has read it 7 times with psylink level 6 (VPE psycaster level 20) can start the ascension ritual at the Netherese altar. Can't be traded.</LP_KarsusScroll.description>
+</LanguageData>

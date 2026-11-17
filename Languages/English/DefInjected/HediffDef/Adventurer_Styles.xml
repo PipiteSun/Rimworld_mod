@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 防御风格 -->
+  <LP_StyleDefense.label>defense style</LP_StyleDefense.label>
+  <!-- 战斗风格·防御：穿着够硬的外衣，利器、钝器护甲 +8%。 -->
+  <LP_StyleDefense.description>Fighting style - Defense: wearing hard enough outerwear, sharp and blunt armor +8%.</LP_StyleDefense.description>
+  <!-- 决斗风格 -->
+  <LP_StyleDueling.label>dueling style</LP_StyleDueling.label>
+  <!-- 战斗风格·决斗：单手武器、没有副手，近战伤害 ×1.2。 -->
+  <LP_StyleDueling.description>Fighting style - Dueling: one-handed weapon with no off-hand, melee damage ×1.2.</LP_StyleDueling.description>
+  <!-- 巨武器风格 -->
+  <LP_StyleGreatWeapon.label>great weapon style</LP_StyleGreatWeapon.label>
+  <!-- 战斗风格·巨武器：双手武器，近战伤害 ×1.15、近战冷却 ×0.95。 -->
+  <LP_StyleGreatWeapon.description>Fighting style - Great weapon: two-handed weapon, melee damage ×1.15, melee cooldown ×0.95.</LP_StyleGreatWeapon.description>
+  <!-- 徒手风格 -->
+  <LP_StyleUnarmed.label>unarmed style</LP_StyleUnarmed.label>
+  <!-- 战斗风格·徒手：没拿武器，拳脚伤害 ×1.6。 -->
+  <LP_StyleUnarmed.description>Fighting style - Unarmed: no weapon, fist and kick damage ×1.6.</LP_StyleUnarmed.description>
+  <!-- 被擒抱 -->
+  <LP_Grappled.label>grappled</LP_Grappled.label>
+  <!-- 被徒手格斗者抓住，几乎不能移动。持续 2 秒（120 刻）。 -->
+  <LP_Grappled.description>Grabbed by an unarmed fighter, almost unable to move. Lasts 2 seconds (120 ticks).</LP_Grappled.description>
+</LanguageData>

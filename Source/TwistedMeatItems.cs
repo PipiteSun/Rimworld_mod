@@ -12,14 +12,14 @@ namespace LichPhylactery {
  // 1.119.0 扭曲肉资源化：A 节描述、C 节炼金产物（再生膏瘤块、狂乱之瓶）、F3 畸变皮甲、C5 附魔台「血肉再生」词条。
  [StaticConstructorOnStartup]
  public static class TwistedMeatStartup {
-  public const string FleshNote="\n\n扭曲肉 1 份算 2 份生肉，畸变膏 1 份算 20 份生肉（畸变膏要在工作单里勾选）。";
+  public static readonly string FleshNote="\n\n扭曲肉 1 份算 2 份生肉，畸变膏 1 份算 20 份生肉（畸变膏要在工作单里勾选）。".Loc();
   public static readonly string[] FleshRecipes={"LP_Offer","LP_MakeGolem","LP_Refill","LP_CraftBlindSight","LP_CraftWitheringHand","LP_CraftDeadPersonality","LP_CraftShadowLeg"};
   static TwistedMeatStartup(){
    if(!TwistedMeat.Active)return;
    try{
-    foreach(var n in FleshRecipes){var r=DefDatabase<RecipeDef>.GetNamedSilentFail(n);if(r!=null && r.description!=null && !r.description.Contains("扭曲肉"))r.description+=FleshNote;}
+    foreach(var n in FleshRecipes){var r=DefDatabase<RecipeDef>.GetNamedSilentFail(n);if(r!=null && r.description!=null && !r.description.Contains(FleshNote.Trim()))r.description+=FleshNote;}
     var beauty=StatDefOf.PawnBeauty;if(beauty!=null){if(beauty.parts==null)beauty.parts=new List<StatPart>();if(!beauty.parts.Any(p=>p is StatPart_FleshRegen))beauty.parts.Add(new StatPart_FleshRegen{parentStat=beauty});}
-   }catch(Exception e){Log.Error("[DND边缘大陆] 扭曲肉启动失败："+e);}
+   }catch(Exception e){Log.Error("[DND边缘大陆] 扭曲肉启动失败：".Loc()+e);}
   }
  }
 
@@ -36,7 +36,7 @@ namespace LichPhylactery {
    var parts=patient.health.hediffSet.hediffs.Where(h=>h.Part!=null && h.IsTended()).Select(h=>h.Part).Distinct().ToList();
    var part=parts.Where(p=>!patient.health.hediffSet.hediffs.Any(h=>h.def==def && h.Part==p)).RandomElementWithFallback();if(part==null)return;
    patient.health.AddHediff(def,part);
-   if(patient.Faction==Faction.OfPlayer)Messages.Message(patient.LabelShort+"的"+part.Label+"上长出了一块畸变瘤块。",patient,MessageTypeDefOf.NegativeHealthEvent,false);
+   if(patient.Faction==Faction.OfPlayer)Messages.Message(patient.LabelShort+"的".Loc()+part.Label+"上长出了一块畸变瘤块。".Loc(),patient,MessageTypeDefOf.NegativeHealthEvent,false);
   }
  }
 
@@ -58,7 +58,7 @@ namespace LichPhylactery {
    foreach(var p in GenRadial.RadialDistinctThingsAround(c,map,Radius,true).OfType<Pawn>().ToList()){
     if(Immune(p) || p.Downed || !Rand.Chance(chance))continue;
     if(p.mindState?.mentalStateHandler==null)continue;
-    if(p.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.PanicFlee,"狂乱之瓶",forced:true)){if(p.MentalState!=null)p.MentalState.forceRecoverAfterTicks=FleeTicks;n++;}
+    if(p.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.PanicFlee,"狂乱之瓶".Loc(),forced:true)){if(p.MentalState!=null)p.MentalState.forceRecoverAfterTicks=FleeTicks;n++;}
    }
    return n;
   }
@@ -90,10 +90,10 @@ namespace LichPhylactery {
   }
   public static bool CanApply(Thing t)=>t is Apparel a && !Marked(a) && a.def.apparel!=null && (a.def.apparel.layers.Contains(ApparelLayerDefOf.Middle) || a.def.apparel.layers.Contains(ApparelLayerDefOf.Shell)) && (a.GetStatValue(StatDefOf.ArmorRating_Sharp)>=.2f || a.def.thingCategories?.Contains(ThingCategoryDefOf.ApparelArmor)==true);
   public static string Blocked(Thing t,Map map){
-   if(TwistedMeat.Paste==null)return "没有畸变膏（需要异象）";
-   if(Marked(t))return "已经有“血肉再生”";
-   if(!CanApply(t))return "只能刻在护甲上（中层或外层）";
-   if(GearEnhanceBench.CountOnMap(map,TwistedMeat.Paste)<PasteCost)return "畸变膏不够（要 "+PasteCost+" 份）";
+   if(TwistedMeat.Paste==null)return "没有畸变膏（需要异象）".Loc();
+   if(Marked(t))return "已经有“血肉再生”".Loc();
+   if(!CanApply(t))return "只能刻在护甲上（中层或外层）".Loc();
+   if(GearEnhanceBench.CountOnMap(map,TwistedMeat.Paste)<PasteCost)return "畸变膏不够（要 ".Loc()+PasteCost+" 份）".Loc();
    return null;
   }
   public static bool Apply(Thing t,Map map){
@@ -104,7 +104,7 @@ namespace LichPhylactery {
  }
  public class StatPart_FleshRegen : StatPart {
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p){int n=FleshRegen.MarkedCount(p);if(n>0)val-=n;}}
-  public override string ExplanationPart(StatRequest req){if(req.Thing is Pawn p){int n=FleshRegen.MarkedCount(p);if(n>0)return "血肉再生护甲：-"+n;}return null;}
+  public override string ExplanationPart(StatRequest req){if(req.Thing is Pawn p){int n=FleshRegen.MarkedCount(p);if(n>0)return "血肉再生护甲：-".Loc()+n;}return null;}
  }
  // 附魔台多一个按钮「血肉再生」（照附魔强化窗口的样子）。
  [HarmonyPatch(typeof(CompEnhanceBench),nameof(CompEnhanceBench.CompGetGizmosExtra))]
@@ -112,7 +112,7 @@ namespace LichPhylactery {
   static IEnumerable<Gizmo> Postfix(IEnumerable<Gizmo> gizmos,CompEnhanceBench __instance){
    foreach(var g in gizmos)yield return g;
    var b=__instance.parent;if(!TwistedMeat.Active || TwistedMeat.Paste==null || b.Faction!=Faction.OfPlayer || !b.Spawned)yield break;
-   yield return new Command_Action{defaultLabel="血肉再生",defaultDesc="给一件护甲刻上“血肉再生”词条：用 "+FleshRegen.PasteCost+" 份畸变膏做辅材。穿着者每天恢复一处小伤，但美观 -1。",icon=TwistedMeat.Icon("TwistedMeat/FleshRegenGizmo"),action=()=>Find.WindowStack.Add(new Window_FleshRegen(b))};
+   yield return new Command_Action{defaultLabel="血肉再生".Loc(),defaultDesc="给一件护甲刻上“血肉再生”词条：用 ".Loc()+FleshRegen.PasteCost+" 份畸变膏做辅材。穿着者每天恢复一处小伤，但美观 -1。".Loc(),icon=TwistedMeat.Icon("TwistedMeat/FleshRegenGizmo"),action=()=>Find.WindowStack.Add(new Window_FleshRegen(b))};
   }
  }
  public class Window_FleshRegen : Window {
@@ -123,7 +123,7 @@ namespace LichPhylactery {
   public override void DoWindowContents(Rect r){try{Draw(r);}finally{LPUI.Reset();}}
   void Draw(Rect r){
    if(bench==null || !bench.Spawned){Close();return;}var map=bench.Map;
-   LPUI.Title(r,"附魔词条 · 血肉再生");
+   LPUI.Title(r,"附魔词条 · 血肉再生".Loc());
    var left=new Rect(r.x,r.y+38f,260f,r.height-38f);var right=new Rect(left.xMax+8f,left.y,r.xMax-left.xMax-8f,left.height);
    Widgets.DrawMenuSection(left);Widgets.DrawMenuSection(right);
    if(cache==null || Time.frameCount-cacheFrame>30){cache=GearEnhanceBench.Candidates(map).Where(t=>t is Apparel).ToList();cacheFrame=Time.frameCount;}
@@ -135,18 +135,18 @@ namespace LichPhylactery {
     Widgets.ThingIcon(new Rect(row.x+2f,row.y+4f,32f,32f),t);
     Widgets.Label(new Rect(row.x+38f,row.y+1f,row.width-38f,22f),t.LabelCapNoCount.Truncate(row.width-40f));
     Text.Font=GameFont.Tiny;GUI.color=FleshRegen.Marked(t)?new Color(.85f,.45f,.45f):Color.gray;var o=GearEnhanceBench.Owner(t);
-    LPUI.LabelFit(new Rect(row.x+38f,row.y+21f,row.width-38f,18f),(FleshRegen.Marked(t)?"血肉再生 · ":"")+(o!=null?o.LabelShort+" 穿着":"在地上 / 储存区"));GUI.color=Color.white;Text.Font=GameFont.Small;
+    LPUI.LabelFit(new Rect(row.x+38f,row.y+21f,row.width-38f,18f),(FleshRegen.Marked(t)?"血肉再生 · ".Loc():"")+(o!=null?o.LabelShort+" 穿着".Loc():"在地上 / 储存区".Loc()));GUI.color=Color.white;Text.Font=GameFont.Small;
     if(Widgets.ButtonInvisible(row)){selected=t;result=null;}
    }
    Widgets.EndScrollView();
    var inner=right.ContractedBy(8f);float y=inner.y;
-   string intro="穿着者每天恢复一处小伤（最轻的那处，最多 "+FleshRegen.SmallInjury.ToString("0")+" 点），美观 -1。只能刻在护甲上。\n材料：畸变膏 ×"+FleshRegen.PasteCost+"（地图上有 "+GearEnhanceBench.CountOnMap(map,TwistedMeat.Paste)+"）。不会失败。";
+   string intro="穿着者每天恢复一处小伤（最轻的那处，最多 ".Loc()+FleshRegen.SmallInjury.ToString("0")+" 点），美观 -1。只能刻在护甲上。\n材料：畸变膏 ×".Loc()+FleshRegen.PasteCost+"（地图上有 ".Loc()+GearEnhanceBench.CountOnMap(map,TwistedMeat.Paste)+"）。不会失败。".Loc();
    float h=Text.CalcHeight(intro,inner.width);Widgets.Label(new Rect(inner.x,y,inner.width,h),intro);y+=h+10f;
    if(selected!=null){
     Widgets.Label(new Rect(inner.x,y,inner.width,24f),selected.LabelCapNoCount);y+=28f;
     string block=FleshRegen.Blocked(selected,map);var btn=new Rect(inner.x,y,inner.width,34f);
     if(block!=null)LPUI.Unavailable(btn,block);
-    else if(Widgets.ButtonText(btn,"刻上血肉再生")){if(FleshRegen.Apply(selected,map)){result="完成：“"+selected.LabelCapNoCount+"”有了血肉再生。";SoundDefOf.Quest_Concluded.PlayOneShotOnCamera();cache=null;}}
+    else if(Widgets.ButtonText(btn,"刻上血肉再生".Loc())){if(FleshRegen.Apply(selected,map)){result="完成：“".Loc()+selected.LabelCapNoCount+"”有了血肉再生。".Loc();SoundDefOf.Quest_Concluded.PlayOneShotOnCamera();cache=null;}}
     y+=40f;
    }
    if(result!=null){GUI.color=new Color(.4f,.9f,.4f);Widgets.Label(new Rect(inner.x,y,inner.width,Text.CalcHeight(result,inner.width)),result);GUI.color=Color.white;}

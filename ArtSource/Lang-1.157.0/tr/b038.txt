@@ -1,0 +1,169 @@
+s08274	A celestial titanborn lost a war in the heavens and fell to the mortal world. Two mortals found it at the edge of the crater and have followed it ever since. The halo above the titanborn's head remains, but little of its divine might is left.\n\nThe starting titanborn excels at melee and social; it's two and a half times as tall as an ordinary person, with health and melee far beyond normal, but a big appetite too, and it can't stand anything taller than itself. Faerûn's pioneer league is in awe of visitors from the sky (goodwill +20). Around day 10 the Thayan expedition follows the meteor's trail to seize the titanborn.\n\nRecommended path: titan awakening. Difficulty: medium. The titanborn starts having acknowledged a divine father (random among the seven worshippable gods, named in the opening letter); the titan awakening path is already open, and the "theurgy" research is complete.\n\nNote: the titanborn can't reproduce and there's only this one; its mood is written straight into the sky: clear skies when it's happy, thunderstorms when it's upset.
+s08275	the fallen titanborn
+s08276	A celestial titanborn and two mortal followers.
+s08277	celestial titanborn
+s08278	follower
+s08279	You fell from the heavens for a long time.\n\nThe crater still smokes, and the halo above your head flickers. Two mortals kneel at the edge of the pit, holding your still-humming sword.\n\nThe war in the heavens has nothing to do with you anymore. But the Red Wizards have smelled the meteor; before they arrive, make this land remember the titanborn's name.
+s08280	hunting the titanborn
+s08281	A fallen celestial titanborn and two mortal followers; on day 10 the Thayan expedition follows the trail. Recommended path: titan awakening, difficulty medium.
+s08282	The golden-bronze skin of a titanborn, faintly gleaming in the sunlight.
+s08283	golden-bronze skin
+s08284	golden bronze
+s08285	A demigod fallen from the heavens, with golden-bronze skin, white hair and a faint golden halo hanging over its head. Titanborn are two and a half times the height of ordinary people, immensely strong, able to call down lightning of divine punishment and close companions' wounds with a divine breath; when happy the sky clears, when upset thunderstorms rage. They can't reproduce, and refuse to admit anything in the world is greater than themselves.
+s08286	Legendary race, not inheritable. Body size ×2.5 (giant body: health ×1.75, melee ×1.45), divine might resource, divine punishment and titanborn's breath, immune to stuns, affects weather; hot-tempered, arrogant.
+s08287	A titanborn's giant body needs a lot of food.
+s08288	titanborn appetite
+s08289	Blow a divine breath: every wound of all friendlies (same faction) within 5 cells of yourself loses 10 severity and stops bleeding. Costs 40 divine might, cooldown 2 days.
+s08290	titanborn's breath
+s08291	A titanborn's divinity, shown as the "divine might" resource bar (0-100): recovers 10 per day naturally, another 10 per day while mood ≥80%, and +5 per enemy killed. Divine might is used for "divine punishment" (30) and "titanborn's breath" (40). A faint golden halo hangs over the head.
+s08292	divine might
+s08293	A titanborn's divine might. Recovers daily and also increases with kills; spent by divine punishment and titanborn's breath.
+s08294	There's something taller than me here? Absurd.
+s08295	titanborn arrogance
+s08296	Call down a bolt of lightning on a cell within 10 cells (the same fire explosion as a natural strike, plus a ring of EMP). Costs 30 divine might, cooldown 1 day. Can't penetrate mountains.
+s08297	divine punishment
+s08298	A titanborn body two and a half times human height: actual body size ×250%, drawn ×160%, hauling another ×120%; eats 1.5× as much as normal, stomach ×250%, long strides but not fast (move speed ×90%). Giant-body rules give the titanborn health ×175% and melee ×145%.
+s08299	titanborn body
+s08300	Titanborn can't be stunned (including by EMP), mind resistance +50%.
+s08301	unshakable
+s08302	A titanborn's moods are written in the sky: while the titanborn is on the map, its mood is checked at dawn each day: mood ≥80% turns the weather clear, mood ≤30% turns it to thunderstorm, otherwise no interference. Only affects the map the titanborn is on. Can be turned off in mod settings.
+s08303	weather of the heart
+s08304	I have a room all to myself. Close the door and the world goes quiet.
+s08305	a place of solitude
+s08306	There's someone else breathing in the room when I sleep. I miss being alone in the wilds.
+s08307	no peace and quiet
+s08308	Even that folk hero has fallen... do we really still have hope?
+s08309	the hero has fallen
+s08310	That folk hero is standing right beside me with a weapon. With a hero here, we'll make it through.
+s08311	the hero is here
+s08312	Just attended a ritual. The familiar prayers and incense remind me of my days in the temple.
+s08313	sacred time
+s08314	This place dares call itself a bedroom? The stables at my family home were more dignified.
+s08315	Haven't seen the sky for three whole days. I need wind, I need rain, I need to get out.
+s08316	cooped up
+s08317	There isn't even a bookshelf or research bench here. Days without learning drag on like years.
+s08318	nothing to read
+s08319	{PAWN_nameDef} once served in a temple and is used to prayer and contemplation.\n\n- Meditation psyfocus gain +20%\n- Mood +3 "sacred time" (1 day) after attending any ideoligion ritual\n- With Vanilla Psycasts Expanded: cleric path XP +25%
+s08320	<color=#7FBF6A>Acolyte</color>
+s08321	background trait
+s08322	{PAWN_nameDef} made a living in the shadows of the city; picking locks, fencing goods and dodging guards are old habits.\n\n- As a prisoner: prison break chance ×2\n- When the colony has a colonist with the criminal background, prisoner break chance ×0.75 ({PAWN_pronoun} knows where prisoners slip through)\n- 10% better prices when trading with Black Network caravans\n- As a prisoner, each recruitment talk lowers resistance ×1.3
+s08323	<color=#7FBF6A>Criminal</color>
+s08324	{PAWN_nameDef} once stood up against tyrants and monsters, and the folk back home still sing {PAWN_possessive} story.\n\n- While drafted, other colonists within 6 cells get mood +3 "the hero is here"\n- When {PAWN_pronoun} is downed, the whole colony gets mood -3 "the hero has fallen" (1 day)
+s08325	<color=#7FBF6A>Folk Hero</color>
+s08326	{PAWN_nameDef} lived as a hermit alone in the wilds for many years and is more used to their own thoughts than to crowds.\n\n- Mood +3 "a place of solitude" with a private bedroom\n- Mood -4 "no peace and quiet" when sharing a bedroom (replaces the vanilla "slept in barracks" mood)\n- Meditation psyfocus gain +30%\n- Frequency of starting social interactions ×0.5
+s08327	<color=#7FBF6A>Hermit</color>
+s08328	{PAWN_nameDef} comes from a noble family, raised to give orders rather than hold a broom.\n\n- Social impact +15%\n- Won't do cleaning or hauling\n- Mood -4 "beneath my station" when bedroom impressiveness is below "decent"\n- With the Royalty DLC: honor gained ×1.2\n- Mutually exclusive with ascetic
+s08329	<color=#7FBF6A>Noble</color>
+s08330	{PAWN_nameDef} grew up on the wastelands beyond civilization; wind and rain are everyday life to {PAWN_objective}.\n\n- Move speed +10% where there's no roof and outside the home area\n- Wild plant harvest yield +25%\n- Unaffected by bad weather moods like getting soaked or dust storms\n- Mood -3 "cooped up" after staying under a roof for 3 days straight
+s08331	<color=#7FBF6A>Outlander</color>
+s08332	{PAWN_nameDef} spent most of their life in libraries and academies and feels out of sorts without books.\n\n- Research speed +10%\n- Reading benefit +30%\n- With Vanilla Psycasts Expanded: wizard path XP +25%\n- Mood -2 "nothing to read" when the colony has no bookshelf or research bench
+s08333	<color=#7FBF6A>Sage</color>
+s08334	{PAWN_nameDef} served in the army, and the body moves on its own at a command.\n\n- Aiming time -10% while drafted\n- With another ally of the soldier background within 3 cells, both get shooting accuracy and melee hit +5%
+s08335	<color=#7FBF6A>Soldier</color>
+s08336	A pawn with the soldier background gets shooting accuracy and melee hit +5% when another ally of the soldier background is within 3 cells.
+s08337	soldier coordination
+s08338	Once bred as melee bioweapons for harsh environments. Trolls have olive-green skin, broad jaws, pointed ears and hulking bodies; adults are about 1.5 times the size of an ordinary person, and ordinary apparel and weapons display along with the body. Trolls sustain their flesh regeneration with large amounts of food and are born with vanilla "robust digestion", not minding raw food at all; when fed, wounds heal rapidly, and blood loss, old scars and lost external parts slowly recover. Fire and acid temporarily block regeneration; a dead troll stands back up after about a day as long as the corpse hasn't been burned, hasn't rotted and still has its brain.
+s08339	A tall, gluttonous green melee xenohuman; no mood penalty for raw food. Regenerates when fed, revives unless the corpse is burned; fire blocks regeneration.
+s08340	Adult actual body size (affects carry capacity, food intake, chance to be hit) and overall character appearance: ×150%.
+s08341	Giant stomach: adult max food ×150%, one meal lasts longer.
+s08342	Adds troll tusks; the rest of the appearance comes from a combination of vanilla genes.
+s08343	Keeps normal humanlike gear anchors, so regular clothing and armor can be worn.
+s08344	The tusks and tall body of a troll. Note: this gene isn't just cosmetic; it determines the troll's 1.5× actual body size, and removing it returns carry capacity, food intake, chance to be hit and so on to normal human levels. The green skin, robust build, pointed ears, heavy jaw, thick brows and hairless look come from vanilla xenogenes. Body size grows with age; as an adult the actual body and the entire character render reach 1.5× an ordinary person. Ordinary clothing, armor and weapons can still be worn and displayed. The bigger the body, the stronger the health and melee (see giant-body rules: adult total health ×125%, melee damage ×115%).
+s08345	troll giant body and tusks
+s08346	The vigorous metabolism needed for rapid regeneration.
+s08347	troll metabolism
+s08348	Hunger rate: ×120% normally, ×200% while regenerating; each point of injury repaired costs an extra 0.005 food.
+s08349	Heals quickly when fed, stopping bleeding and replenishing lost blood first; immunity gain speed ×150%.
+s08350	Removes one old scar about every 5 days (except the brain).
+s08351	External parts grow back: arms and legs about 3 days, fingers, eyes and similar about 1 day; internal organs don't grow back.
+s08352	After taking fire or acid damage, or while on fire, regeneration stops for 6 hours.
+s08353	Revives about 1 day after death (can be turned off or limited in mod settings); fire, cremation, butchering, rot or a destroyed brain prevent revival.
+s08354	Troll flesh regenerates at an astonishing rate. While food is at least 50%, it repairs 0.5 injury about every 4 seconds (bleeding wounds first) and gradually replenishes lost blood; removes one old scar about every 5 days (except the brain); lost external parts grow back, arms and legs in about 3 days, small parts like fingers and eyes in about 1 day. Repairs cost extra food; hunger rate ×200% while regenerating, ×120% normally. After taking fire or acid damage, or while on fire, regeneration stops for 6 hours. After death, if not hurt by fire or acid in the 6 hours before death and the brain is intact, the corpse stays fresh for about 1 day and then revives in place; a corpse that's burned, cremated, butchered or rotten won't revive.
+s08355	troll regeneration
+s08356	The troll's flesh is regrowing a lost part. The brackets show the part being regrown and progress; hunger or fire pauses progress.
+s08357	regenerating stump
+s08358	This troll just knit back together from death and hasn't fully recovered yet.
+s08359	regeneration weakness
+s08360	Terrified by a servant of the tyrant: move speed ×0.7, doesn't dare fire.
+s08361	cowed
+s08362	Bane's avatar vessel is nearby; my hands are shaking.
+s08363	dread of the tyrant
+s08364	Lathander's morning light flows between the wounds.
+s08365	child of the dawn
+s08366	Bane, god of tyranny, worshipped by the Thayan expedition. The possessed carries a fear aura (enemies within 12 cells get shooting accuracy -15%, move speed ×0.85), and every 20 seconds commands the nearest 3 enemies in sight to drop their weapons (mind resistance can resist it); Thayan soldiers within 20 cells don't flee and sigil trolls don't go berserk. When it falls the divine power is drained away, and followers within 20 cells scatter at once.
+s08367	god of tyranny
+s08368	servant of the tyrant
+s08369	Bane
+s08370	the Black Hand
+s08371	Ilsensine, god of the mind flayers, worshipped by the Underdark colony. The possessed is immune to all psychic effects, and every 15 seconds drives one enemy within 15 cells into a frenzy for 10 seconds (mind resistance can resist it; those tadpoles can't parasitize, such as liches, fire giants and necromantic constructs, are immune); dominated thralls within 20 cells deal +15% damage. After falling its brain matter is burned out: permanent brain damage and dementia, it can be captured, and a mind flayer devouring its brain gains +60 brain matter.
+s08372	god of the mind flayers
+s08373	whisperer
+s08374	Ilsensine
+s08375	whispers of Ilsensine
+s08376	Lathander, god of dawn, worshipped by Faerûn's pioneer league (only appears when the league is hostile to you). Friendlies within 10 cells of the possessed lose 5 severity per wound per hour; every 30 seconds it strikes an enemy in sight with a pillar of light (20 holy damage, ×2 against undead); the first time it's knocked down it gets back up at full health. When it falls a second time the dawn recedes and it can be captured normally.
+s08377	Lathander
+s08378	Malar, god of the hunt, worshipped by vanilla savage tribes (only once enabled in mod settings). On entering, the possessed makes 2-4 wild animals on the map hunt colonists (if there are no wild animals, 2 wolves come from the map edge), melee damage +25%, and every 60 seconds makes one colony animal within 15 cells go out of control for 30 seconds (not while someone with Animals ≥10 is right next to it). When it falls the wildness fades and the driven beasts calm down.
+s08379	god of the hunt
+s08380	beast blood
+s08381	Malar
+s08382	lord of beasts
+s08383	Surtur, king of fire giants, worshipped by the ember clan. The possessed is completely immune to fire, and 20% of the cells it walks over catch fire; with enemies around, every 25 seconds it sweeps with a flaming sword (radius 3, 20 fire damage and ignites); each hit taken gives +5% melee damage (up to +50%). When it falls it combusts inside (radius 4, 25 fire damage), badly burned but surviving.
+s08384	ember blood
+s08385	Surtur's flame
+s08386	Talos, god of storms, worshipped by vanilla pirates (only once enabled in mod settings). Every 40 seconds the possessed strikes lightning within 3 cells of a colonist; while it's on the map the weather is forced to thunderstorm, and enemies within 10 cells get shooting accuracy -10%. When it falls a bolt strikes itself; it survives but is badly hurt.
+s08387	god of storms
+s08388	Talos
+s08389	Tyr, god of justice, worshipped by the witch-hunting zealots. The 10 cells around the possessed are a court of judgment: enemies can't use any abilities; every 30 seconds it strikes the enemy in sight with the most crimes with retribution (10 + crimes × 5, up to 60); can't be stunned or downed by pain. When it falls it submits to judgment and surrenders outright: no more bleeding, can be captured, recruiting difficulty halved.
+s08390	eye of the law
+s08391	hand of justice
+s08392	Vlaakith, lich-queen of the githyanki, worshipped by githyanki mercenaries. Every 20 seconds the possessed makes an astral strike (jumping behind the farthest colonist in sight, with the next melee hit guaranteed), and all melee carries 8 psychic damage (×2 against mind flayers); when it dies, 2 githyanki warriors jump out of the Astral Plane for revenge. After falling the corpse turns to ash; it can't be captured and has no soul to drain.
+s08393	the queen's favorite
+s08394	Vlaakith
+s08395	gaze of the lich-queen
+s08396	[PAWN_nameDef] carries the divine power of Bane the tyrant (servant of the tyrant): mind resistance +20%; companions within 8 cells don't flee because someone fell; melee hits have a 15% chance to cow the target for 5 seconds (move speed ×0.7, can't fire). Trigger chance rises during the Year of Twilight.
+s08397	<color=#E08A3A>Divine Infusion (Bane)</color>
+s08398	[PAWN_nameDef] carries the divine power of Surtur, king of fire giants (ember blood): fire damage taken halved, can't be ignited; melee hits add 4 burn damage with a 10% chance to ignite the target. Burns are heavier during the Year of Twilight.
+s08399	<color=#E08A3A>Divine Infusion (Surtur)</color>
+s08400	[PAWN_nameDef] can hear the whispers of Ilsensine (whisperer): mind resistance +30%, can see invisible units such as those in psionic concealment; when knocked down, psychically jolts the attacker, stunning for 2 seconds. Stuns last longer during the Year of Twilight.
+s08401	<color=#E08A3A>Divine Infusion (Ilsensine)</color>
+s08402	[PAWN_nameDef]'s eyes carry the divine power of Tyr, god of justice (eye of the law): sees through invisibility; +10% damage against targets with many crimes (humanlike kills, organ harvesting, cannibalism totaling ≥5; liches and necromantic constructs count outright). The bonus is higher during the Year of Twilight.
+s08403	<color=#E08A3A>Divine Infusion (Tyr)</color>
+s08404	[PAWN_nameDef] is favored by Lathander, god of dawn (child of the dawn): one wound heals 3 per hour; +25% damage against undead; the first time downed, 30% chance to get up at once and stop bleeding. Easier to get up during the Year of Twilight.
+s08405	<color=#E08A3A>Divine Infusion (Lathander)</color>
+s08406	[PAWN_nameDef] is a favorite of the lich-queen Vlaakith: astral jump cooldown halved; when taking a lethal wound, 20% chance to astral jump 8 cells away and dodge the hit. Easier to dodge during the Year of Twilight.
+s08407	<color=#E08A3A>Divine Infusion (Vlaakith)</color>
+s08408	[PAWN_nameDef] carries the wrath of Talos, god of storms (storm's fury): EMP doesn't stun them; ranged hits have an 8% chance to add a small EMP. Trigger chance rises during the Year of Twilight.
+s08409	<color=#E08A3A>Divine Infusion (Talos)</color>
+s08410	[PAWN_nameDef] carries the beast blood of Malar, god of the hunt: move speed +10%, unaffected by darkness at night; melee hits have a 15% chance to tear open a bleeding wound. Trigger chance rises during the Year of Twilight.
+s08411	<color=#E08A3A>Divine Infusion (Malar)</color>
+s08412	divine infusion
+s08413	{0} was slain by divine punishment.
+s08414	A god descends through this body. The possessed is immune to stuns, mental breaks and all mental states; when it falls the god leaves the body (different for each god), leaving a miracle fragment behind.
+s08415	god-possessed
+s08416	A god once descended through this body and left a mark.
+s08417	former avatar vessel
+s08418	A small fragment of congealed divine power left when a god leaves an avatar vessel; holding it, you can hear distant hymns. Faerûn's pioneer league caravans and the Black Network pay high prices for it.
+s08419	miracle fragment
+s08420	We even drove off an enemy possessed by a god!
+s08421	repelled the god's emissary
+s08422	Tyr's avatar vessel has submitted to judgment: laid down its weapons, and its wounds no longer bleed.
+s08423	submitted to judgment
+s08424	Gales rage around the lord of storms, making it hard to aim.
+s08425	Talos's gale
+s08426	The sky is red as blood. The gods are watching us; this is no good omen.
+s08427	ominous twilight
+s08428	sign of twilight
+s08429	The gods' gaze turns upon this land, and the sky is dyed dark red. Divine-infused enemies increase greatly, the leaders of large raids may be possessed by gods, and divine power effects are stronger.
+s08430	The dark red sky has faded; the Year of Twilight is over.
+s08431	Year of Twilight
+s08432	The sky has turned dark red: the Year of Twilight has begun.
+s08433	Offer a big pile of twisted meat to the Far Realm in exchange for metals or relics from deep within it. The higher the ritual quality, the better the reward: mithril (15-40), adamantine (8-20), and at very high quality a chance at the rare relic "Eye of Hadar".\n\n+25% quality when led by a Great Old One warlock. The ritual can fail: failure chance = (1 - quality) × 25%, and failure brings a flesh beast swarm or a psychic wail.
+s08434	Far Realm feast
+s08435	At the current quality: {0}.
+s08436	Offering twisted meat to drive the ritual.
+s08437	twisted meat
+s08438	A flesh trough steeped in aberrant paste. Fill it with twisted meat: every 30 units hatches 1 friendly small flesh beast (a fingerspike) that obeys the colony and rots after 3 days; at most 4 at a time. Each one takes 6 hours to hatch.\n\nFoul-smelling and ugly: beauty -10 around it.
+s08439	flesh incubator
+s08440	A wall "grown" from aberrant paste that keeps slowly pulsing. About as sturdy as a stone wall, regrows 10% health per day; vulnerable to acid (acid damage ×2). Can hold up a roof.
+s08441	flesh bulwark
+s08442	hag market

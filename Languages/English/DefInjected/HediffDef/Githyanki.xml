@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 灵能灼伤 -->
+  <LP_PsychicWound.label>psychic burn</LP_PsychicWound.label>
+  <!-- 银剑的灵能冲击留下的伤，伤口周围的神经像被烫过一样。 -->
+  <LP_PsychicWound.description>A wound left by a silver sword's psychic shock; the nerves around it feel scalded.</LP_PsychicWound.description>
+  <!-- 已处理 -->
+  <LP_PsychicWound.comps.HediffComp_TendDuration.labelSolidTendedWell>treated</LP_PsychicWound.comps.HediffComp_TendDuration.labelSolidTendedWell>
+  <!-- 已包扎 -->
+  <LP_PsychicWound.comps.HediffComp_TendDuration.labelTendedWell>bandaged</LP_PsychicWound.comps.HediffComp_TendDuration.labelTendedWell>
+  <!-- 已处理 -->
+  <LP_PsychicWound.comps.HediffComp_TendDuration.labelTendedWellInner>treated</LP_PsychicWound.comps.HediffComp_TendDuration.labelTendedWellInner>
+  <!-- 灵能疤痕 -->
+  <LP_PsychicWound.comps.HediffComp_GetsPermanent.permanentLabel>psychic scar</LP_PsychicWound.comps.HediffComp_GetsPermanent.permanentLabel>
+  <!-- 被灵能摧毁 -->
+  <LP_PsychicWound.injuryProps.destroyedLabel>destroyed by psychic force</LP_PsychicWound.injuryProps.destroyedLabel>
+  <!-- 灵能灼伤 -->
+  <LP_PsychicWound.labelNoun>psychic burn</LP_PsychicWound.labelNoun>
+</LanguageData>

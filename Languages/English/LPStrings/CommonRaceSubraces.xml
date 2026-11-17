@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（CommonRaceSubraces.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>普通种族关系心情（1.57.0）</zh><en>Common race relationship moods (1.57.0)</en></s>
+  <s><zh>精灵与卓尔、侏儒与矮人、狗头人与侏儒、地精族与矮人等新增的种族关系心情（只计本殖民地成员与囚犯；有半精灵时精灵与矮人之间的负面心情减半）。关闭后这些新关系不产生心情，1.16.0 已有的精灵/矮人关系不受影响。</zh><en>New racial relationship moods such as elf and drow, gnome and dwarf, kobold and gnome, goblinoid and dwarf (only counting this colony's members and prisoners; with a half-elf present, negative moods between elves and dwarves are halved). When off, these new relationships give no mood; the existing 1.16.0 elf/dwarf relationship is unaffected.</en></s>
+  <s><zh>狗头人：龙之仆从</zh><en>Kobolds: servants of dragons</en></s>
+  <s><zh>狗头人在本殖民地有五色真龙时心情+6、没有龙时-2。关闭后没有这项心情。</zh><en>Kobolds get mood +6 when this colony has a chromatic dragon, -2 without dragons. When off, there's no such mood.</en></s>
+  <s><zh>血仇：</zh><en>Blood feud: </en></s>
+  <s><zh>未知派系</zh><en>unknown faction</en></s>
+  <s><zh>需要殖民地里至少有一名狗头人，才能布置狗头人刺坑。</zh><en>Needs at least one kobold in the colony to set kobold spike pits.</en></s>
+</LPStrings>

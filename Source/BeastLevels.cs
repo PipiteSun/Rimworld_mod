@@ -20,13 +20,13 @@ namespace LichPhylactery {
   public const int MaxLevel=40,TameCap=20,CapOffset=3,AmbientOffset=3,LeaderBonus=3,AncientBonus=5,XpPerLevel=100;
   public const float SpeedPer=.01f,SpeedMax=.3f,PartPer=.05f,CompanionXp=1.25f,BurnShare=.3f,DreadPart=3f,DreadMelee=1.5f,FrenzyCooldown=.67f,AncientArmor=.4f,DefaultElite=.05f,EliteMax=.2f,HaulXp=5f,RescueXp=20f;
   public const int None=0,Dread=1,Frenzy=2,Ancient=3,Abyssal=4;
-  public static readonly string[] EliteNames={"","恐怖","狂暴","远古","深渊腐化"};
+  public static readonly string[] EliteNames={"","恐怖".Loc(),"狂暴".Loc(),"远古".Loc(),"深渊腐化".Loc()};
   public static readonly Color[] EliteColors={Color.white,new Color(.85f,.35f,.3f),new Color(1f,.55f,.2f),new Color(.55f,.75f,1f),new Color(.7f,.3f,.85f)};
   public static readonly string[] EliteEffects={"",
-   "部位生命 ×3，近战伤害 ×1.5。",
-   "近战冷却 −33%（攻速约 +50%），重伤也不会逃跑。",
-   "野性等级 +5，利器 / 钝器护甲 +40%。",
-   "近战命中时追加约 30% 的烧伤。"};
+   "部位生命 ×3，近战伤害 ×1.5。".Loc(),
+   "近战冷却 −33%（攻速约 +50%），重伤也不会逃跑。".Loc(),
+   "野性等级 +5，利器 / 钝器护甲 +40%。".Loc(),
+   "近战命中时追加约 30% 的烧伤。".Loc()};
   // 测试用：设了就代替随机数（精英判定 / 精英种类 / 等级浮动）。
   public static float? TestRoll;public static int? TestVariant,TestNoise;
   public static bool TestSuppressed;
@@ -91,7 +91,7 @@ namespace LichPhylactery {
     if(elite==Frenzy && p.mindState?.mentalStateHandler!=null)p.mindState.mentalStateHandler.neverFleeIndividual=true;
    }
    // 首领：没有名字的动物叫「首领XX」。
-   if(leader && p.Name==null)p.Name=new NameSingle("首领"+p.KindLabel);
+   if(leader && p.Name==null)p.Name=new NameSingle("首领".Loc()+p.KindLabel);
    return h;
   }
   // 第一次出现在地图上（或旧存档读档后补一次）：玩家的动物 1 级，其余按环境规则。
@@ -165,14 +165,14 @@ namespace LichPhylactery {
   public static void OnDeath(Pawn p,Hediff_BeastLevel h,Map map,IntVec3 at){
    if(h==null || map==null)return;
    if(h.elite>None && Heart!=null && at.IsValid){var t=ThingMaker.MakeThing(Heart);if(GenPlace.TryPlaceThing(t,at,map,ThingPlaceMode.Near))HeartsDropped++;}
-   if(h.leader && h.pack!=0){int n=MapComp<MapComponent_BeastPacks>.Get(map)?.LeaderDied(h.pack,p)??0;if(n>0){PacksBroken++;Messages.Message("兽群首领倒下了，其余 "+n+" 只野兽四散逃走。",new TargetInfo(at,map),MessageTypeDefOf.PositiveEvent,false);}}
+   if(h.leader && h.pack!=0){int n=MapComp<MapComponent_BeastPacks>.Get(map)?.LeaderDied(h.pack,p)??0;if(n>0){PacksBroken++;Messages.Message("兽群首领倒下了，其余 ".Loc()+n+" 只野兽四散逃走。".Loc(),new TargetInfo(at,map),MessageTypeDefOf.PositiveEvent,false);}}
   }
   // 退出狂暴并离开地图：先恢复，再逃跑；逃跑状态起不来时照原版狂暴兽群的做法让它马上离开地图。
   public static bool Scatter(Pawn m){
    if(m==null || m.Dead || !m.Spawned || m.mindState==null)return false;
    var ms=m.mindState.mentalStateHandler;
    if(m.InMentalState && m.MentalStateDef!=null && m.MentalStateDef.IsAggro)m.MentalState.RecoverFromState();
-   if(ms!=null){ms.neverFleeIndividual=false;if(!m.Downed)ms.TryStartMentalState(MentalStateDefOf.PanicFlee,"首领倒下",true,true);}
+   if(ms!=null){ms.neverFleeIndividual=false;if(!m.Downed)ms.TryStartMentalState(MentalStateDefOf.PanicFlee,"首领倒下".Loc(),true,true);}
    m.mindState.exitMapAfterTick=Find.TickManager.TicksGame;
    return true;
   }
@@ -187,7 +187,7 @@ namespace LichPhylactery {
   public override void PostAdd(DamageInfo? dinfo){base.PostAdd(dinfo);HediffIndex<Hediff_BeastLevel>.Add(this);}
   public override void PostRemoved(){base.PostRemoved();HediffIndex<Hediff_BeastLevel>.Removed(this);}
   public override bool ShouldRemove=>false;
-  public override string LabelBase=>"野性等级 "+level;
+  public override string LabelBase=>"野性等级 ".Loc()+level;
   public override Color LabelColor=>elite>BeastLevels.None?BeastLevels.EliteColors[elite]:base.LabelColor;
 
   HediffStage stage;int stageKey=-1;
@@ -212,27 +212,27 @@ namespace LichPhylactery {
    xp+=amount*BeastLevels.XpFactor(pawn);bool up=false;
    while(level<cap && xp>=BeastLevels.XpToNext(level)){xp-=BeastLevels.XpToNext(level);level++;up=true;}
    if(level>=cap)xp=0f;
-   if(up){Dirty();if(pawn.Spawned && PawnUtility.ShouldSendNotificationAbout(pawn))Messages.Message(pawn.LabelShortCap+" 的野性等级提升到 "+level,pawn,MessageTypeDefOf.PositiveEvent,false);}
+   if(up){Dirty();if(pawn.Spawned && PawnUtility.ShouldSendNotificationAbout(pawn))Messages.Message(pawn.LabelShortCap+" 的野性等级提升到 ".Loc()+level,pawn,MessageTypeDefOf.PositiveEvent,false);}
    return up;
   }
 
-  public string InspectLine=>"野性等级 "+level+(leader?" · 兽群首领":"")+(elite>BeastLevels.None?" · "+BeastLevels.EliteNames[elite]:"");
+  public string InspectLine=>"野性等级 ".Loc()+level+(leader?" · 兽群首领".Loc():"")+(elite>BeastLevels.None?" · "+BeastLevels.EliteNames[elite]:"");
   public override string TipStringExtra{get{
    var sb=new StringBuilder();
-   if(leader)sb.AppendLine("兽群首领：它倒下后，同群其余野兽会退出狂暴、逃离地图。");
-   if(elite>BeastLevels.None)sb.AppendLine("精英「"+BeastLevels.EliteNames[elite]+"」："+BeastLevels.EliteEffects[elite]);
-   if(!BeastLevels.On)sb.AppendLine("野兽野性等级已在设置里关闭，不提供效果。");
-   else if(Isekai)sb.AppendLine("已由异世界等级接管：数值加成交给 Isekai 的生物等阶，这里只显示等级。");
+   if(leader)sb.AppendLine("兽群首领：它倒下后，同群其余野兽会退出狂暴、逃离地图。".Loc());
+   if(elite>BeastLevels.None)sb.AppendLine("精英「".Loc()+BeastLevels.EliteNames[elite]+"」：".Loc()+BeastLevels.EliteEffects[elite]);
+   if(!BeastLevels.On)sb.AppendLine("野兽野性等级已在设置里关闭，不提供效果。".Loc());
+   else if(Isekai)sb.AppendLine("已由异世界等级接管：数值加成交给 Isekai 的生物等阶，这里只显示等级。".Loc());
    else{
     float s=BeastLevels.Score(level);
-    sb.AppendLine("相当于力量 / 体质 "+s.ToString("0.#")+"（与殖民者同一条六维曲线）");
-    sb.AppendLine("近战伤害 ×"+BeastLevels.MeleeFactor(level,elite).ToString("0.##")+"，部位生命 ×"+BeastLevels.PartFactor(level,elite).ToString("0.##")+"，移速 +"+((BeastLevels.SpeedFactor(level)-1f)*100f).ToString("0")+"%");
+    sb.AppendLine("相当于力量 / 体质 ".Loc()+s.ToString("0.#")+"（与殖民者同一条六维曲线）".Loc());
+    sb.AppendLine("近战伤害 ×".Loc()+BeastLevels.MeleeFactor(level,elite).ToString("0.##")+"，部位生命 ×".Loc()+BeastLevels.PartFactor(level,elite).ToString("0.##")+"，移速 +".Loc()+((BeastLevels.SpeedFactor(level)-1f)*100f).ToString("0")+"%");
    }
    if(pawn?.Faction!=null && pawn.Faction.IsPlayer){
     int cap=BeastLevels.GrowthCap(pawn);
-    if(level>=cap)sb.AppendLine("成长上限 "+cap+" 级"+(level>cap?"（等主人或殖民地等级追上来后再成长）":"（已到上限）"));
-    else sb.AppendLine("经验 "+xp.ToString("0")+" / "+BeastLevels.XpToNext(level).ToString("0")+"（成长上限 "+cap+" 级）");
-    if(BeastLevels.Companion(BeastLevels.Master(pawn)))sb.AppendLine("动物伙伴：主人是游侠或德鲁伊，经验 +25%。");
+    if(level>=cap)sb.AppendLine("成长上限 ".Loc()+cap+" 级".Loc()+(level>cap?"（等主人或殖民地等级追上来后再成长）".Loc():"（已到上限）".Loc()));
+    else sb.AppendLine("经验 ".Loc()+xp.ToString("0")+" / "+BeastLevels.XpToNext(level).ToString("0")+"（成长上限 ".Loc()+cap+" 级）".Loc());
+    if(BeastLevels.Companion(BeastLevels.Master(pawn)))sb.AppendLine("动物伙伴：主人是游侠或德鲁伊，经验 +25%。".Loc());
    }
    return sb.ToString().TrimEnd();
   }}
@@ -251,9 +251,9 @@ namespace LichPhylactery {
  public class Hediff_BeastElite : HediffWithComps {
   int Variant=>BeastLevels.Get(pawn)?.elite??0;
   public override bool ShouldRemove=>false;
-  public override string LabelBase{get{var h=BeastLevels.Get(pawn);return (h!=null && h.leader?"首领 · ":"")+"精英 · "+(Variant>0?BeastLevels.EliteNames[Variant]:"未知");}}
+  public override string LabelBase{get{var h=BeastLevels.Get(pawn);return (h!=null && h.leader?"首领 · ".Loc():"")+"精英 · ".Loc()+(Variant>0?BeastLevels.EliteNames[Variant]:"未知".Loc());}}
   public override Color LabelColor=>Variant>0?BeastLevels.EliteColors[Variant]:base.LabelColor;
-  public override string TipStringExtra=>Variant>0?BeastLevels.EliteEffects[Variant]+"死后掉落兽王之心。":null;
+  public override string TipStringExtra=>Variant>0?BeastLevels.EliteEffects[Variant]+"死后掉落兽王之心。".Loc():null;
  }
 
  public class BeastPack : IExposable {

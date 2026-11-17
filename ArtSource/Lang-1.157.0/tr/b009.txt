@@ -1,0 +1,164 @@
+s02083	DND fighter: a Melee branch (Second Wind, Charge, War Cry, Trip Attack, Action Surge, Weapon Specialization, Indomitable, Disarming Strike, Whirlwind Attack, Guardian Stance, and ultimately Renewed Fighting Spirit) and a Shooting branch (Steady Aim, Suppressing Fire, Precise Shot, Rapid Shot, and ultimately Eye of Death). The Melee branch uses "martial power", the Shooting branch "marksman power". Resource: grit (built up by hitting and killing enemies, fully restored by sleep). Martial class: Extra Attack, fighting style.
+s02084	fighter
+s02085	The DND monk masters the body with ki: Martial Arts (passive), Flurry of Blows, Deflect Missiles, Stunning Strike, Step of the Wind, Open Hand Technique, Diamond Body, Quivering Palm, and ultimately Empty Body. From level 10 the passive "Still Mind": mind resistance +50%. Strongest unarmed (or with a quarterstaff); fists and kicks use vanilla melee resolution, and Isekai's Strength and weapon mastery apply as usual. Power uses "martial power"; ki effects are multiplied by psychic sensitivity (when the setting is on). Resource: ki (recovered by meditation, fully restored by sleep). Martial class: Extra Attack (unarmed only), fighting style.
+s02086	The DND paladin wields the oath as a sword: Divine Smite, Vow of Enmity, Sacred Weapon, Swap Guard (Melee, martial power), Lay on Hands, Aura of Protection, Aura of Courage, Banish Evil (Social, divine power), and ultimately Holy Avatar. The weapon hit resolves as usual; the extra holy damage and healing are multiplied by psychic sensitivity (when the setting is on). Resource: divinity (recovered by prayer and meditation, 25% faster for believers of a god, fully restored by sleep). Liches cannot be paladins. Martial class: Extra Attack, fighting style.
+s02087	In a paladin's Aura of Courage: does not panic and flee.
+s02088	Ranged attacks always hit and ignore cover, shooting damage ×1.5; every enemy shot dead instantly resets all fighter maneuvers.
+s02089	For 20 seconds ranged attacks always hit and ignore cover, shooting damage ×1.5; during it every enemy shot dead instantly resets all fighter maneuvers. Cooldown 1 day. Fighter level 15, and Shooting 15.
+s02090	eye of death
+s02091	For 30 seconds × martial power: each ranged attack's damage is reduced by 10 × martial power (× psychic sensitivity); reduced to 0, the whole shot is deflected. Monk level 3.
+s02092	deflect missiles
+s02093	Each ranged attack's damage is reduced (severity = reduction); reduced to 0, the whole shot is deflected.
+s02094	Ki fills the whole body: damage taken ×0.7, immune to stuns, mental break threshold -10%.
+s02095	Instantly heal 20 × martial power (× psychic sensitivity) and cure food poisoning or clear 20% of toxic buildup; then for 1 hour × martial power, damage taken ×0.7, immune to stuns, mental break threshold -10%. Monk level 10.
+s02096	diamond body
+s02097	Resolve a melee hit on an adjacent enemy, then try to knock its weapon away (landing 2 cells off). Success = 50% + 10% × (your Strength modifier + proficiency bonus - the target's) + 20% × (martial power - 1), limited to 15%-90%; halved again for body size 2+. A side without an adventurer level counts as modifier 0, proficiency +2. Mechanoids, animals and the unarmed only take the hit. Fighter level 10.
+s02098	disarming strike
+s02099	Hostile undead, fiends and mind flayers within radius 5 × divine power each take 30 × divine power (× psychic sensitivity) holy damage and are stunned for 2 seconds; hostile summons are dispelled outright. Paladin level 13.
+s02100	banish evil
+s02101	Divine magic power multiplier: 0.5 + Social level / 20, plus adventurer Wisdom or Charisma modifier (the higher; clerics use Wisdom, paladins Charisma) × 0.05 and (proficiency bonus - 2) × 0.02. Used by cleric divine magic and the paladin's Social branch (Lay on Hands, Aura of Protection, Banish Evil).
+s02102	divine power
+s02103	Within 10 seconds, the next melee hit deals an extra 10 × martial power (× psychic sensitivity) holy damage, doubled against undead, fiends and mind flayers. The weapon hit resolves as usual (Isekai bonuses apply). Paladin level 1.
+s02104	divine smite
+s02105	Body dissolved into the void: invisible, damage taken ×0.5, heals every second (severity = healing per second).
+s02106	For 30 seconds × martial power: invisible (enemies cannot target), damage taken ×0.5, heals 1 × martial power (× psychic sensitivity) per second. Monk level 15, and Melee 15.
+s02107	empty body
+s02108	Sworn against by a paladin: that paladin deals more damage to it.
+s02109	vow of enmity
+s02110	The enemy I swore to hunt down has fallen.
+s02111	vow fulfilled
+s02112	Extra Attack of martial classes: shorter melee and shooting cooldowns, and a chance of a follow-up after a normal melee hit. Tiers: any martial class at level 5 gives tier 1, fighter level 10 tier 2, level 15 tier 3.
+s02113	tier 1
+s02114	tier 2
+s02115	tier 3
+s02116	Throw 2 punches at an adjacent target (3 at martial power ≥ 125%), each a full melee resolution (guaranteed hit). Monk level 1.
+s02117	flurry of blows
+s02118	Armor increased (+16% to +30%, tiered by martial power), movement ×0.7; 30% of damage taken by allies within radius 3 is transferred to yourself.
+s02119	For 30 seconds × martial power, armor +16% to +30% (tiered by martial power), movement ×0.7; 30% of damage taken by allies within radius 3 is transferred to yourself. Cooldown 2 hours. Fighter level 13.
+s02120	guardian stance
+s02121	Leg hit by a precise shot: movement ×0.5.
+s02122	shot in the leg
+s02123	Clad in holy light: burns surrounding enemies and heals surrounding allies every second (severity = damage per second), immune to stuns and panic.
+s02124	For 30 seconds × martial power: enemies within radius 6 take 5 × martial power (× psychic sensitivity) holy damage per second (doubled against undead and fiends), allies heal 40% of that per second; you are immune to stuns and panic. Paladin level 15, and Melee 15.
+s02125	holy avatar
+s02126	Feels no pain, cannot be downed by pain, immune to stuns, mental break threshold -15%.
+s02127	For 1 hour × martial power, feels no pain, cannot be downed by pain, immune to stuns, mental break threshold -15%. Cooldown 6 hours. Fighter level 7.
+s02128	indomitable
+s02129	Instantly swap places with an ally within 12 × martial power cells; they get "protected" for 10 seconds: damage taken ×0.5. Paladin level 10.
+s02130	swap guard
+s02131	Touch an ally (or yourself) to heal 25 × divine power (× psychic sensitivity); with no wounds, instead cure food poisoning or clear 30% of toxic buildup. Paladin level 1.
+s02132	lay on hands
+s02133	Power multiplier of the DND fighter's Shooting branch: 0.5 + Shooting level / 20, plus adventurer Dexterity modifier × 0.05 and (proficiency bonus - 2) × 0.02; those with a martial class add 0.02 × (combined martial class levels - 1), up to +40%.
+s02134	marksman power
+s02135	Passive: unarmed (or with a quarterstaff), melee damage ×(1 + 0.5 × martial power), melee cooldown ×0.85; when not wearing clothing with sharp armor ≥ 40%, melee dodge +10% × martial power. Fists and kicks use vanilla melee resolution; Isekai's Strength and weapon mastery apply as usual. Monk level 1.
+s02136	martial arts
+s02137	Power multiplier of DND martial techniques: 0.5 + Melee level / 20, plus the adventurer's higher of Strength or Dexterity modifier × 0.05 and (proficiency bonus - 2) × 0.02. Those with a martial class (fighter, monk, paladin, barbarian, ranger, rogue) add 0.02 × (combined martial class levels - 1), up to +40%. Second Wind healing, War Cry range, buff durations, monk fists and ki, and the paladin's Melee branch are all multiplied by it.
+s02138	martial power
+s02139	Unarmed monk: melee damage increased (× 1 + 0.5 × martial power), melee cooldown ×0.85.
+s02140	Monk without heavy armor: melee dodge +10% × martial power.
+s02141	unarmored grace
+s02142	A punch knocks an adjacent target back 3 cells (1 cell for body size 2+) and down for 1 second; other enemies next to the landing spot each take 6 × martial power blunt damage. Monk level 7.
+s02143	open hand technique
+s02144	Instantly fire one bullet from your current weapon at an enemy: guaranteed hit, damage ×(1.5 + 0.5 × marksman power), armor penetration +30%. When drafted there is an extra button to switch modes: Vital (only the above) / Leg (damage ×0.7, target movement ×0.5 for 10 seconds) / Hand (damage ×0.5, a chance to knock the weapon away, success based on Dexterity and marksman power; hover the mode button to see the formula). Range = current weapon range; requires a ranged weapon. Fighter level 7 (Shooting branch).
+s02145	precise shot
+s02146	In a paladin's Aura of Protection: damage taken reduced (×0.8 to ×0.95, by divine power), mental break threshold -5%.
+s02147	A monk's quivering ki has been planted in the body and will burst in a few seconds.
+s02148	A punch plants quivering ki inside the target that bursts after 3 seconds: the torso takes 40 × martial power (× psychic sensitivity) blunt damage (ignoring half the armor); halved against giants or body size 3+. Monk level 13.
+s02149	quivering
+s02150	quivering palm
+s02151	Shooting cooldown ×0.5; burst weapons fire 1 extra shot per burst.
+s02152	For 10 seconds × marksman power, shooting cooldown ×0.5; burst weapons fire 1 extra shot per burst. Cooldown 2 hours. Fighter level 10 (Shooting branch).
+s02153	rapid shot
+s02154	Every melee hit adds holy damage (severity = damage).
+s02155	For 1 hour × martial power: every melee hit adds 4 × martial power (× psychic sensitivity) holy damage (doubled against undead, fiends and mind flayers). Paladin level 7.
+s02156	sacred weapon
+s02157	The fighter steadies their breath, continuously healing injuries over 600 ticks (total = 20 × martial power, bleeding wounds first).
+s02158	Steady your breath and continuously heal your own injuries over 600 ticks, totaling 20 × martial power, bleeding wounds first. Power uses the higher of martial power and marksman power. Fighter level 1.
+s02159	second wind
+s02160	Shaken: movement ×0.7, lower melee hit chance and shooting accuracy.
+s02161	shaken
+s02162	A paladin stands in front: damage taken ×0.5.
+s02163	protected
+s02164	The next melee hit adds holy damage (severity = damage), valid for 10 seconds.
+s02165	Hunkered down to aim: shooting warmup ×0.5, ranged hit ×1.15, movement ×0.5.
+s02166	Hunker down to aim: for 15 seconds shooting warmup ×0.5, ranged hit ×1.15, movement ×0.5. Fighter level 1 (Shooting branch).
+s02167	steady aim
+s02168	Light as the wind: movement ×1.6, melee dodge +20%.
+s02169	For 20 seconds × martial power: movement ×1.6, melee dodge +20%. Monk level 7.
+s02170	step of the wind
+s02171	A punch that shocks the target with ki: stunned for 2 seconds × martial power (× psychic sensitivity; halved for body size 2+); works on mechanoids too. Monk level 5.
+s02172	stunning strike
+s02173	Pinned down by suppressing fire: movement ×0.6, ranged hit ×0.75.
+s02174	suppressed
+s02175	Pour fire onto an area: fire 6 rounds from your current weapon in rapid succession (one every 0.1 seconds, landing on random cells within radius 3 of the target point, damage ×0.5); enemies in the area are suppressed for 6 seconds: movement ×0.6, ranged hit ×0.75. Range = current weapon range; requires a ranged weapon. Fighter level 3 (Shooting branch).
+s02176	suppressing fire
+s02177	Pouring out suppressing fire.
+s02178	laying down suppressing fire
+s02179	Melee cooldown ×0.5, melee damage ×1.5, immune to stuns; every melee kill instantly resets all fighter maneuvers.
+s02180	For 20 seconds melee cooldown ×0.5, melee damage ×1.5, immune to stuns; during it every melee kill instantly resets all fighter maneuvers. Cooldown 1 day. Fighter level 15, and Melee 15.
+s02181	renewed fighting spirit
+s02182	Trip an adjacent target: stunned for 1.5 seconds × martial power and knocked back 1 cell; targets of body size 2+ are only shaken, not knocked back. Fighter level 5.
+s02183	trip attack
+s02184	Mark one enemy for 1 day: all damage the caster deals to it ×(1 + 0.25 × martial power); when it dies the caster gets mood +5 (vow fulfilled). Paladin level 3.
+s02185	Melee damage increased (×1.24 to ×1.45, tiered by martial power); ranged weapon damage also uses the same tier multiplier.
+s02186	For 2 hours × martial power, melee damage ×1.24 to ×1.45 (tiered by martial power); ranged weapon damage also uses the same tier multiplier. Cooldown 1 hour. Fighter level 7.
+s02187	weapon specialization
+s02188	proficient
+s02189	adept
+s02190	specialist
+s02191	master
+s02192	grandmaster
+s02193	Resolve your current melee weapon's damage once against every adjacent enemy (guaranteed hit, damage × martial power; melee damage factor, weapon quality and Isekai refinement / Strength bonuses all count). Fighter level 10.
+s02194	whirlwind attack
+s02195	This Whirlwind Attack's melee damage × martial power.
+s02196	whirlwind momentum
+s02197	study {0_label}
+s02198	A well-thumbed little book recording the many paths of Faerûn's adventurers. After reading: your next adventurer class ignores skill requirements (and the adventurer level 3 multiclass requirement), and you gain some training XP (up to adventurer level 3). Can only be read while you have fewer than 3 classes and no unused waiver. Each book can be used only once.
+s02199	adventurer's manual
+s02200	Calm one animal within 15 cells: a manhunting one returns to normal at once; a wild one has a chance to be tamed outright (35% × primal power × (1 - wildness / 2), up to 90%); on failure it runs away and does not fight back. Druid level 1.
+s02201	calm beast
+s02202	Infuse an ally with magic: for 30 seconds, +0.5 magic factor when using runic dwarven firearms and staves (no effect on other weapons). Artificer level 7.
+s02203	arcane charge
+s02204	Magic infused by an artificer: +0.5 magic factor when using runic dwarven firearms and staves.
+s02205	{0} was torn apart by arcane force.
+s02206	arcane force
+s02207	Power multiplier for wizard spells and the sorcerer's Intellectual branch: 0.5 + Intellectual level / 20, plus adventurer Intelligence modifier × 0.10 (× talent) and (proficiency bonus - 2) × 0.02, +5% for each level the combined wizard / sorcerer class levels exceed 1 (up to +95%, i.e. level 20).
+s02208	arcane power
+s02209	Passive: when you use runic dwarven firearms and staves, psychic sensitivity below 150% counts as 150%. Artificer level 15, and Crafting 15.
+s02210	arcane resonance
+s02211	Passive: can craft the Arcane Workshop tier of DND weapons: subduing cudgel, net crossbow, slumber shortbow and slumber staff (also requires the research "subduing tactics"). Artificer level 1.
+s02212	arcane workshop
+s02213	Artificer ability power multiplier: 0.5 + Crafting level / 20, plus adventurer Intelligence modifier × 0.05 and (proficiency bonus - 2) × 0.02 (doesn't get the 10% of arcane power), +2% for each level the combined artificer class levels exceed 1 (up to +40%). Overcharged Shot's damage bonus and Rune Turret's damage are multiplied by it.
+s02214	artifice power
+s02215	Skin hard as bark: sharp armor +30%, blunt armor +15%, movement ×0.95.
+s02216	Make an ally's skin like bark for 1 hour × verdant power: sharp armor +30%, blunt armor +15%, movement ×0.95. Druid level 5.
+s02217	barkskin
+s02218	Animals of your faction within radius 10 × primal power (including summoned spirit wolves) for 1 hour: melee damage ×(1 + 0.3 × primal power), movement ×1.2, damage taken ×0.8. Druid level 10.
+s02219	A beast commanded by a druid: melee damage increased, movement ×1.2, damage taken ×0.8.
+s02220	Bless an ally for 1 hour × divine power: melee hit +10%, better shooting accuracy, mood +3. Cleric level 1.
+s02221	Blessed by a cleric: melee hit +10%, better shooting accuracy, mood +3.
+s02222	The gods are watching over me.
+s02223	blessed
+s02224	runic shot
+s02225	Spray fire in a 90° cone 6 cells ahead: 18 × arcane power fire damage and ignites; the ground may catch fire. Sorcerer level 1.
+s02226	burning hands
+s02227	A lightning bolt strikes a point within 30 cells: enemies within radius 1.9 take 25 × verdant power electrical damage (mechanoids take EMP instead). In rain or thunderstorms, damage ×1.5 and cooldown halved. Druid level 13.
+s02228	call lightning
+s02229	Hurl chaotic energy at an enemy within 25 cells, 12 × innate power damage of a random type: fire (ignites), lightning (stuns), arcane force, frost (slows); fixed to force for force dragonborn. 1/8 chance to leap to another enemy within 6 cells. Sorcerer level 1.
+s02230	chaos bolt
+s02231	Charm a humanlike: enemies fall into a daze for 8 seconds × innate power and stop attacking; prisoners lose 10 × innate power resistance. Mind resistance can resist it. Sorcerer level 3.
+s02232	charm person
+s02233	The divine magic of the DND cleric: Cure Wounds, Bless, Lesser Restoration, Guidance, Divine Strike, Turn Undead, Mass Cure Wounds, Death Ward, and ultimately Revivify. Power uses "divine power" (Social); damage and healing are multiplied by psychic sensitivity (when the setting is on). Resource: divinity (shared with paladins: recovered by prayer and meditation, 25% faster for believers of a god, recovered by sleep).
+s02234	cleric
+s02235	The DND druid protects nature: Calm Beast, Conjure Animals, Wild Shape, Beast Lord's Call (Animals, primal power), Entangle, Barkskin, Plant Growth, Call Lightning (Plants, verdant power), and ultimately Control Weather. Effects are multiplied by psychic sensitivity (when the setting is on). Resource: mana (max 2 + druid level; slowly regained while awake, faster asleep). Liches cannot be druids.
+s02236	The DND sorcerer is born with magic: Chaos Bolt, Charm Person, Dragon Wings, Mass Suggestion (Social, innate power), Burning Hands, Twinned Spell, Ice Storm, Empowered Spell (Intellectual, arcane power), and ultimately Wild Surge. Force dragonborn, genasi, genies, titans, storm giants, cloud giants, mariliths and cambions have a sorcerer bloodline: skill requirements -2, innate power +15%. Resource: mana (max 2 + sorcerer level; slowly regained while awake, faster asleep).
+s02237	The arcane magic of the DND wizard: Magic Missile (cantrip), Mage Armor, Shield, Fireball, Misty Step, Sleep, Mirror Image, Lightning Bolt, Haste, Wall of Stone, Teleport, and ultimately Disintegrate. Power uses "arcane power" (Intellectual); damage and healing are multiplied by psychic sensitivity (when the setting is on). Resource: mana (max 2 + wizard level; slowly regained while awake, faster asleep, faster still at a research bench, scroll desk or while reading).
+s02238	wizard
+s02239	Summon 2 spirit timber wolves nearby (3 at primal power ≥ 125%) that obey the caster, and vanish into motes of light after 1 day or on death, leaving no corpse. Druid level 3.
+s02240	conjure animals
+s02241	A summoned spirit: vanishes into motes of light when time is up, leaves no corpse when it dies.
+s02242	spirit summons
+s02243	A stone wall summoned by Wall of Stone; dissipates after a day.
+s02244	stone wall (wall of stone)
+s02245	Open the weather window to choose a weather (clear, rain, fog, thunderstorm, and snow when at or below 0°C) that lasts 1 day, and end one negative weather event on this map (toxic fallout, cold snap, heat wave, volcanic winter, etc.; quest and permanent events excluded). Druid level 15, and Plants 15.
+s02246	control weather

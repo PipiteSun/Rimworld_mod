@@ -31,10 +31,10 @@ namespace LichPhylactery {
   public static bool Knows(Hediff_Adventurer h,AbilityDef d)=>h?.classes!=null && d!=null && h.classes.legendary.Contains(d);
   public static int NeededLevel(Hediff_Adventurer h,LP_ClassDef c)=>Count(h,c)==0?FirstLevel:SecondLevel;
   public static string CanLearn(Hediff_Adventurer h,LP_ClassDef c,AbilityDef d){
-   if(h?.classes==null || c==null || d==null || !c.legendary.Contains(d))return "没有这个能力";
-   if(Knows(h,d))return "已经学会";
-   if(Points(h)<=0)return "没有传奇职业点（传奇冒险者 25 / 30 / 35 / 40 级各 1 点）";
-   int need=NeededLevel(h,c);if(ClassSystem.Level(h,c)<need)return "需要"+c.label+" "+need+" 级"+(need==SecondLevel?"（同职业的第二个传奇能力）":"");
+   if(h?.classes==null || c==null || d==null || !c.legendary.Contains(d))return "没有这个能力".Loc();
+   if(Knows(h,d))return "已经学会".Loc();
+   if(Points(h)<=0)return "没有传奇职业点（传奇冒险者 25 / 30 / 35 / 40 级各 1 点）".Loc();
+   int need=NeededLevel(h,c);if(ClassSystem.Level(h,c)<need)return "需要".Loc()+c.label+" "+need+" 级".Loc()+(need==SecondLevel?"（同职业的第二个传奇能力）".Loc():"");
    return null;
   }
   public static bool Learn(Hediff_Adventurer h,LP_ClassDef c,AbilityDef d,bool message=false){
@@ -43,7 +43,7 @@ namespace LichPhylactery {
    if(h.pawn?.abilities!=null && h.pawn.abilities.GetAbility(d)==null)h.pawn.abilities.GainAbility(d);
    if(c.resource!=ClassResource.None){var key=ClassSystem.PoolKey(c);h.classes.res[key]=Mathf.Min(ClassSystem.Resource(h,c)+ResourceBonus,ClassSystem.MaxResource(h,c));} // 新的上限那 2 点直接补上（1.90.0：不再乘职业专长的资源获取倍率）
    Passives(h);
-   if(message && h.pawn?.Faction!=null && h.pawn.Faction.IsPlayer)Messages.Message(h.pawn.LabelShort+"领悟了传奇能力「"+d.label+"」（"+c.label+"）",h.pawn,MessageTypeDefOf.PositiveEvent,false);
+   if(message && h.pawn?.Faction!=null && h.pawn.Faction.IsPlayer)Messages.Message(h.pawn.LabelShort+"领悟了传奇能力「".Loc()+d.label+"」（".Loc()+c.label+"）".Loc(),h.pawn,MessageTypeDefOf.PositiveEvent,false);
    return true;
   }
   // 资源上限加成：池里所有职业学会的传奇能力数 × 2（神恩共用池里牧师、圣武士都算）。
@@ -71,7 +71,7 @@ namespace LichPhylactery {
    var p=a.pawn;var e=a.Props;if(p==null || e==null || e.effect=="ArcaneTorrent" || e.cost<=0)return;
    var def=Items.Hediff("LP_LegArcaneTorrent");var h=def==null?null:p.health.hediffSet.GetFirstHediffOfDef(def);if(h==null)return;
    a.ResetCooldown();h.Severity-=1f;if(h.Severity<.5f)p.health.RemoveHediff(h);
-   Items.Mote(p,"魔力奔流",ClassCasters.Chaos);
+   Items.Mote(p,"魔力奔流".Loc(),ClassCasters.Chaos);
   }
 
   // ---------- 被动（每 250 刻，职业者自己的冒险者状态里） ----------
@@ -101,8 +101,8 @@ namespace LichPhylactery {
    h.classes.legendaryTicks[d.defName]=now;
    ClassMelee.Heal(p,ClassMelee.InjurySum(p)*UnyieldingHeal);
    ClassSystem.AddResource(h,ClassSystem.Fighter,999f);
-   Items.Mote(p,"不屈战魂",ClassEffects.MartialColor);
-   if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"的不屈战魂：本该倒下，却又站了起来。",p,MessageTypeDefOf.PositiveEvent,false);
+   Items.Mote(p,"不屈战魂".Loc(),ClassEffects.MartialColor);
+   if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"的不屈战魂：本该倒下，却又站了起来。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);
    return true;
   }
   // 魂铸：DND 武器品质 +1，10% 直接传说。
@@ -116,14 +116,14 @@ namespace LichPhylactery {
     case "MeteorSwarm":MeteorSwarm(p,target.Cell,ClassEffects.Radius(p,e),ClassEffects.Power(p,e));return true;
     case "DivineIntervention":DivineIntervention(p);return true;
     case "NatureWrath":NatureWrath(p,target.Cell,ClassEffects.Radius(p,e),ClassEffects.Power(p,e),ClassEffects.Duration(p,e));return true;
-    case "ArcaneTorrent":Items.Give(p,"LP_LegArcaneTorrent",60000,3f);Items.Mote(p,"魔力奔流",ClassCasters.Chaos);return true;
+    case "ArcaneTorrent":Items.Give(p,"LP_LegArcaneTorrent",60000,3f);Items.Mote(p,"魔力奔流".Loc(),ClassCasters.Chaos);return true;
     case "WarGolem":WarGolem(p,target.Cell,ClassEffects.Power(p,e));return true;
    }
    return false;
   }
   public static string Invalid(Pawn caster,CompProperties_ClassEffect e,LocalTargetInfo target){
    switch(e.effect){
-    case "HeavenPalm":{var t=target.Thing as Pawn;if(t==null || t.Dead)return "需要选择一个活着的目标。";if(!t.HostileTo(caster))return "只能对敌人使用。";return null;}
+    case "HeavenPalm":{var t=target.Thing as Pawn;if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();if(!t.HostileTo(caster))return "只能对敌人使用。".Loc();return null;}
     case "WarGolem":return ClassCasters.TurretCannot(caster.Map,target.Cell);
    }
    return null;
@@ -144,7 +144,7 @@ namespace LichPhylactery {
     try{foreach(var t in Cone(p,toward,e.radius)){ClassMelee.Strike(p,t,8f*e.power);n++;}}
     finally{Items.Remove(p,"LP_WhirlwindFury");}
    }
-   Items.Mote(p,"千军破",ClassEffects.MartialColor);
+   Items.Mote(p,"千军破".Loc(),ClassEffects.MartialColor);
    return n;
   }
   public static bool Boss(Pawn t)=>t!=null && (Legendary.Is(t) || Adventurer.Get(t)?.storyLevel==true);
@@ -153,10 +153,10 @@ namespace LichPhylactery {
    ClassMelee.Strike(p,t);if(t.Dead)return false;
    t.TakeDamage(new DamageInfo(DamageDefOf.Blunt,amount,.8f,-1f,p,t.RaceProps.body.corePart));
    if(t.Dead)return false;
-   if(Boss(t) && roll<BossStunChance){Items.Mote(t,"挣脱",MonkCore.Ki);return false;}
+   if(Boss(t) && roll<BossStunChance){Items.Mote(t,"挣脱".Loc(),MonkCore.Ki);return false;}
    t.stances?.stunner?.StunFor(stun,p);
    if(t.Spawned)FleckMaker.ThrowLightningGlow(t.DrawPos,t.Map,2f);
-   Items.Mote(t,"天震掌",MonkCore.Ki);
+   Items.Mote(t,"天震掌".Loc(),MonkCore.Ki);
    return true;
   }
   public static int MeteorSwarm(Pawn p,IntVec3 c,float radius,float amount){
@@ -178,7 +178,7 @@ namespace LichPhylactery {
    foreach(var corpse in map.listerThings.ThingsInGroup(ThingRequestGroup.Corpse).OfType<Corpse>().ToList())
     if(corpse.InnerPawn?.Faction==Faction.OfPlayer && ClassCasters.RaiseCannot(corpse)==null && ClassCasters.Raise(corpse))n++;
    var god=FaithUtility.DevoteeGod(p)??FaithUtility.Patron;
-   Messages.Message((god!=null?god.label:"神明")+"回应了"+p.LabelShort+"的祈祷：伤者痊愈，亡者复苏。",p,MessageTypeDefOf.PositiveEvent,false);
+   Messages.Message((god!=null?god.label:"神明".Loc())+"回应了".Loc()+p.LabelShort+"的祈祷：伤者痊愈，亡者复苏。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);
    if(p.Spawned)FleckMaker.ThrowLightningGlow(p.DrawPos,map,4f);
    return n;
   }
@@ -201,7 +201,7 @@ namespace LichPhylactery {
  public class Hediff_BloodlineAwake : HediffWithComps {
   HediffStage stage;
   public static readonly Dictionary<string,string[]> Elements=new Dictionary<string,string[]>{
-   {"LP_ForceDragon",new[]{"LP_Force"}},{"LP_GenasiFire",new[]{"Flame","Burn"}},{"LP_Genie",new[]{"Flame","Burn"}},{"LP_Cambion",new[]{"Flame","Burn"}},
+   {"LP_GenasiFire",new[]{"Flame","Burn"}},{"LP_Genie",new[]{"Flame","Burn"}},{"LP_Cambion",new[]{"Flame","Burn"}},
    {"LP_GenasiWater",new[]{"Frostbite","LP_Frost"}},{"LP_GenasiEarth",new[]{"Blunt"}},{"LP_Titan",new[]{"Blunt"}},
    {"LP_GenasiAir",new[]{"LP_Lightning","EMP"}},{"LP_StormGiant",new[]{"LP_Lightning","EMP"}},{"LP_CloudGiant",new[]{"LP_Lightning","EMP"}}};
   public static string[] For(Pawn p){
@@ -222,7 +222,7 @@ namespace LichPhylactery {
  public class StatPart_LegendaryClassPower : StatPart {
   public string ability;public float bonus=.2f;
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p && ClassLegendary.HasLeg(p,ability))val+=bonus;}
-  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && ClassLegendary.HasLeg(p,ability)?"传奇「"+(DefCache<AbilityDef>.Get(ability)?.label??ability)+"」：+"+bonus.ToStringPercent():null;
+  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && ClassLegendary.HasLeg(p,ability)?"传奇「".Loc()+(DefCache<AbilityDef>.Get(ability)?.label??ability)+"」：+".Loc()+bonus.ToStringPercent():null;
  }
 
  // ==================== Harmony ====================

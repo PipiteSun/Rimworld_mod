@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 制作石魔像胚体 -->
+  <LP_MakeStoneGolem.label>make stone golem seed</LP_MakeStoneGolem.label>
+  <!-- 消耗300石块制作石魔像胚体（只有读过魔像手册的巫妖能为自己的命匣做）。石魔像体型2，统御占用4，每天精神力维护0.5，不吃不睡不腐、不消耗血肉。选中胚体打开配置界面，确认后唤醒。 -->
+  <LP_MakeStoneGolem.description>Make a stone golem seed from 300 stone blocks (only liches who have read the golem manual can make it for their own phylactery). Stone golems have body size 2, take 4 command capacity, 0.5 psyfocus upkeep per day, don't eat, sleep or rot, and consume no flesh. Select the seed to open the configuration screen and confirm to awaken it.</LP_MakeStoneGolem.description>
+  <!-- 正在制作石魔像胚体。 -->
+  <LP_MakeStoneGolem.jobString>Making a stone golem seed.</LP_MakeStoneGolem.jobString>
+  <!-- 抄写解除诅咒卷轴 -->
+  <LP_ScribeRemoveCurse.label>copy scroll of remove curse</LP_ScribeRemoveCurse.label>
+  <!-- 巫妖消耗30点精神力和20份布，抄写一张解除诅咒卷轴。只有巫妖能做。 -->
+  <LP_ScribeRemoveCurse.description>A lich spends 30 psyfocus and 20 cloth to copy a scroll of remove curse. Only liches can make it.</LP_ScribeRemoveCurse.description>
+  <!-- 正在抄写解除诅咒卷轴。 -->
+  <LP_ScribeRemoveCurse.jobString>Copying a scroll of remove curse.</LP_ScribeRemoveCurse.jobString>
+</LanguageData>

@@ -55,8 +55,8 @@ namespace LichPhylactery {
    if(!active || LichMod.Settings?.abyssShowThinness!=true || Find.CurrentMap!=map || WorldRendererUtility.WorldSelected)return;
    var r=new Rect(UI.screenWidth/2f-90f,6f,180f,24f);
    Widgets.DrawBoxSolid(r,new Color(.1f,.05f,.12f,.6f));Text.Anchor=TextAnchor.MiddleCenter;Text.Font=GameFont.Small;
-   Widgets.Label(r,"位面薄弱度 "+value.ToString("0"));Text.Anchor=TextAnchor.UpperLeft;
-   TooltipHandler.TipRegion(r,"每天变化 "+DailyDelta.ToString("+0.#;-0.#")+"。≥20 可能有深渊低语，≥60 可能有深渊入侵。驱魔结界每个 -1/天（最多 5 个）。");
+   Widgets.Label(r,"位面薄弱度 ".Loc()+value.ToString("0"));Text.Anchor=TextAnchor.UpperLeft;
+   TooltipHandler.TipRegion(r,"每天变化 ".Loc()+DailyDelta.ToString("+0.#;-0.#")+"。≥20 可能有深渊低语，≥60 可能有深渊入侵。驱魔结界每个 -1/天（最多 5 个）。".Loc());
   }
   public override void ExposeData(){
    Scribe_Values.Look(ref value,"lpThinness");Scribe_Values.Look(ref active,"lpThinActive");Scribe_Values.Look(ref lastDaily,"lpThinDaily",-1);

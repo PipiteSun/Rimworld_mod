@@ -31,7 +31,7 @@ namespace LichPhylactery {
  public static class LoxodonFearImmunity {
   static bool Prefix(MentalStateDef __0,Pawn ___pawn,ref bool __result){
    if(!HeroismFearImmunity.Fear(__0) || !Loxodon.FearImmune(___pawn))return true;
-   Items.Mote(___pawn,"毫不畏惧",new Color(.8f,.85f,.9f));__result=false;return false;
+   Items.Mote(___pawn,"毫不畏惧".Loc(),new Color(.8f,.85f,.9f));__result=false;return false;
   }
  }
  [HarmonyPatch(typeof(ThoughtUtility),nameof(ThoughtUtility.ThoughtNullified))]

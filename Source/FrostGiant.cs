@@ -43,7 +43,7 @@ namespace LichPhylactery {
     if(IsWinterWolf(p)){Items.Give(p,"LP_WildHunt",HornTicks);n++;}
    }
    FleckMaker.Static(caster.Position,map,FleckDefOf.PsycastAreaEffect,6f);
-   Items.Mote(caster,"冬之号角！",new Color(.75f,.9f,1f));
+   Items.Mote(caster,"冬之号角！".Loc(),new Color(.75f,.9f,1f));
    return n;
   }
 
@@ -150,7 +150,7 @@ namespace LichPhylactery {
  // 冬狼之主：主人的冬狼更强。
  public class StatPart_WolfLord : StatPart {
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p && FrostGiant.LordedWolf(p))val*=parentStat==StatDefOf.MoveSpeed?FrostGiant.WolfMove:FrostGiant.WolfMelee;}
-  public override string ExplanationPart(StatRequest req){if(!(req.Thing is Pawn p) || !FrostGiant.LordedWolf(p))return null;return "冬狼之主的猎犬：×"+(parentStat==StatDefOf.MoveSpeed?FrostGiant.WolfMove:FrostGiant.WolfMelee).ToStringPercent();}
+  public override string ExplanationPart(StatRequest req){if(!(req.Thing is Pawn p) || !FrostGiant.LordedWolf(p))return null;return "冬狼之主的猎犬：×".Loc()+(parentStat==StatDefOf.MoveSpeed?FrostGiant.WolfMove:FrostGiant.WolfMelee).ToStringPercent();}
  }
  [StaticConstructorOnStartup]
  public static class FrostGiantStartup {
@@ -191,7 +191,7 @@ namespace LichPhylactery {
  public class CompWinterHorn : CompAbilityEffect {
   public CompProperties_WinterHorn Props=>(CompProperties_WinterHorn)props;
   public override bool GizmoDisabled(out string reason){
-   if(!Props.wolvesOnly && !FrostGiant.HasHorn(parent.pawn)){reason="需要装备霜巨人号角。";return true;}
+   if(!Props.wolvesOnly && !FrostGiant.HasHorn(parent.pawn)){reason="需要装备霜巨人号角。".Loc();return true;}
    return base.GizmoDisabled(out reason);
   }
   public override void Apply(LocalTargetInfo target,LocalTargetInfo dest){
@@ -241,7 +241,7 @@ namespace LichPhylactery {
  public class ScenPart_IceborneKin : ScenPart {
   public int wolves=2;
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref wolves,"wolves",2);}
-  public override string Summary(Scenario scen)=>"开局带"+wolves+"只已驯服的冬狼，每只认一名霜巨人为主人。";
+  public override string Summary(Scenario scen)=>"开局带".Loc()+wolves+"只已驯服的冬狼，每只认一名霜巨人为主人。".Loc();
   public override void PostGameStart(){var map=Find.AnyPlayerHomeMap;if(map!=null)Apply(map,wolves);}
   public static List<Pawn> Apply(Map map,int count){
    var list=new List<Pawn>();var kind=FrostGiantRaid.WolfKind;if(kind==null || map==null)return list;

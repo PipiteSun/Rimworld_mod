@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 原生质凝胶 -->
+  <LP_ProtoplasmGel.label>protoplasm gel</LP_ProtoplasmGel.label>
+  <!-- 流浆人析出的一团半透明凝胶，摸上去凉凉的、会微微蠕动。可以在炼金桌做成凝胶敷料，也能在缝纫台做成流浆人用的稳形护带。\n\n流浆人用“析出凝胶”能力产出；屠宰流浆人的尸体也能得到3份（不出肉和皮）。黑网商队偶尔会卖。 -->
+  <LP_ProtoplasmGel.description>A lump of translucent gel exuded by an oozefolk, cool to the touch and faintly wriggling. Can be made into gel dressings at the alchemy table, or into stabilizing belts for oozefolk at the tailoring bench.\n\nProduced by the oozefolk "exude gel" ability; butchering an oozefolk corpse also yields 3 (no meat or leather). Black Network caravans occasionally sell it.</LP_ProtoplasmGel.description>
+  <!-- 凝胶敷料 -->
+  <LP_GelDressing.label>gel dressing</LP_GelDressing.label>
+  <!-- 用原生质凝胶浸透的布条。敷在伤口上会自己贴合、收紧，效果接近工业药品。 -->
+  <LP_GelDressing.description>Cloth strips soaked in protoplasm gel. Applied to a wound, they adhere and tighten by themselves, close to industrial medicine in effect.</LP_GelDressing.description>
+  <!-- 稳形护带 -->
+  <LP_StabilizerBand.label>stabilizing belt</LP_StabilizerBand.label>
+  <!-- 缝着几袋原生质凝胶的皮质腰带，紧紧箍住流浆人的身体，让它在寒冷里也能保持形状。只对流浆人有效：凝滞的触发温度从0°C降到-15°C，原生质上限+20。戴在奇物栏位，不占别的装备位置。 -->
+  <LP_StabilizerBand.description>A leather belt sewn with a few pouches of protoplasm gel, cinched tight around an oozefolk's body so it keeps its shape even in the cold. Only works for oozefolk: the congealing threshold drops from 0°C to -15°C, max protoplasm +20. Worn in the trinket slot, taking no other gear slot.</LP_StabilizerBand.description>
+</LanguageData>

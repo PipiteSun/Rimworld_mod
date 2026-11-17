@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（NetherilScrolls.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>塑能</zh><en>Evocation</en></s>
+  <s><zh>防护</zh><en>Abjuration</en></s>
+  <s><zh>惑控</zh><en>Enchantment</en></s>
+  <s><zh>幻术</zh><en>Illusion</en></s>
+  <s><zh>预言</zh><en>Divination</en></s>
+  <s><zh>咒法</zh><en>Conjuration</en></s>
+  <s><zh>变化</zh><en>Transmutation</en></s>
+  <s><zh>死灵</zh><en>Necromancy</en></s>
+  <s><zh>没有读者</zh><en>no reader</en></s>
+  <s><zh>需要心灵链接</zh><en>needs a psylink</en></s>
+  <s><zh>智识需要 </zh><en>Intellectual needs </en></s>
+  <s><zh> 级（现在 </zh><en> (now </en></s>
+  <s><zh>的心灵熵太高，放下了耐瑟瑞尔卷轴。（右键强制研读不会自动停下）</zh><en>'s neural heat is too high; they put down the Netherese scroll. (Forced study by right-click doesn't stop automatically)</en></s>
+  <s><zh>读错了一段耐瑟咒文，心灵熵猛涨（+</zh><en> misread a passage of Netherese incantation, and neural heat spiked (+</en></s>
+  <s><zh>研读中：本次 +</zh><en>Studying: this session +</en></s>
+  <s><zh>灵能经验</zh><en> psycast XP</en></s>
+  <s><zh>研习度</zh><en> study</en></s>
+  <s><zh>像冥想一样边读边累积，每小时：心灵熵 +</zh><en>Accumulates while reading like meditation, per hour: neural heat +</en></s>
+  <s><zh>（巫妖减半），</zh><en> (halved for liches), </en></s>
+  <s><zh>耐瑟研习度</zh><en> Netherese study </en></s>
+  <s><zh>（品质 ×</zh><en> (quality ×</en></s>
+  <s><zh>，再乘读者的阅读速度），没有每日上限。\n</zh><en>, then multiplied by the reader's reading speed), no daily cap.\n</en></s>
+  <s><zh>\n读错概率 </zh><en>\nMisread chance </en></s>
+  <s><zh>（每累计读满 1 小时判定一次；读错时额外 +</zh><en> (checked once per full hour read; a misread adds </en></s>
+  <s><zh> 心灵熵）。</zh><en> extra neural heat).</en></s>
+  <s><zh>\n研习度：</zh><en>\nStudy: </en></s>
+  <s><zh>（100/200/400/800/1600 时心灵链接 +1，最高 6 级）</zh><en> (psylink +1 at 100/200/400/800/1600, max level 6)</en></s>
+  <s><zh> 经验（残卷余效）</zh><en> XP (fragment aftereffect)</en></s>
+  <s><zh>研读中：残卷进度 </zh><en>Studying: fragment progress </en></s>
+  <s><zh>这卷残卷暂时没有你能理解的东西。（</zh><en>This fragment has nothing you can understand yet. (</en></s>
+  <s><zh>：等灵能等级够了再拿起来读就会领悟）</zh><en>: pick it up and read again once your psycast level is high enough, and you'll grasp it)</en></s>
+  <s><zh>残卷领悟</zh><en>Fragment insight</en></s>
+  <s><zh>从残卷里领悟了【</zh><en> grasped [</en></s>
+  <s><zh>】（</zh><en>] from the fragment (</en></s>
+  <s><zh>学派）。</zh><en> school).</en></s>
+  <s><zh>\n\n这次读错了几段，反倒摸到了另一个学派的门道。</zh><en>\n\nThis time a few passages were misread, but they stumbled onto the secrets of another school instead.</en></s>
+  <s><zh>\n\n同一个人在同一卷残卷里最多领悟 </zh><en>\n\nThe same person can grasp at most </en></s>
+  <s><zh> 个法术；学满以后再读只剩研习余效（每读 1 小时经验 +</zh><en> spells from the same fragment; after that, reading only gives the study aftereffect (XP +</en></s>
+  <s><zh>，不涨心灵熵）。</zh><en> per hour read, no neural heat gain).</en></s>
+  <s><zh>学派：</zh><en>School: </en></s>
+  <s><zh>。\n边读边累积，每小时：进度 +</zh><en>.\nAccumulates while reading, per hour: progress +</en></s>
+  <s><zh>（巫妖读者 ×1.5）</zh><en> (lich readers ×1.5)</en></s>
+  <s><zh>，心灵熵 +</zh><en>, neural heat +</en></s>
+  <s><zh>。满 </zh><en>. At </en></s>
+  <s><zh> 点学会一个本学派、等级不超过读者灵能等级的心灵法术（不占路径点，不需要解锁路径）。\n每人每卷最多 </zh><en> points, learn a psycast of this school with level no higher than the reader's psycast level (no path points needed, no path unlock needed).\nAt most </en></s>
+  <s><zh> 个；之后只剩研习余效。\n</zh><en> per person per fragment; after that only the study aftereffect.\n</en></s>
+  <s><zh>，已领悟 </zh><en>, grasped </en></s>
+  <s><zh>研读中：卡苏斯之卷</zh><en>Studying: scroll of Karsus</en></s>
+  <s><zh>研读中：卡苏斯第 </zh><en>Studying: Karsus read </en></s>
+  <s><zh>读完一遍要 </zh><en>One full read takes </en></s>
+  <s><zh> 小时（按阅读时间连续累计，不受品质影响；</zh><en> hours (accumulated continuously by reading time, unaffected by quality; </en></s>
+  <s><zh>）。每小时心灵熵 +</zh><en>). Neural heat +</en></s>
+  <s><zh>，不给经验。\n每读完一遍：卡苏斯的回响 +1 层（最多 </zh><en> per hour, no XP.\nEach full read: echo of Karsus +1 stack (max </en></s>
+  <s><zh> 层；每层心灵熵上限 +5%、心灵敏感度 +5%、精神崩溃阈值 +2%）。第 3、5 遍读完时可能陷入卡苏斯的妄念。</zh><en> stacks; each stack neural heat limit +5%, psychic sensitivity +5%, mental break threshold +2%). On finishing reads 3 and 5, they may fall into Karsus's delusion.</en></s>
+  <s><zh> 遍，这一遍 </zh><en> reads, this read </en></s>
+  <s><zh>秘术残卷（</zh><en>Arcane fragment (</en></s>
+  <s><zh>娱乐类型：</zh><en>Recreation type: </en></s>
+  <s><zh>读者：</zh><en>Reader: </en></s>
+  <s><zh>还没有人读完过</zh><en>No one has finished it yet</en></s>
+  <s><zh>已解读：卷中的秘密已被参透，仍可研读获得回响，但不会再有升神仪式。</zh><en>Deciphered: the secrets in the scroll are understood; it can still be studied for echoes, but there will be no more ascension rituals.</en></s>
+  <s><zh>娱乐类型</zh><en>Recreation type</en></s>
+  <s><zh>读耐瑟卷轴时的娱乐同时算“阅读”和“冥想”：娱乐获得对半分给两种娱乐类型的耐受度，总娱乐量不变。</zh><en>Recreation from reading Netherese scrolls counts as both "reading" and "meditation": recreation tolerance is split evenly between the two types, with total recreation unchanged.</en></s>
+  <s><zh>随心灵熵满溢而消散。</zh><en>Dissipates when neural heat overflows.</en></s>
+  <s><zh>智识技能学习 ×</zh><en>Intellectual learning ×</en></s>
+  <s><zh>\n心灵熵满溢时消散</zh><en>\nDissipates when neural heat overflows</en></s>
+  <s><zh>不在地图上</zh><en>not on the map</en></s>
+  <s><zh>设置已关闭</zh><en>disabled in settings</en></s>
+  <s><zh>不是玩家殖民者</zh><en>not a player colonist</en></s>
+  <s><zh>征召、精神状态或倒地</zh><en>drafted, mental state or downed</en></s>
+  <s><zh>在养伤或卧床</zh><en>recovering or bedridden</en></s>
+  <s><zh>心灵熵不低于上限的 50%</zh><en>neural heat not below 50% of the limit</en></s>
+  <s><zh>阅读、冥想</zh><en>reading, meditation</en></s>
+</LPStrings>

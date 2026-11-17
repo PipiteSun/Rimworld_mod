@@ -123,7 +123,7 @@ namespace LichPhylactery {
     Check(thought.Worker.CurrentState(troll).StageIndex==0,"mood stays initial before the configured days");
     tracker.Accumulate(RacialRelationTracker.Interval);
     Check(thought.Worker.CurrentState(troll).StageIndex==1 && tracker.Ticks(troll,relation)>=relation.AcceptTicks,"after enough days together the mood turns into the accepted stage");
-    var bridge=SharedPawn();bridge.genes.SetXenotypeDirect(DefDatabase<XenotypeDef>.GetNamed("LP_ForceDragon"));relation.halvedBy.Add(bridge.genes.Xenotype);
+    var bridge=SharedPawn();bridge.genes.SetXenotypeDirect(DefDatabase<XenotypeDef>.GetNamed("LP_Aasimar"));relation.halvedBy.Add(bridge.genes.Xenotype);
     // 1.63.0：1.57.0 起两族之桥只减半负面心情；这条检查原来在已转为正面阶段之后才测，检查过时。
     // 现在：正面阶段（老战友）倍率不变，把同处时间清零回到负面初始阶段后倍率 ×0.5。
     int together=tracker.Ticks(troll,relation);

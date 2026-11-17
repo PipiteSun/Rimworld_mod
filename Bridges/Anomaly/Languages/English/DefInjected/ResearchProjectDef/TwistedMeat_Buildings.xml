@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 血肉塑形术 -->
+  <LP_Research_FleshShaping.label>fleshshaping</LP_Research_FleshShaping.label>
+  <!-- 把扭曲肉当成材料：血肉孵化槽、血肉壁垒、畸变皮甲、畸变巨像胚体、地狱铸炉里的生物铁析出，以及“远域献飨”灵能仪式。\n\n装了异象时，还要先研究任意一项异象的血肉研究（召唤血肉兽、食尸鬼灌注或突变武器）。 -->
+  <LP_Research_FleshShaping.description>Use twisted meat as a material: flesh incubators, flesh bulwarks, aberrant hide armor, aberrant golem seeds, bioferrite extraction in the infernal forge, and the "Far Realm feast" psychic ritual.\n\nWith Anomaly installed, any one Anomaly flesh research (summon fleshbeasts, ghoul infusion or mutant weapons) must be researched first.</LP_Research_FleshShaping.description>
+  <!-- 异怪学 -->
+  <LP_Research_Aberrology.label>aberrant lore</LP_Research_Aberrology.label>
+  <!-- 研究远域怎样拧歪血肉之后，殖民者知道该往哪里砍：对异象实体和异怪类敌人（眼魔、夺心魔、远域来客等）造成的伤害 +10%。\n\n不能直接研究：殖民地在炼金桌上“远域解剖”累计 500 份扭曲肉后自动完成。 -->
+  <LP_Research_Aberrology.description>Having studied how the Far Realm twists flesh, colonists know where to cut: +10% damage against anomaly entities and aberration enemies (beholders, mind flayers, Far Realm visitors, etc.).\n\nCan't be researched directly: completes automatically once the colony has done "Far Realm dissection" on 500 twisted meat in total at the alchemy table.</LP_Research_Aberrology.description>
+</LanguageData>

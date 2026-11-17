@@ -1,0 +1,189 @@
+s04431	{0} was unforgettable! Even the gods seemed to be watching this festival.
+s04432	unforgettable
+s04433	occupied grave
+s04434	All humanlike corpses on the map are laid to rest; participants get mood +5 (10 days).
+s04435	started by day
+s04436	3 days of "favor of the dawn" (Lathander's blessing).
+s04437	animal corpse (sacrifice)
+s04438	Participants get melee hit +5 and shooting accuracy +5% for 5 days.
+s04439	started at night
+s04440	spellcasting participants
+s04441	Participants' psyfocus is refilled, psychic sensitivity +10% for 3 days.
+s04442	altar in darkness
+s04443	Participants get melee dodge +8 for 5 days.
+s04444	weapons or armor (sacrifice)
+s04445	Participants get smithing speed +25% for 5 days.
+s04446	in a thunderstorm
+s04447	3 days of Talos's blessing.
+s04448	The leader swears a vow (30 days: melee hit +5, social fight chance ×0.5).
+s04449	Bane's festival: swear obedience to the Black Hand. +5% quality for each slave present (up to +20%). When unforgettable: suppression of all slaves on the map +20%.
+s04450	Every year on {DATE}, {MEMBERS} hold the Day of Tyranny for Bane.
+s04451	Day of Tyranny
+s04452	Kelemvor's festival: share a meal with the departed and send off restless spirits. +10% quality when there's an occupied grave or sarcophagus on the map. When unforgettable: all humanlike corpses on the map are laid to rest, participants get mood +5 (10 days).
+s04453	Every year on {DATE}, {MEMBERS} hold the Feast of the Dead for Kelemvor.
+s04454	Feast of the Dead
+s04455	Lathander's festival: celebrate rebirth in the morning light. +10% quality when started by day. When unforgettable: 3 days of "favor of the dawn" (Lathander's blessing).
+s04456	Every year on {DATE}, {MEMBERS} hold Greengrass for Lathander.
+s04457	Greengrass
+s04458	Malar's festival: offer prey to the Beastlord. At the start there must be an animal corpse of body size ≥0.7 within 3 cells of the altar, offered when the festival ends. When unforgettable: participants get melee hit +5 and shooting accuracy +5% for 5 days.
+s04459	Every year on {DATE}, {MEMBERS} hold the Great Hunt for Malar.
+s04460	Great Hunt
+s04461	Mystra's festival: salute the Weave under the stars. +10% quality when started at night, +3% for each spellcasting participant. When unforgettable: participants' psyfocus is refilled, psychic sensitivity +10% for 3 days.
+s04462	Every year on {DATE}, {MEMBERS} hold the Night of the Weave for Mystra.
+s04463	Night of the Weave
+s04464	Shar's festival: forget pain in darkness. +20% quality at night, another +10% when the altar's cell has under 30% light. When unforgettable: participants get melee dodge +8 for 5 days.
+s04465	Every year on {DATE}, {MEMBERS} hold the Lightless Vigil for Shar.
+s04466	Lightless Vigil
+s04467	Surtur's festival: cast the finest arms and armor into the forge. At the start there must be weapons or armor worth ≥300 in total within 3 cells of the altar, offered when the festival ends. When unforgettable: participants get smithing speed +25% for 5 days.
+s04468	Every year on {DATE}, {MEMBERS} hold the Forgefire for Surtur.
+s04469	Forgefire
+s04470	Talos's festival: sing loud in the gale. +25% quality in a thunderstorm. When unforgettable: 3 days of Talos's blessing.
+s04471	Every year on {DATE}, {MEMBERS} hold the Storm Song for Talos.
+s04472	Storm Song
+s04473	Tyr's festival: reaffirm vows and settle disputes. Every 4 years (years divisible by 4) is a Great Shieldmeet: divine favor result ×1.5. When unforgettable: the leader swears a vow (30 days: melee hit +5, social fight chance ×0.5).
+s04474	Every year on {DATE}, {MEMBERS} hold the Shieldmeet for Tyr.
+s04475	Shieldmeet
+s04476	Bane's festival, held at the altar. Swear obedience to the Black Hand. +5% quality for each slave present (up to +20%).
+s04477	Kelemvor's festival, held at the altar. Share a meal with the departed and send off restless spirits. +10% quality when there's an occupied grave or sarcophagus on the map.
+s04478	Lathander's festival, held at the altar. Celebrate rebirth in the morning light. +10% quality when started by day.
+s04479	Malar's festival, held at the altar. Offer prey to the Beastlord. At the start there must be an animal corpse of body size ≥0.7 within 3 cells of the altar, offered when the festival ends.
+s04480	Mystra's festival, held at the altar. Salute the Weave under the stars. +10% quality when started at night, +3% for each spellcasting participant.
+s04481	Shar's festival, held at the altar. Forget pain in darkness. +20% quality at night, another +10% when the altar's cell has under 30% light.
+s04482	Surtur's festival, held at the altar. Cast the finest arms and armor into the forge. At the start there must be weapons or armor worth ≥300 in total within 3 cells of the altar, offered when the festival ends.
+s04483	Talos's festival, held at the altar. Sing loud in the gale. +25% quality in a thunderstorm.
+s04484	Tyr's festival, held at the altar. Reaffirm vows and settle disputes. Every 4 years (years divisible by 4) is a Great Shieldmeet: divine favor result ×1.5.
+s04485	Surtur's forge fire still burns in the hands: smithing speed +25% (global work speed at the smithy).
+s04486	A grey-robed funeral can be held for {PAWN_nameDef}.
+s04487	grey-robed funeral
+s04488	high priest present
+s04489	Depending on ritual quality, participants get {MINMOOD} to {MAXMOOD} mood for {MOODDAYS} days. "Good" or better: the dead is laid to rest (can't be raised, soul can't be drained), Kelemvor divine favor +2; "unforgettable" another +3.
+s04490	A funeral led by Kelemvor's grey-robed priests, replacing the vanilla funeral. The vanilla funeral's effects apply as usual; at "good" or better the dead is laid to rest (can't be raised, soul can't be drained), Kelemvor divine favor +2, "unforgettable" another +3. Not available to cultures of undying eternal night.
+s04491	{PAWN_nameDef} should be buried, with a grey-robed funeral so {PAWN_possessive} family and friends can say goodbye and Kelemvor can take {PAWN_possessive} soul.
+s04492	The Beastlord Malar's frenzy still surges in the veins: melee hit +5, shooting accuracy +5%.
+s04493	the Great Hunt's bestiality
+s04494	At the Feast of the Dead, I said a proper goodbye to the departed.
+s04495	reconciled with the dead
+s04496	The shadow of the Lady of the Night wraps the body: melee dodge +8.
+s04497	shelter of the night
+s04498	Swore a vow to Tyr at the Shieldmeet: melee hit +5, social fight chance halved.
+s04499	vow sworn
+s04500	Afterglow of the Night of the Weave: psychic sensitivity +10%.
+s04501	{INITIATOR_labelShort}'s preaching failed to convince {RECIPIENT_labelShort}. {RECIPIENT_labelShort} is a bit annoyed, but their certainty fell from {CERTAINTYBEFORE} to {CERTAINTYAFTER}.
+s04502	{INITIATOR_labelShort} preached with miracles, and {RECIPIENT_labelShort} converted to {IDEO}.
+s04503	Preach to the other with miracles as proof, persuading them to convert to the speaker's culture. Twice as effective as vanilla "convert"; costs an extra 5 patron deity divine favor (unusable if there isn't enough). Same cooldown as vanilla convert (3 days).
+s04504	miracle preaching
+s04505	Praying in such a magnificent temple, the god must be able to hear.
+s04506	prayed in a magnificent temple
+s04507	r_roleName->priest
+s04508	A cleric serving the culture's god. Divine magic cost ×0.75 (multiplies with believer and chosen-one discounts), social impact +10%; can use "miracle preaching" (twice as effective as vanilla convert, costs an extra 5 patron deity divine favor); while a priest is on the map, the altar gets an extra "group prayer" button; festivals and grey-robed funerals get +15% quality with a priest present. Requires a deity meme or the pantheon.
+s04509	priest
+s04510	The colony actually enshrines a god. We kneel to no god.
+s04511	hated shrine
+s04512	The god we worship doesn't have a single statue in our home.
+s04513	god without a statue
+s04514	A statue of our god stands in our home.
+s04515	blessed by the statue
+s04516	The necromantic constructs in the colony offend the Morninglord.
+s04517	undead under the morning light
+s04518	The colony keeps fierce beasts beloved by the Beastlord.
+s04519	companions of the Beastlord
+s04520	I'm carrying a magic item and can feel the Weave trembling softly.
+s04521	gift of the Weave
+s04522	Thunder is Talos singing.
+s04523	child of the storm
+s04524	A stone statue of the god of tyranny reaching out with a black hand. When Bane is the patron deity, placing it on any home map gives the patron deity +0.3 divine favor per day (counted once no matter how many); believers get mood +1 when the culture's god has a statue, -1 when it doesn't. Placed in the same room as an altar it makes a temple: prayers in a temple give ×1.25 divine favor, festivals +10% quality.
+s04525	statue of Bane
+s04526	A stone statue of the god of death holding skull scales. When Kelemvor is the patron deity, placing it on any home map gives the patron deity +0.3 divine favor per day (counted once no matter how many); believers get mood +1 when the culture's god has a statue, -1 when it doesn't. Placed in the same room as an altar it makes a temple: prayers in a temple give ×1.25 divine favor, festivals +10% quality.
+s04527	statue of Kelemvor
+s04528	A stone statue of the Morninglord holding up a sun disk. When Lathander is the patron deity, placing it on any home map gives the patron deity +0.3 divine favor per day (counted once no matter how many); believers get mood +1 when the culture's god has a statue, -1 when it doesn't. Placed in the same room as an altar it makes a temple: prayers in a temple give ×1.25 divine favor, festivals +10% quality.
+s04529	statue of Lathander
+s04530	A stone statue of the beast-headed, claw-handed god of the hunt. When Malar is the patron deity, placing it on any home map gives the patron deity +0.3 divine favor per day (counted once no matter how many); believers get mood +1 when the culture's god has a statue, -1 when it doesn't. Placed in the same room as an altar it makes a temple: prayers in a temple give ×1.25 divine favor, festivals +10% quality.
+s04531	statue of Malar
+s04532	A stone statue of the goddess of magic crowned with a ring of stars. When Mystra is the patron deity, placing it on any home map gives the patron deity +0.3 divine favor per day (counted once no matter how many); believers get mood +1 when the culture's god has a statue, -1 when it doesn't. Placed in the same room as an altar it makes a temple: prayers in a temple give ×1.25 divine favor, festivals +10% quality.
+s04533	statue of Mystra
+s04534	A stone statue of a many-sided pillar carved with many faces. Placing it on any home map gives a pantheon culture's patron deity +0.3 divine favor per day (counted once no matter how many); believers get mood +1 when the culture's god has a statue, -1 when it doesn't. Placed in the same room as an altar it makes a temple: prayers in a temple give ×1.25 divine favor, festivals +10% quality.
+s04535	statue of the gods
+s04536	A stone statue of the Lady of the Night cradling a black disk. When Shar is the patron deity, placing it on any home map gives the patron deity +0.3 divine favor per day (counted once no matter how many); believers get mood +1 when the culture's god has a statue, -1 when it doesn't. Placed in the same room as an altar it makes a temple: prayers in a temple give ×1.25 divine favor, festivals +10% quality.
+s04537	statue of Shar
+s04538	A stone statue of the king of fire giants standing before an anvil. When Surtur is the patron deity, placing it on any home map gives the patron deity +0.3 divine favor per day (counted once no matter how many); believers get mood +1 when the culture's god has a statue, -1 when it doesn't. Placed in the same room as an altar it makes a temple: prayers in a temple give ×1.25 divine favor, festivals +10% quality.
+s04539	statue of Surtur
+s04540	A stone statue of the god of storms raising a lightning bolt. When Talos is the patron deity, placing it on any home map gives the patron deity +0.3 divine favor per day (counted once no matter how many); believers get mood +1 when the culture's god has a statue, -1 when it doesn't. Placed in the same room as an altar it makes a temple: prayers in a temple give ×1.25 divine favor, festivals +10% quality.
+s04541	statue of Talos
+s04542	A stone statue of the blindfolded god of justice holding scales. When Tyr is the patron deity, placing it on any home map gives the patron deity +0.3 divine favor per day (counted once no matter how many); believers get mood +1 when the culture's god has a statue, -1 when it doesn't. Placed in the same room as an altar it makes a temple: prayers in a temple give ×1.25 divine favor, festivals +10% quality.
+s04543	statue of Tyr
+s04544	temple
+s04545	An artificer personally tunes the DND prosthetics on their own body: +3% efficiency per 4 artificer levels (up to +15%; paired parts count half toward the corresponding capacity).
+s04546	artificer tuning
+s04547	Grow a bone rib cage from 600 fresh raw meat and 150 silver.
+s04548	Growing a bone rib cage.
+s04549	grow bone rib cage
+s04550	Grow an ear of the dead's whispers from 400 fresh raw meat and 150 silver.
+s04551	Growing an ear of the dead's whispers.
+s04552	grow ear of the dead's whispers
+s04553	Grow a netherfire heart from 800 fresh raw meat and 150 silver.
+s04554	Growing a netherfire heart.
+s04555	grow netherfire heart
+s04556	Grow a soul-devouring jaw from 600 fresh raw meat and 150 silver.
+s04557	Growing a soul-devouring jaw.
+s04558	grow soul-devouring jaw
+s04559	Get close to a humanlike corpse and listen to it speak: learn 10% of the total XP of its highest skill (once per corpse; converted to adventurer XP as usual).
+s04560	speak with dead
+s04561	Grow another bone cage outside the ribs. Torso add-on, doesn't replace a part: torso max health +50%, sharp damage taken -20%. Grown at the necromantic ritual table from 600 raw meat and 150 silver; can be installed in liches and the living, and stacks with limb reinforcement. Common tier, doesn't take an attunement slot.
+s04562	bone rib cage
+s04563	An ear that can hear the dead speak. Replaces one ear, part efficiency 125%; ability "Speak with dead": use on a humanlike corpse to learn 10% of the total XP of its highest skill (once per corpse; converted to adventurer XP as usual). Grown at the necromantic ritual table from 400 raw meat and 150 silver; can be installed in liches and the living, and stacks with limb reinforcement. Common tier, doesn't take an attunement slot.
+s04564	ear of the dead's whispers
+s04565	Netherfire replaces the heartbeat in the chest. Replaces the heart, part efficiency 120%; bleeding rate ×0.2. Grown at the necromantic ritual table from 800 raw meat and 150 silver; can be installed in liches and the living, and stacks with limb reinforcement. Common tier, doesn't take an attunement slot.
+s04566	netherfire heart
+s04567	soul-devouring jaw
+s04568	A jaw full of sharp teeth. Replaces the jaw, part efficiency 120%; adds a melee bite (14 damage); biting a living fleshy creature to death with it restores 10% psyfocus. Grown at the necromantic ritual table from 600 raw meat and 150 silver; can be installed in liches and the living, and stacks with limb reinforcement. Common tier, doesn't take an attunement slot.
+s04569	Breathe dragon breath: enemies in a 6-cell cone take 30 damage, with the element matching the breath gland's color (red fire, white cold, blue lightning, black acid, green poison). Cooldown 1 day.
+s04570	dragon breath
+s04571	The eye in that socket is always looking at things it shouldn't.
+s04572	aberrant gaze
+s04573	spitting embers
+s04574	Vecna's gaze
+s04575	The beholder eye fires a ray: necrotic ray (30 necrotic damage), petrification ray (begins petrification) or charm ray (dazed 25 seconds); the type is set when the eye is installed. 20 cells, cooldown 1 day.
+s04576	beholder ray
+s04577	Fire or acid has damaged the troll regeneration gland: for 12 hours natural healing is back to normal speed and parts don't regrow.
+s04578	regeneration halted
+s04579	An eye taken from a beholder, still rolling when grafted into a socket. Replaces one eye, part efficiency 110%; ability "Beholder ray" (20 cells, cooldown 1 day): randomly set on installation to necrotic ray (30 necrotic damage), petrification ray (begins petrification) or charm ray (dazed 25 seconds). Side effects: own mood -5 (aberrant gaze), others' opinion of you -10. Rare tier, takes 1 attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.
+s04580	beholder eye
+s04581	A breath gland cut from a black dragon's heart, sewn into the neck. Neck add-on: ability "Dragon breath" (6-cell cone, enemies take 30 acid damage, cooldown 1 day). Side effect: always spitting embers, others' opinion of you -5. Only one breath gland at a time. Rare tier, takes 1 attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.
+s04582	black dragon breath gland
+s04583	A breath gland cut from a blue dragon's heart, sewn into the neck. Neck add-on: ability "Dragon breath" (6-cell cone, enemies take 30 lightning damage, cooldown 1 day). Side effect: always spitting embers, others' opinion of you -5. Only one breath gland at a time. Rare tier, takes 1 attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.
+s04584	blue dragon breath gland
+s04585	A breath gland cut from a green dragon's heart, sewn into the neck. Neck add-on: ability "Dragon breath" (6-cell cone, enemies take 30 poison damage, cooldown 1 day). Side effect: always spitting embers, others' opinion of you -5. Only one breath gland at a time. Rare tier, takes 1 attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.
+s04586	green dragon breath gland
+s04587	A breath gland cut from a red dragon's heart, sewn into the neck. Neck add-on: ability "Dragon breath" (6-cell cone, enemies take 30 fire damage, cooldown 1 day). Side effect: always spitting embers, others' opinion of you -5. Only one breath gland at a time. Rare tier, takes 1 attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.
+s04588	red dragon breath gland
+s04589	A breath gland cut from a white dragon's heart, sewn into the neck. Neck add-on: ability "Dragon breath" (6-cell cone, enemies take 30 cold damage, cooldown 1 day). Side effect: always spitting embers, others' opinion of you -5. Only one breath gland at a time. Rare tier, takes 1 attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.
+s04590	white dragon breath gland
+s04591	An arm grown steeped in demon blood, with firelight under the skin. Replaces a whole arm, part efficiency 130%; melee hits add 5 fire damage. Side effects: 1% chance per day of a berserk rage break; can't be installed in celestial bloodlines (aasimar, celestial pact races). Common tier, doesn't take an attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.
+s04592	demon arm
+s04593	Black dragon scales embedded under the skin. Torso add-on: sharp armor +15%, acid damage -50%, lightning damage +20%. Only one dragonscale subdermal armor at a time. Common tier, doesn't take an attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.
+s04594	black dragonscale subdermal armor
+s04595	Blue dragon scales embedded under the skin. Torso add-on: sharp armor +15%, lightning damage -50%, acid damage +20%. Only one dragonscale subdermal armor at a time. Common tier, doesn't take an attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.
+s04596	blue dragonscale subdermal armor
+s04597	Green dragon scales embedded under the skin. Torso add-on: sharp armor +15%, poison damage -50%, fire damage +20%. Only one dragonscale subdermal armor at a time. Common tier, doesn't take an attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.
+s04598	green dragonscale subdermal armor
+s04599	Red dragon scales embedded under the skin. Torso add-on: sharp armor +15%, fire damage -50%, cold damage +20%. Only one dragonscale subdermal armor at a time. Common tier, doesn't take an attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.
+s04600	red dragonscale subdermal armor
+s04601	White dragon scales embedded under the skin. Torso add-on: sharp armor +15%, cold damage -50%, fire damage +20%. Only one dragonscale subdermal armor at a time. Common tier, doesn't take an attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.
+s04602	white dragonscale subdermal armor
+s04603	A troll's regeneration gland, sewn onto the torso. Torso add-on: natural wound healing ×3; regrows one missing small part every 15 days. Side effects: hunger rate +50%; regeneration stops for 12 hours after taking fire or acid damage. Common tier, doesn't take an attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.
+s04604	troll regeneration gland
+s04605	Culture a beholder eye from monster materials at the alchemy table (grafts can only be installed in the living).
+s04606	Culturing a beholder eye.
+s04607	culture beholder eye
+s04608	Culture a black dragon breath gland from monster materials at the alchemy table (grafts can only be installed in the living).
+s04609	Culturing a black dragon breath gland.
+s04610	culture black dragon breath gland
+s04611	Culture a blue dragon breath gland from monster materials at the alchemy table (grafts can only be installed in the living).
+s04612	Culturing a blue dragon breath gland.
+s04613	culture blue dragon breath gland
+s04614	Culture a green dragon breath gland from monster materials at the alchemy table (grafts can only be installed in the living).
+s04615	Culturing a green dragon breath gland.
+s04616	culture green dragon breath gland
+s04617	Culture a red dragon breath gland from monster materials at the alchemy table (grafts can only be installed in the living).
+s04618	Culturing a red dragon breath gland.
+s04619	culture red dragon breath gland

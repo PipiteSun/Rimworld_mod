@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 吟游激励 -->
+  <LP_BD_Inspired.label>bardic inspiration</LP_BD_Inspired.label>
+  <!-- 吟游诗人的歌声在心里回响：近战命中、射击精度、工作速度提高（越强的激励越多），精神崩溃阈值 −5%。 -->
+  <LP_BD_Inspired.description>The bard's song echoes in the heart: melee hit, shooting accuracy and work speed increased (more with stronger inspiration), mental break threshold -5%.</LP_BD_Inspired.description>
+  <!-- 战斗激励 -->
+  <LP_BD_ValorInspired.label>combat inspiration</LP_BD_ValorInspired.label>
+  <!-- 勇气学院的战歌：受到的伤害 ×0.9，近战伤害 ×1.15。和吟游激励一起消失。 -->
+  <LP_BD_ValorInspired.description>College of Valor war song: damage taken ×0.9, melee damage ×1.15. Fades together with Bardic Inspiration.</LP_BD_ValorInspired.description>
+  <!-- 动摇 -->
+  <LP_BD_Mocked.label>shaken</LP_BD_Mocked.label>
+  <!-- 被尖刻的话刺中，心神不宁：近战命中 −20%，射击精度下降。 -->
+  <LP_BD_Mocked.description>Stung by sharp words and rattled: melee hit -20%, lower shooting accuracy.</LP_BD_Mocked.description>
+  <!-- 狂笑 -->
+  <LP_BD_Laughing.label>hideous laughter</LP_BD_Laughing.label>
+  <!-- 笑得停不下来，倒在地上动弹不得。受到伤害立刻清醒。 -->
+  <LP_BD_Laughing.description>Can't stop laughing, collapsed on the ground unable to move. Snaps out at once when damaged.</LP_BD_Laughing.description>
+  <!-- 安歇之歌 -->
+  <LP_BD_Resting.label>song of rest</LP_BD_Resting.label>
+  <!-- 吟游诗人唱了一整夜的安眠曲：睡眠恢复 ×1.3，伤口愈合加快（越强越快）。 -->
+  <LP_BD_Resting.description>The bard sang lullabies all night: sleep recovery ×1.3, faster wound healing (faster the stronger).</LP_BD_Resting.description>
+  <!-- ×1.5 愈合 -->
+  <LP_BD_Resting.stages._15.label>×1.5 healing</LP_BD_Resting.stages._15.label>
+  <!-- ×1.75 愈合 -->
+  <LP_BD_Resting.stages._175.label>×1.75 healing</LP_BD_Resting.stages._175.label>
+  <!-- ×2 愈合 -->
+  <LP_BD_Resting.stages._2.label>×2 healing</LP_BD_Resting.stages._2.label>
+  <!-- ×2.25 愈合 -->
+  <LP_BD_Resting.stages._225.label>×2.25 healing</LP_BD_Resting.stages._225.label>
+  <!-- ×2.5 愈合 -->
+  <LP_BD_Resting.stages._25.label>×2.5 healing</LP_BD_Resting.stages._25.label>
+  <!-- 万事通 -->
+  <LP_BD_JackPassive.label>jack of all trades</LP_BD_JackPassive.label>
+  <!-- 什么都会一点：所有技能 +2 级，学习速度 +15%。 -->
+  <LP_BD_JackPassive.description>Knows a bit of everything: all skills +2 levels, learning speed +15%.</LP_BD_JackPassive.description>
+  <!-- 反迷惑之歌 -->
+  <LP_BD_Countercharmed.label>countercharm</LP_BD_Countercharmed.label>
+  <!-- 心里一直回响着吟游诗人的旋律：心智抗性 +30%，心灵敏感度 −30%（心灵冲击带来的坏心情也随之减轻）。 -->
+  <LP_BD_Countercharmed.description>The bard's melody keeps echoing in the heart: mind resistance +30%, psychic sensitivity -30% (bad moods from psychic shocks are lessened accordingly).</LP_BD_Countercharmed.description>
+  <!-- 困惑 -->
+  <LP_BD_Confused.label>confused</LP_BD_Confused.label>
+  <!-- 脑子里一团乱麻：每 2 秒随机发呆、乱走，或者攻击身边的任何人。 -->
+  <LP_BD_Confused.description>Mind in a tangle: every 2 seconds randomly zones out, wanders, or attacks anyone nearby.</LP_BD_Confused.description>
+  <!-- 刻薄之语 -->
+  <LP_BD_CuttingWords.label>cutting words</LP_BD_CuttingWords.label>
+  <!-- 被学识学院的吟游诗人挖苦得抬不起头：近战命中 −25%，射击精度下降，造成的伤害 ×0.75。 -->
+  <LP_BD_CuttingWords.description>Mocked into shame by a College of Lore bard: melee hit -25%, lower shooting accuracy, damage dealt ×0.75.</LP_BD_CuttingWords.description>
+  <!-- 博闻强识 -->
+  <LP_BD_LorePassive.label>erudition</LP_BD_LorePassive.label>
+  <!-- 学识学院的博学：研究速度提高（越强越快）。 -->
+  <LP_BD_LorePassive.description>College of Lore learning: research speed increased (faster the stronger).</LP_BD_LorePassive.description>
+  <!-- 无双技艺 -->
+  <LP_BD_PeerlessPassive.label>peerless skill</LP_BD_PeerlessPassive.label>
+  <!-- 学识学院的大师：社交影响、谈判能力 +15%，手术成功率 +10%；做出的物品有 30% 的成功率品质 +1 档。 -->
+  <LP_BD_PeerlessPassive.description>Master of the College of Lore: social impact and negotiation ability +15%, surgery success +10%; crafted items have a 30% chance of +1 quality tier.</LP_BD_PeerlessPassive.description>
+  <!-- 勇气学院 -->
+  <LP_BD_ValorPassive.label>College of Valor</LP_BD_ValorPassive.label>
+  <!-- 战歌手的武艺：射击、格斗 +3 级。 -->
+  <LP_BD_ValorPassive.description>Skill at arms of a war singer: Shooting and Melee +3 levels.</LP_BD_ValorPassive.description>
+  <!-- 额外攻击 -->
+  <LP_BD_ExtraAttackPassive.label>extra attack</LP_BD_ExtraAttackPassive.label>
+  <!-- 出手更快：近战攻击冷却 ×0.8，瞄准时间 ×0.8。 -->
+  <LP_BD_ExtraAttackPassive.description>Faster strikes: melee attack cooldown ×0.8, aiming time ×0.8.</LP_BD_ExtraAttackPassive.description>
+  <!-- 战斗魔法 -->
+  <LP_BD_BattleMagicBuff.label>battle magic</LP_BD_BattleMagicBuff.label>
+  <!-- 施法的余韵还在指尖：下一次攻击几乎不用瞄准、出手更快，伤害 ×1.25（打中一次就消失）。 -->
+  <LP_BD_BattleMagicBuff.description>The afterglow of casting lingers on the fingertips: the next attack needs almost no aiming, comes out faster and deals ×1.25 damage (gone after one hit).</LP_BD_BattleMagicBuff.description>
+  <!-- 勇气战吼 -->
+  <LP_BD_Anthem.label>rallying war cry</LP_BD_Anthem.label>
+  <!-- 战歌让人热血沸腾：痛觉 ×0.5，移动 ×1.2，心智抗性 +50%。 -->
+  <LP_BD_Anthem.description>A war song that sets the blood racing: pain ×0.5, movement ×1.2, mind resistance +50%.</LP_BD_Anthem.description>
+  <!-- 刀光剑舞 -->
+  <LP_BD_BladePassive.label>blade flourish</LP_BD_BladePassive.label>
+  <!-- 剑舞学院的步法：移动 ×1.15；近战命中时按当前招式触发剑花。 -->
+  <LP_BD_BladePassive.description>College of Swords footwork: movement ×1.15; melee hits trigger flourishes of the current style.</LP_BD_BladePassive.description>
+  <!-- 银舌 -->
+  <LP_BD_SilverPassive.label>silver tongue</LP_BD_SilverPassive.label>
+  <!-- 雄辩学院的口才：谈判能力 ×1.5（招募、说服更容易），交易价格 +10%，社交影响 +20%。 -->
+  <LP_BD_SilverPassive.description>College of Eloquence speech: negotiation ability ×1.5 (easier recruiting and persuasion), trade prices +10%, social impact +20%.</LP_BD_SilverPassive.description>
+  <!-- 终焉之歌 -->
+  <LP_BD_FinalSong.label>song of the finale</LP_BD_FinalSong.label>
+  <!-- 史诗的最后一段：不会精神崩溃，命中提高，痛觉 ×0.5；期间倒地会立刻治好一半伤势、尽力站起来一次。 -->
+  <LP_BD_FinalSong.description>The last verse of the epic: no mental breaks, higher hit chance, pain ×0.5; if downed during it, half the injuries heal at once and you try to stand up once.</LP_BD_FinalSong.description>
+  <!-- 唱响终焉之歌 -->
+  <LP_BD_FinaleAura.label>singing the finale</LP_BD_FinaleAura.label>
+  <!-- 正在唱终焉之歌：30 格内的敌人每 5 秒有 25% 的成功率吓得逃跑（机械体不受影响）。 -->
+  <LP_BD_FinaleAura.description>Singing the song of the finale: enemies within 30 cells have a 25% chance every 5 seconds to flee in fear (mechanoids unaffected).</LP_BD_FinaleAura.description>
+  <!-- 不可抗拒之舞 -->
+  <LP_ACB_Dancing.label>irresistible dance</LP_ACB_Dancing.label>
+  <!-- 身体不听使唤地跳个不停：不能攻击、不能走开，受到的伤害 ×1.3。 -->
+  <LP_ACB_Dancing.description>The body won't stop dancing: cannot attack or walk away, damage taken ×1.3.</LP_ACB_Dancing.description>
+  <!-- 预知术 -->
+  <LP_ACB_Foresight.label>foresight</LP_ACB_Foresight.label>
+  <!-- 看得见片刻之后的事：近战命中 +25%，射击精度提高，近战闪避 +25%，心智抗性 +50%，不会被偷袭。 -->
+  <LP_ACB_Foresight.description>Sees a moment into the future: melee hit +25%, better shooting accuracy, melee dodge +25%, mind resistance +50%, cannot be ambushed.</LP_ACB_Foresight.description>
+</LanguageData>

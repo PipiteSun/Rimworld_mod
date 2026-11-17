@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 战技强度 -->
+  <LP_MartialPower.label>martial power</LP_MartialPower.label>
+  <!-- DND 战技的强度倍率：0.5 + 格斗等级/20，另加冒险者力量或敏捷（较高者）调整值 × 0.05 与 (熟练加值 − 2) × 0.02。有物理职业（战士、武僧、圣武士、野蛮人、游侠、游荡者）的人另加 0.02 ×（物理职业等级合计 − 1），最多 +40%。回气治疗量、战吼范围、增益持续时间、武僧拳脚与气、圣武士格斗支都乘这个倍率。 -->
+  <LP_MartialPower.description>Power multiplier of DND martial techniques: 0.5 + Melee level / 20, plus the adventurer's higher of Strength or Dexterity modifier × 0.05 and (proficiency bonus - 2) × 0.02. Those with a martial class (fighter, monk, paladin, barbarian, ranger, rogue) add 0.02 × (combined martial class levels - 1), up to +40%. Second Wind healing, War Cry range, buff durations, monk fists and ki, and the paladin's Melee branch are all multiplied by it.</LP_MartialPower.description>
+  <!-- 射术强度 -->
+  <LP_MarksmanPower.label>marksman power</LP_MarksmanPower.label>
+  <!-- DND 战士射击支的强度倍率：0.5 + 射击等级/20，另加冒险者敏捷调整值 × 0.05 与 (熟练加值 − 2) × 0.02；有物理职业的人另加 0.02 ×（物理职业等级合计 − 1），最多 +40%。 -->
+  <LP_MarksmanPower.description>Power multiplier of the DND fighter's Shooting branch: 0.5 + Shooting level / 20, plus adventurer Dexterity modifier × 0.05 and (proficiency bonus - 2) × 0.02; those with a martial class add 0.02 × (combined martial class levels - 1), up to +40%.</LP_MarksmanPower.description>
+  <!-- 神恩强度 -->
+  <LP_DivinePower.label>divine power</LP_DivinePower.label>
+  <!-- 神术的强度倍率：0.5 + 社交等级/20，另加冒险者感知或魅力（取较高，牧师看感知、圣武士看魅力）的调整值 × 0.05 与 (熟练加值 − 2) × 0.02。牧师的神术和圣武士的社交支（圣疗、守护灵光、放逐邪恶）用它。 -->
+  <LP_DivinePower.description>Divine magic power multiplier: 0.5 + Social level / 20, plus adventurer Wisdom or Charisma modifier (the higher; clerics use Wisdom, paladins Charisma) × 0.05 and (proficiency bonus - 2) × 0.02. Used by cleric divine magic and the paladin's Social branch (Lay on Hands, Aura of Protection, Banish Evil).</LP_DivinePower.description>
+</LanguageData>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（Events3.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>[DND边缘大陆] 第三批事件生成角色失败（</zh><en>[DND Rimlands] Third-batch event failed to generate a character (</en></s>
+  <s><zh>打了他</zh><en>hit him</en></s>
+  <s><zh>[DND边缘大陆] 第三批事件（</zh><en>[DND Rimlands] Third-batch event (</en></s>
+  <s><zh>）出错：</zh><en>) error: </en></s>
+  <s><zh>[DND边缘大陆] 第三批事件击杀处理出错：</zh><en>[DND Rimlands] Third-batch event kill handling error: </en></s>
+  <s><zh>[DND边缘大陆] 魔网潮汐出错：</zh><en>[DND Rimlands] Weave tide error: </en></s>
+  <s><zh>[DND边缘大陆] 天才学徒出错：</zh><en>[DND Rimlands] Gifted apprentice error: </en></s>
+  <s><zh>1.117.0 新事件（都受“DND 事件频率”影响，最早第 15 天）：</zh><en>1.117.0 new events (all affected by "DND event frequency", earliest on day 15):</en></s>
+  <s><zh>宝箱怪</zh><en>mimic</en></s>
+  <s><zh>地图上出现一只无主的宝箱：七成是真宝箱，三成是宝箱怪。可以先让智识≥8的人鉴定。</zh><en>An ownerless chest appears on the map: 70% a real chest, 30% a mimic. Someone with Intellectual ≥8 can appraise it first.</en></s>
+  <s><zh>神祇的乞丐</zh><en>beggar of the gods</en></s>
+  <s><zh>有守护神时，一个乞丐来讨东西（看守护神善恶）。施舍了，他第二天现出神的化身：神眷+15，施舍的人得到“蒙神一顾”。</zh><en>With a patron deity, a beggar comes asking for things (by the patron deity's good or evil). If given alms, he reveals himself as the god's avatar the next day: favor +15, and the giver gets "graced by a god".</en></s>
+  <s><zh>吟游诗人巡演</zh><en>bard's tour</en></s>
+  <s><zh>2～4名吟游诗人来演一晚：全殖民地心情+，冒险者经验；把殖民地最大的功绩写成歌谣，各派系好感+5。恶名在外会被写成讽刺歌。</zh><en>2-4 bards come to perform for a night: whole-colony mood up, adventurer XP; they write the colony's greatest deed into a ballad, each faction's goodwill +5. An infamous colony gets a satirical song instead.</en></s>
+  <s><zh>化身旅人的银龙</zh><en>Silver dragon traveler in disguise</en></s>
+  <s><zh>一位老旅人借宿3天，按吃住和陪伴打分；走时现出银龙真身，好的招待换龙鳞、“银龙之友”。</zh><en>An old traveler stays for 3 days, scoring food, lodging and company; on leaving, they reveal their silver dragon form. Good hospitality earns dragon scales and "friend of the silver dragon".</en></s>
+  <s><zh>亡魂的遗愿</zh><en>the ghost's last wish</en></s>
+  <s><zh>死去3～15天的殖民者托付最后一件事（安葬、照顾亲人或报仇）。完成后受托人继承他一半的技能经验。</zh><en>A colonist who died 3-15 days ago entrusts one last task (burial, caring for family, or revenge). On completion, the one entrusted inherits half their skill XP.</en></s>
+  <s><zh>逃亡的同盟贵族</zh><en>fugitive league noble</en></s>
+  <s><zh>受伤的同盟贵族被塞伊追杀，逃到殖民地：庇护、交给塞伊或卖给黑网。</zh><en>A wounded allied noble flees to the colony, hunted by Thay: shelter them, hand them to Thay, or sell them to the dark net.</en></s>
+  <s><zh>托付的天才学徒（需要 Biotech）</zh><en>Entrusted gifted apprentice (needs Biotech)</en></s>
+  <s><zh>同盟的法师把一个魔法天才托付给你，定期寄来礼物；成年时智识够了就成为法师。</zh><en>An alliance wizard entrusts a magical prodigy to you and sends gifts regularly; on reaching adulthood with enough Intellectual, the child becomes a wizard.</en></s>
+  <s><zh>秘银陨星</zh><en>mithril meteor</en></s>
+  <s><zh>一晚流星雨，天亮前落下秘银陨石；一成几率带着坠星之心，会引来抢夺。</zh><en>A night of meteor showers drops a mithral meteorite before dawn; 10% chance it carries a heart of a fallen star, which draws thieves.</en></s>
+  <s><zh>全灭的冒险小队</zh><en>wiped-out adventuring party</en></s>
+  <s><zh>世界地图上出现一支全灭冒险小队的营地，杀死他们的怪物还在。装备、冒险日志，复活他们就能招募。</zh><en>The camp of a wiped-out adventuring party appears on the world map, with the monster that killed them still there. Gear, adventure logs, and reviving them lets you recruit them.</en></s>
+  <s><zh>魔网潮汐</zh><en>Weave tide</en></s>
+  <s><zh>5天极光：每次施放能力 20% 触发野魔法（好坏都有），施法职业每天额外得冒险者经验。</zh><en>5 days of aurora: each ability cast has a 20% chance to trigger wild magic (good or bad), and spellcasting classes gain extra adventurer XP each day.</en></s>
+  <s><zh>命匣窃贼</zh><en>phylactery thief</en></s>
+  <s><zh>隐身的盗贼夜里潜入偷巫妖的命匣。偷走了要在15天内去藏身处抢回来，否则命匣被卖到九狱掮客手里（可赎回）。</zh><en>An invisible thief sneaks in at night to steal the lich's phylactery. If stolen, you must raid the hideout within 15 days to take it back, or the phylactery is sold to a Nine Hells broker (redeemable).</en></s>
+  <s><zh>冒险者的天命</zh><en>The adventurer's destiny</en></s>
+  <s><zh>冒险者第一次到5、10、15级时，各有一半几率接到个人任务；完成后二选一：属性+1、武艺天赋。</zh><en>When adventurers first reach levels 5, 10 and 15, each time there's a one-in-two chance of a personal quest; on completion choose one: +1 ability or a combat gift.</en></s>
+  <s><zh>骑士比武大会</zh><en>knights' tournament</en></s>
+  <s><zh>同盟邀请你参加比武：剑术、长枪、射箭、摔角各派一人，按技能和属性掷骰。赢了拿奖杯和经验，三项以上得冠军称号。</zh><en>The alliance invites you to a tournament: send one person each for swordsmanship, lance, archery and wrestling, decided by skills and abilities. Winners get trophies and XP; winning three or more events earns a champion title.</en></s>
+  <s><zh>敌对巫妖的战书</zh><en>a rival lich's challenge</en></s>
+  <s><zh>殖民地有命匣5级以上的巫妖时，一名塞伊巫妖下战书：法术决斗、命匣狩猎或拒绝。</zh><en>When the colony has a lich with a phylactery of level 5 or higher, a Thayan lich issues a challenge: spell duel, phylactery hunt, or refuse.</en></s>
+  <s><zh>树人苏醒</zh><en>the treant awakens</en></s>
+  <s><zh>林木多的地图上，最老的树站了起来：砍树少就送一棵森林之心（周围作物生长+20%），砍得多就带着苏醒的树来报复。</zh><en>On a well-wooded map, the oldest tree stands up: if few trees were cut, it gifts a heart of the forest (nearby crops grow +20%); if many were cut, it comes for revenge with awakened trees.</en></s>
+  <s><zh>塔拉斯克苏醒</zh><en>the Tarrasque awakens</en></s>
+  <s><zh>传说中的巨兽醒了，约20天后到。可以请援军、设陷阱或献肉引开。打死它得到甲壳和獠牙（顶级材料）。</zh><en>A legendary behemoth has woken and will arrive in about 20 days. You can call for reinforcements, set traps or offer meat to lure it away. Killing it yields carapace and tusks (top-tier materials).</en></s>
+</LPStrings>

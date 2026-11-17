@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（ManaLakeLore.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>力量或敏捷</zh><en>Strength or Dexterity</en></s>
+  <s><zh>最高的一项属性</zh><en>the highest ability</en></s>
+  <s><zh>需要冒险者 </zh><en>Needs adventurer </en></s>
+  <s><zh> 环通用秘传）</zh><en> circle general arcanum)</en></s>
+  <s><zh>武技另需格斗或射击 </zh><en>Martial arts also need Melee or Shooting </en></s>
+  <s><zh>上次吸收失败，还要 </zh><en>Last absorption failed; another </en></s>
+  <s><zh>才能再试</zh><en> before trying again</en></s>
+  <s><zh>吸收成功率 </zh><en>Absorption success chance </en></s>
+  <s><zh>没能吸收「</zh><en> failed to absorb "</en></s>
+  <s><zh>」（成功率 </zh><en>" (success chance </en></s>
+  <s><zh>）：秘传反噬 3 天，结晶还在，7 天后可以再试。</zh><en>): arcane backlash for 3 days; the crystal remains and can be tried again in 7 days.</en></s>
+  <s><zh>被反制法术沉默了</zh><en>silenced by counterspell</en></s>
+  <s><zh>需要选择地图上的一处。</zh><en>Need to pick a spot on the map.</en></s>
+  <s><zh>剑刃屏障</zh><en>blade barrier</en></s>
+  <s><zh>心灵空白</zh><en>mind blank</en></s>
+  <s><zh>断骨击</zh><en>bone-breaker strike</en></s>
+  <s><zh>连锁闪电</zh><en>chain lightning</en></s>
+  <s><zh>治愈术</zh><en>heal</en></s>
+  <s><zh>死亡之指</zh><en>finger of death</en></s>
+  <s><zh>亡仆</zh><en>undead servant</en></s>
+  <s><zh>被死亡之指杀死，又作为亡仆爬了起来。</zh><en> was killed by finger of death and rose again as an undead servant.</en></s>
+  <s><zh>再生术</zh><en>regenerate</en></s>
+  <s><zh>反转重力</zh><en>reverse gravity</en></s>
+  <s><zh>炎阳爆</zh><en>sunburst</en></s>
+  <s><zh>真言·杀</zh><en>power word kill</en></s>
+  <s><zh>贯日一箭</zh><en>sun-piercing arrow</en></s>
+  <s><zh>骨折：</zh><en>Broken bones: </en></s>
+  <s><zh>许愿：痊愈</zh><en>Wish: healed</en></s>
+  <s><zh>许愿：</zh><en>Wish: </en></s>
+  <s><zh>许愿的代价</zh><en>The price of wishing</en></s>
+  <s><zh>的大愿望实现了，但魔网收回了许愿术：永久失去许愿术，并虚弱 10 天。</zh><en>'s great wish came true, but the Weave took back the wish spell: permanently lost wish, and weakened for 10 days.</en></s>
+  <s><zh>识破</zh><en>Saw through</en></s>
+  <s><zh>传奇抵抗（</zh><en>Legendary resistance (</en></s>
+  <s><zh>第二心脏</zh><en>second heart</en></s>
+  <s><zh>的第二心脏跳了起来：本该死去，却只是倒下了。</zh><en>'s second heart started beating: they should have died, but only went down.</en></s>
+  <s><zh>时间停止</zh><en>time stop</en></s>
+  <s><zh>让时间停了下来（6 秒）。</zh><en> stopped time (6 seconds).</en></s>
+  <s><zh>迷宫术</zh><en>maze</en></s>
+  <s><zh>从迷宫归来</zh><en>returned from the maze</en></s>
+  <s><zh>施放一个秘传法术</zh><en>Cast an arcanum spell</en></s>
+  <s><zh>直接施放任意一个 8 环或以下的通用秘传法术（包括没学过的）。</zh><en>Directly cast any general arcanum spell of circle 8 or lower (including unlearned ones).</en></s>
+  <s><zh>全体痊愈</zh><en>Heal everyone</en></s>
+  <s><zh>本地图所有殖民者伤势全愈、疾病清除（旧伤疤不算）。</zh><en>All colonists on this map are fully healed of injuries and diseases (old scars don't count).</en></s>
+  <s><zh>变出物品</zh><en>Conjure an item</en></s>
+  <s><zh>变出市场价合计 3000 银以内的一种物品。</zh><en>Conjure one kind of item with total market value up to 3000 silver.</en></s>
+  <s><zh>大愿望：复活殖民者</zh><en>Great wish: revive a colonist</en></s>
+  <s><zh>复活 1 名死亡不超过 30 天的殖民者（没有尸体也可以）。有 33% 的概率永久失去许愿术并虚弱 10 天。</zh><en>Revive 1 colonist dead for no more than 30 days (works even without a corpse). 33% chance to permanently lose wish and be weakened for 10 days.</en></s>
+  <s><zh>大愿望：永久 +1 属性</zh><en>Great wish: permanent +1 ability</en></s>
+  <s><zh>施法者的一项属性永久 +1（最高 30）。有 33% 的概率永久失去许愿术并虚弱 10 天。</zh><en>One of the caster's abilities +1 permanently (max 30). 33% chance to permanently lose wish and be weakened for 10 days.</en></s>
+  <s><zh>大愿望：驱散长期事件</zh><en>Great wish: dispel a long event</en></s>
+  <s><zh>结束本地图一个还要持续 1 天以上的事件（毒尘、寒流、火山冬天……）。有 33% 的概率永久失去许愿术并虚弱 10 天。</zh><en>End one event on this map that would last more than 1 more day (toxic fallout, cold snap, volcanic winter...). 33% chance to permanently lose wish and be weakened for 10 days.</en></s>
+  <s><zh>（永久）</zh><en> (permanent)</en></s>
+  <s><zh>这个目标不行，愿望落空了。</zh><en>That target won't do; the wish came to nothing.</en></s>
+  <s><zh>许愿术：</zh><en>Wish: </en></s>
+  <s><zh>的愿望</zh><en>'s wish</en></s>
+  <s><zh>选一个愿望。安全愿望没有代价；大愿望有 33% 的概率让施法者永久失去许愿术并虚弱 10 天。没选就关掉，许愿术不进冷却。</zh><en>Choose a wish. Safe wishes have no cost; great wishes have a 33% chance to make the caster permanently lose wish and be weakened for 10 days. Closing without choosing means wish doesn't go on cooldown.</en></s>
+  <s><zh>选一项（左下角「返回」回到愿望列表）。</zh><en>Choose one ("back" at the bottom left returns to the wish list).</en></s>
+  <s><zh>没有可选的项目。</zh><en>Nothing to choose.</en></s>
+  <s><zh>返回</zh><en>Back</en></s>
+</LPStrings>

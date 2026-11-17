@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 深渊之躯 -->
+  <LP_AbyssCore.label>abyssal body</LP_AbyssCore.label>
+  <!-- 深渊恶魔的身体：被击倒或杀死时化作黑烟遣返深渊（被束缚的、戴着位面锚链的除外），不会因赤身裸体而不快。寒铁武器对它的伤害 ×1.5。 -->
+  <LP_AbyssCore.description>The body of an abyssal demon: turns into black smoke and is banished to the Abyss when knocked down or killed (except bound ones or those in a planar anchor chain); not bothered by being naked. Cold iron weapons deal ×1.5 damage to it.</LP_AbyssCore.description>
+  <!-- 倒下或死亡：遣返深渊，敌人掉落灵魂币、恶魔血等。 | 寒铁武器伤害 ×1.5，信仰的光辉伤害 ×1.25。 | 不受深渊腐化以外的心灵影响……也不会被腐化。 -->
+  <LP_AbyssCore.customEffectDescriptions.0>Downed or killed: banished to the Abyss; enemies drop soul coins, demon blood and more.</LP_AbyssCore.customEffectDescriptions.0>
+  <LP_AbyssCore.customEffectDescriptions.1>Cold iron weapons deal ×1.5 damage, holy radiance from faith ×1.25.</LP_AbyssCore.customEffectDescriptions.1>
+  <LP_AbyssCore.customEffectDescriptions.2>Immune to psychic effects other than abyssal taint... and cannot be tainted.</LP_AbyssCore.customEffectDescriptions.2>
+  <!-- 不吃不睡 -->
+  <LP_AbyssUndying.label>sleepless and foodless</LP_AbyssUndying.label>
+  <!-- 深渊的造物不需要进食，也不需要睡眠。 -->
+  <LP_AbyssUndying.description>Creatures of the Abyss need neither food nor sleep.</LP_AbyssUndying.description>
+  <!-- 劣魔体型 -->
+  <LP_DretchStature.label>manes build</LP_DretchStature.label>
+  <!-- 矮小肥胖的身躯：实际体型 ×70%，显示 ×80%，头顶一对小角。 -->
+  <LP_DretchStature.description>A short, fat body: actual body size ×70%, drawn ×80%, a pair of small horns on top.</LP_DretchStature.description>
+  <!-- 劣魔恶臭 -->
+  <LP_DretchStench.label>manes stench</LP_DretchStench.label>
+  <!-- 劣魔浑身散发着腐臭：2 格内的其他人形心情 -2。 -->
+  <LP_DretchStench.description>Manes reek of rot: other humanlikes within 2 cells get mood -2.</LP_DretchStench.description>
+  <!-- 2 格内其他人形：心情 -2。 -->
+  <LP_DretchStench.customEffectDescriptions.0>Other humanlikes within 2 cells: mood -2.</LP_DretchStench.customEffectDescriptions.0>
+  <!-- 苦力 -->
+  <LP_DretchToil.label>drudge</LP_DretchToil.label>
+  <!-- 劣魔只听得懂最简单的命令：只能搬运、采矿、清扫和干粗活，全局工作速度 ×0.8。 -->
+  <LP_DretchToil.description>Manes only understand the simplest orders: they can only haul, mine, clean and do menial work; global work speed ×0.8.</LP_DretchToil.description>
+  <!-- 灰白肤色 -->
+  <LP_SkinDretch.label>ashen skin</LP_SkinDretch.label>
+  <!-- 劣魔死鱼一样的灰白皮肤。 -->
+  <LP_SkinDretch.description>The dead-fish ashen skin of manes.</LP_SkinDretch.description>
+  <!-- 灰白 -->
+  <LP_SkinDretch.labelShortAdj>ashen</LP_SkinDretch.labelShortAdj>
+  <!-- 巴路古拉体型 -->
+  <LP_BarlguraStature.label>barlgura build</LP_BarlguraStature.label>
+  <!-- 猿一样的魁梧身躯：实际体型 ×160%，显示 ×130%，猿脸、外翻的獠牙。巨躯规则让它的生命和近战更强。 -->
+  <LP_BarlguraStature.description>A hulking ape-like body: actual body size ×160%, drawn ×130%, ape face and jutting tusks. Giant-body rules make its health and melee stronger.</LP_BarlguraStature.description>
+  <!-- 猿力 -->
+  <LP_BarlguraMight.label>ape strength</LP_BarlguraMight.label>
+  <!-- 巴路古拉一身蛮力：近战伤害 +20%，负重 +40%。 -->
+  <LP_BarlguraMight.description>The barlgura's brute strength: +20% melee damage, +40% carry capacity.</LP_BarlguraMight.description>
+  <!-- 跃击 -->
+  <LP_BarlguraLeap.label>leap strike</LP_BarlguraLeap.label>
+  <!-- 能力“跃击”：一跃扑到 8 格内的目标身边，落地时 1 格内的敌人做敏捷豁免（难度 13，基础成功率 50%），失败倒地 1 秒。冷却 6 小时。 -->
+  <LP_BarlguraLeap.description>Ability "Leap strike": leap next to a target within 8 cells; on landing, enemies within 1 cell make a Dexterity save (difficulty 13, base success 50%) or fall for 1 second. Cooldown 6 hours.</LP_BarlguraLeap.description>
+  <!-- 静立隐形 -->
+  <LP_BarlguraStill.label>still invisibility</LP_BarlguraStill.label>
+  <!-- 站着不动、不攻击 3 秒后融进阴影，别人看不见它；一动或一出手就会现形。 -->
+  <LP_BarlguraStill.description>After standing still without attacking for 3 seconds it melts into the shadows and cannot be seen; moving or attacking reveals it.</LP_BarlguraStill.description>
+  <!-- 嗜杀 -->
+  <LP_BarlguraBrute.label>bloodthirsty</LP_BarlguraBrute.label>
+  <!-- 巴路古拉学不会读书、画画、包扎和说好话；看到处决时心情 +5。 -->
+  <LP_BarlguraBrute.description>Barlguras cannot learn to read, paint, tend wounds or sweet-talk; +5 mood when watching an execution.</LP_BarlguraBrute.description>
+  <!-- 橙褐肤色 -->
+  <LP_SkinBarlgura.label>orange-brown skin</LP_SkinBarlgura.label>
+  <!-- 巴路古拉橙褐色的粗皮。 -->
+  <LP_SkinBarlgura.description>The coarse orange-brown hide of a barlgura.</LP_SkinBarlgura.description>
+  <!-- 橙褐 -->
+  <LP_SkinBarlgura.labelShortAdj>orange-brown</LP_SkinBarlgura.labelShortAdj>
+  <!-- 哈兹魔体型 -->
+  <LP_HezrouStature.label>hezrou build</LP_HezrouStature.label>
+  <!-- 蟾蜍一样的庞大身躯：实际体型 ×180%，显示 ×140%，宽口的蟾蜍头。 -->
+  <LP_HezrouStature.description>A huge toad-like body: actual body size ×180%, drawn ×140%, a wide-mouthed toad head.</LP_HezrouStature.description>
+  <!-- 疣皮 -->
+  <LP_HezrouHide.label>warty hide</LP_HezrouHide.label>
+  <!-- 又厚又韧的疣状皮：利器、钝器护甲各 +20%；在浅水、沼泽里行动不受减速。 -->
+  <LP_HezrouHide.description>Thick, tough, warty hide: sharp and blunt armor +20% each; no slowdown in shallow water or marsh.</LP_HezrouHide.description>
+  <!-- 哈兹魔恶臭 -->
+  <LP_HezrouStench.label>hezrou stench</LP_HezrouStench.label>
+  <!-- 每 5 秒，3 格内的敌对人形做体质豁免（难度 13，基础成功率 50%），失败“恶心”10 秒（操作 -20%、移速 ×0.9）。豁免成功的人 1 分钟内不会再受影响。 -->
+  <LP_HezrouStench.description>Every 5 seconds, hostile humanlikes within 3 cells make a Constitution save (difficulty 13, base success 50%) or are "nauseated" for 10 seconds (manipulation -20%, move speed ×0.9). Those who succeed are unaffected for 1 minute.</LP_HezrouStench.description>
+  <!-- 绿灰疣皮 -->
+  <LP_SkinHezrou.label>green-grey warty hide</LP_SkinHezrou.label>
+  <!-- 哈兹魔绿灰色、满是疣子的皮。 -->
+  <LP_SkinHezrou.description>The green-grey, warty hide of a hezrou.</LP_SkinHezrou.description>
+  <!-- 绿灰 -->
+  <LP_SkinHezrou.labelShortAdj>green-grey</LP_SkinHezrou.labelShortAdj>
+  <!-- 魅魔之性 -->
+  <LP_SuccubusNature.label>succubus nature</LP_SuccubusNature.label>
+  <!-- 魅魔 / 梦魔的天性：社交影响 +25%、谈判价格 +10%；火焰、烧伤伤害 ×0.5，毒素抗性 +50%；食量只有常人的 20%。不能在圣坛 5 格内工作，看见圣徽心情 -3。带这条基因的人算作魅魔。 -->
+  <LP_SuccubusNature.description>Succubus / incubus nature: social impact +25%, negotiated prices +10%; fire and burn damage ×0.5, toxic resistance +50%; eats only 20% as much as a normal person. Cannot work within 5 cells of an altar; mood -3 when seeing a holy symbol. Anyone with this gene counts as a succubus.</LP_SuccubusNature.description>
+  <!-- 魅魔之角 -->
+  <LP_SuccubusHorns.label>succubus horns</LP_SuccubusHorns.label>
+  <!-- 一对弯弯的小角。变形伪装时看不见。 -->
+  <LP_SuccubusHorns.description>A pair of small curved horns. Hidden during shapeshift disguise.</LP_SuccubusHorns.description>
+  <!-- 魅魔蝠翼 -->
+  <LP_SuccubusWings.label>succubus wings</LP_SuccubusWings.label>
+  <!-- 一对紫黑色的蝠翼。变形伪装时看不见。 -->
+  <LP_SuccubusWings.description>A pair of purple-black bat wings. Hidden during shapeshift disguise.</LP_SuccubusWings.description>
+  <!-- 魅魔细尾 -->
+  <LP_SuccubusTail.label>succubus tail</LP_SuccubusTail.label>
+  <!-- 一条末端带着桃心状尖梢的细尾。变形伪装时看不见。 -->
+  <LP_SuccubusTail.description>A thin tail ending in a heart-shaped tip. Hidden during shapeshift disguise.</LP_SuccubusTail.description>
+  <!-- 变形伪装 -->
+  <LP_SuccubusGuise.label>shapeshift disguise</LP_SuccubusGuise.label>
+  <!-- 可以开关的幻象：开着时角、翼、尾和绯红肤色都藏起来，看起来就是普通人。被魔鬼之眼（8 格）或阿斯莫（5 格）看到会自动解除。 -->
+  <LP_SuccubusGuise.description>A toggleable illusion: while on, horns, wings, tail and crimson skin are hidden and it looks like an ordinary person. Being seen by a devil's eye (8 cells) or an aasimar (5 cells) dispels it automatically.</LP_SuccubusGuise.description>
+  <!-- 魅惑之吻 -->
+  <LP_SuccubusKiss.label>charming kiss</LP_SuccubusKiss.label>
+  <!-- 能力“魅惑之吻”（接触，冷却 1 天）：目标做感知豁免（豁免难度随魅魔的熟练加值和魅力提高；目标的属性调整值和熟练加值每点 +5% 成功率）。失败：敌人被魅惑 60 秒；囚犯招募抵抗 -15；殖民者对它的好感 +20。豁免成功的人 24 小时内免疫。 -->
+  <LP_SuccubusKiss.description>Ability "Charming kiss" (touch, cooldown 1 day): the target makes a Wisdom save (difficulty rises with the succubus's proficiency bonus and Charisma; each point of the target's ability modifier and proficiency bonus gives +5% success). On failure: enemies are charmed for 60 seconds; prisoners lose 15 recruit resistance; colonists gain +20 opinion of it. Those who succeed are immune for 24 hours.</LP_SuccubusKiss.description>
+  <!-- 梦境吸取 -->
+  <LP_SuccubusDream.label>dream drain</LP_SuccubusDream.label>
+  <!-- 每天早上 6 点结算：前一晚和它睡同一张床的人休息 -20%、深渊腐化 +3%，会做噩梦；它自己恢复一些伤势，心情“餍足”+6 两天。连续 3 天没有吸取，心情“饥渴”-4。 -->
+  <LP_SuccubusDream.description>Settled every day at 6 AM: whoever slept in its bed the previous night gets rest -20%, abyssal taint +3% and nightmares; it heals some wounds and gains the "sated" mood +6 for two days. After 3 days without draining, "thirsting" mood -4.</LP_SuccubusDream.description>
+  <!-- 绯红肤色 -->
+  <LP_SkinSuccubus.label>crimson skin</LP_SkinSuccubus.label>
+  <!-- 魅魔的皮肤透着绯红。（60% 的魅魔是普通肤色。） -->
+  <LP_SkinSuccubus.description>A succubus's skin is tinged crimson. (60% of succubi have normal skin.)</LP_SkinSuccubus.description>
+  <!-- 绯红 -->
+  <LP_SkinSuccubus.labelShortAdj>crimson</LP_SkinSuccubus.labelShortAdj>
+  <!-- 深渊血统 -->
+  <LP_CambionBlood.label>abyssal lineage</LP_CambionBlood.label>
+  <!-- 血管里流着恶魔的血：寒铁对它的伤害 ×1.25，深渊腐化 ×0.5；装了 VPE 时算作术士血脉（路径门槛 -2）。带这条基因的人算作坎比恩。 -->
+  <LP_CambionBlood.description>Demon blood runs in the veins: cold iron deals ×1.25 damage, abyssal taint ×0.5; with VPE installed it counts as a sorcerer bloodline (path requirement -2). Anyone with this gene counts as a cambion.</LP_CambionBlood.description>
+  <!-- 寒铁武器伤害 ×1.25。 | 深渊腐化获取 ×0.5。 | VPE：术士路径的技能门槛 -2。 -->
+  <LP_CambionBlood.customEffectDescriptions.0>Cold iron weapons deal ×1.25 damage.</LP_CambionBlood.customEffectDescriptions.0>
+  <LP_CambionBlood.customEffectDescriptions.1>Abyssal taint gain ×0.5.</LP_CambionBlood.customEffectDescriptions.1>
+  <LP_CambionBlood.customEffectDescriptions.2>VPE: Sorcerer path skill requirement -2.</LP_CambionBlood.customEffectDescriptions.2>
+  <!-- 坎比恩之角 -->
+  <LP_CambionHorns.label>cambion horns</LP_CambionHorns.label>
+  <!-- 一对向后弯的角和一双金红色的眼睛。 -->
+  <LP_CambionHorns.description>A pair of backward-curving horns and golden-red eyes.</LP_CambionHorns.description>
+  <!-- 恶魔之翼 -->
+  <LP_CambionWings.label>demon wings</LP_CambionWings.label>
+  <!-- 一对小号蝠翼，飞不起来，但能滑翔。能力“滑翔跳跃”：跳到 6 格内的地方，冷却 4 小时。 -->
+  <LP_CambionWings.description>A pair of small bat wings; cannot fly, but can glide. Ability "Gliding leap": jump to a spot within 6 cells, cooldown 4 hours.</LP_CambionWings.description>
+  <!-- 深渊之火 -->
+  <LP_CambionFire.label>abyssal fire</LP_CambionFire.label>
+  <!-- 火焰认得恶魔的血：火焰、烧伤伤害 ×0.5。 -->
+  <LP_CambionFire.description>Fire knows demon blood: fire and burn damage ×0.5.</LP_CambionFire.description>
+  <!-- 深渊气魄 -->
+  <LP_CambionPresence.label>abyssal presence</LP_CambionPresence.label>
+  <!-- 天生知道怎么让人害怕或者服从：社交天赋 +2。 -->
+  <LP_CambionPresence.description>Born knowing how to make people afraid or obedient: social talent +2.</LP_CambionPresence.description>
+  <!-- 纳巴苏体型 -->
+  <LP_NabassuStature.label>nabassu build</LP_NabassuStature.label>
+  <!-- 石像鬼般的身躯：实际体型 ×160%，显示 ×130%，背生蝠翼，长着长獠牙。 -->
+  <LP_NabassuStature.description>A gargoyle-like body: actual body size ×160%, drawn ×130%, bat wings on the back and long fangs.</LP_NabassuStature.description>
+  <!-- 噬魂 -->
+  <LP_NabassuDevour.label>soul devour</LP_NabassuDevour.label>
+  <!-- 被它杀死的人形灵魂被吞噬：不能被任何方式复活（复活血清、神术、巫妖的命匣都不行），24 小时后 30% 起身成敌对劣魔。它每吞一个灵魂获得 1 层“饱魂”（生命 +5%、伤害 +5%，最多 10 层）。 -->
+  <LP_NabassuDevour.description>The souls of humanlikes it kills are devoured: they cannot be resurrected by any means (resurrector serum, divine magic and a lich's phylactery all fail), and after 24 hours there is a 30% chance they rise as hostile manes. Each soul it devours grants 1 "soul-gorged" stack (+5% health, +5% damage, up to 10 stacks).</LP_NabassuDevour.description>
+  <!-- 杀死人形：灵魂被吞噬，自己 +1 层饱魂。 -->
+  <LP_NabassuDevour.customEffectDescriptions.0>Kills a humanlike: the soul is devoured, gaining 1 soul-gorged stack.</LP_NabassuDevour.customEffectDescriptions.0>
+  <!-- 石化凝视 -->
+  <LP_NabassuGaze.label>petrifying gaze</LP_NabassuGaze.label>
+  <!-- 能力“石化凝视”（6 格，冷却 30 秒）：一人做体质豁免（难度 14，基础成功率 45%），失败移速 ×0.5，10 秒。 -->
+  <LP_NabassuGaze.description>Ability "Petrifying gaze" (6 cells, cooldown 30 seconds): one person makes a Constitution save (difficulty 14, base success 45%) or has move speed ×0.5 for 10 seconds.</LP_NabassuGaze.description>
+  <!-- 灰黑石皮 -->
+  <LP_SkinNabassu.label>grey-black stone skin</LP_SkinNabassu.label>
+  <!-- 纳巴苏像风化岩石一样的灰黑皮。 -->
+  <LP_SkinNabassu.description>The grey-black hide of a nabassu, like weathered rock.</LP_SkinNabassu.description>
+  <!-- 灰黑 -->
+  <LP_SkinNabassu.labelShortAdj>grey-black</LP_SkinNabassu.labelShortAdj>
+  <!-- 无形之影 -->
+  <LP_ShadowDemonForm.label>formless shadow</LP_ShadowDemonForm.label>
+  <!-- 影魔几乎没有实体：非魔法、品质不到杰作、也不是寒铁或银的武器（包括爪牙）只能造成一半伤害。它怕光：站在光照 50% 以上的格子里受到的伤害 ×1.5，移速 ×0.7。 -->
+  <LP_ShadowDemonForm.description>Shadow demons are almost incorporeal: weapons (including claws and fangs) that are non-magic, below masterwork quality and not cold iron or silver deal only half damage. It fears light: standing on a cell with 50%+ light it takes ×1.5 damage and moves ×0.7.</LP_ShadowDemonForm.description>
+  <!-- 漆黑之影 -->
+  <LP_SkinShadowDemon.label>pitch-black shadow</LP_SkinShadowDemon.label>
+  <!-- 影魔的身体像一团凝固的黑烟。 -->
+  <LP_SkinShadowDemon.description>A shadow demon's body is like congealed black smoke.</LP_SkinShadowDemon.description>
+  <!-- 漆黑 -->
+  <LP_SkinShadowDemon.labelShortAdj>pitch black</LP_SkinShadowDemon.labelShortAdj>
+</LanguageData>

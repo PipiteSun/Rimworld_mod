@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 用肉制作婴儿食品 -->
+  <LP_Make_BabyFoodMeat.label>make baby food from meat</LP_Make_BabyFoodMeat.label>
+  <!-- 把生肉剁碎煮烂，做成婴儿吃的糊糊。产物就是原版婴儿食品，只是不再是素食：会记住用了什么肉，大人被迫吃下时照常按肉类和食人的戒律算心情。默认只用生肉（不含人肉、虫肉），可以在工作单里勾上蔬菜、奶、蛋一起混用。 -->
+  <LP_Make_BabyFoodMeat.description>Mince raw meat and boil it soft into mush for babies. The product is vanilla baby food, just no longer vegetarian: it remembers what meat was used, and adults forced to eat it get moods per meat and cannibalism precepts as usual. Uses only raw meat by default (no human or insect meat); vegetables, milk and eggs can be ticked in the bill to mix in.</LP_Make_BabyFoodMeat.description>
+  <!-- 生肉或其他生食材 -->
+  <LP_Make_BabyFoodMeat.ingredients.0.filter.customSummary>raw meat or other raw ingredients</LP_Make_BabyFoodMeat.ingredients.0.filter.customSummary>
+  <!-- 正在用肉制作婴儿食品。 -->
+  <LP_Make_BabyFoodMeat.jobString>Making baby food from meat.</LP_Make_BabyFoodMeat.jobString>
+  <!-- 用肉制作婴儿食品 x4 -->
+  <LP_Make_BabyFoodMeatBulk.label>make baby food from meat x4</LP_Make_BabyFoodMeatBulk.label>
+  <!-- 一次把一大锅生肉煮成婴儿食品糊糊。产物就是原版婴儿食品，只是不再是素食：会记住用了什么肉，大人被迫吃下时照常按肉类和食人的戒律算心情。默认只用生肉（不含人肉、虫肉），可以在工作单里勾上蔬菜、奶、蛋一起混用。 -->
+  <LP_Make_BabyFoodMeatBulk.description>Boil a big pot of raw meat into baby food mush at once. The product is vanilla baby food, just no longer vegetarian: it remembers what meat was used, and adults forced to eat it get moods per meat and cannibalism precepts as usual. Uses only raw meat by default (no human or insect meat); vegetables, milk and eggs can be ticked in the bill to mix in.</LP_Make_BabyFoodMeatBulk.description>
+  <!-- 生肉或其他生食材 -->
+  <LP_Make_BabyFoodMeatBulk.ingredients.0.filter.customSummary>raw meat or other raw ingredients</LP_Make_BabyFoodMeatBulk.ingredients.0.filter.customSummary>
+  <!-- 正在批量用肉制作婴儿食品。 -->
+  <LP_Make_BabyFoodMeatBulk.jobString>Making baby food from meat in bulk.</LP_Make_BabyFoodMeatBulk.jobString>
+</LanguageData>

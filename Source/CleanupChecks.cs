@@ -22,7 +22,7 @@ namespace LichPhylactery {
    cuBase=OpenCell();
    try{CleanupAlerts();CleanupTroll();CleanupDragons();CleanupSmall();}
    finally{
-    LichMod.Settings.dndAlerts=oldAlerts;CleanupRules.EggRateHook=null;DragonTerrain.TestDark=null;AncientCrateLoot.TestRoll=null;
+    LichMod.Settings.dndAlerts=oldAlerts;DragonTerrain.TestDark=null;AncientCrateLoot.TestRoll=null;
     foreach(var t in cuMade)if(t is Pawn p){if(p.Corpse!=null && !p.Corpse.Destroyed)p.Corpse.Destroy();else if(!p.Destroyed)p.Destroy();}else if(!t.Destroyed)t.Destroy();
     cuMade.Clear();
    }
@@ -39,12 +39,6 @@ namespace LichPhylactery {
    bool tShown=tad!=null && CuHas(a2,host) && a2.GetExplanation().ToString().Contains("天后完成");
    if(tad!=null)host.health.RemoveHediff(tad);
    Check(tShown && CuEmpty(a2),"alert 蝌蚪化形中: shows the host with days left and how to stop it, clears when the tadpole is removed");
-   // 3 龙蛋即将孵化（不搭宝库：用测试钩子给速度 1）
-   var egg=ThingMaker.MakeThing(DragonHoard.EggDef);GenSpawn.Spawn(egg,cuBase+IntVec3.North*3,map);cuMade.Add(egg);var ec=egg.TryGetComp<CompDragonEgg>();
-   CleanupRules.EggRateHook=e=>1f;var a3=new Alert_LP_DragonEgg();
-   ec.progressDays=ec.HatchDays-2f;bool eShown=CuHas(a3,egg);ec.progressDays=ec.HatchDays-5f;bool eHidden=CuEmpty(a3);
-   CleanupRules.EggRateHook=null;
-   Check(eShown && eHidden,"alert 龙蛋即将孵化: an egg 2 days from hatching is shown, 5 days is not");
    // 4 巫妖复生中 / 5 命匣不在殖民地
    var soul=CuPawn(Faction.OfPlayer,-2,0);soul.Kill(null);
    var box=(Phylactery)ThingMaker.MakeThing(Necro.Def<ThingDef>("Phylactery"));box.soul=soul;box.revivalTick=Find.TickManager.TicksGame+50000;

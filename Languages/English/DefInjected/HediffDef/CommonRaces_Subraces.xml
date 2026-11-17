@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 蛛后之毒 -->
+  <LP_DrowVenom.label>spider queen venom</LP_DrowVenom.label>
+  <!-- 卓尔刀刃上的毒液让人头晕腿软。 -->
+  <LP_DrowVenom.description>The venom on drow blades makes your head spin and legs weak.</LP_DrowVenom.description>
+  <!-- 魔法黑暗 -->
+  <LP_MagicalDarkness.label>magical darkness</LP_MagicalDarkness.label>
+  <!-- 身处卓尔召出的魔法黑暗里，什么也看不清：射击与近战命中率×70%。 -->
+  <LP_MagicalDarkness.description>Inside drow magical darkness, unable to see clearly: shooting and melee hit chance ×70%.</LP_MagicalDarkness.description>
+  <!-- 好胃口 -->
+  <LP_HalflingAppetite.label>hearty appetite</LP_HalflingAppetite.label>
+  <!-- 半身人一天要吃好几顿：早饭、第二顿早饭、午饭、下午茶…… -->
+  <LP_HalflingAppetite.description>Halflings eat several meals a day: breakfast, second breakfast, lunch, afternoon tea...</LP_HalflingAppetite.description>
+  <!-- 运气用光了 -->
+  <LP_HalflingLuckCooldown.label>out of luck</LP_HalflingLuckCooldown.label>
+  <!-- 刚刚走了一回大运。冷却结束前半身人的幸运不会再次触发。 -->
+  <LP_HalflingLuckCooldown.description>Just had a stroke of great luck. Halfling luck won't trigger again until the cooldown ends.</LP_HalflingLuckCooldown.description>
+  <!-- 石肤伪装 -->
+  <LP_StoneCamouflage.label>stone camouflage</LP_StoneCamouflage.label>
+  <!-- 一动不动地贴着地面，看上去就像一块石头：敌人对其远程命中率×70%。移动或攻击就会失去伪装。 -->
+  <LP_StoneCamouflage.description>Pressed motionless against the ground, looking just like a rock: enemy ranged hit chance against it ×70%. Moving or attacking loses the camouflage.</LP_StoneCamouflage.description>
+  <!-- 灵巧逃脱 -->
+  <LP_GoblinEscape.label>nimble escape</LP_GoblinEscape.label>
+  <!-- 挨了一下，赶紧开溜！ -->
+  <LP_GoblinEscape.description>Got hit, time to run!</LP_GoblinEscape.description>
+</LanguageData>

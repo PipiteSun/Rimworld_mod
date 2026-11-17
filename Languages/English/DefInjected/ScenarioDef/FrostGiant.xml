@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 冰原之子 -->
+  <LP_IceborneKin.label>children of the ice fields</LP_IceborneKin.label>
+  <!-- 部落的冰堡被火巨人攻破，两名霜巨人带着两只冬狼一路向南逃，终于在一片陌生的冻土上停下脚步。\n\n两名霜巨人各有一只认主的冬狼；带着短弓、长矛、干肉饼和皮革。余烬氏族的火巨人还记着这笔仇（好感-40）。\n\n建议选冰原或苔原：霜巨人不怕冷、雪地里照样走得快，但受不了暖和天气，也很怕火。 -->
+  <LP_IceborneKin.description>The tribe's ice fortress was breached by fire giants, and two frost giants fled south with two winter wolves until they finally stopped on an unfamiliar tundra.\n\nEach frost giant has a bonded winter wolf; they carry short bows, spears, pemmican and leather. The ember clan's fire giants still remember this feud (goodwill -40).\n\nIce sheet or tundra recommended: frost giants don't fear cold and move fast in snow, but can't stand warm weather and greatly fear fire.</LP_IceborneKin.description>
+  <!-- 部落的冰堡被火巨人攻破，两名霜巨人带着两只冬狼一路向南逃，终于在一片陌生的冻土上停下脚步。\n\n两名霜巨人各有一只认主的冬狼；带着短弓、长矛、干肉饼和皮革。余烬氏族的火巨人还记着这笔仇（好感-40）。\n\n建议选冰原或苔原：霜巨人不怕冷、雪地里照样走得快，但受不了暖和天气，也很怕火。 -->
+  <LP_IceborneKin.scenario.description>The tribe's ice fortress was breached by fire giants, and two frost giants fled south with two winter wolves until they finally stopped on an unfamiliar tundra.\n\nEach frost giant has a bonded winter wolf; they carry short bows, spears, pemmican and leather. The ember clan's fire giants still remember this feud (goodwill -40).\n\nIce sheet or tundra recommended: frost giants don't fear cold and move fast in snow, but can't stand warm weather and greatly fear fire.</LP_IceborneKin.scenario.description>
+  <!-- 冰原之子 -->
+  <LP_IceborneKin.scenario.name>children of the ice fields</LP_IceborneKin.scenario.name>
+  <!-- 两名霜巨人。 -->
+  <LP_IceborneKin.scenario.parts.ConfigurePawnsXenotypes.customSummary>Two frost giants.</LP_IceborneKin.scenario.parts.ConfigurePawnsXenotypes.customSummary>
+  <!-- 霜巨人 -->
+  <LP_IceborneKin.scenario.parts.ConfigurePawnsXenotypes.xenotypeCounts.0.description>frost giant</LP_IceborneKin.scenario.parts.ConfigurePawnsXenotypes.xenotypeCounts.0.description>
+  <!-- 冰堡的城墙在火巨人的熔炉锤下塌了。你们带着两只冬狼一路向南，风雪替你们挡住了追兵。\n\n这里的雪不够厚，天也不够冷，可总比熔炉的火强。冬狼在身边嗅着新的猎物——是时候让这片冻土听见冬之号角了。 -->
+  <LP_IceborneKin.scenario.parts.GameStartDialog.text>The ice fortress walls fell under the fire giants' forge hammers. You headed south with two winter wolves, and the blizzard held back your pursuers.\n\nThe snow here isn't deep enough and the sky isn't cold enough, but it beats the fire of the forge. The winter wolves sniff at new prey beside you; it's time for this frozen land to hear the horn of winter.</LP_IceborneKin.scenario.parts.GameStartDialog.text>
+  <!-- 两名霜巨人与两只认主的冬狼。怕热怕火，适合冰原或苔原。 -->
+  <LP_IceborneKin.scenario.summary>Two frost giants and two bonded winter wolves. Fear heat and fire; suited to ice sheet or tundra.</LP_IceborneKin.scenario.summary>
+</LanguageData>

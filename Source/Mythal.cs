@@ -76,14 +76,14 @@ namespace LichPhylactery {
   }
   // 每 10 层的里程碑首领：每组按顺序找第一个存在的兵种（找不到兵种时退到后面的替身）；第 70 层起轮回。
   public static readonly string[][] Bosses={
-   new[]{"LP_RedDragon_Young","LP_BlueDragon_Young","LP_GreenDragon_Young","LP_BlackDragon_Young","LP_WhiteDragon_Young","|","LP_WildDragon"},
+   new[]{"LP_RedDragon_Young","LP_BlueDragon_Young","LP_GreenDragon_Young","LP_BlackDragon_Young","LP_WhiteDragon_Young"},
    new[]{"LP_FH_RedWizard"},
    new[]{"LP_LM_DeathKnight","|","LP_FH_Skeleton"},
-   new[]{"LP_RedDragon_Adult","LP_BlueDragon_Adult","LP_GreenDragon_Adult","LP_BlackDragon_Adult","LP_WhiteDragon_Adult","|","LP_WildDragon"},
+   new[]{"LP_RedDragon_Adult","LP_BlueDragon_Adult","LP_GreenDragon_Adult","LP_BlackDragon_Adult","LP_WhiteDragon_Adult"},
    new[]{"LP_LM_Beholder","|","LP_IC_MindFlayer"},
    new[]{"LP_FH_Balor","|","LP_AH_Hezrou"},
   };
-  public static readonly string[] BossTitles={"龙祭司的真龙","塞伊红袍大法师","死亡骑士","成年真龙","眼魔","深渊领主"};
+  public static readonly string[] BossTitles={"龙祭司的真龙".Loc(),"塞伊红袍大法师".Loc(),"死亡骑士".Loc(),"成年真龙".Loc(),"眼魔".Loc(),"深渊领主".Loc()};
   public static int BossIndex(int floor)=>(floor/10-1)%Bosses.Length;
   public static PawnKindDef BossKind(int floor){
    var g=Bosses[BossIndex(floor)];int bar=Array.IndexOf(g,"|");
@@ -129,15 +129,15 @@ namespace LichPhylactery {
   // 碎片兑换（门上，任何时候都能换；重铸规则只在下一层还没生成时可用）。
   public class Offer {public string key,label,def;public int count,price;}
   public static readonly Offer[] Offers={
-   new Offer{key="potion",label="治疗药水",def="LP_PotionHealing",count=1,price=3},
-   new Offer{key="medicine",label="工业药品 ×5",def="MedicineIndustrial",count=5,price=4},
-   new Offer{key="components",label="零部件 ×5",def="ComponentIndustrial",count=5,price=5},
-   new Offer{key="greater",label="强效治疗药水",def="LP_PotionGreaterHealing",count=1,price=8},
-   new Offer{key="scroll",label="随机法术卷轴",count=1,price=6},
-   new Offer{key="spacer",label="高级零部件",def="ComponentSpacer",count=1,price=12},
-   new Offer{key="magic",label="随机魔法物品",count=1,price=30},
-   new Offer{key="stone",label="传奇重铸之石",def=Legend.StoneDef,count=1,price=40},
-   new Offer{key="reroll",label="重铸下一层的迷锁规则",count=0,price=5},
+   new Offer{key="potion",label="治疗药水".Loc(),def="LP_PotionHealing",count=1,price=3},
+   new Offer{key="medicine",label="工业药品 ×5".Loc(),def="MedicineIndustrial",count=5,price=4},
+   new Offer{key="components",label="零部件 ×5".Loc(),def="ComponentIndustrial",count=5,price=5},
+   new Offer{key="greater",label="强效治疗药水".Loc(),def="LP_PotionGreaterHealing",count=1,price=8},
+   new Offer{key="scroll",label="随机法术卷轴".Loc(),count=1,price=6},
+   new Offer{key="spacer",label="高级零部件".Loc(),def="ComponentSpacer",count=1,price=12},
+   new Offer{key="magic",label="随机魔法物品".Loc(),count=1,price=30},
+   new Offer{key="stone",label="传奇重铸之石".Loc(),def=Legend.StoneDef,count=1,price=40},
+   new Offer{key="reroll",label="重铸下一层的迷锁规则".Loc(),count=0,price=5},
   };
   public static int ShardsOn(Map map)=>map==null || ShardDef.Def==null?0:map.listerThings.ThingsOfDef(ShardDef.Def).Where(t=>t.Spawned).Sum(t=>t.stackCount);
   public static bool Pay(Map map,int price){
@@ -153,7 +153,7 @@ namespace LichPhylactery {
    if(!isekaiLooked){isekaiLooked=true;isekaiComp=GenTypes.GetTypeInAnyAssembly("IsekaiLeveling.IsekaiComponent");if(isekaiComp!=null)isekaiGain=HarmonyLib.AccessTools.Method(isekaiComp,"GainXP",new[]{typeof(int),typeof(string)});}
    if(isekaiGain==null)return false;
    var comp=p.AllComps?.FirstOrDefault(c=>isekaiComp.IsInstanceOfType(c));if(comp==null)return false;
-   try{isekaiGain.Invoke(comp,new object[]{Mathf.RoundToInt(amount),"迷锁地牢"});return true;}catch(Exception e){Log.WarningOnce("[DND边缘大陆] 迷锁地牢：Isekai 经验桥失败："+e.Message,0x4D59);return false;}
+   try{isekaiGain.Invoke(comp,new object[]{Mathf.RoundToInt(amount),"迷锁地牢".Loc()});return true;}catch(Exception e){Log.WarningOnce("[DND边缘大陆] 迷锁地牢：Isekai 经验桥失败：".Loc()+e.Message,0x4D59);return false;}
   }
 
   // ---------- 放门 ----------
@@ -204,13 +204,13 @@ namespace LichPhylactery {
 
   public bool Sealed=>state==Mythal.StateSealed;
   public float Points=>Mythal.Points(floor,Map);
-  public string StateLabel=>state==Mythal.StateDormant?"沉睡":state==Mythal.StateOpen?"开启":state==Mythal.StateCleared?"已解开":"封闭";
+  public string StateLabel=>state==Mythal.StateDormant?"沉睡".Loc():state==Mythal.StateOpen?"开启".Loc():state==Mythal.StateCleared?"已解开".Loc():"封闭".Loc();
 
   public override void SpawnSetup(Map map,bool respawningAfterLoad){
    base.SpawnSetup(map,respawningAfterLoad);
    if(!respawningAfterLoad && openTick<0){
     int day=LichMod.Settings?.mythalFirstDay??5;
-    if(Find.Scenario?.name=="冒险者小队")day=Math.Min(day,1); // 冒险者小队开局第 1 天就开
+    if((Find.Scenario?.name=="冒险者小队" || Find.Scenario?.name==DefDatabase<ScenarioDef>.GetNamedSilentFail("LP_AdventurerPartyScenario")?.label))day=Math.Min(day,1); // 冒险者小队开局第 1 天就开
     openTick=Math.Max(Find.TickManager.TicksGame+(Find.TickManager.TicksGame>GenDate.TicksPerDay*2?Mythal.OldSaveOpenTicks:0),day*GenDate.TicksPerDay);
    }
   }
@@ -220,9 +220,9 @@ namespace LichPhylactery {
   }}
 
   public override bool IsEnterable(out string reason){
-   if(!Mythal.Enabled){reason="迷锁地牢已在设置里关闭";return false;}
-   if(state==Mythal.StateDormant){reason="迷锁尚未苏醒（还剩 "+((openTick-Find.TickManager.TicksGame)/(float)GenDate.TicksPerDay).ToString("0.0")+" 天）";return false;}
-   if(state==Mythal.StateSealed){reason="迷锁正在重组（还剩 "+((sealUntil-Find.TickManager.TicksGame)/(float)GenDate.TicksPerDay).ToString("0.0")+" 天）";return false;}
+   if(!Mythal.Enabled){reason="迷锁地牢已在设置里关闭".Loc();return false;}
+   if(state==Mythal.StateDormant){reason="迷锁尚未苏醒（还剩 ".Loc()+((openTick-Find.TickManager.TicksGame)/(float)GenDate.TicksPerDay).ToString("0.0")+" 天）".Loc();return false;}
+   if(state==Mythal.StateSealed){reason="迷锁正在重组（还剩 ".Loc()+((sealUntil-Find.TickManager.TicksGame)/(float)GenDate.TicksPerDay).ToString("0.0")+" 天）".Loc();return false;}
    return base.IsEnterable(out reason);
   }
   protected override Map GeneratePocketMapInt(){
@@ -254,7 +254,7 @@ namespace LichPhylactery {
    else downedSince=-1;
    if(players.Count==0){
     if(state==Mythal.StateCleared){Collapse();return;}
-    if(now-lastVisitTick>=Mythal.RewindTicks){Rewind("这一层无人进入已满 5 天，迷锁把它重新编织了一遍：怪物满血，布局改变。");return;}
+    if(now-lastVisitTick>=Mythal.RewindTicks){Rewind("这一层无人进入已满 5 天，迷锁把它重新编织了一遍：怪物满血，布局改变。".Loc());return;}
    }
   }
   public void ApplyRule(Pawn p){
@@ -269,19 +269,19 @@ namespace LichPhylactery {
     healed.Add(p);
     foreach(var inj in p.health.hediffSet.hediffs.OfType<Hediff_Injury>().Where(i=>!i.IsPermanent()).ToList())p.health.RemoveHediff(inj);
     if(p.needs?.rest!=null)p.needs.rest.CurLevel=1f;
-    Messages.Message(p.LabelShort+"饮下迷锁泉：伤口愈合，疲劳一扫而空（每人每层一次）。",p,MessageTypeDefOf.PositiveEvent,false);
+    Messages.Message(p.LabelShort+"饮下迷锁泉：伤口愈合，疲劳一扫而空（每人每层一次）。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);
    }
   }
 
   public void Open(bool letter){
    state=Mythal.StateOpen;sealUntil=-1;
    if(theme==null)theme=Mythal.RollTheme(floor);if(rule==null)rule=Mythal.RollRule(floor);
-   if(letter)Find.LetterStack.ReceiveLetter("迷锁之门开启","迷锁之门的符文重新亮起：第 "+floor+" 层可以进入了。\n\n"+FloorSummary()+"\n\n选中迷锁之门，用“进入”带人和物资下去。里面可以随时进出补给；打倒守护者就算解开这一层。",LetterDefOf.NeutralEvent,this);
+   if(letter)Find.LetterStack.ReceiveLetter("迷锁之门开启".Loc(),"迷锁之门的符文重新亮起：第 ".Loc()+floor+" 层可以进入了。\n\n".Loc()+FloorSummary()+"\n\n选中迷锁之门，用“进入”带人和物资下去。里面可以随时进出补给；打倒守护者就算解开这一层。".Loc(),LetterDefOf.NeutralEvent,this);
   }
   public string FloorSummary(){
-   string s="主题："+(theme?.label??"未知")+"；迷锁规则："+(rule?.label??"无")+(rule!=null && !rule.description.NullOrEmpty() && rule.hediff!=null?"（"+rule.description+"）":"")+"\n危险度 "+Points.ToString("0");
-   if(Mythal.Milestone(floor))s+="\n里程碑层：守护者是"+Mythal.BossTitles[Mythal.BossIndex(floor)]+"。";
-   else if(Mythal.Empowered(floor))s+="\n强化守护者层。";
+   string s="主题：".Loc()+(theme?.label??"未知".Loc())+"；迷锁规则：".Loc()+(rule?.label??"无".Loc())+(rule!=null && !rule.description.NullOrEmpty() && rule.hediff!=null?"（".Loc()+rule.description+"）".Loc():"")+"\n危险度 ".Loc()+Points.ToString("0");
+   if(Mythal.Milestone(floor))s+="\n里程碑层：守护者是".Loc()+Mythal.BossTitles[Mythal.BossIndex(floor)]+"。".Loc();
+   else if(Mythal.Empowered(floor))s+="\n强化守护者层。".Loc();
    return s;
   }
 
@@ -304,7 +304,7 @@ namespace LichPhylactery {
     Mythal.Drop(loot,cell,pm);
     SpawnReturnPortal(cell);
    }
-   Find.LetterStack.ReceiveLetter("迷锁第 "+floor+" 层已解开","守护者倒下了，迷锁把这一层的力量还给了解开它的人。"+(got.Count>0?"\n\n冒险者经验："+string.Join("，",got):"")+(Mythal.Milestone(floor)?"\n\n这是一次里程碑（迷锁·第 "+(floor/10)+" 环）。":"")+"\n\n守护者房里出现了回程门、"+Mythal.Shards(floor)+" 片迷锁碎片和守护者的宝藏。所有人离开后这一层会坍塌，迷锁封闭 "+(Mythal.SealTicks/GenDate.TicksPerDay)+" 天后重组成第 "+(floor+1)+" 层。留在里面的东西会一起消失。",LetterDefOf.PositiveEvent,new LookTargets(this));
+   Find.LetterStack.ReceiveLetter("迷锁第 ".Loc()+floor+" 层已解开".Loc(),"守护者倒下了，迷锁把这一层的力量还给了解开它的人。".Loc()+(got.Count>0?"\n\n冒险者经验：".Loc()+string.Join("，".Loc(),got):"")+(Mythal.Milestone(floor)?"\n\n这是一次里程碑（迷锁·第 ".Loc()+(floor/10)+" 环）。".Loc():"")+"\n\n守护者房里出现了回程门、".Loc()+Mythal.Shards(floor)+" 片迷锁碎片和守护者的宝藏。所有人离开后这一层会坍塌，迷锁封闭 ".Loc()+(Mythal.SealTicks/GenDate.TicksPerDay)+" 天后重组成第 ".Loc()+(floor+1)+" 层。留在里面的东西会一起消失。".Loc(),LetterDefOf.PositiveEvent,new LookTargets(this));
   }
   // 回程门：同一个出口 Def，再接一扇到这座门（原出口保持不变）。
   public Thing SpawnReturnPortal(IntVec3 near){
@@ -319,16 +319,16 @@ namespace LichPhylactery {
    floor++;theme=null;rule=null;timeInside.Clear();
    state=Mythal.StateSealed;sealUntil=Find.TickManager.TicksGame+Mythal.SealTicks;
    theme=Mythal.RollTheme(floor);rule=Mythal.RollRule(floor);
-   Messages.Message("迷锁第 "+(floor-1)+" 层坍塌了。迷锁封闭，"+(Mythal.SealTicks/GenDate.TicksPerDay)+" 天后重组成第 "+floor+" 层。",this,MessageTypeDefOf.NeutralEvent,false);
+   Messages.Message("迷锁第 ".Loc()+(floor-1)+" 层坍塌了。迷锁封闭，".Loc()+(Mythal.SealTicks/GenDate.TicksPerDay)+" 天后重组成第 ".Loc()+floor+" 层。".Loc(),this,MessageTypeDefOf.NeutralEvent,false);
   }
   public void Rewind(string why){
    DestroyFloor();
-   Messages.Message("迷锁第 "+floor+" 层回卷："+why,this,MessageTypeDefOf.NeutralEvent,false);
+   Messages.Message("迷锁第 ".Loc()+floor+" 层回卷：".Loc()+why,this,MessageTypeDefOf.NeutralEvent,false);
   }
   void Expel(List<Pawn> players){
    bool cleared=state==Mythal.StateCleared;
    foreach(var p in players){Mythal.MoveTo(p,Map,Position);if(p.RaceProps.Humanlike && Mythal.ExpelledThought.Def!=null)p.needs?.mood?.thoughts?.memories?.TryGainMemory(Mythal.ExpelledThought.Def);}
-   Find.LetterStack.ReceiveLetter("被迷锁驱逐","地牢里的人全部倒下了。迷锁没有吞噬他们，而是把他们吐回了门口（带着伤）。"+(cleared?"":"\n\n第 "+floor+" 层回卷：下次进入是新的布局，怪物满血。"),LetterDefOf.NegativeEvent,new LookTargets(players));
+   Find.LetterStack.ReceiveLetter("被迷锁驱逐".Loc(),"地牢里的人全部倒下了。迷锁没有吞噬他们，而是把他们吐回了门口（带着伤）。".Loc()+(cleared?"":"\n\n第 ".Loc()+floor+" 层回卷：下次进入是新的布局，怪物满血。".Loc()),LetterDefOf.NegativeEvent,new LookTargets(players));
    downedSince=-1;
    if(cleared)Collapse();else DestroyFloor();
   }
@@ -346,10 +346,10 @@ namespace LichPhylactery {
   public override IEnumerable<Gizmo> GetGizmos(){
    foreach(var g in base.GetGizmos())yield return g;
    int shards=Mythal.ShardsOn(Map);
-   yield return new Command_Action{defaultLabel="迷锁兑换",defaultDesc="用迷锁碎片在门上换东西。碎片只能在这里用（地图上任何地方的碎片都算）。\n\n现有碎片："+shards,icon=ContentFinder<Texture2D>.Get("LP/Mythal/Shard"),action=()=>Find.WindowStack.Add(new FloatMenu(ExchangeOptions()))};
+   yield return new Command_Action{defaultLabel="迷锁兑换".Loc(),defaultDesc="用迷锁碎片在门上换东西。碎片只能在这里用（地图上任何地方的碎片都算）。\n\n现有碎片：".Loc()+shards,icon=ContentFinder<Texture2D>.Get("LP/Mythal/Shard"),action=()=>Find.WindowStack.Add(new FloatMenu(ExchangeOptions()))};
    if(Prefs.DevMode){
-    yield return new Command_Action{defaultLabel="开发：开启 / 结束封闭",action=()=>Open(true)};
-    yield return new Command_Action{defaultLabel="开发：解开本层",action=()=>{if(state==Mythal.StateOpen && PocketMap!=null)Clear();}};
+    yield return new Command_Action{defaultLabel="开发：开启 / 结束封闭".Loc(),action=()=>Open(true)};
+    yield return new Command_Action{defaultLabel="开发：解开本层".Loc(),action=()=>{if(state==Mythal.StateOpen && PocketMap!=null)Clear();}};
    }
   }
   public bool CanReroll=>state==Mythal.StateSealed || state==Mythal.StateDormant || state==Mythal.StateOpen && PocketMap==null;
@@ -358,31 +358,31 @@ namespace LichPhylactery {
    foreach(var o in Mythal.Offers){
     if(o.key=="reroll"){if(!CanReroll || floor<5)continue;}
     else if(o.def!=null && Mythal.Thing(o.def)==null)continue;
-    var off=o;string label=o.label+"（"+o.price+" 片）";
-    if(shards<o.price)l.Add(new FloatMenuOption(label+"：碎片不够",null));
+    var off=o;string label=o.label+"（".Loc()+o.price+" 片）".Loc();
+    if(shards<o.price)l.Add(new FloatMenuOption(label+"：碎片不够".Loc(),null));
     else l.Add(new FloatMenuOption(label,()=>Buy(off)));
    }
    return l;
   }
   public bool Buy(Mythal.Offer o){
    if(o==null || !Mythal.Pay(Map,o.price))return false;
-   if(o.key=="reroll"){rule=Mythal.RollRule(floor,rule);Messages.Message("下一层的迷锁规则变成了："+rule?.label,this,MessageTypeDefOf.PositiveEvent,false);return true;}
+   if(o.key=="reroll"){rule=Mythal.RollRule(floor,rule);Messages.Message("下一层的迷锁规则变成了：".Loc()+rule?.label,this,MessageTypeDefOf.PositiveEvent,false);return true;}
    string name=o.key=="scroll"?new[]{"LP_ScrollFireball","LP_ScrollTeleport","LP_ScrollProtectionEvil","LP_ScrollTrueSeeing"}.Where(n=>Mythal.Thing(n)!=null).RandomElementWithFallback():o.key=="magic"?Mythal.RandomMagicItem():o.def;
    var d=Mythal.Thing(name);if(d==null)return false;
    var t=ThingMaker.MakeThing(d,d.MadeFromStuff?GenStuff.DefaultStuffFor(d):null);t.stackCount=Math.Max(1,o.count);
    GenPlace.TryPlaceThing(t,InteractionCell.IsValid?InteractionCell:Position,Map,ThingPlaceMode.Near);
-   Messages.Message("迷锁兑换："+t.LabelCap,t,MessageTypeDefOf.PositiveEvent,false);
+   Messages.Message("迷锁兑换：".Loc()+t.LabelCap,t,MessageTypeDefOf.PositiveEvent,false);
    return true;
   }
 
   public override string GetInspectString(){
    var sb=new System.Text.StringBuilder();int now=Find.TickManager.TicksGame;
-   if(!Mythal.Enabled)sb.Append("迷锁地牢已在设置里关闭");
-   else if(state==Mythal.StateDormant)sb.Append("沉睡：还剩 "+((openTick-now)/(float)GenDate.TicksPerDay).ToString("0.0")+" 天开启第 "+floor+" 层");
-   else if(state==Mythal.StateSealed)sb.Append("封闭：还剩 "+((sealUntil-now)/(float)GenDate.TicksPerDay).ToString("0.0")+" 天重组成第 "+floor+" 层");
-   else sb.Append((state==Mythal.StateCleared?"已解开：":"开启：")+"第 "+floor+" 层"+(PocketMap!=null?"，里面有 "+PocketMap.mapPawns.AllPawnsSpawned.Count(p=>p.Faction==Faction.OfPlayer)+" 个我方单位":""));
+   if(!Mythal.Enabled)sb.Append("迷锁地牢已在设置里关闭".Loc());
+   else if(state==Mythal.StateDormant)sb.Append("沉睡：还剩 ".Loc()+((openTick-now)/(float)GenDate.TicksPerDay).ToString("0.0")+" 天开启第 ".Loc()+floor+" 层".Loc());
+   else if(state==Mythal.StateSealed)sb.Append("封闭：还剩 ".Loc()+((sealUntil-now)/(float)GenDate.TicksPerDay).ToString("0.0")+" 天重组成第 ".Loc()+floor+" 层".Loc());
+   else sb.Append((state==Mythal.StateCleared?"已解开：".Loc():"开启：".Loc())+"第 ".Loc()+floor+" 层".Loc()+(PocketMap!=null?"，里面有 ".Loc()+PocketMap.mapPawns.AllPawnsSpawned.Count(p=>p.Faction==Faction.OfPlayer)+" 个我方单位".Loc():""));
    if(Mythal.Enabled && state!=Mythal.StateCleared)sb.Append("\n"+FloorSummary());
-   if(best>0)sb.Append("\n最深解开：第 "+best+" 层");
+   if(best>0)sb.Append("\n最深解开：第 ".Loc()+best+" 层".Loc());
    string b=base.GetInspectString();if(!b.NullOrEmpty())sb.Append("\n"+b);
    return sb.ToString();
   }
@@ -530,7 +530,7 @@ namespace LichPhylactery {
    var gate=Mythal.TryPlaceGate(map,Mythal.ColonyCenter(map));if(gate==null)return;
    placed=true;
    bool old=Find.TickManager.TicksGame>GenDate.TicksPerDay*2;
-   Find.LetterStack.ReceiveLetter(old?"地下传来低沉的嗡鸣":"迷锁之门","殖民地旁边的地面裂开，一座古老的石拱门升了起来：这是埋在地下的失落迷锁的入口。\n\n迷锁每次被解开一层就会坍塌，封闭 "+(Mythal.SealTicks/GenDate.TicksPerDay)+" 天后用新的形状重组，层数一直往下，没有尽头。每层打倒守护者就能拿到冒险者经验、迷锁碎片和宝藏；每 10 层有一个里程碑首领。\n\n门会在 "+((gate.openTick-Find.TickManager.TicksGame)/(float)GenDate.TicksPerDay).ToString("0.#")+" 天后第一次开启。",LetterDefOf.NeutralEvent,gate);
+   Find.LetterStack.ReceiveLetter(old?"地下传来低沉的嗡鸣".Loc():"迷锁之门".Loc(),"殖民地旁边的地面裂开，一座古老的石拱门升了起来：这是埋在地下的失落迷锁的入口。\n\n迷锁每次被解开一层就会坍塌，封闭 ".Loc()+(Mythal.SealTicks/GenDate.TicksPerDay)+" 天后用新的形状重组，层数一直往下，没有尽头。每层打倒守护者就能拿到冒险者经验、迷锁碎片和宝藏；每 10 层有一个里程碑首领。\n\n门会在 ".Loc()+((gate.openTick-Find.TickManager.TicksGame)/(float)GenDate.TicksPerDay).ToString("0.#")+" 天后第一次开启。".Loc(),LetterDefOf.NeutralEvent,gate);
   }
  }
 
@@ -547,19 +547,19 @@ namespace LichPhylactery {
  public static class MythalSettings {
   public static void Draw(Listing_Standard l){
    var s=LichMod.Settings;
-   l.GapLine();l.Label("迷锁地牢");
-   l.CheckboxLabeled("启用迷锁地牢",ref s.mythalEnabled,"（1.60.0）出生点旁的迷锁之门：一层一层往下打，每层打倒守护者拿冒险者经验、迷锁碎片和宝藏，然后封闭几天重组。关掉后门停在原地不能进入。");
-   l.CheckboxLabeled("开局 / 读档时自动生成迷锁之门",ref s.mythalAutoGate,"只放一次，放在第一个殖民地的殖民者附近。关掉后可以用下面的按钮手动放。");
-   l.Label("第一次开启：第 "+s.mythalFirstDay+" 天（冒险者小队开局第 1 天）");s.mythalFirstDay=(int)l.Slider(s.mythalFirstDay,0,15);
-   l.Label("每层解开后封闭："+s.mythalSealDays+" 天");s.mythalSealDays=(int)l.Slider(s.mythalSealDays,1,10);
-   l.Label("迷锁难度："+s.mythalDifficulty+"%（危险度 = (150 + 层数 × 35) × 难度）");s.mythalDifficulty=(int)l.Slider(s.mythalDifficulty,25,300);
-   l.Label("通关经验倍率："+s.mythalXp+"%");s.mythalXp=(int)l.Slider(s.mythalXp,0,300);
-   l.CheckboxLabeled("通关经验也给 Isekai 等级",ref s.mythalIsekaiXp,"装了 Isekai RPG Leveling 时，通关经验同时按同样数量给 Isekai 经验。");
-   l.Label("装了 Isekai 时的怪物强度："+s.mythalIsekaiPoints+"%（Isekai 会再给怪物加一次评级）");s.mythalIsekaiPoints=(int)l.Slider(s.mythalIsekaiPoints,30,100);
-   if(Current.ProgramState==ProgramState.Playing && Find.CurrentMap!=null && !Find.CurrentMap.IsPocketMap && !Mythal.Gates.Any() && l.ButtonText("在当前地图放下迷锁之门")){
+   l.GapLine();l.Label("迷锁地牢".Loc());
+   l.CheckboxLabeled("启用迷锁地牢".Loc(),ref s.mythalEnabled,"（1.60.0）出生点旁的迷锁之门：一层一层往下打，每层打倒守护者拿冒险者经验、迷锁碎片和宝藏，然后封闭几天重组。关掉后门停在原地不能进入。".Loc());
+   l.CheckboxLabeled("开局 / 读档时自动生成迷锁之门".Loc(),ref s.mythalAutoGate,"只放一次，放在第一个殖民地的殖民者附近。关掉后可以用下面的按钮手动放。".Loc());
+   l.Label("第一次开启：第 ".Loc()+s.mythalFirstDay+" 天（冒险者小队开局第 1 天）".Loc());s.mythalFirstDay=(int)l.Slider(s.mythalFirstDay,0,15);
+   l.Label("每层解开后封闭：".Loc()+s.mythalSealDays+" 天".Loc());s.mythalSealDays=(int)l.Slider(s.mythalSealDays,1,10);
+   l.Label("迷锁难度：".Loc()+s.mythalDifficulty+"%（危险度 = (150 + 层数 × 35) × 难度）".Loc());s.mythalDifficulty=(int)l.Slider(s.mythalDifficulty,25,300);
+   l.Label("通关经验倍率：".Loc()+s.mythalXp+"%");s.mythalXp=(int)l.Slider(s.mythalXp,0,300);
+   l.CheckboxLabeled("通关经验也给 Isekai 等级".Loc(),ref s.mythalIsekaiXp,"装了 Isekai RPG Leveling 时，通关经验同时按同样数量给 Isekai 经验。".Loc());
+   l.Label("装了 Isekai 时的怪物强度：".Loc()+s.mythalIsekaiPoints+"%（Isekai 会再给怪物加一次评级）".Loc());s.mythalIsekaiPoints=(int)l.Slider(s.mythalIsekaiPoints,30,100);
+   if(Current.ProgramState==ProgramState.Playing && Find.CurrentMap!=null && !Find.CurrentMap.IsPocketMap && !Mythal.Gates.Any() && l.ButtonText("在当前地图放下迷锁之门".Loc())){
     var g=Mythal.TryPlaceGate(Find.CurrentMap,Mythal.ColonyCenter(Find.CurrentMap));
-    if(g!=null){var c=Current.Game.GetComponent<GameComponent_Mythal>();if(c!=null)c.placed=true;Messages.Message("迷锁之门已放下。",g,MessageTypeDefOf.PositiveEvent,false);}
-    else Messages.Message("附近找不到一块 7×7 的平地放迷锁之门。",MessageTypeDefOf.RejectInput,false);
+    if(g!=null){var c=Current.Game.GetComponent<GameComponent_Mythal>();if(c!=null)c.placed=true;Messages.Message("迷锁之门已放下。".Loc(),g,MessageTypeDefOf.PositiveEvent,false);}
+    else Messages.Message("附近找不到一块 7×7 的平地放迷锁之门。".Loc(),MessageTypeDefOf.RejectInput,false);
    }
   }
  }

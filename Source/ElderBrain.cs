@@ -18,7 +18,7 @@ namespace LichPhylactery {
    foreach(var s in p.skills.skills){float v=MindFlayer.OwnXp(s);if(v>0)m.xp[s.def]=v;}
    return m.xp.Count>0?m:null;
   }
-  public string Summary=>name+"（"+string.Join("、",xp.OrderByDescending(kv=>kv.Value).Take(3).Select(kv=>kv.Key.label+" "+(kv.Value*ElderBrain.InheritShare).ToString("0")))+"）";
+  public string Summary=>name+"（".Loc()+string.Join("、".Loc(),xp.OrderByDescending(kv=>kv.Value).Take(3).Select(kv=>kv.Key.label+" "+(kv.Value*ElderBrain.InheritShare).ToString("0")))+"）".Loc();
   public void ExposeData(){Scribe_Values.Look(ref name,"name");Scribe_Collections.Look(ref xp,"xp",LookMode.Def,LookMode.Value);if(Scribe.mode==LoadSaveMode.PostLoadInit){xp=(xp??new Dictionary<SkillDef,float>()).Where(kv=>kv.Key!=null).ToDictionary(kv=>kv.Key,kv=>kv.Value);}}
  }
 
@@ -64,14 +64,14 @@ namespace LichPhylactery {
   public bool Initialize(Corpse corpse){
    if(initialized || !IsFlayerCorpse(corpse))return false;
    initialized=true;brains=Math.Max(brains,1);corpse.Destroy();
-   if(Faction==Faction.OfPlayer)Messages.Message("上古脑吞下了夺心魔的尸体，苏醒过来。",this,MessageTypeDefOf.PositiveEvent,false);
+   if(Faction==Faction.OfPlayer)Messages.Message("上古脑吞下了夺心魔的尸体，苏醒过来。".Loc(),this,MessageTypeDefOf.PositiveEvent,false);
    return true;
   }
   public void AddBrain(Pawn victim){
    if(!initialized)return;
    int before=Level;brains++;
    var m=BrainMemory.Of(victim);if(m!=null){memories.Add(m);while(memories.Count>ElderBrain.MaxMemories)memories.RemoveAt(0);}
-   if(Level>before && Faction==Faction.OfPlayer)Find.LetterStack.ReceiveLetter("上古脑成长","上古脑吸收了足够多的大脑，成长到"+Level+"级。蝌蚪产出更快了。"+(Level>=ElderBrain.SummonLevel && LichMod.Settings.elderBrainSummon?"\n\n它开始用心灵呼唤远方的流浪者。":""),LetterDefOf.PositiveEvent,this);
+   if(Level>before && Faction==Faction.OfPlayer)Find.LetterStack.ReceiveLetter("上古脑成长".Loc(),"上古脑吸收了足够多的大脑，成长到".Loc()+Level+"级。蝌蚪产出更快了。".Loc()+(Level>=ElderBrain.SummonLevel && LichMod.Settings.elderBrainSummon?"\n\n它开始用心灵呼唤远方的流浪者。".Loc():""),LetterDefOf.PositiveEvent,this);
   }
   protected override void Tick(){
    base.Tick();
@@ -92,11 +92,11 @@ namespace LichPhylactery {
   public void Starve(){
    bool lost=memories.Count>0;if(lost)memories.RemoveAt(0);
    if(Faction!=null)foreach(var p in ElderBrain.FlayersOf(Faction).Where(p=>p.Map==Map).ToList())p.needs?.mood?.thoughts?.memories?.TryGainMemory(ElderBrain.Starving);
-   if(Faction==Faction.OfPlayer)Messages.Message("上古脑断粮挨饿了一天"+(lost?"，丢失了一份传承记忆":"")+"。用草药、生肉或饭菜喂它。",this,MessageTypeDefOf.NegativeEvent,false);
+   if(Faction==Faction.OfPlayer)Messages.Message("上古脑断粮挨饿了一天".Loc()+(lost?"，丢失了一份传承记忆".Loc():"")+"。用草药、生肉或饭菜喂它。".Loc(),this,MessageTypeDefOf.NegativeEvent,false);
   }
   public Thing SpawnTadpole(){
    var t=ThingMaker.MakeThing(Tadpoles.Item);GenPlace.TryPlaceThing(t,InteractionCellOrNear,Map,ThingPlaceMode.Near);
-   if(Faction==Faction.OfPlayer)Messages.Message("上古脑产出了一条夺心魔蝌蚪。",t,MessageTypeDefOf.PositiveEvent,false);
+   if(Faction==Faction.OfPlayer)Messages.Message("上古脑产出了一条夺心魔蝌蚪。".Loc(),t,MessageTypeDefOf.PositiveEvent,false);
    return t;
   }
   IntVec3 InteractionCellOrNear=>Position+IntVec3.South*2;
@@ -112,7 +112,7 @@ namespace LichPhylactery {
    if(p.Faction!=null)p.SetFaction(null);
    GenSpawn.Spawn(p,edge,Map);
    var h=(Hediff_ElderBrainCall)p.health.AddHediff(ElderBrain.Call);h.brain=this;h.Pull();
-   if(Faction==Faction.OfPlayer)Find.LetterStack.ReceiveLetter("上古脑的呼唤","上古脑用心灵呼唤了一个流浪者："+p.LabelShort+"正恍惚地走向它，到达后会倒在旁边。",LetterDefOf.NeutralEvent,p);
+   if(Faction==Faction.OfPlayer)Find.LetterStack.ReceiveLetter("上古脑的呼唤".Loc(),"上古脑用心灵呼唤了一个流浪者：".Loc()+p.LabelShort+"正恍惚地走向它，到达后会倒在旁边。".Loc(),LetterDefOf.NeutralEvent,p);
    return p;
   }
   public override void Destroy(DestroyMode mode=DestroyMode.Vanish){
@@ -127,22 +127,22 @@ namespace LichPhylactery {
     MindFlayer.Pay(p,Mathf.Min(MindFlayer.Points(p),ElderBrain.DestroyedCerebrumLoss));
     if(p.Map==map)p.stances?.stunner?.StunFor(300,null,false,false,false);
    }
-   if(faction==Faction.OfPlayer)Find.LetterStack.ReceiveLetter("上古脑陨灭","上古脑被摧毁了。群脑的核心断裂，所有夺心魔都受到了心灵反噬：心情大降，脑髓流失。",LetterDefOf.NegativeEvent);
+   if(faction==Faction.OfPlayer)Find.LetterStack.ReceiveLetter("上古脑陨灭".Loc(),"上古脑被摧毁了。群脑的核心断裂，所有夺心魔都受到了心灵反噬：心情大降，脑髓流失。".Loc(),LetterDefOf.NegativeEvent);
   }
   public override IEnumerable<Gizmo> GetGizmos(){
    foreach(var g in base.GetGizmos())yield return g;
    if(Faction!=Faction.OfPlayer)yield break;
-   if(!initialized){yield return new Command_Action{defaultLabel="唤醒上古脑",defaultDesc="把一具夺心魔尸体放在上古脑旁边（相邻格子），上古脑会吞下它并苏醒。",icon=ContentFinder<Texture2D>.Get("MindFlayer/Abilities/DevourBrain",false)??BaseContent.BadTex,action=()=>{var c=NearbyFlayerCorpse();if(c==null || !Initialize(c))Messages.Message("上古脑旁边没有夺心魔尸体。",this,MessageTypeDefOf.RejectInput,false);}};yield break;}
-   yield return new Command_Action{defaultLabel="灌装脑浆罐",defaultDesc="把一份传承记忆灌装成脑浆罐。夺心魔使用脑浆罐会继承其中80%的经验。上古脑最多保存5份记忆。",icon=ContentFinder<Texture2D>.Get("MindFlayer/Items/BrainJar",false)??BaseContent.BadTex,action=()=>Find.WindowStack.Add(new FloatMenu(memories.Select((m,i)=>new FloatMenuOption(m.Summary,()=>FillJar(i))).DefaultIfEmpty(new FloatMenuOption("没有传承记忆",null)).ToList()))};
+   if(!initialized){yield return new Command_Action{defaultLabel="唤醒上古脑".Loc(),defaultDesc="把一具夺心魔尸体放在上古脑旁边（相邻格子），上古脑会吞下它并苏醒。".Loc(),icon=ContentFinder<Texture2D>.Get("MindFlayer/Abilities/DevourBrain",false)??BaseContent.BadTex,action=()=>{var c=NearbyFlayerCorpse();if(c==null || !Initialize(c))Messages.Message("上古脑旁边没有夺心魔尸体。".Loc(),this,MessageTypeDefOf.RejectInput,false);}};yield break;}
+   yield return new Command_Action{defaultLabel="灌装脑浆罐".Loc(),defaultDesc="把一份传承记忆灌装成脑浆罐。夺心魔使用脑浆罐会继承其中80%的经验。上古脑最多保存5份记忆。".Loc(),icon=ContentFinder<Texture2D>.Get("MindFlayer/Items/BrainJar",false)??BaseContent.BadTex,action=()=>Find.WindowStack.Add(new FloatMenu(memories.Select((m,i)=>new FloatMenuOption(m.Summary,()=>FillJar(i))).DefaultIfEmpty(new FloatMenuOption("没有传承记忆".Loc(),null)).ToList()))};
   }
   public override string GetInspectString(){
    var s=base.GetInspectString();var lines=new List<string>();
-   if(!initialized)lines.Add("沉睡中：把一具夺心魔尸体放在旁边唤醒它。");
+   if(!initialized)lines.Add("沉睡中：把一具夺心魔尸体放在旁边唤醒它。".Loc());
    else{
-    lines.Add("等级 "+Level+" / "+ElderBrain.MaxLevel+"；已吸收大脑 "+brains+(Level<ElderBrain.MaxLevel?"（下一级需要"+ElderBrain.Thresholds[Level]+"个）":""));
-    lines.Add(Fed?"下一条蝌蚪："+((TadpoleInterval-tadpoleTicks)/(float)GenDate.TicksPerDay).ToString("0.#")+"天后":"挨饿中：停止产出蝌蚪，每天丢失一份记忆");
-    lines.Add("传承记忆 "+memories.Count+" / "+ElderBrain.MaxMemories);
-    if(LichMod.Settings.elderBrainSummon)lines.Add(Level>=ElderBrain.SummonLevel?"召唤：每"+ElderBrain.SummonIntervalDays+"天呼唤一个流浪者":"召唤：需要"+ElderBrain.SummonLevel+"级");
+    lines.Add("等级 ".Loc()+Level+" / "+ElderBrain.MaxLevel+"；已吸收大脑 ".Loc()+brains+(Level<ElderBrain.MaxLevel?"（下一级需要".Loc()+ElderBrain.Thresholds[Level]+"个）".Loc():""));
+    lines.Add(Fed?"下一条蝌蚪：".Loc()+((TadpoleInterval-tadpoleTicks)/(float)GenDate.TicksPerDay).ToString("0.#")+"天后".Loc():"挨饿中：停止产出蝌蚪，每天丢失一份记忆".Loc());
+    lines.Add("传承记忆 ".Loc()+memories.Count+" / "+ElderBrain.MaxMemories);
+    if(LichMod.Settings.elderBrainSummon)lines.Add(Level>=ElderBrain.SummonLevel?"召唤：每".Loc()+ElderBrain.SummonIntervalDays+"天呼唤一个流浪者".Loc():"召唤：需要".Loc()+ElderBrain.SummonLevel+"级".Loc());
    }
    return string.IsNullOrEmpty(s)?string.Join("\n",lines):s+"\n"+string.Join("\n",lines);
   }
@@ -173,22 +173,22 @@ namespace LichPhylactery {
 
  public class Thing_BrainJar : ThingWithComps {
   public BrainMemory memory;
-  public override string LabelNoCount=>base.LabelNoCount+(memory!=null?"（"+memory.name+"的记忆）":"");
-  public override string GetInspectString(){var s=base.GetInspectString();if(memory==null)return s;var line="可继承："+string.Join("、",memory.xp.OrderByDescending(kv=>kv.Value).Select(kv=>kv.Key.label+" "+(kv.Value*ElderBrain.InheritShare).ToString("0")+"经验"));return string.IsNullOrEmpty(s)?line:s+"\n"+line;}
+  public override string LabelNoCount=>base.LabelNoCount+(memory!=null?"（".Loc()+memory.name+"的记忆）".Loc():"");
+  public override string GetInspectString(){var s=base.GetInspectString();if(memory==null)return s;var line="可继承：".Loc()+string.Join("、".Loc(),memory.xp.OrderByDescending(kv=>kv.Value).Select(kv=>kv.Key.label+" "+(kv.Value*ElderBrain.InheritShare).ToString("0")+"经验".Loc()));return string.IsNullOrEmpty(s)?line:s+"\n"+line;}
   public override void ExposeData(){base.ExposeData();Scribe_Deep.Look(ref memory,"brainMemory");}
   // 继承：每项技能获得记忆中80%的经验。
   public bool Inherit(Pawn p){
    if(memory==null || !MindFlayer.IsMindFlayer(p))return false;
    foreach(var kv in memory.xp)MindFlayer.GrantXp(p,kv.Key,kv.Value*ElderBrain.InheritShare);
-   if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"吸收了"+memory.name+"的传承记忆。",p,MessageTypeDefOf.PositiveEvent,false);
+   if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"吸收了".Loc()+memory.name+"的传承记忆。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);
    memory=null;return true;
   }
  }
  public class CompProperties_UseEffectInheritMemory : CompProperties_UseEffect {public CompProperties_UseEffectInheritMemory(){compClass=typeof(CompUseEffect_InheritMemory);}}
  public class CompUseEffect_InheritMemory : CompUseEffect {
   public override AcceptanceReport CanBeUsedBy(Pawn p){
-   if(!MindFlayer.IsMindFlayer(p))return "只有夺心魔能吸收传承记忆";
-   if((parent as Thing_BrainJar)?.memory==null)return "罐子是空的";
+   if(!MindFlayer.IsMindFlayer(p))return "只有夺心魔能吸收传承记忆".Loc();
+   if((parent as Thing_BrainJar)?.memory==null)return "罐子是空的".Loc();
    return base.CanBeUsedBy(p);
   }
   public override void DoEffect(Pawn usedBy){base.DoEffect(usedBy);if((parent as Thing_BrainJar)?.Inherit(usedBy)==true && !parent.Destroyed)parent.Destroy();}

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（HeroTraits.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>龙</zh><en>dragons</en></s>
+  <s><zh>不死</zh><en>undeath</en></s>
+  <s><zh>邪魔</zh><en>fiends</en></s>
+  <s><zh>异怪</zh><en>aberrations</en></s>
+  <s><zh>仇敌派系</zh><en>enemy faction</en></s>
+  <s><zh>冰</zh><en>ice</en></s>
+  <s><zh>雷</zh><en>thunder</en></s>
+  <s><zh>酸</zh><en>acid</en></s>
+  <s><zh>妖精</zh><en>fey</en></s>
+  <s><zh>旧日</zh><en>old ones</en></s>
+  <s><zh>天赋 ×1.5</zh><en>Talent ×1.5</en></s>
+  <s><zh>极致 ×2.5</zh><en>Paragon ×2.5</en></s>
+  <s><zh>反骨：笨拙按 ×1</zh><en>Contrarian: weakness counts as ×1</en></s>
+  <s><zh>英雄之资 ×</zh><en>Heroic potential ×</en></s>
+  <s><zh>传说事迹 至少 ×</zh><en>Legendary deed at least ×</en></s>
+  <s><zh>极致 ×2</zh><en>Paragon ×2</en></s>
+  <s><zh>，特性 </zh><en>, trait </en></s>
+  <s><zh>（被宗主降阶，下次偿契成功后恢复升阶）</zh><en> (demoted by the patron; rises again after the next successful payment)</en></s>
+  <s><zh>\n预言：</zh><en>\nProphecy: </en></s>
+  <s><zh>（已兑现）</zh><en> (fulfilled)</en></s>
+  <s><zh>（已守住 </zh><en> (defended </en></s>
+  <s><zh>\n命运未尽：</zh><en>\nFate unfinished: </en></s>
+  <s><zh>\n宗主：</zh><en>\nPatron: </en></s>
+  <s><zh>\n连续失败 </zh><en>\nConsecutive failures </en></s>
+  <s><zh> 次（2 次降阶）</zh><en> (2 means demotion)</en></s>
+  <s><zh>仇敌派系：</zh><en>Enemy faction: </en></s>
+  <s><zh>（没有可记的敌对派系）</zh><en>(no hostile faction to record)</en></s>
+  <s><zh>已击杀宿敌 </zh><en>Favored enemies killed </en></s>
+  <s><zh>：宿敌克星</zh><en>: nemesis bane</en></s>
+  <s><zh>近战参与击杀巨人：</zh><en>Giants killed with melee participation: </en></s>
+  <s><zh>\n侍奉：</zh><en>\nServing: </en></s>
+  <s><zh>；敌对目标：</zh><en>; hostile target: </en></s>
+  <s><zh>\n神明干预：</zh><en>\nDivine intervention: </en></s>
+  <s><zh>[DND边缘大陆] 天命周期出错：</zh><en>[DND Rimlands] Destiny cycle error: </en></s>
+  <s><zh>稀有度：</zh><en>Rarity: </en></s>
+  <s><zh>&gt;诅咒&lt;/color&gt; &lt;color=</zh><en>&gt;curse&lt;/color&gt; &lt;color=</en></s>
+  <s><zh>&gt;事迹&lt;/color&gt;</zh><en>&gt;deed&lt;/color&gt;</en></s>
+  <s><zh>特性名字的颜色按稀有度：普通（白）、优秀（绿）、稀有（蓝）、史诗（紫）、传说（橙）、神话（金）；诅咒之力是红色，传说事迹是青色，它们的档位写在悬停说明第一行。</zh><en>Trait name colors follow rarity: common (white), uncommon (green), rare (blue), epic (purple), legendary (orange), mythic (gold); curse powers are red and legendary deeds cyan, with their tier written on the first line of the hover text.</en></s>
+  <s><zh>DND 强力特性</zh><en>DND power traits</en></s>
+  <s><zh>（1.58.0）新生成的人有很小的机会带一个强力特性：英雄之资系与天命（英雄之资、极致是传说，四个天命是神话）、加点与强化天赋（天赋、金刚之躯、锋芒、灵光、传奇之胚和六个强化天赋是稀有，反骨、勤勉是史诗），1.51.0 的四个稀有天赋（史诗）也并进这一次随机。得到一个之后，每次按“额外强力特性”的成功率再得一个，直到失败或达到上限（天命之间、稀有天赋之间、诅咒之间仍然互斥）；传说事迹（青色）由事件授予，不占名额。\n第一个：普通种族 英雄之资系与天命 1% / 加点与强化天赋 4%，中等 0.4% / 3%，传奇种族 0.2% / 1%；四个稀有天赋 2%（传奇种族没有）。\n关闭后不再生成，已有的保留。</zh><en>(1.58.0) Newly generated people have a small chance to carry a power trait: heroic potential line and destinies (heroic potential and paragon are legendary, the four destinies mythic), point and enhancement talents (talent, adamant body, keen edge, aura, legendary seed and six enhancement talents are rare; contrarian and diligent epic); the four 1.51.0 rare talents (epic) also join this roll. After gaining one, each further roll at the "extra power trait" success chance gives another, until a failure or the cap (destinies, rare talents and curses are still mutually exclusive among themselves); legendary deeds (cyan) are granted by events and take no slot.\nFirst one: common races heroic potential line and destinies 1% / point and enhancement talents 4%, middle 0.4% / 3%, legendary races 0.2% / 1%; four rare talents 2% (not for legendary races).\nWhen off, no new ones generate; existing ones are kept.</en></s>
+  <s><zh>强力特性出现率：</zh><en>Power trait frequency: </en></s>
+  <s><zh>每人最多强力特性：</zh><en>Max power traits per person: </en></s>
+  <s><zh>额外强力特性成功率：</zh><en>Extra power trait success chance: </en></s>
+  <s><zh>（1.58.1）每个 13 岁以上的人形得到冒险者等级时免费获得 1 个起源专长（不占属性提升）：有背景特性的按背景（侍僧、贤者 → 魔法学徒；罪犯、士兵 → 警觉；民间英雄 → 酒馆斗殴者；贵族 → 技能专家；隐士 → 治疗者；局外人 → 幸运），否则按背景故事里加得最多的技能；5% 改为幸运。老存档读档时补发一次。敌人也有。关闭后不再发放，已有的保留。</zh><en>(1.58.1) Every humanlike over 13 gets 1 origin feat for free when gaining adventurer levels (not using an ability score improvement): those with background traits by background (acolyte, sage → Magic Initiate; criminal, soldier → Alert; folk hero → Tavern Brawler; noble → Skill Expert; hermit → Healer; outlander → Lucky), otherwise by the skill boosted most by their backstories; 5% get Lucky instead. Old saves get one on loading. Enemies have them too. When off, no more are granted; existing ones are kept.</en></s>
+  <s><zh>实战磨砺</zh><en>Combat honing</en></s>
+  <s><zh>（1.58.3）殖民者在实战和工作里慢慢磨砺属性：每 2500 刻按经验差值累计（力量 ← 格斗 + 采矿 ×0.5，敏捷 ← 射击，体质 ← 受到的伤害 ×100，智力 ← 智识，感知 ←（医疗 + 驯兽 + 种植）×0.5，魅力 ← 社交），满 120000 该项 +1，每项一生最多 +2，不超过上限。Isekai 共存模式下照常累计但只显示。</zh><en>(1.58.3) Colonists slowly hone abilities through combat and work: every 2500 ticks, accumulated by XP difference (Strength ← Melee + Mining ×0.5, Dexterity ← Shooting, Constitution ← damage taken ×100, Intelligence ← Intellectual, Wisdom ← (Medicine + Animals + Plants) ×0.5, Charisma ← Social); at 120000 that ability +1, at most +2 per ability per lifetime, not beyond the cap. In Isekai coexistence mode it accumulates as usual but is only displayed.</en></s>
+  <s><zh>派系声望</zh><en>Faction reputation</en></s>
+  <s><zh>（1.58.3）费伦拓荒同盟、余烬氏族、黑网各有殖民地声望 0～50：完成它发的任务 +3，送礼每 20 好感 +1，在有它的人在场时击杀敌人 +2（每天一次）；不会下降，敌对时冻结。3 / 10 / 25 / 50 四级头衔：商队卖价 -5% → 每季情报信 → 请求援兵冷却减半、商队带专属物品 → 每季一份礼物。</zh><en>(1.58.3) The Faerûn Frontier Alliance, the Ember Clan and the dark net each have colony reputation 0-50: completing their quests +3, +1 per 20 goodwill of gifts, killing enemies while their people are present +2 (once per day); it never drops, and freezes while hostile. Titles at 3 / 10 / 25 / 50: caravan prices -5% → seasonal intel letter → reinforcement cooldown halved, caravans bring an exclusive item → a gift each season.</en></s>
+  <s><zh>敌人携带强力特性</zh><en>Enemies carry power traits</en></s>
+  <s><zh>剧情首领、宿敌冠军 50% 带一个强力特性（人类首领优先英雄之资系与天命），宿敌冠军另有 30% 带一个传说事迹；袭击领队 10% 带加点或强化天赋。关闭后敌对派系的人也不再随机带强力特性。</zh><en>Story bosses and nemesis champions have a 50% chance to carry a power trait (human bosses prefer the heroic potential line and destinies), and nemesis champions another 30% for a legendary deed; raid leaders 10% for a point or enhancement talent. When off, hostile faction members no longer randomly carry power traits either.</en></s>
+</LPStrings>

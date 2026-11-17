@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 传奇抗性 -->
+  <LP_LegendaryResistance.label>legendary resistance</LP_LegendaryResistance.label>
+  <!-- 传说中的生物能够硬扛下一次本该生效的控制：眩晕、外力造成的精神状态、控制类状态和疼痛倒地，每次消耗一次，效果完全不生效。每个游戏日恢复满；在自己的巢穴里多一次。传奇冒险者每 5 级获得 1 次。 -->
+  <LP_LegendaryResistance.description>Legendary creatures can shrug off one control effect that should have taken hold: stuns, externally caused mental states, control-type conditions and pain downing; each use consumes one, and the effect fails completely. Fully restored each game day; one extra in their own lair. Legendary adventurers gain 1 per 5 levels.</LP_LegendaryResistance.description>
+  <!-- 传奇点 -->
+  <LP_LegendaryActions.label>legendary points</LP_LegendaryActions.label>
+  <!-- 传说中的生物在别人出手的间隙也能行动：15 格内的敌人每完成一次攻击，它就花传奇点做一次传奇动作。每 4 秒恢复 1 点。 -->
+  <LP_LegendaryActions.description>Legendary creatures can act in the gaps between others' moves: each time an enemy within 15 cells finishes an attack, it spends a legendary point on a legendary action. Recovers 1 point every 4 seconds.</LP_LegendaryActions.description>
+  <!-- 惊惧 -->
+  <LP_Frightened.label>frightened</LP_Frightened.label>
+  <!-- 被传说中生物的骇人威仪吓住了：手脚发软，打不准也跑不快。 -->
+  <LP_Frightened.description>Frightened by the frightful presence of a legendary creature: weak in the limbs, can't aim well or run fast.</LP_Frightened.description>
+  <!-- 巢穴沙尘 -->
+  <LP_LairSandstorm.label>lair sandstorm</LP_LairSandstorm.label>
+  <!-- 龙巢里卷起的沙尘迷住了眼睛：远程命中降低。 -->
+  <LP_LairSandstorm.description>Sand whipped up in the dragon lair gets in the eyes: ranged hit chance reduced.</LP_LairSandstorm.description>
+  <!-- 巢穴黑暗 -->
+  <LP_LairDarkness.label>lair darkness</LP_LairDarkness.label>
+  <!-- 黑龙召来的魔法黑暗：什么都看不清，命中大幅降低。 -->
+  <LP_LairDarkness.description>Magical darkness called by a black dragon: can't see a thing, hit chance sharply reduced.</LP_LairDarkness.description>
+</LanguageData>

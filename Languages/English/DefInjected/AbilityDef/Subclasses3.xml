@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 暗影技艺 -->
+  <LP_SH_ShadowArts.label>shadow arts</LP_SH_ShadowArts.label>
+  <!-- 在 20 格内一点放出半径 3 的魔法黑暗：里面的敌人视觉 −50%，持续 10 秒 × 战技强度。被动：站在暗处时自己视觉 +30%、不受魔法黑暗影响。气 2，冷却 20 秒。暗影宗，武僧 3 级。 -->
+  <LP_SH_ShadowArts.description>Release magical darkness of radius 3 at a point within 20 cells: enemies inside get sight -50% for 10 seconds × martial power. Passive: while standing in darkness, your own sight +30% and unaffected by magical darkness. Ki 2, cooldown 20 seconds. Way of Shadow, monk level 3.</LP_SH_ShadowArts.description>
+  <!-- 暗影步 -->
+  <LP_SH_ShadowStep.label>shadow step</LP_SH_ShadowStep.label>
+  <!-- 站在暗处时，瞬移到 12 格内看得见的另一个暗处空格；之后 5 秒内下一次近战命中伤害 ×1.5、命中 +30%。不耗气，冷却 10 秒。暗影宗，武僧 6 级。 -->
+  <LP_SH_ShadowStep.description>While standing in darkness, teleport to another visible dark empty cell within 12 cells; for 5 seconds afterwards the next melee hit deals ×1.5 damage with +30% hit. No ki cost, cooldown 10 seconds. Way of Shadow, monk level 6.</LP_SH_ShadowStep.description>
+  <!-- 幽影斗篷 -->
+  <LP_SH_Cloak.label>cloak of shadows</LP_SH_Cloak.label>
+  <!-- 站在暗处时化身幽影：隐形，直到你出手攻击或走进亮处（光照 30% 以上）。不耗气，冷却 10 秒。暗影宗，武僧 11 级。 -->
+  <LP_SH_Cloak.description>While standing in darkness, become a shadow: invisible until you attack or step into light (30%+ light). No ki cost, cooldown 10 seconds. Way of Shadow, monk level 11.</LP_SH_Cloak.description>
+  <!-- 灵机一斩 -->
+  <LP_SH_Opportunist.label>opportunist</LP_SH_Opportunist.label>
+  <!-- 被动：紧挨着你的敌人被别人打中时，你立刻对它补一次近战（完整的近战结算），每 2 秒一次。暗影宗，武僧 17 级。 -->
+  <LP_SH_Opportunist.description>Passive: when an enemy right next to you is hit by someone else, you immediately follow up with a melee strike on it (a full melee resolution), once every 2 seconds. Way of Shadow, monk level 17.</LP_SH_Opportunist.description>
+  <!-- 散打技巧 -->
+  <LP_OH_Technique.label>open hand technique</LP_OH_Technique.label>
+  <!-- 疾风连击的每一拳附加一种效果，点这个按钮在三种之间切换：击倒（成功率 70%，击晕 1.5 秒）、推开（成功率 70%，推开 3 格）、封招（必定生效，6 秒内对方近战命中 −30%）。目标每比你高 1 级成功率 −5%，最低 10%。不耗气。散打宗，武僧 3 级。 -->
+  <LP_OH_Technique.description>Each punch of Flurry of Blows adds an effect; click this button to cycle three: knockdown (70% chance, stun 1.5 seconds), push (70% chance, push 3 cells), disrupt (always works, the target's melee hit -30% for 6 seconds). -5% success per level the target is above you, minimum 10%. No ki cost. Way of the Open Hand, monk level 3.</LP_OH_Technique.description>
+  <!-- 混元体 -->
+  <LP_OH_Wholeness.label>wholeness of body</LP_OH_Wholeness.label>
+  <!-- 运气自疗：立刻治疗 3 × 武僧等级 的伤势。不耗气，每天一次。散打宗，武僧 6 级。 -->
+  <LP_OH_Wholeness.description>Circulate ki to heal yourself: instantly heal 3 × monk level injury. No ki cost, once per day. Way of the Open Hand, monk level 6.</LP_OH_Wholeness.description>
+  <!-- 宁神境 -->
+  <LP_OH_Tranquility.label>tranquility</LP_OH_Tranquility.label>
+  <!-- 被动：每次睡醒都带着和平的灵光——敌人打来的每一下有 50% 的成功率落空（对方每比你高 1 级 −5%，最低 10%）。你一攻击敌人灵光就散，下次睡醒再有。散打宗，武僧 11 级。 -->
+  <LP_OH_Tranquility.description>Passive: every time you wake you carry an aura of peace: each enemy attack has a 50% chance to miss (-5% per level they're above you, minimum 10%). The aura breaks as soon as you attack an enemy, returning the next time you wake. Way of the Open Hand, monk level 11.</LP_OH_Tranquility.description>
+  <!-- 渗透劲 -->
+  <LP_OH_Palm.label>quivering palm</LP_OH_Palm.label>
+  <!-- 一拳把致命的劲力打进相邻敌人体内（一次完整的近战结算）：劲力潜伏 武僧等级 天，不产生任何效果，直到你用“引爆渗透劲”。同一时间只能有一个人身中渗透劲。气 3，冷却 10 秒。散打宗，武僧 17 级。 -->
+  <LP_OH_Palm.description>Punch a lethal force into an adjacent enemy (a full melee resolution): the force lies latent for monk level days with no effect until you use "detonate quivering palm". Only one person can carry quivering ki at a time. Ki 3, cooldown 10 seconds. Way of the Open Hand, monk level 17.</LP_OH_Palm.description>
+  <!-- 引爆渗透劲 -->
+  <LP_OH_Detonate.label>detonate quivering palm</LP_OH_Detonate.label>
+  <!-- 引爆同一张地图上身中你渗透劲的敌人（不用看得见）：成功率 50%（首领 25%，目标每比你高 1 级 −5%，最低 10%）直接倒下；没成功也受 55 × 战技强度 力场伤害。不耗气，冷却 10 秒。散打宗，武僧 17 级。 -->
+  <LP_OH_Detonate.description>Detonate the enemy on the same map carrying your quivering ki (no need to see them): 50% chance (25% for bosses, -5% per level the target is above you, minimum 10%) to drop them outright; even on failure they take 55 × martial power force damage. No ki cost, cooldown 10 seconds. Way of the Open Hand, monk level 17.</LP_OH_Detonate.description>
+  <!-- 塑能学者 -->
+  <LP_EV_Savant.label>evocation savant</LP_EV_Savant.label>
+  <!-- 被动：研究速度 +20%（钻研法术理论）。塑能学派，法师 2 级。 -->
+  <LP_EV_Savant.description>Passive: research speed +20% (studying spell theory). School of Evocation, wizard level 2.</LP_EV_Savant.description>
+  <!-- 法术塑形（学派） -->
+  <LP_EV_Sculpt.label>sculpt spells (school)</LP_EV_Sculpt.label>
+  <!-- 被动：你的法术伤害（火焰、寒冰、闪电、心灵、奥术力，不是武器打的）打不到友军，火球术、闪电束可以放心往混战里扔。和职业专长「法术塑形」（法力 −1、冷却 ×0.85）不同，可以同时有。塑能学派，法师 2 级。 -->
+  <LP_EV_Sculpt.description>Passive: your spell damage (fire, cold, lightning, psychic, arcane force, not from weapons) can't hit allies, so fireball and lightning bolt can be thrown into melee with confidence. Different from the class feat "Spell sculpting" (mana -1, cooldown ×0.85); both can be had at once. School of Evocation, wizard level 2.</LP_EV_Sculpt.description>
+  <!-- 强力戏法 -->
+  <LP_EV_Potent.label>potent cantrip</LP_EV_Potent.label>
+  <!-- 被动：魔法飞弹（法师的戏法）伤害 ×1.5。塑能学派，法师 6 级。 -->
+  <LP_EV_Potent.description>Passive: magic missile (the wizard cantrip) damage ×1.5. School of Evocation, wizard level 6.</LP_EV_Potent.description>
+  <!-- 强效塑能 -->
+  <LP_EV_Empowered.label>empowered evocation</LP_EV_Empowered.label>
+  <!-- 被动：塑能法术（魔法飞弹、火球术、闪电束、解离术）伤害 + 智力调整值 × 10%（智力 16 → +30%）。塑能学派，法师 10 级。 -->
+  <LP_EV_Empowered.description>Passive: evocation spell (magic missile, fireball, lightning bolt, disintegrate) damage + Intelligence modifier × 10% (Intelligence 16 → +30%). School of Evocation, wizard level 10.</LP_EV_Empowered.description>
+  <!-- 超限导能 -->
+  <LP_EV_Overchannel.label>overchannel</LP_EV_Overchannel.label>
+  <!-- 10 秒内放的下一个塑能法术伤害 ×2。每次睡觉之间第一次用没有代价；之后每多用一次，施法后自己受 26 / 39 / 52…点奥术力反噬（第 2 次 26，每次再 +13，无视抗性）。不耗法力，冷却 10 秒。塑能学派，法师 14 级。 -->
+  <LP_EV_Overchannel.description>The next evocation spell cast within 10 seconds deals ×2 damage. The first use between each sleep has no cost; each further use deals 26 / 39 / 52... arcane force backlash to yourself after casting (26 for the 2nd, +13 each time after, ignoring resistance). No mana cost, cooldown 10 seconds. School of Evocation, wizard level 14.</LP_EV_Overchannel.description>
+  <!-- 法师笔 -->
+  <LP_SC_Quill.label>wizardly quill</LP_SC_Quill.label>
+  <!-- 被动：一支不用墨水的魔法羽毛笔——读卷轴不会失误，研究速度 +10%。书士会，法师 2 级。 -->
+  <LP_SC_Quill.description>Passive: a magic quill that needs no ink: reading scrolls never fails, research speed +10%. Order of Scribes, wizard level 2.</LP_SC_Quill.description>
+  <!-- 觉醒魔典 -->
+  <LP_SC_Tome.label>awakened spellbook</LP_SC_Tome.label>
+  <!-- 点按钮切换火球术和闪电束的伤害类型：原样 → 火焰 → 寒冰 → 闪电 → 奥术力（用来打怕某种元素、或者不怕火的敌人）。不耗法力。书士会，法师 2 级。 -->
+  <LP_SC_Tome.description>Click the button to switch fireball and lightning bolt damage type: unchanged → fire → cold → lightning → arcane force (for enemies weak to some element, or immune to fire). No mana cost. Order of Scribes, wizard level 2.</LP_SC_Tome.description>
+  <!-- 思维具现 -->
+  <LP_SC_Manifest.label>manifest mind</LP_SC_Manifest.label>
+  <!-- 召出魔典里的意识 1 小时：接下来 3 个法师法术不耗法力，15 格内的敌人无法隐形。每天一次。书士会，法师 6 级。 -->
+  <LP_SC_Manifest.description>Manifest the mind of the spellbook for 1 hour: the next 3 wizard spells cost no mana, and enemies within 15 cells can't turn invisible. Once per day. Order of Scribes, wizard level 6.</LP_SC_Manifest.description>
+  <!-- 大书士 -->
+  <LP_SC_MasterScrivener.label>master scrivener</LP_SC_MasterScrivener.label>
+  <!-- 被动：每次睡醒，背包里多一张卷轴（火球术、真知术、防护邪恶、传送术里随机一张），谁都能读。书士会，法师 10 级。 -->
+  <LP_SC_MasterScrivener.description>Passive: each time you wake, one more scroll is in your pack (a random one of fireball, true seeing, protection from evil, teleportation), which anyone can read. Order of Scribes, wizard level 10.</LP_SC_MasterScrivener.description>
+  <!-- 一字同心 -->
+  <LP_SC_OneWord.label>one with the word</LP_SC_OneWord.label>
+  <!-- 被动：每次睡觉之间一次，伤势已经过半时，挡下一次 10 点以上的伤害；代价是法力随机少 3～18 点（不够就扣到 0）。书士会，法师 14 级。 -->
+  <LP_SC_OneWord.description>Passive: once between each sleep, when you've lost over half your health, block one hit of 10 or more damage; the cost is losing a random 3-18 mana (down to 0 if not enough). Order of Scribes, wizard level 14.</LP_SC_OneWord.description>
+  <!-- 龙之徒 -->
+  <LP_DM_Disciple.label>draconic disciple</LP_DM_Disciple.label>
+  <!-- 被动：龙之打击——徒手命中附加 4 × 战技强度 所选元素伤害；龙之威仪——社交影响 +15%、谈判能力 +10%。神龙宗，武僧 3 级。 -->
+  <LP_DM_Disciple.description>Passive: draconic strike, unarmed hits add 4 × martial power damage of the chosen element; draconic presence, social impact +15%, negotiation ability +10%. Way of the Ascendant Dragon, monk level 3.</LP_DM_Disciple.description>
+  <!-- 龙之打击·元素 -->
+  <LP_DM_Element.label>draconic strike: element</LP_DM_Element.label>
+  <!-- 点按钮切换龙的元素：火焰 → 寒冰 → 闪电 → 强酸 → 毒素。龙之打击、龙之息、古龙姿都用它。不耗气。神龙宗，武僧 3 级。 -->
+  <LP_DM_Element.description>Click the button to switch the dragon's element: fire → cold → lightning → acid → poison. Draconic strike, breath of the dragon and ancient dragon stance all use it. No ki cost. Way of the Ascendant Dragon, monk level 3.</LP_DM_Element.description>
+  <!-- 龙之息 -->
+  <LP_DM_Breath.label>breath of the dragon</LP_DM_Breath.label>
+  <!-- 朝一个方向喷出 6 格锥形的龙息（17 级起 12 格）：每个敌人受 12 × 战技强度 所选元素伤害（11 级 18、17 级 24），成功率 50% 被闪开一半（目标每比你高 1 级，闪开的成功率 +5%）。每天免费 2 + (武僧等级 − 1) ÷ 4 次，用完后每次 2 点气。冷却 5 秒。神龙宗，武僧 3 级。 -->
+  <LP_DM_Breath.description>Breathe a 6-cell cone of dragon breath in one direction (12 cells from level 17): each enemy takes 12 × martial power damage of the chosen element (18 at level 11, 24 at 17), with a 50% chance to dodge half (+5% dodge chance per level the target is above you). Free 2 + (monk level - 1) ÷ 4 times per day, then 2 ki each time. Cooldown 5 seconds. Way of the Ascendant Dragon, monk level 3.</LP_DM_Breath.description>
+  <!-- 龙翼翱翔 -->
+  <LP_DM_Wings.label>wings unfurled</LP_DM_Wings.label>
+  <!-- 被动：乘风步期间背后展开虚幻的龙翼，走路时地形、积雪、植物都不减速。神龙宗，武僧 6 级。 -->
+  <LP_DM_Wings.description>Passive: during Step of the Wind, spectral dragon wings unfold on your back, and terrain, snow and plants don't slow you while walking. Way of the Ascendant Dragon, monk level 6.</LP_DM_Wings.description>
+  <!-- 古龙姿 -->
+  <LP_DM_Aspect.label>ancient dragon stance</LP_DM_Aspect.label>
+  <!-- 散发 1 分钟的龙力灵光：半径 3 内的友军（含自己）所选元素伤害 ×0.5；灵光里的敌人成功率 50% 恐慌逃跑 10 秒（目标每比你高 1 级 −5%）。每天第一次免费，之后每次 3 点气。冷却 10 秒。神龙宗，武僧 11 级。 -->
+  <LP_DM_Aspect.description>Exude a draconic aura for 1 minute: allies within radius 3 (including yourself) take ×0.5 damage of the chosen element; enemies in the aura have a 50% chance to panic and flee for 10 seconds (-5% per level the target is above you). The first use each day is free, then 3 ki each time. Cooldown 10 seconds. Way of the Ascendant Dragon, monk level 11.</LP_DM_Aspect.description>
+  <!-- 神龙身 -->
+  <LP_DM_Ascendant.label>ascendant aspect</LP_DM_Ascendant.label>
+  <!-- 被动：强化吐息——龙之息 12 格、伤害 24 × 战技强度；盲视——3 格内的敌人无法隐形；怒气爆发——古龙姿时灵光里每个敌人受 16 × 战技强度 所选元素伤害。神龙宗，武僧 17 级。 -->
+  <LP_DM_Ascendant.description>Passive: augmented breath, dragon's breath 12 cells with 24 × martial power damage; blindsight, enemies within 3 cells can't turn invisible; fury burst, during ancient dragon stance each enemy in the aura takes 16 × martial power damage of the chosen element. Way of the Ascendant Dragon, monk level 17.</LP_DM_Ascendant.description>
+  <!-- 大地法术 -->
+  <LP_LD_LandSpell.label>land's spell</LP_LD_LandSpell.label>
+  <!-- 按所在地图的气候放出不同的法术（20 格内一点）：寒带——寒霜之握（半径 3，8 × 生长强度 冰冻，移动 ×0.4 10 秒）；温带——缠根（半径 3，6 钝器并被藤蔓缠住 10 秒）；沙漠——烈日光柱（朝那里一条 10 格的线，15 火焰并视觉 −50% 3 秒）；湿热——疫病之雾（半径 3 毒素积累 +15%）。10 级起升级：寒霜 ×0.2 并 50% 冻住 3 秒，缠根和疫病半径 5、毒素 +25%，烈日白天 ×1.5。法力 2，冷却 20 秒。大地结社，德鲁伊 2 级。 -->
+  <LP_LD_LandSpell.description>Cast a different spell based on the map's climate (at a point within 20 cells): cold, frost grip (radius 3, 8 × verdant power freezing, movement ×0.4 for 10 seconds); temperate, grasping roots (radius 3, 6 blunt and entangled by vines for 10 seconds); desert, sunbeam (a 10-cell line toward it, 15 fire and sight -50% for 3 seconds); humid, plague mist (radius 3, toxic buildup +15%). Upgraded from level 10: frost ×0.2 with a 50% chance to freeze for 3 seconds, roots and plague radius 5 with toxin +25%, sunbeam ×1.5 by day. Mana 2, cooldown 20 seconds. Circle of the Land, druid level 2.</LP_LD_LandSpell.description>
+  <!-- 自然恢复 -->
+  <LP_LD_NaturalRecovery.label>natural recovery</LP_LD_NaturalRecovery.label>
+  <!-- 静坐 5 秒和大地交流，回复一半的法力上限。每天一次。大地结社，德鲁伊 2 级。 -->
+  <LP_LD_NaturalRecovery.description>Sit still for 5 seconds communing with the earth to recover half your max mana. Once per day. Circle of the Land, druid level 2.</LP_LD_NaturalRecovery.description>
+  <!-- 大地塑形 -->
+  <LP_LD_Terraform.label>earth shaping</LP_LD_Terraform.label>
+  <!-- 永久改造 20 格内一点半径 2 的地形（10 级起半径 3），变成“地形”按钮选的那种：深水（挖成湖）、浅水、沼泽、泥地、土壤、沃土、沙地。只改自然地面——玩家铺的地板、有建筑 / 物品 / 小人的格子、熔岩和丙烷湖（Alpha Biomes）这类特殊地形不动；变成水时上面的植物会被冲掉。法力 2，冷却 10 秒。大地结社，德鲁伊 6 级。 -->
+  <LP_LD_Terraform.description>Permanently reshape the terrain in radius 2 at a point within 20 cells (radius 3 from level 10) into the type picked with the "terrain" button: deep water (dig a lake), shallow water, marsh, mud, soil, rich soil, sand. Only changes natural ground: player-laid floors, cells with buildings / items / pawns, and special terrain like lava and propane lakes (Alpha Biomes) are left alone; plants on cells turned to water are washed away. Mana 2, cooldown 10 seconds. Circle of the Land, druid level 6.</LP_LD_Terraform.description>
+  <!-- 大地塑形·地形 -->
+  <LP_LD_TerraMode.label>earth shaping: terrain</LP_LD_TerraMode.label>
+  <!-- 点按钮切换大地塑形要造的地形：深水 → 浅水 → 沼泽 → 泥地 → 土壤 → 沃土 → 沙地。不耗法力。大地结社，德鲁伊 6 级。 -->
+  <LP_LD_TerraMode.description>Click the button to switch the terrain earth shaping creates: deep water → shallow water → marsh → mud → soil → rich soil → sand. No mana cost. Circle of the Land, druid level 6.</LP_LD_TerraMode.description>
+  <!-- 大地行者 -->
+  <LP_LD_LandStride.label>land's stride</LP_LD_LandStride.label>
+  <!-- 被动：地形、积雪、植物都不减速，不会被藤蔓缠住；种植速度 +20%。大地结社，德鲁伊 6 级。 -->
+  <LP_LD_LandStride.description>Passive: no slowdown from terrain, snow or plants, can't be entangled by vines; plant work speed +20%. Circle of the Land, druid level 6.</LP_LD_LandStride.description>
+  <!-- 自然守护 -->
+  <LP_LD_NatureWard.label>nature's ward</LP_LD_NatureWard.label>
+  <!-- 被动：免疫食物中毒和毒素积累，免疫力增长 ×1.5；大地法术升级，大地塑形半径 +1。大地结社，德鲁伊 10 级。 -->
+  <LP_LD_NatureWard.description>Passive: immune to food poisoning and toxic buildup, immunity gain ×1.5; land's spell upgraded, earth shaping radius +1. Circle of the Land, druid level 10.</LP_LD_NatureWard.description>
+  <!-- 自然庇护所 -->
+  <LP_LD_Sanctuary.label>nature's sanctuary</LP_LD_Sanctuary.label>
+  <!-- 被动：动物（野生的、狂暴的、敌人的）的攻击伤不了你；站在自然地面（不是地板）上时每 4 秒治疗 1。大地结社，德鲁伊 14 级。 -->
+  <LP_LD_Sanctuary.description>Passive: attacks from animals (wild, manhunting, enemy) can't hurt you; while standing on natural ground (not floors), heal 1 every 4 seconds. Circle of the Land, druid level 14.</LP_LD_Sanctuary.description>
+  <!-- 死亡光环 -->
+  <LP_SP_Halo.label>halo of spores</LP_SP_Halo.label>
+  <!-- 开 / 关：半径 2 内的敌人每 4 秒受 3 × 生长强度 坏死伤害（身边有真菌植物时 ×1.5）。开着时法力恢复减半。孢子结社，德鲁伊 2 级。 -->
+  <LP_SP_Halo.description>On / off: enemies within radius 2 take 3 × verdant power necrotic damage every 4 seconds (×1.5 with fungal plants nearby). While on, mana recovery is halved. Circle of Spores, druid level 2.</LP_SP_Halo.description>
+  <!-- 腐烂之触 -->
+  <LP_SP_RotTouch.label>touch of rot</LP_SP_RotTouch.label>
+  <!-- 相邻敌人受 8 × 生长强度 坏死伤害，1 小时内伤口不愈合。法力 1，冷却 5 秒。孢子结社，德鲁伊 2 级。 -->
+  <LP_SP_RotTouch.description>An adjacent enemy takes 8 × verdant power necrotic damage, and its wounds don't heal for 1 hour. Mana 1, cooldown 5 seconds. Circle of Spores, druid level 2.</LP_SP_RotTouch.description>
+  <!-- 共生实体 -->
+  <LP_SP_Symbiotic.label>symbiotic entity</LP_SP_Symbiotic.label>
+  <!-- 1 小时：得到 4 × 德鲁伊等级 的护盾，近战附加 4 × 生长强度 坏死伤害，死亡光环伤害 ×2。法力 2，冷却 1 小时。孢子结社，德鲁伊 6 级。 -->
+  <LP_SP_Symbiotic.description>For 1 hour: gain a shield of 4 × druid level, melee adds 4 × verdant power necrotic damage, halo of spores damage ×2. Mana 2, cooldown 1 hour. Circle of Spores, druid level 6.</LP_SP_Symbiotic.description>
+  <!-- 真菌滋长 -->
+  <LP_SP_Infestation.label>spreading spores</LP_SP_Infestation.label>
+  <!-- 被动：10 格内的人形敌人死后，成功率 50% 长出真菌站起来，替你作战 1 天（不会精神崩溃，到期化成腐土）；它的装备先掉在地上。同一张地图最多 4 个。孢子结社，德鲁伊 10 级。 -->
+  <LP_SP_Infestation.description>Passive: when a humanlike enemy dies within 10 cells, 50% chance it sprouts fungus and stands up to fight for you for 1 day (no mental breaks, turns to rotting soil when time is up); its gear drops to the ground first. At most 4 per map. Circle of Spores, druid level 10.</LP_SP_Infestation.description>
+  <!-- 真菌之躯 -->
+  <LP_SP_FungalBody.label>fungal body</LP_SP_FungalBody.label>
+  <!-- 被动：不会流血，免疫毒素和恐惧，受到的利器伤害 ×0.75。孢子结社，德鲁伊 14 级。 -->
+  <LP_SP_FungalBody.description>Passive: no bleeding, immune to toxins and fear, sharp damage taken ×0.75. Circle of Spores, druid level 14.</LP_SP_FungalBody.description>
+  <!-- 指引箭 -->
+  <LP_ST_StarBolt.label>guiding bolt</LP_ST_StarBolt.label>
+  <!-- 24 格内一个敌人受 14 × 生长强度 光耀伤害，被星光照亮：下一次受到的伤害 ×1.25。每天免费 2 + (德鲁伊等级 − 1) ÷ 4 次，用完后每次 1 法力。被动「星图」：研究速度 +10%；夜里在户外，德鲁伊法术强度 ×1.25。冷却 5 秒。群星结社，德鲁伊 2 级。 -->
+  <LP_ST_StarBolt.description>One enemy within 24 cells takes 14 × verdant power radiant damage and is lit by starlight: the next damage it takes ×1.25. Free 2 + (druid level - 1) ÷ 4 times per day, then 1 mana each time. Passive "star map": research speed +10%; outdoors at night, druid spell power ×1.25. Cooldown 5 seconds. Circle of Stars, druid level 2.</LP_ST_StarBolt.description>
+  <!-- 星象形态 -->
+  <LP_ST_StarryForm.label>starry form</LP_ST_StarryForm.label>
+  <!-- 化身“星座”按钮选的那个星座 1 小时：弓手（每 4 秒朝 15 格内最近的敌人射一箭，8 × 生长强度 光耀）、圣杯（每 4 秒治疗 6 格内伤得最重的友军 4 × 生长强度）、巨龙（心智抗性 +30%、疼痛休克阈值 +30%）。形态中途也能切换星座。法力 2，冷却 2 小时。群星结社，德鲁伊 6 级。 -->
+  <LP_ST_StarryForm.description>Become the constellation picked with the "constellation" button for 1 hour: archer (fires an arrow at the nearest enemy within 15 cells every 4 seconds, 8 × verdant power radiant), chalice (heals the most injured ally within 6 cells for 4 × verdant power every 4 seconds), dragon (mind resistance +30%, pain shock threshold +30%). You can switch constellations mid-form. Mana 2, cooldown 2 hours. Circle of Stars, druid level 6.</LP_ST_StarryForm.description>
+  <!-- 星象形态·星座 -->
+  <LP_ST_FormMode.label>starry form: constellation</LP_ST_FormMode.label>
+  <!-- 点按钮切换星座：弓手 → 圣杯 → 巨龙。不耗法力。群星结社，德鲁伊 6 级。 -->
+  <LP_ST_FormMode.description>Click the button to switch constellations: archer → chalice → dragon. No mana cost. Circle of Stars, druid level 6.</LP_ST_FormMode.description>
+  <!-- 宇宙预兆 -->
+  <LP_ST_CosmicOmen.label>cosmic omen</LP_ST_CosmicOmen.label>
+  <!-- 被动：每天醒来抽一个预兆。吉日：10 格内的友军受到的伤害 ×0.9；凶日：10 格内的敌人受到的伤害 ×1.1。群星结社，德鲁伊 10 级。 -->
+  <LP_ST_CosmicOmen.description>Passive: draw an omen each day on waking. Weal: allies within 10 cells take ×0.9 damage; woe: enemies within 10 cells take ×1.1 damage. Circle of Stars, druid level 10.</LP_ST_CosmicOmen.description>
+  <!-- 全星辉 -->
+  <LP_ST_FullOfStars.label>full of stars</LP_ST_FullOfStars.label>
+  <!-- 被动：星象形态中半透明，受到的伤害 ×0.5（心灵伤害除外），走路不受地形影响。群星结社，德鲁伊 14 级。 -->
+  <LP_ST_FullOfStars.description>Passive: semi-transparent in starry form, damage taken ×0.5 (except psychic), walking unaffected by terrain. Circle of Stars, druid level 14.</LP_ST_FullOfStars.description>
+  <!-- 生命门徒 -->
+  <LP_LF_Disciple.label>disciple of life</LP_LF_Disciple.label>
+  <!-- 被动：治疗伤口、群体治疗的治疗量 ×1.3；缝合速度、缝合质量 +15%，手术成功率 +10%。生命领域，牧师 1 级。 -->
+  <LP_LF_Disciple.description>Passive: cure wounds and mass cure wounds healing ×1.3; tend speed and tend quality +15%, surgery success +10%. Life Domain, cleric level 1.</LP_LF_Disciple.description>
+  <!-- 引导神力·保全生命 -->
+  <LP_LF_Preserve.label>channel divinity: preserve life</LP_LF_Preserve.label>
+  <!-- 半径 6 内伤势过半的友军分享 5 × 牧师等级 的治疗，先给伤得最重的，每人最多治回一半伤势。引导神力 1，不耗神恩。生命领域，牧师 2 级。 -->
+  <LP_LF_Preserve.description>Allies within radius 6 with over half their health lost share 5 × cleric level healing, the most injured first, each healed back at most half their injuries. Channel Divinity 1, no divinity cost. Life Domain, cleric level 2.</LP_LF_Preserve.description>
+  <!-- 受祝的治疗者 -->
+  <LP_LF_BlessedHealer.label>blessed healer</LP_LF_BlessedHealer.label>
+  <!-- 被动：每放一次治疗伤口或群体治疗，自己也治疗 2 + 这个法术的神恩消耗。生命领域，牧师 6 级。 -->
+  <LP_LF_BlessedHealer.description>Passive: each time you cast cure wounds or mass cure wounds, you also heal 2 + that spell's divinity cost. Life Domain, cleric level 6.</LP_LF_BlessedHealer.description>
+  <!-- 神圣打击·光耀 -->
+  <LP_LF_DivineStrike.label>divine strike: radiant</LP_LF_DivineStrike.label>
+  <!-- 被动：每 2 秒第一次武器命中附加 8 × 神恩强度 光耀伤害（14 级起 16）。生命领域，牧师 8 级。 -->
+  <LP_LF_DivineStrike.description>Passive: the first weapon hit every 2 seconds adds 8 × divine power radiant damage (16 from level 14). Life Domain, cleric level 8.</LP_LF_DivineStrike.description>
+  <!-- 至高治疗 -->
+  <LP_LF_Supreme.label>supreme healing</LP_LF_Supreme.label>
+  <!-- 被动：治疗法术的治疗量再 ×1.5（总计 ×1.95）。生命领域，牧师 17 级。 -->
+  <LP_LF_Supreme.description>Passive: healing spell amounts another ×1.5 (×1.95 in total). Life Domain, cleric level 17.</LP_LF_Supreme.description>
+  <!-- 守护之光 -->
+  <LP_LT_WardingFlare.label>warding flare</LP_LT_WardingFlare.label>
+  <!-- 被动：敌人打你时，用掉一次守护之光，成功率 50%（攻击者每比你高 1 级 −5%）被强光闪得落空。每天次数 = 感知调整值（至少 1）。光明领域，牧师 1 级。 -->
+  <LP_LT_WardingFlare.description>Passive: when an enemy attacks you, spend one warding flare for a 50% chance (-5% per level the attacker is above you) to dazzle them into missing. Uses per day = Wisdom modifier (at least 1). Light Domain, cleric level 1.</LP_LT_WardingFlare.description>
+  <!-- 光亮术 -->
+  <LP_LT_Light.label>light</LP_LT_Light.label>
+  <!-- 戏法：让 20 格内一个格子发光 1 天（照明半径 6）。不耗神恩，冷却 5 秒。光明领域，牧师 1 级。 -->
+  <LP_LT_Light.description>Cantrip: make a cell within 20 cells glow for 1 day (light radius 6). No divinity cost, cooldown 5 seconds. Light Domain, cleric level 1.</LP_LT_Light.description>
+  <!-- 引导神力·破晓之光 -->
+  <LP_LT_Dawn.label>channel divinity: radiance of the dawn</LP_LT_Dawn.label>
+  <!-- 半径 6 内驱散魔法黑暗，隐形的敌人现形 1 小时，每个敌人受 10 × 神恩强度 + 牧师等级 光耀伤害（6 级起对亡灵、邪魔、夺心魔 ×2）。引导神力 1，不耗神恩。光明领域，牧师 2 级。 -->
+  <LP_LT_Dawn.description>Dispel magical darkness within radius 6, reveal invisible enemies for 1 hour, and each enemy takes 10 × divine power + cleric level radiant damage (×2 against undead, fiends and mind flayers from level 6). Channel Divinity 1, no divinity cost. Light Domain, cleric level 2.</LP_LT_Dawn.description>
+  <!-- 光之守卫强化 -->
+  <LP_LT_ImprovedFlare.label>improved warding flare</LP_LT_ImprovedFlare.label>
+  <!-- 被动：守护之光也护 15 格内的友军；破晓之光对亡灵、邪魔、夺心魔 ×2。光明领域，牧师 6 级。 -->
+  <LP_LT_ImprovedFlare.description>Passive: warding flare also protects allies within 15 cells; radiance of the dawn ×2 against undead, fiends and mind flayers. Light Domain, cleric level 6.</LP_LT_ImprovedFlare.description>
+  <!-- 强力施法 -->
+  <LP_LT_Potent.label>potent spellcasting</LP_LT_Potent.label>
+  <!-- 被动：神圣打击（牧师戏法）伤害 + 感知调整值 × 10%。光明领域，牧师 8 级。 -->
+  <LP_LT_Potent.description>Passive: divine strike (the cleric cantrip) damage + Wisdom modifier × 10%. Light Domain, cleric level 8.</LP_LT_Potent.description>
+  <!-- 晨光之冕 -->
+  <LP_LT_Corona.label>corona of light</LP_LT_Corona.label>
+  <!-- 1 分钟晨光光环：半径 6 内的敌人每 4 秒受 8 × 神恩强度 光耀伤害、视觉 −30%。还有引导神力时用掉一次、不耗神恩，否则神恩 3。冷却 10 秒。光明领域，牧师 17 级。 -->
+  <LP_LT_Corona.description>A 1-minute aura of dawnlight: enemies within radius 6 take 8 × divine power radiant damage every 4 seconds and sight -30%. Uses one Channel Divinity with no divinity cost if you have any left, otherwise divinity 3. Cooldown 10 seconds. Light Domain, cleric level 17.</LP_LT_Corona.description>
+  <!-- 熔炉祝福 -->
+  <LP_FG_Blessing.label>forge blessing</LP_FG_Blessing.label>
+  <!-- 给手里的武器（没有武器就选身上护甲最好的一件衣服）附魔强化 +1（上限 +10）；换一件祝福时，上一件的 +1 收回。被动：制作和手工活速度 +10%。每天一次。熔炉领域，牧师 1 级。 -->
+  <LP_FG_Blessing.description>Enchant the weapon in hand (or the best-armored piece of worn apparel if no weapon) +1 (up to +10); blessing another piece withdraws the +1 from the previous one. Passive: crafting and handiwork speed +10%. Once per day. Forge Domain, cleric level 1.</LP_FG_Blessing.description>
+  <!-- 引导神力·工匠祝福 -->
+  <LP_FG_Artisan.label>channel divinity: artisan's blessing</LP_FG_Artisan.label>
+  <!-- 用地图上没被禁止的 50 钢，在脚边变出一件优秀品质的钢制长剑、长矛或钉锤（弹窗选）。引导神力 1，不耗神恩。熔炉领域，牧师 2 级。 -->
+  <LP_FG_Artisan.description>Spend 50 steel that isn't forbidden on the map to conjure an excellent-quality steel longsword, spear or mace at your feet (choose in a popup). Channel Divinity 1, no divinity cost. Forge Domain, cleric level 2.</LP_FG_Artisan.description>
+  <!-- 熔炉之魂 -->
+  <LP_FG_Soul.label>soul of the forge</LP_FG_Soul.label>
+  <!-- 被动：火焰伤害 ×0.5；穿重甲（利器护甲 60% 以上）时受到的伤害再 ×0.9。熔炉领域，牧师 6 级。 -->
+  <LP_FG_Soul.description>Passive: fire damage ×0.5; while wearing heavy armor (60%+ sharp armor), damage taken another ×0.9. Forge Domain, cleric level 6.</LP_FG_Soul.description>
+  <!-- 神圣打击·熔火 -->
+  <LP_FG_DivineStrike.label>divine strike: fire</LP_FG_DivineStrike.label>
+  <!-- 被动：每 2 秒第一次武器命中附加 8 × 神恩强度 火焰伤害（14 级起 16）。熔炉领域，牧师 8 级。 -->
+  <LP_FG_DivineStrike.description>Passive: the first weapon hit every 2 seconds adds 8 × divine power fire damage (16 from level 14). Forge Domain, cleric level 8.</LP_FG_DivineStrike.description>
+  <!-- 熔炉圣徒 -->
+  <LP_FG_Saint.label>saint of forge and fire</LP_FG_Saint.label>
+  <!-- 被动：免疫火焰和燃烧；穿重甲时受到的非法术伤害 ×0.5（取代熔炉之魂的 ×0.9）。熔炉领域，牧师 17 级。 -->
+  <LP_FG_Saint.description>Passive: immune to fire and burning; while wearing heavy armor, non-spell damage taken ×0.5 (replacing soul of the forge's ×0.9). Forge Domain, cleric level 17.</LP_FG_Saint.description>
+</LanguageData>

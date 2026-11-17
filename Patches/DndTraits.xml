@@ -36,12 +36,4 @@
       </li>
     </value>
   </Operation>
-  <Operation Class="PatchOperationAddModExtension">
-    <xpath>Defs/XenotypeDef[defName="LP_Kobold"]</xpath>
-    <value>
-      <li Class="LichPhylactery.LP_TraitWeightExtension">
-        <weights><li><trait>LP_DragonServant</trait><degree>0</degree><factor>5</factor></li></weights>
-      </li>
-    </value>
-  </Operation>
 </Patch>

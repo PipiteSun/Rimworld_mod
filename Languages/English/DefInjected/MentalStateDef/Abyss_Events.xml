@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 深渊狂乱 -->
+  <LP_AbyssFrenzy.label>abyssal frenzy</LP_AbyssFrenzy.label>
+  <!-- 精神状态：深渊狂乱 -->
+  <LP_AbyssFrenzy.baseInspectLine>Mental state: abyssal frenzy</LP_AbyssFrenzy.baseInspectLine>
+  <!-- 深渊的声音在{0}的脑子里吼得太响了：[PAWN_pronoun]陷入了深渊狂乱，会攻击看见的任何人。 -->
+  <LP_AbyssFrenzy.beginLetter>The voice of the Abyss roars too loudly in {0}'s head: [PAWN_pronoun] has fallen into an abyssal frenzy and will attack anyone in sight.</LP_AbyssFrenzy.beginLetter>
+  <!-- 深渊狂乱 -->
+  <LP_AbyssFrenzy.beginLetterLabel>abyssal frenzy</LP_AbyssFrenzy.beginLetterLabel>
+  <!-- {0}的深渊狂乱平息了。 -->
+  <LP_AbyssFrenzy.recoveryMessage>{0}'s abyssal frenzy has subsided.</LP_AbyssFrenzy.recoveryMessage>
+</LanguageData>

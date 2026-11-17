@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 制伏 -->
+  <LP_Subdued.label>subdue</LP_Subdued.label>
+  <!-- 被制伏武器或安眠魔法打得头晕眼花。这不是伤口：不流血、不感染、不需要治疗，止痛药也没用。严重度到 100% 时昏迷倒地（意识最多 10%，不会因此死亡）。最后一次受到制伏伤害后 1 小时内不消退，之后每小时减少 10%。其他来源的真实伤口照常按原版规则计算。 -->
+  <LP_Subdued.description>Dazed by a subduing weapon or slumber magic. This isn't a wound: no bleeding, no infection, no treatment needed, and painkillers don't help. At 100% severity they collapse unconscious (consciousness at most 10%, never fatal). Doesn't fade for 1 hour after the last subduing damage, then drops 10% per hour. Real wounds from other sources are calculated by vanilla rules as usual.</LP_Subdued.description>
+  <!-- 晕眩 -->
+  <LP_Subdued.stages.0.label>dazed</LP_Subdued.stages.0.label>
+  <!-- 摇摇欲坠 -->
+  <LP_Subdued.stages.1.label>tottering</LP_Subdued.stages.1.label>
+  <!-- 快撑不住 -->
+  <LP_Subdued.stages.2.label>about to collapse</LP_Subdued.stages.2.label>
+  <!-- 昏迷倒地 -->
+  <LP_Subdued.stages.3.label>knocked out</LP_Subdued.stages.3.label>
+  <!-- 缚网 -->
+  <LP_Netted.label>netted</LP_Netted.label>
+  <!-- 被束缚网缠住了手脚，移动能力 -50%。几秒后就能挣脱。 -->
+  <LP_Netted.description>Hands and feet tangled in a binding net, moving -50%. Can break free in a few seconds.</LP_Netted.description>
+</LanguageData>

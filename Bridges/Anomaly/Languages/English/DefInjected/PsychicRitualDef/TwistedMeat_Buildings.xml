@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 远域献飨 -->
+  <LP_FarRealmFeast.label>Far Realm feast</LP_FarRealmFeast.label>
+  <!-- 把一大堆扭曲肉献给远域，换远域深处的金属或遗物。仪式质量越高，奖励越好：秘银（15–40）、精金（8–20），质量很高时有机会得到稀有遗物“哈达之眼”。\n\n旧日支配者宗主的邪术师主持时质量 +25%。仪式可能失败：失败率 =（1 − 质量）× 25%，失败会引来血肉兽群或一场心灵哭嚎。 -->
+  <LP_FarRealmFeast.description>Offer a big pile of twisted meat to the Far Realm in exchange for metals or relics from deep within it. The higher the ritual quality, the better the reward: mithril (15-40), adamantine (8-20), and at very high quality a chance at the rare relic "Eye of Hadar".\n\n+25% quality when led by a Great Old One warlock. The ritual can fail: failure chance = (1 - quality) × 25%, and failure brings a flesh beast swarm or a psychic wail.</LP_FarRealmFeast.description>
+  <!-- 以现在的质量：{0}。 -->
+  <LP_FarRealmFeast.outcomeDescription>At the current quality: {0}.</LP_FarRealmFeast.outcomeDescription>
+</LanguageData>

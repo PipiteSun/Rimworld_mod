@@ -25,7 +25,7 @@ namespace LichPhylactery {
    var tab=Tab(w);
    if(tab!=lastTab || Time.frameCount-lastFrame>120 || Time.frameCount<lastFrame){
     lastTab=tab;lastFrame=Time.frameCount;
-    try{lastHeight=tab==null?0f:View(w,tab).y+Margin;}catch(Exception e){lastHeight=0f;Log.ErrorOnce("[DND边缘大陆] 研究窗口高度计算失败："+e,0x5E5C011);}
+    try{lastHeight=tab==null?0f:View(w,tab).y+Margin;}catch(Exception e){lastHeight=0f;Log.ErrorOnce("[DND边缘大陆] 研究窗口高度计算失败：".Loc()+e,0x5E5C011);}
    }
    return lastHeight;
   }
@@ -61,7 +61,7 @@ namespace LichPhylactery {
     else if(!wheel && list[i].Calls(hScroll)){list[i].operand=AccessTools.Method(typeof(ResearchScroll),nameof(ResearchScroll.Wheel));wheel=true;}
    }
    ResearchScroll.Patched=(height?1:0)+(wheel?2:0);
-   if(ResearchScroll.Patched!=3)Log.Warning("[DND边缘大陆] 研究窗口纵向滚动补丁没有完全生效（"+ResearchScroll.Patched+"），游戏版本可能改了研究窗口。");
+   if(ResearchScroll.Patched!=3)Log.Warning("[DND边缘大陆] 研究窗口纵向滚动补丁没有完全生效（".Loc()+ResearchScroll.Patched+"），游戏版本可能改了研究窗口。".Loc());
    return list;
   }
  }

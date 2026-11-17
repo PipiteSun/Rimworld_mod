@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 魔法飞弹 -->
+  <LP_MagicMissileBullet.label>magic missile</LP_MagicMissileBullet.label>
+  <!-- 石墙（石墙术） -->
+  <LP_ConjuredWall.label>stone wall (wall of stone)</LP_ConjuredWall.label>
+  <!-- 石墙术召出来的石墙，一天后消散。 -->
+  <LP_ConjuredWall.description>A stone wall summoned by Wall of Stone; dissipates after a day.</LP_ConjuredWall.description>
+  <!-- 符文炮台 -->
+  <LP_RuneTurret.label>rune turret</LP_RuneTurret.label>
+  <!-- 器械师用符文临时拼起来的炮台，装着一支符文火铳。伤害随器械强度提高，60 秒后散架。 -->
+  <LP_RuneTurret.description>A temporary turret pieced together from runes by an artificer, mounting a runic arquebus. Damage rises with artifice power; falls apart after 60 seconds.</LP_RuneTurret.description>
+  <!-- 炮台符文火铳 -->
+  <LP_RuneTurretGun.label>turret runic arquebus</LP_RuneTurretGun.label>
+  <!-- 装在符文炮台上的符文火铳。 -->
+  <LP_RuneTurretGun.description>A runic arquebus mounted on a rune turret.</LP_RuneTurretGun.description>
+  <!-- 炮台符文火铳 -->
+  <LP_RuneTurretGun.verbs.Verb_Shoot.label>turret runic arquebus</LP_RuneTurretGun.verbs.Verb_Shoot.label>
+  <!-- 符文铳弹 -->
+  <LP_Bullet_RuneTurret.label>runic shot</LP_Bullet_RuneTurret.label>
+  <!-- 冒险者手册 -->
+  <LP_AdventurersManual.label>adventurer's manual</LP_AdventurersManual.label>
+  <!-- 一本被翻烂了的小书，记着费伦冒险者的各条道路。读完后：下一个冒险者职业不看技能门槛（也不看兼修要求的冒险者 3 级），并获得一些训练经验（最多练到冒险者 3 级）。还没满 3 个职业、手里没有没用掉的豁免时才能读。一本只能用一次。 -->
+  <LP_AdventurersManual.description>A well-thumbed little book recording the many paths of Faerûn's adventurers. After reading: your next adventurer class ignores skill requirements (and the adventurer level 3 multiclass requirement), and you gain some training XP (up to adventurer level 3). Can only be read while you have fewer than 3 classes and no unused waiver. Each book can be used only once.</LP_AdventurersManual.description>
+  <!-- 研读{0_label} -->
+  <LP_AdventurersManual.comps.CompUsable.useLabel>study {0_label}</LP_AdventurersManual.comps.CompUsable.useLabel>
+</LanguageData>

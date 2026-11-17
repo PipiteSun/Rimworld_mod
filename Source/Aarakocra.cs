@@ -16,7 +16,7 @@ namespace LichPhylactery {
   // 翱翔：忽略墙、栅栏、水和建筑（不要求视线），但不能落到厚岩顶（山体）下。
   public static string CannotSoar(Pawn caster,IntVec3 c){
    var r=Races124.BasicLanding(caster,c,Range(caster));if(r!=null)return r;
-   if(c.GetRoof(caster.Map)?.isThickRoof==true)return "不能飞进山体下面。";
+   if(c.GetRoof(caster.Map)?.isThickRoof==true)return "不能飞进山体下面。".Loc();
    return null;
   }
   public static bool Soar(Pawn caster,IntVec3 c){

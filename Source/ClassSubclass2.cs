@@ -84,7 +84,7 @@ namespace LichPhylactery {
    if((f & FDefender)!=0)DefenderTick(p,h,d,f);
    if((f & FCQAura)!=0)ConquestAura(p);
    if((f & FCQYield)!=0)Yield(p);
-   if((f & FRDSpirit)!=0 && p.health.summaryHealth.SummaryHealthPercent<.5f){float s=Divine(p);float healed=ClassMelee.Heal(p,s);if(healed>0f)Items.Mote(p,"坚韧之魂",RedeemColor);}
+   if((f & FRDSpirit)!=0 && p.health.summaryHealth.SummaryHealthPercent<.5f){float s=Divine(p);float healed=ClassMelee.Heal(p,s);if(healed>0f)Items.Mote(p,"坚韧之魂".Loc(),RedeemColor);}
   }
   static float Divine(Pawn p){var s=DefCache<StatDef>.Get("LP_DivinePower");return s==null?1f:p.GetStatValue(s);}
   static float Martial(Pawn p){var s=DefCache<StatDef>.Get("LP_MartialPower");return s==null?1f:p.GetStatValue(s);}
@@ -95,17 +95,17 @@ namespace LichPhylactery {
   public static bool EKSpell(AbilityDef d)=>d!=null && EKSpells.Contains(d.defName);
   public static int EKManaMax(Hediff_Adventurer h){if(!ClassSubclass.Has(h,EldritchKnight))return 0;int lv=ClassSystem.Level(h,ClassSystem.Fighter);return lv<=0?0:1+lv/3+(ClassSystem.Knows(h.pawn,"LP_EK_Bladestorm")?2:0);}
   public static bool IsSpell(DamageDef d)=>d!=null && (ClassSubclass.Element(d)>=0 || ClassSubclass.Psychic(d) || d==Warlock.ForceDamage || d.defName.Contains("Arcane"));
-  public static string BondCannot(Pawn p){var d=ClassSubclass.Data(p);var held=p.equipment?.Primary;if(held==null && (d?.bond==null || d.bond.Destroyed))return "需要手里拿着一把武器才能绑定。";return null;}
+  public static string BondCannot(Pawn p){var d=ClassSubclass.Data(p);var held=p.equipment?.Primary;if(held==null && (d?.bond==null || d.bond.Destroyed))return "需要手里拿着一把武器才能绑定。".Loc();return null;}
   // 武器羁绊：手里不是绑定的武器、而绑定的武器还在这张地图上 → 召回到手里；否则把手里的武器设为绑定武器（替换旧的）。
   public static string Bond(Pawn p){
    var d=ClassSubclass.Data(p);if(d==null || p.equipment==null)return null;var held=p.equipment.Primary;var b=d.bond as ThingWithComps;
    if(b!=null && !b.Destroyed && b!=held && b.MapHeld==p.MapHeld){
     if(b.ParentHolder is Pawn_EquipmentTracker et)et.Remove(b);else if(b.holdingOwner!=null)b.holdingOwner.Remove(b);else if(b.Spawned)b.DeSpawn();
     if(held!=null)p.equipment.TryDropEquipment(held,out _,p.Position);
-    p.equipment.AddEquipment(b);Items.Mote(p,"召回绑定武器",EKColor);return "recall";
+    p.equipment.AddEquipment(b);Items.Mote(p,"召回绑定武器".Loc(),EKColor);return "recall";
    }
    if(held==null)return null;
-   d.bond=held;Items.Mote(p,"武器羁绊："+held.LabelNoCount,EKColor);return "bind";
+   d.bond=held;Items.Mote(p,"武器羁绊：".Loc()+held.LabelNoCount,EKColor);return "bind";
   }
   public static bool Bound(Pawn p){var d=ClassSubclass.Data(p);return d?.bond!=null && p.equipment?.Primary==d.bond;}
   static Pawn AdjacentFoe(Pawn p){
@@ -130,9 +130,9 @@ namespace LichPhylactery {
    if(h==null){h=HediffMaker.MakeHediff(HediffDefOf.BloodLoss,p);h.Severity=amount;p.health.AddHediff(h);}else h.Severity+=amount;
   }
   static string BloodCannot(Pawn p,int pct){
-   if(Bloodless(p))return "身体里没有血，不能施放血咒";
-   var g=Hemogen(p);if(g!=null){float need=pct*HemogenPerPct;return g.Value+.001f<need?"血原质不足（"+(g.Value*100f).ToString("0")+" / "+(need*100f).ToString("0")+"）":null;}
-   float cur=BloodLoss(p),cap=Cap(p);return cur+pct/100f>cap+.001f?"失血过多（"+cur.ToStringPercent()+"，上限 "+cap.ToStringPercent()+"）":null;
+   if(Bloodless(p))return "身体里没有血，不能施放血咒".Loc();
+   var g=Hemogen(p);if(g!=null){float need=pct*HemogenPerPct;return g.Value+.001f<need?"血原质不足（".Loc()+(g.Value*100f).ToString("0")+" / "+(need*100f).ToString("0")+"）".Loc():null;}
+   float cur=BloodLoss(p),cap=Cap(p);return cur+pct/100f>cap+.001f?"失血过多（".Loc()+cur.ToStringPercent()+"，上限 ".Loc()+cap.ToStringPercent()+"）".Loc():null;
   }
   static void PayBlood(Pawn p,int pct){var g=Hemogen(p);if(g!=null){g.Value-=pct*HemogenPerPct;return;}AddBlood(p,pct/100f);}
   // 越伤越强：伤势每 10% 血咒伤害 +5%，最多 +30%。
@@ -152,21 +152,21 @@ namespace LichPhylactery {
   // 背誓：1 天内神恩恢复 ×0.5、誓言之力不能用；1 天内第三次背誓再加心情「背弃誓言」。
   public static void Oathbreak(Pawn p,string why){
    if(p==null || p.Dead)return;var d=ClassSubclass.Data(p);
-   Items.Give(p,"LP_Oathbroken",OathbrokenTicks);Items.Mote(p,"背誓",new Color(.6f,.4f,.4f));
+   Items.Give(p,"LP_Oathbroken",OathbrokenTicks);Items.Mote(p,"背誓".Loc(),new Color(.6f,.4f,.4f));
    if(d!=null){
     d.ticks.TryGetValue("breakT",out int t);d.ticks.TryGetValue("breakN",out int n);
     if(t<=0 || Now-t>OathbrokenTicks || Now<t){n=0;d.ticks["breakT"]=Math.Max(1,Now);}
     d.ticks["breakN"]=++n;
     if(n>=3){var th=DefDatabase<ThoughtDef>.GetNamedSilentFail("LP_OathForsaken");if(th!=null)p.needs?.mood?.thoughts?.memories?.TryGainMemory(th);d.ticks["breakN"]=0;}
    }
-   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"违背了誓言（"+why+"）：1 天内神恩恢复减半，誓言之力不能用。",p,MessageTypeDefOf.NegativeEvent,false);
+   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"违背了誓言（".Loc()+why+"）：1 天内神恩恢复减半，誓言之力不能用。".Loc(),p,MessageTypeDefOf.NegativeEvent,false);
   }
 
   // ---------- 资源挂钩（ClassSystem.CannotCast / Pay / FreeCast，Ability_Class.Tooltip） ----------
   public static string CannotCast(Pawn p,AbilityDef def,CompProperties_ClassEffect props){
    if(Users.Count==0 && !ClassSubclass.Has(p,Hemomancy) && !ClassSubclass.Has(p,Conquest) && !ClassSubclass.Has(p,Redemption) && !ClassSubclass.Has(p,Oathbreaker.Sub))return null;
    int b=BloodOf(def);if(b>0){var w=BloodCannot(p,b);if(w!=null)return w;}
-   if(Oath(def)){if(Items.Has(p,"LP_Oathbroken"))return "背誓中，誓言之力不能用";if(OathLeft(p)<=0)return "今天的誓言之力用完了";}
+   if(Oath(def)){if(Items.Has(p,"LP_Oathbroken"))return "背誓中，誓言之力不能用".Loc();if(OathLeft(p)<=0)return "今天的誓言之力用完了".Loc();}
    return null;
   }
   public static bool Pay(Pawn p,AbilityDef def,CompProperties_ClassEffect props){
@@ -177,13 +177,13 @@ namespace LichPhylactery {
   public static bool Free(Pawn p,CompProperties_ClassEffect props)=>props!=null && props.heat>0f && HeatRoom(p,props.heat);
   public static string CostText(Pawn p,AbilityDef def){
    int b=BloodOf(def);
-   if(b>0){var g=Hemogen(p);return g!=null?"消耗：血原质 "+(b*HemogenPerPct*100f).ToString("0")+"（现有 "+(g.Value*100f).ToString("0")+"）":"消耗：失血 "+b+"%（现在失血 "+BloodLoss(p).ToStringPercent()+"，上限 "+Cap(p).ToStringPercent()+"）";}
-   if(Oath(def))return "消耗：誓言之力 1（今天还剩 "+OathLeft(p)+" / "+OathMax(Adventurer.Get(p))+"）";
-   float h=HeatOf(def);if(h>0f)return p.HasPsylink?"有灵能器：不耗斗志，改加 "+h.ToString("0")+" 点神经热（神经热放不下时照常耗斗志）":null;
+   if(b>0){var g=Hemogen(p);return g!=null?"消耗：血原质 ".Loc()+(b*HemogenPerPct*100f).ToString("0")+"（现有 ".Loc()+(g.Value*100f).ToString("0")+"）".Loc():"消耗：失血 ".Loc()+b+"%（现在失血 ".Loc()+BloodLoss(p).ToStringPercent()+"，上限 ".Loc()+Cap(p).ToStringPercent()+"）".Loc();}
+   if(Oath(def))return "消耗：誓言之力 1（今天还剩 ".Loc()+OathLeft(p)+" / "+OathMax(Adventurer.Get(p))+"）".Loc();
+   float h=HeatOf(def);if(h>0f)return p.HasPsylink?"有灵能器：不耗斗志，改加 ".Loc()+h.ToString("0")+" 点神经热（神经热放不下时照常耗斗志）".Loc():null;
    return null;
   }
   public static string PickBlock(Hediff_Adventurer h,LP_SubclassDef s){
-   if(s?.defName==Hemomancy && h?.pawn!=null && (Items.IsLich(h.pawn) || Items.Undead(h.pawn)))return "身体里没有血，不能选血咒学派";
+   if(s?.defName==Hemomancy && h?.pawn!=null && (Items.IsLich(h.pawn) || Items.Undead(h.pawn)))return "身体里没有血，不能选血咒学派".Loc();
    return null;
   }
 
@@ -194,7 +194,7 @@ namespace LichPhylactery {
    if(Users.Count==0)return;int f=Flags(p);if(f==0)return;
    if((f & FWarMagic)!=0 && EKSpell(a.def) && p.Spawned){
     int n=(f & FBladestorm)!=0?2:1;
-    Fiends.Defer(()=>{for(int i=0;i<n;i++){var t=AdjacentFoe(p);if(t==null || p.Dead || p.Downed)break;ClassMelee.Strike(p,t);if(i==0)Items.Mote(p,"战争魔法",EKColor);}});
+    Fiends.Defer(()=>{for(int i=0;i<n;i++){var t=AdjacentFoe(p);if(t==null || p.Dead || p.Downed)break;ClassMelee.Strike(p,t);if(i==0)Items.Mote(p,"战争魔法".Loc(),EKColor);}});
    }
    if((f & FRite)!=0 && BloodOf(a.def)>0)Items.Give(p,"LP_HM_Ward",300);
   }
@@ -206,16 +206,16 @@ namespace LichPhylactery {
    if(!Known.Contains(e.effect))return null;var t=target.Thing as Pawn;
    switch(e.effect){
     case "S2Bond":return BondCannot(caster);
-    case "S2Blink":{var map=caster.Map;var c=target.Cell;if(map==null || !c.IsValid || !c.InBounds(map) || c.Fogged(map) || !c.Standable(map) || c.GetFirstPawn(map)!=null)return "需要一个空着的、能站立的格子。";
-     float r=e.range>0f?e.range:10f;if(caster.Position.DistanceTo(c)>r)return "超出距离（"+r.ToString("0")+" 格）。";return null;}
+    case "S2Blink":{var map=caster.Map;var c=target.Cell;if(map==null || !c.IsValid || !c.InBounds(map) || c.Fogged(map) || !c.Standable(map) || c.GetFirstPawn(map)!=null)return "需要一个空着的、能站立的格子。".Loc();
+     float r=e.range>0f?e.range:10f;if(caster.Position.DistanceTo(c)>r)return "超出距离（".Loc()+r.ToString("0")+" 格）。".Loc();return null;}
     case "S2Shove":case "S2BloodSpear":case "S2BloodBind":case "S2FleshPrison":case "S2Spike":case "S2Dominion":
-     if(t==null || t.Dead)return "需要选择一个活着的目标。";if(!t.HostileTo(caster))return "只能对敌人使用。";
-     if(e.effect=="S2Spike" && t.RaceProps.IsMechanoid)return "机械体没有心灵。";
-     if(e.effect=="S2Dominion"){if(!t.RaceProps.Humanlike)return "只能支配人形。";if(Boss(t))return "剧情首领和传奇单位不会被支配。";if(t.IsPrisoner)return "已经是囚犯了。";}
+     if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();if(!t.HostileTo(caster))return "只能对敌人使用。".Loc();
+     if(e.effect=="S2Spike" && t.RaceProps.IsMechanoid)return "机械体没有心灵。".Loc();
+     if(e.effect=="S2Dominion"){if(!t.RaceProps.Humanlike)return "只能支配人形。".Loc();if(Boss(t))return "剧情首领和传奇单位不会被支配。".Loc();if(t.IsPrisoner)return "已经是囚犯了。".Loc();}
      return null;
-    case "S2FleshShape":case "S2BloodRite":if(t==null || t.Dead)return "需要选择一个活着的目标。";if(t.HostileTo(caster))return "只能对友军使用。";if(Bloodless(t))return "目标身体里没有血肉可以塑形。";return null;
-    case "S2CalmMind":if(t==null || t.Dead)return "需要选择一个殖民者。";if(t.HostileTo(caster))return "只能对友军使用。";if(!t.InMentalState)return "目标没有精神崩溃。";return null;
-    case "S2BloodBoil":{var map=caster.Map;var c=target.Cell;if(map==null || !c.IsValid || !c.InBounds(map))return "需要选择一个位置。";return null;}
+    case "S2FleshShape":case "S2BloodRite":if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();if(t.HostileTo(caster))return "只能对友军使用。".Loc();if(Bloodless(t))return "目标身体里没有血肉可以塑形。".Loc();return null;
+    case "S2CalmMind":if(t==null || t.Dead)return "需要选择一个殖民者。".Loc();if(t.HostileTo(caster))return "只能对友军使用。".Loc();if(!t.InMentalState)return "目标没有精神崩溃。".Loc();return null;
+    case "S2BloodBoil":{var map=caster.Map;var c=target.Cell;if(map==null || !c.IsValid || !c.InBounds(map))return "需要选择一个位置。".Loc();return null;}
     case "S2Defender":return DefenderCannot(caster);
    }
    return null;
@@ -227,9 +227,9 @@ namespace LichPhylactery {
     case "S2Bond":Bond(p);break;
     case "S2Blink":if(Invalid(p,e,target)==null){FleckMaker.ThrowDustPuffThick(p.DrawPos,p.Map,1.5f,EKColor);Races124.Blink(p,target.Cell);FleckMaker.ThrowDustPuffThick(p.DrawPos,p.Map,1.5f,EKColor);}break;
     case "S2Shove":if(Hostile(p,t))Shove(p,t,dur);break;
-    case "S2PsiField":{int n=0;foreach(var x in Near(p,p.Position,rad).ToList())if(Ally(p,x)){Items.Give(x,"LP_PW_FieldBuff",dur);n++;}Items.Mote(p,"护卫念场",PsiColor);break;}
+    case "S2PsiField":{int n=0;foreach(var x in Near(p,p.Position,rad).ToList())if(Ally(p,x)){Items.Give(x,"LP_PW_FieldBuff",dur);n++;}Items.Mote(p,"护卫念场".Loc(),PsiColor);break;}
     case "S2TeleStorm":TeleStorm(p,rad,pw);break;
-    case "S2BloodSpear":if(Hostile(p,t)){t.TakeDamage(new DamageInfo(DamageDefOf.Stab,pw,.3f,-1f,p));Items.Mote(t,"血矛",BloodColor);}break;
+    case "S2BloodSpear":if(Hostile(p,t)){t.TakeDamage(new DamageInfo(DamageDefOf.Stab,pw,.3f,-1f,p));Items.Mote(t,"血矛".Loc(),BloodColor);}break;
     case "S2BloodBind":if(Hostile(p,t))BloodBind(p,t,dur);break;
     case "S2FleshShape":if(t!=null && Friendly(p,t))FleshShape(p,t,pw);break;
     case "S2BloodBoil":BloodBoil(p,target.Cell,rad,pw,dur);break;
@@ -237,7 +237,7 @@ namespace LichPhylactery {
     case "S2BloodRite":if(t!=null && Friendly(p,t))Items.Mote(t,BloodRite(t),BloodColor);break;
     case "S2Defender":Defender(p);break;
     case "S2CalmMind":if(t!=null && t.InMentalState)CalmMind(p,t);break;
-    case "S2Spike":if(Hostile(p,t)){t.TakeDamage(new DamageInfo(Warlock.PsychicDamage,pw,1f,-1f,p));Items.Mote(t,"灵能尖刺",AberrantColor);}break;
+    case "S2Spike":if(Hostile(p,t)){t.TakeDamage(new DamageInfo(Warlock.PsychicDamage,pw,1f,-1f,p));Items.Mote(t,"灵能尖刺".Loc(),AberrantColor);}break;
     case "S2Dominion":if(Hostile(p,t))Dominion(p,t);break;
     case "S2CQPresence":Presence(p,rad,dur);break;
     case "S2Reconcile":Reconcile(p);break;
@@ -246,54 +246,54 @@ namespace LichPhylactery {
    return true;
   }
   public static bool Shove(Pawn p,Pawn t,int stun){
-   if(Roll>=Chance(t.RaceProps.IsMechanoid?.4f:.7f,p,t)){Items.Mote(t,"抵抗了念动推送",PsiColor);return false;}
+   if(Roll>=Chance(t.RaceProps.IsMechanoid?.4f:.7f,p,t)){Items.Mote(t,"抵抗了念动推送".Loc(),PsiColor);return false;}
    if(t.Spawned){var dest=DNDPush.Destination(t.Map,t.Position,(t.Position-p.Position).ToVector3(),3);DNDPush.Move(t,dest);}
-   t.stances?.stunner?.StunFor(stun,p);Items.Mote(t,"念动推送",PsiColor);return true;
+   t.stances?.stunner?.StunFor(stun,p);Items.Mote(t,"念动推送".Loc(),PsiColor);return true;
   }
   public static int TeleStorm(Pawn p,float radius,float amount){
    int n=0;foreach(var t in Near(p,p.Position,radius).ToList())if(Hostile(p,t)){t.stances?.stunner?.StunFor(180,p);t.TakeDamage(new DamageInfo(DamageDefOf.Blunt,amount,.2f,-1f,p));n++;}
-   if(p.Map!=null)FleckMaker.ThrowDustPuffThick(p.DrawPos,p.Map,4f,PsiColor);Items.Mote(p,"念动风暴",PsiColor);return n;
+   if(p.Map!=null)FleckMaker.ThrowDustPuffThick(p.DrawPos,p.Map,4f,PsiColor);Items.Mote(p,"念动风暴".Loc(),PsiColor);return n;
   }
   public static bool BloodBind(Pawn p,Pawn t,int ticks){
-   if(Bloodless(t)){Items.Mote(t,"没有血，无效",BloodColor);return false;}
-   if(Roll>=Chance(.65f,p,t)){Items.Mote(t,"挣脱了血缚",BloodColor);return false;}
-   t.stances?.stunner?.StunFor(ticks,p);Items.Mote(t,"血缚",BloodColor);return true;
+   if(Bloodless(t)){Items.Mote(t,"没有血，无效".Loc(),BloodColor);return false;}
+   if(Roll>=Chance(.65f,p,t)){Items.Mote(t,"挣脱了血缚".Loc(),BloodColor);return false;}
+   t.stances?.stunner?.StunFor(ticks,p);Items.Mote(t,"血缚".Loc(),BloodColor);return true;
   }
   public static float FleshShape(Pawn p,Pawn t,float amount){
-   if(t==p){AddBlood(p,-(.2f+BloodOf(DefCache<AbilityDef>.Get("LP_HM_FleshShaping"))/100f));Items.Mote(p,"血肉塑形：止血",BloodColor);return 0f;}
+   if(t==p){AddBlood(p,-(.2f+BloodOf(DefCache<AbilityDef>.Get("LP_HM_FleshShaping"))/100f));Items.Mote(p,"血肉塑形：止血".Loc(),BloodColor);return 0f;}
    foreach(var inj in t.health.hediffSet.hediffs.OfType<Hediff_Injury>().Where(x=>x.Bleeding && !x.IsTended()).ToList())inj.Tended(1f,1f);
-   float healed=ClassMelee.Heal(t,amount);Items.Mote(t,"血肉塑形 "+healed.ToString("0"),BloodColor);return healed;
+   float healed=ClassMelee.Heal(t,amount);Items.Mote(t,"血肉塑形 ".Loc()+healed.ToString("0"),BloodColor);return healed;
   }
   public static int BloodBoil(Pawn p,IntVec3 c,float radius,float perTick,int ticks){
    int n=0;foreach(var t in Near(p,c,radius).ToList()){if(!Hostile(p,t) || Bloodless(t))continue;var h=Items.Give(t,"LP_HM_BloodBoil",ticks,1f) as Hediff_BloodBoil;if(h!=null){h.caster=p;h.amount=perTick;}n++;}
-   if(p.Map!=null)FleckMaker.ThrowDustPuffThick(c.ToVector3Shifted(),p.Map,3f,BloodColor);Items.Mote(p,"血沸",BloodColor);return n;
+   if(p.Map!=null)FleckMaker.ThrowDustPuffThick(c.ToVector3Shifted(),p.Map,3f,BloodColor);Items.Mote(p,"血沸".Loc(),BloodColor);return n;
   }
   public static bool FleshPrison(Pawn p,Pawn t,int ticks){
-   if(Bloodless(t) || t.BodySize>2f){Items.Mote(t,"无效",BloodColor);return false;}
-   if(Roll>=Chance(.6f,p,t)){Items.Mote(t,"挣脱了血肉禁锢",BloodColor);return false;}
-   t.stances?.stunner?.StunFor(ticks,p,false);Items.Mote(t,"血肉禁锢",BloodColor);return true;
+   if(Bloodless(t) || t.BodySize>2f){Items.Mote(t,"无效".Loc(),BloodColor);return false;}
+   if(Roll>=Chance(.6f,p,t)){Items.Mote(t,"挣脱了血肉禁锢".Loc(),BloodColor);return false;}
+   t.stances?.stunner?.StunFor(ticks,p,false);Items.Mote(t,"血肉禁锢".Loc(),BloodColor);return true;
   }
   // 血之秘仪：自动选最需要的一项（先长回缺失的部位，再治好疾病、成瘾和疤痕，最后年龄 −10 岁，不低于 18 岁）。
   public static string BloodRite(Pawn t){
-   var miss=Necro.Missing(t).FirstOrDefault();if(miss!=null){t.health.RestorePart(miss);return "血肉重生："+miss.LabelCap;}
+   var miss=Necro.Missing(t).FirstOrDefault();if(miss!=null){t.health.RestorePart(miss);return "血肉重生：".Loc()+miss.LabelCap;}
    var cure=t.health.hediffSet.hediffs.Where(h=>h is Hediff_Addiction || h.def.chronic || h.def.makesSickThought || h is Hediff_Injury i && i.IsPermanent()).ToList();
-   if(cure.Count>0){foreach(var h in cure)t.health.RemoveHediff(h);return "万病消除（"+cure.Count+" 项）";}
+   if(cure.Count>0){foreach(var h in cure)t.health.RemoveHediff(h);return "万病消除（".Loc()+cure.Count+" 项）".Loc();}
    long year=GenDate.TicksPerYear,min=18*year;var age=t.ageTracker;
-   if(age!=null && age.AgeBiologicalTicks>min+year){age.AgeBiologicalTicks=Math.Max(min,age.AgeBiologicalTicks-10*year);return "重塑青春";}
-   return "血之秘仪";
+   if(age!=null && age.AgeBiologicalTicks>min+year){age.AgeBiologicalTicks=Math.Max(min,age.AgeBiologicalTicks-10*year);return "重塑青春".Loc();}
+   return "血之秘仪".Loc();
   }
   public static bool CalmMind(Pawn p,Pawn t){
-   if(Roll>=CalmChance){Items.Mote(t,"安抚失败",AberrantColor);return false;}
-   t.MentalState?.RecoverFromState();Items.Mote(t,"安抚心灵",AberrantColor);return true;
+   if(Roll>=CalmChance){Items.Mote(t,"安抚失败".Loc(),AberrantColor);return false;}
+   t.MentalState?.RecoverFromState();Items.Mote(t,"安抚心灵".Loc(),AberrantColor);return true;
   }
   public static int Presence(Pawn p,float radius,int ticks){
    int n=0;
    foreach(var t in Near(p,p.Position,radius).ToList()){
     if(!Hostile(p,t) || t.Downed || t.RaceProps.IsMechanoid)continue;
-    if(Roll>=Chance(.6f,p,t)){Items.Mote(t,"抵抗！",ConquestColor);continue;}
-    Items.Give(t,"LP_Shaken",ticks,1f);ClassSubclass.Fear(t,ticks,"征服者之威");n++;
+    if(Roll>=Chance(.6f,p,t)){Items.Mote(t,"抵抗！".Loc(),ConquestColor);continue;}
+    Items.Give(t,"LP_Shaken",ticks,1f);ClassSubclass.Fear(t,ticks,"征服者之威".Loc());n++;
    }
-   Items.Mote(p,"征服者之威",ConquestColor);return n;
+   Items.Mote(p,"征服者之威".Loc(),ConquestColor);return n;
   }
   public static int Reconcile(Pawn p){
    var map=p.Map;if(map==null)return 0;int n=0;var factions=new HashSet<Faction>();
@@ -301,35 +301,35 @@ namespace LichPhylactery {
     if(!Hostile(p,t) || t.Downed || !t.RaceProps.Humanlike || Boss(t) || t.IsPrisoner || t.InMentalState)continue;
     if(Roll>=ReconcileChance)continue;
     t.mindState.enemyTarget=null;if(t.equipment?.Primary!=null)t.equipment.TryDropEquipment(t.equipment.Primary,out _,t.Position);
-    if(t.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.PanicFlee,"和解",true,true)){n++;if(t.Faction!=null && !t.Faction.IsPlayer)factions.Add(t.Faction);Items.Mote(t,"放下武器",RedeemColor);}
+    if(t.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.PanicFlee,"和解".Loc(),true,true)){n++;if(t.Faction!=null && !t.Faction.IsPlayer)factions.Add(t.Faction);Items.Mote(t,"放下武器".Loc(),RedeemColor);}
    }
    if(p.Faction!=null)foreach(var f in factions)if(f.CanChangeGoodwillFor(p.Faction,15))f.TryAffectGoodwillWith(p.Faction,15,true,false);
-   Items.Mote(p,"和解",RedeemColor);
-   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"的和解："+n+" 个敌人放下武器离开"+(factions.Count>0?"，"+string.Join("、",factions.Select(f=>f.Name))+"好感 +15":"")+"。",p,MessageTypeDefOf.PositiveEvent,false);
+   Items.Mote(p,"和解".Loc(),RedeemColor);
+   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"的和解：".Loc()+n+" 个敌人放下武器离开".Loc()+(factions.Count>0?"，".Loc()+string.Join("、".Loc(),factions.Select(f=>f.Name))+"好感 +15".Loc():"")+"。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);
    return n;
   }
 
   // ---------- 异变心灵·心灵支配 ----------
   public static bool Dominion(Pawn p,Pawn t){
    if(t==null || t.Dead || t.mindState==null)return false;
-   if(Roll>=Chance(DominateChance,p,t)){Items.Mote(t,"抵抗了支配",AberrantColor);return false;}
+   if(Roll>=Chance(DominateChance,p,t)){Items.Mote(t,"抵抗了支配".Loc(),AberrantColor);return false;}
    var orig=t.Faction;
    if(t.InMentalState)t.MentalState.RecoverFromState();
    t.SetFaction(p.Faction);t.mindState.enemyTarget=null;
    var gc=Current.Game?.GetComponent<GameComponent_Subclass2>();gc?.Add(t,orig,Now+DominateTicks);
-   Items.Mote(t,"被支配",AberrantColor);
-   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(t.LabelShort+"被"+p.LabelShort+"的心灵支配，暂时加入 1 天。",t,MessageTypeDefOf.PositiveEvent,false);
+   Items.Mote(t,"被支配".Loc(),AberrantColor);
+   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(t.LabelShort+"被".Loc()+p.LabelShort+"的心灵支配，暂时加入 1 天。".Loc(),t,MessageTypeDefOf.PositiveEvent,false);
    return true;
   }
   public static void DominionEnd(Pawn t,Faction orig){
    if(t==null || t.Dead || t.Destroyed)return;
-   if(Roll<DominateStay){Items.Mote(t,"自愿留下",AberrantColor);if(t.Faction!=null && t.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(t.LabelShort+"在支配结束后选择留下。",t,MessageTypeDefOf.PositiveEvent,false);return;}
+   if(Roll<DominateStay){Items.Mote(t,"自愿留下".Loc(),AberrantColor);if(t.Faction!=null && t.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(t.LabelShort+"在支配结束后选择留下。".Loc(),t,MessageTypeDefOf.PositiveEvent,false);return;}
    if(t.Faction==orig)return;
    if(t.Drafted)t.drafter.Drafted=false;
    t.SetFaction(orig==null || orig.defeated?null:orig);
-   if(t.Spawned){t.stances?.stunner?.StunFor(600,null,false);t.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.PanicFlee,"支配结束",true,true);}
-   Items.Mote(t,"支配结束",AberrantColor);
-   if(!Adventurer.TestSuppressed)Messages.Message(t.LabelShort+"挣脱了心灵支配，变回敌人。",t,MessageTypeDefOf.NegativeEvent,false);
+   if(t.Spawned){t.stances?.stunner?.StunFor(600,null,false);t.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.PanicFlee,"支配结束".Loc(),true,true);}
+   Items.Mote(t,"支配结束".Loc(),AberrantColor);
+   if(!Adventurer.TestSuppressed)Messages.Message(t.LabelShort+"挣脱了心灵支配，变回敌人。".Loc(),t,MessageTypeDefOf.NegativeEvent,false);
   }
 
   // ---------- 征服 ----------
@@ -347,7 +347,7 @@ namespace LichPhylactery {
     if(!Hostile(p,t) || t.Downed || !t.RaceProps.Humanlike || Boss(t) || Items.Has(t,"LP_CQ_Yielded") || t.health.summaryHealth.SummaryHealthPercent>=.5f)continue;
     if(!force && Roll>=YieldChance)continue;
     if(t.equipment?.Primary!=null)t.equipment.TryDropEquipment(t.equipment.Primary,out _,t.Position);
-    Items.Give(t,"LP_CQ_Yielded",YieldTicks);Items.Mote(t,"降服",ConquestColor);n++;
+    Items.Give(t,"LP_CQ_Yielded",YieldTicks);Items.Mote(t,"降服".Loc(),ConquestColor);n++;
    }
    return n;
   }
@@ -359,17 +359,17 @@ namespace LichPhylactery {
   static void Consume(Map map,ThingDef def,int n){foreach(var x in map.listerThings.ThingsOfDef(def).Where(x=>x.Spawned && !x.IsForbidden(Faction.OfPlayer)).ToList()){if(n<=0)break;int k=Math.Min(n,x.stackCount);x.SplitOff(k).Destroy();n-=k;}}
   static (int steel,int comp) DefenderCost(Pawn p){var d=ClassSubclass.Data(p);d.ticks.TryGetValue("defDied",out int t);bool repair=t>0 && Now-t<RepairWindow && Now>=t;return repair?(RepairSteel,0):(DefenderSteel,DefenderComponents);}
   public static string DefenderCannot(Pawn p){
-   var d=ClassSubclass.Data(p);if(d==null || p.Map==null)return "需要在地图上。";
+   var d=ClassSubclass.Data(p);if(d==null || p.Map==null)return "需要在地图上。".Loc();
    if(Live(d).Count>=DefenderMax(p))return null; // 已满：改为召回
    if(p.Faction==null || !p.Faction.IsPlayer)return null;
    var (steel,comp)=DefenderCost(p);
-   if(Stock(p.Map,ThingDefOf.Steel)<steel || comp>0 && Stock(p.Map,ThingDefOf.ComponentIndustrial)<comp)return "材料不够：要 "+steel+" 钢"+(comp>0?" + "+comp+" 零部件":"")+"（地图上没被禁止的）。";
+   if(Stock(p.Map,ThingDefOf.Steel)<steel || comp>0 && Stock(p.Map,ThingDefOf.ComponentIndustrial)<comp)return "材料不够：要 ".Loc()+steel+" 钢".Loc()+(comp>0?" + "+comp+" 零部件".Loc():"")+"（地图上没被禁止的）。".Loc();
    return null;
   }
   // 造一台钢铁卫士（已满时把卫士召回到身边）。
   public static Pawn Defender(Pawn p){
    var d=ClassSubclass.Data(p);var map=p.Map;if(d==null || map==null)return null;var live=Live(d);
-   if(live.Count>=DefenderMax(p)){foreach(var c in live)if(c.Spawned && c.Map==map && !c.Downed){var cell=CellFinder.RandomClosewalkCellNear(p.Position,map,2);if(cell.IsValid)Races124.Blink(c,cell);}Items.Mote(p,"召回钢铁卫士",SmithColor);return live.FirstOrDefault();}
+   if(live.Count>=DefenderMax(p)){foreach(var c in live)if(c.Spawned && c.Map==map && !c.Downed){var cell=CellFinder.RandomClosewalkCellNear(p.Position,map,2);if(cell.IsValid)Races124.Blink(c,cell);}Items.Mote(p,"召回钢铁卫士".Loc(),SmithColor);return live.FirstOrDefault();}
    if(p.Faction!=null && p.Faction.IsPlayer){var (steel,comp)=DefenderCost(p);Consume(map,ThingDefOf.Steel,steel);if(comp>0)Consume(map,ThingDefOf.ComponentIndustrial,comp);}
    d.ticks.Remove("defDied");
    var kind=DefCache<PawnKindDef>.Get("LP_SteelDefenderKind");if(kind==null)return null;
@@ -379,9 +379,9 @@ namespace LichPhylactery {
     foreach(var td in new[]{TrainableDefOf.Tameness,TrainableDefOf.Obedience,TrainableDefOf.Release})if(td!=null && w.training.CanAssignToTrain(td).Accepted)w.training.Train(td,null,true);
     if(w.playerSettings!=null)w.playerSettings.Master=p;
    }
-   w.Name=new NameSingle(p.LabelShort+"的钢铁卫士");
+   w.Name=new NameSingle(p.LabelShort+"的钢铁卫士".Loc());
    d.defenders.Add(w);Defenders.Add(w);Items.Give(w,"LP_DefenderCore");
-   FleckMaker.ThrowDustPuffThick(w.DrawPos,map,2f,SmithColor);Items.Mote(w,"钢铁卫士",SmithColor);
+   FleckMaker.ThrowDustPuffThick(w.DrawPos,map,2f,SmithColor);Items.Mote(w,"钢铁卫士".Loc(),SmithColor);
    return w;
   }
   public static Pawn MasterOf(Pawn defender)=>defender?.playerSettings?.Master;
@@ -392,7 +392,7 @@ namespace LichPhylactery {
     if(c.needs?.food!=null)c.needs.food.CurLevelPercentage=1f;if(c.needs?.rest!=null)c.needs.rest.CurLevel=c.needs.rest.MaxLevel;
     if(c.training!=null && (f & FImproved)!=0){var haul=DefCache<TrainableDef>.Get("Haul");if(haul!=null && !c.training.HasLearned(haul) && c.training.CanAssignToTrain(haul).Accepted)c.training.Train(haul,null,true);}
     Passive(c,"LP_DefenderImproved",(f & FImproved)!=0);
-    if(c.Downed && (f & FMasterSmith)!=0 && Ready(d,"rebuild",GenDate.TicksPerDay)){Use(d,"rebuild");ClassMelee.Heal(c,ClassMelee.InjurySum(c)*.5f+1f);Items.Mote(c,"自动重构",SmithColor);}
+    if(c.Downed && (f & FMasterSmith)!=0 && Ready(d,"rebuild",GenDate.TicksPerDay)){Use(d,"rebuild");ClassMelee.Heal(c,ClassMelee.InjurySum(c)*.5f+1f);Items.Mote(c,"自动重构".Loc(),SmithColor);}
     if(!c.Downed && Now-(c.mindState?.lastHarmTick??0)>600)ClassMelee.Heal(c,2f);
     if(p.Drafted && !c.Downed && c.Map==p.Map)HediffComp_Conjured.Engage(c);
    }
@@ -408,13 +408,13 @@ namespace LichPhylactery {
     if((fa & FEldritchStrike)!=0 && melee)Items.Give(v,"LP_EK_SpellVuln",600);
     if(melee){
      var th=Items.Hediff("LP_EK_ThunderReady");var hh=th==null?null:a.health.hediffSet.GetFirstHediffOfDef(th);
-     if(hh!=null){float amt=12f*hh.Severity;a.health.RemoveHediff(hh);Fiends.Defer(()=>Extra(a,v,DamageDefOf.Blunt,amt,"雷鸣斩",()=>{if(v.Spawned && !v.Dead && v.BodySize<=2f){var dest=DNDPush.Destination(v.Map,v.Position,(v.Position-a.Position).ToVector3(),1);DNDPush.Move(v,dest);}}));}
+     if(hh!=null){float amt=12f*hh.Severity;a.health.RemoveHediff(hh);Fiends.Defer(()=>Extra(a,v,DamageDefOf.Blunt,amt,"雷鸣斩".Loc(),()=>{if(v.Spawned && !v.Dead && v.BodySize<=2f){var dest=DNDPush.Destination(v.Map,v.Position,(v.Position-a.Position).ToVector3(),1);DNDPush.Move(v,dest);}}));}
      var bs=Items.Hediff("LP_EK_BladestormBuff");var bh=bs==null?null:a.health.hediffSet.GetFirstHediffOfDef(bs);
-     if(bh!=null && a.Spawned){float amt=6f*bh.Severity;var other=Near(a,v.Position,3f).FirstOrDefault(x=>x!=v && Hostile(a,x) && !x.Downed);if(other!=null)Fiends.Defer(()=>Extra(a,other,Warlock.ForceDamage,amt,"法刃风暴",null));}
+     if(bh!=null && a.Spawned){float amt=6f*bh.Severity;var other=Near(a,v.Position,3f).FirstOrDefault(x=>x!=v && Hostile(a,x) && !x.Downed);if(other!=null)Fiends.Defer(()=>Extra(a,other,Warlock.ForceDamage,amt,"法刃风暴".Loc(),null));}
      var ps=Items.Hediff("LP_PW_StrikeBuff");var ph=ps==null?null:a.health.hediffSet.GetFirstHediffOfDef(ps);
-     if(ph!=null){float amt=6f*ph.Severity;Fiends.Defer(()=>Extra(a,v,Warlock.PsychicDamage,amt,"灵能打击",null));}
-     if(Items.Has(a,"LP_AM_Tentacles") && Roll<TentacleChance){v.stances?.stunner?.StunFor(120,a);Items.Mote(v,"被触手缠住",AberrantColor);}
-     if((fa & FCQScorn)!=0){if(Items.Has(v,"LP_Shaken"))g*=ScornFactor;else if(Roll<ScornChance){Items.Give(v,"LP_Shaken",300,1f);Items.Mote(v,"威慑斩",ConquestColor);}}
+     if(ph!=null){float amt=6f*ph.Severity;Fiends.Defer(()=>Extra(a,v,Warlock.PsychicDamage,amt,"灵能打击".Loc(),null));}
+     if(Items.Has(a,"LP_AM_Tentacles") && Roll<TentacleChance){v.stances?.stunner?.StunFor(120,a);Items.Mote(v,"被触手缠住".Loc(),AberrantColor);}
+     if((fa & FCQScorn)!=0){if(Items.Has(v,"LP_Shaken"))g*=ScornFactor;else if(Roll<ScornChance){Items.Give(v,"LP_Shaken",300,1f);Items.Mote(v,"威慑斩".Loc(),ConquestColor);}}
     }
     if((fa & FBattleReady)!=0 && d.Weapon!=null && d.Weapon.IsWeapon)g*=WeaponFactor;
     var jm=(fa & FJolt)!=0?a:Defenders.Contains(a)?MasterOf(a):null;
@@ -423,15 +423,15 @@ namespace LichPhylactery {
    // —— 受击方 ——
    if(Items.Has(v,"LP_EK_SpellVuln") && IsSpell(d.Def))g*=SpellVuln;
    if(Items.Has(v,"LP_EK_Absorb") && ClassSubclass.Element(d.Def)>=0)g*=AbsorbFactor;
-   if(Items.Has(v,"LP_PW_FieldBuff") && ForceDragon.IsRanged(d))g*=GuardFieldFactor;
+   if(Items.Has(v,"LP_PW_FieldBuff") && AttackKind.IsRanged(d))g*=GuardFieldFactor;
    if(Items.Has(v,"LP_HM_Ward"))g*=.5f;
    bool holy=Monsters.Holy(d);
    if(Items.Has(v,"LP_CQ_Invincible") && !holy)g*=InvincibleFactor;
    if(fv!=0){
     if((fv & FPsiField)!=0){if(HeatRoom(v,PsiHeatPerHit)){g*=PsiFieldFactor;v.psychicEntropy.TryAddEntropy(PsiHeatPerHit,v,true,false);}else if(!v.HasPsylink)g*=PsiFieldNoLink;}
     if((fv & FAMDefense)!=0 && ClassSubclass.Psychic(d.Def))g*=.5f;
-    if((fv & FRDAngel)!=0){if(!holy && !ClassSubclass.Psychic(d.Def))g*=AngelFactor;if(melee && !Busy){var att=a;float amt=4f*Divine(v);Fiends.Defer(()=>Extra(v,att,PaladinCore.Radiant,amt,"救赎天使",null));}}
-    if((fv & FBattleReady)!=0 && melee && v.Spawned){var dd=ClassSubclass.Data(v);if(dd!=null)foreach(var c in dd.defenders)if(c!=null && c.Spawned && !c.Downed && c.Map==v.Map && c.Position.AdjacentTo8WayOrInside(v.Position)){if(Roll<GuardChance){Items.Mote(v,"卫士护主",SmithColor);return 0f;}break;}}
+    if((fv & FRDAngel)!=0){if(!holy && !ClassSubclass.Psychic(d.Def))g*=AngelFactor;if(melee && !Busy){var att=a;float amt=4f*Divine(v);Fiends.Defer(()=>Extra(v,att,PaladinCore.Radiant,amt,"救赎天使".Loc(),null));}}
+    if((fv & FBattleReady)!=0 && melee && v.Spawned){var dd=ClassSubclass.Data(v);if(dd!=null)foreach(var c in dd.defenders)if(c!=null && c.Spawned && !c.Downed && c.Map==v.Map && c.Position.AdjacentTo8WayOrInside(v.Position)){if(Roll<GuardChance){Items.Mote(v,"卫士护主".Loc(),SmithColor);return 0f;}break;}}
    }
    if(Defenders.Count>0){
     if(Defenders.Contains(v))g*=DefenderFactor(v);
@@ -441,14 +441,14 @@ namespace LichPhylactery {
     if(Guardians.Count>0 && !S(v,FRDGuardian)){
      foreach(var gp in Guardians)if(gp!=null && gp!=v && gp.Spawned && gp.Drafted && !gp.Downed && gp.Map==v.Map && gp.Faction==v.Faction && gp.Position.InHorDistOf(v.Position,5f)){
       var share=new DamageInfo(d.Def,d.Amount*g*GuardianShare,d.ArmorPenetrationInt,d.Angle,a,null,d.Weapon);var guard=gp;Fiends.Defer(()=>{if(!guard.Dead){Busy=true;try{guard.TakeDamage(share);}finally{Busy=false;}}});
-      Items.Mote(v,"守护者灵光",RedeemColor);return 0f;
+      Items.Mote(v,"守护者灵光".Loc(),RedeemColor);return 0f;
      }
     }
     if(melee && Rebukers.Count>0){
      foreach(var r in Rebukers.ToList()){
       if(r==null || r.Dead || !r.Spawned || r.Map!=v.Map || r.Faction!=v.Faction || !r.Position.InHorDistOf(v.Position,15f))continue;
       var rh=r.health.hediffSet.GetFirstHediffOfDef(Items.Hediff("LP_RD_Rebuke"));if(rh==null){Rebukers.Remove(r);continue;}
-      float amt=Mathf.Min(d.Amount*g,rh.Severity);r.health.RemoveHediff(rh);Rebukers.Remove(r);var att=a;Fiends.Defer(()=>Extra(r,att,PaladinCore.Radiant,amt,"斥责暴力",null));break;
+      float amt=Mathf.Min(d.Amount*g,rh.Severity);r.health.RemoveHediff(rh);Rebukers.Remove(r);var att=a;Fiends.Defer(()=>Extra(r,att,PaladinCore.Radiant,amt,"斥责暴力".Loc(),null));break;
      }
     }
    }
@@ -463,8 +463,8 @@ namespace LichPhylactery {
   static void Jolt(Pawn master,Pawn src,Pawn t){
    float amount=8f+ClassSystem.Level(master,artificer.Def);
    var ally=src.Spawned?Near(src,src.Position,15f).Where(x=>Ally(src,x) && !x.Downed && x.health.summaryHealth.SummaryHealthPercent<.7f).OrderBy(x=>x.health.summaryHealth.SummaryHealthPercent).FirstOrDefault():null;
-   if(ally!=null){ClassMelee.Heal(ally,amount);Items.Mote(ally,"奥术震击·治疗",SmithColor);return;}
-   Extra(src,t,Warlock.ForceDamage,amount,"奥术震击",null);
+   if(ally!=null){ClassMelee.Heal(ally,amount);Items.Mote(ally,"奥术震击·治疗".Loc(),SmithColor);return;}
+   Extra(src,t,Warlock.ForceDamage,amount,"奥术震击".Loc(),null);
   }
   // 击杀：汲血；钢铁卫士留下残骸（20 钢）。
   public static void Killed(Pawn victim,Pawn killer){
@@ -472,10 +472,10 @@ namespace LichPhylactery {
     var m=MasterOf(victim);var d=ClassSubclass.Data(m);if(d!=null){d.defenders.Remove(victim);d.ticks["defDied"]=Math.Max(1,Now);}
     var map=victim.MapHeld;var pos=victim.PositionHeld;
     Fiends.Defer(()=>{var corpse=victim.Corpse;if(corpse!=null && !corpse.Destroyed)corpse.Destroy();if(map!=null){var steel=ThingMaker.MakeThing(ThingDefOf.Steel);steel.stackCount=RepairSteel;GenPlace.TryPlaceThing(steel,pos,map,ThingPlaceMode.Near);}});
-    if(m!=null && m.Faction!=null && m.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(m.LabelShort+"的钢铁卫士被打烂了：1 天内用 20 钢就能重造。",m,MessageTypeDefOf.NegativeEvent,false);
+    if(m!=null && m.Faction!=null && m.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(m.LabelShort+"的钢铁卫士被打烂了：1 天内用 20 钢就能重造。".Loc(),m,MessageTypeDefOf.NegativeEvent,false);
    }
    if(killer==null || killer.Dead || !S(killer,FSiphon) || Bloodless(victim) || !victim.HostileTo(killer))return;
-   var g=Hemogen(killer);if(g!=null)g.Value+=.1f;else AddBlood(killer,-.1f);Items.Mote(killer,"汲血",BloodColor);
+   var g=Hemogen(killer);if(g!=null)g.Value+=.1f;else AddBlood(killer,-.1f);Items.Mote(killer,"汲血".Loc(),BloodColor);
   }
   public static void Reset(){Users.Clear();Defenders.Clear();Rebukers.Clear();Guardians.Clear();Fliers.Clear();Busy=false;}
 
@@ -502,7 +502,7 @@ namespace LichPhylactery {
   // 身体强化：眼睛（魅力）、皮肤（变红、伤口愈合 ×1.5 并持续回复）、舌头（心灵敏感度）。每个开着的强化让术士法力上限 −2；
   // 8 级起能同时开两个并且强化升级；12 级选一个永久固化（不占名额、不扣法力）。
   public static readonly string[] FiendParts={"LP_FB_EyesBuff","LP_FB_SkinBuff","LP_FB_TongueBuff"};
-  static readonly string[] FiendLabels={"恶鬼之眼","恶鬼之皮","恶鬼之舌"};
+  static readonly string[] FiendLabels={"恶鬼之眼".Loc(),"恶鬼之皮".Loc(),"恶鬼之舌".Loc()};
   public const int FiendPenalty=2;
   static readonly DefRef<LP_ClassDef> sorcerer=new DefRef<LP_ClassDef>("LP_Class_Sorcerer");
   public static int Fixed(Pawn p)=>ClassSubclass.Has(p,FiendBlood) && ClassSystem.Knows(p,"LP_FB_Bound")?ClassSubclass.Choice(p,"fbFixed"):-1;
@@ -513,9 +513,9 @@ namespace LichPhylactery {
   }
   public static string FiendToggle(Pawn p,int part){
    var name=FiendParts[part];int fx=Fixed(p);
-   if(part==fx)return "已经永久固化";
-   if(Items.Has(p,name)){Items.Remove(p,name);Items.Mote(p,"收起"+FiendLabels[part],BloodColor);ClampMana(p);return "off";}
-   if(PaidActive(p)>=FiendSlots(p))return "最多同时维持 "+FiendSlots(p)+" 个强化（先收起一个）";
+   if(part==fx)return "已经永久固化".Loc();
+   if(Items.Has(p,name)){Items.Remove(p,name);Items.Mote(p,"收起".Loc()+FiendLabels[part],BloodColor);ClampMana(p);return "off";}
+   if(PaidActive(p)>=FiendSlots(p))return "最多同时维持 ".Loc()+FiendSlots(p)+" 个强化（先收起一个）".Loc();
    Items.Give(p,name,-1,ClassSystem.Knows(p,"LP_FB_Awaken")?2f:1f);Items.Mote(p,FiendLabels[part],BloodColor);ClampMana(p);return "on";
   }
   static void ClampMana(Pawn p){var h=Adventurer.Get(p);var c=sorcerer.Def;if(h==null || c==null)return;int max=ClassSystem.MaxResource(h,c);float cur=ClassSystem.Resource(h,c);if(cur>max)h.classes.res[ClassSystem.PoolKey(c)]=Mathf.Max(0,max);}
@@ -591,7 +591,7 @@ namespace LichPhylactery {
  public static class Subclass2Kill {
   static void Prefix(Pawn __instance,DamageInfo? dinfo){
    if(Subclass2.Users.Count==0 || __instance.Dead)return;
-   if(dinfo?.Instigator is Pawn k && k!=__instance && Subclass2.S(k,Subclass2.FRedemption) && __instance.RaceProps.Humanlike && (__instance.Downed || __instance.IsPrisoner || __instance.IsSlave))Subclass2.Oathbreak(k,"杀死了无力反抗的人");
+   if(dinfo?.Instigator is Pawn k && k!=__instance && Subclass2.S(k,Subclass2.FRedemption) && __instance.RaceProps.Humanlike && (__instance.Downed || __instance.IsPrisoner || __instance.IsSlave))Subclass2.Oathbreak(k,"杀死了无力反抗的人".Loc());
   }
   static void Postfix(Pawn __instance,DamageInfo? dinfo){
    if(Subclass2.Users.Count==0 && Subclass2.Defenders.Count==0 || !__instance.Dead)return;
@@ -605,7 +605,7 @@ namespace LichPhylactery {
   static bool Prepare()=>TargetMethod()!=null;
   static void Postfix(object[] __args){
    if(Subclass2.Users.Count==0 || __args==null || __args.Length==0 || !(__args[0] is Pawn prisoner))return;var map=prisoner.MapHeld;if(map==null)return;
-   foreach(var p in map.mapPawns.FreeColonistsSpawned.ToList())if(Subclass2.S(p,Subclass2.FConquest))Subclass2.Oathbreak(p,"释放了囚犯");
+   foreach(var p in map.mapPawns.FreeColonistsSpawned.ToList())if(Subclass2.S(p,Subclass2.FConquest))Subclass2.Oathbreak(p,"释放了囚犯".Loc());
   }
  }
 }

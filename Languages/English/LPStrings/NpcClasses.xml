@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（NpcClasses.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>敌人拥有职业</zh><en>Enemies have classes</en></s>
+  <s><zh>不属于玩家的人形冒险者（袭击者、访客、商队、剧情敌人）第一次出现时按派系拿 DND 职业：部落多是野蛮人 / 德鲁伊 / 游侠，海盗多是游荡者 / 战士 / 邪术师，帝国多是圣武士 / 战士 / 法师 / 牧师，塞伊和亡灵多是法师 / 邪术师 / 牧师，其他按最高技能。一个职业（20% 两个），职业等级合计 = 冒险者等级（最多 20）；子职业随机；冒险者 25 级起有传奇职业能力。旧存档里已经在地图上的人也会补上。关闭后不再给新的 NPC 职业，已有的保留。</zh><en>Humanlike adventurers not belonging to the player (raiders, visitors, caravans, story enemies) get DND classes by faction when they first appear: tribes mostly barbarian / druid / ranger, pirates mostly rogue / fighter / warlock, the Empire mostly paladin / fighter / wizard / cleric, Thay and undead mostly wizard / warlock / cleric, others by highest skill. One class (20% two), total class levels = adventurer level (max 20); random subclass; legendary class abilities from adventurer level 25. People already on the map in old saves get them too. When off, new NPCs no longer get classes; existing ones are kept.</en></s>
+  <s><zh>敌人施放职业能力</zh><en>Enemies cast class abilities</en></s>
+  <s><zh>有职业的 NPC 在战斗中每 4 秒最多放一个职业能力（看冷却和资源）：攻击能力打身边的敌人，范围法术不炸到自己人，治疗职业先救倒地、受伤的友军。关闭后 NPC 只有职业的被动效果。</zh><en>NPCs with classes cast at most one class ability every 4 seconds in combat (subject to cooldown and resource): attack abilities at nearby enemies, area spells don't hit their own people, and healing classes save downed and injured allies first. When off, NPCs only have their classes' passive effects.</en></s>
+</LPStrings>

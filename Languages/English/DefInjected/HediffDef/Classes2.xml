@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 法师护甲 -->
+  <LP_MageArmor.label>mage armor</LP_MageArmor.label>
+  <!-- 一层看不见的力场：利器与钝器护甲 +25%。 -->
+  <LP_MageArmor.description>An invisible layer of force: sharp and blunt armor +25%.</LP_MageArmor.description>
+  <!-- 护盾术 -->
+  <LP_ShieldSpell.label>shield</LP_ShieldSpell.label>
+  <!-- 一层奥术护盾：受到的伤害先由护盾吸收（严重度 = 剩余吸收量）。 -->
+  <LP_ShieldSpell.description>A layer of arcane shield: damage taken is absorbed by the shield first (severity = remaining absorption).</LP_ShieldSpell.description>
+  <!-- 镜影 -->
+  <LP_MirrorImage.label>mirror image</LP_MirrorImage.label>
+  <!-- 幻影分身（严重度 = 剩余分身数）：每次被敌人的攻击命中，消耗一个分身，这一下落空。 -->
+  <LP_MirrorImage.description>Illusory duplicates (severity = remaining duplicates): each time an enemy attack hits, one duplicate is used up and that hit misses.</LP_MirrorImage.description>
+  <!-- 1 个分身 -->
+  <LP_MirrorImage.stages._1.label>1 duplicate</LP_MirrorImage.stages._1.label>
+  <!-- 2 个分身 -->
+  <LP_MirrorImage.stages._2.label>2 duplicates</LP_MirrorImage.stages._2.label>
+  <!-- 3 个分身 -->
+  <LP_MirrorImage.stages._3.label>3 duplicates</LP_MirrorImage.stages._3.label>
+  <!-- 魔法睡眠 -->
+  <LP_MagicSleep.label>magical sleep</LP_MagicSleep.label>
+  <!-- 被睡眠术放倒，意识降到 10%。 -->
+  <LP_MagicSleep.description>Put down by a sleep spell, consciousness reduced to 10%.</LP_MagicSleep.description>
+  <!-- 急速 -->
+  <LP_Haste.label>hasted</LP_Haste.label>
+  <!-- 移动 ×1.5、工作速度 ×1.3、近战冷却 ×0.8。结束后会疲乏一小时。 -->
+  <LP_Haste.description>Movement ×1.5, work speed ×1.3, melee cooldown ×0.8. Lethargic for an hour afterwards.</LP_Haste.description>
+  <!-- 急速疲乏 -->
+  <LP_HasteFatigue.label>haste lethargy</LP_HasteFatigue.label>
+  <!-- 急速术过后的疲乏：移动 ×0.7。 -->
+  <LP_HasteFatigue.description>Lethargy after haste: movement ×0.7.</LP_HasteFatigue.description>
+  <!-- 祝福 -->
+  <LP_Blessed.label>bless</LP_Blessed.label>
+  <!-- 受到牧师祝福：近战命中 +10%，射击精度提高，心情 +3。 -->
+  <LP_Blessed.description>Blessed by a cleric: melee hit +10%, better shooting accuracy, mood +3.</LP_Blessed.description>
+  <!-- 神导 -->
+  <LP_Guided.label>guided</LP_Guided.label>
+  <!-- 受到神导术指引：全局工作速度 +15%，学习速度 +30%。 -->
+  <LP_Guided.description>Guided by a guidance spell: global work speed +15%, learning speed +30%.</LP_Guided.description>
+  <!-- 神圣止血 -->
+  <LP_StaunchBleeding.label>divine hemostasis</LP_StaunchBleeding.label>
+  <!-- 次级复原术止住了所有出血。 -->
+  <LP_StaunchBleeding.description>Lesser restoration has stopped all bleeding.</LP_StaunchBleeding.description>
+  <!-- 死亡守卫 -->
+  <LP_DeathWard.label>death ward</LP_DeathWard.label>
+  <!-- 疼痛 ×0.5。本应因伤倒地时，立即治疗 30 × 神恩强度点伤势并消耗这个守卫。 -->
+  <LP_DeathWard.description>Pain ×0.5. When it would be downed by injuries, instantly heals 30 × divine power injury and uses up this ward.</LP_DeathWard.description>
+  <!-- 藤蔓缠绕 -->
+  <LP_Entangled.label>entangled</LP_Entangled.label>
+  <!-- 被德鲁伊的藤蔓缠住了。 -->
+  <LP_Entangled.description>Entangled by a druid's vines.</LP_Entangled.description>
+  <!-- 大型 -->
+  <LP_Entangled.stages.1.label>large</LP_Entangled.stages.1.label>
+  <!-- 树肤 -->
+  <LP_Barkskin.label>barkskin</LP_Barkskin.label>
+  <!-- 皮肤硬得像树皮：利器护甲 +30%、钝器护甲 +15%，移动 ×0.95。 -->
+  <LP_Barkskin.description>Skin hard as bark: sharp armor +30%, blunt armor +15%, movement ×0.95.</LP_Barkskin.description>
+  <!-- 灵体召唤 -->
+  <LP_Conjured.label>spirit summons</LP_Conjured.label>
+  <!-- 召来的灵体：时间一到就化为光点消失，死后不留尸体。 -->
+  <LP_Conjured.description>A summoned spirit: vanishes into motes of light when time is up, leaves no corpse when it dies.</LP_Conjured.description>
+  <!-- 熊形 -->
+  <LP_WildShape.label>bear form</LP_WildShape.label>
+  <!-- 化身为熊：用熊爪和熊咬战斗，近战伤害 × 野性强度，受到伤害 ×0.6，移动 ×1.15；不能做精细工作。 -->
+  <LP_WildShape.description>Become a bear: fights with bear claws and bites, melee damage × primal power, damage taken ×0.6, movement ×1.15; cannot do fine work.</LP_WildShape.description>
+  <!-- 熊爪 -->
+  <LP_WildShape.comps.HediffComp_VerbGiver.tools.0.label>bear claw</LP_WildShape.comps.HediffComp_VerbGiver.tools.0.label>
+  <!-- 熊咬 -->
+  <LP_WildShape.comps.HediffComp_VerbGiver.tools.1.label>bear bite</LP_WildShape.comps.HediffComp_VerbGiver.tools.1.label>
+  <!-- 兽王号令 -->
+  <LP_BeastFrenzy.label>beast lord's call</LP_BeastFrenzy.label>
+  <!-- 受德鲁伊号令的野兽：近战伤害提高，移动 ×1.2，受到伤害 ×0.8。 -->
+  <LP_BeastFrenzy.description>A beast commanded by a druid: melee damage increased, movement ×1.2, damage taken ×0.8.</LP_BeastFrenzy.description>
+  <!-- 超魔·孪生 -->
+  <LP_Twinned.label>metamagic: twinned</LP_Twinned.label>
+  <!-- 下一个单体术士法术会同时作用于第二个目标。 -->
+  <LP_Twinned.description>The next single-target sorcerer spell will also affect a second target.</LP_Twinned.description>
+  <!-- 超魔·强效 -->
+  <LP_Empowered.label>metamagic: empowered</LP_Empowered.label>
+  <!-- 接下来的术士法术伤害 ×1.5（严重度 = 剩余次数）。 -->
+  <LP_Empowered.description>The next sorcerer spells deal ×1.5 damage (severity = remaining uses).</LP_Empowered.description>
+  <!-- 龙翼 -->
+  <LP_DragonWingsLanded.label>dragon wing</LP_DragonWingsLanded.label>
+  <!-- 刚刚乘龙翼飞起：近战闪避 +20%。 -->
+  <LP_DragonWingsLanded.description>Just took flight on dragon wings: melee dodge +20%.</LP_DragonWingsLanded.description>
+  <!-- 魔涌 -->
+  <LP_SorcerousSurge.label>wild surge</LP_SorcerousSurge.label>
+  <!-- 体内魔力奔涌：术士法术不耗法力、冷却 ×0.25，每次施法 20% 触发狂野魔法。 -->
+  <LP_SorcerousSurge.description>Magic surges inside: sorcerer spells cost no mana, cooldown ×0.25, and each cast has a 20% chance of wild magic.</LP_SorcerousSurge.description>
+  <!-- 狂野魔法：隐形 -->
+  <LP_WildInvisible.label>wild magic: invisibility</LP_WildInvisible.label>
+  <!-- 狂野魔法让身形消失了几秒。 -->
+  <LP_WildInvisible.description>Wild magic made the body vanish for a few seconds.</LP_WildInvisible.description>
+  <!-- 过载射击 -->
+  <LP_Overcharge.label>overcharged shot</LP_Overcharge.label>
+  <!-- 下一次远程命中的伤害 ×(1 + 器械强度)，武器掉 5% 耐久。10 秒内没打中就散掉。 -->
+  <LP_Overcharge.description>The next ranged hit deals ×(1 + artifice power) damage, and the weapon loses 5% durability. Fades if nothing is hit within 10 seconds.</LP_Overcharge.description>
+  <!-- 魔力充能 -->
+  <LP_ArcaneCharged.label>arcane charge</LP_ArcaneCharged.label>
+  <!-- 器械师灌注的魔力：用符文矮人枪械和法杖时魔力系数 +0.5。 -->
+  <LP_ArcaneCharged.description>Magic infused by an artificer: +0.5 magic factor when using runic dwarven firearms and staves.</LP_ArcaneCharged.description>
+</LanguageData>

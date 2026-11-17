@@ -265,17 +265,6 @@
     </stages>
   </ThoughtDef>
   <ThoughtDef>
-    <defName>LP_CloudTreasure</defName>
-    <workerClass>LichPhylactery.ThoughtWorker_CloudTreasure</workerClass>
-    <stages>
-      <li>
-        <label>稀世珍藏</label>
-        <description>这里竟然藏着一枚力能龙蛋。云端宫廷里也没几家有这样的收藏。</description>
-        <baseMoodEffect>3</baseMoodEffect>
-      </li>
-    </stages>
-  </ThoughtDef>
-  <ThoughtDef>
     <defName>LP_OrdningBowed</defName>
     <durationDays>15</durationDays>
     <stackLimit>1</stackLimit>
@@ -304,16 +293,7 @@
     <defName>LP_CloudChoiceLetter</defName>
     <letterClass>LichPhylactery.Letter_CloudChoice</letterClass>
   </LetterDef>
-  <!-- 两个事件都不随机抽取（baseChance 0）：收购龙蛋在同盟访客/商队到达时 15% 触发，使节每年判定一次 20%；开发者模式可以手动触发。 -->
-  <IncidentDef>
-    <defName>LP_CloudEggOffer</defName>
-    <label>收购龙蛋</label>
-    <category>Misc</category>
-    <targetTags><li>Map_PlayerHome</li></targetTags>
-    <workerClass>LichPhylactery.IncidentWorker_CloudEggOffer</workerClass>
-    <baseChance>0</baseChance>
-    <pointsScaleable>false</pointsScaleable>
-  </IncidentDef>
+  <!-- 使节事件不随机抽取（baseChance 0）：每年判定一次 20%；开发者模式可以手动触发。 -->
   <IncidentDef>
     <defName>LP_OrdningEnvoy</defName>
     <label>上位者的使节</label>

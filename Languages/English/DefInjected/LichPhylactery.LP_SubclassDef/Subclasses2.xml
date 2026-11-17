@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 奥法骑士 -->
+  <LP_Sub_EldritchKnight.label>Eldritch Knight</LP_Sub_EldritchKnight.label>
+  <!-- 剑与法术。有自己的法力（上限 1 + 战士等级 ÷ 3，睡觉、研究时恢复，醒着也慢慢回），用来放战争戏法；绑定的武器不会被缴械，还能召回到手里。 -->
+  <LP_Sub_EldritchKnight.description>Sword and sorcery. Has their own mana (max 1 + fighter level ÷ 3, recovered by sleep and research, slowly regained while awake too), used for war cantrips; the bound weapon can't be disarmed and can be summoned back to the hand.</LP_Sub_EldritchKnight.description>
+  <!-- 灵能战士 -->
+  <LP_Sub_PsiWarrior.label>Psi Warrior</LP_Sub_PsiWarrior.label>
+  <!-- 用心灵之力打仗。有灵能器时能力不耗斗志、改加神经热（神经热放不下时照常耗斗志）；没有灵能器就只耗斗志。效果乘心灵敏感度。 -->
+  <LP_Sub_PsiWarrior.description>Fight with the power of the mind. With a psylink, abilities cost no grit and add neural heat instead (costing grit as usual when neural heat can't take it); without a psylink they only cost grit. Effects are multiplied by psychic sensitivity.</LP_Sub_PsiWarrior.description>
+  <!-- 血咒学派 -->
+  <LP_Sub_Hemomancy.label>School of Hemomancy</LP_Sub_Hemomancy.label>
+  <!-- 以血代法：血咒法术不耗法力，而是让自己失血（失血到 45% 就不能再施；血族改扣血原质）。自己伤得越重，血咒伤害越高（最多 +30%）。巫妖和不死者没有血，不能选。 -->
+  <LP_Sub_Hemomancy.description>Blood instead of mana: hemomancy spells don't cost mana but make you lose blood (can't cast once blood loss reaches 45%; vampires spend hemogen instead). The more you're hurt yourself, the higher the hemomancy damage (up to +30%). Liches and the undead have no blood and can't choose it.</LP_Sub_Hemomancy.description>
+  <!-- 异变心灵 -->
+  <LP_Sub_AberrantMind.label>Aberrant Mind</LP_Sub_AberrantMind.label>
+  <!-- 血里有灵吸怪的影子：安抚崩溃的殖民者、用灵能尖刺伤敌、长出触手，最后能支配一个敌人为你所用。 -->
+  <LP_Sub_AberrantMind.description>The shadow of a mind flayer lies in the blood: calm colonists having breaks, hurt enemies with psionic spikes, grow tentacles, and finally dominate an enemy to serve you.</LP_Sub_AberrantMind.description>
+  <!-- 征服之誓 -->
+  <LP_Sub_Conquest.label>Oath of Conquest</LP_Sub_Conquest.label>
+  <!-- 以恐惧统治。誓言之力每天 1 次（11 级 2 次、15 级 3 次），不耗神恩。戒律：不释放囚犯——殖民地释放囚犯时背誓（1 天内神恩恢复减半、誓言之力不能用；1 天内第三次背誓再加心情 −10）。 -->
+  <LP_Sub_Conquest.description>Rule through fear. Channel Oath once per day (twice at level 11, three times at 15), no divinity cost. Tenet: don't release prisoners; when the colony releases a prisoner the oath is broken (for 1 day divinity recovery halved and Channel Oath unusable; a third break within 1 day adds mood -10).</LP_Sub_Conquest.description>
+  <!-- 救赎之誓 -->
+  <LP_Sub_Redemption.label>Oath of Redemption</LP_Sub_Redemption.label>
+  <!-- 以和止战。誓言之力每天 1 次（11 级 2 次、15 级 3 次），不耗神恩。戒律：不亲手杀死倒地的人、囚犯或奴隶（处决也算）——违背就背誓（1 天内神恩恢复减半、誓言之力不能用；1 天内第三次背誓再加心情 −10）。 -->
+  <LP_Sub_Redemption.description>Make peace to end war. Channel Oath once per day (twice at level 11, three times at 15), no divinity cost. Tenet: never personally kill a downed person, prisoner or slave (executions count); violating it breaks the oath (for 1 day divinity recovery halved and Channel Oath unusable; a third break within 1 day adds mood -10).</LP_Sub_Redemption.description>
+  <!-- 龙魂 -->
+  <LP_Sub_DraconicSoul.label>Draconic Soul</LP_Sub_DraconicSoul.label>
+  <!-- 血里流着真龙的魂：4 级龙血（体质 +2），10 级龙翼（走路无视地形），14 级龙威（和真龙一样的骇人威仪，能让敌人惊惧、恐慌逃跑）。 -->
+  <LP_Sub_DraconicSoul.description>The soul of a true dragon flows in the blood: dragon blood at level 4 (Constitution +2), dragon wings at 10 (walking ignores terrain), dragon fear at 14 (a frightful presence like a true dragon's that can frighten enemies and make them panic and flee).</LP_Sub_DraconicSoul.description>
+  <!-- 恶鬼之血 -->
+  <LP_Sub_FiendBlood.label>Fiendish Blood</LP_Sub_FiendBlood.label>
+  <!-- 把血脉里的恶鬼关在身体里，用法力上限换身体强化：眼睛（魅力）、皮肤（变红，伤口愈合更快并持续回复）、舌头（心灵敏感度）。每开一个强化，术士法力上限 −2。4 级同时只能开 1 个；8 级能开 2 个，强化效果翻倍；12 级选一个永久固化（一直开着、不占名额、不扣法力），另外两个照常维持。 -->
+  <LP_Sub_FiendBlood.description>Cage the fiend of your bloodline within your body, trading max mana for body enhancements: eyes (Charisma), skin (turns red, faster wound healing and continuous regeneration), tongue (psychic sensitivity). Each enhancement turned on reduces sorcerer max mana by 2. At level 4 only 1 can be on at once; at level 8 you can have 2 on and enhancement effects double; at level 12 pick one to fix permanently (always on, not counting toward the limit, not reducing mana), with the other two maintained as usual.</LP_Sub_FiendBlood.description>
+  <!-- 永久固化的强化 -->
+  <LP_Sub_FiendBlood.choices.0.label>permanently fixed enhancement</LP_Sub_FiendBlood.choices.0.label>
+  <!-- 恶鬼之眼 | 恶鬼之皮 | 恶鬼之舌 -->
+  <LP_Sub_FiendBlood.choices.0.options.0>fiend's eyes</LP_Sub_FiendBlood.choices.0.options.0>
+  <LP_Sub_FiendBlood.choices.0.options.1>fiend's skin</LP_Sub_FiendBlood.choices.0.options.1>
+  <LP_Sub_FiendBlood.choices.0.options.2>fiend's tongue</LP_Sub_FiendBlood.choices.0.options.2>
+  <!-- 魅力 +4，一直开着，不扣法力上限。 | 皮肤变红，伤口愈合 ×2 并持续回复，一直开着，不扣法力上限。 | 心灵敏感度 +60%，一直开着，不扣法力上限。 -->
+  <LP_Sub_FiendBlood.choices.0.tips.0>Charisma +4, always on, doesn't reduce max mana.</LP_Sub_FiendBlood.choices.0.tips.0>
+  <LP_Sub_FiendBlood.choices.0.tips.1>Skin turns red, wound healing ×2 with continuous regeneration, always on, doesn't reduce max mana.</LP_Sub_FiendBlood.choices.0.tips.1>
+  <LP_Sub_FiendBlood.choices.0.tips.2>Psychic sensitivity +60%, always on, doesn't reduce max mana.</LP_Sub_FiendBlood.choices.0.tips.2>
+</LanguageData>

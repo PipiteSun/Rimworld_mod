@@ -38,7 +38,7 @@ namespace LichPhylactery {
   public static Pawn Make(string kind,Faction f,int tile,Gender? gender=null){
    var k=DefDatabase<PawnKindDef>.GetNamedSilentFail(kind);if(k==null)return null;
    var req=new PawnGenerationRequest(k,f,PawnGenerationContext.NonPlayer,tile,forceGenerateNewPawn:true,canGeneratePawnRelations:false,mustBeCapableOfViolence:k.RaceProps.Humanlike,fixedGender:gender,colonistRelationChanceFactor:0f);
-   try{return PawnGenerator.GeneratePawn(req);}catch(Exception e){Log.Warning("[DND边缘大陆] 生成 "+kind+" 失败："+e.Message);return null;}
+   try{return PawnGenerator.GeneratePawn(req);}catch(Exception e){Log.Warning("[DND边缘大陆] 生成 ".Loc()+kind+" 失败：".Loc()+e.Message);return null;}
   }
   // 魅魔生成：60% 普通肤色（去掉绯红肤色基因）。
   public static void OnGenerated(Pawn p){
@@ -95,7 +95,7 @@ namespace LichPhylactery {
   public static bool Gaze(Pawn caster,Pawn t){
    if(t==null || t.Dead)return false;
    if(Legendary.Save(t,Adventurer.Con,GazeDC,caster))return false;
-   Items.Give(t,"LP_NabassuPetrify",PetrifyTicks);Items.Mote(t,"石化中",new Color(.7f,.7f,.68f));return true;
+   Items.Give(t,"LP_NabassuPetrify",PetrifyTicks);Items.Mote(t,"石化中".Loc(),new Color(.7f,.7f,.68f));return true;
   }
   // 纳巴苏杀死的人形：灵魂被吞噬（不能复活），饱魂 +1 层（最多 10），24 小时后 30% 起身成劣魔。
   public static bool Devour(Pawn nabassu,Pawn victim){
@@ -104,7 +104,7 @@ namespace LichPhylactery {
    AddGorge(nabassu,1);
    var st=AbyssState.Get;var corpse=victim.Corpse;
    if(st!=null && corpse!=null && Outsiders.Roll<NabassuRiseChance)st.pending.Add(new AbyssPending{corpse=corpse,tick=Find.TickManager.TicksGame+DevourRiseTicks,reason="devour"});
-   Messages.Message(nabassu.LabelShort+"吞掉了"+victim.LabelShort+"的灵魂。",victim.Corpse!=null?(LookTargets)victim.Corpse:nabassu,MessageTypeDefOf.NegativeEvent,false);
+   Messages.Message(nabassu.LabelShort+"吞掉了".Loc()+victim.LabelShort+"的灵魂。".Loc(),victim.Corpse!=null?(LookTargets)victim.Corpse:nabassu,MessageTypeDefOf.NegativeEvent,false);
    return true;
   }
   public static int Gorge(Pawn p)=>Mathf.RoundToInt(p?.health?.hediffSet?.GetFirstHediffOfDef(Items.Hediff("LP_SoulGorged"))?.Severity??0f);
@@ -121,11 +121,11 @@ namespace LichPhylactery {
    if(s==null || t==null || t.Dead || !t.RaceProps.Humanlike)return null;
    if(KissImmune(s,t))return "immune";
    if(Legendary.Save(t,Adventurer.Wis,Legendary.DC(s,Adventurer.Cha),s)){var st=AbyssState.Get;if(st!=null)st.kissImmune[s.thingIDNumber+"_"+t.thingIDNumber]=Find.TickManager.TicksGame+KissImmuneTicks;return "saved";}
-   if(t.IsPrisonerOfColony && t.guest!=null){t.guest.resistance=Mathf.Max(0f,t.guest.resistance-KissResistance);Items.Mote(t,"抵抗 -"+KissResistance.ToString("0"),new Color(.9f,.5f,.8f));return "prisoner";}
+   if(t.IsPrisonerOfColony && t.guest!=null){t.guest.resistance=Mathf.Max(0f,t.guest.resistance-KissResistance);Items.Mote(t,"抵抗 -".Loc()+KissResistance.ToString("0"),new Color(.9f,.5f,.8f));return "prisoner";}
    if(t.HostileTo(s)){
     var def=DefDatabase<MentalStateDef>.GetNamedSilentFail("LP_DragonCharmed");if(def==null)return "none";
-    if(t.mindState.mentalStateHandler.TryStartMentalState(def,"魅惑之吻",forced:true,forceWake:true) && t.MentalState!=null)t.MentalState.forceRecoverAfterTicks=KissCharmTicks;
-    Items.Mote(t,"被魅惑了",new Color(.9f,.5f,.8f));return "charmed";
+    if(t.mindState.mentalStateHandler.TryStartMentalState(def,"魅惑之吻".Loc(),forced:true,forceWake:true) && t.MentalState!=null)t.MentalState.forceRecoverAfterTicks=KissCharmTicks;
+    Items.Mote(t,"被魅惑了".Loc(),new Color(.9f,.5f,.8f));return "charmed";
    }
    var th=DefDatabase<ThoughtDef>.GetNamedSilentFail("LP_SuccubusKissed");if(th!=null)t.needs?.mood?.thoughts?.memories?.TryGainMemory(th,s);
    return "friend";
@@ -136,8 +136,8 @@ namespace LichPhylactery {
    foreach(var s in reg.list.ToList()){
     bool guised=Guised(s),visitor=Outsiders.Disguised(s);if(!guised && !visitor)continue;if(!s.Spawned || s.Dead)continue;
     var seer=Seer(s,map);if(seer==null)continue;
-    if(visitor)AbyssEvents.RevealSuccubus(s,seer.LabelShort+"看穿了它的伪装");
-    else{var g=Guise(s);g.Set(false);Messages.Message(seer.LabelShort+"看穿了"+s.LabelShort+"的变形伪装！",s,MessageTypeDefOf.NeutralEvent,false);}
+    if(visitor)AbyssEvents.RevealSuccubus(s,seer.LabelShort+"看穿了它的伪装".Loc());
+    else{var g=Guise(s);g.Set(false);Messages.Message(seer.LabelShort+"看穿了".Loc()+s.LabelShort+"的变形伪装！".Loc(),s,MessageTypeDefOf.NeutralEvent,false);}
     n++;
    }
    return n;
@@ -162,7 +162,7 @@ namespace LichPhylactery {
   }
   public static void Drain(Pawn s,Pawn o){
    if(o.needs?.rest!=null)o.needs.rest.CurLevel=Mathf.Max(0f,o.needs.rest.CurLevel-DreamRest);
-   AbyssTaint.Add(o,AbyssTaint.DreamGain,"梦境吸取");
+   AbyssTaint.Add(o,AbyssTaint.DreamGain,"梦境吸取".Loc());
    var nm=DefDatabase<ThoughtDef>.GetNamedSilentFail("LP_HauntedDreams");if(nm!=null)o.needs?.mood?.thoughts?.memories?.TryGainMemory(nm);
    foreach(var i in s.health.hediffSet.hediffs.OfType<Hediff_Injury>().Where(x=>!x.IsPermanent()).ToList())i.Heal(i.Severity*DreamHeal+.5f);
    var sated=DefDatabase<ThoughtDef>.GetNamedSilentFail("LP_SuccubusSated");if(sated!=null)s.needs?.mood?.thoughts?.memories?.TryGainMemory(sated);
@@ -258,7 +258,7 @@ namespace LichPhylactery {
   public override IEnumerable<Gizmo> GetGizmos(){
    foreach(var g in base.GetGizmos())yield return g;
    if(pawn.Faction?.IsPlayer!=true || pawn.Dead)yield break;
-   yield return new Command_Toggle{defaultLabel="变形伪装",defaultDesc="开启时看起来是普通人：角、翼、尾和绯红肤色都藏起来。被魔鬼之眼（8 格）或阿斯莫（5 格）看到会自动解除。",icon=ContentFinder<Texture2D>.Get("Abyss/Abilities/Guise",false)??BaseContent.BadTex,isActive=()=>on,toggleAction=()=>Set(!on)};
+   yield return new Command_Toggle{defaultLabel="变形伪装".Loc(),defaultDesc="开启时看起来是普通人：角、翼、尾和绯红肤色都藏起来。被魔鬼之眼（8 格）或阿斯莫（5 格）看到会自动解除。".Loc(),icon=ContentFinder<Texture2D>.Get("Abyss/Abilities/Guise",false)??BaseContent.BadTex,isActive=()=>on,toggleAction=()=>Set(!on)};
   }
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref on,"lpGuise");}
  }
@@ -284,10 +284,10 @@ namespace LichPhylactery {
   public override bool Valid(LocalTargetInfo target,bool throwMessages=false){
    if(!base.Valid(target,throwMessages))return false;string why=null;
    switch(Effect){
-    case "leap":if(!AbyssRaces.LandingNear(Caster,target).IsValid)why="目标旁边没有能落脚的地方。";break;
-    case "glide":why=Githyanki.CannotStep(Caster,target.Cell)??(target.Cell.DistanceTo(Caster.Position)>AbyssRaces.GlideRange+.5f?"超出滑翔距离（6格）。":null);break;
-    case "kiss":if(target.Pawn==null || !target.Pawn.RaceProps.Humanlike)why="只能吻人形。";else if(AbyssRaces.KissImmune(Caster,target.Pawn))why=target.Pawn.LabelShort+"刚抵抗过它的魅惑（24 小时内免疫）。";break;
-    case "gaze":if(target.Pawn==null)why="需要一个目标。";break;
+    case "leap":if(!AbyssRaces.LandingNear(Caster,target).IsValid)why="目标旁边没有能落脚的地方。".Loc();break;
+    case "glide":why=Githyanki.CannotStep(Caster,target.Cell)??(target.Cell.DistanceTo(Caster.Position)>AbyssRaces.GlideRange+.5f?"超出滑翔距离（6格）。".Loc():null);break;
+    case "kiss":if(target.Pawn==null || !target.Pawn.RaceProps.Humanlike)why="只能吻人形。".Loc();else if(AbyssRaces.KissImmune(Caster,target.Pawn))why=target.Pawn.LabelShort+"刚抵抗过它的魅惑（24 小时内免疫）。".Loc();break;
+    case "gaze":if(target.Pawn==null)why="需要一个目标。".Loc();break;
    }
    if(why!=null && throwMessages)Messages.Message(why,MessageTypeDefOf.RejectInput,false);
    return why==null;
@@ -297,7 +297,7 @@ namespace LichPhylactery {
    switch(Effect){
     case "leap":{var c=AbyssRaces.LandingNear(Caster,target);if(c.IsValid && Githyanki.Step(Caster,c,0f))AbyssRaces.LeapImpact(Caster);break;}
     case "glide":Githyanki.Step(Caster,target.Cell,0f);break;
-    case "kiss":{var r=AbyssRaces.Kiss(Caster,target.Pawn);if(r=="saved")Messages.Message(target.Pawn.LabelShort+"抵抗住了魅惑之吻。",target.Pawn,MessageTypeDefOf.NeutralEvent,false);break;}
+    case "kiss":{var r=AbyssRaces.Kiss(Caster,target.Pawn);if(r=="saved")Messages.Message(target.Pawn.LabelShort+"抵抗住了魅惑之吻。".Loc(),target.Pawn,MessageTypeDefOf.NeutralEvent,false);break;}
     case "gaze":AbyssRaces.Gaze(Caster,target.Pawn);break;
    }
   }
@@ -314,20 +314,20 @@ namespace LichPhylactery {
   HediffStage stage;int stageFor=-1;
   public override HediffStage CurStage{get{
    int n=Mathf.RoundToInt(Severity);if(stage!=null && stageFor==n)return stage;stageFor=n;
-   stage=new HediffStage{label=n+"层",statFactors=new List<StatModifier>{new StatModifier{stat=StatDefOf.MeleeDamageFactor,value=1f+.05f*n},new StatModifier{stat=StatDefOf.IncomingDamageFactor,value=1f/(1f+.05f*n)}}};
+   stage=new HediffStage{label=n+"层".Loc(),statFactors=new List<StatModifier>{new StatModifier{stat=StatDefOf.MeleeDamageFactor,value=1f+.05f*n},new StatModifier{stat=StatDefOf.IncomingDamageFactor,value=1f/(1f+.05f*n)}}};
    return stage;
   }}
-  public override string LabelInBrackets=>Mathf.RoundToInt(Severity)+"层";
+  public override string LabelInBrackets=>Mathf.RoundToInt(Severity)+"层".Loc();
  }
  // 饱魂之牙：佩戴者每杀一个人形 +1 层（伤害 +1%，最多 10 层，死亡清零）。
  public class Hediff_FangGorged : HediffWithComps {
   HediffStage stage;int stageFor=-1;
   public override HediffStage CurStage{get{
    int n=Mathf.RoundToInt(Severity);if(stage!=null && stageFor==n)return stage;stageFor=n;
-   stage=new HediffStage{label=n+"层",statFactors=new List<StatModifier>{new StatModifier{stat=StatDefOf.MeleeDamageFactor,value=1f+.01f*n}}};
+   stage=new HediffStage{label=n+"层".Loc(),statFactors=new List<StatModifier>{new StatModifier{stat=StatDefOf.MeleeDamageFactor,value=1f+.01f*n}}};
    return stage;
   }}
-  public override string LabelInBrackets=>Mathf.RoundToInt(Severity)+"层";
+  public override string LabelInBrackets=>Mathf.RoundToInt(Severity)+"层".Loc();
  }
  // 戴着饱魂之牙：深渊腐化每天 +0.2%。
  public class Hediff_FangWearer : HediffWithComps {
@@ -338,7 +338,7 @@ namespace LichPhylactery {
  public class Hediff_QuasitNature : HediffWithComps {
   public Pawn master;int acc,hour;
   public override bool Visible=>true;
-  public override string LabelInBrackets=>master==null?null:"主人 "+master.LabelShort;
+  public override string LabelInBrackets=>master==null?null:"主人 ".Loc()+master.LabelShort;
   public override void TickInterval(int delta){
    base.TickInterval(delta);if(pawn.Dead || !pawn.Spawned)return;
    if((acc+=delta)>=60){acc=0;int now=Find.TickManager.TicksGame;bool fight=now-pawn.LastAttackTargetTick<600 || now-pawn.mindState.lastHarmTick<600;bool has=Items.Has(pawn,"LP_QuasitVeil");
@@ -370,7 +370,7 @@ namespace LichPhylactery {
  // ---------- StatPart ----------
  public class StatPart_AbyssMove : StatPart {
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p){float f=AbyssRaces.MoveFactor(p);if(f!=1f)val*=f;}}
-  public override string ExplanationPart(StatRequest req){if(!(req.Thing is Pawn p))return null;float f=AbyssRaces.MoveFactor(p);return f==1f?null:"深渊（光照 / 驱魔结界）：×"+f.ToStringPercent();}
+  public override string ExplanationPart(StatRequest req){if(!(req.Thing is Pawn p))return null;float f=AbyssRaces.MoveFactor(p);return f==1f?null:"深渊（光照 / 驱魔结界）：×".Loc()+f.ToStringPercent();}
  }
  [StaticConstructorOnStartup]
  public static class AbyssStartup {
@@ -408,10 +408,10 @@ namespace LichPhylactery {
  public static class SoulGoneResurrect {
   static bool Prefix(Pawn pawn,ref bool __result){
    if(pawn==null || !AbyssRaces.SoulGone(pawn))return true;
-   __result=false;if(pawn.Faction?.IsPlayer==true)Messages.Message(pawn.LabelShort+"的灵魂已被吞噬（或抵押给了深渊），无法复活。",MessageTypeDefOf.RejectInput,false);
+   __result=false;if(pawn.Faction?.IsPlayer==true)Messages.Message(pawn.LabelShort+"的灵魂已被吞噬（或抵押给了深渊），无法复活。".Loc(),MessageTypeDefOf.RejectInput,false);
    return false;
   }
  }
  [HarmonyPatch(typeof(Souls),nameof(Souls.Unfit))]
- public static class SoulGoneOffering {static void Postfix(Thing thing,ref string __result){if(__result==null && thing is Corpse c && AbyssRaces.SoulGone(c.InnerPawn))__result="灵魂已被吞噬，没有可汲取的东西。";}}
+ public static class SoulGoneOffering {static void Postfix(Thing thing,ref string __result){if(__result==null && thing is Corpse c && AbyssRaces.SoulGone(c.InnerPawn))__result="灵魂已被吞噬，没有可汲取的东西。".Loc();}}
 }

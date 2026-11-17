@@ -27,8 +27,8 @@ namespace LichPhylactery {
   public ConstructRoleGallery(List<Pawn> samples){this.samples=samples;forcePause=true;absorbInputAroundWindow=true;}
   public override Vector2 InitialSize=>new Vector2(1140,725);
   public override void DoWindowContents(Rect r){
-   Text.Font=GameFont.Medium;Widgets.Label(new Rect(10,0,1090,38),"死灵造物 · 原版外表基因 + 独立特征 / 装备适配");Text.Font=GameFont.Small;
-   var names=new[]{"骷髅仆役","血肉巨像","知识死灵"};
+   Text.Font=GameFont.Medium;Widgets.Label(new Rect(10,0,1090,38),"死灵造物 · 原版外表基因 + 独立特征 / 装备适配".Loc());Text.Font=GameFont.Small;
+   var names=new[]{"骷髅仆役".Loc(),"血肉巨像".Loc(),"知识死灵".Loc()};
    var facings=new[]{Rot4.South,Rot4.South,Rot4.East,Rot4.North,Rot4.West};
    for(int row=0;row<3;row++){
     Widgets.Label(new Rect(8,52+row*204,115,40),names[row]);
@@ -37,7 +37,7 @@ namespace LichPhylactery {
      GUI.DrawTexture(box,PortraitsCache.Get(samples[row*2+(col==0?0:1)],new Vector2(190,193),facings[col],Vector3.zero,1f));
     }
    }
-   Widgets.Label(new Rect(120,660,1000,28),"左：未着甲　其余：侦察护甲与头盔的正面、侧面、背面");
+   Widgets.Label(new Rect(120,660,1000,28),"左：未着甲　其余：侦察护甲与头盔的正面、侧面、背面".Loc());
   }
  }
 }

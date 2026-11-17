@@ -1,0 +1,213 @@
+s08443	Having studied how the Far Realm twists flesh, colonists know where to cut: +10% damage against anomaly entities and aberration enemies (beholders, mind flayers, Far Realm visitors, etc.).\n\nCan't be researched directly: completes automatically once the colony has done "Far Realm dissection" on 500 twisted meat in total at the alchemy table.
+s08444	aberrant lore
+s08445	Use twisted meat as a material: flesh incubators, flesh bulwarks, aberrant hide armor, aberrant golem seeds, bioferrite extraction in the infernal forge, and the "Far Realm feast" psychic ritual.\n\nWith Anomaly installed, any one Anomaly flesh research (summon fleshbeasts, ghoul infusion or mutant weapons) must be researched first.
+s08446	fleshshaping
+s08447	This flesh golem is mixed with twisted meat from the Far Realm: tougher (damage taken -17%, equivalent to +20% health), wounds slowly heal on their own; when it dies it splits into 2 small fleshbeasts that rot after 1 day.
+s08448	aberrant flesh
+s08449	Armor with a leather base and aberrant paste "grown" on layer by layer; it feels alive to the touch. Sharp armor slightly below a flak vest. The wearer heals one small wound per day.\n\nUnsettling to look at: other people's opinion of the wearer -5.
+s08450	aberrant hide armor
+s08451	wearing aberrant hide armor
+s08452	A dark red paste of twisted meat boiled down with chemfuel and stabilized, kept in wax-sealed clay jars. The Far Realm infestation has been suppressed; it doesn't rot, but is still a little warm to the touch.\n\nAlchemists and necromancers both use it as concentrated "flesh": in the necromantic ritual table's raw meat recipes, 1 aberrant paste counts as 20 raw meat; in flesh catalysis, 1 counts as 10 twisted meat. Ordinary caravans don't buy it; infernal brokers, fey markets and hag markets buy it at 1.5× price.
+s08453	aberrant paste
+s08454	Aberrant paste mixed with herbs; applied to a wound, it burrows in and sews the flesh shut. Healing effect about the same as industrial medicine.\n\nThe price: each tending has a 15% chance to leave an "aberrant growth" on the treated part (beauty -1, can be surgically removed).
+s08455	aberrant regenerative paste
+s08456	A lump of extra flesh left by aberrant regenerative paste that twitches slightly on its own. Doesn't hurt or itch, just ugly. Can be surgically removed.
+s08457	aberrant growth
+s08458	A shard of light from Hadar, the "Dark Hunger" star of the Far Realm, set in a withered eye-socket-shaped bone frame. Its wearer can see the tides of the Far Realm: psychic sensitivity +30%, meditation focus gain +20%, aiming time -10%; +15% damage against Far Realm entities and aberration enemies.\n\nThe price: it's always "hungry". The wearer's mental break threshold +6%. Worn on the eyes in the trinket layer.
+s08459	Eye of Hadar
+s08460	The ghoul swallowed twisted meat, and the Far Realm flesh churns in its stomach. Melee damage +10%, move speed +5%.
+s08461	Far Realm satiation
+s08462	When I cut open that pile of meat, I thought I heard it speaking. Not to me.
+s08463	A small fleshbeast that crawled out of a flesh incubator (or an aberrant golem's remains), obeying the colony and rotting when its time is up.
+s08464	hatched fleshbeast
+s08465	Fed 5 twisted meat today. Work efficiency +10%.
+s08466	twisted meat nourishment
+s08467	Muscles bulge outward, and the face is warping along with them. Melee damage +20%, pain threshold +20%, social impact -30%.
+s08468	A murky draught of aberrant paste cut with troll blood. For 12 hours after drinking, muscles and nerves "grow crooked" together: melee damage +20%, pain threshold +20%, but the face warps too, social impact -30%. Liches and necromantic constructs can't drink it.
+s08469	metamorphosis
+s08470	metamorphosis draught
+s08471	Cut off the growth left by aberrant regenerative paste.
+s08472	Removing an aberrant growth.
+s08473	remove aberrant growth
+s08474	{0} removed the aberrant growth from {1}.
+s08475	Brew 1 aberrant regenerative paste from 4 aberrant paste and 1 herbal medicine (medicine, effect close to industrial medicine; 15% chance to leave an aberrant growth when tending).
+s08476	Brewing aberrant regenerative paste.
+s08477	brew aberrant regenerative paste
+s08478	Brew 1 metamorphosis draught from 5 aberrant paste and 1 troll blood.
+s08479	Brewing a metamorphosis draught.
+s08480	brew metamorphosis draught
+s08481	Replace 4 troll blood with 3 aberrant paste: brew 1 troll regenerant from 3 aberrant paste + 1 troll blood.
+s08482	brew troll regenerant (aberrant paste)
+s08483	Burn 60 twisted meat and 5 chemfuel into 10 bioferrite in the infernal forge's netherfire. The netherfire needs rest: each colony can extract at most 30 per day (3 times).
+s08484	Extracting bioferrite.
+s08485	bioferrite extraction
+s08486	Cut 50 twisted meat apart piece by piece to study how the Far Realm twists flesh: gain a little Anomaly knowledge (basic). Once the colony has dissected 500 in total, the research "aberrant lore" completes automatically.\n\nThe dissector has a 5% chance to hear "far-realm whispers" (mood -5, 3 days).
+s08487	Dissecting twisted meat.
+s08488	Far Realm dissection
+s08489	Make a flesh golem seed from 200 twisted meat and 10 aberrant paste. The awakened golem has "aberrant flesh": damage taken -17% (equivalent to +20% health), slowly heals itself, and splits into 2 small fleshbeast servants when it dies (rotting after 1 day). Otherwise the same as an ordinary flesh golem.
+s08490	Making an aberrant golem seed.
+s08491	make aberrant golem seed
+s08492	Burn 30 twisted meat clean before the patron deity: divine favor +1, at most +3 per day. Only works when the patron deity is Kelemvor, Lathander or Shar (Kelemvor and Lathander loathe such unnatural flesh; Shar likes the forgetting it brings).
+s08493	Incinerating twisted meat.
+s08494	incinerate twisted meat
+s08495	Boil 20 twisted meat and 2 chemfuel into 2 aberrant paste. Aberrant paste doesn't rot.
+s08496	Boiling aberrant paste.
+s08497	stabilize rot stew
+s08498	Quench 5 cold iron from 3 bioferrite and 10 steel in the infernal forge.
+s08499	temper cold iron (bioferrite)
+s08500	ghoul
+s08501	Corpse-eating undead: doesn't eat or sleep, never breaks, doesn't mind cold, immune to necrotic damage. Targets hit by its claws make a Constitution save or are fully paralyzed for 3 seconds. Radiant and fire damage ×1.5.
+s08502	ghoul body
+s08503	Corpse-eating undead: grey skin, skin and bones, no hair. Its claws carry a paralyzing corpse venom.
+s08504	A ghoul's corpse venom: fully paralyzed, able to move again after 3 seconds.
+s08505	corpse venom paralysis
+s08506	vampire
+s08507	Blood-drinking undead aristocrats: don't eat or sleep, never break, immune to necrotic damage. Heal 4 injury every 250 ticks, but stop if hit by radiant or fire damage within 10 seconds; weapon hits drain 50% of the damage to heal themselves. Standing outdoors by day they take ×1.5 damage and stop healing. Radiant and fire damage ×1.5.
+s08508	Ghastly pale skin and jet-black hair: blood-drinking undead aristocrats whose wounds heal on their own, fearing holy light, fire and sunlight.
+s08509	wight
+s08510	An undead warrior that retains its martial skill: doesn't eat or sleep, never breaks, immune to necrotic damage, armor +15%. Each weapon hit drains 30% of the damage to heal itself. Radiant and fire damage ×1.5.
+s08511	wight body
+s08512	An undead warrior that retains its skill from life: ash-grey skin and hair, able to draw the life force from the living with a single blow.
+s08513	wraith
+s08514	A semi-corporeal wandering soul: doesn't eat or sleep, never breaks, immune to necrotic damage, damage from blades, guns and arrows halved (radiant, fire, silver and magic work normally), movement ×1.3. The living within 2 cells lose 3 health every 2 seconds, and what it drains heals itself.
+s08515	wraith body
+s08516	A wandering soul made only of resentment: an ink-black figure, semi-corporeal, that ordinary blades and guns can only half harm.
+s08517	An eight-legged giant lizard, slow-moving, its eyes glowing yellow-green. In a fight, enemies within 7 cells who can see it meet its gaze every second, their bodies gradually stiffening and slowing; when fully stiff they must endure it with Constitution (a failed save turns them to stone for half a day). The blind, mechanoids and other basilisks are unaffected. There are often lifelike "statues" near its den.
+s08518	basilisk
+s08519	basilisk hatchling
+s08520	basilisk meat
+s08521	claw
+s08522	venom fang
+s08523	Met the basilisk's gaze; the limbs are stiffening and greying from the tips. The stiffer, the slower; when fully stiff you must endure with Constitution, and failing turns you to stone. Slowly recovers once no longer being stared at. The blind are unaffected.
+s08524	stiffening
+s08525	half stiffened
+s08526	Turned to stone under a basilisk's gaze: motionless for half a day before the stone skin flakes off.
+s08527	A giant beast called the "land shark": heavily armored with a big armored fin rising from its back, it usually travels underground and bursts out of the earth when it smells prey. When enemies are 3-9 cells away it leaps high and crashes down (once every 15 seconds): those around the landing point take a heavy blow and are knocked down; the nimble can dodge half the damage and stay standing. Its armored hide makes excellent armor. Nearly impossible to tame.
+s08528	bulette
+s08529	bulette pup
+s08530	bulette meat
+s08531	bulette leap
+s08532	A horse-sized many-legged scavenger insect that often rummages for corpses in swamps and graveyards, with a ring of pink tentacles around its mouth. Each tentacle hit injects paralytic venom (a good Constitution can block it once): the more venom builds up, the number the body; when it fills up, the victim is fully paralyzed and collapses for 10 seconds.
+s08533	carrion crawler
+s08534	carrion crawler larva
+s08535	carrion crawler meat
+s08536	The carrion crawler venom has filled up; fully paralyzed and collapsed, able to move again after 10 seconds.
+s08537	fully paralyzed
+s08538	A paralytic venom secreted by a carrion crawler's tentacles. The more it builds up, the number the body; when full, full-body paralysis for 10 seconds. The venom is metabolized within a few hours.
+s08539	carrion crawler venom
+s08540	tingling
+s08541	numb
+s08542	Engulfed whole in a gelatinous cube's transparent gel, unable to move and carried along by it, burned by acid every second. Defeating the cube frees you; trapped for at most 6 seconds.
+s08543	engulfed
+s08544	gel body
+s08545	gelatin
+s08546	nucleus
+s08547	A nearly transparent cube of gel taller than a person, gliding slowly through damp places, engulfing everything in its path to slowly digest it; undigested bones, ironware and coins can often be seen inside. Melee hits have a 35% chance to engulf a target no bigger than itself whole: the engulfed is trapped in the gel, carried along, unable to move, and takes acid damage every second for up to 6 seconds; only defeating it rescues them (each cube can engulf only once every 10 seconds). Immune to acid itself, with no hide to skin. Nearly impossible to tame.
+s08548	gelatinous cube
+s08549	small gelatinous cube
+s08550	gel chunk
+s08551	Heavy armor plates from a bulette's back joined by tough hide. Very heavy and not very warm, but nearly impenetrable; good for armor.
+s08552	bulette armored hide
+s08553	A lion's body, bat wings and a cunning human face, with a cluster of spikes at the tip of its tail. It flings tail spikes from a distance: with enemies in sight 3-15 cells away, it fires 3 tail spikes in a row every 8 seconds. At most 24 tail spikes; used ones regrow at one per hour.
+s08554	manticore
+s08555	manticore cub
+s08556	manticore meat
+s08557	gloomy lair
+s08558	manticore tail spike
+s08559	An insect-like monster with a rust-red carapace and a propeller-like tail that seeks metal to eat with two feathery antennae. Not especially aggressive, but once in a fight, metal weapons and metal armor it touches corrode rapidly: each hit makes the opponent's metal weapon in hand and one piece of metal armor lose 10% durability; striking it with a metal melee weapon rusts the weapon by 5% too. Wood, leather and bone are unaffected.
+s08560	rust monster
+s08561	rust monster larva
+s08562	rust monster meat
+s08563	antennae
+s08564	Circle 1 (Abjuration, ritual): set an alarm in radius 10 around yourself for 1 day: when an enemy enters, a letter warns you and the caster is woken.
+s08565	Circle 3 (Necromancy, upcastable): raise a humanlike corpse within 10 cells as a skeleton servant for 1 day (a lich's skeleton servant that falls apart when time is up). Upcast: each extra circle raises another corpse within 5 cells.
+s08566	animate dead
+s08567	A skeleton servant raised by a wizard's necromancy; falls apart when time is up.
+s08568	Circle 2 (Abjuration, ritual): lock a door within 10 cells: damage taken ÷3 (durability ×3, enemy time to break the door ×3), until dispelled (select the door and click "dispel arcane lock").
+s08569	Flickering back and forth between this plane and the Ethereal Plane: each enemy attack has a 50% chance to miss.
+s08570	Circle 3 (Transmutation): flicker between planes for 1 minute: each enemy attack has a 50% chance to miss.
+s08571	blink
+s08572	Hands and feet frozen by a ray of frost: movement ×0.6.
+s08573	ray of frost
+s08574	Understands and speaks any language: trade prices +5%, negotiation ability ×1.2 (faster persuading and recruiting).
+s08575	comprehend languages
+s08576	Circle 1 (Divination, ritual): for 1 day, trade prices +5%, negotiation ability ×1.2 (faster persuading and recruiting).
+s08577	A wizard copies a circle 1 spellbook page (or a true seeing scroll → detect magic) into their spellbook: 50 silver, 2 hours. Success 60% + Intelligence modifier × 5% (up to 95%); Order of Scribes pays half (half the silver refunded on completion) with +15% success. Failure only loses the materials; materials are refunded if you already know the spell or can't cast that circle yet. Only wizards can do it.
+s08578	Copying a spell.
+s08579	copy spell (circle 1)
+s08580	A wizard copies a circle 2 spellbook page (or a flesh to stone scroll → hold person) into their spellbook: 100 silver, 4 hours. Success 60% + Intelligence modifier × 5% (up to 95%); Order of Scribes pays half with +15% success. Failure only loses the materials. From wizard level 3.
+s08581	copy spell (circle 2)
+s08582	A wizard copies a circle 3 spellbook page (or a fear gaze scroll → fear, a protection from evil scroll → magic circle, a necrotic blast scroll → vampiric touch) into their spellbook: 150 silver, 6 hours. Success 60% + Intelligence modifier × 5% (up to 95%); Order of Scribes pays half with +15% success. Failure only loses the materials. From wizard level 5.
+s08583	copy spell (circle 3)
+s08584	Circle 2 (Conjuration): radius 3 at a point within 20 cells is swallowed by magical darkness for 30 seconds: enemies inside have sharply reduced ranged accuracy (same as the warlock's Darkness).
+s08585	Sees the auras of magic: invisible enemies within 30 cells are revealed (checked every 2 seconds).
+s08586	Circle 1 (Divination, ritual): for 1 hour see through invisible enemies within 30 cells; on casting, a letter lists the magic items and legendary-quality items on this map.
+s08587	detect magic
+s08588	Circle 3 (Abjuration): one target within 20 cells. Enemy: removes magical buffs (timed buffs and shields from spells and class abilities); ally: removes harmful magical effects such as curses, charm, sleep, hold, petrification and darkness (see the report for the list).
+s08589	dispel magic
+s08590	Circle 2 (Transmutation): one ally within 20 cells for 1 hour, choose one of four in a window: Strength (carry capacity ×1.5, mining ×1.3) / Dexterity (melee dodge +10) / Intelligence (research ×1.2) / Charisma (social impact ×1.2).
+s08591	enhance ability
+s08592	Eagle's splendor: social impact ×1.2.
+s08593	enhance ability: Charisma
+s08594	Cat's grace: melee dodge +10.
+s08595	enhance ability: Dexterity
+s08596	Fox's cunning: research speed ×1.2.
+s08597	enhance ability: Intelligence
+s08598	Bull's strength: carry capacity ×1.5, mining speed ×1.3.
+s08599	enhance ability: Strength
+s08600	Circle 1 (Necromancy): for 1 hour an extra necrotic shield covers you, absorbing 15 × arcane power damage first (same layer as Shield, doesn't stack).
+s08601	Formed a familiar pact with a wizard.
+s08602	familiar
+s08603	The familiar is alive: research speed ×1.05; spell range +3 while the familiar is within 10 cells.
+s08604	familiar pact
+s08605	Circle 3 (Illusion): project an 8-cell terrifying illusion in one direction (a cone); each humanlike enemy inside has a 55% chance to flee in terror for 10 seconds; -5% per level the target is above the caster (minimum 10%), halved against legendary creatures and story bosses.
+s08606	fear
+s08607	Circle 1 (Conjuration, ritual): summon a bound familiar (choose a black cat or rat in the window; with DND beasts batch 3 enabled, also a tressym or pseudodragon; it joins the colony and takes the caster as its master). While the familiar lives, research speed ×1.05; spell range +3 while the familiar is within 10 cells. Only one at a time; after the familiar dies, it can be resummoned after 1 day.
+s08608	find familiar
+s08609	Cantrip (Evocation): hurl fire at one enemy within 26 cells, 8 × arcane power fire damage with a 30% chance to ignite it. Cooldown 4 seconds.
+s08610	fire bolt
+s08611	Feet off the ground: movement ×1.6, mud, shallow water, snow and plants no longer slow you.
+s08612	Circle 3 (Transmutation): one ally within 20 cells flies for 1 hour: movement ×1.6, mud, shallow water, snow and plants no longer slow them.
+s08613	fly
+s08614	Circle 1 (Conjuration, upcastable): a thick fog of radius 4 billows at a point within 20 cells (vanilla smoke, blocks sight and makes shots hard to land), dispersing after about 30 seconds. Upcast: +1 radius per extra circle.
+s08615	Circle 1 (Conjuration): coat the ground in radius 2 within 20 cells with grease for 1 minute: enemies inside have a 50% chance each second to slip (stunned 2 seconds). The grease can catch fire.
+s08616	grease
+s08617	Circle 2 (Enchantment, upcastable): one humanlike enemy within 20 cells has a 55% chance to be held (paralyzed 6 seconds); -5% per level the target is above the caster (minimum 10%), halved against legendary creatures and story bosses. Upcast: each extra circle holds another humanlike enemy within 6 cells of it.
+s08618	hold person
+s08619	Circle 2 (Illusion): one ally within 20 cells turns invisible for 1 hour; attacking or casting reveals them.
+s08620	Completely vanished; attacking or casting reveals them.
+s08621	Circle 2 (Transmutation): within 15 cells: open an ancient sealed container or cryptosleep casket, instantly crack something that needs hacking, or shatter someone else's door.
+s08622	knock
+s08623	Cantrip (Evocation): place a floating orb of light on a cell within 15 cells, lighting radius 6 for 12 hours, no fuel needed.
+s08624	Cantrip (Conjuration): a spectral hand brings an item of up to 10 kg within 15 cells to your side.
+s08625	Circle 3 (Abjuration, ritual): draw a circle of radius 3 around yourself for 1 day; choose one type in the window: demons and devils / undead / elementals / fey: hostile creatures of that type can't enter (they're pushed out if they do), and allies inside take ×0.5 damage from them.
+s08626	magic circle
+s08627	Cantrip (Transmutation): channel for 5 seconds to mend an item within 6 cells (10% durability) or a building (50 × arcane power hit points).
+s08628	mending
+s08629	Circle 2 (Divination): one enemy within 24 cells takes 12 × arcane power psychic damage (ignores armor); afterwards it can't turn invisible for 1 hour.
+s08630	mind spike
+s08631	The caster's mind is pinned to its mind: can't turn invisible.
+s08632	{0} was poisoned to death by poison spray.
+s08633	Cantrip (Conjuration): spray poison at one enemy within 4 cells, 10 × arcane power poison damage. Cooldown 5 seconds.
+s08634	poison spray
+s08635	Cantrip (Transmutation): pick a cell within 10 cells: clear all filth within radius 3; if the chosen cell is a meal (or has a meal on it), make it fresh again.
+s08636	prestidigitation
+s08637	Acid and poison damage taken ×0.5.
+s08638	protection from energy: acid
+s08639	Cold and frostbite damage taken ×0.5.
+s08640	protection from energy: cold
+s08641	Fire and burn damage taken ×0.5.
+s08642	protection from energy: fire
+s08643	Lightning and electrical damage taken ×0.5.
+s08644	protection from energy: lightning
+s08645	Psychic and psionic damage taken ×0.5.
+s08646	protection from energy: psychic
+s08647	Circle 3 (Abjuration): one ally within 20 cells for 1 hour; choose one of fire / cold / lightning / acid / psychic in the window, and damage of that type taken ×0.5.
+s08648	protection from energy
+s08649	{0}'s mind was pierced by a mind spike.
+s08650	Cantrip (Evocation): one enemy within 24 cells takes 6 × arcane power cold damage, movement ×0.6 for 3 seconds. Cooldown 4 seconds.
+s08651	Casting a ritual.
+s08652	Circle 2 (Evocation, upcastable): fire 3 scorching rays, each 8 × arcane power fire damage; the first hits the chosen enemy, the rest are split among other enemies within 5 cells of it (all hit it if there are no others). Upcast: +1 ray per extra circle.
+s08653	scorching ray
+s08654	Circle 3 (Divination, ritual): without a comms console, pick a faction in the window and talk to its leader (opens the vanilla comms dialog). Once per day.
+s08655	sending

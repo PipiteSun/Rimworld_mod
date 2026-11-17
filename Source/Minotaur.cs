@@ -58,7 +58,7 @@ namespace LichPhylactery {
     r.damage=ChargeDamage*caster.BodySize*damageFactor;
     p.TakeDamage(new DamageInfo(DamageDefOf.Blunt,r.damage,0f,(p.Position-caster.Position).AngleFlat,caster));
     if(!p.Dead)p.stances?.stunner?.StunFor(StunTicks,caster,false,false,false);
-    if(p.Spawned)MoteMaker.ThrowText(p.DrawPos,p.Map,"蛮牛冲撞！",new Color(1f,.6f,.35f));
+    if(p.Spawned)MoteMaker.ThrowText(p.DrawPos,p.Map,"蛮牛冲撞！".Loc(),new Color(1f,.6f,.35f));
    }
    return r;
   }
@@ -118,19 +118,19 @@ namespace LichPhylactery {
   public CompProperties_MinotaurGithAbility Props=>(CompProperties_MinotaurGithAbility)props;
   Pawn Caster=>parent.pawn;
   public override bool GizmoDisabled(out string reason){
-   if(Props.effect=="astral" && !Githyanki.CanPayStep(Caster,Props.psyfocusCost)){reason="精神力不足：需要"+Props.psyfocusCost.ToStringPercent()+"。";return true;}
+   if(Props.effect=="astral" && !Githyanki.CanPayStep(Caster,Props.psyfocusCost)){reason="精神力不足：需要".Loc()+Props.psyfocusCost.ToStringPercent()+"。".Loc();return true;}
    return base.GizmoDisabled(out reason);
   }
   public string Invalid(LocalTargetInfo target){
-   var map=Caster?.Map;if(map==null)return "施法者不在地图上。";
-   var c=target.Cell;if(!c.IsValid || !c.InBounds(map))return "需要地图上的目标位置。";
+   var map=Caster?.Map;if(map==null)return "施法者不在地图上。".Loc();
+   var c=target.Cell;if(!c.IsValid || !c.InBounds(map))return "需要地图上的目标位置。".Loc();
    switch(Props.effect){
     case "charge":
-     if(c==Caster.Position)return "需要冲撞的方向。";
-     return c.DistanceTo(Caster.Position)>Minotaur.ChargeRange(Caster)+.5f?"超出冲撞距离（"+Minotaur.ChargeRange(Caster)+"格）。":null;
+     if(c==Caster.Position)return "需要冲撞的方向。".Loc();
+     return c.DistanceTo(Caster.Position)>Minotaur.ChargeRange(Caster)+.5f?"超出冲撞距离（".Loc()+Minotaur.ChargeRange(Caster)+"格）。".Loc():null;
     case "astral":return Githyanki.CannotStep(Caster,c);
    }
-   return "未知的能力。";
+   return "未知的能力。".Loc();
   }
   public override bool Valid(LocalTargetInfo target,bool throwMessages=false){
    string reason=Invalid(target);
@@ -148,7 +148,7 @@ namespace LichPhylactery {
    if(Caster?.Map==null || !target.Cell.IsValid)return;
    if(Props.effect=="charge")GenDraw.DrawFieldEdges(Minotaur.ChargeLine(Caster,target.Cell));
   }
-  public override string ExtraLabelMouseAttachment(LocalTargetInfo target)=>Props.effect=="astral" && Props.psyfocusCost>0 && Caster.GetPsylinkLevel()>0?"精神力 "+Props.psyfocusCost.ToStringPercent():null;
+  public override string ExtraLabelMouseAttachment(LocalTargetInfo target)=>Props.effect=="astral" && Props.psyfocusCost>0 && Caster.GetPsylinkLevel()>0?"精神力 ".Loc()+Props.psyfocusCost.ToStringPercent():null;
  }
 
  [HarmonyPatch(typeof(Verb_MeleeAttackDamage),"DamageInfosToApply")]

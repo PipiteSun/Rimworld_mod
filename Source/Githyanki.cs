@@ -41,18 +41,18 @@ namespace LichPhylactery {
    var s=(ThingWithComps)ThingMaker.MakeThing(Sword);s.TryGetComp<CompQuality>()?.SetQuality(QualityUtility.GenerateQualityTraderItem(),ArtGenerationContext.Outsider);
    p.equipment.AddEquipment(s);return true;
   }
-  public static string CannotForge(Pawn p)=>Has(p,SwordGene)?null:"只有带“银剑传承”基因的吉斯洋基才能锻造银剑。";
+  public static string CannotForge(Pawn p)=>Has(p,SwordGene)?null:"只有带“银剑传承”基因的吉斯洋基才能锻造银剑。".Loc();
 
   // ---------- 星界跳跃 ----------
   public static bool CanPayStep(Pawn p,float cost)=>cost<=0 || p==null || p.GetPsylinkLevel()<=0 || p.psychicEntropy==null || p.psychicEntropy.CurrentPsyfocus+.0001f>=cost;
   public static string CannotStep(Pawn caster,IntVec3 c){
-   var map=caster?.Map;if(map==null)return "施法者不在地图上。";
-   if(!c.IsValid || !c.InBounds(map))return "需要地图上的目标位置。";
-   if(c==caster.Position)return "已经站在这里了。";
-   if(c.DistanceTo(caster.Position)>StepRange+.5f)return "超出星界跳跃距离（8格）。";
-   if(c.Fogged(map))return "不能跳进未探索的地方。";
-   if(!c.Standable(map))return "那里没有可以站立的地方。";
-   if(c.GetFirstPawn(map)!=null)return "那里已经有人了。";
+   var map=caster?.Map;if(map==null)return "施法者不在地图上。".Loc();
+   if(!c.IsValid || !c.InBounds(map))return "需要地图上的目标位置。".Loc();
+   if(c==caster.Position)return "已经站在这里了。".Loc();
+   if(c.DistanceTo(caster.Position)>StepRange+.5f)return "超出星界跳跃距离（8格）。".Loc();
+   if(c.Fogged(map))return "不能跳进未探索的地方。".Loc();
+   if(!c.Standable(map))return "那里没有可以站立的地方。".Loc();
+   if(c.GetFirstPawn(map)!=null)return "那里已经有人了。".Loc();
    return null;
   }
   public static bool Step(Pawn caster,IntVec3 c,float cost){

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 劝返 -->
+  <LP_DevaRedeem.label>redeem</LP_DevaRedeem.label>
+  <!-- r_logentry->[INITIATOR_nameDef]握着[RECIPIENT_nameDef]焦黑的羽毛，轻声说起天界的光。 | r_logentry->[INITIATOR_nameDef]对[RECIPIENT_nameDef]说：你不是生来就属于九狱的。 -->
+  <LP_DevaRedeem.logRulesInitiator.rulesStrings>
+    <li>r_logentry-&gt;[INITIATOR_nameDef] held [RECIPIENT_nameDef]'s charred feathers and spoke softly of the light of the heavens.</li>
+    <li>r_logentry-&gt;[INITIATOR_nameDef] said to [RECIPIENT_nameDef]: you were not born belonging to the Nine Hells.</li>
+  </LP_DevaRedeem.logRulesInitiator.rulesStrings>
+</LanguageData>

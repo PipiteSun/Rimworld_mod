@@ -16,7 +16,7 @@ namespace LichPhylactery {
   public static GeneDef Bloodline(string element)=>Races124.Gene("LP_Element"+element);
   public static XenotypeDef Xenotype(string element)=>Races124.Xeno("LP_Genasi"+element);
   public static GeneDef Skin(string element){switch(element){case "Fire":return Races124.Gene("LP_SkinEmber");case "Water":return Races124.Gene("LP_SkinTide");case "Earth":return Races124.Gene("LP_SkinStone");case "Air":return Races124.Gene("LP_SkinSky");}return null;}
-  public static string Label(string element){switch(element){case "Fire":return "火";case "Water":return "水";case "Earth":return "土";case "Air":return "风";}return element;}
+  public static string Label(string element){switch(element){case "Fire":return "火".Loc();case "Water":return "水".Loc();case "Earth":return "土".Loc();case "Air":return "风".Loc();}return element;}
   public static bool IsGenasi(Pawn p)=>CommonRaces.Has(p,Core);
   // 激活的元素血脉（元素裔与巨灵都有）；没有时为 null。
   // 1.58.6：四个血脉基因用静态 DefRef（原来每次拼 4 个字符串再按名字查）。顺序不变：火、水、土、风取第一个。
@@ -33,16 +33,16 @@ namespace LichPhylactery {
   // ---------- 火花：6格内的一个目标点燃（小火） ----------
   public static string CannotSpark(Pawn caster,LocalTargetInfo t){
    var map=caster.Map;var c=t.Cell;
-   if(!c.IsValid || !c.InBounds(map))return "需要地图上的目标。";
-   if(CastApproach.TooFar(c.DistanceTo(caster.Position),SparkRange+.5f))return "超出火花距离（6格）。";
-   if(!CastApproach.IgnoreDistance && !GenSight.LineOfSight(caster.Position,c,map,true))return "看不到目标。";
+   if(!c.IsValid || !c.InBounds(map))return "需要地图上的目标。".Loc();
+   if(CastApproach.TooFar(c.DistanceTo(caster.Position),SparkRange+.5f))return "超出火花距离（6格）。".Loc();
+   if(!CastApproach.IgnoreDistance && !GenSight.LineOfSight(caster.Position,c,map,true))return "看不到目标。".Loc();
    return null;
   }
   public static bool Spark(Pawn caster,LocalTargetInfo t){
    var map=caster.Map;if(CannotSpark(caster,t)!=null)return false;
    FleckMaker.Static(t.Cell,map,FleckDefOf.ShotFlash,1.4f);
    if(t.Thing!=null && !t.Thing.Destroyed){
-    if(t.Thing is Pawn p && p.GetStatValue(StatDefOf.Flammability)<=0){Items.Mote(p,"不受火焰影响",new Color(1f,.7f,.4f));return false;}
+    if(t.Thing is Pawn p && p.GetStatValue(StatDefOf.Flammability)<=0){Items.Mote(p,"不受火焰影响".Loc(),new Color(1f,.7f,.4f));return false;}
     FireUtility.TryAttachFire(t.Thing,SparkFire,caster);
     return t.Thing.HasAttachment(ThingDefOf.Fire);
    }
@@ -69,7 +69,7 @@ namespace LichPhylactery {
   // ---------- 风跃：8格内、需要视线 ----------
   public static string CannotLeap(Pawn caster,IntVec3 c){
    var r=Races124.BasicLanding(caster,c,LeapRange);if(r!=null)return r;
-   if(!GenSight.LineOfSight(caster.Position,c,caster.Map,true))return "风跃需要视线，不能穿墙。";
+   if(!GenSight.LineOfSight(caster.Position,c,caster.Map,true))return "风跃需要视线，不能穿墙。".Loc();
    return null;
   }
   public static bool Leap(Pawn caster,IntVec3 c){
@@ -86,7 +86,7 @@ namespace LichPhylactery {
  public class StatPart_ElementalFocus : StatPart {
   static float Factor(Pawn p,StatDef stat)=>ElementalFocus.StatFactor(p,stat)*RaceItems124.CloakFactor(p,stat);
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p)val*=Factor(p,parentStat);}
-  public override string ExplanationPart(StatRequest req){if(!(req.Thing is Pawn p))return null;float f=Factor(p,parentStat);return f==1f?null:"元素符/风羽披风：×"+f.ToStringPercent();}
+  public override string ExplanationPart(StatRequest req){if(!(req.Thing is Pawn p))return null;float f=Factor(p,parentStat);return f==1f?null:"元素符/风羽披风：×".Loc()+f.ToStringPercent();}
  }
  public static class ElementalFocus {
   public const float CooldownFactor=.5f;
@@ -109,7 +109,7 @@ namespace LichPhylactery {
  public class StatPart_EarthYieldCap : StatPart {
   public const float Bonus=.1f;
   public override void TransformValue(StatRequest req,ref float val){if(val<1f && req.Thing is Pawn p && Genasi.Element(p)=="Earth")val=Mathf.Min(1f,val+Bonus);}
-  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Genasi.Element(p)=="Earth"?"岩石血脉：+10%（最高100%）":null;
+  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Genasi.Element(p)=="Earth"?"岩石血脉：+10%（最高100%）".Loc():null;
  } [StaticConstructorOnStartup]
  public static class ElementalFocusStartup {
   static ElementalFocusStartup(){

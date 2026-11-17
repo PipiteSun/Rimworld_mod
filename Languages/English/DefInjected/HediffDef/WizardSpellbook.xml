@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 冷冻射线 -->
+  <LP_WS_Chilled.label>ray of frost</LP_WS_Chilled.label>
+  <!-- 被冷冻射线冻住了手脚：移动 ×0.6。 -->
+  <LP_WS_Chilled.description>Hands and feet frozen by a ray of frost: movement ×0.6.</LP_WS_Chilled.description>
+  <!-- 通晓语言 -->
+  <LP_WS_Comprehend.label>comprehend languages</LP_WS_Comprehend.label>
+  <!-- 听得懂、也说得出任何语言：交易价格 +5%，谈判能力 ×1.2（劝降、招募更快）。 -->
+  <LP_WS_Comprehend.description>Understands and speaks any language: trade prices +5%, negotiation ability ×1.2 (faster persuading and recruiting).</LP_WS_Comprehend.description>
+  <!-- 侦测魔法 -->
+  <LP_WS_DetectMagic.label>detect magic</LP_WS_DetectMagic.label>
+  <!-- 看得见魔法的灵光：30 格内隐形的敌人现出身形（每 2 秒检查一次）。 -->
+  <LP_WS_DetectMagic.description>Sees the auras of magic: invisible enemies within 30 cells are revealed (checked every 2 seconds).</LP_WS_DetectMagic.description>
+  <!-- 心灵尖刺 -->
+  <LP_WS_MindSpiked.label>mind spike</LP_WS_MindSpiked.label>
+  <!-- 施法者的意识钉在了它的心智上：无法隐形。 -->
+  <LP_WS_MindSpiked.description>The caster's mind is pinned to its mind: can't turn invisible.</LP_WS_MindSpiked.description>
+  <!-- 隐形术 -->
+  <LP_WS_Invisible.label>invisibility</LP_WS_Invisible.label>
+  <!-- 身形完全消失；攻击或施法就会现形。 -->
+  <LP_WS_Invisible.description>Completely vanished; attacking or casting reveals them.</LP_WS_Invisible.description>
+  <!-- 增强属性：力量 -->
+  <LP_WS_Enhance_Str.label>enhance ability: Strength</LP_WS_Enhance_Str.label>
+  <!-- 公牛之力：负重 ×1.5，采矿速度 ×1.3。 -->
+  <LP_WS_Enhance_Str.description>Bull's strength: carry capacity ×1.5, mining speed ×1.3.</LP_WS_Enhance_Str.description>
+  <!-- 增强属性：敏捷 -->
+  <LP_WS_Enhance_Dex.label>enhance ability: Dexterity</LP_WS_Enhance_Dex.label>
+  <!-- 猫之优雅：近战闪避 +10。 -->
+  <LP_WS_Enhance_Dex.description>Cat's grace: melee dodge +10.</LP_WS_Enhance_Dex.description>
+  <!-- 增强属性：智力 -->
+  <LP_WS_Enhance_Int.label>enhance ability: Intelligence</LP_WS_Enhance_Int.label>
+  <!-- 狐之狡黠：研究速度 ×1.2。 -->
+  <LP_WS_Enhance_Int.description>Fox's cunning: research speed ×1.2.</LP_WS_Enhance_Int.description>
+  <!-- 增强属性：魅力 -->
+  <LP_WS_Enhance_Cha.label>enhance ability: Charisma</LP_WS_Enhance_Cha.label>
+  <!-- 鹰之华彩：社交影响 ×1.2。 -->
+  <LP_WS_Enhance_Cha.description>Eagle's splendor: social impact ×1.2.</LP_WS_Enhance_Cha.description>
+  <!-- 飞行术 -->
+  <LP_WS_Fly.label>fly</LP_WS_Fly.label>
+  <!-- 双脚离地：移动 ×1.6，泥沼、浅水、雪地和植物不再减速。 -->
+  <LP_WS_Fly.description>Feet off the ground: movement ×1.6, mud, shallow water, snow and plants no longer slow you.</LP_WS_Fly.description>
+  <!-- 缓慢术 -->
+  <LP_WS_Slowed.label>slow</LP_WS_Slowed.label>
+  <!-- 时间在它身上变慢了：移动 ×0.5，近战和远程攻击冷却 ×1.5。施法者失去专注时结束。 -->
+  <LP_WS_Slowed.description>Time has slowed for it: movement ×0.5, melee and ranged attack cooldown ×1.5. Ends when the caster loses concentration.</LP_WS_Slowed.description>
+  <!-- 吸血之触 -->
+  <LP_WS_VampiricTouch.label>vampiric touch</LP_WS_VampiricTouch.label>
+  <!-- 手上缠着死灵之力（专注）：期间吸血之触不耗法力、冷却很短。 -->
+  <LP_WS_VampiricTouch.description>Hand wreathed in necrotic power (concentration): meanwhile vampiric touch costs no mana with a very short cooldown.</LP_WS_VampiricTouch.description>
+  <!-- 闪现术 -->
+  <LP_WS_Blink.label>blink</LP_WS_Blink.label>
+  <!-- 在这个位面和以太位面之间来回闪烁：每次被敌人攻击，成功率 50% 这一下落空。 -->
+  <LP_WS_Blink.description>Flickering back and forth between this plane and the Ethereal Plane: each enemy attack has a 50% chance to miss.</LP_WS_Blink.description>
+  <!-- 防护能量：火焰 -->
+  <LP_WS_Prot_Fire.label>protection from energy: fire</LP_WS_Prot_Fire.label>
+  <!-- 受到的火焰、灼烧伤害 ×0.5。 -->
+  <LP_WS_Prot_Fire.description>Fire and burn damage taken ×0.5.</LP_WS_Prot_Fire.description>
+  <!-- 防护能量：寒冷 -->
+  <LP_WS_Prot_Cold.label>protection from energy: cold</LP_WS_Prot_Cold.label>
+  <!-- 受到的寒冷、冻伤伤害 ×0.5。 -->
+  <LP_WS_Prot_Cold.description>Cold and frostbite damage taken ×0.5.</LP_WS_Prot_Cold.description>
+  <!-- 防护能量：闪电 -->
+  <LP_WS_Prot_Lightning.label>protection from energy: lightning</LP_WS_Prot_Lightning.label>
+  <!-- 受到的闪电、电击伤害 ×0.5。 -->
+  <LP_WS_Prot_Lightning.description>Lightning and electrical damage taken ×0.5.</LP_WS_Prot_Lightning.description>
+  <!-- 防护能量：强酸 -->
+  <LP_WS_Prot_Acid.label>protection from energy: acid</LP_WS_Prot_Acid.label>
+  <!-- 受到的强酸、毒素伤害 ×0.5。 -->
+  <LP_WS_Prot_Acid.description>Acid and poison damage taken ×0.5.</LP_WS_Prot_Acid.description>
+  <!-- 防护能量：心灵 -->
+  <LP_WS_Prot_Psychic.label>protection from energy: psychic</LP_WS_Prot_Psychic.label>
+  <!-- 受到的心灵、灵能伤害 ×0.5。 -->
+  <LP_WS_Prot_Psychic.description>Psychic and psionic damage taken ×0.5.</LP_WS_Prot_Psychic.description>
+  <!-- 活化死尸 -->
+  <LP_WS_Animated.label>animate dead</LP_WS_Animated.label>
+  <!-- 被法师的死灵术拉起来的骷髅仆从，时间一到就会散架。 -->
+  <LP_WS_Animated.description>A skeleton servant raised by a wizard's necromancy; falls apart when time is up.</LP_WS_Animated.description>
+  <!-- 魔宠 -->
+  <LP_WS_Familiar.label>familiar</LP_WS_Familiar.label>
+  <!-- 和一位法师缔结了魔宠契约。 -->
+  <LP_WS_Familiar.description>Formed a familiar pact with a wizard.</LP_WS_Familiar.description>
+  <!-- 魔宠契约 -->
+  <LP_WS_FamiliarBond.label>familiar pact</LP_WS_FamiliarBond.label>
+  <!-- 魔宠还活着：研究速度 ×1.05；魔宠在 10 格内时法术射程 +3。 -->
+  <LP_WS_FamiliarBond.description>The familiar is alive: research speed ×1.05; spell range +3 while the familiar is within 10 cells.</LP_WS_FamiliarBond.description>
+</LanguageData>

@@ -29,7 +29,7 @@ namespace LichPhylactery {
    if(CaravanExitMapUtility.CanExitMapAndJoinOrCreateCaravanNow(p))return true;
    p.MentalState?.RecoverFromState();
    if(p.CurJob!=null && p.CurJob==__instance.job)__instance.EndJobWith(JobCondition.Incompletable);
-   MoteMaker.ThrowText(p.DrawPos,p.Map,"回过神来",3f);
+   MoteMaker.ThrowText(p.DrawPos,p.Map,"回过神来".Loc(),3f);
    return false;
   }
  }

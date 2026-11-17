@@ -26,8 +26,8 @@ namespace LichPhylactery {
     return found && used<=lich.box.Capacity;
    }
   }
-  public override string LabelInBrackets=>(dormant?"休眠；":"")+(kind=="Golem"?"血肉 "+flesh.ToString("0.#")+" / 500；":"")+"统御 "+Cost;
-  public override string TipStringExtra=>"主人："+(master?.LabelShort??"失联")+"\n精神力维护："+Upkeep+"点/天。"+(kind=="Golem"?"\n血肉储备每天消耗25，修复每点伤害额外消耗2；低于25停止自愈，耗尽时行动与操作减半。":"")+(kind=="Scholar"?"\n专长："+ConstructDesign.SpecialtyName(specialty)+"。学习与工作倍率 "+Necro.Mentoring(master).ToString("0.00")+"；技能由自身正常积累。":"")+FeedbackDescription;
+  public override string LabelInBrackets=>(dormant?"休眠；".Loc():"")+(kind=="Golem"?"血肉 ".Loc()+flesh.ToString("0.#")+" / 500；".Loc():"")+"统御 ".Loc()+Cost;
+  public override string TipStringExtra=>"主人：".Loc()+(master?.LabelShort??"失联".Loc())+"\n精神力维护：".Loc()+Upkeep+"点/天。".Loc()+(kind=="Golem"?"\n血肉储备每天消耗25，修复每点伤害额外消耗2；低于25停止自愈，耗尽时行动与操作减半。".Loc():"")+(kind=="Scholar"?"\n专长：".Loc()+ConstructDesign.SpecialtyName(specialty)+"。学习与工作倍率 ".Loc()+Necro.Mentoring(master).ToString("0.00")+"；技能由自身正常积累。".Loc():"")+FeedbackDescription;
   HediffStage cachedStage;
   (string kind,bool human,bool dormant,bool starved,bool designed,float armor,float speed,float work,float mentoring) cachedStageKey;
   public override HediffStage CurStage {
@@ -63,7 +63,7 @@ namespace LichPhylactery {
    p.apparel?.DestroyAll();p.equipment?.DestroyAllEquipment();p.inventory?.innerContainer.ClearAndDestroyContents();
    foreach(var t in p.story.traits.allTraits.ToList())p.story.traits.RemoveTrait(t);
    var h=(Hediff_Construct)p.health.AddHediff(Necro.Def<HediffDef>("Construct"));h.kind=kind;h.master=master;h.specialty=specialty;h.design=design;h.flesh=kind=="Golem"?200:0;
-   p.Name=new NameSingle(kind=="Skeleton"?"骷髅仆役":kind=="Golem"?"血肉巨像":kind=="StoneGolem"?"石魔像":"知识死灵·"+ConstructDesign.SpecialtyName(specialty));
+   p.Name=new NameSingle(kind=="Skeleton"?"骷髅仆役".Loc():kind=="Golem"?"血肉巨像".Loc():kind=="StoneGolem"?"石魔像".Loc():"知识死灵·".Loc()+ConstructDesign.SpecialtyName(specialty));
    foreach(var sk in p.skills.skills){sk.Level=kind=="Scholar"?4:0;sk.passion=Passion.None;sk.xpSinceLastLevel=0;}
    if(kind=="Golem" || kind=="StoneGolem")p.skills.GetSkill(SkillDefOf.Melee).Level=10+(design?.SkillBonus??0);
    if(kind=="Scholar"){
@@ -87,8 +87,8 @@ namespace LichPhylactery {
   public Phylactery selected;
   public Phylactery Box=>selected!=null && !selected.Destroyed && selected.MapHeld==Map && selected.PositionHeld.DistanceTo(Position)<=12?selected:null;
   public override void ExposeData(){base.ExposeData();Scribe_References.Look(ref selected,"selectedPhylactery");Scribe_Values.Look(ref fleshRecipeVersion,"fleshRecipeVersion",0);}
-  public override string GetInspectString(){string text=base.GetInspectString();return (string.IsNullOrWhiteSpace(text)?"":text.TrimEnd()+"\n")+"服务命匣："+(Box?.soul?.LabelShort??"未选择或距离超过12格")+"\n巫妖仪式绑定工作单执行者。";}
-  public override IEnumerable<Gizmo> GetGizmos(){foreach(var g in base.GetGizmos())yield return g;yield return new Command_Action{defaultLabel="选择服务命匣",defaultDesc="献祭、造物胚体与补给服务于此命匣。命匣必须留在仪式台12格内；不同巫妖可使用不同仪式台。",icon=Necro.Icon("Phylactery"),action=()=>Find.WindowStack.Add(new FloatMenu((Necro.Registry?.boxes??new List<Phylactery>()).Where(b=>b!=null && !b.Destroyed && b.MapHeld==Map && b.PositionHeld.DistanceTo(Position)<=12).Select(b=>new FloatMenuOption((b.soul?.LabelShort??"无主")+" · 等级"+b.level,()=>selected=b)).DefaultIfEmpty(new FloatMenuOption("12格内没有命匣",null)).ToList()))};}
+  public override string GetInspectString(){string text=base.GetInspectString();return (string.IsNullOrWhiteSpace(text)?"":text.TrimEnd()+"\n")+"服务命匣：".Loc()+(Box?.soul?.LabelShort??"未选择或距离超过12格".Loc())+"\n巫妖仪式绑定工作单执行者。".Loc();}
+  public override IEnumerable<Gizmo> GetGizmos(){foreach(var g in base.GetGizmos())yield return g;yield return new Command_Action{defaultLabel="选择服务命匣".Loc(),defaultDesc="献祭、造物胚体与补给服务于此命匣。命匣必须留在仪式台12格内；不同巫妖可使用不同仪式台。".Loc(),icon=Necro.Icon("Phylactery"),action=()=>Find.WindowStack.Add(new FloatMenu((Necro.Registry?.boxes??new List<Phylactery>()).Where(b=>b!=null && !b.Destroyed && b.MapHeld==Map && b.PositionHeld.DistanceTo(Position)<=12).Select(b=>new FloatMenuOption((b.soul?.LabelShort??"无主".Loc())+" · 等级".Loc()+b.level,()=>selected=b)).DefaultIfEmpty(new FloatMenuOption("12格内没有命匣".Loc(),null)).ToList()))};}
  }
  public class RitualCount : IngredientValueGetter_Volume { public override float ValuePerUnitOf(ThingDef def)=>1f; }
  public class RitualRecipe : RecipeWorker {
@@ -97,29 +97,29 @@ namespace LichPhylactery {
  }
  public static class Rituals {
   public static string Blocked(RecipeDef recipe,Building_Altar altar,Pawn worker,List<Thing> ingredients=null){
-   if(altar==null || !altar.Spawned)return "需要已建成的死灵仪式台。";
+   if(altar==null || !altar.Spawned)return "需要已建成的死灵仪式台。".Loc();
    string name=recipe.defName;
-   if(name=="LP_Ascend")return worker==null?null:worker.genes==null || !worker.RaceProps.Humanlike || Necro.Undead(worker)?"执行者必须是尚未转化的人形殖民者。":worker.GetStatValue(StatDefOf.PsychicSensitivity)<=0?"心灵敏感度必须大于0。":null;
-   if(name.StartsWith("LP_Harvest"))return "器官封存已停用；知识死灵改用生肉胚体培育。";
-   var box=altar.Box;if(box?.soul==null)return "先选择12格内的命匣。";
-   if(name=="LP_Rebuild")return "死灵之躯会在死亡3日后自动复生，无须此工作单。";
-   var lich=Necro.Lich(box.soul);if(lich==null || !lich.Active)return "命匣主人必须存活并已绑定。";
+   if(name=="LP_Ascend")return worker==null?null:worker.genes==null || !worker.RaceProps.Humanlike || Necro.Undead(worker)?"执行者必须是尚未转化的人形殖民者。".Loc():worker.GetStatValue(StatDefOf.PsychicSensitivity)<=0?"心灵敏感度必须大于0。".Loc():null;
+   if(name.StartsWith("LP_Harvest"))return "器官封存已停用；知识死灵改用生肉胚体培育。".Loc();
+   var box=altar.Box;if(box?.soul==null)return "先选择12格内的命匣。".Loc();
+   if(name=="LP_Rebuild")return "死灵之躯会在死亡3日后自动复生，无须此工作单。".Loc();
+   var lich=Necro.Lich(box.soul);if(lich==null || !lich.Active)return "命匣主人必须存活并已绑定。".Loc();
    if(name=="LP_Offer"){
-    if(box.level>=LichMod.Settings.levelCap)return "命匣已达当前等级上限。";
-    if(ingredients!=null && ingredients.Any(t=>!TwistedMeat.FleshOk(t)))return "献祭只接受新鲜生肉或畸变膏。";
+    if(box.level>=LichMod.Settings.levelCap)return "命匣已达当前等级上限。".Loc();
+    if(ingredients!=null && ingredients.Any(t=>!TwistedMeat.FleshOk(t)))return "献祭只接受新鲜生肉或畸变膏。".Loc();
    }
    if(name=="LP_OfferSoul"){
-    if(box.level>=LichMod.Settings.levelCap)return "命匣已达当前等级上限。";
-    if(ingredients!=null){var corpses=ingredients.OfType<Corpse>().ToList();if(corpses.Count!=1)return "汲取灵魂需要一具完整的人形尸体。";string unfit=Souls.Unfit(corpses[0]);if(unfit!=null)return unfit;}
+    if(box.level>=LichMod.Settings.levelCap)return "命匣已达当前等级上限。".Loc();
+    if(ingredients!=null){var corpses=ingredients.OfType<Corpse>().ToList();if(corpses.Count!=1)return "汲取灵魂需要一具完整的人形尸体。".Loc();string unfit=Souls.Unfit(corpses[0]);if(unfit!=null)return unfit;}
    }
-   if(name=="LP_Refill" && !Necro.LivingConstructs(box.soul).Any(p=>p.Map==altar.Map && Necro.Construct(p).kind=="Golem" && Necro.Construct(p).flesh<=400))return "同地图没有需要至少100血肉补给的巨像。";
+   if(name=="LP_Refill" && !Necro.LivingConstructs(box.soul).Any(p=>p.Map==altar.Map && Necro.Construct(p).kind=="Golem" && Necro.Construct(p).flesh<=400))return "同地图没有需要至少100血肉补给的巨像。".Loc();
    // 1.45.0 石魔像：命匣主人要读过魔像手册，胚体用石块。
-   if(name=="LP_MakeStoneGolem"){if(!Items.Has(box.soul,"LP_GolemLore"))return "命匣主人还没读过魔像手册。";if(ingredients!=null && ingredients.Any(t=>!t.def.IsWithinCategory(ThingCategoryDefOf.StoneBlocks)))return "石魔像胚体只用石块。";return null;}
+   if(name=="LP_MakeStoneGolem"){if(!Items.Has(box.soul,"LP_GolemLore"))return "命匣主人还没读过魔像手册。".Loc();if(ingredients!=null && ingredients.Any(t=>!t.def.IsWithinCategory(ThingCategoryDefOf.StoneBlocks)))return "石魔像胚体只用石块。".Loc();return null;}
    // 1.45.0 魂石：把封着的灵魂献给命匣。
-   if(name=="LP_OfferSpiritStone"){if(box.level>=LichMod.Settings.levelCap)return "命匣已达当前等级上限。";if(ingredients!=null && !ingredients.Any(t=>SpiritStones.Soul(t)!=null))return "需要一颗封着灵魂的魂石。";return null;}
+   if(name=="LP_OfferSpiritStone"){if(box.level>=LichMod.Settings.levelCap)return "命匣已达当前等级上限。".Loc();if(ingredients!=null && !ingredients.Any(t=>SpiritStones.Soul(t)!=null))return "需要一颗封着灵魂的魂石。".Loc();return null;}
    // 1.45.1 死灵仪式台锻甲：消耗命匣攒下的献祭经验。
-   var forge=recipe.GetModExtension<AltarForgeExtension>();if(forge!=null && box.experience+.001f<forge.experience)return "命匣攒下的献祭经验不足"+forge.experience.ToString("0")+"（当前"+box.experience.ToString("0")+"）。";
-   if(name.StartsWith("LP_Make") && ingredients!=null && ingredients.Any(t=>!TwistedMeat.FleshOk(t)))return "造物胚体只使用新鲜生肉或畸变膏。";
+   var forge=recipe.GetModExtension<AltarForgeExtension>();if(forge!=null && box.experience+.001f<forge.experience)return "命匣攒下的献祭经验不足".Loc()+forge.experience.ToString("0")+"（当前".Loc()+box.experience.ToString("0")+"）。".Loc();
+   if(name.StartsWith("LP_Make") && ingredients!=null && ingredients.Any(t=>!TwistedMeat.FleshOk(t)))return "造物胚体只使用新鲜生肉或畸变膏。".Loc();
    return null;
   }
   public static Phylactery Ascend(Pawn p){
@@ -138,14 +138,14 @@ namespace LichPhylactery {
    if(name.StartsWith("LP_Harvest")){yield return ThingMaker.MakeThing(Necro.Def<ThingDef>(name.Substring(3)));yield break;}
    var selected=altar.Box;
    if(name=="LP_Offer")selected.Feed(TwistedMeat.FleshUnits(ingredients)); // 1.119.0：扭曲肉 ×2、畸变膏 ×20
-   else if(name=="LP_OfferSoul"){Pawn victim=ingredients.OfType<Corpse>().First().InnerPawn;float gained=Souls.Value(victim);selected.Feed(gained);IdeoEvents.Record("LP_HE_SoulDrained",worker);Messages.Message(victim.LabelShort+"的灵魂被汲入命匣：+"+gained.ToString("0")+"献祭经验。",MessageTypeDefOf.PositiveEvent,false);}
+   else if(name=="LP_OfferSoul"){Pawn victim=ingredients.OfType<Corpse>().First().InnerPawn;float gained=Souls.Value(victim);selected.Feed(gained);IdeoEvents.Record("LP_HE_SoulDrained",worker);Messages.Message(victim.LabelShort+"的灵魂被汲入命匣：+".Loc()+gained.ToString("0")+"献祭经验。".Loc(),MessageTypeDefOf.PositiveEvent,false);}
    else if(name=="LP_Rebuild"){if(!selected.Rebuild(altar))throw new InvalidOperationException("Resurrection failed");}
    else if(name=="LP_Refill"){var target=Necro.LivingConstructs(selected.soul).Where(p=>p.Map==altar.Map && Necro.Construct(p).kind=="Golem" && Necro.Construct(p).flesh<=400).OrderBy(p=>Necro.Construct(p).flesh).First();Necro.Construct(target).flesh+=100;target.health.Notify_HediffChanged(Necro.Construct(target));}
    else if(name=="LP_MakeSkeleton")yield return ConstructSeed.Make("Skeleton",selected.soul);
    else if(name=="LP_MakeGolem")yield return ConstructSeed.Make("Golem",selected.soul);
    else if(name=="LP_MakeStoneGolem")yield return ConstructSeed.Make("StoneGolem",selected.soul);
    else if(recipe.GetModExtension<AltarForgeExtension>() is AltarForgeExtension fx){selected.experience=Math.Max(0f,selected.experience-fx.experience);yield return ThingMaker.MakeThing(fx.product,fx.product.MadeFromStuff?(fx.stuff??GenStuff.DefaultStuffFor(fx.product)):null);}
-   else if(name=="LP_OfferSpiritStone"){var soul=SpiritStones.Soul(ingredients.First(t=>SpiritStones.Soul(t)!=null));float gained=Souls.Value(soul);selected.Feed(gained);Messages.Message(soul.LabelShort+"的灵魂从魂石里被汲入命匣：+"+gained.ToString("0")+"献祭经验。",MessageTypeDefOf.PositiveEvent,false);}
+   else if(name=="LP_OfferSpiritStone"){var soul=SpiritStones.Soul(ingredients.First(t=>SpiritStones.Soul(t)!=null));float gained=Souls.Value(soul);selected.Feed(gained);Messages.Message(soul.LabelShort+"的灵魂从魂石里被汲入命匣：+".Loc()+gained.ToString("0")+"献祭经验。".Loc(),MessageTypeDefOf.PositiveEvent,false);}
    else if(name.StartsWith("LP_MakeScholar")){string type=name.Substring("LP_MakeScholar".Length);yield return ConstructSeed.Make("Scholar",selected.soul,type=="Brain"?"大脑":type=="Eye"?"眼睛":type=="Arm"?"手臂":"心脏");}
   }
  }
@@ -166,7 +166,7 @@ namespace LichPhylactery {
  }
  public class LichPsycast : Psycast {
   public LichPsycast(Pawn p):base(p){}public LichPsycast(Pawn p,AbilityDef d):base(p,d){}
-  public override bool GizmoDisabled(out string reason){var h=Necro.Lich(pawn);if(h==null || !h.Active){reason="需要有效绑定的命匣。";return true;}return base.GizmoDisabled(out reason);}
+  public override bool GizmoDisabled(out string reason){var h=Necro.Lich(pawn);if(h==null || !h.Active){reason="需要有效绑定的命匣。".Loc();return true;}return base.GizmoDisabled(out reason);}
   public override bool Activate(LocalTargetInfo target,LocalTargetInfo dest){var h=Necro.Lich(pawn);if(h==null || !h.Active || OnCooldown || !pawn.Spawned || pawn.Dead || pawn.Downed || !pawn.Awake() || pawn.InMentalState || !verb.CanHitTarget(target) || !EffectComps.All(c=>c.Valid(target,false)) || pawn.psychicEntropy.CurrentPsyfocus+.00001f<FinalPsyfocusCost(target) || pawn.psychicEntropy.WouldOverflowEntropy(def.EntropyGain*pawn.GetStatValue(StatDefOf.PsychicEntropyGain)))return false;return base.Activate(target,dest);}
  }
  [HarmonyPatch(typeof(Ability),nameof(Ability.FinalPsyfocusCost))]
@@ -174,7 +174,7 @@ namespace LichPhylactery {
  public class CompProperties_Necromancy : CompProperties_AbilityEffect {public string effect;public CompProperties_Necromancy(){compClass=typeof(CompNecromancy);}}
  public class CompNecromancy : CompAbilityEffect {
   string Effect=>((CompProperties_Necromancy)props).effect;
-  public override bool Valid(LocalTargetInfo target,bool throwMessages=false){Pawn p=target.Pawn;bool valid=p!=null && !p.Dead && p.Spawned && p.Map==parent.pawn.Map && (Effect=="bolt"?p.HostileTo(parent.pawn):Necro.Construct(p)?.master==parent.pawn && p.health.hediffSet.hediffs.OfType<Hediff_Injury>().Any());if(!valid && throwMessages)Messages.Message(Effect=="bolt"?"需要敌对的存活生物。":"需要自己的受伤死灵造物。",MessageTypeDefOf.RejectInput,false);return valid;}
+  public override bool Valid(LocalTargetInfo target,bool throwMessages=false){Pawn p=target.Pawn;bool valid=p!=null && !p.Dead && p.Spawned && p.Map==parent.pawn.Map && (Effect=="bolt"?p.HostileTo(parent.pawn):Necro.Construct(p)?.master==parent.pawn && p.health.hediffSet.hediffs.OfType<Hediff_Injury>().Any());if(!valid && throwMessages)Messages.Message(Effect=="bolt"?"需要敌对的存活生物。".Loc():"需要自己的受伤死灵造物。".Loc(),MessageTypeDefOf.RejectInput,false);return valid;}
   public override void Apply(LocalTargetInfo target,LocalTargetInfo dest){if(!Valid(target))return;Pawn p=target.Pawn;float scale=Necro.Mentoring(parent.pawn);if(Effect=="bolt")p.TakeDamage(new DamageInfo(DamageDefOf.Burn,12f*scale,.2f,-1,parent.pawn));else {float budget=15f*Math.Max(0,parent.pawn.GetStatValue(StatDefOf.PsychicSensitivity));foreach(var h in p.health.hediffSet.hediffs.OfType<Hediff_Injury>().ToList()){float heal=Math.Min(budget,h.Severity);h.Heal(heal);budget-=heal;if(budget<=0)break;}}FleckMaker.Static(target.Cell,parent.pawn.Map,FleckDefOf.PsycastAreaEffect,1f);}
  }
 }

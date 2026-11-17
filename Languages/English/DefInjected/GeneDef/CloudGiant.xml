@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 云巨人本源 -->
+  <LP_CloudGiantCore.label>cloud giant origin</LP_CloudGiantCore.label>
+  <!-- 云巨人的云端血脉，可随种族遗传。成年后体型为常人的2.2倍（显示1.45倍，儿童随年龄长大）；体型越大，生命和近战越强（巨躯规则），胃口也大（成年胃容量×220%），步子大却不快。云巨人走路像踩在云上：沼泽、泥地、浅水和积雪不会拖慢他们，也不会踩响陷阱。他们天生健谈（社交+3），比常人耐冷（舒适下限-10℃），不在乎赤身裸体。 -->
+  <LP_CloudGiantCore.description>The cloud-born bloodline of the cloud giants, inherited with the race. Adults are 2.2 times the size of an ordinary person (drawn 1.45×, children grow with age); the bigger the body, the stronger the health and melee (giant-body rules) and the bigger the appetite (adult stomach ×220%); long strides, but not fast. Cloud giants walk as if on clouds: marsh, mud, shallow water and snow don't slow them, and they never set off traps. They are naturally talkative (Social +3), more cold-tolerant than others (min comfortable temperature -10°C), and don't care about being naked.</LP_CloudGiantCore.description>
+  <!-- 巨人血统：云巨人（阶序第2位）。 | 体型随年龄增长，成年达到×2.2（显示×1.45）。 | 巨躯规则：生命与近战随体型提高（可在模组设置调整）。 | 巨胃：饱食度上限随体型提高，成年×220%。 | 移动速度：×90%。 | 踏云：沼泽、泥地、浅水、积雪的移动消耗按普通地面算（不影响寻路的绕行判断）。 | 不会触发陷阱。 | 不会因裸体产生负面心情；能穿普通衣服，巨人专属衣甲每件心情+2（最多+6）。 -->
+  <LP_CloudGiantCore.customEffectDescriptions.0>Giant lineage: cloud giant (rank 2 of the ordning).</LP_CloudGiantCore.customEffectDescriptions.0>
+  <LP_CloudGiantCore.customEffectDescriptions.1>Body size grows with age, reaching ×2.2 as an adult (drawn ×1.45).</LP_CloudGiantCore.customEffectDescriptions.1>
+  <LP_CloudGiantCore.customEffectDescriptions.2>Giant-body rules: health and melee increase with body size (adjustable in mod settings).</LP_CloudGiantCore.customEffectDescriptions.2>
+  <LP_CloudGiantCore.customEffectDescriptions.3>Giant stomach: max food rises with body size, ×220% as an adult.</LP_CloudGiantCore.customEffectDescriptions.3>
+  <LP_CloudGiantCore.customEffectDescriptions.4>Move speed: ×90%.</LP_CloudGiantCore.customEffectDescriptions.4>
+  <LP_CloudGiantCore.customEffectDescriptions.5>Cloud step: movement cost on marsh, mud, shallow water and snow counts as normal ground (doesn't affect pathfinding detour decisions).</LP_CloudGiantCore.customEffectDescriptions.5>
+  <LP_CloudGiantCore.customEffectDescriptions.6>Never triggers traps.</LP_CloudGiantCore.customEffectDescriptions.6>
+  <LP_CloudGiantCore.customEffectDescriptions.7>No negative mood from nudity; can wear ordinary clothes; each piece of giant-only apparel gives mood +2 (up to +6).</LP_CloudGiantCore.customEffectDescriptions.7>
+  <!-- 云巨人 -->
+  <LP_CloudGiantCore.modExtensions.0.label>cloud giant</LP_CloudGiantCore.modExtensions.0.label>
+  <!-- 贵胄之心 -->
+  <LP_CloudNoble.label>noble heart</LP_CloudNoble.label>
+  <!-- 云巨人生来就是贵族。自己的卧室印象度低于“非常好”（或者没有自己的卧室）时心情-4“配不上我的身份”；达到“极好”时心情+4。他们做生意也讲究：交易价格+10%。 -->
+  <LP_CloudNoble.description>Cloud giants are born nobles. When their own bedroom's impressiveness is below "very impressive" (or they have no bedroom of their own), mood -4 "beneath my station"; at "extremely impressive", mood +4. They are particular in business too: trade prices +10%.</LP_CloudNoble.description>
+  <!-- 卧室印象度 <“非常好”：心情-4；≥“极好”：心情+4。 -->
+  <LP_CloudNoble.customEffectDescriptions.0>Bedroom impressiveness &lt; "very impressive": mood -4; ≥ "extremely impressive": mood +4.</LP_CloudNoble.customEffectDescriptions.0>
+  <!-- 赠礼之风 -->
+  <LP_CloudGift.label>wind of gifts</LP_CloudGift.label>
+  <!-- 云巨人用礼物交朋友。选中这个云巨人、右键别的派系的访客或商队成员，可以“赠礼”：送出背包里或身边4格内地上的一件东西，对方派系好感+（市值÷100×1.5，最多+25），收到礼物的人7天心情+5。 -->
+  <LP_CloudGift.description>Cloud giants make friends with gifts. Select this cloud giant and right-click a visitor or caravan member of another faction to "Give gift": hand over one item from the pack or the ground within 4 cells; that faction's goodwill + (market value ÷ 100 × 1.5, up to +25), and the recipient gets mood +5 for 7 days.</LP_CloudGift.description>
+  <!-- 右键非玩家派系的访客、商队成员：赠礼（好感+市值÷100×1.5，最多+25）。 -->
+  <LP_CloudGift.customEffectDescriptions.0>Right-click visitors and caravan members of non-player factions: give a gift (goodwill + market value ÷ 100 × 1.5, up to +25).</LP_CloudGift.customEffectDescriptions.0>
+  <!-- 优雅者 -->
+  <LP_CloudGrace.label>gracious</LP_CloudGrace.label>
+  <!-- 云巨人的谈吐无可挑剔：社交再+2，交涉能力+15%，招募谈话让囚犯的抵抗多降15%。 -->
+  <LP_CloudGrace.description>A cloud giant's speech is impeccable: another Social +2, negotiation ability +15%, recruitment talks lower prisoner resistance 15% more.</LP_CloudGrace.description>
+  <!-- 招募谈话降低的抵抗×115%。 -->
+  <LP_CloudGrace.customEffectDescriptions.0>Resistance reduced by recruitment talks ×115%.</LP_CloudGrace.customEffectDescriptions.0>
+  <!-- 淡蓝白肤色 -->
+  <LP_SkinCloud.label>pale blue-white skin</LP_SkinCloud.label>
+  <!-- 云巨人淡蓝白色的皮肤，像晴天里的薄云。 -->
+  <LP_SkinCloud.description>The pale blue-white skin of a cloud giant, like thin clouds on a clear day.</LP_SkinCloud.description>
+  <!-- 淡蓝白 -->
+  <LP_SkinCloud.labelShortAdj>pale blue-white</LP_SkinCloud.labelShortAdj>
+  <!-- 云纹头冠 -->
+  <LP_CloudCrown.label>cloud circlet</LP_CloudCrown.label>
+  <!-- 云巨人的银质头冠，冠上錾着卷曲的云纹，镶着一颗天空琥珀。 -->
+  <LP_CloudCrown.description>A cloud giant's silver circlet chased with curling cloud patterns and set with a piece of sky amber.</LP_CloudCrown.description>
+</LanguageData>

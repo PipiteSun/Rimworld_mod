@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 锻造死亡骑士铠甲 -->
+  <LP_ForgeDeathknightPlate.label>forge death knight armor</LP_ForgeDeathknightPlate.label>
+  <!-- 巫妖用150钢和命匣里200点献祭经验锻一副死亡骑士铠甲（经验不足时不能开工）。 -->
+  <LP_ForgeDeathknightPlate.description>A lich forges a suit of death knight armor from 150 steel and 200 sacrifice XP from the phylactery (can't start without enough XP).</LP_ForgeDeathknightPlate.description>
+  <!-- 正在锻造死亡骑士铠甲。 -->
+  <LP_ForgeDeathknightPlate.jobString>Forging death knight armor.</LP_ForgeDeathknightPlate.jobString>
+  <!-- 锻造亡魂巨盔 -->
+  <LP_ForgeHelmRestlessDead.label>forge revenant great helm</LP_ForgeHelmRestlessDead.label>
+  <!-- 巫妖用50钢和命匣里80点献祭经验锻一顶亡魂巨盔（经验不足时不能开工）。 -->
+  <LP_ForgeHelmRestlessDead.description>A lich forges a revenant great helm from 50 steel and 80 sacrifice XP from the phylactery (can't start without enough XP).</LP_ForgeHelmRestlessDead.description>
+  <!-- 正在锻造亡魂巨盔。 -->
+  <LP_ForgeHelmRestlessDead.jobString>Forging a revenant great helm.</LP_ForgeHelmRestlessDead.jobString>
+  <!-- 制作骸骨王冠 -->
+  <LP_ForgeCrownOfBone.label>make bone crown</LP_ForgeCrownOfBone.label>
+  <!-- 巫妖用20金和10份人皮做一顶骸骨王冠。 -->
+  <LP_ForgeCrownOfBone.description>A lich makes a bone crown from 20 gold and 10 human leather.</LP_ForgeCrownOfBone.description>
+  <!-- 正在制作骸骨王冠。 -->
+  <LP_ForgeCrownOfBone.jobString>Making a bone crown.</LP_ForgeCrownOfBone.jobString>
+</LanguageData>

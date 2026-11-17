@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（Guns.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>按持有者计算</zh><en>Calculated by the holder</en></s>
+  <s><zh>魔力系数</zh><en>Magic factor</en></s>
+  <s><zh>魔力系数 </zh><en>Magic factor </en></s>
+  <s><zh>[DND边缘大陆] 魔力系数联动出错：</zh><en>[DND Rimlands] Magic factor link error: </en></s>
+  <s><zh>（心灵敏感度 </zh><en> (psychic sensitivity </en></s>
+  <s><zh>，没有心灵链接 ×0.7</zh><en>, no psylink ×0.7</en></s>
+  <s><zh>，魔力充能 +0.5</zh><en>, magic charge +0.5</en></s>
+  <s><zh>法杖的伤害 × 魔力系数。魔力系数 = 心灵敏感度（最低 0.2，不封顶）；敏感度为 0 时法杖毫无回应。有心灵链接的持有者每次施放增加心灵熵（模组设置），熵满时不能施放；没有心灵链接时伤害只有 70%。穿寒铁护甲或有心智抗性的目标受到的伤害 -25%。</zh><en>Staff damage × magic factor. Magic factor = psychic sensitivity (minimum 0.2, uncapped); at 0 sensitivity the staff doesn't respond at all. Holders with a psylink gain neural heat on each cast (mod setting), and can't cast when neural heat is full; without a psylink, damage is only 70%. Targets wearing cold iron armor or with mental resistance take -25% damage.</en></s>
+  <s><zh>矮人枪械的伤害 × 魔力系数。魔力系数 = 0.5 + 0.5 × 心灵敏感度 与 心灵敏感度 中较大的一个，不封顶（敏感度 0 也有半伤，100% 以上按敏感度乘）；矮人不足 100% 按 100% 算。不加心灵熵。穿寒铁护甲或有心智抗性的目标受到的伤害 -25%。</zh><en>Dwarven firearm damage × magic factor. Magic factor = the larger of 0.5 + 0.5 × psychic sensitivity and psychic sensitivity, uncapped (half damage even at 0 sensitivity, multiplied by sensitivity above 100%); dwarves below 100% count as 100%. Adds no neural heat. Targets wearing cold iron armor or with mental resistance take -25% damage.</en></s>
+  <s><zh>魔法枪的伤害 × 魔力系数。魔力系数 = 心灵敏感度，最低 1，不封顶（敏感度低于 100% 不减伤，200% 打 2 倍伤害）。不加心灵熵。</zh><en>Magic gun damage × magic factor. Magic factor = psychic sensitivity, minimum 1, uncapped (no damage loss below 100% sensitivity, 200% deals double damage). Adds no neural heat.</en></s>
+  <s><zh>法杖毫无回应（心灵敏感度为 0）</zh><en>The staff doesn't respond (psychic sensitivity is 0)</en></s>
+  <s><zh>驱散粉尘压住了魔力，法杖暂时施放不出来</zh><en>Dispelling dust suppresses the magic; the staff can't cast for now</en></s>
+  <s><zh>心灵熵已满，法杖施放不出来</zh><en>Neural heat is full; the staff can't cast</en></s>
+  <s><zh>[DND边缘大陆] 武器品质联动出错：</zh><en>[DND Rimlands] Weapon quality link error: </en></s>
+  <s><zh>贯穿</zh><en>pierce</en></s>
+  <s><zh>只有矮人能驾驭</zh><en>Only dwarves can master it</en></s>
+  <s><zh>[DND边缘大陆] 同步天火降世数值失败：</zh><en>[DND Rimlands] Failed to sync skyfire descent values: </en></s>
+  <s><zh>敌人携带魔法火器</zh><en>Enemies carry magic firearms</en></s>
+  <s><zh>1.146.0 起符文火器和攻击法杖已移除，这个开关暂时没有效果。</zh><en>Rune firearms and attack staves were removed in 1.146.0; this switch has no effect for now.</en></s>
+  <s><zh>法杖每发心灵熵：</zh><en>Neural heat per staff shot: </en></s>
+  <s><zh>（有心灵链接的持有者每次施放增加；熵满时不能施放）</zh><en> (added on each cast for holders with a psylink; can't cast when full)</en></s>
+  <s><zh>制伏伤害倍率：</zh><en>Subdual damage multiplier: </en></s>
+  <s><zh>%（制伏短棍、缚网弩、安眠短弓、安眠法杖让目标昏迷的速度）</zh><en>% (how fast subdual cudgels, net crossbows, sleep shortbows and sleep staves knock targets unconscious)</en></s>
+</LPStrings>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- <color=#7FBF6A>侍僧</color> -->
+  <LP_Background_Acolyte.degreeDatas.color7FBF6Acolor.label>&lt;color=#7FBF6A&gt;Acolyte&lt;/color&gt;</LP_Background_Acolyte.degreeDatas.color7FBF6Acolor.label>
+  <!-- {PAWN_nameDef}曾在神殿里侍奉，习惯了祈祷与静修。\n\n- 冥想心灵专注获取 +20%\n- 参加任何意识形态仪式后获得心情 +3“神圣时光”（1天）\n- 装了 Vanilla Psycasts Expanded 时：牧师路径经验 +25% -->
+  <LP_Background_Acolyte.degreeDatas.color7FBF6Acolor.description>{PAWN_nameDef} once served in a temple and is used to prayer and contemplation.\n\n- Meditation psyfocus gain +20%\n- Mood +3 "sacred time" (1 day) after attending any ideoligion ritual\n- With Vanilla Psycasts Expanded: cleric path XP +25%</LP_Background_Acolyte.degreeDatas.color7FBF6Acolor.description>
+  <!-- 背景特性 -->
+  <LP_Background_Acolyte.modExtensions.0.kind>background trait</LP_Background_Acolyte.modExtensions.0.kind>
+  <!-- <color=#7FBF6A>罪犯</color> -->
+  <LP_Background_Criminal.degreeDatas.color7FBF6Acolor.label>&lt;color=#7FBF6A&gt;Criminal&lt;/color&gt;</LP_Background_Criminal.degreeDatas.color7FBF6Acolor.label>
+  <!-- {PAWN_nameDef}在城市的阴影里讨过生活，撬锁、销赃、躲卫兵都是老本行。\n\n- 作为囚犯时越狱几率 ×2\n- 殖民地有罪犯背景的殖民者时，囚犯越狱几率 ×0.75（{PAWN_pronoun}知道犯人会从哪里钻空子）\n- 和黑网商队交易时价格好 10%\n- 作为囚犯时，每次招募谈话让抵抗下降 ×1.3 -->
+  <LP_Background_Criminal.degreeDatas.color7FBF6Acolor.description>{PAWN_nameDef} made a living in the shadows of the city; picking locks, fencing goods and dodging guards are old habits.\n\n- As a prisoner: prison break chance ×2\n- When the colony has a colonist with the criminal background, prisoner break chance ×0.75 ({PAWN_pronoun} knows where prisoners slip through)\n- 10% better prices when trading with Black Network caravans\n- As a prisoner, each recruitment talk lowers resistance ×1.3</LP_Background_Criminal.degreeDatas.color7FBF6Acolor.description>
+  <!-- 背景特性 -->
+  <LP_Background_Criminal.modExtensions.0.kind>background trait</LP_Background_Criminal.modExtensions.0.kind>
+  <!-- <color=#7FBF6A>民间英雄</color> -->
+  <LP_Background_FolkHero.degreeDatas.color7FBF6Acolor.label>&lt;color=#7FBF6A&gt;Folk Hero&lt;/color&gt;</LP_Background_FolkHero.degreeDatas.color7FBF6Acolor.label>
+  <!-- {PAWN_nameDef}曾经挺身对抗暴君和怪物，乡亲们至今还在传唱{PAWN_possessive}故事。\n\n- 被征召时，6格内的其他殖民者心情 +3“英雄在此”\n- {PAWN_pronoun}倒地时，全殖民地心情 -3“英雄倒下”（1天） -->
+  <LP_Background_FolkHero.degreeDatas.color7FBF6Acolor.description>{PAWN_nameDef} once stood up against tyrants and monsters, and the folk back home still sing {PAWN_possessive} story.\n\n- While drafted, other colonists within 6 cells get mood +3 "the hero is here"\n- When {PAWN_pronoun} is downed, the whole colony gets mood -3 "the hero has fallen" (1 day)</LP_Background_FolkHero.degreeDatas.color7FBF6Acolor.description>
+  <!-- 背景特性 -->
+  <LP_Background_FolkHero.modExtensions.0.kind>background trait</LP_Background_FolkHero.modExtensions.0.kind>
+  <!-- <color=#7FBF6A>贵族</color> -->
+  <LP_Background_Noble.degreeDatas.color7FBF6Acolor.label>&lt;color=#7FBF6A&gt;Noble&lt;/color&gt;</LP_Background_Noble.degreeDatas.color7FBF6Acolor.label>
+  <!-- {PAWN_nameDef}出身名门，从小就被教导如何发号施令，而不是如何拿扫帚。\n\n- 社交影响 +15%\n- 不做清洁和搬运\n- 卧室印象低于“体面”时心情 -4“配不上我的身份”\n- 装了皇权 DLC 时：获得荣誉 ×1.2\n- 与苦行互斥 -->
+  <LP_Background_Noble.degreeDatas.color7FBF6Acolor.description>{PAWN_nameDef} comes from a noble family, raised to give orders rather than hold a broom.\n\n- Social impact +15%\n- Won't do cleaning or hauling\n- Mood -4 "beneath my station" when bedroom impressiveness is below "decent"\n- With the Royalty DLC: honor gained ×1.2\n- Mutually exclusive with ascetic</LP_Background_Noble.degreeDatas.color7FBF6Acolor.description>
+  <!-- 背景特性 -->
+  <LP_Background_Noble.modExtensions.0.kind>background trait</LP_Background_Noble.modExtensions.0.kind>
+  <!-- <color=#7FBF6A>贤者</color> -->
+  <LP_Background_Sage.degreeDatas.color7FBF6Acolor.label>&lt;color=#7FBF6A&gt;Sage&lt;/color&gt;</LP_Background_Sage.degreeDatas.color7FBF6Acolor.label>
+  <!-- {PAWN_nameDef}在图书馆和学院里度过了大半生，离开书本就浑身不自在。\n\n- 研究速度 +10%\n- 读书收益 +30%\n- 装了 Vanilla Psycasts Expanded 时：法师路径经验 +25%\n- 殖民地没有任何书架和研究台时心情 -2“无书可读” -->
+  <LP_Background_Sage.degreeDatas.color7FBF6Acolor.description>{PAWN_nameDef} spent most of their life in libraries and academies and feels out of sorts without books.\n\n- Research speed +10%\n- Reading benefit +30%\n- With Vanilla Psycasts Expanded: wizard path XP +25%\n- Mood -2 "nothing to read" when the colony has no bookshelf or research bench</LP_Background_Sage.degreeDatas.color7FBF6Acolor.description>
+  <!-- 背景特性 -->
+  <LP_Background_Sage.modExtensions.0.kind>background trait</LP_Background_Sage.modExtensions.0.kind>
+  <!-- <color=#7FBF6A>士兵</color> -->
+  <LP_Background_Soldier.degreeDatas.color7FBF6Acolor.label>&lt;color=#7FBF6A&gt;Soldier&lt;/color&gt;</LP_Background_Soldier.degreeDatas.color7FBF6Acolor.label>
+  <!-- {PAWN_nameDef}在军队里服过役，听到号令身体就会自己动起来。\n\n- 被征召时瞄准时间 -10%\n- 3格内有另一名士兵背景的友军时，双方射击精度和近战命中 +5% -->
+  <LP_Background_Soldier.degreeDatas.color7FBF6Acolor.description>{PAWN_nameDef} served in the army, and the body moves on its own at a command.\n\n- Aiming time -10% while drafted\n- With another ally of the soldier background within 3 cells, both get shooting accuracy and melee hit +5%</LP_Background_Soldier.degreeDatas.color7FBF6Acolor.description>
+  <!-- 背景特性 -->
+  <LP_Background_Soldier.modExtensions.0.kind>background trait</LP_Background_Soldier.modExtensions.0.kind>
+  <!-- <color=#7FBF6A>隐士</color> -->
+  <LP_Background_Hermit.degreeDatas.color7FBF6Acolor.label>&lt;color=#7FBF6A&gt;Hermit&lt;/color&gt;</LP_Background_Hermit.degreeDatas.color7FBF6Acolor.label>
+  <!-- {PAWN_nameDef}曾经独自在荒野里隐居多年，比起人群更习惯和自己的念头相处。\n\n- 独占卧室时心情 +3“独处之所”\n- 和别人同住一间卧室时心情 -4“没有清静”（替代原版的“睡在营房”心情）\n- 冥想心灵专注获取 +30%\n- 主动社交互动的频率 ×0.5 -->
+  <LP_Background_Hermit.degreeDatas.color7FBF6Acolor.description>{PAWN_nameDef} lived as a hermit alone in the wilds for many years and is more used to their own thoughts than to crowds.\n\n- Mood +3 "a place of solitude" with a private bedroom\n- Mood -4 "no peace and quiet" when sharing a bedroom (replaces the vanilla "slept in barracks" mood)\n- Meditation psyfocus gain +30%\n- Frequency of starting social interactions ×0.5</LP_Background_Hermit.degreeDatas.color7FBF6Acolor.description>
+  <!-- 背景特性 -->
+  <LP_Background_Hermit.modExtensions.0.kind>background trait</LP_Background_Hermit.modExtensions.0.kind>
+  <!-- <color=#7FBF6A>局外人</color> -->
+  <LP_Background_Outlander.degreeDatas.color7FBF6Acolor.label>&lt;color=#7FBF6A&gt;Outlander&lt;/color&gt;</LP_Background_Outlander.degreeDatas.color7FBF6Acolor.label>
+  <!-- {PAWN_nameDef}在文明之外的荒原上长大，风雨对{PAWN_objective}来说就是日常。\n\n- 在没有屋顶、也不在居住区的地方移动速度 +10%\n- 采集野生植物产量 +25%\n- 不受淋湿、沙尘等坏天气心情影响\n- 连续 3 天一直待在屋顶下时心情 -3“闷坏了” -->
+  <LP_Background_Outlander.degreeDatas.color7FBF6Acolor.description>{PAWN_nameDef} grew up on the wastelands beyond civilization; wind and rain are everyday life to {PAWN_objective}.\n\n- Move speed +10% where there's no roof and outside the home area\n- Wild plant harvest yield +25%\n- Unaffected by bad weather moods like getting soaked or dust storms\n- Mood -3 "cooped up" after staying under a roof for 3 days straight</LP_Background_Outlander.degreeDatas.color7FBF6Acolor.description>
+  <!-- 背景特性 -->
+  <LP_Background_Outlander.modExtensions.0.kind>background trait</LP_Background_Outlander.modExtensions.0.kind>
+</LanguageData>

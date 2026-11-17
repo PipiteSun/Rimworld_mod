@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 实现愿望 -->
+  <LP_GenieWish.label>grant wish</LP_GenieWish.label>
+  <!-- 请巨灵实现一个愿望（弹出选择框）：\n丰收——地图上所有作物立刻成熟；\n和平——15天内敌对袭击不会落到这张地图上；\n痊愈——治好地图上所有殖民者的伤口和疾病（上瘾不算）；\n财富——巨灵脚下出现2000白银；\n晴空——天气放晴并维持5天；\n顿悟——每个殖民者随机一项技能+2级。\n冷却60天；在选择框里取消不消耗冷却。许愿后巨灵倦怠15天：工作速度减半、血脉能力不可用、心情-5。 -->
+  <LP_GenieWish.description>Ask the genie to grant a wish (a choice window pops up):\nHarvest: every crop on the map ripens at once;\nPeace: no hostile raids land on this map for 15 days;\nHealing: heals the wounds and diseases of all colonists on the map (addictions excluded);\nWealth: 2000 silver appears at the genie's feet;\nClear sky: the weather clears and stays that way for 5 days;\nEpiphany: each colonist gets +2 levels in a random skill.\nCooldown 60 days; canceling in the choice window doesn't use the cooldown. After a wish the genie is weary for 15 days: work speed halved, bloodline abilities unavailable, mood -5.</LP_GenieWish.description>
+</LanguageData>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 九狱军团 -->
+  <LP_HellsLegion.label>infernal legion</LP_HellsLegion.label>
+  <!-- 九狱的正规军：链魔、骨魔、角魔和艾林魔。它们来讨债、来抓违约的人，也在血战之潮里和深渊魔群厮杀。和深渊魔群互相敌对。 -->
+  <LP_HellsLegion.description>The regular army of the Nine Hells: chain devils, bone devils, horned devils and erinyes. They come to collect debts and catch those in breach of contract, and fight the abyssal horde in the tide of the Blood War. Mutually hostile with the abyssal horde.</LP_HellsLegion.description>
+  <!-- 九狱军团 -->
+  <LP_HellsLegion.fixedName>infernal legion</LP_HellsLegion.fixedName>
+  <!-- 秩序就是契约，契约就是一切。 -->
+  <LP_HellsLegion.ideoDescription>Order is contract, and contract is everything.</LP_HellsLegion.ideoDescription>
+  <!-- 九层地狱 -->
+  <LP_HellsLegion.ideoName>Nine Hells</LP_HellsLegion.ideoName>
+  <!-- 魔鬼 -->
+  <LP_HellsLegion.pawnSingular>devil</LP_HellsLegion.pawnSingular>
+  <!-- 魔鬼 -->
+  <LP_HellsLegion.pawnsPlural>devil</LP_HellsLegion.pawnsPlural>
+  <!-- 狂猎 -->
+  <LP_FeyHunt.label>wild hunt</LP_FeyHunt.label>
+  <!-- 两位女王的猎队：鹿角盔的骑手、冬狼、闪光犬和红帽。它们只追一个猎物，追到天亮。和深渊魔群互相敌对。 -->
+  <LP_FeyHunt.description>The hunting party of the two queens: riders in antlered helms, winter wolves, blink dogs and redcaps. They chase only one prey, until dawn. Mutually hostile with the abyssal horde.</LP_FeyHunt.description>
+  <!-- 狂猎 -->
+  <LP_FeyHunt.fixedName>wild hunt</LP_FeyHunt.fixedName>
+  <!-- 月亮升起时，猎物就该跑了。 -->
+  <LP_FeyHunt.ideoDescription>When the moon rises, the prey had better run.</LP_FeyHunt.ideoDescription>
+  <!-- 永恒的狩猎 -->
+  <LP_FeyHunt.ideoName>the eternal hunt</LP_FeyHunt.ideoName>
+  <!-- 猎手 -->
+  <LP_FeyHunt.pawnSingular>hunter</LP_FeyHunt.pawnSingular>
+  <!-- 猎手 -->
+  <LP_FeyHunt.pawnsPlural>hunter</LP_FeyHunt.pawnsPlural>
+  <!-- 九狱掮客 -->
+  <LP_HellsBrokers.label>infernal broker</LP_HellsBrokers.label>
+  <!-- 一伙做生意的魔鬼律师和它们的骨魔护卫。它们卖契约书、灵魂币和恶魔学典籍，收囚犯和灵魂；被它们拖进九狱的人，也能从它们手里赎回来。谁敢抢它们的商队，九狱会记一辈子。 -->
+  <LP_HellsBrokers.description>A band of trading devil lawyers and their bone devil guards. They sell contracts, soul coins and demonology tomes, and buy prisoners and souls; people dragged into the Nine Hells by them can also be ransomed back from them. Whoever dares rob their caravans, the Nine Hells will remember forever.</LP_HellsBrokers.description>
+  <!-- 九狱掮客 -->
+  <LP_HellsBrokers.fixedName>infernal broker</LP_HellsBrokers.fixedName>
+  <!-- 一切都可以交易，一切都要签字。 -->
+  <LP_HellsBrokers.ideoDescription>Everything can be traded; everything must be signed.</LP_HellsBrokers.ideoDescription>
+  <!-- 契约之道 -->
+  <LP_HellsBrokers.ideoName>the way of contracts</LP_HellsBrokers.ideoName>
+  <!-- 掮客 -->
+  <LP_HellsBrokers.pawnSingular>broker</LP_HellsBrokers.pawnSingular>
+  <!-- 掮客 -->
+  <LP_HellsBrokers.pawnsPlural>broker</LP_HellsBrokers.pawnsPlural>
+  <!-- 妖精宫廷 -->
+  <LP_FeyCourt.label>fey court</LP_FeyCourt.label>
+  <!-- 两位女王的宫廷里跑出来做买卖的妖精：月亮升起时摆摊，天亮前收摊。它们不收银子换代价——收记忆、寿命、名字和笑声。 -->
+  <LP_FeyCourt.description>Fey merchants who come out of the two queens' courts to trade: they set up stalls when the moon rises and pack up before dawn. They don't take silver as payment; they take memories, years of life, names and laughter.</LP_FeyCourt.description>
+  <!-- 妖精宫廷 -->
+  <LP_FeyCourt.fixedName>fey court</LP_FeyCourt.fixedName>
+  <!-- 一切都有价，只是价不一定是银子。 -->
+  <LP_FeyCourt.ideoDescription>Everything has a price; it's just not always silver.</LP_FeyCourt.ideoDescription>
+  <!-- 月下的宫廷 -->
+  <LP_FeyCourt.ideoName>the court under the moon</LP_FeyCourt.ideoName>
+  <!-- 妖精 -->
+  <LP_FeyCourt.pawnSingular>fey</LP_FeyCourt.pawnSingular>
+  <!-- 妖精 -->
+  <LP_FeyCourt.pawnsPlural>fey</LP_FeyCourt.pawnsPlural>
+  <!-- 临时停战 -->
+  <LP_PlanarTruce.label>temporary truce</LP_PlanarTruce.label>
+  <!-- 血战之潮里接受了殖民地援助的一方：这一次对你中立，打完就走。 -->
+  <LP_PlanarTruce.description>The side in the tide of the Blood War that accepted the colony's help: neutral toward you this time, leaving once the fighting is over.</LP_PlanarTruce.description>
+  <!-- 停战的外来者 -->
+  <LP_PlanarTruce.fixedName>truce outsiders</LP_PlanarTruce.fixedName>
+  <!-- 敌人的敌人。 -->
+  <LP_PlanarTruce.ideoDescription>The enemy of my enemy.</LP_PlanarTruce.ideoDescription>
+  <!-- 停战 -->
+  <LP_PlanarTruce.ideoName>truce</LP_PlanarTruce.ideoName>
+  <!-- 外来者 -->
+  <LP_PlanarTruce.pawnSingular>outsiders</LP_PlanarTruce.pawnSingular>
+  <!-- 外来者 -->
+  <LP_PlanarTruce.pawnsPlural>outsiders</LP_PlanarTruce.pawnsPlural>
+</LanguageData>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 刃墙割伤 -->
+  <LP_LO_Slowed.label>blade wall cut</LP_LO_Slowed.label>
+  <!-- 被剑刃屏障割伤：移动 ×0.5。 -->
+  <LP_LO_Slowed.description>Cut by a blade barrier: movement ×0.5.</LP_LO_Slowed.description>
+  <!-- 亡仆 -->
+  <LP_LO_Thrall.label>undead servant</LP_LO_Thrall.label>
+  <!-- 被死亡之指杀死后爬起来的亡仆：效忠施法者的阵营，不会精神崩溃，不知疼痛（疼痛 ×0.5）。 -->
+  <LP_LO_Thrall.description>An undead servant that rose after being killed by finger of death: loyal to the caster's faction, no mental breaks, feels little pain (pain ×0.5).</LP_LO_Thrall.description>
+  <!-- 再生术 -->
+  <LP_LO_Regenerating.label>regenerate</LP_LO_Regenerating.label>
+  <!-- 再生的魔力在体内流动：3 天后长回一个失去的肢体或器官。 -->
+  <LP_LO_Regenerating.description>Regenerative magic flows inside: a lost limb or organ grows back after 3 days.</LP_LO_Regenerating.description>
+  <!-- 反转重力 -->
+  <LP_LO_Levitated.label>reverse gravity</LP_LO_Levitated.label>
+  <!-- 被反转的重力抛到半空、动弹不得；落地时受到钝器伤害（严重度 = 伤害）。 -->
+  <LP_LO_Levitated.description>Thrown into the air by reversed gravity and unable to move; takes blunt damage on landing (severity = damage).</LP_LO_Levitated.description>
+  <!-- 心灵空白 -->
+  <LP_LO_MindBlank.label>mind blank</LP_LO_MindBlank.label>
+  <!-- 心灵被抹成一片空白：免疫心灵控制、魅惑、精神崩溃和心灵伤害（心灵敏感度 ×0，心智抗性 +100%）。 -->
+  <LP_LO_MindBlank.description>The mind wiped blank: immune to mind control, charm, mental breaks and psychic damage (psychic sensitivity ×0, mind resistance +100%).</LP_LO_MindBlank.description>
+  <!-- 断骨击 -->
+  <LP_LO_BoneBreak.label>bone-breaker strike</LP_LO_BoneBreak.label>
+  <!-- 下一次近战命中打断目标一条腿或一只手臂（传奇生物改为一记重击）。 -->
+  <LP_LO_BoneBreak.description>The next melee hit breaks one of the target's legs or arms (a heavy blow instead against legendary creatures).</LP_LO_BoneBreak.description>
+  <!-- 骨折 -->
+  <LP_LO_Fracture.label>fracture</LP_LO_Fracture.label>
+  <!-- 被断骨击打断的骨头：这个部位几乎用不了，10 天后长好。 -->
+  <LP_LO_Fracture.description>A bone broken by a bone-breaker strike: this part is nearly unusable, healing after 10 days.</LP_LO_Fracture.description>
+  <!-- 骨折 -->
+  <LP_LO_Fracture.labelNoun>fracture</LP_LO_Fracture.labelNoun>
+  <!-- 秘传反噬 -->
+  <LP_LO_Backlash.label>arcanum backlash</LP_LO_Backlash.label>
+  <!-- 吸收秘传结晶失败，湖水的魔力倒灌回来：意识 -30%。之后 7 天内不能再吸收秘传结晶。 -->
+  <LP_LO_Backlash.description>Failed to absorb an arcanum crystal, and the lake's magic surged back: consciousness -30%. Can't absorb arcanum crystals again for 7 days.</LP_LO_Backlash.description>
+  <!-- 许愿虚弱 -->
+  <LP_LO_Weakened.label>wish weakness</LP_LO_Weakened.label>
+  <!-- 大愿望抽走了太多生命力：意识 -20%，移动与工作速度 ×0.8。 -->
+  <LP_LO_Weakened.description>A great wish drained too much life force: consciousness -20%, movement and work speed ×0.8.</LP_LO_Weakened.description>
+</LanguageData>

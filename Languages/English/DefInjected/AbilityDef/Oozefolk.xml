@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 吞没 -->
+  <LP_OozeEngulf.label>engulf</LP_OozeEngulf.label>
+  <!-- 把一具尸体整个吞进身体里慢慢消化，需要2小时，可以被打断。尸体消失，衣服和武器留在原地。人形尸体：原生质+25、饱食度+50%；动物：原生质=体型×15（最多30），饱食度=体型×30%（最多60%）；开始腐烂的尸体减半。干尸、机械体、巫妖与死灵造物、流浆人的尸体不能吞没。15格内看见的殖民者会心情-3（1天；食人者、精神病态和流浆人不在乎）。吞没人形尸体算作吃人肉。也可以选中流浆人后右键尸体下令。 -->
+  <LP_OozeEngulf.description>Swallow a corpse whole into the body and digest it slowly; takes 2 hours and can be interrupted. The corpse disappears; clothes and weapons stay behind. Humanlike corpses: protoplasm +25, food +50%; animals: protoplasm = body size ×15 (up to 30), food = body size ×30% (up to 60%); halved for corpses that have started rotting. Desiccated corpses, mechanoids, liches and necromantic constructs, and oozefolk corpses can't be engulfed. Colonists who see it within 15 cells get mood -3 (1 day; cannibals, psychopaths and oozefolk don't care). Engulfing a humanlike corpse counts as eating human flesh. You can also select an oozefolk and right-click a corpse to order it.</LP_OozeEngulf.description>
+  <!-- 分裂 -->
+  <LP_OozeFission.label>fission</LP_OozeFission.label>
+  <!-- 把自己的一部分原生质分出去，1小时后生下一个流浆人婴儿：同样的异种型，带着父体全部的内源基因（后天植入的外源基因不会复制），肤色随机。只有成年流浆人能分裂，消耗80原生质和25%饱食度；父体之后3天“分裂虚弱”（意识-20%、移速×80%）。冷却30天（可在模组设置里调为15～60天）。 -->
+  <LP_OozeFission.description>Split off part of your protoplasm, and an hour later an oozefolk baby is born: the same xenotype, carrying all the parent's endogenes (implanted xenogenes aren't copied), with random skin color. Only adult oozefolk can split; costs 80 protoplasm and 25% food; the parent then has 3 days of "fission weakness" (consciousness -20%, move speed ×80%). Cooldown 30 days (adjustable to 15-60 days in mod settings).</LP_OozeFission.description>
+  <!-- 渗过 -->
+  <LP_OozeSeep.label>seep through</LP_OozeSeep.label>
+  <!-- 从门缝里挤过去：选择3格内、和自己之间隔着一扇门的地方（也可以直接点那扇门），瞬间渗到门的另一侧。任何门都行，锁着的、敌人的都一样；但不能穿墙或岩壁。消耗10原生质，冷却1小时。 -->
+  <LP_OozeSeep.description>Squeeze through a door crack: pick a spot within 3 cells with a door between you (or click the door directly) and instantly seep to the other side. Any door works, locked or an enemy's alike; but you can't pass through walls or rock. Costs 10 protoplasm, cooldown 1 hour.</LP_OozeSeep.description>
+  <!-- 重塑 -->
+  <LP_OozeReshape.label>reshape</LP_OozeReshape.label>
+  <!-- 静下来6小时，用原生质重新捏出身体缺掉的部分：恢复一个缺失的外部部位（手、脚、手指、脚趾、耳朵、鼻子；不含眼睛和内脏，大的优先）；没有缺失的部位时，改为抹平一处永久伤疤。消耗40原生质，冷却2天。 -->
+  <LP_OozeReshape.description>Rest still for 6 hours to sculpt missing body parts back out of protoplasm: restores one missing external part (hand, foot, finger, toe, ear, nose; not eyes or internal organs, bigger first); with no missing parts, smooths out one permanent scar instead. Costs 40 protoplasm, cooldown 2 days.</LP_OozeReshape.description>
+  <!-- 析出凝胶 -->
+  <LP_OozeExtractGel.label>exude gel</LP_OozeExtractGel.label>
+  <!-- 把一部分原生质挤出体外，凝成1份原生质凝胶（可做凝胶敷料和稳形护带）。消耗25原生质，需要30秒。 -->
+  <LP_OozeExtractGel.description>Squeeze some protoplasm out of the body to congeal 1 protoplasm gel (used for gel dressings and stabilizing belts). Costs 25 protoplasm, takes 30 seconds.</LP_OozeExtractGel.description>
+</LanguageData>

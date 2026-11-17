@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 海渊流亡者 -->
+  <LP_AbyssExile.label>deep sea exile</LP_AbyssExile.label>
+  <!-- 一位风暴巨人被海渊的宫廷放逐，带着两名不肯离开他的人类水手，在一场雷雨里漂上了这片陌生的海岸。\n\n风暴巨人两手空空；开局的第一天是一场跟着他们从海上卷来的雷雨。\n\n建议选海岸地图：风暴巨人在浅海和沼泽里行走如履平地，风雨天更强，也能预见大型袭击；但他们子嗣稀少，而且终日忧郁。 -->
+  <LP_AbyssExile.description>A storm giant exiled from the deep sea court drifted onto this strange coast in a thunderstorm, with two human sailors who refused to leave him.\n\nThe storm giant is empty-handed; the first day of the start is a thunderstorm that followed them in from the sea.\n\nA coastal map is recommended: storm giants walk through shallow ocean and marsh as if on flat ground, are stronger in wind and rain, and can foresee big raids; but they have few children, and are gloomy all day long.</LP_AbyssExile.description>
+  <!-- 一位风暴巨人被海渊的宫廷放逐，带着两名不肯离开他的人类水手，在一场雷雨里漂上了这片陌生的海岸。\n\n风暴巨人两手空空；开局的第一天是一场跟着他们从海上卷来的雷雨。\n\n建议选海岸地图：风暴巨人在浅海和沼泽里行走如履平地，风雨天更强，也能预见大型袭击；但他们子嗣稀少，而且终日忧郁。 -->
+  <LP_AbyssExile.scenario.description>A storm giant exiled from the deep sea court drifted onto this strange coast in a thunderstorm, with two human sailors who refused to leave him.\n\nThe storm giant is empty-handed; the first day of the start is a thunderstorm that followed them in from the sea.\n\nA coastal map is recommended: storm giants walk through shallow ocean and marsh as if on flat ground, are stronger in wind and rain, and can foresee big raids; but they have few children, and are gloomy all day long.</LP_AbyssExile.scenario.description>
+  <!-- 海渊流亡者 -->
+  <LP_AbyssExile.scenario.name>deep sea exile</LP_AbyssExile.scenario.name>
+  <!-- 一位风暴巨人和两名人类水手。 -->
+  <LP_AbyssExile.scenario.parts.ConfigurePawnsXenotypes.customSummary>A storm giant and two human sailors.</LP_AbyssExile.scenario.parts.ConfigurePawnsXenotypes.customSummary>
+  <!-- 风暴巨人 -->
+  <LP_AbyssExile.scenario.parts.ConfigurePawnsXenotypes.xenotypeCounts.0.description>storm giant</LP_AbyssExile.scenario.parts.ConfigurePawnsXenotypes.xenotypeCounts.0.description>
+  <!-- 人类水手 -->
+  <LP_AbyssExile.scenario.parts.ConfigurePawnsXenotypes.xenotypeCounts.1.description>human sailor</LP_AbyssExile.scenario.parts.ConfigurePawnsXenotypes.xenotypeCounts.1.description>
+  <!-- 海渊宫廷的大门在你身后关上了。\n\n两名水手划着破船跟了你三天三夜，最后一道浪把你们一起拍上了这片陌生的海岸。雷雨还没停——它是跟着你来的。\n\n你看得见将来的影子，却看不清自己的。先在这里活下去吧。 -->
+  <LP_AbyssExile.scenario.parts.GameStartDialog.text>The gates of the deep sea court closed behind you.\n\nTwo sailors rowed a battered boat after you for three days and nights, until a final wave slammed you all onto this strange coast. The thunderstorm hasn't stopped; it came with you.\n\nYou can see the shadows of the future, but not your own. Survive here first.</LP_AbyssExile.scenario.parts.GameStartDialog.text>
+  <!-- 一位被放逐的风暴巨人与两名人类水手。建议海岸地图。 -->
+  <LP_AbyssExile.scenario.summary>An exiled storm giant and two human sailors. Coastal map recommended.</LP_AbyssExile.scenario.summary>
+</LanguageData>

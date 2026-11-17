@@ -24,7 +24,7 @@ namespace LichPhylactery {
    if(roll>=ClubKnockChance || victim?.Map==null || attacker==null)return false;
    var dest=DNDPush.Destination(victim.Map,victim.Position,(victim.Position-attacker.Position).ToVector3(),1);
    if(dest==victim.Position)return false;
-   DNDPush.Move(victim,dest);Items.Mote(victim,"被砸飞",new Color(.9f,.75f,.5f));return true;
+   DNDPush.Move(victim,dest);Items.Mote(victim,"被砸飞".Loc(),new Color(.9f,.75f,.5f));return true;
   }
  }
  [HarmonyPatch(typeof(Verb_MeleeAttackDamage),"DamageInfosToApply")]

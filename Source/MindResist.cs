@@ -30,7 +30,7 @@ namespace LichPhylactery {
   public const int Level=10;public const float Offset=.5f;
   public static bool Active(Pawn p)=>p!=null && ClassSystem.Monk!=null && ClassSystem.Level(p,ClassSystem.Monk)>=Level;
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p && Active(p))val+=Offset;}
-  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Active(p)?"武僧 "+Level+" 级 心如止水：+"+Offset.ToStringPercent():null;
+  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Active(p)?"武僧 ".Loc()+Level+" 级 心如止水：+".Loc()+Offset.ToStringPercent():null;
  }
  // 心灵类负面心情（原版以心灵敏感度缩放的那类：心灵嗡鸣等）按心智抗性减弱。正面心情不变。
  // 抗性为0时不改任何数值，现有存档无变化。

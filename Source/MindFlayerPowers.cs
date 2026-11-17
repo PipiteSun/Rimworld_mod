@@ -27,35 +27,35 @@ namespace LichPhylactery {
 
   public static string ReadMind(Pawn caster,Pawn target){
    var lines=new List<string>();
-   if(target.story!=null)lines.Add("特质："+(target.story.traits.allTraits.Count==0?"无":string.Join("、",target.story.traits.allTraits.Select(t=>t.LabelCap))));
+   if(target.story!=null)lines.Add("特质：".Loc()+(target.story.traits.allTraits.Count==0?"无".Loc():string.Join("、".Loc(),target.story.traits.allTraits.Select(t=>t.LabelCap))));
    var best=target.skills?.skills.Where(s=>!s.TotallyDisabled).OrderByDescending(s=>s.Level).Take(3).ToList();
-   if(best!=null && best.Count>0)lines.Add("擅长："+string.Join("、",best.Select(s=>s.def.label+" "+s.Level)));
+   if(best!=null && best.Count>0)lines.Add("擅长：".Loc()+string.Join("、".Loc(),best.Select(s=>s.def.label+" "+s.Level)));
    var mood=target.needs?.mood;
    if(mood!=null){
-    lines.Add("心情："+mood.CurLevelPercentage.ToStringPercent());
+    lines.Add("心情：".Loc()+mood.CurLevelPercentage.ToStringPercent());
     var thoughts=new List<Thought>();mood.thoughts.GetAllMoodThoughts(thoughts);
     var worst=thoughts.Where(t=>t.MoodOffset()!=0).OrderBy(t=>t.MoodOffset()).Take(3).ToList();
-    if(worst.Count>0)lines.Add("最在意："+string.Join("、",worst.Select(t=>t.LabelCap+"（"+t.MoodOffset().ToString("+0;-0")+"）")));
+    if(worst.Count>0)lines.Add("最在意：".Loc()+string.Join("、".Loc(),worst.Select(t=>t.LabelCap+"（".Loc()+t.MoodOffset().ToString("+0;-0")+"）".Loc())));
    }
-   if(target.IsPrisonerOfColony && target.guest!=null){float before=target.guest.resistance;target.guest.resistance=Mathf.Max(0,target.guest.resistance-ResistanceDrop);lines.Add("抵抗："+before.ToString("0.#")+" → "+target.guest.resistance.ToString("0.#"));}
+   if(target.IsPrisonerOfColony && target.guest!=null){float before=target.guest.resistance;target.guest.resistance=Mathf.Max(0,target.guest.resistance-ResistanceDrop);lines.Add("抵抗：".Loc()+before.ToString("0.#")+" → "+target.guest.resistance.ToString("0.#"));}
    string text=string.Join("\n",lines);
-   if(caster.Faction==Faction.OfPlayer)Find.LetterStack.ReceiveLetter("读心："+target.LabelShort,caster.LabelShort+"窥探了"+target.LabelShort+"的心思。\n\n"+text,LetterDefOf.NeutralEvent,target);
+   if(caster.Faction==Faction.OfPlayer)Find.LetterStack.ReceiveLetter("读心：".Loc()+target.LabelShort,caster.LabelShort+"窥探了".Loc()+target.LabelShort+"的心思。\n\n".Loc()+text,LetterDefOf.NeutralEvent,target);
    return text;
   }
   public static string CannotDominate(Pawn caster,Pawn p){
-   if(!Living(caster,p) || !p.RaceProps.Humanlike)return "需要地图上活着的人形生物。";
-   if(p.Faction==caster.Faction || p.Faction==Faction.OfPlayer)return "不能支配自己阵营的人。";
-   if(p.Downed)return "目标已经倒地。";
-   if(MindFlayer.PsychicallyDeaf(p))return "心灵失聪者无法被支配。";
-   if(MindFlayer.IsMindFlayer(p))return "夺心魔的心智无法被支配。";
+   if(!Living(caster,p) || !p.RaceProps.Humanlike)return "需要地图上活着的人形生物。".Loc();
+   if(p.Faction==caster.Faction || p.Faction==Faction.OfPlayer)return "不能支配自己阵营的人。".Loc();
+   if(p.Downed)return "目标已经倒地。".Loc();
+   if(MindFlayer.PsychicallyDeaf(p))return "心灵失聪者无法被支配。".Loc();
+   if(MindFlayer.IsMindFlayer(p))return "夺心魔的心智无法被支配。".Loc();
    return null;
   }
   // 支配：通过 DNDMind.TryResist 判定；成功后30秒内只攻击原来的同伴，时间到精疲力竭倒地。
   public static bool Dominate(Pawn caster,Pawn p){
    if(CannotDominate(caster,p)!=null)return false;
-   if(DNDMind.TryResist(p)){MindFlayer.Mote(p,"抵抗！",new Color(.7f,.85f,1f));return false;}
+   if(DNDMind.TryResist(p)){MindFlayer.Mote(p,"抵抗！".Loc(),new Color(.7f,.85f,1f));return false;}
    var h=p.health.AddHediff(DominatedHediff);
-   if(!p.mindState.mentalStateHandler.TryStartMentalState(Dominated,"被"+caster.LabelShort+"支配",true,true,false,null,false,false,false))MindFlayer.Mote(p,"被支配（无人可攻击）",new Color(.75f,.4f,.95f));
+   if(!p.mindState.mentalStateHandler.TryStartMentalState(Dominated,"被".Loc()+caster.LabelShort+"支配".Loc(),true,true,false,null,false,false,false))MindFlayer.Mote(p,"被支配（无人可攻击）".Loc(),new Color(.75f,.4f,.95f));
    return true;
   }
   // 被支配者的攻击对象：最近的、还能动的原阵营同伴。
@@ -70,18 +70,18 @@ namespace LichPhylactery {
    var daze=p.health.AddHediff(ElderBrain.Daze);daze.TryGetComp<HediffComp_Disappears>()?.SetDuration(DazeTicks);
   }
   public static string CannotBind(Pawn caster,Pawn p){
-   if(!ModsConfig.IdeologyActive)return "需要《意识形态》。";
-   if(!Living(caster,p) || !p.RaceProps.Humanlike || p.ideo==null)return "需要地图上有信仰的人形生物。";
-   if(caster.Ideo==null)return "施法者没有意识形态。";
-   if(p.Ideo==caster.Ideo)return "目标已经信仰同一意识形态。";
-   if(MindFlayer.PsychicallyDeaf(p))return "心灵失聪者不受影响。";
+   if(!ModsConfig.IdeologyActive)return "需要《意识形态》。".Loc();
+   if(!Living(caster,p) || !p.RaceProps.Humanlike || p.ideo==null)return "需要地图上有信仰的人形生物。".Loc();
+   if(caster.Ideo==null)return "施法者没有意识形态。".Loc();
+   if(p.Ideo==caster.Ideo)return "目标已经信仰同一意识形态。".Loc();
+   if(MindFlayer.PsychicallyDeaf(p))return "心灵失聪者不受影响。".Loc();
    return null;
   }
   public static bool PsychicBind(Pawn caster,Pawn p){
    if(CannotBind(caster,p)!=null)return false;
-   if(DNDMind.TryResist(p)){MindFlayer.Mote(p,"抵抗！",new Color(.7f,.85f,1f));return false;}
+   if(DNDMind.TryResist(p)){MindFlayer.Mote(p,"抵抗！".Loc(),new Color(.7f,.85f,1f));return false;}
    p.ideo.OffsetCertainty(-BindCertainty);
-   if(p.ideo.Certainty<=.001f){p.ideo.SetIdeo(caster.Ideo);if(p.Faction==Faction.OfPlayer || caster.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"的信仰被群脑改写，改信了"+caster.Ideo.name+"。",p,MessageTypeDefOf.NeutralEvent,false);}
+   if(p.ideo.Certainty<=.001f){p.ideo.SetIdeo(caster.Ideo);if(p.Faction==Faction.OfPlayer || caster.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"的信仰被群脑改写，改信了".Loc()+caster.Ideo.name+"。".Loc(),p,MessageTypeDefOf.NeutralEvent,false);}
    return true;
   }
   // 念力投掷：沿施法者到目标的方向把目标甩出最多4格。
@@ -115,10 +115,10 @@ namespace LichPhylactery {
   partial void InvalidPowerImpl(LocalTargetInfo target,ref string reason){
    var caster=parent.pawn;var p=target.Pawn;
    switch(Props.effect){
-    case "readmind":reason=MindFlayerPowers.Living(caster,p) && p.RaceProps.Humanlike?null:"需要地图上活着的人形生物。";break;
+    case "readmind":reason=MindFlayerPowers.Living(caster,p) && p.RaceProps.Humanlike?null:"需要地图上活着的人形生物。".Loc();break;
     case "dominate":reason=MindFlayerPowers.CannotDominate(caster,p);break;
     case "bind":reason=MindFlayerPowers.CannotBind(caster,p);break;
-    case "throw":reason=MindFlayerPowers.Living(caster,p)?null:"需要地图上活着的生物。";break;
+    case "throw":reason=MindFlayerPowers.Living(caster,p)?null:"需要地图上活着的生物。".Loc();break;
     case "unseen":case "storm":reason=null;break;
    }
   }
@@ -164,12 +164,12 @@ namespace LichPhylactery {
    var t=Tadpoles.Of(p);
    if(t!=null && t.Severity<FreezeLimit && p.genes!=null && Of(p)==null){
     p.genes.AddGene(Gene,true);
-    if(p.Faction==Faction.OfPlayer)Find.LetterStack.ReceiveLetter("半夺心魔",p.LabelShort+"服下抑灵剂，脑中的蝌蚪被压制住了。"+p.LabelShort+"保住了自我，却得到了夺心魔的一部分力量：能读心、能吞噬大脑，每吞噬一个大脑领悟一项灵能。\n\n要一直服药：断药3天后化形会恢复；每吞噬一个大脑也有25%概率让抑制失效。",LetterDefOf.NeutralEvent,p);
+    if(p.Faction==Faction.OfPlayer)Find.LetterStack.ReceiveLetter("半夺心魔".Loc(),p.LabelShort+"服下抑灵剂，脑中的蝌蚪被压制住了。".Loc()+p.LabelShort+"保住了自我，却得到了夺心魔的一部分力量：能读心、能吞噬大脑，每吞噬一个大脑领悟一项灵能。\n\n要一直服药：断药3天后化形会恢复；每吞噬一个大脑也有25%概率让抑制失效。".Loc(),LetterDefOf.NeutralEvent,p);
    }
   }
   public static void Fail(Pawn p){
    var h=p.health.hediffSet.GetFirstHediffOfDef(Suppression);if(h!=null)p.health.RemoveHediff(h);
-   if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"吞下的大脑冲破了抑灵剂的压制：脑中的蝌蚪又开始生长了。",p,MessageTypeDefOf.NegativeEvent,false);
+   if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"吞下的大脑冲破了抑灵剂的压制：脑中的蝌蚪又开始生长了。".Loc(),p,MessageTypeDefOf.NegativeEvent,false);
   }
  }
  public partial class Hediff_Tadpole {
@@ -190,14 +190,14 @@ namespace LichPhylactery {
   // 蝌蚪被摘除（或死掉）后，半夺心魔的力量随之消失。
   public bool CheckHost(){
    if(pawn==null || pawn.Dead || Tadpoles.Of(pawn)!=null)return false;
-   if(pawn.Faction==Faction.OfPlayer)Messages.Message(pawn.LabelShort+"脑中的蝌蚪没了，半夺心魔的力量也随之消散。",pawn,MessageTypeDefOf.NeutralEvent,false);
+   if(pawn.Faction==Faction.OfPlayer)Messages.Message(pawn.LabelShort+"脑中的蝌蚪没了，半夺心魔的力量也随之消散。".Loc(),pawn,MessageTypeDefOf.NeutralEvent,false);
    pawn.genes.RemoveGene(this);return true;
   }
   public void SyncPowers(){if(pawn?.abilities==null)return;for(int i=0;i<Math.Min(unlocked,HalfIllithid.MaxPowers);i++){var def=DefDatabase<AbilityDef>.GetNamed(HalfIllithid.Unlocks[i]);if(pawn.abilities.GetAbility(def)==null)pawn.abilities.GainAbility(def);}}
   public AbilityDef Unlock(){
    if(unlocked>=HalfIllithid.MaxPowers)return null;
    var def=DefDatabase<AbilityDef>.GetNamed(HalfIllithid.Unlocks[unlocked]);unlocked++;SyncPowers();
-   if(pawn.Faction==Faction.OfPlayer)Messages.Message(pawn.LabelShort+"从吞下的大脑里领悟了"+def.label+"。",pawn,MessageTypeDefOf.PositiveEvent,false);
+   if(pawn.Faction==Faction.OfPlayer)Messages.Message(pawn.LabelShort+"从吞下的大脑里领悟了".Loc()+def.label+"。".Loc(),pawn,MessageTypeDefOf.PositiveEvent,false);
    return def;
   }
   public override void PostRemove(){

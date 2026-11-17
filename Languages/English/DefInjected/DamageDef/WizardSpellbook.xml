@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 毒素 -->
+  <LP_WS_Poison.label>poison</LP_WS_Poison.label>
+  <!-- {0}被毒雾毒死了。 -->
+  <LP_WS_Poison.deathMessage>{0} was poisoned to death by poison spray.</LP_WS_Poison.deathMessage>
+  <!-- 心灵 -->
+  <LP_WS_Psychic.label>mind</LP_WS_Psychic.label>
+  <!-- {0}的心智被心灵尖刺刺穿了。 -->
+  <LP_WS_Psychic.deathMessage>{0}'s mind was pierced by a mind spike.</LP_WS_Psychic.deathMessage>
+</LanguageData>

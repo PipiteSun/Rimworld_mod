@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 神圣之魂 -->
+  <LP_Sub_DivineSoul.label>Divine Soul</LP_Sub_DivineSoul.label>
+  <!-- 血脉里流着神恩：会牧师的治疗伤口，选一种神恩亲和（光明、黄昏、守护），冥想祈祷时法力回得更快，化身天使，最后能在倒下时自愈并降下神迹。 -->
+  <LP_Sub_DivineSoul.description>Divine grace flows in the bloodline: knows the cleric's cure wounds, picks a divine affinity (light, twilight, protection), regains mana faster when meditating or praying, becomes an angel, and finally heals themself when falling and calls down a miracle.</LP_Sub_DivineSoul.description>
+  <!-- 神恩亲和 -->
+  <LP_Sub_DivineSoul.choices.0.label>divine affinity</LP_Sub_DivineSoul.choices.0.label>
+  <!-- 光明 | 黄昏 | 守护 -->
+  <LP_Sub_DivineSoul.choices.0.options.0>light</LP_Sub_DivineSoul.choices.0.options.0>
+  <LP_Sub_DivineSoul.choices.0.options.1>twilight</LP_Sub_DivineSoul.choices.0.options.1>
+  <LP_Sub_DivineSoul.choices.0.options.2>protection</LP_Sub_DivineSoul.choices.0.options.2>
+  <!-- 术士和神恩之选的治疗 +25%。 | 术士法术对活物（血肉生物）的伤害 +20%。 | 每施放一个术士法术，自己得到吸收 8 点伤害的护盾（1 小时，不叠加，刷新）。 -->
+  <LP_Sub_DivineSoul.choices.0.tips.0>Healing from sorcerers and divine magic +25%.</LP_Sub_DivineSoul.choices.0.tips.0>
+  <LP_Sub_DivineSoul.choices.0.tips.1>Sorcerer spell damage against the living (fleshy creatures) +20%.</LP_Sub_DivineSoul.choices.0.tips.1>
+  <LP_Sub_DivineSoul.choices.0.tips.2>Each sorcerer spell cast gives yourself a shield absorbing 8 damage (1 hour, doesn't stack, refreshes).</LP_Sub_DivineSoul.choices.0.tips.2>
+  <!-- 暗影魔法 -->
+  <LP_Sub_ShadowMagic.label>Shadow Magic</LP_Sub_ShadowMagic.label>
+  <!-- 出生在黑暗里的术士：看得见黑暗、在黑暗中法术更强、硬撑着不倒，召唤影犬追猎敌人，在黑暗之间瞬移，最后化为影之形态。「黑暗」= 光照低于 30% 的格子。 -->
+  <LP_Sub_ShadowMagic.description>A sorcerer born in darkness: sees in the dark, casts stronger spells in darkness, holds on without falling, summons a hound of ill omen to hunt enemies, teleports between dark places, and finally takes umbral form. "Darkness" = cells with under 30% light.</LP_Sub_ShadowMagic.description>
+  <!-- 时钟之魂 -->
+  <LP_Sub_ClockworkSoul.label>Clockwork Soul</LP_Sub_ClockworkSoul.label>
+  <!-- 机械之境的秩序流进了血脉：为队友重掷失败的豁免、修理机械更快，给队友套上秩序护盾，展开秩序领域，最后召来秩序构装；魔涌的狂野魔法不再出坏结果。 -->
+  <LP_Sub_ClockworkSoul.description>The order of the clockwork plane flows into the bloodline: re-rolls failed saves for teammates, repairs machines faster, wraps teammates in shields of order, unfolds a clockwork cavalcade, and finally summons order constructs; wild surge's wild magic no longer has bad results.</LP_Sub_ClockworkSoul.description>
+</LanguageData>

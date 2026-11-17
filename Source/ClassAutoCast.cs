@@ -69,12 +69,12 @@ namespace LichPhylactery {
    Widgets.DrawBoxSolid(box,new Color(0f,0f,0f,over?.55f:.3f));
    GUI.color=new Color(1f,1f,1f,over || on?1f:.55f);GUI.DrawTexture(box.ContractedBy(1f),on?Widgets.CheckboxOnTex:Widgets.CheckboxOffTex);GUI.color=c;
    if(extra){var dot=new Rect(box.x-1f,box.yMax-4f,5f,5f);Widgets.DrawBoxSolid(dot,new Color(1f,.82f,.35f));} // 有未征召 / 资源门槛设置时左下角一个小金点
-   if(over)TooltipHandler.TipRegion(box,"自动施放："+(on?"开":"关")+"（左键切换）\n右键：自动施放设置（未征召时自动施放："+(AutoCastPlus.Undrafted(A.pawn,A.def)?"开":"关")+"，资源低于 "+AutoCastPlus.Threshold(A.pawn,A.def)+"% 不自动用）\n\n开着时，征召待命或战斗中会自己放这个能力：治疗先救倒地、受伤的友军，增益给正在战斗、还没有这个效果的友军，攻击能力打射程内的敌人，范围法术不会炸到自己人。不会打断你下的移动命令。");
+   if(over)TooltipHandler.TipRegion(box,"自动施放：".Loc()+(on?"开".Loc():"关".Loc())+"（左键切换）\n右键：自动施放设置（未征召时自动施放：".Loc()+(AutoCastPlus.Undrafted(A.pawn,A.def)?"开".Loc():"关".Loc())+"，资源低于 ".Loc()+AutoCastPlus.Threshold(A.pawn,A.def)+"% 不自动用）\n\n开着时，征召待命或战斗中会自己放这个能力：治疗先救倒地、受伤的友军，增益给正在战斗、还没有这个效果的友军，攻击能力打射程内的敌人，范围法术不会炸到自己人。不会打断你下的移动命令。".Loc());
    return res;
   }
   public override IEnumerable<FloatMenuOption> RightClickFloatMenuOptions{get{
    foreach(var o in base.RightClickFloatMenuOptions)yield return o;
-   if(Shown){var a=A;yield return new FloatMenuOption(ClassAutoCast.IsOn(a)?"关闭自动施放":"开启自动施放",()=>ClassAutoCast.Toggle(a));}
+   if(Shown){var a=A;yield return new FloatMenuOption(ClassAutoCast.IsOn(a)?"关闭自动施放".Loc():"开启自动施放".Loc(),()=>ClassAutoCast.Toggle(a));}
   }}
  }
 }

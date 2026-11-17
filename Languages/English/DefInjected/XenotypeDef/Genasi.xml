@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 火元素裔 -->
+  <LP_GenasiFire.label>fire genasi</LP_GenasiFire.label>
+  <!-- 血管里流着火元素的人类后裔。火元素裔的皮肤像烧透的赭石，摸上去总是温热的；他们不会被点燃，火焰伤害减半，能用指尖弹出火花点燃6格内的东西。代价是怕冷、脾气火爆。血脉会遗传给子女。 -->
+  <LP_GenasiFire.description>Human descendants with elemental fire in their veins. Fire genasi have skin like burnt ochre that's always warm to the touch; they can't be ignited, take half fire damage, and can flick sparks from their fingertips to ignite things within 6 cells. The price is fearing the cold and a fiery temper. The bloodline is passed on to children.</LP_GenasiFire.description>
+  <!-- 可遗传。不会被点燃、火焰伤害减半、耐热，能放“火花”；怕冷、暴躁。 -->
+  <LP_GenasiFire.descriptionShort>Inheritable. Can't be ignited, half fire damage, heat-tolerant, can cast "Spark"; cold-sensitive, hot-tempered.</LP_GenasiFire.descriptionShort>
+  <!-- 水元素裔 -->
+  <LP_GenasiWater.label>water genasi</LP_GenasiWater.label>
+  <!-- 水元素的后裔，皮肤泛着蓝青色的光泽，发梢总是湿的。水元素裔在浅水、沼泽和浅海里行走如履平地，能召来一股水流扑灭火焰、把敌人浇透。身体比常人娇弱。血脉会遗传给子女。 -->
+  <LP_GenasiWater.description>Descendants of elemental water, with skin of a blue-green sheen and hair tips that are always wet. Water genasi walk through shallow water, marsh and shallow ocean as if on flat ground, and can summon a stream of water to put out fires and drench enemies. Their bodies are more delicate than others'. The bloodline is passed on to children.</LP_GenasiWater.description>
+  <!-- 可遗传。水中行动不减速、较耐寒，能放“水流”灭火并浇透敌人；体质娇弱。 -->
+  <LP_GenasiWater.descriptionShort>Inheritable. No slowdown in water, fairly cold-tolerant, can cast "Water stream" to put out fires and drench enemies; delicate constitution.</LP_GenasiWater.descriptionShort>
+  <!-- 土元素裔 -->
+  <LP_GenasiEarth.label>earth genasi</LP_GenasiEarth.label>
+  <!-- 土元素的后裔，灰褐色的皮肤像风化的岩石，钝器打在身上像打在石头上。土元素裔天生会找矿，挖得又快又干净，但走路沉，学东西也慢。没有主动能力。血脉会遗传给子女。 -->
+  <LP_GenasiEarth.description>Descendants of elemental earth, with grey-brown skin like weathered rock; blunt blows land on them like on stone. Earth genasi are born to find ore and dig fast and clean, but walk heavily and learn slowly. No active ability. The bloodline is passed on to children.</LP_GenasiEarth.description>
+  <!-- 可遗传。采矿快、产量高、钝器护甲+15%；移速稍慢、学得慢。 -->
+  <LP_GenasiEarth.descriptionShort>Inheritable. Fast mining, high yield, blunt armor +15%; slightly slower, slow learners.</LP_GenasiEarth.descriptionShort>
+  <!-- 风元素裔 -->
+  <LP_GenasiAir.label>air genasi</LP_GenasiAir.label>
+  <!-- 风元素的后裔，浅灰蓝的皮肤，身形细长，走路带风。风元素裔跑得快，还能乘风跃到8格外看得见的地方；只是身板单薄，近战吃亏。血脉会遗传给子女。 -->
+  <LP_GenasiAir.description>Descendants of elemental air, with pale grey-blue skin and slender builds that walk with a breeze. Air genasi are fast and can leap on the wind to a visible spot 8 cells away; but their frames are thin and they're weak in melee. The bloodline is passed on to children.</LP_GenasiAir.description>
+  <!-- 可遗传。移速+10%，能“风跃”到8格内看得见的地方；身形纤瘦、不擅近战。 -->
+  <LP_GenasiAir.descriptionShort>Inheritable. Move speed +10%, can "wind leap" to a visible spot within 8 cells; slender, poor at melee.</LP_GenasiAir.descriptionShort>
+</LanguageData>

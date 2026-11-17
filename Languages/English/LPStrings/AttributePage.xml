@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（AttributePage.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh> × 擅长 </zh><en> × strong </en></s>
+  <s><zh> × 天赋 </zh><en> × talent </en></s>
+  <s><zh>÷M，最低 ×</zh><en>÷M, minimum ×</en></s>
+  <s><zh> ×(M − 1)，限 </zh><en> ×(M − 1), limited to </en></s>
+  <s><zh>～</zh><en>-</en></s>
+  <s><zh> × 调整值′) × 擅长 × 天赋，最低 ×</zh><en> × modifier′) × strong × talent, minimum ×</en></s>
+  <s><zh> ×(属性 − 10)′) × 擅长 × 天赋，最低 ×0.5</zh><en> ×(ability − 10)′) × strong × talent, minimum ×0.5</en></s>
+  <s><zh>，超 ×</zh><en>, beyond ×</en></s>
+  <s><zh> 收敛</zh><en> converges</en></s>
+  <s><zh>，最低 ×0.1</zh><en>, minimum ×0.1</en></s>
+  <s><zh>（已含工作速度）</zh><en> (includes work speed)</en></s>
+  <s><zh> → 最低 </zh><en> → minimum </en></s>
+  <s><zh> → 限在 </zh><en> → limited to </en></s>
+  <s><zh>(属性 − 10)′ = </zh><en>(ability − 10)′ = </en></s>
+  <s><zh> × 笨拙 </zh><en> × weak </en></s>
+  <s><zh>；1 + </zh><en>; 1 + </en></s>
+  <s><zh>\n另外照常乘全局工作速度（和 Isekai 一样）。</zh><en>\nAlso multiplied by global work speed as usual (same as Isekai).</en></s>
+  <s><zh> → 超过 ×</zh><en> → beyond ×</en></s>
+  <s><zh> 收敛为 </zh><en> converges to </en></s>
+  <s><zh>\n原版这一项本身乘全局工作速度（已吃智力倍率），这里除掉一份，智力只算一次。</zh><en>\nIn vanilla this stat itself is multiplied by global work speed (which already includes the Intelligence multiplier); one copy is divided out here so Intelligence counts only once.</en></s>
+  <s><zh>\n属性效果强度 </zh><en>\nAbility effect strength </en></s>
+  <s><zh>：1 + (完整值 − 1) × </zh><en>: 1 + (full value − 1) × </en></s>
+  <s><zh>传奇点</zh><en>legendary points</en></s>
+  <s><zh>武艺</zh><en>martial arts</en></s>
+  <s><zh> × 调整值′) × 擅长 × 天赋，最低 ×1</zh><en> × modifier′) × strong × talent, minimum ×1</en></s>
+  <s><zh>（已按属性效果强度 </zh><en> (interpolated by ability effect strength </en></s>
+  <s><zh> 插值）</zh><en>)</en></s>
+  <s><zh>\n体质低于 10 不减少部位生命。</zh><en>\nConstitution below 10 doesn't reduce part health.</en></s>
+  <s><zh>未分配 </zh><en>unassigned </en></s>
+  <s><zh>1 + Σ 职业等级 × 生命骰成长 + 未分配等级 × </zh><en>1 + Σ class level × hit die growth + unassigned levels × </en></s>
+  <s><zh>冒险者 Lv</zh><en>Adventurer Lv</en></s>
+  <s><zh>：1 + </zh><en>: 1 + </en></s>
+  <s><zh>（按属性效果强度 </zh><en> (after interpolating by ability effect strength </en></s>
+  <s><zh> 插值后 </zh><en> → </en></s>
+  <s><zh>\n生命骰：野蛮人 7%，战士 / 圣武士 / 游侠 6%，法师 / 术士 4%，其他 5%。传奇等级 21～40 不加，血量走传奇属性点。</zh><en>\nHit die: barbarian 7%, fighter / paladin / ranger 6%, wizard / sorcerer 4%, others 5%. Legend levels 21-40 don't add; health goes through legend attribute points.</en></s>
+  <s><zh>传奇血量 </zh><en>legend health </en></s>
+  <s><zh>坚韧 </zh><en>Tough </en></s>
+  <s><zh>体质 × 等级成长</zh><en>Constitution × level growth</en></s>
+  <s><zh> × 传奇血量 / 坚韧</zh><en> × legend health / Tough</en></s>
+  <s><zh>÷ 部位生命合计（≥1 的部分）</zh><en>÷ total part health (the part ≥1)</en></s>
+  <s><zh>伤口和缺失部位的疼痛除以部位生命倍率，免得血厚却因疼痛先倒地。</zh><en>Pain from wounds and missing parts is divided by the part health multiplier, so people with thick health don't go down from pain first.</en></s>
+  <s><zh>150 × 体型生命倍率 × 部位生命合计（≥1 的部分）</zh><en>150 × body size health multiplier × total part health (the part ≥1)</en></s>
+  <s><zh>全身伤口合计达到这个数就会死于伤势过重。健康百分比和失血速度同样按部位生命合计缩放（设置「总生命随部位生命缩放」）。</zh><en>When total wounds reach this number, death from overwhelming injuries. Health percentage and bleed rate scale by total part health likewise (setting "total health scales with part health").</en></s>
+  <s><zh>×M，最低 ×</zh><en>×M, minimum ×</en></s>
+  <s><zh>技能学习速度 = 属性倍率 M = </zh><en>Skill learning speed = ability multiplier M = </en></s>
+  <s><zh> × 调整值′) × 擅长 × 天赋 − 1</zh><en> × modifier′) × strong × talent − 1</en></s>
+  <s><zh>以</zh><en>Power of classes (spellcasting, class abilities) with </en></s>
+  <s><zh>为主属性的职业（施法、职业能力）强度：(1 + </zh><en> as main ability: (1 + </en></s>
+  <s><zh>\n熟练加值另加 </zh><en>\nProficiency bonus adds </en></s>
+  <s><zh> ×（熟练 − 2）。</zh><en> × (proficiency − 2).</en></s>
+  <s><zh>奥术强度（法师、术士智识支）的智力项每点调整值 </zh><en>Arcane power (wizard, sorcerer Intellectual branch): Intelligence term per modifier point </en></s>
+  <s><zh>：(1 + </zh><en>: (1 + </en></s>
+  <s><zh>\n其他用智力的强度仍按 </zh><en>\nOther Intelligence-based powers still use </en></s>
+  <s><zh>天赋强度（术士社交支）的魅力项每点调整值 </zh><en>Gift power (sorcerer Social branch): Charisma term per modifier point </en></s>
+  <s><zh>\n神恩、契约等其他用魅力的强度仍按 </zh><en>\nDivine favor, pacts and other Charisma-based powers still use </en></s>
+  <s><zh>基础 </zh><en>base </en></s>
+  <s><zh>（超过上限 </zh><en> (over cap </en></s>
+  <s><zh>，按 </zh><en>, counts as </en></s>
+  <s><zh> 算）</zh><en>)</en></s>
+  <s><zh>（上限 </zh><en> (cap </en></s>
+  <s><zh> + 专长 </zh><en> + feats </en></s>
+  <s><zh> + 武艺天赋 </zh><en> + combat gifts </en></s>
+  <s><zh> + 职业 </zh><en> + class </en></s>
+  <s><zh> = 有效 </zh><en> = effective </en></s>
+  <s><zh>　调整值 </zh><en>  modifier </en></s>
+  <s><zh>，调整值′ </zh><en>, modifier′ </en></s>
+  <s><zh>（× 笨拙 </zh><en> (× weak </en></s>
+  <s><zh>M = 3.5 表（有效 </zh><en>M = 3.5 table (effective </en></s>
+  <s><zh>（种族 </zh><en> (race </en></s>
+  <s><zh> / 天赋 </zh><en> / talent </en></s>
+  <s><zh> 取较大）</zh><en>, the larger)</en></s>
+  <s><zh>（种族 / 天赋取较大）</zh><en> (the larger of race / talent)</en></s>
+  <s><zh>　线性效果：(1 + 每点 × 调整值′) 整体</zh><en>  Linear effects: (1 + per point × modifier′) as a whole</en></s>
+  <s><zh>M：属性倍率 = 3.5 负重表（10 = ×1，每 +5 约 ×2，每 +10 ×4；低于 10 = 属性 ÷ 10）× 种族亲和与天赋中较大者（属性低于 10 时不乘）\n</zh><en>M: ability multiplier = 3.5 carrying table (10 = ×1, about ×2 per +5, ×4 per +10; below 10 = ability ÷ 10) × the larger of racial affinity and talent (not applied when the ability is below 10)\n</en></s>
+  <s><zh>调整值′：(属性 − 10) ÷ 2 向下取整，种族笨拙时正的部分 × 0.5；(属性 − 10)′ 同理\n</zh><en>modifier′: (ability − 10) ÷ 2 rounded down, positive part × 0.5 with racial weakness; (ability − 10)′ likewise\n</en></s>
+  <s><zh>擅长 / 天赋：种族擅长 ×1.5（传奇种族 ×1.75）、天赋异禀 / 天赋·某项 ×1.5、极致 ×2.5，都乘在线性效果整体上（效果低于 ×1 时不乘），擅长和天赋相乘\n</zh><en>strong / talent: racial strength ×1.5 (legendary races ×1.75), gifted / talent·one ability ×1.5, paragon ×2.5, all multiplied onto the whole linear effect (not applied when the effect is below ×1); strength and talent multiply\n</en></s>
+  <s><zh>收敛：超过上限后 = 上限 + k·ln(1 + 超出 ÷ k)，k = max(0.5, 上限 ÷ 2)（Isekai 方式）</zh><en>Convergence: beyond the cap = cap + k·ln(1 + excess ÷ k), k = max(0.5, cap ÷ 2) (Isekai style)</en></s>
+  <s><zh>：所有数值 = 1 + (完整值 − 1) × </zh><en>: all values = 1 + (full value − 1) × </en></s>
+  <s><zh>\n悬停每一行看代入本人数值的算式；“叠加”一列是同一属性上另外相乘 / 相加的超凡、传奇属性点、武艺天赋。</zh><en>\nHover over each row to see the formula with this person's values; the "stacking" column is exalted, legend attribute points and combat gifts multiplied / added on the same ability.</en></s>
+  <s><zh>六维的数值效果已交给 Isekai（设置“Isekai 共存模式”），下面只列有效值和超凡。</zh><en>The six abilities' numeric effects are handed over to Isekai (setting "Isekai coexistence mode"); only effective values and exalted are listed below.</en></s>
+  <s><zh>属性效果强度 0%：六维没有数值效果。</zh><en>Ability effect strength 0%: the six abilities have no numeric effect.</en></s>
+  <s><zh>效果</zh><en>Effect</en></s>
+  <s><zh>公式</zh><en>Formula</en></s>
+  <s><zh>当前</zh><en>Current</en></s>
+  <s><zh>叠加</zh><en>Stacking</en></s>
+  <s><zh>\n\n叠加：</zh><en>\n\nStacking: </en></s>
+  <s><zh>（已达成，未生效：</zh><en> (achieved, not active: </en></s>
+  <s><zh>：基础与有效值都到 </zh><en>: unlocks when both base and effective values reach </en></s>
+  <s><zh> 解锁（现在 </zh><en> (now </en></s>
+  <s><zh>\n神话·</zh><en>\nMythic·</en></s>
+  <s><zh>：有效值 </zh><en>: effective value </en></s>
+  <s><zh>，或传奇冒险者 + </zh><en>, or legendary adventurer + </en></s>
+  <s><zh>传奇点合计 </zh><en> legend points totaling </en></s>
+  <s><zh>其他来源（不随六维变化）</zh><en>Other sources (don't change with the six abilities)</en></s>
+  <s><zh>等级 </zh><en>Level </en></s>
+  <s><zh>：近战命中、近战闪避各 </zh><en>: melee hit and melee dodge each </en></s>
+  <s><zh>（每级 +</zh><en> (+</en></s>
+  <s><zh>，只算 1～20 级）</zh><en> per level, levels 1-20 only)</en></s>
+  <s><zh>物理职业成长：近战伤害 </zh><en>Martial class growth: melee damage </en></s>
+  <s><zh>传奇属性点：</zh><en>Legend attribute points: </en></s>
+  <s><zh>专长、史诗恩赐、战斗风格的数值见“冒险者”页悬停说明。</zh><en>Values of feats, epic boons and fighting styles are in the hover text on the "Adventurer" page.</en></s>
+</LPStrings>

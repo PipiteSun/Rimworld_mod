@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 狂暴 -->
+  <LP_Rage.label>rage</LP_Rage.label>
+  <!-- 陷入狂暴 30 秒：近战伤害 ×(1.15 + 0.1 × 狂怒强度)，受到的利器、钝器伤害（含子弹）×0.7；狂暴中不能使用施法职业的能力。消耗 1 点怒气。野蛮人 1 级。 -->
+  <LP_Rage.description>Fly into a rage for 30 seconds: melee damage ×(1.15 + 0.1 × rage power), sharp and blunt damage taken (including bullets) ×0.7; cannot use spellcasting class abilities while raging. Costs 1 rage. Barbarian level 1.</LP_Rage.description>
+  <!-- 鲁莽攻击 -->
+  <LP_RecklessAttack.label>reckless attack</LP_RecklessAttack.label>
+  <!-- 15 秒内不顾防守地猛攻：近战命中 +20%，自己的近战闪避 −20%。不耗怒气。野蛮人 3 级。 -->
+  <LP_RecklessAttack.description>Attack recklessly for 15 seconds: melee hit +20%, your own melee dodge -20%. Costs no rage. Barbarian level 3.</LP_RecklessAttack.description>
+  <!-- 危险感知 -->
+  <LP_DangerSense.label>danger sense</LP_DangerSense.label>
+  <!-- 被动：没倒地时，射来的子弹有 15% × 狂怒强度（最多 30%）的成功率被完全闪开；爆炸伤害 ×0.5。野蛮人 5 级。 -->
+  <LP_DangerSense.description>Passive: while not downed, incoming bullets have a 15% × rage power (up to 30%) chance to be dodged completely; explosion damage ×0.5. Barbarian level 5.</LP_DangerSense.description>
+  <!-- 野性怒吼 -->
+  <LP_PrimalRoar.label>primal roar</LP_PrimalRoar.label>
+  <!-- 一声野兽般的咆哮：半径 6 × 狂怒强度内的敌人被震慑 10 秒；不是首领的人形和动物另有 40% × 狂怒强度（最多 80%）的成功率吓得逃跑。消耗 1 点怒气。冷却 1 小时。野蛮人 7 级。 -->
+  <LP_PrimalRoar.description>A bestial roar: enemies within radius 6 × rage power are shaken for 10 seconds; non-boss humanlikes and animals also have a 40% × rage power (up to 80%) chance to flee in fear. Costs 1 rage. Cooldown 1 hour. Barbarian level 7.</LP_PrimalRoar.description>
+  <!-- 残暴重击 -->
+  <LP_BrutalCritical.label>brutal critical</LP_BrutalCritical.label>
+  <!-- 被动：近战命中时有 15% 的成功率（狂暴中 25%）打出重击，这一下伤害 ×2。野蛮人 10 级。 -->
+  <LP_BrutalCritical.description>Passive: melee hits have a 15% chance (25% while raging) to land a brutal critical, dealing ×2 damage. Barbarian level 10.</LP_BrutalCritical.description>
+  <!-- 不灭之怒 -->
+  <LP_RelentlessRage.label>relentless rage</LP_RelentlessRage.label>
+  <!-- 被动：狂暴中本应倒下时，靠怒火再撑 10 秒（感觉不到疼痛、不会倒下）；每次狂暴只能撑一次，10 秒后伤势还在就照常倒下。野蛮人 13 级。 -->
+  <LP_RelentlessRage.description>Passive: while raging, when you would fall, fury holds you up for another 10 seconds (no pain, won't fall); only once per rage, and if the injuries remain after 10 seconds you fall as usual. Barbarian level 13.</LP_RelentlessRage.description>
+  <!-- 原初斗士 -->
+  <LP_PrimalChampion.label>primal champion</LP_PrimalChampion.label>
+  <!-- 被动：力量 +4（加在属性上限之后，同武艺天赋），怒气不再随时间衰减。野蛮人 15 级，另需格斗 15 级。 -->
+  <LP_PrimalChampion.description>Passive: Strength +4 (applied after the ability cap, like combat gifts), rage no longer decays over time. Barbarian level 15, also requires Melee 15.</LP_PrimalChampion.description>
+  <!-- 宿敌 -->
+  <LP_FavoredFoe.label>favored enemy</LP_FavoredFoe.label>
+  <!-- 被动：选定一种宿敌（龙、巨人、不死、邪魔、异怪、野兽、神力、人形或机械体；征召时用“选择宿敌”按钮选）。对宿敌伤害 +20%、近战命中 +20%、射击命中 ×1.2。游侠 10 级可以再选一种。游侠 1 级。 -->
+  <LP_FavoredFoe.description>Passive: choose a favored enemy (dragons, giants, undead, fiends, aberrations, beasts, divine, humanlikes or mechanoids; pick with the "choose favored enemy" button when drafted). Against the favored enemy: damage +20%, melee hit +20%, shooting hit ×1.2. At ranger level 10 you may choose another. Ranger level 1.</LP_FavoredFoe.description>
+  <!-- 猎人印记 -->
+  <LP_RangerMark.label>hunter's mark</LP_RangerMark.label>
+  <!-- 标记 30 格内的一个敌人 1 小时：自己对它的伤害 ×(1 + 0.15 × 猎术强度)。不耗资源。游侠 3 级。 -->
+  <LP_RangerMark.description>Mark one enemy within 30 cells for 1 hour: you deal ×(1 + 0.15 × hunter power) damage to it. No resource cost. Ranger level 3.</LP_RangerMark.description>
+  <!-- 野外穿行 -->
+  <LP_Woodstride.label>land's stride</LP_Woodstride.label>
+  <!-- 被动：地形、积雪和植物带来的移动减速少 75%。游侠 5 级。 -->
+  <LP_Woodstride.description>Passive: movement slowdown from terrain, snow and plants reduced by 75%. Ranger level 5.</LP_Woodstride.description>
+  <!-- 齐射 -->
+  <LP_Volley.label>volley</LP_Volley.label>
+  <!-- 朝武器射程内的一点齐射：半径 3 内每个敌人（最多 6 个）各中一发当前武器的必中子弹，伤害 ×0.8 × 猎术强度。需要远程武器，不耗资源。游侠 7 级。 -->
+  <LP_Volley.description>Volley at a point within weapon range: every enemy within radius 3 (up to 6) takes one guaranteed-hit bullet from your current weapon at ×0.8 × hunter power damage. Requires a ranged weapon, no resource cost. Ranger level 7.</LP_Volley.description>
+  <!-- 兽伴 -->
+  <LP_BeastBond.label>beast companion</LP_BeastBond.label>
+  <!-- 被动：主人是自己的动物（同一地图）得到兽伴状态：近战伤害 ×(1.1 + 0.1 × 猎术强度)，移动 ×1.1，护甲 +10% × 猎术强度，对你的宿敌伤害 +20%。另外可以再选一种宿敌。游侠 10 级。 -->
+  <LP_BeastBond.description>Passive: animals whose master is you (on the same map) get the beast companion state: melee damage ×(1.1 + 0.1 × hunter power), movement ×1.1, armor +10% × hunter power, +20% damage against your favored enemy. You may also choose one more favored enemy. Ranger level 10.</LP_BeastBond.description>
+  <!-- 隐匿伏击 -->
+  <LP_HideInPlain.label>hide in plain sight</LP_HideInPlain.label>
+  <!-- 隐入地形 20 秒 × 猎术强度：隐形；下一次攻击伤害 ×1.5，出手后现形。冷却 1 小时。游侠 13 级。 -->
+  <LP_HideInPlain.description>Blend into the terrain for 20 seconds × hunter power: invisible; the next attack deals ×1.5 damage and reveals you. Cooldown 1 hour. Ranger level 13.</LP_HideInPlain.description>
+  <!-- 屠戮宿敌 -->
+  <LP_FoeSlayer.label>foe slayer</LP_FoeSlayer.label>
+  <!-- 被动：宿敌加成翻倍（伤害 +40%、近战命中 +40%、射击命中 ×1.4）。游侠 15 级，另需射击 15 级。 -->
+  <LP_FoeSlayer.description>Passive: favored enemy bonuses doubled (damage +40%, melee hit +40%, shooting hit ×1.4). Ranger level 15, also requires Shooting 15.</LP_FoeSlayer.description>
+  <!-- 偷袭 -->
+  <LP_SneakAttack.label>sneak attack</LP_SneakAttack.label>
+  <!-- 被动：目标倒地、被击晕、正在逃跑、没把你当目标，或者身边 1.5 格内有你的友军时，你的攻击伤害 ×(1 + (0.2 + 0.03 ×（游荡者等级 − 1）) × 诡术强度)；每秒最多一次。近战、远程都算。游荡者 1 级。 -->
+  <LP_SneakAttack.description>Passive: when the target is downed, stunned, fleeing, not targeting you, or has one of your allies within 1.5 cells, your attacks deal ×(1 + (0.2 + 0.03 × (rogue level - 1)) × cunning power) damage; at most once per second. Both melee and ranged count. Rogue level 1.</LP_SneakAttack.description>
+  <!-- 灵巧动作 -->
+  <LP_CunningAction.label>cunning action</LP_CunningAction.label>
+  <!-- 5 秒 × 诡术强度内移动 ×1.6、近战闪避 +30%，用来冲刺或脱离。游荡者 3 级。 -->
+  <LP_CunningAction.description>For 5 seconds × cunning power, movement ×1.6 and melee dodge +30%, for dashing or disengaging. Rogue level 3.</LP_CunningAction.description>
+  <!-- 诡诈闪避 -->
+  <LP_UncannyDodge.label>uncanny dodge</LP_UncannyDodge.label>
+  <!-- 被动：每 10 秒一次，受到的一次远程伤害减半。游荡者 5 级。 -->
+  <LP_UncannyDodge.description>Passive: once every 10 seconds, one instance of ranged damage taken is halved. Rogue level 5.</LP_UncannyDodge.description>
+  <!-- 暗影潜行 -->
+  <LP_ShadowStep.label>shadow step</LP_ShadowStep.label>
+  <!-- 融入阴影 15 秒 × 诡术强度：隐形，攻击后现形（隐形时出手也算偷袭）。游荡者 7 级。 -->
+  <LP_ShadowStep.description>Melt into the shadows for 15 seconds × cunning power: invisible, revealed after attacking (attacking while invisible counts as a sneak attack). Rogue level 7.</LP_ShadowStep.description>
+  <!-- 淬毒刃 -->
+  <LP_PoisonBlade.label>poisoned blade</LP_PoisonBlade.label>
+  <!-- 给武器淬毒 1 分钟：每次命中给目标毒素积累 +6% × 诡术强度（机械体、亡灵无效）。冷却 1 小时。游荡者 10 级。 -->
+  <LP_PoisonBlade.description>Coat your weapon in poison for 1 minute: every hit adds +6% × cunning power toxic buildup to the target (no effect on mechanoids and undead). Cooldown 1 hour. Rogue level 10.</LP_PoisonBlade.description>
+  <!-- 刺杀 -->
+  <LP_Assassinate.label>assassinate</LP_Assassinate.label>
+  <!-- 对相邻敌人结算一次近战：目标没察觉你（没把你当目标，或你正隐形）时这一下伤害 ×(2 + 诡术强度)，否则 ×1.5；偷袭照常叠加。冷却 1 分钟。游荡者 13 级。 -->
+  <LP_Assassinate.description>Resolve a melee hit on an adjacent enemy: if the target hasn't noticed you (isn't targeting you, or you're invisible) this hit deals ×(2 + cunning power) damage, otherwise ×1.5; sneak attack stacks as usual. Cooldown 1 minute. Rogue level 13.</LP_Assassinate.description>
+  <!-- 幸运一击 -->
+  <LP_StrokeOfLuck.label>stroke of luck</LP_StrokeOfLuck.label>
+  <!-- 被动：每天一次，一次本该落空的近战攻击改为命中，并且这一下伤害 ×2。游荡者 15 级，另需格斗 15 级。 -->
+  <LP_StrokeOfLuck.description>Passive: once per day, a melee attack that would miss hits instead, and that hit deals ×2 damage. Rogue level 15, also requires Melee 15.</LP_StrokeOfLuck.description>
+  <!-- 狂战之魂 -->
+  <LP_LegBerserkerSoul.label>berserker soul</LP_LegBerserkerSoul.label>
+  <!-- 传奇被动：狂暴中免疫击晕和精神崩溃，近战冷却 ×0.85。传奇野蛮人。 -->
+  <LP_LegBerserkerSoul.description>Legendary passive: while raging, immune to stuns and mental breaks, melee cooldown ×0.85. Legendary barbarian.</LP_LegBerserkerSoul.description>
+  <!-- 大地崩裂 -->
+  <LP_LegEarthShatter.label>earthshatter</LP_LegEarthShatter.label>
+  <!-- 传奇：一斧劈开大地，半径 5 内的敌人受 30 × 狂怒强度 钝器伤害并被击晕 3 秒。消耗 3 点怒气。冷却 1 天。传奇野蛮人。 -->
+  <LP_LegEarthShatter.description>Legendary: an axe blow splits the earth; enemies within radius 5 take 30 × rage power blunt damage and are stunned for 3 seconds. Costs 3 rage. Cooldown 1 day. Legendary barbarian.</LP_LegEarthShatter.description>
+  <!-- 宿敌克星 -->
+  <LP_LegFoeBane.label>bane of the foe</LP_LegFoeBane.label>
+  <!-- 传奇被动：对宿敌的攻击必定命中，伤害再 +15%。传奇游侠。 -->
+  <LP_LegFoeBane.description>Legendary passive: attacks against your favored enemy always hit and deal +15% more damage. Legendary ranger.</LP_LegFoeBane.description>
+  <!-- 万箭齐发 -->
+  <LP_LegArrowStorm.label>arrow storm</LP_LegArrowStorm.label>
+  <!-- 传奇：朝武器射程内一点倾泻箭雨，半径 6 内每个敌人（最多 10 个）各中 3 发当前武器的必中子弹。需要远程武器。冷却 1 天。传奇游侠。 -->
+  <LP_LegArrowStorm.description>Legendary: rain arrows on a point within weapon range; every enemy within radius 6 (up to 10) takes 3 guaranteed-hit bullets from your current weapon. Requires a ranged weapon. Cooldown 1 day. Legendary ranger.</LP_LegArrowStorm.description>
+  <!-- 影舞 -->
+  <LP_LegShadowDance.label>shadow dance</LP_LegShadowDance.label>
+  <!-- 传奇被动：偷袭不再看条件，每 0.5 秒就能触发一次。传奇游荡者。 -->
+  <LP_LegShadowDance.description>Legendary passive: Sneak Attack no longer needs any condition and can trigger once every 0.5 seconds. Legendary rogue.</LP_LegShadowDance.description>
+  <!-- 死亡印记 -->
+  <LP_LegDeathMark.label>death mark</LP_LegDeathMark.label>
+  <!-- 传奇：标记 30 格内的一个敌人 30 秒，你对它的伤害 ×2；它在印记里死去时，你的游荡者能力全部冷却完毕。冷却 1 天。传奇游荡者。 -->
+  <LP_LegDeathMark.description>Legendary: mark one enemy within 30 cells for 30 seconds; you deal ×2 damage to it; if it dies under the mark, all your rogue abilities finish cooling down. Cooldown 1 day. Legendary rogue.</LP_LegDeathMark.description>
+</LanguageData>

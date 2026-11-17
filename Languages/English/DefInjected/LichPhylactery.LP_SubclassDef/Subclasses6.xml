@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 月亮结社 -->
+  <LP_Sub_CircleMoon.label>Circle of the Moon</LP_Sub_CircleMoon.label>
+  <!-- 月光下的变形者：化为猛兽作战（近战伤害、护甲、移速都提高），兽形下的爪牙穿透护甲，10 级起能化为元素之形灼烧身边的敌人，14 级起变形中伤口不断愈合。 -->
+  <LP_Sub_CircleMoon.description>A shapeshifter under the moonlight: fights as a fierce beast (higher melee damage, armor and move speed), claws and fangs pierce armor in beast form, from level 10 can take elemental form and burn nearby enemies, and from level 14 wounds keep healing while shapeshifted.</LP_Sub_CircleMoon.description>
+  <!-- 勇士 -->
+  <LP_Sub_Champion.label>Champion</LP_Sub_Champion.label>
+  <!-- 把武艺练到极致的战士：武器命中有 10%（15 级 15%）造成双倍伤害，身手比谁都好，多一套战斗姿态，最后伤重时也能自己缓过来。全是被动，不用操作。 -->
+  <LP_Sub_Champion.description>A fighter who has perfected martial skill: weapon hits have a 10% (15% at level 15) chance of double damage, more athletic than anyone, an extra fighting stance, and finally recovers on their own even when badly hurt. All passive, no input needed.</LP_Sub_Champion.description>
+  <!-- 奉献之誓 -->
+  <LP_Sub_Devotion.label>Oath of Devotion</LP_Sub_Devotion.label>
+  <!-- 最经典的圣武士：圣化武器附加光耀伤害，驱散亡灵与邪魔，守护身边的人不被魅惑恐吓，净化友军身上的毒与恐惧，最后披上圣光之轮。 -->
+  <LP_Sub_Devotion.description>The most classic paladin: sacred weapon adds radiant damage, turns away undead and fiends, protects those nearby from charm and intimidation, purifies poison and fear from allies, and finally wreathes themself in a holy nimbus.</LP_Sub_Devotion.description>
+  <!-- 复仇之誓 -->
+  <LP_Sub_Vengeance.label>Oath of Vengeance</LP_Sub_Vengeance.label>
+  <!-- 追讨恶徒的圣武士：立誓追讨一个敌人、吓退它的同伙，追杀誓仇目标时越打越快，最后化身复仇天使。 -->
+  <LP_Sub_Vengeance.description>A paladin who hunts down evildoers: swears a vow against an enemy, scares off its accomplices, strikes ever faster while chasing the vowed target, and finally becomes an avenging angel.</LP_Sub_Vengeance.description>
+  <!-- 战争领域 -->
+  <LP_Sub_WarDomain.label>War Domain</LP_Sub_WarDomain.label>
+  <!-- 战神的牧师：穿甲持械也能施法，引导神力让下一轮攻击必中，为友军祝福武器，武器命中附加神圣打击，最后化身战神。引导神力每天 1 次（6 级 2 次、18 级 3 次）。 -->
+  <LP_Sub_WarDomain.description>A cleric of the war god: casts even in armor with weapons, Channel Divinity makes the next round of attacks always hit, blesses allies' weapons, weapon hits add divine strike, and finally becomes an avatar of battle. Channel Divinity once per day (twice at level 6, three times at 18).</LP_Sub_WarDomain.description>
+  <!-- 知识领域 -->
+  <LP_Sub_KnowledgeDomain.label>Knowledge Domain</LP_Sub_KnowledgeDomain.label>
+  <!-- 学识之神的牧师：研究和学习更快，引导神力借来先贤的手艺，读出敌人的心思让它破绽百出，神术更强，最后用过往之景震住一片敌人。 -->
+  <LP_Sub_KnowledgeDomain.description>A cleric of the god of knowledge: researches and learns faster, Channel Divinity borrows the skill of the ancients, reads an enemy's thoughts to expose its every weakness, divine magic is stronger, and finally stuns groups of enemies with visions of the past.</LP_Sub_KnowledgeDomain.description>
+  <!-- 坟墓领域 -->
+  <LP_Sub_GraveDomain.label>Grave Domain</LP_Sub_GraveDomain.label>
+  <!-- 守在生死之间的牧师：不惧死灵之力，引导神力标记一个敌人让它受到的下一击加倍，濒死的友军得到双倍治疗，神术更强，最后身边有人死去就化为生者的疗愈。 -->
+  <LP_Sub_GraveDomain.description>A cleric standing between life and death: unafraid of necrotic power, Channel Divinity marks an enemy so its next hit taken is doubled, dying allies receive double healing, divine magic is stronger, and finally deaths nearby turn into healing for the living.</LP_Sub_GraveDomain.description>
+  <!-- 咒剑宗主 -->
+  <LP_Sub_Hexblade.label>The Hexblade</LP_Sub_Hexblade.label>
+  <!-- 与影界的一柄有灵之剑立约：诅咒一个敌人让它更脆、杀死它就回血，穿甲持械作战，披上咒甲，身边浮现幽影劈砍敌人，最后成为诅咒大师。 -->
+  <LP_Sub_Hexblade.description>A pact with a sentient sword of the Shadowfell: curse an enemy to make it more fragile and heal when it dies, fight in armor with weapons, don armor of hexes, a spectral shadow appears to slash enemies, and finally become a master of hexes.</LP_Sub_Hexblade.description>
+  <!-- 魔能祈唤 -->
+  <LP_Sub_Hexblade.choices.0.label>eldritch invocations</LP_Sub_Hexblade.choices.0.label>
+  <!-- 苦痛魔能爆 | 魔鬼视觉 | 魔能长矛 -->
+  <LP_Sub_Hexblade.choices.0.options.0>agonizing blast</LP_Sub_Hexblade.choices.0.options.0>
+  <LP_Sub_Hexblade.choices.0.options.1>devil's sight</LP_Sub_Hexblade.choices.0.options.1>
+  <LP_Sub_Hexblade.choices.0.options.2>eldritch spear</LP_Sub_Hexblade.choices.0.options.2>
+  <!-- 每道魔能爆 + 魅力调整值 × 2 伤害（至少 +2）。 | 暗处视觉 +30%，不受魔法黑暗影响。 | 魔能爆射程 24 → 36 格。 -->
+  <LP_Sub_Hexblade.choices.0.tips.0>Each eldritch blast beam + Charisma modifier × 2 damage (at least +2).</LP_Sub_Hexblade.choices.0.tips.0>
+  <LP_Sub_Hexblade.choices.0.tips.1>Sight in darkness +30%, unaffected by magical darkness.</LP_Sub_Hexblade.choices.0.tips.1>
+  <LP_Sub_Hexblade.choices.0.tips.2>Eldritch Blast range 24 → 36 cells.</LP_Sub_Hexblade.choices.0.tips.2>
+  <!-- 天界宗主 -->
+  <LP_Sub_Celestial.label>The Celestial</LP_Sub_Celestial.label>
+  <!-- 与上界的天使立约：治愈之光医治友军，光耀之魂让治疗和圣焰更强，天界抗性给大家护盾，光耀之怒烧灼敌人，最后倒下时在灼热复仇中站起。 -->
+  <LP_Sub_Celestial.description>A pact with an angel of the upper planes: healing light mends allies, radiant soul strengthens healing and holy flame, celestial resilience shields everyone, radiant wrath scorches enemies, and finally you rise again in searing vengeance when you fall.</LP_Sub_Celestial.description>
+  <!-- 魔能祈唤 -->
+  <LP_Sub_Celestial.choices.0.label>eldritch invocations</LP_Sub_Celestial.choices.0.label>
+  <!-- 苦痛魔能爆 | 魔鬼视觉 | 魔能长矛 -->
+  <LP_Sub_Celestial.choices.0.options.0>agonizing blast</LP_Sub_Celestial.choices.0.options.0>
+  <LP_Sub_Celestial.choices.0.options.1>devil's sight</LP_Sub_Celestial.choices.0.options.1>
+  <LP_Sub_Celestial.choices.0.options.2>eldritch spear</LP_Sub_Celestial.choices.0.options.2>
+  <!-- 每道魔能爆 + 魅力调整值 × 2 伤害（至少 +2）。 | 暗处视觉 +30%，不受魔法黑暗影响。 | 魔能爆射程 24 → 36 格。 -->
+  <LP_Sub_Celestial.choices.0.tips.0>Each eldritch blast beam + Charisma modifier × 2 damage (at least +2).</LP_Sub_Celestial.choices.0.tips.0>
+  <LP_Sub_Celestial.choices.0.tips.1>Sight in darkness +30%, unaffected by magical darkness.</LP_Sub_Celestial.choices.0.tips.1>
+  <LP_Sub_Celestial.choices.0.tips.2>Eldritch Blast range 24 → 36 cells.</LP_Sub_Celestial.choices.0.tips.2>
+  <!-- 死灵学派 -->
+  <LP_Sub_Necromancy.label>School of Necromancy</LP_Sub_Necromancy.label>
+  <!-- 巫妖的学问：杀死敌人就收割它的生命力，从尸体里拉起仆役，不惧死灵之力，最后能把敌对的亡灵收为己用。 -->
+  <LP_Sub_Necromancy.description>The lore of liches: harvests the life force of enemies you kill, raises servants from corpses, unafraid of necrotic power, and finally takes hostile undead under your control.</LP_Sub_Necromancy.description>
+  <!-- 预言学派 -->
+  <LP_Sub_Divination.label>School of Divination</LP_Sub_Divination.label>
+  <!-- 看见未来的法师：每天有几次失败的豁免可以重来，奥术法术冷却更短，睁开第三只眼看清一切，最后预兆更多。 -->
+  <LP_Sub_Divination.description>A wizard who sees the future: a few failed saves each day can be redone, arcane spell cooldowns are shorter, the third eye opens to see everything, and finally more portents.</LP_Sub_Divination.description>
+  <!-- 防护学派 -->
+  <LP_Sub_Abjuration.label>School of Abjuration</LP_Sub_Abjuration.label>
+  <!-- 守护者的学问：奥术守护吸收伤害，还能投射到友军身上，心智与护甲更稳，最后一切伤害都减一成半。 -->
+  <LP_Sub_Abjuration.description>The lore of protectors: arcane wards absorb damage and can be projected onto allies, mind and armor grow steadier, and finally all damage is reduced by 15%.</LP_Sub_Abjuration.description>
+  <!-- 幻术学派 -->
+  <LP_Sub_Illusion.label>School of Illusion</LP_Sub_Illusion.label>
+  <!-- 骗过眼睛的法师：身形晃动难以命中，变化幻象吓跑一片敌人，濒死时留下幻影自己闪到别处，最后幻象成真——镜影更多更久。 -->
+  <LP_Sub_Illusion.description>A wizard who fools the eye: a wavering form hard to hit, malleable illusions scare off groups of enemies, leaves an illusion behind and flickers elsewhere when about to fall, and finally illusions become reality: more mirror images that last longer.</LP_Sub_Illusion.description>
+  <!-- 风流剑客 -->
+  <LP_Sub_Swashbuckler.label>Swashbuckler</LP_Sub_Swashbuckler.label>
+  <!-- 潇洒的决斗者：步法轻快，单挑时下手更狠，一句话就能让敌人放下敌意，优雅的策略，最后成为决斗大师。 -->
+  <LP_Sub_Swashbuckler.description>A dashing duelist: light footwork, fiercer in single combat, a word that makes enemies lay down their hostility, elegant maneuvers, and finally a master duelist.</LP_Sub_Swashbuckler.description>
+  <!-- 魂刃 -->
+  <LP_Sub_Soulknife.label>Soulknife</LP_Sub_Soulknife.label>
+  <!-- 用念力凝成刀刃的游荡者：灵能刀刃加强近战，灵能之力护住心神，把魂刃掷向远处的敌人，灵能帷幕让自己难以捉摸，最后撕裂敌人的心灵。 -->
+  <LP_Sub_Soulknife.description>A rogue who congeals blades from psychic force: psychic blades strengthen melee, psionic power guards the mind, soul blades are hurled at distant enemies, the psychic veil makes you elusive, and finally you rend enemies' minds.</LP_Sub_Soulknife.description>
+</LanguageData>

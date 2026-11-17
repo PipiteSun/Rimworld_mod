@@ -12,7 +12,7 @@ namespace LichPhylactery {
  // 机械体、非血肉、死灵造物、巫妖免疫；已经倒地的目标不再加（所以怎么打都打不死）。恢复见 HediffComp_SubdueRecover。
  public static class Nonlethal {
   public const float Divisor=40f,Cap=1.3f,DownedAt=1f,ArmorWeight=.75f;
-  public const string ImmuneText="免疫制伏",DownedText="已经昏迷了";
+  public static readonly string ImmuneText="免疫制伏".Loc(),DownedText="已经昏迷了".Loc();
   public static readonly string[] Weapons={"LP_SubduingCudgel","LP_NetCrossbow","LP_SleepBow","LP_SleepStaff"};
   static readonly HashSet<string> weaponSet=new HashSet<string>(Weapons);
   static readonly DefRef<HediffDef> subdued=new DefRef<HediffDef>("LP_Subdued");
@@ -101,8 +101,8 @@ namespace LichPhylactery {
   }
   public override string CompTipStringExtra{get{
    int now=Find.TickManager.TicksGame;
-   if(!Recovering(now))return "再过 "+(lastHitTick+Props.graceTicks-now).ToStringTicksToPeriod()+" 开始消退";
-   return "每小时消退 "+Props.perHour.ToStringPercent();
+   if(!Recovering(now))return "再过 ".Loc()+(lastHitTick+Props.graceTicks-now).ToStringTicksToPeriod()+" 开始消退".Loc();
+   return "每小时消退 ".Loc()+Props.perHour.ToStringPercent();
   }}
   public override void CompExposeData(){Scribe_Values.Look(ref lastHitTick,"lpLastSubdueTick",-1);}
  }

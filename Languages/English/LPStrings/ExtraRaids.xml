@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（ExtraRaids.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>额外袭击</zh><en>Extra raids</en></s>
+  <s><zh>不管用哪个说书人，每隔下面设的天数额外来一次敌对袭击（派系和来法随机，DND 派系也在里面）。第 15 天以前不来。不影响说书人自己安排的袭击。</zh><en>Whatever storyteller is used, an extra hostile raid comes every so many days set below (random faction and arrival method, DND factions included). None before day 15. Doesn't affect the raids the storyteller schedules itself.</en></s>
+  <s><zh>额外袭击间隔：</zh><en>Extra raid interval: </en></s>
+  <s><zh>额外袭击强度：</zh><en>Extra raid strength: </en></s>
+  <s><zh>%（乘当前威胁点数）</zh><en>% (multiplies current threat points)</en></s>
+</LPStrings>

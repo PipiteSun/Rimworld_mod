@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 契约强度 -->
+  <LP_PactPower.label>pact power</LP_PactPower.label>
+  <!-- 邪术师能力的强度倍率：0.5 +（社交、智识里较高的等级）/20，另加冒险者魅力调整值 × 0.05 与 (熟练加值 − 2) × 0.02、邪术师等职业等级合计每比 1 高 1 级 +2%（最多 +40%）。邪魔宗主的邪术师另有异界契约（九狱或深渊宗主）时，邪术师能力 ×1.25。 -->
+  <LP_PactPower.description>Warlock ability power multiplier: 0.5 + (the higher of Social and Intellectual level) / 20, plus adventurer Charisma modifier × 0.05 and (proficiency bonus - 2) × 0.02, +2% for each level the combined warlock-type class levels exceed 1 (up to +40%). A Fiend-patron warlock who also has an otherworldly pact (Nine Hells or Abyss patron) gets warlock abilities ×1.25.</LP_PactPower.description>
+</LanguageData>

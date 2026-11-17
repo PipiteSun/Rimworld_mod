@@ -87,16 +87,16 @@ namespace LichPhylactery {
    effect=effect??Effects.Where(e=>e!="hue" || p.story!=null).RandomElement();
    var color=new Color(.75f,.6f,1f);
    switch(effect){
-    case "invisible":Items.Give(p,"LP_PotionInvisibility",InvisibleTicks);Items.Mote(p,"隐形了！",color);break;
-    case "haste":Items.Give(p,"LP_SpeedBurst",HasteTicks);Items.Mote(p,"加速！",color);break;
+    case "invisible":Items.Give(p,"LP_PotionInvisibility",InvisibleTicks);Items.Mote(p,"隐形了！".Loc(),color);break;
+    case "haste":Items.Give(p,"LP_SpeedBurst",HasteTicks);Items.Mote(p,"加速！".Loc(),color);break;
     case "teleport":{
      var map=p.Map;if(map==null)return null;
      var cells=GenRadial.RadialCellsAround(p.Position,TeleportCells,true).Where(c=>c.InBounds(map) && c.DistanceTo(p.Position)>=3f && c.Standable(map) && c.GetFirstPawn(map)==null && p.CanReach(c,PathEndMode.OnCell,Danger.Deadly)).ToList();
      if(cells.Count==0)return null;
-     Races124.Blink(p,cells.RandomElement());Items.Mote(p,"被传送了！",color);break;}
-    case "bloom":Items.Give(p,"LP_WildMagicBloom");p.needs?.mood?.thoughts?.memories?.TryGainMemory(DefDatabase<ThoughtDef>.GetNamed("LP_WildMagicBloomed"));Items.Mote(p,"头上开花了",new Color(1f,.7f,.85f));break;
-    case "hiccup":p.needs?.mood?.thoughts?.memories?.TryGainMemory(DefDatabase<ThoughtDef>.GetNamed("LP_WildMagicHiccup"));Items.Mote(p,"嗝！",color);break;
-    case "hue":if(p.story==null)return null;Items.Give(p,"LP_WildMagicHue");Items.Mote(p,"变色了！",color);break;
+     Races124.Blink(p,cells.RandomElement());Items.Mote(p,"被传送了！".Loc(),color);break;}
+    case "bloom":Items.Give(p,"LP_WildMagicBloom");p.needs?.mood?.thoughts?.memories?.TryGainMemory(DefDatabase<ThoughtDef>.GetNamed("LP_WildMagicBloomed"));Items.Mote(p,"头上开花了".Loc(),new Color(1f,.7f,.85f));break;
+    case "hiccup":p.needs?.mood?.thoughts?.memories?.TryGainMemory(DefDatabase<ThoughtDef>.GetNamed("LP_WildMagicHiccup"));Items.Mote(p,"嗝！".Loc(),color);break;
+    case "hue":if(p.story==null)return null;Items.Give(p,"LP_WildMagicHue");Items.Mote(p,"变色了！".Loc(),color);break;
     default:return null;
    }
    return effect;
@@ -106,10 +106,10 @@ namespace LichPhylactery {
   public static bool CommsReady(Map map)=>map!=null && map.listerBuildings.allBuildingsColonist.Any(b=>b.def==ThingDefOf.CommsConsole && (b.TryGetComp<CompPowerTrader>()?.PowerOn??true));
   public static string AllyBlocked(Map map){
    var c=Factions.Colony;
-   if(c==null || c.defeated || !Factions.Enabled(c))return "没有费伦拓荒同盟";
-   if(c.HostileTo(Faction.OfPlayer))return "同盟和你敌对";
-   if(c.PlayerGoodwill<AllyGoodwillMin)return "同盟好感不足 "+AllyGoodwillMin+"（现在 "+c.PlayerGoodwill+"）";
-   if(!CommsReady(map))return "需要一台通电的通讯台";
+   if(c==null || c.defeated || !Factions.Enabled(c))return "没有费伦拓荒同盟".Loc();
+   if(c.HostileTo(Faction.OfPlayer))return "同盟和你敌对".Loc();
+   if(c.PlayerGoodwill<AllyGoodwillMin)return "同盟好感不足 ".Loc()+AllyGoodwillMin+"（现在 ".Loc()+c.PlayerGoodwill+"）".Loc();
+   if(!CommsReady(map))return "需要一台通电的通讯台".Loc();
    return null;
   }
   public static bool Choose(Building_TowerWreck w,string choice){
@@ -130,7 +130,7 @@ namespace LichPhylactery {
   public static Lord SendSalvage(Building_TowerWreck w){
    w.salvageSent=true;var map=w.Map;if(map==null)return null;
    bool ally=w.salvageBy=="ally";var f=ally?Factions.Colony:Factions.Hostile;
-   if(f==null || f.defeated || (ally && f.HostileTo(Faction.OfPlayer))){Messages.Message((ally?"同盟的拆除队":"塞伊的回收队")+"没有来。",new LookTargets(w),MessageTypeDefOf.NeutralEvent,false);return null;}
+   if(f==null || f.defeated || (ally && f.HostileTo(Faction.OfPlayer))){Messages.Message((ally?"同盟的拆除队".Loc():"塞伊的回收队".Loc())+"没有来。".Loc(),new LookTargets(w),MessageTypeDefOf.NeutralEvent,false);return null;}
    float points=ally?AllyPoints:StorytellerUtility.DefaultThreatPointsNow(map);
    points=Math.Max(points,f.def.MinPointsToGeneratePawnGroup(PawnGroupKindDefOf.Combat)*1.05f);
    var pawns=PawnGroupMakerUtility.GeneratePawns(new PawnGroupMakerParms{groupKind=PawnGroupKindDefOf.Combat,tile=map.Tile,faction=f,points=points},false).ToList();
@@ -138,8 +138,8 @@ namespace LichPhylactery {
    foreach(var p in pawns)GenSpawn.Spawn(p,CellFinder.RandomClosewalkCellNear(entry,map,6),map);
    var stand=CellFinder.RandomClosewalkCellNear(w.Position,map,4);
    w.salvageLord=LordMaker.MakeNewLord(f,new LordJob_TowerSalvage(w,stand,ally),map,pawns);
-   if(ally)Find.LetterStack.ReceiveLetter("同盟拆除队",f.Name+"派来了一队人拆走法师塔残骸。拆完以后他们会把一半东西留给你。",LetterDefOf.PositiveEvent,new LookTargets(pawns.Cast<Thing>()),f);
-   else Find.LetterStack.ReceiveLetter("塞伊回收队",f.Name+"派来了一支回收队，要把法师塔残骸搬回塞伊。"+(w.autoThay?"守卫一直守着残骸，你也没表态，他们就自己来了。":"")+"\n\n让他们待满一小时，残骸就会被搬走；打退他们，残骸就还是你的。",LetterDefOf.ThreatBig,new LookTargets(pawns.Cast<Thing>()),f);
+   if(ally)Find.LetterStack.ReceiveLetter("同盟拆除队".Loc(),f.Name+"派来了一队人拆走法师塔残骸。拆完以后他们会把一半东西留给你。".Loc(),LetterDefOf.PositiveEvent,new LookTargets(pawns.Cast<Thing>()),f);
+   else Find.LetterStack.ReceiveLetter("塞伊回收队".Loc(),f.Name+"派来了一支回收队，要把法师塔残骸搬回塞伊。".Loc()+(w.autoThay?"守卫一直守着残骸，你也没表态，他们就自己来了。".Loc():"")+"\n\n让他们待满一小时，残骸就会被搬走；打退他们，残骸就还是你的。".Loc(),LetterDefOf.ThreatBig,new LookTargets(pawns.Cast<Thing>()),f);
    return w.salvageLord;
   }
   // 回收队在残骸边待满时间：还有能动的人就搬走残骸（同盟留一半产出、好感 +10）。
@@ -150,9 +150,9 @@ namespace LichPhylactery {
    w.salvaged=true;w.Destroy(DestroyMode.Vanish);
    if(ally){
     var loot=Loot(true);Drop(loot,pos,map);
-    Factions.ChangeGoodwillExact(Factions.Colony,AllyGoodwill,"帮忙拆走法师塔残骸");
-    Find.LetterStack.ReceiveLetter("残骸拆走了","同盟的拆除队拆走了法师塔残骸，留下了一半东西："+string.Join("、",loot.Select(t=>t.LabelCap))+"。同盟好感 +"+AllyGoodwill+"。",LetterDefOf.PositiveEvent,new LookTargets(pos,map));
-   }else Find.LetterStack.ReceiveLetter("残骸被回收","塞伊的回收队把法师塔残骸搬走了。",LetterDefOf.NeutralEvent,new LookTargets(pos,map));
+    Factions.ChangeGoodwillExact(Factions.Colony,AllyGoodwill,"帮忙拆走法师塔残骸".Loc());
+    Find.LetterStack.ReceiveLetter("残骸拆走了".Loc(),"同盟的拆除队拆走了法师塔残骸，留下了一半东西：".Loc()+string.Join("、".Loc(),loot.Select(t=>t.LabelCap))+"。同盟好感 +".Loc()+AllyGoodwill+"。".Loc(),LetterDefOf.PositiveEvent,new LookTargets(pos,map));
+   }else Find.LetterStack.ReceiveLetter("残骸被回收".Loc(),"塞伊的回收队把法师塔残骸搬走了。".Loc(),LetterDefOf.NeutralEvent,new LookTargets(pos,map));
    return true;
   }
  }
@@ -180,9 +180,9 @@ namespace LichPhylactery {
    }
    if(!letter)return;
    var l=(Letter_TowerCrash)LetterMaker.MakeLetter(DefDatabase<LetterDef>.GetNamed("LP_TowerChoiceLetter"));
-   l.Label="法师塔坠落";l.wreck=this;l.lookTargets=new LookTargets(this);l.relatedFaction=f;
-   l.Text="一座塞伊法师塔从天上摔了下来，砸在殖民地外！残骸周围有"+guards.Count+"个红袍骷髅守着，半径"+TowerCrash.WildMagicRadius+"格内野魔法四溢：附近的人和动物会时不时隐形、加速、被传送、头上开花、打嗝或者变色（都不致命）。\n\n"
-    +"自己拆：打掉守卫后拆除残骸，能得到卷轴、钢、玻璃钢，可能还有奇物。\n等塞伊回收：5天后塞伊派回收队来搬走它（会和你交战，打退他们残骸就还是你的）。\n通知同盟：需要通电的通讯台和同盟好感≥"+TowerCrash.AllyGoodwillMin+"。3天后同盟来人拆走，留下一半东西，同盟好感+"+TowerCrash.AllyGoodwill+"。\n\n不选就当作自己处理；但守卫5天后还在的话，塞伊会自己来回收。";
+   l.Label="法师塔坠落".Loc();l.wreck=this;l.lookTargets=new LookTargets(this);l.relatedFaction=f;
+   l.Text="一座塞伊法师塔从天上摔了下来，砸在殖民地外！残骸周围有".Loc()+guards.Count+"个红袍骷髅守着，半径".Loc()+TowerCrash.WildMagicRadius+"格内野魔法四溢：附近的人和动物会时不时隐形、加速、被传送、头上开花、打嗝或者变色（都不致命）。\n\n".Loc()
+    +"自己拆：打掉守卫后拆除残骸，能得到卷轴、钢、玻璃钢，可能还有奇物。\n等塞伊回收：5天后塞伊派回收队来搬走它（会和你交战，打退他们残骸就还是你的）。\n通知同盟：需要通电的通讯台和同盟好感≥".Loc()+TowerCrash.AllyGoodwillMin+"。3天后同盟来人拆走，留下一半东西，同盟好感+".Loc()+TowerCrash.AllyGoodwill+"。\n\n不选就当作自己处理；但守卫5天后还在的话，塞伊会自己来回收。".Loc();
    Find.LetterStack.ReceiveLetter(l);
   }
   public override void Destroy(DestroyMode mode=DestroyMode.Vanish){
@@ -198,8 +198,8 @@ namespace LichPhylactery {
   public override string GetInspectString(){
    var s=base.GetInspectString();var lines=new List<string>();
    if(!s.NullOrEmpty())lines.Add(s);
-   lines.Add("野魔法范围："+TowerCrash.WildMagicRadius+"格");
-   if(choice=="thay" || choice=="ally" || autoThay){if(!salvageSent && salvageTick>=0)lines.Add((salvageBy=="ally"?"同盟拆除队":"塞伊回收队")+"还有 "+((salvageTick-Find.TickManager.TicksGame)/(float)GenDate.TicksPerDay).ToString("0.#")+" 天到达");else if(salvageSent)lines.Add((salvageBy=="ally"?"同盟拆除队":"塞伊回收队")+"已经出发");}
+   lines.Add("野魔法范围：".Loc()+TowerCrash.WildMagicRadius+"格".Loc());
+   if(choice=="thay" || choice=="ally" || autoThay){if(!salvageSent && salvageTick>=0)lines.Add((salvageBy=="ally"?"同盟拆除队".Loc():"塞伊回收队".Loc())+"还有 ".Loc()+((salvageTick-Find.TickManager.TicksGame)/(float)GenDate.TicksPerDay).ToString("0.#")+" 天到达".Loc());else if(salvageSent)lines.Add((salvageBy=="ally"?"同盟拆除队".Loc():"塞伊回收队".Loc())+"已经出发".Loc());}
    return string.Join("\n",lines);
   }
   public override void ExposeData(){
@@ -239,10 +239,10 @@ namespace LichPhylactery {
   public override IEnumerable<DiaOption> Choices{get{
    if(Closed || wreck==null || wreck.Destroyed){yield return Option_Close;yield break;}
    bool done=wreck.choice!="none";
-   var self=Choice("自己拆",()=>TowerCrash.Choose(wreck,"self"));if(done)self.Disable("已经决定了");yield return self;
-   var thay=Choice("等塞伊回收（"+TowerCrash.ThayDays+"天后）",()=>TowerCrash.Choose(wreck,"thay"));if(done)thay.Disable("已经决定了");yield return thay;
+   var self=Choice("自己拆".Loc(),()=>TowerCrash.Choose(wreck,"self"));if(done)self.Disable("已经决定了".Loc());yield return self;
+   var thay=Choice("等塞伊回收（".Loc()+TowerCrash.ThayDays+"天后）".Loc(),()=>TowerCrash.Choose(wreck,"thay"));if(done)thay.Disable("已经决定了".Loc());yield return thay;
    var why=TowerCrash.AllyBlocked(wreck.Map);
-   var ally=Choice("通知同盟（"+TowerCrash.AllyDays+"天后）",()=>TowerCrash.Choose(wreck,"ally"));if(done)ally.Disable("已经决定了");else if(why!=null)ally.Disable(why);yield return ally;
+   var ally=Choice("通知同盟（".Loc()+TowerCrash.AllyDays+"天后）".Loc(),()=>TowerCrash.Choose(wreck,"ally"));if(done)ally.Disable("已经决定了".Loc());else if(why!=null)ally.Disable(why);yield return ally;
    yield return Option_Postpone;
   }}
   DiaOption Choice(string text,Action act)=>new DiaOption(text){action=()=>{act?.Invoke();Resolve();},resolveTree=true};

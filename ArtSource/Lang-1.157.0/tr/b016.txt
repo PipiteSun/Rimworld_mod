@@ -1,0 +1,219 @@
+s03648	Max force: 60 as a wyrmling, +10 per stage, 100 as a great wyrm; recovers 5 per day naturally.
+s03649	5 dragon age stages: wyrmling → juvenile (30 days + hoard 5000 silver) → adult (60 days + 20000 silver) → ancient (120 days + 60000 silver) → great wyrm (240 days + 150000 silver); only days on the hoard's map count, and thresholds can be adjusted in mod settings.
+s03650	Each stage: actual body size and appearance +5%, melee hit +3%, hunger rate slightly higher (an adult dragon takes about 3 days to go from 500% to 225%: wyrmling 57.3%, great wyrm 68.8%).
+s03651	Dragon stomach and dragon slumber (adult): max food 500%; only seeks food below 225% (still counts as fed, no mood penalty), hungry below 100%, ravenous below 40%; once it starts eating it eats up to 475%, at most 3 meals at a time. Food consumption from gene metabolism is offset.
+s03652	Hatchling appetite: before adulthood (babies, children) food consumption from gene metabolism is offset, dragon age adds no appetite, hunger rate stays at 100%, and stomach capacity and hunger thresholds are the same as an ordinary person's.
+s03653	Deflection field: ranged attacks have a 15% chance to be deflected, +5% per stage, capped at 35% (active with force ≥20).
+s03654	Blur (from juvenile): 20% chance to dodge when attacked; displacement (from ancient): raised to 50%. Great wyrms are permanently invisible. All of these stop working when force reaches zero.
+s03655	Unaffected by EMP: not stunned by EMP, and deflection, dodging and invisibility don't fail due to EMP.
+s03656	The origin of the force dragonborn. Provides the "force" resource bar and "dragon age" growth: force recovers 5 per day naturally and 1 per meal of meat, mainly gained by shattering enemy shields with the breath or devouring unequipped shields. Dragon age starts at wyrmling and advances when the days spent on the hoard's map and the hoard's wealth both reach the threshold, up to 5 stages. Dragon age unlocks force breath, devour shield, resilient sphere, wall of force, force cage and telekinetic sphere, and grants deflection field, blur, displacement and the great wyrm's permanent invisibility. Force dragonborn are unaffected by EMP: not stunned by it, and deflection, dodging and invisibility don't fail due to EMP.
+s03657	force dragon heart
+s03658	Pure force flowing inside a force dragonborn. All active abilities cost force rather than psyfocus and are unaffected by psychic sensitivity. Below 20 force the deflection field turns off; at zero, blur, displacement and invisibility also stop working.
+s03659	force
+s03660	Completely immune to force damage.
+s03661	Force dragonborn are immune to all force effects, including other force dragonborn's breath. Vanilla has no force damage; this gene mainly balances things internally, and force damage like this mod's magic missiles also falls into this category.
+s03662	force immunity
+s03663	Locked inside an indestructible sphere of force: those inside can't get out, and attacks from outside can't get in.
+s03664	resilient sphere
+s03665	A transparent, indestructible temporary wall of force that blocks both bullets and people. Dissipates on its own when time is up.
+s03666	wall of force
+s03667	Someone sold the scales I shed! I remember every single one.
+s03668	scales sold
+s03669	Lock one target inside an indestructible sphere of force for 10 seconds: those inside can't get out, and attacks from outside can't get in. Can trap enemies or protect your own wounded. Unlocked at juvenile, costs 20 force.
+s03670	Lock the target in a resilient sphere and drag the whole sphere to the caster with telekinesis. Good for dragging enemies into your own force cage, or pulling the wounded back from the line of fire. Unlocked at great wyrm, costs 40 force.
+s03671	telekinetic sphere
+s03672	Raise a transparent, indestructible wall of force perpendicular to the cast direction at the target that blocks bullets and people, lasting 20 seconds. 5 cells for adults, 7 for ancients, 9 for great wyrms. Unlocked at adult, costs 30 force.
+s03673	frost giant warrior
+s03674	frost giant reaver
+s03675	Frost giants braid their hair into two thick braids with ice beads and bone rings at the tips.
+s03676	frosted braids
+s03677	A giant race living on ice fields and snowy mountains; the bloodline is passed on to children. Adult frost giants are 2.0 times the size of an ordinary person, with pale blue-grey skin like frozen earth and frost-white hair braided and crusted with ice. They don't get hypothermia even at minus eighty degrees, stride through snow as usual, and winter wolves follow them like hounds; what they fear most is fire, and they can't stand even a little warm weather. Frost giants are born raiders; beating off a raid and seeing the storeroom piled with captured arms and armor is their greatest joy. In the giant ordning, frost giants rank below fire giants, and the two races have been sworn enemies for thousands of years.
+s03678	Inheritable giant race. 2× giant body, extremely cold-hardy, immune to frostbite, hypothermia and chill, no slowdown in snow, tames winter wolves, fears fire and heat, loves loot.
+s03679	frost giant
+s03680	Giant lineage: frost giant (rank 4 of the ordning, below fire giants).
+s03681	Body size grows with age, reaching ×2.0 as an adult (drawn ×1.4).
+s03682	Giant-body rules: adult total health ×150%, melee damage ×130% (adjustable in mod settings; health is still ×150% when off).
+s03683	Giant stomach: max food rises with body size, ×200% as an adult.
+s03684	Move speed: ×85%.
+s03685	Never gets hypothermia or frostbite; unaffected by "chilled to the bone" and "frost slowed".
+s03686	The ice field bloodline of frost giants, inherited with the race. Adults are 2.0 times the size of an ordinary person (drawn 1.4×, children grow with age); the bigger the body, the stronger the health and melee (giant-body rules: adult health ×150%, melee ×130%); long strides, but not fast. Frost giants don't fear cold: min comfortable temperature -80°C, no hypothermia or frostbite, and the ice devil's chill and the winter wolf bite's frost slow don't work on them. They don't care about nudity and can wear ordinary clothes.
+s03687	frost giant origin
+s03688	A frost giant's body can't take fire and can't stand warm weather: fire damage taken ×150%, max comfortable temperature -22°C.
+s03689	fire-shy
+s03690	Frost giants are born raiders. After beating off a raid, mood +5 for 3 days (spoils of war); for each 1000 silver of market value of weapons and armor on the map not made by the colony (scattered or stored, not worn), mood +1, up to +4.
+s03691	heart of plunder
+s03692	The storeroom has some arms and armor captured from enemies.
+s03693	a few spoils
+s03694	The captured arms and armor keep piling up.
+s03695	plenty of spoils
+s03696	Looted weapons and armor all over the place; what a fine camp.
+s03697	heaps of spoils
+s03698	Spoils piled as high as a mountain; even the old home on the ice fields wasn't this rich.
+s03699	the raider's treasure mountain
+s03700	No slowdown from snow (doesn't affect pathfinding detour decisions).
+s03701	Strides even through knee-deep snow: snow doesn't slow movement. Doesn't feel cold working in ice and snow (no "cold" mood).
+s03702	snow walker
+s03703	We beat off the enemy! The weapons and armor they left behind are all ours now.
+s03704	spoils of war
+s03705	Winter wolves know a frost giant's scent. Taming winter wolves ×300% success, arctic wolves and timber wolves ×150% (up to 100%); winter wolves don't turn on you when taming fails or they're hurt by accident. Winter wolves whose master is this frost giant get melee damage ×115% and move speed ×110%.
+s03706	master of winter wolves
+s03707	White hair tinged with blue, as if covered in frost.
+s03708	frost-white hair
+s03709	The tribe's ice fortress was breached by fire giants, and two frost giants fled south with two winter wolves until they finally stopped on an unfamiliar tundra.\n\nEach frost giant has a bonded winter wolf; they carry short bows, spears, pemmican and leather. The ember clan's fire giants still remember this feud (goodwill -40).\n\nIce sheet or tundra recommended: frost giants don't fear cold and move fast in snow, but can't stand warm weather and greatly fear fire.
+s03710	children of the ice fields
+s03711	Two frost giants.
+s03712	The ice fortress walls fell under the fire giants' forge hammers. You headed south with two winter wolves, and the blizzard held back your pursuers.\n\nThe snow here isn't deep enough and the sky isn't cold enough, but it beats the fire of the forge. The winter wolves sniff at new prey beside you; it's time for this frozen land to hear the horn of winter.
+s03713	Two frost giants and two bonded winter wolves. Fear heat and fire; suited to ice sheet or tundra.
+s03714	A frost giant's pale blue-grey skin, like frozen earth.
+s03715	permafrost skin
+s03716	permafrost
+s03717	Enhance a weapon or apparel that is already +5 or higher and has an enhancement target chosen by one more level, up to +10. Each attempt uses 4 adamantine and 10 gold. Success: +6 60%, +7 50%, +8 40%, +9 30%, +10 20%; skill and arcane focus stone bonuses as for the lower tiers. Failure from +6 upward drops the gear one level (never below +5).
+s03718	Enchanting gear.
+s03719	enchant (+6 to +10)
+s03720	Enhance a weapon or apparel with an enhancement target chosen by one level, up to +5. Each attempt uses 4 mithril and 25 silver. Success: +1 100%, +2 95%, +3 90%, +4 80%, +5 70%; +1.5% for each level the average of Intellectual and Crafting exceeds 8 (up to +18%), another +5% when linked to an arcane focus stone. Failure only loses the materials. The gear must be on the ground or in a storage zone; worn gear won't be taken for enhancement.
+s03721	enchant (+1 to +5)
+s03722	The bloodline of elemental air. Carriers get move speed ×110% and can "wind leap" on the wind to a visible standable spot within 8 cells (can't pass through walls, costs no psyfocus).
+s03723	gale bloodline
+s03724	Mining yield: +10% (max 100%).
+s03725	The bloodline of elemental earth. Carriers get mining speed ×130%, mining yield +10%, and skin as resistant to blunt blows as rock (blunt armor +15%), but walk a little slower. No active ability.
+s03726	stone bloodline
+s03727	The bloodline of elemental fire. Carriers can't be ignited and take half fire damage (not immune); heat-tolerant but cold-sensitive. Can use "Spark" to ignite a target within 6 cells.
+s03728	blaze bloodline
+s03729	Flick a spark from a fingertip to ignite a visible target within 6 cells (a small fire). Targets that can't be ignited are unaffected. Cooldown 12 hours; halved when used by a genie or by a blaze bloodline wearing a blaze charm.
+s03730	spark
+s03731	Summon a stream of water at a target within 8 cells: puts out all fires in a 3×3 area (5×5 for a tide bloodline wearing a tide charm), and enemies in it are drenched, move speed ×80% for 10 seconds. Cooldown 1 day.
+s03732	water stream
+s03733	Moving in water: no slowdown in shallow water, marsh and shallow ocean (deep water is still impassable).
+s03734	The bloodline of elemental water. Carriers aren't slowed by shallow water, marsh and shallow ocean, and pathfinding no longer avoids water; more cold-tolerant than others. Can use "Water stream" to put out fires in a 3×3 area at the target and drench enemies in it (move speed ×80%, 10 seconds).
+s03735	tide bloodline
+s03736	Leap on a gust of wind to a visible standable spot within 8 cells. Can't pass through walls, costs no psyfocus. Cooldown 8 hours.
+s03737	wind leap
+s03738	Descendants of elemental air, with pale grey-blue skin and slender builds that walk with a breeze. Air genasi are fast and can leap on the wind to a visible spot 8 cells away; but their frames are thin and they're weak in melee. The bloodline is passed on to children.
+s03739	Inheritable. Move speed +10%, can "wind leap" to a visible spot within 8 cells; slender, poor at melee.
+s03740	air genasi
+s03741	Counts as a genasi (racial relations, faction goodwill, elemental charm crafting).
+s03742	A bloodline left by an ancestor who joined with an elemental being. Anyone with this gene counts as a genasi; the bloodline's specific power comes from another "elemental bloodline" gene (one of blaze, tide, stone, gale).
+s03743	elemental bloodline
+s03744	Descendants of elemental earth, with grey-brown skin like weathered rock; blunt blows land on them like on stone. Earth genasi are born to find ore and dig fast and clean, but walk heavily and learn slowly. No active ability. The bloodline is passed on to children.
+s03745	Inheritable. Fast mining, high yield, blunt armor +15%; slightly slower, slow learners.
+s03746	earth genasi
+s03747	Human descendants with elemental fire in their veins. Fire genasi have skin like burnt ochre that's always warm to the touch; they can't be ignited, take half fire damage, and can flick sparks from their fingertips to ignite things within 6 cells. The price is fearing the cold and a fiery temper. The bloodline is passed on to children.
+s03748	Inheritable. Can't be ignited, half fire damage, heat-tolerant, can cast "Spark"; cold-sensitive, hot-tempered.
+s03749	fire genasi
+s03750	Descendants of elemental water, with skin of a blue-green sheen and hair tips that are always wet. Water genasi walk through shallow water, marsh and shallow ocean as if on flat ground, and can summon a stream of water to put out fires and drench enemies. Their bodies are more delicate than others'. The bloodline is passed on to children.
+s03751	Inheritable. No slowdown in water, fairly cold-tolerant, can cast "Water stream" to put out fires and drench enemies; delicate constitution.
+s03752	water genasi
+s03753	That fire giant carries the same fire as me. We're distant kin.
+s03754	distant kin of flame
+s03755	That fire genasi's blood is hot, like molten iron in a forge.
+s03756	blood kin of the forge fire
+s03757	That fire giant steams wherever it goes; just getting close makes my skin feel like it's cracking.
+s03758	scorching fire giant
+s03759	fire genasi on fire giants
+s03760	fire giants on fire genasi
+s03761	water genasi on fire giants
+s03762	A fire genasi's ochre-red skin, the color of dying embers.
+s03763	ember skin
+s03764	ochre-red
+s03765	An air genasi's pale grey-blue skin, like an overcast sky.
+s03766	sky skin
+s03767	pale grey-blue
+s03768	An earth genasi's grey-brown skin, like weathered sandstone.
+s03769	rock skin
+s03770	grey-brown
+s03771	A water genasi's blue-green skin with a sheen like the water's surface.
+s03772	tide skin
+s03773	blue-green
+s03774	Drenched to the bone by a stream of water, clothes heavy: move speed ×80%.
+s03775	drenched
+s03776	An elemental genie bound in a lamp. Genies are born with one of four elemental bloodlines: the efreeti of fire, the marid of water, the dao of earth and the djinni of air, with skin color and abilities following the bloodline. Rub the lamp and the genie appears to become your colonist, granting a wish every 60 days; when a genie falls it doesn't die but returns to the lamp to sleep for 15 days. If the lamp is sold, stolen or destroyed, the genie vanishes in smoke a day later.
+s03777	Legendary race, not inheritable. Body size ×1.5, ageless, random elemental bloodline (ability cooldowns halved), one wish every 60 days; never truly dies, returns to the lamp when downed.
+s03778	genie
+s03779	Genies have lived for thousands of years and their bodies no longer age: biological age stops after 18. Genies still need to eat and sleep.
+s03780	genie agelessness
+s03781	A wish granted by a genie: the sky stays clear these few days.
+s03782	genie's clear sky
+s03783	Lamp binding: the genie leaves if the lamp is out of your hands for a full day.
+s03784	Downed returns to the lamp: doesn't die, leaves no corpse, the lamp is dim for 15 days.
+s03785	Elemental bloodline ability cooldowns ×50%.
+s03786	The body of a genie bound by a lamp. The genie remembers its lamp: a day after the lamp leaves your hands (sold, stolen, destroyed), the genie vanishes in smoke. A genie doesn't die when it falls and leaves no corpse; it turns into blue smoke and returns to the lamp, and after the lamp is dim for 15 days the same genie can be rubbed out again (name, skills and bloodline unchanged, injuries cleared). Genies can't be recruited or captured; elemental bloodline ability cooldowns are halved. Wears a golden circlet on the head.
+s03787	genie origin
+s03788	Just granted a wish, and the genie's power hasn't recovered: work speed halved, elemental bloodline abilities temporarily unavailable, mood not great either.
+s03789	weary
+s03790	Granting a wish drained my strength. Mortals always want more.
+s03791	weary after a wish
+s03792	The genie's tall figure: actual body size ×150%, drawn ×130%. Giant-body rules give the genie health ×125% and melee ×115%; giant stomach: max food ×150%.
+s03793	genie build
+s03794	Genies can grant wishes: once every 60 days, pick one of six wishes: harvest, peace, healing, wealth, clear sky, epiphany. After a wish the genie is weary for 15 days.
+s03795	Ask the genie to grant a wish (a choice window pops up):\nHarvest: every crop on the map ripens at once;\nPeace: no hostile raids land on this map for 15 days;\nHealing: heals the wounds and diseases of all colonists on the map (addictions excluded);\nWealth: 2000 silver appears at the genie's feet;\nClear sky: the weather clears and stays that way for 5 days;\nEpiphany: each colonist gets +2 levels in a random skill.\nCooldown 60 days; canceling in the choice window doesn't use the cooldown. After a wish the genie is weary for 15 days: work speed halved, bloodline abilities unavailable, mood -5.
+s03796	make a wish
+s03797	grant wish
+s03798	Rubbing TargetA.
+s03799	With axe or with craft, no one in the clan can match me. I am the chief of this clan.
+s03800	clan chief
+s03801	Apparel sewn and forged for giants; finally no more squeezing into scraps of mortal cloth.
+s03802	fitting giant apparel
+s03803	fitting giant apparel (two pieces)
+s03804	Giant apparel from head to toe; walking like a true giant.
+s03805	fitting giant apparel (three pieces)
+s03806	There are other giants here; I can finally talk freely in the giant tongue.
+s03807	tongue of kin
+s03808	There are giants of higher rank than me here. Every giant knows their place in the ordning, and that's reassuring.
+s03809	ordered ordning
+s03810	There are giants of lower rank than me here; they ought to listen to me.
+s03811	commanding the giants
+s03812	Frost giants from the ice fields; our two races have fought for thousands of years. Living with these types makes even the hearth fire go cold.
+s03813	sworn enemy (frost giant)
+s03814	We've been through so many days together; that frost giant isn't so bad after all.
+s03815	enemy turned friend (frost giant)
+s03816	Ash-covered fire giants who think they rank above us in the ordning. Living with these types turns even the snow to mud.
+s03817	sworn enemy (fire giant)
+s03818	We've been through so many days together; that fire giant isn't so bad after all.
+s03819	enemy turned friend (fire giant)
+s03820	fire giants on frost giants
+s03821	frost giants on fire giants
+s03822	Pass through the Astral Plane and instantly appear on an open standable spot within 8 cells (no line of sight needed, but can't land in unexplored areas). Costs 5% psyfocus with a psylink. Cooldown 12 hours.
+s03823	astral jump
+s03824	Githyanki can briefly step into the Astral Plane and walk out somewhere else within 8 cells. Githyanki with a psylink spend 5% psyfocus each time; without a psylink it's limited only by cooldown. Cooldown 12 hours.
+s03825	A lich of this colony on the same map: mood +3.
+s03826	A lich as warden persuading: resistance reduced per talk ×130%.
+s03827	Githyanki have served the undying lich-queen for generations. When the colony has a lich, githyanki get mood +3; when a lich personally persuades githyanki prisoners, each talk lowers resistance 30% more.
+s03828	devotee of the lich-queen
+s03829	Against mind flayers: damage ×125%, melee hit chance +10%.
+s03830	Mind flayer tadpole transformation speed ×50% (multiplies with the slowdown from mind resistance).
+s03831	The githyanki's ancestors were slaves of the mind flayers, and the hatred is carved into their bloodline. +25% damage against mind flayers, +10% melee hit chance; mind resistance +30%, and mind flayer tadpoles in the brain transform half as fast.
+s03832	The colony has an undying lich, like the shadow of the lich-queen watching over us.
+s03833	glory of the lich
+s03834	The grey-yellow-green skin unique to the gith bloodline, like parchment long out of the sun.
+s03835	gith skin
+s03836	grey-yellow
+s03837	Descendants of a race once enslaved by mind flayers; the bloodline is passed on to children. Githyanki are gaunt and pointy-eared, with sickly grey-yellow-green skin; naturally psychically sensitive, excellent swordsmen, able to teleport short distances through the Astral Plane. They have been enemies of mind flayers for generations and strike them especially hard, and tadpoles struggle to take root in their brains. Githyanki worship the undying lich-queen, revere liches, and are more easily swayed when a lich tries to recruit them. They are arrogant, belligerent and poor at socializing.
+s03838	Inheritable psionic swordsman race. Psychically sensitive, strong melee, astral jump; sworn enemies of mind flayers, revere liches; belligerent, poor socializers.
+s03839	githyanki
+s03840	psychic scar
+s03841	treated
+s03842	bandaged
+s03843	A wound left by a silver sword's psychic shock; the nerves around it feel scalded.
+s03844	destroyed by psychic force
+s03845	psychic burn
+s03846	Mind flayers enslaved my ancestors. Living with one of those things, I want to draw my sword every night.
+s03847	living with a mind flayer
+s03848	Descendants of the slaves who escaped, always holding silver swords. The hivemind dislikes them.
+s03849	living with githyanki
+s03850	githyanki on mind flayers
+s03851	mind flayers on githyanki
+s03852	{0}'s mind was torn apart by a silver sword's psychic shock.
+s03853	silver sword psionics
+s03854	desc->A tome handed down from ancient ruins, with power between its pages enough to change the reader themself.
+s03855	desc->The emblem on the cover still glows faintly, as if waiting for the next reader.
+s03856	title->Book of Charisma
+s03857	title->Manual of Constitution
+s03858	title->Manual of Dexterity
+s03859	title->Book of Intelligence
+s03860	title->Manual of Strength
+s03861	title->Book of Wisdom
+s03862	A court bard's secret manual of oratory and poise. After 30 hours of study in total, the reader gets Charisma +2 and Charisma cap +2 (each ability can only be gained from a tome once), and the book then crumbles to ash.
+s03863	book of charisma
+s03864	An endurance manual dictated by a dwarven veteran and written down by an apprentice. After 30 hours of study in total, the reader gets Constitution +2 and Constitution cap +2 (each ability can only be gained from a tome once), and the book then crumbles to ash.
+s03865	manual of constitution
+s03866	A manual of footwork handed down through generations of the rogues' guild. After 30 hours of study in total, the reader gets Dexterity +2 and Dexterity cap +2 (each ability can only be gained from a tome once), and the book then crumbles to ash.

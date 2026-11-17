@@ -1,0 +1,326 @@
+s09413	Sets how much effect each ability modifier point (each +2 ability) gives. 100% is the original value; lower makes ability gaps smaller, and 0% means abilities have no numeric effect.\n\nLinear effects scale proportionally: melee damage / move speed / psychic sensitivity per point\s
+s09414	, part health (Constitution)\s
+s09415	, research speed per Intelligence point\s
+s09416	, class power\s
+s09417	 (arcane / gift power\s
+s09418	).\nCarrying-table effects (carrying capacity, mining, shooting accuracy, work speed, medicine, social, etc.) take the same power of the multiple per +2 ability: 100% about ×1.32 (×4 per +10), 50% about ×1.15, 10% about ×1.03.\n\nMultiplies with "ability effect strength" above; doesn't change ability values, caps, feat requirements or saves. Beasts' wild levels are unaffected.
+s09419	Racial affinity
+s09420	Each race has strong and weak abilities: a strong ability's whole linear effect (melee damage, psychic sensitivity, part health, class power, etc.) ×1.5 (legendary races ×1.75, multiplying with talent traits; not applied when the effect is below ×1), and the multiplier of other effects like carrying capacity and mining ×1.5; each positive modifier point of a weak ability ×0.5 (negative modifiers aren't multiplied); each point of a strong legend attribute ×1.5 (legendary races ×1.75), and all legend attributes of humans ×1.1. Only changes effects, not ability values, caps or feat requirements. Each entry on the "Adventurer" tab is marked "strong / weak".\nWhen off, all races are ×1 (talent traits as usual).
+s09421	Manually assign starting abilities (point buy)
+s09422	When on, the six abilities of new colonists (starting, joining, recruited) are assigned by the player on the "Adventurer" tab with 5e point buy: base values 8-15, 9-13 cost 1 each, 14 / 15 cost 2 each, race and background bonuses counted separately. Prefilled with the standard array recommended from skills (15/14/13/12/10/8 = 27 points), locked after confirming. Once per person only. When off, the recommended assignment is used directly. Pawns generated before 1.76.0 don't have this.
+s09423	Starting point buy:\s
+s09424	 (5e standard 27)
+s09425	Colonists auto-assign ability points
+s09426	When on, colonists automatically improve abilities on reaching levels 4, 8, 12 and 16: the class's main ability first (with VPE installed and a DND class), otherwise the highest one. When off, assign points manually on the "Adventurer" tab or in the level-up letter. Enemies and visitors are always automatic.
+s09427	Isekai coexistence mode
+s09428	 (Isekai not detected)
+s09429	On by default when Isekai RPG Leveling is detected: adventurer levels, XP and ability points work as usual, but the numeric effects of the six abilities are off (left to Isekai's own stats, to avoid stacking). Turn this off to let both stat systems apply at once. Without Isekai this does nothing.
+s09430	Enemy adventurer levels
+s09431	Humanlike enemies in raids and DND events get adventurer levels from raid points: each person's share of points ÷ 45 + 1 level, ±2 variation; leaders +3, elite pawn kinds +2 to +5; story bosses level 12-18. Higher-level enemies take more points each (+3% per level), so there are fewer of them. Visitors and caravans level 1-3.\nThis one switch is used with or without Isekai coexistence mode (no longer split in two since 1.63.0).
+s09432	Enemy level cap: colony's highest level +\s
+s09433	When on, raiding enemies' adventurer levels don't exceed the colony's highest adventurer level + N (story bosses aren't limited). Prevents meeting high-level enemies early on.
+s09434	Level difference defense
+s09435	For each level the attacker is below the target, melee and ranged hit chance ×(1 − 2%), up to −50% (10 levels lower ×0.8, 25 or more lower ×0.5). Levels are adventurer levels (including legend levels 21-40); animals use wild levels; mechanoids, turrets and legendary monsters have no level and don't participate.
+s09436	Pain scales with part health
+s09437	Pain from wounds and missing parts ÷ part health multiplier: someone with ×2 part health feels only half the pain from the same injury, so they go down from pain later. Adventurers use their part health multiplier from level, Constitution, legend health etc.; animals use wild levels; legendary monsters unchanged. When off, pain is vanilla, based only on wound size.
+s09438	Total health scales with part health
+s09439	Vanilla's lethal damage threshold (death at total wounds of 150 × body size health multiplier), health percentage and bleeding rate ignore the part health multiplier, so however thick part health is, they still die first of "overwhelming injuries" or blood loss. When on: lethal threshold × part health multiplier, health % lost to wounds and total bleed rate ÷ part health multiplier. Adventurers use their part health multiplier from level, Constitution, legend health etc.; animals use wild levels; legendary monsters unchanged. When off, vanilla.
+s09440	legendary race
+s09441	common race
+s09442	, strong ×
+s09443	): strong abilities\s
+s09444	, weak\s
+s09445	; strong legend attributes\s
+s09446	 (all legend attributes ×
+s09447	Human|human||||
+s09448	LP_Elf|high elf|智敏||远程 学习|
+s09449	LP_Dwarf|mountain dwarf|力体||工作 承受|
+s09450	LP_HalfOrc|half-orc|力|智|近战 血量|
+s09451	LP_ForceDragon|force dragonborn|力魅||血量 承受|L
+s09452	Lich|lich|智|魅|心灵 学习|L
+s09453	LP_FireGiant|fire giant|体力|敏|血量 近战|L
+s09454	LP_FrostGiant|frost giant|体力|敏|血量 承受|L
+s09455	LP_StormGiant|storm giant|力感||血量 心灵|L
+s09456	LP_CloudGiant|cloud giant|魅力||血量 心灵|L
+s09457	LP_Ettin|ettin|体|智|血量 近战|L
+s09458	LP_EttinKin|ettin|体|智|血量 近战|L
+s09459	LP_Cyclops|cyclops|力|敏|血量 工作|L
+s09460	LP_CyclopsKin|cyclops|力|敏|血量 工作|L
+s09461	LP_Titan|titan|力魅||血量 心灵|L
+s09462	LP_AwakenedTitan|awakened titan|力魅||血量 心灵|L
+s09463	LP_Troll|troll|体|智|回复 血量|
+s09464	LP_Ogre|ogre|力|智|血量 近战|
+s09465	LP_Minotaur|minotaur|力体||近战 承受|
+s09466	LP_Loxodon|loxodon|感|敏|承受 工作|
+s09467	LP_MindFlayer|mind flayer|智|力|心灵 学习|L
+s09468	LP_HalfIllithid|half-illithid|智|力|心灵 学习|
+s09469	LP_Githyanki|githyanki|敏智||心灵 近战|
+s09470	LP_GenasiFire|fire genasi|体||近战 心灵|
+s09471	LP_GenasiWater|water genasi|体感||回复 心灵|
+s09472	LP_GenasiEarth|earth genasi|体力||承受 血量|
+s09473	LP_GenasiAir|air genasi|体敏||远程 心灵|
+s09474	LP_Aarakocra|aarakocra|敏|力|远程 回复|
+s09475	LP_Genie|genie|魅智||心灵 回复|L
+s09476	LP_Oozefolk|oozefolk|体|魅|回复 承受|
+s09477	LP_Aasimar|aasimar|魅感||心灵 回复|L
+s09478	LP_Tiefling|tiefling|魅智||心灵 近战|
+s09479	LP_Marilith|marilith|敏力||近战 血量|L
+s09480	LP_MarilithKin|marilith|敏力||近战 血量|L
+s09481	LP_IceDevil|ice devil|力||近战 承受|L
+s09482	LP_Balor|balor|力||近战 承受|L
+s09483	LP_Cambion|cambion|魅敏|感|心灵 近战|
+s09484	LP_Succubus|succubus|魅敏||心灵 回复|
+s09485	LP_Dretch|dretch|体|智|承受 工作|
+s09486	LP_Barlgura|barlgura|力|智|近战 血量|
+s09487	LP_Hezrou|hezrou|体力|敏|承受 血量|
+s09488	LP_Nabassu|nabassu|力体||近战 血量|
+s09489	LP_ShadowDemon|shadow demon|敏||近战 心灵|
+s09490	LP_WoodElf|wood elf|敏感||远程 回复|
+s09491	LP_Drow|drow|敏魅||近战 心灵|
+s09492	LP_HillDwarf|hill dwarf|体感||承受 血量|
+s09493	LP_HalflingLightfoot|lightfoot halfling|敏魅||回复 工作|
+s09494	LP_HalflingStout|stout halfling|敏体||承受 回复|
+s09495	LP_RockGnome|rock gnome|智体||工作 学习|
+s09496	LP_ForestGnome|forest gnome|智敏||学习 回复|
+s09497	LP_DeepGnome|deep gnome|智力||承受 学习|
+s09498	LP_HalfElf|half-elf|魅敏||学习 远程|
+s09499	LP_Kobold|kobold|敏智|力|工作 远程|
+s09500	LP_Goblin|goblin|敏体||远程 回复|
+s09501	LP_Hobgoblin|hobgoblin|体智||远程 承受|
+s09502	LP_Bugbear|bugbear|力敏||近战 血量|
+s09503	 strong
+s09504	 weak
+s09505	Racial affinity is off
+s09506	;\s
+s09507	 ×1.5, the larger of this and the race multiplier
+s09508	; trait:\s
+s09509	, the larger of this and the race multiplier
+s09510	Racial strength: whole ×
+s09511	Racial weakness: modifier ×
+s09512	Paragon: whole ×
+s09513	Talent: whole ×
+s09514	: whole ×
+s09515	; contrarian: weakness counts as ×1
+s09516	Racial strength (
+s09517	): melee damage / psychic sensitivity / part health / class power and other linear effects all ×
+s09518	 (multiplies with talent; not applied when the effect is below ×1)
+s09519	Racial weakness (
+s09520	): positive modifiers ×
+s09521	 (negative modifiers aren't multiplied)
+s09522	Racial affinity (
+s09523	): this entry ×1
+s09524	\nTalent (
+s09525	, the larger): the whole effect of melee damage / psychic sensitivity / part health / class power ×
+s09526	 (not the larger of this and race; the two multiply; not applied when the effect is below ×1)
+s09527	\nLinear effects in total: whole ×
+s09528	 (race ×
+s09529	 × talent ×
+s09530	\nOther ability effects (carrying capacity, mining, research, etc.) multiplier ×
+s09531	 (the larger of race and talent; not applied when the ability is below 10; weakness never makes the multiplier below ×1)
+s09532	): gain per point of this entry ×
+s09533	Legendary adventurer:\s
+s09534	 was already a level 20 adventurer, and has completed a true adventure. From today on, people call them a "legendary adventurer".\n\nWhole colony mood +3 (walking with a legend);\s
+s09535	 social impact +10%, prisoners, visitors and traders +10 opinion of them.\n\nWhen the legend falls, whole colony mood −6 (10 days).
+s09536	\n\nLegend levels 21-40 unlocked:\s
+s09537	 accumulated XP is settled immediately, with 2 legend attribute points per level (spent on the "Adventurer" tab).
+s09538	, the colony's legendary adventurer, has fallen.
+s09539	 should have died, but the boon of fate kept them alive on the ground (wounds have stopped bleeding).
+s09540	 days until it can take effect again.
+s09541	: veteran\s
+s09542	 has downed\s
+s09543	 humanlike enemies (milestone\s
+s09544	).\n\nGained adventurer XP\s
+s09545	 (30% of what the next level needs).
+s09546	\n\nThousand kills: gained 1 epic boon point; another boon can be chosen.
+s09547	\n\nLegend attribute points +
+s09548	Nemesis champion:\s
+s09549	 has heard of the colony's adventurers and sent its champion\s
+s09550	adventurer\s
+s09551	, feat\s
+s09552	) arrives with\s
+s09553	 followers to challenge you.\n\nWhoever kills the champion gains 50% of the XP for their next level and a magic item.
+s09554	Nemesis champion fallen
+s09555	 killed the nemesis champion.
+s09556	\n\nGained adventurer XP\s
+s09557	\n\nThe champion left behind\s
+s09558	challenge rating CR\s
+s09559	 (Hundred Battles Awakening detected, off by default)
+s09560	Adventurer kill milestones
+s09561	Sends a letter when a colonist's humanlike kills reach 25, 50, 100, 250, 500 and 1000, and grants a one-time 30% of the XP needed for the next level; 1000 kills also give 1 epic boon point (a second boon can be chosen).\nOff by default when "Hundred Battles Awakening" is detected, to avoid two milestone systems overlapping.
+s09562	When the colony's highest adventurer level is ≥ 12, every 45-60 days a hostile faction sends a champion (level = colony's highest + 2, max 20, with feats and an epic boon) and a few followers. The killer gains 50% of the XP for their next level and a magic item.\nOff by default when "Hundred Battles Awakening" is detected.
+s09563	treatment and surgery
+s09564	trading
+s09565	construction completed
+s09566	research completed
+s09567	survived being downed
+s09568	: off
+s09569	today\s
+s09570	; total\s
+s09571	· Treatment and surgery: successful surgery +
+s09572	, treating\s
+s09573	 patient who would bleed to death within hours +
+s09574	· Trading: the negotiator gets, by total deal value (both buying and selling), per\s
+s09575	 silver +
+s09576	· Construction completed: work ÷\s
+s09577	, at least\s
+s09578	, ×\s
+s09579	 (floors don't count;\s
+s09580	· Research completed: research cost ×\s
+s09581	, split among participants by contribution (uncapped; total\s
+s09582	· Survived being downed: getting back up after being downed by enemies +
+s09583	 + enemy combat power ×\s
+s09584	 (once every 3 days
+s09585	, another\s
+s09586	[DND Rimlands] Surgery XP:\s
+s09587	[DND Rimlands] Trading XP:\s
+s09588	[DND Rimlands] Research XP:\s
+s09589	Non-combat XP multiplier:\s
+s09590	Adventurer XP from these five sources (treatment and surgery, trading, construction completed, research completed, survived being downed) is multiplied by this (then by the adventurer XP multiplier). Daily caps are counted before the multiplier. 0 = all five off.
+s09591	XP: treatment and surgery
+s09592	Successful surgery (not failed) gives the surgeon +30; treating a patient who would bleed to death within 6 hours +15. At most 150 per person per day.
+s09593	XP: trading
+s09594	For each completed trade, the negotiator gets +1 per 100 silver of total deal value (buying and selling both count, not including the silver itself). At most 100 per person per day. Gifts don't count.
+s09595	XP: construction completed
+s09596	For finishing a building, whoever completes it gets work ÷ 1000 (at least 2). Floors don't count. At most 100 per person per day.
+s09597	XP: research completed
+s09598	When a research project completes, research cost × 5% is split among those who took part (still alive and in the colony) in proportion to the research each did. Uncapped.
+s09599	XP: survived being downed
+s09600	Downed by enemies and later getting back up alive: +50 + combat power of the enemy who downed you × 0.5. At most once every 3 days per person; self-inflicted injuries and friendly fire don't count.
+s09601	+1 to any one ability (added to the currently highest one)
+s09602	 or\s
+s09603	 (added to the currently higher one)
+s09604	No adventurer level
+s09605	Needs\s
+s09606	Has\s
+s09607	 or wears a holy symbol
+s09608	[DND Rimlands] Sentinel free attack failed:\s
+s09609	Remaining\s
+s09610	Doesn't have the Inspiring Leader feat.
+s09611	Today's uses are spent (restored at midnight).
+s09612	Only\s
+s09613	 can pick this
+s09614	Already picked\s
+s09615	 (only one of this kind)
+s09616	Pierce!
+s09617	Spellcasting interrupted
+s09618	Charisma 13 or Artistic 6
+s09619	Needs Charisma 13 or Artistic 6
+s09620	Intelligence or Wisdom 13
+s09621	Needs Intelligence or Wisdom 13
+s09622	Crafting or Medicine 6
+s09623	Needs Crafting or Medicine 6
+s09624	Intelligence or Wisdom 13, has\s
+s09625	Melee or Shooting 6
+s09626	Needs Melee or Shooting 6
+s09627	calmed down
+s09628	No herbal medicine on them or on the map.
+s09629	completed the ritual
+s09630	: "
+s09631	" is off cooldown
+s09632	, the next cast triggers no cooldown and adds no psyfocus cost.
+s09633	Can only calm colonists who are having a mental break.
+s09634	No abilities are on cooldown.
+s09635	Gnomish ingenuity (mechanical): ×
+s09636	shield bash
+s09637	shove
+s09638	butt strike
+s09639	spellcasting class
+s09640	 level (spellcasting bonus)
+s09641	Spellcasting bonus feats: one each at class levels 1, 5, 10 and 15 of wizard, cleric, druid, sorcerer, warlock and bard, free and not taking an ability score improvement; they can only be spell feats (War Caster, Spell Sniper, Magic Initiate, Elemental Adept, Ritual Caster, Telepathic, Fey Touched, Resilient Mind, Healer, Lucky, Alert, Tough, Observant, Skill Expert, Musician, Actor, and the spellcasting class's own class feats).
+s09642	Needs to be crafting at a workbench
+s09643	Dexterity or Intelligence 13
+s09644	Needs Dexterity or Intelligence 13
+s09645	Strength or Intelligence 13
+s09646	Needs Strength or Intelligence 13
+s09647	Already learned Master Artisan
+s09648	Needs Master Artisan first
+s09649	Doesn't have the\s
+s09650	 matching\s
+s09651	 feat.
+s09652	Runesmith (forge)
+s09653	Master alchemist (alchemy table)
+s09654	: ×
+s09655	Master fortifier (repair): ×
+s09656	health
+s09657	melee
+s09658	ranged
+s09659	recovery
+s09660	endurance
+s09661	work
+s09662	 (affinity ×
+s09663	 (multiplies with level growth, Constitution and giant frame)
+s09664	Melee damage\s
+s09665	Shooting hit\s
+s09666	 (at 25 cells; accuracy per cell ×
+s09667	Psychic sensitivity\s
+s09668	Wound healing\s
+s09669	, immunity gain speed\s
+s09670	Damage taken\s
+s09671	 (−1.5% per effective point, added directly; at least 5% of the original damage is taken)
+s09672	Global work speed\s
+s09673	Global learning\s
+s09674	No points spent yet.
+s09675	"Legend levels" is turned off in settings: legend attribute points have no effect for now.
+s09676	No adventurer level.
+s09677	Only legendary adventurers can use this.
+s09678	No legend attribute points spent yet.
+s09679	 crushed the legendary reforging stone: refunded\s
+s09680	 legend attribute points
+s09681	; respend them on the "Adventurer" tab.
+s09682	; automatically respent per settings.
+s09683	Legend levels 21-40
+s09684	Adventurer XP at level 20 keeps accumulating as usual; after becoming a legendary adventurer (level 20 + DND milestone), you can keep leveling to 40, and accumulated XP is settled immediately. Levels 21-40 give no ability score improvements or feats, but 2 legend attribute points per level (eight attributes, uncapped); VPE path points 1 per 2 levels.\nLegend attribute points aren't multiplied by "ability effect strength" and still apply in Isekai coexistence mode. When off, no more legend levels are gained and legend attribute points have no effect for now (points are kept).
+s09685	Colonists auto-spend legend attribute points
+s09686	When on, colonists' legend attribute points are spent automatically: martial classes melee + health, spellcasting classes psychic + health, everyone else work + learning (needs VPE DND classes to tell apart). When off, spend them manually on the "Adventurer" tab. Enemies are always automatic.
+s09687	Enemies can reach legend levels
+s09688	Story bosses, nemesis champions and raid leaders can reach levels 21-40 (automatically becoming legendary and spending points): leaders get +1 level per 60 points of their share above the level 20 threshold; story bosses count 20% of current threat points; nemesis champions = colony's highest level + 2. Needs "enemy adventurer levels" on too.\nThis one switch is used with or without Isekai coexistence mode (no longer split in two since 1.63.0).
+s09689	Doesn't have this style
+s09690	This slot isn't unlocked yet
+s09691	Pick the earlier slot first
+s09692	Already this style
+s09693	Another slot already has this style
+s09694	Adapting to a new style; can't change again
+s09695	grapple
+s09696	Class
+s09697	Abilities
+s09698	XP\s
+s09699	 (max level)
+s09700	maxed ("legend levels" is turned off in settings)
+s09701	maxed, needs to become a legendary adventurer
+s09702	portal
+s09703	god-possessed boss
+s09704	dragon duel
+s09705	wizard tower
+s09706	Larloch's errands
+s09707	each
+s09708	council of gods
+s09709	each divinity level
+s09710	 (still\s
+s09711	Level 20 is maxed: complete a DND event milestone (kill milestones don't count) to become a legendary adventurer and unlock legend levels 21-40, and accumulated XP is settled immediately. XP keeps accumulating as usual (now\s
+s09712	XP sources:
+s09713	· Kill / assist: enemy combat power ×\s
+s09714	, split by share of damage dealt (solo-killing an enemy of combat power 100 =\s
+s09715	· Defending against raids: raid points ×\s
+s09716	, split evenly among those who fought (1000 points, 2 people = each\s
+s09717	· Completing quests: quest points ×\s
+s09718	 (whoever took the quest), other colonists at home ×\s
+s09719	· DND milestones (once per person each):\s
+s09720	\s\s\s
+s09721	, completed\s
+s09722	   ✓ defeated legendary monsters ×
+s09723	· Study scrolls: per hour read\s
+s09724	; wandering mentor: per lesson\s
+s09725	· Adventurer's manual:\s
+s09726	surpassed (trains only to\s
+s09727	each\s
+s09728	, trains up to\s
+s09729	· Daily work: off
+s09730	· Daily work: per\s
+s09731	 skill XP +
+s09732	 (today\s
+s09733	 in full, after that ×
+s09734	· Kill milestones (
+s09735	% of the next level, now\s
+s09736	):\s
+s09737	   Legend: 500 / 1000 kills each +
+s09738	 legend attribute points

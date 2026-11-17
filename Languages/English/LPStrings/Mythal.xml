@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（Mythal.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>龙祭司的真龙</zh><en>the dragon priest's true dragon</en></s>
+  <s><zh>塞伊红袍大法师</zh><en>Thayan red-robed archmage</en></s>
+  <s><zh>成年真龙</zh><en>adult true dragon</en></s>
+  <s><zh>深渊领主</zh><en>abyssal lord</en></s>
+  <s><zh>治疗药水</zh><en>healing potion</en></s>
+  <s><zh>工业药品 ×5</zh><en>industrial medicine ×5</en></s>
+  <s><zh>零部件 ×5</zh><en>components ×5</en></s>
+  <s><zh>强效治疗药水</zh><en>greater healing potion</en></s>
+  <s><zh>随机法术卷轴</zh><en>random spell scroll</en></s>
+  <s><zh>高级零部件</zh><en>advanced components</en></s>
+  <s><zh>随机魔法物品</zh><en>random magic item</en></s>
+  <s><zh>传奇重铸之石</zh><en>legend reforging stone</en></s>
+  <s><zh>重铸下一层的迷锁规则</zh><en>reforge the next floor's mythal rule</en></s>
+  <s><zh>[DND边缘大陆] 迷锁地牢：Isekai 经验桥失败：</zh><en>[DND Rimlands] Mythal dungeon: Isekai XP bridge failed: </en></s>
+  <s><zh>已解开</zh><en>solved</en></s>
+  <s><zh>封闭</zh><en>sealed</en></s>
+  <s><zh>迷锁地牢已在设置里关闭</zh><en>The mythal dungeon is turned off in settings</en></s>
+  <s><zh>迷锁尚未苏醒（还剩 </zh><en>The mythal hasn't awakened yet ( </en></s>
+  <s><zh>迷锁正在重组（还剩 </zh><en>The mythal is reorganizing ( </en></s>
+  <s><zh>这一层无人进入已满 5 天，迷锁把它重新编织了一遍：怪物满血，布局改变。</zh><en>No one has entered this floor for 5 days, so the mythal rewove it: monsters at full health, layout changed.</en></s>
+  <s><zh>饮下迷锁泉：伤口愈合，疲劳一扫而空（每人每层一次）。</zh><en>Drank from the mythal spring: wounds healed, fatigue swept away (once per person per floor).</en></s>
+  <s><zh>迷锁之门开启</zh><en>The mythal gate opens</en></s>
+  <s><zh>迷锁之门的符文重新亮起：第 </zh><en>The runes of the mythal gate light up again: floor </en></s>
+  <s><zh> 层可以进入了。\n\n</zh><en> can be entered.\n\n</en></s>
+  <s><zh>\n\n选中迷锁之门，用“进入”带人和物资下去。里面可以随时进出补给；打倒守护者就算解开这一层。</zh><en>\n\nSelect the mythal gate and use "enter" to take people and supplies down. You can go in and out for supplies anytime; defeating the guardian solves the floor.</en></s>
+  <s><zh>主题：</zh><en>Theme: </en></s>
+  <s><zh>；迷锁规则：</zh><en>; mythal rule: </en></s>
+  <s><zh>\n危险度 </zh><en>\nDanger </en></s>
+  <s><zh>\n里程碑层：守护者是</zh><en>\nMilestone floor: the guardian is </en></s>
+  <s><zh>\n强化守护者层。</zh><en>\nEmpowered guardian floor.</en></s>
+  <s><zh>迷锁第 </zh><en>Mythal floor </en></s>
+  <s><zh> 层已解开</zh><en> solved</en></s>
+  <s><zh>守护者倒下了，迷锁把这一层的力量还给了解开它的人。</zh><en>The guardian has fallen, and the mythal returns this floor's power to those who solved it.</en></s>
+  <s><zh>\n\n冒险者经验：</zh><en>\n\nAdventurer XP: </en></s>
+  <s><zh>\n\n这是一次里程碑（迷锁·第 </zh><en>\n\nThis is a milestone (mythal · ring </en></s>
+  <s><zh> 环）。</zh><en>).</en></s>
+  <s><zh>\n\n守护者房里出现了回程门、</zh><en>\n\nA return gate, </en></s>
+  <s><zh> 片迷锁碎片和守护者的宝藏。所有人离开后这一层会坍塌，迷锁封闭 </zh><en> mythal shards and the guardian's treasure appeared in the guardian's room. Once everyone leaves, this floor collapses, and the mythal stays sealed for </en></s>
+  <s><zh> 天后重组成第 </zh><en> days before reorganizing into floor </en></s>
+  <s><zh> 层。留在里面的东西会一起消失。</zh><en>. Anything left inside vanishes with it.</en></s>
+  <s><zh> 层坍塌了。迷锁封闭，</zh><en> collapsed. The mythal is sealed, </en></s>
+  <s><zh> 层。</zh><en>.</en></s>
+  <s><zh> 层回卷：</zh><en> rolled back: </en></s>
+  <s><zh>被迷锁驱逐</zh><en>expelled by the mythal</en></s>
+  <s><zh>地牢里的人全部倒下了。迷锁没有吞噬他们，而是把他们吐回了门口（带着伤）。</zh><en>Everyone in the dungeon went down. The mythal didn't devour them, but spat them back out at the gate (wounded).</en></s>
+  <s><zh>\n\n第 </zh><en>\n\nFloor </en></s>
+  <s><zh> 层回卷：下次进入是新的布局，怪物满血。</zh><en> rolled back: the next entry has a new layout, with monsters at full health.</en></s>
+  <s><zh>迷锁兑换</zh><en>Mythal exchange</en></s>
+  <s><zh>用迷锁碎片在门上换东西。碎片只能在这里用（地图上任何地方的碎片都算）。\n\n现有碎片：</zh><en>Trade mythal shards at the gate. Shards can only be used here (shards anywhere on the map count).\n\nShards on hand: </en></s>
+  <s><zh>开发：开启 / 结束封闭</zh><en>Dev: open / end sealing</en></s>
+  <s><zh>开发：解开本层</zh><en>Dev: solve this floor</en></s>
+  <s><zh> 片）</zh><en> shards)</en></s>
+  <s><zh>：碎片不够</zh><en>: not enough shards</en></s>
+  <s><zh>下一层的迷锁规则变成了：</zh><en>The next floor's mythal rule became: </en></s>
+  <s><zh>迷锁兑换：</zh><en>Mythal exchange: </en></s>
+  <s><zh>沉睡：还剩 </zh><en>Dormant: </en></s>
+  <s><zh> 天开启第 </zh><en> days until floor </en></s>
+  <s><zh> 层</zh><en> opens</en></s>
+  <s><zh>封闭：还剩 </zh><en>Sealed: </en></s>
+  <s><zh> 天重组成第 </zh><en> days until reorganizing into floor </en></s>
+  <s><zh>已解开：</zh><en>Solved: </en></s>
+  <s><zh>开启：</zh><en>Open: </en></s>
+  <s><zh>第 </zh><en>Floor </en></s>
+  <s><zh>，里面有 </zh><en>, with </en></s>
+  <s><zh> 个我方单位</zh><en> of our units inside</en></s>
+  <s><zh>\n最深解开：第 </zh><en>\nDeepest solved: floor </en></s>
+  <s><zh>地下传来低沉的嗡鸣</zh><en>A low hum rises from underground</en></s>
+  <s><zh>迷锁之门</zh><en>mythal gate</en></s>
+  <s><zh>殖民地旁边的地面裂开，一座古老的石拱门升了起来：这是埋在地下的失落迷锁的入口。\n\n迷锁每次被解开一层就会坍塌，封闭 </zh><en>The ground next to the colony split open, and an ancient stone archway rose up: the entrance to a lost mythal buried underground.\n\nEach time a floor of the mythal is solved, it collapses, staying sealed for </en></s>
+  <s><zh> 天后用新的形状重组，层数一直往下，没有尽头。每层打倒守护者就能拿到冒险者经验、迷锁碎片和宝藏；每 10 层有一个里程碑首领。\n\n门会在 </zh><en> days before reorganizing into a new shape, floor after floor going down without end. Defeating each floor's guardian gives adventurer XP, mythal shards and treasure; every 10 floors there's a milestone boss.\n\nThe gate will open for the first time in </en></s>
+  <s><zh> 天后第一次开启。</zh><en> days.</en></s>
+  <s><zh>启用迷锁地牢</zh><en>Enable the mythal dungeon</en></s>
+  <s><zh>（1.60.0）出生点旁的迷锁之门：一层一层往下打，每层打倒守护者拿冒险者经验、迷锁碎片和宝藏，然后封闭几天重组。关掉后门停在原地不能进入。</zh><en>(1.60.0) A mythal gate next to the spawn point: fight down floor by floor, defeating each floor's guardian for adventurer XP, mythal shards and treasure, after which it seals for a few days and reorganizes. When off, the gate stays in place and can't be entered.</en></s>
+  <s><zh>开局 / 读档时自动生成迷锁之门</zh><en>Automatically place the mythal gate on game start / load</en></s>
+  <s><zh>只放一次，放在第一个殖民地的殖民者附近。关掉后可以用下面的按钮手动放。</zh><en>Placed only once, near the colonists of the first colony. When off, it can be placed manually with the button below.</en></s>
+  <s><zh>第一次开启：第 </zh><en>First opening: day </en></s>
+  <s><zh> 天（冒险者小队开局第 1 天）</zh><en> (adventuring party start: day 1)</en></s>
+  <s><zh>每层解开后封闭：</zh><en>Sealed after each floor is solved: </en></s>
+  <s><zh>迷锁难度：</zh><en>Mythal difficulty: </en></s>
+  <s><zh>%（危险度 = (150 + 层数 × 35) × 难度）</zh><en>% (danger = (150 + floor × 35) × difficulty)</en></s>
+  <s><zh>通关经验倍率：</zh><en>Clear XP multiplier: </en></s>
+  <s><zh>通关经验也给 Isekai 等级</zh><en>Clear XP also goes to Isekai levels</en></s>
+  <s><zh>装了 Isekai RPG Leveling 时，通关经验同时按同样数量给 Isekai 经验。</zh><en>With Isekai RPG Leveling installed, clear XP is also given as the same amount of Isekai XP.</en></s>
+  <s><zh>装了 Isekai 时的怪物强度：</zh><en>Monster strength with Isekai installed: </en></s>
+  <s><zh>%（Isekai 会再给怪物加一次评级）</zh><en>% (Isekai rates the monsters again on top)</en></s>
+  <s><zh>在当前地图放下迷锁之门</zh><en>Place the mythal gate on the current map</en></s>
+  <s><zh>迷锁之门已放下。</zh><en>The mythal gate has been placed.</en></s>
+  <s><zh>附近找不到一块 7×7 的平地放迷锁之门。</zh><en>No 7×7 flat area nearby for the mythal gate.</en></s>
+</LPStrings>

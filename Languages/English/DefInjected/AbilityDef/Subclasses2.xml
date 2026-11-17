@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 武器羁绊 -->
+  <LP_EK_WeaponBond.label>weapon bond</LP_EK_WeaponBond.label>
+  <!-- 手里拿着的武器和自己绑定（替换原来的绑定）：绑定的武器不会被缴械。手里不是绑定的武器时，把同一张地图上的绑定武器召回到手里（原来手上的放到脚下）。不耗法力，冷却 1 小时。奥法骑士，战士 3 级。 -->
+  <LP_EK_WeaponBond.description>Bind the weapon in your hands to yourself (replacing the previous bond): a bound weapon can't be disarmed. When not holding your bound weapon, summon the bound weapon on the same map back into your hands (the one in hand is put at your feet). No mana cost, cooldown 1 hour. Eldritch Knight, fighter level 3.</LP_EK_WeaponBond.description>
+  <!-- 护盾术（奥法骑士） -->
+  <LP_EK_Shield.label>shield (eldritch knight)</LP_EK_Shield.label>
+  <!-- 10 秒内身外多一层奥术护盾，先吸收 20 × 战技强度 点伤害。法力 1，冷却 10 秒。奥法骑士，战士 3 级。 -->
+  <LP_EK_Shield.description>For 10 seconds an extra arcane shield surrounds you, absorbing 20 × martial power damage first. Mana 1, cooldown 10 seconds. Eldritch Knight, fighter level 3.</LP_EK_Shield.description>
+  <!-- 雷鸣斩 -->
+  <LP_EK_ThunderBlade.label>thunderous smite</LP_EK_ThunderBlade.label>
+  <!-- 10 秒内下一次近战命中附加 12 × 战技强度 钝器伤害，并把体型 2 以下的目标震退 1 格。法力 1，冷却 5 秒。奥法骑士，战士 3 级。 -->
+  <LP_EK_ThunderBlade.description>Within 10 seconds, the next melee hit adds 12 × martial power blunt damage and knocks targets of body size 2 or less back 1 cell. Mana 1, cooldown 5 seconds. Eldritch Knight, fighter level 3.</LP_EK_ThunderBlade.description>
+  <!-- 吸收元素 -->
+  <LP_EK_AbsorbElements.label>absorb elements</LP_EK_AbsorbElements.label>
+  <!-- 1 小时内受到的火焰、寒冰、闪电伤害 ×0.5。法力 1，冷却 1 小时。奥法骑士，战士 3 级。 -->
+  <LP_EK_AbsorbElements.description>For 1 hour, fire, cold and lightning damage taken ×0.5. Mana 1, cooldown 1 hour. Eldritch Knight, fighter level 3.</LP_EK_AbsorbElements.description>
+  <!-- 战争魔法 -->
+  <LP_EK_WarMagic.label>war magic</LP_EK_WarMagic.label>
+  <!-- 被动：每放一个奥法骑士法术，立刻对身边的敌人再打一下（一次完整的近战结算）；学会法刃风暴后打两下。奥法骑士，战士 7 级。 -->
+  <LP_EK_WarMagic.description>Passive: each Eldritch Knight spell you cast is immediately followed by another hit on a nearby enemy (a full melee resolution); two hits after learning spellblade storm. Eldritch Knight, fighter level 7.</LP_EK_WarMagic.description>
+  <!-- 奥术冲锋 -->
+  <LP_EK_ArcaneCharge.label>arcane charge</LP_EK_ArcaneCharge.label>
+  <!-- 瞬移到 12 格内的空格（不需要视线）。法力 1，冷却 15 秒。奥法骑士，战士 11 级。 -->
+  <LP_EK_ArcaneCharge.description>Teleport to an empty cell within 12 cells (no line of sight needed). Mana 1, cooldown 15 seconds. Eldritch Knight, fighter level 11.</LP_EK_ArcaneCharge.description>
+  <!-- 法术打击 -->
+  <LP_EK_EldritchStrike.label>eldritch strike</LP_EK_EldritchStrike.label>
+  <!-- 被动：近战打中敌人后，它 10 秒内受到的法术伤害（火焰、寒冰、闪电、心灵、奥术力）×1.25。奥法骑士，战士 11 级。 -->
+  <LP_EK_EldritchStrike.description>Passive: after you hit an enemy in melee, spell damage it takes (fire, cold, lightning, psychic, arcane force) ×1.25 for 10 seconds. Eldritch Knight, fighter level 11.</LP_EK_EldritchStrike.description>
+  <!-- 法刃风暴 -->
+  <LP_EK_Bladestorm.label>spellblade storm</LP_EK_Bladestorm.label>
+  <!-- 8 秒内每次近战命中，对 3 格内另一个敌人放一枚魔能飞弹（6 × 战技强度 奥术力伤害）。法力 3，每天一次。被动：法力上限 +2，战争魔法改为打两下。奥法骑士，战士 15 级。 -->
+  <LP_EK_Bladestorm.description>For 8 seconds, each melee hit fires a magic missile at another enemy within 3 cells (6 × martial power arcane force damage). Mana 3, once per day. Passive: max mana +2, war magic strikes twice instead. Eldritch Knight, fighter level 15.</LP_EK_Bladestorm.description>
+  <!-- 灵能打击 -->
+  <LP_PW_PsionicStrike.label>psionic strike</LP_PW_PsionicStrike.label>
+  <!-- 30 秒内每次近战命中附加 6 × 战技强度 心灵伤害。斗志 1（有灵能器时改为神经热 8），冷却 30 秒。灵能战士，战士 3 级。 -->
+  <LP_PW_PsionicStrike.description>For 30 seconds each melee hit adds 6 × martial power psychic damage. Grit 1 (neural heat 8 instead with a psylink), cooldown 30 seconds. Psi Warrior, fighter level 3.</LP_PW_PsionicStrike.description>
+  <!-- 护体念力 -->
+  <LP_PW_ProtectiveField.label>protective field</LP_PW_ProtectiveField.label>
+  <!-- 被动：有灵能器时，每次受伤 ×0.7，同时加 4 点神经热（神经热放不下时不生效）；没有灵能器时每次受伤 ×0.85。灵能战士，战士 3 级。 -->
+  <LP_PW_ProtectiveField.description>Passive: with a psylink, each hit taken ×0.7 while adding 4 neural heat (no effect if neural heat can't take it); without a psylink, each hit taken ×0.85. Psi Warrior, fighter level 3.</LP_PW_ProtectiveField.description>
+  <!-- 念动跳跃 -->
+  <LP_PW_TeleJump.label>telekinetic leap</LP_PW_TeleJump.label>
+  <!-- 用念力把自己抛到 10 格内的空格，无视障碍。斗志 1（有灵能器时改为神经热 10），冷却 10 秒。灵能战士，战士 3 级。 -->
+  <LP_PW_TeleJump.description>Hurl yourself with telekinesis to an empty cell within 10 cells, ignoring obstacles. Grit 1 (neural heat 10 instead with a psylink), cooldown 10 seconds. Psi Warrior, fighter level 3.</LP_PW_TeleJump.description>
+  <!-- 念动适应 -->
+  <LP_PW_PsiAdept.label>telekinetic adept</LP_PW_PsiAdept.label>
+  <!-- 被动：心灵敏感度 +15%，冥想获得的专注 +25%。灵能战士，战士 7 级。 -->
+  <LP_PW_PsiAdept.description>Passive: psychic sensitivity +15%, focus gained from meditation +25%. Psi Warrior, fighter level 7.</LP_PW_PsiAdept.description>
+  <!-- 念动推送 -->
+  <LP_PW_Shove.label>telekinetic thrust</LP_PW_Shove.label>
+  <!-- 15 格内一个敌人，成功率 70%（机械体 40%）被推开 3 格并击倒 2 秒。目标每比你高 1 级成功率 −5%，最低 10%。斗志 1（有灵能器时改为神经热 10），冷却 10 秒。灵能战士，战士 7 级。 -->
+  <LP_PW_Shove.description>One enemy within 15 cells has a 70% chance (40% for mechanoids) to be pushed back 3 cells and knocked down for 2 seconds. -5% success per level the target is above you, minimum 10%. Grit 1 (neural heat 10 instead with a psylink), cooldown 10 seconds. Psi Warrior, fighter level 7.</LP_PW_Shove.description>
+  <!-- 护卫念场 -->
+  <LP_PW_GuardianField.label>guardian field</LP_PW_GuardianField.label>
+  <!-- 半径 6 内的友军（含自己）10 秒内受到的远程伤害 ×0.5。被动：心智抗性 +20%。斗志 2（有灵能器时改为神经热 30），冷却 1 小时。灵能战士，战士 11 级。 -->
+  <LP_PW_GuardianField.description>Allies within radius 6 (including yourself) take ×0.5 ranged damage for 10 seconds. Passive: mind resistance +20%. Grit 2 (neural heat 30 instead with a psylink), cooldown 1 hour. Psi Warrior, fighter level 11.</LP_PW_GuardianField.description>
+  <!-- 念动风暴 -->
+  <LP_PW_TeleStorm.label>telekinetic storm</LP_PW_TeleStorm.label>
+  <!-- 半径 8 内所有敌人被念力抬起又摔下：击晕 3 秒，受 15 × 战技强度 钝器伤害。被动：神经热上限 ×1.3。斗志 3（有灵能器时改为神经热 40），每天一次。灵能战士，战士 15 级。 -->
+  <LP_PW_TeleStorm.description>All enemies within radius 8 are lifted by telekinesis and slammed down: stunned for 3 seconds, taking 15 × martial power blunt damage. Passive: max neural heat ×1.3. Grit 3 (neural heat 40 instead with a psylink), once per day. Psi Warrior, fighter level 15.</LP_PW_TeleStorm.description>
+  <!-- 血矛 -->
+  <LP_HM_BloodSpear.label>blood spear</LP_HM_BloodSpear.label>
+  <!-- 把自己的血凝成长矛掷出：25 格内一个敌人受 12 × 奥术强度 穿刺伤害，无视 30% 护甲。自己伤得越重伤害越高（伤势每 10% +5%，最多 +30%）。失血 8%（血族：血原质 10），冷却 5 秒。血咒学派，法师 3 级。 -->
+  <LP_HM_BloodSpear.description>Congeal your own blood into a spear and hurl it: one enemy within 25 cells takes 12 × arcane power piercing damage, ignoring 30% armor. The more you're hurt yourself, the higher the damage (+5% per 10% injury, up to +30%). Blood loss 8% (vampires: 10 hemogen), cooldown 5 seconds. School of Hemomancy, wizard level 3.</LP_HM_BloodSpear.description>
+  <!-- 血缚 -->
+  <LP_HM_BloodBind.label>blood bind</LP_HM_BloodBind.label>
+  <!-- 攥住 20 格内一个敌人的血：成功率 65% 定身 4 秒（目标每比你高 1 级 −5%，最低 10%）。机械体、亡灵等没有血的目标无效。失血 8%，冷却 15 秒。血咒学派，法师 3 级。 -->
+  <LP_HM_BloodBind.description>Seize the blood of an enemy within 20 cells: 65% chance to root it for 4 seconds (-5% per level the target is above you, minimum 10%). No effect on bloodless targets such as mechanoids and undead. Blood loss 8%, cooldown 15 seconds. School of Hemomancy, wizard level 3.</LP_HM_BloodBind.description>
+  <!-- 血肉塑形 -->
+  <LP_HM_FleshShaping.label>flesh shaping</LP_HM_FleshShaping.label>
+  <!-- 对 15 格内一名友军：缝合所有出血的伤口，并治疗 15 × 奥术强度。对自己：不失血，反而把失血减少 20%。失血 16%（对自己免费），冷却 1 小时。血咒学派，法师 7 级。 -->
+  <LP_HM_FleshShaping.description>On an ally within 15 cells: stitch up all bleeding wounds and heal 15 × arcane power. On yourself: no blood loss; instead blood loss is reduced by 20%. Blood loss 16% (free on yourself), cooldown 1 hour. School of Hemomancy, wizard level 7.</LP_HM_FleshShaping.description>
+  <!-- 汲血 -->
+  <LP_HM_Siphon.label>blood siphon</LP_HM_Siphon.label>
+  <!-- 被动：你杀死有血的敌人时，自己的失血 −10%（血族：血原质 +10）。血咒学派，法师 7 级。 -->
+  <LP_HM_Siphon.description>Passive: when you kill an enemy with blood, your blood loss -10% (vampires: hemogen +10). School of Hemomancy, wizard level 7.</LP_HM_Siphon.description>
+  <!-- 血沸 -->
+  <LP_HM_BloodBoil.label>blood boil</LP_HM_BloodBoil.label>
+  <!-- 20 格内一点半径 3：有血的敌人 10 秒内每秒受 4 × 奥术强度 灼伤（自己伤得越重越高）。失血 24%，冷却 1 小时。血咒学派，法师 11 级。 -->
+  <LP_HM_BloodBoil.description>Radius 3 at a point within 20 cells: enemies with blood take 4 × arcane power burn damage per second for 10 seconds (higher the more you're hurt yourself). Blood loss 24%, cooldown 1 hour. School of Hemomancy, wizard level 11.</LP_HM_BloodBoil.description>
+  <!-- 血肉禁锢 -->
+  <LP_HM_FleshPrison.label>flesh lock</LP_HM_FleshPrison.label>
+  <!-- 让 20 格内一个敌人的血肉僵死：成功率 60% 动弹不得 30 秒（受伤也不解除；目标每比你高 1 级 −5%，最低 10%）。机械体、没有血的、体型超过 2 的无效。失血 24%，冷却 1 小时。血咒学派，法师 11 级。 -->
+  <LP_HM_FleshPrison.description>Petrify the flesh of an enemy within 20 cells: 60% chance it can't move for 30 seconds (damage doesn't break it; -5% per level the target is above you, minimum 10%). No effect on mechanoids, the bloodless or body size over 2. Blood loss 24%, cooldown 1 hour. School of Hemomancy, wizard level 11.</LP_HM_FleshPrison.description>
+  <!-- 血之秘仪 -->
+  <LP_HM_BloodRite.label>blood rite</LP_HM_BloodRite.label>
+  <!-- 对身边一名友军（或自己）施行血之秘仪，自动选最需要的一项：长回一个缺失的部位；没有缺失就治好所有疾病、成瘾、慢性病和疤痕；都没有就年轻 10 岁（不低于 18 岁）。失血 30%，每年一次。被动：失血上限从 45% 提到 60%；每次施放血咒后 5 秒内受到的伤害 ×0.5。血咒学派，法师 15 级。 -->
+  <LP_HM_BloodRite.description>Perform the blood rite on a nearby ally (or yourself), automatically picking what's needed most: regrow a missing part; with nothing missing, cure all diseases, addictions, chronic conditions and scars; with none of those, become 10 years younger (not below 18). Blood loss 30%, once per year. Passive: blood loss cap raised from 45% to 60%; for 5 seconds after each hemomancy cast, damage taken ×0.5. School of Hemomancy, wizard level 15.</LP_HM_BloodRite.description>
+  <!-- 钢铁卫士 -->
+  <LP_BS_SteelDefender.label>steel defender</LP_BS_SteelDefender.label>
+  <!-- 用地图上没被禁止的 100 钢 + 2 零部件造一台钢铁卫士（被打烂后 1 天内重造只要 20 钢），它认你做主人、跟着你打仗。已经有卫士时，改为把卫士召回到身边。冷却 1 小时。战铸师，器械师 3 级。 -->
+  <LP_BS_SteelDefender.description>Build a steel defender from 100 steel + 2 components that aren't forbidden on the map (rebuilding within 1 day after it's destroyed costs only 20 steel); it takes you as its master and fights alongside you. If you already have a defender, recall it to your side instead. Cooldown 1 hour. Battle Smith, artificer level 3.</LP_BS_SteelDefender.description>
+  <!-- 魔武训练 -->
+  <LP_BS_BattleReady.label>battle ready</LP_BS_BattleReady.label>
+  <!-- 被动：用武器造成的伤害 +10%。卫士护主：你被近战攻击时，紧挨着你的钢铁卫士有 40% 的成功率挡下这一下。战铸师，器械师 3 级。 -->
+  <LP_BS_BattleReady.description>Passive: damage dealt with weapons +10%. Defender's guard: when you're attacked in melee, a steel defender right next to you has a 40% chance to block the hit. Battle Smith, artificer level 3.</LP_BS_BattleReady.description>
+  <!-- 奥术震击 -->
+  <LP_BS_ArcaneJolt.label>arcane jolt</LP_BS_ArcaneJolt.label>
+  <!-- 被动：你或钢铁卫士打中敌人时（每 10 秒一次），15 格内有伤势超过 30% 的友军就治疗最需要的一个 8 + 器械师等级；没有就让目标再受 8 + 器械师等级 奥术力伤害。战铸师，器械师 7 级。 -->
+  <LP_BS_ArcaneJolt.description>Passive: when you or your steel defender hit an enemy (once every 10 seconds), if there's an ally within 15 cells with over 30% injuries, heal the one who needs it most for 8 + artificer level; otherwise the target takes another 8 + artificer level arcane force damage. Battle Smith, artificer level 7.</LP_BS_ArcaneJolt.description>
+  <!-- 改良卫士 -->
+  <LP_BS_ImprovedDefender.label>improved defender</LP_BS_ImprovedDefender.label>
+  <!-- 被动：钢铁卫士护甲 +20%、近战伤害 +50%、受到的伤害再 ×0.8，并学会搬运。战铸师，器械师 11 级。 -->
+  <LP_BS_ImprovedDefender.description>Passive: steel defender armor +20%, melee damage +50%, damage taken another ×0.8, and it learns to haul. Battle Smith, artificer level 11.</LP_BS_ImprovedDefender.description>
+  <!-- 战铸大师 -->
+  <LP_BS_MasterSmith.label>battle smith master</LP_BS_MasterSmith.label>
+  <!-- 被动：可以同时有 2 台钢铁卫士；卫士每天第一次倒下时自动重构（治好一半伤势）；卫士 2 格内的友军受到的伤害 ×0.8。战铸师，器械师 15 级。 -->
+  <LP_BS_MasterSmith.description>Passive: can have 2 steel defenders at once; a defender automatically rebuilds the first time it falls each day (half its injuries healed); allies within 2 cells of a defender take ×0.8 damage. Battle Smith, artificer level 15.</LP_BS_MasterSmith.description>
+  <!-- 安抚心灵 -->
+  <LP_AM_CalmMind.label>soothe mind</LP_AM_CalmMind.label>
+  <!-- 隔着整张地图触碰一名精神崩溃的友军：成功率 40% 立刻结束崩溃。法力 1，冷却 10 秒。异变心灵，术士 3 级。 -->
+  <LP_AM_CalmMind.description>Touch a friendly colonist having a mental break from anywhere on the map: 40% chance to end the break at once. Mana 1, cooldown 10 seconds. Aberrant Mind, sorcerer level 3.</LP_AM_CalmMind.description>
+  <!-- 灵能尖刺 -->
+  <LP_AM_PsychicSpike.label>psionic spike</LP_AM_PsychicSpike.label>
+  <!-- 25 格内一个敌人受 15 × 天赋强度 心灵伤害；机械体无效。法力 1，冷却 5 秒。异变心灵，术士 3 级。 -->
+  <LP_AM_PsychicSpike.description>One enemy within 25 cells takes 15 × innate power psychic damage; no effect on mechanoids. Mana 1, cooldown 5 seconds. Aberrant Mind, sorcerer level 3.</LP_AM_PsychicSpike.description>
+  <!-- 灵能防护 -->
+  <LP_AM_PsychicDefense.label>psionic defense</LP_AM_PsychicDefense.label>
+  <!-- 被动：心智抗性 +25%，受到的心灵伤害 ×0.5。异变心灵，术士 7 级。 -->
+  <LP_AM_PsychicDefense.description>Passive: mind resistance +25%, psychic damage taken ×0.5. Aberrant Mind, sorcerer level 7.</LP_AM_PsychicDefense.description>
+  <!-- 变形之身 -->
+  <LP_AM_FleshRevelation.label>revelation in flesh</LP_AM_FleshRevelation.label>
+  <!-- 1 小时内长出触手：多一种近战攻击（12 钝器），近战命中有 30% 的成功率缠住目标 2 秒；移动 +15%，伤口不流血。法力 2，冷却 2 小时。异变心灵，术士 11 级。 -->
+  <LP_AM_FleshRevelation.description>Grow tentacles for 1 hour: an extra melee attack (12 blunt), melee hits have a 30% chance to entangle the target for 2 seconds; movement +15%, wounds don't bleed. Mana 2, cooldown 2 hours. Aberrant Mind, sorcerer level 11.</LP_AM_FleshRevelation.description>
+  <!-- 心灵支配 -->
+  <LP_AM_MindDominion.label>psychic domination</LP_AM_MindDominion.label>
+  <!-- 20 格内一个人形敌人，成功率 60%（目标每比你高 1 级 −5%，最低 10%）被支配 1 天：暂时加入殖民地、可以征召。结束时成功率 30% 自愿留下，否则变回敌人、击晕 10 秒后逃走。剧情首领和传奇单位无效。法力 4，冷却 3 天。异变心灵，术士 15 级。 -->
+  <LP_AM_MindDominion.description>One humanlike enemy within 20 cells has a 60% chance (-5% per level the target is above you, minimum 10%) to be dominated for 1 day: temporarily joins the colony and can be drafted. At the end, 30% chance it chooses to stay; otherwise it turns hostile again, is stunned for 10 seconds and flees. No effect on story bosses and legendary units. Mana 4, cooldown 3 days. Aberrant Mind, sorcerer level 15.</LP_AM_MindDominion.description>
+  <!-- 誓言之力·征服者之威 -->
+  <LP_CQ_ConqueringPresence.label>channel oath: conquering presence</LP_CQ_ConqueringPresence.label>
+  <!-- 半径 6 内的敌人（机械体除外）成功率 60% 被震慑并逃跑 8 秒（目标每比你高 1 级 −5%，最低 10%）。誓言之力 1，不耗神恩。征服之誓，圣武士 3 级。 -->
+  <LP_CQ_ConqueringPresence.description>Enemies within radius 6 (except mechanoids) have a 60% chance to be shaken and flee for 8 seconds (-5% per level the target is above you, minimum 10%). Channel Oath 1, no divinity cost. Oath of Conquest, paladin level 3.</LP_CQ_ConqueringPresence.description>
+  <!-- 誓言之力·必胜一击 -->
+  <LP_CQ_GuidedStrike.label>channel oath: guided strike</LP_CQ_GuidedStrike.label>
+  <!-- 30 秒内近战命中 +50%，远程命中 +2%（每格）。誓言之力 1，不耗神恩。征服之誓，圣武士 3 级。 -->
+  <LP_CQ_GuidedStrike.description>For 30 seconds, melee hit +50% and ranged hit +2% (per cell). Channel Oath 1, no divinity cost. Oath of Conquest, paladin level 3.</LP_CQ_GuidedStrike.description>
+  <!-- 征服灵光 -->
+  <LP_CQ_AuraOfConquest.label>aura of conquest</LP_CQ_AuraOfConquest.label>
+  <!-- 被动：半径 5 内被震慑或在逃跑的敌人移动 ×0.2，每 4 秒受 8 × 神恩强度 心灵伤害。征服之誓，圣武士 7 级。 -->
+  <LP_CQ_AuraOfConquest.description>Passive: shaken or fleeing enemies within radius 5 move ×0.2 and take 8 × divine power psychic damage every 4 seconds. Oath of Conquest, paladin level 7.</LP_CQ_AuraOfConquest.description>
+  <!-- 威慑斩 -->
+  <LP_CQ_ScornfulRebuke.label>scornful rebuke</LP_CQ_ScornfulRebuke.label>
+  <!-- 被动：近战打中没被震慑的敌人时，成功率 25% 让它震慑 5 秒；打已经被震慑的敌人伤害 ×1.25。征服之誓，圣武士 11 级。 -->
+  <LP_CQ_ScornfulRebuke.description>Passive: melee hits against enemies not shaken have a 25% chance to shake them for 5 seconds; ×1.25 damage against already-shaken enemies. Oath of Conquest, paladin level 11.</LP_CQ_ScornfulRebuke.description>
+  <!-- 不败征服者 -->
+  <LP_CQ_InvincibleConqueror.label>invincible conqueror</LP_CQ_InvincibleConqueror.label>
+  <!-- 1 小时内受到的伤害 ×0.5（神圣伤害除外），近战冷却 ×0.8。神恩 3，每天一次。被动「降服」：半径 10 内伤势超过一半的人形敌人（首领除外），每 4 秒约 8% 的成功率丢下武器跪地投降，可以直接俘虏。征服之誓，圣武士 15 级。 -->
+  <LP_CQ_InvincibleConqueror.description>For 1 hour damage taken ×0.5 (except holy damage), melee cooldown ×0.8. Divinity 3, once per day. Passive "Submission": humanlike enemies within radius 10 with over half their health lost (except bosses) have about an 8% chance every 4 seconds to drop their weapons and kneel in surrender, and can be captured directly. Oath of Conquest, paladin level 15.</LP_CQ_InvincibleConqueror.description>
+  <!-- 誓言之力·和平使者 -->
+  <LP_RD_EmissaryOfPeace.label>channel oath: emissary of peace</LP_RD_EmissaryOfPeace.label>
+  <!-- 1 小时内社交影响 +30%、谈判能力 +20%（招募、交易、通讯台交涉都受益）。誓言之力 1，不耗神恩。救赎之誓，圣武士 3 级。 -->
+  <LP_RD_EmissaryOfPeace.description>For 1 hour social impact +30% and negotiation ability +20% (benefits recruiting, trading and comms console negotiation). Channel Oath 1, no divinity cost. Oath of Redemption, paladin level 3.</LP_RD_EmissaryOfPeace.description>
+  <!-- 誓言之力·斥责暴力 -->
+  <LP_RD_RebukeViolent.label>channel oath: rebuke the violent</LP_RD_RebukeViolent.label>
+  <!-- 1 天内有效：下一个近战打中自己或 15 格内友军的敌人，受到和这一下同等的神圣伤害（最多 30 × 神恩强度）。誓言之力 1，不耗神恩。救赎之誓，圣武士 3 级。 -->
+  <LP_RD_RebukeViolent.description>Valid for 1 day: the next enemy to hit you or an ally within 15 cells in melee takes holy damage equal to that hit (at most 30 × divine power). Channel Oath 1, no divinity cost. Oath of Redemption, paladin level 3.</LP_RD_RebukeViolent.description>
+  <!-- 守护者灵光 -->
+  <LP_RD_AuraOfGuardian.label>aura of the guardian</LP_RD_AuraOfGuardian.label>
+  <!-- 被动：征召时，半径 5 内的友军被敌人打中，这一下改由你承担（转过来的伤害 ×0.75）。救赎之誓，圣武士 7 级。 -->
+  <LP_RD_AuraOfGuardian.description>Passive: while drafted, when an ally within radius 5 is hit by an enemy, you take that hit instead (transferred damage ×0.75). Oath of Redemption, paladin level 7.</LP_RD_AuraOfGuardian.description>
+  <!-- 坚韧之魂 -->
+  <LP_RD_ProtectiveSpirit.label>protective spirit</LP_RD_ProtectiveSpirit.label>
+  <!-- 被动：伤势超过一半时每 4 秒治疗 1 × 神恩强度；精神崩溃阈值 −10%。救赎之誓，圣武士 11 级。 -->
+  <LP_RD_ProtectiveSpirit.description>Passive: with over half your health lost, heal 1 × divine power every 4 seconds; mental break threshold -10%. Oath of Redemption, paladin level 11.</LP_RD_ProtectiveSpirit.description>
+  <!-- 救赎天使 -->
+  <LP_RD_EmissaryOfRedemption.label>emissary of redemption</LP_RD_EmissaryOfRedemption.label>
+  <!-- 被动：受到的伤害 ×0.75（神圣、心灵伤害除外）；近战打你的敌人受 4 × 神恩强度 神圣反伤。救赎之誓，圣武士 15 级。 -->
+  <LP_RD_EmissaryOfRedemption.description>Passive: damage taken ×0.75 (except holy and psychic damage); enemies hitting you in melee take 4 × divine power holy retribution damage. Oath of Redemption, paladin level 15.</LP_RD_EmissaryOfRedemption.description>
+  <!-- 和解 -->
+  <LP_RD_Reconcile.label>reconciliation</LP_RD_Reconcile.label>
+  <!-- 向整张地图的敌人伸出手：每个人形敌人（首领、囚犯除外）成功率 40% 丢下武器离开，他们的派系好感 +15。机械体和疯兽无效。神恩 3，冷却 15 天。救赎之誓，圣武士 15 级。 -->
+  <LP_RD_Reconcile.description>Reach out to the enemies of the whole map: each humanlike enemy (except bosses and prisoners) has a 40% chance to drop their weapon and leave, and their faction's goodwill +15. No effect on mechanoids and manhunters. Divinity 3, cooldown 15 days. Oath of Redemption, paladin level 15.</LP_RD_Reconcile.description>
+  <!-- 龙血 -->
+  <LP_DS_DragonBlood.label>dragon blood</LP_DS_DragonBlood.label>
+  <!-- 被动：真龙的血让身体更结实，体质 +2（加在上限之后）。龙魂，术士 4 级。 -->
+  <LP_DS_DragonBlood.description>Passive: true dragon blood makes the body sturdier, Constitution +2 (applied after the cap). Draconic Soul, sorcerer level 4.</LP_DS_DragonBlood.description>
+  <!-- 龙翼 -->
+  <LP_DS_DragonFlight.label>dragon wing</LP_DS_DragonFlight.label>
+  <!-- 被动：半飞半走，地形、积雪、植物都不再拖慢移动（墙、深水这类不能通行的地方照旧过不去）。龙魂，术士 10 级。 -->
+  <LP_DS_DragonFlight.description>Passive: half flying, half walking: terrain, snow and plants no longer slow movement (impassable places like walls and deep water are still impassable). Draconic Soul, sorcerer level 10.</LP_DS_DragonFlight.description>
+  <!-- 龙威 -->
+  <LP_DS_DragonPresence.label>dragon fear</LP_DS_DragonPresence.label>
+  <!-- 被动：和真龙一样的骇人威仪。半径 10 内看得见你的敌人做一次感知豁免（难度看你的魅力）：失败就惊惧 1 分钟，人形还有机会恐慌逃跑；不管成败，同一个人 1 天内不再判定。机械体、亡灵、屠龙者等免疫。龙魂，术士 14 级。 -->
+  <LP_DS_DragonPresence.description>Passive: a frightful presence like a true dragon's. Enemies within radius 10 who can see you make a Wisdom save once (difficulty based on your Charisma): on failure they're frightened for 1 minute, and humanlikes may also panic and flee; success or not, the same person isn't checked again for 1 day. Mechanoids, undead, dragonslayers and others are immune. Draconic Soul, sorcerer level 14.</LP_DS_DragonPresence.description>
+  <!-- 血脉囚笼·恶鬼之眼 -->
+  <LP_FB_Eyes.label>blood cage: fiend's eyes</LP_FB_Eyes.label>
+  <!-- 开 / 关：魅力 +2（8 级起 +4）。开着时术士法力上限 −2。同时能开的强化数：4 级 1 个，8 级 2 个（永久固化的那个不算）。恶鬼之血，术士 4 级。 -->
+  <LP_FB_Eyes.description>On / off: Charisma +2 (+4 from level 8). While on, sorcerer max mana -2. Enhancements that can be on at once: 1 at level 4, 2 at level 8 (the permanently fixed one doesn't count). Fiendish Blood, sorcerer level 4.</LP_FB_Eyes.description>
+  <!-- 血脉囚笼·恶鬼之皮 -->
+  <LP_FB_Skin.label>blood cage: fiend's skin</LP_FB_Skin.label>
+  <!-- 开 / 关：皮肤变红，伤口愈合 ×1.5 并每 4 秒回复 0.5 伤势（8 级起 ×2、回复 1）。开着时术士法力上限 −2。恶鬼之血，术士 4 级。 -->
+  <LP_FB_Skin.description>On / off: skin turns red, wound healing ×1.5 and 0.5 injury regained every 4 seconds (×2 and 1 from level 8). While on, sorcerer max mana -2. Fiendish Blood, sorcerer level 4.</LP_FB_Skin.description>
+  <!-- 血脉囚笼·恶鬼之舌 -->
+  <LP_FB_Tongue.label>blood cage: fiend's tongue</LP_FB_Tongue.label>
+  <!-- 开 / 关：心灵敏感度 +30%（8 级起 +60%）。开着时术士法力上限 −2。恶鬼之血，术士 4 级。 -->
+  <LP_FB_Tongue.description>On / off: psychic sensitivity +30% (+60% from level 8). While on, sorcerer max mana -2. Fiendish Blood, sorcerer level 4.</LP_FB_Tongue.description>
+  <!-- 血脉觉醒 -->
+  <LP_FB_Awaken.label>bloodline awakening</LP_FB_Awaken.label>
+  <!-- 被动：可以同时维持 2 个身体强化，所有强化效果翻倍（魅力 +4、愈合 ×2 并回复 1、心灵敏感度 +60%）。恶鬼之血，术士 8 级。 -->
+  <LP_FB_Awaken.description>Passive: can maintain 2 body enhancements at once, and all enhancement effects are doubled (Charisma +4, healing ×2 with 1 regen, psychic sensitivity +60%). Fiendish Blood, sorcerer level 8.</LP_FB_Awaken.description>
+  <!-- 血肉固化 -->
+  <LP_FB_Bound.label>flesh fixation</LP_FB_Bound.label>
+  <!-- 被动：在子职业窗口里选一个身体强化永久固化：一直开着、不占名额、不扣法力上限；另外两个照常开关维持。恶鬼之血，术士 12 级。 -->
+  <LP_FB_Bound.description>Passive: in the subclass window, pick one body enhancement to fix permanently: always on, not counting toward the limit, not reducing max mana; the other two toggle as usual. Fiendish Blood, sorcerer level 12.</LP_FB_Bound.description>
+</LanguageData>

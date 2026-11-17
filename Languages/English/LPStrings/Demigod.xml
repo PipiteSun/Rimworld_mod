@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（Demigod.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>神力 </zh><en>Divine power </en></s>
+  <s><zh>神性等级 </zh><en>Divinity level </en></s>
+  <s><zh> / 5：</zh><en> / 5: </en></s>
+  <s><zh>；神职能力强度 ×</zh><en>; portfolio ability power ×</en></s>
+  <s><zh>；每天 +</zh><en>; per day +</en></s>
+  <s><zh>（2 + 0.5×信徒 + 0.2×好感≥20 的殖民者）</zh><en> (2 + 0.5 × believers + 0.2 × colonists with opinion ≥20)</en></s>
+  <s><zh>被动：</zh><en>Passive: </en></s>
+  <s><zh>神域赐福（升入神域后）：</zh><en>Divine realm blessing (after ascending to the divine realm): </en></s>
+  <s><zh>神灵议会的试炼进行中</zh><en>A council of gods trial is in progress</en></s>
+  <s><zh>（已经倒下过）</zh><en> (has fallen)</en></s>
+  <s><zh>下次议会：</zh><en>Next council: </en></s>
+  <s><zh>可以</zh><en>available</en></s>
+  <s><zh>接受众神的试炼</zh><en>Accept the gods' trial</en></s>
+  <s><zh>神灵议会：1天后“众神的勇士”来袭（与</zh><en>Council of gods: in 1 day the "champions of the gods" attack (the faction of a god opposed to </en></s>
+  <s><zh>对立的神的派系，首领被神明附体）。整场试炼里</zh><en>, its leader possessed by a god). If, throughout the trial, </en></s>
+  <s><zh>一次都没倒下 → 神性等级+1；倒下过 → 神力清零、30天后才能再试，等级不降。\n\n要求：神力满、距上次试炼至少30天、等级低于5。</zh><en> never falls → divinity level +1; if they fall → divine power reset to zero and another try only after 30 days, without losing a level.\n\nRequirements: full divine power, at least 30 days since the last trial, level below 5.</en></s>
+  <s><zh>升入神域</zh><en>Ascend to the divine realm</en></s>
+  <s><zh>已是神域之主。升入神域后会化作光柱离开这个世界（不再回来），释放半神名额；殖民地永久获得“</zh><en>Already lord of a divine realm. Ascending to the divine realm turns them into a pillar of light that leaves this world (never to return), freeing a demigod slot; the colony permanently gains the divine realm blessing of "</en></s>
+  <s><zh>”的神域赐福：</zh><en>": </en></s>
+  <s><zh>将离开这个世界，永远不会回来。殖民地会得到神域赐福，全员心情+15（30天），之后永久+3。确定吗？</zh><en> will leave this world and never return. The colony gets the divine realm blessing, everyone mood +15 (30 days), then +3 permanently. Are you sure?</en></s>
+  <s><zh>神力</zh><en>Divine power</en></s>
+  <s><zh>神力：</zh><en>Divine power: </en></s>
+  <s><zh>\n每天 +</zh><en>\nPer day +</en></s>
+  <s><zh>。神职能力消耗神力；神力满时可以接受众神的试炼。</zh><en>. Portfolio abilities cost divine power; with full divine power the gods' trial can be accepted.</en></s>
+  <s><zh>新生神祇</zh><en>nascent deity</en></s>
+  <s><zh>次级神祇</zh><en>lesser deity</en></s>
+  <s><zh>中等神祇</zh><en>intermediate deity</en></s>
+  <s><zh>高等神祇</zh><en>greater deity</en></s>
+  <s><zh>神域之主</zh><en>lord of a divine realm</en></s>
+  <s><zh>新神诞生：</zh><en>A new god is born: </en></s>
+  <s><zh>吸收了神性火花，成为“</zh><en> absorbed the divine spark and became a demigod of "</en></s>
+  <s><zh>”的半神（新生神祇）。\n\n不老、饥饿×0.3、免疫疾病、心灵敏感度+20%、受到伤害×0.95、精神崩溃阈值-10%。神职能力：</zh><en>" (nascent deity).\n\nAgeless, hunger ×0.3, immune to disease, psychic sensitivity +20%, damage taken ×0.95, mental break threshold -10%. Portfolio abilities: </en></s>
+  <s><zh>；被动：</zh><en>; passive: </en></s>
+  <s><zh>。\n\n神力每天恢复，神力满时可以“接受众神的试炼”提升神性等级。</zh><en>.\n\nDivine power recovers each day; when full, "accept the gods' trial" to raise the divinity level.</en></s>
+  <s><zh>殖民地的半神僭越神位</zh><en>The colony's demigod usurps a divine seat</en></s>
+  <s><zh>神位被夺</zh><en>divine seat seized</en></s>
+  <s><zh>众神的勇士没能到来（找不到可以派来的派系），试炼取消。</zh><en>The champions of the gods couldn't come (no faction could be found to send); the trial is cancelled.</en></s>
+  <s><zh>不是半神</zh><en>Not a demigod</en></s>
+  <s><zh>试炼正在进行。</zh><en>A trial is in progress.</en></s>
+  <s><zh>已经是神域之主。</zh><en>Already lord of a divine realm.</en></s>
+  <s><zh>神力没满（</zh><en>Divine power isn't full (</en></s>
+  <s><zh>距上次试炼不到</zh><en>Less than </en></s>
+  <s><zh>天（还要 </zh><en> days since the last trial (another </en></s>
+  <s><zh> 天）。</zh><en> days).</en></s>
+  <s><zh>要在殖民地里接受试炼。</zh><en>Must accept the trial in the colony.</en></s>
+  <s><zh>众神的试炼</zh><en>Trial of the gods</en></s>
+  <s><zh>向神灵议会请求更高的神位。议会回应了：1天后，与“</zh><en> asked the council of gods for a higher divine seat. The council answered: in 1 day, the gods opposed to "</en></s>
+  <s><zh>”对立的神会派来他们的勇士。\n\n整场试炼里</zh><en>" will send their champions.\n\nThroughout the trial, </en></s>
+  <s><zh>一次都不能倒下。</zh><en> must not fall even once.</en></s>
+  <s><zh>众神的勇士</zh><en>Champions of the gods</en></s>
+  <s><zh>的勇士奉</zh><en>'s champions, by order of </en></s>
+  <s><zh>众神</zh><en>the gods</en></s>
+  <s><zh>之命来考验</zh><en>, come to test </en></s>
+  <s><zh>被神明附体。</zh><en> is possessed by a god.</en></s>
+  <s><zh>\n\n这是神灵议会的试炼：</zh><en>\n\nThis is a trial of the council of gods: </en></s>
+  <s><zh>不能倒下。</zh><en> must not fall.</en></s>
+  <s><zh>试炼失败</zh><en>Trial failed</en></s>
+  <s><zh>在众神的勇士面前倒下了：神力清零，</zh><en> fell before the champions of the gods: divine power reset to zero, and the trial can be requested again in </en></s>
+  <s><zh>天后才能再请求试炼。神性等级不变。</zh><en> days. Divinity level unchanged.</en></s>
+  <s><zh>新神崛起</zh><en>a new god rises</en></s>
+  <s><zh>通过了神灵议会的试炼，神性等级提升为</zh><en> passed the council of gods' trial, and the divinity level rose to </en></s>
+  <s><zh> / 5）。\n\n神力上限 </zh><en> / 5).\n\nDivine power cap </en></s>
+  <s><zh>，神职能力强度 ×</zh><en>, portfolio ability power ×</en></s>
+  <s><zh>。全体殖民者心情+8（10天）。</zh><en>. All colonists mood +8 (10 days).</en></s>
+  <s><zh>可以升入神域了。</zh><en>Can now ascend to the divine realm.</en></s>
+  <s><zh>化作一道光柱升上天穹，成为了真正的神。\n\n殖民地永久获得“</zh><en> became a pillar of light rising into the heavens and became a true god.\n\nThe colony permanently gains "</en></s>
+  <s><zh>\n\n全体殖民者“我们的神在看着我们”心情+15（30天），之后永久+3。</zh><en>\n\nAll colonists get "our god watches over us" mood +15 (30 days), then +3 permanently.</en></s>
+  <s><zh>神域赐福（黎明）×1.2</zh><en>Divine realm blessing (dawn) ×1.2</en></s>
+  <s><zh>暴政半神的威压×0.85</zh><en>Tyranny demigod's oppression ×0.85</en></s>
+  <s><zh>遗忘之雾×0.6</zh><en>Mist of oblivion ×0.6</en></s>
+  <s><zh>神域赐福（暴政）×1.25</zh><en>Divine realm blessing (tyranny) ×1.25</en></s>
+  <s><zh>神域赐福（火焰，锻造）×1.15</zh><en>Divine realm blessing (fire, forge) ×1.15</en></s>
+  <s><zh>神域赐福（野性）×1.2</zh><en>Divine realm blessing (wild) ×1.2</en></s>
+  <s><zh>神域赐福（心灵）×1.1</zh><en>Divine realm blessing (mind) ×1.1</en></s>
+  <s><zh>神域赐福（魔法）×1.1</zh><en>Divine realm blessing (magic) ×1.1</en></s>
+  <s><zh>黑暗半神（夜间）×1.15</zh><en>Darkness demigod (night) ×1.15</en></s>
+  <s><zh>唤风×1.1</zh><en>Call wind ×1.1</en></s>
+  <s><zh>心灵半神的共鸣+5%</zh><en>Mind demigod's resonance +5%</en></s>
+  <s><zh>神域赐福（死亡）+5%</zh><en>Divine realm blessing (death) +5%</en></s>
+  <s><zh>成神：</zh><en>Ascension: </en></s>
+  <s><zh>圣徒：+0.15</zh><en>Saint: +0.15</en></s>
+</LPStrings>

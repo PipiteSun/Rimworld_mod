@@ -23,7 +23,7 @@ namespace LichPhylactery {
  // 速度很大时：典籍 / 恶魔学典籍按越过门槛结算，卡苏斯按整遍循环，残卷进度封顶 24，契约书倒计时最少留 1 刻。
  public static class ReadSpeed {
   public const float Min=.25f;public const int CacheTicks=250;
-  public const string Note="阅读速度 = 读者的研究速度（最低 ×0.25，无上限）。";
+  public static readonly string Note="阅读速度 = 读者的研究速度（最低 ×0.25，无上限）。".Loc();
   static readonly Dictionary<int,int> cacheTick=new Dictionary<int,int>();static readonly Dictionary<int,float> cache=new Dictionary<int,float>();
   public static float Raw(Pawn p){if(p==null)return 1f;float v=p.GetStatValue(StatDefOf.ResearchSpeed);return float.IsNaN(v) || float.IsInfinity(v)?1f:Mathf.Max(Min,v);}
   public static float Factor(Pawn p){
@@ -60,8 +60,8 @@ namespace LichPhylactery {
   static string Pct(float f)=>Mathf.Clamp01(f).ToStringPercent("0");
   // “，阅读速度 ×1.35（研究速度），约还需 11.1 小时”：left = 还差的量，rate = 这个人每小时实际推进的量（已乘阅读速度）。
   static string Spd(Pawn p,float left,float rate){
-   var s="，阅读速度 ×"+ReadSpeed.Factor(p).ToString("0.##")+"（研究速度）";
-   if(left>0f && rate>0f)s+="，约还需 "+(left/rate).ToString("0.#")+" 小时";return s;
+   var s="，阅读速度 ×".Loc()+ReadSpeed.Factor(p).ToString("0.##")+"（研究速度）".Loc();
+   if(left>0f && rate>0f)s+="，约还需 ".Loc()+(left/rate).ToString("0.#")+" 小时".Loc();return s;
   }
 
   public static ReadInfo Get(Thing book,Pawn p){
@@ -69,40 +69,40 @@ namespace LichPhylactery {
    switch(KindOf(book.def)){
     case Kind.Tome:{
      if(p==null)return r;int a=Growth.TomeIndex(book.def);var h=Adventurer.Get(p);if(h==null)return r;
-     if(h.tomes!=null && a>=0 && a<h.tomes.Length && h.tomes[a]){r.has=r.done=true;r.frac=1f;r.text="已获得奖励（"+Adventurer.Names[a]+"已从典籍得到过）";return r;}
+     if(h.tomes!=null && a>=0 && a<h.tomes.Length && h.tomes[a]){r.has=r.done=true;r.frac=1f;r.text="已获得奖励（".Loc()+Adventurer.Names[a]+"已从典籍得到过）".Loc();return r;}
      var d=Netheril.Doer<BookOutcome_Tome>(book);int t=d?.Ticks(p)??0;
-     r.has=t>0;r.frac=t/(float)Growth.TomeTicks;r.text="阅读进度："+H(t)+" / "+H(Growth.TomeTicks)+" 小时（"+Pct(r.frac)+"）"+Spd(p,Netheril.Hours(Growth.TomeTicks-t),ReadSpeed.Factor(p)*Exalted.ReadFactor(p));return r;}
+     r.has=t>0;r.frac=t/(float)Growth.TomeTicks;r.text="阅读进度：".Loc()+H(t)+" / "+H(Growth.TomeTicks)+" 小时（".Loc()+Pct(r.frac)+"）".Loc()+Spd(p,Netheril.Hours(Growth.TomeTicks-t),ReadSpeed.Factor(p)*Exalted.ReadFactor(p));return r;}
     case Kind.Study:{
      if(p==null)return r;
-     if(NetherilHooks.VPEActive){var d=Netheril.Doer<BookOutcome_NetherilStudy>(book);float x=d?.SessionXP(p)??0f;r.has=x>0f;r.text="灵能经验持续累积（没有终点）"+(x>0f?"，本次 +"+x.ToString("0.##"):"")+Spd(p,0f,0f);return r;}
+     if(NetherilHooks.VPEActive){var d=Netheril.Doer<BookOutcome_NetherilStudy>(book);float x=d?.SessionXP(p)??0f;r.has=x>0f;r.text="灵能经验持续累积（没有终点）".Loc()+(x>0f?"，本次 +".Loc()+x.ToString("0.##"):"")+Spd(p,0f,0f);return r;}
      var st=Netheril.State;if(st==null)return r;float sp=st.StudyPoints(p);r.has=sp>0f;
      int next=-1;foreach(int th in Netheril.StudyThresholds)if(sp<th){next=th;break;}
-     if(next<0 || p.GetPsylinkLevel()>=Netheril.StudyMaxPsylink){r.done=true;r.frac=1f;r.text="研习度 "+sp.ToString("0.#")+"：心灵链接奖励已全部获得（仍可继续累积）";return r;}
+     if(next<0 || p.GetPsylinkLevel()>=Netheril.StudyMaxPsylink){r.done=true;r.frac=1f;r.text="研习度 ".Loc()+sp.ToString("0.#")+"：心灵链接奖励已全部获得（仍可继续累积）".Loc();return r;}
      var sd=Netheril.Doer<BookOutcome_NetherilStudy>(book);
-     r.frac=sp/next;r.text="研习度 "+sp.ToString("0.#")+" / "+next+"（下一级心灵链接，"+Pct(r.frac)+"）"+Spd(p,next-sp,Netheril.StudyXP*(sd?.Q??1f)*IdeoBridge.ScrollXpFactor(p)*ReadSpeed.Factor(p));return r;}
+     r.frac=sp/next;r.text="研习度 ".Loc()+sp.ToString("0.#")+" / "+next+"（下一级心灵链接，".Loc()+Pct(r.frac)+"）".Loc()+Spd(p,next-sp,Netheril.StudyXP*(sd?.Q??1f)*IdeoBridge.ScrollXpFactor(p)*ReadSpeed.Factor(p));return r;}
     case Kind.Arcane:{
      if(p==null)return r;var d=Netheril.Doer<BookOutcome_NetherilArcane>(book);if(d==null)return r;
      int n=d.Learned(p);float pr=d.Progress(p);r.has=n>0 || pr>0f;
-     if(d.LearnedOut(p)){r.done=true;r.frac=1f;r.text="已获得奖励：已领悟 "+n+" / "+Netheril.MaxSpellsPerScroll+" 个法术（再读只剩研习余效）";return r;}
-     r.frac=pr/Netheril.ArcaneGoal;r.text="残卷进度 "+pr.ToString("0.0")+" / "+Netheril.ArcaneGoal.ToString("0")+"（"+Pct(r.frac)+"），已领悟 "+n+" / "+Netheril.MaxSpellsPerScroll+" 个"+Spd(p,Netheril.ArcaneGoal-pr,d.ProgressRate(p)*ReadSpeed.Factor(p));
-     if(d.Stuck(p))r.text+="（灵能等级不够，暂时领悟不了）";
+     if(d.LearnedOut(p)){r.done=true;r.frac=1f;r.text="已获得奖励：已领悟 ".Loc()+n+" / "+Netheril.MaxSpellsPerScroll+" 个法术（再读只剩研习余效）".Loc();return r;}
+     r.frac=pr/Netheril.ArcaneGoal;r.text="残卷进度 ".Loc()+pr.ToString("0.0")+" / "+Netheril.ArcaneGoal.ToString("0")+"（".Loc()+Pct(r.frac)+"），已领悟 ".Loc()+n+" / "+Netheril.MaxSpellsPerScroll+" 个".Loc()+Spd(p,Netheril.ArcaneGoal-pr,d.ProgressRate(p)*ReadSpeed.Factor(p));
+     if(d.Stuck(p))r.text+="（灵能等级不够，暂时领悟不了）".Loc();
      return r;}
     case Kind.Karsus:{
      if(p==null)return r;var st=Netheril.State;if(st==null)return r;
      int n=st.Passes(p),t=st.KarsusTicks(p);r.has=n>0 || t>0;
-     if(n>=Netheril.MaxEcho){r.done=true;r.frac=1f;r.text="已读完 "+n+" 遍：卡苏斯的回响已满（仍可研读）";return r;}
-     r.frac=t/(float)Netheril.KarsusPassTicks;r.text="第 "+(n+1)+" 遍："+H(t)+" / "+Netheril.KarsusPassHours+" 小时（"+Pct(r.frac)+"），已读完 "+n+" 遍"+(n>=Netheril.AscensionPasses?"（已满 "+Netheril.AscensionPasses+" 遍）":"")+Spd(p,Netheril.Hours(Netheril.KarsusPassTicks-t),ReadSpeed.Factor(p));
+     if(n>=Netheril.MaxEcho){r.done=true;r.frac=1f;r.text="已读完 ".Loc()+n+" 遍：卡苏斯的回响已满（仍可研读）".Loc();return r;}
+     r.frac=t/(float)Netheril.KarsusPassTicks;r.text="第 ".Loc()+(n+1)+" 遍：".Loc()+H(t)+" / "+Netheril.KarsusPassHours+" 小时（".Loc()+Pct(r.frac)+"），已读完 ".Loc()+n+" 遍".Loc()+(n>=Netheril.AscensionPasses?"（已满 ".Loc()+Netheril.AscensionPasses+" 遍）".Loc():"")+Spd(p,Netheril.Hours(Netheril.KarsusPassTicks-t),ReadSpeed.Factor(p));
      return r;}
     case Kind.Demonomicon:{
      if(!(book is Book_Demonomicon b))return r;int t=b.readTicks;r.has=t>0;
      bool known=b.demon!=null && AbyssState.Get?.Known(b.demon)==true;
-     if(t>=AbyssItems.BookTicks){r.has=r.done=true;r.frac=1f;r.text="已读完（殖民地已学会召唤"+AbyssRitual.DemonLabel(b.demon)+"）";return r;}
-     r.frac=t/(float)AbyssItems.BookTicks;r.text="阅读进度："+H(t)+" / "+H(AbyssItems.BookTicks)+" 小时（"+Pct(r.frac)+"）"+(p!=null?Spd(p,Netheril.Hours(AbyssItems.BookTicks-t),ReadSpeed.Factor(p)):"，读得多快看读者的研究速度");
-     if(known){r.done=true;r.text+="，已获得奖励（殖民地已经知道"+AbyssRitual.DemonLabel(b.demon)+"）";}
+     if(t>=AbyssItems.BookTicks){r.has=r.done=true;r.frac=1f;r.text="已读完（殖民地已学会召唤".Loc()+AbyssRitual.DemonLabel(b.demon)+"）".Loc();return r;}
+     r.frac=t/(float)AbyssItems.BookTicks;r.text="阅读进度：".Loc()+H(t)+" / "+H(AbyssItems.BookTicks)+" 小时（".Loc()+Pct(r.frac)+"）".Loc()+(p!=null?Spd(p,Netheril.Hours(AbyssItems.BookTicks-t),ReadSpeed.Factor(p)):"，读得多快看读者的研究速度".Loc());
+     if(known){r.done=true;r.text+="，已获得奖励（殖民地已经知道".Loc()+AbyssRitual.DemonLabel(b.demon)+"）".Loc();}
      return r;}
     case Kind.Pact:{
      if(p==null)return r;int t=PactRead.Ticks(p,book);r.has=t>0;
-     r.frac=t/(float)Pacts.ReadTicks;r.text="阅读进度："+H(t)+" / "+H(Pacts.ReadTicks)+" 小时（"+Pct(r.frac)+"）"+Spd(p,Netheril.Hours(Pacts.ReadTicks-t),ReadSpeed.Factor(p));return r;}
+     r.frac=t/(float)Pacts.ReadTicks;r.text="阅读进度：".Loc()+H(t)+" / "+H(Pacts.ReadTicks)+" 小时（".Loc()+Pct(r.frac)+"）".Loc()+Spd(p,Netheril.Hours(Pacts.ReadTicks-t),ReadSpeed.Factor(p));return r;}
    }
    return r;
   }
@@ -128,11 +128,11 @@ namespace LichPhylactery {
    var rows=new List<(Pawn p,ReadInfo i,bool reading)>();
    foreach(var p in tmpPawns){var i=Get(book,p);bool rd=IsReading(p,book);if(i.has || rd)rows.Add((p,i,rd));}
    tmpPawns.Clear();
-   if(rows.Count==0)return "阅读进度：还没有人读过";
+   if(rows.Count==0)return "阅读进度：还没有人读过".Loc();
    var sorted=rows.OrderByDescending(x=>x.reading).ThenBy(x=>x.i.done).ThenByDescending(x=>x.i.frac).ToList();
-   var lines=new List<string>{"阅读进度："};
-   foreach(var x in sorted.Take(TopPawns))lines.Add("  "+x.p.LabelShort+(x.reading?"（正在读）":"")+"："+x.i.text);
-   if(sorted.Count>TopPawns)lines.Add("  另有 "+(sorted.Count-TopPawns)+" 人有进度");
+   var lines=new List<string>{"阅读进度：".Loc()};
+   foreach(var x in sorted.Take(TopPawns))lines.Add("  "+x.p.LabelShort+(x.reading?"（正在读）".Loc():"")+"：".Loc()+x.i.text);
+   if(sorted.Count>TopPawns)lines.Add("  另有 ".Loc()+(sorted.Count-TopPawns)+" 人有进度".Loc());
    return string.Join("\n",lines);
   }
 
@@ -145,8 +145,8 @@ namespace LichPhylactery {
    if(c.book!=book || now-c.tick>=PawnCacheTicks || now<c.tick){
     c.book=book;c.tick=now;var i=Get(book,p);
     c.frac=i.done?-1f:i.frac;
-    c.suffix=i.done?"（已获得奖励）":i.frac>=0f?"（进度 "+Pct(i.frac)+"）":null;
-    c.line=i.text.NullOrEmpty()?null:"阅读"+book.def.label+"："+i.text;
+    c.suffix=i.done?"（已获得奖励）".Loc():i.frac>=0f?"（进度 ".Loc()+Pct(i.frac)+"）".Loc():null;
+    c.line=i.text.NullOrEmpty()?null:"阅读".Loc()+book.def.label+"：".Loc()+i.text;
    }
    return c;
   }
@@ -184,8 +184,8 @@ namespace LichPhylactery {
   }
   public override IEnumerable<StatDrawEntry> SpecialDisplayStats(){
    var s=ReadingProgress.ItemLines(parent);if(s.NullOrEmpty())yield break;
-   var first=s.Split('\n');string value=first.Length>1?first[1].Trim():first[0].Replace("阅读进度：","");
-   yield return new StatDrawEntry(StatCategoryDefOf.Basics,"阅读进度",value,"读这件物品获得奖励的进度（按人累计，存档保留）。\n"+ReadSpeed.Note+"所需小时数不变，读得快的人更早读完。\n\n"+s,4980);
+   var first=s.Split('\n');string value=first.Length>1?first[1].Trim():first[0].Replace("阅读进度：".Loc(),"");
+   yield return new StatDrawEntry(StatCategoryDefOf.Basics,"阅读进度".Loc(),value,"读这件物品获得奖励的进度（按人累计，存档保留）。\n".Loc()+ReadSpeed.Note+"所需小时数不变，读得快的人更早读完。\n\n".Loc()+s,4980);
   }
  }
 

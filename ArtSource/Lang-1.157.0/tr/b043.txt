@@ -1,0 +1,394 @@
+s09739	· Killing a nemesis champion: XP needed for the next level ×\s
+s09740	% (now\s
+s09741	, legend +
+s09742	Current XP multiplier\s
+s09743	% (setting\s
+s09744	 × base\s
+s09745	 × mortal will\s
+s09746	; kill milestones and nemeses aren't multiplied)
+s09747	 point-buy base value\s
+s09748	 (race, background etc.\s
+s09749	\nCan't\s
+s09750	decrease
+s09751	increase
+s09752	Decrease to\s
+s09753	Increase to\s
+s09754	spend\s
+s09755	refund\s
+s09756	 points, leaving\s
+s09757	\n\nAfterwards:\n
+s09758	Starting ability assignment: points remaining\s
+s09759	5e point buy: base values 8-15 per ability, costs 8:0  9:1  10:2  11:3  12:4  13:5  14:7  15:9 (
+s09760	 points total).\nRace and background trait bonuses are counted separately; the shown values already include them.\nClick − / + after each ability to change the base value; the prefill is the standard array recommended from skills.\nClick "confirm" twice to lock, once per person only; without confirming, the current assignment still applies.
+s09761	Click again to confirm: lock the current assignment; it can't be changed afterwards
+s09762	 (still\s
+s09763	 points unused, which will be lost)
+s09764	Lock the current assignment (click twice).
+s09765	Sure?
+s09766	Confirm
+s09767	Restore the recommended assignment from skills (standard array 15/14/13/12/10/8).
+s09768	Recommend
+s09769	Reset all six base values to 8, refund all points, and assign them yourself.
+s09770	All 8
+s09771	Legendary adventurer\s
+s09772	Legendary adventurer (title, takes no trait slot): level 20 and has completed a DND milestone.\nWhole colony mood +3 "walking with a legend"; own social impact +10%; prisoners, visitors and traders +10 opinion of them.\nWhen the legend dies, whole colony mood −6 (10 days).
+s09773	Available ability points:\s
+s09774	Each ability score improvement =\s
+s09775	 (talent or trait bonus, not stacking)
+s09776	 (×
+s09777	 level, once each.\nClick +1 / +2 after each ability to add points directly; single ability cap\s
+s09778	 (+4 for the Boon of Might ability, +2 per 5 legend levels for legendary adventurers).\nRemaining\s
+s09779	 full ability score improvements
+s09780	, plus\s
+s09781	 split points
+s09782	; picking a feat instead costs one full ability score improvement.
+s09783	Auto-assign
+s09784	Same as "colonists auto-assign ability points" in settings: ability score improvements are automatically added to the class's main ability or the highest one. When turned on, this person's remaining points are also assigned at once.
+s09785	Pick boon (
+s09786	Jump to the "epic boons" list below and pick directly on the tab.
+s09787	Pick feat (
+s09788	Jump to the "available feats" list below:\s
+s09789	use class bonus feats first (free,\s
+s09790	 left),
+s09791	trade one full ability score improvement for a feat.
+s09792	\n\n(Click an ability name to expand / collapse its effect table)
+s09793	After adding a point:\n
+s09794	The six abilities' numeric effects are handed over to Isekai (setting "Isekai coexistence mode"); levels, points, feats, boons and proficiency bonus work as usual
+s09795	Ability effect strength 0%: the six abilities have no numeric effect
+s09796	Total part health +
+s09797	% (level, Constitution
+s09798	, Tough
+s09799	, legend health
+s09800	Epic boons:\s
+s09801	Boon of fate: available
+s09802	Boon of fate: another\s
+s09803	Legend attribute points: remaining\s
+s09804	 ("legend levels" is off, no effect for now)
+s09805	\nNext point:\s
+s09806	After 1 point:\s
+s09807	After 5 points:\s
+s09808	Legend attribute points unlock after becoming a legendary adventurer
+s09809	Legend attribute points: "legend levels" is turned off in settings
+s09810	Feats
+s09811	No feats yet (an ability score improvement can be swapped for a feat)
+s09812	 (origin)
+s09813	 (today\s
+s09814	\n\nIncludes:\s
+s09815	\n\nPrerequisite:\s
+s09816	\n\s
+s09817	 times per day, restored at midnight.
+s09818	Available feats (class bonus feats, free,\s
+s09819	 left; after that they cost ability score improvements,\s
+s09820	 left
+s09821	Available feats (cost one ability score improvement,\s
+s09822	 left)
+s09823	Available feats
+s09824	  Spellcasting bonus feats\s
+s09825	 (spell feats only)
+s09826	 (per day\s
+s09827	any ability
+s09828	Prerequisite:\s
+s09829	  —\s
+s09830	\nCan't pick:\s
+s09831	Click again to confirm:\s
+s09832	use a spellcasting bonus feat
+s09833	use a class bonus feat
+s09834	spend an ability score improvement
+s09835	 for "
+s09836	".
+s09837	Owned
+s09838	Pick
+s09839	Split ability points can't be swapped for feats: a full ability score improvement is needed
+s09840	Epic boons (
+s09841	 boon points left; each boon can be picked only once)
+s09842	Click again to confirm
+s09843	, cap +
+s09844	Click again to confirm: spend a boon point for "
+s09845	Race:\s
+s09846	, affinity off
+s09847	  Talent:\s
+s09848	Racial affinity —\s
+s09849	\n("Racial affinity" is turned off in settings)
+s09850	Legend Lv
+s09851	: all ability caps +
+s09852	 (+2 per 5 legend levels)
+s09853	VPE extra path points +
+s09854	 (another\s
+s09855	 points are granted once psycasts awaken)
+s09856	Each adventurer level gives 1 VPE path point (doesn't add VPE psylink levels; 1 point per 2 legend levels). People without VPE psycasts save them up, and they're granted all at once the first time they gain a psylink.\nDND class paths: unlocked with the matching skill at 6 or the main ability at 13; class power also gains 0.05 × main ability modifier + 0.02 × (proficiency bonus − 2).
+s09857	Milestones:\s
+s09858	story level
+s09859	 (effect not active)
+s09860	Mythic·
+s09861	Exalted·
+s09862	 (not active)
+s09863	 (paused)
+s09864	Not active:\s
+s09865	Ability just changed; takes effect shortly
+s09866	Paused: current\s
+s09867	 is below 20; restored on returning to 20.\n\n
+s09868	\n\nMythic condition: ability 24, or 20 + legendary adventurer +\s
+s09869	 and\s
+s09870	 legend points totaling 20 (now\s
+s09871	Class features
+s09872	Class features: appear after learning fighter, paladin or monk (the "Class" page)
+s09873	Fighting style: pick 1 after learning a martial class
+s09874	Fighting styles
+s09875	 (adapting,\s
+s09876	 days left)
+s09877	\n\nA changed style takes effect after 3 days; this slot has no effect while adapting.
+s09878	\n\nThis slot isn't unlocked right now; the style has no effect.
+s09879	Collapse
+s09880	Change
+s09881	Switch to another style: the new style takes effect after 3 days (180000 ticks), and this slot has no effect meanwhile. The first pick needs no wait.
+s09882	  (empty, pick below)
+s09883	  (
+s09884	learn a martial class
+s09885	fighter level 10
+s09886	 unlocks)
+s09887	Available fighting styles (slot\s
+s09888	, a change takes effect after 3 days
+s09889	, the first pick takes effect immediately
+s09890	Change to "
+s09891	" (takes effect in 3 days).
+s09892	Pick "
+s09893	Starting ability assignment
+s09894	Ability points\s
+s09895	Class bonus feats\s
+s09896	Spellcasting bonus feats\s
+s09897	Epic boons\s
+s09898	Legend attribute points\s
+s09899	Class points\s
+s09900	Legendary class points\s
+s09901	Choose class (
+s09902	Open\s
+s09903	's adventurer tab (
+s09904	Suppressed by antimagic (in front of a beholder's central eye or near an antimagic charm)
+s09905	Enemies only
+s09906	Allies only
+s09907	Friendlies only
+s09908	Own side only
+s09909	Can only copy own side
+s09910	Colonists only
+s09911	Need to pick another ally
+s09912	[DND Rimlands] Ability castable on anyone:\s
+s09913	Human necromantic construct · vanilla appearance genes and gear display
+s09914	Unarmored · front
+s09915	Gear · front
+s09916	Gear · side
+s09917	Gear · back
+s09918	Gear · other side
+s09919	Lich/humanlike
+s09920	Ascension
+s09921	Ascension questline
+s09922	Four paths to godhood (saint, demilich, titan awakening, fire usurper), plus demigods, the council of gods and ascending to the divine realm. When off, there's no "path to godhood" button, no new paths start and trial raids no longer arrive; people who already became demigods keep their powers.
+s09923	Demigod slot limit:\s
+s09924	 (checked at the moment of ascension; those who ascended to the divine realm don't take a slot)
+s09925	Trial difficulty multiplier:\s
+s09926	 (points of all ascension trial raids and the council of gods)
+s09927	Kill 10 divinely infused
+s09928	[DND Rimlands] Ascension hourly tick error:\s
+s09929	[DND Rimlands] Ascension daily tick error:\s
+s09930	Path of the Saint
+s09931	Path of the Demilich
+s09932	Titan awakening
+s09933	Path of the Fire Usurper
+s09934	Arcane ascension
+s09935	There are already\s
+s09936	 demigods in the world; the slot limit is\s
+s09937	 (adjustable in settings; those who ascended to the divine realm don't take a slot).
+s09938	The ascension questline is disabled.
+s09939	Needs the "theology of divinity" research.
+s09940	Only colonists can walk a path to godhood.
+s09941	Already a demigod.
+s09942	Already walking\s
+s09943	The godless can't become saints.
+s09944	Needs to be a chosen of a god.
+s09945	 favor below\s
+s09946	Needs to be a lich with a phylactery.
+s09947	Phylactery level\s
+s09948	Needs to be a sky-born (titan).
+s09949	Needs to be an adult.
+s09950	The Path of the Fire Usurper only opens automatically when defeating a god-possessed boss during the twilight years.
+s09951	unknown path
+s09952	Path to godhood
+s09953	Set out on a path to godhood: see which paths are available and their costs.
+s09954	Not walking a path to godhood.
+s09955	Not yet at the ascension ritual step:\s
+s09956	The fire seekers aren't all defeated yet.
+s09957	There's no\s
+s09958	 divine spark on the map that can be absorbed.
+s09959	The phylactery must be on the same map as\s
+s09960	.
+s09961	Needs an altar.
+s09962	Begin channeling the divine spark (12 hours, can be interrupted; an interruption doesn't consume the spark).
+s09963	Portfolio:\s
+s09964	undetermined
+s09965	\nSource:\s
+s09966	 (any colonist can absorb it)
+s09967	\nOnly\s
+s09968	 can absorb it
+s09969	 · path to godhood
+s09970	Set out on\s
+s09971	Take this path
+s09972	Path of the Fire Usurper:\s
+s09973	Path:\s
+s09974	Current trial:\s
+s09975	Next step:\s
+s09976	Fire-usurping ritual: offer miracle fragments to raise the success chance (+8% each, up to\s
+s09977	; there are\s
+s09978	 on the map).
+s09979	Offer:\s
+s09980	 fragments
+s09981	Success chance:\s
+s09982	. On failure\s
+s09983	 dies, and the spark shatters into 5 miracle fragments.
+s09984	Begin ritual
+s09985	Can't reach the ritual spot.
+s09986	[DND Rimlands] Path to godhood button error:\s
+s09987	[DND Rimlands] Arcane demigod hookup error:\s
+s09988	Ascension ritual:\s
+s09989	Can't reach the altar.
+s09990	Chosen of a god (patron favor ≥60): Devotion → Offering → Proving (become a saint) → Holy Fire Descends → ascend at the altar.
+s09991	Lich with phylactery level ≥
+s09992	: Myriad Souls → Defy Kelemvor's Judgment → seize godhood beside the phylactery. Kelemvor favor -50 when the path opens, fixed at -100 after success.
+s09993	Adult sky-born: Oath of the Sire → War of Giants → Gate of the Heavens, awakening directly as a demigod (no spark needed).
+s09994	During the twilight years, opens automatically when a colonist defeats a god-possessed boss: Bloodied → Deeds → fire-usurping ritual (with a risk of failure).
+s09995	Have\s
+s09996	?\n\n
+s09997	\n\nA person can walk only one path at a time; dying midway (except liches) or leaving the colony for more than\s
+s09998	 days clears progress.
+s09999	\n\nCost: Kelemvor favor immediately -
+s10000	, and doomguards will come to destroy the phylactery.
+s10001	\n\nSire god:\s
+s10002	, favor +
+s10003	\n\nThe sire god will be chosen from the seven gods that can be worshipped (excluding Bane and Shar), favor +
+s10004	\n\nProving and Holy Fire Descends both draw powerful enemies.
+s10005	Trial 1: Devotion
+s10006	Trial 2: Offering
+s10007	Trial 3: Proving
+s10008	Final trial: Holy Fire Descends
+s10009	ascension ritual
+s10010	Trial 1: Myriad Souls
+s10011	Trial 2: Defy Judgment
+s10012	Trial 3: Seize Godhood
+s10013	Trial 1: Oath of the Sire
+s10014	Trial 2: War of Giants
+s10015	Trial 3: Gate of the Heavens
+s10016	waiting for a slot
+s10017	Trial 1: Bloodied
+s10018	Trial 2: Deeds
+s10019	fire-usurping ritual
+s10020	Pray or meditate at an altar for 24 hours in total within 15 days, with mood staying ≥30% throughout (dropping below restarts the count). Accumulated\s
+s10021	 / 24 hours;\s
+s10022	 days left.
+s10023	Offer at the altar\s
+s10024	 miracle fragments and items with total market value ≥
+s10025	 (consumed at once). Miracle fragments on the map:\s
+s10026	.
+s10027	Face the "heretic champion":\s
+s10028	's opposing god faction, its leader possessed by a god, points ≥
+s10029	 must fight and survive, and the leader must die or be captured.
+s10030	\nThe heretic champion has arrived.
+s10031	After being a saint for\s
+s10032	 days (
+s10033	) and\s
+s10034	 favor ≥
+s10035	), a divine spark will fall beside the saint.
+s10036	The divine spark has fallen: within 2 days 3 waves of fire seekers will come (Thayan expedition → githyanki →\s
+s10037	's opposing god faction). Arrived\s
+s10038	 / 3 waves.
+s10039	After opening the path, sacrifice whole humanlike corpses with "drain soul":\s
+s10040	Kelemvor sends doomguards to destroy the phylactery: 3 waves over 3 days (points ×0.8 / 1.0 / 1.3); the third wave's leader, "Kelemvor's Judge", freezes nearby revivals. It's passed as long as the phylactery isn't destroyed. Arrived\s
+s10041	Hold the ascension ritual beside the phylactery: channel the divine spark for 12 hours (can be interrupted without consuming the spark); a wave of githyanki comes meanwhile.
+s10042	\n(There's no absorbable spark on the map yet)
+s10043	Sire god\s
+s10044	)'s deeds:\s
+s10045	. Progress\s
+s10046	Challenge the giant king:\s
+s10047	fire giants of the Ember Clan
+s10048	, points ≥
+s10049	 personally must deal ≥30% of the giant king's damage (
+s10050	), and the giant king must die or be captured.
+s10051	Stand outdoors for 6 hours (can be interrupted, but must restart): meanwhile a storm of divine wrath, and 3 waves of planar creatures attack. Afterwards, awaken directly as a demigod.
+s10052	The Gate of the Heavens is open, but the demigod slots are full:\s
+s10053	Defeat 3 god-possessed bosses of the same god (counted separately per god):\s
+s10054	. The count is kept to the next time when the twilight years end.
+s10055	usurped god
+s10056	's deeds:\s
+s10057	Beside\s
+s10058	, channel the divine spark for 12 hours (can be interrupted without consuming the spark); meanwhile this map has a "divine tremor" (psycast cooldowns ×1.5).
+s10059	\nSuccess chance = 50% + (psychic sensitivity - 1) × 50% + 8% per miracle fragment (up to\s
+s10060	) + Godslayer 10%, max 95%. Now (no fragments offered):\s
+s10061	. Failure:\s
+s10062	 dies, and the spark shatters into 5 miracle fragments.
+s10063	\nSuccess chance 100%.
+s10064	Pray at the altar often (right-click the altar) or meditate near it, and keep a good mood.
+s10065	Prepare miracle fragments and valuables, then click "make offering".
+s10066	Prepare your defenses, then click "face the proving".
+s10067	Keep serving\s
+s10068	 to raise favor.
+s10069	Guard the spark and repel the three waves of fire seekers.
+s10070	Sacrifice corpses with "drain soul" at the necromantic ritual table.
+s10071	Defend the phylactery.
+s10072	Do as the sire god likes.
+s10073	When ready, click "start the war of giants" and have\s
+s10074	 strike the giant king personally.
+s10075	Click "ascend the Gate of the Heavens" and have\s
+s10076	 stand outdoors for a full 6 hours.
+s10077	Wait for a slot to free up (or raise the slot limit in settings).
+s10078	Keep defeating god-possessed bosses during the twilight years.
+s10079	Complete the usurped god's deeds.
+s10080	The ascension ritual can begin.
+s10081	Make offering
+s10082	Not enough miracle fragments on the map
+s10083	 fragments
+s10084	Needs an altar
+s10085	Face the proving
+s10086	The heretic champion has already arrived
+s10087	Must be in the colony
+s10088	Start the war of giants
+s10089	The giants have already arrived
+s10090	Ascend the Gate of the Heavens
+s10091	Begin ascension ritual
+s10092	Abandon this path
+s10093	Abandon\s
+s10094	? All progress will be cleared (costs already paid aren't refunded).
+s10095	 abandoned\s
+s10096	Set out on the Path of the Demilich
+s10097	Acknowledge sire god
+s10098	 set out on\s
+s10099	 (portfolio:\s
+s10100	Path to godhood interrupted
+s10101	: trial complete
+s10102	\n\nNext step ·\s
+s10103	 died, and the progress of\s
+s10104	 dissipated with them.
+s10105	 left the colony for more than\s
+s10106	 days, and the progress of\s
+s10107	 dissipated.
+s10108	[DND Rimlands] Path to godhood tick error (
+s10109	saint
+s10110	's mood dropped below 30%; the devotion count restarts.
+s10111	 accumulated 24 hours of devotion before the altar.
+s10112	 didn't complete devotion within 15 days; the timer restarts.
+s10113	The heretic champion's leader wasn't killed or captured: the proving isn't complete; you can try again.
+s10114	 guarded the divine spark, and all three waves of fire seekers were repelled.
+s10115	Proven a saint
+s10116	 defeated the heretic champion and became a saint of\s
+s10117	: psychic sensitivity +15%, Social +2,\s
+s10118	 favor +
+s10119	, then +
+s10120	Proving: heretic champion
+s10121	's heretic champion comes to challenge\s
+s10122	's chosen\s
+s10123	The leader\s
+s10124	 is possessed by\s
+s10125	.
+s10126	\n\nThis is a trial of ascension:\s
+s10127	 must fight and survive, and the leader must die or be captured.
+s10128	 offered at the altar\s
+s10129	 miracle fragments and\s
+s10130	 offerings.
+s10131	Divine spark falls
+s10132	 cast a divine spark toward\s

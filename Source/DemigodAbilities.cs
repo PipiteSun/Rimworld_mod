@@ -38,10 +38,10 @@ namespace LichPhylactery {
    if(!base.Valid(target,throwMessages))return false;
    var p=target.Pawn;var c=parent.pawn;string why=null;
    switch(Props.effect){
-    case "UnfadingDawn":if(p==null || p.HostileTo(c))why="只能对友方施放。";break;
-    case "JudgmentHammer":case "WillCrush":case "JudgmentGate":if(p==null || !p.HostileTo(c))why="只能对敌人施放。";break;
-    case "Dominate":if(p==null || !p.HostileTo(c) || !p.RaceProps.Humanlike)why="只能对人形敌人施放。";else if(p.GetStatValue(StatDefOf.PsychicSensitivity)<=0f)why="心灵失聪的人不受支配。";break;
-    case "ShadowStep":if(!target.Cell.IsValid || !target.Cell.Standable(c.Map) || target.Cell.GetFirstPawn(c.Map)!=null)why="那里站不了人。";break;
+    case "UnfadingDawn":if(p==null || p.HostileTo(c))why="只能对友方施放。".Loc();break;
+    case "JudgmentHammer":case "WillCrush":case "JudgmentGate":if(p==null || !p.HostileTo(c))why="只能对敌人施放。".Loc();break;
+    case "Dominate":if(p==null || !p.HostileTo(c) || !p.RaceProps.Humanlike)why="只能对人形敌人施放。".Loc();else if(p.GetStatValue(StatDefOf.PsychicSensitivity)<=0f)why="心灵失聪的人不受支配。".Loc();break;
+    case "ShadowStep":if(!target.Cell.IsValid || !target.Cell.Standable(c.Map) || target.Cell.GetFirstPawn(c.Map)!=null)why="那里站不了人。".Loc();break;
    }
    if(why!=null && throwMessages)Messages.Message(why,MessageTypeDefOf.RejectInput,false);
    return why==null;
@@ -64,10 +64,10 @@ namespace LichPhylactery {
    return s;
   }
   public static string Blocked(Pawn p,AbilityDef def){
-   var h=Demigods.Of(p);if(h==null)return "只有半神能施放。";
+   var h=Demigods.Of(p);if(h==null)return "只有半神能施放。".Loc();
    var props=def.comps?.OfType<CompProperties_DivineAbility>().FirstOrDefault();if(props==null)return null;
-   if(h.Power+.001f<props.cost)return "神力不足：需要"+props.cost.ToString("0")+"，现在"+h.Power.ToString("0")+"。";
-   if(AntimagicAt(p.MapHeld,p.PositionHeld) && p.HostileTo(Faction.OfPlayer))return "反魔场里不能施放。";
+   if(h.Power+.001f<props.cost)return "神力不足：需要".Loc()+props.cost.ToString("0")+"，现在".Loc()+h.Power.ToString("0")+"。".Loc();
+   if(AntimagicAt(p.MapHeld,p.PositionHeld) && p.HostileTo(Faction.OfPlayer))return "反魔场里不能施放。".Loc();
    return null;
   }
   static IEnumerable<Pawn> Near(Map map,IntVec3 c,float r)=>map==null?Enumerable.Empty<Pawn>():Races124.PawnsNear(map,c,r).Where(o=>!o.Dead);
@@ -89,13 +89,13 @@ namespace LichPhylactery {
       else if(Items.Undead(o) || Faith.HolyVulnerable(o))Hit(c,o,Faith.Radiant,20f*S);
      }
      FleckMaker.Static(c.Position,map,FleckDefOf.PsycastAreaEffect,pr.radius);break;
-    case "UnfadingDawn":if(t!=null){Items.Give(t,"LP_UnfadingDawn",pr.duration);Mote(t,"不灭晨曦");}break;
+    case "UnfadingDawn":if(t!=null){Items.Give(t,"LP_UnfadingDawn",pr.duration);Mote(t,"不灭晨曦".Loc());}break;
     // ---- 正义 ----
     case "JudgmentHammer":if(t!=null){Hit(c,t,Faith.Radiant,35f*S);if(!t.Dead)t.stances?.stunner.StunFor(120,c,false,true);FleckMaker.Static(t.Position,map,FleckDefOf.PsycastAreaEffect,1.5f);}break;
     case "JusticeShield":foreach(var o in Near(map,c.Position,pr.radius).Where(o=>!o.HostileTo(c) && o.RaceProps.Humanlike).ToList())Items.Give(o,"LP_JusticeShield",pr.duration);FleckMaker.Static(c.Position,map,FleckDefOf.PsycastAreaEffect,pr.radius);break;
     // ---- 暴政 ----
     case "Dominate":Dominate(c,t,pr.duration);break;
-    case "CrownOfDread":foreach(var o in Near(map,c.Position,pr.radius).Where(o=>o.HostileTo(c) && !o.Downed).ToList())o.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.PanicFlee,"恐惧之冠",true,true);FleckMaker.Static(c.Position,map,FleckDefOf.PsycastAreaEffect,pr.radius);break;
+    case "CrownOfDread":foreach(var o in Near(map,c.Position,pr.radius).Where(o=>o.HostileTo(c) && !o.Downed).ToList())o.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.PanicFlee,"恐惧之冠".Loc(),true,true);FleckMaker.Static(c.Position,map,FleckDefOf.PsycastAreaEffect,pr.radius);break;
     // ---- 风暴 ----
     case "ThunderWrath":
      for(int i=0;i<3;i++){
@@ -113,12 +113,12 @@ namespace LichPhylactery {
     case "ForgeBlessing":foreach(var o in Near(map,c.Position,pr.radius).Where(o=>!o.HostileTo(c) && o.RaceProps.Humanlike).ToList())Items.Give(o,"LP_ForgeBlessing",pr.duration);FleckMaker.Static(c.Position,map,FleckDefOf.PsycastAreaEffect,pr.radius);break;
     // ---- 野性 ----
     case "PackCall":PackCall(c,4,pr.duration);break;
-    case "PredatorForm":Items.Give(c,"LP_PredatorForm",pr.duration);Mote(c,"掠食者之形");break;
+    case "PredatorForm":Items.Give(c,"LP_PredatorForm",pr.duration);Mote(c,"掠食者之形".Loc());break;
     // ---- 心灵 ----
     case "PsionicBlast":
      foreach(var o in Near(map,c.Position,pr.radius).Where(o=>o.HostileTo(c)).ToList()){if(o.GetStatValue(StatDefOf.PsychicSensitivity)<=0f)continue;o.stances?.stunner.StunFor(180,c,false,true);Hit(c,o,Psychic,15f*S);}
      FleckMaker.Static(c.Position,map,FleckDefOf.PsycastAreaEffect,pr.radius);break;
-    case "WillCrush":if(t!=null && t.GetStatValue(StatDefOf.PsychicSensitivity)>0f)t.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.Berserk,"意志碾压",true,true);break;
+    case "WillCrush":if(t!=null && t.GetStatValue(StatDefOf.PsychicSensitivity)>0f)t.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.Berserk,"意志碾压".Loc(),true,true);break;
     // ---- 死亡 ----
     case "SoulRest":{
      var tr=Ascension.Tracker;
@@ -128,7 +128,7 @@ namespace LichPhylactery {
      }
      foreach(var corpse in map.listerThings.ThingsInGroup(ThingRequestGroup.Corpse).OfType<Corpse>().Where(x=>x.Position.InHorDistOf(c.Position,pr.radius) && x.InnerPawn!=null && x.InnerPawn.HostileTo(c)).ToList())if(tr!=null)tr.restUntil[corpse.InnerPawn.ThingID]=Find.TickManager.TicksGame+pr.duration;
      FleckMaker.Static(c.Position,map,FleckDefOf.PsycastAreaEffect,pr.radius);break;}
-    case "JudgmentGate":if(t!=null){if(t.health.summaryHealth.SummaryHealthPercent<.3f){t.Kill(new DamageInfo(Faith.Radiant,999f,1f,-1f,c));Mote(t,"审判");}else Hit(c,t,Faith.Radiant,30f*S);}break;
+    case "JudgmentGate":if(t!=null){if(t.health.summaryHealth.SummaryHealthPercent<.3f){t.Kill(new DamageInfo(Faith.Radiant,999f,1f,-1f,c));Mote(t,"审判".Loc());}else Hit(c,t,Faith.Radiant,30f*S);}break;
     // ---- 魔法 ----
     case "WeaveMissiles":{
      var foes=Near(map,c.Position,15f).Where(o=>o.HostileTo(c) && !o.Downed).ToList();
@@ -148,11 +148,11 @@ namespace LichPhylactery {
      foreach(var o in Near(map,c.Position,pr.radius).Where(o=>o.HostileTo(c) && o.Downed && o.RaceProps.Humanlike).ToList()){o.Kill(null);n++;}
      if(n>0 && box!=null && !box.Destroyed)box.Feed(50f*n);
      FleckMaker.Static(c.Position,map,FleckDefOf.PsycastAreaEffect,pr.radius);
-     if(n>0)Messages.Message(c.LabelShort+"收割了 "+n+" 个灵魂"+(box!=null?"，命匣 +"+(50*n)+" 献祭经验":"")+"。",c,MessageTypeDefOf.NeutralEvent,false);
+     if(n>0)Messages.Message(c.LabelShort+"收割了 ".Loc()+n+" 个灵魂".Loc()+(box!=null?"，命匣 +".Loc()+(50*n)+" 献祭经验".Loc():"")+"。".Loc(),c,MessageTypeDefOf.NeutralEvent,false);
      break;}
     case "DeadArmy":
      for(int i=0;i<4;i++){
-      Pawn s;try{s=FactionConstructs.MakeBound("Skeleton",c,c.Faction);}catch(Exception e){Log.Warning("[DND边缘大陆] 亡者大军："+e.Message);break;}
+      Pawn s;try{s=FactionConstructs.MakeBound("Skeleton",c,c.Faction);}catch(Exception e){Log.Warning("[DND边缘大陆] 亡者大军：".Loc()+e.Message);break;}
       var cell=CellFinder.RandomClosewalkCellNear(c.Position,map,3);GenSpawn.Spawn(s,cell,map);FleckMaker.ThrowSmoke(cell.ToVector3Shifted(),map,1f);
       Items.Give(s,"LP_SummonedTemp",pr.duration);
      }
@@ -164,7 +164,7 @@ namespace LichPhylactery {
    var orig=t.Faction;var h=(Hediff_DivineDominated)Items.Give(t,"LP_DivineDominated",ticks);if(h==null)return;h.original=orig;
    t.GetLord()?.Notify_PawnLost(t,PawnLostCondition.ChangedFaction);
    t.SetFaction(c.Faction);t.mindState?.mentalStateHandler?.CurState?.RecoverFromState();
-   Mote(t,"被支配");
+   Mote(t,"被支配".Loc());
   }
   public static void PackCall(Pawn c,int n,int ticks){
    var kind=DefDatabase<PawnKindDef>.GetNamedSilentFail("LP_Worg")??DefDatabase<PawnKindDef>.GetNamedSilentFail("Warg");if(kind==null || c.Map==null)return;
@@ -189,7 +189,7 @@ namespace LichPhylactery {
     if(p==null || p.Dead || p.Destroyed || f==null || f.defeated || p.Faction==f)return;
     p.GetLord()?.Notify_PawnLost(p,PawnLostCondition.ChangedFaction);p.SetFaction(f);
     if(p.Spawned && f.HostileTo(Faction.OfPlayer))LordMaker.MakeNewLord(f,new LordJob_AssaultColony(f,false,false,false,false,false,false,false),p.Map,new List<Pawn>{p});
-    Messages.Message(p.LabelShort+"挣脱了支配，回到了"+f.Name+"。",p,MessageTypeDefOf.NeutralEvent,false);
+    Messages.Message(p.LabelShort+"挣脱了支配，回到了".Loc()+f.Name+"。".Loc(),p,MessageTypeDefOf.NeutralEvent,false);
    });
   }
   public override void ExposeData(){base.ExposeData();Scribe_References.Look(ref original,"lpOriginal");}
@@ -215,7 +215,7 @@ namespace LichPhylactery {
    __1.Severity=Mathf.Min(__1.Severity,Mathf.Max(.01f,p.health.hediffSet.GetPartHealth(__1.Part)-1f));
    if(p.health.WouldDieAfterAddingHediff(__1))__1.Severity=.01f;
    var h=p.health.hediffSet.GetFirstHediffOfDef(Items.Hediff("LP_UnfadingDawn"));if(h!=null)p.health.RemoveHediff(h);
-   Fiends.Defer(()=>{if(p.Dead)return;foreach(var b in p.health.hediffSet.hediffs.Where(x=>x.Bleeding).ToList())b.Tended(1f,1f);if(p.Spawned)FleckMaker.Static(p.Position,p.Map,FleckDefOf.PsycastAreaEffect,1.5f);Messages.Message("不灭晨曦护住了"+p.LabelShort+"：致命的一击没有夺走生命，伤口止住了血。",p,MessageTypeDefOf.PositiveEvent,false);});
+   Fiends.Defer(()=>{if(p.Dead)return;foreach(var b in p.health.hediffSet.hediffs.Where(x=>x.Bleeding).ToList())b.Tended(1f,1f);if(p.Spawned)FleckMaker.Static(p.Position,p.Map,FleckDefOf.PsycastAreaEffect,1.5f);Messages.Message("不灭晨曦护住了".Loc()+p.LabelShort+"：致命的一击没有夺走生命，伤口止住了血。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);});
   }
  }
  // 熔炉祝福、天穹之矛的近战附加伤害。
@@ -230,7 +230,7 @@ namespace LichPhylactery {
  }
  // 反魔场：区域里的敌人放不出原版能力；神明附体者的技能停摆。
  [HarmonyPatch(typeof(RimWorld.Ability),"get_CanCast")]
- public static class AntimagicCast {static void Postfix(RimWorld.Ability __instance,ref AcceptanceReport __result){var p=__instance?.pawn;if(__result.Accepted && p!=null && p.Spawned && p.HostileTo(Faction.OfPlayer) && DemigodAbilities.AntimagicAt(p.Map,p.Position))__result="反魔场";}}
+ public static class AntimagicCast {static void Postfix(RimWorld.Ability __instance,ref AcceptanceReport __result){var p=__instance?.pawn;if(__result.Accepted && p!=null && p.Spawned && p.HostileTo(Faction.OfPlayer) && DemigodAbilities.AntimagicAt(p.Map,p.Position))__result="反魔场".Loc();}}
  [HarmonyPatch(typeof(TwilightSkills),"Tick")]
  public static class AntimagicVessel {static bool Prefix(Hediff_DivineVessel __0)=>__0?.pawn==null || !__0.pawn.Spawned || !DemigodAbilities.AntimagicAt(__0.pawn.Map,__0.pawn.Position);}
  // 神职能力冷却：圣徒圣印 ×0.8。
@@ -240,5 +240,5 @@ namespace LichPhylactery {
  [HarmonyPatch(typeof(ResurrectionUtility),nameof(ResurrectionUtility.TryResurrect))]
  public static class SoulRestResurrect {static bool Prefix(Pawn pawn,ref bool __result){var t=Ascension.Tracker;if(pawn!=null && t!=null && t.restUntil.TryGetValue(pawn.ThingID,out int u) && Find.TickManager.TicksGame<u){__result=false;return false;}return true;}}
  [HarmonyPatch(typeof(MindFlayer),nameof(MindFlayer.CannotDevour))]
- public static class SoulRestDevour {static void Postfix(Thing t,ref string __result){if(__result!=null)return;var p=t as Pawn??(t as Corpse)?.InnerPawn;var tr=Ascension.Tracker;if(p!=null && tr!=null && tr.restUntil.TryGetValue(p.ThingID,out int u) && Find.TickManager.TicksGame<u)__result="灵魂已经安息（死亡半神），大脑吞不下去。";}}
+ public static class SoulRestDevour {static void Postfix(Thing t,ref string __result){if(__result!=null)return;var p=t as Pawn??(t as Corpse)?.InnerPawn;var tr=Ascension.Tracker;if(p!=null && tr!=null && tr.restUntil.TryGetValue(p.ThingID,out int u) && Find.TickManager.TicksGame<u)__result="灵魂已经安息（死亡半神），大脑吞不下去。".Loc();}}
 }

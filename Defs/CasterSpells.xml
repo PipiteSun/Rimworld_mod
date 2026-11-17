@@ -730,7 +730,7 @@
   <AbilityDef ParentName="LP_ClassLocBase">
     <defName>LP_CS_DragonsBreath</defName>
     <label>龙息术</label>
-    <description>2 环（变化·可升环）：喷出 6 格锥形的龙息，里面的敌人受 16 × 强度点伤害；元素看血脉（冰 / 水 → 寒冷，风 / 雷 → 闪电，黑 → 强酸，绿 → 毒素，力能龙 → 力场，其他 → 火焰）。升环：每环效果 +25%。冷却 20 秒。</description>
+    <description>2 环（变化·可升环）：喷出 6 格锥形的龙息，里面的敌人受 16 × 强度点伤害；元素看血脉（冰 / 水 → 寒冷，风 / 雷 → 闪电，黑 → 强酸，绿 → 毒素，其他 → 火焰）。升环：每环效果 +25%。冷却 20 秒。</description>
     <iconPath>LP/Classes/CasterSpells/DragonsBreath</iconPath>
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
     <cooldownTicksRange>1200</cooldownTicksRange>

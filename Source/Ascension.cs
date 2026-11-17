@@ -24,10 +24,10 @@ namespace LichPhylactery {
  }
  public static class AscensionSettings {
   public static void Draw(Listing_Standard l){
-   var s=LichMod.Settings;l.GapLine();l.Label("成神");
-   l.CheckboxLabeled("成神任务线",ref s.ascension,"圣徒、半神巫妖、泰坦觉醒、篡火者四条成神之路，以及半神、神灵议会和升入神域。关闭后不再有“成神之路”按钮、不再开启新路线、试炼袭击不再到来；已经成为半神的人保留能力。");
-   l.Label("半神名额上限："+s.demigodCap+"（升神那一刻检查；升入神域的不占名额）");s.demigodCap=(int)l.Slider(s.demigodCap,1,3);
-   l.Label("试炼难度倍率："+(s.ascensionDifficulty/100f).ToString("0.0#")+"（所有成神试炼袭击和神灵议会的点数）");s.ascensionDifficulty=Mathf.RoundToInt(l.Slider(s.ascensionDifficulty,50,200)/10f)*10;
+   var s=LichMod.Settings;l.GapLine();l.Label("成神".Loc());
+   l.CheckboxLabeled("成神任务线".Loc(),ref s.ascension,"圣徒、半神巫妖、泰坦觉醒、篡火者四条成神之路，以及半神、神灵议会和升入神域。关闭后不再有“成神之路”按钮、不再开启新路线、试炼袭击不再到来；已经成为半神的人保留能力。".Loc());
+   l.Label("半神名额上限：".Loc()+s.demigodCap+"（升神那一刻检查；升入神域的不占名额）".Loc());s.demigodCap=(int)l.Slider(s.demigodCap,1,3);
+   l.Label("试炼难度倍率：".Loc()+(s.ascensionDifficulty/100f).ToString("0.0#")+"（所有成神试炼袭击和神灵议会的点数）".Loc());s.ascensionDifficulty=Mathf.RoundToInt(l.Slider(s.ascensionDifficulty,50,200)/10f)*10;
   }
  }
 
@@ -46,7 +46,7 @@ namespace LichPhylactery {
   public IEnumerable<LP_DeityDef> Opposed=>Gods.SelectMany(g=>g.Enemies).Concat(opposed).Distinct();
   public string DeedKey=>deed.NullOrEmpty()?"infused":deed;
   public int DeedTarget=>deed.NullOrEmpty()?10:deedTarget;
-  public string DeedText=>deed.NullOrEmpty()?"击杀神力灌注者 10 名":deedLabel+" "+deedTarget;
+  public string DeedText=>deed.NullOrEmpty()?"击杀神力灌注者 10 名".Loc():deedLabel+" "+deedTarget;
  }
  public class LP_PortfolioExtension : DefModExtension {public LP_DivinePortfolioDef portfolio;}
 
@@ -101,9 +101,9 @@ namespace LichPhylactery {
    if(now%GenDate.TicksPerHour!=137)return;
    zones.RemoveAll(z=>z==null || z.map==null || now>=z.until);
    foreach(var k in restUntil.Where(kv=>kv.Value<now).Select(kv=>kv.Key).ToList())restUntil.Remove(k);
-   try{AscensionPaths.Hourly(this);Demigods.Hourly(this);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 成神每小时结算出错："+e,77310021);}
+   try{AscensionPaths.Hourly(this);Demigods.Hourly(this);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 成神每小时结算出错：".Loc()+e,77310021);}
    int day=GenDate.DaysPassed;if(day==lastDay)return;bool first=lastDay<0;lastDay=day;if(first)return;
-   try{Demigods.Daily(this);AscensionPaths.Daily(this);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 成神每日结算出错："+e,77310022);}
+   try{Demigods.Daily(this);AscensionPaths.Daily(this);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 成神每日结算出错：".Loc()+e,77310022);}
   }
   public override void ExposeData(){
    base.ExposeData();
@@ -150,39 +150,39 @@ namespace LichPhylactery {
   public static JobDef SkyGateJob=>skyGate??(skyGate=DefDatabase<JobDef>.GetNamedSilentFail("LP_SkyGate"));
   public static LP_DivinePortfolioDef Portfolio(string key)=>DefDatabase<LP_DivinePortfolioDef>.AllDefsListForReading.FirstOrDefault(d=>d.key==key);
   public static LP_DivinePortfolioDef PortfolioOf(LP_DeityDef god)=>god?.GetModExtension<LP_PortfolioExtension>()?.portfolio;
-  public static string PathLabel(string path)=>path==Saint?"圣徒之路":path==Lich?"半神巫妖之路":path==Titan?"泰坦觉醒":path==Usurper?"篡火者之路":path==Arcane?"奥术飞升":path;
+  public static string PathLabel(string path)=>path==Saint?"圣徒之路".Loc():path==Lich?"半神巫妖之路".Loc():path==Titan?"泰坦觉醒".Loc():path==Usurper?"篡火者之路".Loc():path==Arcane?"奥术飞升".Loc():path;
   public static bool Colonist(Pawn p)=>p!=null && !p.Dead && p.Faction?.IsPlayer==true && p.RaceProps.Humanlike && !p.IsPrisoner && !p.IsSlave;
   public static void Letter(string label,string text,LetterDef def,LookTargets look=null,Faction faction=null)=>Find.LetterStack.ReceiveLetter(label,text,def,look??LookTargets.Invalid,faction);
 
   // ---------- 名额 ----------
   public static IEnumerable<Pawn> LivingDemigods{get{var t=Tracker;if(t==null)return Enumerable.Empty<Pawn>();return t.demigods.Where(p=>p!=null && !p.Destroyed && !t.ascended.Contains(p) && (!p.Dead || Items.IsLich(p)) && Demigods.Of(p)!=null);}}
   public static int DemigodCount=>LivingDemigods.Count();
-  public static string QuotaBlocked=>DemigodCount>=Cap?"世上已经有 "+DemigodCount+" 位半神，名额上限是 "+Cap+"（设置里可以调；升入神域的不占名额）。":null;
+  public static string QuotaBlocked=>DemigodCount>=Cap?"世上已经有 ".Loc()+DemigodCount+" 位半神，名额上限是 ".Loc()+Cap+"（设置里可以调；升入神域的不占名额）。".Loc():null;
 
   // ---------- 开路 ----------
   public static string CannotStart(Pawn p,string path){
-   if(!Enabled)return "成神任务线已关闭。";
-   if(!Researched)return "需要研究“神格学”。";
-   if(!Colonist(p))return "只有殖民者能走成神之路。";
-   if(Demigods.Of(p)!=null)return p.LabelShort+"已经是半神了。";
-   var t=Tracker;if(t?.Of(p)!=null)return p.LabelShort+"已经在走"+PathLabel(t.Of(p).path)+"。";
+   if(!Enabled)return "成神任务线已关闭。".Loc();
+   if(!Researched)return "需要研究“神格学”。".Loc();
+   if(!Colonist(p))return "只有殖民者能走成神之路。".Loc();
+   if(Demigods.Of(p)!=null)return p.LabelShort+"已经是半神了。".Loc();
+   var t=Tracker;if(t?.Of(p)!=null)return p.LabelShort+"已经在走".Loc()+PathLabel(t.Of(p).path)+"。".Loc();
    switch(path){
     case Saint:{
-     if(FaithUtility.IsAtheist(p))return "无神者不能成为圣徒。";
-     if(!FaithUtility.IsChosen(p,out var g) || g==null)return "需要是神选者。";
-     if(FaithUtility.GetFavor(g)<SaintFavor)return g.label+"的神眷不到"+SaintFavor+"（现在 "+FaithUtility.GetFavor(g).ToString("0.#")+"）。";
+     if(FaithUtility.IsAtheist(p))return "无神者不能成为圣徒。".Loc();
+     if(!FaithUtility.IsChosen(p,out var g) || g==null)return "需要是神选者。".Loc();
+     if(FaithUtility.GetFavor(g)<SaintFavor)return g.label+"的神眷不到".Loc()+SaintFavor+"（现在 ".Loc()+FaithUtility.GetFavor(g).ToString("0.#")+"）。".Loc();
      return null;}
     case Lich:{
-     var h=Necro.Lich(p);if(h?.box==null || h.box.Destroyed)return "需要是有命匣的巫妖。";
-     int lv=LichSpells.UnlockedLevel(h.box);if(lv<AscensionPaths.LichLevel)return "命匣等级 "+lv+" / "+AscensionPaths.LichLevel+"。";
+     var h=Necro.Lich(p);if(h?.box==null || h.box.Destroyed)return "需要是有命匣的巫妖。".Loc();
+     int lv=LichSpells.UnlockedLevel(h.box);if(lv<AscensionPaths.LichLevel)return "命匣等级 ".Loc()+lv+" / "+AscensionPaths.LichLevel+"。".Loc();
      return null;}
     case Titan:{
-     if(!AscensionPaths.IsPlainTitan(p))return "需要是天穹神裔（泰坦）。";
-     if(!p.DevelopmentalStage.Adult())return "需要成年。";
+     if(!AscensionPaths.IsPlainTitan(p))return "需要是天穹神裔（泰坦）。".Loc();
+     if(!p.DevelopmentalStage.Adult())return "需要成年。".Loc();
      return null;}
-    case Usurper:return "篡火者之路只能在黄昏之年里击败神明附体的首领时自动开启。";
+    case Usurper:return "篡火者之路只能在黄昏之年里击败神明附体的首领时自动开启。".Loc();
    }
-   return "未知路线";
+   return "未知路线".Loc();
   }
   public static IEnumerable<string> StartablePaths(Pawn p)=>new[]{Saint,Lich,Titan}.Where(x=>CannotStart(p,x)==null);
   // letter=false：开局剧本自己发一封说明信（1.41.0）。
@@ -200,7 +200,7 @@ namespace LichPhylactery {
    if(!Enabled || !Researched || !Colonist(p) || Demigods.Of(p)!=null)return null;
    var pr=Tracker?.Of(p);
    if(pr==null && !StartablePaths(p).Any())return null;
-   return new Command_Action{defaultLabel="成神之路",defaultDesc=pr==null?"踏上一条成神之路：查看可以走的路线和它们的代价。":PathLabel(pr.path)+"："+AscensionPaths.StageLabel(pr)+"\n\n"+AscensionPaths.StageText(pr),icon=PathIcon,action=()=>Find.WindowStack.Add(new Dialog_Ascension(p))};
+   return new Command_Action{defaultLabel="成神之路".Loc(),defaultDesc=pr==null?"踏上一条成神之路：查看可以走的路线和它们的代价。".Loc():PathLabel(pr.path)+"：".Loc()+AscensionPaths.StageLabel(pr)+"\n\n"+AscensionPaths.StageText(pr),icon=PathIcon,action=()=>Find.WindowStack.Add(new Dialog_Ascension(p))};
   }
 
   // ---------- 神性火花 ----------
@@ -216,15 +216,15 @@ namespace LichPhylactery {
   // ---------- 升神仪式 ----------
   public static bool RiteStage(AscensionProgress pr)=>pr!=null && ((pr.path==Saint && pr.stage==AscensionPaths.SaintRite) || (pr.path==Lich && pr.stage==AscensionPaths.LichRite) || (pr.path==Usurper && pr.stage==AscensionPaths.UsurperRite));
   public static string RiteBlocked(Pawn p){
-   if(!Enabled)return "成神任务线已关闭。";
-   if(!Researched)return "需要研究“神格学”。";
-   var pr=Tracker?.Of(p);if(pr==null)return p.LabelShort+"没有在走成神之路。";
-   if(!RiteStage(pr))return "还没到升神仪式这一步："+AscensionPaths.StageLabel(pr)+"。";
-   if(pr.path==Saint && pr.lord!=null)return "夺火者还没打完。";
+   if(!Enabled)return "成神任务线已关闭。".Loc();
+   if(!Researched)return "需要研究“神格学”。".Loc();
+   var pr=Tracker?.Of(p);if(pr==null)return p.LabelShort+"没有在走成神之路。".Loc();
+   if(!RiteStage(pr))return "还没到升神仪式这一步：".Loc()+AscensionPaths.StageLabel(pr)+"。".Loc();
+   if(pr.path==Saint && pr.lord!=null)return "夺火者还没打完。".Loc();
    var q=QuotaBlocked;if(q!=null)return q;
-   if(SparkFor(p)==null)return "地图上没有"+p.LabelShort+"能吸收的神性火花。";
-   if(pr.path==Lich){var box=Necro.Lich(p)?.box;if(box==null || box.Destroyed || box.MapHeld!=p.MapHeld)return "命匣要和"+p.LabelShort+"在同一张地图上。";}
-   else if(!FaithUtility.Altars(p.MapHeld).Any())return "需要一座圣坛。";
+   if(SparkFor(p)==null)return "地图上没有".Loc()+p.LabelShort+"能吸收的神性火花。".Loc();
+   if(pr.path==Lich){var box=Necro.Lich(p)?.box;if(box==null || box.Destroyed || box.MapHeld!=p.MapHeld)return "命匣要和".Loc()+p.LabelShort+"在同一张地图上。".Loc();}
+   else if(!FaithUtility.Altars(p.MapHeld).Any())return "需要一座圣坛。".Loc();
    return null;
   }
   public static Thing RiteFocus(Pawn p){var pr=Tracker?.Of(p);if(pr?.path==Lich)return Necro.Lich(p)?.box;return FaithUtility.Altars(p.MapHeld).OrderBy(a=>a.Position.DistanceToSquared(p.Position)).FirstOrDefault();}
@@ -238,7 +238,7 @@ namespace LichPhylactery {
   public static void RiteStarted(Pawn p){
    var map=p.Map;if(map!=null && TremorDef!=null && !map.gameConditionManager.ConditionIsActive(TremorDef))map.gameConditionManager.RegisterCondition(GameConditionMaker.MakeCondition(TremorDef,RiteTicks+GenDate.TicksPerHour));
    var pr=Tracker?.Of(p);if(pr?.path==Lich)AscensionPaths.LichRiteRaid(pr);
-   Messages.Message(p.LabelShort+"开始引导神性火花（12小时，可以打断，打断不消耗火花）。",p,MessageTypeDefOf.NeutralEvent,false);
+   Messages.Message(p.LabelShort+"开始引导神性火花（12小时，可以打断，打断不消耗火花）。".Loc(),p,MessageTypeDefOf.NeutralEvent,false);
   }
   public static void RiteEnded(Pawn p){var map=p?.MapHeld;if(map==null || TremorDef==null)return;foreach(var c in map.gameConditionManager.ActiveConditions.Where(c=>c.def==TremorDef).ToList())c.End();}
   // 仪式完成（测试直接调用）：roll 为空时掷骰。返回是否成功。
@@ -307,7 +307,7 @@ namespace LichPhylactery {
  public class CompDivineSpark : ThingComp {
   public Pawn owner;public LP_DivinePortfolioDef portfolio;public string path;public bool usurped;
   public bool CanAbsorb(Pawn p)=>p!=null && (usurped || owner==null || owner==p);
-  public override string CompInspectStringExtra()=>"神职："+(portfolio?.label??"未定")+"\n来源："+Ascension.PathLabel(path)+(usurped?"（任何殖民者都可以吸收）":owner!=null?"\n只有"+owner.LabelShort+"能吸收":"");
+  public override string CompInspectStringExtra()=>"神职：".Loc()+(portfolio?.label??"未定".Loc())+"\n来源：".Loc()+Ascension.PathLabel(path)+(usurped?"（任何殖民者都可以吸收）".Loc():owner!=null?"\n只有".Loc()+owner.LabelShort+"能吸收".Loc():"");
   public override void PostExposeData(){base.PostExposeData();Scribe_References.Look(ref owner,"lpOwner",true);Scribe_Defs.Look(ref portfolio,"lpPortfolio");Scribe_Values.Look(ref path,"lpPath");Scribe_Values.Look(ref usurped,"lpUsurped");}
   public override bool AllowStackWith(Thing other)=>false;
  }
@@ -325,7 +325,7 @@ namespace LichPhylactery {
   public Dialog_Ascension(Pawn p){pawn=p;doCloseX=true;forcePause=true;absorbInputAroundWindow=true;closeOnClickedOutside=true;}
   // 1.124.0 UI 整理：标题固定在上面，下面整块可滚动（三条路线的说明较长时不再溢出窗口）。
   public override void DoWindowContents(Rect r){
-   float y=LPUI.Title(r,pawn.LabelShort+" · 成神之路");Widgets.DrawLineHorizontal(r.x,y-LPUI.Gap*.5f,r.width);
+   float y=LPUI.Title(r,pawn.LabelShort+" · 成神之路".Loc());Widgets.DrawLineHorizontal(r.x,y-LPUI.Gap*.5f,r.width);
    var l=LPUI.BeginScroll(new Rect(r.x,y,r.width,r.yMax-y),ref scroll,contentH);
    try{Body(l);}finally{contentH=LPUI.EndScroll(l);LPUI.Reset();}
   }
@@ -334,24 +334,24 @@ namespace LichPhylactery {
    if(pr==null){
     foreach(var path in new[]{Ascension.Saint,Ascension.Lich,Ascension.Titan}){
      string why=Ascension.CannotStart(pawn,path);
-     l.Label(Ascension.PathLabel(path)+(why==null?"":"（"+why+"）"));
+     l.Label(Ascension.PathLabel(path)+(why==null?"":"（".Loc()+why+"）".Loc()));
      l.Label("   "+AscensionPaths.PathSummary(path));
-     if(why==null && l.ButtonText("踏上"+Ascension.PathLabel(path))){
-      string p2=path;Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation(AscensionPaths.StartWarning(pawn,p2),()=>{Ascension.Start(pawn,p2);Close();},true,"踏上此路"));
+     if(why==null && l.ButtonText("踏上".Loc()+Ascension.PathLabel(path))){
+      string p2=path;Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation(AscensionPaths.StartWarning(pawn,p2),()=>{Ascension.Start(pawn,p2);Close();},true,"踏上此路".Loc()));
      }
      l.Gap(6f);
     }
-    l.Label("篡火者之路："+AscensionPaths.PathSummary(Ascension.Usurper));
+    l.Label("篡火者之路：".Loc()+AscensionPaths.PathSummary(Ascension.Usurper));
    }else{
-    l.Label("路线："+Ascension.PathLabel(pr.path));
-    l.Label("当前试炼："+AscensionPaths.StageLabel(pr));
+    l.Label("路线：".Loc()+Ascension.PathLabel(pr.path));
+    l.Label("当前试炼：".Loc()+AscensionPaths.StageLabel(pr));
     l.Label(AscensionPaths.StageText(pr));
     float f=AscensionPaths.StageProgress(pr);
     var bar=l.GetRect(22f);Widgets.FillableBar(bar,Mathf.Clamp01(f),SolidColorMaterials.NewSolidColorTexture(new Color(.86f,.7f,.3f)),BaseContent.GreyTex,true);Text.Anchor=TextAnchor.MiddleCenter;Widgets.Label(bar,f.ToStringPercent());Text.Anchor=TextAnchor.UpperLeft;
-    l.Gap();l.Label("下一步："+AscensionPaths.Hint(pr));
+    l.Gap();l.Label("下一步：".Loc()+AscensionPaths.Hint(pr));
     l.Gap();
     foreach(var b in AscensionPaths.Buttons(pr)){
-     if(b.disabled!=null){l.Label(b.label+"（"+b.disabled+"）");continue;}
+     if(b.disabled!=null){l.Label(b.label+"（".Loc()+b.disabled+"）".Loc());continue;}
      if(l.ButtonText(b.label)){b.action();Close();}
     }
    }
@@ -365,10 +365,10 @@ namespace LichPhylactery {
   public override void DoWindowContents(Rect r){
    var l=new Listing_Standard();l.Begin(r);
    int have=Faith.ShardsOn(pawn.MapHeld);
-   l.Label("篡火仪式：献上神迹残片提高成功率（每片 +8%，最多 "+AscensionPaths.UsurperShardsMax+" 片；地图上有 "+have+" 片）。");
-   l.Label("献上："+shards+" 片");shards=(int)l.Slider(shards,0,Math.Min(AscensionPaths.UsurperShardsMax,have));
-   l.Label("成功率："+AscensionPaths.UsurperChance(pawn,shards).ToStringPercent()+"。失败时"+pawn.LabelShort+"会死去，火花碎成 5 片神迹残片。");
-   if(l.ButtonText("开始仪式")){if(!Ascension.BeginRite(pawn,shards))Messages.Message(Ascension.RiteBlocked(pawn)??"到不了仪式的位置。",MessageTypeDefOf.RejectInput,false);Close();}
+   l.Label("篡火仪式：献上神迹残片提高成功率（每片 +8%，最多 ".Loc()+AscensionPaths.UsurperShardsMax+" 片；地图上有 ".Loc()+have+" 片）。".Loc());
+   l.Label("献上：".Loc()+shards+" 片".Loc());shards=(int)l.Slider(shards,0,Math.Min(AscensionPaths.UsurperShardsMax,have));
+   l.Label("成功率：".Loc()+AscensionPaths.UsurperChance(pawn,shards).ToStringPercent()+"。失败时".Loc()+pawn.LabelShort+"会死去，火花碎成 5 片神迹残片。".Loc());
+   if(l.ButtonText("开始仪式".Loc())){if(!Ascension.BeginRite(pawn,shards))Messages.Message(Ascension.RiteBlocked(pawn)??"到不了仪式的位置。".Loc(),MessageTypeDefOf.RejectInput,false);Close();}
    l.End();
   }
  }
@@ -431,7 +431,7 @@ namespace LichPhylactery {
   static IEnumerable<Gizmo> Postfix(IEnumerable<Gizmo> __result,Pawn __instance){
    foreach(var g in __result)yield return g;
    Gizmo extra=null;
-   try{if(__instance.IsColonistPlayerControlled && Find.Selector.NumSelected==1)extra=Ascension.PathGizmo(__instance);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 成神之路按钮出错："+e,77310023);}
+   try{if(__instance.IsColonistPlayerControlled && Find.Selector.NumSelected==1)extra=Ascension.PathGizmo(__instance);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 成神之路按钮出错：".Loc()+e,77310023);}
    if(extra!=null)yield return extra;
   }
  }
@@ -439,7 +439,7 @@ namespace LichPhylactery {
  public static class AscensionStartup {
   static AscensionStartup(){
    Building_FaithAltar.ExtraGizmos.Add(AltarGizmos);
-   NetherilAscension.ArcaneDemigodGranted+=p=>{try{Demigods.GrantArcane(p);}catch(Exception e){Log.Error("[DND边缘大陆] 奥术半神接入出错："+e);}};
+   NetherilAscension.ArcaneDemigodGranted+=p=>{try{Demigods.GrantArcane(p);}catch(Exception e){Log.Error("[DND边缘大陆] 奥术半神接入出错：".Loc()+e);}};
    StatPart_Ascension.Register();
   }
   static IEnumerable<Gizmo> AltarGizmos(Building_FaithAltar altar){
@@ -447,7 +447,7 @@ namespace LichPhylactery {
    var t=Ascension.Tracker;if(t==null)yield break;
    foreach(var pr in t.progress.Where(x=>!x.done && x.pawn!=null && x.pawn.MapHeld==altar.Map && (x.path==Ascension.Saint || x.path==Ascension.Usurper) && Ascension.RiteStage(x)).ToList()){
     var p=pr.pawn;string why=Ascension.RiteBlocked(p);
-    var c=new Command_Action{defaultLabel="升神仪式："+p.LabelShort,defaultDesc=AscensionPaths.RiteDesc(pr),icon=Ascension.PathIcon,action=()=>{if(pr.path==Ascension.Usurper)Find.WindowStack.Add(new Dialog_UsurperShards(p));else if(!Ascension.BeginRite(p))Messages.Message("到不了圣坛旁边。",MessageTypeDefOf.RejectInput,false);}};
+    var c=new Command_Action{defaultLabel="升神仪式：".Loc()+p.LabelShort,defaultDesc=AscensionPaths.RiteDesc(pr),icon=Ascension.PathIcon,action=()=>{if(pr.path==Ascension.Usurper)Find.WindowStack.Add(new Dialog_UsurperShards(p));else if(!Ascension.BeginRite(p))Messages.Message("到不了圣坛旁边。".Loc(),MessageTypeDefOf.RejectInput,false);}};
     if(why!=null)c.Disable(why);
     yield return c;
    }

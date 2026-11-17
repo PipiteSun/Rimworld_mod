@@ -30,7 +30,7 @@ namespace LichPhylactery {
   [Unsaved] Texture2D bg;[Unsaved] bool bgLoaded;
   public Texture2D Background{get{if(!bgLoaded){bgLoaded=true;bg=background.NullOrEmpty()?null:ContentFinder<Texture2D>.Get(background,false);}return bg;}}
   public int SkillLevel(Pawn p)=>Mathf.Max(ClassSystem.Skill(p,mainSkill),alternateSkill==null?0:ClassSystem.Skill(p,alternateSkill));
-  public string SkillText=>mainSkill.LabelCap.Resolve()+(alternateSkill==null?"":"或"+alternateSkill.LabelCap.Resolve());
+  public string SkillText=>mainSkill.LabelCap.Resolve()+(alternateSkill==null?"":"或".Loc()+alternateSkill.LabelCap.Resolve());
   public override IEnumerable<string> ConfigErrors(){
    foreach(var e in base.ConfigErrors())yield return e;
    if(mainSkill==null)yield return defName+": mainSkill is null";
@@ -143,7 +143,7 @@ namespace LichPhylactery {
   public static int Points(Pawn p)=>Points(Adventurer.Get(p));
   public static bool Any(Pawn p)=>Data(p)?.Any==true;
   // 1.90.0 会施法的职业：施法职业（法师、牧师、德鲁伊、术士、邪术师）、圣武士（神术）、器械师，或诡术师子职业。专长“战争施法者”等的前置用它。
-  public const string SpellcasterText="施法职业（法师、牧师、德鲁伊、术士、邪术师、圣武士或诡术师）";
+  public static readonly string SpellcasterText="施法职业（法师、牧师、德鲁伊、术士、邪术师、圣武士或诡术师）".Loc();
   public static bool Spellcaster(Pawn p){
    var h=Adventurer.Get(p);if(h?.classes==null || h.classes.levels.Count==0)return false;
    foreach(var kv in h.classes.levels)if(kv.Value>0 && kv.Key!=null && (kv.Key.caster || kv.Key==Paladin || kv.Key.defName=="LP_Class_Artificer"))return true;
@@ -160,7 +160,7 @@ namespace LichPhylactery {
   }
   static int DefaultAbility(LP_ClassDef c)=>c==null || c.primary.NullOrEmpty()?Adventurer.Str:Math.Max(0,Adventurer.AbilityIndex(c.primary.Split('/')[0]));
   // 术士血脉（1.36.0 起在 VPE 桥的 ClassRules）：这些异种、六臂蛇人、坎比恩学术士时技能门槛 −2，天赋强度 +0.15。
-  public static readonly HashSet<string> Bloodlines=new HashSet<string>{"LP_ForceDragon","LP_GenasiFire","LP_GenasiWater","LP_GenasiEarth","LP_GenasiAir","LP_Genie","LP_Titan","LP_StormGiant","LP_CloudGiant","LP_Cambion"};
+  public static readonly HashSet<string> Bloodlines=new HashSet<string>{"LP_GenasiFire","LP_GenasiWater","LP_GenasiEarth","LP_GenasiAir","LP_Genie","LP_Titan","LP_StormGiant","LP_CloudGiant","LP_Cambion"};
   public const int BloodlineSkillBonus=2;public const float BloodlineBonus=.15f;
   public static bool Bloodline(Pawn p)=>p!=null && (p.genes?.Xenotype!=null && Bloodlines.Contains(p.genes.Xenotype.defName) || Marilith.Is(p) || AbyssRaces.IsCambion(p));
   static int GateBonus(LP_ClassDef c,Pawn p)=>c!=null && c.bloodline && Bloodline(p)?BloodlineSkillBonus:0;
@@ -171,29 +171,29 @@ namespace LichPhylactery {
   public static string Role(Pawn p){var c=MainClass(p);if(c==null)return null;if(c==Fighter && Skill(p,SkillDefOf.Shooting)>Skill(p,SkillDefOf.Melee))return "ranged";return "melee";}
   public static string Forbidden(LP_ClassDef c,Pawn p){
    if(c==null || !Items.IsLich(p))return null;
-   if(c==Paladin)return "亡灵无法立下圣誓";
-   if(c.defName=="LP_Class_Druid")return "死亡之躯与自然相斥";
+   if(c==Paladin)return "亡灵无法立下圣誓".Loc();
+   if(c.defName=="LP_Class_Druid")return "死亡之躯与自然相斥".Loc();
    return null;
   }
 
   // ---------- 加点 ----------
   // 1.90.0：主属性写全（“力量或敏捷 13”），ScoreOk 本来就取较高的一项。
-  public static string PrimaryText(LP_ClassDef c){var l=c==null || c.primary.NullOrEmpty()?new List<int>():c.primary.Split('/').Select(s=>Adventurer.AbilityIndex(s)).Where(i=>i>=0).Distinct().ToList();if(l.Count==0)l.Add(DefaultAbility(c));return string.Join("或",l.Select(i=>Adventurer.Names[i]));}
-  public static string GateText(LP_ClassDef c,int taken,Pawn p=null){int b=GateBonus(c,p);return taken==0?"需要"+c.SkillText+" "+(FirstSkill-b)+" 级（或"+PrimaryText(c)+" "+ScoreGate+"）":"兼修需要冒险者 "+MultiAdventurerLevel+" 级，且"+c.SkillText+" "+(MultiSkill-b)+" 级（或"+PrimaryText(c)+" "+ScoreGate+"）";}
+  public static string PrimaryText(LP_ClassDef c){var l=c==null || c.primary.NullOrEmpty()?new List<int>():c.primary.Split('/').Select(s=>Adventurer.AbilityIndex(s)).Where(i=>i>=0).Distinct().ToList();if(l.Count==0)l.Add(DefaultAbility(c));return string.Join("或".Loc(),l.Select(i=>Adventurer.Names[i]));}
+  public static string GateText(LP_ClassDef c,int taken,Pawn p=null){int b=GateBonus(c,p);return taken==0?"需要".Loc()+c.SkillText+" "+(FirstSkill-b)+" 级（或".Loc()+PrimaryText(c)+" "+ScoreGate+"）".Loc():"兼修需要冒险者 ".Loc()+MultiAdventurerLevel+" 级，且".Loc()+c.SkillText+" "+(MultiSkill-b)+" 级（或".Loc()+PrimaryText(c)+" "+ScoreGate+"）".Loc();}
   public static bool GateOk(Hediff_Adventurer h,LP_ClassDef c,int taken){
    var p=h.pawn;bool skill=c.SkillLevel(p)>=(taken==0?FirstSkill:MultiSkill)-GateBonus(c,p) || ScoreOk(c,p);
    return taken==0?skill:h.level>=MultiAdventurerLevel && skill;
   }
   // 能不能给 c 加 1 级；返回 null 表示可以。
   public static string CanAdd(Hediff_Adventurer h,LP_ClassDef c){
-   if(h==null || c==null)return "没有这个职业";
+   if(h==null || c==null)return "没有这个职业".Loc();
    if(h.classes==null)h.classes=new ClassData();
-   int cur=Level(h,c);if(cur>=CapLevel)return "已经 "+CapLevel+" 级";
-   if(Points(h)<=0)return h.level>CapLevel?"传奇等级不给职业点":"没有职业点（每个冒险者等级 1 点）";
+   int cur=Level(h,c);if(cur>=CapLevel)return "已经 ".Loc()+CapLevel+" 级".Loc();
+   if(Points(h)<=0)return h.level>CapLevel?"传奇等级不给职业点".Loc():"没有职业点（每个冒险者等级 1 点）".Loc();
    if(cur>0)return null;
    var f=Forbidden(c,h.pawn);if(f!=null)return f;
    int taken=h.classes.levels.Count(kv=>kv.Value>0);
-   if(taken>=MaxClasses)return "最多兼修 "+MaxClasses+" 个职业";
+   if(taken>=MaxClasses)return "最多兼修 ".Loc()+MaxClasses+" 个职业".Loc();
    if(!GateOk(h,c,taken) && h.classes.freeUnlocks<=0)return GateText(c,taken,h.pawn);
    return null;
   }
@@ -204,7 +204,7 @@ namespace LichPhylactery {
    SetLevel(h,c,cur+1);
    if(message && h.pawn!=null && h.pawn.Faction!=null && h.pawn.Faction.IsPlayer){
     var got=c.abilities.Where(e=>e.level==cur+1).Select(e=>e.ability.label).ToList();
-    Messages.Message(h.pawn.LabelShort+"："+c.label+" "+(cur+1)+" 级"+(got.Count>0?"，获得 "+string.Join("、",got):""),h.pawn,MessageTypeDefOf.PositiveEvent,false);
+    Messages.Message(h.pawn.LabelShort+"：".Loc()+c.label+" "+(cur+1)+" 级".Loc()+(got.Count>0?"，获得 ".Loc()+string.Join("、".Loc(),got):""),h.pawn,MessageTypeDefOf.PositiveEvent,false);
    }
    return true;
   }
@@ -232,7 +232,7 @@ namespace LichPhylactery {
   public static int[] BonusFeatLevels(LP_ClassDef c)=>c==null?null:c==Fighter?FighterFeatLevels:c==Monk || c==Paladin?MonkPaladinFeatLevels:c.caster?CasterFeats.Levels:null; // 1.140.0 施法职业 1/5/10/15
   static int GrantFrom(Hediff_Adventurer h,LP_ClassDef c,int[] levels,ref int granted,List<string> who){
    if(c==null)return 0;int due=FeatsDue(levels,Level(h,c));if(due<=granted)return 0;
-   int gave=due-granted;granted=due;who.Add(c.label+" "+Level(h,c)+" 级");return gave;
+   int gave=due-granted;granted=due;who.Add(c.label+" "+Level(h,c)+" 级".Loc());return gave;
   }
   public static int SyncFighterFeats(Hediff_Adventurer h,bool letter=false){
    if(h==null)return 0;
@@ -244,9 +244,9 @@ namespace LichPhylactery {
    var p=h.pawn;
    if(p==null || p.Faction==null || !p.Faction.IsPlayer){while(h.fighterFeats>0 && h.TryEnemyFeat(true)){}while(h.casterFeats>0 && h.TryEnemyFeat(true)){}}
    else if(!p.Dead && !Adventurer.TestSuppressed){
-    string text=p.LabelShort+"（"+string.Join("、",who)+"）获得 "+gave+" 个职业奖励专长：免费选一个专长，不占属性提升。战士 1、2 级和之后每个偶数级各 1 个；武僧、圣武士 1、2 级各 1 个。"+(cf>0?"\n\n"+CasterFeats.Text:"")+"\n\n在“冒险者”分页的“可选专长”里选择。";
-    if(letter)Find.LetterStack.ReceiveLetter("职业奖励专长",text,LetterDefOf.PositiveEvent,p);
-    else Messages.Message(p.LabelShort+"获得 "+gave+" 个职业奖励专长（在冒险者分页选择）",p,MessageTypeDefOf.PositiveEvent,false);
+    string text=p.LabelShort+"（".Loc()+string.Join("、".Loc(),who)+"）获得 ".Loc()+gave+" 个职业奖励专长：免费选一个专长，不占属性提升。战士 1、2 级和之后每个偶数级各 1 个；武僧、圣武士 1、2 级各 1 个。".Loc()+(cf>0?"\n\n"+CasterFeats.Text:"")+"\n\n在“冒险者”分页的“可选专长”里选择。".Loc();
+    if(letter)Find.LetterStack.ReceiveLetter("职业奖励专长".Loc(),text,LetterDefOf.PositiveEvent,p);
+    else Messages.Message(p.LabelShort+"获得 ".Loc()+gave+" 个职业奖励专长（在冒险者分页选择）".Loc(),p,MessageTypeDefOf.PositiveEvent,false);
    }
    h.Dirty();return gave;
   }
@@ -259,8 +259,8 @@ namespace LichPhylactery {
   }
   public static string Missing(Hediff_Adventurer h,LP_ClassDef c,ClassAbilityEntry e){
    if(Entitled(h,c,e))return null;
-   int l=Level(h,c);if(l<e.level)return c.label+" "+e.level+" 级获得";
-   return "还需要"+e.capstoneSkill.LabelCap+" "+CapstoneSkill+" 级";
+   int l=Level(h,c);if(l<e.level)return c.label+" "+e.level+" 级获得".Loc();
+   return "还需要".Loc()+e.capstoneSkill.LabelCap+" "+CapstoneSkill+" 级".Loc();
   }
   // 给上应得的能力（只加不减：迁移时保留的旧能力也在这里补）。
   public static int Sync(Hediff_Adventurer h){
@@ -285,14 +285,14 @@ namespace LichPhylactery {
    if(Sync(h)>0)got.AddRange(p.abilities.abilities.Select(a=>a.def).Where(d=>!before.Contains(d)));
    Martial.Refresh(p);
    if(got.Count>0 && p.Faction!=null && p.Faction.IsPlayer && !p.Dead && !Adventurer.TestSuppressed)
-    Messages.Message(p.LabelShort+"：职业能力等级下调（终极 15 级），补上 "+string.Join("、",got.Select(d=>d.label))+"。",p,MessageTypeDefOf.PositiveEvent);
+    Messages.Message(p.LabelShort+"：职业能力等级下调（终极 15 级），补上 ".Loc()+string.Join("、".Loc(),got.Select(d=>d.label))+"。".Loc(),p,MessageTypeDefOf.PositiveEvent);
    return got;
   }
   public static bool Knows(Pawn p,string ability){var d=DefCache<AbilityDef>.Get(ability);return d!=null && p?.abilities?.GetAbility(d)!=null;}
 
   // ---------- 资源 ----------
   public static int MaxResource(int level)=>level<=0?0:2+(level+1)/2;
-  public static string ResourceLabel(ClassResource r){switch(r){case ClassResource.Fury:return "斗志";case ClassResource.Ki:return "气";case ClassResource.Grace:return "神恩";case ClassResource.Mana:return "法力";case ClassResource.Rage:return "怒气";case ClassResource.Pact:return "契约法力";case ClassResource.Melody:return "乐韵";default:return "";}}
+  public static string ResourceLabel(ClassResource r){switch(r){case ClassResource.Fury:return "斗志".Loc();case ClassResource.Ki:return "气".Loc();case ClassResource.Grace:return "神恩".Loc();case ClassResource.Mana:return "法力".Loc();case ClassResource.Rage:return "怒气".Loc();case ClassResource.Pact:return "契约法力".Loc();case ClassResource.Melody:return "乐韵".Loc();default:return "";}}
   // 1.73.0：神恩是牧师和圣武士共用的一条（存在圣武士名下），上限按两个职业等级之和（最多按 20 级算）；其他资源每个职业一条。
   public static LP_ClassDef PoolKey(LP_ClassDef c)=>c!=null && c.resource==ClassResource.Grace && Paladin!=null?Paladin:c;
   public static int PoolLevel(Hediff_Adventurer h,LP_ClassDef c){
@@ -311,17 +311,17 @@ namespace LichPhylactery {
    float cur=Resource(h,c),next=Mathf.Clamp(cur+amount,0f,max);h.classes.res[PoolKey(c)]=next;return next-cur;
   }
   // 1.99.0：靠睡觉恢复的资源补一句不睡觉种族的恢复方式（ClassRestless）。
-  public static string ResourceTip(LP_ClassDef c){var s=ResourceTipBase(c);var r=c?.resource;return r==ClassResource.Fury || r==ClassResource.Ki || r==ClassResource.Grace || r==ClassResource.Mana || r==ClassResource.Pact || r==ClassResource.Melody?s+"不需要睡觉的种族：不在战斗中、未征召时每 6 小时回上限的 1/4，或用“冥想调息”原地静坐 2 小时回满。":s;}
+  public static string ResourceTip(LP_ClassDef c){var s=ResourceTipBase(c);var r=c?.resource;return r==ClassResource.Fury || r==ClassResource.Ki || r==ClassResource.Grace || r==ClassResource.Mana || r==ClassResource.Pact || r==ClassResource.Melody?s+"不需要睡觉的种族：不在战斗中、未征召时每 6 小时回上限的 1/4，或用“冥想调息”原地静坐 2 小时回满。".Loc():s;}
   static string ResourceTipBase(LP_ClassDef c){
    switch(c?.resource){
-    case ClassResource.Fury:return "斗志：命中敌对、未倒地的目标 +"+(Martial.FuryHit*Martial.FuryResourcePer).ToString("0.##")+"，击杀敌人 +"+(Martial.FuryKill*Martial.FuryResourcePer).ToString("0.##")+"（每人每游戏小时最多 +"+(Martial.FuryCap*Martial.FuryResourcePer).ToString("0.#")+"）；睡觉时每 250 刻 +"+SleepRegen+"。有心灵链接时照旧另加精神力。";
-    case ClassResource.Ki:return "气：冥想时每 250 刻 +"+MeditateRegen+"，睡觉时每 250 刻 +"+SleepRegen+"。";
-    case ClassResource.Grace:return "神恩（牧师和圣武士共用一条，上限按两个职业等级之和）：祈祷或冥想时每 250 刻 +"+MeditateRegen+"（信奉神明的人 ×"+DevoteeRegen+"），睡觉时每 250 刻 +"+SleepRegen+"。";
-    case ClassResource.Mana:return "法力（每个职业一条，上限 2 + 职业等级）：醒着时每小时约 +0.5，睡觉时每 250 刻 +"+SleepRegen+(c.defName=="LP_Class_Wizard"?"；法师在研究、读书或在卷轴书桌干活时每 250 刻另 +"+StudyRegen:"")+"。";
-    case ClassResource.Rage:return "怒气：受到敌人伤害 +"+ClassMartial2.RageTaken+"，命中敌人 +"+ClassMartial2.RageDealt+"；不在狂暴中、10 秒没有攻防时每小时 −1（原初斗士不衰减）。睡觉不恢复。";
-    case ClassResource.Pact:return "契约法力（上限 2 + 邪术师等级/4）：连续 1 小时冥想、娱乐或睡觉（短休）就回满，中断要重来；其他时候不恢复。";
-    case ClassResource.Melody:return "乐韵（上限 2 + 吟游诗人等级 + 魅力调整值，最少 2）：醒着时每 250 刻 +"+Bard.AwakeRegen+"（每小时约 +0.5），睡觉时每 250 刻 +"+SleepRegen+"；演奏乐器、听音乐或做艺术品时每 250 刻另 +"+Bard.ActivityRegen+"；每次和人闲聊、深谈 +"+Bard.ChatGain+"。";
-    case ClassResource.None:return c.defName=="LP_Class_Artificer"?"器械师没有资源，能力只看冷却。":c.label+"没有资源，能力只看冷却。";
+    case ClassResource.Fury:return "斗志：命中敌对、未倒地的目标 +".Loc()+(Martial.FuryHit*Martial.FuryResourcePer).ToString("0.##")+"，击杀敌人 +".Loc()+(Martial.FuryKill*Martial.FuryResourcePer).ToString("0.##")+"（每人每游戏小时最多 +".Loc()+(Martial.FuryCap*Martial.FuryResourcePer).ToString("0.#")+"）；睡觉时每 250 刻 +".Loc()+SleepRegen+"。有心灵链接时照旧另加精神力。".Loc();
+    case ClassResource.Ki:return "气：冥想时每 250 刻 +".Loc()+MeditateRegen+"，睡觉时每 250 刻 +".Loc()+SleepRegen+"。".Loc();
+    case ClassResource.Grace:return "神恩（牧师和圣武士共用一条，上限按两个职业等级之和）：祈祷或冥想时每 250 刻 +".Loc()+MeditateRegen+"（信奉神明的人 ×".Loc()+DevoteeRegen+"），睡觉时每 250 刻 +".Loc()+SleepRegen+"。".Loc();
+    case ClassResource.Mana:return "法力（每个职业一条，上限 2 + 职业等级）：醒着时每小时约 +0.5，睡觉时每 250 刻 +".Loc()+SleepRegen+(c.defName=="LP_Class_Wizard"?"；法师在研究、读书或在卷轴书桌干活时每 250 刻另 +".Loc()+StudyRegen:"")+"。".Loc();
+    case ClassResource.Rage:return "怒气：受到敌人伤害 +".Loc()+ClassMartial2.RageTaken+"，命中敌人 +".Loc()+ClassMartial2.RageDealt+"；不在狂暴中、10 秒没有攻防时每小时 −1（原初斗士不衰减）。睡觉不恢复。".Loc();
+    case ClassResource.Pact:return "契约法力（上限 2 + 邪术师等级/4）：连续 1 小时冥想、娱乐或睡觉（短休）就回满，中断要重来；其他时候不恢复。".Loc();
+    case ClassResource.Melody:return "乐韵（上限 2 + 吟游诗人等级 + 魅力调整值，最少 2）：醒着时每 250 刻 +".Loc()+Bard.AwakeRegen+"（每小时约 +0.5），睡觉时每 250 刻 +".Loc()+SleepRegen+"；演奏乐器、听音乐或做艺术品时每 250 刻另 +".Loc()+Bard.ActivityRegen+"；每次和人闲聊、深谈 +".Loc()+Bard.ChatGain+"。".Loc();
+    case ClassResource.None:return c.defName=="LP_Class_Artificer"?"器械师没有资源，能力只看冷却。".Loc():c.label+"没有资源，能力只看冷却。".Loc();
    }
    return "";
   }
@@ -393,12 +393,12 @@ namespace LichPhylactery {
    var sb=Spellbook.CannotCast(p,def);if(sb!=null)return sb; // 1.128.0 没准备的法师法术
    var csb=CasterSpells.CannotCast(p,def,props);if(csb!=null)return csb; // 1.130.0 静默、法术能量（器械师 / 游侠）
    if(c==null || h==null)return null;
-   if(c.caster && ClassMartial2.Raging(p))return "狂暴中无法施法";
+   if(c.caster && ClassMartial2.Raging(p))return "狂暴中无法施法".Loc();
    int cost=ClassLegendary.Cost(p,def,props);
    var s2=Subclass2.CannotCast(p,def,props)??Subclass3.CannotCast(p,def,props);if(s2!=null)return s2; // 1.103.0 失血、誓言之力；1.110.0 引导神力
    var mana=ClassSubclass.ManaCannot(h,def,cost);if(mana!=null)return mana; // 诡术师的法力
-   if(cost>0 && c.resource!=ClassResource.None && !FreeCast(p,props) && Resource(h,c)+.001f<cost)return ResourceLabel(c.resource)+"不足（"+Resource(h,c).ToString("0.#")+" / "+cost+"）";
-   if(props.ranged && Martial.RangedVerb(p)?.Projectile==null)return "需要远程武器";
+   if(cost>0 && c.resource!=ClassResource.None && !FreeCast(p,props) && Resource(h,c)+.001f<cost)return ResourceLabel(c.resource)+"不足（".Loc()+Resource(h,c).ToString("0.#")+" / "+cost+"）".Loc();
+   if(props.ranged && Martial.RangedVerb(p)?.Projectile==null)return "需要远程武器".Loc();
    return null;
   }
   public static void Pay(Pawn p,AbilityDef def,CompProperties_ClassEffect props){
@@ -462,7 +462,7 @@ namespace LichPhylactery {
   public static void PromptLetter(){
    if(!Adventurer.Enabled)return;
    var list=PawnsFinder.AllMaps_FreeColonists.Where(p=>Points(p)>0).ToList();if(list.Count==0)return;
-   Find.LetterStack.ReceiveLetter("冒险者职业","DND边缘大陆：十二个 DND 职业（战士、圣武士、武僧、法师、牧师、德鲁伊、术士、野蛮人、游侠、游荡者、邪术师、吟游诗人）不再需要 VPE，改成冒险者的职业等级。每个冒险者等级给 1 点职业点（最多 20），可以分给最多 3 个职业。\n\n"+string.Join("\n",list.Select(p=>"· "+p.LabelShort+"：职业点 "+Points(p)))+"\n\n选中殖民者点“选择职业”按钮，或在“冒险者”分页的“职业”页里加点。",LetterDefOf.NeutralEvent,new LookTargets(list.Where(p=>p.Spawned)));
+   Find.LetterStack.ReceiveLetter("冒险者职业".Loc(),"DND边缘大陆：十二个 DND 职业（战士、圣武士、武僧、法师、牧师、德鲁伊、术士、野蛮人、游侠、游荡者、邪术师、吟游诗人）不再需要 VPE，改成冒险者的职业等级。每个冒险者等级给 1 点职业点（最多 20），可以分给最多 3 个职业。\n\n".Loc()+string.Join("\n",list.Select(p=>"· "+p.LabelShort+"：职业点 ".Loc()+Points(p)))+"\n\n选中殖民者点“选择职业”按钮，或在“冒险者”分页的“职业”页里加点。".Loc(),LetterDefOf.NeutralEvent,new LookTargets(list.Where(p=>p.Spawned)));
   }
  }
 
@@ -482,15 +482,15 @@ namespace LichPhylactery {
   public override string ExplanationPart(StatRequest req){
    if(!(req.Thing is Pawn p))return null;int l=ClassSystem.PowerSkill(p,skill,alternateSkill);float a=AbilityBonus(p),v=LevelBonus(p);
    var sk=alternateSkill!=null && ClassSystem.Skill(p,alternateSkill)>ClassSystem.Skill(p,skill)?alternateSkill:skill;
-   return sk.LabelCap+" "+l+" 级：0.5 + "+l+"/20 = "+ClassSystem.Power(l).ToStringPercent()+(a!=0f?"\n冒险者（主属性调整值 ×"+(Adventurer.Step(abilityPer)*100f).ToString("0.#")+"% 与熟练加值）："+(a>0f?"+":"")+a.ToStringPercent():"")
-    +(v!=0f?"\n"+(MartialSkill?"物理职业等级 "+(Martial.Info(p)?.total??0):"相关职业等级 "+ClassSystem.ClassBonusLevels(p,skill))+"（每比 1 高 1 级 +"+(LevelPer*100f).ToString("0")+"%，最多 +"+(LevelMax*100f).ToString("0")+"%）：+"+v.ToStringPercent():"")
+   return sk.LabelCap+" "+l+" 级：0.5 + ".Loc()+l+"/20 = "+ClassSystem.Power(l).ToStringPercent()+(a!=0f?"\n冒险者（主属性调整值 ×".Loc()+(Adventurer.Step(abilityPer)*100f).ToString("0.#")+"% 与熟练加值）：".Loc()+(a>0f?"+":"")+a.ToStringPercent():"")
+    +(v!=0f?"\n"+(MartialSkill?"物理职业等级 ".Loc()+(Martial.Info(p)?.total??0):"相关职业等级 ".Loc()+ClassSystem.ClassBonusLevels(p,skill))+"（每比 1 高 1 级 +".Loc()+(LevelPer*100f).ToString("0")+"%，最多 +".Loc()+(LevelMax*100f).ToString("0")+"%）：+".Loc()+v.ToStringPercent():"")
     +ClassFeats.PowerText(p,parentStat);
   }
  }
  // 术士血脉：天赋强度 +0.15（1.73.0 从 VPE 桥移来）。
  public class StatPart_SorcererBloodline : StatPart {
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p && ClassSystem.Bloodline(p))val+=ClassSystem.BloodlineBonus;}
-  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && ClassSystem.Bloodline(p)?"术士血脉：+"+ClassSystem.BloodlineBonus.ToStringPercent():null;
+  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && ClassSystem.Bloodline(p)?"术士血脉：+".Loc()+ClassSystem.BloodlineBonus.ToStringPercent():null;
  }
 
  // 选职业的窗口（不用浮动菜单：Peter 的游戏里浮动菜单的选择会失效）。
@@ -509,8 +509,8 @@ namespace LichPhylactery {
   public override void DoWindowContents(Rect r){
    try{
     var h=Adventurer.Get(pawn);if(h==null){Close();return;}
-    float y=LPUI.Title(r,pawn.LabelShort+" 的职业");AbilityGroups.WindowButton(r,pawn,LPUI.CloseXRoom); /* 1.137.0 技能分组 */int pts=ClassSystem.Points(h);
-    LPUI.LabelFit(new Rect(r.x,y,r.width,LPUI.RowH),"职业点：可用 "+pts+"（冒险者 Lv "+h.level+"，已用 "+ClassSystem.Total(h)+" / "+ClassSystem.Budget(h)+"）"+(ClassLegendary.Points(h)>0?"　传奇职业点 "+ClassLegendary.Points(h):"")+(h.classes.freeUnlocks>0?"　冒险者手册：下一个职业跳过门槛":""));y+=LPUI.RowH+LPUI.Gap;
+    float y=LPUI.Title(r,pawn.LabelShort+" 的职业".Loc());AbilityGroups.WindowButton(r,pawn,LPUI.CloseXRoom); /* 1.137.0 技能分组 */int pts=ClassSystem.Points(h);
+    LPUI.LabelFit(new Rect(r.x,y,r.width,LPUI.RowH),"职业点：可用 ".Loc()+pts+"（冒险者 Lv ".Loc()+h.level+"，已用 ".Loc()+ClassSystem.Total(h)+" / "+ClassSystem.Budget(h)+"）".Loc()+(ClassLegendary.Points(h)>0?"　传奇职业点 ".Loc()+ClassLegendary.Points(h):"")+(h.classes.freeUnlocks>0?"　冒险者手册：下一个职业跳过门槛".Loc():""));y+=LPUI.RowH+LPUI.Gap;
     if(selected==null)selected=ClassSystem.Taken(h).FirstOrDefault()??ClassSystem.All.FirstOrDefault();
     var body=new Rect(r.x,y,r.width,r.yMax-y-48f);float lw=Mathf.Min(LeftW,body.width*.42f);
     DrawLeft(new Rect(body.x,body.y,lw,body.height),h,pts);
@@ -523,19 +523,19 @@ namespace LichPhylactery {
    float legendH=legend.Count>0?LPUI.RowH+LPUI.Gap+legend.Count*(LegRowH+4f)+LPUI.SectionGap:0f;
    var view=new Rect(0f,0f,outer.width-LPUI.ScrollBarW,legendH+LPUI.RowH+LPUI.Gap+ClassSystem.All.Count*(ClassRowH+4f));
    Widgets.BeginScrollView(outer,ref scroll,view);
-   try{float y=0f;if(legend.Count>0)y=DrawLegend(view.width,y,h,legend);y=LPUI.Bar(new Rect(0f,y,view.width,LPUI.RowH),"职业（点选查看一览）",null,"点职业行在右边查看它的等级表；加点按钮点两次确认。");DrawRows(view.width,y,h);}
+   try{float y=0f;if(legend.Count>0)y=DrawLegend(view.width,y,h,legend);y=LPUI.Bar(new Rect(0f,y,view.width,LPUI.RowH),"职业（点选查看一览）".Loc(),null,"点职业行在右边查看它的等级表；加点按钮点两次确认。".Loc());DrawRows(view.width,y,h);}
    finally{Widgets.EndScrollView();}
   }
   float DrawLegend(float w,float y,Hediff_Adventurer h,List<(LP_ClassDef c,AbilityDef a)> list){
-   y=LPUI.Bar(new Rect(0f,y,w,LPUI.RowH),"传奇职业能力（传奇职业点 "+ClassLegendary.Points(h)+"）",LPUI.Gold);
+   y=LPUI.Bar(new Rect(0f,y,w,LPUI.RowH),"传奇职业能力（传奇职业点 ".Loc()+ClassLegendary.Points(h)+"）".Loc(),LPUI.Gold);
    foreach(var (c,a) in list){
     var row=new Rect(0f,y,w,LegRowH);Widgets.DrawLightHighlight(row);
     string why=ClassLegendary.CanLearn(h,c,a);bool ok=why==null;LPUI.Icon(new Rect(row.x+4f,row.y+6f,36f,36f),a.uiIcon,!ok);
     var tr=new Rect(row.x+46f,row.y+3f,row.width-46f-92f,22f);if(!ok)GUI.color=LPUI.Locked;LPUI.LabelFit(tr,c.label+"·"+a.LabelCap);GUI.color=Color.white;
     LPUI.Tiny(new Rect(row.x+46f,row.y+25f,row.width-46f-92f,20f),ok?(a.description??""):why,!ok);
-    TooltipHandler.TipRegion(new Rect(row.x,row.y,row.width-90f,row.height),a.LabelCap+"\n\n"+a.description+"\n\n学会后"+c.label+"的资源上限 +"+ClassLegendary.ResourceBonus+"。"+(ok?"":"\n\n"+why));
+    TooltipHandler.TipRegion(new Rect(row.x,row.y,row.width-90f,row.height),a.LabelCap+"\n\n"+a.description+"\n\n学会后".Loc()+c.label+"的资源上限 +".Loc()+ClassLegendary.ResourceBonus+"。".Loc()+(ok?"":"\n\n"+why));
     string key="leg:"+a.defName;
-    if(LPUI.Button(new Rect(row.xMax-86f,row.y+9f,80f,30f),armed==key?"确定？":"学习",ok,ok?(armed==key?"再点一次确认":"点两次确认"):why)){if(armed==key){armed=null;ClassLegendary.Learn(h,c,a,true);}else armed=key;}
+    if(LPUI.Button(new Rect(row.xMax-86f,row.y+9f,80f,30f),armed==key?"确定？".Loc():"学习".Loc(),ok,ok?(armed==key?"再点一次确认".Loc():"点两次确认".Loc()):why)){if(armed==key){armed=null;ClassLegendary.Learn(h,c,a,true);}else armed=key;}
     y+=LegRowH+4f;
    }
    return y+LPUI.SectionGap-4f;
@@ -546,12 +546,12 @@ namespace LichPhylactery {
     int lv=ClassSystem.Level(h,c);string why=ClassSystem.CanAdd(h,c);bool ok=why==null;
     var icon=c.Background;if(icon!=null){GUI.color=new Color(1f,1f,1f,lv>0?.9f:.55f);GUI.DrawTexture(new Rect(row.x+4f,row.y+4f,40f,ClassRowH-8f),icon,ScaleMode.ScaleAndCrop);GUI.color=Color.white;}
     float tx=row.x+52f,tw=row.width-52f-92f;
-    GUI.color=c.color;LPUI.LabelFit(new Rect(tx,row.y+3f,tw,22f),c.LabelCap+(lv>0?" Lv "+lv:"（未学）"));GUI.color=Color.white;
-    LPUI.Tiny(new Rect(tx,row.y+25f,tw,18f),lv>0 && c.resource!=ClassResource.None?ClassSystem.ResourceLabel(c.resource)+" "+ClassSystem.Resource(h,c).ToString("0.#")+" / "+ClassSystem.MaxResource(h,c)+"　"+c.SkillText+" "+c.SkillLevel(pawn)+" 级":c.SkillText+" "+c.SkillLevel(pawn)+" 级");
+    GUI.color=c.color;LPUI.LabelFit(new Rect(tx,row.y+3f,tw,22f),c.LabelCap+(lv>0?" Lv "+lv:"（未学）".Loc()));GUI.color=Color.white;
+    LPUI.Tiny(new Rect(tx,row.y+25f,tw,18f),lv>0 && c.resource!=ClassResource.None?ClassSystem.ResourceLabel(c.resource)+" "+ClassSystem.Resource(h,c).ToString("0.#")+" / "+ClassSystem.MaxResource(h,c)+"　".Loc()+c.SkillText+" "+c.SkillLevel(pawn)+" 级".Loc():c.SkillText+" "+c.SkillLevel(pawn)+" 级".Loc());
     var next=c.abilities.Where(e=>e.level==lv+1 && e.ability!=null).Select(e=>e.ability.label).ToList();
-    LPUI.Tiny(new Rect(tx,row.y+43f,tw,32f),ok?(next.Count>0?"下一级获得："+string.Join("、",next):"下一级没有新职业能力"):"不能加："+why,!ok);
+    LPUI.Tiny(new Rect(tx,row.y+43f,tw,32f),ok?(next.Count>0?"下一级获得：".Loc()+string.Join("、".Loc(),next):"下一级没有新职业能力".Loc()):"不能加：".Loc()+why,!ok);
     string key=c.defName;var b=new Rect(row.xMax-86f,row.y+(ClassRowH-32f)/2f,80f,32f);
-    if(LPUI.Button(b,armed==key?"确定？":lv>0?"+1 级":"学习",ok,ok?(armed==key?"再点一次确认":"点两次确认："+c.label+" "+(lv+1)+" 级"):why)){if(armed==key){armed=null;ClassLevelInfo.AddLevel(h,c);}else armed=key;selected=c;}
+    if(LPUI.Button(b,armed==key?"确定？".Loc():lv>0?"+1 级".Loc():"学习".Loc(),ok,ok?(armed==key?"再点一次确认".Loc():"点两次确认：".Loc()+c.label+" "+(lv+1)+" 级".Loc()):why)){if(armed==key){armed=null;ClassLevelInfo.AddLevel(h,c);}else armed=key;selected=c;}
     var tr=new Rect(row.x,row.y,row.width-90f,row.height);
     if(Mouse.IsOver(tr))TooltipHandler.TipRegion(tr,ClassLevelInfo.ClassTip(pawn,h,c)+"\n\n"+ClassLevelInfo.ResourceTip(h,c));
     if(Widgets.ButtonInvisible(tr)){if(selected!=c)scrollR=Vector2.zero;selected=c;}
@@ -559,23 +559,23 @@ namespace LichPhylactery {
    }
   }
   void DrawRight(Rect outer,Hediff_Adventurer h){
-   var c=selected;if(c==null){LPUI.Unavailable(outer,"没有职业");return;}
+   var c=selected;if(c==null){LPUI.Unavailable(outer,"没有职业".Loc());return;}
    var view=new Rect(0f,0f,outer.width-LPUI.ScrollBarW,Mathf.Max(rightH,outer.height-1f));
    Widgets.BeginScrollView(outer,ref scrollR,view);
    try{
     float w=view.width,y=0f;int lv=ClassSystem.Level(h,c);
     var icon=c.Background;if(icon!=null)GUI.DrawTexture(new Rect(0f,0f,48f,72f),icon,ScaleMode.ScaleAndCrop);
-    Text.Font=GameFont.Medium;GUI.color=c.color;LPUI.LabelFit(new Rect(56f,0f,w-56f,32f),c.LabelCap+(lv>0?" Lv "+lv:"（未学）"));GUI.color=Color.white;Text.Font=GameFont.Small;
-    string res=c.resource==ClassResource.None?"无职业资源":ClassSystem.ResourceLabel(c.resource)+(lv>0?" "+ClassSystem.Resource(h,c).ToString("0.#")+" / "+ClassSystem.MaxResource(h,c):"")+(ClassLevelInfo.ResourceFormula(c) is string f?"（"+f+"）":"");
+    Text.Font=GameFont.Medium;GUI.color=c.color;LPUI.LabelFit(new Rect(56f,0f,w-56f,32f),c.LabelCap+(lv>0?" Lv "+lv:"（未学）".Loc()));GUI.color=Color.white;Text.Font=GameFont.Small;
+    string res=c.resource==ClassResource.None?"无职业资源".Loc():ClassSystem.ResourceLabel(c.resource)+(lv>0?" "+ClassSystem.Resource(h,c).ToString("0.#")+" / "+ClassSystem.MaxResource(h,c):"")+(ClassLevelInfo.ResourceFormula(c) is string f?"（".Loc()+f+"）".Loc():"");
     LPUI.LabelFit(new Rect(56f,34f,w-56f,LPUI.RowH),res,ClassLevelInfo.ResourceTip(h,c));
-    LPUI.Tiny(new Rect(56f,56f,w-56f,18f),c.SkillText+" "+c.SkillLevel(pawn)+" 级",false,ClassLevelInfo.ClassTip(pawn,h,c));
+    LPUI.Tiny(new Rect(56f,56f,w-56f,18f),c.SkillText+" "+c.SkillLevel(pawn)+" 级".Loc(),false,ClassLevelInfo.ClassTip(pawn,h,c));
     y=78f;
     if(Adventurer.Enabled && lv<ClassSystem.CapLevel && ClassSystem.CanAdd(h,c)==null){
      int al=ClassLevelInfo.NextAdventurerLevel(h);
-     y=LPUI.Bar(new Rect(0f,y,w,LPUI.RowH),"下一级（"+c.label+" Lv "+(lv+1)+(al>h.level?"，冒险者需先升到 "+al+" 级":"")+"）");
+     y=LPUI.Bar(new Rect(0f,y,w,LPUI.RowH),"下一级（".Loc()+c.label+" Lv "+(lv+1)+(al>h.level?"，冒险者需先升到 ".Loc()+al+" 级".Loc():"")+"）".Loc());
      Text.Font=GameFont.Tiny;y+=LPUI.Para(6f,y,w-6f,string.Join("\n",ClassLevelInfo.NextLines(pawn,h,c,al).Select(x=>"· "+x)))+LPUI.Gap;Text.Font=GameFont.Small;
     }
-    y=LPUI.Bar(new Rect(0f,y,w,LPUI.RowH),"法术与能力一览",LPUI.Gold,"按职业等级列出每级获得的能力和法术：已获得的高亮，未获得的灰显并写所需等级。悬停看完整说明。");
+    y=LPUI.Bar(new Rect(0f,y,w,LPUI.RowH),"法术与能力一览".Loc(),LPUI.Gold,"按职业等级列出每级获得的能力和法术：已获得的高亮，未获得的灰显并写所需等级。悬停看完整说明。".Loc());
     y=ClassOverview.Draw(0f,y,w,Rows(h),h,c);
     rightH=y+LPUI.Gap;
    }finally{Widgets.EndScrollView();}
@@ -625,9 +625,9 @@ namespace LichPhylactery {
  public static class ClassSettings {
   public static void Draw(Listing_Standard l){
    var s=LichMod.Settings;
-   l.CheckboxLabeled("施法类能力受心灵敏感度影响",ref s.classPsychic,"1.72.0 职业：武僧的气功（拨挡箭矢、震慑拳、金刚之躯、颤心掌、空灵之身）和圣武士的神术（至圣斩、圣疗、神圣武器、放逐邪恶、圣光化身）的伤害、治疗再乘心灵敏感度（最低 ×0.2，不封顶）。战士的战技永远不乘。");
+   l.CheckboxLabeled("施法类能力受心灵敏感度影响".Loc(),ref s.classPsychic,"1.72.0 职业：武僧的气功（拨挡箭矢、震慑拳、金刚之躯、颤心掌、空灵之身）和圣武士的神术（至圣斩、圣疗、神圣武器、放逐邪恶、圣光化身）的伤害、治疗再乘心灵敏感度（最低 ×0.2，不封顶）。战士的战技永远不乘。".Loc());
    NpcClasses.Draw(l); // NPC 职业
-   l.CheckboxLabeled("职业能力消耗心灵熵",ref s.classEntropy,"1.72.0 职业：打开时，有心灵链接的人施放职业能力另外增加心灵熵（每 1 点资源消耗 +5）。默认关闭：职业能力只消耗斗志 / 气 / 神恩。");
+   l.CheckboxLabeled("职业能力消耗心灵熵".Loc(),ref s.classEntropy,"1.72.0 职业：打开时，有心灵链接的人施放职业能力另外增加心灵熵（每 1 点资源消耗 +5）。默认关闭：职业能力只消耗斗志 / 气 / 神恩。".Loc());
   }
  }
 }

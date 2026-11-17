@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 注能义臂 -->
+  <LP_Imp_InfusedArm.label>infused arm</LP_Imp_InfusedArm.label>
+  <!-- 用钢和少量秘银锻成、再灌注魔力的义臂。替换整条手臂，部位效率 115%。普通档，不占调谐位。 -->
+  <LP_Imp_InfusedArm.description>A prosthetic arm forged from steel and a little mithril, then infused with magic. Replaces a whole arm, part efficiency 115%. Common tier, doesn't take an attunement slot.</LP_Imp_InfusedArm.description>
+  <!-- 注能义腿 -->
+  <LP_Imp_InfusedLeg.label>infused leg</LP_Imp_InfusedLeg.label>
+  <!-- 用钢和少量秘银锻成、再灌注魔力的义腿。替换整条腿，部位效率 115%。普通档，不占调谐位。 -->
+  <LP_Imp_InfusedLeg.description>A prosthetic leg forged from steel and a little mithril, then infused with magic. Replaces a whole leg, part efficiency 115%. Common tier, doesn't take an attunement slot.</LP_Imp_InfusedLeg.description>
+  <!-- 寒铁义臂 -->
+  <LP_Imp_ColdIronArm.label>cold iron arm</LP_Imp_ColdIronArm.label>
+  <!-- 淬炼寒铁锻成的义臂，摸上去总是冰凉。替换整条手臂，部位效率 125%；近战打寒铁克制的目标（妖精血统、精灵、灵能者）和邪魔时伤害 +30%。普通档，不占调谐位。 -->
+  <LP_Imp_ColdIronArm.description>A prosthetic arm forged from tempered cold iron, always cold to the touch. Replaces a whole arm, part efficiency 125%; +30% melee damage against targets weak to cold iron (fey blood, elves, psycasters) and fiends. Common tier, doesn't take an attunement slot.</LP_Imp_ColdIronArm.description>
+  <!-- 秘银义腿 -->
+  <LP_Imp_MithralLeg.label>mithril leg</LP_Imp_MithralLeg.label>
+  <!-- 轻得几乎没有重量的秘银义腿。替换整条腿，部位效率 130%；穿着的衣物带来的移速惩罚减半（重甲最明显）。稀有档，占 1 个调谐位。 -->
+  <LP_Imp_MithralLeg.description>A mithril prosthetic leg so light it's almost weightless. Replaces a whole leg, part efficiency 130%; move speed penalties from worn apparel halved (most noticeable with heavy armor). Rare tier, takes 1 attunement slot.</LP_Imp_MithralLeg.description>
+  <!-- 精金义臂 -->
+  <LP_Imp_AdamantArm.label>adamantine arm</LP_Imp_AdamantArm.label>
+  <!-- 精金锻成的义臂，几乎砍不坏。替换整条手臂，部位效率 140%；这条手臂上受的伤 −50%，近战护甲穿透 +25%。稀有档，占 1 个调谐位。 -->
+  <LP_Imp_AdamantArm.description>A prosthetic arm forged from adamantine, almost unbreakable. Replaces a whole arm, part efficiency 140%; injuries on this arm -50%, melee armor penetration +25%. Rare tier, takes 1 attunement slot.</LP_Imp_AdamantArm.description>
+  <!-- 精工机关眼 -->
+  <LP_Imp_ClockEye.label>precision clockwork eye</LP_Imp_ClockEye.label>
+  <!-- 秘银齿轮和玉石镜片组成的机关眼。替换一只眼睛，部位效率 125%；射击精度 +5%，光线昏暗时不受惩罚。普通档，不占调谐位。 -->
+  <LP_Imp_ClockEye.description>A clockwork eye of mithril gears and jade lenses. Replaces one eye, part efficiency 125%; shooting accuracy +5%, no penalty in dim light. Common tier, doesn't take an attunement slot.</LP_Imp_ClockEye.description>
+  <!-- 秘银心核 -->
+  <LP_Imp_MithralHeart.label>mithril heart core</LP_Imp_MithralHeart.label>
+  <!-- 秘银和精金打成的心核，跳得又稳又有力。替换心脏，部位效率 130%；毒素积累 −50%，不会再犯心脏病。稀有档，占 1 个调谐位。 -->
+  <LP_Imp_MithralHeart.description>A heart core of mithril and adamantine that beats steady and strong. Replaces the heart, part efficiency 130%; toxic buildup -50%, never gets heart disease again. Rare tier, takes 1 attunement slot.</LP_Imp_MithralHeart.description>
+  <!-- 伊奥恩原石 -->
+  <LP_IounBlank.label>raw ioun stone</LP_IounBlank.label>
+  <!-- 还没刻纹的伊奥恩石。在附魔台用 5 秘银刻成任意一种伊奥恩颅石；迷锁地牢和探索公告板的魔法奖励里偶尔能拿到，也能在附魔台做（需要研究“神奇器物”）。 -->
+  <LP_IounBlank.description>An ioun stone not yet engraved. Engrave it into any kind of ioun skull stone at the enchanting table with 5 mithril; occasionally found in mythal dungeons and adventure board magic rewards, and also craftable at the enchanting table (requires the research "wondrous items").</LP_IounBlank.description>
+  <!-- 伊奥恩颅石·力量之石 -->
+  <LP_Ioun_Str.label>ioun skull stone: strength</LP_Ioun_Str.label>
+  <!-- 原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者力量 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。 -->
+  <LP_Ioun_Str.description>The ioun stones that orbit the head in the original game are set into the frontal bone here. Adventurer Strength +2 (applied after the ability cap, can exceed 20). Each takes 1 attunement slot, up to 3 set in the frontal bone; removal returns the stone.</LP_Ioun_Str.description>
+  <!-- 伊奥恩颅石·敏捷之石 -->
+  <LP_Ioun_Dex.label>ioun skull stone: agility</LP_Ioun_Dex.label>
+  <!-- 原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者敏捷 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。 -->
+  <LP_Ioun_Dex.description>The ioun stones that orbit the head in the original game are set into the frontal bone here. Adventurer Dexterity +2 (applied after the ability cap, can exceed 20). Each takes 1 attunement slot, up to 3 set in the frontal bone; removal returns the stone.</LP_Ioun_Dex.description>
+  <!-- 伊奥恩颅石·体质之石 -->
+  <LP_Ioun_Con.label>ioun skull stone: fortitude</LP_Ioun_Con.label>
+  <!-- 原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者体质 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。 -->
+  <LP_Ioun_Con.description>The ioun stones that orbit the head in the original game are set into the frontal bone here. Adventurer Constitution +2 (applied after the ability cap, can exceed 20). Each takes 1 attunement slot, up to 3 set in the frontal bone; removal returns the stone.</LP_Ioun_Con.description>
+  <!-- 伊奥恩颅石·智力之石 -->
+  <LP_Ioun_Int.label>ioun skull stone: intellect</LP_Ioun_Int.label>
+  <!-- 原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者智力 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。 -->
+  <LP_Ioun_Int.description>The ioun stones that orbit the head in the original game are set into the frontal bone here. Adventurer Intelligence +2 (applied after the ability cap, can exceed 20). Each takes 1 attunement slot, up to 3 set in the frontal bone; removal returns the stone.</LP_Ioun_Int.description>
+  <!-- 伊奥恩颅石·感知之石 -->
+  <LP_Ioun_Wis.label>ioun skull stone: insight</LP_Ioun_Wis.label>
+  <!-- 原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者感知 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。 -->
+  <LP_Ioun_Wis.description>The ioun stones that orbit the head in the original game are set into the frontal bone here. Adventurer Wisdom +2 (applied after the ability cap, can exceed 20). Each takes 1 attunement slot, up to 3 set in the frontal bone; removal returns the stone.</LP_Ioun_Wis.description>
+  <!-- 伊奥恩颅石·魅力之石 -->
+  <LP_Ioun_Cha.label>ioun skull stone: leadership</LP_Ioun_Cha.label>
+  <!-- 原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者魅力 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。 -->
+  <LP_Ioun_Cha.description>The ioun stones that orbit the head in the original game are set into the frontal bone here. Adventurer Charisma +2 (applied after the ability cap, can exceed 20). Each takes 1 attunement slot, up to 3 set in the frontal bone; removal returns the stone.</LP_Ioun_Cha.description>
+  <!-- 伊奥恩颅石·维生之石 -->
+  <LP_Ioun_Sustain.label>ioun skull stone: sustenance</LP_Ioun_Sustain.label>
+  <!-- 原作里绕着头飞的伊奥恩石，这里镶进额骨。饥饿速度 ×0.2。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。 -->
+  <LP_Ioun_Sustain.description>The ioun stones that orbit the head in the original game are set into the frontal bone here. Hunger rate ×0.2. Each takes 1 attunement slot, up to 3 set in the frontal bone; removal returns the stone.</LP_Ioun_Sustain.description>
+  <!-- 伊奥恩颅石·再生之石 -->
+  <LP_Ioun_Regen.label>ioun skull stone: regeneration</LP_Ioun_Regen.label>
+  <!-- 原作里绕着头飞的伊奥恩石，这里镶进额骨。每天额外治好一处伤口（最重的那处，旧伤疤不算）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。 -->
+  <LP_Ioun_Regen.description>The ioun stones that orbit the head in the original game are set into the frontal bone here. Heals one extra wound per day (the worst one; old scars don't count). Each takes 1 attunement slot, up to 3 set in the frontal bone; removal returns the stone.</LP_Ioun_Regen.description>
+  <!-- 伊奥恩颅石·精通之石 -->
+  <LP_Ioun_Mastery.label>ioun skull stone: mastery</LP_Ioun_Mastery.label>
+  <!-- 原作里绕着头飞的伊奥恩石，这里镶进额骨。熟练加值 +1（职业强度、检定都按新的熟练加值算）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。 -->
+  <LP_Ioun_Mastery.description>The ioun stones that orbit the head in the original game are set into the frontal bone here. Proficiency bonus +1 (class power and checks use the new proficiency bonus). Each takes 1 attunement slot, up to 3 set in the frontal bone; removal returns the stone.</LP_Ioun_Mastery.description>
+  <!-- 伊奥恩颅石·吸收之石 -->
+  <LP_Ioun_Absorb.label>ioun skull stone: absorption</LP_Ioun_Absorb.label>
+  <!-- 原作里绕着头飞的伊奥恩石，这里镶进额骨。每天抵消一次灵能或法术伤害（不带武器的火焰、寒冰、闪电、心灵、奥术力伤害）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。 -->
+  <LP_Ioun_Absorb.description>The ioun stones that orbit the head in the original game are set into the frontal bone here. Negates one instance of psychic or spell damage per day (weaponless fire, cold, lightning, psychic, arcane force damage). Each takes 1 attunement slot, up to 3 set in the frontal bone; removal returns the stone.</LP_Ioun_Absorb.description>
+  <!-- 伊奥恩颅石·警觉之石 -->
+  <LP_Ioun_Alert.label>ioun skull stone: awareness</LP_Ioun_Alert.label>
+  <!-- 原作里绕着头飞的伊奥恩石，这里镶进额骨。不会被偷袭（刺客、隐匿伏击的偷袭加成对你无效），意识 +5%。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。 -->
+  <LP_Ioun_Alert.description>The ioun stones that orbit the head in the original game are set into the frontal bone here. Can't be ambushed (sneak attack bonuses from assassins and hide in plain sight don't work on you), consciousness +5%. Each takes 1 attunement slot, up to 3 set in the frontal bone; removal returns the stone.</LP_Ioun_Alert.description>
+  <!-- 冥火之心 -->
+  <LP_Flesh_HellHeart.label>netherfire heart</LP_Flesh_HellHeart.label>
+  <!-- 冥火在胸腔里代替心跳。替换心脏，部位效率 120%；流血速度 ×0.2。在死灵仪式台用 800 份生肉和 150 白银培育，巫妖和活人都能装，可以叠肢体强化。普通档，不占调谐位。 -->
+  <LP_Flesh_HellHeart.description>Netherfire replaces the heartbeat in the chest. Replaces the heart, part efficiency 120%; bleeding rate ×0.2. Grown at the necromantic ritual table from 800 raw meat and 150 silver; can be installed in liches and the living, and stacks with limb reinforcement. Common tier, doesn't take an attunement slot.</LP_Flesh_HellHeart.description>
+  <!-- 骸骨肋笼 -->
+  <LP_Flesh_BoneCage.label>bone rib cage</LP_Flesh_BoneCage.label>
+  <!-- 在肋骨外再长一层骨笼。躯干附加，不替换部位：躯干最大生命 +50%，受到的利器伤害 −20%。在死灵仪式台用 600 份生肉和 150 白银培育，巫妖和活人都能装，可以叠肢体强化。普通档，不占调谐位。 -->
+  <LP_Flesh_BoneCage.description>Grow another bone cage outside the ribs. Torso add-on, doesn't replace a part: torso max health +50%, sharp damage taken -20%. Grown at the necromantic ritual table from 600 raw meat and 150 silver; can be installed in liches and the living, and stacks with limb reinforcement. Common tier, doesn't take an attunement slot.</LP_Flesh_BoneCage.description>
+  <!-- 亡者低语之耳 -->
+  <LP_Flesh_DeadEar.label>ear of the dead's whispers</LP_Flesh_DeadEar.label>
+  <!-- 听得见死人说话的耳朵。替换一只耳朵，部位效率 125%；能力“亡者之语”：对一具人形尸体使用，学到它最高那项技能总经验的 10%（每具尸体一次；照常折算冒险者经验）。在死灵仪式台用 400 份生肉和 150 白银培育，巫妖和活人都能装，可以叠肢体强化。普通档，不占调谐位。 -->
+  <LP_Flesh_DeadEar.description>An ear that can hear the dead speak. Replaces one ear, part efficiency 125%; ability "Speak with dead": use on a humanlike corpse to learn 10% of the total XP of its highest skill (once per corpse; converted to adventurer XP as usual). Grown at the necromantic ritual table from 400 raw meat and 150 silver; can be installed in liches and the living, and stacks with limb reinforcement. Common tier, doesn't take an attunement slot.</LP_Flesh_DeadEar.description>
+  <!-- 吞魂之颌 -->
+  <LP_Flesh_SoulJaw.label>soul-devouring jaw</LP_Flesh_SoulJaw.label>
+  <!-- 满口尖牙的下颌。替换下颌，部位效率 120%；多一个近战咬击（14 伤害）；用它咬死血肉活物时回复 10% 精神力。在死灵仪式台用 600 份生肉和 150 白银培育，巫妖和活人都能装，可以叠肢体强化。普通档，不占调谐位。 -->
+  <LP_Flesh_SoulJaw.description>A jaw full of sharp teeth. Replaces the jaw, part efficiency 120%; adds a melee bite (14 damage); biting a living fleshy creature to death with it restores 10% psyfocus. Grown at the necromantic ritual table from 600 raw meat and 150 silver; can be installed in liches and the living, and stacks with limb reinforcement. Common tier, doesn't take an attunement slot.</LP_Flesh_SoulJaw.description>
+  <!-- 眼魔之眼 -->
+  <LP_Graft_BeholderEye.label>beholder eye</LP_Graft_BeholderEye.label>
+  <!-- 从眼魔身上取下的一只眼睛，接进眼窝还在转。替换一只眼睛，部位效率 110%；能力“眼魔射线”（20 格，冷却 1 天）：装上时随机定下是死灵射线（30 坏死伤害）、石化射线（开始石化）还是魅惑射线（恍惚 25 秒）。副作用：自己心情 −5（异怪凝视），别人对你的印象 −10。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Graft_BeholderEye.description>An eye taken from a beholder, still rolling when grafted into a socket. Replaces one eye, part efficiency 110%; ability "Beholder ray" (20 cells, cooldown 1 day): randomly set on installation to necrotic ray (30 necrotic damage), petrification ray (begins petrification) or charm ray (dazed 25 seconds). Side effects: own mood -5 (aberrant gaze), others' opinion of you -10. Rare tier, takes 1 attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Graft_BeholderEye.description>
+  <!-- 恶魔之臂 -->
+  <LP_Graft_DemonArm.label>demon arm</LP_Graft_DemonArm.label>
+  <!-- 浸过恶魔血长出来的手臂，皮下透着火光。替换整条手臂，部位效率 130%；近战命中附加 5 点火焰伤害。副作用：每天 1% 陷入狂怒崩溃；天界血统（阿斯莫、天界契约种族）装不上。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Graft_DemonArm.description>An arm grown steeped in demon blood, with firelight under the skin. Replaces a whole arm, part efficiency 130%; melee hits add 5 fire damage. Side effects: 1% chance per day of a berserk rage break; can't be installed in celestial bloodlines (aasimar, celestial pact races). Common tier, doesn't take an attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Graft_DemonArm.description>
+  <!-- 巨魔再生腺 -->
+  <LP_Graft_TrollGland.label>troll regeneration gland</LP_Graft_TrollGland.label>
+  <!-- 巨魔的再生腺体，缝在躯干上。躯干附加：伤口自然愈合 ×3；每 15 天长回一个缺失的小部位。副作用：饥饿速度 +50%；受到火焰、强酸伤害后再生停止 12 小时。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Graft_TrollGland.description>A troll's regeneration gland, sewn onto the torso. Torso add-on: natural wound healing ×3; regrows one missing small part every 15 days. Side effects: hunger rate +50%; regeneration stops for 12 hours after taking fire or acid damage. Common tier, doesn't take an attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Graft_TrollGland.description>
+  <!-- 赤龙鳞皮下甲 -->
+  <LP_Graft_ScaleRed.label>red dragonscale subdermal armor</LP_Graft_ScaleRed.label>
+  <!-- 赤龙的鳞片嵌在皮下。躯干附加：利器护甲 +15%，火焰伤害 −50%，寒冰伤害 +20%。同时只能装一件龙鳞皮下甲。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Graft_ScaleRed.description>Red dragon scales embedded under the skin. Torso add-on: sharp armor +15%, fire damage -50%, cold damage +20%. Only one dragonscale subdermal armor at a time. Common tier, doesn't take an attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Graft_ScaleRed.description>
+  <!-- 白龙鳞皮下甲 -->
+  <LP_Graft_ScaleWhite.label>white dragonscale subdermal armor</LP_Graft_ScaleWhite.label>
+  <!-- 白龙的鳞片嵌在皮下。躯干附加：利器护甲 +15%，寒冰伤害 −50%，火焰伤害 +20%。同时只能装一件龙鳞皮下甲。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Graft_ScaleWhite.description>White dragon scales embedded under the skin. Torso add-on: sharp armor +15%, cold damage -50%, fire damage +20%. Only one dragonscale subdermal armor at a time. Common tier, doesn't take an attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Graft_ScaleWhite.description>
+  <!-- 蓝龙鳞皮下甲 -->
+  <LP_Graft_ScaleBlue.label>blue dragonscale subdermal armor</LP_Graft_ScaleBlue.label>
+  <!-- 蓝龙的鳞片嵌在皮下。躯干附加：利器护甲 +15%，闪电伤害 −50%，强酸伤害 +20%。同时只能装一件龙鳞皮下甲。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Graft_ScaleBlue.description>Blue dragon scales embedded under the skin. Torso add-on: sharp armor +15%, lightning damage -50%, acid damage +20%. Only one dragonscale subdermal armor at a time. Common tier, doesn't take an attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Graft_ScaleBlue.description>
+  <!-- 黑龙鳞皮下甲 -->
+  <LP_Graft_ScaleBlack.label>black dragonscale subdermal armor</LP_Graft_ScaleBlack.label>
+  <!-- 黑龙的鳞片嵌在皮下。躯干附加：利器护甲 +15%，强酸伤害 −50%，闪电伤害 +20%。同时只能装一件龙鳞皮下甲。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Graft_ScaleBlack.description>Black dragon scales embedded under the skin. Torso add-on: sharp armor +15%, acid damage -50%, lightning damage +20%. Only one dragonscale subdermal armor at a time. Common tier, doesn't take an attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Graft_ScaleBlack.description>
+  <!-- 绿龙鳞皮下甲 -->
+  <LP_Graft_ScaleGreen.label>green dragonscale subdermal armor</LP_Graft_ScaleGreen.label>
+  <!-- 绿龙的鳞片嵌在皮下。躯干附加：利器护甲 +15%，毒素伤害 −50%，火焰伤害 +20%。同时只能装一件龙鳞皮下甲。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Graft_ScaleGreen.description>Green dragon scales embedded under the skin. Torso add-on: sharp armor +15%, poison damage -50%, fire damage +20%. Only one dragonscale subdermal armor at a time. Common tier, doesn't take an attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Graft_ScaleGreen.description>
+  <!-- 赤龙息腺 -->
+  <LP_Graft_BreathRed.label>red dragon breath gland</LP_Graft_BreathRed.label>
+  <!-- 赤龙心里剖出的龙息腺，缝在颈部。颈部附加：能力“龙息”（锥形 6 格，敌人受 30 点火焰伤害，冷却 1 天）。副作用：嘴里总冒着余烬，别人对你的印象 −5。同时只能装一件龙息腺。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Graft_BreathRed.description>A breath gland cut from a red dragon's heart, sewn into the neck. Neck add-on: ability "Dragon breath" (6-cell cone, enemies take 30 fire damage, cooldown 1 day). Side effect: always spitting embers, others' opinion of you -5. Only one breath gland at a time. Rare tier, takes 1 attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Graft_BreathRed.description>
+  <!-- 白龙息腺 -->
+  <LP_Graft_BreathWhite.label>white dragon breath gland</LP_Graft_BreathWhite.label>
+  <!-- 白龙心里剖出的龙息腺，缝在颈部。颈部附加：能力“龙息”（锥形 6 格，敌人受 30 点寒冰伤害，冷却 1 天）。副作用：嘴里总冒着余烬，别人对你的印象 −5。同时只能装一件龙息腺。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Graft_BreathWhite.description>A breath gland cut from a white dragon's heart, sewn into the neck. Neck add-on: ability "Dragon breath" (6-cell cone, enemies take 30 cold damage, cooldown 1 day). Side effect: always spitting embers, others' opinion of you -5. Only one breath gland at a time. Rare tier, takes 1 attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Graft_BreathWhite.description>
+  <!-- 蓝龙息腺 -->
+  <LP_Graft_BreathBlue.label>blue dragon breath gland</LP_Graft_BreathBlue.label>
+  <!-- 蓝龙心里剖出的龙息腺，缝在颈部。颈部附加：能力“龙息”（锥形 6 格，敌人受 30 点闪电伤害，冷却 1 天）。副作用：嘴里总冒着余烬，别人对你的印象 −5。同时只能装一件龙息腺。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Graft_BreathBlue.description>A breath gland cut from a blue dragon's heart, sewn into the neck. Neck add-on: ability "Dragon breath" (6-cell cone, enemies take 30 lightning damage, cooldown 1 day). Side effect: always spitting embers, others' opinion of you -5. Only one breath gland at a time. Rare tier, takes 1 attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Graft_BreathBlue.description>
+  <!-- 黑龙息腺 -->
+  <LP_Graft_BreathBlack.label>black dragon breath gland</LP_Graft_BreathBlack.label>
+  <!-- 黑龙心里剖出的龙息腺，缝在颈部。颈部附加：能力“龙息”（锥形 6 格，敌人受 30 点强酸伤害，冷却 1 天）。副作用：嘴里总冒着余烬，别人对你的印象 −5。同时只能装一件龙息腺。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Graft_BreathBlack.description>A breath gland cut from a black dragon's heart, sewn into the neck. Neck add-on: ability "Dragon breath" (6-cell cone, enemies take 30 acid damage, cooldown 1 day). Side effect: always spitting embers, others' opinion of you -5. Only one breath gland at a time. Rare tier, takes 1 attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Graft_BreathBlack.description>
+  <!-- 绿龙息腺 -->
+  <LP_Graft_BreathGreen.label>green dragon breath gland</LP_Graft_BreathGreen.label>
+  <!-- 绿龙心里剖出的龙息腺，缝在颈部。颈部附加：能力“龙息”（锥形 6 格，敌人受 30 点毒素伤害，冷却 1 天）。副作用：嘴里总冒着余烬，别人对你的印象 −5。同时只能装一件龙息腺。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Graft_BreathGreen.description>A breath gland cut from a green dragon's heart, sewn into the neck. Neck add-on: ability "Dragon breath" (6-cell cone, enemies take 30 poison damage, cooldown 1 day). Side effect: always spitting embers, others' opinion of you -5. Only one breath gland at a time. Rare tier, takes 1 attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Graft_BreathGreen.description>
+  <!-- 维克那之手 -->
+  <LP_Vecna_Hand.label>Hand of Vecna</LP_Vecna_Hand.label>
+  <!-- 传说中巫妖神维克那被背叛者砍下的左手，干枯发黑，却还在动。替换左手（必须先截掉自己的左手才能装），部位效率 150%；冒险者力量至少 20；能力“寒冰触”（近身，30 寒冰伤害并降温，冷却 10 秒）和“指挥亡灵”（20 格内一个敌方亡灵为你作战 30 秒，冷却 1 天）。诅咒：每 60 天有 10% 陷入“邪恶意志”杀戮狂暴（巫妖减半）。神器档，占 1 个调谐位；不能叠巫妖肢体强化。拆下来神器就掉在地上，宿主心情 −15、持续 30 天。两件都装在同一个人身上时触发“维克那的意志”：统御上限 +50%，巫妖带死灵之躯时命匣复活 3 天缩到 1 天——但叛徒卡斯会带着卡斯之剑找上门（第一次在 3～7 天后，之后每 30 天）。世上各只有一件：探索公告板传奇委托、迷锁 60 层以后的守卫极少给。 -->
+  <LP_Vecna_Hand.description>The left hand of the lich-god Vecna, cut off by his betrayer, withered and black yet still moving. Replaces the left hand (your own left hand must be amputated first), part efficiency 150%; adventurer Strength at least 20; abilities "Frost touch" (touch, 30 cold damage and lowers temperature, cooldown 10 seconds) and "Command undead" (one enemy undead within 20 cells fights for you for 30 seconds, cooldown 1 day). Curse: every 60 days a 10% chance of an "evil will" murderous rage (halved for liches). Artifact tier, takes 1 attunement slot; can't stack with lich limb reinforcement. Removing it drops the artifact on the ground, and the host gets mood -15 for 30 days. When both pieces are installed in the same person, "Will of Vecna" triggers: command capacity +50%, and for a lich with an undead body, phylactery revival shortens from 3 days to 1, but Kas the Betrayer comes calling with the Sword of Kas (first after 3-7 days, then every 30 days). Only one of each exists in the world: very rarely given by legendary adventure board commissions and mythal guardians past floor 60.</LP_Vecna_Hand.description>
+  <!-- 维克那之眼 -->
+  <LP_Vecna_Eye.label>Eye of Vecna</LP_Vecna_Eye.label>
+  <!-- 维克那被剜出的左眼，像一块暗红的宝石。替换左眼，部位效率 150%；黑暗中视物如常（不受光照惩罚）；能力“支配人类”（和夺心魔的支配一样：30 秒内只攻击原来的同伴，冷却 1 天）。诅咒：自己心情 −8（维克那凝视），别人对你的印象 −20。神器档，占 1 个调谐位；不能叠巫妖肢体强化。拆下来神器就掉在地上，宿主心情 −15、持续 30 天。两件都装在同一个人身上时触发“维克那的意志”：统御上限 +50%，巫妖带死灵之躯时命匣复活 3 天缩到 1 天——但叛徒卡斯会带着卡斯之剑找上门（第一次在 3～7 天后，之后每 30 天）。世上各只有一件：探索公告板传奇委托、迷锁 60 层以后的守卫极少给。 -->
+  <LP_Vecna_Eye.description>Vecna's gouged-out left eye, like a dark red gem. Replaces the left eye, part efficiency 150%; sees normally in darkness (no light penalty); ability "Dominate person" (like a mind flayer's domination: only attacks its former companions for 30 seconds, cooldown 1 day). Curse: own mood -8 (Vecna's gaze), others' opinion of you -20. Artifact tier, takes 1 attunement slot; can't stack with lich limb reinforcement. Removing it drops the artifact on the ground, and the host gets mood -15 for 30 days. When both pieces are installed in the same person, "Will of Vecna" triggers: command capacity +50%, and for a lich with an undead body, phylactery revival shortens from 3 days to 1, but Kas the Betrayer comes calling with the Sword of Kas (first after 3-7 days, then every 30 days). Only one of each exists in the world: very rarely given by legendary adventure board commissions and mythal guardians past floor 60.</LP_Vecna_Eye.description>
+  <!-- 卡斯之剑 -->
+  <LP_SwordOfKas.label>Sword of Kas</LP_SwordOfKas.label>
+  <!-- 维克那亲手交给卡斯、卡斯又用它砍下维克那左手的魔剑。剑身里封着一个渴血的灵魂。锋利、沉重，对维克那神器（维克那之手、维克那之眼）的宿主伤害翻倍。不能制作。 -->
+  <LP_SwordOfKas.description>The magic sword Vecna personally gave to Kas, with which Kas cut off Vecna's left hand. A bloodthirsty soul is sealed in the blade. Sharp and heavy; double damage against hosts of Vecna's artifacts (Hand of Vecna, Eye of Vecna). Cannot be crafted.</LP_SwordOfKas.description>
+  <!-- 剑刃 -->
+  <LP_SwordOfKas.tools.0.label>blade</LP_SwordOfKas.tools.0.label>
+  <!-- 剑尖 -->
+  <LP_SwordOfKas.tools.1.label>point</LP_SwordOfKas.tools.1.label>
+  <!-- 剑柄 -->
+  <LP_SwordOfKas.tools.2.label>hilt</LP_SwordOfKas.tools.2.label>
+</LanguageData>

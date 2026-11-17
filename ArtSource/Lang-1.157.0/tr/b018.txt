@@ -1,0 +1,110 @@
+s04003	{PAWN_nameDef} swore to lay the dead to rest.\n\n- Against the sworn foe (liches, necromantic constructs, death knights, demiliches, Anomaly ghouls): damage +25%, hit +15%\n- A notice when the sworn foe appears on this map\n- After 50 sworn-foe kills in total, becomes a "Foe Slayer": damage +40%, immune to stuns and control effects from the sworn foe
+s04004	<color=#5B9BD5>Sworn Hunter: Undead</color>
+s04005	{PAWN_nameDef} swore to drive the fiends back into the Abyss and the Nine Hells.\n\n- Against the sworn foe (abyssal demons, devils of the Nine Hells, balors, ice devils, pact fiends): damage +25%, hit +15%\n- A notice when the sworn foe appears on this map\n- After 50 sworn-foe kills in total, becomes a "Foe Slayer": damage +40%, immune to stuns and control effects from the sworn foe
+s04006	<color=#5B9BD5>Sworn Hunter: Fiends</color>
+s04007	{PAWN_nameDef} has seen the things of the Underdark and since then only wants to wipe them out.\n\n- Against the sworn foe (mind flayers, beholders, behirs, mariliths): damage +25%, hit +15%\n- A notice when the sworn foe appears on this map\n- After 50 sworn-foe kills in total, becomes a "Foe Slayer": damage +40%, immune to stuns and control effects from the sworn foe
+s04008	<color=#5B9BD5>Sworn Hunter: Aberrations</color>
+s04009	{PAWN_nameDef} is a hunter raised in the wilds.\n\n- Against the sworn foe (animals): damage +25%, hit +15%\n- A notice when the sworn foe appears on this map\n- After 50 sworn-foe kills in total, becomes a "Foe Slayer": damage +40%, immune to stuns and control effects from the sworn foe
+s04010	<color=#5B9BD5>Sworn Hunter: Beasts</color>
+s04011	{PAWN_nameDef} has a blood feud with a faction (see the faction name below the tooltip).\n\n- Against the sworn foe (members of that faction): damage +25%, hit +15%\n- A notice when the sworn foe appears on this map\n- After 50 sworn-foe kills in total, becomes a "Foe Slayer": damage +40%, immune to stuns and control effects from the sworn foe
+s04012	<color=#5B9BD5>Sworn Hunter: Enemy Faction</color>
+s04013	Life drawn from the dead by the patron: absorbs damage taken (value = remaining absorption), dissipates after 1 day.
+s04014	fiendish vigor
+s04015	The child of prophecy has fallen; everyone steels themselves for the prophecy. Melee and shooting hit +10%.
+s04016	for the child of prophecy
+s04017	{PAWN_nameDef} has felled three giants in melee.\n\n- +30% melee damage against targets of body size 1.5+\n- The legend attribute "health" is worth at least ×1.25 per point
+s04018	<color=#50C0C0>Giant Bane</color>
+s04019	{PAWN_nameDef} was born strong.\n\n- Strength counts as "strong": each point of positive modifier is worth ×1.5 (takes the larger of this and racial affinity, not multiplied)
+s04020	<color=#5B9BD5>Talent: Strength</color>
+s04021	{PAWN_nameDef} was born nimble.\n\n- Dexterity counts as "strong": each point of positive modifier is worth ×1.5 (takes the larger of this and racial affinity, not multiplied)
+s04022	<color=#5B9BD5>Talent: Dexterity</color>
+s04023	{PAWN_nameDef} was born sturdy.\n\n- Constitution counts as "strong": each point of positive modifier is worth ×1.5 (takes the larger of this and racial affinity, not multiplied)
+s04024	<color=#5B9BD5>Talent: Constitution</color>
+s04025	{PAWN_nameDef} was born clever.\n\n- Intelligence counts as "strong": each point of positive modifier is worth ×1.5 (takes the larger of this and racial affinity, not multiplied)
+s04026	<color=#5B9BD5>Talent: Intelligence</color>
+s04027	{PAWN_nameDef} was born perceptive.\n\n- Wisdom counts as "strong": each point of positive modifier is worth ×1.5 (takes the larger of this and racial affinity, not multiplied)
+s04028	<color=#5B9BD5>Talent: Wisdom</color>
+s04029	{PAWN_nameDef} was born likable.\n\n- Charisma counts as "strong": each point of positive modifier is worth ×1.5 (takes the larger of this and racial affinity, not multiplied)
+s04030	<color=#5B9BD5>Talent: Charisma</color>
+s04031	{PAWN_nameDef}'s body seems made of iron.\n\n- The legend attributes "health", "endurance" and "recovery" are worth ×1.5 per point (takes the larger of this and racial affinity, not multiplied)
+s04032	<color=#5B9BD5>Diamond Body</color>
+s04033	Exaltation of the child of prophecy: the next attack always hits for ×2 damage. Once per day.
+s04034	master of fate
+s04035	Exaltation of the Pactbound (Fey): enemies within 6 cells are entranced by fey song and dazed for 10 seconds (no effect on bosses, legendary units or demigods). Once per day.
+s04036	fey charm
+s04037	Step into the Feywild and back out: teleport to a visible open spot within 8 cells. Cooldown 30 seconds.
+s04038	fey step
+s04039	The chill of Elemental Touch: Ice slows movement.
+s04040	frost sluggishness
+s04041	Exaltation of the Pactbound (Fiend): hurl an enemy on a tour of the Nine Hells. For 10 seconds the target can't move and takes 6 burn damage per second (60 total). Once per day.
+s04042	straight to hell
+s04043	The Pactbound's pact spell: a beam of force (range 24), each beam 12 eldritch damage (armor penetration 30%). Number of beams by adventurer level: 1 at levels 1-4, 2 at 5-10, 3 at 11-16, 4 from 17; if the target falls, the remaining beams automatically fire at nearby enemies. Costs no neural heat. Cooldown 4 seconds. Can't be used during the patron's wrath.
+s04044	pactbound eldritch blast
+s04045	Records destiny stages, prophecies, pact payments, sworn foes and legendary deed progress (hidden).
+s04046	power trait record
+s04047	Exaltation of the Pactbound (Old One): tear open a rift from beyond the stars in an area of ground (radius 3); enemies inside are trapped by tentacles for 15 seconds, taking 3 damage per second. Once per day.
+s04048	Exaltation of the Child of the Weave: for 60 seconds, casting costs no neural heat and triggers no cooldown. Once per day.
+s04049	weave surge
+s04050	{PAWN_nameDef} has something indescribable about them; bards call it "the stuff of heroes".\n\n- All legend attributes are worth ×1.5 per point (takes the larger of this and racial affinity, not multiplied)\n- Legend levels 21-40 give 3 legend points per level (normally 2)\n- Six ability score caps +2\n- Ability score improvements at levels 4, 8, 12 and 16 give 3 points each (normally 2)
+s04051	<color=#E08A3A>Heroic Spirit</color>
+s04052	Hurled on a tour of the Nine Hells: unable to move, taking burn damage every second.
+s04053	Things nobody else would think of often flash through {PAWN_nameDef}'s mind.\n\n- The legend attributes "mind" and "learning" are worth ×1.5 per point (takes the larger of this and racial affinity, not multiplied)\n- The higher of Intelligence and Wisdom gets cap +2
+s04054	<color=#5B9BD5>Inspiration</color>
+s04055	In that raid, {PAWN_nameDef} was the only one in the colony still standing, and {PAWN_pronoun} held the line.\n\n- Pain shock threshold +10%\n- +1 ability score improvement when gained; 25% chance to awaken Heroic Spirit on the spot (+3 legend points instead if already Heroic Spirit, Pinnacle or Destiny)
+s04056	<color=#50C0C0>Last Stand Hero</color>
+s04057	{PAWN_nameDef} is destined to become a legend, just not yet.\n\n- Gains 10 legend points at once upon becoming a legendary adventurer\n- Legend point rewards for the 500 / 1000 humanlike kill milestones are doubled (6 each)
+s04058	<color=#5B9BD5>Legend in the Making</color>
+s04059	{PAWN_nameDef} has defeated Larloch the Shadow King, or personally destroyed an enemy's phylactery.\n\n- +30% damage against undead\n- Can't have their soul drained\n- The legend attribute "mind" is worth at least ×1.25 per point
+s04060	<color=#50C0C0>Lichbane</color>
+s04061	{PAWN_nameDef} has broken free of a mind flayer's domination, or withstood three psychic blasts.\n\n- Immune to mind control (domination, psychic blasts, psychic bindings and other effects judged by mind resistance)\n- Psychic damage -50%\n- Mental break threshold -5%
+s04062	<color=#50C0C0>Mind Fortress</color>
+s04063	{PAWN_nameDef} has a pact with an archdevil of the Nine Hells.\n\nAll stages: Pactbound Eldritch Blast (12 damage per beam, 1/2/3/4 beams at levels 1/5/11/17, cooldown 4 seconds, no neural heat).\nAwakened: each kill grants temporary damage absorption of 15 + adventurer level (up to 60).\nManifest (level 10): eldritch blast hits ignite the target.\nExalted (legendary adventurer): fire damage -50%; once per day "Straight to hell" (single target, 60 burn damage over 10 seconds, target can't move meanwhile).\nPact payment: every 15-20 days the patron makes a demand: within 3 days execute a prisoner or pay 500 silver. Failure → patron's wrath for 10 days (eldritch blast unusable, mood -10); two failures in a row drop one stage, and further consecutive failures at the awakened stage remove the trait with "forsaken pact" mood -15 (15 days).
+s04064	<color=#E0B040>Pactbound: Fiend</color>
+s04065	{PAWN_nameDef} has a pact with the Fey Queen.\n\nAll stages: Pactbound Eldritch Blast (12 damage per beam, 1/2/3/4 beams at levels 1/5/11/17, cooldown 4 seconds, no neural heat).\nAwakened: Fey Step: teleport within 8 cells, cooldown 30 seconds.\nManifest (level 10): when hit, 20% chance to confuse the attacker for 3 seconds.\nExalted (legendary adventurer): once per day "Fey charm": enemies within 6 cells are dazed for 10 seconds (no effect on bosses).\nPact payment: every 15-20 days the patron makes a demand: within 3 days hold a party / wedding, or hand over an artwork of excellent quality or better. Failure → patron's wrath for 10 days (eldritch blast unusable, mood -10); two failures in a row drop one stage, and further consecutive failures at the awakened stage remove the trait with "forsaken pact" mood -15 (15 days).
+s04066	<color=#E0B040>Pactbound: Fey</color>
+s04067	{PAWN_nameDef} heard whispers from beyond the stars in a dream, and answered them.\n\nAll stages: Pactbound Eldritch Blast (12 damage per beam, 1/2/3/4 beams at levels 1/5/11/17, cooldown 4 seconds, no neural heat).\nAwakened: psychic sensitivity +20%.\nManifest (level 10): eldritch blast hits stun the target for 1 second (once per 10 seconds per target).\nExalted (legendary adventurer): once per day "Otherworldly tentacles": enemies in a radius-3 area are trapped for 15 seconds and keep taking damage.\nPact payment: every 15-20 days the patron makes a demand: within 3 days meditate personally for 8 hours or study a Netherese scroll for 1 hour. Failure → patron's wrath for 10 days (eldritch blast unusable, mood -10); two failures in a row drop one stage, and further consecutive failures at the awakened stage remove the trait with "forsaken pact" mood -15 (15 days).
+s04068	<color=#E0B040>Pactbound: Old One</color>
+s04069	The patron abandoned me, along with everything {PAWN_possessive} gave me.
+s04070	forsaken pact
+s04071	{PAWN_nameDef}'s strength is a natural pinnacle.\n\n- Each point of positive Strength modifier is worth ×2.5, Strength cap 26\n- The legend attributes "melee" and "health" are worth ×2 per point\n(each takes the larger of this and racial affinity, not multiplied)
+s04072	<color=#E08A3A>Pinnacle: Strength</color>
+s04073	{PAWN_nameDef}'s dexterity is a natural pinnacle.\n\n- Each point of positive Dexterity modifier is worth ×2.5, Dexterity cap 26\n- The legend attributes "ranged" and "melee" are worth ×2 per point\n(each takes the larger of this and racial affinity, not multiplied)
+s04074	<color=#E08A3A>Pinnacle: Dexterity</color>
+s04075	{PAWN_nameDef}'s constitution is a natural pinnacle.\n\n- Each point of positive Constitution modifier is worth ×2.5, Constitution cap 26\n- The legend attributes "health" and "endurance" are worth ×2 per point\n(each takes the larger of this and racial affinity, not multiplied)
+s04076	<color=#E08A3A>Pinnacle: Constitution</color>
+s04077	{PAWN_nameDef}'s intelligence is a natural pinnacle.\n\n- Each point of positive Intelligence modifier is worth ×2.5, Intelligence cap 26\n- The legend attributes "learning" and "work" are worth ×2 per point\n(each takes the larger of this and racial affinity, not multiplied)
+s04078	<color=#E08A3A>Pinnacle: Intelligence</color>
+s04079	{PAWN_nameDef}'s wisdom is a natural pinnacle.\n\n- Each point of positive Wisdom modifier is worth ×2.5, Wisdom cap 26\n- The legend attributes "mind" and "recovery" are worth ×2 per point\n(each takes the larger of this and racial affinity, not multiplied)
+s04080	<color=#E08A3A>Pinnacle: Wisdom</color>
+s04081	{PAWN_nameDef}'s charisma is a natural pinnacle.\n\n- Each point of positive Charisma modifier is worth ×2.5, Charisma cap 26\n- The legend attributes "mind" and "work" are worth ×2 per point\n(each takes the larger of this and racial affinity, not multiplied)
+s04082	<color=#E08A3A>Pinnacle: Charisma</color>
+s04083	Failed to pay the pact; the patron has withdrawn its favor: Pactbound Eldritch Blast unusable.
+s04084	patron's wrath
+s04085	The patron is very displeased with me. I can feel that chill.
+s04086	We witnessed the prophecy come true with our own eyes.
+s04087	prophecy fulfilled
+s04088	On the day {PAWN_nameDef} was born, someone spoke a prophecy (see the prophecy below the tooltip).\n\nAwakened: fate unfinished: until the prophecy is fulfilled, lethal wounds down you instead and stop bleeding (cooldown 20 days); +25% damage against the prophecy's target.\nManifest (adventurer level 10): fate unfinished cooldown 12 days; when {PAWN_pronoun} is downed, allies within 5 cells get "for the child of prophecy" hit +10% (1 hour).\nExalted (prophecy fulfilled): gains all the XP needed for the next level at once, and the whole colony gets "prophecy fulfilled" mood +8 (10 days); fate unfinished is replaced by master of fate: once per day, the next attack always hits for ×2 damage.
+s04089	<color=#E0B040>Child of Prophecy</color>
+s04090	Magic always slips off {PAWN_nameDef}.\n\n- Enemy psychic, spell and divine damage -35% (weaponless damage, staff damage)\n- Enemy stuns, charms, domination and psychic blasts have a 50% chance to fail\n- Only resists hostile casters; friendly buff spells work as usual\n- Cost: psychic sensitivity -20%
+s04091	<color=#5B9BD5>Spell Immunity</color>
+s04092	The spirit of the bear growls in {PAWN_nameDef}'s blood.\n\n- With overall health below 50%, non-psychic damage taken -35%\n- Pain shock threshold +10%
+s04093	<color=#5B9BD5>Totem Spirit: Bear</color>
+s04094	The spirit of the wolf pack hunts alongside {PAWN_nameDef}.\n\n- Targets {PAWN_pronoun} has hit in melee (within 8 seconds) get +15% melee hit from other allies\n- Melee hits have a 10% chance to knock the target down for 1 second (no effect on body size 3+)\n- Move speed +0.3
+s04095	<color=#5B9BD5>Totem Spirit: Wolf</color>
+s04096	The spirit of the eagle watches the distance for {PAWN_nameDef}.\n\n- When shooting, the reduction from the target's cover is halved (doesn't stack with Sharpshooter)\n- Ranged weapon range ×1.15
+s04097	<color=#5B9BD5>Totem Spirit: Eagle</color>
+s04098	The Weave flows like water around {PAWN_nameDef}.\n\nAwakened: staff damage +20%; with VPE, psycast neural heat cost -25%, without it psychic sensitivity +15%.\nManifest (adventurer level 10): each cast has a 15% chance to trigger no cooldown; without VPE, staff range +3 instead.\nExalted (legendary adventurer): once per day "Weave surge": for 60 seconds casting costs no neural heat and triggers no cooldown; Weave tremors and Weave collapse have no effect on {PAWN_objective}.
+s04099	<color=#E0B040>Child of the Weave</color>
+s04100	Exaltation of the Child of the Weave: casting costs no neural heat and triggers no cooldown.
+s04101	{PAWN_nameDef}'s hands seem to know how to use tools by nature.\n\n- Global work speed +10%\n- The legend attribute "work" is worth ×1.5 per point (takes the larger of this and racial affinity, not multiplied)
+s04102	<color=#5B9BD5>Skilled Hands</color>
+s04103	A witch cursed {PAWN_nameDef} as she died. Misfortune follows {PAWN_objective} everywhere, and sometimes pounces on others.\n\n- Melee dodge +15\n- When hit by an enemy, 15% chance of "misfortune transfer": the attacker also takes half of that damage\n- Cost: misfortune strikes about once every 8 days: one worn piece of apparel loses 30% durability, mood -5 "dogged by misfortune" (2 days)
+s04104	<color=#D05050>Dogged by Misfortune</color>
+s04105	{PAWN_nameDef} sees clearly what others see only as a dot.\n\n- Shooting accuracy +6\n- Aiming time ×0.85
+s04106	<color=#5B9BD5>Far Sight</color>
+s04107	{PAWN_nameDef} can tell who's about to break, and never holds back.\n\n- +50% damage against enemies who are downed or below 30% overall health\n- After personally killing an enemy, melee and shooting hit +10% for 1 hour "press the advantage"
+s04108	<color=#B070E0>Executioner</color>
+s04109	{PAWN_nameDef} runs like the wind.\n\n- Move speed +0.4\n- Melee dodge +10
+s04110	<color=#5B9BD5>Windrunner</color>
+s04111	{PAWN_nameDef} grew up rough in the wilds and has endured every hardship.\n\n- Immunity gain speed ×1.2\n- Wound healing speed ×1.3\n- Toxic resistance +25%\n- Comfortable temperature range widened by 10°C at both ends
+s04112	<color=#5B9BD5>Wilderness Body</color>

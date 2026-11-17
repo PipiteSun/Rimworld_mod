@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 蛮牛冲撞 -->
+  <LP_BullRush.label>bull rush</LP_BullRush.label>
+  <!-- 朝目标方向笔直冲出最多8格。撞上的第一个敌人受到15×体型的钝击伤害，被撞退2格并眩晕1秒。撞到墙、建筑或挡路的人就停下，不会损坏建筑。冷却1天。 -->
+  <LP_BullRush.description>Charge straight up to 8 cells toward the target. The first enemy hit takes 15 × body size blunt damage, is knocked back 2 cells and stunned for 1 second. Stops on hitting a wall, building or someone in the way, without damaging buildings. Cooldown 1 day.</LP_BullRush.description>
+</LanguageData>

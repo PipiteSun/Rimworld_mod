@@ -27,6 +27,18 @@ namespace LichPhylactery {
     var missing=Adventurer.Racial.Keys.Where(k=>!Affinity.Table.ContainsKey(k)).ToList();
     var t=Affinity.Table;
     Check(missing.Count==0 && t["LP_FireGiant"].legendary && t["Lich"].legendary && t["LP_Ettin"].legendary && !t["LP_Elf"].legendary && !t["LP_HalfOrc"].legendary && !t[Affinity.HumanKey].legendary && Near(t["LP_FireGiant"].StrongMult,1.75f) && Near(t["LP_Elf"].StrongMult,1.5f),"affinity table covers every racial-bonus race ("+(missing.Count==0?"ok":"missing "+string.Join(",",missing))+"); giants/lich are legendary-tier ×1.75, elf/half-orc/human common ×1.5");
+    // 1b. 1.165.0：亡灵大军 4 个异种和其他 mod 的异种都有条目，每行至少一项擅长；原版尼安德特人按异种查、名字用异种自己的；基准人仍是人类
+    {
+     var noStrong=t.Values.Where(a=>a.key!=Affinity.HumanKey && !a.strong.Any(b=>b) && !a.legendary).Select(a=>a.key).ToList();
+     var undead=new[]{"LP_UH_GhoulXeno","LP_UH_WightXeno","LP_UH_WraithXeno","LP_UH_VampireXeno"};var undeadMiss=undead.Where(k=>!t.ContainsKey(k) || DefDatabase<XenotypeDef>.GetNamedSilentFail(k)==null).ToList();
+     var nean=AdvPawn(DefDatabase<XenotypeDef>.GetNamed("Neanderthal"));var hn=Adventurer.Get(nean);var bl=AdvPawn(XenotypeDefOf.Baseliner);
+     var vamp=AdvPawn(DefDatabase<XenotypeDef>.GetNamed("LP_UH_VampireXeno"));
+     var foreign=t.Keys.Count(k=>DefDatabase<XenotypeDef>.GetNamedSilentFail(k)!=null && !k.StartsWith("LP_") && k!=Affinity.HumanKey && k!=Affinity.LichKey);
+     Check(noStrong.Count==0 && undeadMiss.Count==0 && hn!=null && hn.Affinity.key=="Neanderthal" && hn.Affinity.label==DefDatabase<XenotypeDef>.GetNamed("Neanderthal").LabelCap.ToString() && hn.Affinity.strong[Adventurer.Str] && hn.Affinity.weak[Adventurer.Int] && Affinity.For(bl).key==Affinity.HumanKey && Affinity.For(vamp).key=="LP_UH_VampireXeno" && foreign>=11,
+      "1.165.0 affinity rows: undead xenotypes covered ("+(undeadMiss.Count==0?"ok":string.Join(",",undeadMiss))+"), rows without strong scores "+(noStrong.Count==0?"none":string.Join(",",noStrong))+"; neanderthal → '"+hn?.Affinity.label+"' Str strong / Int weak; baseliner → human; loaded foreign xenotypes with rows: "+foreign);
+     var taotie=DefDatabase<GeneDef>.GetNamedSilentFail("MB_TaotieGene");
+     if(taotie!=null){bl.genes.AddGene(taotie,false);Check(Affinity.For(bl).key=="MB_Taotie" && Affinity.For(bl).legendary,"awakened baseliner with MB_TaotieGene uses the 饕餮 bloodline affinity (legendary)");}
+    }
     // 2. 精灵智力 +2：研究速度收益 = 人类 1.5 倍；人类传奇 ×1.1
     var human=AdvPawn();var elf=AdvPawn(DefDatabase<XenotypeDef>.GetNamed("LP_Elf"));
     var hh=AdvAt(human,14);var he=AdvAt(elf,14);
@@ -60,6 +72,12 @@ namespace LichPhylactery {
     // 7. 只在普通种族身上：传奇种族生成时去掉；同一人最多一个
     Talents.StripAll=false;var tg=AdvTalentPawn("LP_FireGiant",Talents.Gifted);var te=AdvTalentPawn("LP_Elf",Talents.Gifted);Talents.StripAll=oStrip;
     Check(Talents.All.All(d=>d!=null && d.exclusionTags.Contains(Talents.ExclusionTag) && !d.exclusionTags.Contains(HeroTraits.PowerTag) && HeroTraits.IsSlot(d) && Near(d.GetGenderSpecificCommonality(Gender.Male),0f)) && Talents.Of(tg)==null && Talents.Of(te)==Talents.Gifted && Adventurer.Get(te).Talent==Talents.Gifted && Talents.Gifted.ConflictsWith(Talents.Tempered),"talent traits: commonality 0 (1.58.0 rolled with the power traits, shared LP_PowerTrait slot), mutually exclusive, a generated fire giant loses 天赋异禀 while an elf keeps it");
+    // 7b. 1.164.1：绕过互斥同时挂着两个天赋（角色编辑器特性栏）时，冒险者刷新只留后加的一个
+    {var dp=AdvPawn();var dl=dp.story.traits.allTraits;foreach(var x in dl.Where(x=>Talents.Is(x.def)).ToList())dp.story.traits.RemoveTrait(x);
+     dl.Add(new Trait(Talents.Tempered,0,true));dl.Add(new Trait(Talents.Gifted,0,false));var dh=Adventurer.Get(dp);dh.Dirty();bool wasT=dh.Talent==Talents.Tempered;
+     HarmonyLib.AccessTools.Method(typeof(Hediff_Adventurer),"RefreshAffinity").Invoke(dh,null);
+     Check(wasT && dl.Count(x=>Talents.Is(x.def))==1 && Talents.Of(dp)==Talents.Gifted && dh.Talent==Talents.Gifted,"two talents at once (editor bypass): before refresh only the first counted ("+wasT+"); refresh keeps the newer one → "+Talents.Of(dp)?.defName);
+     dp.Destroy();}
     // 8. 天赋异禀：×1.5，与种族倍率取较大（不相乘）
     var hte=AdvAt(te,14);var gh=AdvPawn();var hgh=AdvAt(gh,14);gh.story.traits.GainTrait(new Trait(Talents.Gifted));
     var go=AdvPawn(DefDatabase<XenotypeDef>.GetNamed("LP_HalfOrc"));var hgo=AdvAt(go,14);go.story.traits.GainTrait(new Trait(Talents.Gifted));

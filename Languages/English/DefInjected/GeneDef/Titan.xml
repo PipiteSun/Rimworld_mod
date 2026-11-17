@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 神裔之躯 -->
+  <LP_TitanStature.label>titanborn body</LP_TitanStature.label>
+  <!-- 两个半常人高的神裔之躯：实际体型×250%，显示×160%，搬运量再×120%；饭量是常人的1.5倍、胃容量×250%，步子大却不快（移速×90%）。巨躯规则让神裔的生命×175%、近战×145%。 -->
+  <LP_TitanStature.description>A titanborn body two and a half times human height: actual body size ×250%, drawn ×160%, hauling another ×120%; eats 1.5× as much as normal, stomach ×250%, long strides but not fast (move speed ×90%). Giant-body rules give the titanborn health ×175% and melee ×145%.</LP_TitanStature.description>
+  <!-- 神威 -->
+  <LP_TitanDivinity.label>divine might</LP_TitanDivinity.label>
+  <!-- 神裔的神性，表现为“神威”资源条（0～100）：每天自然恢复10点，心情≥80%时每天再恢复10点，每击杀一个敌人+5。神威用于“神罚”（30）和“神裔之息”（40）。头顶悬着一圈淡金色的光环。 -->
+  <LP_TitanDivinity.description>A titanborn's divinity, shown as the "divine might" resource bar (0-100): recovers 10 per day naturally, another 10 per day while mood ≥80%, and +5 per enemy killed. Divine might is used for "divine punishment" (30) and "titanborn's breath" (40). A faint golden halo hangs over the head.</LP_TitanDivinity.description>
+  <!-- 神裔的神威。每天恢复，击杀敌人也会增加；神罚与神裔之息消耗它。 -->
+  <LP_TitanDivinity.resourceDescription>A titanborn's divine might. Recovers daily and also increases with kills; spent by divine punishment and titanborn's breath.</LP_TitanDivinity.resourceDescription>
+  <!-- 神威 -->
+  <LP_TitanDivinity.resourceLabel>divine might</LP_TitanDivinity.resourceLabel>
+  <!-- 天候随心 -->
+  <LP_TitanWeather.label>weather of the heart</LP_TitanWeather.label>
+  <!-- 神裔的喜怒会写在天上：神裔在地图上时，每天黎明看一次它的心情——心情≥80%天气转晴，心情≤30%转为雷雨，其余时候不干预。只影响神裔所在的地图。可在模组设置里关闭。 -->
+  <LP_TitanWeather.description>A titanborn's moods are written in the sky: while the titanborn is on the map, its mood is checked at dawn each day: mood ≥80% turns the weather clear, mood ≤30% turns it to thunderstorm, otherwise no interference. Only affects the map the titanborn is on. Can be turned off in mod settings.</LP_TitanWeather.description>
+  <!-- 不可动摇 -->
+  <LP_TitanUnshakable.label>unshakable</LP_TitanUnshakable.label>
+  <!-- 神裔不会被眩晕（包括 EMP），心智抗性+50%。 -->
+  <LP_TitanUnshakable.description>Titanborn can't be stunned (including by EMP), mind resistance +50%.</LP_TitanUnshakable.description>
+  <!-- 金铜肤色 -->
+  <LP_SkinTitan.label>golden-bronze skin</LP_SkinTitan.label>
+  <!-- 神裔金铜色的皮肤，在阳光下微微发亮。 -->
+  <LP_SkinTitan.description>The golden-bronze skin of a titanborn, faintly gleaming in the sunlight.</LP_SkinTitan.description>
+  <!-- 金铜 -->
+  <LP_SkinTitan.labelShortAdj>golden bronze</LP_SkinTitan.labelShortAdj>
+</LanguageData>

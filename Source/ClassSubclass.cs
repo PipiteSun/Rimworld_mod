@@ -91,9 +91,9 @@ namespace LichPhylactery {
   public static string ChoiceLabel(Hediff_Adventurer h,SubclassChoice ch){int v=Choice(h,ch.key);return v>=0 && v<ch.options.Count?ch.options[v]:null;}
 
   public static string CanPick(Hediff_Adventurer h,LP_SubclassDef s){
-   if(h?.classes==null || s==null || s.general || s.parent==null)return "没有这个子职业";
-   if(ClassSystem.Level(h,s.parent)<PickLevelFor(s.parent))return "需要"+s.parent.label+" "+PickLevelFor(s.parent)+" 级";
-   var cur=Picked(h,s.parent);if(cur!=null)return cur==s?"已经选了":"已经选了"+cur.label+"（选定后不能更改）";
+   if(h?.classes==null || s==null || s.general || s.parent==null)return "没有这个子职业".Loc();
+   if(ClassSystem.Level(h,s.parent)<PickLevelFor(s.parent))return "需要".Loc()+s.parent.label+" "+PickLevelFor(s.parent)+" 级".Loc();
+   var cur=Picked(h,s.parent);if(cur!=null)return cur==s?"已经选了".Loc():"已经选了".Loc()+cur.label+"（选定后不能更改）".Loc();
    return Subclass2.PickBlock(h,s);
   }
   public static bool Pick(Hediff_Adventurer h,LP_SubclassDef s,bool message=false){
@@ -102,16 +102,16 @@ namespace LichPhylactery {
    ClassSystem.Sync(h);if(h.pawn!=null)Martial.Refresh(h.pawn);
    if(message && h.pawn?.Faction!=null && h.pawn.Faction.IsPlayer){
     var more=s.choices.Where(c=>c.level<=ClassSystem.Level(h,s.parent)).Select(c=>c.label).ToList();
-    Messages.Message(h.pawn.LabelShort+"踏上了「"+s.label+"」（"+s.parent.label+"）"+(more.Count>0?"，还要选择："+string.Join("、",more):""),h.pawn,MessageTypeDefOf.PositiveEvent,false);
+    Messages.Message(h.pawn.LabelShort+"踏上了「".Loc()+s.label+"」（".Loc()+s.parent.label+"）".Loc()+(more.Count>0?"，还要选择：".Loc()+string.Join("、".Loc(),more):""),h.pawn,MessageTypeDefOf.PositiveEvent,false);
    }
    return true;
   }
   public static string CanChoose(Hediff_Adventurer h,string key,int option){
-   var d=Data(h);var ch=FindChoice(h,key);if(d==null || ch==null)return "还没有这个分支";
-   if(d.choices.ContainsKey(key))return "已经选过（不能更改）";
-   if(option<0 || option>=ch.options.Count)return "没有这个选项";
-   if(!ch.distinctFrom.NullOrEmpty() && Choice(h,ch.distinctFrom)==option)return "已经选过「"+ch.options[option]+"」";
-   var s=d.picks.First(x=>x.choices.Contains(ch));if(ClassSystem.Level(h,s.parent)<ch.level)return "需要"+s.parent.label+" "+ch.level+" 级";
+   var d=Data(h);var ch=FindChoice(h,key);if(d==null || ch==null)return "还没有这个分支".Loc();
+   if(d.choices.ContainsKey(key))return "已经选过（不能更改）".Loc();
+   if(option<0 || option>=ch.options.Count)return "没有这个选项".Loc();
+   if(!ch.distinctFrom.NullOrEmpty() && Choice(h,ch.distinctFrom)==option)return "已经选过「".Loc()+ch.options[option]+"」".Loc();
+   var s=d.picks.First(x=>x.choices.Contains(ch));if(ClassSystem.Level(h,s.parent)<ch.level)return "需要".Loc()+s.parent.label+" "+ch.level+" 级".Loc();
    var bd=Bard.ChoiceBlock(h,key,option);if(bd!=null)return bd; // 1.123.0 魔法奥秘不能选已经会的法术
    return null;
   }
@@ -119,7 +119,7 @@ namespace LichPhylactery {
    if(CanChoose(h,key,option)!=null)return false;Data(h).choices[key]=option;
    if(h.pawn!=null)Martial.Refresh(h.pawn);
    var ch=FindChoice(h,key);
-   if(message && h.pawn?.Faction!=null && h.pawn.Faction.IsPlayer)Messages.Message(h.pawn.LabelShort+"的"+ch.label+"："+ch.options[option],h.pawn,MessageTypeDefOf.PositiveEvent,false);
+   if(message && h.pawn?.Faction!=null && h.pawn.Faction.IsPlayer)Messages.Message(h.pawn.LabelShort+"的".Loc()+ch.label+"：".Loc()+ch.options[option],h.pawn,MessageTypeDefOf.PositiveEvent,false);
    return true;
   }
   public static bool Entitled(Hediff_Adventurer h,LP_SubclassDef s,ClassAbilityEntry e){
@@ -135,7 +135,7 @@ namespace LichPhylactery {
    }
    if(p.Faction!=null && p.Faction.IsPlayer)foreach(var c in NeedPick(h).ToList())if(!d.reminded.Contains(c)){
     d.reminded.Add(c);
-    if(!Adventurer.TestSuppressed && Current.ProgramState==ProgramState.Playing)Messages.Message(p.LabelShort+"的"+c.label+"到了 "+PickLevelFor(c)+" 级，可以选择子职业了（“选择子职业”按钮，或冒险者分页的职业页）。",p,MessageTypeDefOf.PositiveEvent,false);
+    if(!Adventurer.TestSuppressed && Current.ProgramState==ProgramState.Playing)Messages.Message(p.LabelShort+"的".Loc()+c.label+"到了 ".Loc()+PickLevelFor(c)+" 级，可以选择子职业了（“选择子职业”按钮，或冒险者分页的职业页）。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);
    }
    return n;
   }
@@ -182,7 +182,7 @@ namespace LichPhylactery {
   public static float Mana(Hediff_Adventurer h)=>Data(h)?.mana??0f;
   public static float Mana(Pawn p)=>Mana(Adventurer.Get(p));
   public static float AddMana(Hediff_Adventurer h,float a){int max=ManaMax(h);if(max<=0 || a==0f)return 0f;var d=Data(h);float cur=d.mana,next=Mathf.Clamp(cur+a,0f,max);d.mana=next;return next-cur;}
-  public static string ManaCannot(Hediff_Adventurer h,AbilityDef def,int cost){if(!UsesMana(def) || cost<=0)return null;float m=Mana(h);return m+.001f<cost?"法力不足（"+m.ToString("0.#")+" / "+cost+"）":null;}
+  public static string ManaCannot(Hediff_Adventurer h,AbilityDef def,int cost){if(!UsesMana(def) || cost<=0)return null;float m=Mana(h);return m+.001f<cost?"法力不足（".Loc()+m.ToString("0.#")+" / "+cost+"）".Loc():null;}
   public static bool PayMana(Hediff_Adventurer h,AbilityDef def,int cost){if(!UsesMana(def))return false;if(h!=null && cost>0)AddMana(h,-cost);return true;}
 
   // ---------- 小工具 ----------
@@ -225,7 +225,7 @@ namespace LichPhylactery {
   // 新的一场战斗（1 小时没有攻防）：盗贼反射。
   static void Fight(Pawn p,SubclassData d,int f){
    if(d==null)return;int now=Now;bool fresh=now-d.lastFight>FightGap || now<d.lastFight;d.lastFight=now;
-   if(fresh && (f & SReflex)!=0){Items.Give(p,"LP_ThiefReflexBuff",ReflexTicks);Items.Mote(p,"盗贼反射",ClassMartial2.ShadowColor);}
+   if(fresh && (f & SReflex)!=0){Items.Give(p,"LP_ThiefReflexBuff",ReflexTicks);Items.Mote(p,"盗贼反射".Loc(),ClassMartial2.ShadowColor);}
   }
 
   // ---------- 伤害（ClassMartial2.Out / In 里调用） ----------
@@ -237,17 +237,17 @@ namespace LichPhylactery {
    int f=Flags(a);float g=1f;
    if(f!=0 && hostile){
     var sd=Data(a);Fight(a,sd,f);
-    if((f & SDread)!=0 && sd!=null){int now=Now;bool first=now-sd.lastStrike>FightGap || now<sd.lastStrike;sd.lastStrike=now;if(first){g*=DreadFactor;Fear(v,DreadFearTicks,"恐惧伏击");Items.Mote(v,"恐惧伏击",ClassMartial2.HuntColor);}}
+    if((f & SDread)!=0 && sd!=null){int now=Now;bool first=now-sd.lastStrike>FightGap || now<sd.lastStrike;sd.lastStrike=now;if(first){g*=DreadFactor;Fear(v,DreadFearTicks,"恐惧伏击".Loc());Items.Mote(v,"恐惧伏击".Loc(),ClassMartial2.HuntColor);}}
     if((f & SPrey)!=0){
      int c=Choice(a,"prey");
      if(c==0 && v.health.summaryHealth.SummaryHealthPercent<.999f)g*=ColossusFactor;
      else if(c==1 && ClassMartial2.Melee(d) && a.Spawned && Ready(sd,"horde",60)){
       var adj=Races124.PawnsNear(a.Map,a.Position,1.5f).Where(x=>Hostile(a,x) && !x.Downed).ToList();
-      if(adj.Count>=3){var other=adj.FirstOrDefault(x=>x!=v);if(other!=null){Use(sd,"horde");Fiends.Defer(()=>{if(!a.Dead && !a.Downed && !other.Dead && other.Spawned)ClassMelee.Strike(a,other);});Items.Mote(a,"群敌杀手",ClassMartial2.HuntColor);}}
+      if(adj.Count>=3){var other=adj.FirstOrDefault(x=>x!=v);if(other!=null){Use(sd,"horde");Fiends.Defer(()=>{if(!a.Dead && !a.Downed && !other.Dead && other.Spawned)ClassMelee.Strike(a,other);});Items.Mote(a,"群敌杀手".Loc(),ClassMartial2.HuntColor);}}
      }
     }
    }
-   if(Items.Has(a,"LP_WolfPounce") && ClassMartial2.Melee(d) && v.BodySize<=2f){v.stances?.stunner?.StunFor(PounceStun,a);Items.Mote(v,"扑倒",ClassMartial2.RageColor);}
+   if(Items.Has(a,"LP_WolfPounce") && ClassMartial2.Melee(d) && v.BodySize<=2f){v.stances?.stunner?.StunFor(PounceStun,a);Items.Mote(v,"扑倒".Loc(),ClassMartial2.RageColor);}
    if(Items.Has(a,"LP_RogueSteady"))Items.Remove(a,"LP_RogueSteady");
    if(Items.Has(a,"LP_ATInvisible"))Items.Remove(a,"LP_ATInvisible");
    return g;
@@ -256,7 +256,7 @@ namespace LichPhylactery {
   public static float In(Pawn v,Pawn a,DamageInfo d){
    int f=Flags(v);if(f==0)return 1f;float g=1f;var sd=Data(v);bool hostile=a!=null && a!=v && a.HostileTo(v);
    if(hostile)Fight(v,sd,f);
-   if((f & SShadowDodge)!=0 && hostile && !v.Downed && Ready(sd,"shadowDodge",300) && Roll<ShadowDodgeChance){Use(sd,"shadowDodge");Items.Mote(v,"暗影闪避",ClassMartial2.HuntColor);return -1f;}
+   if((f & SShadowDodge)!=0 && hostile && !v.Downed && Ready(sd,"shadowDodge",300) && Roll<ShadowDodgeChance){Use(sd,"shadowDodge");Items.Mote(v,"暗影闪避".Loc(),ClassMartial2.HuntColor);return -1f;}
    if((f & STotem)!=0 && ClassMartial2.Raging(v) && Choice(v,"totem")==0 && !Psychic(d.Def)){var cat=d.Def.armorCategory?.defName;g*=cat=="Sharp" || cat=="Blunt"?BearFactor/ClassMartial2.RageReduction:BearFactor;}
    if((f & SEvasion)!=0 && d.Def.isExplosive)g*=.5f;
    if((f & SStormSoul)!=0){int el=Choice(v,"element");if(el>=0 && Element(d.Def)==el)g*=ElementFactor;}
@@ -267,11 +267,11 @@ namespace LichPhylactery {
    }
    if((f & SSuperior)!=0 && sd!=null){
     int key=d.Def.shortHash;sd.ticks.TryGetValue("supD",out int last);sd.ticks.TryGetValue("supT",out int t);
-    if(last==key && Now-t<600 && Now>=t){g*=.5f;sd.ticks.Remove("supD");Items.Mote(v,"高级猎手防御",ClassMartial2.HuntColor);}
+    if(last==key && Now-t<600 && Now>=t){g*=.5f;sd.ticks.Remove("supD");Items.Mote(v,"高级猎手防御".Loc(),ClassMartial2.HuntColor);}
     else{sd.ticks["supD"]=key;sd.ticks["supT"]=Now;}
    }
    if((f & SRetaliation)!=0 && hostile && ClassMartial2.Melee(d) && a.Spawned && v.Spawned && a.Map==v.Map && a.Position.AdjacentTo8WayOrInside(v.Position) && !v.Downed && Ready(sd,"retaliate",60)){
-    Use(sd,"retaliate");var att=a;Fiends.Defer(()=>{if(!v.Dead && !v.Downed && !att.Dead && att.Spawned){ClassMelee.Strike(v,att);Items.Mote(v,"报复",ClassMartial2.RageColor);}});
+    Use(sd,"retaliate");var att=a;Fiends.Defer(()=>{if(!v.Dead && !v.Downed && !att.Dead && att.Spawned){ClassMelee.Strike(v,att);Items.Mote(v,"报复".Loc(),ClassMartial2.RageColor);}});
    }
    return g;
   }
@@ -353,16 +353,16 @@ namespace LichPhylactery {
     if(!Hostile(p,t) || t.Downed)continue;bool fav=false;for(int i=0;i<l.Count;i++)if(ClassMartial2.FoeMatches(l[i],t)){fav=true;break;}
     if(!fav)continue;if(!Items.Has(t,"LP_Spotted"))n++;Items.Give(t,"LP_Spotted",600);
    }
-   if(n>0 && Ready(d,"fieldEye",2500) && p.Faction!=null && p.Faction.IsPlayer){Use(d,"fieldEye");Messages.Message("原野之眼："+p.LabelShort+"发现了 "+n+" 个宿敌。",p,MessageTypeDefOf.NeutralEvent,false);}
+   if(n>0 && Ready(d,"fieldEye",2500) && p.Faction!=null && p.Faction.IsPlayer){Use(d,"fieldEye");Messages.Message("原野之眼：".Loc()+p.LabelShort+"发现了 ".Loc()+n+" 个宿敌。".Loc(),p,MessageTypeDefOf.NeutralEvent,false);}
   }
   static void CompanionTick(Pawn p,Hediff_Adventurer h,SubclassData d,int f){
    var c=d.companion;
    if(c==null)return;
-   if(c.Destroyed || c.Dead){Companions.Remove(c);if(c.Dead && p.Faction!=null && p.Faction.IsPlayer)Messages.Message(p.LabelShort+"的游侠伙伴"+c.LabelShort+"死了，可以重新选一只。",p,MessageTypeDefOf.NegativeEvent,false);d.companion=null;return;}
+   if(c.Destroyed || c.Dead){Companions.Remove(c);if(c.Dead && p.Faction!=null && p.Faction.IsPlayer)Messages.Message(p.LabelShort+"的游侠伙伴".Loc()+c.LabelShort+"死了，可以重新选一只。".Loc(),p,MessageTypeDefOf.NegativeEvent,false);d.companion=null;return;}
    Companions.Add(c);
    var bl=BeastLevels.Get(c);int want=Mathf.Clamp(h.level,1,BeastLevels.MaxLevel);if(bl!=null && bl.level<want){bl.level=want;bl.xp=0f;bl.Dirty();}
    if((f & SBeastFury)!=0)Items.Give(c,"LP_BeastFuryBuff",300);
-   if((f & SShare)!=0 && c.Downed && Ready(d,"revive",GenDate.TicksPerDay)){Use(d,"revive");ClassMelee.Heal(c,100f);Items.Mote(c,"分享法术：救起伙伴",ClassMartial2.HuntColor);}
+   if((f & SShare)!=0 && c.Downed && Ready(d,"revive",GenDate.TicksPerDay)){Use(d,"revive");ClassMelee.Heal(c,100f);Items.Mote(c,"分享法术：救起伙伴".Loc(),ClassMartial2.HuntColor);}
   }
   public static Pawn Companion(Pawn ranger)=>Data(ranger)?.companion;
   public static bool Bond(Pawn ranger,Pawn animal){
@@ -383,7 +383,7 @@ namespace LichPhylactery {
    var t=target.Thing as Pawn;var caster=ab.pawn;
    if(t==null || caster==null || t==caster || !S(t,SSpellThief) || !caster.HostileTo(t) || ab.def==null || ClassSystem.ClassOf(ab.def)!=null)return false;
    if(Roll>=Mathf.Clamp01(ThiefResist+DNDMind.Resistance(t)))return false;
-   var d=Data(t);Items.Mote(t,"偷取法术："+ab.def.label,ClassCasters.Arcane);
+   var d=Data(t);Items.Mote(t,"偷取法术：".Loc()+ab.def.label,ClassCasters.Arcane);
    if(d!=null && t.abilities!=null && t.abilities.GetAbility(ab.def)==null){if(d.stolen!=null)DropStolen(t,d);t.abilities.GainAbility(ab.def);d.stolen=ab.def;d.stolenTick=Math.Max(1,Now);}
    return true;
   }
@@ -394,7 +394,7 @@ namespace LichPhylactery {
    if(a.def.defName=="LP_ShadowStep" && (f & SImpostor)!=0){var h=p.health.hediffSet.GetFirstHediffOfDef(Items.Hediff("LP_ShadowStep")) as HediffWithComps;var tm=h?.TryGetComp<HediffComp_Disappears>();if(tm!=null)tm.ticksToDisappear*=2;}
    if((f & SShare)!=0 && (e.effect=="SelfBuff" || e.effect=="PowerBuff" || e.effect=="Rage")){
     var c=Companion(p);var name=e.effect=="Rage"?"LP_Rage":e.hediff??a.def.defName;var src=Items.Hediff(name)==null?null:p.health.hediffSet.GetFirstHediffOfDef(Items.Hediff(name));
-    if(c!=null && src!=null && !c.Dead && c.Spawned && p.Spawned && c.Map==p.Map && c.Position.InHorDistOf(p.Position,ShareRange)){Items.Give(c,name,(src as HediffWithComps)?.TryGetComp<HediffComp_Disappears>()?.ticksToDisappear??600,src.Severity);Items.Mote(c,"分享法术",ClassMartial2.HuntColor);}
+    if(c!=null && src!=null && !c.Dead && c.Spawned && p.Spawned && c.Map==p.Map && c.Position.InHorDistOf(p.Position,ShareRange)){Items.Give(c,name,(src as HediffWithComps)?.TryGetComp<HediffComp_Disappears>()?.ticksToDisappear??600,src.Severity);Items.Mote(c,"分享法术".Loc(),ClassMartial2.HuntColor);}
    }
   }
 
@@ -402,39 +402,39 @@ namespace LichPhylactery {
   public static string Invalid(Pawn caster,CompProperties_ClassEffect e,LocalTargetInfo target){
    var t=target.Thing as Pawn;
    switch(e.effect){
-    case "RageCharge":return CellCannot(caster,target.Cell,ChargeRange,"冲撞");
+    case "RageCharge":return CellCannot(caster,target.Cell,ChargeRange,"冲撞".Loc());
     case "Intimidate":case "DeathStrike":case "Pilfer":case "Distract":case "ATSleep":
-     if(t==null || t.Dead)return "需要选择一个活着的目标。";if(!t.HostileTo(caster))return "只能对敌人使用。";
+     if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();if(!t.HostileTo(caster))return "只能对敌人使用。".Loc();
      if(e.effect=="ATSleep")return ClassCasters.SleepCannot(t);
      return null;
-    case "TotemAttune":return Choice(caster,"totem")==1?(!ClassMartial2.Raging(caster)?"鹰之滑翔要在狂暴中使用。":CellCannot(caster,target.Cell,10f,"滑翔")):null;
-    case "MageHand":{var th=target.Thing;if(th is Building_Door)return null;if(th==null || th is Pawn || th.def.category!=ThingCategory.Item)return "只能选物品或门。";return null;}
-    case "ThornTrap":{var map=caster.Map;var c=target.Cell;if(map==null || !c.IsValid || !c.InBounds(map) || !c.Standable(map) || c.GetEdifice(map)!=null || c.GetFirstPawn(map)!=null || c.GetThingList(map).Any(x=>x.def.category==ThingCategory.Building))return "需要一个空着的、能站立的格子。";return null;}
+    case "TotemAttune":return Choice(caster,"totem")==1?(!ClassMartial2.Raging(caster)?"鹰之滑翔要在狂暴中使用。".Loc():CellCannot(caster,target.Cell,10f,"滑翔".Loc())):null;
+    case "MageHand":{var th=target.Thing;if(th is Building_Door)return null;if(th==null || th is Pawn || th.def.category!=ThingCategory.Item)return "只能选物品或门。".Loc();return null;}
+    case "ThornTrap":{var map=caster.Map;var c=target.Cell;if(map==null || !c.IsValid || !c.InBounds(map) || !c.Standable(map) || c.GetEdifice(map)!=null || c.GetFirstPawn(map)!=null || c.GetThingList(map).Any(x=>x.def.category==ThingCategory.Building))return "需要一个空着的、能站立的格子。".Loc();return null;}
     case "Training":{
-     var c=Companion(caster);if(c==null || c.Dead || !c.Spawned || c.Map!=caster.Map || c.Downed)return "游侠伙伴不在身边（先用“选择伙伴”）。";
-     var th=target.Thing;if(th==null)return "选择一个敌人、友军或物品。";if(th is Pawn tp){if(tp==c)return "不能对伙伴自己用。";return null;}
-     if(th.def.category!=ThingCategory.Item)return "选择一个敌人、友军或物品。";return null;}
+     var c=Companion(caster);if(c==null || c.Dead || !c.Spawned || c.Map!=caster.Map || c.Downed)return "游侠伙伴不在身边（先用“选择伙伴”）。".Loc();
+     var th=target.Thing;if(th==null)return "选择一个敌人、友军或物品。".Loc();if(th is Pawn tp){if(tp==c)return "不能对伙伴自己用。".Loc();return null;}
+     if(th.def.category!=ThingCategory.Item)return "选择一个敌人、友军或物品。".Loc();return null;}
    }
    return null;
   }
   static string CellCannot(Pawn p,IntVec3 c,float range,string what){
-   var map=p.Map;if(map==null || !c.IsValid || !c.InBounds(map) || c.Fogged(map) || !c.Standable(map) || c.GetFirstPawn(map)!=null)return "需要一个空着的、能站立的格子。";
-   if(p.Position.DistanceTo(c)>range)return "超出"+what+"距离（"+range.ToString("0")+" 格）。";
+   var map=p.Map;if(map==null || !c.IsValid || !c.InBounds(map) || c.Fogged(map) || !c.Standable(map) || c.GetFirstPawn(map)!=null)return "需要一个空着的、能站立的格子。".Loc();
+   if(p.Position.DistanceTo(c)>range)return "超出".Loc()+what+"距离（".Loc()+range.ToString("0")+" 格）。".Loc();
    return null;
   }
   public static bool Apply(Pawn p,AbilityDef def,CompProperties_ClassEffect e,LocalTargetInfo target){
    var t=target.Thing as Pawn;float s=ClassEffects.Strength(p,e);
    switch(e.effect){
-    case "RageCharge":if(CellCannot(p,target.Cell,ChargeRange,"冲撞")==null)RageCharge(p,target.Cell,s);return true;
+    case "RageCharge":if(CellCannot(p,target.Cell,ChargeRange,"冲撞".Loc())==null)RageCharge(p,target.Cell,s);return true;
     case "Intimidate":if(Hostile(p,t))Intimidate(p,t,ClassEffects.Duration(p,e));return true;
     case "SpiritWalker":SpiritWalker(p,s);return true;
     case "TotemAttune":TotemAttune(p,target.Cell,s);return true;
-    case "SteadyTarget":Items.Give(p,"LP_RogueSteady",ClassEffects.Duration(p,e));Items.Mote(p,"稳固目标",ClassMartial2.ShadowColor);return true;
+    case "SteadyTarget":Items.Give(p,"LP_RogueSteady",ClassEffects.Duration(p,e));Items.Mote(p,"稳固目标".Loc(),ClassMartial2.ShadowColor);return true;
     case "DeathStrike":if(Hostile(p,t))DeathStrike(p,t);return true;
     case "Pilfer":if(Hostile(p,t))Pilfer(p,t);return true;
     case "MageHand":MageHand(p,target.Thing);return true;
     case "ATSleep":if(Hostile(p,t))Sleep(p,t,ClassEffects.Duration(p,e),s);return true;
-    case "Distract":if(Hostile(p,t)){var m=ClassMartial2.MarkTarget(p,t,"LP_Distracted",ClassEffects.Duration(p,e),1f,ClassCasters.Arcane,"法师之手干扰");}return true;
+    case "Distract":if(Hostile(p,t)){var m=ClassMartial2.MarkTarget(p,t,"LP_Distracted",ClassEffects.Duration(p,e),1f,ClassCasters.Arcane,"法师之手干扰".Loc());}return true;
     case "ThornTrap":PlaceTrap(p,target.Cell);return true;
     case "MultiAttack":MultiAttack(p,s);return true;
     case "Training":Training(p,target.Thing);return true;
@@ -448,15 +448,15 @@ namespace LichPhylactery {
     foreach(var t in c.GetThingList(map).OfType<Pawn>().ToList())if(Hostile(p,t) && hit.Add(t)){t.TakeDamage(new DamageInfo(DamageDefOf.Blunt,ChargeDamage*s,.2f,-1f,p));if(!t.Dead)t.stances?.stunner?.StunFor(ChargeStun,p);n++;}
    }
    FleckMaker.ThrowDustPuffThick(p.DrawPos,map,2f,ClassMartial2.RageColor);Races124.Blink(p,dest);FleckMaker.ThrowDustPuffThick(p.DrawPos,map,2f,ClassMartial2.RageColor);
-   Items.Mote(p,"狂暴冲撞",ClassMartial2.RageColor);return n;
+   Items.Mote(p,"狂暴冲撞".Loc(),ClassMartial2.RageColor);return n;
   }
   public static bool Intimidate(Pawn p,Pawn t,int ticks){
-   if(Roll<ResistChance(t)){Items.Mote(t,"抵抗了威吓",ClassMartial2.RageColor);return false;}
-   bool fled=Fear(t,ticks,"威吓凝视",true);Items.Mote(t,fled?"被吓跑了":"震慑",ClassMartial2.RageColor);return fled;
+   if(Roll<ResistChance(t)){Items.Mote(t,"抵抗了威吓".Loc(),ClassMartial2.RageColor);return false;}
+   bool fled=Fear(t,ticks,"威吓凝视".Loc(),true);Items.Mote(t,fled?"被吓跑了".Loc():"震慑".Loc(),ClassMartial2.RageColor);return fled;
   }
   public static List<Pawn> SpiritWalker(Pawn p,float s){
    int t=Mathf.Max(0,Choice(p,"totem"));string kind=t==0?"Bear_Grizzly":t==1?"Cassowary":"Wolf_Timber";int count=t==0?1:t==2 && s>=1.25f?3:2;
-   var made=Summon(p,kind,count,3600);Items.Mote(p,t==0?"熊之灵":t==1?"鹰之灵":"狼之灵",ClassMartial2.RageColor);return made;
+   var made=Summon(p,kind,count,3600);Items.Mote(p,t==0?"熊之灵".Loc():t==1?"鹰之灵".Loc():"狼之灵".Loc(),ClassMartial2.RageColor);return made;
   }
   public static List<Pawn> Summon(Pawn caster,string kindName,int count,int ticks){
    var made=new List<Pawn>();var kind=DefCache<PawnKindDef>.Get(kindName)??DefCache<PawnKindDef>.Get("Wolf_Timber");var map=caster.Map;
@@ -475,47 +475,47 @@ namespace LichPhylactery {
   }
   public static int TotemAttune(Pawn p,IntVec3 cell,float s){
    int t=Mathf.Max(0,Choice(p,"totem"));var map=p.Map;if(map==null)return 0;int n=0;
-   if(t==0){foreach(var o in Races124.PawnsNear(map,p.Position,8f).ToList())if(Hostile(p,o) && !o.Downed && o.mindState!=null){o.mindState.enemyTarget=p;Items.Give(o,"LP_Taunted",600);n++;}Items.Mote(p,"熊之嘲讽",ClassMartial2.RageColor);}
-   else if(t==1){if(CellCannot(p,cell,10f,"滑翔")!=null)return 0;FleckMaker.ThrowDustPuffThick(p.DrawPos,map,2f,Color.white);Races124.Blink(p,cell);Items.Mote(p,"鹰之滑翔",ClassMartial2.RageColor);n=1;}
-   else{Items.Give(p,"LP_WolfPounce",1200);Items.Mote(p,"狼之扑倒",ClassMartial2.RageColor);n=1;}
+   if(t==0){foreach(var o in Races124.PawnsNear(map,p.Position,8f).ToList())if(Hostile(p,o) && !o.Downed && o.mindState!=null){o.mindState.enemyTarget=p;Items.Give(o,"LP_Taunted",600);n++;}Items.Mote(p,"熊之嘲讽".Loc(),ClassMartial2.RageColor);}
+   else if(t==1){if(CellCannot(p,cell,10f,"滑翔".Loc())!=null)return 0;FleckMaker.ThrowDustPuffThick(p.DrawPos,map,2f,Color.white);Races124.Blink(p,cell);Items.Mote(p,"鹰之滑翔".Loc(),ClassMartial2.RageColor);n=1;}
+   else{Items.Give(p,"LP_WolfPounce",1200);Items.Mote(p,"狼之扑倒".Loc(),ClassMartial2.RageColor);n=1;}
    return n;
   }
   public static bool DeathStrike(Pawn p,Pawn t){
    Items.Give(p,"LP_DeathStrikeFx",60,DeathStrikeFactor);
    try{ClassMelee.Strike(p,t);}finally{Items.Remove(p,"LP_DeathStrikeFx");}
-   if(t.Dead || t.Downed){Items.Mote(t,"死亡之击",ClassMartial2.ShadowColor);return true;}
-   if(Roll<ResistChance(t)){Items.Mote(t,"抵抗了死亡之击",ClassMartial2.ShadowColor);return false;}
-   HealthUtility.DamageUntilDowned(t,false);Items.Mote(t,"死亡之击",ClassMartial2.ShadowColor);return true;
+   if(t.Dead || t.Downed){Items.Mote(t,"死亡之击".Loc(),ClassMartial2.ShadowColor);return true;}
+   if(Roll<ResistChance(t)){Items.Mote(t,"抵抗了死亡之击".Loc(),ClassMartial2.ShadowColor);return false;}
+   HealthUtility.DamageUntilDowned(t,false);Items.Mote(t,"死亡之击".Loc(),ClassMartial2.ShadowColor);return true;
   }
   public static Thing Pilfer(Pawn p,Pawn t){
-   var inv=t.inventory?.innerContainer;if(inv==null || inv.Count==0){Items.Mote(t,"什么也没摸到",ClassMartial2.ShadowColor);return null;}
+   var inv=t.inventory?.innerContainer;if(inv==null || inv.Count==0){Items.Mote(t,"什么也没摸到".Loc(),ClassMartial2.ShadowColor);return null;}
    var pick=inv.FirstOrDefault(x=>x.def.IsMedicine)??inv.OrderByDescending(x=>x.MarketValue*x.stackCount).First();
    var dest=p.inventory?.innerContainer;if(dest==null)return null;
    int n=pick.def.IsMedicine?pick.stackCount:pick.stackCount;
-   if(inv.TryTransferToContainer(pick,dest,n)<=0){Items.Mote(t,"没拿走",ClassMartial2.ShadowColor);return null;}
-   Items.Mote(p,"顺手牵羊："+pick.LabelNoCount,ClassMartial2.ShadowColor);return pick;
+   if(inv.TryTransferToContainer(pick,dest,n)<=0){Items.Mote(t,"没拿走".Loc(),ClassMartial2.ShadowColor);return null;}
+   Items.Mote(p,"顺手牵羊：".Loc()+pick.LabelNoCount,ClassMartial2.ShadowColor);return pick;
   }
   public static bool MageHand(Pawn p,Thing th){
    var map=p.Map;if(map==null || th==null || !th.Spawned)return false;
-   if(th is Building_Door door){door.StartManualOpenBy(p);Items.Mote(door,"法师之手",ClassCasters.Arcane);return true;}
+   if(th is Building_Door door){door.StartManualOpenBy(p);Items.Mote(door,"法师之手".Loc(),ClassCasters.Arcane);return true;}
    var cell=th.Position;th.DeSpawn();
    if(!GenPlace.TryPlaceThing(th,p.Position,map,ThingPlaceMode.Near)){GenPlace.TryPlaceThing(th,cell,map,ThingPlaceMode.Near);return false;}
-   Items.Mote(p,"法师之手",ClassCasters.Arcane);return true;
+   Items.Mote(p,"法师之手".Loc(),ClassCasters.Arcane);return true;
   }
   // 睡眠术（诡术师）：魔法伏击时（隐形中施放）目标抵抗成功率 −20%。
   public static bool Ambushing(Pawn p)=>S(p,SAmbush) && ClassMartial2.Hidden(p);
   public static bool Sleep(Pawn p,Pawn t,int ticks,float s){
    if(ClassCasters.SleepCannot(t)!=null)return false;
    float chance=HeroCombat.MindResist(t)?1f:DNDMind.Resistance(t);if(Ambushing(p))chance-=AmbushResist;
-   if(chance>0f && Roll<chance){Items.Mote(t,"抵抗了睡眠术",ClassCasters.Arcane);return false;}
-   Items.Give(t,"LP_MagicSleep",ticks,s);Items.Mote(t,Ambushing(p)?"魔法伏击·睡眠":"睡眠",ClassCasters.Arcane);return true;
+   if(chance>0f && Roll<chance){Items.Mote(t,"抵抗了睡眠术".Loc(),ClassCasters.Arcane);return false;}
+   Items.Give(t,"LP_MagicSleep",ticks,s);Items.Mote(t,Ambushing(p)?"魔法伏击·睡眠".Loc():"睡眠".Loc(),ClassCasters.Arcane);return true;
   }
   public static Building_ThornTrap PlaceTrap(Pawn p,IntVec3 c){
    var map=p.Map;var def=DefCache<ThingDef>.Get("LP_ThornTrapThing");if(map==null || def==null)return null;
    var mine=map.listerThings.ThingsOfDef(def).OfType<Building_ThornTrap>().Where(x=>x.owner==p).OrderBy(x=>x.placed).ToList();
    while(mine.Count>=TrapMax){mine[0].Destroy();mine.RemoveAt(0);}
    var trap=(Building_ThornTrap)ThingMaker.MakeThing(def);trap.owner=p;trap.placed=Now;trap.SetFaction(p.Faction);
-   GenSpawn.Spawn(trap,c,map);FleckMaker.ThrowDustPuffThick(c.ToVector3Shifted(),map,1f,new Color(.4f,.6f,.3f));Items.Mote(p,"荆棘陷阱",ClassMartial2.HuntColor);
+   GenSpawn.Spawn(trap,c,map);FleckMaker.ThrowDustPuffThick(c.ToVector3Shifted(),map,1f,new Color(.4f,.6f,.3f));Items.Mote(p,"荆棘陷阱".Loc(),ClassMartial2.HuntColor);
    return trap;
   }
   public static int MultiAttack(Pawn p,float s){
@@ -523,10 +523,10 @@ namespace LichPhylactery {
    if(verb?.Projectile!=null){
     float r=Mathf.Min(12f,verb.EffectiveRange);
     foreach(var t in Races124.PawnsNear(map,p.Position,r).Where(x=>Hostile(p,x) && !x.Downed).OrderBy(x=>x.Position.DistanceToSquared(p.Position)).Take(8).ToList())if(Martial.Fire(p,t,new ShotMod{damage=1f,caster=p},true)!=null)n++;
-    Items.Mote(p,"多重攻击·齐射",ClassMartial2.HuntColor);
+    Items.Mote(p,"多重攻击·齐射".Loc(),ClassMartial2.HuntColor);
    }else{
     n=Whirlwind.Sweep(p,s,Races124.PawnsNear(map,p.Position,1.5f).Where(x=>Hostile(p,x) && x.Position.AdjacentTo8WayOrInside(p.Position)).ToList());
-    Items.Mote(p,"多重攻击·旋风",ClassMartial2.HuntColor);
+    Items.Mote(p,"多重攻击·旋风".Loc(),ClassMartial2.HuntColor);
    }
    return n;
   }
@@ -537,16 +537,16 @@ namespace LichPhylactery {
      var cell=Charge.LandingCell(c,t);if(cell.IsValid)Races124.Blink(c,cell);
      if(t.BodySize<=2f)t.stances?.stunner?.StunFor(PounceStun,c);
      if(c.Position.AdjacentTo8WayOrInside(t.Position))ClassMelee.Strike(c,t);
-     Items.Mote(t,"伙伴扑倒",ClassMartial2.HuntColor);return "knockdown";
+     Items.Mote(t,"伙伴扑倒".Loc(),ClassMartial2.HuntColor);return "knockdown";
     }
-    var m=ClassMartial2.MarkTarget(c,t,"LP_CompanionGuard",1800,1f,ClassMartial2.HuntColor,"伙伴守护");
+    var m=ClassMartial2.MarkTarget(c,t,"LP_CompanionGuard",1800,1f,ClassMartial2.HuntColor,"伙伴守护".Loc());
     var near=CellFinder.RandomClosewalkCellNear(t.Position,map,2);if(near.IsValid && near.GetFirstPawn(map)==null)Races124.Blink(c,near);
     return "guard";
    }
    if(th.def.category==ThingCategory.Item && th.Spawned){
     th.DeSpawn();GenPlace.TryPlaceThing(th,p.Position,map,ThingPlaceMode.Near);
     var near=CellFinder.RandomClosewalkCellNear(p.Position,map,2);if(near.IsValid && near.GetFirstPawn(map)==null)Races124.Blink(c,near);
-    Items.Mote(p,"伙伴叼回",ClassMartial2.HuntColor);return "fetch";
+    Items.Mote(p,"伙伴叼回".Loc(),ClassMartial2.HuntColor);return "fetch";
    }
    return null;
   }
@@ -556,9 +556,9 @@ namespace LichPhylactery {
   public static void PromptLetter(){
    if(!Adventurer.Enabled)return;var list=NeedingPick();if(list.Count==0)return;
    foreach(var p in list){var d=Data(p);foreach(var c in NeedPick(Adventurer.Get(p)))if(!d.reminded.Contains(c))d.reminded.Add(c);}
-   Find.LetterStack.ReceiveLetter("子职业","DND边缘大陆：野蛮人、游侠、游荡者现在有子职业了（职业 3 级选一个，能力在 3 / 7 / 11 / 15 级获得），每个职业另有 2 个通用能力（7、11 级自动获得）。\n\n"
-    +string.Join("\n",list.Select(p=>"· "+p.LabelShort+"："+string.Join("、",NeedPick(Adventurer.Get(p)).Select(c=>c.label+" "+ClassSystem.Level(p,c)+" 级"))))
-    +"\n\n选中殖民者点“选择子职业”按钮，或在“冒险者”分页的“职业”页里选。选定后不能更改。",LetterDefOf.NeutralEvent,new LookTargets(list.Where(p=>p.Spawned)));
+   Find.LetterStack.ReceiveLetter("子职业".Loc(),"DND边缘大陆：野蛮人、游侠、游荡者现在有子职业了（职业 3 级选一个，能力在 3 / 7 / 11 / 15 级获得），每个职业另有 2 个通用能力（7、11 级自动获得）。\n\n".Loc()
+    +string.Join("\n",list.Select(p=>"· "+p.LabelShort+"：".Loc()+string.Join("、".Loc(),NeedPick(Adventurer.Get(p)).Select(c=>c.label+" "+ClassSystem.Level(p,c)+" 级".Loc()))))
+    +"\n\n选中殖民者点“选择子职业”按钮，或在“冒险者”分页的“职业”页里选。选定后不能更改。".Loc(),LetterDefOf.NeutralEvent,new LookTargets(list.Where(p=>p.Spawned)));
   }
 
   // ---------- 职业页的「子职业」行 ----------
@@ -567,7 +567,7 @@ namespace LichPhylactery {
    var pick=Picked(h,c);int lv=ClassSystem.Level(h,c);
    var row=new Rect(0f,y,w,48f);Widgets.DrawBoxSolid(row,new Color(.25f,.22f,.15f,.25f));
    var em=pick?.Emblem;if(em!=null)GUI.DrawTexture(new Rect(4f,y+4f,40f,40f),em);
-   string title=pick==null?(lv>=PickLevelFor(c)?"子职业：未选择":"子职业："+c.label+" "+PickLevelFor(c)+" 级可选"):"子职业："+pick.label+string.Concat(pick.choices.Select(ch=>{var l=ChoiceLabel(h,ch);return l==null?"":"·"+l;}));
+   string title=pick==null?(lv>=PickLevelFor(c)?"子职业：未选择".Loc():"子职业：".Loc()+c.label+" "+PickLevelFor(c)+" 级可选".Loc()):"子职业：".Loc()+pick.label+string.Concat(pick.choices.Select(ch=>{var l=ChoiceLabel(h,ch);return l==null?"":"·"+l;}));
    GUI.color=pick!=null?pick.color:Color.gray;Widgets.Label(new Rect(48f,y+2f,260f,22f),title.Truncate(260f));GUI.color=Color.white;
    if(pick!=null)TooltipHandler.TipRegion(new Rect(0f,y,300f,48f),pick.LabelCap+"\n\n"+pick.description);
    // 图标：通用 + 子职业能力
@@ -580,12 +580,12 @@ namespace LichPhylactery {
     bool have=p.abilities?.GetAbility(e.ability)!=null;
     GUI.color=have?Color.white:new Color(.4f,.4f,.4f);GUI.DrawTexture(ir,e.ability.uiIcon??BaseContent.BadTex);GUI.color=Color.white;
     Widgets.DrawHighlightIfMouseover(ir);
-    if(Mouse.IsOver(ir))TooltipHandler.TipRegion(ir,e.ability.LabelCap+"（"+(s.general?c.label+"通用":s.label)+"，"+c.label+" "+e.level+" 级）\n\n"+e.ability.description+"\n\n"+(have?"已掌握":"未掌握"));
+    if(Mouse.IsOver(ir))TooltipHandler.TipRegion(ir,e.ability.LabelCap+"（".Loc()+(s.general?c.label+"通用".Loc():s.label)+"，".Loc()+c.label+" "+e.level+" 级）\n\n".Loc()+e.ability.description+"\n\n"+(have?"已掌握".Loc():"未掌握".Loc()));
    }
    int pend=(pick==null && lv>=PickLevelFor(c)?1:0)+PendingChoices(h).Count(t=>t.s.parent==c);
-   if(own && pend>0 && Widgets.ButtonText(new Rect(w-124f,y+10f,120f,28f),pick==null?"选择子职业":"选择分支"))Find.WindowStack.Add(new Dialog_ChooseSubclass(p));
-   if(Has(h,Trickster) && c==ClassMartial2.Rogue || Has(h,Subclass2.EldritchKnight) && c==ClassSystem.Fighter){Text.Font=GameFont.Tiny;Widgets.Label(new Rect(312f,y+4f,140f,18f),"法力 "+Mana(h).ToString("0.#")+" / "+ManaMax(h));Text.Font=GameFont.Small;}
-   if(pick!=null && pick.defName==BeastMaster){Text.Font=GameFont.Tiny;var cp=Data(h).companion;Widgets.Label(new Rect(312f,y+4f,200f,18f),"伙伴："+(cp==null?"未选择":cp.LabelShort));Text.Font=GameFont.Small;}
+   if(own && pend>0 && Widgets.ButtonText(new Rect(w-124f,y+10f,120f,28f),pick==null?"选择子职业".Loc():"选择分支".Loc()))Find.WindowStack.Add(new Dialog_ChooseSubclass(p));
+   if(Has(h,Trickster) && c==ClassMartial2.Rogue || Has(h,Subclass2.EldritchKnight) && c==ClassSystem.Fighter){Text.Font=GameFont.Tiny;Widgets.Label(new Rect(312f,y+4f,140f,18f),"法力 ".Loc()+Mana(h).ToString("0.#")+" / "+ManaMax(h));Text.Font=GameFont.Small;}
+   if(pick!=null && pick.defName==BeastMaster){Text.Font=GameFont.Tiny;var cp=Data(h).companion;Widgets.Label(new Rect(312f,y+4f,200f,18f),"伙伴：".Loc()+(cp==null?"未选择".Loc():cp.LabelShort));Text.Font=GameFont.Small;}
    return y+52f;
   }
  }
@@ -597,10 +597,10 @@ namespace LichPhylactery {
   protected override void SpringSub(Pawn p){
    if(p==null || p.Dead)return;
    Items.Give(p,"LP_Entangled",Ticks,p.BodySize>=2f?2f:1f);p.stances?.stunner?.StunFor(Ticks,owner);
-   Items.Mote(p,"荆棘缠绕",ClassMartial2.HuntColor);
+   Items.Mote(p,"荆棘缠绕".Loc(),ClassMartial2.HuntColor);
   }
   public override void ExposeData(){base.ExposeData();Scribe_References.Look(ref owner,"lpTrapOwner");Scribe_Values.Look(ref placed,"lpTrapPlaced");}
-  public override string GetInspectString(){var s=base.GetInspectString();return (s.NullOrEmpty()?"":s+"\n")+"布置者："+(owner?.LabelShort??"无");}
+  public override string GetInspectString(){var s=base.GetInspectString();return (s.NullOrEmpty()?"":s+"\n")+"布置者：".Loc()+(owner?.LabelShort??"无".Loc());}
  }
 
  // 选子职业 / 分支的窗口（不用浮动菜单）。
@@ -614,17 +614,17 @@ namespace LichPhylactery {
   public class Item{public string key,header;public LP_SubclassDef s;public SubclassChoice ch;public int idx;public LP_ClassDef c;}
   public static List<Item> Items(Hediff_Adventurer h){
    var l=new List<Item>();
-   foreach(var c in ClassSubclass.NeedPick(h)){string hd=c.LabelCap+" "+ClassSystem.Level(h,c)+" 级：选一个子职业";foreach(var s in ClassSubclass.Options(c))l.Add(new Item{key="sub:"+s.defName,header=hd,s=s,c=c});}
-   foreach(var (s,ch) in ClassSubclass.PendingChoices(h)){string hd=s.LabelCap+"·"+ch.label+"：选一个";for(int i=0;i<ch.options.Count;i++)l.Add(new Item{key="ch:"+ch.key+":"+i,header=hd,s=s,ch=ch,idx=i,c=s.parent});}
+   foreach(var c in ClassSubclass.NeedPick(h)){string hd=c.LabelCap+" "+ClassSystem.Level(h,c)+" 级：选一个子职业".Loc();foreach(var s in ClassSubclass.Options(c))l.Add(new Item{key="sub:"+s.defName,header=hd,s=s,c=c});}
+   foreach(var (s,ch) in ClassSubclass.PendingChoices(h)){string hd=s.LabelCap+"·"+ch.label+"：选一个".Loc();for(int i=0;i<ch.options.Count;i++)l.Add(new Item{key="ch:"+ch.key+":"+i,header=hd,s=s,ch=ch,idx=i,c=s.parent});}
    return l;
   }
   public override void DoWindowContents(Rect r){
    try{
     var h=Adventurer.Get(pawn);if(h?.classes==null){Close();return;}
-    float y=LPUI.Title(r,pawn.LabelShort+" 的子职业");
+    float y=LPUI.Title(r,pawn.LabelShort+" 的子职业".Loc());
     var items=Items(h);
-    if(items.Count==0){LPUI.Para(r.x,y,r.width,"现在没有要选的子职业或分支（职业 "+ClassSubclass.PickLevel+" 级可以选子职业；有些分支到更高等级才能选）。");return;}
-    LPUI.Tiny(new Rect(r.x,y,r.width,20f),"选定后不能更改。左边点选查看，右边按钮点两次确认。",true);y+=20f+LPUI.Gap;
+    if(items.Count==0){LPUI.Para(r.x,y,r.width,"现在没有要选的子职业或分支（职业 ".Loc()+ClassSubclass.PickLevel+" 级可以选子职业；有些分支到更高等级才能选）。".Loc());return;}
+    LPUI.Tiny(new Rect(r.x,y,r.width,20f),"选定后不能更改。左边点选查看，右边按钮点两次确认。".Loc(),true);y+=20f+LPUI.Gap;
     var sel=items.FirstOrDefault(i=>i.key==selected);if(sel==null){sel=items[0];selected=sel.key;}
     var body=new Rect(r.x,y,r.width,r.yMax-y-48f);float lw=Mathf.Min(LeftW,body.width*.4f);
     DrawLeft(new Rect(body.x,body.y,lw,body.height),items);
@@ -662,27 +662,27 @@ namespace LichPhylactery {
    try{
     float w=view.width,y=0f;var s=it.s;
     LPUI.Icon(new Rect(0f,0f,72f,72f),s.Emblem);
-    Text.Font=GameFont.Medium;GUI.color=s.color;LPUI.LabelFit(new Rect(80f,4f,w-80f,32f),it.ch==null?s.LabelCap:it.ch.label+"："+it.ch.options[it.idx]);GUI.color=Color.white;Text.Font=GameFont.Small;
-    LPUI.Tiny(new Rect(80f,40f,w-80f,20f),it.ch==null?s.parent.label+"的子职业（"+ClassSubclass.PickLevelFor(s.parent)+" 级选择）":"「"+s.label+"」的分支（"+s.parent.label+" "+it.ch.level+" 级）",true);
+    Text.Font=GameFont.Medium;GUI.color=s.color;LPUI.LabelFit(new Rect(80f,4f,w-80f,32f),it.ch==null?s.LabelCap:it.ch.label+"：".Loc()+it.ch.options[it.idx]);GUI.color=Color.white;Text.Font=GameFont.Small;
+    LPUI.Tiny(new Rect(80f,40f,w-80f,20f),it.ch==null?s.parent.label+"的子职业（".Loc()+ClassSubclass.PickLevelFor(s.parent)+" 级选择）".Loc():"「".Loc()+s.label+"」的分支（".Loc()+s.parent.label+" "+it.ch.level+" 级）".Loc(),true);
     y=80f;
     if(it.ch!=null){
-     string tip=it.idx<it.ch.tips.Count?it.ch.tips[it.idx]:"";y+=LPUI.Para(0f,y,w,tip.NullOrEmpty()?"（没有更多说明）":tip)+LPUI.SectionGap;
-     y=LPUI.Bar(new Rect(0f,y,w,LPUI.RowH),"其他选项");
+     string tip=it.idx<it.ch.tips.Count?it.ch.tips[it.idx]:"";y+=LPUI.Para(0f,y,w,tip.NullOrEmpty()?"（没有更多说明）".Loc():tip)+LPUI.SectionGap;
+     y=LPUI.Bar(new Rect(0f,y,w,LPUI.RowH),"其他选项".Loc());
      for(int i=0;i<it.ch.options.Count;i++)if(i!=it.idx){LPUI.LabelFit(new Rect(6f,y,w-6f,LPUI.RowH),"· "+it.ch.options[i],i<it.ch.tips.Count?it.ch.tips[i]:null);y+=LPUI.RowH;}
     }else{
      y+=LPUI.Para(0f,y,w,s.description)+LPUI.SectionGap;
      int lv=ClassSystem.Level(h,s.parent);
-     y=LPUI.Bar(new Rect(0f,y,w,LPUI.RowH),"子职业能力（"+s.parent.label+"现在 "+lv+" 级）",LPUI.Gold);
+     y=LPUI.Bar(new Rect(0f,y,w,LPUI.RowH),"子职业能力（".Loc()+s.parent.label+"现在 ".Loc()+lv+" 级）".Loc(),LPUI.Gold);
      foreach(var e in s.abilities.Where(x=>x.ability!=null).OrderBy(x=>x.level)){
       bool reach=lv>=e.level;LPUI.Icon(new Rect(0f,y+2f,32f,32f),e.ability.uiIcon,!reach);
-      GUI.color=reach?Color.white:LPUI.Locked;LPUI.LabelFit(new Rect(40f,y,w-40f,LPUI.RowH),"Lv "+e.level+"　"+e.ability.LabelCap+(reach?"":"（还差 "+(e.level-lv)+" 级）"));GUI.color=Color.white;
+      GUI.color=reach?Color.white:LPUI.Locked;LPUI.LabelFit(new Rect(40f,y,w-40f,LPUI.RowH),"Lv "+e.level+"　".Loc()+e.ability.LabelCap+(reach?"":"（还差 ".Loc()+(e.level-lv)+" 级）".Loc()));GUI.color=Color.white;
       Text.Font=GameFont.Tiny;float ph=LPUI.Para(40f,y+LPUI.RowH,w-40f,e.ability.description??"");Text.Font=GameFont.Small;
       var rr=new Rect(0f,y,w,Mathf.Max(36f,LPUI.RowH+ph));if(Mouse.IsOver(rr))TooltipHandler.TipRegion(rr,e.ability.LabelCap+"\n\n"+e.ability.description);
       y+=Mathf.Max(36f,LPUI.RowH+ph)+LPUI.Gap;
      }
      if(s.choices.Count>0){
-      y=LPUI.Bar(new Rect(0f,y,w,LPUI.RowH),"之后还要选择");
-      foreach(var ch in s.choices){LPUI.LabelFit(new Rect(6f,y,w-6f,LPUI.RowH),"Lv "+ch.level+"　"+ch.label+"："+string.Join("、",ch.options),string.Join("\n",ch.options.Select((o,i)=>o+(i<ch.tips.Count?"："+ch.tips[i]:""))));y+=LPUI.RowH;}
+      y=LPUI.Bar(new Rect(0f,y,w,LPUI.RowH),"之后还要选择".Loc());
+      foreach(var ch in s.choices){LPUI.LabelFit(new Rect(6f,y,w-6f,LPUI.RowH),"Lv "+ch.level+"　".Loc()+ch.label+"：".Loc()+string.Join("、".Loc(),ch.options),string.Join("\n",ch.options.Select((o,i)=>o+(i<ch.tips.Count?"：".Loc()+ch.tips[i]:""))));y+=LPUI.RowH;}
      }
     }
     rightH=y+LPUI.Gap;
@@ -690,7 +690,7 @@ namespace LichPhylactery {
    // 选择按钮（固定在右栏底部）
    string why=it.ch==null?ClassSubclass.CanPick(h,it.s):null;bool ok=why==null;string label=it.ch==null?it.s.label:it.ch.options[it.idx];
    if(!ok)LPUI.Unavailable(btn,why);
-   else if(LPUI.Button(btn,armed==it.key?"确定选择「"+label+"」？":"选择「"+label+"」",true,armed==it.key?"再点一次确认":"点两次确认（选定后不能更改）")){
+   else if(LPUI.Button(btn,armed==it.key?"确定选择「".Loc()+label+"」？".Loc():"选择「".Loc()+label+"」".Loc(),true,armed==it.key?"再点一次确认".Loc():"点两次确认（选定后不能更改）".Loc())){
     if(armed==it.key){armed=null;if(it.ch==null)ClassSubclass.Pick(h,it.s,true);else ClassSubclass.Choose(h,it.ch.key,it.idx,true);selected=null;}else armed=it.key;
    }
   }
@@ -705,29 +705,29 @@ namespace LichPhylactery {
   public static List<Pawn> Candidates(Pawn pawn)=>pawn.Map==null?new List<Pawn>():pawn.Map.mapPawns.SpawnedColonyAnimals.Where(a=>!a.Dead && !Martial.Conjured(a)).OrderByDescending(a=>a.playerSettings?.Master==pawn).ThenBy(a=>a.LabelShort).ToList();
   static string Info(Pawn a,Pawn pawn){
    var bl=BeastLevels.Get(a);var m=a.playerSettings?.Master;
-   return a.KindLabel+(bl!=null?"　野性等级 "+bl.level:"")+"　体型 "+a.BodySize.ToString("0.##")+"　健康 "+a.health.summaryHealth.SummaryHealthPercent.ToStringPercent()+(m!=null?"　主人："+(m==pawn?"你":m.LabelShort):"");
+   return a.KindLabel+(bl!=null?"　野性等级 ".Loc()+bl.level:"")+"　体型 ".Loc()+a.BodySize.ToString("0.##")+"　健康 ".Loc()+a.health.summaryHealth.SummaryHealthPercent.ToStringPercent()+(m!=null?"　主人：".Loc()+(m==pawn?"你".Loc():m.LabelShort):"");
   }
   public override void DoWindowContents(Rect r){
    try{
-    float y=LPUI.Title(r,pawn.LabelShort+" 的游侠伙伴");var cur=ClassSubclass.Companion(pawn);
+    float y=LPUI.Title(r,pawn.LabelShort+" 的游侠伙伴".Loc());var cur=ClassSubclass.Companion(pawn);
     var cr=new Rect(r.x,y,r.width,44f);Widgets.DrawLightHighlight(cr);
-    if(cur!=null){Widgets.ThingIcon(new Rect(cr.x+4f,cr.y+2f,40f,40f),cur);LPUI.LabelFit(new Rect(cr.x+50f,cr.y+2f,cr.width-54f,22f),"现在的伙伴："+cur.LabelShort);LPUI.Tiny(new Rect(cr.x+50f,cr.y+24f,cr.width-54f,18f),Info(cur,pawn),true);}
-    else LPUI.Unavailable(cr,"现在没有游侠伙伴");
+    if(cur!=null){Widgets.ThingIcon(new Rect(cr.x+4f,cr.y+2f,40f,40f),cur);LPUI.LabelFit(new Rect(cr.x+50f,cr.y+2f,cr.width-54f,22f),"现在的伙伴：".Loc()+cur.LabelShort);LPUI.Tiny(new Rect(cr.x+50f,cr.y+24f,cr.width-54f,18f),Info(cur,pawn),true);}
+    else LPUI.Unavailable(cr,"现在没有游侠伙伴".Loc());
     y+=44f+LPUI.Gap;
-    LPUI.Tiny(new Rect(r.x,y,r.width,20f),"换一只会解除原来的。伙伴的野性等级跟着你的冒险者等级成长，对你的宿敌伤害 +20%。",true);y+=20f+LPUI.Gap;
+    LPUI.Tiny(new Rect(r.x,y,r.width,20f),"换一只会解除原来的。伙伴的野性等级跟着你的冒险者等级成长，对你的宿敌伤害 +20%。".Loc(),true);y+=20f+LPUI.Gap;
     var list=Candidates(pawn);
-    y=LPUI.Bar(new Rect(r.x,y,r.width,LPUI.RowH),"这张地图上殖民地的动物（"+list.Count+"）");
+    y=LPUI.Bar(new Rect(r.x,y,r.width,LPUI.RowH),"这张地图上殖民地的动物（".Loc()+list.Count+"）".Loc());
     var outer=new Rect(r.x,y,r.width,r.yMax-y-48f);
-    if(list.Count==0){LPUI.Unavailable(new Rect(outer.x,outer.y,outer.width,LPUI.RowH*2f),"这张地图上没有殖民地的动物。");return;}
+    if(list.Count==0){LPUI.Unavailable(new Rect(outer.x,outer.y,outer.width,LPUI.RowH*2f),"这张地图上没有殖民地的动物。".Loc());return;}
     var view=new Rect(0f,0f,outer.width-LPUI.ScrollBarW,list.Count*(RowH+4f));
     Widgets.BeginScrollView(outer,ref scroll,view);
     try{float yy=0f;foreach(var a in list){
      var row=new Rect(0f,yy,view.width,RowH);LPUI.RowBg(row,a==cur);
      Widgets.ThingIcon(new Rect(row.x+4f,row.y+4f,44f,44f),a);
-     LPUI.LabelFit(new Rect(row.x+54f,row.y+4f,row.width-54f-110f,22f),a.LabelShort+(a==cur?"（当前）":""));
+     LPUI.LabelFit(new Rect(row.x+54f,row.y+4f,row.width-54f-110f,22f),a.LabelShort+(a==cur?"（当前）".Loc():""));
      LPUI.Tiny(new Rect(row.x+54f,row.y+28f,row.width-54f-110f,20f),Info(a,pawn),true);
      if(Mouse.IsOver(row))TooltipHandler.TipRegion(row,a.LabelCap+"\n"+Info(a,pawn));
-     if(LPUI.Button(new Rect(row.xMax-104f,row.y+10f,98f,32f),a==cur?"当前伙伴":"结为伙伴",a!=cur)){ClassSubclass.Bond(pawn,a);Messages.Message(pawn.LabelShort+"和"+a.LabelShort+"结成了游侠伙伴。",pawn,MessageTypeDefOf.PositiveEvent,false);Close();}
+     if(LPUI.Button(new Rect(row.xMax-104f,row.y+10f,98f,32f),a==cur?"当前伙伴".Loc():"结为伙伴".Loc(),a!=cur)){ClassSubclass.Bond(pawn,a);Messages.Message(pawn.LabelShort+"和".Loc()+a.LabelShort+"结成了游侠伙伴。".Loc(),pawn,MessageTypeDefOf.PositiveEvent,false);Close();}
      yy+=RowH+4f;}}
     finally{Widgets.EndScrollView();}
    }finally{LPUI.Reset();}
@@ -757,11 +757,11 @@ namespace LichPhylactery {
    var h=Adventurer.Get(p);if(h?.classes==null || h.classes.levels.Count==0)yield break;
    int n=ClassSubclass.Pending(h);
    if(n>0){var c=ClassSubclass.NeedPick(h).FirstOrDefault();yield return new Command_Action{
-    defaultLabel="选择子职业（"+n+"）",defaultDesc="职业 "+ClassSubclass.PickLevel+" 级可以选择子职业（野蛮人、游侠、游荡者各 3 个），子职业能力在职业 3 / 7 / 11 / 15 级获得；有的子职业还要选一个分支。选定后不能更改。",
+    defaultLabel="选择子职业（".Loc()+n+"）".Loc(),defaultDesc="职业 ".Loc()+ClassSubclass.PickLevel+" 级可以选择子职业（野蛮人、游侠、游荡者各 3 个），子职业能力在职业 3 / 7 / 11 / 15 级获得；有的子职业还要选一个分支。选定后不能更改。".Loc(),
     icon=(c!=null?ClassSubclass.Options(c).FirstOrDefault()?.Emblem:null)??ClassMartial2.Barbarian?.Background??BaseContent.BadTex,
     action=()=>Find.WindowStack.Add(new Dialog_ChooseSubclass(p))};}
    if(ClassSubclass.S(p,ClassSubclass.SCompanion) && (ClassSubclass.Companion(p)==null || p.Drafted))yield return new Command_Action{
-    defaultLabel=ClassSubclass.Companion(p)==null?"选择伙伴":"更换伙伴",defaultDesc="兽王：选同一地图上一只殖民地的动物做游侠伙伴（设为主人）。伙伴的野性等级跟着你的冒险者等级成长，对你的宿敌伤害 +20%。",
+    defaultLabel=ClassSubclass.Companion(p)==null?"选择伙伴".Loc():"更换伙伴".Loc(),defaultDesc="兽王：选同一地图上一只殖民地的动物做游侠伙伴（设为主人）。伙伴的野性等级跟着你的冒险者等级成长，对你的宿敌伤害 +20%。".Loc(),
     icon=ContentFinder<Texture2D>.Get("LP/Classes/Subclass/RangerCompanion",false)??BaseContent.BadTex,
     action=()=>Find.WindowStack.Add(new Dialog_ChooseCompanion(p))};
   }
@@ -780,7 +780,7 @@ namespace LichPhylactery {
  public static class SubclassRaidInstinct {
   static void Postfix(IncidentParms parms,bool __result){
    if(!__result || ClassSubclass.Users.Count==0 || !(parms?.target is Map map))return;
-   foreach(var p in map.mapPawns.FreeColonistsSpawned)if(ClassSubclass.S(p,ClassSubclass.SInstinct)){Items.Give(p,"LP_FeralInstinctBuff",900);Items.Mote(p,"野性直觉",ClassMartial2.RageColor);}
+   foreach(var p in map.mapPawns.FreeColonistsSpawned)if(ClassSubclass.S(p,ClassSubclass.SInstinct)){Items.Give(p,"LP_FeralInstinctBuff",900);Items.Mote(p,"野性直觉".Loc(),ClassMartial2.RageColor);}
   }
  }
  // 兽之面相·鹰：远程武器射程 +3。

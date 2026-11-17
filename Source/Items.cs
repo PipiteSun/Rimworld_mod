@@ -49,7 +49,6 @@ namespace LichPhylactery {
     case "Lich":return IsLich(p);
     case "Troll":return Troll.Is(p);
     case "FireGiant":return FireGiant.Active(p);
-    case "ForceDragon":return ForceDragon.Active(p);
     // 1.24.0：象人、食人魔、鸟人、泰坦、巨灵；元素符按“血脉”判断（元素裔或带同一血脉的巨灵）。
     case "Loxodon":return Races124.IsLoxodon(p);
     case "Ogre":return Races124.IsOgre(p);
@@ -64,7 +63,7 @@ namespace LichPhylactery {
    }
    return false;
   }
-  public static string RaceLabel(string race){switch(race){case "Elf":return "精灵";case "Dwarf":return "矮人";case "HalfOrc":return "半兽人";case "Minotaur":return "牛头人";case "Githyanki":return "吉斯洋基";case "MindFlayer":return "夺心魔";case "Lich":return "巫妖";case "Troll":return "巨魔";case "FireGiant":return "火巨人";case "ForceDragon":return "力能龙裔";case "Loxodon":return "象人";case "Ogre":return "食人魔";case "Aarakocra":return "鸟人";case "Titan":return "泰坦";case "Genie":return "巨灵";case "TitanOrFireGiant":return "泰坦或火巨人";case "Giant":return "巨人";case "FrostGiant":return "霜巨人";case "ElementFire":return "炽焰血脉的元素裔";case "ElementWater":return "潮汐血脉的元素裔";case "ElementEarth":return "岩石血脉的元素裔";case "ElementAir":return "疾风血脉的元素裔";}return race;}
+  public static string RaceLabel(string race){switch(race){case "Elf":return "精灵".Loc();case "Dwarf":return "矮人".Loc();case "HalfOrc":return "半兽人".Loc();case "Minotaur":return "牛头人".Loc();case "Githyanki":return "吉斯洋基".Loc();case "MindFlayer":return "夺心魔".Loc();case "Lich":return "巫妖".Loc();case "Troll":return "巨魔".Loc();case "FireGiant":return "火巨人".Loc();case "Loxodon":return "象人".Loc();case "Ogre":return "食人魔".Loc();case "Aarakocra":return "鸟人".Loc();case "Titan":return "泰坦".Loc();case "Genie":return "巨灵".Loc();case "TitanOrFireGiant":return "泰坦或火巨人".Loc();case "Giant":return "巨人".Loc();case "FrostGiant":return "霜巨人".Loc();case "ElementFire":return "炽焰血脉的元素裔".Loc();case "ElementWater":return "潮汐血脉的元素裔".Loc();case "ElementEarth":return "岩石血脉的元素裔".Loc();case "ElementAir":return "疾风血脉的元素裔".Loc();}return race;}
 
   // ---------- 装备 ----------
   public static Apparel Worn(Pawn p,ThingDef def){var list=p?.apparel?.WornApparel;if(list==null || def==null)return null;for(int i=0;i<list.Count;i++)if(list[i].def==def)return list[i];return null;}
@@ -82,7 +81,7 @@ namespace LichPhylactery {
   // 联动挂钩（神兽血裔等联动程序集往这里登记）。
   public static readonly List<Func<Pawn,ThingDef,float>> PotionPotencyHooks=new List<Func<Pawn,ThingDef,float>>();
   public static readonly List<Func<Pawn,bool>> ColdIronBaneHooks=new List<Func<Pawn,bool>>();
-  public static float PotionPotency(Pawn p,ThingDef potion){float f=1f;foreach(var hook in PotionPotencyHooks){try{f*=hook(p,potion);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 药水联动出错："+e,9127341);}}return f;}
+  public static float PotionPotency(Pawn p,ThingDef potion){float f=1f;foreach(var hook in PotionPotencyHooks){try{f*=hook(p,potion);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 药水联动出错：".Loc()+e,9127341);}}return f;}
   public static void Mote(Thing t,string text,Color color){if(t!=null && t.Spawned)MoteMaker.ThrowText(t.DrawPos,t.Map,text,color);}
  }
 
@@ -92,7 +91,7 @@ namespace LichPhylactery {
   void ExposeItems(){ExposeCursed();Scribe_Values.Look(ref trollBleedDays,"trollBleedDays",3);trollBleedDays=Math.Max(1,Math.Min(15,trollBleedDays));}
  }
  public static class ItemSettings {
-  public static void Draw(Listing_Standard l){l.GapLine();l.Label("抽巨魔血冷却："+LichMod.Settings.trollBleedDays+"天（同一个巨魔两次抽血的最短间隔）");LichMod.Settings.trollBleedDays=(int)l.Slider(LichMod.Settings.trollBleedDays,1,15);l.CheckboxLabeled("诅咒物品",ref LichMod.Settings.cursedItems,"（1.45.0）复仇之剑、四种混沌印记等诅咒物品戴上后脱不下，只有解除诅咒卷轴能解开。关掉后可以正常脱下，效果和代价照旧。");}
+  public static void Draw(Listing_Standard l){l.GapLine();l.Label("抽巨魔血冷却：".Loc()+LichMod.Settings.trollBleedDays+"天（同一个巨魔两次抽血的最短间隔）".Loc());LichMod.Settings.trollBleedDays=(int)l.Slider(LichMod.Settings.trollBleedDays,1,15);l.CheckboxLabeled("诅咒物品".Loc(),ref LichMod.Settings.cursedItems,"（1.45.0）复仇之剑、四种混沌印记等诅咒物品戴上后脱不下，只有解除诅咒卷轴能解开。关掉后可以正常脱下，效果和代价照旧。".Loc());}
  }
 
  // 延后到下一刻执行的动作（传送等不能在工作单的执行过程中直接做）；每天修复巨魔皮衣物。
@@ -100,7 +99,7 @@ namespace LichPhylactery {
   public readonly List<Action> queued=new List<Action>();
   public ItemsState(Game game){}
   public void Defer(Action a){if(a!=null)queued.Add(a);}
-  public void Flush(){var list=queued.ToList();queued.Clear();foreach(var a in list){try{a();}catch(Exception e){Log.Error("[DND边缘大陆] 延后动作出错："+e);}}}
+  public void Flush(){var list=queued.ToList();queued.Clear();foreach(var a in list){try{a();}catch(Exception e){Log.Error("[DND边缘大陆] 延后动作出错：".Loc()+e);}}}
   public override void GameComponentTick(){if(queued.Count>0)Flush();int now=Find.TickManager.TicksGame;if(now%GenDate.TicksPerDay==1234)ItemMaterials.DailyRepair();}
  }
 

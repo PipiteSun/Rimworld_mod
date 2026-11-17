@@ -92,7 +92,7 @@ namespace LichPhylactery.VPEBridge {
     var h=Classes.Psycasts(s);if(h==null)continue;h.GainExperience(Share(s),true);Adventurer.GainXP(s,Adventurer.LessonXP);n++; // 1.48.0 每课冒险者经验 50
    }
    v.taught++;
-   if(n>0)Messages.Message(v.mentor.LabelShort+"给"+n+"名"+v.path.label+"上了一课。",new LookTargets(v.mentor),MessageTypeDefOf.PositiveEvent,false);
+   if(n>0)Messages.Message(v.mentor.LabelShort+"给".Loc()+n+"名".Loc()+v.path.label+"上了一课。".Loc(),new LookTargets(v.mentor),MessageTypeDefOf.PositiveEvent,false);
    return n;
   }
   public static void Leave(MentorVisit v){if(v.left)return;v.left=true;v.lord?.ReceiveMemo(LordJob_MentorVisit.LeaveMemo);}
@@ -111,8 +111,8 @@ namespace LichPhylactery.VPEBridge {
   public static Letter_MentorLeaving AskStay(MentorVisit v){
    v.asked=true;v.askTick=Find.TickManager.TicksGame;
    var l=(Letter_MentorLeaving)LetterMaker.MakeLetter(DefDatabase<LetterDef>.GetNamed("LP_MentorChoiceLetter"));
-   l.Label="导师要走了";l.visit=v;l.lookTargets=new LookTargets(v.mentor);l.relatedFaction=v.mentor.Faction;
-   l.Text=v.mentor.LabelShort+"的三天课程结束了，正准备上路。\n\n付"+SilverCost+"银，或者送他1张卷轴，他愿意再留"+ExtendDays+"天，再教"+ExtendDays+"次（只能挽留一次）。\n\n"+AnswerHours+"小时内不答复，他就走了。";
+   l.Label="导师要走了".Loc();l.visit=v;l.lookTargets=new LookTargets(v.mentor);l.relatedFaction=v.mentor.Faction;
+   l.Text=v.mentor.LabelShort+"的三天课程结束了，正准备上路。\n\n付".Loc()+SilverCost+"银，或者送他1张卷轴，他愿意再留".Loc()+ExtendDays+"天，再教".Loc()+ExtendDays+"次（只能挽留一次）。\n\n".Loc()+AnswerHours+"小时内不答复，他就走了。".Loc();
    Find.LetterStack.ReceiveLetter(l);return l;
   }
   // 殖民地储存区（或家园区）里没被禁止的东西。
@@ -126,7 +126,7 @@ namespace LichPhylactery.VPEBridge {
     int left=SilverCost;foreach(var t in Owned(v.map,x=>x.def==ThingDefOf.Silver).OrderByDescending(x=>x.stackCount)){if(left<=0)break;int n=Math.Min(left,t.stackCount);t.SplitOff(n).Destroy();left-=n;}
    }else{var s=Scroll(v.map);if(s==null)return false;s.SplitOff(1).Destroy();}
    v.extended=true;v.maxTeach=StayDays+ExtendDays;
-   Messages.Message(v.mentor.LabelShort+"答应再留"+ExtendDays+"天。",new LookTargets(v.mentor),MessageTypeDefOf.PositiveEvent,false);
+   Messages.Message(v.mentor.LabelShort+"答应再留".Loc()+ExtendDays+"天。".Loc(),new LookTargets(v.mentor),MessageTypeDefOf.PositiveEvent,false);
    return true;
   }
   // 被殖民者打：导师离开，殖民者 -5。
@@ -135,7 +135,7 @@ namespace LichPhylactery.VPEBridge {
    Leave(v);v.drivenOff=true;
    var thought=DefDatabase<ThoughtDef>.GetNamedSilentFail("LP_MentorDrivenOff");
    if(thought!=null)foreach(var c in v.map.mapPawns.FreeColonistsSpawned)c.needs?.mood?.thoughts?.memories?.TryGainMemory(thought);
-   Find.LetterStack.ReceiveLetter("赶走了导师",attacker.LabelShort+"对"+victim.LabelShort+"动了手。导师愤然离去。",LetterDefOf.NegativeEvent,victim);
+   Find.LetterStack.ReceiveLetter("赶走了导师".Loc(),attacker.LabelShort+"对".Loc()+victim.LabelShort+"动了手。导师愤然离去。".Loc(),LetterDefOf.NegativeEvent,victim);
   }
  }
 
@@ -178,10 +178,10 @@ namespace LichPhylactery.VPEBridge {
   public MentorVisit visit;
   public override IEnumerable<DiaOption> Choices{get{
    if(ArchivedOnly || visit==null || visit.left || visit.extended){yield return Option_Close;yield break;}
-   var silver=Choice("付"+Mentor.SilverCost+"银，请他再留"+Mentor.ExtendDays+"天",()=>Mentor.Extend(visit,"silver"));
-   int have=Mentor.Silver(visit.map);if(have<Mentor.SilverCost)silver.Disable("白银不够（有 "+have+"）");yield return silver;
-   var scroll=Choice("送他1张卷轴，请他再留"+Mentor.ExtendDays+"天",()=>Mentor.Extend(visit,"scroll"));if(Mentor.Scroll(visit.map)==null)scroll.Disable("殖民地里没有卷轴");yield return scroll;
-   yield return Choice("让他走",()=>Mentor.Leave(visit));
+   var silver=Choice("付".Loc()+Mentor.SilverCost+"银，请他再留".Loc()+Mentor.ExtendDays+"天".Loc(),()=>Mentor.Extend(visit,"silver"));
+   int have=Mentor.Silver(visit.map);if(have<Mentor.SilverCost)silver.Disable("白银不够（有 ".Loc()+have+"）".Loc());yield return silver;
+   var scroll=Choice("送他1张卷轴，请他再留".Loc()+Mentor.ExtendDays+"天".Loc(),()=>Mentor.Extend(visit,"scroll"));if(Mentor.Scroll(visit.map)==null)scroll.Disable("殖民地里没有卷轴".Loc());yield return scroll;
+   yield return Choice("让他走".Loc(),()=>Mentor.Leave(visit));
    yield return Option_Postpone;
   }}
   DiaOption Choice(string text,Action act)=>new DiaOption(text){action=()=>{act?.Invoke();Find.LetterStack.RemoveLetter(this);},resolveTree=true};
@@ -195,7 +195,7 @@ namespace LichPhylactery.VPEBridge {
   protected override bool TryExecuteWorker(IncidentParms parms){
    var map=parms.target as Map;if(!Mentor.CanFire(map))return false;
    var v=Mentor.Start(map);if(v==null)return false;
-   SendStandardLetter("云游导师","一位云游的"+v.path.label+"导师"+v.mentor.LabelShort+"（"+(Mentor.ClassFor(v.path)!=null?"职业等级":"VPE 等级")+" "+Mentor.Level(v.mentor,v.path)+"）路过殖民地，愿意住"+Mentor.StayDays+"天。\n\n他每天给殖民地里同"+(Mentor.ClassFor(v.path)!=null?"职业":"路径")+"（"+v.path.label+"）的人上一课：每人得到下一级所需"+(Mentor.ClassFor(v.path)!=null?"冒险者":"")+"经验的25%（不受每天50点的上限限制）。\n\n别惹他——有人动手他就走，大家会很懊恼。",LetterDefOf.PositiveEvent,parms,new LookTargets(v.mentor));
+   SendStandardLetter("云游导师".Loc(),"一位云游的".Loc()+v.path.label+"导师".Loc()+v.mentor.LabelShort+"（".Loc()+(Mentor.ClassFor(v.path)!=null?"职业等级".Loc():"VPE 等级".Loc())+" "+Mentor.Level(v.mentor,v.path)+"）路过殖民地，愿意住".Loc()+Mentor.StayDays+"天。\n\n他每天给殖民地里同".Loc()+(Mentor.ClassFor(v.path)!=null?"职业".Loc():"路径".Loc())+"（".Loc()+v.path.label+"）的人上一课：每人得到下一级所需".Loc()+(Mentor.ClassFor(v.path)!=null?"冒险者".Loc():"")+"经验的25%（不受每天50点的上限限制）。\n\n别惹他——有人动手他就走，大家会很懊恼。".Loc(),LetterDefOf.PositiveEvent,parms,new LookTargets(v.mentor));
    return true;
   }
  }

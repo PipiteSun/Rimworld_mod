@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 附魔台 -->
+  <LP_EnchantingTable.label>enchanting table</LP_EnchantingTable.label>
+  <!-- 深色木台面上嵌着铜框符文圆盘，摆着戒指托架、宝石小盒和一本摊开的法术书。在这里把魔力封进戒指、护腕、头盔、护符和器物，制作法杖与元素符。配方速度按智识与医疗的平均等级计算。可连接奥术聚能石和工具柜。 -->
+  <LP_EnchantingTable.description>A dark wooden tabletop inlaid with a copper-framed rune disc, holding ring stands, little gem boxes and an open spellbook. Here magic is sealed into rings, bracers, helms, amulets and devices, and staves and elemental charms are made. Recipe speed is based on the average level of Intellectual and Medicine. Can link arcane focus stones and tool cabinets.</LP_EnchantingTable.description>
+  <!-- 卷轴书桌 -->
+  <LP_ScribeDesk.label>scroll desk</LP_ScribeDesk.label>
+  <!-- 斜面书写台，墨水瓶、羽毛笔、卷起的羊皮纸和蜡封印章摆了一桌，旁边点着一盏小油灯。在这里抄写法术卷轴、编写手册；这是学者的活儿，算“研究”工作，用智识。研究者也可以在这里鉴定未鉴定的物品，比在研究台快一半。可连接奥术聚能石和工具柜。 -->
+  <LP_ScribeDesk.description>A sloped writing desk covered with ink bottles, quills, rolled parchment and wax seals, with a small oil lamp lit beside it. Spell scrolls are copied and manuals written here; it's scholars' work, counting as "research" and using Intellectual. Researchers can also identify unidentified items here, 50% faster than at the research bench. Can link arcane focus stones and tool cabinets.</LP_ScribeDesk.description>
+  <!-- 符文铁砧 -->
+  <LP_RuneAnvil.label>rune anvil</LP_RuneAnvil.label>
+  <!-- 矮人式样的石砌炉膛，配一块刻满符文的黑铁砧，锤钳挂在一旁。在这里锻造制伏武器和符文义肢。烧木头或化学燃料，只在工作时消耗（每天约40）。可连接符文淬火槽和工具柜。 -->
+  <LP_RuneAnvil.description>A dwarven-style stone hearth with a black iron anvil covered in runes, hammers and tongs hanging beside it. Subduing weapons and runic prosthetics are forged here. Burns wood or chemfuel, consumed only while working (about 40 per day). Can link rune quenching troughs and tool cabinets.</LP_RuneAnvil.description>
+  <!-- 蒸馏器 -->
+  <LP_Alembic.label>distillery</LP_Alembic.label>
+  <!-- 架在小火炉上的玻璃曲颈瓶。放在炼金桌旁边，炼金速度+15%（每张炼金桌最多连一个）。 -->
+  <LP_Alembic.description>A glass retort over a small stove. Placed next to the alchemy table: alchemy speed +15% (at most one per alchemy table).</LP_Alembic.description>
+  <!-- 奥术聚能石 -->
+  <LP_ArcaneFocusStone.label>arcane focus stone</LP_ArcaneFocusStone.label>
+  <!-- 立在石座上的一簇紫水晶，散着淡淡的微光。放在附魔台或卷轴书桌旁边，工作速度+15%（每张工作台最多连一个）。 -->
+  <LP_ArcaneFocusStone.description>A cluster of amethyst on a stone base, giving off a faint glow. Placed next to the enchanting table or scroll desk: work speed +15% (at most one per workbench).</LP_ArcaneFocusStone.description>
+  <!-- 符文淬火槽 -->
+  <LP_RuneQuenchTrough.label>rune quenching trough</LP_RuneQuenchTrough.label>
+  <!-- 盛满泛蓝光的淬火水的石槽，槽壁刻着冷却符文。放在符文铁砧旁边，锻造速度+10%（每张铁砧最多连一个）。 -->
+  <LP_RuneQuenchTrough.description>A stone trough full of blue-glowing quench water, its walls carved with cooling runes. Placed next to the rune anvil: forging speed +10% (at most one per anvil).</LP_RuneQuenchTrough.description>
+  <!-- 守护神像 -->
+  <LP_DeityStatue.label>patron deity statue</LP_DeityStatue.label>
+  <!-- 戴兜帽的石像，双手捧着一枚圣徽，看不出是哪一位神——谁做殖民地的守护神，它就为谁守夜。放在圣坛旁边：圣坛工作速度+10%，在这座圣坛祈祷的娱乐+20%（每座圣坛最多连一尊）。 -->
+  <LP_DeityStatue.description>A hooded stone statue holding a holy symbol in both hands; you can't tell which god it is: it keeps vigil for whoever is the colony's patron deity. Placed next to an altar: altar work speed +10%, recreation from praying at that altar +20% (at most one per altar).</LP_DeityStatue.description>
+</LanguageData>

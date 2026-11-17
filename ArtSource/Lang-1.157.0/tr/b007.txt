@@ -1,0 +1,260 @@
+s01578	Circle 2 (Evocation, upcastable): within 10 seconds, the next hit (melee or ranged) deals an extra 10 × power radiant damage (doubled against undead and fiends); the target cannot turn invisible for 1 minute. Upcast: +25% effect per circle. Cooldown 6 seconds.
+s01579	branding smite
+s01580	The next melee hit adds fire damage, and the target keeps burning.
+s01581	Circle 1 (Evocation, upcastable): within 10 seconds, the next melee hit deals an extra 6 × power fire damage, then the target burns for another 1.2 × power per second for 10 seconds. Upcast: +25% effect per circle. Cooldown 6 seconds.
+s01582	searing smite
+s01583	The next melee hit adds psychic damage and stuns the target.
+s01584	Circle 4 (Enchantment, upcastable): within 10 seconds, the next melee hit deals an extra 18 × power psychic damage and stuns the target for 3 seconds. Upcast: +25% effect per circle. Cooldown 10 seconds.
+s01585	staggering smite
+s01586	The next melee hit adds thunder damage and knocks the target back.
+s01587	Circle 1 (Evocation, upcastable): within 10 seconds, the next melee hit deals an extra 10 × power thunder (blunt) damage, knocking the target back 2 cells and dazing it for 1 second. Upcast: +25% effect per circle. Cooldown 6 seconds.
+s01588	thunderous smite
+s01589	A celestial warhorse summoned by Find Steed: movement ×1.2, damage taken ×0.8.
+s01590	celestial warhorse
+s01591	Arrows in the quiver never run out: ranged cooldown and aiming time halved.
+s01592	Circle 5 (Transmutation, concentration): for 1 minute, ranged attack cooldown and aiming time are halved (concentration). Cooldown 1 minute.
+s01593	swift quiver
+s01594	Silver-tongued: negotiation ability ×2, social impact +50%.
+s01595	Circle 3 (Divination): one friendly person within 10 cells becomes silver-tongued for 1 hour: negotiation ability ×2, social impact +50% (use the time to recruit, persuade surrender or trade). Cooldown 1 minute.
+s01596	tongues
+s01597	bard spell list
+s01598	cleric spell list
+s01599	druid spell list
+s01600	paladin spell list
+s01601	ranger spell list
+s01602	sorcerer spell list
+s01603	warlock spell list
+s01604	[PAWN_nameDef]'s village paid tribute to the dragon in the mountains every year. [PAWN_nameDef] was taught from childhood that dragons are gods, people are their servants, and polishing a single dragon scale is a great honor.
+s01605	child beneath the dragon's scales
+s01606	dragon servant's child
+s01607	[PAWN_nameDef] joined the Cult of the Dragon, guarding a chromatic dragon's lair and gathering tribute. The cult promises that the most loyal become dracoliches after death, guarding their master's hoard forever.
+s01608	Cult of the Dragon follower
+s01609	dragon cultist
+s01610	[PAWN_nameDef] holds a lair and sleeps on [PAWN_possessive] own hoard. The nearby villages all know [PAWN_possessive] name, and all pay tribute.
+s01611	lord of the lair
+s01612	true dragon
+s01613	[PAWN_nameDef] could breathe from the moment of hatching and grew up alone in the wilds for decades, learning to hunt, intimidate and hoard.
+s01614	young dragon
+s01615	The red, blue, green, black and white chromatic dragons and the Cult of the Dragon that worships them. Each rules alone and never allies with the others, yet all are equally greedy and equally hostile to anyone who won't bow.
+s01616	chromatic dragons
+s01617	Dragons are the true masters of the world. Those who serve dragons get a gold coin even after death.
+s01618	Cult of the Dragon
+s01619	dragon extortion
+s01620	break into {0}
+s01621	Breaking into {0}.
+s01622	This is a dragon lair. The lair's master sleeps by the hoard and wakes when anyone comes within 10 cells. In the lair it gets one extra legendary resistance and a lair action every 10 seconds; lure it more than 20 cells out of the lair and the lair actions stop.
+s01623	A true dragon's lair: it sleeps by its hoard, with guards around it.
+s01624	dragon lair
+s01625	dragon attack
+s01626	Brew 3 vials of black dragon blood from 1 black dragon heart.
+s01627	Brewing black dragon blood.
+s01628	brew black dragon blood
+s01629	Brew 3 vials of blue dragon blood from 1 blue dragon heart.
+s01630	Brewing blue dragon blood.
+s01631	brew blue dragon blood
+s01632	Brew 3 vials of green dragon blood from 1 green dragon heart.
+s01633	Brewing green dragon blood.
+s01634	brew green dragon blood
+s01635	Brew 3 vials of red dragon blood from 1 red dragon heart.
+s01636	Brewing red dragon blood.
+s01637	brew red dragon blood
+s01638	Brew 3 vials of white dragon blood from 1 white dragon heart.
+s01639	Brewing white dragon blood.
+s01640	brew white dragon blood
+s01641	Black dragon blood flows in the veins: acid damage taken -50%, health +5%.
+s01642	A draught brewed from a black dragon heart. For 7 days acid damage taken -50%, health +5%.
+s01643	black dragon blood
+s01644	Blue dragon blood flows in the veins: lightning damage taken -50%, health +5%.
+s01645	A draught brewed from a blue dragon heart. For 7 days lightning damage taken -50%, health +5%.
+s01646	blue dragon blood
+s01647	Green dragon blood flows in the veins: poison damage taken -50%, health +5%.
+s01648	A draught brewed from a green dragon heart. For 7 days poison damage taken -50%, health +5%.
+s01649	green dragon blood
+s01650	Red dragon blood flows in the veins: fire damage taken -50%, health +5%.
+s01651	A draught brewed from a red dragon heart. For 7 days fire damage taken -50%, health +5%.
+s01652	red dragon blood
+s01653	White dragon blood flows in the veins: cold damage taken -50%, health +5%.
+s01654	A draught brewed from a white dragon heart. For 7 days cold damage taken -50%, health +5%.
+s01655	white dragon blood
+s01656	The body of a true dragon: needs no food or sleep, never has mental breaks on its own (externally caused mental states are handled by legendary resistance), immune to its own color's element. The breath has a 1/3 chance to recharge every 6 seconds. Dies when downed; cannot be captured.
+s01657	true dragon body (black)
+s01658	true dragon body (blue)
+s01659	true dragon body (green)
+s01660	true dragon body (red)
+s01661	true dragon body (white)
+s01662	The long, sharp tooth of an adult or older true dragon. Can replace metal for making blades: sharpness ×1.4.
+s01663	dragon fang
+s01664	The heart of an adult or older black dragon, still warm to the touch. Can be brewed into three vials of black dragon blood at the alchemy table, or sold for a good price.
+s01665	black dragon heart
+s01666	The heart of an adult or older blue dragon, still warm to the touch. Can be brewed into three vials of blue dragon blood at the alchemy table, or sold for a good price.
+s01667	blue dragon heart
+s01668	The heart of an adult or older green dragon, still warm to the touch. Can be brewed into three vials of green dragon blood at the alchemy table, or sold for a good price.
+s01669	green dragon heart
+s01670	The heart of an adult or older red dragon, still warm to the touch. Can be brewed into three vials of red dragon blood at the alchemy table, or sold for a good price.
+s01671	red dragon heart
+s01672	The heart of an adult or older white dragon, still warm to the touch. Can be brewed into three vials of white dragon blood at the alchemy table, or sold for a good price.
+s01673	white dragon heart
+s01674	read {0_label}
+s01675	A hide map drawn by a league scout, marking the location of an ancient dragon lair. Reading it reveals the lair on the world map (it disappears after 30 days).
+s01676	dragon lair intel
+s01677	{0} was poisoned to death by dragon venom.
+s01678	dragon venom
+s01679	Scales stripped from a black dragon's corpse, harder than steel and much lighter. Can replace metal in plate armor, shields, helmets and other gear with selectable materials: sharp armor ×1.6 (relative to steel); while wearing apparel made from it, acid damage taken -50%.
+s01680	black dragon scale
+s01681	Scales stripped from a blue dragon's corpse, harder than steel and much lighter. Can replace metal in plate armor, shields, helmets and other gear with selectable materials: sharp armor ×1.6 (relative to steel); while wearing apparel made from it, lightning damage taken -50%.
+s01682	blue dragon scale
+s01683	Scales stripped from a green dragon's corpse, harder than steel and much lighter. Can replace metal in plate armor, shields, helmets and other gear with selectable materials: sharp armor ×1.6 (relative to steel); while wearing apparel made from it, poison damage taken -50%.
+s01684	green dragon scale
+s01685	Scales stripped from a red dragon's corpse, harder than steel and much lighter. Can replace metal in plate armor, shields, helmets and other gear with selectable materials: sharp armor ×1.6 (relative to steel), its own fire armor ×2 (heat armor).
+s01686	red dragon scale
+s01687	Scales stripped from a white dragon's corpse, harder than steel and much lighter. Can replace metal in plate armor, shields, helmets and other gear with selectable materials: sharp armor ×1.6 (relative to steel), its own cold armor ×2 (heat armor).
+s01688	white dragon scale
+s01689	The most venomous dragon of the swamps. A black dragon's skull-like face is covered in corrosion scars, and it breathes a line of acid that can dissolve armor. Its lairs are always pitch dark.\n\nTrue dragons are intelligent, can speak and live for thousands of years. They have legendary resistance, legendary actions and a frightful presence; they die when they fall and never surrender.
+s01690	black dragon
+s01691	bite
+s01692	left front claw
+s01693	right front claw
+s01694	tail
+s01695	adult black dragon
+s01696	ancient black dragon
+s01697	young black dragon
+s01698	Master of deserts and wastes. Blue dragons can burrow under the sand, bursting from below to ambush prey, and breathe a straight line of lightning. They are vain and orderly, and like to command dragon cultists.\n\nTrue dragons are intelligent, can speak and live for thousands of years. They have legendary resistance, legendary actions and a frightful presence; they die when they fall and never surrender.
+s01699	blue dragon
+s01700	adult blue dragon
+s01701	ancient blue dragon
+s01702	young blue dragon
+s01703	adult
+s01704	adult dragon
+s01705	ancient
+s01706	ancient dragon
+s01707	dragon body
+s01708	dragon tail
+s01709	left wing
+s01710	liver
+s01711	dragon neck
+s01712	dragon head
+s01713	skull
+s01714	brain
+s01715	left eye
+s01716	right eye
+s01717	left ear
+s01718	right ear
+s01719	nose
+s01720	dragon jaw
+s01721	left front leg
+s01722	right front leg
+s01723	left hind leg
+s01724	left hind claw
+s01725	right hind leg
+s01726	right hind claw
+s01727	right wing
+s01728	spine
+s01729	stomach
+s01730	dragon heart
+s01731	left lung
+s01732	right lung
+s01733	left kidney
+s01734	right kidney
+s01735	tail
+s01736	dragon wing
+s01737	wing
+s01738	young
+s01739	young dragon
+s01740	The most cunning dragon of the forests. Green dragons breathe poison gas, are masters of lies and charm, and can move stealthily through water. They would rather have prey walk into the lair by itself.\n\nTrue dragons are intelligent, can speak and live for thousands of years. They have legendary resistance, legendary actions and a frightful presence; they die when they fall and never surrender.
+s01741	green dragon
+s01742	adult green dragon
+s01743	ancient green dragon
+s01744	young green dragon
+s01745	The mightiest and greediest of the chromatic dragons. Red dragons live in volcanoes and high mountains, sleep on mountains of gold and breathe fire. They are arrogant and cruel, believing all the treasure in the world rightfully belongs to them.\n\nTrue dragons are intelligent, can speak and live for thousands of years. They have legendary resistance, legendary actions and a frightful presence; they die when they fall and never surrender.
+s01746	red dragon
+s01747	adult red dragon
+s01748	ancient red dragon
+s01749	young red dragon
+s01750	The smallest and most savage of the chromatic dragons. White dragons live on ice fields and glaciers, breathe ice, disdain bargaining and pounce on prey on sight.\n\nTrue dragons are intelligent, can speak and live for thousands of years. They have legendary resistance, legendary actions and a frightful presence; they die when they fall and never surrender.
+s01751	white dragon
+s01752	adult white dragon
+s01753	ancient white dragon
+s01754	young white dragon
+s01755	The body won't stop dancing: cannot attack or walk away, damage taken ×1.3.
+s01756	irresistible dance
+s01757	Sees a moment into the future: melee hit +25%, better shooting accuracy, melee dodge +25%, mind resistance +50%, cannot be ambushed.
+s01758	foresight
+s01759	A war song that sets the blood racing: pain ×0.5, movement ×1.2, mind resistance +50%.
+s01760	rallying war cry
+s01761	Turn the colony's deeds into a ballad and spread it: pick a faction, goodwill +(5 + 5 × inspiration power) (up to +20), and the whole colony gets mood "our legend" +5 (3 days). If the colony has a bad reputation (has a lich, keeps slaves), it can only be sung as a song of dread, and only hostile factions can be chosen: goodwill still gains half, and that faction's next raid is 10% smaller. Costs 3 cadence, cooldown 7 days (refunded if the window is closed without choosing a faction). Bard level 7.
+s01762	song of renown
+s01763	Passive: for 5 seconds after each bard ability you cast, the next attack needs almost no aiming, comes out faster and deals ×1.25 damage. College of Valor, bard level 11.
+s01764	battle magic
+s01765	The afterglow of casting lingers on the fingertips: the next attack needs almost no aiming, comes out faster and deals ×1.25 damage (gone after one hit).
+s01766	Passive + button: movement ×1.15; melee hits have a 30% chance to perform a flourish of the current style (Defensive: gain an absorb shield of 10 × inspiration power for 5 seconds; Slashing: deal the same damage to another adjacent enemy; Mobile: knock the target back 2 cells). The button cycles Defensive / Slashing / Mobile, and toggles "spend cadence" (each flourish costs 1 cadence and always triggers). College of Swords, bard level 3.
+s01767	blade flourish
+s01768	College of Swords footwork: movement ×1.15; melee hits trigger flourishes of the current style.
+s01769	Pick an enemy within 8 cells and dance through it and enemies around it (up to 5), each taking one hit from your current melee weapon at × inspiration power damage, ending next to the last enemy. Costs 2 cadence, cooldown 1 minute. College of Swords, bard level 11.
+s01770	whirling blade dance
+s01771	Passive: your Bardic Inspiration also grants "Combat inspiration" (damage taken ×0.9, melee damage ×1.15, same duration); your own Shooting and Melee +3 levels. College of Valor, bard level 3.
+s01772	combat inspiration
+s01773	Mind in a tangle: every 2 seconds randomly zones out, wanders, or attacks anyone nearby.
+s01774	confused
+s01775	Enemies in radius 3 at a point within 20 cells each, by success chance (55% + (inspiration power - 1) × 40%, offset by Wisdom modifier and mind resistance), become confused for 10 seconds × inspiration power: every 2 seconds they randomly zone out, wander, or attack anyone nearby. No effect on mechanoids and insectoids. Costs 2 cadence, cooldown 2 minutes. Bard level 7.
+s01776	confusion
+s01777	Sing a melody that steadies the mind: allies within 15 cells are instantly freed from fear, charm and domination; those having a (non-extreme) mental break recover on the spot with 55% + (inspiration power - 1) × 40% chance; then for 1 day mind resistance +30% and psychic sensitivity -30% (bad moods from psychic shocks are lessened accordingly). Costs 2 cadence, cooldown 6 hours. Bard level 5.
+s01778	countercharm
+s01779	The bard's melody keeps echoing in the heart: mind resistance +30%, psychic sensitivity -30% (bad moods from psychic shocks are lessened accordingly).
+s01780	Mocked into shame by a College of Lore bard: melee hit -25%, lower shooting accuracy, damage dealt ×0.75.
+s01781	Mock one enemy within 20 cells for 20 seconds: melee hit -25%, lower shooting accuracy, damage dealt ×0.75. Works on mechanoids too (ridiculing their design flaws). Costs 1 cadence, cooldown 20 seconds. College of Lore, bard level 3.
+s01782	cutting words
+s01783	Passive: melee attack cooldown ×0.8, aiming time ×0.8. College of Valor, bard level 7.
+s01784	extra attack
+s01785	Passive: melee attack cooldown ×0.8, aiming time ×0.8 (same as the College of Valor ability of the same name). College of Swords, bard level 7.
+s01786	Faster strikes: melee attack cooldown ×0.8, aiming time ×0.8.
+s01787	Passive: one more Magical Secret (a spell of class level 7 or lower, not a duplicate of one already learned), chosen under "choose branch". College of Lore, bard level 11.
+s01788	additional magical secrets
+s01789	The last verse of the epic: no mental breaks, higher hit chance, pain ×0.5; if downed during it, half the injuries heal at once and you try to stand up once.
+s01790	song of the finale
+s01791	Singing the song of the finale: enemies within 30 cells have a 25% chance every 5 seconds to flee in fear (mechanoids unaffected).
+s01792	singing the finale
+s01793	Call out a healing word from afar: instantly heal one target within 30 cells (can be yourself) for a total of 10 × inspiration power injury, worst bleeding wounds first. Costs 1 cadence, cooldown 20 seconds. Bard level 1.
+s01794	Make one enemy within 20 cells collapse laughing for 8 seconds × inspiration power (unable to move, snaps out at once when damaged). Success = 55% + (inspiration power - 1) × 40%, -5% per point of the target's Wisdom modifier, also offset by mind resistance, range 5%-95%; even on failure they are shaken for 6 seconds. No effect on mechanoids, insectoids and mindless targets. Costs 1 cadence, cooldown 1 minute. Bard level 3.
+s01795	hideous laughter
+s01796	Passive: when your Bardic Inspiration expires or its holder is downed, it passes to another uninspired friendly humanlike within 10 cells (each inspiration passes at most once, duration restarts). College of Eloquence, bard level 7.
+s01797	infectious inspiration
+s01798	Give Bardic Inspiration to one friendly humanlike within 20 cells (not yourself) for 12 hours: melee hit +10% × inspiration power, better shooting accuracy, work speed +10% × inspiration power, mental break threshold -5%. From bard level 5, there is also a (bard level × 2)% chance to directly grant a vanilla inspiration. Costs 1 cadence, cooldown 30 seconds. Bard level 1.
+s01799	bardic inspiration
+s01800	The bard's song echoes in the heart: melee hit, shooting accuracy and work speed increased (more with stronger inspiration), mental break threshold -5%.
+s01801	Passive: all skills +2 levels, learning speed +15%. Bard level 5.
+s01802	jack of all trades
+s01803	Knows a bit of everything: all skills +2 levels, learning speed +15%.
+s01804	Can't stop laughing, collapsed on the ground unable to move. Snaps out at once when damaged.
+s01805	hideous laughter
+s01806	Our story was turned into a song and spread across the continent.
+s01807	our legend
+s01808	Passive: research speed +10% × inspiration power; when learned, the 3 lowest-passion skills (that can be used) each rise one passion step (none → minor → major) and gain +2 levels (once only). College of Lore, bard level 7.
+s01809	erudition
+s01810	College of Lore learning: research speed increased (faster the stronger).
+s01811	Passive: at bard level 10, choose one spell from the wizard, cleric, druid, sorcerer or warlock lists (class level 7 or lower) to learn permanently; at 13 choose another (class level 10 or lower). Chosen under "choose branch" (the college's branch). Learned spells use inspiration power and cost cadence (the original mana / divinity / pact mana converts 1:1 to cadence). Bard level 10.
+s01812	magical secrets
+s01813	Passive: a second Magical Secret, widened to spells of class level 10 or lower (mass heal, wall of stone, beast lord's call and mass suggestion are also available), not a duplicate of the first. Bard level 13.
+s01814	magical secrets II
+s01815	Passive: in combat, regain 1 cadence every 10 seconds while below 2; Blade Flourish trigger chance 30% → 60%. College of Swords, bard level 15.
+s01816	master's flourish
+s01817	Turn invisible for 10 seconds, leaving a taunting illusory double in place: enemies within 15 cells attack the double instead (it vanishes after 10 seconds or a few hits). Used to escape. Costs 3 cadence, cooldown 4 hours. Bard level 13.
+s01818	mislead
+s01819	Stung by sharp words and rattled: melee hit -20%, lower shooting accuracy.
+s01820	shaken
+s01821	Master of the College of Lore: social impact and negotiation ability +15%, surgery success +10%; crafted items have a 30% chance of +1 quality tier.
+s01822	peerless skill
+s01823	Passive: crafted items (art, crafting) have a 30% chance of +1 quality tier (up to legendary); social impact and negotiation ability +15%, surgery success +10%. College of Lore, bard level 15.
+s01824	An illusion left behind by a bard, constantly mocking nearby enemies. Vanishes after 10 seconds or after taking a few hits.
+s01825	illusory double
+s01826	Fell asleep to the bard's song last night and slept especially well.
+s01827	song of rest
+s01828	The bard sang lullabies all night: sleep recovery ×1.3, faster wound healing (faster the stronger).
+s01829	×1.5 healing
+s01830	×1.75 healing
+s01831	×2 healing
+s01832	×2.25 healing
+s01833	×2.5 healing
+s01834	College of Eloquence speech: negotiation ability ×1.5 (easier recruiting and persuasion), trade prices +10%, social impact +20%.
+s01835	silver tongue
+s01836	Passive: negotiation ability ×1.5 (easier recruiting and persuasion), trade prices +10%, social impact +20%. College of Eloquence, bard level 3.
+s01837	Sing lullabies all night for allies within 12 cells: for 12 hours sleep recovery ×1.3, wound healing ×(1 + 0.5 × inspiration power), and everyone gets mood "song of rest" +4 (1 day). Costs 2 cadence, cooldown 1 day. Bard level 3.

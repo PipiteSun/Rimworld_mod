@@ -25,12 +25,12 @@ namespace LichPhylactery {
   public bool Active=>!lifted && LichMod.Settings!=null && LichMod.Settings.cursedItems;
   public Pawn Holder=>(parent as Apparel)?.Wearer??(parent.ParentHolder as Pawn_EquipmentTracker)?.pawn;
   public override string TransformLabel(string label){
-   if(!identified)return (Props.disguiseLabel??label)+"（未鉴定）";
-   return label+(lifted?"（已解咒）":"（诅咒）");
+   if(!identified)return (Props.disguiseLabel??label)+"（未鉴定）".Loc();
+   return label+(lifted?"（已解咒）".Loc():"（诅咒）".Loc());
   }
   public override string CompInspectStringExtra(){
-   if(!identified)return "未鉴定：看不出真正的效果。识破卷轴或研究台“鉴定”（需要附魔学）可以看穿。";
-   return lifted?"诅咒已解除：可以正常脱下，效果和代价都还在。":"诅咒物品："+(LichMod.Settings?.cursedItems==false?"设置里关掉了“诅咒物品”，可以正常脱下。":"穿上后脱不下，只有解除诅咒卷轴能解开。");
+   if(!identified)return "未鉴定：看不出真正的效果。识破卷轴或研究台“鉴定”（需要附魔学）可以看穿。".Loc();
+   return lifted?"诅咒已解除：可以正常脱下，效果和代价都还在。".Loc():"诅咒物品：".Loc()+(LichMod.Settings?.cursedItems==false?"设置里关掉了“诅咒物品”，可以正常脱下。".Loc():"穿上后脱不下，只有解除诅咒卷轴能解开。".Loc());
   }
   public override void Notify_Equipped(Pawn pawn){
    base.Notify_Equipped(pawn);wornSince=Find.TickManager.TicksGame;
@@ -39,7 +39,7 @@ namespace LichPhylactery {
     allianceNotified=true;MagicItems.Alliance.TryAffectGoodwillWith(Faction.OfPlayer,MagicItems.LichMarkGoodwill,true,true,null,pawn);
    }
   }
-  public void Identify(bool message=true){if(identified)return;identified=true;if(message && parent.MapHeld!=null)Messages.Message("鉴定结果："+parent.LabelCap+"。",new LookTargets(parent.SpawnedOrAnyParentSpawned?parent:(Thing)Holder),MessageTypeDefOf.NeutralEvent,false);}
+  public void Identify(bool message=true){if(identified)return;identified=true;if(message && parent.MapHeld!=null)Messages.Message("鉴定结果：".Loc()+parent.LabelCap+"。".Loc(),new LookTargets(parent.SpawnedOrAnyParentSpawned?parent:(Thing)Holder),MessageTypeDefOf.NeutralEvent,false);}
   public void Lift(){identified=true;lifted=true;}
   public override IEnumerable<Gizmo> CompGetGizmosExtra(){foreach(var g in base.CompGetGizmosExtra())yield return g;if(!identified && parent.Spawned)yield return CursedItems.IdentifyCommand(parent);}
   public override IEnumerable<Gizmo> CompGetWornGizmosExtra(){foreach(var g in base.CompGetWornGizmosExtra())yield return g;var p=Holder;if(!identified && p!=null && p.Faction==Faction.OfPlayer)yield return CursedItems.IdentifyCommand(parent);}
@@ -50,7 +50,7 @@ namespace LichPhylactery {
   public static bool releasing;
   public static CompCursed Comp(Thing t)=>t?.TryGetComp<CompCursed>();
   public static bool Locked(Thing t,Pawn holder)=>!releasing && holder!=null && !holder.Dead && Comp(t)?.Active==true;
-  public static string LockedReason(Thing t)=>t.LabelCap+"被诅咒了，脱不下来。";
+  public static string LockedReason(Thing t)=>t.LabelCap+"被诅咒了，脱不下来。".Loc();
   // 想换装备：会被换下的诅咒物品挡住。
   public static string BlocksEquip(Pawn p,Thing thing){
    if(p==null || thing==null)return null;
@@ -67,27 +67,27 @@ namespace LichPhylactery {
    }
   }
   // 识破卷轴：鉴定地图上所有未鉴定的诅咒物品。
-  public static int IdentifyMap(Map map){int n=0;if(map==null)return 0;foreach(var c in Unidentified(map).Distinct().ToList()){c.Identify(false);n++;}if(n>0)Messages.Message("识破卷轴的光芒照出了"+n+"件物品的真面目。",MessageTypeDefOf.NeutralEvent,false);return n;}
+  public static int IdentifyMap(Map map){int n=0;if(map==null)return 0;foreach(var c in Unidentified(map).Distinct().ToList()){c.Identify(false);n++;}if(n>0)Messages.Message("识破卷轴的光芒照出了".Loc()+n+"件物品的真面目。".Loc(),MessageTypeDefOf.NeutralEvent,false);return n;}
   public static List<Thing> CursedOn(Pawn p){var l=new List<Thing>();if(p==null)return l;if(Comp(p.equipment?.Primary)?.lifted==false)l.Add(p.equipment.Primary);if(p.apparel!=null)l.AddRange(p.apparel.WornApparel.Where(a=>Comp(a)?.lifted==false));return l;}
   public static Thing RemoveCurseTarget(LocalTargetInfo t){if(t.Thing is Pawn p)return CursedOn(p).FirstOrDefault();return Comp(t.Thing)?.lifted==false?t.Thing:null;}
-  public static bool RemoveCurse(LocalTargetInfo t){var thing=RemoveCurseTarget(t);var c=Comp(thing);if(c==null)return false;c.Lift();Messages.Message(thing.LabelCap+"的诅咒解除了。",thing.SpawnedOrAnyParentSpawned?new LookTargets(thing):LookTargets.Invalid,MessageTypeDefOf.PositiveEvent,false);return true;}
+  public static bool RemoveCurse(LocalTargetInfo t){var thing=RemoveCurseTarget(t);var c=Comp(thing);if(c==null)return false;c.Lift();Messages.Message(thing.LabelCap+"的诅咒解除了。".Loc(),thing.SpawnedOrAnyParentSpawned?new LookTargets(thing):LookTargets.Invalid,MessageTypeDefOf.PositiveEvent,false);return true;}
   // 研究台鉴定：需要完成附魔学；选一个能做研究的殖民者。
   public static ResearchProjectDef Enchanting=>DefDatabase<ResearchProjectDef>.GetNamedSilentFail("LP_Research_Enchanting");
   // 1.47.0：卷轴书桌也能鉴定，而且快一半（Workbenches.IdentifyFactor）。
   public static Building Bench(Pawn p)=>p?.Map==null?null:p.Map.listerBuildings.allBuildingsColonist.Where(b=>Workbenches.CanIdentifyAt(b) && p.CanReserveAndReach(b,PathEndMode.InteractionCell,Danger.Some)).OrderBy(b=>b.Position.DistanceToSquared(p.Position)).FirstOrDefault();
   public static string CannotIdentify(Pawn p,Thing item){
-   if(Enchanting!=null && !Enchanting.IsFinished)return "需要先完成研究“附魔学”。";
-   if(p==null || p.Dead || p.Downed || p.WorkTypeIsDisabled(WorkTypeDefOf.Research))return "需要能做研究的人。";
-   if(Bench(p)==null)return "附近没有可用的研究台或卷轴书桌。";
-   var holder=Comp(item)?.Holder;if(holder!=null && holder!=p)return "只能由佩戴者本人去鉴定身上的物品。";
+   if(Enchanting!=null && !Enchanting.IsFinished)return "需要先完成研究“附魔学”。".Loc();
+   if(p==null || p.Dead || p.Downed || p.WorkTypeIsDisabled(WorkTypeDefOf.Research))return "需要能做研究的人。".Loc();
+   if(Bench(p)==null)return "附近没有可用的研究台或卷轴书桌。".Loc();
+   var holder=Comp(item)?.Holder;if(holder!=null && holder!=p)return "只能由佩戴者本人去鉴定身上的物品。".Loc();
    return null;
   }
   public static Command IdentifyCommand(Thing item){
-   var cmd=new Command_Action{defaultLabel="鉴定",defaultDesc="让一名研究者把它带到研究台研究2小时（卷轴书桌只要80分钟），看穿它的真面目（需要附魔学）。",icon=item.def.uiIcon,action=()=>{
+   var cmd=new Command_Action{defaultLabel="鉴定".Loc(),defaultDesc="让一名研究者把它带到研究台研究2小时（卷轴书桌只要80分钟），看穿它的真面目（需要附魔学）。".Loc(),icon=item.def.uiIcon,action=()=>{
     var holder=Comp(item)?.Holder;
     var who=holder!=null?new List<Pawn>{holder}:item.MapHeld.mapPawns.FreeColonistsSpawned.ToList();
-    var opts=who.Select(p=>{string why=CannotIdentify(p,item);return why==null?new FloatMenuOption(p.LabelShort,()=>StartIdentify(p,item)):new FloatMenuOption(p.LabelShort+"（"+why+"）",null);}).ToList();
-    if(opts.Count==0)opts.Add(new FloatMenuOption("没有可用的研究者",null));
+    var opts=who.Select(p=>{string why=CannotIdentify(p,item);return why==null?new FloatMenuOption(p.LabelShort,()=>StartIdentify(p,item)):new FloatMenuOption(p.LabelShort+"（".Loc()+why+"）".Loc(),null);}).ToList();
+    if(opts.Count==0)opts.Add(new FloatMenuOption("没有可用的研究者".Loc(),null));
     Find.WindowStack.Add(new FloatMenu(opts));
    }};
    return cmd;

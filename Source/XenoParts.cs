@@ -118,7 +118,7 @@ namespace LichPhylactery {
    if(secondLost && !lone){var d=Items.Hediff(Ettin.LoneHead);if(d!=null){set.hediffs.Add(HediffMaker.MakeHediff(d,p));any=true;}}
    var bills=p.health.surgeryBills?.Bills;
    if(bills!=null)foreach(var b in bills.OfType<Bill_Medical>().ToList()){var old=b.Part;if(old==null || old.body==body)continue;any=true;var to=Map(old,body);if(to==null)p.health.surgeryBills.Delete(b);else b.Part=to;}
-   if(any){set.DirtyCache();Log.Message("[DND边缘大陆] 旧存档：把 "+p.LabelShortCap+" 从 HAR 种族的身体搬到人类身体上（异种型 "+(p.genes?.Xenotype?.label??"?")+"）。");}
+   if(any){set.DirtyCache();Log.Message("[DND边缘大陆] 旧存档：把 ".Loc()+p.LabelShortCap+" 从 HAR 种族的身体搬到人类身体上（异种型 ".Loc()+(p.genes?.Xenotype?.label??"?")+"）。".Loc());}
   }
   public static void EnsureCore(Pawn p){
    var x=p?.genes?.Xenotype;if(x==null || p.genes==null)return;
@@ -134,7 +134,7 @@ namespace LichPhylactery {
   static void Postfix(Pawn __instance){
    if(Scribe.mode!=LoadSaveMode.PostLoadInit || __instance?.RaceProps?.Humanlike!=true)return;
    try{LegacyRaceSave.Fix(__instance);LegacyRaceSave.EnsureCore(__instance);}
-   catch(Exception e){Log.Warning("[DND边缘大陆] 旧存档种族转换失败（"+__instance.LabelShortCap+"）："+e.Message);}
+   catch(Exception e){Log.Warning("[DND边缘大陆] 旧存档种族转换失败（".Loc()+__instance.LabelShortCap+"）：".Loc()+e.Message);}
   }
  }
 }

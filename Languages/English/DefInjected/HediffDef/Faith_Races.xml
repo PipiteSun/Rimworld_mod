@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 魔鬼契约 -->
+  <LP_InfernalPactActive.label>devil's bargain</LP_InfernalPactActive.label>
+  <!-- 和魔鬼的交易生效中：射击与近战伤害+20%，精神力获取+20%。到期后会透支。 -->
+  <LP_InfernalPactActive.description>The deal with the devil is in effect: shooting and melee damage +20%, psyfocus gain +20%. An overdraft follows when it expires.</LP_InfernalPactActive.description>
+  <!-- 契约透支 -->
+  <LP_PactOverdraw.label>pact overdraft</LP_PactOverdraw.label>
+  <!-- 魔鬼来收账了。 -->
+  <LP_PactOverdraw.description>The devil has come to collect.</LP_PactOverdraw.description>
+</LanguageData>

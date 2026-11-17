@@ -117,7 +117,7 @@
   <HediffDef ParentName="LP_MonsterBodyBase">
     <defName>LP_BehirBody</defName>
     <label>贝希尔之躯</label>
-    <description>蛇一样的十二足猎龙者：闪电吐息每 6 秒有 1/3 几率充好，吐出一道 16 格的闪电（敏捷豁免减半，对机械体 ×2）；把贴身的人吞进肚子（每秒 4 点酸蚀，打它 60 点或里面挣扎 30 点就吐出来）。打真龙和力能龙裔伤害 ×1.5，不怕龙的威仪。倒地即死。</description>
+    <description>蛇一样的十二足猎龙者：闪电吐息每 6 秒有 1/3 几率充好，吐出一道 16 格的闪电（敏捷豁免减半，对机械体 ×2）；把贴身的人吞进肚子（每秒 4 点酸蚀，打它 60 点或里面挣扎 30 点就吐出来）。打真龙伤害 ×1.5，不怕龙的威仪。倒地即死。</description>
     <stages><li>
       <painFactor>0.6</painFactor><blocksMentalBreaks>true</blocksMentalBreaks>
       <disablesNeeds><li>Food</li><li>Rest</li><li>Joy</li><li>Beauty</li><li>Comfort</li><li>Outdoors</li><li>RoomSize</li><li MayRequire="Ludeon.RimWorld.Ideology">Indoors</li></disablesNeeds>

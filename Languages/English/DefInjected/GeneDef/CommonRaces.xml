@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 不屈坚韧 -->
+  <LP_HalfOrcRelentless.label>relentless endurance</LP_HalfOrcRelentless.label>
+  <!-- 受到会让人倒下（但不致死）的伤害时，半兽人咬牙硬撑12小时：疼痛不会让其休克倒地，意识不会低于约30%。12小时后伤势照常结算，如果仍然重伤就会倒下。每天最多触发一次；致命伤害照常致死。 -->
+  <LP_HalfOrcRelentless.description>When taking damage that would down (but not kill) them, half-orcs grit their teeth and hold on for 12 hours: pain won't shock them into falling and consciousness won't drop below about 30%. After 12 hours the injuries resolve as usual, and if still badly hurt they fall. Triggers at most once per day; lethal damage kills as usual.</LP_HalfOrcRelentless.description>
+  <!-- 本该倒地时不倒地，获得12小时"咬牙硬撑"：疼痛不致休克，意识保底约30%。 | 冷却1天（健康页显示"不屈冷却"）；双腿失去行动能力仍会倒地；致命伤害不受影响。 -->
+  <LP_HalfOrcRelentless.customEffectDescriptions.0>Instead of being downed, gains 12 hours of "gritting teeth": pain cannot cause shock, consciousness floored at about 30%.</LP_HalfOrcRelentless.customEffectDescriptions.0>
+  <LP_HalfOrcRelentless.customEffectDescriptions.1>Cooldown 1 day (the health tab shows "relentless cooldown"); still downed if both legs are disabled; lethal damage is unaffected.</LP_HalfOrcRelentless.customEffectDescriptions.1>
+  <!-- 咬牙硬撑！ -->
+  <LP_HalfOrcRelentless.modExtensions.0.moteText>Gritting teeth!</LP_HalfOrcRelentless.modExtensions.0.moteText>
+  <!-- 野蛮攻击 -->
+  <LP_HalfOrcSavage.label>savage attacks</LP_HalfOrcSavage.label>
+  <!-- 半兽人的近战命中有10%概率打出野蛮重击，这一击伤害×150%。 -->
+  <LP_HalfOrcSavage.description>A half-orc's melee hits have a 10% chance to land a savage blow, dealing ×150% damage.</LP_HalfOrcSavage.description>
+  <!-- 近战命中时10%概率重击：伤害×150%。 -->
+  <LP_HalfOrcSavage.customEffectDescriptions.0>Melee hits have a 10% chance to strike heavily: damage ×150%.</LP_HalfOrcSavage.customEffectDescriptions.0>
+  <!-- 冥想之息 -->
+  <LP_ElfTrance.label>meditative breath</LP_ElfTrance.label>
+  <!-- 精灵的睡眠是一种冥想般的出神。睡着时，有灵能（心灵链接）的精灵每晚约恢复20%精神力；没有灵能的精灵没有这项收益。睡满2小时后醒来，获得"清醒冥想"心情+3，持续半天。 -->
+  <LP_ElfTrance.description>Elven sleep is a meditative trance. While asleep, elves with a psylink regain about 20% psyfocus each night; elves without one get no such benefit. Waking after a full 2 hours of sleep gives the "lucid meditation" mood +3 for half a day.</LP_ElfTrance.description>
+  <!-- 睡眠中精神力恢复：每8小时约+20%（仅有心灵链接时）。 | 睡满2小时醒来：心情+3，持续半天。 -->
+  <LP_ElfTrance.customEffectDescriptions.0>Psyfocus regained in sleep: about +20% per 8 hours (only with a psylink).</LP_ElfTrance.customEffectDescriptions.0>
+  <LP_ElfTrance.customEffectDescriptions.1>Waking after a full 2 hours of sleep: mood +3 for half a day.</LP_ElfTrance.customEffectDescriptions.1>
+  <!-- 精灵血统 -->
+  <LP_ElfBloodline.label>elven lineage</LP_ElfBloodline.label>
+  <!-- 古老的精灵血脉让心智格外坚定，能抵抗心灵震爆、魅惑、寄生等心智类效果，心灵嗡鸣等心灵类负面心情也会减弱一半。 -->
+  <LP_ElfBloodline.description>The ancient elven bloodline makes the mind especially steadfast, resisting psychic blasts, charm, parasites and other mind effects; negative psychic moods such as psychic drone are also halved.</LP_ElfBloodline.description>
+  <!-- 精灵长寿 -->
+  <LP_ElfLongevity.label>elven longevity</LP_ElfLongevity.label>
+  <!-- 缓慢的新陈代谢让精灵在成年后衰老得极慢。18岁前与常人一样成长；18岁起生理年龄增长速度只有常人的5%（常人过20年，精灵只老1岁）。 -->
+  <LP_ElfLongevity.description>A slow metabolism makes elves age extremely slowly after adulthood. Before 18 they grow like everyone else; from 18 their biological age advances only 5% as fast (when others age 20 years, an elf ages 1).</LP_ElfLongevity.description>
+  <!-- 矮人体型 -->
+  <LP_DwarfStature.label>dwarf build</LP_DwarfStature.label>
+  <!-- 矮小敦实的身材。实际体型为普通人的80%（负重、商队载重、被远程命中的概率随之降低），显示为85%大小；手上搬运量再×90%。对巨魔近战时伤害+10%（矮人与巨魔的世仇）。 -->
+  <LP_DwarfStature.description>A short, stocky build. Actual body size 80% of an ordinary person (carry capacity, caravan load and chance to be hit by ranged attacks go down accordingly), drawn at 85% size; hand hauling capacity another ×90%. +10% melee damage against trolls (the ancient feud of dwarves and trolls).</LP_DwarfStature.description>
+  <!-- 实际体型：×80%（与其他体型效果相乘）。 | 显示大小：×85%。 | 搬运量：在体型缩小的基础上再×90%。 | 对巨魔近战伤害：+10%。 -->
+  <LP_DwarfStature.customEffectDescriptions.0>Actual body size: ×80% (multiplies with other body size effects).</LP_DwarfStature.customEffectDescriptions.0>
+  <LP_DwarfStature.customEffectDescriptions.1>Drawn size: ×85%.</LP_DwarfStature.customEffectDescriptions.1>
+  <LP_DwarfStature.customEffectDescriptions.2>Hauling capacity: ×90% on top of the body size reduction.</LP_DwarfStature.customEffectDescriptions.2>
+  <LP_DwarfStature.customEffectDescriptions.3>Melee damage against trolls: +10%.</LP_DwarfStature.customEffectDescriptions.3>
+  <!-- 酒鬼之肝 -->
+  <LP_DwarfLiver.label>drunkard's liver</LP_DwarfLiver.label>
+  <!-- 矮人的肝脏千锤百炼：喝酒永远不会上瘾，宿醉减半；每次喝酒后获得"壮胆"心情+4，持续6小时。 -->
+  <LP_DwarfLiver.description>A dwarf's liver is tempered by a thousand hammer blows: never addicted to alcohol, hangovers halved; each drink gives the "liquid courage" mood +4 for 6 hours.</LP_DwarfLiver.description>
+  <!-- 酒精成瘾概率：0%。 | 宿醉严重度减半。 | 喝酒后心情+4（6小时）。 -->
+  <LP_DwarfLiver.customEffectDescriptions.0>Alcohol addiction chance: 0%.</LP_DwarfLiver.customEffectDescriptions.0>
+  <LP_DwarfLiver.customEffectDescriptions.1>Hangover severity halved.</LP_DwarfLiver.customEffectDescriptions.1>
+  <LP_DwarfLiver.customEffectDescriptions.2>Mood +4 after drinking (6 hours).</LP_DwarfLiver.customEffectDescriptions.2>
+  <!-- 石之耐力 -->
+  <LP_DwarfStoneEndurance.label>stone endurance</LP_DwarfStoneEndurance.label>
+  <!-- 矮人生于山腹。身处厚岩顶下时心情+3，采矿速度和一般劳动（手工、制作等）速度+10%。 -->
+  <LP_DwarfStoneEndurance.description>Dwarves are born in the belly of the mountain. Under a thick rock roof, mood +3, and mining speed and general labor (crafting, making, etc.) speed +10%.</LP_DwarfStoneEndurance.description>
+  <!-- 在厚岩顶下：心情+3，采矿速度×110%，一般劳动速度×110%。 -->
+  <LP_DwarfStoneEndurance.customEffectDescriptions.0>Under a thick rock roof: mood +3, mining speed ×110%, general labor speed ×110%.</LP_DwarfStoneEndurance.customEffectDescriptions.0>
+</LanguageData>

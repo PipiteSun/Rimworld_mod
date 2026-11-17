@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 魔化兽皮 -->
+  <LP_Leather_Displacer.label>displacer beast hide</LP_Leather_Displacer.label>
+  <!-- 魔化兽深紫近黑的毛皮，在光下仿佛微微错位。比黑豹皮更保暖、更好看，也稍难刺穿。 -->
+  <LP_Leather_Displacer.description>Displacer beast fur, deep purple nearly black, seeming slightly offset in the light. Warmer and prettier than panther hide, and a bit harder to pierce.</LP_Leather_Displacer.description>
+  <!-- 猫头鹰熊蛋 -->
+  <LP_EggOwlbearFertilized.label>owlbear egg</LP_EggOwlbearFertilized.label>
+  <!-- 一枚受精的猫头鹰熊蛋，约12天后孵出猫头鹰熊幼崽，幼崽属于蛋的主人。也可以生吃，但煮熟更好。 -->
+  <LP_EggOwlbearFertilized.description>A fertilized owlbear egg. Hatches into an owlbear cub after about 12 days; the cub belongs to the egg's owner. Can be eaten raw, but cooking is better.</LP_EggOwlbearFertilized.description>
+  <!-- 猫头鹰熊蛋（未受精） -->
+  <LP_EggOwlbearUnfertilized.label>owlbear egg (unfertilized)</LP_EggOwlbearUnfertilized.label>
+  <!-- 一枚不会孵化的猫头鹰熊蛋。可以生吃，但煮熟更好。 -->
+  <LP_EggOwlbearUnfertilized.description>An owlbear egg that will not hatch. Can be eaten raw, but cooking is better.</LP_EggOwlbearUnfertilized.description>
+  <!-- 猫头鹰熊 -->
+  <LP_Owlbear.label>owlbear</LP_Owlbear.label>
+  <!-- 熊的身躯、猫头鹰的头和喙，据说是疯狂法师的造物。脾气暴躁，扑中猎物时常会用双臂死死抱住，让对方动弹不得。和鸟一样下蛋：母猫头鹰熊受精后约15天产下一枚蛋。\n\n精灵和林地生物相处得来，精灵驯服它的成功率翻倍。 -->
+  <LP_Owlbear.description>A bear's body with the head and beak of an owl, said to be the creation of a mad wizard. Bad-tempered; when it lands on prey it often hugs it tight with both arms so it can't move. Lays eggs like a bird: a female owlbear lays one egg about 15 days after fertilization.\n\nElves get along with woodland creatures; elves have double the chance to tame one.</LP_Owlbear.description>
+  <!-- 猫头鹰熊肉 -->
+  <LP_Owlbear.race.meatLabel>owlbear meat</LP_Owlbear.race.meatLabel>
+  <!-- 邪座狼 -->
+  <LP_Worg.label>worg</LP_Worg.label>
+  <!-- 体型巨大、心怀恶意又颇有心计的狼，常成群出没，据说会和兽人结伴劫掠。几只邪座狼聚在一起时会互相呼应着嚎叫、配合扑咬：8格内每多一只同伴，近战命中+5%，最多+20%。\n\n半兽人懂得邪座狼的规矩，驯服它的成功率翻倍。 -->
+  <LP_Worg.description>A huge, malicious and cunning wolf that often travels in packs and is said to raid alongside orcs. When several worgs gather they howl back and forth and coordinate their bites: +5% melee hit chance for each companion within 8 cells, up to +20%.\n\nHalf-orcs understand worg ways; half-orcs have double the chance to tame one.</LP_Worg.description>
+  <!-- 邪座狼肉 -->
+  <LP_Worg.race.meatLabel>worg meat</LP_Worg.race.meatLabel>
+  <!-- 冬狼 -->
+  <LP_WinterWolf.label>winter wolf</LP_WinterWolf.label>
+  <!-- 毛色泛着冰蓝的巨狼，呼出的气都带着霜。咬击会额外造成冻伤，让被咬的目标寒霜迟缓（移速减半4秒）。极耐寒，但怕火：受到的火焰伤害×150%。屠宰得到冬狼皮。 -->
+  <LP_WinterWolf.description>A giant wolf with ice-blue fur whose very breath carries frost. Its bite deals extra frostbite and leaves the target frost slowed (move speed halved for 4 seconds). Extremely cold-hardy but afraid of fire: takes ×150% fire damage. Butchering yields winter wolf pelt.</LP_WinterWolf.description>
+  <!-- 冬狼肉 -->
+  <LP_WinterWolf.race.meatLabel>winter wolf meat</LP_WinterWolf.race.meatLabel>
+  <!-- 地狱犬 -->
+  <LP_HellHound.label>hell hound</LP_HellHound.label>
+  <!-- 来自下层位面的猎犬，皮毛暗红近黑，周身透出微弱的火光。咬击带着火焰，打中巨魔会阻断它的再生。完全不怕火，也不会被点燃；耐得住酷热。\n\n火巨人豢养地狱犬由来已久，火巨人驯服它的成功率翻倍。 -->
+  <LP_HellHound.description>A hound from the lower planes with dark red, nearly black fur and a faint glow of fire all over. Its bite carries flame, and hitting a troll blocks its regeneration. Completely unafraid of fire and cannot be ignited; withstands extreme heat.\n\nFire giants have kept hell hounds for ages; fire giants have double the chance to tame one.</LP_HellHound.description>
+  <!-- 地狱犬肉 -->
+  <LP_HellHound.race.meatLabel>hell hound meat</LP_HellHound.race.meatLabel>
+  <!-- 魔化兽 -->
+  <LP_DisplacerBeast.label>displacer beast</LP_DisplacerBeast.label>
+  <!-- 深紫蓝色的大猫，肩上生着一对带骨刺的触手。它的身影总是偏离真正的位置：身上常驻“位移幻影”，下一次会造成伤害的攻击（近战、远程或爆炸）会打在幻影上完全落空，然后幻影消失6秒再恢复。倒地后不再生效。\n\n剥下的魔化兽皮比黑豹皮更保暖、更好看。 -->
+  <LP_DisplacerBeast.description>A large deep purple-blue cat with a pair of bone-spiked tentacles on its shoulders. Its image is always offset from where it really is: it always has a "displacement phantom", so the next attack that would deal damage (melee, ranged or explosion) hits the phantom and misses completely, then the phantom vanishes for 6 seconds before returning. No longer works once downed.\n\nDisplacer beast hide is warmer and prettier than panther hide.</LP_DisplacerBeast.description>
+  <!-- 魔化兽肉 -->
+  <LP_DisplacerBeast.race.meatLabel>displacer beast meat</LP_DisplacerBeast.race.meatLabel>
+  <!-- 闪光犬 -->
+  <LP_BlinkDog.label>blink dog</LP_BlinkDog.label>
+  <!-- 淡金色、聪明而友善的犬类，能在短距离内瞬间移动。从不主动攻击人，被攻击时会反击；挨打后有30%的概率闪现到3～6格外、远离攻击者的地方（冷却10秒）。\n\n精灵与闪光犬自古交好，精灵驯服它的成功率翻倍。 -->
+  <LP_BlinkDog.description>A pale golden, clever and friendly canine that can teleport short distances. Never attacks people on its own and fights back when attacked; after being hit there is a 30% chance it blinks 3-6 cells away from the attacker (cooldown 10 seconds).\n\nElves and blink dogs have been friends since ancient times; elves have double the chance to tame one.</LP_BlinkDog.description>
+  <!-- 闪光犬肉 -->
+  <LP_BlinkDog.race.meatLabel>blink dog meat</LP_BlinkDog.race.meatLabel>
+</LanguageData>

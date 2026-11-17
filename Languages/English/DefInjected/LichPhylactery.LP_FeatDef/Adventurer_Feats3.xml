@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 斩击者 -->
+  <LP_Feat_Slasher.label>slasher</LP_Feat_Slasher.label>
+  <!-- 刀刃划开的伤口又长又深。利器（砍、抓）伤害 ×1.2；命中 25% 让目标 3 秒内移速减半。斩击者、穿刺者、粉碎者三选一。附带力量或敏捷 +1。 -->
+  <LP_Feat_Slasher.description>The blade leaves long, deep wounds. Sharp (cut, scratch) damage ×1.2; hits have a 25% chance to halve the target's move speed for 3 seconds. One of slasher, piercer, crusher. Grants +1 Strength or Dexterity.</LP_Feat_Slasher.description>
+  <!-- 穿刺者 -->
+  <LP_Feat_Piercer.label>piercer</LP_Feat_Piercer.label>
+  <!-- 专找要害下手。刺击、咬、子弹、箭矢伤害 ×1.2；这类攻击 20% 造成双倍伤害。斩击者、穿刺者、粉碎者三选一。附带力量或敏捷 +1。 -->
+  <LP_Feat_Piercer.description>Always goes for vital spots. Stab, bite, bullet and arrow damage ×1.2; such attacks have a 20% chance to deal double damage. One of slasher, piercer, crusher. Grants +1 Strength or Dexterity.</LP_Feat_Piercer.description>
+  <!-- 粉碎者 -->
+  <LP_Feat_Crusher.label>crusher</LP_Feat_Crusher.label>
+  <!-- 一锤下去连人带甲砸飞。钝器伤害 ×1.2；命中 25% 把目标推开 1 格并眩晕 1 秒。斩击者、穿刺者、粉碎者三选一。附带力量或体质 +1。 -->
+  <LP_Feat_Crusher.description>One hammer blow sends man and armor flying. Blunt damage ×1.2; hits have a 25% chance to push the target 1 cell and stun for 1 second. One of slasher, piercer, crusher. Grants +1 Strength or Constitution.</LP_Feat_Crusher.description>
+  <!-- 法师杀手 -->
+  <LP_Feat_MageSlayer.label>mage slayer</LP_Feat_MageSlayer.label>
+  <!-- 专门对付施法者。对施法者（DND 职业、佩戴圣徽、心灵能力者、敌方法系兵种）伤害 ×1.3；打中正在施法的人会打断施法并让对方眩晕 1 秒；心智抗性 +25%。附带力量或敏捷 +1。 -->
+  <LP_Feat_MageSlayer.description>Specializes in fighting spellcasters. ×1.3 damage against casters (DND classes, holy symbol wearers, psycasters, enemy caster units); hitting someone who is casting interrupts the cast and stuns them for 1 second; mind resistance +25%. Grants +1 Strength or Dexterity.</LP_Feat_MageSlayer.description>
+  <!-- 防御决斗者 -->
+  <LP_Feat_DefensiveDuelist.label>defensive duelist</LP_Feat_DefensiveDuelist.label>
+  <!-- 剑尖一挑就把来招卸开。近战闪避 +15，近战命中 ×1.05。附带敏捷 +1。 -->
+  <LP_Feat_DefensiveDuelist.description>A flick of the blade turns the incoming blow aside. Melee dodge +15, melee hit chance ×1.05. Grants +1 Dexterity.</LP_Feat_DefensiveDuelist.description>
+  <!-- 武器大师 -->
+  <LP_Feat_WeaponMaster.label>weapon master</LP_Feat_WeaponMaster.label>
+  <!-- 什么兵器到手里都顺手。近战命中 ×1.1，射击精度 ×1.1，瞄准时间 ×0.9。附带力量或敏捷 +1。 -->
+  <LP_Feat_WeaponMaster.description>Any weapon feels right in your hands. Melee hit chance ×1.1, shooting accuracy ×1.1, aiming time ×0.9. Grants +1 Strength or Dexterity.</LP_Feat_WeaponMaster.description>
+  <!-- 耐久 -->
+  <LP_Feat_Durable.label>durable</LP_Feat_Durable.label>
+  <!-- 伤得再重也能很快站起来。伤口愈合 ×1.5，休息恢复 ×1.3，疼痛休克阈值 +10%。附带体质 +1。 -->
+  <LP_Feat_Durable.description>No matter how bad the wounds, back on your feet quickly. Wound healing ×1.5, rest recovery ×1.3, pain shock threshold +10%. Grants +1 Constitution.</LP_Feat_Durable.description>
+  <!-- 妖精之触 -->
+  <LP_Feat_FeyTouched.label>fey touched</LP_Feat_FeyTouched.label>
+  <!-- 和妖精荒野打过交道。获得能力“迷踪步”（原版长跳：跳到远处的一格，冷却照原版）；心智抗性 +20%，社交影响 ×1.1。附带智力、感知或魅力 +1。 -->
+  <LP_Feat_FeyTouched.description>Has dealt with the Feywild. Gains the ability "Misty step" (vanilla longjump: jump to a distant cell, cooldown as vanilla); mind resistance +20%, social impact ×1.1. Grants +1 Intelligence, Wisdom or Charisma.</LP_Feat_FeyTouched.description>
+</LanguageData>

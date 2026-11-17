@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.168.0 人格武器：附魔台窗口里给 +5 以上的武器「唤醒人格」（Source/SentientWeapon.cs）。
+     每种人格是一个 hediffClass=LichPhylactery.Hediff_SentientBond 的状态，挂在羁绊者身上：
+     阶段 0 分离（没拿着，无加成），1 初醒、2 苏醒（共鸣 30）、3 升华（共鸣 100），只在拿着时生效。
+     新加人格：照抄一个，换 defName / 文字 / 阶段加成即可，代码会自动收进随机池。 -->
+<Defs>
+  <HediffDef Name="LP_PersonaBase" Abstract="True">
+    <hediffClass>LichPhylactery.Hediff_SentientBond</hediffClass>
+    <defaultLabelColor>(0.75, 0.6, 1)</defaultLabelColor>
+    <isBad>false</isBad>
+    <initialSeverity>0.5</initialSeverity>
+    <everCurableByItem>false</everCurableByItem>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <keepOnBodyPartRestoration>true</keepOnBodyPartRestoration>
+  </HediffDef>
+
+  <HediffDef ParentName="LP_PersonaBase">
+    <defName>LP_Persona_Bloodthirsty</defName>
+    <label>嗜血人格</label>
+    <description>武器里的意识渴望鲜血，会在战斗中低声催促持有者再砍一刀。拿着它近战伤害更高、出手更准。</description>
+    <stages>
+      <li><minSeverity>0</minSeverity><label>分离</label></li>
+      <li><minSeverity>1</minSeverity><label>初醒</label><statFactors><MeleeDamageFactor>1.1</MeleeDamageFactor></statFactors><statOffsets><MeleeHitChance>2</MeleeHitChance></statOffsets></li>
+      <li><minSeverity>2</minSeverity><label>苏醒</label><statFactors><MeleeDamageFactor>1.2</MeleeDamageFactor></statFactors><statOffsets><MeleeHitChance>4</MeleeHitChance></statOffsets></li>
+      <li><minSeverity>3</minSeverity><label>升华</label><statFactors><MeleeDamageFactor>1.3</MeleeDamageFactor></statFactors><statOffsets><MeleeHitChance>6</MeleeHitChance></statOffsets></li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef ParentName="LP_PersonaBase">
+    <defName>LP_Persona_Guardian</defName>
+    <label>守护人格</label>
+    <description>一个古老的守卫之魂，把持有者当作要用性命保护的人。拿着它受到的伤害更少，也更扛得住疼痛。</description>
+    <stages>
+      <li><minSeverity>0</minSeverity><label>分离</label></li>
+      <li><minSeverity>1</minSeverity><label>初醒</label><statFactors><IncomingDamageFactor>0.92</IncomingDamageFactor></statFactors><statOffsets><PainShockThreshold>0.05</PainShockThreshold></statOffsets></li>
+      <li><minSeverity>2</minSeverity><label>苏醒</label><statFactors><IncomingDamageFactor>0.85</IncomingDamageFactor></statFactors><statOffsets><PainShockThreshold>0.1</PainShockThreshold></statOffsets></li>
+      <li><minSeverity>3</minSeverity><label>升华</label><statFactors><IncomingDamageFactor>0.78</IncomingDamageFactor></statFactors><statOffsets><PainShockThreshold>0.15</PainShockThreshold></statOffsets></li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef ParentName="LP_PersonaBase">
+    <defName>LP_Persona_Sage</defName>
+    <label>智者人格</label>
+    <description>一位早已死去的学者把记忆封进了这件武器，喜欢在持有者耳边讲解一切。拿着它学得更快、研究更快。</description>
+    <stages>
+      <li><minSeverity>0</minSeverity><label>分离</label></li>
+      <li><minSeverity>1</minSeverity><label>初醒</label><statOffsets><GlobalLearningFactor>0.15</GlobalLearningFactor><ResearchSpeed>0.1</ResearchSpeed></statOffsets></li>
+      <li><minSeverity>2</minSeverity><label>苏醒</label><statOffsets><GlobalLearningFactor>0.3</GlobalLearningFactor><ResearchSpeed>0.2</ResearchSpeed></statOffsets></li>
+      <li><minSeverity>3</minSeverity><label>升华</label><statOffsets><GlobalLearningFactor>0.45</GlobalLearningFactor><ResearchSpeed>0.3</ResearchSpeed></statOffsets></li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef ParentName="LP_PersonaBase">
+    <defName>LP_Persona_Hunter</defName>
+    <label>猎手人格</label>
+    <description>耐心的猎手之魂，总能先一步看见猎物。拿着它射击更准、瞄准更快。</description>
+    <stages>
+      <li><minSeverity>0</minSeverity><label>分离</label></li>
+      <li><minSeverity>1</minSeverity><label>初醒</label><statFactors><AimingDelayFactor>0.92</AimingDelayFactor></statFactors><statOffsets><ShootingAccuracyPawn>3</ShootingAccuracyPawn></statOffsets></li>
+      <li><minSeverity>2</minSeverity><label>苏醒</label><statFactors><AimingDelayFactor>0.85</AimingDelayFactor></statFactors><statOffsets><ShootingAccuracyPawn>5</ShootingAccuracyPawn></statOffsets></li>
+      <li><minSeverity>3</minSeverity><label>升华</label><statFactors><AimingDelayFactor>0.78</AimingDelayFactor></statFactors><statOffsets><ShootingAccuracyPawn>8</ShootingAccuracyPawn></statOffsets></li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef ParentName="LP_PersonaBase">
+    <defName>LP_Persona_Swift</defName>
+    <label>迅影人格</label>
+    <description>一个停不下来的轻快灵魂，总在催持有者快点、再快点。拿着它跑得更快，近战更容易闪开。</description>
+    <stages>
+      <li><minSeverity>0</minSeverity><label>分离</label></li>
+      <li><minSeverity>1</minSeverity><label>初醒</label><statOffsets><MoveSpeed>0.3</MoveSpeed><MeleeDodgeChance>4</MeleeDodgeChance></statOffsets></li>
+      <li><minSeverity>2</minSeverity><label>苏醒</label><statOffsets><MoveSpeed>0.5</MoveSpeed><MeleeDodgeChance>8</MeleeDodgeChance></statOffsets></li>
+      <li><minSeverity>3</minSeverity><label>升华</label><statOffsets><MoveSpeed>0.8</MoveSpeed><MeleeDodgeChance>12</MeleeDodgeChance></statOffsets></li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef ParentName="LP_PersonaBase">
+    <defName>LP_Persona_Fury</defName>
+    <label>狂怒人格</label>
+    <description>一团被封住的怒火，一见敌人就沸腾起来。拿着它近战出手更快。</description>
+    <stages>
+      <li><minSeverity>0</minSeverity><label>分离</label></li>
+      <li><minSeverity>1</minSeverity><label>初醒</label><statFactors><MeleeCooldownFactor>0.92</MeleeCooldownFactor></statFactors><statOffsets><MeleeHitChance>1</MeleeHitChance></statOffsets></li>
+      <li><minSeverity>2</minSeverity><label>苏醒</label><statFactors><MeleeCooldownFactor>0.85</MeleeCooldownFactor></statFactors><statOffsets><MeleeHitChance>2</MeleeHitChance></statOffsets></li>
+      <li><minSeverity>3</minSeverity><label>升华</label><statFactors><MeleeCooldownFactor>0.78</MeleeCooldownFactor></statFactors><statOffsets><MeleeHitChance>3</MeleeHitChance></statOffsets></li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef ParentName="LP_PersonaBase">
+    <defName>LP_Persona_Serene</defName>
+    <label>静谧人格</label>
+    <description>一个沉静的修行者之魂，像一汪不起波纹的水。拿着它心智更稳，更难崩溃，也更能抵御精神影响。</description>
+    <stages>
+      <li><minSeverity>0</minSeverity><label>分离</label></li>
+      <li><minSeverity>1</minSeverity><label>初醒</label><statOffsets><MentalBreakThreshold>-0.03</MentalBreakThreshold><LP_MindResist>0.1</LP_MindResist></statOffsets></li>
+      <li><minSeverity>2</minSeverity><label>苏醒</label><statOffsets><MentalBreakThreshold>-0.06</MentalBreakThreshold><LP_MindResist>0.2</LP_MindResist></statOffsets></li>
+      <li><minSeverity>3</minSeverity><label>升华</label><statOffsets><MentalBreakThreshold>-0.09</MentalBreakThreshold><LP_MindResist>0.3</LP_MindResist></statOffsets></li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef ParentName="LP_PersonaBase">
+    <defName>LP_Persona_Regal</defName>
+    <label>王者人格</label>
+    <description>曾经的君王之魂，傲慢而有威严，持有者说话时仿佛有它在背后撑腰。拿着它社交影响和谈判能力更强。</description>
+    <stages>
+      <li><minSeverity>0</minSeverity><label>分离</label></li>
+      <li><minSeverity>1</minSeverity><label>初醒</label><statOffsets><SocialImpact>0.1</SocialImpact><NegotiationAbility>0.1</NegotiationAbility></statOffsets></li>
+      <li><minSeverity>2</minSeverity><label>苏醒</label><statOffsets><SocialImpact>0.2</SocialImpact><NegotiationAbility>0.2</NegotiationAbility></statOffsets></li>
+      <li><minSeverity>3</minSeverity><label>升华</label><statOffsets><SocialImpact>0.3</SocialImpact><NegotiationAbility>0.3</NegotiationAbility></statOffsets></li>
+    </stages>
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>LP_PersonaBond</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_PersonaBond</workerClass>
+    <stages>
+      <li><label>人格武器相伴</label><description>我的武器在和我说话。有它在手，我从不孤单。</description><baseMoodEffect>3</baseMoodEffect></li>
+      <li><label>人格武器共鸣</label><description>我和武器里的那个意识越来越合拍了，我们像一个人在战斗。</description><baseMoodEffect>5</baseMoodEffect></li>
+      <li><label>人格武器升华</label><description>它已经是我灵魂的一部分。</description><baseMoodEffect>7</baseMoodEffect></li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_PersonaBondBroken</defName>
+    <durationDays>3</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages><li><label>人格羁绊断裂</label><description>那个一直在我耳边说话的声音不再理我了。</description><baseMoodEffect>-4</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <!-- 1.170.0 封魂入器 -->
+  <ThoughtDef>
+    <defName>LP_PersonaTorment</defName>
+    <workerClass>LichPhylactery.ThoughtWorker_PersonaTorment</workerClass>
+    <stages><li><label>器灵在哀嚎</label><description>封在我武器里的那个灵魂一直在哀嚎求饶。每次挥动它，那声音都让我精神一振。</description><baseMoodEffect>5</baseMoodEffect></li></stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>LP_EnemySoulTormented</defName>
+    <durationDays>15</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages><li><label>仇人在受折磨</label><description>那个我恨透了的家伙，灵魂被封进了武器，永世不得解脱。真解气。</description><baseMoodEffect>8</baseMoodEffect></li></stages>
+  </ThoughtDef>
+</Defs>

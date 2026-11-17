@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 六臂 -->
+  <LP_SixArms.label>six arms</LP_SixArms.label>
+  <!-- 六条手臂一起干活，操作额外提高。每只能用的额外手操作+10%，四只都在时+40%。额外手臂长在两侧肩膀上：一侧的肩膀没了或换成义肢，那一侧的两只额外手也就没了，加成跟着降。 -->
+  <LP_SixArms.description>Six arms working together give extra manipulation. Each usable extra hand gives manipulation +10%, +40% with all four. The extra arms grow on both shoulders: if one side's shoulder is lost or replaced with a prosthetic, that side's two extra hands are gone too and the bonus drops accordingly.</LP_SixArms.description>
+  <!-- 被缠住 -->
+  <LP_Constricted.label>constricted</LP_Constricted.label>
+  <!-- 被蛇尾死死缠住，动弹不得，每秒都在受挤压。 -->
+  <LP_Constricted.description>Wrapped tight by a serpent tail, unable to move, being crushed every second.</LP_Constricted.description>
+  <!-- 缠绕中 -->
+  <LP_Constricting.label>constricting</LP_Constricting.label>
+  <!-- 正用蛇尾缠着敌人，暂时不能移动。 -->
+  <LP_Constricting.description>Constricting an enemy with the serpent tail; can't move for now.</LP_Constricting.description>
+</LanguageData>

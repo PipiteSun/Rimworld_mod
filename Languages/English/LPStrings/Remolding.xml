@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（Remolding.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>重塑池12格内可用生肉不足。</zh><en>Not enough raw meat available within 12 cells of the reshaping pool.</en></s>
+  <s><zh>重塑池12格内可用钢铁不足。</zh><en>Not enough steel available within 12 cells of the reshaping pool.</en></s>
+  <s><zh>重塑池12格内可用玻璃钢不足。</zh><en>Not enough plasteel available within 12 cells of the reshaping pool.</en></s>
+  <s><zh>请在地图上选择造物进行重塑。</zh><en>Please select a construct on the map to reshape.</en></s>
+  <s><zh>需要一座空闲、可到达的死灵重塑池。</zh><en>Needs an idle, reachable necromantic reshaping pool.</en></s>
+  <s><zh>需要殖民地已建成的重塑池。</zh><en>Needs a completed reshaping pool in the colony.</en></s>
+  <s><zh>造物必须在同地图、能够行动且不处于精神崩溃。</zh><en>The construct must be on the same map, able to act and not having a mental break.</en></s>
+  <s><zh>重塑池已被其他造物占用。</zh><en>The reshaping pool is occupied by another construct.</en></s>
+  <s><zh>需要有效统御和主人精神力。</zh><en>Needs valid command and master's psyfocus.</en></s>
+  <s><zh>配置没有变化。</zh><en>The configuration hasn't changed.</en></s>
+  <s><zh>造物无法到达重塑池。</zh><en>The construct can't reach the reshaping pool.</en></s>
+  <s><zh>重塑池已被预订。</zh><en>The reshaping pool is reserved.</en></s>
+  <s><zh>造物需要先走到重塑池入口。</zh><en>The construct must first walk to the reshaping pool's entrance.</en></s>
+  <s><zh>入池失败，材料已退回。</zh><en>Entering the pool failed; materials refunded.</en></s>
+  <s><zh>已完成死灵重塑。</zh><en> completed necromantic reshaping.</en></s>
+  <s><zh>已离开重塑池，保留原配置；已投入材料不返还。</zh><en> left the reshaping pool keeping the original configuration; invested materials aren't refunded.</en></s>
+  <s><zh>空闲：选择造物并配置重塑。</zh><en>Idle: select a construct and configure reshaping.</en></s>
+  <s><zh>等待 </zh><en>Waiting for </en></s>
+  <s><zh> 入池；尚未扣除材料。</zh><en> to enter the pool; materials not yet deducted.</en></s>
+  <s><zh>重塑中：</zh><en>Reshaping: </en></s>
+  <s><zh>\n进度 </zh><en>\nProgress </en></s>
+  <s><zh>；剩余 </zh><en>; remaining </en></s>
+  <s><zh> 小时。\n</zh><en> hours.\n</en></s>
+  <s><zh>统御与维护继续生效。</zh><en>Command and upkeep continue to apply.</en></s>
+  <s><zh>统御失效，进度暂停。</zh><en>Command lost; progress paused.</en></s>
+  <s><zh>取消重塑并出池</zh><en>Cancel reshaping and leave the pool</en></s>
+  <s><zh>保留原角色和原配置，已消耗材料不返还。</zh><en>Keeps the original character and configuration; consumed materials aren't refunded.</en></s>
+  <s><zh>取消入池</zh><en>Cancel entering the pool</en></s>
+  <s><zh>取消尚未开始的重塑，不扣除材料。</zh><en>Cancel reshaping that hasn't started; no materials deducted.</en></s>
+  <s><zh>配置死灵重塑</zh><en>Configure necromantic reshaping</en></s>
+  <s><zh>选择已有造物，修改材料、兴趣与专长。</zh><en>Choose an existing construct and change materials, passions and specialty.</en></s>
+  <s><zh>地图上没有可用造物</zh><en>No usable constructs on the map</en></s>
+</LPStrings>

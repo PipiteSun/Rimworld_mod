@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 心智抗性 -->
+  <LP_MindResist.label>mind resistance</LP_MindResist.label>
+  <!-- 抵抗心灵震爆、寄生、魅惑等心智类效果的概率；同时按比例减弱心灵嗡鸣等心灵类负面心情。我方单位被原版或 VPE 灵能强加的失控（如仓皇逃窜、狂暴）也按这个概率抵抗；没抵抗住时，持续时间按同样比例缩短（最多缩短 75%）。 -->
+  <LP_MindResist.description>Chance to resist mind effects such as psychic blasts, parasites and charm; also proportionally weakens negative psychic moods such as psychic drone. Loss-of-control states forced on our units by vanilla or VPE psycasts (such as fleeing in terror, berserk) are also resisted with this chance; if not resisted, the duration is shortened by the same proportion (up to 75% shorter).</LP_MindResist.description>
+</LanguageData>

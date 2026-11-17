@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（AdventureBoard.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>低</zh><en>low</en></s>
+  <s><zh>中</zh><en>medium</en></s>
+  <s><zh>高</zh><en>high</en></s>
+  <s><zh>致命</zh><en>deadly</en></s>
+  <s><zh>无名</zh><en>nameless</en></s>
+  <s><zh>小有名气</zh><en>somewhat known</en></s>
+  <s><zh>知名</zh><en>known</en></s>
+  <s><zh>威名远扬</zh><en>renowned</en></s>
+  <s><zh>传奇</zh><en>legendary</en></s>
+  <s><zh> 银</zh><en> silver</en></s>
+  <s><zh>名声 +</zh><en>renown +</en></s>
+  <s><zh>魔力湖泊好感 +10～15</zh><en>Mana Lake goodwill +10-15</en></s>
+  <s><zh>参与者冒险者经验约 </zh><en>about this much adventurer XP for participants: </en></s>
+  <s><zh>湖畔委托·</zh><en>Lakeside job: </en></s>
+  <s><zh>委托方：魔力湖泊（湖民请冒险者帮忙，完成后好感 +10～15，另给一枚一阶湖印结晶）。\n\n</zh><en>Client: Mana Lake (lakefolk ask adventurers for help; on completion goodwill +10-15, plus a tier 1 lake seal crystal).\n\n</en></s>
+  <s><zh>\n\n地点：离殖民地约 </zh><en>\n\nLocation: about </en></s>
+  <s><zh> 格（接下后出现在世界地图上，</zh><en> cells from the colony (appears on the world map once accepted; complete within </en></s>
+  <s><zh> 天内完成，失败名声 -</zh><en> days, failure renown -</en></s>
+  <s><zh>）\n推荐等级：</zh><en>)\nRecommended level: </en></s>
+  <s><zh>　危险度：</zh><en>  Danger: </en></s>
+  <s><zh>\n敌人：</zh><en>\nEnemies: </en></s>
+  <s><zh>\n威胁点数：</zh><en>\nThreat points: </en></s>
+  <s><zh>\n报酬：</zh><en>\nReward: </en></s>
+  <s><zh>冒险委托板已在设置里关闭</zh><en>The adventure board is disabled in settings</en></s>
+  <s><zh>委托已经下架</zh><en>The job has been taken down</en></s>
+  <s><zh>同时最多接 </zh><en>At most </en></s>
+  <s><zh> 条委托</zh><en> jobs at once</en></s>
+  <s><zh>没有殖民地</zh><en>No colony</en></s>
+  <s><zh>委托的地点已经找不到了，换一条委托试试。</zh><en>The job's location can no longer be found; try another job.</en></s>
+  <s><zh>接下委托：</zh><en>Job accepted: </en></s>
+  <s><zh>探索公告板上的委托已经接下，地点标在世界地图上，</zh><en>The job on the adventurers' notice board has been accepted, the location is marked on the world map; complete within </en></s>
+  <s><zh> 天内完成。\n\n</zh><en> days.\n\n</en></s>
+  <s><zh> 天期限已到。</zh><en> day deadline has passed.</en></s>
+  <s><zh>委托地点已经消失。</zh><en>The job location has disappeared.</en></s>
+  <s><zh>委托完成：</zh><en>Job complete: </en></s>
+  <s><zh>探索公告板上的委托「</zh><en>The job "</en></s>
+  <s><zh>」完成了</zh><en>" on the adventurers' notice board is complete</en></s>
+  <s><zh>（俘获首领，报酬 ×1.25）</zh><en> (leader captured, reward ×1.25)</en></s>
+  <s><zh>。\n\n报酬（空投送到殖民地）：</zh><en>.\n\nReward (sent to the colony by drop pod):</en></s>
+  <s><zh>\n冒险者经验：</zh><en>\nAdventurer XP: </en></s>
+  <s><zh> 各约 </zh><en> about </en></s>
+  <s><zh> 点</zh><en> each</en></s>
+  <s><zh>没有参与者</zh><en>no participants</en></s>
+  <s><zh>\n殖民地名声 +</zh><en>\nColony renown +</en></s>
+  <s><zh>（现在 </zh><en> (now </en></s>
+  <s><zh>，</zh><en>, </en></s>
+  <s><zh>委托失败：</zh><en>Job failed: </en></s>
+  <s><zh>」失败了，殖民地名声 -</zh><en>" failed, colony renown -</en></s>
+  <s><zh>，剩余 </zh><en>, remaining </en></s>
+  <s><zh>[DND边缘大陆] 冒险委托生成敌人失败：</zh><en>[DND Rimlands] Adventure job failed to generate enemies: </en></s>
+  <s><zh>地点已经消失</zh><en>location has disappeared</en></s>
+  <s><zh>已到达，还有敌人</zh><en>arrived, enemies remain</en></s>
+  <s><zh>已到达</zh><en>arrived</en></s>
+  <s><zh>前往世界地图上的「</zh><en>Head to "</en></s>
+  <s><zh>」</zh><en>" on the world map</en></s>
+  <s><zh>「血手」</zh><en>"Bloodhand"</en></s>
+  <s><zh>「独眼」</zh><en>"One-Eye"</en></s>
+  <s><zh>「灰袍」</zh><en>"Greycloak"</en></s>
+  <s><zh>「毒牙」</zh><en>"Venomfang"</en></s>
+  <s><zh>「铁颚」</zh><en>"Ironjaw"</en></s>
+  <s><zh>「无名者」</zh><en>"the Nameless"</en></s>
+  <s><zh>通缉犯</zh><en>outlaw</en></s>
+  <s><zh>敌对派系</zh><en>hostile faction</en></s>
+  <s><zh>，带职业，约 </zh><en>, with a class, about level </en></s>
+  <s><zh> 级）和护卫</zh><en>) and guards</en></s>
+  <s><zh>通缉犯已倒下：俘获（关进囚室）报酬 ×1.25，或者击杀</zh><en>The outlaw is down: capture (put in a prison cell) for reward ×1.25, or kill</en></s>
+  <s><zh>围攻的</zh><en> besieging </en></s>
+  <s><zh>被困的冒险者已经死了</zh><en>The trapped adventurer is dead</en></s>
+  <s><zh>把冒险者带回殖民地</zh><en>Bring the adventurer back to the colony</en></s>
+  <s><zh>救援成功：「</zh><en>Rescue successful: "</en></s>
+  <s><zh>被救回的冒险者向你道谢。要招募他加入殖民地，还是让他按委托付一笔赏金（当前报酬的一半）后自行离开？</zh><en>The rescued adventurer thanks you. Recruit them into the colony, or let them pay a bounty as per the job (half the current reward) and leave on their own?</en></s>
+  <s><zh>招募 </zh><en>Recruit </en></s>
+  <s><zh>他会加入殖民地。</zh><en>They will join the colony.</en></s>
+  <s><zh>领赏（+</zh><en>Take the bounty (+</en></s>
+  <s><zh>他会在养好伤后离开。</zh><en>They will leave once their wounds are healed.</en></s>
+  <s><zh>加入了殖民地。</zh><en> joined the colony.</en></s>
+  <s><zh>的看守</zh><en>guards of </en></s>
+  <s><zh>守着遗物的</zh><en> guarding the relic</en></s>
+  <s><zh>遗物已经毁了</zh><en>The relic has been destroyed</en></s>
+  <s><zh>把遗物带回殖民地</zh><en>Bring the relic back to the colony</en></s>
+  <s><zh>，以及亡灵之源</zh><en>, and the undead source</en></s>
+  <s><zh>摧毁亡灵之源</zh><en>Destroy the undead source</en></s>
+  <s><zh>和本色护卫</zh><en> and native guards</en></s>
+  <s><zh>和</zh><en> and </en></s>
+  <s><zh>[DND边缘大陆] 冒险委托出错：</zh><en>[DND Rimlands] Adventure job error: </en></s>
+  <s><zh>[DND边缘大陆] 生成委托地点出错：</zh><en>[DND Rimlands] Error generating job location: </en></s>
+  <s><zh>每张地图只能有一块探索公告板</zh><en>Only one adventurers' notice board per map</en></s>
+  <s><zh>查看委托</zh><en>View jobs</en></s>
+  <s><zh>打开探索公告板：查看当前 3 条委托、接下委托、看已接委托的进度和殖民地名声。</zh><en>Open the adventurers' notice board: view the current 3 jobs, accept jobs, check progress on accepted jobs and the colony's renown.</en></s>
+  <s><zh>委托 </zh><en>Jobs </en></s>
+  <s><zh> 条，已接 </zh><en>, accepted </en></s>
+  <s><zh>，名声 </zh><en>, renown </en></s>
+  <s><zh>探索公告板</zh><en>adventurer board</en></s>
+  <s><zh>殖民地名声 </zh><en>Colony renown </en></s>
+  <s><zh>名声：无名 0 / 小有名气 20 / 知名 45 / 威名远扬 70 / 传奇 90。\n完成委托 +2～+6（按危险度），失败 -3。名声越高，危险度高的委托越多、报酬越好；「传奇」时偶尔出现讨伐传奇魔物的委托。</zh><en>Renown: nameless 0 / somewhat known 20 / known 45 / renowned 70 / legendary 90.\nCompleting a job +2 to +6 (by danger), failing -3. The higher the renown, the more high-danger jobs and the better the rewards; at "legendary", jobs to slay legendary monsters occasionally appear.</en></s>
+  <s><zh>殖民地冒险者等级最高 3 人平均 </zh><en>Average adventurer level of the colony's top 3: </en></s>
+  <s><zh> 级。委托每 </zh><en>. Jobs change every </en></s>
+  <s><zh> 天换一批（约 </zh><en> days (in about </en></s>
+  <s><zh> 天后），没接的到时消失；同时最多接 </zh><en> days), and unaccepted ones vanish then; at most </en></s>
+  <s><zh> 条，接下后 </zh><en> accepted at once, to be completed within </en></s>
+  <s><zh> 天内完成。</zh><en> days of accepting.</en></s>
+  <s><zh>冒险委托板已在设置（冒险者分组）里关闭。</zh><en>The adventure board is disabled in settings (Adventurer group).</en></s>
+  <s><zh>当前委托</zh><en>Current jobs</en></s>
+  <s><zh>现在没有委托。</zh><en>No jobs right now.</en></s>
+  <s><zh>已接委托（</zh><en>Accepted jobs (</en></s>
+  <s><zh>还没有接下委托。</zh><en>No jobs accepted yet.</en></s>
+  <s><zh>危险 </zh><en>Danger </en></s>
+  <s><zh>推荐等级 </zh><en>Recommended level </en></s>
+  <s><zh> · 距离约 </zh><en> · about </en></s>
+  <s><zh> 格 · 威胁 </zh><en> cells away · threat </en></s>
+  <s><zh> · 剩余 </zh><en> · remaining </en></s>
+  <s><zh>敌人：</zh><en>Enemies: </en></s>
+  <s><zh>报酬：</zh><en>Reward: </en></s>
+  <s><zh>确定接受？</zh><en>Accept?</en></s>
+  <s><zh>接受</zh><en>Accept</en></s>
+  <s><zh>点两次确认</zh><en>Click twice to confirm</en></s>
+  <s><zh>定位地点</zh><en>Locate site</en></s>
+  <s><zh>定位目标</zh><en>Locate target</en></s>
+  <s><zh>冒险委托板</zh><en>Adventure board</en></s>
+  <s><zh>1.134.0：建筑「探索公告板」（杂项，木材或石料 50）每几天贴出 3 条委托（清剿怪物巢穴、讨伐通缉犯、救援被困冒险者、寻回失物、调查闹鬼废墟），显示推荐等级和危险度；接下后世界地图上出现地点，7 天内完成。关闭后不再刷新，已接的照常进行。</zh><en>1.134.0: the building "adventurers' notice board" (Misc, 50 wood or stone) posts 3 jobs every few days (clear monster lairs, hunt outlaws, rescue trapped adventurers, recover lost items, investigate haunted ruins), showing recommended level and danger; once accepted, a site appears on the world map, to be completed within 7 days. When off, it stops refreshing; accepted jobs continue as usual.</en></s>
+  <s><zh>　刷新间隔：每 </zh><en>  Refresh interval: every </en></s>
+  <s><zh>　难度倍率：×</zh><en>  Difficulty multiplier: ×</en></s>
+</LPStrings>

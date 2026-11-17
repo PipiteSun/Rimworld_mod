@@ -14,7 +14,7 @@ namespace LichPhylactery {
    if(coreGene==null)coreGene=DefDatabase<GeneDef>.GetNamedSilentFail("LP_FireGiantCore");
    return coreGene!=null && pawn.genes.HasActiveGene(coreGene);
   }
-  // 1.30.0：穿衣规则改走 GiantGear（GiantApparelExtension）；这张表只剩“熔火锻炉出品的衣甲”的含义（力能龙宝库计价用）。
+  // 1.30.0：穿衣规则改走 GiantGear（GiantApparelExtension）；这张表只剩“熔火锻炉出品的衣甲”的含义。
   public static bool ForgeApparel(ThingDef apparel) => apparel?.defName=="LP_FireGiantTunic"; // 1.143.0：熔铁/熔核装备已移除
   public static bool GiantWeapon(ThingDef weapon) => false; // 1.143.0：火巨人熔炉重锤、熔核破城锤已移除
   public static void ReleaseWeapon(Pawn pawn) {
@@ -83,8 +83,8 @@ namespace LichPhylactery {
  public static class FireGiantWeaponEligibility {
   static System.Reflection.MethodBase TargetMethod() => AccessTools.GetDeclaredMethods(typeof(EquipmentUtility)).Find(m=>m.Name==nameof(EquipmentUtility.CanEquip) && m.GetParameters().Length>=3 && m.GetParameters()[2].ParameterType==typeof(string).MakeByRefType());
   static void Postfix(Thing __0,Pawn __1,ref string __2,ref bool __result) {
-   if(FireGiant.GiantWeapon(__0?.def) && !FireGiant.Active(__1)){__result=false;__2="只有火巨人能够使用这件武器。";}
-   else if(GiantGear.Weapon(__0?.def) && !GiantKin.Is(__1)){__result=false;__2="只有巨人能够使用这件武器。";}
+   if(FireGiant.GiantWeapon(__0?.def) && !FireGiant.Active(__1)){__result=false;__2="只有火巨人能够使用这件武器。".Loc();}
+   else if(GiantGear.Weapon(__0?.def) && !GiantKin.Is(__1)){__result=false;__2="只有巨人能够使用这件武器。".Loc();}
    else if(__result && __0?.def!=null && __0.def.IsApparel && !GiantGear.CanWear(__1,__0.def)){__result=false;__2=GiantGear.WearReason(__1,__0.def);}
   }
  }

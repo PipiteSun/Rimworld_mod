@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- <color=#E08A3A>神力灌注（班恩）</color> -->
+  <LP_DivineInfusion.degreeDatas.colorE08A3Acolor-0.label>&lt;color=#E08A3A&gt;Divine Infusion (Bane)&lt;/color&gt;</LP_DivineInfusion.degreeDatas.colorE08A3Acolor-0.label>
+  <!-- [PAWN_nameDef]身上流着暴君班恩的神力（暴君之仆）：心智抗性+20%；8格内的同伴不会因为有人倒下而逃跑；近战命中15%让目标畏惧5秒（移速×0.7、不能开枪）。黄昏之年里触发率提高。 -->
+  <LP_DivineInfusion.degreeDatas.colorE08A3Acolor-0.description>[PAWN_nameDef] carries the divine power of Bane the tyrant (servant of the tyrant): mind resistance +20%; companions within 8 cells don't flee because someone fell; melee hits have a 15% chance to cow the target for 5 seconds (move speed ×0.7, can't fire). Trigger chance rises during the Year of Twilight.</LP_DivineInfusion.degreeDatas.colorE08A3Acolor-0.description>
+  <!-- <color=#E08A3A>神力灌注（苏尔特）</color> -->
+  <LP_DivineInfusion.degreeDatas.colorE08A3Acolor-1.label>&lt;color=#E08A3A&gt;Divine Infusion (Surtur)&lt;/color&gt;</LP_DivineInfusion.degreeDatas.colorE08A3Acolor-1.label>
+  <!-- [PAWN_nameDef]身上流着火巨人之王苏尔特的神力（余烬之血）：受到的火焰伤害减半，不会着火；近战命中附带4点烧伤，10%点燃目标。黄昏之年里烧伤更重。 -->
+  <LP_DivineInfusion.degreeDatas.colorE08A3Acolor-1.description>[PAWN_nameDef] carries the divine power of Surtur, king of fire giants (ember blood): fire damage taken halved, can't be ignited; melee hits add 4 burn damage with a 10% chance to ignite the target. Burns are heavier during the Year of Twilight.</LP_DivineInfusion.degreeDatas.colorE08A3Acolor-1.description>
+  <!-- <color=#E08A3A>神力灌注（伊尔斯维）</color> -->
+  <LP_DivineInfusion.degreeDatas.colorE08A3Acolor-2.label>&lt;color=#E08A3A&gt;Divine Infusion (Ilsensine)&lt;/color&gt;</LP_DivineInfusion.degreeDatas.colorE08A3Acolor-2.label>
+  <!-- [PAWN_nameDef]听得见伊尔斯维的低语（低语者）：心智抗性+30%，看得见灵能隐匿等隐身单位；被打倒时对攻击者心灵冲击，眩晕2秒。黄昏之年里眩晕更久。 -->
+  <LP_DivineInfusion.degreeDatas.colorE08A3Acolor-2.description>[PAWN_nameDef] can hear the whispers of Ilsensine (whisperer): mind resistance +30%, can see invisible units such as those in psionic concealment; when knocked down, psychically jolts the attacker, stunning for 2 seconds. Stuns last longer during the Year of Twilight.</LP_DivineInfusion.degreeDatas.colorE08A3Acolor-2.description>
+  <!-- <color=#E08A3A>神力灌注（提尔）</color> -->
+  <LP_DivineInfusion.degreeDatas.colorE08A3Acolor-3.label>&lt;color=#E08A3A&gt;Divine Infusion (Tyr)&lt;/color&gt;</LP_DivineInfusion.degreeDatas.colorE08A3Acolor-3.label>
+  <!-- [PAWN_nameDef]的双眼带着正义之神提尔的神力（律法之眼）：看穿隐形；对罪行多的目标（击杀人形、摘取器官、吃人肉累计≥5，巫妖和死灵造物直接算）伤害+10%。黄昏之年里加成更高。 -->
+  <LP_DivineInfusion.degreeDatas.colorE08A3Acolor-3.description>[PAWN_nameDef]'s eyes carry the divine power of Tyr, god of justice (eye of the law): sees through invisibility; +10% damage against targets with many crimes (humanlike kills, organ harvesting, cannibalism totaling ≥5; liches and necromantic constructs count outright). The bonus is higher during the Year of Twilight.</LP_DivineInfusion.degreeDatas.colorE08A3Acolor-3.description>
+  <!-- <color=#E08A3A>神力灌注（洛山达）</color> -->
+  <LP_DivineInfusion.degreeDatas.colorE08A3Acolor-4.label>&lt;color=#E08A3A&gt;Divine Infusion (Lathander)&lt;/color&gt;</LP_DivineInfusion.degreeDatas.colorE08A3Acolor-4.label>
+  <!-- [PAWN_nameDef]受晨曦之神洛山达眷顾（晨光之子）：每小时一处伤口愈合3点；对不死者伤害+25%；第一次倒地时30%立刻爬起并止血。黄昏之年里更容易爬起。 -->
+  <LP_DivineInfusion.degreeDatas.colorE08A3Acolor-4.description>[PAWN_nameDef] is favored by Lathander, god of dawn (child of the dawn): one wound heals 3 per hour; +25% damage against undead; the first time downed, 30% chance to get up at once and stop bleeding. Easier to get up during the Year of Twilight.</LP_DivineInfusion.degreeDatas.colorE08A3Acolor-4.description>
+  <!-- <color=#E08A3A>神力灌注（维拉基斯）</color> -->
+  <LP_DivineInfusion.degreeDatas.colorE08A3Acolor-5.label>&lt;color=#E08A3A&gt;Divine Infusion (Vlaakith)&lt;/color&gt;</LP_DivineInfusion.degreeDatas.colorE08A3Acolor-5.label>
+  <!-- [PAWN_nameDef]是巫妖女王维拉基斯的宠儿：星界跳跃冷却减半；受到致命伤时20%星界跳跃到8格外，躲开这一下。黄昏之年里更容易躲开。 -->
+  <LP_DivineInfusion.degreeDatas.colorE08A3Acolor-5.description>[PAWN_nameDef] is a favorite of the lich-queen Vlaakith: astral jump cooldown halved; when taking a lethal wound, 20% chance to astral jump 8 cells away and dodge the hit. Easier to dodge during the Year of Twilight.</LP_DivineInfusion.degreeDatas.colorE08A3Acolor-5.description>
+  <!-- <color=#E08A3A>神力灌注（塔洛斯）</color> -->
+  <LP_DivineInfusion.degreeDatas.colorE08A3Acolor-6.label>&lt;color=#E08A3A&gt;Divine Infusion (Talos)&lt;/color&gt;</LP_DivineInfusion.degreeDatas.colorE08A3Acolor-6.label>
+  <!-- [PAWN_nameDef]身上带着风暴之神塔洛斯的怒气（风暴之怒）：EMP 不会让自己眩晕；远程命中8%附带一次小 EMP。黄昏之年里触发率提高。 -->
+  <LP_DivineInfusion.degreeDatas.colorE08A3Acolor-6.description>[PAWN_nameDef] carries the wrath of Talos, god of storms (storm's fury): EMP doesn't stun them; ranged hits have an 8% chance to add a small EMP. Trigger chance rises during the Year of Twilight.</LP_DivineInfusion.degreeDatas.colorE08A3Acolor-6.description>
+  <!-- <color=#E08A3A>神力灌注（马拉尔）</color> -->
+  <LP_DivineInfusion.degreeDatas.colorE08A3Acolor-7.label>&lt;color=#E08A3A&gt;Divine Infusion (Malar)&lt;/color&gt;</LP_DivineInfusion.degreeDatas.colorE08A3Acolor-7.label>
+  <!-- [PAWN_nameDef]身上流着狩猎之神马拉尔的兽血：移速+10%，夜里不受黑暗影响；近战命中15%撕开伤口流血。黄昏之年里触发率提高。 -->
+  <LP_DivineInfusion.degreeDatas.colorE08A3Acolor-7.description>[PAWN_nameDef] carries the beast blood of Malar, god of the hunt: move speed +10%, unaffected by darkness at night; melee hits have a 15% chance to tear open a bleeding wound. Trigger chance rises during the Year of Twilight.</LP_DivineInfusion.degreeDatas.colorE08A3Acolor-7.description>
+  <!-- 神力灌注 -->
+  <LP_DivineInfusion.modExtensions.0.kind>divine infusion</LP_DivineInfusion.modExtensions.0.kind>
+</LanguageData>

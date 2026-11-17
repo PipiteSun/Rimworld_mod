@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 贝希尔角 -->
+  <LP_BehirHorn.label>behir horn</LP_BehirHorn.label>
+  <!-- 贝希尔头上的角，摸上去会麻手。可以代替金属做刀剑（锋利 ×1.2）。 -->
+  <LP_BehirHorn.description>A horn from a behir's head that tingles to the touch. Can replace metal for making blades (sharpness ×1.2).</LP_BehirHorn.description>
+  <!-- 贝希尔皮 -->
+  <LP_Leather_Behir.label>behir hide</LP_Leather_Behir.label>
+  <!-- 贝希尔的蓝色鳞皮，又韧又能挡电。 -->
+  <LP_Leather_Behir.description>The blue scaly hide of a behir, tough and resistant to electricity.</LP_Leather_Behir.description>
+  <!-- 眼魔主眼 -->
+  <LP_BeholderEye.label>beholder central eye</LP_BeholderEye.label>
+  <!-- 眼魔中央那只大眼，死后还在发出反魔法的微光。可以在附魔台做成反魔法护符。 -->
+  <LP_BeholderEye.description>The big central eye of a beholder, still giving off an antimagic glimmer after death. Can be made into an antimagic amulet at the enchanting table.</LP_BeholderEye.description>
+  <!-- 眼魔眼柄 -->
+  <LP_BeholderStalk.label>beholder eyestalk</LP_BeholderStalk.label>
+  <!-- 眼魔的一根眼柄，末端的小眼还在转。法师们拿它当抄写卷轴的高级原料，商人也愿意出好价钱。 -->
+  <LP_BeholderStalk.description>A beholder eyestalk, the little eye at the end still rolling. Wizards use it as a premium ingredient for copying scrolls, and traders pay a good price.</LP_BeholderStalk.description>
+  <!-- 反魔法护符 -->
+  <LP_AntiMagicAmulet.label>antimagic amulet</LP_AntiMagicAmulet.label>
+  <!-- 用眼魔主眼做的护符，挂在腰间。佩戴者 3 格内的敌人不能施法、护盾腰带失效——佩戴者自己也不能施法。 -->
+  <LP_AntiMagicAmulet.description>An amulet made from a beholder's central eye, hung at the waist. Enemies within 3 cells of the wearer can't cast and their shield belts fail; the wearer can't cast either.</LP_AntiMagicAmulet.description>
+  <!-- 灵魂宝石 -->
+  <LP_SoulGem.label>soul gem</LP_SoulGem.label>
+  <!-- 半巫妖眼窝里的宝石，里面关着它吞下的灵魂。巫妖用它：命匣一次获得 100 点献祭经验。别人摔碎它：放出灵魂，地图上的殖民者心情 +5（3 天）。 -->
+  <LP_SoulGem.description>A gem from a demilich's eye socket, holding the souls it devoured. A lich using it gives the phylactery 100 sacrifice XP at once. Anyone else smashing it releases the souls: colonists on the map get mood +5 (3 days).</LP_SoulGem.description>
+  <!-- 使用{0_label} -->
+  <LP_SoulGem.comps.CompUsable.useLabel>use {0_label}</LP_SoulGem.comps.CompUsable.useLabel>
+  <!-- 半巫妖头骨 -->
+  <LP_DemilichSkull.label>demilich skull</LP_DemilichSkull.label>
+  <!-- 半巫妖碎裂的头骨，还残留着它千年的负能量。巫妖把它献给命匣：命匣一次获得 300 点献祭经验。 -->
+  <LP_DemilichSkull.description>A demilich's shattered skull, still holding a thousand years of negative energy. A lich offering it to the phylactery gives the phylactery 300 sacrifice XP at once.</LP_DemilichSkull.description>
+  <!-- 把{0_label}献给命匣 -->
+  <LP_DemilichSkull.comps.CompUsable.useLabel>offer {0_label} to the phylactery</LP_DemilichSkull.comps.CompUsable.useLabel>
+  <!-- 眼魔巢穴情报 -->
+  <LP_BeholderLairMap.label>beholder lair intel</LP_BeholderLairMap.label>
+  <!-- 同盟的探子从幽暗地域带回的一张草图。读懂它，一座眼魔巢穴就会显露在世界地图上（30 天后消失）。 -->
+  <LP_BeholderLairMap.description>A sketch brought back from the Underdark by a league scout. Reading it reveals a beholder lair on the world map (disappears after 30 days).</LP_BeholderLairMap.description>
+  <!-- 读{0_label} -->
+  <LP_BeholderLairMap.comps.CompUsable.useLabel>read {0_label}</LP_BeholderLairMap.comps.CompUsable.useLabel>
+  <!-- 无尽墓穴情报 -->
+  <LP_TombMap.label>Endless Tomb intel</LP_TombMap.label>
+  <!-- 一张写满警告的古卷，标着一位半巫妖的坟墓。读懂它，无尽墓穴就会显露在世界地图上（30 天后消失）。 -->
+  <LP_TombMap.description>An ancient scroll full of warnings, marking a demilich's tomb. Reading it reveals the Endless Tomb on the world map (disappears after 30 days).</LP_TombMap.description>
+  <!-- 读{0_label} -->
+  <LP_TombMap.comps.CompUsable.useLabel>read {0_label}</LP_TombMap.comps.CompUsable.useLabel>
+</LanguageData>

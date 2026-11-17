@@ -120,7 +120,7 @@ namespace LichPhylactery {
    return true;
   }
   public static GiantGroup GroupOf(Pawn p)=>p==null?null:State?.migrations.FirstOrDefault(g=>g.pawns.Contains(p));
-  public static string KindLabel(string kind)=>kind=="ember"?"余烬氏族的火巨人":kind=="ogre"?"一家食人魔":kind=="frost"?"一支霜巨人战帮":kind=="storm"?"一位风暴巨人先知和两名水手":kind=="cloud"?"一支云巨人使节团":kind=="ettin"?"一个流浪的双头巨人":kind=="cyclops"?"一位赶着羊群的独眼巨人":"一位泰坦和追随者";
+  public static string KindLabel(string kind)=>kind=="ember"?"余烬氏族的火巨人".Loc():kind=="ogre"?"一家食人魔".Loc():kind=="frost"?"一支霜巨人战帮".Loc():kind=="storm"?"一位风暴巨人先知和两名水手".Loc():kind=="cloud"?"一支云巨人使节团".Loc():kind=="ettin"?"一个流浪的双头巨人".Loc():kind=="cyclops"?"一位赶着羊群的独眼巨人".Loc():"一位泰坦和追随者".Loc();
 
   // 扎营：篝火 + 每人一个睡袋，然后发讨食信。
   public static void OnCamp(GiantGroup g){
@@ -143,8 +143,8 @@ namespace LichPhylactery {
   }
   public static Letter_GiantMigration SendFoodLetter(GiantGroup g){
    var l=(Letter_GiantMigration)LetterMaker.MakeLetter(DefDatabase<LetterDef>.GetNamed("LP_GiantChoiceLetter"));
-   l.Label="饥饿的巨人";l.kind="food";l.group=g;l.lookTargets=new LookTargets(g.Alive.Cast<Thing>());l.relatedFaction=g.Origin;
-   l.Text=KindLabel(g.kind)+"在殖民地外扎了营，一共"+g.Alive.Count()+"人。他们饿坏了，派人来讨吃的：想要能吃两天的食物，营养值合计 "+g.need.ToString("0.#")+"（巨人的胃口大：火巨人、霜巨人等巨人×2，双头巨人两张嘴×4，泰坦×2.5，食人魔×1.6）"+(g.meatNeed>0?"，另外冬狼要生肉，营养值 "+g.meatNeed.ToString("0.#"):"")+"。"+(FineOnly(g)?"云巨人贵族很挑剔：只收精致饭或奢华饭（营养值照算）。":"")+"\n\n给：从储存区里扣除食物（"+(FineOnly(g)?"只扣精致饭、奢华饭":"优先干肉饼、简餐、生肉")+"），"+(g.Origin?.Name??"他们的派系")+"好感 +"+FedGoodwill+"，离开时会在营地留下礼物。\n不给：不会翻脸，但饿肚子的巨人晚上可能派人来偷粮。\n\n他们会在这里待一天，然后从地图另一边离开。";
+   l.Label="饥饿的巨人".Loc();l.kind="food";l.group=g;l.lookTargets=new LookTargets(g.Alive.Cast<Thing>());l.relatedFaction=g.Origin;
+   l.Text=KindLabel(g.kind)+"在殖民地外扎了营，一共".Loc()+g.Alive.Count()+"人。他们饿坏了，派人来讨吃的：想要能吃两天的食物，营养值合计 ".Loc()+g.need.ToString("0.#")+"（巨人的胃口大：火巨人、霜巨人等巨人×2，双头巨人两张嘴×4，泰坦×2.5，食人魔×1.6）".Loc()+(g.meatNeed>0?"，另外冬狼要生肉，营养值 ".Loc()+g.meatNeed.ToString("0.#"):"")+"。".Loc()+(FineOnly(g)?"云巨人贵族很挑剔：只收精致饭或奢华饭（营养值照算）。".Loc():"")+"\n\n给：从储存区里扣除食物（".Loc()+(FineOnly(g)?"只扣精致饭、奢华饭".Loc():"优先干肉饼、简餐、生肉".Loc())+"），".Loc()+(g.Origin?.Name??"他们的派系".Loc())+"好感 +".Loc()+FedGoodwill+"，离开时会在营地留下礼物。\n不给：不会翻脸，但饿肚子的巨人晚上可能派人来偷粮。\n\n他们会在这里待一天，然后从地图另一边离开。".Loc();
    Find.LetterStack.ReceiveLetter(l);return l;
   }
   // 殖民地储存区里的食物（不含尸体、药物、被禁止的），按优先顺序排好。
@@ -175,9 +175,9 @@ namespace LichPhylactery {
    if(g.meatNeed>0 && TakeFood(g.map,g.meatNeed,true)<=0)return false;
    if(TakeFood(g.map,g.need,false,FineOnly(g))<=0)return false;
    g.fed=true;g.answered=true;
-   Factions.ChangeGoodwillExact(g.Origin,FedGoodwill,"给饥饿的巨人送了食物");
+   Factions.ChangeGoodwillExact(g.Origin,FedGoodwill,"给饥饿的巨人送了食物".Loc());
    foreach(var p in g.Alive)p.needs?.food?.SetInitialLevel();
-   Messages.Message("巨人们收下了食物，大口吃了起来（好感 +"+FedGoodwill+"）。",new LookTargets(g.Alive.Cast<Thing>()),MessageTypeDefOf.PositiveEvent,false);
+   Messages.Message("巨人们收下了食物，大口吃了起来（好感 +".Loc()+FedGoodwill+"）。".Loc(),new LookTargets(g.Alive.Cast<Thing>()),MessageTypeDefOf.PositiveEvent,false);
    return true;
   }
   public static void Refuse(GiantGroup g){
@@ -201,7 +201,7 @@ namespace LichPhylactery {
     var job=JobMaker.MakeJob(JobDefOf.HaulToCell,target,drop);job.count=target.stackCount;job.haulMode=HaulMode.ToCellNonStorage;job.ignoreForbidden=true;
     p.jobs.StartJob(job,JobCondition.InterruptForced);g.stolen.Add(target);n++;
    }
-   if(n>0)Messages.Message("饥饿的巨人趁夜派了"+n+"人来偷粮！",new LookTargets(g.Alive.Cast<Thing>()),MessageTypeDefOf.NegativeEvent,false);
+   if(n>0)Messages.Message("饥饿的巨人趁夜派了".Loc()+n+"人来偷粮！".Loc(),new LookTargets(g.Alive.Cast<Thing>()),MessageTypeDefOf.NegativeEvent,false);
    return n;
   }
 
@@ -210,7 +210,7 @@ namespace LichPhylactery {
    if(g==null || g.left)return;g.left=true;var map=g.map;
    foreach(var t in g.campThings)if(t!=null && !t.Destroyed)t.Destroy();g.campThings.Clear();
    foreach(var t in g.stolen)if(t!=null && !t.Destroyed && t.Spawned && !t.IsInAnyStorage() && t.Position.InHorDistOf(g.camp,6))t.Destroy();
-   if(g.fed){var gifts=Gifts(g.kind);foreach(var t in gifts){if(t is Pawn pup)GenSpawn.Spawn(pup,CellFinder.RandomClosewalkCellNear(g.camp,map,3),map);else GenPlace.TryPlaceThing(t,g.camp,map,ThingPlaceMode.Near);}if(gifts.Count>0)Messages.Message("巨人们拔营离开，在营地留下了谢礼："+string.Join("、",gifts.Select(t=>t.LabelCap))+"。",new LookTargets(g.camp,map),MessageTypeDefOf.PositiveEvent,false);}
+   if(g.fed){var gifts=Gifts(g.kind);foreach(var t in gifts){if(t is Pawn pup)GenSpawn.Spawn(pup,CellFinder.RandomClosewalkCellNear(g.camp,map,3),map);else GenPlace.TryPlaceThing(t,g.camp,map,ThingPlaceMode.Near);}if(gifts.Count>0)Messages.Message("巨人们拔营离开，在营地留下了谢礼：".Loc()+string.Join("、".Loc(),gifts.Select(t=>t.LabelCap))+"。".Loc(),new LookTargets(g.camp,map),MessageTypeDefOf.PositiveEvent,false);}
    if(!g.stayAsked && g.kind!="storm")TryAskStay(g);
   }
   // ---------- 1.34.0 风暴巨人先知 ----------
@@ -218,14 +218,14 @@ namespace LichPhylactery {
   public static Letter_GiantMigration SendProphetLetter(GiantGroup g){
    var seer=Prophet(g);if(seer==null)return null;
    var l=(Letter_GiantMigration)LetterMaker.MakeLetter(DefDatabase<LetterDef>.GetNamed("LP_GiantChoiceLetter"));
-   l.Label="先知的预言";l.kind="prophet";l.group=g;l.lookTargets=new LookTargets(seer);l.relatedFaction=g.Origin;
-   l.Text=seer.LabelShort+"是一位风暴巨人先知，跟着他的两名水手说，他从海渊一路走来，是为了把看见的东西告诉该听的人。他不讨吃的，只想在殖民地外歇一天，和你们说几句话。\n\n听他说完：先知讲出他在风暴里看到的预兆。之后30天内，第一次点数≥1000的敌对袭击会提前1天预警（与竖琴手、风暴预兆叠加）。\n请他留下：如果殖民地已经有别的巨人、他在阶序里也能有个好位置（阶序心情开启），他有25%的可能留下；否则他会礼貌地拒绝，照常离开。";
+   l.Label="先知的预言".Loc();l.kind="prophet";l.group=g;l.lookTargets=new LookTargets(seer);l.relatedFaction=g.Origin;
+   l.Text=seer.LabelShort+"是一位风暴巨人先知，跟着他的两名水手说，他从海渊一路走来，是为了把看见的东西告诉该听的人。他不讨吃的，只想在殖民地外歇一天，和你们说几句话。\n\n听他说完：先知讲出他在风暴里看到的预兆。之后30天内，第一次点数≥1000的敌对袭击会提前1天预警（与竖琴手、风暴预兆叠加）。\n请他留下：如果殖民地已经有别的巨人、他在阶序里也能有个好位置（阶序心情开启），他有25%的可能留下；否则他会礼貌地拒绝，照常离开。".Loc();
    Find.LetterStack.ReceiveLetter(l);return l;
   }
   public static void ListenToProphet(GiantGroup g){
    if(g==null || g.stayAsked)return;g.stayAsked=true;
    StormGiantState.Get?.Listen();
-   Messages.Message("先知说完了他的预言：接下来30天里，第一场大型袭击到来之前，你们会提前一天得到警告。",new LookTargets(g.Alive.Cast<Thing>()),MessageTypeDefOf.PositiveEvent,false);
+   Messages.Message("先知说完了他的预言：接下来30天里，第一场大型袭击到来之前，你们会提前一天得到警告。".Loc(),new LookTargets(g.Alive.Cast<Thing>()),MessageTypeDefOf.PositiveEvent,false);
   }
   // 殖民地已有别的巨人、阶序心情开启（风暴巨人地位最高，阶序心情一定是正的）时 25% 加入。
   public static bool ProphetWelcome(Map map)=>Ordning.On && GiantKin.ColonyGiants(map).Count>0;
@@ -233,7 +233,7 @@ namespace LichPhylactery {
    if(g==null || g.stayAsked)return false;g.stayAsked=true;
    var seer=Prophet(g);if(seer==null || !seer.Spawned)return false;
    if(ProphetWelcome(g.map) && Roll<ProphetStayChance){g.stayer=seer;return Join(g);}
-   Messages.Message(seer.LabelShort+"谢过你们的好意，"+(ProphetWelcome(g.map)?"但他的路还没有走完。":"可这里没有能和他说巨人语言、在阶序里安放他的人。")+"他会照常离开。",seer,MessageTypeDefOf.NeutralEvent,false);
+   Messages.Message(seer.LabelShort+"谢过你们的好意，".Loc()+(ProphetWelcome(g.map)?"但他的路还没有走完。".Loc():"可这里没有能和他说巨人语言、在阶序里安放他的人。".Loc())+"他会照常离开。".Loc(),seer,MessageTypeDefOf.NeutralEvent,false);
    return false;
   }
   public static List<Thing> Gifts(string kind){
@@ -267,16 +267,16 @@ namespace LichPhylactery {
    if(Roll>=StayChanceFor(g,p))return null;
    g.stayer=p;
    var l=(Letter_GiantMigration)LetterMaker.MakeLetter(DefDatabase<LetterDef>.GetNamed("LP_GiantChoiceLetter"));
-   l.Label="想留下的巨人";l.kind="stay";l.group=g;l.lookTargets=new LookTargets(p);l.relatedFaction=g.Origin;
-   l.Text=p.LabelShort+"在拔营时留了下来，说"+(g.fed?"吃了你们的东西，":"")+"想在这里住下，不想再跟着队伍走了。\n\n接受："+p.LabelShort+"加入殖民地"+(g.Origin?.def==Factions.EmberDef?"（余烬氏族不高兴族人被带走：好感 "+TakenKinGoodwill+"）":"")+"，其余人继续上路。\n拒绝：全队照常离开，没有后果。";
+   l.Label="想留下的巨人".Loc();l.kind="stay";l.group=g;l.lookTargets=new LookTargets(p);l.relatedFaction=g.Origin;
+   l.Text=p.LabelShort+"在拔营时留了下来，说".Loc()+(g.fed?"吃了你们的东西，".Loc():"")+"想在这里住下，不想再跟着队伍走了。\n\n接受：".Loc()+p.LabelShort+"加入殖民地".Loc()+(g.Origin?.def==Factions.EmberDef?"（余烬氏族不高兴族人被带走：好感 ".Loc()+TakenKinGoodwill+"）".Loc():"")+"，其余人继续上路。\n拒绝：全队照常离开，没有后果。".Loc();
    Find.LetterStack.ReceiveLetter(l);return l;
   }
   public static bool Join(GiantGroup g){
-   var p=g?.stayer;if(p==null || p.Dead || p.Destroyed || !p.Spawned || p.Faction==Faction.OfPlayer){Messages.Message("那位巨人已经走远了。",MessageTypeDefOf.RejectInput,false);return false;}
+   var p=g?.stayer;if(p==null || p.Dead || p.Destroyed || !p.Spawned || p.Faction==Faction.OfPlayer){Messages.Message("那位巨人已经走远了。".Loc(),MessageTypeDefOf.RejectInput,false);return false;}
    var old=g.Origin;
    p.SetFaction(Faction.OfPlayer);g.pawns.Remove(p);
-   if(old!=null && old.def==Factions.EmberDef)Factions.ChangeGoodwillExact(old,TakenKinGoodwill,"带走了族人");
-   Find.LetterStack.ReceiveLetter("巨人加入",p.LabelShort+"放下行囊，成了殖民地的一员。",LetterDefOf.PositiveEvent,p);
+   if(old!=null && old.def==Factions.EmberDef)Factions.ChangeGoodwillExact(old,TakenKinGoodwill,"带走了族人".Loc());
+   Find.LetterStack.ReceiveLetter("巨人加入".Loc(),p.LabelShort+"放下行囊，成了殖民地的一员。".Loc(),LetterDefOf.PositiveEvent,p);
    return true;
   }
   public static void Tick(EventState s){
@@ -346,16 +346,16 @@ namespace LichPhylactery {
    if(Closed || group==null){yield return Option_Close;yield break;}
    if(kind=="food"){
     float have=GiantMigration.StoredNutrition(group.map,GiantMigration.FineOnly(group)),meat=GiantMigration.StoredMeat(group.map);
-    var give=Choice("给他们食物（营养值 "+group.need.ToString("0.#")+(group.meatNeed>0?"，另加生肉 "+group.meatNeed.ToString("0.#"):"")+"）",()=>GiantMigration.Feed(group));
-    if(group.answered)give.Disable("已经答复过了");else if(have+.001f<group.need+group.meatNeed)give.Disable((GiantMigration.FineOnly(group)?"储存区里的精致饭、奢华饭不够":"储存区里的食物不够")+"，还差营养值 "+(group.need+group.meatNeed-have).ToString("0.#"));else if(meat+.001f<group.meatNeed)give.Disable("储存区里的生肉不够冬狼吃，还差营养值 "+(group.meatNeed-meat).ToString("0.#"));
+    var give=Choice("给他们食物（营养值 ".Loc()+group.need.ToString("0.#")+(group.meatNeed>0?"，另加生肉 ".Loc()+group.meatNeed.ToString("0.#"):"")+"）".Loc(),()=>GiantMigration.Feed(group));
+    if(group.answered)give.Disable("已经答复过了".Loc());else if(have+.001f<group.need+group.meatNeed)give.Disable((GiantMigration.FineOnly(group)?"储存区里的精致饭、奢华饭不够".Loc():"储存区里的食物不够".Loc())+"，还差营养值 ".Loc()+(group.need+group.meatNeed-have).ToString("0.#"));else if(meat+.001f<group.meatNeed)give.Disable("储存区里的生肉不够冬狼吃，还差营养值 ".Loc()+(group.meatNeed-meat).ToString("0.#"));
     yield return give;
-    var no=Choice("不给",()=>GiantMigration.Refuse(group));if(group.answered)no.Disable("已经答复过了");yield return no;
+    var no=Choice("不给".Loc(),()=>GiantMigration.Refuse(group));if(group.answered)no.Disable("已经答复过了".Loc());yield return no;
    }else if(kind=="prophet"){
-    var listen=Choice("听他说完",()=>GiantMigration.ListenToProphet(group));if(group.stayAsked)listen.Disable("已经答复过了");yield return listen;
-    var stay=Choice("请他留下",()=>GiantMigration.AskProphetStay(group));if(group.stayAsked)stay.Disable("已经答复过了");yield return stay;
+    var listen=Choice("听他说完".Loc(),()=>GiantMigration.ListenToProphet(group));if(group.stayAsked)listen.Disable("已经答复过了".Loc());yield return listen;
+    var stay=Choice("请他留下".Loc(),()=>GiantMigration.AskProphetStay(group));if(group.stayAsked)stay.Disable("已经答复过了".Loc());yield return stay;
    }else if(kind=="stay"){
-    yield return Choice("接受",()=>GiantMigration.Join(group));
-    yield return Choice("拒绝",null);
+    yield return Choice("接受".Loc(),()=>GiantMigration.Join(group));
+    yield return Choice("拒绝".Loc(),null);
    }
    yield return Option_Postpone;
   }}
@@ -373,7 +373,7 @@ namespace LichPhylactery {
   protected override bool TryExecuteWorker(IncidentParms parms){
    var map=parms.target as Map;if(!GiantMigration.CanFire(map))return false;
    var g=GiantMigration.Start(map);if(g==null)return false;
-   SendStandardLetter("巨人迁徙",GiantMigration.KindLabel(g.kind)+"（"+(g.Origin?.Name??g.lord.faction.Name)+"）正在穿过这片土地。他们看上去走了很久，饿得厉害，打算在殖民地外扎营歇一天。",LetterDefOf.NeutralEvent,parms,new LookTargets(g.Alive.Cast<Thing>()));
+   SendStandardLetter("巨人迁徙".Loc(),GiantMigration.KindLabel(g.kind)+"（".Loc()+(g.Origin?.Name??g.lord.faction.Name)+"）正在穿过这片土地。他们看上去走了很久，饿得厉害，打算在殖民地外扎营歇一天。".Loc(),LetterDefOf.NeutralEvent,parms,new LookTargets(g.Alive.Cast<Thing>()));
    return true;
   }
  }

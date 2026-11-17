@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 激励 -->
+  <LP_MusicInspired.label>inspired</LP_MusicInspired.label>
+  <!-- 音乐家的琴声还在心里回响：手术成功率、谈判能力、射击精度 ×1.3。 -->
+  <LP_MusicInspired.description>The musician's playing still echoes in the heart: surgery success, negotiation ability and shooting accuracy ×1.3.</LP_MusicInspired.description>
+  <!-- 伪装 -->
+  <LP_FeatDisguised.label>disguise</LP_FeatDisguised.label>
+  <!-- 换了模样混在人群里：敌人几乎不会优先瞄准。 -->
+  <LP_FeatDisguised.description>Changed appearance and blended into the crowd: enemies almost never prioritize targeting.</LP_FeatDisguised.description>
+  <!-- 涂毒武器 -->
+  <LP_FeatPoisonedBlade.label>poisoned weapon</LP_FeatPoisonedBlade.label>
+  <!-- 武器上涂着毒：近战命中附加蛛后之毒（数值 = 剩余次数）。 -->
+  <LP_FeatPoisonedBlade.description>The weapon is coated in poison: melee hits apply spider queen venom (value = remaining uses).</LP_FeatPoisonedBlade.description>
+  <!-- 仪式余韵 -->
+  <LP_RitualPrimed.label>ritual afterglow</LP_RitualPrimed.label>
+  <!-- 仪式的力量还在：下一次施法不进冷却、不加心灵熵。 -->
+  <LP_RitualPrimed.description>The power of the ritual lingers: the next cast triggers no cooldown and adds no neural heat.</LP_RitualPrimed.description>
+  <!-- 借来的好运 -->
+  <LP_BorrowedLuck.label>borrowed luck</LP_BorrowedLuck.label>
+  <!-- 半身人分来的好运：下一次会致倒地或死亡的伤只剩 10%。 -->
+  <LP_BorrowedLuck.description>Luck shared by a halfling: the next wound that would down or kill takes only 10%.</LP_BorrowedLuck.description>
+  <!-- 点心的余味 -->
+  <LP_SnackComfort.label>snack aftertaste</LP_SnackComfort.label>
+  <!-- 吃了一份好点心：伤口愈合 +25%。 -->
+  <LP_SnackComfort.description>Ate a good snack: wound healing +25%.</LP_SnackComfort.description>
+</LanguageData>

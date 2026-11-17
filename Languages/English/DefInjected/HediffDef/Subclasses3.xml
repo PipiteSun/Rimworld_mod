@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 暗影视觉 -->
+  <LP_SH_DarkSight.label>shadow sight</LP_SH_DarkSight.label>
+  <!-- 站在暗处时视觉 +30%，不受魔法黑暗影响。 -->
+  <LP_SH_DarkSight.description>While in darkness, sight +30%, unaffected by magical darkness.</LP_SH_DarkSight.description>
+  <!-- 暗影步 -->
+  <LP_SH_StepStrike.label>shadow step</LP_SH_StepStrike.label>
+  <!-- 刚从阴影里钻出来：下一次近战命中伤害 ×1.5，近战命中 +30%。 -->
+  <LP_SH_StepStrike.description>Just stepped out of the shadows: the next melee hit deals ×1.5 damage, melee hit +30%.</LP_SH_StepStrike.description>
+  <!-- 幽影斗篷 -->
+  <LP_SH_Cloaked.label>cloak of shadows</LP_SH_Cloaked.label>
+  <!-- 化身幽影：隐形，出手攻击或走进亮处就现形。 -->
+  <LP_SH_Cloaked.description>Become a shadow: invisible, revealed by attacking or stepping into light.</LP_SH_Cloaked.description>
+  <!-- 封招 -->
+  <LP_OH_Sealed.label>disrupted</LP_OH_Sealed.label>
+  <!-- 气被散打武僧打乱：近战命中 −30%。 -->
+  <LP_OH_Sealed.description>Ki disrupted by an Open Hand monk: melee hit -30%.</LP_OH_Sealed.description>
+  <!-- 宁神境 -->
+  <LP_OH_Tranquil.label>tranquility</LP_OH_Tranquil.label>
+  <!-- 周身环绕和平的灵光：敌人打来的每一下有 50% 的成功率落空（对方每比你高 1 级 −5%）。你攻击敌人就结束，睡一觉醒来重新获得。 -->
+  <LP_OH_Tranquil.description>Surrounded by an aura of peace: each enemy attack has a 50% chance to miss (-5% per level they're above you). Ends when you attack an enemy; regained after waking from sleep.</LP_OH_Tranquil.description>
+  <!-- 渗透劲 -->
+  <LP_OH_Palm.label>quivering palm</LP_OH_Palm.label>
+  <!-- 体内潜伏着一股致命的劲力，散打武僧随时可以引爆它。 -->
+  <LP_OH_Palm.description>A lethal force lies latent in the body, and the Open Hand monk can detonate it at any time.</LP_OH_Palm.description>
+  <!-- 塑能学者 -->
+  <LP_EV_SavantBuff.label>evocation savant</LP_EV_SavantBuff.label>
+  <!-- 研究速度 +20%。 -->
+  <LP_EV_SavantBuff.description>Research speed +20%.</LP_EV_SavantBuff.description>
+  <!-- 超限导能 -->
+  <LP_EV_Overchannel.label>overchannel</LP_EV_Overchannel.label>
+  <!-- 下一个塑能法术伤害 ×2。 -->
+  <LP_EV_Overchannel.description>The next evocation spell deals ×2 damage.</LP_EV_Overchannel.description>
+  <!-- 法师笔 -->
+  <LP_SC_QuillBuff.label>wizardly quill</LP_SC_QuillBuff.label>
+  <!-- 魔法羽毛笔：读卷轴不会失误，研究速度 +10%。 -->
+  <LP_SC_QuillBuff.description>Magic quill: reading scrolls never fails, research speed +10%.</LP_SC_QuillBuff.description>
+  <!-- 思维具现 -->
+  <LP_SC_Manifest.label>manifest mind</LP_SC_Manifest.label>
+  <!-- 魔典里的意识浮在身边：接下来的法师法术不耗法力（严重度 = 剩余次数），15 格内的敌人无法隐形。 -->
+  <LP_SC_Manifest.description>The mind of the spellbook floats beside you: the next wizard spells cost no mana (severity = remaining uses), and enemies within 15 cells can't turn invisible.</LP_SC_Manifest.description>
+  <!-- 龙之威仪 -->
+  <LP_DM_PresenceBuff.label>draconic presence</LP_DM_PresenceBuff.label>
+  <!-- 举手投足带着巨龙的气势：社交影响 +15%，谈判能力 +10%。 -->
+  <LP_DM_PresenceBuff.description>Every gesture carries a great dragon's bearing: social impact +15%, negotiation ability +10%.</LP_DM_PresenceBuff.description>
+  <!-- 古龙姿 -->
+  <LP_DM_AspectResist.label>ancient dragon stance</LP_DM_AspectResist.label>
+  <!-- 古龙的灵光护着你：所选元素的伤害 ×0.5。 -->
+  <LP_DM_AspectResist.description>The ancient dragon's aura protects you: damage of the chosen element ×0.5.</LP_DM_AspectResist.description>
+  <!-- 火焰 -->
+  <LP_DM_AspectResist.stages.0.label>fire</LP_DM_AspectResist.stages.0.label>
+  <!-- 寒冰 -->
+  <LP_DM_AspectResist.stages.1.label>cold</LP_DM_AspectResist.stages.1.label>
+  <!-- 闪电 -->
+  <LP_DM_AspectResist.stages.2.label>lightning</LP_DM_AspectResist.stages.2.label>
+  <!-- 强酸 -->
+  <LP_DM_AspectResist.stages.3.label>acid</LP_DM_AspectResist.stages.3.label>
+  <!-- 毒素 -->
+  <LP_DM_AspectResist.stages.4.label>poison</LP_DM_AspectResist.stages.4.label>
+  <!-- 寒霜之握 -->
+  <LP_LD_Frozen.label>frost grip</LP_LD_Frozen.label>
+  <!-- 脚下结冰：移动 ×0.4（升级后 ×0.2）。 -->
+  <LP_LD_Frozen.description>Ice underfoot: movement ×0.4 (×0.2 when upgraded).</LP_LD_Frozen.description>
+  <!-- 大地行者 -->
+  <LP_LD_StrideBuff.label>land's stride</LP_LD_StrideBuff.label>
+  <!-- 地形、积雪、植物不减速，不会被藤蔓缠住；种植速度 +20%。 -->
+  <LP_LD_StrideBuff.description>No slowdown from terrain, snow or plants, can't be entangled by vines; plant work speed +20%.</LP_LD_StrideBuff.description>
+  <!-- 自然守护 -->
+  <LP_LD_WardBuff.label>nature's ward</LP_LD_WardBuff.label>
+  <!-- 免疫食物中毒和毒素积累，免疫力增长 ×1.5。 -->
+  <LP_LD_WardBuff.description>Immune to food poisoning and toxic buildup, immunity gain ×1.5.</LP_LD_WardBuff.description>
+  <!-- 死亡光环 -->
+  <LP_SP_HaloOn.label>halo of spores</LP_SP_HaloOn.label>
+  <!-- 身边飘着孢子：半径 2 内的敌人每 4 秒受坏死伤害；开着时法力恢复减半。 -->
+  <LP_SP_HaloOn.description>Spores drift around: enemies within radius 2 take necrotic damage every 4 seconds; while on, mana recovery is halved.</LP_SP_HaloOn.description>
+  <!-- 腐烂 -->
+  <LP_SP_Rotting.label>rotting</LP_SP_Rotting.label>
+  <!-- 伤口被孢子侵蚀：伤口不愈合。 -->
+  <LP_SP_Rotting.description>Wounds corroded by spores: wounds don't heal.</LP_SP_Rotting.description>
+  <!-- 共生实体 -->
+  <LP_SP_SymbioticBuff.label>symbiotic entity</LP_SP_SymbioticBuff.label>
+  <!-- 和孢子共生：近战附加坏死伤害，死亡光环伤害 ×2。 -->
+  <LP_SP_SymbioticBuff.description>In symbiosis with spores: melee adds necrotic damage, halo of spores damage ×2.</LP_SP_SymbioticBuff.description>
+  <!-- 真菌傀儡 -->
+  <LP_SP_Puppet.label>fungal puppet</LP_SP_Puppet.label>
+  <!-- 被真菌重新拉起来的尸体，一天后就会腐烂。不会精神崩溃。 -->
+  <LP_SP_Puppet.description>A corpse pulled back up by fungus; it rots away after a day. No mental breaks.</LP_SP_Puppet.description>
+  <!-- 真菌之躯 -->
+  <LP_SP_BodyBuff.label>fungal body</LP_SP_BodyBuff.label>
+  <!-- 身体被真菌改造：不会流血，免疫毒素和恐惧，利器伤害 ×0.75。 -->
+  <LP_SP_BodyBuff.description>Body remade by fungus: no bleeding, immune to toxins and fear, sharp damage ×0.75.</LP_SP_BodyBuff.description>
+  <!-- 星图 -->
+  <LP_ST_MapBuff.label>star map</LP_ST_MapBuff.label>
+  <!-- 研究速度 +10%；夜里在户外，德鲁伊法术强度 ×1.25。 -->
+  <LP_ST_MapBuff.description>Research speed +10%; outdoors at night, druid spell power ×1.25.</LP_ST_MapBuff.description>
+  <!-- 星光指引 -->
+  <LP_ST_Guided.label>starlight guidance</LP_ST_Guided.label>
+  <!-- 被星光照亮：下一次受到的伤害 ×1.25。 -->
+  <LP_ST_Guided.description>Lit by starlight: the next damage taken ×1.25.</LP_ST_Guided.description>
+  <!-- 星象形态 -->
+  <LP_ST_Form.label>starry form</LP_ST_Form.label>
+  <!-- 化身星座：弓手每 4 秒朝最近的敌人射一箭；圣杯每 4 秒治疗身边伤得最重的友军；巨龙让心神稳如磐石（心智抗性 +30%、疼痛休克阈值 +30%）。 -->
+  <LP_ST_Form.description>Become a constellation: the archer fires an arrow at the nearest enemy every 4 seconds; the chalice heals the most injured nearby ally every 4 seconds; the dragon steadies the mind like a boulder (mind resistance +30%, pain shock threshold +30%).</LP_ST_Form.description>
+  <!-- 弓手 -->
+  <LP_ST_Form.stages.0.label>archer</LP_ST_Form.stages.0.label>
+  <!-- 圣杯 -->
+  <LP_ST_Form.stages.1.label>chalice</LP_ST_Form.stages.1.label>
+  <!-- 巨龙 -->
+  <LP_ST_Form.stages.2.label>dragon</LP_ST_Form.stages.2.label>
+  <!-- 生命门徒 -->
+  <LP_LF_DiscipleBuff.label>disciple of life</LP_LF_DiscipleBuff.label>
+  <!-- 治疗法术 ×1.3；缝合速度、缝合质量 +15%，手术成功率 +10%。 -->
+  <LP_LF_DiscipleBuff.description>Healing spells ×1.3; tend speed and tend quality +15%, surgery success +10%.</LP_LF_DiscipleBuff.description>
+  <!-- 熔炉之子 -->
+  <LP_FG_CraftBuff.label>blessing of the forge</LP_FG_CraftBuff.label>
+  <!-- 制作和其他手工活速度 +10%。 -->
+  <LP_FG_CraftBuff.description>Crafting and other handiwork speed +10%.</LP_FG_CraftBuff.description>
+  <!-- 晨光之冕 -->
+  <LP_LT_CoronaOn.label>corona of light</LP_LT_CoronaOn.label>
+  <!-- 周身燃着晨光：半径 6 内的敌人每 4 秒受光耀伤害、视觉 −30%。 -->
+  <LP_LT_CoronaOn.description>Wreathed in dawnlight: enemies within radius 6 take radiant damage every 4 seconds and sight -30%.</LP_LT_CoronaOn.description>
+  <!-- 晨光刺目 -->
+  <LP_LT_Dazzled.label>dawnlight glare</LP_LT_Dazzled.label>
+  <!-- 被晨光刺得睁不开眼：视觉 −30%。 -->
+  <LP_LT_Dazzled.description>Dazzled by dawnlight: sight -30%.</LP_LT_Dazzled.description>
+</LanguageData>

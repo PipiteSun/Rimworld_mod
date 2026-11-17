@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 畸变膏 -->
+  <LP_AberrantPaste.label>aberrant paste</LP_AberrantPaste.label>
+  <!-- 扭曲肉加化学燃料熬干、稳定下来的暗红色膏体，装在蜡封的陶罐里。远域的侵染被压住了，不会腐烂，但摸起来仍然有一点温热。\n\n炼金师和死灵法师都拿它当浓缩的“血肉”：死灵仪式台的生肉配方里 1 份畸变膏算 20 份生肉；血肉催转时 1 份算 10 份扭曲肉。普通商队不收，九狱掮客、妖精集市和鬼婆集市按 1.5 倍价收购。 -->
+  <LP_AberrantPaste.description>A dark red paste of twisted meat boiled down with chemfuel and stabilized, kept in wax-sealed clay jars. The Far Realm infestation has been suppressed; it doesn't rot, but is still a little warm to the touch.\n\nAlchemists and necromancers both use it as concentrated "flesh": in the necromantic ritual table's raw meat recipes, 1 aberrant paste counts as 20 raw meat; in flesh catalysis, 1 counts as 10 twisted meat. Ordinary caravans don't buy it; infernal brokers, fey markets and hag markets buy it at 1.5× price.</LP_AberrantPaste.description>
+  <!-- 畸变再生膏 -->
+  <LP_AberrantSalve.label>aberrant regenerative paste</LP_AberrantSalve.label>
+  <!-- 混了草药的畸变膏，抹在伤口上会自己往里钻、把肉缝起来。治疗效果和工业药差不多。\n\n代价：每次包扎有 15% 的可能在治疗的部位留下一块“畸变瘤块”（美观 -1，可以手术切除）。 -->
+  <LP_AberrantSalve.description>Aberrant paste mixed with herbs; applied to a wound, it burrows in and sews the flesh shut. Healing effect about the same as industrial medicine.\n\nThe price: each tending has a 15% chance to leave an "aberrant growth" on the treated part (beauty -1, can be surgically removed).</LP_AberrantSalve.description>
+  <!-- 蜕形药剂 -->
+  <LP_MorphDraught.label>metamorphosis draught</LP_MorphDraught.label>
+  <!-- 畸变膏兑巨魔血的浑浊药剂。喝下后 12 小时里肌肉和神经一起“长歪”：近战伤害 +20%，疼痛阈值 +20%，但脸也跟着走形，社交影响 -30%。巫妖和死灵造物不能喝。 -->
+  <LP_MorphDraught.description>A murky draught of aberrant paste cut with troll blood. For 12 hours after drinking, muscles and nerves "grow crooked" together: melee damage +20%, pain threshold +20%, but the face warps too, social impact -30%. Liches and necromantic constructs can't drink it.</LP_MorphDraught.description>
+  <!-- 饮用{0} -->
+  <LP_MorphDraught.ingestible.ingestCommandString>drink {0}</LP_MorphDraught.ingestible.ingestCommandString>
+  <!-- 正在饮用{0}。 -->
+  <LP_MorphDraught.ingestible.ingestReportString>Drinking {0}.</LP_MorphDraught.ingestible.ingestReportString>
+  <!-- 哈达之眼 -->
+  <LP_EyeOfHadar.label>Eye of Hadar</LP_EyeOfHadar.label>
+  <!-- 远域里那颗“黑暗饥渴”之星的一片碎光，嵌在一只干枯的眼眶形骨框里。戴上它的人能看见远域的潮汐：心灵敏感度 +30%，冥想专注获取 +20%，瞄准时间 -10%；对远域实体和异怪类敌人造成的伤害 +15%。\n\n代价：它一直在“饿”。佩戴者精神崩溃阈值 +6%。戴在奇物层的眼部。 -->
+  <LP_EyeOfHadar.description>A shard of light from Hadar, the "Dark Hunger" star of the Far Realm, set in a withered eye-socket-shaped bone frame. Its wearer can see the tides of the Far Realm: psychic sensitivity +30%, meditation focus gain +20%, aiming time -10%; +15% damage against Far Realm entities and aberration enemies.\n\nThe price: it's always "hungry". The wearer's mental break threshold +6%. Worn on the eyes in the trinket layer.</LP_EyeOfHadar.description>
+  <!-- 畸变皮甲 -->
+  <LP_AberrantHideArmor.label>aberrant hide armor</LP_AberrantHideArmor.label>
+  <!-- 用皮革做底、畸变膏一层层“长”上去的护甲，摸上去像活的。利器护甲略低于防弹背心。穿着者每天愈合一处小伤。\n\n别人看着就不舒服：其他人对穿着者好感 -5。 -->
+  <LP_AberrantHideArmor.description>Armor with a leather base and aberrant paste "grown" on layer by layer; it feels alive to the touch. Sharp armor slightly below a flak vest. The wearer heals one small wound per day.\n\nUnsettling to look at: other people's opinion of the wearer -5.</LP_AberrantHideArmor.description>
+</LanguageData>

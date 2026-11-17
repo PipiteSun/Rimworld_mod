@@ -51,14 +51,14 @@ namespace LichPhylactery {
   public bool skillsTab;
   void DrawPassions(Rect view){
    var skills=DefDatabase<SkillDef>.AllDefsListForReading.OrderBy(s=>s.listOrder).ToList();
-   Widgets.Label(new Rect(12,8,view.width-24,44),(Editable?"点击切换：无兴趣 → 单火 → 双火。双火最多3项，单火不限。已选双火："+plan.MajorCount(kind)+"/3。":"当前实际技能兴趣；初始配置在唤醒时应用，后续变化由游戏正常记录。")+(kind=="Scholar"?"知识死灵技能固定，兴趣只决定传给主人的经验。":""));
+   Widgets.Label(new Rect(12,8,view.width-24,44),(Editable?"点击切换：无兴趣 → 单火 → 双火。双火最多3项，单火不限。已选双火：".Loc()+plan.MajorCount(kind)+"/3。".Loc():"当前实际技能兴趣；初始配置在唤醒时应用，后续变化由游戏正常记录。".Loc())+(kind=="Scholar"?"知识死灵技能固定，兴趣只决定传给主人的经验。".Loc():""));
    float column=view.width/2;
    for(int i=0;i<skills.Count;i++){
     var skill=skills[i];float x=(i%2)*column,y=64+(i/2)*52;
     var row=new Rect(x+8,y,column-16,44);Widgets.DrawMenuSection(row);
     var passion=Editable?plan.PassionFor(skill,kind):finished.pawn.skills.GetSkill(skill).passion;
     Widgets.Label(new Rect(x+20,y+9,column-165,30),skill.LabelCap);
-    var button=new Rect(x+column-135,y+6,112,32);string label=passion==Passion.Major?"双火":passion==Passion.Minor?"单火":"无兴趣";
+    var button=new Rect(x+column-135,y+6,112,32);string label=passion==Passion.Major?"双火".Loc():passion==Passion.Minor?"单火".Loc():"无兴趣".Loc();
     if(Editable){if(Widgets.ButtonText(button,label)){if(!plan.TrySetPassion(skill,(Passion)(((int)passion+1)%3),kind))Messages.Message(ConstructDesign.PassionLimitReason,MessageTypeDefOf.RejectInput,false);}}else Widgets.Label(button,label);
    }
   }

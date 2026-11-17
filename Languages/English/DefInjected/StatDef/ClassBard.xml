@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 激昂强度 -->
+  <LP_BardicPower.label>inspiration power</LP_BardicPower.label>
+  <!-- 吟游诗人能力的强度倍率：0.5 +（社交、艺术里较高的等级）/20，另加冒险者魅力调整值 × 0.10 与熟练加值，吟游诗人等职业等级合计每比 1 高 1 级 +5%（最多 +95%）。传奇「不朽传奇」+20%。魔法奥秘学来的法术也用这个强度。 -->
+  <LP_BardicPower.description>Bard ability power multiplier: 0.5 + (the higher of Social and Artistic level) / 20, plus adventurer Charisma modifier × 0.10 and proficiency bonus, +5% for each level the combined bard-type class levels exceed 1 (up to +95%). Legendary "Undying Legend" +20%. Spells learned through Magical Secrets also use this power.</LP_BardicPower.description>
+</LanguageData>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 恐惧凝视 -->
+  <LP_FearGaze.label>fear gaze</LP_FearGaze.label>
+  <!-- 巫妖的凝视令敌人肝胆俱裂。目标位置4.9格内的敌对人形陷入恐慌逃跑，敌对动物眩晕5秒；机械体、死灵生物和心灵失聪者不受影响。命匣3级解锁。基础精神力消耗15点，心灵熵20点。 -->
+  <LP_FearGaze.description>The lich's gaze shatters the enemy's nerve. Hostile humanlikes within 4.9 cells of the target panic and flee, and hostile animals are stunned for 5 seconds; mechanoids, necromantic creatures and the psychically deaf are unaffected. Unlocked at phylactery level 3. Base psyfocus cost 15, neural heat 20.</LP_FearGaze.description>
+  <!-- 死灵冲击 -->
+  <LP_NecroticBlast.label>necrotic blast</LP_NecroticBlast.label>
+  <!-- 在目标位置引爆死灵能量。3.9格内的每个敌对目标受到15点死灵伤害，并按心灵敏感度递减加成（100%敏感度约1.5倍，上限趋近2.5倍），无视护甲，不伤害友方。命匣6级解锁。基础精神力消耗12点，心灵熵25点。 -->
+  <LP_NecroticBlast.description>Detonate necrotic energy at the target. Every hostile target within 3.9 cells takes 15 necrotic damage with a diminishing psychic sensitivity bonus (about 1.5× at 100% sensitivity, approaching a 2.5× cap), ignoring armor and not harming allies. Unlocked at phylactery level 6. Base psyfocus cost 12, neural heat 25.</LP_NecroticBlast.description>
+  <!-- 死亡律令 -->
+  <LP_PowerWordKill.label>power word kill</LP_PowerWordKill.label>
+  <!-- 说出一个死亡之词，指定的角色当场死亡，尸体保持完整，可用于汲取灵魂。可以对敌人、中立者、动物、机械体和囚犯使用，不能对己方殖民者或造物使用。命匣15级解锁。基础精神力消耗50点，心灵熵45点，冷却1天。 -->
+  <LP_PowerWordKill.description>Speak a word of death and the chosen character dies on the spot, with the corpse intact and usable for soul draining. Usable on enemies, neutrals, animals, mechanoids and prisoners, but not on your own colonists or creations. Unlocked at phylactery level 15. Base psyfocus cost 50, neural heat 45, cooldown 1 day.</LP_PowerWordKill.description>
+</LanguageData>

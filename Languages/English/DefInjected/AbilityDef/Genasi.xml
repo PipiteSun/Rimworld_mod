@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 火花 -->
+  <LP_ElementSpark.label>spark</LP_ElementSpark.label>
+  <!-- 从指尖弹出一点火星，点燃6格内看得见的一个目标（小火）。不会被点燃的目标不受影响。冷却12小时；巨灵使用、或炽焰血脉佩戴炽焰符时冷却减半。 -->
+  <LP_ElementSpark.description>Flick a spark from a fingertip to ignite a visible target within 6 cells (a small fire). Targets that can't be ignited are unaffected. Cooldown 12 hours; halved when used by a genie or by a blaze bloodline wearing a blaze charm.</LP_ElementSpark.description>
+  <!-- 水流 -->
+  <LP_ElementTide.label>water stream</LP_ElementTide.label>
+  <!-- 在8格内的目标处召来一股水流：扑灭3×3范围（潮汐血脉佩戴潮汐符时5×5）内的所有火焰，格内的敌人被浇透，移速×80%持续10秒。冷却1天。 -->
+  <LP_ElementTide.description>Summon a stream of water at a target within 8 cells: puts out all fires in a 3×3 area (5×5 for a tide bloodline wearing a tide charm), and enemies in it are drenched, move speed ×80% for 10 seconds. Cooldown 1 day.</LP_ElementTide.description>
+  <!-- 风跃 -->
+  <LP_ElementWindLeap.label>wind leap</LP_ElementWindLeap.label>
+  <!-- 乘一阵风跃到8格内看得见、能站人的地方。不能穿墙，不消耗精神力。冷却8小时。 -->
+  <LP_ElementWindLeap.description>Leap on a gust of wind to a visible standable spot within 8 cells. Can't pass through walls, costs no psyfocus. Cooldown 8 hours.</LP_ElementWindLeap.description>
+</LanguageData>

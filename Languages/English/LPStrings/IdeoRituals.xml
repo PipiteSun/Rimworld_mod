@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（IdeoRituals.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>需要在殖民地的圣坛举行。</zh><en>Must be held at the colony's altar.</en></s>
+  <s><zh>圣坛3格内需要一具体型≥0.7的动物尸体（大猎的祭品）。</zh><en>Needs an animal corpse of body size ≥0.7 within 3 cells of the altar (the great hunt's offering).</en></s>
+  <s><zh>圣坛3格内需要市值合计≥300的武器或护甲（熔炉之火的祭品）。</zh><en>Needs weapons or armor worth ≥300 in total within 3 cells of the altar (the forge fire's offering).</en></s>
+  <s><zh>[DND边缘大陆] 庆典结算出错：</zh><en>[DND Rimlands] Festival tick error: </en></s>
+  <s><zh>[DND边缘大陆] 灰袍葬礼结算出错：</zh><en>[DND Rimlands] Grey robe funeral tick error: </en></s>
+  <s><zh>祭品被献给了</zh><en>The offering was given to </en></s>
+  <s><zh>今年是大盾会：神眷×1.5。</zh><en>This year is Shieldmeet: favor ×1.5.</en></s>
+  <s><zh>庆典：</zh><en>Festival: </en></s>
+  <s><zh>的神眷</zh><en>'s favor </en></s>
+  <s><zh>难忘的庆典：</zh><en>Memorable festival: </en></s>
+  <s><zh>灰袍葬礼</zh><en>grey-robed funeral</en></s>
+  <s><zh>的灵魂被凯兰沃接走，得到了安息。</zh><en>'s soul was taken by Kelemvor and found rest.</en></s>
+  <s><zh>凯兰沃的神眷+</zh><en>Kelemvor favor +</en></s>
+  <s><zh>举行一场审判仪式</zh><en>hold a judgment ritual</en></s>
+  <s><zh>释放一名囚犯</zh><en>release a prisoner</en></s>
+  <s><zh>施放一次法术或神术</zh><en>cast a spell or miracle</en></s>
+  <s><zh>在炼金桌、附魔台或抄写台完成一件作品</zh><en>finish a piece at the alchemy table, enchanting table or copying desk</en></s>
+  <s><zh>安葬一具尸体</zh><en>bury a corpse</en></s>
+  <s><zh>击杀一个敌方不死者</zh><en>kill a hostile undead</en></s>
+  <s><zh>猎杀一只动物</zh><en>hunt an animal</en></s>
+  <s><zh>近战杀死一只动物</zh><en>kill an animal in melee</en></s>
+  <s><zh>让雷霆落在家园上（等一场雷暴）</zh><en>let thunder strike the home (wait for a thunderstorm)</en></s>
+  <s><zh>奴役一名囚犯</zh><en>enslave a prisoner</en></s>
+  <s><zh>失去了亲人</zh><en>lost family</en></s>
+  <s><zh>让殖民地尝到失去血亲的滋味</zh><en>make the colony taste the loss of blood kin</en></s>
+  <s><zh>锻造一件武器或护甲</zh><en>forge a weapon or armor</en></s>
+  <s><zh>举办庆典</zh><en>Hold festival</en></s>
+  <s><zh>众神殿文化可以在圣坛为任何一位可信奉的神举办庆典（不带义务，随时可以开始）：每位神每年一次，每年最多</zh><en>Pantheon ideoligions can hold a festival at the altar for any worshippable god (no obligation, can start anytime): once per god per year, at most </en></s>
+  <s><zh>场不同的神。第一次为某位神办庆典时，这位神的庆典会加进文化。\n\n今年已办：</zh><en> different gods per year. The first festival for a god adds that god's festival to the ideoligion.\n\nHeld this year: </en></s>
+  <s><zh>今年已经办了</zh><en>Already held </en></s>
+  <s><zh>场庆典。</zh><en> festivals this year.</en></s>
+  <s><zh>集体祈祷</zh><en>Group prayer</en></s>
+  <s><zh>召集地图上所有空闲的同文化信徒到圣坛祈祷。之后</zh><en>Gather all idle believers of the same ideoligion on the map to pray at the altar. For the next </en></s>
+  <s><zh>小时内祈祷神眷的每日上限×1.5。冷却1天。</zh><en> hours, the daily cap on prayer favor ×1.5. Cooldown 1 day.</en></s>
+  <s><zh>冷却中，还要</zh><en>On cooldown, another </en></s>
+  <s><zh>小时。</zh><en> hours.</en></s>
+  <s><zh>殖民地还没有守护神。</zh><en>The colony has no patron deity yet.</en></s>
+  <s><zh>求取神谕</zh><en>Seek an oracle</en></s>
+  <s><zh>（大祭司）向守护神求取神谕：预言下一次季度显圣，并说出守护神当前最想要的作为（</zh><en> (high priest) seeks an oracle from the patron deity: predicts the next seasonal manifestation and names what the patron deity most wants right now (do it once within </en></s>
+  <s><zh>天内做到一次，额外神眷+5）。冷却</zh><en> days for extra favor +5). Cooldown </en></s>
+  <s><zh>血祭</zh><en>blood sacrifice</en></s>
+  <s><zh>选一名囚犯交付处决（原版处决作业）。囚犯被处决后守护神神眷+</zh><en>Choose a prisoner to hand over for execution (vanilla execution job). After the prisoner is executed, patron favor +</en></s>
+  <s><zh>。只在守护神是恶神时可用。</zh><en>. Only available when the patron deity is an evil god.</en></s>
+  <s><zh>神，不接受血祭。</zh><en> god, doesn't accept blood sacrifice.</en></s>
+  <s><zh>（今年已办）</zh><en> (held this year)</en></s>
+  <s><zh>集体祈祷：</zh><en>Group prayer: </en></s>
+  <s><zh>人前往圣坛祈祷。</zh><en> people headed to the altar to pray.</en></s>
+  <s><zh>赐福</zh><en>bless</en></s>
+  <s><zh>降罚</zh><en>punish</en></s>
+  <s><zh>沉默（既不赐福也不降罚）</zh><en>stay silent (neither bless nor punish)</en></s>
+  <s><zh>季度显圣的时间还没有定下。</zh><en>The time of the seasonal manifestation isn't set yet.</en></s>
+  <s><zh>下一次季度显圣在</zh><en>The next seasonal manifestation is in </en></s>
+  <s><zh>天后。现在</zh><en> days. Now </en></s>
+  <s><zh>的神眷是</zh><en>'s favor is </en></s>
+  <s><zh>，若保持则会是</zh><en>; if it stays so, in </en></s>
+  <s><zh>天后，</zh><en> days </en></s>
+  <s><zh>会</zh><en> will </en></s>
+  <s><zh>（神眷</zh><en> (favor </en></s>
+  <s><zh>想要你们</zh><en> wants you to </en></s>
+  <s><zh>天内做到一次，神眷额外+5。</zh><en> days to do it once, for extra favor +5.</en></s>
+  <s><zh>神谕：</zh><en>Oracle: </en></s>
+  <s><zh>在圣坛前求得了</zh><en> received an oracle from </en></s>
+  <s><zh>的神谕：\n\n</zh><en> before the altar:\n\n</en></s>
+  <s><zh>（已交付）</zh><en> (handed over)</en></s>
+  <s><zh>地图上没有囚犯</zh><en>No prisoners on the map</en></s>
+  <s><zh>[DND边缘大陆] 血祭：设置处决失败 </zh><en>[DND Rimlands] Blood sacrifice: failed to set execution </en></s>
+  <s><zh>被交付血祭：典狱官会处决他，完成后守护神神眷+</zh><en> was handed over for blood sacrifice: the warden will execute them, after which patron favor +</en></s>
+  <s><zh>收下了血祭（神眷+</zh><en> accepted the blood sacrifice (favor +</en></s>
+  <s><zh>的神眷不足</zh><en> doesn't have enough favor</en></s>
+  <s><zh>神迹布道</zh><en>miracle preaching</en></s>
+</LPStrings>

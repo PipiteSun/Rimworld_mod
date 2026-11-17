@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 狂乱疲惫 -->
+  <LP_FrenzyFatigue.label>frenzy exhaustion</LP_FrenzyFatigue.label>
+  <!-- 狂乱过后筋疲力尽：移动 ×0.8，近战冷却 ×1.2。 -->
+  <LP_FrenzyFatigue.description>Exhausted after the frenzy: movement ×0.8, melee cooldown ×1.2.</LP_FrenzyFatigue.description>
+  <!-- 鹰之灵 -->
+  <LP_TotemEagleRage.label>eagle spirit</LP_TotemEagleRage.label>
+  <!-- 狂暴中鹰灵附体：移动 ×1.2，远程攻击更难命中你（×0.7）。 -->
+  <LP_TotemEagleRage.description>An eagle spirit possesses you while raging: movement ×1.2, ranged attacks have a harder time hitting you (×0.7).</LP_TotemEagleRage.description>
+  <!-- 狼群之灵 -->
+  <LP_WolfPackBuff.label>wolf pack spirit</LP_WolfPackBuff.label>
+  <!-- 身边有狂暴的狼之图腾勇士：近战命中 +15%。 -->
+  <LP_WolfPackBuff.description>A raging wolf totem warrior is nearby: melee hit +15%.</LP_WolfPackBuff.description>
+  <!-- 兽之面相 -->
+  <LP_TotemAspect.label>aspect of the beast</LP_TotemAspect.label>
+  <!-- 图腾兽的面相：熊 负重 ×2；鹰 远程武器射程 +3、射击精度略升；狼 移动 ×1.1，能追踪逃跑的敌人。 -->
+  <LP_TotemAspect.description>Aspect of the totem beast: bear, carry capacity ×2; eagle, ranged weapon range +3 and slightly better shooting accuracy; wolf, movement ×1.1 and can track fleeing enemies.</LP_TotemAspect.description>
+  <!-- 熊 -->
+  <LP_TotemAspect.stages.0.label>bear</LP_TotemAspect.stages.0.label>
+  <!-- 鹰 -->
+  <LP_TotemAspect.stages.1.label>eagle</LP_TotemAspect.stages.1.label>
+  <!-- 狼 -->
+  <LP_TotemAspect.stages.2.label>wolf</LP_TotemAspect.stages.2.label>
+  <!-- 被追踪 -->
+  <LP_Tracked.label>tracked</LP_Tracked.label>
+  <!-- 被狼之图腾勇士盯上了脚印：移动 ×0.8。 -->
+  <LP_Tracked.description>A wolf totem warrior is on its trail: movement ×0.8.</LP_Tracked.description>
+  <!-- 被嘲讽 -->
+  <LP_Taunted.label>taunted</LP_Taunted.label>
+  <!-- 被熊之图腾勇士吸引了注意，只想打他。 -->
+  <LP_Taunted.description>Attention drawn by a bear totem warrior; only wants to hit them.</LP_Taunted.description>
+  <!-- 狼之扑倒 -->
+  <LP_WolfPounce.label>wolf's takedown</LP_WolfPounce.label>
+  <!-- 近战命中把体型不超过 2 的目标撞倒 2 秒。 -->
+  <LP_WolfPounce.description>Melee hits knock targets of body size up to 2 down for 2 seconds.</LP_WolfPounce.description>
+  <!-- 风暴之魂 -->
+  <LP_StormSoulBuff.label>storm soul</LP_StormSoulBuff.label>
+  <!-- 风暴的力量护着身体：对应元素的伤害 ×0.5，舒适温度放宽。 -->
+  <LP_StormSoulBuff.description>The power of the storm protects the body: damage of the corresponding element ×0.5, comfortable temperature widened.</LP_StormSoulBuff.description>
+  <!-- 沙漠 -->
+  <LP_StormSoulBuff.stages.0.label>desert</LP_StormSoulBuff.stages.0.label>
+  <!-- 海洋 -->
+  <LP_StormSoulBuff.stages.1.label>sea</LP_StormSoulBuff.stages.1.label>
+  <!-- 冻原 -->
+  <LP_StormSoulBuff.stages.2.label>tundra</LP_StormSoulBuff.stages.2.label>
+  <!-- 庇护风暴 -->
+  <LP_StormShelter.label>shielding storm</LP_StormShelter.label>
+  <!-- 身处风暴先驱的光环里：对应元素的伤害 ×0.75，舒适温度放宽一半。 -->
+  <LP_StormShelter.description>In a Storm Herald's aura: damage of the corresponding element ×0.75, comfortable temperature widened by half.</LP_StormShelter.description>
+  <!-- 沙漠 -->
+  <LP_StormShelter.stages.0.label>desert</LP_StormShelter.stages.0.label>
+  <!-- 海洋 -->
+  <LP_StormShelter.stages.1.label>sea</LP_StormShelter.stages.1.label>
+  <!-- 冻原 -->
+  <LP_StormShelter.stages.2.label>tundra</LP_StormShelter.stages.2.label>
+  <!-- 野性直觉 -->
+  <LP_FeralInstinctBuff.label>feral instinct</LP_FeralInstinctBuff.label>
+  <!-- 察觉到袭击，抢先出手：移动 ×1.3，瞄准时间 ×0.5，近战冷却 ×0.8。 -->
+  <LP_FeralInstinctBuff.description>Sensed the raid and struck first: movement ×1.3, aiming time ×0.5, melee cooldown ×0.8.</LP_FeralInstinctBuff.description>
+  <!-- 稳固目标 -->
+  <LP_RogueSteady.label>steady target</LP_RogueSteady.label>
+  <!-- 瞄准好了：下一次攻击必定命中，并且满足偷袭条件。 -->
+  <LP_RogueSteady.description>Lined up the shot: the next attack always hits and meets sneak attack conditions.</LP_RogueSteady.description>
+  <!-- 死亡之击 -->
+  <LP_DeathStrikeFx.label>death strike</LP_DeathStrikeFx.label>
+  <!-- 死亡之击这一下的近战伤害倍率。 -->
+  <LP_DeathStrikeFx.description>Melee damage multiplier of this death strike.</LP_DeathStrikeFx.description>
+  <!-- 飞檐走壁 -->
+  <LP_SecondStoryBuff.label>second-story work</LP_SecondStoryBuff.label>
+  <!-- 身手轻巧：移动 ×1.15，地形、积雪和植物都拖不慢你。 -->
+  <LP_SecondStoryBuff.description>Light on your feet: movement ×1.15, and terrain, snow and plants can't slow you down.</LP_SecondStoryBuff.description>
+  <!-- 盗贼反射 -->
+  <LP_ThiefReflexBuff.label>thief's reflexes</LP_ThiefReflexBuff.label>
+  <!-- 战斗刚开始，手比谁都快：近战冷却、射击冷却 ×0.5。 -->
+  <LP_ThiefReflexBuff.description>The fight has just begun and your hands are faster than anyone's: melee and shooting cooldowns ×0.5.</LP_ThiefReflexBuff.description>
+  <!-- 隐形术 -->
+  <LP_ATInvisible.label>invisibility</LP_ATInvisible.label>
+  <!-- 诡术师的隐形术：隐形，攻击后现形（隐形时出手算偷袭）。 -->
+  <LP_ATInvisible.description>The arcane trickster's invisibility: invisible, revealed after attacking (attacking while invisible counts as a sneak attack).</LP_ATInvisible.description>
+  <!-- 被法师之手干扰 -->
+  <LP_Distracted.label>harried by mage hand</LP_Distracted.label>
+  <!-- 一只看不见的手在扯它的衣角：算作偷袭目标。 -->
+  <LP_Distracted.description>An invisible hand tugs at its clothes: counts as a sneak attack target.</LP_Distracted.description>
+  <!-- 被发现 -->
+  <LP_Spotted.label>spotted</LP_Spotted.label>
+  <!-- 游侠的原野之眼看见了它。 -->
+  <LP_Spotted.description>The ranger's eye of the wilds has spotted it.</LP_Spotted.description>
+  <!-- 伙伴守护 -->
+  <LP_CompanionGuard.label>companion guard</LP_CompanionGuard.label>
+  <!-- 游侠伙伴守在身边：伙伴在 3 格内时受到的伤害 ×0.75。 -->
+  <LP_CompanionGuard.description>The ranger's companion guards nearby: damage taken ×0.75 while the companion is within 3 cells.</LP_CompanionGuard.description>
+  <!-- 野兽之怒 -->
+  <LP_BeastFuryBuff.label>bestial fury</LP_BeastFuryBuff.label>
+  <!-- 兽王的伙伴：近战冷却 ×0.5（每次出手攻击两次）。 -->
+  <LP_BeastFuryBuff.description>The Beast Master's companion: melee cooldown ×0.5 (attacks twice each time).</LP_BeastFuryBuff.description>
+  <!-- 钢铁意志 -->
+  <LP_IronMindBuff.label>iron mind</LP_IronMindBuff.label>
+  <!-- 幽域追踪者的意志：不会恐惧，心智抗性 +10%。 -->
+  <LP_IronMindBuff.description>A Gloom Stalker's will: no fear, mind resistance +10%.</LP_IronMindBuff.description>
+</LanguageData>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 腐羹稳定 -->
+  <LP_StabilizeRot.label>stabilize rot stew</LP_StabilizeRot.label>
+  <!-- 把 20 份扭曲肉和 2 份化学燃料熬成 2 份畸变膏。畸变膏不会腐烂。 -->
+  <LP_StabilizeRot.description>Boil 20 twisted meat and 2 chemfuel into 2 aberrant paste. Aberrant paste doesn't rot.</LP_StabilizeRot.description>
+  <!-- 正在熬制畸变膏。 -->
+  <LP_StabilizeRot.jobString>Boiling aberrant paste.</LP_StabilizeRot.jobString>
+  <!-- 调配巨魔再生剂（畸变膏） -->
+  <LP_BrewTrollRegenAberrant.label>brew troll regenerant (aberrant paste)</LP_BrewTrollRegenAberrant.label>
+  <!-- 用 3 份畸变膏代替 4 瓶巨魔血：畸变膏 3 + 巨魔血 1 调配 1 剂巨魔再生剂。 -->
+  <LP_BrewTrollRegenAberrant.description>Replace 4 troll blood with 3 aberrant paste: brew 1 troll regenerant from 3 aberrant paste + 1 troll blood.</LP_BrewTrollRegenAberrant.description>
+  <!-- 正在调配巨魔再生剂。 -->
+  <LP_BrewTrollRegenAberrant.jobString>Brewing troll regenerant.</LP_BrewTrollRegenAberrant.jobString>
+  <!-- 调配畸变再生膏 -->
+  <LP_BrewAberrantSalve.label>brew aberrant regenerative paste</LP_BrewAberrantSalve.label>
+  <!-- 用 4 份畸变膏和 1 份草药调配 1 份畸变再生膏（医疗品，效果接近工业药；包扎时有 15% 可能留下畸变瘤块）。 -->
+  <LP_BrewAberrantSalve.description>Brew 1 aberrant regenerative paste from 4 aberrant paste and 1 herbal medicine (medicine, effect close to industrial medicine; 15% chance to leave an aberrant growth when tending).</LP_BrewAberrantSalve.description>
+  <!-- 正在调配畸变再生膏。 -->
+  <LP_BrewAberrantSalve.jobString>Brewing aberrant regenerative paste.</LP_BrewAberrantSalve.jobString>
+  <!-- 调配蜕形药剂 -->
+  <LP_BrewMorphDraught.label>brew metamorphosis draught</LP_BrewMorphDraught.label>
+  <!-- 用 5 份畸变膏和 1 瓶巨魔血调配 1 瓶蜕形药剂。 -->
+  <LP_BrewMorphDraught.description>Brew 1 metamorphosis draught from 5 aberrant paste and 1 troll blood.</LP_BrewMorphDraught.description>
+  <!-- 正在调配蜕形药剂。 -->
+  <LP_BrewMorphDraught.jobString>Brewing a metamorphosis draught.</LP_BrewMorphDraught.jobString>
+  <!-- 远域解剖 -->
+  <LP_FarDissection.label>Far Realm dissection</LP_FarDissection.label>
+  <!-- 把 50 份扭曲肉一块块切开，研究远域是怎么把血肉拧歪的：获得少量异象知识（基础）。殖民地累计解剖 500 份后自动完成研究“异怪学”。\n\n解剖者有 5% 的可能听见“远域低语”（心情 -5，3 天）。 -->
+  <LP_FarDissection.description>Cut 50 twisted meat apart piece by piece to study how the Far Realm twists flesh: gain a little Anomaly knowledge (basic). Once the colony has dissected 500 in total, the research "aberrant lore" completes automatically.\n\nThe dissector has a 5% chance to hear "far-realm whispers" (mood -5, 3 days).</LP_FarDissection.description>
+  <!-- 正在解剖扭曲肉。 -->
+  <LP_FarDissection.jobString>Dissecting twisted meat.</LP_FarDissection.jobString>
+  <!-- 生物铁析出 -->
+  <LP_ExtractBioferrite.label>bioferrite extraction</LP_ExtractBioferrite.label>
+  <!-- 在地狱铸炉的冥火里把 60 份扭曲肉和 5 份化学燃料烧成 10 份生物铁。冥火要歇：每个殖民地每天最多析出 30 份（3 次）。 -->
+  <LP_ExtractBioferrite.description>Burn 60 twisted meat and 5 chemfuel into 10 bioferrite in the infernal forge's netherfire. The netherfire needs rest: each colony can extract at most 30 per day (3 times).</LP_ExtractBioferrite.description>
+  <!-- 正在析出生物铁。 -->
+  <LP_ExtractBioferrite.jobString>Extracting bioferrite.</LP_ExtractBioferrite.jobString>
+  <!-- 淬炼寒铁（生物铁） -->
+  <LP_TemperColdIronBio.label>temper cold iron (bioferrite)</LP_TemperColdIronBio.label>
+  <!-- 用 3 份生物铁和 10 份钢在地狱铸炉里淬出 5 份寒铁。 -->
+  <LP_TemperColdIronBio.description>Quench 5 cold iron from 3 bioferrite and 10 steel in the infernal forge.</LP_TemperColdIronBio.description>
+  <!-- 正在淬炼寒铁。 -->
+  <LP_TemperColdIronBio.jobString>Tempering cold iron.</LP_TemperColdIronBio.jobString>
+  <!-- 焚化扭曲肉 -->
+  <LP_Offer_Twisted.label>incinerate twisted meat</LP_Offer_Twisted.label>
+  <!-- 把 30 份扭曲肉当着守护神的面烧干净：神眷 +1，每天最多 +3。只有守护神是凯兰沃、拉山德或莎尔时才有用（凯兰沃和拉山德憎恶这种不自然的血肉，莎尔喜欢它带来的遗忘）。 -->
+  <LP_Offer_Twisted.description>Burn 30 twisted meat clean before the patron deity: divine favor +1, at most +3 per day. Only works when the patron deity is Kelemvor, Lathander or Shar (Kelemvor and Lathander loathe such unnatural flesh; Shar likes the forgetting it brings).</LP_Offer_Twisted.description>
+  <!-- 正在焚化扭曲肉。 -->
+  <LP_Offer_Twisted.jobString>Incinerating twisted meat.</LP_Offer_Twisted.jobString>
+  <!-- 制作畸变巨像胚体 -->
+  <LP_MakeAberrantGolem.label>make aberrant golem seed</LP_MakeAberrantGolem.label>
+  <!-- 消耗 200 份扭曲肉和 10 份畸变膏制作一具血肉巨像胚体。唤醒后的巨像带“畸变血肉”：受到的伤害 -17%（相当于生命 +20%），缓慢自愈，死亡时裂成 2 只小血肉兽仆从（1 天后烂掉）。其余与普通血肉巨像相同。 -->
+  <LP_MakeAberrantGolem.description>Make a flesh golem seed from 200 twisted meat and 10 aberrant paste. The awakened golem has "aberrant flesh": damage taken -17% (equivalent to +20% health), slowly heals itself, and splits into 2 small fleshbeast servants when it dies (rotting after 1 day). Otherwise the same as an ordinary flesh golem.</LP_MakeAberrantGolem.description>
+  <!-- 正在制作畸变巨像胚体。 -->
+  <LP_MakeAberrantGolem.jobString>Making an aberrant golem seed.</LP_MakeAberrantGolem.jobString>
+</LanguageData>

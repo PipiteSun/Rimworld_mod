@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 魔能爆 -->
+  <LP_EldritchBlast.label>eldritch blast</LP_EldritchBlast.label>
+  <!-- 签约人都会的契约法术：一道力场光束（射程 24），每道 12 点魔能伤害（护甲穿透 30%）。道数随冒险者等级：1–4 级 1 道、5–10 级 2 道、11–16 级 3 道、17 级起 4 道；目标倒下后剩下的光束自动打向附近的敌人。九狱宗主：20% 点燃；妖精宗主：15% 让目标迷惑 2 秒。冷却 4 秒。解约后失去。 -->
+  <LP_EldritchBlast.description>A pact spell every signer knows: a beam of force (range 24), each beam 12 eldritch damage (armor penetration 30%). Number of beams by adventurer level: 1 at levels 1-4, 2 at 5-10, 3 at 11-16, 4 from 17; if the target falls, the remaining beams automatically fire at nearby enemies. Nine Hells patrons: 20% to ignite; fey patrons: 15% to confuse the target for 2 seconds. Cooldown 4 seconds. Lost when the pact ends.</LP_EldritchBlast.description>
+  <!-- 召唤角魔 -->
+  <LP_SummonHornedDevil.label>summon horned devil</LP_SummonHornedDevil.label>
+  <!-- 按阿斯莫蒂尔斯的契约召来一名角魔，作为仆从听候差遣 5 天。冷却 15 天（欠债时 ×2）。 -->
+  <LP_SummonHornedDevil.description>Summon a horned devil under the pact with Asmodeus to serve as your servant for 5 days. Cooldown 15 days (×2 while in debt).</LP_SummonHornedDevil.description>
+  <!-- 召唤寒冰魔 -->
+  <LP_SummonIceDevil.label>summon ice devil</LP_SummonIceDevil.label>
+  <!-- 按梅菲斯托菲勒斯的契约召来一名寒冰魔，作为仆从听候差遣 5 天，期满正常离开。冷却 15 天（欠债时 ×2）。 -->
+  <LP_SummonIceDevil.description>Summon an ice devil under the pact with Mephistopheles to serve as your servant for 5 days, leaving normally when the term ends. Cooldown 15 days (×2 while in debt).</LP_SummonIceDevil.description>
+  <!-- 召唤红帽 -->
+  <LP_SummonRedcaps.label>summon redcaps</LP_SummonRedcaps.label>
+  <!-- 按风暗女王的契约召来 4 只红帽，作为仆从听候差遣 3 天。冷却 1 季（欠债时 ×2）。 -->
+  <LP_SummonRedcaps.description>Summon 4 redcaps under the pact with the Queen of Air and Darkness to serve as your servants for 3 days. Cooldown 1 quarter (×2 while in debt).</LP_SummonRedcaps.description>
+  <!-- 冬之帷幕 -->
+  <LP_WinterVeil.label>winter's veil</LP_WinterVeil.label>
+  <!-- 落下一层冬雾：6 格内的敌人做感知豁免（豁免难度随签约人的熟练加值和魅力提高；目标的属性调整值和熟练加值每点 +5% 成功率），失败被魅惑 6 秒。冷却 1 天（欠债时 ×2）。 -->
+  <LP_WinterVeil.description>Let a layer of winter mist fall: enemies within 6 cells make a Wisdom save (difficulty rises with the signer's proficiency bonus and Charisma; each point of the target's ability modifier and proficiency bonus gives +5% success) or are charmed for 6 seconds. Cooldown 1 day (×2 while in debt).</LP_WinterVeil.description>
+  <!-- 夏日之触 -->
+  <LP_SummerTouch.label>summer's touch</LP_SummerTouch.label>
+  <!-- 手心按在伤口上，夏天的光就把它合上了：治好一名殖民者最严重的一处伤（不含缺失部位）。冷却 1 天（欠债时 ×2）。 -->
+  <LP_SummerTouch.description>Press a palm on the wound and summer's light closes it: heals a colonist's worst wound (not missing parts). Cooldown 1 day (×2 while in debt).</LP_SummerTouch.description>
+</LanguageData>

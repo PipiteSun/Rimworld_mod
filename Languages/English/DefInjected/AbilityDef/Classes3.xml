@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 不屈战魂 -->
+  <LP_LegUnyielding.label>unyielding warrior</LP_LegUnyielding.label>
+  <!-- 传奇被动：每天一次，本应倒下时不倒，立刻治好一半伤势，斗志回满。传奇战士。 -->
+  <LP_LegUnyielding.description>Legendary passive: once per day, when you would fall you stay up instead, instantly heal half your injuries and fully restore grit. Legendary fighter.</LP_LegUnyielding.description>
+  <!-- 千军破 -->
+  <LP_LegThousandArmies.label>army breaker</LP_LegThousandArmies.label>
+  <!-- 传奇：朝目标方向 90° 扇形横扫。拿近战武器时 5 格内每个敌人吃一次近战结算，伤害 ×3（必中）；拿远程武器时武器射程内每个敌人各中一发必中的子弹，伤害 ×3。冷却 1 天。传奇战士。 -->
+  <LP_LegThousandArmies.description>Legendary: sweep a 90° cone toward the target. With a melee weapon, every enemy within 5 cells takes a melee resolution at ×3 damage (guaranteed hit); with a ranged weapon, every enemy within weapon range takes one guaranteed-hit bullet at ×3 damage. Cooldown 1 day. Legendary fighter.</LP_LegThousandArmies.description>
+  <!-- 无相之身 -->
+  <LP_LegFormless.label>formless body</LP_LegFormless.label>
+  <!-- 传奇被动：近战闪避 +25%，免疫击晕。传奇武僧。 -->
+  <LP_LegFormless.description>Legendary passive: melee dodge +25%, immune to stuns. Legendary monk.</LP_LegFormless.description>
+  <!-- 天震掌 -->
+  <LP_LegHeavenPalm.label>heaven-shaking palm</LP_LegHeavenPalm.label>
+  <!-- 传奇：一掌按在相邻敌人身上，先一次近战结算，再震伤躯干 80 × 战技强度（× 心灵敏感度）钝器伤害（无视八成护甲），并击晕 10 秒。传奇怪物和剧情首领有 50% 的成功率挣脱击晕。冷却 1 天。传奇武僧。 -->
+  <LP_LegHeavenPalm.description>Legendary: press a palm against an adjacent enemy: first a melee resolution, then a shock to the torso for 80 × martial power (× psychic sensitivity) blunt damage (ignoring 80% of armor), stunning for 10 seconds. Legendary monsters and story bosses have a 50% chance to break the stun. Cooldown 1 day. Legendary monk.</LP_LegHeavenPalm.description>
+  <!-- 神圣化身 -->
+  <LP_LegDivineIncarnation.label>divine avatar</LP_LegDivineIncarnation.label>
+  <!-- 传奇：30 秒内化身神圣之光：半径 8 内的敌人每秒受 10 × 神恩强度（× 心灵敏感度）神圣伤害（对亡灵、邪魔翻倍），友军每秒治疗它的一半，并且不会恐慌、不会精神崩溃。冷却 2 天。传奇圣武士。 -->
+  <LP_LegDivineIncarnation.description>Legendary: become divine light for 30 seconds: enemies within radius 8 take 10 × divine power (× psychic sensitivity) holy damage per second (doubled against undead and fiends), allies heal half that per second and don't panic or have mental breaks. Cooldown 2 days. Legendary paladin.</LP_LegDivineIncarnation.description>
+  <!-- 誓约不灭 -->
+  <LP_LegUndyingOath.label>unbroken oath</LP_LegUndyingOath.label>
+  <!-- 传奇被动：自己和 8 格内的友军所有豁免成功率 +10%。多名圣武士不叠加。传奇圣武士。 -->
+  <LP_LegUndyingOath.description>Legendary passive: you and allies within 8 cells get +10% success on all saves. Multiple paladins don't stack. Legendary paladin.</LP_LegUndyingOath.description>
+  <!-- 法术强效 -->
+  <LP_LegSpellMastery.label>empowered spells</LP_LegSpellMastery.label>
+  <!-- 传奇被动：用奥术强度的法术（法师全部、术士智识支）伤害与治疗 ×1.3；法师法术的法力消耗 −1（最少 1）。传奇法师。 -->
+  <LP_LegSpellMastery.description>Legendary passive: damage and healing of spells using arcane power (all wizard spells, the sorcerer's Intellectual branch) ×1.3; wizard spell mana cost -1 (minimum 1). Legendary wizard.</LP_LegSpellMastery.description>
+  <!-- 流星爆 -->
+  <LP_LegMeteorSwarm.label>meteor swarm</LP_LegMeteorSwarm.label>
+  <!-- 传奇：30 格内一点、半径 4 里先后砸下 4 颗流星，每颗半径 2.5 的火焰爆炸，伤害 35 × 奥术强度（× 心灵敏感度）。冷却 1 天。传奇法师。 -->
+  <LP_LegMeteorSwarm.description>Legendary: 4 meteors fall one after another in radius 4 at a point within 30 cells, each a fire explosion of radius 2.5 dealing 35 × arcane power (× psychic sensitivity) damage. Cooldown 1 day. Legendary wizard.</LP_LegMeteorSwarm.description>
+  <!-- 神迹干预 -->
+  <LP_LegDivineIntervention.label>divine intervention</LP_LegDivineIntervention.label>
+  <!-- 传奇：向神明祈求神迹：本地图所有殖民者伤势全愈、疾病清除，死亡不超过 3 天的殖民者尸体复活（巫妖、死灵造物、没有大脑的除外）。冷却 30 天。传奇牧师。 -->
+  <LP_LegDivineIntervention.description>Legendary: pray to the gods for a miracle: all colonists on this map are fully healed and cured of disease, and colonist corpses dead no more than 3 days are revived (except liches, necromantic constructs and those without a brain). Cooldown 30 days. Legendary cleric.</LP_LegDivineIntervention.description>
+  <!-- 神圣守护 -->
+  <LP_LegDivineGuardian.label>divine guardian</LP_LegDivineGuardian.label>
+  <!-- 传奇被动：神恩强度 +20%；复生术只消耗 2 神恩。传奇牧师。 -->
+  <LP_LegDivineGuardian.description>Legendary passive: divine power +20%; Revivify costs only 2 divinity. Legendary cleric.</LP_LegDivineGuardian.description>
+  <!-- 永恒德鲁伊 -->
+  <LP_LegTimelessDruid.label>timeless druid</LP_LegTimelessDruid.label>
+  <!-- 传奇被动：成年后不再衰老；荒野变形不消耗法力。传奇德鲁伊。 -->
+  <LP_LegTimelessDruid.description>Legendary passive: no longer ages after adulthood; Wild Shape costs no mana. Legendary druid.</LP_LegTimelessDruid.description>
+  <!-- 自然之怒 -->
+  <LP_LegNatureWrath.label>nature's wrath</LP_LegNatureWrath.label>
+  <!-- 传奇：30 格内一点半径 6 掀起风暴：4 道落雷各劈一个敌人（没有敌人时劈在范围里），每道 30 × 生长强度（× 心灵敏感度）电击；范围里的敌人被藤蔓缠住 10 秒 × 生长强度。冷却 1 天。传奇德鲁伊。 -->
+  <LP_LegNatureWrath.description>Legendary: raise a storm in radius 6 at a point within 30 cells: 4 lightning bolts each strike an enemy (or the area when there are none), each 30 × verdant power (× psychic sensitivity) electrical damage; enemies in range are entangled by vines for 10 seconds × verdant power. Cooldown 1 day. Legendary druid.</LP_LegNatureWrath.description>
+  <!-- 血脉觉醒 -->
+  <LP_LegBloodlineAwakening.label>bloodline awakening</LP_LegBloodlineAwakening.label>
+  <!-- 传奇被动：天赋强度 +20%；有术士血脉时，受到血脉对应元素的伤害 ×0.5（火元素裔、巨灵、坎比恩：火焰；水元素裔：冻伤；土元素裔、泰坦：钝器；风元素裔、风暴巨人、云巨人：闪电；六臂蛇人：利器）。传奇术士。 -->
+  <LP_LegBloodlineAwakening.description>Legendary passive: innate power +20%; with a sorcerer bloodline, damage of the bloodline's element taken ×0.5 (fire genasi, genies, cambions: fire; water genasi: frostbite; earth genasi, titans: blunt; air genasi, storm giants, cloud giants: lightning; mariliths: sharp). Legendary sorcerer.</LP_LegBloodlineAwakening.description>
+  <!-- 魔力奔流 -->
+  <LP_LegArcaneSurge.label>arcane torrent</LP_LegArcaneSurge.label>
+  <!-- 传奇：接下来 1 天内的 3 个职业法术（消耗资源的能力）不消耗资源、不进冷却。冷却 2 天。传奇术士。 -->
+  <LP_LegArcaneSurge.description>Legendary: the next 3 class spells (abilities that cost resources) within 1 day cost no resources and trigger no cooldown. Cooldown 2 days. Legendary sorcerer.</LP_LegArcaneSurge.description>
+  <!-- 魂铸 -->
+  <LP_LegSoulforge.label>soulforged</LP_LegSoulforge.label>
+  <!-- 传奇被动：制作的 DND 武器（器械师门槛表里的那些）品质 +1，另有 10% 直接成为传说品质。传奇器械师。 -->
+  <LP_LegSoulforge.description>Legendary passive: crafted DND weapons (those in the artificer requirement table) get +1 quality, with another 10% chance to become legendary outright. Legendary artificer.</LP_LegSoulforge.description>
+</LanguageData>

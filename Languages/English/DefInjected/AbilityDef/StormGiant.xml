@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 闪电束 -->
+  <LP_StormLightningBolt.label>lightning bolt</LP_StormLightningBolt.label>
+  <!-- 朝一个方向放出一道笔直的闪电，贯穿15格：路径上的每个人和建筑受到12点火焰和20点 EMP（遇到墙就停下）。冷却6小时。 -->
+  <LP_StormLightningBolt.description>Release a straight bolt of lightning in one direction, piercing 15 cells: each person and building along the path takes 12 fire and 20 EMP (stops at walls). Cooldown 6 hours.</LP_StormLightningBolt.description>
+  <!-- 召唤风暴 -->
+  <LP_SummonStorm.label>summon storm</LP_SummonStorm.label>
+  <!-- （成年）召来一场风暴：地图天气转为雷雨并锁定1天；这一天里每2小时，会有一道雷劈在随机一名敌人3格内。冷却7天。 -->
+  <LP_SummonStorm.description>(Adult) Summon a storm: the map's weather turns to thunderstorm and is locked for 1 day; during that day, every 2 hours a bolt strikes within 3 cells of a random enemy. Cooldown 7 days.</LP_SummonStorm.description>
+</LanguageData>

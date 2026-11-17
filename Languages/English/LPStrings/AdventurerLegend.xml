@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（AdventurerLegend.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>血量</zh><en>health</en></s>
+  <s><zh>近战</zh><en>melee</en></s>
+  <s><zh>远程</zh><en>ranged</en></s>
+  <s><zh>心灵</zh><en>mind</en></s>
+  <s><zh>回复</zh><en>recovery</en></s>
+  <s><zh>承受</zh><en>endurance</en></s>
+  <s><zh>工作</zh><en>work</en></s>
+  <s><zh>（亲和 ×</zh><en> (affinity ×</en></s>
+  <s><zh>（与等级成长、体质、巨躯相乘）</zh><en> (multiplies with level growth, Constitution and giant frame)</en></s>
+  <s><zh>近战伤害 </zh><en>Melee damage </en></s>
+  <s><zh>射击命中 </zh><en>Shooting hit </en></s>
+  <s><zh>（25 格处；每格精度 ×</zh><en> (at 25 cells; accuracy per cell ×</en></s>
+  <s><zh>心灵敏感度 </zh><en>Psychic sensitivity </en></s>
+  <s><zh>伤口愈合 </zh><en>Wound healing </en></s>
+  <s><zh>，免疫速度 </zh><en>, immunity gain speed </en></s>
+  <s><zh>受到伤害 </zh><en>Damage taken </en></s>
+  <s><zh>（每有效点 −1.5% 直接相加，最低承受原伤害的 5%）</zh><en> (−1.5% per effective point, added directly; at least 5% of the original damage is taken)</en></s>
+  <s><zh>全局工作速度 </zh><en>Global work speed </en></s>
+  <s><zh>全局学习 </zh><en>Global learning </en></s>
+  <s><zh>还没有投点。</zh><en>No points spent yet.</en></s>
+  <s><zh>“传奇等级”已在设置里关闭：传奇属性点暂时没有效果。</zh><en>"Legend levels" is turned off in settings: legend attribute points have no effect for now.</en></s>
+  <s><zh>没有冒险者等级。</zh><en>No adventurer level.</en></s>
+  <s><zh>只有传奇冒险者能用。</zh><en>Only legendary adventurers can use this.</en></s>
+  <s><zh>还没有投过传奇属性点。</zh><en>No legend attribute points spent yet.</en></s>
+  <s><zh>握碎了传奇重铸之石：退回 </zh><en> crushed the legendary reforging stone: refunded </en></s>
+  <s><zh> 个传奇属性点</zh><en> legend attribute points</en></s>
+  <s><zh>，在“冒险者”分页重新投点。</zh><en>; respend them on the "Adventurer" tab.</en></s>
+  <s><zh>，已按设置自动重投。</zh><en>; automatically respent per settings.</en></s>
+  <s><zh>传奇等级 21～40</zh><en>Legend levels 21-40</en></s>
+  <s><zh>20 级的冒险者经验照常累积；成为传奇冒险者（20 级 + DND 里程碑）后可以继续升到 40 级，攒下的经验立即结算。21～40 级不给属性提升和专长，每级 2 个传奇属性点（八项，无上限）；VPE 路径点每 2 级 1 点。\n传奇属性点不乘“属性效果强度”，Isekai 共存模式下照样生效。关闭后不再升传奇等级，传奇属性点暂时没有效果（点数保留）。</zh><en>Adventurer XP at level 20 keeps accumulating as usual; after becoming a legendary adventurer (level 20 + DND milestone), you can keep leveling to 40, and accumulated XP is settled immediately. Levels 21-40 give no ability score improvements or feats, but 2 legend attribute points per level (eight attributes, uncapped); VPE path points 1 per 2 levels.\nLegend attribute points aren't multiplied by "ability effect strength" and still apply in Isekai coexistence mode. When off, no more legend levels are gained and legend attribute points have no effect for now (points are kept).</en></s>
+  <s><zh>殖民者自动投传奇属性点</zh><en>Colonists auto-spend legend attribute points</en></s>
+  <s><zh>开启后殖民者的传奇属性点自动投：近战职业 近战 + 血量，施法职业 心灵 + 血量，其他人 工作 + 学习（需要 VPE 的 DND 职业来区分）。关闭时在“冒险者”分页手动投。敌人永远自动。</zh><en>When on, colonists' legend attribute points are spent automatically: martial classes melee + health, spellcasting classes psychic + health, everyone else work + learning (needs VPE DND classes to tell apart). When off, spend them manually on the "Adventurer" tab. Enemies are always automatic.</en></s>
+  <s><zh>敌人可达传奇等级</zh><en>Enemies can reach legend levels</en></s>
+  <s><zh>剧情首领、宿敌冠军和袭击领队可以到 21～40 级（自动成为传奇、自动投点）：领队的每人点数超出 20 级门槛的部分每 60 点 +1 级；剧情首领按当前威胁点数的 20% 算；宿敌冠军 = 殖民地最高等级 + 2。需要同时打开“敌人冒险者等级”。\n开不开 Isekai 共存模式都用这一个开关（1.63.0 起不再分两份）。</zh><en>Story bosses, nemesis champions and raid leaders can reach levels 21-40 (automatically becoming legendary and spending points): leaders get +1 level per 60 points of their share above the level 20 threshold; story bosses count 20% of current threat points; nemesis champions = colony's highest level + 2. Needs "enemy adventurer levels" on too.\nThis one switch is used with or without Isekai coexistence mode (no longer split in two since 1.63.0).</en></s>
+</LPStrings>

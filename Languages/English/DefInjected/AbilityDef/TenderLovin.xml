@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 温存 -->
+  <LP_TenderLovin.label>tender lovin'</LP_TenderLovin.label>
+  <!-- 走到目标身边，和对方温存一会儿。结束后双方获得和原版亲热一样的心情（“滚床单”），也算一次亲热：下次亲热的冷却照原版重新计算，优侣种的欢爱依赖会被满足；生物科技下异性之间有和原版一样的怀孕几率（看双方的生育计划、绝育等）。\n\n和“放荡交欢”不同，这不算出轨：双方现有的恋人、伴侣、未婚夫妻和配偶关系都保持不变。\n\n目标须为成年人形、清醒、不敌对，属于同一派系或是本殖民地的囚犯 / 奴隶；不能是无性恋或血亲，且对施放者的好感不低于 0（恋人之间不限）。 -->
+  <LP_TenderLovin.description>Walk to the target and spend some tender time together. Afterwards both get the same mood as vanilla lovin' ("got some lovin'"), and it also counts as lovin': the next lovin' cooldown is recalculated as in vanilla, and a highmate's lovin' dependency is satisfied; with Biotech, opposite-sex couples have the same pregnancy chance as vanilla (depending on both parties' family planning, sterilization, etc.).\n\nUnlike "promiscuous lovin'", this doesn't count as cheating: both parties' existing lover, partner, fiancé and spouse relationships stay unchanged.\n\nThe target must be an adult humanlike, conscious and not hostile, in the same faction or a prisoner / slave of this colony; can't be asexual or a blood relative, and their opinion of the caster must be at least 0 (no limit between lovers).</LP_TenderLovin.description>
+</LanguageData>

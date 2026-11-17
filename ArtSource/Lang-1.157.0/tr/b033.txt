@@ -1,0 +1,171 @@
+s07316	Chance to resist mind effects such as psychic blasts, parasites and charm; also proportionally weakens negative psychic moods such as psychic drone. Loss-of-control states forced on our units by vanilla or VPE psycasts (such as fleeing in terror, berserk) are also resisted with this chance; if not resisted, the duration is shortened by the same proportion (up to 75% shorter).
+s07317	mind resistance
+s07318	That fire giant always smells of burning; fire is the natural bane of trolls.
+s07319	the fire giant's forge fire
+s07320	After living with fire giants long enough, the smell of burning actually feels reassuring.
+s07321	used to the forge fire
+s07322	trolls and fire giants
+s07323	A steel slave collar hiding a compressed anesthetic capsule and a sensor needle. The moment a slave wearing it starts a rebellion, incites rebellion or goes berserk and hurts someone, the collar injects anesthetic into the neck, knocking them out on the spot for about half a day; after waking the slave is more compliant (suppression +30%).\n\nOnce the capsule is used up it takes about two days to refill, during which the collar won't trigger again (the inspect pane shows the remaining time). Only works on slaves; slightly heavier than an ordinary slave collar, with the same suppression effect.
+s07324	anesthetic slave collar
+s07325	A powerful anesthetic injected by an anesthetic slave collar. Fast asleep; wakes up on their own when it wears off.
+s07326	collar anesthesia
+s07327	unconscious
+s07328	A storm giant exiled from the deep sea court drifted onto this strange coast in a thunderstorm, with two human sailors who refused to leave him.\n\nThe storm giant is empty-handed; the first day of the start is a thunderstorm that followed them in from the sea.\n\nA coastal map is recommended: storm giants walk through shallow ocean and marsh as if on flat ground, are stronger in wind and rain, and can foresee big raids; but they have few children, and are gloomy all day long.
+s07329	A storm giant and two human sailors.
+s07330	storm giant
+s07331	human sailor
+s07332	The gates of the deep sea court closed behind you.\n\nTwo sailors rowed a battered boat after you for three days and nights, until a final wave slammed you all onto this strange coast. The thunderstorm hasn't stopped; it came with you.\n\nYou can see the shadows of the future, but not your own. Survive here first.
+s07333	An exiled storm giant and two human sailors. Coastal map recommended.
+s07334	A thunderstorm that followed the storm giant in from the sea.
+s07335	deep sea storm
+s07336	sailor
+s07337	storm giant seer
+s07338	enslaved storm giant
+s07339	Deep blue hair, like the sea at the heart of a storm.
+s07340	deep blue hair
+s07341	Silver-white hair, like foam on the crest of a wave.
+s07342	silver-white hair
+s07343	Shackles carved with forbidding spells by the Red Wizards: melee damage halved, can't use any abilities, and can't unleash thunder strikes. Removed when captured or after joining the colony.
+s07344	shackles
+s07345	A storm giant's teal skin, like seawater in a storm.
+s07346	teal skin
+s07347	A storm giant's pale lilac-grey skin, like the sky before a thunderstorm.
+s07348	pale lilac-grey skin
+s07349	pale lilac-grey
+s07350	Fully immune to EMP damage.
+s07351	Lightning strike explosions don't harm them (fires caused by lightning still burn).
+s07352	Lightning is the storm giants' blood. EMP has no effect on them at all; lightning strike explosions (natural thunderstorms, a titan's divine punishment, lightning called by Talos-possessed, lightning a storm giant calls itself) can't hurt them.
+s07353	body of lightning
+s07354	A thunderstorm summoned by a storm giant. While the storm lasts, a bolt strikes an enemy every 2 hours.
+s07355	summon storm
+s07356	In rain, thunderstorms, dry thunderstorms or heavy snow: melee damage ×115%, move speed ×110%, mood +3.
+s07357	The bigger the storm, the livelier the storm giant. When the map's weather is rain, thunderstorm, dry thunderstorm or heavy snow: melee damage +15%, move speed +10%, mood +3 (the storm is singing).
+s07358	A storm giant's crown woven from deep sea coral, its branches carved with thunder patterns that glow faintly in the rain.
+s07359	coral thunder crown
+s07360	I've seen things that haven't happened yet and can't pretend not to know. Only in the sound of rain, or alone, does my heart calm for a while.
+s07361	heavy portents
+s07362	A giant race dwelling in the deep sea and at the heart of storms; the bloodline is passed on to children, but they have few. Adult storm giants are 2.4 times the size of an ordinary person, with pale lilac-grey or teal skin, wearing crowns woven of coral and thunder patterns. They walk freely through deep sea and shallows, lightning striking them leaves them unharmed, and every punch carries thunder. Storm giants are born seers, able to read coming disasters in the winds and clouds; this gift also leaves them gloomy all day long. In the giant ordning, storm giants stand at the top.
+s07363	Inheritable giant race (rank 1 of the ordning). 2.4× giant body, moving in water, immune to EMP and lightning strikes, melee carries thunder, stronger in wind and rain, foresees raids; lightning bolt, summon storm; fertility ×0.5, gloomy by nature.
+s07364	Giant lineage: storm giant (rank 1 of the ordning, the highest).
+s07365	Body size grows with age, reaching ×2.4 as an adult (drawn ×1.55).
+s07366	Giant stomach: max food rises with body size, ×240% as an adult.
+s07367	Move speed: ×90%; fertility: ×50%.
+s07368	Thunder strike: each melee hit adds 15 EMP, no cooldown.
+s07369	The deep sea bloodline of storm giants, inherited with the race. Adults are 2.4 times the size of an ordinary person (drawn 1.55×, children grow with age); the bigger the body, the stronger the health and melee (giant-body rules) and the bigger the appetite (adult stomach ×240%); long strides, but not fast. Storm giants walk through shallow water, marsh and shallow ocean as if on flat ground. Every melee hit they land adds a bolt of thunder (15 EMP), and they can cast lightning bolt; as adults they can also summon storms. They don't care about nudity, and their fertility is only half of normal.
+s07370	storm giant origin
+s07371	Release a straight bolt of lightning in one direction, piercing 15 cells: each person and building along the path takes 12 fire and 20 EMP (stops at walls). Cooldown 6 hours.
+s07372	Permanent mood -3; doesn't apply in rain or with nobody else within 5 cells.
+s07373	Those who can see the future are never happy. Storm giants have a constant mood -3 (heavy portents); only in the rain, or with no one else within 5 cells so they can gaze at the horizon alone, does the gloom lift.
+s07374	melancholy seer
+s07375	As an adult: hostile raids of ≥1000 points on the home map are delayed 12 hours and announced in advance.
+s07376	Storm giants can read coming disasters in the winds and clouds. With an adult storm giant on the home map, hostile raids of ≥1000 points are delayed 12 hours and a letter announces the faction and direction in advance (stacks with the Harper warning; can be turned off in mod settings).
+s07377	storm omen
+s07378	Raindrops on my face, thunder rolling in the clouds. This is the song of the deep sea, and I understand it.
+s07379	the storm is singing
+s07380	(Adult) Summon a storm: the map's weather turns to thunderstorm and is locked for 1 day; during that day, every 2 hours a bolt strikes within 3 cells of a random enemy. Cooldown 7 days.
+s07381	Weather summoned by magic and temporarily locked.
+s07382	summoned weather
+s07383	dice of fate
+s07384	Talia sits behind her screen with a stack of notes and a bag of dice at hand. She tells stories with the classic rising-and-falling rhythm: pressure, then a breather, then more pressure.\n\nShe favors the adventures of this world: giant migrations, bards, dragon flyovers, abyssal whispers, blasphemers, falling wizard towers... on average she adds an extra DND campaign event every 3 days.\n\nEvery 5 days she rolls the dice of fate (d20): a 1 brings a great disaster (a true dragon, a portal out of control, etc.), 2-5 a minor trouble, 16-19 something good and an inspiration, and a natural 20 grants three more inspirations, adventurer XP and a magic item.
+s07385	Talia the Dungeon Master
+s07386	Passive: damage +1.5% × fighter level when shooting with a ranged weapon (including arcane shots) (+30% at level 20). Arcane Archer, fighter level 3.
+s07387	arcane archery
+s07388	Fire a sky-filling volley of arcane arrows at a point: the 10 enemies (excluding downed ones) closest to the center within radius 4 of the target point each take one guaranteed-hit bullet from your current weapon. Range = current weapon range, requires a ranged weapon. Grit 3, cooldown 60 seconds. Arcane Archer, fighter level 15.
+s07389	arrow storm
+s07390	Fire a guaranteed-hit shot at an enemy with your current weapon that bursts with arcane energy on impact: enemies within radius 2 of the impact point (including the target, excluding downed ones) each take 10 × marksman power force damage, sparing allies. Range = current weapon range, requires a ranged weapon. Grit 2, cooldown 15 seconds. Arcane Archer, fighter level 3.
+s07391	arcane shot: bursting arrow
+s07392	Entangled by arcane thorns: move speed ×0.5.
+s07393	grasping thorns
+s07394	Fire a guaranteed-hit shot at an enemy with your current weapon that sprouts arcane thorns on impact: an extra 8 × marksman power cut damage and move speed ×0.5 for 10 seconds. Range = current weapon range, requires a ranged weapon. Grit 1, cooldown 10 seconds. Arcane Archer, fighter level 3.
+s07395	arcane shot: grasping arrow
+s07396	Passive: ×1.15 damage when shooting enemies 12 or more cells away (multiplies with arcane archery). Arcane Archer, fighter level 7.
+s07397	Fire a guaranteed-hit shot at an enemy with your current weapon, the arrow wrapped in shadow: an extra 12 × marksman power psychic damage and sight -60% for 15 seconds. Range = current weapon range, requires a ranged weapon. Grit 2, cooldown 20 seconds. Arcane Archer, fighter level 11.
+s07398	arcane shot: shadow arrow
+s07399	Eyes veiled by a shadow arrow: sight -60%.
+s07400	shadow blinded
+s07401	An archer who pours arcane power into arrows and bullets: shooting damage with ranged weapons rises with fighter level, can fire three arcane shots (grasping, bursting, shadow), is deadlier at long range, and finally calls down a storm of arrows. Arcane shots all fire a guaranteed-hit shot from your current weapon and require a ranged weapon.
+s07402	Arcane Archer
+s07403	Passive: you and undead and fiends of your side within radius 5 get melee damage ×(1.1 + Charisma modifier × 0.02) (negative Charisma modifier counts as 0). Auras of several Oathbreakers don't stack; the strongest applies. Oathbreaker, paladin level 7.
+s07404	aura of hate
+s07405	Turn a hostile undead or fiend within 15 cells (liches, necromantic constructs, shamblers and other mutants, death knights, demiliches, creatures of the Abyss and the Nine Hells) to your side: 80% success (-5% per level the target is above you, minimum 10%); on success it joins your faction for 1 day, after which it most likely breaks free, with a 30% chance it chooses to stay. Story bosses and legendary units are unaffected. Channel Oath 1, no divinity cost. Oathbreaker, paladin level 3.
+s07406	channel oath: control undead
+s07407	Darkness shrouds the whole body: every 4 seconds enemies within radius 6 take necrotic damage (severity = damage each time), and you take ×0.5 ranged damage.
+s07408	Become a Dread Lord for 60 seconds: casting first releases a Dreadful Aspect in radius 6 (no Channel Oath cost); then every 4 seconds enemies within radius 6 (excluding downed ones) take 6 × divine power necrotic damage, and you take ×0.5 ranged damage. No divinity cost, once per day. Oathbreaker, paladin level 15.
+s07409	dread lord
+s07410	Reveal your dark true face: enemies within radius 6 (except mechanoids) have a 60% chance to be shaken and flee for 10 seconds (-5% per level the target is above you, minimum 10%). Channel Oath 1, no divinity cost. Oathbreaker, paladin level 3.
+s07411	channel oath: dreadful aspect
+s07412	Passive: sharp and blunt damage taken (swords, blunt weapons, bullets, arrows, etc.) ×0.75; holy damage and silver weapons aren't reduced by this. Oathbreaker, paladin level 11.
+s07413	supernatural resistance
+s07414	A fallen paladin who has forsaken their oath and given themself to darkness: no tenets, and can't break an oath. Channel Oath once per day (twice at level 11, three times at 15), no divinity cost, used to spread fear and control undead and fiends; the aura of hate makes you and nearby undead and fiends fiercer in melee, and finally you become a Dread Lord.
+s07415	Oathbreaker
+s07416	A warrior carrying ancient giant blood: the higher the level, the bigger the body (body size ×(1 + 2.5% × fighter level), ×1.5 at level 20, continuing to grow with legend levels up to ×2.0; the graphics grow too), with an extra +3% part health per level. Bullies smaller foes in melee, stomps to knock down crowds, and finally can briefly become a titan.
+s07417	Titan Fighter
+s07418	Passive: titanic form lasts 120 seconds and no longer leaves you exhausted; during titanic form each melee hit has a 20% chance to trigger a small stomp (radius 1.9, half damage, no grit cost). Titan Fighter, fighter level 15.
+s07419	ancient titan
+s07420	Ancient giant blood: body size and part health grow with fighter level; mighty grip increases carrying capacity, and immovable raises pain shock threshold by 10%.
+s07421	titan body
+s07422	Passive: pain shock threshold +10%, can't be knocked back, pushed or tripped, and stun durations are halved. Titan Fighter, fighter level 7.
+s07423	Passive: carrying capacity +2% × fighter level. Melee hits against enemies smaller than you deal ×1.15 damage and have a 25% chance to knock them back 1 cell. Titan Fighter, fighter level 3.
+s07424	mighty grip
+s07425	A heavy stomp: enemies within radius 2.9 take 10 + Strength modifier × 3 blunt damage; enemies smaller than you are also knocked down (stunned 2 seconds), with success 60% + size difference × 30%, up to 95%. Spares allies. Grit 2, cooldown 15 seconds. Titan Fighter, fighter level 3.
+s07426	earthshaking stomp
+s07427	Passive: body size ×(1 + 2.5% × fighter level) (×1.5 at level 20; after fighter reaches 20, adventurer legend levels keep counting, up to ×2.0), affecting the chance to be hit in melee, food intake, pack load and other vanilla effects; graphics (body, head, clothes, weapons) scale by √body size. Part health gets another +3% × fighter level on top of class level growth (+60% at level 20). Titan Fighter, fighter level 3.
+s07428	Become a titan for 60 seconds: body size another ×1.25, part health ×1.25, melee damage ×1.25, move speed ×0.9. Exhausted afterwards: rest -20%. Grit 3, once per day. Titan Fighter, fighter level 11.
+s07429	titanic form
+s07430	Become a titan: body size another ×1.25, part health ×1.25, melee damage ×1.25, move speed ×0.9. Exhausted afterwards (rest -20%; not for ancient titans).
+s07431	Turn invisible for 20 seconds × cunning power, revealed after attacking (attacking while invisible counts as a sneak attack). Costs 2 mana. Cooldown 20 seconds. Arcane Trickster, rogue level 3.
+s07432	invisibility (arcane trickster)
+s07433	The arcane trickster's invisibility: invisible, revealed after attacking (attacking while invisible counts as a sneak attack).
+s07434	invisibility
+s07435	Fire 3 arcane missiles, each 4 × cunning power arcane force damage, 28 cells. Costs 1 mana. Arcane Trickster, rogue level 3.
+s07436	magic missile (arcane trickster)
+s07437	Put one enemy within 20 cells into magical sleep for 8 seconds × cunning power. No effect on mechanoids or targets whose consciousness is already below 30%; mind resistance can resist it (-20% resist chance during a magical ambush). Costs 1 mana. Cooldown 1 minute. Arcane Trickster, rogue level 3.
+s07438	sleep (arcane trickster)
+s07439	Passive, by totem: bear, carry capacity ×2; eagle, ranged weapon range +3 and slightly better shooting accuracy; wolf, movement ×1.1, and fleeing enemies within 40 cells are tracked (movement ×0.8). Path of the Totem Warrior, barbarian level 7.
+s07440	aspect of the beast
+s07441	Passive: the first hit against an enemy not yet in combat (no attack target, not hurt and not attacking within 10 seconds) is always a critical (×2) and always a sneak attack. Assassin, rogue level 3.
+s07442	assassinate
+s07443	The Beast Master's companion: melee cooldown ×0.5 (attacks twice each time).
+s07444	bestial fury
+s07445	Passive: companion melee cooldown ×0.5 (attacks twice each time). Beast Master, ranger level 11.
+s07446	The ranger's companion guards nearby: damage taken ×0.75 while the companion is within 3 cells.
+s07447	companion guard
+s07448	Passive: against targets that are downed, asleep, stunned, entangled, in magical sleep or in a mental state (fleeing, charmed, etc.), sneak attacks deal another ×1.5 damage. Assassin, rogue level 11.
+s07449	deadly strike
+s07450	Strike an adjacent enemy for ×3 damage (sneak attack stacks as usual); if the target doesn't fall, it's downed outright unless it resists. Resist chance = 10% + 2% × target level (up to 50%), 50% for bosses and legendaries. Cooldown 6 hours. Assassin, rogue level 15.
+s07451	death strike
+s07452	Melee damage multiplier of this death strike.
+s07453	Passive, choose one: multiattack defense, from the second hit by the same enemy within 3 seconds, damage ×0.5; escape the horde, explosion and fire damage ×0.5. Hunter, ranger level 7.
+s07454	defensive tactics
+s07455	An invisible hand tugs at its clothes: counts as a sneak attack target.
+s07456	harried by mage hand
+s07457	Passive: your first hit each fight (a new fight starts after an hour without attacking) deals ×1.5 damage and makes the target flee in fear for 3 seconds (bosses and mechanoids are only shaken). While in darkness (light under 30%), melee and ranged hits against you ×0.8. Gloom Stalker, ranger level 3.
+s07458	dread ambusher
+s07459	Command your companion (within 30 cells): click an enemy → the companion lunges, knocking it down for 2 seconds with a bite; click an ally (or yourself) → companion guard for 30 seconds (that ally takes ×0.75 damage while the companion is within 3 cells); click an item → the companion fetches it back to you. The companion's attacks count as magic weapons. Cooldown 10 seconds. Beast Master, ranger level 7.
+s07460	exceptional training
+s07461	Pick one carried item from an adjacent enemy (medicine first, otherwise the most valuable piece) and put it in your pack. Cooldown 10 seconds. Thief, rogue level 3.
+s07462	fast hands: pickpocket
+s07463	Passive: can't be ambushed, assassinated or caught by surprise (the "unaware" bonuses of sneak attack, assassinate, hide in plain sight and assassination strikes don't work on you). When a raid arrives, act first: for 15 seconds movement ×1.3, aiming time ×0.5, melee cooldown ×0.8. Barbarian level 7 (general).
+s07464	feral instinct
+s07465	Sensed the raid and struck first: movement ×1.3, aiming time ×0.5, melee cooldown ×0.8.
+s07466	Passive: hostile favored enemies on the same map are marked ("spotted"), with a notice the first time. Ranger level 7 (general).
+s07467	eye of the wilds
+s07468	Passive: while raging, resolve an extra normal attack every second against an adjacent enemy you're fighting in melee. Cost: exhausted for 1 hour after the rage ends (movement ×0.8, melee cooldown ×1.2). Path of the Berserker, barbarian level 3.
+s07469	frenzy
+s07470	Exhausted after the frenzy: movement ×0.8, melee cooldown ×1.2.
+s07471	frenzy exhaustion
+s07472	Passive, choose one: colossus slayer, ×1.25 damage against already-wounded targets; horde breaker, with 3 or more enemies up close, after a melee hit strike another adjacent enemy once more (once per second). Hunter, ranger level 3.
+s07473	hunter's prey
+s07474	Passive: a master of disguise; Shadow Step invisibility lasts ×2. Assassin, rogue level 7.
+s07475	infiltration expertise
+s07476	Glare at an enemy within 10 cells, scaring it into fleeing for 10 seconds (mechanoids and others that can't flee are only shaken). Resist chance = 10% + 2% × target level (up to 50%), 50% for bosses and legendaries. No rage cost. Cooldown 1 hour. Path of the Berserker, barbarian level 11.
+s07477	intimidating presence
+s07478	Passive: immune to fear (fleeing mental states, shaken), mind resistance +10%. Gloom Stalker, ranger level 7.
+s07479	iron mind
+s07480	A Gloom Stalker's will: no fear, mind resistance +10%.
+s07481	An invisible hand: bring an item within 10 cells to your side, or open a door. No mana cost. Cooldown 5 seconds. Arcane Trickster, rogue level 3.
+s07482	mage hand
+s07483	Passive: sleep cast while invisible lowers the target's resist chance by 20%. Arcane Trickster, rogue level 7.
+s07484	magical ambush
+s07485	Passive: while raging, immune to fear, charm and mental breaks (shaken and fear present when the rage starts also disappear). Path of the Berserker, barbarian level 7.
+s07486	mindless rage

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 德鲁伊 -->
+  <LP_Path_Druid.label>druid</LP_Path_Druid.label>
+  <!-- DND 德鲁伊守护自然：安抚野兽、召唤野兽、荒野变形、兽王号令（驯兽），纠缠术、树肤术、植物滋长、召雷术（种植），终极 掌控天气。种植或驯兽任一 6 级即可入门；每个能力看自己那门技能（6/9/12/15/18），只练一门也能走完半棵树。效果乘心灵敏感度（最低 0.2，不封顶）。巫妖不能学。 -->
+  <LP_Path_Druid.description>The DND druid protects nature: Calm Beast, Conjure Animals, Wild Shape, Beast Lord's Call (Animals), Entangle, Barkskin, Plant Growth, Call Lightning (Plants), and ultimately Control Weather. Either Plants or Animals 6 unlocks the path; each ability uses its own skill (6/9/12/15/18), so training only one still completes half the tree. Effects are multiplied by psychic sensitivity (minimum 0.2, no cap). Liches cannot learn it.</LP_Path_Druid.description>
+  <!-- 需要种植或驯兽 6 级，或冒险者感知 13（巫妖不能学） -->
+  <LP_Path_Druid.lockedReason>Requires Plants or Animals 6, or adventurer Wisdom 13 (liches cannot learn it)</LP_Path_Druid.lockedReason>
+  <!-- DND职业 -->
+  <LP_Path_Druid.tab>DND classes</LP_Path_Druid.tab>
+  <!-- 德鲁伊：种植支掌管植物与天气，驯兽支掌管野兽与变形。 -->
+  <LP_Path_Druid.tooltip>Druid: the Plants branch governs plants and weather, the Animals branch governs beasts and shapeshifting.</LP_Path_Druid.tooltip>
+  <!-- 术士 -->
+  <LP_Path_Sorcerer.label>sorcerer</LP_Path_Sorcerer.label>
+  <!-- DND 术士生来带着魔力：混沌箭、魅惑人类、龙族之翼、群体暗示（社交），燃烧之手、超魔·孪生、冰风暴、超魔·强效（智识），终极 魔涌。社交或智识任一 6 级即可入门；元素裔、巨灵、泰坦、风暴巨人、云巨人、六臂蛇人有术士血脉，所有门槛 −2、天赋强度 +15%。效果乘心灵敏感度。 -->
+  <LP_Path_Sorcerer.description>The DND sorcerer is born with magic: Chaos Bolt, Charm Person, Dragon Wings, Mass Suggestion (Social), Burning Hands, Twinned Spell, Ice Storm, Empowered Spell (Intellectual), and ultimately Wild Surge. Either Social or Intellectual 6 unlocks the path; genasi, genies, titans, storm giants, cloud giants and mariliths have a sorcerer bloodline: all requirements -2, innate power +15%. Effects are multiplied by psychic sensitivity.</LP_Path_Sorcerer.description>
+  <!-- 需要社交或智识 6 级（术士血脉 4 级），或冒险者魅力 13 -->
+  <LP_Path_Sorcerer.lockedReason>Requires Social or Intellectual 6 (4 with a sorcerer bloodline), or adventurer Charisma 13</LP_Path_Sorcerer.lockedReason>
+  <!-- DND职业 -->
+  <LP_Path_Sorcerer.tab>DND classes</LP_Path_Sorcerer.tab>
+  <!-- 术士：社交支是天生的魅力法术，智识支是超魔与元素。 -->
+  <LP_Path_Sorcerer.tooltip>Sorcerer: the Social branch is innate charm magic, the Intellectual branch is metamagic and elements.</LP_Path_Sorcerer.tooltip>
+  <!-- 器械师 -->
+  <LP_Path_Artificer.label>artificer</LP_Path_Artificer.label>
+  <!-- DND 器械师把魔力锻进器械：奥术工坊、快速维修、符文铭刻、过载射击、魔力充能、大师工艺、山岳锻造、符文炮台与魔力共鸣。器械强度随手工等级增长；学习每一环都需要对应的手工等级（6/9/12/15/18）。装了 VPE 时，所有可制作的 DND 武器（符文枪械、法杖、食人魔大棒和制伏武器）都要会器械师对应的被动能力（奥术工坊、符文铭刻、山岳锻造）才能制作；传说武器和投掷物不受限，模组设置“DND武器需要器械师”可以关掉这条限制。 -->
+  <LP_Path_Artificer.description>The DND artificer forges magic into devices: Arcane Workshop, Quick Repair, Rune Inscription, Overcharged Shot, Arcane Charge, Master Craftsmanship, Mountain Forge, Rune Turret and Arcane Resonance. Device power grows with Crafting level; each tier requires the matching Crafting level (6/9/12/15/18). With VPE installed, all craftable DND weapons (rune firearms, staves, ogre clubs and nonlethal weapons) require the matching artificer passives (Arcane Workshop, Rune Inscription, Mountain Forge) to craft; legendary weapons and throwables are unaffected, and the mod setting "DND weapons need artificer" turns this restriction off.</LP_Path_Artificer.description>
+  <!-- 需要手工 6 级（或冒险者智力 13） -->
+  <LP_Path_Artificer.lockedReason>Requires Crafting 6 (or adventurer Intelligence 13)</LP_Path_Artificer.lockedReason>
+  <!-- DND职业 -->
+  <LP_Path_Artificer.tab>DND classes</LP_Path_Artificer.tab>
+  <!-- 器械师：手工决定器械强度与可学的能力。 -->
+  <LP_Path_Artificer.tooltip>Artificer: Crafting sets device power and learnable abilities.</LP_Path_Artificer.tooltip>
+</LanguageData>

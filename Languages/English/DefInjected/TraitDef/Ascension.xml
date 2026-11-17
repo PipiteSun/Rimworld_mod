@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- <color=#50C0C0>圣徒</color> -->
+  <LP_Saint.degreeDatas.color50C0C0color.label>&lt;color=#50C0C0&gt;Saint&lt;/color&gt;</LP_Saint.degreeDatas.color50C0C0color.label>
+  <!-- [PAWN_nameDef]在异端勇者面前证了道，是[PAWN_possessive]神的圣徒：心灵敏感度+15%、社交+2；[PAWN_possessive]的神每天神眷+0.2。装了 VPE 时神恩强度+0.15。 -->
+  <LP_Saint.degreeDatas.color50C0C0color.description>[PAWN_nameDef] bore witness to [PAWN_possessive] faith before heretic champions and is a saint of [PAWN_possessive] god: psychic sensitivity +15%, social +2; [PAWN_possessive] god gains +0.2 divine favor per day. With VPE, divine power +0.15.</LP_Saint.degreeDatas.color50C0C0color.description>
+  <!-- 传说事迹 -->
+  <LP_Saint.modExtensions.0.kind>legendary deed</LP_Saint.modExtensions.0.kind>
+  <!-- <color=#50C0C0>弑神者</color> -->
+  <LP_Godslayer.degreeDatas.color50C0C0color.label>&lt;color=#50C0C0&gt;Godslayer&lt;/color&gt;</LP_Godslayer.degreeDatas.color50C0C0color.label>
+  <!-- [PAWN_nameDef]亲手击败过神明附体的首领：对神力灌注者、神明附体者和半神造成的伤害×1.3；神明附体首领的神技打在[PAWN_objective]身上只有七成效果。 -->
+  <LP_Godslayer.degreeDatas.color50C0C0color.description>[PAWN_nameDef] has personally defeated a god-possessed leader: ×1.3 damage against divine-infused, god-possessed and demigods; divine skills of god-possessed leaders have only 70% effect on [PAWN_objective].</LP_Godslayer.degreeDatas.color50C0C0color.description>
+  <!-- 传说事迹 -->
+  <LP_Godslayer.modExtensions.0.kind>legendary deed</LP_Godslayer.modExtensions.0.kind>
+</LanguageData>

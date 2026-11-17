@@ -62,13 +62,13 @@ namespace LichPhylactery {
    if(h.Locked && after<before)after=before; // 化魔后停在 100%（深渊宠儿 / 命匣受污），去除也不降
    h.Severity=after;
    int s0=Stage(before),s1=Stage(after);
-   if(s0!=s1){if(p.Spawned)p.Drawer?.renderer?.SetAllGraphicsDirty();if(s1>s0 && s1>=2 && p.Faction?.IsPlayer==true)Messages.Message(p.LabelShort+"的深渊腐化加深了："+StageLabel(s1)+"。",p,MessageTypeDefOf.NegativeEvent,false);}
+   if(s0!=s1){if(p.Spawned)p.Drawer?.renderer?.SetAllGraphicsDirty();if(s1>s0 && s1>=2 && p.Faction?.IsPlayer==true)Messages.Message(p.LabelShort+"的深渊腐化加深了：".Loc()+StageLabel(s1)+"。".Loc(),p,MessageTypeDefOf.NegativeEvent,false);}
    if(after>=1f && before<1f)Turn(p);
    if(h.Severity<=0.0001f && !h.Locked)p.health.RemoveHediff(h);
    return after-before;
   }
   public static float Cleanse(Pawn p,float amount)=>-Add(p,-Mathf.Abs(amount));
-  public static string StageLabel(int s){switch(s){case 1:return "低语";case 2:return "阴影";case 3:return "恶魔之印";case 4:return "堕落";}return "无";}
+  public static string StageLabel(int s){switch(s){case 1:return "低语".Loc();case 2:return "阴影".Loc();case 3:return "恶魔之印".Loc();case 4:return "堕落".Loc();}return "无".Loc();}
 
   // ---------- 每小时（hediff 间隔 tick 2500） ----------
   public static void Hourly(Pawn p,Hediff_AbyssalTaint h){
@@ -77,7 +77,7 @@ namespace LichPhylactery {
    if(s<Mark && !h.Locked)Add(p,-DailyDecay/24f);
    if(p.Spawned && p.InBed()){var reg=MapComponent_Outsiders.Of(p.Map);if(reg!=null && reg.glyphs.Count>0 && reg.Warded(p.Position))Add(p,-WardSleepDaily/24f);}
    if(Stage(p)>=3 && p.Spawned && !p.Downed && !p.InMentalState && Frenzy!=null && Rand.Chance(1f-Mathf.Pow(1f-FrenzyPerSeason,1f/(15f*24f))))
-    p.mindState.mentalStateHandler.TryStartMentalState(Frenzy,"深渊腐化",forced:true,forceWake:true);
+    p.mindState.mentalStateHandler.TryStartMentalState(Frenzy,"深渊腐化".Loc(),forced:true,forceWake:true);
    if(FaithRaces.IsAasimar(p) && Stage(p)>=2)foreach(var g in p.genes.GenesListForReading.OfType<Gene_RadiantConsumption>())g.on=false;
   }
   // 阿斯莫到“阴影”：天界启示（启示基因带的能力）不可用。
@@ -91,23 +91,23 @@ namespace LichPhylactery {
   // ---------- 化魔（规格 2.2） ----------
   public static string Turn(Pawn p){
    var h=Get(p);if(h==null)return null;
-   if(Items.IsLich(p)){Give(p,TaintedPhylacteryDef);h.Locked=true;h.Severity=1f;Letter(p,"命匣受污",p.LabelShort+"的灵魂被深渊浸透，连命匣也染上了黑色：复活所需的时间延长一半。");return "lich";}
+   if(Items.IsLich(p)){Give(p,TaintedPhylacteryDef);h.Locked=true;h.Severity=1f;Letter(p,"命匣受污".Loc(),p.LabelShort+"的灵魂被深渊浸透，连命匣也染上了黑色：复活所需的时间延长一半。".Loc());return "lich";}
    if(AbyssRaces.IsCambion(p) || FaithRaces.IsTiefling(p) || AbyssRaces.IsSuccubus(p) || FaithRaces.CannotConvert(p)!=null || AbyssRaces.CambionXeno==null){
-    Give(p,FavoredDef);h.Locked=true;h.Severity=1f;Letter(p,"深渊宠儿",p.LabelShort+"彻底拥抱了深渊：成了“深渊宠儿”，伤害+10%。阿斯莫看见它会不舒服。");return "favored";
+    Give(p,FavoredDef);h.Locked=true;h.Severity=1f;Letter(p,"深渊宠儿".Loc(),p.LabelShort+"彻底拥抱了深渊：成了“深渊宠儿”，伤害+10%。阿斯莫看见它会不舒服。".Loc());return "favored";
    }
    AbyssRaces.MakeCambion(p);
    h=Get(p);if(h!=null)h.Severity=TurnReset;
-   Letter(p,"化魔",p.LabelShort+"的身体终于向深渊屈服了：皮肤下透出暗红，额头顶出一对角——"+p.LabelShort+"成了坎比恩。腐化回落到 60%，但这一步无法逆转。");
+   Letter(p,"化魔".Loc(),p.LabelShort+"的身体终于向深渊屈服了：皮肤下透出暗红，额头顶出一对角——".Loc()+p.LabelShort+"成了坎比恩。腐化回落到 60%，但这一步无法逆转。".Loc());
    return "cambion";
   }
   static void Give(Pawn p,HediffDef d){if(d!=null && !Items.Has(p,d))p.health.AddHediff(d);}
-  static void Letter(Pawn p,string title,string text){if(p.Faction?.IsPlayer==true)Find.LetterStack.ReceiveLetter(title+"："+p.LabelShort,text,LetterDefOf.NegativeEvent,p);}
+  static void Letter(Pawn p,string title,string text){if(p.Faction?.IsPlayer==true)Find.LetterStack.ReceiveLetter(title+"：".Loc()+p.LabelShort,text,LetterDefOf.NegativeEvent,p);}
 
   // ---------- 每天：殖民地每有一个“恶魔之印”以上的人，费伦拓荒同盟好感 -1 ----------
   public static int DailyGoodwill(){
    var f=Factions.Colony;if(f==null || f.HostileTo(Faction.OfPlayer))return 0;
    int n=0;foreach(var m in Find.Maps)if(m.IsPlayerHome)foreach(var p in m.mapPawns.FreeColonistsSpawned)if(Stage(p)>=3)n++;
-   if(n>0)Factions.ChangeGoodwillExact(f,-n,"殖民地里有身带恶魔之印的人");
+   if(n>0)Factions.ChangeGoodwillExact(f,-n,"殖民地里有身带恶魔之印的人".Loc());
    return n;
   }
   // 命匣受污：复活时间 ×1.5。
@@ -125,9 +125,9 @@ namespace LichPhylactery {
   public override void TickInterval(int delta){base.TickInterval(delta);if((acc+=delta)<GenDate.TicksPerHour)return;acc=0;AbyssTaint.Hourly(pawn,this);}
   public override string TipStringExtra{get{
    var s=base.TipStringExtra;var lines=new List<string>();if(!s.NullOrEmpty())lines.Add(s);
-   lines.Add("阶段："+AbyssTaint.StageLabel(AbyssTaint.Stage(Severity))+"。种族系数 ×"+AbyssTaint.RaceFactor(pawn).ToString("0.##"));
-   lines.Add(Severity<AbyssTaint.Mark?"每天自然消退 0.5%。":"到了“恶魔之印”以后不再自然消退。");
-   lines.Add("去除：向善神祈祷 -5%、阿斯莫的治疗之手 -8%、睡在驱魔结界里每天 -1%。");
+   lines.Add("阶段：".Loc()+AbyssTaint.StageLabel(AbyssTaint.Stage(Severity))+"。种族系数 ×".Loc()+AbyssTaint.RaceFactor(pawn).ToString("0.##"));
+   lines.Add(Severity<AbyssTaint.Mark?"每天自然消退 0.5%。".Loc():"到了“恶魔之印”以后不再自然消退。".Loc());
+   lines.Add("去除：向善神祈祷 -5%、阿斯莫的治疗之手 -8%、睡在驱魔结界里每天 -1%。".Loc());
    return string.Join("\n",lines);
   }}
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref acc,"lpAcc");Scribe_Values.Look(ref Locked,"lpLocked");}
@@ -179,7 +179,7 @@ namespace LichPhylactery {
  public static class TaintHealingHands {static void Postfix(Pawn t){if(t!=null)AbyssTaint.Cleanse(t,AbyssTaint.HealingCleanse);}}
  [HarmonyPatch(typeof(RimWorld.Ability),nameof(RimWorld.Ability.GizmoDisabled))]
  public static class TaintRevelationBlocked {
-  static void Postfix(RimWorld.Ability __instance,ref string reason,ref bool __result){if(!__result && AbyssTaint.RevelationBlocked(__instance.pawn,__instance.def)){reason="深渊腐化遮住了天界的光（“阴影”阶段以上不能用天界启示）。";__result=true;}}
+  static void Postfix(RimWorld.Ability __instance,ref string reason,ref bool __result){if(!__result && AbyssTaint.RevelationBlocked(__instance.pawn,__instance.def)){reason="深渊腐化遮住了天界的光（“阴影”阶段以上不能用天界启示）。".Loc();__result=true;}}
  }
  [HarmonyPatch(typeof(Phylactery),nameof(Phylactery.ScheduleRevival))]
  public static class TaintedPhylacteryDelay {static void Postfix(Phylactery __instance){AbyssTaint.ExtendRevival(__instance);}}

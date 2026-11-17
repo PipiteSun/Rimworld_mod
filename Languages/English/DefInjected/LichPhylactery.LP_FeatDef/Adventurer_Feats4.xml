@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 双持者 -->
+  <LP_Feat_DualWielder.label>dual wielder</LP_Feat_DualWielder.label>
+  <!-- 两手都闲不住。近战冷却 ×0.85，近战闪避 +8，近战命中 ×1.05。附带力量或敏捷 +1。 -->
+  <LP_Feat_DualWielder.description>Both hands always busy. Melee cooldown ×0.85, melee dodge +8, melee hit chance ×1.05. Grants +1 Strength or Dexterity.</LP_Feat_DualWielder.description>
+  <!-- 盾牌大师 -->
+  <LP_Feat_ShieldMaster.label>shield master</LP_Feat_ShieldMaster.label>
+  <!-- 盾不只是用来挡的。护甲 +6%，近战闪避 +6；戴着护盾腰带时近战闪避再 +10，近战命中 25% 把目标推开 1 格并眩晕 1 秒。附带力量或体质 +1。 -->
+  <LP_Feat_ShieldMaster.description>A shield isn't just for blocking. Armor +6%, melee dodge +6; while wearing a shield belt, another +10 melee dodge, and melee hits have a 25% chance to push the target 1 cell and stun for 1 second. Grants +1 Strength or Constitution.</LP_Feat_ShieldMaster.description>
+  <!-- 长柄武器大师 -->
+  <LP_Feat_PolearmMaster.label>polearm master</LP_Feat_PolearmMaster.label>
+  <!-- 枪尾也是武器。用长柄近战武器（质量 ≥2 的刺击 / 砍击武器）时，每 3 秒第一次命中后立刻用枪尾再补一下（50% 伤害）；近战冷却 ×0.9。附带力量或敏捷 +1。 -->
+  <LP_Feat_PolearmMaster.description>The butt end is a weapon too. With polearm melee weapons (stab / cut weapons of mass ≥2), the first hit every 3 seconds is followed at once by a butt-end strike (50% damage); melee cooldown ×0.9. Grants +1 Strength or Dexterity.</LP_Feat_PolearmMaster.description>
+  <!-- 弩专家 -->
+  <LP_Feat_CrossbowExpert.label>crossbow expert</LP_Feat_CrossbowExpert.label>
+  <!-- 上弦快得像换气。用弓弩（中世纪以下的远程武器）时瞄准时间 ×0.7、射击冷却 ×0.8；所有远程武器射击精度 ×1.05。附带敏捷 +1。 -->
+  <LP_Feat_CrossbowExpert.description>Reloads as fast as breathing. With bows and crossbows (medieval-or-lower ranged weapons) aiming time ×0.7 and shooting cooldown ×0.8; all ranged weapons get shooting accuracy ×1.05. Grants +1 Dexterity.</LP_Feat_CrossbowExpert.description>
+  <!-- 冲锋者 -->
+  <LP_Feat_Charger.label>charger</LP_Feat_Charger.label>
+  <!-- 带着冲劲砍下去。跑动中（1 秒内移动过）的近战命中伤害 ×1.3，并且 25% 把目标撞开 1 格；移动 +0.2。附带力量或敏捷 +1。 -->
+  <LP_Feat_Charger.description>Strikes with momentum. Melee hits while running (moved within the last second) deal ×1.3 damage and have a 25% chance to knock the target back 1 cell; moving +0.2. Grants +1 Strength or Dexterity.</LP_Feat_Charger.description>
+  <!-- 擒抱者 -->
+  <LP_Feat_Grappler.label>grappler</LP_Feat_Grappler.label>
+  <!-- 抓住了就别想跑。近战命中 25% 让体型不超过自己 1.5 倍的目标 3 秒内不能移动；对被擒抱、眩晕或倒地的目标近战伤害 ×1.5。附带力量 +1。 -->
+  <LP_Feat_Grappler.description>Once caught, there's no running. Melee hits have a 25% chance to keep a target no bigger than 1.5× your size from moving for 3 seconds; ×1.5 melee damage against grappled, stunned or downed targets. Grants +1 Strength.</LP_Feat_Grappler.description>
+</LanguageData>

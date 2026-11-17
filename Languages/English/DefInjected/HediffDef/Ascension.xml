@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 半神 -->
+  <LP_Demigod.label>demigod</LP_Demigod.label>
+  <!-- 凡躯里燃着一粒神性火花。不老、饥饿×0.3、免疫疾病、心灵敏感度+20%（每级再+5%）、受到伤害×0.95（每级再×0.95）、精神崩溃阈值-10%；神职给两个主动能力和一个被动。神力每天恢复，神力满时可以接受众神的试炼提升神性等级。 -->
+  <LP_Demigod.description>A divine spark burns in a mortal body. Ageless, hunger ×0.3, immune to disease, psychic sensitivity +20% (+5% more per rank), damage taken ×0.95 (×0.95 more per rank), mental break threshold -10%; the portfolio grants two active abilities and one passive. Divine power recovers daily; when it is full you may accept the trials of the gods to raise your divine rank.</LP_Demigod.description>
+  <!-- 不灭晨曦 -->
+  <LP_UnfadingDawn.label>undying dawn</LP_UnfadingDawn.label>
+  <!-- 洛山达的晨光护着这个人：第一次致命伤不会致死，伤口会立刻止血。 -->
+  <LP_UnfadingDawn.description>Lathander's morning light protects this person: the first lethal wound will not kill, and wounds stop bleeding at once.</LP_UnfadingDawn.description>
+  <!-- 正义之盾 -->
+  <LP_JusticeShield.label>shield of justice</LP_JusticeShield.label>
+  <!-- 提尔的盾护在身前。 -->
+  <LP_JusticeShield.description>Tyr's shield guards me.</LP_JusticeShield.description>
+  <!-- 被支配 -->
+  <LP_DivineDominated.label>dominated</LP_DivineDominated.label>
+  <!-- 心智被半神支配。到时会回到原来的派系。 -->
+  <LP_DivineDominated.description>Mind dominated by a demigod. Will return to the original faction when it ends.</LP_DivineDominated.description>
+  <!-- 唤风 -->
+  <LP_CallWindHaste.label>call the wind</LP_CallWindHaste.label>
+  <!-- 风推着脚步。 -->
+  <LP_CallWindHaste.description>The wind pushes my steps.</LP_CallWindHaste.description>
+  <!-- 熔炉祝福 -->
+  <LP_ForgeBlessing.label>forge blessing</LP_ForgeBlessing.label>
+  <!-- 武器上燃着苏尔特的火：近战命中附加6点烧伤。 -->
+  <LP_ForgeBlessing.description>Surtur's fire burns on the weapon: melee hits add 6 burn damage.</LP_ForgeBlessing.description>
+  <!-- 掠食者之形 -->
+  <LP_PredatorForm.label>predator form</LP_PredatorForm.label>
+  <!-- 马拉尔的兽性涌了上来。 -->
+  <LP_PredatorForm.description>Malar's bestial nature surges up.</LP_PredatorForm.description>
+  <!-- 遗忘之雾 -->
+  <LP_OblivionFog.label>mist of forgetting</LP_OblivionFog.label>
+  <!-- 眼前的一切都蒙着一层雾，瞄准时常常忘了自己要打什么：射击精度×0.6。 -->
+  <LP_OblivionFog.description>Everything is clouded in mist; often forgets what to aim at: shooting accuracy ×0.6.</LP_OblivionFog.description>
+  <!-- 神召 -->
+  <LP_SummonedTemp.label>divine summons</LP_SummonedTemp.label>
+  <!-- 被半神召来，时间一到就会离开或崩解。 -->
+  <LP_SummonedTemp.description>Summoned by a demigod; will leave or crumble when time is up.</LP_SummonedTemp.description>
+  <!-- 冻结复生 -->
+  <LP_FreezeRevivalAura.label>frozen revival</LP_FreezeRevivalAura.label>
+  <!-- 凯兰沃的审判者：身边15格内，巫妖和巨魔的复生计时暂停。 -->
+  <LP_FreezeRevivalAura.description>Judicator of Kelemvor: within 15 cells, the revival timers of liches and trolls are paused.</LP_FreezeRevivalAura.description>
+  <!-- 巨人王 -->
+  <LP_GiantKing.label>giant king</LP_GiantKing.label>
+  <!-- 应泰坦的挑战而来的巨人王。 -->
+  <LP_GiantKing.description>A giant king who came to answer the titan's challenge.</LP_GiantKing.description>
+</LanguageData>

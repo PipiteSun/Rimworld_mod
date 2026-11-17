@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 根据仪式品质，参与者获得 {MINMOOD}～{MAXMOOD} 心情，持续 {MOODDAYS} 天；这位神的神眷：糟糕-3、平淡+2、不错+6、难忘+12。 -->
+  <LP_FestivalOutcome_Lathander.description>Depending on ritual quality, participants get {MINMOOD} to {MAXMOOD} mood for {MOODDAYS} days; this god's divine favor: terrible -3, boring +2, good +6, unforgettable +12.</LP_FestivalOutcome_Lathander.description>
+  <!-- 参与人数 -->
+  <LP_FestivalOutcome_Lathander.comps.0.label>participants</LP_FestivalOutcome_Lathander.comps.0.label>
+  <!-- 房间印象 -->
+  <LP_FestivalOutcome_Lathander.comps.1.label>room impressiveness</LP_FestivalOutcome_Lathander.comps.1.label>
+  <!-- 有神官主持 -->
+  <LP_FestivalOutcome_Lathander.comps.2.label>led by a priest</LP_FestivalOutcome_Lathander.comps.2.label>
+  <!-- 在神殿里 -->
+  <LP_FestivalOutcome_Lathander.comps.3.label>in a temple</LP_FestivalOutcome_Lathander.comps.3.label>
+  <!-- 神像在8格内 -->
+  <LP_FestivalOutcome_Lathander.comps.4.label>statue within 8 cells</LP_FestivalOutcome_Lathander.comps.4.label>
+  <!-- 白天开始 -->
+  <LP_FestivalOutcome_Lathander.comps.5.label>started by day</LP_FestivalOutcome_Lathander.comps.5.label>
+  <!-- 3天「黎明的眷顾」（洛山达赐福）。 -->
+  <LP_FestivalOutcome_Lathander.modExtensions.0.unforgettable>3 days of "favor of the dawn" (Lathander's blessing).</LP_FestivalOutcome_Lathander.modExtensions.0.unforgettable>
+  <!-- 糟糕 -->
+  <LP_FestivalOutcome_Lathander.outcomeChances.0.label>terrible</LP_FestivalOutcome_Lathander.outcomeChances.0.label>
+  <!-- {0}糟透了！大家熬着尴尬的寒暄等它结束。 -->
+  <LP_FestivalOutcome_Lathander.outcomeChances.0.description>{0} was terrible! Everyone endured the awkward small talk until it was over.</LP_FestivalOutcome_Lathander.outcomeChances.0.description>
+  <!-- 平淡 -->
+  <LP_FestivalOutcome_Lathander.outcomeChances.1.label>boring</LP_FestivalOutcome_Lathander.outcomeChances.1.label>
+  <!-- {0}很平淡。大家都放不开。 -->
+  <LP_FestivalOutcome_Lathander.outcomeChances.1.description>{0} was boring. Nobody could loosen up.</LP_FestivalOutcome_Lathander.outcomeChances.1.description>
+  <!-- 不错 -->
+  <LP_FestivalOutcome_Lathander.outcomeChances.2.label>good</LP_FestivalOutcome_Lathander.outcomeChances.2.label>
+  <!-- {0}很不错。大家都很高兴有机会一起放松。 -->
+  <LP_FestivalOutcome_Lathander.outcomeChances.2.description>{0} was good. Everyone was glad of the chance to relax together.</LP_FestivalOutcome_Lathander.outcomeChances.2.description>
+  <!-- 难忘 -->
+  <LP_FestivalOutcome_Lathander.outcomeChances.3.label>unforgettable</LP_FestivalOutcome_Lathander.outcomeChances.3.label>
+  <!-- {0}令人难忘！神明似乎也在注视着这场庆典。 -->
+  <LP_FestivalOutcome_Lathander.outcomeChances.3.description>{0} was unforgettable! Even the gods seemed to be watching this festival.</LP_FestivalOutcome_Lathander.outcomeChances.3.description>
+  <!-- 根据仪式品质，参与者获得 {MINMOOD}～{MAXMOOD} 心情，持续 {MOODDAYS} 天；这位神的神眷：糟糕-3、平淡+2、不错+6、难忘+12。 -->
+  <LP_FestivalOutcome_Tyr.description>Depending on ritual quality, participants get {MINMOOD} to {MAXMOOD} mood for {MOODDAYS} days; this god's divine favor: terrible -3, boring +2, good +6, unforgettable +12.</LP_FestivalOutcome_Tyr.description>
+  <!-- 参与人数 -->
+  <LP_FestivalOutcome_Tyr.comps.0.label>participants</LP_FestivalOutcome_Tyr.comps.0.label>
+  <!-- 房间印象 -->
+  <LP_FestivalOutcome_Tyr.comps.1.label>room impressiveness</LP_FestivalOutcome_Tyr.comps.1.label>
+  <!-- 有神官主持 -->
+  <LP_FestivalOutcome_Tyr.comps.2.label>led by a priest</LP_FestivalOutcome_Tyr.comps.2.label>
+  <!-- 在神殿里 -->
+  <LP_FestivalOutcome_Tyr.comps.3.label>in a temple</LP_FestivalOutcome_Tyr.comps.3.label>
+  <!-- 神像在8格内 -->
+  <LP_FestivalOutcome_Tyr.comps.4.label>statue within 8 cells</LP_FestivalOutcome_Tyr.comps.4.label>
+  <!-- 主持人立下誓言（30天：近战命中+5，社交冲突几率×0.5）。 -->
+  <LP_FestivalOutcome_Tyr.modExtensions.0.unforgettable>The leader swears a vow (30 days: melee hit +5, social fight chance ×0.5).</LP_FestivalOutcome_Tyr.modExtensions.0.unforgettable>
+  <!-- 糟糕 -->
+  <LP_FestivalOutcome_Tyr.outcomeChances.0.label>terrible</LP_FestivalOutcome_Tyr.outcomeChances.0.label>
+  <!-- {0}糟透了！大家熬着尴尬的寒暄等它结束。 -->
+  <LP_FestivalOutcome_Tyr.outcomeChances.0.description>{0} was terrible! Everyone endured the awkward small talk until it was over.</LP_FestivalOutcome_Tyr.outcomeChances.0.description>
+  <!-- 平淡 -->
+  <LP_FestivalOutcome_Tyr.outcomeChances.1.label>boring</LP_FestivalOutcome_Tyr.outcomeChances.1.label>
+  <!-- {0}很平淡。大家都放不开。 -->
+  <LP_FestivalOutcome_Tyr.outcomeChances.1.description>{0} was boring. Nobody could loosen up.</LP_FestivalOutcome_Tyr.outcomeChances.1.description>
+  <!-- 不错 -->
+  <LP_FestivalOutcome_Tyr.outcomeChances.2.label>good</LP_FestivalOutcome_Tyr.outcomeChances.2.label>
+  <!-- {0}很不错。大家都很高兴有机会一起放松。 -->
+  <LP_FestivalOutcome_Tyr.outcomeChances.2.description>{0} was good. Everyone was glad of the chance to relax together.</LP_FestivalOutcome_Tyr.outcomeChances.2.description>
+  <!-- 难忘 -->
+  <LP_FestivalOutcome_Tyr.outcomeChances.3.label>unforgettable</LP_FestivalOutcome_Tyr.outcomeChances.3.label>
+  <!-- {0}令人难忘！神明似乎也在注视着这场庆典。 -->
+  <LP_FestivalOutcome_Tyr.outcomeChances.3.description>{0} was unforgettable! Even the gods seemed to be watching this festival.</LP_FestivalOutcome_Tyr.outcomeChances.3.description>
+  <!-- 根据仪式品质，参与者获得 {MINMOOD}～{MAXMOOD} 心情，持续 {MOODDAYS} 天；这位神的神眷：糟糕-3、平淡+2、不错+6、难忘+12。 -->
+  <LP_FestivalOutcome_Mystra.description>Depending on ritual quality, participants get {MINMOOD} to {MAXMOOD} mood for {MOODDAYS} days; this god's divine favor: terrible -3, boring +2, good +6, unforgettable +12.</LP_FestivalOutcome_Mystra.description>
+  <!-- 参与人数 -->
+  <LP_FestivalOutcome_Mystra.comps.0.label>participants</LP_FestivalOutcome_Mystra.comps.0.label>
+  <!-- 房间印象 -->
+  <LP_FestivalOutcome_Mystra.comps.1.label>room impressiveness</LP_FestivalOutcome_Mystra.comps.1.label>
+  <!-- 有神官主持 -->
+  <LP_FestivalOutcome_Mystra.comps.2.label>led by a priest</LP_FestivalOutcome_Mystra.comps.2.label>
+  <!-- 在神殿里 -->
+  <LP_FestivalOutcome_Mystra.comps.3.label>in a temple</LP_FestivalOutcome_Mystra.comps.3.label>
+  <!-- 神像在8格内 -->
+  <LP_FestivalOutcome_Mystra.comps.4.label>statue within 8 cells</LP_FestivalOutcome_Mystra.comps.4.label>
+  <!-- 夜里开始 -->
+  <LP_FestivalOutcome_Mystra.comps.5.label>started at night</LP_FestivalOutcome_Mystra.comps.5.label>
+  <!-- 会施法的参与者 -->
+  <LP_FestivalOutcome_Mystra.comps.6.label>spellcasting participants</LP_FestivalOutcome_Mystra.comps.6.label>
+  <!-- 参与者精神力补满，3天心灵敏感度+10%。 -->
+  <LP_FestivalOutcome_Mystra.modExtensions.0.unforgettable>Participants' psyfocus is refilled, psychic sensitivity +10% for 3 days.</LP_FestivalOutcome_Mystra.modExtensions.0.unforgettable>
+  <!-- 糟糕 -->
+  <LP_FestivalOutcome_Mystra.outcomeChances.0.label>terrible</LP_FestivalOutcome_Mystra.outcomeChances.0.label>
+  <!-- {0}糟透了！大家熬着尴尬的寒暄等它结束。 -->
+  <LP_FestivalOutcome_Mystra.outcomeChances.0.description>{0} was terrible! Everyone endured the awkward small talk until it was over.</LP_FestivalOutcome_Mystra.outcomeChances.0.description>
+  <!-- 平淡 -->
+  <LP_FestivalOutcome_Mystra.outcomeChances.1.label>boring</LP_FestivalOutcome_Mystra.outcomeChances.1.label>
+  <!-- {0}很平淡。大家都放不开。 -->
+  <LP_FestivalOutcome_Mystra.outcomeChances.1.description>{0} was boring. Nobody could loosen up.</LP_FestivalOutcome_Mystra.outcomeChances.1.description>
+  <!-- 不错 -->
+  <LP_FestivalOutcome_Mystra.outcomeChances.2.label>good</LP_FestivalOutcome_Mystra.outcomeChances.2.label>
+  <!-- {0}很不错。大家都很高兴有机会一起放松。 -->
+  <LP_FestivalOutcome_Mystra.outcomeChances.2.description>{0} was good. Everyone was glad of the chance to relax together.</LP_FestivalOutcome_Mystra.outcomeChances.2.description>
+  <!-- 难忘 -->
+  <LP_FestivalOutcome_Mystra.outcomeChances.3.label>unforgettable</LP_FestivalOutcome_Mystra.outcomeChances.3.label>
+  <!-- {0}令人难忘！神明似乎也在注视着这场庆典。 -->
+  <LP_FestivalOutcome_Mystra.outcomeChances.3.description>{0} was unforgettable! Even the gods seemed to be watching this festival.</LP_FestivalOutcome_Mystra.outcomeChances.3.description>
+  <!-- 根据仪式品质，参与者获得 {MINMOOD}～{MAXMOOD} 心情，持续 {MOODDAYS} 天；这位神的神眷：糟糕-3、平淡+2、不错+6、难忘+12。 -->
+  <LP_FestivalOutcome_Kelemvor.description>Depending on ritual quality, participants get {MINMOOD} to {MAXMOOD} mood for {MOODDAYS} days; this god's divine favor: terrible -3, boring +2, good +6, unforgettable +12.</LP_FestivalOutcome_Kelemvor.description>
+  <!-- 参与人数 -->
+  <LP_FestivalOutcome_Kelemvor.comps.0.label>participants</LP_FestivalOutcome_Kelemvor.comps.0.label>
+  <!-- 房间印象 -->
+  <LP_FestivalOutcome_Kelemvor.comps.1.label>room impressiveness</LP_FestivalOutcome_Kelemvor.comps.1.label>
+  <!-- 有神官主持 -->
+  <LP_FestivalOutcome_Kelemvor.comps.2.label>led by a priest</LP_FestivalOutcome_Kelemvor.comps.2.label>
+  <!-- 在神殿里 -->
+  <LP_FestivalOutcome_Kelemvor.comps.3.label>in a temple</LP_FestivalOutcome_Kelemvor.comps.3.label>
+  <!-- 神像在8格内 -->
+  <LP_FestivalOutcome_Kelemvor.comps.4.label>statue within 8 cells</LP_FestivalOutcome_Kelemvor.comps.4.label>
+  <!-- 已入葬的墓 -->
+  <LP_FestivalOutcome_Kelemvor.comps.5.label>occupied grave</LP_FestivalOutcome_Kelemvor.comps.5.label>
+  <!-- 地图上所有人形尸体得到安息，参与者心情+5（10天）。 -->
+  <LP_FestivalOutcome_Kelemvor.modExtensions.0.unforgettable>All humanlike corpses on the map are laid to rest; participants get mood +5 (10 days).</LP_FestivalOutcome_Kelemvor.modExtensions.0.unforgettable>
+  <!-- 糟糕 -->
+  <LP_FestivalOutcome_Kelemvor.outcomeChances.0.label>terrible</LP_FestivalOutcome_Kelemvor.outcomeChances.0.label>
+  <!-- {0}糟透了！大家熬着尴尬的寒暄等它结束。 -->
+  <LP_FestivalOutcome_Kelemvor.outcomeChances.0.description>{0} was terrible! Everyone endured the awkward small talk until it was over.</LP_FestivalOutcome_Kelemvor.outcomeChances.0.description>
+  <!-- 平淡 -->
+  <LP_FestivalOutcome_Kelemvor.outcomeChances.1.label>boring</LP_FestivalOutcome_Kelemvor.outcomeChances.1.label>
+  <!-- {0}很平淡。大家都放不开。 -->
+  <LP_FestivalOutcome_Kelemvor.outcomeChances.1.description>{0} was boring. Nobody could loosen up.</LP_FestivalOutcome_Kelemvor.outcomeChances.1.description>
+  <!-- 不错 -->
+  <LP_FestivalOutcome_Kelemvor.outcomeChances.2.label>good</LP_FestivalOutcome_Kelemvor.outcomeChances.2.label>
+  <!-- {0}很不错。大家都很高兴有机会一起放松。 -->
+  <LP_FestivalOutcome_Kelemvor.outcomeChances.2.description>{0} was good. Everyone was glad of the chance to relax together.</LP_FestivalOutcome_Kelemvor.outcomeChances.2.description>
+  <!-- 难忘 -->
+  <LP_FestivalOutcome_Kelemvor.outcomeChances.3.label>unforgettable</LP_FestivalOutcome_Kelemvor.outcomeChances.3.label>
+  <!-- {0}令人难忘！神明似乎也在注视着这场庆典。 -->
+  <LP_FestivalOutcome_Kelemvor.outcomeChances.3.description>{0} was unforgettable! Even the gods seemed to be watching this festival.</LP_FestivalOutcome_Kelemvor.outcomeChances.3.description>
+  <!-- 根据仪式品质，参与者获得 {MINMOOD}～{MAXMOOD} 心情，持续 {MOODDAYS} 天；这位神的神眷：糟糕-3、平淡+2、不错+6、难忘+12。 -->
+  <LP_FestivalOutcome_Malar.description>Depending on ritual quality, participants get {MINMOOD} to {MAXMOOD} mood for {MOODDAYS} days; this god's divine favor: terrible -3, boring +2, good +6, unforgettable +12.</LP_FestivalOutcome_Malar.description>
+  <!-- 参与人数 -->
+  <LP_FestivalOutcome_Malar.comps.0.label>participants</LP_FestivalOutcome_Malar.comps.0.label>
+  <!-- 房间印象 -->
+  <LP_FestivalOutcome_Malar.comps.1.label>room impressiveness</LP_FestivalOutcome_Malar.comps.1.label>
+  <!-- 有神官主持 -->
+  <LP_FestivalOutcome_Malar.comps.2.label>led by a priest</LP_FestivalOutcome_Malar.comps.2.label>
+  <!-- 在神殿里 -->
+  <LP_FestivalOutcome_Malar.comps.3.label>in a temple</LP_FestivalOutcome_Malar.comps.3.label>
+  <!-- 神像在8格内 -->
+  <LP_FestivalOutcome_Malar.comps.4.label>statue within 8 cells</LP_FestivalOutcome_Malar.comps.4.label>
+  <!-- 动物尸体（献祭） -->
+  <LP_FestivalOutcome_Malar.comps.5.label>animal corpse (sacrifice)</LP_FestivalOutcome_Malar.comps.5.label>
+  <!-- 参与者5天近战命中+5、射击精度+5%。 -->
+  <LP_FestivalOutcome_Malar.modExtensions.0.unforgettable>Participants get melee hit +5 and shooting accuracy +5% for 5 days.</LP_FestivalOutcome_Malar.modExtensions.0.unforgettable>
+  <!-- 糟糕 -->
+  <LP_FestivalOutcome_Malar.outcomeChances.0.label>terrible</LP_FestivalOutcome_Malar.outcomeChances.0.label>
+  <!-- {0}糟透了！大家熬着尴尬的寒暄等它结束。 -->
+  <LP_FestivalOutcome_Malar.outcomeChances.0.description>{0} was terrible! Everyone endured the awkward small talk until it was over.</LP_FestivalOutcome_Malar.outcomeChances.0.description>
+  <!-- 平淡 -->
+  <LP_FestivalOutcome_Malar.outcomeChances.1.label>boring</LP_FestivalOutcome_Malar.outcomeChances.1.label>
+  <!-- {0}很平淡。大家都放不开。 -->
+  <LP_FestivalOutcome_Malar.outcomeChances.1.description>{0} was boring. Nobody could loosen up.</LP_FestivalOutcome_Malar.outcomeChances.1.description>
+  <!-- 不错 -->
+  <LP_FestivalOutcome_Malar.outcomeChances.2.label>good</LP_FestivalOutcome_Malar.outcomeChances.2.label>
+  <!-- {0}很不错。大家都很高兴有机会一起放松。 -->
+  <LP_FestivalOutcome_Malar.outcomeChances.2.description>{0} was good. Everyone was glad of the chance to relax together.</LP_FestivalOutcome_Malar.outcomeChances.2.description>
+  <!-- 难忘 -->
+  <LP_FestivalOutcome_Malar.outcomeChances.3.label>unforgettable</LP_FestivalOutcome_Malar.outcomeChances.3.label>
+  <!-- {0}令人难忘！神明似乎也在注视着这场庆典。 -->
+  <LP_FestivalOutcome_Malar.outcomeChances.3.description>{0} was unforgettable! Even the gods seemed to be watching this festival.</LP_FestivalOutcome_Malar.outcomeChances.3.description>
+  <!-- 根据仪式品质，参与者获得 {MINMOOD}～{MAXMOOD} 心情，持续 {MOODDAYS} 天；这位神的神眷：糟糕-3、平淡+2、不错+6、难忘+12。 -->
+  <LP_FestivalOutcome_Talos.description>Depending on ritual quality, participants get {MINMOOD} to {MAXMOOD} mood for {MOODDAYS} days; this god's divine favor: terrible -3, boring +2, good +6, unforgettable +12.</LP_FestivalOutcome_Talos.description>
+  <!-- 参与人数 -->
+  <LP_FestivalOutcome_Talos.comps.0.label>participants</LP_FestivalOutcome_Talos.comps.0.label>
+  <!-- 房间印象 -->
+  <LP_FestivalOutcome_Talos.comps.1.label>room impressiveness</LP_FestivalOutcome_Talos.comps.1.label>
+  <!-- 有神官主持 -->
+  <LP_FestivalOutcome_Talos.comps.2.label>led by a priest</LP_FestivalOutcome_Talos.comps.2.label>
+  <!-- 在神殿里 -->
+  <LP_FestivalOutcome_Talos.comps.3.label>in a temple</LP_FestivalOutcome_Talos.comps.3.label>
+  <!-- 神像在8格内 -->
+  <LP_FestivalOutcome_Talos.comps.4.label>statue within 8 cells</LP_FestivalOutcome_Talos.comps.4.label>
+  <!-- 雷暴中 -->
+  <LP_FestivalOutcome_Talos.comps.5.label>in a thunderstorm</LP_FestivalOutcome_Talos.comps.5.label>
+  <!-- 3天塔洛斯赐福。 -->
+  <LP_FestivalOutcome_Talos.modExtensions.0.unforgettable>3 days of Talos's blessing.</LP_FestivalOutcome_Talos.modExtensions.0.unforgettable>
+  <!-- 糟糕 -->
+  <LP_FestivalOutcome_Talos.outcomeChances.0.label>terrible</LP_FestivalOutcome_Talos.outcomeChances.0.label>
+  <!-- {0}糟透了！大家熬着尴尬的寒暄等它结束。 -->
+  <LP_FestivalOutcome_Talos.outcomeChances.0.description>{0} was terrible! Everyone endured the awkward small talk until it was over.</LP_FestivalOutcome_Talos.outcomeChances.0.description>
+  <!-- 平淡 -->
+  <LP_FestivalOutcome_Talos.outcomeChances.1.label>boring</LP_FestivalOutcome_Talos.outcomeChances.1.label>
+  <!-- {0}很平淡。大家都放不开。 -->
+  <LP_FestivalOutcome_Talos.outcomeChances.1.description>{0} was boring. Nobody could loosen up.</LP_FestivalOutcome_Talos.outcomeChances.1.description>
+  <!-- 不错 -->
+  <LP_FestivalOutcome_Talos.outcomeChances.2.label>good</LP_FestivalOutcome_Talos.outcomeChances.2.label>
+  <!-- {0}很不错。大家都很高兴有机会一起放松。 -->
+  <LP_FestivalOutcome_Talos.outcomeChances.2.description>{0} was good. Everyone was glad of the chance to relax together.</LP_FestivalOutcome_Talos.outcomeChances.2.description>
+  <!-- 难忘 -->
+  <LP_FestivalOutcome_Talos.outcomeChances.3.label>unforgettable</LP_FestivalOutcome_Talos.outcomeChances.3.label>
+  <!-- {0}令人难忘！神明似乎也在注视着这场庆典。 -->
+  <LP_FestivalOutcome_Talos.outcomeChances.3.description>{0} was unforgettable! Even the gods seemed to be watching this festival.</LP_FestivalOutcome_Talos.outcomeChances.3.description>
+  <!-- 根据仪式品质，参与者获得 {MINMOOD}～{MAXMOOD} 心情，持续 {MOODDAYS} 天；这位神的神眷：糟糕-3、平淡+2、不错+6、难忘+12。 -->
+  <LP_FestivalOutcome_Bane.description>Depending on ritual quality, participants get {MINMOOD} to {MAXMOOD} mood for {MOODDAYS} days; this god's divine favor: terrible -3, boring +2, good +6, unforgettable +12.</LP_FestivalOutcome_Bane.description>
+  <!-- 参与人数 -->
+  <LP_FestivalOutcome_Bane.comps.0.label>participants</LP_FestivalOutcome_Bane.comps.0.label>
+  <!-- 房间印象 -->
+  <LP_FestivalOutcome_Bane.comps.1.label>room impressiveness</LP_FestivalOutcome_Bane.comps.1.label>
+  <!-- 有神官主持 -->
+  <LP_FestivalOutcome_Bane.comps.2.label>led by a priest</LP_FestivalOutcome_Bane.comps.2.label>
+  <!-- 在神殿里 -->
+  <LP_FestivalOutcome_Bane.comps.3.label>in a temple</LP_FestivalOutcome_Bane.comps.3.label>
+  <!-- 神像在8格内 -->
+  <LP_FestivalOutcome_Bane.comps.4.label>statue within 8 cells</LP_FestivalOutcome_Bane.comps.4.label>
+  <!-- 在场的奴隶 -->
+  <LP_FestivalOutcome_Bane.comps.5.label>slaves present</LP_FestivalOutcome_Bane.comps.5.label>
+  <!-- 地图上所有奴隶的压制度+20%。 -->
+  <LP_FestivalOutcome_Bane.modExtensions.0.unforgettable>Suppression of all slaves on the map +20%.</LP_FestivalOutcome_Bane.modExtensions.0.unforgettable>
+  <!-- 糟糕 -->
+  <LP_FestivalOutcome_Bane.outcomeChances.0.label>terrible</LP_FestivalOutcome_Bane.outcomeChances.0.label>
+  <!-- {0}糟透了！大家熬着尴尬的寒暄等它结束。 -->
+  <LP_FestivalOutcome_Bane.outcomeChances.0.description>{0} was terrible! Everyone endured the awkward small talk until it was over.</LP_FestivalOutcome_Bane.outcomeChances.0.description>
+  <!-- 平淡 -->
+  <LP_FestivalOutcome_Bane.outcomeChances.1.label>boring</LP_FestivalOutcome_Bane.outcomeChances.1.label>
+  <!-- {0}很平淡。大家都放不开。 -->
+  <LP_FestivalOutcome_Bane.outcomeChances.1.description>{0} was boring. Nobody could loosen up.</LP_FestivalOutcome_Bane.outcomeChances.1.description>
+  <!-- 不错 -->
+  <LP_FestivalOutcome_Bane.outcomeChances.2.label>good</LP_FestivalOutcome_Bane.outcomeChances.2.label>
+  <!-- {0}很不错。大家都很高兴有机会一起放松。 -->
+  <LP_FestivalOutcome_Bane.outcomeChances.2.description>{0} was good. Everyone was glad of the chance to relax together.</LP_FestivalOutcome_Bane.outcomeChances.2.description>
+  <!-- 难忘 -->
+  <LP_FestivalOutcome_Bane.outcomeChances.3.label>unforgettable</LP_FestivalOutcome_Bane.outcomeChances.3.label>
+  <!-- {0}令人难忘！神明似乎也在注视着这场庆典。 -->
+  <LP_FestivalOutcome_Bane.outcomeChances.3.description>{0} was unforgettable! Even the gods seemed to be watching this festival.</LP_FestivalOutcome_Bane.outcomeChances.3.description>
+  <!-- 根据仪式品质，参与者获得 {MINMOOD}～{MAXMOOD} 心情，持续 {MOODDAYS} 天；这位神的神眷：糟糕-3、平淡+2、不错+6、难忘+12。 -->
+  <LP_FestivalOutcome_Shar.description>Depending on ritual quality, participants get {MINMOOD} to {MAXMOOD} mood for {MOODDAYS} days; this god's divine favor: terrible -3, boring +2, good +6, unforgettable +12.</LP_FestivalOutcome_Shar.description>
+  <!-- 参与人数 -->
+  <LP_FestivalOutcome_Shar.comps.0.label>participants</LP_FestivalOutcome_Shar.comps.0.label>
+  <!-- 房间印象 -->
+  <LP_FestivalOutcome_Shar.comps.1.label>room impressiveness</LP_FestivalOutcome_Shar.comps.1.label>
+  <!-- 有神官主持 -->
+  <LP_FestivalOutcome_Shar.comps.2.label>led by a priest</LP_FestivalOutcome_Shar.comps.2.label>
+  <!-- 在神殿里 -->
+  <LP_FestivalOutcome_Shar.comps.3.label>in a temple</LP_FestivalOutcome_Shar.comps.3.label>
+  <!-- 神像在8格内 -->
+  <LP_FestivalOutcome_Shar.comps.4.label>statue within 8 cells</LP_FestivalOutcome_Shar.comps.4.label>
+  <!-- 夜里开始 -->
+  <LP_FestivalOutcome_Shar.comps.5.label>started at night</LP_FestivalOutcome_Shar.comps.5.label>
+  <!-- 圣坛在黑暗中 -->
+  <LP_FestivalOutcome_Shar.comps.6.label>altar in darkness</LP_FestivalOutcome_Shar.comps.6.label>
+  <!-- 参与者5天近战闪避+8。 -->
+  <LP_FestivalOutcome_Shar.modExtensions.0.unforgettable>Participants get melee dodge +8 for 5 days.</LP_FestivalOutcome_Shar.modExtensions.0.unforgettable>
+  <!-- 糟糕 -->
+  <LP_FestivalOutcome_Shar.outcomeChances.0.label>terrible</LP_FestivalOutcome_Shar.outcomeChances.0.label>
+  <!-- {0}糟透了！大家熬着尴尬的寒暄等它结束。 -->
+  <LP_FestivalOutcome_Shar.outcomeChances.0.description>{0} was terrible! Everyone endured the awkward small talk until it was over.</LP_FestivalOutcome_Shar.outcomeChances.0.description>
+  <!-- 平淡 -->
+  <LP_FestivalOutcome_Shar.outcomeChances.1.label>boring</LP_FestivalOutcome_Shar.outcomeChances.1.label>
+  <!-- {0}很平淡。大家都放不开。 -->
+  <LP_FestivalOutcome_Shar.outcomeChances.1.description>{0} was boring. Nobody could loosen up.</LP_FestivalOutcome_Shar.outcomeChances.1.description>
+  <!-- 不错 -->
+  <LP_FestivalOutcome_Shar.outcomeChances.2.label>good</LP_FestivalOutcome_Shar.outcomeChances.2.label>
+  <!-- {0}很不错。大家都很高兴有机会一起放松。 -->
+  <LP_FestivalOutcome_Shar.outcomeChances.2.description>{0} was good. Everyone was glad of the chance to relax together.</LP_FestivalOutcome_Shar.outcomeChances.2.description>
+  <!-- 难忘 -->
+  <LP_FestivalOutcome_Shar.outcomeChances.3.label>unforgettable</LP_FestivalOutcome_Shar.outcomeChances.3.label>
+  <!-- {0}令人难忘！神明似乎也在注视着这场庆典。 -->
+  <LP_FestivalOutcome_Shar.outcomeChances.3.description>{0} was unforgettable! Even the gods seemed to be watching this festival.</LP_FestivalOutcome_Shar.outcomeChances.3.description>
+  <!-- 根据仪式品质，参与者获得 {MINMOOD}～{MAXMOOD} 心情，持续 {MOODDAYS} 天；这位神的神眷：糟糕-3、平淡+2、不错+6、难忘+12。 -->
+  <LP_FestivalOutcome_Surtr.description>Depending on ritual quality, participants get {MINMOOD} to {MAXMOOD} mood for {MOODDAYS} days; this god's divine favor: terrible -3, boring +2, good +6, unforgettable +12.</LP_FestivalOutcome_Surtr.description>
+  <!-- 参与人数 -->
+  <LP_FestivalOutcome_Surtr.comps.0.label>participants</LP_FestivalOutcome_Surtr.comps.0.label>
+  <!-- 房间印象 -->
+  <LP_FestivalOutcome_Surtr.comps.1.label>room impressiveness</LP_FestivalOutcome_Surtr.comps.1.label>
+  <!-- 有神官主持 -->
+  <LP_FestivalOutcome_Surtr.comps.2.label>led by a priest</LP_FestivalOutcome_Surtr.comps.2.label>
+  <!-- 在神殿里 -->
+  <LP_FestivalOutcome_Surtr.comps.3.label>in a temple</LP_FestivalOutcome_Surtr.comps.3.label>
+  <!-- 神像在8格内 -->
+  <LP_FestivalOutcome_Surtr.comps.4.label>statue within 8 cells</LP_FestivalOutcome_Surtr.comps.4.label>
+  <!-- 武器或护甲（献祭） -->
+  <LP_FestivalOutcome_Surtr.comps.5.label>weapons or armor (sacrifice)</LP_FestivalOutcome_Surtr.comps.5.label>
+  <!-- 参与者5天锻造速度+25%。 -->
+  <LP_FestivalOutcome_Surtr.modExtensions.0.unforgettable>Participants get smithing speed +25% for 5 days.</LP_FestivalOutcome_Surtr.modExtensions.0.unforgettable>
+  <!-- 糟糕 -->
+  <LP_FestivalOutcome_Surtr.outcomeChances.0.label>terrible</LP_FestivalOutcome_Surtr.outcomeChances.0.label>
+  <!-- {0}糟透了！大家熬着尴尬的寒暄等它结束。 -->
+  <LP_FestivalOutcome_Surtr.outcomeChances.0.description>{0} was terrible! Everyone endured the awkward small talk until it was over.</LP_FestivalOutcome_Surtr.outcomeChances.0.description>
+  <!-- 平淡 -->
+  <LP_FestivalOutcome_Surtr.outcomeChances.1.label>boring</LP_FestivalOutcome_Surtr.outcomeChances.1.label>
+  <!-- {0}很平淡。大家都放不开。 -->
+  <LP_FestivalOutcome_Surtr.outcomeChances.1.description>{0} was boring. Nobody could loosen up.</LP_FestivalOutcome_Surtr.outcomeChances.1.description>
+  <!-- 不错 -->
+  <LP_FestivalOutcome_Surtr.outcomeChances.2.label>good</LP_FestivalOutcome_Surtr.outcomeChances.2.label>
+  <!-- {0}很不错。大家都很高兴有机会一起放松。 -->
+  <LP_FestivalOutcome_Surtr.outcomeChances.2.description>{0} was good. Everyone was glad of the chance to relax together.</LP_FestivalOutcome_Surtr.outcomeChances.2.description>
+  <!-- 难忘 -->
+  <LP_FestivalOutcome_Surtr.outcomeChances.3.label>unforgettable</LP_FestivalOutcome_Surtr.outcomeChances.3.label>
+  <!-- {0}令人难忘！神明似乎也在注视着这场庆典。 -->
+  <LP_FestivalOutcome_Surtr.outcomeChances.3.description>{0} was unforgettable! Even the gods seemed to be watching this festival.</LP_FestivalOutcome_Surtr.outcomeChances.3.description>
+  <!-- 根据仪式品质，参与者获得 {MINMOOD}～{MAXMOOD} 心情，持续 {MOODDAYS} 天。「不错」及以上：死者得到安息（不能复生、灵魂不能被汲取），凯兰沃神眷+2；「难忘」再+3。 -->
+  <LP_FuneralGreyRobeOutcome.description>Depending on ritual quality, participants get {MINMOOD} to {MAXMOOD} mood for {MOODDAYS} days. "Good" or better: the dead is laid to rest (can't be raised, soul can't be drained), Kelemvor divine favor +2; "unforgettable" another +3.</LP_FuneralGreyRobeOutcome.description>
+  <!-- 大祭司在场 -->
+  <LP_FuneralGreyRobeOutcome.comps.0.label>high priest present</LP_FuneralGreyRobeOutcome.comps.0.label>
+  <!-- 参与人数 -->
+  <LP_FuneralGreyRobeOutcome.comps.1.label>participants</LP_FuneralGreyRobeOutcome.comps.1.label>
+  <!-- 有神官主持 -->
+  <LP_FuneralGreyRobeOutcome.comps.2.label>led by a priest</LP_FuneralGreyRobeOutcome.comps.2.label>
+</LanguageData>

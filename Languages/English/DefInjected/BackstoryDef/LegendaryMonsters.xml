@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- [PAWN_nameDef]诞生在没有光的地方，从小就靠吞掉别的东西活下来。 -->
+  <LP_Bs_MonsterSpawn.description>[PAWN_nameDef] was born in a place without light and has survived since birth by devouring other things.</LP_Bs_MonsterSpawn.description>
+  <!-- 幽暗中诞生 -->
+  <LP_Bs_MonsterSpawn.title>born in the dark</LP_Bs_MonsterSpawn.title>
+  <!-- 怪物 -->
+  <LP_Bs_MonsterSpawn.titleShort>monster</LP_Bs_MonsterSpawn.titleShort>
+  <!-- 吟游诗人唱过[PAWN_nameDef]的故事，唱的都是去找它的人再也没有回来。 -->
+  <LP_Bs_MonsterLegend.description>Bards have sung the tale of [PAWN_nameDef], and in every song those who went looking for it never came back.</LP_Bs_MonsterLegend.description>
+  <!-- 传说中的怪物 -->
+  <LP_Bs_MonsterLegend.title>legendary monster</LP_Bs_MonsterLegend.title>
+  <!-- 传奇怪 -->
+  <LP_Bs_MonsterLegend.titleShort>legend</LP_Bs_MonsterLegend.titleShort>
+</LanguageData>

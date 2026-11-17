@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 缠绕 -->
+  <LP_SerpentConstrictAbility.label>constrict</LP_SerpentConstrictAbility.label>
+  <!-- 缠住一名贴身的敌人3秒：对方无法行动，每秒受到6点钝伤（按体型比×0.5～×2）；期间自己不能移动。冷却12小时。 -->
+  <LP_SerpentConstrictAbility.description>Constrict an adjacent enemy for 3 seconds: it can't act and takes 6 blunt damage per second (×0.5 to ×2 by size ratio); you can't move meanwhile. Cooldown 12 hours.</LP_SerpentConstrictAbility.description>
+  <!-- 剑刃风暴 -->
+  <LP_BladeStormAbility.label>blade storm</LP_BladeStormAbility.label>
+  <!-- 对身边1格内的每个敌人，主手与每把能用的副手各攻击一次（必中，按真实近战伤害结算；副手伤害按设置倍率）。冷却2天。 -->
+  <LP_BladeStormAbility.description>Against each enemy within 1 cell, the main hand and every usable off-hand attack once (guaranteed hit, resolved with real melee damage; off-hand damage uses the settings multiplier). Cooldown 2 days.</LP_BladeStormAbility.description>
+</LanguageData>

@@ -55,7 +55,7 @@ namespace LichPhylactery {
 
   // ==================== 炼金师 ====================
   public static readonly string[] Potions={"LP_ALP_Healing","LP_ALP_Swift","LP_ALP_Tough","LP_ALP_Light","LP_ALP_Lucid","LP_ALP_Courage"};
-  public static readonly string[] PotionLabels={"治愈","迅捷","坚韧","轻盈","清醒","勇气"};
+  public static readonly string[] PotionLabels={"治愈".Loc(),"迅捷".Loc(),"坚韧".Loc(),"轻盈".Loc(),"清醒".Loc(),"勇气".Loc()};
   public static int PerDay(int f)=>(f & FChemist)!=0?3:(f & FSavant)!=0?2:1;
   // 化学大师自选：0 = 随机，1～6 = 指定种类。
   public static int Pick(Pawn p){var d=ClassSubclass.Data(p);if(d==null || !S(p,FChemist))return 0;d.ticks.TryGetValue("alPick",out int m);return Mathf.Clamp(m,0,Potions.Length);}
@@ -64,7 +64,7 @@ namespace LichPhylactery {
    if(!p.Awake() || p.inventory==null)return;d.ticks.TryGetValue("alDay",out int day);if(day==Day)return;d.ticks["alDay"]=Day;
    int n=PerDay(f),pick=Pick(p);var got=new List<string>();
    for(int i=0;i<n;i++){var th=GivePotion(p,pick>0?Potions[pick-1]:Potions.RandomElement());if(th!=null)got.Add(th.def.label);}
-   if(got.Count>0)Items.Mote(p,"实验药剂："+string.Join("、",got),AlchemyColor);
+   if(got.Count>0)Items.Mote(p,"实验药剂：".Loc()+string.Join("、".Loc(),got),AlchemyColor);
   }
   public static Thing MakePotion(Pawn maker,string defName){
    var def=DefCache<ThingDef>.Get(defName);if(def==null)return null;var th=ThingMaker.MakeThing(def);
@@ -80,10 +80,10 @@ namespace LichPhylactery {
   public static string Drink(Pawn p,string effect,float f){
    if(p==null || p.Dead)return null;
    switch(effect){
-    case "heal":{foreach(var inj in p.health.hediffSet.hediffs.OfType<Hediff_Injury>().Where(x=>x.Bleeding).ToList())inj.Tended(.5f,1f);float h=ClassMelee.Heal(p,20f*f);Items.Mote(p,"治愈药剂 "+h.ToString("0"),AlchemyColor);return "heal";}
+    case "heal":{foreach(var inj in p.health.hediffSet.hediffs.OfType<Hediff_Injury>().Where(x=>x.Bleeding).ToList())inj.Tended(.5f,1f);float h=ClassMelee.Heal(p,20f*f);Items.Mote(p,"治愈药剂 ".Loc()+h.ToString("0"),AlchemyColor);return "heal";}
     case "Swift":case "Tough":case "Light":case "Lucid":case "Courage":Items.Give(p,"LP_ALB_"+effect,Mathf.RoundToInt(PotionTicks*f));Items.Mote(p,DefCache<HediffDef>.Get("LP_ALB_"+effect)?.label??effect,AlchemyColor);return effect;
-    case "restore":{var what=CureOne(p);Items.Mote(p,what==null?"复原试剂：没有可治的":"复原试剂："+what,AlchemyColor);return what;}
-    case "greater":{int n=Greater(p);Items.Mote(p,"大复原药剂（"+n+" 项）",AlchemyColor);return n.ToString();}
+    case "restore":{var what=CureOne(p);Items.Mote(p,what==null?"复原试剂：没有可治的".Loc():"复原试剂：".Loc()+what,AlchemyColor);return what;}
+    case "greater":{int n=Greater(p);Items.Mote(p,"大复原药剂（".Loc()+n+" 项）".Loc(),AlchemyColor);return n.ToString();}
    }
    return null;
   }
@@ -93,7 +93,7 @@ namespace LichPhylactery {
   public static string CureOne(Pawn p){
    var h=p.health.hediffSet.hediffs.Where(Disease).OrderByDescending(x=>x.Severity).FirstOrDefault();
    if(h!=null){string n=h.LabelCap;p.health.RemoveHediff(h);return n;}
-   var tox=p.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.ToxicBuildup);if(tox!=null){p.health.RemoveHediff(tox);return "毒素累积";}
+   var tox=p.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.ToxicBuildup);if(tox!=null){p.health.RemoveHediff(tox);return "毒素累积".Loc();}
    return null;
   }
   // 大复原药剂：长回一个缺失的肢体或器官（最大的那个），清除所有疾病、成瘾和毒素累积。返回处理的项数。
@@ -107,7 +107,7 @@ namespace LichPhylactery {
   static bool Burning(DamageDef d)=>d==DamageDefOf.Flame || d==DamageDefOf.Burn;
 
   // ==================== 装甲师 ====================
-  public static readonly string[] ArmorModes={"守护者","渗透者"};
+  public static readonly string[] ArmorModes={"守护者".Loc(),"渗透者".Loc()};
   public static int ArmorMode(Pawn p){var d=ClassSubclass.Data(p);if(d==null)return 0;d.ticks.TryGetValue("arMode",out int m);return Mathf.Clamp(m,0,1);}
   public static bool Guardian(Pawn p)=>ArmorMode(p)==0 && ArcaneArmor(p)!=null;
   public static bool Infiltrator(Pawn p)=>ArmorMode(p)==1 && ArcaneArmor(p)!=null;
@@ -120,7 +120,7 @@ namespace LichPhylactery {
   public static Thing Workbench(Pawn p)=>p.Map==null?null:GenRadial.RadialDistinctThingsAround(p.Position,p.Map,3.9f,true).FirstOrDefault(t=>t is Building_WorkTable);
   public static string Convert(Pawn p,Apparel a){
    var d=ClassSubclass.Data(p);if(d==null || a==null)return null;d.ticks["arArmor"]=a.thingIDNumber;Modify(p,d,a);
-   Items.Mote(p,"奥术装甲："+a.LabelNoCount,ArmorColor);return a.LabelNoCount;
+   Items.Mote(p,"奥术装甲：".Loc()+a.LabelNoCount,ArmorColor);return a.LabelNoCount;
   }
   // 甲胄改装：奥术装甲的附魔强化 +2（每件只加一次，上限照旧）。
   static void Modify(Pawn p,SubclassData d,Apparel a){
@@ -139,7 +139,7 @@ namespace LichPhylactery {
   public static Pawn Pull(Pawn p){
    var t=Races124.PawnsNear(p.Map,p.Position,6f).Where(x=>Hostile(p,x) && !x.Downed && x.Spawned && !x.Position.AdjacentTo8WayOrInside(p.Position)).OrderBy(x=>x.Position.DistanceToSquared(p.Position)).FirstOrDefault();if(t==null)return null;
    var cells=GenAdj.CellsAdjacent8Way(p).Where(c=>c.InBounds(p.Map) && c.Standable(p.Map) && c.GetFirstPawn(p.Map)==null).OrderBy(c=>c.DistanceToSquared(t.Position)).ToList();
-   if(cells.Count>0)DNDPush.Move(t,cells[0]);Taunt(p,t);Items.Mote(t,"磁力牵引",ArmorColor);return t;
+   if(cells.Count>0)DNDPush.Move(t,cells[0]);Taunt(p,t);Items.Mote(t,"磁力牵引".Loc(),ArmorColor);return t;
   }
   static void Taunt(Pawn p,Pawn t){if(t.mindState!=null)t.mindState.enemyTarget=p;Items.Give(t,"LP_Taunted",600);}
   public static float FieldAmount(Pawn p)=>(10f+2f*Level(p))*(S(p,FUpgrade)?2f:1f);
@@ -159,7 +159,7 @@ namespace LichPhylactery {
   public static void Reinforce(Thing b){
    var s=State;if(s==null || b==null || !s.reinforced.Add(b.thingIDNumber))return;ClearHpCache(b);
    b.HitPoints=Mathf.RoundToInt(b.def.GetStatValueAbstract(StatDefOf.MaxHitPoints,b.Stuff)*ReinforceFactor);
-   Items.Mote(b,"加固施工",FortColor);
+   Items.Mote(b,"加固施工".Loc(),FortColor);
   }
   // 自己修理速度 ×2：修理时每 250 刻再补一份原版的修理量。
   static void RepairTick(Pawn p){
@@ -172,12 +172,12 @@ namespace LichPhylactery {
   public static Building_RuneMine PlaceMine(Pawn p,IntVec3 c){
    var def=DefCache<ThingDef>.Get("LP_RuneMine");if(def==null || p.Map==null)return null;
    var m=(Building_RuneMine)ThingMaker.MakeThing(def);m.ownerId=p.thingIDNumber;GenSpawn.Spawn(m,c,p.Map);if(p.Faction!=null)m.SetFaction(p.Faction);
-   FleckMaker.ThrowDustPuffThick(c.ToVector3Shifted(),p.Map,1f,FortColor);Items.Mote(m,"符文地雷",FortColor);return m;
+   FleckMaker.ThrowDustPuffThick(c.ToVector3Shifted(),p.Map,1f,FortColor);Items.Mote(m,"符文地雷".Loc(),FortColor);return m;
   }
   public static void MineBlast(Building_RuneMine m,Pawn t){
    if(t==null || t.Dead)return;var owner=m.Map?.mapPawns.AllPawnsSpawned.FirstOrDefault(x=>x.thingIDNumber==m.ownerId);
    t.TakeDamage(new DamageInfo(Warlock.ForceDamage,20f*(owner==null?1f:Artifice(owner)),.2f,-1f,owner??(Thing)m));
-   if(!t.Dead)t.stances?.stunner?.StunFor(120,owner);if(m.Spawned)FleckMaker.ThrowLightningGlow(m.DrawPos,m.Map,1.5f);Items.Mote(t,"符文地雷",FortColor);
+   if(!t.Dead)t.stances?.stunner?.StunFor(120,owner);if(m.Spawned)FleckMaker.ThrowLightningGlow(m.DrawPos,m.Map,1.5f);Items.Mote(t,"符文地雷".Loc(),FortColor);
   }
   // 奥术电容上限：殖民地里每个会「奥术电容」的工程师 器械师等级 ÷ 3 台，合计。
   public static int CapacitorLimit(){int n=0;foreach(var p in PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive_FreeColonists)if(ClassSubclass.Has(p,Fortress) && ClassSystem.Knows(p,"LP_FE_Capacitor"))n+=Level(p)/3;return n;}
@@ -191,7 +191,7 @@ namespace LichPhylactery {
   public static int Fortify(Pawn p,IntVec3 center){
    var s=State;if(s==null || p.Map==null)return 0;int n=0;var seen=new HashSet<Thing>();
    foreach(var c in CellRect.CenteredOn(center,2).ClipInsideMap(p.Map))foreach(var t in c.GetThingList(p.Map))if(t is Building b && b.def.useHitPoints && seen.Add(b)){s.fortified[b.thingIDNumber]=Now+FortifyTicks;n++;}
-   FleckMaker.ThrowDustPuffThick(center.ToVector3Shifted(),p.Map,3f,FortColor);Items.Mote(p,"战地加固 ×"+n,FortColor);return n;
+   FleckMaker.ThrowDustPuffThick(center.ToVector3Shifted(),p.Map,3f,FortColor);Items.Mote(p,"战地加固 ×".Loc()+n,FortColor);return n;
   }
   public static bool Fortified(Thing b){var s=State;return s!=null && s.fortified.Count>0 && s.fortified.TryGetValue(b.thingIDNumber,out int until) && until>Now;}
   public static bool Upgraded(Thing turret){var s=State;return s!=null && s.upgraded.Count>0 && s.upgraded.TryGetValue(turret.thingIDNumber,out int until) && until>Now;}
@@ -205,7 +205,7 @@ namespace LichPhylactery {
   public static int Upgrade(Building_FortressCore core){
    var s=State;var map=core.Map;if(s==null || map==null)return 0;int n=0;
    foreach(var t in GenRadial.RadialDistinctThingsAround(core.Position,map,CoreRadius,true))if(t is Building_Turret){s.upgraded[t.thingIDNumber]=Now+UpgradeTicks;n++;}
-   FleckMaker.ThrowLightningGlow(core.DrawPos,map,4f);Items.Mote(core,"全线升级 ×"+n,FortColor);return n;
+   FleckMaker.ThrowLightningGlow(core.DrawPos,map,4f);Items.Mote(core,"全线升级 ×".Loc()+n,FortColor);return n;
   }
   static bool BesideCover(Pawn v){
    if(!v.Spawned || State==null || State.reinforced.Count==0)return false;
@@ -218,15 +218,15 @@ namespace LichPhylactery {
   public static string Invalid(Pawn caster,CompProperties_ClassEffect e,LocalTargetInfo target){
    if(!Known.Contains(e.effect))return null;var t=target.Thing as Pawn;var map=caster.Map;
    switch(e.effect){
-    case "S4Armor":{var a=Candidate(caster);if(a==null)return "身上没有能改的躯干护甲（防弹衣、海军装甲、动力甲之类）。";if(a==ArcaneArmor(caster))return "这件已经是奥术装甲了。";if(Workbench(caster)==null)return "要站在工作台旁边（3 格内）。";return null;}
+    case "S4Armor":{var a=Candidate(caster);if(a==null)return "身上没有能改的躯干护甲（防弹衣、海军装甲、动力甲之类）。".Loc();if(a==ArcaneArmor(caster))return "这件已经是奥术装甲了。".Loc();if(Workbench(caster)==null)return "要站在工作台旁边（3 格内）。".Loc();return null;}
     case "S4ArmorMode":return null;
-    case "S4Field":return Guardian(caster)?null:"要穿着奥术装甲、处在守护者模式。";
-    case "S4Launcher":if(!Infiltrator(caster))return "要穿着奥术装甲、处在渗透者模式。";if(t==null || t.Dead)return "需要选择一个活着的目标。";if(!t.HostileTo(caster))return "只能对敌人使用。";return null;
+    case "S4Field":return Guardian(caster)?null:"要穿着奥术装甲、处在守护者模式。".Loc();
+    case "S4Launcher":if(!Infiltrator(caster))return "要穿着奥术装甲、处在渗透者模式。".Loc();if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();if(!t.HostileTo(caster))return "只能对敌人使用。".Loc();return null;
     case "S4Mine":{
-     if(map==null || !target.Cell.IsValid || !target.Cell.InBounds(map) || !target.Cell.Standable(map) || target.Cell.GetEdifice(map)!=null)return "需要一个能站人的空地。";
-     if(target.Cell.GetThingList(map).Any(x=>x.def.category==ThingCategory.Building))return "这里已经有建筑了。";
-     if(Mines(caster).Count()>=MineMax)return "已经埋了 "+MineMax+" 个符文地雷（踩掉或拆掉之后才能再埋）。";return null;}
-    case "S4Fortify":if(map==null || !target.Cell.IsValid || !target.Cell.InBounds(map))return "需要选择一个位置。";return null;
+     if(map==null || !target.Cell.IsValid || !target.Cell.InBounds(map) || !target.Cell.Standable(map) || target.Cell.GetEdifice(map)!=null)return "需要一个能站人的空地。".Loc();
+     if(target.Cell.GetThingList(map).Any(x=>x.def.category==ThingCategory.Building))return "这里已经有建筑了。".Loc();
+     if(Mines(caster).Count()>=MineMax)return "已经埋了 ".Loc()+MineMax+" 个符文地雷（踩掉或拆掉之后才能再埋）。".Loc();return null;}
+    case "S4Fortify":if(map==null || !target.Cell.IsValid || !target.Cell.InBounds(map))return "需要选择一个位置。".Loc();return null;
     case "S4Pick":return null;
    }
    return null;
@@ -234,13 +234,13 @@ namespace LichPhylactery {
   public static bool Apply(Pawn p,AbilityDef def,CompProperties_ClassEffect e,LocalTargetInfo target){
    if(!Known.Contains(e.effect))return false;var t=target.Thing as Pawn;
    switch(e.effect){
-    case "S4Restorative":{var th=GivePotion(p,"LP_ALP_Restorative");Items.Mote(p,th!=null?"复原试剂":"背包装不下",AlchemyColor);break;}
-    case "S4Greater":{var th=GivePotion(p,"LP_ALP_GreaterRestorative");Items.Mote(p,th!=null?"大复原药剂":"背包装不下",AlchemyColor);break;}
-    case "S4Pick":{var d=ClassSubclass.Data(p);if(d!=null){int m=(Pick(p)+1)%(Potions.Length+1);d.ticks["alPick"]=m;Items.Mote(p,"每日药剂："+(m==0?"随机":PotionLabels[m-1]),AlchemyColor);}break;}
+    case "S4Restorative":{var th=GivePotion(p,"LP_ALP_Restorative");Items.Mote(p,th!=null?"复原试剂".Loc():"背包装不下".Loc(),AlchemyColor);break;}
+    case "S4Greater":{var th=GivePotion(p,"LP_ALP_GreaterRestorative");Items.Mote(p,th!=null?"大复原药剂".Loc():"背包装不下".Loc(),AlchemyColor);break;}
+    case "S4Pick":{var d=ClassSubclass.Data(p);if(d!=null){int m=(Pick(p)+1)%(Potions.Length+1);d.ticks["alPick"]=m;Items.Mote(p,"每日药剂：".Loc()+(m==0?"随机".Loc():PotionLabels[m-1]),AlchemyColor);}break;}
     case "S4Armor":Convert(p,Candidate(p));break;
-    case "S4ArmorMode":{var d=ClassSubclass.Data(p);if(d!=null){int m=1-ArmorMode(p);d.ticks["arMode"]=m;Items.Mote(p,"奥术装甲："+ArmorModes[m],ArmorColor);}break;}
-    case "S4Field":{float amt=FieldAmount(p);var h=Items.Give(p,"LP_ShieldSpell",FieldTicks,amt);if(h!=null)h.Severity=Mathf.Max(h.Severity,amt);Items.Mote(p,"防御力场 "+amt.ToString("0"),ArmorColor);break;}
-    case "S4Launcher":if(Hostile(p,t)){float amt=LauncherDamage(p,t);t.TakeDamage(new DamageInfo(ClassCasters.Lightning??DamageDefOf.Burn,amt,.3f,-1f,p));if(t.Spawned)FleckMaker.ThrowLightningGlow(t.DrawPos,t.Map,1.2f);Items.Mote(t,"闪电发射器 "+amt.ToString("0"),ArmorColor);}break;
+    case "S4ArmorMode":{var d=ClassSubclass.Data(p);if(d!=null){int m=1-ArmorMode(p);d.ticks["arMode"]=m;Items.Mote(p,"奥术装甲：".Loc()+ArmorModes[m],ArmorColor);}break;}
+    case "S4Field":{float amt=FieldAmount(p);var h=Items.Give(p,"LP_ShieldSpell",FieldTicks,amt);if(h!=null)h.Severity=Mathf.Max(h.Severity,amt);Items.Mote(p,"防御力场 ".Loc()+amt.ToString("0"),ArmorColor);break;}
+    case "S4Launcher":if(Hostile(p,t)){float amt=LauncherDamage(p,t);t.TakeDamage(new DamageInfo(ClassCasters.Lightning??DamageDefOf.Burn,amt,.3f,-1f,p));if(t.Spawned)FleckMaker.ThrowLightningGlow(t.DrawPos,t.Map,1.2f);Items.Mote(t,"闪电发射器 ".Loc()+amt.ToString("0"),ArmorColor);}break;
     case "S4Mine":PlaceMine(p,target.Cell);break;
     case "S4Fortify":Fortify(p,target.Cell);break;
    }
@@ -263,7 +263,7 @@ namespace LichPhylactery {
    if(!Busy && melee && S(a,FArmor) && Guardian(a)){float amt=6f*Artifice(a);var tv=v;var me=a;Fiends.Defer(()=>{if(tv.Dead || !tv.Spawned)return;Busy=true;try{tv.TakeDamage(new DamageInfo(ClassCasters.Lightning??DamageDefOf.Burn,amt,.2f,-1f,me));}finally{Busy=false;}if(!tv.Dead)Taunt(me,tv);});}
    if(S(a,FPerfect) && Infiltrator(a))Mark(a,v);
    // 受击方：渗透者远程闪避 10%；自己建的掩体旁边远程 ×0.85。
-   if(!melee && Infiltrator(v) && Roll<EvadeChance){Items.Mote(v,"闪开了",ArmorColor);return 0f;}
+   if(!melee && Infiltrator(v) && Roll<EvadeChance){Items.Mote(v,"闪开了".Loc(),ArmorColor);return 0f;}
    if(!melee && v.Faction!=null && v.Faction.IsPlayer && BesideCover(v))g*=CoverFactor;
    return g;
   }
@@ -301,7 +301,7 @@ namespace LichPhylactery {
   public override void PostExposeData(){base.PostExposeData();Scribe_Values.Look(ref refined,"lpRefined");}
   public override bool AllowStackWith(Thing other)=>other.TryGetComp<CompAlchemistPotion>()?.refined==refined;
   public override void PostSplitOff(Thing piece){base.PostSplitOff(piece);var c=piece.TryGetComp<CompAlchemistPotion>();if(c!=null)c.refined=refined;}
-  public override string TransformLabel(string label)=>refined?label+"（精炼）":label;
+  public override string TransformLabel(string label)=>refined?label+"（精炼）".Loc():label;
   public override void Notify_RecipeProduced(Pawn pawn){base.Notify_RecipeProduced(pawn);refined=Subclass4.S(pawn,Subclass4.FSavant) || ClassSystem.Knows(pawn,"LP_AL_Savant");}
  }
  public class IngestionOutcomeDoer_Alchemist : IngestionOutcomeDoer {
@@ -362,32 +362,32 @@ namespace LichPhylactery {
   public override IEnumerable<Gizmo> GetGizmos(){
    foreach(var g in base.GetGizmos())yield return g;
    if(Faction!=Faction.OfPlayer)yield break;
-   var c=new Command_Action{defaultLabel="全线升级",defaultDesc="半径 "+Subclass4.CoreRadius.ToString("0")+" 格内所有炮台（含符文炮台）1 小时内伤害 ×1.3。每场袭击一次（地图上有敌人时才能用）。",icon=ContentFinder<Texture2D>.Get("LP/Classes/Subclass4/FortCitadel",false)??BaseContent.BadTex,action=()=>{raidUsed=true;Subclass4.Upgrade(this);}};
-   if(raidUsed)c.Disable("这场袭击已经用过了。");else if(!Raid(Map))c.Disable("现在没有袭击。");
+   var c=new Command_Action{defaultLabel="全线升级".Loc(),defaultDesc="半径 ".Loc()+Subclass4.CoreRadius.ToString("0")+" 格内所有炮台（含符文炮台）1 小时内伤害 ×1.3。每场袭击一次（地图上有敌人时才能用）。".Loc(),icon=ContentFinder<Texture2D>.Get("LP/Classes/Subclass4/FortCitadel",false)??BaseContent.BadTex,action=()=>{raidUsed=true;Subclass4.Upgrade(this);}};
+   if(raidUsed)c.Disable("这场袭击已经用过了。".Loc());else if(!Raid(Map))c.Disable("现在没有袭击。".Loc());
    yield return c;
   }
  }
  // 奥术电容：数量受工程师限制（器械师等级 ÷ 3，合计）。
  public class PlaceWorker_ArcaneCapacitor : PlaceWorker {
   public override AcceptanceReport AllowsPlacing(BuildableDef checkingDef,IntVec3 loc,Rot4 rot,Map map,Thing thingToIgnore=null,Thing thing=null){
-   int max=Subclass4.CapacitorLimit();if(max<=0)return "需要殖民地里有会「奥术电容」的堡垒工程师（器械师 7 级）。";
-   return Subclass4.CountBuilt(checkingDef as ThingDef)>=max?new AcceptanceReport("奥术电容最多 "+max+" 台（工程师的器械师等级 ÷ 3）。"):AcceptanceReport.WasAccepted;
+   int max=Subclass4.CapacitorLimit();if(max<=0)return "需要殖民地里有会「奥术电容」的堡垒工程师（器械师 7 级）。".Loc();
+   return Subclass4.CountBuilt(checkingDef as ThingDef)>=max?new AcceptanceReport("奥术电容最多 ".Loc()+max+" 台（工程师的器械师等级 ÷ 3）。".Loc()):AcceptanceReport.WasAccepted;
   }
   public override void DrawGhost(ThingDef def,IntVec3 center,Rot4 rot,Color ghostCol,Thing thing=null){GenDraw.DrawRadiusRing(center,Subclass4.CapacitorRange);}
  }
  // 要塞核心：每个殖民地 1 个，要有会「要塞之心」的工程师。
  public class PlaceWorker_FortressCore : PlaceWorker {
   public override AcceptanceReport AllowsPlacing(BuildableDef checkingDef,IntVec3 loc,Rot4 rot,Map map,Thing thingToIgnore=null,Thing thing=null){
-   if(!Subclass4.HasCitadelEngineer())return "需要殖民地里有会「要塞之心」的堡垒工程师（器械师 15 级）。";
+   if(!Subclass4.HasCitadelEngineer())return "需要殖民地里有会「要塞之心」的堡垒工程师（器械师 15 级）。".Loc();
    var def=checkingDef as ThingDef;int n=map.listerThings.ThingsOfDef(def).Count+map.listerThings.ThingsInGroup(ThingRequestGroup.Blueprint).Count(t=>t.def.entityDefToBuild==def)+map.listerThings.ThingsInGroup(ThingRequestGroup.BuildingFrame).Count(t=>t.def.entityDefToBuild==def);
-   return n>=1?new AcceptanceReport("每个殖民地只能有 1 个要塞核心。"):AcceptanceReport.WasAccepted;
+   return n>=1?new AcceptanceReport("每个殖民地只能有 1 个要塞核心。".Loc()):AcceptanceReport.WasAccepted;
   }
   public override void DrawGhost(ThingDef def,IntVec3 center,Rot4 rot,Color ghostCol,Thing thing=null){GenDraw.DrawRadiusRing(center,Subclass4.CoreRadius);}
  }
  // 加固施工：自己建的防御建筑最大生命 ×1.5。
  public class StatPart_Reinforced : StatPart {
   public override void TransformValue(StatRequest req,ref float val){if(req.HasThing && Subclass4.Reinforced(req.Thing))val*=Subclass4.ReinforceFactor;}
-  public override string ExplanationPart(StatRequest req)=>req.HasThing && Subclass4.Reinforced(req.Thing)?"加固施工：×"+Subclass4.ReinforceFactor.ToStringPercent():null;
+  public override string ExplanationPart(StatRequest req)=>req.HasThing && Subclass4.Reinforced(req.Thing)?"加固施工：×".Loc()+Subclass4.ReinforceFactor.ToStringPercent():null;
  }
  [StaticConstructorOnStartup]
  public static class Subclass4Startup {

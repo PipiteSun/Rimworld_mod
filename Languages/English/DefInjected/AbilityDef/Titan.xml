@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 神罚 -->
+  <LP_TitanSmite.label>divine punishment</LP_TitanSmite.label>
+  <!-- 在10格内的一格召下一道闪电（与天然落雷相同的火焰爆炸，外加一圈 EMP）。消耗30神威，冷却1天。打不穿山体。 -->
+  <LP_TitanSmite.description>Call down a bolt of lightning on a cell within 10 cells (the same fire explosion as a natural strike, plus a ring of EMP). Costs 30 divine might, cooldown 1 day. Can't penetrate mountains.</LP_TitanSmite.description>
+  <!-- 神裔之息 -->
+  <LP_TitanBreath.label>titanborn's breath</LP_TitanBreath.label>
+  <!-- 吹出一口神息：自身5格内的所有友方（同一派系），每处伤口严重度-10，并止住出血。消耗40神威，冷却2天。 -->
+  <LP_TitanBreath.description>Blow a divine breath: every wound of all friendlies (same faction) within 5 cells of yourself loses 10 severity and stops bleeding. Costs 40 divine might, cooldown 2 days.</LP_TitanBreath.description>
+</LanguageData>

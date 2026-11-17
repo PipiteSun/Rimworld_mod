@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 巨魔皮 -->
+  <LP_TrollHide.label>troll hide</LP_TrollHide.label>
+  <!-- 鞣制过的巨魔皮，厚实而有弹性，离开主人后仍保留着一点再生力：用它做的服装每天恢复1%耐久。只能屠宰巨魔得到。 -->
+  <LP_TrollHide.description>Tanned troll hide, thick and elastic, still keeping a little regenerative power after leaving its owner: clothing made from it restores 1% durability per day. Only obtained by butchering trolls.</LP_TrollHide.description>
+  <!-- 秘银 -->
+  <LP_Mithral.label>mithril</LP_Mithral.label>
+  <!-- 银白色的传说金属，轻得像羽毛，坚韧却接近钢铁。秘银物品的重量只有一半，秘银服装不会拖慢穿戴者。\n\n来自山体深处的稀有秘银矿脉（矮人开采时产量翻倍），同盟商队偶尔少量出售。 -->
+  <LP_Mithral.description>A silvery legendary metal, light as a feather yet nearly as tough as steel. Mithril items weigh only half as much, and mithril clothing doesn't slow the wearer.\n\nFrom rare mithril veins deep in the mountains (dwarves get double yield), occasionally sold in small amounts by league caravans.</LP_Mithral.description>
+  <!-- 精金 -->
+  <LP_Adamantine.label>adamantine</LP_Adamantine.label>
+  <!-- 暗紫色的传说金属，几乎无法被摧毁。精金近战武器对建筑和机械体伤害翻倍；精金护甲让来袭攻击的穿甲减半。\n\n来自比秘银更稀有的精金矿脉，只有少数商队出售。 -->
+  <LP_Adamantine.description>A dark purple legendary metal, almost indestructible. Adamantine melee weapons deal double damage to buildings and mechanoids; adamantine armor halves the armor penetration of incoming attacks.\n\nFrom adamantine veins rarer than mithril; only a few caravans sell it.</LP_Adamantine.description>
+  <!-- 寒铁 -->
+  <LP_ColdIron.label>cold iron</LP_ColdIron.label>
+  <!-- 用白银淬炼过的钢，摸上去总是冰凉。寒铁近战武器对有灵能链接的人和精灵伤害+25%（同时启用神兽血裔时白泽血裔也算）。在炼金桌上用3份钢和1份白银淬炼。 -->
+  <LP_ColdIron.description>Steel tempered with silver, always cold to the touch. Cold iron melee weapons deal +25% damage against people with a psylink and elves (with Mythic Bloodlines active, baize bloodlines count too). Tempered at the alchemy table from 3 steel and 1 silver.</LP_ColdIron.description>
+  <!-- 秘银矿脉 -->
+  <LP_MineableMithral.label>mithril vein</LP_MineableMithral.label>
+  <!-- 夹着秘银细脉的岩石。矮人开采时产量翻倍。 -->
+  <LP_MineableMithral.description>Rock threaded with fine mithril veins. Dwarves get double yield when mining it.</LP_MineableMithral.description>
+  <!-- 精金矿脉 -->
+  <LP_MineableAdamantine.label>adamantine vein</LP_MineableAdamantine.label>
+  <!-- 嵌着暗紫色精金的岩石，坚硬得几乎挖不动。 -->
+  <LP_MineableAdamantine.description>Rock embedded with dark purple adamantine, so hard it can barely be mined.</LP_MineableAdamantine.description>
+</LanguageData>

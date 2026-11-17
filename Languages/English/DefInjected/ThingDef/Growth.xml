@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 力量手册 -->
+  <LP_Tome_STR.label>manual of strength</LP_Tome_STR.label>
+  <!-- 记载着古代武僧锤炼体魄之法的手册。累计研读 30 小时后，读者的力量 +2、力量上限 +2（同一项属性只能从典籍得一次），书随即化为灰烬。 -->
+  <LP_Tome_STR.description>A manual recording the ancient monks' methods of hardening the body. After 30 hours of study in total, the reader gets Strength +2 and Strength cap +2 (each ability can only be gained from a tome once), and the book then crumbles to ash.</LP_Tome_STR.description>
+  <!-- 敏捷手册 -->
+  <LP_Tome_DEX.label>manual of dexterity</LP_Tome_DEX.label>
+  <!-- 游荡者公会代代相传的身法手册。累计研读 30 小时后，读者的敏捷 +2、敏捷上限 +2（同一项属性只能从典籍得一次），书随即化为灰烬。 -->
+  <LP_Tome_DEX.description>A manual of footwork handed down through generations of the rogues' guild. After 30 hours of study in total, the reader gets Dexterity +2 and Dexterity cap +2 (each ability can only be gained from a tome once), and the book then crumbles to ash.</LP_Tome_DEX.description>
+  <!-- 体质手册 -->
+  <LP_Tome_CON.label>manual of constitution</LP_Tome_CON.label>
+  <!-- 矮人老兵口述、学徒记下的耐力手册。累计研读 30 小时后，读者的体质 +2、体质上限 +2（同一项属性只能从典籍得一次），书随即化为灰烬。 -->
+  <LP_Tome_CON.description>An endurance manual dictated by a dwarven veteran and written down by an apprentice. After 30 hours of study in total, the reader gets Constitution +2 and Constitution cap +2 (each ability can only be gained from a tome once), and the book then crumbles to ash.</LP_Tome_CON.description>
+  <!-- 智力之书 -->
+  <LP_Tome_INT.label>book of intelligence</LP_Tome_INT.label>
+  <!-- 一位不知名大法师的思辨笔记。累计研读 30 小时后，读者的智力 +2、智力上限 +2（同一项属性只能从典籍得一次），书随即化为灰烬。 -->
+  <LP_Tome_INT.description>The speculative notes of an unknown archmage. After 30 hours of study in total, the reader gets Intelligence +2 and Intelligence cap +2 (each ability can only be gained from a tome once), and the book then crumbles to ash.</LP_Tome_INT.description>
+  <!-- 感知之书 -->
+  <LP_Tome_WIS.label>book of wisdom</LP_Tome_WIS.label>
+  <!-- 德鲁伊长老在月下写成的冥想之书。累计研读 30 小时后，读者的感知 +2、感知上限 +2（同一项属性只能从典籍得一次），书随即化为灰烬。 -->
+  <LP_Tome_WIS.description>A book of meditation written under the moon by a druid elder. After 30 hours of study in total, the reader gets Wisdom +2 and Wisdom cap +2 (each ability can only be gained from a tome once), and the book then crumbles to ash.</LP_Tome_WIS.description>
+  <!-- 魅力之书 -->
+  <LP_Tome_CHA.label>book of charisma</LP_Tome_CHA.label>
+  <!-- 宫廷吟游诗人的演说与仪态秘籍。累计研读 30 小时后，读者的魅力 +2、魅力上限 +2（同一项属性只能从典籍得一次），书随即化为灰烬。 -->
+  <LP_Tome_CHA.description>A court bard's secret manual of oratory and poise. After 30 hours of study in total, the reader gets Charisma +2 and Charisma cap +2 (each ability can only be gained from a tome once), and the book then crumbles to ash.</LP_Tome_CHA.description>
+</LanguageData>

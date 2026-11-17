@@ -1,0 +1,245 @@
+s01838	Call out to anyone in a raiding humanlike group (within 30 cells). Success = 30% + (inspiration power - 1) × 40%, +5% for each member of their group who is downed or dead (up to 90%). Success: the whole group gives up the raid and leaves the map, and that faction's goodwill +10. Failure: that person is shaken for 30 seconds. No effect on mechanoids, insectoids, undead, outsiders and raids led by story bosses. Costs 5 cadence, cooldown 15 days. College of Eloquence, bard level 15.
+s01839	words of truce
+s01840	Passive: chatting with people of non-hostile factions such as visitors and caravans gives +1 goodwill with their faction (up to +5 per day); your Bardic Inspiration lasts 3 days. College of Eloquence, bard level 11.
+s01841	universal speech
+s01842	Sing a war song: allies within 15 cells get pain ×0.5, movement ×1.2 and mind resistance +50% for 30 seconds, and those fleeing in fear snap out of it at once; you gain a shield absorbing 20 × inspiration power damage (takes the higher of this and the Inspiring Leader shield, does not stack). Costs 3 cadence, cooldown 4 hours. College of Valor, bard level 15.
+s01843	College of Valor war song: damage taken ×0.9, melee damage ×1.15. Fades together with Bardic Inspiration.
+s01844	Skill at arms of a war singer: Shooting and Melee +3 levels.
+s01845	College of Valor
+s01846	Cantrip, no cadence: say a grating word to one enemy within 24 cells, dealing 6 × inspiration power psychic damage (ignores armor) and shaking it for 6 seconds (melee hit -20%, lower shooting accuracy; mechanoids are not shaken). Cooldown 4 seconds. Bard level 1.
+s01847	vicious mockery
+s01848	Speak the true words of creation at one target within 20 cells:\nAlly: Power Word Heal: heals all wounds (except missing parts), clears pain shock, stuns, fear and confusion, and downed people stand up.\nEnemy: Power Word Kill: if the target's overall health is below 35% × inspiration power (up to 70%) it dies outright; otherwise it takes 40 × inspiration power psychic damage and is stunned for 6 seconds. Story bosses and legendary units only take the damage and stun.\nCosts 5 cadence, cooldown 1 day. Bard level 15, also requires Social 15.
+s01849	words of creation
+s01850	Bard ability power multiplier: 0.5 + (the higher of Social and Artistic level) / 20, plus adventurer Charisma modifier × 0.10 and proficiency bonus, +5% for each level the combined bard-type class levels exceed 1 (up to +95%). Legendary "Undying Legend" +20%. Spells learned through Magical Secrets also use this power.
+s01851	inspiration power
+s01852	The DND bard casts with song and word: Vicious Mockery (cantrip), Bardic Inspiration, Healing Word, Hideous Laughter, Song of Rest, Jack of All Trades (passive), Countercharm, Confusion, Song of Renown, Magical Secrets (learn one spell from another casting class at levels 10 / 13 each), Mislead, and ultimately Words of Creation. Choose a college at level 3: Lore, Valor, Swords or Eloquence. Power uses "inspiration power" (Social or Artistic, Charisma); damage and healing are multiplied by psychic sensitivity (when the setting is on). Resource: cadence (max 2 + bard level + Charisma modifier; slowly regained while awake, faster while sleeping, faster still when playing instruments, listening to music or making art, +0.2 for each chat).
+s01853	Legendary: sing a 30-second epic. Allies on the whole map don't have mental breaks, gain higher hit chance and pain ×0.5; those downed within the 30 seconds heal half their injuries at once and try to stand up once; enemies within 30 cells have a 25% chance every 5 seconds to flee in fear (mechanoids unaffected). Costs 3 cadence, cooldown 1 day. Legendary bard.
+s01854	Legendary passive: Bardic Inspiration goes to all friendly humanlikes within 12 cells at once (same cost; the chosen one still has to be within 20 cells); max cadence +3 more (the legendary ability itself +2, +5 in total); inspiration power +20%. Legendary bard.
+s01855	undying legend
+s01856	fireball
+s01857	misty step
+s01858	mirror image
+s01859	haste
+s01860	lightning bolt
+s01861	cure wounds
+s01862	bless
+s01863	lesser restoration
+s01864	barkskin
+s01865	entangle
+s01866	dragon wings
+s01867	hex
+s01868	Wizard level 3: fire explosion.
+s01869	Wizard level 3: short-range teleport.
+s01870	Wizard level 5: duplicates block attacks.
+s01871	Wizard level 7: hastes an ally.
+s01872	Wizard level 7: a line of lightning.
+s01873	Cleric level 1: touch healing.
+s01874	Cleric level 1: hit chance, mood.
+s01875	Cleric level 3: cures disease and poison.
+s01876	Druid level 5: armor.
+s01877	Druid level 1: entangles a group of enemies.
+s01878	Sorcerer level 7: fly far away.
+s01879	Warlock level 7: more damage, lower saves.
+s01880	mass cure wounds
+s01881	wall of stone
+s01882	beast lord's call
+s01883	mass suggestion
+s01884	Cleric level 10: heals all nearby allies.
+s01885	Wizard level 10: raises a stone wall.
+s01886	Druid level 10: nearby animals go berserk.
+s01887	Sorcerer level 10: a group of enemies wander in a daze.
+s01888	Solves problems with words: good at recruiting, trading and diplomacy; inspiration passes to the next person, and a final word can make a whole raid retreat.
+s01889	College of Eloquence
+s01890	A scholar who has read every book and met everyone: weakens enemies with cutting words, researches faster, learns one extra Magical Secret and crafts finer things.
+s01891	College of Lore
+s01892	A performer among the blades: melee hits perform flourishes (shield, sweep or knockback), strikes faster, and dances through enemy crowds in a whirlwind.
+s01893	College of Swords
+s01894	A war singer on the front line: inspiration carries combat bonuses, fights well personally, strikes right after casting, and steadies the whole team with a war cry at the end.
+s01895	action surge (old)
+s01896	aura of courage (old)
+s01897	aura of protection (old)
+s01898	war cry (old)
+s01899	charge (old)
+s01900	eye of death (old)
+s01901	deflect missiles (old)
+s01902	diamond body (old)
+s01903	disarming strike (old)
+s01904	banish evil (old)
+s01905	divine smite (old)
+s01906	empty body (old)
+s01907	flurry of blows (old)
+s01908	guardian stance (old)
+s01909	holy avatar (old)
+s01910	indomitable (old)
+s01911	swap guard (old)
+s01912	lay on hands (old)
+s01913	martial arts (old)
+s01914	open hand technique (old)
+s01915	The DND monk masters the body with ki: Martial Arts, Deflect Missiles, Step of the Wind, Diamond Body, Flurry of Blows, Stunning Strike, Open Hand Technique, Quivering Palm, and ultimately Empty Body. Strongest unarmed (or with a quarterstaff); fists and kicks use vanilla melee resolution, and Isekai's Strength and weapon mastery apply as usual; ki effects are multiplied by psychic sensitivity. Each tier requires the matching Melee level (6/9/12/15/18).
+s01916	monk
+s01917	Requires Melee 6 (or adventurer Dexterity 13)
+s01918	DND classes
+s01919	Monk: Melee sets ki power; strongest unarmed.
+s01920	The DND paladin wields the oath as a sword: Divine Smite, Vow of Enmity, Sacred Weapon, Swap Guard (Melee), Lay on Hands, Aura of Protection, Aura of Courage, Banish Evil (Social), and ultimately Holy Avatar. Either Melee or Social 6 unlocks the path; each ability uses its own skill (6/9/12/15/18). The weapon hit resolves as usual; the extra holy damage and healing are multiplied by psychic sensitivity. Liches cannot learn it.
+s01921	Requires Melee or Social 6, or adventurer Charisma 13 (liches cannot learn it)
+s01922	Paladin: the Melee branch governs smites, the Social branch governs auras and Lay on Hands.
+s01923	precise shot (old)
+s01924	quivering palm (old)
+s01925	rapid shot (old)
+s01926	sacred weapon (old)
+s01927	second wind (old)
+s01928	steady aim (old)
+s01929	step of the wind (old)
+s01930	stunning strike (old)
+s01931	suppressing fire (old)
+s01932	renewed fighting spirit (old)
+s01933	trip attack (old)
+s01934	vow of enmity (old)
+s01935	weapon specialization (old)
+s01936	whirlwind attack (old)
+s01937	calm beast (old)
+s01938	arcane charge (old)
+s01939	arcane resonance (old)
+s01940	arcane workshop (old)
+s01941	barkskin (old)
+s01942	beast lord's call (old)
+s01943	bless (old)
+s01944	burning hands (old)
+s01945	call lightning (old)
+s01946	chaos bolt (old)
+s01947	charm person (old)
+s01948	conjure animals (old)
+s01949	control weather (old)
+s01950	cure wounds (old)
+s01951	death ward (old)
+s01952	disintegrate (old)
+s01953	dragon wings (old)
+s01954	metamagic: empowered (old)
+s01955	entangle (old)
+s01956	fireball (old)
+s01957	guidance (old)
+s01958	haste (old)
+s01959	ice storm (old)
+s01960	lesser restoration (old)
+s01961	lightning bolt (old)
+s01962	mage armor (old)
+s01963	magic missile (old)
+s01964	mass cure wounds (old)
+s01965	mass suggestion (old)
+s01966	master craftsmanship (old)
+s01967	mountain forge (old)
+s01968	overcharged shot (old)
+s01969	The DND artificer forges magic into devices: Arcane Workshop, Quick Repair, Rune Inscription, Overcharged Shot, Arcane Charge, Master Craftsmanship, Mountain Forge, Rune Turret and Arcane Resonance. Device power grows with Crafting level; each tier requires the matching Crafting level (6/9/12/15/18). With VPE installed, all craftable DND weapons (rune firearms, staves, ogre clubs and nonlethal weapons) require the matching artificer passives (Arcane Workshop, Rune Inscription, Mountain Forge) to craft; legendary weapons and throwables are unaffected, and the mod setting "DND weapons need artificer" turns this restriction off.
+s01970	artificer
+s01971	Requires Crafting 6 (or adventurer Intelligence 13)
+s01972	Artificer: Crafting sets device power and learnable abilities.
+s01973	The DND druid protects nature: Calm Beast, Conjure Animals, Wild Shape, Beast Lord's Call (Animals), Entangle, Barkskin, Plant Growth, Call Lightning (Plants), and ultimately Control Weather. Either Plants or Animals 6 unlocks the path; each ability uses its own skill (6/9/12/15/18), so training only one still completes half the tree. Effects are multiplied by psychic sensitivity (minimum 0.2, no cap). Liches cannot learn it.
+s01974	druid
+s01975	Requires Plants or Animals 6, or adventurer Wisdom 13 (liches cannot learn it)
+s01976	Druid: the Plants branch governs plants and weather, the Animals branch governs beasts and shapeshifting.
+s01977	The DND sorcerer is born with magic: Chaos Bolt, Charm Person, Dragon Wings, Mass Suggestion (Social), Burning Hands, Twinned Spell, Ice Storm, Empowered Spell (Intellectual), and ultimately Wild Surge. Either Social or Intellectual 6 unlocks the path; force dragonborn, genasi, genies, titans, storm giants, cloud giants and mariliths have a sorcerer bloodline: all requirements -2, innate power +15%. Effects are multiplied by psychic sensitivity.
+s01978	sorcerer
+s01979	Requires Social or Intellectual 6 (4 with a sorcerer bloodline), or adventurer Charisma 13
+s01980	Sorcerer: the Social branch is innate charm magic, the Intellectual branch is metamagic and elements.
+s01981	plant growth (old)
+s01982	quick repair (old)
+s01983	revivify (old)
+s01984	rune inscription (old)
+s01985	rune turret (old)
+s01986	divine strike (old)
+s01987	sleep (old)
+s01988	wild surge (old)
+s01989	teleport (old)
+s01990	turn undead (old)
+s01991	metamagic: twinned (old)
+s01992	wall of stone (old)
+s01993	wild shape (old)
+s01994	Meditating and regulating breath.
+s01995	The DND warlock makes a pact with an otherworldly patron for power: Eldritch Blast (cantrip, one more beam at levels 5 / 10 / 15), Darkness, Eldritch Invocations (passive, choice), Hex, Mystic Arcanum (Dominate Person, Forcecage, once per day each), and ultimately Eldritch Master. Choose a patron at level 1: the Fiend, the Archfey or the Great Old One. Power uses "pact power" (Social or Intellectual, Charisma). Resource: pact mana (max 2 + warlock level / 4, very little; fully restored after 1 continuous hour of meditation, recreation or sleep).
+s01996	warlock
+s01997	Legendary passive: Eldritch Blast gets one more beam; killing an enemy gives +1 pact mana. Legendary warlock.
+s01998	eldritch soul
+s01999	Legendary: for 60 seconds the patron lends you its power; warlock abilities cost no pact mana and have ×1.5 power. Costs 3 pact mana, cooldown 2 days. Legendary warlock.
+s02000	patron's avatar
+s02001	The patron lends you its power: warlock abilities cost no pact mana, ×1.5 power.
+s02002	Warlock ability power multiplier: 0.5 + (the higher of Social and Intellectual level) / 20, plus adventurer Charisma modifier × 0.05 and (proficiency bonus - 2) × 0.02, +2% for each level the combined warlock-type class levels exceed 1 (up to +40%). A Fiend-patron warlock who also has an otherworldly pact (Nine Hells or Abyss patron) gets warlock abilities ×1.25.
+s02003	pact power
+s02004	eldritch invocations
+s02005	agonizing blast
+s02006	devil's sight
+s02007	eldritch spear
+s02008	Each eldritch blast beam + Charisma modifier × 2 damage (at least +2).
+s02009	Sight in darkness +30%, unaffected by magical darkness.
+s02010	Eldritch Blast range 24 → 36 cells.
+s02011	second invocation
+s02012	A pact with a lord of the Feywild: charm, fear and walking through mist.
+s02013	the Archfey
+s02014	A pact with a fiend of the Nine Hells or the Abyss: fire and curses, and killing nourishes you. With an otherworldly pact as well (Nine Hells or Abyss patron), warlock abilities ×1.25.
+s02015	the Fiend
+s02016	A pact with an unspeakable being beyond the stars: psychic power, thought shields and domination.
+s02017	the Great Old One
+s02018	Passive: psychic sensitivity +20%, mind resistance +10% (others' psychic control takes hold less easily and lasts shorter). Great Old One patron, warlock level 1.
+s02019	awakened mind
+s02020	Whispers from beyond the stars have opened the mind: psychic sensitivity +20%, mind resistance +10% (psychic control is also easier to resist and shorter).
+s02021	Hostile humanlikes in radius 3 at a point within 20 cells each resist with mind resistance; those who fail are charmed and wander in a daze for 15 seconds × pact power. Costs 2 pact mana, cooldown 1 hour. Archfey patron, warlock level 11.
+s02022	bewitching dance
+s02023	Passive: mind resistance +30%; enemies that hit you in melee have a 20% chance to be beguiled (stunned 2 seconds). Archfey patron, warlock level 7.
+s02024	beguiling defenses
+s02025	Locked in an invisible cage of force: unable to move, damage taken ×0.5.
+s02026	forcecage
+s02027	Turn a downed hostile humanlike within 3 cells into your thrall (resisted by mind resistance; not story bosses or legendary units): if it fails, it joins your side. Costs 2 pact mana, cooldown 1 day. Great Old One patron, warlock level 15.
+s02028	create thrall
+s02029	Passive: killing an enemy heals yourself 5 + warlock level / 2 injury. Fiend patron, warlock level 1.
+s02030	dark one's blessing
+s02031	Drag one enemy within 20 cells into a fey illusion (resisted by mind resistance): if it fails, it flees in terror for 20 seconds × pact power and is shaken; story bosses and legendary units are only shaken. Costs 2 pact mana, cooldown 1 day. Archfey patron, warlock level 15.
+s02032	dark delirium
+s02033	Passive: mind resistance +10%, damage taken ×0.9. Fiend patron, warlock level 7.
+s02034	dark one's own luck
+s02035	The fiend's favor: mind resistance +10%, damage taken ×0.9.
+s02036	Shrouded in a warlock's magical darkness: sight -50%. Warlocks with Devil's Sight are unaffected.
+s02037	magical darkness
+s02038	Call magical darkness of radius 3 at a point within 20 cells: enemies inside get sight -50% for 10 seconds × pact power. Costs 1 pact mana, cooldown 20 seconds. Warlock level 3.
+s02039	darkness
+s02040	Sees clearly in the dark: sight in darkness +30%, unaffected by magical darkness.
+s02041	Whisper words only it understands to one enemy within 20 cells: 14 × pact power psychic damage; if it fails to resist (mind resistance) it also flees in terror for 3 seconds. Costs 1 pact mana, cooldown 10 seconds. Great Old One patron, warlock level 3.
+s02042	dissonant whispers
+s02043	Seize the mind of one hostile humanlike within 20 cells (resisted by mind resistance; Hex makes it harder to resist): if it fails, it goes berserk and attacks those nearby for 15 seconds × pact power. Story bosses and legendary units have a 50% chance to break free. Costs no pact mana, once per day. Warlock level 11.
+s02044	mystic arcanum: dominate person
+s02045	Cantrip: fire eldritch beams at enemies within 24 cells, each 10 × pact power force damage; 2 / 3 / 4 beams at warlock levels 5 / 10 / 15. If the target falls, the remaining beams hit another enemy within 6 cells. Costs no pact mana. Warlock level 1.
+s02046	eldritch blast
+s02047	Entreat your patron for 10 seconds (cannot move while casting) to fully restore pact mana at once. Once per day. Warlock level 15, also requires Social 15.
+s02048	eldritch master
+s02049	Passive: ranged damage taken ×0.85. Great Old One patron, warlock level 7.
+s02050	entropic ward
+s02051	The Archfey's protection: mind resistance +30%; enemies that hit you in melee have a 20% chance to be beguiled for 2 seconds.
+s02052	Exude fey majesty: enemies within radius 4 resist with mind resistance; those who fail flee in terror for 3 seconds × pact power (those who can't flee are shaken). Costs 1 pact mana, cooldown 30 seconds. Archfey patron, warlock level 1.
+s02053	fey presence
+s02054	Passive: fire and burn damage taken ×0.5. Fiend patron, warlock level 11.
+s02055	fiendish resilience
+s02056	Raise a forcecage at a point within 20 cells: enemies within radius 2 are locked in for 10 seconds × pact power (stunned, damage taken ×0.5); half the time for story bosses and legendary units. Costs no pact mana, once per day. Warlock level 13.
+s02057	mystic arcanum: forcecage
+s02058	Engulf one enemy within 15 cells in hellfire: 15 × pact power fire damage and ignites it. Costs 1 pact mana, cooldown 10 seconds. Fiend patron, warlock level 3.
+s02059	infernal rebuke
+s02060	Hex one enemy within 24 cells for 60 seconds × pact power: damage it takes from you ×1.25, success of all its saves (mind resistance, ability saves) -15%. Costs 1 pact mana, cooldown 10 seconds. Warlock level 7.
+s02061	Hexed by a warlock: damage taken from that warlock ×1.25, success of all saves -15%.
+s02062	Hurl one enemy within 20 cells into the Nine Hells for a moment: 45 × pact power fire damage, stunned for 5 seconds and shaken for 10 seconds. Costs 1 pact mana, once per day. Fiend patron, warlock level 15.
+s02063	hurl through hell
+s02064	Passive: choose one invocation each at warlock levels 5 and 9 (permanent, and you can't pick the same one twice): Agonizing Blast (each eldritch blast beam + Charisma modifier × 2 damage, at least +2), Devil's Sight (sight in darkness +30%, unaffected by magical darkness), Eldritch Spear (Eldritch Blast range 24 → 36 cells). Warlock level 5.
+s02065	Turn into fey mist and teleport to an empty cell in sight within 8 cells. Costs 1 pact mana, cooldown 15 seconds. Archfey patron, warlock level 3.
+s02066	misty escape
+s02067	Passive: mind resistance +20%, psychic damage taken ×0.5. Great Old One patron, warlock level 11.
+s02068	thought shield
+s02069	The mind is guarded by a barrier: mind resistance +20%, psychic damage taken ×0.5.
+s02070	Melee cooldown ×0.6, shooting cooldown ×0.6, movement ×1.3.
+s02071	For 10 seconds × martial power, melee cooldown ×0.6, shooting cooldown ×0.6, movement ×1.3. Cooldown 6 hours. Fighter level 5.
+s02072	action surge
+s02073	Passive: allies within radius 5 do not panic and flee, and are freed from "shaken" at once. Paladin level 7.
+s02074	aura of courage
+s02075	Passive: allies within radius 5 (including yourself) take damage ×(1 - 0.1 × divine power) (minimum ×0.8), mental break threshold -5%. Multiple paladins don't stack; the strongest applies. Paladin level 5.
+s02076	aura of protection
+s02077	A roar: enemies within radius 4 × martial power are shaken for 5 seconds × martial power: movement ×0.7, lower hit chance. Power uses the higher of martial power and marksman power. Fighter level 3.
+s02078	war cry
+s02079	Charge at an enemy within 8 cells: leap next to it and immediately resolve a melee hit with your current weapon on landing (guaranteed hit, damage ×(1 + 0.3 × martial power)); targets of body size 1 or less are knocked down (stunned 1 second). Fighter level 1.
+s02080	charge
+s02081	The melee hit on landing from a charge deals ×(1 + 0.3 × martial power) damage.
+s02082	charge momentum

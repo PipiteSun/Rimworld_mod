@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 誓言之力·恐惧面容 -->
+  <LP_OB_DreadfulAspect.label>channel oath: dreadful aspect</LP_OB_DreadfulAspect.label>
+  <!-- 露出黑暗的真容：半径 6 内的敌人（机械体除外）成功率 60% 被震慑并逃跑 10 秒（目标每比你高 1 级 −5%，最低 10%）。誓言之力 1，不耗神恩。破誓者，圣武士 3 级。 -->
+  <LP_OB_DreadfulAspect.description>Reveal your dark true face: enemies within radius 6 (except mechanoids) have a 60% chance to be shaken and flee for 10 seconds (-5% per level the target is above you, minimum 10%). Channel Oath 1, no divinity cost. Oathbreaker, paladin level 3.</LP_OB_DreadfulAspect.description>
+  <!-- 誓言之力·操控亡者 -->
+  <LP_OB_ControlUndead.label>channel oath: control undead</LP_OB_ControlUndead.label>
+  <!-- 让 15 格内一个敌对的亡者或邪魔（巫妖、死灵造物、蹒跚尸等变异体、死亡骑士、半巫妖、深渊与九狱的生物）倒戈：成功率 80%（目标每比你高 1 级 −5%，最低 10%），成功后加入你的阵营 1 天，到期多半挣脱、有 30% 愿意留下。剧情首领和传奇单位不受影响。誓言之力 1，不耗神恩。破誓者，圣武士 3 级。 -->
+  <LP_OB_ControlUndead.description>Turn a hostile undead or fiend within 15 cells (liches, necromantic constructs, shamblers and other mutants, death knights, demiliches, creatures of the Abyss and the Nine Hells) to your side: 80% success (-5% per level the target is above you, minimum 10%); on success it joins your faction for 1 day, after which it most likely breaks free, with a 30% chance it chooses to stay. Story bosses and legendary units are unaffected. Channel Oath 1, no divinity cost. Oathbreaker, paladin level 3.</LP_OB_ControlUndead.description>
+  <!-- 憎恨灵光 -->
+  <LP_OB_AuraOfHate.label>aura of hate</LP_OB_AuraOfHate.label>
+  <!-- 被动：你和半径 5 内同阵营的亡者、邪魔近战伤害 ×(1.1 + 魅力调整值 × 0.02)（魅力调整值为负按 0 算）。几个破誓者的灵光不叠加，取最强的。破誓者，圣武士 7 级。 -->
+  <LP_OB_AuraOfHate.description>Passive: you and undead and fiends of your side within radius 5 get melee damage ×(1.1 + Charisma modifier × 0.02) (negative Charisma modifier counts as 0). Auras of several Oathbreakers don't stack; the strongest applies. Oathbreaker, paladin level 7.</LP_OB_AuraOfHate.description>
+  <!-- 超凡抗性 -->
+  <LP_OB_SupernaturalResistance.label>supernatural resistance</LP_OB_SupernaturalResistance.label>
+  <!-- 被动：受到的利器、钝器伤害（刀剑、钝器、子弹、箭等）×0.75；神圣伤害和银武器不受这个减免。破誓者，圣武士 11 级。 -->
+  <LP_OB_SupernaturalResistance.description>Passive: sharp and blunt damage taken (swords, blunt weapons, bullets, arrows, etc.) ×0.75; holy damage and silver weapons aren't reduced by this. Oathbreaker, paladin level 11.</LP_OB_SupernaturalResistance.description>
+  <!-- 恐惧之王 -->
+  <LP_OB_DreadLord.label>dread lord</LP_OB_DreadLord.label>
+  <!-- 化身恐惧之王 60 秒：施放时先对半径 6 放一次恐惧面容（不耗誓言之力）；之后每 4 秒半径 6 内的敌人（不含倒地的）受 6 × 神恩强度 死灵伤害，自己受到的远程伤害 ×0.5。不耗神恩，每天一次。破誓者，圣武士 15 级。 -->
+  <LP_OB_DreadLord.description>Become a Dread Lord for 60 seconds: casting first releases a Dreadful Aspect in radius 6 (no Channel Oath cost); then every 4 seconds enemies within radius 6 (excluding downed ones) take 6 × divine power necrotic damage, and you take ×0.5 ranged damage. No divinity cost, once per day. Oathbreaker, paladin level 15.</LP_OB_DreadLord.description>
+</LanguageData>

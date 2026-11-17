@@ -1,0 +1,195 @@
+s08656	Circle 2 (Evocation): a piercing burst of sound at a point within 20 cells; enemies and enemy buildings within radius 2 take 14 × arcane power blunt damage; ×2 against mechanoids, buildings and statue-like (non-flesh) targets.
+s08657	Cantrip (Evocation): lightning flashes in your palm, a melee hit for 10 × arcane power lightning damage; mechanoids take EMP damage instead and are paralyzed for 1 second. Cooldown 3 seconds.
+s08658	shocking grasp
+s08659	Circle 3 (Transmutation, concentration): up to 6 enemies within radius 3 at a point within 20 cells, each with a 60% chance: movement ×0.5 and attack cooldown ×1.5 for 1 minute (-5% per level the target is above the caster, minimum 10%; halved against legendary creatures and story bosses). Ends early if the caster loses concentration.
+s08660	slow
+s08661	Time has slowed for it: movement ×0.5, melee and ranged attack cooldown ×1.5. Ends when the caster loses concentration.
+s08662	Circle 3 (Necromancy, ritual): question a humanlike corpse of an enemy faction within 5 cells, choosing one of two in the window: reveal one of that faction's settlements, or gain 200 × arcane power research (once per corpse).
+s08663	speak with dead
+s08664	A page torn from someone else's spellbook, holding a circle 1 wizard spell (inspect to see which). A wizard can copy it into their own spellbook at the scroll desk.
+s08665	spellbook page (circle 1)
+s08666	A page torn from someone else's spellbook, holding a circle 2 wizard spell (inspect to see which). From wizard level 3, a wizard can copy it into their own spellbook at the scroll desk.
+s08667	spellbook page (circle 2)
+s08668	A page torn from someone else's spellbook, holding a circle 3 wizard spell (inspect to see which). From wizard level 5, a wizard can copy it into their own spellbook at the scroll desk.
+s08669	spellbook page (circle 3)
+s08670	A spell area with a lasting effect.
+s08671	spell zone
+s08672	Circle 3 (Conjuration): a foul poisonous cloud of radius 3 at a point within 20 cells for 20 seconds: enemies inside have a 50% chance every 2 seconds to vomit (stunned 1.5 seconds).
+s08673	stinking cloud
+s08674	Studying the spellbook.
+s08675	Circle 1 (Evocation, upcastable): thunder bursts out in radius 3 around yourself; enemies take 12 × arcane power blunt damage and are knocked back 2 cells. Upcast: +25% damage per extra circle.
+s08676	Hand wreathed in necrotic power (concentration): meanwhile vampiric touch costs no mana with a very short cooldown.
+s08677	Circle 3 (Necromancy, concentration): a melee hit for 15 × arcane power necrotic damage, healing yourself for half the damage dealt. For 1 minute after casting (while concentrating), recasting costs no mana with a 2-second cooldown.
+s08678	vampiric touch
+s08679	Circle 2 (Conjuration): fill radius 2 within 20 cells with webs for 1 minute: enemies entering have a 60% chance to be stuck for 4 seconds (at most once per person every 5 seconds). The webs catch fire easily.
+s08680	web
+s08681	Circle 8 (Enchantment, ritual): radius 12 around yourself for 10 days; choose one type in the window (humanlikes / insectoids / animals / mechanoids): hostile units of that type entering have a 50% chance to be driven out by a wave of revulsion (pushed out of the area and stopped for 1 second).
+s08682	antipathy
+s08683	Circle 4 (Divination): send an invisible magic eye to a point within 60 cells, revealing the fog in radius 15.
+s08684	arcane eye
+s08685	Circle 4 (Abjuration, concentration): one enemy within 20 cells has a 60% chance to be banished: demons, devils, elementals and other outsiders are sent home permanently (vanishing with their gear, leaving no corpse); other targets disappear for 1 minute and then return to their spot (early if the caster loses concentration).
+s08686	banishment
+s08687	Circle 4 (Conjuration, concentration): black tentacles sprout in radius 3 at a point within 20 cells for 1 minute: enemies have a 55% chance to be grappled (rooted for 5 seconds), and the grappled take 6 × arcane power blunt damage per second.
+s08688	black tentacles
+s08689	Circle 4 (Necromancy): one enemy within 20 cells takes 30 × arcane power necrotic damage (×1.5 against insectoids and plant creatures); plants within radius 3 of it wither.
+s08690	blight
+s08691	Blinded by a dazzling light: sight -80%.
+s08692	blinded
+s08693	Circle 6 (Evocation): a target within 24 cells takes 30 × arcane power lightning damage, then it jumps to up to 5 other enemies within 10 cells, ×0.85 per jump; mechanoids also short-circuit (stunned 2 seconds). Cooldown 30 seconds.
+s08694	Circle 6 (Necromancy): a ring of death of radius 6 at a point within 20 cells, harming only enemies: 35 × arcane power necrotic damage.
+s08695	circle of death
+s08696	Circle 8 (Necromancy, ritual): requires the Biotech DLC and a growth vat on the map: start growing your own clone, which matures in 15 days. Once the clone matures the wizard dies and the soul moves into the clone: waking at the main base with skills, levels, classes and traits kept; gear on the body stays where they died. Liches can't use it.
+s08697	clone
+s08698	Circle 5 (Evocation): blast a 10-cell cone of cold in one direction; enemies inside take 40 × arcane power cold damage and frostbite.
+s08699	cone of cold
+s08700	Circle 4 (Enchantment): each enemy within radius 3 at a point within 20 cells has a 55% chance to go mad for 15 seconds (attacking anyone nearby).
+s08701	Circle 5 (Conjuration, concentration): choose fire / water / earth / air in the window to summon a matching genasi warrior beside you who fights for the colony for 1 hour (dissipating early if the caster loses concentration).
+s08702	conjure elemental
+s08703	Circle 6 (Conjuration): pre-store one self spell in the window (shield, false life, blink, stoneskin, mage armor, mirror image); within 10 days it's cast automatically for free when you're downed or lose over half your health; only one can be stored.
+s08704	contingency
+s08705	On guard: the next enemy spell or psychic ability within 20 cells will be interrupted (-15% success per level the opponent's ability is above 3).
+s08706	Circle 3 (Abjuration): stay on guard for 30 seconds: the next spell or psychic ability an enemy casts within 20 cells is interrupted (-15% success per level the opponent's ability is above 3).
+s08707	Circle 6 (Necromancy): turn a humanlike corpse within 10 cells and up to 2 more within 5 cells of it into permanent ghoul servants (a lich's skeleton servants, counting as undead servants).
+s08708	create undead
+s08709	Circle 7 (Evocation, chargeable): place a glowing bead of fire at a point within 24 cells that explodes after the charge seconds (pick 0-5 seconds via the right-click button or the spellbook): radius 5, (20 + 10 × charge seconds) × arcane power fire damage (70 at full charge).
+s08710	delayed blast fireball
+s08711	Circle 7 (Conjuration, twice per day): you and up to 2 allies nearby teleport together to any explored, standable position on the map, no line of sight needed.
+s08712	dimension door
+s08713	Circle 8 (Enchantment, concentration): any one hostile creature within 20 cells (including animals, insectoids and mechanoids) has a 45% chance to be dominated for 1 minute, fighting for the colony; afterwards it returns to its original side and is stunned for 5 seconds.
+s08714	dominate monster
+s08715	Circle 5 (Enchantment, concentration): one humanlike enemy within 20 cells has a 50% chance to be dominated, joining the colony to fight for 1 minute (can be drafted); afterwards it returns to its original side and is stunned for 5 seconds.
+s08716	Mind dominated by a wizard, temporarily fighting for the colony; afterwards returns to its original side and is stunned for 5 seconds.
+s08717	On the Ethereal Plane: can't be targeted and takes no damage; attacking or casting a damaging spell returns you to the Material Plane.
+s08718	etherealness
+s08719	Circle 7 (Transmutation): step onto the Ethereal Plane yourself for 1 hour: enemies won't target you and you take no damage; attacking or casting a damaging spell brings you back early (can't pass through walls).
+s08720	Circle 4 (Transmutation, ritual): on a workbench within 10 cells: its first doable bill instantly completes one item (work ≤ 3000 × arcane power, quality based on the wizard's own skill), materials consumed as usual. Once per day.
+s08721	fabricate
+s08722	Circle 4 (Conjuration, ritual): summon an invisible watchdog beside you for 8 hours (a colony hound, invisible, with a harder bite; can't be tamed or taken along, dissipates when time is up): sends a warning letter when enemies come within 15 cells of it.
+s08723	faithful hound
+s08724	Circle 8 (Enchantment): one enemy within 20 cells takes 30 × arcane power psychic damage, with a 50% chance to be unable to cast spells or use psychic abilities for 30 days.
+s08725	feeblemind
+s08726	Mind shattered: can't cast spells or psychic abilities for 30 days.
+s08727	Circle 7 (Necromancy): one enemy within 24 cells takes 60 × arcane power necrotic damage; humanlikes killed by it immediately rise as permanent zombie servants of the colony (a lich's skeleton servants).
+s08728	finger of death
+s08729	Circle 6 (Transmutation): one enemy within 20 cells has a 45% chance to gain a stone mark (growing slower and slower), slowed for 10 seconds even on failure; at 3 marks in total it begins full petrification (as a flesh to stone scroll, body size 2 or less).
+s08730	flesh to stone
+s08731	Circle 8 (Evocation): build a force cage of radius 2 at a point within 20 cells for 20 seconds: enemies inside can't get out, bullets can't pass in or out, and it can't be resisted.
+s08732	forcecage
+s08733	A transparent force field conjured by a wizard that blocks bullets and melee, dissipating after a while.
+s08734	wall of force
+s08735	Seeing the next moment: 50% chance to dodge when attacked, melee hit +25%, shooting accuracy ×1.25.
+s08736	Circle 9 (Divination): one ally within 20 cells for 8 hours: 50% chance to dodge when attacked, melee hit +25%, shooting accuracy ×1.25.
+s08737	foresight
+s08738	Circle 9 (Conjuration): open a planar gate beside you and choose one in the window: summon a demon / devil from the Abyss or the Nine Hells to fight for the colony for 1 hour, or have a caravan of a friendly faction walk straight out of the gate.
+s08739	gate
+s08740	Circle 5 (Enchantment, upcastable): one hostile creature within 20 cells (humanlike, animal, insectoid or monster, except mechanoids) has a 50% chance to be paralyzed for 6 seconds. Upcast: each extra circle holds another within 6 cells of it.
+s08741	hold monster
+s08742	An invisible magic watchdog: warns when enemies come within 15 cells and bites harder; dissipates when time is up.
+s08743	Circle 5 (Divination, ritual): once every 15 days: learn the whereabouts of a legendary treasure, generating a vanilla "item stash" quest with an extra excellent-quality DND magic item in the stash (if no quest can be generated, the item appears beside the wizard directly).
+s08744	legend lore
+s08745	Floating in midair, unable to move; takes blunt damage falling down when it ends.
+s08746	Circle 7 (Conjuration, ritual): cast with the caravan button "magnificent mansion" while the caravan is out (costs 5 mana): for 8 hours the caravan won't be ambushed, everyone's rest recovery ×1.2, mood +10. Cast on a map, it only gives this effect to allies within 5 cells.
+s08747	magnificent mansion
+s08748	Resting in a wizard's extradimensional mansion: rest recovery ×1.2, the caravan won't be ambushed.
+s08749	Had a feast and slept in a good bed in the wizard's mansion.
+s08750	Circle 9 (Transmutation): up to 10 enemies within radius 4 at a point within 20 cells each have a 50% chance to turn into rabbits for 1 minute (as polymorph).
+s08751	mass polymorph
+s08752	Circle 8 (Conjuration): one enemy within 20 cells is locked in an extradimensional maze and returns to its spot after 30 seconds; 90% success against ordinary enemies, 50% against legendary creatures and story bosses.
+s08753	maze
+s08754	The mind is completely sealed: immune to psychic damage, mental breaks and all mind control.
+s08755	Circle 8 (Abjuration): one ally within 20 cells is immune to psychic damage, mental breaks and all mind control for 1 day.
+s08756	mind blank
+s08757	Circle 5 (Enchantment, ritual): on one person within 5 cells. Prisoner: recruit resistance × (1 - 50% × arcane power) (minimum 0); colonist: choose a negative memory in the window to delete.
+s08758	modify memory
+s08759	Circle 6 (Transmutation, ritual): up to 30 cells of natural rock wall near a point within 20 cells are dug out directly, with 50% mineral yield (buildings and cells with artificial walls are left alone).
+s08760	move earth
+s08761	A terrifying phantom only it can see (concentration): every 2 seconds a 55% chance to take psychic damage and be frightened.
+s08762	phantasmal killer
+s08763	Circle 4 (Illusion, concentration): one enemy within 20 cells has a 55% chance every 2 seconds for 30 seconds to take 10 × arcane power psychic damage and be frightened.
+s08764	Circle 7 (Conjuration): one enemy within 20 cells has a 50% chance to be permanently sent to another plane (vanishing with its gear). While in a caravan, the caravan button "plane shift" instantly returns the whole party to the colony (costs this wizard 5 mana).
+s08765	plane shift
+s08766	Circle 4 (Transmutation): enemies have a 50% chance to turn into rabbits for 1 minute (can't hold weapons or use abilities, manipulation -90%, movement ×0.6, can only bite for 1 damage); allies instead become grizzly bears for 1 hour (as the druid's wild shape).
+s08767	polymorph
+s08768	rabbit teeth
+s08769	Turned into a rabbit: can't hold weapons or use abilities, manipulation -90%, movement ×0.6, can only bite for 1 damage.
+s08770	polymorph: rabbit form
+s08771	Circle 9 (Enchantment): one enemy within 24 cells that has already lost over half its health (health ≤ 50%) dies outright; legendary creatures and story bosses take 100 × arcane power psychic damage instead. Ordinary enemies not yet past half take only 30 × arcane power psychic damage.
+s08772	power word kill
+s08773	Circle 7 (Transmutation, concentration): gravity reverses in radius 5 at a point within 20 cells: enemies float for 10 seconds unable to move, taking 15 × arcane power blunt damage on landing (landing early if the caster loses concentration).
+s08774	Circle 5 (Divination, ritual): once every 3 days: a letter lists the threat events already scheduled within 3 days (how many days left and which events), and estimates the size of a raid from the colony's current wealth and population.
+s08775	scrying
+s08776	Stone marks left by flesh to stone (severity = number of successes so far): full petrification at 3 in total.
+s08777	petrifying curse
+s08778	two marks
+s08779	Skin hard as rock (concentration): sharp, blunt and piercing damage taken ×0.6.
+s08780	Circle 4 (Abjuration, concentration): one ally within 20 cells for 1 hour takes ×0.6 sharp, blunt and piercing damage.
+s08781	stoneskin
+s08782	A creature summoned by a spell; dissipates when time is up.
+s08783	summoned creature
+s08784	Circle 6 (Evocation, concentration): fire a 20-cell beam of sunlight from yourself; enemies along the line take 30 × arcane power radiant damage and are blinded for 10 seconds; for 1 minute (while concentrating), firing again costs no mana with a 6-second cooldown.
+s08785	sunbeam
+s08786	Holding a beam of sunlight in the palm (concentration): meanwhile sunbeam costs no mana with a 6-second cooldown.
+s08787	Circle 8 (Evocation): blazing sunlight bursts in radius 6 at a point within 24 cells, harming only enemies: 40 × arcane power radiant damage and blinded for 10 seconds.
+s08788	sunburst
+s08789	Circle 5 (Transmutation): within 10 cells: an item is brought to your side (no weight limit); an ally is pulled to your side; an enemy has a 55% chance to be thrown 6 cells, taking 10 × arcane power blunt damage and stunned for 2 seconds.
+s08790	telekinesis
+s08791	A permanent teleportation circle (3×3) carved by a wizard. When a wizard casts "teleportation circle" on it, the people and things on its 3×3 are sent to another teleportation circle (the main base's preferred).
+s08792	teleportation circle
+s08793	Circle 5 (Conjuration, ritual): cast on an empty space to carve a permanent teleportation circle (3×3); cast on an existing circle to send the people and things on its 3×3 to another teleportation circle (the main base's preferred).
+s08794	Time stops for the caster: wizard spells trigger no cooldown after casting.
+s08795	Circle 9 (Transmutation): everyone on the map except yourself freezes for 6 seconds (damage doesn't break it); during these 6 seconds wizard spells trigger no cooldown after casting.
+s08796	Sees through all illusions: invisible enemies within 30 cells are revealed; unaffected by magical darkness and blindness.
+s08797	Circle 6 (Divination): one ally within 20 cells sees through invisibility for 1 hour (invisible enemies within 30 cells are revealed) and is unaffected by magical darkness and blindness; on casting, like a true seeing scroll, it dispels mind flayer control on the map and identifies cursed items.
+s08798	true seeing
+s08799	Circle 4 (Evocation, concentration): raise an 8-cell-long wall of fire at a point within 20 cells (perpendicular to the cast direction) for 1 minute: enemies on the wall take 10 × arcane power fire damage per second.
+s08800	wall of fire
+s08801	Circle 6 (Evocation): raise an 8-cell-long transparent wall of force at a point within 20 cells (perpendicular to the cast direction) that blocks bullets and melee, 300 × arcane power durability per cell, dissipating after 30 seconds. Cooldown 60 seconds.
+s08802	Circle 9 (Conjuration, once every 7 days): choose one in the window: cast any wizard spell of circle 8 or lower for free / fully heal all colonists on the map / revive one colonist / summon a legendary-quality DND magic item. The last two have a 33% chance of backlash: manipulation and movement sharply reduced for 3 days, with another 33% chance to permanently lose Wish.
+s08803	wish
+s08804	The price of bending reality: manipulation and movement sharply reduced.
+s08805	wish backlash
+s08806	Performing a necromantic ritual
+s08807	work at the necromantic ritual table
+s08808	performing
+s08809	A glass retort over a small stove. Placed next to the alchemy table: alchemy speed +15% (at most one per alchemy table).
+s08810	distillery
+s08811	A cluster of amethyst on a stone base, giving off a faint glow. Placed next to the enchanting table or scroll desk: work speed +15% (at most one per workbench).
+s08812	arcane focus stone
+s08813	A hooded stone statue holding a holy symbol in both hands; you can't tell which god it is: it keeps vigil for whoever is the colony's patron deity. Placed next to an altar: altar work speed +10%, recreation from praying at that altar +20% (at most one per altar).
+s08814	patron deity statue
+s08815	Working at the enchanting table
+s08816	enchanting
+s08817	Forging at the rune anvil
+s08818	forge at the rune anvil
+s08819	forging
+s08820	Copying at the scroll desk
+s08821	copy scrolls
+s08822	copying
+s08823	A dark wooden tabletop inlaid with a copper-framed rune disc, holding ring stands, little gem boxes and an open spellbook. Here magic is sealed into rings, bracers, helms, amulets and devices, and staves and elemental charms are made. Recipe speed is based on the average level of Intellectual and Medicine. Can link arcane focus stones and tool cabinets.
+s08824	enchanting table
+s08825	A dwarven-style stone hearth with a black iron anvil covered in runes, hammers and tongs hanging beside it. Subduing weapons and runic prosthetics are forged here. Burns wood or chemfuel, consumed only while working (about 40 per day). Can link rune quenching troughs and tool cabinets.
+s08826	rune anvil
+s08827	A stone trough full of blue-glowing quench water, its walls carved with cooling runes. Placed next to the rune anvil: forging speed +10% (at most one per anvil).
+s08828	rune quenching trough
+s08829	A sloped writing desk covered with ink bottles, quills, rolled parchment and wax seals, with a small oil lamp lit beside it. Spell scrolls are copied and manuals written here; it's scholars' work, counting as "research" and using Intellectual. Researchers can also identify unidentified items here, 50% faster than at the research bench. Can link arcane focus stones and tool cabinets.
+s08830	scroll desk
+s08831	Can't fly under a mountain.
+s08832	unnamed
+s08833	all
+s08834	Group 
+s08835	Ability groups...
+s08836	Create groups for this person's abilities (like "combat", "healing", "travel"); after switching with the "ability groups" button on the ability bar, only that group's abilities are shown.\n\nThe ability bar currently shows: 
+s08837	[DND Rimlands] Ability groups (VPE): 
+s08838	psycasts
+s08839	other
+s08840	[DND Rimlands] Ability group button: 
+s08841	Ability groups: 
+s08842	No groups yet. Left- or right-click to open group settings: create groups (like "combat", "healing", "travel") and tick which group each ability belongs to.
+s08843	Left-click: switch to the next group (all → 
+s08844	 → all).\nRight-click: open group settings (create, rename and delete groups, assign abilities, pick the current group directly).
+s08845	\n\nWith a group selected, the ability bar only shows that group's abilities; other buttons (draft, attack, etc.) are unaffected. Abilities not in the current group still cool down as usual, and those with autocast on still cast automatically.
+s08846	\n\nCurrent group "
+s08847	": 
+s08848	 abilities
+s08849	's ability groups
+s08850	Ability bar currently shows: 

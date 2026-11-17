@@ -17,8 +17,10 @@ namespace LichPhylactery {
   public static bool Hostile(Pawn a,Pawn t)=>t!=null && t!=a && !t.Dead && (t.HostileTo(a) || On && PickedHarm && t==Picked);
   public static bool Friendly(Pawn a,Pawn t)=>t!=null && !t.Dead && (!t.HostileTo(a) || On && !PickedHarm && t==Picked);
   // 只是敌我 / 阵营限制的拒绝理由（其他理由——活着、人形、射程、体型、首领——照旧）。
-  static readonly string[] Side={"只能对敌人","只能对友军","只能对友方","只能对己方","只能复制己方","只能对殖民","需要选择另一名友军"};
-  public static bool SideOnly(string why)=>why!=null && Side.Any(why.Contains);
+  static readonly string[] SideZh={"只能对敌人","只能对友军","只能对友方","只能对己方","只能复制己方","只能对殖民","需要选择另一名友军"};
+  static readonly string[] SideEn={"Enemies only","Allies only","Friendlies only","Own side only","Colonists only","Can only copy","Can only be used on enemies","Can only be cast on enemies","Can only be used on allies","Can only be cast on allies","Can only be used on friendlies","Can only be cast on friendlies","Can only be used on colonists","Need to pick another ally"}; // 英文版的拒绝原因
+  static readonly string[] Side={"只能对敌人".Loc(),"只能对友军".Loc(),"只能对友方".Loc(),"只能对己方".Loc(),"只能复制己方".Loc(),"只能对殖民".Loc(),"需要选择另一名友军".Loc()};
+  public static bool SideOnly(string why)=>why!=null && (Side.Any(why.Contains) || SideZh.Any(why.Contains) || SideEn.Any(why.Contains));
   public static string Relax(string why,LocalTargetInfo target){
    if(why==null || !On || !SideOnly(why))return why;
    var t=target.Thing as Pawn;return t!=null && !t.Dead?null:why;
@@ -40,5 +42,5 @@ namespace LichPhylactery {
   }
  }
  [StaticConstructorOnStartup]
- public static class AnyTargetStartup {static AnyTargetStartup(){try{AnyTarget.Apply();}catch(Exception e){Log.Error("[DND边缘大陆] 技能可对任何人释放："+e);}}}
+ public static class AnyTargetStartup {static AnyTargetStartup(){try{AnyTarget.Apply();}catch(Exception e){Log.Error("[DND边缘大陆] 技能可对任何人释放：".Loc()+e);}}}
 }

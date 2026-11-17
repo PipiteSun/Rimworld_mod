@@ -34,7 +34,7 @@ namespace LichPhylactery {
  }
  public class ImplantAbility : Ability {
   public ImplantAbility(Pawn pawn):base(pawn){}public ImplantAbility(Pawn pawn,AbilityDef def):base(pawn,def){}
-  public override bool GizmoDisabled(out string reason){if(!FleshImplants.Has(pawn,"BlindSight")){reason="需要已安装的盲目之视。";return true;}return base.GizmoDisabled(out reason);}
+  public override bool GizmoDisabled(out string reason){if(!FleshImplants.Has(pawn,"BlindSight")){reason="需要已安装的盲目之视。".Loc();return true;}return base.GizmoDisabled(out reason);}
   public override bool Activate(LocalTargetInfo target,LocalTargetInfo dest){
    if(!FleshImplants.Has(pawn,"BlindSight") || pawn.Dead || pawn.Downed || !pawn.Spawned || OnCooldown || !verb.CanHitTarget(target) || !EffectComps.All(c=>c.Valid(target,false)))return false;
    return base.Activate(target,dest);

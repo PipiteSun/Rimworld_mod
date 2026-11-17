@@ -82,31 +82,31 @@ namespace LichPhylactery {
   }
   public static void OnObtained(Thing t,string how){
    var st=State;st.karsusStatus="player";st.stage="scroll";st.deal=st.deal??how;
-   Letter("卡苏斯之卷到手","卡苏斯之卷——耐瑟瑞尔奥术师卡苏斯妄图夺取魔网神格时写下的卷轴——现在在你手里了。"+(how!=null?"（"+how+"）":"")+"\n\n下一步：\n· 让一名有心灵链接、智识≥6 的殖民者研读它。读完一遍要 "+Netheril.KarsusPassHours+" 小时，每遍得一层“卡苏斯的回响”。\n· 有人读满 "+Netheril.AscensionPasses+" 遍，并且心灵链接 6 级（装了 VPE 时灵能等级≥20），就能在耐瑟祭坛发起升神仪式。\n· 耐瑟祭坛需要研究“耐瑟瑞尔奥术”，用金 100、秘银 50、玻璃钢 50 建造。\n\n卷轴不能交易。如果它被毁或被偷走，30～60 天后会传来它的下落。",LetterDefOf.PositiveEvent,new LookTargets(t));
+   Letter("卡苏斯之卷到手".Loc(),"卡苏斯之卷——耐瑟瑞尔奥术师卡苏斯妄图夺取魔网神格时写下的卷轴——现在在你手里了。".Loc()+(how!=null?"（".Loc()+how+"）".Loc():"")+"\n\n下一步：\n· 让一名有心灵链接、智识≥6 的殖民者研读它。读完一遍要 ".Loc()+Netheril.KarsusPassHours+" 小时，每遍得一层“卡苏斯的回响”。\n· 有人读满 ".Loc()+Netheril.AscensionPasses+" 遍，并且心灵链接 6 级（装了 VPE 时灵能等级≥20），就能在耐瑟祭坛发起升神仪式。\n· 耐瑟祭坛需要研究“耐瑟瑞尔奥术”，用金 100、秘银 50、玻璃钢 50 建造。\n\n卷轴不能交易。如果它被毁或被偷走，30～60 天后会传来它的下落。".Loc(),LetterDefOf.PositiveEvent,new LookTargets(t));
   }
   public static void OnKarsusLost(string why){
    var st=State;if(st==null)return;st.karsus=null;
    if(st.karsusStatus=="larloch"){return;} // 古墓的地图被收起时卷轴跟着没了：下次进古墓重新放一卷
    st.karsusStatus="lost";st.reappearTick=Now+Rand.RangeInclusive(ReappearMin,ReappearMax)*GenDate.TicksPerDay;
    if(st.stage=="scroll")st.stage="lostScroll";
-   Letter("卡苏斯之卷遗失","卡苏斯之卷"+why+"。\n\n它不会就此消失。"+ReappearMin+"～"+ReappearMax+"天后会传来它的下落。各人读过的遍数都还记着。",LetterDefOf.NegativeEvent);
+   Letter("卡苏斯之卷遗失".Loc(),"卡苏斯之卷".Loc()+why+"。\n\n它不会就此消失。".Loc()+ReappearMin+"～".Loc()+ReappearMax+"天后会传来它的下落。各人读过的遍数都还记着。".Loc(),LetterDefOf.NegativeEvent);
   }
   // 每 250 刻：卷轴还在不在、在谁手里。
   public static void TrackKarsus(NetherilQuestState st){
    var k=st.karsus;
    if(k==null)return;
-   if(k.Destroyed){OnKarsusLost(st.karsusStatus=="site"?"随浮城残骸一起沉没了":"被毁了");return;}
-   if(st.karsusStatus=="player"){if(!Reachable(k))OnKarsusLost("离开了你所有的地图，被带走了");return;}
-   if((st.karsusStatus=="larloch" || st.karsusStatus=="site") && PlayerHolds(k)){var how=st.karsusStatus=="larloch"?"从拉洛克的古墓里夺来":"从浮城残骸里找回";if(st.karsusStatus=="site")DestroySite(ref st.wreckSite);OnObtained(k,how);}
+   if(k.Destroyed){OnKarsusLost(st.karsusStatus=="site"?"随浮城残骸一起沉没了".Loc():"被毁了".Loc());return;}
+   if(st.karsusStatus=="player"){if(!Reachable(k))OnKarsusLost("离开了你所有的地图，被带走了".Loc());return;}
+   if((st.karsusStatus=="larloch" || st.karsusStatus=="site") && PlayerHolds(k)){var how=st.karsusStatus=="larloch"?"从拉洛克的古墓里夺来".Loc():"从浮城残骸里找回".Loc();if(st.karsusStatus=="site")DestroySite(ref st.wreckSite);OnObtained(k,how);}
   }
 
   // ---------- 使者 ----------
   public static string ScheduleBlocked(NetherilQuestState st){
-   if(!LichMod.Settings.netherilQuest)return "耐瑟瑞尔任务线已在设置里关闭";
-   if(st.stage!="idle")return "使者已经来过";
-   if(!ResearchDone)return "还没有完成研究“耐瑟瑞尔奥术”";
-   if(st.readHours<ReadHoursNeed)return "殖民者累计读耐瑟卷轴 "+st.readHours.ToString("0.#")+" / "+ReadHoursNeed+" 小时";
-   if(LarlochDef==null)return "没有拉洛克派系";
+   if(!LichMod.Settings.netherilQuest)return "耐瑟瑞尔任务线已在设置里关闭".Loc();
+   if(st.stage!="idle")return "使者已经来过".Loc();
+   if(!ResearchDone)return "还没有完成研究“耐瑟瑞尔奥术”".Loc();
+   if(st.readHours<ReadHoursNeed)return "殖民者累计读耐瑟卷轴 ".Loc()+st.readHours.ToString("0.#")+" / "+ReadHoursNeed+" 小时".Loc();
+   if(LarlochDef==null)return "没有拉洛克派系".Loc();
    return null;
   }
   public static bool DailyCheck(NetherilQuestState st){
@@ -129,10 +129,10 @@ namespace LichPhylactery {
    FactionGear.Wear(p,"Apparel_Robe",ThingDefOf.Cloth);
    var robe=p.apparel?.WornApparel.FirstOrDefault(a=>a.def.defName=="Apparel_Robe");robe?.SetColor(DemilichRobe,false);
    Items.Give(p,avatar?"LP_LarlochAvatar":"LP_NetherilUndead");
-   if(avatar)p.Name=new NameSingle("拉洛克");
+   if(avatar)p.Name=new NameSingle("拉洛克".Loc());
    p.needs?.AddOrRemoveNeedsAsAppropriate();p.Drawer?.renderer?.SetAllGraphicsDirty();
   }
-  public static Pawn Skeleton(Pawn master,Faction f){var g=FactionConstructs.MakeBound("Skeleton",master,f);g.Name=new NameSingle("拉洛克的骷髅");return g;}
+  public static Pawn Skeleton(Pawn master,Faction f){var g=FactionConstructs.MakeBound("Skeleton",master,f);g.Name=new NameSingle("拉洛克的骷髅".Loc());return g;}
   public static Lord SendEnvoy(Map map,bool reappear){
    var st=State;var f=Larloch;if(st==null || f==null || map==null)return null;
    if(f.HostileTo(Faction.OfPlayer) && !st.larlochDefeated)Factions.SetRelation(f,Faction.OfPlayer,0);
@@ -146,17 +146,17 @@ namespace LichPhylactery {
    var lord=LordMaker.MakeNewLord(f,new LordJob_LarlochEnvoy(stand,Now+EnvoyStayTicks),map,list);
    st.envoy=envoy;st.envoyLord=lord;st.stage=reappear?st.stage:"envoy";st.reappearMode=reappear;st.envoyPending=true;st.envoyStand=stand;
    var l=(Letter_LarlochEnvoy)LetterMaker.MakeLetter(DefDatabase<LetterDef>.GetNamed("LP_LarlochChoiceLetter"));
-   l.Label="拉洛克的邀约";l.lookTargets=new LookTargets(envoy);l.relatedFaction=f;l.envoy=envoy;
+   l.Label="拉洛克的邀约".Loc();l.lookTargets=new LookTargets(envoy);l.relatedFaction=f;l.envoy=envoy;
    l.Text=reappear
-    ?"影巫王拉洛克的使者又来了。这一次他开门见山：卡苏斯之卷又落回了拉洛克手里，他愿意再给你一次机会。\n\n以人换卷：交出一名心灵链接≥"+ASendPsylink+"（装了 VPE 时灵能等级≥"+ASendVPE+"）的殖民者，他会随使者永远离开（不算死亡），你立刻得到卷轴。\n以命匣换卷：交出一名巫妖的命匣。巫妖保留能力和等级，但从此死了不再复活。\n去古墓硬抢：拉洛克的古墓会显露在世界地图上，卷轴就放在中央大厅里。\n\n使者在殖民地边上等一天。不回复就当作你要去古墓硬抢。"
-    :"一个半巫妖带着两名骷髅护卫停在殖民地边上。他自称影巫王拉洛克的使者：主人察觉到你们在读耐瑟瑞尔的卷轴，愿意把真正的宝贝——卡苏斯之卷——交给配得上的人。\n\n以人换卷：交出一名心灵链接≥"+ASendPsylink+"（装了 VPE 时灵能等级≥"+ASendVPE+"）的殖民者，他会随使者永远离开（不算死亡，全体心情 -5 持续 10 天），你立刻得到卷轴。\n以命匣换卷：交出一名巫妖的命匣。命匣会被带走；巫妖保留能力和等级，但从此死了不再复活，也不能再向命匣献祭。\n为他办三件事：献上位面遗物、斩杀一名红袍法师、守护一次命匣转移（每件办完隔 "+ErrandGapDays+" 天再交代下一件），办完就把卷轴送来。\n拒绝：使者 "+RefuseDays+" 天后再来，最多再来 2 次。\n\n也可以去古墓硬抢——第三次拒绝以后，拉洛克的古墓就会显露在世界地图上。\n\n使者在殖民地边上等一天。不回复就当作拒绝。";
+    ?"影巫王拉洛克的使者又来了。这一次他开门见山：卡苏斯之卷又落回了拉洛克手里，他愿意再给你一次机会。\n\n以人换卷：交出一名心灵链接≥".Loc()+ASendPsylink+"（装了 VPE 时灵能等级≥".Loc()+ASendVPE+"）的殖民者，他会随使者永远离开（不算死亡），你立刻得到卷轴。\n以命匣换卷：交出一名巫妖的命匣。巫妖保留能力和等级，但从此死了不再复活。\n去古墓硬抢：拉洛克的古墓会显露在世界地图上，卷轴就放在中央大厅里。\n\n使者在殖民地边上等一天。不回复就当作你要去古墓硬抢。".Loc()
+    :"一个半巫妖带着两名骷髅护卫停在殖民地边上。他自称影巫王拉洛克的使者：主人察觉到你们在读耐瑟瑞尔的卷轴，愿意把真正的宝贝——卡苏斯之卷——交给配得上的人。\n\n以人换卷：交出一名心灵链接≥".Loc()+ASendPsylink+"（装了 VPE 时灵能等级≥".Loc()+ASendVPE+"）的殖民者，他会随使者永远离开（不算死亡，全体心情 -5 持续 10 天），你立刻得到卷轴。\n以命匣换卷：交出一名巫妖的命匣。命匣会被带走；巫妖保留能力和等级，但从此死了不再复活，也不能再向命匣献祭。\n为他办三件事：献上位面遗物、斩杀一名红袍法师、守护一次命匣转移（每件办完隔 ".Loc()+ErrandGapDays+" 天再交代下一件），办完就把卷轴送来。\n拒绝：使者 ".Loc()+RefuseDays+" 天后再来，最多再来 2 次。\n\n也可以去古墓硬抢——第三次拒绝以后，拉洛克的古墓就会显露在世界地图上。\n\n使者在殖民地边上等一天。不回复就当作拒绝。".Loc();
    Find.LetterStack.ReceiveLetter(l);
    return lord;
   }
   public static IEnumerable<Pawn> OfferablePawns(Map map)=>map==null?Enumerable.Empty<Pawn>():map.mapPawns.FreeColonistsSpawned.Where(p=>!p.Dead && (p.GetPsylinkLevel()>=ASendPsylink || (NetherilHooks.VPEActive && NetherilHooks.Level(p)>=ASendVPE)));
   public static IEnumerable<Pawn> OfferableLiches(Map map)=>map==null?Enumerable.Empty<Pawn>():map.mapPawns.FreeColonistsSpawned.Where(p=>{var h=Necro.Lich(p);return h!=null && h.box!=null && !h.box.Destroyed && h.box.soul==p && !PhylacteryLost(p);});
-  public static string ABlocked(Map map)=>OfferablePawns(map).Any()?null:"没有心灵链接≥"+ASendPsylink+(NetherilHooks.VPEActive?"或灵能等级≥"+ASendVPE:"")+"的殖民者";
-  public static string BBlocked(Map map)=>OfferableLiches(map).Any()?null:"殖民地里没有带着命匣的巫妖";
+  public static string ABlocked(Map map)=>OfferablePawns(map).Any()?null:"没有心灵链接≥".Loc()+ASendPsylink+(NetherilHooks.VPEActive?"或灵能等级≥".Loc()+ASendVPE:"")+"的殖民者".Loc();
+  public static string BBlocked(Map map)=>OfferableLiches(map).Any()?null:"殖民地里没有带着命匣的巫妖".Loc();
   static Map EnvoyMap(NetherilQuestState st)=>st.envoy?.MapHeld??Home;
   static void EnvoyLeaves(NetherilQuestState st){st.envoyPending=false;if(st.envoyLord?.LordJob is LordJob_LarlochEnvoy j)j.leaveNow=true;}
   static IntVec3 EnvoyCell(NetherilQuestState st,Map map)=>st.envoy!=null && st.envoy.Spawned && st.envoy.Map==map?st.envoy.Position:(st.envoyStand.IsValid && st.envoyStand.InBounds(map)?st.envoyStand:map.Center);
@@ -168,8 +168,8 @@ namespace LichPhylactery {
    p.SetFaction(f);
    if(st.envoyLord!=null && st.envoyLord.ownedPawns.Count>0)st.envoyLord.AddPawn(p);else LordMaker.MakeNewLord(f,new LordJob_ExitMapBest(LocomotionUrgency.Walk,false),map,new List<Pawn>{p});
    foreach(var c in PawnsFinder.AllMaps_FreeColonists)c.needs?.mood?.thoughts?.memories?.TryGainMemory(DefDatabase<ThoughtDef>.GetNamed("LP_CompanionSentAway"));
-   EnvoyLeaves(st);st.deal="以人换卷";
-   GiveKarsus(map,cell,"以"+p.LabelShort+"换来");
+   EnvoyLeaves(st);st.deal="以人换卷".Loc();
+   GiveKarsus(map,cell,"以".Loc()+p.LabelShort+"换来".Loc());
    return true;
   }
   // B：以命匣换卷。命匣交到拉洛克手里（存在任务状态里，不销毁：巫妖的等级和能力照旧），死亡后不再复活。
@@ -180,8 +180,8 @@ namespace LichPhylactery {
    st.hold.TryAdd(box,false);
    Items.Give(lich,"LP_PhylacteryLost");
    foreach(var altar in map.listerThings.ThingsOfDef(Necro.Def<ThingDef>("Altar")).OfType<Building_Altar>())if(altar.selected==box)altar.selected=null;
-   EnvoyLeaves(st);st.deal="以命匣换卷";
-   GiveKarsus(map,cell,"以"+lich.LabelShort+"的命匣换来");
+   EnvoyLeaves(st);st.deal="以命匣换卷".Loc();
+   GiveKarsus(map,cell,"以".Loc()+lich.LabelShort+"的命匣换来".Loc());
    return true;
   }
   // C：三件差事。
@@ -193,32 +193,32 @@ namespace LichPhylactery {
   public static void Refuse(string why="你拒绝了拉洛克的邀约"){
    var st=State;if(st==null)return;
    EnvoyLeaves(st);st.refusals++;st.errand=0;st.nextErrand=0;st.nextErrandTick=-1;
-   if(st.refusals>=MaxRefusals){st.stage="crypt";CreateCrypt(st,"第"+st.refusals+"次拒绝以后");return;}
+   if(st.refusals>=MaxRefusals){st.stage="crypt";CreateCrypt(st,"第".Loc()+st.refusals+"次拒绝以后".Loc());return;}
    st.stage="refused";st.envoyTick=Now+RefuseDays*GenDate.TicksPerDay;
-   Letter("拉洛克的耐心",why+"（已拒绝 "+st.refusals+" / "+MaxRefusals+" 次）。\n\n使者 "+RefuseDays+" 天后会再来。第"+MaxRefusals+"次拒绝以后，拉洛克的古墓会显露在世界地图上，可以去那里硬抢卡苏斯之卷。",LetterDefOf.NeutralEvent);
+   Letter("拉洛克的耐心".Loc(),why+"（已拒绝 ".Loc()+st.refusals+" / "+MaxRefusals+" 次）。\n\n使者 ".Loc()+RefuseDays+" 天后会再来。第".Loc()+MaxRefusals+"次拒绝以后，拉洛克的古墓会显露在世界地图上，可以去那里硬抢卡苏斯之卷。".Loc(),LetterDefOf.NeutralEvent);
   }
   // 重现时的使者：只能 A/B/去古墓。
-  public static void ChooseCrypt(){var st=State;if(st==null)return;EnvoyLeaves(st);st.reappearMode=false;st.stage="crypt";CreateCrypt(st,"你决定去古墓硬抢");}
+  public static void ChooseCrypt(){var st=State;if(st==null)return;EnvoyLeaves(st);st.reappearMode=false;st.stage="crypt";CreateCrypt(st,"你决定去古墓硬抢".Loc());}
   // 1.61.0 热修补救：选项 A/B 以前点了没反应、使者等到走了（记成一次拒绝），这里把那次拒绝退回并让使者立刻再来。成功返回 null。
   public static string RecallEnvoy(){
-   var st=State;if(st==null)return "没有任务状态";
-   if(st.envoyPending)return "使者还在殖民地边上，直接打开“拉洛克的邀约”信件";
-   if(st.stage!="refused" && st.stage!="scheduled")return "当前阶段不需要使者（"+st.stage+"）";
-   var map=Home;if(map==null)return "没有殖民地地图";
+   var st=State;if(st==null)return "没有任务状态".Loc();
+   if(st.envoyPending)return "使者还在殖民地边上，直接打开“拉洛克的邀约”信件".Loc();
+   if(st.stage!="refused" && st.stage!="scheduled")return "当前阶段不需要使者（".Loc()+st.stage+"）".Loc();
+   var map=Home;if(map==null)return "没有殖民地地图".Loc();
    int refusals=st.refusals;if(st.stage=="refused" && st.refusals>0)st.refusals--;
-   if(SendEnvoy(map,false)==null){st.refusals=refusals;return "使者来不了（拉洛克派系敌对，或找不到地图边缘）";}
+   if(SendEnvoy(map,false)==null){st.refusals=refusals;return "使者来不了（拉洛克派系敌对，或找不到地图边缘）".Loc();}
    return null;
   }
   public static void OnEnvoyGone(NetherilQuestState st){
    if(!st.envoyPending)return;st.envoyPending=false;
    if(st.reappearMode){ChooseCrypt();return;}
-   Refuse(st.envoy==null || st.envoy.Dead?"使者倒在了殖民地边上，没人给拉洛克答复":"使者等了一天没等到答复，走了");
+   Refuse(st.envoy==null || st.envoy.Dead?"使者倒在了殖民地边上，没人给拉洛克答复".Loc():"使者等了一天没等到答复，走了".Loc());
   }
 
   // ---------- 三件差事 ----------
   // 办完差事 n 以后：先空着，ErrandGapDays 天后由 ErrandTick 交代下一件。
   static void QueueErrand(NetherilQuestState st,int n){st.errand=0;st.nextErrand=n;st.nextErrandTick=Now+ErrandGapDays*GenDate.TicksPerDay;}
-  static string GapNote=>"\n\n拉洛克会在 "+ErrandGapDays+" 天后派人交代下一件差事。";
+  static string GapNote=>"\n\n拉洛克会在 ".Loc()+ErrandGapDays+" 天后派人交代下一件差事。".Loc();
   public static void StartErrand(NetherilQuestState st,int n,Map map){
    st.nextErrand=0;st.nextErrandTick=-1;
    st.errand=n;st.errandDeadline=Now+ErrandDays*GenDate.TicksPerDay;map=map??Home;
@@ -227,13 +227,13 @@ namespace LichPhylactery {
      var box=ThingMaker.MakeThing(Items.Thing("LP_LarlochOfferingBox"));box.SetFaction(Faction.OfPlayer);
      var cell=map==null?IntVec3.Invalid:EnvoyCell(st,map);
      if(map!=null){if(!CellFinder.TryFindRandomCellNear(cell,map,10,c=>c.Standable(map) && c.GetEdifice(map)==null && c.GetFirstItem(map)==null && !c.Fogged(map),out var spot))spot=CellFinder.RandomClosewalkCellNear(map.Center,map,10);GenSpawn.Spawn(box,spot,map);st.offeringBox=box;}
-     Letter("差事一：献上位面遗物","拉洛克要的第一件东西："+ResidueNeed+" 份位面残渣和 "+ShardNeed+" 块神迹残片（传送门失控、黄昏之年的产物）。\n\n使者在地图边上留下了“拉洛克的祭箱”，只收这两种东西。把它们搬进祭箱，够数后祭箱和东西一起消失。\n\n期限 "+ErrandDays+" 天。超时就算拒绝。完成后会得到一卷死灵学派的秘术残卷。",LetterDefOf.NeutralEvent,new LookTargets(box));
+     Letter("差事一：献上位面遗物".Loc(),"拉洛克要的第一件东西：".Loc()+ResidueNeed+" 份位面残渣和 ".Loc()+ShardNeed+" 块神迹残片（传送门失控、黄昏之年的产物）。\n\n使者在地图边上留下了“拉洛克的祭箱”，只收这两种东西。把它们搬进祭箱，够数后祭箱和东西一起消失。\n\n期限 ".Loc()+ErrandDays+" 天。超时就算拒绝。完成后会得到一卷死灵学派的秘术残卷。".Loc(),LetterDefOf.NeutralEvent,new LookTargets(box));
      break;}
     case 2:{
      var thay=Thay;
-     if(thay==null){Letter("差事二：斩杀红袍","拉洛克本想让你去杀一名塞伊精英法师，可世上已经没有塞伊远征军了。这件差事就算办完了。",LetterDefOf.NeutralEvent);CompleteErrand(2);return;}
+     if(thay==null){Letter("差事二：斩杀红袍".Loc(),"拉洛克本想让你去杀一名塞伊精英法师，可世上已经没有塞伊远征军了。这件差事就算办完了。".Loc(),LetterDefOf.NeutralEvent);CompleteErrand(2);return;}
      var site=MakeSite("LP_RedWizardCamp",thay,4,10,CampPoints);st.campSite=site;
-     Letter("差事二：斩杀红袍","拉洛克要你去杀一名塞伊的精英红袍法师。他就在世界地图上的“红袍法师营地”（离殖民地 4～10 格），身边有塞伊守军。\n\n组队过去，杀掉那名精英法师就算完成（营地里其他人不用管）。期限 "+ErrandDays+" 天。完成后会得到一卷优秀的研习卷、"+SilverReward+" 银和一块传奇重铸之石。",LetterDefOf.NeutralEvent,site!=null?new LookTargets(site):null);
+     Letter("差事二：斩杀红袍".Loc(),"拉洛克要你去杀一名塞伊的精英红袍法师。他就在世界地图上的“红袍法师营地”（离殖民地 4～10 格），身边有塞伊守军。\n\n组队过去，杀掉那名精英法师就算完成（营地里其他人不用管）。期限 ".Loc()+ErrandDays+" 天。完成后会得到一卷优秀的研习卷、".Loc()+SilverReward+" 银和一块传奇重铸之石。".Loc(),LetterDefOf.NeutralEvent,site!=null?new LookTargets(site):null);
      break;}
     case 3:{
      if(map==null)return;
@@ -243,7 +243,7 @@ namespace LichPhylactery {
      var guards=new List<Pawn>();var master=Master;for(int i=0;i<3;i++){var g=Skeleton(master,f);GenSpawn.Spawn(g,CellFinder.RandomClosewalkCellNear(spot,map,3),map);guards.Add(g);}
      LordMaker.MakeNewLord(f,new LordJob_DefendPoint(spot,3f,8f,false,false),map,guards);
      st.casket=casket;st.casketGuards=guards;st.casketRaidTick=Now+CasketRaidTicks;st.casketDoneTick=Now+CasketStayTicks;st.casketRaidSent=false;
-     Letter("差事三：守护转移","拉洛克的骷髅护送着一具“命匣匣柩”来到殖民地，要在这里停一天。\n\n塞伊得到了风声：大约 6 小时后会有一支塞伊部队直奔匣柩而来。守住它——一天结束时匣柩还在就算完成。匣柩被毁就算失败（等同拒绝）。\n\n完成后拉洛克会把卡苏斯之卷交给你，拉洛克的好感 +"+ErrandGoodwill+"。",LetterDefOf.ThreatSmall,new LookTargets(casket));
+     Letter("差事三：守护转移".Loc(),"拉洛克的骷髅护送着一具“命匣匣柩”来到殖民地，要在这里停一天。\n\n塞伊得到了风声：大约 6 小时后会有一支塞伊部队直奔匣柩而来。守住它——一天结束时匣柩还在就算完成。匣柩被毁就算失败（等同拒绝）。\n\n完成后拉洛克会把卡苏斯之卷交给你，拉洛克的好感 +".Loc()+ErrandGoodwill+"。".Loc(),LetterDefOf.ThreatSmall,new LookTargets(casket));
      break;}
    }
   }
@@ -252,20 +252,20 @@ namespace LichPhylactery {
    Adventurer.MilestoneColony("larloch"+n,Adventurer.LarlochXP); // 1.48.0 冒险者里程碑：每件差事全体殖民者各一次
    switch(n){
     case 1:
-     if(map!=null)Messenger(map,new List<Thing>{Netheril.MakeArcane("Necromancy",QualityCategory.Good),Growth.MakeLegacy()}.Where(t=>t!=null).ToList(),"拉洛克收下了位面遗物，骷髅信使送来了一卷死灵学派的秘术残卷。"+GapNote); // 1.58.3 传承武器
+     if(map!=null)Messenger(map,new List<Thing>{Netheril.MakeArcane("Necromancy",QualityCategory.Good),Growth.MakeLegacy()}.Where(t=>t!=null).ToList(),"拉洛克收下了位面遗物，骷髅信使送来了一卷死灵学派的秘术残卷。".Loc()+GapNote); // 1.58.3 传承武器
      QueueErrand(st,2);break;
     case 2:
      DestroySite(ref st.campSite);st.campLeader=null;
      if(map!=null){var silver=ThingMaker.MakeThing(ThingDefOf.Silver);silver.stackCount=SilverReward;var gifts=new List<Thing>{Netheril.MakeStudy(QualityCategory.Excellent),silver};var stone=Legend.MakeStone();if(stone!=null)gifts.Add(stone); // 1.50.0 传奇重铸之石
       var tome=Growth.MakeTome();if(tome!=null)gifts.Add(tome); // 1.58.3 属性典籍
-      Messenger(map,gifts,"红袍法师死了。骷髅信使送来了一卷优秀的研习卷、"+SilverReward+" 银"+(stone!=null?"、一块传奇重铸之石":"")+(tome!=null?"和一本"+tome.LabelNoCount:"")+"。"+GapNote);}
+      Messenger(map,gifts,"红袍法师死了。骷髅信使送来了一卷优秀的研习卷、".Loc()+SilverReward+" 银".Loc()+(stone!=null?"、一块传奇重铸之石".Loc():"")+(tome!=null?"和一本".Loc()+tome.LabelNoCount:"")+"。".Loc()+GapNote);}
      QueueErrand(st,3);break;
     case 3:
      var cell=st.casket!=null && st.casket.Spawned?st.casket.Position:(map?.Center??IntVec3.Invalid);
      CasketLeaves(st);
-     Factions.ChangeGoodwillExact(Larloch,ErrandGoodwill,"守护命匣转移");
+     Factions.ChangeGoodwillExact(Larloch,ErrandGoodwill,"守护命匣转移".Loc());
      st.errand=0;
-     if(map!=null)GiveKarsus(map,cell,"三件差事办完，拉洛克兑现了承诺");
+     if(map!=null)GiveKarsus(map,cell,"三件差事办完，拉洛克兑现了承诺".Loc());
      break;
    }
   }
@@ -284,10 +284,10 @@ namespace LichPhylactery {
   }
   public static void ErrandTick(NetherilQuestState st){
    if(st.errand==0){if(st.nextErrand>0 && Now>=st.nextErrandTick)StartErrand(st,st.nextErrand,Home);return;}
-   if(Now>st.errandDeadline){ErrandFailed("差事"+st.errand+"超过 "+ErrandDays+" 天没有办完，拉洛克当作你拒绝了");return;}
+   if(Now>st.errandDeadline){ErrandFailed("差事".Loc()+st.errand+"超过 ".Loc()+ErrandDays+" 天没有办完，拉洛克当作你拒绝了".Loc());return;}
    if(st.errand==2 && st.campSite!=null && st.campSite.Destroyed && (st.campLeader==null || !st.campLeader.Dead)){st.campSite=null;var thay=Thay;if(thay!=null)st.campSite=MakeSite("LP_RedWizardCamp",thay,4,10,CampPoints);}
    if(st.errand==3 && st.casket!=null){
-    if(st.casket.Destroyed){st.casket=null;ErrandFailed("命匣匣柩被毁了，差事三失败");return;}
+    if(st.casket.Destroyed){st.casket=null;ErrandFailed("命匣匣柩被毁了，差事三失败".Loc());return;}
     if(!st.casketRaidSent && Now>=st.casketRaidTick){st.casketRaidSent=true;CasketRaid(st);}
     if(Now>=st.casketDoneTick)CompleteErrand(3);
    }
@@ -299,7 +299,7 @@ namespace LichPhylactery {
    if(pawns.Count==0 || !Events2.EdgeCell(map,out var entry,casket.Position)){foreach(var p in pawns)p.Destroy();return null;}
    foreach(var p in pawns)GenSpawn.Spawn(p,CellFinder.RandomClosewalkCellNear(entry,map,6),map);
    var lord=LordMaker.MakeNewLord(thay,new LordJob_AssaultThings(thay,new List<Thing>{casket},1f,false),map,pawns);
-   Find.LetterStack.ReceiveLetter("塞伊来抢匣柩",thay.Name+"的部队冲着命匣匣柩来了！守住它，直到拉洛克的骷髅带它离开。",LetterDefOf.ThreatBig,new LookTargets(pawns.Cast<Thing>()),thay);
+   Find.LetterStack.ReceiveLetter("塞伊来抢匣柩".Loc(),thay.Name+"的部队冲着命匣匣柩来了！守住它，直到拉洛克的骷髅带它离开。".Loc(),LetterDefOf.ThreatBig,new LookTargets(pawns.Cast<Thing>()),thay);
    return lord;
   }
   // 骷髅信使：从地图边上走过来，放下奖励，再走掉。
@@ -309,7 +309,7 @@ namespace LichPhylactery {
    if(!CellFinder.TryFindRandomCellNear(map.Center,map,12,c=>c.Standable(map) && !c.Fogged(map) && c.GetFirstItem(map)==null && map.reachability.CanReachColony(c),out var spot))spot=cell;
    foreach(var t in reward){GenPlace.TryPlaceThing(t,spot,map,ThingPlaceMode.Near);t.SetForbidden(false,false);}
    if(f!=null && Master!=null){var s=Skeleton(Master,f);GenSpawn.Spawn(s,CellFinder.RandomClosewalkCellNear(spot,map,2),map);LordMaker.MakeNewLord(f,new LordJob_ExitMapBest(LocomotionUrgency.Walk,false),map,new List<Pawn>{s});}
-   Find.LetterStack.ReceiveLetter("骷髅信使",text+"\n\n奖励："+string.Join("、",reward.Select(t=>t.LabelCap)),LetterDefOf.PositiveEvent,new LookTargets(reward),Larloch);
+   Find.LetterStack.ReceiveLetter("骷髅信使".Loc(),text+"\n\n奖励：".Loc()+string.Join("、".Loc(),reward.Select(t=>t.LabelCap)),LetterDefOf.PositiveEvent,new LookTargets(reward),Larloch);
   }
 
   // ---------- 世界地图站点 ----------
@@ -329,13 +329,13 @@ namespace LichPhylactery {
    if(st.cryptSite!=null && !st.cryptSite.Destroyed)return;
    st.cryptSite=MakeSite("LP_LarlochCrypt",Larloch,6,15,CryptPoints);
    if(st.karsusStatus=="none" || st.karsusStatus=="lost")st.karsusStatus="larloch";
-   Letter("拉洛克的古墓",why+"，拉洛克的古墓显露在世界地图上（离殖民地 6～15 格）。\n\n古墓是石砌的墓室：外墙、几间墓室和中央大厅，守着骷髅、血肉巨像和半巫妖，最深处是拉洛克本人的化身——一名巫妖，会恐惧凝视、死灵冲击和生命汲取光环。卡苏斯之卷放在中央大厅的架子上。\n\n踏进古墓，拉洛克的扈从就会与你为敌。古墓会一直在那里，直到你攻下它。",LetterDefOf.ThreatBig,st.cryptSite!=null?new LookTargets(st.cryptSite):null);
+   Letter("拉洛克的古墓".Loc(),why+"，拉洛克的古墓显露在世界地图上（离殖民地 6～15 格）。\n\n古墓是石砌的墓室：外墙、几间墓室和中央大厅，守着骷髅、血肉巨像和半巫妖，最深处是拉洛克本人的化身——一名巫妖，会恐惧凝视、死灵冲击和生命汲取光环。卡苏斯之卷放在中央大厅的架子上。\n\n踏进古墓，拉洛克的扈从就会与你为敌。古墓会一直在那里，直到你攻下它。".Loc(),LetterDefOf.ThreatBig,st.cryptSite!=null?new LookTargets(st.cryptSite):null);
   }
   public static void OnLarlochDefeated(Pawn p){
    var st=State;if(st==null || st.larlochDefeated)return;
    st.larlochDefeated=true;var f=Larloch;if(f!=null)Factions.SetRelation(f,Faction.OfPlayer,-100);
    st.nextUndeadRaid=Now+Rand.RangeInclusive(RaidMin,RaidMax)*GenDate.TicksPerDay;
-   Letter("影巫王的化身","拉洛克倒下了——尸体在眨眼间化成了灰。“这只是影巫王的化身。”空气里留下这么一句话。\n\n他不会复活，但拉洛克的扈从从此与你为敌："+(LichMod.Settings.larlochRaids?"每 "+RaidMin+"～"+RaidMax+" 天会有一小队亡灵来袭（设置里可以关掉）。":"（亡灵袭击已在设置里关闭）")+"\n\n卡苏斯之卷还在中央大厅的架子上。",LetterDefOf.PositiveEvent,new LookTargets(p.Corpse??(Thing)p));
+   Letter("影巫王的化身".Loc(),"拉洛克倒下了——尸体在眨眼间化成了灰。“这只是影巫王的化身。”空气里留下这么一句话。\n\n他不会复活，但拉洛克的扈从从此与你为敌：".Loc()+(LichMod.Settings.larlochRaids?"每 ".Loc()+RaidMin+"～".Loc()+RaidMax+" 天会有一小队亡灵来袭（设置里可以关掉）。".Loc():"（亡灵袭击已在设置里关闭）".Loc())+"\n\n卡苏斯之卷还在中央大厅的架子上。".Loc(),LetterDefOf.PositiveEvent,new LookTargets(p.Corpse??(Thing)p));
   }
   public static void UndeadRaid(Map map){
    var f=Larloch;if(f==null || map==null)return;if(!f.HostileTo(Faction.OfPlayer))Factions.SetRelation(f,Faction.OfPlayer,-100);
@@ -344,7 +344,7 @@ namespace LichPhylactery {
    if(pawns.Count==0 || !Events2.EdgeCell(map,out var entry)){foreach(var p in pawns)p.Destroy();return;}
    foreach(var p in pawns)GenSpawn.Spawn(p,CellFinder.RandomClosewalkCellNear(entry,map,6),map);
    LordMaker.MakeNewLord(f,new LordJob_AssaultColony(f,false,true,false,false,false,false,false),map,pawns);
-   Find.LetterStack.ReceiveLetter("拉洛克的亡灵","影巫王拉洛克没有忘记你：一小队亡灵从地图边上冒了出来。",LetterDefOf.ThreatBig,new LookTargets(pawns.Cast<Thing>()),f);
+   Find.LetterStack.ReceiveLetter("拉洛克的亡灵".Loc(),"影巫王拉洛克没有忘记你：一小队亡灵从地图边上冒了出来。".Loc(),LetterDefOf.ThreatBig,new LookTargets(pawns.Cast<Thing>()),f);
   }
   // 重现：拉洛克被打过 → 塞伊占着的浮城残骸；没被打过 → 使者再来（只有 A/B/去古墓）。
   public static void Reappear(NetherilQuestState st){
@@ -358,7 +358,7 @@ namespace LichPhylactery {
    var site=MakeSite("LP_NetherilWreck",thay,4,12,WreckPoints);
    if(site==null){st.reappearTick=Now+GenDate.TicksPerDay;return;}
    st.wreckSite=site;st.wreckDeadline=Now+WreckDays*GenDate.TicksPerDay;st.karsusStatus="site";
-   Letter("卡苏斯之卷的下落","有消息说，卡苏斯之卷落在一座“沉没的耐瑟浮城残骸”里，"+(thay?.Name??"敌人")+"正占着那里。\n\n残骸在世界地图上（离殖民地 4～12 格）。"+WreckDays+" 天内不去，残骸就会再次沉没；30～60 天后再传来消息。",LetterDefOf.NeutralEvent,new LookTargets(site));
+   Letter("卡苏斯之卷的下落".Loc(),"有消息说，卡苏斯之卷落在一座“沉没的耐瑟浮城残骸”里，".Loc()+(thay?.Name??"敌人".Loc())+"正占着那里。\n\n残骸在世界地图上（离殖民地 4～12 格）。".Loc()+WreckDays+" 天内不去，残骸就会再次沉没；30～60 天后再传来消息。".Loc(),LetterDefOf.NeutralEvent,new LookTargets(site));
   }
 
   // ---------- 状态推进 ----------
@@ -372,7 +372,7 @@ namespace LichPhylactery {
    if(st.stage=="errand")ErrandTick(st);
    if(st.cryptSite!=null && st.cryptSite.Destroyed){st.cryptSite=null;if(!st.larlochDefeated || st.karsusStatus=="larloch")CreateCryptQuiet(st);}
    if(st.karsusStatus=="lost" && st.reappearTick>=0 && now>=st.reappearTick && !st.envoyPending)Reappear(st);
-   if(st.karsusStatus=="site" && st.wreckSite!=null && now>=st.wreckDeadline && !st.wreckSite.HasMap){DestroySite(ref st.wreckSite);st.karsus?.Destroy();st.karsus=null;st.karsusStatus="lost";st.reappearTick=now+Rand.RangeInclusive(ReappearMin,ReappearMax)*GenDate.TicksPerDay;Letter("浮城残骸沉没了","沉没的耐瑟浮城残骸又沉回了地底。卡苏斯之卷的下落要等 "+ReappearMin+"～"+ReappearMax+" 天后才会再有消息。",LetterDefOf.NeutralEvent);}
+   if(st.karsusStatus=="site" && st.wreckSite!=null && now>=st.wreckDeadline && !st.wreckSite.HasMap){DestroySite(ref st.wreckSite);st.karsus?.Destroy();st.karsus=null;st.karsusStatus="lost";st.reappearTick=now+Rand.RangeInclusive(ReappearMin,ReappearMax)*GenDate.TicksPerDay;Letter("浮城残骸沉没了".Loc(),"沉没的耐瑟浮城残骸又沉回了地底。卡苏斯之卷的下落要等 ".Loc()+ReappearMin+"～".Loc()+ReappearMax+" 天后才会再有消息。".Loc(),LetterDefOf.NeutralEvent);}
    if(st.karsusStatus=="site" && st.wreckSite!=null && st.wreckSite.Destroyed && st.karsus==null){st.wreckSite=null;st.karsusStatus="lost";st.reappearTick=now+Rand.RangeInclusive(ReappearMin,ReappearMax)*GenDate.TicksPerDay;}
    if(st.larlochDefeated && s.larlochRaids && st.nextUndeadRaid>=0 && now>=st.nextUndeadRaid){st.nextUndeadRaid=now+Rand.RangeInclusive(RaidMin,RaidMax)*GenDate.TicksPerDay;UndeadRaid(Home);}
   }
@@ -414,12 +414,12 @@ namespace LichPhylactery {
   public IThingHolder ParentHolder=>null;
   public ThingOwner GetDirectlyHeldThings()=>hold;
   public void GetChildHolders(List<IThingHolder> outChildren){ThingOwnerUtility.AppendThingHoldersFromThings(outChildren,hold);}
-  public override void GameComponentTick(){if(Find.TickManager.TicksGame%250!=77)return;try{NetherilQuest.Tick(this);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 耐瑟瑞尔任务线出错："+e,73710001);}}
+  public override void GameComponentTick(){if(Find.TickManager.TicksGame%250!=77)return;try{NetherilQuest.Tick(this);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 耐瑟瑞尔任务线出错：".Loc()+e,73710001);}}
   public float StudyPoints(Pawn p){studyPoints.TryGetValue(p.thingIDNumber,out float v);return v;}
   public int AddStudyPoints(Pawn p,float amount){
    float before=StudyPoints(p),after=before+amount;studyPoints[p.thingIDNumber]=after;int gained=0;
    foreach(int t in Netheril.StudyThresholds)if(before<t && after>=t && p.GetPsylinkLevel()<Netheril.StudyMaxPsylink){p.ChangePsylinkLevel(1,false);gained++;}
-   if(gained>0 && p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"的耐瑟研习度达到 "+after.ToString("0")+"：心灵链接升到 "+p.GetPsylinkLevel()+" 级。",p,MessageTypeDefOf.PositiveEvent,false);
+   if(gained>0 && p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"的耐瑟研习度达到 ".Loc()+after.ToString("0")+"：心灵链接升到 ".Loc()+p.GetPsylinkLevel()+" 级。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);
    return gained;
   }
   public void AddReadTicks(Pawn p,int ticks){if(p?.Faction==Faction.OfPlayer)readHours+=Netheril.Hours(ticks);}
@@ -438,9 +438,9 @@ namespace LichPhylactery {
   void CompletePass(Pawn p){
    int id=p.thingIDNumber;int n=Passes(p)+1;karsusPasses[id]=n;
    var echo=Items.Give(p,"LP_KarsusEcho");if(echo!=null){echo.Severity=Mathf.Min(Netheril.MaxEcho,n);p.health.Notify_HediffChanged(echo);}
-   if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"读完了第 "+n+" 遍卡苏斯之卷，卡苏斯的回响 "+Mathf.Min(Netheril.MaxEcho,n)+" 层。",p,MessageTypeDefOf.PositiveEvent,false);
-   if((n==3 || n==5) && Netheril.Roll<.5f){var def=DefDatabase<MentalStateDef>.GetNamedSilentFail("LP_KarsusObsession");if(def!=null)p.mindState?.mentalStateHandler?.TryStartMentalState(def,"卡苏斯之卷",true,true);}
-   if(n==Netheril.AscensionPasses && p.Faction==Faction.OfPlayer)Find.LetterStack.ReceiveLetter("读满七遍",p.LabelShort+"已经把卡苏斯之卷读了 "+n+" 遍。\n\n"+NetherilAscension.ConditionsText(p),LetterDefOf.PositiveEvent,p);
+   if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"读完了第 ".Loc()+n+" 遍卡苏斯之卷，卡苏斯的回响 ".Loc()+Mathf.Min(Netheril.MaxEcho,n)+" 层。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);
+   if((n==3 || n==5) && Netheril.Roll<.5f){var def=DefDatabase<MentalStateDef>.GetNamedSilentFail("LP_KarsusObsession");if(def!=null)p.mindState?.mentalStateHandler?.TryStartMentalState(def,"卡苏斯之卷".Loc(),true,true);}
+   if(n==Netheril.AscensionPasses && p.Faction==Faction.OfPlayer)Find.LetterStack.ReceiveLetter("读满七遍".Loc(),p.LabelShort+"已经把卡苏斯之卷读了 ".Loc()+n+" 遍。\n\n".Loc()+NetherilAscension.ConditionsText(p),LetterDefOf.PositiveEvent,p);
   }
   public override void ExposeData(){
    base.ExposeData();
@@ -496,26 +496,26 @@ namespace LichPhylactery {
    if(Closed || st==null || !st.envoyPending){yield return Option_Close;yield break;}
    var map=st.envoy?.MapHeld??NetherilQuest.Home;
    // 1.61.0 热修：选人/选巫妖改成信件里的下一页（原来是关掉对话框再弹浮动菜单，玩家那边点了没反应）。
-   var a=new DiaOption("以人换卷"){link=Pick("选一名殖民者随使者离开：",NetherilQuest.OfferablePawns(map),p=>p.LabelShort+"（心灵链接 "+p.GetPsylinkLevel()+(NetherilHooks.VPEActive?"，灵能等级 "+NetherilHooks.Level(p):"")+"）",NetherilQuest.ChooseA)};
+   var a=new DiaOption("以人换卷".Loc()){link=Pick("选一名殖民者随使者离开：".Loc(),NetherilQuest.OfferablePawns(map),p=>p.LabelShort+"（心灵链接 ".Loc()+p.GetPsylinkLevel()+(NetherilHooks.VPEActive?"，灵能等级 ".Loc()+NetherilHooks.Level(p):"")+"）".Loc(),NetherilQuest.ChooseA)};
    var why=NetherilQuest.ABlocked(map);if(why!=null)a.Disable(why);yield return a;
-   var b=new DiaOption("以命匣换卷"){link=Pick("选一名巫妖，把他的命匣交给使者：",NetherilQuest.OfferableLiches(map),p=>p.LabelShort+"的命匣（等级 "+Necro.Lich(p).box.level+"）",NetherilQuest.ChooseB)};
+   var b=new DiaOption("以命匣换卷".Loc()){link=Pick("选一名巫妖，把他的命匣交给使者：".Loc(),NetherilQuest.OfferableLiches(map),p=>p.LabelShort+"的命匣（等级 ".Loc()+Necro.Lich(p).box.level+"）".Loc(),NetherilQuest.ChooseB)};
    why=NetherilQuest.BBlocked(map);if(why!=null)b.Disable(why);yield return b;
    yield return LarlochIntel.Option(st,map,()=>Find.LetterStack.RemoveLetter(this)); // 1.63.0 购买情报（买完使者照常等答复，不算结束）
-   if(st.reappearMode){yield return Choice("去古墓硬抢",NetherilQuest.ChooseCrypt);}
-   else{yield return Choice("为他办三件事",()=>NetherilQuest.ChooseC());yield return Choice("拒绝",()=>NetherilQuest.Refuse());}
+   if(st.reappearMode){yield return Choice("去古墓硬抢".Loc(),NetherilQuest.ChooseCrypt);}
+   else{yield return Choice("为他办三件事".Loc(),()=>NetherilQuest.ChooseC());yield return Choice("拒绝".Loc(),()=>NetherilQuest.Refuse());}
    yield return Option_Postpone;
   }}
   DiaOption Choice(string text,Action act)=>new DiaOption(text){action=()=>{act?.Invoke();Resolve();},resolveTree=true};
   public DiaNode Pick(string prompt,IEnumerable<Pawn> pawns,Func<Pawn,string> label,Func<Pawn,bool> choose){
    var node=new DiaNode(prompt);
-   foreach(var p in pawns.ToList())node.options.Add(new DiaOption(label(p)){action=()=>{if(choose(p))Resolve();else Messages.Message("没能交换："+p.LabelShort+"已经不符合条件（不在使者所在的地图，或命匣已毁、已交出）。",MessageTypeDefOf.RejectInput,false);},resolveTree=true});
-   node.options.Add(new DiaOption("返回"){action=OpenLetter,resolveTree=true});
+   foreach(var p in pawns.ToList())node.options.Add(new DiaOption(label(p)){action=()=>{if(choose(p))Resolve();else Messages.Message("没能交换：".Loc()+p.LabelShort+"已经不符合条件（不在使者所在的地图，或命匣已毁、已交出）。".Loc(),MessageTypeDefOf.RejectInput,false);},resolveTree=true});
+   node.options.Add(new DiaOption("返回".Loc()){action=OpenLetter,resolveTree=true});
    return node;
   }
  }
  public static class NetherilDebug {
   [LudeonTK.DebugAction("DND边缘大陆","拉洛克使者立即再来",allowedGameStates=LudeonTK.AllowedGameStates.Playing)]
-  static void RecallEnvoy(){Messages.Message(NetherilQuest.RecallEnvoy()??"拉洛克的使者正在赶来",MessageTypeDefOf.NeutralEvent,false);}
+  static void RecallEnvoy(){Messages.Message(NetherilQuest.RecallEnvoy()??"拉洛克的使者正在赶来".Loc(),MessageTypeDefOf.NeutralEvent,false);}
  }
 
  // 拉洛克的祭箱：只收位面残渣和神迹残片，够数（20 + 3）后连箱带物消失。
@@ -531,10 +531,10 @@ namespace LichPhylactery {
    NetherilQuest.CompleteErrand(1);
    return true;
   }
-  public override string GetInspectString(){var s=base.GetInspectString();var line="位面残渣 "+Held(this,"LP_PlanarResidue")+" / "+NetherilQuest.ResidueNeed+"，神迹残片 "+Held(this,"LP_MiracleShard")+" / "+NetherilQuest.ShardNeed;return s.NullOrEmpty()?line:s+"\n"+line;}
+  public override string GetInspectString(){var s=base.GetInspectString();var line="位面残渣 ".Loc()+Held(this,"LP_PlanarResidue")+" / "+NetherilQuest.ResidueNeed+"，神迹残片 ".Loc()+Held(this,"LP_MiracleShard")+" / "+NetherilQuest.ShardNeed;return s.NullOrEmpty()?line:s+"\n"+line;}
  }
  public class Building_PhylacteryCasket : Building {
-  public override string GetInspectString(){var s=base.GetInspectString();var st=Netheril.State;string line=st==null || st.casketDoneTick<0?"":(st.casketRaidSent?"":"塞伊大约 "+Mathf.Max(0f,(st.casketRaidTick-Find.TickManager.TicksGame)/2500f).ToString("0.#")+" 小时后到。")+"还要守 "+Mathf.Max(0f,(st.casketDoneTick-Find.TickManager.TicksGame)/2500f).ToString("0.#")+" 小时。";return s.NullOrEmpty()?line:s+"\n"+line;}
+  public override string GetInspectString(){var s=base.GetInspectString();var st=Netheril.State;string line=st==null || st.casketDoneTick<0?"":(st.casketRaidSent?"":"塞伊大约 ".Loc()+Mathf.Max(0f,(st.casketRaidTick-Find.TickManager.TicksGame)/2500f).ToString("0.#")+" 小时后到。".Loc())+"还要守 ".Loc()+Mathf.Max(0f,(st.casketDoneTick-Find.TickManager.TicksGame)/2500f).ToString("0.#")+" 小时。".Loc();return s.NullOrEmpty()?line:s+"\n"+line;}
  }
 
  // 半巫妖（使者、古墓守卫）和拉洛克的化身：不痛不饿不困；附近有敌人时自己用恐惧凝视、死灵冲击；化身另有生命汲取光环、部件生命 ×2。
@@ -551,8 +551,8 @@ namespace LichPhylactery {
    var foes=map.mapPawns.AllPawnsSpawned.Where(p=>LichSpells.Enemy(pawn,p) && !p.Downed && p.Position.InHorDistOf(pawn.Position,Range) && GenSight.LineOfSight(pawn.Position,p.Position,map)).ToList();
    if(foes.Count==0)return;
    var target=foes.OrderByDescending(f=>foes.Count(o=>o.Position.InHorDistOf(f.Position,4f))).First();
-   if(now>=fearReady && foes.Count>=2){fearReady=now+FearCooldown;foreach(var p in foes.Where(p=>p.Position.InHorDistOf(target.Position,4.9f)))LichSpells.Frighten(pawn,p);FleckMaker.Static(target.Position,map,FleckDefOf.PsycastAreaEffect,4.9f);Items.Mote(pawn,"恐惧凝视",new Color(.6f,.8f,.6f));return;}
-   if(now>=blastReady){blastReady=now+BlastCooldown;float dmg=15f*(Avatar?2f:1.5f);foreach(var p in foes.Where(p=>p.Position.InHorDistOf(target.Position,3.9f)))p.TakeDamage(new DamageInfo(LichSpells.Necrotic,dmg,0f,-1f,pawn));FleckMaker.Static(target.Position,map,FleckDefOf.PsycastAreaEffect,3.9f);Items.Mote(pawn,"死灵冲击",new Color(.6f,.8f,.6f));}
+   if(now>=fearReady && foes.Count>=2){fearReady=now+FearCooldown;foreach(var p in foes.Where(p=>p.Position.InHorDistOf(target.Position,4.9f)))LichSpells.Frighten(pawn,p);FleckMaker.Static(target.Position,map,FleckDefOf.PsycastAreaEffect,4.9f);Items.Mote(pawn,"恐惧凝视".Loc(),new Color(.6f,.8f,.6f));return;}
+   if(now>=blastReady){blastReady=now+BlastCooldown;float dmg=15f*(Avatar?2f:1.5f);foreach(var p in foes.Where(p=>p.Position.InHorDistOf(target.Position,3.9f)))p.TakeDamage(new DamageInfo(LichSpells.Necrotic,dmg,0f,-1f,pawn));FleckMaker.Static(target.Position,map,FleckDefOf.PsycastAreaEffect,3.9f);Items.Mote(pawn,"死灵冲击".Loc(),new Color(.6f,.8f,.6f));}
   }
   void Drain(){
    var map=pawn.Map;float healed=0f;
@@ -572,7 +572,7 @@ namespace LichPhylactery {
   }
  }
  [HarmonyPatch(typeof(Pawn),nameof(Pawn.Kill))]
- public static class NetherilKillHook {static void Postfix(Pawn __instance){try{NetherilQuest.OnPawnKilled(__instance);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 耐瑟瑞尔死亡钩子出错："+e,73710002);}}}
+ public static class NetherilKillHook {static void Postfix(Pawn __instance){try{NetherilQuest.OnPawnKilled(__instance);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 耐瑟瑞尔死亡钩子出错：".Loc()+e,73710002);}}}
  [HarmonyPatch(typeof(FactionDef),nameof(FactionDef.RaidCommonalityFromPoints))]
  public static class NetherilRaidWeight {static void Postfix(FactionDef __instance,ref float __result){if(__result>0f && __instance==Factions.HostileDef && NetherilQuest.ColonyHasScroll)__result*=NetherilQuest.ThayScrollWeight;}}
  // 失匣巫妖：命匣在拉洛克手里，不再复活。
@@ -585,7 +585,7 @@ namespace LichPhylactery {
  public class SitePartWorker_Netheril : SitePartWorker {
   public override void PostMapGenerate(Map map){
    base.PostMapGenerate(map);
-   if(def.defName=="LP_LarlochCrypt"){var f=NetherilQuest.Larloch;if(f!=null && !f.HostileTo(Faction.OfPlayer)){Factions.SetRelation(f,Faction.OfPlayer,-100);Find.LetterStack.ReceiveLetter("闯入古墓","你闯进了拉洛克的古墓。拉洛克的扈从从此与你为敌。",LetterDefOf.ThreatBig,LookTargets.Invalid,f);}}
+   if(def.defName=="LP_LarlochCrypt"){var f=NetherilQuest.Larloch;if(f!=null && !f.HostileTo(Faction.OfPlayer)){Factions.SetRelation(f,Faction.OfPlayer,-100);Find.LetterStack.ReceiveLetter("闯入古墓".Loc(),"你闯进了拉洛克的古墓。拉洛克的扈从从此与你为敌。".Loc(),LetterDefOf.ThreatBig,LookTargets.Invalid,f);}}
   }
  }
  // 三个站点的地图：红袍法师营地（塞伊守军 + 精英法师）、拉洛克的古墓（石砌墓室）、沉没的耐瑟浮城残骸（塞伊占着，里面有卷轴）。
@@ -596,7 +596,7 @@ namespace LichPhylactery {
    float points=parms.sitePart?.parms?.threatPoints??StorytellerUtility.DefaultThreatPointsNow(map);
    var f=parms.sitePart?.site?.Faction;
    try{switch(kind){case "crypt":Crypt(map,f??NetherilQuest.Larloch,points);break;case "wreck":Wreck(map,f??NetherilQuest.Thay,points);break;default:Camp(map,f??NetherilQuest.Thay,points);break;}}
-   catch(Exception e){Log.Error("[DND边缘大陆] 生成耐瑟瑞尔站点地图出错（"+kind+"）："+e);}
+   catch(Exception e){Log.Error("[DND边缘大陆] 生成耐瑟瑞尔站点地图出错（".Loc()+kind+"）：".Loc()+e);}
   }
   static ThingDef Stuff(string n)=>DefDatabase<ThingDef>.GetNamedSilentFail(n)??ThingDefOf.BlocksGranite;
   static TerrainDef Floor(string n)=>DefDatabase<TerrainDef>.GetNamedSilentFail(n)??TerrainDefOf.Soil;
@@ -619,7 +619,7 @@ namespace LichPhylactery {
    var pawns=Group(map,f,points);
    var leader=PawnGenerator.GeneratePawn(new PawnGenerationRequest(DefDatabase<PawnKindDef>.GetNamed("LP_FH_RedWizard"),f,PawnGenerationContext.NonPlayer,map.Tile,forceGenerateNewPawn:true,mustBeCapableOfViolence:true,canGeneratePawnRelations:false));
    Items.Give(leader,"LP_ThayEliteMage");FactionGroups.RedRobe(leader);AdventurerEnemies.Story(leader,13);
-   if(leader.Name is NameTriple n)leader.Name=new NameTriple(n.First,"精英法师",n.Last);
+   if(leader.Name is NameTriple n)leader.Name=new NameTriple(n.First,"精英法师".Loc(),n.Last);
    GenSpawn.Spawn(leader,c,map);pawns.Insert(0,leader);
    if(st!=null)st.campLeader=leader;
    Defend(map,f,pawns,c,5f);
@@ -653,7 +653,7 @@ namespace LichPhylactery {
    for(int i=0;i<demi;i++){var d=PawnGenerator.GeneratePawn(new PawnGenerationRequest(DefDatabase<PawnKindDef>.GetNamed("LP_LarlochDemilich"),f,PawnGenerationContext.NonPlayer,map.Tile,forceGenerateNewPawn:true,canGeneratePawnRelations:false));NetherilQuest.MakeDemilich(d,false);AdventurerEnemies.Story(d,12);masters.Add(d);}
    var groups=rooms.Select(r=>new List<Pawn>()).ToList();
    for(int i=0;i<masters.Count;i++)groups[i%4].Add(masters[i]);
-   for(int i=0;i<skeletons+golems;i++){var m=masters[i%masters.Count];var g=FactionConstructs.MakeBound(i<golems?"Golem":"Skeleton",m,f);g.Name=new NameSingle(i<golems?"拉洛克的血肉巨像":"拉洛克的骷髅");if(i%5==4)hallGuards.Add(g);else groups[i%4].Add(g);}
+   for(int i=0;i<skeletons+golems;i++){var m=masters[i%masters.Count];var g=FactionConstructs.MakeBound(i<golems?"Golem":"Skeleton",m,f);g.Name=new NameSingle(i<golems?"拉洛克的血肉巨像".Loc():"拉洛克的骷髅".Loc());if(i%5==4)hallGuards.Add(g);else groups[i%4].Add(g);}
    for(int i=0;i<4;i++)Defend(map,f,groups[i],rooms[i],3f);
    Defend(map,f,hallGuards,hall.CenterCell,4f);
   }
@@ -696,10 +696,10 @@ namespace LichPhylactery {
  public static class NetherilSettings {
   public static void Draw(Listing_Standard l){
    var s=LichMod.Settings;
-   l.CheckboxLabeled("耐瑟瑞尔任务线",ref s.netherilQuest,"完成研究“耐瑟瑞尔奥术”、殖民者累计读耐瑟卷轴 20 小时后，影巫王拉洛克的使者会来谈卡苏斯之卷。关掉后不再触发使者（已经开始的任务照常进行）。");
-   l.CheckboxLabeled("拉洛克亡灵袭击",ref s.larlochRaids,"打下拉洛克的古墓以后，每 60～90 天有一小队亡灵来袭（点数 ×0.6）。");
-   l.CheckboxLabeled("空闲时自动研读耐瑟卷轴",ref s.netherilIdleStudy,"有心灵链接、智识 6 级以上、心灵熵低于上限一半的殖民者没事可做时，会自己拿起对他有用的耐瑟卷轴读（卡苏斯之卷 > 秘术残卷 > 研习卷，同类挑最近），最多读 2 小时。不想让某人读：禁止那卷卷轴或用区域限制。");
-   if(Current.ProgramState==ProgramState.Playing && Netheril.State is NetherilQuestState st && (st.stage=="refused" || st.stage=="scheduled") && !st.envoyPending && l.ButtonText("让拉洛克的使者马上再来（补救：以前点选项没反应、使者走了）")){var r=NetherilQuest.RecallEnvoy();Messages.Message(r??"拉洛克的使者正在赶来（退回了一次拒绝）",r==null?MessageTypeDefOf.NeutralEvent:MessageTypeDefOf.RejectInput,false);}
+   l.CheckboxLabeled("耐瑟瑞尔任务线".Loc(),ref s.netherilQuest,"完成研究“耐瑟瑞尔奥术”、殖民者累计读耐瑟卷轴 20 小时后，影巫王拉洛克的使者会来谈卡苏斯之卷。关掉后不再触发使者（已经开始的任务照常进行）。".Loc());
+   l.CheckboxLabeled("拉洛克亡灵袭击".Loc(),ref s.larlochRaids,"打下拉洛克的古墓以后，每 60～90 天有一小队亡灵来袭（点数 ×0.6）。".Loc());
+   l.CheckboxLabeled("空闲时自动研读耐瑟卷轴".Loc(),ref s.netherilIdleStudy,"有心灵链接、智识 6 级以上、心灵熵低于上限一半的殖民者没事可做时，会自己拿起对他有用的耐瑟卷轴读（卡苏斯之卷 > 秘术残卷 > 研习卷，同类挑最近），最多读 2 小时。不想让某人读：禁止那卷卷轴或用区域限制。".Loc());
+   if(Current.ProgramState==ProgramState.Playing && Netheril.State is NetherilQuestState st && (st.stage=="refused" || st.stage=="scheduled") && !st.envoyPending && l.ButtonText("让拉洛克的使者马上再来（补救：以前点选项没反应、使者走了）".Loc())){var r=NetherilQuest.RecallEnvoy();Messages.Message(r??"拉洛克的使者正在赶来（退回了一次拒绝）".Loc(),r==null?MessageTypeDefOf.NeutralEvent:MessageTypeDefOf.RejectInput,false);}
   }
  }
 }

@@ -182,7 +182,7 @@
     <defName>LP_FavoredEnemy</defName>
     <commonality>0</commonality>
     <degreeDatas>
-      <li><degree>1</degree><label><![CDATA[<color=#5B9BD5>宿敌猎人·龙</color>]]></label><description>{PAWN_nameDef}发誓要猎杀世上的龙。\n\n- 对宿敌（龙：五色真龙、力能龙裔、其他龙类）伤害 +25%、命中 +15%\n- 宿敌出现在本地图时提示一次\n- 击杀宿敌累计 50 个后成为“宿敌克星”：伤害 +40%，免疫宿敌施加的眩晕与控制</description></li>
+      <li><degree>1</degree><label><![CDATA[<color=#5B9BD5>宿敌猎人·龙</color>]]></label><description>{PAWN_nameDef}发誓要猎杀世上的龙。\n\n- 对宿敌（龙：五色真龙、其他龙类）伤害 +25%、命中 +15%\n- 宿敌出现在本地图时提示一次\n- 击杀宿敌累计 50 个后成为“宿敌克星”：伤害 +40%，免疫宿敌施加的眩晕与控制</description></li>
       <li><degree>2</degree><label><![CDATA[<color=#5B9BD5>宿敌猎人·巨人</color>]]></label><description>{PAWN_nameDef}发誓要猎杀巨人。\n\n- 对宿敌（体型 2 以上的巨人种族）伤害 +25%、命中 +15%\n- 宿敌出现在本地图时提示一次\n- 击杀宿敌累计 50 个后成为“宿敌克星”：伤害 +40%，免疫宿敌施加的眩晕与控制</description></li>
       <li><degree>3</degree><label><![CDATA[<color=#5B9BD5>宿敌猎人·不死</color>]]></label><description>{PAWN_nameDef}发誓要让死者安息。\n\n- 对宿敌（巫妖、死灵造物、死亡骑士、半巫妖、Anomaly 尸鬼）伤害 +25%、命中 +15%\n- 宿敌出现在本地图时提示一次\n- 击杀宿敌累计 50 个后成为“宿敌克星”：伤害 +40%，免疫宿敌施加的眩晕与控制</description></li>
       <li><degree>4</degree><label><![CDATA[<color=#5B9BD5>宿敌猎人·邪魔</color>]]></label><description>{PAWN_nameDef}发誓要把邪魔赶回深渊和九狱。\n\n- 对宿敌（深渊恶魔、九狱魔鬼、炎魔、寒冰魔、契约恶魔）伤害 +25%、命中 +15%\n- 宿敌出现在本地图时提示一次\n- 击杀宿敌累计 50 个后成为“宿敌克星”：伤害 +40%，免疫宿敌施加的眩晕与控制</description></li>

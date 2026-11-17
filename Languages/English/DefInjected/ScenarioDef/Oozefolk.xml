@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 实验池逃亡 -->
+  <LP_OozeScenario.label>escape from the vats</LP_OozeScenario.label>
+  <!-- 塞伊的红袍法师在地下实验室里养着一池原生质，想把它们培育成听话的仆役。三个流浆人在一次失败的实验里有了自己的意识，溶开池壁的封印，带着一点能抢到的东西逃了出来。\n\n其中一人在实验池里多泡了几天，开局原生质有60；另外带着凝胶敷料和一条稳形护带。流浆人不怕感染、什么都能吃，能吞没尸体、分裂繁衍；但很怕冷。大约第6天，塞伊会派一支小追捕队（约300点）来把实验品抓回去。\n\n注意：三人都很怕冷，冬天来得早的地方要先解决取暖；追捕队不强但来得快，属于中等难度。 -->
+  <LP_OozeScenario.description>Thayan Red Wizards kept a vat of protoplasm in an underground lab, hoping to breed it into obedient servants. In a failed experiment three oozefolk gained minds of their own, dissolved the seals on the vat walls and escaped with whatever they could grab.\n\nOne of them soaked in the vat a few days longer and starts with 60 protoplasm; they also carry gel dressings and a stabilizing belt. Oozefolk fear no infection, can eat anything, and can engulf corpses and multiply by fission; but they're very afraid of the cold. Around day 6, Thay sends a small pursuit squad (about 300 points) to bring the specimens back.\n\nNote: all three greatly fear the cold, so in places where winter comes early, sort out heating first; the pursuers aren't strong but come quickly; medium difficulty.</LP_OozeScenario.description>
+  <!-- 塞伊的红袍法师在地下实验室里养着一池原生质，想把它们培育成听话的仆役。三个流浆人在一次失败的实验里有了自己的意识，溶开池壁的封印，带着一点能抢到的东西逃了出来。\n\n其中一人在实验池里多泡了几天，开局原生质有60；另外带着凝胶敷料和一条稳形护带。流浆人不怕感染、什么都能吃，能吞没尸体、分裂繁衍；但很怕冷。大约第6天，塞伊会派一支小追捕队（约300点）来把实验品抓回去。\n\n注意：三人都很怕冷，冬天来得早的地方要先解决取暖；追捕队不强但来得快，属于中等难度。 -->
+  <LP_OozeScenario.scenario.description>Thayan Red Wizards kept a vat of protoplasm in an underground lab, hoping to breed it into obedient servants. In a failed experiment three oozefolk gained minds of their own, dissolved the seals on the vat walls and escaped with whatever they could grab.\n\nOne of them soaked in the vat a few days longer and starts with 60 protoplasm; they also carry gel dressings and a stabilizing belt. Oozefolk fear no infection, can eat anything, and can engulf corpses and multiply by fission; but they're very afraid of the cold. Around day 6, Thay sends a small pursuit squad (about 300 points) to bring the specimens back.\n\nNote: all three greatly fear the cold, so in places where winter comes early, sort out heating first; the pursuers aren't strong but come quickly; medium difficulty.</LP_OozeScenario.scenario.description>
+  <!-- 实验池逃亡 -->
+  <LP_OozeScenario.scenario.name>escape from the vats</LP_OozeScenario.scenario.name>
+  <!-- 三名流浆人。 -->
+  <LP_OozeScenario.scenario.parts.ConfigurePawnsXenotypes.customSummary>Three oozefolk.</LP_OozeScenario.scenario.parts.ConfigurePawnsXenotypes.customSummary>
+  <!-- 流浆人 -->
+  <LP_OozeScenario.scenario.parts.ConfigurePawnsXenotypes.xenotypeCounts.0.description>oozefolk</LP_OozeScenario.scenario.parts.ConfigurePawnsXenotypes.xenotypeCounts.0.description>
+  <!-- 实验池的追捕者 -->
+  <LP_OozeScenario.scenario.parts.LP_OozeEscape.letterLabel>pursuers from the vats</LP_OozeScenario.scenario.parts.LP_OozeEscape.letterLabel>
+  <!-- 池壁的符文熄灭的那一刻，你们第一次知道了“自己”是什么意思。\n\n你们从排水沟里流出实验室，一路渗过三道上锁的门，在荒野里重新捏出了人形。身后，红袍法师的咒骂声还在回荡——他们不会让珍贵的实验品就这么跑掉。\n\n找个暖和的地方。尽快。 -->
+  <LP_OozeScenario.scenario.parts.GameStartDialog.text>The moment the runes on the vat walls went dark, you knew for the first time what "self" meant.\n\nYou flowed out of the lab through the drains, seeped through three locked doors, and re-sculpted human shapes in the wilds. Behind you, the Red Wizards' curses still echo; they won't let precious specimens just run off.\n\nFind somewhere warm. Fast.</LP_OozeScenario.scenario.parts.GameStartDialog.text>
+  <!-- 三名从塞伊实验池里逃出来的流浆人；第6天红袍的追捕队就会找上门。 -->
+  <LP_OozeScenario.scenario.summary>Three oozefolk escaped from a Thayan vat; on day 6 the Red Wizards' pursuers come knocking.</LP_OozeScenario.scenario.summary>
+</LanguageData>

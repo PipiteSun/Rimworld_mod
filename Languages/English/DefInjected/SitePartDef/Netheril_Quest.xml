@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 红袍法师营地 -->
+  <LP_RedWizardCamp.label>Red Wizard camp</LP_RedWizardCamp.label>
+  <!-- 塞伊的红袍法师在这里扎营，营地里有一名精英法师。 -->
+  <LP_RedWizardCamp.description>Thayan Red Wizards are camped here, with one elite wizard in the camp.</LP_RedWizardCamp.description>
+  <!-- 正在进攻{0}。 -->
+  <LP_RedWizardCamp.approachingReportString>Attacking {0}.</LP_RedWizardCamp.approachingReportString>
+  <!-- 进攻{0} -->
+  <LP_RedWizardCamp.approachOrderString>attack {0}</LP_RedWizardCamp.approachOrderString>
+  <!-- 这里是红袍法师营地。杀掉那名精英红袍法师就算完成拉洛克的第二件差事。 -->
+  <LP_RedWizardCamp.arrivedLetter>This is a Red Wizard camp. Killing the elite Red Wizard completes Larloch's second errand.</LP_RedWizardCamp.arrivedLetter>
+  <!-- 拉洛克的古墓 -->
+  <LP_LarlochCrypt.label>Larloch's tomb</LP_LarlochCrypt.label>
+  <!-- 影巫王拉洛克的古墓：石砌墓室里守着骷髅、血肉巨像、半巫妖和拉洛克的化身。卡苏斯之卷放在中央大厅里。 -->
+  <LP_LarlochCrypt.description>The tomb of Larloch the Shadow King: stone burial chambers guarded by skeletons, flesh golems, demiliches and an avatar of Larloch. The Scroll of Karsus lies in the central hall.</LP_LarlochCrypt.description>
+  <!-- 正在闯入{0}。 -->
+  <LP_LarlochCrypt.approachingReportString>Breaking into {0}.</LP_LarlochCrypt.approachingReportString>
+  <!-- 闯入{0} -->
+  <LP_LarlochCrypt.approachOrderString>break into {0}</LP_LarlochCrypt.approachOrderString>
+  <!-- 这里是拉洛克的古墓。卡苏斯之卷就在中央大厅的架子上。 -->
+  <LP_LarlochCrypt.arrivedLetter>This is Larloch's tomb. The Scroll of Karsus is on the shelf in the central hall.</LP_LarlochCrypt.arrivedLetter>
+  <!-- 沉没的耐瑟浮城残骸 -->
+  <LP_NetherilWreck.label>wreck of a sunken Netherese flying city</LP_NetherilWreck.label>
+  <!-- 一块耐瑟瑞尔浮城的残骸从地底浮了出来，卡苏斯之卷就落在里面。有人抢先占住了这里。 -->
+  <LP_NetherilWreck.description>A wreck of a Netherese flying city has risen from underground, and the Scroll of Karsus fell inside. Someone got here first.</LP_NetherilWreck.description>
+  <!-- 正在进攻{0}。 -->
+  <LP_NetherilWreck.approachingReportString>Attacking {0}.</LP_NetherilWreck.approachingReportString>
+  <!-- 进攻{0} -->
+  <LP_NetherilWreck.approachOrderString>attack {0}</LP_NetherilWreck.approachOrderString>
+  <!-- 这里是沉没的耐瑟浮城残骸，卡苏斯之卷就在残骸中央。 -->
+  <LP_NetherilWreck.arrivedLetter>This is the wreck of a sunken Netherese flying city; the Scroll of Karsus is in the middle of the wreck.</LP_NetherilWreck.arrivedLetter>
+</LanguageData>

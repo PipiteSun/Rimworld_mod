@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 九霄坠击 -->
+  <LP_SkyFallFlyer.label>ninefold heaven strike</LP_SkyFallFlyer.label>
+  <!-- 力场发生器 -->
+  <LP_ArcaneForceField.label>force field generator</LP_ArcaneForceField.label>
+  <!-- 器械师拼起来的符文力场柱：子弹能出去，进不来。一天后符文烧尽、自行崩解。 -->
+  <LP_ArcaneForceField.description>A rune force pillar pieced together by an artificer: bullets can go out but not come in. After a day the runes burn out and it collapses on its own.</LP_ArcaneForceField.description>
+  <!-- 崩解倒计时 -->
+  <LP_ArcaneForceField.comps.CompDestroyAfterDelay.countdownLabel>collapse countdown</LP_ArcaneForceField.comps.CompDestroyAfterDelay.countdownLabel>
+</LanguageData>

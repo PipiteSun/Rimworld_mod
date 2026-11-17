@@ -1,0 +1,176 @@
+s02864	skeleton servant seed
+s02865	A flesh golem made by necromantic ritual and commanded by the phylactery's owner.
+s02866	flesh golem
+s02867	A complete natural arm taken from a fresh humanlike corpse and sealed, used to grow knowledge undead with the matching specialty. Cannot be implanted in the living.
+s02868	soul-sealed arm
+s02869	A complete natural brain taken from a fresh humanlike corpse and sealed, used to grow knowledge undead with the matching specialty. Cannot be implanted in the living.
+s02870	soul-sealed brain
+s02871	A complete natural eye taken from a fresh humanlike corpse and sealed, used to grow knowledge undead with the matching specialty. Cannot be implanted in the living.
+s02872	soul-sealed eye
+s02873	A complete natural heart taken from a fresh humanlike corpse and sealed, used to grow knowledge undead with the matching specialty. Cannot be implanted in the living.
+s02874	soul-sealed heart
+s02875	A knowledge undead made by necromantic ritual and commanded by the phylactery's owner.
+s02876	knowledge undead
+s02877	A skeleton servant made by necromantic ritual and commanded by the phylactery's owner.
+s02878	skeleton servant
+s02879	This mod's monsters, beasts, legendary beasts and true dragons as recorded by the colony: the more you kill, the more you know.
+s02880	bestiary
+s02881	A 3×3 necromantic ritual workbench. Add a lich ritual bill and the assigned pawn performs the transformation. Other bills serve the phylactery within 12 cells selected with the button.
+s02882	necromantic ritual table
+s02883	A creation under a lich's command. Goes dormant when it loses its master or command capacity is insufficient.
+s02884	An undead body sustained by psyfocus. The phylactery preserves the soul and original genes; needs no food, sleep or recreation, doesn't bleed, cannot heal naturally. Repairs and reshapes the body with psyfocus.
+s02885	lich body
+s02886	The lich archite gene. Psychic sensitivity +25%, biological aging stops. After completing the necromantic ritual, gains phylactery binding, psyfocus repair and necromantic command. The ritual automatically adds this xenogene and keeps all endogenes and xenogenes from before the transformation, without clearing or replacing the original genes.
+s02887	lich soul core
+s02888	Each stack adds 20% to that part's max health and 12% part efficiency, taking up 5 points of max psyfocus. Only supports the head, torso, spine, arms, legs and major organs (brain, heart, lungs, liver, kidneys, stomach, eyes, ears); small parts like fingers can't be enhanced. At most 5 stacks per part; the enhancement disappears if the part is lost.
+s02889	soul reinforcement
+s02890	The lich's soul vessel. Can be carried and stored, and must be protected from destruction. Raw meat sacrifices raise its level; when the owner has an undead body, it automatically revives them 3 days after death. Keep it within 12 cells of the table for bills to serve it.
+s02891	phylactery
+s02892	{PAWN_nameDef} is hooked on the feeling of magic flowing through the body.\n\n- More than 5 days without using a magic potion or magic scroll: mood -6 "arcane craving"\n- Using a magic potion or magic scroll: mood +4 for 2 days
+s02893	arcane addict
+s02894	personality trait
+s02895	{PAWN_nameDef} is especially sensitive to the flow of the Weave.\n\n- With VPE: wizard path XP +25% (takes the higher of this and other XP bonuses), neural heat cost -10%\n- Without VPE: psychic sensitivity +10%\n- Never appears together with Wild Magic
+s02896	<color=#7FBF6A>Arcane Gift</color>
+s02897	Lycanthropy flares up, transforming into a bear: melee damage ×2, move speed +1, heals 10 injury per hour; damage from non-silver, non-magic weapons halved.
+s02898	Lycanthropy flares up, transforming into a tiger: melee damage ×2, move speed +1, heals 10 injury per hour; damage from non-silver, non-magic weapons halved.
+s02899	tiger form
+s02900	Lycanthropy flares up, transforming into a wolf: melee damage ×2, move speed +1, heals 10 injury per hour; damage from non-silver, non-magic weapons halved.
+s02901	wolf form
+s02902	Haven't touched a magic potion or scroll for days. I miss that feeling.
+s02903	arcane craving
+s02904	Magic flowing through the whole body; it feels so good.
+s02905	arcane nourished
+s02906	A lycanthrope who has tamed the wildness can transform voluntarily for 6 hours without losing control. Once per day.
+s02907	shift into beast
+s02908	The treasure is right there waiting for me!
+s02909	call of adventure
+s02910	What we did to that person... I can't sleep.
+s02911	guilty conscience
+s02912	The colony has all kinds of people. So lively.
+s02913	many peoples together
+s02914	With a lich holding the fort, nobody dares touch us.
+s02915	dark protection
+s02916	There's a dragon nearby. My hands won't stop shaking.
+s02917	dragon's dread
+s02918	The colony's dragon is dead. I couldn't protect {PAWN_objective}.
+s02919	fall of the dragon
+s02920	The colony has a dragonblood. Serving a dragon's bloodline; my ancestors would be proud.
+s02921	serving the dragonblood
+s02922	dragonslayer's oath
+s02923	That dragon has fallen. My oath is fulfilled.
+s02924	slew the dragon
+s02925	the forsaken queen
+s02926	That person kept muttering something just now. It sent chills down my spine.
+s02927	far-realm whispers
+s02928	There's a mind flayer nearby. I can smell the colony again.
+s02929	memories of the colony
+s02930	giant's servant
+s02931	giant slayer
+s02932	nemesis of the colony
+s02933	I helped someone who needed help.
+s02934	good deed
+s02935	The colony has a lich. Serving an undying one is my honor.
+s02936	serving the undying
+s02937	spellcaster
+s02938	I beat the enemy down, but spared {PAWN_possessive} life.
+s02939	showed mercy
+s02940	No fixed time to work or sleep. This can't go on.
+s02941	no order at all
+s02942	Someone is in charge of the colony and the rules hold.
+s02943	well-ordered
+s02944	Wind on my face, earth under my feet. This is living.
+s02945	between earth and sky
+s02946	Pour far-realm whispers into others' minds: enemies in a 5-cell cone ahead are stunned for 2 seconds and take 15 psychic damage. 3 per day (restored 1 day after being used up).
+s02947	psychic jolt
+s02948	same kind
+s02949	other kind
+s02950	Most of the colony are my own people. That's reassuring.
+s02951	my people in charge
+s02952	The colony is full of outsiders.
+s02953	surrounded by strangers
+s02954	Being ordered around in a draft nonstop; I can't take it anymore.
+s02955	restrained
+s02956	revenant body
+s02957	A surge of wild magic: move speed +50%.
+s02958	surging stride
+s02959	I swore to give the dead rest, and now I live with them.
+s02960	living with the undead
+s02961	The forcibly awakened dead walk among the colony. This isn't right.
+s02962	blasphemous creations
+s02963	Someone cast a spell on me. I don't like it, even if it was "for my own good".
+s02964	ensorcelled
+s02965	Records the revenant's killer and the timers of lycanthropy and the far-realm touch (hidden).
+s02966	personality trait record
+s02967	{PAWN_nameDef}'s ancestors have served dragons for generations.\n\n- The colony has a dragonblood colonist: mood +4\n- Move speed +30% when hauling things into a dragonblood's hoard\n- Never hauls things out of a dragon hoard\n- The colony's dragon dies: mood -15\n- Kobolds are ×5 as likely to get this trait; dragonbloods never get it
+s02968	dragon's retainer
+s02969	As a child {PAWN_nameDef} saw a dragon burn down a whole village.\n\n- A dragon on the map: mood -6 "dragon's dread"\n- With a dragon within 10 cells, a 10% chance every few seconds to turn and flee\n- Dragonbloods and chromatic true dragons never get this trait
+s02970	dragon-fearing
+s02971	{PAWN_nameDef} swore to personally slay a dragon in this lifetime.\n\n- +20% damage against dragons (up to +60% combined with other type damage bonuses)\n- Killing a dragon: mood +10 for 10 days\n- Opinion -10 of the colony's dragonbloods\n- Dragonbloods never get this trait
+s02972	<color=#7FBF6A>Dragonslayer</color>
+s02973	Something from beyond the stars touched {PAWN_nameDef}'s mind and left a crack.\n\n- Psychic sensitivity +40%, max neural heat +20\n- Ability "Psychic jolt": enemies in a 5-cell cone ahead are stunned for 2 seconds and take 15 psychic damage, 3 per day\n- Gives an early warning when hostile mind flayers appear on the map\n- Cost: "far-realm whispers" every 5-8 days: a 2-hour trance, people within 6 cells get mood -2; mental break threshold +5%\n- Ways to catch it: knocked out by a psychic blast (5%), the "escape the colony" start (5%), gaining Netherese insight (1%); all require having no power trait yet
+s02974	<color=#D05050>Far-Realm Touch</color>
+s02975	cursed power
+s02976	{PAWN_nameDef} grew up in a giant's mansion and only feels secure next to big folk.\n\n- Working within 3 cells of a colonist with body size 1.5+: global work speed +10%\n- Opinion +15 of colonists with body size 1.5+
+s02977	{PAWN_nameDef} has specifically learned how to deal with things three times their height.\n\n- +20% melee damage against targets with body size 1.5+ (up to +60% combined with other type damage bonuses)\n- +10% dodge against melee attacks from enemies with body size 1.5+\n- Opinion -10 of giants\n- Giant races never get this trait
+s02978	<color=#7FBF6A>Giant Slayer</color>
+s02979	{PAWN_nameDef} has turned away from the lich-queen Vlaakith.\n\n- No longer happy to see the colony's lich (replaces the githyanki's original lich mood)\n- Opinion -10 of liches\n- Only appears on githyanki
+s02980	gith exile
+s02981	{PAWN_nameDef} escaped a mind flayer colony alive.\n\n- Mind resistance +50%\n- Mind flayers on the map: mood -4\n- Opinion +10 of githyanki\n- Always present on the human captive of the "escape the colony" start\n- Mind flayers and half-illithids never get this trait
+s02982	<color=#7FBF6A>Colony Survivor</color>
+s02983	A wolf lives in {PAWN_nameDef}'s blood.\n\n- Every 10-15 days, or when health drops below 30%, forcibly transforms into wolf form for 6 hours: melee damage ×2, move speed +1, heals 10 injury per hour; damage from non-silver, non-magic weapons -50% (spells and divine magic not reduced)\n- While transformed, berserkly lunges at the nearest enemy; with no enemies nearby, a 10% chance to attack colonists and livestock\n- From adventurer level 10, "Tame the wildness": no more forced transformation or loss of control, and can transform voluntarily once a day\n- Biting others while transformed has a 5% chance to infect them (not if they already have a power trait)
+s02984	<color=#D05050>Lycanthropy: Wolf</color>
+s02985	A bear lives in {PAWN_nameDef}'s blood.\n\n- Every 10-15 days, or when health drops below 30%, forcibly transforms into bear form for 6 hours: melee damage ×2, move speed +1, heals 10 injury per hour; damage from non-silver, non-magic weapons -50% (spells and divine magic not reduced)\n- While transformed, berserkly lunges at the nearest enemy; with no enemies nearby, a 10% chance to attack colonists and livestock\n- From adventurer level 10, "Tame the wildness": no more forced transformation or loss of control, and can transform voluntarily once a day\n- Biting others while transformed has a 5% chance to infect them (not if they already have a power trait)
+s02986	<color=#D05050>Lycanthropy: Bear</color>
+s02987	A tiger lives in {PAWN_nameDef}'s blood.\n\n- Every 10-15 days, or when health drops below 30%, forcibly transforms into tiger form for 6 hours: melee damage ×2, move speed +1, heals 10 injury per hour; damage from non-silver, non-magic weapons -50% (spells and divine magic not reduced)\n- While transformed, berserkly lunges at the nearest enemy; with no enemies nearby, a 10% chance to attack colonists and livestock\n- From adventurer level 10, "Tame the wildness": no more forced transformation or loss of control, and can transform voluntarily once a day\n- Biting others while transformed has a 5% chance to infect them (not if they already have a power trait)
+s02988	<color=#D05050>Lycanthropy: Tiger</color>
+s02989	{PAWN_nameDef} doesn't trust anyone who can cast spells.\n\n- Opinion -10 of psychically gifted people and spellcasters\n- Receiving a buff spell from someone: mood -3\n- Damage taken from enemy spells -10%
+s02990	magic-fearing
+s02991	{PAWN_nameDef} is kind-hearted and can't bear to see others suffer.\n\n- Rescuing downed people, tending prisoners: mood +2 "good deed"\n- Downing an enemy with a nonlethal weapon (sparing their life): mood +2 "showed mercy"\n- On top of the bad mood from executions and organ harvesting, another -5 "guilty conscience"\n- The colony has necromantic constructs: mood -2\n- With VPE, cleric path holy damage +15%\n- Never appears together with psychopath, bloodlust or lich devotee; lost upon becoming a lich
+s02992	benevolent
+s02993	{PAWN_nameDef} only cares about what they want; others' suffering means nothing.\n\n- Executions, organ harvesting and enslavement don't worsen {PAWN_objective}'s mood\n- Slave suppression effect +20%\n- The colony has a lich: mood +2 "dark protection"\n- Never appears together with benevolent or undead hunter
+s02994	evil
+s02995	{PAWN_nameDef} is more at ease in the woods than indoors.\n\n- Outdoors: mood +2\n- Taming and training animals success +15%\n- With VPE: druid path XP +25% (takes the higher of this and other XP bonuses)
+s02996	<color=#7FBF6A>Child of Nature</color>
+s02997	{PAWN_nameDef} believes in rules, order and keeping one's word.\n\n- Global work speed +5% during "work" hours on the schedule\n- Never has fire-starting, wandering or running-away mental breaks\n- The colony has a leader or title holder: mood +3 "well-ordered"\n- Own schedule is all "anything": mood -3 "no order at all"
+s02998	lawful
+s02999	{PAWN_nameDef} hates being controlled and does whatever comes to mind.\n\n- Inspiration chance ×1.5\n- Drafted continuously for more than 6 hours: mood -4 "restrained"
+s03000	chaotic
+s03001	{PAWN_nameDef} was once lost between two planes for a long time.\n\n- Beasts crawling out of planar rifts won't attack {PAWN_objective} on their own\n- Falls into a 1-hour trance every 10-15 days\n- Teleport-type ability cooldowns -20%
+s03002	planar dislocation
+s03003	{PAWN_nameDef} has been to many places and gets along with every race.\n\n- Unaffected by negative moods from racial relations\n- Mood +1 for each additional race in the colony (up to +4)
+s03004	citizen of the world
+s03005	{PAWN_nameDef} thinks only their own race can be trusted.\n\n- Opinion +10 of the same race, -10 of other races\n- Own race is the colony majority: mood +3, otherwise -3
+s03006	pureblood supremacist
+s03007	{PAWN_nameDef}'s blood feud has been avenged, and the revenant finally rests.\n\n- +15% damage against the former killer's faction (up to +60% combined with other type damage bonuses)\n- No longer revives after death
+s03008	<color=#7FBF6A>Soul at Rest</color>
+s03009	{PAWN_nameDef} swore a blood oath: whoever killed {PAWN_objective} won't get away, not a single one.\n\n- When killed by someone from a hostile faction and the killer is still alive: revives at the corpse after 12 hours (fully healed, with "revenant body"); can't revive if the corpse is burned or gone. Cooldown 60 days after reviving\n- +30% damage against the killer's faction (up to +60% combined with other type damage bonuses)\n- The killer can't turn invisible while on the same map as {PAWN_objective}\n- Personally killing the killer: gains 50% of the XP needed for the next level at once, and the trait becomes "Soul at Rest"\n\n"Revenant body": healing received -50%, natural healing -30%, never starves but gets no good mood from eating; colonists' opinion of {PAWN_objective} -10 (another -5 for the benevolent).
+s03010	<color=#D05050>Revenant</color>
+s03011	A body that crawled back from the grave: healing received -50%, natural healing -30%, never hungry, but can't taste food either. Unsettling to others.
+s03012	{PAWN_nameDef} was born to read a battlefield.\n\n- While drafted, allies within 4 cells get +5% melee and shooting hit (multiple tacticians don't stack)\n- With VPE: fighter path XP +25% (takes the higher of this and XP bonuses from backstories, Child of the Weave etc., no stacking)
+s03013	<color=#7FBF6A>Tactician</color>
+s03014	{PAWN_nameDef} can't take their eyes off gears.\n\n- Building repair speed +20%\n- Firearm shooting cooldown -5%
+s03015	<color=#7FBF6A>Gearhead</color>
+s03016	{PAWN_nameDef} can't sit still at the word "treasure".\n\n- Wizard tower crash, entering a mythal dungeon: mood +5 "call of adventure"\n- Deconstructing ancient ruins yields 20% more material\n- With a treasure hunter in a mythal dungeon, the dungeon's treasure has a 10% chance of one extra item
+s03017	<color=#7FBF6A>Treasure Hunter</color>
+s03018	{PAWN_nameDef} believes undying liches are the true masters of this world.\n\n- The colony has a lich: mood +4
+s03019	lich devotee
+s03020	{PAWN_nameDef} has spent a lifetime laying the dead to rest.\n\n- +20% damage against undead (up to +60% combined with other type damage bonuses)\n- The colony has a lich or necromantic constructs: mood -6\n- Liches and undead races never get this trait
+s03021	<color=#7FBF6A>Undead Hunter</color>
+s03022	The magic in {PAWN_nameDef} never quite behaves.\n\n- With VPE: each ability cast has a 5% chance to trigger a wild magic surge; spell damage +10%\n- Without VPE: one small random surge per day\n- 12 surges in total: invisible for 10 seconds, flowers grow underfoot, small fireballs fall on enemies' heads, the whole team heals 5, summon a friendly chicken, neural heat cleared, move speed +50% for 1 hour, gain an inspiration, nearby enemies stunned for 2 seconds; or a small fire on yourself, skin turns green for 1 day, zone out in place for 5 seconds. None are lethal\n- Never appears together with Arcane Gift or magic-fearing
+s03023	<color=#7FBF6A>Wild Magic</color>
+s03024	absorb inherited memory
+s03025	A jar of psionic brine drawn from an elder brain, sealing the memories of one devoured victim. A mind flayer who uses it inherits 80% of its skill XP.
+s03026	brine jar
+s03027	elder brain nutrients
+s03028	nutrients
+s03029	The elder brain is starving
+s03030	A huge brain floating in psionic brine, the mental core of a mind flayer colony. After building it, place a mind flayer corpse next to it to awaken it.\n\nEvery humanlike brain devoured by the colony's mind flayers on the same map flows into the elder brain: at 1/4/10/20/35 brains in total it reaches levels 1-5. The elder brain periodically produces mind flayer tadpoles (one every 5 days at level 1, one per day at level 5) and keeps the "inherited memories" of the last 5 victims, which can be bottled into brine jars to let a mind flayer inherit 80% of their XP.\n\nThe elder brain must be fed with herbal medicine or food (raw meat, meals); without food it stops producing and loses one memory for each day it starves. When the elder brain is destroyed, all mind flayers are badly hurt.
+s03031	elder brain
+s03032	A gentle yet enormous voice echoes in the mind, calling you to come to it.
+s03033	call of the elder brain
+s03034	The core of the hivemind has been destroyed. My mind feels hollow, as if half of it was cut away.
+s03035	elder brain destroyed
+s03036	The elder brain's hunger carries through the hivemind, and I feel sick too.
+s03037	Consciousness crushed by powerful psychic force, collapsed on the ground unable to move.
+s03038	psychic daze
+s03039	read adventure journal

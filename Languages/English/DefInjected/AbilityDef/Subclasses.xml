@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 野性直觉 -->
+  <LP_FeralInstinct.label>feral instinct</LP_FeralInstinct.label>
+  <!-- 被动：不会被偷袭、暗杀或伏击（偷袭、暗杀、隐匿伏击、刺杀的“没察觉”加成都对你无效）。袭击到来时抢先行动：15 秒内移动 ×1.3、瞄准时间 ×0.5、近战冷却 ×0.8。野蛮人 7 级（通用）。 -->
+  <LP_FeralInstinct.description>Passive: can't be ambushed, assassinated or caught by surprise (the "unaware" bonuses of sneak attack, assassinate, hide in plain sight and assassination strikes don't work on you). When a raid arrives, act first: for 15 seconds movement ×1.3, aiming time ×0.5, melee cooldown ×0.8. Barbarian level 7 (general).</LP_FeralInstinct.description>
+  <!-- 狂暴冲撞 -->
+  <LP_RecklessCharge.label>rampaging charge</LP_RecklessCharge.label>
+  <!-- 冲到 8 格内的一个空格，路线上的敌人受 5 × 狂怒强度 钝器伤害并被撞倒 2 秒。消耗 1 点怒气。冷却 20 秒。野蛮人 11 级（通用）。 -->
+  <LP_RecklessCharge.description>Charge to an empty cell within 8 cells; enemies along the way take 5 × rage power blunt damage and are knocked down for 2 seconds. Costs 1 rage. Cooldown 20 seconds. Barbarian level 11 (general).</LP_RecklessCharge.description>
+  <!-- 狂乱 -->
+  <LP_Frenzy.label>frenzy</LP_Frenzy.label>
+  <!-- 被动：狂暴中每秒对正在近战的相邻敌人多结算一次普通攻击。代价：狂暴结束后疲惫 1 小时（移动 ×0.8、近战冷却 ×1.2）。狂战士之道，野蛮人 3 级。 -->
+  <LP_Frenzy.description>Passive: while raging, resolve an extra normal attack every second against an adjacent enemy you're fighting in melee. Cost: exhausted for 1 hour after the rage ends (movement ×0.8, melee cooldown ×1.2). Path of the Berserker, barbarian level 3.</LP_Frenzy.description>
+  <!-- 无脑狂怒 -->
+  <LP_MindlessRage.label>mindless rage</LP_MindlessRage.label>
+  <!-- 被动：狂暴中免疫恐惧、魅惑和精神崩溃（狂暴开始时已有的震慑、恐惧也会消失）。狂战士之道，野蛮人 7 级。 -->
+  <LP_MindlessRage.description>Passive: while raging, immune to fear, charm and mental breaks (shaken and fear present when the rage starts also disappear). Path of the Berserker, barbarian level 7.</LP_MindlessRage.description>
+  <!-- 威吓凝视 -->
+  <LP_IntimidatingPresence.label>intimidating presence</LP_IntimidatingPresence.label>
+  <!-- 瞪住 10 格内一个敌人，让它吓得逃跑 10 秒（机械体等不会逃的只被震慑）。抵抗成功率 = 10% + 2% × 目标等级（最多 50%），首领、传奇 50%。不耗怒气。冷却 1 小时。狂战士之道，野蛮人 11 级。 -->
+  <LP_IntimidatingPresence.description>Glare at an enemy within 10 cells, scaring it into fleeing for 10 seconds (mechanoids and others that can't flee are only shaken). Resist chance = 10% + 2% × target level (up to 50%), 50% for bosses and legendaries. No rage cost. Cooldown 1 hour. Path of the Berserker, barbarian level 11.</LP_IntimidatingPresence.description>
+  <!-- 报复 -->
+  <LP_Retaliation.label>retaliation</LP_Retaliation.label>
+  <!-- 被动：被敌人近战打中时立刻反击一次（每秒最多一次）。狂战士之道，野蛮人 15 级。 -->
+  <LP_Retaliation.description>Passive: counterattack once immediately when hit by an enemy in melee (at most once per second). Path of the Berserker, barbarian level 15.</LP_Retaliation.description>
+  <!-- 图腾之灵 -->
+  <LP_TotemSpiritRage.label>totem spirit</LP_TotemSpiritRage.label>
+  <!-- 被动，看图腾：熊 狂暴中除心灵伤害外所有伤害 ×0.5（取代狂暴的 ×0.7）；鹰 狂暴中远程攻击命中你 ×0.7、移动 ×1.2；狼 狂暴中 5 格内的友军近战命中 +15%。图腾勇士之道，野蛮人 3 级。 -->
+  <LP_TotemSpiritRage.description>Passive, by totem: bear, while raging all damage except psychic ×0.5 (replacing rage's ×0.7); eagle, while raging ranged hits against you ×0.7, movement ×1.2; wolf, while raging allies within 5 cells get melee hit +15%. Path of the Totem Warrior, barbarian level 3.</LP_TotemSpiritRage.description>
+  <!-- 兽之面相 -->
+  <LP_AspectOfBeast.label>aspect of the beast</LP_AspectOfBeast.label>
+  <!-- 被动，看图腾：熊 负重 ×2；鹰 远程武器射程 +3、射击精度略升；狼 移动 ×1.1，40 格内正在逃跑的敌人被追踪（移动 ×0.8）。图腾勇士之道，野蛮人 7 级。 -->
+  <LP_AspectOfBeast.description>Passive, by totem: bear, carry capacity ×2; eagle, ranged weapon range +3 and slightly better shooting accuracy; wolf, movement ×1.1, and fleeing enemies within 40 cells are tracked (movement ×0.8). Path of the Totem Warrior, barbarian level 7.</LP_AspectOfBeast.description>
+  <!-- 灵魂行者 -->
+  <LP_SpiritWalker.label>spirit walker</LP_SpiritWalker.label>
+  <!-- 召来图腾兽的灵体助战 60 秒：熊 一只灰熊；鹰 两只鹰灵（原版没有鹰，用食火鸡的样子）；狼 两只森林狼（狂怒强度 125% 以上三只）。冷却 2 小时。图腾勇士之道，野蛮人 11 级。 -->
+  <LP_SpiritWalker.description>Summon spirits of your totem animal to fight for 60 seconds: bear, a grizzly; eagle, two eagle spirits (vanilla has no eagles, so they look like cassowaries); wolf, two timber wolves (three at rage power 125%+). Cooldown 2 hours. Path of the Totem Warrior, barbarian level 11.</LP_SpiritWalker.description>
+  <!-- 图腾调和 -->
+  <LP_TotemAttunement.label>totemic attunement</LP_TotemAttunement.label>
+  <!-- 看图腾：熊 嘲讽 8 格内的敌人 10 秒（它们只想打你）；鹰 狂暴中滑翔到 10 格内的一个空格；狼 20 秒内近战命中把体型不超过 2 的目标撞倒 2 秒。熊和狼点任意位置即可。冷却 20 秒。图腾勇士之道，野蛮人 15 级。 -->
+  <LP_TotemAttunement.description>By totem: bear, taunt enemies within 8 cells for 10 seconds (they only want to hit you); eagle, glide to an empty cell within 10 cells while raging; wolf, for 20 seconds melee hits knock targets of body size up to 2 down for 2 seconds. For bear and wolf, click any location. Cooldown 20 seconds. Path of the Totem Warrior, barbarian level 15.</LP_TotemAttunement.description>
+  <!-- 风暴光环 -->
+  <LP_StormAura.label>storm aura</LP_StormAura.label>
+  <!-- 被动：狂暴中每秒对半径 3 内的敌人造成 (1.5 + 0.1 × 野蛮人等级) × 狂怒强度 的元素伤害（沙漠 灼烧、海洋 闪电（机械体 EMP）、冻原 冰霜）。风暴先驱之道，野蛮人 3 级。 -->
+  <LP_StormAura.description>Passive: while raging, every second enemies within radius 3 take (1.5 + 0.1 × barbarian level) × rage power elemental damage (desert burn, sea lightning (EMP for mechanoids), tundra frost). Path of the Storm Herald, barbarian level 3.</LP_StormAura.description>
+  <!-- 风暴之魂 -->
+  <LP_StormSoul.label>storm soul</LP_StormSoul.label>
+  <!-- 被动：所选元素的伤害 ×0.5；沙漠 舒适温度上限 +40℃，海洋 两头各 ±20℃，冻原 舒适温度下限 −40℃。风暴先驱之道，野蛮人 7 级。 -->
+  <LP_StormSoul.description>Passive: damage of the chosen element ×0.5; desert, max comfortable temperature +40°C; sea, ±20°C at both ends; tundra, min comfortable temperature -40°C. Path of the Storm Herald, barbarian level 7.</LP_StormSoul.description>
+  <!-- 庇护风暴 -->
+  <LP_ShieldingStorm.label>shielding storm</LP_ShieldingStorm.label>
+  <!-- 被动：风暴光环里的同阵营友军得到一半的风暴之魂（所选元素伤害 ×0.75，舒适温度放宽一半）。风暴先驱之道，野蛮人 11 级。 -->
+  <LP_ShieldingStorm.description>Passive: allies of your side in the storm aura get half of the storm soul (chosen element damage ×0.75, comfortable temperature widened by half). Path of the Storm Herald, barbarian level 11.</LP_ShieldingStorm.description>
+  <!-- 狂暴风暴 -->
+  <LP_RagingStorm.label>raging storm</LP_RagingStorm.label>
+  <!-- 被动：风暴光环伤害 ×2、半径 5；每次伤害有 25% 的成功率附加效果（沙漠 点燃，海洋 击晕 1 秒，冻原 减速 2 秒）。风暴先驱之道，野蛮人 15 级。 -->
+  <LP_RagingStorm.description>Passive: storm aura damage ×2, radius 5; each hit has a 25% chance of an added effect (desert ignites, sea stuns 1 second, tundra slows 2 seconds). Path of the Storm Herald, barbarian level 15.</LP_RagingStorm.description>
+  <!-- 反射闪避 -->
+  <LP_RogueEvasion.label>evasion</LP_RogueEvasion.label>
+  <!-- 被动：爆炸、范围伤害 ×0.5。游荡者 7 级（通用）。 -->
+  <LP_RogueEvasion.description>Passive: explosion and area damage ×0.5. Rogue level 7 (general).</LP_RogueEvasion.description>
+  <!-- 稳固目标 -->
+  <LP_SteadyTarget.label>steady target</LP_SteadyTarget.label>
+  <!-- 站定瞄准 2 秒：之后 30 秒内的下一次攻击必定命中，并且满足偷袭条件。不耗资源。冷却 15 秒。游荡者 11 级（通用）。 -->
+  <LP_SteadyTarget.description>Stand and aim for 2 seconds: the next attack within 30 seconds always hits and meets sneak attack conditions. No resource cost. Cooldown 15 seconds. Rogue level 11 (general).</LP_SteadyTarget.description>
+  <!-- 暗杀 -->
+  <LP_AssassinsOpening.label>assassinate</LP_AssassinsOpening.label>
+  <!-- 被动：对还没进入战斗的敌人（没有攻击目标、10 秒内没受过伤也没出过手）的第一下必定重击（×2）并必定偷袭。刺客，游荡者 3 级。 -->
+  <LP_AssassinsOpening.description>Passive: the first hit against an enemy not yet in combat (no attack target, not hurt and not attacking within 10 seconds) is always a critical (×2) and always a sneak attack. Assassin, rogue level 3.</LP_AssassinsOpening.description>
+  <!-- 伪装身份 -->
+  <LP_Impostor.label>infiltration expertise</LP_Impostor.label>
+  <!-- 被动：精于伪装，暗影潜行的隐形时间 ×2。刺客，游荡者 7 级。 -->
+  <LP_Impostor.description>Passive: a master of disguise; Shadow Step invisibility lasts ×2. Assassin, rogue level 7.</LP_Impostor.description>
+  <!-- 致命一击 -->
+  <LP_DeadlyStrike.label>deadly strike</LP_DeadlyStrike.label>
+  <!-- 被动：对倒地、睡着、被击晕、被缠绕、魔法睡眠或处于精神状态（逃跑、被魅惑等）的目标，偷袭这一下伤害再 ×1.5。刺客，游荡者 11 级。 -->
+  <LP_DeadlyStrike.description>Passive: against targets that are downed, asleep, stunned, entangled, in magical sleep or in a mental state (fleeing, charmed, etc.), sneak attacks deal another ×1.5 damage. Assassin, rogue level 11.</LP_DeadlyStrike.description>
+  <!-- 死亡之击 -->
+  <LP_DeathStrike.label>death strike</LP_DeathStrike.label>
+  <!-- 对相邻敌人一击，伤害 ×3（偷袭照常叠加）；目标没倒下时，抵抗失败就直接倒地。抵抗成功率 = 10% + 2% × 目标等级（最多 50%），首领、传奇 50%。冷却 6 小时。刺客，游荡者 15 级。 -->
+  <LP_DeathStrike.description>Strike an adjacent enemy for ×3 damage (sneak attack stacks as usual); if the target doesn't fall, it's downed outright unless it resists. Resist chance = 10% + 2% × target level (up to 50%), 50% for bosses and legendaries. Cooldown 6 hours. Assassin, rogue level 15.</LP_DeathStrike.description>
+  <!-- 快手·顺手牵羊 -->
+  <LP_FastHands.label>fast hands: pickpocket</LP_FastHands.label>
+  <!-- 从相邻敌人身上摸走一样随身物品（优先药品，否则最值钱的一件），放进自己的背包。冷却 10 秒。盗贼，游荡者 3 级。 -->
+  <LP_FastHands.description>Pick one carried item from an adjacent enemy (medicine first, otherwise the most valuable piece) and put it in your pack. Cooldown 10 seconds. Thief, rogue level 3.</LP_FastHands.description>
+  <!-- 飞檐走壁 -->
+  <LP_SecondStoryWork.label>second-story work</LP_SecondStoryWork.label>
+  <!-- 被动：地形、积雪和植物带来的移动减速全免（比野外穿行更强），移动 ×1.15。盗贼，游荡者 7 级。 -->
+  <LP_SecondStoryWork.description>Passive: completely immune to movement slowdown from terrain, snow and plants (stronger than land's stride), movement ×1.15. Thief, rogue level 7.</LP_SecondStoryWork.description>
+  <!-- 寻宝直觉 -->
+  <LP_TreasureSense.label>treasure instinct</LP_TreasureSense.label>
+  <!-- 被动：迷锁地牢的宝藏室和守卫奖励各多一件（治疗药水）。盗贼，游荡者 11 级。 -->
+  <LP_TreasureSense.description>Passive: mythal dungeon treasure rooms and guardian rewards each give one extra item (a healing potion). Thief, rogue level 11.</LP_TreasureSense.description>
+  <!-- 盗贼反射 -->
+  <LP_ThiefReflexes.label>thief's reflexes</LP_ThiefReflexes.label>
+  <!-- 被动：每场战斗（1 小时没有攻防之后算新的一场）开始的 10 秒内，近战冷却、射击冷却 ×0.5。盗贼，游荡者 15 级。 -->
+  <LP_ThiefReflexes.description>Passive: for the first 10 seconds of each fight (a new fight starts after an hour without attacking or being attacked), melee and shooting cooldowns ×0.5. Thief, rogue level 15.</LP_ThiefReflexes.description>
+  <!-- 法师之手 -->
+  <LP_MageHand.label>mage hand</LP_MageHand.label>
+  <!-- 一只看不见的手：把 10 格内的一件物品拿到自己身边，或者打开一扇门。不耗法力。冷却 5 秒。诡术师，游荡者 3 级。 -->
+  <LP_MageHand.description>An invisible hand: bring an item within 10 cells to your side, or open a door. No mana cost. Cooldown 5 seconds. Arcane Trickster, rogue level 3.</LP_MageHand.description>
+  <!-- 魔能飞弹（诡术师） -->
+  <LP_ATMagicMissile.label>magic missile (arcane trickster)</LP_ATMagicMissile.label>
+  <!-- 射出 3 发奥术飞弹，每发 4 × 诡术强度 点奥术力伤害，28 格。消耗 1 点法力。诡术师，游荡者 3 级。 -->
+  <LP_ATMagicMissile.description>Fire 3 arcane missiles, each 4 × cunning power arcane force damage, 28 cells. Costs 1 mana. Arcane Trickster, rogue level 3.</LP_ATMagicMissile.description>
+  <!-- 隐形术（诡术师） -->
+  <LP_ATInvisibility.label>invisibility (arcane trickster)</LP_ATInvisibility.label>
+  <!-- 隐形 20 秒 × 诡术强度，攻击后现形（隐形时出手算偷袭）。消耗 2 点法力。冷却 20 秒。诡术师，游荡者 3 级。 -->
+  <LP_ATInvisibility.description>Turn invisible for 20 seconds × cunning power, revealed after attacking (attacking while invisible counts as a sneak attack). Costs 2 mana. Cooldown 20 seconds. Arcane Trickster, rogue level 3.</LP_ATInvisibility.description>
+  <!-- 睡眠术（诡术师） -->
+  <LP_ATSleep.label>sleep (arcane trickster)</LP_ATSleep.label>
+  <!-- 让 20 格内的一个敌人陷入魔法睡眠 8 秒 × 诡术强度。对机械体、意识已低于 30% 的目标无效；心智抗性可以抵抗（魔法伏击时抵抗成功率 −20%）。消耗 1 点法力。冷却 1 分钟。诡术师，游荡者 3 级。 -->
+  <LP_ATSleep.description>Put one enemy within 20 cells into magical sleep for 8 seconds × cunning power. No effect on mechanoids or targets whose consciousness is already below 30%; mind resistance can resist it (-20% resist chance during a magical ambush). Costs 1 mana. Cooldown 1 minute. Arcane Trickster, rogue level 3.</LP_ATSleep.description>
+  <!-- 魔法伏击 -->
+  <LP_MagicalAmbush.label>magical ambush</LP_MagicalAmbush.label>
+  <!-- 被动：隐形中施放的睡眠术，目标的抵抗成功率 −20%。诡术师，游荡者 7 级。 -->
+  <LP_MagicalAmbush.description>Passive: sleep cast while invisible lowers the target's resist chance by 20%. Arcane Trickster, rogue level 7.</LP_MagicalAmbush.description>
+  <!-- 多才多艺的诡计 -->
+  <LP_VersatileTrickster.label>versatile trickster</LP_VersatileTrickster.label>
+  <!-- 用法师之手扯住 10 格内一个敌人：5 秒内它算作偷袭目标（任何人打它都满足偷袭条件）。不耗法力。冷却 15 秒。诡术师，游荡者 11 级。 -->
+  <LP_VersatileTrickster.description>Grab an enemy within 10 cells with mage hand: for 5 seconds it counts as a sneak attack target (anyone hitting it meets sneak attack conditions). No mana cost. Cooldown 15 seconds. Arcane Trickster, rogue level 11.</LP_VersatileTrickster.description>
+  <!-- 偷取法术 -->
+  <LP_SpellThief.label>spell thief</LP_SpellThief.label>
+  <!-- 被动：敌人对你施放能力（原版灵能等）时，有 35% + 心智抗性 的成功率抵抗它，并把这个法术偷过来：8 小时内你能施放一次。诡术师，游荡者 15 级。 -->
+  <LP_SpellThief.description>Passive: when an enemy casts an ability on you (vanilla psycasts, etc.), there's a 35% + mind resistance chance to resist it and steal the spell: you can cast it once within 8 hours. Arcane Trickster, rogue level 15.</LP_SpellThief.description>
+  <!-- 原野之眼 -->
+  <LP_FieldEye.label>eye of the wilds</LP_FieldEye.label>
+  <!-- 被动：同一地图上敌对的宿敌会被标出（“被发现”），第一次发现时提示。游侠 7 级（通用）。 -->
+  <LP_FieldEye.description>Passive: hostile favored enemies on the same map are marked ("spotted"), with a notice the first time. Ranger level 7 (general).</LP_FieldEye.description>
+  <!-- 荆棘陷阱 -->
+  <LP_ThornTrap.label>thorn trap</LP_ThornTrap.label>
+  <!-- 在 15 格内埋一个荆棘陷阱：敌人踩上去被缠住 5 秒（藤蔓缠绕并击晕），触发一次就散掉。每人最多 3 个，再放会拆掉最早的。冷却 10 秒。游侠 11 级（通用）。 -->
+  <LP_ThornTrap.description>Bury a thorn trap within 15 cells: an enemy stepping on it is entangled for 5 seconds (vine entangle and stun), and it falls apart after triggering once. At most 3 per person; placing another removes the oldest. Cooldown 10 seconds. Ranger level 11 (general).</LP_ThornTrap.description>
+  <!-- 猎手之选 -->
+  <LP_HuntersPrey.label>hunter's prey</LP_HuntersPrey.label>
+  <!-- 被动，选一种：巨像杀手 对已经受伤的目标伤害 ×1.25；群敌杀手 身边贴着 3 个以上敌人时，近战命中后对另一个相邻敌人再打一次（每秒一次）。猎人，游侠 3 级。 -->
+  <LP_HuntersPrey.description>Passive, choose one: colossus slayer, ×1.25 damage against already-wounded targets; horde breaker, with 3 or more enemies up close, after a melee hit strike another adjacent enemy once more (once per second). Hunter, ranger level 3.</LP_HuntersPrey.description>
+  <!-- 防御战术 -->
+  <LP_DefensiveTactics.label>defensive tactics</LP_DefensiveTactics.label>
+  <!-- 被动，选一种：多重攻击防御 同一个敌人 3 秒内第二次起打中你，伤害 ×0.5；逃脱之术 爆炸、火焰伤害 ×0.5。猎人，游侠 7 级。 -->
+  <LP_DefensiveTactics.description>Passive, choose one: multiattack defense, from the second hit by the same enemy within 3 seconds, damage ×0.5; escape the horde, explosion and fire damage ×0.5. Hunter, ranger level 7.</LP_DefensiveTactics.description>
+  <!-- 多重攻击 -->
+  <LP_MultiAttack.label>multiattack</LP_MultiAttack.label>
+  <!-- 拿远程武器时：12 格内（不超过射程）最多 8 个敌人各中一发当前武器的必中子弹；拿近战武器时：对所有相邻敌人各结算一次攻击。不耗资源。冷却 30 秒。猎人，游侠 11 级。 -->
+  <LP_MultiAttack.description>With a ranged weapon: up to 8 enemies within 12 cells (not beyond range) each take one guaranteed-hit bullet from your current weapon; with a melee weapon: resolve an attack against every adjacent enemy. No resource cost. Cooldown 30 seconds. Hunter, ranger level 11.</LP_MultiAttack.description>
+  <!-- 高级猎手防御 -->
+  <LP_SuperiorDefense.label>superior hunter's defense</LP_SuperiorDefense.label>
+  <!-- 被动：受伤后 10 秒内，再受到同一种伤害时这一下 ×0.5。猎人，游侠 15 级。 -->
+  <LP_SuperiorDefense.description>Passive: within 10 seconds after being hurt, taking the same type of damage again deals ×0.5 for that hit. Hunter, ranger level 15.</LP_SuperiorDefense.description>
+  <!-- 游侠伙伴 -->
+  <LP_RangerCompanion.label>ranger's companion</LP_RangerCompanion.label>
+  <!-- 被动：用“选择伙伴”按钮和一只殖民地动物结伴（设为主人）。伙伴的野性等级直接跟到你的冒险者等级（最多 40，不受普通主人 20 级的成长上限），对你的宿敌伤害 +20%。伙伴死了可以再选。兽王，游侠 3 级。 -->
+  <LP_RangerCompanion.description>Passive: use the "choose companion" button to bond with a colony animal (set as its master). The companion's beast level directly follows your adventurer level (up to 40, not limited by the normal master's level 20 growth cap), and it deals +20% damage against your favored enemy. If the companion dies you can choose again. Beast Master, ranger level 3.</LP_RangerCompanion.description>
+  <!-- 非凡训练 -->
+  <LP_ExceptionalTraining.label>exceptional training</LP_ExceptionalTraining.label>
+  <!-- 指挥伙伴（30 格内）：点敌人 → 伙伴扑过去把它撞倒 2 秒并咬一口；点友军（或自己）→ 伙伴守护 30 秒（伙伴在 3 格内时该友军受伤 ×0.75）；点物品 → 伙伴把它叼回你身边。伙伴的攻击算魔法武器。冷却 10 秒。兽王，游侠 7 级。 -->
+  <LP_ExceptionalTraining.description>Command your companion (within 30 cells): click an enemy → the companion lunges, knocking it down for 2 seconds with a bite; click an ally (or yourself) → companion guard for 30 seconds (that ally takes ×0.75 damage while the companion is within 3 cells); click an item → the companion fetches it back to you. The companion's attacks count as magic weapons. Cooldown 10 seconds. Beast Master, ranger level 7.</LP_ExceptionalTraining.description>
+  <!-- 野兽之怒 -->
+  <LP_BestialFury.label>bestial fury</LP_BestialFury.label>
+  <!-- 被动：伙伴近战冷却 ×0.5（每次出手攻击两次）。兽王，游侠 11 级。 -->
+  <LP_BestialFury.description>Passive: companion melee cooldown ×0.5 (attacks twice each time). Beast Master, ranger level 11.</LP_BestialFury.description>
+  <!-- 分享法术 -->
+  <LP_ShareSpells.label>share spells</LP_ShareSpells.label>
+  <!-- 被动：你给自己施加的职业增益（狂暴、隐匿伏击、灵巧动作之类）同时加在 30 格内的伙伴身上；伙伴倒地时每天一次自动救起它（治疗 100）。兽王，游侠 15 级。 -->
+  <LP_ShareSpells.description>Passive: class buffs you give yourself (rage, hide in plain sight, cunning action and so on) are also applied to your companion within 30 cells; when the companion is downed, it's automatically revived once per day (heals 100). Beast Master, ranger level 15.</LP_ShareSpells.description>
+  <!-- 恐惧伏击 -->
+  <LP_DreadAmbusher.label>dread ambusher</LP_DreadAmbusher.label>
+  <!-- 被动：每场战斗（1 小时没有出手之后算新的一场）你的第一次命中伤害 ×1.5，并让目标恐惧逃跑 3 秒（首领、机械体只被震慑）。身处暗处（亮度低于 30%）时，近战和远程命中你 ×0.8。幽域追踪者，游侠 3 级。 -->
+  <LP_DreadAmbusher.description>Passive: your first hit each fight (a new fight starts after an hour without attacking) deals ×1.5 damage and makes the target flee in fear for 3 seconds (bosses and mechanoids are only shaken). While in darkness (light under 30%), melee and ranged hits against you ×0.8. Gloom Stalker, ranger level 3.</LP_DreadAmbusher.description>
+  <!-- 钢铁意志 -->
+  <LP_IronMind.label>iron mind</LP_IronMind.label>
+  <!-- 被动：免疫恐惧（逃跑类精神状态、震慑），心智抗性 +10%。幽域追踪者，游侠 7 级。 -->
+  <LP_IronMind.description>Passive: immune to fear (fleeing mental states, shaken), mind resistance +10%. Gloom Stalker, ranger level 7.</LP_IronMind.description>
+  <!-- 追猎者的乱舞 -->
+  <LP_StalkersFlurry.label>stalker's flurry</LP_StalkersFlurry.label>
+  <!-- 被动：攻击落空时立刻补一击（近战和远程的命中都按“落空再判定一次”计算）。幽域追踪者，游侠 11 级。 -->
+  <LP_StalkersFlurry.description>Passive: when an attack misses, follow up with another strike at once (both melee and ranged hits re-roll once on a miss). Gloom Stalker, ranger level 11.</LP_StalkersFlurry.description>
+  <!-- 暗影闪避 -->
+  <LP_ShadowyDodge.label>shadowy dodge</LP_ShadowyDodge.label>
+  <!-- 被动：受到敌人攻击时有 30% 的成功率完全躲开这一下（每 5 秒最多一次）。幽域追踪者，游侠 15 级。 -->
+  <LP_ShadowyDodge.description>Passive: when attacked by an enemy, 30% chance to dodge the hit completely (at most once every 5 seconds). Gloom Stalker, ranger level 15.</LP_ShadowyDodge.description>
+</LanguageData>

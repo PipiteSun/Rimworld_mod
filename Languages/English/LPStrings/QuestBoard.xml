@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（QuestBoard.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>青铜</zh><en>bronze</en></s>
+  <s><zh>黄金</zh><en>gold</en></s>
+  <s><zh>秘银</zh><en>mithril</en></s>
+  <s><zh>守卫家园</zh><en>Defend the home</en></s>
+  <s><zh>远征讨伐</zh><en>Expedition</en></s>
+  <s><zh>魔物来袭</zh><en>Monster attack</en></s>
+  <s><zh>清剿据点</zh><en>Clear stronghold</en></s>
+  <s><zh>守卫家园：</zh><en>Defend the home: </en></s>
+  <s><zh>兽群</zh><en>beast pack</en></s>
+  <s><zh>远征讨伐：</zh><en>Expedition: </en></s>
+  <s><zh>群</zh><en> pack</en></s>
+  <s><zh>清剿据点：</zh><en>Clear stronghold: </en></s>
+  <s><zh>敌对据点</zh><en>hostile stronghold</en></s>
+  <s><zh>冒险者公会得到消息：</zh><en>The adventurers' guild has received word: </en></s>
+  <s><zh>的一伙人</zh><en>'s band</en></s>
+  <s><zh>一群狂暴的</zh><en>a pack of manhunting </en></s>
+  <s><zh>正朝殖民地逼近。接下委托后 6～12 小时内来袭，打退所有来犯者（杀死、打倒、俘虏或赶走）就算完成。</zh><en> is closing in on the colony. After accepting, they attack within 6-12 hours; repelling all attackers (killed, downed, captured or driven off) completes it.</en></s>
+  <s><zh>荒野里出现了一群狂暴的</zh><en>A pack of manhunting </en></s>
+  <s><zh>，威胁着过往的商旅。接下委托后世界地图上会出现「怪物巢穴」（离殖民地 </zh><en> has appeared in the wilds, threatening passing traders. After accepting, a "monster lair" appears on the world map ( </en></s>
+  <s><zh> 格），组织远征队前往，消灭所有怪物（杀死或打倒）。</zh><en> cells from the colony); organize an expedition and destroy all monsters (killed or downed).</en></s>
+  <s><zh> 天内不去，巢穴就会散去，委托失败。</zh><en> days without going there, and the lair disperses; the job fails.</en></s>
+  <s><zh>在附近建了一处前哨据点。接下委托后据点会出现在世界地图上（离殖民地 </zh><en> has built an outpost nearby. After accepting, the outpost appears on the world map ( </en></s>
+  <s><zh> 格），前往并消灭所有守军。</zh><en> cells from the colony); go there and destroy all its defenders.</en></s>
+  <s><zh> 天内不去，据点就会撤走，委托失败。</zh><en> days without going there, and the outpost withdraws; the job fails.</en></s>
+  <s><zh>\n\n等阶：</zh><en>\n\nTier: </en></s>
+  <s><zh>（推荐冒险者等级 </zh><en> (recommended adventurer level </en></s>
+  <s><zh>+）\n威胁点数：</zh><en>+)\nThreat points: </en></s>
+  <s><zh>（物品约值 </zh><en> (items worth about </en></s>
+  <s><zh>\n冒险者经验：接取人约 </zh><en>\nAdventurer XP: about </en></s>
+  <s><zh> 点，殖民地其他人各约 </zh><en> for the taker, about </en></s>
+  <s><zh> 点。</zh><en> each for other colonists.</en></s>
+  <s><zh>探索公告板已在设置里关闭</zh><en>The exploration notice board is turned off in settings</en></s>
+  <s><zh> 份委托</zh><en> jobs</en></s>
+  <s><zh>需要殖民地有冒险者达到 </zh><en>Needs an adventurer in the colony at level </en></s>
+  <s><zh>附近找不到合适的地点，换一份委托试试。</zh><en>No suitable site found nearby; try another job.</en></s>
+  <s><zh>敌人将在 6～12 小时内到达。</zh><en>The enemies will arrive within 6-12 hours.</en></s>
+  <s><zh>目标已经标在世界地图上，</zh><en>The target is marked on the world map, </en></s>
+  <s><zh>在探索公告板上揭下了这份委托。</zh><en> took this job from the exploration notice board.</en></s>
+  <s><zh>殖民地已经不在了。</zh><en>The colony is gone.</en></s>
+  <s><zh>怪物巢穴已经散去。</zh><en>The monster lair has dispersed.</en></s>
+  <s><zh>据点已经撤走了。</zh><en>The stronghold has withdrawn.</en></s>
+  <s><zh>委托：魔物来袭</zh><en>Job: monster attack</en></s>
+  <s><zh>委托：敌人来袭</zh><en>Job: enemy attack</en></s>
+  <s><zh>探索公告板上的委托「</zh><en>The job "</en></s>
+  <s><zh>魔物到了（</zh><en>The monsters have arrived (</en></s>
+  <s><zh>敌人到了</zh><en>The enemies have arrived</en></s>
+  <s><zh>！打退所有来犯者就算完成。</zh><en>! Repelling all attackers completes it.</en></s>
+  <s><zh>探索公告板上的【</zh><en>The [</en></s>
+  <s><zh>】委托「</zh><en>] job "</en></s>
+  <s><zh>」完成了。\n\n报酬（空投送到殖民地）：</zh><en>" on the exploration notice board is complete.\n\nReward (sent to the colony by drop pod): </en></s>
+  <s><zh> 点，</zh><en>, </en></s>
+  <s><zh>殖民地其他人各约 </zh><en>about this much each for other colonists: </en></s>
+  <s><zh>」失败了。</zh><en>" failed.</en></s>
+  <s><zh>敌人约 </zh><en>Enemies arrive in about </en></s>
+  <s><zh> 小时后到达</zh><en> hours</en></s>
+  <s><zh>敌人来袭中，还剩 </zh><en>Enemies attacking, </en></s>
+  <s><zh> 名</zh><en> left</en></s>
+  <s><zh>目标已经消失</zh><en>The target has vanished</en></s>
+  <s><zh>远征队已到达，还有敌人</zh><en>The expedition has arrived; enemies remain</en></s>
+  <s><zh>（搜索中）</zh><en> (searching)</en></s>
+  <s><zh>」，剩余 </zh><en>", remaining </en></s>
+  <s><zh>[DND边缘大陆] 探索公告板委托出错：</zh><en>[DND Rimlands] Exploration notice board job error: </en></s>
+  <s><zh>[DND边缘大陆] 生成怪物巢穴出错：</zh><en>[DND Rimlands] Monster lair generation error: </en></s>
+  <s><zh>打开探索公告板：查看今天的委托、接下委托、看已接委托的进度。</zh><en>Open the exploration notice board: view today's jobs, accept jobs, and check progress on accepted jobs.</en></s>
+  <s><zh>今日委托 </zh><en>Today's jobs </en></s>
+  <s><zh> 份，已接 </zh><en>, accepted </en></s>
+  <s><zh>，可接等阶：青铜～</zh><en>, available tiers: bronze to </en></s>
+  <s><zh>殖民地最高冒险者等级 </zh><en>The colony's highest adventurer level </en></s>
+  <s><zh>。委托每天刷新，约 </zh><en>. Jobs refresh daily, with a new batch in about </en></s>
+  <s><zh> 小时后换一批；同时最多接 </zh><en> hours; at most </en></s>
+  <s><zh> 份。</zh><en> accepted at once.</en></s>
+  <s><zh>探索公告板已在设置（冒险者分组）里关闭。</zh><en>The exploration notice board is turned off in settings (Adventurer group).</en></s>
+  <s><zh>今日委托</zh><en>Today's jobs</en></s>
+  <s><zh>今天没有委托。</zh><en>No jobs today.</en></s>
+  <s><zh>已接委托</zh><en>Accepted jobs</en></s>
+  <s><zh>+ · 威胁点数 </zh><en>+ · threat points </en></s>
+  <s><zh> · 经验约 </zh><en> · XP about </en></s>
+  <s><zh> · 在殖民地</zh><en> · in the colony</en></s>
+  <s><zh> · 要远征</zh><en> · expedition</en></s>
+  <s><zh>接取</zh><en>Accept</en></s>
+  <s><zh> 低于推荐等级</zh><en> below recommended level</en></s>
+  <s><zh> 接取</zh><en> accepts</en></s>
+  <s><zh>直接接取（没有接取人）</zh><en>Accept directly (no taker)</en></s>
+  <s><zh>定位敌人</zh><en>Locate enemies</en></s>
+  <s><zh>每日委托</zh><en>Daily jobs</en></s>
+  <s><zh>名声委托</zh><en>Renown jobs</en></s>
+  <s><zh>打开名声委托：查看当前 3 条委托、接下委托、看已接委托的进度和殖民地名声。</zh><en>Open renown jobs: view the current 3 jobs, accept jobs, and check accepted jobs and the colony's renown.</en></s>
+  <s><zh>名声委托 </zh><en>Renown jobs </en></s>
+  <s><zh>殖民地名声 +</zh><en>Colony renown +</en></s>
+</LPStrings>

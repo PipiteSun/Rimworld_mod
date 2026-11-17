@@ -53,12 +53,12 @@ namespace LichPhylactery {
   public int scrolls=3;public bool shackle=true;
   string sBuf;
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref scrolls,"scrolls",3);Scribe_Values.Look(ref shackle,"shackle",true);}
-  public override string Summary(Scenario scen)=>"契约种族（魔鬼、妖精、天界使者、恶魔等）可以在建角时选择；开局带一座契约讲台和"+scrolls+"卷宗主各不相同的契约书"+(shackle?"；外来者殖民者戴着位面锚链，倒下不会被遣返":"")+"。";
+  public override string Summary(Scenario scen)=>"契约种族（魔鬼、妖精、天界使者、恶魔等）可以在建角时选择；开局带一座契约讲台和".Loc()+scrolls+"卷宗主各不相同的契约书".Loc()+(shackle?"；外来者殖民者戴着位面锚链，倒下不会被遣返".Loc():"")+"。".Loc();
   public override IEnumerable<string> ConfigErrors(){foreach(var e in base.ConfigErrors())yield return e;if(scrolls<0 || scrolls>10)yield return "scrolls must be 0-10";}
   public override void DoEditInterface(Listing_ScenEdit listing){
    var r=listing.GetScenPartRect(this,RowHeight*2f);
-   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,0,2),"契约书 ",ref scrolls,ref sBuf,0,10);
-   Widgets.CheckboxLabeled(ScenEdit.Row(r,1,2),"外来者戴位面锚链",ref shackle);
+   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,0,2),"契约书 ".Loc(),ref scrolls,ref sBuf,0,10);
+   Widgets.CheckboxLabeled(ScenEdit.Row(r,1,2),"外来者戴位面锚链".Loc(),ref shackle);
   }
   public override IEnumerable<Thing> PlayerStartingThings(){
    var lec=Pacts.LecternDef;

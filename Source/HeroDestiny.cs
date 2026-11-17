@@ -22,11 +22,11 @@ namespace LichPhylactery {
   static int Now=>GenTicks.TicksGame;
   static bool Ready(int tick,int cd){int now=Now;return tick==int.MinValue || now<tick || now-tick>=cd;}
   public static HediffDef VigorDef=>Items.Hediff("LP_FiendishVigor");
-  public static string StageLabel(int s)=>s<=0?"觉醒":s==1?"显现":"升华";
+  public static string StageLabel(int s)=>s<=0?"觉醒".Loc():s==1?"显现".Loc():"升华".Loc();
 
   // ---------- 预言 ----------
-  public static readonly string[] Prophecies={"杀死一条五色真龙或一名力能龙裔首领","杀死一名巨人首领","击败影巫王拉洛克","击败一名宿敌冠军","殖民地出现一位半神","亲自守住 10 次袭击"};
-  public static string ProphecyText(int i)=>i>=0 && i<Prophecies.Length?"当{0}之时，命运才会放过{1}。".Replace("{0}",Prophecies[i]).Replace("{1}","这个孩子"):"（还没有说出口）";
+  public static readonly string[] Prophecies={"杀死一条五色真龙".Loc(),"杀死一名巨人首领".Loc(),"击败影巫王拉洛克".Loc(),"击败一名宿敌冠军".Loc(),"殖民地出现一位半神".Loc(),"亲自守住 10 次袭击".Loc()};
+  public static string ProphecyText(int i)=>i>=0 && i<Prophecies.Length?"当{0}之时，命运才会放过{1}。".Loc().Replace("{0}",Prophecies[i]).Replace("{1}","这个孩子"):"（还没有说出口）".Loc();
   // 对预言目标伤害 +25%：龙 / 巨人 / 不死 / 宿敌冠军 / 神力 / 袭击领队。
   public static bool ProphecyTarget(int idx,Pawn v){
    switch(idx){
@@ -49,8 +49,8 @@ namespace LichPhylactery {
    if(dinfo.HasValue && (dinfo.Value.Def==DamageDefOf.ExecutionCut || dinfo.Value.Def==DamageDefOf.SurgicalCut))return false;
    if(!Epic.Rescue(p))return false;
    r.fateTick=Now;Saved++;
-   Items.Mote(p,"命运未尽",new Color(1f,.8f,.3f));
-   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"本该死去，但预言还没有兑现：命运未尽让其倒地幸存（伤口已止血）。"+(r.stage>=1?FateManifestDays:FateAwakenDays)+" 天后才能再次生效。",p,MessageTypeDefOf.PositiveEvent);
+   Items.Mote(p,"命运未尽".Loc(),new Color(1f,.8f,.3f));
+   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"本该死去，但预言还没有兑现：命运未尽让其倒地幸存（伤口已止血）。".Loc()+(r.stage>=1?FateManifestDays:FateAwakenDays)+" 天后才能再次生效。".Loc(),p,MessageTypeDefOf.PositiveEvent);
    return true;
   }
   public static bool Fulfill(Pawn p,string why){
@@ -61,7 +61,7 @@ namespace LichPhylactery {
    var t=DefDatabase<ThoughtDef>.GetNamedSilentFail("LP_ProphecyFulfilled");
    if(t!=null && p.Faction!=null && p.Faction.IsPlayer)foreach(var c in PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive_FreeColonists.ToList())c.needs?.mood?.thoughts?.memories?.TryGainMemory(t);
    SyncAbilities(p);
-   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("预言兑现："+p.LabelShort,"“"+Prophecies[Mathf.Clamp(r.prophecy,0,Prophecies.Length-1)]+"”——"+why+"。\n\n"+p.LabelShort+"的天命升华了（"+StageLabel(from)+" → 升华）：一次性获得冒险者经验 "+xp.ToString("0")+"（下一级所需的全部），全殖民地心情 +8“预言兑现”（10 天）。\n\n命运未尽换成了命运主宰：每天一次，下一次攻击必中且伤害 ×2。",LetterDefOf.PositiveEvent,p);
+   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("预言兑现：".Loc()+p.LabelShort,"“"+Prophecies[Mathf.Clamp(r.prophecy,0,Prophecies.Length-1)]+"”——"+why+"。\n\n".Loc()+p.LabelShort+"的天命升华了（".Loc()+StageLabel(from)+" → 升华）：一次性获得冒险者经验 ".Loc()+xp.ToString("0")+"（下一级所需的全部），全殖民地心情 +8“预言兑现”（10 天）。\n\n命运未尽换成了命运主宰：每天一次，下一次攻击必中且伤害 ×2。".Loc(),LetterDefOf.PositiveEvent,p);
    return true;
   }
   // 殖民地出现半神（预言 4）。
@@ -71,7 +71,7 @@ namespace LichPhylactery {
    foreach(var p in c.destinies){var i=HeroTraits.Info(p);if(i!=null && i.prophesied && i.rec!=null && i.rec.prophecy==4 && !i.rec.prophecyDone)(want??(want=new List<Pawn>())).Add(p);}
    if(want==null)return 0;
    var god=PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive_OfPlayerFaction.FirstOrDefault(Demigods.Is);if(god==null)return 0;
-   foreach(var p in want)if(Fulfill(p,god.LabelShort+"成了半神"))n++;
+   foreach(var p in want)if(Fulfill(p,god.LabelShort+"成了半神".Loc()))n++;
    return n;
   }
 
@@ -89,17 +89,17 @@ namespace LichPhylactery {
    int want=TargetStage(p,i,r);if(r.demoted)want=Math.Min(want,r.stage);
    if(want<=r.stage)return false;
    int from=r.stage;r.stage=want;SyncAbilities(p);
-   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("天命"+StageLabel(want)+"："+p.LabelShort,p.LabelShort+"的天命“"+HeroTraits.Plain(i.destiny??i.power,i.destiny!=null?i.destinyDegree:i.degree)+"”从"+StageLabel(from)+"进入"+StageLabel(want)+"。\n\n"+StageGains(i,want),LetterDefOf.PositiveEvent,p);
+   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("天命".Loc()+StageLabel(want)+"：".Loc()+p.LabelShort,p.LabelShort+"的天命“".Loc()+HeroTraits.Plain(i.destiny??i.power,i.destiny!=null?i.destinyDegree:i.degree)+"”从".Loc()+StageLabel(from)+"进入".Loc()+StageLabel(want)+"。\n\n".Loc()+StageGains(i,want),LetterDefOf.PositiveEvent,p);
    return true;
   }
   public static string StageGains(HeroInfo i,int s){
-   if(i.prophesied)return s>=1?"命运未尽的冷却缩短到 "+FateManifestDays+" 天；倒地时 5 格内友军“为了预言之子”命中 +10%（1 小时）。":"";
+   if(i.prophesied)return s>=1?"命运未尽的冷却缩短到 ".Loc()+FateManifestDays+" 天；倒地时 5 格内友军“为了预言之子”命中 +10%（1 小时）。".Loc():"";
    if(i.pact>0){
-    if(s==1)return i.pact==1?"邪契魔能爆命中会点燃目标。":i.pact==2?"被命中时 20% 让攻击者迷惑 3 秒。":"邪契魔能爆命中让目标眩晕 1 秒（同一目标 10 秒一次）。";
-    return i.pact==1?"火焰伤害 -50%；新能力“直坠地狱”（每天一次）。":i.pact==2?"新能力“妖精魅惑”（每天一次）。":"新能力“异界触须”（每天一次）。";
+    if(s==1)return i.pact==1?"邪契魔能爆命中会点燃目标。".Loc():i.pact==2?"被命中时 20% 让攻击者迷惑 3 秒。".Loc():"邪契魔能爆命中让目标眩晕 1 秒（同一目标 10 秒一次）。".Loc();
+    return i.pact==1?"火焰伤害 -50%；新能力“直坠地狱”（每天一次）。".Loc():i.pact==2?"新能力“妖精魅惑”（每天一次）。".Loc():"新能力“异界触须”（每天一次）。".Loc();
    }
-   if(i.weave)return s==1?(VPEActive?"每次施法 15% 不进冷却。":"法杖射程 +3。"):"新能力“魔网涌动”（每天一次，60 秒内施法不耗心灵熵、不进冷却）；魔网震颤和魔网崩溃不再影响"+"施法。";
-   if(i.champion>0){var g=ChampionGod(i.champion);return s==1?"成神之路进度 ×1.5，"+(g?.label??"神")+"的领域神术冷却 -25%。":"神明干预：同一张地图上 3 名以上殖民者倒地时，"+(g?.label??"神")+"降下神迹（每季一次）："+InterventionLabel(i.champion)+"。";}
+   if(i.weave)return s==1?(VPEActive?"每次施法 15% 不进冷却。".Loc():"法杖射程 +3。".Loc()):"新能力“魔网涌动”（每天一次，60 秒内施法不耗心灵熵、不进冷却）；魔网震颤和魔网崩溃不再影响".Loc()+"施法。".Loc();
+   if(i.champion>0){var g=ChampionGod(i.champion);return s==1?"成神之路进度 ×1.5，".Loc()+(g?.label??"神".Loc())+"的领域神术冷却 -25%。".Loc():"神明干预：同一张地图上 3 名以上殖民者倒地时，".Loc()+(g?.label??"神".Loc())+"降下神迹（每季一次）：".Loc()+InterventionLabel(i.champion)+"。".Loc();}
    return "";
   }
   public static void Periodic(Pawn p,int now){
@@ -156,7 +156,7 @@ namespace LichPhylactery {
    if(p?.Map==null)return 0;int n=0;
    foreach(var o in GenRadial.RadialDistinctThingsAround(p.Position,p.Map,CharmRadius,true).OfType<Pawn>().ToList()){
     if(o==p || o.Dead || o.Downed || !o.HostileTo(p) || Immovable(o))continue;
-    o.stances?.stunner?.StunFor(CharmTicks,p,false,true,false);Items.Mote(o,"魅惑",new Color(.7f,1f,.7f));n++;
+    o.stances?.stunner?.StunFor(CharmTicks,p,false,true,false);Items.Mote(o,"魅惑".Loc(),new Color(.7f,1f,.7f));n++;
    }
    FleckMaker.Static(p.Position,p.Map,FleckDefOf.PsycastAreaEffect,CharmRadius);return n;
   }
@@ -165,9 +165,9 @@ namespace LichPhylactery {
    foreach(var o in GenRadial.RadialDistinctThingsAround(c,p.Map,TentacleRadius,true).OfType<Pawn>().ToList())if(o!=p && !o.Dead && o.HostileTo(p) && Torment(o,"LP_EldritchTentacles",p)!=null)n++;
    FleckMaker.Static(c,p.Map,FleckDefOf.PsycastAreaEffect,TentacleRadius*2f);return n;
   }
-  public static void Arm(Pawn p){var r=HeroTraits.Record(p);if(r==null)return;r.masterArmed=true;Items.Mote(p,"命运主宰",new Color(1f,.8f,.3f));}
+  public static void Arm(Pawn p){var r=HeroTraits.Record(p);if(r==null)return;r.masterArmed=true;Items.Mote(p,"命运主宰".Loc(),new Color(1f,.8f,.3f));}
   public static bool Surging(Pawn p)=>Items.Has(p,"LP_WeaveSurge");
-  public static void Surge(Pawn p){Items.Give(p,"LP_WeaveSurge");Items.Mote(p,"魔网涌动",new Color(.5f,.7f,1f));}
+  public static void Surge(Pawn p){Items.Give(p,"LP_WeaveSurge");Items.Mote(p,"魔网涌动".Loc(),new Color(.5f,.7f,1f));}
 
   // ---------- 魔网之子 ----------
   public static float StaffFactor(Pawn p)=>HeroTraits.Info(p)?.weave==true?WeaveStaff:1f;
@@ -195,7 +195,7 @@ namespace LichPhylactery {
    var e=v.Faction?.def?.GetModExtension<FaithExtension>();if(e?.deities!=null)foreach(var d in e.deities)if(g.EnemyOf(d))return true;
    return false;
   }
-  public static string ChampionTargetLabel(int degree){var g=ChampionGod(degree);if(g==null)return "";var en=g.Enemies.Select(x=>x.label).ToList();return DndCreatureType.Label(ChampionType(g.key))+(en.Count>0?"，以及供奉"+string.Join("、",en)+"的派系":"");}
+  public static string ChampionTargetLabel(int degree){var g=ChampionGod(degree);if(g==null)return "";var en=g.Enemies.Select(x=>x.label).ToList();return DndCreatureType.Label(ChampionType(g.key))+(en.Count>0?"，以及供奉".Loc()+string.Join("、".Loc(),en)+"的派系".Loc():"");}
   public static float ClassXpFactor(Pawn p,string path)=>(path=="LP_Path_Cleric" || path=="LP_Path_Paladin") && HeroTraits.Info(p)?.champion>0?ChampionXp:1f;
   public static float PrayerFactor(Pawn p)=>HeroTraits.Info(p)?.champion>0?ChampionPrayer:1f;
   public static int AscensionScale(Pawn p,int n){var i=HeroTraits.Info(p);if(n<=0 || i==null || i.champion<=0 || i.Stage<1)return n;return GenMath.RoundRandom(n*ChampionAscension);}
@@ -204,11 +204,11 @@ namespace LichPhylactery {
   public static bool ChampionsWaiting=>GameComponent_HeroTraits.Get?.champions.Count>0;
   public static string InterventionLabel(int degree){
    switch(ChampionGod(degree)?.key){
-    case "Lathander":return "晨光普照（全员治愈伤口、止血）";case "Tyr":return "公正之剑（30 秒全员近战伤害 +50%）";case "Mystra":return "魔网断流（打断敌方施法，敌人全部眩晕 5 秒）";
-    case "Kelemvor":return "死亡止步（倒地者止血，1 天内不再流血）";case "Malar":return "兽王咆哮（敌人恐慌逃跑 10 秒）";case "Talos":return "雷霆之怒（最多 6 道闪电，每道 30 伤害）";
-    case "Bane":return "暴君之威（敌人惊惧 1 小时）";case "Shar":return "暗夜帷幕（殖民者隐身 30 秒）";case "Surtr":return "熔炉之怒（敌人着火并受到 20 点火焰伤害）";
+    case "Lathander":return "晨光普照（全员治愈伤口、止血）".Loc();case "Tyr":return "公正之剑（30 秒全员近战伤害 +50%）".Loc();case "Mystra":return "魔网断流（打断敌方施法，敌人全部眩晕 5 秒）".Loc();
+    case "Kelemvor":return "死亡止步（倒地者止血，1 天内不再流血）".Loc();case "Malar":return "兽王咆哮（敌人恐慌逃跑 10 秒）".Loc();case "Talos":return "雷霆之怒（最多 6 道闪电，每道 30 伤害）".Loc();
+    case "Bane":return "暴君之威（敌人惊惧 1 小时）".Loc();case "Shar":return "暗夜帷幕（殖民者隐身 30 秒）".Loc();case "Surtr":return "熔炉之怒（敌人着火并受到 20 点火焰伤害）".Loc();
    }
-   return "神迹";
+   return "神迹".Loc();
   }
   public static int Interventions;
   public static bool CheckIntervention(Map map){
@@ -229,14 +229,14 @@ namespace LichPhylactery {
     case "Tyr":foreach(var c in colonists)if(Items.Give(c,"LP_DivineBlessing")!=null)n++;break;
     case "Mystra":foreach(var o in enemies){if(Feats.Casting(o))o.jobs?.EndCurrentJob(JobCondition.InterruptForced);o.stances?.stunner?.StunFor(300,champ,false,true,false);n++;}break;
     case "Kelemvor":foreach(var c in colonists.Where(x=>x.Downed)){foreach(var inj in c.health.hediffSet.hediffs.OfType<Hediff_Injury>().Where(x=>x.Bleeding).ToList())inj.Tended(.5f,1f);Items.Give(c,"LP_DivineRespite");n++;}break;
-    case "Malar":foreach(var o in enemies){if(o.Downed)continue;if(o.mindState?.mentalStateHandler!=null && o.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.PanicFlee,"兽王咆哮",true,true) && o.MentalState!=null)o.MentalState.forceRecoverAfterTicks=600;else o.stances?.stunner?.StunFor(600,champ,false,true,false);n++;}break;
+    case "Malar":foreach(var o in enemies){if(o.Downed)continue;if(o.mindState?.mentalStateHandler!=null && o.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.PanicFlee,"兽王咆哮".Loc(),true,true) && o.MentalState!=null)o.MentalState.forceRecoverAfterTicks=600;else o.stances?.stunner?.StunFor(600,champ,false,true,false);n++;}break;
     case "Talos":{var shock=HeroCombat.ElementDef(3);foreach(var o in enemies.Where(x=>!x.Downed).InRandomOrder().Take(6).ToList()){FleckMaker.ThrowLightningGlow(o.DrawPos,map,2f);o.TakeDamage(new DamageInfo(shock,30f,.3f,-1f,champ));n++;}break;}
     case "Bane":foreach(var o in enemies)if(Items.Give(o,"LP_Frightened",GenDate.TicksPerHour)!=null)n++;break;
     case "Shar":foreach(var c in colonists){var h=c.health.AddHediff(MindFlayerPowers.Unseen);h.TryGetComp<HediffComp_Disappears>()?.SetDuration(1800);n++;}break;
     case "Surtr":foreach(var o in enemies){FireUtility.TryAttachFire(o,.5f,champ);o.TakeDamage(new DamageInfo(DamageDefOf.Flame,20f,0f,-1f,champ));n++;}break;
    }
    FleckMaker.Static(champ.PositionHeld,map,FleckDefOf.PsycastAreaEffect,8f);
-   if(!Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("神明干预："+g.label,"殖民地快撑不住了——"+g.FullLabel+"没有抛弃祂的勇士"+champ.LabelShort+"。\n\n"+InterventionLabel(i.champion)+"。\n\n下一次神明干预要等一季（15 天）。",LetterDefOf.PositiveEvent,champ);
+   if(!Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("神明干预：".Loc()+g.label,"殖民地快撑不住了——".Loc()+g.FullLabel+"没有抛弃祂的勇士".Loc()+champ.LabelShort+"。\n\n".Loc()+InterventionLabel(i.champion)+"。\n\n下一次神明干预要等一季（15 天）。".Loc(),LetterDefOf.PositiveEvent,champ);
    return n;
   }
 
@@ -246,30 +246,30 @@ namespace LichPhylactery {
    if(i.prophesied && i.Stage>=1 && p.Map!=null){
     foreach(var o in GenRadial.RadialDistinctThingsAround(p.Position,p.Map,ProphetRadius,true).OfType<Pawn>().ToList())if(o!=p && !o.Dead && !o.Downed && o.Faction!=null && o.Faction==p.Faction && o.RaceProps.Humanlike)Items.Give(o,"LP_ForTheProphesied");
    }
-   if(i.returned && r!=null && Ready(r.graceTick,GraceDays*GenDate.TicksPerDay)){r.graceTick=Now;Items.Give(p,"LP_DeathGrace");Items.Mote(p,"冥界的宽限",new Color(.6f,.8f,.8f));}
+   if(i.returned && r!=null && Ready(r.graceTick,GraceDays*GenDate.TicksPerDay)){r.graceTick=Now;Items.Give(p,"LP_DeathGrace");Items.Mote(p,"冥界的宽限".Loc(),new Color(.6f,.8f,.8f));}
   }
 
   // ---------- 偿契 ----------
   public static int DemandIntervalTicks()=>Rand.RangeInclusive(DemandMin,DemandMax)*GenDate.TicksPerDay;
   public static string PatronName(int branch){
-   if(branch==1)return Pacts.Patron("LP_Patron_Asmodeus")?.label??"九狱的大魔鬼";
-   if(branch==2)return Pacts.Patron("LP_Patron_Titania")?.label??"妖精女王";
-   return "星界之外的无名存在";
+   if(branch==1)return Pacts.Patron("LP_Patron_Asmodeus")?.label??"九狱的大魔鬼".Loc();
+   if(branch==2)return Pacts.Patron("LP_Patron_Titania")?.label??"妖精女王".Loc();
+   return "星界之外的无名存在".Loc();
   }
   public static string DemandKey(int branch)=>branch==1?"fiend":branch==2?"fey":"old";
   public static string DemandLabel(string key){
    switch(key){
-    case "fiend":return "3 天内处决一名囚犯，或交出 "+SilverDemand+" 银";
-    case "fey":return "3 天内举办一次派对或婚礼，或交出一件品质优秀以上的艺术品";
-    case "old":return "3 天内本人冥想 8 小时，或研读耐瑟瑞尔卷轴 1 小时";
+    case "fiend":return "3 天内处决一名囚犯，或交出 ".Loc()+SilverDemand+" 银".Loc();
+    case "fey":return "3 天内举办一次派对或婚礼，或交出一件品质优秀以上的艺术品".Loc();
+    case "old":return "3 天内本人冥想 8 小时，或研读耐瑟瑞尔卷轴 1 小时".Loc();
    }
    return "";
   }
   public static string DemandStatus(Hediff_HeroRecord r){
    if(r==null)return "";
-   if(r.demand==null)return r.nextDemandTick<0?"宗主还没有提要求。":"下一次偿契：约 "+Mathf.Max(0f,(r.nextDemandTick-Now)/(float)GenDate.TicksPerDay).ToString("0.#")+" 天后";
-   var s="当前要求："+DemandLabel(r.demand)+"（还剩 "+Mathf.Max(0,r.demandDeadline-Now).ToStringTicksToPeriod()+"）";
-   if(r.demand=="old")s+="；已冥想 "+(r.meditateTicks/(float)GenDate.TicksPerHour).ToString("0.#")+" 小时，已研读 "+(r.readTicks/(float)GenDate.TicksPerHour).ToString("0.#")+" 小时";
+   if(r.demand==null)return r.nextDemandTick<0?"宗主还没有提要求。".Loc():"下一次偿契：约 ".Loc()+Mathf.Max(0f,(r.nextDemandTick-Now)/(float)GenDate.TicksPerDay).ToString("0.#")+" 天后".Loc();
+   var s="当前要求：".Loc()+DemandLabel(r.demand)+"（还剩 ".Loc()+Mathf.Max(0,r.demandDeadline-Now).ToStringTicksToPeriod()+"）".Loc();
+   if(r.demand=="old")s+="；已冥想 ".Loc()+(r.meditateTicks/(float)GenDate.TicksPerHour).ToString("0.#")+" 小时，已研读 ".Loc()+(r.readTicks/(float)GenDate.TicksPerHour).ToString("0.#")+" 小时".Loc();
    return s;
   }
   public static void PactTick(Pawn p,HeroInfo i,Hediff_HeroRecord r,int now){
@@ -283,8 +283,8 @@ namespace LichPhylactery {
    r.demand=DemandKey(i.pact);r.demandStart=now;r.demandDeadline=now+DemandDays*GenDate.TicksPerDay;r.demandPaid=false;r.meditateTicks=0;r.readTicks=0;
    if(Adventurer.TestSuppressed)return;
    var def=DefDatabase<LetterDef>.GetNamedSilentFail("LP_HeroPactLetter");
-   string label=PatronName(i.pact)+"要求偿契";
-   string text=p.LabelShort+"的宗主"+PatronName(i.pact)+"捎来了话：偿契的时候到了。\n\n要求："+DemandLabel(r.demand)+"。"+(r.demand=="old"?"":"\n\n交东西用下面的按钮（从地图上直接扣）。")+"\n\n完不成：宗主之怒 10 天（邪契魔能爆不能用、心情 -10）；连续两次完不成，天命降一阶（觉醒阶再连败，契约作废，“背弃之契”心情 -15）。";
+   string label=PatronName(i.pact)+"要求偿契".Loc();
+   string text=p.LabelShort+"的宗主".Loc()+PatronName(i.pact)+"捎来了话：偿契的时候到了。\n\n要求：".Loc()+DemandLabel(r.demand)+"。".Loc()+(r.demand=="old"?"":"\n\n交东西用下面的按钮（从地图上直接扣）。".Loc())+"\n\n完不成：宗主之怒 10 天（邪契魔能爆不能用、心情 -10）；连续两次完不成，天命降一阶（觉醒阶再连败，契约作废，“背弃之契”心情 -15）。".Loc();
    if(def!=null && LetterMaker.MakeLetter(def) is ChoiceLetter_HeroPact l){l.pawn=p;l.Label=label;l.Text=text;l.lookTargets=p.Spawned?new LookTargets(p):LookTargets.Invalid;Find.LetterStack.ReceiveLetter(l);}
    else Find.LetterStack.ReceiveLetter(label,text,LetterDefOf.NeutralEvent,p);
   }
@@ -300,10 +300,10 @@ namespace LichPhylactery {
   public static Map HomeOf(Pawn p)=>p?.MapHeld??Find.Maps.FirstOrDefault(m=>m.IsPlayerHome);
   public static Thing ArtFor(Map map)=>Pacts.ItemsFor(map,new PactClauseState{category="Art"}).FirstOrDefault();
   public static string CannotDeliver(Pawn p,Hediff_HeroRecord r){
-   var map=HomeOf(p);if(map==null || r?.demand==null)return "没有可以交付的要求";
-   if(r.demand=="fiend")return Pacts.SilverOn(map)>=SilverDemand?null:"地图上的白银不到 "+SilverDemand;
-   if(r.demand=="fey")return ArtFor(map)!=null?null:"地图上没有品质优秀以上的艺术品";
-   return "这一条要本人去做";
+   var map=HomeOf(p);if(map==null || r?.demand==null)return "没有可以交付的要求".Loc();
+   if(r.demand=="fiend")return Pacts.SilverOn(map)>=SilverDemand?null:"地图上的白银不到 ".Loc()+SilverDemand;
+   if(r.demand=="fey")return ArtFor(map)!=null?null:"地图上没有品质优秀以上的艺术品".Loc();
+   return "这一条要本人去做".Loc();
   }
   public static bool Deliver(Pawn p,Hediff_HeroRecord r){
    if(CannotDeliver(p,r)!=null)return false;var map=HomeOf(p);
@@ -312,7 +312,7 @@ namespace LichPhylactery {
   }
   public static void Paid(Pawn p,Hediff_HeroRecord r,int now){
    r.demand=null;r.demandPaid=false;r.pactFails=0;bool was=r.demoted;r.demoted=false;r.nextDemandTick=now+DemandIntervalTicks();
-   if(!Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"偿还了契约。"+(was?"宗主的怒气消了：天命可以重新升阶。":""),p,MessageTypeDefOf.PositiveEvent,false);
+   if(!Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"偿还了契约。".Loc()+(was?"宗主的怒气消了：天命可以重新升阶。".Loc():""),p,MessageTypeDefOf.PositiveEvent,false);
   }
   public static int Demotions;
   public static void Failed(Pawn p,HeroInfo i,Hediff_HeroRecord r,int now){
@@ -320,17 +320,17 @@ namespace LichPhylactery {
    Items.Give(p,"LP_PatronWrath",WrathDays*GenDate.TicksPerDay);
    var wrath=DefDatabase<ThoughtDef>.GetNamedSilentFail("LP_PatronWrathMood");if(wrath!=null)p.needs?.mood?.thoughts?.memories?.TryGainMemory(wrath);
    string who=PatronName(i.pact);
-   if(r.pactFails<2){if(!Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("宗主之怒："+p.LabelShort,p.LabelShort+"没能偿还"+who+"的契约。宗主之怒 10 天：邪契魔能爆不能用，心情 -10。\n\n再失败一次，天命会降一阶。",LetterDefOf.NegativeEvent,p);return;}
+   if(r.pactFails<2){if(!Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("宗主之怒：".Loc()+p.LabelShort,p.LabelShort+"没能偿还".Loc()+who+"的契约。宗主之怒 10 天：邪契魔能爆不能用，心情 -10。\n\n再失败一次，天命会降一阶。".Loc(),LetterDefOf.NegativeEvent,p);return;}
    r.pactFails=0;Demotions++;
    if(r.stage>0){
     int from=r.stage;r.stage--;r.demoted=true;SyncAbilities(p);
-    if(!Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("契约降阶："+p.LabelShort,p.LabelShort+"连续两次没能偿还"+who+"的契约：天命从"+StageLabel(from)+"降到"+StageLabel(r.stage)+"。下一次偿契成功后才会重新升阶。",LetterDefOf.NegativeEvent,p);
+    if(!Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("契约降阶：".Loc()+p.LabelShort,p.LabelShort+"连续两次没能偿还".Loc()+who+"的契约：天命从".Loc()+StageLabel(from)+"降到".Loc()+StageLabel(r.stage)+"。下一次偿契成功后才会重新升阶。".Loc(),LetterDefOf.NegativeEvent,p);
     return;
    }
    var t=p.story?.traits?.GetTrait(HeroDefOf.LP_PactDestiny);if(t!=null)p.story.traits.RemoveTrait(t);
    var forsaken=DefDatabase<ThoughtDef>.GetNamedSilentFail("LP_PactForsaken");if(forsaken!=null)p.needs?.mood?.thoughts?.memories?.TryGainMemory(forsaken);
    Items.Remove(p,"LP_PatronWrath");
-   if(!Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("背弃之契："+p.LabelShort,who+"抛弃了"+p.LabelShort+"：邪契者的特性和魔能爆都消失了。心情 -15“背弃之契”（15 天）。",LetterDefOf.NegativeEvent,p);
+   if(!Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("背弃之契：".Loc()+p.LabelShort,who+"抛弃了".Loc()+p.LabelShort+"：邪契者的特性和魔能爆都消失了。心情 -15“背弃之契”（15 天）。".Loc(),LetterDefOf.NegativeEvent,p);
   }
   // 旧日的偿契：本人冥想 / 研读耐瑟瑞尔卷轴的时间（250 刻采样，只看有当期要求的人）。
   public static void SampleOldOnes(List<Pawn> list,int delta){
@@ -359,17 +359,17 @@ namespace LichPhylactery {
    }
   }
   public override bool Valid(LocalTargetInfo target,bool throwMessages=false){
-   if(Effect=="feystep"){var map=parent.pawn?.Map;if(map==null || !target.Cell.InBounds(map) || !target.Cell.Standable(map) || target.Cell.GetFirstPawn(map)!=null){if(throwMessages)Messages.Message("那里站不了人。",MessageTypeDefOf.RejectInput,false);return false;}}
+   if(Effect=="feystep"){var map=parent.pawn?.Map;if(map==null || !target.Cell.InBounds(map) || !target.Cell.Standable(map) || target.Cell.GetFirstPawn(map)!=null){if(throwMessages)Messages.Message("那里站不了人。".Loc(),MessageTypeDefOf.RejectInput,false);return false;}}
    if((Effect=="blast" || Effect=="hell") && (target.Pawn==null || target.Pawn.Dead))return false;
    return base.Valid(target,throwMessages);
   }
   public override bool AICanTargetNow(LocalTargetInfo target){var t=target.Pawn;return t!=null && !t.Dead && !t.Downed && t.HostileTo(parent.pawn);}
   public override bool GizmoDisabled(out string reason){
-   if(Effect=="blast" && HeroDestiny.Wrathful(parent.pawn)){reason="宗主之怒：魔能爆暂时用不了。";return true;}
-   if(Effect=="fate" && HeroTraits.Record(parent.pawn)?.masterArmed==true){reason="命运主宰已经蓄势，等下一次攻击。";return true;}
+   if(Effect=="blast" && HeroDestiny.Wrathful(parent.pawn)){reason="宗主之怒：魔能爆暂时用不了。".Loc();return true;}
+   if(Effect=="fate" && HeroTraits.Record(parent.pawn)?.masterArmed==true){reason="命运主宰已经蓄势，等下一次攻击。".Loc();return true;}
    return base.GizmoDisabled(out reason);
   }
-  public override string ExtraLabelMouseAttachment(LocalTargetInfo target)=>Effect=="blast"?"邪契魔能爆 ×"+Pacts.Beams(parent.pawn):null;
+  public override string ExtraLabelMouseAttachment(LocalTargetInfo target)=>Effect=="blast"?"邪契魔能爆 ×".Loc()+Pacts.Beams(parent.pawn):null;
  }
  // 直坠地狱 / 异界触须：动弹不得，每秒受伤。
  public class Hediff_HeroTorment : HediffWithComps {
@@ -397,7 +397,7 @@ namespace LichPhylactery {
    var r=HeroTraits.Record(pawn);
    if(pawn!=null && !pawn.Dead && r?.demand!=null && r.demand!="old" && !r.demandPaid){
     var why=HeroDestiny.CannotDeliver(pawn,r);
-    var o=new DiaOption(r.demand=="fiend"?"交出 "+HeroDestiny.SilverDemand+" 银":"交出一件优秀以上的艺术品"){action=()=>{Find.LetterStack.RemoveLetter(this);if(HeroDestiny.Deliver(pawn,r))Messages.Message("交付了偿契的东西。",pawn,MessageTypeDefOf.NeutralEvent,false);},resolveTree=true};
+    var o=new DiaOption(r.demand=="fiend"?"交出 ".Loc()+HeroDestiny.SilverDemand+" 银".Loc():"交出一件优秀以上的艺术品".Loc()){action=()=>{Find.LetterStack.RemoveLetter(this);if(HeroDestiny.Deliver(pawn,r))Messages.Message("交付了偿契的东西。".Loc(),pawn,MessageTypeDefOf.NeutralEvent,false);},resolveTree=true};
     if(why!=null)o.Disable(why);yield return o;
     yield return Option_Postpone;
    }else yield return Option_Close;

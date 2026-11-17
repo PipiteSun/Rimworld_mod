@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 巫妖仪式 -->
+  <LP_Ascend.label>lich ritual</LP_Ascend.label>
+  <!-- 执行此工作单的角色将成为巫妖。请在详情中指定执行者。制作并绑定命匣，追加巫妖魂核、死灵之触、死灵之躯三个超凡基因，原有基因保留。 -->
+  <LP_Ascend.description>The pawn performing this bill becomes a lich. Assign the performer in the details. Crafts and binds a phylactery and adds the three archite genes lich soul core, necrotic touch and undead body; the original genes are kept.</LP_Ascend.description>
+  <!-- 正在巫妖仪式。 -->
+  <LP_Ascend.jobString>Performing the lich ritual.</LP_Ascend.jobString>
+  <!-- 献祭生肉 -->
+  <LP_Offer.label>sacrifice raw meat</LP_Offer.label>
+  <!-- 消耗100份新鲜生肉，获得100点命匣经验。支持混用不同种类生肉。 -->
+  <LP_Offer.description>Consume 100 fresh raw meat to gain 100 phylactery XP. Different kinds of raw meat can be mixed.</LP_Offer.description>
+  <!-- 正在献祭生肉。 -->
+  <LP_Offer.jobString>Sacrificing raw meat.</LP_Offer.jobString>
+  <!-- 重塑巫妖身体 -->
+  <LP_Rebuild.label>reshape lich body</LP_Rebuild.label>
+  <!-- 旧版工作单，已停用。拥有死灵之躯的巫妖会在死亡3日后通过完整命匣自动复生，不消耗材料。 -->
+  <LP_Rebuild.description>A legacy bill, no longer used. A lich with an undead body revives automatically through an intact phylactery 3 days after death, consuming no materials.</LP_Rebuild.description>
+  <!-- 正在重塑巫妖身体。 -->
+  <LP_Rebuild.jobString>Reshaping the lich's body.</LP_Rebuild.jobString>
+  <!-- 制作骷髅仆役胚体 -->
+  <LP_MakeSkeleton.label>make skeleton servant seed</LP_MakeSkeleton.label>
+  <!-- 消耗50份新鲜生肉制作胚体。选中产物打开配置界面，追加生肉、钢铁和玻璃钢自定义初始属性，确认后唤醒。胚体暂不占统御，唤醒时检查容量。 -->
+  <LP_MakeSkeleton.description>Make a seed from 50 fresh raw meat. Select the product to open the configuration screen, add raw meat, steel and plasteel to customize starting stats, then confirm to awaken. Seeds don't take command capacity yet; capacity is checked on awakening.</LP_MakeSkeleton.description>
+  <!-- 正在制作骷髅仆役胚体。 -->
+  <LP_MakeSkeleton.jobString>Making a skeleton servant seed.</LP_MakeSkeleton.jobString>
+  <!-- 制作血肉巨像胚体 -->
+  <LP_MakeGolem.label>make flesh golem seed</LP_MakeGolem.label>
+  <!-- 消耗300份新鲜生肉制作胚体。选中产物打开配置界面，追加生肉、钢铁和玻璃钢自定义初始属性，确认后唤醒。胚体暂不占统御，唤醒时检查容量。 -->
+  <LP_MakeGolem.description>Make a seed from 300 fresh raw meat. Select the product to open the configuration screen, add raw meat, steel and plasteel to customize starting stats, then confirm to awaken. Seeds don't take command capacity yet; capacity is checked on awakening.</LP_MakeGolem.description>
+  <!-- 正在制作血肉巨像胚体。 -->
+  <LP_MakeGolem.jobString>Making a flesh golem seed.</LP_MakeGolem.jobString>
+  <!-- 补给血肉巨像 -->
+  <LP_Refill.label>supply flesh golem</LP_Refill.label>
+  <!-- 消耗100生肉，为同地图最低储备且至少缺少100储备的己方巨像补充100血肉。储备上限500。 -->
+  <LP_Refill.description>Consume 100 raw meat to give 100 flesh to the friendly golem on the same map with the lowest reserve that is missing at least 100. Max reserve 500.</LP_Refill.description>
+  <!-- 正在补给血肉巨像。 -->
+  <LP_Refill.jobString>Supplying a flesh golem.</LP_Refill.jobString>
+  <!-- 封存大脑 -->
+  <LP_HarvestBrain.label>seal brain</LP_HarvestBrain.label>
+  <!-- 消耗一具新鲜人形尸体，获得一份魂封大脑。必须有对应的完整天然器官；整具尸体被仪式消耗，无法重复提取。 -->
+  <LP_HarvestBrain.description>Consume a fresh humanlike corpse to get one soul-sealed brain. Requires the corresponding intact natural organ; the whole corpse is consumed by the ritual and can't be extracted again.</LP_HarvestBrain.description>
+  <!-- 正在封存大脑。 -->
+  <LP_HarvestBrain.jobString>Sealing a brain.</LP_HarvestBrain.jobString>
+  <!-- 制作知识死灵胚体（研究） -->
+  <LP_MakeScholarBrain.label>make knowledge undead seed (research)</LP_MakeScholarBrain.label>
+  <!-- 消耗150份新鲜生肉制作胚体。选中产物打开配置界面，追加生肉、钢铁和玻璃钢自定义初始属性，确认后唤醒。胚体暂不占统御，唤醒时检查容量。 -->
+  <LP_MakeScholarBrain.description>Make a seed from 150 fresh raw meat. Select the product to open the configuration screen, add raw meat, steel and plasteel to customize starting stats, then confirm to awaken. Seeds don't take command capacity yet; capacity is checked on awakening.</LP_MakeScholarBrain.description>
+  <!-- 正在制作知识死灵胚体（研究）。 -->
+  <LP_MakeScholarBrain.jobString>Making a knowledge undead seed (research).</LP_MakeScholarBrain.jobString>
+  <!-- 封存眼睛 -->
+  <LP_HarvestEye.label>seal eye</LP_HarvestEye.label>
+  <!-- 消耗一具新鲜人形尸体，获得一份魂封眼睛。必须有对应的完整天然器官；整具尸体被仪式消耗，无法重复提取。 -->
+  <LP_HarvestEye.description>Consume a fresh humanlike corpse to get one soul-sealed eye. Requires the corresponding intact natural organ; the whole corpse is consumed by the ritual and can't be extracted again.</LP_HarvestEye.description>
+  <!-- 正在封存眼睛。 -->
+  <LP_HarvestEye.jobString>Sealing an eye.</LP_HarvestEye.jobString>
+  <!-- 制作知识死灵胚体（制造） -->
+  <LP_MakeScholarEye.label>make knowledge undead seed (crafting)</LP_MakeScholarEye.label>
+  <!-- 消耗150份新鲜生肉制作胚体。选中产物打开配置界面，追加生肉、钢铁和玻璃钢自定义初始属性，确认后唤醒。胚体暂不占统御，唤醒时检查容量。 -->
+  <LP_MakeScholarEye.description>Make a seed from 150 fresh raw meat. Select the product to open the configuration screen, add raw meat, steel and plasteel to customize starting stats, then confirm to awaken. Seeds don't take command capacity yet; capacity is checked on awakening.</LP_MakeScholarEye.description>
+  <!-- 正在制作知识死灵胚体（制造）。 -->
+  <LP_MakeScholarEye.jobString>Making a knowledge undead seed (crafting).</LP_MakeScholarEye.jobString>
+  <!-- 封存手臂 -->
+  <LP_HarvestArm.label>seal arm</LP_HarvestArm.label>
+  <!-- 消耗一具新鲜人形尸体，获得一份魂封手臂。必须有对应的完整天然器官；整具尸体被仪式消耗，无法重复提取。 -->
+  <LP_HarvestArm.description>Consume a fresh humanlike corpse to get one soul-sealed arm. Requires the corresponding intact natural organ; the whole corpse is consumed by the ritual and can't be extracted again.</LP_HarvestArm.description>
+  <!-- 正在封存手臂。 -->
+  <LP_HarvestArm.jobString>Sealing an arm.</LP_HarvestArm.jobString>
+  <!-- 制作知识死灵胚体（建造） -->
+  <LP_MakeScholarArm.label>make knowledge undead seed (construction)</LP_MakeScholarArm.label>
+  <!-- 消耗150份新鲜生肉制作胚体。选中产物打开配置界面，追加生肉、钢铁和玻璃钢自定义初始属性，确认后唤醒。胚体暂不占统御，唤醒时检查容量。 -->
+  <LP_MakeScholarArm.description>Make a seed from 150 fresh raw meat. Select the product to open the configuration screen, add raw meat, steel and plasteel to customize starting stats, then confirm to awaken. Seeds don't take command capacity yet; capacity is checked on awakening.</LP_MakeScholarArm.description>
+  <!-- 正在制作知识死灵胚体（建造）。 -->
+  <LP_MakeScholarArm.jobString>Making a knowledge undead seed (construction).</LP_MakeScholarArm.jobString>
+  <!-- 封存心脏 -->
+  <LP_HarvestHeart.label>seal heart</LP_HarvestHeart.label>
+  <!-- 消耗一具新鲜人形尸体，获得一份魂封心脏。必须有对应的完整天然器官；整具尸体被仪式消耗，无法重复提取。 -->
+  <LP_HarvestHeart.description>Consume a fresh humanlike corpse to get one soul-sealed heart. Requires the corresponding intact natural organ; the whole corpse is consumed by the ritual and can't be extracted again.</LP_HarvestHeart.description>
+  <!-- 正在封存心脏。 -->
+  <LP_HarvestHeart.jobString>Sealing a heart.</LP_HarvestHeart.jobString>
+  <!-- 制作知识死灵胚体（医疗） -->
+  <LP_MakeScholarHeart.label>make knowledge undead seed (medicine)</LP_MakeScholarHeart.label>
+  <!-- 消耗150份新鲜生肉制作胚体。选中产物打开配置界面，追加生肉、钢铁和玻璃钢自定义初始属性，确认后唤醒。胚体暂不占统御，唤醒时检查容量。 -->
+  <LP_MakeScholarHeart.description>Make a seed from 150 fresh raw meat. Select the product to open the configuration screen, add raw meat, steel and plasteel to customize starting stats, then confirm to awaken. Seeds don't take command capacity yet; capacity is checked on awakening.</LP_MakeScholarHeart.description>
+  <!-- 正在制作知识死灵胚体（医疗）。 -->
+  <LP_MakeScholarHeart.jobString>Making a knowledge undead seed (medicine).</LP_MakeScholarHeart.jobString>
+</LanguageData>

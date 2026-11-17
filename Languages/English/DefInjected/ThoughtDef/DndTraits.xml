@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 秩序井然 -->
+  <LP_DT_Orderly.stages.0.label>well-ordered</LP_DT_Orderly.stages.0.label>
+  <!-- 殖民地有人主事，规矩立得起来。 -->
+  <LP_DT_Orderly.stages.0.description>Someone is in charge of the colony and the rules hold.</LP_DT_Orderly.stages.0.description>
+  <!-- 毫无章法 -->
+  <LP_DT_NoSchedule.stages.0.label>no order at all</LP_DT_NoSchedule.stages.0.label>
+  <!-- 什么时候干活、什么时候睡觉都没个准，这样下去不行。 -->
+  <LP_DT_NoSchedule.stages.0.description>No fixed time to work or sleep. This can't go on.</LP_DT_NoSchedule.stages.0.description>
+  <!-- 被管束 -->
+  <LP_DT_Restrained.stages.0.label>restrained</LP_DT_Restrained.stages.0.label>
+  <!-- 一直被人呼来喝去地征召着，我快受不了了。 -->
+  <LP_DT_Restrained.stages.0.description>Being ordered around in a draft nonstop; I can't take it anymore.</LP_DT_Restrained.stages.0.description>
+  <!-- 亵渎的造物 -->
+  <LP_DT_UndeadUnease.stages.0.label>blasphemous creations</LP_DT_UndeadUnease.stages.0.label>
+  <!-- 殖民地里走着被强行唤醒的死者。这不对。 -->
+  <LP_DT_UndeadUnease.stages.0.description>The forcibly awakened dead walk among the colony. This isn't right.</LP_DT_UndeadUnease.stages.0.description>
+  <!-- 黑暗庇护 -->
+  <LP_DT_DarkShelter.stages.0.label>dark protection</LP_DT_DarkShelter.stages.0.label>
+  <!-- 有巫妖坐镇，谁也别想动我们。 -->
+  <LP_DT_DarkShelter.stages.0.description>With a lich holding the fort, nobody dares touch us.</LP_DT_DarkShelter.stages.0.description>
+  <!-- 龙威压顶 -->
+  <LP_DT_DragonDread.stages.0.label>dragon's dread</LP_DT_DragonDread.stages.0.label>
+  <!-- 附近有龙。我的手一直在抖。 -->
+  <LP_DT_DragonDread.stages.0.description>There's a dragon nearby. My hands won't stop shaking.</LP_DT_DragonDread.stages.0.description>
+  <!-- 侍奉不朽者 -->
+  <LP_DT_LichDevotee.stages.0.label>serving the undying</LP_DT_LichDevotee.stages.0.label>
+  <!-- 殖民地有一位巫妖。能侍奉不朽者，是我的荣幸。 -->
+  <LP_DT_LichDevotee.stages.0.description>The colony has a lich. Serving an undying one is my honor.</LP_DT_LichDevotee.stages.0.description>
+  <!-- 与不死同居 -->
+  <LP_DT_UndeadAbhor.stages.0.label>living with the undead</LP_DT_UndeadAbhor.stages.0.label>
+  <!-- 我发誓要让死者安息，现在却和它们住在一起。 -->
+  <LP_DT_UndeadAbhor.stages.0.description>I swore to give the dead rest, and now I live with them.</LP_DT_UndeadAbhor.stages.0.description>
+  <!-- 多族同居 -->
+  <LP_DT_Cosmopolitan.stages.0.label>many peoples together</LP_DT_Cosmopolitan.stages.0.label>
+  <!-- 殖民地里有各种各样的人，真热闹。 -->
+  <LP_DT_Cosmopolitan.stages.0.description>The colony has all kinds of people. So lively.</LP_DT_Cosmopolitan.stages.0.description>
+  <!-- 多族同居 -->
+  <LP_DT_Cosmopolitan.stages.1.label>many peoples together</LP_DT_Cosmopolitan.stages.1.label>
+  <!-- 殖民地里有各种各样的人，真热闹。 -->
+  <LP_DT_Cosmopolitan.stages.1.description>The colony has all kinds of people. So lively.</LP_DT_Cosmopolitan.stages.1.description>
+  <!-- 多族同居 -->
+  <LP_DT_Cosmopolitan.stages.2.label>many peoples together</LP_DT_Cosmopolitan.stages.2.label>
+  <!-- 殖民地里有各种各样的人，真热闹。 -->
+  <LP_DT_Cosmopolitan.stages.2.description>The colony has all kinds of people. So lively.</LP_DT_Cosmopolitan.stages.2.description>
+  <!-- 多族同居 -->
+  <LP_DT_Cosmopolitan.stages.3.label>many peoples together</LP_DT_Cosmopolitan.stages.3.label>
+  <!-- 殖民地里有各种各样的人，真热闹。 -->
+  <LP_DT_Cosmopolitan.stages.3.description>The colony has all kinds of people. So lively.</LP_DT_Cosmopolitan.stages.3.description>
+  <!-- 同族当家 -->
+  <LP_DT_PureMajority.stages.0.label>my people in charge</LP_DT_PureMajority.stages.0.label>
+  <!-- 殖民地里大多是我的同族。这样才安心。 -->
+  <LP_DT_PureMajority.stages.0.description>Most of the colony are my own people. That's reassuring.</LP_DT_PureMajority.stages.0.description>
+  <!-- 异族环伺 -->
+  <LP_DT_PureMajority.stages.1.label>surrounded by strangers</LP_DT_PureMajority.stages.1.label>
+  <!-- 殖民地里尽是些外族人。 -->
+  <LP_DT_PureMajority.stages.1.description>The colony is full of outsiders.</LP_DT_PureMajority.stages.1.description>
+  <!-- 殖巢的回忆 -->
+  <LP_DT_FlayerNear.stages.0.label>memories of the colony</LP_DT_FlayerNear.stages.0.label>
+  <!-- 这附近有夺心魔。我又闻到了殖巢里的味道。 -->
+  <LP_DT_FlayerNear.stages.0.description>There's a mind flayer nearby. I can smell the colony again.</LP_DT_FlayerNear.stages.0.description>
+  <!-- 天地之间 -->
+  <LP_DT_Outdoors.stages.0.label>between earth and sky</LP_DT_Outdoors.stages.0.label>
+  <!-- 风吹在脸上，脚下是泥土。这才是活着。 -->
+  <LP_DT_Outdoors.stages.0.description>Wind on my face, earth under my feet. This is living.</LP_DT_Outdoors.stages.0.description>
+  <!-- 秘法渴求 -->
+  <LP_DT_ArcaneCraving.stages.0.label>arcane craving</LP_DT_ArcaneCraving.stages.0.label>
+  <!-- 好几天没碰过魔法药水或卷轴了。我想念那种感觉。 -->
+  <LP_DT_ArcaneCraving.stages.0.description>Haven't touched a magic potion or scroll for days. I miss that feeling.</LP_DT_ArcaneCraving.stages.0.description>
+  <!-- 善举 -->
+  <LP_DT_GoodDeed.stages.0.label>good deed</LP_DT_GoodDeed.stages.0.label>
+  <!-- 我帮了一个需要帮助的人。 -->
+  <LP_DT_GoodDeed.stages.0.description>I helped someone who needed help.</LP_DT_GoodDeed.stages.0.description>
+  <!-- 手下留情 -->
+  <LP_DT_Mercy.stages.0.label>showed mercy</LP_DT_Mercy.stages.0.label>
+  <!-- 我把敌人打倒了，但没要{PAWN_possessive}的命。 -->
+  <LP_DT_Mercy.stages.0.description>I beat the enemy down, but spared {PAWN_possessive} life.</LP_DT_Mercy.stages.0.description>
+  <!-- 良心不安 -->
+  <LP_DT_Conscience.stages.0.label>guilty conscience</LP_DT_Conscience.stages.0.label>
+  <!-- 我们对那个人做的事……我睡不着。 -->
+  <LP_DT_Conscience.stages.0.description>What we did to that person... I can't sleep.</LP_DT_Conscience.stages.0.description>
+  <!-- 斩落巨龙 -->
+  <LP_DT_Dragonslain.stages.0.label>slew the dragon</LP_DT_Dragonslain.stages.0.label>
+  <!-- 那条龙倒下了。我的誓言兑现了。 -->
+  <LP_DT_Dragonslain.stages.0.description>That dragon has fallen. My oath is fulfilled.</LP_DT_Dragonslain.stages.0.description>
+  <!-- 被施了法 -->
+  <LP_DT_UnwantedBuff.stages.0.label>ensorcelled</LP_DT_UnwantedBuff.stages.0.label>
+  <!-- 有人往我身上施法。我不喜欢这样，哪怕是“为我好”。 -->
+  <LP_DT_UnwantedBuff.stages.0.description>Someone cast a spell on me. I don't like it, even if it was "for my own good".</LP_DT_UnwantedBuff.stages.0.description>
+  <!-- 秘法滋润 -->
+  <LP_DT_ArcaneFix.stages.0.label>arcane nourished</LP_DT_ArcaneFix.stages.0.label>
+  <!-- 魔力流过全身，太舒服了。 -->
+  <LP_DT_ArcaneFix.stages.0.description>Magic flowing through the whole body; it feels so good.</LP_DT_ArcaneFix.stages.0.description>
+  <!-- 冒险的召唤 -->
+  <LP_DT_CallOfAdventure.stages.0.label>call of adventure</LP_DT_CallOfAdventure.stages.0.label>
+  <!-- 宝藏就在那里，等着我去拿！ -->
+  <LP_DT_CallOfAdventure.stages.0.description>The treasure is right there waiting for me!</LP_DT_CallOfAdventure.stages.0.description>
+  <!-- 远域低语 -->
+  <LP_DT_FarWhisper.stages.0.label>far-realm whispers</LP_DT_FarWhisper.stages.0.label>
+  <!-- 那个人刚才一直在念叨着什么，听得我后背发凉。 -->
+  <LP_DT_FarWhisper.stages.0.description>That person kept muttering something just now. It sent chills down my spine.</LP_DT_FarWhisper.stages.0.description>
+  <!-- 巨人仆从 -->
+  <LP_DT_GiantDevotion.stages.0.label>giant's servant</LP_DT_GiantDevotion.stages.0.label>
+  <!-- 巨人杀手 -->
+  <LP_DT_GiantHatred.stages.0.label>giant slayer</LP_DT_GiantHatred.stages.0.label>
+  <!-- 同族 -->
+  <LP_DT_PureBlood.stages.0.label>same kind</LP_DT_PureBlood.stages.0.label>
+  <!-- 异族 -->
+  <LP_DT_PureBlood.stages.1.label>other kind</LP_DT_PureBlood.stages.1.label>
+  <!-- 殖巢的宿敌 -->
+  <LP_DT_GithKinship.stages.0.label>nemesis of the colony</LP_DT_GithKinship.stages.0.label>
+  <!-- 背弃的女王 -->
+  <LP_DT_ExileLich.stages.0.label>the forsaken queen</LP_DT_ExileLich.stages.0.label>
+  <!-- 会施法的人 -->
+  <LP_DT_MagicDistrust.stages.0.label>spellcaster</LP_DT_MagicDistrust.stages.0.label>
+  <!-- 亡魂之躯 -->
+  <LP_DT_RevenantDread.stages.0.label>revenant body</LP_DT_RevenantDread.stages.0.label>
+  <!-- 亡魂之躯 -->
+  <LP_DT_RevenantDread.stages.1.label>revenant body</LP_DT_RevenantDread.stages.1.label>
+</LanguageData>

@@ -123,7 +123,7 @@ namespace LichPhylactery {
    if(!Shots.TryGetValue(proj,out var m))return;Shots.Remove(proj);
    if(m.onHit!=null){try{m.onHit(hit,hit!=null && hit.Spawned?hit.Position:proj.Position);}catch(Exception ex){Log.Error("[LichPhylactery] shot onHit: "+ex);}}
    if(!m.precision || !(hit is Pawn t) || t.Dead)return;
-   if(m.mode==PrecisionMode.Leg){Items.Give(t,"LP_Hobbled",600);Items.Mote(t,"打腿",Color);}
+   if(m.mode==PrecisionMode.Leg){Items.Give(t,"LP_Hobbled",600);Items.Mote(t,"打腿".Loc(),Color);}
    else if(m.mode==PrecisionMode.Hand && CanDisarm(t))Disarm(m.caster,t,DisarmChance(m.caster,t,m.power,Adventurer.Dex));
   }
   public static Verb_LaunchProjectile RangedVerb(Pawn p)=>p?.equipment?.PrimaryEq?.PrimaryVerb as Verb_LaunchProjectile;
@@ -150,23 +150,23 @@ namespace LichPhylactery {
     var cells=GenRadial.RadialCellsAround(at,2.5f,false).Where(c=>c.InBounds(map) && c.DistanceTo(at)>=1.9f && c.Standable(map)).ToList();
     if(cells.Count>0){if(dropped.Spawned)dropped.DeSpawn();GenPlace.TryPlaceThing(dropped,cells.RandomElement(),map,ThingPlaceMode.Near);}
    }
-   Items.Mote(t,"缴械",Color);
+   Items.Mote(t,"缴械".Loc(),Color);
    return true;
   }
 
   // ---------- 冒险者分页 ----------
   // 战斗风格槽：有物理职业 1 个；战士 10 级 2 个。
   public static int Slots(Pawn p){var i=Is(p)?Info(p):null;if(i==null)return 0;return i.fighterLevel>=10?2:1;}
-  public static string TierText(int tier)=>"近战冷却 ×"+MeleeCooldown[tier].ToString("0.00")+"，追击 "+FollowUp[tier].ToStringPercent()+"，射击冷却 ×"+RangedCooldown[tier].ToString("0.00");
-  const string TierTable="额外攻击（物理职业）：\n第 1 档：战士、圣武士、武僧、野蛮人或游侠 5 级（游荡者没有，改用偷袭） — 近战冷却 ×0.80，追击 15%，射击冷却 ×0.85\n第 2 档：战士 10 级 — 近战冷却 ×0.70，追击 25%，射击冷却 ×0.75\n第 3 档：战士 15 级 — 近战冷却 ×0.60，追击 35%，射击冷却 ×0.65\n\n只有武僧的人只在徒手时生效。\n追击：普通近战命中后再按原版近战结算打一下（Isekai 力量、武器品质照常）；追击不再触发追击。";
+  public static string TierText(int tier)=>"近战冷却 ×".Loc()+MeleeCooldown[tier].ToString("0.00")+"，追击 ".Loc()+FollowUp[tier].ToStringPercent()+"，射击冷却 ×".Loc()+RangedCooldown[tier].ToString("0.00");
+  static readonly string TierTable="额外攻击（物理职业）：\n第 1 档：战士、圣武士、武僧、野蛮人或游侠 5 级（游荡者没有，改用偷袭） — 近战冷却 ×0.80，追击 15%，射击冷却 ×0.85\n第 2 档：战士 10 级 — 近战冷却 ×0.70，追击 25%，射击冷却 ×0.75\n第 3 档：战士 15 级 — 近战冷却 ×0.60，追击 35%，射击冷却 ×0.65\n\n只有武僧的人只在徒手时生效。\n追击：普通近战命中后再按原版近战结算打一下（Isekai 力量、武器品质照常）；追击不再触发追击。".Loc();
   public static List<string> Lines(Pawn p){
    var i=Is(p)?Info(p):null;if(i==null)return null;
    var list=new List<string>();
-   if(i.tier>0)list.Add("额外攻击 第 "+i.tier+" 档："+TierText(i.tier)+"|"+TierTable);
-   else list.Add((MonkOnly(i) && i.best>=TierLevels[0]?"额外攻击：只在徒手时生效":"额外攻击：物理职业 5 级解锁")+"|"+TierTable);
+   if(i.tier>0)list.Add("额外攻击 第 ".Loc()+i.tier+" 档：".Loc()+TierText(i.tier)+"|"+TierTable);
+   else list.Add((MonkOnly(i) && i.best>=TierLevels[0]?"额外攻击：只在徒手时生效".Loc():"额外攻击：物理职业 5 级解锁".Loc())+"|"+TierTable);
    float got=State?.FuryThisHour(p)??0f;
-   list.Add("斗志：本小时 +"+(got*FuryResourcePer).ToString("0.#")+" / "+(FuryCap*FuryResourcePer).ToString("0")+"|"+ClassSystem.ResourceTip(ClassSystem.Fighter)+"\n召唤物、友军、囚犯不算。");
-   list.Add("物理职业等级 "+i.total+"：战技强度、射术强度 +"+(i.bonus*100f).ToString("0")+"%|物理职业（战士、武僧、圣武士、野蛮人、游侠、游荡者）等级合计每比 1 高 1 级 +2%，最多 +40%。只加格斗、射击的职业强度。");
+   list.Add("斗志：本小时 +".Loc()+(got*FuryResourcePer).ToString("0.#")+" / "+(FuryCap*FuryResourcePer).ToString("0")+"|"+ClassSystem.ResourceTip(ClassSystem.Fighter)+"\n召唤物、友军、囚犯不算。".Loc());
+   list.Add("物理职业等级 ".Loc()+i.total+"：战技强度、射术强度 +".Loc()+(i.bonus*100f).ToString("0")+"%|物理职业（战士、武僧、圣武士、野蛮人、游侠、游荡者）等级合计每比 1 高 1 级 +2%，最多 +40%。只加格斗、射击的职业强度。".Loc());
    ClassMartial2.Lines(p,i,list);
    return list;
   }
@@ -182,7 +182,7 @@ namespace LichPhylactery {
    if(!Rand.Chance(FollowUpOverride??FollowUp[tier]))return false;
    inFollowUp=true;FollowUps++;
    try{ClassMelee.Strike(caster,t);}finally{inFollowUp=false;}
-   Items.Mote(caster,"追击",Color);
+   Items.Mote(caster,"追击".Loc(),Color);
    return true;
   }
   // 战意再临 / 死神之眼：击杀后所有战士能力冷却完。
@@ -210,9 +210,9 @@ namespace LichPhylactery {
   static readonly DefRef<HediffDef> Deflecting=new DefRef<HediffDef>("LP_Deflecting");
   public static bool Deflect(Pawn victim,ref DamageInfo dinfo){
    var def=Deflecting.Def;var h=def==null?null:victim.health?.hediffSet?.GetFirstHediffOfDef(def);
-   if(h==null || !ForceDragon.IsRanged(dinfo))return false;
+   if(h==null || !AttackKind.IsRanged(dinfo))return false;
    float left=dinfo.Amount-h.Severity;
-   if(left<=0f){Items.Mote(victim,"拨开",Ki);dinfo.SetAmount(0f);return true;}
+   if(left<=0f){Items.Mote(victim,"拨开".Loc(),Ki);dinfo.SetAmount(0f);return true;}
    dinfo.SetAmount(left);return false;
   }
   public static int FlurryHits(float strength)=>strength>=1.25f?3:2;
@@ -223,13 +223,13 @@ namespace LichPhylactery {
    DNDPush.Move(t,dest);
    t.stances?.stunner?.StunFor(60,caster);
    foreach(var o in Races124.PawnsNear(t.Map,t.Position,1.5f).ToList())if(o!=t && o!=caster && o.HostileTo(caster))o.TakeDamage(new DamageInfo(DamageDefOf.Blunt,6f*strength,.1f,-1f,caster));
-   Items.Mote(t,"开掌技",Ki);
+   Items.Mote(t,"开掌技".Loc(),Ki);
    return t.Position;
   }
   public static Hediff_QuiveringPalm Plant(Pawn caster,Pawn t,float amount){
    var h=Items.Give(t,"LP_QuiveringPalm",-1,amount) as Hediff_QuiveringPalm;
    if(h!=null){h.caster=caster;h.Severity=amount;}
-   Items.Mote(t,"颤心",Ki);
+   Items.Mote(t,"颤心".Loc(),Ki);
    return h;
   }
   public static float BurstAmount(Pawn t,float amount)=>amount*(t.BodySize>=3f || GiantKin.Is(t)?.5f:1f);
@@ -282,18 +282,18 @@ namespace LichPhylactery {
    foreach(var old in t.health.hediffSet.hediffs.OfType<Hediff_Enmity>().ToList())t.health.RemoveHediff(old);
    var h=Items.Give(t,"LP_Enmity",ticks,strength) as Hediff_Enmity;
    if(h!=null){h.caster=caster;h.Severity=strength;}
-   Items.Mote(t,"誓仇",Holy);
+   Items.Mote(t,"誓仇".Loc(),Holy);
    return h;
   }
   public static string Touch(Pawn t,float amount){
-   if(ClassMelee.InjurySum(t)>0f)return "圣疗 "+ClassMelee.Heal(t,amount).ToString("0");
-   return Cleanse(t,.3f)??"圣疗";
+   if(ClassMelee.InjurySum(t)>0f)return "圣疗 ".Loc()+ClassMelee.Heal(t,amount).ToString("0");
+   return Cleanse(t,.3f)??"圣疗".Loc();
   }
   public static string Cleanse(Pawn t,float toxic){
    var food=t.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.FoodPoisoning);
-   if(food!=null){t.health.RemoveHediff(food);return "解除食物中毒";}
+   if(food!=null){t.health.RemoveHediff(food);return "解除食物中毒".Loc();}
    var tox=t.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.ToxicBuildup);
-   if(tox!=null){tox.Severity-=toxic;if(tox.Severity<=0f)t.health.RemoveHediff(tox);return "清除毒素";}
+   if(tox!=null){tox.Severity-=toxic;if(tox.Severity<=0f)t.health.RemoveHediff(tox);return "清除毒素".Loc();}
    return null;
   }
   public static bool Swap(Pawn a,Pawn b){
@@ -304,7 +304,7 @@ namespace LichPhylactery {
    a.Notify_Teleported(false,true);b.Notify_Teleported(false,true);
    Items.Give(b,"LP_Sheltered",600,1f);
    FleckMaker.ThrowLightningGlow(a.DrawPos,a.Map,1f);FleckMaker.ThrowLightningGlow(b.DrawPos,b.Map,1f);
-   Items.Mote(b,"受庇护",Holy);
+   Items.Mote(b,"受庇护".Loc(),Holy);
    return true;
   }
   public static int Dispel(Pawn caster,float radius,float amount){
@@ -524,29 +524,29 @@ namespace LichPhylactery {
    var h=Adventurer.Get(p);if(h==null)yield break;
    int pts=ClassSystem.Points(h);int lp=ClassLegendary.Points(h);
    if(lp>0 && !p.Dead)yield return new Command_Action{
-    defaultLabel="传奇职业（"+lp+"）",
-    defaultDesc="还有 "+lp+" 点传奇职业点：打开职业窗口学一个传奇职业能力（那个职业 "+ClassLegendary.FirstLevel+" 级，同职业第二个 "+ClassLegendary.SecondLevel+" 级）。",
+    defaultLabel="传奇职业（".Loc()+lp+"）".Loc(),
+    defaultDesc="还有 ".Loc()+lp+" 点传奇职业点：打开职业窗口学一个传奇职业能力（那个职业 ".Loc()+ClassLegendary.FirstLevel+" 级，同职业第二个 ".Loc()+ClassLegendary.SecondLevel+" 级）。".Loc(),
     icon=ContentFinder<Texture2D>.Get("LP/Classes/Legendary/Unyielding",false)??BaseContent.BadTex,
     action=()=>Find.WindowStack.Add(new Dialog_ChooseClass(p))
    };
    if(pts>0 && !p.Dead)yield return new Command_Action{
-    defaultLabel="选择职业（"+pts+"）",
-    defaultDesc="还有 "+pts+" 点职业点：打开职业窗口，给战士、武僧或圣武士加 1 级。也可以在“冒险者”分页的“职业”页里加点。",
+    defaultLabel="选择职业（".Loc()+pts+"）".Loc(),
+    defaultDesc="还有 ".Loc()+pts+" 点职业点：打开职业窗口，给战士、武僧或圣武士加 1 级。也可以在“冒险者”分页的“职业”页里加点。".Loc(),
     icon=ClassSystem.Fighter?.Background??BaseContent.BadTex,
     action=()=>Find.WindowStack.Add(new Dialog_ChooseClass(p))
    };
    int foes=ClassMartial2.OpenFoeSlots(h);
    if(foes>0 && !p.Dead)yield return new Command_Action{
-    defaultLabel="选择宿敌（"+foes+"）",
-    defaultDesc="游侠的宿敌：选一种生物类型，对它伤害 +20%、命中提高。"+ClassMartial2.SecondFoeLevel+" 级可以再选一种。选定后不能更改。",
+    defaultLabel="选择宿敌（".Loc()+foes+"）".Loc(),
+    defaultDesc="游侠的宿敌：选一种生物类型，对它伤害 +20%、命中提高。".Loc()+ClassMartial2.SecondFoeLevel+" 级可以再选一种。选定后不能更改。".Loc(),
     icon=ContentFinder<Texture2D>.Get("LP/Classes/Ranger/FavoredFoe",false)??BaseContent.BadTex,
     action=()=>Find.WindowStack.Add(new Dialog_ChooseFavored(p))
    };
    if(!Martial.Is(p) || !p.Drafted || !ClassSystem.Knows(p,"LP_PrecisionShot"))yield break;
    var st=Martial.State;if(st==null)yield break;var mode=st.Mode(p);
    yield return new Command_Action{
-    defaultLabel="精准射击："+PrecisionShot.ModeLabel(mode),
-    defaultDesc="切换精准射击的模式：\n要害：伤害 ×(1.5 + 0.5 × 射术强度)，穿甲 +30%。\n打腿：伤害 ×0.7，目标移动 ×0.5 持续 10 秒。\n打手：伤害 ×0.5，有机会打落武器：成功率 = 50% + 10% ×（自己的敏捷调整值 + 熟练加值 − 目标的力量调整值 − 熟练加值）+ 20% ×（射术强度 − 1），限 15%～90%，体型 2 以上减半。",
+    defaultLabel="精准射击：".Loc()+PrecisionShot.ModeLabel(mode),
+    defaultDesc="切换精准射击的模式：\n要害：伤害 ×(1.5 + 0.5 × 射术强度)，穿甲 +30%。\n打腿：伤害 ×0.7，目标移动 ×0.5 持续 10 秒。\n打手：伤害 ×0.5，有机会打落武器：成功率 = 50% + 10% ×（自己的敏捷调整值 + 熟练加值 − 目标的力量调整值 − 熟练加值）+ 20% ×（射术强度 − 1），限 15%～90%，体型 2 以上减半。".Loc(),
     icon=ContentFinder<Texture2D>.Get("LP/Classes/Fighter/PrecisionShot",false)??BaseContent.BadTex,
     action=()=>st.SetMode(p,(PrecisionMode)(((int)st.Mode(p)+1)%3))
    };

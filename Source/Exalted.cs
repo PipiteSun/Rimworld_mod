@@ -24,8 +24,8 @@ namespace LichPhylactery {
   public const float ChaTrade=.05f,ChaPersuade=1.15f,ChaRadius=10f,MythicChaRadius=15f,ChaBreak=-.03f,ChaEnemyRadius=6f,ChaEnemyHit=.08f,RoutRadius=8f,RoutChance=.15f,RepFactor=1.5f;
   public const float CostPer=.04f,MythicCostPer=.08f;
   public const int StaggerTicks=90,HoldTicks=480,MythicHoldTicks=720,HoldPeriod=GenDate.TicksPerDay,EvadeWindow=600,ScarTicks=GenDate.TicksPerDay,MythicScarTicks=GenDate.TicksPerDay/2;
-  public static readonly string[] ExaltedNames={"巨人之力","疾影","不屈之躯","洞彻心智","明察","威仪"};
-  public static readonly string[] MythicNames={"撼山","无影","金刚不坏","天才","先知","君临"};
+  public static readonly string[] ExaltedNames={"巨人之力".Loc(),"疾影".Loc(),"不屈之躯".Loc(),"洞彻心智".Loc(),"明察".Loc(),"威仪".Loc()};
+  public static readonly string[] MythicNames={"撼山".Loc(),"无影".Loc(),"金刚不坏".Loc(),"天才".Loc(),"先知".Loc(),"君临".Loc()};
   // 神话的传奇属性点：力→近战+血量；敏→远程+近战；体→血量+承受；智→学习+工作；感→心灵+回复；魅→心灵+工作。
   public static readonly int[][] LegendPairs={new[]{Legend.Melee,Legend.Health},new[]{Legend.Ranged,Legend.Melee},new[]{Legend.Health,Legend.Tough},new[]{Legend.Learn,Legend.Work},new[]{Legend.Psychic,Legend.Recovery},new[]{Legend.Psychic,Legend.Work}};
   // 封顶在致死前的原版疾病（只对有 lethalSeverity 的生效；食物中毒、肠道蠕虫、肌肉寄生虫在 1.7 不会致死，名单里保留但不起作用）。
@@ -41,9 +41,9 @@ namespace LichPhylactery {
   // 热修1：效果没生效的原因（生效时 null），分页和健康页标记的悬停用。
   public static string OffReason{get{
    var s=LichMod.Settings;if(s==null)return null;
-   if(!s.adventurer)return "冒险者等级已在设置里关闭";
-   if(!s.exaltedScores)return "超凡属性特性已在设置里关闭";
-   if(Adventurer.EffectsHandedToIsekai && !s.exaltedCoexist)return "Isekai 共存模式：效果已关，可在设置「冒险者」中开启（勾选“共存模式下超凡特性仍生效”）";
+   if(!s.adventurer)return "冒险者等级已在设置里关闭".Loc();
+   if(!s.exaltedScores)return "超凡属性特性已在设置里关闭".Loc();
+   if(Adventurer.EffectsHandedToIsekai && !s.exaltedCoexist)return "Isekai 共存模式：效果已关，可在设置「冒险者」中开启（勾选“共存模式下超凡特性仍生效”）".Loc();
    return null;
   }}
 
@@ -97,29 +97,29 @@ namespace LichPhylactery {
    if(p.Faction==null || !p.Faction.IsPlayer || p.Dead)return 0;
    int newEx=ex&~h.exaltedSent,newMy=my&~h.mythicSent,n=0;
    for(int a=0;a<6;a++){
-    if((newEx&1<<a)!=0){Letter(p,"超凡·"+ExaltedNames[a],p.LabelShort+"的"+Adventurer.Names[a]+"达到了凡人的极限——超凡·"+ExaltedNames[a]+"。\n\n"+Describe(a,false));n++;}
-    if((newMy&1<<a)!=0){Letter(p,"神话·"+MythicNames[a],p.LabelShort+"的"+Adventurer.Names[a]+"越过了凡人的极限，踏入神话——神话·"+MythicNames[a]+"。\n\n"+Describe(a,true));n++;}
+    if((newEx&1<<a)!=0){Letter(p,"超凡·".Loc()+ExaltedNames[a],p.LabelShort+"的".Loc()+Adventurer.Names[a]+"达到了凡人的极限——超凡·".Loc()+ExaltedNames[a]+"。\n\n".Loc()+Describe(a,false));n++;}
+    if((newMy&1<<a)!=0){Letter(p,"神话·".Loc()+MythicNames[a],p.LabelShort+"的".Loc()+Adventurer.Names[a]+"越过了凡人的极限，踏入神话——神话·".Loc()+MythicNames[a]+"。\n\n".Loc()+Describe(a,true));n++;}
    }
    h.exaltedSent|=ex;h.mythicSent|=my;return n;
   }
   static void Letter(Pawn p,string label,string text){Letters++;if(Adventurer.TestSuppressed)return;Find.LetterStack.ReceiveLetter(label,text,LetterDefOf.PositiveEvent,p.Spawned?new LookTargets(p):LookTargets.Invalid);}
   public static string Describe(int a,bool mythic){
    switch(a){
-    case 0:return mythic?"撼山：负重 +25%、采矿 +20%；近战护甲穿透 +30%；近战命中 15% 让体型 ≤3 的目标踉跄 1.5 秒；近战打建筑 ×2；免疫踉跄和击倒类状态。":"巨人之力：负重 +25%、采矿速度 +20%；近战护甲穿透 +15%；近战命中 15% 让体型 ≤1.5 的目标踉跄 1.5 秒（移速 ×0.1、近战冷却 ×1.5）。";
-    case 1:return mythic?"无影：在疾影之上，敌人射击的命中 ×0.75；每 10 秒受到的第一次近战或投射物伤害有 25% 完全落空。":"疾影：瞄准时间 −20%，近战闪避 +10；敌人射击他的命中 ×0.85；不会被哨兵借机攻击（已有“灵活”则改为移速 +0.2）。";
-    case 2:return mythic?"金刚不坏：在不屈之躯之上，硬撑每天 2 次、每次 12 秒；失血封顶在极重之前；伤疤消除加快到每半天一处。":"不屈之躯：失血速度 −30%，疼痛休克阈值 +15%；食物中毒、流感、瘟疫、疟疾、睡眠病等可致死的疾病停在致死之前；硬撑：每天一次，本该倒地时撑 8 秒再倒；身上有伤疤或旧伤时，每 1 天消除最重的一处。";
-    case 3:return mythic?"天才：在洞彻心智之上，全局学习速度 ×1.2；没有热情的技能按小热情学习；举一反三 50%。":"洞彻心智：读书、研读卷轴和典籍速度 +50%；技能不衰退；举一反三：技能升级时随机另一项技能得到这次升级所需经验的 25%。";
-    case 4:return mythic?"先知：在明察之上，显形半径 15 格；免疫心灵震爆；敌对袭击到来时收到一封先知的预感。":"明察：冥想心灵专注 +30%，医疗品质 +10%；8 格内隐形或伪装的敌人显形；心灵震爆、夺心魔支配、魅惑等心灵效果持续时间减半。";
-    default:return mythic?"君临：光环 15 格、心情 +6；他击倒或击杀敌人时，8 格内的敌方人形 15% 逃跑（首领、宿敌冠军、神力灌注 3 级以上、传奇怪物除外）；派系声望获得 ×1.5。":"威仪：交易价格 +5%，招募 / 说服 +15%；10 格内己方人形心情 +3、精神崩溃阈值 −3%；6 格内敌方人形命中 −8%。多个威仪不叠加。";
+    case 0:return mythic?"撼山：负重 +25%、采矿 +20%；近战护甲穿透 +30%；近战命中 15% 让体型 ≤3 的目标踉跄 1.5 秒；近战打建筑 ×2；免疫踉跄和击倒类状态。".Loc():"巨人之力：负重 +25%、采矿速度 +20%；近战护甲穿透 +15%；近战命中 15% 让体型 ≤1.5 的目标踉跄 1.5 秒（移速 ×0.1、近战冷却 ×1.5）。".Loc();
+    case 1:return mythic?"无影：在疾影之上，敌人射击的命中 ×0.75；每 10 秒受到的第一次近战或投射物伤害有 25% 完全落空。".Loc():"疾影：瞄准时间 −20%，近战闪避 +10；敌人射击他的命中 ×0.85；不会被哨兵借机攻击（已有“灵活”则改为移速 +0.2）。".Loc();
+    case 2:return mythic?"金刚不坏：在不屈之躯之上，硬撑每天 2 次、每次 12 秒；失血封顶在极重之前；伤疤消除加快到每半天一处。".Loc():"不屈之躯：失血速度 −30%，疼痛休克阈值 +15%；食物中毒、流感、瘟疫、疟疾、睡眠病等可致死的疾病停在致死之前；硬撑：每天一次，本该倒地时撑 8 秒再倒；身上有伤疤或旧伤时，每 1 天消除最重的一处。".Loc();
+    case 3:return mythic?"天才：在洞彻心智之上，全局学习速度 ×1.2；没有热情的技能按小热情学习；举一反三 50%。".Loc():"洞彻心智：读书、研读卷轴和典籍速度 +50%；技能不衰退；举一反三：技能升级时随机另一项技能得到这次升级所需经验的 25%。".Loc();
+    case 4:return mythic?"先知：在明察之上，显形半径 15 格；免疫心灵震爆；敌对袭击到来时收到一封先知的预感。".Loc():"明察：冥想心灵专注 +30%，医疗品质 +10%；8 格内隐形或伪装的敌人显形；心灵震爆、夺心魔支配、魅惑等心灵效果持续时间减半。".Loc();
+    default:return mythic?"君临：光环 15 格、心情 +6；他击倒或击杀敌人时，8 格内的敌方人形 15% 逃跑（首领、宿敌冠军、神力灌注 3 级以上、传奇怪物除外）；派系声望获得 ×1.5。".Loc():"威仪：交易价格 +5%，招募 / 说服 +15%；10 格内己方人形心情 +3、精神崩溃阈值 −3%；6 格内敌方人形命中 −8%。多个威仪不叠加。".Loc();
    }
   }
   // 分页悬停用：这一项的超凡 / 神话说明（没有就空串）。
   public static string Tip(Hediff_Adventurer h,int a){
    bool ex=(h.exaltedMask&1<<a)!=0,my=(h.mythicMask&1<<a)!=0;
-   if(ex)return "\n\n"+(my?"<color=#C080FF>神话·"+MythicNames[a]+"</color>\n"+Describe(a,true):"<color=#E8C050>超凡·"+ExaltedNames[a]+"</color>\n"+Describe(a,false))+(my?"":"\n神话条件：属性 24，或 20 + 传奇冒险者 + "+Legend.Names[LegendPairs[a][0]]+"与"+Legend.Names[LegendPairs[a][1]]+"传奇点合计 20。");
+   if(ex)return "\n\n"+(my?"<color=#C080FF>神话·".Loc()+MythicNames[a]+"</color>\n"+Describe(a,true):"<color=#E8C050>超凡·".Loc()+ExaltedNames[a]+"</color>\n"+Describe(a,false))+(my?"":"\n神话条件：属性 24，或 20 + 传奇冒险者 + ".Loc()+Legend.Names[LegendPairs[a][0]]+"与".Loc()+Legend.Names[LegendPairs[a][1]]+"传奇点合计 20。".Loc());
    int raw=Raw(h);
-   if((raw&1<<a)!=0){bool rm=(raw&1<<(a+6))!=0;return "\n\n<color=#909090>"+(rm?"神话·"+MythicNames[a]:"超凡·"+ExaltedNames[a])+"：已达成，效果未生效——"+(OffReason??"属性刚变化，稍后生效")+"</color>\n"+Describe(a,rm);}
-   if(((h.exaltedSent|h.mythicSent)&1<<a)!=0)return "\n\n<color=#909090>超凡·"+ExaltedNames[a]+"：暂停（当前值低于 20）</color>";
+   if((raw&1<<a)!=0){bool rm=(raw&1<<(a+6))!=0;return "\n\n<color=#909090>"+(rm?"神话·".Loc()+MythicNames[a]:"超凡·".Loc()+ExaltedNames[a])+"：已达成，效果未生效——".Loc()+(OffReason??"属性刚变化，稍后生效".Loc())+"</color>\n"+Describe(a,rm);}
+   if(((h.exaltedSent|h.mythicSent)&1<<a)!=0)return "\n\n<color=#909090>超凡·".Loc()+ExaltedNames[a]+"：暂停（当前值低于 20）</color>".Loc();
    return "";
   }
 
@@ -166,8 +166,8 @@ namespace LichPhylactery {
    foreach(var x in p.health.hediffSet.hediffs)if(x is Hediff_Injury i && i.IsPermanent() && i.def.defName!="Scarification" && (scar==null || i.Severity>scar.Severity))scar=i;
    if(scar==null || h.scarTick==int.MinValue || now<h.scarTick){h.scarTick=now;return null;}
    if(now-h.scarTick<(mythic?MythicScarTicks:ScarTicks))return null;
-   p.health.RemoveHediff(scar);h.scarTick=now;Items.Mote(p,mythic?"金刚不坏":"不屈之躯",new Color(.95f,.85f,.45f));
-   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"的"+(mythic?"金刚不坏":"不屈之躯")+"消除了"+(scar.Part!=null?scar.Part.LabelCap+"上的":"")+scar.LabelCap+"。",p,MessageTypeDefOf.PositiveEvent,false);
+   p.health.RemoveHediff(scar);h.scarTick=now;Items.Mote(p,mythic?"金刚不坏".Loc():"不屈之躯".Loc(),new Color(.95f,.85f,.45f));
+   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"的".Loc()+(mythic?"金刚不坏".Loc():"不屈之躯".Loc())+"消除了".Loc()+(scar.Part!=null?scar.Part.LabelCap+"上的".Loc():"")+scar.LabelCap+"。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);
    return scar;
   }
   // 感：外力造成的控制类精神状态剩余时间减半（每个状态一次）。
@@ -180,7 +180,7 @@ namespace LichPhylactery {
    return true;
   }
   public static float PsychicDuration(Pawn p)=>Has(p,Adventurer.Wis)?PsychicHalf:1f;
-  public static bool BlastImmune(Pawn p){if(!Mythic(p,Adventurer.Wis))return false;Items.Mote(p,"先知",new Color(.75f,.6f,1f));return true;}
+  public static bool BlastImmune(Pawn p){if(!Mythic(p,Adventurer.Wis))return false;Items.Mote(p,"先知".Loc(),new Color(.75f,.6f,1f));return true;}
   // 感：半径内隐形（原版隐身组件）或伪装（1.54 魅魔）的敌人显形。
   // 原版的“被打断后显形”窗口可能短于 250 刻：另记“显形到哪一刻”，由 IsPsychologicallyInvisible 后缀读取（同 1.28 正义之神的做法）。
   internal static readonly Dictionary<Pawn,int> revealed=new Dictionary<Pawn,int>();
@@ -195,8 +195,8 @@ namespace LichPhylactery {
      for(int i=0;i<hs.Count;i++){var inv=(hs[i] as HediffWithComps)?.GetComp<HediffComp_Invisibility>();if(inv==null)continue;inv.DisruptInvisibility();if(!revealed.ContainsKey(o))n++;revealed[o]=now+AuraInterval+60;break;}
     }
     if(AbyssRaces.IsSuccubus(o)){
-     if(Outsiders.Disguised(o)){AbyssEvents.RevealSuccubus(o,seer.LabelShort+"的明察看穿了它的伪装");n++;}
-     else if(AbyssRaces.Guised(o)){AbyssRaces.Guise(o).Set(false);Messages.Message(seer.LabelShort+"看穿了"+o.LabelShort+"的变形伪装！",o,MessageTypeDefOf.NeutralEvent,false);n++;}
+     if(Outsiders.Disguised(o)){AbyssEvents.RevealSuccubus(o,seer.LabelShort+"的明察看穿了它的伪装".Loc());n++;}
+     else if(AbyssRaces.Guised(o)){AbyssRaces.Guise(o).Set(false);Messages.Message(seer.LabelShort+"看穿了".Loc()+o.LabelShort+"的变形伪装！".Loc(),o,MessageTypeDefOf.NeutralEvent,false);n++;}
     }
    }
    return n;
@@ -235,7 +235,7 @@ namespace LichPhylactery {
    if(map==null || king==null)return 0;int n=0;float r2=RoutRadius*RoutRadius;
    foreach(var o in map.mapPawns.AllPawnsSpawned.ToList()){
     if(o.Dead || o.Downed || !o.RaceProps.Humanlike || !o.HostileTo(king) || (o.Position-at).LengthHorizontalSquared>r2 || o.InMentalState || RoutImmune(o) || Roll>=RoutChance)continue;
-    if(o.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.PanicFlee,"君临",forced:true,forceWake:true)==true){Items.Mote(o,"畏惧君临",new Color(.85f,.7f,1f));n++;}
+    if(o.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.PanicFlee,"君临".Loc(),forced:true,forceWake:true)==true){Items.Mote(o,"畏惧君临".Loc(),new Color(.85f,.7f,1f));n++;}
    }
    return n;
   }
@@ -260,7 +260,7 @@ namespace LichPhylactery {
    float size=Mythic(a,Adventurer.Str)?MythicStaggerSize:StaggerSize;
    if(v.BodySize>size || StaggerImmune(v) || Roll>=StaggerChance)return false;
    var old=v.health.hediffSet.GetFirstHediffOfDef(Stagger);if(old!=null)v.health.RemoveHediff(old);
-   v.health.AddHediff(Stagger);Items.Mote(v,"踉跄",new Color(.9f,.8f,.6f));return true;
+   v.health.AddHediff(Stagger);Items.Mote(v,"踉跄".Loc(),new Color(.9f,.8f,.6f));return true;
   }
   // ---------- 敏 ----------
   public static float ShotAgainst(Pawn target,Pawn shooter){
@@ -275,7 +275,7 @@ namespace LichPhylactery {
    if(evadeTick.TryGetValue(id,out int last) && now>=last && now-last<EvadeWindow)return false;
    evadeTick[id]=now;
    if(Roll>=EvadeChance)return false;
-   Items.Mote(v,"落空",new Color(.8f,.9f,1f));return true;
+   Items.Mote(v,"落空".Loc(),new Color(.8f,.9f,1f));return true;
   }
   public static bool ImmuneToSentinel(Pawn p)=>Has(p,Adventurer.Dex);
   // ---------- 体：硬撑 ----------
@@ -288,7 +288,7 @@ namespace LichPhylactery {
    bool mythic=(h.mythicMask&4)!=0;
    if(h.holdStart==int.MinValue || now-h.holdStart>=HoldPeriod || now<h.holdStart){h.holdStart=now;h.holdUses=0;}
    if(h.holdUses>=(mythic?2:1))return false;
-   h.holdUses++;h.holdUntil=now+(mythic?MythicHoldTicks:HoldTicks);Items.Mote(p,"硬撑！",new Color(1f,.6f,.4f));return true;
+   h.holdUses++;h.holdUntil=now+(mythic?MythicHoldTicks:HoldTicks);Items.Mote(p,"硬撑！".Loc(),new Color(1f,.6f,.4f));return true;
   }
   public static void HoldExpired(Hediff_Adventurer h){
    h.holdUntil=0;var p=h.pawn;if(p==null || p.Dead || p.Downed)return;
@@ -341,7 +341,7 @@ namespace LichPhylactery {
  public static class ExaltedHediffAdded {
   static bool Prefix(Hediff hediff,Pawn ___pawn){
    if(Exalted.Count==0 || hediff==null)return true;
-   if(Exalted.StaggerImmune(___pawn) && (hediff.def==Exalted.Stagger || hediff.def.defName.IndexOf("Knock",StringComparison.Ordinal)>=0)){Items.Mote(___pawn,"撼山",new Color(.95f,.85f,.45f));return false;}
+   if(Exalted.StaggerImmune(___pawn) && (hediff.def==Exalted.Stagger || hediff.def.defName.IndexOf("Knock",StringComparison.Ordinal)>=0)){Items.Mote(___pawn,"撼山".Loc(),new Color(.95f,.85f,.45f));return false;}
    return true;
   }
   // 明察：心灵类状态持续时间减半。
@@ -420,11 +420,11 @@ namespace LichPhylactery {
    if(!__result || __state==null || !(parms.target is Map map))return;var seer=Seer(map);if(seer==null)return;
    var raiders=map.lordManager.lords.Where(l=>!__state.Contains(l) && l.faction!=null && l.faction.HostileTo(Faction.OfPlayer)).SelectMany(l=>l.ownedPawns).ToList();
    if(raiders.Count==0)return;Exalted.Letters++;if(Adventurer.TestSuppressed)return;
-   var sb=new StringBuilder();sb.AppendLine(seer.LabelShort+"在它们出现之前就看见了："+(parms.faction?.Name??"敌人")+"，共 "+raiders.Count+" 人。");
-   var lead=raiders.Where(r=>AdventurerEnemies.IsLeader(r) || Adventurer.Get(r)?.storyLevel==true).ToList();if(lead.Count>0)sb.AppendLine("领头的："+string.Join("、",lead.Select(r=>r.LabelShort)));
-   int top=raiders.Select(r=>Adventurer.Get(r)?.level??0).DefaultIfEmpty(0).Max();if(top>0)sb.AppendLine("最高冒险者等级："+top);
-   int ex=raiders.Count(r=>Exalted.MaskOf(r)!=0);if(ex>0)sb.AppendLine("其中 "+ex+" 人带着超凡属性。");
-   Find.LetterStack.ReceiveLetter("先知的预感",sb.ToString().TrimEnd(),LetterDefOf.ThreatSmall,new LookTargets(raiders));
+   var sb=new StringBuilder();sb.AppendLine(seer.LabelShort+"在它们出现之前就看见了：".Loc()+(parms.faction?.Name??"敌人".Loc())+"，共 ".Loc()+raiders.Count+" 人。".Loc());
+   var lead=raiders.Where(r=>AdventurerEnemies.IsLeader(r) || Adventurer.Get(r)?.storyLevel==true).ToList();if(lead.Count>0)sb.AppendLine("领头的：".Loc()+string.Join("、".Loc(),lead.Select(r=>r.LabelShort)));
+   int top=raiders.Select(r=>Adventurer.Get(r)?.level??0).DefaultIfEmpty(0).Max();if(top>0)sb.AppendLine("最高冒险者等级：".Loc()+top);
+   int ex=raiders.Count(r=>Exalted.MaskOf(r)!=0);if(ex>0)sb.AppendLine("其中 ".Loc()+ex+" 人带着超凡属性。".Loc());
+   Find.LetterStack.ReceiveLetter("先知的预感".Loc(),sb.ToString().TrimEnd(),LetterDefOf.ThreatSmall,new LookTargets(raiders));
   }
   static Pawn Seer(Map map){foreach(var p in map.mapPawns.FreeColonistsSpawned)if(Exalted.Mythic(p,Adventurer.Wis))return p;return null;}
  }
@@ -437,15 +437,15 @@ namespace LichPhylactery {
   public override bool ShouldRemove=>mask==0;
   public override string LabelBase{get{
    var parts=new List<string>();
-   for(int a=0;a<6;a++){if((mask&1<<a)==0)continue;parts.Add((mask&1<<(a+6))!=0?"神话·"+Exalted.MythicNames[a]:"超凡·"+Exalted.ExaltedNames[a]);}
-   return parts.Count==0?def.label:string.Join("、",parts);
+   for(int a=0;a<6;a++){if((mask&1<<a)==0)continue;parts.Add((mask&1<<(a+6))!=0?"神话·".Loc()+Exalted.MythicNames[a]:"超凡·".Loc()+Exalted.ExaltedNames[a]);}
+   return parts.Count==0?def.label:string.Join("、".Loc(),parts);
   }}
-  public override string LabelInBrackets=>active?null:"未生效";
+  public override string LabelInBrackets=>active?null:"未生效".Loc();
   public override Color LabelColor=>!active?Grey:(mask>>6&63)!=0?Purple:Gold;
   public override string TipStringExtra{get{
    var sb=new StringBuilder();
-   if(!active)sb.AppendLine("效果未生效："+(Exalted.OffReason??"属性刚变化，稍后生效")).AppendLine();
-   for(int a=0;a<6;a++){if((mask&1<<a)==0)continue;bool my=(mask&1<<(a+6))!=0;sb.AppendLine(Adventurer.Names[a]+"："+Exalted.Describe(a,my));}
+   if(!active)sb.AppendLine("效果未生效：".Loc()+(Exalted.OffReason??"属性刚变化，稍后生效".Loc())).AppendLine();
+   for(int a=0;a<6;a++){if((mask&1<<a)==0)continue;bool my=(mask&1<<(a+6))!=0;sb.AppendLine(Adventurer.Names[a]+"：".Loc()+Exalted.Describe(a,my));}
    return sb.ToString().TrimEnd();
   }}
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref mask,"lpMask");Scribe_Values.Look(ref active,"lpActive",true);}
@@ -466,9 +466,9 @@ namespace LichPhylactery {
  public static class ExaltedSettings {
   public static void Draw(Listing_Standard l){
    var s=LichMod.Settings;
-   l.CheckboxLabeled("超凡属性特性",ref s.exaltedScores,"六维的有效值达到 20 时获得该项的超凡特性（巨人之力、疾影、不屈之躯、洞彻心智、明察、威仪）；24，或 20 + 传奇冒险者 + 对应两项传奇属性点合计 20 时升为神话。降到 20 以下暂停，回升恢复。获得时发一封信。");
+   l.CheckboxLabeled("超凡属性特性".Loc(),ref s.exaltedScores,"六维的有效值达到 20 时获得该项的超凡特性（巨人之力、疾影、不屈之躯、洞彻心智、明察、威仪）；24，或 20 + 传奇冒险者 + 对应两项传奇属性点合计 20 时升为神话。降到 20 以下暂停，回升恢复。获得时发一封信。".Loc());
    var old=GUI.color;if(!Adventurer.IsekaiActive)GUI.color=Color.gray;
-   l.CheckboxLabeled("共存模式下超凡特性仍生效"+(Adventurer.IsekaiActive?"":"（未检测到 Isekai）"),ref s.exaltedCoexist,"默认开：Isekai 共存模式下六维的数值效果交给 Isekai，超凡特性大多是规则效果（踉跄、硬撑、显形、光环等），和 Isekai 的数值不叠加，照常生效。取消勾选则共存模式下超凡也一起关闭（分页和健康页仍显示，灰色）。");
+   l.CheckboxLabeled("共存模式下超凡特性仍生效".Loc()+(Adventurer.IsekaiActive?"":"（未检测到 Isekai）".Loc()),ref s.exaltedCoexist,"默认开：Isekai 共存模式下六维的数值效果交给 Isekai，超凡特性大多是规则效果（踉跄、硬撑、显形、光环等），和 Isekai 的数值不叠加，照常生效。取消勾选则共存模式下超凡也一起关闭（分页和健康页仍显示，灰色）。".Loc());
    GUI.color=old;
   }
  }

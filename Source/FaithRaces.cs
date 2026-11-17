@@ -27,20 +27,20 @@ namespace LichPhylactery {
   // ---------- 神选仪式的血脉转换 ----------
   public static XenotypeDef ConversionFor(LP_DeityDef god)=>god==null?null:god.Good?Aasimar:god.Evil?Tiefling:null;
   public static string CannotConvert(Pawn p){
-   if(p==null)return "没有人";
-   if(Items.IsLich(p))return "巫妖的身体不再属于凡人";
-   if(MindFlayer.IsMindFlayer(p))return "夺心魔的身体不能改换血脉";
-   if(Races124.IsGenie(p))return "巨灵的身体不能改换血脉";
-   if(Races124.IsTitan(p))return "泰坦的身体不能改换血脉";
-   if(FrostGiant.Active(p) || FireGiant.Active(p))return "巨人的血脉不能改换";
-   if(NetherilAscension.IsArcaneDemigod(p))return "奥术半神的身体不能改换血脉";
-   if(p.genes==null)return "没有基因";
+   if(p==null)return "没有人".Loc();
+   if(Items.IsLich(p))return "巫妖的身体不再属于凡人".Loc();
+   if(MindFlayer.IsMindFlayer(p))return "夺心魔的身体不能改换血脉".Loc();
+   if(Races124.IsGenie(p))return "巨灵的身体不能改换血脉".Loc();
+   if(Races124.IsTitan(p))return "泰坦的身体不能改换血脉".Loc();
+   if(FrostGiant.Active(p) || FireGiant.Active(p))return "巨人的血脉不能改换".Loc();
+   if(NetherilAscension.IsArcaneDemigod(p))return "奥术半神的身体不能改换血脉".Loc();
+   if(p.genes==null)return "没有基因".Loc();
    return null;
   }
   public static string ConversionBlocked(Pawn p,LP_DeityDef god){
-   var x=ConversionFor(god);if(x==null)return god?.label+"不改换信徒的血脉";
-   if(Faith.Planetouched!=null && !Faith.Planetouched.IsFinished)return "需要先研究“天界与地狱血统”";
-   if(p.genes?.Xenotype==x)return p.LabelShort+"已经是"+x.label+"了";
+   var x=ConversionFor(god);if(x==null)return god?.label+"不改换信徒的血脉".Loc();
+   if(Faith.Planetouched!=null && !Faith.Planetouched.IsFinished)return "需要先研究“天界与地狱血统”".Loc();
+   if(p.genes?.Xenotype==x)return p.LabelShort+"已经是".Loc()+x.label+"了".Loc();
    return CannotConvert(p);
   }
   // 只替换异种基因并设异种型；内生基因保留。
@@ -72,7 +72,7 @@ namespace LichPhylactery {
   public static bool MakeCelestialChild(Pawn baby,XenotypeDef x){
    if(baby?.genes==null || x==null)return false;
    baby.genes.SetXenotype(x);Reroll(baby,false);
-   Find.LetterStack.ReceiveLetter("天界之子",baby.LabelShort+"降生时身上带着"+(x==Aasimar?"天界的光":"九狱的印记")+"："+FaithUtility.Patron?.label+"的神力让孩子成了"+x.label+"。",LetterDefOf.PositiveEvent,baby);
+   Find.LetterStack.ReceiveLetter("天界之子".Loc(),baby.LabelShort+"降生时身上带着".Loc()+(x==Aasimar?"天界的光".Loc():"九狱的印记".Loc())+"：".Loc()+FaithUtility.Patron?.label+"的神力让孩子成了".Loc()+x.label+"。".Loc(),LetterDefOf.PositiveEvent,baby);
    return true;
   }
 
@@ -81,18 +81,18 @@ namespace LichPhylactery {
   public static int HealingHands(Pawn caster,Pawn t){
    if(t==null)return 0;float a=HealingAmount(caster);int n=0;
    foreach(var i in t.health.hediffSet.hediffs.OfType<Hediff_Injury>().Where(x=>!x.IsPermanent()).ToList()){i.Heal(a);n++;}
-   if(t.Spawned)FleckMaker.ThrowLightningGlow(t.DrawPos,t.Map,.8f);Items.Mote(t,"治疗之手",new Color(1f,.9f,.6f));
+   if(t.Spawned)FleckMaker.ThrowLightningGlow(t.DrawPos,t.Map,.8f);Items.Mote(t,"治疗之手".Loc(),new Color(1f,.9f,.6f));
    return n;
   }
   public static int Shroud(Pawn c){
    int n=0;if(c?.Map==null)return 0;
-   foreach(var o in Races124.PawnsNear(c.Map,c.Position,ShroudRadius).Where(o=>o!=c && !o.Dead && !o.Downed && o.HostileTo(c) && o.RaceProps.IsFlesh && !Items.Undead(o)).ToList())if(Miracles.Flee(o,ShroudTicks,"亡者裹布"))n++;
+   foreach(var o in Races124.PawnsNear(c.Map,c.Position,ShroudRadius).Where(o=>o!=c && !o.Dead && !o.Downed && o.HostileTo(c) && o.RaceProps.IsFlesh && !Items.Undead(o)).ToList())if(Miracles.Flee(o,ShroudTicks,"亡者裹布".Loc()))n++;
    if(c.Spawned)FleckMaker.Static(c.Position,c.Map,FleckDefOf.PsycastAreaEffect,ShroudRadius);
    return n;
   }
   public static void Pact(Pawn c){
    var t=DefDatabase<ThoughtDef>.GetNamedSilentFail("LP_InfernalBargain");if(t!=null)c.needs?.mood?.thoughts?.memories?.TryGainMemory(t);
-   Items.Give(c,"LP_InfernalPactActive",PactTicks);Items.Mote(c,"魔鬼契约",new Color(.85f,.3f,.25f));
+   Items.Give(c,"LP_InfernalPactActive",PactTicks);Items.Mote(c,"魔鬼契约".Loc(),new Color(.85f,.3f,.25f));
   }
   [ThreadStatic] static bool rebuking;
   public static bool TryRebuke(Pawn victim,DamageInfo dinfo,float dealt){
@@ -102,7 +102,7 @@ namespace LichPhylactery {
    if(Rand.Value>=RebukeChance)return false;
    if(g!=null)g.readyTick=now+RebukeCooldown;
    rebuking=true;try{a.TakeDamage(new DamageInfo(DamageDefOf.Burn,RebukeDamage,0f,-1f,victim));}finally{rebuking=false;}
-   Items.Mote(victim,"地狱叱喝",new Color(1f,.4f,.2f));
+   Items.Mote(victim,"地狱叱喝".Loc(),new Color(1f,.4f,.2f));
    return true;
   }
  }
@@ -115,7 +115,7 @@ namespace LichPhylactery {
   }
   public override bool Valid(LocalTargetInfo target,bool throwMessages=false){
    if(!base.Valid(target,throwMessages))return false;
-   if(Props.effect=="HealingHands" && (target.Pawn==null || target.Pawn.HostileTo(parent.pawn))){if(throwMessages)Messages.Message("只能治疗友军。",MessageTypeDefOf.RejectInput,false);return false;}
+   if(Props.effect=="HealingHands" && (target.Pawn==null || target.Pawn.HostileTo(parent.pawn))){if(throwMessages)Messages.Message("只能治疗友军。".Loc(),MessageTypeDefOf.RejectInput,false);return false;}
    return true;
   }
  }
@@ -126,7 +126,7 @@ namespace LichPhylactery {
   public override IEnumerable<Gizmo> GetGizmos(){
    foreach(var g in base.GetGizmos())yield return g;
    if(pawn.Faction?.IsPlayer!=true || pawn.Dead)yield break;
-   yield return new Command_Toggle{defaultLabel="光辉消耗",defaultDesc="开着时2格内的敌人每秒受2点神圣伤害（不死者与邪魔×2），自己每10秒受1点烧伤。",icon=ContentFinder<Texture2D>.Get("Faith/Abilities/RadiantConsumption",false)??BaseContent.BadTex,isActive=()=>on,toggleAction=()=>on=!on};
+   yield return new Command_Toggle{defaultLabel="光辉消耗".Loc(),defaultDesc="开着时2格内的敌人每秒受2点神圣伤害（不死者与邪魔×2），自己每10秒受1点烧伤。".Loc(),icon=ContentFinder<Texture2D>.Get("Faith/Abilities/RadiantConsumption",false)??BaseContent.BadTex,isActive=()=>on,toggleAction=()=>on=!on};
   }
   public override void TickInterval(int delta){
    base.TickInterval(delta);if(!on || !Active || pawn.Dead || !pawn.Spawned || pawn.Downed)return;

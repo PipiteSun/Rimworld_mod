@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 治疗药水 -->
+  <LP_PotionHealing.label>healing potion</LP_PotionHealing.label>
+  <!-- 以巨魔血为底调成的红色药水。喝下后所有出血立刻止住（相当于一次简单包扎），6小时内自然愈合速度×3。巫妖和死灵造物喝了无效。 -->
+  <LP_PotionHealing.description>A red potion made with troll blood as a base. All bleeding stops at once after drinking (like a simple bandaging), and natural healing speed ×3 for 6 hours. No effect on liches and necromantic constructs.</LP_PotionHealing.description>
+  <!-- 饮用{0} -->
+  <LP_PotionHealing.ingestible.ingestCommandString>drink {0}</LP_PotionHealing.ingestible.ingestCommandString>
+  <!-- 正在饮用{0}。 -->
+  <LP_PotionHealing.ingestible.ingestReportString>Drinking {0}.</LP_PotionHealing.ingestible.ingestReportString>
+  <!-- 强效治疗药水 -->
+  <LP_PotionGreaterHealing.label>greater healing potion</LP_PotionGreaterHealing.label>
+  <!-- 浓稠的深红色药水。效果同治疗药水，另外能长回一处缺失的手指或脚趾（只限这类小部位）。巫妖和死灵造物喝了无效。 -->
+  <LP_PotionGreaterHealing.description>A thick crimson potion. Same effect as a healing potion, and also regrows one missing finger or toe (only small parts like these). No effect on liches and necromantic constructs.</LP_PotionGreaterHealing.description>
+  <!-- 饮用{0} -->
+  <LP_PotionGreaterHealing.ingestible.ingestCommandString>drink {0}</LP_PotionGreaterHealing.ingestible.ingestCommandString>
+  <!-- 正在饮用{0}。 -->
+  <LP_PotionGreaterHealing.ingestible.ingestReportString>Drinking {0}.</LP_PotionGreaterHealing.ingestible.ingestReportString>
+  <!-- 巨人之力药水 -->
+  <LP_PotionGiantStrength.label>potion of giant strength</LP_PotionGiantStrength.label>
+  <!-- 橙色的药水，喝下去像吞了一团火。12小时内近战伤害×1.3、搬运量×1.5，身形看上去也大了一圈。 -->
+  <LP_PotionGiantStrength.description>An orange potion that feels like swallowing a ball of fire. For 12 hours melee damage ×1.3, carrying capacity ×1.5, and the body looks a size bigger too.</LP_PotionGiantStrength.description>
+  <!-- 饮用{0} -->
+  <LP_PotionGiantStrength.ingestible.ingestCommandString>drink {0}</LP_PotionGiantStrength.ingestible.ingestCommandString>
+  <!-- 正在饮用{0}。 -->
+  <LP_PotionGiantStrength.ingestible.ingestReportString>Drinking {0}.</LP_PotionGiantStrength.ingestible.ingestReportString>
+  <!-- 抗火药水 -->
+  <LP_PotionFireResistance.label>fire resistance potion</LP_PotionFireResistance.label>
+  <!-- 微温的琥珀色药水。24小时内不会着火，受到的火焰伤害-75%。 -->
+  <LP_PotionFireResistance.description>A lukewarm amber potion. For 24 hours you won't catch fire, and fire damage taken -75%.</LP_PotionFireResistance.description>
+  <!-- 饮用{0} -->
+  <LP_PotionFireResistance.ingestible.ingestCommandString>drink {0}</LP_PotionFireResistance.ingestible.ingestCommandString>
+  <!-- 正在饮用{0}。 -->
+  <LP_PotionFireResistance.ingestible.ingestReportString>Drinking {0}.</LP_PotionFireResistance.ingestible.ingestReportString>
+  <!-- 隐形药水 -->
+  <LP_PotionInvisibility.label>potion of invisibility</LP_PotionInvisibility.label>
+  <!-- 几乎透明的药水，瓶子拿在手里都难以看清。喝下后2小时内隐身，攻击时立即现形、药效结束。无法制作，只能从黑网商队买到。 -->
+  <LP_PotionInvisibility.description>A nearly transparent potion; even the bottle is hard to see in the hand. After drinking, invisible for 2 hours; attacking reveals you at once and ends the effect. Cannot be crafted; only bought from Black Network caravans.</LP_PotionInvisibility.description>
+  <!-- 饮用{0} -->
+  <LP_PotionInvisibility.ingestible.ingestCommandString>drink {0}</LP_PotionInvisibility.ingestible.ingestCommandString>
+  <!-- 正在饮用{0}。 -->
+  <LP_PotionInvisibility.ingestible.ingestReportString>Drinking {0}.</LP_PotionInvisibility.ingestible.ingestReportString>
+  <!-- 英雄药水 -->
+  <LP_PotionHeroism.label>potion of heroism</LP_PotionHeroism.label>
+  <!-- 金光闪闪的烈性药水。8小时内不会精神崩溃，免疫恐惧类效果（例如巫妖的恐惧凝视），意识+10%。 -->
+  <LP_PotionHeroism.description>A gleaming golden strong potion. For 8 hours no mental breaks, immune to fear effects (such as a lich's fear gaze), consciousness +10%.</LP_PotionHeroism.description>
+  <!-- 饮用{0} -->
+  <LP_PotionHeroism.ingestible.ingestCommandString>drink {0}</LP_PotionHeroism.ingestible.ingestCommandString>
+  <!-- 正在饮用{0}。 -->
+  <LP_PotionHeroism.ingestible.ingestReportString>Drinking {0}.</LP_PotionHeroism.ingestible.ingestReportString>
+  <!-- 心智护盾药水 -->
+  <LP_PotionMindShield.label>mind shield potion</LP_PotionMindShield.label>
+  <!-- 从夺心魔脑浆罐里提炼出的淡紫色药水。12小时内心智抗性+40%（与种族抗性相加，最多95%）。 -->
+  <LP_PotionMindShield.description>A pale purple potion distilled from a mind flayer brine jar. For 12 hours mind resistance +40% (adds to racial resistance, up to 95%).</LP_PotionMindShield.description>
+  <!-- 饮用{0} -->
+  <LP_PotionMindShield.ingestible.ingestCommandString>drink {0}</LP_PotionMindShield.ingestible.ingestCommandString>
+  <!-- 正在饮用{0}。 -->
+  <LP_PotionMindShield.ingestible.ingestReportString>Drinking {0}.</LP_PotionMindShield.ingestible.ingestReportString>
+  <!-- 巨魔再生剂 -->
+  <LP_PotionTrollRegen.label>troll regenerant</LP_PotionTrollRegen.label>
+  <!-- 五瓶巨魔血浓缩成的一剂暗绿色药剂。3天内获得弱化的巨魔再生：饱食度不低于50%时缓慢修复伤口（巨魔的四分之一），不会长回断肢，也不会复活；饥饿速度×1.5。药效结束时有10%概率染上巨魔血瘾。 -->
+  <LP_PotionTrollRegen.description>A dose of dark green draught concentrated from five vials of troll blood. For 3 days you gain weakened troll regeneration: wounds slowly heal while food is at least 50% (a quarter of a troll's rate); doesn't regrow lost limbs or revive; hunger rate ×1.5. When it wears off there's a 10% chance of troll blood addiction.</LP_PotionTrollRegen.description>
+  <!-- 饮用{0} -->
+  <LP_PotionTrollRegen.ingestible.ingestCommandString>drink {0}</LP_PotionTrollRegen.ingestible.ingestCommandString>
+  <!-- 正在饮用{0}。 -->
+  <LP_PotionTrollRegen.ingestible.ingestReportString>Drinking {0}.</LP_PotionTrollRegen.ingestible.ingestReportString>
+</LanguageData>

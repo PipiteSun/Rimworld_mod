@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 神恩庇佑 -->
+  <LP_DS_FavoredBuff.label>favored by the gods</LP_DS_FavoredBuff.label>
+  <!-- 神明看顾着这一刻：手术成功率 +20%，包扎质量 +20%。 -->
+  <LP_DS_FavoredBuff.description>The gods watch over this moment: surgery success +20%, tend quality +20%.</LP_DS_FavoredBuff.description>
+  <!-- 天使形态 -->
+  <LP_DS_Angelic.label>angelic form</LP_DS_Angelic.label>
+  <!-- 天使之翼展开：3 格内的队友每 10 秒治疗 2 点伤势（严重度），自己移动 +20%。 -->
+  <LP_DS_Angelic.description>Angelic wings unfurled: teammates within 3 cells heal 2 injury every 10 seconds (severity), your movement +20%.</LP_DS_Angelic.description>
+  <!-- 影犬猎物 -->
+  <LP_SM_Prey.label>hound's prey</LP_SM_Prey.label>
+  <!-- 被影犬盯上了：无法隐形。 -->
+  <LP_SM_Prey.description>Hunted by a hound of ill omen: can't turn invisible.</LP_SM_Prey.description>
+  <!-- 影犬 -->
+  <LP_SM_HoundMark.label>hound of ill omen</LP_SM_HoundMark.label>
+  <!-- 暗影凝成的猎犬：咬中目标时有 30% 的成功率让它恐惧逃跑 5 秒。 -->
+  <LP_SM_HoundMark.description>A hound congealed from shadow: bites have a 30% chance to make the target flee in fear for 5 seconds.</LP_SM_HoundMark.description>
+  <!-- 暗影步余势 -->
+  <LP_SM_StepBuff.label>shadow step momentum</LP_SM_StepBuff.label>
+  <!-- 刚从暗影中走出：下一个术士法术威力 +20%。 -->
+  <LP_SM_StepBuff.description>Just stepped out of the shadows: the next sorcerer spell gets +20% power.</LP_SM_StepBuff.description>
+  <!-- 影之形态 -->
+  <LP_SM_Form.label>umbral form</LP_SM_Form.label>
+  <!-- 身体化为暗影：除火焰、神圣、力场外受到的伤害减半；站在黑暗里时，敌人的远程攻击有 30% 落空。 -->
+  <LP_SM_Form.description>Body turned into shadow: damage taken halved except fire, holy and force; while standing in darkness, enemy ranged attacks miss 30% of the time.</LP_SM_Form.description>
+  <!-- 机械亲和 -->
+  <LP_CW_Affinity.label>mechanical affinity</LP_CW_Affinity.label>
+  <!-- 时钟之魂：修理建筑和机械体的速度 +30%，受到机械体的伤害 -10%。 -->
+  <LP_CW_Affinity.description>Clockwork Soul: building and mechanoid repair speed +30%, damage taken from mechanoids -10%.</LP_CW_Affinity.description>
+  <!-- 秩序带宽 -->
+  <LP_CW_Bandwidth.label>order bandwidth</LP_CW_Bandwidth.label>
+  <!-- 秩序护盾让机械师的思绪更有条理：控制带宽 +2。 -->
+  <LP_CW_Bandwidth.description>The order shield organizes a mechanitor's thoughts: control bandwidth +2.</LP_CW_Bandwidth.description>
+  <!-- 秩序领域 -->
+  <LP_CW_DomainBuff.label>clockwork cavalcade</LP_CW_DomainBuff.label>
+  <!-- 秩序之力校准了每一次出手：近战命中 +30%、射击精度提高，不会被暴击。 -->
+  <LP_CW_DomainBuff.description>The power of order calibrates every strike: melee hit +30%, better shooting accuracy, can't be critically hit.</LP_CW_DomainBuff.description>
+</LanguageData>

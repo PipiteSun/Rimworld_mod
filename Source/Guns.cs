@@ -25,10 +25,10 @@ namespace LichPhylactery {
    var inherited=base.SpecialDisplayStats();if(inherited!=null)foreach(var e in inherited)yield return e;
    if(!Arcana.Scales(Props.group))yield break;
    var p=Wielder;
-   string value=p==null?"按持有者计算":Arcana.FactorLine(p,parent.def);
-   yield return new StatDrawEntry(StatCategoryDefOf.Weapon_Ranged,"魔力系数",value,Arcana.Explain(Props.group),5100);
+   string value=p==null?"按持有者计算".Loc():Arcana.FactorLine(p,parent.def);
+   yield return new StatDrawEntry(StatCategoryDefOf.Weapon_Ranged,"魔力系数".Loc(),value,Arcana.Explain(Props.group),5100);
   }
-  public override string CompInspectStringExtra(){var p=Wielder;return p==null || !Arcana.Scales(Props.group)?null:"魔力系数 "+Arcana.FactorLine(p,parent.def);}
+  public override string CompInspectStringExtra(){var p=Wielder;return p==null || !Arcana.Scales(Props.group)?null:"魔力系数 ".Loc()+Arcana.FactorLine(p,parent.def);}
  }
  // 投射物附加效果：点燃、EMP 爆发 + 人形眩晕、命中状态、穿透、必中。
  public class ArcaneShotExt : DefModExtension {
@@ -69,7 +69,7 @@ namespace LichPhylactery {
    float f=0f;
    if(group=="F" && CommonRaces.IsDwarf(p))f=1f;     // 矮人符文共鸣
    if(group=="G" && RedRobe(p))f=1f;                 // 敌方红袍法师
-   foreach(var hook in SensitivityFloorHooks){try{f=Mathf.Max(f,hook(p,group));}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 魔力系数联动出错："+e,9129001);}}
+   foreach(var hook in SensitivityFloorHooks){try{f=Mathf.Max(f,hook(p,group));}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 魔力系数联动出错：".Loc()+e,9129001);}}
    return f;
   }
   public static float RawSensitivity(Pawn p)=>p==null?1f:p.GetStatValue(StatDefOf.PsychicSensitivity);
@@ -88,24 +88,24 @@ namespace LichPhylactery {
   }
   public static string FactorLine(Pawn p,ThingDef weapon){
    var g=Group(weapon);float s=Sensitivity(p,g);
-   var line="×"+FactorFor(p,weapon).ToString("0.##")+"（心灵敏感度 "+s.ToStringPercent()+"）";
-   if(g=="G" && !Linked(p))line+="，没有心灵链接 ×0.7";
-   if(Charged(p) && Magic(g))line+="，魔力充能 +0.5";
+   var line="×"+FactorFor(p,weapon).ToString("0.##")+"（心灵敏感度 ".Loc()+s.ToStringPercent()+"）".Loc();
+   if(g=="G" && !Linked(p))line+="，没有心灵链接 ×0.7".Loc();
+   if(Charged(p) && Magic(g))line+="，魔力充能 +0.5".Loc();
    return line;
   }
-  public static string Explain(string g)=>g=="G"?"法杖的伤害 × 魔力系数。魔力系数 = 心灵敏感度（最低 0.2，不封顶）；敏感度为 0 时法杖毫无回应。有心灵链接的持有者每次施放增加心灵熵（模组设置），熵满时不能施放；没有心灵链接时伤害只有 70%。穿寒铁护甲或有心智抗性的目标受到的伤害 -25%。"
-   :g=="F"?"矮人枪械的伤害 × 魔力系数。魔力系数 = 0.5 + 0.5 × 心灵敏感度 与 心灵敏感度 中较大的一个，不封顶（敏感度 0 也有半伤，100% 以上按敏感度乘）；矮人不足 100% 按 100% 算。不加心灵熵。穿寒铁护甲或有心智抗性的目标受到的伤害 -25%。"
-   :"魔法枪的伤害 × 魔力系数。魔力系数 = 心灵敏感度，最低 1，不封顶（敏感度低于 100% 不减伤，200% 打 2 倍伤害）。不加心灵熵。";
+  public static string Explain(string g)=>g=="G"?"法杖的伤害 × 魔力系数。魔力系数 = 心灵敏感度（最低 0.2，不封顶）；敏感度为 0 时法杖毫无回应。有心灵链接的持有者每次施放增加心灵熵（模组设置），熵满时不能施放；没有心灵链接时伤害只有 70%。穿寒铁护甲或有心智抗性的目标受到的伤害 -25%。".Loc()
+   :g=="F"?"矮人枪械的伤害 × 魔力系数。魔力系数 = 0.5 + 0.5 × 心灵敏感度 与 心灵敏感度 中较大的一个，不封顶（敏感度 0 也有半伤，100% 以上按敏感度乘）；矮人不足 100% 按 100% 算。不加心灵熵。穿寒铁护甲或有心智抗性的目标受到的伤害 -25%。".Loc()
+   :"魔法枪的伤害 × 魔力系数。魔力系数 = 心灵敏感度，最低 1，不封顶（敏感度低于 100% 不减伤，200% 打 2 倍伤害）。不加心灵熵。".Loc();
   public static int Scaled(int raw,float factor){if(factor==1f)return raw;if(factor<=0f)return 0;return Mathf.Max(1,Mathf.RoundToInt(raw*factor));}
 
   // ---------- 法杖能否施放 ----------
   public static float EntropyPerShot=>LichMod.Settings?.staffEntropy??2f;
   public static bool CanFire(Pawn p,ThingDef weapon,out string reason){
    reason=null;if(p==null || Group(weapon)!="G")return true;
-   if(Factor("G",Sensitivity(p,"G"))<=0f){reason="法杖毫无回应（心灵敏感度为 0）";return false;}
-   if(DispelLocked(p)){reason="驱散粉尘压住了魔力，法杖暂时施放不出来";return false;}
+   if(Factor("G",Sensitivity(p,"G"))<=0f){reason="法杖毫无回应（心灵敏感度为 0）".Loc();return false;}
+   if(DispelLocked(p)){reason="驱散粉尘压住了魔力，法杖暂时施放不出来".Loc();return false;}
    if(NetherilAscension.WeaveCollapsed(p.MapHeld) && !HeroDestiny.WeaveImmune(p)){reason=NetherilAscension.CollapseReason;return false;} // 1.58.0 魔网之子升华不受魔网崩溃影响
-   if(Linked(p) && p.psychicEntropy!=null && EntropyPerShot>0f && p.psychicEntropy.WouldOverflowEntropy(EntropyPerShot)){reason="心灵熵已满，法杖施放不出来";return false;}
+   if(Linked(p) && p.psychicEntropy!=null && EntropyPerShot>0f && p.psychicEntropy.WouldOverflowEntropy(EntropyPerShot)){reason="心灵熵已满，法杖施放不出来".Loc();return false;}
    return true;
   }
   public static bool PaysEntropy(Pawn p,ThingDef weapon)=>p!=null && Group(weapon)=="G" && Linked(p) && p.psychicEntropy!=null && EntropyPerShot>0f;
@@ -160,7 +160,7 @@ namespace LichPhylactery {
   public static QualityCategory CraftedQuality(QualityCategory q,Pawn worker,ThingDef def){
    if(Props(def)==null)return q;
    if(Group(def)=="F" && CommonRaces.IsDwarf(worker) && q<QualityCategory.Masterwork)q++;
-   int bonus=0;foreach(var hook in QualityBonusHooks){try{bonus+=hook(worker,def);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 武器品质联动出错："+e,9129002);}}
+   int bonus=0;foreach(var hook in QualityBonusHooks){try{bonus+=hook(worker,def);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 武器品质联动出错：".Loc()+e,9129002);}}
    if(bonus>0)q=(QualityCategory)Math.Min((int)QualityCategory.Legendary,(int)q+bonus);
    return q;
   }
@@ -229,7 +229,7 @@ namespace LichPhylactery {
    victim.TakeDamage(new DamageInfo(DamageDef,amount,pen,angle,inst,part,weaponDef,DamageInfo.SourceCategory.ThingOrUnknown,intended));
    if(Arcana.Vital(part) && Rand.Chance(ext.pierceChance)){
     var next=Arcana.PierceTarget(map,from,victim);
-    if(next!=null){next.TakeDamage(new DamageInfo(DamageDef,amount,pen,angle,inst,null,weaponDef));Items.Mote(next,"贯穿",new Color(.85f,.85f,.95f));}
+    if(next!=null){next.TakeDamage(new DamageInfo(DamageDef,amount,pen,angle,inst,null,weaponDef));Items.Mote(next,"贯穿".Loc(),new Color(.85f,.85f,.95f));}
    }
   }
  }
@@ -270,7 +270,7 @@ namespace LichPhylactery {
  public static class DwarfOnlyEquip {
   static void Postfix(Thing thing,Pawn pawn,ref string cantReason,ref bool __result){
    if(!__result || thing==null || pawn==null)return;
-   if(Arcana.Props(thing.def)?.dwarfOnly==true && !CommonRaces.IsDwarf(pawn)){__result=false;cantReason="只有矮人能驾驭"+thing.def.label+"";}
+   if(Arcana.Props(thing.def)?.dwarfOnly==true && !CommonRaces.IsDwarf(pawn)){__result=false;cantReason="只有矮人能驾驭".Loc()+thing.def.label+"";}
   }
  }
  // AI 不会主动捡起对自己毫无回应的法杖。
@@ -295,7 +295,7 @@ namespace LichPhylactery {
   public const float SkyfireSpeedup=.7f;
   static readonly AccessTools.FieldRef<ProjectileProperties,int> damageBase=AccessTools.FieldRefAccess<ProjectileProperties,int>("damageAmountBase");
   static readonly AccessTools.FieldRef<ProjectileProperties,float> penBase=AccessTools.FieldRefAccess<ProjectileProperties,float>("armorPenetrationBase");
-  static GunStartup(){try{SyncSkyfire();}catch(Exception e){Log.Warning("[DND边缘大陆] 同步天火降世数值失败："+e.Message);}}
+  static GunStartup(){try{SyncSkyfire();}catch(Exception e){Log.Warning("[DND边缘大陆] 同步天火降世数值失败：".Loc()+e.Message);}}
   public static bool SyncSkyfire(){
    var lance=DefDatabase<ThingDef>.GetNamedSilentFail("Gun_ChargeLance");var sky=Items.Thing("LP_Skyfire");
    if(lance?.Verbs.NullOrEmpty()!=false || sky?.Verbs.NullOrEmpty()!=false)return false;
@@ -356,10 +356,10 @@ namespace LichPhylactery {
  public static class GunSettings {
   public static void Draw(Listing_Standard l){
    l.GapLine();
-   l.CheckboxLabeled("敌人携带魔法火器",ref LichMod.Settings.enemyMagicGuns,"1.146.0 起符文火器和攻击法杖已移除，这个开关暂时没有效果。");
-   l.Label("法杖每发心灵熵："+LichMod.Settings.staffEntropy.ToString("0.#")+"（有心灵链接的持有者每次施放增加；熵满时不能施放）");
+   l.CheckboxLabeled("敌人携带魔法火器".Loc(),ref LichMod.Settings.enemyMagicGuns,"1.146.0 起符文火器和攻击法杖已移除，这个开关暂时没有效果。".Loc());
+   l.Label("法杖每发心灵熵：".Loc()+LichMod.Settings.staffEntropy.ToString("0.#")+"（有心灵链接的持有者每次施放增加；熵满时不能施放）".Loc());
    LichMod.Settings.staffEntropy=Mathf.Round(l.Slider(LichMod.Settings.staffEntropy,0f,20f)*2f)/2f;
-   l.Label("制伏伤害倍率："+LichMod.Settings.subdueDamagePercent+"%（制伏短棍、缚网弩、安眠短弓、安眠法杖让目标昏迷的速度）");
+   l.Label("制伏伤害倍率：".Loc()+LichMod.Settings.subdueDamagePercent+"%（制伏短棍、缚网弩、安眠短弓、安眠法杖让目标昏迷的速度）".Loc());
    LichMod.Settings.subdueDamagePercent=Mathf.RoundToInt(l.Slider(LichMod.Settings.subdueDamagePercent,50f,200f)/5f)*5;
   }
  }

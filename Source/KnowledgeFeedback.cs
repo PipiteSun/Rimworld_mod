@@ -38,6 +38,6 @@ namespace LichPhylactery {
  public static class ScholarSkillDecay {static bool Prefix(SkillRecord __instance)=>!KnowledgeFeedback.Scholar(__instance);}
  public partial class Hediff_Construct {
   public double knowledgeReturned;
-  public string FeedbackDescription=>kind!="Scholar"?"":"\n知识回馈：技能固定，不会因工作、学习或衰减改变；工作中本该获得的经验（按自身兴趣与学习倍率）100%传给主人对应技能，不重复乘算主人学习倍率。\n状态："+(KnowledgeFeedback.Connected(this)?"正在连接":"暂停（休眠或统御失效，经验不传递）")+"；累计回馈 "+knowledgeReturned.ToString("0.#")+" 经验。";
+  public string FeedbackDescription=>kind!="Scholar"?"":"\n知识回馈：技能固定，不会因工作、学习或衰减改变；工作中本该获得的经验（按自身兴趣与学习倍率）100%传给主人对应技能，不重复乘算主人学习倍率。\n状态：".Loc()+(KnowledgeFeedback.Connected(this)?"正在连接".Loc():"暂停（休眠或统御失效，经验不传递）".Loc())+"；累计回馈 ".Loc()+knowledgeReturned.ToString("0.#")+" 经验。".Loc();
  }
 }

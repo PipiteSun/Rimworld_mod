@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 活锁链 -->
+  <LP_ChainDevilWeapon.label>living chains</LP_ChainDevilWeapon.label>
+  <!-- 链魔身上的锁链，会自己甩出去。 -->
+  <LP_ChainDevilWeapon.description>A chain on a chain devil's body that lashes out on its own.</LP_ChainDevilWeapon.description>
+  <!-- 锁链 -->
+  <LP_ChainDevilWeapon.comps.HediffComp_VerbGiver.tools.0.label>chain</LP_ChainDevilWeapon.comps.HediffComp_VerbGiver.tools.0.label>
+  <!-- 蝎尾毒刺 -->
+  <LP_BoneDevilTailWeapon.label>scorpion tail stinger</LP_BoneDevilTailWeapon.label>
+  <!-- 骨魔的尾刺。 -->
+  <LP_BoneDevilTailWeapon.description>A bone devil's tail stinger.</LP_BoneDevilTailWeapon.description>
+  <!-- 尾刺 -->
+  <LP_BoneDevilTailWeapon.comps.HediffComp_VerbGiver.tools.0.label>tail spike</LP_BoneDevilTailWeapon.comps.HediffComp_VerbGiver.tools.0.label>
+  <!-- 骨毒 -->
+  <LP_BoneVenom.label>bone venom</LP_BoneVenom.label>
+  <!-- 骨魔尾刺的毒让手脚发麻：操作 -20%。 -->
+  <LP_BoneVenom.description>The venom of a bone devil's stinger numbs hands and feet: manipulation -20%.</LP_BoneVenom.description>
+  <!-- 遗忘 -->
+  <LP_AmnizuDrain.label>forgetfulness</LP_AmnizuDrain.label>
+  <!-- 阿姆尼祖的手指点在额头上：最拿手的一项技能暂时 -2 级。 -->
+  <LP_AmnizuDrain.description>An amnizu's finger touched the forehead: the best skill is temporarily -2 levels.</LP_AmnizuDrain.description>
+  <!-- 断树之痛 -->
+  <LP_DryadSevered.label>pain of the felled tree</LP_DryadSevered.label>
+  <!-- 林仙的树死了，像被抽掉了半条命：疼痛 ×1.5，意识 -30%。24 小时内不和一棵新树绑定就会死。 -->
+  <LP_DryadSevered.description>The dryad's tree died, like having half her life pulled out: pain ×1.5, consciousness -30%. She'll die if she doesn't bind to a new tree within 24 hours.</LP_DryadSevered.description>
+  <!-- 离树太远 -->
+  <LP_DryadDistant.label>far from the tree</LP_DryadDistant.label>
+  <!-- 离自己的树太远了（40 格以上或不在同一张地图）：移速、工作速度 ×0.5。 -->
+  <LP_DryadDistant.description>Too far from her tree (over 40 cells or not on the same map): move speed and work speed ×0.5.</LP_DryadDistant.description>
+  <!-- 嗜血 -->
+  <LP_RedcapBloodlust.label>bloodthirst</LP_RedcapBloodlust.label>
+  <!-- 红帽越砍越凶：每层近战伤害 +3。 -->
+  <LP_RedcapBloodlust.description>The redcap gets fiercer with every cut: +3 melee damage per stack.</LP_RedcapBloodlust.description>
+  <!-- 千面 -->
+  <LP_ChangelingGuise.label>thousand faces</LP_ChangelingGuise.label>
+  <!-- 正披着别人的样子。 -->
+  <LP_ChangelingGuise.description>Wearing someone else's appearance.</LP_ChangelingGuise.description>
+  <!-- 调换儿 -->
+  <LP_ChangelingHidden.label>changeling</LP_ChangelingHidden.label>
+  <!-- （隐藏） -->
+  <LP_ChangelingHidden.description>(hidden)</LP_ChangelingHidden.description>
+  <!-- 妖精长矛 -->
+  <LP_WildHunterSpearWeapon.label>fey lance</LP_WildHunterSpearWeapon.label>
+  <!-- 狂猎骑手的长矛。 -->
+  <LP_WildHunterSpearWeapon.description>A wild hunt rider's lance.</LP_WildHunterSpearWeapon.description>
+  <!-- 妖精长矛 -->
+  <LP_WildHunterSpearWeapon.comps.HediffComp_VerbGiver.tools.0.label>fey lance</LP_WildHunterSpearWeapon.comps.HediffComp_VerbGiver.tools.0.label>
+  <!-- 狂猎的猎物 -->
+  <LP_WildHuntPrey.label>prey of the wild hunt</LP_WildHuntPrey.label>
+  <!-- 狂猎在追这个人：骑手对他的伤害 +30%。撑到早上 6 点就安全了。 -->
+  <LP_WildHuntPrey.description>The wild hunt is chasing this person: riders deal +30% damage to them. Safe once they last until 6 AM.</LP_WildHuntPrey.description>
+  <!-- 光辉之锤 -->
+  <LP_DevaMaceWeapon.label>radiant mace</LP_DevaMaceWeapon.label>
+  <!-- 狄瓦的光辉之锤。 -->
+  <LP_DevaMaceWeapon.description>A deva's radiant mace.</LP_DevaMaceWeapon.description>
+  <!-- 光辉之锤 -->
+  <LP_DevaMaceWeapon.comps.HediffComp_VerbGiver.tools.0.label>radiant mace</LP_DevaMaceWeapon.comps.HediffComp_VerbGiver.tools.0.label>
+  <!-- 天界巨剑 -->
+  <LP_PlanetarSwordWeapon.label>celestial greatsword</LP_PlanetarSwordWeapon.label>
+  <!-- 行星使的巨剑。 -->
+  <LP_PlanetarSwordWeapon.description>A planetar's greatsword.</LP_PlanetarSwordWeapon.description>
+  <!-- 天界巨剑 -->
+  <LP_PlanetarSwordWeapon.comps.HediffComp_VerbGiver.tools.0.label>celestial greatsword</LP_PlanetarSwordWeapon.comps.HediffComp_VerbGiver.tools.0.label>
+  <!-- 守护天使 -->
+  <LP_CelestialGuardian.label>guardian angel</LP_CelestialGuardian.label>
+  <!-- 善神派来守护殖民地的狄瓦：服从度不会下降。殖民地里腐化到恶魔之印的人 ≥3 时，它每天有 5% 失望离开。 -->
+  <LP_CelestialGuardian.description>A deva sent by the good gods to guard the colony: obedience never drops. When 3 or more people in the colony are tainted to the demon mark, it has a 5% chance each day to leave in disappointment.</LP_CelestialGuardian.description>
+  <!-- 坠落的客人 -->
+  <LP_FallenDevaGuest.label>fallen guest</LP_FallenDevaGuest.label>
+  <!-- 坠落的狄瓦：伤都包扎好后会醒来，作为客人留 10 天；离开时守护神神眷 +30。腐化到恶魔之印的人靠近它时，它每天有 10% 堕落成敌对的艾林魔。 -->
+  <LP_FallenDevaGuest.description>A fallen deva: wakes once all the wounds are tended and stays as a guest for 10 days; when leaving, patron deity divine favor +30. When people tainted to the demon mark come near it, it has a 10% chance each day to fall into a hostile erinyes.</LP_FallenDevaGuest.description>
+  <!-- 坠落昏迷 -->
+  <LP_DevaStupor.label>fallen coma</LP_DevaStupor.label>
+  <!-- 从天上摔下来，伤得太重醒不过来：意识最多 10%。把伤都包扎好就会醒。 -->
+  <LP_DevaStupor.description>Fell from the sky, too badly hurt to wake: consciousness at most 10%. Wakes once all the wounds are tended.</LP_DevaStupor.description>
+  <!-- 劝返 -->
+  <LP_RedeemProgress.label>redeem</LP_RedeemProgress.label>
+  <!-- 狄瓦在劝说这名艾林魔回头：累计 3 次就会变回狄瓦。 -->
+  <LP_RedeemProgress.description>A deva is persuading this erinyes to turn back: after 3 times in total she becomes a deva again.</LP_RedeemProgress.description>
+  <!-- 被追猎 -->
+  <LP_HuntMarked.label>hunted</LP_HuntMarked.label>
+  <!-- 艾林魔标记了这个人：她对他的伤害 +15%。 -->
+  <LP_HuntMarked.description>An erinyes has marked this person: she deals +15% damage to them.</LP_HuntMarked.description>
+  <!-- 九狱小魔鬼魔宠 -->
+  <LP_ImpNature.label>infernal imp familiar</LP_ImpNature.label>
+  <!-- 和主人结了魔宠之契的小魔鬼：不打架时隐身；主人和它在同一张地图时心灵敏感度 +10%；每 10 天一封“小魔鬼的情报”。 -->
+  <LP_ImpNature.description>An imp bound to its master by a familiar pact: invisible when not fighting; master's psychic sensitivity +10% while on the same map; an "imp's intel" letter every 10 days.</LP_ImpNature.description>
+  <!-- 小精灵的友谊 -->
+  <LP_PixieNature.label>sprite's friendship</LP_PixieNature.label>
+  <!-- 小精灵和主人结下了友谊：每天撒一次妖精粉尘，每 5 天有 30% 恶作剧。 -->
+  <LP_PixieNature.description>The sprite has formed a friendship with its master: sprinkles fey dust once a day, with a 30% chance of a prank every 5 days.</LP_PixieNature.description>
+  <!-- 妖精粉尘：轻快 -->
+  <LP_PixieDust_Swift.label>fey dust: light-footed</LP_PixieDust_Swift.label>
+  <!-- 移速 +20%。 -->
+  <LP_PixieDust_Swift.description>Move speed +20%.</LP_PixieDust_Swift.description>
+  <!-- 妖精粉尘：勤快 -->
+  <LP_PixieDust_Diligent.label>fey dust: diligent</LP_PixieDust_Diligent.label>
+  <!-- 工作速度 +20%。 -->
+  <LP_PixieDust_Diligent.description>Work speed +20%.</LP_PixieDust_Diligent.description>
+  <!-- 妖精粉尘：开心 -->
+  <LP_PixieDust_Joy.label>fey dust: happy</LP_PixieDust_Joy.label>
+  <!-- 心情 +10（见心情）。 -->
+  <LP_PixieDust_Joy.description>Mood +10 (see mood).</LP_PixieDust_Joy.description>
+  <!-- 妖精粉尘：隐身 -->
+  <LP_PixieDust_Veil.label>fey dust: invisible</LP_PixieDust_Veil.label>
+  <!-- 站着不动 3 秒后隐身。 -->
+  <LP_PixieDust_Veil.description>Turns invisible after standing still for 3 seconds.</LP_PixieDust_Veil.description>
+</LanguageData>

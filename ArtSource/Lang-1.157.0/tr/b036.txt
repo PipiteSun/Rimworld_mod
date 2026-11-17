@@ -1,0 +1,184 @@
+s07875	Passive: when an enemy right next to you is hit by someone else, you immediately follow up with a melee strike on it (a full melee resolution), once every 2 seconds. Way of Shadow, monk level 17.
+s07876	opportunist
+s07877	Release magical darkness of radius 3 at a point within 20 cells: enemies inside get sight -50% for 10 seconds × martial power. Passive: while standing in darkness, your own sight +30% and unaffected by magical darkness. Ki 2, cooldown 20 seconds. Way of Shadow, monk level 3.
+s07878	shadow arts
+s07879	While standing in darkness, teleport to another visible dark empty cell within 12 cells; for 5 seconds afterwards the next melee hit deals ×1.5 damage with +30% hit. No ki cost, cooldown 10 seconds. Way of Shadow, monk level 6.
+s07880	shadow step
+s07881	Just stepped out of the shadows: the next melee hit deals ×1.5 damage, melee hit +30%.
+s07882	Body remade by fungus: no bleeding, immune to toxins and fear, sharp damage ×0.75.
+s07883	fungal body
+s07884	Passive: no bleeding, immune to toxins and fear, sharp damage taken ×0.75. Circle of Spores, druid level 14.
+s07885	On / off: enemies within radius 2 take 3 × verdant power necrotic damage every 4 seconds (×1.5 with fungal plants nearby). While on, mana recovery is halved. Circle of Spores, druid level 2.
+s07886	halo of spores
+s07887	Spores drift around: enemies within radius 2 take necrotic damage every 4 seconds; while on, mana recovery is halved.
+s07888	Passive: when a humanlike enemy dies within 10 cells, 50% chance it sprouts fungus and stands up to fight for you for 1 day (no mental breaks, turns to rotting soil when time is up); its gear drops to the ground first. At most 4 per map. Circle of Spores, druid level 10.
+s07889	spreading spores
+s07890	A corpse pulled back up by fungus; it rots away after a day. No mental breaks.
+s07891	fungal puppet
+s07892	An adjacent enemy takes 8 × verdant power necrotic damage, and its wounds don't heal for 1 hour. Mana 1, cooldown 5 seconds. Circle of Spores, druid level 2.
+s07893	touch of rot
+s07894	Wounds corroded by spores: wounds don't heal.
+s07895	rotting
+s07896	For 1 hour: gain a shield of 4 × druid level, melee adds 4 × verdant power necrotic damage, halo of spores damage ×2. Mana 2, cooldown 1 hour. Circle of Spores, druid level 6.
+s07897	symbiotic entity
+s07898	In symbiosis with spores: melee adds necrotic damage, halo of spores damage ×2.
+s07899	Passive: draw an omen each day on waking. Weal: allies within 10 cells take ×0.9 damage; woe: enemies within 10 cells take ×1.1 damage. Circle of Stars, druid level 10.
+s07900	cosmic omen
+s07901	Become a constellation: the archer fires an arrow at the nearest enemy every 4 seconds; the chalice heals the most injured nearby ally every 4 seconds; the dragon steadies the mind like a boulder (mind resistance +30%, pain shock threshold +30%).
+s07902	starry form
+s07903	archer
+s07904	chalice
+s07905	dragon
+s07906	Click the button to switch constellations: archer → chalice → dragon. No mana cost. Circle of Stars, druid level 6.
+s07907	starry form: constellation
+s07908	Passive: semi-transparent in starry form, damage taken ×0.5 (except psychic), walking unaffected by terrain. Circle of Stars, druid level 14.
+s07909	full of stars
+s07910	Lit by starlight: the next damage taken ×1.25.
+s07911	starlight guidance
+s07912	Research speed +10%; outdoors at night, druid spell power ×1.25.
+s07913	star map
+s07914	One enemy within 24 cells takes 14 × verdant power radiant damage and is lit by starlight: the next damage it takes ×1.25. Free 2 + (druid level - 1) ÷ 4 times per day, then 1 mana each time. Passive "star map": research speed +10%; outdoors at night, druid spell power ×1.25. Cooldown 5 seconds. Circle of Stars, druid level 2.
+s07915	guiding bolt
+s07916	Become the constellation picked with the "constellation" button for 1 hour: archer (fires an arrow at the nearest enemy within 15 cells every 4 seconds, 8 × verdant power radiant), chalice (heals the most injured ally within 6 cells for 4 × verdant power every 4 seconds), dragon (mind resistance +30%, pain shock threshold +30%). You can switch constellations mid-form. Mana 2, cooldown 2 hours. Circle of Stars, druid level 6.
+s07917	Bound to the land underfoot: land's spell changes with the map's climate (cold / temperate / desert / humid, judged by the tile's temperature and rainfall; biomes from mods like Alpha Biomes work too), and can permanently reshape terrain: dig lakes, make marshes, turn mud into rich soil.
+s07918	Circle of the Land
+s07919	Sees life in decay: halo of spores, touch of rot, symbiosis with spores, and enemy corpses sprout fungus and stand up to fight for you. The halo of spores is stronger with fungal plants such as glowstool and agarilux nearby.
+s07920	Circle of Spores
+s07921	A druid who reads the stars: guiding bolts of starlight, becoming constellations (the archer shoots, the chalice heals, the dragon steadies the mind), and a daily cosmic omen that protects allies or curses enemies. Casting is stronger outdoors at night.
+s07922	Circle of Stars
+s07923	A monk who imitates great dragons with ki: unarmed strikes carry a dragon's element, breathe dragon breath, spectral dragon wings unfold during Step of the Wind, and finally become an ancient dragon, panicking enemies and protecting companions. The dragon's element is switched with the "draconic strike" button between fire, cold, lightning, acid and poison, and breath of the dragon and ancient dragon stance follow it.
+s07924	Way of the Ascendant Dragon
+s07925	Hone destructive spells to perfection: evocation spells (magic missile, fireball, lightning bolt, disintegrate) don't hurt allies, magic missile is stronger, damage adds Intelligence, and overchannel can double a spell; the price is backlash when used again the same day.
+s07926	School of Evocation
+s07927	A cleric of the forge god: enchants gear +1 each day, conjures excellent-quality weapons from steel, is tougher in heavy armor, and finally fears no fire. Crafting speed +10%.
+s07928	Forge Domain
+s07929	A cleric who protects life: stronger healing spells, better medicine and surgery; Channel Divinity "preserve life" heals a group of allies at once. Channel Divinity once per day (twice at level 6, three times at 18), no divinity cost.
+s07930	Life Domain
+s07931	A cleric who brings light: a dazzling flare makes enemy attacks miss, light illuminates the dark, and radiance of the dawn dispels magical darkness and invisibility. A counter to enemies who rely on "darkness" such as Way of Shadow, shadow magic and Gloom Stalkers. Channel Divinity once per day (twice at level 6, three times at 18).
+s07932	Light Domain
+s07933	The ultimate master of martial technique: every punch of Flurry of Blows can knock down, push or disrupt enemies, heals oneself with ki, carries a protective aura after waking, and finally learns the quivering palm that can be detonated days later.
+s07934	Way of the Open Hand
+s07935	A wizard who converses with the spellbook: the wizardly quill makes reading scrolls never fail, the awakened spellbook changes fireball and lightning damage types, manifest mind makes spells temporarily free, an extra scroll appears each day on waking, and the spellbook takes a hit for you in a crisis.
+s07936	Order of Scribes
+s07937	A monk who trains in darkness: releases magical darkness, teleports between dark places, becomes an invisible shadow, and seizes the openings when companions hit enemies to follow up. "Darkness" means cells with under 30% light (outdoors at night, rooms without lights).
+s07938	Way of Shadow
+s07939	Courage wells up: mood +10, mental break threshold -5%.
+s07940	elixir of courage
+s07941	The alchemist's elixir makes me feel fearless.
+s07942	Light as the wind underfoot: walking ignores slowdown from terrain, snow and plants.
+s07943	elixir of lightness
+s07944	A crystal-clear mind: consciousness +10%, no sleepiness.
+s07945	elixir of clarity
+s07946	Movement +25%.
+s07947	elixir of swiftness
+s07948	Damage taken -15%.
+s07949	elixir of resilience
+s07950	An alchemist's experimental elixir. For 1 day mood +10, mental break threshold -5%. Anyone can drink it; spoils in 3 days. Refined elixirs last ×1.3 as long.
+s07951	An elixir a master chemist can only make one of per quarter. Drinking it regrows a missing limb or organ (the biggest one) and clears all diseases, addictions and toxic buildup. Anyone can drink it; never spoils.
+s07952	elixir of greater restoration
+s07953	An alchemist's experimental elixir. Drinking it stops all bleeding and instantly heals 20 points of wounds. Anyone can drink it; spoils in 3 days. Refined elixirs heal ×1.3.
+s07954	elixir of healing
+s07955	An alchemist's experimental elixir. For 1 day walking ignores slowdown from terrain, snow and plants. Anyone can drink it; spoils in 3 days. Refined elixirs last ×1.3 as long.
+s07956	An alchemist's experimental elixir. For 1 day consciousness +10%, no sleepiness. Anyone can drink it; spoils in 3 days. Refined elixirs last ×1.3 as long.
+s07957	An alchemist's restorative reagent. Drinking it cures the worst disease on the body (flu, plague, malaria, sleeping sickness, gut or muscle parasites, fibrous / sensory mechanites, food poisoning, wound infection, lung rot); with no disease it clears toxic buildup. Anyone can drink it; never spoils.
+s07958	restorative reagent
+s07959	An alchemist's experimental elixir. For 1 day movement +25%. Anyone can drink it; spoils in 3 days. Refined elixirs last ×1.3 as long.
+s07960	An alchemist's experimental elixir. For 1 day damage taken -15%. Anyone can drink it; spoils in 3 days. Refined elixirs last ×1.3 as long.
+s07961	Ultimate passive: the daily experimental elixirs become 3 bottles, and you can pick the kind with "choose elixir". Yourself immune to poison, acid, fire and burn damage. Alchemist, artificer level 15.
+s07962	chemical mastery
+s07963	Passive: each new day while awake, 1 random experimental elixir (healing, swiftness, resilience, lightness, clarity, courage) appears in your pack automatically. At the drug lab you can also make a specific elixir from 1 herbal medicine + 5 steel (30 minutes). Anyone can drink the elixirs; they spoil in 3 days. Alchemist, artificer level 3.
+s07964	experimental elixir
+s07965	The body has long been steeped in potions: poison and acid damage taken -50%, no toxic buildup in toxic fallout or toxic gas.
+s07966	alchemical resistance
+s07967	Make a restorative reagent and put it in your pack: drinking it instantly cures one disease (flu, plague, parasites, food poisoning, etc.) or clears toxic buildup. Passive: poison and acid damage taken -50%, no toxic buildup in toxic fallout or toxic gas. Cooldown 1 day. Alchemist, artificer level 11.
+s07968	Passive: the daily experimental elixirs become 2 bottles. Elixirs you make are all refined (healing and duration ×1.3); making vanilla drugs +30% speed. Alchemist, artificer level 7.
+s07969	alchemical savant
+s07970	Drug-making skill: making vanilla drugs (drug lab recipes) +30% speed.
+s07971	Spend 4 hours standing by a workbench (within 3 cells) converting a worn torso armor (flak vest, marine armor, power armor and the like, picking the best-armored one) into arcane armor: it no longer slows movement. Switching to other armor requires converting again. Guardian: melee hits add 6 × artifice power lightning damage and taunt the target. Infiltrator: movement +10%, enemy ranged attacks have a 10% chance to miss you. Armorer, artificer level 3.
+s07972	arcane armor
+s07973	Wearing arcane armor personally modified by an Armorer: the armor no longer slows movement. Infiltrator mode movement +10%; after armor modifications, all three armor values +15%; perfected armor is fully sealed (immune to toxic fallout, toxic gas and vacuum). Stops working when taken off or swapped.
+s07974	Marked by an Armorer's tracking rune: can't turn invisible, and the next hit from a teammate deals +50% damage.
+s07975	infiltrator's mark
+s07976	Passive: arcane armor's enchantment instantly +2 (once per piece, cap still +10). Arcane armor and helmets won't be shot to pieces and dropped (at least 1 durability left). Armorer, artificer level 7.
+s07977	armor modifications
+s07978	Ultimate passive: arcane armor is fully sealed, immune to toxic fallout, toxic gas and vacuum. Guardian: every 10 seconds magnetically pull an enemy within 6 cells to your side and taunt it. Infiltrator: enemies you hit are marked for 10 seconds, can't turn invisible, and the next hit from a teammate deals +50% damage. Armorer, artificer level 15.
+s07979	perfected armor
+s07980	Passive: while wearing arcane armor, all three armor values +15%. The Guardian's defensive field doubles; the Infiltrator's lightning launcher deals +50% damage, doubled again against enemies that haven't fired yet. Armorer, artificer level 11.
+s07981	armor upgrade
+s07982	A Fortress Engineer's rune capacitor: needs no fuel and always outputs 300 W. Turrets within 3 cells get +15% fire rate. Each engineer who knows "arcane capacitor" can support at most artificer level ÷ 3 of them (colony-wide total).
+s07983	arcane capacitor
+s07984	Passive: can build arcane capacitors (power tab, 20 steel + 1 component): 300 W output without fuel, turrets within 3 cells get +15% fire rate. Each engineer can support at most artificer level ÷ 3 of them. Fortress Engineer, artificer level 7.
+s07985	Ultimate passive: can build a fortress core (security tab, 3×3, 1 per colony, 500 steel + 10 components + 2 advanced components): defensive buildings you built within radius 20 repair 5% per hour automatically; once per raid, "full-line upgrade" gives all turrets in range (including rune turrets) +30% damage for 1 hour. Fortress Engineer, artificer level 15.
+s07986	heart of the fortress
+s07987	Select a 5×5 area within 20 cells; buildings inside take -75% damage for 12 hours, a specific counter to sappers digging through walls and breaching. Passive: colonists right next to cover you built take another -15% ranged damage. Cooldown 1 day. Fortress Engineer, artificer level 11.
+s07988	field reinforcement
+s07989	Passive: walls, doors, sandbags and other cover and turrets you built get +50% max health; your building repair speed ×2. Fortress Engineer, artificer level 3.
+s07990	reinforced construction
+s07991	A Fortress Engineer's heart of the fortress: defensive buildings reinforced by engineers within radius 20 repair 5% per hour automatically. Once per raid, "full-line upgrade" can be triggered: all turrets in range (including rune turrets) get +30% damage for 1 hour. Only 1 per colony, and requires an engineer who knows "heart of the fortress" to build.
+s07992	fortress core
+s07993	Brew 1 elixir of courage from 1 herbal medicine and 5 steel. Only alchemists can make it (refined elixirs from artificer level 7).
+s07994	Brewing an elixir of courage.
+s07995	brew elixir of courage
+s07996	Brew 1 elixir of healing from 1 herbal medicine and 5 steel. Only alchemists can make it (refined elixirs from artificer level 7).
+s07997	Brewing an elixir of healing.
+s07998	brew elixir of healing
+s07999	Brew 1 elixir of lightness from 1 herbal medicine and 5 steel. Only alchemists can make it (refined elixirs from artificer level 7).
+s08000	Brewing an elixir of lightness.
+s08001	brew elixir of lightness
+s08002	Brew 1 elixir of clarity from 1 herbal medicine and 5 steel. Only alchemists can make it (refined elixirs from artificer level 7).
+s08003	Brewing an elixir of clarity.
+s08004	brew elixir of clarity
+s08005	Brew 1 elixir of swiftness from 1 herbal medicine and 5 steel. Only alchemists can make it (refined elixirs from artificer level 7).
+s08006	Brewing an elixir of swiftness.
+s08007	brew elixir of swiftness
+s08008	Brew 1 elixir of resilience from 1 herbal medicine and 5 steel. Only alchemists can make it (refined elixirs from artificer level 7).
+s08009	Brewing an elixir of resilience.
+s08010	brew elixir of resilience
+s08011	A rune buried by a Fortress Engineer: an enemy stepping on it takes 20 × artifice power arcane force damage and falls for 2 seconds, then the rune dissipates. Hidden in the ground, hard for enemies to notice.
+s08012	rune mine
+s08013	Clockwork Soul: building and mechanoid repair speed +30%, damage taken from mechanoids -10%.
+s08014	mechanical affinity
+s08015	Passive: twice per day, when a friendly person on the same map fails a save, it's automatically re-rolled once. Mechanical affinity: building and mechanoid repair speed +30% (construction speed ×1.3), damage taken from mechanoids -10%. Clockwork Soul, sorcerer level 3.
+s08016	restore balance: mechanical affinity
+s08017	The order shield organizes a mechanitor's thoughts: control bandwidth +2.
+s08018	order bandwidth
+s08019	For 1 hour melee hit +30% and better shooting accuracy; when deployed, enemy mechanoids within 10 cells have a 30% chance to shut down for 3 seconds. Mana 3, cooldown 2 hours. Clockwork Soul, sorcerer level 11.
+s08020	clockwork cavalcade
+s08021	The power of order calibrates every strike: melee hit +30%, better shooting accuracy, can't be critically hit.
+s08022	Active: summon 3 order constructs (vanilla mechanoids made into friendly temporary units) to fight alongside you for 1 day, dissipating when time is up. No mana cost, cooldown 3 days. Passive: wild magic triggered by wild surge never has bad results (spontaneous combustion, entropy surge and chaotic spirits are re-rolled instead). Clockwork Soul, sorcerer level 15.
+s08023	legion of order
+s08024	One teammate within 15 cells gets a shield absorbing 10 + sorcerer level × 2 damage (1 hour); if they're a mechanitor, control bandwidth +2. Mana 1, cooldown 10 seconds. Clockwork Soul, sorcerer level 7.
+s08025	bastion of law
+s08026	Become an angel for 1 hour: teammates within 3 cells heal 2 × innate power injury every 10 seconds, and your movement +20%. Mana 3, cooldown 1 hour. Divine Soul, sorcerer level 11.
+s08027	angelic form
+s08028	Angelic wings unfurled: teammates within 3 cells heal 2 injury every 10 seconds (severity), your movement +20%.
+s08029	Instantly heal one target (can be yourself) for a total of 20 × innate power injury, worst bleeding wounds first. Mana 1, cooldown 30 seconds. Divine Soul, sorcerer level 3.
+s08030	divine magic: cure wounds
+s08031	For 1 hour surgery success +20%, tend quality +20%. No mana cost, once per day. Divine Soul, sorcerer level 3.
+s08032	favored by the gods
+s08033	The gods watch over this moment: surgery success +20%, tend quality +20%.
+s08034	Active: all colonists on this map heal 50% of wounds, disease progress -30%, mood +10 (3 days). Once per quarter (cooldown 15 days), no mana cost. Passive: the first time each day you'd be downed or killed, automatically heal half your wounds and stand back up. Divine Soul, sorcerer level 15.
+s08035	miracle
+s08036	The sky split open with light, and the wounds healed before my eyes.
+s08037	Passive: while meditating or praying, regain an extra 0.2 sorcerer mana every 250 ticks (25% more for believers of a god); for each point of mana spent healing others, you also recover 25% of that healing. Divine Soul, sorcerer level 7.
+s08038	divine resonance
+s08039	Passive: darkness doesn't reduce work speed or aiming; while standing in darkness, sorcerer spell power +20%; when taking damage that would down or kill you, 50% chance to hold on and stay up (checked once per day; doesn't work against fire and holy damage). Shadow Magic, sorcerer level 3.
+s08040	eyes of the dark: strength of the grave
+s08041	Body turned into shadow: damage taken halved except fire, holy and force; while standing in darkness, enemy ranged attacks miss 30% of the time.
+s08042	umbral form
+s08043	Summon a hound of ill omen (1 hour) that hunts down the chosen enemy: the target can't turn invisible, and bites have a 30% chance to make it flee in fear for 5 seconds. Mana 2, cooldown 1 hour. Shadow Magic, sorcerer level 7.
+s08044	hound of ill omen
+s08045	A hound congealed from shadow: bites have a 30% chance to make the target flee in fear for 5 seconds.
+s08046	Hunted by a hound of ill omen: can't turn invisible.
+s08047	hound's prey
+s08048	Active: for 1 hour, damage taken halved except fire, holy and force; while standing in darkness, enemy ranged attacks miss 30% of the time. Mana 3, cooldown 2 hours. Passive: mana recovery ×2 when sleeping between 22 and 6. Shadow Magic, sorcerer level 15.
+s08049	While standing in darkness, teleport to another dark spot within 20 cells; the next sorcerer spell afterwards gets +20% power. No mana cost, cooldown 30 seconds. Shadow Magic, sorcerer level 11.
+s08050	Just stepped out of the shadows: the next sorcerer spell gets +20% power.
+s08051	shadow step momentum
+s08052	The order of the clockwork plane flows into the bloodline: re-rolls failed saves for teammates, repairs machines faster, wraps teammates in shields of order, unfolds a clockwork cavalcade, and finally summons order constructs; wild surge's wild magic no longer has bad results.
+s08053	Clockwork Soul
+s08054	divine affinity
+s08055	light
+s08056	twilight
+s08057	Healing from sorcerers and divine magic +25%.
+s08058	Sorcerer spell damage against the living (fleshy creatures) +20%.

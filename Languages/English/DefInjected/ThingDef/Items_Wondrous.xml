@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 次元袋 -->
+  <LP_BagOfHolding.label>bag of holding</LP_BagOfHolding.label>
+  <!-- 袋口小小，里面却连着一个口袋维度。挂在腰带上，搬运量+60，不影响移动速度。受到火焰或锐器伤害时有2%概率被撕破：袋子毁掉，背包里的东西掉一地。 -->
+  <LP_BagOfHolding.description>A bag with a small mouth that connects to a pocket dimension. Hung on the belt: carrying capacity +60, no effect on move speed. When taking fire or sharp damage, a 2% chance to tear: the bag is destroyed and the pack's contents spill everywhere.</LP_BagOfHolding.description>
+  <!-- 抗火戒指 -->
+  <LP_RingResistanceFire.label>ring of fire resistance</LP_RingResistanceFire.label>
+  <!-- 红宝石戒指。佩戴者受到的火焰伤害-50%。最多戴两枚不同的戒指。 -->
+  <LP_RingResistanceFire.description>A ruby ring. The wearer takes -50% fire damage. Up to two different rings can be worn.</LP_RingResistanceFire.description>
+  <!-- 抗寒戒指 -->
+  <LP_RingResistanceCold.label>ring of cold resistance</LP_RingResistanceCold.label>
+  <!-- 冰晶戒指。佩戴者受到的寒冷类伤害（冻伤、寒冰射线等）-50%。最多戴两枚不同的戒指。 -->
+  <LP_RingResistanceCold.description>An ice crystal ring. The wearer takes -50% cold-type damage (frostbite, ray of frost, etc.). Up to two different rings can be worn.</LP_RingResistanceCold.description>
+  <!-- 抗酸戒指 -->
+  <LP_RingResistanceAcid.label>ring of acid resistance</LP_RingResistanceAcid.label>
+  <!-- 翠玉戒指。佩戴者受到的酸液伤害-50%。最多戴两枚不同的戒指。 -->
+  <LP_RingResistanceAcid.description>An emerald ring. The wearer takes -50% acid damage. Up to two different rings can be worn.</LP_RingResistanceAcid.description>
+  <!-- 心灵抗性戒指 -->
+  <LP_RingResistanceMind.label>ring of mind shielding</LP_RingResistanceMind.label>
+  <!-- 紫晶银戒。佩戴者心智抗性+30%。最多戴两枚不同的戒指。 -->
+  <LP_RingResistanceMind.description>An amethyst silver ring. The wearer gets mind resistance +30%. Up to two different rings can be worn.</LP_RingResistanceMind.description>
+  <!-- 健康护符 -->
+  <LP_AmuletHealth.label>amulet of health</LP_AmuletHealth.label>
+  <!-- 刻着治疗圣徽的金护符。佩戴者不会染上疾病（流感、瘟疫、疟疾、伤口感染等）。 -->
+  <LP_AmuletHealth.description>A gold amulet engraved with a healing holy symbol. The wearer never catches diseases (flu, plague, malaria, wound infection, etc.).</LP_AmuletHealth.description>
+  <!-- 伊奥恩石 -->
+  <LP_IounStone.label>ioun stone</LP_IounStone.label>
+  <!-- 会自己绕着主人头顶打转的小晶石。每颗石头对应一项技能（射击、近战、建造、医疗、智识、社交、手工之一，生成时随机），环绕时该技能学习速度+50%。最多同时戴两颗，戴第三颗会顶掉最早的那颗。 -->
+  <LP_IounStone.description>A small crystal that orbits its owner's head on its own. Each stone corresponds to one skill (one of Shooting, Melee, Construction, Medicine, Intellectual, Social, Crafting, random when generated); while orbiting, that skill's learning speed +50%. At most two can be worn at once; a third pushes out the earliest.</LP_IounStone.description>
+  <!-- 探测魔杖 -->
+  <LP_WandDetection.label>wand of detection</LP_WandDetection.label>
+  <!-- 杖头嵌着青晶的短杖。只要放在地图的储存区里（库存区、货架等），这张地图上所有隐形的人都会被标记、无法隐身。 -->
+  <LP_WandDetection.description>A short wand with a blue crystal set in its tip. As long as it's in a storage area on the map (stockpile zones, shelves, etc.), every invisible person on this map is marked and can't stay hidden.</LP_WandDetection.description>
+</LanguageData>

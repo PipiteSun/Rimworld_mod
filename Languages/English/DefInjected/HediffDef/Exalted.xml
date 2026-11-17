@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 踉跄 -->
+  <LP_ExaltedStagger.label>staggered</LP_ExaltedStagger.label>
+  <!-- 被一记巨力砸得站不稳：移动速度 ×0.1，近战冷却 ×1.5。 -->
+  <LP_ExaltedStagger.description>Unsteady from a mighty blow: move speed ×0.1, melee cooldown ×1.5.</LP_ExaltedStagger.description>
+  <!-- 威仪 -->
+  <LP_ExaltedPresence.label>majesty</LP_ExaltedPresence.label>
+  <!-- 身边有一位气度非凡的人，叫人安心、不愿在他面前失态。 -->
+  <LP_ExaltedPresence.description>There's someone of extraordinary bearing nearby; reassuring, and you don't want to embarrass yourself in front of them.</LP_ExaltedPresence.description>
+  <!-- 鼓舞中 -->
+  <LP_ExaltedPresence.stages.0.label>inspiring</LP_ExaltedPresence.stages.0.label>
+  <!-- 君临·鼓舞中 -->
+  <LP_ExaltedPresence.stages.2.label>sovereign: inspiring</LP_ExaltedPresence.stages.2.label>
+  <!-- 君临 -->
+  <LP_ExaltedPresence.stages.3.label>sovereign</LP_ExaltedPresence.stages.3.label>
+  <!-- 超凡 -->
+  <LP_ExaltedMark.label>exalted</LP_ExaltedMark.label>
+  <!-- 六项属性中有达到凡人极限的一项（有效值 ≥20）。这只是一个标记，没有数值效果；详细效果见“冒险者”分页的“超凡”小节。 -->
+  <LP_ExaltedMark.description>One of the six ability scores has reached the mortal limit (effective value ≥20). This is just a marker with no numeric effect; see the "Exalted" section of the "Adventurer" tab for detailed effects.</LP_ExaltedMark.description>
+</LanguageData>

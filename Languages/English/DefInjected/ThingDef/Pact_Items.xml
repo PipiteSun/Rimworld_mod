@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 契约书 -->
+  <LP_PactScroll.label>pact scroll</LP_PactScroll.label>
+  <!-- 一卷用不知名的皮做成的契约，封口的蜡印是某位异界宗主的纹章。拿到契约讲台上读 4 小时，才能看清它写了什么：三个可选的恩赐、明面上的代价、偿契周期——还有藏在字里行间的隐藏条款。不能制作。 -->
+  <LP_PactScroll.description>A pact written on unknown leather, sealed with wax bearing the crest of some otherworldly patron. Only after 4 hours of reading at a pact lectern can you see what it says: three selectable boons, the visible cost, the payment cycle, and the hidden clauses tucked between the lines. Cannot be crafted.</LP_PactScroll.description>
+  <!-- 缚绳 -->
+  <LP_EntanglingRope.label>binding rope</LP_EntanglingRope.label>
+  <!-- 艾林魔用来捆人的金色绳索，自己会飞出去缠住目标。挂在腰间（奇物栏）：能力“缚绳”——8 格内一个目标做敏捷豁免（豁免难度随使用者的熟练加值和敏捷提高；目标的属性调整值和熟练加值每点 +5% 成功率），失败被缚住 4 秒。耐久 10 次，用完就断。冷却 2 小时。 -->
+  <LP_EntanglingRope.description>A golden rope erinyes use to bind people; it flies out and wraps the target on its own. Hung at the waist (trinket slot): ability "Binding rope": one target within 8 cells makes a Dexterity save (difficulty rises with the user's proficiency bonus and Dexterity; each point of the target's ability modifier and proficiency bonus gives +5% success), and on failure is bound for 4 seconds. 10 uses of durability, then it breaks. Cooldown 2 hours.</LP_EntanglingRope.description>
+  <!-- 耐久 -->
+  <LP_EntanglingRope.comps.CompMagicCharges.chargeLabel>durable</LP_EntanglingRope.comps.CompMagicCharges.chargeLabel>
+  <!-- 狂猎号角 -->
+  <LP_WildHuntHorn.label>wild hunt horn</LP_WildHuntHorn.label>
+  <!-- 狂猎骑手的弯角号角，吹起来像风里的狼嚎。一次性：吹响后 2 小时内，地图上殖民地的犬科动物（狗、狼、座狼、闪光犬……）移速 +30%、近战伤害 +20%；敌对人形各有 10% 吓得逃跑。 -->
+  <LP_WildHuntHorn.description>The curved horn of a wild hunt rider, sounding like wolves howling in the wind. Single use: after blowing it, for 2 hours the colony's canines on the map (dogs, wolves, worgs, blink dogs...) get move speed +30% and melee damage +20%; hostile humanlikes each have a 10% chance to flee in fear.</LP_WildHuntHorn.description>
+  <!-- 吹响狂猎号角 -->
+  <LP_WildHuntHorn.comps.CompUsable.useLabel>blow wild hunt horn</LP_WildHuntHorn.comps.CompUsable.useLabel>
+  <!-- 契约讲台 -->
+  <LP_PactLectern.label>pact lectern</LP_PactLectern.label>
+  <!-- 一张带锁链的书架讲台，链子一头拴着读经架，一头锁着放契约的格子。契约书只能放在这里读：读 4 小时看清条款，然后审阅、谈判、签约或拒绝。讲台还能“补偿宗主”（还债）、用宗主代理人的真名卷撕毁契约，检视面板里列着殖民地所有的契约。 -->
+  <LP_PactLectern.description>A chained bookstand lectern: one end of the chain is fastened to the reading stand, the other locks the compartment where pacts are kept. Pact scrolls can only be read here: read for 4 hours to see the terms, then review, negotiate, sign or refuse. The lectern can also "compensate the patron" (pay off debt) and tear up a pact using the true name scroll of the patron's agent; the inspect pane lists all the colony's pacts.</LP_PactLectern.description>
+  <!-- 地狱铸炉 -->
+  <LP_InfernalForge.label>infernal forge</LP_InfernalForge.label>
+  <!-- 迪斯帕特的铁城铸炉：黑铁炉膛里烧的是灵魂币，火是绿色的。能做符文铁砧的所有配方，工作速度 ×1.5。烧灵魂币，只在工作时消耗（1 枚 = 1 天）。不能建造：只能由迪斯帕特的恩赐“地狱铸炉”得到。 -->
+  <LP_InfernalForge.description>Dispater's iron city forge: soul coins burn in its black iron hearth, with green flames. Can do every rune anvil recipe at ×1.5 work speed. Burns soul coins, consumed only while working (1 coin = 1 day). Can't be built: only obtained from Dispater's boon "Infernal forge".</LP_InfernalForge.description>
+  <!-- 灵魂币 -->
+  <LP_InfernalForge.comps.CompRefuelable.fuelLabel>soul coin</LP_InfernalForge.comps.CompRefuelable.fuelLabel>
+</LanguageData>

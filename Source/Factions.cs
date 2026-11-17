@@ -305,7 +305,7 @@ namespace LichPhylactery {
    p.apparel?.DestroyAll();if(kind=="Golem")p.equipment?.DestroyAllEquipment();p.inventory?.innerContainer.ClearAndDestroyContents();
    foreach(var t in p.story.traits.allTraits.ToList())p.story.traits.RemoveTrait(t);
    var h=(Hediff_Construct)p.health.AddHediff(Necro.Def<HediffDef>("Construct"));h.kind=kind;h.master=master;h.raidBound=true;h.flesh=kind=="Golem"?200:0;
-   p.Name=new NameSingle(kind=="Golem"?"红袍血肉巨像":"红袍骷髅");
+   p.Name=new NameSingle(kind=="Golem"?"红袍血肉巨像".Loc():"红袍骷髅".Loc());
    foreach(var sk in p.skills.skills){sk.Level=0;sk.passion=Passion.None;sk.xpSinceLastLevel=0;}
    p.skills.GetSkill(SkillDefOf.Melee).Level=kind=="Golem"?10:6;
    h.UpgradeColonist();p.health.Notify_HediffChanged(h);Necro.Registry?.RegisterConstruct(p);Necro.Refresh(p);

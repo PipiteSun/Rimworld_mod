@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 卡苏斯的回响 -->
+  <LP_KarsusEcho.label>echo of Karsus</LP_KarsusEcho.label>
+  <!-- 卡苏斯之卷在心里留下的回响。每层心灵熵上限 +5%、心灵敏感度 +5%、精神崩溃阈值 +2%，最多 10 层。永久。 -->
+  <LP_KarsusEcho.description>An echo the Scroll of Karsus leaves in the mind. Each stack: max neural heat +5%, psychic sensitivity +5%, mental break threshold +2%, up to 10 stacks. Permanent.</LP_KarsusEcho.description>
+  <!-- 耐瑟启迪 -->
+  <LP_NetherilInsight.label>Netherese insight</LP_NetherilInsight.label>
+  <!-- 刚放下耐瑟瑞尔卷轴，脑中仍回荡着失落帝国的咒文：心灵更敏锐，冥想与钻研都更有收获（智识技能学习 ×1.25），但心灵熵也消退得更慢。持续 10 小时；心灵熵一旦满溢，启迪随之消散。 -->
+  <LP_NetherilInsight.description>Just put down a Netherese scroll, and the incantations of the lost empire still echo in the head: a keener mind, more gained from meditation and study (Intellectual skill learning ×1.25), but neural heat fades more slowly. Lasts 10 hours; once neural heat overflows, the insight dissipates.</LP_NetherilInsight.description>
+  <!-- 卡苏斯启迪 -->
+  <LP_NetherilInsight.stages.1.overrideLabel>Karsus's insight</LP_NetherilInsight.stages.1.overrideLabel>
+</LanguageData>

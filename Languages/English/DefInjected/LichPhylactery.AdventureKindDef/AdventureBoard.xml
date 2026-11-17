@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 清剿怪物巢穴 -->
+  <LP_AK_Lair.label>clear the monster nest</LP_AK_Lair.label>
+  <!-- 荒野里的怪物筑了巢，威胁着往来的商旅。消灭地点里所有怪物（杀死或打倒）就算完成。 -->
+  <LP_AK_Lair.description>Monsters have nested in the wilds, threatening passing caravans. Wipe out every monster at the site (killed or downed) to complete it.</LP_AK_Lair.description>
+  <!-- 讨伐通缉犯 -->
+  <LP_AK_Bounty.label>hunt the outlaw</LP_AK_Bounty.label>
+  <!-- 一名带职业的敌对首领带着护卫藏身荒野。击杀或俘获首领就算完成；俘获（关进殖民地的囚室）报酬 ×1.25。 -->
+  <LP_AK_Bounty.description>A hostile leader with a class is hiding in the wilds with guards. Kill or capture the leader to complete it; capturing (locked in a colony prison cell) pays ×1.25.</LP_AK_Bounty.description>
+  <!-- 救援被困冒险者 -->
+  <LP_AK_Rescue.label>rescue the trapped adventurer</LP_AK_Rescue.label>
+  <!-- 一名冒险者倒在荒野里，四周围着怪物。把他救回殖民地（活着带到殖民地地图上）就算完成，之后可以招募他，或者领一笔赏金。 -->
+  <LP_AK_Rescue.description>An adventurer has fallen in the wilds, surrounded by monsters. Bring them back to the colony alive (onto the colony map) to complete it; afterwards you can recruit them or claim a bounty.</LP_AK_Rescue.description>
+  <!-- 寻回失物 -->
+  <LP_AK_Recover.label>recover the lost item</LP_AK_Recover.label>
+  <!-- 委托人的遗物落在一伙人手里。把遗物带回殖民地就算完成。 -->
+  <LP_AK_Recover.description>The client's heirloom has fallen into a gang's hands. Bring it back to the colony to complete it.</LP_AK_Recover.description>
+  <!-- 调查闹鬼废墟 -->
+  <LP_AK_Haunted.label>investigate the haunted ruins</LP_AK_Haunted.label>
+  <!-- 废墟里的死者爬了起来。摧毁亡灵之源就算完成。 -->
+  <LP_AK_Haunted.description>The dead in the ruins have risen. Destroy the undead source to complete it.</LP_AK_Haunted.description>
+  <!-- 讨伐传奇魔物 -->
+  <LP_AK_Legend.label>slay the legendary monster</LP_AK_Legend.label>
+  <!-- 传说中的魔物出现了。消灭（或赶走）地点里所有敌人就算完成。只有名声达到「传奇」时偶尔出现。 -->
+  <LP_AK_Legend.description>A legendary monster has appeared. Destroy (or drive off) every enemy at the site to complete it. Appears only occasionally once your renown reaches "Legendary".</LP_AK_Legend.description>
+</LanguageData>

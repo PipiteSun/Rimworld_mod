@@ -21,7 +21,7 @@ namespace LichPhylactery {
     var thing=ThingMaker.MakeThing(def,stuff);thing.SetFactionDirect(Faction.OfPlayer);
     GenSpawn.Spawn(thing,c,map,rot,WipeMode.Vanish);return thing;
    }
-   Messages.Message("开局附近没有足够的空地放置"+def.label+"，请自行建造。",MessageTypeDefOf.CautionInput,false);
+   Messages.Message("开局附近没有足够的空地放置".Loc()+def.label+"，请自行建造。".Loc(),MessageTypeDefOf.CautionInput,false);
    return null;
   }
   public static IntVec3 Center(Map map){var pawns=map.mapPawns.FreeColonistsSpawned;return pawns.Count>0?pawns[0].Position:map.Center;}
@@ -31,7 +31,7 @@ namespace LichPhylactery {
  public class ScenPart_LichAscension : ScenPart {
   public int level=3,skeletons=2,golems=1;
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref level,"level",3);Scribe_Values.Look(ref skeletons,"skeletons",2);Scribe_Values.Look(ref golems,"golems",1);}
-  public override string Summary(Scenario scen)=>"开局人物页的第一位角色已是巫妖：命匣"+level+"级，统御"+skeletons+"具骷髅仆役"+(golems>0?"和"+golems+"具血肉巨像":"")+"，附近有一座死灵仪式台。";
+  public override string Summary(Scenario scen)=>"开局人物页的第一位角色已是巫妖：命匣".Loc()+level+"级，统御".Loc()+skeletons+"具骷髅仆役".Loc()+(golems>0?"和".Loc()+golems+"具血肉巨像".Loc():"")+"，附近有一座死灵仪式台。".Loc();
   public override IEnumerable<string> ConfigErrors(){foreach(var e in base.ConfigErrors())yield return e;if(level<1)yield return "level must be at least 1";if(skeletons<0 || golems<0)yield return "construct counts must not be negative";}
   public override void PostGameStart(){
    var map=Find.AnyPlayerHomeMap;if(map==null)return;
@@ -62,7 +62,7 @@ namespace LichPhylactery {
  public class ScenPart_FireGiantClan : ScenPart {
   public float fuel=30;
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref fuel,"fuel",30);}
-  public override string Summary(Scenario scen)=>"开局附近有一座尚存"+fuel.ToString("0")+"燃料的熔火锻炉；每个火巨人穿着锻工外衣，近战最好的火巨人手持熔炉重锤。";
+  public override string Summary(Scenario scen)=>"开局附近有一座尚存".Loc()+fuel.ToString("0")+"燃料的熔火锻炉；每个火巨人穿着锻工外衣，近战最好的火巨人手持熔炉重锤。".Loc();
   public override void PostGameStart(){var map=Find.AnyPlayerHomeMap;if(map!=null)Apply(map,fuel);}
   public static Thing Apply(Map map,float fuel){
    var forgeDef=DefDatabase<ThingDef>.GetNamedSilentFail("LP_FireGiantForge");if(forgeDef==null)return null; // 1.146.0：熔火锻炉与锻工外衣已移除
@@ -83,7 +83,7 @@ namespace LichPhylactery {
  public class ScenPart_TimedCondition : ScenPart {
   public GameConditionDef condition;public float days=3;
   public override void ExposeData(){base.ExposeData();Scribe_Defs.Look(ref condition,"condition");Scribe_Values.Look(ref days,"days",3);}
-  public override string Summary(Scenario scen)=>condition==null?null:"开局后"+days.ToString("0.#")+"天内："+condition.LabelCap;
+  public override string Summary(Scenario scen)=>condition==null?null:"开局后".Loc()+days.ToString("0.#")+"天内：".Loc()+condition.LabelCap;
   public override IEnumerable<string> ConfigErrors(){foreach(var e in base.ConfigErrors())yield return e;if(condition==null)yield return "condition is null";if(days<=0)yield return "days must be positive";}
   public override void PostGameStart(){var map=Find.AnyPlayerHomeMap;if(map!=null)Apply(map,condition,days);}
   public static GameCondition Apply(Map map,GameConditionDef def,float days){if(def==null)return null;var cond=GameConditionMaker.MakeCondition(def,(int)(days*60000));map.gameConditionManager.RegisterCondition(cond);return cond;}
@@ -92,10 +92,10 @@ namespace LichPhylactery {
  // ==================== 1.20.0 六个种族开局的剧本组件 ====================
  // 剧本编辑器里的小控件。
  public static class ScenEdit {
-  public static string Name(Def d)=>d==null?"（无）":d.label.NullOrEmpty()?d.defName:d.LabelCap.ToString();
+  public static string Name(Def d)=>d==null?"（无）".Loc():d.label.NullOrEmpty()?d.defName:d.LabelCap.ToString();
   public static void DefButton<T>(Rect r,T cur,IEnumerable<T> options,Action<T> set,bool allowNone=false) where T:Def{
    if(!Widgets.ButtonText(r,Name(cur)))return;
-   var opts=new List<FloatMenuOption>();if(allowNone)opts.Add(new FloatMenuOption("（无）",()=>set(null)));
+   var opts=new List<FloatMenuOption>();if(allowNone)opts.Add(new FloatMenuOption("（无）".Loc(),()=>set(null)));
    foreach(var d in options){var x=d;opts.Add(new FloatMenuOption(Name(x),()=>set(x)));}
    Find.WindowStack.Add(new FloatMenu(opts));
   }
@@ -138,7 +138,7 @@ namespace LichPhylactery {
    var f=Factions.Of(faction);if(map==null)return false;
    bool madeHostile=false;
    if(temporaryHostile && f!=null && !f.defeated && Factions.Enabled(f) && !f.HostileTo(Faction.OfPlayer)){Factions.SetRelation(f,Faction.OfPlayer,-100);madeHostile=true;}
-   if(f==null || f.defeated || !Factions.Enabled(f) || !f.HostileTo(Faction.OfPlayer)){Messages.Message((letterLabel.NullOrEmpty()?"开局约定的袭击":"“"+letterLabel+"”")+"没有到来："+(f==null?"这个派系不在本存档里":f.Name+(f.HostileTo(Faction.OfPlayer)?"已被关闭":"已经不再敌对"))+"。",MessageTypeDefOf.NeutralEvent,false);return false;}
+   if(f==null || f.defeated || !Factions.Enabled(f) || !f.HostileTo(Faction.OfPlayer)){Messages.Message((letterLabel.NullOrEmpty()?"开局约定的袭击".Loc():"“"+letterLabel+"”")+"没有到来：".Loc()+(f==null?"这个派系不在本存档里".Loc():f.Name+(f.HostileTo(Faction.OfPlayer)?"已被关闭".Loc():"已经不再敌对".Loc()))+"。".Loc(),MessageTypeDefOf.NeutralEvent,false);return false;}
    // 1.63.0：完整测试 #925 的根因——小殖民地的威胁点数很低（23～35），“派系最低点数×1.05”仍然低于原版单人花费上限曲线允许的最便宜兵种，
    // 一个人也生成不出来，袭击就悄悄没了。落地前先看这个点数能不能生成，不能就逐步加到能生成为止（最多 12 次 ×1.35）。
    var parms=new IncidentParms{target=map,faction=f,forced=true,points=GeneratablePoints(map,f,Points(map,f)),raidStrategy=RaidStrategyDefOf.ImmediateAttack};
@@ -152,7 +152,7 @@ namespace LichPhylactery {
     if(!fallback.Worker.CanUseWith(p2))continue;
     if(fired=IncidentDefOf.RaidEnemy.Worker.TryExecute(p2))break;
    }
-   if(!fired)Log.Warning("[DND边缘大陆] 剧本约定的袭击（"+(letterLabel??faction?.defName)+"）没能落地（点数 "+parms.points.ToString("0")+"）。");
+   if(!fired)Log.Warning("[DND边缘大陆] 剧本约定的袭击（".Loc()+(letterLabel??faction?.defName)+"）没能落地（点数 ".Loc()+parms.points.ToString("0")+"）。".Loc());
    if(madeHostile){if(fired)CloudGiantState.Get?.TrackTemporaryRaid(f);else Factions.SetRelation(f,Faction.OfPlayer,0);}
    return fired;
   }
@@ -161,14 +161,14 @@ namespace LichPhylactery {
   public FactionDef faction;public FloatRange days=new FloatRange(6,6);public float pointsFactor=.6f;public PawnsArrivalModeDef arrival;public string letterLabel;
   string factorBuf;
   public override void ExposeData(){base.ExposeData();Scribe_Defs.Look(ref faction,"faction");Scribe_Values.Look(ref days,"days",new FloatRange(6,6));Scribe_Values.Look(ref pointsFactor,"pointsFactor",.6f);Scribe_Defs.Look(ref arrival,"arrival");Scribe_Values.Look(ref letterLabel,"letterLabel");}
-  public string DaysText=>Math.Abs(days.max-days.min)<.05f?"第"+days.min.ToString("0.#")+"天":"第"+days.min.ToString("0.#")+"～"+days.max.ToString("0.#")+"天";
-  public override string Summary(Scenario scen)=>faction==null?null:"开局后"+DaysText+"："+(faction.fixedName??faction.label)+"来袭（点数×"+pointsFactor.ToString("0.##")+(arrival!=null?"，"+ScenEdit.Name(arrival):"")+"）"+(letterLabel.NullOrEmpty()?"":"——“"+letterLabel+"”")+"。";
+  public string DaysText=>Math.Abs(days.max-days.min)<.05f?"第".Loc()+days.min.ToString("0.#")+"天".Loc():"第".Loc()+days.min.ToString("0.#")+"～".Loc()+days.max.ToString("0.#")+"天".Loc();
+  public override string Summary(Scenario scen)=>faction==null?null:"开局后".Loc()+DaysText+"：".Loc()+(faction.fixedName??faction.label)+"来袭（点数×".Loc()+pointsFactor.ToString("0.##")+(arrival!=null?"，".Loc()+ScenEdit.Name(arrival):"")+"）".Loc()+(letterLabel.NullOrEmpty()?"":"——“"+letterLabel+"”")+"。".Loc();
   public override IEnumerable<string> ConfigErrors(){foreach(var e in base.ConfigErrors())yield return e;if(faction==null)yield return "faction is null";if(days.min<0 || days.max<days.min)yield return "days must be a non-negative range";if(pointsFactor<=0)yield return "pointsFactor must be positive";}
   public override void DoEditInterface(Listing_ScenEdit listing){
    var r=listing.GetScenPartRect(this,RowHeight*5f);
    ScenEdit.DefButton(ScenEdit.Row(r,0,5),faction,DefDatabase<FactionDef>.AllDefs.Where(d=>!d.isPlayer && d.humanlikeFaction && d.pawnGroupMakers!=null),x=>faction=x);
    Widgets.FloatRange(ScenEdit.Row(r,1,5),GetHashCode(),ref days,0f,60f);
-   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,2,5),"点数倍率 ",ref pointsFactor,ref factorBuf,.1f,5f);
+   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,2,5),"点数倍率 ".Loc(),ref pointsFactor,ref factorBuf,.1f,5f);
    ScenEdit.DefButton(ScenEdit.Row(r,3,5),arrival,DefDatabase<PawnsArrivalModeDef>.AllDefs,x=>arrival=x,true);
    letterLabel=Widgets.TextField(ScenEdit.Row(r,4,5),letterLabel??"");
   }
@@ -185,11 +185,11 @@ namespace LichPhylactery {
   public List<CampThing> things=new List<CampThing>();public float radius=40;
   string[] bufs;
   public override void ExposeData(){base.ExposeData();Scribe_Collections.Look(ref things,"things",LookMode.Deep);Scribe_Values.Look(ref radius,"radius",40);if(Scribe.mode==LoadSaveMode.PostLoadInit && things==null)things=new List<CampThing>();}
-  public override string Summary(Scenario scen)=>"开局物资放在附近有厚岩顶的空地上（山腹营地）："+string.Join("、",things.Select(t=>t.Label))+"。找不到山体时放在普通位置。";
+  public override string Summary(Scenario scen)=>"开局物资放在附近有厚岩顶的空地上（山腹营地）：".Loc()+string.Join("、".Loc(),things.Select(t=>t.Label))+"。找不到山体时放在普通位置。".Loc();
   public override IEnumerable<string> ConfigErrors(){foreach(var e in base.ConfigErrors())yield return e;if(things.Any(t=>t.thing==null || t.count<1))yield return "camp things need a def and a positive count";}
   public override void DoEditInterface(Listing_ScenEdit listing){
    var r=listing.GetScenPartRect(this,RowHeight*(1+things.Count));
-   Widgets.Label(ScenEdit.Row(r,0,1+things.Count).LeftHalf(),"搜索半径："+radius.ToString("0"));radius=Widgets.HorizontalSlider(ScenEdit.Row(r,0,1+things.Count).RightHalf(),radius,10f,55f,true);
+   Widgets.Label(ScenEdit.Row(r,0,1+things.Count).LeftHalf(),"搜索半径：".Loc()+radius.ToString("0"));radius=Widgets.HorizontalSlider(ScenEdit.Row(r,0,1+things.Count).RightHalf(),radius,10f,55f,true);
    if(bufs==null || bufs.Length!=things.Count)bufs=new string[things.Count];
    for(int i=0;i<things.Count;i++)Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,i+1,1+things.Count),things[i].thing==null?"?":ScenEdit.Name(things[i].thing)+" ",ref things[i].count,ref bufs[i],1,10000);
   }
@@ -219,7 +219,7 @@ namespace LichPhylactery {
     if(i<cells.Count)GenSpawn.Spawn(t,cells[i++],map);else if(!GenPlace.TryPlaceThing(t,spot,map,ThingPlaceMode.Near)){t.Destroy();continue;}
     t.SetForbidden(false,false);placed.Add(t);
    }
-   if(!underRock)Find.LetterStack.ReceiveLetter("没找到山体","开局人物附近找不到带厚岩顶的空地，物资放在了普通位置。\n\n建议在丘陵或山地开局：矮人的“石之耐力”只在厚岩顶下生效。",LetterDefOf.NeutralEvent,new LookTargets(spot,map));
+   if(!underRock)Find.LetterStack.ReceiveLetter("没找到山体".Loc(),"开局人物附近找不到带厚岩顶的空地，物资放在了普通位置。\n\n建议在丘陵或山地开局：矮人的“石之耐力”只在厚岩顶下生效。".Loc(),LetterDefOf.NeutralEvent,new LookTargets(spot,map));
    return placed;
   }
  }
@@ -230,13 +230,13 @@ namespace LichPhylactery {
   string sizeBuf,bedBuf;
   public int Size=>Labyrinth.ClampSize(size);
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref size,"size",17);Scribe_Values.Look(ref bedrolls,"bedrolls",2);Scribe_Values.Look(ref roof,"roof",true);Scribe_Collections.Look(ref things,"things",LookMode.Deep);if(Scribe.mode==LoadSaveMode.PostLoadInit && things==null)things=new List<CampThing>();}
-  public override string Summary(Scenario scen)=>"开局附近有一座"+Size+"×"+Size+"的花岗岩迷宫遗迹"+(roof?"（全部盖有屋顶）":"")+"，中央5×5的房间里有"+bedrolls+"张睡袋"+(things.Count>0?"和"+string.Join("、",things.Select(t=>t.Label)):"")+"。找不到平地时不生成。";
+  public override string Summary(Scenario scen)=>"开局附近有一座".Loc()+Size+"×"+Size+"的花岗岩迷宫遗迹".Loc()+(roof?"（全部盖有屋顶）".Loc():"")+"，中央5×5的房间里有".Loc()+bedrolls+"张睡袋".Loc()+(things.Count>0?"和".Loc()+string.Join("、".Loc(),things.Select(t=>t.Label)):"")+"。找不到平地时不生成。".Loc();
   public override IEnumerable<string> ConfigErrors(){foreach(var e in base.ConfigErrors())yield return e;if(size<Labyrinth.MinSize || size>Labyrinth.MaxSize || size%2==0)yield return "size must be odd and between "+Labyrinth.MinSize+" and "+Labyrinth.MaxSize;if(bedrolls<0 || bedrolls>Labyrinth.Room)yield return "bedrolls must be 0-5";}
   public override void DoEditInterface(Listing_ScenEdit listing){
    var r=listing.GetScenPartRect(this,RowHeight*3f);
-   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,0,3),"尺寸（奇数） ",ref size,ref sizeBuf,Labyrinth.MinSize,Labyrinth.MaxSize);
-   Widgets.CheckboxLabeled(ScenEdit.Row(r,1,3),"全部加屋顶",ref roof);
-   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,2,3),"睡袋 ",ref bedrolls,ref bedBuf,0,Labyrinth.Room);
+   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,0,3),"尺寸（奇数） ".Loc(),ref size,ref sizeBuf,Labyrinth.MinSize,Labyrinth.MaxSize);
+   Widgets.CheckboxLabeled(ScenEdit.Row(r,1,3),"全部加屋顶".Loc(),ref roof);
+   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,2,3),"睡袋 ".Loc(),ref bedrolls,ref bedBuf,0,Labyrinth.Room);
   }
   public override void PostGameStart(){var map=Find.AnyPlayerHomeMap;if(map!=null)Labyrinth.Build(map,StartingBuildings.Center(map),Size,roof,bedrolls,things);}
  }
@@ -312,7 +312,7 @@ namespace LichPhylactery {
    }
    return res;
   }
-  static void NoSpaceLetter(Map map,IntVec3 near,int n)=>Find.LetterStack.ReceiveLetter("没有地方放迷宫","开局人物附近找不到一块"+n+"×"+n+"、没有建筑、没有水、没有山体屋顶的平地，迷宫遗迹没有生成。\n\n物资照常在开局人物身边。",LetterDefOf.NeutralEvent,new LookTargets(near,map));
+  static void NoSpaceLetter(Map map,IntVec3 near,int n)=>Find.LetterStack.ReceiveLetter("没有地方放迷宫".Loc(),"开局人物附近找不到一块".Loc()+n+"×"+n+"、没有建筑、没有水、没有山体屋顶的平地，迷宫遗迹没有生成。\n\n物资照常在开局人物身边。".Loc(),LetterDefOf.NeutralEvent,new LookTargets(near,map));
  }
 
  // ---------- 开局装备：每人随机一件武器；某技能最好的一人拿指定武器；每人穿上指定衣物 ----------
@@ -324,10 +324,10 @@ namespace LichPhylactery {
   static string StuffLabel(ThingDef stuff)=>stuff==null?"":stuff.LabelAsStuff;
   public override string Summary(Scenario scen){
    var parts=new List<string>();
-   if(champion!=null)parts.Add((championSkill??SkillDefOf.Melee).label+"最好的人手持"+championQuality.GetLabel()+"品质的"+StuffLabel(championStuff)+champion.label);
-   if(weapons.Count>0)parts.Add((champion!=null?"其余每人":"每人")+"一把"+StuffLabel(weaponStuff)+string.Join("或",weapons.Select(w=>w.label))+(weapons.Count>1?"（随机）":""));
-   if(apparel.Count>0)parts.Add("每人穿着"+string.Join("、",apparel.Select(a=>StuffLabel(apparelStuff)+a.label)));
-   return parts.Count==0?null:"开局装备："+string.Join("；",parts)+"。";
+   if(champion!=null)parts.Add((championSkill??SkillDefOf.Melee).label+"最好的人手持".Loc()+championQuality.GetLabel()+"品质的".Loc()+StuffLabel(championStuff)+champion.label);
+   if(weapons.Count>0)parts.Add((champion!=null?"其余每人".Loc():"每人".Loc())+"一把".Loc()+StuffLabel(weaponStuff)+string.Join("或".Loc(),weapons.Select(w=>w.label))+(weapons.Count>1?"（随机）".Loc():""));
+   if(apparel.Count>0)parts.Add("每人穿着".Loc()+string.Join("、".Loc(),apparel.Select(a=>StuffLabel(apparelStuff)+a.label)));
+   return parts.Count==0?null:"开局装备：".Loc()+string.Join("；".Loc(),parts)+"。".Loc();
   }
   public override void DoEditInterface(Listing_ScenEdit listing){
    var r=listing.GetScenPartRect(this,RowHeight*2f);
@@ -363,13 +363,13 @@ namespace LichPhylactery {
   string psyBuf;
   public override void ExposeData(){base.ExposeData();Scribe_Defs.Look(ref bestAt,"bestAt");Scribe_Values.Look(ref psylink,"psylink");Scribe_Defs.Look(ref passionSkill,"passionSkill");Scribe_Values.Look(ref passion,"passion",Passion.Minor);}
   public override string Summary(Scenario scen){
-   var gifts=new List<string>();if(psylink>0)gifts.Add(psylink+"级心灵链接");if(passionSkill!=null && passion!=Passion.None)gifts.Add((passion==Passion.Major?"二级":"一级")+passionSkill.label+"兴趣");
-   return gifts.Count==0?null:(bestAt==null?"每个开局人物":bestAt.label+"最好的开局人物")+"带"+string.Join("和",gifts)+"。";
+   var gifts=new List<string>();if(psylink>0)gifts.Add(psylink+"级心灵链接".Loc());if(passionSkill!=null && passion!=Passion.None)gifts.Add((passion==Passion.Major?"二级".Loc():"一级".Loc())+passionSkill.label+"兴趣".Loc());
+   return gifts.Count==0?null:(bestAt==null?"每个开局人物".Loc():bestAt.label+"最好的开局人物".Loc())+"带".Loc()+string.Join("和".Loc(),gifts)+"。".Loc();
   }
   public override void DoEditInterface(Listing_ScenEdit listing){
    var r=listing.GetScenPartRect(this,RowHeight*3f);
    ScenEdit.DefButton(ScenEdit.Row(r,0,3),bestAt,DefDatabase<SkillDef>.AllDefs,x=>bestAt=x,true);
-   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,1,3),"心灵链接等级 ",ref psylink,ref psyBuf,0,6);
+   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,1,3),"心灵链接等级 ".Loc(),ref psylink,ref psyBuf,0,6);
    ScenEdit.DefButton(ScenEdit.Row(r,2,3),passionSkill,DefDatabase<SkillDef>.AllDefs,x=>passionSkill=x,true);
   }
   public override void PostGameStart(){var map=Find.AnyPlayerHomeMap;if(map!=null)Apply(ScenEdit.Starters(map).ToList());}
@@ -387,11 +387,11 @@ namespace LichPhylactery {
  public class ScenPart_StarterBackstory : ScenPart {
   public BackstoryDef adulthood;
   public override void ExposeData(){base.ExposeData();Scribe_Defs.Look(ref adulthood,"adulthood");}
-  public override string Summary(Scenario scen)=>adulthood==null?null:"开局人物的成年背景都是“"+adulthood.title+"”。";
+  public override string Summary(Scenario scen)=>adulthood==null?null:"开局人物的成年背景都是“".Loc()+adulthood.title+"”。".Loc();
   public override IEnumerable<string> ConfigErrors(){foreach(var e in base.ConfigErrors())yield return e;if(adulthood==null || adulthood.slot!=BackstorySlot.Adulthood)yield return "adulthood must be an adulthood backstory";}
   public override void DoEditInterface(Listing_ScenEdit listing){
    var r=listing.GetScenPartRect(this,RowHeight);
-   if(Widgets.ButtonText(r,adulthood?.title??"（无）"))Find.WindowStack.Add(new FloatMenu(DefDatabase<BackstoryDef>.AllDefs.Where(b=>b.slot==BackstorySlot.Adulthood).OrderBy(b=>b.title).Select(b=>new FloatMenuOption(b.title,()=>adulthood=b)).ToList()));
+   if(Widgets.ButtonText(r,adulthood?.title??"（无）".Loc()))Find.WindowStack.Add(new FloatMenu(DefDatabase<BackstoryDef>.AllDefs.Where(b=>b.slot==BackstorySlot.Adulthood).OrderBy(b=>b.title).Select(b=>new FloatMenuOption(b.title,()=>adulthood=b)).ToList()));
   }
   public override void Notify_PawnGenerated(Pawn pawn,PawnGenerationContext context,bool redressed){if(context==PawnGenerationContext.PlayerStarter)Apply(pawn,adulthood);}
   public static bool Apply(Pawn p,BackstoryDef b){
@@ -407,13 +407,13 @@ namespace LichPhylactery {
   static HediffDef bound;
   public static HediffDef Bound=>bound??(bound=DefDatabase<HediffDef>.GetNamed("LP_Bound"));
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref cerebrum,"cerebrum",60);Scribe_Values.Look(ref tadpole,"tadpole",.3f);Scribe_Values.Look(ref prisoners,"prisoners",2);}
-  public override string Summary(Scenario scen)=>"夺心魔开局脑髓"+cerebrum.ToString("0")+"；人类殖民者脑中有一条进度"+tadpole.ToStringPercent("0")+"的蝌蚪，正处在抑灵剂药效中（半夺心魔）；附近有"+prisoners+"名被捆缚的人类囚犯。";
+  public override string Summary(Scenario scen)=>"夺心魔开局脑髓".Loc()+cerebrum.ToString("0")+"；人类殖民者脑中有一条进度".Loc()+tadpole.ToStringPercent("0")+"的蝌蚪，正处在抑灵剂药效中（半夺心魔）；附近有".Loc()+prisoners+"名被捆缚的人类囚犯。".Loc();
   public override IEnumerable<string> ConfigErrors(){foreach(var e in base.ConfigErrors())yield return e;if(cerebrum<0 || cerebrum>MindFlayer.Max)yield return "cerebrum must be 0-100";if(tadpole<0 || tadpole>=HalfIllithid.FreezeLimit)yield return "tadpole progress must be below the suppression limit";if(prisoners<0)yield return "prisoners must not be negative";}
   public override void DoEditInterface(Listing_ScenEdit listing){
    var r=listing.GetScenPartRect(this,RowHeight*3f);
-   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,0,3),"脑髓 ",ref cerebrum,ref cBuf,0,MindFlayer.Max);
-   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,1,3),"蝌蚪进度 ",ref tadpole,ref tBuf,0,.49f);
-   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,2,3),"囚犯 ",ref prisoners,ref pBuf,0,6);
+   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,0,3),"脑髓 ".Loc(),ref cerebrum,ref cBuf,0,MindFlayer.Max);
+   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,1,3),"蝌蚪进度 ".Loc(),ref tadpole,ref tBuf,0,.49f);
+   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,2,3),"囚犯 ".Loc(),ref prisoners,ref pBuf,0,6);
   }
   public override void PostGameStart(){var map=Find.AnyPlayerHomeMap;if(map!=null)Apply(map,ScenEdit.Starters(map).ToList(),cerebrum,tadpole,prisoners);}
   public static List<Pawn> Apply(Map map,List<Pawn> starters,float cerebrum,float tadpole,int prisoners){

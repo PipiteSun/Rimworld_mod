@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 银行 -->
+  <LP_BankVault.label>bank</LP_BankVault.label>
+  <!-- 两座带玻璃窗的加固金柜，只收银与金，每格可存放 20 堆，整座共 80 堆。\n\n存进去的钱照常能用于交易、建造和配方，不用先取出来。玻璃柜里看得到存着的银和金，存得越多堆得越满；鼠标悬停或选中时显示银、金的总数与总价值，「金库清单」里能逐堆禁止或取出。\n\n金库不会着火，爆炸也伤不到里面的钱；拆除后钱会留在原地。轨道交易仍须把银行放在轨道交易信标的范围内。 -->
+  <LP_BankVault.description>Two reinforced glass-windowed vaults that hold only silver and gold, 20 stacks per cell, 80 stacks in total.\n\nMoney stored inside can still be used for trade, construction and recipes without taking it out first. The stored silver and gold is visible through the glass and piles higher the more you store; hovering or selecting shows the totals and value of silver and gold, and the "vault ledger" lets you forbid or take out each stack.\n\nThe vault never catches fire, and explosions cannot hurt the money inside; when deconstructed, the money stays in place. Orbital trade still requires the bank to be within range of an orbital trade beacon.</LP_BankVault.description>
+</LanguageData>

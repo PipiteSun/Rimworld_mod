@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 制作炽焰符 -->
+  <LP_MakeElementalFocus_Fire.label>make blaze charm</LP_MakeElementalFocus_Fire.label>
+  <!-- 用20秘银和50化合燃料制作一枚炽焰符。只有炽焰血脉的元素裔能做。 -->
+  <LP_MakeElementalFocus_Fire.description>Make a blaze charm from 20 mithril and 50 chemfuel. Only blaze bloodline genasi can make it.</LP_MakeElementalFocus_Fire.description>
+  <!-- 正在制作炽焰符。 -->
+  <LP_MakeElementalFocus_Fire.jobString>Making a blaze charm.</LP_MakeElementalFocus_Fire.jobString>
+  <!-- 制作潮汐符 -->
+  <LP_MakeElementalFocus_Water.label>make tide charm</LP_MakeElementalFocus_Water.label>
+  <!-- 用20秘银和20份草药制作一枚潮汐符。只有潮汐血脉的元素裔能做。 -->
+  <LP_MakeElementalFocus_Water.description>Make a tide charm from 20 mithril and 20 herbal medicine. Only tide bloodline genasi can make it.</LP_MakeElementalFocus_Water.description>
+  <!-- 正在制作潮汐符。 -->
+  <LP_MakeElementalFocus_Water.jobString>Making a tide charm.</LP_MakeElementalFocus_Water.jobString>
+  <!-- 制作岩石符 -->
+  <LP_MakeElementalFocus_Earth.label>make stone charm</LP_MakeElementalFocus_Earth.label>
+  <!-- 用20秘银和5份精金制作一枚岩石符。只有岩石血脉的元素裔能做。 -->
+  <LP_MakeElementalFocus_Earth.description>Make a stone charm from 20 mithril and 5 adamantine. Only stone bloodline genasi can make it.</LP_MakeElementalFocus_Earth.description>
+  <!-- 正在制作岩石符。 -->
+  <LP_MakeElementalFocus_Earth.jobString>Making a stone charm.</LP_MakeElementalFocus_Earth.jobString>
+  <!-- 制作疾风符 -->
+  <LP_MakeElementalFocus_Air.label>make gale charm</LP_MakeElementalFocus_Air.label>
+  <!-- 用20秘银和30份布制作一枚疾风符。只有疾风血脉的元素裔能做。 -->
+  <LP_MakeElementalFocus_Air.description>Make a gale charm from 20 mithril and 30 cloth. Only gale bloodline genasi can make it.</LP_MakeElementalFocus_Air.description>
+  <!-- 正在制作疾风符。 -->
+  <LP_MakeElementalFocus_Air.jobString>Making a gale charm.</LP_MakeElementalFocus_Air.jobString>
+</LanguageData>

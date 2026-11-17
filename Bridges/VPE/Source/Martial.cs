@@ -63,7 +63,7 @@ namespace LichPhylactery.VPEBridge {
   public override void FinalizeInit(){
    base.FinalizeInit();if(version>=Version)return;done=true;version=Version;
    int n=ClassMigration.MigrateAll(PawnsFinder.AllMapsWorldAndTemporary_Alive);
-   if(n>0)Log.Message("[DND边缘大陆] 1.73.0：把 "+n+" 人的 VPE DND 职业路径换成了冒险者职业等级。");
+   if(n>0)Log.Message("[DND边缘大陆] 1.73.0：把 ".Loc()+n+" 人的 VPE DND 职业路径换成了冒险者职业等级。".Loc());
   }
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref done,"lpClassMigrated");Scribe_Values.Look(ref version,"lpClassMigratedVersion");}
  }

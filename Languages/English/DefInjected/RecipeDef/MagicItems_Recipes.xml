@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 制作守护戒指 -->
+  <LP_MakeRingProtection.label>make ring of protection</LP_MakeRingProtection.label>
+  <!-- 用10金和10秘银制作一枚守护戒指。 -->
+  <LP_MakeRingProtection.description>Make a ring of protection from 10 gold and 10 mithril.</LP_MakeRingProtection.description>
+  <!-- 正在制作守护戒指。 -->
+  <LP_MakeRingProtection.jobString>Making a ring of protection.</LP_MakeRingProtection.jobString>
+  <!-- 制作适应项链 -->
+  <LP_MakeNecklaceAdaptation.label>make necklace of adaptation</LP_MakeNecklaceAdaptation.label>
+  <!-- 用30银和2份草药制作一条适应项链。 -->
+  <LP_MakeNecklaceAdaptation.description>Make a necklace of adaptation from 30 silver and 2 herbal medicine.</LP_MakeNecklaceAdaptation.description>
+  <!-- 正在制作适应项链。 -->
+  <LP_MakeNecklaceAdaptation.jobString>Making a necklace of adaptation.</LP_MakeNecklaceAdaptation.jobString>
+  <!-- 制作夜视护目镜 -->
+  <LP_MakeGogglesNight.label>make goggles of night</LP_MakeGogglesNight.label>
+  <!-- 用10份布和10钢制作一副夜视护目镜。 -->
+  <LP_MakeGogglesNight.description>Make a pair of goggles of night from 10 cloth and 10 steel.</LP_MakeGogglesNight.description>
+  <!-- 正在制作夜视护目镜。 -->
+  <LP_MakeGogglesNight.jobString>Making goggles of night.</LP_MakeGogglesNight.jobString>
+  <!-- 制作自由行动戒指 -->
+  <LP_MakeRingFreeAction.label>make ring of free action</LP_MakeRingFreeAction.label>
+  <!-- 用10金和20银制作一枚自由行动戒指。 -->
+  <LP_MakeRingFreeAction.description>Make a ring of free action from 10 gold and 20 silver.</LP_MakeRingFreeAction.description>
+  <!-- 正在制作自由行动戒指。 -->
+  <LP_MakeRingFreeAction.jobString>Making a ring of free action.</LP_MakeRingFreeAction.jobString>
+  <!-- 制作解除诅咒卷轴 -->
+  <LP_MakeScrollRemoveCurse.label>make scroll of remove curse</LP_MakeScrollRemoveCurse.label>
+  <!-- 用10份布和2金写一张解除诅咒卷轴。 -->
+  <LP_MakeScrollRemoveCurse.description>Write a scroll of remove curse from 10 cloth and 2 gold.</LP_MakeScrollRemoveCurse.description>
+  <!-- 正在制作解除诅咒卷轴。 -->
+  <LP_MakeScrollRemoveCurse.jobString>Making a scroll of remove curse.</LP_MakeScrollRemoveCurse.jobString>
+  <!-- 制作食人魔之力手套 -->
+  <LP_MakeGauntletsOgrePower.label>make gauntlets of ogre power</LP_MakeGauntletsOgrePower.label>
+  <!-- 用20份皮革、15钢和10化合燃料制作一副食人魔之力手套。 -->
+  <LP_MakeGauntletsOgrePower.description>Make a pair of gauntlets of ogre power from 20 leather, 15 steel and 10 chemfuel.</LP_MakeGauntletsOgrePower.description>
+  <!-- 正在制作食人魔之力手套。 -->
+  <LP_MakeGauntletsOgrePower.jobString>Making gauntlets of ogre power.</LP_MakeGauntletsOgrePower.jobString>
+  <!-- 制作接箭手套 -->
+  <LP_MakeGlovesMissileSnaring.label>make gloves of missile snaring</LP_MakeGlovesMissileSnaring.label>
+  <!-- 用15份皮革和20银制作一副接箭手套。 -->
+  <LP_MakeGlovesMissileSnaring.description>Make a pair of gloves of missile snaring from 15 leather and 20 silver.</LP_MakeGlovesMissileSnaring.description>
+  <!-- 正在制作接箭手套。 -->
+  <LP_MakeGlovesMissileSnaring.jobString>Making gloves of missile snaring.</LP_MakeGlovesMissileSnaring.jobString>
+  <!-- 制作箭术护腕 -->
+  <LP_MakeBracersArchery.label>make bracers of archery</LP_MakeBracersArchery.label>
+  <!-- 用15份皮革和5金制作一对箭术护腕。 -->
+  <LP_MakeBracersArchery.description>Make a pair of bracers of archery from 15 leather and 5 gold.</LP_MakeBracersArchery.description>
+  <!-- 正在制作箭术护腕。 -->
+  <LP_MakeBracersArchery.jobString>Making bracers of archery.</LP_MakeBracersArchery.jobString>
+  <!-- 制作防御护腕 -->
+  <LP_MakeBracersDefense.label>make bracers of defense</LP_MakeBracersDefense.label>
+  <!-- 用30钢和5金制作一对防御护腕。 -->
+  <LP_MakeBracersDefense.description>Make a pair of bracers of defense from 30 steel and 5 gold.</LP_MakeBracersDefense.description>
+  <!-- 正在制作防御护腕。 -->
+  <LP_MakeBracersDefense.jobString>Making bracers of defense.</LP_MakeBracersDefense.jobString>
+  <!-- 制作传心头盔 -->
+  <LP_MakeHelmTelepathy.label>make helm of telepathy</LP_MakeHelmTelepathy.label>
+  <!-- 用30银和10秘银制作一顶传心头盔。 -->
+  <LP_MakeHelmTelepathy.description>Make a helm of telepathy from 30 silver and 10 mithril.</LP_MakeHelmTelepathy.description>
+  <!-- 正在制作传心头盔。 -->
+  <LP_MakeHelmTelepathy.jobString>Making a helm of telepathy.</LP_MakeHelmTelepathy.jobString>
+  <!-- 制作鹰眼 -->
+  <LP_MakeEyesEagle.label>make eyes of the eagle</LP_MakeEyesEagle.label>
+  <!-- 用15银和5金磨一对鹰眼镜片。 -->
+  <LP_MakeEyesEagle.description>Grind a pair of eyes of the eagle lenses from 15 silver and 5 gold.</LP_MakeEyesEagle.description>
+  <!-- 正在制作鹰眼。 -->
+  <LP_MakeEyesEagle.jobString>Making eyes of the eagle.</LP_MakeEyesEagle.jobString>
+  <!-- 制作微观之眼 -->
+  <LP_MakeEyesMinuteSeeing.label>make eyes of minute seeing</LP_MakeEyesMinuteSeeing.label>
+  <!-- 用20银和3金磨一对微观之眼镜片。 -->
+  <LP_MakeEyesMinuteSeeing.description>Grind a pair of eyes of minute seeing lenses from 20 silver and 3 gold.</LP_MakeEyesMinuteSeeing.description>
+  <!-- 正在制作微观之眼。 -->
+  <LP_MakeEyesMinuteSeeing.jobString>Making eyes of minute seeing.</LP_MakeEyesMinuteSeeing.jobString>
+  <!-- 制作伤口闭合护符 -->
+  <LP_MakePeriaptWoundClosure.label>make periapt of wound closure</LP_MakePeriaptWoundClosure.label>
+  <!-- 用15金和2瓶巨魔血制作一枚伤口闭合护符。 -->
+  <LP_MakePeriaptWoundClosure.description>Make a periapt of wound closure from 15 gold and 2 troll blood.</LP_MakePeriaptWoundClosure.description>
+  <!-- 正在制作伤口闭合护符。 -->
+  <LP_MakePeriaptWoundClosure.jobString>Making a periapt of wound closure.</LP_MakePeriaptWoundClosure.jobString>
+  <!-- 制作法术转向戒指 -->
+  <LP_MakeRingSpellTurning.label>make ring of spell turning</LP_MakeRingSpellTurning.label>
+  <!-- 用15秘银和15金制作一枚法术转向戒指。 -->
+  <LP_MakeRingSpellTurning.description>Make a ring of spell turning from 15 mithril and 15 gold.</LP_MakeRingSpellTurning.description>
+  <!-- 正在制作法术转向戒指。 -->
+  <LP_MakeRingSpellTurning.jobString>Making a ring of spell turning.</LP_MakeRingSpellTurning.jobString>
+  <!-- 制作再生戒指 -->
+  <LP_MakeRingRegeneration.label>make ring of regeneration</LP_MakeRingRegeneration.label>
+  <!-- 用10金和2瓶巨魔血制作一枚再生戒指。 -->
+  <LP_MakeRingRegeneration.description>Make a ring of regeneration from 10 gold and 2 troll blood.</LP_MakeRingRegeneration.description>
+  <!-- 正在制作再生戒指。 -->
+  <LP_MakeRingRegeneration.jobString>Making a ring of regeneration.</LP_MakeRingRegeneration.jobString>
+  <!-- 制作护盾胸针 -->
+  <LP_MakeBroochShielding.label>make brooch of shielding</LP_MakeBroochShielding.label>
+  <!-- 用20银和10秘银制作一枚护盾胸针。 -->
+  <LP_MakeBroochShielding.description>Make a brooch of shielding from 20 silver and 10 mithril.</LP_MakeBroochShielding.description>
+  <!-- 正在制作护盾胸针。 -->
+  <LP_MakeBroochShielding.jobString>Making a brooch of shielding.</LP_MakeBroochShielding.jobString>
+  <!-- 制作储法戒指 -->
+  <LP_MakeRingSpellStoring.label>make ring of spell storing</LP_MakeRingSpellStoring.label>
+  <!-- 用20银和10秘银制作一枚储法戒指。 -->
+  <LP_MakeRingSpellStoring.description>Make a ring of spell storing from 20 silver and 10 mithril.</LP_MakeRingSpellStoring.description>
+  <!-- 正在制作储法戒指。 -->
+  <LP_MakeRingSpellStoring.jobString>Making a ring of spell storing.</LP_MakeRingSpellStoring.jobString>
+  <!-- 制作灵能兜帽 -->
+  <LP_MakePsychicHood.label>make psionic hood</LP_MakePsychicHood.label>
+  <!-- 用30份布、10金和1个零部件制作一顶灵能兜帽。 -->
+  <LP_MakePsychicHood.description>Make a psionic hood from 30 cloth, 10 gold and 1 component.</LP_MakePsychicHood.description>
+  <!-- 正在制作灵能兜帽。 -->
+  <LP_MakePsychicHood.jobString>Making a psionic hood.</LP_MakePsychicHood.jobString>
+  <!-- 制作祈祷念珠 -->
+  <LP_MakePrayerBeads.label>make prayer beads</LP_MakePrayerBeads.label>
+  <!-- 用10份木材和5金串一副祈祷念珠，并祝圣。 -->
+  <LP_MakePrayerBeads.description>String a set of prayer beads from 10 wood and 5 gold and consecrate them.</LP_MakePrayerBeads.description>
+  <!-- 正在祝圣祈祷念珠。 -->
+  <LP_MakePrayerBeads.jobString>Consecrating prayer beads.</LP_MakePrayerBeads.jobString>
+  <!-- 制作圣甲虫护符 -->
+  <LP_MakeScarabProtection.label>make scarab amulet</LP_MakeScarabProtection.label>
+  <!-- 用5块玉石和10金雕一枚圣甲虫护符，并祝圣。 -->
+  <LP_MakeScarabProtection.description>Carve a scarab amulet from 5 jade and 10 gold and consecrate it.</LP_MakeScarabProtection.description>
+  <!-- 正在祝圣圣甲虫护符。 -->
+  <LP_MakeScarabProtection.jobString>Consecrating a scarab amulet.</LP_MakeScarabProtection.jobString>
+  <!-- 制作净化封印 -->
+  <LP_MakePuritySeal.label>make purifying seal</LP_MakePuritySeal.label>
+  <!-- 用30银和5份布写3张净化封印。 -->
+  <LP_MakePuritySeal.description>Write 3 purifying seals from 30 silver and 5 cloth.</LP_MakePuritySeal.description>
+  <!-- 正在制作净化封印。 -->
+  <LP_MakePuritySeal.jobString>Making purifying seals.</LP_MakePuritySeal.jobString>
+  <!-- 制作圣光冠环 -->
+  <LP_MakeHaloOfLight.label>make circlet of holy light</LP_MakeHaloOfLight.label>
+  <!-- 用30金和1片神迹残片铸一圈圣光冠环。 -->
+  <LP_MakeHaloOfLight.description>Cast a circlet of holy light from 30 gold and 1 miracle fragment.</LP_MakeHaloOfLight.description>
+  <!-- 正在祝圣圣光冠环。 -->
+  <LP_MakeHaloOfLight.jobString>Consecrating a circlet of holy light.</LP_MakeHaloOfLight.jobString>
+  <!-- 制作护佑誓约戒指（一对） -->
+  <LP_MakeWardingBondCase.label>make rings of protective vows (pair)</LP_MakeWardingBondCase.label>
+  <!-- 用20金和20银打造一对互相绑定的护佑誓约戒指，装在誓约戒匣里。 -->
+  <LP_MakeWardingBondCase.description>Forge a pair of bound rings of protective vows from 20 gold and 20 silver, packed in a vow ring box.</LP_MakeWardingBondCase.description>
+  <!-- 正在打造护佑誓约戒指。 -->
+  <LP_MakeWardingBondCase.jobString>Forging rings of protective vows.</LP_MakeWardingBondCase.jobString>
+  <!-- 制作不可移动之杖 -->
+  <LP_MakeImmovableRod.label>make immovable rod</LP_MakeImmovableRod.label>
+  <!-- 用50钢和10玻璃钢制作一根不可移动之杖。 -->
+  <LP_MakeImmovableRod.description>Make an immovable rod from 50 steel and 10 plasteel.</LP_MakeImmovableRod.description>
+  <!-- 正在制作不可移动之杖。 -->
+  <LP_MakeImmovableRod.jobString>Making an immovable rod.</LP_MakeImmovableRod.jobString>
+  <!-- 制作不灭火把 -->
+  <LP_MakeEverburningTorch.label>make everburning torch</LP_MakeEverburningTorch.label>
+  <!-- 用5份木材、3金和10化合燃料制作一支不灭火把。 -->
+  <LP_MakeEverburningTorch.description>Make an everburning torch from 5 wood, 3 gold and 10 chemfuel.</LP_MakeEverburningTorch.description>
+  <!-- 正在制作不灭火把。 -->
+  <LP_MakeEverburningTorch.jobString>Making an everburning torch.</LP_MakeEverburningTorch.jobString>
+  <!-- 制作英灵号角 -->
+  <LP_MakeHornValhalla.label>make horn of valhalla</LP_MakeHornValhalla.label>
+  <!-- 用40银、10金和10秘银制作一只英灵号角。 -->
+  <LP_MakeHornValhalla.description>Make a horn of valhalla from 40 silver, 10 gold and 10 mithril.</LP_MakeHornValhalla.description>
+  <!-- 正在制作英灵号角。 -->
+  <LP_MakeHornValhalla.jobString>Making a horn of valhalla.</LP_MakeHornValhalla.jobString>
+  <!-- 撰写魔像手册 -->
+  <LP_MakeManualOfGolems.label>write golem manual</LP_MakeManualOfGolems.label>
+  <!-- 巫妖把魔像学的研究心得刻进石板，做成一本魔像手册（30石块、20金）。只有巫妖能写。 -->
+  <LP_MakeManualOfGolems.description>A lich carves their golemancy research into stone slabs and makes a golem manual (30 stone blocks, 20 gold). Only liches can write it.</LP_MakeManualOfGolems.description>
+  <!-- 正在撰写魔像手册。 -->
+  <LP_MakeManualOfGolems.jobString>Writing a golem manual.</LP_MakeManualOfGolems.jobString>
+</LanguageData>

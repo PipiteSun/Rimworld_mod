@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 箭术 -->
+  <LP_Style_Archery.label>archery</LP_Style_Archery.label>
+  <!-- 远程武器射击命中 ×1.08，射程 +2 格（只算武器射击，不算能力；投掷物不算）。 -->
+  <LP_Style_Archery.description>Ranged weapon shot hit chance ×1.08, range +2 cells (weapon shots only, not abilities; thrown weapons don't count).</LP_Style_Archery.description>
+  <!-- 防御 -->
+  <LP_Style_Defense.label>defense</LP_Style_Defense.label>
+  <!-- 穿着外套层或中间层且那件衣服的利器护甲 ≥ 40% 时，利器、钝器护甲 +8%。 -->
+  <LP_Style_Defense.description>While wearing an outer or middle layer whose sharp armor is ≥ 40%, sharp and blunt armor +8%.</LP_Style_Defense.description>
+  <!-- 决斗 -->
+  <LP_Style_Dueling.label>dueling</LP_Style_Dueling.label>
+  <!-- 主手是单手近战武器（质量 2.5 千克以下）且没有在用的副手时，近战伤害 ×1.2。 -->
+  <LP_Style_Dueling.description>When the main hand is a one-handed melee weapon (mass under 2.5 kg) and no off-hand is in use, melee damage ×1.2.</LP_Style_Dueling.description>
+  <!-- 巨武器 -->
+  <LP_Style_GreatWeapon.label>great weapon fighting</LP_Style_GreatWeapon.label>
+  <!-- 使用双手近战武器（质量 2.5 千克以上）时近战伤害 ×1.15、近战冷却 ×0.95。 -->
+  <LP_Style_GreatWeapon.description>With a two-handed melee weapon (mass over 2.5 kg), melee damage ×1.15 and melee cooldown ×0.95.</LP_Style_GreatWeapon.description>
+  <!-- 守护 -->
+  <LP_Style_Protection.label>protection</LP_Style_Protection.label>
+  <!-- 相邻（周围 8 格）的友军被攻击时，攻击者的命中 ×0.85（近战和远程都算）。 -->
+  <LP_Style_Protection.description>When an adjacent ally (surrounding 8 cells) is attacked, the attacker's hit chance ×0.85 (melee and ranged).</LP_Style_Protection.description>
+  <!-- 拦截 -->
+  <LP_Style_Interception.label>interception</LP_Style_Interception.label>
+  <!-- 3 格内的友军受到外来伤害时，替他挡下 3 + 熟练加值点（最低减到 0）。每 10 秒一次。 -->
+  <LP_Style_Interception.description>When an ally within 3 cells takes outside damage, block 3 + proficiency bonus points of it (down to 0 at least). Once every 10 seconds.</LP_Style_Interception.description>
+  <!-- 双武器 -->
+  <LP_Style_TwoWeapon.label>two-weapon fighting</LP_Style_TwoWeapon.label>
+  <!-- 背包里的一把近战武器当作副手：每次普通近战命中有 30% 用副手再砍一刀（伤害按设置里的副手倍率）。右键地上的近战武器可以“拿作副手”。装了双持类模组时无效。 -->
+  <LP_Style_TwoWeapon.description>A melee weapon in the pack serves as an off-hand: each normal melee hit has a 30% chance of an extra off-hand strike (damage uses the off-hand multiplier in settings). Right-click a melee weapon on the ground to "take as off-hand". Has no effect with dual-wield mods installed.</LP_Style_TwoWeapon.description>
+  <!-- 盲斗 -->
+  <LP_Style_BlindFighting.label>blind fighting</LP_Style_BlindFighting.label>
+  <!-- 射击不受烟雾影响；3 格内能看见隐身的单位。 -->
+  <LP_Style_BlindFighting.description>Shooting is unaffected by smoke; can see invisible units within 3 cells.</LP_Style_BlindFighting.description>
+  <!-- 投掷 -->
+  <LP_Style_Thrown.label>thrown weapon fighting</LP_Style_Thrown.label>
+  <!-- 投掷物（手雷、燃烧瓶、EMP 手雷、本模组的炼金投掷物）射程 ×1.3、命中 ×1.1。 -->
+  <LP_Style_Thrown.description>Thrown weapons (grenades, molotovs, EMP grenades, this mod's alchemical throwables) range ×1.3, hit chance ×1.1.</LP_Style_Thrown.description>
+  <!-- 徒手 -->
+  <LP_Style_Unarmed.label>unarmed fighting</LP_Style_Unarmed.label>
+  <!-- 没拿武器时拳脚伤害 ×1.6；拳脚命中有 20% 抓住目标 2 秒（几乎不能移动）。 -->
+  <LP_Style_Unarmed.description>Without a weapon, fist and kick damage ×1.6; unarmed hits have a 20% chance to grab the target for 2 seconds (almost unable to move).</LP_Style_Unarmed.description>
+</LanguageData>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（Scenarios.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>开局附近没有足够的空地放置</zh><en>There isn't enough open space near the start to place </en></s>
+  <s><zh>，请自行建造。</zh><en>; please build it yourself.</en></s>
+  <s><zh>开局人物页的第一位角色已是巫妖：命匣</zh><en>The first character on the starting character page is already a lich: phylactery level </en></s>
+  <s><zh>级，统御</zh><en>, commanding </en></s>
+  <s><zh>具骷髅仆役</zh><en> skeleton servants</en></s>
+  <s><zh>具血肉巨像</zh><en> flesh colossi</en></s>
+  <s><zh>，附近有一座死灵仪式台。</zh><en>, with a necromantic ritual table nearby.</en></s>
+  <s><zh>开局附近有一座尚存</zh><en>Near the start there's a molten forge with </en></s>
+  <s><zh>燃料的熔火锻炉；每个火巨人穿着锻工外衣，近战最好的火巨人手持熔炉重锤。</zh><en> fuel remaining; each fire giant wears a smith's coat, and the fire giant best at melee holds a forge hammer.</en></s>
+  <s><zh>开局后</zh><en>After the start, </en></s>
+  <s><zh>天内：</zh><en> days in: </en></s>
+  <s><zh>开局约定的袭击</zh><en>The raid promised by the start</en></s>
+  <s><zh>没有到来：</zh><en> didn't arrive: </en></s>
+  <s><zh>这个派系不在本存档里</zh><en>this faction isn't in this save</en></s>
+  <s><zh>已被关闭</zh><en>has been turned off</en></s>
+  <s><zh>已经不再敌对</zh><en>is no longer hostile</en></s>
+  <s><zh>[DND边缘大陆] 剧本约定的袭击（</zh><en>[DND Rimlands] The scenario's promised raid (</en></s>
+  <s><zh>）没能落地（点数 </zh><en>) failed to land (points </en></s>
+  <s><zh>来袭（点数×</zh><en> attack (points ×</en></s>
+  <s><zh>点数倍率 </zh><en>Points multiplier </en></s>
+  <s><zh>开局物资放在附近有厚岩顶的空地上（山腹营地）：</zh><en>Starting supplies are placed in an open area with a thick rock roof nearby (mountain-hollow camp): </en></s>
+  <s><zh>。找不到山体时放在普通位置。</zh><en>. If no mountain is found, placed at a normal location.</en></s>
+  <s><zh>搜索半径：</zh><en>Search radius: </en></s>
+  <s><zh>没找到山体</zh><en>No mountain found</en></s>
+  <s><zh>开局人物附近找不到带厚岩顶的空地，物资放在了普通位置。\n\n建议在丘陵或山地开局：矮人的“石之耐力”只在厚岩顶下生效。</zh><en>No open area with a thick rock roof was found near the starting characters; supplies were placed at a normal location.\n\nStarting on hills or mountains is recommended: the dwarves' "stone endurance" only works under thick rock roofs.</en></s>
+  <s><zh>开局附近有一座</zh><en>Near the start there's a </en></s>
+  <s><zh>的花岗岩迷宫遗迹</zh><en> granite labyrinth ruin</en></s>
+  <s><zh>（全部盖有屋顶）</zh><en> (fully roofed)</en></s>
+  <s><zh>，中央5×5的房间里有</zh><en>, with </en></s>
+  <s><zh>张睡袋</zh><en> bedrolls in the central 5×5 room</en></s>
+  <s><zh>。找不到平地时不生成。</zh><en>. Not generated if no flat ground is found.</en></s>
+  <s><zh>尺寸（奇数） </zh><en>Size (odd) </en></s>
+  <s><zh>全部加屋顶</zh><en>Roof everything</en></s>
+  <s><zh>睡袋 </zh><en>Bedrolls </en></s>
+  <s><zh>没有地方放迷宫</zh><en>No space for the labyrinth</en></s>
+  <s><zh>开局人物附近找不到一块</zh><en>No flat ground of </en></s>
+  <s><zh>、没有建筑、没有水、没有山体屋顶的平地，迷宫遗迹没有生成。\n\n物资照常在开局人物身边。</zh><en> without buildings, water or mountain roof was found near the starting characters; the labyrinth ruin wasn't generated.\n\nSupplies are next to the starting characters as usual.</en></s>
+  <s><zh>最好的人手持</zh><en>The best one holds a </en></s>
+  <s><zh>品质的</zh><en>-quality </en></s>
+  <s><zh>其余每人</zh><en>; everyone else </en></s>
+  <s><zh>每人</zh><en>Everyone </en></s>
+  <s><zh>一把</zh><en>a </en></s>
+  <s><zh>（随机）</zh><en> (random)</en></s>
+  <s><zh>每人穿着</zh><en>Everyone wears </en></s>
+  <s><zh>开局装备：</zh><en>Starting gear: </en></s>
+  <s><zh>级心灵链接</zh><en>-level psylink</en></s>
+  <s><zh>二级</zh><en>level 2</en></s>
+  <s><zh>一级</zh><en>level 1</en></s>
+  <s><zh>兴趣</zh><en> passion</en></s>
+  <s><zh>每个开局人物</zh><en>each starting character</en></s>
+  <s><zh>最好的开局人物</zh><en>the best starting character</en></s>
+  <s><zh>带</zh><en> has </en></s>
+  <s><zh>心灵链接等级 </zh><en>Psylink level </en></s>
+  <s><zh>开局人物的成年背景都是“</zh><en>The starting characters' adulthood backstories are all "</en></s>
+  <s><zh>夺心魔开局脑髓</zh><en>Mind flayer starting brain matter </en></s>
+  <s><zh>；人类殖民者脑中有一条进度</zh><en>; the human colonists have a tadpole in their brains at progress </en></s>
+  <s><zh>的蝌蚪，正处在抑灵剂药效中（半夺心魔）；附近有</zh><en>, currently under the suppressant's effect (half-illithids); nearby are </en></s>
+  <s><zh>名被捆缚的人类囚犯。</zh><en> bound human prisoners.</en></s>
+  <s><zh>蝌蚪进度 </zh><en>Tadpole progress </en></s>
+  <s><zh>囚犯 </zh><en>Prisoners </en></s>
+</LPStrings>

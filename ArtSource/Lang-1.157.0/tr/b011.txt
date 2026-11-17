@@ -1,0 +1,205 @@
+s02439	A barbarian's rage: melee damage ×(1.15 + 0.1 × rage power), sharp and blunt damage taken (including bullets) ×0.7; cannot use spellcasting class abilities.
+s02440	Fly into a rage for 30 seconds: melee damage ×(1.15 + 0.1 × rage power), sharp and blunt damage taken (including bullets) ×0.7; cannot use spellcasting class abilities while raging. Costs 1 rage. Barbarian level 1.
+s02441	rage
+s02442	Barbarian ability power multiplier: 0.5 + Melee level / 20, plus adventurer Strength modifier × 0.05 and (proficiency bonus - 2) × 0.02; those with a martial class add 0.02 × (combined martial class levels - 1), up to +40%.
+s02443	rage power
+s02444	Marked by a ranger: the marker deals more damage to it (× 1 + 0.15 × hunter power).
+s02445	Mark one enemy within 30 cells for 1 hour: you deal ×(1 + 0.15 × hunter power) damage to it. No resource cost. Ranger level 3.
+s02446	hunter's mark
+s02447	Attacking recklessly with no regard for defense: melee hit +20%, your own melee dodge -20%.
+s02448	Attack recklessly for 15 seconds: melee hit +20%, your own melee dodge -20%. Costs no rage. Barbarian level 3.
+s02449	reckless attack
+s02450	Passive: while raging, when you would fall, fury holds you up for another 10 seconds (no pain, won't fall); only once per rage, and if the injuries remain after 10 seconds you fall as usual. Barbarian level 13.
+s02451	relentless rage
+s02452	Fury holds the body up: feels no pain and won't fall for now.
+s02453	Melted into the shadows: invisible, revealed after attacking.
+s02454	Melt into the shadows for 15 seconds × cunning power: invisible, revealed after attacking (attacking while invisible counts as a sneak attack). Rogue level 7.
+s02455	shadow step
+s02456	Passive: when the target is downed, stunned, fleeing, not targeting you, or has one of your allies within 1.5 cells, your attacks deal ×(1 + (0.2 + 0.03 × (rogue level - 1)) × cunning power) damage; at most once per second. Both melee and ranged count. Rogue level 1.
+s02457	sneak attack
+s02458	Passive: once per day, a melee attack that would miss hits instead, and that hit deals ×2 damage. Rogue level 15, also requires Melee 15.
+s02459	stroke of luck
+s02460	Passive: once every 10 seconds, one instance of ranged damage taken is halved. Rogue level 5.
+s02461	uncanny dodge
+s02462	Volley at a point within weapon range: every enemy within radius 3 (up to 6) takes one guaranteed-hit bullet from your current weapon at ×0.8 × hunter power damage. Requires a ranged weapon, no resource cost. Ranger level 7.
+s02463	volley
+s02464	Passive: movement slowdown from terrain, snow and plants reduced by 75%. Ranger level 5.
+s02465	land's stride
+s02466	All corpses except trolls. Untick this in a cremation bill to burn only trolls.
+s02467	non-troll corpses
+s02468	Corpses with the troll regeneration gene. Unless burned or cremated, they will revive.
+s02469	troll corpses
+s02470	Swallowed a beholder's brain; what its ten eyes saw is still swirling in the head: psychic sensitivity +20%, ability cooldowns -20%. Fades after 10 days.
+s02471	beholder's insight
+s02472	That person has been living among us with a fake face all along.
+s02473	deceived
+s02474	cloud giant luxury caravan
+s02475	(Adult) After casting, choose a weather: clear, fog or rain; the map's weather changes to it and holds for 1 day. Cannot call thunderstorms. Cooldown 5 days (refunded if you close the choice menu without picking).
+s02476	call wind, drive clouds
+s02477	A cloud giant's silver circlet chased with curling cloud patterns and set with a piece of sky amber.
+s02478	cloud circlet
+s02479	buying dragon eggs
+s02480	Summon a thick fog at the target point: blinding smoke in a 4-cell radius for 30 seconds (blocks line of sight for shooting). Cooldown 4 hours.
+s02481	fog cloud
+s02482	A giant race that lives in castles in the clouds; the bloodline is passed on to children. Adult cloud giants are 2.2 times the size of an ordinary person, with pale blue-white skin and cloud circlets on silver-white hair. They walk as if on clouds; marsh, mud, shallow water and snow can't slow them, and even traps can't sense their steps. Cloud giants care about dignity and will only live in bedrooms befitting their status, yet they are generous hosts who like to make friends with gifts; they speak elegantly and excel at negotiation and persuasion. In the giant ordning, cloud giants rank second only to storm giants.
+s02483	Inheritable giant race (rank 2 of the ordning). 2.2× giant body, cloud step (no slowdown in marsh, mud, shallow water, snow), doesn't trigger traps, outstanding social skills, particular about bedrooms, gives gifts; Misty Step, Fog Cloud, Call Wind.
+s02484	cloud giant
+s02485	Giant lineage: cloud giant (rank 2 of the ordning).
+s02486	Body size grows with age, reaching ×2.2 as an adult (drawn ×1.45).
+s02487	Giant-body rules: health and melee increase with body size (adjustable in mod settings).
+s02488	Giant stomach: max food rises with body size, ×220% as an adult.
+s02489	Move speed: ×90%.
+s02490	Cloud step: movement cost on marsh, mud, shallow water and snow counts as normal ground (doesn't affect pathfinding detour decisions).
+s02491	Never triggers traps.
+s02492	No negative mood from nudity; can wear ordinary clothes; each piece of giant-only apparel gives mood +2 (up to +6).
+s02493	The cloud-born bloodline of the cloud giants, inherited with the race. Adults are 2.2 times the size of an ordinary person (drawn 1.45×, children grow with age); the bigger the body, the stronger the health and melee (giant-body rules) and the bigger the appetite (adult stomach ×220%); long strides, but not fast. Cloud giants walk as if on clouds: marsh, mud, shallow water and snow don't slow them, and they never set off traps. They are naturally talkative (Social +3), more cold-tolerant than others (min comfortable temperature -10°C), and don't care about being naked.
+s02494	cloud giant origin
+s02495	Right-click visitors and caravan members of non-player factions: give a gift (goodwill + market value ÷ 100 × 1.5, up to +25).
+s02496	Cloud giants make friends with gifts. Select this cloud giant and right-click a visitor or caravan member of another faction to "Give gift": hand over one item from the pack or the ground within 4 cells; that faction's goodwill + (market value ÷ 100 × 1.5, up to +25), and the recipient gets mood +5 for 7 days.
+s02497	wind of gifts
+s02498	A cloud giant gave me a dignified gift.
+s02499	received a cloud giant's gift
+s02500	Giving a gift to TargetB.
+s02501	Resistance reduced by recruitment talks ×115%.
+s02502	A cloud giant's speech is impeccable: another Social +2, negotiation ability +15%, recruitment talks lower prisoner resistance 15% more.
+s02503	gracious
+s02504	Turn into a wisp of silver mist and instantly appear in a visible empty spot within 6 cells. Cooldown 30 seconds.
+s02505	Bedroom impressiveness < "very impressive": mood -4; ≥ "extremely impressive": mood +4.
+s02506	Cloud giants are born nobles. When their own bedroom's impressiveness is below "very impressive" (or they have no bedroom of their own), mood -4 "beneath my station"; at "extremely impressive", mood +4. They are particular in business too: trade prices +10%.
+s02507	noble heart
+s02508	This is where I'm supposed to live? Even the servants' quarters in the cloud castle were more dignified.
+s02509	beneath my station
+s02510	Carvings, carpets, a spacious bed: this is a bedroom fit for a cloud giant.
+s02511	fitting residence
+s02512	A force dragon egg is hidden here. Few houses even in the cloud court have such a collection.
+s02513	rare treasure
+s02514	cloud giant noble
+s02515	servant
+s02516	The anchor chain of the cloud castle has snapped. Before the castle sank into the earth, a cloud giant escaped with three servants, a chest of silver and a few beloved artworks.\n\nNo weapons, only money, dignity and a silver tongue; Faerûn's pioneer league has long traded with the cloud castle (goodwill +40).\n\nCloud giants are particular about bedrooms, so build them a room befitting their status as soon as possible.
+s02517	fallen cloud castle
+s02518	One cloud giant and three human servants.
+s02519	human servant
+s02520	The snapping of the anchor chain sounded like thunder.\n\nYou only had time to grab the money chest and two favorite statues and jump from the sinking cloud castle with three servants. Now you stand in the mud, surrounded by strange wilderness.\n\nNo swords, no guards. But cloud giants never relied on swords: they rely on dignity, gifts and a tongue that can move anyone.
+s02521	A cloud giant and three human servants with silver, gold and art, but no weapons.
+s02522	The colony acknowledged the ordning before the cloud giants' envoy. I have to bow my head and admit they are above me.
+s02523	bowed
+s02524	envoy of a superior
+s02525	The cloud giants' court recognized us; our name has been written into the giants' ordning.
+s02526	named in the ordning
+s02527	The pale blue-white skin of a cloud giant, like thin clouds on a clear day.
+s02528	pale blue-white skin
+s02529	pale blue-white
+s02530	Magic surges through {PAWN_nameDef}'s veins.\n\nNovice: staff / psychic / divine magic damage +25%; with VPE installed, max neural heat +20, otherwise psychic sensitivity +15%
+s02531	<color=#5B9BD5>Mana Surge</color>
+s02532	combat gift
+s02533	{PAWN_nameDef} has a photographic memory and can recite any tome after reading it once.\n\nNovice: Intelligence +2 (cap +2); research speed +15%
+s02534	<color=#5B9BD5>Eidetic Memory</color>
+s02535	Once {PAWN_nameDef} plants their feet, they're like a wall.\n\nNovice: sharp / blunt armor +15% (absolute, up to +30%); never staggers
+s02536	<color=#5B9BD5>Iron Wall</color>
+s02537	When {PAWN_nameDef} speaks, everyone falls silent to listen.\n\nNovice: Charisma +2 (cap +2); social impact +20%
+s02538	<color=#5B9BD5>Regal Bearing</color>
+s02539	{PAWN_nameDef}'s arrows and bullets seem to have eyes.\n\nNovice: ranged hit +12%; ranged damage +15%
+s02540	<color=#5B9BD5>Deadeye</color>
+s02541	{PAWN_nameDef} can read an enemy's eyes from a hundred paces.\n\nNovice: Wisdom +2 (cap +2); ranged aiming time -20%
+s02542	<color=#5B9BD5>Hawk Eye</color>
+s02543	{PAWN_nameDef}'s blade is so fast only afterimages remain.\n\nNovice: melee cooldown -20%; melee hits have a 15% chance of an immediate follow-up strike
+s02544	<color=#5B9BD5>Chain Slash</color>
+s02545	{PAWN_nameDef} always finds the opponent's vital spot.\n\nNovice: any attack has a 10% chance to crit for ×2 damage; armor penetration +10%
+s02546	<color=#5B9BD5>Killing Blow</color>
+s02547	{PAWN_nameDef} was born with divine strength and swings a warhammer like a hatchet.\n\nNovice: Strength +2 (cap +2); carry capacity +25%
+s02548	<color=#5B9BD5>Mighty</color>
+s02549	The worse the wounds, the fiercer {PAWN_nameDef} becomes.\n\nNovice: below 60% health, melee damage +30%, melee cooldown -15%, pain ×0.5
+s02550	<color=#5B9BD5>Berserker Blood</color>
+s02551	{PAWN_nameDef}'s wounds heal astonishingly fast, and even lost limbs slowly grow back.\n\nNovice: wound healing ×2.5; regrows one missing non-vital part every 15 days
+s02552	<color=#5B9BD5>Regenerating Body</color>
+s02553	{PAWN_nameDef}'s bones are harder than iron; a sword cut only earns a frown.\n\nNovice: Constitution +2 (cap +2); damage taken -10% (up to -25%)
+s02554	<color=#5B9BD5>Tough Body</color>
+s02555	{PAWN_nameDef}'s steps are light as the wind, and no one can keep up.\n\nNovice: Dexterity +2 (cap +2); move speed +0.4
+s02556	<color=#5B9BD5>Swift</color>
+s02557	A short, stocky mountain race whose bloodline is passed on to children (called "mountain dwarves" since 1.57.0; dwarves in old saves are mountain dwarves). About 80% the size of an ordinary person, all bearded; sturdy, poison-resistant, able to see in the dark, born miners, craftsmen and axe fighters, but slow walkers. Mountain dwarves grow up in iron armor, so apparel slows them only half as much. Dwarves never get addicted to alcohol, have mild hangovers and grow bolder after a few drinks; they are happier living under thick rock roofs in the mountain's belly and mine and work faster there; dwarves never forget a blood debt.
+s02558	Inheritable short race. Strong at mining, crafting and melee, sturdy and poison-resistant, night vision, armor training; slow and small; holds grudges. Never addicted to alcohol, happier and more productive inside a mountain.
+s02559	mountain dwarf
+s02560	A few drinks down and full of guts.
+s02561	liquid courage
+s02562	Alcohol addiction chance: 0%.
+s02563	Hangover severity halved.
+s02564	Mood +4 after drinking (6 hours).
+s02565	A dwarf's liver is tempered by a thousand hammer blows: never addicted to alcohol, hangovers halved; each drink gives the "liquid courage" mood +4 for 6 hours.
+s02566	drunkard's liver
+s02567	Actual body size: ×80% (multiplies with other body size effects).
+s02568	Drawn size: ×85%.
+s02569	Hauling capacity: ×90% on top of the body size reduction.
+s02570	Melee damage against trolls: +10%.
+s02571	A short, stocky build. Actual body size 80% of an ordinary person (carry capacity, caravan load and chance to be hit by ranged attacks go down accordingly), drawn at 85% size; hand hauling capacity another ×90%. +10% melee damage against trolls (the ancient feud of dwarves and trolls).
+s02572	dwarf build
+s02573	Under a thick rock roof: mood +3, mining speed ×110%, general labor speed ×110%.
+s02574	Dwarves are born in the belly of the mountain. Under a thick rock roof, mood +3, and mining speed and general labor (crafting, making, etc.) speed +10%.
+s02575	stone endurance
+s02576	Thick rock overhead; a dwarf in their element.
+s02577	in the mountain's belly
+s02578	A thick rock roof right overhead. This is what home feels like.
+s02579	A tall, beautiful, long-lived race whose bloodline is passed on to children (called "high elves" since 1.57.0; elves in old saves are high elves). Fair skin, golden or silver hair, pointed ears, slender, natural archers, quick learners, gifted in the arts; they sleep little and age only 5% as fast as others after adulthood; strong-minded and hard to sway with psychic effects. Their bodies are rather fragile and take worse injuries, their melee strength is weak, and they disdain heavy labor. Elves enter a meditative "trance" in sleep; psychically gifted elves slowly regain psyfocus while sleeping and wake in a better mood.
+s02580	Inheritable long-lived race. Strong at shooting and art, quick learners, sleep little, age extremely slowly after adulthood, high mind resistance; fragile bodies, weak melee, slow at physical work. Meditate during sleep and wake in a better mood.
+s02581	high elf
+s02582	The ancient elven bloodline makes the mind especially steadfast, resisting psychic blasts, charm, parasites and other mind effects; negative psychic moods such as psychic drone are also halved.
+s02583	elven lineage
+s02584	A slow metabolism makes elves age extremely slowly after adulthood. Before 18 they grow like everyone else; from 18 their biological age advances only 5% as fast (when others age 20 years, an elf ages 1).
+s02585	elven longevity
+s02586	Psyfocus regained in sleep: about +20% per 8 hours (only with a psylink).
+s02587	Waking after a full 2 hours of sleep: mood +3 for half a day.
+s02588	Elven sleep is a meditative trance. While asleep, elves with a psylink regain about 20% psyfocus each night; elves without one get no such benefit. Waking after a full 2 hours of sleep gives the "lucid meditation" mood +3 for half a day.
+s02589	meditative breath
+s02590	A night of trance meditation has cleared my head.
+s02591	lucid meditation
+s02592	The mixed offspring of orcs and humans; the bloodline is passed on to children. Green skin, heavy jaws, sturdy bodies, good at melee, strong and ruthless; hot-tempered, slow learners, poor at socializing and not pleasant to look at. Half-orcs have a stubbornness that refuses to fall: when they should go down they can grit their teeth and hold on for half a day; their punches and axe swings sometimes land savage blows.
+s02593	Inheritable mixed race. Strong melee, sturdy, night vision; hot-tempered, slow learners, poor socializers. Once per day grits teeth to stay up instead of being downed; melee sometimes lands heavy blows.
+s02594	half-orc
+s02595	Instead of being downed, gains 12 hours of "gritting teeth": pain cannot cause shock, consciousness floored at about 30%.
+s02596	Cooldown 1 day (the health tab shows "relentless cooldown"); still downed if both legs are disabled; lethal damage is unaffected.
+s02597	When taking damage that would down (but not kill) them, half-orcs grit their teeth and hold on for 12 hours: pain won't shock them into falling and consciousness won't drop below about 30%. After 12 hours the injuries resolve as usual, and if still badly hurt they fall. Triggers at most once per day; lethal damage kills as usual.
+s02598	relentless endurance
+s02599	Gritting teeth!
+s02600	Melee hits have a 10% chance to strike heavily: damage ×150%.
+s02601	A half-orc's melee hits have a 10% chance to land a savage blow, dealing ×150% damage.
+s02602	savage attacks
+s02603	That elf keeps their nose in the air and can't even hold their drink.
+s02604	arrogant elf
+s02605	We've been through so many days together; that elf is an old comrade now.
+s02606	old comrade (elf)
+s02607	Giants are the ancient enemies of dwarves. Living with fire giants makes my skin crawl.
+s02608	ancestral enemy giants
+s02609	Dwarves are loud, reek of booze and know nothing of grace.
+s02610	crude dwarf
+s02611	We've been through so many days together; that dwarf is an old comrade now.
+s02612	old comrade (dwarf)
+s02613	dwarves on elves
+s02614	dwarves on fire giants
+s02615	elves on dwarves
+s02616	Just gritted their teeth through it once. Relentless Endurance won't trigger again until the cooldown ends.
+s02617	relentless cooldown
+s02618	Holding on through sheer grit. Pain won't shock them into falling, and consciousness won't drop below about 30%. When the effect ends, injuries resolve as usual.
+s02619	gritting teeth
+s02620	A half-elf's first talent: Animals ability +4 (a bonus like skill levels). Talents in the same group are mutually exclusive; pick one from each of the two groups, and a generated half-elf never gets the same talent twice.
+s02621	versatile: animals (first)
+s02622	A half-elf's first talent: Artistic ability +4 (a bonus like skill levels). Talents in the same group are mutually exclusive; pick one from each of the two groups, and a generated half-elf never gets the same talent twice.
+s02623	versatile: artistic (first)
+s02624	A half-elf's first talent: Construction ability +4 (a bonus like skill levels). Talents in the same group are mutually exclusive; pick one from each of the two groups, and a generated half-elf never gets the same talent twice.
+s02625	versatile: construction (first)
+s02626	A half-elf's first talent: Cooking ability +4 (a bonus like skill levels). Talents in the same group are mutually exclusive; pick one from each of the two groups, and a generated half-elf never gets the same talent twice.
+s02627	versatile: cooking (first)
+s02628	A half-elf's first talent: Crafting ability +4 (a bonus like skill levels). Talents in the same group are mutually exclusive; pick one from each of the two groups, and a generated half-elf never gets the same talent twice.
+s02629	versatile: crafting (first)
+s02630	A half-elf's first talent: Intellectual ability +4 (a bonus like skill levels). Talents in the same group are mutually exclusive; pick one from each of the two groups, and a generated half-elf never gets the same talent twice.
+s02631	versatile: intellectual (first)
+s02632	A half-elf's first talent: Medicine ability +4 (a bonus like skill levels). Talents in the same group are mutually exclusive; pick one from each of the two groups, and a generated half-elf never gets the same talent twice.
+s02633	versatile: medicine (first)
+s02634	A half-elf's first talent: Melee ability +4 (a bonus like skill levels). Talents in the same group are mutually exclusive; pick one from each of the two groups, and a generated half-elf never gets the same talent twice.
+s02635	versatile: melee (first)
+s02636	A half-elf's first talent: Mining ability +4 (a bonus like skill levels). Talents in the same group are mutually exclusive; pick one from each of the two groups, and a generated half-elf never gets the same talent twice.
+s02637	versatile: mining (first)
+s02638	A half-elf's first talent: Plants ability +4 (a bonus like skill levels). Talents in the same group are mutually exclusive; pick one from each of the two groups, and a generated half-elf never gets the same talent twice.
+s02639	versatile: plants (first)
+s02640	A half-elf's first talent: Shooting ability +4 (a bonus like skill levels). Talents in the same group are mutually exclusive; pick one from each of the two groups, and a generated half-elf never gets the same talent twice.
+s02641	versatile: shooting (first)
+s02642	A half-elf's first talent: Social ability +4 (a bonus like skill levels). Talents in the same group are mutually exclusive; pick one from each of the two groups, and a generated half-elf never gets the same talent twice.
+s02643	versatile: social (first)

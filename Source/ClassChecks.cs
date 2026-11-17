@@ -110,13 +110,13 @@ namespace LichPhylactery {
     Check(all.Count==13 && abilities.Count==123 && abilities.Select(e=>e.ability).Distinct().Count()==123 && abilities.All(e=>e.ability.abilityClass==typeof(Ability_Class) && e.ability.uiIcon!=null && e.ability.uiIcon!=BaseContent.BadTex) && all.All(c=>c.Background!=null && c.primary!=null)
      && new[]{"LP_ArcanePower","LP_PrimalPower","LP_VerdantPower","LP_InnatePower","LP_ArtificePower"}.All(n=>DefDatabase<StatDef>.GetNamed(n).parts.Any(x=>x is StatPart_ClassPower)) && DefDatabase<StatDef>.GetNamed("LP_InnatePower").parts.Any(x=>x is StatPart_SorcererBloodline)
      && DefDatabase<ThingDef>.GetNamed("LP_AdventurersManual").GetCompProperties<CompProperties_UseEffect_Manual>()!=null,"13 classes, 123 vanilla abilities with icons (1.81.0 hotfix4 +3 wizard defences; +7 warlock; 1.123.0 +13 bard), 5 caster power stats (innate has the bloodline part) and the manual live in the main assembly");
-    // 2. 门槛：德鲁伊看种植或驯兽 6；巫妖不能当德鲁伊；术士血脉（力能龙裔）社交 4 就行，人类不行。
+    // 2. 门槛：德鲁伊看种植或驯兽 6；巫妖不能当德鲁伊；术士血脉（火元素裔）社交 4 就行，人类不行。
     var dr=ClsPawn(1);dr.skills.GetSkill(SkillDefOf.Animals).Level=6;var hdr=Adventurer.Get(dr);
     var lich=ClsPawn(1);lich.skills.GetSkill(SkillDefOf.Plants).Level=10;lich.genes.AddGene(DefDatabase<GeneDef>.GetNamed("LP_LichGene"),true);
-    var fd=DefDatabase<XenotypeDef>.GetNamedSilentFail("LP_ForceDragon");var dragon=fd==null?null:AdvPawn(fd);var hdg=dragon==null?null:Adventurer.Get(dragon);
+    var fd=DefDatabase<XenotypeDef>.GetNamedSilentFail("LP_GenasiFire");var dragon=fd==null?null:AdvPawn(fd);var hdg=dragon==null?null:Adventurer.Get(dragon);
     if(hdg!=null){foreach(var sk in DefDatabase<SkillDef>.AllDefsListForReading){var r=dragon.skills.GetSkill(sk);if(!r.TotallyDisabled)r.Level=0;}dragon.skills.GetSkill(SkillDefOf.Social).Level=4;hdg.level=1;hdg.scores=new[]{10,10,10,10,10,10};hdg.classes=new ClassData();hdg.Dirty();}
     var human=ClsPawn(1,0,4);
-    Check(ClassSystem.CanAdd(hdr,Cls("Druid"))==null && ClassSystem.CanAdd(Adventurer.Get(lich),Cls("Druid"))=="死亡之躯与自然相斥" && (hdg==null || ClassSystem.Bloodline(dragon) && ClassSystem.CanAdd(hdg,Cls("Sorcerer"))==null) && ClassSystem.CanAdd(Adventurer.Get(human),Cls("Sorcerer"))!=null,"druid opens at animals 6; a lich cannot be a druid; a force dragon sorcerer opens at social 4, a human does not");
+    Check(ClassSystem.CanAdd(hdr,Cls("Druid"))==null && ClassSystem.CanAdd(Adventurer.Get(lich),Cls("Druid"))=="死亡之躯与自然相斥" && (hdg==null || ClassSystem.Bloodline(dragon) && ClassSystem.CanAdd(hdg,Cls("Sorcerer"))==null) && ClassSystem.CanAdd(Adventurer.Get(human),Cls("Sorcerer"))!=null,"druid opens at animals 6; a lich cannot be a druid; a fire genasi sorcerer opens at social 4, a human does not");
     // 3. 神恩：圣武士 + 牧师共用一条，上限按两职业等级之和；法力每个职业一条。
     var pc=ClsPawn(6,10,10);var hpc=Adventurer.Get(pc);pc.skills.GetSkill(SkillDefOf.Intellectual).Level=10;
     ClassSystem.AddLevel(hpc,ClassSystem.Paladin);ClassSystem.AddLevel(hpc,ClassSystem.Paladin);ClassSystem.AddLevel(hpc,Cls("Cleric"));

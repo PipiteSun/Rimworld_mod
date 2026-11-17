@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 冬狼皮 -->
+  <LP_Leather_WinterWolf.label>winter wolf pelt</LP_Leather_WinterWolf.label>
+  <!-- 冬狼淡蓝灰色的厚毛皮，毛尖上像挂着霜。比北极狼的皮更保暖，也一样难刺穿。屠宰冬狼得到。 -->
+  <LP_Leather_WinterWolf.description>The thick pale blue-grey pelt of a winter wolf, with frost seemingly hanging on the tips. Warmer than arctic wolf pelt and just as hard to pierce. Obtained by butchering winter wolves.</LP_Leather_WinterWolf.description>
+  <!-- 风暴宝珠 -->
+  <LP_StormOrb.label>storm orb</LP_StormOrb.label>
+  <!-- 一颗封着雷云的水晶球，里面的闪电从来没停过。任何人都能捏碎它：所在地图的天气转为雷雨，并持续1天（不会召下雷击）。在炼金桌用2份位面残渣和10金制作。 -->
+  <LP_StormOrb.description>A crystal ball sealing a thundercloud, its lightning never still. Anyone can crush it: the weather on the current map turns to thunderstorm for 1 day (without calling down lightning strikes). Made at the alchemy table from 2 planar residue and 10 gold.</LP_StormOrb.description>
+  <!-- 捏碎{0_label} -->
+  <LP_StormOrb.comps.CompUsable.useLabel>crush {0_label}</LP_StormOrb.comps.CompUsable.useLabel>
+  <!-- 天空琥珀 -->
+  <LP_SkyAmber.label>sky amber</LP_SkyAmber.label>
+  <!-- 云端城堡外的高空里才结得出的琥珀，里面封着一缕会流动的云。云巨人拿它当传家宝，放在屋里很漂亮（美观+15）。只有同盟的云巨人奢侈品商队才卖。 -->
+  <LP_SkyAmber.description>Amber that only forms high in the sky outside cloud castles, sealing a wisp of flowing cloud inside. Cloud giants treasure it as an heirloom, and it looks lovely in a room (beauty +15). Only sold by the league's cloud giant luxury caravans.</LP_SkyAmber.description>
+</LanguageData>

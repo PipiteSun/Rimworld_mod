@@ -87,7 +87,7 @@ namespace LichPhylactery {
    try{
     foreach(var t in foes){
      t.TakeDamage(new DamageInfo(DamageDefOf.Blunt,dmg,0f,-1f,p));n++;
-     if(!t.Dead && t.BodySize<mine && Roll<StunChance(mine,t.BodySize)){t.stances?.stunner?.StunFor(StompStun,p);Items.Mote(t,"震倒",TitanColor);}
+     if(!t.Dead && t.BodySize<mine && Roll<StunChance(mine,t.BodySize)){t.stances?.stunner?.StunFor(StompStun,p);Items.Mote(t,"震倒".Loc(),TitanColor);}
     }
    }finally{Busy=false;}
    FleckMaker.ThrowDustPuffThick(p.DrawPos,p.Map,radius*1.2f,new Color(.6f,.5f,.4f));Items.Mote(p,label,TitanColor);
@@ -98,7 +98,7 @@ namespace LichPhylactery {
    if(Busy)return 1f;var a=d.Instigator as Pawn;if(a==null || a==v || !a.Spawned || !a.HostileTo(v) || !ClassMartial2.Melee(d))return 1f;
    var e=Of(a);if(e==null)return 1f;float g=1f;
    // 先践踏、后击退（都延后到这次伤害结算完），免得被打的目标先被推出小型践踏的范围。
-   if((e.flags & FAncient)!=0 && e.titan && Roll<AncientChance){var me=a;Fiends.Defer(()=>{if(!me.Dead && me.Spawned)Stomp(me,MiniRadius,MiniDamage,"远古践踏");});}
+   if((e.flags & FAncient)!=0 && e.titan && Roll<AncientChance){var me=a;Fiends.Defer(()=>{if(!me.Dead && me.Spawned)Stomp(me,MiniRadius,MiniDamage,"远古践踏".Loc());});}
    if((e.flags & FGrip)!=0 && v.BodySize<a.BodySize){
     g*=BigHit;
     if(Roll<KnockChance){var tv=v;var me=a;Fiends.Defer(()=>{if(tv.Dead || !tv.Spawned || !me.Spawned || tv.Map!=me.Map)return;DNDPush.Move(tv,DNDPush.Destination(tv.Map,tv.Position,(tv.Position-me.Position).ToVector3(),1));});}
@@ -107,21 +107,21 @@ namespace LichPhylactery {
   }
   public static void TitanizeEnd(Pawn p){
    if(p==null)return;bool ancient=ClassSystem.Knows(p,"LP_TT_AncientTitan");Refresh(p);
-   if(!ancient && !p.Dead && p.needs?.rest!=null){p.needs.rest.CurLevel=Mathf.Max(0f,p.needs.rest.CurLevel-Fatigue);Items.Mote(p,"泰坦化结束：疲惫",TitanColor);}
+   if(!ancient && !p.Dead && p.needs?.rest!=null){p.needs.rest.CurLevel=Mathf.Max(0f,p.needs.rest.CurLevel-Fatigue);Items.Mote(p,"泰坦化结束：疲惫".Loc(),TitanColor);}
   }
 
   // ---------- 主动能力 ----------
   public static string Invalid(Pawn caster,CompProperties_ClassEffect e,LocalTargetInfo target){
    switch(e.effect){
-    case "TTStomp":return caster.Spawned?null:"要在地图上才能践踏。";
-    case "TTTitanize":return Titanized(caster)?"已经在泰坦化了。":null;
+    case "TTStomp":return caster.Spawned?null:"要在地图上才能践踏。".Loc();
+    case "TTTitanize":return Titanized(caster)?"已经在泰坦化了。".Loc():null;
    }
    return null;
   }
   public static bool Apply(Pawn p,AbilityDef def,CompProperties_ClassEffect e,LocalTargetInfo target){
    switch(e.effect){
-    case "TTStomp":Stomp(p,StompRadius,1f,"撼地践踏");return true;
-    case "TTTitanize":Items.Give(p,"LP_TT_Titanized",ClassSystem.Knows(p,"LP_TT_AncientTitan")?AncientTicks:TitanTicks);Refresh(p);Items.Mote(p,"泰坦化",TitanColor);return true;
+    case "TTStomp":Stomp(p,StompRadius,1f,"撼地践踏".Loc());return true;
+    case "TTTitanize":Items.Give(p,"LP_TT_Titanized",ClassSystem.Knows(p,"LP_TT_AncientTitan")?AncientTicks:TitanTicks);Refresh(p);Items.Mote(p,"泰坦化".Loc(),TitanColor);return true;
    }
    return false;
   }
@@ -142,7 +142,7 @@ namespace LichPhylactery {
    if(stage!=null && Mathf.Approximately(size,e.size) && Mathf.Approximately(carry,e.carry) && um==unmoving)return;
    size=e.size;carry=e.carry;unmoving=um;stage=null;pawn?.health?.Notify_HediffChanged(this);
   }
-  public override string LabelInBrackets=>"体型 ×"+size.ToString("0.00");
+  public override string LabelInBrackets=>"体型 ×".Loc()+size.ToString("0.00");
   public override HediffStage CurStage=>stage??(stage=Build());
   HediffStage Build(){
    var s=new HediffStage{statOffsets=new List<StatModifier>(),statFactors=new List<StatModifier>()};

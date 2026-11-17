@@ -115,14 +115,14 @@ namespace LichPhylactery {
    int d=days>0?days:LichMod.Settings.twilightDays;
    var c=(GameCondition_TwilightYear)GameConditionMaker.MakeCondition(Condition,d*GenDate.TicksPerDay);
    mgr.RegisterCondition(c);
-   Find.LetterStack.ReceiveLetter("黄昏之年","天空染成了暗红色，诸神的目光投向了这片土地。\n\n接下来的"+d+"天里，敌人中的神力灌注者大幅增多（15%），大规模袭击的领队有一半的可能被神明附体；神力的效果也更强。\n\n击退神明附体者会得到神迹残片。",LetterDefOf.ThreatBig);
+   Find.LetterStack.ReceiveLetter("黄昏之年".Loc(),"天空染成了暗红色，诸神的目光投向了这片土地。\n\n接下来的".Loc()+d+"天里，敌人中的神力灌注者大幅增多（15%），大规模袭击的领队有一半的可能被神明附体；神力的效果也更强。\n\n击退神明附体者会得到神迹残片。".Loc(),LetterDefOf.ThreatBig);
    return c;
   }
   public static bool End(){var c=Condition==null?null:Find.World?.gameConditionManager?.GetActiveCondition(Condition);if(c==null)return false;c.End();return true;}
   public static void Omen(){
    var w=World;if(w==null)return;
    w.startTick=Find.TickManager.TicksGame+OmenDays*GenDate.TicksPerDay;
-   Find.LetterStack.ReceiveLetter("黄昏之兆","祭司们做了同样的梦：众神在暗红的天幕下争吵。\n\n"+OmenDays+"天后，黄昏之年就要开始了。到时候敌人里会出现更多神力灌注者，大规模袭击的领队可能被神明附体。",LetterDefOf.ThreatSmall);
+   Find.LetterStack.ReceiveLetter("黄昏之兆".Loc(),"祭司们做了同样的梦：众神在暗红的天幕下争吵。\n\n".Loc()+OmenDays+"天后，黄昏之年就要开始了。到时候敌人里会出现更多神力灌注者，大规模袭击的领队可能被神明附体。".Loc(),LetterDefOf.ThreatSmall);
   }
   // ---------- 奖励 ----------
   public static void Reward(Pawn p){
@@ -204,7 +204,7 @@ namespace LichPhylactery {
   int tickAcc;
   public LP_DeityDef Deity=>deity;
   public string Key=>deity?.key;
-  public override string LabelInBrackets=>deity==null?null:deity.label+"的化身容器";
+  public override string LabelInBrackets=>deity==null?null:deity.label+"的化身容器".Loc();
   public override Color LabelColor=>deity?.color??base.LabelColor;
   public override string TipStringExtra=>base.TipStringExtra+(deity==null?"":"\n"+deity.description);
   HediffStage stage;string stageKey;

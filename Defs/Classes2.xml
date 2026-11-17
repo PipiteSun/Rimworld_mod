@@ -92,7 +92,7 @@
   <LichPhylactery.LP_ClassDef>
     <defName>LP_Class_Sorcerer</defName>
     <label>术士</label>
-    <description>DND 术士生来带着魔力：混沌箭、魅惑人类、龙族之翼、群体暗示（社交，天赋强度），燃烧之手、超魔·孪生、冰风暴、超魔·强效（智识，奥术强度），终极 魔涌。力能龙裔、元素裔、巨灵、泰坦、风暴巨人、云巨人、六臂蛇人、坎比恩有术士血脉：技能门槛 −2、天赋强度 +15%。资源：法力（上限 2 + 术士等级；醒着时缓慢恢复，睡觉时快）。</description>
+    <description>DND 术士生来带着魔力：混沌箭、魅惑人类、龙族之翼、群体暗示（社交，天赋强度），燃烧之手、超魔·孪生、冰风暴、超魔·强效（智识，奥术强度），终极 魔涌。元素裔、巨灵、泰坦、风暴巨人、云巨人、六臂蛇人、坎比恩有术士血脉：技能门槛 −2、天赋强度 +15%。资源：法力（上限 2 + 术士等级；醒着时缓慢恢复，睡觉时快）。</description>
     <mainSkill>Social</mainSkill>
     <alternateSkill>Intellectual</alternateSkill>
     <primary>Cha</primary>
@@ -157,6 +157,24 @@
   </StatDef>
 
   <!-- ===== 伤害 ===== -->
+  <!-- 力场伤害：原属力能龙（1.167.0 移除力能龙后保留，法术、半神等共用） -->
+  <DamageDef>
+    <defName>LP_Force</defName>
+    <label>力场</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0}被力场撕碎了。</deathMessage>
+    <hediff>Crush</hediff>
+    <hediffSkin>Cut</hediffSkin>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Blunt</armorCategory>
+    <defaultDamage>12</defaultDamage>
+    <defaultArmorPenetration>0.3</defaultArmorPenetration>
+    <buildingDamageFactor>3</buildingDamageFactor>
+    <overkillPctToDestroyPart>0.4~1.0</overkillPctToDestroyPart>
+  </DamageDef>
   <DamageDef>
     <defName>LP_ArcaneForce</defName>
     <label>奥术力</label>
@@ -876,7 +894,7 @@
   <AbilityDef ParentName="LP_ClassMeleeBase">
     <defName>LP_ChaosBolt</defName>
     <label>混沌箭</label>
-    <description>向 25 格内的敌人射出混沌之力，12 × 天赋强度 伤害，类型随机：火焰（点燃）、闪电（击晕）、奥术力、冰霜（减速）；力能龙裔固定为力场。有 1/8 概率再跳到 6 格内另一个敌人。术士 1 级。</description>
+    <description>向 25 格内的敌人射出混沌之力，12 × 天赋强度 伤害，类型随机：火焰（点燃）、闪电（击晕）、奥术力、冰霜（减速）。有 1/8 概率再跳到 6 格内另一个敌人。术士 1 级。</description>
     <iconPath>LP/Classes/Sorcerer/ChaosBolt</iconPath>
     <cooldownTicksRange>360</cooldownTicksRange>
     <verbProperties><range>25</range><warmupTime>0.5</warmupTime></verbProperties>

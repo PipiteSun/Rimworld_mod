@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（AdventurerExtraXp.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>治疗与手术</zh><en>treatment and surgery</en></s>
+  <s><zh>交易</zh><en>trading</en></s>
+  <s><zh>建筑完工</zh><en>construction completed</en></s>
+  <s><zh>研究完成</zh><en>research completed</en></s>
+  <s><zh>重伤倒地生还</zh><en>survived being downed</en></s>
+  <s><zh>：已关闭</zh><en>: off</en></s>
+  <s><zh>今日 </zh><en>today </en></s>
+  <s><zh>；累计 </zh><en>; total </en></s>
+  <s><zh>· 治疗与手术：手术成功 +</zh><en>· Treatment and surgery: successful surgery +</en></s>
+  <s><zh>，救治 </zh><en>, treating </en></s>
+  <s><zh> 小时内会失血而死的病人 +</zh><en> patient who would bleed to death within hours +</en></s>
+  <s><zh>· 交易：谈判者按成交总价（买卖双向）每 </zh><en>· Trading: the negotiator gets, by total deal value (both buying and selling), per </en></s>
+  <s><zh> 银 +</zh><en> silver +</en></s>
+  <s><zh>· 建筑完工：工作量 ÷ </zh><en>· Construction completed: work ÷ </en></s>
+  <s><zh>，至少 </zh><en>, at least </en></s>
+  <s><zh>，× </zh><en>, × </en></s>
+  <s><zh>（地板不算；</zh><en> (floors don't count; </en></s>
+  <s><zh>· 研究完成：研究费用 × </zh><en>· Research completed: research cost × </en></s>
+  <s><zh>，按出力比例分给参与的人（不封顶；累计 </zh><en>, split among participants by contribution (uncapped; total </en></s>
+  <s><zh>· 重伤倒地生还：被敌人打倒后站起来 +</zh><en>· Survived being downed: getting back up after being downed by enemies +</en></s>
+  <s><zh> + 敌人战斗力 × </zh><en> + enemy combat power × </en></s>
+  <s><zh>（每 3 天一次</zh><en> (once every 3 days</en></s>
+  <s><zh>，还要 </zh><en>, another </en></s>
+  <s><zh>[DND边缘大陆] 手术经验：</zh><en>[DND Rimlands] Surgery XP: </en></s>
+  <s><zh>[DND边缘大陆] 交易经验：</zh><en>[DND Rimlands] Trading XP: </en></s>
+  <s><zh>[DND边缘大陆] 研究经验：</zh><en>[DND Rimlands] Research XP: </en></s>
+  <s><zh>非战斗经验倍率：</zh><en>Non-combat XP multiplier: </en></s>
+  <s><zh>治疗与手术、交易、建筑完工、研究完成、重伤倒地生还这五项的冒险者经验都乘这个倍率（之后再乘冒险者经验倍率）。每日上限按倍率之前算。0 = 五项全关。</zh><en>Adventurer XP from these five sources (treatment and surgery, trading, construction completed, research completed, survived being downed) is multiplied by this (then by the adventurer XP multiplier). Daily caps are counted before the multiplier. 0 = all five off.</en></s>
+  <s><zh>经验：治疗与手术</zh><en>XP: treatment and surgery</en></s>
+  <s><zh>手术成功（不是失败）主刀医生 +30；救治 6 小时内会失血而死的病人 +15。每人每天最多 150。</zh><en>Successful surgery (not failed) gives the surgeon +30; treating a patient who would bleed to death within 6 hours +15. At most 150 per person per day.</en></s>
+  <s><zh>经验：交易</zh><en>XP: trading</en></s>
+  <s><zh>每完成一笔交易，谈判者按成交总价（买和卖都算，不含银币本身）每 100 银 +1。每人每天最多 100。赠礼不算。</zh><en>For each completed trade, the negotiator gets +1 per 100 silver of total deal value (buying and selling both count, not including the silver itself). At most 100 per person per day. Gifts don't count.</en></s>
+  <s><zh>经验：建筑完工</zh><en>XP: construction completed</en></s>
+  <s><zh>建好一个建筑，完工的人得到 工作量 ÷ 1000（至少 2）。地板不算。每人每天最多 100。</zh><en>For finishing a building, whoever completes it gets work ÷ 1000 (at least 2). Floors don't count. At most 100 per person per day.</en></s>
+  <s><zh>经验：研究完成</zh><en>XP: research completed</en></s>
+  <s><zh>研究项目完成时，研究费用 × 5% 按每人出的研究量比例分给参与过的人（还活着、还在殖民地）。不封顶。</zh><en>When a research project completes, research cost × 5% is split among those who took part (still alive and in the colony) in proportion to the research each did. Uncapped.</en></s>
+  <s><zh>经验：重伤倒地生还</zh><en>XP: survived being downed</en></s>
+  <s><zh>被敌人打倒在地、之后活着站起来：+50 + 打倒你的敌人战斗力 × 0.5。每人每 3 天最多一次；自己弄伤、友军误伤不算。</zh><en>Downed by enemies and later getting back up alive: +50 + combat power of the enemy who downed you × 0.5. At most once every 3 days per person; self-inflicted injuries and friendly fire don't count.</en></s>
+</LPStrings>

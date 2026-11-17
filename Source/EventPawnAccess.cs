@@ -25,7 +25,7 @@ namespace LichPhylactery {
   public bool Answerable{get{
    if(Closed)return false;
    var close=OptText(Option_Close);var later=OptText(Option_Postpone);
-   return Choices.Any(o=>{if(o==null || o.disabled)return false;var t=OptText(o);return t!=close && t!=later && t!="关闭" && t!="稍后再说";});
+   return Choices.Any(o=>{if(o==null || o.disabled)return false;var t=OptText(o);return t!=close && t!=later && t!="关闭" && t!="稍后再说" && t!="稍后再说".Loc();});
   }}
   protected static bool Here(Pawn p)=>p!=null && !p.Dead && !p.Destroyed && p.Spawned;
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref lpResolved,"lpResolved");Scribe_Values.Look(ref lpVer,"lpVer",0);}
@@ -42,26 +42,26 @@ namespace LichPhylactery {
   }
   public static bool Answerable(LP_EventLetter l){
    if(l==null)return false;
-   try{return l.Answerable;}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 事件信件检查出错（"+l.GetType().Name+"）："+e,76910001);return false;}
+   try{return l.Answerable;}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 事件信件检查出错（".Loc()+l.GetType().Name+"）：".Loc()+e,76910001);return false;}
   }
   // 这个小人 / 物件能打开的、还在等答复的事件信件。
   public static List<LP_EventLetter> For(Thing t){
    var list=new List<LP_EventLetter>();if(t==null)return list;
    foreach(var l in AllLetters()){
-    bool hit=false;try{hit=l.EventThings.Contains(t);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 事件信件小人出错（"+l.GetType().Name+"）："+e,76910002);}
+    bool hit=false;try{hit=l.EventThings.Contains(t);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 事件信件小人出错（".Loc()+l.GetType().Name+"）：".Loc()+e,76910002);}
     if(hit && Answerable(l))list.Add(l);
    }
    return list;
   }
-  public static string Label(LP_EventLetter l)=>"事件："+l.Label;
+  public static string Label(LP_EventLetter l)=>"事件：".Loc()+l.Label;
   public static bool Open(LP_EventLetter l){
-   if(!Answerable(l)){Messages.Message("这件事已经了结了。",MessageTypeDefOf.RejectInput,false);return false;}
+   if(!Answerable(l)){Messages.Message("这件事已经了结了。".Loc(),MessageTypeDefOf.RejectInput,false);return false;}
    l.OpenLetter();return true;
   }
-  public static Command_Action Gizmo(LP_EventLetter l)=>new Command_Action{defaultLabel=Label(l),defaultDesc="重新打开“"+l.Label+"”的对话框，在这里答复。信件关掉了也不会错过；答复后这个按钮就消失。",icon=l.def?.Icon??BaseContent.BadTex,action=()=>Open(l)};
+  public static Command_Action Gizmo(LP_EventLetter l)=>new Command_Action{defaultLabel=Label(l),defaultDesc="重新打开“".Loc()+l.Label+"”的对话框，在这里答复。信件关掉了也不会错过；答复后这个按钮就消失。".Loc(),icon=l.def?.Icon??BaseContent.BadTex,action=()=>Open(l)};
   public static IEnumerable<Gizmo> Gizmos(Thing t){
    List<LP_EventLetter> ls=null;
-   try{if(t!=null && t.Spawned && Find.Selector.NumSelected==1)ls=For(t);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 事件按钮出错："+e,76910003);}
+   try{if(t!=null && t.Spawned && Find.Selector.NumSelected==1)ls=For(t);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 事件按钮出错：".Loc()+e,76910003);}
    return ls==null?Enumerable.Empty<Gizmo>():ls.Select(Gizmo).Cast<Gizmo>();
   }
  }
@@ -80,6 +80,6 @@ namespace LichPhylactery {
   protected override bool RequiresManipulation=>false;protected override bool CanSelfTarget=>true;
   public override IEnumerable<FloatMenuOption> GetOptionsFor(Pawn clickedPawn,FloatMenuContext context)=>Options(clickedPawn);
   public override IEnumerable<FloatMenuOption> GetOptionsFor(Thing clickedThing,FloatMenuContext context)=>clickedThing is Pawn?Enumerable.Empty<FloatMenuOption>():Options(clickedThing);
-  public static List<FloatMenuOption> Options(Thing t)=>EventPawnAccess.For(t).Select(l=>new FloatMenuOption(EventPawnAccess.Label(l)+"（打开对话框）",()=>EventPawnAccess.Open(l))).ToList();
+  public static List<FloatMenuOption> Options(Thing t)=>EventPawnAccess.For(t).Select(l=>new FloatMenuOption(EventPawnAccess.Label(l)+"（打开对话框）".Loc(),()=>EventPawnAccess.Open(l))).ToList();
  }
 }

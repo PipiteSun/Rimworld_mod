@@ -26,7 +26,7 @@ namespace LichPhylactery {
   public static string KindOf(Pawn p)=>Ext(p)?.kind;
   public static bool Is(Pawn p,string k)=>p!=null && KindOf(p)==k;
   public static bool IsMonster(Pawn p)=>KindOf(p)!=null;
-  public static string Label(string k)=>k==Behir?"贝希尔":k==Beholder?"眼魔":k==DeathKnight?"死亡骑士":k==Demilich?"半巫妖":k;
+  public static string Label(string k)=>k==Behir?"贝希尔".Loc():k==Beholder?"眼魔".Loc():k==DeathKnight?"死亡骑士".Loc():k==Demilich?"半巫妖".Loc():k;
   public static PawnKindDef Kind(string k)=>DefDatabase<PawnKindDef>.GetNamedSilentFail(k==Behir?"LP_LM_Behir":k==Beholder?"LP_LM_Beholder":k==Demilich?"LP_LM_Demilich":"LP_LM_DeathKnight");
   public static bool Available=>DefDatabase<ThingDef>.GetNamedSilentFail("LP_Behir")!=null; // 1.116.0 前叫 HarAvailable（种族只在启用 HAR 时有）
   public static float HealthMult(Pawn p){var e=Ext(p);return e==null?1f:e.healthFactor*Dragons.HealthMult;} // 传奇怪共用“真龙强度”
@@ -41,6 +41,7 @@ namespace LichPhylactery {
   public static bool BeholderOn=>On && Available && (S?.beholderLair??true);
   public static bool DemilichOn=>On && Available && (S?.demilichTomb??true);
   public static bool DeathKnightOn=>On && (S?.deathKnightThay??true);
+  public static bool MovesOn=>On && (S?.legendaryMoves??true); // 1.161.0 招牌连招
 
   // ---------- 派系 ----------
   static FactionDef beastsDef;public static FactionDef BeastsDef=>beastsDef??(beastsDef=DefDatabase<FactionDef>.GetNamedSilentFail("LP_LegendaryBeasts"));
@@ -54,7 +55,7 @@ namespace LichPhylactery {
 
   // ---------- 生成 ----------
   static readonly Dictionary<string,string[]> Names=new Dictionary<string,string[]>{
-   {Behir,new[]{"雷鸣之喉","卡兹拉克","缠骨者","苍蛇","沙行者"}},{Beholder,new[]{"克萨纳斯","泽塔拉克斯","千目","诺克萨尔","瓦洛斯"}},{Demilich,new[]{"阿瑟拉克","无名之颅","索恩","灰烬王冠","维克托"}}};
+   {Behir,new[]{"雷鸣之喉".Loc(),"卡兹拉克".Loc(),"缠骨者".Loc(),"苍蛇".Loc(),"沙行者".Loc()}},{Beholder,new[]{"克萨纳斯".Loc(),"泽塔拉克斯".Loc(),"千目".Loc(),"诺克萨尔".Loc(),"瓦洛斯".Loc()}},{Demilich,new[]{"阿瑟拉克".Loc(),"无名之颅".Loc(),"索恩".Loc(),"灰烬王冠".Loc(),"维克托".Loc()}}};
   public static Pawn Make(string k,Faction f=null,int tile=-1){
    var kind=Kind(k);if(kind==null)return null;
    if(f==null)f=k==DeathKnight?(Factions.Hostile??Beasts()):Beasts();
@@ -101,10 +102,10 @@ namespace LichPhylactery {
    foreach(var c in cells){FleckMaker.ThrowMicroSparks(c.ToVector3Shifted(),b.Map);FleckMaker.ThrowLightningGlow(c.ToVector3Shifted(),b.Map,.8f);}
    var def=DefDatabase<DamageDef>.GetNamedSilentFail("LP_Shock")??DamageDefOf.Burn;
    var r=Dragons.HitArea(b,cells,def,BehirBreathHits,BehirBreathDamage*Dragons.DamageMult,Adventurer.Dex,Legendary.DC(b,Adventurer.Con),p=>p.RaceProps.IsMechanoid?2f:1f,(p,s)=>Dragons.BreakShields(p));
-   Items.Mote(b,"闪电吐息！",new Color(.6f,.8f,1f));return r;
+   Items.Mote(b,"闪电吐息！".Loc(),new Color(.6f,.8f,1f));return r;
   }
   public static Pawn BreathTarget(Pawn b,float range)=>Foes(b,range).Where(x=>GenSight.LineOfSight(b.Position,x.Position,b.Map,true)).OrderByDescending(x=>Dragons.Is(x)?1:0).ThenBy(x=>x.Position.DistanceTo(b.Position)).FirstOrDefault();
-  // 龙之死敌：贝希尔打真龙和力能龙裔 ×1.5；半巫妖只有头骨，圣水、银器、圣银手枪 ×2。
+  // 龙之死敌：贝希尔打真龙 ×1.5；半巫妖只有头骨，圣水、银器、圣银手枪 ×2。
   public static float DamageFactor(Pawn victim,DamageInfo d){
    var a=d.Instigator as Pawn;float f=1f;
    if(a!=null && Is(a,Behir) && Dragons.Is(victim))f*=DragonFoe;
@@ -119,7 +120,7 @@ namespace LichPhylactery {
   }
 
   // ---------- 眼魔：眼射线、反魔法主眼 ----------
-  public static readonly string[] Rays={"魅惑","麻痹","恐惧","减速","衰弱","石化","解离","死亡","睡眠","念动"};
+  public static readonly string[] Rays={"魅惑".Loc(),"麻痹".Loc(),"恐惧".Loc(),"减速".Loc(),"衰弱".Loc(),"石化".Loc(),"解离".Loc(),"死亡".Loc(),"睡眠".Loc(),"念动".Loc()};
   public const float RayRange=20f,AntiMagicRange=20f,AntiMagicHalf=30f,AmuletRadius=3f;public const int RayTicks=180;
   public static List<BodyPartRecord> Stalks(Pawn b)=>b.RaceProps.body.AllParts.Where(x=>x.def.defName=="LP_BeholderStalk").ToList();
   public static List<int> LiveRays(Pawn b){var all=Stalks(b);var live=b.health.hediffSet.GetNotMissingParts().Where(x=>x.def.defName=="LP_BeholderStalk").ToList();var r=new List<int>();for(int i=0;i<all.Count && i<Rays.Length;i++)if(live.Contains(all[i]))r.Add(i);return r;}
@@ -129,7 +130,7 @@ namespace LichPhylactery {
   public static string Ray(Pawn b,int i,Pawn t){
    if(b?.Map==null || t==null || t.Dead)return null;RaysFired++;
    int dc=Legendary.DC(b,Adventurer.Int);string name=Rays[Mathf.Clamp(i,0,Rays.Length-1)];
-   FleckMaker.ConnectingLine(b.DrawPos,t.DrawPos,FleckDefOf.PsycastAreaEffect,b.Map,.4f);Items.Mote(t,name+"射线",new Color(.9f,.6f,1f));
+   FleckMaker.ConnectingLine(b.DrawPos,t.DrawPos,FleckDefOf.PsycastAreaEffect,b.Map,.4f);Items.Mote(t,name+"射线".Loc(),new Color(.9f,.6f,1f));
    switch(i){
     case 0:Dragons.Charm(b,t,MapComp<MapComponent_Legendary>.Get(b.Map));break;
     case 1:if(!Legendary.Save(t,Adventurer.Con,dc,b))t.stances?.stunner?.StunFor(300,b,false,true,false);break;
@@ -175,7 +176,7 @@ namespace LichPhylactery {
   static readonly DefRef<ThingDef> amuletDef=new DefRef<ThingDef>("LP_AntiMagicAmulet");
   public static bool WearsAmulet(Pawn p)=>p.apparel!=null && p.apparel.WornApparelCount>0 && Items.Worn(p,amuletDef.Def)!=null;
   public static int Blocked;
-  public static bool BlockCast(Pawn p){if(!InAntiMagic(p))return false;Blocked++;Items.Mote(p,"反魔法：施法失败",new Color(.7f,.7f,.9f));return true;}
+  public static bool BlockCast(Pawn p){if(!InAntiMagic(p))return false;Blocked++;Items.Mote(p,"反魔法：施法失败".Loc(),new Color(.7f,.7f,.9f));return true;}
 
   // ---------- 死亡骑士：地狱火球、亡灵统领、化灰 ----------
   public const float HellfireRadius=4f,HellfireDamage=18f,CommandRadius=15f;public const int HellfireTicks=1200,CommandTicks=240,AshTicks=GenDate.TicksPerHour;
@@ -222,10 +223,10 @@ namespace LichPhylactery {
   public static bool SoulImmune(Pawn p)=>p==null || p.RaceProps==null || !p.RaceProps.IsFlesh || Items.Undead(p) || Necro.Construct(p)!=null || Legendary.Is(p) || HeroTraits.Info(p)?.lichbane==true; // 1.58.0 巫妖克星不会被汲取灵魂
   public static int Howl(Pawn d){
    int n=0;if(d?.Map==null)return 0;
-   FleckMaker.Static(d.Position,d.Map,FleckDefOf.PsycastAreaEffect,12f);Items.Mote(d,"吞魂之嚎！",new Color(.7f,.9f,.8f));
+   FleckMaker.Static(d.Position,d.Map,FleckDefOf.PsycastAreaEffect,12f);Items.Mote(d,"吞魂之嚎！".Loc(),new Color(.7f,.9f,.8f));
    foreach(var p in Legendary.EnemiesNear(d,HowlRadius).ToList()){
     if(SoulImmune(p) || Legendary.Save(p,Adventurer.Con,HowlDC,d))continue;
-    if(Items.Give(p,"LP_SoulTorn")!=null){n++;Items.Mote(p,"灵魂被撕裂！",new Color(.7f,.9f,.8f));}
+    if(Items.Give(p,"LP_SoulTorn")!=null){n++;Items.Mote(p,"灵魂被撕裂！".Loc(),new Color(.7f,.9f,.8f));}
    }
    return n;
   }
@@ -244,7 +245,7 @@ namespace LichPhylactery {
   public static void OnKilled(Pawn p,Map map,IntVec3 at){
    if(map==null || !IsMonster(p) || Is(p,DeathKnight))return;
    foreach(var t in Loot(p))GenPlace.TryPlaceThing(t,at,map,ThingPlaceMode.Near);
-   if(Is(p,Behir)){var body=p.health.hediffSet.hediffs.OfType<Hediff_MonsterBody>().FirstOrDefault();body?.Release("贝希尔死了");}
+   if(Is(p,Behir)){var body=p.health.hediffSet.hediffs.OfType<Hediff_MonsterBody>().FirstOrDefault();body?.Release("贝希尔死了".Loc());}
   }
 
   // ---------- 世界地点：眼魔巢穴、无尽墓穴 ----------
@@ -253,15 +254,15 @@ namespace LichPhylactery {
   public static bool IsFlayerLeader(Pawn p)=>p?.kindDef!=null && p.kindDef==FactionGroups.FlayerKind && p.Faction?.def==Factions.IllithidDef;
   public static Site OnFlayerLeaderKilled(Pawn p,Pawn killer){
    if(!BeholderOn || killer?.Faction==null || !killer.Faction.IsPlayer || Roll>=FlayerLairChance)return null;
-   return RevealSite(Beholder,"夺心魔首领的残脑里还留着一段记忆：一只眼魔的巢穴");
+   return RevealSite(Beholder,"夺心魔首领的残脑里还留着一段记忆：一只眼魔的巢穴".Loc());
   }
   public static Site RevealSite(string k,string why){
    if(k==Beholder?!BeholderOn:!DemilichOn)return null;var st=State;var f=Beasts();if(st==null || f==null)return null;
    var site=NetherilQuest.MakeSite(k==Beholder?"LP_BeholderLair":"LP_EndlessTomb",f,6,15,1f);if(site==null)return null;
    st.sites.Add(new MonsterSite{site=site,kind=k,expire=Find.TickManager.TicksGame+LairDays*GenDate.TicksPerDay});
-   if(!Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter(k==Beholder?"眼魔巢穴":"无尽墓穴",why+"，"+(k==Beholder?"眼魔巢穴（地下洞穴）":"无尽墓穴（半巫妖的坟墓）")+"显露在世界地图上（离殖民地 6～15 格），"+LairDays+"天后消失。\n\n"
-    +(k==Beholder?"眼魔每 3 秒从眼柄射出 1～2 道射线（魅惑、麻痹、恐惧、减速、衰弱、石化、解离、死亡、睡眠、念动，全部可以豁免）；打掉一根眼柄就少一种射线。它正面 60° 锥形 20 格内不能施法、护盾腰带失效——从侧面和背后打。"
-     :"半巫妖每 60 秒发出一次吞魂之嚎：20 格内所有活人做体质豁免（难度 21，基础成功率 10%，属性调整值和熟练加值每点 +5%），失败倒地、灵魂撕裂，30 秒内不救治就死。巫妖和死灵造物免疫。它只有一颗头骨，银器伤害 ×2。"),LetterDefOf.PositiveEvent,new LookTargets(site));
+   if(!Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter(k==Beholder?"眼魔巢穴".Loc():"无尽墓穴".Loc(),why+"，".Loc()+(k==Beholder?"眼魔巢穴（地下洞穴）".Loc():"无尽墓穴（半巫妖的坟墓）".Loc())+"显露在世界地图上（离殖民地 6～15 格），".Loc()+LairDays+"天后消失。\n\n".Loc()
+    +(k==Beholder?"眼魔每 3 秒从眼柄射出 1～2 道射线（魅惑、麻痹、恐惧、减速、衰弱、石化、解离、死亡、睡眠、念动，全部可以豁免）；打掉一根眼柄就少一种射线。它正面 60° 锥形 20 格内不能施法、护盾腰带失效——从侧面和背后打。".Loc()
+     :"半巫妖每 60 秒发出一次吞魂之嚎：20 格内所有活人做体质豁免（难度 21，基础成功率 10%，属性调整值和熟练加值每点 +5%），失败倒地、灵魂撕裂，30 秒内不救治就死。巫妖和死灵造物免疫。它只有一颗头骨，银器伤害 ×2。".Loc()),LetterDefOf.PositiveEvent,new LookTargets(site));
    return site;
   }
   public static MonsterSite SiteOf(Site s)=>s==null?null:State?.sites.FirstOrDefault(x=>x.site==s);
@@ -269,7 +270,6 @@ namespace LichPhylactery {
   // ---------- 龙的猎手（贝希尔） ----------
   public static bool HunterReady(Map map){
    if(!BehirOn || map==null)return false;
-   if(DragonFlyover.AdultDragons(map).Count>0)return true;
    var rec=DefDatabase<RecordDef>.GetNamedSilentFail("LP_DragonsSlain");
    return rec!=null && PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive_FreeColonists.Any(p=>p.records!=null && p.records.GetValue(rec)>0f);
   }
@@ -314,12 +314,14 @@ namespace LichPhylactery {
 
  // ---------- XX之躯：招牌攻击、吞噬、化灰 ----------
  public class Hediff_MonsterBody : HediffWithComps {
-  int ticks,breathTick,swallowTick,rayTick,hellTick,commandTick,howlTick=-1;public int downTick=-1;public bool charged,bound;
+  int ticks,breathTick,swallowTick,hellTick,commandTick,howlTick=-1;public int downTick=-1,rayTick,moveTick;public bool charged,bound;public string landing; // 1.161.0 moveTick/landing：招牌连招（LegendaryMonsterMoves.cs）
   public Pawn swallowed;public float outer,inner;public bool parleyed; // 1.63.0：半巫妖谈判过（每个半巫妖一次）
   public string Kind=>Monsters.KindOf(pawn);
-  public override string LabelInBrackets=>swallowed!=null?"吞着"+swallowed.LabelShort:base.LabelInBrackets;
+  public override string LabelInBrackets=>swallowed!=null?"吞着".Loc()+swallowed.LabelShort:base.LabelInBrackets;
   public override void TickInterval(int delta){
-   base.TickInterval(delta);if((ticks+=delta)<60)return;ticks=0;
+   base.TickInterval(delta);
+   if(landing!=null && pawn.Spawned){try{MonsterMoves.Land(pawn,this);}catch(Exception e){landing=null;Log.ErrorOnce("[DND边缘大陆] 传奇怪落地出错：".Loc()+e,74152302);}}
+   if((ticks+=delta)<60)return;ticks=0;
    var p=pawn;int now=Find.TickManager.TicksGame;
    try{
     if(swallowed!=null)Digest();
@@ -327,6 +329,7 @@ namespace LichPhylactery {
     downTick=-1;
     if(!p.Spawned || p.Dead || p.Downed || p.Map==null || !Monsters.AnyHostile(p))return;
     if(p.stances?.stunner?.Stunned==true)return;
+    if(Monsters.MovesOn)MonsterMoves.Tick(p,this,now);
     switch(Kind){
      case Monsters.Behir:
       if(!charged && now>=breathTick){breathTick=now+Dragons.ChargeTicks;if(Rand.Value<Dragons.ChargeChance)charged=true;}
@@ -339,14 +342,14 @@ namespace LichPhylactery {
      case Monsters.DeathKnight:
       if(!bound){var lord=p.GetLord();if(lord!=null){bound=true;Monsters.BindKnight(lord.ownedPawns.ToList());}} // 登场后再绑定随从（敌人等级的裁人已经做完）
       if(now>=commandTick){commandTick=now+Monsters.CommandTicks;Monsters.Command(p);}
-      if(now>=hellTick){var at=Monsters.ClusterTarget(p,25f);if(at.IsValid){hellTick=now+Monsters.HellfireTicks;Monsters.Hellfire(p.Map,at,p);Items.Mote(p,"地狱火球！",new Color(1f,.4f,.2f));}}
+      if(now>=hellTick){var at=Monsters.ClusterTarget(p,25f);if(at.IsValid){hellTick=now+Monsters.HellfireTicks;Monsters.Hellfire(p.Map,at,p);Items.Mote(p,"地狱火球！".Loc(),new Color(1f,.4f,.2f));}}
       break;
      case Monsters.Demilich:
       if(howlTick<0)howlTick=now+600;
       if(now>=howlTick && Legendary.EnemiesNear(p,Monsters.HowlRadius).Any(x=>!Monsters.SoulImmune(x))){howlTick=now+Monsters.HowlTicks;Monsters.Howl(p);}
       break;
     }
-   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 传奇怪行为出错："+e,74152201);}
+   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 传奇怪行为出错：".Loc()+e,74152201);}
   }
   // 贝希尔吞噬：敏捷豁免失败就被吞进肚子（离开地图，存为世界角色）；每秒 4 点酸蚀；外面打它 60 或里面挣扎 30 就吐出来。
   public bool TrySwallow(Pawn v){
@@ -355,21 +358,21 @@ namespace LichPhylactery {
    swallowed=v;outer=inner=0f;
    if(v.Spawned)v.DeSpawn();
    if(!Find.WorldPawns.Contains(v))Find.WorldPawns.PassToWorld(v,PawnDiscardDecideMode.KeepForever);
-   Items.Mote(pawn,"吞下了"+v.LabelShort+"！",new Color(.6f,.8f,1f));
-   if(v.Faction!=null && v.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(pawn.LabelShort+"把"+v.LabelShort+"吞了下去！打它 60 点伤害就能让它吐出来。",pawn,MessageTypeDefOf.ThreatBig,false);
+   Items.Mote(pawn,"吞下了".Loc()+v.LabelShort+"！".Loc(),new Color(.6f,.8f,1f));
+   if(v.Faction!=null && v.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(pawn.LabelShort+"把".Loc()+v.LabelShort+"吞了下去！打它 60 点伤害就能让它吐出来。".Loc(),pawn,MessageTypeDefOf.ThreatBig,false);
    return true;
   }
   public void Digest(){
    var v=swallowed;if(v==null)return;
    if(!v.Dead){v.TakeDamage(new DamageInfo(DefDatabase<DamageDef>.GetNamedSilentFail("LP_AlchemyAcid")??DamageDefOf.Burn,Monsters.AcidPerSecond,0f,-1f,pawn));
     if(!v.Dead && !v.Downed){inner+=4f+Mathf.Max(0,Legendary.Mod(v,Adventurer.Str));}}
-   if(inner>=Monsters.SwallowInner)Release("被挣脱了");
+   if(inner>=Monsters.SwallowInner)Release("被挣脱了".Loc());
   }
   public override void Notify_PawnPostApplyDamage(DamageInfo dinfo,float totalDamageDealt){
    base.Notify_PawnPostApplyDamage(dinfo,totalDamageDealt);
-   if(swallowed!=null){outer+=totalDamageDealt;if(outer>=Monsters.SwallowOuter)Release("吃痛");}
+   if(swallowed!=null){outer+=totalDamageDealt;if(outer>=Monsters.SwallowOuter)Release("吃痛".Loc());}
   }
-  public override void Notify_PawnDied(DamageInfo? dinfo,Hediff culprit){base.Notify_PawnDied(dinfo,culprit);Release("死了");}
+  public override void Notify_PawnDied(DamageInfo? dinfo,Hediff culprit){base.Notify_PawnDied(dinfo,culprit);Release("死了".Loc());}
   public Pawn Release(string why){
    var v=swallowed;if(v==null)return null;swallowed=null;outer=inner=0f;
    var map=pawn.MapHeld;var at=pawn.PositionHeld;
@@ -378,11 +381,11 @@ namespace LichPhylactery {
     if(v.Dead){if(v.Corpse!=null && !v.Corpse.Spawned)GenPlace.TryPlaceThing(v.Corpse,at,map,ThingPlaceMode.Near);}
     else GenSpawn.Spawn(v,CellFinder.RandomClosewalkCellNear(at,map,2),map);
    }
-   Items.Mote(pawn,"吐出了"+v.LabelShort+"（"+why+"）",Color.white);
+   Items.Mote(pawn,"吐出了".Loc()+v.LabelShort+"（".Loc()+why+"）".Loc(),Color.white);
    return v;
   }
   public override void ExposeData(){
-   base.ExposeData();Scribe_Values.Look(ref charged,"lpCharged");Scribe_Values.Look(ref bound,"lpBound");Scribe_References.Look(ref swallowed,"lpSwallowed",true);Scribe_Values.Look(ref outer,"lpOuter");Scribe_Values.Look(ref inner,"lpInner");Scribe_Values.Look(ref downTick,"lpDownTick",-1);Scribe_Values.Look(ref parleyed,"lpParleyed");
+   base.ExposeData();Scribe_Values.Look(ref charged,"lpCharged");Scribe_Values.Look(ref bound,"lpBound");Scribe_References.Look(ref swallowed,"lpSwallowed",true);Scribe_Values.Look(ref outer,"lpOuter");Scribe_Values.Look(ref inner,"lpInner");Scribe_Values.Look(ref downTick,"lpDownTick",-1);Scribe_Values.Look(ref parleyed,"lpParleyed");Scribe_Values.Look(ref moveTick,"lpMoveTick");Scribe_Values.Look(ref landing,"lpLanding");
   }
  }
  // 灵魂撕裂：倒地；30 秒内不救治就死；包扎后变成“缝合的灵魂”，一天后消失。
@@ -412,7 +415,7 @@ namespace LichPhylactery {
   public string kind="beholder";
   public override int SeedPart=>741530+kind.Length;
   public override void Generate(Map map,GenStepParams parms){
-   try{Build(map,kind,parms.sitePart?.site?.Faction??Monsters.Beasts());}catch(Exception e){Log.Error("[DND边缘大陆] 生成"+Monsters.Label(kind)+"地点出错："+e);}
+   try{Build(map,kind,parms.sitePart?.site?.Faction??Monsters.Beasts());}catch(Exception e){Log.Error("[DND边缘大陆] 生成".Loc()+Monsters.Label(kind)+"地点出错：".Loc()+e);}
   }
   public static Pawn Build(Map map,string kind,Faction f){
    var c=map.Center;int r=kind==Monsters.Beholder?10:8;
@@ -454,15 +457,15 @@ namespace LichPhylactery {
  public class CompProperties_UseEffectMonsterIntel : CompProperties_UseEffect {public string kind;public CompProperties_UseEffectMonsterIntel(){compClass=typeof(CompUseEffect_MonsterIntel);}}
  public class CompUseEffect_MonsterIntel : CompUseEffect {
   string K=>((CompProperties_UseEffectMonsterIntel)props).kind;
-  public override void DoEffect(Pawn usedBy){base.DoEffect(usedBy);Monsters.RevealSite(K,usedBy.LabelShort+"读懂了情报");}
-  public override AcceptanceReport CanBeUsedBy(Pawn p)=>(K==Monsters.Beholder?Monsters.BeholderOn:Monsters.DemilichOn)?true:new AcceptanceReport("传奇怪没有开启（设置里的“传奇怪”）");
+  public override void DoEffect(Pawn usedBy){base.DoEffect(usedBy);Monsters.RevealSite(K,usedBy.LabelShort+"读懂了情报".Loc());}
+  public override AcceptanceReport CanBeUsedBy(Pawn p)=>(K==Monsters.Beholder?Monsters.BeholderOn:Monsters.DemilichOn)?true:new AcceptanceReport("传奇怪没有开启（设置里的“传奇怪”）".Loc());
  }
  // 灵魂宝石：巫妖用 → 命匣获得 100 点献祭经验；其他人摔碎 → 放出灵魂，地图上的殖民者心情 +5。
  public class CompUseEffect_SoulGem : CompUseEffect {
   public const float LichFeed=100f;
   public override void DoEffect(Pawn p){
    base.DoEffect(p);var box=Necro.Lich(p)?.box;
-   if(box!=null && !box.Destroyed){box.Feed(LichFeed);Messages.Message(p.LabelShort+"吸收了灵魂宝石里的灵魂：命匣 +"+LichFeed.ToString("0")+" 经验。",p,MessageTypeDefOf.PositiveEvent,false);return;}
+   if(box!=null && !box.Destroyed){box.Feed(LichFeed);Messages.Message(p.LabelShort+"吸收了灵魂宝石里的灵魂：命匣 +".Loc()+LichFeed.ToString("0")+" 经验。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);return;}
    var th=DefDatabase<ThoughtDef>.GetNamedSilentFail("LP_SoulsFreed");
    if(th!=null && p.MapHeld!=null)foreach(var c in p.MapHeld.mapPawns.FreeColonistsSpawned)c.needs?.mood?.thoughts?.memories?.TryGainMemory(th);
   }
@@ -471,7 +474,7 @@ namespace LichPhylactery {
  public class CompUseEffect_DemilichSkull : CompUseEffect {
   public const float LichFeed=300f;
   public override void DoEffect(Pawn p){base.DoEffect(p);Necro.Lich(p)?.box?.Feed(LichFeed);}
-  public override AcceptanceReport CanBeUsedBy(Pawn p)=>Necro.Lich(p)?.box!=null?true:new AcceptanceReport("只有有命匣的巫妖能用");
+  public override AcceptanceReport CanBeUsedBy(Pawn p)=>Necro.Lich(p)?.box!=null?true:new AcceptanceReport("只有有命匣的巫妖能用".Loc());
  }
 
  // ---------- 事件：龙的猎手 ----------
@@ -479,21 +482,21 @@ namespace LichPhylactery {
   protected override bool CanFireNowSub(IncidentParms parms)=>parms.target is Map map && Monsters.HunterReady(map);
   protected override bool TryExecuteWorker(IncidentParms parms){
    var map=parms.target as Map;var b=Monsters.SpawnHunter(map);if(b==null)return false;
-   SendStandardLetter("龙的猎手","一条贝希尔循着龙的气味找到了这里。它是真龙的死敌——对龙的伤害 ×1.5，不怕龙的威仪——但它同样饿了。\n\n它会喷出一道闪电，还会把离它太近的人一口吞下（打它 60 点伤害，它就会吐出来）。",LetterDefOf.ThreatBig,parms,new LookTargets(b));
+   SendStandardLetter("龙的猎手".Loc(),"一条贝希尔循着龙的气味找到了这里。它是真龙的死敌——对龙的伤害 ×1.5，不怕龙的威仪——但它同样饿了。\n\n它会喷出一道闪电，还会把离它太近的人一口吞下（打它 60 点伤害，它就会吐出来）。".Loc(),LetterDefOf.ThreatBig,parms,new LookTargets(b));
    return true;
   }
  }
 
  // ---------- 传奇动作（传奇怪专用） ----------
- public class LA_Ray : LegendaryActionWorker {public override string Label=>"眼射线";public override bool CanDo(Pawn l,Pawn e)=>Monsters.Is(l,Monsters.Beholder) && Monsters.LiveRays(l).Count>0;public override bool Do(Pawn l,Pawn e)=>Monsters.FireRays(l,1)>0;}
- public class LA_Drift : LegendaryActionWorker {public override string Label=>"漂移";public override bool CanDo(Pawn l,Pawn e)=>Legendary.EnemiesNear(l,3f).Any();public override bool Do(Pawn l,Pawn e)=>ChromaticFlight.Hop(l,6f,l.Position+(l.Position-e.Position));}
- public class LA_Hellfire : LegendaryActionWorker {public override string Label=>"地狱火";public override bool Do(Pawn l,Pawn e){if(e.Position.DistanceTo(l.Position)>12f)return false;Monsters.Hellfire(l.Map,e.Position,l,Monsters.HellfireDamage*.5f);return true;}}
- public class LA_UndeadCommand : LegendaryActionWorker {public override string Label=>"亡灵号令";public override bool CanDo(Pawn l,Pawn e)=>Races124.PawnsNear(l.Map,l.Position,Monsters.CommandRadius).Any(p=>Monsters.UndeadAlly(l,p) && p.health.summaryHealth.SummaryHealthPercent<.9f);
+ public class LA_Ray : LegendaryActionWorker {public override string Label=>"眼射线".Loc();public override bool CanDo(Pawn l,Pawn e)=>Monsters.Is(l,Monsters.Beholder) && Monsters.LiveRays(l).Count>0;public override bool Do(Pawn l,Pawn e)=>Monsters.FireRays(l,1)>0;}
+ public class LA_Drift : LegendaryActionWorker {public override string Label=>"漂移".Loc();public override bool CanDo(Pawn l,Pawn e)=>Legendary.EnemiesNear(l,3f).Any();public override bool Do(Pawn l,Pawn e)=>ChromaticFlight.Hop(l,6f,l.Position+(l.Position-e.Position));}
+ public class LA_Hellfire : LegendaryActionWorker {public override string Label=>"地狱火".Loc();public override bool Do(Pawn l,Pawn e){if(e.Position.DistanceTo(l.Position)>12f)return false;Monsters.Hellfire(l.Map,e.Position,l,Monsters.HellfireDamage*.5f);return true;}}
+ public class LA_UndeadCommand : LegendaryActionWorker {public override string Label=>"亡灵号令".Loc();public override bool CanDo(Pawn l,Pawn e)=>Races124.PawnsNear(l.Map,l.Position,Monsters.CommandRadius).Any(p=>Monsters.UndeadAlly(l,p) && p.health.summaryHealth.SummaryHealthPercent<.9f);
   public override bool Do(Pawn l,Pawn e){int n=0;foreach(var p in Races124.PawnsNear(l.Map,l.Position,Monsters.CommandRadius).Where(p=>Monsters.UndeadAlly(l,p)).ToList()){foreach(var i in p.health.hediffSet.hediffs.OfType<Hediff_Injury>().Take(3).ToList())i.Heal(8f);n++;}return n>0;}}
- public class LA_SoulDrain : LegendaryActionWorker {public override string Label=>"吸魂";
+ public class LA_SoulDrain : LegendaryActionWorker {public override string Label=>"吸魂".Loc();
   public override bool CanDo(Pawn l,Pawn e)=>!Monsters.SoulImmune(e) && e.Position.DistanceTo(l.Position)<=15f;
   public override bool Do(Pawn l,Pawn e){bool s=Legendary.Save(e,Adventurer.Con,Legendary.DC(l,Adventurer.Int),l);e.TakeDamage(new DamageInfo(Monsters.Necrotic,(s?10f:20f)*Dragons.DamageMult,.4f,-1f,l));foreach(var i in l.health.hediffSet.hediffs.OfType<Hediff_Injury>().Take(2).ToList())i.Heal(10f);return true;}}
- public class LA_Curse : LegendaryActionWorker {public override string Label=>"诅咒";
+ public class LA_Curse : LegendaryActionWorker {public override string Label=>"诅咒".Loc();
   public override bool CanDo(Pawn l,Pawn e)=>e.RaceProps.Humanlike && !Items.Has(e,"LP_DemilichCurse") && e.Position.DistanceTo(l.Position)<=15f;
   public override bool Do(Pawn l,Pawn e){if(!Legendary.Save(e,Adventurer.Wis,Legendary.DC(l,Adventurer.Int),l))Items.Give(e,"LP_DemilichCurse");return true;}}
  [StaticConstructorOnStartup]
@@ -527,21 +530,22 @@ namespace LichPhylactery {
 
  // ---------- 设置（画在「真龙与传奇怪」里） ----------
  public partial class Settings {
-  public bool legendaryMonsters=true,behirHunt=true,beholderLair=true,demilichTomb=true,deathKnightThay=true;
+  public bool legendaryMonsters=true,behirHunt=true,beholderLair=true,demilichTomb=true,deathKnightThay=true,legendaryMoves=true;
   void ExposeMonsters(){
    Scribe_Values.Look(ref legendaryMonsters,"lpLegendaryMonsters",true);Scribe_Values.Look(ref behirHunt,"lpBehirHunt",true);Scribe_Values.Look(ref beholderLair,"lpBeholderLair",true);
-   Scribe_Values.Look(ref demilichTomb,"lpDemilichTomb",true);Scribe_Values.Look(ref deathKnightThay,"lpDeathKnightThay",true);
+   Scribe_Values.Look(ref demilichTomb,"lpDemilichTomb",true);Scribe_Values.Look(ref deathKnightThay,"lpDeathKnightThay",true);Scribe_Values.Look(ref legendaryMoves,"lpLegendaryMoves",true);
   }
  }
  public static class MonsterSettings {
   public static void Draw(Listing_Standard l){
    var s=LichMod.Settings;l.Gap(6f);
-   l.CheckboxLabeled("传奇怪",ref s.legendaryMonsters,"贝希尔、眼魔、死亡骑士、半巫妖。都有传奇抗性和传奇动作，强度跟着上面的“真龙强度”。关闭后下面的登场都不出现。");
-   l.CheckboxLabeled("　龙的猎手（贝希尔）",ref s.behirHunt,"殖民地有成年力能龙裔、或有人杀过成年以上的真龙时，低概率来一条贝希尔。它也会出现在青年 / 成年龙巢附近，和龙打起来。");
-   l.CheckboxLabeled("　眼魔巢穴",ref s.beholderLair,"击杀幽暗殖巢的夺心魔首领后 20% 显露（或同盟商队卖情报）。");
-   l.CheckboxLabeled("　无尽墓穴（半巫妖）",ref s.demilichTomb,"殖民地最高冒险者等级 ≥24 时，同盟商队会卖墓穴情报。");
-   l.CheckboxLabeled("　死亡骑士",ref s.deathKnightThay,"塞伊远征军 ≥5000 点的袭击 10% 由死亡骑士带队；拉洛克古墓里 50% 多一名死亡骑士守卫。");
-   l.CheckboxLabeled("　亡灵军团",ref s.undeadHorde,"1.140.0：塞伊远征军的袭击有一种「亡灵军团」编组（约 1/4）：红袍死灵法师带着噬尸鬼、尸妖、怨灵、吸血鬼。关闭后这一组里的亡灵换成普通远征军。"); // 1.140.0
+   l.CheckboxLabeled("传奇怪".Loc(),ref s.legendaryMonsters,"贝希尔、眼魔、死亡骑士、半巫妖。都有传奇抗性和传奇动作，强度跟着上面的“真龙强度”。关闭后下面的登场都不出现。".Loc());
+   l.CheckboxLabeled("　龙的猎手（贝希尔）".Loc(),ref s.behirHunt,"有人杀过成年以上的真龙时，低概率来一条贝希尔。它也会出现在青年 / 成年龙巢附近，和龙打起来。".Loc());
+   l.CheckboxLabeled("　眼魔巢穴".Loc(),ref s.beholderLair,"击杀幽暗殖巢的夺心魔首领后 20% 显露（或同盟商队卖情报）。".Loc());
+   l.CheckboxLabeled("　无尽墓穴（半巫妖）".Loc(),ref s.demilichTomb,"殖民地最高冒险者等级 ≥24 时，同盟商队会卖墓穴情报。".Loc());
+   l.CheckboxLabeled("　死亡骑士".Loc(),ref s.deathKnightThay,"塞伊远征军 ≥5000 点的袭击 10% 由死亡骑士带队；拉洛克古墓里 50% 多一名死亡骑士守卫。".Loc());
+   l.CheckboxLabeled("　招牌连招".Loc(),ref s.legendaryMoves,"1.161.0：贝希尔钻地伏击后吐息、眼魔念动拖拽后眼柄齐射、半巫妖骨尘闪现后群体诅咒、死亡骑士冥火冲锋落地震击。关闭后只剩原来的定时大招。".Loc());
+   l.CheckboxLabeled("　亡灵军团".Loc(),ref s.undeadHorde,"1.140.0：塞伊远征军的袭击有一种「亡灵军团」编组（约 1/4）：红袍死灵法师带着噬尸鬼、尸妖、怨灵、吸血鬼。关闭后这一组里的亡灵换成普通远征军。".Loc()); // 1.140.0
   }
  }
 }

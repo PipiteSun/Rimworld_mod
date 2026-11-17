@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（CasterSpells.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>[DND边缘大陆] 法术表 </zh><en>[DND Rimlands] Spell list </en></s>
+  <s><zh> 找不到法术 </zh><en> can't find spell </en></s>
+  <s><zh> 的 </zh><en>'s </en></s>
+  <s><zh> 没有环位</zh><en> has no spell circle</en></s>
+  <s><zh>被静默术笼罩，念不出咒语</zh><en>Shrouded by silence; can't speak the incantation</en></s>
+  <s><zh>法术能量不足（</zh><en>Not enough spell energy (</en></s>
+  <s><zh>，睡醒回满）</zh><en>, refilled after sleeping)</en></s>
+  <s><zh>秘法玄奥：每天 1 次，不消耗资源（今天已用 </zh><en>Mystic arcanum: once per day, no resource cost (used today </en></s>
+  <s><zh> / 1）</zh><en> / 1)</en></s>
+  <s><zh>不消耗资源（只看冷却）</zh><en>No resource cost (cooldown only)</en></s>
+  <s><zh>消耗：法术能量 </zh><en>Cost: spell energy </en></s>
+  <s><zh>（剩 </zh><en> (remaining </en></s>
+  <s><zh>无踪步：1 天内遇袭几率减半</zh><en>Pass without trace: ambush chance halved for 1 day</en></s>
+  <s><zh>风行术：1 天内全队移动 ×2</zh><en>Wind walk: whole party movement ×2 for 1 day</en></s>
+  <s><zh>冷却中</zh><en>On cooldown</en></s>
+  <s><zh>超魔·即时：不进冷却</zh><en>Metamagic·quickened: no cooldown</en></s>
+  <s><zh>没有这个职业</zh><en>Doesn't have this class</en></s>
+  <s><zh>这个职业不用备法</zh><en>This class doesn't prepare spells</en></s>
+  <s><zh>戏法常备，不用准备</zh><en>Cantrips are always ready; no need to prepare</en></s>
+  <s><zh>不在</zh><en>Not in </en></s>
+  <s><zh>法术表里</zh><en>'s spell list</en></s>
+  <s><zh>要</zh><en>Needs </en></s>
+  <s><zh>职业能力，常备</zh><en>Class ability, always ready</en></s>
+  <s><zh>睡醒后、或在研究台 / 卷轴书桌研读 1 小时后才能更换</zh><en>Can only be changed after sleeping or after studying for 1 hour at a research bench / scroll desk</en></s>
+  <s><zh>已经准备满了（</zh><en>Already fully prepared (</en></s>
+  <s><zh>这个职业不用选法术</zh><en>This class doesn't choose spells</en></s>
+  <s><zh>戏法在戏法页学</zh><en>Cantrips are learned on the cantrip page</en></s>
+  <s><zh>已经会了</zh><en>Already known</en></s>
+  <s><zh>没有待选名额</zh><en>No slots to pick</en></s>
+  <s><zh>不是已知法术</zh><en>Not a known spell</en></s>
+  <s><zh>每升一级只能替换 1 个法术（已用完）</zh><en>Only 1 spell can be replaced per level (used up)</en></s>
+  <s><zh>不是这个职业的戏法</zh><en>Not a cantrip of this class</en></s>
+  <s><zh>戏法名额已满</zh><en>Cantrip slots are full</en></s>
+  <s><zh>没有秘法玄奥</zh><en>No mystic arcanum</en></s>
+  <s><zh>不是秘法玄奥</zh><en>Not a mystic arcanum</en></s>
+  <s><zh>秘法玄奥要</zh><en>Mystic arcanum needs </en></s>
+  <s><zh>已经选了「</zh><en>Already picked "</en></s>
+  <s><zh>没有秘法奥秘</zh><en>No magical secrets</en></s>
+  <s><zh>没有待选的秘法奥秘</zh><en>No magical secrets to pick</en></s>
+  <s><zh>不是法术</zh><en>Not a spell</en></s>
+  <s><zh>还放不了</zh><en>Can't cast it yet</en></s>
+  <s><zh>不是仪式法术</zh><en>Not a ritual spell</en></s>
+  <s><zh>还不会这个法术</zh><en>Doesn't know this spell yet</en></s>
+  <s><zh>仪式施法要在非征召状态下进行</zh><en>Ritual casting must be done undrafted</en></s>
+  <s><zh>现在不能施法</zh><en>Can't cast right now</en></s>
+  <s><zh>被静默术笼罩</zh><en>Shrouded by silence</en></s>
+  <s><zh>的</zh><en>'s </en></s>
+  <s><zh>法术：有 </zh><en> spells: </en></s>
+  <s><zh> 个待选（点“</zh><en> to pick (click the "</en></s>
+  <s><zh>法术”按钮选择）。</zh><en> spells" button to choose).</en></s>
+  <s><zh> 级　最高 </zh><en> level  max </en></s>
+  <s><zh>　法术能量 </zh><en>  spell energy </en></s>
+  <s><zh>　已备 </zh><en>  prepared </en></s>
+  <s><zh>等级/2</zh><en>level/2</en></s>
+  <s><zh>等级</zh><en>level</en></s>
+  <s><zh>调整值）</zh><en> modifier)</en></s>
+  <s><zh>　已知 </zh><en>  known </en></s>
+  <s><zh>备法</zh><en>Prepare</en></s>
+  <s><zh>已知法术</zh><en>Known spells</en></s>
+  <s><zh>学习新法术（</zh><en>Learn new spells (</en></s>
+  <s><zh>戏法（</zh><en>Cantrips (</en></s>
+  <s><zh>秘法玄奥（</zh><en>Mystic arcanum (</en></s>
+  <s><zh>秘法奥秘（</zh><en>Magical secrets (</en></s>
+  <s><zh> 的法术</zh><en>'s spells</en></s>
+  <s><zh>法师法术书</zh><en>wizard spellbook</en></s>
+  <s><zh>专注中：</zh><en>Concentrating: </en></s>
+  <s><zh>（受到 10 点以上伤害时维持成功率 </zh><en> (chance to maintain when taking 10+ damage </en></s>
+  <s><zh>结束专注</zh><en>End concentration</en></s>
+  <s><zh>现在可以更换备法（关闭窗口后要再睡一觉或研读 1 小时才能再改）。</zh><en>Prepared spells can be changed now (after closing the window, another sleep or 1 hour of study is needed to change again).</en></s>
+  <s><zh>备法已定：睡醒后、或在研究台 / 卷轴书桌研读 1 小时后才能更换。</zh><en>Prepared spells are set: can only be changed after sleeping or after studying for 1 hour at a research bench / scroll desk.</en></s>
+  <s><zh>自动知道法术表里能施放环位的全部法术，只有准备了的出现在按钮栏；仪式法术不占名额，没准备也能在这里仪式施法（原地引导 1 小时，不耗资源）。</zh><en>Automatically knows every spell on the spell list of castable circles; only prepared ones appear on the button bar. Ritual spells don't take a slot and can be ritual cast here even unprepared (channel in place for 1 hour, no resource cost).</en></s>
+  <s><zh>已知的法术都在按钮栏（可以在这里隐藏）。每升一级可以替换 1 个已知法术（还能替换 </zh><en>All known spells are on the button bar (can be hidden here). Each level, 1 known spell can be replaced (still </en></s>
+  <s><zh> 个）。</zh><en> replaceable).</en></s>
+  <s><zh>每个</zh><en>Each </en></s>
+  <s><zh>等级学 1 个法术（1 级 2 个），只能选已经能施放的环位：</zh><en> level learns 1 spell (2 at level 1), only of circles you can already cast: </en></s>
+  <s><zh>。待选 </zh><en>. To pick: </en></s>
+  <s><zh> 个。</zh><en>.</en></s>
+  <s><zh>戏法不耗资源、常备不占名额：1 级 3 个，4 级、10 级各 +1。还能学 </zh><en>Cantrips cost no resource and are always ready without taking slots: 3 at level 1, +1 each at levels 4 and 10. Can still learn </en></s>
+  <s><zh>秘法玄奥：邪术师 11 / 13 / 15 / 17 级各从六 / 七 / 八 / 九环里选 1 个，每个每天施放 1 次，不花契约法力。</zh><en>Mystic arcanum: at warlock levels 11 / 13 / 15 / 17, pick 1 each from circles 6 / 7 / 8 / 9; each can be cast once per day without spending pact mana.</en></s>
+  <s><zh>秘法奥秘：吟游诗人 </zh><en>Magical secrets: at bard levels </en></s>
+  <s><zh> 级各从任意职业的法术表选 </zh><en>, pick </en></s>
+  <s><zh> 个（按自己能施放的环位），算吟游诗人法术、扣乐韵、用激昂强度。还能选 </zh><en> each from any class's spell list (by the circles you can cast); they count as bard spells, cost rhythm and use inspiration power. Can still pick </en></s>
+  <s><zh>去研读（1 小时）</zh><en>Go study (1 hour)</en></s>
+  <s><zh>走到最近的研究台或卷轴书桌研读 1 小时，之后可以更换备法。</zh><en>Walk to the nearest research bench or scroll desk and study for 1 hour; then prepared spells can be changed.</en></s>
+  <s><zh>这里没有法术。</zh><en>No spells here.</en></s>
+  <s><zh>不耗资源</zh><en>No resource cost</en></s>
+  <s><zh>每天 1 次、不耗资源</zh><en>Once per day, no resource cost</en></s>
+  <s><zh>【</zh><en>[</en></s>
+  <s><zh>】</zh><en>]</en></s>
+  <s><zh>职业能力</zh><en>class ability</en></s>
+  <s><zh>✔ 已准备</zh><en>✔ Prepared</en></s>
+  <s><zh>未准备</zh><en>Not prepared</en></s>
+  <s><zh>取消准备</zh><en>Unprepare</en></s>
+  <s><zh>准备这个法术</zh><en>Prepare this spell</en></s>
+  <s><zh>（仪式法术不占名额）</zh><en> (ritual spells don't take a slot)</en></s>
+  <s><zh>已隐藏</zh><en>Hidden</en></s>
+  <s><zh>显示中</zh><en>Shown</en></s>
+  <s><zh>点一下让按钮回到按钮栏</zh><en>Click to put the button back on the button bar</en></s>
+  <s><zh>点一下把这个法术的按钮从按钮栏藏起来（不能施放、也不会自动施放）</zh><en>Click to hide this spell's button from the button bar (it can't be cast or autocast)</en></s>
+  <s><zh>替换</zh><en>Replace</en></s>
+  <s><zh>遗忘这个法术，空出 1 个名额重新选（每级 1 次）。点两次确认</zh><en>Forget this spell, freeing 1 slot to pick again (once per level). Click twice to confirm</en></s>
+  <s><zh>升环 +</zh><en>Upcast +</en></s>
+  <s><zh>升环</zh><en>Upcast</en></s>
+  <s><zh>选择施放的环位：每升 1 环多花 1 点资源，</zh><en>Choose the circle to cast at: each extra circle costs 1 more resource, </en></s>
+  <s><zh>。也可以右键法术按钮。</zh><en>. You can also right-click the spell button.</en></s>
+  <s><zh>仪式施法</zh><en>Ritual cast</en></s>
+  <s><zh>原地引导 1 小时施放，不耗资源（要在非征召状态下）。</zh><en>Channel in place for 1 hour to cast, no resource cost (must be undrafted).</en></s>
+  <s><zh>已选</zh><en>Picked</en></s>
+  <s><zh>学会</zh><en>Learn</en></s>
+  <s><zh>法术（</zh><en> spells (</en></s>
+  <s><zh> 待选 </zh><en> to pick </en></s>
+  <s><zh>的法术表：</zh><en>'s spell list: </en></s>
+  <s><zh>准备法术（只有准备了的出现在按钮栏）</zh><en>Prepare spells (only prepared ones appear on the button bar)</en></s>
+  <s><zh>学习、替换、隐藏已知法术</zh><en>Learn, replace and hide known spells</en></s>
+  <s><zh>、学习戏法</zh><en>, learn cantrips</en></s>
+  <s><zh>、选择秘法玄奥</zh><en>, choose mystic arcanum</en></s>
+  <s><zh>、仪式施法、设置升环。</zh><en>, ritual cast, set upcasting.</en></s>
+  <s><zh>\n\n睡醒后、或在研究台 / 卷轴书桌研读 1 小时后才能更换备法。</zh><en>\n\nPrepared spells can only be changed after sleeping or after studying for 1 hour at a research bench / scroll desk.</en></s>
+</LPStrings>

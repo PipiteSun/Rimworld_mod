@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 神圣化身 -->
+  <LP_LegDivineAura.label>divine avatar</LP_LegDivineAura.label>
+  <!-- 神圣之光加身：每秒灼伤周围的敌人、治疗周围的友军（严重度 = 每秒伤害），友军不会恐慌和精神崩溃。 -->
+  <LP_LegDivineAura.description>Clad in divine light: burns surrounding enemies and heals surrounding allies every second (severity = damage per second); allies don't panic or have mental breaks.</LP_LegDivineAura.description>
+  <!-- 神圣庇护 -->
+  <LP_LegSanctified.label>divine shelter</LP_LegSanctified.label>
+  <!-- 在神圣化身的光里：不会恐慌，不会精神崩溃。 -->
+  <LP_LegSanctified.description>In the light of a divine avatar: no panic, no mental breaks.</LP_LegSanctified.description>
+  <!-- 无相之身 -->
+  <LP_LegFormlessBuff.label>formless body</LP_LegFormlessBuff.label>
+  <!-- 传奇武僧：近战闪避 +25%，免疫击晕。 -->
+  <LP_LegFormlessBuff.description>Legendary monk: melee dodge +25%, immune to stuns.</LP_LegFormlessBuff.description>
+  <!-- 血脉觉醒 -->
+  <LP_LegBloodlineAwake.label>bloodline awakening</LP_LegBloodlineAwake.label>
+  <!-- 觉醒的术士血脉：受到血脉对应元素的伤害减半。 -->
+  <LP_LegBloodlineAwake.description>Awakened sorcerer bloodline: damage taken of the bloodline's element is halved.</LP_LegBloodlineAwake.description>
+  <!-- 魔力奔流 -->
+  <LP_LegArcaneTorrent.label>arcane torrent</LP_LegArcaneTorrent.label>
+  <!-- 接下来的职业法术不消耗资源、不进冷却（严重度 = 剩余次数）。 -->
+  <LP_LegArcaneTorrent.description>The next class spells cost no resources and trigger no cooldown (severity = remaining uses).</LP_LegArcaneTorrent.description>
+</LanguageData>

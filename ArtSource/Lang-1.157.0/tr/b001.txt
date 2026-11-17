@@ -1,0 +1,196 @@
+s00268	Ability "Charming kiss" (touch, cooldown 1 day): the target makes a Wisdom save (difficulty rises with the succubus's proficiency bonus and Charisma; each point of the target's ability modifier and proficiency bonus gives +5% success). On failure: enemies are charmed for 60 seconds; prisoners lose 15 recruit resistance; colonists gain +20 opinion of it. Those who succeed are immune for 24 hours.
+s00269	Kiss an adjacent humanlike: the target makes a Wisdom save (difficulty rises with the succubus's proficiency bonus and Charisma; each point of the target's ability modifier and proficiency bonus gives +5% success). On failure: enemies are charmed for 60 seconds; prisoners lose 15 recruit resistance; colonists gain +20 opinion of you. Those who succeed are immune for 24 hours. Cooldown 1 day.
+s00270	Succubus / incubus nature: social impact +25%, negotiated prices +10%; fire and burn damage ×0.5, toxic resistance +50%; eats only 20% as much as a normal person. Cannot work within 5 cells of an altar; mood -3 when seeing a holy symbol. Anyone with this gene counts as a succubus.
+s00271	succubus nature
+s00272	A thin tail ending in a heart-shaped tip. Hidden during shapeshift disguise.
+s00273	succubus tail
+s00274	A pair of purple-black bat wings. Hidden during shapeshift disguise.
+s00275	succubus wings
+s00276	A family heirloom lost by the client, guarded by a gang. Bring it back to the colony (on the colony map or carried by a colonist) to complete the commission; the heirloom is returned to the client.
+s00277	commission heirloom
+s00278	travel to {0}
+s00279	Traveling to {0}.
+s00280	This is the commission site. Once the objective is complete, the commission settles automatically.
+s00281	The destination of a commission from the adventurer board.
+s00282	commission site
+s00283	A black obelisk seeping with death; the dead nearby cannot rest because of it. Destroy it and the haunted ruins will grow quiet.
+s00284	undead source
+s00285	A hostile leader with a class is hiding in the wilds with guards. Kill or capture the leader to complete it; capturing (locked in a colony prison cell) pays ×1.25.
+s00286	hunt the outlaw
+s00287	The dead in the ruins have risen. Destroy the undead source to complete it.
+s00288	investigate the haunted ruins
+s00289	Monsters have nested in the wilds, threatening passing caravans. Wipe out every monster at the site (killed or downed) to complete it.
+s00290	clear the monster nest
+s00291	A legendary monster has appeared. Destroy (or drive off) every enemy at the site to complete it. Appears only occasionally once your renown reaches "Legendary".
+s00292	slay the legendary monster
+s00293	The client's heirloom has fallen into a gang's hands. Bring it back to the colony to complete it.
+s00294	recover the lost item
+s00295	An adventurer has fallen in the wilds, surrounded by monsters. Bring them back to the colony alive (onto the colony map) to complete it; afterwards you can recruit them or claim a bounty.
+s00296	rescue the trapped adventurer
+s00297	adventure commission
+s00298	A board nailed with bounties and pleas for help. Nearby towns, caravans, wanted posters and the lakefolk of the Mana Lake post jobs that need adventurers here: clearing monster nests, hunting outlaws, rescuing trapped adventurers, recovering lost items and investigating haunted ruins.\n\nSelect it and "View commissions": 3 new commissions every 5 days, showing recommended level and danger; once accepted, a site appears on the world map and must be completed within 7 days. Completing a commission gives the participants adventurer XP, silver and scrolls, and raises the colony's renown: the higher the renown, the more dangerous the commissions and the better the pay. Only one per map.
+s00299	adventurer board
+s00300	Adventurer level 1-20 and the six ability scores Strength, Dexterity, Constitution, Intelligence, Wisdom and Charisma. View and assign points on the "Adventurer" tab of the pawn's inspect pane.
+s00301	adventurer
+s00302	Charges back in before the wounds are even bandaged. Rage power +20%; wound healing ×1.3; pain shock threshold +10%. Barbarian only. Grants +1 Strength or Constitution.
+s00303	wild physique
+s00304	Quick to ignite, and burns hotter the longer it goes. Rage power +10%; max rage +2; rage gain ×1.5. Barbarian only. Grants +1 Strength or Constitution.
+s00305	burning fury
+s00306	Your name is sung across the continent. Inspiration power +25%; bard ability cooldowns ×0.9; +2 goodwill with every non-hostile faction each quarter (not above +50). Bard only. Grants +1 Charisma.
+s00307	widely renowned
+s00308	A voice that naturally grips the heart. Inspiration power +10%; cadence gain ×1.5; max cadence +3; social impact +10%. Bard only. Grants +1 Charisma or Dexterity.
+s00309	born singer
+s00310	Divine power flows more smoothly through your hands. Max divinity +2; cleric ability cooldowns ×0.8; immunity gain speed ×1.15. Cleric only. Grants +1 Wisdom or Constitution.
+s00311	blessed hands
+s00312	The gods always answer when you pray. Divinity gain ×1.5; divine power +10%; tend quality ×1.1. Cleric only. Grants +1 Wisdom.
+s00313	devout supplicant
+s00314	The power of nature protects those who protect it. Max mana +3; druid ability cooldowns ×0.85; toxic resistance +30%. Druid only. Grants +1 Wisdom or Constitution.
+s00315	nature's warden
+s00316	Raised in the woods; every plant, bird and beast knows you. Primal power and verdant power +15%; plant work speed ×1.15; tame chance ×1.15. Druid only. Grants +1 Wisdom.
+s00317	child of the wild
+s00318	Gets stronger the longer the fight, one move after another. Grit gain ×1.5; fighter ability cooldowns ×0.8; melee hit chance ×1.05, shooting accuracy ×1.05. Fighter only. Grants +1 Strength, Dexterity or Constitution.
+s00319	hundred-battle body
+s00320	Has seen enough battles to stay steady in any situation. Martial power and marksman power +15%; max grit +2; pain shock threshold +10%. Fighter only. Grants +1 Strength, Dexterity or Constitution.
+s00321	battlefield veteran
+s00322	Every breath cultivates ki. Martial power +10%; max ki +2; ki recovery ×1.5; meditation focus gain +10%. Monk only. Grants +1 Dexterity or Wisdom.
+s00323	harmonized breath
+s00324	Strikes too fast to see, dodges too fast to see. Martial power +20%; melee dodge +12; move speed +0.4; monk ability cooldowns ×0.85. Monk only. Grants +1 Dexterity or Wisdom.
+s00325	shadowless step
+s00326	The oath is carved into the heart; no temptation can shake it. Divine power +15%; mind resistance +20%; max divinity +1. Paladin only. Grants +1 Strength or Charisma.
+s00327	steadfast oath
+s00328	Every blow carries the wrath of god. Melee damage ×1.08; paladin ability cooldowns ×0.8; divinity gain ×1.25. Paladin only. Grants +1 Strength or Charisma.
+s00329	holy flame zealot
+s00330	Prey you mark never gets away. Ranger ability cooldowns ×0.8; move speed +0.3; aiming time ×0.9. Ranger only. Grants +1 Dexterity or Wisdom.
+s00331	master tracker
+s00332	Reads every footprint. Hunter power +15%; shooting accuracy ×1.05; ranger ability cooldowns ×0.9. Ranger only. Grants +1 Dexterity or Wisdom.
+s00333	wilderness hunter
+s00334	One cut, and every cut draws blood. Rogue ability cooldowns ×0.8; melee hit chance ×1.08; shooting accuracy ×1.05. Rogue only. Grants +1 Dexterity.
+s00335	deadly precision
+s00336	Spent so long in dark alleys that you see every knife coming. Cunning power +15%; melee dodge +10. Rogue only. Grants +1 Dexterity or Intelligence.
+s00337	shadow veteran
+s00338	The power of your bloodline is one with your will. Innate power +25%; psychic sensitivity +10%; sorcerer ability cooldowns ×0.9. Sorcerer only. Grants +1 Charisma.
+s00339	bloodline resonance
+s00340	Magic wells up from your blood without end. Innate power +10%; mana gain ×1.5; max mana +3. Sorcerer only. Grants +1 Charisma or Constitution.
+s00341	wellspring of magic
+s00342	Signed one more line of the pact. Pact power +15%; max pact mana +1; warlock ability cooldowns ×0.9. Warlock only. Grants +1 Charisma.
+s00343	deepened pact
+s00344	Your patron's gaze never leaves you. Pact power +10%; warlock ability cooldowns ×0.8; mind resistance +25%. Warlock only. Grants +1 Charisma or Constitution.
+s00345	patron's favor
+s00346	Turns the pages of the spellbook more diligently than anyone. Arcane power +15%; max mana +3; research speed ×1.1. Wizard only. Grants +1 Intelligence.
+s00347	arcane scholar
+s00348	Trims a spell's structure down to its leanest. Wizard ability mana cost -1 (minimum 1); wizard ability cooldowns ×0.85. Wizard only. Grants +1 Intelligence.
+s00349	spell sculpting
+s00350	A boon of fate pulled this person back from the brink of death, but the body still needs a few hours to stand again.
+s00351	narrow escape
+s00352	Each time you down or kill an enemy, every wound on yourself heals 5% of that part's health.
+s00353	boon of combat
+s00354	Fate isn't done with you yet. A lethal hit downs you instead: the lethal part is restored and wounds stop bleeding. Works once every 60 days.
+s00355	boon of fate
+s00356	Time flows around you: no longer ages after adulthood, immune to disease.
+s00357	boon of immortality
+s00358	+4 to one ability score of your choice, and its cap rises to 24 (a demigod's cap bonus is counted separately).
+s00359	boon of might
+s00360	Weapon attacks gain +50% armor penetration; melee damage ×1.1.
+s00361	boon of irresistible offense
+s00362	Psychic sensitivity +25%, max neural heat +20.
+s00363	boon of the mind
+s00364	The first time each day total injuries exceed 30, half of the wounds heal at once and bleeding stops; otherwise heals 1 extra point of injury every 250 ticks.
+s00365	boon of recovery
+s00366	Fire, cold, lightning, acid, radiant and necrotic damage halved.
+s00367	boon of energy resistance
+s00368	Move speed +0.6, melee attack cooldown -15%.
+s00369	boon of speed
+s00370	Class ability resource costs -1 (minimum 1), cooldowns ×0.8.
+s00371	boon of spell recall
+s00372	There is a legendary adventurer in our colony. The bards will sing about us.
+s00373	walking with a legend
+s00374	Our colony's legendary adventurer is dead. Those stories will never get a new chapter.
+s00375	a legend has fallen
+s00376	legendary adventurer
+s00377	nemesis champion
+s00378	Inspiring Leader feat: allies within 10 cells (including yourself) get an "Inspired" shield for 1 day that absorbs 20 + 3 × level + 5 × Charisma modifier damage, and mood +5 (half a day). 2 uses per day, restored at midnight.
+s00379	inspire
+s00380	The leader's words still ring in your ears: a shield takes hits for the body until it is used up or a day passes.
+s00381	The leader's words lifted my spirits.
+s00382	inspired
+s00383	Got hit while trying to break away: move speed halved.
+s00384	held by a sentinel
+s00385	Gritting teeth and holding on: pain halved.
+s00386	tough
+s00387	Always on guard against danger. Never caught off guard by ambushes (ambushes are dodged as usual, and you are not stunned by attacks that stun on hit); aiming time is always ×0.8; within 10 seconds of being drafted, weapon warmup time is halved again. Grants +1 Dexterity or Wisdom.
+s00388	alert
+s00389	A master of swinging heavy weapons. Two-handed melee weapons (mass over 2.5 kg) deal ×1.25 damage; after downing or killing an enemy with one, immediately attack the next adjacent enemy (cooldown 2 seconds). Grants +1 Strength.
+s00390	great weapon master
+s00391	Formally trained in battlefield medicine. Tend quality ×1.3, medical speed ×1.3, surgery success ×1.2; each tending also heals the 3 smallest wounds on the patient by 6 points each. Grants +1 Wisdom.
+s00392	healer
+s00393	Knows how to make heavy armor take every hit. While wearing heavy torso armor (60%+ sharp armor), each sharp or blunt hit taken is reduced by (3 + proficiency bonus), i.e. 5-11 points (before armor). Grants +1 Strength or Constitution.
+s00394	heavy armor master
+s00395	A few words can get companions back on their feet. Gains the active ability "Inspire" (2 per day): allies within 10 cells get an "Inspired" shield for 1 day absorbing 20 + 3 × level + 5 × Charisma modifier damage, and mood +5 (half a day). Requires Charisma 13. Grants +1 Charisma or Wisdom.
+s00396	inspiring leader
+s00397	Fate always favors this person. Uses per day = proficiency bonus (2-8): when hit, make that attack re-roll its hit, or when you miss, re-roll once (melee and ranged); a failed save can also be retried once. Grants +1 to any ability score (added to your current highest).
+s00398	lucky
+s00399	Nimble, moving in and out with ease. Move speed +0.4 then ×1.1; melee dodge +10; leaving melee does not provoke "Sentinel" free attacks. Grants +1 Dexterity.
+s00400	mobile
+s00401	Nobody slips past you. Melee hit chance ×1.1; when an enemy in melee range leaves, make a free attack against it at once (at most once per 0.5 seconds); on a hit the target is rooted for 1.5 seconds, then move speed halved for 2 seconds. Does not trigger on people with the "Mobile" feat. Grants +1 Strength or Dexterity.
+s00402	sentinel
+s00403	A crack shot. Ranged weapon range +40%, ignores the target's cover entirely, ranged weapon damage ×1.15. Grants +1 Dexterity.
+s00404	sharpshooter
+s00405	Casts spells farther. Class spells (except touch spells and those using weapon range), VPE psycasts and divine magic get +75% range; neural heat recovery ×1.25. Requires a spellcasting class (wizard, cleric, druid, sorcerer, warlock, paladin or arcane trickster) or a worn holy symbol. Grants +1 Intelligence, Wisdom or Charisma.
+s00406	spell sniper
+s00407	Tougher than they look. Part health +2% × adventurer level (+40% at level 20, counting up to level 30); the first 3 times downed each day, bleeding wounds stop, 20 points of injury heal at once, and pain is halved for 1 hour. Grants +1 Constitution.
+s00408	Keeps spells steady amid flashing blades. Getting hurt during spell warmup does not interrupt it (no cast interruption, no damage stun); ability warmup time ×0.75; max neural heat +30. Works for class spells, VPE abilities and divine magic. Requires a spellcasting class (wizard, cleric, druid, sorcerer, warlock, paladin or arcane trickster) or a worn holy symbol. Grants +1 Intelligence, Wisdom or Charisma.
+s00409	war caster
+s00410	That snack was delicious.
+s00411	ate the chef's snack
+s00412	Luck shared by a halfling: the next wound that would down or kill takes only 10%.
+s00413	borrowed luck
+s00414	Telepathy: instantly calm a colonist within 30 cells who is having a mental break. 3 per day.
+s00415	soothe mind
+s00416	Poisoner: brew 1 herbal medicine (carried or on the map) into poison and coat a weapon; the next 20 melee hits apply spider queen venom. Cooldown 1 hour.
+s00417	coat weapon in poison
+s00418	Actor: change your look and blend into the crowd. For 2 minutes enemies will almost never prioritize targeting this person. 2 per day.
+s00419	Changed appearance and blended into the crowd: enemies almost never prioritize targeting.
+s00420	Magic Initiate (without VPE): an unerring force missile dealing 8 + adventurer level force damage, range 20. Cooldown 8 hours (about 3 per day).
+s00421	magic missile
+s00422	The weapon is coated in poison: melee hits apply spider queen venom (value = remaining uses).
+s00423	poisoned weapon
+s00424	Ritual Caster: channel standing for 1 hour (interruption wastes it); the ability with the longest remaining cooldown finishes cooling down instantly, and for 1 hour afterwards the next cast triggers no cooldown and adds no neural heat. 2 per day, only usable while an ability is on cooldown.
+s00425	ritual casting
+s00426	A fine snack the chef made on the side. Eating it gives mood +5 (1 day) and +25% wound healing for 6 hours.
+s00427	snack
+s00428	A born liar and actor. Trade prices +10%, negotiation ability (recruiting etc.) ×1.3; ability "Disguise" (2 per day): for 2 minutes enemies will almost never prioritize targeting this person. Requires Charisma 13. Grants +1 Charisma.
+s00429	actor
+s00430	Blood makes wounds heal faster. After a melee kill, instantly heal 60 points of wounds (stacks with rampage). Trolls only. Grants +1 Constitution.
+s00431	bloodthirsty regeneration
+s00432	Luck is contagious. Halfling luck cooldown 3 days → 1 day; when it triggers, one ally within 3 cells also gets "borrowed luck" (the next wound that would down or kill takes only 10%). Halflings only. Grants +1 Dexterity.
+s00433	streak of luck
+s00434	An outstanding cook. Cooking speed ×1.25; 35% chance to make an extra "snack" when cooking (mood +5, +25% wound healing for 6 hours). Requires Cooking 6. Grants +1 Constitution or Wisdom.
+s00435	chef
+s00436	A skilled craftsman. General labor speed (crafting work) +25%; when the negotiator buys tools, weapons or apparel from traders, prices -20%. Grants +1 Dexterity or Intelligence.
+s00437	crafter
+s00438	The dragon's fury strikes terror. Enemies hit by dragon breath (a force dragonborn's unarmed damage) have a 40% chance to panic and flee for 8 seconds (no effect on bosses or legendary units). Force dragonborn only. Grants +1 Strength or Charisma.
+s00439	dragon fear
+s00440	A dwarf's constitution. Toxic resistance +70%, pain shock threshold +10%; the first drink each day instantly heals 60 points of wounds. Mountain and hill dwarves only. Grants +1 Constitution.
+s00441	dwarven fortitude
+s00442	Acid obeys this caster. Acid damage ignores the target's acid resistance and is +25%. Requires a spellcasting class (wizard, cleric, druid, sorcerer, warlock, paladin or arcane trickster) or a worn holy symbol. Only one element can be chosen. Grants +1 Intelligence, Wisdom or Charisma.
+s00443	elemental adept: acid
+s00444	Cold obeys this caster. Cold damage ignores the target's cold resistance and is +25%. Requires a spellcasting class (wizard, cleric, druid, sorcerer, warlock, paladin or arcane trickster) or a worn holy symbol. Only one element can be chosen. Grants +1 Intelligence, Wisdom or Charisma.
+s00445	elemental adept: cold
+s00446	Fire obeys this caster. Fire damage ignores the target's fire resistance (even fire giants can be burned) and is +25%. Requires a spellcasting class (wizard, cleric, druid, sorcerer, warlock, paladin or arcane trickster) or a worn holy symbol. Only one element can be chosen. Grants +1 Intelligence, Wisdom or Charisma.
+s00447	elemental adept: fire
+s00448	Lightning obeys this caster. Lightning damage ignores the target's lightning resistance and is +25%. Requires a spellcasting class (wizard, cleric, druid, sorcerer, warlock, paladin or arcane trickster) or a worn holy symbol. Only one element can be chosen. Grants +1 Intelligence, Wisdom or Charisma.
+s00449	elemental adept: lightning
+s00450	Elven eyes never miss. Shooting accuracy ×1.15; another ×1.1 for drow in darkness and for high elves and wood elves in daylight. High elves, wood elves and drow only. Grants +1 Dexterity.
+s00451	elven accuracy
+s00452	A gnome's mind turns fast. Mind resistance +35%; general labor speed ×1.4 when making clockwork toys and mechanical items (components, mechanical goods). Rock gnomes, forest gnomes and deep gnomes only. Grants +1 Intelligence.
+s00453	gnomish ingenuity
+s00454	Getting hit only makes the fire in the blood burn hotter. After being attacked by an enemy, the next attack deals an extra 15 + adventurer level fire damage (5 second cooldown). Tieflings and aasimar only. Grants +1 Charisma.
+s00455	infernal wrath
+s00456	Learned a little real magic. With VPE: pick the wizard, cleric or druid path based on the highest of Intellectual / Social / Plants and Animals, and learn that path's first ability (no path point, no path unlock needed). Without VPE: gain "Magic missile" (unerring, 8 + level force damage, range 20, about 3 per day). Grants +1 Intelligence, Wisdom or Charisma.
+s00457	magic initiate
+s00458	Lava flows in the fists. Unarmed and hammer/club melee hits have a 50% chance to ignite the target. Fire giants only. Grants +1 Strength.
+s00459	lava grip
+s00460	Music that stirs the heart. When playing an instrument, colonists within 10 cells get mood +6 "rousing music" (half a day); the first performance each day gives up to 3 listeners "Inspired": surgery success, negotiation ability and shooting accuracy ×1.3 for 6 hours. Requires Charisma 13 or Artistic 6. Grants +1 Charisma.
+s00461	musician
+s00462	Nothing escapes these eyes. Research speed +25%; can see invisible units (those in shadow veils, invisibility potions, psychic invisibility, drow darkness). Requires Intelligence or Wisdom 13. Grants +1 Intelligence or Wisdom.
+s00463	observant

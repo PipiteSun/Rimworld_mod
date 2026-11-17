@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 净化封印 -->
+  <LP_PuritySeals.label>purifying seal</LP_PuritySeals.label>
+  <!-- 衣服上贴着净化封印：每张精神崩溃阈值-3%，每天一次自动挣脱支配或恐惧。 -->
+  <LP_PuritySeals.description>Purifying seals on the clothes: each gives mental break threshold -3%, and once per day automatically breaks free of domination or fear.</LP_PuritySeals.description>
+  <!-- 1张 -->
+  <LP_PuritySeals.stages._1.label>1 seal</LP_PuritySeals.stages._1.label>
+  <!-- 2张 -->
+  <LP_PuritySeals.stages._2.label>2 seals</LP_PuritySeals.stages._2.label>
+  <!-- 3张 -->
+  <LP_PuritySeals.stages._3.label>3 seals</LP_PuritySeals.stages._3.label>
+  <!-- 复苏虚弱 -->
+  <LP_RevivalWeakness.label>revival weakness</LP_RevivalWeakness.label>
+  <!-- 刚被复苏核心从死亡里拉回来：意识-30%，移动-30%。 -->
+  <LP_RevivalWeakness.description>Just pulled back from death by a revival core: consciousness -30%, movement -30%.</LP_RevivalWeakness.description>
+  <!-- 匠神齿轮 -->
+  <LP_MI_CogOfMakers.label>tinker god's gear</LP_MI_CogOfMakers.label>
+  <!-- 机械体修理速度×1.5；仿生部件不会被 EMP 关闭。 -->
+  <LP_MI_CogOfMakers.description>Mechanoid repair speed ×1.5; bionic parts aren't shut down by EMP.</LP_MI_CogOfMakers.description>
+  <!-- 无效 -->
+  <LP_MI_CogOfMakers.stages.0.label>no effect</LP_MI_CogOfMakers.stages.0.label>
+  <!-- 审判徽记 -->
+  <LP_MI_InquisitorSeal.label>inquisitor's badge</LP_MI_InquisitorSeal.label>
+  <!-- 谈判能力×1.2。 -->
+  <LP_MI_InquisitorSeal.description>Negotiation ability ×1.2.</LP_MI_InquisitorSeal.description>
+  <!-- 无效 -->
+  <LP_MI_InquisitorSeal.stages.0.label>no effect</LP_MI_InquisitorSeal.stages.0.label>
+  <!-- 鲜血印记 -->
+  <LP_MI_MarkBlood.label>mark of blood</LP_MI_MarkBlood.label>
+  <!-- 近战伤害+30%，疼痛休克阈值+20%。三天不打架就会嗜血（巫妖除外）。 -->
+  <LP_MI_MarkBlood.description>Melee damage +30%, pain shock threshold +20%. Bloodthirst sets in after three days without fighting (except for liches).</LP_MI_MarkBlood.description>
+  <!-- 无效 -->
+  <LP_MI_MarkBlood.stages.0.label>no effect</LP_MI_MarkBlood.stages.0.label>
+  <!-- 腐朽印记 -->
+  <LP_MI_MarkDecay.label>mark of decay</LP_MI_MarkDecay.label>
+  <!-- 免疫疾病和毒素累积，失血速度-50%；美观-3（巫妖除外）。 -->
+  <LP_MI_MarkDecay.description>Immune to disease and toxic buildup, bleeding rate -50%; beauty -3 (except for liches).</LP_MI_MarkDecay.description>
+  <!-- 无效 -->
+  <LP_MI_MarkDecay.stages.0.label>no effect</LP_MI_MarkDecay.stages.0.label>
+  <!-- 巫妖 -->
+  <LP_MI_MarkDecay.stages.2.label>lich</LP_MI_MarkDecay.stages.2.label>
+  <!-- 万变印记 -->
+  <LP_MI_MarkChange.label>mark of change</LP_MI_MarkChange.label>
+  <!-- 心灵敏感度+40%，研究速度+20%；每天一件小怪事（巫妖除外）。 -->
+  <LP_MI_MarkChange.description>Psychic sensitivity +40%, research speed +20%; one small oddity per day (except for liches).</LP_MI_MarkChange.description>
+  <!-- 无效 -->
+  <LP_MI_MarkChange.stages.0.label>no effect</LP_MI_MarkChange.stages.0.label>
+  <!-- 欢愉印记 -->
+  <LP_MI_MarkRapture.label>mark of pleasure</LP_MI_MarkRapture.label>
+  <!-- 移动速度+15%，娱乐需求下降速度-50%；心情上限90%（巫妖除外）。 -->
+  <LP_MI_MarkRapture.description>Move speed +15%, recreation need falls 50% slower; mood capped at 90% (except for liches).</LP_MI_MarkRapture.description>
+  <!-- 无效 -->
+  <LP_MI_MarkRapture.stages.0.label>no effect</LP_MI_MarkRapture.stages.0.label>
+</LanguageData>

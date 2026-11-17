@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 被吞没 -->
+  <LP_Engulfed.label>engulfed</LP_Engulfed.label>
+  <!-- 被凝胶怪整个裹进了透明的胶体里，动弹不得、被它带着走，每秒都被酸液灼伤。打倒凝胶怪就能脱身，最多困住6秒。 -->
+  <LP_Engulfed.description>Engulfed whole in a gelatinous cube's transparent gel, unable to move and carried along by it, burned by acid every second. Defeating the cube frees you; trapped for at most 6 seconds.</LP_Engulfed.description>
+  <!-- 石化中 -->
+  <LP_BasiliskGaze.label>petrifying</LP_BasiliskGaze.label>
+  <!-- 和石化蜥对上了眼，四肢正从末端开始变僵、发灰。越僵走得越慢；完全僵住时要靠体质撑过去，撑不过去就会变成石头。不再被注视就会慢慢缓过来。瞎了的人不受影响。 -->
+  <LP_BasiliskGaze.description>Met the basilisk's gaze; the limbs are stiffening and greying from the tips. The stiffer, the slower; when fully stiff you must endure with Constitution, and failing turns you to stone. Slowly recovers once no longer being stared at. The blind are unaffected.</LP_BasiliskGaze.description>
+  <!-- 发僵 -->
+  <LP_BasiliskGaze.stages.0.label>stiffening</LP_BasiliskGaze.stages.0.label>
+  <!-- 半身僵硬 -->
+  <LP_BasiliskGaze.stages.1.label>half stiffened</LP_BasiliskGaze.stages.1.label>
+  <!-- 石化 -->
+  <LP_BasiliskPetrified.label>petrified</LP_BasiliskPetrified.label>
+  <!-- 在石化蜥的凝视下变成了石头：半天之内一动不动，之后石皮才会剥落。 -->
+  <LP_BasiliskPetrified.description>Turned to stone under a basilisk's gaze: motionless for half a day before the stone skin flakes off.</LP_BasiliskPetrified.description>
+  <!-- 腐尸爬虫毒素 -->
+  <LP_CrawlerToxin.label>carrion crawler venom</LP_CrawlerToxin.label>
+  <!-- 腐尸爬虫的触须分泌的麻痹毒素。积累得越多，身体越麻木；积满时全身麻痹10秒。毒素几个小时内就会代谢掉。 -->
+  <LP_CrawlerToxin.description>A paralytic venom secreted by a carrion crawler's tentacles. The more it builds up, the number the body; when full, full-body paralysis for 10 seconds. The venom is metabolized within a few hours.</LP_CrawlerToxin.description>
+  <!-- 刺麻 -->
+  <LP_CrawlerToxin.stages.0.label>tingling</LP_CrawlerToxin.stages.0.label>
+  <!-- 麻木 -->
+  <LP_CrawlerToxin.stages.1.label>numb</LP_CrawlerToxin.stages.1.label>
+  <!-- 全身麻痹 -->
+  <LP_CrawlerParalysis.label>fully paralyzed</LP_CrawlerParalysis.label>
+  <!-- 腐尸爬虫的毒素积满了，全身麻痹倒地，10秒后才能重新动弹。 -->
+  <LP_CrawlerParalysis.description>The carrion crawler venom has filled up; fully paralyzed and collapsed, able to move again after 10 seconds.</LP_CrawlerParalysis.description>
+</LanguageData>

@@ -27,7 +27,7 @@ namespace LichPhylactery {
   public TrollGallery(List<Pawn> samples){this.samples=samples;forcePause=true;absorbInputAroundWindow=true;}
   public override Vector2 InitialSize=>new Vector2(1100,720);
   public override void DoWindowContents(Rect r){
-   Text.Font=GameFont.Medium;Widgets.Label(new Rect(10,0,1060,40),"巨魔 · 上排原生外貌 / 下排常规风衣、头盔与长剑");Text.Font=GameFont.Small;
+   Text.Font=GameFont.Medium;Widgets.Label(new Rect(10,0,1060,40),"巨魔 · 上排原生外貌 / 下排常规风衣、头盔与长剑".Loc());Text.Font=GameFont.Small;
    var facings=new[]{Rot4.South,Rot4.East,Rot4.North,Rot4.West};
    for(int row=0;row<2;row++)for(int col=0;col<4;col++){
     var box=new Rect(10+col*260,55+row*285,250,265);Widgets.DrawBoxSolid(box,new Color(.18f,.2f,.21f));

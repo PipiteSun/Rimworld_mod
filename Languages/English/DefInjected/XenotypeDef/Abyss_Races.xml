@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 劣魔 -->
+  <LP_Dretch.label>manes</LP_Dretch.label>
+  <!-- 深渊里最低等的恶魔：矮胖、灰白、浑身散发着腐臭，脑子只够听懂最简单的命令。劣魔被召来做苦力最合适——搬运、采矿、清扫，别的什么都干不好。它们身边 2 格内的人会被熏得心情变差。 -->
+  <LP_Dretch.description>The lowest demons of the Abyss: squat, ashen, reeking of rot, with just enough brain to follow the simplest orders. Manes are best summoned as laborers: hauling, mining, cleaning, and good for nothing else. Anyone within 2 cells of them is put in a worse mood by the stench.</LP_Dretch.description>
+  <!-- 深渊最低等的恶魔。只能干粗活，工作速度 ×0.8，恶臭熏人；倒下即遣返。 -->
+  <LP_Dretch.descriptionShort>The lowest demon of the Abyss. Only does menial work, work speed ×0.8, foul stench; banished when downed.</LP_Dretch.descriptionShort>
+  <!-- 巴路古拉 -->
+  <LP_Barlgura.label>barlgura</LP_Barlgura.label>
+  <!-- 猿一样的深渊恶魔，橙褐色的皮毛下是一身蛮力。巴路古拉能一跃扑到 8 格外的敌人身边，把周围的人震倒；站着不动时会融进阴影里看不见。它喜欢看别人流血。 -->
+  <LP_Barlgura.description>An ape-like abyssal demon with brute strength under orange-brown fur. A barlgura can leap onto an enemy up to 8 cells away and knock down those around; standing still, it melts into the shadows. It likes watching others bleed.</LP_Barlgura.description>
+  <!-- 猿形恶魔。近战 +20%、负重 +40%、跃击、静立隐形；倒下即遣返（束缚者除外）。 -->
+  <LP_Barlgura.descriptionShort>Ape demon. Melee +20%, carry capacity +40%, leap strike, invisible when still; banished when downed (except bound ones).</LP_Barlgura.descriptionShort>
+  <!-- 哈兹魔 -->
+  <LP_Hezrou.label>hezrou</LP_Hezrou.label>
+  <!-- 蟾蜍一样的深渊恶魔，满身疣子的绿灰皮又厚又韧。哈兹魔身上的恶臭能让 3 格内的敌人恶心得握不住武器；它在水里和在泥里一样自在。 -->
+  <LP_Hezrou.description>A toad-like abyssal demon with thick, tough, warty green-grey hide. The hezrou's stench makes enemies within 3 cells too nauseous to hold their weapons; it is as at home in water as in mud.</LP_Hezrou.description>
+  <!-- 蟾蜍形恶魔。利/钝护甲 +20%、恶臭让敌人恶心、水中行动；倒下即遣返（束缚者除外）。 -->
+  <LP_Hezrou.descriptionShort>Toad demon. Sharp/blunt armor +20%, stench nauseates enemies, moves freely in water; banished when downed (except bound ones).</LP_Hezrou.descriptionShort>
+  <!-- 魅魔 -->
+  <LP_Succubus.label>succubus</LP_Succubus.label>
+  <!-- 以诱惑为食的深渊恶魔，女性叫魅魔，男性叫梦魔。它们长着蝠翼、细尾和一对小角，能变形成普通人的样子混进人群；魅惑之吻让人失去抵抗，夜里同床的人会被吸走精力。魅魔可以和凡人生育，孩子是坎比恩。 -->
+  <LP_Succubus.description>Abyssal demons that feed on seduction; females are called succubi, males incubi. They have bat wings, thin tails and small horns, and can shapeshift into ordinary people to blend into crowds. A charming kiss leaves victims defenseless, and whoever shares their bed at night has their energy drained. Succubi can have children with mortals; the children are cambions.</LP_Succubus.description>
+  <!-- 可玩的恶魔。变形伪装、魅惑之吻、梦境吸取；火焰/毒素抗性，社交 +25%；怕圣坛和圣徽；孩子是坎比恩。 -->
+  <LP_Succubus.descriptionShort>Playable demon. Shapeshift disguise, charming kiss, dream drain; fire/toxin resistance, social +25%; fears altars and holy symbols; children are cambions.</LP_Succubus.descriptionShort>
+  <!-- 纳巴苏 -->
+  <LP_Nabassu.label>nabassu</LP_Nabassu.label>
+  <!-- 石像鬼一样的深渊恶魔：灰黑的石皮、蝠翼、长獠牙。纳巴苏猎食灵魂——被它杀死的人灵魂会被吞掉，再也无法复活，而它每吞一个就更强一分。它的凝视能让人的四肢像石头一样僵硬。 -->
+  <LP_Nabassu.description>A gargoyle-like abyssal demon: grey-black stone skin, bat wings, long fangs. Nabassus hunt souls: the souls of those it kills are devoured and can never be resurrected, and it grows stronger with each one. Its gaze can make limbs stiff as stone.</LP_Nabassu.description>
+  <!-- 噬魂恶魔。杀死的人不能复活、饱魂层数叠加、石化凝视；倒下即遣返（束缚者除外）。 -->
+  <LP_Nabassu.descriptionShort>Soul-eating demon. Its victims cannot be resurrected, soul-gorged stacks build up, petrifying gaze; banished when downed (except bound ones).</LP_Nabassu.descriptionShort>
+  <!-- 影魔 -->
+  <LP_ShadowDemon.label>shadow demon</LP_ShadowDemon.label>
+  <!-- 没有实体的深渊恶魔，像一团人形的黑影。普通武器只能伤到它一半；可它怕光——站在亮处时受到的伤害 ×1.5，动作也慢下来。影魔只在夜里从深渊裂口里出来，不能召唤，也不能束缚。 -->
+  <LP_ShadowDemon.description>An incorporeal abyssal demon, like a human-shaped black shadow. Ordinary weapons only deal half damage to it; but it fears light: standing in bright areas it takes ×1.5 damage and moves slower. Shadow demons only come out of abyssal rifts at night and cannot be summoned or bound.</LP_ShadowDemon.description>
+  <!-- 夜间敌人。非魔法武器伤害减半；亮处受伤 ×1.5、移速 ×0.7。 -->
+  <LP_ShadowDemon.descriptionShort>Night enemy. Non-magic weapon damage halved; in light takes ×1.5 damage, move speed ×0.7.</LP_ShadowDemon.descriptionShort>
+  <!-- 坎比恩 -->
+  <LP_Cambion.label>cambion</LP_Cambion.label>
+  <!-- 恶魔和凡人的孩子，或者被深渊彻底浸透后化魔的凡人。坎比恩长着角和一对小号蝠翼，眼睛是金红色的；他们不怕火，天生懂得怎么让别人害怕或者服从。坎比恩是凡人生的，不会被遣返。血脉会遗传。 -->
+  <LP_Cambion.description>Children of demons and mortals, or mortals who became demons after being fully soaked by the Abyss. Cambions have horns, small bat wings and golden-red eyes; they fear no fire and instinctively know how to make others afraid or obedient. Cambions are mortal-born and are never banished. The bloodline is inheritable.</LP_Cambion.description>
+  <!-- 可遗传。寒铁 ×1.25、深渊腐化 ×0.5、火焰 ×0.5、滑翔跳跃、社交天赋。 -->
+  <LP_Cambion.descriptionShort>Inheritable. Cold iron ×1.25, abyssal taint ×0.5, fire ×0.5, gliding leap, social talent.</LP_Cambion.descriptionShort>
+</LanguageData>

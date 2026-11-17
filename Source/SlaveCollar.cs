@@ -23,11 +23,11 @@ namespace LichPhylactery {
   public int TicksLeft=>Math.Max(0,lastFired+Props.rechargeTicks-Find.TickManager.TicksGame);
   public bool Ready=>TicksLeft<=0;
   public override void PostExposeData(){Scribe_Values.Look(ref lastFired,"lpCollarFired",-999999);Scribe_Values.Look(ref timesFired,"lpCollarTimes",0);}
-  public string Status=>Ready?"麻药囊：已充满（遇到叛乱会立刻触发）":"麻药囊：重新充填中，还要 "+TicksLeft.ToStringTicksToPeriod();
+  public string Status=>Ready?"麻药囊：已充满（遇到叛乱会立刻触发）".Loc():"麻药囊：重新充填中，还要 ".Loc()+TicksLeft.ToStringTicksToPeriod();
   public override string CompInspectStringExtra()=>Status;
   public override IEnumerable<Gizmo> CompGetWornGizmosExtra(){
    var p=(parent as Apparel)?.Wearer;if(p==null || p.Faction!=Faction.OfPlayer)yield break;
-   yield return new Command_Action{defaultLabel=Ready?"麻醉项圈：就绪":"麻醉项圈：充填中",defaultDesc=Status+"\n\n戴着这个项圈的奴隶一开始叛乱、煽动叛乱或发狂伤人，就会被注入麻醉剂昏睡约半天，醒来后压制度+30%。只对奴隶起作用。"+(timesFired>0?"\n已经触发过 "+timesFired+" 次。":""),
+   yield return new Command_Action{defaultLabel=Ready?"麻醉项圈：就绪".Loc():"麻醉项圈：充填中".Loc(),defaultDesc=Status+"\n\n戴着这个项圈的奴隶一开始叛乱、煽动叛乱或发狂伤人，就会被注入麻醉剂昏睡约半天，醒来后压制度+30%。只对奴隶起作用。".Loc()+(timesFired>0?"\n已经触发过 ".Loc()+timesFired+" 次。".Loc():""),
     icon=parent.def.uiIcon,defaultIconColor=parent.DrawColor,action=()=>{if(DebugSettings.godMode)lastFired=-999999;}};
   }
  }
@@ -55,10 +55,10 @@ namespace LichPhylactery {
     if(lord!=null && lord.LordJob is LordJob_SlaveRebellion && p.GetLord()==lord)lord.RemovePawn(p);
     var need=p.needs?.TryGetNeed<Need_Suppression>();if(need!=null)need.CurLevel=Mathf.Min(1f,need.CurLevel+c.Props.suppressionGain);
     p.jobs?.StopAll();
-    if(p.Spawned){MoteMaker.ThrowText(p.DrawPos,p.Map,"麻醉！",new Color(.75f,.6f,1f),3.5f);FleckMaker.ThrowSmoke(p.DrawPos,p.Map,.6f);}
-    if(!silent && p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+" 刚要作乱，奴隶麻醉项圈就注入了麻醉剂，"+p.LabelShort+" 昏睡过去了。",p,MessageTypeDefOf.PositiveEvent);
+    if(p.Spawned){MoteMaker.ThrowText(p.DrawPos,p.Map,"麻醉！".Loc(),new Color(.75f,.6f,1f),3.5f);FleckMaker.ThrowSmoke(p.DrawPos,p.Map,.6f);}
+    if(!silent && p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+" 刚要作乱，奴隶麻醉项圈就注入了麻醉剂，".Loc()+p.LabelShort+" 昏睡过去了。".Loc(),p,MessageTypeDefOf.PositiveEvent);
     return true;
-   }catch(Exception e){Log.Warning("[DND边缘大陆] 奴隶麻醉项圈触发出错："+e);return false;}
+   }catch(Exception e){Log.Warning("[DND边缘大陆] 奴隶麻醉项圈触发出错：".Loc()+e);return false;}
    finally{busy=false;}
   }
   // 一场叛乱开始后：把地图上所有叛乱小队里戴项圈的奴隶放倒。
@@ -69,7 +69,7 @@ namespace LichPhylactery {
     foreach(var p in lord.ownedPawns.ToList())if(TryFire(p,true))hit.Add(p);
    }
    if(hit.Count>0 && hit.Any(p=>p.Faction==Faction.OfPlayer))
-    Messages.Message("奴隶叛乱：奴隶麻醉项圈放倒了 "+string.Join("、",hit.Select(p=>p.LabelShort))+"。",new LookTargets(hit),MessageTypeDefOf.PositiveEvent);
+    Messages.Message("奴隶叛乱：奴隶麻醉项圈放倒了 ".Loc()+string.Join("、".Loc(),hit.Select(p=>p.LabelShort))+"。".Loc(),new LookTargets(hit),MessageTypeDefOf.PositiveEvent);
    return hit.Count;
   }
  }

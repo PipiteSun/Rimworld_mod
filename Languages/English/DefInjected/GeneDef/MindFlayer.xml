@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 脑髓代谢 -->
+  <LP_Cerebrum.label>brain matter metabolism</LP_Cerebrum.label>
+  <!-- 夺心魔的本源。提供"脑髓"资源条（0～100）：每天流失8点，只能靠吞噬大脑补充。脑髓低于30时开始虚弱，低于10时严重衰弱，归零时陷入脑饥，可能失控狂乱。吞噬一个倒地的人形生物可获得（20+3×智识等级）×其心灵敏感度点脑髓（最多80），并吸收其最高技能20%的经验；动物只给3～10点；死亡6小时内的新鲜人形尸体给三分之一。 -->
+  <LP_Cerebrum.description>The origin of the mind flayer. Provides the "brain matter" resource bar (0-100): losing 8 per day, replenished only by devouring brains. Below 30 brain matter it starts to weaken, below 10 it's severely debilitated, and at zero it falls into brain hunger and may go into an uncontrolled frenzy. Devouring a downed humanlike gives (20+3×Intellectual level)×its psychic sensitivity brain matter (up to 80) and absorbs 20% of the XP of its highest skill; animals give only 3-10; fresh humanlike corpses dead within 6 hours give a third.</LP_Cerebrum.description>
+  <!-- 脑髓上限100，每天流失8点；低于30虚弱，低于10衰弱，归零脑饥（可在模组设置中关闭脑饥狂乱）。 | 吞噬大脑：人形（20+3×智识）×心灵敏感度，最多80；动物3～10；6小时内的新鲜人形尸体给三分之一。 | 吞噬会摧毁目标的大脑：巨魔不会复活，尸体也不再完整。巫妖与死灵造物没有活着的大脑，机械体和心灵失聪者无法吞噬。 -->
+  <LP_Cerebrum.customEffectDescriptions.0>Max brain matter 100, losing 8 per day; weak below 30, debilitated below 10, brain hunger at zero (brain hunger frenzy can be turned off in mod settings).</LP_Cerebrum.customEffectDescriptions.0>
+  <LP_Cerebrum.customEffectDescriptions.1>Devouring a brain: humanlike (20+3×Intellectual)×psychic sensitivity, up to 80; animals 3-10; fresh humanlike corpses within 6 hours give a third.</LP_Cerebrum.customEffectDescriptions.1>
+  <LP_Cerebrum.customEffectDescriptions.2>Devouring destroys the target's brain: trolls won't revive, and the corpse is no longer intact. Liches and necromantic constructs have no living brain; mechanoids and the psychically deaf can't be devoured.</LP_Cerebrum.customEffectDescriptions.2>
+  <!-- 夺心魔赖以维生的脑髓。每天流失8点，靠吞噬大脑补充；心灵能力也消耗脑髓。 -->
+  <LP_Cerebrum.resourceDescription>The brain matter mind flayers live on. Loses 8 per day, replenished by devouring brains; psychic abilities also consume brain matter.</LP_Cerebrum.resourceDescription>
+  <!-- 脑髓 -->
+  <LP_Cerebrum.resourceLabel>brain matter</LP_Cerebrum.resourceLabel>
+  <!-- 夺心魔不育 -->
+  <LP_MindFlayerSterile.label>mind flayer sterility</LP_MindFlayerSterile.label>
+  <!-- 夺心魔无法生育。新的夺心魔只能由蝌蚪寄生化形而来。 -->
+  <LP_MindFlayerSterile.description>Mind flayers can't reproduce. New mind flayers can only come from tadpole ceremorphosis.</LP_MindFlayerSterile.description>
+  <!-- 灵能感知 -->
+  <LP_PsionicSense.label>psionic sense</LP_PsionicSense.label>
+  <!-- 夺心魔天生能听见周围心灵的低语，自己的心智也像一堵墙：心智抗性+30%，能抵抗别人的魅惑、心灵震爆和寄生；还能主动读心。 -->
+  <LP_PsionicSense.description>Mind flayers can naturally hear the whispers of minds around them, and their own mind is like a wall: mind resistance +30%, resists others' charm, psychic blasts and parasites; can also read minds actively.</LP_PsionicSense.description>
+  <!-- 群脑联络 -->
+  <LP_HiveLink.label>hivemind link</LP_HiveLink.label>
+  <!-- 夺心魔的心灵彼此相连。同一地图上每多一个本阵营的夺心魔，心灵敏感度+10%、全局学习速度+5%，最多计3个。同伴死亡时，其余夺心魔会感到"群脑断裂"。 -->
+  <LP_HiveLink.description>Mind flayers' minds are connected to each other. For each additional mind flayer of your faction on the same map, psychic sensitivity +10% and global learning speed +5%, counting up to 3. When a companion dies, the other mind flayers feel "hivemind severed".</LP_HiveLink.description>
+  <!-- 同地图每个本阵营夺心魔同伴：心灵敏感度+10%、全局学习速度+5%（最多3个）。 | 同伴死亡：心情-8，持续3天。 -->
+  <LP_HiveLink.customEffectDescriptions.0>Each mind flayer companion of your faction on the same map: psychic sensitivity +10%, global learning speed +5% (up to 3).</LP_HiveLink.customEffectDescriptions.0>
+  <LP_HiveLink.customEffectDescriptions.1>Companion death: mood -8 for 3 days.</LP_HiveLink.customEffectDescriptions.1>
+</LanguageData>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 安装盲目之视 -->
+  <LP_InstallBlindSight.label>install blind sight</LP_InstallBlindSight.label>
+  <!-- 以大量血肉培育的寒霜义眼。替换一只眼睛，部位效率125%，赋予寒冰射线：射程24格，造成12点冻伤并增加0.12低温症，冷却8秒。双眼只提供一个技能，共享冷却。 -->
+  <LP_InstallBlindSight.description>A frost eye grown from a great deal of flesh. Replaces one eye, part efficiency 125%, grants the Ray of Frost: range 24 cells, 12 frostbite damage and +0.12 hypothermia, cooldown 8 seconds. Both eyes together give only one ability, with a shared cooldown.</LP_InstallBlindSight.description>
+  <!-- 正在安装盲目之视。 -->
+  <LP_InstallBlindSight.jobString>Installing blind sight.</LP_InstallBlindSight.jobString>
+  <!-- 培育盲目之视 -->
+  <LP_CraftBlindSight.label>grow blind sight</LP_CraftBlindSight.label>
+  <!-- 消耗400份新鲜生肉与金属辅材培育盲目之视。以大量血肉培育的寒霜义眼。替换一只眼睛，部位效率125%，赋予寒冰射线：射程24格，造成12点冻伤并增加0.12低温症，冷却8秒。双眼只提供一个技能，共享冷却。 -->
+  <LP_CraftBlindSight.description>Grow blind sight from 400 fresh raw meat and metal auxiliaries. A frost eye grown from a great deal of flesh. Replaces one eye, part efficiency 125%, grants the Ray of Frost: range 24 cells, 12 frostbite damage and +0.12 hypothermia, cooldown 8 seconds. Both eyes together give only one ability, with a shared cooldown.</LP_CraftBlindSight.description>
+  <!-- 正在培育盲目之视。 -->
+  <LP_CraftBlindSight.jobString>Growing blind sight.</LP_CraftBlindSight.jobString>
+  <!-- 安装凋亡之手 -->
+  <LP_InstallWitheringHand.label>install withering hand</LP_InstallWitheringHand.label>
+  <!-- 替换整条手臂，部位效率125%。近战攻击造成有效伤害后，使活体目标增加0.06低温症；双臂不重复触发。死灵之躯与机械体免疫低温症。 -->
+  <LP_InstallWitheringHand.description>Replaces a whole arm, part efficiency 125%. After a melee attack deals effective damage, a living target gains +0.06 hypothermia; two arms don't trigger twice. Undead bodies and mechanoids are immune to hypothermia.</LP_InstallWitheringHand.description>
+  <!-- 正在安装凋亡之手。 -->
+  <LP_InstallWitheringHand.jobString>Installing a withering hand.</LP_InstallWitheringHand.jobString>
+  <!-- 培育凋亡之手 -->
+  <LP_CraftWitheringHand.label>grow withering hand</LP_CraftWitheringHand.label>
+  <!-- 消耗600份新鲜生肉与金属辅材培育凋亡之手。替换整条手臂，部位效率125%。近战攻击造成有效伤害后，使活体目标增加0.06低温症；双臂不重复触发。死灵之躯与机械体免疫低温症。 -->
+  <LP_CraftWitheringHand.description>Grow a withering hand from 600 fresh raw meat and metal auxiliaries. Replaces a whole arm, part efficiency 125%. After a melee attack deals effective damage, a living target gains +0.06 hypothermia; two arms don't trigger twice. Undead bodies and mechanoids are immune to hypothermia.</LP_CraftWitheringHand.description>
+  <!-- 正在培育凋亡之手。 -->
+  <LP_CraftWitheringHand.jobString>Growing a withering hand.</LP_CraftWitheringHand.jobString>
+  <!-- 安装死灵副人格 -->
+  <LP_InstallDeadPersonality.label>install necromantic sub-personality</LP_InstallDeadPersonality.label>
+  <!-- 大脑附加植入物，不替换大脑。移除每日经验达到学习饱和后的降速，停止技能自然遗忘。保留兴趣、学习倍率、技能等级上限及其他机制造成的经验损失。 -->
+  <LP_InstallDeadPersonality.description>An add-on brain implant that doesn't replace the brain. Removes the slowdown after daily XP reaches learning saturation and stops natural skill decay. Passion, learning multipliers, skill level caps and XP loss from other mechanics are kept.</LP_InstallDeadPersonality.description>
+  <!-- 正在安装死灵副人格。 -->
+  <LP_InstallDeadPersonality.jobString>Installing a necromantic sub-personality.</LP_InstallDeadPersonality.jobString>
+  <!-- 培育死灵副人格 -->
+  <LP_CraftDeadPersonality.label>grow necromantic sub-personality</LP_CraftDeadPersonality.label>
+  <!-- 消耗800份新鲜生肉与金属辅材培育死灵副人格。大脑附加植入物，不替换大脑。移除每日经验达到学习饱和后的降速，停止技能自然遗忘。保留兴趣、学习倍率、技能等级上限及其他机制造成的经验损失。 -->
+  <LP_CraftDeadPersonality.description>Grow a necromantic sub-personality from 800 fresh raw meat and metal auxiliaries. An add-on brain implant that doesn't replace the brain. Removes the slowdown after daily XP reaches learning saturation and stops natural skill decay. Passion, learning multipliers, skill level caps and XP loss from other mechanics are kept.</LP_CraftDeadPersonality.description>
+  <!-- 正在培育死灵副人格。 -->
+  <LP_CraftDeadPersonality.jobString>Growing a necromantic sub-personality.</LP_CraftDeadPersonality.jobString>
+  <!-- 安装阴影随行 -->
+  <LP_InstallShadowLeg.label>install shadow walk</LP_InstallShadowLeg.label>
+  <!-- 替换整条腿，部位效率135%。安装后常驻穿墙：普通行走和工作寻路可穿过墙壁、山岩和门，不破坏建筑。不能跨越不可通行水域、虚空或走出地图，不允许将墙内作为工作终点。 -->
+  <LP_InstallShadowLeg.description>Replaces a whole leg, part efficiency 135%. Once installed, permanently passes through walls: normal walking and work pathfinding can pass through walls, mountain rock and doors without damaging buildings. Can't cross impassable water or the void or walk off the map, and can't use a spot inside a wall as a work destination.</LP_InstallShadowLeg.description>
+  <!-- 正在安装阴影随行。 -->
+  <LP_InstallShadowLeg.jobString>Installing shadow walk.</LP_InstallShadowLeg.jobString>
+  <!-- 培育阴影随行 -->
+  <LP_CraftShadowLeg.label>grow shadow walk</LP_CraftShadowLeg.label>
+  <!-- 消耗600份新鲜生肉与金属辅材培育阴影随行。替换整条腿，部位效率135%。安装后常驻穿墙：普通行走和工作寻路可穿过墙壁、山岩和门，不破坏建筑。不能跨越不可通行水域、虚空或走出地图，不允许将墙内作为工作终点。 -->
+  <LP_CraftShadowLeg.description>Grow shadow walk from 600 fresh raw meat and metal auxiliaries. Replaces a whole leg, part efficiency 135%. Once installed, permanently passes through walls: normal walking and work pathfinding can pass through walls, mountain rock and doors without damaging buildings. Can't cross impassable water or the void or walk off the map, and can't use a spot inside a wall as a work destination.</LP_CraftShadowLeg.description>
+  <!-- 正在培育阴影随行。 -->
+  <LP_CraftShadowLeg.jobString>Growing shadow walk.</LP_CraftShadowLeg.jobString>
+  <!-- 移除死灵副人格 -->
+  <LP_RemoveDeadPersonality.label>remove necromantic sub-personality</LP_RemoveDeadPersonality.label>
+  <!-- 移除死灵副人格并回收植入物。 -->
+  <LP_RemoveDeadPersonality.description>Remove the necromantic sub-personality and recover the implant.</LP_RemoveDeadPersonality.description>
+  <!-- 正在移除死灵副人格。 -->
+  <LP_RemoveDeadPersonality.jobString>Removing a necromantic sub-personality.</LP_RemoveDeadPersonality.jobString>
+</LanguageData>

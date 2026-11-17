@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 邪魔宗主 -->
+  <LP_Sub_Fiend.label>the Fiend</LP_Sub_Fiend.label>
+  <!-- 与九狱或深渊的邪魔立约：火焰与诅咒，杀戮能滋养你。另有异界契约（九狱或深渊宗主）时，邪术师能力 ×1.25。 -->
+  <LP_Sub_Fiend.description>A pact with a fiend of the Nine Hells or the Abyss: fire and curses, and killing nourishes you. With an otherworldly pact as well (Nine Hells or Abyss patron), warlock abilities ×1.25.</LP_Sub_Fiend.description>
+  <!-- 魔能祈唤 -->
+  <LP_Sub_Fiend.choices.0.label>eldritch invocations</LP_Sub_Fiend.choices.0.label>
+  <!-- 苦痛魔能爆 | 魔鬼视觉 | 魔能长矛 -->
+  <LP_Sub_Fiend.choices.0.options.0>agonizing blast</LP_Sub_Fiend.choices.0.options.0>
+  <LP_Sub_Fiend.choices.0.options.1>devil's sight</LP_Sub_Fiend.choices.0.options.1>
+  <LP_Sub_Fiend.choices.0.options.2>eldritch spear</LP_Sub_Fiend.choices.0.options.2>
+  <!-- 每道魔能爆 + 魅力调整值 × 2 伤害（至少 +2）。 | 暗处视觉 +30%，不受魔法黑暗影响。 | 魔能爆射程 24 → 36 格。 -->
+  <LP_Sub_Fiend.choices.0.tips.0>Each eldritch blast beam + Charisma modifier × 2 damage (at least +2).</LP_Sub_Fiend.choices.0.tips.0>
+  <LP_Sub_Fiend.choices.0.tips.1>Sight in darkness +30%, unaffected by magical darkness.</LP_Sub_Fiend.choices.0.tips.1>
+  <LP_Sub_Fiend.choices.0.tips.2>Eldritch Blast range 24 → 36 cells.</LP_Sub_Fiend.choices.0.tips.2>
+  <!-- 第二祈唤 -->
+  <LP_Sub_Fiend.choices.1.label>second invocation</LP_Sub_Fiend.choices.1.label>
+  <!-- 苦痛魔能爆 | 魔鬼视觉 | 魔能长矛 -->
+  <LP_Sub_Fiend.choices.1.options.0>agonizing blast</LP_Sub_Fiend.choices.1.options.0>
+  <LP_Sub_Fiend.choices.1.options.1>devil's sight</LP_Sub_Fiend.choices.1.options.1>
+  <LP_Sub_Fiend.choices.1.options.2>eldritch spear</LP_Sub_Fiend.choices.1.options.2>
+  <!-- 每道魔能爆 + 魅力调整值 × 2 伤害（至少 +2）。 | 暗处视觉 +30%，不受魔法黑暗影响。 | 魔能爆射程 24 → 36 格。 -->
+  <LP_Sub_Fiend.choices.1.tips.0>Each eldritch blast beam + Charisma modifier × 2 damage (at least +2).</LP_Sub_Fiend.choices.1.tips.0>
+  <LP_Sub_Fiend.choices.1.tips.1>Sight in darkness +30%, unaffected by magical darkness.</LP_Sub_Fiend.choices.1.tips.1>
+  <LP_Sub_Fiend.choices.1.tips.2>Eldritch Blast range 24 → 36 cells.</LP_Sub_Fiend.choices.1.tips.2>
+  <!-- 妖精宗主 -->
+  <LP_Sub_Archfey.label>the Archfey</LP_Sub_Archfey.label>
+  <!-- 与妖精荒野的大君立约：魅惑、恐惧与雾中穿行。 -->
+  <LP_Sub_Archfey.description>A pact with a lord of the Feywild: charm, fear and walking through mist.</LP_Sub_Archfey.description>
+  <!-- 魔能祈唤 -->
+  <LP_Sub_Archfey.choices.0.label>eldritch invocations</LP_Sub_Archfey.choices.0.label>
+  <!-- 苦痛魔能爆 | 魔鬼视觉 | 魔能长矛 -->
+  <LP_Sub_Archfey.choices.0.options.0>agonizing blast</LP_Sub_Archfey.choices.0.options.0>
+  <LP_Sub_Archfey.choices.0.options.1>devil's sight</LP_Sub_Archfey.choices.0.options.1>
+  <LP_Sub_Archfey.choices.0.options.2>eldritch spear</LP_Sub_Archfey.choices.0.options.2>
+  <!-- 每道魔能爆 + 魅力调整值 × 2 伤害（至少 +2）。 | 暗处视觉 +30%，不受魔法黑暗影响。 | 魔能爆射程 24 → 36 格。 -->
+  <LP_Sub_Archfey.choices.0.tips.0>Each eldritch blast beam + Charisma modifier × 2 damage (at least +2).</LP_Sub_Archfey.choices.0.tips.0>
+  <LP_Sub_Archfey.choices.0.tips.1>Sight in darkness +30%, unaffected by magical darkness.</LP_Sub_Archfey.choices.0.tips.1>
+  <LP_Sub_Archfey.choices.0.tips.2>Eldritch Blast range 24 → 36 cells.</LP_Sub_Archfey.choices.0.tips.2>
+  <!-- 第二祈唤 -->
+  <LP_Sub_Archfey.choices.1.label>second invocation</LP_Sub_Archfey.choices.1.label>
+  <!-- 苦痛魔能爆 | 魔鬼视觉 | 魔能长矛 -->
+  <LP_Sub_Archfey.choices.1.options.0>agonizing blast</LP_Sub_Archfey.choices.1.options.0>
+  <LP_Sub_Archfey.choices.1.options.1>devil's sight</LP_Sub_Archfey.choices.1.options.1>
+  <LP_Sub_Archfey.choices.1.options.2>eldritch spear</LP_Sub_Archfey.choices.1.options.2>
+  <!-- 每道魔能爆 + 魅力调整值 × 2 伤害（至少 +2）。 | 暗处视觉 +30%，不受魔法黑暗影响。 | 魔能爆射程 24 → 36 格。 -->
+  <LP_Sub_Archfey.choices.1.tips.0>Each eldritch blast beam + Charisma modifier × 2 damage (at least +2).</LP_Sub_Archfey.choices.1.tips.0>
+  <LP_Sub_Archfey.choices.1.tips.1>Sight in darkness +30%, unaffected by magical darkness.</LP_Sub_Archfey.choices.1.tips.1>
+  <LP_Sub_Archfey.choices.1.tips.2>Eldritch Blast range 24 → 36 cells.</LP_Sub_Archfey.choices.1.tips.2>
+  <!-- 旧日支配者宗主 -->
+  <LP_Sub_GreatOldOne.label>the Great Old One</LP_Sub_GreatOldOne.label>
+  <!-- 与星界之外不可名状的存在立约：心灵之力、思维护盾与支配。 -->
+  <LP_Sub_GreatOldOne.description>A pact with an unspeakable being beyond the stars: psychic power, thought shields and domination.</LP_Sub_GreatOldOne.description>
+  <!-- 魔能祈唤 -->
+  <LP_Sub_GreatOldOne.choices.0.label>eldritch invocations</LP_Sub_GreatOldOne.choices.0.label>
+  <!-- 苦痛魔能爆 | 魔鬼视觉 | 魔能长矛 -->
+  <LP_Sub_GreatOldOne.choices.0.options.0>agonizing blast</LP_Sub_GreatOldOne.choices.0.options.0>
+  <LP_Sub_GreatOldOne.choices.0.options.1>devil's sight</LP_Sub_GreatOldOne.choices.0.options.1>
+  <LP_Sub_GreatOldOne.choices.0.options.2>eldritch spear</LP_Sub_GreatOldOne.choices.0.options.2>
+  <!-- 每道魔能爆 + 魅力调整值 × 2 伤害（至少 +2）。 | 暗处视觉 +30%，不受魔法黑暗影响。 | 魔能爆射程 24 → 36 格。 -->
+  <LP_Sub_GreatOldOne.choices.0.tips.0>Each eldritch blast beam + Charisma modifier × 2 damage (at least +2).</LP_Sub_GreatOldOne.choices.0.tips.0>
+  <LP_Sub_GreatOldOne.choices.0.tips.1>Sight in darkness +30%, unaffected by magical darkness.</LP_Sub_GreatOldOne.choices.0.tips.1>
+  <LP_Sub_GreatOldOne.choices.0.tips.2>Eldritch Blast range 24 → 36 cells.</LP_Sub_GreatOldOne.choices.0.tips.2>
+  <!-- 第二祈唤 -->
+  <LP_Sub_GreatOldOne.choices.1.label>second invocation</LP_Sub_GreatOldOne.choices.1.label>
+  <!-- 苦痛魔能爆 | 魔鬼视觉 | 魔能长矛 -->
+  <LP_Sub_GreatOldOne.choices.1.options.0>agonizing blast</LP_Sub_GreatOldOne.choices.1.options.0>
+  <LP_Sub_GreatOldOne.choices.1.options.1>devil's sight</LP_Sub_GreatOldOne.choices.1.options.1>
+  <LP_Sub_GreatOldOne.choices.1.options.2>eldritch spear</LP_Sub_GreatOldOne.choices.1.options.2>
+  <!-- 每道魔能爆 + 魅力调整值 × 2 伤害（至少 +2）。 | 暗处视觉 +30%，不受魔法黑暗影响。 | 魔能爆射程 24 → 36 格。 -->
+  <LP_Sub_GreatOldOne.choices.1.tips.0>Each eldritch blast beam + Charisma modifier × 2 damage (at least +2).</LP_Sub_GreatOldOne.choices.1.tips.0>
+  <LP_Sub_GreatOldOne.choices.1.tips.1>Sight in darkness +30%, unaffected by magical darkness.</LP_Sub_GreatOldOne.choices.1.tips.1>
+  <LP_Sub_GreatOldOne.choices.1.tips.2>Eldritch Blast range 24 → 36 cells.</LP_Sub_GreatOldOne.choices.1.tips.2>
+</LanguageData>

@@ -155,7 +155,7 @@ namespace LichPhylactery {
  public class StatPart_StormChild : StatPart {
   float Factor=>parentStat==StatDefOf.MoveSpeed?StormGiant.ChildMove:StormGiant.ChildMelee;
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p && StormGiant.ChildActive(p))val*=Factor;}
-  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && StormGiant.ChildActive(p)?"风暴之子（风雨天）：×"+Factor.ToStringPercent():null;
+  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && StormGiant.ChildActive(p)?"风暴之子（风雨天）：×".Loc()+Factor.ToStringPercent():null;
  }
  [StaticConstructorOnStartup]
  public static class StormGiantStartup {
@@ -189,7 +189,7 @@ namespace LichPhylactery {
  public static class StormBodyGrounded {
   static bool Prefix(Pawn __instance,ref DamageInfo __0,ref bool __1){
    if(!StormGiant.Grounded(__instance,__0))return true;
-   __1=true;Items.Mote(__instance,__0.Def==DamageDefOf.EMP?"雷电之躯":"落雷无伤",new Color(.72f,.78f,1f));return false;
+   __1=true;Items.Mote(__instance,__0.Def==DamageDefOf.EMP?"雷电之躯".Loc():"落雷无伤".Loc(),new Color(.72f,.78f,1f));return false;
   }
  }
  // 雷霆一击（同霜巨人斧的寒霜迟缓，在近战结算之后追加）。
@@ -200,11 +200,11 @@ namespace LichPhylactery {
  // 镣铐：不能用任何能力。
  [HarmonyPatch(typeof(RimWorld.Ability),nameof(RimWorld.Ability.GizmoDisabled))]
  public static class ShackledAbilityGizmo {
-  static void Postfix(RimWorld.Ability __instance,ref string reason,ref bool __result){if(!__result && StormGiant.IsShackled(__instance.pawn)){reason="戴着镣铐，用不了能力。";__result=true;}}
+  static void Postfix(RimWorld.Ability __instance,ref string reason,ref bool __result){if(!__result && StormGiant.IsShackled(__instance.pawn)){reason="戴着镣铐，用不了能力。".Loc();__result=true;}}
  }
  [HarmonyPatch(typeof(RimWorld.Ability),"get_CanCast")]
  public static class ShackledAbilityCast {
-  static void Postfix(RimWorld.Ability __instance,ref AcceptanceReport __result){if(__result.Accepted && StormGiant.IsShackled(__instance.pawn))__result="戴着镣铐，用不了能力。";}
+  static void Postfix(RimWorld.Ability __instance,ref AcceptanceReport __result){if(__result.Accepted && StormGiant.IsShackled(__instance.pawn))__result="戴着镣铐，用不了能力。".Loc();}
  }
  // 镣铐：被俘或加入殖民地后自动除去。
  public class Hediff_Shackled : HediffWithComps {
@@ -220,12 +220,12 @@ namespace LichPhylactery {
   public CompProperties_StormAbility Props=>(CompProperties_StormAbility)props;
   Pawn Caster=>parent.pawn;
   public override bool GizmoDisabled(out string reason){
-   if(Props.effect=="storm" && !StormGiant.Adult(Caster)){reason="只有成年的风暴巨人能召唤风暴。";return true;}
+   if(Props.effect=="storm" && !StormGiant.Adult(Caster)){reason="只有成年的风暴巨人能召唤风暴。".Loc();return true;}
    return base.GizmoDisabled(out reason);
   }
   public string Invalid(LocalTargetInfo target){
-   var map=Caster?.Map;if(map==null)return "施法者不在地图上。";
-   if(Props.effect=="bolt")return !target.Cell.IsValid || !target.Cell.InBounds(map)?"需要地图上的目标位置。":target.Cell==Caster.Position?"要朝一个方向放出闪电。":null;
+   var map=Caster?.Map;if(map==null)return "施法者不在地图上。".Loc();
+   if(Props.effect=="bolt")return !target.Cell.IsValid || !target.Cell.InBounds(map)?"需要地图上的目标位置。".Loc():target.Cell==Caster.Position?"要朝一个方向放出闪电。".Loc():null;
    return null;
   }
   public override bool Valid(LocalTargetInfo target,bool throwMessages=false){
@@ -237,7 +237,7 @@ namespace LichPhylactery {
    if(Invalid(target)!=null)return;
    switch(Props.effect){
     case "bolt":StormGiant.LaunchBolt(Caster,target.Cell);break;
-    case "storm":StormGiant.SummonStorm(Caster);Messages.Message(Caster.LabelShort+"召唤了风暴：雷雨将持续一天，雷电会劈向敌人。",Caster,MessageTypeDefOf.NeutralEvent,false);break;
+    case "storm":StormGiant.SummonStorm(Caster);Messages.Message(Caster.LabelShort+"召唤了风暴：雷雨将持续一天，雷电会劈向敌人。".Loc(),Caster,MessageTypeDefOf.NeutralEvent,false);break;
    }
   }
   public override void DrawEffectPreview(LocalTargetInfo target){
@@ -256,10 +256,10 @@ namespace LichPhylactery {
 
  // 风暴宝珠：捏碎后地图转雷雨1天（不落雷）。
  public class CompUseEffect_StormOrb : CompUseEffect {
-  public override AcceptanceReport CanBeUsedBy(Pawn p)=>p?.Map==null?"要在地图上使用。":base.CanBeUsedBy(p);
+  public override AcceptanceReport CanBeUsedBy(Pawn p)=>p?.Map==null?"要在地图上使用。".Loc():base.CanBeUsedBy(p);
   public override void DoEffect(Pawn usedBy){
    base.DoEffect(usedBy);
-   if(StormGiant.CallWeather(usedBy.Map,StormGiant.W("RainyThunderstorm"),1f,false)!=null)Messages.Message(usedBy.LabelShort+"捏碎了风暴宝珠：乌云翻滚，雷雨将持续一天。",usedBy,MessageTypeDefOf.NeutralEvent,false);
+   if(StormGiant.CallWeather(usedBy.Map,StormGiant.W("RainyThunderstorm"),1f,false)!=null)Messages.Message(usedBy.LabelShort+"捏碎了风暴宝珠：乌云翻滚，雷雨将持续一天。".Loc(),usedBy,MessageTypeDefOf.NeutralEvent,false);
   }
  }
 

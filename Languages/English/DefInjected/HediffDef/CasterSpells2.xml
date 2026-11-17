@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 友善术 -->
+  <LP_CS_Friends.label>friends</LP_CS_Friends.label>
+  <!-- 待人格外亲切：社交影响 +30%，谈判能力 +30%。 -->
+  <LP_CS_Friends.description>Especially warm toward others: social impact +30%, negotiation ability +30%.</LP_CS_Friends.description>
+  <!-- 英雄气概 -->
+  <LP_CS_Heroism.label>heroism</LP_CS_Heroism.label>
+  <!-- 无所畏惧，临时生命不断补满。 -->
+  <LP_CS_Heroism.description>Fearless, with temporary hit points constantly topped up.</LP_CS_Heroism.description>
+  <!-- 言语术 -->
+  <LP_CS_Tongues.label>tongues</LP_CS_Tongues.label>
+  <!-- 能说会道：谈判能力 ×2，社交影响 +50%。 -->
+  <LP_CS_Tongues.description>Silver-tongued: negotiation ability ×2, social impact +50%.</LP_CS_Tongues.description>
+  <!-- 高等隐形术 -->
+  <LP_CS_GreaterInvisible.label>greater invisibility</LP_CS_GreaterInvisible.label>
+  <!-- 身形完全消失，攻击、施法也不会现形。 -->
+  <LP_CS_GreaterInvisible.description>Completely vanished; attacking or casting does not reveal them.</LP_CS_GreaterInvisible.description>
+  <!-- 无踪 -->
+  <LP_CS_PassTrace.label>traceless</LP_CS_PassTrace.label>
+  <!-- 悄无声息：射来的远程攻击 30% 落空。 -->
+  <LP_CS_PassTrace.description>Utterly silent: incoming ranged attacks miss 30% of the time.</LP_CS_PassTrace.description>
+  <!-- 投射幻象 -->
+  <LP_CS_Projected.label>project image</LP_CS_Projected.label>
+  <!-- 远处有一个自己的幻象：射来的远程攻击 30% 落空。 -->
+  <LP_CS_Projected.description>An illusion of yourself is far away: incoming ranged attacks miss 30% of the time.</LP_CS_Projected.description>
+  <!-- 迅捷箭袋 -->
+  <LP_CS_SwiftQuiver.label>swift quiver</LP_CS_SwiftQuiver.label>
+  <!-- 箭袋里的箭源源不断：远程冷却与瞄准时间减半。 -->
+  <LP_CS_SwiftQuiver.description>Arrows in the quiver never run out: ranged cooldown and aiming time halved.</LP_CS_SwiftQuiver.description>
+  <!-- 加热金属 -->
+  <LP_CS_HeatMetal.label>heat metal</LP_CS_HeatMetal.label>
+  <!-- 身上的金属烧得通红：穿金属护甲时每秒受火焰伤害。 -->
+  <LP_CS_HeatMetal.description>The metal on the body glows red-hot: takes fire damage every second while wearing metal armor.</LP_CS_HeatMetal.description>
+  <!-- 浮空术 -->
+  <LP_CS_Levitating.label>levitate</LP_CS_Levitating.label>
+  <!-- 浮在离地一尺的空中：不受地形减速，移动 ×0.9。 -->
+  <LP_CS_Levitating.description>Floating a foot above the ground: no terrain slowdown, movement ×0.9.</LP_CS_Levitating.description>
+  <!-- 炽焰斩 -->
+  <LP_CS_SmiteBlaze.label>searing smite</LP_CS_SmiteBlaze.label>
+  <!-- 下一次近战命中附加火焰伤害并点燃目标。 -->
+  <LP_CS_SmiteBlaze.description>The next melee hit adds fire damage and ignites the target.</LP_CS_SmiteBlaze.description>
+  <!-- 雷鸣斩 -->
+  <LP_CS_SmiteThunder.label>thunderous smite</LP_CS_SmiteThunder.label>
+  <!-- 下一次近战命中附加雷鸣伤害并震退目标。 -->
+  <LP_CS_SmiteThunder.description>The next melee hit adds thunder damage and knocks the target back.</LP_CS_SmiteThunder.description>
+  <!-- 灼热斩 -->
+  <LP_CS_SmiteSear.label>searing smite</LP_CS_SmiteSear.label>
+  <!-- 下一次近战命中附加火焰伤害，目标持续灼烧。 -->
+  <LP_CS_SmiteSear.description>The next melee hit adds fire damage, and the target keeps burning.</LP_CS_SmiteSear.description>
+  <!-- 标记惩击 -->
+  <LP_CS_SmiteBrand.label>branding smite</LP_CS_SmiteBrand.label>
+  <!-- 下一次命中附加光耀伤害，目标不能隐形。 -->
+  <LP_CS_SmiteBrand.description>The next hit adds radiant damage, and the target cannot turn invisible.</LP_CS_SmiteBrand.description>
+  <!-- 致盲斩 -->
+  <LP_CS_SmiteBlind.label>blinding smite</LP_CS_SmiteBlind.label>
+  <!-- 下一次近战命中附加光耀伤害并让目标失明。 -->
+  <LP_CS_SmiteBlind.description>The next melee hit adds radiant damage and blinds the target.</LP_CS_SmiteBlind.description>
+  <!-- 灼目斩 -->
+  <LP_CS_SmiteStagger.label>staggering smite</LP_CS_SmiteStagger.label>
+  <!-- 下一次近战命中附加心灵伤害并让目标眩晕。 -->
+  <LP_CS_SmiteStagger.description>The next melee hit adds psychic damage and stuns the target.</LP_CS_SmiteStagger.description>
+  <!-- 逐恶斩 -->
+  <LP_CS_SmiteBanish.label>banishing smite</LP_CS_SmiteBanish.label>
+  <!-- 下一次近战命中附加力场伤害，重伤的目标被放逐。 -->
+  <LP_CS_SmiteBanish.description>The next melee hit adds force damage, and badly hurt targets are banished.</LP_CS_SmiteBanish.description>
+  <!-- 魔法武器 -->
+  <LP_CS_MagicWeapon.label>magic weapon</LP_CS_MagicWeapon.label>
+  <!-- 武器附着魔力：每次命中附加力场伤害。 -->
+  <LP_CS_MagicWeapon.description>The weapon is imbued with magic: every hit adds force damage.</LP_CS_MagicWeapon.description>
+  <!-- 元素武器 -->
+  <LP_CS_ElementalWeapon.label>elemental weapon</LP_CS_ElementalWeapon.label>
+  <!-- 武器燃着元素之力：每次命中附加火焰伤害。 -->
+  <LP_CS_ElementalWeapon.description>The weapon burns with elemental power: every hit adds fire damage.</LP_CS_ElementalWeapon.description>
+  <!-- 十字军披风 -->
+  <LP_CS_Crusader.label>crusader's mantle</LP_CS_Crusader.label>
+  <!-- 身边的友军近战命中附加光耀伤害。 -->
+  <LP_CS_Crusader.description>Nearby allies' melee hits add radiant damage.</LP_CS_Crusader.description>
+  <!-- 十字军之力 -->
+  <LP_CS_CrusaderBuff.label>crusader's might</LP_CS_CrusaderBuff.label>
+  <!-- 近战命中附加光耀伤害。 -->
+  <LP_CS_CrusaderBuff.description>Melee hits add radiant damage.</LP_CS_CrusaderBuff.description>
+  <!-- 吸收元素 -->
+  <LP_CS_AbsorbElements.label>absorb elements</LP_CS_AbsorbElements.label>
+  <!-- 下一次受到的元素伤害减半。 -->
+  <LP_CS_AbsorbElements.description>The next elemental damage taken is halved.</LP_CS_AbsorbElements.description>
+  <!-- 元素蓄能 -->
+  <LP_CS_AbsorbCharge.label>elemental charge</LP_CS_AbsorbCharge.label>
+  <!-- 吸收的元素之力：下一次近战命中附加火焰伤害。 -->
+  <LP_CS_AbsorbCharge.description>Absorbed elemental power: the next melee hit adds fire damage.</LP_CS_AbsorbCharge.description>
+  <!-- 诱捕打击 -->
+  <LP_CS_Ensnaring.label>ensnaring strike</LP_CS_Ensnaring.label>
+  <!-- 下一次命中附加割伤，荆棘可能缠住目标。 -->
+  <LP_CS_Ensnaring.description>The next hit adds cut damage, and thorns may entangle the target.</LP_CS_Ensnaring.description>
+  <!-- 闪电箭 -->
+  <LP_CS_LightningArrow.label>lightning arrow</LP_CS_LightningArrow.label>
+  <!-- 下一次远程命中化作闪电。 -->
+  <LP_CS_LightningArrow.description>The next ranged hit turns into lightning.</LP_CS_LightningArrow.description>
+  <!-- 灼烧 -->
+  <LP_CS_Seared.label>searing</LP_CS_Seared.label>
+  <!-- 被灼热斩点着：每秒受火焰伤害。 -->
+  <LP_CS_Seared.description>Set alight by a searing smite: takes fire damage every second.</LP_CS_Seared.description>
+  <!-- 光耀标记 -->
+  <LP_CS_Branded.label>radiant mark</LP_CS_Branded.label>
+  <!-- 身上有光耀的烙印：不能隐形。 -->
+  <LP_CS_Branded.description>Branded with a radiant mark: cannot turn invisible.</LP_CS_Branded.description>
+  <!-- 天界战马 -->
+  <LP_CS_Steed.label>celestial warhorse</LP_CS_Steed.label>
+  <!-- 寻获坐骑召来的天界战马：移动 ×1.2，受到的伤害 ×0.8。 -->
+  <LP_CS_Steed.description>A celestial warhorse summoned by Find Steed: movement ×1.2, damage taken ×0.8.</LP_CS_Steed.description>
+</LanguageData>

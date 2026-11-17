@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 奥术箭术 -->
+  <LP_AA_ArcaneLore.label>arcane archery</LP_AA_ArcaneLore.label>
+  <!-- 被动：拿远程武器射击（包括奥术射击）时伤害 +1.5% × 战士等级（20 级 +30%）。奥术射手，战士 3 级。 -->
+  <LP_AA_ArcaneLore.description>Passive: damage +1.5% × fighter level when shooting with a ranged weapon (including arcane shots) (+30% at level 20). Arcane Archer, fighter level 3.</LP_AA_ArcaneLore.description>
+  <!-- 奥术射击·束缚箭 -->
+  <LP_AA_GraspingArrow.label>arcane shot: grasping arrow</LP_AA_GraspingArrow.label>
+  <!-- 用当前武器对一个敌人打出必中的一发，命中后长出奥术荆棘：另加 8 × 射术强度 划伤，移动速度 ×0.5 持续 10 秒。射程 = 当前武器射程，需要远程武器。斗志 1，冷却 10 秒。奥术射手，战士 3 级。 -->
+  <LP_AA_GraspingArrow.description>Fire a guaranteed-hit shot at an enemy with your current weapon that sprouts arcane thorns on impact: an extra 8 × marksman power cut damage and move speed ×0.5 for 10 seconds. Range = current weapon range, requires a ranged weapon. Grit 1, cooldown 10 seconds. Arcane Archer, fighter level 3.</LP_AA_GraspingArrow.description>
+  <!-- 奥术射击·爆裂箭 -->
+  <LP_AA_BurstingArrow.label>arcane shot: bursting arrow</LP_AA_BurstingArrow.label>
+  <!-- 用当前武器对一个敌人打出必中的一发，命中时奥术炸开：命中点半径 2 内的敌人（包括目标，不含倒地的）各受 10 × 射术强度 力场伤害，不伤友军。射程 = 当前武器射程，需要远程武器。斗志 2，冷却 15 秒。奥术射手，战士 3 级。 -->
+  <LP_AA_BurstingArrow.description>Fire a guaranteed-hit shot at an enemy with your current weapon that bursts with arcane energy on impact: enemies within radius 2 of the impact point (including the target, excluding downed ones) each take 10 × marksman power force damage, sparing allies. Range = current weapon range, requires a ranged weapon. Grit 2, cooldown 15 seconds. Arcane Archer, fighter level 3.</LP_AA_BurstingArrow.description>
+  <!-- 鹰眼 -->
+  <LP_AA_KeenEye.label>eyes of the eagle</LP_AA_KeenEye.label>
+  <!-- 被动：远程射击离自己 12 格以上的敌人时伤害 ×1.15（和奥术箭术相乘）。奥术射手，战士 7 级。 -->
+  <LP_AA_KeenEye.description>Passive: ×1.15 damage when shooting enemies 12 or more cells away (multiplies with arcane archery). Arcane Archer, fighter level 7.</LP_AA_KeenEye.description>
+  <!-- 奥术射击·暗影箭 -->
+  <LP_AA_ShadowArrow.label>arcane shot: shadow arrow</LP_AA_ShadowArrow.label>
+  <!-- 用当前武器对一个敌人打出必中的一发，箭上缠着暗影：另加 12 × 射术强度 心灵伤害，视觉 −60% 持续 15 秒。射程 = 当前武器射程，需要远程武器。斗志 2，冷却 20 秒。奥术射手，战士 11 级。 -->
+  <LP_AA_ShadowArrow.description>Fire a guaranteed-hit shot at an enemy with your current weapon, the arrow wrapped in shadow: an extra 12 × marksman power psychic damage and sight -60% for 15 seconds. Range = current weapon range, requires a ranged weapon. Grit 2, cooldown 20 seconds. Arcane Archer, fighter level 11.</LP_AA_ShadowArrow.description>
+  <!-- 箭雨 -->
+  <LP_AA_ArrowStorm.label>arrow storm</LP_AA_ArrowStorm.label>
+  <!-- 朝一点射出漫天奥术箭：目标点半径 4 内离中心最近的 10 个敌人（不含倒地的）各中一发当前武器的必中子弹。射程 = 当前武器射程，需要远程武器。斗志 3，冷却 60 秒。奥术射手，战士 15 级。 -->
+  <LP_AA_ArrowStorm.description>Fire a sky-filling volley of arcane arrows at a point: the 10 enemies (excluding downed ones) closest to the center within radius 4 of the target point each take one guaranteed-hit bullet from your current weapon. Range = current weapon range, requires a ranged weapon. Grit 3, cooldown 60 seconds. Arcane Archer, fighter level 15.</LP_AA_ArrowStorm.description>
+</LanguageData>

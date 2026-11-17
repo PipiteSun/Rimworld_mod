@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 性格特性记录 -->
+  <LP_DndRecord.label>personality trait record</LP_DndRecord.label>
+  <!-- 记录复仇亡魂的凶手、兽化症与远域之触的计时（隐藏）。 -->
+  <LP_DndRecord.description>Records the revenant's killer and the timers of lycanthropy and the far-realm touch (hidden).</LP_DndRecord.description>
+  <!-- 亡魂之躯 -->
+  <LP_RevenantBody.label>revenant body</LP_RevenantBody.label>
+  <!-- 从坟墓里爬回来的身体：受到治疗的效果 -50%、自然愈合 -30%，不会挨饿，但吃东西也尝不出味道。别人看着发怵。 -->
+  <LP_RevenantBody.description>A body that crawled back from the grave: healing received -50%, natural healing -30%, never hungry, but can't taste food either. Unsettling to others.</LP_RevenantBody.description>
+  <!-- 狼形 -->
+  <LP_Beastform_Wolf.label>wolf form</LP_Beastform_Wolf.label>
+  <!-- 兽化症发作，化身为狼：近战伤害 ×2、移动速度 +1、每小时恢复 10 点伤势；非银、非魔法武器的伤害减半。 -->
+  <LP_Beastform_Wolf.description>Lycanthropy flares up, transforming into a wolf: melee damage ×2, move speed +1, heals 10 injury per hour; damage from non-silver, non-magic weapons halved.</LP_Beastform_Wolf.description>
+  <!-- 熊形 -->
+  <LP_Beastform_Bear.label>bear form</LP_Beastform_Bear.label>
+  <!-- 兽化症发作，化身为熊：近战伤害 ×2、移动速度 +1、每小时恢复 10 点伤势；非银、非魔法武器的伤害减半。 -->
+  <LP_Beastform_Bear.description>Lycanthropy flares up, transforming into a bear: melee damage ×2, move speed +1, heals 10 injury per hour; damage from non-silver, non-magic weapons halved.</LP_Beastform_Bear.description>
+  <!-- 虎形 -->
+  <LP_Beastform_Tiger.label>tiger form</LP_Beastform_Tiger.label>
+  <!-- 兽化症发作，化身为虎：近战伤害 ×2、移动速度 +1、每小时恢复 10 点伤势；非银、非魔法武器的伤害减半。 -->
+  <LP_Beastform_Tiger.description>Lycanthropy flares up, transforming into a tiger: melee damage ×2, move speed +1, heals 10 injury per hour; damage from non-silver, non-magic weapons halved.</LP_Beastform_Tiger.description>
+  <!-- 浪涌疾行 -->
+  <LP_DT_SurgeHaste.label>surging stride</LP_DT_SurgeHaste.label>
+  <!-- 狂野魔法的浪涌：移动速度 +50%。 -->
+  <LP_DT_SurgeHaste.description>A surge of wild magic: move speed +50%.</LP_DT_SurgeHaste.description>
+</LanguageData>

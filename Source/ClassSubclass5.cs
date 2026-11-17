@@ -54,20 +54,20 @@ namespace LichPhylactery {
   public static void AfterCast(Ability_Class a,LocalTargetInfo target){
    var p=a?.pawn;var e=a?.Props;if(p==null || e==null || Users.Count==0 || !Users.Contains(p))return;
    if(e.sorcery && Items.Has(p,"LP_SM_StepBuff") && e.effect!="S5_ShadowStep"){var pp=p;Fiends.Defer(()=>Items.Remove(pp,"LP_SM_StepBuff"));}
-   if(ClassSubclass.Has(p,DivineSoul) && Affinity(p)==2 && e.sorcery){LakeArcana.Touched=true;var sh=Items.Give(p,"LP_ACB_Shield",2500,GuardShield);Items.Mote(p,"守护",new Color(1f,.9f,.6f));}
+   if(ClassSubclass.Has(p,DivineSoul) && Affinity(p)==2 && e.sorcery){LakeArcana.Touched=true;var sh=Items.Give(p,"LP_ACB_Shield",2500,GuardShield);Items.Mote(p,"守护".Loc(),new Color(1f,.9f,.6f));}
    if(e.effect=="Heal" && ClassSystem.Knows(p,"LP_DS_Resonance") && target.Thing is Pawn t && t!=p){ClassMelee.Heal(p,ClassEffects.Power(p,e)*.25f);}
   }
   // ---------- 选目标 ----------
   public static string Invalid(Pawn caster,CompProperties_ClassEffect e,LocalTargetInfo target){
    var t=target.Thing as Pawn;
    switch(e.effect){
-    case "S5_Hound":if(t==null || t.Dead)return "需要选择一个活着的目标。";if(!t.HostileTo(caster))return "只能对敌人使用。";return null;
+    case "S5_Hound":if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();if(!t.HostileTo(caster))return "只能对敌人使用。".Loc();return null;
     case "S5_ShadowStep":
-     if(!Dark(caster))return "要站在黑暗里（光照低于 30%）。";
-     if(!DarkCell(caster.Map,target.Cell))return "目的地也要在黑暗里。";
-     if(!target.Cell.Standable(caster.Map) || target.Cell.GetFirstPawn(caster.Map)!=null)return "需要一处能站立的空地。";
-     if(caster.Position.DistanceTo(target.Cell)>20.5f)return "最远 20 格。";return null;
-    case "S5_Ward":if(t==null || t.Dead)return "需要选择一个活着的目标。";if(t.HostileTo(caster))return "只能对友军使用。";return null;
+     if(!Dark(caster))return "要站在黑暗里（光照低于 30%）。".Loc();
+     if(!DarkCell(caster.Map,target.Cell))return "目的地也要在黑暗里。".Loc();
+     if(!target.Cell.Standable(caster.Map) || target.Cell.GetFirstPawn(caster.Map)!=null)return "需要一处能站立的空地。".Loc();
+     if(caster.Position.DistanceTo(target.Cell)>20.5f)return "最远 20 格。".Loc();return null;
+    case "S5_Ward":if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();if(t.HostileTo(caster))return "只能对友军使用。".Loc();return null;
    }
    return null;
   }
@@ -75,7 +75,7 @@ namespace LichPhylactery {
   public static bool Apply(Pawn p,AbilityDef def,CompProperties_ClassEffect e,LocalTargetInfo target){
    var t=target.Thing as Pawn;
    switch(e.effect){
-    case "S5_Angel":Items.Give(p,"LP_DS_Angelic",ClassEffects.Duration(p,e),ClassEffects.Power(p,e));Items.Mote(p,"天使形态",new Color(1f,.95f,.65f));return true;
+    case "S5_Angel":Items.Give(p,"LP_DS_Angelic",ClassEffects.Duration(p,e),ClassEffects.Power(p,e));Items.Mote(p,"天使形态".Loc(),new Color(1f,.95f,.65f));return true;
     case "S5_Miracle":Miracle(p);return true;
     case "S5_Hound":if(t!=null)Hound(p,t,ClassEffects.Duration(p,e));return true;
     case "S5_ShadowStep":ShadowStep(p,target.Cell,e.duration);return true;
@@ -91,10 +91,10 @@ namespace LichPhylactery {
     ClassMelee.Heal(c,ClassMelee.InjurySum(c)*.5f);
     foreach(var d in c.health.hediffSet.hediffs.Where(ClassCasters.IsDisease).ToList())d.Severity=Mathf.Max(.01f,d.Severity-.3f);
     if(th!=null)c.needs?.mood?.thoughts?.memories?.TryGainMemory(th);
-    Items.Mote(c,"神迹",new Color(1f,.95f,.65f));n++;
+    Items.Mote(c,"神迹".Loc(),new Color(1f,.95f,.65f));n++;
    }
    foreach(var cell in GenRadial.RadialCellsAround(p.Position,6f,true))if(cell.InBounds(map) && Rand.Chance(.3f))FleckMaker.ThrowLightningGlow(cell.ToVector3Shifted(),map,1.2f);
-   if(p.Faction==Faction.OfPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"降下神迹：殖民者的伤口愈合了一半。",p,MessageTypeDefOf.PositiveEvent,false);
+   if(p.Faction==Faction.OfPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"降下神迹：殖民者的伤口愈合了一半。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);
    return n;
   }
   public static Pawn Hound(Pawn p,Pawn t,int ticks){
@@ -102,29 +102,29 @@ namespace LichPhylactery {
    var w=ArcanaEffects.Summon(p,kind,null,ticks,true);if(w==null)return null;
    Items.Give(w,"LP_SM_HoundMark");Items.Give(t,"LP_SM_Prey",ticks);WizardSpellsReveal(t);
    if(w.jobs!=null && t.Spawned){var job=JobMaker.MakeJob(JobDefOf.AttackMelee,t);job.expiryInterval=ticks;w.jobs.StartJob(job,JobCondition.InterruptForced);}
-   Items.Mote(w,"影犬",new Color(.6f,.45f,.85f));return w;
+   Items.Mote(w,"影犬".Loc(),new Color(.6f,.45f,.85f));return w;
   }
   static void WizardSpellsReveal(Pawn t){var inv=DefCache<HediffDef>.Get("PsychicInvisibility");var h=inv==null?null:t.health.hediffSet.GetFirstHediffOfDef(inv);if(h!=null)t.health.RemoveHediff(h);}
   public static bool ShadowStep(Pawn p,IntVec3 c,int buff){
    var map=p.Map;if(map==null)return false;FleckMaker.ThrowDustPuffThick(p.DrawPos,map,1.5f,new Color(.3f,.2f,.4f));
    Races124.Blink(p,c);FleckMaker.ThrowDustPuffThick(p.DrawPos,map,1.5f,new Color(.3f,.2f,.4f));
-   Items.Give(p,"LP_SM_StepBuff",buff);Items.Mote(p,"暗影步",new Color(.6f,.45f,.85f));return true;
+   Items.Give(p,"LP_SM_StepBuff",buff);Items.Mote(p,"暗影步".Loc(),new Color(.6f,.45f,.85f));return true;
   }
   public static float Ward(Pawn p,Pawn t,int ticks){
    float amount=10f+SorcLevel(p)*2f;LakeArcana.Touched=true;Items.Give(t,"LP_ACB_Shield",ticks,amount);
    if(ModsConfig.BiotechActive && MechanitorUtility.IsMechanitor(t))Items.Give(t,"LP_CW_Bandwidth",ticks);
-   Items.Mote(t,"秩序护盾 "+amount.ToString("0"),new Color(.85f,.62f,.35f));return amount;
+   Items.Mote(t,"秩序护盾 ".Loc()+amount.ToString("0"),new Color(.85f,.62f,.35f));return amount;
   }
   public static int Domain(Pawn p,int ticks,float radius,float roll){
    Items.Give(p,"LP_CW_DomainBuff",ticks);int n=0;
-   if(p.Map!=null)foreach(var m in Races124.PawnsNear(p.Map,p.Position,radius).ToList()){if(!m.RaceProps.IsMechanoid || !m.HostileTo(p))continue;if((roll>=0f?roll:Rand.Value)<.3f){m.stances?.stunner?.StunFor(MechStun,p);Items.Mote(m,"停机",new Color(.85f,.62f,.35f));n++;}}
-   Items.Mote(p,"秩序领域",new Color(.85f,.62f,.35f));return n;
+   if(p.Map!=null)foreach(var m in Races124.PawnsNear(p.Map,p.Position,radius).ToList()){if(!m.RaceProps.IsMechanoid || !m.HostileTo(p))continue;if((roll>=0f?roll:Rand.Value)<.3f){m.stances?.stunner?.StunFor(MechStun,p);Items.Mote(m,"停机".Loc(),new Color(.85f,.62f,.35f));n++;}}
+   Items.Mote(p,"秩序领域".Loc(),new Color(.85f,.62f,.35f));return n;
   }
   public static List<Pawn> Legion(Pawn p,int ticks){
    var list=new List<Pawn>();
    var kind=DefDatabase<PawnKindDef>.GetNamedSilentFail("Mech_Militor")??DefDatabase<PawnKindDef>.GetNamedSilentFail("Mech_Scyther");if(kind==null)return list;
-   for(int i=0;i<LegionCount;i++){var w=ArcanaEffects.Summon(p,kind,null,ticks,true);if(w==null)continue;w.Name=new NameSingle("秩序构装 "+(i+1));list.Add(w);}
-   Items.Mote(p,"秩序军团",new Color(.85f,.62f,.35f));return list;
+   for(int i=0;i<LegionCount;i++){var w=ArcanaEffects.Summon(p,kind,null,ticks,true);if(w==null)continue;w.Name=new NameSingle("秩序构装 ".Loc()+(i+1));list.Add(w);}
+   Items.Mote(p,"秩序军团".Loc(),new Color(.85f,.62f,.35f));return list;
   }
 
   // ---------- 不倒（神迹被动、坟墓之力） ----------
@@ -133,12 +133,12 @@ namespace LichPhylactery {
   // 返回 true = 救下了（治好一半伤口 / 硬撑）。
   public static bool TryStand(Pawn p,float? roll=null){
    if(p==null || p.Dead || Users.Count==0 || !Users.Contains(p))return false;
-   if(ClassSystem.Knows(p,"LP_DS_Miracle") && UseDaily(p,"miracleStand",1)){ClassMelee.Heal(p,ClassMelee.InjurySum(p)*.5f);Items.Give(p,"LP_StaunchBleeding",2500);Items.Mote(p,"神迹：站起",new Color(1f,.95f,.65f));return true;}
+   if(ClassSystem.Knows(p,"LP_DS_Miracle") && UseDaily(p,"miracleStand",1)){ClassMelee.Heal(p,ClassMelee.InjurySum(p)*.5f);Items.Give(p,"LP_StaunchBleeding",2500);Items.Mote(p,"神迹：站起".Loc(),new Color(1f,.95f,.65f));return true;}
    if(ClassSystem.Knows(p,"LP_SM_EyesDark")){
     lastHit.TryGetValue(p.thingIDNumber,out var d);if(Holy(d))return false;
     if(!UseDaily(p,"grave",1))return false;
-    if((roll??Rand.Value)>=GraveChance){Items.Mote(p,"坟墓之力没撑住",Color.gray);return false;}
-    ClassMelee.Heal(p,ClassMelee.InjurySum(p)*.25f);Items.Give(p,"LP_StaunchBleeding",2500);Items.Mote(p,"坟墓之力",new Color(.6f,.45f,.85f));return true;
+    if((roll??Rand.Value)>=GraveChance){Items.Mote(p,"坟墓之力没撑住".Loc(),Color.gray);return false;}
+    ClassMelee.Heal(p,ClassMelee.InjurySum(p)*.25f);Items.Give(p,"LP_StaunchBleeding",2500);Items.Mote(p,"坟墓之力".Loc(),new Color(.6f,.45f,.85f));return true;
    }
    return false;
   }
@@ -147,7 +147,7 @@ namespace LichPhylactery {
    if(Users.Count==0 || v?.Map==null || v.Faction==null)return false;
    foreach(var c in Users)if(c!=null && !c.Dead && c.Map==v.Map && c.Faction==v.Faction && ClassSystem.Knows(c,"LP_CW_Balance") && DailyLeft(c,"balance",BalancePerDay)>0){
     UseDaily(c,"balance",BalancePerDay);bool ok=(roll??TestRoll??Rand.Value)<Legendary.SaveChance(v,a,dc,source);
-    Items.Mote(v,ok?"秩序之手：重判成功":"秩序之手：重判失败",new Color(.85f,.62f,.35f));return ok;
+    Items.Mote(v,ok?"秩序之手：重判成功".Loc():"秩序之手：重判失败".Loc(),new Color(.85f,.62f,.35f));return ok;
    }
    return false;
   }
@@ -166,13 +166,13 @@ namespace LichPhylactery {
    if(Subclass5.Users.Contains(v)){
     Subclass5.NoteHit(v,dinfo.Def);
     if(Items.Has(v,"LP_SM_Form") && dinfo.Def.harmsHealth){
-     if(a!=null && a.HostileTo(v) && dinfo.Def.isRanged && Subclass5.Dark(v) && Rand.Chance(Subclass5.FormMiss)){absorbed=true;Items.Mote(v,"落空",new Color(.6f,.45f,.85f));return false;}
+     if(a!=null && a.HostileTo(v) && dinfo.Def.isRanged && Subclass5.Dark(v) && Rand.Chance(Subclass5.FormMiss)){absorbed=true;Items.Mote(v,"落空".Loc(),new Color(.6f,.45f,.85f));return false;}
      if(!Subclass5.FormBypass(dinfo.Def))dinfo.SetAmount(dinfo.Amount*Subclass5.FormFactor);
     }
     if(a!=null && a.RaceProps.IsMechanoid && Items.Has(v,"LP_CW_Affinity"))dinfo.SetAmount(dinfo.Amount*Subclass5.MechFactor);
    }
    if(a!=null && a!=v && Subclass5.Users.Contains(a) && dinfo.Def.harmsHealth && ClassSubclass.Has(a,Subclass5.DivineSoul) && Subclass5.Affinity(a)==1 && v.RaceProps.IsFlesh && a.CurJob?.ability!=null)dinfo.SetAmount(dinfo.Amount*Subclass5.TwilightDamage);
-   if(a!=null && Items.Has(a,"LP_SM_HoundMark") && v.HostileTo(a) && Rand.Chance(Subclass5.HoundFear)){var vv=v;Fiends.Defer(()=>ClassSubclass.Fear(vv,Subclass5.HoundFearTicks,"影犬"));}
+   if(a!=null && Items.Has(a,"LP_SM_HoundMark") && v.HostileTo(a) && Rand.Chance(Subclass5.HoundFear)){var vv=v;Fiends.Defer(()=>ClassSubclass.Fear(vv,Subclass5.HoundFearTicks,"影犬".Loc()));}
    return true;
   }
  }
@@ -215,7 +215,7 @@ namespace LichPhylactery {
    if(Adventurer.TestSuppressed)return;
    var who=PawnsFinder.AllMaps_FreeColonists.Where(p=>{var h=Adventurer.Get(p);return h!=null && Subclass5.Sorcerer!=null && ClassSystem.Level(h,Subclass5.Sorcerer)>=ClassSubclass.PickLevelFor(Subclass5.Sorcerer) && ClassSubclass.Picked(h,Subclass5.Sorcerer)==null;}).ToList();
    if(who.Count==0)return;
-   Find.LetterStack.ReceiveLetter("新的术士子职业","术士多了三个子职业可选：神圣之魂、暗影魔法、时钟之魂。\n\n还没选子职业的术士："+string.Join("、",who.Select(p=>p.LabelShort))+"。选中他们，用「选择子职业」按钮打开窗口。",LetterDefOf.NeutralEvent,new LookTargets(who.Cast<Thing>()));
+   Find.LetterStack.ReceiveLetter("新的术士子职业".Loc(),"术士多了三个子职业可选：神圣之魂、暗影魔法、时钟之魂。\n\n还没选子职业的术士：".Loc()+string.Join("、".Loc(),who.Select(p=>p.LabelShort))+"。选中他们，用「选择子职业」按钮打开窗口。".Loc(),LetterDefOf.NeutralEvent,new LookTargets(who.Cast<Thing>()));
   }
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref notified,"lpSub5Notified");}
  }

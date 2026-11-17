@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 法术区域 -->
+  <LP_WS_SpellZone.label>spell zone</LP_WS_SpellZone.label>
+  <!-- 一片持续生效的法术区域。 -->
+  <LP_WS_SpellZone.description>A spell area with a lasting effect.</LP_WS_SpellZone.description>
+  <!-- 法术书残页（一环） -->
+  <LP_WS_SpellPageA.label>spellbook page (circle 1)</LP_WS_SpellPageA.label>
+  <!-- 从别人的法术书上撕下来的一页，抄着一个一环法师法术（检视时能看到是哪个）。法师可以在卷轴书桌上把它抄进自己的法术书。 -->
+  <LP_WS_SpellPageA.description>A page torn from someone else's spellbook, holding a circle 1 wizard spell (inspect to see which). A wizard can copy it into their own spellbook at the scroll desk.</LP_WS_SpellPageA.description>
+  <!-- 法术书残页（二环） -->
+  <LP_WS_SpellPageB.label>spellbook page (circle 2)</LP_WS_SpellPageB.label>
+  <!-- 从别人的法术书上撕下来的一页，抄着一个二环法师法术（检视时能看到是哪个）。法师 3 级起可以在卷轴书桌上把它抄进自己的法术书。 -->
+  <LP_WS_SpellPageB.description>A page torn from someone else's spellbook, holding a circle 2 wizard spell (inspect to see which). From wizard level 3, a wizard can copy it into their own spellbook at the scroll desk.</LP_WS_SpellPageB.description>
+  <!-- 法术书残页（三环） -->
+  <LP_WS_SpellPageC.label>spellbook page (circle 3)</LP_WS_SpellPageC.label>
+  <!-- 从别人的法术书上撕下来的一页，抄着一个三环法师法术（检视时能看到是哪个）。法师 5 级起可以在卷轴书桌上把它抄进自己的法术书。 -->
+  <LP_WS_SpellPageC.description>A page torn from someone else's spellbook, holding a circle 3 wizard spell (inspect to see which). From wizard level 5, a wizard can copy it into their own spellbook at the scroll desk.</LP_WS_SpellPageC.description>
+</LanguageData>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 怪物巢穴 -->
+  <LP_QB_MonsterLair.label>monster nest</LP_QB_MonsterLair.label>
+  <!-- 探索公告板上悬赏的怪物盘踞在这里。 -->
+  <LP_QB_MonsterLair.description>The monsters bountied on the exploration board lurk here.</LP_QB_MonsterLair.description>
+  <!-- 正在讨伐{0}。 -->
+  <LP_QB_MonsterLair.approachingReportString>Hunting down {0}.</LP_QB_MonsterLair.approachingReportString>
+  <!-- 讨伐{0} -->
+  <LP_QB_MonsterLair.approachOrderString>hunt down {0}</LP_QB_MonsterLair.approachOrderString>
+  <!-- 这里就是悬赏里的怪物巢穴。消灭所有怪物（杀死或打倒）就算完成委托。 -->
+  <LP_QB_MonsterLair.arrivedLetter>This is the monster nest from the bounty. Wipe out every monster (killed or downed) to complete the commission.</LP_QB_MonsterLair.arrivedLetter>
+</LanguageData>

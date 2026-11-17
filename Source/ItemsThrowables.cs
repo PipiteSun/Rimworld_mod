@@ -83,7 +83,7 @@ namespace LichPhylactery {
    float hf=Outsiders.HolyFactor(p);if(hf!=1f)dinfo.SetAmount(dinfo.Amount*hf); // 1.54.0：倍率读外来者扩展（九狱之躯 / 深渊之躯 ×2）
    var result=base.Apply(dinfo,thing);
    var lich=Necro.Lich(p);
-   if(lich!=null && p.psychicEntropy!=null){p.psychicEntropy.OffsetPsyfocusDirectly(-ItemThrowables.HolyFocusDrain/lich.Power);Items.Mote(p,"-"+ItemThrowables.HolyFocusDrain.ToString("0")+"精神力",new Color(1f,.95f,.6f));}
+   if(lich!=null && p.psychicEntropy!=null){p.psychicEntropy.OffsetPsyfocusDirectly(-ItemThrowables.HolyFocusDrain/lich.Power);Items.Mote(p,"-"+ItemThrowables.HolyFocusDrain.ToString("0")+"精神力".Loc(),new Color(1f,.95f,.6f));}
    return result;
   }
  }

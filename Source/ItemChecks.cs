@@ -232,21 +232,17 @@ namespace LichPhylactery {
    Check(Near(slow.GetStatValue(StatDefOf.MoveSpeed)/ms,.3f) && TicksLeft(slow,"LP_Tanglefoot")==600,"tanglefoot cuts movement by 70% for 10 seconds");
    Check(big.BodySize>2 && Near(big.GetStatValue(StatDefOf.MoveSpeed)/bms,.65f),"tanglefoot only half-slows creatures larger than body size 2");
    slow.Destroy();big.Destroy();
-   // 驱散粉尘：护盾腰带30秒停摆后恢复，力能龙偏折失效，5×5。
+   // 驱散粉尘：护盾腰带30秒停摆后恢复，5×5。
    var belted=ItemPawn(spot);var belt=(Apparel)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("Apparel_ShieldBelt"));belted.apparel.Wear(belt);var shield=belt.GetComp<CompShield>();
    AccessTools.Field(typeof(CompShield),"energy").SetValue(shield,(float)AccessTools.Property(typeof(CompShield),"EnergyMax").GetValue(shield));float energy=shield.Energy;
    Check(shield.ShieldState==ShieldState.Active,"shield belt fixture is active");
-   var dragon=RacePawn("LP_ForceDragon");Place(dragon,spot+IntVec3.North*2);dragon.jobs.StopAll();ForceDragon.Heart(dragon).SetAge(3);ForceDragon.Heart(dragon).Value=ForceDragon.Heart(dragon).Max;
    var far=ItemPawn(spot+IntVec3.East*4);
    ItemThrowables.Dispel(map,spot);
    Check(shield.ShieldState==ShieldState.Disabled && Items.Dispelled(belted) && TicksLeft(belted,"LP_MagicDispelled")==1800,"dispel dust shuts the shield belt down for 30 seconds");
    Check(!Items.Dispelled(far),"dispel dust reaches 5x5 only");
-   var shot=new DamageInfo(DamageDefOf.Bullet,5f,0f,-1f,far,null,DefDatabase<ThingDef>.GetNamed("Gun_Revolver"));int avoided=0;for(int i=0;i<200;i++)if(ForceDragon.Avoid(dragon,shot)!=null)avoided++;
-   Check(avoided==0,"dispelled force dragon cannot deflect, blur or displace");
-   Items.Remove(dragon,"LP_MagicDispelled");avoided=0;for(int i=0;i<200;i++)if(ForceDragon.Avoid(dragon,shot)!=null)avoided++;Check(avoided>20,"force dragon defenses return once the dispel ends ("+avoided+"/200)");
    var timer=((HediffWithComps)belted.health.hediffSet.GetFirstHediffOfDef(Items.Hediff("LP_MagicDispelled"))).TryGetComp<HediffComp_Disappears>();timer.ticksToDisappear=2;Step(3);
    Check(!Items.Dispelled(belted) && shield.ShieldState==ShieldState.Active && Near(shield.Energy,energy),"shield belt recovers with its energy after the dispel ends");
-   belted.Destroy();dragon.Destroy();far.Destroy();
+   belted.Destroy();far.Destroy();
    // 掉落（1.143.0：炼金之火、圣水已移除，投弹手不再出现）。
    var orc=SharedPawn();orc.kindDef=PawnKindDef.Named("LP_FH_OrcWarrior");Check(ItemGear.GrenadeFor(orc,.01f)==null,"no grenadiers after the alchemy throwables were removed");
    orc.SetFaction(EnemyFaction());var carried=ItemGear.Carry(orc,.01f);Check(carried?.def.defName=="LP_Thunderstone" && orc.inventory.innerContainer.Contains(carried),"enemies sometimes carry a thunderstone that drops on death");
@@ -255,7 +251,7 @@ namespace LichPhylactery {
   }
 
   // ---------- 新材料 ----------
-  public static readonly string[] ItemMaterialDefs={"LP_LavaCrystal","LP_DragonShed","LP_TrollHide","LP_Mithral","LP_Adamantine","LP_ColdIron"};
+  public static readonly string[] ItemMaterialDefs={"LP_LavaCrystal","LP_TrollHide","LP_Mithral","LP_Adamantine","LP_ColdIron"};
   void CheckMaterials(){
    foreach(var name in ItemMaterialDefs){
     var d=DefDatabase<ThingDef>.GetNamed(name);
@@ -283,19 +279,6 @@ namespace LichPhylactery {
    Check(lava>20 && lava<75,"molten forge work yields lava crystals about 15% of the time ("+lava+"/300)");
    int none=0;foreach(var t in GenRecipe.MakeRecipeProducts(recipe,human,new List<Thing>{cloth},cloth,(IBillGiver)forge,null,null,null).ToList()){if(t.def==ItemMaterials.Lava)none++;t.Destroy();}Check(none==0,"non-giants never get lava crystals");
    giant.Destroy();forge.Destroy();table.Destroy();cloth.Destroy();
-   // 龙鳞蜕：晋升蜕3片，宝库住满60天蜕1片，卖掉记仇。
-   var dragon=RacePawn("LP_ForceDragon");Place(dragon,spot);Hold(dragon);var heart=ForceDragon.Heart(dragon);heart.SetAge(1);
-   int Sheds()=>map.listerThings.ThingsOfDef(ItemMaterials.Shed).Sum(t=>t.stackCount);int s0=Sheds();
-   heart.daysOnHoard=ForceDragon.DaysNeeded(1)+1;heart.hoardValue=ForceDragon.HoardNeeded(1)+1;Check(heart.TryAdvance() && heart.Age==2 && Sheds()==s0+3,"advancing a dragon age sheds 3 dragon scales");
-   foreach(var t in map.listerThings.ThingsOfDef(ItemMaterials.Shed).ToList())t.Destroy();dragon.Destroy();
-   dragon=RacePawn("LP_ForceDragon");heart=ForceDragon.Heart(dragon);heart.SetAge(1);var built=DragonHoard.BuildHoard(map,map.Center,dragon,out var interior);
-   Place(dragon,interior.CenterCell);Hold(dragon);heart.RefreshHoard();Check(heart.hasHoard,"shed fixture dragon has a hoard");
-   heart.daysOnHoard=59.99f;heart.Hourly(2500);Check(Sheds()==1 && heart.daysOnHoard>60f,"a dragon living in its hoard sheds one scale every 60 days");
-   heart.Hourly(2500);Check(Sheds()==1,"no extra scale until the next 60 days");
-   var mem=dragon.needs.mood.thoughts.memories;int stolen=mem.Memories.Count(x=>x.def==DragonHoard.Stolen);
-   Check(ItemMaterials.ShedSold().Contains(dragon) && mem.Memories.Count(x=>x.def==DragonHoard.Stolen)==stolen+1,"selling dragon scales offends the colony's dragons");
-   Check(Harmony.GetPatchInfo(AccessTools.Method(typeof(Pawn_TraderTracker),nameof(Pawn_TraderTracker.GiveSoldThingToTrader)))?.Prefixes.Any(x=>x.PatchMethod.DeclaringType==typeof(DragonShedSale))==true,"dragon scale sale is hooked into caravan trading");
-   foreach(var t in map.listerThings.ThingsOfDef(ItemMaterials.Shed).ToList())t.Destroy();foreach(var t in built)if(!t.Destroyed)t.Destroy();foreach(var c in interior.Cells)map.roofGrid.SetRoof(c,null);dragon.Destroy();
    // 巨魔皮：屠宰巨魔得到巨魔皮；巨魔皮服装每天恢复1%耐久。
    var troll=RacePawn("LP_Troll");Place(troll,spot);troll.Kill(null);var products=troll.Corpse.ButcherProducts(human,1f).ToList();
    Check(products.Any(t=>t.def==ItemMaterials.TrollHide) && !products.Any(t=>t.def.defName=="Leather_Human"),"butchering a troll yields troll hide instead of human leather");

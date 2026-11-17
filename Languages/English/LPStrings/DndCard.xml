@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（DndCard.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>（传奇等级 </zh><en> (legend level </en></s>
+  <s><zh>\n传奇：</zh><en>\nLegend: </en></s>
+  <s><zh>熟练加值</zh><en>proficiency bonus</en></s>
+  <s><zh>，各种加成后 </zh><en>, after all bonuses </en></s>
+  <s><zh>；效果调整值（含种族亲和）</zh><en>; effect modifier (including racial affinity)</en></s>
+  <s><zh>还没有学职业</zh><en>No class learned yet</en></s>
+  <s><zh>传奇职业能力</zh><en>Legendary class abilities</en></s>
+  <s><zh>（未用点数 </zh><en> (unspent points </en></s>
+  <s><zh>起源专长</zh><en>Origin feat</en></s>
+  <s><zh>史诗恩赐</zh><en>Epic boons</en></s>
+  <s><zh>（未用 </zh><en> (unspent </en></s>
+  <s><zh>调谐与信仰</zh><en>Attunement and faith</en></s>
+  <s><zh>调谐位</zh><en>Attunement slots</en></s>
+  <s><zh>稀有档和神器档植入物占调谐位。</zh><en>Rare and artifact tier implants take attunement slots.</en></s>
+  <s><zh>虔信 </zh><en>Devotion </en></s>
+  <s><zh>秘传与湖印</zh><en>Arcana and lake seals</en></s>
+  <s><zh>湖印</zh><en>Lake seals</en></s>
+  <s><zh>法术 </zh><en>Spells </en></s>
+  <s><zh>，被动 </zh><en>, passives </en></s>
+  <s><zh>职业强度（悬停看分项来源）</zh><en>Class power (hover to see sources)</en></s>
+  <s><zh>强度</zh><en>Power</en></s>
+  <s><zh>没有职业强度</zh><en>No class power</en></s>
+  <s><zh> · DND 角色卡</zh><en> · DND character sheet</en></s>
+  <s><zh>技能可对任何人释放</zh><en>Abilities castable on anyone</en></s>
+  <s><zh>1.136.0：DND 职业能力、法术、秘传、湖印可以对任何小人施放（殖民者、访客、中立、囚犯、奴隶、动物、机械体）：伤害 / 控制类可以打自己人，治疗 / 增益可以给敌人。范围效果里其他人照旧按敌我分；纯自身、地面、尸体、建筑类目标不变。NPC 和自动施放仍按原来的规则挑目标。</zh><en>1.136.0: DND class abilities, spells, arcana and lake seals can be cast on any pawn (colonists, visitors, neutrals, prisoners, slaves, animals, mechanoids): damage / control can hit your own people, and heals / buffs can go to enemies. Other people in area effects are still sorted by friend or foe; pure self, ground, corpse and building targets are unchanged. NPCs and autocast still pick targets by the old rules.</en></s>
+  <s><zh>殖民者头像资源条</zh><en>Colonist portrait resource bar</en></s>
+  <s><zh>1.136.0：殖民者头像下面画一条细资源条，显示主资源（等级最高、有资源的职业：法力 / 斗志 / 神恩 / 气 / 乐韵 / 契约法力 / 怒气；没有就显示法术能量或湖息）。</zh><en>1.136.0: draws a thin resource bar under colonist portraits, showing the main resource (the highest-level class with a resource: mana / fighting spirit / divine favor / ki / rhythm / pact mana / rage; otherwise spell energy or lake breath).</en></s>
+</LPStrings>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 抄写恐惧凝视卷轴 -->
+  <LP_ScribeFearGaze.label>copy scroll of fear gaze</LP_ScribeFearGaze.label>
+  <!-- 巫妖消耗30点精神力和20份布，把恐惧凝视写成卷轴，给非巫妖使用。只有巫妖能做。 -->
+  <LP_ScribeFearGaze.description>A lich spends 30 psyfocus and 20 cloth to write Fear Gaze into a scroll for non-liches to use. Only liches can make it.</LP_ScribeFearGaze.description>
+  <!-- 正在抄写恐惧凝视卷轴。 -->
+  <LP_ScribeFearGaze.jobString>Copying a scroll of fear gaze.</LP_ScribeFearGaze.jobString>
+  <!-- 抄写死灵冲击卷轴 -->
+  <LP_ScribeNecroticBlast.label>copy scroll of necrotic blast</LP_ScribeNecroticBlast.label>
+  <!-- 巫妖消耗30点精神力和20份布，把死灵冲击写成卷轴，给非巫妖使用。只有巫妖能做。 -->
+  <LP_ScribeNecroticBlast.description>A lich spends 30 psyfocus and 20 cloth to write Necrotic Blast into a scroll for non-liches to use. Only liches can make it.</LP_ScribeNecroticBlast.description>
+  <!-- 正在抄写死灵冲击卷轴。 -->
+  <LP_ScribeNecroticBlast.jobString>Copying a scroll of necrotic blast.</LP_ScribeNecroticBlast.jobString>
+</LanguageData>

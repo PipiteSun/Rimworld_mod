@@ -35,7 +35,7 @@ namespace LichPhylactery {
   [HarmonyPriority(Priority.Low)]
   static bool Prefix(MentalStateDef stateDef,Pawn ___pawn,object[] __args,ref bool __result){
    if(stateDef==null || !Psycast(__args) || !ExternalControl.Covers(___pawn) || !DNDMind.TryResist(___pawn))return true;
-   Items.Mote(___pawn,"抵抗！",new Color(.7f,.85f,1f));__result=false;return false;
+   Items.Mote(___pawn,"抵抗！".Loc(),new Color(.7f,.85f,1f));__result=false;return false;
   }
   static void Postfix(Pawn ___pawn,object[] __args,bool __result){
    if(__result && Psycast(__args) && ExternalControl.Covers(___pawn) && ___pawn.MentalState!=null && ExternalControl.Cut(___pawn)>0f)ExternalControl.pending.Add(___pawn.MentalState);

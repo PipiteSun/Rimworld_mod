@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 战士 -->
+  <LP_Path_Fighter.label>fighter</LP_Path_Fighter.label>
+  <!-- DND 战士的战技。格斗支：回气、战吼、冲锋、绊摔、动作如潮、武器专精、不屈意志、缴械击、旋风斩、守护姿态，终极 战意再临；射击支（1.53.0）：稳固瞄准、压制射击、精准射击、连射，终极 死神之眼。格斗或射击任一 6 级即可入门；格斗支的强度看“战技强度”，射击支看“射术强度”，回气、战吼看两者里较高的一项。学习每一环都需要那一支对应的技能等级（6/9/12/15/18）。物理路径：打仗回精神力（斗志）、额外攻击、战斗风格。 -->
+  <LP_Path_Fighter.description>Martial techniques of the DND fighter. Melee branch: Second Wind, War Cry, Charge, Trip Attack, Action Surge, Weapon Specialization, Indomitable, Disarming Strike, Whirlwind Attack, Guardian Stance, and ultimately Renewed Fighting Spirit; Shooting branch (1.53.0): Steady Aim, Suppressing Fire, Precise Shot, Rapid Shot, and ultimately Eye of Death. Either Melee or Shooting 6 unlocks the path; the Melee branch uses "martial power", the Shooting branch "marksman power", and Second Wind and War Cry use the higher of the two. Each tier requires the matching skill level of that branch (6/9/12/15/18). Martial path: regain psyfocus by fighting (grit), Extra Attack, fighting style.</LP_Path_Fighter.description>
+  <!-- 需要格斗或射击 6 级（或冒险者力量/敏捷 13） -->
+  <LP_Path_Fighter.lockedReason>Requires Melee or Shooting 6 (or adventurer Strength/Dexterity 13)</LP_Path_Fighter.lockedReason>
+  <!-- DND职业 -->
+  <LP_Path_Fighter.tab>DND classes</LP_Path_Fighter.tab>
+  <!-- 战士：格斗支看格斗，射击支看射击。 -->
+  <LP_Path_Fighter.tooltip>Fighter: the Melee branch uses Melee, the Shooting branch uses Shooting.</LP_Path_Fighter.tooltip>
+  <!-- 法师 -->
+  <LP_Path_Wizard.label>wizard</LP_Path_Wizard.label>
+  <!-- DND 法师的奥术：魔法飞弹、法师护甲、火球术、睡眠术、闪电束、急速术、石墙术、传送术与解离术。法术强度看“奥术强度”（随智识等级增长），伤害再乘心灵敏感度（最低 0.2，不封顶），精神力和心灵熵消耗高。学习每一环的法术都需要对应的智识等级（6/9/12/15/18）。 -->
+  <LP_Path_Wizard.description>The arcane magic of the DND wizard: Magic Missile, Mage Armor, Fireball, Sleep, Lightning Bolt, Haste, Wall of Stone, Teleport and Disintegrate. Spell power uses "arcane power" (grows with Intellectual level); damage is also multiplied by psychic sensitivity (minimum 0.2, no cap), with high psyfocus and neural heat costs. Each tier of spells requires the matching Intellectual level (6/9/12/15/18).</LP_Path_Wizard.description>
+  <!-- 需要智识 6 级（或冒险者智力 13） -->
+  <LP_Path_Wizard.lockedReason>Requires Intellectual 6 (or adventurer Intelligence 13)</LP_Path_Wizard.lockedReason>
+  <!-- DND职业 -->
+  <LP_Path_Wizard.tab>DND classes</LP_Path_Wizard.tab>
+  <!-- 法师：智识决定奥术强度与可学的法术。 -->
+  <LP_Path_Wizard.tooltip>Wizard: Intellectual sets arcane power and learnable spells.</LP_Path_Wizard.tooltip>
+  <!-- 牧师 -->
+  <LP_Path_Cleric.label>cleric</LP_Path_Cleric.label>
+  <!-- DND 牧师的神术：治疗伤口、祝福、次级复原术、神导术、神圣打击、驱散亡灵、群体治疗、死亡守卫与复生术。神术强度看“神恩强度”（随社交等级增长），伤害与治疗量再乘心灵敏感度（最低 0.2，不封顶）。学习每一环的神术都需要对应的社交等级（6/9/12/15/18）。 -->
+  <LP_Path_Cleric.description>The divine magic of the DND cleric: Cure Wounds, Bless, Lesser Restoration, Guidance, Divine Strike, Turn Undead, Mass Cure Wounds, Death Ward and Revivify. Divine power uses "divine power" (grows with Social level); damage and healing are also multiplied by psychic sensitivity (minimum 0.2, no cap). Each tier of divine spells requires the matching Social level (6/9/12/15/18).</LP_Path_Cleric.description>
+  <!-- 需要社交 6 级（或冒险者感知 13） -->
+  <LP_Path_Cleric.lockedReason>Requires Social 6 (or adventurer Wisdom 13)</LP_Path_Cleric.lockedReason>
+  <!-- DND职业 -->
+  <LP_Path_Cleric.tab>DND classes</LP_Path_Cleric.tab>
+  <!-- 牧师：社交决定神恩强度与可学的神术。 -->
+  <LP_Path_Cleric.tooltip>Cleric: Social sets divine power and learnable divine spells.</LP_Path_Cleric.tooltip>
+</LanguageData>

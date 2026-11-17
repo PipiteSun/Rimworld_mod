@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 附魔首饰：抗火戒指 -->
+  <LP_EnchantJewelry_Fire.label>enchant jewelry: ring of fire resistance</LP_EnchantJewelry_Fire.label>
+  <!-- 把一枚珠宝戒指、2颗红宝石和10化合燃料附魔成抗火戒指（原首饰消耗）。 -->
+  <LP_EnchantJewelry_Fire.description>Enchant a jewelry ring, 2 rubies and 10 chemfuel into a ring of fire resistance (the original jewelry is consumed).</LP_EnchantJewelry_Fire.description>
+  <!-- 正在附魔首饰。 -->
+  <LP_EnchantJewelry_Fire.jobString>Enchanting jewelry.</LP_EnchantJewelry_Fire.jobString>
+  <!-- 附魔首饰：抗寒戒指 -->
+  <LP_EnchantJewelry_Cold.label>enchant jewelry: ring of cold resistance</LP_EnchantJewelry_Cold.label>
+  <!-- 把一枚珠宝戒指、2颗蓝宝石和5份寒铁附魔成抗寒戒指（原首饰消耗）。 -->
+  <LP_EnchantJewelry_Cold.description>Enchant a jewelry ring, 2 sapphires and 5 cold iron into a ring of cold resistance (the original jewelry is consumed).</LP_EnchantJewelry_Cold.description>
+  <!-- 正在附魔首饰。 -->
+  <LP_EnchantJewelry_Cold.jobString>Enchanting jewelry.</LP_EnchantJewelry_Cold.jobString>
+  <!-- 附魔首饰：抗酸戒指 -->
+  <LP_EnchantJewelry_Acid.label>enchant jewelry: ring of acid resistance</LP_EnchantJewelry_Acid.label>
+  <!-- 把一枚珠宝戒指、2块玉石和10化合燃料附魔成抗酸戒指（原首饰消耗）。 -->
+  <LP_EnchantJewelry_Acid.description>Enchant a jewelry ring, 2 jade and 10 chemfuel into a ring of acid resistance (the original jewelry is consumed).</LP_EnchantJewelry_Acid.description>
+  <!-- 正在附魔首饰。 -->
+  <LP_EnchantJewelry_Acid.jobString>Enchanting jewelry.</LP_EnchantJewelry_Acid.jobString>
+  <!-- 附魔首饰：守护戒指 -->
+  <LP_EnchantJewelry_Protection.label>enchant jewelry: ring of protection</LP_EnchantJewelry_Protection.label>
+  <!-- 把一枚珠宝戒指、2颗钻石和10化合燃料附魔成守护戒指（原首饰消耗）。 -->
+  <LP_EnchantJewelry_Protection.description>Enchant a jewelry ring, 2 diamonds and 10 chemfuel into a ring of protection (the original jewelry is consumed).</LP_EnchantJewelry_Protection.description>
+  <!-- 正在附魔首饰。 -->
+  <LP_EnchantJewelry_Protection.jobString>Enchanting jewelry.</LP_EnchantJewelry_Protection.jobString>
+</LanguageData>

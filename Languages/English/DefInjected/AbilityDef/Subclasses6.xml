@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 战斗变形 -->
+  <LP_MO_CombatShape.label>combat wild shape</LP_MO_CombatShape.label>
+  <!-- 化为猛兽 1 小时：近战伤害 ×1.4、护甲 +15%、移动 ×1.15。法力 1，冷却 10 秒。月亮结社，德鲁伊 2 级。 -->
+  <LP_MO_CombatShape.description>Become a fierce beast for 1 hour: melee damage ×1.4, armor +15%, movement ×1.15. Mana 1, cooldown 10 seconds. Circle of the Moon, druid level 2.</LP_MO_CombatShape.description>
+  <!-- 原初打击 -->
+  <LP_MO_PrimalStrike.label>primal strike</LP_MO_PrimalStrike.label>
+  <!-- 被动：战斗变形或元素之形中，近战攻击的护甲穿透 +30%。月亮结社，德鲁伊 6 级。 -->
+  <LP_MO_PrimalStrike.description>Passive: in combat wild shape or elemental form, melee armor penetration +30%. Circle of the Moon, druid level 6.</LP_MO_PrimalStrike.description>
+  <!-- 元素荒野变形 -->
+  <LP_MO_ElementalForm.label>elemental wild shape</LP_MO_ElementalForm.label>
+  <!-- 化为元素 1 小时：火焰与寒冷伤害减半，半径 2 内的敌人每 2 秒受 6 × 翠绿强度 的灼烧。法力 2，冷却 30 秒。月亮结社，德鲁伊 10 级。 -->
+  <LP_MO_ElementalForm.description>Become an elemental for 1 hour: fire and cold damage halved, enemies within radius 2 take 6 × verdant power burn damage every 2 seconds. Mana 2, cooldown 30 seconds. Circle of the Moon, druid level 10.</LP_MO_ElementalForm.description>
+  <!-- 千面变形 -->
+  <LP_MO_ThousandForms.label>thousand forms</LP_MO_ThousandForms.label>
+  <!-- 被动：变形中每 250 刻治疗 3 + 德鲁伊等级 × 0.3 点伤势。月亮结社，德鲁伊 14 级。 -->
+  <LP_MO_ThousandForms.description>Passive: while shapeshifted, heal 3 + druid level × 0.3 injury every 250 ticks. Circle of the Moon, druid level 14.</LP_MO_ThousandForms.description>
+  <!-- 精益求精 -->
+  <LP_CP_ImprovedCritical.label>improved critical</LP_CP_ImprovedCritical.label>
+  <!-- 被动：武器命中有 10% 造成双倍伤害（15 级卓越生存者后 15%）。勇士，战士 3 级。 -->
+  <LP_CP_ImprovedCritical.description>Passive: weapon hits have a 10% chance to deal double damage (15% after superior survivor at level 15). Champion, fighter level 3.</LP_CP_ImprovedCritical.description>
+  <!-- 卓越运动家 -->
+  <LP_CP_Athlete.label>remarkable athlete</LP_CP_Athlete.label>
+  <!-- 被动：移动 +0.3、负重 +15、近战闪避 +5。勇士，战士 7 级。 -->
+  <LP_CP_Athlete.description>Passive: movement +0.3, carry capacity +15, melee dodge +5. Champion, fighter level 7.</LP_CP_Athlete.description>
+  <!-- 额外战斗风格 -->
+  <LP_CP_SecondStyle.label>additional fighting style</LP_CP_SecondStyle.label>
+  <!-- 被动：近战命中 ×1.08、射击精度 ×1.08，护甲 +5%。勇士，战士 11 级。 -->
+  <LP_CP_SecondStyle.description>Passive: melee hit ×1.08, shooting accuracy ×1.08, armor +5%. Champion, fighter level 11.</LP_CP_SecondStyle.description>
+  <!-- 卓越生存者 -->
+  <LP_CP_Survivor.label>survivor</LP_CP_Survivor.label>
+  <!-- 被动：伤势总量超过 20 时，每 250 刻治疗 5 + 体质调整值 点；精益求精的双倍伤害几率提到 15%。勇士，战士 15 级。 -->
+  <LP_CP_Survivor.description>Passive: while total injuries exceed 20, heal 5 + Constitution modifier every 250 ticks; improved critical's double damage chance rises to 15%. Champion, fighter level 15.</LP_CP_Survivor.description>
+  <!-- 神圣武器 -->
+  <LP_DT_SacredWeapon.label>sacred weapon</LP_DT_SacredWeapon.label>
+  <!-- 圣化武器 30 秒：近战命中 +25%，每 2 秒第一次武器命中附加 6 × 神恩强度 光耀伤害（对亡灵、邪魔翻倍）。神恩 1，冷却 30 秒。奉献之誓，圣武士 3 级。 -->
+  <LP_DT_SacredWeapon.description>Sanctify your weapon for 30 seconds: melee hit +25%, the first weapon hit every 2 seconds adds 6 × divine power radiant damage (doubled against undead and fiends). Divinity 1, cooldown 30 seconds. Oath of Devotion, paladin level 3.</LP_DT_SacredWeapon.description>
+  <!-- 驱散邪秽 -->
+  <LP_DT_TurnUnholy.label>turn the unholy</LP_DT_TurnUnholy.label>
+  <!-- 半径 6 内的敌对亡灵逃跑 10 秒。神恩 1，冷却 30 秒。奉献之誓，圣武士 3 级。 -->
+  <LP_DT_TurnUnholy.description>Hostile undead within radius 6 flee for 10 seconds. Divinity 1, cooldown 30 seconds. Oath of Devotion, paladin level 3.</LP_DT_TurnUnholy.description>
+  <!-- 奉献灵光 -->
+  <LP_DT_AuraDevotion.label>aura of devotion</LP_DT_AuraDevotion.label>
+  <!-- 被动：3 格内的友军心智抗性 +30%、崩溃阈值 −5%。奉献之誓，圣武士 7 级。 -->
+  <LP_DT_AuraDevotion.description>Passive: allies within 3 cells get mind resistance +30%, break threshold -5%. Oath of Devotion, paladin level 7.</LP_DT_AuraDevotion.description>
+  <!-- 净化之触 -->
+  <LP_DT_PurityOfSpirit.label>purifying touch</LP_DT_PurityOfSpirit.label>
+  <!-- 净化 12 格内一名友军（可以是自己）：清除毒素、震慑、恐慌。神恩 1，冷却 20 秒。奉献之誓，圣武士 11 级。 -->
+  <LP_DT_PurityOfSpirit.description>Purify one ally within 12 cells (can be yourself): removes toxins, shaken and panic. Divinity 1, cooldown 20 seconds. Oath of Devotion, paladin level 11.</LP_DT_PurityOfSpirit.description>
+  <!-- 神圣光轮 -->
+  <LP_DT_HolyNimbus.label>holy nimbus</LP_DT_HolyNimbus.label>
+  <!-- 披上圣光 30 秒：半径 3 内的敌人每 2 秒受 8 × 神恩强度 光耀伤害（对亡灵、邪魔翻倍），自己受到的伤害 ×0.8。神恩 3，冷却 1 小时。奉献之誓，圣武士 15 级。 -->
+  <LP_DT_HolyNimbus.description>Wreathe yourself in holy light for 30 seconds: enemies within radius 3 take 8 × divine power radiant damage every 2 seconds (doubled against undead and fiends), and you take ×0.8 damage. Divinity 3, cooldown 1 hour. Oath of Devotion, paladin level 15.</LP_DT_HolyNimbus.description>
+  <!-- 复仇誓言 -->
+  <LP_VN_VowOfEnmity.label>vow of vengeance</LP_VN_VowOfEnmity.label>
+  <!-- 立誓追讨 12 格内一个敌人 1 小时：自己对它的伤害提高（随神恩强度）。神恩 1，冷却 30 秒。复仇之誓，圣武士 3 级。 -->
+  <LP_VN_VowOfEnmity.description>Swear a vow against one enemy within 12 cells for 1 hour: your damage against it rises (with divine power). Divinity 1, cooldown 30 seconds. Oath of Vengeance, paladin level 3.</LP_VN_VowOfEnmity.description>
+  <!-- 驱逐敌人 -->
+  <LP_VN_AbjureEnemy.label>abjure enemy</LP_VN_AbjureEnemy.label>
+  <!-- 怒喝一声：半径 5 内的敌人震慑 10 秒（移动 ×0.7、命中下降）。神恩 1，冷却 30 秒。复仇之誓，圣武士 3 级。 -->
+  <LP_VN_AbjureEnemy.description>A furious roar: enemies within radius 5 are shaken for 10 seconds (movement ×0.7, lower hit chance). Divinity 1, cooldown 30 seconds. Oath of Vengeance, paladin level 3.</LP_VN_AbjureEnemy.description>
+  <!-- 无情复仇者 -->
+  <LP_VN_RelentlessAvenger.label>relentless avenger</LP_VN_RelentlessAvenger.label>
+  <!-- 被动：近战命中誓仇目标时伤害 ×1.2，并且 5 秒内移动 +0.5。复仇之誓，圣武士 7 级。 -->
+  <LP_VN_RelentlessAvenger.description>Passive: melee hits on the vowed target deal ×1.2 damage, and movement +0.5 for 5 seconds. Oath of Vengeance, paladin level 7.</LP_VN_RelentlessAvenger.description>
+  <!-- 复仇之魂 -->
+  <LP_VN_SoulOfVengeance.label>soul of vengeance</LP_VN_SoulOfVengeance.label>
+  <!-- 30 秒内近战冷却 ×0.7、近战闪避 +10。神恩 2，冷却 1 小时。复仇之誓，圣武士 11 级。 -->
+  <LP_VN_SoulOfVengeance.description>For 30 seconds melee cooldown ×0.7, melee dodge +10. Divinity 2, cooldown 1 hour. Oath of Vengeance, paladin level 11.</LP_VN_SoulOfVengeance.description>
+  <!-- 复仇天使 -->
+  <LP_VN_AvengingAngel.label>avenging angel</LP_VN_AvengingAngel.label>
+  <!-- 化身复仇天使 1 小时：移动 ×1.4、近战伤害 ×1.2；展翼的瞬间半径 6 内的敌人震慑 10 秒。神恩 3，冷却 1 小时。复仇之誓，圣武士 15 级。 -->
+  <LP_VN_AvengingAngel.description>Become an avenging angel for 1 hour: movement ×1.4, melee damage ×1.2; the moment the wings spread, enemies within radius 6 are shaken for 10 seconds. Divinity 3, cooldown 1 hour. Oath of Vengeance, paladin level 15.</LP_VN_AvengingAngel.description>
+  <!-- 战争祭司 -->
+  <LP_WD_WarPriest.label>war priest</LP_WD_WarPriest.label>
+  <!-- 被动：近战命中 +10%、射击精度 +4%、护甲 +8%。战争领域，牧师 1 级。 -->
+  <LP_WD_WarPriest.description>Passive: melee hit +10%, shooting accuracy +4%, armor +8%. War Domain, cleric level 1.</LP_WD_WarPriest.description>
+  <!-- 引导神力·导引打击 -->
+  <LP_WD_GuidedStrike.label>channel divinity: guided strike</LP_WD_GuidedStrike.label>
+  <!-- 10 秒内近战命中 +50%、射击精度 +30%。引导神力 1，不耗神恩，冷却 1 小时。战争领域，牧师 2 级。 -->
+  <LP_WD_GuidedStrike.description>For 10 seconds melee hit +50%, shooting accuracy +30%. Channel Divinity 1, no divinity cost, cooldown 1 hour. War Domain, cleric level 2.</LP_WD_GuidedStrike.description>
+  <!-- 战神祝福 -->
+  <LP_WD_WarGodBlessing.label>war god's blessing</LP_WD_WarGodBlessing.label>
+  <!-- 20 格内一名友军 30 秒内近战命中 +30%、射击精度 +10%。神恩 1，冷却 20 秒。战争领域，牧师 6 级。 -->
+  <LP_WD_WarGodBlessing.description>One ally within 20 cells gets melee hit +30% and shooting accuracy +10% for 30 seconds. Divinity 1, cooldown 20 seconds. War Domain, cleric level 6.</LP_WD_WarGodBlessing.description>
+  <!-- 神圣打击·武器 -->
+  <LP_WD_DivineStrike.label>divine strike: weapon</LP_WD_DivineStrike.label>
+  <!-- 被动：每 2 秒第一次武器命中附加 8 × 神恩强度 同类伤害（14 级起 16）。战争领域，牧师 8 级。 -->
+  <LP_WD_DivineStrike.description>Passive: the first weapon hit every 2 seconds adds 8 × divine power damage of the same type (16 from level 14). War Domain, cleric level 8.</LP_WD_DivineStrike.description>
+  <!-- 战神化身 -->
+  <LP_WD_Avatar.label>avatar of battle</LP_WD_Avatar.label>
+  <!-- 化身战神 1 小时：受到的伤害 ×0.75、近战伤害 ×1.3、近战冷却 ×0.8。神恩 3，冷却 1 小时。战争领域，牧师 17 级。 -->
+  <LP_WD_Avatar.description>Become an avatar of battle for 1 hour: damage taken ×0.75, melee damage ×1.3, melee cooldown ×0.8. Divinity 3, cooldown 1 hour. War Domain, cleric level 17.</LP_WD_Avatar.description>
+  <!-- 学识祝福 -->
+  <LP_KD_Blessings.label>blessings of knowledge</LP_KD_Blessings.label>
+  <!-- 被动：研究速度 ×1.25、学习速度 ×1.2。知识领域，牧师 1 级。 -->
+  <LP_KD_Blessings.description>Passive: research speed ×1.25, learning speed ×1.2. Knowledge Domain, cleric level 1.</LP_KD_Blessings.description>
+  <!-- 引导神力·先贤知识 -->
+  <LP_KD_KnowledgeOfAges.label>channel divinity: knowledge of the ages</LP_KD_KnowledgeOfAges.label>
+  <!-- 1 小时内手工速度 ×1.3、全局工作速度 ×1.2。引导神力 1，不耗神恩，每天 1 次。知识领域，牧师 2 级。 -->
+  <LP_KD_KnowledgeOfAges.description>For 1 hour crafting speed ×1.3, global work speed ×1.2. Channel Divinity 1, no divinity cost, once per day. Knowledge Domain, cleric level 2.</LP_KD_KnowledgeOfAges.description>
+  <!-- 读心 -->
+  <LP_KD_ReadThoughts.label>read mind</LP_KD_ReadThoughts.label>
+  <!-- 读出 15 格内一个敌人的心思 30 秒：近战闪避 −20，受到的伤害 ×1.15；人形目标心智抗性没挡住时再震慑 10 秒。神恩 1，冷却 20 秒。知识领域，牧师 6 级。 -->
+  <LP_KD_ReadThoughts.description>Read the thoughts of one enemy within 15 cells for 30 seconds: melee dodge -20, damage taken ×1.15; humanlike targets who fail to block it with mind resistance are also shaken for 10 seconds. Divinity 1, cooldown 20 seconds. Knowledge Domain, cleric level 6.</LP_KD_ReadThoughts.description>
+  <!-- 强效施法 -->
+  <LP_KD_PotentSpellcasting.label>potent spellcasting</LP_KD_PotentSpellcasting.label>
+  <!-- 被动：牧师神术的威力 ×1.15。知识领域，牧师 8 级。 -->
+  <LP_KD_PotentSpellcasting.description>Passive: cleric divine magic power ×1.15. Knowledge Domain, cleric level 8.</LP_KD_PotentSpellcasting.description>
+  <!-- 过往之景 -->
+  <LP_KD_Visions.label>visions of the past</LP_KD_Visions.label>
+  <!-- 半径 8 内的敌人被过往的景象震住：震慑 10 秒，心智抗性没挡住的再眩晕 3 秒。神恩 3，冷却 1 小时。知识领域，牧师 17 级。 -->
+  <LP_KD_Visions.description>Enemies within radius 8 are stunned by visions of the past: shaken for 10 seconds, and those who fail to block it with mind resistance are also stunned for 3 seconds. Divinity 3, cooldown 1 hour. Knowledge Domain, cleric level 17.</LP_KD_Visions.description>
+  <!-- 坟墓之眼 -->
+  <LP_GD_EyesOfGrave.label>eyes of the grave</LP_GD_EyesOfGrave.label>
+  <!-- 被动：受到的死灵伤害减半。坟墓领域，牧师 1 级。 -->
+  <LP_GD_EyesOfGrave.description>Passive: necrotic damage taken halved. Grave Domain, cleric level 1.</LP_GD_EyesOfGrave.description>
+  <!-- 引导神力·通往坟墓 -->
+  <LP_GD_PathToGrave.label>channel divinity: path to the grave</LP_GD_PathToGrave.label>
+  <!-- 标记 15 格内一个敌人 10 秒：它下一次被攻击受到的伤害 ×2。引导神力 1，不耗神恩，冷却 1 小时。坟墓领域，牧师 2 级。 -->
+  <LP_GD_PathToGrave.description>Mark one enemy within 15 cells for 10 seconds: the next attack against it deals ×2 damage. Channel Divinity 1, no divinity cost, cooldown 1 hour. Grave Domain, cleric level 2.</LP_GD_PathToGrave.description>
+  <!-- 死亡哨兵 -->
+  <LP_GD_SentinelAtDeath.label>sentinel at death's door</LP_GD_SentinelAtDeath.label>
+  <!-- 被动：对伤势超过 20 的友军施放治疗类神术时，再额外治疗一次同样的量。坟墓领域，牧师 6 级。 -->
+  <LP_GD_SentinelAtDeath.description>Passive: when casting healing divine magic on an ally with over 20 injuries, heal the same amount once more. Grave Domain, cleric level 6.</LP_GD_SentinelAtDeath.description>
+  <!-- 强效施法 -->
+  <LP_GD_Potent.label>potent spellcasting</LP_GD_Potent.label>
+  <!-- 被动：牧师神术的威力 ×1.15。坟墓领域，牧师 8 级。 -->
+  <LP_GD_Potent.description>Passive: cleric divine magic power ×1.15. Grave Domain, cleric level 8.</LP_GD_Potent.description>
+  <!-- 灵魂守护 -->
+  <LP_GD_KeeperOfSouls.label>keeper of souls</LP_GD_KeeperOfSouls.label>
+  <!-- 被动：10 格内有敌人死去时，自己和 4 格内的友军各治疗 10 + 牧师等级 点伤势（每 10 秒最多一次）。坟墓领域，牧师 17 级。 -->
+  <LP_GD_KeeperOfSouls.description>Passive: when an enemy dies within 10 cells, you and allies within 4 cells each heal 10 + cleric level injury (at most once every 10 seconds). Grave Domain, cleric level 17.</LP_GD_KeeperOfSouls.description>
+  <!-- 咒剑诅咒 -->
+  <LP_HX_Curse.label>hexblade's curse</LP_HX_Curse.label>
+  <!-- 诅咒 15 格内一个敌人 30 秒：它受到的伤害 ×1.25（15 级诅咒大师 ×1.5）；它死时自己治疗 5 + 邪术师等级 点伤势。契约法力 1，冷却 10 秒。咒剑宗主，邪术师 1 级。 -->
+  <LP_HX_Curse.description>Curse one enemy within 15 cells for 30 seconds: it takes ×1.25 damage (×1.5 with master of hexes at level 15); when it dies you heal 5 + warlock level injury. Pact mana 1, cooldown 10 seconds. The Hexblade patron, warlock level 1.</LP_HX_Curse.description>
+  <!-- 咒剑战士 -->
+  <LP_HX_Warrior.label>hex warrior</LP_HX_Warrior.label>
+  <!-- 被动：近战命中 +15%、护甲 +10%。咒剑宗主，邪术师 3 级。 -->
+  <LP_HX_Warrior.description>Passive: melee hit +15%, armor +10%. The Hexblade patron, warlock level 3.</LP_HX_Warrior.description>
+  <!-- 咒剑护甲 -->
+  <LP_HX_Armor.label>armor of hexes</LP_HX_Armor.label>
+  <!-- 披上影界之甲 30 秒：受到的伤害 ×0.8。契约法力 1，冷却 30 秒。咒剑宗主，邪术师 7 级。 -->
+  <LP_HX_Armor.description>Don armor of the Shadowfell for 30 seconds: damage taken ×0.8. Pact mana 1, cooldown 30 seconds. The Hexblade patron, warlock level 7.</LP_HX_Armor.description>
+  <!-- 幽影仆从 -->
+  <LP_HX_Specter.label>accursed specter</LP_HX_Specter.label>
+  <!-- 一道幽影在身边劈砍 30 秒：半径 2.5 内的敌人每 2 秒受 6 × 契约强度 伤害。契约法力 2，冷却 1 小时。咒剑宗主，邪术师 11 级。 -->
+  <LP_HX_Specter.description>A spectral shadow slashes around you for 30 seconds: enemies within radius 2.5 take 6 × pact power damage every 2 seconds. Pact mana 2, cooldown 1 hour. The Hexblade patron, warlock level 11.</LP_HX_Specter.description>
+  <!-- 诅咒大师 -->
+  <LP_HX_MasterOfHexes.label>master of hexes</LP_HX_MasterOfHexes.label>
+  <!-- 被动：咒剑诅咒的目标受到的伤害 ×1.5（原来 ×1.25），它打自己的伤害 ×0.8。咒剑宗主，邪术师 15 级。 -->
+  <LP_HX_MasterOfHexes.description>Passive: targets of hexblade's curse take ×1.5 damage (originally ×1.25), and its damage against you ×0.8. The Hexblade patron, warlock level 15.</LP_HX_MasterOfHexes.description>
+  <!-- 治愈之光 -->
+  <LP_CE_HealingLight.label>healing light</LP_CE_HealingLight.label>
+  <!-- 12 格内一名友军（可以是自己）立即治疗 12 × 契约强度 点伤势，优先流血伤口。契约法力 1，冷却 15 秒。天界宗主，邪术师 1 级。 -->
+  <LP_CE_HealingLight.description>One ally within 12 cells (can be yourself) instantly heals 12 × pact power injury, bleeding wounds first. Pact mana 1, cooldown 15 seconds. The Celestial patron, warlock level 1.</LP_CE_HealingLight.description>
+  <!-- 光耀之魂 -->
+  <LP_CE_RadiantSoul.label>radiant soul</LP_CE_RadiantSoul.label>
+  <!-- 被动：治愈之光与光耀之怒的威力 ×1.2。天界宗主，邪术师 3 级。 -->
+  <LP_CE_RadiantSoul.description>Passive: healing light and radiant wrath power ×1.2. The Celestial patron, warlock level 3.</LP_CE_RadiantSoul.description>
+  <!-- 天界抗性 -->
+  <LP_CE_Resilience.label>celestial resistance</LP_CE_Resilience.label>
+  <!-- 自己和 4 格内的友军各得到吸收 6 + 邪术师等级 点伤害的护盾（1 小时）。契约法力 1，冷却 1 小时。天界宗主，邪术师 7 级。 -->
+  <LP_CE_Resilience.description>You and allies within 4 cells each get a shield absorbing 6 + warlock level damage (1 hour). Pact mana 1, cooldown 1 hour. The Celestial patron, warlock level 7.</LP_CE_Resilience.description>
+  <!-- 光耀之怒 -->
+  <LP_CE_RadiantBurst.label>radiant wrath</LP_CE_RadiantBurst.label>
+  <!-- 20 格内一个敌人受 16 × 契约强度 光耀伤害（亡灵、邪魔翻倍）。契约法力 1，冷却 10 秒。天界宗主，邪术师 11 级。 -->
+  <LP_CE_RadiantBurst.description>One enemy within 20 cells takes 16 × pact power radiant damage (doubled against undead and fiends). Pact mana 1, cooldown 10 seconds. The Celestial patron, warlock level 11.</LP_CE_RadiantBurst.description>
+  <!-- 灼热复仇 -->
+  <LP_CE_SearingVengeance.label>searing vengeance</LP_CE_SearingVengeance.label>
+  <!-- 被动：每天第一次本应倒地时，治好一半伤口站起来，并让半径 4 内的敌人受 10 × 契约强度 光耀伤害。天界宗主，邪术师 15 级。 -->
+  <LP_CE_SearingVengeance.description>Passive: the first time each day you'd be downed, heal half your wounds and stand back up, and enemies within radius 4 take 10 × pact power radiant damage. The Celestial patron, warlock level 15.</LP_CE_SearingVengeance.description>
+  <!-- 收割亡魂 -->
+  <LP_NM_GrimHarvest.label>grim harvest</LP_NM_GrimHarvest.label>
+  <!-- 被动：自己杀死的敌人在 10 格内时，治疗 5 + 法师等级 点伤势。死灵学派，法师 2 级。 -->
+  <LP_NM_GrimHarvest.description>Passive: when an enemy you killed is within 10 cells, heal 5 + wizard level injury. School of Necromancy, wizard level 2.</LP_NM_GrimHarvest.description>
+  <!-- 死灵仆役 -->
+  <LP_NM_UndeadThralls.label>undead thralls</LP_NM_UndeadThralls.label>
+  <!-- 把 10 格内一具人形尸体拉起来当仆役。法力 2，冷却 1 小时。死灵学派，法师 6 级。 -->
+  <LP_NM_UndeadThralls.description>Raise a humanlike corpse within 10 cells as a servant. Mana 2, cooldown 1 hour. School of Necromancy, wizard level 6.</LP_NM_UndeadThralls.description>
+  <!-- 不惧死亡 -->
+  <LP_NM_InuredToUndeath.label>inured to undeath</LP_NM_InuredToUndeath.label>
+  <!-- 被动：受到的死灵伤害减半，毒性抗性 +50%。死灵学派，法师 10 级。 -->
+  <LP_NM_InuredToUndeath.description>Passive: necrotic damage taken halved, toxic resistance +50%. School of Necromancy, wizard level 10.</LP_NM_InuredToUndeath.description>
+  <!-- 亡灵统御 -->
+  <LP_NM_CommandUndead.label>command undead</LP_NM_CommandUndead.label>
+  <!-- 把 15 格内一个敌对的亡灵收为己用 1 小时（亡灵军团、死灵造物、死亡骑士等；首领减半成功率）。法力 3，冷却 1 小时。死灵学派，法师 14 级。 -->
+  <LP_NM_CommandUndead.description>Take a hostile undead within 15 cells under your control for 1 hour (undead horde, necromantic constructs, death knights, etc.; half success against bosses). Mana 3, cooldown 1 hour. School of Necromancy, wizard level 14.</LP_NM_CommandUndead.description>
+  <!-- 预兆 -->
+  <LP_DI_Portent.label>portent</LP_DI_Portent.label>
+  <!-- 被动：每天 2 次，自己失败的豁免重新判定一次。预言学派，法师 2 级。 -->
+  <LP_DI_Portent.description>Passive: twice per day, re-roll one of your own failed saves. School of Divination, wizard level 2.</LP_DI_Portent.description>
+  <!-- 专家预言家 -->
+  <LP_DI_ExpertDivination.label>expert divination</LP_DI_ExpertDivination.label>
+  <!-- 被动：法师法术施放后冷却 ×0.85。预言学派，法师 6 级。 -->
+  <LP_DI_ExpertDivination.description>Passive: wizard spell cooldowns ×0.85 after casting. School of Divination, wizard level 6.</LP_DI_ExpertDivination.description>
+  <!-- 第三只眼 -->
+  <LP_DI_ThirdEye.label>the third eye</LP_DI_ThirdEye.label>
+  <!-- 1 小时内视觉 +30%、射击精度 +10%、近战闪避 +10。不耗法力，每天 1 次。预言学派，法师 10 级。 -->
+  <LP_DI_ThirdEye.description>For 1 hour sight +30%, shooting accuracy +10%, melee dodge +10. No mana cost, once per day. School of Divination, wizard level 10.</LP_DI_ThirdEye.description>
+  <!-- 更强预兆 -->
+  <LP_DI_GreaterPortent.label>greater portent</LP_DI_GreaterPortent.label>
+  <!-- 被动：预兆改为每天 3 次。预言学派，法师 14 级。 -->
+  <LP_DI_GreaterPortent.description>Passive: portent becomes 3 times per day. School of Divination, wizard level 14.</LP_DI_GreaterPortent.description>
+  <!-- 奥术守护 -->
+  <LP_AJ_ArcaneWard.label>arcane ward</LP_AJ_ArcaneWard.label>
+  <!-- 自己得到吸收 8 + 法师等级 × 2 点伤害的护盾（1 小时，不叠加，刷新）。法力 1，冷却 30 秒。防护学派，法师 2 级。 -->
+  <LP_AJ_ArcaneWard.description>Give yourself a shield absorbing 8 + wizard level × 2 damage (1 hour, doesn't stack, refreshes). Mana 1, cooldown 30 seconds. School of Abjuration, wizard level 2.</LP_AJ_ArcaneWard.description>
+  <!-- 投射守护 -->
+  <LP_AJ_ProjectedWard.label>projected ward</LP_AJ_ProjectedWard.label>
+  <!-- 12 格内一名友军得到吸收 8 + 法师等级 × 2 点伤害的护盾（1 小时）。法力 1，冷却 30 秒。防护学派，法师 6 级。 -->
+  <LP_AJ_ProjectedWard.description>One ally within 12 cells gets a shield absorbing 8 + wizard level × 2 damage (1 hour). Mana 1, cooldown 30 seconds. School of Abjuration, wizard level 6.</LP_AJ_ProjectedWard.description>
+  <!-- 强化防护 -->
+  <LP_AJ_ImprovedAbjuration.label>improved abjuration</LP_AJ_ImprovedAbjuration.label>
+  <!-- 被动：心智抗性 +25%、护甲 +8%。防护学派，法师 10 级。 -->
+  <LP_AJ_ImprovedAbjuration.description>Passive: mind resistance +25%, armor +8%. School of Abjuration, wizard level 10.</LP_AJ_ImprovedAbjuration.description>
+  <!-- 法术抗力 -->
+  <LP_AJ_SpellResistance.label>spell resistance</LP_AJ_SpellResistance.label>
+  <!-- 被动：受到的一切伤害 ×0.85。防护学派，法师 14 级。 -->
+  <LP_AJ_SpellResistance.description>Passive: all damage taken ×0.85. School of Abjuration, wizard level 14.</LP_AJ_SpellResistance.description>
+  <!-- 幻术学者 -->
+  <LP_IU_ImprovedMinor.label>illusion savant</LP_IU_ImprovedMinor.label>
+  <!-- 被动：身形晃动，近战闪避 +8。幻术学派，法师 2 级。 -->
+  <LP_IU_ImprovedMinor.description>Passive: a wavering form, melee dodge +8. School of Illusion, wizard level 2.</LP_IU_ImprovedMinor.description>
+  <!-- 变化幻象 -->
+  <LP_IU_MalleableIllusions.label>malleable illusions</LP_IU_MalleableIllusions.label>
+  <!-- 半径 5 内的敌人被幻象吓跑 10 秒（心智抗性能挡住；首领不受影响）。法力 2，冷却 30 秒。幻术学派，法师 6 级。 -->
+  <LP_IU_MalleableIllusions.description>Enemies within radius 5 are scared off by illusions for 10 seconds (mind resistance can block it; bosses unaffected). Mana 2, cooldown 30 seconds. School of Illusion, wizard level 6.</LP_IU_MalleableIllusions.description>
+  <!-- 幻影自我 -->
+  <LP_IU_IllusorySelf.label>illusory self</LP_IU_IllusorySelf.label>
+  <!-- 被动：每天第一次本应倒地时，留下一个幻影、自己闪到 5 格内的别处，并治好四分之一伤口。幻术学派，法师 10 级。 -->
+  <LP_IU_IllusorySelf.description>Passive: the first time each day you'd be downed, leave an illusion behind and flicker to another spot within 5 cells, healing a quarter of your wounds. School of Illusion, wizard level 10.</LP_IU_IllusorySelf.description>
+  <!-- 幻象现实 -->
+  <LP_IU_IllusoryReality.label>illusory reality</LP_IU_IllusoryReality.label>
+  <!-- 幻象成真：30 秒内得到 5 × 奥术强度 个镜影分身（每次被命中消耗一个、这一下落空）。法力 3，冷却 1 小时。幻术学派，法师 14 级。 -->
+  <LP_IU_IllusoryReality.description>Illusions made real: for 30 seconds gain 5 × arcane power mirror images (each hit consumes one and misses). Mana 3, cooldown 1 hour. School of Illusion, wizard level 14.</LP_IU_IllusoryReality.description>
+  <!-- 华丽步法 -->
+  <LP_SB_FancyFootwork.label>fancy footwork</LP_SB_FancyFootwork.label>
+  <!-- 被动：移动 +0.3、近战闪避 +10。风流剑客，游荡者 3 级。 -->
+  <LP_SB_FancyFootwork.description>Passive: movement +0.3, melee dodge +10. Swashbuckler, rogue level 3.</LP_SB_FancyFootwork.description>
+  <!-- 无畏剑客 -->
+  <LP_SB_RakishAudacity.label>rakish audacity</LP_SB_RakishAudacity.label>
+  <!-- 被动：单挑时（目标身边没有自己的其他友军）近战伤害 ×1.2。风流剑客，游荡者 3 级。 -->
+  <LP_SB_RakishAudacity.description>Passive: in single combat (no other allies of yours next to the target), melee damage ×1.2. Swashbuckler, rogue level 3.</LP_SB_RakishAudacity.description>
+  <!-- 魅惑言辞 -->
+  <LP_SB_Panache.label>panache</LP_SB_Panache.label>
+  <!-- 对 10 格内一个人形敌人说几句漂亮话：魅惑它 30 秒（放下敌意；心智抗性能挡住）。不耗资源，冷却 1 小时。风流剑客，游荡者 7 级。 -->
+  <LP_SB_Panache.description>Say a few charming words to one humanlike enemy within 10 cells: charm it for 30 seconds (it lays down its hostility; mind resistance can block it). No resource cost, cooldown 1 hour. Swashbuckler, rogue level 7.</LP_SB_Panache.description>
+  <!-- 优雅策略 -->
+  <LP_SB_ElegantManeuver.label>elegant maneuver</LP_SB_ElegantManeuver.label>
+  <!-- 10 秒内近战命中 +20%、近战闪避 +15。不耗资源，冷却 20 秒。风流剑客，游荡者 11 级。 -->
+  <LP_SB_ElegantManeuver.description>For 10 seconds melee hit +20%, melee dodge +15. No resource cost, cooldown 20 seconds. Swashbuckler, rogue level 11.</LP_SB_ElegantManeuver.description>
+  <!-- 决斗大师 -->
+  <LP_SB_MasterDuelist.label>master duelist</LP_SB_MasterDuelist.label>
+  <!-- 20 秒内近战伤害 ×1.3、近战闪避 +25。不耗资源，冷却 1 小时。风流剑客，游荡者 15 级。 -->
+  <LP_SB_MasterDuelist.description>For 20 seconds melee damage ×1.3, melee dodge +25. No resource cost, cooldown 1 hour. Swashbuckler, rogue level 15.</LP_SB_MasterDuelist.description>
+  <!-- 灵能刀刃 -->
+  <LP_SN_PsychicBlades.label>psychic blades</LP_SN_PsychicBlades.label>
+  <!-- 念力凝成刀刃 1 小时：近战伤害 ×1.25、近战冷却 ×0.9。不耗资源，冷却 10 秒。魂刃，游荡者 3 级。 -->
+  <LP_SN_PsychicBlades.description>Congeal a blade from psychic force for 1 hour: melee damage ×1.25, melee cooldown ×0.9. No resource cost, cooldown 10 seconds. Soulknife, rogue level 3.</LP_SN_PsychicBlades.description>
+  <!-- 灵能之力 -->
+  <LP_SN_PsionicPower.label>psionic power</LP_SN_PsionicPower.label>
+  <!-- 被动：心灵敏感度 +20%、心智抗性 +20%。魂刃，游荡者 3 级。 -->
+  <LP_SN_PsionicPower.description>Passive: psychic sensitivity +20%, mind resistance +20%. Soulknife, rogue level 3.</LP_SN_PsionicPower.description>
+  <!-- 魂刃投掷 -->
+  <LP_SN_SoulThrow.label>soul blade throw</LP_SN_SoulThrow.label>
+  <!-- 把魂刃掷向 12 格内一个敌人：10 × 诡术强度 灵能伤害。不耗资源，冷却 6 秒。魂刃，游荡者 7 级。 -->
+  <LP_SN_SoulThrow.description>Hurl a soul blade at one enemy within 12 cells: 10 × cunning power psychic damage. No resource cost, cooldown 6 seconds. Soulknife, rogue level 7.</LP_SN_SoulThrow.description>
+  <!-- 灵能帷幕 -->
+  <LP_SN_PsychicVeil.label>psychic veil</LP_SN_PsychicVeil.label>
+  <!-- 10 秒内移动 ×1.2、近战闪避 +20。不耗资源，冷却 1 小时。魂刃，游荡者 11 级。 -->
+  <LP_SN_PsychicVeil.description>For 10 seconds movement ×1.2, melee dodge +20. No resource cost, cooldown 1 hour. Soulknife, rogue level 11.</LP_SN_PsychicVeil.description>
+  <!-- 撕裂心灵 -->
+  <LP_SN_RendMind.label>rend mind</LP_SN_RendMind.label>
+  <!-- 撕裂 12 格内一个敌人的心灵：20 × 诡术强度 灵能伤害，心智抗性没挡住的再眩晕 3 秒。不耗资源，冷却 1 小时。魂刃，游荡者 15 级。 -->
+  <LP_SN_RendMind.description>Rend the mind of one enemy within 12 cells: 20 × cunning power psychic damage, and those who fail to block it with mind resistance are also stunned for 3 seconds. No resource cost, cooldown 1 hour. Soulknife, rogue level 15.</LP_SN_RendMind.description>
+</LanguageData>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 深渊腐化 -->
+  <LP_AbyssalTaint.label>abyssal taint</LP_AbyssalTaint.label>
+  <!-- 深渊在这个人的灵魂上留下的污痕。低语（10%）：心情 -3，近战 +3%；阴影（30%）：近战 +6%、疼痛阈值 +10%、社交影响 -10%，向善神祈祷的神眷减半；恶魔之印（60%）：长出小角、眼睛发红，火焰伤害 ×0.8，偶尔陷入深渊狂乱，不再自然消退；堕落（90%）：到 100% 化魔。 -->
+  <LP_AbyssalTaint.description>A stain the Abyss has left on this person's soul. Whispers (10%): mood -3, melee +3%. Shadow (30%): melee +6%, pain threshold +10%, social impact -10%, divine favor from praying to good gods halved. Demon mark (60%): small horns grow, eyes turn red, fire damage ×0.8, occasional abyssal frenzy, no longer fades naturally. Fallen (90%): becomes a demon at 100%.</LP_AbyssalTaint.description>
+  <!-- 潜伏 -->
+  <LP_AbyssalTaint.stages.0.label>latent</LP_AbyssalTaint.stages.0.label>
+  <!-- 低语 -->
+  <LP_AbyssalTaint.stages.1.label>whispers</LP_AbyssalTaint.stages.1.label>
+  <!-- 阴影 -->
+  <LP_AbyssalTaint.stages.2.label>shadow</LP_AbyssalTaint.stages.2.label>
+  <!-- 恶魔之印 -->
+  <LP_AbyssalTaint.stages.3.label>demon mark</LP_AbyssalTaint.stages.3.label>
+  <!-- 堕落 -->
+  <LP_AbyssalTaint.stages.4.label>fallen</LP_AbyssalTaint.stages.4.label>
+  <!-- 深渊宠儿 -->
+  <LP_AbyssFavored.label>abyss-favored</LP_AbyssFavored.label>
+  <!-- 彻底拥抱了深渊：伤害 +10%。阿斯莫看见它会不舒服。 -->
+  <LP_AbyssFavored.description>Fully embraced the Abyss: +10% damage. Aasimar feel uneasy seeing it.</LP_AbyssFavored.description>
+  <!-- 命匣受污 -->
+  <LP_TaintedPhylactery.label>tainted phylactery</LP_TaintedPhylactery.label>
+  <!-- 深渊的污痕渗进了命匣：复活所需的时间 ×1.5。 -->
+  <LP_TaintedPhylactery.description>The stain of the Abyss has seeped into the phylactery: time needed to revive ×1.5.</LP_TaintedPhylactery.description>
+  <!-- 灵魂抵押 -->
+  <LP_SoulMortgaged.label>soul mortgage</LP_SoulMortgaged.label>
+  <!-- 这个人的灵魂抵押给了深渊：死后不能复活，尸体也会化作黑烟。可以在圣坛向善神赎回（30 神眷）。 -->
+  <LP_SoulMortgaged.description>This person's soul is mortgaged to the Abyss: cannot be resurrected after death, and the corpse turns to black smoke. Can be redeemed from a good god at an altar (30 divine favor).</LP_SoulMortgaged.description>
+  <!-- 位面束缚 -->
+  <LP_PlanarBinding.label>planar binding</LP_PlanarBinding.label>
+  <!-- 被深渊仪式拴在这个世界的外来者，括号里是服从度（0～100）。服从度每天下降；降到 0 它会挣脱，变成深渊魔群的一员。主人对它重申真名、把它的床放在束缚法阵里、持有它的真名卷都能维持服从。束缚者不会衰老，被击倒不会遣返；死亡时身体化作黑烟回到深渊。 -->
+  <LP_PlanarBinding.description>An outsider tied to this world by an abyssal ritual; the number in brackets is obedience (0-100). Obedience drops every day; at 0 it breaks free and joins the abyssal horde. The master reaffirming its true name, putting its bed in a binding circle and holding its true name scroll all keep it obedient. Bound ones do not age and are not banished when knocked down; on death the body turns to black smoke and returns to the Abyss.</LP_PlanarBinding.description>
+  <!-- 深渊仆从 -->
+  <LP_AbyssThrall.label>abyssal servant</LP_AbyssThrall.label>
+  <!-- 限时召来的仆从：听从命令、可以征召，没有心情，不算进袭击点数，死了也没人难过。时间到了就被遣返。 -->
+  <LP_AbyssThrall.description>A timed summoned servant: obeys orders, can be drafted, has no mood, does not count toward raid points, and no one mourns its death. It is banished when time runs out.</LP_AbyssThrall.description>
+  <!-- 位面锚链 -->
+  <LP_PlanarShackled.label>planar anchor chain</LP_PlanarShackled.label>
+  <!-- 锚定符文的镣铐把它锁在这个位面上：倒下不会被遣返，可以俘虏；死了也会留下尸体。 -->
+  <LP_PlanarShackled.description>Shackles of anchoring runes lock it to this plane: it is not banished when downed and can be captured; it leaves a corpse when it dies.</LP_PlanarShackled.description>
+  <!-- 深渊咒缚 -->
+  <LP_RitualStupor.label>abyssal hold</LP_RitualStupor.label>
+  <!-- 深渊仪式的主祭用咒文把他定住了：动弹不得。 -->
+  <LP_RitualStupor.description>The leader of the abyssal ritual has pinned him in place with an incantation: unable to move.</LP_RitualStupor.description>
+  <!-- 伪装 -->
+  <LP_SuccubusDisguise.label>disguise</LP_SuccubusDisguise.label>
+  <!-- （隐藏） -->
+  <LP_SuccubusDisguise.description>(hidden)</LP_SuccubusDisguise.description>
+</LanguageData>

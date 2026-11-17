@@ -17,7 +17,7 @@ namespace LichPhylactery {
   public static bool Is(Pawn p){var e=Outsiders.Of(p);return e!=null && e.banishOnDown;}
   public static bool IsIceDevil(Pawn p)=>Races124.Has(p,"LP_IceDevilCold");
   public static bool IsBalor(Pawn p)=>Races124.Has(p,"LP_BalorFlame");
-  public static string Label(Pawn p)=>IsBalor(p)?"炎魔":IsIceDevil(p)?"寒冰魔":"魔鬼";
+  public static string Label(Pawn p)=>IsBalor(p)?"炎魔".Loc():IsIceDevil(p)?"寒冰魔".Loc():"魔鬼".Loc();
   static PawnKindDef iceKind,balorKind;
   public static PawnKindDef IceKind=>iceKind??(iceKind=DefDatabase<PawnKindDef>.GetNamedSilentFail("LP_FH_IceDevil"));
   public static PawnKindDef BalorKind=>balorKind??(balorKind=DefDatabase<PawnKindDef>.GetNamedSilentFail("LP_FH_Balor"));
@@ -69,7 +69,7 @@ namespace LichPhylactery {
   // 被打死：尸体立即消失，掉同样的战利品（武器原版已经掉在地上）。
   public static bool BanishCorpse(Pawn p)=>Outsiders.BanishCorpse(p);
   public static void Defer(Action a){var s=Items.State;if(s!=null)s.Defer(a);else a();}
-  public static void Schedule(Map map,IntVec3 cell){var s=Races124.State;if(s!=null)s.bursts.Add(new DelayedBurst{map=map,cell=cell,tick=Find.TickManager.TicksGame+BurstDelay,label="炎魔"});}
+  public static void Schedule(Map map,IntVec3 cell){var s=Races124.State;if(s!=null)s.bursts.Add(new DelayedBurst{map=map,cell=cell,tick=Find.TickManager.TicksGame+BurstDelay,label="炎魔".Loc()});}
   public static void Explode(DelayedBurst b){
    if(b?.map==null || !Find.Maps.Contains(b.map) || !b.cell.InBounds(b.map))return;
    GenExplosion.DoExplosion(b.cell,b.map,BurstRadius,DamageDefOf.Flame,null,BurstDamage,chanceToStartFire:.6f);
@@ -180,6 +180,6 @@ namespace LichPhylactery {
  public static class AbyssRaidReset {static void Prefix(){Fiends.abyssRaid=false;}static void Finalizer(){Fiends.abyssRaid=false;}}
  [HarmonyPatch(typeof(IncidentWorker_RaidEnemy),"GetLetterLabel")]
  public static class AbyssRaidLetter {
-  static void Postfix(IncidentParms parms,ref string __result){if(Fiends.abyssRaid && parms?.faction?.def==Factions.HostileDef && __result!=null && !__result.Contains("深渊裂口"))__result="深渊裂口·"+__result;}
+  static void Postfix(IncidentParms parms,ref string __result){if(Fiends.abyssRaid && parms?.faction?.def==Factions.HostileDef && __result!=null && !__result.StartsWith("深渊裂口·".Loc()))__result="深渊裂口·".Loc()+__result;}
  }
 }

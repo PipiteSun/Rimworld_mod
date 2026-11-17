@@ -15,7 +15,7 @@ namespace LichPhylactery {
   public const float SunlightGlow=.6f,SunlightFactor=.85f,DarknessFactor=.7f,GrudgeFactor=1.05f,HideFactor=.85f,CamouflageFactor=.7f;
   public const float PoisonChance=.15f,PackStep=.05f,HobStep=.03f,FuryFactor=1.15f,SurpriseFactor=1.25f,ToughnessFactor=1.15f,TrapFactor=1.3f,TrapBuildFactor=2f,TinkerToyFactor=2f;
   public const int PackMax=3,HobMax=3,SurpriseTicks=600,EscapeTicks=120,StillTicks=120,GrudgeTicks=60*GenDate.TicksPerDay,DarknessRefresh=90;
-  public const float HideRadius=2f,PackRadius=1.5f,HobRadius=3f,SmallBeastSize=.5f,SmallBeastFactor=2f,HoardStep=.02f,HoardMax=.2f;
+  public const float HideRadius=2f,PackRadius=1.5f,HobRadius=3f,SmallBeastSize=.5f,SmallBeastFactor=2f;
   // 1.58.6：改用线程安全、查不到也缓存的 DefCache（原来是普通 Dictionary，又会在属性 / 命中钩子里被写入）。
   public static GeneDef G(string n)=>DefCache<GeneDef>.Get(n);
   public static bool Has(Pawn p,string gene)=>p?.genes!=null && CommonRaces.Has(p,G(gene));
@@ -86,7 +86,6 @@ namespace LichPhylactery {
   public static float HobFactor(Pawn p)=>1f+HobStep*HobCount(p);
   // 本殖民地狗头人（全部地图 / 指定地图，带龙之仆从）。
   public static int KoboldColonists()=>Cached(4L<<40,()=>PawnsFinder.AllMaps_FreeColonists.Count(IsKobold));
-  public static int KoboldServantsOn(Map map)=>map==null?0:Cached(5L<<40|(uint)map.uniqueID,()=>map.mapPawns.FreeColonistsSpawned.Count(p=>Has(p,"LP_KoboldDragonServant")));
   public static bool PlayerHasDragon()=>Cached(6L<<40,()=>{foreach(var m in Find.Maps)foreach(var o in m.mapPawns.SpawnedPawnsInFaction(Faction.OfPlayer))if(!o.Dead && Dragons.Is(o))return 1;return 0;})>0;
 
   public static bool InSunlight(Pawn p)=>p.Spawned && p.Map.skyManager.CurSkyGlow>=SunlightGlow && !p.Position.Roofed(p.Map);
@@ -126,8 +125,6 @@ namespace LichPhylactery {
   public static float PartHealthFactor(Pawn p)=>Has(p,DwarfToughness)?ToughnessFactor:1f;
   // 森林侏儒驯服小动物 ×2。
   public static float TameFactor(Pawn tamer,Pawn animal)=>animal!=null && animal.BodySize<=SmallBeastSize+.0001f && Has(tamer,"LP_GnomeSmallBeasts")?SmallBeastFactor:1f;
-  // 龙之仆从：同一地图每个狗头人殖民者让宝库价值 +2%，最多 +20%（设置关掉时 ×1）。
-  public static float HoardFactor(Map map)=>LichMod.Settings?.koboldDragonServant==false?1f:1f+Mathf.Min(HoardMax,HoardStep*KoboldServantsOn(map));
 
   // ---------- 恐惧 ----------
   static readonly Dictionary<ThoughtDef,bool> fearThought=new Dictionary<ThoughtDef,bool>();
@@ -186,8 +183,8 @@ namespace LichPhylactery {
   public static void ApplySettings(){bool on=LichMod.Settings?.commonRaceRelations!=false;foreach(var n in Relations157){var r=DefDatabase<RacialRelationDef>.GetNamedSilentFail(n);if(r!=null)r.enabled=on;}}
   public static void Draw(Listing_Standard l){
    var s=LichMod.Settings;bool before=s.commonRaceRelations;
-   l.CheckboxLabeled("普通种族关系心情（1.57.0）",ref s.commonRaceRelations,"精灵与卓尔、侏儒与矮人、狗头人与侏儒、地精族与矮人等新增的种族关系心情（只计本殖民地成员与囚犯；有半精灵时精灵与矮人之间的负面心情减半）。关闭后这些新关系不产生心情，1.16.0 已有的精灵/矮人关系不受影响。");
-   l.CheckboxLabeled("狗头人：龙之仆从",ref s.koboldDragonServant,"狗头人在本殖民地有力能龙或五色真龙时心情+6、没有龙时-2，并让同一地图的力能龙宝库价值每个狗头人+2%（最多+20%）。关闭后没有这项心情和宝库加成。");
+   l.CheckboxLabeled("普通种族关系心情（1.57.0）".Loc(),ref s.commonRaceRelations,"精灵与卓尔、侏儒与矮人、狗头人与侏儒、地精族与矮人等新增的种族关系心情（只计本殖民地成员与囚犯；有半精灵时精灵与矮人之间的负面心情减半）。关闭后这些新关系不产生心情，1.16.0 已有的精灵/矮人关系不受影响。".Loc());
+   l.CheckboxLabeled("狗头人：龙之仆从".Loc(),ref s.koboldDragonServant,"狗头人在本殖民地有五色真龙时心情+6、没有龙时-2。关闭后没有这项心情。".Loc());
    if(before!=s.commonRaceRelations)ApplySettings();
   }
  }
@@ -265,7 +262,7 @@ namespace LichPhylactery {
  }
  public class Thought_DwarfGrudge : Thought_Memory {
   public Faction faction;
-  public override string LabelCap=>"血仇："+(faction?.Name??"未知派系");
+  public override string LabelCap=>"血仇：".Loc()+(faction?.Name??"未知派系".Loc());
   public override bool GroupsWith(Thought other)=>other is Thought_DwarfGrudge g && g.faction==faction && base.GroupsWith(other);
   public override bool ShouldDiscard=>base.ShouldDiscard || faction==null;
   public override void ExposeData(){base.ExposeData();Scribe_References.Look(ref faction,"grudgeFaction");}
@@ -338,7 +335,7 @@ namespace LichPhylactery {
  }
  public class PlaceWorker_KoboldOnly : PlaceWorker {
   public override AcceptanceReport AllowsPlacing(BuildableDef checkingDef,IntVec3 loc,Rot4 rot,Map map,Thing thingToIgnore=null,Thing thing=null){
-   return Subraces.KoboldColonists()>0?AcceptanceReport.WasAccepted:new AcceptanceReport("需要殖民地里至少有一名狗头人，才能布置狗头人刺坑。");
+   return Subraces.KoboldColonists()>0?AcceptanceReport.WasAccepted:new AcceptanceReport("需要殖民地里至少有一名狗头人，才能布置狗头人刺坑。".Loc());
   }
  }
 

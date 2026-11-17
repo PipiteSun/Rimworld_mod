@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 斩铁式 -->
+  <LP_ACB_SteelCut.label>iron-cleaving form</LP_ACB_SteelCut.label>
+  <!-- 所有攻击无视护甲。 -->
+  <LP_ACB_SteelCut.description>All attacks ignore armor.</LP_ACB_SteelCut.description>
+  <!-- 不动如山 -->
+  <LP_ACB_Immovable.label>immovable as a mountain</LP_ACB_Immovable.label>
+  <!-- 免疫击晕，不会倒地，受到的伤害 ×0.5。 -->
+  <LP_ACB_Immovable.description>Immune to stuns, can't be downed, damage taken ×0.5.</LP_ACB_Immovable.description>
+  <!-- 剑圣之域 -->
+  <LP_ACB_SwordDomain.label>sword saint's domain</LP_ACB_SwordDomain.label>
+  <!-- 剑气笼罩 3 格：每 0.5 秒对范围里的一名敌人发动一次近战结算。 -->
+  <LP_ACB_SwordDomain.description>A sword aura covers 3 cells: every 0.5 seconds it resolves a melee attack on one enemy in range.</LP_ACB_SwordDomain.description>
+  <!-- 万军之主 -->
+  <LP_ACB_Warlord.label>lord of armies</LP_ACB_Warlord.label>
+  <!-- 近战命中 +15%、射击精度提高、造成的伤害 ×1.15，不会精神崩溃。 -->
+  <LP_ACB_Warlord.description>Melee hit +15%, better shooting accuracy, damage dealt ×1.15, no mental breaks.</LP_ACB_Warlord.description>
+  <!-- 云体 -->
+  <LP_ACP_CloudBody.label>cloud body</LP_ACP_CloudBody.label>
+  <!-- 秘传被动：移动 ×1.3，免疫击晕。 -->
+  <LP_ACP_CloudBody.description>Arcanum passive: movement ×1.3, immune to stuns.</LP_ACP_CloudBody.description>
+  <!-- 天罚之链 -->
+  <LP_ACB_Chained.label>chains of heaven's punishment</LP_ACB_Chained.label>
+  <!-- 被神圣锁链锁住：几乎无法移动；每次攻击都会被锁链反噬，受到神圣伤害（数值看严重度）。 -->
+  <LP_ACB_Chained.description>Bound by holy chains: can barely move; each attack it makes recoils through the chains, dealing holy damage to itself (value by severity).</LP_ACB_Chained.description>
+  <!-- 光耀护盾 -->
+  <LP_ACB_Shield.label>radiant shield</LP_ACB_Shield.label>
+  <!-- 吸收伤害的护盾，严重度就是还能吸收的点数。 -->
+  <LP_ACB_Shield.description>A damage-absorbing shield; severity is the points it can still absorb.</LP_ACB_Shield.description>
+  <!-- 失明 -->
+  <LP_ACB_Blinded.label>blinded</LP_ACB_Blinded.label>
+  <!-- 被神圣之光或魔法刺瞎，几乎看不见。 -->
+  <LP_ACB_Blinded.description>Blinded by holy light or magic; can barely see.</LP_ACB_Blinded.description>
+  <!-- 神圣光环 -->
+  <LP_ACB_HolyAura.label>holy aura</LP_ACB_HolyAura.label>
+  <!-- 受到的伤害 ×0.7；近战攻击你的邪魔和亡灵会失明 10 秒。 -->
+  <LP_ACB_HolyAura.description>Damage taken ×0.7; fiends and undead that attack you in melee are blinded for 10 seconds.</LP_ACB_HolyAura.description>
+  <!-- 天界之躯 -->
+  <LP_ACB_Angelic.label>celestial body</LP_ACB_Angelic.label>
+  <!-- 天使侍从：受到的伤害 ×0.5，近战伤害 ×1.5。 -->
+  <LP_ACB_Angelic.description>Angelic attendant: damage taken ×0.5, melee damage ×1.5.</LP_ACB_Angelic.description>
+  <!-- 冰雪拟像 -->
+  <LP_ACB_Simulacrum.label>ice simulacrum</LP_ACB_Simulacrum.label>
+  <!-- 法师用冰雪塑成的拟像：只有本体一半的耐受（受到的伤害 ×2）。 -->
+  <LP_ACB_Simulacrum.description>A simulacrum shaped from ice and snow by a wizard: only half the original's toughness (damage taken ×2).</LP_ACB_Simulacrum.description>
+  <!-- 真龙之形 -->
+  <LP_ACB_DragonForm.label>true dragon form</LP_ACB_DragonForm.label>
+  <!-- 化身真龙：用龙爪和龙咬战斗，近战伤害 × 野性强度，受到的伤害 ×0.5，移动 ×1.3；不能做精细工作。 -->
+  <LP_ACB_DragonForm.description>Become a true dragon: fights with dragon claws and bites, melee damage × primal power, damage taken ×0.5, movement ×1.3; can't do fine work.</LP_ACB_DragonForm.description>
+  <!-- 龙爪 -->
+  <LP_ACB_DragonForm.comps.HediffComp_VerbGiver.tools.0.label>dragon claws</LP_ACB_DragonForm.comps.HediffComp_VerbGiver.tools.0.label>
+  <!-- 龙咬 -->
+  <LP_ACB_DragonForm.comps.HediffComp_VerbGiver.tools.1.label>dragon bite</LP_ACB_DragonForm.comps.HediffComp_VerbGiver.tools.1.label>
+  <!-- 元素化身 -->
+  <LP_ACB_ElementalForm.label>elemental avatar</LP_ACB_ElementalForm.label>
+  <!-- 免疫火焰、寒霜、闪电、电击和强酸伤害；术士法术伤害 ×1.3。 -->
+  <LP_ACB_ElementalForm.description>Immune to fire, frost, lightning, electrical and acid damage; sorcerer spell damage ×1.3.</LP_ACB_ElementalForm.description>
+  <!-- 不可阻挡 -->
+  <LP_ACB_Unstoppable.label>unstoppable</LP_ACB_Unstoppable.label>
+  <!-- 狂暴中：免疫击晕。 -->
+  <LP_ACB_Unstoppable.description>Raging: immune to stuns.</LP_ACB_Unstoppable.description>
+  <!-- 巨人化 -->
+  <LP_ACB_Enlarge.label>giant form</LP_ACB_Enlarge.label>
+  <!-- 近战伤害 ×1.5，受到的伤害 ×0.8。 -->
+  <LP_ACB_Enlarge.description>Melee damage ×1.5, damage taken ×0.8.</LP_ACB_Enlarge.description>
+  <!-- 自然伪装 -->
+  <LP_ACB_Camouflage.label>natural camouflage</LP_ACB_Camouflage.label>
+  <!-- 静止不动融进周围：下一次攻击伤害 ×2（攻击或移动后解除）。 -->
+  <LP_ACB_Camouflage.description>Motionless and blending in with the surroundings: the next attack deals ×2 damage (removed after attacking or moving).</LP_ACB_Camouflage.description>
+  <!-- 兽伴进化 -->
+  <LP_ACB_EvolvedBeast.label>evolved beast companion</LP_ACB_EvolvedBeast.label>
+  <!-- 游侠的兽伴：受到的伤害 ×0.67（相当于生命 +50%），近战伤害 ×1.3，移动 ×1.1。 -->
+  <LP_ACB_EvolvedBeast.description>A ranger's beast companion: damage taken ×0.67 (equivalent to +50% health), melee damage ×1.3, movement ×1.1.</LP_ACB_EvolvedBeast.description>
+  <!-- 猎神之眼 -->
+  <LP_ACB_HuntGodEye.label>eye of the hunt god</LP_ACB_HuntGodEye.label>
+  <!-- 射击精度大幅提高（几乎必中），对宿敌伤害 ×1.5。 -->
+  <LP_ACB_HuntGodEye.description>Shooting accuracy greatly increased (almost always hits), ×1.5 damage against favored enemies.</LP_ACB_HuntGodEye.description>
+  <!-- 致残 -->
+  <LP_ACB_Crippled.label>crippled</LP_ACB_Crippled.label>
+  <!-- 被刺伤筋腱：移动 ×0.5。 -->
+  <LP_ACB_Crippled.description>Tendons stabbed: movement ×0.5.</LP_ACB_Crippled.description>
+</LanguageData>

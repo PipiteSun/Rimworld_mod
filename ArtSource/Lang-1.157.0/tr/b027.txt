@@ -1,0 +1,221 @@
+s05994	A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal spell "Purify food and drink", taking 1 seal spell slot. Adventurer level 1 and Intellectual 4, absorb success 100%; on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal (tier 1 spell, Wisdom, lake breath 1): removes the target's food poisoning; no food poisoning for 2 days afterwards.
+s05995	seal crystal: purify food and drink
+s05996	A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal passive "Rune skin", taking 1 seal passive slot. Adventurer level 5 and Intellectual 6, absorb success 90% + Intellectual ×1%; on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal passive (tier 2): sharp and blunt armor +6%.
+s05997	seal crystal: rune skin
+s05998	A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal passive "Scholar's mind", taking 1 seal passive slot. Adventurer level 1 and Intellectual 4, absorb success 100%; on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal passive (tier 1): global learning speed +12%.
+s05999	seal crystal: scholar's mind
+s06000	A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal spell "Shatter", taking 1 seal spell slot. Adventurer level 5 and Intellectual 6, absorb success 90% + Intellectual ×1%; on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal (tier 2 spell, Intelligence, lake breath 2): radius 2 at the target, 15 blunt damage; ×3 against mechanoids and buildings.
+s06001	seal crystal: shatter
+s06002	A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal spell "Thunderwave", taking 1 seal spell slot. Adventurer level 1 and Intellectual 4, absorb success 100%; on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal (tier 1 spell, Intelligence, lake breath 2): a 4-cell cone ahead, 8 blunt damage, knocks back 2 cells, 30% chance to stun for 2 seconds.
+s06003	seal crystal: thunderwave
+s06004	A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal spell "Tiny hut", taking 1 seal spell slot. Adventurer level 10 and Intellectual 8, absorb success 70% + Intellectual ×2% (only purchasable once allied with the Mana Lake); on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal (tier 3 spell, Wisdom, lake breath 3): raise a force dome of radius 3 for 8 hours: blocks projectiles fired from outside, and those inside stay at a constant temperature; vanishes when the caster leaves the dome.
+s06005	seal crystal: tiny hut
+s06006	A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal passive "Weave sense", taking 1 seal passive slot. Adventurer level 10 and Intellectual 8, absorb success 70% + Intellectual ×2% (only purchasable once allied with the Mana Lake); on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal passive (tier 3): invisible enemies within 8 cells are visible to you.
+s06007	seal crystal: weave sense
+s06008	Universal arcanum passive (circle 8): spell and psychic damage taken -40%, all save success +15%.
+s06009	arcane bulwark
+s06010	Universal arcanum (circle 6 spell, Wisdom): raise an 8-cell-long wall of whirling blades at the target for 1 hour; enemies on the wall take 20 cut damage per second and are slowed 50%. Cooldown 2 days.
+s06011	Universal arcanum (circle 6 martial technique, Strength): within 1 hour, the next melee hit breaks one of the target's legs or arms (fracture for 10 days); legendary creatures take 30 blunt damage instead. Cooldown 2 days.
+s06012	bone-breaker strike
+s06013	Universal arcanum (circle 6 spell, Intelligence): a bolt of lightning starts at the target and jumps across 4 enemies, each taking 25 electrical damage, ×1.5 against mechanoids. Cooldown 2 days.
+s06014	chain lightning
+s06015	Universal arcanum (circle 7 spell, Charisma): 50 necrotic damage; humanlikes killed by it rise as undead servants of the caster's faction (permanent, no mental breaks). Cooldown 3 days.
+s06016	finger of death
+s06017	Universal arcanum (circle 6 spell, Wisdom): the target heals 70% of injuries (multiplied by power) and is cured of blindness, disease and food poisoning. Cooldown 2 days.
+s06018	Universal arcanum passive (circle 9): 3 times per day, turn a failed save into a success.
+s06019	legendary resistance
+s06020	Universal arcanum (circle 8 spell, Intelligence): banish an enemy to an otherworldly labyrinth for 30 seconds (it vanishes from the map, then returns to its spot); 10 seconds for legendary creatures. It's put back at once if the caster dies or the map unloads. Cooldown 5 days.
+s06021	maze
+s06022	Universal arcanum (circle 8 spell, Intelligence): the target is immune to mind control, charm, mental breaks and psychic damage for 1 day. Cooldown 5 days.
+s06023	mind blank
+s06024	Universal arcanum (circle 9 spell, Charisma): non-legendary creatures with remaining health ≤ 40% die on the spot; otherwise they take 40 psychic damage. Cooldown 7 days.
+s06025	power word kill
+s06026	Universal arcanum (circle 7 spell, Wisdom): instantly removes one of the target's old scars; after 3 days a lost limb or organ grows back. Cooldown 3 days.
+s06027	regenerate
+s06028	Universal arcanum (circle 7 spell, Intelligence): enemies within radius 5 of the target fly up for 10 seconds, unable to move, and each take 20 blunt damage on landing. Cooldown 3 days.
+s06029	reverse gravity
+s06030	Universal arcanum passive (circle 9): once every 10 days, when you would die you're downed instead and stop bleeding (half the injuries healed).
+s06031	second heart
+s06032	Universal arcanum (circle 7 martial technique, Dexterity): one shot pierces in a straight line for 40 cells, every enemy along it takes 4× weapon damage; ranged weapons only. Cooldown 3 days.
+s06033	sun-piercing arrow
+s06034	Universal arcanum (circle 8 spell, Wisdom): a blazing sunburst of radius 6 at a point within 30 cells: 45 holy burn damage and blinded for 1 minute; ×2 against undead. Allies are caught too (except the caster). Cooldown 5 days.
+s06035	sunburst
+s06036	Universal arcanum (circle 9 spell, Intelligence): everyone on this map except the caster, and projectiles in flight, freeze for 6 seconds (3 seconds for legendary creatures and story bosses); the caster harming someone makes time resume early. Cooldown 7 days.
+s06037	time stop
+s06038	Universal arcanum passive (circle 7): invisible enemies within 30 cells are visible to you (revealed for 1 hour); immune to blindness and illusions.
+s06039	true seeing
+s06040	Universal arcanum (circle 9 spell, Charisma): open the wish window and pick a wish. Safe wishes: cast any universal arcanum spell of circle 8 or lower directly (including ones you haven't learned); fully heal all colonists on this map and cure their diseases; conjure items worth up to 3000 silver in total. Great wishes: revive 1 colonist dead no more than 30 days, +1 ability score permanently, or dispel a long-term event; these have a 33% chance to make the caster permanently lose Wish and be weakened for 10 days. Closing the window without choosing triggers no cooldown. Different from a genie lamp's wish. Cooldown 15 days.
+s06041	wish
+s06042	Failed to absorb an arcanum crystal, and the lake's magic surged back: consciousness -30%. Can't absorb arcanum crystals again for 7 days.
+s06043	arcanum backlash
+s06044	The next melee hit breaks one of the target's legs or arms (a heavy blow instead against legendary creatures).
+s06045	A bone broken by a bone-breaker strike: this part is nearly unusable, healing after 10 days.
+s06046	fracture
+s06047	Thrown into the air by reversed gravity and unable to move; takes blunt damage on landing (severity = damage).
+s06048	The mind wiped blank: immune to mind control, charm, mental breaks and psychic damage (psychic sensitivity ×0, mind resistance +100%).
+s06049	Regenerative magic flows inside: a lost limb or organ grows back after 3 days.
+s06050	Cut by a blade barrier: movement ×0.5.
+s06051	blade wall cut
+s06052	An undead servant that rose after being killed by finger of death: loyal to the caster's faction, no mental breaks, feels little pain (pain ×0.5).
+s06053	undead servant
+s06054	A great wish drained too much life force: consciousness -20%, movement and work speed ×0.8.
+s06055	wish weakness
+s06056	erase a lake seal with {0_label}
+s06057	A Mana Lake clarity crystal. Using it opens a window to choose a learned lake seal to erase (no refund), freeing up the slot.
+s06058	clarity crystal
+s06059	Lake seal passive: damage taken from class abilities, psycasts and magic items -15%.
+s06060	lake seal: arcane resistance
+s06061	Lake seal passive: rest fall rate -15%.
+s06062	lake seal: dreamless sleep
+s06063	Lake seal passive: natural healing +20%, tend quality received +5%.
+s06064	lake seal: healing flow
+s06065	Lake seal passive: comfortable temperature range widened by 8°C at each end.
+s06066	lake seal: lakeland constitution
+s06067	Lake seal passive: max lake breath +1, recovery ×1.5.
+s06068	lake seal: heart of the lake
+s06069	Lake seal passive: each hit has a 15% chance to add 4 arcane damage.
+s06070	lake seal: mana conduit
+s06071	Lake seal passive: hunger rate -10%.
+s06072	lake seal: mana digestion
+s06073	Lake seal passive: sharp and blunt armor +6%.
+s06074	lake seal: rune skin
+s06075	Lake seal passive: global learning speed +12%.
+s06076	lake seal: scholar's mind
+s06077	Lake seal passive: invisible enemies within 8 cells are visible to you.
+s06078	lake seal: weave sense
+s06079	Lake seal (tier 1 spell, Intelligence, lake breath 1): draw an invisible rune of radius 6 at the target that lasts 3 days; when an enemy enters, it sends a letter and wakes the colonists (disappears after triggering once).
+s06080	alarm
+s06081	Lake seal (tier 2 spell, Intelligence, lake breath 1): lock a door for 5 days: enemies bashing it deal ×0.33 damage.
+s06082	arcane lock
+s06083	Lake seal passive (tier 2): damage taken from class abilities, psycasts and magic items -15% (doesn't overlap with mind resistance: this covers damage, mind resistance covers control).
+s06084	arcane resistance
+s06085	Lake seal (tier 2 spell, Wisdom, lake breath 2): success 60% + Wisdom modifier × 3%: tells you the type and rough timing of the biggest threat within 3 days.
+s06086	augury
+s06087	Calmed by a lake seal: mental break threshold -5%.
+s06088	calm emotions
+s06089	Lake seal (tier 2 spell, Charisma, lake breath 2): ends the target's non-violent mental break; with no break, the target gets mental break threshold -5% for 1 day.
+s06090	Lake seal (tier 3 spell, Intelligence, lake breath 2): interrupt a psycast / class ability an enemy is channeling and silence it for 10 seconds; 50% success against legendary creatures.
+s06091	counterspell
+s06092	Lake seal (tier 2 spell, Wisdom, lake breath 3): conjure 5 simple meals at your feet.
+s06093	Darkvision from a lake seal: ignores darkness penalties to work and aiming.
+s06094	Lake seal (tier 1 spell, Wisdom, lake breath 1): the target ignores darkness penalties to work and aiming for 1 day (duration lengthens with the casting ability).
+s06095	darkvision
+s06096	Lake seal passive (tier 1): rest fall rate -15%.
+s06097	dreamless sleep
+s06098	Failed to absorb a seal crystal; the sound of lake water keeps echoing in the ears: consciousness -10%.
+s06099	lake echoes
+s06100	Lake seal (tier 2 spell, Intelligence, lake breath 1): the target gets a shield absorbing 20 damage (rising with the casting ability) for 1 day.
+s06101	false life
+s06102	Lake seal passive (tier 2): natural healing +20%, tend quality received +5%.
+s06103	healing flow
+s06104	Lake seal passive (tier 1): comfortable temperature range widened by 8°C at each end.
+s06105	lakeland constitution
+s06106	Lake seal passive (tier 3): max lake breath +1, recovery ×1.5.
+s06107	heart of the lake
+s06108	Longstrider from a lake seal: movement +15%.
+s06109	Lake seal (tier 1 spell, Intelligence, lake breath 1): target move speed +15% for 1 day (duration lengthens with the casting ability).
+s06110	longstrider
+s06111	Lake seal passive (tier 2): each hit has a 15% chance to add 4 arcane damage.
+s06112	mana conduit
+s06113	Lake seal passive (tier 1): hunger rate -10%.
+s06114	mana digestion
+s06115	Lake seal (tier 1 spell, Intelligence, lake breath 1): one piece of apparel or weapon recovers 30% durability. When targeting a person, mends the most worn piece on them; you can also target an item on the ground directly.
+s06116	mending
+s06117	Purified by a lake seal: no food poisoning.
+s06118	Lake seal (tier 1 spell, Wisdom, lake breath 1): removes the target's food poisoning; no food poisoning for 2 days afterwards.
+s06119	Lake seal passive (tier 2): sharp and blunt armor +6%.
+s06120	rune skin
+s06121	Lake seal passive (tier 1): global learning speed +12%.
+s06122	scholar's mind
+s06123	Lake seal (tier 2 spell, Intelligence, lake breath 2): radius 2 at the target, 15 blunt damage; ×3 against mechanoids and buildings.
+s06124	shatter
+s06125	Inside a tiny hut's force dome: constant temperature, comfortable temperature range widened by 30°C at each end.
+s06126	tiny hut shelter
+s06127	Interrupted and silenced by a counterspell: can't cast psycasts or class abilities.
+s06128	silenced
+s06129	Lake seal (tier 1 spell, Intelligence, lake breath 2): a 4-cell cone ahead, 8 blunt damage, knocks back 2 cells, 30% chance to stun for 2 seconds.
+s06130	thunderwave
+s06131	A force dome of radius 3 raised by the lake seal "Tiny hut": projectiles fired from outside can't get in, and those inside stay at a constant temperature. Vanishes when the caster leaves the dome or after 8 hours.
+s06132	Lake seal (tier 3 spell, Wisdom, lake breath 3): raise a force dome of radius 3 for 8 hours: blocks projectiles fired from outside, and those inside stay at a constant temperature; vanishes when the caster leaves the dome.
+s06133	tiny hut dome
+s06134	tiny hut
+s06135	Lake seal passive (tier 3): invisible enemies within 8 cells are visible to you.
+s06136	weave sense
+s06137	Scales grown in the fire seas and ice caverns of the Abyss: fire, burn, frostbite and electrical damage taken ×75%, toxic resistance +50%.
+s06138	Swing all arms at once: against each enemy within 1 cell, the main hand and every usable off-hand attack once. Cooldown 2 days. Off-hands require extra arms; with only two arms there's just the main-hand strike.
+s06139	blade storm
+s06140	Against each enemy within 1 cell, the main hand and every usable off-hand attack once (guaranteed hit, resolved with real melee damage; off-hand damage uses the settings multiplier). Cooldown 2 days.
+s06141	Move speed ×85% when the ambient temperature is below 0°C.
+s06142	A cold-blooded body follows the weather: move speed ×85% when the ambient temperature is below 0°C.
+s06143	cold-blooded
+s06144	Wrapped tight by a serpent tail, unable to move, being crushed every second.
+s06145	constricted
+s06146	Constricting an enemy with the serpent tail; can't move for now.
+s06147	constricting
+s06148	marilith blade dancer
+s06149	Requires more than two arms (no effect on humans).
+s06150	Off-hands: the melee weapons in the pack with the highest quality × DPS, one per usable pair of extra arms (up to 2).
+s06151	After a normal melee hit, each off-hand follows up with a strike; doesn't trigger when the main hand holds a ranged weapon or on ability hits.
+s06152	Requires more than two arms. Melee weapons in the pack are taken up as off-hands by the extra arms: one per usable pair of extra arms (up to two, picking the best). While the main hand holds a melee weapon or is empty, each normal melee hit is followed by a strike from each off-hand (damage per mod settings, 50% by default). No effect on someone with only two arms.
+s06153	six-armed flurry
+s06154	marilith colonist
+s06155	Body size 1.6 (drawn about 1.3×), children grow with age.
+s06156	Two extra arms on each shoulder: each usable extra hand gives manipulation +10% (+40% with all four).
+s06157	A serpent tail instead of legs: clothes covering only the legs and feet can't be worn.
+s06158	The marilith bloodline: above the waist a six-armed humanoid, below the waist a thick serpent tail. Body size 1.6 (drawn about 1.3×). Each shoulder grows two extra arms (if one side's shoulder is lost or replaced with a prosthetic, that side's extra arms are gone too); each extra hand gives manipulation +10%. The serpent tail replaces both legs, so pants, greaves and shoes can't be worn. A cold-blooded race, most at ease in warm weather.
+s06159	serpent body origin
+s06160	The marilith bloodline: six arms swinging blades at once, a serpent tail gliding through mud and shallows and constricting enemies; the body can withstand the fire and cold of the Abyss, but fears the cold. The bloodline is passed on to children.
+s06161	Inheritable serpent-bodied race. Melee weapons in the pack serve as off-hands for flurries, blade storm, constrict; fast in mud and shallows, resistant to fire, cold and poison, fears cold.
+s06162	Wrap an adjacent enemy with the serpent tail (or long arms): it can't move for 3 seconds and takes 6 blunt damage per second (adjusted by the size ratio of both, ×0.5 to ×2); you can't move while constricting either. Cooldown 12 hours.
+s06163	constrict
+s06164	Constrict an adjacent enemy for 3 seconds: it can't act and takes 6 blunt damage per second (×0.5 to ×2 by size ratio); you can't move meanwhile. Cooldown 12 hours.
+s06165	Terrain movement cost of mud, marsh and shallow water halved (doesn't affect pathfinding detour decisions).
+s06166	The serpent tail glides along the ground, and mud, marsh and shallow water can't hold it back: movement cost on these terrains is halved.
+s06167	serpentine glide
+s06168	Six arms working together give extra manipulation. Each usable extra hand gives manipulation +10%, +40% with all four. The extra arms grow on both shoulders: if one side's shoulder is lost or replaced with a prosthetic, that side's two extra hands are gone too and the bonus drops accordingly.
+s06169	six arms
+s06170	A marilith's deep ink-green scaly hide.
+s06171	ink-green scales
+s06172	ink green
+s06173	A marilith's red-gold scaly hide with a metallic sheen.
+s06174	red-gold scales
+s06175	red gold
+s06176	A marilith's teal scaly hide.
+s06177	teal scales
+s06178	teal
+s06179	Someone's brain in the colony was sucked out. It's a blasphemy against every faith.
+s06180	someone's brain was devoured
+s06181	Another mind has joined the hivemind.
+s06182	sacred feast
+s06183	brain devouring
+s06184	Devouring the brain of an intelligent creature is the most abominable atrocity.
+s06185	Mind flayers need to eat brains, just as people need to eat food.
+s06186	acceptable
+s06187	Offering one's mind to the great hivemind is the noblest fate. Witnessing brain devouring isn't upsetting, and the devourer feels sacred.
+s06188	Max brain matter 100, losing 8 per day; weak below 30, debilitated below 10, brain hunger at zero (brain hunger frenzy can be turned off in mod settings).
+s06189	Devouring a brain: humanlike (20+3×Intellectual)×psychic sensitivity, up to 80; animals 3-10; fresh humanlike corpses within 6 hours give a third.
+s06190	Devouring destroys the target's brain: trolls won't revive, and the corpse is no longer intact. Liches and necromantic constructs have no living brain; mechanoids and the psychically deaf can't be devoured.
+s06191	The origin of the mind flayer. Provides the "brain matter" resource bar (0-100): losing 8 per day, replenished only by devouring brains. Below 30 brain matter it starts to weaken, below 10 it's severely debilitated, and at zero it falls into brain hunger and may go into an uncontrolled frenzy. Devouring a downed humanlike gives (20+3×Intellectual level)×its psychic sensitivity brain matter (up to 80) and absorbs 20% of the XP of its highest skill; animals give only 3-10; fresh humanlike corpses dead within 6 hours give a third.
+s06192	brain matter metabolism
+s06193	The brain matter mind flayers live on. Loses 8 per day, replenished by devouring brains; psychic abilities also consume brain matter.
+s06194	brain matter
+s06195	Not enough brain matter; the mind flayer's body and mind are weakening. Devouring brains restores it.
+s06196	brain matter deficit
+s06197	I need fresh brains.
+s06198	deficient
+s06199	Hunger gnaws at my mind; all I can think of is other people's brains.
+s06200	starved
+s06201	brain matter starvation
+s06202	Brains... I must eat brains right now!
+s06203	brain hunger
+s06204	Bore tentacles into the skull of a downed creature (or a fresh humanlike corpse dead no more than 6 hours) and suck out its brain. The target dies at once (brain missing), and the mind flayer gains brain matter and absorbs 20% of the XP of the target's highest skill. Witnesses are deeply shaken, and the target's faction goodwill -15. Liches and necromantic constructs have no living brain; devouring them fails and leaves a 6-hour "taste of undeath". Mechanoids and the psychically deaf can't be devoured.
+s06205	A companion's mind vanished from the hivemind; the blank it left makes my head split.
+s06206	hivemind severed
+s06207	Each mind flayer companion of your faction on the same map: psychic sensitivity +10%, global learning speed +5% (up to 3).
+s06208	Companion death: mood -8 for 3 days.
+s06209	Mind flayers' minds are connected to each other. For each additional mind flayer of your faction on the same map, psychic sensitivity +10% and global learning speed +5%, counting up to 3. When a companion dies, the other mind flayers feel "hivemind severed".
+s06210	Mentally linked with mind flayer companions on the same map.
+s06211	hivemind link
+s06212	1 companion
+s06213	2 companions
+s06214	3 companions

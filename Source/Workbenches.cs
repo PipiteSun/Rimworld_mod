@@ -27,8 +27,8 @@ namespace LichPhylactery {
   public static float WorkerFactor(Thing bench,Pawn worker,RecipeDef recipe,out string why){
    why=null;
    if(bench==null || worker==null)return 1f;
-   if(Is(bench,GiantAnvil) && worker.BodySize>=GiantBodySize){why="巨人铁砧（体型"+worker.BodySize.ToString("0.##")+"≥"+GiantBodySize+"）";return GiantFactor;}
-   if(Is(bench,Loom) && recipe?.ProducedThingDef!=null && LoomCapes.Contains(recipe.ProducedThingDef.defName)){why="法袍织机（种族披风）";return LoomCapeFactor;}
+   if(Is(bench,GiantAnvil) && worker.BodySize>=GiantBodySize){why="巨人铁砧（体型".Loc()+worker.BodySize.ToString("0.##")+"≥"+GiantBodySize+"）".Loc();return GiantFactor;}
+   if(Is(bench,Loom) && recipe?.ProducedThingDef!=null && LoomCapes.Contains(recipe.ProducedThingDef.defName)){why="法袍织机（种族披风）".Loc();return LoomCapeFactor;}
    return 1f;
   }
   public static float WorkerFactor(Thing bench,Pawn worker,RecipeDef recipe)=>WorkerFactor(bench,worker,recipe,out _);
@@ -61,10 +61,10 @@ namespace LichPhylactery {
    var scribe=P("LP_Research_Scribing");if(scribe!=null && !scribe.IsFinished && P("LP_Research_Enchanting")?.IsFinished==true){Find.ResearchManager.FinishProject(scribe,false,null,false);n++;}
    return n;
   }
-  public const string LetterLabel="DND配方搬家了";
+  public static readonly string LetterLabel="DND配方搬家了".Loc();
   public static string LetterText(List<(RecipeDef recipe,ThingDef home)> removed){
-   var lines=removed.GroupBy(x=>x.home).Select(g=>"· "+(g.Key?.LabelCap.ToString()??"其他工作台")+"："+string.Join("、",g.Select(x=>x.recipe.ProducedThingDef?.label??x.recipe.label).Distinct()));
-   return "DND配方搬家了：符文火器和异族装备去符文铁砧，巨人装备去巨人铁砧，魔法物品去附魔台，圣物去圣坛，卷轴和手册去卷轴书桌，法袍去法袍织机。\n\n这个存档里原版锻造台、炼金桌、裁缝台上挂着的这些工作单已经清掉了，请在新工作台上重新下单：\n"+string.Join("\n",lines)+"\n\n正在做的半成品按原版规则处理（可以丢弃返还材料）。";
+   var lines=removed.GroupBy(x=>x.home).Select(g=>"· "+(g.Key?.LabelCap.ToString()??"其他工作台".Loc())+"：".Loc()+string.Join("、".Loc(),g.Select(x=>x.recipe.ProducedThingDef?.label??x.recipe.label).Distinct()));
+   return "DND配方搬家了：符文火器和异族装备去符文铁砧，巨人装备去巨人铁砧，魔法物品去附魔台，圣物去圣坛，卷轴和手册去卷轴书桌，法袍去法袍织机。\n\n这个存档里原版锻造台、炼金桌、裁缝台上挂着的这些工作单已经清掉了，请在新工作台上重新下单：\n".Loc()+string.Join("\n",lines)+"\n\n正在做的半成品按原版规则处理（可以丢弃返还材料）。".Loc();
   }
  }
 
@@ -75,8 +75,8 @@ namespace LichPhylactery {
   }
   public override string ExplanationPart(StatRequest req){
    if(!(req.Thing is Building b) || (b.def.defName!=Workbenches.GiantAnvil && b.def.defName!=Workbenches.Loom))return null;
-   if(b.def.defName==Workbenches.GiantAnvil){var p=Workbenches.CurrentWorker(b);float f=Workbenches.WorkerFactor(b,p,p?.CurJob?.bill?.recipe,out var why);return f!=1f?why+"：×"+f.ToStringPercent():"体型1.8以上的工匠：×"+Workbenches.GiantFactor.ToStringPercent();}
-   var w=Workbenches.CurrentWorker(b);float g=Workbenches.WorkerFactor(b,w,w?.CurJob?.bill?.recipe,out var why2);return g!=1f?why2+"：×"+g.ToStringPercent():"种族披风：×"+Workbenches.LoomCapeFactor.ToStringPercent();
+   if(b.def.defName==Workbenches.GiantAnvil){var p=Workbenches.CurrentWorker(b);float f=Workbenches.WorkerFactor(b,p,p?.CurJob?.bill?.recipe,out var why);return f!=1f?why+"：×".Loc()+f.ToStringPercent():"体型1.8以上的工匠：×".Loc()+Workbenches.GiantFactor.ToStringPercent();}
+   var w=Workbenches.CurrentWorker(b);float g=Workbenches.WorkerFactor(b,w,w?.CurJob?.bill?.recipe,out var why2);return g!=1f?why2+"：×".Loc()+g.ToStringPercent():"种族披风：×".Loc()+Workbenches.LoomCapeFactor.ToStringPercent();
   }
  }
  [StaticConstructorOnStartup]
@@ -91,14 +91,14 @@ namespace LichPhylactery {
   public int version;
   public WorkbenchMigration(Game game){}
   public override void StartedNewGame(){version=1;}
-  public override void LoadedGame(){if(version>=1)return;try{Migrate();}catch(Exception e){Log.Error("[DND边缘大陆] 工作台搬家迁移失败："+e);}version=1;}
+  public override void LoadedGame(){if(version>=1)return;try{Migrate();}catch(Exception e){Log.Error("[DND边缘大陆] 工作台搬家迁移失败：".Loc()+e);}version=1;}
   public static int lettersSent;
   public static void Migrate(){
    int research=Workbenches.CompleteResearch();
    var removed=Workbenches.RemoveOrphanBills();
-   if(research>0)Log.Message("[DND边缘大陆] DND工作台：按已完成的研究补完了"+research+"项新研究（符文锻造/卷轴抄写）。");
+   if(research>0)Log.Message("[DND边缘大陆] DND工作台：按已完成的研究补完了".Loc()+research+"项新研究（符文锻造/卷轴抄写）。".Loc());
    if(removed.Count>0){
-    Log.Message("[DND边缘大陆] DND工作台：清掉了"+removed.Count+"张配方已搬走的旧工作单。");
+    Log.Message("[DND边缘大陆] DND工作台：清掉了".Loc()+removed.Count+"张配方已搬走的旧工作单。".Loc());
     Find.LetterStack.ReceiveLetter(Workbenches.LetterLabel,Workbenches.LetterText(removed),LetterDefOf.NeutralEvent);lettersSent++;
    }
   }

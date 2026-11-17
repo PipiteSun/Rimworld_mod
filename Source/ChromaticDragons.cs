@@ -20,18 +20,18 @@ namespace LichPhylactery {
 
  public static class Dragons {
   public static readonly string[] Colors={"Red","Blue","Green","Black","White"};
-  public static readonly string[] StageKey={"Young","Adult","Ancient"},StageLabel={"青年","成年","远古"};
+  public static readonly string[] StageKey={"Young","Adult","Ancient"},StageLabel={"青年".Loc(),"成年".Loc(),"远古".Loc()};
   public static readonly IntRange[] AgeRange={new IntRange(30,99),new IntRange(100,799),new IntRange(800,1500)};
   public static readonly int[] Hits={3,4,5};public static readonly float[] HitDamage={9f,12f,18f},ConeRange={6f,8f,11f},LineRange={12f,16f,22f},WingDamage={0f,15f,25f};
   public static readonly float[] RenderScale={2.6f,3.8f,5.2f}; // 1.63.0：画得更大（原 2.0 / 2.8 / 3.8），只影响外观
   public const float ConeHalfAngle=28f,ChargeChance=1f/3f,CharmRange=15f,FlyRange=12f,FleeHealth=.35f,ApparelLoss=.3f,ToxPerHit=.04f;
   public const int ChargeTicks=360,CharmTicks=1800,CharmDuration=1800,FlyTicks=900,BurrowStun=120;
   public static readonly Dictionary<string,DragonColorInfo> Info=new Dictionary<string,DragonColorInfo>{
-   {"Red",new DragonColorInfo{key="Red",label="红龙",breathLabel="火焰吐息",damage="Flame",line=false,save=Adventurer.Dex,biomeWords="mountain|desert|volcan|hot|arid|scrub",guardKind="LP_EC_FireGiant",guards=new IntRange(2,4),lairRock="Granite",lairFloor="FlagstoneGranite"}},
-   {"Blue",new DragonColorInfo{key="Blue",label="蓝龙",breathLabel="闪电吐息",damage="LP_Shock",line=true,save=Adventurer.Dex,biomeWords="desert|arid|scrub|dune",guardKind="LP_DragonCultist",guards=new IntRange(2,5),lairRock="Sandstone",lairFloor="FlagstoneSandstone"}},
-   {"Green",new DragonColorInfo{key="Green",label="绿龙",breathLabel="毒气吐息",damage="LP_DragonPoison",line=false,save=Adventurer.Con,biomeWords="forest|jungle|grove",guardKind="LP_Worg",guards=new IntRange(3,5),guardsMad=true,lairRock="Limestone",lairFloor="FlagstoneLimestone"}},
-   {"Black",new DragonColorInfo{key="Black",label="黑龙",breathLabel="强酸吐息",damage="LP_AlchemyAcid",line=true,save=Adventurer.Dex,biomeWords="swamp|marsh|bog|wetland|jungle",guardKind="LP_DragonCultist",guards=new IntRange(2,4),lairRock="Slate",lairFloor="FlagstoneSlate"}},
-   {"White",new DragonColorInfo{key="White",label="白龙",breathLabel="寒冰吐息",damage="LP_Frost",line=false,save=Adventurer.Con,biomeWords="tundra|ice|glacier|boreal|cold",guardKind="LP_WinterWolf",guards=new IntRange(4,6),guardsMad=true,extorts=false,lairRock="Marble",lairFloor="FlagstoneMarble"}},
+   {"Red",new DragonColorInfo{key="Red",label="红龙".Loc(),breathLabel="火焰吐息".Loc(),damage="Flame",line=false,save=Adventurer.Dex,biomeWords="mountain|desert|volcan|hot|arid|scrub",guardKind="LP_EC_FireGiant",guards=new IntRange(2,4),lairRock="Granite",lairFloor="FlagstoneGranite"}},
+   {"Blue",new DragonColorInfo{key="Blue",label="蓝龙".Loc(),breathLabel="闪电吐息".Loc(),damage="LP_Shock",line=true,save=Adventurer.Dex,biomeWords="desert|arid|scrub|dune",guardKind="LP_DragonCultist",guards=new IntRange(2,5),lairRock="Sandstone",lairFloor="FlagstoneSandstone"}},
+   {"Green",new DragonColorInfo{key="Green",label="绿龙".Loc(),breathLabel="毒气吐息".Loc(),damage="LP_DragonPoison",line=false,save=Adventurer.Con,biomeWords="forest|jungle|grove",guardKind="LP_Worg",guards=new IntRange(3,5),guardsMad=true,lairRock="Limestone",lairFloor="FlagstoneLimestone"}},
+   {"Black",new DragonColorInfo{key="Black",label="黑龙".Loc(),breathLabel="强酸吐息".Loc(),damage="LP_AlchemyAcid",line=true,save=Adventurer.Dex,biomeWords="swamp|marsh|bog|wetland|jungle",guardKind="LP_DragonCultist",guards=new IntRange(2,4),lairRock="Slate",lairFloor="FlagstoneSlate"}},
+   {"White",new DragonColorInfo{key="White",label="白龙".Loc(),breathLabel="寒冰吐息".Loc(),damage="LP_Frost",line=false,save=Adventurer.Con,biomeWords="tundra|ice|glacier|boreal|cold",guardKind="LP_WinterWolf",guards=new IntRange(4,6),guardsMad=true,extorts=false,lairRock="Marble",lairFloor="FlagstoneMarble"}},
   };
   public static ThingDef Race(string c)=>DefDatabase<ThingDef>.GetNamedSilentFail("LP_"+c+"Dragon");
   public static bool Available=>Race("Red")!=null;
@@ -40,8 +40,8 @@ namespace LichPhylactery {
   static readonly System.Collections.Concurrent.ConcurrentDictionary<ThingDef,string> colorCache=new System.Collections.Concurrent.ConcurrentDictionary<ThingDef,string>();
   public static string ColorOf(Pawn p){var d=p?.def;if(d==null)return null;return colorCache.GetOrAdd(d,x=>x.GetModExtension<LP_DragonExtension>()?.color);}
   public static bool IsChromatic(Pawn p)=>ColorOf(p)!=null;
-  // 龙杀手等“龙”的统一判定：力能龙裔、五色龙，以及名字里带 Dragon 的非人形生物（Isekai 生物扩展的真龙）。人形兵种（龙教徒）不算。
-  public static bool Is(Pawn p)=>p!=null && (IsChromatic(p) || ForceDragon.Active(p) || p.RaceProps!=null && !p.RaceProps.Humanlike && p.def.defName.IndexOf("Dragon",StringComparison.OrdinalIgnoreCase)>=0);
+  // 龙杀手等“龙”的统一判定：五色龙，以及名字里带 Dragon 的非人形生物（Isekai 生物扩展的真龙）。人形兵种（龙教徒）不算。
+  public static bool Is(Pawn p)=>p!=null && (IsChromatic(p) || p.RaceProps!=null && !p.RaceProps.Humanlike && p.def.defName.IndexOf("Dragon",StringComparison.OrdinalIgnoreCase)>=0);
   public static int Stage(Pawn p){var ls=p?.ageTracker?.CurLifeStage?.defName;return ls=="LP_DragonAncient"?2:ls=="LP_DragonAdult"?1:ls=="LP_DragonYoung"?0:-1;}
   public static int StageOrYoung(Pawn p)=>Mathf.Max(0,Stage(p));
   public static string Title(Pawn p){var c=ColorOf(p);return c==null?null:StageLabel[StageOrYoung(p)]+Info[c].label;}
@@ -69,7 +69,7 @@ namespace LichPhylactery {
   public static Faction Faction(){var f=Factions.EnsureHidden(FactionDef);if(f!=null && !f.HostileTo(RimWorld.Faction.OfPlayer))Factions.SetRelation(f,RimWorld.Faction.OfPlayer,-100);return f;}
 
   // ---------- 生成 ----------
-  static readonly string[] Names={"阿达亚克斯","克拉拉吉斯","奥默拉斯","瓦拉斯卡","伊莉安德拉","萨卡拉斯","塔罗斯赫","韦尔米索","乌姆布拉","科尔加斯","梅格拉齐","斯卡尔维克","格丽姆塔","阿尔萨洛斯","黑焰","霜牙","苍雷","毒棘","伊瑞维斯","普尔普拉"};
+  static readonly string[] Names={"阿达亚克斯".Loc(),"克拉拉吉斯".Loc(),"奥默拉斯".Loc(),"瓦拉斯卡".Loc(),"伊莉安德拉".Loc(),"萨卡拉斯".Loc(),"塔罗斯赫".Loc(),"韦尔米索".Loc(),"乌姆布拉".Loc(),"科尔加斯".Loc(),"梅格拉齐".Loc(),"斯卡尔维克".Loc(),"格丽姆塔".Loc(),"阿尔萨洛斯".Loc(),"黑焰".Loc(),"霜牙".Loc(),"苍雷".Loc(),"毒棘".Loc(),"伊瑞维斯".Loc(),"普尔普拉".Loc()};
   public static Pawn Make(string color,int stage,Faction f=null,int tile=-1){
    var kind=Kind(color,stage);if(kind==null)return null;f=f??Faction();
    var age=AgeRange[Mathf.Clamp(stage,0,2)].RandomInRange;
@@ -161,7 +161,7 @@ namespace LichPhylactery {
    foreach(var b in builds){if(b.Destroyed)continue;float amt=per*hits*(c=="Blue" && b is Building_Turret?2f:1f);b.TakeDamage(new DamageInfo(def,amt,.25f,-1f,d));r.buildings++;}
    if(c=="Green" && ModsConfig.BiotechActive)foreach(var cell in cells.Where((x,i)=>i%3==0))GasUtility.AddGas(cell,map,GasType.ToxGas,60);
    Breaths++;
-   Items.Mote(d,info.breathLabel+"！",new Color(1f,.55f,.3f));
+   Items.Mote(d,info.breathLabel+"！".Loc(),new Color(1f,.55f,.3f));
    return r;
   }
   static void Effect(string c,IntVec3 cell,Map map){
@@ -183,8 +183,7 @@ namespace LichPhylactery {
    if(d?.Map==null)return null;var info=Info[ColorOf(d)];float range=info.line?LineRange[StageOrYoung(d)]:ConeRange[StageOrYoung(d)];
    var list=Legendary.EnemiesNear(d,range).Where(p=>!p.Downed && GenSight.LineOfSight(d.Position,p.Position,d.Map,true)).ToList();
    if(list.Count==0)return null;
-   // 金属与色彩之争：成年力能龙裔优先。
-   return list.OrderByDescending(p=>ForceDragon.Active(p) && ForceDragon.Age(p)>=3?1:0).ThenBy(p=>p.Position.DistanceTo(d.Position)).First();
+   return list.OrderBy(p=>p.Position.DistanceTo(d.Position)).First();
   }
 
   // ---------- 绿龙魅惑 ----------
@@ -195,9 +194,9 @@ namespace LichPhylactery {
    if(Legendary.Save(p,Adventurer.Cha,CharmDC(dragon,p),dragon)){mc?.Immune(dragon,p,Legendary.FearImmuneTicks);return false;}
    var def=DefDatabase<MentalStateDef>.GetNamedSilentFail("LP_DragonCharmed");if(def==null)return false;
    Legendary.bypass=true;
-   try{if(!p.mindState.mentalStateHandler.TryStartMentalState(def,"真龙魅惑",forced:true,forceWake:true))return false;}finally{Legendary.bypass=false;}
+   try{if(!p.mindState.mentalStateHandler.TryStartMentalState(def,"真龙魅惑".Loc(),forced:true,forceWake:true))return false;}finally{Legendary.bypass=false;}
    if(p.MentalState!=null)p.MentalState.forceRecoverAfterTicks=CharmDuration;
-   Items.Mote(p,"被魅惑了",new Color(.5f,.9f,.5f));return true;
+   Items.Mote(p,"被魅惑了".Loc(),new Color(.5f,.9f,.5f));return true;
   }
   public static Pawn CharmTarget(Pawn d)=>Legendary.EnemiesNear(d,CharmRange).Where(p=>p.Faction!=null && p.Faction.IsPlayer && p.RaceProps.Humanlike && !p.Downed && !p.InMentalState && GenSight.LineOfSight(d.Position,p.Position,d.Map,true)).OrderBy(p=>p.Position.DistanceTo(d.Position)).FirstOrDefault();
 
@@ -216,7 +215,7 @@ namespace LichPhylactery {
    d.GetLord()?.RemovePawn(d);
    LordMaker.MakeNewLord(d.Faction,new LordJob_ExitMapBest(LocomotionUrgency.Sprint,true,true),map,new List<Pawn>{d});
    var st=State;var enc=st?.Encounter(d);if(enc!=null)enc.fled=true;
-   Find.LetterStack.ReceiveLetter(Title(d)+"撤退了",d.LabelShort+"受了重伤，拍着翅膀撤退了。它不会忘记这里。",LetterDefOf.PositiveEvent,d);
+   Find.LetterStack.ReceiveLetter(Title(d)+"撤退了".Loc(),d.LabelShort+"受了重伤，拍着翅膀撤退了。它不会忘记这里。".Loc(),LetterDefOf.PositiveEvent,d);
   }
 
   // ---------- 存档组件 ----------
@@ -230,7 +229,6 @@ namespace LichPhylactery {
    return -1;
   }
   public static bool AncientUsedThisYear(){var st=State;return st!=null && st.lastAncientRaid>=0 && GenTicks.TicksAbs-st.lastAncientRaid<GenDate.TicksPerYear;}
-  public static bool HasGreatWyrm(Map map)=>map!=null && map.mapPawns.FreeColonistsSpawned.Any(p=>ForceDragon.Active(p) && ForceDragon.Age(p)>=5);
   // 颜色按生态区加权：偏好的生态区权重 5，其他 1（每色至少 10%）。
   public static string PickColor(Map map,bool extortion){
    var biome=(map?.Biome?.defName??"").ToLowerInvariant();
@@ -303,28 +301,28 @@ namespace LichPhylactery {
    return enc;
   }
   public static bool WantsGold(string c)=>c=="Red" || c=="Blue";
-  public static string DemandText(DragonEncounter e)=>WantsGold(e.color)?"金子、宝石和艺术品":"银子";
+  public static string DemandText(DragonEncounter e)=>WantsGold(e.color)?"金子、宝石和艺术品".Loc():"银子".Loc();
   public static void SendExtortionLetter(DragonEncounter e){
    if(Adventurer.TestSuppressed && !GenCommandLine.CommandLineArgPassed("lichdragonletters"))return;
    var l=(Letter_DragonExtortion)LetterMaker.MakeLetter(DefDatabase<LetterDef>.GetNamed("LP_DragonExtortionLetter"));
-   l.Label=TitleFor(e.color,e.stage)+"的勒索";l.encounter=e;l.lookTargets=new LookTargets(e.dragon);l.relatedFaction=e.dragon.Faction;
+   l.Label=TitleFor(e.color,e.stage)+"的勒索".Loc();l.encounter=e;l.lookTargets=new LookTargets(e.dragon);l.relatedFaction=e.dragon.Faction;
    l.Text=ExtortionText(e);
    Find.LetterStack.ReceiveLetter(l);
   }
-  public static string ExtortionText(DragonEncounter e)=>e.dragon.LabelShort+"（"+TitleFor(e.color,e.stage)+"）落在殖民地外，带着"+e.guards.Count+"名护卫。它的声音震得人耳朵发麻：\n\n“交出价值 "+e.demand.ToString("0")+" 的"+DemandText(e)+"，我就饶过你们。”\n\n"
-   +"付：从储存区里直接拿走这么多价值的东西（不够就拿别的值钱货），它带着护卫离开；三十天后有一半的可能再来，要价再高一半。\n"
-   +"谈：派一名殖民者交涉（难度 "+NegotiateDC(e.stage)+"，"+NegotiateChanceText(e)+"；魅力调整值和熟练加值每点 +5%），成功要价减半。"+(e.color=="Green"?"绿龙还会接受交出一名殖民者给它做仆从。":"")+"\n"
-   +"拒绝：它立刻进攻，护卫一起上。\n\n一天之内不答复就算拒绝。";
+  public static string ExtortionText(DragonEncounter e)=>e.dragon.LabelShort+"（".Loc()+TitleFor(e.color,e.stage)+"）落在殖民地外，带着".Loc()+e.guards.Count+"名护卫。它的声音震得人耳朵发麻：\n\n“交出价值 ".Loc()+e.demand.ToString("0")+" 的".Loc()+DemandText(e)+"，我就饶过你们。”\n\n".Loc()
+   +"付：从储存区里直接拿走这么多价值的东西（不够就拿别的值钱货），它带着护卫离开；三十天后有一半的可能再来，要价再高一半。\n".Loc()
+   +"谈：派一名殖民者交涉（难度 ".Loc()+NegotiateDC(e.stage)+"，".Loc()+NegotiateChanceText(e)+"；魅力调整值和熟练加值每点 +5%），成功要价减半。".Loc()+(e.color=="Green"?"绿龙还会接受交出一名殖民者给它做仆从。".Loc():"")+"\n"
+   +"拒绝：它立刻进攻，护卫一起上。\n\n一天之内不答复就算拒绝。".Loc();
   public static int NegotiateDC(int stage)=>stage>=1?18:15;
   // 1.59.0 热修（去 d20 措辞）：交涉对玩家显示成功率（和 Negotiate 的判定同一概率）。
   public static float NegotiateChance(Pawn who,int stage)=>who==null?0f:Legendary.SaveChance(Legendary.Mod(who,Adventurer.Cha),Legendary.Proficiency(Adventurer.Get(who)?.level??0),0,NegotiateDC(stage));
-  static string NegotiateChanceText(DragonEncounter e){var who=Negotiator(e.dragon?.MapHeld);return who!=null?who.LabelShort+"的成功率 "+NegotiateChance(who,e.stage).ToStringPercent():"基础成功率 "+Legendary.SaveChance(0,2,0,NegotiateDC(e.stage)).ToStringPercent();}
+  static string NegotiateChanceText(DragonEncounter e){var who=Negotiator(e.dragon?.MapHeld);return who!=null?who.LabelShort+"的成功率 ".Loc()+NegotiateChance(who,e.stage).ToStringPercent():"基础成功率 ".Loc()+Legendary.SaveChance(0,2,0,NegotiateDC(e.stage)).ToStringPercent();}
   public static Pawn Negotiator(Map map)=>map?.mapPawns.FreeColonistsSpawned.Where(p=>!p.Downed && p.skills!=null && !p.skills.GetSkill(SkillDefOf.Social).TotallyDisabled).OrderByDescending(p=>Legendary.Mod(p,Adventurer.Cha)+Legendary.Proficiency(Adventurer.Get(p)?.level??0)).FirstOrDefault();
   public static bool Negotiate(DragonEncounter e,Pawn who){
    if(e==null || e.negotiated)return false;e.negotiated=true;if(who==null)return false;
    int roll=Legendary.D20()+Legendary.Mod(who,Adventurer.Cha)+Legendary.Proficiency(Adventurer.Get(who)?.level??0);
    bool ok=roll>=NegotiateDC(e.stage);if(ok)e.demand*=.5f;
-   if(!Adventurer.TestSuppressed)Messages.Message(who.LabelShort+"的交涉（成功率 "+NegotiateChance(who,e.stage).ToStringPercent()+"）"+(ok?"成功了：要价减半，现在是 "+e.demand.ToString("0")+"。":"失败了：要价不变。"),e.dragon,ok?MessageTypeDefOf.PositiveEvent:MessageTypeDefOf.NegativeEvent,false);
+   if(!Adventurer.TestSuppressed)Messages.Message(who.LabelShort+"的交涉（成功率 ".Loc()+NegotiateChance(who,e.stage).ToStringPercent()+"）".Loc()+(ok?"成功了：要价减半，现在是 ".Loc()+e.demand.ToString("0")+"。".Loc():"失败了：要价不变。".Loc()),e.dragon,ok?MessageTypeDefOf.PositiveEvent:MessageTypeDefOf.NegativeEvent,false);
    return ok;
   }
   // 付款：按偏好从储存区拿（红、蓝：金、宝石（玉）、艺术品；绿、黑：银），不够再拿其他值钱的东西。返回拿走的总价值。
@@ -353,7 +351,7 @@ namespace LichPhylactery {
    foreach(var p in pawns)p.GetLord()?.RemovePawn(p);
    e.lord=LordMaker.MakeNewLord(e.dragon.Faction,new LordJob_AssaultColony(e.dragon.Faction,false,false,false,false,false),e.map,pawns.Where(p=>!p.RaceProps.Animal));
    if(Info[e.color].guardsMad)MakeMad(e.guards);
-   if(!Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter(TitleFor(e.color,e.stage)+"进攻了",(why??"你拒绝了它的要求。")+e.dragon.LabelShort+"咆哮着扑向殖民地！",LetterDefOf.ThreatBig,e.dragon,e.dragon.Faction);
+   if(!Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter(TitleFor(e.color,e.stage)+"进攻了".Loc(),(why??"你拒绝了它的要求。".Loc())+e.dragon.LabelShort+"咆哮着扑向殖民地！".Loc(),LetterDefOf.ThreatBig,e.dragon,e.dragon.Faction);
   }
   // 绿龙：交出一名殖民者做仆从（被带走，算被绑架）。
   public static bool HandOver(DragonEncounter e,Pawn p){
@@ -363,14 +361,13 @@ namespace LichPhylactery {
    e.answered=true;Leave(e);return true;
   }
 
-  // 龙过境联动：没有成年力能龙裔时，过境结束 25% 一条五色龙（青年 / 成年，按来袭的条件）降落并勒索。
+  // 龙过境联动：过境结束 25% 一条五色龙（青年 / 成年，按来袭的条件）降落并勒索。
   public const float FlyoverChance=.25f;
   public static DragonEncounter OnFlyoverEnd(Map map){
    if(!FlyoverLinkOn || map==null)return null;
    if(Roll>=FlyoverChance)return null;
    int st=RaidStage(StorytellerUtility.DefaultThreatPointsNow(map),AdventurerEnemies.ColonyMaxLevel(),true);
    if(st<0)st=0;if(st>1)st=1;
-   if(st==0 && HasGreatWyrm(map))return null;
    return Extort(map,PickColor(map,true),st);
   }
 
@@ -380,10 +377,10 @@ namespace LichPhylactery {
   public static DragonLair RevealLair(string color,int stage,string why){
    if(!LairOn)return null;var st=State;var f=Faction();if(st==null || f==null)return null;
    var site=NetherilQuest.MakeSite("LP_DragonLair",f,6,15,1f);if(site==null)return null;
-   site.customLabel=TitleFor(color,stage)+"的巢穴";
+   site.customLabel=TitleFor(color,stage)+"的巢穴".Loc();
    var lair=new DragonLair{site=site,color=color,stage=stage,expire=Find.TickManager.TicksGame+LairDays*GenDate.TicksPerDay};
    st.lairs.Add(lair);
-   if(!Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("龙巢显露",why+"，"+TitleFor(color,stage)+"的巢穴显露在世界地图上（离殖民地 6～15 格），"+LairDays+"天后消失。\n\n巢主睡在宝藏堆旁，有人走近 10 格或开枪就会醒来；在巢里它的传奇抗性多 1 次，每 10 秒放一次巢穴动作。把它引出巢穴 20 格以外，巢穴动作就停了。宝藏："+HoardValue[stage].ToString("0")+" 价值的金银珠宝、"+HoardItems[stage]+" 件魔法物品"+(StoneChance[stage]>=1f?"和一块传奇重铸之石":"，可能还有一块传奇重铸之石")+"。",LetterDefOf.PositiveEvent,new LookTargets(site));
+   if(!Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("龙巢显露".Loc(),why+"，".Loc()+TitleFor(color,stage)+"的巢穴显露在世界地图上（离殖民地 6～15 格），".Loc()+LairDays+"天后消失。\n\n巢主睡在宝藏堆旁，有人走近 10 格或开枪就会醒来；在巢里它的传奇抗性多 1 次，每 10 秒放一次巢穴动作。把它引出巢穴 20 格以外，巢穴动作就停了。宝藏：".Loc()+HoardValue[stage].ToString("0")+" 价值的金银珠宝、".Loc()+HoardItems[stage]+" 件魔法物品".Loc()+(StoneChance[stage]>=1f?"和一块传奇重铸之石".Loc():"，可能还有一块传奇重铸之石".Loc())+"。".Loc(),LetterDefOf.PositiveEvent,new LookTargets(site));
    return lair;
   }
   public static DragonLair LairOf(Site s)=>s==null?null:State?.lairs.FirstOrDefault(l=>l.site==s);
@@ -449,7 +446,7 @@ namespace LichPhylactery {
      if(target!=null && (target.Position.DistanceTo(p.Position)>Dragons.FlyRange || !p.Map.reachability.CanReach(p.Position,target,PathEndMode.Touch,TraverseParms.For(p)))){flyTick=now+Dragons.FlyTicks;ChromaticFlight.Hop(p,Dragons.FlyRange,target.Position);}
     }
     if(!fled && Dragons.ShouldFlee(p)){fled=true;Dragons.Flee(p);}
-   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 真龙行为出错："+e,74152101);}
+   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 真龙行为出错：".Loc()+e,74152101);}
   }
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref charged,"lpCharged");Scribe_Values.Look(ref fled,"lpFled");}
  }
@@ -477,16 +474,16 @@ namespace LichPhylactery {
    try{
     foreach(var e in encounters.ToList()){
      if(e.resolved){encounters.Remove(e);continue;}
-     if(e.kind=="extortion" && !e.answered && e.deadline>=0 && now>=e.deadline){Dragons.Refuse(e,"一天过去了，你没有答复。");continue;}
+     if(e.kind=="extortion" && !e.answered && e.deadline>=0 && now>=e.deadline){Dragons.Refuse(e,"一天过去了，你没有答复。".Loc());continue;}
      if(e.dragon==null)continue;
-     if(e.dragon.Dead){e.resolved=true;if(e.stage==1 && Dragons.Roll<Dragons.KillLairChance)Dragons.RevealLair(e.color,2,"在"+e.dragon.LabelShort+"的尸体旁，你们找到了通往它长辈巢穴的线索");continue;} // 击杀成年龙：30% 它的长辈（远古龙）的巢穴显露
+     if(e.dragon.Dead){e.resolved=true;if(e.stage==1 && Dragons.Roll<Dragons.KillLairChance)Dragons.RevealLair(e.color,2,"在".Loc()+e.dragon.LabelShort+"的尸体旁，你们找到了通往它长辈巢穴的线索".Loc());continue;} // 击杀成年龙：30% 它的长辈（远古龙）的巢穴显露
      if(!e.dragon.Spawned && (e.fighting || e.fled)){e.resolved=true;
-      if(e.stage>=1 && Dragons.Roll<Dragons.RepelLairChance)Dragons.RevealLair(e.color,e.stage,"击退"+e.dragon.LabelShort+"之后，你们找到了它飞回去的方向");}
+      if(e.stage>=1 && Dragons.Roll<Dragons.RepelLairChance)Dragons.RevealLair(e.color,e.stage,"击退".Loc()+e.dragon.LabelShort+"之后，你们找到了它飞回去的方向".Loc());}
      else if(!e.dragon.Spawned && e.kind=="left")e.resolved=true;
     }
     if(repeats.Count>0)foreach(var r in repeats.ToList())if(now>=r.tick){repeats.Remove(r);if(r.map!=null && Find.Maps.Contains(r.map) && Dragons.ExtortionOn)Dragons.Extort(r.map,r.color,r.stage,r.factor);}
     if(lairs.Count>0)foreach(var l in lairs.ToList()){if(l.site==null || l.site.Destroyed){lairs.Remove(l);continue;}if(!l.site.HasMap && now>=l.expire){l.site.Destroy();lairs.Remove(l);}}
-   }catch(Exception x){Log.ErrorOnce("[DND边缘大陆] 真龙遭遇出错："+x,74152102);}
+   }catch(Exception x){Log.ErrorOnce("[DND边缘大陆] 真龙遭遇出错：".Loc()+x,74152102);}
   }
   public override void ExposeData(){
    base.ExposeData();
@@ -505,13 +502,13 @@ namespace LichPhylactery {
   public override IEnumerable<Thing> EventThings=>encounter==null?Enumerable.Empty<Thing>():encounter.guards.Prepend(encounter.dragon).Cast<Thing>();
   public override IEnumerable<DiaOption> Choices{get{
    var e=encounter;if(Closed || e==null || e.answered || e.dragon==null || e.dragon.Dead){yield return Option_Close;yield break;}
-   yield return Choice("付（"+e.demand.ToString("0")+" 价值的"+Dragons.DemandText(e)+"）",()=>Dragons.Pay(e),true);
+   yield return Choice("付（".Loc()+e.demand.ToString("0")+" 价值的".Loc()+Dragons.DemandText(e)+"）".Loc(),()=>Dragons.Pay(e),true);
    var who=Dragons.Negotiator(e.map);
-   var neg=Choice("谈"+(who!=null?"：派"+who.LabelShort+"交涉（成功率 "+Dragons.NegotiateChance(who,e.stage).ToStringPercent()+"）":""),()=>{Dragons.Negotiate(e,who);Dragons.SendExtortionLetter(e);},true);
-   if(e.negotiated)neg.Disable("已经谈过了");else if(who==null)neg.Disable("没有能交涉的殖民者");
+   var neg=Choice("谈".Loc()+(who!=null?"：派".Loc()+who.LabelShort+"交涉（成功率 ".Loc()+Dragons.NegotiateChance(who,e.stage).ToStringPercent()+"）".Loc():""),()=>{Dragons.Negotiate(e,who);Dragons.SendExtortionLetter(e);},true);
+   if(e.negotiated)neg.Disable("已经谈过了".Loc());else if(who==null)neg.Disable("没有能交涉的殖民者".Loc());
    yield return neg;
-   if(e.color=="Green")foreach(var p in e.map.mapPawns.FreeColonistsSpawned.Where(x=>!x.Downed).OrderBy(x=>x.MarketValue).Take(3).ToList())yield return Choice("交出"+p.LabelShort+"做仆从",()=>Dragons.HandOver(e,p),true);
-   yield return Choice("拒绝",()=>Dragons.Refuse(e),true);
+   if(e.color=="Green")foreach(var p in e.map.mapPawns.FreeColonistsSpawned.Where(x=>!x.Downed).OrderBy(x=>x.MarketValue).Take(3).ToList())yield return Choice("交出".Loc()+p.LabelShort+"做仆从".Loc(),()=>Dragons.HandOver(e,p),true);
+   yield return Choice("拒绝".Loc(),()=>Dragons.Refuse(e),true);
    yield return Option_Postpone;
   }}
   DiaOption Choice(string text,Action act,bool close)=>new DiaOption(text){action=()=>{act?.Invoke();if(close)Resolve();},resolveTree=true};
@@ -523,7 +520,7 @@ namespace LichPhylactery {
 
  // ---------- 事件 ----------
  public class IncidentWorker_DragonExtortion : IncidentWorker_DND {
-  public static int Stage(Map map){int st=Dragons.RaidStage(StorytellerUtility.DefaultThreatPointsNow(map),AdventurerEnemies.ColonyMaxLevel(),true);if(st>1)st=1;if(st==0 && Dragons.HasGreatWyrm(map))return -1;return st;}
+  public static int Stage(Map map){int st=Dragons.RaidStage(StorytellerUtility.DefaultThreatPointsNow(map),AdventurerEnemies.ColonyMaxLevel(),true);if(st>1)st=1;return st;}
   protected override bool CanFireNowSub(IncidentParms parms)=>Dragons.ExtortionOn && parms.target is Map map && Stage(map)>=0;
   protected override bool TryExecuteWorker(IncidentParms parms){var map=parms.target as Map;int st=Stage(map);if(st<0)return false;return Dragons.Extort(map,Dragons.PickColor(map,true),st)!=null;}
  }
@@ -537,7 +534,7 @@ namespace LichPhylactery {
    var map=parms.target as Map;float pts=parms.points>0?parms.points:StorytellerUtility.DefaultThreatPointsNow(map);int stage=Stage(map,pts);if(stage<0)return false;
    var c=Dragons.PickColor(map,false);var enc=Dragons.Raid(map,c,stage,pts);if(enc==null)return false;
    var st=Dragons.State;if(st!=null)st.nextRaidTick=GenTicks.TicksAbs+Mathf.RoundToInt(Rand.Range(20f,30f)*GenDate.TicksPerDay/Mathf.Max(.25f,Events2.Frequency));
-   SendStandardLetter(Dragons.TitleFor(c,stage)+"来袭",enc.dragon.LabelShort+"（"+Dragons.TitleFor(c,stage)+"）带着"+enc.guards.Count+"名护卫扑向殖民地！\n\n它会喷吐"+Dragons.Info[c].breathLabel+"（豁免成功伤害减半），"+(stage>=1?"有传奇抗性（拦下眩晕、精神控制、控制类状态和疼痛倒地）和传奇动作，看到它的人要做感知豁免（难度 "+Legendary.DC(enc.dragon,Adventurer.Cha)+"，属性调整值和熟练加值每点 +5% 成功率），否则会惊惧。":"")+"倒地即死，不能俘虏。",LetterDefOf.ThreatBig,parms,new LookTargets(enc.dragon));
+   SendStandardLetter(Dragons.TitleFor(c,stage)+"来袭".Loc(),enc.dragon.LabelShort+"（".Loc()+Dragons.TitleFor(c,stage)+"）带着".Loc()+enc.guards.Count+"名护卫扑向殖民地！\n\n它会喷吐".Loc()+Dragons.Info[c].breathLabel+"（豁免成功伤害减半），".Loc()+(stage>=1?"有传奇抗性（拦下眩晕、精神控制、控制类状态和疼痛倒地）和传奇动作，看到它的人要做感知豁免（难度 ".Loc()+Legendary.DC(enc.dragon,Adventurer.Cha)+"，属性调整值和熟练加值每点 +5% 成功率），否则会惊惧。".Loc():"")+"倒地即死，不能俘虏。".Loc(),LetterDefOf.ThreatBig,parms,new LookTargets(enc.dragon));
    return true;
   }
  }
@@ -553,7 +550,7 @@ namespace LichPhylactery {
   public bool Active=>owner!=null && !owner.Dead && owner.Spawned && owner.Map==map && center.IsValid;
   public bool OwnerHome=>Active && owner.Position.DistanceTo(center)<=LureRadius;
   public IEnumerable<Pawn> Enemies=>owner==null?Enumerable.Empty<Pawn>():map.mapPawns.AllPawnsSpawned.Where(p=>!p.Dead && !p.Downed && p.HostileTo(owner));
-  public void Wake(string why){if(!asleep)return;asleep=false;if(owner!=null && owner.Spawned){owner.jobs?.EndCurrentJob(JobCondition.InterruptForced);Items.Mote(owner,"醒了！",new Color(1f,.4f,.3f));if(!Adventurer.TestSuppressed)Messages.Message(owner.LabelShort+"醒了（"+why+"）！",owner,MessageTypeDefOf.ThreatBig,false);}}
+  public void Wake(string why){if(!asleep)return;asleep=false;if(owner!=null && owner.Spawned){owner.jobs?.EndCurrentJob(JobCondition.InterruptForced);Items.Mote(owner,"醒了！".Loc(),new Color(1f,.4f,.3f));if(!Adventurer.TestSuppressed)Messages.Message(owner.LabelShort+"醒了（".Loc()+why+"）！".Loc(),owner,MessageTypeDefOf.ThreatBig,false);}}
   public LairPending Queue(Pawn target,int index=-1){
    if(target==null)return null;var pd=new LairPending{cell=target.Position,tick=Find.TickManager.TicksGame+Warning,index=index>=0?index:Rand.RangeInclusive(0,2)};
    pending.Add(pd);FleckMaker.Static(pd.cell,map,FleckDefOf.PsycastAreaEffect,3f);return pd;
@@ -562,11 +559,11 @@ namespace LichPhylactery {
    int now=Find.TickManager.TicksGame;if(owner==null || (now+map.uniqueID)%60!=0)return;
    try{
     if(!Active){pending.Clear();return;}
-    if(asleep){if(Enemies.Any(p=>p.Position.DistanceTo(owner.Position)<=WakeRadius))Wake("有人走近了");else if(now%600==0)FleckMaker.ThrowMetaIcon(owner.Position,map,FleckDefOf.SleepZ);}
+    if(asleep){if(Enemies.Any(p=>p.Position.DistanceTo(owner.Position)<=WakeRadius))Wake("有人走近了".Loc());else if(now%600==0)FleckMaker.ThrowMetaIcon(owner.Position,map,FleckDefOf.SleepZ);}
     foreach(var pd in pending.ToList())if(now>=pd.tick){pending.Remove(pd);if(OwnerHome)LairActions.Do(this,pd.index,pd.cell);}
-    if(ice.Count>0)foreach(var p in Enemies.ToList())if(ice.Contains(p.Position) && p.pather!=null && p.pather.Moving && Rand.Chance(.2f)){p.stances?.stunner?.StunFor(60,owner,false,true,false);Items.Mote(p,"滑倒了",Color.white);}
+    if(ice.Count>0)foreach(var p in Enemies.ToList())if(ice.Contains(p.Position) && p.pather!=null && p.pather.Moving && Rand.Chance(.2f)){p.stances?.stunner?.StunFor(60,owner,false,true,false);Items.Mote(p,"滑倒了".Loc(),Color.white);}
     if(!asleep && OwnerHome && (now+map.uniqueID)%Interval<60){var t=Enemies.Where(p=>p.Faction!=null && p.Faction.IsPlayer).RandomElementWithFallback();if(t!=null)Queue(t);}
-   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 巢穴动作出错："+e,74152103);}
+   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 巢穴动作出错：".Loc()+e,74152103);}
   }
   public override void ExposeData(){
    base.ExposeData();Scribe_References.Look(ref owner,"lpLairOwner");Scribe_Values.Look(ref center,"lpLairCenter",IntVec3.Invalid);Scribe_Values.Look(ref color,"lpLairColor");Scribe_Values.Look(ref asleep,"lpLairAsleep");
@@ -576,7 +573,7 @@ namespace LichPhylactery {
  }
  // 巢穴动作（每色三个）：落点先出提示圈，1 秒后生效。「警觉」专长免疫突袭类（直接打在人身上的那几个）。
  public static class LairActions {
-  public static readonly string[][] Names={new[]{"岩浆喷涌","地震","火山烟"},new[]{"落雷","沙尘","流沙"},new[]{"荆棘缠绕","毒雾","魅惑低语"},new[]{"黑暗","酸泉","沼泽化"},new[]{"冰刺","冰雾","冰面"}};
+  public static readonly string[][] Names={new[]{"岩浆喷涌".Loc(),"地震".Loc(),"火山烟".Loc()},new[]{"落雷".Loc(),"沙尘".Loc(),"流沙".Loc()},new[]{"荆棘缠绕".Loc(),"毒雾".Loc(),"魅惑低语".Loc()},new[]{"黑暗".Loc(),"酸泉".Loc(),"沼泽化".Loc()},new[]{"冰刺".Loc(),"冰雾".Loc(),"冰面".Loc()}};
   public static string Name(string color,int i)=>Names[Array.IndexOf(Dragons.Colors,color)][Mathf.Clamp(i,0,2)];
   static bool Ambush(string c,int i)=>i==0 || c=="Black" && i==1;
   static IEnumerable<Pawn> Victims(MapComponent_DragonLair mc,IntVec3 cell,float r,string c,int i)=>mc.Enemies.Where(p=>p.Position.DistanceTo(cell)<=r && !(Ambush(c,i) && Feats.Has(p,Feats.Alert))).ToList();
@@ -584,7 +581,7 @@ namespace LichPhylactery {
   static void Hurt(Pawn p,string def,float amt,Pawn by){var d=DefDatabase<DamageDef>.GetNamedSilentFail(def)??DamageDefOf.Blunt;p.TakeDamage(new DamageInfo(d,amt*Dragons.DamageMult,.2f,-1f,by));}
   public static string Do(MapComponent_DragonLair mc,int i,IntVec3 cell){
    var map=mc.map;var o=mc.owner;var c=mc.color;int dc=Legendary.DC(o,Adventurer.Con);string name=Name(c,i);MapComponent_DragonLair.Fired++;
-   Items.Mote(o,"巢穴动作："+name,new Color(1f,.5f,.3f));
+   Items.Mote(o,"巢穴动作：".Loc()+name,new Color(1f,.5f,.3f));
    switch(c+i){
     case "Red0":foreach(var p in Victims(mc,cell,3f,c,i))Hurt(p,"Flame",15f,o);foreach(var x in GenRadial.RadialCellsAround(cell,3f,true))if(x.InBounds(map))FireUtility.TryStartFireIn(x,map,.5f,o);break;
     case "Red1":foreach(var p in Victims(mc,cell,6f,c,i))if(!Legendary.Save(p,Adventurer.Dex,dc,o))p.stances?.stunner?.StunFor(60,o,false,true,false);foreach(var b in GenRadial.RadialCellsAround(cell,6f,true).Where(x=>x.InBounds(map)).Select(x=>x.GetEdifice(map)).Where(b=>b!=null && b.def.useHitPoints).ToList())b.TakeDamage(new DamageInfo(DamageDefOf.Blunt,40f,0f,-1f,o));break;
@@ -611,7 +608,7 @@ namespace LichPhylactery {
   public override int SeedPart=>741520;
   public override void Generate(Map map,GenStepParams parms){
    var site=parms.sitePart?.site;var lair=Dragons.LairOf(site)??new DragonLair{color=Dragons.Colors.RandomElement(),stage=1};
-   try{Build(map,lair,site?.Faction??Dragons.Faction());}catch(Exception e){Log.Error("[DND边缘大陆] 生成龙巢出错："+e);}
+   try{Build(map,lair,site?.Faction??Dragons.Faction());}catch(Exception e){Log.Error("[DND边缘大陆] 生成龙巢出错：".Loc()+e);}
   }
   public static Pawn Build(Map map,DragonLair lair,Faction f){
    var info=Dragons.Info[lair.color];var c=map.Center;int r=12;
@@ -651,8 +648,8 @@ namespace LichPhylactery {
   public override bool HandlesThingDef(ThingDef thingDef)=>thingDef.defName=="LP_DragonLairMap";
  }
  public class CompUseEffect_DragonLairMap : CompUseEffect {
-  public override void DoEffect(Pawn usedBy){base.DoEffect(usedBy);Dragons.RevealLair(Dragons.Colors.RandomElement(),2,usedBy.LabelShort+"读懂了龙巢情报");}
-  public override AcceptanceReport CanBeUsedBy(Pawn p)=>Dragons.LairOn?true:new AcceptanceReport("真龙内容没有开启（设置里的“五色真龙”或“龙巢远征”）");
+  public override void DoEffect(Pawn usedBy){base.DoEffect(usedBy);Dragons.RevealLair(Dragons.Colors.RandomElement(),2,usedBy.LabelShort+"读懂了龙巢情报".Loc());}
+  public override AcceptanceReport CanBeUsedBy(Pawn p)=>Dragons.LairOn?true:new AcceptanceReport("真龙内容没有开启（设置里的“五色真龙”或“龙巢远征”）".Loc());
  }
 
  // ---------- 钩子 ----------
@@ -671,7 +668,7 @@ namespace LichPhylactery {
  }
  public class StatPart_DragonStrength : StatPart {
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p && Dragons.IsChromatic(p))val*=Dragons.DamageMult;}
-  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Dragons.IsChromatic(p) && Math.Abs(Dragons.DamageMult-1f)>.001f?"真龙强度：×"+Dragons.DamageMult.ToStringPercent():null;
+  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Dragons.IsChromatic(p) && Math.Abs(Dragons.DamageMult-1f)>.001f?"真龙强度：×".Loc()+Dragons.DamageMult.ToStringPercent():null;
  }
  [HarmonyPatch(typeof(Pawn),"get_HealthScale")]
  public static class DragonHealthScale {
@@ -720,19 +717,19 @@ namespace LichPhylactery {
  }
  public static class ChromaticSettings {
   public static void Draw(Listing_Standard l){
-   var s=LichMod.Settings;l.GapLine();l.Label("真龙与传奇怪");
+   var s=LichMod.Settings;l.GapLine();l.Label("真龙与传奇怪".Loc());
    var old=GUI.color; // 1.116.0：真龙不再需要 HAR，不再灰显
-   l.CheckboxLabeled("五色真龙",ref s.chromaticDragons,"红、蓝、绿、黑、白五色真龙（青年 / 成年 / 远古）。有传奇抗性、传奇动作、骇人威仪和吐息，是冒险者等级的终局对手。关闭后下面的事件都不出现。");
-   l.CheckboxLabeled("　真龙勒索",ref s.dragonExtortion,"一条青年或成年龙（白龙不勒索）落在地图边上要贡品：付、谈或拒绝。需要殖民地最高冒险者等级 ≥8。");
-   l.CheckboxLabeled("　真龙来袭",ref s.dragonRaid,"龙带着本色护卫直接进攻。青年：最高等级 ≥8、点数 ≥1500；成年：≥16、≥4000；远古：≥"+s.dragonAncientLevel+"、≥9000，每年最多一次。冷却 20～30 天。");
-   l.CheckboxLabeled("　龙巢远征",ref s.dragonLair,"击退成年龙后 60% 它的巢穴显露、击杀后 30% 远古龙巢显露；殖民地最高等级够高时同盟商队会卖龙巢情报。巢里有大量宝藏、魔法物品和传奇重铸之石。");
-   l.CheckboxLabeled("　龙过境联动",ref s.dragonFlyoverLink,"殖民地没有成年力能龙裔时，龙过境结束有 25% 一条五色龙降落勒索。有力能龙裔时龙过境照旧。");
-   l.Label("真龙强度："+s.dragonStrength+"%（乘在生命和伤害上）");s.dragonStrength=Mathf.RoundToInt(l.Slider(s.dragonStrength,50,300)/5f)*5;
+   l.CheckboxLabeled("五色真龙".Loc(),ref s.chromaticDragons,"红、蓝、绿、黑、白五色真龙（青年 / 成年 / 远古）。有传奇抗性、传奇动作、骇人威仪和吐息，是冒险者等级的终局对手。关闭后下面的事件都不出现。".Loc());
+   l.CheckboxLabeled("　真龙勒索".Loc(),ref s.dragonExtortion,"一条青年或成年龙（白龙不勒索）落在地图边上要贡品：付、谈或拒绝。需要殖民地最高冒险者等级 ≥8。".Loc());
+   l.CheckboxLabeled("　真龙来袭".Loc(),ref s.dragonRaid,"龙带着本色护卫直接进攻。青年：最高等级 ≥8、点数 ≥1500；成年：≥16、≥4000；远古：≥".Loc()+s.dragonAncientLevel+"、≥9000，每年最多一次。冷却 20～30 天。".Loc());
+   l.CheckboxLabeled("　龙巢远征".Loc(),ref s.dragonLair,"击退成年龙后 60% 它的巢穴显露、击杀后 30% 远古龙巢显露；殖民地最高等级够高时同盟商队会卖龙巢情报。巢里有大量宝藏、魔法物品和传奇重铸之石。".Loc());
+   l.CheckboxLabeled("　龙过境联动".Loc(),ref s.dragonFlyoverLink,"龙过境结束有 25% 一条五色龙降落勒索。".Loc());
+   l.Label("真龙强度：".Loc()+s.dragonStrength+"%（乘在生命和伤害上）".Loc());s.dragonStrength=Mathf.RoundToInt(l.Slider(s.dragonStrength,50,300)/5f)*5;
    if(Adventurer.IsekaiActive){
-    l.Label("Isekai 下真龙额外生命：×"+(s.dragonIsekaiHealth/100f).ToString("0.##"));s.dragonIsekaiHealth=Mathf.RoundToInt(l.Slider(s.dragonIsekaiHealth,100,500)/10f)*10;
-    l.Label("Isekai 下真龙额外伤害：×"+(s.dragonIsekaiDamage/100f).ToString("0.##"));s.dragonIsekaiDamage=Mathf.RoundToInt(l.Slider(s.dragonIsekaiDamage,100,300)/10f)*10;
+    l.Label("Isekai 下真龙额外生命：×".Loc()+(s.dragonIsekaiHealth/100f).ToString("0.##"));s.dragonIsekaiHealth=Mathf.RoundToInt(l.Slider(s.dragonIsekaiHealth,100,500)/10f)*10;
+    l.Label("Isekai 下真龙额外伤害：×".Loc()+(s.dragonIsekaiDamage/100f).ToString("0.##"));s.dragonIsekaiDamage=Mathf.RoundToInt(l.Slider(s.dragonIsekaiDamage,100,300)/10f)*10;
    }
-   l.Label("远古龙来袭需要的殖民地最高等级："+s.dragonAncientLevel);s.dragonAncientLevel=Mathf.RoundToInt(l.Slider(s.dragonAncientLevel,21,40));
+   l.Label("远古龙来袭需要的殖民地最高等级：".Loc()+s.dragonAncientLevel);s.dragonAncientLevel=Mathf.RoundToInt(l.Slider(s.dragonAncientLevel,21,40));
    GUI.color=old;
    MonsterSettings.Draw(l); // 1.52.1 传奇怪
   }

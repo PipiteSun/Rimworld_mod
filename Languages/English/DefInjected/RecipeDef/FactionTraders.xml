@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 抽取巨魔血 -->
+  <LP_ExtractTrollBlood.label>draw troll blood</LP_ExtractTrollBlood.label>
+  <!-- 从巨魔身上抽出两瓶巨魔血。会造成一些失血，但巨魔的血很快就能补回来。只能对巨魔做。 -->
+  <LP_ExtractTrollBlood.description>Draw two vials of troll blood from a troll. Causes some blood loss, but troll blood replenishes quickly. Can only be done on trolls.</LP_ExtractTrollBlood.description>
+  <!-- 正在抽取巨魔血。 -->
+  <LP_ExtractTrollBlood.jobString>Drawing troll blood.</LP_ExtractTrollBlood.jobString>
+</LanguageData>

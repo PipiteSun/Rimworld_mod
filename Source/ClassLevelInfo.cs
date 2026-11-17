@@ -60,21 +60,21 @@ namespace LichPhylactery {
   // ---------- 职业页的直显行 ----------
   public static string RowLine(Pawn p,Hediff_Adventurer h,LP_ClassDef c){
    if(h==null || !Adventurer.Enabled)return null;
-   int lv=ClassSystem.Level(h,c);if(lv>=ClassSystem.CapLevel)return "部位生命 "+PartText(Adventurer.PartHealthFactor(p))+"（已满级）";
+   int lv=ClassSystem.Level(h,c);if(lv>=ClassSystem.CapLevel)return "部位生命 ".Loc()+PartText(Adventurer.PartHealthFactor(p))+"（已满级）".Loc();
    int al=NextAdventurerLevel(h);
-   var parts=new List<string>{"部位生命 "+PartText(Adventurer.PartHealthFactor(p))+" → 下一级 "+PartText(PartWith(h,c,al))};
-   foreach(var s in Stats(c))parts.Add(s.LabelCap+" ×"+p.GetStatValue(s).ToString("0.00")+" → 下一级 ×"+PowerWith(p,h,s,c,al).ToString("0.00"));
-   return string.Join("　",parts)+(al>h.level?"（含冒险者升到 "+al+" 级）":"");
+   var parts=new List<string>{"部位生命 ".Loc()+PartText(Adventurer.PartHealthFactor(p))+" → 下一级 ".Loc()+PartText(PartWith(h,c,al))};
+   foreach(var s in Stats(c))parts.Add(s.LabelCap+" ×"+p.GetStatValue(s).ToString("0.00")+" → 下一级 ×".Loc()+PowerWith(p,h,s,c,al).ToString("0.00"));
+   return string.Join("　".Loc(),parts)+(al>h.level?"（含冒险者升到 ".Loc()+al+" 级）".Loc():"");
   }
 
   // ---------- 资源上限公式 ----------
   public static string ResourceFormula(LP_ClassDef c){
    switch(c?.resource){
-    case ClassResource.Mana:return "上限 = 2 + 职业等级";
-    case ClassResource.Pact:return "上限 = 2 + 邪术师等级 / 4（向下取整）";
-    case ClassResource.Melody:return "上限 = 2 + 吟游诗人等级 + 魅力调整值（最少 2）";
-    case ClassResource.Grace:return "上限 = 2 + (牧师 + 圣武士等级) / 2（向上取整，合计最多按 "+ClassSystem.CapLevel+" 级）";
-    case ClassResource.Fury:case ClassResource.Ki:case ClassResource.Rage:return "上限 = 2 + 职业等级 / 2（向上取整）";
+    case ClassResource.Mana:return "上限 = 2 + 职业等级".Loc();
+    case ClassResource.Pact:return "上限 = 2 + 邪术师等级 / 4（向下取整）".Loc();
+    case ClassResource.Melody:return "上限 = 2 + 吟游诗人等级 + 魅力调整值（最少 2）".Loc();
+    case ClassResource.Grace:return "上限 = 2 + (牧师 + 圣武士等级) / 2（向上取整，合计最多按 ".Loc()+ClassSystem.CapLevel+" 级）".Loc();
+    case ClassResource.Fury:case ClassResource.Ki:case ClassResource.Rage:return "上限 = 2 + 职业等级 / 2（向上取整）".Loc();
    }
    return null;
   }
@@ -92,10 +92,10 @@ namespace LichPhylactery {
    string f=ResourceFormula(c);
    if(f!=null){
     int pool=ClassSystem.PoolLevel(h,c),b=BaseMax(c,pool),leg=ClassLegendary.ResourceFor(h,c),max=ClassSystem.MaxResource(h,c),other=max-b-leg;
-    sb.Append("\n"+f+"；每个传奇职业能力 +"+ClassLegendary.ResourceBonus+"。");
-    sb.Append("\n现在："+b+(leg!=0?" + 传奇 "+leg:"")+(other!=0?" + 专长 "+other:"")+" = "+max+"。");
+    sb.Append("\n"+f+"；每个传奇职业能力 +".Loc()+ClassLegendary.ResourceBonus+"。".Loc());
+    sb.Append("\n现在：".Loc()+b+(leg!=0?" + 传奇 ".Loc()+leg:"")+(other!=0?" + 专长 ".Loc()+other:"")+" = "+max+"。".Loc());
    }
-   if(c==ClassMartial2.Rogue && ClassSubclass.ManaMax(h)>0)sb.Append("\n诡术师法力：上限 = 2 + 游荡者等级 / 2（向上取整），现在 "+ClassSubclass.ManaMax(h)+"。");
+   if(c==ClassMartial2.Rogue && ClassSubclass.ManaMax(h)>0)sb.Append("\n诡术师法力：上限 = 2 + 游荡者等级 / 2（向上取整），现在 ".Loc()+ClassSubclass.ManaMax(h)+"。".Loc());
    return sb.ToString();
   }
 
@@ -103,34 +103,34 @@ namespace LichPhylactery {
   // 某职业等级获得的东西（能力、子职业、额外攻击档位、魔能爆光束、宿敌、战士奖励专长）。
   public static List<string> GainsAt(Hediff_Adventurer h,LP_ClassDef c,int level){
    var l=new List<string>();
-   foreach(var e in c.abilities)if(e.level==level)l.Add(e.ability.label+(e.capstoneSkill!=null?"（另要"+e.capstoneSkill.label+" "+ClassSystem.CapstoneSkill+" 级）":""));
+   foreach(var e in c.abilities)if(e.level==level)l.Add(e.ability.label+(e.capstoneSkill!=null?"（另要".Loc()+e.capstoneSkill.label+" "+ClassSystem.CapstoneSkill+" 级）".Loc():""));
    var picked=ClassSubclass.Picked(h,c);
-   if(level==ClassSubclass.PickLevelFor(c) && ClassSubclass.Options(c).Any())l.Add(picked==null?"选择子职业":"子职业「"+picked.label+"」");
-   if(picked!=null){foreach(var e in picked.abilities)if(e.level==level)l.Add(e.ability.label);foreach(var ch in picked.choices)if(ch.level==level)l.Add("选择"+ch.label);}
+   if(level==ClassSubclass.PickLevelFor(c) && ClassSubclass.Options(c).Any())l.Add(picked==null?"选择子职业".Loc():"子职业「".Loc()+picked.label+"」".Loc());
+   if(picked!=null){foreach(var e in picked.abilities)if(e.level==level)l.Add(e.ability.label);foreach(var ch in picked.choices)if(ch.level==level)l.Add("选择".Loc()+ch.label);}
    var gen=ClassSubclass.General(c);if(gen!=null)foreach(var e in gen.abilities)if(e.level==level)l.Add(e.ability.label);
-   if(c.martial && c!=ClassMartial2.Rogue && level==Martial.TierLevels[0])l.Add("额外攻击 第 1 档"+(c==ClassSystem.Monk?"（徒手）":""));
-   if(c==ClassSystem.Fighter){if(level==Martial.TierLevels[1])l.Add("额外攻击 第 2 档");if(level==Martial.TierLevels[2])l.Add("额外攻击 第 3 档");}
-   var bonusFeat=ClassSystem.BonusFeatLevels(c);if(bonusFeat!=null && bonusFeat.Contains(level))l.Add(c.caster?"施法奖励专长（法术类）":"职业奖励专长"); // 2026-11-03 含武僧、圣武士 1、2 级
-   if(c==Warlock.Class && level>1 && Warlock.Beams(level)>Warlock.Beams(level-1))l.Add("魔能爆 "+Warlock.Beams(level)+" 道光束");
-   if(c==ClassMartial2.Ranger && (level==1 || level==ClassMartial2.SecondFoeLevel))l.Add("宿敌 "+(level==1?1:2)+" 种");
+   if(c.martial && c!=ClassMartial2.Rogue && level==Martial.TierLevels[0])l.Add("额外攻击 第 1 档".Loc()+(c==ClassSystem.Monk?"（徒手）".Loc():""));
+   if(c==ClassSystem.Fighter){if(level==Martial.TierLevels[1])l.Add("额外攻击 第 2 档".Loc());if(level==Martial.TierLevels[2])l.Add("额外攻击 第 3 档".Loc());}
+   var bonusFeat=ClassSystem.BonusFeatLevels(c);if(bonusFeat!=null && bonusFeat.Contains(level))l.Add(c.caster?"施法奖励专长（法术类）".Loc():"职业奖励专长".Loc()); // 2026-11-03 含武僧、圣武士 1、2 级
+   if(c==Warlock.Class && level>1 && Warlock.Beams(level)>Warlock.Beams(level-1))l.Add("魔能爆 ".Loc()+Warlock.Beams(level)+" 道光束".Loc());
+   if(c==ClassMartial2.Ranger && (level==1 || level==ClassMartial2.SecondFoeLevel))l.Add("宿敌 ".Loc()+(level==1?1:2)+" 种".Loc());
    return l;
   }
   public static string ClassTip(Pawn p,Hediff_Adventurer h,LP_ClassDef c){
    var sb=new StringBuilder();
    sb.AppendLine(c.LabelCap);sb.AppendLine();sb.AppendLine(c.description);sb.AppendLine();
-   sb.AppendLine("每个职业等级：部位生命 +"+(c.PartPerLevel*100f).ToString("0.#")+"%（未分配职业点的等级 +"+(Hediff_Adventurer.UnspentPartPer*100f).ToString("0.#")+"%；合计再减 "+(Hediff_Adventurer.UnspentPartPer*100f).ToString("0.#")+"%，再乘体质；加点和升级都不会降低）");
-   if(c.DamagePerLevel>0f)sb.AppendLine("　武器伤害 +"+(c.DamagePerLevel*100f).ToString("0.#")+"%（近战与远程），近战穿甲 +"+(c.PenPerLevel*100f).ToString("0.#")+"%");
-   foreach(var s in Stats(c)){var part=Part(s);sb.AppendLine("　"+s.LabelCap+" +"+(part.LevelPer*100f).ToString("0")+"%（"+(MartialSkill(part.skill)?"所有物理职业":"用"+part.skill.label+"的职业")+"等级合计每比 1 高 1 级，最多 +"+(part.LevelMax*100f).ToString("0")+"%）");}
-   string f=ResourceFormula(c);if(f!=null)sb.AppendLine("资源 "+ClassSystem.ResourceLabel(c.resource)+"："+f);
-   sb.AppendLine();sb.AppendLine("等级表：");
+   sb.AppendLine("每个职业等级：部位生命 +".Loc()+(c.PartPerLevel*100f).ToString("0.#")+"%（未分配职业点的等级 +".Loc()+(Hediff_Adventurer.UnspentPartPer*100f).ToString("0.#")+"%；合计再减 ".Loc()+(Hediff_Adventurer.UnspentPartPer*100f).ToString("0.#")+"%，再乘体质；加点和升级都不会降低）".Loc());
+   if(c.DamagePerLevel>0f)sb.AppendLine("　武器伤害 +".Loc()+(c.DamagePerLevel*100f).ToString("0.#")+"%（近战与远程），近战穿甲 +".Loc()+(c.PenPerLevel*100f).ToString("0.#")+"%");
+   foreach(var s in Stats(c)){var part=Part(s);sb.AppendLine("　".Loc()+s.LabelCap+" +"+(part.LevelPer*100f).ToString("0")+"%（".Loc()+(MartialSkill(part.skill)?"所有物理职业".Loc():"用".Loc()+part.skill.label+"的职业".Loc())+"等级合计每比 1 高 1 级，最多 +".Loc()+(part.LevelMax*100f).ToString("0")+"%）".Loc());}
+   string f=ResourceFormula(c);if(f!=null)sb.AppendLine("资源 ".Loc()+ClassSystem.ResourceLabel(c.resource)+"：".Loc()+f);
+   sb.AppendLine();sb.AppendLine("等级表：".Loc());
    int lv=ClassSystem.Level(h,c);
    for(int l=1;l<=ClassSystem.CapLevel;l++){
     var g=GainsAt(h,c,l);int r=BaseMax(c,l),r0=BaseMax(c,l-1);
     if(g.Count==0 && (r==r0 || l==1))continue;
-    sb.AppendLine((l<=lv?"✓ ":"　")+"Lv "+l+"："+string.Join("、",g)+(r>0 && r!=r0?(g.Count>0?"；":"")+ClassSystem.ResourceLabel(c.resource)+"上限 "+r:""));
+    sb.AppendLine((l<=lv?"✓ ":"　".Loc())+"Lv "+l+"：".Loc()+string.Join("、".Loc(),g)+(r>0 && r!=r0?(g.Count>0?"；".Loc():"")+ClassSystem.ResourceLabel(c.resource)+"上限 ".Loc()+r:""));
    }
    if(lv<ClassSystem.CapLevel && Adventurer.Enabled){
-    int al=NextAdventurerLevel(h);sb.AppendLine();sb.AppendLine("下一级获得（"+c.label+" Lv "+(lv+1)+(al>h.level?"，冒险者需先升到 "+al+" 级":"")+"）：");
+    int al=NextAdventurerLevel(h);sb.AppendLine();sb.AppendLine("下一级获得（".Loc()+c.label+" Lv "+(lv+1)+(al>h.level?"，冒险者需先升到 ".Loc()+al+" 级".Loc():"")+"）：".Loc());
     foreach(var x in NextLines(p,h,c,al))sb.AppendLine("· "+x);
    }
    return sb.ToString().TrimEnd();
@@ -138,11 +138,11 @@ namespace LichPhylactery {
   // 加 1 级后的变化（能力 + 数值）：给悬停和选职业窗口用。
   public static List<string> NextLines(Pawn p,Hediff_Adventurer h,LP_ClassDef c,int al){
    int lv=ClassSystem.Level(h,c);var l=new List<string>();
-   var g=GainsAt(h,c,lv+1);if(g.Count>0)l.Add(string.Join("、",g));
-   l.Add("部位生命 "+PartText(Adventurer.PartHealthFactor(p))+" → "+PartText(PartWith(h,c,al)));
+   var g=GainsAt(h,c,lv+1);if(g.Count>0)l.Add(string.Join("、".Loc(),g));
+   l.Add("部位生命 ".Loc()+PartText(Adventurer.PartHealthFactor(p))+" → "+PartText(PartWith(h,c,al)));
    foreach(var s in Stats(c))l.Add(s.LabelCap+" ×"+p.GetStatValue(s).ToString("0.00")+" → ×"+PowerWith(p,h,s,c,al).ToString("0.00"));
-   if(c.resource!=ClassResource.None){int pool=ClassSystem.PoolLevel(h,c),b0=BaseMax(c,pool),b1=BaseMax(c,Math.Min(pool+1,ClassSystem.CapLevel));if(b1!=b0){int m=ClassSystem.MaxResource(h,c);l.Add(ClassSystem.ResourceLabel(c.resource)+"上限 "+m+" → "+(m+b1-b0));}}
-   if(c.DamagePerLevel>0f)l.Add("武器伤害 +"+(c.DamagePerLevel*100f).ToString("0.#")+"%、近战穿甲 +"+(c.PenPerLevel*100f).ToString("0.#")+"%");
+   if(c.resource!=ClassResource.None){int pool=ClassSystem.PoolLevel(h,c),b0=BaseMax(c,pool),b1=BaseMax(c,Math.Min(pool+1,ClassSystem.CapLevel));if(b1!=b0){int m=ClassSystem.MaxResource(h,c);l.Add(ClassSystem.ResourceLabel(c.resource)+"上限 ".Loc()+m+" → "+(m+b1-b0));}}
+   if(c.DamagePerLevel>0f)l.Add("武器伤害 +".Loc()+(c.DamagePerLevel*100f).ToString("0.#")+"%、近战穿甲 +".Loc()+(c.PenPerLevel*100f).ToString("0.#")+"%");
    return l;
   }
 
@@ -154,8 +154,8 @@ namespace LichPhylactery {
    if(!ClassSystem.AddLevel(h,c,false))return false;
    if(p.Faction!=null && p.Faction.IsPlayer){
     var got=p.abilities?.abilities.Select(a=>a.def).Where(d=>!before.Contains(d)).Select(d=>d.label).ToList()??new List<string>();
-    var text=p.LabelShort+"："+c.label+" "+(lv+1)+" 级"+(got.Count>0?"，获得 "+string.Join("、",got):"");
-    if(lines!=null){lines=lines.Where(x=>x.Contains("→")).ToList();if(lines.Count>0)text+="；"+string.Join("；",lines);}
+    var text=p.LabelShort+"：".Loc()+c.label+" "+(lv+1)+" 级".Loc()+(got.Count>0?"，获得 ".Loc()+string.Join("、".Loc(),got):"");
+    if(lines!=null){lines=lines.Where(x=>x.Contains("→")).ToList();if(lines.Count>0)text+="；".Loc()+string.Join("；".Loc(),lines);}
     Messages.Message(text,p,MessageTypeDefOf.PositiveEvent,false);
    }
    return true;
@@ -167,7 +167,7 @@ namespace LichPhylactery {
    var list=new List<string>();int top=h.level;float d0=Prof(top)-Prof(l-1),d1=Prof(top)-Prof(l);
    if(d0!=d1){
     var seen=new HashSet<StatDef>();
-    foreach(var c in ClassSystem.Taken(h))foreach(var s in Stats(c))if(seen.Add(s)){float v=p.GetStatValue(s);list.Add(s.LabelCap+" ×"+(v-d0).ToString("0.00")+" → ×"+(v-d1).ToString("0.00")+"（熟练加值）");}
+    foreach(var c in ClassSystem.Taken(h))foreach(var s in Stats(c))if(seen.Add(s)){float v=p.GetStatValue(s);list.Add(s.LabelCap+" ×"+(v-d0).ToString("0.00")+" → ×"+(v-d1).ToString("0.00")+"（熟练加值）".Loc());}
    }
    return list;
   }

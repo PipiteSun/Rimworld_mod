@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 战场老兵 -->
+  <LP_Feat_Class_FighterVeteran.label>battlefield veteran</LP_Feat_Class_FighterVeteran.label>
+  <!-- 见过的阵仗多了，什么局面都稳得住。战技强度、射术强度 +15%；斗志上限 +2；疼痛休克阈值 +10%。战士专属。附带力量、敏捷或体质 +1。 -->
+  <LP_Feat_Class_FighterVeteran.description>Has seen enough battles to stay steady in any situation. Martial power and marksman power +15%; max grit +2; pain shock threshold +10%. Fighter only. Grants +1 Strength, Dexterity or Constitution.</LP_Feat_Class_FighterVeteran.description>
+  <!-- 百战之躯 -->
+  <LP_Feat_Class_FighterHundredBattles.label>hundred-battle body</LP_Feat_Class_FighterHundredBattles.label>
+  <!-- 越打越有劲，招式一套接一套。斗志获取 ×1.5；战士能力冷却 ×0.8；近战命中 ×1.05，射击精度 ×1.05。战士专属。附带力量、敏捷或体质 +1。 -->
+  <LP_Feat_Class_FighterHundredBattles.description>Gets stronger the longer the fight, one move after another. Grit gain ×1.5; fighter ability cooldowns ×0.8; melee hit chance ×1.05, shooting accuracy ×1.05. Fighter only. Grants +1 Strength, Dexterity or Constitution.</LP_Feat_Class_FighterHundredBattles.description>
+  <!-- 内息调和 -->
+  <LP_Feat_Class_MonkBreath.label>harmonized breath</LP_Feat_Class_MonkBreath.label>
+  <!-- 一呼一吸都在养气。战技强度 +10%；气上限 +2；气的恢复 ×1.5；冥想专注获取 +10%。武僧专属。附带敏捷或感知 +1。 -->
+  <LP_Feat_Class_MonkBreath.description>Every breath cultivates ki. Martial power +10%; max ki +2; ki recovery ×1.5; meditation focus gain +10%. Monk only. Grants +1 Dexterity or Wisdom.</LP_Feat_Class_MonkBreath.description>
+  <!-- 无影身法 -->
+  <LP_Feat_Class_MonkShadowless.label>shadowless step</LP_Feat_Class_MonkShadowless.label>
+  <!-- 出手看不清，躲闪也看不清。战技强度 +20%；近战闪避 +12；移动速度 +0.4；武僧能力冷却 ×0.85。武僧专属。附带敏捷或感知 +1。 -->
+  <LP_Feat_Class_MonkShadowless.description>Strikes too fast to see, dodges too fast to see. Martial power +20%; melee dodge +12; move speed +0.4; monk ability cooldowns ×0.85. Monk only. Grants +1 Dexterity or Wisdom.</LP_Feat_Class_MonkShadowless.description>
+  <!-- 坚守圣誓 -->
+  <LP_Feat_Class_PaladinOathkeeper.label>steadfast oath</LP_Feat_Class_PaladinOathkeeper.label>
+  <!-- 誓言刻在心里，什么蛊惑都动摇不了。神恩强度 +15%；心智抗性 +20%；神恩上限 +1。圣武士专属。附带力量或魅力 +1。 -->
+  <LP_Feat_Class_PaladinOathkeeper.description>The oath is carved into the heart; no temptation can shake it. Divine power +15%; mind resistance +20%; max divinity +1. Paladin only. Grants +1 Strength or Charisma.</LP_Feat_Class_PaladinOathkeeper.description>
+  <!-- 圣焰狂信 -->
+  <LP_Feat_Class_PaladinZealot.label>holy flame zealot</LP_Feat_Class_PaladinZealot.label>
+  <!-- 每一击都带着神的怒火。近战伤害 ×1.08；圣武士能力冷却 ×0.8；神恩获取 ×1.25。圣武士专属。附带力量或魅力 +1。 -->
+  <LP_Feat_Class_PaladinZealot.description>Every blow carries the wrath of god. Melee damage ×1.08; paladin ability cooldowns ×0.8; divinity gain ×1.25. Paladin only. Grants +1 Strength or Charisma.</LP_Feat_Class_PaladinZealot.description>
+  <!-- 奥术学者 -->
+  <LP_Feat_Class_WizardScholar.label>arcane scholar</LP_Feat_Class_WizardScholar.label>
+  <!-- 法术书翻得比谁都勤。奥术强度 +15%；法力上限 +3；研究速度 ×1.1。法师专属。附带智力 +1。 -->
+  <LP_Feat_Class_WizardScholar.description>Turns the pages of the spellbook more diligently than anyone. Arcane power +15%; max mana +3; research speed ×1.1. Wizard only. Grants +1 Intelligence.</LP_Feat_Class_WizardScholar.description>
+  <!-- 法术塑形 -->
+  <LP_Feat_Class_WizardSculptor.label>spell sculpting</LP_Feat_Class_WizardSculptor.label>
+  <!-- 把法术的结构削到最精简。法师能力的法力消耗 −1（最少 1）；法师能力冷却 ×0.85。法师专属。附带智力 +1。 -->
+  <LP_Feat_Class_WizardSculptor.description>Trims a spell's structure down to its leanest. Wizard ability mana cost -1 (minimum 1); wizard ability cooldowns ×0.85. Wizard only. Grants +1 Intelligence.</LP_Feat_Class_WizardSculptor.description>
+  <!-- 虔诚祷者 -->
+  <LP_Feat_Class_ClericDevout.label>devout supplicant</LP_Feat_Class_ClericDevout.label>
+  <!-- 祈祷时神总会回应。神恩获取 ×1.5；神恩强度 +10%；包扎品质 ×1.1。牧师专属。附带感知 +1。 -->
+  <LP_Feat_Class_ClericDevout.description>The gods always answer when you pray. Divinity gain ×1.5; divine power +10%; tend quality ×1.1. Cleric only. Grants +1 Wisdom.</LP_Feat_Class_ClericDevout.description>
+  <!-- 神眷之手 -->
+  <LP_Feat_Class_ClericBlessedHands.label>blessed hands</LP_Feat_Class_ClericBlessedHands.label>
+  <!-- 神力在手里流得更顺。神恩上限 +2；牧师能力冷却 ×0.8；免疫获取速度 ×1.15。牧师专属。附带感知或体质 +1。 -->
+  <LP_Feat_Class_ClericBlessedHands.description>Divine power flows more smoothly through your hands. Max divinity +2; cleric ability cooldowns ×0.8; immunity gain speed ×1.15. Cleric only. Grants +1 Wisdom or Constitution.</LP_Feat_Class_ClericBlessedHands.description>
+  <!-- 荒野之子 -->
+  <LP_Feat_Class_DruidWildChild.label>child of the wild</LP_Feat_Class_DruidWildChild.label>
+  <!-- 在林子里长大，草木鸟兽都认得你。野性强度、生长强度 +15%；种植速度 ×1.15；驯服成功率 ×1.15。德鲁伊专属。附带感知 +1。 -->
+  <LP_Feat_Class_DruidWildChild.description>Raised in the woods; every plant, bird and beast knows you. Primal power and verdant power +15%; plant work speed ×1.15; tame chance ×1.15. Druid only. Grants +1 Wisdom.</LP_Feat_Class_DruidWildChild.description>
+  <!-- 自然守望者 -->
+  <LP_Feat_Class_DruidWarden.label>nature's warden</LP_Feat_Class_DruidWarden.label>
+  <!-- 自然之力护着守护它的人。法力上限 +3；德鲁伊能力冷却 ×0.85；毒素抗性 +30%。德鲁伊专属。附带感知或体质 +1。 -->
+  <LP_Feat_Class_DruidWarden.description>The power of nature protects those who protect it. Max mana +3; druid ability cooldowns ×0.85; toxic resistance +30%. Druid only. Grants +1 Wisdom or Constitution.</LP_Feat_Class_DruidWarden.description>
+  <!-- 魔力之泉 -->
+  <LP_Feat_Class_SorcererWellspring.label>wellspring of magic</LP_Feat_Class_SorcererWellspring.label>
+  <!-- 血里的魔力源源不断地涌出来。天赋强度 +10%；法力获取 ×1.5；法力上限 +3。术士专属。附带魅力或体质 +1。 -->
+  <LP_Feat_Class_SorcererWellspring.description>Magic wells up from your blood without end. Innate power +10%; mana gain ×1.5; max mana +3. Sorcerer only. Grants +1 Charisma or Constitution.</LP_Feat_Class_SorcererWellspring.description>
+  <!-- 血脉共鸣 -->
+  <LP_Feat_Class_SorcererResonance.label>bloodline resonance</LP_Feat_Class_SorcererResonance.label>
+  <!-- 血脉里的力量和你的意志合为一体。天赋强度 +25%；心灵敏感度 +10%；术士能力冷却 ×0.9。术士专属。附带魅力 +1。 -->
+  <LP_Feat_Class_SorcererResonance.description>The power of your bloodline is one with your will. Innate power +25%; psychic sensitivity +10%; sorcerer ability cooldowns ×0.9. Sorcerer only. Grants +1 Charisma.</LP_Feat_Class_SorcererResonance.description>
+  <!-- 怒火中烧 -->
+  <LP_Feat_Class_BarbarianSmolder.label>burning fury</LP_Feat_Class_BarbarianSmolder.label>
+  <!-- 一点就着，越烧越旺。狂怒强度 +10%；怒气上限 +2；怒气获取 ×1.5。野蛮人专属。附带力量或体质 +1。 -->
+  <LP_Feat_Class_BarbarianSmolder.description>Quick to ignite, and burns hotter the longer it goes. Rage power +10%; max rage +2; rage gain ×1.5. Barbarian only. Grants +1 Strength or Constitution.</LP_Feat_Class_BarbarianSmolder.description>
+  <!-- 野性体魄 -->
+  <LP_Feat_Class_BarbarianFeralBody.label>wild physique</LP_Feat_Class_BarbarianFeralBody.label>
+  <!-- 伤口还没包好就又冲上去了。狂怒强度 +20%；伤口愈合 ×1.3；疼痛休克阈值 +10%。野蛮人专属。附带力量或体质 +1。 -->
+  <LP_Feat_Class_BarbarianFeralBody.description>Charges back in before the wounds are even bandaged. Rage power +20%; wound healing ×1.3; pain shock threshold +10%. Barbarian only. Grants +1 Strength or Constitution.</LP_Feat_Class_BarbarianFeralBody.description>
+  <!-- 荒野猎手 -->
+  <LP_Feat_Class_RangerWildHunter.label>wilderness hunter</LP_Feat_Class_RangerWildHunter.label>
+  <!-- 读得懂每一道足迹。猎术强度 +15%；射击精度 ×1.05；游侠能力冷却 ×0.9。游侠专属。附带敏捷或感知 +1。 -->
+  <LP_Feat_Class_RangerWildHunter.description>Reads every footprint. Hunter power +15%; shooting accuracy ×1.05; ranger ability cooldowns ×0.9. Ranger only. Grants +1 Dexterity or Wisdom.</LP_Feat_Class_RangerWildHunter.description>
+  <!-- 追猎大师 -->
+  <LP_Feat_Class_RangerStalker.label>master tracker</LP_Feat_Class_RangerStalker.label>
+  <!-- 盯上的猎物跑不掉。游侠能力冷却 ×0.8；移动速度 +0.3；瞄准时间 ×0.9。游侠专属。附带敏捷或感知 +1。 -->
+  <LP_Feat_Class_RangerStalker.description>Prey you mark never gets away. Ranger ability cooldowns ×0.8; move speed +0.3; aiming time ×0.9. Ranger only. Grants +1 Dexterity or Wisdom.</LP_Feat_Class_RangerStalker.description>
+  <!-- 阴影老手 -->
+  <LP_Feat_Class_RogueShadowVeteran.label>shadow veteran</LP_Feat_Class_RogueShadowVeteran.label>
+  <!-- 在暗巷里混久了，刀子从哪来都看得见。诡术强度 +15%；近战闪避 +10。游荡者专属。附带敏捷或智力 +1。 -->
+  <LP_Feat_Class_RogueShadowVeteran.description>Spent so long in dark alleys that you see every knife coming. Cunning power +15%; melee dodge +10. Rogue only. Grants +1 Dexterity or Intelligence.</LP_Feat_Class_RogueShadowVeteran.description>
+  <!-- 致命精准 -->
+  <LP_Feat_Class_RogueDeadlyPrecision.label>deadly precision</LP_Feat_Class_RogueDeadlyPrecision.label>
+  <!-- 只出一刀，刀刀见血。游荡者能力冷却 ×0.8；近战命中 ×1.08；射击精度 ×1.05。游荡者专属。附带敏捷 +1。 -->
+  <LP_Feat_Class_RogueDeadlyPrecision.description>One cut, and every cut draws blood. Rogue ability cooldowns ×0.8; melee hit chance ×1.08; shooting accuracy ×1.05. Rogue only. Grants +1 Dexterity.</LP_Feat_Class_RogueDeadlyPrecision.description>
+  <!-- 契约深化 -->
+  <LP_Feat_Class_WarlockDeepPact.label>deepened pact</LP_Feat_Class_WarlockDeepPact.label>
+  <!-- 又在契约上多签了一行字。契约强度 +15%；契约法力上限 +1；邪术师能力冷却 ×0.9。邪术师专属。附带魅力 +1。 -->
+  <LP_Feat_Class_WarlockDeepPact.description>Signed one more line of the pact. Pact power +15%; max pact mana +1; warlock ability cooldowns ×0.9. Warlock only. Grants +1 Charisma.</LP_Feat_Class_WarlockDeepPact.description>
+  <!-- 宗主眷顾 -->
+  <LP_Feat_Class_WarlockPatronFavor.label>patron's favor</LP_Feat_Class_WarlockPatronFavor.label>
+  <!-- 宗主的目光一直落在你身上。契约强度 +10%；邪术师能力冷却 ×0.8；心智抗性 +25%。邪术师专属。附带魅力或体质 +1。 -->
+  <LP_Feat_Class_WarlockPatronFavor.description>Your patron's gaze never leaves you. Pact power +10%; warlock ability cooldowns ×0.8; mind resistance +25%. Warlock only. Grants +1 Charisma or Constitution.</LP_Feat_Class_WarlockPatronFavor.description>
+  <!-- 天生歌喉 -->
+  <LP_Feat_Class_BardVoice.label>born singer</LP_Feat_Class_BardVoice.label>
+  <!-- 声音天生就能抓住人心。激昂强度 +10%；乐韵获取 ×1.5；乐韵上限 +3；社交影响 +10%。吟游诗人专属。附带魅力或敏捷 +1。 -->
+  <LP_Feat_Class_BardVoice.description>A voice that naturally grips the heart. Inspiration power +10%; cadence gain ×1.5; max cadence +3; social impact +10%. Bard only. Grants +1 Charisma or Dexterity.</LP_Feat_Class_BardVoice.description>
+  <!-- 名动四方 -->
+  <LP_Feat_Class_BardRenown.label>widely renowned</LP_Feat_Class_BardRenown.label>
+  <!-- 你的名字被唱遍了大陆。激昂强度 +25%；吟游诗人能力冷却 ×0.9；每季度所有非敌对派系好感 +2（好感已到 +50 的不再加）。吟游诗人专属。附带魅力 +1。 -->
+  <LP_Feat_Class_BardRenown.description>Your name is sung across the continent. Inspiration power +25%; bard ability cooldowns ×0.9; +2 goodwill with every non-hostile faction each quarter (not above +50). Bard only. Grants +1 Charisma.</LP_Feat_Class_BardRenown.description>
+</LanguageData>

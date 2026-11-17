@@ -97,11 +97,11 @@ namespace LichPhylactery {
 
   // ---------- 选择 ----------
   public static string CanPick(Hediff_Adventurer h,int slot,LP_FightingStyleDef s){
-   if(h==null || s==null)return "没有这个风格";
-   if(slot<0 || slot>=Slots(h.pawn))return "这个槽位还没有解锁";
-   if(slot>h.styles.Count)return "先选前面的槽位";
-   for(int i=0;i<h.styles.Count;i++)if(h.styles[i]==s)return i==slot?"已经是这个风格":"另一个槽位已经是这个风格";
-   if(slot<h.styles.Count && h.styleAdaptSlot>=0 && Adapting(h,h.styleAdaptSlot))return "正在适应新风格，不能再改选";
+   if(h==null || s==null)return "没有这个风格".Loc();
+   if(slot<0 || slot>=Slots(h.pawn))return "这个槽位还没有解锁".Loc();
+   if(slot>h.styles.Count)return "先选前面的槽位".Loc();
+   for(int i=0;i<h.styles.Count;i++)if(h.styles[i]==s)return i==slot?"已经是这个风格".Loc():"另一个槽位已经是这个风格".Loc();
+   if(slot<h.styles.Count && h.styleAdaptSlot>=0 && Adapting(h,h.styleAdaptSlot))return "正在适应新风格，不能再改选".Loc();
    return null;
   }
   // 第一次选（空槽）立刻生效；改选后 3 天才生效，期间这一槽无效。
@@ -171,7 +171,7 @@ namespace LichPhylactery {
    var g=Interceptor(victim,a);if(g==null)return false;
    lastIntercept[g.thingIDNumber]=Find.TickManager.TicksGame;
    dinfo.SetAmount(Mathf.Max(0f,dinfo.Amount-InterceptAmount(g)));
-   Items.Mote(g,"拦截",new Color(.95f,.85f,.45f));
+   Items.Mote(g,"拦截".Loc(),new Color(.95f,.85f,.45f));
    return true;
   }
   // 盲斗：3 格内看得见隐身的单位。调用前已确认 blindFighters 不为空。
@@ -183,7 +183,7 @@ namespace LichPhylactery {
   // 徒手：拳脚命中 20% 抓住目标 2 秒。
   public static bool Grapple(Pawn caster,Pawn target){
    if(target==null || target.Dead || caster.equipment==null || caster.equipment.Primary!=null || !Has(caster,Unarmed) || !Rand.Chance(GrappleChance))return false;
-   Items.Give(target,"LP_Grappled",GrappleTicks);Items.Mote(target,"擒抱",new Color(.95f,.85f,.45f));return true;
+   Items.Give(target,"LP_Grappled",GrappleTicks);Items.Mote(target,"擒抱".Loc(),new Color(.95f,.85f,.45f));return true;
   }
   // 双武器：有这个风格的人至少 1 个副手槽，追加攻击 30%。
   public static bool TwoWeaponUser(Pawn p)=>p!=null && Users.Contains(p.thingIDNumber) && Has(p,TwoWeapon);

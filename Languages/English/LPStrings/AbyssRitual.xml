@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（AbyssRitual.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>魔宠（永久）</zh><en>familiar (permanent)</en></s>
+  <s><zh>3～6 只仆从，</zh><en>3-6 servants, </en></s>
+  <s><zh> 天</zh><en> days</en></s>
+  <s><zh>束缚（永久殖民者）</zh><en>bound (permanent colonist)</en></s>
+  <s><zh>仆从 </zh><en>servant </en></s>
+  <s><zh>灵魂抵押</zh><en>soul mortgage</en></s>
+  <s><zh> 具人形尸体</zh><en> humanlike corpses</en></s>
+  <s><zh> 名囚犯</zh><en> prisoners</en></s>
+  <s><zh> 灵魂币</zh><en> soul coins</en></s>
+  <s><zh> 恶魔血</zh><en> demon blood</en></s>
+  <s><zh> 神迹残片</zh><en> miracle fragments</en></s>
+  <s><zh>劣魔群</zh><en>manes swarm</en></s>
+  <s><zh>夸塞魔</zh><en>quasit</en></s>
+  <s><zh>巴路古拉</zh><en>barlgura</en></s>
+  <s><zh>哈兹魔</zh><en>hezrou</en></s>
+  <s><zh>纳巴苏</zh><en>nabassu</en></s>
+  <s><zh>六臂蛇魔</zh><en>marilith</en></s>
+  <s><zh>炎魔</zh><en>balor</en></s>
+  <s><zh>一阶</zh><en>tier 1</en></s>
+  <s><zh>二阶</zh><en>tier 2</en></s>
+  <s><zh>三阶</zh><en>tier 3</en></s>
+  <s><zh>四阶</zh><en>tier 4</en></s>
+  <s><zh>没有能抵押灵魂的殖民者</zh><en>No colonist who can pledge a soul</en></s>
+  <s><zh>需要 </zh><en>Needs </en></s>
+  <s><zh>深渊内容已关闭</zh><en>Abyss content is disabled</en></s>
+  <s><zh>需要 Humanoid Alien Races</zh><en>Needs Humanoid Alien Races</en></s>
+  <s><zh>缺少兵种定义</zh><en>Missing pawn kind definition</en></s>
+  <s><zh>设置里关掉了“允许束缚恶魔成为殖民者”</zh><en>"Allow binding demons as colonists" is turned off in settings</en></s>
+  <s><zh>需要读过记载</zh><en>Needs to have read the demonology tome on </en></s>
+  <s><zh>的恶魔学典籍</zh><en> </en></s>
+  <s><zh>束缚者已满（上限 </zh><en>Bound slots are full (limit </en></s>
+  <s><zh>仆从已满（上限 </zh><en>Servants are full (limit </en></s>
+  <s><zh>不能主持</zh><en>can't lead</en></s>
+  <s><zh>现在不能主持</zh><en>can't lead right now</en></s>
+  <s><zh>下不了手（无暴力）</zh><en>can't bring themselves to do it (non-violent)</en></s>
+  <s><zh>拒绝了（阿斯莫）</zh><en>refused (aasimar)</en></s>
+  <s><zh>已经有一只夸塞魔了</zh><en>There's already a quasit</en></s>
+  <s><zh>深渊仪式</zh><en>abyssal ritual</en></s>
+  <s><zh>深渊仪式护阵</zh><en>abyssal ritual warden</en></s>
+  <s><zh>深渊仪式失败：裂口</zh><en>Abyssal ritual failed: rift</en></s>
+  <s><zh>仪式彻底失控了（成功率 </zh><en>The ritual spun completely out of control (success chance </en></s>
+  <s><zh>，本次结果 </zh><en>, this result </en></s>
+  <s><zh>）：法阵旁撕开了一道通往深渊的裂口！</zh><en>): a rift to the Abyss has torn open beside the circle!</en></s>
+  <s><zh>第一波里就有炎魔。</zh><en>There's a balor in the first wave.</en></s>
+  <s><zh>\n\n裂口关上之前法阵不能再用。关闭方法：打掉它、巨灵或六臂蛇人命令，或者用真名卷。</zh><en>\n\nThe circle can't be used again until the rift is closed. To close it: destroy it, have a genie or marilith command it, or use a true name scroll.</en></s>
+  <s><zh>深渊仪式失败：没能束缚</zh><en>Abyssal ritual failed: binding failed</en></s>
+  <s><zh>应召而来，可束缚的咒文却没有扣上（成功率 </zh><en> answered the summons, but the binding spell didn't take hold (success chance </en></s>
+  <s><zh>）。它不属于任何人，就地朝殖民地扑了过来！</zh><en>). It belongs to no one and is pouncing on the colony right where it stands!</en></s>
+  <s><zh>成为</zh><en>became </en></s>
+  <s><zh>的魔宠（永久，可以跟随主人）</zh><en>'s familiar (permanent, can follow its master)</en></s>
+  <s><zh>被束缚为殖民者：初始服从度 </zh><en>bound as a colonist: starting obedience </en></s>
+  <s><zh>，主人是</zh><en>, master is </en></s>
+  <s><zh>。服从度每天会下降，降到 0 它会挣脱</zh><en>. Obedience drops each day; at 0 it breaks free</en></s>
+  <s><zh>作为仆从听候差遣 </zh><en>serves at your command for </en></s>
+  <s><zh> 天，时间到了就会被遣返</zh><en> days, then is sent back when time is up</en></s>
+  <s><zh>深渊仪式成功：</zh><en>Abyssal ritual succeeded: </en></s>
+  <s><zh>念完了最后一个音节（成功率 </zh><en> spoke the last syllable (success chance </en></s>
+  <s><zh>只</zh><en> </en></s>
+  <s><zh>从黑烟里走了出来，</zh><en> stepped out of the black smoke, </en></s>
+  <s><zh>没有选定祭品</zh><en>No offering chosen</en></s>
+  <s><zh>法阵上的囚犯不够</zh><en>Not enough prisoners on the circle</en></s>
+  <s><zh>法阵上的尸体不够</zh><en>Not enough corpses on the circle</en></s>
+  <s><zh>地图上的灵魂币 / 恶魔血 / 神迹残片不够了</zh><en>Not enough soul coins / demon blood / miracle fragments on the map</en></s>
+  <s><zh>深渊仪式被打断了，咒文散去。</zh><en>The abyssal ritual was interrupted and the incantation dispersed.</en></s>
+  <s><zh>深渊仪式被打断</zh><en>Abyssal ritual interrupted</en></s>
+  <s><zh>念到一半被打断了：没念完的咒文在法阵旁撕开了一道深渊裂口！</zh><en>Interrupted halfway through: the unfinished incantation has torn an abyssal rift open beside the circle!</en></s>
+  <s><zh>位面薄弱度 </zh><en>planar thinness </en></s>
+  <s><zh>　银边（成功率 +5%）</zh><en>  silver border (success chance +5%)</en></s>
+  <s><zh>深渊裂口没关之前不能举行仪式。</zh><en>Can't hold a ritual while the abyssal rift is open.</en></s>
+  <s><zh>正在举行：</zh><en>In progress: </en></s>
+  <s><zh>），主祭 </zh><en>), leader </en></s>
+  <s><zh>，念咒中</zh><en>, chanting</en></s>
+  <s><zh>，准备祭品中</zh><en>, preparing offerings</en></s>
+  <s><zh>已知恶魔：</zh><en>Known demons: </en></s>
+  <s><zh>开始深渊仪式</zh><en>Begin abyssal ritual</en></s>
+  <s><zh>选择要召唤的恶魔和主祭。成功率 = 阶基础 + (魅力+智力调整)×4% + 熟练×2% + 护阵者×4% + 银边 5% + 同种真名卷 10% + 种族加值 + 社交每级 0.5% - 薄弱度÷10%。</zh><en>Choose the demon to summon and the leader. Success chance = tier base + (Cha + Int modifier) × 4% + proficiency × 2% + wardens × 4% + silver border 5% + true name scroll of that kind 10% + race bonus + 0.5% per Social level - thinness ÷ 10%.</en></s>
+  <s><zh>仪式正在进行</zh><en>A ritual is in progress</en></s>
+  <s><zh>深渊裂口还开着</zh><en>The abyssal rift is still open</en></s>
+  <s><zh>取消仪式</zh><en>Cancel ritual</en></s>
+  <s><zh>中止正在准备的仪式（念咒阶段取消等同于被打断）。</zh><en>Abort the ritual being prepared (cancelling during the chanting phase counts as an interruption).</en></s>
+  <s><zh>炼魂</zh><en>Soul refining</en></s>
+  <s><zh>把一名囚犯带到法阵上处决，得到 3 枚灵魂币。执行者腐化 +5%，薄弱度 +3；冷却 1 天。</zh><en>Bring a prisoner onto the circle and execute them to get 3 soul coins. Executioner taint +5%, thinness +3; cooldown 1 day.</en></s>
+  <s><zh>冷却中（还要 </zh><en>On cooldown (another </en></s>
+  <s><zh>镶银边（</zh><en>Add silver border (</en></s>
+  <s><zh> 银）</zh><en> silver)</en></s>
+  <s><zh>给法阵描一圈银边：仪式成功率 +5%。直接从地图上的白银里扣。</zh><en>Trace a silver border around the circle: ritual success chance +5%. Deducted directly from silver on the map.</en></s>
+  <s><zh>地图上的白银不够</zh><en>Not enough silver on the map</en></s>
+  <s><zh>）　祭品：</zh><en>)  Offering: </en></s>
+  <s><zh> 或 </zh><en> or </en></s>
+  <s><zh>　成功率 </zh><en>  success chance </en></s>
+  <s><zh>没有能主持的殖民者</zh><en>No colonist who can lead</en></s>
+  <s><zh>（不算护阵者）</zh><en> (not counting wardens)</en></s>
+  <s><zh>灵魂抵押：选一名殖民者代替祭品</zh><en>Soul pledge: choose a colonist instead of an offering</en></s>
+  <s><zh>（腐化 </zh><en> (taint </en></s>
+  <s><zh>的灵魂将抵押给深渊：腐化立刻 +30%，死后不能复活，尸体也会消失。可以在圣坛向善神“赎回灵魂”（30 神眷）。确定吗？</zh><en>'s soul will be pledged to the Abyss: taint immediately +30%, can't be revived after death, and the corpse will vanish too. The soul can be "redeemed" from a good god at an altar (30 favor). Are you sure?</en></s>
+  <s><zh>（没有能执行的殖民者）</zh><en> (no colonist who can execute)</en></s>
+  <s><zh>炼魂：</zh><en>Soul refining: </en></s>
+  <s><zh>（执行者 </zh><en> (executioner </en></s>
+  <s><zh>没有囚犯</zh><en>No prisoners</en></s>
+  <s><zh>在深渊法阵上炼出了 </zh><en> refined </en></s>
+  <s><zh> 枚灵魂币。</zh><en> soul coins on the abyssal circle.</en></s>
+  <s><zh>担任护阵者（已经有 3 人）</zh><en>Act as warden (already 3 people)</en></s>
+  <s><zh>担任护阵者（成功率 +4%，腐化为主祭的一半）</zh><en>Act as warden (success chance +4%, half the leader's taint)</en></s>
+  <s><zh>每张地图最多 </zh><en>At most </en></s>
+  <s><zh> 个</zh><en> per map</en></s>
+  <s><zh>正在念诵深渊咒文。</zh><en>Chanting an abyssal incantation.</en></s>
+  <s><zh>正在为深渊仪式准备祭品。</zh><en>Preparing offerings for an abyssal ritual.</en></s>
+  <s><zh>深渊仪式没法开始：</zh><en>The abyssal ritual can't begin: </en></s>
+  <s><zh>：</zh><en>: </en></s>
+  <s><zh>记载：</zh><en>Records: </en></s>
+  <s><zh>　研读进度 </zh><en>  study progress </en></s>
+  <s><zh>（殖民地已经知道）</zh><en> (the colony already knows)</en></s>
+  <s><zh>恶魔学典籍</zh><en>demonology tome</en></s>
+  <s><zh>读懂了恶魔学典籍</zh><en>Understood the demonology tome</en></s>
+  <s><zh>读完了记载</zh><en> finished reading the demonology tome recording </en></s>
+  <s><zh>的恶魔学典籍：殖民地现在可以在深渊法阵上召唤</zh><en>: the colony can now summon </en></s>
+  <s><zh>了。</zh><en> on the abyssal circle.</en></s>
+  <s><zh>读满 4 小时：学会召唤书中记载的恶魔。阅读时每小时深渊腐化 +0.5%。\n</zh><en>Read for 4 hours to learn to summon the demon recorded in the book. Abyssal taint +0.5% per hour of reading.\n</en></s>
+  <s><zh>吸收了一枚灵魂币里的灵魂：命匣 +</zh><en> absorbed the soul in a soul coin: phylactery +</en></s>
+  <s><zh> 经验。</zh><en> XP.</en></s>
+  <s><zh>只有有命匣的巫妖能吸收灵魂币</zh><en>Only liches with a phylactery can absorb soul coins</en></s>
+  <s><zh>要在有束缚法阵的房间里才能抽恶魔血。</zh><en>Demon blood can only be drawn in a room with a binding circle.</en></s>
+  <s><zh>给</zh><en>Put a planar anchor chain on </en></s>
+  <s><zh>戴上位面锚链（没有可用的锚链）</zh><en> (no chain available)</en></s>
+  <s><zh>戴上位面锚链</zh><en>Put on planar anchor chain</en></s>
+  <s><zh>咬紧了牙关，没有说出真名。</zh><en> gritted its teeth and didn't say its true name.</en></s>
+  <s><zh>从</zh><en> pried its true name out of </en></s>
+  <s><zh>嘴里撬出了它的真名：</zh><en>'s mouth: </en></s>
+</LPStrings>

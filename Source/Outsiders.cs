@@ -47,7 +47,7 @@ namespace LichPhylactery {
   public static bool Is(Pawn p)=>Of(p)!=null;
   public static bool IsDemon(Pawn p)=>Of(p)?.plane==OutsiderPlane.Abyss;
   public static bool IsDevil(Pawn p)=>Of(p)?.plane==OutsiderPlane.Hells;
-  public static string PlaneWord(Pawn p){var e=Of(p);return e==null || e.plane==OutsiderPlane.Abyss?"深渊":e.plane==OutsiderPlane.Feywild?"妖精荒野":e.plane==OutsiderPlane.Celestia?"天界":"九狱";} // 1.55.0：妖精、天界
+  public static string PlaneWord(Pawn p){var e=Of(p);return e==null || e.plane==OutsiderPlane.Abyss?"深渊".Loc():e.plane==OutsiderPlane.Feywild?"妖精荒野".Loc():e.plane==OutsiderPlane.Celestia?"天界".Loc():"九狱".Loc();} // 1.55.0：妖精、天界
 
   // ---------- 状态 ----------
   static HediffDef bound,thrall,shackled,disguise;
@@ -63,9 +63,9 @@ namespace LichPhylactery {
   public static bool BanishOnDown(Pawn p)=>Fiends.Is(p) && !Bound(p) && !Shackled(p);
   public static bool VanishOnDeath(Pawn p)=>Fiends.Is(p) && !Shackled(p);
   public static string KindLabel(Pawn p){
-   if(p==null)return "外来者";
-   if(Fiends.IsBalor(p))return "炎魔";if(Fiends.IsIceDevil(p))return "寒冰魔";
-   if(AbyssRaces.IsSuccubus(p))return p.gender==Gender.Male?"梦魔":"魅魔";
+   if(p==null)return "外来者".Loc();
+   if(Fiends.IsBalor(p))return "炎魔".Loc();if(Fiends.IsIceDevil(p))return "寒冰魔".Loc();
+   if(AbyssRaces.IsSuccubus(p))return p.gender==Gender.Male?"梦魔".Loc():"魅魔".Loc();
    var x=p.genes?.Xenotype;if(x!=null && x!=XenotypeDefOf.Baseliner && p.RaceProps.Humanlike)return x.label;
    return p.kindDef?.label??p.def.label;
   }
@@ -88,7 +88,7 @@ namespace LichPhylactery {
    else{Fiends.DropAt(Fiends.Loot(p),cell,map);Fiends.DropAt(ExtraLoot(p),cell,map);}
    Smoke(cell,map);
    if(balor)Fiends.Schedule(map,cell);
-   Messages.Message(balor?"炎魔的身体开始崩解！":label+"被遣返"+PlaneWord(p)+"。",new TargetInfo(cell,map),MessageTypeDefOf.NeutralEvent,false);
+   Messages.Message(balor?"炎魔的身体开始崩解！".Loc():label+"被遣返".Loc()+PlaneWord(p)+"。".Loc(),new TargetInfo(cell,map),MessageTypeDefOf.NeutralEvent,false);
    if(!own)Thinness.Add(map,Thinness.KillGain,null);
    p.Destroy(DestroyMode.Vanish);
    return true;
@@ -102,8 +102,8 @@ namespace LichPhylactery {
    else{Fiends.DropAt(Fiends.Loot(p),cell,map);Fiends.DropAt(ExtraLoot(p),cell,map);}
    Smoke(cell,map);
    if(balor)Fiends.Schedule(map,cell);
-   if(bound)Find.LetterStack.ReceiveLetter(p.LabelShort+"回到了"+PlaneWord(p),p.LabelShort+"死了。它的身体化作黑烟，回到了"+PlaneWord(p)+"——束缚随之断开，留下的装备和物品掉在原地。外来者的灵魂不在这个世界，无法复活。",LetterDefOf.Death,new TargetInfo(cell,map));
-   else Messages.Message(balor?"炎魔的身体开始崩解！":KindLabel(p)+"被遣返"+PlaneWord(p)+"。",new TargetInfo(cell,map),MessageTypeDefOf.NeutralEvent,false);
+   if(bound)Find.LetterStack.ReceiveLetter(p.LabelShort+"回到了".Loc()+PlaneWord(p),p.LabelShort+"死了。它的身体化作黑烟，回到了".Loc()+PlaneWord(p)+"——束缚随之断开，留下的装备和物品掉在原地。外来者的灵魂不在这个世界，无法复活。".Loc(),LetterDefOf.Death,new TargetInfo(cell,map));
+   else Messages.Message(balor?"炎魔的身体开始崩解！".Loc():KindLabel(p)+"被遣返".Loc()+PlaneWord(p)+"。".Loc(),new TargetInfo(cell,map),MessageTypeDefOf.NeutralEvent,false);
    corpse.Destroy();
    return true;
   }
@@ -136,7 +136,7 @@ namespace LichPhylactery {
    if(p==null || Shackled(p) || ShackledDef==null)return;
    p.health.AddHediff(ShackledDef);
    if(p.Spawned)FleckMaker.Static(p.Position,p.Map,FleckDefOf.PsycastAreaEffect,1.2f);
-   Messages.Message((by!=null?by.LabelShort+"用":"")+"位面锚链锁住了"+KindLabel(p)+"：它不会再被遣返，可以俘虏。",p,MessageTypeDefOf.PositiveEvent,false);
+   Messages.Message((by!=null?by.LabelShort+"用".Loc():"")+"位面锚链锁住了".Loc()+KindLabel(p)+"：它不会再被遣返，可以俘虏。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);
   }
 
   // ---------- 克制 ----------
@@ -175,7 +175,7 @@ namespace LichPhylactery {
 
  // ---------- 真名 ----------
  public static class TrueNames {
-  static readonly string[] Syl={"巴","尔","祖","格","莫","拉","克","萨","斯","纳","乌","赫","兹","特","鲁","姆","奥","伊","卡","洛","戈","叙","达","瓦","泽","索","玛","库","德","弗"};
+  static readonly string[] Syl={"巴".Loc(),"尔".Loc(),"祖".Loc(),"格".Loc(),"莫".Loc(),"拉".Loc(),"克".Loc(),"萨".Loc(),"斯".Loc(),"纳".Loc(),"乌".Loc(),"赫".Loc(),"兹".Loc(),"特".Loc(),"鲁".Loc(),"姆".Loc(),"奥".Loc(),"伊".Loc(),"卡".Loc(),"洛".Loc(),"戈".Loc(),"叙".Loc(),"达".Loc(),"瓦".Loc(),"泽".Loc(),"索".Loc(),"玛".Loc(),"库".Loc(),"德".Loc(),"弗".Loc()};
   public static string Generate(int seed){
    int n=3+(int)(Rand.ValueSeeded(seed^0x7A11)*2f);var s="";
    for(int i=0;i<n;i++)s+=Syl[Mathf.Clamp((int)(Rand.ValueSeeded(seed*31+i*977)*Syl.Length),0,Syl.Length-1)];
@@ -205,34 +205,34 @@ namespace LichPhylactery {
    if(target==null || target.Dead || !target.Spawned)return false;
    bool saved=Legendary.Save(target,Adventurer.Cha,Legendary.DC(user,Adventurer.Cha),user);
    scroll?.Destroy();
-   if(saved){Messages.Message(Outsiders.KindLabel(target)+"顶住了自己的真名。",target,MessageTypeDefOf.NegativeEvent,false);return false;}
-   Messages.Message(user.LabelShort+"念出了"+Outsiders.KindLabel(target)+"的真名——它被逐回了"+Outsiders.PlaneWord(target)+"！",target,MessageTypeDefOf.PositiveEvent,false);
+   if(saved){Messages.Message(Outsiders.KindLabel(target)+"顶住了自己的真名。".Loc(),target,MessageTypeDefOf.NegativeEvent,false);return false;}
+   Messages.Message(user.LabelShort+"念出了".Loc()+Outsiders.KindLabel(target)+"的真名——它被逐回了".Loc()+Outsiders.PlaneWord(target)+"！".Loc(),target,MessageTypeDefOf.PositiveEvent,false);
    if(Fiends.Is(target))Outsiders.Banish(target);
    else{var map=target.Map;var cell=target.Position;FleckMaker.Static(cell,map,FleckDefOf.PsycastAreaEffect,1.6f);target.Destroy(DestroyMode.Vanish);}
    return true;
   }
   public static bool UseOnRift(Pawn user,Building_PlanarRift rift,Thing scroll){
    if(rift?.Comp==null || rift.Destroyed)return false;scroll?.Destroy();
-   rift.Comp.Close(user.LabelShort+"念出了一个恶魔的真名，裂口被这个名字封住",true);return true;
+   rift.Comp.Close(user.LabelShort+"念出了一个恶魔的真名，裂口被这个名字封住".Loc(),true);return true;
   }
  }
  public class CompProperties_TrueName : CompProperties {public CompProperties_TrueName(){compClass=typeof(CompTrueName);}}
  public class CompTrueName : ThingComp {
   public string trueName,kind,kindLabel;public int pawnId=-1;
-  public override string TransformLabel(string label)=>trueName.NullOrEmpty()?label:label+"："+trueName+"（"+kindLabel+"）";
+  public override string TransformLabel(string label)=>trueName.NullOrEmpty()?label:label+"：".Loc()+trueName+"（".Loc()+kindLabel+"）".Loc();
   public override bool AllowStackWith(Thing other)=>false;
   public override string CompInspectStringExtra(){
-   if(trueName.NullOrEmpty())return "空白的真名卷。";
-   var p=AbyssBinding.PawnById(pawnId);string who=p==null?"它已不在这个世界":p.Faction?.IsPlayer==true?"它是你的"+(Outsiders.Bound(p)?"束缚者":"仆从")+"（持有这张卷：服从度衰减减半）":"它还在外面游荡";
-   return "记载着"+kindLabel+"的真名："+trueName+"。"+who+"。";
+   if(trueName.NullOrEmpty())return "空白的真名卷。".Loc();
+   var p=AbyssBinding.PawnById(pawnId);string who=p==null?"它已不在这个世界".Loc():p.Faction?.IsPlayer==true?"它是你的".Loc()+(Outsiders.Bound(p)?"束缚者".Loc():"仆从".Loc())+"（持有这张卷：服从度衰减减半）".Loc():"它还在外面游荡".Loc();
+   return "记载着".Loc()+kindLabel+"的真名：".Loc()+trueName+"。".Loc()+who+"。".Loc();
   }
   public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(Pawn selPawn){
    foreach(var o in base.CompFloatMenuOptions(selPawn))yield return o;
    if(selPawn?.Faction?.IsPlayer!=true || trueName.NullOrEmpty() || parent.MapHeld==null)yield break;
    var map=parent.MapHeld;var target=AbyssBinding.PawnById(pawnId);
    var job=DefDatabase<JobDef>.GetNamedSilentFail("LP_UseTrueName");if(job==null)yield break;
-   if(target!=null && target.Spawned && target.Map==map && !target.Dead && target.HostileTo(selPawn))yield return new FloatMenuOption("用真名驱逐"+target.LabelShort+"（它做魅力豁免，难度 "+Legendary.DC(selPawn,Adventurer.Cha)+"，它的成功率 "+Legendary.SaveChance(target,Adventurer.Cha,Legendary.DC(selPawn,Adventurer.Cha),selPawn).ToStringPercent()+"）",()=>selPawn.jobs.TryTakeOrderedJob(JobMaker.MakeJob(job,parent,target),JobTag.Misc));
-   foreach(var r in PortalEvent.Rifts(map).Where(r=>r.Comp?.plane?.holyClosable==true))yield return new FloatMenuOption("用真名封住深渊裂口（用掉这张卷）",()=>selPawn.jobs.TryTakeOrderedJob(JobMaker.MakeJob(job,parent,r),JobTag.Misc));
+   if(target!=null && target.Spawned && target.Map==map && !target.Dead && target.HostileTo(selPawn))yield return new FloatMenuOption("用真名驱逐".Loc()+target.LabelShort+"（它做魅力豁免，难度 ".Loc()+Legendary.DC(selPawn,Adventurer.Cha)+"，它的成功率 ".Loc()+Legendary.SaveChance(target,Adventurer.Cha,Legendary.DC(selPawn,Adventurer.Cha),selPawn).ToStringPercent()+"）".Loc(),()=>selPawn.jobs.TryTakeOrderedJob(JobMaker.MakeJob(job,parent,target),JobTag.Misc));
+   foreach(var r in PortalEvent.Rifts(map).Where(r=>r.Comp?.plane?.holyClosable==true))yield return new FloatMenuOption("用真名封住深渊裂口（用掉这张卷）".Loc(),()=>selPawn.jobs.TryTakeOrderedJob(JobMaker.MakeJob(job,parent,r),JobTag.Misc));
   }
   public override void PostExposeData(){base.PostExposeData();Scribe_Values.Look(ref trueName,"lpTrueName");Scribe_Values.Look(ref kind,"lpKind");Scribe_Values.Look(ref kindLabel,"lpKindLabel");Scribe_Values.Look(ref pawnId,"lpPawnId",-1);}
  }
@@ -391,14 +391,14 @@ namespace LichPhylactery {
   public static float ThinFrequency=>(LichMod.Settings?.abyssThinPercent??100)/100f;
   public static void Draw(Listing_Standard l){
    var s=LichMod.Settings;
-   l.GapLine();l.Label("深渊");
-   l.CheckboxLabeled("启用深渊内容",ref s.abyssEnabled,"（1.54.0）深渊学研究、深渊法阵、腐化和深渊事件。关掉后研究隐藏、事件不再触发；已有的束缚者和仆从保留。");
-   l.Label("腐化速度："+s.abyssTaintPercent+"%");s.abyssTaintPercent=(int)l.Slider(s.abyssTaintPercent,25,200);
-   l.Label("薄弱度事件频率："+s.abyssThinPercent+"%（深渊低语、深渊入侵）");s.abyssThinPercent=(int)l.Slider(s.abyssThinPercent,0,200);
-   l.CheckboxLabeled("允许束缚恶魔成为殖民者",ref s.abyssBindColonists,"关掉后二阶仪式只能召仆从，三阶整阶不可用，魅魔来访不触发。");
-   l.Label("束缚者额外上限："+s.abyssBoundExtra);s.abyssBoundExtra=(int)l.Slider(s.abyssBoundExtra,0,5);
-   l.Label("仆从上限："+s.abyssThrallCap);s.abyssThrallCap=(int)l.Slider(s.abyssThrallCap,0,16);
-   l.CheckboxLabeled("在地图上显示位面薄弱度",ref s.abyssShowThinness,"在有深渊法阵或开过深渊裂口的地图左上角显示薄弱度。");
+   l.GapLine();l.Label("深渊".Loc());
+   l.CheckboxLabeled("启用深渊内容".Loc(),ref s.abyssEnabled,"（1.54.0）深渊学研究、深渊法阵、腐化和深渊事件。关掉后研究隐藏、事件不再触发；已有的束缚者和仆从保留。".Loc());
+   l.Label("腐化速度：".Loc()+s.abyssTaintPercent+"%");s.abyssTaintPercent=(int)l.Slider(s.abyssTaintPercent,25,200);
+   l.Label("薄弱度事件频率：".Loc()+s.abyssThinPercent+"%（深渊低语、深渊入侵）".Loc());s.abyssThinPercent=(int)l.Slider(s.abyssThinPercent,0,200);
+   l.CheckboxLabeled("允许束缚恶魔成为殖民者".Loc(),ref s.abyssBindColonists,"关掉后二阶仪式只能召仆从，三阶整阶不可用，魅魔来访不触发。".Loc());
+   l.Label("束缚者额外上限：".Loc()+s.abyssBoundExtra);s.abyssBoundExtra=(int)l.Slider(s.abyssBoundExtra,0,5);
+   l.Label("仆从上限：".Loc()+s.abyssThrallCap);s.abyssThrallCap=(int)l.Slider(s.abyssThrallCap,0,16);
+   l.CheckboxLabeled("在地图上显示位面薄弱度".Loc(),ref s.abyssShowThinness,"在有深渊法阵或开过深渊裂口的地图左上角显示薄弱度。".Loc());
    PactSettings.Draw(l); // 1.55.0：“异界契约”分组画在“深渊”下面（不改 Core.cs 的分组表）
   }
  }

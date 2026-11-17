@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 野蛮人通用 -->
+  <LP_Sub_BarbarianGeneral.label>barbarian general</LP_Sub_BarbarianGeneral.label>
+  <!-- 所有野蛮人都会的两项能力。 -->
+  <LP_Sub_BarbarianGeneral.description>Two abilities every barbarian knows.</LP_Sub_BarbarianGeneral.description>
+  <!-- 狂战士之道 -->
+  <LP_Sub_Berserker.label>Path of the Berserker</LP_Sub_Berserker.label>
+  <!-- 为杀戮而狂暴：狂暴中出手更快、心志不可动摇，眼神就能吓退敌人，挨打必还手。 -->
+  <LP_Sub_Berserker.description>Raging for the slaughter: strikes faster while raging, an unshakable will, a glare that drives enemies off, and always hits back when struck.</LP_Sub_Berserker.description>
+  <!-- 图腾勇士之道 -->
+  <LP_Sub_TotemWarrior.label>Path of the Totem Warrior</LP_Sub_TotemWarrior.label>
+  <!-- 与一种图腾兽的灵魂结盟（熊、鹰、狼选一次，不能改），所有能力都随图腾变化。 -->
+  <LP_Sub_TotemWarrior.description>Ally with the spirit of a totem animal (choose bear, eagle or wolf once, can't change); every ability changes with the totem.</LP_Sub_TotemWarrior.description>
+  <!-- 图腾 -->
+  <LP_Sub_TotemWarrior.choices.0.label>totem</LP_Sub_TotemWarrior.choices.0.label>
+  <!-- 熊 | 鹰 | 狼 -->
+  <LP_Sub_TotemWarrior.choices.0.options.0>bear</LP_Sub_TotemWarrior.choices.0.options.0>
+  <LP_Sub_TotemWarrior.choices.0.options.1>eagle</LP_Sub_TotemWarrior.choices.0.options.1>
+  <LP_Sub_TotemWarrior.choices.0.options.2>wolf</LP_Sub_TotemWarrior.choices.0.options.2>
+  <!-- 狂暴中除心灵外所有伤害 ×0.5；负重 ×2；灵魂行者召来灰熊；图腾调和嘲讽身边敌人。 | 狂暴中远程命中你 ×0.7、移动 ×1.2；远程射程 +3；灵魂行者召来鹰灵（食火鸡形）；图腾调和在狂暴中滑翔。 | 狂暴中 5 格内友军近战命中 +15%；移动 ×1.1、追踪逃跑的敌人；灵魂行者召来森林狼；图腾调和让近战命中撞倒目标。 -->
+  <LP_Sub_TotemWarrior.choices.0.tips.0>While raging, all damage except psychic ×0.5; carry capacity ×2; spirit walker summons a grizzly; totemic attunement taunts nearby enemies.</LP_Sub_TotemWarrior.choices.0.tips.0>
+  <LP_Sub_TotemWarrior.choices.0.tips.1>While raging, ranged hits against you ×0.7, movement ×1.2; ranged range +3; spirit walker summons eagle spirits (cassowary-shaped); totemic attunement glides while raging.</LP_Sub_TotemWarrior.choices.0.tips.1>
+  <LP_Sub_TotemWarrior.choices.0.tips.2>While raging, allies within 5 cells get melee hit +15%; movement ×1.1, tracks fleeing enemies; spirit walker summons timber wolves; totemic attunement makes melee hits knock targets down.</LP_Sub_TotemWarrior.choices.0.tips.2>
+  <!-- 风暴先驱之道 -->
+  <LP_Sub_StormHerald.label>Path of the Storm Herald</LP_Sub_StormHerald.label>
+  <!-- 狂暴时化身风暴（沙漠之火、海洋之雷、冻原之冰选一次，不能改）：身边的敌人持续受伤，友军得到庇护。 -->
+  <LP_Sub_StormHerald.description>Become a storm while raging (choose desert fire, sea lightning or tundra ice once, can't change): nearby enemies keep taking damage, and allies get shelter.</LP_Sub_StormHerald.description>
+  <!-- 风暴 -->
+  <LP_Sub_StormHerald.choices.0.label>storm</LP_Sub_StormHerald.choices.0.label>
+  <!-- 沙漠（火） | 海洋（雷） | 冻原（冰） -->
+  <LP_Sub_StormHerald.choices.0.options.0>desert (fire)</LP_Sub_StormHerald.choices.0.options.0>
+  <LP_Sub_StormHerald.choices.0.options.1>sea (lightning)</LP_Sub_StormHerald.choices.0.options.1>
+  <LP_Sub_StormHerald.choices.0.options.2>tundra (ice)</LP_Sub_StormHerald.choices.0.options.2>
+  <!-- 光环灼烧；火焰伤害 ×0.5，舒适温度上限 +40℃；狂暴风暴可能点燃敌人。 | 光环电击（机械体 EMP）；闪电伤害 ×0.5，舒适温度两头各 ±20℃；狂暴风暴可能击晕敌人。 | 光环冰霜；冰霜伤害 ×0.5，舒适温度下限 −40℃；狂暴风暴可能让敌人减速。 -->
+  <LP_Sub_StormHerald.choices.0.tips.0>Aura burns; fire damage ×0.5, max comfortable temperature +40°C; raging storm may ignite enemies.</LP_Sub_StormHerald.choices.0.tips.0>
+  <LP_Sub_StormHerald.choices.0.tips.1>Aura shocks (EMP for mechanoids); lightning damage ×0.5, comfortable temperature ±20°C at both ends; raging storm may stun enemies.</LP_Sub_StormHerald.choices.0.tips.1>
+  <LP_Sub_StormHerald.choices.0.tips.2>Aura frost; frost damage ×0.5, min comfortable temperature -40°C; raging storm may slow enemies.</LP_Sub_StormHerald.choices.0.tips.2>
+  <!-- 游荡者通用 -->
+  <LP_Sub_RogueGeneral.label>rogue general</LP_Sub_RogueGeneral.label>
+  <!-- 所有游荡者都会的两项能力。 -->
+  <LP_Sub_RogueGeneral.description>Two abilities every rogue knows.</LP_Sub_RogueGeneral.description>
+  <!-- 刺客 -->
+  <LP_Sub_Assassin.label>Assassin</LP_Sub_Assassin.label>
+  <!-- 一击致命的专家：没进入战斗的敌人挨一下就是重击，倒下、被控住的目标更是死路一条。 -->
+  <LP_Sub_Assassin.description>A one-hit-kill specialist: enemies not yet in combat take a critical hit, and downed or controlled targets are as good as dead.</LP_Sub_Assassin.description>
+  <!-- 盗贼 -->
+  <LP_Sub_Thief.label>thief</LP_Sub_Thief.label>
+  <!-- 手快、脚快、眼尖：顺手牵羊、翻墙越脊、找得到宝藏，开打的头几秒快得惊人。 -->
+  <LP_Sub_Thief.description>Quick hands, quick feet, sharp eyes: pickpocketing, climbing over walls and roofs, finding treasure, and astonishingly fast in the first seconds of a fight.</LP_Sub_Thief.description>
+  <!-- 诡术师 -->
+  <LP_Sub_ArcaneTrickster.label>Arcane Trickster</LP_Sub_ArcaneTrickster.label>
+  <!-- 学了点奥术的游荡者：有自己的法力（规则同法师），会法师之手、魔能飞弹、隐形术、睡眠术，还能偷走敌人的法术。 -->
+  <LP_Sub_ArcaneTrickster.description>A rogue who learned some arcana: has their own mana (same rules as wizards), knows Mage Hand, Magic Missile, Invisibility and Sleep, and can steal enemies' spells.</LP_Sub_ArcaneTrickster.description>
+  <!-- 游侠通用 -->
+  <LP_Sub_RangerGeneral.label>ranger general</LP_Sub_RangerGeneral.label>
+  <!-- 所有游侠都会的两项能力。 -->
+  <LP_Sub_RangerGeneral.description>Two abilities every ranger knows.</LP_Sub_RangerGeneral.description>
+  <!-- 猎人 -->
+  <LP_Sub_Hunter.label>Hunter</LP_Sub_Hunter.label>
+  <!-- 专门对付威胁的猎手：选一种猎杀之道（3 级）和一种防御战术（7 级），能同时攻击身边所有敌人。 -->
+  <LP_Sub_Hunter.description>A hunter specializing in threats: pick a hunter's prey (level 3) and a defensive tactic (level 7), and can attack all nearby enemies at once.</LP_Sub_Hunter.description>
+  <!-- 猎手之选 -->
+  <LP_Sub_Hunter.choices.0.label>hunter's prey</LP_Sub_Hunter.choices.0.label>
+  <!-- 巨像杀手 | 群敌杀手 -->
+  <LP_Sub_Hunter.choices.0.options.0>colossus slayer</LP_Sub_Hunter.choices.0.options.0>
+  <LP_Sub_Hunter.choices.0.options.1>horde breaker</LP_Sub_Hunter.choices.0.options.1>
+  <!-- 对已经受伤的目标伤害 ×1.25。 | 身边贴着 3 个以上敌人时，近战命中后对另一个相邻敌人再打一次（每秒一次）。 -->
+  <LP_Sub_Hunter.choices.0.tips.0>×1.25 damage against already-wounded targets.</LP_Sub_Hunter.choices.0.tips.0>
+  <LP_Sub_Hunter.choices.0.tips.1>With 3 or more enemies up close, after a melee hit strike another adjacent enemy once more (once per second).</LP_Sub_Hunter.choices.0.tips.1>
+  <!-- 防御战术 -->
+  <LP_Sub_Hunter.choices.1.label>defensive tactics</LP_Sub_Hunter.choices.1.label>
+  <!-- 多重攻击防御 | 逃脱之术 -->
+  <LP_Sub_Hunter.choices.1.options.0>multiattack defense</LP_Sub_Hunter.choices.1.options.0>
+  <LP_Sub_Hunter.choices.1.options.1>escape the horde</LP_Sub_Hunter.choices.1.options.1>
+  <!-- 同一个敌人 3 秒内第二次起打中你，伤害 ×0.5。 | 爆炸、火焰这类躲得开的伤害 ×0.5。 -->
+  <LP_Sub_Hunter.choices.1.tips.0>From the second hit by the same enemy within 3 seconds, damage ×0.5.</LP_Sub_Hunter.choices.1.tips.0>
+  <LP_Sub_Hunter.choices.1.tips.1>Damage you can dodge, such as explosions and fire, ×0.5.</LP_Sub_Hunter.choices.1.tips.1>
+  <!-- 兽王 -->
+  <LP_Sub_BeastMaster.label>the Beastlord</LP_Sub_BeastMaster.label>
+  <!-- 与一只动物结成游侠伙伴：它跟着你成长（野性等级跟到你的冒险者等级），学会特技，攻击翻倍，还能分享你的增益。 -->
+  <LP_Sub_BeastMaster.description>Form a ranger's bond with an animal: it grows with you (beast level follows your adventurer level), learns tricks, doubles its attacks, and can share your buffs.</LP_Sub_BeastMaster.description>
+  <!-- 幽域追踪者 -->
+  <LP_Sub_GloomStalker.label>Gloom Stalker</LP_Sub_GloomStalker.label>
+  <!-- 在黑暗里狩猎的游侠：每场战斗的第一击最致命，暗处难以命中，意志如钢，落空了马上补刀。 -->
+  <LP_Sub_GloomStalker.description>A ranger who hunts in the dark: the first strike of each fight is the deadliest, hard to hit in darkness, a will of iron, and an instant follow-up on a miss.</LP_Sub_GloomStalker.description>
+</LanguageData>

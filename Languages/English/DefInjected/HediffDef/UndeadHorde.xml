@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 噬尸鬼之躯 -->
+  <LP_UH_GhoulBody.label>ghoul body</LP_UH_GhoulBody.label>
+  <!-- 啃食尸体的亡灵：不吃不睡、不会崩溃、不怕冷、死灵伤害无效。爪子命中时目标要做体质豁免，失败全身麻痹 3 秒。光耀与火焰伤害 ×1.5。 -->
+  <LP_UH_GhoulBody.description>Corpse-eating undead: doesn't eat or sleep, never breaks, doesn't mind cold, immune to necrotic damage. Targets hit by its claws make a Constitution save or are fully paralyzed for 3 seconds. Radiant and fire damage ×1.5.</LP_UH_GhoulBody.description>
+  <!-- 尸妖之躯 -->
+  <LP_UH_WightBody.label>wight body</LP_UH_WightBody.label>
+  <!-- 保留着武艺的亡灵战士：不吃不睡、不会崩溃、死灵伤害无效，护甲 +15%。每次武器命中吸走伤害的 30% 治疗自己。光耀与火焰伤害 ×1.5。 -->
+  <LP_UH_WightBody.description>An undead warrior that retains its martial skill: doesn't eat or sleep, never breaks, immune to necrotic damage, armor +15%. Each weapon hit drains 30% of the damage to heal itself. Radiant and fire damage ×1.5.</LP_UH_WightBody.description>
+  <!-- 怨灵之躯 -->
+  <LP_UH_WraithBody.label>wraith body</LP_UH_WraithBody.label>
+  <!-- 半实体的游魂：不吃不睡、不会崩溃、死灵伤害无效，刀枪箭矢的伤害减半（光耀、火焰、银器、魔法照常），移动 ×1.3。身边 2 格内的活人每 2 秒被抽走 3 点生命，抽来的治疗它自己。 -->
+  <LP_UH_WraithBody.description>A semi-corporeal wandering soul: doesn't eat or sleep, never breaks, immune to necrotic damage, damage from blades, guns and arrows halved (radiant, fire, silver and magic work normally), movement ×1.3. The living within 2 cells lose 3 health every 2 seconds, and what it drains heals itself.</LP_UH_WraithBody.description>
+  <!-- 吸血鬼之躯 -->
+  <LP_UH_VampireBody.label>vampire body</LP_UH_VampireBody.label>
+  <!-- 吸血的亡灵贵族：不吃不睡、不会崩溃、死灵伤害无效。每 250 刻愈合 4 点伤势，但 10 秒内挨过光耀或火焰就停止；武器命中吸走伤害的 50% 治疗自己。白天站在露天受到的伤害 ×1.5、不再愈合。光耀与火焰伤害 ×1.5。 -->
+  <LP_UH_VampireBody.description>Blood-drinking undead aristocrats: don't eat or sleep, never break, immune to necrotic damage. Heal 4 injury every 250 ticks, but stop if hit by radiant or fire damage within 10 seconds; weapon hits drain 50% of the damage to heal themselves. Standing outdoors by day they take ×1.5 damage and stop healing. Radiant and fire damage ×1.5.</LP_UH_VampireBody.description>
+  <!-- 尸毒麻痹 -->
+  <LP_UH_Paralysis.label>corpse venom paralysis</LP_UH_Paralysis.label>
+  <!-- 噬尸鬼的尸毒：全身麻痹，3 秒后才能动弹。 -->
+  <LP_UH_Paralysis.description>A ghoul's corpse venom: fully paralyzed, able to move again after 3 seconds.</LP_UH_Paralysis.description>
+</LanguageData>

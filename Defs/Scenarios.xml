@@ -15,16 +15,6 @@
 
 
   <ScenPartDef>
-    <defName>LP_ForceDragonClutch</defName>
-    <label>力能龙裔的宝库与龙蛋</label>
-    <scenPartClass>LichPhylactery.ScenPart_ForceDragonClutch</scenPartClass>
-    <category>StartingImportant</category>
-    <selectionWeight>0</selectionWeight>
-    <summaryPriority>490</summaryPriority>
-    <maxUses>1</maxUses>
-  </ScenPartDef>
-
-  <ScenPartDef>
     <defName>LP_TimedCondition</defName>
     <label>开局限时状况</label>
     <scenPartClass>LichPhylactery.ScenPart_TimedCondition</scenPartClass>
@@ -445,99 +435,6 @@
         <li Class="ScenPart_GameStartDialog">
           <def>GameStartDialog</def>
           <text>他们是带着火把在夜里来的。\n\n族人一个接一个倒下，猎人们烧掉了能找到的每一具尸体。可他们没有找到所有人。\n\n第二天清晨，你在泥地里重新长合，撕开的伤口慢慢闭上，空荡荡的胃在咆哮。另外三个同伴也站了起来，两头座狼从林子里循着气味回到你们身边。\n\n离开冒烟的故乡吧。去找肉，去找一个没有火的地方。</text>
-          <closeSound>GameStartSting</closeSound>
-        </li>
-
-      </parts>
-    </scenario>
-  </ScenarioDef>
-
-  <!-- ==================== 力能龙：龙蛋 ==================== -->
-
-  <ScenarioDef ParentName="ScenarioBase">
-    <defName>LP_ForceDragonScenario</defName>
-    <label>龙蛋</label>
-    <description>一位年老的力能龙裔厌倦了漫长的流浪，带着两名凡人仆从在这片荒野里筑起一座小宝库。宝库里堆着金银，还有一枚已经快要孵化的龙蛋。\n\n开局的力能龙裔已是古龙，会力墙和力场囚笼；宝库是一间带屋顶的独占卧室，龙蛋必须留在里面才会孵化。力能龙裔只吃肉，拒绝搬运和清洁，粗活要靠两名仆从。\n\n注意：宝库里的东西被搬走或卖掉，龙会记仇；外人来偷，它会当场暴怒。</description>
-    <scenario>
-      <summary>一条古龙、两名仆从、一座小宝库和一枚快孵化的力能龙蛋。</summary>
-      <parts>
-
-        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns_Xenotypes">
-          <def>ConfigurePawnsXenotypes</def>
-          <pawnChoiceCount>8</pawnChoiceCount>
-          <customSummary>一名力能龙裔和两名仆从。</customSummary>
-          <xenotypeCounts>
-            <li>
-              <xenotype>LP_ForceDragon</xenotype>
-              <count>1</count>
-              <description>力能龙裔</description>
-              <requiredAtStart>true</requiredAtStart>
-              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
-            </li>
-            <li>
-              <xenotype>Baseliner</xenotype>
-              <count>2</count>
-              <description>仆从</description>
-              <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
-            </li>
-          </xenotypeCounts>
-        </li>
-
-        <li Class="ScenPart_PlayerPawnsArriveMethod">
-          <def>PlayerPawnsArriveMethod</def>
-          <visible>false</visible>
-          <method>Standing</method>
-        </li>
-
-        <li Class="LichPhylactery.ScenPart_ForceDragonClutch">
-          <def>LP_ForceDragonClutch</def>
-          <age>4</age>
-          <eggs>1</eggs>
-          <eggProgress>0.9</eggProgress>
-          <gold>200</gold>
-          <silver>1500</silver>
-        </li>
-
-        <li Class="ScenPart_StartingThing_Defined">
-          <def>StartingThing_Defined</def>
-          <thingDef>Meat_Muffalo</thingDef>
-          <count>300</count>
-        </li>
-        <li Class="ScenPart_StartingThing_Defined">
-          <def>StartingThing_Defined</def>
-          <thingDef>MealSurvivalPack</thingDef>
-          <count>30</count>
-        </li>
-        <li Class="ScenPart_StartingThing_Defined">
-          <def>StartingThing_Defined</def>
-          <thingDef>MedicineIndustrial</thingDef>
-          <count>10</count>
-        </li>
-        <li Class="ScenPart_StartingThing_Defined">
-          <def>StartingThing_Defined</def>
-          <thingDef>ComponentIndustrial</thingDef>
-          <count>10</count>
-        </li>
-        <li Class="ScenPart_StartingThing_Defined">
-          <def>StartingThing_Defined</def>
-          <thingDef>Apparel_ShieldBelt</thingDef>
-          <count>2</count>
-        </li>
-
-        <li Class="ScenPart_ScatterThingsNearPlayerStart">
-          <def>ScatterThingsNearPlayerStart</def>
-          <thingDef>Steel</thingDef>
-          <count>400</count>
-        </li>
-        <li Class="ScenPart_ScatterThingsNearPlayerStart">
-          <def>ScatterThingsNearPlayerStart</def>
-          <thingDef>WoodLog</thingDef>
-          <count>400</count>
-        </li>
-
-        <li Class="ScenPart_GameStartDialog">
-          <def>GameStartDialog</def>
-          <text>你已经活了很久，久到记不清上一次离开宝库是什么时候。\n\n两个凡人跪在门口，等着你吩咐。金子在身下冰凉，一枚龙蛋在金子中间微微发烫——蛋壳里的小东西就快要醒了。\n\n守住宝库。谁敢伸手，就让谁见识力场的锋刃。</text>
           <closeSound>GameStartSting</closeSound>
         </li>
 

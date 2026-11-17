@@ -50,8 +50,8 @@ namespace LichPhylactery {
   // 圣甲虫：抵挡一次生命汲取或死亡律令，用完变回一块玉石。
   public static bool ScarabResists(Pawn p){
    var a=Items.Worn(p,"LP_ScarabProtection");var c=a?.GetComp<CompMagicCharges>();if(c==null || !c.TryUse())return false;
-   Items.Mote(p,"圣甲虫挡下（剩"+c.charges+"）",new Color(.55f,.9f,.6f));
-   if(c.charges<=0){var map=p.MapHeld;var pos=p.PositionHeld;p.apparel.Remove(a);a.Destroy();if(map!=null){var jade=ThingMaker.MakeThing(ThingDefOf.Jade);jade.stackCount=1;GenPlace.TryPlaceThing(jade,pos,map,ThingPlaceMode.Near);}if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"的圣甲虫护符耗尽了魔力，变回一块普通的玉石。",p,MessageTypeDefOf.NeutralEvent,false);}
+   Items.Mote(p,"圣甲虫挡下（剩".Loc()+c.charges+"）".Loc(),new Color(.55f,.9f,.6f));
+   if(c.charges<=0){var map=p.MapHeld;var pos=p.PositionHeld;p.apparel.Remove(a);a.Destroy();if(map!=null){var jade=ThingMaker.MakeThing(ThingDefOf.Jade);jade.stackCount=1;GenPlace.TryPlaceThing(jade,pos,map,ThingPlaceMode.Near);}if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"的圣甲虫护符耗尽了魔力，变回一块普通的玉石。".Loc(),p,MessageTypeDefOf.NeutralEvent,false);}
    return true;
   }
  }
@@ -91,10 +91,10 @@ namespace LichPhylactery {
   public string race;public float minBodySize=0f,maxBodySize=999f;
   public string Blocked(Pawn p){
    if(p==null)return null;
-   if(race!=null && !Items.Is(p,race))return "只有"+Items.RaceLabel(race)+"能穿戴。";
+   if(race!=null && !Items.Is(p,race))return "只有".Loc()+Items.RaceLabel(race)+"能穿戴。".Loc();
    float size=p.BodySize;
-   if(size+.001f<minBodySize)return "需要体型"+minBodySize.ToString("0.#")+"以上才能穿戴。";
-   if(size-.001f>maxBodySize)return "体型超过"+maxBodySize.ToString("0.#")+"就穿不上。";
+   if(size+.001f<minBodySize)return "需要体型".Loc()+minBodySize.ToString("0.#")+"以上才能穿戴。".Loc();
+   if(size-.001f>maxBodySize)return "体型超过".Loc()+maxBodySize.ToString("0.#")+"就穿不上。".Loc();
    return null;
   }
  }
@@ -161,8 +161,8 @@ namespace LichPhylactery {
   public void Refresh(){if(charges<0)charges=Props.maxCharges;if(Props.dailyReset && Today!=day){day=Today;charges=Props.maxCharges;}}
   public int Charges{get{Refresh();return charges;}}
   public bool TryUse(int n=1){Refresh();if(charges<n)return false;charges-=n;return true;}
-  public override string TransformLabel(string label)=>Props.chargeLabel.NullOrEmpty()?label:label+"（"+Props.chargeLabel+" "+Charges+(Props.dailyReset?"/"+Props.maxCharges:"")+"）";
-  public override string CompInspectStringExtra()=>Props.chargeLabel.NullOrEmpty()?null:Props.chargeLabel+"："+Charges+(Props.dailyReset?" / "+Props.maxCharges+"（每天恢复）":"");
+  public override string TransformLabel(string label)=>Props.chargeLabel.NullOrEmpty()?label:label+"（".Loc()+Props.chargeLabel+" "+Charges+(Props.dailyReset?"/"+Props.maxCharges:"")+"）".Loc();
+  public override string CompInspectStringExtra()=>Props.chargeLabel.NullOrEmpty()?null:Props.chargeLabel+"：".Loc()+Charges+(Props.dailyReset?" / "+Props.maxCharges+"（每天恢复）".Loc():"");
   public override void PostExposeData(){base.PostExposeData();Scribe_Values.Look(ref charges,"lpCharges",-1);Scribe_Values.Look(ref day,"lpChargeDay",-1);}
  }
 

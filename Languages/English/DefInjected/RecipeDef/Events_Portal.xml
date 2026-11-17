@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 强化强效治疗药水 -->
+  <LP_BrewPotionGreaterHealingEnhanced.label>enhance greater healing potion</LP_BrewPotionGreaterHealingEnhanced.label>
+  <!-- 用2份位面残渣加强1瓶强效治疗药水，药效持续时间×2。 -->
+  <LP_BrewPotionGreaterHealingEnhanced.description>Enhance 1 greater healing potion with 2 planar residue; duration ×2.</LP_BrewPotionGreaterHealingEnhanced.description>
+  <!-- 正在强化药水。 -->
+  <LP_BrewPotionGreaterHealingEnhanced.jobString>Enhancing a potion.</LP_BrewPotionGreaterHealingEnhanced.jobString>
+  <!-- 强化抗火药水 -->
+  <LP_BrewPotionFireResistanceEnhanced.label>enhance fire resistance potion</LP_BrewPotionFireResistanceEnhanced.label>
+  <!-- 用2份位面残渣加强1瓶抗火药水，药效持续时间×2。 -->
+  <LP_BrewPotionFireResistanceEnhanced.description>Enhance 1 fire resistance potion with 2 planar residue; duration ×2.</LP_BrewPotionFireResistanceEnhanced.description>
+  <!-- 正在强化药水。 -->
+  <LP_BrewPotionFireResistanceEnhanced.jobString>Enhancing a potion.</LP_BrewPotionFireResistanceEnhanced.jobString>
+</LanguageData>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 吉斯肤色 -->
+  <LP_GithSkin.label>gith skin</LP_GithSkin.label>
+  <!-- 吉斯血脉特有的灰黄绿色皮肤，像久不见日光的羊皮纸。 -->
+  <LP_GithSkin.description>The grey-yellow-green skin unique to the gith bloodline, like parchment long out of the sun.</LP_GithSkin.description>
+  <!-- 灰黄 -->
+  <LP_GithSkin.labelShortAdj>grey-yellow</LP_GithSkin.labelShortAdj>
+  <!-- 星界跳跃 -->
+  <LP_GithAstralStep.label>astral jump</LP_GithAstralStep.label>
+  <!-- 吉斯洋基能短暂踏入星界，从8格内的另一处走出来。有心灵链接的吉斯洋基每次消耗5%精神力；没有心灵链接时只受冷却限制。冷却12小时。 -->
+  <LP_GithAstralStep.description>Githyanki can briefly step into the Astral Plane and walk out somewhere else within 8 cells. Githyanki with a psylink spend 5% psyfocus each time; without a psylink it's limited only by cooldown. Cooldown 12 hours.</LP_GithAstralStep.description>
+  <!-- 巫妖女王的信徒 -->
+  <LP_GithLichDevotee.label>devotee of the lich-queen</LP_GithLichDevotee.label>
+  <!-- 吉斯洋基世代侍奉不死的巫妖女王。殖民地里有巫妖时，吉斯洋基心情+3；巫妖亲自劝降吉斯洋基俘虏时，每次谈话降低的抵抗多30%。 -->
+  <LP_GithLichDevotee.description>Githyanki have served the undying lich-queen for generations. When the colony has a lich, githyanki get mood +3; when a lich personally persuades githyanki prisoners, each talk lowers resistance 30% more.</LP_GithLichDevotee.description>
+  <!-- 同一地图上有本殖民地的巫妖：心情+3。 | 巫妖作为狱卒劝降：每次谈话降低的抵抗×130%。 -->
+  <LP_GithLichDevotee.customEffectDescriptions.0>A lich of this colony on the same map: mood +3.</LP_GithLichDevotee.customEffectDescriptions.0>
+  <LP_GithLichDevotee.customEffectDescriptions.1>A lich as warden persuading: resistance reduced per talk ×130%.</LP_GithLichDevotee.customEffectDescriptions.1>
+  <!-- 宿敌 -->
+  <LP_GithNemesis.label>favored enemy</LP_GithNemesis.label>
+  <!-- 吉斯洋基的祖先曾是夺心魔的奴隶，这份仇恨刻在血脉里。对夺心魔造成的伤害+25%，近战命中率+10%；心智抗性+30%，脑中的夺心魔蝌蚪化形速度减半。 -->
+  <LP_GithNemesis.description>The githyanki's ancestors were slaves of the mind flayers, and the hatred is carved into their bloodline. +25% damage against mind flayers, +10% melee hit chance; mind resistance +30%, and mind flayer tadpoles in the brain transform half as fast.</LP_GithNemesis.description>
+  <!-- 对夺心魔：伤害×125%，近战命中率+10%。 | 夺心魔蝌蚪化形速度×50%（与心智抗性的减速相乘）。 -->
+  <LP_GithNemesis.customEffectDescriptions.0>Against mind flayers: damage ×125%, melee hit chance +10%.</LP_GithNemesis.customEffectDescriptions.0>
+  <LP_GithNemesis.customEffectDescriptions.1>Mind flayer tadpole transformation speed ×50% (multiplies with the slowdown from mind resistance).</LP_GithNemesis.customEffectDescriptions.1>
+</LanguageData>

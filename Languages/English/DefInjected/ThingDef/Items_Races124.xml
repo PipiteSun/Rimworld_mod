@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 炽焰符 -->
+  <LP_ElementalFocus_Fire.label>blaze charm</LP_ElementalFocus_Fire.label>
+  <!-- 嵌着红色晶石的秘银护符，握在左手里微微发烫。炽焰血脉的元素裔或巨灵佩戴时：火花冷却减半，火焰伤害再减半（合计只受四分之一）。其他人佩戴：可燃性减半。只有炽焰血脉的元素裔能在附魔台制作。 -->
+  <LP_ElementalFocus_Fire.description>A mithril amulet set with a red crystal that feels warm in the left hand. When worn by a blaze bloodline genasi or a genie: spark cooldown halved, fire damage halved again (taking only a quarter in total). Worn by others: flammability halved. Only blaze bloodline genasi can make it at the enchanting table.</LP_ElementalFocus_Fire.description>
+  <!-- 潮汐符 -->
+  <LP_ElementalFocus_Water.label>tide charm</LP_ElementalFocus_Water.label>
+  <!-- 秘银框里封着一滴永不干涸的水。潮汐血脉的元素裔或巨灵佩戴时：水流冷却减半，灭火范围扩大到5×5。其他人佩戴：获得水中行动（浅水、沼泽不减速）。只有潮汐血脉的元素裔能在附魔台制作。 -->
+  <LP_ElementalFocus_Water.description>A drop of never-drying water sealed in a mithril frame. When worn by a tide bloodline genasi or a genie: water stream cooldown halved, fire-quenching area expanded to 5×5. Worn by others: gains movement in water (no slowdown in shallow water and marsh). Only tide bloodline genasi can make it at the enchanting table.</LP_ElementalFocus_Water.description>
+  <!-- 岩石符 -->
+  <LP_ElementalFocus_Earth.label>stone charm</LP_ElementalFocus_Earth.label>
+  <!-- 一块精金打磨的沉重符石。岩石血脉的元素裔或巨灵佩戴时：采矿速度从×130%提高到×160%。其他人佩戴：采矿速度×115%。只有岩石血脉的元素裔能在附魔台制作。 -->
+  <LP_ElementalFocus_Earth.description>A heavy charm stone polished from adamantine. When worn by a stone bloodline genasi or a genie: mining speed raised from ×130% to ×160%. Worn by others: mining speed ×115%. Only stone bloodline genasi can make it at the enchanting table.</LP_ElementalFocus_Earth.description>
+  <!-- 疾风符 -->
+  <LP_ElementalFocus_Air.label>gale charm</LP_ElementalFocus_Air.label>
+  <!-- 秘银环上缠着永远飘动的布条。疾风血脉的元素裔或巨灵佩戴时：风跃冷却减半，移动速度从×110%提高到×120%。其他人佩戴：移动速度×105%。只有疾风血脉的元素裔能在附魔台制作。 -->
+  <LP_ElementalFocus_Air.description>A mithril ring wrapped with ever-fluttering cloth strips. When worn by a gale bloodline genasi or a genie: wind leap cooldown halved, move speed raised from ×110% to ×120%. Worn by others: move speed ×105%. Only gale bloodline genasi can make it at the enchanting table.</LP_ElementalFocus_Air.description>
+  <!-- 寒冰魔尾刺 -->
+  <LP_IceDevilStinger.label>ice devil tail spike</LP_IceDevilStinger.label>
+  <!-- 寒冰魔被遣返九狱时留下的尾刺，摸上去冷得扎手，永远不会融化。黑网和红袍商人都肯收购。 -->
+  <LP_IceDevilStinger.description>The tail spike left behind when an ice devil is banished to the Nine Hells, bitingly cold to the touch and never melting. Black Network and Red Wizard merchants will buy it.</LP_IceDevilStinger.description>
+  <!-- 炎魔之心 -->
+  <LP_BalorHeart.label>balor heart</LP_BalorHeart.label>
+  <!-- 炎魔崩解后留下的心脏，像一块还在跳动的熔岩。黑网和红袍商人都肯出高价收购。（以后可用来锻造火焰舌。） -->
+  <LP_BalorHeart.description>The heart left behind when a balor crumbles, like a still-beating lump of lava. Black Network and Red Wizard merchants will pay a high price for it. (It may later be used to forge a flame tongue.)</LP_BalorHeart.description>
+  <!-- 神灯 -->
+  <LP_WonderLamp.label>genie lamp</LP_WonderLamp.label>
+  <!-- 一盏古旧的黄铜油灯，灯身上刻着看不懂的符文。右键“擦拭神灯”：沉睡的神灯会召出一位巨灵加入殖民地（随机为火、水、土、风之一）；巨灵在外时神灯“有主”；巨灵被击倒或杀死时回到灯里，神灯“暗淡”15天，之后能再擦出同一个巨灵；灯里的巨灵与外界隔绝（不冻伤、不挨饿、不会死），擦出来是满状态；暗淡时选中神灯可花1000白银立刻唤醒。\n\n神灯必须留在你手里：卖掉、被偷或被毁，巨灵一天后就会离去。不能制作；黑网商队必带一盏，红袍商人偶尔也有。 -->
+  <LP_WonderLamp.description>An old brass oil lamp engraved with incomprehensible runes. Right-click "Rub the lamp": a dormant lamp summons a genie to join the colony (randomly fire, water, earth or air); while the genie is out the lamp is "occupied"; when the genie is downed or killed it returns to the lamp and the lamp is "dim" for 15 days, after which the same genie can be rubbed out again; a genie in the lamp is cut off from the world (no frostbite, no hunger, can't die) and comes out at full condition; while dim, select the lamp to spend 1000 silver and wake it at once.\n\nThe lamp must stay in your hands: if sold, stolen or destroyed, the genie leaves a day later. Cannot be crafted; Black Network caravans always carry one, and Red Wizard merchants occasionally have one too.</LP_WonderLamp.description>
+</LanguageData>

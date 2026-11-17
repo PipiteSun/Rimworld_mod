@@ -1,0 +1,419 @@
+s13426	a storm giant seer and two sailors
+s13427	a cloud giant embassy
+s13428	a wandering ettin
+s13429	a cyclops herding sheep
+s13430	a titan and followers
+s13431	Hungry giants
+s13432	 have set up camp outside the colony,\s
+s13433	 in all. They're starving and send someone to beg for food: they want two days' worth, nutrition totaling\s
+s13434	 (giants have big appetites: fire giants, frost giants and other giants ×2, ettins with two mouths ×4, titans ×2.5, ogres ×1.6)
+s13435	, plus raw meat for the winter wolves, nutrition\s
+s13436	Cloud giant nobles are picky: they only accept fine or lavish meals (nutrition counted the same).
+s13437	\n\nGive: food is deducted from stockpiles (
+s13438	only fine and lavish meals
+s13439	pemmican, simple meals and raw meat first
+s13440	),\s
+s13441	their faction
+s13442	, and they'll leave a gift at the camp when they go.\nDon't give: they won't turn hostile, but hungry giants may send someone to steal food at night.\n\nThey'll stay here for a day, then leave from the other side of the map.
+s13443	Gave food to the hungry giants
+s13444	The giants took the food and ate heartily (goodwill +
+s13445	The hungry giants sent\s
+s13446	 people at night to steal food!
+s13447	The giants broke camp and left a thank-you gift at the camp:\s
+s13448	The seer's prophecy
+s13449	 is a storm giant seer. The two sailors with him say he walked all the way from the ocean depths to tell what he saw to those who should hear it. He doesn't ask for food; he only wants to rest outside the colony for a day and say a few words to you.\n\nHear him out: the seer tells the omens he saw in the storm. For the next 30 days, the first hostile raid of ≥1000 points is warned 1 day early (stacks with the Harpers and the storm omen).\nAsk him to stay: if the colony already has other giants and he can have a good place in the ordning too (ordning moods on), there's a 25% chance he stays; otherwise he politely declines and leaves as usual.
+s13450	The seer finished his prophecy: for the next 30 days, you'll be warned a day ahead of the first large raid.
+s13451	 thanks you for your kindness,\s
+s13452	but his road isn't finished yet.
+s13453	but there's no one here who can speak the giant tongue with him and place him in the ordning.
+s13454	He'll leave as usual.
+s13455	A giant who wants to stay
+s13456	 stayed behind when they broke camp, saying\s
+s13457	 ate your food, and\s
+s13458	 wants to live here instead of following the group.\n\nAccept:\s
+s13459	 joins the colony
+s13460	 (the Ember Clan is unhappy about a kinsman being taken: goodwill\s
+s13461	, and the rest continue on.\nRefuse: the whole group leaves as usual, no consequences.
+s13462	That giant has already gone far away.
+s13463	took a kinsman away
+s13464	Giant joins
+s13465	 set down their pack and became a member of the colony.
+s13466	Give them food (nutrition\s
+s13467	, plus raw meat\s
+s13468	Not enough fine or lavish meals in the stockpiles
+s13469	Not enough food in the stockpiles
+s13470	, still short by nutrition\s
+s13471	Not enough raw meat in the stockpiles for the winter wolves, short by nutrition\s
+s13472	Don't give
+s13473	Hear him out
+s13474	Ask him to stay
+s13475	) are crossing this land. They look like they've walked a long way and are badly hungry, planning to camp outside the colony and rest for a day.
+s13476	Only githyanki with the "silver sword heritage" gene can forge silver swords.
+s13477	Already standing here.
+s13478	Beyond astral jump range (8 cells).
+s13479	Can't jump into unexplored places.
+s13480	There's nowhere to stand there.
+s13481	Someone is already there.
+s13482	Already gained from a tome:\s
+s13483	Tome finished:\s
+s13484	 finished reading\s
+s13485	), cap +
+s13486	). The book turned to ash.
+s13487	Already made this wish
+s13488	"Who wants to become stronger?"
+s13489	, which power do you want?" (+1, can exceed the cap by 1)
+s13490	 +1.
+s13491	Melee XP + Mining XP ×0.5
+s13492	Shooting XP
+s13493	damage taken ×100
+s13494	Intellectual XP
+s13495	(Medicine + Animals + Plants XP) ×0.5
+s13496	Social XP
+s13497	 honed a better\s
+s13498	 in real combat (+1, now\s
+s13499	; this one can still be honed\s
+s13500	 times).
+s13501	Combat honing:\s
+s13502	\nWhen full, this one +1 (at most +
+s13503	 per lifetime, not beyond the cap; gained\s
+s13504	). Accumulates in real time.
+s13505	\nIsekai coexistence mode: accumulates as usual, but doesn't add abilities.
+s13506	\n"Combat honing" is turned off in settings.
+s13507	 tome +2
+s13508	 wish +1
+s13509	Growth:\s
+s13510	Ability tome: that ability +2, cap +2 (once per ability per lifetime). Genie "make me stronger": that ability +1, cap +1 (once per person per lifetime).
+s13511	 honing
+s13512	Heritage weapon:\s
+s13513	 acknowledged\s
+s13514	: from today on,\s
+s13515	 is its master.\n\nIt awakens at adventurer level 10 (damage +15%, gains an ability), and ascends when they become a legendary adventurer (another +15%, passive aura).
+s13516	 lost its master and fell back asleep.
+s13517	Harper informant
+s13518	Harper
+s13519	Harper master
+s13520	Lord of the Harpers
+s13521	Friend of the Embers
+s13522	Hearthside guest
+s13523	Iron-oath friend
+s13524	Lord of the forge heart
+s13525	Dark net regular
+s13526	Shadow broker
+s13527	Lord of the dark net
+s13528	Faction reputation:\s
+s13529	The colony's reputation with\s
+s13530	 reached\s
+s13531	), gaining the title "
+s13532	".\n\n
+s13533	That faction's caravans sell to you -5%
+s13534	An intel letter every season
+s13535	Reinforcement request cooldown halved, caravans bring an exclusive item
+s13536	A gift every season (a magic item, 5% chance of an ability tome)
+s13537	Title rewards:\s
+s13538	Gifts
+s13539	Aid
+s13540	Right now no faction harbors hostility toward the colony.
+s13541	The informant says the next attackers will most likely be\s
+s13542	, about\s
+s13543	 points in size (estimated from the colony's current threat points).
+s13544	Intel:\s
+s13545	 (your title: "
+s13546	") sent an intel letter:\n\n
+s13547	 sent a gift:\s
+s13548	After 30 hours of study in total:\s
+s13549	 +2, cap +2 (each ability can only be raised by a tome once per lifetime), and the book turns to ash.\n
+s13550	\nCan't read:\s
+s13551	: read\s
+s13552	 / 30 hours.
+s13553	dormant (ownerless)
+s13554	ascended
+s13555	awakened
+s13556	Dormant: the first person to kill\s
+s13557	 enemies with it becomes its master (current most\s
+s13558	Must hold an awakened heritage weapon.
+s13559	 completed a quest:\s
+s13560	\n\nColony reputation:\s
+s13561	 (title:\s
+s13562	Calculated by the holder
+s13563	Magic factor
+s13564	Magic factor\s
+s13565	[DND Rimlands] Magic factor link error:\s
+s13566	 (psychic sensitivity\s
+s13567	, no psylink ×0.7
+s13568	, magic charge +0.5
+s13569	Staff damage × magic factor. Magic factor = psychic sensitivity (minimum 0.2, uncapped); at 0 sensitivity the staff doesn't respond at all. Holders with a psylink gain neural heat on each cast (mod setting), and can't cast when neural heat is full; without a psylink, damage is only 70%. Targets wearing cold iron armor or with mental resistance take -25% damage.
+s13570	Dwarven firearm damage × magic factor. Magic factor = the larger of 0.5 + 0.5 × psychic sensitivity and psychic sensitivity, uncapped (half damage even at 0 sensitivity, multiplied by sensitivity above 100%); dwarves below 100% count as 100%. Adds no neural heat. Targets wearing cold iron armor or with mental resistance take -25% damage.
+s13571	Magic gun damage × magic factor. Magic factor = psychic sensitivity, minimum 1, uncapped (no damage loss below 100% sensitivity, 200% deals double damage). Adds no neural heat.
+s13572	The staff doesn't respond (psychic sensitivity is 0)
+s13573	Dispelling dust suppresses the magic; the staff can't cast for now
+s13574	Neural heat is full; the staff can't cast
+s13575	[DND Rimlands] Weapon quality link error:\s
+s13576	pierce
+s13577	Only dwarves can master it
+s13578	[DND Rimlands] Failed to sync skyfire descent values:\s
+s13579	Enemies carry magic firearms
+s13580	Rune firearms and attack staves were removed in 1.146.0; this switch has no effect for now.
+s13581	Neural heat per staff shot:\s
+s13582	 (added on each cast for holders with a psylink; can't cast when full)
+s13583	Subdual damage multiplier:\s
+s13584	% (how fast subdual cudgels, net crossbows, sleep shortbows and sleep staves knock targets unconscious)
+s13585	 lost a head!
+s13586	Taking turns on watch: enemies!
+s13587	Left head: go east!
+s13588	Right head: go west!
+s13589	"I saw it first!"
+s13590	"Shut up, it's my turn to talk!"
+s13591	the two heads glare at each other
+s13592	"It's your fault!"
+s13593	Taking turns on watch: ×
+s13594	the two heads are arguing
+s13595	 (cyclops lens)
+s13596	Cyclops craft (smithing): ×
+s13597	+1 ability score improvement
+s13598	; a spark of heroic potential burst out in desperation, but\s
+s13599	 already has heroic potential, so instead legend attribute points +
+s13600	; in desperation,\s
+s13601	 awakened heroic potential!
+s13602	 (power traits full; replaced\s
+s13603	legend attribute points +
+s13604	+1 ability score improvement (after becoming a legendary adventurer, this deed is worth\s
+s13605	 legend attribute points)
+s13606	 (no adventurer level, no point reward)
+s13607	Legendary deed:\s
+s13608	, becoming\s
+s13609	\n\nReward:\s
+s13610	; 1 miracle fragment
+s13611	 took part in killing\s
+s13612	 downed giant number\s
+s13613	 in melee (
+s13614	 defeated the shadow king Larloch
+s13615	Nemesis bane:\s
+s13616	 has killed\s
+s13617	 favored enemies (
+s13618	) and became a "nemesis bane": damage against favored enemies +40%, immune to stuns and control from favored enemies.
+s13619	 withstood\s
+s13620	 psychic blasts
+s13621	 broke free of mind flayer domination
+s13622	 came back from the underworld
+s13623	 destroyed\s
+s13624	's phylactery
+s13625	 held out alone to the end of a raid
+s13626	 defended raid number\s
+s13627	\s
+s13628	manifested
+s13629	kill a chromatic dragon or a force dragonborn leader
+s13630	kill a giant leader
+s13631	defeat the shadow king Larloch
+s13632	defeat a nemesis champion
+s13633	a demigod appears in the colony
+s13634	personally defend 10 raids
+s13635	Only when {0} will fate let {1} go.
+s13636	(not yet spoken)
+s13637	Fate unfinished
+s13638	 should have died, but the prophecy hasn't been fulfilled yet: fate unfinished kept them alive on the ground (wounds have stopped bleeding).
+s13639	Prophecy fulfilled:\s
+s13640	's destiny ascended (
+s13641	 → ascended): gained adventurer XP\s
+s13642	 at once (all that the next level needs), whole colony mood +8 "prophecy fulfilled" (10 days).\n\nFate unfinished became master of fate: once per day, the next attack always hits and deals ×2 damage.
+s13643	became a demigod
+s13644	's destiny "
+s13645	" moved from\s
+s13646	 to\s
+s13647	Fate unfinished cooldown shortened to\s
+s13648	 days; when they're downed, allies within 5 cells get "for the child of prophecy" hit +10% (1 hour).
+s13649	Eldritch blast hits set targets on fire.
+s13650	When hit, 20% chance to beguile the attacker for 3 seconds.
+s13651	Eldritch blast hits stun the target for 1 second (once per 10 seconds per target).
+s13652	Fire damage -50%; new ability "hurl through hell" (once per day).
+s13653	New ability "fey charm" (once per day).
+s13654	New ability "otherworldly tendrils" (once per day).
+s13655	Each cast has a 15% chance of no cooldown.
+s13656	Staff range +3.
+s13657	New ability "weave surge" (once per day; for 60 seconds, casts cost no neural heat and trigger no cooldown); weave tremors and weave collapse no longer affect\s
+s13658	's casting.
+s13659	Path to godhood progress ×1.5,\s
+s13660	's domain miracle cooldowns -25%.
+s13661	Divine intervention: when 3 or more colonists on the same map are downed,\s
+s13662	 sends a miracle (once per season):\s
+s13663	charm
+s13664	, and factions worshipping\s
+s13665	\s
+s13666	Morning radiance (everyone's wounds healed, bleeding stopped)
+s13667	Sword of justice (everyone's melee damage +50% for 30 seconds)
+s13668	Weave severed (interrupts enemy casting, all enemies stunned for 5 seconds)
+s13669	Death halted (the downed stop bleeding, no more bleeding for 1 day)
+s13670	Beast lord's roar (enemies flee in panic for 10 seconds)
+s13671	Thunder's wrath (up to 6 lightning bolts, 30 damage each)
+s13672	Tyrant's presence (enemies frightened for 1 hour)
+s13673	Veil of night (colonists invisible for 30 seconds)
+s13674	Forge's fury (enemies catch fire and take 20 fire damage)
+s13675	Beast lord's roar
+s13676	Divine intervention:\s
+s13677	The colony is about to collapse:\s
+s13678	 didn't abandon their champion\s
+s13679	.\n\nThe next divine intervention must wait a season (15 days).
+s13680	an archdevil of the Nine Hells
+s13681	the fey queen
+s13682	a nameless being beyond the Astral
+s13683	Execute a prisoner within 3 days, or hand over\s
+s13684	Hold a party or wedding within 3 days, or hand over an art piece of excellent quality or better
+s13685	Meditate personally for 8 hours within 3 days, or study a Netherese scroll for 1 hour
+s13686	The patron hasn't made a demand yet.
+s13687	Next pact payment: about\s
+s13688	Current demand:\s
+s13689	; meditated\s
+s13690	 hours, studied\s
+s13691	Pact payment demanded
+s13692	's patron\s
+s13693	 sent word: it's time to pay the pact.\n\nDemand:\s
+s13694	\n\nHand over things with the button below (deducted directly from the map).
+s13695	\n\nIf not done: patron's wrath for 10 days (eldritch blast unusable, mood -10); failing twice in a row lowers the destiny one stage (failing again at the awakened stage voids the pact, "forsaken pact" mood -15).
+s13696	No demand that can be delivered
+s13697	Less than this much silver on the map:\s
+s13698	No art of excellent quality or better on the map
+s13699	This one must be done in person
+s13700	 paid the pact.
+s13701	The patron's anger has passed: the destiny can rise again.
+s13702	Patron's wrath:\s
+s13703	 failed to pay\s
+s13704	's pact. Patron's wrath for 10 days: eldritch blast unusable, mood -10.\n\nOne more failure and the destiny drops a stage.
+s13705	Pact demoted:\s
+s13706	 failed twice in a row to pay\s
+s13707	's pact: destiny dropped from\s
+s13708	 to\s
+s13709	. It only rises again after the next successful payment.
+s13710	Forsaken pact:\s
+s13711	 abandoned\s
+s13712	: the pact traits and eldritch blast are gone. Mood -15 "forsaken pact" (15 days).
+s13713	Patron's wrath: eldritch blast unusable for now.
+s13714	Master of fate is charged, waiting for the next attack.
+s13715	Eldritch blast ×
+s13716	Hand over\s
+s13717	Hand over an art piece of excellent quality or better
+s13718	 delivered the pact payment.
+s13719	dragons
+s13720	fiends
+s13721	aberrations
+s13722	enemy faction
+s13723	ice
+s13724	thunder
+s13725	acid
+s13726	old ones
+s13727	Talent ×1.5
+s13728	Paragon ×2.5
+s13729	Contrarian: weakness counts as ×1
+s13730	Heroic potential ×
+s13731	Legendary deed at least ×
+s13732	Paragon ×2
+s13733	, trait\s
+s13734	 (demoted by the patron; rises again after the next successful payment)
+s13735	\nProphecy:\s
+s13736	 (fulfilled)
+s13737	 (defended\s
+s13738	\nFate unfinished:\s
+s13739	\nPatron:\s
+s13740	\nConsecutive failures\s
+s13741	 (2 means demotion)
+s13742	Enemy faction:\s
+s13743	(no hostile faction to record)
+s13744	Favored enemies killed\s
+s13745	: nemesis bane
+s13746	Giants killed with melee participation:\s
+s13747	\nServing:\s
+s13748	; hostile target:\s
+s13749	\nDivine intervention:\s
+s13750	[DND Rimlands] Destiny cycle error:\s
+s13751	Rarity:\s
+s13752	>curse</color> <color=
+s13753	>deed</color>
+s13754	Trait name colors follow rarity: common (white), uncommon (green), rare (blue), epic (purple), legendary (orange), mythic (gold); curse powers are red and legendary deeds cyan, with their tier written on the first line of the hover text.
+s13755	DND power traits
+s13756	(1.58.0) Newly generated people have a small chance to carry a power trait: heroic potential line and destinies (heroic potential and paragon are legendary, the four destinies mythic), point and enhancement talents (talent, adamant body, keen edge, aura, legendary seed and six enhancement talents are rare; contrarian and diligent epic); the four 1.51.0 rare talents (epic) also join this roll. After gaining one, each further roll at the "extra power trait" success chance gives another, until a failure or the cap (destinies, rare talents and curses are still mutually exclusive among themselves); legendary deeds (cyan) are granted by events and take no slot.\nFirst one: common races heroic potential line and destinies 1% / point and enhancement talents 4%, middle 0.4% / 3%, legendary races 0.2% / 1%; four rare talents 2% (not for legendary races).\nWhen off, no new ones generate; existing ones are kept.
+s13757	Power trait frequency:\s
+s13758	Max power traits per person:\s
+s13759	Extra power trait success chance:\s
+s13760	(1.58.1) Every humanlike over 13 gets 1 origin feat for free when gaining adventurer levels (not using an ability score improvement): those with background traits by background (acolyte, sage → Magic Initiate; criminal, soldier → Alert; folk hero → Tavern Brawler; noble → Skill Expert; hermit → Healer; outlander → Lucky), otherwise by the skill boosted most by their backstories; 5% get Lucky instead. Old saves get one on loading. Enemies have them too. When off, no more are granted; existing ones are kept.
+s13761	Combat honing
+s13762	(1.58.3) Colonists slowly hone abilities through combat and work: every 2500 ticks, accumulated by XP difference (Strength ← Melee + Mining ×0.5, Dexterity ← Shooting, Constitution ← damage taken ×100, Intelligence ← Intellectual, Wisdom ← (Medicine + Animals + Plants) ×0.5, Charisma ← Social); at 120000 that ability +1, at most +2 per ability per lifetime, not beyond the cap. In Isekai coexistence mode it accumulates as usual but is only displayed.
+s13763	Faction reputation
+s13764	(1.58.3) The Faerûn Frontier Alliance, the Ember Clan and the dark net each have colony reputation 0-50: completing their quests +3, +1 per 20 goodwill of gifts, killing enemies while their people are present +2 (once per day); it never drops, and freezes while hostile. Titles at 3 / 10 / 25 / 50: caravan prices -5% → seasonal intel letter → reinforcement cooldown halved, caravans bring an exclusive item → a gift each season.
+s13765	Enemies carry power traits
+s13766	Story bosses and nemesis champions have a 50% chance to carry a power trait (human bosses prefer the heroic potential line and destinies), and nemesis champions another 30% for a legendary deed; raid leaders 10% for a point or enhancement talent. When off, hostile faction members no longer randomly carry power traits either.
+s13767	Master of fate!
+s13768	Knocked prone!
+s13769	beguiled
+s13770	[DND Rimlands] Duelist riposte failed:\s
+s13771	Riposte!
+s13772	recognized a favored enemy:\s
+s13773	mind fortress
+s13774	spell antibodies
+s13775	[DND Rimlands] Power trait kill handling error:\s
+s13776	Indomitable
+s13777	 should have died but held on once more: indomitable kept them alive on the ground (wounds have stopped bleeding). It can take effect again in 10 days.
+s13778	Misfortune transferred
+s13779	unlucky again
+s13780	 inexplicably broke a big chunk
+s13781	The hellfire brand on their chest burns again: the devil has come to collect.
+s13782	[DND Rimlands] New power traits 2500-tick error:\s
+s13783	Ideology DLC not enabled
+s13784	Ideology integration
+s13785	Passives of DND memes, moods of DND precepts, certainty drift, conversion modifiers, patron deity lock, and deity statue effects. When off, all of these are disabled (memes and precepts still load, and saves won't error); memes added to factions are kept.
+s13786	Weight of DND memes in random NPC ideoligions:\s
+s13787	 (0-1; the two NPC-only memes of Ilsensine and Vlaakith never appear randomly)
+s13788	Favor affects certainty
+s13789	Colonists of a primary ideoligion with a deity meme (or a pantheon) change certainty each day by the patron's favor: ≥80 +1%, ≥50 +0.5%, ≤-30 -1%; seasonal blessing +5%, punishment -5%; chosen ritual +3%.
+s13790	Ideoligion locks patron deity
+s13791	When the primary ideoligion has a deity meme, the colony's patron deity is that god and can't be changed by hand at the altar; when a reformed ideoligion changes god, the colony switches automatically (the old god only loses 15 favor, no cooldown).
+s13792	Rebuild DND faction ideoligions
+s13793	Rebuild DND faction ideoligions (must be in a game)
+s13794	For DND factions missing DND memes (Faerûn Frontier Alliance, Thayan expedition, Ember Clan, Underdark Hive, witch-hunting zealots, Larloch, Church of Kelemvor), generate a new ideoligion from the faction definition and set it as primary. The old ideoligion is kept: existing NPCs still follow it, and people appearing later use the new one.\n\nFor saves from before 1.56.0. Continue?
+s13795	The patron deity is decided by the ideoligion "
+s13796	" (
+s13797	Fulfilled the oracle's instruction
+s13798	 answered with satisfaction: the oracle's instruction is fulfilled (favor +5).
+s13799	deity statue in the home
+s13800	enshrined in the reliquary
+s13801	[DND Rimlands] Ideoligion daily tick error:\s
+s13802	[DND Rimlands] Ideoligion history event\s
+s13803	[DND Rimlands] Ideoligion sync error:\s
+s13804	The colony formally converts to\s
+s13805	The colony's primary ideoligion "
+s13806	" worships\s
+s13807	, so the colony's patron deity is set to\s
+s13808	's favor -15 (ideoligion conversion, no cooldown).
+s13809	high priest
+s13810	[DND Rimlands] Failed to turn relic into divine relic:\s
+s13811	[DND Rimlands] Rebuilding the ideoligion of\s
+s13812	 failed:\s
+s13813	All DND factions' primary ideoligions already have the proper DND memes; no rebuild needed.
+s13814	Rebuilt the ideoligions of these factions:\n\n
+s13815	\n\nThe old ideoligions are kept: existing NPCs still follow them, and people appearing later use the new ones.
+s13816	[DND Rimlands] Ideoligion patch failed:\s
+s13817	[DND Rimlands] Ideoligion patch can't find\s
+s13818	; skipping this entry.
+s13819	[DND Rimlands] Ideoligion god name:\s
+s13820	missed\s
+s13821	[DND Rimlands] Convert trait:\s
+s13822	[DND Rimlands] Ideoligion post-generation:\s
+s13823	[DND Rimlands] Newborn ideoligion:\s
+s13824	[DND Rimlands] Child ideoligion fill-in:\s
+s13825	relic
+s13826	lost
+s13827	[DND Rimlands] Ideoligion kill hook:\s
+s13828	Light of the Morninglord (early morning) ×1.05
+s13829	Lady of the Night (night) ×1.08
+s13830	Forge giant (smithing) ×1.1
+s13831	Forge fire (smithing) ×1.25
+s13832	Lord of Darkness ×0.7
+s13833	Giant ordning ×1.1
+s13834	The unbowed +5%
+s13835	Ideoligion:\s
+s13836	Must be held at the colony's altar.
+s13837	Needs an animal corpse of body size ≥0.7 within 3 cells of the altar (the great hunt's offering).
+s13838	Needs weapons or armor worth ≥300 in total within 3 cells of the altar (the forge fire's offering).
+s13839	[DND Rimlands] Festival tick error:\s
+s13840	[DND Rimlands] Grey robe funeral tick error:\s
+s13841	The offering was given to\s
+s13842	This year is Shieldmeet: favor ×1.5.
+s13843	Festival:\s
+s13844	's favor\s

@@ -33,19 +33,19 @@ namespace LichPhylactery {
    var t=target.Thing as Pawn;var th=target.Thing;
    switch(e.effect){
     case "WS_FireBolt":case "WS_RayOfFrost":case "WS_ShockingGrasp":case "WS_PoisonSpray":case "WS_ScorchingRay":case "WS_MindSpike":case "WS_VampiricTouch":
-     if(t==null || t.Dead)return "需要选择一个活着的目标。";if(!t.HostileTo(caster))return "只能对敌人使用。";return null;
+     if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();if(!t.HostileTo(caster))return "只能对敌人使用。".Loc();return null;
     case "WS_HoldPerson":
-     if(t==null || t.Dead)return "需要选择一个活着的目标。";if(!t.HostileTo(caster))return "只能对敌人使用。";if(!t.RaceProps.Humanlike)return "只能对人形使用。";return null;
+     if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();if(!t.HostileTo(caster))return "只能对敌人使用。".Loc();if(!t.RaceProps.Humanlike)return "只能对人形使用。".Loc();return null;
     case "WS_Enhance":case "WS_ProtEnergy":
-     if(t==null || t.Dead)return "需要选择一个活着的目标。";if(t.HostileTo(caster))return "只能对友军使用。";return null;
-    case "WS_DispelMagic":if(t==null || t.Dead)return "需要选择一个活着的目标。";return null;
+     if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();if(t.HostileTo(caster))return "只能对友军使用。".Loc();return null;
+    case "WS_DispelMagic":if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();return null;
     case "WS_Mending":
-     if(th==null || th is Pawn)return "需要选择一件物品或建筑。";if(!th.def.useHitPoints || th.HitPoints>=th.MaxHitPoints)return "它没有损坏。";return null;
+     if(th==null || th is Pawn)return "需要选择一件物品或建筑。".Loc();if(!th.def.useHitPoints || th.HitPoints>=th.MaxHitPoints)return "它没有损坏。".Loc();return null;
     case "WS_MageHand":
-     if(th==null || th.def.category!=ThingCategory.Item)return "需要选择一件物品。";if(th.GetStatValue(StatDefOf.Mass)*th.stackCount>10.01f)return "太重了（超过 10 千克）。";
-     if(th.Position.AdjacentTo8WayOrInside(caster.Position))return "已经在身边了。";return null;
+     if(th==null || th.def.category!=ThingCategory.Item)return "需要选择一件物品。".Loc();if(th.GetStatValue(StatDefOf.Mass)*th.stackCount>10.01f)return "太重了（超过 10 千克）。".Loc();
+     if(th.Position.AdjacentTo8WayOrInside(caster.Position))return "已经在身边了。".Loc();return null;
     case "WS_ArcaneLock":
-     if(!(th is Building_Door d))return "只能锁门。";if(WizardLocks.Locked(d))return "这扇门已经锁上了。";return null;
+     if(!(th is Building_Door d))return "只能锁门。".Loc();if(WizardLocks.Locked(d))return "这扇门已经锁上了。".Loc();return null;
     case "WS_Knock":return KnockCannot(caster,th);
     case "WS_AnimateDead":return AnimateCannot(th as Corpse);
     case "WS_SpeakWithDead":return SpeakCannot(caster,th as Corpse);
@@ -63,35 +63,35 @@ namespace LichPhylactery {
    switch(e.effect){
     // 戏法
     case "WS_FireBolt":if(!Hostile(p,t))return true;Hit(p,t,DamageDefOf.Flame,pw,.2f);if(!t.Dead && Rand.Chance(.3f))t.TryAttachFire(.3f,p);Glow(t,true);return true;
-    case "WS_RayOfFrost":if(!Hostile(p,t))return true;Hit(p,t,Frost,pw,.2f);if(!t.Dead)Items.Give(t,"LP_WS_Chilled",dur,1f);Items.Mote(t,"冷冻",new Color(.6f,.8f,1f));return true;
+    case "WS_RayOfFrost":if(!Hostile(p,t))return true;Hit(p,t,Frost,pw,.2f);if(!t.Dead)Items.Give(t,"LP_WS_Chilled",dur,1f);Items.Mote(t,"冷冻".Loc(),new Color(.6f,.8f,1f));return true;
     case "WS_ShockingGrasp":
      if(!Hostile(p,t))return true;
      if(t.RaceProps.IsMechanoid){Hit(p,t,DamageDefOf.EMP,pw,.5f);if(!t.Dead)t.stances?.stunner?.StunFor(60,p);}else Hit(p,t,ClassCasters.Lightning??DamageDefOf.Burn,pw,.5f);
      Glow(t,false);return true;
     case "WS_PoisonSpray":if(!Hostile(p,t))return true;Hit(p,t,DefCache<DamageDef>.Get("LP_WS_Poison")??DamageDefOf.Burn,pw,.3f);if(t.Map!=null)FleckMaker.ThrowDustPuffThick(t.DrawPos,t.Map,1.5f,new Color(.5f,.8f,.3f));return true;
-    case "WS_Mending":Mend(target.Thing,pw);Items.Mote(p,"修复术",Arcane);return true;
+    case "WS_Mending":Mend(target.Thing,pw);Items.Mote(p,"修复术".Loc(),Arcane);return true;
     case "WS_Prestidigitation":Prestidigitation(p,target,e.radius);return true;
     case "WS_Light":{var orb=Subclass3.LightOrb(p,cell);var life=orb?.TryGetComp<CompLifespan>();if(life!=null)life.age=Mathf.Max(0,life.Props.lifespanTicks-dur);return true;}
     case "WS_MageHand":MageHand(p,target.Thing);return true;
     // 1 环
-    case "WS_FogCloud":if(map!=null && cell.InBounds(map))GasUtility.AddGas(cell,map,GasType.BlindSmoke,e.radius+up);Items.Mote(p,"云雾术",Arcane);return true;
+    case "WS_FogCloud":if(map!=null && cell.InBounds(map))GasUtility.AddGas(cell,map,GasType.BlindSmoke,e.radius+up);Items.Mote(p,"云雾术".Loc(),Arcane);return true;
     case "WS_Grease":SpellZone.Make(p,cell,"Grease",rad,dur);return true;
     case "WS_Thunderwave":Thunderwave(p,rad,pw);return true;
     case "WS_FindFamiliar":Familiars.Summon(p);return true;
-    case "WS_Alarm":SpellZone.Make(p,p.Position,"Alarm",rad,dur);Items.Mote(p,"警报术",Arcane);return true;
+    case "WS_Alarm":SpellZone.Make(p,p.Position,"Alarm",rad,dur);Items.Mote(p,"警报术".Loc(),Arcane);return true;
     case "WS_DetectMagic":Items.Give(p,"LP_WS_DetectMagic",dur,1f);Hediff_WS.Reveal(p,e.radius);DetectLetter(p);return true;
     // 2 环
     case "WS_ScorchingRay":if(Hostile(p,t))ScorchingRay(p,t,3+up,pw);return true;
     case "WS_Shatter":Shatter(p,cell,rad,pw);return true;
     case "WS_Web":SpellZone.Make(p,cell,"Web",rad,dur);return true;
     case "WS_HoldPerson":if(Hostile(p,t))HoldPerson(p,t,1+up,dur);return true;
-    case "WS_Darkness":if(cell.IsValid)Warlock.Darkness(p,cell,rad,dur);Items.Mote(p,"黑暗术",Arcane);return true;
-    case "WS_MindSpike":if(!Hostile(p,t))return true;Hit(p,t,DefCache<DamageDef>.Get("LP_WS_Psychic")??DamageDefOf.Burn,pw,1f);if(!t.Dead){Items.Give(t,"LP_WS_MindSpiked",dur,1f);Hediff_WS.Uncloak(t);}Items.Mote(t,"心灵尖刺",Arcane);return true;
+    case "WS_Darkness":if(cell.IsValid)Warlock.Darkness(p,cell,rad,dur);Items.Mote(p,"黑暗术".Loc(),Arcane);return true;
+    case "WS_MindSpike":if(!Hostile(p,t))return true;Hit(p,t,DefCache<DamageDef>.Get("LP_WS_Psychic")??DamageDefOf.Burn,pw,1f);if(!t.Dead){Items.Give(t,"LP_WS_MindSpiked",dur,1f);Hediff_WS.Uncloak(t);}Items.Mote(t,"心灵尖刺".Loc(),Arcane);return true;
     case "WS_Enhance":if(Friendly(p,t))Enhance(p,t,dur);return true;
-    case "WS_ArcaneLock":if(target.Thing is Building_Door door){WizardLocks.Lock(door);Items.Mote(door,"秘法锁",Arcane);}return true;
+    case "WS_ArcaneLock":if(target.Thing is Building_Door door){WizardLocks.Lock(door);Items.Mote(door,"秘法锁".Loc(),Arcane);}return true;
     case "WS_Knock":Knock(p,target.Thing);return true;
     // 3 环
-    case "WS_DispelMagic":if(t!=null && !t.Dead){int n=Dispel(p,t);Items.Mote(t,n>0?"解除魔法 ×"+n:"没有可以解除的魔法",Arcane);}return true;
+    case "WS_DispelMagic":if(t!=null && !t.Dead){int n=Dispel(p,t);Items.Mote(t,n>0?"解除魔法 ×".Loc()+n:"没有可以解除的魔法".Loc(),Arcane);}return true;
     case "WS_Fear":Fear(p,cell,e.range>0?e.range:8f,dur);return true;
     case "WS_Slow":Slow(p,def,cell,rad,dur);return true;
     case "WS_StinkingCloud":SpellZone.Make(p,cell,"Stink",rad,dur);return true;
@@ -103,7 +103,7 @@ namespace LichPhylactery {
     case "WS_Sending":Sending(p);return true;
    }
    if(WizardSpells2.Apply(p,def,e,target))return true; // 1.129.0 4～9 环
-   Log.ErrorOnce("[DND边缘大陆] 未知的法师法术效果："+e.effect,e.effect.GetHashCode());
+   Log.ErrorOnce("[DND边缘大陆] 未知的法师法术效果：".Loc()+e.effect,e.effect.GetHashCode());
    return true;
   }
 
@@ -127,13 +127,13 @@ namespace LichPhylactery {
    var meals=(target.Thing!=null?new List<Thing>{target.Thing}:new List<Thing>()).Concat(c.InBounds(map)?c.GetThingList(map):new List<Thing>()).Distinct();
    foreach(var m in meals){var rot=m.TryGetComp<CompRottable>();if(rot!=null && m.def.IsIngestible && m.def.ingestible.IsMeal){rot.RotProgress=0f;n++;}}
    if(c.InBounds(map))FleckMaker.ThrowDustPuffThick(c.ToVector3Shifted(),map,2f,new Color(1f,.95f,.7f));
-   Items.Mote(p,"奇术手法",Arcane);return n;
+   Items.Mote(p,"奇术手法".Loc(),Arcane);return n;
   }
   public static bool MageHand(Pawn p,Thing t){
    if(t==null || !t.Spawned || p.Map==null || t.Map!=p.Map)return false;
    var map=p.Map;FleckMaker.ThrowDustPuffThick(t.DrawPos,map,1f,Arcane);
    t.DeSpawn();if(!GenPlace.TryPlaceThing(t,p.Position,map,ThingPlaceMode.Near)){GenSpawn.Spawn(t,p.Position,map);}
-   Items.Mote(p,"法师之手",Arcane);return true;
+   Items.Mote(p,"法师之手".Loc(),Arcane);return true;
   }
   public static int Thunderwave(Pawn p,float radius,float amount){
    var map=p.Map;if(map==null)return 0;int n=0;
@@ -141,7 +141,7 @@ namespace LichPhylactery {
     if(!Hostile(p,t))continue;Hit(p,t,DamageDefOf.Blunt,amount,.2f);n++;
     if(!t.Dead && t.Spawned)DNDPush.Move(t,DNDPush.Destination(map,t.Position,(t.Position-p.Position).ToVector3(),2));
    }
-   FleckMaker.ThrowDustPuffThick(p.DrawPos,map,radius,new Color(.75f,.8f,1f));Items.Mote(p,"雷鸣波",Arcane);return n;
+   FleckMaker.ThrowDustPuffThick(p.DrawPos,map,radius,new Color(.75f,.8f,1f));Items.Mote(p,"雷鸣波".Loc(),Arcane);return n;
   }
   public static int ScorchingRay(Pawn p,Pawn t,int rays,float amount){
    var list=new List<Pawn>{t};list.AddRange(Near(t.Map,t.Position,5f).Where(x=>x!=t && Hostile(p,x) && !x.Downed).OrderBy(x=>x.Position.DistanceToSquared(t.Position)));
@@ -150,7 +150,7 @@ namespace LichPhylactery {
     var v=list[i%list.Count];if(v.Dead || !v.Spawned)v=list.FirstOrDefault(x=>!x.Dead && x.Spawned);if(v==null)break;
     Hit(p,v,DamageDefOf.Flame,amount,.2f);Glow(v,true);hits++;
    }
-   Items.Mote(p,"灼热射线 ×"+hits,Arcane);return hits;
+   Items.Mote(p,"灼热射线 ×".Loc()+hits,Arcane);return hits;
   }
   static bool Solid(Pawn t)=>t.RaceProps.IsMechanoid || !t.RaceProps.IsFlesh;
   public static int Shatter(Pawn p,IntVec3 c,float radius,float amount){
@@ -164,36 +164,36 @@ namespace LichPhylactery {
    return n;
   }
   public static bool TryControl(Pawn p,Pawn t,float baseChance,bool mind){
-   if(mind && Items.Has(t,"LP_WS_MindBlank")){Items.Mote(t,"心灵屏障",Arcane);return false;} // 1.129.0
-   if(mind && DNDMind.TryResist(t)){Items.Mote(t,"抵抗了",Arcane);return false;}
-   if(Roll>=Chance(baseChance,p,t)){Items.Mote(t,"挣脱了",Arcane);return false;}
+   if(mind && Items.Has(t,"LP_WS_MindBlank")){Items.Mote(t,"心灵屏障".Loc(),Arcane);return false;} // 1.129.0
+   if(mind && DNDMind.TryResist(t)){Items.Mote(t,"抵抗了".Loc(),Arcane);return false;}
+   if(Roll>=Chance(baseChance,p,t)){Items.Mote(t,"挣脱了".Loc(),Arcane);return false;}
    return true;
   }
   public static int HoldPerson(Pawn p,Pawn t,int count,int ticks){
    var list=new List<Pawn>{t};list.AddRange(Near(t.Map,t.Position,6f).Where(x=>x!=t && Hostile(p,x) && x.RaceProps.Humanlike && !x.Downed).OrderBy(x=>x.Position.DistanceToSquared(t.Position)).Take(count-1));
-   int n=0;foreach(var x in list){if(!TryControl(p,x,.55f,true))continue;x.stances?.stunner?.StunFor(ticks,p);Items.Mote(x,"定身",Arcane);n++;}
+   int n=0;foreach(var x in list){if(!TryControl(p,x,.55f,true))continue;x.stances?.stunner?.StunFor(ticks,p);Items.Mote(x,"定身".Loc(),Arcane);n++;}
    return n;
   }
   // 增强属性：先给力量（窗口里改选别的）。
   public static readonly string[] EnhanceHediffs={"LP_WS_Enhance_Str","LP_WS_Enhance_Dex","LP_WS_Enhance_Int","LP_WS_Enhance_Cha"};
-  static readonly string[] EnhanceLabels={"力量：负重 ×1.5、采矿 ×1.3","敏捷：近战闪避 +10","智力：研究 ×1.2","魅力：社交影响 ×1.2"};
-  public static void SetEnhance(Pawn t,int k,int ticks){foreach(var n in EnhanceHediffs)Items.Remove(t,n);Items.Give(t,EnhanceHediffs[Mathf.Clamp(k,0,3)],ticks,1f);Items.Mote(t,"增强属性",Arcane);}
+  static readonly string[] EnhanceLabels={"力量：负重 ×1.5、采矿 ×1.3".Loc(),"敏捷：近战闪避 +10".Loc(),"智力：研究 ×1.2".Loc(),"魅力：社交影响 ×1.2".Loc()};
+  public static void SetEnhance(Pawn t,int k,int ticks){foreach(var n in EnhanceHediffs)Items.Remove(t,n);Items.Give(t,EnhanceHediffs[Mathf.Clamp(k,0,3)],ticks,1f);Items.Mote(t,"增强属性".Loc(),Arcane);}
   static void Enhance(Pawn p,Pawn t,int ticks){
    SetEnhance(t,0,ticks);if(!Spellbook.Player(p) || Adventurer.TestSuppressed)return;
-   Find.WindowStack.Add(new Dialog_SpellChoice("增强属性："+t.LabelShort,"选一项属性，持续 1 小时。",Enumerable.Range(0,4).Select(i=>(EnhanceLabels[i],(string)null,(Action)(()=>SetEnhance(t,i,ticks)))).ToList()));
+   Find.WindowStack.Add(new Dialog_SpellChoice("增强属性：".Loc()+t.LabelShort,"选一项属性，持续 1 小时。".Loc(),Enumerable.Range(0,4).Select(i=>(EnhanceLabels[i],(string)null,(Action)(()=>SetEnhance(t,i,ticks)))).ToList()));
   }
   // 敲击术：打开古代容器 / 休眠舱，立刻破解，或震碎别人的门。
   public static string KnockCannot(Pawn p,Thing t){
-   if(t==null)return "需要选择一个容器、门或能破解的东西。";
-   if(t is Building_Casket c)return c.HasAnyContents?null:"里面是空的。";
-   var hk=t.TryGetComp<CompHackable>();if(hk!=null)return hk.IsHacked?"已经破解过了。":null;
-   if(t is Building_Door d)return d.Faction==p.Faction?"不用敲自己的门。":null;
-   return "只能对密封容器、门或需要破解的东西使用。";
+   if(t==null)return "需要选择一个容器、门或能破解的东西。".Loc();
+   if(t is Building_Casket c)return c.HasAnyContents?null:"里面是空的。".Loc();
+   var hk=t.TryGetComp<CompHackable>();if(hk!=null)return hk.IsHacked?"已经破解过了。".Loc():null;
+   if(t is Building_Door d)return d.Faction==p.Faction?"不用敲自己的门。".Loc():null;
+   return "只能对密封容器、门或需要破解的东西使用。".Loc();
   }
   public static string Knock(Pawn p,Thing t){
    if(KnockCannot(p,t)!=null)return null;
-   if(t is Building_Casket c){c.Open();Items.Mote(c,"敲击术：打开",Arcane);return "open";}
-   var hk=t.TryGetComp<CompHackable>();if(hk!=null){hk.Hack(999999f,p);Items.Mote(t,"敲击术：破解",Arcane);return "hack";}
+   if(t is Building_Casket c){c.Open();Items.Mote(c,"敲击术：打开".Loc(),Arcane);return "open";}
+   var hk=t.TryGetComp<CompHackable>();if(hk!=null){hk.Hack(999999f,p);Items.Mote(t,"敲击术：破解".Loc(),Arcane);return "hack";}
    if(t is Building_Door d){var map=d.Map;var pos=d.Position;d.Destroy(DestroyMode.KillFinalize);if(map!=null)FleckMaker.ThrowDustPuffThick(pos.ToVector3Shifted(),map,2f,Arcane);return "door";}
    return null;
   }
@@ -215,28 +215,28 @@ namespace LichPhylactery {
   public static int Fear(Pawn p,IntVec3 toward,float range,int ticks){
    int n=0;foreach(var t in ClassLegendary.Cone(p,toward,range)){
     if(!t.RaceProps.Humanlike || t.Downed || t.mindState?.mentalStateHandler==null || !TryControl(p,t,.55f,true))continue;
-    if(t.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.PanicFlee,"恐惧术",true,true)){if(t.MentalState!=null)t.MentalState.forceRecoverAfterTicks=ticks;Items.Mote(t,"恐惧",Arcane);n++;}
+    if(t.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.PanicFlee,"恐惧术".Loc(),true,true)){if(t.MentalState!=null)t.MentalState.forceRecoverAfterTicks=ticks;Items.Mote(t,"恐惧".Loc(),Arcane);n++;}
    }
-   Items.Mote(p,"恐惧术",Arcane);return n;
+   Items.Mote(p,"恐惧术".Loc(),Arcane);return n;
   }
   public const int SlowMax=6;
   public static List<Pawn> Slow(Pawn p,AbilityDef def,IntVec3 c,float radius,int ticks){
    var got=new List<Pawn>();if(p.Map==null || !c.IsValid)return got;
    foreach(var t in Near(p.Map,c,radius).Where(x=>Hostile(p,x)).OrderBy(x=>x.Position.DistanceToSquared(c)).Take(SlowMax).ToList()){
-    if(!TryControl(p,t,.6f,false))continue;Items.Give(t,"LP_WS_Slowed",ticks,1f);Items.Mote(t,"缓慢",Arcane);got.Add(t);
+    if(!TryControl(p,t,.6f,false))continue;Items.Give(t,"LP_WS_Slowed",ticks,1f);Items.Mote(t,"缓慢".Loc(),Arcane);got.Add(t);
    }
    if(got.Count>0)Spellbook.Concentrate(p,def,got,"LP_WS_Slowed");
    return got;
   }
   public static float VampiricTouch(Pawn p,AbilityDef def,Pawn t,float amount,int ticks){
    float dealt=Hit(p,t,Necrotic,amount,.3f);float healed=ClassMelee.Heal(p,dealt*.5f);
-   Items.Mote(p,"吸血 "+healed.ToString("0"),new Color(.55f,.8f,.55f));
+   Items.Mote(p,"吸血 ".Loc()+healed.ToString("0"),new Color(.55f,.8f,.55f));
    if(!Items.Has(p,"LP_WS_VampiricTouch")){Items.Give(p,"LP_WS_VampiricTouch",ticks,1f);Spellbook.Concentrate(p,def,new[]{p},"LP_WS_VampiricTouch");}
    return dealt;
   }
   public static string AnimateCannot(Corpse c){
-   if(c==null || c.Destroyed)return "需要选择一具尸体。";var x=c.InnerPawn;if(x==null || !x.RaceProps.Humanlike)return "只能活化人形尸体。";
-   if(Items.Undead(x) || Necro.Construct(x)!=null)return "亡灵的尸体无法再活化。";return null;
+   if(c==null || c.Destroyed)return "需要选择一具尸体。".Loc();var x=c.InnerPawn;if(x==null || !x.RaceProps.Humanlike)return "只能活化人形尸体。".Loc();
+   if(Items.Undead(x) || Necro.Construct(x)!=null)return "亡灵的尸体无法再活化。".Loc();return null;
   }
   public static List<Pawn> AnimateDead(Pawn p,Corpse c,int count,int ticks){
    var got=new List<Pawn>();if(AnimateCannot(c)!=null || p.Map==null)return got;
@@ -244,14 +244,14 @@ namespace LichPhylactery {
    foreach(var corpse in list){
     var map=corpse.Map;var pos=corpse.Position;
     try{corpse.Destroy();var sk=Constructs.Create("Skeleton",p,pos,map);Items.Give(sk,"LP_WS_Animated",ticks,1f);FleckMaker.ThrowDustPuffThick(pos.ToVector3Shifted(),map,2f,new Color(.55f,.8f,.55f));got.Add(sk);}
-    catch(Exception ex){Log.Warning("[DND边缘大陆] 活化死尸失败："+ex.Message);}
+    catch(Exception ex){Log.Warning("[DND边缘大陆] 活化死尸失败：".Loc()+ex.Message);}
    }
-   if(got.Count>0)Items.Mote(p,"活化死尸 ×"+got.Count,Arcane);
+   if(got.Count>0)Items.Mote(p,"活化死尸 ×".Loc()+got.Count,Arcane);
    return got;
   }
   // 防护能量：五种伤害，按伤害名分类。
   public static readonly string[] ProtHediffs={"LP_WS_Prot_Fire","LP_WS_Prot_Cold","LP_WS_Prot_Lightning","LP_WS_Prot_Acid","LP_WS_Prot_Psychic"};
-  static readonly string[] ProtLabels={"火焰","寒冷","闪电","强酸","心灵"};
+  static readonly string[] ProtLabels={"火焰".Loc(),"寒冷".Loc(),"闪电".Loc(),"强酸".Loc(),"心灵".Loc()};
   public static int EnergyKind(DamageDef d){
    if(d==null)return -1;var n=d.defName;
    if(d==DamageDefOf.Flame || d==DamageDefOf.Burn || n.Contains("Fire") || n.Contains("Flame") || n.Contains("Burn") || n.Contains("Hellfire"))return 0;
@@ -261,13 +261,13 @@ namespace LichPhylactery {
    if(ClassSubclass.Psychic(d))return 4;
    return -1;
   }
-  public static void SetProtection(Pawn t,int k,int ticks){foreach(var n in ProtHediffs)Items.Remove(t,n);Items.Give(t,ProtHediffs[Mathf.Clamp(k,0,4)],ticks,1f);Items.Mote(t,"防护能量："+ProtLabels[Mathf.Clamp(k,0,4)],Arcane);}
+  public static void SetProtection(Pawn t,int k,int ticks){foreach(var n in ProtHediffs)Items.Remove(t,n);Items.Give(t,ProtHediffs[Mathf.Clamp(k,0,4)],ticks,1f);Items.Mote(t,"防护能量：".Loc()+ProtLabels[Mathf.Clamp(k,0,4)],Arcane);}
   static void ProtectionFromEnergy(Pawn p,Pawn t,int ticks){
    SetProtection(t,0,ticks);if(!Spellbook.Player(p) || Adventurer.TestSuppressed)return;
-   Find.WindowStack.Add(new Dialog_SpellChoice("防护能量："+t.LabelShort,"选一种伤害，1 小时内受到这种伤害 ×0.5。",Enumerable.Range(0,5).Select(i=>(ProtLabels[i],(string)null,(Action)(()=>SetProtection(t,i,ticks)))).ToList()));
+   Find.WindowStack.Add(new Dialog_SpellChoice("防护能量：".Loc()+t.LabelShort,"选一种伤害，1 小时内受到这种伤害 ×0.5。".Loc(),Enumerable.Range(0,5).Select(i=>(ProtLabels[i],(string)null,(Action)(()=>SetProtection(t,i,ticks)))).ToList()));
   }
   // 魔法阵：恶魔魔鬼 / 亡灵 / 元素 / 妖精。
-  public static readonly string[] CircleLabels={"恶魔与魔鬼","亡灵","元素生物","妖精"};
+  public static readonly string[] CircleLabels={"恶魔与魔鬼".Loc(),"亡灵".Loc(),"元素生物".Loc(),"妖精".Loc()};
   public static bool CircleKind(Pawn t,int mode){
    if(t==null)return false;var ext=Outsiders.Of(t);
    switch(mode){
@@ -279,15 +279,15 @@ namespace LichPhylactery {
    return false;
   }
   static void MagicCircle(Pawn p,float radius,int ticks){
-   var z=SpellZone.Make(p,p.Position,"Circle",radius,ticks);if(z==null)return;Items.Mote(p,"魔法阵",Arcane);
+   var z=SpellZone.Make(p,p.Position,"Circle",radius,ticks);if(z==null)return;Items.Mote(p,"魔法阵".Loc(),Arcane);
    if(!Spellbook.Player(p) || Adventurer.TestSuppressed)return;
-   Find.WindowStack.Add(new Dialog_SpellChoice("魔法阵","选一类生物：这类敌对生物进不来，阵内友军受它们的伤害 ×0.5。",Enumerable.Range(0,4).Select(i=>(CircleLabels[i],(string)null,(Action)(()=>{z.mode=i;Items.Mote(p,"魔法阵："+CircleLabels[i],Arcane);}))).ToList()));
+   Find.WindowStack.Add(new Dialog_SpellChoice("魔法阵".Loc(),"选一类生物：这类敌对生物进不来，阵内友军受它们的伤害 ×0.5。".Loc(),Enumerable.Range(0,4).Select(i=>(CircleLabels[i],(string)null,(Action)(()=>{z.mode=i;Items.Mote(p,"魔法阵：".Loc()+CircleLabels[i],Arcane);}))).ToList()));
   }
   // 亡者交谈：敌方派系的人形尸体，每具一次；揭示一处据点，或 200 × 奥术强度研究。
   public static string SpeakCannot(Pawn p,Corpse c){
-   if(c==null || c.Destroyed)return "需要选择一具尸体。";var x=c.InnerPawn;if(x==null || !x.RaceProps.Humanlike)return "只能和人形的亡者交谈。";
-   if(x.Faction==null || x.Faction.IsPlayer || !x.Faction.HostileTo(Faction.OfPlayer))return "只能问敌方派系的亡者。";
-   if(Spellbook.Data(p)?.spoken.Contains(c.thingIDNumber)==true)return "这具尸体已经问过了。";
+   if(c==null || c.Destroyed)return "需要选择一具尸体。".Loc();var x=c.InnerPawn;if(x==null || !x.RaceProps.Humanlike)return "只能和人形的亡者交谈。".Loc();
+   if(x.Faction==null || x.Faction.IsPlayer || !x.Faction.HostileTo(Faction.OfPlayer))return "只能问敌方派系的亡者。".Loc();
+   if(Spellbook.Data(p)?.spoken.Contains(c.thingIDNumber)==true)return "这具尸体已经问过了。".Loc();
    return null;
   }
   public static Settlement Reveal(Faction f,Pawn p){
@@ -302,17 +302,17 @@ namespace LichPhylactery {
   static void SpeakWithDead(Pawn p,Corpse c,float research){
    if(SpeakCannot(p,c)!=null)return;var d=Spellbook.Data(p);var f=c.InnerPawn.Faction;
    Action reveal=()=>{d?.spoken.Add(c.thingIDNumber);var s=Reveal(f,p);
-    if(s==null)Messages.Message("亡者摇头：「"+f.Name+"」已经没有据点了。",p,MessageTypeDefOf.NeutralEvent,false);
-    else Find.LetterStack.ReceiveLetter("亡者交谈",c.InnerPawn.LabelShort+"的亡魂说出了「"+f.Name+"」的一处据点："+s.LabelCap+"。",LetterDefOf.NeutralEvent,new LookTargets(s));};
-   Action learn=()=>{d?.spoken.Add(c.thingIDNumber);float got=Research(p,research);Messages.Message(got>0f?"亡魂的学识：当前研究 +"+got.ToString("0")+"。":"没有正在进行的研究，亡魂的学识白白散去了。",p,got>0f?MessageTypeDefOf.PositiveEvent:MessageTypeDefOf.NeutralEvent,false);};
+    if(s==null)Messages.Message("亡者摇头：「".Loc()+f.Name+"」已经没有据点了。".Loc(),p,MessageTypeDefOf.NeutralEvent,false);
+    else Find.LetterStack.ReceiveLetter("亡者交谈".Loc(),c.InnerPawn.LabelShort+"的亡魂说出了「".Loc()+f.Name+"」的一处据点：".Loc()+s.LabelCap+"。".Loc(),LetterDefOf.NeutralEvent,new LookTargets(s));};
+   Action learn=()=>{d?.spoken.Add(c.thingIDNumber);float got=Research(p,research);Messages.Message(got>0f?"亡魂的学识：当前研究 +".Loc()+got.ToString("0")+"。".Loc():"没有正在进行的研究，亡魂的学识白白散去了。".Loc(),p,got>0f?MessageTypeDefOf.PositiveEvent:MessageTypeDefOf.NeutralEvent,false);};
    if(!Spellbook.Player(p) || Adventurer.TestSuppressed){learn();return;}
-   Find.WindowStack.Add(new Dialog_SpellChoice("亡者交谈："+c.InnerPawn.LabelShort,"这具尸体只能问一次。",new List<(string,string,Action)>{("问出「"+f.Name+"」的一处据点",null,reveal),("问它生前的学识：当前研究 +"+research.ToString("0"),null,learn)}));
+   Find.WindowStack.Add(new Dialog_SpellChoice("亡者交谈：".Loc()+c.InnerPawn.LabelShort,"这具尸体只能问一次。".Loc(),new List<(string,string,Action)>{("问出「".Loc()+f.Name+"」的一处据点".Loc(),null,reveal),("问它生前的学识：当前研究 +".Loc()+research.ToString("0"),null,learn)}));
   }
   // 送讯术：每天一次，选一个派系打开原版通讯对话。
   public static string SendingCannot(Pawn p){
-   var d=Spellbook.Data(p)??CasterSpells.BookFor(p,DefCache<AbilityDef>.Get("LP_WS_Sending"));if(d==null)return "不会送讯术";int left=Spellbook.SendingTicks-(Now-d.sendingTick);
-   if(left>0)return "送讯术每天一次（还要 "+(left/2500f).ToString("0.#")+" 小时）。";
-   if(!Factions(p).Any())return "没有可以联络的派系。";
+   var d=Spellbook.Data(p)??CasterSpells.BookFor(p,DefCache<AbilityDef>.Get("LP_WS_Sending"));if(d==null)return "不会送讯术".Loc();int left=Spellbook.SendingTicks-(Now-d.sendingTick);
+   if(left>0)return "送讯术每天一次（还要 ".Loc()+(left/2500f).ToString("0.#")+" 小时）。".Loc();
+   if(!Factions(p).Any())return "没有可以联络的派系。".Loc();
    return null;
   }
   public static IEnumerable<Faction> Factions(Pawn p)=>Find.FactionManager.AllFactionsVisibleInViewOrder.Where(f=>!f.IsPlayer && !f.defeated && !f.Hidden && f.leader!=null);
@@ -324,7 +324,7 @@ namespace LichPhylactery {
   public static void Sending(Pawn p){
    if(SendingCannot(p)!=null)return;
    if(!Spellbook.Player(p) || Adventurer.TestSuppressed){Contact(p,Factions(p).First());return;}
-   Find.WindowStack.Add(new Dialog_SpellChoice("送讯术","选一个派系，和它的首领通话。",Factions(p).Select(f=>(f.Name+"（"+f.def.label+"）",(string)null,(Action)(()=>Contact(p,f)))).ToList(),()=>{}));
+   Find.WindowStack.Add(new Dialog_SpellChoice("送讯术".Loc(),"选一个派系，和它的首领通话。".Loc(),Factions(p).Select(f=>(f.Name+"（".Loc()+f.def.label+"）".Loc(),(string)null,(Action)(()=>Contact(p,f)))).ToList(),()=>{}));
   }
   // 侦测魔法：列出地图上的魔法物品和传奇品质的物品。
   public static bool Magic(Thing t){
@@ -335,8 +335,8 @@ namespace LichPhylactery {
   public static List<Thing> MagicItems(Map map)=>map==null?new List<Thing>():map.listerThings.AllThings.Where(t=>t.Spawned && Magic(t)).ToList();
   static void DetectLetter(Pawn p){
    if(!Spellbook.Player(p) || Adventurer.TestSuppressed)return;var items=MagicItems(p.Map);
-   string text=items.Count==0?"这张地图上没有感知到魔法物品。":"感知到 "+items.Count+" 件魔法物品或传奇品质的物品：\n"+string.Join("\n",items.Take(20).Select(t=>"· "+t.LabelCap))+(items.Count>20?"\n……":"");
-   Find.LetterStack.ReceiveLetter("侦测魔法",text,LetterDefOf.NeutralEvent,new LookTargets(items.Take(20)));
+   string text=items.Count==0?"这张地图上没有感知到魔法物品。".Loc():"感知到 ".Loc()+items.Count+" 件魔法物品或传奇品质的物品：\n".Loc()+string.Join("\n",items.Take(20).Select(t=>"· "+t.LabelCap))+(items.Count>20?"\n……":"");
+   Find.LetterStack.ReceiveLetter("侦测魔法".Loc(),text,LetterDefOf.NeutralEvent,new LookTargets(items.Take(20)));
   }
  }
 
@@ -356,7 +356,7 @@ namespace LichPhylactery {
    if((Is("LP_WS_Animated") || Is("LP_WS_Summoned") || Is("LP_WS_Hound")) && pawn!=null && !pawn.Destroyed){var p=pawn;Fiends.Defer(()=>Unmake(p));}
    if(Is("LP_WS_Polymorphed") && stowed is ThingWithComps w && pawn!=null && !pawn.Dead && pawn.inventory!=null && pawn.inventory.innerContainer.Contains(w) && pawn.equipment!=null && pawn.equipment.Primary==null){pawn.inventory.innerContainer.Remove(w);pawn.equipment.AddEquipment(w);}
    if(Is("LP_WS_Dominated") && pawn!=null && !pawn.Dead){var p=pawn;var f=origFaction;Fiends.Defer(()=>WizardSpells2.Release(p,f));}
-   if(Is("LP_WS_Levitating") && pawn!=null && !pawn.Dead && pawn.Spawned){var p=pawn;var c=caster;float pw=power;Fiends.Defer(()=>{if(!p.Dead){WizardSpells.Hit(c,p,DamageDefOf.Blunt,pw,.2f);Items.Mote(p,"摔落",Spellbook.Color);}});}
+   if(Is("LP_WS_Levitating") && pawn!=null && !pawn.Dead && pawn.Spawned){var p=pawn;var c=caster;float pw=power;Fiends.Defer(()=>{if(!p.Dead){WizardSpells.Hit(c,p,DamageDefOf.Blunt,pw,.2f);Items.Mote(p,"摔落".Loc(),Spellbook.Color);}});}
   }
   public override void ExposeData(){
    base.ExposeData();Scribe_References.Look(ref caster,"lpWsCaster");Scribe_Values.Look(ref power,"lpWsPower");Scribe_References.Look(ref origFaction,"lpWsFaction");Scribe_References.Look(ref stowed,"lpWsStowed");
@@ -364,7 +364,7 @@ namespace LichPhylactery {
   }
   public static void Unmake(Pawn p){
    if(p==null || p.Destroyed)return;var map=p.MapHeld;var pos=p.PositionHeld;
-   Necro.Registry?.constructs.Remove(p);if(p.Spawned && map!=null){FilthMaker.TryMakeFilth(pos,map,ThingDefOf.Filth_Ash,2);Items.Mote(p,"散架",new Color(.55f,.8f,.55f));}
+   Necro.Registry?.constructs.Remove(p);if(p.Spawned && map!=null){FilthMaker.TryMakeFilth(pos,map,ThingDefOf.Filth_Ash,2);Items.Mote(p,"散架".Loc(),new Color(.55f,.8f,.55f));}
    p.Destroy();
   }
   public override void TickInterval(int delta){
@@ -377,7 +377,7 @@ namespace LichPhylactery {
   public static int Uncloak(Pawn t){
    if(t?.health==null)return 0;int n=0;
    foreach(var h in t.health.hediffSet.hediffs.Where(x=>x.TryGetComp<HediffComp_Invisibility>()!=null).ToList()){t.health.RemoveHediff(h);n++;}
-   if(n>0)Items.Mote(t,"现形",Spellbook.Color);return n;
+   if(n>0)Items.Mote(t,"现形".Loc(),Spellbook.Color);return n;
   }
   public static int Reveal(Pawn p,float radius){
    if(p?.Map==null)return 0;int n=0;
@@ -390,20 +390,20 @@ namespace LichPhylactery {
  public static class Familiars {
   public static readonly HashSet<Pawn> Masters=new HashSet<Pawn>();
   static int Now=>Find.TickManager.TicksGame;
-  static readonly (string kind,string label)[] Options={("Cat","黑猫"),("Rat","老鼠"),("LP_Tressym","翼猫"),("LP_Pseudodrake","伪龙")};
+  static readonly (string kind,string label)[] Options={("Cat","黑猫".Loc()),("Rat","老鼠".Loc()),("LP_Tressym","翼猫".Loc()),("LP_Pseudodrake","伪龙".Loc())};
   public static List<(PawnKindDef kind,string label)> Kinds()=>Options.Select(o=>(DefDatabase<PawnKindDef>.GetNamedSilentFail(o.kind),o.label)).Where(o=>o.Item1!=null).ToList();
   public static string Cannot(Pawn p){
-   var d=Spellbook.Data(p);if(d==null)return "不是法师";
-   if(d.familiar!=null && !d.familiar.Dead && !d.familiar.Destroyed)return "已经有一只魔宠了（"+d.familiar.LabelShort+"）。";
-   if(d.familiarDied>=0 && Now-d.familiarDied<Spellbook.FamiliarRespawn)return "魔宠死后要 1 天才能重召（还要 "+((Spellbook.FamiliarRespawn-(Now-d.familiarDied))/2500f).ToString("0.#")+" 小时）。";
-   if(p.Map==null)return "要在地图上施放。";
-   if(Kinds().Count==0)return "没有可用的魔宠种类。";
+   var d=Spellbook.Data(p);if(d==null)return "不是法师".Loc();
+   if(d.familiar!=null && !d.familiar.Dead && !d.familiar.Destroyed)return "已经有一只魔宠了（".Loc()+d.familiar.LabelShort+"）。".Loc();
+   if(d.familiarDied>=0 && Now-d.familiarDied<Spellbook.FamiliarRespawn)return "魔宠死后要 1 天才能重召（还要 ".Loc()+((Spellbook.FamiliarRespawn-(Now-d.familiarDied))/2500f).ToString("0.#")+" 小时）。".Loc();
+   if(p.Map==null)return "要在地图上施放。".Loc();
+   if(Kinds().Count==0)return "没有可用的魔宠种类。".Loc();
    return null;
   }
   public static void Summon(Pawn p){
    if(Cannot(p)!=null)return;var kinds=Kinds();
    if(!Spellbook.Player(p) || Adventurer.TestSuppressed){Make(p,kinds[0].kind);return;}
-   Find.WindowStack.Add(new Dialog_SpellChoice("寻获魔宠","选择魔宠的形态。",kinds.Select(k=>(k.label,(string)null,(Action)(()=>Make(p,k.kind)))).ToList()));
+   Find.WindowStack.Add(new Dialog_SpellChoice("寻获魔宠".Loc(),"选择魔宠的形态。".Loc(),kinds.Select(k=>(k.label,(string)null,(Action)(()=>Make(p,k.kind)))).ToList()));
   }
   public static Pawn Make(Pawn p,PawnKindDef kind){
    if(Cannot(p)!=null || kind==null)return null;var map=p.Map;var d=Spellbook.Data(p);
@@ -413,16 +413,16 @@ namespace LichPhylactery {
    try{
     if(a.training!=null){if(a.training.CanAssignToTrain(TrainableDefOf.Tameness).Accepted)a.training.Train(TrainableDefOf.Tameness,p,true);if(a.training.CanAssignToTrain(TrainableDefOf.Obedience).Accepted){a.training.Train(TrainableDefOf.Obedience,p,true);a.playerSettings.Master=p;}}
     if(p.relations!=null && a.relations!=null && !p.relations.DirectRelationExists(PawnRelationDefOf.Bond,a))p.relations.AddDirectRelation(PawnRelationDefOf.Bond,a);
-   }catch(Exception ex){Log.Warning("[DND边缘大陆] 魔宠训练 / 羁绊失败："+ex.Message);}
+   }catch(Exception ex){Log.Warning("[DND边缘大陆] 魔宠训练 / 羁绊失败：".Loc()+ex.Message);}
    d.familiar=a;d.familiarDied=-1;Items.Give(p,"LP_WS_FamiliarBond");Masters.Add(p);
-   FleckMaker.ThrowDustPuffThick(a.DrawPos,map,2f,Spellbook.Color);Items.Mote(a,"魔宠",Spellbook.Color);
+   FleckMaker.ThrowDustPuffThick(a.DrawPos,map,2f,Spellbook.Color);Items.Mote(a,"魔宠".Loc(),Spellbook.Color);
    return a;
   }
   public static void Tick(Pawn p,SpellbookData d){
    if(d.familiar==null){if(Masters.Contains(p)){Masters.Remove(p);Items.Remove(p,"LP_WS_FamiliarBond");}return;}
    if(d.familiar.Dead || d.familiar.Destroyed){
     d.familiar=null;d.familiarDied=Now;Masters.Remove(p);Items.Remove(p,"LP_WS_FamiliarBond");
-    if(Spellbook.Player(p) && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"的魔宠死了：1 天后可以重新寻获魔宠。",p,MessageTypeDefOf.NegativeEvent,false);
+    if(Spellbook.Player(p) && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"的魔宠死了：1 天后可以重新寻获魔宠。".Loc(),p,MessageTypeDefOf.NegativeEvent,false);
     return;
    }
    Masters.Add(p);if(!Items.Has(p,"LP_WS_FamiliarBond"))Items.Give(p,"LP_WS_FamiliarBond");
@@ -455,7 +455,7 @@ namespace LichPhylactery {
   static IEnumerable<Gizmo> Postfix(IEnumerable<Gizmo> __result,Building_Door __instance){
    foreach(var g in __result)yield return g;
    if(!WizardLocks.Locked(__instance))yield break;var d=__instance;
-   yield return new Command_Action{defaultLabel="解除秘法锁",defaultDesc="这扇门上了秘法锁：受到的伤害 ÷3。点击解除。",icon=ContentFinder<Texture2D>.Get("LP/Classes/Subclass4/FortFortify",false)??BaseContent.BadTex,action=()=>{WizardLocks.Unlock(d);Items.Mote(d,"秘法锁解除",Spellbook.Color);}};
+   yield return new Command_Action{defaultLabel="解除秘法锁".Loc(),defaultDesc="这扇门上了秘法锁：受到的伤害 ÷3。点击解除。".Loc(),icon=ContentFinder<Texture2D>.Get("LP/Classes/Subclass4/FortFortify",false)??BaseContent.BadTex,action=()=>{WizardLocks.Unlock(d);Items.Mote(d,"秘法锁解除".Loc(),Spellbook.Color);}};
   }
  }
  [HarmonyPatch(typeof(Thing),nameof(Thing.DeSpawn))]
@@ -479,7 +479,7 @@ namespace LichPhylactery {
    z.Puff(true);if(!kind.StartsWith("CS"))Items.Mote(caster,Label(kind),Spellbook.Color);
    return z;
   }
-  static string Label(string k){switch(k){case "Grease":return "油腻术";case "Web":return "蛛网术";case "Stink":return "臭云术";case "Alarm":return "警报术";case "Circle":return "魔法阵";case "FireWall":return "火墙术";case "Tentacles":return "黑触手";case "Antipathy":return "厌恶之地";case "Delayed":return "延时爆裂火球";}return k!=null && k.StartsWith("CS")?"法术区域":k;}
+  static string Label(string k){switch(k){case "Grease":return "油腻术".Loc();case "Web":return "蛛网术".Loc();case "Stink":return "臭云术".Loc();case "Alarm":return "警报术".Loc();case "Circle":return "魔法阵".Loc();case "FireWall":return "火墙术".Loc();case "Tentacles":return "黑触手".Loc();case "Antipathy":return "厌恶之地".Loc();case "Delayed":return "延时爆裂火球".Loc();}return k!=null && k.StartsWith("CS")?"法术区域".Loc():k;}
   public IEnumerable<IntVec3> Cells=>line!=null && line.Count>0?line.Where(c=>c.InBounds(Map)):GenRadial.RadialCellsAround(Position,radius,true).Where(c=>c.InBounds(Map));
   public bool Covers(IntVec3 c)=>line!=null && line.Count>0?line.Contains(c):c.InHorDistOf(Position,radius);
   public bool Foe(Pawn x)=>x!=null && !x.Dead && x.Spawned && (faction!=null?x.HostileTo(faction):caster!=null && x.HostileTo(caster));
@@ -494,19 +494,19 @@ namespace LichPhylactery {
    var map=Map;
    switch(kind){
     case "Grease":case "Web":
-     if(Burning()){foreach(var c in Cells)FireUtility.TryStartFireIn(c,map,.6f,caster);Items.Mote(this,"着火了",new Color(1f,.6f,.3f));End();return;}
+     if(Burning()){foreach(var c in Cells)FireUtility.TryStartFireIn(c,map,.6f,caster);Items.Mote(this,"着火了".Loc(),new Color(1f,.6f,.3f));End();return;}
      foreach(var x in Inside){if(!Foe(x) || x.Downed)continue;
-      if(kind=="Grease"){if(!Due(x,60))continue;if(Rand.Chance(.5f)){x.stances?.stunner?.StunFor(120,caster);Items.Mote(x,"滑倒",Spellbook.Color);}}
-      else{if(!Due(x,300))continue;if(Rand.Chance(WizardSpells.Chance(.6f,caster,x))){x.stances?.stunner?.StunFor(240,caster);Items.Mote(x,"被蛛网粘住",Spellbook.Color);}}
+      if(kind=="Grease"){if(!Due(x,60))continue;if(Rand.Chance(.5f)){x.stances?.stunner?.StunFor(120,caster);Items.Mote(x,"滑倒".Loc(),Spellbook.Color);}}
+      else{if(!Due(x,300))continue;if(Rand.Chance(WizardSpells.Chance(.6f,caster,x))){x.stances?.stunner?.StunFor(240,caster);Items.Mote(x,"被蛛网粘住".Loc(),Spellbook.Color);}}
      }
      break;
     case "Stink":
-     foreach(var x in Inside){if(!Foe(x) || x.Downed || !x.RaceProps.IsFlesh || !Due(x,120))continue;if(Rand.Chance(.5f)){x.stances?.stunner?.StunFor(90,caster);Items.Mote(x,"呕吐",new Color(.55f,.8f,.3f));if(x.RaceProps.Humanlike && x.jobs!=null)x.jobs.StartJob(JobMaker.MakeJob(JobDefOf.Vomit),JobCondition.InterruptForced,null,true);}}
+     foreach(var x in Inside){if(!Foe(x) || x.Downed || !x.RaceProps.IsFlesh || !Due(x,120))continue;if(Rand.Chance(.5f)){x.stances?.stunner?.StunFor(90,caster);Items.Mote(x,"呕吐".Loc(),new Color(.55f,.8f,.3f));if(x.RaceProps.Humanlike && x.jobs!=null)x.jobs.StartJob(JobMaker.MakeJob(JobDefOf.Vomit),JobCondition.InterruptForced,null,true);}}
      break;
     case "Alarm":
      if(Now-lastAlarm<2500)break;var foe=Inside.FirstOrDefault(x=>Foe(x) && !x.Downed);if(foe==null)break;lastAlarm=Now;
      if(caster!=null && !caster.Dead && !caster.Awake() && caster.jobs!=null)caster.jobs.EndCurrentJob(JobCondition.InterruptForced);
-     if(faction!=null && faction.IsPlayer && !Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("警报术","有敌人闯进了"+(caster?.LabelShort??"法师")+"布下的警报术："+foe.LabelShort+"。",LetterDefOf.ThreatSmall,new LookTargets(foe));
+     if(faction!=null && faction.IsPlayer && !Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("警报术".Loc(),"有敌人闯进了".Loc()+(caster?.LabelShort??"法师".Loc())+"布下的警报术：".Loc()+foe.LabelShort+"。".Loc(),LetterDefOf.ThreatSmall,new LookTargets(foe));
      break;
     case "Circle":
      foreach(var x in Inside){if(!Foe(x) || !WizardSpells.CircleKind(x,mode))continue;Expel(x);}
@@ -517,11 +517,11 @@ namespace LichPhylactery {
      break;
     case "Tentacles": // 黑触手：成功率 55% 缠住（定身 5 秒），被缠住的每秒受钝器伤害
      if(!this.IsHashIntervalTick(60))break;
-     foreach(var x in Inside){if(!Foe(x) || x.Downed)continue;if(Due(x,300) && Rand.Chance(WizardSpells.Chance(.55f,caster,x))){x.stances?.stunner?.StunFor(300,caster);Items.Mote(x,"被触手缠住",Spellbook.Color);}
+     foreach(var x in Inside){if(!Foe(x) || x.Downed)continue;if(Due(x,300) && Rand.Chance(WizardSpells.Chance(.55f,caster,x))){x.stances?.stunner?.StunFor(300,caster);Items.Mote(x,"被触手缠住".Loc(),Spellbook.Color);}
       if(x.stances?.stunner?.Stunned==true)WizardSpells.Hit(caster,x,DamageDefOf.Blunt,power,.2f);}
      break;
     case "Antipathy": // 厌恶之地：这一类敌对单位每 2 秒成功率 50% 被赶出去
-     if(!this.IsHashIntervalTick(120))break;foreach(var x in Inside){if(!Foe(x) || !WizardSpells2.AntipathyKind(x,mode) || !Due(x,600))continue;if(Rand.Chance(.5f)){Expel(x);Items.Mote(x,"厌恶",Spellbook.Color);}}
+     if(!this.IsHashIntervalTick(120))break;foreach(var x in Inside){if(!Foe(x) || !WizardSpells2.AntipathyKind(x,mode) || !Due(x,600))continue;if(Rand.Chance(.5f)){Expel(x);Items.Mote(x,"厌恶".Loc(),Spellbook.Color);}}
      break;
     default:if(kind!=null && kind.StartsWith("CS"))CasterEffects.ZoneTick(this);break; // 1.130.0
    }
@@ -537,7 +537,7 @@ namespace LichPhylactery {
     foreach(var c in GenRadial.RadialCellsAround(Position,radius+3f,true)){if(Covers(c) || !c.InBounds(map) || !c.Standable(map) || c.GetFirstPawn(map)!=null)continue;float dd=c.DistanceToSquared(from);if(dd<bd){bd=dd;best=c;}}
     if(best.IsValid)dest=best;
    }
-   if(dest!=x.Position)DNDPush.Move(x,dest);x.stances?.stunner?.StunFor(30,caster);Items.Mote(x,"被魔法阵弹开",Spellbook.Color);
+   if(dest!=x.Position)DNDPush.Move(x,dest);x.stances?.stunner?.StunFor(30,caster);Items.Mote(x,"被魔法阵弹开".Loc(),Spellbook.Color);
   }
   void Puff(bool all){
    var map=Map;if(map==null)return;Color c=kind=="Stink"?new Color(.5f,.75f,.25f):kind=="Web"?new Color(.9f,.9f,.9f):kind=="Grease"?new Color(.35f,.3f,.2f):kind=="Circle"?new Color(.6f,.75f,1f):new Color(.7f,.5f,1f);
@@ -567,13 +567,13 @@ namespace LichPhylactery {
    if(absorbed || dinfo.Def==null || !dinfo.Def.harmsHealth || dinfo.Amount<=0f || __instance.Dead)return true;
    var v=__instance;var a=dinfo.Instigator as Pawn;
    if(Hediff_WS.Live>0){
-    if(a!=null && a!=v && Items.Has(a,invisible.Def)){var att=a;Fiends.Defer(()=>{Items.Remove(att,"LP_WS_Invisible");Items.Mote(att,"现形",Spellbook.Color);});}
-    if(a!=null && a!=v && a.HostileTo(v) && (HeroCombat.Melee(dinfo) || dinfo.Weapon!=null || dinfo.Def.isRanged || dinfo.Def.isExplosive) && Items.Has(v,blink.Def) && Rand.Chance(.5f)){Items.Mote(v,"闪现：落空",Spellbook.Color);absorbed=true;return false;}
+    if(a!=null && a!=v && Items.Has(a,invisible.Def)){var att=a;Fiends.Defer(()=>{Items.Remove(att,"LP_WS_Invisible");Items.Mote(att,"现形".Loc(),Spellbook.Color);});}
+    if(a!=null && a!=v && a.HostileTo(v) && (HeroCombat.Melee(dinfo) || dinfo.Weapon!=null || dinfo.Def.isRanged || dinfo.Def.isExplosive) && Items.Has(v,blink.Def) && Rand.Chance(.5f)){Items.Mote(v,"闪现：落空".Loc(),Spellbook.Color);absorbed=true;return false;}
     int k=WizardSpells.EnergyKind(dinfo.Def);if(k>=0 && Items.Has(v,WizardSpells.ProtHediffs[k]))dinfo.SetAmount(dinfo.Amount*.5f);
     // 1.129.0：以太化（不受伤；攻击就回来）、心灵屏障（免疫心灵伤害）、预警术（50% 躲开）、石肤术（利器 / 钝器 ×0.6）
-    if(a!=null && a!=v && Items.Has(a,ethereal.Def)){var att=a;Fiends.Defer(()=>{Items.Remove(att,"LP_WS_Ethereal");Items.Mote(att,"回到物质位面",Spellbook.Color);});}
+    if(a!=null && a!=v && Items.Has(a,ethereal.Def)){var att=a;Fiends.Defer(()=>{Items.Remove(att,"LP_WS_Ethereal");Items.Mote(att,"回到物质位面".Loc(),Spellbook.Color);});}
     if(Items.Has(v,ethereal.Def) || ClassSubclass.Psychic(dinfo.Def) && Items.Has(v,mindBlank.Def)){absorbed=true;return false;}
-    if(a!=null && a!=v && a.HostileTo(v) && (HeroCombat.Melee(dinfo) || dinfo.Weapon!=null || dinfo.Def.isRanged || dinfo.Def.isExplosive) && Items.Has(v,foresight.Def) && Rand.Chance(.5f)){Items.Mote(v,"预警：躲开",Spellbook.Color);absorbed=true;return false;}
+    if(a!=null && a!=v && a.HostileTo(v) && (HeroCombat.Melee(dinfo) || dinfo.Weapon!=null || dinfo.Def.isRanged || dinfo.Def.isExplosive) && Items.Has(v,foresight.Def) && Rand.Chance(.5f)){Items.Mote(v,"预警：躲开".Loc(),Spellbook.Color);absorbed=true;return false;}
     var arm=dinfo.Def.armorCategory?.defName;if((arm=="Sharp" || arm=="Blunt") && Items.Has(v,stoneskin.Def))dinfo.SetAmount(dinfo.Amount*.6f);
    }
    if(SpellZone.Circles.Count>0 && a!=null && a.HostileTo(v))

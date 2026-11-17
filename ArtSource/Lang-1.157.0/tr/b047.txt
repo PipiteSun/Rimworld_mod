@@ -1,0 +1,418 @@
+s11953	A dead troll that took no fire or acid damage in the 6 hours before death and whose brain is intact keeps a fresh corpse and revives in place after about 1 day. Works on enemy trolls too.
+s11954	Max revivals per troll per lifetime:\s
+s11955	\s
+s11956	Giant frame rule: body size affects health and melee
+s11957	Fire giants, trolls, minotaurs and force dragonborn (by dragon age) have more total health and melee damage the larger their body size: health ×(1 + 0.5 × strength × (size multiplier − 1)), melee ×(1 + 0.3 × strength × (size multiplier − 1)). Adult fire giants and dragon-body genes have health no lower than ×150% (the larger of this and the size multiplier), so strength only raises their health, never lowers it; fire giant children grow with age. Doesn't apply to necromantic constructs, and small sizes aren't reduced. When off (or strength 0%), no melee bonus, and fire giant and dragon-body health is the old ×150% (the larger value).
+s11958	Giant frame strength:\s
+s11959	% (scales both the health and melee factors)
+s11960	Force dragonborn age-up threshold:\s
+s11961	% (scales both the days needed and the hoard value)
+s11962	Hoard theft berserk
+s11963	When outsiders take things from a force dragonborn's hoard, the force dragonborn goes into a murderous rage at the thief. When off, it only gives a negative mood.
+s11964	Force dragon egg hatch days:\s
+s11965	 days (richer hoards hatch faster)
+s11966	Mind flayer brain-hunger frenzy
+s11967	A mind flayer whose brain matter hits zero has a 15% chance per hour to go into a frenzy. When off, only weakness and a negative mood.
+s11968	Tadpole transformation days:\s
+s11969	 days (base days needed for the host to fully transform into a mind flayer)
+s11970	Elder brain summons
+s11971	Elder brains of level 3 and above periodically call a wanderer psychically: they walk in a daze to the elder brain and collapse beside it. Off by default.
+s11972	\nPhylactery owner:\s
+s11973	unbound
+s11974	\nLevel\s
+s11975	; sacrifices\s
+s11976	\nCommand\s
+s11977	's phylactery is destroyed: revival through this phylactery is no longer possible.
+s11978	Lich potential: not yet bound
+s11979	This archite gene grants eligibility and potential for the lich ritual. Build a necromantic ritual table and have this character perform the lich ritual to establish a phylactery and undying body. Existing endogenes and xenogenes are all kept.
+s11980	Add a lich ritual bill at the necromantic ritual table and restrict the worker to this character.
+s11981	Psyfocus\s
+s11982	; used\s
+s11983	The vanilla psyfocus bar corresponds to\s
+s11984	 points. Limb reinforcement uses\s
+s11985	 points of the cap.\nExisting endogenes:\s
+s11986	, xenogenes:\s
+s11987	, all kept as they were.\n
+s11988	; command\s
+s11989	Phylactery link lost: repair, casting and construct command paused.
+s11990	\nReshaping\s
+s11991	Psyfocus repair
+s11992	Wound repair amount and limb regrowth speed scale linearly with psychic sensitivity. At 100%, 1 damage is repaired per 250 ticks for 0.5 psyfocus; each missing part takes one day and 60 psyfocus. At 200% the effect doubles and the total cost of the same repair halves. Worse wounds go first, and leftover healing continues on other wounds; cost is by actual total healing. Pauses when psyfocus runs out or psychic sensitivity is 0. Current multiplier:\s
+s11993	×.
+s11994	Reinforce limb
+s11995	Only reinforces major organs and limbs: head, torso, spine, arms, legs, brain, heart, lungs, liver, kidneys, stomach, eyes and ears. Each layer: +20% part max health, +12% part efficiency, uses 5 points of psyfocus cap; immediately costs 5 psyfocus and 2 neural heat. At most 5 layers per part.
+s11996	Not enough psyfocus, neural heat room or available cap, or the part already has 5 layers.
+s11997	Remove limb reinforcement
+s11998	Choose a part to remove all its reinforcement, restoring the original max health and freeing psyfocus cap; psyfocus isn't refunded. If an injury exceeds the original max health, it must be repaired before removal.
+s11999	 layers)
+s12000	This part is too badly hurt; repair it first, then remove the reinforcement.
+s12001	No reinforced parts
+s12002	 layers; max health +
+s12003	%; uses\s
+s12004	 points
+s12005	Master fell; sigils out of control
+s12006	Leader fell; morale collapsed
+s12007	 necromantic constructs disintegrated
+s12008	 sigil trolls went berserk out of control
+s12009	 thralls woke from domination and collapsed
+s12010	 followers' morale collapsed and they scattered
+s12011	 has fallen
+s12012	Divine power\s
+s12013	Divinity level\s
+s12014	 / 5:\s
+s12015	; portfolio ability power ×
+s12016	; per day +
+s12017	 (2 + 0.5 × believers + 0.2 × colonists with opinion ≥20)
+s12018	Passive:\s
+s12019	Divine realm blessing (after ascending to the divine realm):\s
+s12020	A council of gods trial is in progress
+s12021	 (has fallen)
+s12022	Next council:\s
+s12023	available
+s12024	Accept the gods' trial
+s12025	Council of gods: in 1 day the "champions of the gods" attack (the faction of a god opposed to\s
+s12026	, its leader possessed by a god). If, throughout the trial,\s
+s12027	 never falls → divinity level +1; if they fall → divine power reset to zero and another try only after 30 days, without losing a level.\n\nRequirements: full divine power, at least 30 days since the last trial, level below 5.
+s12028	Ascend to the divine realm
+s12029	Already lord of a divine realm. Ascending to the divine realm turns them into a pillar of light that leaves this world (never to return), freeing a demigod slot; the colony permanently gains the divine realm blessing of "
+s12030	":\s
+s12031	 will leave this world and never return. The colony gets the divine realm blessing, everyone mood +15 (30 days), then +3 permanently. Are you sure?
+s12032	Divine power
+s12033	Divine power:\s
+s12034	\nPer day +
+s12035	. Portfolio abilities cost divine power; with full divine power the gods' trial can be accepted.
+s12036	nascent deity
+s12037	lesser deity
+s12038	intermediate deity
+s12039	greater deity
+s12040	lord of a divine realm
+s12041	A new god is born:\s
+s12042	 absorbed the divine spark and became a demigod of "
+s12043	" (nascent deity).\n\nAgeless, hunger ×0.3, immune to disease, psychic sensitivity +20%, damage taken ×0.95, mental break threshold -10%. Portfolio abilities:\s
+s12044	; passive:\s
+s12045	.\n\nDivine power recovers each day; when full, "accept the gods' trial" to raise the divinity level.
+s12046	The colony's demigod usurps a divine seat
+s12047	divine seat seized
+s12048	The champions of the gods couldn't come (no faction could be found to send); the trial is cancelled.
+s12049	Not a demigod
+s12050	A trial is in progress.
+s12051	Already lord of a divine realm.
+s12052	Divine power isn't full (
+s12053	Less than\s
+s12054	 days since the last trial (another\s
+s12055	 days).
+s12056	Must accept the trial in the colony.
+s12057	Trial of the gods
+s12058	 asked the council of gods for a higher divine seat. The council answered: in 1 day, the gods opposed to "
+s12059	" will send their champions.\n\nThroughout the trial,\s
+s12060	 must not fall even once.
+s12061	Champions of the gods
+s12062	's champions, by order of\s
+s12063	the gods
+s12064	, come to test\s
+s12065	 is possessed by a god.
+s12066	\n\nThis is a trial of the council of gods:\s
+s12067	 must not fall.
+s12068	Trial failed
+s12069	 fell before the champions of the gods: divine power reset to zero, and the trial can be requested again in\s
+s12070	 days. Divinity level unchanged.
+s12071	 passed the council of gods' trial, and the divinity level rose to\s
+s12072	 / 5).\n\nDivine power cap\s
+s12073	, portfolio ability power ×
+s12074	. All colonists mood +8 (10 days).
+s12075	Can now ascend to the divine realm.
+s12076	 became a pillar of light rising into the heavens and became a true god.\n\nThe colony permanently gains "
+s12077	\n\nAll colonists get "our god watches over us" mood +15 (30 days), then +3 permanently.
+s12078	Divine realm blessing (dawn) ×1.2
+s12079	Tyranny demigod's oppression ×0.85
+s12080	Mist of oblivion ×0.6
+s12081	Divine realm blessing (tyranny) ×1.25
+s12082	Divine realm blessing (fire, forge) ×1.15
+s12083	Divine realm blessing (wild) ×1.2
+s12084	Divine realm blessing (mind) ×1.1
+s12085	Divine realm blessing (magic) ×1.1
+s12086	Darkness demigod (night) ×1.15
+s12087	Call wind ×1.1
+s12088	Mind demigod's resonance +5%
+s12089	Divine realm blessing (death) +5%
+s12090	Ascension:\s
+s12091	Saint: +0.15
+s12092	Can only be cast on friendlies.
+s12093	Can only be cast on enemies.
+s12094	Can only be cast on humanlike enemies.
+s12095	The psychically deaf can't be dominated.
+s12096	No one can stand there.
+s12097	Only demigods can cast this.
+s12098	Not enough divine power: needs\s
+s12099	, now\s
+s12100	Can't be cast inside an antimagic field.
+s12101	judgment
+s12102	Reaped\s
+s12103	 souls
+s12104	, phylactery +
+s12105	 sacrifice XP
+s12106	[DND Rimlands] Army of the dead:\s
+s12107	 broke free of domination and returned to\s
+s12108	Undying dawn protected\s
+s12109	: the fatal blow didn't take their life, and the wounds stopped bleeding.
+s12110	The soul is already at rest (death demigod); the brain can't be devoured.
+s12111	 (legend level\s
+s12112	\nLegend:\s
+s12113	proficiency bonus
+s12114	, after all bonuses\s
+s12115	; effect modifier (including racial affinity)
+s12116	No class learned yet
+s12117	Legendary class abilities
+s12118	 (unspent points\s
+s12119	Origin feat
+s12120	Epic boons
+s12121	 (unspent\s
+s12122	Attunement and faith
+s12123	Attunement slots
+s12124	Rare and artifact tier implants take attunement slots.
+s12125	Devotion\s
+s12126	Arcana and lake seals
+s12127	Lake seals
+s12128	Spells\s
+s12129	, passives\s
+s12130	Class power (hover to see sources)
+s12131	Power
+s12132	No class power
+s12133	 · DND character sheet
+s12134	Abilities castable on anyone
+s12135	1.136.0: DND class abilities, spells, arcana and lake seals can be cast on any pawn (colonists, visitors, neutrals, prisoners, slaves, animals, mechanoids): damage / control can hit your own people, and heals / buffs can go to enemies. Other people in area effects are still sorted by friend or foe; pure self, ground, corpse and building targets are unchanged. NPCs and autocast still pick targets by the old rules.
+s12136	Colonist portrait resource bar
+s12137	1.136.0: draws a thin resource bar under colonist portraits, showing the main resource (the highest-level class with a resource: mana / fighting spirit / divine favor / ki / rhythm / pact mana / rage; otherwise spell energy or lake breath).
+s12138	At most\s
+s12139	 ioun stones can be set in the brow
+s12140	Only one graft of the same kind can be installed
+s12141	A celestial bloodline can't accept a fiend's flesh
+s12142	Attunement slots are full (
+s12143	[DND Rimlands] Failed to spawn Kas's followers:\s
+s12144	The Hand and Eye of Vecna have come together again, and Kas, who once betrayed and wounded Vecna, has sensed it. He comes with the Sword of Kas and a band of followers to destroy (or seize) the artifacts.\n\nThe Sword of Kas deals double damage to hosts of Vecna's artifacts. Defeat Kas to get the sword.
+s12145	absorption stone
+s12146	Regeneration gland: regrew\s
+s12147	necrotic ray
+s12148	petrification ray
+s12149	charm ray
+s12150	petrification failed
+s12151	Dragon breath·
+s12152	Speak with dead:\s
+s12153	regeneration stone
+s12154	's\s
+s12155	 had no living flesh to feed it, and withered off.
+s12156	fury of the demon arm
+s12157	Vecna's evil will
+s12158	Vecna's evil will has taken hold of\s
+s12159	Can't be installed
+s12160	Need to pick a hostile undead.
+s12161	Need to pick a direction.
+s12162	Needs a humanlike corpse.
+s12163	This corpse has already spoken.
+s12164	didn't obey
+s12165	soul devouring
+s12166	 has contracted "
+s12167	".
+s12168	Kindness faded
+s12169	 sealed their soul into the phylactery. The heart that once couldn't bear to see others suffer dissipated along with the last breath of the living.\n\n
+s12170	 lost the "kind" trait.
+s12171	's ghost won't depart: in 12 hours,\s
+s12172	 will crawl back out of the corpse to find\s
+s12173	. Don't let the corpse be burned.
+s12174	Vengeful revenant returns
+s12175	 crawled back from death, wounds fully healed, carrying the chill of grave soil.\n\n
+s12176	 only wants to find\s
+s12177	the killer
+s12178	. The next revival takes 60 days.
+s12179	Blood debt repaid
+s12180	 killed\s
+s12181	 with their own hands. The ghost is finally at rest:\s
+s12182	 became a "soul at rest" and gained\s
+s12183	 adventurer XP.
+s12184	tiger
+s12185	Bestial outburst:\s
+s12186	 became\s
+s12187	 form
+s12188	's lycanthropy flared up, turning them into\s
+s12189	 form; for 6 hours they will pounce on the nearest enemy.
+s12190	Lycanthropy out of control
+s12191	Tamed the wild
+s12192	 finally learned to live with the beast inside: lycanthropy no longer flares up by force or goes out of control, and\s
+s12193	 can transform voluntarily once per day.
+s12194	Whispers from the Far Realm...
+s12195	Surge: invisible
+s12196	Surge: flowers bloom underfoot
+s12197	Surge: little fireball
+s12198	Surge: party heal
+s12199	Surge: coo coo?
+s12200	Surge: neural heat cleared
+s12201	Surge: haste
+s12202	wild magic surge
+s12203	Surge: inspiration
+s12204	Surge: shockwave
+s12205	Surge: on fire!
+s12206	Surge: skin turned green
+s12207	Surge: dazed...
+s12208	Killer:\s
+s12209	(not yet)
+s12210	\nEnemy faction:\s
+s12211	\nRevival:\s
+s12212	on cooldown, another\s
+s12213	Wild tamed: can transform voluntarily once per day
+s12214	Wild untamed (tamed at adventurer level 10)
+s12215	; next outburst in about\s
+s12216	\s
+s12217	Already in beast form.
+s12218	lawful (work hours)
+s12219	giant's servant (giant within 3 cells)
+s12220	tinkerer (repairing)
+s12221	arcane gift
+s12222	child of nature
+s12223	dragon's thrall (hauling into the hoard)
+s12224	touched by the Far Realm
+s12225	Dragon! Run!
+s12226	 hears something whispering in the Far Realm: there are hostile mind flayers nearby!
+s12227	[DND Rimlands] Personality trait 250-tick error:\s
+s12228	Planar confusion...
+s12229	[DND Rimlands] Personality trait 2500-tick error:\s
+s12230	's corpse is gone; the ghost has nowhere to return to.
+s12231	[DND Rimlands] Personality trait kill handling error:\s
+s12232	DND personality traits
+s12233	(1.62.0) Newly generated humanlikes have a chance to carry 1-2 DND personality traits: alignment (lawful / chaotic, good / evil, at most one), racial interactions (dragon dread, dragonslayer zealot, giant's servant, giantslayer, lich devotee, undead hunter, citizen of the world, pureblood supremacist, hive survivor, dragon's thrall, githyanki exile), class gifts (tactician, arcane gift, wild magic, tinkerer, child of nature) and quirks (magic phobia, arcana addict, treasure maniac, planar confusion).\nOnly uses free slots among the 3 vanilla trait slots: 40% for one when there's a free slot, 15% for a second if another is free; by default about a quarter of humanlikes have at least one. Thay has more evil and lawful, the Faerûn Frontier Alliance more good, the Ember Clan more chaotic, witch-hunting zealots more lawful, and kobolds more dragon's thralls.\nWhen off, no new ones generate; existing ones are kept; loading a save doesn't give them to old colonists.
+s12234	Personality trait frequency:\s
+s12235	(1.62.0) Red power traits: vengeful revenant and lycanthropy (wolf / bear / tiger) are epic, touched by the Far Realm is rare. They count together with other power traits and appear in the same random roll: common races 1.5%, middle 1%, legendary races 0.5% (× power trait frequency); when story bosses and nemesis champions carry power traits, 15% are red (never vengeful revenant). Lycanthropy spreads through bites, and touched by the Far Realm can be caught from psychic blasts, the escaped-hive start and Netherese insight.\nWhen off, they no longer generate randomly or spread; existing ones are kept.
+s12236	Dragon's shadow
+s12237	Dragon's breath
+s12238	The circling dragon breathed a blast of force at the ground! Buildings and items near the impact were torn apart\s
+s12239	 items)
+s12240	, people were only knocked away\s
+s12241	 people)
+s12242	, leaving a force crater on the ground.
+s12243	Dragon flyover: landing
+s12244	 caught the scent of\s
+s12245	 and landed outside the colony with\s
+s12246	 servants. It's walking toward you.
+s12247	another dragon
+s12248	female
+s12249	male
+s12250	) stops outside the colony and roars from afar at\s
+s12251	's hoard. Its servants form a ring around it.\n\n
+s12252	Duel: send a dragon of adult age or older to fight it one-on-one (downing decides the winner, no finishing blow; no one else may interfere, or it counts as refusing). Win: it leaves the treasure it carries (\s
+s12253	 silver and\s
+s12254	 treasures) at the hoard's door and departs; your dragon gets mood +10 and +10 days of hoard guarding. Lose: its servants carry off the most valuable fifth of the hoard (at most\s
+s12255	 items), and your dragon gets mood -8.\n
+s12256	Marriage: the colony's best negotiator tries to persuade it (success chance = highest Social × 5%, max 75%). Success: it joins the colony as a\s
+s12257	, and can nest and lay eggs with\s
+s12258	; failure counts as refusing.\n
+s12259	Refuse: it leaves with its servants and returns in\s
+s12260	 days to plunder your hoard.\n\nIf you don't answer within a day, it loses patience and leaves on its own.
+s12261	 faces\s
+s12262	; the duel of two dragons begins!
+s12263	 grew impatient and left with its servants.
+s12264	Duel won
+s12265	Your dragon\s
+s12266	 defeated\s
+s12267	! The defeated ancient dragon left the treasure it carried (
+s12268	) at the hoard's door and departed with its servants.\n\n
+s12269	 mood +10 (15 days), hoard guarding days +
+s12270	Duel lost
+s12271	 fell before\s
+s12272	. The ancient dragon's servants walked into the hoard and carried off\s
+s12273	: there wasn't much in the hoard to take
+s12274	, then followed their master away.
+s12275	Negotiation failed: the ancient dragon feels offended.
+s12276	Marriage
+s12277	 was persuaded: it stays in the colony as a\s
+s12278	 and takes\s
+s12279	 as a mate. Give them a shared hoard and they will nest and lay eggs. The servants go their separate ways.
+s12280	The ancient dragon's threat
+s12281	 left with its servants, vowing before departing to return in\s
+s12282	 days and plunder\s
+s12283	's hoard.
+s12284	 attacked\s
+s12285	; the ancient dragon takes this as a refusal.
+s12286	Ancient dragon comes to plunder the hoard
+s12287	 kept its word and came back with\s
+s12288	 servants! They'll take things from the hoard and retreat once they have them.
+s12289	No adult dragon in the colony can fight
+s12290	Duel: send\s
+s12291	) to fight
+s12292	Already answered
+s12293	Marriage (success chance\s
+s12294	A great dragon is circling this sky, and over the next day its shadow will sweep across the land now and then. Wherever the dragon's shadow passes, beasts flee in panic.\n\nColonists feel uneasy watching the dragon overhead (mood -3); force dragonborn, however, smell their own kind (mood +3).\n\nIt may occasionally breathe a blast of force at the ground.
+s12295	\n\nThe colony's adult dragons have already raised their heads and fixed their eyes on it...
+s12296	[LichPhylactery] Ducks' Insane Skills is an old 1.3 mod;\s
+s12297	 of its patches don't compile on the current version (every call throws, crashing skill learning and trading), and have been removed:\s
+s12298	. Consider disabling it in the mod list.
+s12299	[LichPhylactery] Ducks' Insane Skills compatibility check failed:\s
+s12300	The elder brain swallowed the mind flayer's corpse and awoke.
+s12301	Elder brain grows
+s12302	The elder brain has absorbed enough brains to grow to level\s
+s12303	. Tadpoles are produced faster.
+s12304	\n\nIt begins calling to distant wanderers psychically.
+s12305	The elder brain went hungry for a day without food
+s12306	, losing one inherited memory
+s12307	. Feed it herbal medicine, raw meat or meals.
+s12308	The elder brain produced a mind flayer tadpole.
+s12309	The elder brain called a wanderer psychically:\s
+s12310	 is walking toward it in a daze, and will collapse beside it on arrival.
+s12311	The elder brain has been destroyed. The core of the hive mind snapped, and all mind flayers suffered psychic backlash: mood plummets, brain matter drains.
+s12312	Awaken elder brain
+s12313	Place a mind flayer corpse next to the elder brain (adjacent cell), and the elder brain will swallow it and awaken.
+s12314	There's no mind flayer corpse next to the elder brain.
+s12315	Fill brain jar
+s12316	Fill one inherited memory into a brain jar. A mind flayer using the brain jar inherits 80% of the XP in it. The elder brain stores at most 5 memories.
+s12317	No inherited memories
+s12318	Dormant: place a mind flayer corpse next to it to awaken it.
+s12319	; brains absorbed\s
+s12320	 (next level needs\s
+s12321	)
+s12322	Next tadpole: in\s
+s12323	 days
+s12324	Starving: stops producing tadpoles, loses one memory per day
+s12325	Inherited memories\s
+s12326	Summons: one wanderer every\s
+s12327	 days
+s12328	Summons: needs level\s
+s12329	\s
+s12330	's memory)
+s12331	Inheritable:\s
+s12332	 XP
+s12333	 absorbed the inherited memory of\s
+s12334	.
+s12335	Only mind flayers can absorb inherited memories
+s12336	The jar is empty
+s12337	[DND Rimlands] Event letter check error (
+s12338	[DND Rimlands] Event letter pawn error (
+s12339	Event:\s
+s12340	This matter has been settled.
+s12341	Reopen the "
+s12342	" dialog and answer here. You won't miss it even if the letter was closed; once answered, this button disappears.
+s12343	[DND Rimlands] Event button error:\s
+s12344	 (open dialog)
+s12345	[DND Rimlands] Third-batch event failed to generate a character (
+s12346	hit him
+s12347	[DND Rimlands] Third-batch event (
+s12348	) error:\s
+s12349	[DND Rimlands] Third-batch event kill handling error:\s
+s12350	[DND Rimlands] Weave tide error:\s
+s12351	[DND Rimlands] Gifted apprentice error:\s
+s12352	1.117.0 new events (all affected by "DND event frequency", earliest on day 15):
+s12353	An ownerless chest appears on the map: 70% a real chest, 30% a mimic. Someone with Intellectual ≥8 can appraise it first.
+s12354	With a patron deity, a beggar comes asking for things (by the patron deity's good or evil). If given alms, he reveals himself as the god's avatar the next day: favor +15, and the giver gets "graced by a god".
+s12355	2-4 bards come to perform for a night: whole-colony mood up, adventurer XP; they write the colony's greatest deed into a ballad, each faction's goodwill +5. An infamous colony gets a satirical song instead.
+s12356	Silver dragon traveler in disguise
+s12357	An old traveler stays for 3 days, scoring food, lodging and company; on leaving, they reveal their silver dragon form. Good hospitality earns dragon scales and "friend of the silver dragon"; excellent hospitality has a chance to leave a dragon egg.
+s12358	A colonist who died 3-15 days ago entrusts one last task (burial, caring for family, or revenge). On completion, the one entrusted inherits half their skill XP.
+s12359	A wounded allied noble flees to the colony, hunted by Thay: shelter them, hand them to Thay, or sell them to the dark net.
+s12360	Entrusted gifted apprentice (needs Biotech)
+s12361	An alliance wizard entrusts a magical prodigy to you and sends gifts regularly; on reaching adulthood with enough Intellectual, the child becomes a wizard.
+s12362	A night of meteor showers drops a mithral meteorite before dawn; 10% chance it carries a heart of a fallen star, which draws thieves.
+s12363	The camp of a wiped-out adventuring party appears on the world map, with the monster that killed them still there. Gear, adventure logs, and reviving them lets you recruit them.
+s12364	5 days of aurora: each ability cast has a 20% chance to trigger wild magic (good or bad), and spellcasting classes gain extra adventurer XP each day.
+s12365	An invisible thief sneaks in at night to steal the lich's phylactery. If stolen, you must raid the hideout within 15 days to take it back, or the phylactery is sold to a Nine Hells broker (redeemable).
+s12366	The adventurer's destiny
+s12367	When adventurers first reach levels 5, 10 and 15, each time there's a one-in-two chance of a personal quest; on completion choose one: +1 ability or a combat gift.
+s12368	The alliance invites you to a tournament: send one person each for swordsmanship, lance, archery and wrestling, decided by skills and abilities. Winners get trophies and XP; winning three or more events earns a champion title.
+s12369	When the colony has a lich with a phylactery of level 5 or higher, a Thayan lich issues a challenge: spell duel, phylactery hunt, or refuse.
+s12370	On a well-wooded map, the oldest tree stands up: if few trees were cut, it gifts a heart of the forest (nearby crops grow +20%); if many were cut, it comes for revenge with awakened trees.

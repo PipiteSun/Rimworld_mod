@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 咬牙硬撑 -->
+  <LP_RelentlessEndurance.label>gritting teeth</LP_RelentlessEndurance.label>
+  <!-- 凭一股狠劲撑着不倒。疼痛不会让人休克倒地，意识不会低于约30%。效果结束后伤势照常结算。 -->
+  <LP_RelentlessEndurance.description>Holding on through sheer grit. Pain won't shock them into falling, and consciousness won't drop below about 30%. When the effect ends, injuries resolve as usual.</LP_RelentlessEndurance.description>
+  <!-- 不屈冷却 -->
+  <LP_RelentlessCooldown.label>relentless cooldown</LP_RelentlessCooldown.label>
+  <!-- 刚刚咬牙硬撑过一次。冷却结束前不会再次触发不屈坚韧。 -->
+  <LP_RelentlessCooldown.description>Just gritted their teeth through it once. Relentless Endurance won't trigger again until the cooldown ends.</LP_RelentlessCooldown.description>
+  <!-- 山腹之中 -->
+  <LP_DwarfUnderMountain.label>in the mountain's belly</LP_DwarfUnderMountain.label>
+  <!-- 头顶是厚实的岩层，矮人如鱼得水。 -->
+  <LP_DwarfUnderMountain.description>Thick rock overhead; a dwarf in their element.</LP_DwarfUnderMountain.description>
+</LanguageData>

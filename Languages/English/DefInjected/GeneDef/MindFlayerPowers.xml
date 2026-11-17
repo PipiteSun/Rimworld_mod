@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 半夺心魔 -->
+  <LP_HalfIllithidGene.label>half-illithid</LP_HalfIllithidGene.label>
+  <!-- 蝌蚪被抑灵剂压制在半途，宿主保住了自我，却也得到了夺心魔的一部分力量：能读心、能吞噬大脑（不需要脑髓，也不会获得脑髓）。每吞噬一个人形大脑领悟一项灵能（依次为心灵震爆、念力投掷、灵能隐匿，最多3项）。目睹吞噬大脑不会难过。 -->
+  <LP_HalfIllithidGene.description>The tadpole was suppressed halfway by the suppressant; the host kept their self but also gained part of a mind flayer's power: can read minds and devour brains (needs no brain matter and gains none). Each humanlike brain devoured teaches one psionic power (psychic blast, telekinetic throw, psionic concealment in order, up to 3). Not upset by witnessing brain devouring.</LP_HalfIllithidGene.description>
+  <!-- 灵能免费，只受冷却限制。 | 每吞噬一个人形大脑：领悟一项灵能（最多3项）；25%概率让抑灵剂失效。 -->
+  <LP_HalfIllithidGene.customEffectDescriptions.0>Psionics are free, limited only by cooldown.</LP_HalfIllithidGene.customEffectDescriptions.0>
+  <LP_HalfIllithidGene.customEffectDescriptions.1>Each humanlike brain devoured: learn one psionic power (up to 3); 25% chance to break the suppressant.</LP_HalfIllithidGene.customEffectDescriptions.1>
+</LanguageData>

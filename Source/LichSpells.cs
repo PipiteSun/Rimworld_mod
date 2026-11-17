@@ -12,13 +12,13 @@ namespace LichPhylactery {
  public static class Souls {
   public const float BaseValue=50f,PerSkillLevel=5f,MinSensitivity=.2f,MaxSensitivity=4f;
   public static string Unfit(Thing thing){
-   if(!(thing is Corpse corpse) || corpse.InnerPawn==null)return "需要人形尸体。";
+   if(!(thing is Corpse corpse) || corpse.InnerPawn==null)return "需要人形尸体。".Loc();
    Pawn p=corpse.InnerPawn;
-   if(!p.RaceProps.Humanlike)return "需要人形尸体。";
-   if(!p.RaceProps.IsFlesh || Necro.Undead(p) || NecromancyGenes.HasBody(p))return "死灵躯体没有可汲取的灵魂。";
-   if(SpiritStones.Holds(p))return "灵魂被魂石收走了，没法汲取。"; // 1.45.0
-   if(corpse.GetRotStage()==RotStage.Dessicated)return "尸体已化为枯骨，灵魂早已散去。";
-   if(p.health.hediffSet.GetMissingPartsCommonAncestors().Count>0)return "尸体缺少身体部位，灵魂不完整。";
+   if(!p.RaceProps.Humanlike)return "需要人形尸体。".Loc();
+   if(!p.RaceProps.IsFlesh || Necro.Undead(p) || NecromancyGenes.HasBody(p))return "死灵躯体没有可汲取的灵魂。".Loc();
+   if(SpiritStones.Holds(p))return "灵魂被魂石收走了，没法汲取。".Loc(); // 1.45.0
+   if(corpse.GetRotStage()==RotStage.Dessicated)return "尸体已化为枯骨，灵魂早已散去。".Loc();
+   if(p.health.hediffSet.GetMissingPartsCommonAncestors().Count>0)return "尸体缺少身体部位，灵魂不完整。".Loc();
    return null;
   }
   public static int SkillTotal(Pawn p){int sum=0;var list=p?.skills?.skills;if(list!=null)for(int i=0;i<list.Count;i++)sum+=list[i].Level;return sum;}
@@ -33,12 +33,12 @@ namespace LichPhylactery {
    if(Necro.Registry==null || Necro.Registry.boxes.Count==0)return;
    Pawn p=__instance.InnerPawn;if(p==null || !p.RaceProps.Humanlike)return;
    string unfit=Souls.Unfit(__instance);
-   string line=unfit==null?"灵魂价值："+Souls.Value(p).ToString("0")+"献祭经验（技能总和"+Souls.SkillTotal(p)+"，心灵敏感度"+Souls.Sensitivity(p).ToStringPercent()+"）":"无法汲取灵魂："+unfit;
+   string line=unfit==null?"灵魂价值：".Loc()+Souls.Value(p).ToString("0")+"献祭经验（技能总和".Loc()+Souls.SkillTotal(p)+"，心灵敏感度".Loc()+Souls.Sensitivity(p).ToStringPercent()+"）".Loc():"无法汲取灵魂：".Loc()+unfit;
    __result=string.IsNullOrEmpty(__result)?line:__result.TrimEnd()+"\n"+line;
   }
  }
  public static class LichSpells {
-  public static readonly (string name,string label,int level)[] Unlocks={("FearGaze","恐惧凝视",3),("NecroticBlast","死灵冲击",6),("PowerWordKill","死亡律令",15)};
+  public static readonly (string name,string label,int level)[] Unlocks={("FearGaze","恐惧凝视".Loc(),3),("NecroticBlast","死灵冲击".Loc(),6),("PowerWordKill","死亡律令".Loc(),15)};
   public const int DrainLevel=10,DrainInterval=60,FearStunTicks=300;
   public const float DrainRadius=6.9f,DrainDamage=3f,DrainEntropyPerTarget=1.5f;
   public static DamageDef Necrotic=>Necro.Def<DamageDef>("Necrotic");
@@ -47,7 +47,7 @@ namespace LichPhylactery {
   public static bool Frighten(Pawn caster,Pawn p){
    // 1.44.0：独眼巨人本源免疫凝视类效果（巫妖法术、卷轴、半巫妖和拉洛克化身都走这里）。
    if(p.RaceProps.IsMechanoid || Necro.Undead(p) || p.GetStatValue(StatDefOf.PsychicSensitivity)<=0 || Cyclops.GazeImmune(p))return false;
-   if(p.RaceProps.Humanlike)return p.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.PanicFlee,"恐惧凝视",forced:true,forceWake:true);
+   if(p.RaceProps.Humanlike)return p.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.PanicFlee,"恐惧凝视".Loc(),forced:true,forceWake:true);
    p.stances?.stunner.StunFor(FearStunTicks,caster,false,true,false);return true;
   }
  }
@@ -60,15 +60,15 @@ namespace LichPhylactery {
    int level=LichSpells.UnlockedLevel(box);
    foreach(var spell in LichSpells.Unlocks){
     var def=Necro.Def<AbilityDef>(spell.name);bool has=pawn.abilities.GetAbility(def)!=null;
-    if(level>=spell.level && !has){pawn.abilities.GainAbility(def);if(pawn.Faction==Faction.OfPlayer && !pawn.Dead)Messages.Message(pawn.LabelShort+"的命匣达到"+spell.level+"级，领悟法术："+spell.label+"。",pawn,MessageTypeDefOf.PositiveEvent,false);}
+    if(level>=spell.level && !has){pawn.abilities.GainAbility(def);if(pawn.Faction==Faction.OfPlayer && !pawn.Dead)Messages.Message(pawn.LabelShort+"的命匣达到".Loc()+spell.level+"级，领悟法术：".Loc()+spell.label+"。".Loc(),pawn,MessageTypeDefOf.PositiveEvent,false);}
     else if(level<spell.level && has)pawn.abilities.RemoveAbility(def);
    }
    if(drainAura && level<LichSpells.DrainLevel)drainAura=false;
   }
   public string SpellStatus {get{
    int level=LichSpells.UnlockedLevel(box);
-   var parts=LichSpells.Unlocks.Select(s=>(label:s.label,level:s.level)).Concat(new[]{(label:"生命汲取光环",level:LichSpells.DrainLevel)}).OrderBy(s=>s.Item2).Select(s=>s.Item1+"（"+s.Item2+"级"+(level>=s.Item2?"，已解锁":"")+"）");
-   return "\n命匣法术："+string.Join("、",parts)+(drainAura?"\n生命汲取光环：开启":"");
+   var parts=LichSpells.Unlocks.Select(s=>(label:s.label,level:s.level)).Concat(new[]{(label:"生命汲取光环".Loc(),level:LichSpells.DrainLevel)}).OrderBy(s=>s.Item2).Select(s=>s.Item1+"（".Loc()+s.Item2+"级".Loc()+(level>=s.Item2?"，已解锁".Loc():"")+"）".Loc());
+   return "\n命匣法术：".Loc()+string.Join("、".Loc(),parts)+(drainAura?"\n生命汲取光环：开启".Loc():"");
   }}
   public void DrainTick(int delta){if(!drainAura)return;drainTicks+=delta;if(drainTicks<LichSpells.DrainInterval)return;drainTicks=0;DrainPulse();}
   // Drains every non-downed hostile living creature in range; costs no psyfocus, only entropy per target.
@@ -80,7 +80,7 @@ namespace LichPhylactery {
    var targets=map.mapPawns.AllPawnsSpawned.Where(p=>LichSpells.Enemy(pawn,p) && !p.Downed && NecromancyGenes.IsLivingTarget(p) && p.Position.InHorDistOf(pawn.Position,LichSpells.DrainRadius)).ToList();
    foreach(var target in targets){
     if(MagicItems.ScarabResists(target))continue; // 1.45.0 圣甲虫护符
-    if(!pawn.psychicEntropy.TryAddEntropy(LichSpells.DrainEntropyPerTarget,pawn,true,false)){drainAura=false;Messages.Message(pawn.LabelShort+"的心灵熵已满，生命汲取光环关闭。",pawn,MessageTypeDefOf.NeutralEvent,false);break;}
+    if(!pawn.psychicEntropy.TryAddEntropy(LichSpells.DrainEntropyPerTarget,pawn,true,false)){drainAura=false;Messages.Message(pawn.LabelShort+"的心灵熵已满，生命汲取光环关闭。".Loc(),pawn,MessageTypeDefOf.NeutralEvent,false);break;}
     healed+=target.TakeDamage(new DamageInfo(LichSpells.Necrotic,LichSpells.DrainDamage,0f,-1f,pawn)).totalDamageDealt;hits++;
     FleckMaker.Static(target.Position,map,FleckDefOf.PsycastAreaEffect,.6f);
    }
@@ -89,8 +89,8 @@ namespace LichPhylactery {
   }
   IEnumerable<Gizmo> SpellGizmos(){
    if(!DrainUnlocked && !drainAura)yield break;
-   var toggle=new Command_Toggle{defaultLabel="生命汲取光环",defaultDesc="持续汲取"+LichSpells.DrainRadius.ToString("0.#")+"格内所有未倒地的敌对活物：每秒对每个目标造成"+LichSpells.DrainDamage.ToString("0")+"点死灵伤害，并按实际伤害修复自身伤口。不消耗精神力，每命中一个目标增加"+LichSpells.DrainEntropyPerTarget.ToString("0.#")+"心灵熵；心灵熵将满时自动关闭。命匣"+LichSpells.DrainLevel+"级解锁。",icon=Necro.Icon("Icons/NecroticBody"),isActive=()=>drainAura,toggleAction=()=>{drainAura=!drainAura;drainTicks=0;}};
-   if(!DrainUnlocked)toggle.Disable("需要有效绑定的"+LichSpells.DrainLevel+"级以上命匣。");
+   var toggle=new Command_Toggle{defaultLabel="生命汲取光环".Loc(),defaultDesc="持续汲取".Loc()+LichSpells.DrainRadius.ToString("0.#")+"格内所有未倒地的敌对活物：每秒对每个目标造成".Loc()+LichSpells.DrainDamage.ToString("0")+"点死灵伤害，并按实际伤害修复自身伤口。不消耗精神力，每命中一个目标增加".Loc()+LichSpells.DrainEntropyPerTarget.ToString("0.#")+"心灵熵；心灵熵将满时自动关闭。命匣".Loc()+LichSpells.DrainLevel+"级解锁。".Loc(),icon=Necro.Icon("Icons/NecroticBody"),isActive=()=>drainAura,toggleAction=()=>{drainAura=!drainAura;drainTicks=0;}};
+   if(!DrainUnlocked)toggle.Disable("需要有效绑定的".Loc()+LichSpells.DrainLevel+"级以上命匣。".Loc());
    yield return toggle;
   }
   void ExposeSpells(){Scribe_Values.Look(ref drainAura,"drainAura");Scribe_Values.Look(ref drainTicks,"drainTicks");}
@@ -104,8 +104,8 @@ namespace LichPhylactery {
   public List<Pawn> Affected(IntVec3 center){var map=Caster.Map;float r=Radius;return map==null?new List<Pawn>():map.mapPawns.AllPawnsSpawned.Where(p=>LichSpells.Enemy(Caster,p) && p.Position.InHorDistOf(center,r)).ToList();}
   public override bool Valid(LocalTargetInfo target,bool throwMessages=false){
    string reason=null;
-   if(Props.effect=="kill"){Pawn p=target.Pawn;if(p==null || p.Dead || !p.Spawned || p.Map!=Caster.Map)reason="需要地图上的存活角色。";else if(p==Caster)reason="不能对自己使用。";else if(p.Faction==Faction.OfPlayer)reason="不能对己方殖民者或造物使用。";}
-   else if(Caster.Map==null || !target.Cell.IsValid || !target.Cell.InBounds(Caster.Map))reason="需要地图上的目标位置。";
+   if(Props.effect=="kill"){Pawn p=target.Pawn;if(p==null || p.Dead || !p.Spawned || p.Map!=Caster.Map)reason="需要地图上的存活角色。".Loc();else if(p==Caster)reason="不能对自己使用。".Loc();else if(p.Faction==Faction.OfPlayer)reason="不能对己方殖民者或造物使用。".Loc();}
+   else if(Caster.Map==null || !target.Cell.IsValid || !target.Cell.InBounds(Caster.Map))reason="需要地图上的目标位置。".Loc();
    if(reason!=null && throwMessages)Messages.Message(reason,MessageTypeDefOf.RejectInput,false);
    return reason==null && base.Valid(target,throwMessages);
   }

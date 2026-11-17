@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 畸变瘤块 -->
+  <LP_AberrantTumor.label>aberrant growth</LP_AberrantTumor.label>
+  <!-- 畸变再生膏留下的一团多余的肉，会自己微微抽动。不痛不痒，就是难看。可以手术切除。 -->
+  <LP_AberrantTumor.description>A lump of extra flesh left by aberrant regenerative paste that twitches slightly on its own. Doesn't hurt or itch, just ugly. Can be surgically removed.</LP_AberrantTumor.description>
+  <!-- 蜕形 -->
+  <LP_MorphDraught.label>metamorphosis</LP_MorphDraught.label>
+  <!-- 肌肉一鼓一鼓地往外长，脸也跟着走了形。近战伤害 +20%，疼痛阈值 +20%，社交影响 -30%。 -->
+  <LP_MorphDraught.description>Muscles bulge outward, and the face is warping along with them. Melee damage +20%, pain threshold +20%, social impact -30%.</LP_MorphDraught.description>
+  <!-- 远域饱食 -->
+  <LP_FarRealmSated.label>Far Realm satiation</LP_FarRealmSated.label>
+  <!-- 食尸鬼吞下了扭曲肉，远域的血肉在胃里翻腾。近战伤害 +10%，移动速度 +5%。 -->
+  <LP_FarRealmSated.description>The ghoul swallowed twisted meat, and the Far Realm flesh churns in its stomach. Melee damage +10%, move speed +5%.</LP_FarRealmSated.description>
+  <!-- 孵化血肉兽 -->
+  <LP_FleshMinion.label>hatched fleshbeast</LP_FleshMinion.label>
+  <!-- 从血肉孵化槽（或畸变巨像的残躯）里爬出来的小血肉兽，听命于殖民地，到时间就会烂掉。 -->
+  <LP_FleshMinion.description>A small fleshbeast that crawled out of a flesh incubator (or an aberrant golem's remains), obeying the colony and rotting when its time is up.</LP_FleshMinion.description>
+  <!-- 畸变血肉 -->
+  <LP_AberrantGolem.label>aberrant flesh</LP_AberrantGolem.label>
+  <!-- 这具血肉巨像掺了远域的扭曲肉：更耐打（受到的伤害 -17%，相当于生命 +20%），伤口会慢慢自己长好；死的时候裂成 2 只小血肉兽，1 天后烂掉。 -->
+  <LP_AberrantGolem.description>This flesh golem is mixed with twisted meat from the Far Realm: tougher (damage taken -17%, equivalent to +20% health), wounds slowly heal on their own; when it dies it splits into 2 small fleshbeasts that rot after 1 day.</LP_AberrantGolem.description>
+  <!-- 扭曲肉滋养 -->
+  <LP_FleshNourished.label>twisted meat nourishment</LP_FleshNourished.label>
+  <!-- 今天喂过 5 份扭曲肉。工作效率 +10%。 -->
+  <LP_FleshNourished.description>Fed 5 twisted meat today. Work efficiency +10%.</LP_FleshNourished.description>
+</LanguageData>

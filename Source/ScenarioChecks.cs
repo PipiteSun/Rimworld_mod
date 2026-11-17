@@ -9,8 +9,14 @@ using Verse.AI;
 
 namespace LichPhylactery {
  public partial class LichChecks {
+  // 找一块平地（允许屋顶、树木），清掉其中的植物和散落物品，作为测试场地（1.167.0 从力能龙检查移来）。
+  IntVec3 OpenArea(int radius,IntVec3 avoid){
+   var c=map.AllCells.Where(x=>x.x>radius+10 && x.z>radius+10 && x.x<map.Size.x-radius-10 && x.z<map.Size.z-radius-10 && x.DistanceTo(avoid)>radius+8).OrderBy(x=>x.DistanceToSquared(map.Center)).First(x=>CellRect.CenteredOn(x,radius).Cells.All(y=>!y.Fogged(map) && y.GetEdifice(map)==null && y.GetFirstPawn(map)==null && y.GetTerrain(map).passability==Traversability.Standable && !y.GetTerrain(map).IsWater));
+   foreach(var y in CellRect.CenteredOn(c,radius).Cells)foreach(var t in y.GetThingList(map).Where(t=>t.def.category==ThingCategory.Item || t is Plant || t.def.category==ThingCategory.Filth).ToList())t.Destroy();
+   return c;
+  }
   void CheckScenarios(){
-   foreach(var name in new[]{"LP_LichScenario","LP_FireGiantScenario","LP_TrollScenario","LP_ForceDragonScenario"}){
+   foreach(var name in new[]{"LP_LichScenario","LP_FireGiantScenario","LP_TrollScenario"}){
     var def=DefDatabase<ScenarioDef>.GetNamedSilentFail(name);
     Check(def!=null && !def.ConfigErrors().Any(),"race scenario loads cleanly: "+name+" "+(def==null?"missing":string.Join(";",def.ConfigErrors())));
     Check(def.scenario.AllParts.All(p=>p.def!=null),"race scenario parts resolve: "+name);
@@ -53,22 +59,6 @@ namespace LichPhylactery {
    Check(map.mapPawns.FreeColonistsSpawned.Where(p=>!FireGiant.Active(p)).All(p=>p.apparel.WornApparel.All(a=>a.def.defName!="LP_FireGiantTunic")),"fire giant start leaves other colonists alone");
    forge.Destroy();giant.Destroy();
 
-   // 龙蛋开局的实际效果
-   var dragonScen=DefDatabase<ScenarioDef>.GetNamed("LP_ForceDragonScenario").scenario;
-   var clutch=dragonScen.AllParts.OfType<ScenPart_ForceDragonClutch>().Single();
-   Check(clutch.age==4 && clutch.eggs==1 && !string.IsNullOrEmpty(clutch.Summary(dragonScen)) && dragonScen.AllParts.OfType<ScenPart_ConfigPage_ConfigureStartingPawns_Xenotypes>().Any(),"dragon egg scenario starts an ancient dragon with one egg");
-   var dragonDef=DefDatabase<XenotypeDef>.GetNamed("LP_ForceDragon");
-   var elder=GenerateDragon(dragonDef);
-   GenSpawn.Spawn(elder,OpenArea(5,altar.Position),map);
-   var hoard=ScenPart_ForceDragonClutch.Apply(map,clutch.age,clutch.eggs,clutch.eggProgress,clutch.gold,clutch.silver,out var hoardInterior);
-   var hoardRoom=DragonHoard.RoomOf(elder);
-   var clutchEggs=hoard.Where(t=>t.def==DragonHoard.EggDef).ToList();
-   Check(ForceDragon.Age(elder)==4 && hoardRoom!=null && hoardInterior.Area==25,"dragon egg start makes the dragon ancient and builds its roofed hoard");
-   Check(clutchEggs.Count==1 && clutchEggs.All(e=>e.GetRoom()==hoardRoom && Math.Abs(e.TryGetComp<CompDragonEgg>().progressDays-.9f*LichMod.Settings.dragonEggHatchDays)<.01f),"dragon egg start lays one nearly hatched egg in the hoard");
-   Check(ForceDragon.Heart(elder).hoardValue>=3000 && Near(ForceDragon.Heart(elder).Value,ForceDragon.Heart(elder).Max),"dragon egg start stocks the hoard with gold and silver and fills force");
-   foreach(var t in hoard)if(!t.Destroyed)t.Destroy();
-   foreach(var c in hoardInterior.Cells)map.roofGrid.SetRoof(c,null);
-   elder.Destroy();
    // 开局限时状况
    var cond=ScenPart_TimedCondition.Apply(map,GameConditionDefOf.Eclipse,1);
    Check(map.gameConditionManager.ConditionIsActive(GameConditionDefOf.Eclipse) && cond.TicksLeft<=60000 && cond.TicksLeft>59000,"timed scenario condition runs for the configured days");

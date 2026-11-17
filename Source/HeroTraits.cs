@@ -34,7 +34,7 @@ namespace LichPhylactery {
   public HashSet<int> extraAsi;public List<int> capHigherOf;public List<KeyValuePair<List<int>,int>> capMore;
   public Hediff_HeroRecord rec;
   // 1.58.1 专长（冒险者状态里的），同样走这个缓存：专长变动时失效。
-  public bool brawler,crafter,observant,musician,ritual,magma,bloodRegen,infernal,elven,dragonFear,oath,bountiful,dwarven,poisoner;public int adept;
+  public bool brawler,crafter,observant,musician,ritual,magma,bloodRegen,infernal,elven,oath,bountiful,dwarven,poisoner;public int adept;
   public bool gwm,sharp,mageSlayer;public int weaponType; // 1.67.0 巨武器大师 / 神射手伤害、斩刺碎（1/2/3）、法师杀手
   public int f3; // 1.140.0 战斗专长位（Feats3.FDual…）
   public bool Destiny=>prophesied || pact>0 || weave || champion>0;
@@ -48,9 +48,9 @@ namespace LichPhylactery {
   public const int ParagonCap=26,ManifestLevel=10,SeedLegendPoints=10;
   // 极致：每项属性对应的两个传奇项（力→近战、血量；敏→远程、近战；体→血量、承受；智→学习、工作；感→心灵、回复；魅→心灵、工作）。
   public static readonly int[,] ParagonLegend={{Legend.Melee,Legend.Health},{Legend.Ranged,Legend.Melee},{Legend.Health,Legend.Tough},{Legend.Learn,Legend.Work},{Legend.Psychic,Legend.Recovery},{Legend.Psychic,Legend.Work}};
-  public static readonly string[] FavoredLabels={"","龙","巨人","不死","邪魔","异怪","野兽","仇敌派系"};
-  public static readonly string[] ElementLabels={"","火","冰","雷","酸"};
-  public static readonly string[] PactLabels={"","邪魔","妖精","旧日"};
+  public static readonly string[] FavoredLabels={"","龙".Loc(),"巨人".Loc(),"不死".Loc(),"邪魔".Loc(),"异怪".Loc(),"野兽".Loc(),"仇敌派系".Loc()};
+  public static readonly string[] ElementLabels={"","火".Loc(),"冰".Loc(),"雷".Loc(),"酸".Loc()};
+  public static readonly string[] PactLabels={"","邪魔".Loc(),"妖精".Loc(),"旧日".Loc()};
 
   // ---------- 特性分类 ----------
   static HashSet<TraitDef> gold,purple,deeds,all;
@@ -172,13 +172,13 @@ namespace LichPhylactery {
   // 说明里写是谁拉高了倍率。
   public static string MultNote(Pawn p,int a,bool legend){
    var i=Info(p);if(i==null)return null;var parts=new List<string>();
-   if(!legend){if(i.gifted==a)parts.Add("天赋 ×1.5");if(i.paragon==a)parts.Add("极致 ×2.5");if(i.removeWeak)parts.Add("反骨：笨拙按 ×1");}
+   if(!legend){if(i.gifted==a)parts.Add("天赋 ×1.5".Loc());if(i.paragon==a)parts.Add("极致 ×2.5".Loc());if(i.removeWeak)parts.Add("反骨：笨拙按 ×1".Loc());}
    else{
-    if(i.legendAll>1f)parts.Add("英雄之资 ×"+i.legendAll.ToString("0.##"));
-    if(a>=0 && a<Legend.Count){if(i.legendStrong[a]>0f)parts.Add((i.legendStrongBy[a]??Plain(i.power,i.degree))+" ×"+i.legendStrong[a].ToString("0.##"));if(i.legendFloor[a]>0f)parts.Add("传说事迹 至少 ×"+i.legendFloor[a].ToString("0.##"));}
-    if(i.paragon>=0 && a>=0 && (ParagonLegend[i.paragon,0]==a || ParagonLegend[i.paragon,1]==a))parts.Add("极致 ×2");
+    if(i.legendAll>1f)parts.Add("英雄之资 ×".Loc()+i.legendAll.ToString("0.##"));
+    if(a>=0 && a<Legend.Count){if(i.legendStrong[a]>0f)parts.Add((i.legendStrongBy[a]??Plain(i.power,i.degree))+" ×"+i.legendStrong[a].ToString("0.##"));if(i.legendFloor[a]>0f)parts.Add("传说事迹 至少 ×".Loc()+i.legendFloor[a].ToString("0.##"));}
+    if(i.paragon>=0 && a>=0 && (ParagonLegend[i.paragon,0]==a || ParagonLegend[i.paragon,1]==a))parts.Add("极致 ×2".Loc());
    }
-   return parts.Count==0?null:string.Join("、",parts);
+   return parts.Count==0?null:string.Join("、".Loc(),parts);
   }
   // 上限：英雄之资 +2、弑神者 +1（所有项）；极致那一项 26；灵光：智力、感知中较高的一项 +2。
   public static int CapBonus(Hediff_Adventurer h,int a){
@@ -320,7 +320,7 @@ namespace LichPhylactery {
   }
   public static string LetterNote(Pawn p){
    var l=p?.story?.traits?.allTraits?.Where(t=>Is(t.def) || DndTraits.IsCurse(t.def)).Select(Plain).ToList();
-   return l==null || l.Count==0?"":"，特性 "+string.Join("、",l);
+   return l==null || l.Count==0?"":"，特性 ".Loc()+string.Join("、".Loc(),l);
   }
 
   // ---------- 宿敌 ----------
@@ -358,12 +358,12 @@ namespace LichPhylactery {
   // ---------- 悬停说明里的动态内容 ----------
   public static string ExtraTip(Pawn p,Trait t){
    if(p==null || t==null)return null;var r=Record(p);var sb=new StringBuilder();
-   if(IsDestiny(t.def) && r!=null)sb.Append("当前阶段："+HeroDestiny.StageLabel(r.stage)+(r.demoted?"（被宗主降阶，下次偿契成功后恢复升阶）":""));
-   if(t.def==HeroDefOf.LP_Prophesied && r!=null){sb.Append("\n预言："+HeroDestiny.ProphecyText(r.prophecy)+(r.prophecyDone?"（已兑现）":""));if(r.prophecy==5)sb.Append("（已守住 "+r.raidsDefended+" / "+HeroDestiny.ProphecyRaids+" 次）");if(!r.prophecyDone)sb.Append("\n命运未尽："+(HeroDestiny.FateReady(p,r)?"可用":"冷却中"));}
-   if(t.def==HeroDefOf.LP_PactDestiny && r!=null){sb.Append("\n宗主："+HeroDestiny.PatronName(t.Degree));sb.Append("\n"+HeroDestiny.DemandStatus(r));if(r.pactFails>0)sb.Append("\n连续失败 "+r.pactFails+" 次（2 次降阶）");}
-   if(t.def==HeroDefOf.LP_FavoredEnemy && r!=null){if(t.Degree==7)sb.Append("仇敌派系："+(r.favoredFaction?.Name??"（没有可记的敌对派系）")+"\n");sb.Append("已击杀宿敌 "+r.favoredKills+" / "+HeroCombat.BaneKills+(r.favoredBane?"：宿敌克星":""));}
-   if(t.def==HeroDefOf.LP_Giantbane && r!=null)sb.Append("近战参与击杀巨人："+r.giantKills);
-   if(t.def==HeroDefOf.LP_DivineChampion){var g=HeroDestiny.ChampionGod(t.Degree);if(g!=null)sb.Append("\n侍奉："+g.FullLabel+"；敌对目标："+HeroDestiny.ChampionTargetLabel(t.Degree));if(r!=null && r.stage>=2)sb.Append("\n神明干预："+(HeroDestiny.DivineReady(r)?"可用":"冷却中"));}
+   if(IsDestiny(t.def) && r!=null)sb.Append("当前阶段：".Loc()+HeroDestiny.StageLabel(r.stage)+(r.demoted?"（被宗主降阶，下次偿契成功后恢复升阶）".Loc():""));
+   if(t.def==HeroDefOf.LP_Prophesied && r!=null){sb.Append("\n预言：".Loc()+HeroDestiny.ProphecyText(r.prophecy)+(r.prophecyDone?"（已兑现）".Loc():""));if(r.prophecy==5)sb.Append("（已守住 ".Loc()+r.raidsDefended+" / "+HeroDestiny.ProphecyRaids+" 次）".Loc());if(!r.prophecyDone)sb.Append("\n命运未尽：".Loc()+(HeroDestiny.FateReady(p,r)?"可用".Loc():"冷却中".Loc()));}
+   if(t.def==HeroDefOf.LP_PactDestiny && r!=null){sb.Append("\n宗主：".Loc()+HeroDestiny.PatronName(t.Degree));sb.Append("\n"+HeroDestiny.DemandStatus(r));if(r.pactFails>0)sb.Append("\n连续失败 ".Loc()+r.pactFails+" 次（2 次降阶）".Loc());}
+   if(t.def==HeroDefOf.LP_FavoredEnemy && r!=null){if(t.Degree==7)sb.Append("仇敌派系：".Loc()+(r.favoredFaction?.Name??"（没有可记的敌对派系）".Loc())+"\n");sb.Append("已击杀宿敌 ".Loc()+r.favoredKills+" / "+HeroCombat.BaneKills+(r.favoredBane?"：宿敌克星".Loc():""));}
+   if(t.def==HeroDefOf.LP_Giantbane && r!=null)sb.Append("近战参与击杀巨人：".Loc()+r.giantKills);
+   if(t.def==HeroDefOf.LP_DivineChampion){var g=HeroDestiny.ChampionGod(t.Degree);if(g!=null)sb.Append("\n侍奉：".Loc()+g.FullLabel+"；敌对目标：".Loc()+HeroDestiny.ChampionTargetLabel(t.Degree));if(r!=null && r.stage>=2)sb.Append("\n神明干预：".Loc()+(HeroDestiny.DivineReady(r)?"可用".Loc():"冷却中".Loc()));}
    return sb.Length==0?null:sb.ToString().Trim();
   }
  }
@@ -396,9 +396,9 @@ namespace LichPhylactery {
   }
   public static string Label(DndType t){
    var l=new List<string>();
-   if((t&DndType.Dragon)!=0)l.Add("龙");if((t&DndType.Giant)!=0)l.Add("巨人");if((t&DndType.Undead)!=0)l.Add("不死");if((t&DndType.Fiend)!=0)l.Add("邪魔");
-   if((t&DndType.Aberration)!=0)l.Add("异怪");if((t&DndType.Beast)!=0)l.Add("野兽");if((t&DndType.Divine)!=0)l.Add("神力");
-   return l.Count==0?"无":string.Join("、",l);
+   if((t&DndType.Dragon)!=0)l.Add("龙".Loc());if((t&DndType.Giant)!=0)l.Add("巨人".Loc());if((t&DndType.Undead)!=0)l.Add("不死".Loc());if((t&DndType.Fiend)!=0)l.Add("邪魔".Loc());
+   if((t&DndType.Aberration)!=0)l.Add("异怪".Loc());if((t&DndType.Beast)!=0)l.Add("野兽".Loc());if((t&DndType.Divine)!=0)l.Add("神力".Loc());
+   return l.Count==0?"无".Loc():string.Join("、".Loc(),l);
   }
  }
 
@@ -509,7 +509,7 @@ namespace LichPhylactery {
   }
   public void Tick2500(int now){
    Refresh();
-   foreach(var p in destinies.ToList()){try{HeroDestiny.Periodic(p,now);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 天命周期出错："+e,75158001);}}
+   foreach(var p in destinies.ToList()){try{HeroDestiny.Periodic(p,now);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 天命周期出错：".Loc()+e,75158001);}}
    foreach(var p in PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive_FreeColonists.ToList()){if(Growth.all.Count>0)Growth.Sync(p);} // 1.58.3 传承武器阶段（实战磨砺 1.75.0 起实时累计，Growth.Grind）
    HeroDestiny.CheckColonyDemigod();
    if(now%60000<2500){HeroTraits.Cleanup();DndCreatureType.Trim();}
@@ -560,18 +560,18 @@ namespace LichPhylactery {
  }
  public static class HeroTraitSettings {
   static string legend;
-  static string TraitRarityLegend=>legend??(legend="稀有度："+string.Join(" ",Enumerable.Range(0,6).Select(i=>TraitRarity.Hexes[i]==null?TraitRarity.Names[i]:"<color="+TraitRarity.Hexes[i]+">"+TraitRarity.Names[i]+"</color>"))+"  <color="+TraitRarity.CurseHex+">诅咒</color> <color="+TraitRarity.DeedHex+">事迹</color>");
+  static string TraitRarityLegend=>legend??(legend="稀有度：".Loc()+string.Join(" ",Enumerable.Range(0,6).Select(i=>TraitRarity.Hexes[i]==null?TraitRarity.Names[i]:"<color="+TraitRarity.Hexes[i]+">"+TraitRarity.Names[i]+"</color>"))+"  <color="+TraitRarity.CurseHex+">诅咒</color> <color=".Loc()+TraitRarity.DeedHex+">事迹</color>".Loc());
   public static void Draw(Listing_Standard l){
-   var s=LichMod.Settings;l.GapLine();l.Label("DND 特性");
-   l.Label(TraitRarityLegend,-1f,(TipSignal)"特性名字的颜色按稀有度：普通（白）、优秀（绿）、稀有（蓝）、史诗（紫）、传说（橙）、神话（金）；诅咒之力是红色，传说事迹是青色，它们的档位写在悬停说明第一行。"); // 2026-10-29 特性稀有度
-   l.CheckboxLabeled("DND 强力特性",ref s.heroTraits,"（1.58.0）新生成的人有很小的机会带一个强力特性：英雄之资系与天命（英雄之资、极致是传说，四个天命是神话）、加点与强化天赋（天赋、金刚之躯、锋芒、灵光、传奇之胚和六个强化天赋是稀有，反骨、勤勉是史诗），1.51.0 的四个稀有天赋（史诗）也并进这一次随机。得到一个之后，每次按“额外强力特性”的成功率再得一个，直到失败或达到上限（天命之间、稀有天赋之间、诅咒之间仍然互斥）；传说事迹（青色）由事件授予，不占名额。\n第一个：普通种族 英雄之资系与天命 1% / 加点与强化天赋 4%，中等 0.4% / 3%，传奇种族 0.2% / 1%；四个稀有天赋 2%（传奇种族没有）。\n关闭后不再生成，已有的保留。");
-   l.Label("强力特性出现率："+s.heroTraitRate+"%");s.heroTraitRate=Mathf.RoundToInt(l.Slider(s.heroTraitRate,0,300)/5f)*5;
-   l.Label("每人最多强力特性："+s.heroTraitMax+" 个");s.heroTraitMax=Mathf.RoundToInt(l.Slider(s.heroTraitMax,1,6));
-   l.Label("额外强力特性成功率："+s.heroTraitExtra+"%（得到一个之后，每次再得一个的几率）");s.heroTraitExtra=Mathf.RoundToInt(l.Slider(s.heroTraitExtra,0,100)/5f)*5;
-   l.CheckboxLabeled("起源专长",ref s.originFeats,"（1.58.1）每个 13 岁以上的人形得到冒险者等级时免费获得 1 个起源专长（不占属性提升）：有背景特性的按背景（侍僧、贤者 → 魔法学徒；罪犯、士兵 → 警觉；民间英雄 → 酒馆斗殴者；贵族 → 技能专家；隐士 → 治疗者；局外人 → 幸运），否则按背景故事里加得最多的技能；5% 改为幸运。老存档读档时补发一次。敌人也有。关闭后不再发放，已有的保留。");
-   l.CheckboxLabeled("实战磨砺",ref s.growthGrind,"（1.58.3）殖民者在实战和工作里慢慢磨砺属性：每 2500 刻按经验差值累计（力量 ← 格斗 + 采矿 ×0.5，敏捷 ← 射击，体质 ← 受到的伤害 ×100，智力 ← 智识，感知 ←（医疗 + 驯兽 + 种植）×0.5，魅力 ← 社交），满 120000 该项 +1，每项一生最多 +2，不超过上限。Isekai 共存模式下照常累计但只显示。");
-   l.CheckboxLabeled("派系声望",ref s.factionReputation,"（1.58.3）费伦拓荒同盟、余烬氏族、黑网各有殖民地声望 0～50：完成它发的任务 +3，送礼每 20 好感 +1，在有它的人在场时击杀敌人 +2（每天一次）；不会下降，敌对时冻结。3 / 10 / 25 / 50 四级头衔：商队卖价 -5% → 每季情报信 → 请求援兵冷却减半、商队带专属物品 → 每季一份礼物。");
-   l.CheckboxLabeled("敌人携带强力特性",ref s.heroTraitsEnemies,"剧情首领、宿敌冠军 50% 带一个强力特性（人类首领优先英雄之资系与天命），宿敌冠军另有 30% 带一个传说事迹；袭击领队 10% 带加点或强化天赋。关闭后敌对派系的人也不再随机带强力特性。");
+   var s=LichMod.Settings;l.GapLine();l.Label("DND 特性".Loc());
+   l.Label(TraitRarityLegend,-1f,(TipSignal)"特性名字的颜色按稀有度：普通（白）、优秀（绿）、稀有（蓝）、史诗（紫）、传说（橙）、神话（金）；诅咒之力是红色，传说事迹是青色，它们的档位写在悬停说明第一行。".Loc()); // 2026-10-29 特性稀有度
+   l.CheckboxLabeled("DND 强力特性".Loc(),ref s.heroTraits,"（1.58.0）新生成的人有很小的机会带一个强力特性：英雄之资系与天命（英雄之资、极致是传说，四个天命是神话）、加点与强化天赋（天赋、金刚之躯、锋芒、灵光、传奇之胚和六个强化天赋是稀有，反骨、勤勉是史诗），1.51.0 的四个稀有天赋（史诗）也并进这一次随机。得到一个之后，每次按“额外强力特性”的成功率再得一个，直到失败或达到上限（天命之间、稀有天赋之间、诅咒之间仍然互斥）；传说事迹（青色）由事件授予，不占名额。\n第一个：普通种族 英雄之资系与天命 1% / 加点与强化天赋 4%，中等 0.4% / 3%，传奇种族 0.2% / 1%；四个稀有天赋 2%（传奇种族没有）。\n关闭后不再生成，已有的保留。".Loc());
+   l.Label("强力特性出现率：".Loc()+s.heroTraitRate+"%");s.heroTraitRate=Mathf.RoundToInt(l.Slider(s.heroTraitRate,0,300)/5f)*5;
+   l.Label("每人最多强力特性：".Loc()+s.heroTraitMax+" 个".Loc());s.heroTraitMax=Mathf.RoundToInt(l.Slider(s.heroTraitMax,1,6));
+   l.Label("额外强力特性成功率：".Loc()+s.heroTraitExtra+"%（得到一个之后，每次再得一个的几率）".Loc());s.heroTraitExtra=Mathf.RoundToInt(l.Slider(s.heroTraitExtra,0,100)/5f)*5;
+   l.CheckboxLabeled("起源专长".Loc(),ref s.originFeats,"（1.58.1）每个 13 岁以上的人形得到冒险者等级时免费获得 1 个起源专长（不占属性提升）：有背景特性的按背景（侍僧、贤者 → 魔法学徒；罪犯、士兵 → 警觉；民间英雄 → 酒馆斗殴者；贵族 → 技能专家；隐士 → 治疗者；局外人 → 幸运），否则按背景故事里加得最多的技能；5% 改为幸运。老存档读档时补发一次。敌人也有。关闭后不再发放，已有的保留。".Loc());
+   l.CheckboxLabeled("实战磨砺".Loc(),ref s.growthGrind,"（1.58.3）殖民者在实战和工作里慢慢磨砺属性：每 2500 刻按经验差值累计（力量 ← 格斗 + 采矿 ×0.5，敏捷 ← 射击，体质 ← 受到的伤害 ×100，智力 ← 智识，感知 ←（医疗 + 驯兽 + 种植）×0.5，魅力 ← 社交），满 120000 该项 +1，每项一生最多 +2，不超过上限。Isekai 共存模式下照常累计但只显示。".Loc());
+   l.CheckboxLabeled("派系声望".Loc(),ref s.factionReputation,"（1.58.3）费伦拓荒同盟、余烬氏族、黑网各有殖民地声望 0～50：完成它发的任务 +3，送礼每 20 好感 +1，在有它的人在场时击杀敌人 +2（每天一次）；不会下降，敌对时冻结。3 / 10 / 25 / 50 四级头衔：商队卖价 -5% → 每季情报信 → 请求援兵冷却减半、商队带专属物品 → 每季一份礼物。".Loc());
+   l.CheckboxLabeled("敌人携带强力特性".Loc(),ref s.heroTraitsEnemies,"剧情首领、宿敌冠军 50% 带一个强力特性（人类首领优先英雄之资系与天命），宿敌冠军另有 30% 带一个传说事迹；袭击领队 10% 带加点或强化天赋。关闭后敌对派系的人也不再随机带强力特性。".Loc());
    DndTraitSettings.Draw(l); // 1.62.0 性格特性、诅咒之力
    CombatGiftSettings.Draw(l); // 1.66.0 武艺天赋
   }

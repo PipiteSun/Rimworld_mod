@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 治疗药水 -->
+  <LP_PotionHealing.label>healing potion</LP_PotionHealing.label>
+  <!-- 药力在伤口间流动，自然愈合速度大幅提高。 -->
+  <LP_PotionHealing.description>The potion's power flows between the wounds, greatly raising natural healing speed.</LP_PotionHealing.description>
+  <!-- 加倍 -->
+  <LP_PotionHealing.stages.1.label>doubled</LP_PotionHealing.stages.1.label>
+  <!-- 巨人之力 -->
+  <LP_PotionGiantStrength.label>giant strength</LP_PotionGiantStrength.label>
+  <!-- 熔岩之力充满四肢。 -->
+  <LP_PotionGiantStrength.description>The might of lava fills the limbs.</LP_PotionGiantStrength.description>
+  <!-- 抗火 -->
+  <LP_PotionFireResistance.label>fire resistance</LP_PotionFireResistance.label>
+  <!-- 皮肤覆着一层看不见的凉意，火焰难以伤及。 -->
+  <LP_PotionFireResistance.description>The skin is covered in an invisible coolness that fire can barely harm.</LP_PotionFireResistance.description>
+  <!-- 隐形药水 -->
+  <LP_PotionInvisibility.label>potion of invisibility</LP_PotionInvisibility.label>
+  <!-- 身形淡去，敌人看不见这个人。发动攻击会立即现形，药效随之结束。 -->
+  <LP_PotionInvisibility.description>The body fades; enemies can't see this person. Attacking reveals them at once and the potion's effect ends.</LP_PotionInvisibility.description>
+  <!-- 英雄气概 -->
+  <LP_PotionHeroism.label>heroism</LP_PotionHeroism.label>
+  <!-- 胸中涌起无畏的勇气：不会精神崩溃，也不会被恐惧吓倒。 -->
+  <LP_PotionHeroism.description>Fearless courage surges in the chest: no mental breaks, and can't be frightened.</LP_PotionHeroism.description>
+  <!-- 心智护盾 -->
+  <LP_PotionMindShield.label>mind shield</LP_PotionMindShield.label>
+  <!-- 思绪外罩着一层薄雾般的屏障。心智抗性+40%（与种族抗性相加，最多95%）。 -->
+  <LP_PotionMindShield.description>A mist-like barrier shrouds the thoughts. Mind resistance +40% (adds to racial resistance, up to 95%).</LP_PotionMindShield.description>
+  <!-- 巨魔再生剂 -->
+  <LP_TrollRegenTonic.label>troll regenerant</LP_TrollRegenTonic.label>
+  <!-- 巨魔血在体内蠕动：饱食度不低于50%时缓慢修复伤口（巨魔的四分之一），不长断肢、不会复活。着火、被火烧或酸蚀时暂停。饥饿速度×1.5。药效结束时有10%概率染上巨魔血瘾。 -->
+  <LP_TrollRegenTonic.description>Troll blood writhes inside: wounds slowly heal while food is at least 50% (a quarter of a troll's rate); doesn't regrow limbs or revive. Pauses while on fire, burned or acid-burned. Hunger rate ×1.5. When it wears off there's a 10% chance of troll blood addiction.</LP_TrollRegenTonic.description>
+  <!-- 被火烧 -->
+  <LP_TrollBurned.label>burned</LP_TrollBurned.label>
+  <!-- 巨魔被火焰烧伤，血肉再生中断6小时；这段时间里死去不会复活。 -->
+  <LP_TrollBurned.description>The troll was burned by fire, and its flesh regeneration is interrupted for 6 hours; dying during this time it won't revive.</LP_TrollBurned.description>
+  <!-- 酸蚀 -->
+  <LP_TrollAcid.label>acid-burned</LP_TrollAcid.label>
+  <!-- 巨魔被酸液灼伤，血肉再生中断6小时；这段时间里死去不会复活。 -->
+  <LP_TrollAcid.description>The troll was burned by acid, and its flesh regeneration is interrupted for 6 hours; dying during this time it won't revive.</LP_TrollAcid.description>
+  <!-- 刚被抽血 -->
+  <LP_RecentlyBled.label>recently drawn</LP_RecentlyBled.label>
+  <!-- 这个巨魔刚被抽过血，要等伤口和血量都缓过来才能再抽。 -->
+  <LP_RecentlyBled.description>This troll just had blood drawn; you have to wait for the wound and blood level to recover before drawing again.</LP_RecentlyBled.description>
+  <!-- 巨魔血瘾 -->
+  <LP_TrollBloodAddiction.label>troll blood addiction</LP_TrollBloodAddiction.label>
+  <!-- 身体习惯了巨魔血带来的再生力，离不开它了。不定期喝巨魔再生剂就会出现戒断反应；长时间不喝可以慢慢戒掉。 -->
+  <LP_TrollBloodAddiction.description>The body has grown used to the regeneration troll blood brings and can't do without it. Without regular troll regenerant, withdrawal sets in; going a long time without it can slowly break the habit.</LP_TrollBloodAddiction.description>
+  <!-- 戒断 -->
+  <LP_TrollBloodAddiction.stages.1.label>withdrawal</LP_TrollBloodAddiction.stages.1.label>
+</LanguageData>

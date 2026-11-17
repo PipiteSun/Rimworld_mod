@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 抗性术 -->
+  <LP_CS_Resistance.label>resistance</LP_CS_Resistance.label>
+  <!-- 受到的伤害 ×0.85。 -->
+  <LP_CS_Resistance.description>Damage taken ×0.85.</LP_CS_Resistance.description>
+  <!-- 虔诚护盾 -->
+  <LP_CS_ShieldOfFaith.label>shield of faith</LP_CS_ShieldOfFaith.label>
+  <!-- 闪光的护盾：利器与钝器护甲 +20%。 -->
+  <LP_CS_ShieldOfFaith.description>A shimmering shield: sharp and blunt armor +20%.</LP_CS_ShieldOfFaith.description>
+  <!-- 指引之光 -->
+  <LP_CS_Outlined.label>guiding light</LP_CS_Outlined.label>
+  <!-- 被指引之箭的光芒标记：下一次被敌人攻击时伤害 ×1.3。 -->
+  <LP_CS_Outlined.description>Marked by the light of a guiding bolt: the next enemy attack against it deals ×1.3 damage.</LP_CS_Outlined.description>
+  <!-- 临时生命 -->
+  <LP_CS_TempHP.label>temporary hit points</LP_CS_TempHP.label>
+  <!-- 受到伤害时先扣临时生命。 -->
+  <LP_CS_TempHP.description>Temporary hit points are lost first when taking damage.</LP_CS_TempHP.description>
+  <!-- 灵体武器 -->
+  <LP_CS_SpiritWeapon.label>spiritual weapon</LP_CS_SpiritWeapon.label>
+  <!-- 一把光耀之锤飘在身边，每 2 秒敲打最近的敌人。 -->
+  <LP_CS_SpiritWeapon.description>A radiant hammer floats nearby, striking the nearest enemy every 2 seconds.</LP_CS_SpiritWeapon.description>
+  <!-- 守护灵 -->
+  <LP_CS_SpiritGuardians.label>spirit guardians</LP_CS_SpiritGuardians.label>
+  <!-- 守护灵绕身飞舞：身边的敌人每秒受光耀伤害、行动迟缓。 -->
+  <LP_CS_SpiritGuardians.description>Guardian spirits whirl around: nearby enemies take radiant damage every second and are slowed.</LP_CS_SpiritGuardians.description>
+  <!-- 守护灵缠绕 -->
+  <LP_CS_SpiritSlowed.label>spirit-bound</LP_CS_SpiritSlowed.label>
+  <!-- 被守护灵缠住：移动 ×0.5。 -->
+  <LP_CS_SpiritSlowed.description>Entangled by spirit guardians: movement ×0.5.</LP_CS_SpiritSlowed.description>
+  <!-- 静默 -->
+  <LP_CS_Silenced.label>silenced</LP_CS_Silenced.label>
+  <!-- 身处静默术里：念不出咒语，放不了职业法术。 -->
+  <LP_CS_Silenced.description>Inside a silence spell: cannot speak incantations or cast class spells.</LP_CS_Silenced.description>
+  <!-- 自由行动 -->
+  <LP_CS_Freedom.label>freedom of movement</LP_CS_Freedom.label>
+  <!-- 不受减速、束缚和眩晕。 -->
+  <LP_CS_Freedom.description>Unaffected by slows, restraints and stuns.</LP_CS_Freedom.description>
+  <!-- 英雄宴 -->
+  <LP_CS_HeroesFeast.label>heroes' feast</LP_CS_HeroesFeast.label>
+  <!-- 吃过神赐的宴席：毒素抗性 +100%，精神崩溃阈值 −15%。 -->
+  <LP_CS_HeroesFeast.description>Ate a god-given feast: toxic resistance +100%, mental break threshold -15%.</LP_CS_HeroesFeast.description>
+  <!-- 神圣光环 -->
+  <LP_CS_HolyAura.label>holy aura</LP_CS_HolyAura.label>
+  <!-- 圣光笼罩：受到的伤害 ×0.7。 -->
+  <LP_CS_HolyAura.description>Bathed in holy light: damage taken ×0.7.</LP_CS_HolyAura.description>
+  <!-- 橡棍术 -->
+  <LP_CS_Shillelagh.label>shillelagh</LP_CS_Shillelagh.label>
+  <!-- 武器注入自然之力：近战伤害 ×1.4。 -->
+  <LP_CS_Shillelagh.description>Weapon infused with nature's power: melee damage ×1.4.</LP_CS_Shillelagh.description>
+  <!-- 跳跃术 -->
+  <LP_CS_Jump.label>jump</LP_CS_Jump.label>
+  <!-- 跑跳如飞：移动 ×1.3。 -->
+  <LP_CS_Jump.description>Running and leaping as if flying: movement ×1.3.</LP_CS_Jump.description>
+  <!-- 刺足 -->
+  <LP_CS_SpikeSlowed.label>spiked feet</LP_CS_SpikeSlowed.label>
+  <!-- 脚下全是尖刺 / 被虫群包围：移动 ×0.5。 -->
+  <LP_CS_SpikeSlowed.description>Spikes underfoot / surrounded by a swarm: movement ×0.5.</LP_CS_SpikeSlowed.description>
+  <!-- 风墙庇护 -->
+  <LP_CS_WindWard.label>wind wall shelter</LP_CS_WindWard.label>
+  <!-- 靠着风墙：受到的远程伤害减半。 -->
+  <LP_CS_WindWard.description>Sheltered by a wind wall: ranged damage taken halved.</LP_CS_WindWard.description>
+  <!-- 风行术 -->
+  <LP_CS_WindWalk.label>wind walk</LP_CS_WindWalk.label>
+  <!-- 化身清风：移动 ×2。 -->
+  <LP_CS_WindWalk.description>Turned into wind: movement ×2.</LP_CS_WindWalk.description>
+  <!-- 心灵之楔 -->
+  <LP_CS_Slivered.label>mind sliver</LP_CS_Slivered.label>
+  <!-- 脑子里扎着一根心灵之楔：视力 −20%。 -->
+  <LP_CS_Slivered.description>A psychic spike is lodged in the mind: sight -20%.</LP_CS_Slivered.description>
+  <!-- 超魔·穿透 -->
+  <LP_CS_MetaPierce.label>metamagic: heightened</LP_CS_MetaPierce.label>
+  <!-- 下一个法术的控制成功率 +25%。 -->
+  <LP_CS_MetaPierce.description>The next spell's control success +25%.</LP_CS_MetaPierce.description>
+  <!-- 超魔·扩展 -->
+  <LP_CS_MetaExtend.label>metamagic: extended</LP_CS_MetaExtend.label>
+  <!-- 下一个法术的持续时间 ×2。 -->
+  <LP_CS_MetaExtend.description>The next spell's duration ×2.</LP_CS_MetaExtend.description>
+  <!-- 超魔·即时 -->
+  <LP_CS_MetaQuicken.label>metamagic: quickened</LP_CS_MetaQuicken.label>
+  <!-- 下一个法术不进冷却。 -->
+  <LP_CS_MetaQuicken.description>The next spell triggers no cooldown.</LP_CS_MetaQuicken.description>
+  <!-- 血脉觉醒 -->
+  <LP_CS_BloodlineAwakened.label>bloodline awakening</LP_CS_BloodlineAwakened.label>
+  <!-- 血脉彻底觉醒：职业法术和能力的伤害、治疗 ×1.5。 -->
+  <LP_CS_BloodlineAwakened.description>Bloodline fully awakened: class spell and ability damage and healing ×1.5.</LP_CS_BloodlineAwakened.description>
+  <!-- 冻寒之触 -->
+  <LP_CS_ChillTouched.label>chill touch</LP_CS_ChillTouched.label>
+  <!-- 鬼手的寒意：伤口不能愈合。 -->
+  <LP_CS_ChillTouched.description>The chill of the ghostly hand: wounds cannot heal.</LP_CS_ChillTouched.description>
+  <!-- 分神 -->
+  <LP_CS_Distracted.label>distracted</LP_CS_Distracted.label>
+  <!-- 被幻象吸引了注意：视力 −15%。 -->
+  <LP_CS_Distracted.description>Attention drawn by an illusion: sight -15%.</LP_CS_Distracted.description>
+  <!-- 地狱斥责 -->
+  <LP_CS_Rebuke.label>hellish rebuke</LP_CS_Rebuke.label>
+  <!-- 下一次被敌人打伤时，地狱之火反烧对方。 -->
+  <LP_CS_Rebuke.description>The next time an enemy wounds you, hellfire burns them back.</LP_CS_Rebuke.description>
+  <!-- 蛛行术 -->
+  <LP_CS_SpiderClimb.label>spider climb</LP_CS_SpiderClimb.label>
+  <!-- 像蜘蛛一样爬行：不受地形减速，移动 ×1.1。 -->
+  <LP_CS_SpiderClimb.description>Crawling like a spider: no terrain slowdown, movement ×1.1.</LP_CS_SpiderClimb.description>
+  <!-- 目光术 -->
+  <LP_CS_Eyebite.label>eyebite</LP_CS_Eyebite.label>
+  <!-- 双眼化作虚空，注视身边的敌人。 -->
+  <LP_CS_Eyebite.description>The eyes become voids, staring at nearby enemies.</LP_CS_Eyebite.description>
+  <!-- 虚弱 -->
+  <LP_CS_Weakened.label>weakened</LP_CS_Weakened.label>
+  <!-- 被目光术吸走了力气：近战伤害 ×0.5。 -->
+  <LP_CS_Weakened.description>Strength drained by eyebite: melee damage ×0.5.</LP_CS_Weakened.description>
+  <!-- 良莓 -->
+  <LP_CS_Goodberry.label>goodberry</LP_CS_Goodberry.label>
+  <!-- 吃了良莓：几秒内伤势慢慢愈合。 -->
+  <LP_CS_Goodberry.description>Ate a goodberry: wounds slowly heal over a few seconds.</LP_CS_Goodberry.description>
+  <!-- 唤醒 -->
+  <LP_CS_Awakened.label>awakened</LP_CS_Awakened.label>
+  <!-- 被唤醒术唤醒了心智：能学的训练都会了，永远不会遗忘。 -->
+  <LP_CS_Awakened.description>Mind awakened by the awaken spell: knows every training it can learn and never forgets.</LP_CS_Awakened.description>
+</LanguageData>

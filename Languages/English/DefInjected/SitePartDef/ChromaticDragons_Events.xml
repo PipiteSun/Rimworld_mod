@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 龙巢 -->
+  <LP_DragonLair.label>dragon lair</LP_DragonLair.label>
+  <!-- 一条真龙的巢穴：它睡在宝藏堆旁，身边守着护卫。 -->
+  <LP_DragonLair.description>A true dragon's lair: it sleeps by its hoard, with guards around it.</LP_DragonLair.description>
+  <!-- 正在闯入{0}。 -->
+  <LP_DragonLair.approachingReportString>Breaking into {0}.</LP_DragonLair.approachingReportString>
+  <!-- 闯入{0} -->
+  <LP_DragonLair.approachOrderString>break into {0}</LP_DragonLair.approachOrderString>
+  <!-- 这里是龙巢。巢主睡在宝藏堆旁：有人走近 10 格就会醒来。在巢里它多一次传奇抗性，每 10 秒放一次巢穴动作；把它引出巢穴 20 格以外，巢穴动作就停了。 -->
+  <LP_DragonLair.arrivedLetter>This is a dragon lair. The lair's master sleeps by the hoard and wakes when anyone comes within 10 cells. In the lair it gets one extra legendary resistance and a lair action every 10 seconds; lure it more than 20 cells out of the lair and the lair actions stop.</LP_DragonLair.arrivedLetter>
+</LanguageData>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 眼魔巢穴 -->
+  <LP_BeholderLair.label>beholder lair</LP_BeholderLair.label>
+  <!-- 地下洞穴深处，一只眼魔守着它的收藏。 -->
+  <LP_BeholderLair.description>Deep in an underground cave, a beholder guards its collection.</LP_BeholderLair.description>
+  <!-- 正在闯入{0}。 -->
+  <LP_BeholderLair.approachingReportString>Breaking into {0}.</LP_BeholderLair.approachingReportString>
+  <!-- 闯入{0} -->
+  <LP_BeholderLair.approachOrderString>break into {0}</LP_BeholderLair.approachOrderString>
+  <!-- 这里是眼魔巢穴。别站在它正前方：主眼正面不能施法、护盾腰带失效。打掉眼柄能让它少一种射线。 -->
+  <LP_BeholderLair.arrivedLetter>This is a beholder lair. Don't stand right in front of it: in front of its central eye casting is impossible and shield belts fail. Knocking off eyestalks removes its ray types.</LP_BeholderLair.arrivedLetter>
+  <!-- 无尽墓穴 -->
+  <LP_EndlessTomb.label>Endless Tomb</LP_EndlessTomb.label>
+  <!-- 一位半巫妖的坟墓。它只剩一颗头骨，却比任何活着的法师都可怕。 -->
+  <LP_EndlessTomb.description>A demilich's tomb. Only its skull remains, yet it's more frightening than any living wizard.</LP_EndlessTomb.description>
+  <!-- 正在闯入{0}。 -->
+  <LP_EndlessTomb.approachingReportString>Breaking into {0}.</LP_EndlessTomb.approachingReportString>
+  <!-- 闯入{0} -->
+  <LP_EndlessTomb.approachOrderString>break into {0}</LP_EndlessTomb.approachOrderString>
+  <!-- 这里是无尽墓穴。半巫妖每 60 秒发出一次吞魂之嚎：带上医生，灵魂撕裂的人 30 秒内必须包扎。银器伤害 ×2。 -->
+  <LP_EndlessTomb.arrivedLetter>This is the Endless Tomb. The demilich lets out a soul-devouring howl every 60 seconds: bring a doctor, since those whose souls are torn must be tended within 30 seconds. Silver weapons deal ×2 damage.</LP_EndlessTomb.arrivedLetter>
+</LanguageData>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（SystemHostWindow.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh> · 系统宿主</zh><en> · system host</en></s>
+  <s><zh>没有“系统宿主”特性，不再发布任务</zh><en>No "system host" trait; no more quests issued</en></s>
+  <s><zh>任务进行中，完成或结束后再发布</zh><en>Quest in progress; more are issued once it's completed or ended</en></s>
+  <s><zh>即将发布</zh><en>issuing soon</en></s>
+  <s><zh>下次发布：约 </zh><en>Next issue: about </en></s>
+  <s><zh>已完成任务 {0} 次    超时 {1} 次    放弃 {2} 次    已领奖 {3} 次    {4}</zh><en>Quests completed {0}    timed out {1}    abandoned {2}    rewards claimed {3}    {4}</en></s>
+  <s><zh>当前任务：{0}    {1} / {2}    剩余 {3:0.0} 天</zh><en>Current quest: {0}    {1} / {2}    {3:0.0} days left</en></s>
+  <s><zh>放弃任务</zh><en>Abandon quest</en></s>
+  <s><zh>确认放弃任务「{0}」？主动放弃没有惩罚，但这次任务不会再有奖励。</zh><en>Abandon the quest "{0}"? Abandoning voluntarily has no penalty, but this quest won't give a reward anymore.</en></s>
+  <s><zh>进度按接受任务后此人的记录统计（击杀、制作、治疗、收获、研究、俘获）。期限内完成即可领取一次奖励；超时会受到 3 天系统惩罚（全局工作速度 ×0.85）。</zh><en>Progress counts this person's records after accepting the quest (kills, crafting, healing, harvesting, research, captures). Completing it within the deadline earns one reward; timing out brings a 3-day system penalty (global work speed ×0.85).</en></s>
+  <s><zh>接受任务</zh><en>Accept quest</en></s>
+  <s><zh>确认接受任务「{0}」？期限 7 天，超时会受到 3 天系统惩罚；另外两个任务将放弃。</zh><en>Accept the quest "{0}"? Deadline 7 days; timing out brings a 3-day system penalty; the other two quests will be abandoned.</en></s>
+  <s><zh>三个任务选一个接受，也可以不接（下次发布时换一批）。关闭面板不会重抽。</zh><en>Choose one of three quests to accept, or accept none (a new batch comes next issue). Closing the panel doesn't reroll.</en></s>
+  <s><zh>现在没有可接受的任务。系统每 7 天发布一次任务。</zh><en>No quests to accept right now. The system issues quests every 7 days.</en></s>
+  <s><zh>此人已经没有“系统宿主”特性：不再发布任务，但已经完成的任务奖励仍可领取。</zh><en>This person no longer has the "system host" trait: no more quests are issued, but rewards for completed quests can still be claimed.</en></s>
+  <s><zh>待领取 {0} 次。每次三选一：属性点在“冒险者”分页分配，物品放入背包。</zh><en>{0} to claim. Choose one of three each time: ability points are assigned on the "Adventurer" tab, items go into the inventory.</en></s>
+  <s><zh>属性成长</zh><en>Ability growth</en></s>
+  <s><zh>+1 属性点</zh><en>+1 ability point</en></s>
+  <s><zh>加入冒险者的可分配属性点（和升级得到的属性点在同一处分配），可用于力量、敏捷、体质、智力、感知或魅力。</zh><en>Added to the adventurer's assignable ability points (assigned in the same place as points from leveling up), usable for Strength, Dexterity, Constitution, Intelligence, Wisdom or Charisma.</en></s>
+  <s><zh>此人没有冒险者等级（冒险者系统关闭或未满 13 岁），此项不可选。</zh><en>This person has no adventurer level (adventurer system off or under 13), so this option isn't available.</en></s>
+  <s><zh>改命符</zh><en>fate talisman</en></s>
+  <s><zh>改命符 ×1</zh><en>Fate talisman ×1</en></s>
+  <s><zh>放入背包。使用时把自己或同一处另一名殖民者的一个特性改写成同一档位的另一个特性（诅咒只换诅咒，事迹与基因特性不能改）。</zh><en>Put into the inventory. When used, rewrites one trait of yourself or another colonist in the same place into another trait of the same tier (curses only to curses; deeds and gene traits can't be changed).</en></s>
+  <s><zh>随机物品</zh><en>Random item</en></s>
+  <s><zh>完成任务后揭晓</zh><en>Revealed after completing the quest</en></s>
+  <s><zh>暂无可用物品</zh><en>No items available</en></s>
+  <s><zh>魔核、强化核心、魔力精华或星辰碎片，随机一种。</zh><en>A random one of: magic core, enhancement core, mana essence or star fragment.</en></s>
+  <s><zh>治疗药水、强效治疗药水、英雄药水、位面残渣或秘银，随机一种。</zh><en>A random one of: healing potion, potion of superior healing, potion of heroism, planar residue or mithral.</en></s>
+  <s><zh>打开冒险者分页</zh><en>Open adventurer tab</en></s>
+  <s><zh>当前领取：{0}</zh><en>Claiming now: {0}</en></s>
+  <s><zh>完成系统任务可获得下一次奖励。</zh><en>Complete system quests to earn the next reward.</en></s>
+  <s><zh>没有“系统宿主”特性，不再有新的奖励。</zh><en>No "system host" trait; no more new rewards.</en></s>
+  <s><zh>系统记录（任务与领奖，保留 60 条）</zh><en>System log (quests and rewards, last 60 entries)</en></s>
+  <s><zh>悬停查看详情</zh><en>Hover for details</en></s>
+  <s><zh>选择此奖励</zh><en>Choose this reward</en></s>
+  <s><zh>确认领取{0}，选择「{1}：{2}」？本次另外两项奖励将放弃。</zh><en>Claim {0}, choosing "{1}: {2}"? The other two rewards this time will be given up.</en></s>
+</LPStrings>

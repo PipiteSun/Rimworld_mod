@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 狂暴 -->
+  <LP_Rage.label>rage</LP_Rage.label>
+  <!-- 野蛮人的狂暴：近战伤害 ×(1.15 + 0.1 × 狂怒强度)，受到的利器、钝器伤害（含子弹）×0.7；不能使用施法职业的能力。 -->
+  <LP_Rage.description>A barbarian's rage: melee damage ×(1.15 + 0.1 × rage power), sharp and blunt damage taken (including bullets) ×0.7; cannot use spellcasting class abilities.</LP_Rage.description>
+  <!-- 鲁莽攻击 -->
+  <LP_RecklessAttack.label>reckless attack</LP_RecklessAttack.label>
+  <!-- 不顾防守地猛攻：近战命中 +20%，自己的近战闪避 −20%。 -->
+  <LP_RecklessAttack.description>Attacking recklessly with no regard for defense: melee hit +20%, your own melee dodge -20%.</LP_RecklessAttack.description>
+  <!-- 不灭之怒 -->
+  <LP_RelentlessRageActive.label>relentless rage</LP_RelentlessRageActive.label>
+  <!-- 怒火撑着身体：感觉不到疼痛，暂时不会倒下。 -->
+  <LP_RelentlessRageActive.description>Fury holds the body up: feels no pain and won't fall for now.</LP_RelentlessRageActive.description>
+  <!-- 狂战之魂 -->
+  <LP_LegBerserkerBuff.label>berserker soul</LP_LegBerserkerBuff.label>
+  <!-- 传奇野蛮人的狂暴：近战冷却 ×0.85，免疫击晕和精神崩溃。 -->
+  <LP_LegBerserkerBuff.description>A legendary barbarian's rage: melee cooldown ×0.85, immune to stuns and mental breaks.</LP_LegBerserkerBuff.description>
+  <!-- 猎人印记 -->
+  <LP_RangerMark.label>hunter's mark</LP_RangerMark.label>
+  <!-- 被游侠标记：标记者对它的伤害提高（× 1 + 0.15 × 猎术强度）。 -->
+  <LP_RangerMark.description>Marked by a ranger: the marker deals more damage to it (× 1 + 0.15 × hunter power).</LP_RangerMark.description>
+  <!-- 兽伴 -->
+  <LP_BeastBondBuff.label>beast companion</LP_BeastBondBuff.label>
+  <!-- 游侠的动物伙伴：近战伤害 ×(1.1 + 0.1 × 主人的猎术强度)，移动 ×1.1，护甲 +10% × 猎术强度；对主人的宿敌伤害 +20%。 -->
+  <LP_BeastBondBuff.description>A ranger's animal companion: melee damage ×(1.1 + 0.1 × the master's hunter power), movement ×1.1, armor +10% × hunter power; +20% damage against the master's favored enemy.</LP_BeastBondBuff.description>
+  <!-- 隐匿伏击 -->
+  <LP_HideInPlain.label>hide in plain sight</LP_HideInPlain.label>
+  <!-- 藏身于环境之中：隐形；下一次攻击伤害 ×1.5，出手后现形。 -->
+  <LP_HideInPlain.description>Hidden in the surroundings: invisible; the next attack deals ×1.5 damage and reveals you.</LP_HideInPlain.description>
+  <!-- 灵巧动作 -->
+  <LP_CunningAction.label>cunning action</LP_CunningAction.label>
+  <!-- 冲刺、脱离：移动 ×1.6，近战闪避 +30%。 -->
+  <LP_CunningAction.description>Dash, disengage: movement ×1.6, melee dodge +30%.</LP_CunningAction.description>
+  <!-- 暗影潜行 -->
+  <LP_ShadowStep.label>shadow step</LP_ShadowStep.label>
+  <!-- 融入阴影：隐形，攻击后现形。 -->
+  <LP_ShadowStep.description>Melted into the shadows: invisible, revealed after attacking.</LP_ShadowStep.description>
+  <!-- 淬毒刃 -->
+  <LP_PoisonBlade.label>poisoned blade</LP_PoisonBlade.label>
+  <!-- 武器淬了毒：每次命中给目标毒素积累 +6% × 诡术强度（机械体、亡灵无效）。 -->
+  <LP_PoisonBlade.description>The weapon is coated in poison: every hit adds +6% × cunning power toxic buildup to the target (no effect on mechanoids and undead).</LP_PoisonBlade.description>
+  <!-- 死亡印记 -->
+  <LP_DeathMark.label>death mark</LP_DeathMark.label>
+  <!-- 被游荡者盯上：标记者对它的伤害 ×2；它死在印记里时，标记者的游荡者能力全部冷却完毕。 -->
+  <LP_DeathMark.description>Marked by a rogue: the marker deals ×2 damage to it; if it dies under the mark, all the marker's rogue abilities finish cooling down.</LP_DeathMark.description>
+  <!-- 刺杀之势 -->
+  <LP_AssassinStrike.label>assassinate momentum</LP_AssassinStrike.label>
+  <!-- 刺杀这一下的近战伤害倍率。 -->
+  <LP_AssassinStrike.description>Melee damage multiplier of this assassination strike.</LP_AssassinStrike.description>
+</LanguageData>

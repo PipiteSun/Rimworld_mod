@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（Pacts.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>异界</zh><en>otherworldly</en></s>
+  <s><zh>一年</zh><en>one year</en></s>
+  <s><zh>灵魂</zh><en>soul</en></s>
+  <s><zh>终身</zh><en>lifelong</en></s>
+  <s><zh>命匣抵押：</zh><en>Phylactery pledge: </en></s>
+  <s><zh>契约：</zh><en>Pact: </en></s>
+  <s><zh>没有签约人</zh><en>No signatory</en></s>
+  <s><zh>不能签约</zh><en>Can't sign</en></s>
+  <s><zh>外来者不能和宗主签约</zh><en>Outsiders can't sign pacts with patrons</en></s>
+  <s><zh>已经有一份契约了（一人一份）</zh><en>Already has a pact (one per person)</en></s>
+  <s><zh>殖民地的契约已满（上限 </zh><en>The colony's pacts are full (limit </en></s>
+  <s><zh> = 1 + 最高冒险者等级 / 8）</zh><en> = 1 + highest adventurer level / 8)</en></s>
+  <s><zh>拒绝了：阿斯莫不和九狱签约</zh><en>refused: aasimar don't sign pacts with the Nine Hells</en></s>
+  <s><zh>签约</zh><en>Sign</en></s>
+  <s><zh>签了契约</zh><en>signed a pact</en></s>
+  <s><zh>签下契约：</zh><en>Pact signed: </en></s>
+  <s><zh>的契约上签了名（</zh><en> signed the pact of </en></s>
+  <s><zh>命匣抵押</zh><en>phylactery pledge</en></s>
+  <s><zh>）。\n\n恩赐：</zh><en>).\n\nBoon: </en></s>
+  <s><zh>\n\n签约人获得了能力“魔能爆”。</zh><en>\n\nThe signatory gained the ability "eldritch blast".</en></s>
+  <s><zh>巫婆集会的代价</zh><en>The coven's price</en></s>
+  <s><zh>签下了巫婆集会的契约。三位巫婆咯咯笑着伸出手：先付一笔定金——一年寿命，还是一只眼睛？</zh><en> signed the coven's pact. The three hags cackle and hold out their hands: first a down payment. A year of life, or an eye?</en></s>
+  <s><zh>（已揭开的隐藏条款）</zh><en> (revealed hidden clause)</en></s>
+  <s><zh>· ？？？（隐藏条款）</zh><en>· ??? (hidden clause)</en></s>
+  <s><zh>条款：\n</zh><en>Clauses:\n</en></s>
+  <s><zh>（无）</zh><en>(none)</en></s>
+  <s><zh>契约在 </zh><en>The pact expires in </en></s>
+  <s><zh>后到期。</zh><en>.</en></s>
+  <s><zh>这份契约没有周期性的偿契要求。</zh><en>This pact has no periodic payment demands.</en></s>
+  <s><zh>下一次偿契在 </zh><en>Next payment in </en></s>
+  <s><zh>后。</zh><en>.</en></s>
+  <s><zh>契约书：</zh><en>Contract: </en></s>
+  <s><zh>的契约书（</zh><en>'s contract (</en></s>
+  <s><zh>，期限：</zh><en>, term: </en></s>
+  <s><zh>\n可选的恩赐（三选一）：</zh><en>\nBoons to choose (one of three):</en></s>
+  <s><zh>偿契周期：约每 </zh><en>Payment cycle: about once every </en></s>
+  <s><zh> 天一次，每次给 </zh><en> days, each time giving </en></s>
+  <s><zh>一年后到期。</zh><en>Expires after one year.</en></s>
+  <s><zh>巫妖签灵魂契约：改为“命匣抵押”，恩赐数值 ×1.5；违约到底时被收走的是命匣。</zh><en>A lich signing a soul pact: becomes a "phylactery pledge", boon values ×1.5; on ultimate default, the phylactery is what gets collected.</en></s>
+  <s><zh>灵魂契约：签约人得到“灵魂抵押”，死后不能复活、尸体消失。</zh><en>Soul pact: the signatory gets "soul pledge"; can't be revived after death, and the corpse vanishes.</en></s>
+  <s><zh>签约时签约人深渊腐化 +</zh><en>On signing, the signatory's abyssal taint +</en></s>
+  <s><zh>的血脉和这位宗主相近：审阅 +2，偿契周期 ×1.33。</zh><en>'s bloodline is close to this patron: review +2, payment cycle ×1.33.</en></s>
+  <s><zh>不会高兴：签下后神眷 -20。</zh><en> won't be pleased: favor -20 after signing.</en></s>
+  <s><zh>的信徒：九狱代价周期 ×1.15。</zh><en>'s believers: Nine Hells cost cycle ×1.15.</en></s>
+  <s><zh>\n审阅 </zh><en>\nReview </en></s>
+  <s><zh>（难度 </zh><en> (difficulty </en></s>
+  <s><zh>；谈判</zh><en>; negotiation </en></s>
+  <s><zh>已用</zh><en>used</en></s>
+  <s><zh>可用（难度 </zh><en>available (difficulty </en></s>
+  <s><zh>；这位宗主不谈判</zh><en>; this patron doesn't negotiate</en></s>
+  <s><zh>\n现在签不了：</zh><en>\nCan't sign right now: </en></s>
+  <s><zh>[DND边缘大陆] 契约检查出错：</zh><en>[DND Rimlands] Pact check error: </en></s>
+  <s><zh>抢劫了九狱掮客的商队</zh><en>robbed the Nine Hells broker's caravan</en></s>
+  <s><zh>签约人不在了</zh><en>The signatory is gone</en></s>
+  <s><zh>在 </zh><en>Within </en></s>
+  <s><zh> 天内处决一名囚犯（原版处决、深渊法阵炼魂都算）。</zh><en> days, execute a prisoner (vanilla execution and soul refining on the abyssal circle both count).</en></s>
+  <s><zh> 银（信里的“交付”按钮直接从地图的白银里扣）。</zh><en> silver (the "deliver" button in the letter deducts directly from silver on the map).</en></s>
+  <s><zh>（信里的“交付”按钮直接从地图上扣）。</zh><en> (the "deliver" button in the letter deducts directly from the map).</en></s>
+  <s><zh> 天内举办一次派对或婚礼。</zh><en> days, hold a party or wedding.</en></s>
+  <s><zh>派人捎来了话：偿契的时候到了。\n\n要求：</zh><en> sent word: it's time to pay the pact.\n\nDemand: </en></s>
+  <s><zh>\n\n期限 </zh><en>\n\nDeadline </en></s>
+  <s><zh> 天。完不成，债务 +1（现在 </zh><en> days. If not done, debt +1 (now </en></s>
+  <s><zh>一本书或一张卷轴</zh><en>a book or a scroll</en></s>
+  <s><zh>一件品质优秀以上的艺术品</zh><en>an art piece of excellent quality or better</en></s>
+  <s><zh> 枚灵魂币</zh><en> soul coins</en></s>
+  <s><zh>一件东西</zh><en>an item</en></s>
+  <s><zh>的偿契。</zh><en>'s pact payment.</en></s>
+  <s><zh>契约到期，代价已经付清</zh><en>Pact expired; the price is paid in full</en></s>
+  <s><zh>到期的代价没有付清</zh><en>The price due at expiry wasn't paid in full</en></s>
+  <s><zh>契约到期（代价没付清）</zh><en>Pact expired (price not paid)</en></s>
+  <s><zh>没有按时偿契（</zh><en>didn't pay the pact on time (</en></s>
+  <s><zh>没有地图</zh><en>no map</en></s>
+  <s><zh>（要 </zh><en> (needs </en></s>
+  <s><zh> 份）</zh><en>)</en></s>
+  <s><zh>这一条不能交付</zh><en>This one can't be delivered</en></s>
+  <s><zh>殖民地里没有能拿来交换秘密的两个人。</zh><en>There aren't two people in the colony who can trade secrets.</en></s>
+  <s><zh>之间的一件秘密抖了出来：两人互相意见 -20，各自心情 -5（5 天）。</zh><en> came out: the two get opinion -20 of each other, and each mood -5 (5 days).</en></s>
+  <s><zh>没有人可以交出名字。</zh><en>No one can give up a name.</en></s>
+  <s><zh>收走了</zh><en> took </en></s>
+  <s><zh>的名字。现在大家只能叫</zh><en>'s name. Now everyone can only call them "</en></s>
+  <s><zh>”：心情 -6、社交影响 -20%（10 天）。</zh><en>": mood -6, social impact -20% (10 days).</en></s>
+  <s><zh>付出了一年寿命：生物年龄 +1 年。</zh><en> paid a year of life: biological age +1 year.</en></s>
+  <s><zh>收取代价：</zh><en>Price collected: </en></s>
+  <s><zh>灵魂税交不出 </zh><en>Soul tax can't be paid: </en></s>
+  <s><zh>收走了 </zh><en> took </en></s>
+  <s><zh> 枚灵魂币（灵魂税）。</zh><en> soul coins (soul tax).</en></s>
+  <s><zh>利息交不出 </zh><en>Interest can't be paid: </en></s>
+  <s><zh> 银利息。</zh><en> silver interest.</en></s>
+  <s><zh>契约到期</zh><en>Pact expired</en></s>
+  <s><zh>：契约到期</zh><en>: pact expired</en></s>
+  <s><zh>的契约到期了。\n\n到期的代价：</zh><en>'s pact has expired.\n\nThe price due: </en></s>
+  <s><zh>。期限 </zh><en>. Deadline </en></s>
+  <s><zh> 天；付清后契约结束，付不清</zh><en> days; once paid, the pact ends; if not paid</en></s>
+  <s><zh>，殖民地价值最高的一栋建筑会被收走（抵押物）</zh><en>, the colony's most valuable building will be taken (collateral)</en></s>
+  <s><zh>，债务 +1</zh><en>, debt +1</en></s>
+  <s><zh>抵押物被收走</zh><en>Collateral taken</en></s>
+  <s><zh>的收账人按“抵押物”条款收走了殖民地价值最高的建筑：</zh><en>'s collectors took the colony's most valuable building under the "collateral" clause: </en></s>
+  <s><zh>妖精的条款变了</zh><en>The fey's clause changed</en></s>
+  <s><zh>改了主意：契约里的“</zh><en> changed their mind: "</en></s>
+  <s><zh>”变成了“</zh><en>" in the pact became "</en></s>
+  <s><zh>”（</zh><en>" (</en></s>
+  <s><zh>）。妖精的契约就是这样。</zh><en>). Such are fey pacts.</en></s>
+  <s><zh>契约被转卖了</zh><en>The pact was resold</en></s>
+  <s><zh>的契约转卖给了</zh><en> resold the pact to </en></s>
+  <s><zh>（隐藏条款“转卖”）。恩赐照旧，代价换成了新宗主的：\n\n</zh><en> (hidden clause "resale"). Boons are unchanged; the price is now the new patron's:\n\n</en></s>
+  <s><zh>长冬</zh><en>long winter</en></s>
+  <s><zh>的冰狱之风吹到了殖民地：寒潮 10 天（隐藏条款“长冬”）。</zh><en>'s icy winds of hell blew to the colony: a cold snap for 10 days (hidden clause "long winter").</en></s>
+  <s><zh>违约的阴影：签约人心情 -6，恩赐给的能力冷却 ×2。</zh><en>The shadow of default: the signatory's mood -6, and abilities given by boons have cooldown ×2.</en></s>
+  <s><zh>宗主派出了</zh><en> The patron sent </en></s>
+  <s><zh>，之后每 </zh><en>, then once every </en></s>
+  <s><zh> 天一次，直到债务降下来。</zh><en> days until the debt comes down.</en></s>
+  <s><zh>强制执行！</zh><en>Enforcement!</en></s>
+  <s><zh>契约债务：</zh><en>Pact debt: </en></s>
+  <s><zh>欠</zh><en>'s debt to </en></s>
+  <s><zh>的债务 </zh><en> is </en></s>
+  <s><zh>）。\n\n</zh><en>).\n\n</en></s>
+  <s><zh>\n\n还债：在契约讲台“补偿宗主”（交付一次当期要求的双倍，债务 -1）。</zh><en>\n\nRepay: "compensate the patron" at the pact lectern (deliver double the current demand once, debt -1).</en></s>
+  <s><zh>的债务降到了 </zh><en>'s debt dropped to </en></s>
+  <s><zh>命匣被收走</zh><en>Phylactery collected</en></s>
+  <s><zh>被拖进了</zh><en> was dragged into </en></s>
+  <s><zh>强制执行：</zh><en>Enforcement: </en></s>
+  <s><zh>的债务到了 3：一团</zh><en>'s debt reached 3: a cloud of </en></s>
+  <s><zh>冰冷的雾</zh><en>freezing mist</en></s>
+  <s><zh>硫磺味的黑烟</zh><en>sulfurous black smoke</en></s>
+  <s><zh>裹住了</zh><en> wrapped around </en></s>
+  <s><zh>，把</zh><en> and dragged </en></s>
+  <s><zh>拖进了</zh><en> into </en></s>
+  <s><zh>。\n\n可以赎回：</zh><en>.\n\nCan be ransomed: </en></s>
+  <s><zh>妖精集市的代价交易“赎回被拖走的人”</zh><en>the fey market price deal "ransom someone dragged away"</en></s>
+  <s><zh>九狱商队“赎人”（</zh><en>the Nine Hells caravan "ransom" (</en></s>
+  <s><zh>。赎回后在地图边缘出现，深渊腐化 +20%。</zh><en>. Once ransomed, they appear at the map edge, abyssal taint +20%.</en></s>
+  <s><zh>的收账人取走了</zh><en>'s collectors took the phylactery of </en></s>
+  <s><zh>的命匣（命匣抵押）。</zh><en> (phylactery pledge).</en></s>
+  <s><zh>的力量还在，但死后再也不会复活。\n\n可以从九狱商队赎回（</zh><en> keeps their power but will never revive after death.\n\nIt can be ransomed from a Nine Hells caravan (</en></s>
+  <s><zh>赎回命匣</zh><en>Ransom phylactery</en></s>
+  <s><zh>的命匣回来了。</zh><en>'s phylactery is back.</en></s>
+  <s><zh>赎回失败</zh><en>Ransom failed</en></s>
+  <s><zh>已经死在了另一个位面。</zh><en> already died on another plane.</en></s>
+  <s><zh>从异界被赎回</zh><en>Ransomed from another plane</en></s>
+  <s><zh>赎回：</zh><en>Ransomed: </en></s>
+  <s><zh>回来了，出现在地图边缘。那边发生的事</zh><en> is back, appearing at the map edge. What happened there, </en></s>
+  <s><zh>不愿多说（深渊腐化 +20%）。</zh><en> won't say much (abyssal taint +20%).</en></s>
+  <s><zh>没有欠债</zh><en>No debt</en></s>
+  <s><zh>没有可以补偿的要求</zh><en>No demand to compensate</en></s>
+  <s><zh>需要地图上有 2 名囚犯</zh><en>Needs 2 prisoners on the map</en></s>
+  <s><zh>派对没法“双倍”：改交 1000 银，地图上的白银不够</zh><en>A party can't be "doubled": pay 1000 silver instead, but there isn't enough silver on the map</en></s>
+  <s><zh>自动执行的要求补偿改交 3 枚灵魂币：地图上不够</zh><en>Compensation for automatically enforced demands is 3 soul coins instead: not enough on the map</en></s>
+  <s><zh>在契约讲台补偿了宗主</zh><en> compensated the patron at the pact lectern</en></s>
+  <s><zh>[DND边缘大陆] 移除恩赐出错：</zh><en>[DND Rimlands] Boon removal error: </en></s>
+  <s><zh>契约结束：</zh><en>Pact ended: </en></s>
+  <s><zh>的契约结束了（</zh><en>'s pact has ended (</en></s>
+  <s><zh>）。恩赐、魔能爆和条款都随之消失。</zh><en>). Boons, eldritch blast and clauses all vanish with it.</en></s>
+  <s><zh>，债务 </zh><en>, debt </en></s>
+  <s><zh>宗主：</zh><en>Patron: </en></s>
+  <s><zh>）\n恩赐：</zh><en>)\nBoon: </en></s>
+  <s><zh>\n当前要求：</zh><en>\nCurrent demand: </en></s>
+  <s><zh>宗主</zh><en>patron</en></s>
+  <s><zh>的契约书（期限：</zh><en>'s contract (term: </en></s>
+  <s><zh>）。拿到契约讲台上读 4 小时才能看清条款。</zh><en>). Take it to the pact lectern and read it for 4 hours to see the clauses clearly.</en></s>
+  <s><zh>在契约讲台阅读（地图上没有能用的契约讲台）</zh><en>Read at the pact lectern (no usable pact lectern on the map)</en></s>
+  <s><zh>在契约讲台阅读（</zh><en>Read at the pact lectern (</en></s>
+  <s><zh>在契约讲台阅读</zh><en>Read at the pact lectern</en></s>
+  <s><zh>的契约书（4 小时）</zh><en>'s contract (4 hours)</en></s>
+  <s><zh>殖民地的契约：</zh><en>The colony's pacts: </en></s>
+  <s><zh>（债务 </zh><en> (debt </en></s>
+  <s><zh>被拖走的人：</zh><en>Dragged away: </en></s>
+  <s><zh>补偿宗主：</zh><en>Compensate the patron: </en></s>
+  <s><zh>交付一次当期要求的双倍，</zh><en>Deliver double the current demand once, </en></s>
+  <s><zh>的债务 -1（现在 </zh><en>'s debt -1 (now </en></s>
+  <s><zh>）。\n\n要交的：</zh><en>).\n\nTo hand over: </en></s>
+  <s><zh>两份</zh><en>double </en></s>
+  <s><zh>处决 2 名囚犯（签约人亲手）</zh><en>execute 2 prisoners (by the signatory's own hand)</en></s>
+  <s><zh>1000 银</zh><en>1000 silver</en></s>
+  <s><zh>3 枚灵魂币</zh><en>3 soul coins</en></s>
+  <s><zh>补偿不了：</zh><en>Can't compensate: </en></s>
+  <s><zh>用代理人的真名解约：</zh><en>Break the pact with the agent's true name: </en></s>
+  <s><zh>念出</zh><en>Speak the true name of </en></s>
+  <s><zh>代理人的真名，当场撕毁</zh><en>'s agent and tear up on the spot </en></s>
+  <s><zh>的契约：没有任何代价。用掉这张真名卷。</zh><en>'s pact: no cost at all. Uses up this true name scroll.</en></s>
+  <s><zh>代理人的真名卷撕毁了契约</zh><en>The agent's true name scroll tore up the pact</en></s>
+  <s><zh>魔能爆 ×</zh><en>Eldritch blast ×</en></s>
+  <s><zh>签下：恩赐“</zh><en>Sign: boon "</en></s>
+  <s><zh>审阅（</zh><en>Review (</en></s>
+  <s><zh>智力豁免，难度 </zh><en> Intelligence save, difficulty </en></s>
+  <s><zh>请律师再审阅一遍（</zh><en>Ask a lawyer to review it again (</en></s>
+  <s><zh>，加熟练加值</zh><en>, plus proficiency bonus</en></s>
+  <s><zh>审阅成功：揭开了一条隐藏条款。</zh><en>Review succeeded: revealed a hidden clause.</en></s>
+  <s><zh>审阅失败：条款的字迹在眼前游移，什么也没看出来。</zh><en>Review failed: the writing of the clauses swims before their eyes; nothing could be made out.</en></s>
+  <s><zh>没有别的殖民者能当律师</zh><en>No other colonist can act as lawyer</en></s>
+  <s><zh>谈判（</zh><en>Negotiate (</en></s>
+  <s><zh>魅力豁免，难度 </zh><en> Charisma save, difficulty </en></s>
+  <s><zh>谈判成功</zh><en>Negotiation succeeded</en></s>
+  <s><zh>魔鬼律师皱着眉同意删掉一条。删哪一条？</zh><en>The devil lawyer frowns and agrees to strike one clause. Which one?</en></s>
+  <s><zh>谈判失败：对方冷笑着加了一条代价。\n\n</zh><en>Negotiation failed: the other side sneers and adds a price.\n\n</en></s>
+  <s><zh>拒绝（书会烧掉，</zh><en>Refuse (the book burns, </en></s>
+  <s><zh>心情 -3）</zh><en> mood -3)</en></s>
+  <s><zh>删掉：</zh><en>Strike: </en></s>
+  <s><zh>删掉了一条代价。\n\n</zh><en>A price was struck.\n\n</en></s>
+  <s><zh>交付</zh><en>Deliver</en></s>
+  <s><zh>付一年寿命</zh><en>Pay a year of life</en></s>
+  <s><zh>付一只眼睛</zh><en>Pay an eye</en></s>
+  <s><zh>没有眼睛可以付</zh><en>No eye to pay</en></s>
+  <s><zh>萨特</zh><en>satyr</en></s>
+  <s><zh>林仙</zh><en>dryad</en></s>
+  <s><zh>解开 </zh><en>Undo </en></s>
+  <s><zh> 的契约（</zh><en>'s pact (</en></s>
+  <s><zh>给它 300 银</zh><en>Give it 300 silver</en></s>
+  <s><zh>300 银</zh><en>300 silver</en></s>
+  <s><zh>给它 2 枚灵魂币</zh><en>Give it 2 soul coins</en></s>
+  <s><zh>2 枚灵魂币</zh><en>2 soul coins</en></s>
+  <s><zh>灵魂币不够</zh><en>Not enough soul coins</en></s>
+  <s><zh>让它离开</zh><en>Let it leave</en></s>
+  <s><zh>异界契约</zh><en>Otherworldly pacts</en></s>
+  <s><zh>启用异界契约</zh><en>Enable otherworldly pacts</en></s>
+  <s><zh>（1.55.0）位面契约学研究、宗主的低语、九狱商队、妖精集市和随机狂猎。关掉后研究隐藏、这些事件不再随机触发；已经签下的契约照常运作。</zh><en>(1.55.0) Planar pact research, patrons' whispers, Nine Hells caravans, fey markets and random Wild Hunts. When off, the research is hidden and these events no longer trigger randomly; pacts already signed keep working.</en></s>
+  <s><zh>隐藏条款</zh><en>Hidden clauses</en></s>
+  <s><zh>关掉后契约书上的所有条款直接可见，信件里不再有“审阅”按钮。</zh><en>When off, all clauses on contracts are visible directly, and letters no longer have a "review" button.</en></s>
+  <s><zh>偿契频率：</zh><en>Payment frequency: </en></s>
+  <s><zh>%（越高越频繁）</zh><en>% (higher is more frequent)</en></s>
+  <s><zh>讨债强度：</zh><en>Debt collection strength: </en></s>
+  <s><zh>%（讨债小队、狂猎的点数）</zh><en>% (points of collector squads and the Wild Hunt)</en></s>
+  <s><zh>调换儿概率：</zh><en>Changeling chance: </en></s>
+  <s><zh>%（每次出生）</zh><en>% (per birth)</en></s>
+  <s><zh>天界祈唤</zh><en>Celestial invocation</en></s>
+  <s><zh>善神做守护神时，圣坛上多一组“祈唤天界援军”（狄瓦援军、守护天使、行星使降临）。</zh><en>With a good god as patron deity, the altar gains an extra "invoke celestial reinforcements" group (deva reinforcements, guardian angel, planetar descends).</en></s>
+  <s><zh>砍了一棵树（隐藏条款“不伐之誓”）</zh><en>cut down a tree (hidden clause "oath of no felling")</en></s>
+</LPStrings>

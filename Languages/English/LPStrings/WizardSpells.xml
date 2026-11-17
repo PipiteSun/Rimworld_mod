@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（WizardSpells.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>需要选择一件物品或建筑。</zh><en>Need to pick an item or building.</en></s>
+  <s><zh>它没有损坏。</zh><en>It isn't damaged.</en></s>
+  <s><zh>太重了（超过 10 千克）。</zh><en>Too heavy (over 10 kg).</en></s>
+  <s><zh>已经在身边了。</zh><en>Already nearby.</en></s>
+  <s><zh>只能锁门。</zh><en>Can only lock doors.</en></s>
+  <s><zh>这扇门已经锁上了。</zh><en>This door is already locked.</en></s>
+  <s><zh>冷冻</zh><en>frozen</en></s>
+  <s><zh>修复术</zh><en>mending</en></s>
+  <s><zh>云雾术</zh><en>fog cloud</en></s>
+  <s><zh>黑暗术</zh><en>darkness</en></s>
+  <s><zh>心灵尖刺</zh><en>mind spike</en></s>
+  <s><zh>解除魔法 ×</zh><en>Dispel magic ×</en></s>
+  <s><zh>没有可以解除的魔法</zh><en>No magic to dispel</en></s>
+  <s><zh>[DND边缘大陆] 未知的法师法术效果：</zh><en>[DND Rimlands] Unknown wizard spell effect: </en></s>
+  <s><zh>奇术手法</zh><en>prestidigitation</en></s>
+  <s><zh>灼热射线 ×</zh><en>Scorching ray ×</en></s>
+  <s><zh>心灵屏障</zh><en>mind blank</en></s>
+  <s><zh>抵抗了</zh><en>resisted </en></s>
+  <s><zh>挣脱了</zh><en>broke free of </en></s>
+  <s><zh>定身</zh><en>held</en></s>
+  <s><zh>力量：负重 ×1.5、采矿 ×1.3</zh><en>Strength: carrying capacity ×1.5, mining ×1.3</en></s>
+  <s><zh>敏捷：近战闪避 +10</zh><en>Dexterity: melee dodge +10</en></s>
+  <s><zh>智力：研究 ×1.2</zh><en>Intelligence: research ×1.2</en></s>
+  <s><zh>魅力：社交影响 ×1.2</zh><en>Charisma: social impact ×1.2</en></s>
+  <s><zh>增强属性</zh><en>enhance ability</en></s>
+  <s><zh>增强属性：</zh><en>Enhance ability: </en></s>
+  <s><zh>选一项属性，持续 1 小时。</zh><en>Choose an ability, lasting 1 hour.</en></s>
+  <s><zh>需要选择一个容器、门或能破解的东西。</zh><en>Need to pick a container, door or something that can be cracked.</en></s>
+  <s><zh>里面是空的。</zh><en>It's empty inside.</en></s>
+  <s><zh>已经破解过了。</zh><en>Already cracked.</en></s>
+  <s><zh>不用敲自己的门。</zh><en>No need to knock on your own door.</en></s>
+  <s><zh>只能对密封容器、门或需要破解的东西使用。</zh><en>Can only be used on sealed containers, doors or things that need cracking.</en></s>
+  <s><zh>敲击术：打开</zh><en>Knock: opened</en></s>
+  <s><zh>敲击术：破解</zh><en>Knock: cracked</en></s>
+  <s><zh>恐惧术</zh><en>fear</en></s>
+  <s><zh>缓慢</zh><en>slowed</en></s>
+  <s><zh>吸血 </zh><en>Blood drain </en></s>
+  <s><zh>只能活化人形尸体。</zh><en>Can only animate humanlike corpses.</en></s>
+  <s><zh>亡灵的尸体无法再活化。</zh><en>Undead corpses can't be animated again.</en></s>
+  <s><zh>[DND边缘大陆] 活化死尸失败：</zh><en>[DND Rimlands] Animate dead failed: </en></s>
+  <s><zh>活化死尸 ×</zh><en>Animate dead ×</en></s>
+  <s><zh>寒冷</zh><en>cold</en></s>
+  <s><zh>防护能量：</zh><en>Protection from energy: </en></s>
+  <s><zh>选一种伤害，1 小时内受到这种伤害 ×0.5。</zh><en>Choose a damage type; take ×0.5 of that damage for 1 hour.</en></s>
+  <s><zh>恶魔与魔鬼</zh><en>demons and devils</en></s>
+  <s><zh>亡灵</zh><en>undead</en></s>
+  <s><zh>元素生物</zh><en>elementals</en></s>
+  <s><zh>魔法阵</zh><en>magic circle</en></s>
+  <s><zh>选一类生物：这类敌对生物进不来，阵内友军受它们的伤害 ×0.5。</zh><en>Choose a kind of creature: hostile creatures of that kind can't get in, and allies inside the circle take ×0.5 damage from them.</en></s>
+  <s><zh>魔法阵：</zh><en>Magic circle: </en></s>
+  <s><zh>只能和人形的亡者交谈。</zh><en>Can only talk with humanlike dead.</en></s>
+  <s><zh>只能问敌方派系的亡者。</zh><en>Can only question the dead of hostile factions.</en></s>
+  <s><zh>这具尸体已经问过了。</zh><en>This corpse has already been questioned.</en></s>
+  <s><zh>亡者摇头：「</zh><en>The dead shakes its head: "</en></s>
+  <s><zh>」已经没有据点了。</zh><en>" has no settlements left.</en></s>
+  <s><zh>亡者交谈</zh><en>speak with dead</en></s>
+  <s><zh>的亡魂说出了「</zh><en>'s ghost revealed a settlement of "</en></s>
+  <s><zh>」的一处据点：</zh><en>": </en></s>
+  <s><zh>亡魂的学识：当前研究 +</zh><en>The ghost's knowledge: current research +</en></s>
+  <s><zh>没有正在进行的研究，亡魂的学识白白散去了。</zh><en>No research in progress; the ghost's knowledge dissipated for nothing.</en></s>
+  <s><zh>亡者交谈：</zh><en>Speak with dead: </en></s>
+  <s><zh>这具尸体只能问一次。</zh><en>This corpse can only be questioned once.</en></s>
+  <s><zh>问出「</zh><en>Ask about a settlement of "</en></s>
+  <s><zh>」的一处据点</zh><en>"</en></s>
+  <s><zh>问它生前的学识：当前研究 +</zh><en>Ask about their knowledge in life: current research +</en></s>
+  <s><zh>不会送讯术</zh><en>Doesn't know sending</en></s>
+  <s><zh>送讯术每天一次（还要 </zh><en>Sending is once per day (another </en></s>
+  <s><zh> 小时）。</zh><en> hours).</en></s>
+  <s><zh>送讯术</zh><en>sending</en></s>
+  <s><zh>选一个派系，和它的首领通话。</zh><en>Choose a faction and talk with its leader.</en></s>
+  <s><zh>这张地图上没有感知到魔法物品。</zh><en>No magic items sensed on this map.</en></s>
+  <s><zh> 件魔法物品或传奇品质的物品：\n</zh><en> magic items or legendary-quality items:\n</en></s>
+  <s><zh>侦测魔法</zh><en>detect magic</en></s>
+  <s><zh>摔落</zh><en>fell</en></s>
+  <s><zh>散架</zh><en>fell apart</en></s>
+  <s><zh>黑猫</zh><en>black cat</en></s>
+  <s><zh>老鼠</zh><en>rat</en></s>
+  <s><zh>翼猫</zh><en>tressym</en></s>
+  <s><zh>伪龙</zh><en>pseudodragon</en></s>
+  <s><zh>已经有一只魔宠了（</zh><en>Already has a familiar (</en></s>
+  <s><zh>魔宠死后要 1 天才能重召（还要 </zh><en>A familiar takes 1 day to resummon after it dies (another </en></s>
+  <s><zh>没有可用的魔宠种类。</zh><en>No familiar forms available.</en></s>
+  <s><zh>寻获魔宠</zh><en>find familiar</en></s>
+  <s><zh>选择魔宠的形态。</zh><en>Choose the familiar's form.</en></s>
+  <s><zh>[DND边缘大陆] 魔宠训练 / 羁绊失败：</zh><en>[DND Rimlands] Familiar training / bond failed: </en></s>
+  <s><zh>魔宠</zh><en>familiar</en></s>
+  <s><zh>的魔宠死了：1 天后可以重新寻获魔宠。</zh><en>'s familiar died: a new familiar can be found in 1 day.</en></s>
+  <s><zh>解除秘法锁</zh><en>Remove arcane lock</en></s>
+  <s><zh>这扇门上了秘法锁：受到的伤害 ÷3。点击解除。</zh><en>This door has an arcane lock: damage taken ÷3. Click to remove.</en></s>
+  <s><zh>秘法锁解除</zh><en>arcane lock removed</en></s>
+  <s><zh>油腻术</zh><en>grease</en></s>
+  <s><zh>蛛网术</zh><en>web</en></s>
+  <s><zh>臭云术</zh><en>stinking cloud</en></s>
+  <s><zh>火墙术</zh><en>wall of fire</en></s>
+  <s><zh>黑触手</zh><en>black tentacles</en></s>
+  <s><zh>厌恶之地</zh><en>antipathy</en></s>
+  <s><zh>延时爆裂火球</zh><en>delayed blast fireball</en></s>
+  <s><zh>法术区域</zh><en>spell zone</en></s>
+  <s><zh>着火了</zh><en>caught fire</en></s>
+  <s><zh>滑倒</zh><en>slipped</en></s>
+  <s><zh>被蛛网粘住</zh><en>stuck in the web</en></s>
+  <s><zh>呕吐</zh><en>vomiting</en></s>
+  <s><zh>有敌人闯进了</zh><en>An enemy has entered </en></s>
+  <s><zh>法师</zh><en>wizard</en></s>
+  <s><zh>布下的警报术：</zh><en>'s alarm: </en></s>
+  <s><zh>厌恶</zh><en>revulsion</en></s>
+  <s><zh>被魔法阵弹开</zh><en>repelled by the magic circle</en></s>
+  <s><zh>闪现：落空</zh><en>blink: missed</en></s>
+  <s><zh>预警：躲开</zh><en>foresight: dodged</en></s>
+</LPStrings>

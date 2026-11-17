@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 迅捷药剂 -->
+  <LP_ALB_Swift.label>elixir of swiftness</LP_ALB_Swift.label>
+  <!-- 移动 +25%。 -->
+  <LP_ALB_Swift.description>Movement +25%.</LP_ALB_Swift.description>
+  <!-- 坚韧药剂 -->
+  <LP_ALB_Tough.label>elixir of resilience</LP_ALB_Tough.label>
+  <!-- 受到的伤害 −15%。 -->
+  <LP_ALB_Tough.description>Damage taken -15%.</LP_ALB_Tough.description>
+  <!-- 轻盈药剂 -->
+  <LP_ALB_Light.label>elixir of lightness</LP_ALB_Light.label>
+  <!-- 脚下轻得像风：走路无视地形、积雪、植物的减速。 -->
+  <LP_ALB_Light.description>Light as the wind underfoot: walking ignores slowdown from terrain, snow and plants.</LP_ALB_Light.description>
+  <!-- 清醒药剂 -->
+  <LP_ALB_Lucid.label>elixir of clarity</LP_ALB_Lucid.label>
+  <!-- 脑子清清楚楚：意识 +10%，不会困。 -->
+  <LP_ALB_Lucid.description>A crystal-clear mind: consciousness +10%, no sleepiness.</LP_ALB_Lucid.description>
+  <!-- 勇气药剂 -->
+  <LP_ALB_Courage.label>elixir of courage</LP_ALB_Courage.label>
+  <!-- 胆气上涌：心情 +10，精神崩溃阈值 −5%。 -->
+  <LP_ALB_Courage.description>Courage wells up: mood +10, mental break threshold -5%.</LP_ALB_Courage.description>
+  <!-- 炼金学识 -->
+  <LP_AL_SavantBuff.label>alchemical savant</LP_AL_SavantBuff.label>
+  <!-- 做药的手艺：做原版药物（药物实验室的配方）速度 +30%。 -->
+  <LP_AL_SavantBuff.description>Drug-making skill: making vanilla drugs (drug lab recipes) +30% speed.</LP_AL_SavantBuff.description>
+  <!-- 炼金抗性 -->
+  <LP_AL_ResistBuff.label>alchemical resistance</LP_AL_ResistBuff.label>
+  <!-- 身体早就泡惯了药：受到的毒、酸伤害 −50%，在毒尘、毒雾里不积累毒素。 -->
+  <LP_AL_ResistBuff.description>The body has long been steeped in potions: poison and acid damage taken -50%, no toxic buildup in toxic fallout or toxic gas.</LP_AL_ResistBuff.description>
+  <!-- 奥术装甲 -->
+  <LP_AR_ArmorOn.label>arcane armor</LP_AR_ArmorOn.label>
+  <!-- 穿着装甲师亲手改过的奥术装甲：装甲不再拖慢移动。渗透者模式移动 +10%；甲胄升级后三种护甲各 +15%；完美装甲完全密封（毒尘、毒雾、真空都不怕）。脱下或换甲就失效。 -->
+  <LP_AR_ArmorOn.description>Wearing arcane armor personally modified by an Armorer: the armor no longer slows movement. Infiltrator mode movement +10%; after armor modifications, all three armor values +15%; perfected armor is fully sealed (immune to toxic fallout, toxic gas and vacuum). Stops working when taken off or swapped.</LP_AR_ArmorOn.description>
+  <!-- 渗透者标记 -->
+  <LP_AR_Marked.label>infiltrator's mark</LP_AR_Marked.label>
+  <!-- 被装甲师的追踪符标上了：隐形不了，受到队友的下一击伤害 +50%。 -->
+  <LP_AR_Marked.description>Marked by an Armorer's tracking rune: can't turn invisible, and the next hit from a teammate deals +50% damage.</LP_AR_Marked.description>
+</LanguageData>

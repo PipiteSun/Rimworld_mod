@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 熔火巨人本源 -->
+  <LP_FireGiantCore.label>molten giant origin</LP_FireGiantCore.label>
+  <!-- 火巨人的熔火血脉，可随种族遗传。健壮体型与深红皮肤由《生物科技》原版外表基因提供。成年后体型为普通人的2.0倍（血脉体型倍率上限）；体型越大，生命和近战越强（见巨躯规则：成年生命总量×150%、近战伤害×130%），行动缓慢。完全免疫火焰伤害且不会被点燃。用手工技能制作物品时，有50%概率让品质提高一档（最高到大师级）。火巨人不会因为裸体而心情低落。普通衣服会随巨躯一起放大。 -->
+  <LP_FireGiantCore.description>The molten-fire bloodline of fire giants, inherited with the race. The robust build and deep red skin come from the Biotech vanilla appearance genes. Adults are 2.0 times the size of an ordinary person (the bloodline body size cap); the bigger the body, the stronger the health and melee (see giant-body rules: adult total health ×150%, melee damage ×130%), and slow. Completely immune to fire damage and can't be ignited. When crafting with the Crafting skill, there is a 50% chance to raise quality by one tier (up to masterwork). Fire giants are never sad about being naked. Ordinary clothes scale up with the giant body.</LP_FireGiantCore.description>
+  <!-- 健壮体型与深红皮肤由原版外表基因提供。 | 体型随年龄增长，成年达到最大倍率×2.0。 | 巨躯规则：体型越大，生命和近战越强。成年生命总量×150%、近战伤害×130%（可在模组设置调整；关闭时生命仍×150%）。 | 巨胃：饱食度上限随体型提高，成年×200%（儿童随年龄增长）；饥饿速度不变，一顿撑得更久。 | 移动速度：×80%。 | 完全免疫火焰伤害，不会被点燃。 | 手工制作物品时50%概率品质+1档（最高大师级）。 | 不会因裸体产生负面心情。 | 巨人血统：火巨人（阶序第3位，高于霜巨人）。能穿普通衣服；巨人专属衣甲只有巨人能穿，每件心情+2（最多+6）。 -->
+  <LP_FireGiantCore.customEffectDescriptions.0>The robust build and deep red skin come from vanilla appearance genes.</LP_FireGiantCore.customEffectDescriptions.0>
+  <LP_FireGiantCore.customEffectDescriptions.1>Body size grows with age, reaching the max multiplier ×2.0 as an adult.</LP_FireGiantCore.customEffectDescriptions.1>
+  <LP_FireGiantCore.customEffectDescriptions.2>Giant-body rules: the bigger the body, the stronger the health and melee. Adult total health ×150%, melee damage ×130% (adjustable in mod settings; health is still ×150% when off).</LP_FireGiantCore.customEffectDescriptions.2>
+  <LP_FireGiantCore.customEffectDescriptions.3>Giant stomach: max food rises with body size, ×200% as an adult (children grow with age); hunger rate unchanged, so one meal lasts longer.</LP_FireGiantCore.customEffectDescriptions.3>
+  <LP_FireGiantCore.customEffectDescriptions.4>Move speed: ×80%.</LP_FireGiantCore.customEffectDescriptions.4>
+  <LP_FireGiantCore.customEffectDescriptions.5>Completely immune to fire damage, can't be ignited.</LP_FireGiantCore.customEffectDescriptions.5>
+  <LP_FireGiantCore.customEffectDescriptions.6>Crafted items have a 50% chance of +1 quality tier (up to masterwork).</LP_FireGiantCore.customEffectDescriptions.6>
+  <LP_FireGiantCore.customEffectDescriptions.7>No negative mood from nudity.</LP_FireGiantCore.customEffectDescriptions.7>
+  <LP_FireGiantCore.customEffectDescriptions.8>Giant lineage: fire giant (rank 3 of the ordning, above frost giants). Can wear ordinary clothes; giant-only apparel can only be worn by giants, each piece mood +2 (up to +6).</LP_FireGiantCore.customEffectDescriptions.8>
+  <!-- 火巨人 -->
+  <LP_FireGiantCore.modExtensions.0.label>fire giant</LP_FireGiantCore.modExtensions.0.label>
+</LanguageData>

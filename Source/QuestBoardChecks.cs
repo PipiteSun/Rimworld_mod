@@ -86,7 +86,10 @@ namespace LichPhylactery {
    var raiders=c.raiders.ToList();qbMade.AddRange(raiders);
    Check(c.raidSent && raiders.Count>0 && raiders.All(p=>p.Spawned && p.Map==map && p.HostileTo(Faction.OfPlayer)) && q.State==QuestState.Ongoing,"[quest board] the attack arrives: "+raiders.Count+" hostile "+(c.faction!=null?c.faction.Name:"animals")+" on the home map, quest still ongoing");
    int pods=map.listerThings.ThingsOfDef(ThingDefOf.DropPodIncoming).Count;float xp0=h?.xp??0f;
+   var abSt=AdventureBoard.State;int ren0=abSt?.renown??0;if(abSt!=null)abSt.renown=10;
    QbKill(raiders);QuestBoard.Tick(c);
+   int renGain=(abSt?.renown??0)-10;if(abSt!=null)abSt.renown=ren0;
+   Check(renGain==QuestBoard.RenownFor(c) && renGain==1 && QuestBoard.RewardText(c).Contains("名声 +1"),"[1.169.0] daily contract success raises the shared colony renown (bronze +"+renGain+", shown in the reward text)");
    float gained=(h?.xp??0f)-xp0;float expect=300f*Adventurer.QuestShare*Adventurer.XpScale;
    Check(q.State==QuestState.EndedSuccess && !st.active.Contains(c) && c.done && gained>=expect*.99f && map.listerThings.ThingsOfDef(ThingDefOf.DropPodIncoming).Count>pods,
     "[quest board] all attackers down → quest succeeds, "+who.LabelShort+" gains "+gained.ToString("0")+" XP (≥ 300 × 0.5 = "+expect+"), reward drop pod incoming");

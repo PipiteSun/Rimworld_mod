@@ -5,7 +5,7 @@ using Verse;
 namespace LichPhylactery {
  public partial class ConstructDesign {
   public const int MajorPassionLimit=3;
-  public const string PassionLimitReason="双火最多选择3项，请先将其他双火调整为单火或无兴趣。";
+  public static readonly string PassionLimitReason="双火最多选择3项，请先将其他双火调整为单火或无兴趣。".Loc();
   public SkillDef SpecialtySkill=>specialty=="大脑"?SkillDefOf.Intellectual:specialty=="眼睛"?SkillDefOf.Crafting:specialty=="手臂"?SkillDefOf.Construction:SkillDefOf.Medicine;
   public int MajorCount(string kind)=>DefDatabase<SkillDef>.AllDefsListForReading.Count(s=>PassionFor(s,kind)==Passion.Major);
   public bool TrySetPassion(SkillDef skill,Passion value,string kind){if(value==Passion.Major && PassionFor(skill,kind)!=Passion.Major && MajorCount(kind)>=MajorPassionLimit)return false;passions[skill]=value;return true;}

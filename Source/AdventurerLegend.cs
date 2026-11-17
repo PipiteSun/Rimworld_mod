@@ -14,7 +14,7 @@ namespace LichPhylactery {
  public static class Legend {
   public const int MaxLevel=40,PointsPerLevel=2,KillBonus=3,NemesisBonus=2,Count=8;
   public const int Health=0,Melee=1,Ranged=2,Psychic=3,Recovery=4,Tough=5,Work=6,Learn=7;
-  public static readonly string[] Names={"血量","近战","远程","心灵","回复","承受","工作","学习"};
+  public static readonly string[] Names={"血量".Loc(),"近战".Loc(),"远程".Loc(),"心灵".Loc(),"回复".Loc(),"承受".Loc(),"工作".Loc(),"学习".Loc()};
   // 每点：部位生命 +2%、近战伤害 +3%、射击命中 +2%（25 格处）、心灵敏感度 +3%、伤口愈合与免疫速度各 +5%、受伤 −1.5%（直接相加，最低 5%）、工作速度 +2%、全局学习 +3%。
   public const float HealthPer=.02f,MeleePer=.03f,RangedPer=.02f,PsychicPer=.03f,RecoveryPer=.05f,ToughPer=.015f,WorkPer=.02f,LearnPer=.03f;
   // 射击命中按原版公式折算：命中率 ≈ 每格精度^距离，所以每格精度乘 (1 + 2% × 点数)^(1/25)，25 格（原版“中距离”）处命中率正好 ×(1 + 2% × 点数)。
@@ -68,27 +68,27 @@ namespace LichPhylactery {
   static string Pct(float v)=>(v>=0f?"+":"")+(v*100f).ToString("0.#")+"%";
   // k = 种族亲和倍率：按有效点数 n × k 显示。
   public static string EffectText(int i,int pts,float k=1f){
-   float n=pts*k;string per=Math.Abs(k-1f)>.0001f?"（亲和 ×"+k.ToString("0.##")+"）":"";
+   float n=pts*k;string per=Math.Abs(k-1f)>.0001f?"（亲和 ×".Loc()+k.ToString("0.##")+"）".Loc():"";
    return EffectCore(i,n)+per;
   }
   static string EffectCore(int i,float n){
    switch(i){
-    case Health:return "部位生命 "+Pct(HealthPer*n)+"（与等级成长、体质、巨躯相乘）";
-    case Melee:return "近战伤害 "+Pct(MeleePer*n);
-    case Ranged:return "射击命中 "+Pct(RangedPer*n)+"（25 格处；每格精度 ×"+RangedFactor(n).ToString("0.####")+"）";
-    case Psychic:return "心灵敏感度 "+Pct(PsychicPer*n);
-    case Recovery:return "伤口愈合 "+Pct(RecoveryPer*n)+"，免疫速度 "+Pct(RecoveryPer*n);
-    case Tough:return "受到伤害 "+Pct(DamageTaken(n)-1f)+"（每有效点 −1.5% 直接相加，最低承受原伤害的 5%）";
-    case Work:return "全局工作速度 "+Pct(WorkPer*n);
-    case Learn:return "全局学习 "+Pct(LearnPer*n);
+    case Health:return "部位生命 ".Loc()+Pct(HealthPer*n)+"（与等级成长、体质、巨躯相乘）".Loc();
+    case Melee:return "近战伤害 ".Loc()+Pct(MeleePer*n);
+    case Ranged:return "射击命中 ".Loc()+Pct(RangedPer*n)+"（25 格处；每格精度 ×".Loc()+RangedFactor(n).ToString("0.####")+"）".Loc();
+    case Psychic:return "心灵敏感度 ".Loc()+Pct(PsychicPer*n);
+    case Recovery:return "伤口愈合 ".Loc()+Pct(RecoveryPer*n)+"，免疫速度 ".Loc()+Pct(RecoveryPer*n);
+    case Tough:return "受到伤害 ".Loc()+Pct(DamageTaken(n)-1f)+"（每有效点 −1.5% 直接相加，最低承受原伤害的 5%）".Loc();
+    case Work:return "全局工作速度 ".Loc()+Pct(WorkPer*n);
+    case Learn:return "全局学习 ".Loc()+Pct(LearnPer*n);
    }
    return "";
   }
   public static string Summary(Hediff_Adventurer h){
    var sb=new StringBuilder();
-   for(int i=0;i<Count;i++)if(N(h,i)>0)sb.AppendLine(Names[i]+" "+N(h,i)+"："+EffectText(i,N(h,i),Affinity.LegendMult(h,i)));
-   if(sb.Length==0)sb.Append("还没有投点。");
-   if(!On)sb.AppendLine().Append("“传奇等级”已在设置里关闭：传奇属性点暂时没有效果。");
+   for(int i=0;i<Count;i++)if(N(h,i)>0)sb.AppendLine(Names[i]+" "+N(h,i)+"：".Loc()+EffectText(i,N(h,i),Affinity.LegendMult(h,i)));
+   if(sb.Length==0)sb.Append("还没有投点。".Loc());
+   if(!On)sb.AppendLine().Append("“传奇等级”已在设置里关闭：传奇属性点暂时没有效果。".Loc());
    return sb.ToString().TrimEnd();
   }
 
@@ -167,9 +167,9 @@ namespace LichPhylactery {
   // ---------- 重铸之石 ----------
   public static Thing MakeStone(){var d=DefDatabase<ThingDef>.GetNamedSilentFail(StoneDef);return d==null?null:ThingMaker.MakeThing(d);}
   public static string CannotRespec(Pawn p){
-   var h=Adventurer.Get(p);if(h==null || !Adventurer.Enabled)return "没有冒险者等级。";
-   if(!h.legendary)return "只有传奇冒险者能用。";
-   if(h.legendSpent.Sum()<=0)return "还没有投过传奇属性点。";
+   var h=Adventurer.Get(p);if(h==null || !Adventurer.Enabled)return "没有冒险者等级。".Loc();
+   if(!h.legendary)return "只有传奇冒险者能用。".Loc();
+   if(h.legendSpent.Sum()<=0)return "还没有投过传奇属性点。".Loc();
    return null;
   }
  }
@@ -178,7 +178,7 @@ namespace LichPhylactery {
   public override AcceptanceReport CanBeUsedBy(Pawn p){var r=Legend.CannotRespec(p);return r!=null?(AcceptanceReport)r:base.CanBeUsedBy(p);}
   public override void DoEffect(Pawn usedBy){
    base.DoEffect(usedBy);var h=Adventurer.Get(usedBy);int n=Legend.Respec(h);
-   if(usedBy.Faction?.IsPlayer==true && !Adventurer.TestSuppressed)Messages.Message(usedBy.LabelShort+"握碎了传奇重铸之石：退回 "+n+" 个传奇属性点"+(h!=null && h.legendPoints>0?"，在“冒险者”分页重新投点。":"，已按设置自动重投。"),usedBy,MessageTypeDefOf.PositiveEvent,false);
+   if(usedBy.Faction?.IsPlayer==true && !Adventurer.TestSuppressed)Messages.Message(usedBy.LabelShort+"握碎了传奇重铸之石：退回 ".Loc()+n+" 个传奇属性点".Loc()+(h!=null && h.legendPoints>0?"，在“冒险者”分页重新投点。".Loc():"，已按设置自动重投。".Loc()),usedBy,MessageTypeDefOf.PositiveEvent,false);
   }
  }
 
@@ -203,9 +203,9 @@ namespace LichPhylactery {
  public static class LegendSettings {
   public static void Draw(Listing_Standard l){
    var s=LichMod.Settings;
-   l.CheckboxLabeled("传奇等级 21～40",ref s.adventurerLegend,"20 级的冒险者经验照常累积；成为传奇冒险者（20 级 + DND 里程碑）后可以继续升到 40 级，攒下的经验立即结算。21～40 级不给属性提升和专长，每级 2 个传奇属性点（八项，无上限）；VPE 路径点每 2 级 1 点。\n传奇属性点不乘“属性效果强度”，Isekai 共存模式下照样生效。关闭后不再升传奇等级，传奇属性点暂时没有效果（点数保留）。");
-   l.CheckboxLabeled("殖民者自动投传奇属性点",ref s.adventurerLegendAuto,"开启后殖民者的传奇属性点自动投：近战职业 近战 + 血量，施法职业 心灵 + 血量，其他人 工作 + 学习（需要 VPE 的 DND 职业来区分）。关闭时在“冒险者”分页手动投。敌人永远自动。");
-   l.CheckboxLabeled("敌人可达传奇等级",ref s.adventurerEnemyLegend,"剧情首领、宿敌冠军和袭击领队可以到 21～40 级（自动成为传奇、自动投点）：领队的每人点数超出 20 级门槛的部分每 60 点 +1 级；剧情首领按当前威胁点数的 20% 算；宿敌冠军 = 殖民地最高等级 + 2。需要同时打开“敌人冒险者等级”。\n开不开 Isekai 共存模式都用这一个开关（1.63.0 起不再分两份）。");
+   l.CheckboxLabeled("传奇等级 21～40".Loc(),ref s.adventurerLegend,"20 级的冒险者经验照常累积；成为传奇冒险者（20 级 + DND 里程碑）后可以继续升到 40 级，攒下的经验立即结算。21～40 级不给属性提升和专长，每级 2 个传奇属性点（八项，无上限）；VPE 路径点每 2 级 1 点。\n传奇属性点不乘“属性效果强度”，Isekai 共存模式下照样生效。关闭后不再升传奇等级，传奇属性点暂时没有效果（点数保留）。".Loc());
+   l.CheckboxLabeled("殖民者自动投传奇属性点".Loc(),ref s.adventurerLegendAuto,"开启后殖民者的传奇属性点自动投：近战职业 近战 + 血量，施法职业 心灵 + 血量，其他人 工作 + 学习（需要 VPE 的 DND 职业来区分）。关闭时在“冒险者”分页手动投。敌人永远自动。".Loc());
+   l.CheckboxLabeled("敌人可达传奇等级".Loc(),ref s.adventurerEnemyLegend,"剧情首领、宿敌冠军和袭击领队可以到 21～40 级（自动成为传奇、自动投点）：领队的每人点数超出 20 级门槛的部分每 60 点 +1 级；剧情首领按当前威胁点数的 20% 算；宿敌冠军 = 殖民地最高等级 + 2。需要同时打开“敌人冒险者等级”。\n开不开 Isekai 共存模式都用这一个开关（1.63.0 起不再分两份）。".Loc());
   }
  }
 }

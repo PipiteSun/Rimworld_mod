@@ -70,10 +70,10 @@ namespace LichPhylactery {
   public static void ColdIronHit(Pawn p,DamageInfo d){
    var w=(d.Instigator as Pawn)?.equipment?.Primary;if(w==null || d.Weapon!=w.def || w.Stuff==null || w.Stuff!=ItemMaterials.ColdIron)return;
    if((d.Instigator as Pawn).Faction?.IsPlayer!=true)return;
-   var h=Binding(p);if(h!=null)h.Change(-ColdIronLoss,"被寒铁武器打到");
+   var h=Binding(p);if(h!=null)h.Change(-ColdIronLoss,"被寒铁武器打到".Loc());
   }
   public static int OnMasterDied(Pawn master){
-   int n=0;foreach(var p in PlayerPawns.ToList()){var h=Binding(p);if(h?.binder!=master)continue;h.Change(-MasterDeathLoss,"主人"+master.LabelShort+"死了");n++;}
+   int n=0;foreach(var p in PlayerPawns.ToList()){var h=Binding(p);if(h?.binder!=master)continue;h.Change(-MasterDeathLoss,"主人".Loc()+master.LabelShort+"死了".Loc());n++;}
    return n;
   }
   public static void BreakFree(Pawn p,string why){
@@ -83,14 +83,14 @@ namespace LichPhylactery {
    var f=AbyssRaces.Horde();if(f==null)return;
    p.SetFaction(f);p.needs?.AddOrRemoveNeedsAsAppropriate();
    if(p.Spawned){if(p.Downed){}else LordMaker.MakeNewLord(f,new LordJob_AssaultColony(f,false,false,false,false,false,false,false),p.Map,new List<Pawn>{p});}
-   Find.LetterStack.ReceiveLetter("挣脱束缚："+p.LabelShort,p.LabelShort+why+"。它不再服从任何人，成了深渊魔群的一员，正转身扑向殖民地！",LetterDefOf.ThreatBig,p);
+   Find.LetterStack.ReceiveLetter("挣脱束缚：".Loc()+p.LabelShort,p.LabelShort+why+"。它不再服从任何人，成了深渊魔群的一员，正转身扑向殖民地！".Loc(),LetterDefOf.ThreatBig,p);
   }
  }
 
  // ---------- 仆从 ----------
  public class Hediff_AbyssThrall : HediffWithComps {
   public int ticksLeft=GenDate.TicksPerDay;public bool breaking;
-  public override string LabelInBrackets=>"还能留 "+ticksLeft.ToStringTicksToPeriod(true,true,false);
+  public override string LabelInBrackets=>"还能留 ".Loc()+ticksLeft.ToStringTicksToPeriod(true,true,false);
   public override void PostAdd(DamageInfo? dinfo){base.PostAdd(dinfo);AbyssBinding.thralls++;}
   public override void TickInterval(int delta){
    base.TickInterval(delta);if(pawn.Dead)return;
@@ -100,7 +100,7 @@ namespace LichPhylactery {
   // 到期：遣返（装备掉落）。炎魔 30% 挣脱，当场开打。
   public static void Expire(Pawn p){
    if(p==null || p.Dead || p.Destroyed)return;
-   if(Fiends.IsBalor(p) && Outsiders.Roll<AbyssBinding.BalorBreakChance){AbyssBinding.BreakFree(p,"的召唤时限到了，却没有回去——它挣断了深渊仪式的约束");return;}
+   if(Fiends.IsBalor(p) && Outsiders.Roll<AbyssBinding.BalorBreakChance){AbyssBinding.BreakFree(p,"的召唤时限到了，却没有回去——它挣断了深渊仪式的约束".Loc());return;}
    if(p.Spawned && Fiends.Is(p))Outsiders.Banish(p);else{p.health.RemoveHediff(p.health.hediffSet.hediffs.OfType<Hediff_AbyssThrall>().First());}
   }
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref ticksLeft,"lpTicksLeft",GenDate.TicksPerDay);if(Scribe.mode==LoadSaveMode.PostLoadInit)AbyssBinding.thralls++;}
@@ -109,24 +109,24 @@ namespace LichPhylactery {
  // ---------- 束缚者 ----------
  public class Hediff_PlanarBinding : HediffWithComps {
   public Pawn binder;public int reassertDay=-1;public bool warned,breaking;int acc;long frozenAge=-1; // 年龄冻结：每小时把生物年龄拨回束缚时的值（不加全局补丁）
-  public override string LabelInBrackets=>"服从 "+Severity.ToString("0");
+  public override string LabelInBrackets=>"服从 ".Loc()+Severity.ToString("0");
   public override bool ShouldRemove=>false;
   public override string TipStringExtra{get{
-   var lines=new List<string>{"服从度每天 -"+AbyssBinding.DailyDecay(pawn,this).ToString("0.#")+(TrueNames.HeldFor(pawn)?"（持有它的真名卷：减半）":"")+"。"};
-   lines.Add("主人："+(binder==null?"无":binder.LabelShort+(binder.Dead?"（已死）":"")));
-   lines.Add("主人对它“重申真名”每天一次 +8；它的床在束缚法阵里每天 +3；主人死亡 -40；被殖民地的寒铁武器打到 -5。降到 0 会挣脱。");
+   var lines=new List<string>{"服从度每天 -".Loc()+AbyssBinding.DailyDecay(pawn,this).ToString("0.#")+(TrueNames.HeldFor(pawn)?"（持有它的真名卷：减半）".Loc():"")+"。".Loc()};
+   lines.Add("主人：".Loc()+(binder==null?"无".Loc():binder.LabelShort+(binder.Dead?"（已死）".Loc():"")));
+   lines.Add("主人对它“重申真名”每天一次 +8；它的床在束缚法阵里每天 +3；主人死亡 -40；被殖民地的寒铁武器打到 -5。降到 0 会挣脱。".Loc());
    return string.Join("\n",lines);
   }}
   public void Change(float delta,string why){
    if(breaking || pawn.Dead)return;
    Severity=Mathf.Clamp(Severity+delta,0f,100f);
-   if(delta<=-5f && pawn.Faction?.IsPlayer==true)Messages.Message(pawn.LabelShort+"的服从度 "+delta.ToString("0")+"（"+why+"）。",pawn,MessageTypeDefOf.NegativeEvent,false);
+   if(delta<=-5f && pawn.Faction?.IsPlayer==true)Messages.Message(pawn.LabelShort+"的服从度 ".Loc()+delta.ToString("0")+"（".Loc()+why+"）。".Loc(),pawn,MessageTypeDefOf.NegativeEvent,false);
    Check();
   }
   void Check(){
    if(Severity>=WarnReset)warned=false;
-   if(!warned && Severity<AbyssBinding.WarnAt && Severity>0f){warned=true;Find.LetterStack.ReceiveLetter("它在试探束缚："+pawn.LabelShort,pawn.LabelShort+"的服从度降到了"+Severity.ToString("0")+"。再这样下去它会挣脱。让主人对它重申真名、把它的床放进束缚法阵，或者拿到它的真名卷。",LetterDefOf.NegativeEvent,pawn);}
-   if(Severity<=0.01f){var p=pawn;Fiends.Defer(()=>{if(!p.Dead && Outsiders.Bound(p))AbyssBinding.BreakFree(p,"的服从度耗尽了");});}
+   if(!warned && Severity<AbyssBinding.WarnAt && Severity>0f){warned=true;Find.LetterStack.ReceiveLetter("它在试探束缚：".Loc()+pawn.LabelShort,pawn.LabelShort+"的服从度降到了".Loc()+Severity.ToString("0")+"。再这样下去它会挣脱。让主人对它重申真名、把它的床放进束缚法阵，或者拿到它的真名卷。".Loc(),LetterDefOf.NegativeEvent,pawn);}
+   if(Severity<=0.01f){var p=pawn;Fiends.Defer(()=>{if(!p.Dead && Outsiders.Bound(p))AbyssBinding.BreakFree(p,"的服从度耗尽了".Loc());});}
   }
   const float WarnReset=30f;
   public override void TickInterval(int delta){
@@ -148,7 +148,7 @@ namespace LichPhylactery {
   }
   public override void Interacted(Pawn initiator,Pawn recipient,List<RulePackDef> extraSentencePacks,out string letterText,out string letterLabel,out LetterDef letterDef,out LookTargets lookTargets){
    letterText=null;letterLabel=null;letterDef=null;lookTargets=null;
-   var h=AbyssBinding.Binding(recipient);if(h==null)return;h.reassertDay=GenDate.DaysPassed;h.Change(AbyssBinding.ReassertGain,"重申真名");
+   var h=AbyssBinding.Binding(recipient);if(h==null)return;h.reassertDay=GenDate.DaysPassed;h.Change(AbyssBinding.ReassertGain,"重申真名".Loc());
   }
  }
 

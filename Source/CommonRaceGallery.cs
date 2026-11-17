@@ -29,7 +29,7 @@ namespace LichPhylactery {
    Text.Font=GameFont.Medium;Widgets.Label(new Rect(10,0,1060,36),title);Text.Font=GameFont.Small;
    var facings=new[]{Rot4.South,Rot4.East,Rot4.North,Rot4.West};
    for(int row=0;row<samples.Count;row++){
-    Widgets.Label(new Rect(10,44+row*230,200,22),samples[row].genes.XenotypeLabelCap+"（体型×"+samples[row].BodySize.ToString("0.##")+"）");
+    Widgets.Label(new Rect(10,44+row*230,200,22),samples[row].genes.XenotypeLabelCap+"（体型×".Loc()+samples[row].BodySize.ToString("0.##")+"）".Loc());
     for(int col=0;col<4;col++){
      var box=new Rect(10+col*262,66+row*230,252,200);Widgets.DrawBoxSolid(box,new Color(.18f,.2f,.21f));
      GUI.DrawTexture(box,PortraitsCache.Get(samples[row],new Vector2(252,200),facings[col],Vector3.zero,1f));

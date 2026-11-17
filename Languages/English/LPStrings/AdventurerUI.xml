@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（AdventurerUI.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>职业</zh><en>Class</en></s>
+  <s><zh>属性</zh><en>Abilities</en></s>
+  <s><zh>经验 </zh><en>XP </en></s>
+  <s><zh>（满级）</zh><en> (max level)</en></s>
+  <s><zh>已满（“传奇等级”已在设置里关闭）</zh><en>maxed ("legend levels" is turned off in settings)</en></s>
+  <s><zh>已满，需成为传奇冒险者</zh><en>maxed, needs to become a legendary adventurer</en></s>
+  <s><zh>传送门</zh><en>portal</en></s>
+  <s><zh>神明附体首领</zh><en>god-possessed boss</en></s>
+  <s><zh>龙决斗</zh><en>dragon duel</en></s>
+  <s><zh>法师塔</zh><en>wizard tower</en></s>
+  <s><zh>拉洛克差事</zh><en>Larloch's errands</en></s>
+  <s><zh>每件</zh><en>each</en></s>
+  <s><zh>神灵议会</zh><en>council of gods</en></s>
+  <s><zh>每个神性等级</zh><en>each divinity level</en></s>
+  <s><zh>（还差 </zh><en> (still </en></s>
+  <s><zh>20 级已满：完成一个 DND 事件里程碑（击杀里程碑不算）成为传奇冒险者后解锁传奇等级 21～40，攒下的经验立即结算。经验照常累积（现在 </zh><en>Level 20 is maxed: complete a DND event milestone (kill milestones don't count) to become a legendary adventurer and unlock legend levels 21-40, and accumulated XP is settled immediately. XP keeps accumulating as usual (now </en></s>
+  <s><zh>经验来源：</zh><en>XP sources:</en></s>
+  <s><zh>· 击杀 / 协助：敌人战斗力 × </zh><en>· Kill / assist: enemy combat power × </en></s>
+  <s><zh>，按造成的伤害比例分（独杀战斗力 100 的敌人 = </zh><en>, split by share of damage dealt (solo-killing an enemy of combat power 100 = </en></s>
+  <s><zh>· 守住袭击：袭击点数 × </zh><en>· Defending against raids: raid points × </en></s>
+  <s><zh>，参战的人平分（1000 点、2 人 = 每人 </zh><en>, split evenly among those who fought (1000 points, 2 people = each </en></s>
+  <s><zh>· 完成任务：任务点数 × </zh><en>· Completing quests: quest points × </en></s>
+  <s><zh>（接任务的人），家里其他殖民者 × </zh><en> (whoever took the quest), other colonists at home × </en></s>
+  <s><zh>· DND 里程碑（每人每项一次）：</zh><en>· DND milestones (once per person each): </en></s>
+  <s><zh>　 </zh><en>   </en></s>
+  <s><zh>，已完成 </zh><en>, completed </en></s>
+  <s><zh>   ✓ 击败传奇怪物 ×</zh><en>   ✓ defeated legendary monsters ×</en></s>
+  <s><zh>· 研习卷：每读 1 小时 </zh><en>· Study scrolls: per hour read </en></s>
+  <s><zh>；云游导师：每课 </zh><en>; wandering mentor: per lesson </en></s>
+  <s><zh>· 冒险者手册：</zh><en>· Adventurer's manual: </en></s>
+  <s><zh>已超过（只练到 </zh><en>surpassed (trains only to </en></s>
+  <s><zh>每本 </zh><en>each </en></s>
+  <s><zh>，最多练到 </zh><en>, trains up to </en></s>
+  <s><zh>· 日常工作：已关闭</zh><en>· Daily work: off</en></s>
+  <s><zh>· 日常工作：每 </zh><en>· Daily work: per </en></s>
+  <s><zh> 技能经验 +</zh><en> skill XP +</en></s>
+  <s><zh>（今日 </zh><en> (today </en></s>
+  <s><zh> 全额，之后 ×</zh><en> in full, after that ×</en></s>
+  <s><zh>· 击杀里程碑（下一级所需的 </zh><en>· Kill milestones ( </en></s>
+  <s><zh>%，现在 </zh><en>% of the next level, now </en></s>
+  <s><zh>）：</zh><en>): </en></s>
+  <s><zh>   传奇：500 / 1000 杀各 +</zh><en>   Legend: 500 / 1000 kills each +</en></s>
+  <s><zh> 传奇属性点</zh><en> legend attribute points</en></s>
+  <s><zh>· 击杀宿敌冠军：下一级所需的 </zh><en>· Killing a nemesis champion: XP needed for the next level × </en></s>
+  <s><zh>%（现在 </zh><en>% (now </en></s>
+  <s><zh>，传奇 +</zh><en>, legend +</en></s>
+  <s><zh>当前经验倍率 </zh><en>Current XP multiplier </en></s>
+  <s><zh>%（设置 </zh><en>% (setting </en></s>
+  <s><zh> × 基础 </zh><en> × base </en></s>
+  <s><zh> × 凡人之志 </zh><en> × mortal will </en></s>
+  <s><zh>；击杀里程碑和宿敌不乘倍率）</zh><en>; kill milestones and nemeses aren't multiplied)</en></s>
+  <s><zh> 购点基础值 </zh><en> point-buy base value </en></s>
+  <s><zh>（种族、背景等 </zh><en> (race, background etc. </en></s>
+  <s><zh>\n不能</zh><en>\nCan't </en></s>
+  <s><zh>减</zh><en>decrease</en></s>
+  <s><zh>加</zh><en>increase</en></s>
+  <s><zh>减到 </zh><en>Decrease to </en></s>
+  <s><zh>加到 </zh><en>Increase to </en></s>
+  <s><zh>花 </zh><en>spend </en></s>
+  <s><zh>退回 </zh><en>refund </en></s>
+  <s><zh> 点，剩 </zh><en> points, leaving </en></s>
+  <s><zh>\n\n之后：\n</zh><en>\n\nAfterwards:\n</en></s>
+  <s><zh>初始属性分配：剩余购点 </zh><en>Starting ability assignment: points remaining </en></s>
+  <s><zh>5e 购点制：每项基础值 8～15，费用 8:0　9:1　10:2　11:3　12:4　13:5　14:7　15:9（共 </zh><en>5e point buy: base values 8-15 per ability, costs 8:0  9:1  10:2  11:3  12:4  13:5  14:7  15:9 ( </en></s>
+  <s><zh> 点）。\n种族、背景特性等加值另算，显示的数值已经包含。\n点六维后面的 − / + 改基础值；预填的是按技能推荐的标准数组。\n点“确认”两次后锁定，每人只有一次；不确认也按当前分配生效。</zh><en> points total).\nRace and background trait bonuses are counted separately; the shown values already include them.\nClick − / + after each ability to change the base value; the prefill is the standard array recommended from skills.\nClick "confirm" twice to lock, once per person only; without confirming, the current assignment still applies.</en></s>
+  <s><zh>再点一次确认：锁定当前分配，之后不能再改</zh><en>Click again to confirm: lock the current assignment; it can't be changed afterwards</en></s>
+  <s><zh>（还剩 </zh><en> (still </en></s>
+  <s><zh> 点没用，会作废）</zh><en> points unused, which will be lost)</en></s>
+  <s><zh>锁定当前分配（点两次）。</zh><en>Lock the current assignment (click twice).</en></s>
+  <s><zh>确定？</zh><en>Sure?</en></s>
+  <s><zh>确认</zh><en>Confirm</en></s>
+  <s><zh>按技能恢复推荐分配（标准数组 15/14/13/12/10/8）。</zh><en>Restore the recommended assignment from skills (standard array 15/14/13/12/10/8).</en></s>
+  <s><zh>推荐</zh><en>Recommend</en></s>
+  <s><zh>六项基础值全部改回 8，购点全部退回，再自己分配。</zh><en>Reset all six base values to 8, refund all points, and assign them yourself.</en></s>
+  <s><zh>全部 8</zh><en>All 8</en></s>
+  <s><zh>传奇冒险者 </zh><en>Legendary adventurer </en></s>
+  <s><zh>传奇冒险者（称号，不占特性格）：20 级并完成过 DND 里程碑。\n殖民地全员心情 +3“与传奇同行”；本人社交影响 +10%；囚犯、访客和商人对其好感 +10。\n传奇死亡时全殖民地心情 −6（10 天）。</zh><en>Legendary adventurer (title, takes no trait slot): level 20 and has completed a DND milestone.\nWhole colony mood +3 "walking with a legend"; own social impact +10%; prisoners, visitors and traders +10 opinion of them.\nWhen the legend dies, whole colony mood −6 (10 days).</en></s>
+  <s><zh>可用属性点：</zh><en>Available ability points: </en></s>
+  <s><zh>每次属性提升 = </zh><en>Each ability score improvement = </en></s>
+  <s><zh>（天赋或特性加成，不叠加）</zh><en> (talent or trait bonus, not stacking)</en></s>
+  <s><zh>（×</zh><en> (×</en></s>
+  <s><zh> 级各一次。\n点六维后面的 +1 / +2 直接加点，单项上限 </zh><en> level, once each.\nClick +1 / +2 after each ability to add points directly; single ability cap </en></s>
+  <s><zh>（威能之恩那一项 +4，传奇冒险者每 5 个传奇等级 +2）。\n剩下 </zh><en> (+4 for the Boon of Might ability, +2 per 5 legend levels for legendary adventurers).\nRemaining </en></s>
+  <s><zh> 次完整的属性提升</zh><en> full ability score improvements</en></s>
+  <s><zh>，另有 </zh><en>, plus </en></s>
+  <s><zh> 点是拆开的</zh><en> split points</en></s>
+  <s><zh>；改选专长要消耗一次完整的属性提升。</zh><en>; picking a feat instead costs one full ability score improvement.</en></s>
+  <s><zh>自动加点</zh><en>Auto-assign</en></s>
+  <s><zh>同设置里的“殖民者自动加点”：获得属性提升时自动加在职业主属性或最高的一项。打开时这个人剩下的点也立即自动分配。</zh><en>Same as "colonists auto-assign ability points" in settings: ability score improvements are automatically added to the class's main ability or the highest one. When turned on, this person's remaining points are also assigned at once.</en></s>
+  <s><zh>选恩赐（</zh><en>Pick boon (</en></s>
+  <s><zh>跳到下面的“史诗恩赐”列表，在分页里直接选。</zh><en>Jump to the "epic boons" list below and pick directly on the tab.</en></s>
+  <s><zh>选专长（</zh><en>Pick feat (</en></s>
+  <s><zh>跳到下面的“可选专长”列表：</zh><en>Jump to the "available feats" list below: </en></s>
+  <s><zh>先用职业奖励专长（免费，剩 </zh><en>use class bonus feats first (free, </en></s>
+  <s><zh> 个），</zh><en> left),</en></s>
+  <s><zh>用一次完整的属性提升换一个专长。</zh><en>trade one full ability score improvement for a feat.</en></s>
+  <s><zh>\n\n（点属性名展开 / 收起效果表）</zh><en>\n\n(Click an ability name to expand / collapse its effect table)</en></s>
+  <s><zh>加点后：\n</zh><en>After adding a point:\n</en></s>
+  <s><zh>六维的数值效果已交给 Isekai（设置“Isekai 共存模式”）；等级、加点、专长、恩赐、熟练加值照常</zh><en>The six abilities' numeric effects are handed over to Isekai (setting "Isekai coexistence mode"); levels, points, feats, boons and proficiency bonus work as usual</en></s>
+  <s><zh>属性效果强度 0%：六维没有数值效果</zh><en>Ability effect strength 0%: the six abilities have no numeric effect</en></s>
+  <s><zh>部位生命合计 +</zh><en>Total part health +</en></s>
+  <s><zh>%（等级、体质</zh><en>% (level, Constitution</en></s>
+  <s><zh>、坚韧</zh><en>, Tough</en></s>
+  <s><zh>、传奇血量</zh><en>, legend health</en></s>
+  <s><zh>史诗恩赐：</zh><en>Epic boons: </en></s>
+  <s><zh>命运之恩：可用</zh><en>Boon of fate: available</en></s>
+  <s><zh>命运之恩：还要 </zh><en>Boon of fate: another </en></s>
+  <s><zh>传奇属性点：余 </zh><en>Legend attribute points: remaining </en></s>
+  <s><zh>（“传奇等级”已关闭，暂时没有效果）</zh><en> ("legend levels" is off, no effect for now)</en></s>
+  <s><zh>\n下一点：</zh><en>\nNext point: </en></s>
+  <s><zh>投 1 点后：</zh><en>After 1 point: </en></s>
+  <s><zh>投 5 点后：</zh><en>After 5 points: </en></s>
+  <s><zh>传奇属性点在成为传奇冒险者后解锁</zh><en>Legend attribute points unlock after becoming a legendary adventurer</en></s>
+  <s><zh>传奇属性点：“传奇等级”已在设置里关闭</zh><en>Legend attribute points: "legend levels" is turned off in settings</en></s>
+  <s><zh>专长</zh><en>Feats</en></s>
+  <s><zh>暂无专长（可以用一次属性提升改选专长）</zh><en>No feats yet (an ability score improvement can be swapped for a feat)</en></s>
+  <s><zh>（起源）</zh><en> (origin)</en></s>
+  <s><zh>（今天 </zh><en> (today </en></s>
+  <s><zh>\n\n附带：</zh><en>\n\nIncludes: </en></s>
+  <s><zh>\n\n前置：</zh><en>\n\nPrerequisite: </en></s>
+  <s><zh>\n每天 </zh><en>\n </en></s>
+  <s><zh> 次，午夜恢复。</zh><en> times per day, restored at midnight.</en></s>
+  <s><zh>可选专长（职业奖励专长，免费，剩 </zh><en>Available feats (class bonus feats, free, </en></s>
+  <s><zh>；之后消耗属性提升，剩 </zh><en> left; after that they cost ability score improvements, </en></s>
+  <s><zh> 次</zh><en> left</en></s>
+  <s><zh>可选专长（消耗一次属性提升，剩 </zh><en>Available feats (cost one ability score improvement, </en></s>
+  <s><zh> 次）</zh><en> left)</en></s>
+  <s><zh>可选专长</zh><en>Available feats</en></s>
+  <s><zh>　施法奖励专长 </zh><en>  Spellcasting bonus feats </en></s>
+  <s><zh> 个（只能换法术类专长）</zh><en> (spell feats only)</en></s>
+  <s><zh>（每天 </zh><en> (per day </en></s>
+  <s><zh>任意属性</zh><en>any ability</en></s>
+  <s><zh>前置：</zh><en>Prerequisite: </en></s>
+  <s><zh>　— </zh><en>  — </en></s>
+  <s><zh>\n不能选：</zh><en>\nCan't pick: </en></s>
+  <s><zh>再点一次确认：</zh><en>Click again to confirm: </en></s>
+  <s><zh>用一个施法奖励专长</zh><en>use a spellcasting bonus feat</en></s>
+  <s><zh>用一个职业奖励专长</zh><en>use a class bonus feat</en></s>
+  <s><zh>消耗一次属性提升</zh><en>spend an ability score improvement</en></s>
+  <s><zh>换“</zh><en> for "</en></s>
+  <s><zh>”。</zh><en>".</en></s>
+  <s><zh>已有</zh><en>Owned</en></s>
+  <s><zh>选择</zh><en>Pick</en></s>
+  <s><zh>拆开的属性点不能换专长：需要一次完整的属性提升</zh><en>Split ability points can't be swapped for feats: a full ability score improvement is needed</en></s>
+  <s><zh>史诗恩赐（剩 </zh><en>Epic boons ( </en></s>
+  <s><zh> 个恩赐点，每个恩赐只能选一次）</zh><en> boon points left; each boon can be picked only once)</en></s>
+  <s><zh>再点一次确认</zh><en>Click again to confirm</en></s>
+  <s><zh>，上限 +</zh><en>, cap +</en></s>
+  <s><zh>再点一次确认：消耗一个恩赐点换“</zh><en>Click again to confirm: spend a boon point for "</en></s>
+  <s><zh>种族：</zh><en>Race: </en></s>
+  <s><zh>，亲和已关闭</zh><en>, affinity off</en></s>
+  <s><zh>　天赋：</zh><en>  Talent: </en></s>
+  <s><zh>种族亲和 — </zh><en>Racial affinity — </en></s>
+  <s><zh>\n（“种族亲和”已在设置里关闭）</zh><en>\n("Racial affinity" is turned off in settings)</en></s>
+  <s><zh>传奇 Lv</zh><en>Legend Lv</en></s>
+  <s><zh>：所有属性上限 +</zh><en>: all ability caps +</en></s>
+  <s><zh>（每 5 个传奇等级 +2）</zh><en> (+2 per 5 legend levels)</en></s>
+  <s><zh>VPE 额外路径点 +</zh><en>VPE extra path points +</en></s>
+  <s><zh>（另有 </zh><en> (another </en></s>
+  <s><zh> 点等觉醒灵能后发放）</zh><en> points are granted once psycasts awaken)</en></s>
+  <s><zh>每个冒险者等级给 1 点 VPE 路径点（不加 VPE 灵能等级；传奇等级每 2 级 1 点）。还没有 VPE 灵能的人先攒着，第一次获得心灵链接时一次发放。\nDND 职业路径：对应技能 6 级，或主属性 13 即可解锁；职业强度另加 0.05 × 主属性调整值 + 0.02 ×（熟练加值 − 2）。</zh><en>Each adventurer level gives 1 VPE path point (doesn't add VPE psylink levels; 1 point per 2 legend levels). People without VPE psycasts save them up, and they're granted all at once the first time they gain a psylink.\nDND class paths: unlocked with the matching skill at 6 or the main ability at 13; class power also gains 0.05 × main ability modifier + 0.02 × (proficiency bonus − 2).</en></s>
+  <s><zh>里程碑：</zh><en>Milestones: </en></s>
+  <s><zh>剧情等级</zh><en>story level</en></s>
+  <s><zh>超凡</zh><en>exalted</en></s>
+  <s><zh>（效果未生效）</zh><en> (effect not active)</en></s>
+  <s><zh>神话·</zh><en>Mythic·</en></s>
+  <s><zh>超凡·</zh><en>Exalted·</en></s>
+  <s><zh>（未生效）</zh><en> (not active)</en></s>
+  <s><zh>（暂停）</zh><en> (paused)</en></s>
+  <s><zh>未生效：</zh><en>Not active: </en></s>
+  <s><zh>属性刚变化，稍后生效</zh><en>Ability just changed; takes effect shortly</en></s>
+  <s><zh>暂停：当前</zh><en>Paused: current </en></s>
+  <s><zh> 低于 20，回到 20 恢复。\n\n</zh><en> is below 20; restored on returning to 20.\n\n</en></s>
+  <s><zh>\n\n神话条件：属性 24，或 20 + 传奇冒险者 + </zh><en>\n\nMythic condition: ability 24, or 20 + legendary adventurer + </en></s>
+  <s><zh>与</zh><en> and </en></s>
+  <s><zh>传奇点合计 20（现在 </zh><en> legend points totaling 20 (now </en></s>
+  <s><zh>职业特性</zh><en>Class features</en></s>
+  <s><zh>职业特性：学习战士、圣武士或武僧（“职业”页）后出现</zh><en>Class features: appear after learning fighter, paladin or monk (the "Class" page)</en></s>
+  <s><zh>战斗风格：学习物理职业后可选 1 个</zh><en>Fighting style: pick 1 after learning a martial class</en></s>
+  <s><zh>战斗风格</zh><en>Fighting styles</en></s>
+  <s><zh>（适应中，剩 </zh><en> (adapting, </en></s>
+  <s><zh> 天）</zh><en> days left)</en></s>
+  <s><zh>\n\n改选后 3 天生效，适应期间这一槽没有效果。</zh><en>\n\nA changed style takes effect after 3 days; this slot has no effect while adapting.</en></s>
+  <s><zh>\n\n这个槽位现在没有解锁，风格不生效。</zh><en>\n\nThis slot isn't unlocked right now; the style has no effect.</en></s>
+  <s><zh>收起</zh><en>Collapse</en></s>
+  <s><zh>改选</zh><en>Change</en></s>
+  <s><zh>换成另一个风格：新风格 3 天（180000 刻）后生效，期间这一槽没有效果。第一次选不用等。</zh><en>Switch to another style: the new style takes effect after 3 days (180000 ticks), and this slot has no effect meanwhile. The first pick needs no wait.</en></s>
+  <s><zh> （空，在下面选）</zh><en>  (empty, pick below)</en></s>
+  <s><zh> （</zh><en>  (</en></s>
+  <s><zh>学习物理职业</zh><en>learn a martial class</en></s>
+  <s><zh>战士 10 级</zh><en>fighter level 10</en></s>
+  <s><zh>解锁）</zh><en> unlocks)</en></s>
+  <s><zh>可选战斗风格（槽位 </zh><en>Available fighting styles (slot </en></s>
+  <s><zh>，改选后 3 天生效</zh><en>, a change takes effect after 3 days</en></s>
+  <s><zh>，第一次选立即生效</zh><en>, the first pick takes effect immediately</en></s>
+  <s><zh>改选为“</zh><en>Change to "</en></s>
+  <s><zh>”（3 天后生效）。</zh><en>" (takes effect in 3 days).</en></s>
+  <s><zh>选“</zh><en>Pick "</en></s>
+  <s><zh>初始属性分配</zh><en>Starting ability assignment</en></s>
+  <s><zh>属性点 </zh><en>Ability points </en></s>
+  <s><zh>职业奖励专长 </zh><en>Class bonus feats </en></s>
+  <s><zh>施法奖励专长 </zh><en>Spellcasting bonus feats </en></s>
+  <s><zh>史诗恩赐 </zh><en>Epic boons </en></s>
+  <s><zh>传奇属性点 </zh><en>Legend attribute points </en></s>
+  <s><zh>职业点 </zh><en>Class points </en></s>
+  <s><zh>传奇职业点 </zh><en>Legendary class points </en></s>
+  <s><zh>选择职业（</zh><en>Choose class (</en></s>
+  <s><zh>打开</zh><en>Open </en></s>
+  <s><zh>的冒险者分页（</zh><en>'s adventurer tab (</en></s>
+</LPStrings>

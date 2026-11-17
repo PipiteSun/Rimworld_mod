@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 契约 -->
+  <LP_PactSigner.label>pact</LP_PactSigner.label>
+  <!-- 和一位异界宗主签下的契约。括号里是宗主和债务（0～3）。债务 1：心情 -6，恩赐给的能力冷却 ×2；债务 2：宗主派讨债者（九狱）或狂猎（妖精），之后每 15 天一次；债务 3：强制执行——签约人被拖进那个位面（巫妖：命匣被收走）。在契约讲台“补偿宗主”可以还债。 -->
+  <LP_PactSigner.description>A pact signed with an otherworldly patron. In brackets are the patron and debt (0-3). Debt 1: mood -6, abilities granted by boons have cooldown ×2; debt 2: the patron sends debt collectors (Nine Hells) or the wild hunt (fey), then once every 15 days; debt 3: enforcement: the signer is dragged into that plane (lich: the phylactery is taken). "Compensate the patron" at the pact lectern pays off debt.</LP_PactSigner.description>
+  <!-- 守约 -->
+  <LP_PactSigner.stages.0.label>in good standing</LP_PactSigner.stages.0.label>
+  <!-- 欠债 -->
+  <LP_PactSigner.stages.1.label>in debt</LP_PactSigner.stages.1.label>
+  <!-- 被追债 -->
+  <LP_PactSigner.stages.2.label>pursued for debt</LP_PactSigner.stages.2.label>
+  <!-- 强制执行 -->
+  <LP_PactSigner.stages.3.label>enforcement</LP_PactSigner.stages.3.label>
+  <!-- 契约守卫 -->
+  <LP_PactBound.label>pact guard</LP_PactBound.label>
+  <!-- 宗主按契约借给签约人的守卫：守契约，服从度不会下降。契约结束时它会回去。 -->
+  <LP_PactBound.description>A guard the patron lends the signer under the pact: keeps the pact, obedience never drops. It goes back when the pact ends.</LP_PactBound.description>
+  <!-- 宗主代理人 -->
+  <LP_PatronAgent.label>patron's agent</LP_PatronAgent.label>
+  <!-- （隐藏）讨债者 / 狂猎的首领：倒下时掉落宗主代理人的真名卷。 -->
+  <LP_PatronAgent.description>(Hidden) Leader of debt collectors / the wild hunt: drops the true name scroll of the patron's agent when downed.</LP_PatronAgent.description>
+  <!-- 地狱之主的印记 -->
+  <LP_Boon_InfernalMark.label>mark of the Lord of Hell</LP_Boon_InfernalMark.label>
+  <!-- 阿斯莫蒂尔斯的印记在额头上发烫：5 格内的敌对人形心生恐惧（精神崩溃阈值 +15%）；魔能爆点燃的概率 40%。 -->
+  <LP_Boon_InfernalMark.description>The mark of Asmodeus burns on the forehead: hostile humanlikes within 5 cells are filled with fear (mental break threshold +15%); eldritch blast ignite chance 40%.</LP_Boon_InfernalMark.description>
+  <!-- 九狱的恐惧 -->
+  <LP_InfernalDread.label>dread of the Nine Hells</LP_InfernalDread.label>
+  <!-- 地狱之主的印记压得人喘不过气：精神崩溃阈值 +15%。 -->
+  <LP_InfernalDread.description>The mark of the Lord of Hell is suffocating: mental break threshold +15%.</LP_InfernalDread.description>
+  <!-- 冰狱奥术 -->
+  <LP_Boon_IceArcana.label>arcana of the frozen hell</LP_Boon_IceArcana.label>
+  <!-- 梅菲斯托菲勒斯的寒冰在血管里流：心灵熵上限 +20%；冰霜伤害命中时额外 +1 层寒气侵体。 -->
+  <LP_Boon_IceArcana.description>Mephistopheles's ice flows in the veins: max neural heat +20%; frost damage hits add +1 extra stack of chilled to the bone.</LP_Boon_IceArcana.description>
+  <!-- 铁城工匠 -->
+  <LP_Boon_IronArtisan.label>iron city artisan</LP_Boon_IronArtisan.label>
+  <!-- 迪斯帕特的契约：殖民地的建造速度 +25%（签约人活着、在这张地图上时）。 -->
+  <LP_Boon_IronArtisan.description>Dispater's pact: colony construction speed +25% (while the signer is alive and on this map).</LP_Boon_IronArtisan.description>
+  <!-- 女王之舌 -->
+  <LP_Boon_QueenTongue.label>the queen's tongue</LP_Boon_QueenTongue.label>
+  <!-- 格拉西娅借给签约人的舌头：社交影响 +30%，交易价格改善 +15%。 -->
+  <LP_Boon_QueenTongue.description>The tongue Glasya lends the signer: social impact +30%, trade prices improved +15%.</LP_Boon_QueenTongue.description>
+  <!-- 霜影 -->
+  <LP_Boon_FrostShadow.label>frost shadow</LP_Boon_FrostShadow.label>
+  <!-- 风暗女王的霜影：站着不动 3 秒后隐身，一动或一出手就现形。 -->
+  <LP_Boon_FrostShadow.description>The frost shadow of the Queen of Air and Darkness: turns invisible after standing still for 3 seconds, revealed by moving or attacking.</LP_Boon_FrostShadow.description>
+  <!-- 地狱之火 -->
+  <LP_Clause_Hellfire.label>hellfire</LP_Clause_Hellfire.label>
+  <!-- 契约里的“地狱之火”：受到的火焰伤害 ×1.25。 -->
+  <LP_Clause_Hellfire.description>The "hellfire" in the pact: fire damage taken ×1.25.</LP_Clause_Hellfire.description>
+  <!-- 冰心 -->
+  <LP_Clause_IceHeart.label>frozen heart</LP_Clause_IceHeart.label>
+  <!-- 契约里的“冰心”：心情始终 -5。 -->
+  <LP_Clause_IceHeart.description>The "frozen heart" in the pact: mood always -5.</LP_Clause_IceHeart.description>
+  <!-- 冬之吻 -->
+  <LP_Clause_WinterKiss.label>winter's kiss</LP_Clause_WinterKiss.label>
+  <!-- 契约里的“冬之吻”：最低舒适温度 +10℃。 -->
+  <LP_Clause_WinterKiss.description>The "winter's kiss" in the pact: min comfortable temperature +10°C.</LP_Clause_WinterKiss.description>
+  <!-- 九狱的索取 -->
+  <LP_HellsClaim.label>the Nine Hells' claim</LP_HellsClaim.label>
+  <!-- 长子条款：这孩子十八岁时，九狱会来要人（50%）。 -->
+  <LP_HellsClaim.description>Firstborn clause: when this child turns eighteen, the Nine Hells will come to collect (50%).</LP_HellsClaim.description>
+  <!-- 失去的名字 -->
+  <LP_NameStolenHediff.label>lost name</LP_NameStolenHediff.label>
+  <!-- 原来的名字被宗主收走了，新名字怎么也叫不顺口：社交影响 -20%。 -->
+  <LP_NameStolenHediff.description>The original name was taken by the patron, and the new name never feels right: social impact -20%.</LP_NameStolenHediff.description>
+</LanguageData>

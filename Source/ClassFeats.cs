@@ -28,7 +28,7 @@ namespace LichPhylactery {
   }
   public static string PowerText(Pawn p,StatDef stat){
    if(stat==null)return "";var h=Adventurer.Get(p);var list=On(h).Where(f=>f.powerBonus!=0f && f.powerStats!=null && f.powerStats.Contains(stat)).ToList();
-   return list.Count==0?"":"\n职业专长（"+string.Join("、",list.Select(f=>f.label))+"）：+"+list.Sum(f=>f.powerBonus).ToStringPercent();
+   return list.Count==0?"":"\n职业专长（".Loc()+string.Join("、".Loc(),list.Select(f=>f.label))+"）：+".Loc()+list.Sum(f=>f.powerBonus).ToStringPercent();
   }
   // 资源上限：神恩是牧师和圣武士共用的一条，两边的专长都加在这一条上。
   public static int ResourceBonus(Hediff_Adventurer h,LP_ClassDef c){

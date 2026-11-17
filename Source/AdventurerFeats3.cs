@@ -49,9 +49,9 @@ namespace LichPhylactery {
   // 命中之后（盾牌大师推开、冲锋者撞开、擒抱者抓住、长柄武器大师补一下）。
   public static void AfterHit(Pawn v,Pawn a,HeroInfo ai,DamageInfo d){
    if(ai.f3==0 || v.Dead || !v.Spawned || !v.HostileTo(a) || !MeleeHit(d))return;
-   if((ai.f3 & FShield)!=0 && HasShield(a) && Roll<ShieldShove){Push(v,a);if(!v.Dead && !v.Downed)v.stances?.stunner?.StunFor(ShieldStun,a,false,true,false);Shoved++;Items.Mote(v,"盾击",new Color(.8f,.8f,.9f));}
-   else if((ai.f3 & FCharger)!=0 && Charging(a) && Roll<ChargerPush){Push(v,a);Charged++;Items.Mote(v,"撞开",new Color(.95f,.7f,.4f));}
-   if((ai.f3 & FGrappler)!=0 && !v.Dead && !v.Downed && v.BodySize<=a.BodySize*GrapplerSize && !Items.Has(v,"LP_FeatGrappled") && Roll<GrapplerChance){Items.Give(v,"LP_FeatGrappled",GrappleTicks);v.pather?.StopDead();Grappled++;Items.Mote(v,"被擒抱",new Color(.9f,.6f,.5f));}
+   if((ai.f3 & FShield)!=0 && HasShield(a) && Roll<ShieldShove){Push(v,a);if(!v.Dead && !v.Downed)v.stances?.stunner?.StunFor(ShieldStun,a,false,true,false);Shoved++;Items.Mote(v,"盾击".Loc(),new Color(.8f,.8f,.9f));}
+   else if((ai.f3 & FCharger)!=0 && Charging(a) && Roll<ChargerPush){Push(v,a);Charged++;Items.Mote(v,"撞开".Loc(),new Color(.95f,.7f,.4f));}
+   if((ai.f3 & FGrappler)!=0 && !v.Dead && !v.Downed && v.BodySize<=a.BodySize*GrapplerSize && !Items.Has(v,"LP_FeatGrappled") && Roll<GrapplerChance){Items.Give(v,"LP_FeatGrappled",GrappleTicks);v.pather?.StopDead();Grappled++;Items.Mote(v,"被擒抱".Loc(),new Color(.9f,.6f,.5f));}
    if((ai.f3 & FPolearm)!=0 && Polearm(a) && !HeroCombat.extra && !v.Dead){
     int now=GenTicks.TicksGame;buttTick.TryGetValue(a.thingIDNumber,out int last);
     if(last<=0 || now-last>=PolearmInterval || now<last){buttTick[a.thingIDNumber]=Math.Max(1,now);var tv=v;var me=a;Fiends.Defer(()=>Butt(me,tv));}
@@ -64,7 +64,7 @@ namespace LichPhylactery {
    if(a==null || v==null || v.Dead || !v.Spawned || a.Dead || !a.Spawned || !v.Position.AdjacentTo8WayOrInside(a.Position))return false;
    Items.Give(a,"LP_WhirlwindFury",60,PolearmFactor);HeroCombat.extra=true;
    try{ClassMelee.Strike(a,v);}finally{HeroCombat.extra=false;Items.Remove(a,"LP_WhirlwindFury");}
-   Butts++;Items.Mote(v,"枪尾",new Color(.85f,.75f,.55f));return true;
+   Butts++;Items.Mote(v,"枪尾".Loc(),new Color(.85f,.75f,.55f));return true;
   }
   // 盾牌大师：戴护盾腰带时近战闪避再 +10（Verb_MeleeAttack.GetDodgeChance 后缀）。
   public static float DodgeBonus(Pawn v)=>Has(v,FShield) && HasShield(v)?ShieldDodge/100f:0f;
@@ -92,7 +92,7 @@ namespace LichPhylactery {
    var p=h?.pawn;if(p==null || p.Dead || h.boons.Count==0 || !Epic.Has(p,Recovery))return;
    float sum=ClassMelee.InjurySum(p);if(sum<=0f)return;
    int today=GenDate.DaysPassed+1;recoveryDay.TryGetValue(p.thingIDNumber,out int last); // +1：测试地图第 0 天也算没用过
-   if(sum>RecoveryThreshold && last!=today){recoveryDay[p.thingIDNumber]=today;ClassMelee.Heal(p,sum*.5f);foreach(var i in p.health.hediffSet.hediffs.OfType<Hediff_Injury>().Where(i=>i.Bleeding).ToList())i.Tended(.5f,1f);Items.Mote(p,"恢复之恩",new Color(1f,.8f,.3f));return;}
+   if(sum>RecoveryThreshold && last!=today){recoveryDay[p.thingIDNumber]=today;ClassMelee.Heal(p,sum*.5f);foreach(var i in p.health.hediffSet.hediffs.OfType<Hediff_Injury>().Where(i=>i.Bleeding).ToList())i.Tended(.5f,1f);Items.Mote(p,"恢复之恩".Loc(),new Color(1f,.8f,.3f));return;}
    ClassMelee.Heal(p,RecoveryTick);
   }
   public static int CostReduce(Pawn p,int cost)=>cost>1 && Epic.Has(p,SpellRecall)?1:0;
@@ -119,9 +119,9 @@ namespace LichPhylactery {
    if(h==null)return 0;int lv=CasterLevel(h);int due=Due(lv);if(due<=h.casterFeatGranted)return 0;
    int gave=due-h.casterFeatGranted;h.casterFeatGranted=due;h.casterFeats+=gave;
    var c=h.classes.levels.Where(kv=>kv.Key!=null && kv.Key.caster && kv.Value==lv).Select(kv=>kv.Key).FirstOrDefault();
-   who.Add((c?.label??"施法职业")+" "+lv+" 级（施法奖励）");return gave;
+   who.Add((c?.label??"施法职业".Loc())+" "+lv+" 级（施法奖励）".Loc());return gave;
   }
-  public static string Text=>"施法奖励专长：法师、牧师、德鲁伊、术士、邪术师、吟游诗人的职业等级 1、5、10、15 级各 1 个，免费、不占属性提升，只能换法术类专长（战争施法者、法术狙击、魔法学徒、元素使、仪式施法者、心灵感应、妖精之触、坚毅心智、治疗者、幸运、警觉、坚韧、观察者、技能专家、音乐家、演员，以及施法职业自己的职业专属专长）。";
+  public static string Text=>"施法奖励专长：法师、牧师、德鲁伊、术士、邪术师、吟游诗人的职业等级 1、5、10、15 级各 1 个，免费、不占属性提升，只能换法术类专长（战争施法者、法术狙击、魔法学徒、元素使、仪式施法者、心灵感应、妖精之触、坚毅心智、治疗者、幸运、警觉、坚韧、观察者、技能专家、音乐家、演员，以及施法职业自己的职业专属专长）。".Loc();
  }
 
  // ==================== 挂钩 ====================

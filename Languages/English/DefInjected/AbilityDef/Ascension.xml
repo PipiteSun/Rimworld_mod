@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 破晓之光 -->
+  <LP_DA_DawnLight.label>light of dawn</LP_DA_DawnLight.label>
+  <!-- 身周6格的友方伤口共愈合15点；敌方亡灵、邪魔和夺心魔受到20点神圣伤害。消耗30神力，冷却1天。 -->
+  <LP_DA_DawnLight.description>Allies within 6 cells heal a combined 15 points of wounds; enemy undead, fiends and mind flayers take 20 holy damage. Costs 30 divine power, cooldown 1 day.</LP_DA_DawnLight.description>
+  <!-- 不灭晨曦 -->
+  <LP_DA_UnfadingDawn.label>undying dawn</LP_DA_UnfadingDawn.label>
+  <!-- 护佑一名友方24小时：这期间受到的第一次致命伤不会致死，伤口当场止血。消耗50神力，冷却2天。 -->
+  <LP_DA_UnfadingDawn.description>Protect one ally for 24 hours: the first lethal wound in that time will not kill, and wounds stop bleeding at once. Costs 50 divine power, cooldown 2 days.</LP_DA_UnfadingDawn.description>
+  <!-- 审判之锤 -->
+  <LP_DA_JudgmentHammer.label>hammer of judgment</LP_DA_JudgmentHammer.label>
+  <!-- 对一名敌人砸下35点神圣伤害，并眩晕2秒。消耗30神力，冷却1天。 -->
+  <LP_DA_JudgmentHammer.description>Smash one enemy with 35 holy damage and stun them for 2 seconds. Costs 30 divine power, cooldown 1 day.</LP_DA_JudgmentHammer.description>
+  <!-- 正义之盾 -->
+  <LP_DA_JusticeShield.label>shield of justice</LP_DA_JusticeShield.label>
+  <!-- 身周8格的友方人形护甲（利器、钝器）+20%，持续1天。消耗40神力，冷却1天。 -->
+  <LP_DA_JusticeShield.description>Allied humanlikes within 8 cells get +20% armor (sharp, blunt) for 1 day. Costs 40 divine power, cooldown 1 day.</LP_DA_JusticeShield.description>
+  <!-- 支配 -->
+  <LP_DA_Dominate.label>dominate</LP_DA_Dominate.label>
+  <!-- 支配一名人形敌人的心智：12小时内他站到你这一边，结束后回到原来的派系。心灵失聪的人不受影响。消耗60神力，冷却2天。 -->
+  <LP_DA_Dominate.description>Dominate the mind of one humanlike enemy: for 12 hours they fight on your side, then return to their original faction. Psychically deaf people are unaffected. Costs 60 divine power, cooldown 2 days.</LP_DA_Dominate.description>
+  <!-- 恐惧之冠 -->
+  <LP_DA_CrownOfDread.label>crown of dread</LP_DA_CrownOfDread.label>
+  <!-- 身周7格的敌人惊恐逃窜。消耗40神力，冷却1天。 -->
+  <LP_DA_CrownOfDread.description>Enemies within 7 cells flee in terror. Costs 40 divine power, cooldown 1 day.</LP_DA_CrownOfDread.description>
+  <!-- 雷霆之怒 -->
+  <LP_DA_ThunderWrath.label>thunder wrath</LP_DA_ThunderWrath.label>
+  <!-- 在目标区域召下3道闪电，每道对1.5格内的人造成25点电击伤害。消耗40神力，冷却1天。 -->
+  <LP_DA_ThunderWrath.description>Call down 3 lightning bolts in the target area, each dealing 25 electrical damage to people within 1.5 cells. Costs 40 divine power, cooldown 1 day.</LP_DA_ThunderWrath.description>
+  <!-- 唤风 -->
+  <LP_DA_CallWind.label>call the wind</LP_DA_CallWind.label>
+  <!-- 让这张地图下起雷暴（约1天），本派系的人移动速度+10%，持续1天。消耗30神力，冷却1天。 -->
+  <LP_DA_CallWind.description>Brings a thunderstorm to this map (about 1 day), and your faction's people get +10% move speed for 1 day. Costs 30 divine power, cooldown 1 day.</LP_DA_CallWind.description>
+  <!-- 陨火 -->
+  <LP_DA_Meteor.label>meteor fire</LP_DA_Meteor.label>
+  <!-- 召下一颗火球：4格内造成40点火焰伤害并点燃。消耗45神力，冷却1天。 -->
+  <LP_DA_Meteor.description>Call down a fireball: 40 fire damage within 4 cells, setting things alight. Costs 45 divine power, cooldown 1 day.</LP_DA_Meteor.description>
+  <!-- 熔炉祝福 -->
+  <LP_DA_ForgeBlessing.label>forge blessing</LP_DA_ForgeBlessing.label>
+  <!-- 身周6格的友方人形1天内近战每次命中附加6点烧伤。消耗30神力，冷却1天。 -->
+  <LP_DA_ForgeBlessing.description>Allied humanlikes within 6 cells add 6 burn damage to every melee hit for 1 day. Costs 30 divine power, cooldown 1 day.</LP_DA_ForgeBlessing.description>
+  <!-- 兽群召唤 -->
+  <LP_DA_PackCall.label>call of the pack</LP_DA_PackCall.label>
+  <!-- 召来4只听从本派系的座狼，1天后它们回到荒野。消耗50神力，冷却2天。 -->
+  <LP_DA_PackCall.description>Summon 4 wargs that obey your faction; after 1 day they return to the wild. Costs 50 divine power, cooldown 2 days.</LP_DA_PackCall.description>
+  <!-- 掠食者之形 -->
+  <LP_DA_PredatorForm.label>predator form</LP_DA_PredatorForm.label>
+  <!-- 化身掠食者6小时：近战伤害+50%、移动速度+20%。消耗30神力，冷却1天。 -->
+  <LP_DA_PredatorForm.description>Become a predator for 6 hours: melee damage +50%, move speed +20%. Costs 30 divine power, cooldown 1 day.</LP_DA_PredatorForm.description>
+  <!-- 灵能爆震 -->
+  <LP_DA_PsionicBlast.label>psychic blast</LP_DA_PsionicBlast.label>
+  <!-- 身周5格的敌人眩晕3秒，并受到15点灵能伤害（心灵失聪的人不受影响）。消耗45神力，冷却1天。 -->
+  <LP_DA_PsionicBlast.description>Enemies within 5 cells are stunned for 3 seconds and take 15 psychic damage (psychically deaf people are unaffected). Costs 45 divine power, cooldown 1 day.</LP_DA_PsionicBlast.description>
+  <!-- 意志碾压 -->
+  <LP_DA_WillCrush.label>will crush</LP_DA_WillCrush.label>
+  <!-- 碾碎一名敌人的意志，让他陷入狂暴（心灵失聪的人不受影响）。消耗50神力，冷却1天。 -->
+  <LP_DA_WillCrush.description>Crush one enemy's will, sending them berserk (psychically deaf people are unaffected). Costs 50 divine power, cooldown 1 day.</LP_DA_WillCrush.description>
+  <!-- 灵魂安息 -->
+  <LP_DA_SoulRest.label>soul rest</LP_DA_SoulRest.label>
+  <!-- 身周8格的敌方亡灵与死灵造物受到40点神圣伤害；倒地的敌人和敌人的尸体6小时内不能被复生，也不能被吞噬大脑。消耗40神力，冷却1天。 -->
+  <LP_DA_SoulRest.description>Enemy undead and necromantic constructs within 8 cells take 40 holy damage; downed enemies and enemy corpses cannot be raised or have their brains devoured for 6 hours. Costs 40 divine power, cooldown 1 day.</LP_DA_SoulRest.description>
+  <!-- 审判之门 -->
+  <LP_DA_JudgmentGate.label>gate of judgment</LP_DA_JudgmentGate.label>
+  <!-- 为一名敌人打开审判之门：生命低于30%时当场死去，否则受到30点神圣伤害。消耗50神力，冷却1天。 -->
+  <LP_DA_JudgmentGate.description>Open the gate of judgment for one enemy: below 30% health they die on the spot, otherwise they take 30 holy damage. Costs 50 divine power, cooldown 1 day.</LP_DA_JudgmentGate.description>
+  <!-- 魔网飞弹 -->
+  <LP_DA_WeaveMissiles.label>weave missiles</LP_DA_WeaveMissiles.label>
+  <!-- 射出5发追踪的魔网飞弹，随机打向15格内的敌人，每发8点力场伤害。消耗30神力，冷却1天。 -->
+  <LP_DA_WeaveMissiles.description>Fire 5 homing Weave missiles at random enemies within 15 cells, 8 force damage each. Costs 30 divine power, cooldown 1 day.</LP_DA_WeaveMissiles.description>
+  <!-- 反魔场 -->
+  <LP_DA_Antimagic.label>antimagic field</LP_DA_Antimagic.label>
+  <!-- 以自己为中心张开6格的反魔场，持续1天：里面的敌人放不出能力，神明附体者的神技停摆。消耗50神力，冷却1天。 -->
+  <LP_DA_Antimagic.description>Open a 6-cell antimagic field centered on yourself for 1 day: enemies inside cannot use abilities, and divine skills of god-possessed pawns stop working. Costs 50 divine power, cooldown 1 day.</LP_DA_Antimagic.description>
+  <!-- 遗忘之雾 -->
+  <LP_DA_OblivionFog.label>mist of forgetting</LP_DA_OblivionFog.label>
+  <!-- 在目标处放出遗忘之雾：6格内的敌人6小时内射击精度-40%。消耗40神力，冷却1天。 -->
+  <LP_DA_OblivionFog.description>Release a mist of forgetting at the target: enemies within 6 cells get -40% shooting accuracy for 6 hours. Costs 40 divine power, cooldown 1 day.</LP_DA_OblivionFog.description>
+  <!-- 影遁 -->
+  <LP_DA_ShadowStep.label>shadow step</LP_DA_ShadowStep.label>
+  <!-- 没入阴影，瞬移到12格内的一处，并隐形8秒。消耗30神力，冷却1天。 -->
+  <LP_DA_ShadowStep.description>Sink into the shadows, teleport to a spot within 12 cells and turn invisible for 8 seconds. Costs 30 divine power, cooldown 1 day.</LP_DA_ShadowStep.description>
+  <!-- 万魂收割 -->
+  <LP_DA_SoulHarvest.label>reaping of souls</LP_DA_SoulHarvest.label>
+  <!-- 收割身周8格内所有倒地人形敌人的灵魂：他们当场死去（尸体完整），每个灵魂让命匣得到50点献祭经验。消耗40神力，冷却1天。 -->
+  <LP_DA_SoulHarvest.description>Reap the souls of all downed humanlike enemies within 8 cells: they die on the spot (bodies intact), and each soul gives the phylactery 50 sacrifice XP. Costs 40 divine power, cooldown 1 day.</LP_DA_SoulHarvest.description>
+  <!-- 亡者大军 -->
+  <LP_DA_DeadArmy.label>army of the dead</LP_DA_DeadArmy.label>
+  <!-- 从地下唤起4具骷髅（沿用死灵造物的骷髅），1天后崩解。消耗50神力，冷却1天。 -->
+  <LP_DA_DeadArmy.description>Raise 4 skeletons from the ground (the necromantic construct skeletons), which crumble after 1 day. Costs 50 divine power, cooldown 1 day.</LP_DA_DeadArmy.description>
+</LanguageData>

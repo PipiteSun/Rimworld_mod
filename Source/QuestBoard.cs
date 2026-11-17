@@ -18,12 +18,15 @@ namespace LichPhylactery {
   public static readonly string[] Kinds={Defense,Hunt,Camp,Monster};
   // 在殖民地打的委托（守卫家园、1.105.0 魔物来袭）：不建站点，到点来袭。
   public static bool AtHome(string kind)=>kind==Defense || kind==Monster;
-  public static readonly string[] TierNames={"青铜","白银","黄金","秘银","传说"};
+  public static readonly string[] TierNames={"青铜".Loc(),"白银".Loc(),"黄金".Loc(),"秘银".Loc(),"传说".Loc()};
   public static readonly Color[] TierColors={new Color(.72f,.48f,.28f),new Color(.75f,.78f,.82f),new Color(.9f,.75f,.3f),new Color(.55f,.8f,.9f),new Color(.82f,.45f,.9f)};
   public static readonly float[] TierPoints={300f,700f,1400f,2500f,4000f};
   public static readonly int[] TierMinLevel={1,5,9,13,17};
   public static readonly int[] TierSilver={200,450,800,1400,2400};
   public const int MaxTier=5,OffersPerDay=7,MaxActive=3,RefreshTicks=GenDate.TicksPerDay,TickInterval=250;
+  // 1.169.0：每日委托完成也给名声（和名声委托共用 AdventureBoard 的名声），按等阶 青铜～传说 +1/+1/+2/+3/+4；失败不扣。
+  public static readonly int[] RenownGain={1,1,2,3,4};
+  public static int RenownFor(BoardContract c)=>RenownGain[Mathf.Clamp(c.tier,1,MaxTier)-1];
   public const float HuntPoints=.8f,HuntSilver=1.2f,CampSilver=1.3f;
   public static int SiteMin(int tier)=>2+tier;
   public static int SiteMax(int tier)=>5+tier*2;
@@ -42,7 +45,7 @@ namespace LichPhylactery {
   public static int ColonyLevel=>TestLevel??AdventurerEnemies.ColonyMaxLevel();
   public static int UnlockedTier(){if(!Adventurer.Enabled)return MaxTier;int lv=ColonyLevel,t=1;while(t<MaxTier && lv>=TierMinLevel[t])t++;return t;}
   public static string TierLabel(int tier)=>TierNames[Mathf.Clamp(tier,1,MaxTier)-1];
-  public static string KindLabel(string kind)=>kind==Defense?"守卫家园":kind==Hunt?"远征讨伐":kind==Monster?"魔物来袭":"清剿据点";
+  public static string KindLabel(string kind)=>kind==Defense?"守卫家园".Loc():kind==Hunt?"远征讨伐".Loc():kind==Monster?"魔物来袭".Loc():"清剿据点".Loc();
   public static float XpFor(float points)=>points*Adventurer.QuestShare;
 
   public static Map Home=>Find.Maps.Where(m=>m.IsPlayerHome).OrderByDescending(m=>m.listerThings.ThingsOfDef(BoardDef).Any()).ThenByDescending(m=>m.mapPawns.FreeColonistsSpawnedCount).FirstOrDefault();
@@ -115,10 +118,11 @@ namespace LichPhylactery {
   }
   public static float GoodsValue(BoardContract c)=>c.goods==null?0f:c.goods.Where(t=>t!=null).Sum(t=>t.MarketValue*t.stackCount);
   public static string RewardText(BoardContract c){
-   var parts=new List<string>{c.silver+" 银"};
-   if(c.goods!=null)foreach(var t in c.goods)if(t!=null)parts.Add(t.LabelNoParenthesis+(t.stackCount>1?" ×"+t.stackCount:"")+(t.TryGetQuality(out var qc)?"（"+qc.GetLabel()+"）":""));
+   var parts=new List<string>{c.silver+" 银".Loc()};
+   if(c.goods!=null)foreach(var t in c.goods)if(t!=null)parts.Add(t.LabelNoParenthesis+(t.stackCount>1?" ×"+t.stackCount:"")+(t.TryGetQuality(out var qc)?"（".Loc()+qc.GetLabel()+"）".Loc():""));
    foreach(var n in c.items){var d=Items.Thing(n);if(d!=null)parts.Add(d.label);}
-   return string.Join("、",parts);
+   parts.Add("名声 +".Loc()+RenownFor(c));
+   return string.Join("、".Loc(),parts);
   }
 
   // ---------- 委托 ----------
@@ -152,44 +156,44 @@ namespace LichPhylactery {
   public static void EnsureFresh(){var st=State;if(st!=null && (Now>=st.nextRefresh || st.nextRefresh==-1))Refresh();}
 
   public static string Title(BoardContract c){
-   if(c.kind==Defense)return "守卫家园："+(c.faction!=null?c.faction.Name:AnimalLabel(c)+"兽群");
-   if(c.kind==Hunt)return "远征讨伐："+AnimalLabel(c)+"群";
+   if(c.kind==Defense)return "守卫家园：".Loc()+(c.faction!=null?c.faction.Name:AnimalLabel(c)+"兽群".Loc());
+   if(c.kind==Hunt)return "远征讨伐：".Loc()+AnimalLabel(c)+"群".Loc();
    if(c.kind==Monster)return QuestBoardMonsters.Title(c);
-   return "清剿据点："+(c.faction?.Name??"敌对据点");
+   return "清剿据点：".Loc()+(c.faction?.Name??"敌对据点".Loc());
   }
-  static string AnimalLabel(BoardContract c)=>DefDatabase<PawnKindDef>.GetNamedSilentFail(c.animal??"")?.label??"野兽";
+  static string AnimalLabel(BoardContract c)=>DefDatabase<PawnKindDef>.GetNamedSilentFail(c.animal??"")?.label??"野兽".Loc();
   public static string Describe(BoardContract c){
    string body;
-   if(c.kind==Defense)body="冒险者公会得到消息："+(c.faction!=null?c.faction.Name+"的一伙人":"一群狂暴的"+AnimalLabel(c))+"正朝殖民地逼近。接下委托后 6～12 小时内来袭，打退所有来犯者（杀死、打倒、俘虏或赶走）就算完成。";
+   if(c.kind==Defense)body="冒险者公会得到消息：".Loc()+(c.faction!=null?c.faction.Name+"的一伙人".Loc():"一群狂暴的".Loc()+AnimalLabel(c))+"正朝殖民地逼近。接下委托后 6～12 小时内来袭，打退所有来犯者（杀死、打倒、俘虏或赶走）就算完成。".Loc();
    else if(c.kind==Monster)body=QuestBoardMonsters.Describe(c);
-   else if(c.kind==Hunt)body="荒野里出现了一群狂暴的"+AnimalLabel(c)+"，威胁着过往的商旅。接下委托后世界地图上会出现「怪物巢穴」（离殖民地 "+SiteMin(c.tier)+"～"+SiteMax(c.tier)+" 格），组织远征队前往，消灭所有怪物（杀死或打倒）。"+SiteDays(c.tier)+" 天内不去，巢穴就会散去，委托失败。";
-   else body=(c.faction?.Name??"敌对派系")+"在附近建了一处前哨据点。接下委托后据点会出现在世界地图上（离殖民地 "+SiteMin(c.tier)+"～"+SiteMax(c.tier)+" 格），前往并消灭所有守军。"+SiteDays(c.tier)+" 天内不去，据点就会撤走，委托失败。";
-   return body+"\n\n等阶："+TierLabel(c.tier)+"（推荐冒险者等级 "+TierMinLevel[c.tier-1]+"+）\n威胁点数："+Mathf.RoundToInt(c.points)+"\n报酬："+RewardText(c)+(c.goods!=null && c.goods.Count>0?"（物品约值 "+Mathf.RoundToInt(GoodsValue(c))+" 银）":"")+"\n冒险者经验：接取人约 "+Mathf.RoundToInt(XpFor(c.points)*Adventurer.XpScale)+" 点，殖民地其他人各约 "+Mathf.RoundToInt(XpFor(c.points)*Adventurer.QuestHomeShare*Adventurer.XpScale)+" 点。";
+   else if(c.kind==Hunt)body="荒野里出现了一群狂暴的".Loc()+AnimalLabel(c)+"，威胁着过往的商旅。接下委托后世界地图上会出现「怪物巢穴」（离殖民地 ".Loc()+SiteMin(c.tier)+"～".Loc()+SiteMax(c.tier)+" 格），组织远征队前往，消灭所有怪物（杀死或打倒）。".Loc()+SiteDays(c.tier)+" 天内不去，巢穴就会散去，委托失败。".Loc();
+   else body=(c.faction?.Name??"敌对派系".Loc())+"在附近建了一处前哨据点。接下委托后据点会出现在世界地图上（离殖民地 ".Loc()+SiteMin(c.tier)+"～".Loc()+SiteMax(c.tier)+" 格），前往并消灭所有守军。".Loc()+SiteDays(c.tier)+" 天内不去，据点就会撤走，委托失败。".Loc();
+   return body+"\n\n等阶：".Loc()+TierLabel(c.tier)+"（推荐冒险者等级 ".Loc()+TierMinLevel[c.tier-1]+"+）\n威胁点数：".Loc()+Mathf.RoundToInt(c.points)+"\n报酬：".Loc()+RewardText(c)+(c.goods!=null && c.goods.Count>0?"（物品约值 ".Loc()+Mathf.RoundToInt(GoodsValue(c))+" 银）".Loc():"")+"\n冒险者经验：接取人约 ".Loc()+Mathf.RoundToInt(XpFor(c.points)*Adventurer.XpScale)+" 点，殖民地其他人各约 ".Loc()+Mathf.RoundToInt(XpFor(c.points)*Adventurer.QuestHomeShare*Adventurer.XpScale)+" 点。".Loc();
   }
 
   public static AcceptanceReport CanAccept(BoardContract c){
    var st=State;if(st==null || c==null)return false;
-   if(!Enabled)return "探索公告板已在设置里关闭";
-   if(!st.offers.Contains(c))return "委托已经下架";
-   if(st.active.Count>=MaxActive)return "同时最多接 "+MaxActive+" 份委托";
-   if(c.tier>UnlockedTier())return "需要殖民地有冒险者达到 "+TierMinLevel[c.tier-1]+" 级";
-   if(Home==null)return "没有殖民地";
+   if(!Enabled)return "探索公告板已在设置里关闭".Loc();
+   if(!st.offers.Contains(c))return "委托已经下架".Loc();
+   if(st.active.Count>=MaxActive)return "同时最多接 ".Loc()+MaxActive+" 份委托".Loc();
+   if(c.tier>UnlockedTier())return "需要殖民地有冒险者达到 ".Loc()+TierMinLevel[c.tier-1]+" 级".Loc();
+   if(Home==null)return "没有殖民地".Loc();
    return true;
   }
   public static Quest Accept(BoardContract c,Pawn by){
    var ok=CanAccept(c);if(!ok.Accepted){if(!ok.Reason.NullOrEmpty())Messages.Message(ok.Reason,MessageTypeDefOf.RejectInput,false);return null;}
    var st=State;var home=Home;
-   if(!AtHome(c.kind) && !MakeSite(c,home)){Messages.Message("附近找不到合适的地点，换一份委托试试。",MessageTypeDefOf.RejectInput,false);return null;}
+   if(!AtHome(c.kind) && !MakeSite(c,home)){Messages.Message("附近找不到合适的地点，换一份委托试试。".Loc(),MessageTypeDefOf.RejectInput,false);return null;}
    if(AtHome(c.kind))c.raidTick=Now+Mathf.RoundToInt(Rand.Range(.25f,.5f)*GenDate.TicksPerDay);
    else c.deadline=Now+SiteDays(c.tier)*GenDate.TicksPerDay;
    var q=Quest.MakeRaw();
-   q.name="【"+TierLabel(c.tier)+"】"+Title(c);q.description=Describe(c);q.root=RootDef;
+   q.name="【".Loc()+TierLabel(c.tier)+"】".Loc()+Title(c);q.description=Describe(c);q.root=RootDef;
    q.challengeRating=Mathf.Clamp((c.tier+1)/2,1,3);q.points=c.points;q.appearanceTick=Now;
    q.AddPart(new QuestPart_QuestBoard{contractId=c.id});
    Find.QuestManager.Add(q);q.Accept(by);
    c.quest=q;st.offers.Remove(c);st.active.Add(c);
-   string where=AtHome(c.kind)?"敌人将在 6～12 小时内到达。":"目标已经标在世界地图上，"+SiteDays(c.tier)+" 天内完成。";
-   Find.LetterStack.ReceiveLetter("接下委托："+Title(c),(by!=null?by.LabelShort+"在探索公告板上揭下了这份委托。":"")+where+"\n\n"+Describe(c),AtHome(c.kind)?LetterDefOf.ThreatSmall:LetterDefOf.NeutralEvent,c.site!=null?new LookTargets(c.site):LookTargets.Invalid,null,q);
+   string where=AtHome(c.kind)?"敌人将在 6～12 小时内到达。".Loc():"目标已经标在世界地图上，".Loc()+SiteDays(c.tier)+" 天内完成。".Loc();
+   Find.LetterStack.ReceiveLetter("接下委托：".Loc()+Title(c),(by!=null?by.LabelShort+"在探索公告板上揭下了这份委托。".Loc():"")+where+"\n\n"+Describe(c),AtHome(c.kind)?LetterDefOf.ThreatSmall:LetterDefOf.NeutralEvent,c.site!=null?new LookTargets(c.site):LookTargets.Invalid,null,q);
    return q;
   }
   static bool MakeSite(BoardContract c,Map home){
@@ -215,13 +219,13 @@ namespace LichPhylactery {
    var q=c.quest;
    if(q==null || q.State!=QuestState.Ongoing){Drop(c);return;}
    if(AtHome(c.kind)){
-    var home=Home;if(home==null){Fail(c,"殖民地已经不在了。");return;}
+    var home=Home;if(home==null){Fail(c,"殖民地已经不在了。".Loc());return;}
     if(!c.raidSent){if(Now>=c.raidTick)SendRaid(c,home);return;}
     if(c.raiders.All(Gone))Complete(c);
     return;
    }
    var site=c.site;
-   if(site==null || site.Destroyed){Fail(c,c.kind==Hunt?"怪物巢穴已经散去。":"据点已经撤走了。");return;}
+   if(site==null || site.Destroyed){Fail(c,c.kind==Hunt?"怪物巢穴已经散去。".Loc():"据点已经撤走了。".Loc());return;}
    if(!site.HasMap)return;
    var map=site.Map;
    if(c.mapTick==-1)c.mapTick=Now;
@@ -247,7 +251,7 @@ namespace LichPhylactery {
    }
    c.raiders=pawns;
    if(pawns.Count==0){Complete(c);return pawns;}
-   Find.LetterStack.ReceiveLetter(c.kind==Monster?"委托：魔物来袭":"委托：敌人来袭","探索公告板上的委托「"+Title(c)+"」："+(c.kind==Monster?"魔物到了（"+QuestBoardMonsters.Roster(c)+"）":"敌人到了")+"！打退所有来犯者就算完成。",LetterDefOf.ThreatBig,new LookTargets(pawns.Cast<Thing>()),f,c.quest);
+   Find.LetterStack.ReceiveLetter(c.kind==Monster?"委托：魔物来袭".Loc():"委托：敌人来袭".Loc(),"探索公告板上的委托「".Loc()+Title(c)+"」：".Loc()+(c.kind==Monster?"魔物到了（".Loc()+QuestBoardMonsters.Roster(c)+"）".Loc():"敌人到了".Loc())+"！打退所有来犯者就算完成。".Loc(),LetterDefOf.ThreatBig,new LookTargets(pawns.Cast<Thing>()),f,c.quest);
    return pawns;
   }
 
@@ -257,14 +261,15 @@ namespace LichPhylactery {
    var reward=MakeReward(c);
    if(home!=null && reward.Count>0)DropPodUtility.DropThingsNear(DropCellFinder.TradeDropSpot(home),home,reward,110,false,false,true,false);
    c.done=true;st?.active.Remove(c);
+   int renown=RenownFor(c);AdventureBoard.AddRenown(renown);
    var by=q?.AccepterPawn;
-   Find.LetterStack.ReceiveLetter("委托完成："+Title(c),"探索公告板上的【"+TierLabel(c.tier)+"】委托「"+Title(c)+"」完成了。\n\n报酬（空投送到殖民地）："+rewardText+"\n冒险者经验："+(by!=null?by.LabelShort+"约 "+Mathf.RoundToInt(XpFor(c.points)*Adventurer.XpScale)+" 点，":"")+"殖民地其他人各约 "+Mathf.RoundToInt(XpFor(c.points)*Adventurer.QuestHomeShare*Adventurer.XpScale)+" 点。",LetterDefOf.PositiveEvent,home!=null?new LookTargets(new TargetInfo(DropCellFinder.TradeDropSpot(home),home)):LookTargets.Invalid,null,q);
+   Find.LetterStack.ReceiveLetter("委托完成：".Loc()+Title(c),"探索公告板上的【".Loc()+TierLabel(c.tier)+"】委托「".Loc()+Title(c)+"」完成了。\n\n报酬（空投送到殖民地）：".Loc()+rewardText+"\n冒险者经验：".Loc()+(by!=null?by.LabelShort+"约 ".Loc()+Mathf.RoundToInt(XpFor(c.points)*Adventurer.XpScale)+" 点，".Loc():"")+"殖民地其他人各约 ".Loc()+Mathf.RoundToInt(XpFor(c.points)*Adventurer.QuestHomeShare*Adventurer.XpScale)+" 点。".Loc()+"\n"+"殖民地名声 +".Loc()+renown+"（现在 ".Loc()+(AdventureBoard.State?.renown??0)+"）。".Loc(),LetterDefOf.PositiveEvent,home!=null?new LookTargets(new TargetInfo(DropCellFinder.TradeDropSpot(home),home)):LookTargets.Invalid,null,q);
    if(q!=null && q.State==QuestState.Ongoing)q.End(QuestEndOutcome.Success,false);
   }
   public static void Fail(BoardContract c,string why){
    var st=State;var q=c.quest;st?.active.Remove(c);c.done=true;
    if(c.site!=null && !c.site.Destroyed && !c.site.HasMap)c.site.Destroy();
-   Find.LetterStack.ReceiveLetter("委托失败："+Title(c),why+"探索公告板上的委托「"+Title(c)+"」失败了。",LetterDefOf.NegativeEvent,LookTargets.Invalid,null,q);
+   Find.LetterStack.ReceiveLetter("委托失败：".Loc()+Title(c),why+"探索公告板上的委托「".Loc()+Title(c)+"」失败了。".Loc(),LetterDefOf.NegativeEvent,LookTargets.Invalid,null,q);
    if(q!=null && q.State==QuestState.Ongoing)q.End(QuestEndOutcome.Fail,false);
   }
   // 任务被别的东西结束了（开发者工具等）：只收拾站点。
@@ -272,12 +277,12 @@ namespace LichPhylactery {
 
   public static string Status(BoardContract c){
    if(AtHome(c.kind)){
-    if(!c.raidSent)return "敌人约 "+Mathf.Max(1,Mathf.CeilToInt((c.raidTick-Now)/(float)GenDate.TicksPerHour))+" 小时后到达";
-    return "敌人来袭中，还剩 "+c.raiders.Count(p=>!Gone(p))+" 名";
+    if(!c.raidSent)return "敌人约 ".Loc()+Mathf.Max(1,Mathf.CeilToInt((c.raidTick-Now)/(float)GenDate.TicksPerHour))+" 小时后到达".Loc();
+    return "敌人来袭中，还剩 ".Loc()+c.raiders.Count(p=>!Gone(p))+" 名".Loc();
    }
-   if(c.site==null || c.site.Destroyed)return "目标已经消失";
-   if(c.site.HasMap)return "远征队已到达，还有敌人"+(c.sawEnemies?"":"（搜索中）");
-   return "前往世界地图上的「"+c.site.Label+"」，剩余 "+((c.deadline-Now)/(float)GenDate.TicksPerDay).ToString("0.#")+" 天";
+   if(c.site==null || c.site.Destroyed)return "目标已经消失".Loc();
+   if(c.site.HasMap)return "远征队已到达，还有敌人".Loc()+(c.sawEnemies?"":"（搜索中）".Loc());
+   return "前往世界地图上的「".Loc()+c.site.Label+"」，剩余 ".Loc()+((c.deadline-Now)/(float)GenDate.TicksPerDay).ToString("0.#")+" 天".Loc();
   }
  }
 
@@ -307,7 +312,7 @@ namespace LichPhylactery {
   public override void GameComponentTick(){
    if(Verse.Find.TickManager.TicksGame%QuestBoard.TickInterval!=0)return;
    if(QuestBoard.Enabled && QuestBoard.Now>=nextRefresh && QuestBoard.AnyBoard)QuestBoard.Refresh();
-   for(int i=active.Count-1;i>=0;i--){if(i>=active.Count)continue;try{QuestBoard.Tick(active[i]);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 探索公告板委托出错："+e,0x51B0A+i);}}
+   for(int i=active.Count-1;i>=0;i--){if(i>=active.Count)continue;try{QuestBoard.Tick(active[i]);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 探索公告板委托出错：".Loc()+e,0x51B0A+i);}}
   }
   public override void ExposeData(){
    Scribe_Collections.Look(ref offers,"offers",LookMode.Deep);Scribe_Collections.Look(ref active,"active",LookMode.Deep);
@@ -337,21 +342,25 @@ namespace LichPhylactery {
     var pawns=AggressiveAnimalIncidentUtility.GenerateAnimals(kind,map.Tile,points,0);
     if(!CellFinder.TryFindRandomCellNear(map.Center,map,Mathf.Min(map.Size.x,map.Size.z)/4,c=>c.Standable(map) && !c.Roofed(map),out var center))center=CellFinder.RandomCell(map);
     foreach(var p in pawns){GenSpawn.Spawn(p,CellFinder.RandomClosewalkCellNear(center,map,8),map);p.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.ManhunterPermanent,null,true);}
-   }catch(Exception e){Log.Error("[DND边缘大陆] 生成怪物巢穴出错："+e);}
+   }catch(Exception e){Log.Error("[DND边缘大陆] 生成怪物巢穴出错：".Loc()+e);}
   }
  }
 
  public class Building_QuestBoard : Building {
+  // 1.169.0 合并：一块板同时挂每日分阶委托（QuestBoard）和名声委托（AdventureBoard）。
   public override IEnumerable<Gizmo> GetGizmos(){
    foreach(var g in base.GetGizmos())yield return g;
    if(Faction!=Faction.OfPlayer)yield break;
-   yield return new Command_Action{defaultLabel="查看委托",defaultDesc="打开探索公告板：查看今天的委托、接下委托、看已接委托的进度。",icon=def.uiIcon,action=()=>Verse.Find.WindowStack.Add(new Window_QuestBoard(this))};
+   yield return new Command_Action{defaultLabel="每日委托".Loc(),defaultDesc="打开探索公告板：查看今天的委托、接下委托、看已接委托的进度。".Loc(),icon=def.uiIcon,action=()=>Verse.Find.WindowStack.Add(new Window_QuestBoard(this))};
+   yield return new Command_Action{defaultLabel="名声委托".Loc(),defaultDesc="打开名声委托：查看当前 3 条委托、接下委托、看已接委托的进度和殖民地名声。".Loc(),icon=def.uiIcon,action=()=>Verse.Find.WindowStack.Add(new Window_AdventureBoard())};
   }
   public override string GetInspectString(){
-   var s=base.GetInspectString();var st=QuestBoard.State;if(st==null)return s;
-   if(!QuestBoard.Enabled)return (s.NullOrEmpty()?"":s+"\n")+"探索公告板已在设置里关闭";
-   string mine="今日委托 "+st.offers.Count+" 份，已接 "+st.active.Count+"/"+QuestBoard.MaxActive+"，可接等阶：青铜～"+QuestBoard.TierLabel(QuestBoard.UnlockedTier());
-   return s.NullOrEmpty()?mine:s+"\n"+mine;
+   var s=base.GetInspectString();var lines=new List<string>();if(!s.NullOrEmpty())lines.Add(s);
+   var st=QuestBoard.State;
+   if(st!=null)lines.Add(!QuestBoard.Enabled?"探索公告板已在设置里关闭".Loc():"今日委托 ".Loc()+st.offers.Count+" 份，已接 ".Loc()+st.active.Count+"/"+QuestBoard.MaxActive+"，可接等阶：青铜～".Loc()+QuestBoard.TierLabel(QuestBoard.UnlockedTier()));
+   var ab=AdventureBoard.State;
+   if(ab!=null)lines.Add(!AdventureBoard.Enabled?"冒险委托板已在设置里关闭".Loc():"名声委托 ".Loc()+ab.offers.Count+" 条，已接 ".Loc()+ab.active.Count+"/"+AdventureBoard.MaxActive+"，名声 ".Loc()+ab.renown+"（".Loc()+AdventureBoard.RenownName(ab.renown)+"）".Loc());
+   return string.Join("\n",lines);
   }
  }
 
@@ -364,9 +373,9 @@ namespace LichPhylactery {
   public override void DoWindowContents(Rect inRect){try{Draw(inRect);}finally{LPUI.Reset();}}
   void Draw(Rect inRect){
    var st=QuestBoard.State;if(st==null)return;
-   float headY=LPUI.Title(inRect,"探索公告板");
+   float headY=LPUI.Title(inRect,"探索公告板".Loc());
    int top=QuestBoard.UnlockedTier();
-   string head=QuestBoard.Enabled?"殖民地最高冒险者等级 "+QuestBoard.ColonyLevel+"，可接等阶：青铜～"+QuestBoard.TierLabel(top)+(top<QuestBoard.MaxTier?"（"+QuestBoard.TierLabel(top+1)+"需要 "+QuestBoard.TierMinLevel[top]+" 级）":"")+"。委托每天刷新，约 "+Mathf.Max(1,Mathf.CeilToInt((st.nextRefresh-QuestBoard.Now)/(float)GenDate.TicksPerHour))+" 小时后换一批；同时最多接 "+QuestBoard.MaxActive+" 份。":"探索公告板已在设置（冒险者分组）里关闭。";
+   string head=QuestBoard.Enabled?"殖民地最高冒险者等级 ".Loc()+QuestBoard.ColonyLevel+"，可接等阶：青铜～".Loc()+QuestBoard.TierLabel(top)+(top<QuestBoard.MaxTier?"（{0}需要 {1} 级）".LocF(QuestBoard.TierLabel(top+1),QuestBoard.TierMinLevel[top]):"")+"。委托每天刷新，约 ".Loc()+Mathf.Max(1,Mathf.CeilToInt((st.nextRefresh-QuestBoard.Now)/(float)GenDate.TicksPerHour))+" 小时后换一批；同时最多接 ".Loc()+QuestBoard.MaxActive+" 份。".Loc():"探索公告板已在设置（冒险者分组）里关闭。".Loc();
    GUI.color=Color.gray;float headH=LPUI.Para(inRect.x,headY,inRect.width,head);GUI.color=Color.white;
    float listY=headY+Mathf.Max(44f,headH)+4f;
    var outer=new Rect(inRect.x,listY,inRect.width,inRect.yMax-listY);
@@ -374,11 +383,11 @@ namespace LichPhylactery {
    var view=new Rect(0f,0f,outer.width-18f,h);
    Widgets.BeginScrollView(outer,ref scroll,view);
    float y=0f;
-   Text.Font=GameFont.Medium;Widgets.Label(new Rect(0f,y,view.width,30f),"今日委托");Text.Font=GameFont.Small;y+=30f;
-   if(st.offers.Count==0){GUI.color=Color.gray;Widgets.Label(new Rect(8f,y,view.width,24f),"今天没有委托。");GUI.color=Color.white;y+=28f;}
+   Text.Font=GameFont.Medium;Widgets.Label(new Rect(0f,y,view.width,30f),"今日委托".Loc());Text.Font=GameFont.Small;y+=30f;
+   if(st.offers.Count==0){GUI.color=Color.gray;Widgets.Label(new Rect(8f,y,view.width,24f),"今天没有委托。".Loc());GUI.color=Color.white;y+=28f;}
    foreach(var c in st.offers.ToList()){DrawOffer(new Rect(0f,y,view.width,rowH-6f),c);y+=rowH;}
-   y+=10f;Text.Font=GameFont.Medium;Widgets.Label(new Rect(0f,y,view.width,30f),"已接委托");Text.Font=GameFont.Small;y+=30f;
-   if(st.active.Count==0){GUI.color=Color.gray;Widgets.Label(new Rect(8f,y,view.width,24f),"还没有接下委托。");GUI.color=Color.white;}
+   y+=10f;Text.Font=GameFont.Medium;Widgets.Label(new Rect(0f,y,view.width,30f),"已接委托".Loc());Text.Font=GameFont.Small;y+=30f;
+   if(st.active.Count==0){GUI.color=Color.gray;Widgets.Label(new Rect(8f,y,view.width,24f),"还没有接下委托。".Loc());GUI.color=Color.white;}
    foreach(var c in st.active.ToList()){DrawActive(new Rect(0f,y,view.width,50f),c);y+=56f;}
    Widgets.EndScrollView();
   }
@@ -388,33 +397,33 @@ namespace LichPhylactery {
    Badge(new Rect(inner.x,inner.y,52f,24f),c.tier);
    LPUI.LabelFit(new Rect(inner.x+60f,inner.y+2f,inner.width-200f,24f),QuestBoard.KindLabel(c.kind)+" · "+QuestBoard.Title(c));
    GUI.color=new Color(.8f,.8f,.8f);
-   LPUI.LabelFit(new Rect(inner.x,inner.y+28f,inner.width-150f,24f),"推荐等级 "+QuestBoard.TierMinLevel[c.tier-1]+"+ · 威胁点数 "+Mathf.RoundToInt(c.points)+" · 经验约 "+Mathf.RoundToInt(QuestBoard.XpFor(c.points)*Adventurer.XpScale)+(QuestBoard.AtHome(c.kind)?" · 在殖民地":" · 要远征"));
-   var rr=new Rect(inner.x,inner.y+52f,inner.width-150f,24f);Widgets.Label(rr,("报酬："+QuestBoard.RewardText(c)).Truncate(rr.width));
+   LPUI.LabelFit(new Rect(inner.x,inner.y+28f,inner.width-150f,24f),"推荐等级 ".Loc()+QuestBoard.TierMinLevel[c.tier-1]+"+ · 威胁点数 ".Loc()+Mathf.RoundToInt(c.points)+" · 经验约 ".Loc()+Mathf.RoundToInt(QuestBoard.XpFor(c.points)*Adventurer.XpScale)+(QuestBoard.AtHome(c.kind)?" · 在殖民地".Loc():" · 要远征".Loc()));
+   var rr=new Rect(inner.x,inner.y+52f,inner.width-150f,24f);Widgets.Label(rr,("报酬：".Loc()+QuestBoard.RewardText(c)).Truncate(rr.width));
    GUI.color=Color.white;
    TooltipHandler.TipRegion(new Rect(inner.x,inner.y,inner.width-150f,inner.height),QuestBoard.Describe(c));
    var ok=QuestBoard.CanAccept(c);var btn=new Rect(inner.xMax-130f,inner.y+20f,130f,36f);
-   if(!ok.Accepted){GUI.color=Color.gray;Widgets.ButtonText(btn,"接取",true,true,false);GUI.color=Color.white;TooltipHandler.TipRegion(btn,ok.Reason??"");}
-   else if(Widgets.ButtonText(btn,"接取"))Verse.Find.WindowStack.Add(new FloatMenu(Accepters(c)));
+   if(!ok.Accepted){GUI.color=Color.gray;Widgets.ButtonText(btn,"接取".Loc(),true,true,false);GUI.color=Color.white;TooltipHandler.TipRegion(btn,ok.Reason??"");}
+   else if(Widgets.ButtonText(btn,"接取".Loc()))Verse.Find.WindowStack.Add(new FloatMenu(Accepters(c)));
   }
   List<FloatMenuOption> Accepters(BoardContract c){
    var map=board?.Map??QuestBoard.Home;var list=new List<FloatMenuOption>();
    var pawns=map==null?new List<Pawn>():map.mapPawns.FreeColonistsSpawned.Where(p=>!p.Dead).OrderByDescending(p=>Adventurer.Get(p)?.level??0).ToList();
    foreach(var p in pawns){
     var pp=p;int lv=Adventurer.Get(p)?.level??0;
-    string label=p.LabelShort+(lv>0?"（"+lv+" 级）":"")+(lv>0 && lv<QuestBoard.TierMinLevel[c.tier-1]?" 低于推荐等级":"");
-    list.Add(new FloatMenuOption("由 "+label+" 接取",()=>QuestBoard.Accept(c,pp)));
+    string label=p.LabelShort+(lv>0?"（".Loc()+lv+" 级）".Loc():"")+(lv>0 && lv<QuestBoard.TierMinLevel[c.tier-1]?" 低于推荐等级".Loc():"");
+    list.Add(new FloatMenuOption("由 ".Loc()+label+" 接取".Loc(),()=>QuestBoard.Accept(c,pp)));
    }
-   if(list.Count==0)list.Add(new FloatMenuOption("直接接取（没有接取人）",()=>QuestBoard.Accept(c,null)));
+   if(list.Count==0)list.Add(new FloatMenuOption("直接接取（没有接取人）".Loc(),()=>QuestBoard.Accept(c,null)));
    return list;
   }
   void DrawActive(Rect r,BoardContract c){
    Widgets.DrawMenuSection(r);var inner=r.ContractedBy(6f);
    Badge(new Rect(inner.x,inner.y+6f,52f,24f),c.tier);
-   LPUI.LabelFit(new Rect(inner.x+60f,inner.y,inner.width-200f,22f),QuestBoard.Title(c)+(c.quest?.AccepterPawn!=null?"（"+c.quest.AccepterPawn.LabelShort+"）":""));
+   LPUI.LabelFit(new Rect(inner.x+60f,inner.y,inner.width-200f,22f),QuestBoard.Title(c)+(c.quest?.AccepterPawn!=null?"（".Loc()+c.quest.AccepterPawn.LabelShort+"）".Loc():""));
    GUI.color=new Color(.8f,.8f,.8f);LPUI.LabelFit(new Rect(inner.x+60f,inner.y+20f,inner.width-200f,22f),QuestBoard.Status(c));GUI.color=Color.white;
    var btn=new Rect(inner.xMax-130f,inner.y+3f,130f,32f);
-   if(c.site!=null && !c.site.Destroyed){if(Widgets.ButtonText(btn,"定位目标")){Close();CameraJumper.TryJumpAndSelect(c.site);}}
-   else if(c.raiders.Any(p=>!QuestBoard.Gone(p)) && Widgets.ButtonText(btn,"定位敌人")){Close();CameraJumper.TryJumpAndSelect(c.raiders.First(p=>!QuestBoard.Gone(p)));}
+   if(c.site!=null && !c.site.Destroyed){if(Widgets.ButtonText(btn,"定位目标".Loc())){Close();CameraJumper.TryJumpAndSelect(c.site);}}
+   else if(c.raiders.Any(p=>!QuestBoard.Gone(p)) && Widgets.ButtonText(btn,"定位敌人".Loc())){Close();CameraJumper.TryJumpAndSelect(c.raiders.First(p=>!QuestBoard.Gone(p)));}
   }
  }
 

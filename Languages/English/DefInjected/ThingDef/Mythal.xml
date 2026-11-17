@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 迷锁之门 -->
+  <LP_MythalGate.label>mythal gate</LP_MythalGate.label>
+  <!-- 一座古代精灵与耐瑟瑞尔人共同建造的石拱门，下面埋着一座失落的迷锁。迷锁守护的城早已不在，结界只剩一座会自己重组的迷宫：每被解开一层就会坍塌，封闭几天后用新的形状重新编织下一层，层数一直往下，没有尽头。\n\n每层打倒守护者，解开它的人能拿到冒险者经验、迷锁碎片和宝藏；每 10 层有一个里程碑首领。迷锁碎片可以在门上兑换物资。\n\n迷锁之门不可拆、不可移动、不会损坏。 -->
+  <LP_MythalGate.description>A stone archway built jointly by ancient elves and the Netherese, with a lost mythal buried beneath. The city the mythal guarded is long gone, and the ward is now just a labyrinth that reassembles itself: each floor collapses once solved, and after being sealed for a few days it weaves the next floor in a new shape, going ever deeper with no end.\n\nDefeat the guardian on each floor and whoever solves it gets adventurer XP, mythal shards and treasure; every 10 floors there's a milestone boss. Mythal shards can be exchanged for supplies at the gate.\n\nThe mythal gate can't be deconstructed, moved or damaged.</LP_MythalGate.description>
+  <!-- 迷锁回响 -->
+  <LP_MythalExit.label>mythal echo</LP_MythalExit.label>
+  <!-- 迷锁结界里的一道回声：从这里可以直接回到地面上的迷锁之门。 -->
+  <LP_MythalExit.description>An echo within the mythal ward: from here you can return directly to the mythal gate on the surface.</LP_MythalExit.description>
+  <!-- 迷锁石墙 -->
+  <LP_MythalWall.label>mythal stone wall</LP_MythalWall.label>
+  <!-- 迷锁结界凝成的石墙，摸上去是温的。挖不动，也打不坏。 -->
+  <LP_MythalWall.description>A stone wall congealed from the mythal ward, warm to the touch. Can't be mined or broken.</LP_MythalWall.description>
+  <!-- 迷锁灯 -->
+  <LP_MythalLamp.label>mythal lamp</LP_MythalLamp.label>
+  <!-- 一簇淡蓝色的迷锁结晶，自己发光。 -->
+  <LP_MythalLamp.description>A cluster of pale blue mythal crystals that glow on their own.</LP_MythalLamp.description>
+  <!-- 迷锁泉 -->
+  <LP_MythalFountain.label>mythal spring</LP_MythalFountain.label>
+  <!-- 迷锁结界里涌出的一眼清泉。走到泉边的人伤口愈合、疲劳一扫而空，每人每层一次。 -->
+  <LP_MythalFountain.description>A clear spring welling up within the mythal ward. Those who walk to it have their wounds healed and fatigue swept away, once per person per floor.</LP_MythalFountain.description>
+  <!-- 迷锁碎片 -->
+  <LP_MythalShard.label>mythal shard</LP_MythalShard.label>
+  <!-- 迷锁结界崩塌时掉下的一片淡蓝结晶。只能在迷锁之门上兑换东西，商人不认它。 -->
+  <LP_MythalShard.description>A pale blue crystal shard that falls when a mythal ward collapses. Can only be exchanged for things at the mythal gate; traders don't accept it.</LP_MythalShard.description>
+</LanguageData>

@@ -88,8 +88,8 @@ namespace LichPhylactery {
   public GeneGizmo_DivinityResource(Gene_Resource gene,List<IGeneResourceDrain> drainGenes,Color barColor,Color barHighlightColor):base(gene,drainGenes,barColor,barHighlightColor){resource=gene;}
   protected override bool DraggingBar{get=>dragging;set=>dragging=value;}
   protected override bool IsDraggable=>false;
-  protected override string Title=>"神威";
-  protected override string GetTooltip()=>"神威："+(resource.Value*Titan.Max).ToString("0")+" / "+(resource.Max*Titan.Max).ToString("0")+"\n每天自然恢复10点；心情≥80%时每天再恢复10点；每击杀一个敌人+5。\n神罚消耗30，神裔之息消耗40。";
+  protected override string Title=>"神威".Loc();
+  protected override string GetTooltip()=>"神威：".Loc()+(resource.Value*Titan.Max).ToString("0")+" / "+(resource.Max*Titan.Max).ToString("0")+"\n每天自然恢复10点；心情≥80%时每天再恢复10点；每击杀一个敌人+5。\n神罚消耗30，神裔之息消耗40。".Loc();
  }
  // 击杀敌人+5神威。敌对关系在死前判断。
  [HarmonyPatch(typeof(Pawn),nameof(Pawn.Kill))]
@@ -100,7 +100,7 @@ namespace LichPhylactery {
  // 不可动摇：不会被眩晕（含 EMP）。
  [HarmonyPatch(typeof(StunHandler),nameof(StunHandler.StunFor))]
  public static class TitanStunImmunity {
-  static bool Prefix(Pawn ___parentPawn){if(!Races124.Has(___parentPawn,"LP_TitanUnshakable"))return true;Items.Mote(___parentPawn,"不可动摇",new Color(1f,.9f,.55f));return false;}
+  static bool Prefix(Pawn ___parentPawn){if(!Races124.Has(___parentPawn,"LP_TitanUnshakable"))return true;Items.Mote(___parentPawn,"不可动摇".Loc(),new Color(1f,.9f,.55f));return false;}
  }
  [HarmonyPatch(typeof(StunHandler),nameof(StunHandler.Notify_DamageApplied))]
  public static class TitanEmpImmunity {
@@ -119,17 +119,17 @@ namespace LichPhylactery {
  public class ScenPart_FallenEmpyrean : ScenPart {
   public QualityCategory bladeQuality=QualityCategory.Good;
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref bladeQuality,"bladeQuality",QualityCategory.Good);}
-  public override string Summary(Scenario scen)=>"开局的泰坦近战与社交都很出色；开局就认下一位父神（七位可信奉的神里随机），泰坦觉醒之路已经开启。";
+  public override string Summary(Scenario scen)=>"开局的泰坦近战与社交都很出色；开局就认下一位父神（七位可信奉的神里随机），泰坦觉醒之路已经开启。".Loc();
   public override void PostGameStart(){var map=Find.AnyPlayerHomeMap;if(map==null)return;var titan=Apply(ScenEdit.Starters(map).ToList());if(titan!=null)Awaken(titan);}
   // 1.41.0：父神存进成神进度（AscensionPaths.Father），开泰坦觉醒之路，开局信件写出父神。
   public static AscensionProgress Awaken(Pawn titan){
    var father=AscensionPaths.Father(titan,true);
    AscensionProgress pr=null;
    if(Ascension.Enabled && Ascension.Tracker?.Of(titan)==null)pr=Ascension.Start(titan,Ascension.Titan,false);
-   string text=titan.LabelShort+"从天穹坠落时，还记得父神的名字："+(father?.FullLabel??"（没有可信奉的神）")+(pr?.portfolio!=null?"，神职“"+pr.portfolio.label+"”":"")+"。";
-   if(pr!=null)text+="\n\n泰坦觉醒之路已经开启（推荐路线）。选中"+titan.LabelShort+"，点“成神之路”查看进度：\n\n"+AscensionPaths.StageLabel(pr)+"："+AscensionPaths.StageText(pr)+"\n\n之后是巨人之战和天穹之门，完成后直接觉醒为半神。不想走这条路，可以在窗口里放弃。";
-   else text+="\n\n成神任务线在设置里关着：父神已经记下，打开后再踏上泰坦觉醒之路时还是这位。";
-   Ascension.Letter("坠落的神裔：父神"+(father?.label??""),text,LetterDefOf.PositiveEvent,titan);
+   string text=titan.LabelShort+"从天穹坠落时，还记得父神的名字：".Loc()+(father?.FullLabel??"（没有可信奉的神）".Loc())+(pr?.portfolio!=null?"，神职“".Loc()+pr.portfolio.label+"”":"")+"。".Loc();
+   if(pr!=null)text+="\n\n泰坦觉醒之路已经开启（推荐路线）。选中".Loc()+titan.LabelShort+"，点“成神之路”查看进度：\n\n".Loc()+AscensionPaths.StageLabel(pr)+"：".Loc()+AscensionPaths.StageText(pr)+"\n\n之后是巨人之战和天穹之门，完成后直接觉醒为半神。不想走这条路，可以在窗口里放弃。".Loc();
+   else text+="\n\n成神任务线在设置里关着：父神已经记下，打开后再踏上泰坦觉醒之路时还是这位。".Loc();
+   Ascension.Letter("坠落的神裔：父神".Loc()+(father?.label??""),text,LetterDefOf.PositiveEvent,titan);
    return pr;
   }
   public Pawn Apply(List<Pawn> pawns){

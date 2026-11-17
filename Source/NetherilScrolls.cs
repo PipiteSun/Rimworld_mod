@@ -23,7 +23,7 @@ namespace LichPhylactery {
   public static readonly int[] StudyThresholds={100,200,400,800,1600};
   public const int StudyMaxPsylink=6;
   public static readonly string[] Schools={"Evocation","Abjuration","Enchantment","Illusion","Divination","Conjuration","Transmutation","Necromancy"};
-  public static string SchoolLabel(string s){switch(s){case "Evocation":return "塑能";case "Abjuration":return "防护";case "Enchantment":return "惑控";case "Illusion":return "幻术";case "Divination":return "预言";case "Conjuration":return "咒法";case "Transmutation":return "变化";case "Necromancy":return "死灵";default:return "未知";}}
+  public static string SchoolLabel(string s){switch(s){case "Evocation":return "塑能".Loc();case "Abjuration":return "防护".Loc();case "Enchantment":return "惑控".Loc();case "Illusion":return "幻术".Loc();case "Divination":return "预言".Loc();case "Conjuration":return "咒法".Loc();case "Transmutation":return "变化".Loc();case "Necromancy":return "死灵".Loc();default:return "未知".Loc();}}
   public static Color SchoolColor(string s){switch(s){case "Evocation":return new Color(.80f,.34f,.22f);case "Abjuration":return new Color(.36f,.56f,.80f);case "Enchantment":return new Color(.78f,.46f,.70f);case "Illusion":return new Color(.56f,.42f,.80f);case "Divination":return new Color(.86f,.76f,.40f);case "Conjuration":return new Color(.36f,.66f,.62f);case "Transmutation":return new Color(.50f,.68f,.34f);case "Necromancy":return new Color(.30f,.30f,.34f);default:return Color.white;}}
   // 测试用：设了就代替随机数（读错、跨学派、学派、妄念）。
   public static float? TestRoll;
@@ -35,9 +35,9 @@ namespace LichPhylactery {
   public static int Intellect(Pawn p){var s=p?.skills?.GetSkill(SkillDefOf.Intellectual);return s==null || s.TotallyDisabled?0:s.Level;}
   public static bool HasPsylink(Pawn p)=>p!=null && p.GetPsylinkLevel()>0;
   public static string CannotRead(Pawn p){
-   if(p==null)return "没有读者";
-   if(!HasPsylink(p))return "需要心灵链接";
-   int i=Intellect(p);if(i<MinIntellect)return "智识需要 "+MinIntellect+" 级（现在 "+i+" 级）";
+   if(p==null)return "没有读者".Loc();
+   if(!HasPsylink(p))return "需要心灵链接".Loc();
+   int i=Intellect(p);if(i<MinIntellect)return "智识需要 ".Loc()+MinIntellect+" 级（现在 ".Loc()+i+" 级）".Loc();
    return null;
   }
   // 这个人能不能读这件东西（不是耐瑟卷轴一律 true）。所有挑书入口都用它：原版 CanReadBook / IsValidBook 补丁、我们的冥想 JoyGiver、自动研读。
@@ -50,7 +50,7 @@ namespace LichPhylactery {
    var e=p?.psychicEntropy;if(e==null || e.MaxEntropy<=0f || e.EntropyValue<=e.MaxEntropy*StopAt)return false;
    var job=p.CurJob;return job!=null && job.def==JobDefOf.Reading && !job.playerForced;
   }
-  public static void HotMessage(Pawn p){if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"的心灵熵太高，放下了耐瑟瑞尔卷轴。（右键强制研读不会自动停下）",p,MessageTypeDefOf.NeutralEvent,false);}
+  public static void HotMessage(Pawn p){if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"的心灵熵太高，放下了耐瑟瑞尔卷轴。（右键强制研读不会自动停下）".Loc(),p,MessageTypeDefOf.NeutralEvent,false);}
   // 立刻停（检查和没有娱乐需求的读者用）；阅读 job 里的结算走 NetherilIdle.RequestStop，在原版娱乐判定那一步停。
   public static bool StopIfHot(Pawn p){
    if(!ShouldStopHot(p))return false;
@@ -155,7 +155,7 @@ namespace LichPhylactery {
   void MaybeMisread(Pawn r){
    float extra=HourEntropy(r)*Netheril.MisreadExtra;if(extra<=0f || Netheril.Roll>=Netheril.MisreadChance(r))return;
    Netheril.AddEntropy(r,extra);OnMisread(r);
-   if(r.Faction==Faction.OfPlayer)Messages.Message(r.LabelShort+"读错了一段耐瑟咒文，心灵熵猛涨（+"+extra.ToString("0.#")+"）。",r,MessageTypeDefOf.NegativeEvent,false);
+   if(r.Faction==Faction.OfPlayer)Messages.Message(r.LabelShort+"读错了一段耐瑟咒文，心灵熵猛涨（+".Loc()+extra.ToString("0.#")+"）。".Loc(),r,MessageTypeDefOf.NegativeEvent,false);
   }
   protected void AddXP(Pawn r,float want){float got=Netheril.GiveXP(r,want);if(got>0f){sessionXP.TryGetValue(r.thingIDNumber,out float x);sessionXP[r.thingIDNumber]=x+got;}}
   public float SessionXP(Pawn r){sessionXP.TryGetValue(r.thingIDNumber,out float x);return x;}
@@ -184,11 +184,11 @@ namespace LichPhylactery {
    AddXP(r,Netheril.StudyXP*Q*h*Speed(r));
    Adventurer.GainXP(r,Adventurer.StudyXP*h); // 1.48.0 冒险者经验：研习卷每小时 50（1.52.0 起连续发放）
   }
-  public override string InspectLine(Pawn r)=>"研读中：本次 +"+SessionXP(r).ToString("0.##")+" "+(NetherilHooks.VPEActive?"灵能经验":"研习度");
+  public override string InspectLine(Pawn r)=>"研读中：本次 +".Loc()+SessionXP(r).ToString("0.##")+" "+(NetherilHooks.VPEActive?"灵能经验".Loc():"研习度".Loc());
   public override string GetBenefitsString(Pawn reader){
-   var s="像冥想一样边读边累积，每小时：心灵熵 +"+Netheril.StudyEntropy+"（巫妖减半），"+(NetherilHooks.VPEActive?"灵能经验":"耐瑟研习度")+" +"+(Netheril.StudyXP*Q).ToString("0.#")+"（品质 ×"+Q.ToString("0.##")+"，再乘读者的阅读速度），没有每日上限。\n"+ReadSpeed.Note;
-   if(reader!=null){var why=Netheril.CannotRead(reader);if(why!=null)s+="\n不能读："+why;else s+="\n读错概率 "+Netheril.MisreadChance(reader).ToStringPercent()+"（每累计读满 1 小时判定一次；读错时额外 +"+(HourEntropy(reader)*Netheril.MisreadExtra).ToString("0.#")+" 心灵熵）。";}
-   if(!NetherilHooks.VPEActive && reader!=null)s+="\n研习度："+(Netheril.State?.StudyPoints(reader)??0f).ToString("0.#")+"（100/200/400/800/1600 时心灵链接 +1，最高 6 级）";
+   var s="像冥想一样边读边累积，每小时：心灵熵 +".Loc()+Netheril.StudyEntropy+"（巫妖减半），".Loc()+(NetherilHooks.VPEActive?"灵能经验".Loc():"耐瑟研习度".Loc())+" +"+(Netheril.StudyXP*Q).ToString("0.#")+"（品质 ×".Loc()+Q.ToString("0.##")+"，再乘读者的阅读速度），没有每日上限。\n".Loc()+ReadSpeed.Note;
+   if(reader!=null){var why=Netheril.CannotRead(reader);if(why!=null)s+="\n不能读：".Loc()+why;else s+="\n读错概率 ".Loc()+Netheril.MisreadChance(reader).ToStringPercent()+"（每累计读满 1 小时判定一次；读错时额外 +".Loc()+(HourEntropy(reader)*Netheril.MisreadExtra).ToString("0.#")+" 心灵熵）。".Loc();}
+   if(!NetherilHooks.VPEActive && reader!=null)s+="\n研习度：".Loc()+(Netheril.State?.StudyPoints(reader)??0f).ToString("0.#")+"（100/200/400/800/1600 时心灵链接 +1，最高 6 级）".Loc();
    return s;
   }
  }
@@ -220,7 +220,7 @@ namespace LichPhylactery {
    float p=Mathf.Min(Netheril.ArcaneGoal,Progress(r)+ProgressRate(r)*h*Speed(r));progress[r.thingIDNumber]=p;
    if(p>=Netheril.ArcaneGoal-Eps)Settle(r);
   }
-  public override string InspectLine(Pawn r)=>LearnedOut(r)?"研读中：本次 +"+SessionXP(r).ToString("0.##")+" 经验（残卷余效）":"研读中：残卷进度 "+Progress(r).ToString("0.0")+" / "+Netheril.ArcaneGoal;
+  public override string InspectLine(Pawn r)=>LearnedOut(r)?"研读中：本次 +".Loc()+SessionXP(r).ToString("0.##")+" 经验（残卷余效）".Loc():"研读中：残卷进度 ".Loc()+Progress(r).ToString("0.0")+" / "+Netheril.ArcaneGoal;
   public bool Settle(Pawn r){
    int id=r.thingIDNumber;progress[id]=Netheril.ArcaneGoal;
    string use=school;
@@ -228,17 +228,17 @@ namespace LichPhylactery {
    var pool=NetherilSpells.Candidates(r,use);
    if(pool.Count==0 && use!=school){use=school;pool=NetherilSpells.Candidates(r,use);}
    if(pool.Count==0){
-    if(!stuckNotified.Contains(id) && r.Faction==Faction.OfPlayer){stuckNotified.Add(id);Messages.Message("这卷残卷暂时没有你能理解的东西。（"+r.LabelShort+"：等灵能等级够了再拿起来读就会领悟）",r,MessageTypeDefOf.NeutralEvent,false);}
+    if(!stuckNotified.Contains(id) && r.Faction==Faction.OfPlayer){stuckNotified.Add(id);Messages.Message("这卷残卷暂时没有你能理解的东西。（".Loc()+r.LabelShort+"：等灵能等级够了再拿起来读就会领悟）".Loc(),r,MessageTypeDefOf.NeutralEvent,false);}
     return false;
    }
    var label=NetherilSpells.Learn(r,pool.RandomElement());if(label==null)return false;
    LastLearned=label;progress[id]=0f;learned[id]=Learned(r)+1;misread.Remove(id);
-   if(r.Faction==Faction.OfPlayer)Find.LetterStack.ReceiveLetter("残卷领悟",r.LabelShort+"从残卷里领悟了【"+label+"】（"+Netheril.SchoolLabel(use)+"学派）。"+(use!=school?"\n\n这次读错了几段，反倒摸到了另一个学派的门道。":"")+"\n\n同一个人在同一卷残卷里最多领悟 "+Netheril.MaxSpellsPerScroll+" 个法术；学满以后再读只剩研习余效（每读 1 小时经验 +"+(Netheril.ArcaneResidueXP*Q).ToString("0.#")+"，不涨心灵熵）。",LetterDefOf.PositiveEvent,r);
+   if(r.Faction==Faction.OfPlayer)Find.LetterStack.ReceiveLetter("残卷领悟".Loc(),r.LabelShort+"从残卷里领悟了【".Loc()+label+"】（".Loc()+Netheril.SchoolLabel(use)+"学派）。".Loc()+(use!=school?"\n\n这次读错了几段，反倒摸到了另一个学派的门道。".Loc():"")+"\n\n同一个人在同一卷残卷里最多领悟 ".Loc()+Netheril.MaxSpellsPerScroll+" 个法术；学满以后再读只剩研习余效（每读 1 小时经验 +".Loc()+(Netheril.ArcaneResidueXP*Q).ToString("0.#")+"，不涨心灵熵）。".Loc(),LetterDefOf.PositiveEvent,r);
    return true;
   }
   public override string GetBenefitsString(Pawn reader){
-   var s="学派："+Netheril.SchoolLabel(school)+"。\n边读边累积，每小时：进度 +"+Q.ToString("0.##")+(school=="Necromancy"?"（巫妖读者 ×1.5）":"")+"，心灵熵 +"+Netheril.ArcaneEntropy+"。满 "+Netheril.ArcaneGoal+" 点学会一个本学派、等级不超过读者灵能等级的心灵法术（不占路径点，不需要解锁路径）。\n每人每卷最多 "+Netheril.MaxSpellsPerScroll+" 个；之后只剩研习余效。\n"+ReadSpeed.Note;
-   if(reader!=null){var why=Netheril.CannotRead(reader);if(why!=null)s+="\n不能读："+why;else s+="\n"+reader.LabelShort+"：进度 "+Progress(reader).ToString("0.#")+" / "+Netheril.ArcaneGoal+"，已领悟 "+Learned(reader)+" 个。";}
+   var s="学派：".Loc()+Netheril.SchoolLabel(school)+"。\n边读边累积，每小时：进度 +".Loc()+Q.ToString("0.##")+(school=="Necromancy"?"（巫妖读者 ×1.5）".Loc():"")+"，心灵熵 +".Loc()+Netheril.ArcaneEntropy+"。满 ".Loc()+Netheril.ArcaneGoal+" 点学会一个本学派、等级不超过读者灵能等级的心灵法术（不占路径点，不需要解锁路径）。\n每人每卷最多 ".Loc()+Netheril.MaxSpellsPerScroll+" 个；之后只剩研习余效。\n".Loc()+ReadSpeed.Note;
+   if(reader!=null){var why=Netheril.CannotRead(reader);if(why!=null)s+="\n不能读：".Loc()+why;else s+="\n"+reader.LabelShort+"：进度 ".Loc()+Progress(reader).ToString("0.#")+" / "+Netheril.ArcaneGoal+"，已领悟 ".Loc()+Learned(reader)+" 个。".Loc();}
    return s;
   }
   public override void PostExposeData(){
@@ -254,11 +254,11 @@ namespace LichPhylactery {
  public class BookOutcome_Karsus : BookOutcome_NetherilBase {
   public override float HourEntropy(Pawn r)=>Netheril.KarsusEntropy;
   protected override void Accrue(Pawn r,int t){Netheril.AddEntropy(r,Netheril.KarsusEntropy*Netheril.Hours(t));int k=SpeedTicks(r,t);if(k>0)Netheril.State?.AddKarsusTicks(r,k);}
-  public override string InspectLine(Pawn r){var st=Netheril.State;return st==null?"研读中：卡苏斯之卷":"研读中：卡苏斯第 "+(st.Passes(r)+1)+" 遍 "+(st.KarsusTicks(r)/(float)Netheril.KarsusPassTicks).ToStringPercent("0");}
+  public override string InspectLine(Pawn r){var st=Netheril.State;return st==null?"研读中：卡苏斯之卷".Loc():"研读中：卡苏斯第 ".Loc()+(st.Passes(r)+1)+" 遍 ".Loc()+(st.KarsusTicks(r)/(float)Netheril.KarsusPassTicks).ToStringPercent("0");}
   public override string GetBenefitsString(Pawn reader){
-   var st=Netheril.State;var s="读完一遍要 "+Netheril.KarsusPassHours+" 小时（按阅读时间连续累计，不受品质影响；"+ReadSpeed.Note+"）。每小时心灵熵 +"+Netheril.KarsusEntropy+"，不给经验。\n每读完一遍：卡苏斯的回响 +1 层（最多 "+Netheril.MaxEcho+" 层；每层心灵熵上限 +5%、心灵敏感度 +5%、精神崩溃阈值 +2%）。第 3、5 遍读完时可能陷入卡苏斯的妄念。";
-   if(reader!=null && st!=null)s+="\n"+reader.LabelShort+"：已读 "+st.Passes(reader)+" 遍，这一遍 "+st.KarsusHours(reader).ToString("0.#")+" / "+Netheril.KarsusPassHours+" 小时。";
-   if(reader!=null){var why=Netheril.CannotRead(reader);if(why!=null)s+="\n不能读："+why;}
+   var st=Netheril.State;var s="读完一遍要 ".Loc()+Netheril.KarsusPassHours+" 小时（按阅读时间连续累计，不受品质影响；".Loc()+ReadSpeed.Note+"）。每小时心灵熵 +".Loc()+Netheril.KarsusEntropy+"，不给经验。\n每读完一遍：卡苏斯的回响 +1 层（最多 ".Loc()+Netheril.MaxEcho+" 层；每层心灵熵上限 +5%、心灵敏感度 +5%、精神崩溃阈值 +2%）。第 3、5 遍读完时可能陷入卡苏斯的妄念。".Loc();
+   if(reader!=null && st!=null)s+="\n"+reader.LabelShort+"：已读 ".Loc()+st.Passes(reader)+" 遍，这一遍 ".Loc()+st.KarsusHours(reader).ToString("0.#")+" / "+Netheril.KarsusPassHours+" 小时。".Loc();
+   if(reader!=null){var why=Netheril.CannotRead(reader);if(why!=null)s+="\n不能读：".Loc()+why;}
    return s;
   }
  }
@@ -269,8 +269,8 @@ namespace LichPhylactery {
   public BookOutcome_NetherilArcane Arcane=>BookComp?.Doers.OfType<BookOutcome_NetherilArcane>().FirstOrDefault();
   public bool IsKarsus=>def.defName==Netheril.KarsusDef;
   public override string LabelNoCount{get{
-   var a=Arcane;string q=this.TryGetQuality(out var qc)?"（"+qc.GetLabel()+"）":"";
-   return a?.school!=null?"秘术残卷（"+Netheril.SchoolLabel(a.school)+"）"+q:def.label+q;
+   var a=Arcane;string q=this.TryGetQuality(out var qc)?"（".Loc()+qc.GetLabel()+"）".Loc():"";
+   return a?.school!=null?"秘术残卷（".Loc()+Netheril.SchoolLabel(a.school)+"）".Loc()+q:def.label+q;
   }}
   Graphic schoolGraphic;string schoolGraphicFor;
   public override Graphic Graphic{get{
@@ -282,14 +282,14 @@ namespace LichPhylactery {
   public override void TickRare(){base.TickRare();if(IsKarsus && !Destroyed)NetherilQuest.CheckKarsus(this);}
   public override string GetInspectString(){
    var s=base.GetInspectString();var lines=new List<string>();if(!s.NullOrEmpty())lines.Add(s);
-   var a=Arcane;if(a!=null)lines.Add("学派："+Netheril.SchoolLabel(a.school));
-   lines.Add("娱乐类型："+NetherilJoy.KindsLabel);
+   var a=Arcane;if(a!=null)lines.Add("学派：".Loc()+Netheril.SchoolLabel(a.school));
+   lines.Add("娱乐类型：".Loc()+NetherilJoy.KindsLabel);
    if(IsKarsus){
     var st=Netheril.State;
     if(st!=null){
-     var readers=st.karsusPasses.Where(kv=>kv.Value>0).Select(kv=>(p:NetherilQuest.PawnById(kv.Key),n:kv.Value)).Where(x=>x.p!=null).Select(x=>x.p.LabelShort+" "+x.n+" 遍");
-     var line=string.Join("、",readers);lines.Add("读者："+(line.NullOrEmpty()?"还没有人读完过":line));
-     if(st.deciphered)lines.Add("已解读：卷中的秘密已被参透，仍可研读获得回响，但不会再有升神仪式。");
+     var readers=st.karsusPasses.Where(kv=>kv.Value>0).Select(kv=>(p:NetherilQuest.PawnById(kv.Key),n:kv.Value)).Where(x=>x.p!=null).Select(x=>x.p.LabelShort+" "+x.n+" 遍".Loc());
+     var line=string.Join("、".Loc(),readers);lines.Add("读者：".Loc()+(line.NullOrEmpty()?"还没有人读完过".Loc():line));
+     if(st.deciphered)lines.Add("已解读：卷中的秘密已被参透，仍可研读获得回响，但不会再有升神仪式。".Loc());
      else lines.Add(NetherilAscension.ConditionsLine(MapHeld));
     }
    }
@@ -297,7 +297,7 @@ namespace LichPhylactery {
   }
   public override IEnumerable<StatDrawEntry> SpecialDisplayStats(){
    foreach(var e in base.SpecialDisplayStats())yield return e;
-   yield return new StatDrawEntry(StatCategoryDefOf.Basics,"娱乐类型",NetherilJoy.KindsLabel,"读耐瑟卷轴时的娱乐同时算“阅读”和“冥想”：娱乐获得对半分给两种娱乐类型的耐受度，总娱乐量不变。",4990);
+   yield return new StatDrawEntry(StatCategoryDefOf.Basics,"娱乐类型".Loc(),NetherilJoy.KindsLabel,"读耐瑟卷轴时的娱乐同时算“阅读”和“冥想”：娱乐获得对半分给两种娱乐类型的耐受度，总娱乐量不变。".Loc(),4990);
   }
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref legit,"lpLegit");}
  }
@@ -327,7 +327,7 @@ namespace LichPhylactery {
    int n=Layers;if(cached!=null && cachedLayers==n)return cached;cachedLayers=n;
    return cached=new HediffStage{statFactors=new List<StatModifier>{new StatModifier{stat=StatDefOf.PsychicEntropyMax,value=1f+.05f*n}},statOffsets=new List<StatModifier>{new StatModifier{stat=StatDefOf.PsychicSensitivity,value=.05f*n},new StatModifier{stat=StatDefOf.MentalBreakThreshold,value=.02f*n}}};
   }}
-  public override string LabelInBrackets=>Layers+" 层";
+  public override string LabelInBrackets=>Layers+" 层".Loc();
   public override bool ShouldRemove=>false;
  }
 
@@ -353,7 +353,7 @@ namespace LichPhylactery {
   public static void Dissipate(Hediff h){
    var p=h?.pawn;if(p==null || !p.health.hediffSet.hediffs.Contains(h))return;
    p.health.RemoveHediff(h);
-   if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"的"+h.LabelBase+"随心灵熵满溢而消散。",p,MessageTypeDefOf.NeutralEvent,false);
+   if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"的".Loc()+h.LabelBase+"随心灵熵满溢而消散。".Loc(),p,MessageTypeDefOf.NeutralEvent,false);
   }
  }
  public class HediffCompProperties_NetherilInsight : HediffCompProperties {public HediffCompProperties_NetherilInsight(){compClass=typeof(HediffComp_NetherilInsight);}}
@@ -364,7 +364,7 @@ namespace LichPhylactery {
    acc+=delta;if(acc<NetherilInsight.CheckInterval)return;acc=0;
    if(NetherilInsight.EntropyFull(Pawn))NetherilInsight.Dissipate(parent);
   }
-  public override string CompTipStringExtra=>"智识技能学习 ×"+NetherilInsight.LearnFactor.ToString("0.##")+"\n心灵熵满溢时消散";
+  public override string CompTipStringExtra=>"智识技能学习 ×".Loc()+NetherilInsight.LearnFactor.ToString("0.##")+"\n心灵熵满溢时消散".Loc();
  }
  [HarmonyPatch(typeof(JobDriver),nameof(JobDriver.Cleanup))]
  public static class NetherilInsightOnReadEnd {
@@ -396,13 +396,13 @@ namespace LichPhylactery {
   public static void CheckLimit(Pawn p,BookOutcome_NetherilBase d){if(IsAuto(p.CurJob) && d.SessionTicks(p)>=MaxTicks && !StopPending(p))RequestStop(p,false);}
   // 不能自动研读的原因（null = 可以）；检查和说明用。
   public static string Blocked(Pawn p){
-   if(p==null || !p.Spawned || p.Map==null)return "不在地图上";
-   if(!LichMod.Settings.netherilIdleStudy)return "设置已关闭";
-   if(p.Faction!=Faction.OfPlayer || !p.IsColonist || p.IsPrisoner || p.IsSlave)return "不是玩家殖民者";
-   if(p.Drafted || p.InMentalState || p.Downed)return "征召、精神状态或倒地";
-   if(HealthAIUtility.ShouldSeekMedicalRest(p) || p.InBed())return "在养伤或卧床";
+   if(p==null || !p.Spawned || p.Map==null)return "不在地图上".Loc();
+   if(!LichMod.Settings.netherilIdleStudy)return "设置已关闭".Loc();
+   if(p.Faction!=Faction.OfPlayer || !p.IsColonist || p.IsPrisoner || p.IsSlave)return "不是玩家殖民者".Loc();
+   if(p.Drafted || p.InMentalState || p.Downed)return "征召、精神状态或倒地".Loc();
+   if(HealthAIUtility.ShouldSeekMedicalRest(p) || p.InBed())return "在养伤或卧床".Loc();
    var why=Netheril.CannotRead(p);if(why!=null)return why;
-   var e=p.psychicEntropy;if(e==null || e.MaxEntropy<=0f || e.EntropyValue>=e.MaxEntropy*EntropyBelow)return "心灵熵不低于上限的 50%";
+   var e=p.psychicEntropy;if(e==null || e.MaxEntropy<=0f || e.EntropyValue>=e.MaxEntropy*EntropyBelow)return "心灵熵不低于上限的 50%".Loc();
    return null;
   }
   // 选卷：① 卡苏斯之卷（遍数 < 7，或未解读且回响 < 10 层）② 秘术残卷（这卷学会 < 2 个且没卡住）③ 研习卷（始终有用）；同类挑最近。
@@ -455,7 +455,7 @@ namespace LichPhylactery {
   public const string MeditativeName="Meditative";
   static JoyKindDef meditative;
   public static JoyKindDef Meditative=>meditative??(meditative=DefDatabase<JoyKindDef>.GetNamedSilentFail(MeditativeName));
-  public const string KindsLabel="阅读、冥想";
+  public static readonly string KindsLabel="阅读、冥想".Loc();
   public static bool ReadingNetheril(Pawn p){var j=p?.CurJob;return j!=null && j.def==JobDefOf.Reading && j.targetA.Thing is Book b && Netheril.IsNetheril(b.def);}
  }
  [HarmonyPatch(typeof(Need_Joy),nameof(Need_Joy.GainJoy))]

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- [PAWN_nameDef]的村子年年给山里的龙进贡。[PAWN_nameDef]从小就被教导：龙是神，人是龙的仆从，能替龙擦一片鳞是莫大的荣耀。 -->
+  <LP_Bs_DragonCultChild.description>[PAWN_nameDef]'s village paid tribute to the dragon in the mountains every year. [PAWN_nameDef] was taught from childhood that dragons are gods, people are their servants, and polishing a single dragon scale is a great honor.</LP_Bs_DragonCultChild.description>
+  <!-- 龙鳞下的孩子 -->
+  <LP_Bs_DragonCultChild.title>child beneath the dragon's scales</LP_Bs_DragonCultChild.title>
+  <!-- 龙仆之子 -->
+  <LP_Bs_DragonCultChild.titleShort>dragon servant's child</LP_Bs_DragonCultChild.titleShort>
+  <!-- [PAWN_nameDef]加入了龙之教团，替一条五色龙看守巢穴、搜刮贡品。教团许诺：最忠诚的人死后会变成龙巫妖，永远守着主人的宝藏。 -->
+  <LP_Bs_DragonCultist.description>[PAWN_nameDef] joined the Cult of the Dragon, guarding a chromatic dragon's lair and gathering tribute. The cult promises that the most loyal become dracoliches after death, guarding their master's hoard forever.</LP_Bs_DragonCultist.description>
+  <!-- 龙之教团信徒 -->
+  <LP_Bs_DragonCultist.title>Cult of the Dragon follower</LP_Bs_DragonCultist.title>
+  <!-- 龙教徒 -->
+  <LP_Bs_DragonCultist.titleShort>dragon cultist</LP_Bs_DragonCultist.titleShort>
+  <!-- [PAWN_nameDef]破壳而出就会喷吐，几十年里独自在荒野里长大，学会了狩猎、恐吓和囤积。 -->
+  <LP_Bs_DragonWyrmling.description>[PAWN_nameDef] could breathe from the moment of hatching and grew up alone in the wilds for decades, learning to hunt, intimidate and hoard.</LP_Bs_DragonWyrmling.description>
+  <!-- 幼龙 -->
+  <LP_Bs_DragonWyrmling.title>young dragon</LP_Bs_DragonWyrmling.title>
+  <!-- 幼龙 -->
+  <LP_Bs_DragonWyrmling.titleShort>young dragon</LP_Bs_DragonWyrmling.titleShort>
+  <!-- [PAWN_nameDef]占据着一座巢穴，睡在自己囤积的宝藏上。附近的村庄都知道它的名字，也都给它进贡。 -->
+  <LP_Bs_DragonHoarder.description>[PAWN_nameDef] holds a lair and sleeps on [PAWN_possessive] own hoard. The nearby villages all know [PAWN_possessive] name, and all pay tribute.</LP_Bs_DragonHoarder.description>
+  <!-- 巢穴之主 -->
+  <LP_Bs_DragonHoarder.title>lord of the lair</LP_Bs_DragonHoarder.title>
+  <!-- 真龙 -->
+  <LP_Bs_DragonHoarder.titleShort>true dragon</LP_Bs_DragonHoarder.titleShort>
+</LanguageData>

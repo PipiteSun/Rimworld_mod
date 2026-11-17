@@ -11,7 +11,7 @@ namespace LichPhylactery {
  // 1.31.0 事件检查（-Only Events2）：惊逃兽群、冬狼寒潮、龙过境、法师塔坠落；云游导师的检查在 VPE 桥接里（Test.ps1 -VPE）。
  public partial class LichChecks {
   readonly List<Thing> e2Made=new List<Thing>();
-  static int e2FollowTick,e2RaidTick,e2CondBreath,e2CondPasses,e2WreckSalvage,e2WreckGuards;static string e2WreckId,e2WreckChoice;
+  static int e2FollowTick,e2CondBreath,e2CondPasses,e2WreckSalvage,e2WreckGuards;static string e2WreckId,e2WreckChoice;
 
   Pawn E2Pawn(string xeno=null){var p=xeno==null?Person():RacePawn(xeno);if(p.Spawned)p.DeSpawn();p.apparel?.DestroyAll();p.equipment?.DestroyAllEquipment();GenSpawn.Spawn(p,CellFinder.RandomClosewalkCellNear(map.Center,map,8),map);e2Made.Add(p);return p;}
   Pawn E2Animal(string kind,IntVec3 at){var p=PawnGenerator.GeneratePawn(DefDatabase<PawnKindDef>.GetNamed(kind),null);GenSpawn.Spawn(p,at,map);e2Made.Add(p);return p;}
@@ -34,7 +34,7 @@ namespace LichPhylactery {
     (s.stampede,s.winterWolfColdSnap,s.dragonFlyover,s.towerCrash,s.wanderingMentor,s.dndEventFrequency,s.portalBreach,s.giantMigration)=saved;
     Events2.TestRoll=null;
     foreach(var c in map.gameConditionManager.ActiveConditions.Where(c=>c.def==DragonFlyover.ConditionDef || c.def==GameConditionDefOf.ColdSnap).ToList()){if(c is GameCondition_DragonShadow d)d.landingRolled=true;c.End();}
-    var st=Events2.State;if(st!=null){st.stampedes.Clear();st.followUps.Clear();st.coldSnaps.Clear();st.dragonVisits.Clear();st.dragonRaids.Clear();}
+    var st=Events2.State;if(st!=null){st.stampedes.Clear();st.followUps.Clear();st.coldSnaps.Clear();}
     foreach(var r in PortalEvent.Rifts(map).ToList())if(!r.Destroyed)r.Destroy();
     foreach(var l in map.lordManager.lords.Where(l=>!lords.Contains(l)).ToList())map.lordManager.RemoveLord(l);
     foreach(var t in e2Made)if(t!=null && !t.Destroyed){if(t is Pawn p){Necro.Registry?.constructs.Remove(p);if(p.Corpse!=null && !p.Corpse.Destroyed)p.Corpse.Destroy();}if(!t.Destroyed)t.Destroy();}
@@ -44,7 +44,6 @@ namespace LichPhylactery {
     foreach(var l in Find.LetterStack.LettersListForReading.Where(l=>!letters.Contains(l)).ToList())Find.LetterStack.RemoveLetter(l);
     CleanFactionPawns();CleanFactionPawns();
     foreach(var kv in goodwill)if(kv.Key.PlayerGoodwill!=kv.Value)Factions.SetRelation(kv.Key,Faction.OfPlayer,kv.Value);
-    DragonFlyover.ResetWanderers();
     foreach(var kv in socials)if(kv.Key.skills!=null)kv.Key.skills.GetSkill(SkillDefOf.Social).Level=kv.Value;
     ColonyCensus.Dirty();ExtinguishAll();
    }
@@ -62,10 +61,8 @@ namespace LichPhylactery {
    var w=TowerCrash.WreckDef;
    Check(w!=null && w.size==new IntVec2(3,3) && w.GetStatValueAbstract(StatDefOf.MaxHitPoints)==1200 && Near(w.GetStatValueAbstract(StatDefOf.WorkToBuild),4000) && w.building.alwaysDeconstructible && !w.building.claimable && w.designationCategory==null && TowerCrash.IncomingDef?.skyfaller!=null,"tower wreck: 3x3, 1200 hp, 4000 work to deconstruct, falls as a skyfaller");
    Check(ContentFinder<Texture2D>.Get(w.graphicData.texPath,false)!=null && ContentFinder<Texture2D>.Get("Things/Mote/LP_DragonShadow",false)!=null,"1.31.0 textures load (tower wreck, dragon shadow)");
-   var fd=DragonFlyover.WanderersDef;Check(fd!=null && fd.hidden && !fd.permanentEnemy && fd.requiredCountAtGameStart==0 && fd.startingCountAtWorldCreation==0 && Factions.Ext(fd)==null,"hidden wanderers faction: hidden, not a permanent enemy, never generated at world creation");
-   foreach(var k in new[]{"LP_WildDragon","LP_DragonServant"})Check(DefDatabase<PawnKindDef>.GetNamedSilentFail(k)?.defaultFactionDef==fd,"pawn kind of the wandering dragon: "+k);
    foreach(var h in new[]{"LP_ColdSnapFrenzy","LP_WildMagicBloom","LP_WildMagicHue","LP_EventVisitor"})Check(Items.Hediff(h)!=null && Chinese(Items.Hediff(h).label),"1.31.0 hediff loads: "+h);
-   foreach(var t in new[]{"LP_DragonShadowDread","LP_DragonKinScent","LP_DuelWinner","LP_DuelLoser","LP_WildMagicBloomed","LP_WildMagicHiccup"})Check(DefDatabase<ThoughtDef>.GetNamedSilentFail(t)!=null,"1.31.0 thought loads: "+t);
+   foreach(var t in new[]{"LP_DragonShadowDread","LP_WildMagicBloomed","LP_WildMagicHiccup"})Check(DefDatabase<ThoughtDef>.GetNamedSilentFail(t)!=null,"1.31.0 thought loads: "+t);
    // 总滑条：倍率作用在出现权重上。
    var st=DefDatabase<IncidentDef>.GetNamed("LP_Stampede");var portal=DefDatabase<IncidentDef>.GetNamed("LP_PortalBreach");
    LichMod.Settings.dndEventFrequency=100;float a=st.Worker.ChanceFactorNow(map),pa=portal.Worker.ChanceFactorNow(map);
@@ -160,10 +157,9 @@ namespace LichPhylactery {
    Check(c.breathTick>c.startTick && c.breathTick<c.startTick+c.Duration && c.nextShadowTick==c.startTick+GenDate.TicksPerHour,"20% roll (fixed 0.19): one breath scheduled during the flyover; first shadow after an hour");
    Check(!Traverse.Create(def.Worker).Method("CanFireNowSub",parms).GetValue<bool>(),"only one flyover at a time");
    // 心情。
-   var human=map.mapPawns.FreeColonistsSpawned.First(x=>!ForceDragon.Active(x) && !Necro.Undead(x));var dragon=E2Pawn("LP_ForceDragon");
-   var dread=DefDatabase<ThoughtDef>.GetNamed("LP_DragonShadowDread");var kin=DefDatabase<ThoughtDef>.GetNamed("LP_DragonKinScent");
-   Check(dread.Worker.CurrentState(human).Active && !kin.Worker.CurrentState(human).Active && Near(dread.stages[0].baseMoodEffect,-3f),"colonists: -3 dragon's shadow");
-   Check(kin.Worker.CurrentState(dragon).Active && !dread.Worker.CurrentState(dragon).Active && Near(kin.stages[0].baseMoodEffect,3f),"force dragons (by gene): +3 scent of kin instead");
+   var human=map.mapPawns.FreeColonistsSpawned.First(x=>!Necro.Undead(x));
+   var dread=DefDatabase<ThoughtDef>.GetNamed("LP_DragonShadowDread");
+   Check(dread.Worker.CurrentState(human).Active && Near(dread.stages[0].baseMoodEffect,-3f),"colonists: -3 dragon's shadow");
    // 龙影：行进行 ±20 格内的野生动物惊逃。
    int row=map.Size.z/2;var nearCell=CellFinder.RandomClosewalkCellNear(new IntVec3(map.Size.x/2,0,row),map,4);var farCell=CellFinder.TryFindRandomCellNear(new IntVec3(map.Size.x/2,0,Math.Min(map.Size.z-5,row+40)),map,5,x=>x.Standable(map) && Math.Abs(x.z-row)>DragonFlyover.FleeRadius+2,out var fc)?fc:IntVec3.Invalid;
    var hare=E2Animal("Hare",nearCell);var far=farCell.IsValid?E2Animal("Hare",farCell):null;
@@ -180,71 +176,8 @@ namespace LichPhylactery {
    Check(GenRadial.RadialCellsAround(center,6f,true).Where(x=>x.InBounds(map)).All(x=>x.GetTerrain(map).filthAcceptanceMask==FilthSourceFlags.None) || GenRadial.RadialCellsAround(center,6f,true).Where(x=>x.InBounds(map)).Any(x=>x.GetThingList(map).Any(t=>t.def==DragonFlyover.CraterDef)),"breath leaves a force crater (terrain "+center.GetTerrain(map).defName+", filthAcceptance "+center.GetTerrain(map).filthAcceptanceMask+", retry "+FilthMaker.TryMakeFilth(center,map,DragonFlyover.CraterDef,1)+", things "+string.Join(",",center.GetThingList(map).Select(t=>t.def.defName))+")");
    var bc=DragonFlyover.BreathCell(map);Check(bc.IsValid && map.mapPawns.FreeColonistsSpawned.All(p=>p.Position.DistanceTo(bc)>=DragonFlyover.BreathMinColonistDistance),"breath lands at least 6 cells from every colonist");
    c.landingRolled=true;c.End();Events2.TestRoll=.21f;c=DragonFlyover.Start(map);Check(c.breathTick<0,"20% roll (fixed 0.21): no breath");c.landingRolled=true;c.End();
-   // 阶段二：成年龙才会招来降落；60%。
-   var host=E2Pawn("LP_ForceDragon");var heart=ForceDragon.Heart(host);heart.SetAge(2);
-   var hoard=DragonHoard.BuildHoard(map,E2Open(6f,6f),host,out var interior);e2Made.AddRange(hoard);
-   e2Made.AddRange(DragonHoard.Stock(map,interior,ThingDefOf.Silver,3000));e2Made.AddRange(DragonHoard.Stock(map,interior,ThingDefOf.Gold,400));
-   foreach(var name in new[]{"Steel","Plasteel","ComponentIndustrial","MedicineIndustrial","Jade","Uranium"}){var d=DefDatabase<ThingDef>.GetNamedSilentFail(name);if(d!=null)e2Made.AddRange(DragonHoard.Stock(map,interior,d,30));}
-   heart.RefreshHoard();
-   Check(DragonHoard.RoomOf(host)!=null,"test hoard built for the host dragon");
-   // 别的检查组留在地图上的成年龙不动它们：有的话跳过“没有成年龙”这一项。
-   bool othersAdult=DragonFlyover.AdultDragons(map).Any(x=>x!=host);
-   Events2.TestRoll=0f;if(!othersAdult)Check(DragonFlyover.OnFlyoverEnd(map)==null,"no landing without an adult force dragon (host is age 2)");
-   heart.SetAge(DragonFlyover.AdultAge);
-   Events2.TestRoll=.61f;Check(DragonFlyover.OnFlyoverEnd(map)==null,"60% roll (fixed 0.61): the dragon flies on");
-   Events2.TestRoll=.59f;var v0=Track(DragonFlyover.OnFlyoverEnd(map));
-   Check(v0!=null && DragonFlyover.AdultDragons(map).Contains(v0.host),"60% roll (fixed 0.59): another dragon lands");
-   var v=v0.host==host?v0:Track(DragonFlyover.Land(map,host));
-   var wf=Factions.Of(DragonFlyover.WanderersDef);
-   Check(v!=null && v.host==host && v.dragon.gender!=host.gender && ForceDragon.Age(v.dragon)==DragonFlyover.AncientAge && v.dragon.genes.Xenotype==DragonHoard.Xenotype,"the landing dragon is ancient, of the opposite sex and a force dragon by xenotype");
-   Check(v.dragon.Faction==wf && wf.def.hidden && !wf.HostileTo(Faction.OfPlayer) && wf.PlayerGoodwill==0,"the wandering dragon belongs to the hidden neutral faction (goodwill 0)");
-   Check(v.servants.Count>=2 && v.servants.Count<=4 && v.servants.All(p=>p.genes.Xenotype==XenotypeDefOf.Baseliner && p.Faction==wf),"2-4 baseliner servants ("+v.servants.Count+")");
-   Check(v.lord?.LordJob is LordJob_DragonVisit && v.spot.DistanceTo(DragonFlyover.HoardCenter(host))>=DragonFlyover.SpotMinHoardDistance,"the visitors walk to a spot at least 15 cells from the hoard");
-   var letter=DragonFlyover.OnArrive(v);var opts=letter.Choices.Select(OptText).ToList();
-   Check(v.stage=="waiting" && opts.Count(o=>o.StartsWith("决斗：派"))==DragonFlyover.AdultDragons(map).Count(p=>p.Spawned && !p.Downed) && opts.Any(o=>o.StartsWith("联姻")) && opts.Contains("拒绝"),"choice letter: duel (one per adult dragon), marriage, refusal ("+string.Join(" / ",opts)+")");
-   // 决斗胜：宝藏放在宝库门口，胜者 +10，守宝库天数 +10。
-   int silver=Count(map,ThingDefOf.Silver);float days=heart.daysOnHoard;
-   Check(DragonFlyover.Duel(v,host) && v.stage=="duel" && v.champion==host && (host.MentalStateDef==MentalStateDefOf.SocialFighting || host.CurJob?.def==JobDefOf.AttackMelee),"duel starts a one-on-one fight ("+host.MentalStateDef?.defName+"/"+host.CurJob?.def?.defName+")");
-   v.dragon.TakeDamage(new DamageInfo(DamageDefOf.Cut,5f,0f,-1f,host));Check(v.stage=="duel","the champion hitting the visitor is not a refusal");
-   HealthUtility.DamageUntilDowned(v.dragon,false);DragonFlyover.TickDuel(v);
-   Check(v.stage=="done" && Count(map,ThingDefOf.Silver)-silver>=DragonFlyover.SilverReward && host.needs.mood.thoughts.memories.GetFirstMemoryOfDef(DefDatabase<ThoughtDef>.GetNamed("LP_DuelWinner"))!=null && Near(heart.daysOnHoard-days,DragonFlyover.WinnerHoardDays),"duel won: 1500 silver + 2 treasures at the hoard door, winner +10 mood, +10 hoard days");
-   Check(!host.InMentalState && !v.dragon.InMentalState,"the duel fight stops when one side is down (no finishing blow)");
-   // 决斗负：另一条龙出战，被打倒；宝库前 20%（最多 5 件）被仆从带走。
-   var v2=Track(DragonFlyover.Land(map,host,2));DragonFlyover.OnArrive(v2);
-   var champ=E2Pawn("LP_ForceDragon");ForceDragon.Heart(champ).SetAge(3);
-   var expected=DragonFlyover.HoardLoss(host);int n=expected.Count;int all=interior.Cells.SelectMany(x=>x.GetThingList(map)).Where(DragonHoard.Counts).Count();
-   Check(n==Math.Min(DragonFlyover.LossMaxItems,Mathf.CeilToInt(all*DragonFlyover.LossShare)) && n>0,"the loss takes the top 20% of hoard items by value, at most 5 ("+n+" of "+all+")");
-   Check(DragonFlyover.Duel(v2,champ),"second duel starts");
-   HealthUtility.DamageUntilDowned(champ,false);DragonFlyover.TickDuel(v2);
-   Check(v2.stage=="done" && expected.All(t=>!t.Spawned && v2.servants.Any(p=>p.inventory.innerContainer.Contains(t))) && champ.needs.mood.thoughts.memories.GetFirstMemoryOfDef(DefDatabase<ThoughtDef>.GetNamed("LP_DuelLoser"))!=null && !champ.Dead,"duel lost: servants carry the hoard's best items away, loser -8 mood, not killed");
-   // 联姻：最高社交 ×5%（上限 75%）。
-   var talker=map.mapPawns.FreeColonistsSpawned.First(x=>x.skills!=null && !x.skills.GetSkill(SkillDefOf.Social).TotallyDisabled);talker.skills.GetSkill(SkillDefOf.Social).Level=20;
-   Check(Near(Events2.SocialChance(map),.75f),"marriage chance is capped at 75%");
-   talker.skills.GetSkill(SkillDefOf.Social).Level=10;Check(Near(Events2.SocialChance(map),Events2.BestSocial(map)*.05f),"marriage chance is best social x5%");
-   talker.skills.GetSkill(SkillDefOf.Social).Level=20;
-   var v3=Track(DragonFlyover.Land(map,host,2));DragonFlyover.OnArrive(v3);Events2.TestRoll=.5f;
-   Check(DragonFlyover.Marry(v3) && v3.dragon.Faction==Faction.OfPlayer && v3.dragon.GetLord()==null && ForceDragon.Age(v3.dragon)==DragonFlyover.AncientAge && v3.dragon.gender!=host.gender,"marriage succeeds: the ancient dragon joins (keeps its age, opposite sex for eggs)");
-   var v4=Track(DragonFlyover.Land(map,host,2));DragonFlyover.OnArrive(v4);Events2.TestRoll=.9f;int raids=Events2.State.dragonRaids.Count;
-   Check(!DragonFlyover.Marry(v4) && v4.stage=="done" && Events2.State.dragonRaids.Count==raids+1,"marriage fails: treated as a refusal");
-   // 拒绝：3 天后袭击宝库；袭击结束后好感回到 0。
-   var v5=Track(DragonFlyover.Land(map,host,2));DragonFlyover.OnArrive(v5);var raid=DragonFlyover.Refuse(v5);
-   Check(raid!=null && raid.tick==EvNow+DragonFlyover.RaidDelayDays*GenDate.TicksPerDay && !raid.fired,"refusal: a raid on the hoard is queued 3 days later");
-   raid.tick=EvNow;DragonFlyover.TickRaids(Events2.State);
-   Check(raid.fired && raid.lord?.LordJob is LordJob_Steal && raid.lord.faction==wf && wf.HostileTo(Faction.OfPlayer) && raid.lord.ownedPawns.Count>=3,"three days later the dragon raids to steal and leave");
-   foreach(var p in raid.lord.ownedPawns.ToList()){e2Made.Add(p);p.Destroy();}
-   if(map.lordManager.lords.Contains(raid.lord))map.lordManager.RemoveLord(raid.lord);
-   DragonFlyover.TickRaids(Events2.State);
-   Check(!Events2.State.dragonRaids.Contains(raid) && !wf.HostileTo(Faction.OfPlayer) && wf.PlayerGoodwill==0,"after the raid the hidden faction leaves no trace (goodwill back to 0)");
-   // 殖民者插手 = 拒绝；不答复一天后自行离开。
-   var v6=Track(DragonFlyover.Land(map,host,2));DragonFlyover.OnArrive(v6);raids=Events2.State.dragonRaids.Count;
-   v6.servants[0].TakeDamage(new DamageInfo(DamageDefOf.Cut,3f,0f,-1f,talker));
-   Check(v6.stage=="done" && Events2.State.dragonRaids.Count==raids+1,"a colonist attacking the visitors counts as a refusal");
-   var v7=Track(DragonFlyover.Land(map,host,2));DragonFlyover.OnArrive(v7);raids=Events2.State.dragonRaids.Count;
-   v7.arriveTick=EvNow-GenDate.TicksPerDay-1;DragonFlyover.Tick(Events2.State);
-   Check(v7.stage=="done" && Events2.State.dragonRaids.Count==raids,"unanswered for a day: the dragon leaves without a raid");
    Events2.TestRoll=null;
   }
-  DragonVisit Track(DragonVisit v){if(v!=null){e2Made.Add(v.dragon);e2Made.AddRange(v.servants);}return v;}
 
   // ==================== 法师塔坠落 ====================
   void CheckTowerCrash(){
@@ -340,7 +273,6 @@ namespace LichPhylactery {
   void PrepareEvents2Save(){
    var st=Events2.State;
    e2FollowTick=EvNow+12345;st.followUps.Add(new StampedeFollowUp{key="portal",map=map,tick=e2FollowTick});
-   e2RaidTick=EvNow+23456;st.dragonRaids.Add(new DragonRaid{map=map,tick=e2RaidTick});
    Events2.TestRoll=0f;var c=DragonFlyover.Start(map);Events2.TestRoll=null;
    c.breathTick=EvNow+GenDate.TicksPerDay/2;c.passes=2;c.nextShadowTick=EvNow+GenDate.TicksPerDay/3;e2CondBreath=c.breathTick;e2CondPasses=2;
    if(TowerCrash.ThayPresent && TowerCrash.TryFindSpot(map,out var cell)){
@@ -351,8 +283,7 @@ namespace LichPhylactery {
   void CheckEvents2AfterLoad(){
    map=Find.CurrentMap;var st=Events2.State;
    Check(st.followUps.Any(f=>f.key=="portal" && f.tick==e2FollowTick && f.map==map),"stampede follow-up survives save/load");
-   Check(st.dragonRaids.Any(r=>r.tick==e2RaidTick && r.map==map && !r.fired),"queued dragon raid survives save/load");
-   st.followUps.Clear();st.dragonRaids.Clear();
+   st.followUps.Clear();
    var c=DragonFlyover.Condition(map);
    Check(c!=null && c.breathTick==e2CondBreath && c.passes==e2CondPasses && !c.breathed,"dragon shadow condition and its breath timer survive save/load");
    if(c!=null){c.landingRolled=true;c.End();}

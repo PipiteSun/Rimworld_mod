@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（HeroDestiny.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>显现</zh><en>manifested</en></s>
+  <s><zh>杀死一条五色真龙</zh><en>kill a chromatic dragon</en></s>
+  <s><zh>杀死一名巨人首领</zh><en>kill a giant leader</en></s>
+  <s><zh>击败影巫王拉洛克</zh><en>defeat the shadow king Larloch</en></s>
+  <s><zh>击败一名宿敌冠军</zh><en>defeat a nemesis champion</en></s>
+  <s><zh>殖民地出现一位半神</zh><en>a demigod appears in the colony</en></s>
+  <s><zh>亲自守住 10 次袭击</zh><en>personally defend 10 raids</en></s>
+  <s><zh>当{0}之时，命运才会放过{1}。</zh><en>Only when {0} will fate let {1} go.</en></s>
+  <s><zh>（还没有说出口）</zh><en>(not yet spoken)</en></s>
+  <s><zh>命运未尽</zh><en>Fate unfinished</en></s>
+  <s><zh>本该死去，但预言还没有兑现：命运未尽让其倒地幸存（伤口已止血）。</zh><en> should have died, but the prophecy hasn't been fulfilled yet: fate unfinished kept them alive on the ground (wounds have stopped bleeding).</en></s>
+  <s><zh>预言兑现：</zh><en>Prophecy fulfilled: </en></s>
+  <s><zh>的天命升华了（</zh><en>'s destiny ascended (</en></s>
+  <s><zh> → 升华）：一次性获得冒险者经验 </zh><en> → ascended): gained adventurer XP </en></s>
+  <s><zh>（下一级所需的全部），全殖民地心情 +8“预言兑现”（10 天）。\n\n命运未尽换成了命运主宰：每天一次，下一次攻击必中且伤害 ×2。</zh><en> at once (all that the next level needs), whole colony mood +8 "prophecy fulfilled" (10 days).\n\nFate unfinished became master of fate: once per day, the next attack always hits and deals ×2 damage.</en></s>
+  <s><zh>成了半神</zh><en>became a demigod</en></s>
+  <s><zh>天命</zh><en>destiny</en></s>
+  <s><zh>的天命“</zh><en>'s destiny "</en></s>
+  <s><zh>”从</zh><en>" moved from </en></s>
+  <s><zh>进入</zh><en> to </en></s>
+  <s><zh>命运未尽的冷却缩短到 </zh><en>Fate unfinished cooldown shortened to </en></s>
+  <s><zh> 天；倒地时 5 格内友军“为了预言之子”命中 +10%（1 小时）。</zh><en> days; when they're downed, allies within 5 cells get "for the child of prophecy" hit +10% (1 hour).</en></s>
+  <s><zh>邪契魔能爆命中会点燃目标。</zh><en>Eldritch blast hits set targets on fire.</en></s>
+  <s><zh>被命中时 20% 让攻击者迷惑 3 秒。</zh><en>When hit, 20% chance to beguile the attacker for 3 seconds.</en></s>
+  <s><zh>邪契魔能爆命中让目标眩晕 1 秒（同一目标 10 秒一次）。</zh><en>Eldritch blast hits stun the target for 1 second (once per 10 seconds per target).</en></s>
+  <s><zh>火焰伤害 -50%；新能力“直坠地狱”（每天一次）。</zh><en>Fire damage -50%; new ability "hurl through hell" (once per day).</en></s>
+  <s><zh>新能力“妖精魅惑”（每天一次）。</zh><en>New ability "fey charm" (once per day).</en></s>
+  <s><zh>新能力“异界触须”（每天一次）。</zh><en>New ability "otherworldly tendrils" (once per day).</en></s>
+  <s><zh>每次施法 15% 不进冷却。</zh><en>Each cast has a 15% chance of no cooldown.</en></s>
+  <s><zh>法杖射程 +3。</zh><en>Staff range +3.</en></s>
+  <s><zh>新能力“魔网涌动”（每天一次，60 秒内施法不耗心灵熵、不进冷却）；魔网震颤和魔网崩溃不再影响</zh><en>New ability "weave surge" (once per day; for 60 seconds, casts cost no neural heat and trigger no cooldown); weave tremors and weave collapse no longer affect </en></s>
+  <s><zh>施法。</zh><en>'s casting.</en></s>
+  <s><zh>成神之路进度 ×1.5，</zh><en>Path to godhood progress ×1.5, </en></s>
+  <s><zh>的领域神术冷却 -25%。</zh><en>'s domain miracle cooldowns -25%.</en></s>
+  <s><zh>神明干预：同一张地图上 3 名以上殖民者倒地时，</zh><en>Divine intervention: when 3 or more colonists on the same map are downed, </en></s>
+  <s><zh>降下神迹（每季一次）：</zh><en> sends a miracle (once per season): </en></s>
+  <s><zh>魅惑</zh><en>charm</en></s>
+  <s><zh>命运主宰</zh><en>master of fate</en></s>
+  <s><zh>魔网涌动</zh><en>weave surge</en></s>
+  <s><zh>，以及供奉</zh><en>, and factions worshipping </en></s>
+  <s><zh>的派系</zh><en> </en></s>
+  <s><zh>晨光普照（全员治愈伤口、止血）</zh><en>Morning radiance (everyone's wounds healed, bleeding stopped)</en></s>
+  <s><zh>公正之剑（30 秒全员近战伤害 +50%）</zh><en>Sword of justice (everyone's melee damage +50% for 30 seconds)</en></s>
+  <s><zh>魔网断流（打断敌方施法，敌人全部眩晕 5 秒）</zh><en>Weave severed (interrupts enemy casting, all enemies stunned for 5 seconds)</en></s>
+  <s><zh>死亡止步（倒地者止血，1 天内不再流血）</zh><en>Death halted (the downed stop bleeding, no more bleeding for 1 day)</en></s>
+  <s><zh>兽王咆哮（敌人恐慌逃跑 10 秒）</zh><en>Beast lord's roar (enemies flee in panic for 10 seconds)</en></s>
+  <s><zh>雷霆之怒（最多 6 道闪电，每道 30 伤害）</zh><en>Thunder's wrath (up to 6 lightning bolts, 30 damage each)</en></s>
+  <s><zh>暴君之威（敌人惊惧 1 小时）</zh><en>Tyrant's presence (enemies frightened for 1 hour)</en></s>
+  <s><zh>暗夜帷幕（殖民者隐身 30 秒）</zh><en>Veil of night (colonists invisible for 30 seconds)</en></s>
+  <s><zh>熔炉之怒（敌人着火并受到 20 点火焰伤害）</zh><en>Forge's fury (enemies catch fire and take 20 fire damage)</en></s>
+  <s><zh>兽王咆哮</zh><en>Beast lord's roar</en></s>
+  <s><zh>神明干预：</zh><en>Divine intervention: </en></s>
+  <s><zh>殖民地快撑不住了——</zh><en>The colony is about to collapse: </en></s>
+  <s><zh>没有抛弃祂的勇士</zh><en> didn't abandon their champion </en></s>
+  <s><zh>。\n\n下一次神明干预要等一季（15 天）。</zh><en>.\n\nThe next divine intervention must wait a season (15 days).</en></s>
+  <s><zh>冥界的宽限</zh><en>grace of the underworld</en></s>
+  <s><zh>九狱的大魔鬼</zh><en>an archdevil of the Nine Hells</en></s>
+  <s><zh>妖精女王</zh><en>the fey queen</en></s>
+  <s><zh>星界之外的无名存在</zh><en>a nameless being beyond the Astral</en></s>
+  <s><zh>3 天内处决一名囚犯，或交出 </zh><en>Execute a prisoner within 3 days, or hand over </en></s>
+  <s><zh>3 天内举办一次派对或婚礼，或交出一件品质优秀以上的艺术品</zh><en>Hold a party or wedding within 3 days, or hand over an art piece of excellent quality or better</en></s>
+  <s><zh>3 天内本人冥想 8 小时，或研读耐瑟瑞尔卷轴 1 小时</zh><en>Meditate personally for 8 hours within 3 days, or study a Netherese scroll for 1 hour</en></s>
+  <s><zh>宗主还没有提要求。</zh><en>The patron hasn't made a demand yet.</en></s>
+  <s><zh>下一次偿契：约 </zh><en>Next pact payment: about </en></s>
+  <s><zh>当前要求：</zh><en>Current demand: </en></s>
+  <s><zh>；已冥想 </zh><en>; meditated </en></s>
+  <s><zh> 小时，已研读 </zh><en> hours, studied </en></s>
+  <s><zh>要求偿契</zh><en>Pact payment demanded</en></s>
+  <s><zh>的宗主</zh><en>'s patron </en></s>
+  <s><zh>捎来了话：偿契的时候到了。\n\n要求：</zh><en> sent word: it's time to pay the pact.\n\nDemand: </en></s>
+  <s><zh>\n\n交东西用下面的按钮（从地图上直接扣）。</zh><en>\n\nHand over things with the button below (deducted directly from the map).</en></s>
+  <s><zh>\n\n完不成：宗主之怒 10 天（邪契魔能爆不能用、心情 -10）；连续两次完不成，天命降一阶（觉醒阶再连败，契约作废，“背弃之契”心情 -15）。</zh><en>\n\nIf not done: patron's wrath for 10 days (eldritch blast unusable, mood -10); failing twice in a row lowers the destiny one stage (failing again at the awakened stage voids the pact, "forsaken pact" mood -15).</en></s>
+  <s><zh>没有可以交付的要求</zh><en>No demand that can be delivered</en></s>
+  <s><zh>地图上的白银不到 </zh><en>Less than this much silver on the map: </en></s>
+  <s><zh>地图上没有品质优秀以上的艺术品</zh><en>No art of excellent quality or better on the map</en></s>
+  <s><zh>这一条要本人去做</zh><en>This one must be done in person</en></s>
+  <s><zh>偿还了契约。</zh><en> paid the pact.</en></s>
+  <s><zh>宗主的怒气消了：天命可以重新升阶。</zh><en>The patron's anger has passed: the destiny can rise again.</en></s>
+  <s><zh>宗主之怒：</zh><en>Patron's wrath: </en></s>
+  <s><zh>没能偿还</zh><en> failed to pay </en></s>
+  <s><zh>的契约。宗主之怒 10 天：邪契魔能爆不能用，心情 -10。\n\n再失败一次，天命会降一阶。</zh><en>'s pact. Patron's wrath for 10 days: eldritch blast unusable, mood -10.\n\nOne more failure and the destiny drops a stage.</en></s>
+  <s><zh>契约降阶：</zh><en>Pact demoted: </en></s>
+  <s><zh>连续两次没能偿还</zh><en> failed twice in a row to pay </en></s>
+  <s><zh>的契约：天命从</zh><en>'s pact: destiny dropped from </en></s>
+  <s><zh>降到</zh><en> to </en></s>
+  <s><zh>。下一次偿契成功后才会重新升阶。</zh><en>. It only rises again after the next successful payment.</en></s>
+  <s><zh>背弃之契：</zh><en>Forsaken pact: </en></s>
+  <s><zh>抛弃了</zh><en> abandoned </en></s>
+  <s><zh>：邪契者的特性和魔能爆都消失了。心情 -15“背弃之契”（15 天）。</zh><en>: the pact traits and eldritch blast are gone. Mood -15 "forsaken pact" (15 days).</en></s>
+  <s><zh>宗主之怒：魔能爆暂时用不了。</zh><en>Patron's wrath: eldritch blast unusable for now.</en></s>
+  <s><zh>命运主宰已经蓄势，等下一次攻击。</zh><en>Master of fate is charged, waiting for the next attack.</en></s>
+  <s><zh>邪契魔能爆 ×</zh><en>Eldritch blast ×</en></s>
+  <s><zh>交出 </zh><en>Hand over </en></s>
+  <s><zh>交出一件优秀以上的艺术品</zh><en>Hand over an art piece of excellent quality or better</en></s>
+  <s><zh>交付了偿契的东西。</zh><en> delivered the pact payment.</en></s>
+</LPStrings>

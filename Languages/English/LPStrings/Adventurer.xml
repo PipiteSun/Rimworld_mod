@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（Adventurer.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>力量</zh><en>Strength</en></s>
+  <s><zh>敏捷</zh><en>Dexterity</en></s>
+  <s><zh>体质</zh><en>Constitution</en></s>
+  <s><zh>智力</zh><en>Intelligence</en></s>
+  <s><zh>感知</zh><en>Wisdom</en></s>
+  <s><zh>魅力</zh><en>Charisma</en></s>
+  <s><zh>完成了一个 DND 里程碑</zh><en>Completed a DND milestone</en></s>
+  <s><zh>近战命中 </zh><en>Melee hit </en></s>
+  <s><zh>、射击精度 ×</zh><en>, shooting accuracy ×</en></s>
+  <s><zh>、VPE 职业强度 +</zh><en>, VPE class power +</en></s>
+  <s><zh>熟练加值 +</zh><en>Proficiency bonus +</en></s>
+  <s><zh>（1～4 级 +2，之后每 4 级 +1，17 级 +6；传奇等级 28 级 +7、36 级 +8）</zh><en> (+2 at levels 1-4, then +1 every 4 levels, +6 at 17; legend level 28 +7, 36 +8)</en></s>
+  <s><zh>下一次提升：</zh><en>Next increase: </en></s>
+  <s><zh> 级（+</zh><en> level (+</en></s>
+  <s><zh>每比 +2 高 1 点：</zh><en>For each point above +2: </en></s>
+  <s><zh>· 近战命中 +2%（加在最终命中率上）：现在 </zh><en>· Melee hit +2% (added to the final hit chance): now </en></s>
+  <s><zh>· 射击精度 ×+1%：现在 ×</zh><en>· Shooting accuracy ×+1%: now ×</en></s>
+  <s><zh>· VPE 职业强度 +0.02：现在 +</zh><en>· VPE class power +0.02: now +</en></s>
+  <s><zh>等级（每级 +1%，到 20 级）：近战命中 </zh><en>Level (+1% per level, up to 20): melee hit </en></s>
+  <s><zh>、近战闪避 </zh><en>, melee dodge </en></s>
+  <s><zh>（加在最终几率上）</zh><en> (added to the final chance)</en></s>
+  <s><zh>始终生效：</zh><en>Always in effect: </en></s>
+  <s><zh>· 对抗传奇怪物（真龙、眼魔、恶魔等）效果的豁免：每点属性调整值和熟练加值各 +5% 豁免成功率</zh><en>· Saves against the effects of legendary monsters (true dragons, beholders, demons, etc.): +5% save chance per point of ability modifier and of proficiency bonus</en></s>
+  <s><zh>· 与真龙交涉：每点魅力调整值和熟练加值各 +5% 成功率</zh><en>· Parleying with true dragons: +5% success chance per point of Charisma modifier and of proficiency bonus</en></s>
+  <s><zh>只看等级，不乘“属性效果强度”，Isekai 共存模式下也生效。</zh><en>Depends only on level, not multiplied by "ability effect strength"; also applies in Isekai coexistence mode.</en></s>
+  <s><zh>的神性提升：获得 </zh><en>'s divinity rises: gained </en></s>
+  <s><zh> 次属性提升。</zh><en> ability score improvements.</en></s>
+  <s><zh>没有这个恩赐</zh><en>Doesn't have this boon</en></s>
+  <s><zh>已经有了</zh><en>Already has it</en></s>
+  <s><zh>没有恩赐点</zh><en>No boon points</en></s>
+  <s><zh>没有这个专长</zh><en>Doesn't have this feat</en></s>
+  <s><zh>没有可用的属性提升或职业奖励专长</zh><en>No ability score improvement or class bonus feat available</en></s>
+  <s><zh>只剩施法奖励专长：只能换法术类专长</zh><en>Only spellcasting bonus feats left: can only be swapped for spell feats</en></s>
+  <s><zh>没有在分配初始属性</zh><en>Not assigning starting abilities</en></s>
+  <s><zh>基础值最低 </zh><en>Minimum base value </en></s>
+  <s><zh>基础值最高 </zh><en>Maximum base value </en></s>
+  <s><zh>购点不够（还要 </zh><en>Not enough points (need </en></s>
+  <s><zh>，剩 </zh><en>, have </en></s>
+  <s><zh>属性不能低于 </zh><en>Ability can't be lower than </en></s>
+  <s><zh>超过上限 </zh><en>Over the cap </en></s>
+  <s><zh>近战伤害</zh><en>melee damage</en></s>
+  <s><zh>负重</zh><en>carrying capacity</en></s>
+  <s><zh>商队负重</zh><en>caravan carrying capacity</en></s>
+  <s><zh>采矿速度</zh><en>mining speed</en></s>
+  <s><zh>射击精度</zh><en>shooting accuracy</en></s>
+  <s><zh>近战命中</zh><en>melee hit</en></s>
+  <s><zh>瞄准时间</zh><en>aiming time</en></s>
+  <s><zh>近战闪避</zh><en>melee dodge</en></s>
+  <s><zh>移速</zh><en>move speed</en></s>
+  <s><zh>商队速度</zh><en>caravan speed</en></s>
+  <s><zh>免疫速度</zh><en>immunity gain speed</en></s>
+  <s><zh>伤口愈合</zh><en>wound healing</en></s>
+  <s><zh>休息恢复</zh><en>rest recovery</en></s>
+  <s><zh>疼痛休克阈值</zh><en>pain shock threshold</en></s>
+  <s><zh>毒素抗性</zh><en>toxic resistance</en></s>
+  <s><zh>利器护甲</zh><en>sharp armor</en></s>
+  <s><zh>钝器护甲</zh><en>blunt armor</en></s>
+  <s><zh>高温护甲</zh><en>heat armor</en></s>
+  <s><zh>研究速度</zh><en>research speed</en></s>
+  <s><zh>全局学习</zh><en>global learning</en></s>
+  <s><zh>工作速度</zh><en>work speed</en></s>
+  <s><zh>黑客速度</zh><en>hacking speed</en></s>
+  <s><zh>医疗品质</zh><en>medical quality</en></s>
+  <s><zh>心灵敏感度</zh><en>psychic sensitivity</en></s>
+  <s><zh>手术成功率</zh><en>surgery success chance</en></s>
+  <s><zh>冥想专注</zh><en>meditation focus</en></s>
+  <s><zh>训练动物</zh><en>train animals</en></s>
+  <s><zh>动物采集</zh><en>animal gather yield</en></s>
+  <s><zh>心灵热量恢复</zh><en>neural heat recovery</en></s>
+  <s><zh>心灵热量上限</zh><en>neural heat limit</en></s>
+  <s><zh>精神崩溃阈值</zh><en>mental break threshold</en></s>
+  <s><zh>社交影响</zh><en>social impact</en></s>
+  <s><zh>谈判</zh><en>negotiation</en></s>
+  <s><zh>驯服动物</zh><en>tame animals</en></s>
+  <s><zh>结缘几率</zh><en>bond chance</en></s>
+  <s><zh>逮捕成功率</zh><en>arrest success chance</en></s>
+  <s><zh>交易价格</zh><en>trade price</en></s>
+  <s><zh>（调整值 </zh><en> (modifier </en></s>
+  <s><zh>专长 +</zh><en>feat +</en></s>
+  <s><zh>（加在上限之后）</zh><en> (added after the cap)</en></s>
+  <s><zh>上限 </zh><en>Cap </en></s>
+  <s><zh>威能之恩 +4</zh><en>Boon of Might +4</en></s>
+  <s><zh> 传奇 Lv</zh><en> legend Lv </en></s>
+  <s><zh>，超出部分保留但效果按 </zh><en>; the excess is kept but its effect counts as </en></s>
+  <s><zh> 算</zh><en> </en></s>
+  <s><zh>属性效果已交给 Isekai（设置里可以打开）。</zh><en>Ability effects are handed over to Isekai (can be turned on in settings).</en></s>
+  <s><zh>属性效果已在设置里关闭。</zh><en>Ability effects are turned off in settings.</en></s>
+  <s><zh>传奇单位：六维不提供数值效果（强度已经算在兵种里）。</zh><en>Legendary unit: the six abilities give no numeric effects (their power is already built into the pawn kind).</en></s>
+  <s><zh>属性倍率 </zh><en>Ability multiplier </en></s>
+  <s><zh>（种族亲和后 </zh><en> (after racial affinity </en></s>
+  <s><zh>：10 = ×1，每 +5 约翻倍，每 +10 ×4</zh><en>: 10 = ×1, about double per +5, ×4 per +10</en></s>
+  <s><zh>：10 = ×1，每 +2 约 ×</zh><en>: 10 = ×1, about × </en></s>
+  <s><zh>（每级属性效果 </zh><en> (per-level ability effect </en></s>
+  <s><zh>%）</zh><en>%)</en></s>
+  <s><zh>（近战伤害不用这张表：每点调整值 +</zh><en> (melee damage doesn't use this table: per modifier point +</en></s>
+  <s><zh>（心灵敏感度不用这张表：每点调整值 +</zh><en> (psychic sensitivity doesn't use this table: per modifier point +</en></s>
+  <s><zh>（部位生命不用这张表：每点调整值 +</zh><en> (part health doesn't use this table: per modifier point +</en></s>
+  <s><zh>（研究速度不用这张表：照 Isekai 每点 +</zh><en> (research speed doesn't use this table: as Isekai, per point +</en></s>
+  <s><zh>，×5 后收敛，另乘全局工作速度）</zh><en>, converging past ×5, also multiplied by global work speed)</en></s>
+  <s><zh>擅长 / 天赋：线性效果（</zh><en>Affinity / talent: linear effects (</en></s>
+  <s><zh>近战伤害、</zh><en>melee damage,</en></s>
+  <s><zh>心灵敏感度、</zh><en>psychic sensitivity,</en></s>
+  <s><zh>部位生命的体质系数、</zh><en>Constitution factor of part health,</en></s>
+  <s><zh>以这项为主属性时职业强度的属性部分）整个 ×</zh><en>the ability part of class power when this is the main ability) all ×</en></s>
+  <s><zh>（种族擅长 × 天赋相乘；笨拙只压正的调整值）</zh><en> (racial affinity × talent multiply; clumsy only reduces positive modifiers)</en></s>
+  <s><zh>部位生命 </zh><en>Part health </en></s>
+  <s><zh>（体质 </zh><en> (Constitution </en></s>
+  <s><zh> × 等级成长，体质低于 10 不减少）</zh><en> × level growth; Constitution below 10 doesn't reduce it)</en></s>
+  <s><zh>格斗</zh><en>Melee</en></s>
+  <s><zh>射击</zh><en>Shooting</en></s>
+  <s><zh>智识</zh><en>Intellectual</en></s>
+  <s><zh>医疗、种植、驯兽</zh><en>Medicine, Plants, Animals</en></s>
+  <s><zh>社交</zh><en>Social</en></s>
+  <s><zh>学习速度 </zh><en>learning speed </en></s>
+  <s><zh>学习速度最低 ×</zh><en>minimum learning speed ×</en></s>
+  <s><zh>；带上限的项超出部分按 Isekai 的方式逐渐收敛。</zh><en>; capped stats converge past their cap the Isekai way.</en></s>
+  <s><zh>部位生命（体质）</zh><en>part health (Constitution)</en></s>
+  <s><zh>等级成长</zh><en>level growth</en></s>
+  <s><zh>部位生命合计</zh><en>total part health</en></s>
+  <s><zh>伤口疼痛</zh><en>wound pain</en></s>
+  <s><zh>致死伤害阈值</zh><en>lethal damage threshold</en></s>
+  <s><zh>医疗 / 种植 / 驯兽</zh><en>Medicine / Plants / Animals</en></s>
+  <s><zh>学习</zh><en>learning</en></s>
+  <s><zh>职业强度（主属性）</zh><en>class power (main ability)</en></s>
+  <s><zh>奥术强度（智力）</zh><en>arcane power (Intelligence)</en></s>
+  <s><zh>天赋强度（魅力）</zh><en>gift power (Charisma)</en></s>
+  <s><zh>冒险者等级</zh><en>Adventurer levels</en></s>
+  <s><zh>DND边缘大陆 1.48.0 加入了冒险者等级：13 岁以上的人都有 1～20 级和力量、敏捷、体质、智力、感知、魅力六项属性。\n\n这个存档里的</zh><en>DND Rimlands 1.48.0 adds adventurer levels: everyone over 13 has levels 1-20 and six abilities: Strength, Dexterity, Constitution, Intelligence, Wisdom and Charisma.\n\nIn this save, </en></s>
+  <s><zh>名殖民者已经按技能生成了属性，等级按击杀记录估算（每 10 个人形击杀 +1 级，最高 5 级）。在小人检视面板的“冒险者”分页查看。</zh><en> colonists have had abilities generated from their skills, with levels estimated from kill records (+1 level per 10 humanlike kills, up to 5). See the "Adventurer" tab of the pawn inspect pane.</en></s>
+  <s><zh> 升到了 </zh><en> reached </en></s>
+  <s><zh>传奇 Lv </zh><en>legend Lv </en></s>
+  <s><zh> 级</zh><en> level</en></s>
+  <s><zh>（从 </zh><en> (from </en></s>
+  <s><zh> 级）</zh><en> level)</en></s>
+  <s><zh>· 熟练加值 +</zh><en>· Proficiency bonus +</en></s>
+  <s><zh>：现在 </zh><en>: now </en></s>
+  <s><zh>（相对 +2）</zh><en> (+2 relative)</en></s>
+  <s><zh>· 熟练加值仍为 +</zh><en>· Proficiency bonus still +</en></s>
+  <s><zh> 级升到 +</zh><en> level rises to +</en></s>
+  <s><zh>· 属性提升 ×</zh><en>· Ability score improvement ×</en></s>
+  <s><zh>（每次 </zh><en> (each </en></s>
+  <s><zh> 点）</zh><en> points)</en></s>
+  <s><zh>：可用属性点 </zh><en>: available ability points </en></s>
+  <s><zh>，在“冒险者”分页里点 +1 / +2，或改选专长</zh><en>; click +1 / +2 on the "Adventurer" tab, or pick a feat instead</en></s>
+  <s><zh>：已自动分配</zh><en>: assigned automatically</en></s>
+  <s><zh>· 还有可用属性点 </zh><en>· Available ability points remaining </en></s>
+  <s><zh>· 传奇属性点 +</zh><en>· Legend ability points +</en></s>
+  <s><zh>（余 </zh><en> (remaining </en></s>
+  <s><zh>· VPE 路径点 +</zh><en>· VPE path points +</en></s>
+  <s><zh>· 传奇职业点 +</zh><en>· Legendary class points +</en></s>
+  <s><zh>（可用 </zh><en> (available </en></s>
+  <s><zh>，点“传奇职业”按钮或分页的“职业”页）</zh><en>; click the "legendary classes" button or the tab's "Class" page)</en></s>
+  <s><zh>· 职业点 +</zh><en>· Class points +</en></s>
+  <s><zh>，点“选择职业”按钮或分页的“职业”页）</zh><en>; click the "choose class" button or the tab's "Class" page)</en></s>
+  <s><zh>· 近战命中、近战闪避各 +</zh><en>· Melee hit and melee dodge each +</en></s>
+  <s><zh>%（现在各 +</zh><en>% (now each +</en></s>
+  <s><zh>· 部位生命 </zh><en>· Part health </en></s>
+  <s><zh>（按职业生命骰，未分配的等级按 +4%）</zh><en> (by class hit die; unassigned levels count +4%)</en></s>
+  <s><zh>· 部位生命成长交给 Isekai（共存模式）</zh><en>· Part health growth handed over to Isekai (coexistence mode)</en></s>
+  <s><zh>· 史诗恩赐点 +1</zh><en>· Epic boon points +1</en></s>
+  <s><zh> 点待选）</zh><en> points to pick)</en></s>
+  <s><zh>· 成为传奇冒险者</zh><en>· Became a legendary adventurer</en></s>
+  <s><zh>· 20 级已满：完成一个 DND 事件里程碑成为传奇冒险者后才能继续升级</zh><en>· Level 20 is maxed: can only level further after completing a DND event milestone and becoming a legendary adventurer</en></s>
+  <s><zh> 可以分配初始 DND 属性。\n\n在“冒险者”分页顶部按 5e 购点制分配六维：基础值 8～15，共 </zh><en> can assign starting DND abilities.\n\nAt the top of the "Adventurer" tab, assign the six abilities with 5e point buy: base values 8-15, </en></s>
+  <s><zh> 点（9～13 每点 1，14、15 每点 2），种族和背景加值另算。已经按技能预填了推荐分配，可以“全部 8”后重新分配。点“确认”后锁定；不确认也按当前分配生效。</zh><en> points total (9-13 cost 1 each, 14 and 15 cost 2 each), race and background bonuses counted separately. A recommended assignment is already prefilled from skills; you can "all 8" and reassign. Click "confirm" to lock it; without confirming, the current assignment still takes effect.</en></s>
+  <s><zh>：分配初始属性</zh><en>: assign starting abilities</en></s>
+  <s><zh>分配初始属性（</zh><en>Assign starting abilities (</en></s>
+  <s><zh> 人）</zh><en> people)</en></s>
+  <s><zh> 升级</zh><en> leveled up</en></s>
+  <s><zh> 人升级</zh><en> people leveled up</en></s>
+  <s><zh>冒险者</zh><en>adventurer</en></s>
+  <s><zh>13 岁以上的人有冒险者等级 1～20 和六项属性（力量、敏捷、体质、智力、感知、魅力）。击杀、守住袭击、完成任务、DND 事件里程碑给经验，日常工作也有少量；每 4 级一次属性提升。关闭后不再获得经验、属性没有效果、隐藏“冒险者”分页；已有的等级和属性保留。</zh><en>Everyone over 13 has adventurer levels 1-20 and six abilities (Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma). Kills, defending against raids, completing quests and DND event milestones give XP, and daily work gives a little too; an ability score improvement every 4 levels. When off, no more XP is gained, abilities have no effect and the "Adventurer" tab is hidden; existing levels and abilities are kept.</en></s>
+  <s><zh>冒险者经验倍率：</zh><en>Adventurer XP multiplier: </en></s>
+  <s><zh>日常工作经验倍率：</zh><en>Daily work XP multiplier: </en></s>
+  <s><zh>关闭</zh><en>off</en></s>
+  <s><zh>每 50 点技能经验 = 1 × 倍率 冒险者经验；每天前 80 点全额，之后 ×0.5。0 = 关闭。</zh><en>Every 50 skill XP = 1 × multiplier adventurer XP; the first 80 per day in full, after that ×0.5. 0 = off.</en></s>
+  <s><zh>探索公告板</zh><en>exploration board</en></s>
+  <s><zh>1.71.0：建筑“探索公告板”（杂项）每天贴出 6 份分等阶的委托：守卫家园、远征讨伐（怪物巢穴）、清剿据点。等阶青铜 / 白银 / 黄金 / 秘银 / 传说，需要殖民地最高冒险者等级 1 / 5 / 9 / 13 / 17；完成给银币和物品报酬，接取人得到“任务点数 × 0.5”的冒险者经验。关闭后不再刷新委托，已接的委托照常进行。</zh><en>1.71.0: the building "exploration notice board" (Misc) posts 6 tiered jobs each day: defend the home, expedition (monster lairs), clear strongholds. Tiers bronze / silver / gold / mithral / legendary need a top colony adventurer level of 1 / 5 / 9 / 13 / 17; completion gives silver and item rewards, and the takers gain "quest points × 0.5" adventurer XP. When off, no new jobs refresh; accepted ones continue as usual.</en></s>
+  <s><zh>属性效果强度：</zh><en>Ability effect strength: </en></s>
+  <s><zh>%（六维的数值效果、技能学习速度、部位生命成长；0% 等于只看等级）</zh><en>% (numeric effects of the six abilities, skill learning speed, part health growth; 0% means level only)</en></s>
+  <s><zh>每级属性效果：</zh><en>Per-level ability effect: </en></s>
+  <s><zh>%（每 +2 属性：近战伤害 </zh><en>% (per +2 ability: melee damage </en></s>
+  <s><zh>，部位生命 </zh><en>, part health </en></s>
+  <s><zh>，负重等 ×</zh><en>, carrying capacity etc. ×</en></s>
+  <s><zh>调每 1 点属性调整值（每 +2 属性）带来多少效果。100% 是原来的数值，越低属性差距越小，0% 等于属性没有数值效果。\n\n线性效果按比例缩放：近战伤害 / 移速 / 心灵敏感度每点 </zh><en>Sets how much effect each ability modifier point (each +2 ability) gives. 100% is the original value; lower makes ability gaps smaller, and 0% means abilities have no numeric effect.\n\nLinear effects scale proportionally: melee damage / move speed / psychic sensitivity per point </en></s>
+  <s><zh>，部位生命（体质）</zh><en>, part health (Constitution) </en></s>
+  <s><zh>，研究速度每 1 点智力 </zh><en>, research speed per Intelligence point </en></s>
+  <s><zh>，职业强度 </zh><en>, class power </en></s>
+  <s><zh>（奥术 / 天赋强度 </zh><en> (arcane / gift power </en></s>
+  <s><zh>）。\n负重表类效果（负重、采矿、射击精度、工作速度、医疗、社交等）每 +2 属性的倍数开同样的次方：100% 约 ×1.32（每 +10 ×4），50% 约 ×1.15，10% 约 ×1.03。\n\n和上面的“属性效果强度”相乘；不改属性数值、上限、专长门槛和豁免。野兽的野性等级不受影响。</zh><en>).\nCarrying-table effects (carrying capacity, mining, shooting accuracy, work speed, medicine, social, etc.) take the same power of the multiple per +2 ability: 100% about ×1.32 (×4 per +10), 50% about ×1.15, 10% about ×1.03.\n\nMultiplies with "ability effect strength" above; doesn't change ability values, caps, feat requirements or saves. Beasts' wild levels are unaffected.</en></s>
+  <s><zh>种族亲和</zh><en>Racial affinity</en></s>
+  <s><zh>每个种族有擅长和笨拙的属性：擅长的六维属性线性效果（近战伤害、心灵敏感度、部位生命、职业强度等）整个 ×1.5（传奇种族 ×1.75，和天赋特性相乘；效果低于 ×1 时不乘），负重、采矿等其他效果的倍率 ×1.5；笨拙的每点正调整值 ×0.5（负调整值不乘）；擅长的传奇属性每点 ×1.5（传奇种族 ×1.75），人类所有传奇属性 ×1.1。只改效果，不改属性数值、上限和专长门槛。在“冒险者”分页每项后面标“擅长 / 笨拙”。\n关闭后所有种族 ×1（天赋特性照常）。</zh><en>Each race has strong and weak abilities: a strong ability's whole linear effect (melee damage, psychic sensitivity, part health, class power, etc.) ×1.5 (legendary races ×1.75, multiplying with talent traits; not applied when the effect is below ×1), and the multiplier of other effects like carrying capacity and mining ×1.5; each positive modifier point of a weak ability ×0.5 (negative modifiers aren't multiplied); each point of a strong legend attribute ×1.5 (legendary races ×1.75), and all legend attributes of humans ×1.1. Only changes effects, not ability values, caps or feat requirements. Each entry on the "Adventurer" tab is marked "strong / weak".\nWhen off, all races are ×1 (talent traits as usual).</en></s>
+  <s><zh>手动分配初始属性（购点制）</zh><en>Manually assign starting abilities (point buy)</en></s>
+  <s><zh>开启后新的殖民者（开局、加入、招募）的六维由玩家在“冒险者”分页按 5e 购点制分配：基础值 8～15，9～13 每点 1、14 / 15 每点 2，种族和背景加值另算。预填按技能推荐的标准数组（15/14/13/12/10/8 = 27 点），确认后锁定。每人只有一次。关闭后直接用推荐分配。1.76.0 之前生成的小人没有这一项。</zh><en>When on, the six abilities of new colonists (starting, joining, recruited) are assigned by the player on the "Adventurer" tab with 5e point buy: base values 8-15, 9-13 cost 1 each, 14 / 15 cost 2 each, race and background bonuses counted separately. Prefilled with the standard array recommended from skills (15/14/13/12/10/8 = 27 points), locked after confirming. Once per person only. When off, the recommended assignment is used directly. Pawns generated before 1.76.0 don't have this.</en></s>
+  <s><zh>初始购点：</zh><en>Starting point buy: </en></s>
+  <s><zh>（5e 标准 27）</zh><en> (5e standard 27)</en></s>
+  <s><zh>殖民者自动加点</zh><en>Colonists auto-assign ability points</en></s>
+  <s><zh>开启后殖民者升到 4、8、12、16 级时自动属性提升：职业主属性优先（装了 VPE 且有 DND 职业），否则加在最高的一项。关闭时在“冒险者”分页或升级信件里手动加点。敌人和访客永远自动。</zh><en>When on, colonists automatically improve abilities on reaching levels 4, 8, 12 and 16: the class's main ability first (with VPE installed and a DND class), otherwise the highest one. When off, assign points manually on the "Adventurer" tab or in the level-up letter. Enemies and visitors are always automatic.</en></s>
+  <s><zh>Isekai 共存模式</zh><en>Isekai coexistence mode</en></s>
+  <s><zh>（未检测到 Isekai）</zh><en> (Isekai not detected)</en></s>
+  <s><zh>检测到 Isekai RPG Leveling 时默认开启：冒险者等级、经验、加点照常，但六维属性的数值效果关闭（交给 Isekai 自己的属性，避免叠加）。关掉这一项可以让两套属性同时生效。没有 Isekai 时这一项不起作用。</zh><en>On by default when Isekai RPG Leveling is detected: adventurer levels, XP and ability points work as usual, but the numeric effects of the six abilities are off (left to Isekai's own stats, to avoid stacking). Turn this off to let both stat systems apply at once. Without Isekai this does nothing.</en></s>
+  <s><zh>敌人冒险者等级</zh><en>Enemy adventurer levels</en></s>
+  <s><zh>袭击和 DND 事件的人形敌人按袭击点数拿冒险者等级：每人分到的点数 ÷ 45 + 1 级，±2 浮动；领队 +3，精英兵种 +2～+5；剧情首领 12～18 级。等级越高的敌人每人占的点数越多（每级 +3%），所以人数变少。访客、商队 1～3 级。\n开不开 Isekai 共存模式都用这一个开关（1.63.0 起不再分两份）。</zh><en>Humanlike enemies in raids and DND events get adventurer levels from raid points: each person's share of points ÷ 45 + 1 level, ±2 variation; leaders +3, elite pawn kinds +2 to +5; story bosses level 12-18. Higher-level enemies take more points each (+3% per level), so there are fewer of them. Visitors and caravans level 1-3.\nThis one switch is used with or without Isekai coexistence mode (no longer split in two since 1.63.0).</en></s>
+  <s><zh>敌人等级上限：殖民地最高等级 + </zh><en>Enemy level cap: colony's highest level + </en></s>
+  <s><zh>开启时袭击敌人的冒险者等级不超过殖民地最高冒险者等级 + N（剧情首领不受限）。防止开局碰到高等级敌人。</zh><en>When on, raiding enemies' adventurer levels don't exceed the colony's highest adventurer level + N (story bosses aren't limited). Prevents meeting high-level enemies early on.</en></s>
+  <s><zh>等级差防御</zh><en>Level difference defense</en></s>
+  <s><zh>攻击者每比目标低 1 级，近战和远程命中率 ×(1 − 2%)，最多 −50%（低 10 级 ×0.8，低 25 级以上 ×0.5）。等级按冒险者等级（含传奇等级 21～40），动物按野性等级；机械体、炮塔、传奇怪物没有等级，不参与。</zh><en>For each level the attacker is below the target, melee and ranged hit chance ×(1 − 2%), up to −50% (10 levels lower ×0.8, 25 or more lower ×0.5). Levels are adventurer levels (including legend levels 21-40); animals use wild levels; mechanoids, turrets and legendary monsters have no level and don't participate.</en></s>
+  <s><zh>疼痛随部位生命缩放</zh><en>Pain scales with part health</en></s>
+  <s><zh>伤口和缺失部位的疼痛 ÷ 部位生命倍率：部位生命 ×2 的人受同样的伤只有一半疼痛，因此更晚因疼痛倒地。冒险者按等级、体质、传奇血量等的部位生命倍率，动物按野性等级；传奇怪物不变。关闭后疼痛照原版，只按伤口大小算。</zh><en>Pain from wounds and missing parts ÷ part health multiplier: someone with ×2 part health feels only half the pain from the same injury, so they go down from pain later. Adventurers use their part health multiplier from level, Constitution, legend health etc.; animals use wild levels; legendary monsters unchanged. When off, pain is vanilla, based only on wound size.</en></s>
+  <s><zh>总生命随部位生命缩放</zh><en>Total health scales with part health</en></s>
+  <s><zh>原版的致死伤害阈值（全身伤口合计 150 × 体型生命倍率就死）、健康百分比和失血速度都不看部位生命倍率，部位血再厚也会先死于“伤势过重”或失血。开启时：致死阈值 × 部位生命倍率，伤口扣的健康% 和总失血速度 ÷ 部位生命倍率。冒险者按等级、体质、传奇血量等的部位生命倍率，动物按野性等级；传奇怪物不变。关闭后照原版。</zh><en>Vanilla's lethal damage threshold (death at total wounds of 150 × body size health multiplier), health percentage and bleeding rate ignore the part health multiplier, so however thick part health is, they still die first of "overwhelming injuries" or blood loss. When on: lethal threshold × part health multiplier, health % lost to wounds and total bleed rate ÷ part health multiplier. Adventurers use their part health multiplier from level, Constitution, legend health etc.; animals use wild levels; legendary monsters unchanged. When off, vanilla.</en></s>
+</LPStrings>

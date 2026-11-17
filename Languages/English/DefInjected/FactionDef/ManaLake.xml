@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 魔力湖泊 -->
+  <LP_ManaLake.label>Mana Lake</LP_ManaLake.label>
+  <!-- 魔网在这里渗出地表，汇成一片泛着微光的湖。住在湖边的是一群不讲学派、只管「淘湖」的法术匠人：他们把湖水里凝结的法术碎片压成结晶，卖给出得起价的人——吸收一枚，就能永久学会结晶里的秘传。\n\n湖民自己并不强大，靠湖水的产出和各方主顾过日子，很少主动挑起战事。塞伊的红袍法师一直想占下这片湖，猎巫的狂热分子把所有卖法术的人都当成巫师——这两家是湖民的死敌。\n\n最珍贵的职业水晶只卖给盟友。 -->
+  <LP_ManaLake.description>Here the Weave seeps out of the ground and pools into a softly glowing lake. Living by the lake is a group of spell artisans who follow no school and only "sift the lake": they press the spell fragments that crystallize in the lake water into crystals and sell them to anyone who can pay; absorb one and you permanently learn the arcanum inside.\n\nThe lakefolk themselves aren't strong; they live off the lake's yield and their many clients, and rarely start wars. Thay's Red Wizards have always wanted to seize the lake, and the witch-hunting zealots treat everyone who sells spells as witches; these two are the lakefolk's sworn enemies.\n\nThe most precious class crystals are sold only to allies.</LP_ManaLake.description>
+  <!-- 迷斯卓 -->
+  <LP_ManaLake.deityPresets.0.nameType.name>Mystra</LP_ManaLake.deityPresets.0.nameType.name>
+  <!-- 魔网之神 -->
+  <LP_ManaLake.deityPresets.0.nameType.type>god of the Weave</LP_ManaLake.deityPresets.0.nameType.type>
+  <!-- 魔力湖泊 -->
+  <LP_ManaLake.fixedName>Mana Lake</LP_ManaLake.fixedName>
+  <!-- 湖水给的，湖水也会收回。只取够用的那一份。 -->
+  <LP_ManaLake.ideoDescription>What the lake gives, the lake takes back. Take only what you need.</LP_ManaLake.ideoDescription>
+  <!-- 湖的低语 -->
+  <LP_ManaLake.ideoName>whispers of the lake</LP_ManaLake.ideoName>
+  <!-- 湖主 -->
+  <LP_ManaLake.leaderTitle>lake lord</LP_ManaLake.leaderTitle>
+  <!-- 湖民 -->
+  <LP_ManaLake.pawnSingular>lakefolk</LP_ManaLake.pawnSingular>
+  <!-- 湖民 -->
+  <LP_ManaLake.pawnsPlural>lakefolk</LP_ManaLake.pawnsPlural>
+</LanguageData>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 恶毒嘲讽 -->
+  <LP_BD_ViciousMockery.label>vicious mockery</LP_BD_ViciousMockery.label>
+  <!-- 戏法，不耗乐韵：对 24 格内一个敌人说一句刺耳的话，造成 6 × 激昂强度 心灵伤害（无视护甲），并让它动摇 6 秒（近战命中 −20%，射击精度下降；机械体不会动摇）。冷却 4 秒。吟游诗人 1 级。 -->
+  <LP_BD_ViciousMockery.description>Cantrip, no cadence: say a grating word to one enemy within 24 cells, dealing 6 × inspiration power psychic damage (ignores armor) and shaking it for 6 seconds (melee hit -20%, lower shooting accuracy; mechanoids are not shaken). Cooldown 4 seconds. Bard level 1.</LP_BD_ViciousMockery.description>
+  <!-- 吟游激励 -->
+  <LP_BD_Inspiration.label>bardic inspiration</LP_BD_Inspiration.label>
+  <!-- 给 20 格内一名友方人形（不能是自己）吟游激励 12 小时：近战命中 +10% × 激昂强度，射击精度提高，工作速度 +10% × 激昂强度，精神崩溃阈值 −5%。吟游诗人 5 级起，另有（吟游等级 × 2）% 的成功率直接给对方一个原版灵感。消耗 1 点乐韵，冷却 30 秒。吟游诗人 1 级。 -->
+  <LP_BD_Inspiration.description>Give Bardic Inspiration to one friendly humanlike within 20 cells (not yourself) for 12 hours: melee hit +10% × inspiration power, better shooting accuracy, work speed +10% × inspiration power, mental break threshold -5%. From bard level 5, there is also a (bard level × 2)% chance to directly grant a vanilla inspiration. Costs 1 cadence, cooldown 30 seconds. Bard level 1.</LP_BD_Inspiration.description>
+  <!-- 治疗真言 -->
+  <LP_BD_HealingWord.label>healing word</LP_BD_HealingWord.label>
+  <!-- 远远喊一句治愈的话：立即治疗 30 格内一名目标（可以是自己）共 10 × 激昂强度点伤势，优先流血最严重的伤口。消耗 1 点乐韵，冷却 20 秒。吟游诗人 1 级。 -->
+  <LP_BD_HealingWord.description>Call out a healing word from afar: instantly heal one target within 30 cells (can be yourself) for a total of 10 × inspiration power injury, worst bleeding wounds first. Costs 1 cadence, cooldown 20 seconds. Bard level 1.</LP_BD_HealingWord.description>
+  <!-- 狂笑术 -->
+  <LP_BD_HideousLaughter.label>hideous laughter</LP_BD_HideousLaughter.label>
+  <!-- 让 20 格内一个敌人笑倒在地 8 秒 × 激昂强度（动弹不得，受到伤害立刻清醒）。成功率 = 55% + (激昂强度 − 1) × 40%，目标每 1 点感知调整值 −5%、心智抗性也会抵消，范围 5%～95%；失败也会动摇 6 秒。机械体、虫族和没有心智的目标无效。消耗 1 点乐韵，冷却 1 分钟。吟游诗人 3 级。 -->
+  <LP_BD_HideousLaughter.description>Make one enemy within 20 cells collapse laughing for 8 seconds × inspiration power (unable to move, snaps out at once when damaged). Success = 55% + (inspiration power - 1) × 40%, -5% per point of the target's Wisdom modifier, also offset by mind resistance, range 5%-95%; even on failure they are shaken for 6 seconds. No effect on mechanoids, insectoids and mindless targets. Costs 1 cadence, cooldown 1 minute. Bard level 3.</LP_BD_HideousLaughter.description>
+  <!-- 安歇之歌 -->
+  <LP_BD_SongOfRest.label>song of rest</LP_BD_SongOfRest.label>
+  <!-- 为 12 格内的友方唱一夜安眠曲：12 小时内睡眠恢复 ×1.3，伤口愈合 ×(1 + 0.5 × 激昂强度)，每人得到心情“安歇之歌”+4（1 天）。消耗 2 点乐韵，冷却 1 天。吟游诗人 3 级。 -->
+  <LP_BD_SongOfRest.description>Sing lullabies all night for allies within 12 cells: for 12 hours sleep recovery ×1.3, wound healing ×(1 + 0.5 × inspiration power), and everyone gets mood "song of rest" +4 (1 day). Costs 2 cadence, cooldown 1 day. Bard level 3.</LP_BD_SongOfRest.description>
+  <!-- 万事通 -->
+  <LP_BD_JackOfAllTrades.label>jack of all trades</LP_BD_JackOfAllTrades.label>
+  <!-- 被动：所有技能 +2 级，学习速度 +15%。吟游诗人 5 级。 -->
+  <LP_BD_JackOfAllTrades.description>Passive: all skills +2 levels, learning speed +15%. Bard level 5.</LP_BD_JackOfAllTrades.description>
+  <!-- 反迷惑之歌 -->
+  <LP_BD_Countercharm.label>countercharm</LP_BD_Countercharm.label>
+  <!-- 唱一段坚定心志的旋律：15 格内的友方立刻摆脱恐惧和被魅惑、被支配的状态；正在精神崩溃（非极端崩溃）的人按成功率 55% + (激昂强度 − 1) × 40% 当场恢复；之后 1 天心智抗性 +30%、心灵敏感度 −30%（心灵冲击的坏心情随之减轻）。消耗 2 点乐韵，冷却 6 小时。吟游诗人 5 级。 -->
+  <LP_BD_Countercharm.description>Sing a melody that steadies the mind: allies within 15 cells are instantly freed from fear, charm and domination; those having a (non-extreme) mental break recover on the spot with 55% + (inspiration power - 1) × 40% chance; then for 1 day mind resistance +30% and psychic sensitivity -30% (bad moods from psychic shocks are lessened accordingly). Costs 2 cadence, cooldown 6 hours. Bard level 5.</LP_BD_Countercharm.description>
+  <!-- 困惑术 -->
+  <LP_BD_Confusion.label>confusion</LP_BD_Confusion.label>
+  <!-- 在 20 格内一点半径 3 的敌人各自按成功率（55% + (激昂强度 − 1) × 40%，感知调整值与心智抗性抵消）陷入困惑 10 秒 × 激昂强度：每 2 秒随机发呆、乱走，或者攻击身边的任何人。机械体、虫族无效。消耗 2 点乐韵，冷却 2 分钟。吟游诗人 7 级。 -->
+  <LP_BD_Confusion.description>Enemies in radius 3 at a point within 20 cells each, by success chance (55% + (inspiration power - 1) × 40%, offset by Wisdom modifier and mind resistance), become confused for 10 seconds × inspiration power: every 2 seconds they randomly zone out, wander, or attack anyone nearby. No effect on mechanoids and insectoids. Costs 2 cadence, cooldown 2 minutes. Bard level 7.</LP_BD_Confusion.description>
+  <!-- 传颂之歌 -->
+  <LP_BD_Ballad.label>song of renown</LP_BD_Ballad.label>
+  <!-- 把殖民地的功绩写成歌谣传出去：选一个派系，好感 +(5 + 5 × 激昂强度)（最多 +20），殖民地全员心情“我们的传说”+5（3 天）。殖民地恶名在外（有巫妖、蓄养奴隶）时只能唱成威名之歌，对象只能选敌对派系：好感照样加一半，那个派系下一次袭击的规模 −10%。消耗 3 点乐韵，冷却 7 天（没选派系就关掉窗口会退还）。吟游诗人 7 级。 -->
+  <LP_BD_Ballad.description>Turn the colony's deeds into a ballad and spread it: pick a faction, goodwill +(5 + 5 × inspiration power) (up to +20), and the whole colony gets mood "our legend" +5 (3 days). If the colony has a bad reputation (has a lich, keeps slaves), it can only be sung as a song of dread, and only hostile factions can be chosen: goodwill still gains half, and that faction's next raid is 10% smaller. Costs 3 cadence, cooldown 7 days (refunded if the window is closed without choosing a faction). Bard level 7.</LP_BD_Ballad.description>
+  <!-- 魔法奥秘 -->
+  <LP_BD_MagicalSecrets.label>magical secrets</LP_BD_MagicalSecrets.label>
+  <!-- 被动：吟游诗人 10 级时，从法师、牧师、德鲁伊、术士、邪术师的法术里选一个（职业 7 级及以下）永久学会；13 级再选一个（职业 10 级及以下）。在“选择分支”里选（学院的分支）。学来的法术用激昂强度、消耗乐韵（原来的法力 / 神恩 / 契约法力 1:1 换成乐韵）。吟游诗人 10 级。 -->
+  <LP_BD_MagicalSecrets.description>Passive: at bard level 10, choose one spell from the wizard, cleric, druid, sorcerer or warlock lists (class level 7 or lower) to learn permanently; at 13 choose another (class level 10 or lower). Chosen under "choose branch" (the college's branch). Learned spells use inspiration power and cost cadence (the original mana / divinity / pact mana converts 1:1 to cadence). Bard level 10.</LP_BD_MagicalSecrets.description>
+  <!-- 魔法奥秘·二 -->
+  <LP_BD_MagicalSecrets2.label>magical secrets II</LP_BD_MagicalSecrets2.label>
+  <!-- 被动：第二个魔法奥秘，范围放宽到职业 10 级及以下的法术（群体治疗、石墙术、兽王号令、群体暗示也能选），不能和第一个重复。吟游诗人 13 级。 -->
+  <LP_BD_MagicalSecrets2.description>Passive: a second Magical Secret, widened to spells of class level 10 or lower (mass heal, wall of stone, beast lord's call and mass suggestion are also available), not a duplicate of the first. Bard level 13.</LP_BD_MagicalSecrets2.description>
+  <!-- 惑心幻景 -->
+  <LP_BD_Mislead.label>mislead</LP_BD_Mislead.label>
+  <!-- 自己隐形 10 秒，原地留下一个会嘲讽的幻象分身：15 格内的敌人转而攻击分身（10 秒后或挨了几下就消散）。用来脱身。消耗 3 点乐韵，冷却 4 小时。吟游诗人 13 级。 -->
+  <LP_BD_Mislead.description>Turn invisible for 10 seconds, leaving a taunting illusory double in place: enemies within 15 cells attack the double instead (it vanishes after 10 seconds or a few hits). Used to escape. Costs 3 cadence, cooldown 4 hours. Bard level 13.</LP_BD_Mislead.description>
+  <!-- 创世之言 -->
+  <LP_BD_WordsOfCreation.label>words of creation</LP_BD_WordsOfCreation.label>
+  <!-- 说出创世时的真言，对 20 格内的一个目标：\n友方——力量真言·疗愈：治好所有伤口（缺失的部位除外），清除痛苦休克、眩晕、恐惧和困惑，倒地的人站起来。\n敌人——力量真言·杀：目标整体健康低于 35% × 激昂强度（最多 70%）时直接死亡；否则受到 40 × 激昂强度 心灵伤害并眩晕 6 秒。剧情首领和传奇单位只吃伤害和眩晕。\n消耗 5 点乐韵，冷却 1 天。吟游诗人 15 级，另要社交 15。 -->
+  <LP_BD_WordsOfCreation.description>Speak the true words of creation at one target within 20 cells:\nAlly: Power Word Heal: heals all wounds (except missing parts), clears pain shock, stuns, fear and confusion, and downed people stand up.\nEnemy: Power Word Kill: if the target's overall health is below 35% × inspiration power (up to 70%) it dies outright; otherwise it takes 40 × inspiration power psychic damage and is stunned for 6 seconds. Story bosses and legendary units only take the damage and stun.\nCosts 5 cadence, cooldown 1 day. Bard level 15, also requires Social 15.</LP_BD_WordsOfCreation.description>
+  <!-- 不朽传奇 -->
+  <LP_LegUndyingLegend.label>undying legend</LP_LegUndyingLegend.label>
+  <!-- 传奇被动：吟游激励一次给 12 格内所有友方人形（消耗不变，选中的那位照常要在 20 格内）；乐韵上限再 +3（传奇能力本身 +2，共 +5）；激昂强度 +20%。传奇吟游诗人。 -->
+  <LP_LegUndyingLegend.description>Legendary passive: Bardic Inspiration goes to all friendly humanlikes within 12 cells at once (same cost; the chosen one still has to be within 20 cells); max cadence +3 more (the legendary ability itself +2, +5 in total); inspiration power +20%. Legendary bard.</LP_LegUndyingLegend.description>
+  <!-- 终焉之歌 -->
+  <LP_LegFinalSong.label>song of the finale</LP_LegFinalSong.label>
+  <!-- 传奇：唱 30 秒的史诗。全地图的友方不会精神崩溃、命中提高、痛觉 ×0.5，30 秒内倒地的人立刻治好一半伤势、尽力站起来一次；30 格内的敌人每 5 秒有 25% 的成功率吓得逃跑（机械体不受影响）。消耗 3 点乐韵，冷却 1 天。传奇吟游诗人。 -->
+  <LP_LegFinalSong.description>Legendary: sing a 30-second epic. Allies on the whole map don't have mental breaks, gain higher hit chance and pain ×0.5; those downed within the 30 seconds heal half their injuries at once and try to stand up once; enemies within 30 cells have a 25% chance every 5 seconds to flee in fear (mechanoids unaffected). Costs 3 cadence, cooldown 1 day. Legendary bard.</LP_LegFinalSong.description>
+  <!-- 刻薄之语 -->
+  <LP_BD_CuttingWords.label>cutting words</LP_BD_CuttingWords.label>
+  <!-- 挖苦 20 格内一个敌人 20 秒：近战命中 −25%，射击精度下降，造成的伤害 ×0.75。机械体也有效（嘲讽它的设计缺陷）。消耗 1 点乐韵，冷却 20 秒。学识学院，吟游诗人 3 级。 -->
+  <LP_BD_CuttingWords.description>Mock one enemy within 20 cells for 20 seconds: melee hit -25%, lower shooting accuracy, damage dealt ×0.75. Works on mechanoids too (ridiculing their design flaws). Costs 1 cadence, cooldown 20 seconds. College of Lore, bard level 3.</LP_BD_CuttingWords.description>
+  <!-- 博闻强识 -->
+  <LP_BD_LoreMastery.label>erudition</LP_BD_LoreMastery.label>
+  <!-- 被动：研究速度 +10% × 激昂强度；学会时，兴趣最低的 3 个技能（能用的）兴趣各升一档（无 → 一般 → 浓厚）、等级各 +2（只发一次）。学识学院，吟游诗人 7 级。 -->
+  <LP_BD_LoreMastery.description>Passive: research speed +10% × inspiration power; when learned, the 3 lowest-passion skills (that can be used) each rise one passion step (none → minor → major) and gain +2 levels (once only). College of Lore, bard level 7.</LP_BD_LoreMastery.description>
+  <!-- 额外魔法奥秘 -->
+  <LP_BD_ExtraSecrets.label>additional magical secrets</LP_BD_ExtraSecrets.label>
+  <!-- 被动：多一个魔法奥秘（职业 7 级及以下的法术，不能和已学的重复），在“选择分支”里选。学识学院，吟游诗人 11 级。 -->
+  <LP_BD_ExtraSecrets.description>Passive: one more Magical Secret (a spell of class level 7 or lower, not a duplicate of one already learned), chosen under "choose branch". College of Lore, bard level 11.</LP_BD_ExtraSecrets.description>
+  <!-- 无双技艺 -->
+  <LP_BD_PeerlessSkill.label>peerless skill</LP_BD_PeerlessSkill.label>
+  <!-- 被动：做出的物品（艺术品、制作）有 30% 的成功率品质 +1 档（最高传说）；社交影响、谈判能力 +15%，手术成功率 +10%。学识学院，吟游诗人 15 级。 -->
+  <LP_BD_PeerlessSkill.description>Passive: crafted items (art, crafting) have a 30% chance of +1 quality tier (up to legendary); social impact and negotiation ability +15%, surgery success +10%. College of Lore, bard level 15.</LP_BD_PeerlessSkill.description>
+  <!-- 战斗激励 -->
+  <LP_BD_CombatInspiration.label>combat inspiration</LP_BD_CombatInspiration.label>
+  <!-- 被动：你的吟游激励另给“战斗激励”（受到的伤害 ×0.9，近战伤害 ×1.15，同样持续）；你自己射击、格斗 +3 级。勇气学院，吟游诗人 3 级。 -->
+  <LP_BD_CombatInspiration.description>Passive: your Bardic Inspiration also grants "Combat inspiration" (damage taken ×0.9, melee damage ×1.15, same duration); your own Shooting and Melee +3 levels. College of Valor, bard level 3.</LP_BD_CombatInspiration.description>
+  <!-- 额外攻击 -->
+  <LP_BD_ExtraAttack.label>extra attack</LP_BD_ExtraAttack.label>
+  <!-- 被动：近战攻击冷却 ×0.8，瞄准时间 ×0.8。勇气学院，吟游诗人 7 级。 -->
+  <LP_BD_ExtraAttack.description>Passive: melee attack cooldown ×0.8, aiming time ×0.8. College of Valor, bard level 7.</LP_BD_ExtraAttack.description>
+  <!-- 战斗魔法 -->
+  <LP_BD_BattleMagic.label>battle magic</LP_BD_BattleMagic.label>
+  <!-- 被动：每次施放吟游诗人能力后 5 秒内，下一次攻击几乎不用瞄准、出手更快，伤害 ×1.25。勇气学院，吟游诗人 11 级。 -->
+  <LP_BD_BattleMagic.description>Passive: for 5 seconds after each bard ability you cast, the next attack needs almost no aiming, comes out faster and deals ×1.25 damage. College of Valor, bard level 11.</LP_BD_BattleMagic.description>
+  <!-- 勇气战吼 -->
+  <LP_BD_ValorAnthem.label>rallying war cry</LP_BD_ValorAnthem.label>
+  <!-- 高唱战歌：15 格内的友方 30 秒痛觉 ×0.5、移动 ×1.2、心智抗性 +50%，正在恐惧逃跑的立刻回过神；你自己得到一层吸收 20 × 激昂强度 伤害的护盾（和“鼓舞领袖”的护盾取高，不叠加）。消耗 3 点乐韵，冷却 4 小时。勇气学院，吟游诗人 15 级。 -->
+  <LP_BD_ValorAnthem.description>Sing a war song: allies within 15 cells get pain ×0.5, movement ×1.2 and mind resistance +50% for 30 seconds, and those fleeing in fear snap out of it at once; you gain a shield absorbing 20 × inspiration power damage (takes the higher of this and the Inspiring Leader shield, does not stack). Costs 3 cadence, cooldown 4 hours. College of Valor, bard level 15.</LP_BD_ValorAnthem.description>
+  <!-- 刀光剑舞 -->
+  <LP_BD_BladeFlourish.label>blade flourish</LP_BD_BladeFlourish.label>
+  <!-- 被动 + 按钮：移动 ×1.15；近战命中时有 30% 的成功率按当前招式打出剑花（防御：得到 10 × 激昂强度 的吸收护盾 5 秒；斩击：对相邻另一个敌人造成同样伤害；机动：把目标击退 2 格）。点按钮依次切换 防御 / 斩击 / 机动，以及“花乐韵”（每朵剑花花 1 点乐韵、必定触发）开或关。剑舞学院，吟游诗人 3 级。 -->
+  <LP_BD_BladeFlourish.description>Passive + button: movement ×1.15; melee hits have a 30% chance to perform a flourish of the current style (Defensive: gain an absorb shield of 10 × inspiration power for 5 seconds; Slashing: deal the same damage to another adjacent enemy; Mobile: knock the target back 2 cells). The button cycles Defensive / Slashing / Mobile, and toggles "spend cadence" (each flourish costs 1 cadence and always triggers). College of Swords, bard level 3.</LP_BD_BladeFlourish.description>
+  <!-- 额外攻击 -->
+  <LP_BD_ExtraAttackBlade.label>extra attack</LP_BD_ExtraAttackBlade.label>
+  <!-- 被动：近战攻击冷却 ×0.8，瞄准时间 ×0.8（和勇气学院的同名能力相同）。剑舞学院，吟游诗人 7 级。 -->
+  <LP_BD_ExtraAttackBlade.description>Passive: melee attack cooldown ×0.8, aiming time ×0.8 (same as the College of Valor ability of the same name). College of Swords, bard level 7.</LP_BD_ExtraAttackBlade.description>
+  <!-- 刃舞旋风 -->
+  <LP_BD_BladeWhirl.label>whirling blade dance</LP_BD_BladeWhirl.label>
+  <!-- 选中 8 格内一个敌人，舞着剑冲过它和它身边的敌人（最多 5 个），每个各吃一次当前近战武器的结算，伤害 × 激昂强度，最后停在最后一个敌人身边。消耗 2 点乐韵，冷却 1 分钟。剑舞学院，吟游诗人 11 级。 -->
+  <LP_BD_BladeWhirl.description>Pick an enemy within 8 cells and dance through it and enemies around it (up to 5), each taking one hit from your current melee weapon at × inspiration power damage, ending next to the last enemy. Costs 2 cadence, cooldown 1 minute. College of Swords, bard level 11.</LP_BD_BladeWhirl.description>
+  <!-- 大师花招 -->
+  <LP_BD_MasterFlourish.label>master's flourish</LP_BD_MasterFlourish.label>
+  <!-- 被动：战斗中乐韵低于 2 时每 10 秒回 1 点；刀光剑舞的触发率 30% → 60%。剑舞学院，吟游诗人 15 级。 -->
+  <LP_BD_MasterFlourish.description>Passive: in combat, regain 1 cadence every 10 seconds while below 2; Blade Flourish trigger chance 30% → 60%. College of Swords, bard level 15.</LP_BD_MasterFlourish.description>
+  <!-- 银舌 -->
+  <LP_BD_SilverTongue.label>silver tongue</LP_BD_SilverTongue.label>
+  <!-- 被动：谈判能力 ×1.5（招募、说服更容易），交易价格 +10%，社交影响 +20%。雄辩学院，吟游诗人 3 级。 -->
+  <LP_BD_SilverTongue.description>Passive: negotiation ability ×1.5 (easier recruiting and persuasion), trade prices +10%, social impact +20%. College of Eloquence, bard level 3.</LP_BD_SilverTongue.description>
+  <!-- 感染性激励 -->
+  <LP_BD_InfectiousInspiration.label>infectious inspiration</LP_BD_InfectiousInspiration.label>
+  <!-- 被动：你给的吟游激励到期、或者对方倒地时，激励转给 10 格内另一个没被激励的友方人形（每次激励最多转一次，时间重新算）。雄辩学院，吟游诗人 7 级。 -->
+  <LP_BD_InfectiousInspiration.description>Passive: when your Bardic Inspiration expires or its holder is downed, it passes to another uninspired friendly humanlike within 10 cells (each inspiration passes at most once, duration restarts). College of Eloquence, bard level 7.</LP_BD_InfectiousInspiration.description>
+  <!-- 普世言谈 -->
+  <LP_BD_UniversalSpeech.label>universal speech</LP_BD_UniversalSpeech.label>
+  <!-- 被动：和访客、商队等非敌对派系的人聊天时，对方派系好感 +1（每天最多 +5）；你给的吟游激励持续 3 天。雄辩学院，吟游诗人 11 级。 -->
+  <LP_BD_UniversalSpeech.description>Passive: chatting with people of non-hostile factions such as visitors and caravans gives +1 goodwill with their faction (up to +5 per day); your Bardic Inspiration lasts 3 days. College of Eloquence, bard level 11.</LP_BD_UniversalSpeech.description>
+  <!-- 停战之言 -->
+  <LP_BD_Truce.label>words of truce</LP_BD_Truce.label>
+  <!-- 对一支正在袭击的人形队伍里的任何一人（30 格内）喊话。成功率 = 30% + (激昂强度 − 1) × 40%，对方队伍每有一人倒地或死亡 +5%（最多 90%）。成功：整支队伍放弃袭击、离开地图，那个派系好感 +10。失败：那人动摇 30 秒。机械族、虫族、亡灵、异界来客和剧情首领带队的袭击无效。消耗 5 点乐韵，冷却 15 天。雄辩学院，吟游诗人 15 级。 -->
+  <LP_BD_Truce.description>Call out to anyone in a raiding humanlike group (within 30 cells). Success = 30% + (inspiration power - 1) × 40%, +5% for each member of their group who is downed or dead (up to 90%). Success: the whole group gives up the raid and leaves the map, and that faction's goodwill +10. Failure: that person is shaken for 30 seconds. No effect on mechanoids, insectoids, undead, outsiders and raids led by story bosses. Costs 5 cadence, cooldown 15 days. College of Eloquence, bard level 15.</LP_BD_Truce.description>
+</LanguageData>

@@ -14,7 +14,7 @@ namespace LichPhylactery {
   public static bool IsMajorPart(BodyPartRecord part)=>part!=null && MajorParts.Contains(part.def.defName);
   public bool CanStrengthenPart(BodyPartRecord part)=>IsMajorPart(part) && pawn.RaceProps.body.AllParts.Contains(part) && !part.def.conceptual && !pawn.health.hediffSet.PartIsMissing(part) && !DndImplants.ArtifactOn(pawn,part); // 1.114.0 维克那神器自带意志，不能强化
   public IEnumerable<BodyPartRecord> StrengthenableParts=>pawn.RaceProps.body.AllParts.Where(CanStrengthenPart);
-  public string StrengthenLabel(BodyPartRecord part){var h=pawn.health.hediffSet.hediffs.OfType<Hediff_Limb>().FirstOrDefault(x=>x.Part==part);return part.Label+"（"+(h?.Severity??0).ToString("0")+"/5层；生命 "+pawn.health.hediffSet.GetPartHealth(part).ToString("0")+"/"+PartHealth.Maximum(part,pawn).ToString("0")+"）：强化一层";}
+  public string StrengthenLabel(BodyPartRecord part){var h=pawn.health.hediffSet.hediffs.OfType<Hediff_Limb>().FirstOrDefault(x=>x.Part==part);return part.Label+"（".Loc()+(h?.Severity??0).ToString("0")+"/5层；生命 ".Loc()+pawn.health.hediffSet.GetPartHealth(part).ToString("0")+"/"+PartHealth.Maximum(part,pawn).ToString("0")+"）：强化一层".Loc();}
   // Migrate retired small-part upgrades once. Scale wounds with the reduced maximum
   // so loading an old save cannot amputate a wounded finger or fully heal it.
   public int RemoveObsoleteEnhancements(){

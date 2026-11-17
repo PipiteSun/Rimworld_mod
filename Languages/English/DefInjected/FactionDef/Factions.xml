@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 费伦拓荒同盟 -->
+  <LP_FaerunColony.label>Faerûn pioneer league</LP_FaerunColony.label>
+  <!-- 从费伦大陆远渡而来的拓荒者同盟：人类、矮人、精灵和半兽人一同开垦这片陌生的土地。他们用剑与长弓自保，由圣武士和牧师维持秩序。\n\n同盟高层愿意和任何守规矩的邻居做生意。但他们痛恨亡灵和夺心魔——殖民地里若有巫妖或夺心魔，同盟会疏远你，教会里的狂热分子甚至可能不顾高层反对前来猎巫。 -->
+  <LP_FaerunColony.description>A pioneer league that crossed from the continent of Faerûn: humans, dwarves, elves and half-orcs clearing this strange land together. They defend themselves with sword and longbow, and paladins and clerics keep order.\n\nThe league's leaders will trade with any neighbor that follows the rules. But they hate undead and mind flayers: if the colony has a lich or mind flayer, the league will distance itself, and zealots in the church may even come witch-hunting against the leaders' wishes.</LP_FaerunColony.description>
+  <!-- 提尔 -->
+  <LP_FaerunColony.deityPresets.0.nameType.name>Tyr</LP_FaerunColony.deityPresets.0.nameType.name>
+  <!-- 正义之神 -->
+  <LP_FaerunColony.deityPresets.0.nameType.type>god of justice</LP_FaerunColony.deityPresets.0.nameType.type>
+  <!-- 拉森德 -->
+  <LP_FaerunColony.deityPresets.1.nameType.name>Lathander</LP_FaerunColony.deityPresets.1.nameType.name>
+  <!-- 晨曦之神 -->
+  <LP_FaerunColony.deityPresets.1.nameType.type>god of dawn</LP_FaerunColony.deityPresets.1.nameType.type>
+  <!-- 费伦拓荒同盟 -->
+  <LP_FaerunColony.fixedName>Faerûn pioneer league</LP_FaerunColony.fixedName>
+  <!-- 正义、互助与对亡灵的警惕。拓荒者相信众神看着每一块新开垦的田地。 -->
+  <LP_FaerunColony.ideoDescription>Justice, mutual aid and vigilance against the undead. Pioneers believe the gods watch over every newly cleared field.</LP_FaerunColony.ideoDescription>
+  <!-- 拓荒者的誓约 -->
+  <LP_FaerunColony.ideoName>pioneers' oath</LP_FaerunColony.ideoName>
+  <!-- 执政官 -->
+  <LP_FaerunColony.leaderTitle>consul</LP_FaerunColony.leaderTitle>
+  <!-- 拓荒者 -->
+  <LP_FaerunColony.pawnSingular>pioneer</LP_FaerunColony.pawnSingular>
+  <!-- 拓荒者 -->
+  <LP_FaerunColony.pawnsPlural>pioneer</LP_FaerunColony.pawnsPlural>
+  <!-- 塞伊远征军 -->
+  <LP_FaerunHostile.label>Thayan expedition</LP_FaerunHostile.label>
+  <!-- 塞伊的红袍法师带着亡灵、符印巨魔和雇来的兽人、牛头人跨海而来，要在这片土地上建起新的魔法帝国。\n\n红袍法师是远征军的头脑：法师一倒，被他绑定的骷髅会当场崩解，符印巨魔会失控狂暴，兽人会四散奔逃。远征军不是天生的死敌，但很难讨好；红袍们对巫妖格外有兴趣。 -->
+  <LP_FaerunHostile.description>The Red Wizards of Thay cross the sea with undead, sigil trolls and hired orcs and minotaurs to build a new magical empire on this land.\n\nThe Red Wizards are the brains of the expedition: when a wizard falls, the skeletons bound to them crumble on the spot, sigil trolls go berserk and the orcs scatter. The expedition isn't a born enemy, but it's hard to please; the Red Wizards are especially interested in liches.</LP_FaerunHostile.description>
+  <!-- 塞伊远征军 -->
+  <LP_FaerunHostile.fixedName>Thayan expedition</LP_FaerunHostile.fixedName>
+  <!-- 力量属于掌握魔法的人。其余的人生来就该服从。 -->
+  <LP_FaerunHostile.ideoDescription>Power belongs to those who master magic. Everyone else was born to obey.</LP_FaerunHostile.ideoDescription>
+  <!-- 塞伊的红袍 -->
+  <LP_FaerunHostile.ideoName>Red Robes of Thay</LP_FaerunHostile.ideoName>
+  <!-- 大法师 -->
+  <LP_FaerunHostile.leaderTitle>archmage</LP_FaerunHostile.leaderTitle>
+  <!-- 远征军 -->
+  <LP_FaerunHostile.pawnSingular>expedition member</LP_FaerunHostile.pawnSingular>
+  <!-- 远征军 -->
+  <LP_FaerunHostile.pawnsPlural>expedition member</LP_FaerunHostile.pawnsPlural>
+  <!-- 余烬氏族 -->
+  <LP_EmberClan.label>ember clan</LP_EmberClan.label>
+  <!-- 火巨人统治的锻炉氏族。少数火巨人坐在熔炉旁发号施令，抓来的人类和半兽人穿着铁甲替他们打仗、挖矿。\n\n余烬氏族对外人冷淡，但尊重同为火巨人的殖民地；他们憎恨巨魔，也和塞伊远征军是世仇。火巨人一倒，奴兵们就会扔下武器逃命。 -->
+  <LP_EmberClan.description>A forge clan ruled by fire giants. A few fire giants sit by the furnaces giving orders, while captured humans and half-orcs in iron armor fight and mine for them.\n\nThe ember clan is cold toward outsiders but respects colonies of fellow fire giants; they hate trolls and are old enemies of the Thayan expedition. When the fire giants fall, the slave soldiers drop their weapons and run.</LP_EmberClan.description>
+  <!-- 苏尔特 -->
+  <LP_EmberClan.deityPresets.0.nameType.name>Surtur</LP_EmberClan.deityPresets.0.nameType.name>
+  <!-- 火巨人之王 -->
+  <LP_EmberClan.deityPresets.0.nameType.type>king of fire giants</LP_EmberClan.deityPresets.0.nameType.type>
+  <!-- 余烬氏族 -->
+  <LP_EmberClan.fixedName>ember clan</LP_EmberClan.fixedName>
+  <!-- 火焰锻造强者，也熔掉弱者。弱者只配为强者握锤。 -->
+  <LP_EmberClan.ideoDescription>Fire forges the strong and melts the weak. The weak are only fit to hold the hammer for the strong.</LP_EmberClan.ideoDescription>
+  <!-- 熔炉的律法 -->
+  <LP_EmberClan.ideoName>law of the forge</LP_EmberClan.ideoName>
+  <!-- 炉主 -->
+  <LP_EmberClan.leaderTitle>forge lord</LP_EmberClan.leaderTitle>
+  <!-- 氏族成员 -->
+  <LP_EmberClan.pawnSingular>clan member</LP_EmberClan.pawnSingular>
+  <!-- 氏族成员 -->
+  <LP_EmberClan.pawnsPlural>clan member</LP_EmberClan.pawnsPlural>
+  <!-- 幽暗殖巢 -->
+  <LP_IllithidColony.label>Underdark colony</LP_IllithidColony.label>
+  <!-- 从幽暗地域深处爬上来的夺心魔殖巢。几个夺心魔用灵能支配着一群被抓来的人类、矮人、精灵和半兽人，让他们像傀儡一样冲锋。\n\n殖巢不和任何人谈判。他们常常从地底挖穿上来，在殖民地中间冒出头。杀掉或击倒夺心魔，被支配的奴仆就会醒过来、瘫倒在地，可以带回去。 -->
+  <LP_IllithidColony.description>A mind flayer colony that crawled up from the depths of the Underdark. A few mind flayers psionically dominate a crowd of captured humans, dwarves, elves and half-orcs, sending them charging like puppets.\n\nThe colony negotiates with no one. They often dig up from below and emerge in the middle of a settlement. Kill or down the mind flayers and the dominated thralls wake up and collapse, and can be brought back.</LP_IllithidColony.description>
+  <!-- 幽暗殖巢 -->
+  <LP_IllithidColony.fixedName>Underdark colony</LP_IllithidColony.fixedName>
+  <!-- 所有心灵终将汇入主脑。 -->
+  <LP_IllithidColony.ideoDescription>All minds will eventually flow into the master brain.</LP_IllithidColony.ideoDescription>
+  <!-- 主脑的低语 -->
+  <LP_IllithidColony.ideoName>whispers of the master brain</LP_IllithidColony.ideoName>
+  <!-- 主脑代言人 -->
+  <LP_IllithidColony.leaderTitle>voice of the master brain</LP_IllithidColony.leaderTitle>
+  <!-- 殖巢成员 -->
+  <LP_IllithidColony.pawnSingular>colony member</LP_IllithidColony.pawnSingular>
+  <!-- 殖巢成员 -->
+  <LP_IllithidColony.pawnsPlural>colony member</LP_IllithidColony.pawnsPlural>
+  <!-- 黑网 -->
+  <LP_BlackNetwork.label>Black Network</LP_BlackNetwork.label>
+  <!-- 没有据点、没有旗帜的走私网络。黑网的商人偶尔会出现在殖民地门口，卖奴隶、毒药和来路不明的货，也收器官、巨魔血和夺心魔的东西——价钱永远对他们有利。 -->
+  <LP_BlackNetwork.description>A smuggling network with no bases and no banners. Black Network merchants occasionally show up at the colony gate selling slaves, poisons and goods of dubious origin, and buying organs, troll blood and mind flayer parts; the price always favors them.</LP_BlackNetwork.description>
+  <!-- 黑网 -->
+  <LP_BlackNetwork.fixedName>Black Network</LP_BlackNetwork.fixedName>
+  <!-- 一切都有价钱。 -->
+  <LP_BlackNetwork.ideoDescription>Everything has a price.</LP_BlackNetwork.ideoDescription>
+  <!-- 价钱 -->
+  <LP_BlackNetwork.ideoName>the price</LP_BlackNetwork.ideoName>
+  <!-- 黑网商人 -->
+  <LP_BlackNetwork.pawnSingular>Black Network merchant</LP_BlackNetwork.pawnSingular>
+  <!-- 黑网商人 -->
+  <LP_BlackNetwork.pawnsPlural>Black Network merchant</LP_BlackNetwork.pawnsPlural>
+  <!-- 猎巫狂热分子 -->
+  <LP_Zealots.label>witch-hunting zealots</LP_Zealots.label>
+  <!-- 费伦拓荒同盟教会里的狂热分子。他们不顾同盟高层的反对，自行组织起来猎杀巫妖和夺心魔。杀死他们不会影响你和同盟的关系。 -->
+  <LP_Zealots.description>Zealots in the church of Faerûn's pioneer league. Against the wishes of the league's leaders, they organize on their own to hunt liches and mind flayers. Killing them does not affect your relations with the league.</LP_Zealots.description>
+  <!-- 提尔 -->
+  <LP_Zealots.deityPresets.0.nameType.name>Tyr</LP_Zealots.deityPresets.0.nameType.name>
+  <!-- 正义之神 -->
+  <LP_Zealots.deityPresets.0.nameType.type>god of justice</LP_Zealots.deityPresets.0.nameType.type>
+  <!-- 拉森德 -->
+  <LP_Zealots.deityPresets.1.nameType.name>Lathander</LP_Zealots.deityPresets.1.nameType.name>
+  <!-- 晨曦之神 -->
+  <LP_Zealots.deityPresets.1.nameType.type>god of dawn</LP_Zealots.deityPresets.1.nameType.type>
+  <!-- 猎巫狂热分子 -->
+  <LP_Zealots.fixedName>witch-hunting zealots</LP_Zealots.fixedName>
+  <!-- 亡灵必须被焚尽。 -->
+  <LP_Zealots.ideoDescription>The undead must be burned to ash.</LP_Zealots.ideoDescription>
+  <!-- 拓荒者的誓约 -->
+  <LP_Zealots.ideoName>pioneers' oath</LP_Zealots.ideoName>
+  <!-- 狂热分子 -->
+  <LP_Zealots.pawnSingular>zealot</LP_Zealots.pawnSingular>
+  <!-- 狂热分子 -->
+  <LP_Zealots.pawnsPlural>zealot</LP_Zealots.pawnsPlural>
+</LanguageData>

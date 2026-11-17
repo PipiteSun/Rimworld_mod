@@ -18,7 +18,7 @@ namespace LichPhylactery {
   static string P(float v)=>(v*100f).ToString("0.#")+"%";
   static string N(float v)=>v.ToString("0.##");
   // 1.121.0 热修：线性效果的整体倍率写成“ × 擅长 1.5 × 天赋 2.5”（没有的项不写）。
-  static string Whole(Hediff_Adventurer h,int a){float r=Affinity.RaceMult(h,a),t=Affinity.TalentMult(h,a);return (r>1.0001f?" × 擅长 "+N(r):"")+(t>1.0001f?" × 天赋 "+N(t):"");}
+  static string Whole(Hediff_Adventurer h,int a){float r=Affinity.RaceMult(h,a),t=Affinity.TalentMult(h,a);return (r>1.0001f?" × 擅长 ".Loc()+N(r):"")+(t>1.0001f?" × 天赋 ".Loc()+N(t):"");}
   static StatDef S(string n)=>DefDatabase<StatDef>.GetNamedSilentFail(n);
   static bool PctStyle(StatDef d)=>d!=null && (d.toStringStyle==ToStringStyle.PercentZero || d.toStringStyle==ToStringStyle.PercentOne || d.toStringStyle==ToStringStyle.PercentTwo);
   static string Value(Hediff_Adventurer.ScoreFx e,float v)=>e.kind!=Hediff_Adventurer.FxKind.Offset?X(v):e.num?(v>=0?"+":"")+v.ToString("0.#"):Pct(v);
@@ -28,25 +28,25 @@ namespace LichPhylactery {
   // ---------- 公式（从表生成） ----------
   public static string Formula(Hediff_Adventurer.ScoreFx e){
    switch(e.kind){
-    case Hediff_Adventurer.FxKind.Inverse:return "÷M，最低 ×"+N(e.cap);
-    case Hediff_Adventurer.FxKind.Offset:return (e.num?N(e.per):P(e.per))+" ×(M − 1)，限 "+(e.num?N(e.lo)+"～"+N(e.hi):Pct(e.lo)+"～"+Pct(e.hi));
-    case Hediff_Adventurer.FxKind.Linear:return "(1 + "+P(Adventurer.Step(e.per))+" × 调整值′) × 擅长 × 天赋，最低 ×"+N(Adventurer.MeleeMin);
-    case Hediff_Adventurer.FxKind.PerPoint:return "(1 + "+P(Adventurer.Step(e.per))+" ×(属性 − 10)′) × 擅长 × 天赋，最低 ×0.5"+(e.cap>0f?"，超 ×"+N(e.cap)+" 收敛":"");
-    default:return "×M"+(e.cap>0f?"，超 ×"+N(e.cap)+" 收敛":"")+(e.stat=="CarryingCapacity"?"，最低 ×0.1":"")+(SharesWork(e)?"（已含工作速度）":"");
+    case Hediff_Adventurer.FxKind.Inverse:return "÷M，最低 ×".Loc()+N(e.cap);
+    case Hediff_Adventurer.FxKind.Offset:return (e.num?N(e.per):P(e.per))+" ×(M − 1)，限 ".Loc()+(e.num?N(e.lo)+"～".Loc()+N(e.hi):Pct(e.lo)+"～".Loc()+Pct(e.hi));
+    case Hediff_Adventurer.FxKind.Linear:return "(1 + "+P(Adventurer.Step(e.per))+" × 调整值′) × 擅长 × 天赋，最低 ×".Loc()+N(Adventurer.MeleeMin);
+    case Hediff_Adventurer.FxKind.PerPoint:return "(1 + "+P(Adventurer.Step(e.per))+" ×(属性 − 10)′) × 擅长 × 天赋，最低 ×0.5".Loc()+(e.cap>0f?"，超 ×".Loc()+N(e.cap)+" 收敛".Loc():"");
+    default:return "×M"+(e.cap>0f?"，超 ×".Loc()+N(e.cap)+" 收敛".Loc():"")+(e.stat=="CarryingCapacity"?"，最低 ×0.1".Loc():"")+(SharesWork(e)?"（已含工作速度）".Loc():"");
    }
   }
   // 悬停：代入本人数值。
   public static string Substitute(Hediff_Adventurer h,Hediff_Adventurer.ScoreFx e,float s){
    float m=h.AMult(e.a),tm=Affinity.WholeMult(h,e.a);string r;
    switch(e.kind){
-    case Hediff_Adventurer.FxKind.Inverse:r="1 ÷ "+N(m)+" = "+X(1f/Mathf.Max(.0001f,m))+(1f/Mathf.Max(.0001f,m)<e.cap?" → 最低 "+X(e.cap):"");break;
-    case Hediff_Adventurer.FxKind.Offset:{float raw=e.per*(m-1f);r=N(e.per)+" × ("+N(m)+" − 1) = "+N(raw)+(raw<e.lo || raw>e.hi?" → 限在 "+N(Mathf.Clamp(raw,e.lo,e.hi)):"");break;}
-    case Hediff_Adventurer.FxKind.Linear:{float b=1f+Adventurer.Step(e.per)*h.AMod(e.a);r="1 + "+P(Adventurer.Step(e.per))+" × "+N(h.AMod(e.a))+" = "+X(b)+(b<Adventurer.MeleeMin?" → 最低 "+X(Adventurer.MeleeMin):"")+(tm>1.0001f && b>=1f?"；"+X(b)+Whole(h,e.a):"")+" = "+X(h.LinearValue(e.a,e.per));break;}
+    case Hediff_Adventurer.FxKind.Inverse:r="1 ÷ "+N(m)+" = "+X(1f/Mathf.Max(.0001f,m))+(1f/Mathf.Max(.0001f,m)<e.cap?" → 最低 ".Loc()+X(e.cap):"");break;
+    case Hediff_Adventurer.FxKind.Offset:{float raw=e.per*(m-1f);r=N(e.per)+" × ("+N(m)+" − 1) = "+N(raw)+(raw<e.lo || raw>e.hi?" → 限在 ".Loc()+N(Mathf.Clamp(raw,e.lo,e.hi)):"");break;}
+    case Hediff_Adventurer.FxKind.Linear:{float b=1f+Adventurer.Step(e.per)*h.AMod(e.a);r="1 + "+P(Adventurer.Step(e.per))+" × "+N(h.AMod(e.a))+" = "+X(b)+(b<Adventurer.MeleeMin?" → 最低 ".Loc()+X(Adventurer.MeleeMin):"")+(tm>1.0001f && b>=1f?"；".Loc()+X(b)+Whole(h,e.a):"")+" = "+X(h.LinearValue(e.a,e.per));break;}
     case Hediff_Adventurer.FxKind.PerPoint:{int d=h.Eff(e.a)-10;float pts=d>0?d*Affinity.RaceModMult(h,e.a):d,b=Mathf.Max(.5f,1f+Adventurer.Step(e.per)*pts);
-     r="(属性 − 10)′ = "+N(pts)+(d>0 && Affinity.RaceModMult(h,e.a)<.9999f?"（"+d+" × 笨拙 "+N(Affinity.RaceModMult(h,e.a))+"）":"")+"；1 + "+P(Adventurer.Step(e.per))+" × "+N(pts)+" = "+X(b)+(tm>1.0001f && b>=1f?"；"+X(b)+Whole(h,e.a):"")+" = "+X(h.PerPointValue(e))+"\n另外照常乘全局工作速度（和 Isekai 一样）。";break;}
-    default:r="M = "+X(m)+(e.cap>0f && m>e.cap?" → 超过 ×"+N(e.cap)+" 收敛为 "+X(Hediff_Adventurer.SoftCap(m,e.cap)):"")+(SharesWork(e)?"\n原版这一项本身乘全局工作速度（已吃智力倍率），这里除掉一份，智力只算一次。":"");break;
+     r="(属性 − 10)′ = ".Loc()+N(pts)+(d>0 && Affinity.RaceModMult(h,e.a)<.9999f?"（".Loc()+d+" × 笨拙 ".Loc()+N(Affinity.RaceModMult(h,e.a))+"）".Loc():"")+"；1 + ".Loc()+P(Adventurer.Step(e.per))+" × "+N(pts)+" = "+X(b)+(tm>1.0001f && b>=1f?"；".Loc()+X(b)+Whole(h,e.a):"")+" = "+X(h.PerPointValue(e))+"\n另外照常乘全局工作速度（和 Isekai 一样）。".Loc();break;}
+    default:r="M = "+X(m)+(e.cap>0f && m>e.cap?" → 超过 ×".Loc()+N(e.cap)+" 收敛为 ".Loc()+X(Hediff_Adventurer.SoftCap(m,e.cap)):"")+(SharesWork(e)?"\n原版这一项本身乘全局工作速度（已吃智力倍率），这里除掉一份，智力只算一次。".Loc():"");break;
    }
-   if(s<.9999f)r+="\n属性效果强度 "+P(s)+"：1 + (完整值 − 1) × "+P(s)+" = "+Value(e,h.FxValue(e,s));
+   if(s<.9999f)r+="\n属性效果强度 ".Loc()+P(s)+"：1 + (完整值 − 1) × ".Loc()+P(s)+" = "+Value(e,h.FxValue(e,s));
    return r;
   }
 
@@ -55,9 +55,9 @@ namespace LichPhylactery {
   public static Extras ExtrasOf(Hediff_Adventurer h){
    var x=new Extras();
    void Add(string name,Action<List<StatModifier>,List<StatModifier>> fill){var f=new List<StatModifier>();var o=new List<StatModifier>();fill(f,o);if(f.Count+o.Count>0)x.src.Add(new KeyValuePair<string,List<StatModifier>[]>(name,new[]{f,o}));}
-   Add("超凡",(f,o)=>Exalted.AddStats(h,new HediffStage(),f,o));
-   Add("传奇点",(f,o)=>Legend.AddStats(h,f,o));
-   Add("武艺",(f,o)=>CombatGifts.AddStats(h,new HediffStage(),f,o));
+   Add("超凡".Loc(),(f,o)=>Exalted.AddStats(h,new HediffStage(),f,o));
+   Add("传奇点".Loc(),(f,o)=>Legend.AddStats(h,f,o));
+   Add("武艺".Loc(),(f,o)=>CombatGifts.AddStats(h,new HediffStage(),f,o));
    return x;
   }
   public static string ExtraText(Extras x,string stat){
@@ -69,7 +69,7 @@ namespace LichPhylactery {
     if(hf)parts.Add(kv.Key+" "+X(fac));
     if(ho)parts.Add(kv.Key+" "+(PctStyle(d)?Pct(off):(off>=0?"+":"")+off.ToString("0.##")));
    }
-   return string.Join("，",parts);
+   return string.Join("，".Loc(),parts);
   }
 
   // ---------- 一项属性的全部效果行（自检也用） ----------
@@ -80,35 +80,35 @@ namespace LichPhylactery {
    if(a==Adventurer.Con){
     float con=h.ConPart(s),lv=1f+h.LevelGrowth(h.level)*s,leg=Legend.HealthFactor(h),tough=Feats.ToughFactor(h);
     float cb=1f+Adventurer.Step(Hediff_Adventurer.ConPartPerMod)*h.AMod(a); // 1.99.0：公式写成 (1 + 15% × 调整值′) × 天赋，免得看成只有后半乘天赋；1.121.0 热修：× 擅长 × 天赋
-    list.Add(new Line{label="部位生命（体质）",formula="(1 + "+P(Adventurer.Step(Hediff_Adventurer.ConPartPerMod))+" × 调整值′) × 擅长 × 天赋，最低 ×1",value=X(con),
-     tip="(1 + "+P(Adventurer.Step(Hediff_Adventurer.ConPartPerMod))+" × "+N(h.AMod(a))+")"+(tm>1.0001f && cb>=1f?Whole(h,a):"")+" = "+X(con)+(s<.9999f?"（已按属性效果强度 "+P(s)+" 插值）":"")+"\n体质低于 10 不减少部位生命。"});
+    list.Add(new Line{label="部位生命（体质）".Loc(),formula="(1 + "+P(Adventurer.Step(Hediff_Adventurer.ConPartPerMod))+" × 调整值′) × 擅长 × 天赋，最低 ×1".Loc(),value=X(con),
+     tip="(1 + "+P(Adventurer.Step(Hediff_Adventurer.ConPartPerMod))+" × "+N(h.AMod(a))+")"+(tm>1.0001f && cb>=1f?Whole(h,a):"")+" = "+X(con)+(s<.9999f?"（已按属性效果强度 ".Loc()+P(s)+" 插值）".Loc():"")+"\n体质低于 10 不减少部位生命。".Loc()});
     // 1.99.0：等级成长的说明照 1.93.0 的实际公式（Hediff_Adventurer.PartGrowth），以前还写着“平均 ×(等级 − 1)”和未分配 5%。
     int lvc=Math.Min(h.level,Adventurer.MaxLevel),spent=0;var gs=new List<string>();
     if(h.classes?.levels!=null)foreach(var kv in h.classes.levels){if(kv.Key==null)continue;int c=Math.Min(kv.Value,lvc-spent);if(c<=0)continue;gs.Add(kv.Key.label+" "+c+" × "+P(kv.Key.PartPerLevel));spent+=c;}
-    if(lvc-spent>0)gs.Add("未分配 "+(lvc-spent)+" × "+P(Hediff_Adventurer.UnspentPartPer));
-    list.Add(new Line{label="等级成长",formula="1 + Σ 职业等级 × 生命骰成长 + 未分配等级 × "+P(Hediff_Adventurer.UnspentPartPer)+" − "+P(Hediff_Adventurer.UnspentPartPer),value=X(lv),
-     tip="冒险者 Lv"+lvc+"：1 + "+(gs.Count>0?string.Join(" + ",gs):"0")+" − "+P(Hediff_Adventurer.UnspentPartPer)+" = "+X(1f+h.LevelGrowth(h.level))+(s<.9999f?"（按属性效果强度 "+P(s)+" 插值后 "+X(lv)+"）":"")+"\n生命骰：野蛮人 7%，战士 / 圣武士 / 游侠 6%，法师 / 术士 4%，其他 5%。传奇等级 21～40 不加，血量走传奇属性点。"});
-    var extra=new List<string>();if(Math.Abs(leg-1f)>.0001f)extra.Add("传奇血量 "+X(leg));if(Math.Abs(tough-1f)>.0001f)extra.Add("坚韧 "+X(tough));
-    list.Add(new Line{label="部位生命合计",formula="体质 × 等级成长"+(extra.Count>0?" × 传奇血量 / 坚韧":""),value=X(Adventurer.PartHealthFactor(h.pawn)),extra=string.Join("，",extra)});
-    if(Adventurer.PainScaleOn)list.Add(new Line{label="伤口疼痛",formula="÷ 部位生命合计（≥1 的部分）",value="÷"+Adventurer.PainDivisor(h.pawn).ToString("0.00"),tip="伤口和缺失部位的疼痛除以部位生命倍率，免得血厚却因疼痛先倒地。"});
-    if(Adventurer.TotalScaleOn && h.pawn?.health!=null)list.Add(new Line{label="致死伤害阈值",formula="150 × 体型生命倍率 × 部位生命合计（≥1 的部分）",value=h.pawn.health.LethalDamageThreshold.ToString("0"),
-     tip="全身伤口合计达到这个数就会死于伤势过重。健康百分比和失血速度同样按部位生命合计缩放（设置「总生命随部位生命缩放」）。"}); // 2026-11-10
+    if(lvc-spent>0)gs.Add("未分配 ".Loc()+(lvc-spent)+" × "+P(Hediff_Adventurer.UnspentPartPer));
+    list.Add(new Line{label="等级成长".Loc(),formula="1 + Σ 职业等级 × 生命骰成长 + 未分配等级 × ".Loc()+P(Hediff_Adventurer.UnspentPartPer)+" − "+P(Hediff_Adventurer.UnspentPartPer),value=X(lv),
+     tip="冒险者 Lv".Loc()+lvc+"：1 + ".Loc()+(gs.Count>0?string.Join(" + ",gs):"0")+" − "+P(Hediff_Adventurer.UnspentPartPer)+" = "+X(1f+h.LevelGrowth(h.level))+(s<.9999f?"（按属性效果强度 ".Loc()+P(s)+" 插值后 ".Loc()+X(lv)+"）".Loc():"")+"\n生命骰：野蛮人 7%，战士 / 圣武士 / 游侠 6%，法师 / 术士 4%，其他 5%。传奇等级 21～40 不加，血量走传奇属性点。".Loc()});
+    var extra=new List<string>();if(Math.Abs(leg-1f)>.0001f)extra.Add("传奇血量 ".Loc()+X(leg));if(Math.Abs(tough-1f)>.0001f)extra.Add("坚韧 ".Loc()+X(tough));
+    list.Add(new Line{label="部位生命合计".Loc(),formula="体质 × 等级成长".Loc()+(extra.Count>0?" × 传奇血量 / 坚韧".Loc():""),value=X(Adventurer.PartHealthFactor(h.pawn)),extra=string.Join("，".Loc(),extra)});
+    if(Adventurer.PainScaleOn)list.Add(new Line{label="伤口疼痛".Loc(),formula="÷ 部位生命合计（≥1 的部分）".Loc(),value="÷"+Adventurer.PainDivisor(h.pawn).ToString("0.00"),tip="伤口和缺失部位的疼痛除以部位生命倍率，免得血厚却因疼痛先倒地。".Loc()});
+    if(Adventurer.TotalScaleOn && h.pawn?.health!=null)list.Add(new Line{label="致死伤害阈值".Loc(),formula="150 × 体型生命倍率 × 部位生命合计（≥1 的部分）".Loc(),value=h.pawn.health.LethalDamageThreshold.ToString("0"),
+     tip="全身伤口合计达到这个数就会死于伤势过重。健康百分比和失血速度同样按部位生命合计缩放（设置「总生命随部位生命缩放」）。".Loc()}); // 2026-11-10
    }
    foreach(var e in Hediff_Adventurer.Table){
     if(e.a!=a || S(e.stat)==null)continue;
     list.Add(new Line{label=e.label,formula=Formula(e),value=Value(e,h.FxValue(e,s)),extra=ExtraText(x,e.stat),tip=Substitute(h,e,s)});
    }
-   string skills=a==0?"格斗":a==1?"射击":a==3?"智识":a==4?"医疗 / 种植 / 驯兽":a==5?"社交":null;
-   if(skills!=null)list.Add(new Line{label=skills+"学习",formula="×M，最低 ×"+N(Adventurer.LearnMin),value=X(Mathf.Max(Adventurer.LearnMin,h.Fx(a,s))),tip="技能学习速度 = 属性倍率 M = "+X(h.AMult(a))});
+   string skills=a==0?"格斗".Loc():a==1?"射击".Loc():a==3?"智识".Loc():a==4?"医疗 / 种植 / 驯兽".Loc():a==5?"社交".Loc():null;
+   if(skills!=null)list.Add(new Line{label=skills+"学习".Loc(),formula="×M，最低 ×".Loc()+N(Adventurer.LearnMin),value=X(Mathf.Max(Adventurer.LearnMin,h.Fx(a,s))),tip="技能学习速度 = 属性倍率 M = ".Loc()+X(h.AMult(a))});
    float cp=Adventurer.ClassPowerBonus(h.pawn,a)-Adventurer.ProfClassPer*Math.Max(0,h.Proficiency-2);
-   list.Add(new Line{label="职业强度（主属性）",formula="(1 + "+P(Adventurer.Step(Adventurer.ClassAbilityPer))+" × 调整值′) × 擅长 × 天赋 − 1",value=Pct(cp),tip="以"+Adventurer.Names[a]+"为主属性的职业（施法、职业能力）强度：(1 + "+P(Adventurer.Step(Adventurer.ClassAbilityPer))+" × "+N(h.AMod(a))+")"+(tm>1.0001f?Whole(h,a):"")+" − 1 = "+Pct(cp)+"\n熟练加值另加 "+P(Adventurer.ProfClassPer)+" ×（熟练 − 2）。"});
+   list.Add(new Line{label="职业强度（主属性）".Loc(),formula="(1 + "+P(Adventurer.Step(Adventurer.ClassAbilityPer))+" × 调整值′) × 擅长 × 天赋 − 1".Loc(),value=Pct(cp),tip="以".Loc()+Adventurer.Names[a]+"为主属性的职业（施法、职业能力）强度：(1 + ".Loc()+P(Adventurer.Step(Adventurer.ClassAbilityPer))+" × "+N(h.AMod(a))+")"+(tm>1.0001f?Whole(h,a):"")+" − 1 = "+Pct(cp)+"\n熟练加值另加 ".Loc()+P(Adventurer.ProfClassPer)+" ×（熟练 − 2）。".Loc()});
    if(a==Adventurer.Int){ // 1.97.0 奥术强度的智力项 10%
     float ap=Adventurer.ClassPowerBonus(h.pawn,a,Adventurer.ArcaneAbilityPer)-Adventurer.ProfClassPer*Math.Max(0,h.Proficiency-2);
-    list.Add(new Line{label="奥术强度（智力）",formula="(1 + "+P(Adventurer.Step(Adventurer.ArcaneAbilityPer))+" × 调整值′) × 擅长 × 天赋 − 1",value=Pct(ap),tip="奥术强度（法师、术士智识支）的智力项每点调整值 "+P(Adventurer.Step(Adventurer.ArcaneAbilityPer))+"：(1 + "+P(Adventurer.Step(Adventurer.ArcaneAbilityPer))+" × "+N(h.AMod(a))+")"+(tm>1.0001f?Whole(h,a):"")+" − 1 = "+Pct(ap)+"\n其他用智力的强度仍按 "+P(Adventurer.Step(Adventurer.ClassAbilityPer))+"。"});
+    list.Add(new Line{label="奥术强度（智力）".Loc(),formula="(1 + "+P(Adventurer.Step(Adventurer.ArcaneAbilityPer))+" × 调整值′) × 擅长 × 天赋 − 1".Loc(),value=Pct(ap),tip="奥术强度（法师、术士智识支）的智力项每点调整值 ".Loc()+P(Adventurer.Step(Adventurer.ArcaneAbilityPer))+"：(1 + ".Loc()+P(Adventurer.Step(Adventurer.ArcaneAbilityPer))+" × "+N(h.AMod(a))+")"+(tm>1.0001f?Whole(h,a):"")+" − 1 = "+Pct(ap)+"\n其他用智力的强度仍按 ".Loc()+P(Adventurer.Step(Adventurer.ClassAbilityPer))+"。".Loc()});
    }
    if(a==Adventurer.Cha){ // 1.98.0 天赋强度的魅力项 10%
     float ip=Adventurer.ClassPowerBonus(h.pawn,a,Adventurer.InnateAbilityPer)-Adventurer.ProfClassPer*Math.Max(0,h.Proficiency-2);
-    list.Add(new Line{label="天赋强度（魅力）",formula="(1 + "+P(Adventurer.Step(Adventurer.InnateAbilityPer))+" × 调整值′) × 擅长 × 天赋 − 1",value=Pct(ip),tip="天赋强度（术士社交支）的魅力项每点调整值 "+P(Adventurer.Step(Adventurer.InnateAbilityPer))+"：(1 + "+P(Adventurer.Step(Adventurer.InnateAbilityPer))+" × "+N(h.AMod(a))+")"+(tm>1.0001f?Whole(h,a):"")+" − 1 = "+Pct(ip)+"\n神恩、契约等其他用魅力的强度仍按 "+P(Adventurer.Step(Adventurer.ClassAbilityPer))+"。"});
+    list.Add(new Line{label="天赋强度（魅力）".Loc(),formula="(1 + "+P(Adventurer.Step(Adventurer.InnateAbilityPer))+" × 调整值′) × 擅长 × 天赋 − 1".Loc(),value=Pct(ip),tip="天赋强度（术士社交支）的魅力项每点调整值 ".Loc()+P(Adventurer.Step(Adventurer.InnateAbilityPer))+"：(1 + ".Loc()+P(Adventurer.Step(Adventurer.InnateAbilityPer))+" × "+N(h.AMod(a))+")"+(tm>1.0001f?Whole(h,a):"")+" − 1 = "+Pct(ip)+"\n神恩、契约等其他用魅力的强度仍按 ".Loc()+P(Adventurer.Step(Adventurer.ClassAbilityPer))+"。".Loc()});
    }
    return list;
   }
@@ -116,18 +116,18 @@ namespace LichPhylactery {
   // 有效值构成：基础（不超过上限）+ 上限之后的加值。
   public static string Composition(Hediff_Adventurer h,int a){
    int b=h.scores[a],cap=h.Cap(a),feat=Feats.ScoreBonus(h,a),gift=CombatGifts.ScoreBonus(h,a),cls=ClassMartial2.ScoreBonus(h,a)+Subclass2.ScoreBonus(h,a);
-   var s="基础 "+b+(b>cap?"（超过上限 "+cap+"，按 "+cap+" 算）":"（上限 "+cap+"）");
-   if(feat>0)s+=" + 专长 "+feat;if(gift>0)s+=" + 武艺天赋 "+gift;if(cls>0)s+=" + 职业 "+cls;
-   return s+" = 有效 "+h.Eff(a)+"　调整值 "+Adventurer.Signed(h.Mod(a))+"，调整值′ "+N(h.AMod(a))+(Affinity.RaceModMult(h,a)<.9999f && h.Mod(a)>0?"（× 笨拙 "+N(Affinity.RaceModMult(h,a))+"）":"");
+   var s="基础 ".Loc()+b+(b>cap?"（超过上限 ".Loc()+cap+"，按 ".Loc()+cap+" 算）".Loc():"（上限 ".Loc()+cap+"）".Loc());
+   if(feat>0)s+=" + 专长 ".Loc()+feat;if(gift>0)s+=" + 武艺天赋 ".Loc()+gift;if(cls>0)s+=" + 职业 ".Loc()+cls;
+   return s+" = 有效 ".Loc()+h.Eff(a)+"　调整值 ".Loc()+Adventurer.Signed(h.Mod(a))+"，调整值′ ".Loc()+N(h.AMod(a))+(Affinity.RaceModMult(h,a)<.9999f && h.Mod(a)>0?"（× 笨拙 ".Loc()+N(Affinity.RaceModMult(h,a))+"）".Loc():"");
   }
   public static string MultText(Hediff_Adventurer h,int a){
    float c=Adventurer.ScoreCurve(h.Eff(a)),m=h.AMult(a),k=Affinity.ScoreMult(h,a),t=Affinity.TalentMult(h,a),r=Affinity.RaceMult(h,a);
-   string s="M = 3.5 表（有效 "+h.Eff(a)+"）"+X(c);
+   string s="M = 3.5 表（有效 ".Loc()+h.Eff(a)+"）".Loc()+X(c);
    // 1.99.0：写明 M 只取种族、天赋中较大的一个；线性效果是“调整值′（含种族）× 天赋”，两者相乘，不是同一处重复乘。
    bool both=t>1.0001f && Math.Abs(r-1f)>.0001f;
-   if(Math.Abs(m-c)>.001f)s+=" × "+N(k)+(both?"（种族 "+N(r)+" / 天赋 "+N(t)+" 取较大）":"（种族 / 天赋取较大）")+" = "+X(m);
+   if(Math.Abs(m-c)>.001f)s+=" × "+N(k)+(both?"（种族 ".Loc()+N(r)+" / 天赋 ".Loc()+N(t)+" 取较大）".Loc():"（种族 / 天赋取较大）".Loc())+" = "+X(m);
    // 1.121.0 热修：擅长和天赋都乘在线性效果整体上（相乘）；笨拙只在调整值′里。
-   if(t>1.0001f || r>1.0001f)s+="　线性效果：(1 + 每点 × 调整值′) 整体"+Whole(h,a)+(t>1.0001f && r>1.0001f?" = ×"+N(Affinity.WholeMult(h,a)):"");
+   if(t>1.0001f || r>1.0001f)s+="　线性效果：(1 + 每点 × 调整值′) 整体".Loc()+Whole(h,a)+(t>1.0001f && r>1.0001f?" = ×"+N(Affinity.WholeMult(h,a)):"");
    return s;
   }
 
@@ -135,15 +135,15 @@ namespace LichPhylactery {
   public static float Draw(float w,Pawn p,Hediff_Adventurer h){
    float y=0f;float s=Adventurer.EffectScale;
    Text.Font=GameFont.Tiny;
-   string legend="M：属性倍率 = 3.5 负重表（10 = ×1，每 +5 约 ×2，每 +10 ×4；低于 10 = 属性 ÷ 10）× 种族亲和与天赋中较大者（属性低于 10 时不乘）\n"+
-    "调整值′：(属性 − 10) ÷ 2 向下取整，种族笨拙时正的部分 × 0.5；(属性 − 10)′ 同理\n"+
-    "擅长 / 天赋：种族擅长 ×1.5（传奇种族 ×1.75）、天赋异禀 / 天赋·某项 ×1.5、极致 ×2.5，都乘在线性效果整体上（效果低于 ×1 时不乘），擅长和天赋相乘\n"+
-    "收敛：超过上限后 = 上限 + k·ln(1 + 超出 ÷ k)，k = max(0.5, 上限 ÷ 2)（Isekai 方式）"+
-    (s>0f && s<.9999f?"\n属性效果强度 "+P(s)+"：所有数值 = 1 + (完整值 − 1) × "+P(s):"")+
-    "\n悬停每一行看代入本人数值的算式；“叠加”一列是同一属性上另外相乘 / 相加的超凡、传奇属性点、武艺天赋。";
+   string legend="M：属性倍率 = 3.5 负重表（10 = ×1，每 +5 约 ×2，每 +10 ×4；低于 10 = 属性 ÷ 10）× 种族亲和与天赋中较大者（属性低于 10 时不乘）\n".Loc()+
+    "调整值′：(属性 − 10) ÷ 2 向下取整，种族笨拙时正的部分 × 0.5；(属性 − 10)′ 同理\n".Loc()+
+    "擅长 / 天赋：种族擅长 ×1.5（传奇种族 ×1.75）、天赋异禀 / 天赋·某项 ×1.5、极致 ×2.5，都乘在线性效果整体上（效果低于 ×1 时不乘），擅长和天赋相乘\n".Loc()+
+    "收敛：超过上限后 = 上限 + k·ln(1 + 超出 ÷ k)，k = max(0.5, 上限 ÷ 2)（Isekai 方式）".Loc()+
+    (s>0f && s<.9999f?"\n属性效果强度 ".Loc()+P(s)+"：所有数值 = 1 + (完整值 − 1) × ".Loc()+P(s):"")+
+    "\n悬停每一行看代入本人数值的算式；“叠加”一列是同一属性上另外相乘 / 相加的超凡、传奇属性点、武艺天赋。".Loc();
    float lh=Text.CalcHeight(legend,w-8f);var lr=new Rect(0f,y,w,lh+6f);Widgets.DrawBoxSolid(lr,new Color(1f,1f,1f,.05f));
    GUI.color=Dim;Widgets.Label(new Rect(4f,y+3f,w-8f,lh),legend);GUI.color=Color.white;y+=lh+10f;
-   string off=Adventurer.EffectsHandedToIsekai?"六维的数值效果已交给 Isekai（设置“Isekai 共存模式”），下面只列有效值和超凡。":s<=0f?"属性效果强度 0%：六维没有数值效果。":Legendary.Is(p)?"传奇单位：六维不提供数值效果（强度已经算在兵种里）。":null;
+   string off=Adventurer.EffectsHandedToIsekai?"六维的数值效果已交给 Isekai（设置“Isekai 共存模式”），下面只列有效值和超凡。".Loc():s<=0f?"属性效果强度 0%：六维没有数值效果。".Loc():Legendary.Is(p)?"传奇单位：六维不提供数值效果（强度已经算在兵种里）。".Loc():null;
    if(off!=null){GUI.color=Color.gray;Widgets.Label(new Rect(4f,y,w-8f,RowH),off);GUI.color=Color.white;y+=RowH+4f;}
    var x=ExtrasOf(h);int raw=Exalted.Raw(h);
    const float labW=112f,valW=62f,exW=124f;float fw=w-labW-valW-exW-12f;
@@ -153,7 +153,7 @@ namespace LichPhylactery {
     var head=new Rect(0f,y,w,24f);Widgets.DrawBoxSolid(head,new Color(1f,1f,1f,.09f));
     Text.Font=GameFont.Small;
     ITab_Adventurer.AffinityColor(Affinity.ScoreMult(h,a));if(my)GUI.color=Mythic;else if(ex)GUI.color=Gold;
-    Widgets.Label(new Rect(4f,y+2f,220f,22f),Adventurer.Names[a]+" "+h.Eff(a)+"（"+Adventurer.Signed(h.Mod(a))+"）"+Affinity.Tag(h,a));GUI.color=Color.white;
+    Widgets.Label(new Rect(4f,y+2f,220f,22f),Adventurer.Names[a]+" "+h.Eff(a)+"（".Loc()+Adventurer.Signed(h.Mod(a))+"）".Loc()+Affinity.Tag(h,a));GUI.color=Color.white;
     Text.Font=GameFont.Tiny;Text.Anchor=TextAnchor.MiddleRight;GUI.color=Gold;
     Widgets.Label(new Rect(224f,y,w-228f,24f),Affinity.SourceTag(h,a));Text.Anchor=TextAnchor.UpperLeft;GUI.color=Color.white;
     {string tip=Affinity.Tip(h,a);if(tip!=""){Widgets.DrawHighlightIfMouseover(head);TooltipHandler.TipRegion(head,tip);}}
@@ -164,26 +164,26 @@ namespace LichPhylactery {
     var lines=Lines(h,a,x);
     if(lines.Count>0){
      GUI.color=Color.gray;
-     Widgets.Label(new Rect(8f,y,labW,RowH),"效果");Widgets.Label(new Rect(8f+labW,y,fw,RowH),"公式");
-     Text.Anchor=TextAnchor.UpperRight;Widgets.Label(new Rect(w-exW-valW-4f,y,valW,RowH),"当前");Text.Anchor=TextAnchor.UpperLeft;
-     Widgets.Label(new Rect(w-exW,y,exW,RowH),"叠加");GUI.color=Color.white;y+=RowH;
+     Widgets.Label(new Rect(8f,y,labW,RowH),"效果".Loc());Widgets.Label(new Rect(8f+labW,y,fw,RowH),"公式".Loc());
+     Text.Anchor=TextAnchor.UpperRight;Widgets.Label(new Rect(w-exW-valW-4f,y,valW,RowH),"当前".Loc());Text.Anchor=TextAnchor.UpperLeft;
+     Widgets.Label(new Rect(w-exW,y,exW,RowH),"叠加".Loc());GUI.color=Color.white;y+=RowH;
      for(int k=0;k<lines.Count;k++){
       var l=lines[k];var row=new Rect(4f,y,w-4f,RowH);if(k%2==0)Widgets.DrawLightHighlight(row);
       Widgets.Label(new Rect(8f,y,labW,RowH),l.label.Truncate(labW));
       GUI.color=Dim;Widgets.Label(new Rect(8f+labW,y,fw,RowH),l.formula.Truncate(fw));GUI.color=Color.white;
       Text.Anchor=TextAnchor.UpperRight;Widgets.Label(new Rect(w-exW-valW-4f,y,valW,RowH),l.value);Text.Anchor=TextAnchor.UpperLeft;
       if(!string.IsNullOrEmpty(l.extra)){GUI.color=Gold;Widgets.Label(new Rect(w-exW,y,exW,RowH),l.extra.Truncate(exW));GUI.color=Color.white;}
-      if(Mouse.IsOver(row)){Widgets.DrawHighlight(row);TooltipHandler.TipRegion(row,l.label+"："+l.formula+(l.tip!=null?"\n\n"+l.tip:"")+(string.IsNullOrEmpty(l.extra)?"":"\n\n叠加："+l.extra));}
+      if(Mouse.IsOver(row)){Widgets.DrawHighlight(row);TooltipHandler.TipRegion(row,l.label+"：".Loc()+l.formula+(l.tip!=null?"\n\n"+l.tip:"")+(string.IsNullOrEmpty(l.extra)?"":"\n\n叠加：".Loc()+l.extra));}
       y+=RowH;
      }
     }
     // 超凡 / 神话
     {
      bool reached=(raw&1<<a)!=0,rm=(raw&1<<(a+6))!=0;string text;Color c;
-     if(ex){text=(my?"神话·"+Exalted.MythicNames[a]+"：":"超凡·"+Exalted.ExaltedNames[a]+"：")+Exalted.Describe(a,my);c=my?Mythic:Gold;}
-     else if(reached){text=(rm?"神话·"+Exalted.MythicNames[a]:"超凡·"+Exalted.ExaltedNames[a])+"（已达成，未生效："+(Exalted.OffReason??"属性刚变化，稍后生效")+"）";c=Color.gray;}
-     else{text="超凡·"+Exalted.ExaltedNames[a]+"：基础与有效值都到 "+Exalted.Threshold+" 解锁（现在 "+h.scores[a]+" / "+h.Eff(a)+"）";c=Color.gray;}
-     if(ex && !my)text+="\n神话·"+Exalted.MythicNames[a]+"：有效值 "+Exalted.MythicScore+"，或传奇冒险者 + "+Legend.Names[Exalted.LegendPairs[a][0]]+"与"+Legend.Names[Exalted.LegendPairs[a][1]]+"传奇点合计 "+Exalted.MythicLegend+"（现在 "+(h.legendSpent==null?0:h.legendSpent[Exalted.LegendPairs[a][0]]+h.legendSpent[Exalted.LegendPairs[a][1]])+"）";
+     if(ex){text=(my?"神话·".Loc()+Exalted.MythicNames[a]+"：".Loc():"超凡·".Loc()+Exalted.ExaltedNames[a]+"：".Loc())+Exalted.Describe(a,my);c=my?Mythic:Gold;}
+     else if(reached){text=(rm?"神话·".Loc()+Exalted.MythicNames[a]:"超凡·".Loc()+Exalted.ExaltedNames[a])+"（已达成，未生效：".Loc()+(Exalted.OffReason??"属性刚变化，稍后生效".Loc())+"）".Loc();c=Color.gray;}
+     else{text="超凡·".Loc()+Exalted.ExaltedNames[a]+"：基础与有效值都到 ".Loc()+Exalted.Threshold+" 解锁（现在 ".Loc()+h.scores[a]+" / "+h.Eff(a)+"）".Loc();c=Color.gray;}
+     if(ex && !my)text+="\n神话·".Loc()+Exalted.MythicNames[a]+"：有效值 ".Loc()+Exalted.MythicScore+"，或传奇冒险者 + ".Loc()+Legend.Names[Exalted.LegendPairs[a][0]]+"与".Loc()+Legend.Names[Exalted.LegendPairs[a][1]]+"传奇点合计 ".Loc()+Exalted.MythicLegend+"（现在 ".Loc()+(h.legendSpent==null?0:h.legendSpent[Exalted.LegendPairs[a][0]]+h.legendSpent[Exalted.LegendPairs[a][1]])+"）".Loc();
      float th=Text.CalcHeight(text,w-12f);var tr=new Rect(8f,y+2f,w-12f,th);GUI.color=c;Widgets.Label(tr,text);GUI.color=Color.white;
      if(!ex){Widgets.DrawHighlightIfMouseover(tr);TooltipHandler.TipRegion(tr,Exalted.Describe(a,false)+"\n\n"+Exalted.Describe(a,true));}
      y+=th+4f;
@@ -191,13 +191,13 @@ namespace LichPhylactery {
     y+=8f;
    }
    // 与六维无关、但叠在同一批属性上的来源
-   Text.Font=GameFont.Small;Widgets.Label(new Rect(0f,y,w,24f),"其他来源（不随六维变化）");y+=24f;Text.Font=GameFont.Tiny;
+   Text.Font=GameFont.Small;Widgets.Label(new Rect(0f,y,w,24f),"其他来源（不随六维变化）".Loc());y+=24f;Text.Font=GameFont.Tiny;
    var other=new List<string>{
-    "熟练加值 +"+h.Proficiency+"："+Adventurer.ProfEffects(h.Proficiency),
-    "等级 "+Math.Min(h.level,Adventurer.MaxLevel)+"：近战命中、近战闪避各 "+Pct(Adventurer.LevelMelee(h.level))+"（每级 +"+P(Adventurer.LevelMeleePer)+"，只算 1～20 级）"};
-   float md=ClassSystem.MartialDamage(h);if(md>0f)other.Add("物理职业成长：近战伤害 "+X(1f+md));
-   other.Add("传奇属性点："+Legend.Summary(h).Replace("\n","；"));
-   other.Add("专长、史诗恩赐、战斗风格的数值见“冒险者”页悬停说明。");
+    "熟练加值 +".Loc()+h.Proficiency+"：".Loc()+Adventurer.ProfEffects(h.Proficiency),
+    "等级 ".Loc()+Math.Min(h.level,Adventurer.MaxLevel)+"：近战命中、近战闪避各 ".Loc()+Pct(Adventurer.LevelMelee(h.level))+"（每级 +".Loc()+P(Adventurer.LevelMeleePer)+"，只算 1～20 级）".Loc()};
+   float md=ClassSystem.MartialDamage(h);if(md>0f)other.Add("物理职业成长：近战伤害 ".Loc()+X(1f+md));
+   other.Add("传奇属性点：".Loc()+Legend.Summary(h).Replace("\n","；"));
+   other.Add("专长、史诗恩赐、战斗风格的数值见“冒险者”页悬停说明。".Loc());
    foreach(var o in other){float th=Text.CalcHeight(o,w-12f);GUI.color=Dim;Widgets.Label(new Rect(8f,y,w-12f,th),o);GUI.color=Color.white;y+=th+2f;}
    Text.Font=GameFont.Small;
    return y;

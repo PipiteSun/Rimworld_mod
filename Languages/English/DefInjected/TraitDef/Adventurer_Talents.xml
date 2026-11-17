@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- <color=#B070E0>天赋异禀</color> -->
+  <LP_TalentGifted.degreeDatas.colorB070E0color.label>&lt;color=#B070E0&gt;Gifted&lt;/color&gt;</LP_TalentGifted.degreeDatas.colorB070E0color.label>
+  <!-- [PAWN_nameDef]生来就比别人多一份才情。冒险者六项属性每点正调整值的效果 ×1.5（与种族亲和取较大，不相乘）。 -->
+  <LP_TalentGifted.degreeDatas.colorB070E0color.description>[PAWN_nameDef] was born with more talent than others. The effect of each point of positive modifier in the six adventurer ability scores ×1.5 (takes the larger of this and racial affinity, not multiplied).</LP_TalentGifted.degreeDatas.colorB070E0color.description>
+  <!-- 强力特性 -->
+  <LP_TalentGifted.modExtensions.0.kind>power trait</LP_TalentGifted.modExtensions.0.kind>
+  <!-- <color=#B070E0>大器晚成</color> -->
+  <LP_TalentLateBloomer.degreeDatas.colorB070E0color.label>&lt;color=#B070E0&gt;Late Bloomer&lt;/color&gt;</LP_TalentLateBloomer.degreeDatas.colorB070E0color.label>
+  <!-- [PAWN_nameDef]起步不快，却越走越远。冒险者每 4 级得到 1 个传奇属性点；传奇等级 21～40 每级 3 个传奇属性点（平时 2 个）。 -->
+  <LP_TalentLateBloomer.degreeDatas.colorB070E0color.description>[PAWN_nameDef] starts slowly but goes farther and farther. Gains 1 legend point every 4 adventurer levels; legend levels 21-40 give 3 legend points per level (normally 2).</LP_TalentLateBloomer.degreeDatas.colorB070E0color.description>
+  <!-- 强力特性 -->
+  <LP_TalentLateBloomer.modExtensions.0.kind>power trait</LP_TalentLateBloomer.modExtensions.0.kind>
+  <!-- <color=#B070E0>百炼成钢</color> -->
+  <LP_TalentTempered.degreeDatas.colorB070E0color.label>&lt;color=#B070E0&gt;Tempered Steel&lt;/color&gt;</LP_TalentTempered.degreeDatas.colorB070E0color.label>
+  <!-- [PAWN_nameDef]的每一分长进都是熬出来的。每次属性提升给 3 点（一项 +3，或一项 +2、另一项 +1），20 级多一次属性提升。 -->
+  <LP_TalentTempered.degreeDatas.colorB070E0color.description>Every bit of [PAWN_nameDef]'s progress was hard-won. Each ability score improvement gives 3 points (+3 to one, or +2 to one and +1 to another), with one more improvement at level 20.</LP_TalentTempered.degreeDatas.colorB070E0color.description>
+  <!-- 强力特性 -->
+  <LP_TalentTempered.modExtensions.0.kind>power trait</LP_TalentTempered.modExtensions.0.kind>
+  <!-- <color=#B070E0>凡人之志</color> -->
+  <LP_TalentMortalWill.degreeDatas.colorB070E0color.label>&lt;color=#B070E0&gt;Mortal Resolve&lt;/color&gt;</LP_TalentMortalWill.degreeDatas.colorB070E0color.label>
+  <!-- [PAWN_nameDef]没有显赫的血脉，只有不肯认输的意志。冒险者经验 +25%；所有传奇属性每点收益 ×1.5（与种族亲和取较大，不相乘）。 -->
+  <LP_TalentMortalWill.degreeDatas.colorB070E0color.description>[PAWN_nameDef] has no illustrious bloodline, only a will that refuses to give up. Adventurer XP +25%; every legend attribute point is worth ×1.5 (takes the larger of this and racial affinity, not multiplied).</LP_TalentMortalWill.degreeDatas.colorB070E0color.description>
+  <!-- 强力特性 -->
+  <LP_TalentMortalWill.modExtensions.0.kind>power trait</LP_TalentMortalWill.modExtensions.0.kind>
+</LanguageData>

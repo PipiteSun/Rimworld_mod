@@ -394,7 +394,6 @@
           <li><xenotype>LP_Troll</xenotype><tier>Rare</tier></li>
           <li><xenotype>LP_Githyanki</xenotype><tier>Rare</tier></li>
           <li><xenotype>LP_Oozefolk</xenotype><tier>Rare</tier></li>
-          <li><xenotype>LP_ForceDragon</xenotype><tier>Rare</tier></li>
           <li><xenotype>LP_Satyr</xenotype><tier>Rare</tier></li>
           <li><xenotype>LP_Dryad</xenotype><tier>Rare</tier></li>
           <li><xenotype>LP_Changeling</xenotype><tier>Rare</tier></li>
@@ -431,7 +430,6 @@
           <li><def>LP_Mithral</def><countRange>40~100</countRange></li>
           <li><def>LP_Adamantine</def><countRange>20~60</countRange></li>
           <li><def>LP_ColdIron</def><countRange>60~150</countRange></li>
-          <li><def>LP_DragonShed</def><countRange>5~15</countRange><chance>0.7</chance></li>
           <li><def>LP_DragonFang</def><countRange>3~8</countRange><chance>0.5</chance></li>
           <li><def>LP_TrollBlood</def><countRange>6~15</countRange><chance>0.8</chance></li>
           <li><def>LP_TrollHide</def><countRange>30~80</countRange><chance>0.6</chance></li>
@@ -561,7 +559,6 @@
           <li><xenotype>LP_Troll</xenotype><tier>Rare</tier></li>
           <li><xenotype>LP_Githyanki</xenotype><tier>Rare</tier></li>
           <li><xenotype>LP_Oozefolk</xenotype><tier>Rare</tier></li>
-          <li><xenotype>LP_ForceDragon</xenotype><tier>Rare</tier></li>
           <li><xenotype>LP_Satyr</xenotype><tier>Rare</tier></li>
           <li><xenotype>LP_Dryad</xenotype><tier>Rare</tier></li>
           <li><xenotype>LP_Changeling</xenotype><tier>Rare</tier></li>
@@ -573,7 +570,6 @@
           <li><def>LP_Mithral</def><countRange>20~50</countRange></li>
           <li><def>LP_Adamantine</def><countRange>10~30</countRange></li>
           <li><def>LP_ColdIron</def><countRange>30~80</countRange></li>
-          <li><def>LP_DragonShed</def><countRange>3~8</countRange></li>
           <li><def>LP_DragonScale_Red</def><countRange>5~12</countRange></li>
           <li><def>LP_DragonScale_Blue</def><countRange>5~12</countRange></li>
           <li><def>LP_DragonScale_Green</def><countRange>5~12</countRange></li>
@@ -662,7 +658,6 @@
           <li><xenotype>LP_Troll</xenotype><tier>Rare</tier></li>
           <li><xenotype>LP_Githyanki</xenotype><tier>Rare</tier></li>
           <li><xenotype>LP_Oozefolk</xenotype><tier>Rare</tier></li>
-          <li><xenotype>LP_ForceDragon</xenotype><tier>Rare</tier></li>
           <li><xenotype>LP_Satyr</xenotype><tier>Rare</tier></li>
           <li><xenotype>LP_Dryad</xenotype><tier>Rare</tier></li>
           <li><xenotype>LP_Changeling</xenotype><tier>Rare</tier></li>
@@ -674,7 +669,6 @@
           <li><def>LP_Mithral</def><countRange>20~50</countRange></li>
           <li><def>LP_Adamantine</def><countRange>10~30</countRange></li>
           <li><def>LP_ColdIron</def><countRange>30~80</countRange></li>
-          <li><def>LP_DragonShed</def><countRange>3~8</countRange></li>
           <li><def>LP_DragonScale_Red</def><countRange>5~12</countRange></li>
           <li><def>LP_DragonScale_Blue</def><countRange>5~12</countRange></li>
           <li><def>LP_DragonScale_Green</def><countRange>5~12</countRange></li>

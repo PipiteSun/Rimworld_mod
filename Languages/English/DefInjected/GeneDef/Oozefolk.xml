@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 流浆之躯 -->
+  <LP_OozeCore.label>ooze body</LP_OozeCore.label>
+  <!-- 身体是一团会思考的原生质，没有骨骼也没有固定的器官位置。钝器打上去只会陷进去，强酸也溶不动它；伤口会自己合拢，不会感染、也不会留下疤痕，失血也比常人慢。带这条基因的人算作流浆人。 -->
+  <LP_OozeCore.description>The body is a thinking mass of protoplasm with no bones and no fixed organ positions. Blunt weapons just sink in, and acid can't dissolve it; wounds close up by themselves, never get infected or leave scars, and blood loss is slower than normal. Anyone with this gene counts as oozefolk.</LP_OozeCore.description>
+  <!-- 算作流浆人（吞没、分裂、稳形护带、种族判定）。 | 酸蚀伤害：×25%（伤害名含 Acid 的全部，包括本模组与其他模组的酸）。 | 出血速度：×50%。 | 伤口不会感染，旧伤不会变成永久伤疤。 | 夺心魔蝌蚪无法寄生（会被溶解）。 -->
+  <LP_OozeCore.customEffectDescriptions.0>Counts as oozefolk (engulf, fission, stabilizing belt, race checks).</LP_OozeCore.customEffectDescriptions.0>
+  <LP_OozeCore.customEffectDescriptions.1>Acid damage: ×25% (all damage whose name contains Acid, including acid from this mod and other mods).</LP_OozeCore.customEffectDescriptions.1>
+  <LP_OozeCore.customEffectDescriptions.2>Bleeding rate: ×50%.</LP_OozeCore.customEffectDescriptions.2>
+  <LP_OozeCore.customEffectDescriptions.3>Wounds don't get infected, and old wounds never become permanent scars.</LP_OozeCore.customEffectDescriptions.3>
+  <LP_OozeCore.customEffectDescriptions.4>Mind flayer tadpoles can't parasitize (they get dissolved).</LP_OozeCore.customEffectDescriptions.4>
+  <!-- 原生质 -->
+  <LP_OozeProtoplasm.label>protoplasm</LP_OozeProtoplasm.label>
+  <!-- 体内储存着可以随意调用的原生质。提供“原生质”资源条（0～100，开局30，不会自然流失）：吃饭、吞没尸体可以补充，分裂、渗过、重塑和析出凝胶都要消耗。 -->
+  <LP_OozeProtoplasm.description>Stores protoplasm in the body that can be drawn on at will. Provides the "protoplasm" resource bar (0-100, starting at 30, doesn't drain naturally): eating and engulfing corpses replenish it, and fission, seeping, reshaping and exuding gel all consume it.</LP_OozeProtoplasm.description>
+  <!-- 原生质上限100（佩戴稳形护带120），开局30，不会自然流失。 -->
+  <LP_OozeProtoplasm.customEffectDescriptions.0>Max protoplasm 100 (120 with a stabilizing belt), starting at 30, doesn't drain naturally.</LP_OozeProtoplasm.customEffectDescriptions.0>
+  <!-- 流浆人体内可以调用的原生质。吃饭、吞没尸体补充；分裂、渗过、重塑、析出凝胶消耗。不会自然流失。 -->
+  <LP_OozeProtoplasm.resourceDescription>Protoplasm an oozefolk can draw on. Replenished by eating and engulfing corpses; consumed by fission, seeping, reshaping and exuding gel. Doesn't drain naturally.</LP_OozeProtoplasm.resourceDescription>
+  <!-- 原生质 -->
+  <LP_OozeProtoplasm.resourceLabel>protoplasm</LP_OozeProtoplasm.resourceLabel>
+  <!-- 万物消化 -->
+  <LP_OozeDigest.label>omnivorous digestion</LP_OozeDigest.label>
+  <!-- 胃就是全身。什么都能化开：不会食物中毒，吃生食也不在乎；每吃一顿饭还能多攒一点原生质。能把一整具尸体“吞没”进身体里慢慢消化。 -->
+  <LP_OozeDigest.description>The stomach is the whole body. Can dissolve anything: no food poisoning, doesn't mind raw food; each meal also stores a little more protoplasm. Can "engulf" a whole corpse into the body to slowly digest it.</LP_OozeDigest.description>
+  <!-- 不会因吃生食不开心。 | 每吃一顿：原生质+3。 -->
+  <LP_OozeDigest.customEffectDescriptions.0>Not unhappy about eating raw food.</LP_OozeDigest.customEffectDescriptions.0>
+  <LP_OozeDigest.customEffectDescriptions.1>Each meal: protoplasm +3.</LP_OozeDigest.customEffectDescriptions.1>
+  <!-- 伪足 -->
+  <LP_OozePseudopod.label>pseudopod</LP_OozePseudopod.label>
+  <!-- 可以随时从身上甩出一条带酸液的伪足当鞭子抽人，衣服被酸液泡过坏得特别快。双手都没了也能用伪足干活，操作能力不会低于60%。 -->
+  <LP_OozePseudopod.description>Can lash out an acid-dripping pseudopod from the body as a whip at any time, and clothes soaked in the acid wear out especially fast. Even without both hands it can work with pseudopods, so manipulation won't drop below 60%.</LP_OozePseudopod.description>
+  <!-- 获得“酸性伪足”近战攻击：钝击9点＋酸蚀4点，冷却2秒；酸蚀对被击中者身上衣物的损伤×200%。 | 操作能力不低于60%（但不超过意识水平）。 -->
+  <LP_OozePseudopod.customEffectDescriptions.0>Gains the "acid pseudopod" melee attack: 9 blunt + 4 acid, cooldown 2 seconds; acid damage to the victim's clothing ×200%.</LP_OozePseudopod.customEffectDescriptions.0>
+  <LP_OozePseudopod.customEffectDescriptions.1>Manipulation no lower than 60% (but not above consciousness).</LP_OozePseudopod.customEffectDescriptions.1>
+  <!-- 无定形 -->
+  <LP_OozeAmorphous.label>amorphous</LP_OozeAmorphous.label>
+  <!-- 身体没有固定形状，能挤过任何缝隙：可以从门缝里“渗过”一扇门，哪怕门锁着、是别人的门。被关起来的时候也更容易越狱，越狱途中锁着的门挡不住他们。 -->
+  <LP_OozeAmorphous.description>The body has no fixed shape and can squeeze through any gap: can "seep" through a door crack, even if it's locked or belongs to someone else. They also break out of prison more easily, and locked doors can't stop them during a break.</LP_OozeAmorphous.description>
+  <!-- 作为囚犯：越狱几率×200%（与罪犯背景等效果相乘）；越狱途中可以打开任何门。 -->
+  <LP_OozeAmorphous.customEffectDescriptions.0>As a prisoner: prison break chance ×200% (multiplies with effects like criminal backstories); can open any door during a prison break.</LP_OozeAmorphous.customEffectDescriptions.0>
+  <!-- 分裂繁殖 -->
+  <LP_OozeSplit.label>fission reproduction</LP_OozeSplit.label>
+  <!-- 流浆人不靠怀孕繁衍，而是攒够原生质后把自己分成两半：分出来的是一个婴儿，带着父体全部的内源基因。代价是不能和任何人（包括别的流浆人）以普通方式生育。 -->
+  <LP_OozeSplit.description>Oozefolk don't reproduce through pregnancy; instead, once enough protoplasm is stored, they split themselves in two: what splits off is a baby carrying all the parent's endogenes. The price is being unable to reproduce the ordinary way with anyone (including other oozefolk).</LP_OozeSplit.description>
+  <!-- 凝滞 -->
+  <LP_OozeChill.label>congealed</LP_OozeChill.label>
+  <!-- 原生质遇冷会变稠。流浆人怕冷：舒适温度下限高8°C；站在0°C以下的地方，身体会“凝滞”，走得慢、手也不灵活，回暖1小时后才能恢复。冻伤、冬狼的寒霜撕咬和寒冰魔的寒气对他们都格外伤。 -->
+  <LP_OozeChill.description>Protoplasm thickens in the cold. Oozefolk fear the cold: min comfortable temperature 8°C higher; standing somewhere below 0°C, the body "congeals", walking slowly with clumsy hands, recovering only 1 hour after warming up. Frostbite, the winter wolf's frost bite and the ice devil's chill are especially harmful to them.</LP_OozeChill.description>
+  <!-- 所在格低于0°C（佩戴稳形护带时-15°C）：凝滞，移动速度×75%，操作-10%；回暖1小时后消失。 | 冻伤和其他寒冷伤害×150%；寒霜迟缓、寒霜缠身、寒气侵体的持续时间×150%。 -->
+  <LP_OozeChill.customEffectDescriptions.0>On a cell below 0°C (-15°C with a stabilizing belt): congealed, move speed ×75%, manipulation -10%; disappears 1 hour after warming up.</LP_OozeChill.customEffectDescriptions.0>
+  <LP_OozeChill.customEffectDescriptions.1>Frostbite and other cold damage ×150%; frost slow, frostbound and chilled-to-the-bone durations ×150%.</LP_OozeChill.customEffectDescriptions.1>
+  <!-- 怕干 -->
+  <LP_OozeDesiccate.label>fears drying out</LP_OozeDesiccate.label>
+  <!-- 原生质里大半是水，遇火就沸、一烤就干：受到的火焰伤害×150%，也更容易着火。 -->
+  <LP_OozeDesiccate.description>Protoplasm is mostly water: it boils in fire and dries out when roasted: fire damage taken ×150%, and catches fire more easily.</LP_OozeDesiccate.description>
+  <!-- 流光 -->
+  <LP_OozeSheen.label>flowing sheen</LP_OozeSheen.label>
+  <!-- 流浆人头顶总带着一层湿漉漉的光泽，偶尔会往下垂一滴胶。纯外观，颜色随肤色。 -->
+  <LP_OozeSheen.description>Oozefolk always have a wet sheen on top of the head, occasionally dripping a drop of gel. Purely cosmetic, colored after the skin.</LP_OozeSheen.description>
+  <!-- 胆绿肤色 -->
+  <LP_SkinOozeGreen.label>bile green skin</LP_SkinOozeGreen.label>
+  <!-- 流浆人常见的胆汁绿色，半透明似的发着湿光。 -->
+  <LP_SkinOozeGreen.description>The bile-green common to oozefolk, translucent with a wet gleam.</LP_SkinOozeGreen.description>
+  <!-- 胆绿 -->
+  <LP_SkinOozeGreen.labelShortAdj>bile green</LP_SkinOozeGreen.labelShortAdj>
+  <!-- 渊蓝肤色 -->
+  <LP_SkinOozeBlue.label>abyssal blue skin</LP_SkinOozeBlue.label>
+  <!-- 像深水一样的灰蓝色原生质。 -->
+  <LP_SkinOozeBlue.description>Grey-blue protoplasm like deep water.</LP_SkinOozeBlue.description>
+  <!-- 渊蓝 -->
+  <LP_SkinOozeBlue.labelShortAdj>abyssal blue</LP_SkinOozeBlue.labelShortAdj>
+  <!-- 琥珀肤色 -->
+  <LP_SkinOozeAmber.label>amber skin</LP_SkinOozeAmber.label>
+  <!-- 像蜂蜜或树脂一样的琥珀色原生质。 -->
+  <LP_SkinOozeAmber.description>Amber protoplasm like honey or resin.</LP_SkinOozeAmber.description>
+  <!-- 琥珀 -->
+  <LP_SkinOozeAmber.labelShortAdj>amber</LP_SkinOozeAmber.labelShortAdj>
+  <!-- 雾紫肤色 -->
+  <LP_SkinOozeViolet.label>mist purple skin</LP_SkinOozeViolet.label>
+  <!-- 带着一层雾气似的灰紫色原生质。 -->
+  <LP_SkinOozeViolet.description>Grey-purple protoplasm with a misty layer.</LP_SkinOozeViolet.description>
+  <!-- 雾紫 -->
+  <LP_SkinOozeViolet.labelShortAdj>mist purple</LP_SkinOozeViolet.labelShortAdj>
+</LanguageData>

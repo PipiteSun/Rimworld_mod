@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 发条玩具 -->
+  <LP_ClockworkToy.label>clockwork toy</LP_ClockworkToy.label>
+  <!-- 岩侏儒式样的发条小玩意：上满弦，铜甲虫就会在小台子上转圈、扇翅膀、吐出一串小火花。一次只能一个人玩，摆在屋里也挺好看。 -->
+  <LP_ClockworkToy.description>A rock gnome style clockwork gadget: fully wound, a copper beetle spins on its little stand, flaps its wings and spits a string of tiny sparks. Only one person can play at a time, and it looks nice in a room too.</LP_ClockworkToy.description>
+  <!-- 狗头人刺坑 -->
+  <LP_KoboldSpikePit.label>kobold spike pit</LP_KoboldSpikePit.label>
+  <!-- 狗头人挖的浅坑，坑底插满削尖的木桩，上面用枝叶盖好。踩中的人被木桩扎一下（利刃 20、穿甲 15%，体型大于 1.5 的大家伙只受一半）。能触发 3 次，之后坑塌掉，要重新布置。布置时需要殖民地里至少有一名狗头人。 -->
+  <LP_KoboldSpikePit.description>A shallow pit dug by kobolds, its bottom full of sharpened stakes and covered with branches and leaves. Whoever steps in is stabbed by the stakes (sharp 20, armor penetration 15%; big creatures over body size 1.5 take only half). Triggers 3 times, then the pit collapses and must be set again. Placing it requires at least one kobold in the colony.</LP_KoboldSpikePit.description>
+</LanguageData>

@@ -94,8 +94,8 @@ namespace LichPhylactery {
     HtPawn(null,AdvEnemy,true,2,3);HtPawn(null,AdvEnemy,true,3,4);HeroCombat.RefreshDuelists(new List<Pawn>{du});float mob=HeroCombat.MeleeHit(du,e1);
     Check(Near(solo,.25f) && HeroCombat.DuelCount(du)==3 && Near(mob,-.1f),"决斗者: one adjacent enemy → melee hit +"+solo+", three → "+mob);
     // 12. 宿敌猎人·龙：对龙伤害 +25%、命中 +15%；对普通人 0
-    var fh=HtPawn();HeroTraits.Give(fh,HeroDefOf.LP_FavoredEnemy,1);var fi=HeroTraits.Info(fh);var dragon=HtPawn("LP_ForceDragon",AdvEnemy);DndCreatureType.Forget(dragon);
-    Check(DndCreatureType.Is(dragon,DndType.Dragon) && Near(HeroCombat.TypeBonus(fh,fi,dragon,true),.25f) && Near(HeroCombat.MeleeHit(fh,dragon),.15f) && Near(HeroCombat.TypeBonus(fh,fi,foe,true),0f),"宿敌猎人·龙: +25% damage and +15% melee hit against a force dragon, nothing against a plain human");
+    var fh=HtPawn();HeroTraits.Give(fh,HeroDefOf.LP_FavoredEnemy,1);var fi=HeroTraits.Info(fh);var dragon=Dragons.Make("Red",0,AdvEnemy);htMade.Add(dragon);DndCreatureType.Forget(dragon);
+    Check(DndCreatureType.Is(dragon,DndType.Dragon) && Near(HeroCombat.TypeBonus(fh,fi,dragon,true),.25f) && Near(HeroCombat.MeleeHit(fh,dragon),.15f) && Near(HeroCombat.TypeBonus(fh,fi,foe,true),0f),"宿敌猎人·龙: +25% damage and +15% melee hit against a red dragon, nothing against a plain human");
     // 13. 类型加成合计封顶 60%：宿敌克星 40% + 屠龙者 30% = 70% → 60%
     HeroTraits.Give(fh,HeroDefOf.LP_DeedDragonslayer);fi=HeroTraits.Info(fh);fi.rec.favoredBane=true;float cap=HeroCombat.TypeBonus(fh,fi,dragon,true);fi.rec.favoredBane=false;
     Check(Near(cap,.6f) && Near(HeroCombat.TypeBonus(fh,fi,dragon,true),.55f),"type bonuses from 1.58 traits cap at +60% (bane 40% + dragonslayer 30% → "+cap+"), without bane 55%");
@@ -135,9 +135,9 @@ namespace LichPhylactery {
     Check(fired==1 && allDown && healed && !again2 && !ready && undead,"神明干预: three downed colonists trigger Lathander's dawn once (wounds healed), then it waits a quadrum; Lathander's champion targets undead (fired "+fired+", down "+allDown+", healed "+healed+", again "+again2+", ready "+ready+", undead "+undead+", sums "+string.Join("/",downed.Select(d=>d.health.hediffSet.hediffs.OfType<Hediff_Injury>().Sum(x=>x.Severity).ToString("0.##")))+", god "+HeroDestiny.ChampionGod(1)?.key+", champions "+comp.champions.Count+", stage "+HeroTraits.Record(ch).stage+")");
     foreach(var d in downed)d.Destroy();ch.Destroy();comp.Refresh();
     // 20. 屠龙者：参与击杀一条龙首领 → 授予，传奇冒险者 +5 传奇属性点
-    var ds=HtPawn();var hds=HtAdv(ds);hds.legendary=true;int lp=hds.legendPoints;var boss=HtPawn("LP_ForceDragon",AdvEnemy);HtAdv(boss).storyLevel=true;
+    var ds=HtPawn();var hds=HtAdv(ds);hds.legendary=true;int lp=hds.legendPoints;var boss=Dragons.Make("Red",0,AdvEnemy);htMade.Add(boss);
     HeroDeeds.OnKilled(boss,new HeroKillState{killer=ds,killerMelee=true});
-    Check(HeroTraits.Has(ds,HeroDefOf.LP_DeedDragonslayer) && hds.legendPoints-lp==HeroDeeds.DragonPoints && !HeroTraits.HasSlot(ds),"屠龙者: taking part in a force-dragon boss kill grants the deed and +"+(hds.legendPoints-lp)+" legend points to a legendary adventurer (no slot used)");
+    Check(HeroTraits.Has(ds,HeroDefOf.LP_DeedDragonslayer) && hds.legendPoints-lp==HeroDeeds.DragonPoints && !HeroTraits.HasSlot(ds),"屠龙者: taking part in a chromatic dragon kill grants the deed and +"+(hds.legendPoints-lp)+" legend points to a legendary adventurer (no slot used)");
     // 21. 绝境英雄：袭击中只剩一人能战斗且守住 → 授予，+1 次属性提升；25% 觉醒英雄之资
     var ls=HtPawn(null,null,true,2,-2);var hls=HtAdv(ls);int asi=hls.pendingASI;var raid=new RaidRecord{map=map,points=500f,start=Find.TickManager.TicksGame};
     var others=map.mapPawns.FreeColonistsSpawned.Where(c=>c!=ls && !c.Downed).ToList();foreach(var c in others)c.health.AddHediff(HediffDefOf.Anesthetic);

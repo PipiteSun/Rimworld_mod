@@ -116,16 +116,16 @@ namespace LichPhylactery {
   // 不能再拿副手的原因（null = 可以）。
   public static string CannotTakeOffhand(Pawn p){
    int cap=OffhandSlots(p);
-   if(cap<=0)return p.genes!=null && p.genes.GenesListForReading.Any(g=>g.Active && g.def.GetModExtension<OffhandExtension>()?.perExtraArmPair==true)?"缺少能用的额外手臂":"缺少能用的手臂";
-   return CarriedOffhands(p)>=cap?"没有空闲的手":null;
+   if(cap<=0)return p.genes!=null && p.genes.GenesListForReading.Any(g=>g.Active && g.def.GetModExtension<OffhandExtension>()?.perExtraArmPair==true)?"缺少能用的额外手臂".Loc():"缺少能用的手臂".Loc();
+   return CarriedOffhands(p)>=cap?"没有空闲的手".Loc():null;
   }
   // 右键地上的近战武器：“拿作副手：{武器}”（任何地图，包括家园；原版家里的“拿起”只给药物方针里的药）。不显示 = null。
   public static FloatMenuOption TakeOffhandOption(Pawn pawn,Thing t){
    if(pawn==null || pawn.Faction!=Faction.OfPlayer || pawn.inventory==null || !OffhandUser(pawn) || !OffhandWeapon(t) || !t.Spawned || t.Map!=pawn.Map || t.IsForbidden(pawn) || !pawn.CanReserve(t))return null;
-   string label="拿作副手："+t.LabelShort;
-   var why=CannotTakeOffhand(pawn);if(why!=null)return new FloatMenuOption(label+"（"+why+"）",null);
-   if(!pawn.CanReach(t,PathEndMode.ClosestTouch,Danger.Deadly))return new FloatMenuOption(label+"（无法到达）",null);
-   if(MassUtility.WillBeOverEncumberedAfterPickingUp(pawn,t,1))return new FloatMenuOption(label+"（太重）",null);
+   string label="拿作副手：".Loc()+t.LabelShort;
+   var why=CannotTakeOffhand(pawn);if(why!=null)return new FloatMenuOption(label+"（".Loc()+why+"）".Loc(),null);
+   if(!pawn.CanReach(t,PathEndMode.ClosestTouch,Danger.Deadly))return new FloatMenuOption(label+"（无法到达）".Loc(),null);
+   if(MassUtility.WillBeOverEncumberedAfterPickingUp(pawn,t,1))return new FloatMenuOption(label+"（太重）".Loc(),null);
    return FloatMenuUtility.DecoratePrioritizedTask(new FloatMenuOption(label,()=>{var j=JobMaker.MakeJob(JobDefOf.TakeInventory,t);j.count=1;pawn.jobs.TryTakeOrderedJob(j,JobTag.Misc);}),pawn,t);
   }
   public static bool MainHandOk(Pawn p){var w=p?.equipment?.Primary;return w==null || w.def.IsMeleeWeapon;}
@@ -159,7 +159,7 @@ namespace LichPhylactery {
    if(stage==null || built!=b){built=b;stage=new HediffStage{capMods=new List<PawnCapacityModifier>{new PawnCapacityModifier{capacity=PawnCapacityDefOf.Manipulation,offset=b}}};}
    return stage;
   }}
-  public override string LabelInBrackets=>"额外手 "+Marilith.UsableHands(pawn)+"/4，操作 +"+Marilith.ManipulationBonus(pawn).ToStringPercent();
+  public override string LabelInBrackets=>"额外手 ".Loc()+Marilith.UsableHands(pawn)+"/4，操作 +".Loc()+Marilith.ManipulationBonus(pawn).ToStringPercent();
  }
  // 蛇身本源（1.102.0，代替原来 HAR 种族上的组件）：加上、读档、每 2500 刻确认六臂状态在；去掉时六臂状态自己消失（ShouldRemove）。
  public class Gene_MarilithCore : Gene {
@@ -203,14 +203,14 @@ namespace LichPhylactery {
  // ---------- 冷血：环境低于 0℃ 移速 ×85% ----------
  public class StatPart_ColdBlood : StatPart {
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p && Marilith.Cold(p))val*=Marilith.ColdMove;}
-  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Marilith.Cold(p)?"冷血（低于0℃）：×"+Marilith.ColdMove.ToStringPercent():null;
+  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Marilith.Cold(p)?"冷血（低于0℃）：×".Loc()+Marilith.ColdMove.ToStringPercent():null;
  }
  [StaticConstructorOnStartup]
  public static class MarilithStartup {
   static MarilithStartup(){
    var stat=StatDefOf.MoveSpeed;if(stat.parts==null)stat.parts=new List<StatPart>();
    if(!stat.parts.Any(p=>p is StatPart_ColdBlood))stat.parts.Add(new StatPart_ColdBlood{parentStat=stat});
-   if(Marilith.Loaded && Marilith.DualWield)Log.Message("[DND边缘大陆] 检测到双持类模组（"+string.Join("、",Marilith.DualWieldMods())+"），六臂蛇人的副手连击已自动关闭。");
+   if(Marilith.Loaded && Marilith.DualWield)Log.Message("[DND边缘大陆] 检测到双持类模组（".Loc()+string.Join("、".Loc(),Marilith.DualWieldMods())+"），六臂蛇人的副手连击已自动关闭。".Loc());
   }
  }
  // ---------- 蛇行：泥地、沼泽、浅水的地形消耗减半（只改走路，寻路预算不改；同霜巨人雪原行者） ----------
@@ -322,7 +322,7 @@ namespace LichPhylactery {
   public static float SizeFactor(Pawn caster,Pawn target)=>Mathf.Clamp(caster.BodySize/Mathf.Max(.1f,target.BodySize),.5f,2f);
   public override bool Valid(LocalTargetInfo target,bool throwMessages=false){
    var t=target.Pawn;var p=parent.pawn;
-   string why=t==null || t.Dead?"需要选择一个活着的目标。":t==p?"不能缠住自己。":!t.Position.AdjacentTo8WayOrInside(p.Position)?"要贴身才能缠住。":null;
+   string why=t==null || t.Dead?"需要选择一个活着的目标。".Loc():t==p?"不能缠住自己。".Loc():!t.Position.AdjacentTo8WayOrInside(p.Position)?"要贴身才能缠住。".Loc():null;
    if(why!=null){if(throwMessages)Messages.Message(why,MessageTypeDefOf.RejectInput,false);return false;}
    return base.Valid(target,throwMessages);
   }
@@ -334,7 +334,7 @@ namespace LichPhylactery {
    if(h!=null){h.constrictor=caster;h.damage=dps*SizeFactor(caster,t);}
    Items.Give(caster,Marilith.Constricting,ticks);
    caster.pather?.StopDead();caster.stances?.SetStance(new Stance_Cooldown(ticks,t,null));
-   Items.Mote(t,"缠绕",new Color(.6f,.85f,.6f));
+   Items.Mote(t,"缠绕".Loc(),new Color(.6f,.85f,.6f));
    return h;
   }
  }
@@ -370,7 +370,7 @@ namespace LichPhylactery {
     p.Drawer?.Notify_MeleeAttackOn(t);
     foreach(var w in Marilith.Offhands(p)){if(t.Dead || !t.Spawned)break;if(MarilithOffhand.Strike(p,w,t,Marilith.OffhandDamage))n++;}
    }
-   Items.Mote(p,"剑刃风暴",new Color(.95f,.6f,.4f));
+   Items.Mote(p,"剑刃风暴".Loc(),new Color(.95f,.6f,.4f));
    return n;
   }
  }
@@ -407,8 +407,8 @@ namespace LichPhylactery {
  }
  public static class MarilithSettings {
   public static void Draw(Listing_Standard l){
-   l.GapLine();l.Label("六臂蛇人");
-   l.Label("副手追加伤害："+LichMod.Settings.offhandDamage.ToStringPercent()+(Marilith.DualWield?"（已检测到双持类模组，副手连击关闭）":""));
+   l.GapLine();l.Label("六臂蛇人".Loc());
+   l.Label("副手追加伤害：".Loc()+LichMod.Settings.offhandDamage.ToStringPercent()+(Marilith.DualWield?"（已检测到双持类模组，副手连击关闭）".Loc():""));
    LichMod.Settings.offhandDamage=Mathf.Round(l.Slider(LichMod.Settings.offhandDamage,.25f,1f)*20f)/20f;
   }
  }

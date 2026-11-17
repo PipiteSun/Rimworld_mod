@@ -49,8 +49,8 @@ namespace LichPhylactery {
    if(!any){if(Users.Remove(p))foreach(var (a,hd) in Permanent)Items.Remove(p,hd);return;}
    Users.Add(p);
    foreach(var (a,hd) in Permanent){bool k=ClassSystem.Knows(p,a);if(k && !Items.Has(p,hd))Items.Give(p,hd);else if(!k && Items.Has(p,hd))Items.Remove(p,hd);}
-   if(ClassSystem.Knows(p,"LP_MO_ThousandForms") && InForm(p)){float amt=FormHealBase+FormHealPerLevel*Level(p,druid);if(ClassMelee.Heal(p,amt)>0f)Items.Mote(p,"千面变形",Moonlight);}
-   if(ClassSystem.Knows(p,"LP_CP_Survivor") && ClassMelee.InjurySum(p)>SurvivorThreshold){float amt=SurvivorBase+Mathf.Max(0f,h.AModRace(Adventurer.Con));if(ClassMelee.Heal(p,amt)>0f)Items.Mote(p,"卓越生存者",Gold);}
+   if(ClassSystem.Knows(p,"LP_MO_ThousandForms") && InForm(p)){float amt=FormHealBase+FormHealPerLevel*Level(p,druid);if(ClassMelee.Heal(p,amt)>0f)Items.Mote(p,"千面变形".Loc(),Moonlight);}
+   if(ClassSystem.Knows(p,"LP_CP_Survivor") && ClassMelee.InjurySum(p)>SurvivorThreshold){float amt=SurvivorBase+Mathf.Max(0f,h.AModRace(Adventurer.Con));if(ClassMelee.Heal(p,amt)>0f)Items.Mote(p,"卓越生存者".Loc(),Gold);}
   }
   // ---------- 威力 ----------
   public static float PowerFactor(Pawn p,CompProperties_ClassEffect e){
@@ -64,21 +64,21 @@ namespace LichPhylactery {
    var p=a?.pawn;var e=a?.Props;if(p==null || e==null || Users.Count==0 || !Users.Contains(p))return;
    if(e.stat!=null && e.stat.defName=="LP_ArcanePower" && ClassSystem.Knows(p,"LP_DI_ExpertDivination"))ClassCasters.ScaleCooldown(a,DivinationCooldown);
    if(ClassSystem.Knows(p,"LP_GD_SentinelAtDeath") && e.stat!=null && e.stat.defName=="LP_DivinePower" && (e.effect=="Heal" || e.effect=="CS_Heal") && target.Thing is Pawn t && t!=p && ClassMelee.InjurySum(t)>SurvivorThreshold){
-    float h=ClassMelee.Heal(t,ClassEffects.Power(p,e));if(h>0f)Items.Mote(t,"死亡哨兵 +"+h.ToString("0"),Grey);
+    float h=ClassMelee.Heal(t,ClassEffects.Power(p,e));if(h>0f)Items.Mote(t,"死亡哨兵 +".Loc()+h.ToString("0"),Grey);
    }
   }
   // ---------- 选目标 ----------
   public static string Invalid(Pawn caster,CompProperties_ClassEffect e,LocalTargetInfo target){
    var t=target.Thing as Pawn;
    switch(e.effect){
-    case "S6_Purify":if(t==null || t.Dead)return "需要选择一个活着的目标。";if(t.HostileTo(caster))return "只能对友军使用。";return null;
+    case "S6_Purify":if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();if(t.HostileTo(caster))return "只能对友军使用。".Loc();return null;
     case "S6_ReadThoughts":case "S6_HexCurse":case "S6_GraveMark":case "S6_SoulThrow":case "S6_RendMind":
-     if(t==null || t.Dead)return "需要选择一个活着的目标。";if(!t.HostileTo(caster))return "只能对敌人使用。";return null;
+     if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();if(!t.HostileTo(caster))return "只能对敌人使用。".Loc();return null;
     case "S6_CommandUndead":
-     if(t==null || t.Dead)return "需要选择一个活着的目标。";if(!t.HostileTo(caster))return "只能对敌人使用。";
-     if(!IsUndead(t))return "只能对亡灵使用。";return null;
+     if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();if(!t.HostileTo(caster))return "只能对敌人使用。".Loc();
+     if(!IsUndead(t))return "只能对亡灵使用。".Loc();return null;
     case "S6_Thralls":return WizardSpells.AnimateCannot(target.Thing as Corpse);
-    case "S6_Ward":if(e.range>0f || t==null)return t==null?"需要选择一个活着的目标。":null;return t.HostileTo(caster)?"只能对友军使用。":null;
+    case "S6_Ward":if(e.range>0f || t==null)return t==null?"需要选择一个活着的目标。".Loc():null;return t.HostileTo(caster)?"只能对友军使用。".Loc():null;
    }
    return null;
   }
@@ -88,56 +88,56 @@ namespace LichPhylactery {
    var t=target.Thing as Pawn;int dur=ClassEffects.Duration(p,e);float pw=ClassEffects.Power(p,e);float rad=ClassEffects.Radius(p,e);
    switch(e.effect){
     case "S6_Purify":if(t!=null)Purify(p,t);return true;
-    case "S6_AvengingAngel":Items.Give(p,"LP_VN_AngelBuff",dur);ClassEffects.BattleCry(p,rad,600,ClassEffects.Strength(p,e));Items.Mote(p,"复仇天使",Blood);return true;
+    case "S6_AvengingAngel":Items.Give(p,"LP_VN_AngelBuff",dur);ClassEffects.BattleCry(p,rad,600,ClassEffects.Strength(p,e));Items.Mote(p,"复仇天使".Loc(),Blood);return true;
     case "S6_ReadThoughts":if(t!=null && Hostile(p,t))ReadThoughts(p,t,dur);return true;
     case "S6_Visions":Visions(p,rad,dur);return true;
-    case "S6_GraveMark":if(t!=null && Hostile(p,t))ClassMartial2.MarkTarget(p,t,"LP_GD_Marked",dur,1f,Grey,"通往坟墓");return true;
-    case "S6_HexCurse":if(t!=null && Hostile(p,t))ClassMartial2.MarkTarget(p,t,"LP_HX_Cursed",dur,1f,Hex,"咒剑诅咒");return true;
+    case "S6_GraveMark":if(t!=null && Hostile(p,t))ClassMartial2.MarkTarget(p,t,"LP_GD_Marked",dur,1f,Grey,"通往坟墓".Loc());return true;
+    case "S6_HexCurse":if(t!=null && Hostile(p,t))ClassMartial2.MarkTarget(p,t,"LP_HX_Cursed",dur,1f,Hex,"咒剑诅咒".Loc());return true;
     case "S6_CelestialWard":CelestialWard(p,rad,dur);return true;
     case "S6_Thralls":Thralls(p,target.Thing as Corpse);return true;
     case "S6_CommandUndead":if(t!=null && Hostile(p,t))CommandUndead(p,t,dur);return true;
     case "S6_Ward":{var who=t??p;if(who!=p && !Friendly(p,who))return true;GiveWard(p,who,dur);return true;}
     case "S6_Phantasm":Phantasm(p,rad,dur);return true;
-    case "S6_SoulThrow":if(t!=null && Hostile(p,t)){t.TakeDamage(new DamageInfo(PsiDamage,pw,.5f,-1f,p));Items.Mote(t,"魂刃投掷",Psi);}return true;
-    case "S6_RendMind":if(t!=null && Hostile(p,t)){t.TakeDamage(new DamageInfo(PsiDamage,pw,.5f,-1f,p));if(!t.Dead && !DNDMind.TryResist(t))t.stances?.stunner?.StunFor(RendStun,p);Items.Mote(t,"撕裂心灵",Psi);}return true;
+    case "S6_SoulThrow":if(t!=null && Hostile(p,t)){t.TakeDamage(new DamageInfo(PsiDamage,pw,.5f,-1f,p));Items.Mote(t,"魂刃投掷".Loc(),Psi);}return true;
+    case "S6_RendMind":if(t!=null && Hostile(p,t)){t.TakeDamage(new DamageInfo(PsiDamage,pw,.5f,-1f,p));if(!t.Dead && !DNDMind.TryResist(t))t.stances?.stunner?.StunFor(RendStun,p);Items.Mote(t,"撕裂心灵".Loc(),Psi);}return true;
    }
    return false;
   }
   public static string Purify(Pawn p,Pawn t){
    var parts=new List<string>();
    var s=PaladinCore.Cleanse(t,1f);if(s!=null)parts.Add(s);
-   if(Items.Has(t,"LP_Shaken")){Items.Remove(t,"LP_Shaken");parts.Add("解除震慑");}
-   if(t.InMentalState && HeroismFearImmunity.Fear(t.MentalStateDef)){t.MentalState.RecoverFromState();parts.Add("驱散恐惧");}
-   string text=parts.Count==0?"净化之触":string.Join("、",parts);Items.Mote(t,text,Holy);return text;
+   if(Items.Has(t,"LP_Shaken")){Items.Remove(t,"LP_Shaken");parts.Add("解除震慑".Loc());}
+   if(t.InMentalState && HeroismFearImmunity.Fear(t.MentalStateDef)){t.MentalState.RecoverFromState();parts.Add("驱散恐惧".Loc());}
+   string text=parts.Count==0?"净化之触".Loc():string.Join("、".Loc(),parts);Items.Mote(t,text,Holy);return text;
   }
   public static bool ReadThoughts(Pawn p,Pawn t,int ticks){
-   ClassMartial2.MarkTarget(p,t,"LP_KD_Read",ticks,1f,Lore,"读心");
+   ClassMartial2.MarkTarget(p,t,"LP_KD_Read",ticks,1f,Lore,"读心".Loc());
    bool shaken=t.RaceProps.Humanlike && !DNDMind.TryResist(t);if(shaken)Items.Give(t,"LP_Shaken",600,1f);
    return shaken;
   }
   public static int Visions(Pawn p,float radius,int ticks){
    int n=0;if(p.Map==null)return 0;
    foreach(var t in Races124.PawnsNear(p.Map,p.Position,radius).ToList()){if(t==p || !Hostile(p,t) || t.Dead)continue;Items.Give(t,"LP_Shaken",ticks,1f);if(!DNDMind.TryResist(t))t.stances?.stunner?.StunFor(VisionStun,p);n++;}
-   Items.Mote(p,"过往之景",Lore);return n;
+   Items.Mote(p,"过往之景".Loc(),Lore);return n;
   }
   public static int CelestialWard(Pawn p,float radius,int ticks){
    float amount=CelestialWardBase+Level(p,warlock);int n=0;LakeArcana.Touched=true;
    Items.Give(p,"LP_ACB_Shield",ticks,amount);n++;
    if(p.Map!=null)foreach(var a in Races124.PawnsNear(p.Map,p.Position,radius).ToList()){if(a==p || a.Dead || !Friendly(p,a))continue;Items.Give(a,"LP_ACB_Shield",ticks,amount);n++;}
-   Items.Mote(p,"天界抗性 "+amount.ToString("0"),Sun);return n;
+   Items.Mote(p,"天界抗性 ".Loc()+amount.ToString("0"),Sun);return n;
   }
   public static float GiveWard(Pawn caster,Pawn who,int ticks){
    float amount=WardBase+WardPerLevel*Level(caster,wizard);LakeArcana.Touched=true;
-   Items.Give(who,"LP_ACB_Shield",ticks,amount);Items.Mote(who,"奥术守护 "+amount.ToString("0"),Ward);return amount;
+   Items.Give(who,"LP_ACB_Shield",ticks,amount);Items.Mote(who,"奥术守护 ".Loc()+amount.ToString("0"),Ward);return amount;
   }
-  public static List<Pawn> Thralls(Pawn p,Corpse c){var got=WizardSpells2.Raise(p,c,1,"死灵仆役");return got;}
+  public static List<Pawn> Thralls(Pawn p,Corpse c){var got=WizardSpells2.Raise(p,c,1,"死灵仆役".Loc());return got;}
   public static bool CommandUndead(Pawn p,Pawn t,int ticks){
-   var r=ClassCasters.Charm(p,t,ticks,0f);Items.Mote(t,r??"亡灵统御",Rot);return r==null;
+   var r=ClassCasters.Charm(p,t,ticks,0f);Items.Mote(t,r??"亡灵统御".Loc(),Rot);return r==null;
   }
   public static int Phantasm(Pawn p,float radius,int ticks){
    int n=0;if(p.Map==null)return 0;
-   foreach(var t in Races124.PawnsNear(p.Map,p.Position,radius).ToList()){if(t==p || !Hostile(p,t) || t.Dead)continue;if(DNDMind.TryResist(t))continue;if(ClassSubclass.Fear(t,ticks,"变化幻象"))n++;}
-   Items.Mote(p,"变化幻象",Veil);return n;
+   foreach(var t in Races124.PawnsNear(p.Map,p.Position,radius).ToList()){if(t==p || !Hostile(p,t) || t.Dead)continue;if(DNDMind.TryResist(t))continue;if(ClassSubclass.Fear(t,ticks,"变化幻象".Loc()))n++;}
+   Items.Mote(p,"变化幻象".Loc(),Veil);return n;
   }
 
   // ---------- 不倒（灼热复仇、幻影自我） ----------
@@ -147,13 +147,13 @@ namespace LichPhylactery {
     ClassMelee.Heal(p,ClassMelee.InjurySum(p)*.5f);Items.Give(p,"LP_StaunchBleeding",2500);
     var e=DefCache<AbilityDef>.Get("LP_CE_SearingVengeance")?.comps?.OfType<CompProperties_ClassEffect>().FirstOrDefault();float pw=e==null?10f:ClassEffects.Power(p,e);
     if(p.Map!=null)foreach(var t in Races124.PawnsNear(p.Map,p.Position,4f).ToList()){if(t==p || t.Dead || !t.HostileTo(p))continue;t.TakeDamage(new DamageInfo(PaladinCore.Radiant,PaladinCore.HolyAmount(t,pw),.4f,-1f,p));}
-    Items.Mote(p,"灼热复仇",Sun);return true;
+    Items.Mote(p,"灼热复仇".Loc(),Sun);return true;
    }
    if(ClassSystem.Knows(p,"LP_IU_IllusorySelf") && UseDaily(p,"illusorySelf",1)){
     ClassMelee.Heal(p,ClassMelee.InjurySum(p)*.25f);Items.Give(p,"LP_StaunchBleeding",2500);
     var map=p.Map;
     if(map!=null && p.Spawned){var from=p.Position;if(CellFinder.TryFindRandomCellNear(p.Position,map,5,c=>c.InBounds(map) && c.Standable(map) && c.GetFirstPawn(map)==null && c!=p.Position,out var cell)){FleckMaker.ThrowDustPuffThick(p.DrawPos,map,1.5f,Veil);Races124.Blink(p,cell);FleckMaker.ThrowDustPuffThick(from.ToVector3Shifted(),map,1.5f,Veil);}}
-    Items.Mote(p,"幻影自我",Veil);return true;
+    Items.Mote(p,"幻影自我".Loc(),Veil);return true;
    }
    return false;
   }
@@ -163,23 +163,23 @@ namespace LichPhylactery {
    int max=ClassSystem.Knows(v,"LP_DI_GreaterPortent")?GreaterPortentPerDay:ClassSystem.Knows(v,"LP_DI_Portent")?PortentPerDay:0;
    if(max<=0 || !UseDaily(v,"portent",max))return false;
    bool ok=(roll??TestRoll??Rand.Value)<Legendary.SaveChance(v,a,dc,source);
-   Items.Mote(v,ok?"预兆：重判成功":"预兆：重判失败",Sight);return ok;
+   Items.Mote(v,ok?"预兆：重判成功".Loc():"预兆：重判失败".Loc(),Sight);return ok;
   }
   // ---------- 杀敌：收割亡魂、咒剑诅咒回血、灵魂守护 ----------
   public static void Killed(Pawn victim,Pawn killer){
    if(Users.Count==0 || victim==null)return;var map=victim.MapHeld;var at=victim.PositionHeld;
    if(killer!=null && Users.Contains(killer) && !killer.Dead){
-    if(ClassSystem.Knows(killer,"LP_NM_GrimHarvest") && victim.HostileTo(killer) && (map==null || killer.Map==map && killer.Position.DistanceTo(at)<=10f)){float h=ClassMelee.Heal(killer,HarvestBase+Level(killer,wizard));if(h>0f)Items.Mote(killer,"收割亡魂 +"+h.ToString("0"),Rot);}
+    if(ClassSystem.Knows(killer,"LP_NM_GrimHarvest") && victim.HostileTo(killer) && (map==null || killer.Map==map && killer.Position.DistanceTo(at)<=10f)){float h=ClassMelee.Heal(killer,HarvestBase+Level(killer,wizard));if(h>0f)Items.Mote(killer,"收割亡魂 +".Loc()+h.ToString("0"),Rot);}
    }
    var cursed=victim.health?.hediffSet?.GetFirstHediffOfDef(Items.Hediff("LP_HX_Cursed")) as Hediff_ClassMark;
-   if(cursed?.caster!=null && !cursed.caster.Dead && Users.Contains(cursed.caster)){var c=cursed.caster;float h=ClassMelee.Heal(c,HarvestBase+Level(c,warlock));if(h>0f)Items.Mote(c,"咒剑诅咒 +"+h.ToString("0"),Hex);}
+   if(cursed?.caster!=null && !cursed.caster.Dead && Users.Contains(cursed.caster)){var c=cursed.caster;float h=ClassMelee.Heal(c,HarvestBase+Level(c,warlock));if(h>0f)Items.Mote(c,"咒剑诅咒 +".Loc()+h.ToString("0"),Hex);}
    if(map==null)return;
    foreach(var k in Users.ToList()){
     if(k==null || k.Dead || k.Map!=map || !ClassSystem.Knows(k,"LP_GD_KeeperOfSouls") || !victim.HostileTo(k) || k.Position.DistanceTo(at)>10f)continue;
     var sd=ClassSubclass.Data(k);if(sd==null)continue;sd.ticks.TryGetValue("keeper",out int last);if(last>0 && Now-last<KeeperInterval && Now>=last)continue;sd.ticks["keeper"]=Math.Max(1,Now);
     float amt=KeeperBase+Level(k,cleric);ClassMelee.Heal(k,amt);
     foreach(var a in Races124.PawnsNear(map,k.Position,4f).ToList()){if(a==k || a.Dead || a.HostileTo(k))continue;ClassMelee.Heal(a,amt);}
-    Items.Mote(k,"灵魂守护",Grey);
+    Items.Mote(k,"灵魂守护".Loc(),Grey);
    }
   }
   // ---------- 伤害（攻击者一侧） ----------
@@ -197,7 +197,7 @@ namespace LichPhylactery {
   // 返回伤害倍率；穿透写回 dinfo。
   public static float Outgoing(Pawn a,Pawn v,ref DamageInfo d){
    float f=1f;
-   if(ClassSystem.Knows(a,"LP_CP_ImprovedCritical") && Weapon(d) && v.HostileTo(a)){float ch=ClassSystem.Knows(a,"LP_CP_Survivor")?CritChanceHigh:CritChance;if(Roll<ch){f*=CritFactor;Crits++;Items.Mote(a,"精益求精！",Gold);}}
+   if(ClassSystem.Knows(a,"LP_CP_ImprovedCritical") && Weapon(d) && v.HostileTo(a)){float ch=ClassSystem.Knows(a,"LP_CP_Survivor")?CritChanceHigh:CritChance;if(Roll<ch){f*=CritFactor;Crits++;Items.Mote(a,"精益求精！".Loc(),Gold);}}
    if(ClassSystem.Knows(a,"LP_MO_PrimalStrike") && InForm(a) && MeleeHit(d))SetPen(ref d,d.ArmorPenetrationInt+PrimalPen);
    if(ClassSystem.Knows(a,"LP_VN_RelentlessAvenger") && MeleeHit(d) && v.health?.hediffSet?.GetFirstHediffOfDef(Items.Hediff("LP_Enmity")) is Hediff_Enmity en && en.caster==a){f*=AvengerFactor;Items.Give(a,"LP_VN_Relentless",RelentlessTicks);}
    if(ClassSystem.Knows(a,"LP_SB_RakishAudacity") && MeleeHit(d) && v.HostileTo(a) && Alone(a,v))f*=AudacityFactor;
@@ -207,7 +207,7 @@ namespace LichPhylactery {
   public static float Incoming(Pawn v,Pawn a,DamageInfo d){
    float f=1f;var set=v.health?.hediffSet;if(set==null)return 1f;
    if(a!=null && a!=v && d.Def.harmsHealth){
-    var gm=set.GetFirstHediffOfDef(Items.Hediff("LP_GD_Marked"));if(gm!=null && (gm as Hediff_ClassMark)?.caster!=null && !a.HostileTo((gm as Hediff_ClassMark).caster)){f*=GraveMarkFactor;var vv=v;var hh=gm;Fiends.Defer(()=>{if(!vv.Dead && hh.pawn==vv)vv.health.RemoveHediff(hh);});Items.Mote(v,"通往坟墓！",Grey);}
+    var gm=set.GetFirstHediffOfDef(Items.Hediff("LP_GD_Marked"));if(gm!=null && (gm as Hediff_ClassMark)?.caster!=null && !a.HostileTo((gm as Hediff_ClassMark).caster)){f*=GraveMarkFactor;var vv=v;var hh=gm;Fiends.Defer(()=>{if(!vv.Dead && hh.pawn==vv)vv.health.RemoveHediff(hh);});Items.Mote(v,"通往坟墓！".Loc(),Grey);}
     var cu=set.GetFirstHediffOfDef(Items.Hediff("LP_HX_Cursed")) as Hediff_ClassMark;if(cu?.caster!=null && ClassSystem.Knows(cu.caster,"LP_HX_MasterOfHexes"))f*=HexMasterFactor/HexFactor;
    }
    if(a!=null && Users.Contains(v) && ClassSystem.Knows(v,"LP_HX_MasterOfHexes") && a.health?.hediffSet?.GetFirstHediffOfDef(Items.Hediff("LP_HX_Cursed")) is Hediff_ClassMark ac && ac.caster==v)f*=HexMasterGuard;
@@ -219,8 +219,8 @@ namespace LichPhylactery {
    if(Busy || a==null || v==null || v.Dead || Users.Count==0 || !Users.Contains(a) || !v.HostileTo(a) || !Weapon(d))return;
    var sd=ClassSubclass.Data(a);if(sd==null)return;
    var sw=a.health.hediffSet.GetFirstHediffOfDef(Items.Hediff("LP_DT_SacredWeaponBuff"));
-   if(sw!=null && Due(sd,"swT")){float amt=PaladinCore.HolyAmount(v,sw.Severity);var tv=v;var me=a;Fiends.Defer(()=>{if(tv.Dead || !tv.Spawned)return;Busy=true;try{tv.TakeDamage(new DamageInfo(PaladinCore.Radiant,amt,.3f,-1f,me));}finally{Busy=false;}});Items.Mote(v,"神圣武器",Holy);}
-   if(ClassSystem.Knows(a,"LP_WD_DivineStrike") && Due(sd,"wdT")){var dp=DefCache<StatDef>.Get("LP_DivinePower");float amt=(Level(a,cleric)>=14?16f:8f)*(dp==null?1f:a.GetStatValue(dp));var def=d.Def??DamageDefOf.Blunt;var tv=v;var me=a;Fiends.Defer(()=>{if(tv.Dead || !tv.Spawned)return;Busy=true;try{tv.TakeDamage(new DamageInfo(def,amt,.3f,-1f,me));}finally{Busy=false;}});Items.Mote(v,"神圣打击",Iron);}
+   if(sw!=null && Due(sd,"swT")){float amt=PaladinCore.HolyAmount(v,sw.Severity);var tv=v;var me=a;Fiends.Defer(()=>{if(tv.Dead || !tv.Spawned)return;Busy=true;try{tv.TakeDamage(new DamageInfo(PaladinCore.Radiant,amt,.3f,-1f,me));}finally{Busy=false;}});Items.Mote(v,"神圣武器".Loc(),Holy);}
+   if(ClassSystem.Knows(a,"LP_WD_DivineStrike") && Due(sd,"wdT")){var dp=DefCache<StatDef>.Get("LP_DivinePower");float amt=(Level(a,cleric)>=14?16f:8f)*(dp==null?1f:a.GetStatValue(dp));var def=d.Def??DamageDefOf.Blunt;var tv=v;var me=a;Fiends.Defer(()=>{if(tv.Dead || !tv.Spawned)return;Busy=true;try{tv.TakeDamage(new DamageInfo(def,amt,.3f,-1f,me));}finally{Busy=false;}});Items.Mote(v,"神圣打击".Loc(),Iron);}
   }
   static bool Due(SubclassData sd,string key){sd.ticks.TryGetValue(key,out int last);if(last>0 && Now-last<StrikeInterval && Now>=last)return false;sd.ticks[key]=Math.Max(1,Now);return true;}
   public static readonly HashSet<string> NoAi=new HashSet<string>{"S6_Thralls","S6_CommandUndead","S6_Purify"};
@@ -277,7 +277,7 @@ namespace LichPhylactery {
    var classes=new[]{"LP_Class_Druid","LP_Class_Fighter","LP_Class_Paladin","LP_Class_Cleric","LP_Class_Warlock","LP_Class_Wizard","LP_Class_Rogue"}.Select(n=>DefDatabase<LP_ClassDef>.GetNamedSilentFail(n)).Where(c=>c!=null).ToList();
    var who=PawnsFinder.AllMaps_FreeColonists.Where(p=>{var h=Adventurer.Get(p);return h!=null && classes.Any(c=>ClassSubclass.NeedsPick(h,c));}).ToList();
    if(who.Count==0)return;
-   Find.LetterStack.ReceiveLetter("新的子职业","1.140.0 多了 15 个子职业：月亮结社、勇士、奉献之誓、复仇之誓、战争 / 知识 / 坟墓领域、咒剑 / 天界宗主、死灵 / 预言 / 防护 / 幻术学派、风流剑客、魂刃。\n\n还没选子职业的人："+string.Join("、",who.Select(p=>p.LabelShort))+"。选中他们，用「选择子职业」按钮打开窗口。",LetterDefOf.NeutralEvent,new LookTargets(who.Cast<Thing>()));
+   Find.LetterStack.ReceiveLetter("新的子职业".Loc(),"1.140.0 多了 15 个子职业：月亮结社、勇士、奉献之誓、复仇之誓、战争 / 知识 / 坟墓领域、咒剑 / 天界宗主、死灵 / 预言 / 防护 / 幻术学派、风流剑客、魂刃。\n\n还没选子职业的人：".Loc()+string.Join("、".Loc(),who.Select(p=>p.LabelShort))+"。选中他们，用「选择子职业」按钮打开窗口。".Loc(),LetterDefOf.NeutralEvent,new LookTargets(who.Cast<Thing>()));
   }
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref notified,"lpSub6Notified");}
  }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（SpellPageFix.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>[DND边缘大陆] 读档修复：丢掉 </zh><en>[DND Rimlands] Load fix: dropped </en></s>
+  <s><zh> 张数量为 0 的旧法术页残留。</zh><en> leftover old spell pages with quantity 0.</en></s>
+  <s><zh>[DND边缘大陆] 读档修复：给 </zh><en>[DND Rimlands] Load fix: gave new IDs to </en></s>
+  <s><zh> 张撞号的旧法术页换了新编号。</zh><en> old spell pages with clashing IDs.</en></s>
+  <s><zh>[DND边缘大陆] 读档修复：清掉地图物品清单里 </zh><en>[DND Rimlands] Load fix: cleared </en></s>
+  <s><zh> 个没生成在地图上的残留（旧版法术页撞号留下的）。</zh><en> leftovers in the map item list that never spawned on the map (left by old clashing spell page IDs).</en></s>
+</LPStrings>

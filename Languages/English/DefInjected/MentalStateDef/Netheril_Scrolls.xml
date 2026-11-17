@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 卡苏斯的妄念 -->
+  <LP_KarsusObsession.label>Karsus's delusion</LP_KarsusObsession.label>
+  <!-- 精神状态：卡苏斯的妄念 -->
+  <LP_KarsusObsession.baseInspectLine>Mental state: Karsus's delusion</LP_KarsusObsession.baseInspectLine>
+  <!-- {0}被卡苏斯之卷迷住了：接下来一天里拒绝工作，只读卡苏斯之卷，读不了就在耐瑟祭坛旁游荡。 -->
+  <LP_KarsusObsession.beginLetter>{0} is entranced by the Scroll of Karsus: for the next day refuses to work and only reads the Scroll of Karsus, wandering near the Netherese altar when it can't be read.</LP_KarsusObsession.beginLetter>
+  <!-- 卡苏斯的妄念 -->
+  <LP_KarsusObsession.beginLetterLabel>Karsus's delusion</LP_KarsusObsession.beginLetterLabel>
+  <!-- {0}从卡苏斯的妄念里醒了过来。 -->
+  <LP_KarsusObsession.recoveryMessage>{0} woke from Karsus's delusion.</LP_KarsusObsession.recoveryMessage>
+</LanguageData>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 重申真名 -->
+  <LP_ReassertName.label>reaffirm true name</LP_ReassertName.label>
+  <!-- r_logentry->[INITIATOR_nameDef]低声对[RECIPIENT_nameDef]念出了它的真名，提醒它是谁的仆从。 | r_logentry->[INITIATOR_nameDef]用真名叫住了[RECIPIENT_nameDef]，它不情愿地低下了头。 -->
+  <LP_ReassertName.logRulesInitiator.rulesStrings>
+    <li>r_logentry-&gt;[INITIATOR_nameDef] whispered [RECIPIENT_nameDef]'s true name, reminding it whose servant it is.</li>
+    <li>r_logentry-&gt;[INITIATOR_nameDef] called [RECIPIENT_nameDef] by its true name, and it lowered its head unwillingly.</li>
+  </LP_ReassertName.logRulesInitiator.rulesStrings>
+</LanguageData>

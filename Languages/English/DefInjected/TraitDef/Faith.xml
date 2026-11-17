@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 信徒（洛山达） -->
+  <LP_Devotee.degreeDatas.0.label>follower (Lathander)</LP_Devotee.degreeDatas.0.label>
+  <!-- [PAWN_nameDef]是晨曦之神洛山达的信徒：在圣坛祈祷得到的神眷翻倍；种植速度+10%。殖民地的守护神是洛山达时心情+4，是他的敌对神时心情-6。 -->
+  <LP_Devotee.degreeDatas.0.description>[PAWN_nameDef] is a follower of Lathander, god of dawn: divine favor from praying at the altar doubled; plant work speed +10%. Mood +4 when the colony's patron deity is Lathander, -6 when it is one of his enemies.</LP_Devotee.degreeDatas.0.description>
+  <!-- 信徒（提尔） -->
+  <LP_Devotee.degreeDatas.1.label>follower (Tyr)</LP_Devotee.degreeDatas.1.label>
+  <!-- [PAWN_nameDef]是正义之神提尔的信徒：在圣坛祈祷得到的神眷翻倍；和人打架的可能-25%。殖民地的守护神是提尔时心情+4，是他的敌对神时心情-6。 -->
+  <LP_Devotee.degreeDatas.1.description>[PAWN_nameDef] is a follower of Tyr, god of justice: divine favor from praying at the altar doubled; chance of starting fights -25%. Mood +4 when the colony's patron deity is Tyr, -6 when it is one of his enemies.</LP_Devotee.degreeDatas.1.description>
+  <!-- 信徒（密斯特拉） -->
+  <LP_Devotee.degreeDatas.2.label>follower (Mystra)</LP_Devotee.degreeDatas.2.label>
+  <!-- [PAWN_nameDef]是魔法女神密斯特拉的信徒：在圣坛祈祷得到的神眷翻倍；心灵敏感度+10%。殖民地的守护神是密斯特拉时心情+4，是她的敌对神时心情-6。 -->
+  <LP_Devotee.degreeDatas.2.description>[PAWN_nameDef] is a follower of Mystra, goddess of magic: divine favor from praying at the altar doubled; psychic sensitivity +10%. Mood +4 when the colony's patron deity is Mystra, -6 when it is one of her enemies.</LP_Devotee.degreeDatas.2.description>
+  <!-- 信徒（凯兰沃） -->
+  <LP_Devotee.degreeDatas.3.label>follower (Kelemvor)</LP_Devotee.degreeDatas.3.label>
+  <!-- [PAWN_nameDef]是死亡之神凯兰沃的信徒：在圣坛祈祷得到的神眷翻倍；手术成功率+5%，看到尸体不难受。殖民地的守护神是凯兰沃时心情+4。 -->
+  <LP_Devotee.degreeDatas.3.description>[PAWN_nameDef] is a follower of Kelemvor, god of death: divine favor from praying at the altar doubled; surgery success +5%, not bothered by seeing corpses. Mood +4 when the colony's patron deity is Kelemvor.</LP_Devotee.degreeDatas.3.description>
+  <!-- 信徒（马拉尔） -->
+  <LP_Devotee.degreeDatas.4.label>follower (Malar)</LP_Devotee.degreeDatas.4.label>
+  <!-- [PAWN_nameDef]是狩猎之神马拉尔的信徒：在圣坛祈祷得到的神眷翻倍；打猎时命中+10%。殖民地的守护神是马拉尔时心情+4，是他的敌对神时心情-6。 -->
+  <LP_Devotee.degreeDatas.4.description>[PAWN_nameDef] is a follower of Malar, god of the hunt: divine favor from praying at the altar doubled; hit +10% when hunting. Mood +4 when the colony's patron deity is Malar, -6 when it is one of his enemies.</LP_Devotee.degreeDatas.4.description>
+  <!-- 信徒（塔洛斯） -->
+  <LP_Devotee.degreeDatas.5.label>follower (Talos)</LP_Devotee.degreeDatas.5.label>
+  <!-- [PAWN_nameDef]是风暴之神塔洛斯的信徒：在圣坛祈祷得到的神眷翻倍；雷暴天心情+3。殖民地的守护神是塔洛斯时心情+4，是他的敌对神时心情-6。 -->
+  <LP_Devotee.degreeDatas.5.description>[PAWN_nameDef] is a follower of Talos, god of storms: divine favor from praying at the altar doubled; mood +3 in thunderstorms. Mood +4 when the colony's patron deity is Talos, -6 when it is one of his enemies.</LP_Devotee.degreeDatas.5.description>
+  <!-- 信徒（班恩） -->
+  <LP_Devotee.degreeDatas.6.label>follower (Bane)</LP_Devotee.degreeDatas.6.label>
+  <!-- [PAWN_nameDef]是暴政之神班恩的信徒：在圣坛祈祷得到的神眷翻倍；镇压奴隶的效果+20%。殖民地的守护神是班恩时心情+4，是他的敌对神时心情-6。 -->
+  <LP_Devotee.degreeDatas.6.description>[PAWN_nameDef] is a follower of Bane, god of tyranny: divine favor from praying at the altar doubled; slave suppression effect +20%. Mood +4 when the colony's patron deity is Bane, -6 when it is one of his enemies.</LP_Devotee.degreeDatas.6.description>
+  <!-- 信徒（莎尔） -->
+  <LP_Devotee.degreeDatas.7.label>follower (Shar)</LP_Devotee.degreeDatas.7.label>
+  <!-- [PAWN_nameDef]是黑暗之神莎尔的信徒：在圣坛祈祷得到的神眷翻倍；在黑暗里不会难受。殖民地的守护神是莎尔时心情+4，是她的敌对神时心情-6。 -->
+  <LP_Devotee.degreeDatas.7.description>[PAWN_nameDef] is a follower of Shar, goddess of darkness: divine favor from praying at the altar doubled; not bothered by darkness. Mood +4 when the colony's patron deity is Shar, -6 when it is one of her enemies.</LP_Devotee.degreeDatas.7.description>
+  <!-- 信徒（苏尔特） -->
+  <LP_Devotee.degreeDatas.8.label>follower (Surtur)</LP_Devotee.degreeDatas.8.label>
+  <!-- [PAWN_nameDef]是火巨人之王苏尔特的信徒：在圣坛祈祷得到的神眷翻倍；锻造速度+10%。殖民地的守护神是苏尔特时心情+4。 -->
+  <LP_Devotee.degreeDatas.8.description>[PAWN_nameDef] is a follower of Surtur, king of fire giants: divine favor from praying at the altar doubled; smithing speed +10%. Mood +4 when the colony's patron deity is Surtur.</LP_Devotee.degreeDatas.8.description>
+  <!-- 信徒（伊尔斯维） -->
+  <LP_Devotee.degreeDatas.9.label>follower (Ilsensine)</LP_Devotee.degreeDatas.9.label>
+  <!-- [PAWN_nameDef]侍奉夺心魔之神伊尔斯维。 -->
+  <LP_Devotee.degreeDatas.9.description>[PAWN_nameDef] serves Ilsensine, god of the mind flayers.</LP_Devotee.degreeDatas.9.description>
+  <!-- 信徒（维拉基斯） -->
+  <LP_Devotee.degreeDatas.10.label>follower (Vlaakith)</LP_Devotee.degreeDatas.10.label>
+  <!-- [PAWN_nameDef]侍奉巫妖女王维拉基斯。 -->
+  <LP_Devotee.degreeDatas.10.description>[PAWN_nameDef] serves the lich-queen Vlaakith.</LP_Devotee.degreeDatas.10.description>
+  <!-- 信仰 -->
+  <LP_Devotee.modExtensions.0.kind>faith</LP_Devotee.modExtensions.0.kind>
+  <!-- 无神者 -->
+  <LP_Atheist.degreeDatas.0.label>godless</LP_Atheist.degreeDatas.0.label>
+  <!-- [PAWN_nameDef]不信任何神：不受信仰相关的心情影响，不会祈祷，戴圣徽也没用；神术落在[PAWN_objective]身上只有一半效果；心智抗性+10%。 -->
+  <LP_Atheist.degreeDatas.0.description>[PAWN_nameDef] believes in no god: unaffected by faith-related moods, never prays, holy symbols do nothing; divine magic has only half effect on [PAWN_objective]; mind resistance +10%.</LP_Atheist.degreeDatas.0.description>
+  <!-- 信仰 -->
+  <LP_Atheist.modExtensions.0.kind>faith</LP_Atheist.modExtensions.0.kind>
+</LanguageData>

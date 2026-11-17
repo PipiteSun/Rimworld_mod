@@ -1,0 +1,540 @@
+s10249	, the twilight years begin: divinely infused enemies increase greatly, leaders of large raids may be possessed by gods, and driving off the possessed drops miracle fragments.\n\nRecommended path: Fire Usurper (very hard).\n· When a colonist defeats a god-possessed boss, the Path of the Fire Usurper opens automatically (a colonist must land the final blow).\n· Trial 1: defeat 3 possessed bosses of the same god; Trial 2: complete the usurped god's deeds; finally hold the fire-usurping ritual at an altar. Success chance = 50% + (psychic sensitivity - 1) × 50% + 8% per miracle fragment, max 95%; failure means death.\n\nThe 5 starting miracle fragments can be kept to raise the fire-usurping success chance. "Theology of divinity" is already researched.
+s10250	 × strong\s
+s10251	 × talent\s
+s10252	÷M, minimum ×
+s10253	 ×(M − 1), limited to\s
+s10254	-
+s10255	 × modifier′) × strong × talent, minimum ×
+s10256	 ×(ability − 10)′) × strong × talent, minimum ×0.5
+s10257	, beyond ×
+s10258	 converges
+s10259	, minimum ×0.1
+s10260	 (includes work speed)
+s10261	 → minimum\s
+s10262	 → limited to\s
+s10263	(ability − 10)′ =\s
+s10264	 × weak\s
+s10265	; 1 +\s
+s10266	\nAlso multiplied by global work speed as usual (same as Isekai).
+s10267	 → beyond ×
+s10268	 converges to\s
+s10269	\nIn vanilla this stat itself is multiplied by global work speed (which already includes the Intelligence multiplier); one copy is divided out here so Intelligence counts only once.
+s10270	\nAbility effect strength\s
+s10271	: 1 + (full value − 1) ×\s
+s10272	 × modifier′) × strong × talent, minimum ×1
+s10273	 (interpolated by ability effect strength\s
+s10274	)
+s10275	\nConstitution below 10 doesn't reduce part health.
+s10276	unassigned\s
+s10277	1 + Σ class level × hit die growth + unassigned levels ×\s
+s10278	Adventurer Lv
+s10279	: 1 +\s
+s10280	 (after interpolating by ability effect strength\s
+s10281	 →\s
+s10282	\nHit die: barbarian 7%, fighter / paladin / ranger 6%, wizard / sorcerer 4%, others 5%. Legend levels 21-40 don't add; health goes through legend attribute points.
+s10283	legend health\s
+s10284	Tough\s
+s10285	Constitution × level growth
+s10286	 × legend health / Tough
+s10287	÷ total part health (the part ≥1)
+s10288	Pain from wounds and missing parts is divided by the part health multiplier, so people with thick health don't go down from pain first.
+s10289	150 × body size health multiplier × total part health (the part ≥1)
+s10290	When total wounds reach this number, death from overwhelming injuries. Health percentage and bleed rate scale by total part health likewise (setting "total health scales with part health").
+s10291	×M, minimum ×
+s10292	Skill learning speed = ability multiplier M =\s
+s10293	 × modifier′) × strong × talent − 1
+s10294	Power of classes (spellcasting, class abilities) with\s
+s10295	 as main ability: (1 +\s
+s10296	\nProficiency bonus adds\s
+s10297	 × (proficiency − 2).
+s10298	Arcane power (wizard, sorcerer Intellectual branch): Intelligence term per modifier point\s
+s10299	: (1 +\s
+s10300	\nOther Intelligence-based powers still use\s
+s10301	Gift power (sorcerer Social branch): Charisma term per modifier point\s
+s10302	\nDivine favor, pacts and other Charisma-based powers still use\s
+s10303	base\s
+s10304	 (over cap\s
+s10305	, counts as\s
+s10306	)
+s10307	 (cap\s
+s10308	 + feats\s
+s10309	 + combat gifts\s
+s10310	 + class\s
+s10311	 = effective\s
+s10312	  modifier\s
+s10313	, modifier′\s
+s10314	 (× weak\s
+s10315	M = 3.5 table (effective\s
+s10316	 (race\s
+s10317	 / talent\s
+s10318	, the larger)
+s10319	 (the larger of race / talent)
+s10320	  Linear effects: (1 + per point × modifier′) as a whole
+s10321	M: ability multiplier = 3.5 carrying table (10 = ×1, about ×2 per +5, ×4 per +10; below 10 = ability ÷ 10) × the larger of racial affinity and talent (not applied when the ability is below 10)\n
+s10322	modifier′: (ability − 10) ÷ 2 rounded down, positive part × 0.5 with racial weakness; (ability − 10)′ likewise\n
+s10323	strong / talent: racial strength ×1.5 (legendary races ×1.75), gifted / talent·one ability ×1.5, paragon ×2.5, all multiplied onto the whole linear effect (not applied when the effect is below ×1); strength and talent multiply\n
+s10324	Convergence: beyond the cap = cap + k·ln(1 + excess ÷ k), k = max(0.5, cap ÷ 2) (Isekai style)
+s10325	: all values = 1 + (full value − 1) ×\s
+s10326	\nHover over each row to see the formula with this person's values; the "stacking" column is exalted, legend attribute points and combat gifts multiplied / added on the same ability.
+s10327	The six abilities' numeric effects are handed over to Isekai (setting "Isekai coexistence mode"); only effective values and exalted are listed below.
+s10328	Ability effect strength 0%: the six abilities have no numeric effect.
+s10329	Effect
+s10330	Formula
+s10331	Current
+s10332	Stacking
+s10333	\n\nStacking:\s
+s10334	 (achieved, not active:\s
+s10335	: unlocks when both base and effective values reach\s
+s10336	 (now\s
+s10337	\nMythic·
+s10338	: effective value\s
+s10339	, or legendary adventurer +\s
+s10340	 legend points totaling\s
+s10341	Other sources (don't change with the six abilities)
+s10342	Level\s
+s10343	: melee hit and melee dodge each\s
+s10344	 (+
+s10345	 per level, levels 1-20 only)
+s10346	Martial class growth: melee damage\s
+s10347	Legend attribute points:\s
+s10348	Values of feats, epic boons and fighting styles are in the hover text on the "Adventurer" page.
+s10349	lake breath
+s10350	spell energy
+s10351	[DND Rimlands] Resource bar:\s
+s10352	Autocast:\s
+s10353	Autocast while drafted (on standby or in combat)
+s10354	Autocast while undrafted (also casts on the injured / those in need normally)
+s10355	Attack abilities can't autocast while undrafted
+s10356	Don't autocast when resource is below\s
+s10357	%
+s10358	 now\s
+s10359	 (this ability costs no resource)
+s10360	Changes only this ability for the selected people. The drafted toggle can also be switched by left-clicking the small badge at the button's top right; right-click the badge to open this window.
+s10361	soldier background (drafted)
+s10362	soldier background (fellow soldier within 3 cells)
+s10363	outlander background (wilderness)
+s10364	outlander background (wild plants)
+s10365	criminal background (black-market caravan)
+s10366	  - criminal background:\s
+s10367	  - colony has colonists with a criminal background:\s
+s10368	Eight background traits (acolyte, criminal, folk hero, noble, sage, soldier, hermit, outlander) join the vanilla random trait pool, at most one background per person. When off, no new background traits are generated; existing ones are kept. Takes effect immediately.
+s10369	Background trait frequency:\s
+s10370	% (each background's spawn weight = 0.3 × this value)
+s10371	[DND Rimlands] Error assigning backstories:\s
+s10372	[DND Rimlands] Background trait link error:\s
+s10373	DND backstories
+s10374	(1.46.0) Newly generated pawns get Faerûn childhood and adulthood backstories by pawn kind, race and faction (139 of them). Only affects pawns generated afterwards; existing pawns are unchanged. When off, assignment is fully vanilla.
+s10375	Racial backstory frequency:\s
+s10376	% (chance for each backstory slot of a DND-race pawn to be replaced with a backstory of its own race)
+s10377	Vanilla humans with Faerûn backstories:\s
+s10378	% (chance for each backstory slot of vanilla humans not in a DND faction, including starting colonists, to be replaced with a Faerûn backstory)
+s10379	Silver\s
+s10380	 · gold\s
+s10381	 · stock\s
+s10382	 stacks · total value\s
+s10383	Gold in the vault: +
+s10384	Vault contents
+s10385	 stacks, value\s
+s10386	Stock\s
+s10387	The vault is empty.
+s10388	Allowed
+s10389	Untick = forbidden: neither pawns nor trading will touch this stack.
+s10390	Take out
+s10391	There's no free space next to the bank.
+s10392	Put this stack on a free spot next to the bank and forbid it (so it isn't hauled back in).
+s10393	dread
+s10394	Part health ×3, melee damage ×1.5.
+s10395	Melee cooldown −33% (attack speed about +50%); won't flee even when badly hurt.
+s10396	Wild level +5, sharp / blunt armor +40%.
+s10397	Melee hits add about 30% burn damage.
+s10398	leader
+s10399	The pack leader is down; the other\s
+s10400	 beasts scatter and flee.
+s10401	Leader down
+s10402	Wild level\s
+s10403	's wild level rose to\s
+s10404	 · pack leader
+s10405	Pack leader: once it falls, the other beasts in its pack drop out of manhunting and flee the map.
+s10406	Elite "
+s10407	Beast wild levels are turned off in settings and give no effect.
+s10408	Taken over by Isekai levels: numeric bonuses are left to Isekai's creature ranks; only the level is shown here.
+s10409	Equivalent to Strength / Constitution\s
+s10410	 (the same six-ability curve as colonists)
+s10411	Melee damage ×
+s10412	, part health ×
+s10413	, move speed +
+s10414	Growth cap\s
+s10415	 (grows again once the master's or colony's level catches up)
+s10416	 (at cap)
+s10417	 (growth cap\s
+s10418	Animal companion: master is a ranger or druid, XP +25%.
+s10419	Leader ·\s
+s10420	Elite ·\s
+s10421	unknown
+s10422	Drops a beast king's heart on death.
+s10423	Bear hug!
+s10424	Missed
+s10425	Blink
+s10426	Bear hug cooldown:\s
+s10427	 seconds
+s10428	Displacement phantom recovering:\s
+s10429	Blink cooldown:\s
+s10430	Pack howl: nearby\s
+s10431	 companions, melee hit +
+s10432	DND beasts
+s10433	Spawn DND beasts in the wild
+s10434	Owlbears, worgs, winter wolves, hell hounds, fiendish beasts, blink dogs, as well as pseudodragons, tressyms, giant fire beetles, rothé, hippogriffs, axe beaks, griffons, hook horrors, phase spiders, darkmantles and stirges spawn in the wild in their biomes, and the fierce ones also appear as manhunter packs. When off, they no longer spawn or appear as manhunter packs; takes effect immediately after saving settings, beasts already on the map are unaffected.
+s10435	Beast wild levels
+s10436	Wild and non-player animals spawn with a "wild level": manhunter packs and hostile groups are leveled by threat points, wild animals 1 to colony's highest level −3, capped at colony's highest level +3. Higher levels mean more melee damage, more part health and faster movement (the same six-ability curve as colonists; level 1 unchanged). Player animals grow through combat and hauling. When off, new animals aren't leveled and existing levels give no effect.
+s10437	Elite beast chance:\s
+s10438	Chance for a spawning beast to become elite (dread / berserk / ancient / abyss-tainted), dropping a beast king's heart on death. Manhunter pack leaders are always elite.
+s10439	asleep
+s10440	hooked
+s10441	hooded
+s10442	gorged
+s10443	blood drain
+s10444	rothé herd guard
+s10445	herd fury
+s10446	stampede
+s10447	phase jump
+s10448	dive
+s10449	[DND Rimlands] Griffon dive failed:\s
+s10450	diving pounce
+s10451	Cooldown:\s
+s10452	sleep sting
+s10453	Blood drain:\s
+s10454	beast
+s10455	legendary beast
+s10456	Bestiary: "
+s10457	" kills\s
+s10458	, unlocked\s
+s10459	Weaknesses and resistances
+s10460	Common drops
+s10461	Lore (colony's damage against it +5%)
+s10462	sharp
+s10463	blunt
+s10464	heat
+s10465	Armor: sharp\s
+s10466	, blunt\s
+s10467	, heat\s
+s10468	Resistance: best at withstanding\s
+s10469	 damage
+s10470	Weakness:\s
+s10471	fears fire (flammability\s
+s10472	most vulnerable to\s
+s10473	mechanoid: EMP is effective, immune to toxins and psychic
+s10474	Body size\s
+s10475	, combat power\s
+s10476	, moves\s
+s10477	 cells / second
+s10478	No special drops
+s10479	Word of mouth among adventurers:\s
+s10480	's tales say it's always most dangerous the first time you meet it. The colony has fought it\s
+s10481	 times and knows its habits through and through: damage against\s
+s10482	 +5%.
+s10483	[DND Rimlands] Bestiary:\s
+s10484	1 kill unlocks the name and description, 3 the weaknesses and resistances, 10 the common drops, 25 the lore (colony's damage against it +5%). Creatures met but not killed have their names recorded too.
+s10485	No creatures of this kind met yet.
+s10486	 · kills\s
+s10487	\s
+s10488	 (unlocks at\s
+s10489	 kills, still\s
+s10490	Description
+s10491	Lore
+s10492	Giant frame\s
+s10493	[DND Rimlands] Giant frame rule migration:\s
+s10494	, scaled the wounds of\s
+s10495	 characters.
+s10496	Giant frame: ×
+s10497	[DND Rimlands] Out-of-range cast list error:\s
+s10498	Approach, then cast
+s10499	disabled in definition
+s10500	world map target
+s10501	not an ability cast
+s10502	touch (vanilla walks over itself)
+s10503	no range (self)
+s10504	self only
+s10505	has its own cast job
+s10506	movement (the target is the landing spot)
+s10507	needs a landing spot picked
+s10508	: Can't find a spot that is in range, can see the target and is reachable.
+s10509	[DND Rimlands] Out-of-range cast check error:\s
+s10510	[DND Rimlands] Out-of-range cast order error:\s
+s10511	[DND Rimlands] Out-of-range cast cursor error:\s
+s10512	[DND Rimlands] Out-of-range cast highlight error:\s
+s10513	Approach to cast
+s10514	Need to pick a living target.
+s10515	Can only be used on enemies.
+s10516	Only works on humanlikes.
+s10517	Only works on animals.
+s10518	No effect on mechanoids.
+s10519	Can only be used on allies.
+s10520	pulled in
+s10521	pushed away
+s10522	spell
+s10523	Heal\s
+s10524	forced away
+s10525	Not badly hurt; unaffected
+s10526	Command: grovel
+s10527	Command: flee
+s10528	Command: drop
+s10529	No creature that can be summoned was found.
+s10530	[DND Rimlands] Summon failed:\s
+s10531	Needs a humanlike corpse.
+s10532	No effect on liches and necromantic constructs.
+s10533	Dead for more than\s
+s10534	 days; the soul has wandered far.
+s10535	The brain is gone.
+s10536	the caster
+s10537	's spell, they opened their eyes again.
+s10538	[DND Rimlands] Reincarnate race change failed:\s
+s10539	Reincarnated:\s
+s10540	Removed\s
+s10541	 curses
+s10542	No curses on them
+s10543	Nothing to restore
+s10544	Restored:\s
+s10545	Need to pick a cell.
+s10546	There's someone on the cell.
+s10547	A stone wall can't fit here.
+s10548	Must stand next to a tree (within 2 cells).
+s10549	Needs an explored, standable cell.
+s10550	There must be a tree within 1 cell of the destination.
+s10551	Need to pick an animal.
+s10552	Can only be used on tamed animals.
+s10553	It's already been awakened.
+s10554	Need to pick a person.
+s10555	Can only send dreams to friendly people.
+s10556	No faction to contact.
+s10557	No dead colonist to revive.
+s10558	Need to pick an item.
+s10559	Must be cast on a map.
+s10560	There's already a celestial steed (
+s10561	Need to pick an enemy.
+s10562	animated statue
+s10563	[DND Rimlands] Animate objects failed:\s
+s10564	Mass suggestion: retreat
+s10565	Create water: put out\s
+s10566	 fires
+s10567	Purify food and drink ×
+s10568	It's now "
+s10569	, lasting about another\s
+s10570	 hours
+s10571	. Outdoor temperature over the next day about\s
+s10572	 to\s
+s10573	\nOngoing:\s
+s10574	's druidcraft:\s
+s10575	Mold earth: dug out\s
+s10576	Mold earth: filled\s
+s10577	Mold earth: tilled\s
+s10578	Stone shape: carved\s
+s10579	Stone shape: stone wall\s
+s10580	No traps or lurking enemies found nearby.
+s10581	Found\s
+s10582	 traps
+s10583	, and revealed\s
+s10584	 invisible enemies
+s10585	Have a small animal carry a message to a faction's leader (opens a comms call with them).
+s10586	Awakened: gained intellect
+s10587	calmed the weather
+s10588	, and ended\s
+s10589	otherworldly knowledge overwhelmed the mind
+s10590	Contact other plane: research +
+s10591	Heroes' feast ×
+s10592	Pick a dead colonist (works even without a corpse).
+s10593	 (not even the remains are left)
+s10594	 was brought back to the world by true resurrection.
+s10595	Quality:\s
+s10596	Enchantment +
+s10597	Cursed!
+s10598	Has a magic aura
+s10599	Value\s
+s10600	No undead, fiends or anomalous creatures sensed on the map.
+s10601	Sensed\s
+s10602	 undead, fiends or anomalous creatures:\s
+s10603	; revealed\s
+s10604	Pick a material (spellcasting class level × 10 units; components level/2).
+s10605	banished for 1 minute by banishing smite
+s10606	entangled by thorns
+s10607	gaze: sleep
+s10608	gaze: panic
+s10609	gaze: weakness
+s10610	Temporary HP\s
+s10611	Pass without trace: missed
+s10612	[DND Rimlands] Spell list\s
+s10613	 can't find spell\s
+s10614	's\s
+s10615	 has no spell circle
+s10616	Shrouded by silence; can't speak the incantation
+s10617	Not enough spell energy (
+s10618	, refilled after sleeping)
+s10619	Mystic arcanum: once per day, no resource cost (used today\s
+s10620	 / 1)
+s10621	No resource cost (cooldown only)
+s10622	Cost: spell energy\s
+s10623	 (remaining\s
+s10624	Pass without trace: ambush chance halved for 1 day
+s10625	Wind walk: whole party movement ×2 for 1 day
+s10626	On cooldown
+s10627	Metamagic·quickened: no cooldown
+s10628	Doesn't have this class
+s10629	This class doesn't prepare spells
+s10630	Cantrips are always ready; no need to prepare
+s10631	Not in\s
+s10632	's spell list
+s10633	Needs\s
+s10634	Class ability, always ready
+s10635	Can only be changed after sleeping or after studying for 1 hour at a research bench / scroll desk
+s10636	Already fully prepared (
+s10637	This class doesn't choose spells
+s10638	Cantrips are learned on the cantrip page
+s10639	Already known
+s10640	No slots to pick
+s10641	Not a known spell
+s10642	Only 1 spell can be replaced per level (used up)
+s10643	Not a cantrip of this class
+s10644	Cantrip slots are full
+s10645	No mystic arcanum
+s10646	Not a mystic arcanum
+s10647	Mystic arcanum needs\s
+s10648	Already picked "
+s10649	No magical secrets
+s10650	No magical secrets to pick
+s10651	Not a spell
+s10652	Can't cast it yet
+s10653	Not a ritual spell
+s10654	Doesn't know this spell yet
+s10655	Ritual casting must be done undrafted
+s10656	Can't cast right now
+s10657	Shrouded by silence
+s10658	's\s
+s10659	 spells:
+s10660	 to pick (click the "
+s10661	 spells" button to choose).
+s10662	 level  max\s
+s10663	  spell energy\s
+s10664	  prepared\s
+s10665	level/2
+s10666	level
+s10667	 modifier)
+s10668	  known\s
+s10669	Prepare
+s10670	Known spells
+s10671	Learn new spells (
+s10672	Cantrips (
+s10673	Mystic arcanum (
+s10674	Magical secrets (
+s10675	's spells
+s10676	wizard spellbook
+s10677	Concentrating:\s
+s10678	 (chance to maintain when taking 10+ damage\s
+s10679	End concentration
+s10680	Prepared spells can be changed now (after closing the window, another sleep or 1 hour of study is needed to change again).
+s10681	Prepared spells are set: can only be changed after sleeping or after studying for 1 hour at a research bench / scroll desk.
+s10682	Automatically knows every spell on the spell list of castable circles; only prepared ones appear on the button bar. Ritual spells don't take a slot and can be ritual cast here even unprepared (channel in place for 1 hour, no resource cost).
+s10683	All known spells are on the button bar (can be hidden here). Each level, 1 known spell can be replaced (still\s
+s10684	 replaceable).
+s10685	Each\s
+s10686	 level learns 1 spell (2 at level 1), only of circles you can already cast:\s
+s10687	. To pick:\s
+s10688	.
+s10689	Cantrips cost no resource and are always ready without taking slots: 3 at level 1, +1 each at levels 4 and 10. Can still learn\s
+s10690	Mystic arcanum: at warlock levels 11 / 13 / 15 / 17, pick 1 each from circles 6 / 7 / 8 / 9; each can be cast once per day without spending pact mana.
+s10691	Magical secrets: at bard levels\s
+s10692	, pick\s
+s10693	 each from any class's spell list (by the circles you can cast); they count as bard spells, cost rhythm and use inspiration power. Can still pick\s
+s10694	Go study (1 hour)
+s10695	Walk to the nearest research bench or scroll desk and study for 1 hour; then prepared spells can be changed.
+s10696	No spells here.
+s10697	No resource cost
+s10698	Once per day, no resource cost
+s10699	[
+s10700	]
+s10701	class ability
+s10702	✔ Prepared
+s10703	Not prepared
+s10704	Unprepare
+s10705	Prepare this spell
+s10706	 (ritual spells don't take a slot)
+s10707	Hidden
+s10708	Shown
+s10709	Click to put the button back on the button bar
+s10710	Click to hide this spell's button from the button bar (it can't be cast or autocast)
+s10711	Replace
+s10712	Forget this spell, freeing 1 slot to pick again (once per level). Click twice to confirm
+s10713	Upcast +
+s10714	Upcast
+s10715	Choose the circle to cast at: each extra circle costs 1 more resource,\s
+s10716	. You can also right-click the spell button.
+s10717	Ritual cast
+s10718	Channel in place for 1 hour to cast, no resource cost (must be undrafted).
+s10719	Picked
+s10720	Learn
+s10721	 spells (
+s10722	 to pick\s
+s10723	's spell list:\s
+s10724	Prepare spells (only prepared ones appear on the button bar)
+s10725	Learn, replace and hide known spells
+s10726	, learn cantrips
+s10727	, choose mystic arcanum
+s10728	, ritual cast, set upcasting.
+s10729	\n\nPrepared spells can only be changed after sleeping or after studying for 1 hour at a research bench / scroll desk.
+s10730	[LichPhylactery] Character Editor link initialization failed:\s
+s10731	Open the DND edit panel: adventurer level, six abilities, classes and subclasses, feats, epic boons, power traits and combat gifts.
+s10732	[LichPhylactery] Character Editor DND button error (similar errors won't be shown again):\s
+s10733	[LichPhylactery] Character Editor trait sync error (similar errors won't be shown again):\s
+s10734	Level and abilities
+s10735	Feats and boons
+s10736	Traits
+s10737	DND:\s
+s10738	No adventurer status
+s10739	Adventurer levels are turned off in mod settings.
+s10740	This character can't become an adventurer (needs to be humanlike, at least\s
+s10741	 years old, and not a construct / summon).
+s10742	This character has no adventurer level or six abilities yet.
+s10743	Add adventurer status
+s10744	, proficiency bonus +
+s10745	Leveling up grants ability score improvements, legend attribute points and boon points as usual; leveling down doesn't take back what was granted (points can be edited directly below). Shift-click for ±5.
+s10746	Legendary adventurer (unlocks levels 21-40)
+s10747	Turning it off drops the level back to 20.
+s10748	\nLegend levels are turned off in mod settings: even when on, it only goes to 20.
+s10749	 / next level\s
+s10750	 (setting the level sets XP to that level's minimum)
+s10751	Six abilities
+s10752	effective\s
+s10753	 / cap\s
+s10754	  ×
+s10755	Base value (bonuses from feats, combat gifts and classes are counted separately). The part above the cap is kept, but effects count at the cap.
+s10756	Assigning starting point buy (
+s10757	 points left).
+s10758	Finish starting point buy
+s10759	Points to assign
+s10760	Ability score improvements
+s10761	each\s
+s10762	 points, or one feat
+s10763	split remaining points
+s10764	Class bonus feats
+s10765	Spellcasting bonus feats
+s10766	Epic boon points
+s10767	Legend attribute points
+s10768	Legendary class points
+s10769	Class prerequisite waivers
+s10770	The next new class skips the skill / multiclass requirements (adventurer's manual).
+s10771	These points are spent on the vanilla "Adventurer" tab.
+s10772	Legend attribute points (spent)
+s10773	Class levels used\s
+s10774	 / granted by adventurer level\s
+s10775	. Edits here ignore skill and multiclass requirements and can exceed the budget or multiclass beyond\s
+s10776	 classes; leveling down takes back class abilities no longer earned.
+s10777	Subclass
+s10778	(not chosen)
+s10779	(none)
+s10780	Normally chosen at level\s
+s10781	.
+s10782	Existing class abilities (
+s10783	Feats (
+s10784	Tick to gain directly, untick to lose directly, ignoring level and prerequisites and not using ability score improvements.
+s10785	[origin]
+s10786	[race]
+s10787	\n\nNormal requirements:\s
+s10788	Epic boons (

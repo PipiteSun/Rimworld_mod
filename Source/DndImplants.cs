@@ -46,10 +46,10 @@ namespace LichPhylactery {
   // 能不能再装这个植入物：返回 null 表示可以。
   public static string CanAttune(Pawn p,HediffDef d){
    var e=Ext(d);if(p==null || e==null)return null;
-   if(e.ionStone && Stones(p)>=StoneMax)return "额骨上最多镶 "+StoneMax+" 颗伊奥恩石";
-   if(e.group!=null && p.health.hediffSet.hediffs.Any(h=>Ext(h.def)?.group==e.group))return "同一类的嫁接物只能装一件";
-   if(e.noCelestial && (FaithRaces.IsAasimar(p) || PactRaces.Celestial(p)))return "天界血统容不下恶魔的血肉";
-   if(e.attune && Attuned(p)>=AttuneMax(p))return "调谐位满了（"+Attuned(p)+" / "+AttuneMax(p)+"）";
+   if(e.ionStone && Stones(p)>=StoneMax)return "额骨上最多镶 ".Loc()+StoneMax+" 颗伊奥恩石".Loc();
+   if(e.group!=null && p.health.hediffSet.hediffs.Any(h=>Ext(h.def)?.group==e.group))return "同一类的嫁接物只能装一件".Loc();
+   if(e.noCelestial && (FaithRaces.IsAasimar(p) || PactRaces.Celestial(p)))return "天界血统容不下恶魔的血肉".Loc();
+   if(e.attune && Attuned(p)>=AttuneMax(p))return "调谐位满了（".Loc()+Attuned(p)+" / "+AttuneMax(p)+"）".Loc();
    return null;
   }
 
@@ -75,19 +75,19 @@ namespace LichPhylactery {
    return true;
   }
   public static string RollArtifact(float chance){if(!Rand.Chance(chance))return null;var l=new[]{"LP_Vecna_Hand","LP_Vecna_Eye"}.Where(ArtifactFree).ToList();return l.Count==0?null:l.RandomElement();}
-  public static string FrostTouch(Pawn p,Pawn t){if(t==null || t.Dead)return null;t.TakeDamage(new DamageInfo(DefCache<DamageDef>.Get("LP_Frost")??DamageDefOf.Frostbite,30f,.4f,-1f,p));FleshImplants.Chill(t,.15f);Items.Mote(t,"寒冰触",new Color(.6f,.8f,1f));return "frost";}
+  public static string FrostTouch(Pawn p,Pawn t){if(t==null || t.Dead)return null;t.TakeDamage(new DamageInfo(DefCache<DamageDef>.Get("LP_Frost")??DamageDefOf.Frostbite,30f,.4f,-1f,p));FleshImplants.Chill(t,.15f);Items.Mote(t,"寒冰触".Loc(),new Color(.6f,.8f,1f));return "frost";}
   public static bool Command(Pawn p,Pawn t)=>t!=null && Items.Undead(t) && MindFlayerPowers.Dominate(p,t);
   // 叛徒卡斯：带着卡斯之剑来抢神器。
   public static Pawn KasRaid(Map map){
    if(map==null)return null;var f=Factions.Hostile??Find.FactionManager.RandomEnemyFaction(false,false,true,TechLevel.Industrial);if(f==null || !Events2.EdgeCell(map,out var entry))return null;
    var kind=DefCache<PawnKindDef>.Get("LP_Kas");if(kind==null)return null;
    var kas=PawnGenerator.GeneratePawn(new PawnGenerationRequest(kind,f,PawnGenerationContext.NonPlayer,map.Tile,forceGenerateNewPawn:true,canGeneratePawnRelations:false,fixedGender:Gender.Male));
-   kas.Name=new NameSingle("叛徒卡斯");kas.equipment?.DestroyAllEquipment();var sword=DefCache<ThingDef>.Get("LP_SwordOfKas");if(sword!=null)kas.equipment.AddEquipment((ThingWithComps)ThingMaker.MakeThing(sword));Items.Give(kas,"LP_KasBlood");
+   kas.Name=new NameSingle("叛徒卡斯".Loc());kas.equipment?.DestroyAllEquipment();var sword=DefCache<ThingDef>.Get("LP_SwordOfKas");if(sword!=null)kas.equipment.AddEquipment((ThingWithComps)ThingMaker.MakeThing(sword));Items.Give(kas,"LP_KasBlood");
    var pawns=new List<Pawn>{kas};
-   try{pawns.AddRange(PawnGroupMakerUtility.GeneratePawns(new PawnGroupMakerParms{groupKind=PawnGroupKindDefOf.Combat,tile=map.Tile,faction=f,points=Mathf.Max(200f,StorytellerUtility.DefaultThreatPointsNow(map)*.6f)},false));}catch(Exception e){Log.Warning("[DND边缘大陆] 卡斯的随从生成失败："+e.Message);}
+   try{pawns.AddRange(PawnGroupMakerUtility.GeneratePawns(new PawnGroupMakerParms{groupKind=PawnGroupKindDefOf.Combat,tile=map.Tile,faction=f,points=Mathf.Max(200f,StorytellerUtility.DefaultThreatPointsNow(map)*.6f)},false));}catch(Exception e){Log.Warning("[DND边缘大陆] 卡斯的随从生成失败：".Loc()+e.Message);}
    foreach(var p in pawns)GenSpawn.Spawn(p,CellFinder.RandomClosewalkCellNear(entry,map,6),map);
    LordMaker.MakeNewLord(f,new LordJob_AssaultColony(f,false,true,false,false,false,false,false),map,pawns);
-   Find.LetterStack.ReceiveLetter("叛徒卡斯","维克那的手和眼又聚到了一起——当年背叛并斩伤维克那的卡斯感觉到了。他带着卡斯之剑和一队人马杀了过来，要毁掉（或者夺走）神器。\n\n卡斯之剑对维克那神器的宿主伤害翻倍。打倒卡斯就能拿到这把剑。",LetterDefOf.ThreatBig,new LookTargets(kas),f);
+   Find.LetterStack.ReceiveLetter("叛徒卡斯".Loc(),"维克那的手和眼又聚到了一起——当年背叛并斩伤维克那的卡斯感觉到了。他带着卡斯之剑和一队人马杀了过来，要毁掉（或者夺走）神器。\n\n卡斯之剑对维克那神器的宿主伤害翻倍。打倒卡斯就能拿到这把剑。".Loc(),LetterDefOf.ThreatBig,new LookTargets(kas),f);
    return kas;
   }
   public static int ProfBonus(Pawn p)=>Live>0 && Has(p,FMastery)?1:0;
@@ -98,7 +98,7 @@ namespace LichPhylactery {
    float g=1f;var a=d.Instigator as Pawn;
    if(a!=null && a!=v && a.HostileTo(v) && ClassMartial2.Melee(d) && Has(a,FColdArm) && (ItemMaterials.ColdIronBane(v) || Fiends.Is(v)))g*=ColdIronFactor; // 寒铁义臂
    if(d.Weapon?.defName=="LP_SwordOfKas" && Vecna(v))g*=KasSwordFactor; // 卡斯之剑：对维克那神器宿主 ×2
-   if(d.Weapon==null && Subclass2.IsSpell(d.Def) && Has(v,FAbsorb) && Absorb(v)){Items.Mote(v,"吸收之石",new Color(.7f,.6f,1f));return 0f;} // 吸收之石：每天抵消一次
+   if(d.Weapon==null && Subclass2.IsSpell(d.Def) && Has(v,FAbsorb) && Absorb(v)){Items.Mote(v,"吸收之石".Loc(),new Color(.7f,.6f,1f));return 0f;} // 吸收之石：每天抵消一次
    // 1.113.0 嫁接与血肉：骸骨肋笼 利器 ×0.8；龙鳞皮下甲 本色元素 ×0.5、对立元素 ×1.2；巨魔再生腺 受火 / 酸后再生停 12 小时；恶魔之臂 近战附加 5 火焰。
    if(Has(v,FBoneCage) && d.Def.armorCategory?.defName=="Sharp")g*=BoneCageSharp;
    if(Has(v,FScale)){int el=ElementOf(v,"Scale"),hit=Subclass3.DragonElementOf(d.Def);if(el>=0 && hit>=0){if(hit==el)g*=ScaleResist;else if(hit==Opposite[el])g*=ScaleWeak;}}
@@ -110,7 +110,7 @@ namespace LichPhylactery {
   public const float BoneCageSharp=.8f,ScaleResist=.5f,ScaleWeak=1.2f,DemonFire=5f,BoneCageHealth=1.5f,BerserkChance=.01f,SoulFocus=.1f,DeadSpeakShare=.1f;
   public const int NecrosisHours=72,TrollRegrowHours=360;
   // 龙的元素：0 红·火焰，1 白·寒冰，2 蓝·闪电，3 黑·强酸，4 绿·毒素（和神龙宗的元素编号一致：火焰、寒冰、闪电、强酸、毒素）。
-  public static readonly string[] ElementLabels={"火焰","寒冰","闪电","强酸","毒素"};
+  public static readonly string[] ElementLabels={"火焰".Loc(),"寒冰".Loc(),"闪电".Loc(),"强酸".Loc(),"毒素".Loc()};
   public static readonly int[] Opposite={1,0,3,2,0};
   static bool Toxicish(DamageDef d)=>d!=null && (d.defName=="LP_OozeAcid" || d.defName=="LP_AlchemyAcid" || d.defName=="AcidBurn");
   public static int ElementOf(Pawn p,string flag){foreach(var h in p.health.hediffSet.hediffs){var e=Ext(h.def);if(e?.flag==flag)return e.element;}return -1;}
@@ -155,15 +155,15 @@ namespace LichPhylactery {
   // 巨魔再生腺：长回一个缺失的小部位（覆盖面积最小的那个）。
   public static BodyPartRecord RegrowSmall(Pawn p){
    var miss=p.health.hediffSet.GetMissingPartsCommonAncestors().Where(x=>x.Part!=null && x.Part.parent!=null).OrderBy(x=>x.Part.coverageAbsWithChildren).FirstOrDefault();
-   if(miss==null)return null;var part=miss.Part;p.health.RestorePart(part,null,true);Items.Mote(p,"再生腺：长回"+part.Label,new Color(.5f,.8f,.5f));return part;
+   if(miss==null)return null;var part=miss.Part;p.health.RestorePart(part,null,true);Items.Mote(p,"再生腺：长回".Loc()+part.Label,new Color(.5f,.8f,.5f));return part;
   }
-  public static readonly string[] RayModes={"死灵射线","石化射线","魅惑射线"};
+  public static readonly string[] RayModes={"死灵射线".Loc(),"石化射线".Loc(),"魅惑射线".Loc()};
   public static int RayMode(Pawn p){foreach(var h in p.health.hediffSet.hediffs)if(Ext(h.def)?.flag=="Beholder"){var c=(h as HediffWithComps)?.TryGetComp<HediffComp_DndImplant>();if(c!=null)return Mathf.Clamp(c.mode,0,2);}return 0;}
   // 眼魔之眼射线：死灵 30 坏死伤害 / 开始石化 / 魅惑（恍惚 25 秒）。
   public static string Ray(Pawn p,Pawn t){
    if(t==null || t.Dead)return null;int m=RayMode(p);
    if(m==0){t.TakeDamage(new DamageInfo(DefCache<DamageDef>.Get("LP_Necrotic")??DamageDefOf.Burn,30f,.3f,-1f,p));Items.Mote(t,RayModes[0],new Color(.5f,.8f,.4f));return RayModes[0];}
-   if(m==1){bool ok=ItemScrolls.StartPetrify(p,t);if(!ok)Items.Mote(t,"石化无效",Color.gray);return ok?RayModes[1]:null;}
+   if(m==1){bool ok=ItemScrolls.StartPetrify(p,t);if(!ok)Items.Mote(t,"石化无效".Loc(),Color.gray);return ok?RayModes[1]:null;}
    var r=ClassCasters.Charm(p,t,1500,10f);return r=="charmed" || r=="prisoner"?RayModes[2]:null;
   }
   // 龙息腺：锥形 6 格，敌人受 30 点龙心颜色的元素伤害。
@@ -171,18 +171,18 @@ namespace LichPhylactery {
    var map=p.Map;if(map==null || !target.IsValid)return 0;int el=Mathf.Max(0,ElementOf(p,"Breath"));var def=el==0?DamageDefOf.Flame:DefCache<DamageDef>.Get(new[]{"Flame","LP_Frost","LP_Lightning","LP_OozeAcid","LP_DragonPoison"}[el])??DamageDefOf.Flame;
    var cells=Dragons.ShapeCells(map,p.Position,target,6f,false,Dragons.ConeHalfAngle,p.Rotation);int n=0;var hit=new HashSet<Pawn>();
    foreach(var c in cells){FleckMaker.ThrowDustPuffThick(c.ToVector3Shifted(),map,.8f,new Color(1f,.7f,.4f));foreach(var t in c.GetThingList(map).OfType<Pawn>().ToList())if(t!=p && !t.Dead && t.HostileTo(p) && hit.Add(t)){t.TakeDamage(new DamageInfo(def,30f,.2f,-1f,p));n++;}}
-   Items.Mote(p,"龙息·"+ElementLabels[el],new Color(1f,.7f,.4f));return n;
+   Items.Mote(p,"龙息·".Loc()+ElementLabels[el],new Color(1f,.7f,.4f));return n;
   }
   // 亡者之语：从人形尸体学到它最高那项技能总经验的 10%（每具尸体一次）。
   public static string DeadSpeak(Pawn p,Corpse c){
    var dead=c?.InnerPawn;var s=GameComp<GameComponent_DndImplants>.Get();if(dead?.skills==null || p.skills==null || s==null || !s.spoken.Add(dead.thingIDNumber))return null;
    var best=dead.skills.skills.Where(x=>!x.TotallyDisabled).OrderByDescending(x=>x.XpTotalEarned+x.xpSinceLastLevel).FirstOrDefault();if(best==null)return null;
    var mine=p.skills.GetSkill(best.def);if(mine==null || mine.TotallyDisabled)return null;float xp=(best.XpTotalEarned+best.xpSinceLastLevel)*DeadSpeakShare;mine.Learn(xp,true);
-   Items.Mote(p,"亡者之语："+best.def.label+" +"+xp.ToString("0"),new Color(.6f,.8f,.7f));return best.def.defName;
+   Items.Mote(p,"亡者之语：".Loc()+best.def.label+" +"+xp.ToString("0"),new Color(.6f,.8f,.7f));return best.def.defName;
   }
   public static Hediff_Injury Regen(Pawn p){
    var inj=p.health.hediffSet.hediffs.OfType<Hediff_Injury>().Where(x=>!x.IsPermanent()).OrderByDescending(x=>x.Severity).FirstOrDefault();
-   if(inj!=null){inj.Heal(inj.Severity);Items.Mote(p,"再生之石",new Color(.6f,.9f,.6f));}return inj;
+   if(inj!=null){inj.Heal(inj.Severity);Items.Mote(p,"再生之石".Loc(),new Color(.6f,.9f,.6f));}return inj;
   }
   public static bool Infusable(Pawn p,Hediff h)=>h is Hediff_AddedPart && h.Part!=null && Ext(h.def)==null && h.def.addedPartProps!=null && !p.health.hediffSet.hediffs.Any(x=>x.Part==h.Part && x.def.defName=="LP_Infused");
   public static Hediff Infuse(Pawn p,BodyPartRecord part){
@@ -212,12 +212,12 @@ namespace LichPhylactery {
    if(parent is Hediff_AddedPart)DndImplants.TuneTick(p);
    if(e?.flag=="Regen" && (regen+=1)>=24){regen=0;DndImplants.Regen(p);}
    // 嫁接物在巫妖（没有活的血肉）身上 3 天坏死。
-   if(e!=null && e.graft && Items.IsLich(p) && (necro+=1)>=DndImplants.NecrosisHours){Messages.Message(p.LabelShort+"身上的"+parent.LabelBase+"没有活的血肉供养，坏死脱落了。",p,MessageTypeDefOf.NegativeHealthEvent,false);p.health.RemoveHediff(parent);return;}
+   if(e!=null && e.graft && Items.IsLich(p) && (necro+=1)>=DndImplants.NecrosisHours){Messages.Message(p.LabelShort+"身上的".Loc()+parent.LabelBase+"没有活的血肉供养，坏死脱落了。".Loc(),p,MessageTypeDefOf.NegativeHealthEvent,false);p.health.RemoveHediff(parent);return;}
    hours++;
-   if(e?.flag=="DemonArm" && hours%24==0 && Rand.Chance(DndImplants.BerserkChance) && p.Spawned && !p.Downed)p.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.Berserk,"恶魔之臂的狂怒",true);
+   if(e?.flag=="DemonArm" && hours%24==0 && Rand.Chance(DndImplants.BerserkChance) && p.Spawned && !p.Downed)p.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.Berserk,"恶魔之臂的狂怒".Loc(),true);
    if(e?.flag=="Troll" && !Items.Has(p,"LP_GraftTrollStalled") && hours>=DndImplants.TrollRegrowHours){hours=0;DndImplants.RegrowSmall(p);}
    // 维克那之手：每 60 天 10%（巫妖 5%）陷入“邪恶意志”的杀戮狂暴。
-   if(e?.flag=="VecnaHand" && hours%DndImplants.VecnaCurseHours==0 && Rand.Chance(DndImplants.VecnaCurseChance*(Items.IsLich(p)?.5f:1f)) && p.Spawned && !p.Downed){p.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.Berserk,"维克那的邪恶意志",true);Messages.Message("维克那的邪恶意志占据了"+p.LabelShort+"。",p,MessageTypeDefOf.ThreatBig,false);}
+   if(e?.flag=="VecnaHand" && hours%DndImplants.VecnaCurseHours==0 && Rand.Chance(DndImplants.VecnaCurseChance*(Items.IsLich(p)?.5f:1f)) && p.Spawned && !p.Downed){p.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.Berserk,"维克那的邪恶意志".Loc(),true);Messages.Message("维克那的邪恶意志占据了".Loc()+p.LabelShort+"。".Loc(),p,MessageTypeDefOf.ThreatBig,false);}
   }
  }
  // 按能力加点的状态（器械师调校、注能）：能力加成存在严重度之外，现算一个阶段。
@@ -228,7 +228,7 @@ namespace LichPhylactery {
    caps=new Dictionary<PawnCapacityDef,float>(c);stage=null;pawn?.health?.Notify_HediffChanged(this);
   }
   public override HediffStage CurStage=>stage??(stage=new HediffStage{capMods=caps.Select(kv=>new PawnCapacityModifier{capacity=kv.Key,offset=kv.Value}).ToList()});
-  public override string LabelInBrackets=>string.Join("，",caps.Select(kv=>kv.Key.LabelCap+" +"+kv.Value.ToStringPercent()));
+  public override string LabelInBrackets=>string.Join("，".Loc(),caps.Select(kv=>kv.Key.LabelCap+" +"+kv.Value.ToStringPercent()));
   public override void ExposeData(){
    base.ExposeData();Scribe_Collections.Look(ref caps,"lpCaps",LookMode.Def,LookMode.Value);
    if(Scribe.mode==LoadSaveMode.PostLoadInit){caps=caps??new Dictionary<PawnCapacityDef,float>();stage=null;}
@@ -262,7 +262,7 @@ namespace LichPhylactery {
   // 开刀时调谐位已经满了（排了多张手术单）：不装，把植入物还回来。
   public static bool Refuse(Pawn pawn,RecipeDef recipe){
    var why=DndImplants.CanAttune(pawn,recipe.addsHediff);if(why==null)return false;
-   Messages.Message(pawn.LabelShort+"装不上"+recipe.addsHediff.label+"："+why+"。",pawn,MessageTypeDefOf.RejectInput,false);
+   Messages.Message(pawn.LabelShort+"装不上".Loc()+recipe.addsHediff.label+"：".Loc()+why+"。".Loc(),pawn,MessageTypeDefOf.RejectInput,false);
    var item=recipe.addsHediff.spawnThingOnRemoved;if(item!=null && pawn.MapHeld!=null)GenPlace.TryPlaceThing(ThingMaker.MakeThing(item),pawn.PositionHeld,pawn.MapHeld,ThingPlaceMode.Near);
    return true;
   }
@@ -299,17 +299,17 @@ namespace LichPhylactery {
   public override bool Valid(LocalTargetInfo target,bool throwMessages=false){
    if(!base.Valid(target,throwMessages))return false;string why=null;var p=parent.pawn;
    switch(Props.effect){
-    case "ray":case "frost":if(target.Pawn==null || target.Pawn.Dead || !target.Pawn.HostileTo(p))why="需要选择一个敌人。";break;
-    case "command":if(target.Pawn==null || target.Pawn.Dead || !target.Pawn.HostileTo(p) || !Items.Undead(target.Pawn))why="需要选择一个敌方亡灵。";break;
+    case "ray":case "frost":if(target.Pawn==null || target.Pawn.Dead || !target.Pawn.HostileTo(p))why="需要选择一个敌人。".Loc();break;
+    case "command":if(target.Pawn==null || target.Pawn.Dead || !target.Pawn.HostileTo(p) || !Items.Undead(target.Pawn))why="需要选择一个敌方亡灵。".Loc();break;
     case "dominate":why=MindFlayerPowers.CannotDominate(p,target.Pawn);break;
-    case "breath":if(!target.Cell.IsValid || p.Map==null || !target.Cell.InBounds(p.Map))why="需要选择一个方向。";break;
-    case "speak":{var c=target.Thing as Corpse;var s=GameComp<GameComponent_DndImplants>.Get();if(c?.InnerPawn==null || !c.InnerPawn.RaceProps.Humanlike || c.InnerPawn.skills==null)why="需要一具人形尸体。";else if(s!=null && s.spoken.Contains(c.InnerPawn.thingIDNumber))why="这具尸体已经说过话了。";break;}
+    case "breath":if(!target.Cell.IsValid || p.Map==null || !target.Cell.InBounds(p.Map))why="需要选择一个方向。".Loc();break;
+    case "speak":{var c=target.Thing as Corpse;var s=GameComp<GameComponent_DndImplants>.Get();if(c?.InnerPawn==null || !c.InnerPawn.RaceProps.Humanlike || c.InnerPawn.skills==null)why="需要一具人形尸体。".Loc();else if(s!=null && s.spoken.Contains(c.InnerPawn.thingIDNumber))why="这具尸体已经说过话了。".Loc();break;}
    }
    if(why!=null && throwMessages)Messages.Message(why,MessageTypeDefOf.RejectInput,false);return why==null;
   }
   public override void Apply(LocalTargetInfo target,LocalTargetInfo dest){
    base.Apply(target,dest);var p=parent.pawn;
-   switch(Props.effect){case "frost":DndImplants.FrostTouch(p,target.Pawn);break;case "command":if(!DndImplants.Command(p,target.Pawn))Items.Mote(target.Pawn,"没有听令",Color.gray);break;case "dominate":MindFlayerPowers.Dominate(p,target.Pawn);break;case "ray":DndImplants.Ray(p,target.Pawn);break;case "breath":DndImplants.Breath(p,target.Cell);break;case "speak":DndImplants.DeadSpeak(p,target.Thing as Corpse);break;}
+   switch(Props.effect){case "frost":DndImplants.FrostTouch(p,target.Pawn);break;case "command":if(!DndImplants.Command(p,target.Pawn))Items.Mote(target.Pawn,"没有听令".Loc(),Color.gray);break;case "dominate":MindFlayerPowers.Dominate(p,target.Pawn);break;case "ray":DndImplants.Ray(p,target.Pawn);break;case "breath":DndImplants.Breath(p,target.Cell);break;case "speak":DndImplants.DeadSpeak(p,target.Thing as Corpse);break;}
   }
  }
  // 别人对装着这件植入物的人的看法（眼魔之眼 −10、龙息腺 −5）。
@@ -327,7 +327,7 @@ namespace LichPhylactery {
   static void Postfix(Pawn __instance,DamageInfo? dinfo){
    if(DndImplants.Live<=0 || !__instance.Dead || dinfo==null || !__instance.RaceProps.IsFlesh)return;var k=dinfo.Value.Instigator as Pawn;
    if(k?.psychicEntropy==null || dinfo.Value.WeaponLinkedHediff?.defName!="LP_Flesh_SoulJaw")return;
-   k.psychicEntropy.OffsetPsyfocusDirectly(DndImplants.SoulFocus);Items.Mote(k,"吞魂",new Color(.6f,.8f,.7f));
+   k.psychicEntropy.OffsetPsyfocusDirectly(DndImplants.SoulFocus);Items.Mote(k,"吞魂".Loc(),new Color(.6f,.8f,.7f));
   }
  }
 

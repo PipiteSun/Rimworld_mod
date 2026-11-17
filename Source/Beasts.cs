@@ -85,7 +85,7 @@ namespace LichPhylactery {
    if(Props.kind!="Owlbear" || p==null || p.Dead || target==null || target.Dead || target.stances?.stunner==null || !HugReady || roll>=Beasts.HugChance)return false;
    target.stances.stunner.StunFor(Beasts.HugStunTicks,p,false,true,false);
    hugReadyTick=Now+Beasts.HugCooldown;
-   if(p.Spawned)MoteMaker.ThrowText(target.DrawPos,p.Map,"熊抱！",new Color(.95f,.8f,.5f));
+   if(p.Spawned)MoteMaker.ThrowText(target.DrawPos,p.Map,"熊抱！".Loc(),new Color(.95f,.8f,.5f));
    return true;
   }
   public void Notify_MeleeHit(Pawn target,Tool tool){
@@ -127,7 +127,7 @@ namespace LichPhylactery {
    if(phantomBrokeTick==Now && phantomBrokeBy==dinfo.Instigator)return true;
    if(!PhantomActive)return false;
    phantomReadyTick=Now+Beasts.PhantomCooldown;phantomBrokeTick=Now;phantomBrokeBy=dinfo.Instigator;
-   var p=Pawn;if(p.Spawned)MoteMaker.ThrowText(p.DrawPos,p.Map,"落空",new Color(.75f,.6f,1f));
+   var p=Pawn;if(p.Spawned)MoteMaker.ThrowText(p.DrawPos,p.Map,"落空".Loc(),new Color(.75f,.6f,1f));
    SyncPhantom();
    return true;
   }
@@ -150,7 +150,7 @@ namespace LichPhylactery {
    Races124.Blink(p,cell);
    blinkReadyTick=Now+Beasts.BlinkCooldown;
    FleckMaker.ThrowDustPuffThick(from.ToVector3Shifted(),p.Map,1.2f,new Color(1f,.9f,.6f));
-   MoteMaker.ThrowText(p.DrawPos,p.Map,"闪现",new Color(1f,.9f,.6f));
+   MoteMaker.ThrowText(p.DrawPos,p.Map,"闪现".Loc(),new Color(1f,.9f,.6f));
    return true;
   }
   public static IntVec3 BlinkCell(Pawn p,Thing attacker){
@@ -175,10 +175,10 @@ namespace LichPhylactery {
   public override string CompInspectStringExtra(){
    int now=Now;
    switch(Props.kind){
-    case "Owlbear":return now<hugReadyTick?"熊抱冷却："+((hugReadyTick-now)/60f).ToString("0.#")+"秒":null;
-    case "DisplacerBeast":return now<phantomReadyTick?"位移幻影恢复中："+((phantomReadyTick-now)/60f).ToString("0.#")+"秒":null;
-    case "BlinkDog":return now<blinkReadyTick?"闪现冷却："+((blinkReadyTick-now)/60f).ToString("0.#")+"秒":null;
-    case "Worg":int n=PackAllies();return n>0?"群嚎：附近"+n+"只同伴，近战命中+"+(PackBonus*100f).ToString("0")+"%":null;
+    case "Owlbear":return now<hugReadyTick?"熊抱冷却：".Loc()+((hugReadyTick-now)/60f).ToString("0.#")+"秒".Loc():null;
+    case "DisplacerBeast":return now<phantomReadyTick?"位移幻影恢复中：".Loc()+((phantomReadyTick-now)/60f).ToString("0.#")+"秒".Loc():null;
+    case "BlinkDog":return now<blinkReadyTick?"闪现冷却：".Loc()+((blinkReadyTick-now)/60f).ToString("0.#")+"秒".Loc():null;
+    case "Worg":int n=PackAllies();return n>0?"群嚎：附近".Loc()+n+"只同伴，近战命中+".Loc()+(PackBonus*100f).ToString("0")+"%":null;
    }
    return null;
   }
@@ -243,13 +243,13 @@ namespace LichPhylactery {
   void ExposeBeasts(){Scribe_Values.Look(ref dndBeastsWild,"dndBeastsWild",true);ExposeBeastLevels();ExposeWildMonsters();}
  }
  public static class BeastSettings {
-  public static void Draw(Listing_Standard l){l.GapLine();l.Label("DND野兽");l.CheckboxLabeled("野外刷新 DND 野兽",ref LichMod.Settings.dndBeastsWild,"猫头鹰熊、邪座狼、冬狼、地狱犬、魔化兽、闪光犬，以及伪龙、翼猫、巨型火甲虫、罗斯牛、鹰头马身兽、斧喙鸟、狮鹫、钩爪恐兽、相位蜘蛛、暗斗篷、血蝠蝇会在各自的生态区野外刷新，其中凶猛的也会以狂暴兽群出现。关闭后不再刷新、也不会以狂暴兽群出现；保存设置后立即生效，已经在地图上的野兽不受影响。");
+  public static void Draw(Listing_Standard l){l.GapLine();l.Label("DND野兽".Loc());l.CheckboxLabeled("野外刷新 DND 野兽".Loc(),ref LichMod.Settings.dndBeastsWild,"猫头鹰熊、邪座狼、冬狼、地狱犬、魔化兽、闪光犬，以及伪龙、翼猫、巨型火甲虫、罗斯牛、鹰头马身兽、斧喙鸟、狮鹫、钩爪恐兽、相位蜘蛛、暗斗篷、血蝠蝇会在各自的生态区野外刷新，其中凶猛的也会以狂暴兽群出现。关闭后不再刷新、也不会以狂暴兽群出现；保存设置后立即生效，已经在地图上的野兽不受影响。".Loc());
    WildMonsterSettings.Draw(l); // DND 怪物第二批
    // 1.70.0 野兽强化
    var s=LichMod.Settings;
-   l.CheckboxLabeled("野兽野性等级",ref s.beastLevels,"野生和非玩家的动物出现时带「野性等级」：狂暴兽群和敌对组按威胁点数定级，野外动物 1～殖民地最高等级 −3，上限殖民地最高等级 +3。等级越高近战伤害、部位生命越高、跑得越快（与殖民者同一条六维曲线，1 级不变）。玩家的动物靠战斗和搬运成长。关闭后不再给新动物定级，已有的等级不提供效果。");
+   l.CheckboxLabeled("野兽野性等级".Loc(),ref s.beastLevels,"野生和非玩家的动物出现时带「野性等级」：狂暴兽群和敌对组按威胁点数定级，野外动物 1～殖民地最高等级 −3，上限殖民地最高等级 +3。等级越高近战伤害、部位生命越高、跑得越快（与殖民者同一条六维曲线，1 级不变）。玩家的动物靠战斗和搬运成长。关闭后不再给新动物定级，已有的等级不提供效果。".Loc());
    if(s.beastLevels){
-    TooltipHandler.TipRegion(l.Label("精英野兽概率："+Mathf.RoundToInt(s.beastEliteChance*100f)+"%"),"野兽出现时成为精英（恐怖 / 狂暴 / 远古 / 深渊腐化）的概率，死后掉落兽王之心。狂暴兽群的首领总是精英。");
+    TooltipHandler.TipRegion(l.Label("精英野兽概率：".Loc()+Mathf.RoundToInt(s.beastEliteChance*100f)+"%"),"野兽出现时成为精英（恐怖 / 狂暴 / 远古 / 深渊腐化）的概率，死后掉落兽王之心。狂暴兽群的首领总是精英。".Loc());
     s.beastEliteChance=Mathf.Round(l.Slider(s.beastEliteChance,0f,BeastLevels.EliteMax)*100f)/100f;
    }
   }

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（WizardSpellbook.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>戏法</zh><en>cantrip</en></s>
+  <s><zh>一环</zh><en>circle 1</en></s>
+  <s><zh>二环</zh><en>circle 2</en></s>
+  <s><zh>三环</zh><en>circle 3</en></s>
+  <s><zh>四环</zh><en>circle 4</en></s>
+  <s><zh>五环</zh><en>circle 5</en></s>
+  <s><zh>六环</zh><en>circle 6</en></s>
+  <s><zh>七环</zh><en>circle 7</en></s>
+  <s><zh>八环</zh><en>circle 8</en></s>
+  <s><zh>九环</zh><en>circle 9</en></s>
+  <s><zh>环</zh><en> circle</en></s>
+  <s><zh>仪式</zh><en>ritual</en></s>
+  <s><zh>专注</zh><en>concentration</en></s>
+  <s><zh>可升环</zh><en>upcastable</en></s>
+  <s><zh>不是法师</zh><en>Not a wizard</en></s>
+  <s><zh>不是能写进法术书的法术</zh><en>Not a spell that can be written into a spellbook</en></s>
+  <s><zh>已经在法术书里了</zh><en>Already in the spellbook</en></s>
+  <s><zh>要法师 </zh><en>Needs wizard </en></s>
+  <s><zh>不在法师法术表里</zh><en>Not on the wizard spell list</en></s>
+  <s><zh>祈愿术已经永远失去了</zh><en>Wish has been lost forever</en></s>
+  <s><zh>不是戏法</zh><en>Not a cantrip</en></s>
+  <s><zh>没有准备这个法术（点“备法”在法术书里准备；睡醒后或研读 1 小时后可以更换）</zh><en>This spell isn't prepared (click "prepare" in the spellbook; can be changed after sleeping or 1 hour of study)</en></s>
+  <s><zh>变成兔子了，放不了法术</zh><en>Turned into a rabbit; can't cast spells</en></s>
+  <s><zh>被弱智术打碎了心智，放不了法术</zh><en>Mind shattered by feeblemind; can't cast spells</en></s>
+  <s><zh>今天的次数已经用完（</zh><en>Today's uses are spent (</en></s>
+  <s><zh>效果 ×</zh><en>effect ×</en></s>
+  <s><zh> 个目标</zh><en> targets</en></s>
+  <s><zh>半径 +</zh><en>radius +</en></s>
+  <s><zh>蓄力 </zh><en>charge </en></s>
+  <s><zh> 秒</zh><en> seconds</en></s>
+  <s><zh>失去专注：</zh><en>Concentration lost: </en></s>
+  <s><zh>受伤失去了专注，</zh><en> was hurt and lost concentration; </en></s>
+  <s><zh>结束。</zh><en> ended.</en></s>
+  <s><zh>维持专注</zh><en>maintained concentration</en></s>
+  <s><zh>回到物质位面</zh><en>return to the Material Plane</en></s>
+  <s><zh>时间停止：不进冷却</zh><en>Time stop: no cooldown</en></s>
+  <s><zh>的法术书：待选法术 </zh><en>'s spellbook: spells to pick </en></s>
+  <s><zh> 个、戏法 </zh><en>, cantrips </en></s>
+  <s><zh> 个（点“备法”按钮选择）。</zh><en> (click the "prepare" button to choose).</en></s>
+  <s><zh>不在法术书里</zh><en>Not in the spellbook</en></s>
+  <s><zh>今天的次数已经用完</zh><en>Today's uses are spent</en></s>
+  <s><zh>被弱智术打碎了心智</zh><en>Mind shattered by feeblemind</en></s>
+  <s><zh>：仪式失败——</zh><en>: ritual failed: </en></s>
+  <s><zh>仪式：</zh><en>Ritual: </en></s>
+  <s><zh>附近没有能用的研究台或卷轴书桌。</zh><en>No usable research bench or scroll desk nearby.</en></s>
+  <s><zh>研读完法术书，可以重新备法了。</zh><en> finished studying the spellbook and can prepare spells again.</en></s>
+  <s><zh>只有法师能抄录法术</zh><en>Only wizards can copy spells</en></s>
+  <s><zh>这张残页上没有法术</zh><en>There's no spell on this page</en></s>
+  <s><zh> 级才能抄录</zh><en> level to copy</en></s>
+  <s><zh>抄录失败</zh><en>Copy failed</en></s>
+  <s><zh>抄录：</zh><en>Copy: </en></s>
+  <s><zh>法术：</zh><en>Spell: </en></s>
+  <s><zh>把「</zh><en> copied "</en></s>
+  <s><zh>」抄进了法术书。</zh><en>" into the spellbook.</en></s>
+  <s><zh>抄录「</zh><en>Copying "</en></s>
+  <s><zh>」失败，材料损失了。</zh><en>" failed; the materials were lost.</en></s>
+  <s><zh>没有抄录：</zh><en>Didn't copy: </en></s>
+  <s><zh>，材料已退回。</zh><en>; materials refunded.</en></s>
+  <s><zh> 的法术书</zh><en>'s spellbook</en></s>
+  <s><zh>法师 </zh><en>Wizard </en></s>
+  <s><zh>　法力 </zh><en>  mana </en></s>
+  <s><zh>（法师等级 + 智力调整值）</zh><en> (wizard level + Intelligence modifier)</en></s>
+  <s><zh>法术书 / 备法</zh><en>Spellbook / prepare</en></s>
+  <s><zh>现在可以更换备法（关闭窗口后要再睡一觉或研读 1 小时才能再改）。戏法常备；仪式法术不占名额，没准备也能在这里仪式施法（原地引导 1 小时，不耗法力）。</zh><en>Prepared spells can be changed now (after closing the window, another sleep or 1 hour of study is needed to change again). Cantrips are always ready; ritual spells take no slot and can be ritual cast here even unprepared (channel in place for 1 hour, no mana).</en></s>
+  <s><zh>备法已定：睡醒后、或在研究台 / 卷轴书桌研读 1 小时后才能更换。仪式法术随时可以在这里仪式施法。</zh><en>Prepared spells are set: can only be changed after sleeping or after studying for 1 hour at a research bench / scroll desk. Ritual spells can be ritual cast here anytime.</en></s>
+  <s><zh>每个法师等级可以写进法术书 2 个法术，只能选已经能施放的环位（一环 1 级、二环 3 级、三环 5 级……九环 17 级，每 2 级一环）。待选 </zh><en>Each wizard level can write 2 spells into the spellbook, only of circles you can already cast (circle 1 at level 1, circle 2 at 3, circle 3 at 5... circle 9 at 17, one circle every 2 levels). To pick: </en></s>
+  <s><zh> 个。卷轴书桌的“抄录法术”不占这个名额。</zh><en>. The scroll desk's "copy spell" doesn't use this allowance.</en></s>
+  <s><zh>戏法不耗法力、常备不占备法名额。法师 1 级 3 个（魔法飞弹算一个），4 级、10 级各 +1。还能学 </zh><en>Cantrips cost no mana and are always ready without taking prepared slots. Wizards get 3 at level 1 (magic missile counts as one), +1 each at levels 4 and 10. Can still learn </en></s>
+  <s><zh>法术书是空的。</zh><en>The spellbook is empty.</en></s>
+  <s><zh>没有可以选的法术（已经全会了，或要更高的法师等级）。</zh><en>No spells to pick (already knows them all, or needs a higher wizard level).</en></s>
+  <s><zh>没有可以学的戏法了。</zh><en>No more cantrips to learn.</en></s>
+  <s><zh>不耗法力</zh><en>No mana cost</en></s>
+  <s><zh>戏法·常备</zh><en>Cantrip · always ready</en></s>
+  <s><zh>选择蓄力秒数（0～5，不加法力）。也可以右键法术按钮。</zh><en>Choose the charge seconds (0-5, no extra mana). You can also right-click the spell button.</en></s>
+  <s><zh>选择施放的环位：每升 1 环多花 1 法力，</zh><en>Choose the circle to cast at: each extra circle costs 1 more mana, </en></s>
+  <s><zh>原地引导 1 小时施放，不耗法力（要在非征召状态下）。</zh><en>Channel in place for 1 hour to cast, no mana cost (must be undrafted).</en></s>
+  <s><zh>写入</zh><en>Write</en></s>
+  <s><zh>蓄力：</zh><en>Charge: </en></s>
+  <s><zh>之后施放都按选中的蓄力秒数：火珠落地后过这么多秒才炸开，每秒伤害 +10 × 奥术强度。不加法力。</zh><en>Later casts all use the selected charge seconds: the fire bead explodes that many seconds after landing, +10 × arcane power damage per second. No extra mana.</en></s>
+  <s><zh> 秒：伤害 (</zh><en> seconds: damage (</en></s>
+  <s><zh>) × 奥术强度</zh><en>) × arcane power</en></s>
+  <s><zh>升环：</zh><en>Upcast: </en></s>
+  <s><zh>之后施放这个法术都按选中的环位（每升 1 环多花 1 法力）。最高到自己能放的 </zh><en>Later casts of this spell all use the selected circle (each extra circle costs 1 more mana). Up to the </en></s>
+  <s><zh>按</zh><en>By </en></s>
+  <s><zh>施放：法力 </zh><en>Cast: mana </en></s>
+  <s><zh>（原样）</zh><en> (base)</en></s>
+  <s><zh>备法（</zh><en>Prepare (</en></s>
+  <s><zh>打开法术书：准备法术（只有准备了的法术出现在按钮栏）、学习新法术和戏法、仪式施法、设置升环。</zh><en>Open the spellbook: prepare spells (only prepared spells appear on the button bar), learn new spells and cantrips, ritual cast, set upcasting.</en></s>
+  <s><zh>\n\n专注中：</zh><en>\n\nConcentrating: </en></s>
+</LPStrings>

@@ -112,13 +112,6 @@
     <adulthood><li><category>LP_Race_Troll</category></li></adulthood>
   </LichPhylactery.BackstoryPoolDef>
   <LichPhylactery.BackstoryPoolDef>
-    <defName>LP_BsPool_ForceDragon</defName>
-    <tier>Race</tier><chanceSetting>race</chanceSetting>
-    <xenotypes><li>LP_ForceDragon</li></xenotypes>
-    <childhood><li><category>LP_Race_ForceDragon</category></li></childhood>
-    <adulthood><li><category>LP_Race_ForceDragon</category></li></adulthood>
-  </LichPhylactery.BackstoryPoolDef>
-  <LichPhylactery.BackstoryPoolDef>
     <defName>LP_BsPool_HalfOrc</defName>
     <tier>Race</tier><chanceSetting>race</chanceSetting>
     <xenotypes><li>LP_HalfOrc</li></xenotypes>

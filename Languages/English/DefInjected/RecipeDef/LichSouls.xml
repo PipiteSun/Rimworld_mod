@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 汲取灵魂 -->
+  <LP_OfferSoul.label>drained a soul</LP_OfferSoul.label>
+  <!-- 消耗一具完整的人形尸体，把其灵魂汲入命匣。获得的献祭经验 =（50 + 5 × 技能等级总和）× 心灵敏感度（按20%～400%计算）。尸体不能缺少任何身体部位，不能是已风干的枯骨，也不能是巫妖或死灵造物。选中尸体可以查看它的灵魂价值。 -->
+  <LP_OfferSoul.description>Consume a complete humanlike corpse and draw its soul into the phylactery. Sacrifice XP gained = (50 + 5 × total skill levels) × psychic sensitivity (counted between 20% and 400%). The corpse must not be missing any body part, must not be a desiccated skeleton, and must not be a lich or necromantic construct. Select a corpse to see its soul value.</LP_OfferSoul.description>
+  <!-- 正在汲取灵魂。 -->
+  <LP_OfferSoul.jobString>Draining a soul.</LP_OfferSoul.jobString>
+</LanguageData>

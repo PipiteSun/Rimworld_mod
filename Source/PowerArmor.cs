@@ -46,11 +46,11 @@ namespace LichPhylactery {
    if(PowerArmor.FieldOn(p) && !Empty){
     float cost=dinfo.Amount*Props.fieldCost;
     if(Energy>=cost){Energy-=cost;absorbed=true;PowerArmor.FieldFlash(p);return;}
-    dinfo.SetAmount(dinfo.Amount-Energy/Math.Max(.01f,Props.fieldCost));Energy=0f;Items.Remove(p,PowerArmor.FieldHediff);Items.Mote(p,"力场崩溃",PowerArmor.CoreColor);PowerArmor.Sync(p);return;
+    dinfo.SetAmount(dinfo.Amount-Energy/Math.Max(.01f,Props.fieldCost));Energy=0f;Items.Remove(p,PowerArmor.FieldHediff);Items.Mote(p,"力场崩溃".Loc(),PowerArmor.CoreColor);PowerArmor.Sync(p);return;
    }
    if(!Empty){Energy-=dinfo.Amount*PowerArmor.HitDrain;if(Empty)PowerArmor.Sync(p);}
   }
-  public override string CompInspectStringExtra()=>"奥能核心："+Energy.ToString("0")+" / "+Max.ToString("0")+(Empty?"（耗尽）":"");
+  public override string CompInspectStringExtra()=>"奥能核心：".Loc()+Energy.ToString("0")+" / "+Max.ToString("0")+(Empty?"（耗尽）".Loc():"");
   public override IEnumerable<Gizmo> CompGetWornGizmosExtra(){
    foreach(var g in base.CompGetWornGizmosExtra())yield return g;
    var p=Wearer;if(p==null || p.Faction!=Faction.OfPlayer)yield break;
@@ -92,7 +92,7 @@ namespace LichPhylactery {
   public static void Sync(Pawn p,CompArcaneCore gone=null){
    if(p?.health==null || p.Dead)return;var c=Core(p);if(c==gone)c=null;
    bool husk=c!=null && c.Empty;
-   if(husk && !Items.Has(p,HuskHediff)){Items.Give(p,HuskHediff);Items.Mote(p,"奥能耗尽：铁壳",new Color(.7f,.7f,.72f));}
+   if(husk && !Items.Has(p,HuskHediff)){Items.Give(p,HuskHediff);Items.Mote(p,"奥能耗尽：铁壳".Loc(),new Color(.7f,.7f,.72f));}
    else if(!husk)Items.Remove(p,HuskHediff);
    if(c==null || c.Empty)Items.Remove(p,FieldHediff);
   }
@@ -112,26 +112,26 @@ namespace LichPhylactery {
 
   // ---------- 能力 ----------
   static string Cannot(Pawn p,CompArcaneCore c,float cost,int last,int cd){
-   if(p.Downed)return "倒地时不能使用。";
-   if(c.Empty)return "奥能耗尽了，先充能。";
-   if(c.Energy+.001f<cost)return "奥能不足（需要 "+cost.ToString("0")+"）。";
-   if(Now-last<cd && Now>=last)return "冷却中（还要 "+((cd-(Now-last))/60f).ToString("0")+" 秒）。";
+   if(p.Downed)return "倒地时不能使用。".Loc();
+   if(c.Empty)return "奥能耗尽了，先充能。".Loc();
+   if(c.Energy+.001f<cost)return "奥能不足（需要 ".Loc()+cost.ToString("0")+"）。".Loc();
+   if(Now-last<cd && Now>=last)return "冷却中（还要 ".Loc()+((cd-(Now-last))/60f).ToString("0")+" 秒）。".Loc();
    return null;
   }
-  public static string CannotLeap(Pawn p,CompArcaneCore c)=>!c.Props.leap?"这件甲没有推进器。":!p.Spawned?"不在地图上。":Cannot(p,c,LeapCost,c.lastLeap,LeapCooldown);
-  public static string CannotField(Pawn p,CompArcaneCore c)=>!c.Props.field?"这件甲没有力场发生器。":FieldOn(p)?"力场已经开着。":Cannot(p,c,FieldCost,c.lastField,FieldCooldown);
-  public static string CannotOverload(Pawn p,CompArcaneCore c)=>!c.Props.overload?"这件甲不能过载。":!p.Spawned?"不在地图上。":Cannot(p,c,OverloadCost,c.lastOverload,OverloadCooldown);
+  public static string CannotLeap(Pawn p,CompArcaneCore c)=>!c.Props.leap?"这件甲没有推进器。".Loc():!p.Spawned?"不在地图上。".Loc():Cannot(p,c,LeapCost,c.lastLeap,LeapCooldown);
+  public static string CannotField(Pawn p,CompArcaneCore c)=>!c.Props.field?"这件甲没有力场发生器。".Loc():FieldOn(p)?"力场已经开着。".Loc():Cannot(p,c,FieldCost,c.lastField,FieldCooldown);
+  public static string CannotOverload(Pawn p,CompArcaneCore c)=>!c.Props.overload?"这件甲不能过载。".Loc():!p.Spawned?"不在地图上。".Loc():Cannot(p,c,OverloadCost,c.lastOverload,OverloadCooldown);
   public static string BadLeapCell(Pawn p,IntVec3 cell){
-   var map=p.Map;if(map==null || !cell.IsValid || !cell.InBounds(map))return "落点无效。";
-   float d=cell.DistanceTo(p.Position);if(d<LeapMin)return "太近了。";if(d>LeapRange)return "超出跃击距离（"+LeapRange.ToString("0")+" 格）。";
-   if(cell.Fogged(map) || !cell.Standable(map) || cell.GetFirstPawn(map)!=null)return "落不了脚。";
-   if(cell.Roofed(map) && p.Position.Roofed(map) && !GenSight.LineOfSight(p.Position,cell,map))return "中间挡着。";
+   var map=p.Map;if(map==null || !cell.IsValid || !cell.InBounds(map))return "落点无效。".Loc();
+   float d=cell.DistanceTo(p.Position);if(d<LeapMin)return "太近了。".Loc();if(d>LeapRange)return "超出跃击距离（".Loc()+LeapRange.ToString("0")+" 格）。".Loc();
+   if(cell.Fogged(map) || !cell.Standable(map) || cell.GetFirstPawn(map)!=null)return "落不了脚。".Loc();
+   if(cell.Roofed(map) && p.Position.Roofed(map) && !GenSight.LineOfSight(p.Position,cell,map))return "中间挡着。".Loc();
    return null;
   }
   public static bool Leap(Pawn p,CompArcaneCore c,IntVec3 cell){
    if(CannotLeap(p,c)!=null || BadLeapCell(p,cell)!=null)return false;
    c.Energy-=LeapCost;c.lastLeap=Math.Max(1,Now);
-   var map=p.Map;var origin=p.Position;Items.Mote(p,"推进跃击",CoreColor);FleckMaker.ThrowDustPuffThick(p.DrawPos,map,1.6f,new Color(.7f,.8f,.9f));
+   var map=p.Map;var origin=p.Position;Items.Mote(p,"推进跃击".Loc(),CoreColor);FleckMaker.ThrowDustPuffThick(p.DrawPos,map,1.6f,new Color(.7f,.8f,.9f));
    var def=leapFlyer.Def;var flyer=def==null?null:PawnFlyer.MakeFlyer(def,p,cell,null,null);
    if(flyer==null){if(!p.Spawned)GenSpawn.Spawn(p,origin,map);Races124.Blink(p,cell);Land(p);}
    else GenSpawn.Spawn(flyer,origin,map);
@@ -151,7 +151,7 @@ namespace LichPhylactery {
   public static bool Field(Pawn p,CompArcaneCore c){
    if(CannotField(p,c)!=null)return false;
    c.Energy-=FieldCost;c.lastField=Math.Max(1,Now);Items.Give(p,FieldHediff,FieldTicks);
-   Items.Mote(p,"奥能力场",CoreColor);FieldFlash(p);return true;
+   Items.Mote(p,"奥能力场".Loc(),CoreColor);FieldFlash(p);return true;
   }
   public static void FieldFlash(Pawn p){if(p.Spawned)FleckMaker.ThrowLightningGlow(p.DrawPos,p.Map,1.4f);}
   public static float OverloadAmount(Pawn p,CompArcaneCore c){
@@ -162,7 +162,7 @@ namespace LichPhylactery {
   public static int Overload(Pawn p,CompArcaneCore c){
    if(CannotOverload(p,c)!=null)return -1;
    c.Energy-=OverloadCost;c.lastOverload=Math.Max(1,Now);var map=p.Map;float amount=OverloadAmount(p,c);int n=0;
-   Items.Mote(p,"过载冲击",CoreColor);
+   Items.Mote(p,"过载冲击".Loc(),CoreColor);
    foreach(var cell in GenRadial.RadialCellsAround(p.Position,OverloadRadius,true))if(cell.InBounds(map) && Rand.Chance(.35f))FleckMaker.ThrowMicroSparks(cell.ToVector3Shifted(),map);
    FleckMaker.ThrowLightningGlow(p.DrawPos,map,OverloadRadius);
    foreach(var t in Races124.PawnsNear(map,p.Position,OverloadRadius).ToList()){
@@ -178,16 +178,16 @@ namespace LichPhylactery {
   public static bool UseCarriedCell(Pawn p,CompArcaneCore c){
    var cell=CarriedCell(p);if(cell==null || c.Energy>=c.Max-.5f)return false;
    if(cell.stackCount>1)cell.SplitOff(1).Destroy();else cell.Destroy();
-   Charge(c,CellCharge);Items.Mote(p,"换上奥能电池",CoreColor);return true;
+   Charge(c,CellCharge);Items.Mote(p,"换上奥能电池".Loc(),CoreColor);return true;
   }
   public static Thing NearestCell(Pawn p)=>p.Map==null?null:GenClosest.ClosestThingReachable(p.Position,p.Map,ThingRequest.ForDef(DefDatabase<ThingDef>.GetNamedSilentFail(CellDef)),PathEndMode.ClosestTouch,TraverseParms.For(p),40f,t=>!t.IsForbidden(p) && p.CanReserve(t));
   public static bool Powered(Thing cradle)=>cradle!=null && cradle.Spawned && (cradle.TryGetComp<CompPowerTrader>()?.PowerOn??false);
   public static Thing NearestCradle(Pawn p)=>p.Map==null?null:GenClosest.ClosestThingReachable(p.Position,p.Map,ThingRequest.ForDef(DefDatabase<ThingDef>.GetNamedSilentFail(CradleDef)),PathEndMode.InteractionCell,TraverseParms.For(p),9999f,t=>Powered(t) && !t.IsForbidden(p) && p.CanReserve(t));
   public static string CannotCharge(Pawn p,Thing cradle){
-   var c=Core(p);if(c==null)return "没有穿奥能动力甲。";
-   if(c.Energy>=c.Max-.5f)return "奥能已经满了。";
-   if(!Powered(cradle))return "充能座没有通电。";
-   if(!p.CanReserveAndReach(cradle,PathEndMode.InteractionCell,Danger.Deadly))return "过不去或者有人在用。";
+   var c=Core(p);if(c==null)return "没有穿奥能动力甲。".Loc();
+   if(c.Energy>=c.Max-.5f)return "奥能已经满了。".Loc();
+   if(!Powered(cradle))return "充能座没有通电。".Loc();
+   if(!p.CanReserveAndReach(cradle,PathEndMode.InteractionCell,Danger.Deadly))return "过不去或者有人在用。".Loc();
    return null;
   }
   public static bool OrderCharge(Pawn p,Thing cradle){
@@ -199,27 +199,27 @@ namespace LichPhylactery {
   static Texture2D icon(string n)=>ContentFinder<Texture2D>.Get("LP/PowerArmor/UI/"+n,false)??BaseContent.BadTex;
   public static IEnumerable<Gizmo> Commands(Pawn p,CompArcaneCore c){
    if(c.Props.leap){
-    var cmd=new Command_Action{defaultLabel="推进跃击",defaultDesc="背后的奥能推进器喷出一道蓝焰，跃到 "+LeapMin.ToString("0")+"～"+LeapRange.ToString("0")+" 格外的落点（消耗 "+LeapCost.ToString("0")+" 奥能，冷却 "+(LeapCooldown/60)+" 秒）。落地时 "+LeapRadius.ToString("0.#")+" 格内的敌人受到 "+LeapDamage.ToString("0")+" 点钝击，成功率 "+LeapChance.ToStringPercent()+" 被震倒（眩晕 "+(LeapStun/60f).ToString("0.#")+" 秒）。",icon=icon("Leap")};
+    var cmd=new Command_Action{defaultLabel="推进跃击".Loc(),defaultDesc="背后的奥能推进器喷出一道蓝焰，跃到 ".Loc()+LeapMin.ToString("0")+"～".Loc()+LeapRange.ToString("0")+" 格外的落点（消耗 ".Loc()+LeapCost.ToString("0")+" 奥能，冷却 ".Loc()+(LeapCooldown/60)+" 秒）。落地时 ".Loc()+LeapRadius.ToString("0.#")+" 格内的敌人受到 ".Loc()+LeapDamage.ToString("0")+" 点钝击，成功率 ".Loc()+LeapChance.ToStringPercent()+" 被震倒（眩晕 ".Loc()+(LeapStun/60f).ToString("0.#")+" 秒）。".Loc(),icon=icon("Leap")};
     cmd.action=()=>Find.Targeter.BeginTargeting(new TargetingParameters{canTargetLocations=true,canTargetPawns=false,canTargetBuildings=false,canTargetItems=false},t=>{string bad=BadLeapCell(p,t.Cell);if(bad!=null){Messages.Message(bad,MessageTypeDefOf.RejectInput,false);return;}Leap(p,c,t.Cell);},p);
     string why=CannotLeap(p,c);if(why!=null)cmd.Disable(why);yield return cmd;
    }
    if(c.Props.field){
-    var cmd=new Command_Action{defaultLabel="奥能力场",defaultDesc="展开贴身的奥能力场 "+(FieldTicks/60)+" 秒（消耗 "+FieldCost.ToString("0")+" 奥能，冷却 "+(FieldCooldown/60)+" 秒）：力场开着时所有伤害都被挡下，每挡 1 点伤害消耗 "+c.Props.fieldCost.ToString("0.##")+" 奥能；奥能耗尽时力场崩溃。",icon=icon("Field"),action=()=>Field(p,c)};
+    var cmd=new Command_Action{defaultLabel="奥能力场".Loc(),defaultDesc="展开贴身的奥能力场 ".Loc()+(FieldTicks/60)+" 秒（消耗 ".Loc()+FieldCost.ToString("0")+" 奥能，冷却 ".Loc()+(FieldCooldown/60)+" 秒）：力场开着时所有伤害都被挡下，每挡 1 点伤害消耗 ".Loc()+c.Props.fieldCost.ToString("0.##")+" 奥能；奥能耗尽时力场崩溃。".Loc(),icon=icon("Field"),action=()=>Field(p,c)};
     string why=CannotField(p,c);if(why!=null)cmd.Disable(why);yield return cmd;
    }
    if(c.Props.overload){
-    var cmd=new Command_Action{defaultLabel="过载冲击",defaultDesc="让核心瞬间过载，向四周放出一圈奥能冲击（消耗 "+OverloadCost.ToString("0")+" 奥能，冷却 "+(OverloadCooldown/60)+" 秒）："+OverloadRadius.ToString("0.#")+" 格内的敌人受到 "+OverloadAmount(p,c).ToString("0")+" 点钝击"+(c.Props.overloadScale>0f?"（随奥术强度）":"")+"，成功率 "+OverloadChance.ToStringPercent()+" 被震晕 "+(OverloadStun/60f).ToString("0.#")+" 秒。不伤友军。",icon=icon("Overload"),action=()=>Overload(p,c)};
+    var cmd=new Command_Action{defaultLabel="过载冲击".Loc(),defaultDesc="让核心瞬间过载，向四周放出一圈奥能冲击（消耗 ".Loc()+OverloadCost.ToString("0")+" 奥能，冷却 ".Loc()+(OverloadCooldown/60)+" 秒）：".Loc()+OverloadRadius.ToString("0.#")+" 格内的敌人受到 ".Loc()+OverloadAmount(p,c).ToString("0")+" 点钝击".Loc()+(c.Props.overloadScale>0f?"（随奥术强度）".Loc():"")+"，成功率 ".Loc()+OverloadChance.ToStringPercent()+" 被震晕 ".Loc()+(OverloadStun/60f).ToString("0.#")+" 秒。不伤友军。".Loc(),icon=icon("Overload"),action=()=>Overload(p,c)};
     string why=CannotOverload(p,c);if(why!=null)cmd.Disable(why);yield return cmd;
    }
-   var charge=new Command_Action{defaultLabel="充能",defaultDesc="身上带着奥能电池就立刻换上一块（+"+CellCharge.ToString("0")+"）；否则去最近一座通电的奥能充能座充能，每小时 +"+(CradleRate*10f).ToString("0")+"，充满或被打断为止；没有充能座时去拿附近的奥能电池。",icon=icon("Charge")};
+   var charge=new Command_Action{defaultLabel="充能".Loc(),defaultDesc="身上带着奥能电池就立刻换上一块（+".Loc()+CellCharge.ToString("0")+"）；否则去最近一座通电的奥能充能座充能，每小时 +".Loc()+(CradleRate*10f).ToString("0")+"，充满或被打断为止；没有充能座时去拿附近的奥能电池。".Loc(),icon=icon("Charge")};
    charge.action=()=>{
     if(UseCarriedCell(p,c))return;
     var cr=NearestCradle(p);if(cr!=null && OrderCharge(p,cr))return;
     var cell=NearestCell(p);var use=cell?.TryGetComp<CompUsable>();
     if(use!=null){use.TryStartUseJob(p,cell,false);return;}
-    Messages.Message("附近没有通电的奥能充能座，也没有奥能电池。",MessageTypeDefOf.RejectInput,false);
+    Messages.Message("附近没有通电的奥能充能座，也没有奥能电池。".Loc(),MessageTypeDefOf.RejectInput,false);
    };
-   if(c.Energy>=c.Max-.5f)charge.Disable("奥能已经满了。");else if(p.Downed)charge.Disable("倒地时不能充能。");
+   if(c.Energy>=c.Max-.5f)charge.Disable("奥能已经满了。".Loc());else if(p.Downed)charge.Disable("倒地时不能充能。".Loc());
    yield return charge;
   }
   // 测试用：不弹窗地拿到按钮。
@@ -256,7 +256,7 @@ namespace LichPhylactery {
   public bool divine;
   float Bonus(StatRequest req){if(PowerArmor.Live.Count==0 || !(req.Thing is Pawn p))return 0f;var c=PowerArmor.Core(p);return c==null?0f:divine?c.Props.divinePower:c.Props.arcanePower;}
   public override void TransformValue(StatRequest req,ref float val){val+=Bonus(req);}
-  public override string ExplanationPart(StatRequest req){float b=Bonus(req);return b==0f?null:"奥能动力甲：+"+b.ToStringPercent();}
+  public override string ExplanationPart(StatRequest req){float b=Bonus(req);return b==0f?null:"奥能动力甲：+".Loc()+b.ToStringPercent();}
  }
  [StaticConstructorOnStartup]
  public static class PowerArmorStats {
@@ -277,11 +277,11 @@ namespace LichPhylactery {
  public class CompProperties_ArcaneCell : CompProperties_UseEffect {public CompProperties_ArcaneCell(){compClass=typeof(CompUseEffect_ArcaneCell);}}
  public class CompUseEffect_ArcaneCell : CompUseEffect {
   public override AcceptanceReport CanBeUsedBy(Pawn p){
-   var c=PowerArmor.Core(p);if(c==null)return "没有穿奥能动力甲。";
-   if(c.Energy>=c.Max-.5f)return "奥能已经满了。";
+   var c=PowerArmor.Core(p);if(c==null)return "没有穿奥能动力甲。".Loc();
+   if(c.Energy>=c.Max-.5f)return "奥能已经满了。".Loc();
    return base.CanBeUsedBy(p);
   }
-  public override void DoEffect(Pawn usedBy){base.DoEffect(usedBy);var c=PowerArmor.Core(usedBy);if(c==null)return;PowerArmor.Charge(c,PowerArmor.CellCharge);Items.Mote(usedBy,"换上奥能电池",PowerArmor.CoreColor);}
+  public override void DoEffect(Pawn usedBy){base.DoEffect(usedBy);var c=PowerArmor.Core(usedBy);if(c==null)return;PowerArmor.Charge(c,PowerArmor.CellCharge);Items.Mote(usedBy,"换上奥能电池".Loc(),PowerArmor.CoreColor);}
  }
 
  // 奥能充能座：站到交互格上充能，通电时每 250 刻 +12，满了或 3 小时后结束。
@@ -311,7 +311,7 @@ namespace LichPhylactery {
    foreach(var o in base.CompFloatMenuOptions(p))yield return o;
    if(PowerArmor.Core(p)==null)yield break;
    string why=PowerArmor.CannotCharge(p,parent);
-   yield return why==null?new FloatMenuOption("给奥能动力甲充能",()=>PowerArmor.OrderCharge(p,parent)):new FloatMenuOption("不能充能："+why,null);
+   yield return why==null?new FloatMenuOption("给奥能动力甲充能".Loc(),()=>PowerArmor.OrderCharge(p,parent)):new FloatMenuOption("不能充能：".Loc()+why,null);
   }
  }
 
@@ -326,11 +326,11 @@ namespace LichPhylactery {
   public override GizmoResult GizmoOnGUI(Vector2 topLeft,float maxWidth,GizmoRenderParms parms){
    var r=new Rect(topLeft.x,topLeft.y,GetWidth(maxWidth),75f);Widgets.DrawWindowBackground(r);
    var inner=r.ContractedBy(6f);
-   Text.Font=GameFont.Small;Widgets.Label(new Rect(inner.x,inner.y,inner.width,22f),c.Empty?"奥能核心（耗尽）":"奥能核心");
+   Text.Font=GameFont.Small;Widgets.Label(new Rect(inner.x,inner.y,inner.width,22f),c.Empty?"奥能核心（耗尽）".Loc():"奥能核心".Loc());
    var bar=new Rect(inner.x,inner.y+24f,inner.width,inner.height-24f);
    Widgets.FillableBar(bar,c.Fraction,c.Fraction<.25f?Low:Fill,Empty,true);
    Text.Anchor=TextAnchor.MiddleCenter;Widgets.Label(bar,c.Energy.ToString("0")+" / "+c.Max.ToString("0"));Text.Anchor=TextAnchor.UpperLeft;
-   if(Mouse.IsOver(r))TooltipHandler.TipRegion(r,"奥能："+c.Energy.ToString("0.#")+" / "+c.Max.ToString("0")+"\n受到伤害时核心分担冲击，每点伤害 -"+PowerArmor.HitDrain.ToString("0.##")+"；征召时每小时 -"+(PowerArmor.DraftDrain*10f).ToString("0")+"；装甲能力另外消耗。\n耗尽时变成沉重的铁壳：移动 -35%、操作 -25%，能力不能用。\n在通电的奥能充能座充能（每小时 +"+(PowerArmor.CradleRate*10f).ToString("0")+"），或换上奥能电池（+"+PowerArmor.CellCharge.ToString("0")+"）。\n戴配套头盔时上限 +20%；装甲师把它改成奥术装甲时上限 +50%。");
+   if(Mouse.IsOver(r))TooltipHandler.TipRegion(r,"奥能：".Loc()+c.Energy.ToString("0.#")+" / "+c.Max.ToString("0")+"\n受到伤害时核心分担冲击，每点伤害 -".Loc()+PowerArmor.HitDrain.ToString("0.##")+"；征召时每小时 -".Loc()+(PowerArmor.DraftDrain*10f).ToString("0")+"；装甲能力另外消耗。\n耗尽时变成沉重的铁壳：移动 -35%、操作 -25%，能力不能用。\n在通电的奥能充能座充能（每小时 +".Loc()+(PowerArmor.CradleRate*10f).ToString("0")+"），或换上奥能电池（+".Loc()+PowerArmor.CellCharge.ToString("0")+"）。\n戴配套头盔时上限 +20%；装甲师把它改成奥术装甲时上限 +50%。".Loc());
    return new GizmoResult(GizmoState.Clear);
   }
  }

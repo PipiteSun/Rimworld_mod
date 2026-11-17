@@ -18,16 +18,16 @@ namespace LichPhylactery {
   public static Hediff_Tadpole Of(Pawn p){var list=p?.health?.hediffSet?.hediffs;if(list!=null)for(int i=0;i<list.Count;i++)if(list[i] is Hediff_Tadpole h)return h;return null;}
   // 不能寄生的原因；null 表示可以。
   public static string Immunity(Pawn p){
-   if(p==null || p.Dead)return "宿主必须活着。";
-   if(p.RaceProps.IsMechanoid)return "机械体没有大脑，蝌蚪死了。";
-   if(!p.RaceProps.Humanlike)return "蝌蚪只能寄生人形生物。";
-   if(!p.DevelopmentalStage.Adult())return "蝌蚪只能寄生成年人。";
-   if(MindFlayer.IsMindFlayer(p))return "目标已经是夺心魔了。";
-   if(Necro.Undead(p))return "巫妖与死灵造物没有活着的大脑，蝌蚪死了。";
-   if(FireGiant.Active(p))return "火巨人体内的熔火之热把蝌蚪烫死了。";
+   if(p==null || p.Dead)return "宿主必须活着。".Loc();
+   if(p.RaceProps.IsMechanoid)return "机械体没有大脑，蝌蚪死了。".Loc();
+   if(!p.RaceProps.Humanlike)return "蝌蚪只能寄生人形生物。".Loc();
+   if(!p.DevelopmentalStage.Adult())return "蝌蚪只能寄生成年人。".Loc();
+   if(MindFlayer.IsMindFlayer(p))return "目标已经是夺心魔了。".Loc();
+   if(Necro.Undead(p))return "巫妖与死灵造物没有活着的大脑，蝌蚪死了。".Loc();
+   if(FireGiant.Active(p))return "火巨人体内的熔火之热把蝌蚪烫死了。".Loc();
    // 1.38.0：流浆人没有固定的大脑位置，蝌蚪钻进去就被原生质溶解了。
-   if(Oozefolk.Is(p))return "流浆人的原生质把蝌蚪溶解了。";
-   if(MindFlayer.Brain(p)==null)return "目标没有大脑。";
+   if(Oozefolk.Is(p))return "流浆人的原生质把蝌蚪溶解了。".Loc();
+   if(MindFlayer.Brain(p)==null)return "目标没有大脑。".Loc();
    return null;
   }
   // 化形速度倍率：心智抗性按比例减速，巨魔减半，带 TadpoleProgressExtension 的基因（吉斯洋基宿敌等）再相乘。
@@ -41,9 +41,9 @@ namespace LichPhylactery {
   }
   public static float DailyProgress(Pawn p)=>SpeedFactor(p)/Mathf.Clamp(LichMod.Settings.ceremorphDays,1,15);
   public static Hediff_Tadpole Implant(Pawn p,Pawn implanter,Faction faction,out string failure){
-   failure=Of(p)!=null?"目标已经被寄生了。":Immunity(p);
+   failure=Of(p)!=null?"目标已经被寄生了。".Loc():Immunity(p);
    if(failure!=null){
-    if(p!=null && (p.Faction==Faction.OfPlayer || p.HostFaction==Faction.OfPlayer || faction==Faction.OfPlayer))Messages.Message("蝌蚪没能寄生"+p.LabelShort+"："+failure,p,MessageTypeDefOf.NeutralEvent,false);
+    if(p!=null && (p.Faction==Faction.OfPlayer || p.HostFaction==Faction.OfPlayer || faction==Faction.OfPlayer))Messages.Message("蝌蚪没能寄生".Loc()+p.LabelShort+"：".Loc()+failure,p,MessageTypeDefOf.NeutralEvent,false);
     return null;
    }
    var brain=MindFlayer.Brain(p);
@@ -66,7 +66,7 @@ namespace LichPhylactery {
    if(implanter!=null && implanter!=p && !implanter.Destroyed && p.relations!=null && !p.relations.DirectRelationExists(Relation,implanter))p.relations.AddDirectRelation(Relation,implanter);
    var g=MindFlayer.Cerebrum(p);if(g!=null){g.Value=StartingCerebrum;g.SyncHunger();}
    p.Drawer?.renderer?.SetAllGraphicsDirty();Necro.Refresh(p);
-   if(p.Faction==Faction.OfPlayer || implanter?.Faction==Faction.OfPlayer)Find.LetterStack.ReceiveLetter("化形完成",p.LabelShort+"脑中的蝌蚪完成了化形：现在是一个夺心魔了。性格被彻底改写，旧日的技能只剩下一半，背景变成了\"化形者\"。"+(faction!=null?"\n\n它效忠于"+faction.Name+"。":""),LetterDefOf.NeutralEvent,p);
+   if(p.Faction==Faction.OfPlayer || implanter?.Faction==Faction.OfPlayer)Find.LetterStack.ReceiveLetter("化形完成".Loc(),p.LabelShort+"脑中的蝌蚪完成了化形：现在是一个夺心魔了。性格被彻底改写，旧日的技能只剩下一半，背景变成了\"化形者\"。".Loc()+(faction!=null?"\n\n它效忠于".Loc()+faction.Name+"。".Loc():""),LetterDefOf.NeutralEvent,p);
   }
  }
 
@@ -80,8 +80,8 @@ namespace LichPhylactery {
   int ticks,dayTicks;
   public float Progress=>Severity;
   public override bool ShouldRemove=>base.ShouldRemove || (pawn!=null && !pawn.Dead && (MindFlayer.IsMindFlayer(pawn) || Tadpoles.Immunity(pawn)!=null));
-  public override string LabelInBrackets=>(CurStage?.label??"")+" "+Severity.ToStringPercent("0")+(Frozen?"，已抑制":"");
-  public override string TipStringExtra=>"化形进度："+Severity.ToStringPercent("0")+"\n每天约+"+(Tadpoles.DailyProgress(pawn)*100f).ToString("0.#")+"%（基础"+LichMod.Settings.ceremorphDays+"天"+(DNDMind.Resistance(pawn)>0?"，心智抗性减速":"")+(CommonRaces.IsTroll(pawn)?"，巨魔减半":"")+(Tadpoles.GeneFactor(pawn)<1f?"，血脉抗拒×"+Tadpoles.GeneFactor(pawn).ToStringPercent():"")+"）"+(Frozen?"\n抑灵剂正压制着蝌蚪，化形暂停。":"")+(implanterFaction!=null?"\n化形后将效忠："+implanterFaction.Name:"");
+  public override string LabelInBrackets=>(CurStage?.label??"")+" "+Severity.ToStringPercent("0")+(Frozen?"，已抑制".Loc():"");
+  public override string TipStringExtra=>"化形进度：".Loc()+Severity.ToStringPercent("0")+"\n每天约+".Loc()+(Tadpoles.DailyProgress(pawn)*100f).ToString("0.#")+"%（基础".Loc()+LichMod.Settings.ceremorphDays+"天".Loc()+(DNDMind.Resistance(pawn)>0?"，心智抗性减速".Loc():"")+(CommonRaces.IsTroll(pawn)?"，巨魔减半".Loc():"")+(Tadpoles.GeneFactor(pawn)<1f?"，血脉抗拒×".Loc()+Tadpoles.GeneFactor(pawn).ToStringPercent():"")+"）".Loc()+(Frozen?"\n抑灵剂正压制着蝌蚪，化形暂停。".Loc():"")+(implanterFaction!=null?"\n化形后将效忠：".Loc()+implanterFaction.Name:"");
   // 抑灵剂冻结（第5阶段实现）。
   public bool Frozen{get{bool frozen=false;CheckFrozen(ref frozen);return frozen;}}
   partial void CheckFrozen(ref bool frozen);
@@ -100,8 +100,8 @@ namespace LichPhylactery {
   }
   // 每天一次：巨魔20%排出蝌蚪；心灵失聪者30%让蝌蚪饿死。返回 true 表示蝌蚪已经没了。
   public bool DailyRoll(float roll){
-   if(CommonRaces.IsTroll(pawn) && roll<Tadpoles.TrollExpelChance){End(pawn.LabelShort+"的巨魔再生把脑中的蝌蚪排了出来。");return true;}
-   if(MindFlayer.PsychicallyDeaf(pawn) && roll<Tadpoles.DeafDeathChance){End(pawn.LabelShort+"的大脑一片寂静，蝌蚪找不到可吃的念头，饿死了。");return true;}
+   if(CommonRaces.IsTroll(pawn) && roll<Tadpoles.TrollExpelChance){End(pawn.LabelShort+"的巨魔再生把脑中的蝌蚪排了出来。".Loc());return true;}
+   if(MindFlayer.PsychicallyDeaf(pawn) && roll<Tadpoles.DeafDeathChance){End(pawn.LabelShort+"的大脑一片寂静，蝌蚪找不到可吃的念头，饿死了。".Loc());return true;}
    return false;
   }
   void End(string message){

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 食人魔体型 -->
+  <LP_OgreStature.label>ogre build</LP_OgreStature.label>
+  <!-- 食人魔的巨大身躯。实际体型为普通人的160%，显示为130%大小，搬运量再多10%；饭量是常人的1.3倍，胃也更大（巨胃：饱食度上限×160%）。巨躯规则让食人魔的生命总量×130%、近战伤害×118%。 -->
+  <LP_OgreStature.description>The huge body of an ogre. Actual body size 160% of an ordinary person, drawn at 130% size, and hauls 10% more on top; eats 1.3× as much as normal, with a bigger stomach (giant stomach: max food ×160%). Giant-body rules give ogres total health ×130% and melee damage ×118%.</LP_OgreStature.description>
+  <!-- 实际体型：×160%（与其他体型效果相乘）。 | 显示大小：×130%。 | 搬运量：随体型提高后再×110%。 | 食量：×130%。 -->
+  <LP_OgreStature.customEffectDescriptions.0>Actual body size: ×160% (multiplies with other body size effects).</LP_OgreStature.customEffectDescriptions.0>
+  <LP_OgreStature.customEffectDescriptions.1>Drawn size: ×130%.</LP_OgreStature.customEffectDescriptions.1>
+  <LP_OgreStature.customEffectDescriptions.2>Hauling capacity: another ×110% after rising with body size.</LP_OgreStature.customEffectDescriptions.2>
+  <LP_OgreStature.customEffectDescriptions.3>Appetite: ×130%.</LP_OgreStature.customEffectDescriptions.3>
+  <!-- 蠢笨 -->
+  <LP_OgreDull.label>dimwitted</LP_OgreDull.label>
+  <!-- 食人魔的脑子转得慢：研究速度减半，做买卖时常被人压价，也更容易被心灵手段左右（心智抗性-10%，不会低于0）。 -->
+  <LP_OgreDull.description>An ogre's mind turns slowly: research speed halved, often lowballed when trading, and more easily swayed by psychic means (mind resistance -10%, not below 0).</LP_OgreDull.description>
+  <!-- 食人魔肤色 -->
+  <LP_SkinOgre.label>ogre skin</LP_SkinOgre.label>
+  <!-- 食人魔粗糙的黄褐色皮肤。 -->
+  <LP_SkinOgre.description>An ogre's rough tawny skin.</LP_SkinOgre.description>
+  <!-- 黄褐 -->
+  <LP_SkinOgre.labelShortAdj>tawny</LP_SkinOgre.labelShortAdj>
+</LanguageData>

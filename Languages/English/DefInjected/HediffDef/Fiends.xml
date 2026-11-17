@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 冰刺尾 -->
+  <LP_IceDevilStingerWeapon.label>ice-spiked tail</LP_IceDevilStingerWeapon.label>
+  <!-- 寒冰魔的尾刺，扎进肉里就冻住血液。 -->
+  <LP_IceDevilStingerWeapon.description>An ice devil's tail spike; it freezes the blood when it pierces flesh.</LP_IceDevilStingerWeapon.description>
+  <!-- 尾刺 -->
+  <LP_IceDevilStingerWeapon.comps.HediffComp_VerbGiver.tools.0.label>tail spike</LP_IceDevilStingerWeapon.comps.HediffComp_VerbGiver.tools.0.label>
+  <!-- 寒气侵体 -->
+  <LP_Chilled.label>chilled to the bone</LP_Chilled.label>
+  <!-- 寒冰魔的寒气钻进了骨头：每层移动速度×85%、近战冷却×110%，最多3层。离开寒气30秒后消退。 -->
+  <LP_Chilled.description>An ice devil's chill has gotten into the bones: move speed ×85% and melee cooldown ×110% per stack, up to 3 stacks. Fades 30 seconds after leaving the chill.</LP_Chilled.description>
+  <!-- 一层 -->
+  <LP_Chilled.stages.0.label>one stack</LP_Chilled.stages.0.label>
+  <!-- 两层 -->
+  <LP_Chilled.stages.1.label>two stacks</LP_Chilled.stages.1.label>
+  <!-- 三层 -->
+  <LP_Chilled.stages.2.label>three stacks</LP_Chilled.stages.2.label>
+</LanguageData>

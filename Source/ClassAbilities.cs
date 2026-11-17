@@ -41,10 +41,10 @@ namespace LichPhylactery {
   public override string Tooltip{get{
    var p=Props;var c=ClassSystem.CastClassOf(pawn,def);string s=base.Tooltip+Bard.Tip(pawn,def); // 1.123.0 魔法奥秘扣乐韵；刀光剑舞显示当前招式
    if(p==null || c==null)return s;
-   var s2=p.passive?null:Subclass2.CostText(pawn,def)??Subclass3.CostText(pawn,def);if(s2!=null)return s+"\n\n"+s2+"\n强度："+ClassEffects.Strength(pawn,p).ToStringPercent(); // 1.103.0 失血、誓言之力、神经热
-   var cst=CasterSpells.CostTip(pawn,def,p);if(cst!=null)return s+"\n\n"+cst+"\n强度："+ClassEffects.Strength(pawn,p).ToStringPercent(); // 1.130.0 施法职业法术表：法术能量 / 秘法玄奥
-   if(ClassSubclass.UsesMana(def) && !p.passive)return s+"\n\n消耗：法力 "+ClassLegendary.Cost(pawn,def,p)+"（现有 "+ClassSubclass.Mana(pawn).ToString("0.#")+"）\n强度："+ClassEffects.Strength(pawn,p).ToStringPercent(); // 诡术师
-   return s+"\n\n"+(p.passive?"被动":c.resource==ClassResource.None || p.cost<=0?"不消耗资源（只看冷却）":"消耗："+ClassSystem.ResourceLabel(c.resource)+" "+ClassLegendary.Cost(pawn,def,p)+"（现有 "+ClassSystem.Resource(pawn,c).ToString("0.#")+"）"+(ClassSystem.FreeCast(pawn,p)?"，魔涌中免费":""))+"\n强度："+ClassEffects.Strength(pawn,p).ToStringPercent();
+   var s2=p.passive?null:Subclass2.CostText(pawn,def)??Subclass3.CostText(pawn,def);if(s2!=null)return s+"\n\n"+s2+"\n强度：".Loc()+ClassEffects.Strength(pawn,p).ToStringPercent(); // 1.103.0 失血、誓言之力、神经热
+   var cst=CasterSpells.CostTip(pawn,def,p);if(cst!=null)return s+"\n\n"+cst+"\n强度：".Loc()+ClassEffects.Strength(pawn,p).ToStringPercent(); // 1.130.0 施法职业法术表：法术能量 / 秘法玄奥
+   if(ClassSubclass.UsesMana(def) && !p.passive)return s+"\n\n消耗：法力 ".Loc()+ClassLegendary.Cost(pawn,def,p)+"（现有 ".Loc()+ClassSubclass.Mana(pawn).ToString("0.#")+"）\n强度：".Loc()+ClassEffects.Strength(pawn,p).ToStringPercent(); // 诡术师
+   return s+"\n\n"+(p.passive?"被动".Loc():c.resource==ClassResource.None || p.cost<=0?"不消耗资源（只看冷却）".Loc():"消耗：".Loc()+ClassSystem.ResourceLabel(c.resource)+" "+ClassLegendary.Cost(pawn,def,p)+"（现有 ".Loc()+ClassSystem.Resource(pawn,c).ToString("0.#")+"）".Loc()+(ClassSystem.FreeCast(pawn,p)?"，魔涌中免费".Loc():""))+"\n强度：".Loc()+ClassEffects.Strength(pawn,p).ToStringPercent();
   }}
  }
  public class CompAbilityEffect_Class : CompAbilityEffect {
@@ -76,19 +76,19 @@ namespace LichPhylactery {
    var t=target.Thing as Pawn;
    switch(e.effect){
     case "Charge":case "Trip":case "DisarmingStrike":case "Flurry":case "StunningStrike":case "OpenHand":case "QuiveringPalm":case "Vow":case "PrecisionShot":
-     if(t==null || t.Dead)return "需要选择一个活着的目标。";
-     if(!t.HostileTo(caster))return "只能对敌人使用。";
+     if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();
+     if(!t.HostileTo(caster))return "只能对敌人使用。".Loc();
      break;
     case "LayOnHands":case "Intercept":
-     if(t==null || t.Dead)return "需要选择一个活着的目标。";
-     if(t.HostileTo(caster))return "只能对友军使用。";
+     if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();
+     if(t.HostileTo(caster))return "只能对友军使用。".Loc();
      break;
    }
    var cw=ClassCasters.Invalid(caster,e,target)??ClassLegendary.Invalid(caster,e,target)??ClassMartial2.Invalid(caster,e,target)??ClassSubclass.Invalid(caster,e,target)??Warlock.Invalid(caster,e,target)??Subclass2.Invalid(caster,e,target)??Subclass3.Invalid(caster,e,target)??Subclass4.Invalid(caster,e,target)??Subclass5.Invalid(caster,e,target)??Subclass6.Invalid(caster,e,target)??ArcanaEffects.Invalid(caster,e,target)??Bard.Invalid(caster,e,target)??WizardSpells.Invalid(caster,e,target)??CasterEffects.Invalid(caster,e,target);if(cw!=null)return cw; // 1.130.0 施法职业法术表的新法术 // 1.128.0 法师新法术 // 1.123.0 吟游诗人 // 1.73.0 施法职业；1.74.0 传奇；新职业；子职业；邪术师
-   if(e.ranged){var v=Martial.RangedVerb(caster);if(v?.Projectile==null)return "需要远程武器。";if(target.Cell.IsValid && CastApproach.TooFar(caster.Position.DistanceTo(target.Cell),v.EffectiveRange))return "超出当前武器的射程（"+v.EffectiveRange.ToString("0")+" 格）。";}
+   if(e.ranged){var v=Martial.RangedVerb(caster);if(v?.Projectile==null)return "需要远程武器。".Loc();if(target.Cell.IsValid && CastApproach.TooFar(caster.Position.DistanceTo(target.Cell),v.EffectiveRange))return "超出当前武器的射程（".Loc()+v.EffectiveRange.ToString("0")+" 格）。".Loc();}
    switch(e.effect){
-    case "Charge":if(!t.Position.AdjacentTo8WayOrInside(caster.Position) && !Charge.LandingCell(caster,t).IsValid)return "目标身边没有能落脚的格子。";break;
-    case "Intercept":if(t==caster)return "需要选择另一名友军。";float r=e.range*ClassSystem.StatValue(caster,e);if(caster.Position.DistanceTo(t.Position)>r)return "超出换位距离（"+r.ToString("0.#")+" 格）。";break;
+    case "Charge":if(!t.Position.AdjacentTo8WayOrInside(caster.Position) && !Charge.LandingCell(caster,t).IsValid)return "目标身边没有能落脚的格子。".Loc();break;
+    case "Intercept":if(t==caster)return "需要选择另一名友军。".Loc();float r=e.range*ClassSystem.StatValue(caster,e);if(caster.Position.DistanceTo(t.Position)>r)return "超出换位距离（".Loc()+r.ToString("0.#")+" 格）。".Loc();break;
    }
    return null;
   }
@@ -101,27 +101,27 @@ namespace LichPhylactery {
     case "SelfBuff":Give(p,e.hediff??def.defName,Duration(p,e),s);Items.Mote(p,def.LabelCap,MartialColor);return;
     case "PowerBuff":Give(p,e.hediff??def.defName,Duration(p,e),Power(p,e));Items.Mote(p,def.LabelCap,Color.white);return;
     // 战士
-    case "SecondWind":Give(p,"LP_SecondWind",600,Power(p,e));Items.Mote(p,"回气",MartialColor);return;
+    case "SecondWind":Give(p,"LP_SecondWind",600,Power(p,e));Items.Mote(p,"回气".Loc(),MartialColor);return;
     case "BattleCry":BattleCry(p,Radius(p,e),Duration(p,e),s);return;
     case "Charge":if(Hostile(p,t))Charge.Start(p,t,1f+Charge.PerPower*s);return;
     case "Trip":if(Hostile(p,t))Trip(p,t,Duration(p,e),s);return;
-    case "Whirlwind":Whirlwind.Sweep(p,s,Near(p,p.Position,Radius(p,e)).Where(x=>Hostile(p,x) && x.Position.AdjacentTo8WayOrInside(p.Position)).ToList());Items.Mote(p,"旋风斩",MartialColor);return;
+    case "Whirlwind":Whirlwind.Sweep(p,s,Near(p,p.Position,Radius(p,e)).Where(x=>Hostile(p,x) && x.Position.AdjacentTo8WayOrInside(p.Position)).ToList());Items.Mote(p,"旋风斩".Loc(),MartialColor);return;
     case "DisarmingStrike":if(!Hostile(p,t))return;ClassMelee.Strike(p,t);if(!t.Dead && Martial.CanDisarm(t))Martial.Disarm(p,t,Martial.DisarmChance(p,t,s,Adventurer.Str));return;
     case "SuppressingFire":if(target.Cell.IsValid)SuppressingFire.Start(p,target.Cell);return;
     case "PrecisionShot":if(Hostile(p,t))PrecisionShot.Shoot(p,t,s,Martial.State?.Mode(p)??PrecisionMode.Vital);return;
     // 武僧
-    case "Flurry":if(!Hostile(p,t))return;for(int i=0;i<MonkCore.FlurryHits(s) && !t.Dead;i++){ClassMelee.Strike(p,t);Subclass3.FlurryHit(p,t);}Items.Mote(t,"疾风连击",MonkCore.Ki);return;
-    case "Deflect":Give(p,"LP_Deflecting",Duration(p,e),Power(p,e));Items.Mote(p,"拨挡箭矢",MonkCore.Ki);return;
-    case "StunningStrike":if(!Hostile(p,t))return;ClassMelee.Strike(p,t);if(!t.Dead)t.stances?.stunner?.StunFor(MonkCore.StunTicks(t,s),p);Items.Mote(t,"震慑拳",MonkCore.Ki);return;
+    case "Flurry":if(!Hostile(p,t))return;for(int i=0;i<MonkCore.FlurryHits(s) && !t.Dead;i++){ClassMelee.Strike(p,t);Subclass3.FlurryHit(p,t);}Items.Mote(t,"疾风连击".Loc(),MonkCore.Ki);return;
+    case "Deflect":Give(p,"LP_Deflecting",Duration(p,e),Power(p,e));Items.Mote(p,"拨挡箭矢".Loc(),MonkCore.Ki);return;
+    case "StunningStrike":if(!Hostile(p,t))return;ClassMelee.Strike(p,t);if(!t.Dead)t.stances?.stunner?.StunFor(MonkCore.StunTicks(t,s),p);Items.Mote(t,"震慑拳".Loc(),MonkCore.Ki);return;
     case "OpenHand":if(Hostile(p,t))MonkCore.Push(p,t,s);return;
-    case "DiamondSoul":ClassMelee.Heal(p,Power(p,e));PaladinCore.Cleanse(p,.2f);Give(p,"LP_DiamondSoul",Duration(p,e),1f);Items.Mote(p,"金刚之躯",MonkCore.Ki);return;
+    case "DiamondSoul":ClassMelee.Heal(p,Power(p,e));PaladinCore.Cleanse(p,.2f);Give(p,"LP_DiamondSoul",Duration(p,e),1f);Items.Mote(p,"金刚之躯".Loc(),MonkCore.Ki);return;
     case "QuiveringPalm":if(!Hostile(p,t))return;ClassMelee.Strike(p,t);if(!t.Dead)MonkCore.Plant(p,t,Power(p,e));return;
     // 圣武士
     case "Smite":Give(p,e.hediff,Duration(p,e),Power(p,e));Items.Mote(p,def.LabelCap,PaladinCore.Holy);return;
     case "LayOnHands":if(Friendly(p,t))Items.Mote(t,PaladinCore.Touch(t,Power(p,e)),PaladinCore.Holy);return;
     case "Vow":if(Hostile(p,t))PaladinCore.Mark(p,t,Duration(p,e),s);return;
     case "Intercept":if(t!=null && t!=p && Friendly(p,t))PaladinCore.Swap(p,t);return;
-    case "DispelEvil":PaladinCore.Dispel(p,Radius(p,e),Power(p,e));Items.Mote(p,"放逐邪恶",PaladinCore.Holy);return;
+    case "DispelEvil":PaladinCore.Dispel(p,Radius(p,e),Power(p,e));Items.Mote(p,"放逐邪恶".Loc(),PaladinCore.Holy);return;
    }
    if(ClassCasters.Apply(p,def,e,target))return; // 1.73.0 施法职业
    if(ClassLegendary.Apply(p,def,e,target))return; // 1.74.0 传奇职业能力
@@ -137,17 +137,17 @@ namespace LichPhylactery {
    if(Bard.Apply(p,def,e,target))return; // 1.123.0 吟游诗人
    if(WizardSpells.Apply(p,def,e,target))return; // 1.128.0 法师新法术（WS_）
    if(CasterEffects.Apply(p,def,e,target))return; // 1.130.0 施法职业法术表的新法术（CS_）
-   Log.ErrorOnce("[DND边缘大陆] 未知的职业能力效果："+e.effect,e.effect?.GetHashCode()??0);
+   Log.ErrorOnce("[DND边缘大陆] 未知的职业能力效果：".Loc()+e.effect,e.effect?.GetHashCode()??0);
   }
   public static int BattleCry(Pawn p,float radius,int ticks,float s){
    int n=0;foreach(var t in Near(p,p.Position,radius).ToList()){if(!Hostile(p,t))continue;Give(t,"LP_Shaken",ticks,s);n++;}
-   Items.Mote(p,"战吼",MartialColor);return n;
+   Items.Mote(p,"战吼".Loc(),MartialColor);return n;
   }
   public static void Trip(Pawn p,Pawn t,int ticks,float s){
-   if(t.BodySize>=2f){Give(t,"LP_Shaken",ticks,s);Items.Mote(t,"震慑",MartialColor);return;}
+   if(t.BodySize>=2f){Give(t,"LP_Shaken",ticks,s);Items.Mote(t,"震慑".Loc(),MartialColor);return;}
    t.stances?.stunner?.StunFor(ticks,p);
    if(t.Spawned){var dest=DNDPush.Destination(t.Map,t.Position,(t.Position-p.Position).ToVector3(),1);DNDPush.Move(t,dest);}
-   Items.Mote(t,"绊摔",MartialColor);
+   Items.Mote(t,"绊摔".Loc(),MartialColor);
   }
  }
 
@@ -202,7 +202,7 @@ namespace LichPhylactery {
    var cell=LandingCell(caster,t);if(!cell.IsValid)return false;
    // MakeFlyer 会把施法者从地图上拿走，之后 caster.Map 是 null：地图和起点要先记下来，否则飞行物生成失败、人就没了。
    var map=caster.Map;var origin=caster.Position;
-   Items.Mote(caster,"冲锋",ClassEffects.MartialColor);
+   Items.Mote(caster,"冲锋".Loc(),ClassEffects.MartialColor);
    var def=DefDatabase<ThingDef>.GetNamedSilentFail("LP_ChargeFlyer");
    var flyer=def==null?null:PawnFlyer.MakeFlyer(def,caster,cell,null,null) as LP_ChargeFlyer;
    if(flyer==null){if(!caster.Spawned)GenSpawn.Spawn(caster,origin,map);Races124.Blink(caster,cell);Land(caster,t,factor);return true;}
@@ -214,7 +214,7 @@ namespace LichPhylactery {
    if(caster==null || caster.Dead || !caster.Spawned || t==null || t.Dead || !t.Spawned || t.Map!=caster.Map || !t.Position.AdjacentTo8WayOrInside(caster.Position))return false;
    Items.Give(caster,"LP_ChargeStrike",60,factor);
    try{ClassMelee.Strike(caster,t);}finally{Items.Remove(caster,"LP_ChargeStrike");}
-   if(!t.Dead && t.BodySize<=1f){t.stances?.stunner?.StunFor(KnockTicks,caster);Items.Mote(t,"撞倒",ClassEffects.MartialColor);}
+   if(!t.Dead && t.BodySize<=1f){t.stances?.stunner?.StunFor(KnockTicks,caster);Items.Mote(t,"撞倒".Loc(),ClassEffects.MartialColor);}
    return true;
   }
  }
@@ -231,7 +231,7 @@ namespace LichPhylactery {
    foreach(var t in Races124.PawnsNear(map,cell,Area).ToList())if(t!=caster && !t.Dead && t.HostileTo(caster)){Items.Give(t,"LP_Suppressed",SuppressTicks);n++;}
    var v=(Hediff_SuppressingVolley)Items.Give(caster,"LP_SuppressingVolley");
    if(v!=null){v.cell=cell;v.left=Shots;v.acc=Interval;}
-   Items.Mote(caster,"压制射击",ClassEffects.MartialColor);
+   Items.Mote(caster,"压制射击".Loc(),ClassEffects.MartialColor);
    return n;
   }
   public static Projectile FireOne(Pawn caster,IntVec3 center){
@@ -256,11 +256,11 @@ namespace LichPhylactery {
  // 精准射击：必中，伤害 ×(1.5 + 0.5 × 射术强度)，穿甲 +0.3；模式：要害 / 打腿 ×0.7 + 跛行 / 打手 ×0.5 + 缴械判定。
  public static class PrecisionShot {
   public const float Base=1.5f,PerPower=.5f,Penetration=.3f,LegFactor=.7f,HandFactor=.5f;
-  public static string ModeLabel(PrecisionMode m)=>m==PrecisionMode.Leg?"打腿":m==PrecisionMode.Hand?"打手":"要害";
+  public static string ModeLabel(PrecisionMode m)=>m==PrecisionMode.Leg?"打腿".Loc():m==PrecisionMode.Hand?"打手".Loc():"要害".Loc();
   public static float DamageFor(float power,PrecisionMode m)=>(Base+PerPower*power)*(m==PrecisionMode.Leg?LegFactor:m==PrecisionMode.Hand?HandFactor:1f);
   public static Projectile Shoot(Pawn caster,Pawn t,float power,PrecisionMode mode){
    var proj=Martial.Fire(caster,t,new ShotMod{damage=DamageFor(power,mode),ap=Penetration,power=power,mode=mode,precision=true,caster=caster},true);
-   if(proj!=null)Items.Mote(caster,"精准射击·"+ModeLabel(mode),ClassEffects.MartialColor);
+   if(proj!=null)Items.Mote(caster,"精准射击·".Loc()+ModeLabel(mode),ClassEffects.MartialColor);
    return proj;
   }
  }

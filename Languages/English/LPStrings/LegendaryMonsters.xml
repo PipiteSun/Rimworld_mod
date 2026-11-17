@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（LegendaryMonsters.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>贝希尔</zh><en>behir</en></s>
+  <s><zh>眼魔</zh><en>beholder</en></s>
+  <s><zh>死亡骑士</zh><en>death knight</en></s>
+  <s><zh>半巫妖</zh><en>demilich</en></s>
+  <s><zh>雷鸣之喉</zh><en>Thunderthroat</en></s>
+  <s><zh>卡兹拉克</zh><en>Kazrak</en></s>
+  <s><zh>缠骨者</zh><en>Bonebinder</en></s>
+  <s><zh>苍蛇</zh><en>Pale Serpent</en></s>
+  <s><zh>沙行者</zh><en>Sandwalker</en></s>
+  <s><zh>克萨纳斯</zh><en>Xanathas</en></s>
+  <s><zh>泽塔拉克斯</zh><en>Zetarax</en></s>
+  <s><zh>千目</zh><en>Thousand Eyes</en></s>
+  <s><zh>诺克萨尔</zh><en>Noxar</en></s>
+  <s><zh>瓦洛斯</zh><en>Valos</en></s>
+  <s><zh>阿瑟拉克</zh><en>Acererak</en></s>
+  <s><zh>无名之颅</zh><en>the Nameless Skull</en></s>
+  <s><zh>索恩</zh><en>Thorne</en></s>
+  <s><zh>灰烬王冠</zh><en>Ashen Crown</en></s>
+  <s><zh>维克托</zh><en>Viktor</en></s>
+  <s><zh>闪电吐息！</zh><en>Lightning breath!</en></s>
+  <s><zh>麻痹</zh><en>paralyzed</en></s>
+  <s><zh>恐惧</zh><en>feared</en></s>
+  <s><zh>减速</zh><en>slowed</en></s>
+  <s><zh>衰弱</zh><en>enfeebled</en></s>
+  <s><zh>石化</zh><en>petrified</en></s>
+  <s><zh>解离</zh><en>disintegrated</en></s>
+  <s><zh>死亡</zh><en>death</en></s>
+  <s><zh>念动</zh><en>telekinesis</en></s>
+  <s><zh>射线</zh><en>ray</en></s>
+  <s><zh>反魔法：施法失败</zh><en>Antimagic: casting failed</en></s>
+  <s><zh>吞魂之嚎！</zh><en>Soul-devouring howl!</en></s>
+  <s><zh>灵魂被撕裂！</zh><en>Soul torn!</en></s>
+  <s><zh>贝希尔死了</zh><en>The behir is dead</en></s>
+  <s><zh>夺心魔首领的残脑里还留着一段记忆：一只眼魔的巢穴</zh><en>The mind flayer leader's remaining brain still holds a memory: a beholder's lair</en></s>
+  <s><zh>眼魔巢穴</zh><en>beholder lair</en></s>
+  <s><zh>无尽墓穴</zh><en>Endless Tomb</en></s>
+  <s><zh>眼魔巢穴（地下洞穴）</zh><en>beholder lair (underground cave)</en></s>
+  <s><zh>无尽墓穴（半巫妖的坟墓）</zh><en>endless tomb (demilich's grave)</en></s>
+  <s><zh>显露在世界地图上（离殖民地 6～15 格），</zh><en> is revealed on the world map (6-15 cells from the colony), and vanishes in </en></s>
+  <s><zh>天后消失。\n\n</zh><en> days.\n\n</en></s>
+  <s><zh>眼魔每 3 秒从眼柄射出 1～2 道射线（魅惑、麻痹、恐惧、减速、衰弱、石化、解离、死亡、睡眠、念动，全部可以豁免）；打掉一根眼柄就少一种射线。它正面 60° 锥形 20 格内不能施法、护盾腰带失效——从侧面和背后打。</zh><en>The beholder fires 1-2 rays from its eyestalks every 3 seconds (charm, paralysis, fear, slow, enfeeble, petrification, disintegration, death, sleep, telekinesis, all can be saved against); destroying an eyestalk removes a ray type. Within its 60° frontal cone up to 20 cells, no spells can be cast and shield belts fail; attack from the sides and back.</en></s>
+  <s><zh>半巫妖每 60 秒发出一次吞魂之嚎：20 格内所有活人做体质豁免（难度 21，基础成功率 10%，属性调整值和熟练加值每点 +5%），失败倒地、灵魂撕裂，30 秒内不救治就死。巫妖和死灵造物免疫。它只有一颗头骨，银器伤害 ×2。</zh><en>The demilich lets out a soul-devouring howl every 60 seconds: every living person within 20 cells makes a Constitution save (difficulty 21, base success 10%, +5% per point of ability modifier and proficiency bonus); on failure they go down with a torn soul and die if not treated within 30 seconds. Liches and necromantic constructs are immune. It's only a skull; silver weapons deal ×2 damage.</en></s>
+  <s><zh>吞着</zh><en>swallowing </en></s>
+  <s><zh>地狱火球！</zh><en>Hellfire orb!</en></s>
+  <s><zh>[DND边缘大陆] 传奇怪行为出错：</zh><en>[DND Rimlands] Legendary monster behavior error: </en></s>
+  <s><zh>吞下了</zh><en> swallowed </en></s>
+  <s><zh>吞了下去！打它 60 点伤害就能让它吐出来。</zh><en> down! Deal 60 damage to it to make it spit them out.</en></s>
+  <s><zh>被挣脱了</zh><en>escaped </en></s>
+  <s><zh>吃痛</zh><en>flinched</en></s>
+  <s><zh>吐出了</zh><en> spat out </en></s>
+  <s><zh>[DND边缘大陆] 生成</zh><en>[DND Rimlands] Generating </en></s>
+  <s><zh>地点出错：</zh><en> site error: </en></s>
+  <s><zh>读懂了情报</zh><en>Deciphered the intel</en></s>
+  <s><zh>传奇怪没有开启（设置里的“传奇怪”）</zh><en>Legendary monsters aren't enabled ("legendary monsters" in settings)</en></s>
+  <s><zh>吸收了灵魂宝石里的灵魂：命匣 +</zh><en> absorbed the soul in the soul gem: phylactery +</en></s>
+  <s><zh>只有有命匣的巫妖能用</zh><en>Only liches with a phylactery can use this</en></s>
+  <s><zh>龙的猎手</zh><en>dragon hunter</en></s>
+  <s><zh>一条贝希尔循着龙的气味找到了这里。它是真龙的死敌——对龙的伤害 ×1.5，不怕龙的威仪——但它同样饿了。\n\n它会喷出一道闪电，还会把离它太近的人一口吞下（打它 60 点伤害，它就会吐出来）。</zh><en>A behir followed the scent of dragons here. It's the mortal enemy of true dragons (×1.5 damage against dragons, unafraid of draconic presence), but it's hungry too.\n\nIt breathes a bolt of lightning and swallows whole anyone who gets too close (deal 60 damage to it and it spits them out).</en></s>
+  <s><zh>眼射线</zh><en>eye rays</en></s>
+  <s><zh>漂移</zh><en>drift</en></s>
+  <s><zh>地狱火</zh><en>hellfire</en></s>
+  <s><zh>亡灵号令</zh><en>command undead</en></s>
+  <s><zh>吸魂</zh><en>soul drain</en></s>
+  <s><zh>诅咒</zh><en>curse</en></s>
+  <s><zh>传奇怪</zh><en>legend</en></s>
+  <s><zh>贝希尔、眼魔、死亡骑士、半巫妖。都有传奇抗性和传奇动作，强度跟着上面的“真龙强度”。关闭后下面的登场都不出现。</zh><en>Behirs, beholders, death knights, demiliches. All have legendary resistance and legendary actions, with strength following "true dragon strength" above. When off, none of the appearances below happen.</en></s>
+  <s><zh>　龙的猎手（贝希尔）</zh><en>  Dragon hunter (behir)</en></s>
+  <s><zh>有人杀过成年以上的真龙时，低概率来一条贝希尔。它也会出现在青年 / 成年龙巢附近，和龙打起来。</zh><en>When someone has killed an adult or older true dragon, a behir occasionally comes. It also appears near young / adult dragon lairs and fights the dragons.</en></s>
+  <s><zh>　眼魔巢穴</zh><en>  Beholder lair</en></s>
+  <s><zh>击杀幽暗殖巢的夺心魔首领后 20% 显露（或同盟商队卖情报）。</zh><en>20% chance to be revealed after killing the Underdark Hive's mind flayer leader (or alliance caravans sell the intel).</en></s>
+  <s><zh>　无尽墓穴（半巫妖）</zh><en>  Endless tomb (demilich)</en></s>
+  <s><zh>殖民地最高冒险者等级 ≥24 时，同盟商队会卖墓穴情报。</zh><en>When the colony's highest adventurer level is ≥24, alliance caravans sell tomb intel.</en></s>
+  <s><zh>　死亡骑士</zh><en>  Death knight</en></s>
+  <s><zh>塞伊远征军 ≥5000 点的袭击 10% 由死亡骑士带队；拉洛克古墓里 50% 多一名死亡骑士守卫。</zh><en>10% of Thayan expedition raids of ≥5000 points are led by a death knight; Larloch's ancient tomb has a 50% chance of an extra death knight guard.</en></s>
+  <s><zh>　亡灵军团</zh><en>  Undead legion</en></s>
+  <s><zh>1.140.0：塞伊远征军的袭击有一种「亡灵军团」编组（约 1/4）：红袍死灵法师带着噬尸鬼、尸妖、怨灵、吸血鬼。关闭后这一组里的亡灵换成普通远征军。</zh><en>1.140.0: Thayan expedition raids have an "undead legion" group (about 1/4): Red Wizard necromancers with ghouls, wights, wraiths and vampires. When off, the undead in this group are replaced with ordinary expedition troops.</en></s>
+</LPStrings>

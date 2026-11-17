@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 连锁闪电 -->
+  <LP_AC_ChainLightning.label>chain lightning</LP_AC_ChainLightning.label>
+  <!-- 通用秘传（6 环法术，智力）：一道闪电从目标开始跳过 4 个敌人，每个受 25 点电击伤害，机械体 ×1.5。冷却 2 天。 -->
+  <LP_AC_ChainLightning.description>Universal arcanum (circle 6 spell, Intelligence): a bolt of lightning starts at the target and jumps across 4 enemies, each taking 25 electrical damage, ×1.5 against mechanoids. Cooldown 2 days.</LP_AC_ChainLightning.description>
+  <!-- 剑刃屏障 -->
+  <LP_AC_BladeBarrier.label>blade barrier</LP_AC_BladeBarrier.label>
+  <!-- 通用秘传（6 环法术，感知）：在目标处立起一道 8 格长的旋转刃墙，持续 1 小时；墙上的敌人每秒受 20 点割伤并减速 50%。冷却 2 天。 -->
+  <LP_AC_BladeBarrier.description>Universal arcanum (circle 6 spell, Wisdom): raise an 8-cell-long wall of whirling blades at the target for 1 hour; enemies on the wall take 20 cut damage per second and are slowed 50%. Cooldown 2 days.</LP_AC_BladeBarrier.description>
+  <!-- 治愈术 -->
+  <LP_AC_Heal.label>heal</LP_AC_Heal.label>
+  <!-- 通用秘传（6 环法术，感知）：目标治好 70% 伤势（乘强度），并清除失明、疾病和食物中毒。冷却 2 天。 -->
+  <LP_AC_Heal.description>Universal arcanum (circle 6 spell, Wisdom): the target heals 70% of injuries (multiplied by power) and is cured of blindness, disease and food poisoning. Cooldown 2 days.</LP_AC_Heal.description>
+  <!-- 死亡之指 -->
+  <LP_AC_FingerOfDeath.label>finger of death</LP_AC_FingerOfDeath.label>
+  <!-- 通用秘传（7 环法术，魅力）：50 点死灵伤害；被它杀死的人形会作为施法者阵营的亡仆爬起来（永久，不会精神崩溃）。冷却 3 天。 -->
+  <LP_AC_FingerOfDeath.description>Universal arcanum (circle 7 spell, Charisma): 50 necrotic damage; humanlikes killed by it rise as undead servants of the caster's faction (permanent, no mental breaks). Cooldown 3 days.</LP_AC_FingerOfDeath.description>
+  <!-- 再生术 -->
+  <LP_AC_Regenerate.label>regenerate</LP_AC_Regenerate.label>
+  <!-- 通用秘传（7 环法术，感知）：立刻消除目标一处旧伤疤；3 天后长回一个失去的肢体或器官。冷却 3 天。 -->
+  <LP_AC_Regenerate.description>Universal arcanum (circle 7 spell, Wisdom): instantly removes one of the target's old scars; after 3 days a lost limb or organ grows back. Cooldown 3 days.</LP_AC_Regenerate.description>
+  <!-- 反转重力 -->
+  <LP_AC_ReverseGravity.label>reverse gravity</LP_AC_ReverseGravity.label>
+  <!-- 通用秘传（7 环法术，智力）：目标处半径 5 格的敌人飞起 10 秒、动弹不得，落地时各受 20 点钝器伤害。冷却 3 天。 -->
+  <LP_AC_ReverseGravity.description>Universal arcanum (circle 7 spell, Intelligence): enemies within radius 5 of the target fly up for 10 seconds, unable to move, and each take 20 blunt damage on landing. Cooldown 3 days.</LP_AC_ReverseGravity.description>
+  <!-- 炎阳爆 -->
+  <LP_AC_Sunburst.label>sunburst</LP_AC_Sunburst.label>
+  <!-- 通用秘传（8 环法术，感知）：30 格内一点半径 6 格烈阳爆发——45 点神圣灼烧伤害并失明 1 分钟；对亡灵 ×2。友军也会被波及（施法者自己除外）。冷却 5 天。 -->
+  <LP_AC_Sunburst.description>Universal arcanum (circle 8 spell, Wisdom): a blazing sunburst of radius 6 at a point within 30 cells: 45 holy burn damage and blinded for 1 minute; ×2 against undead. Allies are caught too (except the caster). Cooldown 5 days.</LP_AC_Sunburst.description>
+  <!-- 心灵空白 -->
+  <LP_AC_MindBlank.label>mind blank</LP_AC_MindBlank.label>
+  <!-- 通用秘传（8 环法术，智力）：目标 1 天内免疫心灵控制、魅惑、精神崩溃和心灵伤害。冷却 5 天。 -->
+  <LP_AC_MindBlank.description>Universal arcanum (circle 8 spell, Intelligence): the target is immune to mind control, charm, mental breaks and psychic damage for 1 day. Cooldown 5 days.</LP_AC_MindBlank.description>
+  <!-- 迷宫术 -->
+  <LP_AC_Maze.label>maze</LP_AC_Maze.label>
+  <!-- 通用秘传（8 环法术，智力）：把一个敌人放逐到异界迷宫 30 秒（从地图上消失，之后回到原处）；传奇生物 10 秒。施法者死亡或地图卸载时会立刻放回。冷却 5 天。 -->
+  <LP_AC_Maze.description>Universal arcanum (circle 8 spell, Intelligence): banish an enemy to an otherworldly labyrinth for 30 seconds (it vanishes from the map, then returns to its spot); 10 seconds for legendary creatures. It's put back at once if the caster dies or the map unloads. Cooldown 5 days.</LP_AC_Maze.description>
+  <!-- 时间停止 -->
+  <LP_AC_TimeStop.label>time stop</LP_AC_TimeStop.label>
+  <!-- 通用秘传（9 环法术，智力）：除施法者外，本地图所有人和飞行中的弹丸停顿 6 秒（传奇生物和剧情首领 3 秒）；施法者伤害别人会让时间提前恢复。冷却 7 天。 -->
+  <LP_AC_TimeStop.description>Universal arcanum (circle 9 spell, Intelligence): everyone on this map except the caster, and projectiles in flight, freeze for 6 seconds (3 seconds for legendary creatures and story bosses); the caster harming someone makes time resume early. Cooldown 7 days.</LP_AC_TimeStop.description>
+  <!-- 真言·杀 -->
+  <LP_AC_PowerWordKill.label>power word kill</LP_AC_PowerWordKill.label>
+  <!-- 通用秘传（9 环法术，魅力）：剩余健康 ≤ 40% 的非传奇生物当场死亡；否则受 40 点心灵伤害。冷却 7 天。 -->
+  <LP_AC_PowerWordKill.description>Universal arcanum (circle 9 spell, Charisma): non-legendary creatures with remaining health ≤ 40% die on the spot; otherwise they take 40 psychic damage. Cooldown 7 days.</LP_AC_PowerWordKill.description>
+  <!-- 许愿术 -->
+  <LP_AC_Wish.label>wish</LP_AC_Wish.label>
+  <!-- 通用秘传（9 环法术，魅力）：打开许愿窗口选一个愿望。安全愿望：直接施放任意一个 8 环或以下的通用秘传法术（包括没学过的）；本地图所有殖民者伤势全愈、疾病清除；变出市场价合计 3000 银以内的物品。大愿望：复活 1 名死亡不超过 30 天的殖民者、永久 +1 属性，或驱散一个长期事件——有 33% 的概率让施法者永久失去许愿术并虚弱 10 天。没选就关掉窗口不进冷却。和神灯的许愿是两回事。冷却 15 天。 -->
+  <LP_AC_Wish.description>Universal arcanum (circle 9 spell, Charisma): open the wish window and pick a wish. Safe wishes: cast any universal arcanum spell of circle 8 or lower directly (including ones you haven't learned); fully heal all colonists on this map and cure their diseases; conjure items worth up to 3000 silver in total. Great wishes: revive 1 colonist dead no more than 30 days, +1 ability score permanently, or dispel a long-term event; these have a 33% chance to make the caster permanently lose Wish and be weakened for 10 days. Closing the window without choosing triggers no cooldown. Different from a genie lamp's wish. Cooldown 15 days.</LP_AC_Wish.description>
+  <!-- 断骨击 -->
+  <LP_AC_BoneBreak.label>bone-breaker strike</LP_AC_BoneBreak.label>
+  <!-- 通用秘传（6 环武技，力量）：1 小时内下一次近战命中打断目标一条腿或一只手臂（骨折 10 天）；传奇生物改为 30 点钝器伤害。冷却 2 天。 -->
+  <LP_AC_BoneBreak.description>Universal arcanum (circle 6 martial technique, Strength): within 1 hour, the next melee hit breaks one of the target's legs or arms (fracture for 10 days); legendary creatures take 30 blunt damage instead. Cooldown 2 days.</LP_AC_BoneBreak.description>
+  <!-- 贯日一箭 -->
+  <LP_AC_SunArrow.label>sun-piercing arrow</LP_AC_SunArrow.label>
+  <!-- 通用秘传（7 环武技，敏捷）：一发直线穿透 40 格，沿线所有敌人各受 4 倍武器伤害；只能用远程武器。冷却 3 天。 -->
+  <LP_AC_SunArrow.description>Universal arcanum (circle 7 martial technique, Dexterity): one shot pierces in a straight line for 40 cells, every enemy along it takes 4× weapon damage; ranged weapons only. Cooldown 3 days.</LP_AC_SunArrow.description>
+  <!-- 真视 -->
+  <LP_AC_TrueSight.label>true seeing</LP_AC_TrueSight.label>
+  <!-- 通用秘传被动（7 环）：30 格内的隐形敌人对你可见（被识破 1 小时）；免疫失明和幻象。 -->
+  <LP_AC_TrueSight.description>Universal arcanum passive (circle 7): invisible enemies within 30 cells are visible to you (revealed for 1 hour); immune to blindness and illusions.</LP_AC_TrueSight.description>
+  <!-- 秘法壁垒 -->
+  <LP_AC_ArcaneBulwark.label>arcane bulwark</LP_AC_ArcaneBulwark.label>
+  <!-- 通用秘传被动（8 环）：受到的法术、灵能伤害 -40%，所有豁免成功率 +15%。 -->
+  <LP_AC_ArcaneBulwark.description>Universal arcanum passive (circle 8): spell and psychic damage taken -40%, all save success +15%.</LP_AC_ArcaneBulwark.description>
+  <!-- 传奇抵抗 -->
+  <LP_AC_LegendaryResistance.label>legendary resistance</LP_AC_LegendaryResistance.label>
+  <!-- 通用秘传被动（9 环）：每天 3 次，把一次失败的豁免改为成功。 -->
+  <LP_AC_LegendaryResistance.description>Universal arcanum passive (circle 9): 3 times per day, turn a failed save into a success.</LP_AC_LegendaryResistance.description>
+  <!-- 第二心脏 -->
+  <LP_AC_SecondHeart.label>second heart</LP_AC_SecondHeart.label>
+  <!-- 通用秘传被动（9 环）：每 10 天一次，本应死亡时改为倒地并止血（治好一半伤势）。 -->
+  <LP_AC_SecondHeart.description>Universal arcanum passive (circle 9): once every 10 days, when you would die you're downed instead and stop bleeding (half the injuries healed).</LP_AC_SecondHeart.description>
+</LanguageData>

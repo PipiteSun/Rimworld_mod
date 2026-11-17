@@ -32,8 +32,8 @@ namespace LichPhylactery {
   [Unsaved] Texture2D icon;
   public Texture2D Icon=>icon??(icon=(iconPath.NullOrEmpty()?null:ContentFinder<Texture2D>.Get(iconPath,false))??BaseContent.BadTex);
   public bool Hells=>plane==OutsiderPlane.Hells;public bool Fey=>plane==OutsiderPlane.Feywild;
-  public string PlaneLabel=>Hells?"九狱":Fey?"妖精荒野":"异界";
-  public string TermLabel=>term==PactTerm.Year?"一年":term==PactTerm.Soul?"灵魂":"终身";
+  public string PlaneLabel=>Hells?"九狱".Loc():Fey?"妖精荒野".Loc():"异界".Loc();
+  public string TermLabel=>term==PactTerm.Year?"一年".Loc():term==PactTerm.Soul?"灵魂".Loc():"终身".Loc();
   public LP_PactBoon Boon(string key)=>boons.FirstOrDefault(b=>b.key==key);
   public override IEnumerable<string> ConfigErrors(){
    foreach(var e in base.ConfigErrors())yield return e;
@@ -52,7 +52,7 @@ namespace LichPhylactery {
   public string kind,label,description,category;public int count;public float intervalDays;public bool onExpiry,hidden,revealed,consumed;public int nextTick=-1;
   public bool Visible=>!hidden || revealed || !Pacts.HiddenClauses;
   public bool IsDemand=>Pacts.DemandKinds.Contains(kind) && intervalDays<=0f && !onExpiry;
-  public string Line=>label+(description.NullOrEmpty()?"":"：“"+description+"”");
+  public string Line=>label+(description.NullOrEmpty()?"":"：“".Loc()+description+"”");
   public void ExposeData(){
    Scribe_Values.Look(ref kind,"kind");Scribe_Values.Look(ref label,"label");Scribe_Values.Look(ref description,"desc");Scribe_Values.Look(ref category,"cat");Scribe_Values.Look(ref count,"count");
    Scribe_Values.Look(ref intervalDays,"interval");Scribe_Values.Look(ref onExpiry,"onExpiry");Scribe_Values.Look(ref hidden,"hidden");Scribe_Values.Look(ref revealed,"revealed");Scribe_Values.Look(ref consumed,"consumed");Scribe_Values.Look(ref nextTick,"next",-1);
@@ -65,7 +65,7 @@ namespace LichPhylactery {
   public Pawn bound;public List<Pawn> guards=new List<Pawn>();
   public LP_PactBoon Boon=>(boonPatron??patron)?.Boon(boonKey);
   public bool Active=>!ended;
-  public string Label=>(lichMortgage?"命匣抵押：":"契约：")+patron.label;
+  public string Label=>(lichMortgage?"命匣抵押：".Loc():"契约：".Loc())+patron.label;
   public PactClauseState Demand=>demandClause>=0 && demandClause<clauses.Count?clauses[demandClause]:null;
   public bool Has(string kind)=>clauses.Any(c=>c.kind==kind && !c.consumed);
   public PactClauseState Clause(string kind)=>clauses.FirstOrDefault(c=>c.kind==kind && !c.consumed);
@@ -179,12 +179,12 @@ namespace LichPhylactery {
    return f;
   }
   public static string CannotSign(Pawn p,LP_PatronDef d){
-   if(p==null || d==null)return "没有签约人";
-   if(p.Dead || !p.RaceProps.Humanlike)return p.LabelShort+"不能签约";
-   if(Outsiders.Is(p))return "外来者不能和宗主签约";
-   if(Of(p)!=null)return p.LabelShort+"已经有一份契约了（一人一份）";
-   if(!TestNoCap && ActiveCount()>=Cap())return "殖民地的契约已满（上限 "+Cap()+" = 1 + 最高冒险者等级 / 8）";
-   if(d.Hells && FaithRaces.IsAasimar(p) && AbyssTaint.Severity(p)<AbyssTaint.AasimarLeaderMin)return p.LabelShort+"拒绝了：阿斯莫不和九狱签约";
+   if(p==null || d==null)return "没有签约人".Loc();
+   if(p.Dead || !p.RaceProps.Humanlike)return p.LabelShort+"不能签约".Loc();
+   if(Outsiders.Is(p))return "外来者不能和宗主签约".Loc();
+   if(Of(p)!=null)return p.LabelShort+"已经有一份契约了（一人一份）".Loc();
+   if(!TestNoCap && ActiveCount()>=Cap())return "殖民地的契约已满（上限 ".Loc()+Cap()+" = 1 + 最高冒险者等级 / 8）".Loc();
+   if(d.Hells && FaithRaces.IsAasimar(p) && AbyssTaint.Severity(p)<AbyssTaint.AasimarLeaderMin)return p.LabelShort+"拒绝了：阿斯莫不和九狱签约".Loc();
    return null;
   }
 
@@ -197,8 +197,8 @@ namespace LichPhylactery {
    pact.periodFactor=IntervalFactor(p,d);
    if(d.term==PactTerm.Year)pact.expireTick=now+YearTicks;
    if(d.term==PactTerm.Soul){if(Items.IsLich(p)){pact.lichMortgage=true;pact.boonFactor=LichBoonFactor;}else{var m=Items.Hediff("LP_SoulMortgaged");if(m!=null && !Items.Has(p,m)){p.health.AddHediff(m);pact.soulGiven=true;}}}
-   if(d.taintOnSign>0f)AbyssTaint.Add(p,d.taintOnSign,"与"+d.label+"签约");
-   var god=FaithUtility.DevoteeGod(p);if(god!=null && god.Good && d.Hells)FaithUtility.AddFavor(god,-GoodFavorLoss,p.LabelShort+"和"+d.label+"签了契约");
+   if(d.taintOnSign>0f)AbyssTaint.Add(p,d.taintOnSign,"与".Loc()+d.label+"签约".Loc());
+   var god=FaithUtility.DevoteeGod(p);if(god!=null && god.Good && d.Hells)FaithUtility.AddFavor(god,-GoodFavorLoss,p.LabelShort+"和".Loc()+d.label+"签了契约".Loc());
    ScheduleDemand(pact,now);
    foreach(var cl in pact.clauses)if(cl.intervalDays>0f)cl.nextTick=now+Ticks(pact,cl.intervalDays);
    if(d.mutation>0f)pact.nextMutationTick=now+QuadrumTicks;
@@ -209,8 +209,8 @@ namespace LichPhylactery {
    boon.Worker?.OnSign(pact);
    ApplyStatic(pact);
    if(s.parent!=null && !s.parent.Destroyed)s.parent.Destroy();
-   Find.LetterStack.ReceiveLetter("签下契约："+d.label,p.LabelShort+"在"+d.label+"的契约上签了名（"+(pact.lichMortgage?"命匣抵押":d.TermLabel)+"）。\n\n恩赐："+boon.label+"——"+boon.description+"\n\n"+ClauseText(pact)+"\n\n"+NextDemandText(pact)+"\n\n签约人获得了能力“魔能爆”。",LetterDefOf.NeutralEvent,p);
-   if(pact.Has("YearOrEye"))PactLetters.Send("hags",pact,p,null,"巫婆集会的代价",p.LabelShort+"签下了巫婆集会的契约。三位巫婆咯咯笑着伸出手：先付一笔定金——一年寿命，还是一只眼睛？");
+   Find.LetterStack.ReceiveLetter("签下契约：".Loc()+d.label,p.LabelShort+"在".Loc()+d.label+"的契约上签了名（".Loc()+(pact.lichMortgage?"命匣抵押".Loc():d.TermLabel)+"）。\n\n恩赐：".Loc()+boon.label+"——"+boon.description+"\n\n"+ClauseText(pact)+"\n\n"+NextDemandText(pact)+"\n\n签约人获得了能力“魔能爆”。".Loc(),LetterDefOf.NeutralEvent,p);
+   if(pact.Has("YearOrEye"))PactLetters.Send("hags",pact,p,null,"巫婆集会的代价".Loc(),p.LabelShort+"签下了巫婆集会的契约。三位巫婆咯咯笑着伸出手：先付一笔定金——一年寿命，还是一只眼睛？".Loc());
    return pact;
   }
   static PactClauseState Copy(PactClauseState x)=>new PactClauseState{kind=x.kind,label=x.label,description=x.description,category=x.category,count=x.count,intervalDays=x.intervalDays,onExpiry=x.onExpiry,hidden=x.hidden,revealed=x.revealed};
@@ -237,12 +237,12 @@ namespace LichPhylactery {
   public static string ClauseText(PlanarPact p)=>ClauseText(p.clauses);
   public static string ClauseText(List<PactClauseState> list){
    var lines=new List<string>();
-   foreach(var c in list){if(c.consumed)continue;lines.Add(c.Visible?"· "+c.label+(c.hidden?"（已揭开的隐藏条款）":"")+"："+c.description:"· ？？？（隐藏条款）");}
-   return "条款：\n"+(lines.Count==0?"（无）":string.Join("\n",lines));
+   foreach(var c in list){if(c.consumed)continue;lines.Add(c.Visible?"· "+c.label+(c.hidden?"（已揭开的隐藏条款）".Loc():"")+"：".Loc()+c.description:"· ？？？（隐藏条款）".Loc());}
+   return "条款：\n".Loc()+(lines.Count==0?"（无）".Loc():string.Join("\n",lines));
   }
   public static string NextDemandText(PlanarPact p){
-   if(p.nextDemandTick<0)return p.expireTick>=0?"契约在 "+(p.expireTick-Now).ToStringTicksToPeriod()+"后到期。":"这份契约没有周期性的偿契要求。";
-   return "下一次偿契在 "+Mathf.Max(0,p.nextDemandTick-Now).ToStringTicksToPeriod()+"后。"+(p.expireTick>=0?"契约在 "+(p.expireTick-Now).ToStringTicksToPeriod()+"后到期。":"");
+   if(p.nextDemandTick<0)return p.expireTick>=0?"契约在 ".Loc()+(p.expireTick-Now).ToStringTicksToPeriod()+"后到期。".Loc():"这份契约没有周期性的偿契要求。".Loc();
+   return "下一次偿契在 ".Loc()+Mathf.Max(0,p.nextDemandTick-Now).ToStringTicksToPeriod()+"后。".Loc()+(p.expireTick>=0?"契约在 ".Loc()+(p.expireTick-Now).ToStringTicksToPeriod()+"后到期。".Loc():"");
   }
 
   // ---------- 审阅与谈判 ----------
@@ -271,37 +271,37 @@ namespace LichPhylactery {
   }
   public static void OnRead(Pawn p,Thing scroll){
    var s=scroll?.TryGetComp<CompPactScroll>();if(s==null || p==null)return;s.Draft();
-   PactLetters.Send("offer",null,p,scroll,"契约书："+s.patron.label,OfferText(p,s));
+   PactLetters.Send("offer",null,p,scroll,"契约书：".Loc()+s.patron.label,OfferText(p,s));
   }
   public static string OfferText(Pawn p,CompPactScroll s){
    var d=s.patron;var lines=new List<string>();
-   lines.Add(p.LabelShort+"读完了"+d.label+"的契约书（"+d.PlaneLabel+"，期限："+(d.term==PactTerm.Soul && Items.IsLich(p)?"命匣抵押":d.TermLabel)+"）。");
+   lines.Add(p.LabelShort+"读完了".Loc()+d.label+"的契约书（".Loc()+d.PlaneLabel+"，期限：".Loc()+(d.term==PactTerm.Soul && Items.IsLich(p)?"命匣抵押".Loc():d.TermLabel)+"）。".Loc());
    if(!d.description.NullOrEmpty())lines.Add(d.description);
-   lines.Add("\n可选的恩赐（三选一）：");foreach(var b in s.Offered())lines.Add("· "+b.label+"："+b.description);
+   lines.Add("\n可选的恩赐（三选一）：".Loc());foreach(var b in s.Offered())lines.Add("· "+b.label+"：".Loc()+b.description);
    lines.Add("\n"+ClauseText(s.Draft()));
    var dem=s.Draft().Where(c=>c.IsDemand && c.Visible).ToList();
-   if(dem.Count>0)lines.Add("偿契周期：约每 "+(d.demandInterval.Average*IntervalFactor(p,d)/Mathf.Max(.1f,DemandFrequency)).ToString("0.#")+" 天一次，每次给 "+DemandDays+" 天。");
-   if(d.term==PactTerm.Year)lines.Add("一年后到期。");
-   if(d.term==PactTerm.Soul)lines.Add(Items.IsLich(p)?"巫妖签灵魂契约：改为“命匣抵押”，恩赐数值 ×1.5；违约到底时被收走的是命匣。":"灵魂契约：签约人得到“灵魂抵押”，死后不能复活、尸体消失。");
-   if(d.taintOnSign>0)lines.Add("签约时签约人深渊腐化 +"+d.taintOnSign.ToStringPercent()+"。");
-   if(Affinity(p,d))lines.Add(p.LabelShort+"的血脉和这位宗主相近：审阅 +2，偿契周期 ×1.33。");
-   var god=FaithUtility.DevoteeGod(p);if(god!=null && god.Good && d.Hells)lines.Add(god.label+"不会高兴：签下后神眷 -20。");
-   if(god!=null && god.Evil && d.Hells)lines.Add(god.label+"的信徒：九狱代价周期 ×1.15。");
-   lines.Add("\n审阅 "+s.reviews+" / "+MaxReviews+"（难度 "+ReviewDC(p,d)+"，"+Legendary.SaveChanceText(p,Adventurer.Int,ReviewDC(p,d))+"）"+(d.negotiable?"；谈判"+(s.negotiated?"已用":"可用（难度 "+NegotiateDC+"，"+Legendary.SaveChanceText(p,Adventurer.Cha,NegotiateDC)+"）"):"；这位宗主不谈判")+"。");
-   var why=CannotSign(p,d);if(why!=null)lines.Add("\n现在签不了："+why+"。");
+   if(dem.Count>0)lines.Add("偿契周期：约每 ".Loc()+(d.demandInterval.Average*IntervalFactor(p,d)/Mathf.Max(.1f,DemandFrequency)).ToString("0.#")+" 天一次，每次给 ".Loc()+DemandDays+" 天。".Loc());
+   if(d.term==PactTerm.Year)lines.Add("一年后到期。".Loc());
+   if(d.term==PactTerm.Soul)lines.Add(Items.IsLich(p)?"巫妖签灵魂契约：改为“命匣抵押”，恩赐数值 ×1.5；违约到底时被收走的是命匣。".Loc():"灵魂契约：签约人得到“灵魂抵押”，死后不能复活、尸体消失。".Loc());
+   if(d.taintOnSign>0)lines.Add("签约时签约人深渊腐化 +".Loc()+d.taintOnSign.ToStringPercent()+"。".Loc());
+   if(Affinity(p,d))lines.Add(p.LabelShort+"的血脉和这位宗主相近：审阅 +2，偿契周期 ×1.33。".Loc());
+   var god=FaithUtility.DevoteeGod(p);if(god!=null && god.Good && d.Hells)lines.Add(god.label+"不会高兴：签下后神眷 -20。".Loc());
+   if(god!=null && god.Evil && d.Hells)lines.Add(god.label+"的信徒：九狱代价周期 ×1.15。".Loc());
+   lines.Add("\n审阅 ".Loc()+s.reviews+" / "+MaxReviews+"（难度 ".Loc()+ReviewDC(p,d)+"，".Loc()+Legendary.SaveChanceText(p,Adventurer.Int,ReviewDC(p,d))+"）".Loc()+(d.negotiable?"；谈判".Loc()+(s.negotiated?"已用".Loc():"可用（难度 ".Loc()+NegotiateDC+"，".Loc()+Legendary.SaveChanceText(p,Adventurer.Cha,NegotiateDC)+"）".Loc()):"；这位宗主不谈判".Loc())+"。".Loc());
+   var why=CannotSign(p,d);if(why!=null)lines.Add("\n现在签不了：".Loc()+why+"。".Loc());
    return string.Join("\n",lines);
   }
 
   // ---------- 每 2500 刻的契约检查 ----------
   public static void CheckAll(GameComponent_Pacts c,int now){
-   for(int i=0;i<c.pacts.Count;i++){var p=c.pacts[i];if(p.Active){try{Check(p,now);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 契约检查出错："+e,8814555+p.id);}}}
-   if(!c.brokersRobbed && PactEvents.Brokers!=null && PactEvents.Brokers.HostileTo(Faction.OfPlayer)){c.brokersRobbed=true;foreach(var p in c.Active.Where(x=>x.patron.Hells).ToList())AddDebt(p,2,"抢劫了九狱掮客的商队");}
+   for(int i=0;i<c.pacts.Count;i++){var p=c.pacts[i];if(p.Active){try{Check(p,now);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 契约检查出错：".Loc()+e,8814555+p.id);}}}
+   if(!c.brokersRobbed && PactEvents.Brokers!=null && PactEvents.Brokers.HostileTo(Faction.OfPlayer)){c.brokersRobbed=true;foreach(var p in c.Active.Where(x=>x.patron.Hells).ToList())AddDebt(p,2,"抢劫了九狱掮客的商队".Loc());}
    if(c.pacts.Count>40)c.pacts.RemoveAll(p=>p.ended && now-p.signTick>YearTicks*2);
   }
   public static void Check(PlanarPact p,int now){
    var s=p.signer;
-   if(s==null || s.Destroyed && !s.Dead){End(p,"签约人不在了",false);return;}
-   if(s.Dead){End(p,s.LabelShort+"死了",true);return;}
+   if(s==null || s.Destroyed && !s.Dead){End(p,"签约人不在了".Loc(),false);return;}
+   if(s.Dead){End(p,s.LabelShort+"死了".Loc(),true);return;}
    if(s.Faction==null || !s.Faction.IsPlayer)return; // 被俘、被拖走：契约暂停
    // 到期（一年契约）：迪斯帕特的到期代价先结清
    if(p.expireTick>=0 && now>=p.expireTick && !p.finalDemand){Expire(p,now);if(p.ended)return;}
@@ -332,20 +332,20 @@ namespace LichPhylactery {
    var c=pick.c;
    if(AutoKinds.Contains(c.kind)){AutoExecute(p,c);return;}
    p.demandClause=pick.i;p.demandStart=now;p.demandDeadline=now+DemandDays*GenDate.TicksPerDay;p.demandPaid=false;
-   PactLetters.Send("demand",p,p.signer,null,p.patron.label+"要求偿契",DemandText(p,c));
+   PactLetters.Send("demand",p,p.signer,null,p.patron.label+"要求偿契".Loc(),DemandText(p,c));
   }
   public static string DemandText(PlanarPact p,PactClauseState c){
    string what;
    switch(c.kind){
-    case "SacrificePrisoner":what="在 "+DemandDays+" 天内处决一名囚犯（原版处决、深渊法阵炼魂都算）。";break;
-    case "Silver":what="交出 "+c.count+" 银（信里的“交付”按钮直接从地图的白银里扣）。";break;
-    case "Item":what="交出"+ItemLabel(c)+"（信里的“交付”按钮直接从地图上扣）。";break;
-    case "Gathering":what="在 "+DemandDays+" 天内举办一次派对或婚礼。";break;
+    case "SacrificePrisoner":what="在 ".Loc()+DemandDays+" 天内处决一名囚犯（原版处决、深渊法阵炼魂都算）。".Loc();break;
+    case "Silver":what="交出 ".Loc()+c.count+" 银（信里的“交付”按钮直接从地图的白银里扣）。".Loc();break;
+    case "Item":what="交出".Loc()+ItemLabel(c)+"（信里的“交付”按钮直接从地图上扣）。".Loc();break;
+    case "Gathering":what="在 ".Loc()+DemandDays+" 天内举办一次派对或婚礼。".Loc();break;
     default:what=c.label;break;
    }
-   return p.signer.LabelShort+"的宗主"+p.patron.label+"派人捎来了话：偿契的时候到了。\n\n要求："+what+"\n\n期限 "+DemandDays+" 天。完不成，债务 +1（现在 "+p.debt+"）。";
+   return p.signer.LabelShort+"的宗主".Loc()+p.patron.label+"派人捎来了话：偿契的时候到了。\n\n要求：".Loc()+what+"\n\n期限 ".Loc()+DemandDays+" 天。完不成，债务 +1（现在 ".Loc()+p.debt+"）。".Loc();
   }
-  public static string ItemLabel(PactClauseState c){switch(c.category){case "BookOrScroll":return "一本书或一张卷轴";case "Art":return "一件品质优秀以上的艺术品";case "SoulCoin":return " "+Mathf.Max(1,c.count)+" 枚灵魂币";}return "一件东西";}
+  public static string ItemLabel(PactClauseState c){switch(c.category){case "BookOrScroll":return "一本书或一张卷轴".Loc();case "Art":return "一件品质优秀以上的艺术品".Loc();case "SoulCoin":return " "+Mathf.Max(1,c.count)+" 枚灵魂币".Loc();}return "一件东西".Loc();}
   public static bool Satisfied(PlanarPact p,PactClauseState c){
    var comp=Comp;
    switch(c.kind){
@@ -357,27 +357,27 @@ namespace LichPhylactery {
   }
   static void Resolved(PlanarPact p,PactClauseState c){
    p.demandClause=-1;p.demandPaid=false;
-   Messages.Message(p.patron.label+"收下了"+p.signer.LabelShort+"的偿契。"+NextDemandText(p),p.signer,MessageTypeDefOf.NeutralEvent,false);
-   if(p.finalDemand)End(p,"契约到期，代价已经付清",true);
+   Messages.Message(p.patron.label+"收下了".Loc()+p.signer.LabelShort+"的偿契。".Loc()+NextDemandText(p),p.signer,MessageTypeDefOf.NeutralEvent,false);
+   if(p.finalDemand)End(p,"契约到期，代价已经付清".Loc(),true);
   }
   static void Failed(PlanarPact p,PactClauseState c){
    p.demandClause=-1;p.demandPaid=false;
    if(p.finalDemand){
     if(p.Has("Collateral"))SeizeCollateral(p);
-    AddDebt(p,1,"到期的代价没有付清");
-    if(!p.ended){if(p.debt>=2 && p.lastCollectorTick<0)SendCollectors(p);End(p,"契约到期（代价没付清）",true);}
+    AddDebt(p,1,"到期的代价没有付清".Loc());
+    if(!p.ended){if(p.debt>=2 && p.lastCollectorTick<0)SendCollectors(p);End(p,"契约到期（代价没付清）".Loc(),true);}
     return;
    }
-   AddDebt(p,1,"没有按时偿契（"+c.label+"）");
+   AddDebt(p,1,"没有按时偿契（".Loc()+c.label+"）".Loc());
   }
   // 交付白银 / 物品（信件按钮、补偿宗主都走这里）。
   public static string CannotDeliver(PlanarPact p,PactClauseState c,int times=1){
-   var map=HomeOf(p);if(map==null)return "没有地图";
+   var map=HomeOf(p);if(map==null)return "没有地图".Loc();
    switch(c.kind){
-    case "Silver":return SilverOn(map)>=c.count*times?null:"地图上的白银不到 "+(c.count*times);
-    case "Item":return ItemsFor(map,c).Count()>=(c.category=="SoulCoin"?0:times) && (c.category!="SoulCoin" || AbyssRitual.Count(map,AbyssItems.SoulCoin)>=Mathf.Max(1,c.count)*times)?null:"地图上没有"+ItemLabel(c)+(times>1?"（要 "+times+" 份）":"");
+    case "Silver":return SilverOn(map)>=c.count*times?null:"地图上的白银不到 ".Loc()+(c.count*times);
+    case "Item":return ItemsFor(map,c).Count()>=(c.category=="SoulCoin"?0:times) && (c.category!="SoulCoin" || AbyssRitual.Count(map,AbyssItems.SoulCoin)>=Mathf.Max(1,c.count)*times)?null:"地图上没有".Loc()+ItemLabel(c)+(times>1?"（要 ".Loc()+times+" 份）".Loc():"");
    }
-   return "这一条不能交付";
+   return "这一条不能交付".Loc();
   }
   public static bool Deliver(PlanarPact p,PactClauseState c,int times=1){
    if(CannotDeliver(p,c,times)!=null)return false;var map=HomeOf(p);
@@ -413,34 +413,34 @@ namespace LichPhylactery {
    switch(c.kind){
     case "Secret":{
      var pool=map?.mapPawns.FreeColonistsSpawned.Where(x=>x.RaceProps.Humanlike && x.relations!=null && !Outsiders.Is(x)).InRandomOrder().Take(2).ToList();
-     if(pool==null || pool.Count<2){text="殖民地里没有能拿来交换秘密的两个人。";break;}
+     if(pool==null || pool.Count<2){text="殖民地里没有能拿来交换秘密的两个人。".Loc();break;}
      var op=DefDatabase<ThoughtDef>.GetNamedSilentFail("LP_SecretRevealedOpinion");var md=DefDatabase<ThoughtDef>.GetNamedSilentFail("LP_SecretRevealed");
      if(op!=null){pool[0].needs?.mood?.thoughts?.memories?.TryGainMemory(op,pool[1]);pool[1].needs?.mood?.thoughts?.memories?.TryGainMemory(op,pool[0]);}
      if(md!=null)foreach(var x in pool)x.needs?.mood?.thoughts?.memories?.TryGainMemory(md);
-     text=p.patron.label+"把"+pool[0].LabelShort+"和"+pool[1].LabelShort+"之间的一件秘密抖了出来：两人互相意见 -20，各自心情 -5（5 天）。";break;
+     text=p.patron.label+"把{0}和{1}之间的一件秘密抖了出来：两人互相意见 -20，各自心情 -5（5 天）。".LocF(pool[0].LabelShort,pool[1].LabelShort);break;
     }
     case "Name":{
      var who=map?.mapPawns.FreeColonistsSpawned.Where(x=>x.RaceProps.Humanlike && !Outsiders.Is(x)).RandomElementWithFallback();
-     if(who==null){text="没有人可以交出名字。";break;}
+     if(who==null){text="没有人可以交出名字。".Loc();break;}
      string old=who.LabelShort;
-     try{who.Name=PawnBioAndNameGenerator.GeneratePawnName(who,NameStyle.Full,null,false,who.genes?.Xenotype);}catch(Exception e){Log.Warning("[DND边缘大陆] 改名失败："+e.Message);}
+     try{who.Name=PawnBioAndNameGenerator.GeneratePawnName(who,NameStyle.Full,null,false,who.genes?.Xenotype);}catch(Exception e){Log.Warning("[DND边缘大陆] 改名失败：".Loc()+e.Message);}
      var md=DefDatabase<ThoughtDef>.GetNamedSilentFail("LP_NameStolen");if(md!=null)who.needs?.mood?.thoughts?.memories?.TryGainMemory(md);
      Items.Give(who,"LP_NameStolenHediff");
-     text=p.patron.label+"收走了"+old+"的名字。现在大家只能叫"+who.gender.GetPronoun()+"“"+who.LabelShort+"”：心情 -6、社交影响 -20%（10 天）。";break;
+     text=p.patron.label+"收走了".Loc()+old+"的名字。现在大家只能叫".Loc()+who.gender.GetPronoun()+"“"+who.LabelShort+"”：心情 -6、社交影响 -20%（10 天）。".Loc();break;
     }
     case "Year":{
      if(p.signer?.ageTracker!=null)p.signer.ageTracker.AgeBiologicalTicks+=GenDate.TicksPerYear;
-     text=p.signer.LabelShort+"付出了一年寿命：生物年龄 +1 年。";break;
+     text=p.signer.LabelShort+"付出了一年寿命：生物年龄 +1 年。".Loc();break;
     }
    }
-   if(text!=null)Find.LetterStack.ReceiveLetter(p.patron.label+"收取代价："+c.label,text,LetterDefOf.NegativeEvent,p.signer);
+   if(text!=null)Find.LetterStack.ReceiveLetter(p.patron.label+"收取代价：".Loc()+c.label,text,LetterDefOf.NegativeEvent,p.signer);
    return text;
   }
   static void Periodic(PlanarPact p,PactClauseState c){
    var map=HomeOf(p);
    switch(c.kind){
-    case "SoulTax":if(!AbyssRitual.TakeItems(map,AbyssItems.SoulCoin,Mathf.Max(1,c.count)))AddDebt(p,1,"灵魂税交不出 "+c.count+" 枚灵魂币");else Messages.Message(p.patron.label+"收走了 "+c.count+" 枚灵魂币（灵魂税）。",p.signer,MessageTypeDefOf.NegativeEvent,false);break;
-    case "Interest":if(!TakeSilver(map,c.count))AddDebt(p,1,"利息交不出 "+c.count+" 银");else Messages.Message(p.patron.label+"收走了 "+c.count+" 银利息。",p.signer,MessageTypeDefOf.NegativeEvent,false);break;
+    case "SoulTax":if(!AbyssRitual.TakeItems(map,AbyssItems.SoulCoin,Mathf.Max(1,c.count)))AddDebt(p,1,"灵魂税交不出 ".Loc()+c.count+" 枚灵魂币".Loc());else Messages.Message(p.patron.label+"收走了 ".Loc()+c.count+" 枚灵魂币（灵魂税）。".Loc(),p.signer,MessageTypeDefOf.NegativeEvent,false);break;
+    case "Interest":if(!TakeSilver(map,c.count))AddDebt(p,1,"利息交不出 ".Loc()+c.count+" 银".Loc());else Messages.Message(p.patron.label+"收走了 ".Loc()+c.count+" 银利息。".Loc(),p.signer,MessageTypeDefOf.NegativeEvent,false);break;
     case "Year":AutoExecute(p,c);break;
    }
   }
@@ -448,23 +448,23 @@ namespace LichPhylactery {
   static void Expire(PlanarPact p,int now){
    p.finalDemand=true;
    int idx=p.clauses.FindIndex(c=>c.onExpiry && !c.consumed);
-   if(idx<0){End(p,"契约到期",true);return;}
+   if(idx<0){End(p,"契约到期".Loc(),true);return;}
    var c=p.clauses[idx];var b=p.Boon;if(b!=null && b.clauseFactor!=1f && c.kind=="Silver")c.count=Mathf.RoundToInt(c.count*b.clauseFactor); // 铁城之金：到期白银 ×2
    p.demandClause=idx;p.demandStart=now;p.demandDeadline=now+DemandDays*GenDate.TicksPerDay;p.demandPaid=false;
-   PactLetters.Send("demand",p,p.signer,null,p.patron.label+"：契约到期",p.signer.LabelShort+"和"+p.patron.label+"的契约到期了。\n\n到期的代价："+(c.kind=="Silver"?c.count+" 银":c.label)+"。期限 "+DemandDays+" 天；付清后契约结束，付不清"+(p.Has("Collateral")?"，殖民地价值最高的一栋建筑会被收走（抵押物）":"，债务 +1")+"。");
+   PactLetters.Send("demand",p,p.signer,null,p.patron.label+"：契约到期".Loc(),p.signer.LabelShort+"和".Loc()+p.patron.label+"的契约到期了。\n\n到期的代价：".Loc()+(c.kind=="Silver"?c.count+" 银".Loc():c.label)+"。期限 ".Loc()+DemandDays+" 天；付清后契约结束，付不清".Loc()+(p.Has("Collateral")?"，殖民地价值最高的一栋建筑会被收走（抵押物）".Loc():"，债务 +1".Loc())+"。".Loc());
   }
   static void SeizeCollateral(PlanarPact p){
    var map=HomeOf(p);var b=map?.listerBuildings.allBuildingsColonist.Where(x=>x.def.building!=null && x.def.building.isNaturalRock==false && x.def.BuildableByPlayer).OrderByDescending(x=>x.MarketValue).FirstOrDefault();
    if(b==null)return;string label=b.LabelCap;var cell=b.Position;
    for(int i=0;i<5;i++)FleckMaker.ThrowSmoke(cell.ToVector3Shifted(),map,2f);
    b.Destroy(DestroyMode.Vanish);
-   Find.LetterStack.ReceiveLetter("抵押物被收走",p.patron.label+"的收账人按“抵押物”条款收走了殖民地价值最高的建筑："+label+"。",LetterDefOf.NegativeEvent,new TargetInfo(cell,map));
+   Find.LetterStack.ReceiveLetter("抵押物被收走".Loc(),p.patron.label+"的收账人按“抵押物”条款收走了殖民地价值最高的建筑：".Loc()+label+"。".Loc(),LetterDefOf.NegativeEvent,new TargetInfo(cell,map));
   }
   static void Mutate(PlanarPact p){
    var vis=p.clauses.Select((c,i)=>(c,i)).Where(x=>x.c.IsDemand && !x.c.hidden && !x.c.consumed).ToList();if(vis.Count==0)return;
    var pool=p.patron.demands.Where(d=>!p.clauses.Any(c=>c.kind==d.kind && !c.consumed)).ToList();if(pool.Count==0)return;
    var old=vis.RandomElement();var nw=pool.RandomElement().Make(false);p.clauses[old.i]=nw;if(p.demandClause==old.i){p.demandClause=-1;p.demandPaid=false;}
-   Find.LetterStack.ReceiveLetter("妖精的条款变了",p.patron.label+"改了主意：契约里的“"+old.c.label+"”变成了“"+nw.label+"”（"+nw.description+"）。妖精的契约就是这样。",LetterDefOf.NeutralEvent,p.signer);
+   Find.LetterStack.ReceiveLetter("妖精的条款变了".Loc(),p.patron.label+"改了主意：契约里的“".Loc()+old.c.label+"”变成了“".Loc()+nw.label+"”（".Loc()+nw.description+"）。妖精的契约就是这样。".Loc(),LetterDefOf.NeutralEvent,p.signer);
   }
   static void Resell(PlanarPact p){
    var others=Patrons.Where(d=>d.Hells && d!=p.patron).ToList();if(others.Count==0)return;
@@ -473,14 +473,14 @@ namespace LichPhylactery {
    var r=p.Clause("Resale");if(r!=null){r.consumed=true;r.revealed=true;}
    p.patron=nw;if(nw.term==PactTerm.Year && p.expireTick<0)p.expireTick=Now+YearTicks;
    ScheduleDemand(p,Now);ApplyStatic(p);
-   Find.LetterStack.ReceiveLetter("契约被转卖了",old.label+"把"+p.signer.LabelShort+"的契约转卖给了"+nw.label+"（隐藏条款“转卖”）。恩赐照旧，代价换成了新宗主的：\n\n"+ClauseText(p),LetterDefOf.NegativeEvent,p.signer);
+   Find.LetterStack.ReceiveLetter("契约被转卖了".Loc(),old.label+"把".Loc()+p.signer.LabelShort+"的契约转卖给了".Loc()+nw.label+"（隐藏条款“转卖”）。恩赐照旧，代价换成了新宗主的：\n\n".Loc()+ClauseText(p),LetterDefOf.NegativeEvent,p.signer);
   }
   static void LongWinter(PlanarPact p){
    var map=HomeOf(p);if(map==null)return;var season=GenLocalDate.Season(map);if(season!=Season.Winter && season!=Season.PermanentWinter)return;
    int year=GenLocalDate.Year(map);if(p.lastWinterYear==year)return;p.lastWinterYear=year;
    var cond=GameConditionMaker.MakeCondition(GameConditionDefOf.ColdSnap,GenDate.TicksPerDay*10);map.gameConditionManager.RegisterCondition(cond);
    var c=p.Clause("LongWinter");if(c!=null)c.revealed=true;
-   Find.LetterStack.ReceiveLetter("长冬",p.patron.label+"的冰狱之风吹到了殖民地：寒潮 10 天（隐藏条款“长冬”）。",LetterDefOf.NegativeEvent,p.signer);
+   Find.LetterStack.ReceiveLetter("长冬".Loc(),p.patron.label+"的冰狱之风吹到了殖民地：寒潮 10 天（隐藏条款“长冬”）。".Loc(),LetterDefOf.NegativeEvent,p.signer);
   }
 
   // ---------- 债务 ----------
@@ -488,11 +488,11 @@ namespace LichPhylactery {
    if(p==null || p.ended || delta==0)return;int old=p.debt;p.debt=Mathf.Clamp(p.debt+delta,0,MaxDebt);if(p.debt==old)return;
    SyncSigner(p);
    if(p.debt>old){
-    string eff=p.debt==1?"违约的阴影：签约人心情 -6，恩赐给的能力冷却 ×2。":p.debt==2?"宗主派出了"+(p.patron.Fey?"狂猎":"讨债者")+"，之后每 "+CollectorDays+" 天一次，直到债务降下来。":"强制执行！";
-    Find.LetterStack.ReceiveLetter("契约债务："+p.signer.LabelShort,p.signer.LabelShort+"欠"+p.patron.label+"的债务 "+old+" → "+p.debt+"（"+why+"）。\n\n"+eff+"\n\n还债：在契约讲台“补偿宗主”（交付一次当期要求的双倍，债务 -1）。",p.debt>=2?LetterDefOf.ThreatBig:LetterDefOf.NegativeEvent,p.signer);
+    string eff=p.debt==1?"违约的阴影：签约人心情 -6，恩赐给的能力冷却 ×2。".Loc():p.debt==2?"宗主派出了".Loc()+(p.patron.Fey?"狂猎".Loc():"讨债者".Loc())+"，之后每 ".Loc()+CollectorDays+" 天一次，直到债务降下来。".Loc():"强制执行！".Loc();
+    Find.LetterStack.ReceiveLetter("契约债务：".Loc()+p.signer.LabelShort,p.signer.LabelShort+"欠".Loc()+p.patron.label+"的债务 ".Loc()+old+" → "+p.debt+"（".Loc()+why+"）。\n\n".Loc()+eff+"\n\n还债：在契约讲台“补偿宗主”（交付一次当期要求的双倍，债务 -1）。".Loc(),p.debt>=2?LetterDefOf.ThreatBig:LetterDefOf.NegativeEvent,p.signer);
     if(p.debt>=2 && old<2)SendCollectors(p);
     if(p.debt>=MaxDebt)Enforce(p);
-   }else Messages.Message(p.signer.LabelShort+"欠"+p.patron.label+"的债务降到了 "+p.debt+"（"+why+"）。",p.signer,MessageTypeDefOf.PositiveEvent,false);
+   }else Messages.Message(p.signer.LabelShort+"欠".Loc()+p.patron.label+"的债务降到了 ".Loc()+p.debt+"（".Loc()+why+"）。".Loc(),p.signer,MessageTypeDefOf.PositiveEvent,false);
   }
   public static void SendCollectors(PlanarPact p){
    p.lastCollectorTick=Now;var map=HomeOf(p);if(map==null || !map.IsPlayerHome)return;
@@ -502,9 +502,9 @@ namespace LichPhylactery {
   // 强制执行：签约人被拖进位面（巫妖：命匣被收走）。契约结束。
   public static void Enforce(PlanarPact p){
    var s=p.signer;if(s==null)return;
-   if(p.lichMortgage){SeizePhylactery(s,p);End(p,"命匣被收走",false);return;}
+   if(p.lichMortgage){SeizePhylactery(s,p);End(p,"命匣被收走".Loc(),false);return;}
    DragAway(s,p.patron.plane,p.patron.label);
-   End(p,s.LabelShort+"被拖进了"+p.patron.PlaneLabel,false);
+   End(p,s.LabelShort+"被拖进了".Loc()+p.patron.PlaneLabel,false);
   }
   public static void DragAway(Pawn s,OutsiderPlane plane,string by){
    var c=Comp;if(c==null || s==null)return;var cell=s.PositionHeld;var map=s.MapHeld;
@@ -513,7 +513,7 @@ namespace LichPhylactery {
    var f=plane==OutsiderPlane.Feywild?PactEvents.FeyHunt():PactEvents.Legion();if(f!=null)s.SetFaction(f);
    if(!Find.WorldPawns.Contains(s))Find.WorldPawns.PassToWorld(s,PawnDiscardDecideMode.KeepForever);
    c.taken.Add(new TakenPawn{pawn=s,plane=plane,tick=Now});
-   Find.LetterStack.ReceiveLetter("强制执行："+s.LabelShort,by+"的债务到了 3：一团"+(plane==OutsiderPlane.Feywild?"冰冷的雾":"硫磺味的黑烟")+"裹住了"+s.LabelShort+"，把"+s.gender.GetPronoun()+"拖进了"+(plane==OutsiderPlane.Feywild?"妖精荒野":"九狱")+"。\n\n可以赎回："+(plane==OutsiderPlane.Feywild?"妖精集市的代价交易“赎回被拖走的人”":"九狱商队“赎人”（"+RansomSilver.ToString("0")+" 银）")+"。赎回后在地图边缘出现，深渊腐化 +20%。",LetterDefOf.Death,map==null?LookTargets.Invalid:new LookTargets(new TargetInfo(cell,map)));
+   Find.LetterStack.ReceiveLetter("强制执行：".Loc()+s.LabelShort,by+"的债务到了 3：一团".Loc()+(plane==OutsiderPlane.Feywild?"冰冷的雾".Loc():"硫磺味的黑烟".Loc())+"裹住了".Loc()+s.LabelShort+"，把".Loc()+s.gender.GetPronoun()+"拖进了".Loc()+(plane==OutsiderPlane.Feywild?"妖精荒野".Loc():"九狱".Loc())+"。\n\n可以赎回：".Loc()+(plane==OutsiderPlane.Feywild?"妖精集市的代价交易“赎回被拖走的人”".Loc():"九狱商队“赎人”（".Loc()+RansomSilver.ToString("0")+" 银）".Loc())+"。赎回后在地图边缘出现，深渊腐化 +20%。".Loc(),LetterDefOf.Death,map==null?LookTargets.Invalid:new LookTargets(new TargetInfo(cell,map)));
   }
   public static void SeizePhylactery(Pawn lich,PlanarPact p){
    var box=Necro.Lich(lich)?.box;var c=Comp;if(box==null || c==null || box.Destroyed){Items.Give(lich,"LP_PhylacteryLost");return;}
@@ -522,7 +522,7 @@ namespace LichPhylactery {
    c.seized.TryAdd(box,false);c.seizedOwners.Add(lich);
    Items.Give(lich,"LP_PhylacteryLost");
    if(map!=null)foreach(var altar in map.listerThings.ThingsOfDef(Necro.Def<ThingDef>("Altar")).OfType<Building_Altar>())if(altar.selected==box)altar.selected=null;
-   Find.LetterStack.ReceiveLetter("命匣被收走",p.patron.label+"的收账人取走了"+lich.LabelShort+"的命匣（命匣抵押）。"+lich.LabelShort+"的力量还在，但死后再也不会复活。\n\n可以从九狱商队赎回（"+RansomSilver.ToString("0")+" 银）。",LetterDefOf.NegativeEvent,lich);
+   Find.LetterStack.ReceiveLetter("命匣被收走".Loc(),p.patron.label+"的收账人取走了".Loc()+lich.LabelShort+"的命匣（命匣抵押）。".Loc()+lich.LabelShort+"的力量还在，但死后再也不会复活。\n\n可以从九狱商队赎回（".Loc()+RansomSilver.ToString("0")+" 银）。".Loc(),LetterDefOf.NegativeEvent,lich);
   }
   public static bool RansomPhylactery(Pawn lich,Map map,bool pay){
    var c=Comp;if(c==null)return false;int i=c.seizedOwners.IndexOf(lich);if(i<0)return false;
@@ -531,7 +531,7 @@ namespace LichPhylactery {
    c.seized.Remove(box);c.seizedOwners.RemoveAt(i);
    GenPlace.TryPlaceThing(box,DropCellFinder.TradeDropSpot(map),map,ThingPlaceMode.Near);
    Items.Remove(lich,"LP_PhylacteryLost");if(box is Phylactery ph)ph.Register();
-   Find.LetterStack.ReceiveLetter("赎回命匣",lich.LabelShort+"的命匣回来了。",LetterDefOf.PositiveEvent,box);
+   Find.LetterStack.ReceiveLetter("赎回命匣".Loc(),lich.LabelShort+"的命匣回来了。".Loc(),LetterDefOf.PositiveEvent,box);
    return true;
   }
   public static Pawn Ransom(TakenPawn t,Map map,bool pay){
@@ -539,25 +539,25 @@ namespace LichPhylactery {
    if(pay && !TakeSilver(map,(int)RansomSilver))return null;
    var p=t.pawn;c.taken.Remove(t);
    if(Find.WorldPawns.Contains(p))Find.WorldPawns.RemovePawn(p);
-   if(p.Dead){Find.LetterStack.ReceiveLetter("赎回失败",p.LabelShort+"已经死在了另一个位面。",LetterDefOf.Death);return null;}
+   if(p.Dead){Find.LetterStack.ReceiveLetter("赎回失败".Loc(),p.LabelShort+"已经死在了另一个位面。".Loc(),LetterDefOf.Death);return null;}
    p.SetFaction(Faction.OfPlayer);
    if(!CellFinder.TryFindRandomEdgeCellWith(x=>x.Standable(map) && !x.Fogged(map) && map.reachability.CanReachColony(x),map,CellFinder.EdgeRoadChance_Neutral,out var cell))cell=CellFinder.RandomEdgeCell(map);
    GenSpawn.Spawn(p,cell,map);
-   AbyssTaint.Add(p,RansomTaint,"从异界被赎回");
-   Find.LetterStack.ReceiveLetter("赎回："+p.LabelShort,p.LabelShort+"从"+(t.plane==OutsiderPlane.Feywild?"妖精荒野":"九狱")+"回来了，出现在地图边缘。那边发生的事"+p.gender.GetPronoun()+"不愿多说（深渊腐化 +20%）。",LetterDefOf.PositiveEvent,p);
+   AbyssTaint.Add(p,RansomTaint,"从异界被赎回".Loc());
+   Find.LetterStack.ReceiveLetter("赎回：".Loc()+p.LabelShort,p.LabelShort+"从".Loc()+(t.plane==OutsiderPlane.Feywild?"妖精荒野".Loc():"九狱".Loc())+"回来了，出现在地图边缘。那边发生的事".Loc()+p.gender.GetPronoun()+"不愿多说（深渊腐化 +20%）。".Loc(),LetterDefOf.PositiveEvent,p);
    return p;
   }
 
   // ---------- 还债 ----------
   public static PactClauseState CompensationClause(PlanarPact p)=>p.Demand??p.clauses.FirstOrDefault(c=>c.IsDemand && !c.consumed && (c.kind=="Silver" || c.kind=="Item"))??p.clauses.FirstOrDefault(c=>c.IsDemand && !c.consumed);
   public static string CannotCompensate(PlanarPact p){
-   if(p.debt<=0)return "没有欠债";var c=CompensationClause(p);if(c==null)return "没有可以补偿的要求";
+   if(p.debt<=0)return "没有欠债".Loc();var c=CompensationClause(p);if(c==null)return "没有可以补偿的要求".Loc();
    switch(c.kind){
     case "Silver":case "Item":return CannotDeliver(p,c,2);
-    case "SacrificePrisoner":return AbyssRitual.Prisoners(HomeOf(p)).Count()>=2?null:"需要地图上有 2 名囚犯";
-    case "Gathering":return SilverOn(HomeOf(p))>=1000?null:"派对没法“双倍”：改交 1000 银，地图上的白银不够";
+    case "SacrificePrisoner":return AbyssRitual.Prisoners(HomeOf(p)).Count()>=2?null:"需要地图上有 2 名囚犯".Loc();
+    case "Gathering":return SilverOn(HomeOf(p))>=1000?null:"派对没法“双倍”：改交 1000 银，地图上的白银不够".Loc();
    }
-   return AbyssRitual.Count(HomeOf(p),AbyssItems.SoulCoin)>=3?null:"自动执行的要求补偿改交 3 枚灵魂币：地图上不够";
+   return AbyssRitual.Count(HomeOf(p),AbyssItems.SoulCoin)>=3?null:"自动执行的要求补偿改交 3 枚灵魂币：地图上不够".Loc();
   }
   public static bool Compensate(PlanarPact p){
    if(CannotCompensate(p)!=null)return false;var c=CompensationClause(p);var map=HomeOf(p);
@@ -567,21 +567,21 @@ namespace LichPhylactery {
     case "Gathering":TakeSilver(map,1000);break;
     default:AbyssRitual.TakeItems(map,AbyssItems.SoulCoin,3);break;
    }
-   AddDebt(p,-1,"在契约讲台补偿了宗主");return true;
+   AddDebt(p,-1,"在契约讲台补偿了宗主".Loc());return true;
   }
 
   // ---------- 解约 / 到期 ----------
   public static void End(PlanarPact p,string why,bool letter){
    if(p==null || p.ended)return;p.ended=true;p.endReason=why;p.demandClause=-1;
    var s=p.signer;
-   try{p.Boon?.Worker?.OnEnd(p);}catch(Exception e){Log.Error("[DND边缘大陆] 移除恩赐出错："+e);}
+   try{p.Boon?.Worker?.OnEnd(p);}catch(Exception e){Log.Error("[DND边缘大陆] 移除恩赐出错：".Loc()+e);}
    if(s!=null){
     if(s.abilities!=null && BlastDef!=null && s.abilities.GetAbility(BlastDef)!=null)s.abilities.RemoveAbility(BlastDef);
     RemoveStatic(s);
     if(p.soulGiven && !s.Dead)Items.Remove(s,"LP_SoulMortgaged");
    }
    SyncSigner(p);Refresh(Comp);
-   if(letter && s!=null)Find.LetterStack.ReceiveLetter("契约结束："+p.patron.label,s.LabelShort+"和"+p.patron.label+"的契约结束了（"+why+"）。恩赐、魔能爆和条款都随之消失。",LetterDefOf.NeutralEvent,s.Dead?LookTargets.Invalid:new LookTargets(s));
+   if(letter && s!=null)Find.LetterStack.ReceiveLetter("契约结束：".Loc()+p.patron.label,s.LabelShort+"和".Loc()+p.patron.label+"的契约结束了（".Loc()+why+"）。恩赐、魔能爆和条款都随之消失。".Loc(),LetterDefOf.NeutralEvent,s.Dead?LookTargets.Invalid:new LookTargets(s));
   }
   public static void Unbind(PlanarPact p,string how){End(p,how,true);}
 
@@ -610,10 +610,10 @@ namespace LichPhylactery {
   public int pactId=-1;
   public PlanarPact PlanarPact=>Pacts.ById(pactId);
   public override bool ShouldRemove=>PlanarPact==null || PlanarPact.ended;
-  public override string LabelInBrackets{get{var p=PlanarPact;if(p==null)return null;return p.patron.label+(p.debt>0?"，债务 "+p.debt:"");}}
+  public override string LabelInBrackets{get{var p=PlanarPact;if(p==null)return null;return p.patron.label+(p.debt>0?"，债务 ".Loc()+p.debt:"");}}
   public override string TipStringExtra{get{
    var p=PlanarPact;if(p==null)return null;var b=p.Boon;
-   return "宗主："+p.patron.label+"（"+p.patron.PlaneLabel+"，"+(p.lichMortgage?"命匣抵押":p.patron.TermLabel)+"）\n恩赐："+b?.label+"\n"+Pacts.ClauseText(p)+"\n"+Pacts.NextDemandText(p)+(p.Demand!=null?"\n当前要求："+p.Demand.label+"（还剩 "+Mathf.Max(0,p.demandDeadline-Pacts.Now).ToStringTicksToPeriod()+"）":"");
+   return "宗主：".Loc()+p.patron.label+"（".Loc()+p.patron.PlaneLabel+"，".Loc()+(p.lichMortgage?"命匣抵押".Loc():p.patron.TermLabel)+"）\n恩赐：".Loc()+b?.label+"\n"+Pacts.ClauseText(p)+"\n"+Pacts.NextDemandText(p)+(p.Demand!=null?"\n当前要求：".Loc()+p.Demand.label+"（还剩 ".Loc()+Mathf.Max(0,p.demandDeadline-Pacts.Now).ToStringTicksToPeriod()+"）".Loc():"");
   }}
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref pactId,"lpPactId",-1);}
  }
@@ -636,18 +636,18 @@ namespace LichPhylactery {
    if(offered==null)offered=patron.boons.Count<=patron.boonChoices?patron.boons.Select(b=>b.key).ToList():patron.boons.InRandomOrder().Take(patron.boonChoices).Select(b=>b.key).ToList();
    foreach(var k in offered){var b=patron.Boon(k);if(b!=null)yield return b;}
   }
-  public override string TransformLabel(string label){Ensure();return patron==null?label:label+"："+patron.label;}
+  public override string TransformLabel(string label){Ensure();return patron==null?label:label+"：".Loc()+patron.label;}
   public override bool AllowStackWith(Thing other)=>false;
-  public override string CompInspectStringExtra(){Ensure();return patron==null?null:patron.PlaneLabel+"宗主"+patron.label+"的契约书（期限："+patron.TermLabel+"）。拿到契约讲台上读 4 小时才能看清条款。";}
+  public override string CompInspectStringExtra(){Ensure();return patron==null?null:patron.PlaneLabel+"宗主".Loc()+patron.label+"的契约书（期限：".Loc()+patron.TermLabel+"）。拿到契约讲台上读 4 小时才能看清条款。".Loc();}
   public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(Pawn selPawn){
    foreach(var o in base.CompFloatMenuOptions(selPawn))yield return o;
    if(selPawn?.Faction?.IsPlayer!=true || parent.MapHeld==null)yield break;Ensure();
    var job=DefDatabase<JobDef>.GetNamedSilentFail("LP_ReadPact");if(job==null)yield break;
    var lec=Pacts.LecternDef==null?null:parent.MapHeld.listerThings.ThingsOfDef(Pacts.LecternDef).Where(l=>l.Faction==Faction.OfPlayer && selPawn.CanReserveAndReach(l,PathEndMode.InteractionCell,Danger.Some)).OrderBy(l=>l.Position.DistanceToSquared(selPawn.Position)).FirstOrDefault();
-   if(lec==null){yield return new FloatMenuOption("在契约讲台阅读（地图上没有能用的契约讲台）",null);yield break;}
+   if(lec==null){yield return new FloatMenuOption("在契约讲台阅读（地图上没有能用的契约讲台）".Loc(),null);yield break;}
    var why=Pacts.CannotSign(selPawn,patron);
-   if(why!=null && (Pacts.Of(selPawn)!=null || Outsiders.Is(selPawn))){yield return new FloatMenuOption("在契约讲台阅读（"+why+"）",null);yield break;}
-   yield return new FloatMenuOption("在契约讲台阅读"+patron?.label+"的契约书（4 小时）",()=>{var j=JobMaker.MakeJob(job,parent,lec);j.count=1;selPawn.jobs.TryTakeOrderedJob(j,JobTag.Misc);});
+   if(why!=null && (Pacts.Of(selPawn)!=null || Outsiders.Is(selPawn))){yield return new FloatMenuOption("在契约讲台阅读（".Loc()+why+"）".Loc(),null);yield break;}
+   yield return new FloatMenuOption("在契约讲台阅读".Loc()+patron?.label+"的契约书（4 小时）".Loc(),()=>{var j=JobMaker.MakeJob(job,parent,lec);j.count=1;selPawn.jobs.TryTakeOrderedJob(j,JobTag.Misc);});
   }
   public override void PostExposeData(){
    base.PostExposeData();Scribe_Defs.Look(ref patron,"lpPatron");Scribe_Collections.Look(ref draft,"lpDraft",LookMode.Deep);Scribe_Collections.Look(ref offered,"lpOffered",LookMode.Value);
@@ -673,9 +673,9 @@ namespace LichPhylactery {
   public override string GetInspectString(){
    var s=base.GetInspectString();var lines=new List<string>();if(!s.NullOrEmpty())lines.Add(s);
    var c=GameComponent_Pacts.Get;
-   if(c!=null)lines.Add("殖民地的契约："+Pacts.ActiveCount()+" / "+Pacts.Cap());
-   if(c!=null)foreach(var p in c.Active)lines.Add(p.signer.LabelShort+"："+p.Label+(p.debt>0?"（债务 "+p.debt+"）":""));
-   if(c!=null && c.taken.Count>0)lines.Add("被拖走的人："+string.Join("、",c.taken.Select(t=>t.pawn.LabelShort)));
+   if(c!=null)lines.Add("殖民地的契约：".Loc()+Pacts.ActiveCount()+" / "+Pacts.Cap());
+   if(c!=null)foreach(var p in c.Active)lines.Add(p.signer.LabelShort+"：".Loc()+p.Label+(p.debt>0?"（债务 ".Loc()+p.debt+"）".Loc():""));
+   if(c!=null && c.taken.Count>0)lines.Add("被拖走的人：".Loc()+string.Join("、".Loc(),c.taken.Select(t=>t.pawn.LabelShort)));
    return string.Join("\n",lines);
   }
   public override IEnumerable<Gizmo> GetGizmos(){
@@ -683,12 +683,12 @@ namespace LichPhylactery {
    if(Faction!=Faction.OfPlayer)yield break;var c=GameComponent_Pacts.Get;if(c==null)yield break;
    foreach(var p in c.Active.Where(x=>x.debt>0).ToList()){
     var pp=p;var cl=Pacts.CompensationClause(p);
-    var cmd=new Command_Action{defaultLabel="补偿宗主："+p.signer.LabelShort,defaultDesc="交付一次当期要求的双倍，"+p.signer.LabelShort+"欠"+p.patron.label+"的债务 -1（现在 "+p.debt+"）。\n\n要交的："+(cl==null?"—":cl.kind=="Silver"?(cl.count*2)+" 银":cl.kind=="Item"?"两份"+Pacts.ItemLabel(cl):cl.kind=="SacrificePrisoner"?"处决 2 名囚犯（签约人亲手）":cl.kind=="Gathering"?"1000 银":"3 枚灵魂币"),icon=p.patron.Icon,action=()=>{if(!Pacts.Compensate(pp))Messages.Message("补偿不了："+Pacts.CannotCompensate(pp),MessageTypeDefOf.RejectInput,false);}};
+    var cmd=new Command_Action{defaultLabel="补偿宗主：".Loc()+p.signer.LabelShort,defaultDesc="交付一次当期要求的双倍，".Loc()+p.signer.LabelShort+"欠".Loc()+p.patron.label+"的债务 -1（现在 ".Loc()+p.debt+"）。\n\n要交的：".Loc()+(cl==null?"—":cl.kind=="Silver"?(cl.count*2)+" 银".Loc():cl.kind=="Item"?"两份".Loc()+Pacts.ItemLabel(cl):cl.kind=="SacrificePrisoner"?"处决 2 名囚犯（签约人亲手）".Loc():cl.kind=="Gathering"?"1000 银".Loc():"3 枚灵魂币".Loc()),icon=p.patron.Icon,action=()=>{if(!Pacts.Compensate(pp))Messages.Message("补偿不了：".Loc()+Pacts.CannotCompensate(pp),MessageTypeDefOf.RejectInput,false);}};
     var why=Pacts.CannotCompensate(p);if(why!=null)cmd.Disable(why);yield return cmd;
    }
    foreach(var p in c.Active.ToList()){
     var sc=AgentScroll(Map,p.patron);if(sc==null)continue;var pp=p;
-    yield return new Command_Action{defaultLabel="用代理人的真名解约："+p.signer.LabelShort,defaultDesc="念出"+p.patron.label+"代理人的真名，当场撕毁"+p.signer.LabelShort+"的契约：没有任何代价。用掉这张真名卷。",icon=ContentFinder<Texture2D>.Get("Items/Abyss/TrueNameScroll",false)??BaseContent.BadTex,action=()=>{if(!sc.Destroyed)sc.Destroy();Pacts.Unbind(pp,"用"+pp.patron.label+"代理人的真名卷撕毁了契约");}};
+    yield return new Command_Action{defaultLabel="用代理人的真名解约：".Loc()+p.signer.LabelShort,defaultDesc="念出".Loc()+p.patron.label+"代理人的真名，当场撕毁".Loc()+p.signer.LabelShort+"的契约：没有任何代价。用掉这张真名卷。".Loc(),icon=ContentFinder<Texture2D>.Get("Items/Abyss/TrueNameScroll",false)??BaseContent.BadTex,action=()=>{if(!sc.Destroyed)sc.Destroy();Pacts.Unbind(pp,"用".Loc()+pp.patron.label+"代理人的真名卷撕毁了契约".Loc());}};
    }
   }
   public static Thing AgentScroll(Map map,LP_PatronDef d)=>TrueNames.On(map).FirstOrDefault(x=>x.kind==d.defName)?.parent;
@@ -699,7 +699,7 @@ namespace LichPhylactery {
  public class CompAbilityEffect_EldritchBlast : CompAbilityEffect {
   public override void Apply(LocalTargetInfo target,LocalTargetInfo dest){base.Apply(target,dest);if(target.Pawn!=null)Pacts.Blast(parent.pawn,target.Pawn);}
   public override bool AICanTargetNow(LocalTargetInfo target){var t=target.Pawn;return t!=null && !t.Dead && !t.Downed && t.HostileTo(parent.pawn);}
-  public override string ExtraLabelMouseAttachment(LocalTargetInfo target)=>"魔能爆 ×"+Pacts.Beams(parent.pawn);
+  public override string ExtraLabelMouseAttachment(LocalTargetInfo target)=>"魔能爆 ×".Loc()+Pacts.Beams(parent.pawn);
  }
 
  // ---------- 信件（全部用选择信件） ----------
@@ -728,55 +728,55 @@ namespace LichPhylactery {
     case "offer":{
      var s=thing?.TryGetComp<CompPactScroll>();if(s==null || thing.Destroyed || pawn==null || pawn.Dead){yield return Option_Close;yield break;}
      var why=Pacts.CannotSign(pawn,s.patron);
-     foreach(var b in s.Offered().ToList()){var bb=b;yield return Opt("签下：恩赐“"+b.label+"”",()=>Pacts.Sign(pawn,s,bb.key),why);}
+     foreach(var b in s.Offered().ToList()){var bb=b;yield return Opt("签下：恩赐“".Loc()+b.label+"”",()=>Pacts.Sign(pawn,s,bb.key),why);}
      if(Pacts.HiddenClauses && s.reviews<Pacts.MaxReviews && s.Draft().Any(c=>c.hidden && !c.revealed)){
       var law=s.reviews==0?null:Pacts.Lawyer(pawn.MapHeld,pawn);
-      yield return Opt(s.reviews==0?"审阅（"+pawn.LabelShort+"智力豁免，难度 "+Pacts.ReviewDC(pawn,s.patron)+"，"+Legendary.SaveChanceText(pawn,Adventurer.Int,Pacts.ReviewDC(pawn,s.patron))+"）":"请律师再审阅一遍（"+law?.LabelShort+"，加熟练加值"+(law!=null?"，"+Legendary.SaveChanceText(law,Adventurer.Int,Pacts.ReviewDC(pawn,s.patron)-Legendary.Proficiency(Legendary.LevelOf(law))):"")+"）",()=>{bool ok=Pacts.Review(pawn,s,law);Resend(s,(ok?"审阅成功：揭开了一条隐藏条款。":"审阅失败：条款的字迹在眼前游移，什么也没看出来。")+"\n\n");},s.reviews>0 && law==null?"没有别的殖民者能当律师":null);
+      yield return Opt(s.reviews==0?"审阅（".Loc()+pawn.LabelShort+"智力豁免，难度 ".Loc()+Pacts.ReviewDC(pawn,s.patron)+"，".Loc()+Legendary.SaveChanceText(pawn,Adventurer.Int,Pacts.ReviewDC(pawn,s.patron))+"）".Loc():"请律师再审阅一遍（".Loc()+law?.LabelShort+"，加熟练加值".Loc()+(law!=null?"，".Loc()+Legendary.SaveChanceText(law,Adventurer.Int,Pacts.ReviewDC(pawn,s.patron)-Legendary.Proficiency(Legendary.LevelOf(law))):"")+"）".Loc(),()=>{bool ok=Pacts.Review(pawn,s,law);Resend(s,(ok?"审阅成功：揭开了一条隐藏条款。".Loc():"审阅失败：条款的字迹在眼前游移，什么也没看出来。".Loc())+"\n\n");},s.reviews>0 && law==null?"没有别的殖民者能当律师".Loc():null);
      }
-     if(s.patron.negotiable && !s.negotiated)yield return Opt("谈判（"+pawn.LabelShort+"魅力豁免，难度 "+Pacts.NegotiateDC+"，"+Legendary.SaveChanceText(pawn,Adventurer.Cha,Pacts.NegotiateDC)+"）",()=>{bool ok=Pacts.Negotiate(pawn,s);if(ok)PactLetters.Send("strike",null,pawn,thing,"谈判成功","魔鬼律师皱着眉同意删掉一条。删哪一条？");else Resend(s,"谈判失败：对方冷笑着加了一条代价。\n\n");});
-     yield return Opt("拒绝（书会烧掉，"+pawn.LabelShort+"心情 -3）",()=>Pacts.Refuse(pawn,s));
+     if(s.patron.negotiable && !s.negotiated)yield return Opt("谈判（".Loc()+pawn.LabelShort+"魅力豁免，难度 ".Loc()+Pacts.NegotiateDC+"，".Loc()+Legendary.SaveChanceText(pawn,Adventurer.Cha,Pacts.NegotiateDC)+"）".Loc(),()=>{bool ok=Pacts.Negotiate(pawn,s);if(ok)PactLetters.Send("strike",null,pawn,thing,"谈判成功".Loc(),"魔鬼律师皱着眉同意删掉一条。删哪一条？".Loc());else Resend(s,"谈判失败：对方冷笑着加了一条代价。\n\n".Loc());});
+     yield return Opt("拒绝（书会烧掉，".Loc()+pawn.LabelShort+"心情 -3）".Loc(),()=>Pacts.Refuse(pawn,s));
      yield return Option_Postpone;break;
     }
     case "strike":{
      var s=thing?.TryGetComp<CompPactScroll>();if(s==null || thing.Destroyed){yield return Option_Close;yield break;}
-     var d=s.Draft();for(int i=0;i<d.Count;i++){if(d[i].hidden)continue;int ii=i;yield return Opt("删掉："+d[i].label,()=>{Pacts.Strike(s,ii);Resend(s,"删掉了一条代价。\n\n");});}
+     var d=s.Draft();for(int i=0;i<d.Count;i++){if(d[i].hidden)continue;int ii=i;yield return Opt("删掉：".Loc()+d[i].label,()=>{Pacts.Strike(s,ii);Resend(s,"删掉了一条代价。\n\n".Loc());});}
      break;
     }
     case "demand":{
      var p=PlanarPact;var c=p?.Demand;if(p==null || p.ended || c==null || (c.kind!="Silver" && c.kind!="Item")){yield return Option_Close;yield break;}
-     yield return Opt("交付",()=>{if(Pacts.Deliver(p,c)){p.demandPaid=true;Messages.Message("交付了偿契的东西。",MessageTypeDefOf.NeutralEvent,false);}},Pacts.CannotDeliver(p,c));
+     yield return Opt("交付".Loc(),()=>{if(Pacts.Deliver(p,c)){p.demandPaid=true;Messages.Message("交付了偿契的东西。".Loc(),MessageTypeDefOf.NeutralEvent,false);}},Pacts.CannotDeliver(p,c));
      yield return Option_Postpone;break;
     }
     case "hags":{
      var p=PlanarPact;if(p==null || p.ended || pawn==null || pawn.Dead){yield return Option_Close;yield break;}
-     yield return Opt("付一年寿命",()=>{pawn.ageTracker.AgeBiologicalTicks+=GenDate.TicksPerYear;var c=p.Clause("YearOrEye");if(c!=null)c.consumed=true;});
+     yield return Opt("付一年寿命".Loc(),()=>{pawn.ageTracker.AgeBiologicalTicks+=GenDate.TicksPerYear;var c=p.Clause("YearOrEye");if(c!=null)c.consumed=true;});
      var eye=PactBoons.Eye(pawn);
-     yield return Opt("付一只眼睛",()=>{var e=PactBoons.Eye(pawn);if(e!=null)pawn.health.AddHediff(HediffDefOf.MissingBodyPart,e);var c=p.Clause("YearOrEye");if(c!=null)c.consumed=true;},eye==null?"没有眼睛可以付":null);
+     yield return Opt("付一只眼睛".Loc(),()=>{var e=PactBoons.Eye(pawn);if(e!=null)pawn.health.AddHediff(HediffDefOf.MissingBodyPart,e);var c=p.Clause("YearOrEye");if(c!=null)c.consumed=true;},eye==null?"没有眼睛可以付".Loc():null);
      break;
     }
     case "guest":{
      var p=PlanarPact;if(p==null || p.ended){yield return Option_Close;yield break;}
-     yield return Opt("萨特",()=>PactBoons.SummerGuest(p,"LP_FY_Satyr"));
-     yield return Opt("林仙",()=>PactBoons.SummerGuest(p,"LP_FY_Dryad"));
+     yield return Opt("萨特".Loc(),()=>PactBoons.SummerGuest(p,"LP_FY_Satyr"));
+     yield return Opt("林仙".Loc(),()=>PactBoons.SummerGuest(p,"LP_FY_Dryad"));
      break;
     }
     case "unbind":{
      var p=PlanarPact;var c=GameComponent_Pacts.Get;if(p==null || c==null){yield return Option_Close;yield break;}
-     foreach(var o in c.Active.Where(x=>x!=p).ToList()){var oo=o;yield return Opt("解开 "+o.signer.LabelShort+" 的契约（"+o.patron.label+"）",()=>{Pacts.Unbind(oo,"格拉西娅的恩赐“解开契约”");p.periodFactor*=.75f;});}
+     foreach(var o in c.Active.Where(x=>x!=p).ToList()){var oo=o;yield return Opt("解开 ".Loc()+o.signer.LabelShort+" 的契约（".Loc()+o.patron.label+"）".Loc(),()=>{Pacts.Unbind(oo,"格拉西娅的恩赐“解开契约”".Loc());p.periodFactor*=.75f;});}
      yield return Option_Postpone;break;
     }
     case "renegotiate":{
      if(pawn==null || pawn.Dead || !Outsiders.Bound(pawn)){yield return Option_Close;yield break;}
      var map=pawn.MapHeld;
-     yield return Opt("给它 300 银",()=>PactRaces.Renegotiated(pawn,"300 银"),Pacts.SilverOn(map)>=300?null:"白银不够");
-     yield return Opt("给它 2 枚灵魂币",()=>PactRaces.Renegotiated(pawn,"2 枚灵魂币"),AbyssRitual.Count(map,AbyssItems.SoulCoin)>=2?null:"灵魂币不够");
-     yield return Opt("让它离开",()=>PactRaces.LetLeave(pawn));
+     yield return Opt("给它 300 银".Loc(),()=>PactRaces.Renegotiated(pawn,"300 银".Loc()),Pacts.SilverOn(map)>=300?null:"白银不够".Loc());
+     yield return Opt("给它 2 枚灵魂币".Loc(),()=>PactRaces.Renegotiated(pawn,"2 枚灵魂币".Loc()),AbyssRitual.Count(map,AbyssItems.SoulCoin)>=2?null:"灵魂币不够".Loc());
+     yield return Opt("让它离开".Loc(),()=>PactRaces.LetLeave(pawn));
      break;
     }
     default:foreach(var o in PactEvents.LetterChoices(this))yield return o;break;
    }
   }}
-  void Resend(CompPactScroll s,string prefix){PactLetters.Send("offer",null,pawn,thing,"契约书："+s.patron.label,prefix+Pacts.OfferText(pawn,s));}
+  void Resend(CompPactScroll s,string prefix){PactLetters.Send("offer",null,pawn,thing,"契约书：".Loc()+s.patron.label,prefix+Pacts.OfferText(pawn,s));}
   public DiaOption Choice(string text,Action act,string disabled=null)=>Opt(text,act,disabled);
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref kind,"lpKind");Scribe_Values.Look(ref pactId,"lpPactId",-1);Scribe_Values.Look(ref extra,"lpExtra",-1);Scribe_Defs.Look(ref xeno,"lpXeno");Scribe_References.Look(ref pawn,"lpPawn");Scribe_References.Look(ref thing,"lpThing");}
  }
@@ -793,13 +793,13 @@ namespace LichPhylactery {
  public static class PactSettings {
   public static void Draw(Listing_Standard l){
    var s=LichMod.Settings;
-   l.GapLine();l.Label("异界契约");
-   l.CheckboxLabeled("启用异界契约",ref s.pactEnabled,"（1.55.0）位面契约学研究、宗主的低语、九狱商队、妖精集市和随机狂猎。关掉后研究隐藏、这些事件不再随机触发；已经签下的契约照常运作。");
-   l.CheckboxLabeled("隐藏条款",ref s.pactHiddenClauses,"关掉后契约书上的所有条款直接可见，信件里不再有“审阅”按钮。");
-   l.Label("偿契频率："+s.pactDemandPercent+"%（越高越频繁）");s.pactDemandPercent=(int)l.Slider(s.pactDemandPercent,50,200);
-   l.Label("讨债强度："+s.pactCollectorPercent+"%（讨债小队、狂猎的点数）");s.pactCollectorPercent=(int)l.Slider(s.pactCollectorPercent,50,200);
-   l.Label("调换儿概率："+s.pactChangelingPercent+"%（每次出生）");s.pactChangelingPercent=(int)l.Slider(s.pactChangelingPercent,0,10);
-   l.CheckboxLabeled("天界祈唤",ref s.pactCelestial,"善神做守护神时，圣坛上多一组“祈唤天界援军”（狄瓦援军、守护天使、行星使降临）。");
+   l.GapLine();l.Label("异界契约".Loc());
+   l.CheckboxLabeled("启用异界契约".Loc(),ref s.pactEnabled,"（1.55.0）位面契约学研究、宗主的低语、九狱商队、妖精集市和随机狂猎。关掉后研究隐藏、这些事件不再随机触发；已经签下的契约照常运作。".Loc());
+   l.CheckboxLabeled("隐藏条款".Loc(),ref s.pactHiddenClauses,"关掉后契约书上的所有条款直接可见，信件里不再有“审阅”按钮。".Loc());
+   l.Label("偿契频率：".Loc()+s.pactDemandPercent+"%（越高越频繁）".Loc());s.pactDemandPercent=(int)l.Slider(s.pactDemandPercent,50,200);
+   l.Label("讨债强度：".Loc()+s.pactCollectorPercent+"%（讨债小队、狂猎的点数）".Loc());s.pactCollectorPercent=(int)l.Slider(s.pactCollectorPercent,50,200);
+   l.Label("调换儿概率：".Loc()+s.pactChangelingPercent+"%（每次出生）".Loc());s.pactChangelingPercent=(int)l.Slider(s.pactChangelingPercent,0,10);
+   l.CheckboxLabeled("天界祈唤".Loc(),ref s.pactCelestial,"善神做守护神时，圣坛上多一组“祈唤天界援军”（狄瓦援军、守护天使、行星使降临）。".Loc());
   }
  }
 
@@ -816,7 +816,7 @@ namespace LichPhylactery {
   static void Prefix(Plant __instance,Pawn __0,PlantDestructionMode __1){
    if(!Pacts.Any && PactRaces.dryads==0)return;
    if(__0==null || __0.Faction?.IsPlayer!=true || __instance?.def?.plant==null || !__instance.def.plant.IsTree || __1!=PlantDestructionMode.Chop && __1!=PlantDestructionMode.Cut)return;
-   if(Pacts.Any)foreach(var p in Pacts.Comp.Active.Where(x=>x.Has("NoTreeCut")).ToList()){var c=p.Clause("NoTreeCut");c.revealed=true;Pacts.AddDebt(p,1,__0.LabelShort+"砍了一棵树（隐藏条款“不伐之誓”）");}
+   if(Pacts.Any)foreach(var p in Pacts.Comp.Active.Where(x=>x.Has("NoTreeCut")).ToList()){var c=p.Clause("NoTreeCut");c.revealed=true;Pacts.AddDebt(p,1,__0.LabelShort+"砍了一棵树（隐藏条款“不伐之誓”）".Loc());}
    if(PactRaces.dryads>0)PactRaces.TreeCut(__instance,__0);
   }
  }
@@ -828,7 +828,7 @@ namespace LichPhylactery {
    if(!__state || !__instance.Dead)return;
    if(__instance.kindDef?.defName=="LP_FH_RedWizard" && Pacts.Enabled && Pacts.ScrollDef!=null && Pacts.Roll<PactEvents.WizardScrollChance && __instance.MapHeld!=null)GenPlace.TryPlaceThing(ThingMaker.MakeThing(Pacts.ScrollDef),__instance.PositionHeld,__instance.MapHeld,ThingPlaceMode.Near);
    if(!Pacts.Any && Pacts.Comp?.hunts.Count==0)return;
-   var p=Pacts.Of(__instance);if(p!=null)Pacts.End(p,__instance.LabelShort+"死了",true);
+   var p=Pacts.Of(__instance);if(p!=null)Pacts.End(p,__instance.LabelShort+"死了".Loc(),true);
    PactEvents.OnDeath(__instance);
   }
  }

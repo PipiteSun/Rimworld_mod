@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（FactionIncidents.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>1.19.0 派系（关掉后新世界不再生成；已有存档不删派系，只停相关事件）</zh><en>1.19.0 factions (when off, new worlds don't generate them; existing saves keep the factions and only stop related events)</en></s>
+  <s><zh>费伦拓荒同盟</zh><en>Faerûn pioneer league</en></s>
+  <s><zh>友善的费伦殖民者：人类、矮人、精灵、半兽人，四种商队。关掉同时停用猎巫狂热分子和竖琴手预警。</zh><en>Friendly Faerûn settlers: humans, dwarves, elves, half-orcs, four kinds of caravans. Turning it off also disables witch-hunting zealots and the Harpers' warning.</en></s>
+  <s><zh>塞伊远征军</zh><en>Thayan expedition</en></s>
+  <s><zh>红袍法师、符印巨魔、兽人与牛头人的敌对派系。关掉同时停用招揽和进贡来信。</zh><en>A hostile faction of Red Wizards, sigil trolls, orcs and minotaurs. Turning it off also disables recruitment and tribute letters.</en></s>
+  <s><zh>余烬氏族</zh><en>ember clan</en></s>
+  <s><zh>火巨人领队带着人类和半兽人奴兵。</zh><en>Fire giant leaders with human and half-orc slave soldiers.</en></s>
+  <s><zh>幽暗殖巢</zh><en>Underdark colony</en></s>
+  <s><zh>夺心魔和被支配的奴仆，会从地下钻出。</zh><en>Mind flayers and dominated thralls, who burrow up from underground.</en></s>
+  <s><zh>黑网</zh><en>Black Network</en></s>
+  <s><zh>隐藏的走私商队，大约每季来一次。</zh><en>A hidden smuggling caravan, about once a season.</en></s>
+  <s><zh>红鹰商业联盟</zh><en>Red Hawk Trade League</en></s>
+  <s><zh>（1.64.0）中立的贸易联盟：奴隶商队（十几个不同种族）、魔法材料商队、契约卷轴商队，还有据点和飞空商船。</zh><en>(1.64.0) A neutral trade alliance: slave caravans (a dozen different races), magic material caravans, pact scroll caravans, plus outposts and sky trade ships.</en></s>
+  <s><zh>魔力湖泊</zh><en>Mana Lake</en></s>
+  <s><zh>（1.100.0）中立的湖畔法术匠人：出售秘传结晶（职业水晶要和他们结盟），塞伊远征军和猎巫狂热分子是他们的死敌。</zh><en>(1.100.0) Neutral lakeside spellcrafters: they sell arcane crystals (class crystals require an alliance with them); the Thayan expedition and witch-hunting zealots are their mortal enemies.</en></s>
+  <s><zh>竖琴手袭击预警</zh><en>Harpers' raid warning</en></s>
+  <s><zh>与费伦拓荒同盟好感≥60时，大型敌对袭击推迟1～2天落地，并提前来信说明来自哪个派系。</zh><en>With Faerûn Frontier Alliance goodwill ≥60, large hostile raids are delayed 1-2 days before landing, with a letter in advance saying which faction they're from.</en></s>
+  <s><zh>斩首：符印巨魔狂暴</zh><en>Decapitation: sigil trolls go berserk</en></s>
+  <s><zh>红袍法师倒下时，他的符印巨魔失控狂暴、攻击所有人。关闭后改为逃跑。</zh><en>When a Red Wizard falls, his sigil trolls go berserk out of control and attack everyone. When off, they flee instead.</en></s>
+  <s><zh>猎巫狂热分子</zh><en>witch-hunting zealots</en></s>
+  <s><zh>殖民地有巫妖或夺心魔时，同盟里的狂热分子偶尔前来猎巫。</zh><en>When the colony has a lich or mind flayer, zealots in the alliance occasionally come witch-hunting.</en></s>
+  <s><zh>红袍招揽巫妖</zh><en>Red Wizards recruit liches</en></s>
+  <s><zh>有巫妖时，塞伊远征军来信招揽效忠。</zh><en>With a lich present, the Thayan expedition writes to recruit your allegiance.</en></s>
+  <s><zh>向红袍进贡</zh><en>Tribute to the Red Wizards</en></s>
+  <s><zh>没有巫妖且与塞伊远征军敌对时，对方来信索要贡银。</zh><en>With no lich and hostile relations with the Thayan expedition, they write demanding tribute silver.</en></s>
+  <s><zh>把已开启的新派系加入当前存档</zh><en>Add enabled new factions to the current save</en></s>
+  <s><zh>已加入</zh><en>Added </en></s>
+  <s><zh>个派系，并在世界地图上为每个派系放下3个据点。</zh><en> factions, and placed 3 settlements on the world map for each.</en></s>
+  <s><zh>当前存档已经有全部开启的派系。</zh><en>The current save already has all enabled factions.</en></s>
+  <s><zh>具）</zh><en>)</en></s>
+  <s><zh>笔）</zh><en>)</en></s>
+  <s><zh>（还剩</zh><en> ( </en></s>
+  <s><zh>天）</zh><en> days left)</en></s>
+  <s><zh>你杀死了费伦拓荒同盟的矮人</zh><en>You killed a dwarf of the Faerûn Frontier Alliance</en></s>
+  <s><zh>：矮人记下了一笔血债（同盟好感上限 -</zh><en>: the dwarves have recorded a blood debt (alliance goodwill cap -</en></s>
+  <s><zh>）。可以在通讯台上偿还。</zh><en>). It can be repaid at the comms console.</en></s>
+  <s><zh>偿还一笔矮人血债（</zh><en>Repay a dwarven blood debt (</en></s>
+  <s><zh>银，还剩</zh><en> silver, </en></s>
+  <s><zh>信标附近的白银不足</zh><en>Not enough silver near the beacons</en></s>
+  <s><zh>矮人长老收下了偿金，在账本上划掉了一笔。</zh><en>The dwarf elder accepted the payment and struck one entry from the ledger.</en></s>
+  <s><zh>好</zh><en>Good</en></s>
+  <s><zh>开局时与</zh><en>At the start, goodwill with </en></s>
+  <s><zh>的好感为</zh><en> is </en></s>
+  <s><zh>；“旧日盟约”让这个好感维持</zh><en>; the "old covenant" keeps this goodwill for </en></s>
+  <s><zh>天，之后照常回落</zh><en> days, after which it falls back as usual</en></s>
+  <s><zh>旧日盟约天数 </zh><en>Old covenant days </en></s>
+  <s><zh>大约</zh><en>about </en></s>
+  <s><zh>小时后</zh><en> hours later</en></s>
+  <s><zh>竖琴手的警告</zh><en>The Harpers' warning</en></s>
+  <s><zh>费伦拓荒同盟的竖琴手送来密信：\n\n</zh><en>The Harpers of the Faerûn Frontier Alliance send a secret letter:\n\n</en></s>
+  <s><zh>正在集结人手，</zh><en> is gathering forces, and </en></s>
+  <s><zh>会袭击</zh><en> will attack </en></s>
+  <s><zh>。\n\n趁现在做好准备。</zh><en>.\n\nPrepare while you can.</en></s>
+  <s><zh>风暴预兆</zh><en>storm omen</en></s>
+  <s><zh>望着天边的云，脸色沉了下来：\n\n“风从</zh><en> looks at the clouds on the horizon, face darkening:\n\n"The wind blows from the </en></s>
+  <s><zh>吹来，带着</zh><en>, carrying the smell of </en></s>
+  <s><zh>的气味。他们</zh><en>. They'll be here </en></s>
+  <s><zh>就到。”</zh><en>."</en></s>
+  <s><zh>\n\n（竖琴手的密信和风暴巨人的预兆都应验了同一件事，袭击推迟的时间叠加。）</zh><en>\n\n(The Harpers' letter and the storm giant's omen foretold the same thing; the raid delays add up.)</en></s>
+  <s><zh>\n\n点数≥1000的敌对袭击，因风暴预兆推迟12小时落地。</zh><en>\n\nThe hostile raid of ≥1000 points is delayed 12 hours by the storm omen.</en></s>
+  <s><zh>先知的预言应验</zh><en>The seer's prophecy comes true</en></s>
+  <s><zh>风暴巨人先知说过的话应验了：\n\n</zh><en>The storm giant seer's words have come true:\n\n</en></s>
+  <s><zh>正在逼近，</zh><en> is closing in, </en></s>
+  <s><zh>。预言让你们多出了一天准备时间。</zh><en>. The prophecy gave you an extra day to prepare.</en></s>
+  <s><zh>东边</zh><en>east</en></s>
+  <s><zh>西边</zh><en>west</en></s>
+  <s><zh>北边</zh><en>north</en></s>
+  <s><zh>南边</zh><en>south</en></s>
+  <s><zh>费伦拓荒同盟里的狂热分子不顾高层反对前来猎巫！一群圣武士和牧师听说这里藏着巫妖或夺心魔，要把它们烧成灰。</zh><en>Zealots of the Faerûn Frontier Alliance have come witch-hunting despite their leaders' objections! A band of paladins and clerics heard a lich or mind flayer is hiding here and wants to burn them to ash.</en></s>
+  <s><zh>\n\n他们会优先冲向巫妖、夺心魔和命匣。</zh><en>\n\nThey'll charge liches, mind flayers and phylacteries first.</en></s>
+  <s><zh>\n\n杀死他们不会影响你和同盟的关系；如果抓住了再放走，同盟高层会感激你的克制。</zh><en>\n\nKilling them won't affect your relations with the alliance; if you capture and release them, the alliance leaders will appreciate your restraint.</en></s>
+  <s><zh>你放走了狂热分子</zh><en>You released the zealots</en></s>
+  <s><zh>：费伦拓荒同盟的高层感激你的克制（好感 +</zh><en>: the leaders of the Faerûn Frontier Alliance appreciate your restraint (goodwill +</en></s>
+  <s><zh>会使</zh><en> will make </en></s>
+  <s><zh>命匣从</zh><en>'s phylactery drop from level </en></s>
+  <s><zh>级降到</zh><en> to </en></s>
+  <s><zh>拒绝红袍的招揽</zh><en>Refuse the Red Wizards' recruitment</en></s>
+  <s><zh>拒交灵魂</zh><en>Refuse to hand over souls</en></s>
+  <s><zh>宣誓效忠塞伊</zh><en>Swear allegiance to Thay</en></s>
+  <s><zh>你向红袍法师宣誓效忠：塞伊远征军不再敌视你（好感设为0）。每季他们会来收取灵魂。</zh><en>You swore allegiance to the Red Wizards: the Thayan expedition is no longer hostile to you (goodwill set to 0). Every season they'll come to collect souls.</en></s>
+  <s><zh>上缴</zh><en>Hand over </en></s>
+  <s><zh>点献祭经验</zh><en> sacrifice XP</en></s>
+  <s><zh>命匣只有1级，献祭经验也不足</zh><en>The phylactery is only level 1, and sacrifice XP isn't enough either</en></s>
+  <s><zh>拒交（好感 </zh><en>Refuse (goodwill </en></s>
+  <s><zh>白银</zh><en>silver</en></s>
+  <s><zh>红袍的招揽</zh><en>The Red Wizards' recruitment</en></s>
+  <s><zh>一位红袍法师派信使送来一封盖着骷髅火漆的信：\n\n“塞伊欢迎掌握不死之道的人。向大法师宣誓效忠，远征军就不再与你为敌。我们只要一点点回报——每季一些灵魂。”\n\n效忠：与塞伊远征军的好感设为0（中立），之后每季要上缴</zh><en>A Red Wizard sent a messenger with a letter sealed in skull-shaped wax:\n\n"Thay welcomes those who master the way of undeath. Swear allegiance to the archmage, and the expedition will no longer be your enemy. We ask only a little in return: some souls each season."\n\nAllegiance: goodwill with the Thayan expedition set to 0 (neutral), after which each season you must hand over </en></s>
+  <s><zh>点命匣献祭经验，拒交好感</zh><en> phylactery sacrifice XP; refusing costs goodwill </en></s>
+  <s><zh>。\n拒绝：好感</zh><en>.\nRefuse: goodwill </en></s>
+  <s><zh>上缴灵魂</zh><en>Hand over souls</en></s>
+  <s><zh>红袍法师的信使来收这一季的灵魂了：上缴</zh><en>The Red Wizards' messenger has come to collect this season's souls: hand over </en></s>
+  <s><zh>点命匣献祭经验。\n\n命匣里现有献祭经验：</zh><en> phylactery sacrifice XP.\n\nSacrifice XP currently in the phylactery: </en></s>
+  <s><zh>。当前经验不够时会倒扣命匣等级（降一级返还那一级的经验）。</zh><en>. If current XP isn't enough, phylactery levels are deducted (dropping a level returns that level's XP).</en></s>
+  <s><zh>进贡要求</zh><en>Tribute demand</en></s>
+  <s><zh>塞伊远征军的使者带着一队兽人来到殖民地外：\n\n“交出</zh><en>An envoy of the Thayan expedition arrived outside the colony with a squad of orcs:\n\n"Hand over </en></s>
+  <s><zh>白银，远征军这一季就少来打扰你。”\n\n交钱后一季（15天）内，塞伊远征军来袭的概率减半。拒绝不会有别的后果。</zh><en> silver, and the expedition will bother you less this season."\n\nFor one season (15 days) after paying, the chance of Thayan expedition raids is halved. Refusing has no other consequence.</en></s>
+  <s><zh>猎巫狂热分子被打退了（累计</zh><en>The witch-hunting zealots were repelled ( </en></s>
+  <s><zh>次）。</zh><en> times in total).</en></s>
+</LPStrings>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 链魔 -->
+  <LP_ChainDevil.label>chain devil</LP_ChainDevil.label>
+  <!-- 浑身缠满带钩锁链的魔鬼，锁链像活物一样自己甩出去。链魔是九狱军团的狱卒：它能把 4 格外的人一链子拽到身边，还能隔着几步远让巫妖的骷髅倒戈。 -->
+  <LP_ChainDevil.description>A devil wrapped all over in hooked chains that lash out on their own like living things. Chain devils are the jailers of the infernal legion: they can yank someone 4 cells away to their side with a chain, and can turn a lich's skeletons from a few steps away.</LP_ChainDevil.description>
+  <!-- 九狱狱卒。锁链抽打 + 拉拽、策反骷髅；倒下即遣返九狱。 -->
+  <LP_ChainDevil.descriptionShort>Infernal jailer. Chain lash + pull, turns skeletons; banished to the Nine Hells when downed.</LP_ChainDevil.descriptionShort>
+  <!-- 骨魔 -->
+  <LP_BoneDevil.label>bone devil</LP_BoneDevil.label>
+  <!-- 骨白、瘦长、皮包骨的魔鬼，背后翘着一条蝎子一样的尾巴。骨魔是九狱的监工：尾刺的毒让人手脚发麻，第一次看到它的人常常吓得腿软。 -->
+  <LP_BoneDevil.description>A bone-white, gaunt, skin-and-bones devil with a scorpion-like tail curling up behind it. Bone devils are the overseers of the Nine Hells: the venom of their tail stinger numbs hands and feet, and people seeing one for the first time often go weak at the knees.</LP_BoneDevil.description>
+  <!-- 九狱监工。蝎尾毒刺（体质豁免难度 14，基础成功率 45%）、恐惧气场；倒下即遣返九狱。 -->
+  <LP_BoneDevil.descriptionShort>Infernal overseer. Scorpion tail stinger (Constitution save difficulty 14, base success 45%), fear aura; banished to the Nine Hells when downed.</LP_BoneDevil.descriptionShort>
+  <!-- 角魔 -->
+  <LP_HornedDevil.label>horned devil</LP_HornedDevil.label>
+  <!-- 蝠翼、大角、满身鳞甲的魔鬼，九狱军团的重步兵。角魔能把一团地狱火扔到 10 格外。 -->
+  <LP_HornedDevil.description>A bat-winged, big-horned, scale-armored devil, the heavy infantry of the infernal legion. Horned devils can hurl a ball of hellfire 10 cells away.</LP_HornedDevil.description>
+  <!-- 九狱重步兵。地狱火投掷；倒下即遣返九狱。 -->
+  <LP_HornedDevil.descriptionShort>Infernal heavy infantry. Hellfire throw; banished to the Nine Hells when downed.</LP_HornedDevil.descriptionShort>
+  <!-- 艾林魔 -->
+  <LP_Erinyes.label>erinyes</LP_Erinyes.label>
+  <!-- 黑羽翼的复仇者，九狱派去追捕违约者的猎手。艾林魔外表像高挑的人类，皮肤上爬着红黑的纹样；她们从不害怕，从不放过标记过的猎物。阿斯莫蒂尔斯的契约可以让一名艾林魔终身跟随签约人；狄瓦耐心的劝说能把她带回天界。 -->
+  <LP_Erinyes.description>Black-winged avengers, hunters the Nine Hells send after those in breach of contract. Erinyes look like tall humans, with red-black patterns crawling over their skin; they never fear and never let go of prey they've marked. A pact with Asmodeus can make an erinyes follow the signer for life; a deva's patient persuasion can bring her back to the heavens.</LP_Erinyes.description>
+  <!-- 可玩的九狱复仇者。追猎（标记目标 +15%）、缚绳、恐惧免疫、射击 / 近战天赋 +2；束缚者不挣脱。 -->
+  <LP_Erinyes.descriptionShort>Playable infernal avenger. Hunt (marked target +15%), binding rope, fear immunity, Shooting / Melee talent +2; bound ones never break free.</LP_Erinyes.descriptionShort>
+  <!-- 阿姆尼祖 -->
+  <LP_Amnizu.label>amnizu</LP_Amnizu.label>
+  <!-- 干瘪、秃头、长着一对小角的魔鬼律师，九狱掮客的首领。谁敢对阿姆尼祖动手，它就伸出一根手指点在对方额头上——对方会突然忘掉自己最拿手的东西。 -->
+  <LP_Amnizu.description>A shriveled, bald devil lawyer with a pair of small horns, leader of the infernal brokers. Whoever dares attack an amnizu, it touches a finger to their forehead, and they suddenly forget what they're best at.</LP_Amnizu.description>
+  <!-- 九狱律师。被攻击时攻击者智力豁免难度 16（基础成功率 35%），失败最高技能 -2 级（1 天）；倒下即遣返九狱。 -->
+  <LP_Amnizu.descriptionShort>Infernal lawyer. When attacked, the attacker makes an Intelligence save at difficulty 16 (base success 35%) or loses 2 levels in their best skill (1 day); banished to the Nine Hells when downed.</LP_Amnizu.descriptionShort>
+  <!-- 萨特 -->
+  <LP_Satyr.label>satyr</LP_Satyr.label>
+  <!-- 羊角、毛腿、羊蹄的妖精后裔，天生的乐手和酒鬼。萨特的血是凡人的血，会遗传；他们对魔法有天生的抵抗力，冲撞起来能把人撞翻，派对上永远是最开心的那一个。 -->
+  <LP_Satyr.description>Fey descendants with goat horns, furry legs and hooves, born musicians and drinkers. Satyr blood is mortal blood and is inheritable; they have a natural resistance to magic, can knock people over with a charge, and are always the happiest at a party.</LP_Satyr.description>
+  <!-- 可玩、可遗传。心灵敏感度 ×0.6、心灵类豁免成功率 +10%、冲撞、派对心情 +10、艺术天赋 +2；穿不了鞋。 -->
+  <LP_Satyr.descriptionShort>Playable, inheritable. Psychic sensitivity ×0.6, mental save success +10%, ram, party mood +10, Artistic talent +2; can't wear shoes.</LP_Satyr.descriptionShort>
+  <!-- 林仙 -->
+  <LP_Dryad.label>dryad</LP_Dryad.label>
+  <!-- 和一棵树绑在一起的妖精，皮肤上有树皮的纹路，头发是新叶的绿色。林仙能从一棵树走进另一棵树里；可她离不开自己的树——走远了会憔悴，树死了，她自己也活不过一天。林仙不老、不育，被提泰妮娅送来时作为束缚者加入，服从度不会下降。 -->
+  <LP_Dryad.description>A fey bound to a tree, with bark patterns on the skin and hair the green of new leaves. Dryads can walk from one tree into another; but they can't leave their own tree: going too far makes them wither, and if the tree dies they won't survive a day themselves. Dryads are ageless and sterile; when sent by Titania they join as bound ones, with obedience that never drops.</LP_Dryad.description>
+  <!-- 可玩的妖精。树之绑定（离树 40 格以上虚弱，树死 24 小时内要绑新树）、树行、种植 / 驯兽天赋 +4、利器护甲 +15%、怕火。 -->
+  <LP_Dryad.descriptionShort>Playable fey. Tree bond (weakened beyond 40 cells from the tree, must bind a new tree within 24 hours after it dies), tree stride, Plants / Animals talent +4, sharp armor +15%, fears fire.</LP_Dryad.descriptionShort>
+  <!-- 红帽 -->
+  <LP_Redcap.label>redcap</LP_Redcap.label>
+  <!-- 矮小、凶残的妖精，戴着一顶用受害者的血染红的帽子，脚上是沉重的铁靴。红帽越打越凶：每砍中一次就更狠一分，倒在地上的人会被它的铁靴狠狠踩下去。 -->
+  <LP_Redcap.description>A small, savage fey wearing a cap dyed red with its victims' blood and heavy iron boots. Redcaps get fiercer the longer they fight: each hit makes them more vicious, and anyone lying on the ground gets stomped hard by their iron boots.</LP_Redcap.description>
+  <!-- 妖精杀手。嗜血（近战命中叠伤害，最多 +15）、重踏（打倒地的目标 ×1.5）；倒下即遣返。 -->
+  <LP_Redcap.descriptionShort>Fey killer. Bloodlust (melee hits stack damage, up to +15), heavy stomp (×1.5 against downed targets); banished when downed.</LP_Redcap.descriptionShort>
+  <!-- 调换儿 -->
+  <LP_Changeling.label>changeling</LP_Changeling.label>
+  <!-- 被妖精换进摇篮的孩子，长大后也忘不了自己从哪里来。调换儿的皮肤苍白得没有一点血色，五官像没画完的素描——可他们能变成任何一个见过的人的样子。血脉会遗传。 -->
+  <LP_Changeling.description>A child swapped into a cradle by the fey, who even grown up can't forget where they came from. Changelings have skin pale without a hint of color and features like an unfinished sketch, but they can take the appearance of anyone they've seen. The bloodline is inheritable.</LP_Changeling.description>
+  <!-- 可玩、可遗传。千面（复制别人的外观 24 小时）、美貌无效、社交天赋 +2；每 30 天要做回自己 1 天。 -->
+  <LP_Changeling.descriptionShort>Playable, inheritable. Thousand faces (copy someone's appearance for 24 hours), beauty has no effect, social talent +2; must be themself for 1 day every 30 days.</LP_Changeling.descriptionShort>
+  <!-- 狂猎骑手 -->
+  <LP_WildHunter.label>wild hunt rider</LP_WildHunter.label>
+  <!-- 戴鹿角盔的妖精猎手，冬宫和夏宫都养着一队。狂猎只追一个猎物：挡路的才会挨打。妖精长矛对猎物格外致命；他们和所有妖精一样怕寒铁。 -->
+  <LP_WildHunter.description>Fey hunters in antlered helms; both the winter court and the summer court keep a troop. The wild hunt chases only one prey: only those in the way get hit. Fey lances are especially deadly to the prey; like all fey, they fear cold iron.</LP_WildHunter.description>
+  <!-- 狂猎骑手（敌人专属）。妖精长矛、对猎物伤害 +30%、怕寒铁；倒下即遣返，掉寒铁和号角。 -->
+  <LP_WildHunter.descriptionShort>Wild hunt rider (enemy only). Fey lance, +30% damage against the prey, fears cold iron; banished when downed, drops cold iron and a horn.</LP_WildHunter.descriptionShort>
+  <!-- 狂猎首领 -->
+  <LP_WildHuntLord.label>wild hunt leader</LP_WildHuntLord.label>
+  <!-- 狂猎的首领，鹿角更大、披着冬狼皮的斗篷。击败它会得到它所效忠的宗主的代理人真名。 -->
+  <LP_WildHuntLord.description>The leader of the wild hunt, with bigger antlers and a cloak of winter wolf pelt. Defeating it gives the true name of the agent of the patron it serves.</LP_WildHuntLord.description>
+  <!-- 狂猎首领（敌人专属）。击败掉落宗主代理人的真名卷。 -->
+  <LP_WildHuntLord.descriptionShort>Wild hunt leader (enemy only). Drops the true name scroll of the patron's agent when defeated.</LP_WildHuntLord.descriptionShort>
+  <!-- 狄瓦 -->
+  <LP_Deva.label>deva</LP_Deva.label>
+  <!-- 白金羽翼的天使，善神派到凡间的使者。狄瓦握着光辉之锤，手一按就能合上伤口；一切隐形和伪装在她眼里都无所遁形。狄瓦会劝说堕落的艾林魔回头，自己却也可能在深渊的气息里慢慢堕落。 -->
+  <LP_Deva.description>An angel with platinum wings, an emissary sent to the mortal world by the good gods. Devas wield radiant maces and can close wounds with a touch; no invisibility or disguise escapes their eyes. Devas can persuade fallen erinyes to turn back, yet may also slowly fall themselves in the presence of the Abyss.</LP_Deva.description>
+  <!-- 天界使者。光辉之锤、治疗之触（一天 3 次）、真知（看穿隐身 / 伪装）、对恶魔 / 魔鬼 / 亡灵伤害 ×1.5、免疫腐化。 -->
+  <LP_Deva.descriptionShort>Celestial emissary. Radiant mace, healing touch (3 per day), truesight (sees through invisibility / disguises), ×1.5 damage against demons / devils / undead, immune to taint.</LP_Deva.descriptionShort>
+  <!-- 行星使 -->
+  <LP_Planetar.label>planetar</LP_Planetar.label>
+  <!-- 两倍于常人的天使，白银羽翼，手握巨剑。行星使是善神的战将：天界之怒在 8 格内降下光辉，驱散能把一个外来者逐回它的位面。她有两次传奇抗性。 -->
+  <LP_Planetar.description>An angel twice the size of an ordinary person, with silver wings and a greatsword. Planetars are the war leaders of the good gods: celestial wrath rains radiance within 8 cells, and dispel can drive an outsider back to its plane. She has two legendary resistances.</LP_Planetar.description>
+  <!-- 天界战将（传奇层：抗性 2、CR 16、18 级）。巨剑、天界之怒、驱散；对恶魔 / 魔鬼 / 亡灵伤害 ×1.5。 -->
+  <LP_Planetar.descriptionShort>Celestial war leader (legendary tier: resistance 2, CR 16, level 18). Greatsword, celestial wrath, dispel; ×1.5 damage against demons / devils / undead.</LP_Planetar.descriptionShort>
+</LanguageData>

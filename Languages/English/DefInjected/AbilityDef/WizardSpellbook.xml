@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 火焰箭 -->
+  <LP_WS_FireBolt.label>fire bolt</LP_WS_FireBolt.label>
+  <!-- 戏法（塑能）：向 26 格内的一个敌人射出火焰，8 × 奥术强度点火焰伤害，30% 把它点燃。冷却 4 秒。 -->
+  <LP_WS_FireBolt.description>Cantrip (Evocation): hurl fire at one enemy within 26 cells, 8 × arcane power fire damage with a 30% chance to ignite it. Cooldown 4 seconds.</LP_WS_FireBolt.description>
+  <!-- 冷冻射线 -->
+  <LP_WS_RayOfFrost.label>ray of frost</LP_WS_RayOfFrost.label>
+  <!-- 戏法（塑能）：24 格内的一个敌人受 6 × 奥术强度点寒冷伤害，3 秒内移动 ×0.6。冷却 4 秒。 -->
+  <LP_WS_RayOfFrost.description>Cantrip (Evocation): one enemy within 24 cells takes 6 × arcane power cold damage, movement ×0.6 for 3 seconds. Cooldown 4 seconds.</LP_WS_RayOfFrost.description>
+  <!-- 电爆之握 -->
+  <LP_WS_ShockingGrasp.label>shocking grasp</LP_WS_ShockingGrasp.label>
+  <!-- 戏法（塑能）：手掌电光一闪，近战 10 × 奥术强度点闪电伤害；机械体改受电磁伤害并麻痹 1 秒。冷却 3 秒。 -->
+  <LP_WS_ShockingGrasp.description>Cantrip (Evocation): lightning flashes in your palm, a melee hit for 10 × arcane power lightning damage; mechanoids take EMP damage instead and are paralyzed for 1 second. Cooldown 3 seconds.</LP_WS_ShockingGrasp.description>
+  <!-- 毒雾喷溅 -->
+  <LP_WS_PoisonSpray.label>poison spray</LP_WS_PoisonSpray.label>
+  <!-- 戏法（咒法）：朝 4 格内的一个敌人喷出毒雾，10 × 奥术强度点毒素伤害。冷却 5 秒。 -->
+  <LP_WS_PoisonSpray.description>Cantrip (Conjuration): spray poison at one enemy within 4 cells, 10 × arcane power poison damage. Cooldown 5 seconds.</LP_WS_PoisonSpray.description>
+  <!-- 修复术 -->
+  <LP_WS_Mending.label>mending</LP_WS_Mending.label>
+  <!-- 戏法（变化）：引导 5 秒，修好 6 格内的一件物品（回 10% 耐久）或一座建筑（回 50 × 奥术强度点耐久）。 -->
+  <LP_WS_Mending.description>Cantrip (Transmutation): channel for 5 seconds to mend an item within 6 cells (10% durability) or a building (50 × arcane power hit points).</LP_WS_Mending.description>
+  <!-- 奇术手法 -->
+  <LP_WS_Prestidigitation.label>prestidigitation</LP_WS_Prestidigitation.label>
+  <!-- 戏法（变化）：选 10 格内的一格——清掉半径 3 内所有污秽；如果选中的是一份饭（或格子上有饭），让它重新变得新鲜。 -->
+  <LP_WS_Prestidigitation.description>Cantrip (Transmutation): pick a cell within 10 cells: clear all filth within radius 3; if the chosen cell is a meal (or has a meal on it), make it fresh again.</LP_WS_Prestidigitation.description>
+  <!-- 光亮术 -->
+  <LP_WS_Light.label>light</LP_WS_Light.label>
+  <!-- 戏法（塑能）：在 15 格内的一格放一团漂浮光球，照亮半径 6，持续 12 小时，不耗燃料。 -->
+  <LP_WS_Light.description>Cantrip (Evocation): place a floating orb of light on a cell within 15 cells, lighting radius 6 for 12 hours, no fuel needed.</LP_WS_Light.description>
+  <!-- 法师之手 -->
+  <LP_WS_MageHand.label>mage hand</LP_WS_MageHand.label>
+  <!-- 戏法（咒法）：一只幽灵手把 15 格内一件不超过 10 千克的物品拿到自己身边。 -->
+  <LP_WS_MageHand.description>Cantrip (Conjuration): a spectral hand brings an item of up to 10 kg within 15 cells to your side.</LP_WS_MageHand.description>
+  <!-- 云雾术 -->
+  <LP_WS_FogCloud.label>fog cloud</LP_WS_FogCloud.label>
+  <!-- 1 环（咒法，可升环）：20 格内一点涌出半径 4 的浓雾（原版烟雾，挡视线、射击难中），约 30 秒散去。升环：每多 1 环半径 +1。 -->
+  <LP_WS_FogCloud.description>Circle 1 (Conjuration, upcastable): a thick fog of radius 4 billows at a point within 20 cells (vanilla smoke, blocks sight and makes shots hard to land), dispersing after about 30 seconds. Upcast: +1 radius per extra circle.</LP_WS_FogCloud.description>
+  <!-- 油腻术 -->
+  <LP_WS_Grease.label>grease</LP_WS_Grease.label>
+  <!-- 1 环（咒法）：20 格内半径 2 的地面铺满油，持续 1 分钟：里面的敌人每秒成功率 50% 滑倒（眩晕 2 秒）。油可以着火。 -->
+  <LP_WS_Grease.description>Circle 1 (Conjuration): coat the ground in radius 2 within 20 cells with grease for 1 minute: enemies inside have a 50% chance each second to slip (stunned 2 seconds). The grease can catch fire.</LP_WS_Grease.description>
+  <!-- 雷鸣波 -->
+  <LP_WS_Thunderwave.label>thunderwave</LP_WS_Thunderwave.label>
+  <!-- 1 环（塑能，可升环）：以自己为中心半径 3 炸开雷鸣，敌人受 12 × 奥术强度点钝器伤害并被击退 2 格。升环：每多 1 环伤害 +25%。 -->
+  <LP_WS_Thunderwave.description>Circle 1 (Evocation, upcastable): thunder bursts out in radius 3 around yourself; enemies take 12 × arcane power blunt damage and are knocked back 2 cells. Upcast: +25% damage per extra circle.</LP_WS_Thunderwave.description>
+  <!-- 虚假生命 -->
+  <LP_WS_FalseLife.label>false life</LP_WS_FalseLife.label>
+  <!-- 1 环（死灵）：1 小时内身上多一层死灵护盾，先吸收 15 × 奥术强度点伤害（与护盾术同一层，不叠加）。 -->
+  <LP_WS_FalseLife.description>Circle 1 (Necromancy): for 1 hour an extra necrotic shield covers you, absorbing 15 × arcane power damage first (same layer as Shield, doesn't stack).</LP_WS_FalseLife.description>
+  <!-- 寻获魔宠 -->
+  <LP_WS_FindFamiliar.label>find familiar</LP_WS_FindFamiliar.label>
+  <!-- 1 环（咒法·仪式）：召来一只绑定的魔宠（窗口里选黑猫或老鼠；DND 野兽第三批启用时还有翼猫、伪龙；加入殖民地并认施法者为主人）。魔宠活着时研究速度 ×1.05；魔宠在 10 格内时法术射程 +3。同时只能有一只；魔宠死后 1 天才能重召。 -->
+  <LP_WS_FindFamiliar.description>Circle 1 (Conjuration, ritual): summon a bound familiar (choose a black cat or rat in the window; with DND beasts batch 3 enabled, also a tressym or pseudodragon; it joins the colony and takes the caster as its master). While the familiar lives, research speed ×1.05; spell range +3 while the familiar is within 10 cells. Only one at a time; after the familiar dies, it can be resummoned after 1 day.</LP_WS_FindFamiliar.description>
+  <!-- 警报术 -->
+  <LP_WS_Alarm.label>alarm</LP_WS_Alarm.label>
+  <!-- 1 环（防护·仪式）：以自己所在为中心半径 10 布下警戒，持续 1 天：有敌人进入时发信件提醒，并叫醒施法者。 -->
+  <LP_WS_Alarm.description>Circle 1 (Abjuration, ritual): set an alarm in radius 10 around yourself for 1 day: when an enemy enters, a letter warns you and the caster is woken.</LP_WS_Alarm.description>
+  <!-- 通晓语言 -->
+  <LP_WS_ComprehendLanguages.label>comprehend languages</LP_WS_ComprehendLanguages.label>
+  <!-- 1 环（预言·仪式）：1 天内交易价格 +5%，谈判能力 ×1.2（劝降、招募更快）。 -->
+  <LP_WS_ComprehendLanguages.description>Circle 1 (Divination, ritual): for 1 day, trade prices +5%, negotiation ability ×1.2 (faster persuading and recruiting).</LP_WS_ComprehendLanguages.description>
+  <!-- 侦测魔法 -->
+  <LP_WS_DetectMagic.label>detect magic</LP_WS_DetectMagic.label>
+  <!-- 1 环（预言·仪式）：1 小时内看穿 30 格内隐形的敌人；施放时来一封信，列出这张地图上的魔法物品和传奇品质的物品。 -->
+  <LP_WS_DetectMagic.description>Circle 1 (Divination, ritual): for 1 hour see through invisible enemies within 30 cells; on casting, a letter lists the magic items and legendary-quality items on this map.</LP_WS_DetectMagic.description>
+  <!-- 灼热射线 -->
+  <LP_WS_ScorchingRay.label>scorching ray</LP_WS_ScorchingRay.label>
+  <!-- 2 环（塑能，可升环）：射出 3 道灼热射线，每道 8 × 奥术强度点火焰伤害；第一道打选中的敌人，其余依次分给它 5 格内的其他敌人（没有别人就都打它）。升环：每多 1 环 +1 道。 -->
+  <LP_WS_ScorchingRay.description>Circle 2 (Evocation, upcastable): fire 3 scorching rays, each 8 × arcane power fire damage; the first hits the chosen enemy, the rest are split among other enemies within 5 cells of it (all hit it if there are no others). Upcast: +1 ray per extra circle.</LP_WS_ScorchingRay.description>
+  <!-- 粉碎音波 -->
+  <LP_WS_Shatter.label>shatter</LP_WS_Shatter.label>
+  <!-- 2 环（塑能）：20 格内一点爆出刺耳的音波，半径 2 内的敌人和敌方建筑受 14 × 奥术强度点钝器伤害；机械体、建筑和石像类（非血肉）目标 ×2。 -->
+  <LP_WS_Shatter.description>Circle 2 (Evocation): a piercing burst of sound at a point within 20 cells; enemies and enemy buildings within radius 2 take 14 × arcane power blunt damage; ×2 against mechanoids, buildings and statue-like (non-flesh) targets.</LP_WS_Shatter.description>
+  <!-- 蛛网术 -->
+  <LP_WS_Web.label>web</LP_WS_Web.label>
+  <!-- 2 环（咒法）：20 格内半径 2 布满蛛网，持续 1 分钟：进入的敌人成功率 60% 被粘住 4 秒（每人每 5 秒最多一次）。蛛网一点就着。 -->
+  <LP_WS_Web.description>Circle 2 (Conjuration): fill radius 2 within 20 cells with webs for 1 minute: enemies entering have a 60% chance to be stuck for 4 seconds (at most once per person every 5 seconds). The webs catch fire easily.</LP_WS_Web.description>
+  <!-- 定身类人 -->
+  <LP_WS_HoldPerson.label>hold person</LP_WS_HoldPerson.label>
+  <!-- 2 环（惑控，可升环）：20 格内一个人形敌人成功率 55% 被定身（麻痹 6 秒）；目标每比施法者高 1 级 −5%（最低 10%），传奇生物和剧情首领减半。升环：每多 1 环多定住它 6 格内另一个人形敌人。 -->
+  <LP_WS_HoldPerson.description>Circle 2 (Enchantment, upcastable): one humanlike enemy within 20 cells has a 55% chance to be held (paralyzed 6 seconds); -5% per level the target is above the caster (minimum 10%), halved against legendary creatures and story bosses. Upcast: each extra circle holds another humanlike enemy within 6 cells of it.</LP_WS_HoldPerson.description>
+  <!-- 隐形术 -->
+  <LP_WS_Invisibility.label>invisibility</LP_WS_Invisibility.label>
+  <!-- 2 环（幻术）：20 格内的一名友军隐形 1 小时；攻击或施法就会现形。 -->
+  <LP_WS_Invisibility.description>Circle 2 (Illusion): one ally within 20 cells turns invisible for 1 hour; attacking or casting reveals them.</LP_WS_Invisibility.description>
+  <!-- 黑暗术 -->
+  <LP_WS_Darkness.label>darkness</LP_WS_Darkness.label>
+  <!-- 2 环（咒法）：20 格内一点半径 3 被魔法黑暗吞没 30 秒：里面的敌人远程精度大降（与邪术师的黑暗术相同）。 -->
+  <LP_WS_Darkness.description>Circle 2 (Conjuration): radius 3 at a point within 20 cells is swallowed by magical darkness for 30 seconds: enemies inside have sharply reduced ranged accuracy (same as the warlock's Darkness).</LP_WS_Darkness.description>
+  <!-- 心灵尖刺 -->
+  <LP_WS_MindSpike.label>mind spike</LP_WS_MindSpike.label>
+  <!-- 2 环（预言）：24 格内的一个敌人受 12 × 奥术强度点心灵伤害（无视护甲）；之后 1 小时它无法隐形。 -->
+  <LP_WS_MindSpike.description>Circle 2 (Divination): one enemy within 24 cells takes 12 × arcane power psychic damage (ignores armor); afterwards it can't turn invisible for 1 hour.</LP_WS_MindSpike.description>
+  <!-- 增强属性 -->
+  <LP_WS_EnhanceAbility.label>enhance ability</LP_WS_EnhanceAbility.label>
+  <!-- 2 环（变化）：20 格内的一名友军 1 小时，窗口四选一——力量（负重 ×1.5、采矿 ×1.3）/ 敏捷（近战闪避 +10）/ 智力（研究 ×1.2）/ 魅力（社交影响 ×1.2）。 -->
+  <LP_WS_EnhanceAbility.description>Circle 2 (Transmutation): one ally within 20 cells for 1 hour, choose one of four in a window: Strength (carry capacity ×1.5, mining ×1.3) / Dexterity (melee dodge +10) / Intelligence (research ×1.2) / Charisma (social impact ×1.2).</LP_WS_EnhanceAbility.description>
+  <!-- 秘法锁 -->
+  <LP_WS_ArcaneLock.label>arcane lock</LP_WS_ArcaneLock.label>
+  <!-- 2 环（防护·仪式）：锁住 10 格内的一扇门：受到的伤害 ÷3（耐久 ×3，敌人拆门时间 ×3），直到解除（选中门点“解除秘法锁”）。 -->
+  <LP_WS_ArcaneLock.description>Circle 2 (Abjuration, ritual): lock a door within 10 cells: damage taken ÷3 (durability ×3, enemy time to break the door ×3), until dispelled (select the door and click "dispel arcane lock").</LP_WS_ArcaneLock.description>
+  <!-- 敲击术 -->
+  <LP_WS_Knock.label>knock</LP_WS_Knock.label>
+  <!-- 2 环（变化）：15 格内——打开一个古代密封容器或休眠舱、立刻破解一个需要黑客入侵的东西，或者震碎一扇别人的门。 -->
+  <LP_WS_Knock.description>Circle 2 (Transmutation): within 15 cells: open an ancient sealed container or cryptosleep casket, instantly crack something that needs hacking, or shatter someone else's door.</LP_WS_Knock.description>
+  <!-- 解除魔法 -->
+  <LP_WS_DispelMagic.label>dispel magic</LP_WS_DispelMagic.label>
+  <!-- 3 环（防护）：20 格内的一个目标——敌人：去掉身上的魔法增益（法术、职业能力给的限时增益和护盾）；友军：去掉诅咒、魅惑、睡眠、定身、石化、黑暗等有害的魔法效果（清单见报告）。 -->
+  <LP_WS_DispelMagic.description>Circle 3 (Abjuration): one target within 20 cells. Enemy: removes magical buffs (timed buffs and shields from spells and class abilities); ally: removes harmful magical effects such as curses, charm, sleep, hold, petrification and darkness (see the report for the list).</LP_WS_DispelMagic.description>
+  <!-- 飞行术 -->
+  <LP_WS_Fly.label>fly</LP_WS_Fly.label>
+  <!-- 3 环（变化）：20 格内的一名友军飞起来 1 小时：移动 ×1.6，泥沼、浅水、雪地和植物不再减速。 -->
+  <LP_WS_Fly.description>Circle 3 (Transmutation): one ally within 20 cells flies for 1 hour: movement ×1.6, mud, shallow water, snow and plants no longer slow them.</LP_WS_Fly.description>
+  <!-- 恐惧术 -->
+  <LP_WS_Fear.label>fear</LP_WS_Fear.label>
+  <!-- 3 环（幻术）：朝一个方向放出 8 格的恐怖幻象（扇形），里面每个人形敌人成功率 55% 惊恐逃跑 10 秒；目标每比施法者高 1 级 −5%（最低 10%），传奇生物和剧情首领减半。 -->
+  <LP_WS_Fear.description>Circle 3 (Illusion): project an 8-cell terrifying illusion in one direction (a cone); each humanlike enemy inside has a 55% chance to flee in terror for 10 seconds; -5% per level the target is above the caster (minimum 10%), halved against legendary creatures and story bosses.</LP_WS_Fear.description>
+  <!-- 缓慢术 -->
+  <LP_WS_Slow.label>slow</LP_WS_Slow.label>
+  <!-- 3 环（变化，专注）：20 格内一点半径 3 里最多 6 个敌人，每个成功率 60%：1 分钟内移动 ×0.5、攻击冷却 ×1.5（目标每比施法者高 1 级 −5%，最低 10%；传奇生物和剧情首领减半）。施法者失去专注时提前结束。 -->
+  <LP_WS_Slow.description>Circle 3 (Transmutation, concentration): up to 6 enemies within radius 3 at a point within 20 cells, each with a 60% chance: movement ×0.5 and attack cooldown ×1.5 for 1 minute (-5% per level the target is above the caster, minimum 10%; halved against legendary creatures and story bosses). Ends early if the caster loses concentration.</LP_WS_Slow.description>
+  <!-- 臭云术 -->
+  <LP_WS_StinkingCloud.label>stinking cloud</LP_WS_StinkingCloud.label>
+  <!-- 3 环（咒法）：20 格内一点半径 3 的恶臭毒云，持续 20 秒：里面的敌人每 2 秒成功率 50% 呕吐（眩晕 1.5 秒）。 -->
+  <LP_WS_StinkingCloud.description>Circle 3 (Conjuration): a foul poisonous cloud of radius 3 at a point within 20 cells for 20 seconds: enemies inside have a 50% chance every 2 seconds to vomit (stunned 1.5 seconds).</LP_WS_StinkingCloud.description>
+  <!-- 吸血之触 -->
+  <LP_WS_VampiricTouch.label>vampiric touch</LP_WS_VampiricTouch.label>
+  <!-- 3 环（死灵，专注）：近战 15 × 奥术强度点死灵伤害，治疗自己造成伤害的一半。施放后 1 分钟内（保持专注）再放不耗法力、冷却 2 秒。 -->
+  <LP_WS_VampiricTouch.description>Circle 3 (Necromancy, concentration): a melee hit for 15 × arcane power necrotic damage, healing yourself for half the damage dealt. For 1 minute after casting (while concentrating), recasting costs no mana with a 2-second cooldown.</LP_WS_VampiricTouch.description>
+  <!-- 活化死尸 -->
+  <LP_WS_AnimateDead.label>animate dead</LP_WS_AnimateDead.label>
+  <!-- 3 环（死灵，可升环）：把 10 格内一具人形尸体拉起来，当 1 天的骷髅仆从（巫妖的骷髅仆役，时间到就散架）。升环：每多 1 环多拉起附近 5 格内的另一具。 -->
+  <LP_WS_AnimateDead.description>Circle 3 (Necromancy, upcastable): raise a humanlike corpse within 10 cells as a skeleton servant for 1 day (a lich's skeleton servant that falls apart when time is up). Upcast: each extra circle raises another corpse within 5 cells.</LP_WS_AnimateDead.description>
+  <!-- 闪现术 -->
+  <LP_WS_Blink.label>blink</LP_WS_Blink.label>
+  <!-- 3 环（变化）：1 分钟内在位面之间闪烁：每次被敌人攻击，成功率 50% 这一下落空。 -->
+  <LP_WS_Blink.description>Circle 3 (Transmutation): flicker between planes for 1 minute: each enemy attack has a 50% chance to miss.</LP_WS_Blink.description>
+  <!-- 防护能量 -->
+  <LP_WS_ProtectionFromEnergy.label>protection from energy</LP_WS_ProtectionFromEnergy.label>
+  <!-- 3 环（防护）：20 格内的一名友军 1 小时，窗口里从火焰 / 寒冷 / 闪电 / 强酸 / 心灵中选一种，受到这种伤害 ×0.5。 -->
+  <LP_WS_ProtectionFromEnergy.description>Circle 3 (Abjuration): one ally within 20 cells for 1 hour; choose one of fire / cold / lightning / acid / psychic in the window, and damage of that type taken ×0.5.</LP_WS_ProtectionFromEnergy.description>
+  <!-- 魔法阵 -->
+  <LP_WS_MagicCircle.label>magic circle</LP_WS_MagicCircle.label>
+  <!-- 3 环（防护·仪式）：以自己为中心画下半径 3 的法阵，持续 1 天；窗口里选一类——恶魔魔鬼 / 亡灵 / 元素 / 妖精：这类敌对生物进不来（进来会被弹出去），阵内友军受它们的伤害 ×0.5。 -->
+  <LP_WS_MagicCircle.description>Circle 3 (Abjuration, ritual): draw a circle of radius 3 around yourself for 1 day; choose one type in the window: demons and devils / undead / elementals / fey: hostile creatures of that type can't enter (they're pushed out if they do), and allies inside take ×0.5 damage from them.</LP_WS_MagicCircle.description>
+  <!-- 亡者交谈 -->
+  <LP_WS_SpeakWithDead.label>speak with dead</LP_WS_SpeakWithDead.label>
+  <!-- 3 环（死灵·仪式）：向 5 格内一具敌方派系的人形尸体发问，窗口里二选一：揭示该派系的一处据点，或得 200 × 奥术强度点研究（每具尸体一次）。 -->
+  <LP_WS_SpeakWithDead.description>Circle 3 (Necromancy, ritual): question a humanlike corpse of an enemy faction within 5 cells, choosing one of two in the window: reveal one of that faction's settlements, or gain 200 × arcane power research (once per corpse).</LP_WS_SpeakWithDead.description>
+  <!-- 送讯术 -->
+  <LP_WS_Sending.label>sending</LP_WS_Sending.label>
+  <!-- 3 环（预言·仪式）：不用通讯台，在窗口里选一个派系和它的首领通话（打开原版通讯对话）。每天一次。 -->
+  <LP_WS_Sending.description>Circle 3 (Divination, ritual): without a comms console, pick a faction in the window and talk to its leader (opens the vanilla comms dialog). Once per day.</LP_WS_Sending.description>
+</LanguageData>

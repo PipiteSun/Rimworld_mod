@@ -33,6 +33,7 @@ namespace LichPhylactery {
    if(CaptureAbilityBar())return; // 1.136.0 热修：能力栏自动施放角标截图
    if(CaptureAbilityGroups())return; // 1.137.0 技能分组截图
    if(CaptureBank())return; // 1.142.0 银行截图
+   if(CaptureAffinityEditor())return; // 1.166.0 种族亲和编辑截图
    if(ran || !GenCommandLine.CommandLineArgPassed("lichtest") || Current.ProgramState!=ProgramState.Playing || Find.CurrentMap==null || LongEventHandler.AnyEventNowOrWaiting)return;
    // 1.28.0：自测里神力灌注不随机发生（事件检查自己设定随机数），保证老的袭击检查结果确定。
    ran=true;Find.TickManager.Pause();Twilight.TestRoll=1f;SuppressBackgroundsForTests();string output=Path.Combine(GenFilePaths.SaveDataFolderPath,"LichResult.txt");
@@ -47,6 +48,7 @@ namespace LichPhylactery {
    if(GenCommandLine.CommandLineArgPassed("lichuitest") && OnlyMode && OnlyGroups.Contains("Convenience") && !System.IO.File.ReadAllText(output).StartsWith("FAIL")){cvFrames=1;return;} // 1.136.0 热修
    if(GenCommandLine.CommandLineArgPassed("lichuitest") && OnlyMode && OnlyGroups.Contains("BankShot") && !System.IO.File.ReadAllText(output).StartsWith("FAIL")){bankFrames=1;return;} // 1.142.0 银行截图
    if(GenCommandLine.CommandLineArgPassed("lichuitest") && OnlyMode && OnlyGroups.Contains("AbilityGroups") && !System.IO.File.ReadAllText(output).StartsWith("FAIL")){agFrames=1;return;} // 1.137.0 技能分组
+   if(GenCommandLine.CommandLineArgPassed("lichuitest") && OnlyMode && OnlyGroups.Contains("AffinityEditor") && !System.IO.File.ReadAllText(output).StartsWith("FAIL")){affFrames=1;return;} // 1.166.0
    if(GenCommandLine.CommandLineArgPassed("lichuitest") && !ItemsOnly && !ClassesOnly && !OnlyMode && !System.IO.File.ReadAllText(output).StartsWith("FAIL")){ShowDesignerForScreenshot();return;}Application.Quit();
   }
   Pawn Person(){var generated=PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist,Faction.OfPlayer,PawnGenerationContext.NonPlayer,-1,forceGenerateNewPawn:true,allowDead:false,allowDowned:false,canGeneratePawnRelations:false,forcedXenotype:XenotypeDefOf.Baseliner,mustBeCapableOfViolence:true,forceNoBackstory:true,fixedBiologicalAge:25,fixedChronologicalAge:25));foreach(var implant in generated.health.hediffSet.hediffs.OfType<Hediff_AddedPart>().ToList())generated.health.RestorePart(implant.Part);foreach(var injury in generated.health.hediffSet.hediffs.OfType<Hediff_Injury>().ToList())generated.health.RemoveHediff(injury);foreach(var missing in generated.health.hediffSet.GetMissingPartsCommonAncestors().ToList())generated.health.RestorePart(missing.Part);return generated;}
@@ -64,7 +66,7 @@ namespace LichPhylactery {
    var cell=map.AllCells.Where(c=>c.x>12 && c.z>12 && c.x<map.Size.x-12 && c.z<map.Size.z-12 && CellRect.CenteredOn(c,3).Cells.All(x=>x.InBounds(map) && x.Standable(map) && !x.Fogged(map) && x.GetThingList(map).All(t=>t is Plant || t.def.category==ThingCategory.Filth))).First();
    altar=(Building_Altar)ThingMaker.MakeThing(Necro.Def<ThingDef>("Altar"));altar.SetFactionDirect(Faction.OfPlayer);GenSpawn.Spawn(altar,cell,map);
    CheckFireGiant();
-   CheckTroll();CheckForceDragon();CheckSatiety();
+   CheckTroll();CheckSatiety();
    CheckScenarios();CheckSharedComponents();CheckCommonRaces116();CheckCommonRaces();CheckMindFlayer();CheckMinotaurGith();CheckFactions();CheckMythicBridge();CheckItems();CheckRaces124();CheckBeasts();CheckVPEBridge();CheckEvents();CheckGuns();CheckGiants();CheckEvents2();CheckTraits();CheckMarilith();CheckGiantKinHAR();CheckLegendary();CheckChromaticDragons();CheckLegendaryMonsters();
    worker=Person();
    for(int attempt=0;attempt<20 && worker.GetStatValue(StatDefOf.PsychicSensitivity)<=0;attempt++){worker.Destroy();worker=Person();}
@@ -102,7 +104,7 @@ namespace LichPhylactery {
    CheckBodySize();
   }
   void AfterLoad(){
-   CheckGunsAfterLoad();CheckGiantsAfterLoad();CheckEventsAfterLoad();CheckEvents2AfterLoad();CheckTraitsAfterLoad();CheckMarilithAfterLoad();CheckBodySizeAfterLoad();CheckSharedComponentsAfterLoad();CheckCommonRaces116AfterLoad();CheckCommonRacesAfterLoad();CheckMindFlayerAfterLoad();CheckMinotaurGithAfterLoad();CheckFactionsAfterLoad();CheckForceDragonAfterLoad();CheckSatietyAfterLoad();CheckScenariosAfterLoad();CheckMythicBridgeAfterLoad();CheckItemsAfterLoad();CheckRaces124AfterLoad();CheckBeastsAfterLoad();CheckVPEBridgeAfterLoad();
+   CheckGunsAfterLoad();CheckGiantsAfterLoad();CheckEventsAfterLoad();CheckEvents2AfterLoad();CheckTraitsAfterLoad();CheckMarilithAfterLoad();CheckBodySizeAfterLoad();CheckSharedComponentsAfterLoad();CheckCommonRaces116AfterLoad();CheckCommonRacesAfterLoad();CheckMindFlayerAfterLoad();CheckMinotaurGithAfterLoad();CheckFactionsAfterLoad();CheckSatietyAfterLoad();CheckScenariosAfterLoad();CheckMythicBridgeAfterLoad();CheckItemsAfterLoad();CheckRaces124AfterLoad();CheckBeastsAfterLoad();CheckVPEBridgeAfterLoad();
    map=Find.CurrentMap;var box=Necro.Registry.boxes.Single(b=>b.ThingID==boxId);Pawn lich=box.soul;altar=map.listerThings.ThingsOfDef(Necro.Def<ThingDef>("Altar")).Cast<Building_Altar>().First();
    Check(lich!=null && lich.ThingID==masterId && lich.Dead && box.souls.Contains(lich),"full save/load retains exact dead pawn nested in phylactery");Check(!lich.health.hediffSet.hediffs.OfType<Hediff_Limb>().Any(h=>!Hediff_Lich.IsMajorPart(h.Part)),"obsolete small-part upgrade removed during save-load initialization");Check(Necro.Lich(lich)?.box==box,"lich state and anchor reference survive save/load");Check(Necro.Lich(lich).regrowing?.def.defName=="Arm" && Near(Necro.Lich(lich).regrowth,12345),"unfinished limb regrowth survives death/save/load");Check(lich.health.hediffSet.hediffs.OfType<Hediff_Limb>().Any(h=>h.Part?.def.defName=="Brain" && h.Severity==2),"brain enhancement survives death/save/load");Check(Near(lich.health.hediffSet.GetPartHealth(lich.health.hediffSet.GetBrain()),PartHealth.Maximum(lich.health.hediffSet.GetBrain(),lich)),"reinforced brain health survives save/load");Check(box.level==level && Near(box.experience,experience) && altar.selected==box,"level, experience and altar selection survive save/load");
    Check(lich.abilities.GetAbility(Necro.Def<AbilityDef>("SoulBolt"))==null,"load removes legacy bolt even from dead lich");

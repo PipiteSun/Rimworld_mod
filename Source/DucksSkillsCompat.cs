@@ -16,8 +16,8 @@ namespace LichPhylactery {
   static DucksSkillsCompat(){
    try{
     Sweep(Owner,Removed);
-    if(Removed.Count>0)Log.Warning("[LichPhylactery] Ducks' Insane Skills 是 1.3 的旧模组，有 "+Removed.Count+" 个补丁在当前版本编译不过（每次调用都会抛异常，技能学习、交易会崩），已摘掉："+string.Join("、",Removed)+"。建议在模组列表里停用它。");
-   }catch(Exception e){Log.Warning("[LichPhylactery] Ducks' Insane Skills 兼容检查失败："+e);}
+    if(Removed.Count>0)Log.Warning("[LichPhylactery] Ducks' Insane Skills 是 1.3 的旧模组，有 ".Loc()+Removed.Count+" 个补丁在当前版本编译不过（每次调用都会抛异常，技能学习、交易会崩），已摘掉：".Loc()+string.Join("、".Loc(),Removed)+"。建议在模组列表里停用它。".Loc());
+   }catch(Exception e){Log.Warning("[LichPhylactery] Ducks' Insane Skills 兼容检查失败：".Loc()+e);}
   }
   // 摘掉 owner 的补丁里编译不过的那些；返回摘掉的个数，名字记进 names。
   public static int Sweep(string owner,List<string> names){

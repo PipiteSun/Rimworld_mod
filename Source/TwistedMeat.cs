@@ -61,7 +61,7 @@ namespace LichPhylactery {
  // A 节：死灵仪式台 / 血肉义体配方的计数器（扭曲肉 ×2、畸变膏 ×20，其余按份数）。
  public class FleshCount : RitualCount {
   public override float ValuePerUnitOf(ThingDef def)=>TwistedMeat.FleshValue(def);
-  public override string BillRequirementsDescription(RecipeDef r,IngredientCount ing)=>ing.GetBaseCount().ToString("0")+" 份新鲜生肉（扭曲肉 1 份算 2 份，畸变膏 1 份算 20 份）";
+  public override string BillRequirementsDescription(RecipeDef r,IngredientCount ing)=>ing.GetBaseCount().ToString("0")+" 份新鲜生肉（扭曲肉 1 份算 2 份，畸变膏 1 份算 20 份）".Loc();
  }
 
  // 共享状态：远域回响、每日上限、累计解剖、血肉催转周期、鬼婆集市、血肉再生词条、死灵滋养。

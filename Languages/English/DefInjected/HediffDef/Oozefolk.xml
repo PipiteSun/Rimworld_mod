@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 酸性伪足 -->
+  <LP_OozeLash.label>acid pseudopod</LP_OozeLash.label>
+  <!-- 伪足基因带来的天然近战武器。 -->
+  <LP_OozeLash.description>A natural melee weapon from the pseudopod gene.</LP_OozeLash.description>
+  <!-- 酸性伪足 -->
+  <LP_OozeLash.comps.HediffComp_VerbGiver.tools.0.label>acid pseudopod</LP_OozeLash.comps.HediffComp_VerbGiver.tools.0.label>
+  <!-- 凝滞 -->
+  <LP_OozeSluggish.label>congealed</LP_OozeSluggish.label>
+  <!-- 天太冷，身体里的原生质变稠了：移动速度×75%，操作-10%。回到0°C以上1小时后恢复。 -->
+  <LP_OozeSluggish.description>Too cold; the protoplasm in the body has thickened: move speed ×75%, manipulation -10%. Recovers 1 hour after returning above 0°C.</LP_OozeSluggish.description>
+  <!-- 分裂虚弱 -->
+  <LP_OozeSplitWeak.label>fission weakness</LP_OozeSplitWeak.label>
+  <!-- 刚刚分出去一半原生质，身体还没长回来：意识-20%，移动速度×80%。 -->
+  <LP_OozeSplitWeak.description>Just split off half the protoplasm, and the body hasn't grown back yet: consciousness -20%, move speed ×80%.</LP_OozeSplitWeak.description>
+</LanguageData>

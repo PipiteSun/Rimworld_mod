@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 卓越运动家 -->
+  <LP_CP_AthleteBuff.label>remarkable athlete</LP_CP_AthleteBuff.label>
+  <!-- 勇士：移动 +0.3、负重 +15、近战闪避 +5。 -->
+  <LP_CP_AthleteBuff.description>Champion: movement +0.3, carry capacity +15, melee dodge +5.</LP_CP_AthleteBuff.description>
+  <!-- 额外战斗风格 -->
+  <LP_CP_StyleBuff.label>additional fighting style</LP_CP_StyleBuff.label>
+  <!-- 勇士：近战命中 ×1.08、射击精度 ×1.08，护甲 +5%。 -->
+  <LP_CP_StyleBuff.description>Champion: melee hit ×1.08, shooting accuracy ×1.08, armor +5%.</LP_CP_StyleBuff.description>
+  <!-- 奉献灵光 -->
+  <LP_DT_AuraOn.label>aura of devotion</LP_DT_AuraOn.label>
+  <!-- 奉献之誓：3 格内的友军心智抗性 +30%、崩溃阈值 −5%。 -->
+  <LP_DT_AuraOn.description>Oath of Devotion: allies within 3 cells get mind resistance +30%, break threshold -5%.</LP_DT_AuraOn.description>
+  <!-- 奉献庇护 -->
+  <LP_DT_AuraBuff.label>devotion's shelter</LP_DT_AuraBuff.label>
+  <!-- 圣武士的奉献灵光：心智抗性 +30%、崩溃阈值 −5%。 -->
+  <LP_DT_AuraBuff.description>A paladin's aura of devotion: mind resistance +30%, break threshold -5%.</LP_DT_AuraBuff.description>
+  <!-- 战争祭司 -->
+  <LP_WD_PriestBuff.label>war priest</LP_WD_PriestBuff.label>
+  <!-- 战争领域：近战命中 +10%、射击精度 +4%、护甲 +8%。 -->
+  <LP_WD_PriestBuff.description>War Domain: melee hit +10%, shooting accuracy +4%, armor +8%.</LP_WD_PriestBuff.description>
+  <!-- 学识祝福 -->
+  <LP_KD_BlessBuff.label>blessings of knowledge</LP_KD_BlessBuff.label>
+  <!-- 知识领域：研究速度 ×1.25、学习速度 ×1.2。 -->
+  <LP_KD_BlessBuff.description>Knowledge Domain: research speed ×1.25, learning speed ×1.2.</LP_KD_BlessBuff.description>
+  <!-- 坟墓之眼 -->
+  <LP_GD_EyesBuff.label>eyes of the grave</LP_GD_EyesBuff.label>
+  <!-- 坟墓领域：受到的死灵伤害减半。 -->
+  <LP_GD_EyesBuff.description>Grave Domain: necrotic damage taken halved.</LP_GD_EyesBuff.description>
+  <!-- 咒剑战士 -->
+  <LP_HX_WarriorBuff.label>hex warrior</LP_HX_WarriorBuff.label>
+  <!-- 咒剑宗主：近战命中 +15%、护甲 +10%。 -->
+  <LP_HX_WarriorBuff.description>The Hexblade: melee hit +15%, armor +10%.</LP_HX_WarriorBuff.description>
+  <!-- 不惧死亡 -->
+  <LP_NM_InuredBuff.label>inured to undeath</LP_NM_InuredBuff.label>
+  <!-- 死灵学派：受到的死灵伤害减半，毒性抗性 +50%。 -->
+  <LP_NM_InuredBuff.description>School of Necromancy: necrotic damage taken halved, toxic resistance +50%.</LP_NM_InuredBuff.description>
+  <!-- 强化防护 -->
+  <LP_AJ_ImprovedBuff.label>improved abjuration</LP_AJ_ImprovedBuff.label>
+  <!-- 防护学派：心智抗性 +25%、护甲 +8%。 -->
+  <LP_AJ_ImprovedBuff.description>School of Abjuration: mind resistance +25%, armor +8%.</LP_AJ_ImprovedBuff.description>
+  <!-- 法术抗力 -->
+  <LP_AJ_ResistBuff.label>spell resistance</LP_AJ_ResistBuff.label>
+  <!-- 防护学派：受到的一切伤害 ×0.85。 -->
+  <LP_AJ_ResistBuff.description>School of Abjuration: all damage taken ×0.85.</LP_AJ_ResistBuff.description>
+  <!-- 幻术学者 -->
+  <LP_IU_SavantBuff.label>illusion savant</LP_IU_SavantBuff.label>
+  <!-- 幻术学派：身形晃动，近战闪避 +8。 -->
+  <LP_IU_SavantBuff.description>School of Illusion: a wavering form, melee dodge +8.</LP_IU_SavantBuff.description>
+  <!-- 华丽步法 -->
+  <LP_SB_FootworkBuff.label>fancy footwork</LP_SB_FootworkBuff.label>
+  <!-- 风流剑客：移动 +0.3、近战闪避 +10。 -->
+  <LP_SB_FootworkBuff.description>Swashbuckler: movement +0.3, melee dodge +10.</LP_SB_FootworkBuff.description>
+  <!-- 灵能之力 -->
+  <LP_SN_PowerBuff.label>psionic power</LP_SN_PowerBuff.label>
+  <!-- 魂刃：心灵敏感度 +20%、心智抗性 +20%。 -->
+  <LP_SN_PowerBuff.description>Soulknife: psychic sensitivity +20%, mind resistance +20%.</LP_SN_PowerBuff.description>
+  <!-- 战斗变形 -->
+  <LP_MO_BeastForm.label>combat wild shape</LP_MO_BeastForm.label>
+  <!-- 化为猛兽：近战伤害 ×1.4、护甲 +15%、移动 ×1.15。6 级起爪牙穿透护甲，14 级起伤口不断愈合。 -->
+  <LP_MO_BeastForm.description>Become a fierce beast: melee damage ×1.4, armor +15%, movement ×1.15. From level 6 claws and fangs pierce armor, from level 14 wounds keep healing.</LP_MO_BeastForm.description>
+  <!-- 元素之形 -->
+  <LP_MO_ElementalForm.label>elemental form</LP_MO_ElementalForm.label>
+  <!-- 化为元素：火焰与寒冷伤害减半，半径 2 内的敌人每 2 秒受灼烧。 -->
+  <LP_MO_ElementalForm.description>Become an elemental: fire and cold damage halved, enemies within radius 2 are burned every 2 seconds.</LP_MO_ElementalForm.description>
+  <!-- 神圣武器 -->
+  <LP_DT_SacredWeaponBuff.label>sacred weapon</LP_DT_SacredWeaponBuff.label>
+  <!-- 武器被圣化：近战命中 +25%，每 2 秒第一次武器命中附加光耀伤害（= 严重度）。 -->
+  <LP_DT_SacredWeaponBuff.description>Weapon sanctified: melee hit +25%, the first weapon hit every 2 seconds adds radiant damage (= severity).</LP_DT_SacredWeaponBuff.description>
+  <!-- 神圣光轮 -->
+  <LP_DT_Nimbus.label>holy nimbus</LP_DT_Nimbus.label>
+  <!-- 圣光环绕：半径 3 内的敌人每 2 秒受光耀伤害（= 严重度），自己受到的伤害 ×0.8。 -->
+  <LP_DT_Nimbus.description>Surrounded by holy light: enemies within radius 3 take radiant damage every 2 seconds (= severity), and you take ×0.8 damage.</LP_DT_Nimbus.description>
+  <!-- 无情复仇者 -->
+  <LP_VN_Relentless.label>relentless avenger</LP_VN_Relentless.label>
+  <!-- 追上去：移动 +0.5。 -->
+  <LP_VN_Relentless.description>Chase them down: movement +0.5.</LP_VN_Relentless.description>
+  <!-- 复仇之魂 -->
+  <LP_VN_SoulBuff.label>soul of vengeance</LP_VN_SoulBuff.label>
+  <!-- 近战冷却 ×0.7、近战闪避 +10。 -->
+  <LP_VN_SoulBuff.description>Melee cooldown ×0.7, melee dodge +10.</LP_VN_SoulBuff.description>
+  <!-- 复仇天使 -->
+  <LP_VN_AngelBuff.label>avenging angel</LP_VN_AngelBuff.label>
+  <!-- 展开复仇之翼：移动 ×1.4、近战伤害 ×1.2。 -->
+  <LP_VN_AngelBuff.description>Spread the wings of vengeance: movement ×1.4, melee damage ×1.2.</LP_VN_AngelBuff.description>
+  <!-- 导引打击 -->
+  <LP_WD_GuidedBuff.label>guided strike</LP_WD_GuidedBuff.label>
+  <!-- 神力引导下一轮攻击：近战命中 +50%、射击精度 +30%。 -->
+  <LP_WD_GuidedBuff.description>Divine power guides the next round of attacks: melee hit +50%, shooting accuracy +30%.</LP_WD_GuidedBuff.description>
+  <!-- 战神祝福 -->
+  <LP_WD_BlessingBuff.label>war god's blessing</LP_WD_BlessingBuff.label>
+  <!-- 近战命中 +30%、射击精度 +10%。 -->
+  <LP_WD_BlessingBuff.description>Melee hit +30%, shooting accuracy +10%.</LP_WD_BlessingBuff.description>
+  <!-- 战神化身 -->
+  <LP_WD_AvatarBuff.label>avatar of battle</LP_WD_AvatarBuff.label>
+  <!-- 受到的伤害 ×0.75、近战伤害 ×1.3、近战冷却 ×0.8。 -->
+  <LP_WD_AvatarBuff.description>Damage taken ×0.75, melee damage ×1.3, melee cooldown ×0.8.</LP_WD_AvatarBuff.description>
+  <!-- 先贤知识 -->
+  <LP_KD_AgesBuff.label>knowledge of the ages</LP_KD_AgesBuff.label>
+  <!-- 借来先贤的手艺：手工速度 ×1.3、全局工作速度 ×1.2。 -->
+  <LP_KD_AgesBuff.description>Borrowing the skill of the ancients: crafting speed ×1.3, global work speed ×1.2.</LP_KD_AgesBuff.description>
+  <!-- 心思被读出 -->
+  <LP_KD_Read.label>thoughts read</LP_KD_Read.label>
+  <!-- 牧师读出了它的心思：近战闪避 −20，受到的伤害 ×1.15。 -->
+  <LP_KD_Read.description>The cleric read its thoughts: melee dodge -20, damage taken ×1.15.</LP_KD_Read.description>
+  <!-- 通往坟墓 -->
+  <LP_GD_Marked.label>path to the grave</LP_GD_Marked.label>
+  <!-- 被坟墓牧师标记：下一次被攻击受到的伤害 ×2。 -->
+  <LP_GD_Marked.description>Marked by a Grave cleric: the next attack against it deals ×2 damage.</LP_GD_Marked.description>
+  <!-- 咒剑诅咒 -->
+  <LP_HX_Cursed.label>hexblade's curse</LP_HX_Cursed.label>
+  <!-- 被咒剑宗主诅咒：受到的伤害 ×1.25；它死时咒剑宗主回血。 -->
+  <LP_HX_Cursed.description>Cursed by a Hexblade: damage taken ×1.25; when it dies the Hexblade heals.</LP_HX_Cursed.description>
+  <!-- 咒剑护甲 -->
+  <LP_HX_ArmorBuff.label>armor of hexes</LP_HX_ArmorBuff.label>
+  <!-- 影界之甲：受到的伤害 ×0.8。 -->
+  <LP_HX_ArmorBuff.description>Armor of the Shadowfell: damage taken ×0.8.</LP_HX_ArmorBuff.description>
+  <!-- 幽影仆从 -->
+  <LP_HX_SpecterBuff.label>accursed specter</LP_HX_SpecterBuff.label>
+  <!-- 一道幽影在身边劈砍：半径 2.5 内的敌人每 2 秒受光耀伤害（= 严重度）。 -->
+  <LP_HX_SpecterBuff.description>A spectral shadow slashes around you: enemies within radius 2.5 take radiant damage every 2 seconds (= severity).</LP_HX_SpecterBuff.description>
+  <!-- 第三只眼 -->
+  <LP_DI_ThirdEyeBuff.label>the third eye</LP_DI_ThirdEyeBuff.label>
+  <!-- 看清一切：视觉 +30%、射击精度 +10%、近战闪避 +10。 -->
+  <LP_DI_ThirdEyeBuff.description>Seeing everything clearly: sight +30%, shooting accuracy +10%, melee dodge +10.</LP_DI_ThirdEyeBuff.description>
+  <!-- 优雅策略 -->
+  <LP_SB_ElegantBuff.label>elegant maneuver</LP_SB_ElegantBuff.label>
+  <!-- 近战命中 +20%、近战闪避 +15。 -->
+  <LP_SB_ElegantBuff.description>Melee hit +20%, melee dodge +15.</LP_SB_ElegantBuff.description>
+  <!-- 决斗大师 -->
+  <LP_SB_DuelistBuff.label>master duelist</LP_SB_DuelistBuff.label>
+  <!-- 近战伤害 ×1.3、近战闪避 +25。 -->
+  <LP_SB_DuelistBuff.description>Melee damage ×1.3, melee dodge +25.</LP_SB_DuelistBuff.description>
+  <!-- 灵能刀刃 -->
+  <LP_SN_BladesBuff.label>psychic blades</LP_SN_BladesBuff.label>
+  <!-- 念力凝成的刀刃：近战伤害 ×1.25、近战冷却 ×0.9。 -->
+  <LP_SN_BladesBuff.description>A blade congealed from psychic force: melee damage ×1.25, melee cooldown ×0.9.</LP_SN_BladesBuff.description>
+  <!-- 灵能帷幕 -->
+  <LP_SN_VeilBuff.label>psychic veil</LP_SN_VeilBuff.label>
+  <!-- 难以捉摸：移动 ×1.2、近战闪避 +20。 -->
+  <LP_SN_VeilBuff.description>Elusive: movement ×1.2, melee dodge +20.</LP_SN_VeilBuff.description>
+</LanguageData>

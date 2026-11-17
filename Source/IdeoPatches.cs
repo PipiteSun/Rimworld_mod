@@ -14,7 +14,7 @@ namespace LichPhylactery {
   public static void Apply(Harmony h){
    void P(Type t,string method,Type[] args,string prefix=null,string postfix=null){
     var m=args==null?AccessTools.Method(t,method):AccessTools.Method(t,method,args);
-    if(m==null){Log.Warning("[DND边缘大陆] 文化补丁找不到 "+t.Name+"."+method+"，这一条跳过。");return;}
+    if(m==null){Log.Warning("[DND边缘大陆] 文化补丁找不到 ".Loc()+t.Name+"."+method+"，这一条跳过。".Loc());return;}
     h.Patch(m,prefix==null?null:new HarmonyMethod(typeof(IdeoPatches),prefix),postfix==null?null:new HarmonyMethod(typeof(IdeoPatches),postfix));
     Applied.Add(t.Name+"."+method);
    }
@@ -34,7 +34,7 @@ namespace LichPhylactery {
   }
 
   // 2.2 固定神名
-  static void DeitiesPost(IdeoFoundation_Deity __instance){try{IdeoSync.FixDeities(__instance.ideo);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 文化神名："+e,8815611);}}
+  static void DeitiesPost(IdeoFoundation_Deity __instance){try{IdeoSync.FixDeities(__instance.ideo);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 文化神名：".Loc()+e,8815611);}}
   // 5.1 庆典日期固定成模因扩展里的季和日
   static readonly AccessTools.FieldRef<RitualObligationTrigger_Date,int> dayRef=AccessTools.FieldRefAccess<RitualObligationTrigger_Date,int>("triggerDaysSinceStartOfYear");
   static void DatePost(RitualObligationTrigger_Date __instance){var e=IdeoBridge.FestivalExt(__instance.ritual?.def);if(e!=null)dayRef(__instance)=FestivalDay(e);}
@@ -44,7 +44,7 @@ namespace LichPhylactery {
   static void RemoveObligationPost(Precept_Ritual __instance,RitualObligation __0,bool __1){
    if(__1 || __0==null || !__0.expires || __0.TicksUntilExpiration>0 || !IdeoBridge.Linked)return;
    var ext=RitualOutcomeComp_LPFestival.ExtOf(__instance);var god=ext?.deity;if(god==null || __instance.ideo!=IdeoBridge.PlayerIdeo || IdeoBridge.DeityOf(__instance.ideo)!=god)return;
-   FaithUtility.AddFavor(god,-5f,"错过了"+__instance.LabelCap);
+   FaithUtility.AddFavor(god,-5f,"错过了".Loc()+__instance.LabelCap);
   }
   // 4.3 改宗修正
   static void CertaintyPost(Pawn __0,Pawn __1,ref float __result){if(__result>0f)__result*=ConvertFactor(__0,__1);}
@@ -69,17 +69,17 @@ namespace LichPhylactery {
     if(info.defiant){if(Rand.ChanceSeeded(.2f,seed))p.story.traits.RemoveTrait(t);return;}
     var y=info.deity;if(y==null || y==cur || y.devoteeDegree<=0)return;
     if(Rand.ChanceSeeded(cur.EnemyOf(y)?.15f:.3f,seed)){p.story.traits.RemoveTrait(t);p.story.traits.GainTrait(new Trait(Faith.Devotee,y.devoteeDegree,true));}
-   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 改宗信徒特性："+e,8815612);}
+   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 改宗信徒特性：".Loc()+e,8815612);}
   }
   // 8.2 派系戒律、5.4 灰袍葬礼、7.3 圣物
   static void GenerateIdeoPost(IdeoGenerationParms parms,Ideo __result){
    if(__result==null)return;
    try{IdeoBridge.Invalidate();IdeoFactions.ApplyPrecepts(__result,parms.forFaction);IdeoSync.GreyRobeFuneral(__result);var g=IdeoBridge.DeityOf(__result);if(g!=null)IdeoSync.SwapRelic(__result,g);IdeoBridge.Invalidate();}
-   catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 生成文化后处理："+e,8815613);}
+   catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 生成文化后处理：".Loc()+e,8815613);}
   }
   // 9.1 新生儿补文化：母亲 → 父亲 → 玩家主文化。
   static void BirthPost(Thing __result,Pawn __4,Thing __5,Pawn __6){
-   try{if(__result is Pawn baby)NewbornIdeo(baby,__4??__5 as Pawn,__6);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 新生儿文化："+e,8815614);}
+   try{if(__result is Pawn baby)NewbornIdeo(baby,__4??__5 as Pawn,__6);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 新生儿文化：".Loc()+e,8815614);}
   }
   // 原版不给婴儿文化（SetIdeo 对婴儿直接 return），长成儿童时按「接触过的文化」加权随机加入；接触为空就一直没有文化。
   // 所以：出生时给婴儿一个月份量的父母文化接触；长成儿童后仍没有文化的，补上父母 / 玩家主文化。
@@ -93,12 +93,12 @@ namespace LichPhylactery {
   }
   static void JoinPost(Pawn ___pawn,ref bool __result){
    try{if(__result || ___pawn?.ideo==null || ___pawn.Ideo!=null || ___pawn.DevelopmentalStage.Baby() || !IdeoBridge.Active)return;var i=ParentIdeo(___pawn);if(i!=null){___pawn.ideo.SetIdeo(i);__result=___pawn.Ideo!=null;}}
-   catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 儿童补文化："+e,8815616);}
+   catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 儿童补文化：".Loc()+e,8815616);}
   }
   // 7.3 圣物被毁 / 丢失：该神 -20。
   static void RelicLostPost(Precept_Relic __instance,Thing __0){
    if(!IdeoBridge.Linked || __0==null || __instance.ideo!=IdeoBridge.PlayerIdeo)return;
-   var god=FaithUtility.AllDeities.FirstOrDefault(d=>d.relic==__0.def);if(god!=null)FaithUtility.AddFavor(god,-20f,"圣物"+__0.LabelNoCount+"失落");
+   var god=FaithUtility.AllDeities.FirstOrDefault(d=>d.relic==__0.def);if(god!=null)FaithUtility.AddFavor(god,-20f,"圣物".Loc()+__0.LabelNoCount+"失落".Loc());
   }
   // 1.3 杀死巨人；血祭
   static void KillPre(Pawn __instance,out bool __state){__state=!__instance.Dead;}
@@ -107,7 +107,7 @@ namespace LichPhylactery {
    try{
     IdeoAltar.OnKilled(__instance);
     if(dinfo?.Instigator is Pawn k && k.RaceProps.Humanlike && IdeoBridge.IsGiant(__instance))IdeoEvents.Record("LP_HE_GiantKilled",k);
-   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 文化击杀钩子："+e,8815615);}
+   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 文化击杀钩子：".Loc()+e,8815615);}
   }
   // 1.3 施放法术（模组自己的神术、巫妖法术、半神能力；原版灵能也算）
   static void ActivatePost(RimWorld.Ability __instance,bool __result){if(__result && __instance?.pawn!=null && (IdeoBridge.IsSpell(__instance) || __instance.def.IsPsycast))IdeoEvents.Record("LP_HE_SpellCast",__instance.pawn);}

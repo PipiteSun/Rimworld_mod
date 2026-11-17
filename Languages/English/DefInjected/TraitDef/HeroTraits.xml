@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- <color=#E08A3A>英雄之资</color> -->
+  <LP_HeroicSpark.degreeDatas.colorE08A3Acolor.label>&lt;color=#E08A3A&gt;Heroic Spirit&lt;/color&gt;</LP_HeroicSpark.degreeDatas.colorE08A3Acolor.label>
+  <!-- {PAWN_nameDef}身上有说不清的东西——吟游诗人管它叫“英雄之资”。\n\n- 所有传奇属性每点收益 ×1.5（与种族亲和取较大，不相乘）\n- 传奇等级 21～40 每级 3 个传奇属性点（平时 2 个）\n- 六项属性上限 +2\n- 4、8、12、16 级的属性提升每次 3 点（平时 2 点） -->
+  <LP_HeroicSpark.degreeDatas.colorE08A3Acolor.description>{PAWN_nameDef} has something indescribable about them; bards call it "the stuff of heroes".\n\n- All legend attributes are worth ×1.5 per point (takes the larger of this and racial affinity, not multiplied)\n- Legend levels 21-40 give 3 legend points per level (normally 2)\n- Six ability score caps +2\n- Ability score improvements at levels 4, 8, 12 and 16 give 3 points each (normally 2)</LP_HeroicSpark.degreeDatas.colorE08A3Acolor.description>
+  <!-- 强力特性 -->
+  <LP_HeroicSpark.modExtensions.0.kind>power trait</LP_HeroicSpark.modExtensions.0.kind>
+  <!-- <color=#E08A3A>极致·力量</color> -->
+  <LP_Paragon.degreeDatas.colorE08A3Acolor-0.label>&lt;color=#E08A3A&gt;Pinnacle: Strength&lt;/color&gt;</LP_Paragon.degreeDatas.colorE08A3Acolor-0.label>
+  <!-- {PAWN_nameDef}的力量是天生的极致。\n\n- 力量每点正调整值收益 ×2.5，力量上限 26\n- 传奇属性“近战”“血量”每点收益 ×2\n（都与种族亲和取较大，不相乘） -->
+  <LP_Paragon.degreeDatas.colorE08A3Acolor-0.description>{PAWN_nameDef}'s strength is a natural pinnacle.\n\n- Each point of positive Strength modifier is worth ×2.5, Strength cap 26\n- The legend attributes "melee" and "health" are worth ×2 per point\n(each takes the larger of this and racial affinity, not multiplied)</LP_Paragon.degreeDatas.colorE08A3Acolor-0.description>
+  <!-- <color=#E08A3A>极致·敏捷</color> -->
+  <LP_Paragon.degreeDatas.colorE08A3Acolor-1.label>&lt;color=#E08A3A&gt;Pinnacle: Dexterity&lt;/color&gt;</LP_Paragon.degreeDatas.colorE08A3Acolor-1.label>
+  <!-- {PAWN_nameDef}的敏捷是天生的极致。\n\n- 敏捷每点正调整值收益 ×2.5，敏捷上限 26\n- 传奇属性“远程”“近战”每点收益 ×2\n（都与种族亲和取较大，不相乘） -->
+  <LP_Paragon.degreeDatas.colorE08A3Acolor-1.description>{PAWN_nameDef}'s dexterity is a natural pinnacle.\n\n- Each point of positive Dexterity modifier is worth ×2.5, Dexterity cap 26\n- The legend attributes "ranged" and "melee" are worth ×2 per point\n(each takes the larger of this and racial affinity, not multiplied)</LP_Paragon.degreeDatas.colorE08A3Acolor-1.description>
+  <!-- <color=#E08A3A>极致·体质</color> -->
+  <LP_Paragon.degreeDatas.colorE08A3Acolor-2.label>&lt;color=#E08A3A&gt;Pinnacle: Constitution&lt;/color&gt;</LP_Paragon.degreeDatas.colorE08A3Acolor-2.label>
+  <!-- {PAWN_nameDef}的体质是天生的极致。\n\n- 体质每点正调整值收益 ×2.5，体质上限 26\n- 传奇属性“血量”“承受”每点收益 ×2\n（都与种族亲和取较大，不相乘） -->
+  <LP_Paragon.degreeDatas.colorE08A3Acolor-2.description>{PAWN_nameDef}'s constitution is a natural pinnacle.\n\n- Each point of positive Constitution modifier is worth ×2.5, Constitution cap 26\n- The legend attributes "health" and "endurance" are worth ×2 per point\n(each takes the larger of this and racial affinity, not multiplied)</LP_Paragon.degreeDatas.colorE08A3Acolor-2.description>
+  <!-- <color=#E08A3A>极致·智力</color> -->
+  <LP_Paragon.degreeDatas.colorE08A3Acolor-3.label>&lt;color=#E08A3A&gt;Pinnacle: Intelligence&lt;/color&gt;</LP_Paragon.degreeDatas.colorE08A3Acolor-3.label>
+  <!-- {PAWN_nameDef}的智力是天生的极致。\n\n- 智力每点正调整值收益 ×2.5，智力上限 26\n- 传奇属性“学习”“工作”每点收益 ×2\n（都与种族亲和取较大，不相乘） -->
+  <LP_Paragon.degreeDatas.colorE08A3Acolor-3.description>{PAWN_nameDef}'s intelligence is a natural pinnacle.\n\n- Each point of positive Intelligence modifier is worth ×2.5, Intelligence cap 26\n- The legend attributes "learning" and "work" are worth ×2 per point\n(each takes the larger of this and racial affinity, not multiplied)</LP_Paragon.degreeDatas.colorE08A3Acolor-3.description>
+  <!-- <color=#E08A3A>极致·感知</color> -->
+  <LP_Paragon.degreeDatas.colorE08A3Acolor-4.label>&lt;color=#E08A3A&gt;Pinnacle: Wisdom&lt;/color&gt;</LP_Paragon.degreeDatas.colorE08A3Acolor-4.label>
+  <!-- {PAWN_nameDef}的感知是天生的极致。\n\n- 感知每点正调整值收益 ×2.5，感知上限 26\n- 传奇属性“心灵”“回复”每点收益 ×2\n（都与种族亲和取较大，不相乘） -->
+  <LP_Paragon.degreeDatas.colorE08A3Acolor-4.description>{PAWN_nameDef}'s wisdom is a natural pinnacle.\n\n- Each point of positive Wisdom modifier is worth ×2.5, Wisdom cap 26\n- The legend attributes "mind" and "recovery" are worth ×2 per point\n(each takes the larger of this and racial affinity, not multiplied)</LP_Paragon.degreeDatas.colorE08A3Acolor-4.description>
+  <!-- <color=#E08A3A>极致·魅力</color> -->
+  <LP_Paragon.degreeDatas.colorE08A3Acolor-5.label>&lt;color=#E08A3A&gt;Pinnacle: Charisma&lt;/color&gt;</LP_Paragon.degreeDatas.colorE08A3Acolor-5.label>
+  <!-- {PAWN_nameDef}的魅力是天生的极致。\n\n- 魅力每点正调整值收益 ×2.5，魅力上限 26\n- 传奇属性“心灵”“工作”每点收益 ×2\n（都与种族亲和取较大，不相乘） -->
+  <LP_Paragon.degreeDatas.colorE08A3Acolor-5.description>{PAWN_nameDef}'s charisma is a natural pinnacle.\n\n- Each point of positive Charisma modifier is worth ×2.5, Charisma cap 26\n- The legend attributes "mind" and "work" are worth ×2 per point\n(each takes the larger of this and racial affinity, not multiplied)</LP_Paragon.degreeDatas.colorE08A3Acolor-5.description>
+  <!-- 强力特性 -->
+  <LP_Paragon.modExtensions.0.kind>power trait</LP_Paragon.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>天赋·力量</color> -->
+  <LP_GiftedScore.degreeDatas.color5B9BD5color-0.label>&lt;color=#5B9BD5&gt;Talent: Strength&lt;/color&gt;</LP_GiftedScore.degreeDatas.color5B9BD5color-0.label>
+  <!-- {PAWN_nameDef}天生力气大。\n\n- 力量算作“擅长”：每点正调整值收益 ×1.5（与种族亲和取较大，不相乘） -->
+  <LP_GiftedScore.degreeDatas.color5B9BD5color-0.description>{PAWN_nameDef} was born strong.\n\n- Strength counts as "strong": each point of positive modifier is worth ×1.5 (takes the larger of this and racial affinity, not multiplied)</LP_GiftedScore.degreeDatas.color5B9BD5color-0.description>
+  <!-- <color=#5B9BD5>天赋·敏捷</color> -->
+  <LP_GiftedScore.degreeDatas.color5B9BD5color-1.label>&lt;color=#5B9BD5&gt;Talent: Dexterity&lt;/color&gt;</LP_GiftedScore.degreeDatas.color5B9BD5color-1.label>
+  <!-- {PAWN_nameDef}天生手脚灵活。\n\n- 敏捷算作“擅长”：每点正调整值收益 ×1.5（与种族亲和取较大，不相乘） -->
+  <LP_GiftedScore.degreeDatas.color5B9BD5color-1.description>{PAWN_nameDef} was born nimble.\n\n- Dexterity counts as "strong": each point of positive modifier is worth ×1.5 (takes the larger of this and racial affinity, not multiplied)</LP_GiftedScore.degreeDatas.color5B9BD5color-1.description>
+  <!-- <color=#5B9BD5>天赋·体质</color> -->
+  <LP_GiftedScore.degreeDatas.color5B9BD5color-2.label>&lt;color=#5B9BD5&gt;Talent: Constitution&lt;/color&gt;</LP_GiftedScore.degreeDatas.color5B9BD5color-2.label>
+  <!-- {PAWN_nameDef}天生结实。\n\n- 体质算作“擅长”：每点正调整值收益 ×1.5（与种族亲和取较大，不相乘） -->
+  <LP_GiftedScore.degreeDatas.color5B9BD5color-2.description>{PAWN_nameDef} was born sturdy.\n\n- Constitution counts as "strong": each point of positive modifier is worth ×1.5 (takes the larger of this and racial affinity, not multiplied)</LP_GiftedScore.degreeDatas.color5B9BD5color-2.description>
+  <!-- <color=#5B9BD5>天赋·智力</color> -->
+  <LP_GiftedScore.degreeDatas.color5B9BD5color-3.label>&lt;color=#5B9BD5&gt;Talent: Intelligence&lt;/color&gt;</LP_GiftedScore.degreeDatas.color5B9BD5color-3.label>
+  <!-- {PAWN_nameDef}天生聪明。\n\n- 智力算作“擅长”：每点正调整值收益 ×1.5（与种族亲和取较大，不相乘） -->
+  <LP_GiftedScore.degreeDatas.color5B9BD5color-3.description>{PAWN_nameDef} was born clever.\n\n- Intelligence counts as "strong": each point of positive modifier is worth ×1.5 (takes the larger of this and racial affinity, not multiplied)</LP_GiftedScore.degreeDatas.color5B9BD5color-3.description>
+  <!-- <color=#5B9BD5>天赋·感知</color> -->
+  <LP_GiftedScore.degreeDatas.color5B9BD5color-4.label>&lt;color=#5B9BD5&gt;Talent: Wisdom&lt;/color&gt;</LP_GiftedScore.degreeDatas.color5B9BD5color-4.label>
+  <!-- {PAWN_nameDef}天生敏锐。\n\n- 感知算作“擅长”：每点正调整值收益 ×1.5（与种族亲和取较大，不相乘） -->
+  <LP_GiftedScore.degreeDatas.color5B9BD5color-4.description>{PAWN_nameDef} was born perceptive.\n\n- Wisdom counts as "strong": each point of positive modifier is worth ×1.5 (takes the larger of this and racial affinity, not multiplied)</LP_GiftedScore.degreeDatas.color5B9BD5color-4.description>
+  <!-- <color=#5B9BD5>天赋·魅力</color> -->
+  <LP_GiftedScore.degreeDatas.color5B9BD5color-5.label>&lt;color=#5B9BD5&gt;Talent: Charisma&lt;/color&gt;</LP_GiftedScore.degreeDatas.color5B9BD5color-5.label>
+  <!-- {PAWN_nameDef}天生讨人喜欢。\n\n- 魅力算作“擅长”：每点正调整值收益 ×1.5（与种族亲和取较大，不相乘） -->
+  <LP_GiftedScore.degreeDatas.color5B9BD5color-5.description>{PAWN_nameDef} was born likable.\n\n- Charisma counts as "strong": each point of positive modifier is worth ×1.5 (takes the larger of this and racial affinity, not multiplied)</LP_GiftedScore.degreeDatas.color5B9BD5color-5.description>
+  <!-- 强力特性 -->
+  <LP_GiftedScore.modExtensions.0.kind>power trait</LP_GiftedScore.modExtensions.0.kind>
+  <!-- <color=#B070E0>反骨</color> -->
+  <LP_DefyFate.degreeDatas.colorB070E0color.label>&lt;color=#B070E0&gt;Contrarian&lt;/color&gt;</LP_DefyFate.degreeDatas.colorB070E0color.label>
+  <!-- {PAWN_nameDef}偏不信血脉写好的命。\n\n- 种族“笨拙”的属性按 ×1 算\n- 每次属性提升多 1 点（平时 2 点，现在 3 点） -->
+  <LP_DefyFate.degreeDatas.colorB070E0color.description>{PAWN_nameDef} refuses to believe in a fate written by bloodline.\n\n- The race's "clumsy" ability scores count as ×1\n- Each ability score improvement gives 1 extra point (normally 2, now 3)</LP_DefyFate.degreeDatas.colorB070E0color.description>
+  <!-- 强力特性 -->
+  <LP_DefyFate.modExtensions.0.kind>power trait</LP_DefyFate.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>金刚之躯</color> -->
+  <LP_Hardened.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Diamond Body&lt;/color&gt;</LP_Hardened.degreeDatas.color5B9BD5color.label>
+  <!-- {PAWN_nameDef}的身子骨像铁打的。\n\n- 传奇属性“血量”“承受”“回复”每点收益 ×1.5（与种族亲和取较大，不相乘） -->
+  <LP_Hardened.degreeDatas.color5B9BD5color.description>{PAWN_nameDef}'s body seems made of iron.\n\n- The legend attributes "health", "endurance" and "recovery" are worth ×1.5 per point (takes the larger of this and racial affinity, not multiplied)</LP_Hardened.degreeDatas.color5B9BD5color.description>
+  <!-- 强力特性 -->
+  <LP_Hardened.modExtensions.0.kind>power trait</LP_Hardened.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>锋芒</color> -->
+  <LP_Edge.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Keen Edge&lt;/color&gt;</LP_Edge.degreeDatas.color5B9BD5color.label>
+  <!-- {PAWN_nameDef}生来就是打仗的料。\n\n- 传奇属性“近战”“远程”每点收益 ×1.5（与种族亲和取较大，不相乘） -->
+  <LP_Edge.degreeDatas.color5B9BD5color.description>{PAWN_nameDef} was born for war.\n\n- Each point of the legend attributes "melee" and "ranged" is worth ×1.5 (takes the larger of this and racial affinity, not multiplied)</LP_Edge.degreeDatas.color5B9BD5color.description>
+  <!-- 强力特性 -->
+  <LP_Edge.modExtensions.0.kind>power trait</LP_Edge.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>灵光</color> -->
+  <LP_Insight.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Inspiration&lt;/color&gt;</LP_Insight.degreeDatas.color5B9BD5color.label>
+  <!-- {PAWN_nameDef}的脑子里时常闪过别人想不到的东西。\n\n- 传奇属性“心灵”“学习”每点收益 ×1.5（与种族亲和取较大，不相乘）\n- 智力、感知中较高的一项上限 +2 -->
+  <LP_Insight.degreeDatas.color5B9BD5color.description>Things nobody else would think of often flash through {PAWN_nameDef}'s mind.\n\n- The legend attributes "mind" and "learning" are worth ×1.5 per point (takes the larger of this and racial affinity, not multiplied)\n- The higher of Intelligence and Wisdom gets cap +2</LP_Insight.degreeDatas.color5B9BD5color.description>
+  <!-- 强力特性 -->
+  <LP_Insight.modExtensions.0.kind>power trait</LP_Insight.modExtensions.0.kind>
+  <!-- <color=#B070E0>勤勉</color> -->
+  <LP_Diligent.degreeDatas.colorB070E0color.label>&lt;color=#B070E0&gt;Diligent&lt;/color&gt;</LP_Diligent.degreeDatas.colorB070E0color.label>
+  <!-- {PAWN_nameDef}从不偷懒，长进也比别人多一分。\n\n- 6、10、14、18 级各多一次属性提升（这几级本来什么都不给；每次可以加属性，也可以改选专长，二选一） -->
+  <LP_Diligent.degreeDatas.colorB070E0color.description>{PAWN_nameDef} never slacks off and grows a bit more than others.\n\n- One extra ability score improvement at levels 6, 10, 14 and 18 (these levels normally give nothing; each time you can raise abilities or pick a feat instead, one or the other)</LP_Diligent.degreeDatas.colorB070E0color.description>
+  <!-- 强力特性 -->
+  <LP_Diligent.modExtensions.0.kind>power trait</LP_Diligent.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>传奇之胚</color> -->
+  <LP_LegendSeed.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Legend in the Making&lt;/color&gt;</LP_LegendSeed.degreeDatas.color5B9BD5color.label>
+  <!-- {PAWN_nameDef}注定要成为传奇——只是还没到时候。\n\n- 成为传奇冒险者时一次性获得 10 个传奇属性点\n- 500 / 1000 人形击杀里程碑的传奇属性点奖励翻倍（各 6 点） -->
+  <LP_LegendSeed.degreeDatas.color5B9BD5color.description>{PAWN_nameDef} is destined to become a legend, just not yet.\n\n- Gains 10 legend points at once upon becoming a legendary adventurer\n- Legend point rewards for the 500 / 1000 humanlike kill milestones are doubled (6 each)</LP_LegendSeed.degreeDatas.color5B9BD5color.description>
+  <!-- 强力特性 -->
+  <LP_LegendSeed.modExtensions.0.kind>power trait</LP_LegendSeed.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>图腾之魂·熊</color> -->
+  <LP_TotemSpirit.degreeDatas.color5B9BD5color-0.label>&lt;color=#5B9BD5&gt;Totem Spirit: Bear&lt;/color&gt;</LP_TotemSpirit.degreeDatas.color5B9BD5color-0.label>
+  <!-- 熊的灵魂在{PAWN_nameDef}的血里低吼。\n\n- 总体健康低于 50% 时，受到的非心灵伤害 -35%\n- 疼痛休克阈值 +10% -->
+  <LP_TotemSpirit.degreeDatas.color5B9BD5color-0.description>The spirit of the bear growls in {PAWN_nameDef}'s blood.\n\n- With overall health below 50%, non-psychic damage taken -35%\n- Pain shock threshold +10%</LP_TotemSpirit.degreeDatas.color5B9BD5color-0.description>
+  <!-- <color=#5B9BD5>图腾之魂·狼</color> -->
+  <LP_TotemSpirit.degreeDatas.color5B9BD5color-1.label>&lt;color=#5B9BD5&gt;Totem Spirit: Wolf&lt;/color&gt;</LP_TotemSpirit.degreeDatas.color5B9BD5color-1.label>
+  <!-- 狼群的灵魂跟着{PAWN_nameDef}一起狩猎。\n\n- {PAWN_pronoun}近战命中过的目标（8 秒内），其他友军对它近战命中 +15%\n- 近战命中 10% 让目标倒地 1 秒（体型 3 以上无效）\n- 移动速度 +0.3 -->
+  <LP_TotemSpirit.degreeDatas.color5B9BD5color-1.description>The spirit of the wolf pack hunts alongside {PAWN_nameDef}.\n\n- Targets {PAWN_pronoun} has hit in melee (within 8 seconds) get +15% melee hit from other allies\n- Melee hits have a 10% chance to knock the target down for 1 second (no effect on body size 3+)\n- Move speed +0.3</LP_TotemSpirit.degreeDatas.color5B9BD5color-1.description>
+  <!-- <color=#5B9BD5>图腾之魂·鹰</color> -->
+  <LP_TotemSpirit.degreeDatas.color5B9BD5color-2.label>&lt;color=#5B9BD5&gt;Totem Spirit: Eagle&lt;/color&gt;</LP_TotemSpirit.degreeDatas.color5B9BD5color-2.label>
+  <!-- 鹰的灵魂替{PAWN_nameDef}盯着远处。\n\n- 射击时目标掩体的减免减半（和神射手不叠加）\n- 远程武器射程 ×1.15 -->
+  <LP_TotemSpirit.degreeDatas.color5B9BD5color-2.description>The spirit of the eagle watches the distance for {PAWN_nameDef}.\n\n- When shooting, the reduction from the target's cover is halved (doesn't stack with Sharpshooter)\n- Ranged weapon range ×1.15</LP_TotemSpirit.degreeDatas.color5B9BD5color-2.description>
+  <!-- 强力特性 -->
+  <LP_TotemSpirit.modExtensions.0.kind>power trait</LP_TotemSpirit.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>宿敌猎人·龙</color> -->
+  <LP_FavoredEnemy.degreeDatas.color5B9BD5color-0.label>&lt;color=#5B9BD5&gt;Sworn Hunter: Dragons&lt;/color&gt;</LP_FavoredEnemy.degreeDatas.color5B9BD5color-0.label>
+  <!-- {PAWN_nameDef}发誓要猎杀世上的龙。\n\n- 对宿敌（龙：五色真龙、其他龙类）伤害 +25%、命中 +15%\n- 宿敌出现在本地图时提示一次\n- 击杀宿敌累计 50 个后成为“宿敌克星”：伤害 +40%，免疫宿敌施加的眩晕与控制 -->
+  <LP_FavoredEnemy.degreeDatas.color5B9BD5color-0.description>{PAWN_nameDef} swore to hunt the world's dragons.\n\n- Against the sworn foe (dragons: chromatic true dragons, other dragonkind): damage +25%, hit +15%\n- A notice when the sworn foe appears on this map\n- After 50 sworn-foe kills in total, becomes a "Foe Slayer": damage +40%, immune to stuns and control effects from the sworn foe</LP_FavoredEnemy.degreeDatas.color5B9BD5color-0.description>
+  <!-- <color=#5B9BD5>宿敌猎人·巨人</color> -->
+  <LP_FavoredEnemy.degreeDatas.color5B9BD5color-1.label>&lt;color=#5B9BD5&gt;Sworn Hunter: Giants&lt;/color&gt;</LP_FavoredEnemy.degreeDatas.color5B9BD5color-1.label>
+  <!-- {PAWN_nameDef}发誓要猎杀巨人。\n\n- 对宿敌（体型 2 以上的巨人种族）伤害 +25%、命中 +15%\n- 宿敌出现在本地图时提示一次\n- 击杀宿敌累计 50 个后成为“宿敌克星”：伤害 +40%，免疫宿敌施加的眩晕与控制 -->
+  <LP_FavoredEnemy.degreeDatas.color5B9BD5color-1.description>{PAWN_nameDef} swore to hunt giants.\n\n- Against the sworn foe (giant races of body size 2+): damage +25%, hit +15%\n- A notice when the sworn foe appears on this map\n- After 50 sworn-foe kills in total, becomes a "Foe Slayer": damage +40%, immune to stuns and control effects from the sworn foe</LP_FavoredEnemy.degreeDatas.color5B9BD5color-1.description>
+  <!-- <color=#5B9BD5>宿敌猎人·不死</color> -->
+  <LP_FavoredEnemy.degreeDatas.color5B9BD5color-2.label>&lt;color=#5B9BD5&gt;Sworn Hunter: Undead&lt;/color&gt;</LP_FavoredEnemy.degreeDatas.color5B9BD5color-2.label>
+  <!-- {PAWN_nameDef}发誓要让死者安息。\n\n- 对宿敌（巫妖、死灵造物、死亡骑士、半巫妖、Anomaly 尸鬼）伤害 +25%、命中 +15%\n- 宿敌出现在本地图时提示一次\n- 击杀宿敌累计 50 个后成为“宿敌克星”：伤害 +40%，免疫宿敌施加的眩晕与控制 -->
+  <LP_FavoredEnemy.degreeDatas.color5B9BD5color-2.description>{PAWN_nameDef} swore to lay the dead to rest.\n\n- Against the sworn foe (liches, necromantic constructs, death knights, demiliches, Anomaly ghouls): damage +25%, hit +15%\n- A notice when the sworn foe appears on this map\n- After 50 sworn-foe kills in total, becomes a "Foe Slayer": damage +40%, immune to stuns and control effects from the sworn foe</LP_FavoredEnemy.degreeDatas.color5B9BD5color-2.description>
+  <!-- <color=#5B9BD5>宿敌猎人·邪魔</color> -->
+  <LP_FavoredEnemy.degreeDatas.color5B9BD5color-3.label>&lt;color=#5B9BD5&gt;Sworn Hunter: Fiends&lt;/color&gt;</LP_FavoredEnemy.degreeDatas.color5B9BD5color-3.label>
+  <!-- {PAWN_nameDef}发誓要把邪魔赶回深渊和九狱。\n\n- 对宿敌（深渊恶魔、九狱魔鬼、炎魔、寒冰魔、契约恶魔）伤害 +25%、命中 +15%\n- 宿敌出现在本地图时提示一次\n- 击杀宿敌累计 50 个后成为“宿敌克星”：伤害 +40%，免疫宿敌施加的眩晕与控制 -->
+  <LP_FavoredEnemy.degreeDatas.color5B9BD5color-3.description>{PAWN_nameDef} swore to drive the fiends back into the Abyss and the Nine Hells.\n\n- Against the sworn foe (abyssal demons, devils of the Nine Hells, balors, ice devils, pact fiends): damage +25%, hit +15%\n- A notice when the sworn foe appears on this map\n- After 50 sworn-foe kills in total, becomes a "Foe Slayer": damage +40%, immune to stuns and control effects from the sworn foe</LP_FavoredEnemy.degreeDatas.color5B9BD5color-3.description>
+  <!-- <color=#5B9BD5>宿敌猎人·异怪</color> -->
+  <LP_FavoredEnemy.degreeDatas.color5B9BD5color-4.label>&lt;color=#5B9BD5&gt;Sworn Hunter: Aberrations&lt;/color&gt;</LP_FavoredEnemy.degreeDatas.color5B9BD5color-4.label>
+  <!-- {PAWN_nameDef}见过幽暗地域里的东西，从此只想把它们杀干净。\n\n- 对宿敌（夺心魔、眼魔、贝希尔、六臂蛇人）伤害 +25%、命中 +15%\n- 宿敌出现在本地图时提示一次\n- 击杀宿敌累计 50 个后成为“宿敌克星”：伤害 +40%，免疫宿敌施加的眩晕与控制 -->
+  <LP_FavoredEnemy.degreeDatas.color5B9BD5color-4.description>{PAWN_nameDef} has seen the things of the Underdark and since then only wants to wipe them out.\n\n- Against the sworn foe (mind flayers, beholders, behirs, mariliths): damage +25%, hit +15%\n- A notice when the sworn foe appears on this map\n- After 50 sworn-foe kills in total, becomes a "Foe Slayer": damage +40%, immune to stuns and control effects from the sworn foe</LP_FavoredEnemy.degreeDatas.color5B9BD5color-4.description>
+  <!-- <color=#5B9BD5>宿敌猎人·野兽</color> -->
+  <LP_FavoredEnemy.degreeDatas.color5B9BD5color-5.label>&lt;color=#5B9BD5&gt;Sworn Hunter: Beasts&lt;/color&gt;</LP_FavoredEnemy.degreeDatas.color5B9BD5color-5.label>
+  <!-- {PAWN_nameDef}是荒野里长大的猎手。\n\n- 对宿敌（动物）伤害 +25%、命中 +15%\n- 宿敌出现在本地图时提示一次\n- 击杀宿敌累计 50 个后成为“宿敌克星”：伤害 +40%，免疫宿敌施加的眩晕与控制 -->
+  <LP_FavoredEnemy.degreeDatas.color5B9BD5color-5.description>{PAWN_nameDef} is a hunter raised in the wilds.\n\n- Against the sworn foe (animals): damage +25%, hit +15%\n- A notice when the sworn foe appears on this map\n- After 50 sworn-foe kills in total, becomes a "Foe Slayer": damage +40%, immune to stuns and control effects from the sworn foe</LP_FavoredEnemy.degreeDatas.color5B9BD5color-5.description>
+  <!-- <color=#5B9BD5>宿敌猎人·仇敌派系</color> -->
+  <LP_FavoredEnemy.degreeDatas.color5B9BD5color-6.label>&lt;color=#5B9BD5&gt;Sworn Hunter: Enemy Faction&lt;/color&gt;</LP_FavoredEnemy.degreeDatas.color5B9BD5color-6.label>
+  <!-- {PAWN_nameDef}和一个派系有血仇（派系名见悬停说明下方）。\n\n- 对宿敌（那个派系的成员）伤害 +25%、命中 +15%\n- 宿敌出现在本地图时提示一次\n- 击杀宿敌累计 50 个后成为“宿敌克星”：伤害 +40%，免疫宿敌施加的眩晕与控制 -->
+  <LP_FavoredEnemy.degreeDatas.color5B9BD5color-6.description>{PAWN_nameDef} has a blood feud with a faction (see the faction name below the tooltip).\n\n- Against the sworn foe (members of that faction): damage +25%, hit +15%\n- A notice when the sworn foe appears on this map\n- After 50 sworn-foe kills in total, becomes a "Foe Slayer": damage +40%, immune to stuns and control effects from the sworn foe</LP_FavoredEnemy.degreeDatas.color5B9BD5color-6.description>
+  <!-- 强力特性 -->
+  <LP_FavoredEnemy.modExtensions.0.kind>power trait</LP_FavoredEnemy.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>同调者</color> -->
+  <LP_Attuner.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Attuned&lt;/color&gt;</LP_Attuner.degreeDatas.color5B9BD5color.label>
+  <!-- 魔法物品在{PAWN_nameDef}手里格外听话。\n\n- 身上魔法物品（1.45.0 魔法物品、魔法衣甲）自带的属性加成 ×1.25\n- 戒指最多戴三枚（平时两枚）\n- {PAWN_pronoun}击杀宿敌冠军时，20% 多掉一件魔法物品 -->
+  <LP_Attuner.degreeDatas.color5B9BD5color.description>Magic items are especially obedient in {PAWN_nameDef}'s hands.\n\n- Stat bonuses built into worn magic items (1.45.0 magic items, magic apparel) ×1.25\n- Can wear up to three rings (normally two)\n- When {PAWN_pronoun} kills a nemesis champion, a 20% chance of one extra magic item drop</LP_Attuner.degreeDatas.color5B9BD5color.description>
+  <!-- 强力特性 -->
+  <LP_Attuner.modExtensions.0.kind>power trait</LP_Attuner.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>元素之触·火</color> -->
+  <LP_ElementTouched.degreeDatas.color5B9BD5color-0.label>&lt;color=#5B9BD5&gt;Elemental Touch: Fire&lt;/color&gt;</LP_ElementTouched.degreeDatas.color5B9BD5color-0.label>
+  <!-- 火元素在{PAWN_nameDef}身上留下了印记。\n\n- 任何武器命中额外造成 3 点灼烧伤害\n- 受到的火焰类伤害 -50%\n- {PAWN_possessive}火焰类法术、神术、法杖伤害 +30%\n- 火元素裔：改为火焰伤害 -75%，不加附伤 -->
+  <LP_ElementTouched.degreeDatas.color5B9BD5color-0.description>Elemental fire has left its mark on {PAWN_nameDef}.\n\n- Every weapon hit deals an extra 3 burn damage\n- Fire-type damage taken -50%\n- {PAWN_possessive} fire-type spell, divine magic and staff damage +30%\n- Fire genasi: instead fire damage -75%, no added damage</LP_ElementTouched.degreeDatas.color5B9BD5color-0.description>
+  <!-- <color=#5B9BD5>元素之触·冰</color> -->
+  <LP_ElementTouched.degreeDatas.color5B9BD5color-1.label>&lt;color=#5B9BD5&gt;Elemental Touch: Ice&lt;/color&gt;</LP_ElementTouched.degreeDatas.color5B9BD5color-1.label>
+  <!-- 寒冰元素在{PAWN_nameDef}身上留下了印记。\n\n- 任何武器命中额外造成 3 点寒霜伤害，并让目标减速 2 秒\n- 受到的寒冷类伤害 -50%\n- {PAWN_possessive}寒冷类法术、神术、法杖伤害 +30%\n- 水元素裔：改为寒冷伤害 -75%，不加附伤 -->
+  <LP_ElementTouched.degreeDatas.color5B9BD5color-1.description>Elemental ice has left its mark on {PAWN_nameDef}.\n\n- Every weapon hit deals an extra 3 frost damage and slows the target for 2 seconds\n- Cold-type damage taken -50%\n- {PAWN_possessive} cold-type spell, divine magic and staff damage +30%\n- Water genasi: instead cold damage -75%, no added damage</LP_ElementTouched.degreeDatas.color5B9BD5color-1.description>
+  <!-- <color=#5B9BD5>元素之触·雷</color> -->
+  <LP_ElementTouched.degreeDatas.color5B9BD5color-2.label>&lt;color=#5B9BD5&gt;Elemental Touch: Lightning&lt;/color&gt;</LP_ElementTouched.degreeDatas.color5B9BD5color-2.label>
+  <!-- 雷电元素在{PAWN_nameDef}身上留下了印记。\n\n- 任何武器命中额外造成 3 点电击伤害，10% 跳到 2 格内另一个敌人\n- 受到的雷电类伤害 -50%\n- {PAWN_possessive}雷电类法术、神术、法杖伤害 +30%\n- 风元素裔：改为雷电伤害 -75%，不加附伤 -->
+  <LP_ElementTouched.degreeDatas.color5B9BD5color-2.description>Elemental lightning has left its mark on {PAWN_nameDef}.\n\n- Every weapon hit deals an extra 3 electrical damage, with a 10% chance to jump to another enemy within 2 cells\n- Lightning-type damage taken -50%\n- {PAWN_possessive} lightning-type spell, divine magic and staff damage +30%\n- Air genasi: instead lightning damage -75%, no added damage</LP_ElementTouched.degreeDatas.color5B9BD5color-2.description>
+  <!-- <color=#5B9BD5>元素之触·酸</color> -->
+  <LP_ElementTouched.degreeDatas.color5B9BD5color-3.label>&lt;color=#5B9BD5&gt;Elemental Touch: Acid&lt;/color&gt;</LP_ElementTouched.degreeDatas.color5B9BD5color-3.label>
+  <!-- 强酸元素在{PAWN_nameDef}身上留下了印记。\n\n- 任何武器命中额外造成 3 点强酸伤害\n- 受到的强酸类伤害 -50%\n- {PAWN_possessive}强酸类法术、神术、法杖伤害 +30%\n- 土元素裔：改为强酸伤害 -75%，不加附伤 -->
+  <LP_ElementTouched.degreeDatas.color5B9BD5color-3.description>Elemental acid has left its mark on {PAWN_nameDef}.\n\n- Every weapon hit deals an extra 3 acid damage\n- Acid-type damage taken -50%\n- {PAWN_possessive} acid-type spell, divine magic and staff damage +30%\n- Earth genasi: instead acid damage -75%, no added damage</LP_ElementTouched.degreeDatas.color5B9BD5color-3.description>
+  <!-- 强力特性 -->
+  <LP_ElementTouched.modExtensions.0.kind>power trait</LP_ElementTouched.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>法术抗体</color> -->
+  <LP_SpellWarded.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Spell Immunity&lt;/color&gt;</LP_SpellWarded.degreeDatas.color5B9BD5color.label>
+  <!-- 魔法在{PAWN_nameDef}身上总是打滑。\n\n- 敌方的灵能、法术、神术伤害 -35%（没有武器的伤害、法杖伤害）\n- 敌方的眩晕、魅惑、支配、心灵震爆 50% 无效\n- 只抵抗敌对施法者，友方的增益法术照常生效\n- 代价：心灵敏感度 -20% -->
+  <LP_SpellWarded.degreeDatas.color5B9BD5color.description>Magic always slips off {PAWN_nameDef}.\n\n- Enemy psychic, spell and divine damage -35% (weaponless damage, staff damage)\n- Enemy stuns, charms, domination and psychic blasts have a 50% chance to fail\n- Only resists hostile casters; friendly buff spells work as usual\n- Cost: psychic sensitivity -20%</LP_SpellWarded.degreeDatas.color5B9BD5color.description>
+  <!-- 强力特性 -->
+  <LP_SpellWarded.modExtensions.0.kind>power trait</LP_SpellWarded.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>决斗者</color> -->
+  <LP_Duelist.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Duelist&lt;/color&gt;</LP_Duelist.degreeDatas.color5B9BD5color.label>
+  <!-- {PAWN_nameDef}最擅长一对一。\n\n- 身边（1.5 格内）只有一个敌人时：近战命中 +25%、近战闪避 +25%，闪避成功 50% 立即反击一次\n- 被 3 个以上敌人贴身时近战命中 -10%\n（身边敌人数每 4 秒更新一次） -->
+  <LP_Duelist.degreeDatas.color5B9BD5color.description>{PAWN_nameDef} is best one-on-one.\n\n- With only one enemy adjacent (within 1.5 cells): melee hit +25%, melee dodge +25%, and a successful dodge has a 50% chance of an instant counterattack\n- With 3 or more enemies close in: melee hit -10%\n(The number of nearby enemies updates every 4 seconds)</LP_Duelist.degreeDatas.color5B9BD5color.description>
+  <!-- 强力特性 -->
+  <LP_Duelist.modExtensions.0.kind>power trait</LP_Duelist.modExtensions.0.kind>
+  <!-- <color=#E0B040>预言之子</color> -->
+  <LP_Prophesied.degreeDatas.colorE0B040color.label>&lt;color=#E0B040&gt;Child of Prophecy&lt;/color&gt;</LP_Prophesied.degreeDatas.colorE0B040color.label>
+  <!-- {PAWN_nameDef}出生那天，有人说出了一句预言（预言内容见悬停说明下方）。\n\n觉醒：命运未尽——预言兑现之前，致命伤改为倒地并止血（冷却 20 天）；对预言目标伤害 +25%。\n显现（冒险者 10 级）：命运未尽冷却 12 天；{PAWN_pronoun}倒地时 5 格内友军“为了预言之子”命中 +10%（1 小时）。\n升华（预言兑现）：一次性获得下一级所需的全部经验，全殖民地“预言兑现”心情 +8（10 天）；命运未尽换成命运主宰——每天一次，下一次攻击必中且伤害 ×2。 -->
+  <LP_Prophesied.degreeDatas.colorE0B040color.description>On the day {PAWN_nameDef} was born, someone spoke a prophecy (see the prophecy below the tooltip).\n\nAwakened: fate unfinished: until the prophecy is fulfilled, lethal wounds down you instead and stop bleeding (cooldown 20 days); +25% damage against the prophecy's target.\nManifest (adventurer level 10): fate unfinished cooldown 12 days; when {PAWN_pronoun} is downed, allies within 5 cells get "for the child of prophecy" hit +10% (1 hour).\nExalted (prophecy fulfilled): gains all the XP needed for the next level at once, and the whole colony gets "prophecy fulfilled" mood +8 (10 days); fate unfinished is replaced by master of fate: once per day, the next attack always hits for ×2 damage.</LP_Prophesied.degreeDatas.colorE0B040color.description>
+  <!-- 天命 -->
+  <LP_Prophesied.modExtensions.0.kind>destiny</LP_Prophesied.modExtensions.0.kind>
+  <!-- <color=#E0B040>邪契者·邪魔</color> -->
+  <LP_PactDestiny.degreeDatas.colorE0B040color-0.label>&lt;color=#E0B040&gt;Pactbound: Fiend&lt;/color&gt;</LP_PactDestiny.degreeDatas.colorE0B040color-0.label>
+  <!-- {PAWN_nameDef}和九狱的一位大魔鬼有约。\n\n所有阶段：邪契魔能爆（每道 12 伤害，1/5/11/17 级 1/2/3/4 道，冷却 4 秒，不耗心灵熵）。\n觉醒：每次击杀获得临时伤害吸收 15 + 冒险者等级（最多 60）。\n显现（10 级）：魔能爆命中点燃目标。\n升华（传奇冒险者）：火焰伤害 -50%；每天一次“直坠地狱”（单体 10 秒共 60 点灼烧伤害，期间目标动弹不得）。\n偿契：每 15～20 天宗主提一次要求，3 天内处决一名囚犯或交 500 银。失败 → 宗主之怒 10 天（魔能爆不能用、心情 -10）；连续两次失败降一阶，觉醒阶再连败特性消失并“背弃之契”心情 -15（15 天）。 -->
+  <LP_PactDestiny.degreeDatas.colorE0B040color-0.description>{PAWN_nameDef} has a pact with an archdevil of the Nine Hells.\n\nAll stages: Pactbound Eldritch Blast (12 damage per beam, 1/2/3/4 beams at levels 1/5/11/17, cooldown 4 seconds, no neural heat).\nAwakened: each kill grants temporary damage absorption of 15 + adventurer level (up to 60).\nManifest (level 10): eldritch blast hits ignite the target.\nExalted (legendary adventurer): fire damage -50%; once per day "Straight to hell" (single target, 60 burn damage over 10 seconds, target can't move meanwhile).\nPact payment: every 15-20 days the patron makes a demand: within 3 days execute a prisoner or pay 500 silver. Failure → patron's wrath for 10 days (eldritch blast unusable, mood -10); two failures in a row drop one stage, and further consecutive failures at the awakened stage remove the trait with "forsaken pact" mood -15 (15 days).</LP_PactDestiny.degreeDatas.colorE0B040color-0.description>
+  <!-- <color=#E0B040>邪契者·妖精</color> -->
+  <LP_PactDestiny.degreeDatas.colorE0B040color-1.label>&lt;color=#E0B040&gt;Pactbound: Fey&lt;/color&gt;</LP_PactDestiny.degreeDatas.colorE0B040color-1.label>
+  <!-- {PAWN_nameDef}和妖精女王有约。\n\n所有阶段：邪契魔能爆（每道 12 伤害，1/5/11/17 级 1/2/3/4 道，冷却 4 秒，不耗心灵熵）。\n觉醒：妖精步——传送到 8 格内，冷却 30 秒。\n显现（10 级）：被命中时 20% 让攻击者迷惑 3 秒。\n升华（传奇冒险者）：每天一次“妖精魅惑”，6 格内的敌人失神 10 秒（首领无效）。\n偿契：每 15～20 天宗主提一次要求，3 天内举办派对 / 婚礼，或交一件品质优秀以上的艺术品。失败 → 宗主之怒 10 天（魔能爆不能用、心情 -10）；连续两次失败降一阶，觉醒阶再连败特性消失并“背弃之契”心情 -15（15 天）。 -->
+  <LP_PactDestiny.degreeDatas.colorE0B040color-1.description>{PAWN_nameDef} has a pact with the Fey Queen.\n\nAll stages: Pactbound Eldritch Blast (12 damage per beam, 1/2/3/4 beams at levels 1/5/11/17, cooldown 4 seconds, no neural heat).\nAwakened: Fey Step: teleport within 8 cells, cooldown 30 seconds.\nManifest (level 10): when hit, 20% chance to confuse the attacker for 3 seconds.\nExalted (legendary adventurer): once per day "Fey charm": enemies within 6 cells are dazed for 10 seconds (no effect on bosses).\nPact payment: every 15-20 days the patron makes a demand: within 3 days hold a party / wedding, or hand over an artwork of excellent quality or better. Failure → patron's wrath for 10 days (eldritch blast unusable, mood -10); two failures in a row drop one stage, and further consecutive failures at the awakened stage remove the trait with "forsaken pact" mood -15 (15 days).</LP_PactDestiny.degreeDatas.colorE0B040color-1.description>
+  <!-- <color=#E0B040>邪契者·旧日</color> -->
+  <LP_PactDestiny.degreeDatas.colorE0B040color-2.label>&lt;color=#E0B040&gt;Pactbound: Old One&lt;/color&gt;</LP_PactDestiny.degreeDatas.colorE0B040color-2.label>
+  <!-- {PAWN_nameDef}在梦里听见了星界之外的低语，并且回答了它。\n\n所有阶段：邪契魔能爆（每道 12 伤害，1/5/11/17 级 1/2/3/4 道，冷却 4 秒，不耗心灵熵）。\n觉醒：心灵敏感度 +20%。\n显现（10 级）：魔能爆命中让目标眩晕 1 秒（同一目标 10 秒一次）。\n升华（传奇冒险者）：每天一次“异界触须”，半径 3 的区域里敌人被困 15 秒并持续受伤。\n偿契：每 15～20 天宗主提一次要求，3 天内本人冥想 8 小时或研读耐瑟瑞尔卷轴 1 小时。失败 → 宗主之怒 10 天（魔能爆不能用、心情 -10）；连续两次失败降一阶，觉醒阶再连败特性消失并“背弃之契”心情 -15（15 天）。 -->
+  <LP_PactDestiny.degreeDatas.colorE0B040color-2.description>{PAWN_nameDef} heard whispers from beyond the stars in a dream, and answered them.\n\nAll stages: Pactbound Eldritch Blast (12 damage per beam, 1/2/3/4 beams at levels 1/5/11/17, cooldown 4 seconds, no neural heat).\nAwakened: psychic sensitivity +20%.\nManifest (level 10): eldritch blast hits stun the target for 1 second (once per 10 seconds per target).\nExalted (legendary adventurer): once per day "Otherworldly tentacles": enemies in a radius-3 area are trapped for 15 seconds and keep taking damage.\nPact payment: every 15-20 days the patron makes a demand: within 3 days meditate personally for 8 hours or study a Netherese scroll for 1 hour. Failure → patron's wrath for 10 days (eldritch blast unusable, mood -10); two failures in a row drop one stage, and further consecutive failures at the awakened stage remove the trait with "forsaken pact" mood -15 (15 days).</LP_PactDestiny.degreeDatas.colorE0B040color-2.description>
+  <!-- 天命 -->
+  <LP_PactDestiny.modExtensions.0.kind>destiny</LP_PactDestiny.modExtensions.0.kind>
+  <!-- <color=#E0B040>魔网之子</color> -->
+  <LP_WeaveChild.degreeDatas.colorE0B040color.label>&lt;color=#E0B040&gt;Child of the Weave&lt;/color&gt;</LP_WeaveChild.degreeDatas.colorE0B040color.label>
+  <!-- 魔网在{PAWN_nameDef}身边像水一样流动。\n\n觉醒：法杖伤害 +20%；装了 VPE 时灵能能力的心灵熵消耗 -25%，没装时心灵敏感度 +15%。\n显现（冒险者 10 级）：每次施法 15% 不进冷却；没装 VPE 时改为法杖射程 +3。\n升华（传奇冒险者）：每天一次“魔网涌动”，60 秒内施法不耗心灵熵、不进冷却；魔网震颤和魔网崩溃对{PAWN_objective}无效。 -->
+  <LP_WeaveChild.degreeDatas.colorE0B040color.description>The Weave flows like water around {PAWN_nameDef}.\n\nAwakened: staff damage +20%; with VPE, psycast neural heat cost -25%, without it psychic sensitivity +15%.\nManifest (adventurer level 10): each cast has a 15% chance to trigger no cooldown; without VPE, staff range +3 instead.\nExalted (legendary adventurer): once per day "Weave surge": for 60 seconds casting costs no neural heat and triggers no cooldown; Weave tremors and Weave collapse have no effect on {PAWN_objective}.</LP_WeaveChild.degreeDatas.colorE0B040color.description>
+  <!-- 天命 -->
+  <LP_WeaveChild.modExtensions.0.kind>destiny</LP_WeaveChild.modExtensions.0.kind>
+  <!-- <color=#E0B040>神之勇士·洛山达</color> -->
+  <LP_DivineChampion.degreeDatas.colorE0B040color-0.label>&lt;color=#E0B040&gt;Champion of the Gods: Lathander&lt;/color&gt;</LP_DivineChampion.degreeDatas.colorE0B040color-0.label>
+  <!-- 晨曦之主洛山达选中了{PAWN_nameDef}。\n\n觉醒：牧师 / 圣武士路径经验 +30%，圣坛祈祷得到的神眷 ×2，对不死生物伤害 +20%。\n显现（冒险者 10 级）：成神之路进度 ×1.5，洛山达的领域神术冷却 -25%。\n升华（传奇冒险者）：神明干预——殖民地同一张地图上 3 名以上殖民者倒地时自动降下神迹（每季一次）：晨光普照，全员治愈伤口、止血。成神时半神等级 +1 起步。 -->
+  <LP_DivineChampion.degreeDatas.colorE0B040color-0.description>Lathander, the Morninglord, has chosen {PAWN_nameDef}.\n\nAwakened: cleric / paladin path XP +30%, divine favor from praying at the altar ×2, +20% damage against undead.\nManifest (adventurer level 10): Path of Ascension progress ×1.5, Lathander's domain spell cooldown -25%.\nExalted (legendary adventurer): divine intervention: when 3 or more colonists on the same map are downed, a miracle descends automatically (once per quarter): morning light shines and everyone's wounds heal and stop bleeding. Starts as demigod rank +1 upon ascension.</LP_DivineChampion.degreeDatas.colorE0B040color-0.description>
+  <!-- <color=#E0B040>神之勇士·提尔</color> -->
+  <LP_DivineChampion.degreeDatas.colorE0B040color-1.label>&lt;color=#E0B040&gt;Champion of the Gods: Tyr&lt;/color&gt;</LP_DivineChampion.degreeDatas.colorE0B040color-1.label>
+  <!-- 公正之神提尔选中了{PAWN_nameDef}。\n\n觉醒：牧师 / 圣武士路径经验 +30%，圣坛祈祷得到的神眷 ×2，对邪魔伤害 +20%。\n显现（冒险者 10 级）：成神之路进度 ×1.5，提尔的领域神术冷却 -25%。\n升华（传奇冒险者）：神明干预——殖民地同一张地图上 3 名以上殖民者倒地时自动降下神迹（每季一次）：公正之剑，30 秒内全员近战伤害 +50%。成神时半神等级 +1 起步。 -->
+  <LP_DivineChampion.degreeDatas.colorE0B040color-1.description>Tyr, god of justice, has chosen {PAWN_nameDef}.\n\nAwakened: cleric / paladin path XP +30%, divine favor from praying at the altar ×2, +20% damage against fiends.\nManifest (adventurer level 10): Path of Ascension progress ×1.5, Tyr's domain spell cooldown -25%.\nExalted (legendary adventurer): divine intervention: when 3 or more colonists on the same map are downed, a miracle descends automatically (once per quarter): sword of justice, everyone's melee damage +50% for 30 seconds. Starts as demigod rank +1 upon ascension.</LP_DivineChampion.degreeDatas.colorE0B040color-1.description>
+  <!-- <color=#E0B040>神之勇士·密斯特拉</color> -->
+  <LP_DivineChampion.degreeDatas.colorE0B040color-2.label>&lt;color=#E0B040&gt;Champion of the Gods: Mystra&lt;/color&gt;</LP_DivineChampion.degreeDatas.colorE0B040color-2.label>
+  <!-- 魔法女神密斯特拉选中了{PAWN_nameDef}。\n\n觉醒：牧师 / 圣武士路径经验 +30%，圣坛祈祷得到的神眷 ×2，对异怪伤害 +20%。\n显现（冒险者 10 级）：成神之路进度 ×1.5，密斯特拉的领域神术冷却 -25%。\n升华（传奇冒险者）：神明干预——殖民地同一张地图上 3 名以上殖民者倒地时自动降下神迹（每季一次）：魔网断流，打断全部敌方施法，所有敌人眩晕 5 秒。成神时半神等级 +1 起步。 -->
+  <LP_DivineChampion.degreeDatas.colorE0B040color-2.description>Mystra, goddess of magic, has chosen {PAWN_nameDef}.\n\nAwakened: cleric / paladin path XP +30%, divine favor from praying at the altar ×2, +20% damage against aberrations.\nManifest (adventurer level 10): Path of Ascension progress ×1.5, Mystra's domain spell cooldown -25%.\nExalted (legendary adventurer): divine intervention: when 3 or more colonists on the same map are downed, a miracle descends automatically (once per quarter): the Weave severed, interrupting all enemy casting and stunning every enemy for 5 seconds. Starts as demigod rank +1 upon ascension.</LP_DivineChampion.degreeDatas.colorE0B040color-2.description>
+  <!-- <color=#E0B040>神之勇士·凯兰沃</color> -->
+  <LP_DivineChampion.degreeDatas.colorE0B040color-3.label>&lt;color=#E0B040&gt;Champion of the Gods: Kelemvor&lt;/color&gt;</LP_DivineChampion.degreeDatas.colorE0B040color-3.label>
+  <!-- 死亡之神凯兰沃选中了{PAWN_nameDef}。\n\n觉醒：牧师 / 圣武士路径经验 +30%，圣坛祈祷得到的神眷 ×2，对不死生物伤害 +20%。\n显现（冒险者 10 级）：成神之路进度 ×1.5，凯兰沃的领域神术冷却 -25%。\n升华（传奇冒险者）：神明干预——殖民地同一张地图上 3 名以上殖民者倒地时自动降下神迹（每季一次）：死亡止步，倒地的殖民者全部止血，1 天内不会失血而死。成神时半神等级 +1 起步。 -->
+  <LP_DivineChampion.degreeDatas.colorE0B040color-3.description>Kelemvor, god of death, has chosen {PAWN_nameDef}.\n\nAwakened: cleric / paladin path XP +30%, divine favor from praying at the altar ×2, +20% damage against undead.\nManifest (adventurer level 10): Path of Ascension progress ×1.5, Kelemvor's domain spell cooldown -25%.\nExalted (legendary adventurer): divine intervention: when 3 or more colonists on the same map are downed, a miracle descends automatically (once per quarter): death halted, all downed colonists stop bleeding and won't bleed out for 1 day. Starts as demigod rank +1 upon ascension.</LP_DivineChampion.degreeDatas.colorE0B040color-3.description>
+  <!-- <color=#E0B040>神之勇士·马拉尔</color> -->
+  <LP_DivineChampion.degreeDatas.colorE0B040color-4.label>&lt;color=#E0B040&gt;Champion of the Gods: Malar&lt;/color&gt;</LP_DivineChampion.degreeDatas.colorE0B040color-4.label>
+  <!-- 兽王马拉尔选中了{PAWN_nameDef}。\n\n觉醒：牧师 / 圣武士路径经验 +30%，圣坛祈祷得到的神眷 ×2，对野兽伤害 +20%。\n显现（冒险者 10 级）：成神之路进度 ×1.5，马拉尔的领域神术冷却 -25%。\n升华（传奇冒险者）：神明干预——殖民地同一张地图上 3 名以上殖民者倒地时自动降下神迹（每季一次）：兽王咆哮，地图上的敌人恐慌逃跑 10 秒。成神时半神等级 +1 起步。 -->
+  <LP_DivineChampion.degreeDatas.colorE0B040color-4.description>Malar, the Beastlord, has chosen {PAWN_nameDef}.\n\nAwakened: cleric / paladin path XP +30%, divine favor from praying at the altar ×2, +20% damage against beasts.\nManifest (adventurer level 10): Path of Ascension progress ×1.5, Malar's domain spell cooldown -25%.\nExalted (legendary adventurer): divine intervention: when 3 or more colonists on the same map are downed, a miracle descends automatically (once per quarter): the Beastlord's roar, enemies on the map panic and flee for 10 seconds. Starts as demigod rank +1 upon ascension.</LP_DivineChampion.degreeDatas.colorE0B040color-4.description>
+  <!-- <color=#E0B040>神之勇士·塔洛斯</color> -->
+  <LP_DivineChampion.degreeDatas.colorE0B040color-5.label>&lt;color=#E0B040&gt;Champion of the Gods: Talos&lt;/color&gt;</LP_DivineChampion.degreeDatas.colorE0B040color-5.label>
+  <!-- 风暴之神塔洛斯选中了{PAWN_nameDef}。\n\n觉醒：牧师 / 圣武士路径经验 +30%，圣坛祈祷得到的神眷 ×2，对巨人伤害 +20%。\n显现（冒险者 10 级）：成神之路进度 ×1.5，塔洛斯的领域神术冷却 -25%。\n升华（传奇冒险者）：神明干预——殖民地同一张地图上 3 名以上殖民者倒地时自动降下神迹（每季一次）：雷霆之怒，最多 6 道闪电劈向敌人（每道 30 点电击伤害）。成神时半神等级 +1 起步。 -->
+  <LP_DivineChampion.degreeDatas.colorE0B040color-5.description>Talos, god of storms, has chosen {PAWN_nameDef}.\n\nAwakened: cleric / paladin path XP +30%, divine favor from praying at the altar ×2, +20% damage against giants.\nManifest (adventurer level 10): Path of Ascension progress ×1.5, Talos's domain spell cooldown -25%.\nExalted (legendary adventurer): divine intervention: when 3 or more colonists on the same map are downed, a miracle descends automatically (once per quarter): thunder wrath, up to 6 lightning bolts strike enemies (30 electrical damage each). Starts as demigod rank +1 upon ascension.</LP_DivineChampion.degreeDatas.colorE0B040color-5.description>
+  <!-- <color=#E0B040>神之勇士·班恩</color> -->
+  <LP_DivineChampion.degreeDatas.colorE0B040color-6.label>&lt;color=#E0B040&gt;Champion of the Gods: Bane&lt;/color&gt;</LP_DivineChampion.degreeDatas.colorE0B040color-6.label>
+  <!-- 暴君班恩选中了{PAWN_nameDef}。\n\n觉醒：牧师 / 圣武士路径经验 +30%，圣坛祈祷得到的神眷 ×2，对神力灌注者、神明附体者和半神伤害 +20%。\n显现（冒险者 10 级）：成神之路进度 ×1.5，班恩的领域神术冷却 -25%。\n升华（传奇冒险者）：神明干预——殖民地同一张地图上 3 名以上殖民者倒地时自动降下神迹（每季一次）：暴君之威，地图上的敌人全部惊惧 1 小时。成神时半神等级 +1 起步。 -->
+  <LP_DivineChampion.degreeDatas.colorE0B040color-6.description>Bane, the Black Lord, has chosen {PAWN_nameDef}.\n\nAwakened: cleric / paladin path XP +30%, divine favor from praying at the altar ×2, +20% damage against the divine-infused, god-possessed and demigods.\nManifest (adventurer level 10): Path of Ascension progress ×1.5, Bane's domain spell cooldown -25%.\nExalted (legendary adventurer): divine intervention: when 3 or more colonists on the same map are downed, a miracle descends automatically (once per quarter): tyrant's dread, every enemy on the map is terrified for 1 hour. Starts as demigod rank +1 upon ascension.</LP_DivineChampion.degreeDatas.colorE0B040color-6.description>
+  <!-- <color=#E0B040>神之勇士·莎尔</color> -->
+  <LP_DivineChampion.degreeDatas.colorE0B040color-7.label>&lt;color=#E0B040&gt;Champion of the Gods: Shar&lt;/color&gt;</LP_DivineChampion.degreeDatas.colorE0B040color-7.label>
+  <!-- 暗夜女神莎尔选中了{PAWN_nameDef}。\n\n觉醒：牧师 / 圣武士路径经验 +30%，圣坛祈祷得到的神眷 ×2，对异怪伤害 +20%。\n显现（冒险者 10 级）：成神之路进度 ×1.5，莎尔的领域神术冷却 -25%。\n升华（传奇冒险者）：神明干预——殖民地同一张地图上 3 名以上殖民者倒地时自动降下神迹（每季一次）：暗夜帷幕，地图上的殖民者隐身 30 秒。成神时半神等级 +1 起步。 -->
+  <LP_DivineChampion.degreeDatas.colorE0B040color-7.description>Shar, goddess of night, has chosen {PAWN_nameDef}.\n\nAwakened: cleric / paladin path XP +30%, divine favor from praying at the altar ×2, +20% damage against aberrations.\nManifest (adventurer level 10): Path of Ascension progress ×1.5, Shar's domain spell cooldown -25%.\nExalted (legendary adventurer): divine intervention: when 3 or more colonists on the same map are downed, a miracle descends automatically (once per quarter): veil of night, colonists on the map turn invisible for 30 seconds. Starts as demigod rank +1 upon ascension.</LP_DivineChampion.degreeDatas.colorE0B040color-7.description>
+  <!-- <color=#E0B040>神之勇士·苏尔特</color> -->
+  <LP_DivineChampion.degreeDatas.colorE0B040color-8.label>&lt;color=#E0B040&gt;Champion of the Gods: Surtur&lt;/color&gt;</LP_DivineChampion.degreeDatas.colorE0B040color-8.label>
+  <!-- 火巨人之神苏尔特选中了{PAWN_nameDef}。\n\n觉醒：牧师 / 圣武士路径经验 +30%，圣坛祈祷得到的神眷 ×2，对龙伤害 +20%。\n显现（冒险者 10 级）：成神之路进度 ×1.5，苏尔特的领域神术冷却 -25%。\n升华（传奇冒险者）：神明干预——殖民地同一张地图上 3 名以上殖民者倒地时自动降下神迹（每季一次）：熔炉之怒，地图上的敌人全部着火并受到 20 点火焰伤害。成神时半神等级 +1 起步。 -->
+  <LP_DivineChampion.degreeDatas.colorE0B040color-8.description>Surtur, god of fire giants, has chosen {PAWN_nameDef}.\n\nAwakened: cleric / paladin path XP +30%, divine favor from praying at the altar ×2, +20% damage against dragons.\nManifest (adventurer level 10): Path of Ascension progress ×1.5, Surtur's domain spell cooldown -25%.\nExalted (legendary adventurer): divine intervention: when 3 or more colonists on the same map are downed, a miracle descends automatically (once per quarter): fury of the forge, every enemy on the map catches fire and takes 20 fire damage. Starts as demigod rank +1 upon ascension.</LP_DivineChampion.degreeDatas.colorE0B040color-8.description>
+  <!-- 天命 -->
+  <LP_DivineChampion.modExtensions.0.kind>destiny</LP_DivineChampion.modExtensions.0.kind>
+  <!-- <color=#50C0C0>屠龙者</color> -->
+  <LP_DeedDragonslayer.degreeDatas.color50C0C0color.label>&lt;color=#50C0C0&gt;Dragonslayer&lt;/color&gt;</LP_DeedDragonslayer.degreeDatas.color50C0C0color.label>
+  <!-- {PAWN_nameDef}参与杀死了一条龙。\n\n- 对龙伤害 +30%\n- 免疫龙威带来的惊惧\n- 龙的吐息（龙身上不带武器的伤害）-30% -->
+  <LP_DeedDragonslayer.degreeDatas.color50C0C0color.description>{PAWN_nameDef} took part in killing a dragon.\n\n- +30% damage against dragons\n- Immune to the fear caused by dragon presence\n- Dragon breath (a dragon's weaponless damage) -30%</LP_DeedDragonslayer.degreeDatas.color50C0C0color.description>
+  <!-- 传说事迹 -->
+  <LP_DeedDragonslayer.modExtensions.0.kind>legendary deed</LP_DeedDragonslayer.modExtensions.0.kind>
+  <!-- <color=#50C0C0>巨人克星</color> -->
+  <LP_Giantbane.degreeDatas.color50C0C0color.label>&lt;color=#50C0C0&gt;Giant Bane&lt;/color&gt;</LP_Giantbane.degreeDatas.color50C0C0color.label>
+  <!-- {PAWN_nameDef}用近战放倒过三个巨人。\n\n- 近战打体型 1.5 以上的目标伤害 +30%\n- 传奇属性“血量”每点收益至少 ×1.25 -->
+  <LP_Giantbane.degreeDatas.color50C0C0color.description>{PAWN_nameDef} has felled three giants in melee.\n\n- +30% melee damage against targets of body size 1.5+\n- The legend attribute "health" is worth at least ×1.25 per point</LP_Giantbane.degreeDatas.color50C0C0color.description>
+  <!-- 传说事迹 -->
+  <LP_Giantbane.modExtensions.0.kind>legendary deed</LP_Giantbane.modExtensions.0.kind>
+  <!-- <color=#50C0C0>巫妖克星</color> -->
+  <LP_Lichbane.degreeDatas.color50C0C0color.label>&lt;color=#50C0C0&gt;Lichbane&lt;/color&gt;</LP_Lichbane.degreeDatas.color50C0C0color.label>
+  <!-- {PAWN_nameDef}击败过影巫王拉洛克，或者亲手毁掉过敌人的命匣。\n\n- 对不死生物伤害 +30%\n- 不会被汲取灵魂\n- 传奇属性“心灵”每点收益至少 ×1.25 -->
+  <LP_Lichbane.degreeDatas.color50C0C0color.description>{PAWN_nameDef} has defeated Larloch the Shadow King, or personally destroyed an enemy's phylactery.\n\n- +30% damage against undead\n- Can't have their soul drained\n- The legend attribute "mind" is worth at least ×1.25 per point</LP_Lichbane.degreeDatas.color50C0C0color.description>
+  <!-- 传说事迹 -->
+  <LP_Lichbane.modExtensions.0.kind>legendary deed</LP_Lichbane.modExtensions.0.kind>
+  <!-- <color=#50C0C0>弑神者</color> -->
+  <LP_DeedGodslayer.degreeDatas.color50C0C0color.label>&lt;color=#50C0C0&gt;Godslayer&lt;/color&gt;</LP_DeedGodslayer.degreeDatas.color50C0C0color.label>
+  <!-- {PAWN_nameDef}参与杀死了一名神明附体者或半神。\n\n- 对神力灌注者、神明附体者和半神伤害 +35%\n- 他们的神术伤害（不带武器的伤害）-35%\n- 六项属性上限 +1 -->
+  <LP_DeedGodslayer.degreeDatas.color50C0C0color.description>{PAWN_nameDef} took part in killing a god-possessed pawn or demigod.\n\n- +35% damage against the divine-infused, god-possessed and demigods\n- Their divine magic damage (weaponless damage) -35%\n- Six ability score caps +1</LP_DeedGodslayer.degreeDatas.color50C0C0color.description>
+  <!-- 传说事迹 -->
+  <LP_DeedGodslayer.modExtensions.0.kind>legendary deed</LP_DeedGodslayer.modExtensions.0.kind>
+  <!-- <color=#50C0C0>心智堡垒</color> -->
+  <LP_MindFortress.degreeDatas.color50C0C0color.label>&lt;color=#50C0C0&gt;Mind Fortress&lt;/color&gt;</LP_MindFortress.degreeDatas.color50C0C0color.label>
+  <!-- {PAWN_nameDef}从夺心魔的支配里挣脱过，或者扛过了三次心灵震爆。\n\n- 免疫心灵控制（支配、心灵震爆、心灵束缚等走心智抗性判定的效果）\n- 心灵类伤害 -50%\n- 精神崩溃阈值 -5% -->
+  <LP_MindFortress.degreeDatas.color50C0C0color.description>{PAWN_nameDef} has broken free of a mind flayer's domination, or withstood three psychic blasts.\n\n- Immune to mind control (domination, psychic blasts, psychic bindings and other effects judged by mind resistance)\n- Psychic damage -50%\n- Mental break threshold -5%</LP_MindFortress.degreeDatas.color50C0C0color.description>
+  <!-- 传说事迹 -->
+  <LP_MindFortress.modExtensions.0.kind>legendary deed</LP_MindFortress.modExtensions.0.kind>
+  <!-- <color=#50C0C0>冥界归来</color> -->
+  <LP_DeathReturned.degreeDatas.color50C0C0color.label>&lt;color=#50C0C0&gt;Returned from the Underworld&lt;/color&gt;</LP_DeathReturned.degreeDatas.color50C0C0color.label>
+  <!-- {PAWN_nameDef}死过一次，又回来了。\n\n- 不会因为死亡类事件（亲友、同伴死去，目睹死亡）心情变差\n- 对不死生物伤害 +20%\n- 每 30 天一次：倒地后 2 小时内不会失血而死 -->
+  <LP_DeathReturned.degreeDatas.color50C0C0color.description>{PAWN_nameDef} died once and came back.\n\n- Mood isn't worsened by death-related events (deaths of family and comrades, witnessing death)\n- +20% damage against undead\n- Once every 30 days: won't bleed out within 2 hours of being downed</LP_DeathReturned.degreeDatas.color50C0C0color.description>
+  <!-- 传说事迹 -->
+  <LP_DeathReturned.modExtensions.0.kind>legendary deed</LP_DeathReturned.modExtensions.0.kind>
+  <!-- <color=#50C0C0>绝境英雄</color> -->
+  <LP_LastStand.degreeDatas.color50C0C0color.label>&lt;color=#50C0C0&gt;Last Stand Hero&lt;/color&gt;</LP_LastStand.degreeDatas.color50C0C0color.label>
+  <!-- 那一次袭击里，殖民地只剩{PAWN_nameDef}一个人还站着——{PAWN_pronoun}守住了。\n\n- 疼痛休克阈值 +10%\n- 获得时 +1 次属性提升；25% 当场觉醒英雄之资（已有英雄之资、极致或天命时改为 +3 传奇属性点） -->
+  <LP_LastStand.degreeDatas.color50C0C0color.description>In that raid, {PAWN_nameDef} was the only one in the colony still standing, and {PAWN_pronoun} held the line.\n\n- Pain shock threshold +10%\n- +1 ability score improvement when gained; 25% chance to awaken Heroic Spirit on the spot (+3 legend points instead if already Heroic Spirit, Pinnacle or Destiny)</LP_LastStand.degreeDatas.color50C0C0color.description>
+  <!-- 传说事迹 -->
+  <LP_LastStand.modExtensions.0.kind>legendary deed</LP_LastStand.modExtensions.0.kind>
+</LanguageData>

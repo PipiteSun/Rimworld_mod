@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 羽翼 -->
+  <LP_AarakocraWings.label>wings</LP_AarakocraWings.label>
+  <!-- 背上一对宽大的羽翼。鸟人能“翱翔”到12格内任意能站人的地方，墙、栅栏、水和建筑都拦不住，只是不能飞进山体下面。征召与否都能用，平时可以用来越墙干活。 -->
+  <LP_AarakocraWings.description>A pair of broad wings on the back. Aarakocra can "Soar" to any standable spot within 12 cells; walls, fences, water and buildings cannot stop them, but they cannot fly under a mountain. Usable drafted or undrafted, handy for hopping walls during work.</LP_AarakocraWings.description>
+  <!-- 空心骨 -->
+  <LP_AarakocraHollowBones.label>hollow bones</LP_AarakocraHollowBones.label>
+  <!-- 鸟人轻巧的中空骨骼。实际体型为普通人的90%（吃得少、更难被射中），但骨头脆，受到的钝器伤害+10%。 -->
+  <LP_AarakocraHollowBones.description>The light, hollow bones of the aarakocra. Actual body size is 90% of a normal human (eats less, harder to hit), but the bones are brittle: +10% blunt damage taken.</LP_AarakocraHollowBones.description>
+  <!-- 实际体型：×90%（显示大小不变）。 -->
+  <LP_AarakocraHollowBones.customEffectDescriptions.0>Actual body size: ×90% (drawn size unchanged).</LP_AarakocraHollowBones.customEffectDescriptions.0>
+  <!-- 天生飞禽 -->
+  <LP_AarakocraSkyborn.label>born to fly</LP_AarakocraSkyborn.label>
+  <!-- 生在天空下的鸟人走得快（移速×110%），在无屋顶的地方干活心情+2；可在有屋顶的地方醒着连续待满1小时就会觉得被关住（心情-3），到露天处待一小会儿就好。睡觉时不算。 -->
+  <LP_AarakocraSkyborn.description>Aarakocra born under the sky walk fast (move speed ×110%) and get +2 mood when working without a roof. But staying awake under a roof for a full hour makes them feel caged (mood -3); a short while outdoors fixes it. Sleeping does not count.</LP_AarakocraSkyborn.description>
+  <!-- 鸟人肤色 -->
+  <LP_SkinAarakocra.label>aarakocra skin</LP_SkinAarakocra.label>
+  <!-- 鸟人浅褐色的皮肤，和羽毛的颜色相近。 -->
+  <LP_SkinAarakocra.description>The light brown skin of the aarakocra, close to the color of their feathers.</LP_SkinAarakocra.description>
+  <!-- 浅褐 -->
+  <LP_SkinAarakocra.labelShortAdj>light brown</LP_SkinAarakocra.labelShortAdj>
+</LanguageData>

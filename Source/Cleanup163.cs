@@ -25,7 +25,7 @@ namespace LichPhylactery {
  }
  public static class CleanupSettings {
   public static void Draw(Listing_Standard l){
-   l.CheckboxLabeled("DND 警报",ref LichMod.Settings.dndAlerts,"在右侧警报栏提示：巨魔尸体将会复活、蝌蚪化形中、龙蛋即将孵化、巫妖复生中、命匣不在殖民地、脑髓不足。点警报会跳到对应目标。");
+   l.CheckboxLabeled("DND 警报".Loc(),ref LichMod.Settings.dndAlerts,"在右侧警报栏提示：巨魔尸体将会复活、蝌蚪化形中、巫妖复生中、命匣不在殖民地、脑髓不足。点警报会跳到对应目标。".Loc());
    l.GapLine();
   }
  }
@@ -53,8 +53,8 @@ namespace LichPhylactery {
   public override AlertReport GetReport(){Ensure();return targets.Count==0?AlertReport.Inactive:AlertReport.CulpritsAre(targets.ToList());}
   public override string GetLabel(){Ensure();return defaultLabel+(targets.Count>1?" ×"+targets.Count:"");}
   public override TaggedString GetExplanation(){Ensure();return Head+"\n\n"+string.Join("\n",lines)+(Tail.NullOrEmpty()?"":"\n\n"+Tail);}
-  protected static string Days(int ticks)=>(Math.Max(0,ticks)/(float)GenDate.TicksPerDay).ToString("0.#")+" 天";
-  protected static string Hours(int ticks)=>(Math.Max(0,ticks)/2500f).ToString("0.#")+" 小时";
+  protected static string Days(int ticks)=>(Math.Max(0,ticks)/(float)GenDate.TicksPerDay).ToString("0.#")+" 天".Loc();
+  protected static string Hours(int ticks)=>(Math.Max(0,ticks)/2500f).ToString("0.#")+" 小时".Loc();
   protected static IEnumerable<Map> Maps=>Find.Maps??Enumerable.Empty<Map>();
  }
 
@@ -72,12 +72,12 @@ namespace LichPhylactery {
   public static string Away(Phylactery b){
    if(NetherilQuest.PhylacteryLost(b.soul))return null;
    var holder=Holder(b);
-   if(holder!=null && holder.Faction!=Faction.OfPlayer)return "被"+holder.LabelShort+"（"+(holder.Faction?.Name??"无派系")+"）带着";
+   if(holder!=null && holder.Faction!=Faction.OfPlayer)return "被".Loc()+holder.LabelShort+"（".Loc()+(holder.Faction?.Name??"无派系".Loc())+"）带着".Loc();
    var map=b.MapHeld;
-   if(map==null)return holder!=null && holder.GetCaravan()!=null?"在商队“"+holder.GetCaravan().Name+"”里":"不在任何地图上";
-   if(!map.IsPlayerHome)return "在别的地图上（"+map.Parent?.LabelCap+"）";
+   if(map==null)return holder!=null && holder.GetCaravan()!=null?"在商队“".Loc()+holder.GetCaravan().Name+"”里".Loc():"不在任何地图上".Loc();
+   if(!map.IsPlayerHome)return "在别的地图上（".Loc()+map.Parent?.LabelCap+"）".Loc();
    if(holder!=null)return null; // 本方殖民者正拿着，在家园里
-   if(!map.areaManager.Home[b.PositionHeld])return "在家园区外";
+   if(!map.areaManager.Home[b.PositionHeld])return "在家园区外".Loc();
    return null;
   }
   public static GlobalTargetInfo Where(Thing t){
@@ -86,82 +86,68 @@ namespace LichPhylactery {
    return GlobalTargetInfo.Invalid;
   }
   public static float BrainPercent(Pawn p)=>MindFlayer.Cerebrum(p)?.ValuePercent??1f;
-  public const float LowBrain=.2f,EggDays=3f;
-  public static Func<CompDragonEgg,float> EggRateHook; // 自检用：不搭宝库也能给龙蛋一个孵化速度
-  public static float EggDaysLeft(CompDragonEgg e){float r=EggRateHook?.Invoke(e)??e.Rate;return r<=0?float.PositiveInfinity:(e.HatchDays-e.progressDays)/r;}
+  public const float LowBrain=.2f;
  }
 
  public class Alert_LP_TrollRevive : Alert_LP {
-  public Alert_LP_TrollRevive(){defaultLabel="巨魔尸体将会复活";defaultPriority=AlertPriority.High;}
-  protected override string Head=>"这些巨魔的尸体还在再生，到时会原地站起来（敌方巨魔也一样）：";
-  protected override string Tail=>"用火烧掉或火化才能彻底杀死。选中尸体可以点“标记焚烧”，让搬运工优先送到火葬场。";
+  public Alert_LP_TrollRevive(){defaultLabel="巨魔尸体将会复活".Loc();defaultPriority=AlertPriority.High;}
+  protected override string Head=>"这些巨魔的尸体还在再生，到时会原地站起来（敌方巨魔也一样）：".Loc();
+  protected override string Tail=>"用火烧掉或火化才能彻底杀死。选中尸体可以点“标记焚烧”，让搬运工优先送到火葬场。".Loc();
   protected override void Collect(){
    foreach(var map in Maps)foreach(var t in map.listerThings.ThingsInGroup(ThingRequestGroup.Corpse)){
     if(!(t is Corpse c) || !CleanupRules.WillRevive(c))continue;
     var g=Troll.Gene(c.InnerPawn);
     targets.Add(new GlobalTargetInfo(c.SpawnedParentOrMe));
-    lines.Add("  "+c.InnerPawn.LabelShort+(c.InnerPawn.HostileTo(Faction.OfPlayer)?"（敌方）":"")+"：约 "+Hours(g.reviveTick-Find.TickManager.TicksGame)+"后复活");
+    lines.Add("  "+c.InnerPawn.LabelShort+(c.InnerPawn.HostileTo(Faction.OfPlayer)?"（敌方）".Loc():"")+"：约 ".Loc()+Hours(g.reviveTick-Find.TickManager.TicksGame)+"后复活".Loc());
    }
   }
  }
  public class Alert_LP_Ceremorph : Alert_LP {
-  public Alert_LP_Ceremorph(){defaultLabel="蝌蚪化形中";defaultPriority=AlertPriority.High;}
-  protected override string Head=>"这些人脑中有夺心魔蝌蚪，化形完成后会变成夺心魔：";
-  protected override string Tail=>"阻止办法：做“取出蝌蚪”手术；或服用抑灵剂冻结进度（成为半夺心魔，要一直服药）。";
+  public Alert_LP_Ceremorph(){defaultLabel="蝌蚪化形中".Loc();defaultPriority=AlertPriority.High;}
+  protected override string Head=>"这些人脑中有夺心魔蝌蚪，化形完成后会变成夺心魔：".Loc();
+  protected override string Tail=>"阻止办法：做“取出蝌蚪”手术；或服用抑灵剂冻结进度（成为半夺心魔，要一直服药）。".Loc();
   protected override void Collect(){
    foreach(var map in Maps)foreach(var p in map.mapPawns.AllPawnsSpawned){
     if(p.Dead || !(p.IsColonist || p.IsPrisonerOfColony || p.IsSlaveOfColony))continue;
     var h=Tadpoles.Of(p);if(h==null)continue;
-    float per=Tadpoles.DailyProgress(p);string left=h.Frozen?"已被抑灵剂冻结":per<=0?"进度停止":"约 "+((1f-h.Severity)/per).ToString("0.#")+" 天后完成";
-    targets.Add(p);lines.Add("  "+p.LabelShort+(p.IsPrisonerOfColony?"（囚犯）":"")+"：进度 "+h.Severity.ToStringPercent("0")+"，"+left);
-   }
-  }
- }
- public class Alert_LP_DragonEgg : Alert_LP {
-  public Alert_LP_DragonEgg(){defaultLabel="龙蛋即将孵化";defaultPriority=AlertPriority.Medium;}
-  protected override string Head=>"这些龙蛋 "+CleanupRules.EggDays+" 天内会孵化：";
-  protected override string Tail=>"孵出的幼龙归宝库主人的派系；放在家里时归殖民地。";
-  protected override void Collect(){
-   foreach(var map in Maps)foreach(var t in map.listerThings.AllThings){
-    var e=t.TryGetComp<CompDragonEgg>();if(e==null)continue;
-    float d=CleanupRules.EggDaysLeft(e);if(d>CleanupRules.EggDays)continue;
-    targets.Add(new GlobalTargetInfo(t.SpawnedParentOrMe));lines.Add("  "+t.LabelShort+"：约 "+Math.Max(0f,d).ToString("0.#")+" 天");
+    float per=Tadpoles.DailyProgress(p);string left=h.Frozen?"已被抑灵剂冻结".Loc():per<=0?"进度停止".Loc():"约 ".Loc()+((1f-h.Severity)/per).ToString("0.#")+" 天后完成".Loc();
+    targets.Add(p);lines.Add("  "+p.LabelShort+(p.IsPrisonerOfColony?"（囚犯）".Loc():"")+"：进度 ".Loc()+h.Severity.ToStringPercent("0")+"，".Loc()+left);
    }
   }
  }
  public class Alert_LP_LichRevival : Alert_LP {
-  public Alert_LP_LichRevival(){defaultLabel="巫妖复生中";defaultPriority=AlertPriority.Medium;}
-  protected override string Head=>"这些巫妖已经死去，灵魂在命匣里等待复生：";
-  protected override string Tail=>"命匣被毁就再也不能复生；保护好它。";
+  public Alert_LP_LichRevival(){defaultLabel="巫妖复生中".Loc();defaultPriority=AlertPriority.Medium;}
+  protected override string Head=>"这些巫妖已经死去，灵魂在命匣里等待复生：".Loc();
+  protected override string Tail=>"命匣被毁就再也不能复生；保护好它。".Loc();
   protected override void Collect(){
    foreach(var b in CleanupRules.PlayerBoxes()){
     if(b.soul?.Dead!=true || b.revivalTick<0)continue;
     var at=CleanupRules.Where(b);if(!at.IsValid)continue;
     int left=b.revivalTick-Find.TickManager.TicksGame;
-    targets.Add(at);lines.Add("  "+b.soul.LabelShort+"："+(left>0?"约 "+Hours(left)+"后复生":"复生已就绪，等命匣旁边有空位")+"；命匣在"+(b.MapHeld!=null?(b.MapHeld.Parent?.LabelCap??"地图上"):"地图外"));
+    targets.Add(at);lines.Add("  "+b.soul.LabelShort+"：".Loc()+(left>0?"约 ".Loc()+Hours(left)+"后复生".Loc():"复生已就绪，等命匣旁边有空位".Loc())+"；命匣在".Loc()+(b.MapHeld!=null?(b.MapHeld.Parent?.LabelCap??"地图上".Loc()):"地图外".Loc()));
    }
   }
  }
  public class Alert_LP_PhylacteryAway : Alert_LP {
-  public Alert_LP_PhylacteryAway(){defaultLabel="命匣不在殖民地";defaultPriority=AlertPriority.High;}
-  protected override string Head=>"本方巫妖的命匣不在殖民地的家园区里：";
-  protected override string Tail=>"巫妖死后只能在命匣旁边复生；命匣落到别人手里或被毁，巫妖就回不来了。";
+  public Alert_LP_PhylacteryAway(){defaultLabel="命匣不在殖民地".Loc();defaultPriority=AlertPriority.High;}
+  protected override string Head=>"本方巫妖的命匣不在殖民地的家园区里：".Loc();
+  protected override string Tail=>"巫妖死后只能在命匣旁边复生；命匣落到别人手里或被毁，巫妖就回不来了。".Loc();
   protected override void Collect(){
    foreach(var b in CleanupRules.PlayerBoxes()){
     string why=CleanupRules.Away(b);if(why==null)continue;
     var at=CleanupRules.Where(b);if(!at.IsValid)continue;
-    targets.Add(at);lines.Add("  "+b.soul.LabelShort+"的命匣："+why);
+    targets.Add(at);lines.Add("  "+b.soul.LabelShort+"的命匣：".Loc()+why);
    }
   }
  }
  public class Alert_LP_LowBrain : Alert_LP {
-  public Alert_LP_LowBrain(){defaultLabel="脑髓不足";defaultPriority=AlertPriority.Medium;}
-  protected override string Head=>"这些夺心魔的脑髓低于 "+CleanupRules.LowBrain.ToStringPercent("0")+"：";
-  protected override string Tail=>"吞噬大脑（囚犯、尸体）或脑浆罐可以补充；脑髓耗尽会饥饿发狂。";
+  public Alert_LP_LowBrain(){defaultLabel="脑髓不足".Loc();defaultPriority=AlertPriority.Medium;}
+  protected override string Head=>"这些夺心魔的脑髓低于 ".Loc()+CleanupRules.LowBrain.ToStringPercent("0")+"：".Loc();
+  protected override string Tail=>"吞噬大脑（囚犯、尸体）或脑浆罐可以补充；脑髓耗尽会饥饿发狂。".Loc();
   protected override void Collect(){
    foreach(var map in Maps)foreach(var p in map.mapPawns.FreeColonistsSpawned){
     if(!MindFlayer.IsMindFlayer(p))continue;float v=CleanupRules.BrainPercent(p);if(v>=CleanupRules.LowBrain)continue;
-    targets.Add(p);lines.Add("  "+p.LabelShort+"：脑髓 "+v.ToStringPercent("0"));
+    targets.Add(p);lines.Add("  "+p.LabelShort+"：脑髓 ".Loc()+v.ToStringPercent("0"));
    }
   }
  }
@@ -179,7 +165,7 @@ namespace LichPhylactery {
  // ---------- 标记焚烧 ----------
  // 改动最小的做法：不加新的工作，只在火葬场最前面放一张“只烧巨魔”的火化账单（重复，不限人），并把尸体解禁；原版搬运 / 火化工作会去拿它。
  public static class TrollCremation {
-  public const string BillLabel="只烧巨魔";
+  public static readonly string BillLabel="只烧巨魔".Loc();
   static RecipeDef cremate;static SpecialThingFilterDef nonTroll;
   public static RecipeDef Cremate=>cremate??(cremate=DefDatabase<RecipeDef>.GetNamedSilentFail("CremateCorpse"));
   public static SpecialThingFilterDef NonTroll=>nonTroll??(nonTroll=DefDatabase<SpecialThingFilterDef>.GetNamedSilentFail("LP_AllowNonTrollCorpses"));
@@ -190,7 +176,7 @@ namespace LichPhylactery {
    if(c?.MapHeld==null || !CleanupRules.IsTrollCorpse(c))return null;
    c.SetForbidden(false,false);
    var map=c.MapHeld;var crem=Crematoria(map).OrderBy(b=>b.Position.DistanceToSquared(c.PositionHeld)).FirstOrDefault();
-   if(crem==null){if(message)Messages.Message("没有火葬场：先建一座电火葬场，或者直接用火烧掉"+c.InnerPawn.LabelShort+"的尸体。",c,MessageTypeDefOf.RejectInput,false);return null;}
+   if(crem==null){if(message)Messages.Message("没有火葬场：先建一座电火葬场，或者直接用火烧掉".Loc()+c.InnerPawn.LabelShort+"的尸体。".Loc(),c,MessageTypeDefOf.RejectInput,false);return null;}
    var bill=BillOn(crem);
    if(bill==null){
     bill=(Bill_Production)Cremate.MakeNewBill();bill.repeatMode=BillRepeatModeDefOf.Forever;
@@ -199,7 +185,7 @@ namespace LichPhylactery {
    }
    var list=crem.BillStack.Bills;if(list.IndexOf(bill)>0){list.Remove(bill);list.Insert(0,bill);}
    bill.suspended=false;
-   if(message)Messages.Message("已标记焚烧："+c.InnerPawn.LabelShort+"的尸体会优先送到"+crem.LabelShort+"（不收非巨魔尸体的火化账单排在最前）。",c,MessageTypeDefOf.TaskCompletion,false);
+   if(message)Messages.Message("已标记焚烧：".Loc()+c.InnerPawn.LabelShort+"的尸体会优先送到".Loc()+crem.LabelShort+"（不收非巨魔尸体的火化账单排在最前）。".Loc(),c,MessageTypeDefOf.TaskCompletion,false);
    return bill;
   }
  }
@@ -208,7 +194,7 @@ namespace LichPhylactery {
   static IEnumerable<Gizmo> Postfix(IEnumerable<Gizmo> __result,Corpse __instance){
    foreach(var g in __result)yield return g;
    if(__instance.Spawned && CleanupRules.IsTrollCorpse(__instance) && Find.Selector.SingleSelectedThing==__instance)
-    yield return new Command_Action{defaultLabel="标记焚烧",defaultDesc="让搬运工优先把这具巨魔尸体送去火化：在最近的火葬场最前面放一张“只烧巨魔”的火化账单，并解除禁用。没有火葬场时只给提示。",icon=ContentFinder<Texture2D>.Get("UI/Designators/Strip",false)??BaseContent.BadTex,action=()=>TrollCremation.Mark(__instance)};
+    yield return new Command_Action{defaultLabel="标记焚烧".Loc(),defaultDesc="让搬运工优先把这具巨魔尸体送去火化：在最近的火葬场最前面放一张“只烧巨魔”的火化账单，并解除禁用。没有火葬场时只给提示。".Loc(),icon=ContentFinder<Texture2D>.Get("UI/Designators/Strip",false)??BaseContent.BadTex,action=()=>TrollCremation.Mark(__instance)};
   }
  }
  // ---------- 4.1 五色真龙：地形、水中、黑暗 ----------
@@ -289,7 +275,7 @@ namespace LichPhylactery {
  // 倒地时幻象碎掉：伪装中的来访魅魔现形。
  [HarmonyPatch(typeof(Pawn_HealthTracker),"MakeDowned")]
  public static class SuccubusDownedReveal {
-  static void Postfix(Pawn ___pawn){var p=___pawn;if(p!=null && !p.Dead && Outsiders.Disguised(p))Fiends.Defer(()=>AbyssEvents.RevealSuccubus(p,"倒地时幻象碎了"));}
+  static void Postfix(Pawn ___pawn){var p=___pawn;if(p!=null && !p.Dead && Outsiders.Disguised(p))Fiends.Defer(()=>AbyssEvents.RevealSuccubus(p,"倒地时幻象碎了".Loc()));}
  }
 
  // ---------- 4.4 狗头人刺坑：利刃 20、穿甲 15%、体型 >1.5 减半，触发 3 次后要重新布置 ----------
@@ -301,9 +287,9 @@ namespace LichPhylactery {
   protected override void SpringSub(Pawn p){
    if(p!=null && !p.Dead)p.TakeDamage(new DamageInfo(DamageDefOf.Stab,DamageTo(p,this),ArmorPen,-1f,this));
    springs++;
-   if(springs>=Uses){var map=Map;var pos=Position;Fiends.Defer(()=>{if(!Destroyed){Messages.Message("狗头人刺坑用坏了（已触发 "+Uses+" 次），需要重新布置。",new TargetInfo(pos,map),MessageTypeDefOf.NeutralEvent,false);Destroy(DestroyMode.KillFinalize);}});}
+   if(springs>=Uses){var map=Map;var pos=Position;Fiends.Defer(()=>{if(!Destroyed){Messages.Message("狗头人刺坑用坏了（已触发 ".Loc()+Uses+" 次），需要重新布置。".Loc(),new TargetInfo(pos,map),MessageTypeDefOf.NeutralEvent,false);Destroy(DestroyMode.KillFinalize);}});}
   }
-  public override string GetInspectString(){var s=base.GetInspectString();return (s.NullOrEmpty()?"":s+"\n")+"剩余次数："+Math.Max(0,Uses-springs)+" / "+Uses;}
+  public override string GetInspectString(){var s=base.GetInspectString();return (s.NullOrEmpty()?"":s+"\n")+"剩余次数：".Loc()+Math.Max(0,Uses-springs)+" / "+Uses;}
  }
 
  // ---------- 4.5 遗迹 / 古代宝箱：同调者在场 15% 一件魔法饰品；5% 一本属性典籍 ----------
@@ -329,8 +315,8 @@ namespace LichPhylactery {
   static void Postfix(Building_Crate __instance,(Map map,IntVec3 cell) __state){
    try{
     var map=__state.map;if(map==null || !__state.cell.IsValid)return;
-    foreach(var t in AncientCrateLoot.Roll(__instance,AncientCrateLoot.AttunerPresent(map))){GenPlace.TryPlaceThing(t,__state.cell,map,ThingPlaceMode.Near);Messages.Message("箱子里还有："+t.LabelCap+"。",t,MessageTypeDefOf.PositiveEvent,false);}
-   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 古代宝箱额外掉落出错："+e,16301163);}
+    foreach(var t in AncientCrateLoot.Roll(__instance,AncientCrateLoot.AttunerPresent(map))){GenPlace.TryPlaceThing(t,__state.cell,map,ThingPlaceMode.Near);Messages.Message("箱子里还有：".Loc()+t.LabelCap+"。".Loc(),t,MessageTypeDefOf.PositiveEvent,false);}
+   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 古代宝箱额外掉落出错：".Loc()+e,16301163);}
   }
  }
 
@@ -339,13 +325,13 @@ namespace LichPhylactery {
  public static class EyestalkRecipes {
   public const string Suffix="_Eyestalk";
   public static readonly List<RecipeDef> Made=new List<RecipeDef>();
-  static EyestalkRecipes(){try{Build();}catch(Exception e){Log.Error("[DND边缘大陆] 眼柄配方出错："+e);}}
+  static EyestalkRecipes(){try{Build();}catch(Exception e){Log.Error("[DND边缘大陆] 眼柄配方出错：".Loc()+e);}}
   static void Build(){
    var stalk=DefDatabase<ThingDef>.GetNamedSilentFail("LP_BeholderStalk");var desk=DefDatabase<ThingDef>.GetNamedSilentFail("LP_ScribeDesk");if(stalk==null || desk==null)return;
    foreach(var r in DefDatabase<RecipeDef>.AllDefsListForReading.Where(x=>x.recipeUsers!=null && x.recipeUsers.Contains(desk) && x.defName.StartsWith("LP_WriteScroll") && x.ingredients.Count>=2).ToList()){
     if(DefDatabase<RecipeDef>.GetNamedSilentFail(r.defName+Suffix)!=null)continue;
     var main=r.ingredients.Last();var mainDef=main.filter.AllowedThingDefs.FirstOrDefault();if(mainDef==null || mainDef==ThingDefOf.Cloth)continue;
-    var v=new RecipeDef{defName=r.defName+Suffix,label=r.label+"（眼柄）",description=r.description+"\n\n眼柄版本：用 1 根眼魔眼柄代替一半的"+mainDef.label+"。",jobString=r.jobString,workAmount=r.workAmount,workSpeedStat=r.workSpeedStat,workSkill=r.workSkill,effectWorking=r.effectWorking,soundWorking=r.soundWorking,
+    var v=new RecipeDef{defName=r.defName+Suffix,label=r.label+"（眼柄）".Loc(),description=r.description+"\n\n眼柄版本：用 1 根眼魔眼柄代替一半的".Loc()+mainDef.label+"。".Loc(),jobString=r.jobString,workAmount=r.workAmount,workSpeedStat=r.workSpeedStat,workSkill=r.workSkill,effectWorking=r.effectWorking,soundWorking=r.soundWorking,
      recipeUsers=r.recipeUsers.ToList(),researchPrerequisite=r.researchPrerequisite,allowMixingIngredients=r.allowMixingIngredients,skillRequirements=r.skillRequirements?.ToList(),products=r.products.ToList(),modExtensions=r.modExtensions?.ToList(),modContentPack=r.modContentPack};
     v.ingredients=new List<IngredientCount>();
     foreach(var ic in r.ingredients){

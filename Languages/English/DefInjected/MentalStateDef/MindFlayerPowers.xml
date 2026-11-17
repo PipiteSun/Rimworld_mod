@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 被支配 -->
+  <LP_Dominated.label>dominated</LP_Dominated.label>
+  <!-- 被支配：攻击原来的同伴 -->
+  <LP_Dominated.baseInspectLine>dominated: attacking former companions</LP_Dominated.baseInspectLine>
+  <!-- {0}摆脱了夺心魔的支配。 -->
+  <LP_Dominated.recoveryMessage>{0} broke free of the mind flayer's domination.</LP_Dominated.recoveryMessage>
+</LanguageData>

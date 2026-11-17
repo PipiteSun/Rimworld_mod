@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 位面裂口 -->
+  <LP_PlanarRift.label>planar rift</LP_PlanarRift.label>
+  <!-- 一道撕开现实的紫黑色旋涡，另一边是别的位面。每隔一段时间就会有生物从里面涌出来。\n\n打碎它（600 生命），或者让巨灵命令它闭合，都能把它关上。开了三天还没关的裂口会崩溃。 -->
+  <LP_PlanarRift.description>A purple-black vortex tearing through reality, with another plane on the other side. Creatures pour out of it every so often.\n\nSmash it (600 hit points), or have a genie command it to close, to shut it. A rift left open for three days collapses.</LP_PlanarRift.description>
+  <!-- 位面残渣 -->
+  <LP_PlanarResidue.label>planar residue</LP_PlanarResidue.label>
+  <!-- 位面裂口闭合后留下的闪着紫光的结晶碎屑，摸上去时冷时热。炼金桌上用它加强药水，能让药效持续两倍时间。 -->
+  <LP_PlanarResidue.description>Purple-glowing crystal fragments left behind when a planar rift closes, alternately cold and hot to the touch. Used at the alchemy table to enhance potions so they last twice as long.</LP_PlanarResidue.description>
+  <!-- 强化强效治疗药水 -->
+  <LP_PotionGreaterHealingEnhanced.label>enhance greater healing potion</LP_PotionGreaterHealingEnhanced.label>
+  <!-- 加了位面残渣的强效治疗药水，泛着淡淡的紫光。效果同强效治疗药水，加快愈合的时间延长到两倍（12小时）。巫妖和死灵造物喝了无效。 -->
+  <LP_PotionGreaterHealingEnhanced.description>A greater healing potion with planar residue, glowing faintly purple. Same effect as a greater healing potion, with the faster healing duration doubled (12 hours). No effect on liches and necromantic constructs.</LP_PotionGreaterHealingEnhanced.description>
+  <!-- 饮用{0} -->
+  <LP_PotionGreaterHealingEnhanced.ingestible.ingestCommandString>drink {0}</LP_PotionGreaterHealingEnhanced.ingestible.ingestCommandString>
+  <!-- 正在饮用{0}。 -->
+  <LP_PotionGreaterHealingEnhanced.ingestible.ingestReportString>Drinking {0}.</LP_PotionGreaterHealingEnhanced.ingestible.ingestReportString>
+  <!-- 强化抗火药水 -->
+  <LP_PotionFireResistanceEnhanced.label>enhance fire resistance potion</LP_PotionFireResistanceEnhanced.label>
+  <!-- 加了位面残渣的抗火药水，泛着淡淡的紫光。效果同抗火药水，持续时间延长到两倍（48小时）。 -->
+  <LP_PotionFireResistanceEnhanced.description>A fire resistance potion with planar residue, glowing faintly purple. Same effect as a fire resistance potion, with the duration doubled (48 hours).</LP_PotionFireResistanceEnhanced.description>
+  <!-- 饮用{0} -->
+  <LP_PotionFireResistanceEnhanced.ingestible.ingestCommandString>drink {0}</LP_PotionFireResistanceEnhanced.ingestible.ingestCommandString>
+  <!-- 正在饮用{0}。 -->
+  <LP_PotionFireResistanceEnhanced.ingestible.ingestReportString>Drinking {0}.</LP_PotionFireResistanceEnhanced.ingestible.ingestReportString>
+</LanguageData>

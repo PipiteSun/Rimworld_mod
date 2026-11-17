@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 巨魔巨躯与獠牙 -->
+  <LP_TrollAppearance.label>troll giant body and tusks</LP_TrollAppearance.label>
+  <!-- 巨魔的獠牙与高大身躯。注意：这个基因不只是外观，它决定巨魔的1.5倍实际体型，移除后负重、食量、被命中概率等都会回到普通人水平。绿色皮肤、健壮体型、尖耳、厚下颌、浓眉和无发外貌由原版异种人基因提供。体型随年龄长大，成年后实际身体与整个人物渲染达到普通人的1.5倍。普通服装、护甲与武器仍可穿戴和显示。体型越大，生命和近战越强（见巨躯规则：成年生命总量×125%、近战伤害×115%）。 -->
+  <LP_TrollAppearance.description>The tusks and tall body of a troll. Note: this gene isn't just cosmetic; it determines the troll's 1.5× actual body size, and removing it returns carry capacity, food intake, chance to be hit and so on to normal human levels. The green skin, robust build, pointed ears, heavy jaw, thick brows and hairless look come from vanilla xenogenes. Body size grows with age; as an adult the actual body and the entire character render reach 1.5× an ordinary person. Ordinary clothing, armor and weapons can still be worn and displayed. The bigger the body, the stronger the health and melee (see giant-body rules: adult total health ×125%, melee damage ×115%).</LP_TrollAppearance.description>
+  <!-- 成年实际体型（影响负重、食量、被命中概率）与人物整体外观：×150%。 | 巨胃：成年饱食度上限×150%，一顿撑得更久。 | 增加巨魔獠牙；其余外貌由原版基因组合形成。 | 保留普通人形装备锚点，可以穿戴常规服装与护甲。 -->
+  <LP_TrollAppearance.customEffectDescriptions.0>Adult actual body size (affects carry capacity, food intake, chance to be hit) and overall character appearance: ×150%.</LP_TrollAppearance.customEffectDescriptions.0>
+  <LP_TrollAppearance.customEffectDescriptions.1>Giant stomach: adult max food ×150%, one meal lasts longer.</LP_TrollAppearance.customEffectDescriptions.1>
+  <LP_TrollAppearance.customEffectDescriptions.2>Adds troll tusks; the rest of the appearance comes from a combination of vanilla genes.</LP_TrollAppearance.customEffectDescriptions.2>
+  <LP_TrollAppearance.customEffectDescriptions.3>Keeps normal humanlike gear anchors, so regular clothing and armor can be worn.</LP_TrollAppearance.customEffectDescriptions.3>
+  <!-- 巨魔再生 -->
+  <LP_TrollRegeneration.label>troll regeneration</LP_TrollRegeneration.label>
+  <!-- 巨魔的血肉以惊人的速度再生。饱食度不低于50%时，每约4秒修复0.5点伤势（优先正在流血的伤口），并逐渐补回失血；每约5天消除一处旧伤疤（大脑除外）；失去的体外部位会长回，手臂、腿约3天，手指、眼睛等小部位约1天。修复会额外消耗饱食度，正在再生时饥饿速度×200%，平时×120%。受到火焰或酸液伤害、或身上着火时，再生停止6小时。死亡后，若死前6小时内没被火焰或酸液伤到、大脑完好，尸体保持新鲜约1天后原地复活；尸体被火烧、火化、屠宰或腐烂则不会复活。 -->
+  <LP_TrollRegeneration.description>Troll flesh regenerates at an astonishing rate. While food is at least 50%, it repairs 0.5 injury about every 4 seconds (bleeding wounds first) and gradually replenishes lost blood; removes one old scar about every 5 days (except the brain); lost external parts grow back, arms and legs in about 3 days, small parts like fingers and eyes in about 1 day. Repairs cost extra food; hunger rate ×200% while regenerating, ×120% normally. After taking fire or acid damage, or while on fire, regeneration stops for 6 hours. After death, if not hurt by fire or acid in the 6 hours before death and the brain is intact, the corpse stays fresh for about 1 day and then revives in place; a corpse that's burned, cremated, butchered or rotten won't revive.</LP_TrollRegeneration.description>
+  <!-- 饥饿速度：平时×120%，再生中×200%；每修复1点伤势额外消耗0.005饱食度。 | 饱食时快速愈合，优先止血并补回失血；免疫获得速度×150%。 | 每约5天消除一处旧伤疤（大脑除外）。 | 体外部位会长回：手臂、腿约3天，手指、眼睛等约1天；内脏不会长回。 | 受到火焰或酸液伤害、或身上着火时，6小时内停止再生。 | 死后约1天复活（可在模组设置中关闭或限制次数）；火焰、火化、屠宰、腐烂或大脑被毁会阻止复活。 -->
+  <LP_TrollRegeneration.customEffectDescriptions.0>Hunger rate: ×120% normally, ×200% while regenerating; each point of injury repaired costs an extra 0.005 food.</LP_TrollRegeneration.customEffectDescriptions.0>
+  <LP_TrollRegeneration.customEffectDescriptions.1>Heals quickly when fed, stopping bleeding and replenishing lost blood first; immunity gain speed ×150%.</LP_TrollRegeneration.customEffectDescriptions.1>
+  <LP_TrollRegeneration.customEffectDescriptions.2>Removes one old scar about every 5 days (except the brain).</LP_TrollRegeneration.customEffectDescriptions.2>
+  <LP_TrollRegeneration.customEffectDescriptions.3>External parts grow back: arms and legs about 3 days, fingers, eyes and similar about 1 day; internal organs don't grow back.</LP_TrollRegeneration.customEffectDescriptions.3>
+  <LP_TrollRegeneration.customEffectDescriptions.4>After taking fire or acid damage, or while on fire, regeneration stops for 6 hours.</LP_TrollRegeneration.customEffectDescriptions.4>
+  <LP_TrollRegeneration.customEffectDescriptions.5>Revives about 1 day after death (can be turned off or limited in mod settings); fire, cremation, butchering, rot or a destroyed brain prevent revival.</LP_TrollRegeneration.customEffectDescriptions.5>
+</LanguageData>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 回气 -->
+  <LP_SecondWind.label>second wind</LP_SecondWind.label>
+  <!-- 调匀呼吸，600刻内持续治疗自己的伤势，总量 20 × 战技强度，优先流血伤口。强度看战技强度与射术强度里较高的一项。战士 1 级。 -->
+  <LP_SecondWind.description>Steady your breath and continuously heal your own injuries over 600 ticks, totaling 20 × martial power, bleeding wounds first. Power uses the higher of martial power and marksman power. Fighter level 1.</LP_SecondWind.description>
+  <!-- 冲锋 -->
+  <LP_Charge.label>charge</LP_Charge.label>
+  <!-- 扑向 8 格内的一个敌人：跳到它身边，落地立刻用当前武器结算一次近战（必中，伤害 ×(1 + 0.3 × 战技强度)）；体型 1 以下的目标被撞倒（击晕 1 秒）。战士 1 级。 -->
+  <LP_Charge.description>Charge at an enemy within 8 cells: leap next to it and immediately resolve a melee hit with your current weapon on landing (guaranteed hit, damage ×(1 + 0.3 × martial power)); targets of body size 1 or less are knocked down (stunned 1 second). Fighter level 1.</LP_Charge.description>
+  <!-- 稳固瞄准 -->
+  <LP_SteadyAim.label>steady aim</LP_SteadyAim.label>
+  <!-- 沉下身子瞄准：15 秒内射击预热 ×0.5、远程命中 ×1.15，移动 ×0.5。战士 1 级（射击支）。 -->
+  <LP_SteadyAim.description>Hunker down to aim: for 15 seconds shooting warmup ×0.5, ranged hit ×1.15, movement ×0.5. Fighter level 1 (Shooting branch).</LP_SteadyAim.description>
+  <!-- 战吼 -->
+  <LP_BattleCry.label>war cry</LP_BattleCry.label>
+  <!-- 一声怒吼，半径 4 × 战技强度内的敌人被震慑 5 秒 × 战技强度：移动 ×0.7，命中下降。强度看战技强度与射术强度里较高的一项。战士 3 级。 -->
+  <LP_BattleCry.description>A roar: enemies within radius 4 × martial power are shaken for 5 seconds × martial power: movement ×0.7, lower hit chance. Power uses the higher of martial power and marksman power. Fighter level 3.</LP_BattleCry.description>
+  <!-- 压制射击 -->
+  <LP_SuppressingFire.label>suppressing fire</LP_SuppressingFire.label>
+  <!-- 对一片区域倾泻火力：用当前武器的子弹连射 6 发（每 0.1 秒一发，落在目标点半径 3 内的随机格，伤害 ×0.5）；区域内的敌人被压制 6 秒：移动 ×0.6、远程命中 ×0.75。射程 = 当前武器射程，需要远程武器。战士 3 级（射击支）。 -->
+  <LP_SuppressingFire.description>Pour fire onto an area: fire 6 rounds from your current weapon in rapid succession (one every 0.1 seconds, landing on random cells within radius 3 of the target point, damage ×0.5); enemies in the area are suppressed for 6 seconds: movement ×0.6, ranged hit ×0.75. Range = current weapon range; requires a ranged weapon. Fighter level 3 (Shooting branch).</LP_SuppressingFire.description>
+  <!-- 绊摔 -->
+  <LP_Trip.label>trip attack</LP_Trip.label>
+  <!-- 把身边的目标绊倒：击晕 1.5 秒 × 战技强度并击退 1 格；体型 2 以上的目标只被震慑不被击退。战士 5 级。 -->
+  <LP_Trip.description>Trip an adjacent target: stunned for 1.5 seconds × martial power and knocked back 1 cell; targets of body size 2+ are only shaken, not knocked back. Fighter level 5.</LP_Trip.description>
+  <!-- 动作如潮 -->
+  <LP_ActionSurge.label>action surge</LP_ActionSurge.label>
+  <!-- 10 秒 × 战技强度内近战冷却 ×0.6、射击冷却 ×0.6、移动 ×1.3。冷却 6 小时。战士 5 级。 -->
+  <LP_ActionSurge.description>For 10 seconds × martial power, melee cooldown ×0.6, shooting cooldown ×0.6, movement ×1.3. Cooldown 6 hours. Fighter level 5.</LP_ActionSurge.description>
+  <!-- 武器专精 -->
+  <LP_WeaponMastery.label>weapon specialization</LP_WeaponMastery.label>
+  <!-- 2 小时 × 战技强度内近战伤害提高 ×1.24 ～ ×1.45（随战技强度分档），远程武器的伤害也乘同一档系数。冷却 1 小时。战士 7 级。 -->
+  <LP_WeaponMastery.description>For 2 hours × martial power, melee damage ×1.24 to ×1.45 (tiered by martial power); ranged weapon damage also uses the same tier multiplier. Cooldown 1 hour. Fighter level 7.</LP_WeaponMastery.description>
+  <!-- 不屈意志 -->
+  <LP_Indomitable.label>indomitable</LP_Indomitable.label>
+  <!-- 1 小时 × 战技强度内感觉不到疼痛、不会因疼痛倒地、免疫击晕，精神崩溃阈值 -15%。冷却 6 小时。战士 7 级。 -->
+  <LP_Indomitable.description>For 1 hour × martial power, feels no pain, cannot be downed by pain, immune to stuns, mental break threshold -15%. Cooldown 6 hours. Fighter level 7.</LP_Indomitable.description>
+  <!-- 精准射击 -->
+  <LP_PrecisionShot.label>precise shot</LP_PrecisionShot.label>
+  <!-- 立刻对一个敌人打出一发当前武器的子弹，必中，伤害 ×(1.5 + 0.5 × 射术强度)，穿甲 +30%。征召时多一个按钮切换模式：要害（只有上面的效果）/ 打腿（伤害 ×0.7，目标移动 ×0.5 持续 10 秒）/ 打手（伤害 ×0.5，有机会打落武器，成功率按敏捷和射术强度算，鼠标停在模式按钮上可以看到公式）。射程 = 当前武器射程，需要远程武器。战士 7 级（射击支）。 -->
+  <LP_PrecisionShot.description>Instantly fire one bullet from your current weapon at an enemy: guaranteed hit, damage ×(1.5 + 0.5 × marksman power), armor penetration +30%. When drafted there is an extra button to switch modes: Vital (only the above) / Leg (damage ×0.7, target movement ×0.5 for 10 seconds) / Hand (damage ×0.5, a chance to knock the weapon away, success based on Dexterity and marksman power; hover the mode button to see the formula). Range = current weapon range; requires a ranged weapon. Fighter level 7 (Shooting branch).</LP_PrecisionShot.description>
+  <!-- 缴械击 -->
+  <LP_DisarmingStrike.label>disarming strike</LP_DisarmingStrike.label>
+  <!-- 对身边的敌人结算一次近战，然后试着打落它的武器（落到 2 格外）。成功率 = 50% + 10% ×（自己的力量调整值 + 熟练加值 − 目标的）+ 20% ×（战技强度 − 1），限 15%～90%；体型 2 以上再减半。没有冒险者等级的一方按调整值 0、熟练加值 +2 算。机械体、动物、没拿武器的只吃那一击。战士 10 级。 -->
+  <LP_DisarmingStrike.description>Resolve a melee hit on an adjacent enemy, then try to knock its weapon away (landing 2 cells off). Success = 50% + 10% × (your Strength modifier + proficiency bonus - the target's) + 20% × (martial power - 1), limited to 15%-90%; halved again for body size 2+. A side without an adventurer level counts as modifier 0, proficiency +2. Mechanoids, animals and the unarmed only take the hit. Fighter level 10.</LP_DisarmingStrike.description>
+  <!-- 旋风斩 -->
+  <LP_Whirlwind.label>whirlwind attack</LP_Whirlwind.label>
+  <!-- 对相邻的所有敌人各结算一次当前近战武器的伤害（必中，伤害 × 战技强度；近战伤害系数、武器品质与 Isekai 的精炼/力量加成都算在内）。战士 10 级。 -->
+  <LP_Whirlwind.description>Resolve your current melee weapon's damage once against every adjacent enemy (guaranteed hit, damage × martial power; melee damage factor, weapon quality and Isekai refinement / Strength bonuses all count). Fighter level 10.</LP_Whirlwind.description>
+  <!-- 连射 -->
+  <LP_RapidFire.label>rapid shot</LP_RapidFire.label>
+  <!-- 10 秒 × 射术强度内射击冷却 ×0.5；连发武器每轮多打 1 发。冷却 2 小时。战士 10 级（射击支）。 -->
+  <LP_RapidFire.description>For 10 seconds × marksman power, shooting cooldown ×0.5; burst weapons fire 1 extra shot per burst. Cooldown 2 hours. Fighter level 10 (Shooting branch).</LP_RapidFire.description>
+  <!-- 守护姿态 -->
+  <LP_GuardStance.label>guardian stance</LP_GuardStance.label>
+  <!-- 30 秒 × 战技强度内护甲 +16% ～ +30%（随战技强度分档），移动 ×0.7；半径 3 内友军受到的伤害有 30% 转到自己身上。冷却 2 小时。战士 13 级。 -->
+  <LP_GuardStance.description>For 30 seconds × martial power, armor +16% to +30% (tiered by martial power), movement ×0.7; 30% of damage taken by allies within radius 3 is transferred to yourself. Cooldown 2 hours. Fighter level 13.</LP_GuardStance.description>
+  <!-- 战意再临 -->
+  <LP_SurgeOfBattle.label>renewed fighting spirit</LP_SurgeOfBattle.label>
+  <!-- 20 秒内近战冷却 ×0.5、近战伤害 ×1.5、免疫击晕；期间每次近战击杀让所有战士战技立刻冷却完毕。冷却 1 天。战士 15 级，并且格斗 15 级。 -->
+  <LP_SurgeOfBattle.description>For 20 seconds melee cooldown ×0.5, melee damage ×1.5, immune to stuns; during it every melee kill instantly resets all fighter maneuvers. Cooldown 1 day. Fighter level 15, and Melee 15.</LP_SurgeOfBattle.description>
+  <!-- 死神之眼 -->
+  <LP_DeadEye.label>eye of death</LP_DeadEye.label>
+  <!-- 20 秒内远程必中、无视掩体，射击伤害 ×1.5；期间每次射杀敌人，所有战士战技立刻冷却完毕。冷却 1 天。战士 15 级，并且射击 15 级。 -->
+  <LP_DeadEye.description>For 20 seconds ranged attacks always hit and ignore cover, shooting damage ×1.5; during it every enemy shot dead instantly resets all fighter maneuvers. Cooldown 1 day. Fighter level 15, and Shooting 15.</LP_DeadEye.description>
+  <!-- 武艺 -->
+  <LP_MartialArts.label>martial arts</LP_MartialArts.label>
+  <!-- 被动：徒手（或拿短棍）时近战伤害 ×(1 + 0.5 × 战技强度)、近战冷却 ×0.85；不穿利器护甲 ≥ 40% 的衣服时近战闪避 +10% × 战技强度。拳脚走原版近战结算，Isekai 的力量、武器精通照常生效。武僧 1 级。 -->
+  <LP_MartialArts.description>Passive: unarmed (or with a quarterstaff), melee damage ×(1 + 0.5 × martial power), melee cooldown ×0.85; when not wearing clothing with sharp armor ≥ 40%, melee dodge +10% × martial power. Fists and kicks use vanilla melee resolution; Isekai's Strength and weapon mastery apply as usual. Monk level 1.</LP_MartialArts.description>
+  <!-- 疾风连击 -->
+  <LP_FlurryOfBlows.label>flurry of blows</LP_FlurryOfBlows.label>
+  <!-- 对相邻目标连出 2 拳（战技强度 ≥ 125% 时 3 拳），每拳都是一次完整的近战结算（必中）。武僧 1 级。 -->
+  <LP_FlurryOfBlows.description>Throw 2 punches at an adjacent target (3 at martial power ≥ 125%), each a full melee resolution (guaranteed hit). Monk level 1.</LP_FlurryOfBlows.description>
+  <!-- 拨挡箭矢 -->
+  <LP_DeflectMissiles.label>deflect missiles</LP_DeflectMissiles.label>
+  <!-- 30 秒 × 战技强度：每发远程攻击的伤害减少 10 × 战技强度（× 心灵敏感度），减到 0 时整发拨开。武僧 3 级。 -->
+  <LP_DeflectMissiles.description>For 30 seconds × martial power: each ranged attack's damage is reduced by 10 × martial power (× psychic sensitivity); reduced to 0, the whole shot is deflected. Monk level 3.</LP_DeflectMissiles.description>
+  <!-- 震慑拳 -->
+  <LP_StunningStrike.label>stunning strike</LP_StunningStrike.label>
+  <!-- 一拳并以气震荡对方：击晕 2 秒 × 战技强度（× 心灵敏感度；体型 2 以上减半），对机械体也有效。武僧 5 级。 -->
+  <LP_StunningStrike.description>A punch that shocks the target with ki: stunned for 2 seconds × martial power (× psychic sensitivity; halved for body size 2+); works on mechanoids too. Monk level 5.</LP_StunningStrike.description>
+  <!-- 乘风步 -->
+  <LP_StepOfTheWind.label>step of the wind</LP_StepOfTheWind.label>
+  <!-- 20 秒 × 战技强度：移动 ×1.6、近战闪避 +20%。武僧 7 级。 -->
+  <LP_StepOfTheWind.description>For 20 seconds × martial power: movement ×1.6, melee dodge +20%. Monk level 7.</LP_StepOfTheWind.description>
+  <!-- 开掌技 -->
+  <LP_OpenHand.label>open hand technique</LP_OpenHand.label>
+  <!-- 一拳把相邻目标击退 3 格（体型 2 以上 1 格）并打倒 1 秒；落点旁的其他敌人各受 6 × 战技强度 钝器伤害。武僧 7 级。 -->
+  <LP_OpenHand.description>A punch knocks an adjacent target back 3 cells (1 cell for body size 2+) and down for 1 second; other enemies next to the landing spot each take 6 × martial power blunt damage. Monk level 7.</LP_OpenHand.description>
+  <!-- 金刚之躯 -->
+  <LP_DiamondSoul.label>diamond body</LP_DiamondSoul.label>
+  <!-- 立刻治疗 20 × 战技强度（× 心灵敏感度），并解除食物中毒或清除 20% 毒素积累；之后 1 小时 × 战技强度 受到伤害 ×0.7、免疫击晕、精神崩溃阈值 −10%。武僧 10 级。 -->
+  <LP_DiamondSoul.description>Instantly heal 20 × martial power (× psychic sensitivity) and cure food poisoning or clear 20% of toxic buildup; then for 1 hour × martial power, damage taken ×0.7, immune to stuns, mental break threshold -10%. Monk level 10.</LP_DiamondSoul.description>
+  <!-- 颤心掌 -->
+  <LP_QuiveringPalm.label>quivering palm</LP_QuiveringPalm.label>
+  <!-- 一拳在对方体内种下颤心，3 秒后爆发：躯干受 40 × 战技强度（× 心灵敏感度）钝器伤害（无视一半护甲）；巨人或体型 3 以上减半。武僧 13 级。 -->
+  <LP_QuiveringPalm.description>A punch plants quivering ki inside the target that bursts after 3 seconds: the torso takes 40 × martial power (× psychic sensitivity) blunt damage (ignoring half the armor); halved against giants or body size 3+. Monk level 13.</LP_QuiveringPalm.description>
+  <!-- 空灵之身 -->
+  <LP_EmptyBody.label>empty body</LP_EmptyBody.label>
+  <!-- 30 秒 × 战技强度：隐身（敌人无法锁定）、受到伤害 ×0.5、每秒治疗 1 × 战技强度（× 心灵敏感度）。武僧 15 级，并且格斗 15 级。 -->
+  <LP_EmptyBody.description>For 30 seconds × martial power: invisible (enemies cannot target), damage taken ×0.5, heals 1 × martial power (× psychic sensitivity) per second. Monk level 15, and Melee 15.</LP_EmptyBody.description>
+  <!-- 至圣斩 -->
+  <LP_DivineSmite.label>divine smite</LP_DivineSmite.label>
+  <!-- 10 秒内下一次近战命中额外造成 10 × 战技强度（× 心灵敏感度）神圣伤害，对亡灵、邪魔、夺心魔翻倍。武器那一下照常结算（Isekai 加成生效）。圣武士 1 级。 -->
+  <LP_DivineSmite.description>Within 10 seconds, the next melee hit deals an extra 10 × martial power (× psychic sensitivity) holy damage, doubled against undead, fiends and mind flayers. The weapon hit resolves as usual (Isekai bonuses apply). Paladin level 1.</LP_DivineSmite.description>
+  <!-- 圣疗 -->
+  <LP_LayOnHands.label>lay on hands</LP_LayOnHands.label>
+  <!-- 触碰一名友军（或自己）治疗 25 × 神恩强度（× 心灵敏感度）；没有伤口时改为解除食物中毒或清除 30% 毒素积累。圣武士 1 级。 -->
+  <LP_LayOnHands.description>Touch an ally (or yourself) to heal 25 × divine power (× psychic sensitivity); with no wounds, instead cure food poisoning or clear 30% of toxic buildup. Paladin level 1.</LP_LayOnHands.description>
+  <!-- 誓仇 -->
+  <LP_VowOfEnmity.label>vow of enmity</LP_VowOfEnmity.label>
+  <!-- 标记一个敌人 1 天：施法者对它造成的所有伤害 ×(1 + 0.25 × 战技强度)；它死后施法者心情 +5（誓仇得报）。圣武士 3 级。 -->
+  <LP_VowOfEnmity.description>Mark one enemy for 1 day: all damage the caster deals to it ×(1 + 0.25 × martial power); when it dies the caster gets mood +5 (vow fulfilled). Paladin level 3.</LP_VowOfEnmity.description>
+  <!-- 守护灵光 -->
+  <LP_AuraOfProtection.label>aura of protection</LP_AuraOfProtection.label>
+  <!-- 被动：半径 5 内友军（含自己）受到的伤害 ×(1 − 0.1 × 神恩强度)（最低 ×0.8），精神崩溃阈值 −5%。多名圣武士不叠加，取最强。圣武士 5 级。 -->
+  <LP_AuraOfProtection.description>Passive: allies within radius 5 (including yourself) take damage ×(1 - 0.1 × divine power) (minimum ×0.8), mental break threshold -5%. Multiple paladins don't stack; the strongest applies. Paladin level 5.</LP_AuraOfProtection.description>
+  <!-- 神圣武器 -->
+  <LP_SacredWeapon.label>sacred weapon</LP_SacredWeapon.label>
+  <!-- 1 小时 × 战技强度：每次近战命中追加 4 × 战技强度（× 心灵敏感度）神圣伤害（对亡灵、邪魔、夺心魔翻倍）。圣武士 7 级。 -->
+  <LP_SacredWeapon.description>For 1 hour × martial power: every melee hit adds 4 × martial power (× psychic sensitivity) holy damage (doubled against undead, fiends and mind flayers). Paladin level 7.</LP_SacredWeapon.description>
+  <!-- 勇气灵光 -->
+  <LP_AuraOfCourage.label>aura of courage</LP_AuraOfCourage.label>
+  <!-- 被动：半径 5 内友军不会进入恐慌逃跑，并立即摆脱“震慑”。圣武士 7 级。 -->
+  <LP_AuraOfCourage.description>Passive: allies within radius 5 do not panic and flee, and are freed from "shaken" at once. Paladin level 7.</LP_AuraOfCourage.description>
+  <!-- 援护换位 -->
+  <LP_Intercept.label>swap guard</LP_Intercept.label>
+  <!-- 与 12 × 战技强度 格内的一名友军瞬间换位，对方获得“受庇护”10 秒：受到伤害 ×0.5。圣武士 10 级。 -->
+  <LP_Intercept.description>Instantly swap places with an ally within 12 × martial power cells; they get "protected" for 10 seconds: damage taken ×0.5. Paladin level 10.</LP_Intercept.description>
+  <!-- 放逐邪恶 -->
+  <LP_DispelEvil.label>banish evil</LP_DispelEvil.label>
+  <!-- 半径 5 × 神恩强度 内敌对的亡灵、邪魔、夺心魔各受 30 × 神恩强度（× 心灵敏感度）神圣伤害并击晕 2 秒；敌对的召唤物直接被驱散。圣武士 13 级。 -->
+  <LP_DispelEvil.description>Hostile undead, fiends and mind flayers within radius 5 × divine power each take 30 × divine power (× psychic sensitivity) holy damage and are stunned for 2 seconds; hostile summons are dispelled outright. Paladin level 13.</LP_DispelEvil.description>
+  <!-- 圣光化身 -->
+  <LP_HolyAvatar.label>holy avatar</LP_HolyAvatar.label>
+  <!-- 30 秒 × 战技强度：半径 6 内的敌人每秒受 5 × 战技强度（× 心灵敏感度）神圣伤害（对亡灵、邪魔翻倍），友军每秒治疗它的 40%；自己免疫击晕与恐慌。圣武士 15 级，并且格斗 15 级。 -->
+  <LP_HolyAvatar.description>For 30 seconds × martial power: enemies within radius 6 take 5 × martial power (× psychic sensitivity) holy damage per second (doubled against undead and fiends), allies heal 40% of that per second; you are immune to stuns and panic. Paladin level 15, and Melee 15.</LP_HolyAvatar.description>
+</LanguageData>

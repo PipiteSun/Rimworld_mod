@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（GearEnhanceWindow.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>这件不能强化</zh><en>This item can't be enhanced</en></s>
+  <s><zh>已经是+</zh><en>Already +</en></s>
+  <s><zh>需要先研究“装备强化”</zh><en>Needs "gear enhancement" researched first</en></s>
+  <s><zh>需要“高阶强化”研究才能超过+</zh><en>Needs "advanced enhancement" research to go beyond +</en></s>
+  <s><zh>没有智识</zh><en>No colonist with Intellectual </en></s>
+  <s><zh>以上、能做智识工作的殖民者</zh><en> or higher who can do intellectual work</en></s>
+  <s><zh>材料不够</zh><en>Not enough materials</en></s>
+  <s><zh>打开附魔强化窗口：挑一件武器或衣服（地上、储存区里的，或殖民者手里、身上的），用地图上的材料当场强化一级（要先研究“装备强化”）；也可以用白银当场修满耐久（每缺 20% 耐久 </zh><en>Open the enchantment window: pick a weapon or apparel (on the ground, in stockpiles, or held or worn by a colonist) and enhance it one level on the spot with materials on the map (requires "gear enhancement" research first); you can also repair durability to full with silver on the spot ( </en></s>
+  <s><zh> 白银）。</zh><en> silver per 20% missing durability).</en></s>
+  <s><zh>附魔强化 · 修复</zh><en>Enchantment · repair</en></s>
+  <s><zh>搜索…</zh><en>Search...</en></s>
+  <s><zh>没有要修的装备</zh><en>No gear needs repair</en></s>
+  <s><zh>全部修复：</zh><en>Repair all: </en></s>
+  <s><zh> 件，</zh><en> items, </en></s>
+  <s><zh> 白银</zh><en> silver</en></s>
+  <s><zh>修好了 </zh><en>Repaired </en></s>
+  <s><zh> 件装备</zh><en> pieces of gear</en></s>
+  <s><zh>（白银不够，还剩 </zh><en> (not enough silver, </en></s>
+  <s><zh> 件）</zh><en> left)</en></s>
+  <s><zh>白银不够，一件都没修</zh><en>Not enough silver; nothing repaired</en></s>
+  <s><zh> 手持</zh><en> held</en></s>
+  <s><zh> 穿着</zh><en> worn</en></s>
+  <s><zh>在地上 / 储存区</zh><en>on the ground / in stockpile</en></s>
+  <s><zh>，耐久 </zh><en>, durability </en></s>
+  <s><zh>从左边选一件装备</zh><en>Pick a piece of gear on the left</en></s>
+  <s><zh>耐久：</zh><en>Durability: </en></s>
+  <s><zh>（强化成功会修满）</zh><en> (a successful enhancement repairs it fully)</en></s>
+  <s><zh>现在 +</zh><en>Now +</en></s>
+  <s><zh>强化到 +</zh><en>Enhance to +</en></s>
+  <s><zh>每次材料：</zh><en>Materials per attempt: </en></s>
+  <s><zh>（有 </zh><en> (have </en></s>
+  <s><zh>成功率 </zh><en>Success chance </en></s>
+  <s><zh>失败：掉回 +</zh><en>Failure: drops back to +</en></s>
+  <s><zh>失败：只损失材料</zh><en>Failure: only materials lost</en></s>
+  <s><zh>工匠：</zh><en>Artisan: </en></s>
+  <s><zh>（智识 </zh><en> (Intellectual </en></s>
+  <s><zh>，手工 </zh><en>, Crafting </en></s>
+  <s><zh>工匠：无（要智识 </zh><en>Artisan: none (needs Intellectual </en></s>
+  <s><zh>\n连着奥术聚能石 +</zh><en>\nLinked arcane focus stone +</en></s>
+  <s><zh>，成功率 </zh><en>, success chance </en></s>
+  <s><zh>。失败会掉回 +</zh><en>. Failure drops back to +</en></s>
+  <s><zh>，确定？</zh><en>. Sure?</en></s>
+  <s><zh>修复耐久</zh><en>Repair durability</en></s>
+  <s><zh>耐久是满的</zh><en>Durability is full</en></s>
+  <s><zh>这件没有耐久</zh><en>This item has no durability</en></s>
+  <s><zh>白银 ×</zh><en>silver ×</en></s>
+  <s><zh>每缺 20% 耐久 </zh><en> </en></s>
+  <s><zh> 白银，当场修满</zh><en> silver per 20% missing durability, repaired fully on the spot</en></s>
+  <s><zh>白银不够</zh><en>Not enough silver</en></s>
+  <s><zh>修复（</zh><en>Repair (</en></s>
+  <s><zh>修复完成！耐久 </zh><en>Repair complete! Durability </en></s>
+  <s><zh>没能修复</zh><en>Couldn't repair</en></s>
+  <s><zh>成功！现在 +</zh><en>Success! Now +</en></s>
+  <s><zh>失败，材料没了，还是 +</zh><en>Failed; the materials are gone, still +</en></s>
+  <s><zh>失败，掉回了 +</zh><en>Failed; dropped back to +</en></s>
+  <s><zh>没能强化</zh><en>Couldn't enhance</en></s>
+</LPStrings>

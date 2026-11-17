@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 雷鸣斩 -->
+  <LP_EK_ThunderReady.label>thunderous smite</LP_EK_ThunderReady.label>
+  <!-- 下一次近战命中附加 12 × 强度 钝器伤害，并把体型 2 以下的目标震退 1 格。 -->
+  <LP_EK_ThunderReady.description>The next melee hit adds 12 × power blunt damage and knocks targets of body size 2 or less back 1 cell.</LP_EK_ThunderReady.description>
+  <!-- 吸收元素 -->
+  <LP_EK_Absorb.label>absorb elements</LP_EK_Absorb.label>
+  <!-- 受到的火焰、寒冰、闪电伤害 ×0.5。 -->
+  <LP_EK_Absorb.description>Fire, cold and lightning damage taken ×0.5.</LP_EK_Absorb.description>
+  <!-- 法术易伤 -->
+  <LP_EK_SpellVuln.label>spell vulnerability</LP_EK_SpellVuln.label>
+  <!-- 被奥法骑士的武器打中：受到的法术伤害（元素、心灵、奥术力）×1.25。 -->
+  <LP_EK_SpellVuln.description>Hit by an Eldritch Knight's weapon: spell damage taken (elemental, psychic, arcane force) ×1.25.</LP_EK_SpellVuln.description>
+  <!-- 法刃风暴 -->
+  <LP_EK_BladestormBuff.label>spellblade storm</LP_EK_BladestormBuff.label>
+  <!-- 每次近战命中，对 3 格内另一个敌人放一枚魔能飞弹（6 × 强度 奥术力伤害）。 -->
+  <LP_EK_BladestormBuff.description>Each melee hit fires a magic missile at another enemy within 3 cells (6 × power arcane force damage).</LP_EK_BladestormBuff.description>
+  <!-- 灵能打击 -->
+  <LP_PW_StrikeBuff.label>psionic strike</LP_PW_StrikeBuff.label>
+  <!-- 每次近战命中附加 6 × 强度 心灵伤害。 -->
+  <LP_PW_StrikeBuff.description>Each melee hit adds 6 × power psychic damage.</LP_PW_StrikeBuff.description>
+  <!-- 护卫念场 -->
+  <LP_PW_FieldBuff.label>guardian field</LP_PW_FieldBuff.label>
+  <!-- 受到的远程伤害 ×0.5。 -->
+  <LP_PW_FieldBuff.description>Ranged damage taken ×0.5.</LP_PW_FieldBuff.description>
+  <!-- 念动适应 -->
+  <LP_PW_AdeptBuff.label>telekinetic adept</LP_PW_AdeptBuff.label>
+  <!-- 心灵敏感度 +15%，冥想获得的专注 +25%。 -->
+  <LP_PW_AdeptBuff.description>Psychic sensitivity +15%, focus gained from meditation +25%.</LP_PW_AdeptBuff.description>
+  <!-- 念场心防 -->
+  <LP_PW_MindBuff.label>bulwark of force</LP_PW_MindBuff.label>
+  <!-- 心智抗性 +20%。 -->
+  <LP_PW_MindBuff.description>Mind resistance +20%.</LP_PW_MindBuff.description>
+  <!-- 念动宗师 -->
+  <LP_PW_StormBuff.label>telekinetic master</LP_PW_StormBuff.label>
+  <!-- 神经热上限 ×1.3。 -->
+  <LP_PW_StormBuff.description>Max neural heat ×1.3.</LP_PW_StormBuff.description>
+  <!-- 猩红化身 -->
+  <LP_HM_Ward.label>crimson avatar</LP_HM_Ward.label>
+  <!-- 刚施放完血咒：受到的伤害 ×0.5。 -->
+  <LP_HM_Ward.description>Just cast hemomancy: damage taken ×0.5.</LP_HM_Ward.description>
+  <!-- 血沸 -->
+  <LP_HM_BloodBoil.label>blood boil</LP_HM_BloodBoil.label>
+  <!-- 血在血管里沸腾：每秒受到一次伤害。 -->
+  <LP_HM_BloodBoil.description>Blood boils in the veins: taking damage every second.</LP_HM_BloodBoil.description>
+  <!-- 构装核心 -->
+  <LP_DefenderCore.label>construct core</LP_DefenderCore.label>
+  <!-- 战铸师造的钢铁卫士：不吃不睡，跟主人一起打仗；受到的伤害随主人的器械师等级降低（每级 −10% 的倍率）。 -->
+  <LP_DefenderCore.description>A steel defender built by a Battle Smith: doesn't eat or sleep, fights alongside its master; damage taken decreases with the master's artificer level (multiplier -10% per level).</LP_DefenderCore.description>
+  <!-- 改良卫士 -->
+  <LP_DefenderImproved.label>improved defender</LP_DefenderImproved.label>
+  <!-- 加厚的装甲和加力的拳头：利器与钝器护甲 +20%，近战伤害 +50%。 -->
+  <LP_DefenderImproved.description>Thickened armor and reinforced fists: sharp and blunt armor +20%, melee damage +50%.</LP_DefenderImproved.description>
+  <!-- 灵能防护 -->
+  <LP_AM_DefenseBuff.label>psionic defense</LP_AM_DefenseBuff.label>
+  <!-- 心智抗性 +25%，受到的心灵伤害 ×0.5。 -->
+  <LP_AM_DefenseBuff.description>Mind resistance +25%, psychic damage taken ×0.5.</LP_AM_DefenseBuff.description>
+  <!-- 变形之身 -->
+  <LP_AM_Tentacles.label>revelation in flesh</LP_AM_Tentacles.label>
+  <!-- 长出触手：多一种近战攻击（12 钝器），近战命中有 30% 的成功率缠住目标 2 秒；移动 +15%，伤口不流血。 -->
+  <LP_AM_Tentacles.description>Grew tentacles: an extra melee attack (12 blunt), melee hits have a 30% chance to entangle the target for 2 seconds; movement +15%, wounds don't bleed.</LP_AM_Tentacles.description>
+  <!-- 触手 -->
+  <LP_AM_Tentacles.comps.HediffComp_VerbGiver.tools.0.label>tentacle</LP_AM_Tentacles.comps.HediffComp_VerbGiver.tools.0.label>
+  <!-- 必胜一击 -->
+  <LP_CQ_Guided.label>guided strike</LP_CQ_Guided.label>
+  <!-- 近战命中 +50%，远程命中 +2%（每格）。 -->
+  <LP_CQ_Guided.description>Melee hit +50%, ranged hit +2% (per cell).</LP_CQ_Guided.description>
+  <!-- 征服灵光 -->
+  <LP_CQ_Pinned.label>aura of conquest</LP_CQ_Pinned.label>
+  <!-- 在征服者面前吓得挪不动步：移动 ×0.2。 -->
+  <LP_CQ_Pinned.description>Too terrified before the conqueror to move: movement ×0.2.</LP_CQ_Pinned.description>
+  <!-- 不败征服者 -->
+  <LP_CQ_Invincible.label>invincible conqueror</LP_CQ_Invincible.label>
+  <!-- 受到的伤害 ×0.5（神圣伤害除外），近战冷却 ×0.8。 -->
+  <LP_CQ_Invincible.description>Damage taken ×0.5 (except holy damage), melee cooldown ×0.8.</LP_CQ_Invincible.description>
+  <!-- 降服 -->
+  <LP_CQ_Yielded.label>submission</LP_CQ_Yielded.label>
+  <!-- 丢下武器跪地投降，可以直接俘虏。 -->
+  <LP_CQ_Yielded.description>Dropped weapons and knelt in surrender; can be captured directly.</LP_CQ_Yielded.description>
+  <!-- 和平使者 -->
+  <LP_RD_Emissary.label>emissary of peace</LP_RD_Emissary.label>
+  <!-- 社交影响 +30%，谈判能力 +20%。 -->
+  <LP_RD_Emissary.description>Social impact +30%, negotiation ability +20%.</LP_RD_Emissary.description>
+  <!-- 斥责暴力 -->
+  <LP_RD_Rebuke.label>rebuke the violent</LP_RD_Rebuke.label>
+  <!-- 下一个近战打中自己或 15 格内友军的敌人，受到同等的神圣伤害（最多为严重度）。 -->
+  <LP_RD_Rebuke.description>The next enemy to hit you or an ally within 15 cells in melee takes equal holy damage (at most the severity).</LP_RD_Rebuke.description>
+  <!-- 坚韧之魂 -->
+  <LP_RD_SpiritBuff.label>protective spirit</LP_RD_SpiritBuff.label>
+  <!-- 精神崩溃阈值 −10%；伤势超过一半时持续治疗。 -->
+  <LP_RD_SpiritBuff.description>Mental break threshold -10%; continuous healing while over half your health is lost.</LP_RD_SpiritBuff.description>
+  <!-- 背誓 -->
+  <LP_Oathbroken.label>oath broken</LP_Oathbroken.label>
+  <!-- 违背了誓言：神恩恢复减半，誓言之力不能用。 -->
+  <LP_Oathbroken.description>Broke the oath: divinity recovery halved, Channel Oath unusable.</LP_Oathbroken.description>
+  <!-- 恶鬼之眼 -->
+  <LP_FB_EyesBuff.label>fiend's eyes</LP_FB_EyesBuff.label>
+  <!-- 眼睛里燃着恶鬼的光：魅力 +2（8 级起 +4）。 -->
+  <LP_FB_EyesBuff.description>Fiendish light burns in the eyes: Charisma +2 (+4 from level 8).</LP_FB_EyesBuff.description>
+  <!-- 初醒 -->
+  <LP_FB_EyesBuff.stages.0.label>newly woken</LP_FB_EyesBuff.stages.0.label>
+  <!-- 强化 -->
+  <LP_FB_EyesBuff.stages.1.label>enhancement</LP_FB_EyesBuff.stages.1.label>
+  <!-- 恶鬼之皮 -->
+  <LP_FB_SkinBuff.label>fiend's skin</LP_FB_SkinBuff.label>
+  <!-- 皮肤变成恶鬼的红色：伤口愈合 ×1.5，每 4 秒回复 0.5 伤势（8 级起 ×2、回复 1）。 -->
+  <LP_FB_SkinBuff.description>Skin turned fiend-red: wound healing ×1.5, 0.5 injury regained every 4 seconds (×2 and 1 from level 8).</LP_FB_SkinBuff.description>
+  <!-- 初醒 -->
+  <LP_FB_SkinBuff.stages.0.label>newly woken</LP_FB_SkinBuff.stages.0.label>
+  <!-- 强化 -->
+  <LP_FB_SkinBuff.stages.1.label>enhancement</LP_FB_SkinBuff.stages.1.label>
+  <!-- 恶鬼之舌 -->
+  <LP_FB_TongueBuff.label>fiend's tongue</LP_FB_TongueBuff.label>
+  <!-- 分叉的舌头尝得到别人的心思：心灵敏感度 +30%（8 级起 +60%）。 -->
+  <LP_FB_TongueBuff.description>A forked tongue that tastes others' thoughts: psychic sensitivity +30% (+60% from level 8).</LP_FB_TongueBuff.description>
+  <!-- 初醒 -->
+  <LP_FB_TongueBuff.stages.0.label>newly woken</LP_FB_TongueBuff.stages.0.label>
+  <!-- 强化 -->
+  <LP_FB_TongueBuff.stages.1.label>enhancement</LP_FB_TongueBuff.stages.1.label>
+</LanguageData>

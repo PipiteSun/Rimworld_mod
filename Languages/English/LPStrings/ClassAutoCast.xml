@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（ClassAutoCast.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>开</zh><en>on</en></s>
+  <s><zh>关</zh><en>off</en></s>
+  <s><zh>（左键切换）\n右键：自动施放设置（未征召时自动施放：</zh><en> (left-click to toggle)\nRight-click: autocast settings (autocast while undrafted: </en></s>
+  <s><zh>，资源低于 </zh><en>, don't autocast below resource </en></s>
+  <s><zh>% 不自动用）\n\n开着时，征召待命或战斗中会自己放这个能力：治疗先救倒地、受伤的友军，增益给正在战斗、还没有这个效果的友军，攻击能力打射程内的敌人，范围法术不会炸到自己人。不会打断你下的移动命令。</zh><en>%)\n\nWhen on, it casts this ability by itself while drafted on standby or in combat: heals go first to downed and injured allies, buffs to allies who are fighting and don't have the effect yet, attack abilities at enemies in range, and area spells won't hit your own people. It won't interrupt your move orders.</en></s>
+  <s><zh>关闭自动施放</zh><en>Turn off autocast</en></s>
+  <s><zh>开启自动施放</zh><en>Turn on autocast</en></s>
+</LPStrings>

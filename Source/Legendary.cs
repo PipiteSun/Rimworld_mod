@@ -71,12 +71,12 @@ namespace LichPhylactery {
   // 1.59.0 热修（去 d20 措辞）：对玩家只显示成功率。和 Save 的判定同一个概率：调整值、熟练加值、额外加值每点 +5%，难度每点 −5%，限 0～100%（不含幸运再试）。
   public static float SaveChance(int modifier,int proficiency,int bonus,int dc)=>Mathf.Clamp01((21-dc+modifier+proficiency+bonus)/20f);
   public static float SaveChance(Pawn p,int a,int dc,Pawn source=null)=>p==null?0f:Mathf.Clamp01((21-dc+SaveBonus(p,a,source))/20f);
-  public static string SaveChanceText(Pawn p,int a,int dc,Pawn source=null)=>"成功率 "+SaveChance(p,a,dc,source).ToStringPercent();  // 判定：调整值 + 熟练 + 1～20 的随机数 ≥ 难度 成功；失败时「幸运」专长可以重掷一次（用掉一次幸运）。成功飘“豁免！”。
+  public static string SaveChanceText(Pawn p,int a,int dc,Pawn source=null)=>"成功率 ".Loc()+SaveChance(p,a,dc,source).ToStringPercent();  // 判定：调整值 + 熟练 + 1～20 的随机数 ≥ 难度 成功；失败时「幸运」专长可以重掷一次（用掉一次幸运）。成功飘“豁免！”。
   public static bool Save(Pawn p,int a,int dc,Pawn source=null){
    if(p==null)return false;int bonus=SaveBonus(p,a,source);
    int r=lastRoll=D20();bool ok=r+bonus>=dc;
-   if(!ok && Feats.Has(p,Feats.Lucky) && Feats.Use(p,Feats.Lucky)){r=lastRoll=D20();ok=r+bonus>=dc;if(ok)Items.Mote(p,"幸运！",new Color(.95f,.85f,.45f));}
-   if(ok)Items.Mote(p,"豁免！",new Color(.75f,.9f,1f));
+   if(!ok && Feats.Has(p,Feats.Lucky) && Feats.Use(p,Feats.Lucky)){r=lastRoll=D20();ok=r+bonus>=dc;if(ok)Items.Mote(p,"幸运！".Loc(),new Color(.95f,.85f,.45f));}
+   if(ok)Items.Mote(p,"豁免！".Loc(),new Color(.75f,.9f,1f));
    return ok;
   }
   public static string AbilityLabel(int a)=>a>=0 && a<6?Adventurer.Names[a]:"?";
@@ -124,7 +124,7 @@ namespace LichPhylactery {
   public static int Resisted; // 自检计数
   public static bool Resist(Pawn p,string what){
    if(bypass || p==null || p.Dead)return false;var r=Resistance(p);if(r==null || !r.Use())return false;
-   Resisted++;Items.Mote(p,"传奇抗性！（"+what+"）",new Color(1f,.75f,.3f));return true;
+   Resisted++;Items.Mote(p,"传奇抗性！（".Loc()+what+"）".Loc(),new Color(1f,.75f,.3f));return true;
   }
   public static readonly Dictionary<Pawn,int> painWindow=new Dictionary<Pawn,int>();
   public static Func<Pawn,bool> InOwnLairHook;
@@ -150,7 +150,7 @@ namespace LichPhylactery {
     if(!w.CanDo(legend,enemy))continue;
     if(!w.Do(legend,enemy))continue;
     h.points-=a.cost;h.Used(a.action,a.cooldown);ActionsDone++;
-    Items.Mote(legend,"传奇动作："+w.Label,new Color(1f,.6f,.3f));
+    Items.Mote(legend,"传奇动作：".Loc()+w.Label,new Color(1f,.6f,.3f));
     return a;
    }
    return null;
@@ -170,9 +170,9 @@ namespace LichPhylactery {
    if(Save(p,Adventurer.Wis,dc,legend)){mc?.Immune(legend,p,FearImmuneTicks);return false;}
    var h=Items.Give(p,"LP_Frightened",FearTicks);if(h==null)return false;
    mc?.Immune(legend,p,FearTicks+FearImmuneTicks);Frightened++;
-   Items.Mote(p,"惊惧！",new Color(.9f,.5f,.5f));
+   Items.Mote(p,"惊惧！".Loc(),new Color(.9f,.5f,.5f));
    if(p.RaceProps.Humanlike && !p.Drafted && Roll<FearPanicChance && p.mindState?.mentalStateHandler!=null){
-    if(p.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.PanicFlee,"骇人威仪",forced:true,forceWake:true) && p.MentalState!=null)p.MentalState.forceRecoverAfterTicks=PanicTicks;
+    if(p.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.PanicFlee,"骇人威仪".Loc(),forced:true,forceWake:true) && p.MentalState!=null)p.MentalState.forceRecoverAfterTicks=PanicTicks;
    }
    return true;
   }
@@ -181,7 +181,7 @@ namespace LichPhylactery {
   public static string InspectLine(Pawn p){
    var e=Ext(p);if(e==null)return null;
    var h=Adventurer.Get(p);
-   return "挑战等级 CR "+e.cr+(h!=null?" · 冒险者等级 "+h.level:"");
+   return "挑战等级 CR ".Loc()+e.cr+(h!=null?" · 冒险者等级 ".Loc()+h.level:"");
   }
 
   // ---------- 击杀奖励 ----------
@@ -198,7 +198,7 @@ namespace LichPhylactery {
    }
    if(killer!=null && killer.Faction!=null && killer.Faction.IsPlayer && e.milestone){
     var rec=DefDatabase<RecordDef>.GetNamedSilentFail("LP_DragonsSlain");if(rec!=null && killer.records!=null && SlayRecordHook?.Invoke(victim)!=false)killer.records.Increment(rec);
-    var tale=DefDatabase<TaleDef>.GetNamedSilentFail("LP_SlewLegend");if(tale!=null)try{TaleRecorder.RecordTale(tale,killer,victim);}catch(Exception x){Log.ErrorOnce("[DND边缘大陆] 传奇击杀传说："+x.Message,74152001);}
+    var tale=DefDatabase<TaleDef>.GetNamedSilentFail("LP_SlewLegend");if(tale!=null)try{TaleRecorder.RecordTale(tale,killer,victim);}catch(Exception x){Log.ErrorOnce("[DND边缘大陆] 传奇击杀传说：".Loc()+x.Message,74152001);}
    }
   }
   public static Func<Pawn,bool> SlayRecordHook;
@@ -211,10 +211,10 @@ namespace LichPhylactery {
   public int Max{get{var e=Legendary.Ext(pawn);return e==null?Legendary.AdventurerCharges(pawn):e.resistance+(Legendary.InOwnLair(pawn)?e.lairBonus:0);}}
   public void Refill(){charges=lastMax=Max;lastRefill=Find.TickManager?.TicksGame??0;}
   public bool Use(){if(charges<0)Refill();if(charges<=0)return false;charges--;return true;}
-  public override string LabelBase=>charges<=0 && charges!=-1?"传奇抗性耗尽":"传奇抗性 "+Mathf.Max(0,charges)+"/"+Max;
+  public override string LabelBase=>charges<=0 && charges!=-1?"传奇抗性耗尽".Loc():"传奇抗性 ".Loc()+Mathf.Max(0,charges)+"/"+Max;
   public override string TipStringExtra{get{
    int left=Legendary.ResistDayTicks-(Find.TickManager.TicksGame-lastRefill);
-   return (base.TipStringExtra??"")+"\n眩晕、外力造成的精神状态、控制类状态、疼痛倒地：每次消耗 1 次，效果完全不生效。用完后控制正常生效。\n恢复满还要 "+(Mathf.Max(0,left)/(float)GenDate.TicksPerHour).ToString("0.#")+" 小时。";
+   return (base.TipStringExtra??"")+"\n眩晕、外力造成的精神状态、控制类状态、疼痛倒地：每次消耗 1 次，效果完全不生效。用完后控制正常生效。\n恢复满还要 ".Loc()+(Mathf.Max(0,left)/(float)GenDate.TicksPerHour).ToString("0.#")+" 小时。".Loc();
   }}
   public override void TickInterval(int delta){
    base.TickInterval(delta);if(pawn.IsHashIntervalTick(250,delta))Sync();
@@ -231,8 +231,8 @@ namespace LichPhylactery {
   public int Max=>Legendary.Ext(pawn)?.actionPoints??0;
   public bool OnCooldown(string a)=>cooldown.TryGetValue(a,out int t) && Find.TickManager.TicksGame<t;
   public void Used(string a,int cd){if(cd>0)cooldown[a]=Find.TickManager.TicksGame+cd;}
-  public override string LabelBase=>"传奇点 "+Mathf.FloorToInt(points)+"/"+Max;
-  public override string TipStringExtra=>(base.TipStringExtra??"")+"\n15 格内的敌人每完成一次攻击，它就用掉传奇点做一个传奇动作（侦测、尾击、振翼……），不打断自己的攻击。每 4 秒恢复 1 点。";
+  public override string LabelBase=>"传奇点 ".Loc()+Mathf.FloorToInt(points)+"/"+Max;
+  public override string TipStringExtra=>(base.TipStringExtra??"")+"\n15 格内的敌人每完成一次攻击，它就用掉传奇点做一个传奇动作（侦测、尾击、振翼……），不打断自己的攻击。每 4 秒恢复 1 点。".Loc();
   public override void TickInterval(int delta){
    base.TickInterval(delta);if((regen+=delta)<Legendary.ActionRegenTicks)return;regen=0;
    if(points<Max)points=Mathf.Min(Max,points+1f);
@@ -248,21 +248,21 @@ namespace LichPhylactery {
  }
  // 侦测：揭示 20 格内隐身的敌人。
  public class LA_Detect : LegendaryActionWorker {
-  public override string Label=>"侦测";
+  public override string Label=>"侦测".Loc();
   static IEnumerable<Pawn> Hidden(Pawn l)=>Legendary.EnemiesNear(l,Legendary.DetectRadius).Where(p=>p.IsPsychologicallyInvisible());
   public override bool CanDo(Pawn l,Pawn e)=>Hidden(l).Any();
   public override bool Do(Pawn l,Pawn e){
    int n=0;
    foreach(var p in Hidden(l).ToList()){
     foreach(var name in new[]{"LP_PotionInvisibility","LP_ShadowVeil"})Items.Remove(p,name);
-    p.GetInvisibilityComp()?.BecomeVisible(true);n++;Items.Mote(p,"被发现了！",new Color(1f,.6f,.3f));
+    p.GetInvisibilityComp()?.BecomeVisible(true);n++;Items.Mote(p,"被发现了！".Loc(),new Color(1f,.6f,.3f));
    }
    return n>0;
   }
  }
  // 尾击：2 格内一个敌人；敏捷豁免失败再推开 1 格；尾巴断了不能用。
  public class LA_Tail : LegendaryActionWorker {
-  public override string Label=>"尾击";
+  public override string Label=>"尾击".Loc();
   public static Func<Pawn,float> TailDamage=p=>20f;
   public override bool CanDo(Pawn l,Pawn e)=>Legendary.HasTail(l) && Legendary.EnemiesNear(l,2.9f).Any();
   public override bool Do(Pawn l,Pawn e){
@@ -274,7 +274,7 @@ namespace LichPhylactery {
  }
  // 振翼：3 格内所有敌人敏捷豁免，失败受翼击并倒地 2 秒；然后飞到 8 格内的一点。两翼都断了不能用。
  public class LA_Wing : LegendaryActionWorker {
-  public override string Label=>"振翼";
+  public override string Label=>"振翼".Loc();
   public static Func<Pawn,float> WingDamage=p=>15f;
   public const int StunTicks=120;public const float Radius=3.9f,Hop=8f;
   public override bool CanDo(Pawn l,Pawn e)=>Legendary.CanFly(l) && Legendary.EnemiesNear(l,Radius).Any();
@@ -292,7 +292,7 @@ namespace LichPhylactery {
  }
  // 骇人一瞥（远古）：对 15 格内一个已经豁免过威仪的人重新做一次威仪豁免。
  public class LA_Glance : LegendaryActionWorker {
-  public override string Label=>"骇人一瞥";
+  public override string Label=>"骇人一瞥".Loc();
   static IEnumerable<Pawn> Targets(Pawn l){var mc=MapComp<MapComponent_Legendary>.Get(l.Map);return Legendary.EnemiesNear(l,Legendary.ActionRadius).Where(p=>mc!=null && mc.Checked(l,p) && !Items.Has(p,"LP_Frightened") && !Legendary.FearImmune(p));}
   public override bool CanDo(Pawn l,Pawn e)=>Legendary.Ext(l)?.presenceRadius>0 && Targets(l).Any();
   public override bool Do(Pawn l,Pawn e){var t=Targets(l).OrderBy(p=>p.Position.DistanceTo(l.Position)).FirstOrDefault();if(t==null)return false;Legendary.Presence(l,t,MapComp<MapComponent_Legendary>.Get(l.Map));return true;}
@@ -306,7 +306,7 @@ namespace LichPhylactery {
    if(cells.Count==0)return false;
    var dest=cells.OrderBy(c=>c.DistanceTo(toward)+Rand.Value*3f).First();
    try{var f=PawnFlyer.MakeFlyer(flyer,p,dest,null,null);if(f==null)return false;GenSpawn.Spawn(f,p.Position,map);return true;}
-   catch(Exception e){Log.WarningOnce("[DND边缘大陆] 真龙飞跃失败："+e.Message,74152002);return false;}
+   catch(Exception e){Log.WarningOnce("[DND边缘大陆] 真龙飞跃失败：".Loc()+e.Message,74152002);return false;}
   }
  }
 
@@ -338,7 +338,7 @@ namespace LichPhylactery {
    int now=Find.TickManager.TicksGame;
    if((now+map.uniqueID)%60!=0)return;
    Refresh();if(legends.Count==0)return;
-   try{PresenceTick();}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 骇人威仪出错："+e,74152003);}
+   try{PresenceTick();}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 骇人威仪出错：".Loc()+e,74152003);}
   }
  }
 
@@ -347,7 +347,7 @@ namespace LichPhylactery {
  public static class LegendaryStun {
   static bool Prefix(StunHandler __instance,int ticks){
    var p=__instance.parent as Pawn;if(ticks<=0 || p==null || !Legendary.CanResist(p))return true;
-   return !Legendary.Resist(p,"眩晕");
+   return !Legendary.Resist(p,"眩晕".Loc());
   }
  }
  [HarmonyPatch(typeof(MentalStateHandler),nameof(MentalStateHandler.TryStartMentalState))]
@@ -384,7 +384,7 @@ namespace LichPhylactery {
    int now=Find.TickManager.TicksGame;
    if(Legendary.painWindow.TryGetValue(___pawn,out int until) && now<until){__result=false;return;}
    if(!LegendaryStateCheck.active)return;
-   if(Legendary.Resist(___pawn,"疼痛")){Legendary.painWindow[___pawn]=now+Legendary.PainWindowTicks;__result=false;}
+   if(Legendary.Resist(___pawn,"疼痛".Loc())){Legendary.painWindow[___pawn]=now+Legendary.PainWindowTicks;__result=false;}
   }
  }
  // 倒地即死（不可俘虏、不可招募）。
@@ -402,7 +402,7 @@ namespace LichPhylactery {
    var c=__instance.CasterPawn;if(c?.Map==null || Legendary.Is(c))return;
    var mc=MapComp<MapComponent_Legendary>.Get(c.Map);if(mc==null || mc.Count==0)return;
    try{foreach(var l in mc.legends.ToList())if(l!=c && l.HostileTo(c))Legendary.React(l,c);}
-   catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 传奇动作出错："+e,74152004);}
+   catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 传奇动作出错：".Loc()+e,74152004);}
   }
  }
  // 生成：带传奇扩展的兵种（含开发者模式生成）统一处理。

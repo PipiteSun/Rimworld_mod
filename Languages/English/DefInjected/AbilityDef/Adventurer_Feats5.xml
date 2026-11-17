@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 催生 -->
+  <LP_FeatGrowth.label>quicken growth</LP_FeatGrowth.label>
+  <!-- 丰收之手专长：自身周围 6 格内所有植物的生长进度 +20%（最高到成熟）。每天 1 次，午夜恢复。 -->
+  <LP_FeatGrowth.description>Hand of Harvest feat: all plants within 6 cells of you gain +20% growth (up to mature). Once per day, restored at midnight.</LP_FeatGrowth.description>
+  <!-- 造物术 -->
+  <LP_FeatFabricate.label>fabricate</LP_FeatFabricate.label>
+  <!-- 造物之手专长：正在工作台前制作时按下，立刻完成剩余工作量的一半（最多相当于 60000 点工作），这件作品的品质至少为「优秀」。不打断正在做的账单。每天 1 次，午夜恢复。 -->
+  <LP_FeatFabricate.description>Hands of Creation feat: press while crafting at a workbench to instantly finish half the remaining work (up to the equivalent of 60000 work); this piece's quality is at least "excellent". Does not interrupt the current bill. Once per day, restored at midnight.</LP_FeatFabricate.description>
+</LanguageData>

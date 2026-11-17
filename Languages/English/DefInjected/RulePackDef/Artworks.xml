@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- physical_description_root->这件[fleshart][depicts]的是[image]。[desc_sentence_group] | physical_description_root->这件[fleshart]用拧结的肌束向我们[depiction]了[image]。[desc_sentence_group] | physical_description_root->在这件[fleshart]上，层叠的血肉[depiction]了[image]。[desc_sentence_group] | physical_description_root->这件[fleshart]以筋络和骨片拼出了[image]。[desc_sentence_group] | fleshart->血肉艺术品 | fleshart->血肉雕塑 | fleshart->肉塑 | flesh -->
+  <LP_ArtDescription_FleshArt.rulePack.rulesStrings>
+    <li>physical_description_root-&gt;This [fleshart] [depicts] [image]. [desc_sentence_group]</li>
+    <li>physical_description_root-&gt;This [fleshart] [depiction] [image] in twisted muscle bundles. [desc_sentence_group]</li>
+    <li>physical_description_root-&gt;On this [fleshart], layered flesh [depiction] [image]. [desc_sentence_group]</li>
+    <li>physical_description_root-&gt;This [fleshart] pieces together [image] out of sinew and bone shards. [desc_sentence_group]</li>
+    <li>fleshart-&gt;flesh artwork</li>
+    <li>fleshart-&gt;flesh sculpture</li>
+    <li>fleshart-&gt;meat sculpture</li>
+    <li>fleshart-&gt;piece</li>
+  </LP_ArtDescription_FleshArt.rulePack.rulesStrings>
+  <!-- physical_description_root->这件[leatherart][depicts]的是[image]。[desc_sentence_group] | physical_description_root->这件[leatherart]上压出的花纹向我们[depiction]了[image]。[desc_sentence_group] | physical_description_root->在这件[leatherart]上，拼缝的皮片[depiction]了[image]。[desc_sentence_group] | physical_description_root->这件[leatherart]用刻刀和缝线描绘了[image]。[desc_sentence_group] | leatherart->皮雕 | leatherart->皮艺作品 | leatherart- -->
+  <LP_ArtDescription_LeatherCarving.rulePack.rulesStrings>
+    <li>physical_description_root-&gt;This [leatherart] [depicts] [image]. [desc_sentence_group]</li>
+    <li>physical_description_root-&gt;The pattern pressed into this [leatherart] [depiction] [image]. [desc_sentence_group]</li>
+    <li>physical_description_root-&gt;On this [leatherart], stitched leather pieces [depiction] [image]. [desc_sentence_group]</li>
+    <li>physical_description_root-&gt;This [leatherart] portrays [image] with carving knife and thread. [desc_sentence_group]</li>
+    <li>leatherart-&gt;leather carving</li>
+    <li>leatherart-&gt;leatherwork</li>
+    <li>leatherart-&gt;stitched statue</li>
+    <li>leatherart-&gt;piece</li>
+  </LP_ArtDescription_LeatherCarving.rulePack.rulesStrings>
+</LanguageData>

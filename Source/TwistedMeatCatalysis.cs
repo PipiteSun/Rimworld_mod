@@ -22,33 +22,33 @@ namespace LichPhylactery {
   public PsychicRitualDef def;
   static readonly AccessTools.FieldRef<GameComponent_PsychicRitualManager,Dictionary<PsychicRitualDef,int>> cds=AccessTools.FieldRefAccess<GameComponent_PsychicRitualManager,Dictionary<PsychicRitualDef,int>>("ritualCooldowns");
   public static GameComponent_PsychicRitualManager Manager=>GameComp<GameComponent_PsychicRitualManager>.Get(); // 按钮每帧都会查，缓存组件
-  public CatalysisSource_Psychic(PsychicRitualDef d){def=d;key="psy:"+d.defName;label="灵能仪式："+d.LabelCap;}
+  public CatalysisSource_Psychic(PsychicRitualDef d){def=d;key="psy:"+d.defName;label="灵能仪式：".Loc()+d.LabelCap;}
   public override int Remaining{get{var m=Manager;return m==null?0:Mathf.Max(0,m.GetAvailableTick(def)-TwistedMeat.Now);}}
   public override int Full=>def.cooldownHours*GenDate.TicksPerHour;
   public override void Reduce(int ticks){var m=Manager;if(m==null)return;var d=cds(m);if(d!=null && d.ContainsKey(def))d[def]-=ticks;}
  }
  public class CatalysisSource_Patron : CatalysisSource {
-  public CatalysisSource_Patron(){key="faith:patron";label="更换守护神";}
+  public CatalysisSource_Patron(){key="faith:patron";label="更换守护神".Loc();}
   public override int Remaining=>Faith.Comp==null?0:Mathf.Max(0,Faith.Comp.patronCooldownUntil-Faith.Now);
   public override int Full=>(int)(Faith.ChangeCooldownDays*GenDate.TicksPerDay*IdeoBridge.PatronCooldownFactor);
   public override void Reduce(int ticks){if(Faith.Comp!=null)Faith.Comp.patronCooldownUntil-=ticks;}
  }
  public class CatalysisSource_Planetar : CatalysisSource {
-  public CatalysisSource_Planetar(){key="faith:planetar";label="祈唤行星使";}
+  public CatalysisSource_Planetar(){key="faith:planetar";label="祈唤行星使".Loc();}
   public override int Remaining=>Pacts.Comp==null?0:Mathf.Max(0,Pacts.Comp.planetarReadyTick-Pacts.Now);
   public override int Full=>GenDate.TicksPerYear;
   public override void Reduce(int ticks){if(Pacts.Comp!=null)Pacts.Comp.planetarReadyTick-=ticks;}
  }
  public class CatalysisSource_PactPatron : CatalysisSource {
   public string patron;
-  public CatalysisSource_PactPatron(string patron){this.patron=patron;key="pact:"+patron;var d=DefDatabase<LP_PatronDef>.GetNamedSilentFail(patron);label="契约宗主再次来访："+(d?.label??patron);}
+  public CatalysisSource_PactPatron(string patron){this.patron=patron;key="pact:"+patron;var d=DefDatabase<LP_PatronDef>.GetNamedSilentFail(patron);label="契约宗主再次来访：".Loc()+(d?.label??patron);}
   public override int Remaining{get{var c=Pacts.Comp;return c!=null && c.patronCooldown.TryGetValue(patron,out int t)?Mathf.Max(0,t-Pacts.Now):0;}}
   public override int Full=>Pacts.RefuseCooldownDays*GenDate.TicksPerDay;
   public override void Reduce(int ticks){var c=Pacts.Comp;if(c!=null && c.patronCooldown.ContainsKey(patron))c.patronCooldown[patron]-=ticks;}
  }
  public class CatalysisSource_Refine : CatalysisSource {
   public Building_AbyssCircle circle;
-  public CatalysisSource_Refine(Building_AbyssCircle c){circle=c;key="abyss:refine:"+c.thingIDNumber;label="深渊法阵：炼魂";}
+  public CatalysisSource_Refine(Building_AbyssCircle c){circle=c;key="abyss:refine:"+c.thingIDNumber;label="深渊法阵：炼魂".Loc();}
   public override int Remaining=>Mathf.Max(0,circle.refineReady-TwistedMeat.Now);
   public override int Full=>AbyssRitual.RefineCooldown;
   public override void Reduce(int ticks){circle.refineReady-=ticks;}
@@ -90,20 +90,20 @@ namespace LichPhylactery {
   }
   public static List<Thing> Supplies(Thing b)=>TwistedMeat.Nearby(b.Map,b.Position,Radius);
   public static string PawnBlocked(Thing b,Pawn p){
-   if(p==null)return "先选一名殖民者";
-   if(p.Downed || p.Dead || !p.Spawned || p.Map!=b.Map)return p.LabelShort+"现在不能去";
-   if(p.WorkTagIsDisabled(WorkTags.ManualSkilled) && p.WorkTagIsDisabled(WorkTags.Intellectual))return p.LabelShort+"不做这类工作";
-   if(b is Building_FaithAltar){var g=FaithUtility.DevoteeGod(p);if(g!=null && g.key!="Shar")return "圣坛上的血肉催转只有莎尔的信徒和无神者能做（"+p.LabelShort+"信奉"+g.label+"）";}
-   if(!p.CanReach(b,PathEndMode.Touch,Danger.Deadly))return p.LabelShort+"走不到那里";
+   if(p==null)return "先选一名殖民者".Loc();
+   if(p.Downed || p.Dead || !p.Spawned || p.Map!=b.Map)return p.LabelShort+"现在不能去".Loc();
+   if(p.WorkTagIsDisabled(WorkTags.ManualSkilled) && p.WorkTagIsDisabled(WorkTags.Intellectual))return p.LabelShort+"不做这类工作".Loc();
+   if(b is Building_FaithAltar){var g=FaithUtility.DevoteeGod(p);if(g!=null && g.key!="Shar")return "圣坛上的血肉催转只有莎尔的信徒和无神者能做（".Loc()+p.LabelShort+"信奉".Loc()+g.label+"）".Loc();}
+   if(!p.CanReach(b,PathEndMode.Touch,Danger.Deadly))return p.LabelShort+"走不到那里".Loc();
    return null;
   }
   public static string Blocked(Thing b,CatalysisSource s,int days,Pawn p,bool checkPawn=true){
-   if(!TwistedMeat.Active)return "需要异象";
-   if(b==null || !b.Spawned)return "建筑不在地图上";
-   if(s==null || s.Remaining<=0)return "这个仪式没有在冷却";
-   if(MaxDays(s)<=0)return "本周期已经缩短到上限（完整冷却的 60%，至少剩 1 天）";
-   if(days<=0)return "至少缩短 1 天";
-   int cost=Cost(s,days,out _);if(TwistedMeat.MeatEquivalent(Supplies(b))<cost)return "建筑 12 格内的扭曲肉不够（要 "+cost+" 份当量）";
+   if(!TwistedMeat.Active)return "需要异象".Loc();
+   if(b==null || !b.Spawned)return "建筑不在地图上".Loc();
+   if(s==null || s.Remaining<=0)return "这个仪式没有在冷却".Loc();
+   if(MaxDays(s)<=0)return "本周期已经缩短到上限（完整冷却的 60%，至少剩 1 天）".Loc();
+   if(days<=0)return "至少缩短 1 天".Loc();
+   int cost=Cost(s,days,out _);if(TwistedMeat.MeatEquivalent(Supplies(b))<cost)return "建筑 12 格内的扭曲肉不够（要 ".Loc()+cost+" 份当量）".Loc();
    if(checkPawn){string w=PawnBlocked(b,p);if(w!=null)return w;}
    return null;
   }
@@ -116,7 +116,7 @@ namespace LichPhylactery {
    s.Reduce(ticks);
    cy.reduced+=ticks;cy.steps+=steps;Save(s,cy);
    TwistedMeat.Consumed(took);if(p!=null)TwistedMeat.MaybeWhisper(p,WhisperChance);
-   Messages.Message((p?.LabelShort??"殖民地")+"献上 "+took+" 份扭曲肉：“"+s.label+"”的冷却缩短了 "+(ticks/(float)GenDate.TicksPerDay).ToString("0.#")+" 天。",new LookTargets(b),MessageTypeDefOf.PositiveEvent,false);
+   Messages.Message((p?.LabelShort??"殖民地".Loc())+"献上 ".Loc()+took+" 份扭曲肉：“".Loc()+s.label+"”的冷却缩短了 ".Loc()+(ticks/(float)GenDate.TicksPerDay).ToString("0.#")+" 天。".Loc(),new LookTargets(b),MessageTypeDefOf.PositiveEvent,false);
    return ticks;
   }
   // 窗口里点“开始献祭”：记下订单，派人去做。
@@ -155,8 +155,8 @@ namespace LichPhylactery {
   static IEnumerable<Gizmo> Postfix(IEnumerable<Gizmo> gizmos,Building __instance){
    foreach(var g in gizmos)yield return g;
    if(!TwistedMeat.Active || __instance.Faction!=Faction.OfPlayer || !__instance.Spawned || !FleshCatalysis.IsHost(__instance))yield break;
-   var b=__instance;var cmd=new Command_Action{defaultLabel="血肉催转",defaultDesc="献祭扭曲肉，缩短这里一个正在冷却的仪式：每 25 份扭曲肉 -1 天（1 份畸变膏算 10 份），同一冷却周期里每缩短 1 天，下一天价格 +20%；最多缩短完整冷却的 60%，至少剩 1 天。\n\n扭曲肉要放在建筑 12 格内；选一名殖民者在旁边工作 1 小时完成。献祭者有 10% 可能听见远域低语。"+(b is Building_FaithAltar?"\n\n圣坛上只有莎尔的信徒和无神者能做。":""),icon=TwistedMeat.Icon("TwistedMeat/CatalysisGizmo"),action=()=>Find.WindowStack.Add(new Dialog_FleshCatalysis(b))};
-   if(FleshCatalysis.Cooling(b).Count==0)cmd.Disable("这里没有正在冷却的仪式");
+   var b=__instance;var cmd=new Command_Action{defaultLabel="血肉催转".Loc(),defaultDesc="献祭扭曲肉，缩短这里一个正在冷却的仪式：每 25 份扭曲肉 -1 天（1 份畸变膏算 10 份），同一冷却周期里每缩短 1 天，下一天价格 +20%；最多缩短完整冷却的 60%，至少剩 1 天。\n\n扭曲肉要放在建筑 12 格内；选一名殖民者在旁边工作 1 小时完成。献祭者有 10% 可能听见远域低语。".Loc()+(b is Building_FaithAltar?"\n\n圣坛上只有莎尔的信徒和无神者能做。".Loc():""),icon=TwistedMeat.Icon("TwistedMeat/CatalysisGizmo"),action=()=>Find.WindowStack.Add(new Dialog_FleshCatalysis(b))};
+   if(FleshCatalysis.Cooling(b).Count==0)cmd.Disable("这里没有正在冷却的仪式".Loc());
    yield return cmd;
   }
  }
@@ -183,7 +183,7 @@ namespace LichPhylactery {
   void Draw(Rect r){
    if(building==null || !building.Spawned){Close();return;}
    if(Stale || srcCache==null)Refresh();
-   LPUI.Title(r,"血肉催转 · "+building.LabelCap);
+   LPUI.Title(r,"血肉催转 · ".Loc()+building.LabelCap);
    var sources=srcCache;
    if(selectedKey==null || !sources.Any(s=>s.key==selectedKey))selectedKey=sources.FirstOrDefault()?.key;
    var left=new Rect(r.x,r.y+38f,300f,r.height-38f);var right=new Rect(left.xMax+8f,left.y,r.xMax-left.xMax-8f,left.height);
@@ -196,28 +196,28 @@ namespace LichPhylactery {
     if(s.key==selectedKey)Widgets.DrawHighlightSelected(row);else Widgets.DrawHighlightIfMouseover(row);
     Widgets.Label(new Rect(row.x+4f,row.y+2f,row.width-8f,22f),s.label.Truncate(row.width-8f));
     var cy=FleshCatalysis.CycleOf(s);Text.Font=GameFont.Tiny;GUI.color=Color.gray;
-    LPUI.LabelFit(new Rect(row.x+4f,row.y+24f,row.width-8f,20f),"剩 "+s.Remaining.ToStringTicksToPeriod()+(cy.reduced>0?"，本周期已缩短 "+(cy.reduced/(float)GenDate.TicksPerDay).ToString("0.#")+" 天":""));
+    LPUI.LabelFit(new Rect(row.x+4f,row.y+24f,row.width-8f,20f),"剩 ".Loc()+s.Remaining.ToStringTicksToPeriod()+(cy.reduced>0?"，本周期已缩短 ".Loc()+(cy.reduced/(float)GenDate.TicksPerDay).ToString("0.#")+" 天".Loc():""));
     GUI.color=Color.white;Text.Font=GameFont.Small;
     if(Widgets.ButtonInvisible(row)){selectedKey=s.key;days=1;result=null;}
    }
-   if(sources.Count==0){GUI.color=Color.gray;Widgets.Label(new Rect(4f,4f,view.width,60f),"这里没有正在冷却的仪式。");GUI.color=Color.white;}
+   if(sources.Count==0){GUI.color=Color.gray;Widgets.Label(new Rect(4f,4f,view.width,60f),"这里没有正在冷却的仪式。".Loc());GUI.color=Color.white;}
    Widgets.EndScrollView();
    // 右：天数、价格、殖民者
    var ri=right.ContractedBy(8f);float y=ri.y;var src=sources.FirstOrDefault(s=>s.key==selectedKey);
    if(src==null){if(result!=null)Widgets.Label(new Rect(ri.x,y,ri.width,60f),result);return;}
    int max=FleshCatalysis.MaxDays(src);days=Mathf.Clamp(days,max>0?1:0,Mathf.Max(0,max));
    LPUI.LabelFit(new Rect(ri.x,y,ri.width,24f),src.label);y+=26f;
-   GUI.color=Color.gray;LPUI.LabelFit(new Rect(ri.x,y,ri.width,22f),"完整冷却 "+(FleshCatalysis.CycleOf(src).full/(float)GenDate.TicksPerDay).ToString("0.#")+" 天，本周期还能缩短 "+max+" 天");GUI.color=Color.white;y+=26f;
+   GUI.color=Color.gray;LPUI.LabelFit(new Rect(ri.x,y,ri.width,22f),"完整冷却 ".Loc()+(FleshCatalysis.CycleOf(src).full/(float)GenDate.TicksPerDay).ToString("0.#")+" 天，本周期还能缩短 ".Loc()+max+" 天".Loc());GUI.color=Color.white;y+=26f;
    if(Widgets.ButtonText(new Rect(ri.x,y,32f,28f),"-") && days>1)days--;
-   Text.Anchor=TextAnchor.MiddleCenter;Widgets.Label(new Rect(ri.x+36f,y,100f,28f),"缩短 "+days+" 天");Text.Anchor=TextAnchor.UpperLeft;
+   Text.Anchor=TextAnchor.MiddleCenter;Widgets.Label(new Rect(ri.x+36f,y,100f,28f),"缩短 ".Loc()+days+" 天".Loc());Text.Anchor=TextAnchor.UpperLeft;
    if(Widgets.ButtonText(new Rect(ri.x+140f,y,32f,28f),"+") && days<max)days++;
    y+=34f;
    int cost=FleshCatalysis.Cost(src,days,out int ticks);int have=haveCache;
    var cy2=FleshCatalysis.CycleOf(src);var prices=new List<string>();for(int i=0;i<days;i++)prices.Add(FleshCatalysis.Price(cy2.steps+i).ToString());
    GUI.color=have>=cost?Color.white:new Color(.9f,.3f,.3f);
-   LPUI.LabelFit(new Rect(ri.x,y,ri.width,22f),"要扭曲肉 "+cost+" 份当量（"+string.Join(" + ",prices)+"），12 格内有 "+have);GUI.color=Color.white;y+=24f;
-   GUI.color=Color.gray;Text.Font=GameFont.Tiny;LPUI.LabelFit(new Rect(ri.x,y,ri.width,32f),"实际缩短 "+(ticks/(float)GenDate.TicksPerDay).ToString("0.#")+" 天。1 份畸变膏算 10 份扭曲肉。献祭者有 10% 可能听见远域低语。");Text.Font=GameFont.Small;GUI.color=Color.white;y+=34f;
-   Widgets.Label(new Rect(ri.x,y,ri.width,22f),"谁去献祭（在建筑旁工作 1 小时）：");y+=24f;
+   LPUI.LabelFit(new Rect(ri.x,y,ri.width,22f),"要扭曲肉 ".Loc()+cost+" 份当量（".Loc()+string.Join(" + ",prices)+"），12 格内有 ".Loc()+have);GUI.color=Color.white;y+=24f;
+   GUI.color=Color.gray;Text.Font=GameFont.Tiny;LPUI.LabelFit(new Rect(ri.x,y,ri.width,32f),"实际缩短 ".Loc()+(ticks/(float)GenDate.TicksPerDay).ToString("0.#")+" 天。1 份畸变膏算 10 份扭曲肉。献祭者有 10% 可能听见远域低语。".Loc());Text.Font=GameFont.Small;GUI.color=Color.white;y+=34f;
+   Widgets.Label(new Rect(ri.x,y,ri.width,22f),"谁去献祭（在建筑旁工作 1 小时）：".Loc());y+=24f;
    var pawns=pawnCache;
    if(selectedPawn!=null && !pawns.Contains(selectedPawn))selectedPawn=null;
    if(selectedPawn==null)selectedPawn=pawns.FirstOrDefault(p=>Why(p)==null);
@@ -226,7 +226,7 @@ namespace LichPhylactery {
    for(int i=0;i<pawns.Count;i++){
     var p=pawns[i];var row=new Rect(0f,i*28f,pv.width,28f);string why=Why(p);
     if(p==selectedPawn)Widgets.DrawHighlightSelected(row);else Widgets.DrawHighlightIfMouseover(row);
-    GUI.color=why==null?Color.white:Color.gray;Widgets.Label(new Rect(row.x+4f,row.y+3f,row.width-8f,24f),(p==selectedPawn?"● ":"○ ")+p.LabelShort+(why!=null?"（不行）":""));GUI.color=Color.white;
+    GUI.color=why==null?Color.white:Color.gray;Widgets.Label(new Rect(row.x+4f,row.y+3f,row.width-8f,24f),(p==selectedPawn?"● ":"○ ")+p.LabelShort+(why!=null?"（不行）".Loc():""));GUI.color=Color.white;
     if(why!=null)TooltipHandler.TipRegion(row,why);
     if(why==null && Widgets.ButtonInvisible(row))selectedPawn=p;
    }
@@ -235,9 +235,9 @@ namespace LichPhylactery {
    var bk=(src.key,days,selectedPawn);if(!bk.Equals(blockKey)){blockKey=bk;blockCache=FleshCatalysis.Blocked(building,src,days,selectedPawn);}
    string block=blockCache;var btn=new Rect(ri.x,y,ri.width,34f);
    if(block!=null)LPUI.Unavailable(btn,block);
-   else if(Widgets.ButtonText(btn,"开始献祭（"+cost+" 份）")){
-    if(FleshCatalysis.Order(building,src.key,days,selectedPawn)){SoundDefOf.Click.PlayOneShotOnCamera();Close();Messages.Message(selectedPawn.LabelShort+"去"+building.LabelShort+"献祭扭曲肉了。",selectedPawn,MessageTypeDefOf.SilentInput,false);return;}
-    result="没能派人去";
+   else if(Widgets.ButtonText(btn,"开始献祭（".Loc()+cost+" 份）".Loc())){
+    if(FleshCatalysis.Order(building,src.key,days,selectedPawn)){SoundDefOf.Click.PlayOneShotOnCamera();Close();Messages.Message(selectedPawn.LabelShort+"去".Loc()+building.LabelShort+"献祭扭曲肉了。".Loc(),selectedPawn,MessageTypeDefOf.SilentInput,false);return;}
+    result="没能派人去".Loc();
    }
    if(result!=null){GUI.color=new Color(.9f,.5f,.3f);Widgets.Label(new Rect(ri.x,y+38f,ri.width,36f),result);GUI.color=Color.white;}
   }

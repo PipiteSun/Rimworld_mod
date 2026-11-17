@@ -19,7 +19,7 @@ namespace LichPhylactery {
  public static class Noble {
   public const string Kind="noble";
   public const int RaidHours=2,StayDays=5,Silver=1500,SellSilver=800,GoodwillSafe=30,GoodwillDead=-20,GoodwillThay=25,GoodwillSold=-40;
-  public const string RaidLabel="塞伊追兵";
+  public static readonly string RaidLabel="塞伊追兵".Loc();
   public static bool CanFire(Map map){
    var c=Factions.Colony;var t=Factions.Hostile;
    return Events3.S.e3Noble && c!=null && !c.defeated && !c.HostileTo(Faction.OfPlayer) && t!=null && !t.defeated && Factions.Enabled(t) && t.HostileTo(Faction.OfPlayer) && !Events3.Active(Kind).Any();
@@ -30,41 +30,41 @@ namespace LichPhylactery {
    for(int i=0;i<3;i++){var part=p.health.hediffSet.GetRandomNotMissingPart(DamageDefOf.Cut,BodyPartHeight.Undefined,BodyPartDepth.Outside);if(part!=null && !p.Downed)p.TakeDamage(new DamageInfo(DamageDefOf.Cut,5f,0f,-1f,null,part));}
    var r=Events3.Add(Kind,map);r.a=p;r.lord=lord;r.next=Events3.Now+RaidHours*GenDate.TicksPerHour;
    Tribute.Events?.scheduledRaids.Add(new ScheduledRaid{faction=Factions.HostileDef,fireTick=r.next,pointsFactor=1.2f,letterLabel=RaidLabel});
-   Events3.Ask(r,"逃亡的同盟贵族","费伦拓荒同盟的一位贵族"+p.LabelShort+"浑身是伤，跌跌撞撞逃进了地图：塞伊的红袍法师在追杀"+p.gender.GetPronoun()+"，追兵大约 "+RaidHours+" 小时后就到。\n\n"+p.LabelShort+"求你们庇护。",new LookTargets(p),f);
+   Events3.Ask(r,"逃亡的同盟贵族".Loc(),"费伦拓荒同盟的一位贵族".Loc()+p.LabelShort+"浑身是伤，跌跌撞撞逃进了地图：塞伊的红袍法师在追杀".Loc()+p.gender.GetPronoun()+"，追兵大约 ".Loc()+RaidHours+" 小时后就到。\n\n".Loc()+p.LabelShort+"求你们庇护。".Loc(),new LookTargets(p),f);
    return r;
   }
   static void CancelRaid(E3Record r){Tribute.Events?.scheduledRaids.RemoveAll(x=>x.fireTick==r.next && x.letterLabel==RaidLabel);}
   public static IEnumerable<DiaOption> Options(Letter_E3 l,E3Record r){
-   yield return l.Choice("庇护（打退追兵；"+StayDays+" 天后同盟好感 +"+GoodwillSafe+"、"+Silver+" 银和一件优秀武器）",()=>Shelter(r));
-   yield return l.Choice("交给塞伊（塞伊好感 +"+GoodwillThay+"，一卷研习卷）",()=>HandOver(r));
+   yield return l.Choice("庇护（打退追兵；".Loc()+StayDays+" 天后同盟好感 +".Loc()+GoodwillSafe+"、".Loc()+Silver+" 银和一件优秀武器）".Loc(),()=>Shelter(r));
+   yield return l.Choice("交给塞伊（塞伊好感 +".Loc()+GoodwillThay+"，一卷研习卷）".Loc(),()=>HandOver(r));
    var bn=Factions.Of(Factions.BlackNetDef);
-   yield return l.Choice("卖给黑网（"+SellSilver+" 银，同盟好感 "+GoodwillSold+"）",()=>Sell(r),bn==null?"这个存档里没有黑网":null);
+   yield return l.Choice("卖给黑网（".Loc()+SellSilver+" 银，同盟好感 ".Loc()+GoodwillSold+"）".Loc(),()=>Sell(r),bn==null?"这个存档里没有黑网".Loc():null);
   }
   public static void Shelter(E3Record r){r.answered=true;r.stage=1;r.until=Math.Max(r.next,Events3.Now)+StayDays*GenDate.TicksPerDay;}
   public static void HandOver(E3Record r){
    r.answered=true;r.done=true;CancelRaid(r);var map=r.map;var name=r.a?.LabelShort;Events3.Vanish(r.a);
-   var t=Factions.Hostile;if(t!=null)Factions.ChangeGoodwillExact(t,GoodwillThay,"交出了同盟贵族");
+   var t=Factions.Hostile;if(t!=null)Factions.ChangeGoodwillExact(t,GoodwillThay,"交出了同盟贵族".Loc());
    var gift=Events3.DropPods(map,new[]{Netheril.MakeStudy(QualityCategory.Good)});
-   Find.LetterStack.ReceiveLetter("交给塞伊",name+"被红袍法师带走了。塞伊远征军好感 +"+GoodwillThay+"，空投送来"+Events3.Labels(gift)+"。",LetterDefOf.NeutralEvent);
+   Find.LetterStack.ReceiveLetter("交给塞伊".Loc(),name+"被红袍法师带走了。塞伊远征军好感 +".Loc()+GoodwillThay+"，空投送来".Loc()+Events3.Labels(gift)+"。".Loc(),LetterDefOf.NeutralEvent);
   }
   public static void Sell(E3Record r){
    r.answered=true;r.done=true;CancelRaid(r);var map=r.map;var name=r.a?.LabelShort;Events3.Vanish(r.a);
-   var c=Factions.Colony;if(c!=null)Factions.ChangeGoodwillExact(c,GoodwillSold,"把同盟贵族卖给了黑网");
+   var c=Factions.Colony;if(c!=null)Factions.ChangeGoodwillExact(c,GoodwillSold,"把同盟贵族卖给了黑网".Loc());
    Events3.DropPods(map,new[]{Events3.Silver(SellSilver)});
-   Find.LetterStack.ReceiveLetter("卖给黑网","黑网的人蒙着脸来，把"+name+"装进麻袋带走了，留下 "+SellSilver+" 银。同盟很快听说了：好感 "+GoodwillSold+"。",LetterDefOf.NegativeEvent);
+   Find.LetterStack.ReceiveLetter("卖给黑网".Loc(),"黑网的人蒙着脸来，把".Loc()+name+"装进麻袋带走了，留下 ".Loc()+SellSilver+" 银。同盟很快听说了：好感 ".Loc()+GoodwillSold+"。".Loc(),LetterDefOf.NegativeEvent);
   }
   public static void Tick(E3Record r){
    var p=r.a;
    if(p==null || p.Dead || p.Destroyed){
-    r.done=true;var c=Factions.Colony;if(c!=null && p!=null && p.Dead){Factions.ChangeGoodwillExact(c,GoodwillDead,"同盟贵族死在殖民地");Find.LetterStack.ReceiveLetter("贵族死了",p.LabelShort+"没能活下来。同盟好感 "+GoodwillDead+"。",LetterDefOf.NegativeEvent);}
+    r.done=true;var c=Factions.Colony;if(c!=null && p!=null && p.Dead){Factions.ChangeGoodwillExact(c,GoodwillDead,"同盟贵族死在殖民地".Loc());Find.LetterStack.ReceiveLetter("贵族死了".Loc(),p.LabelShort+"没能活下来。同盟好感 ".Loc()+GoodwillDead+"。".Loc(),LetterDefOf.NegativeEvent);}
     return;
    }
    if(!r.answered && Events3.Now>r.next)Shelter(r);
    if(r.stage==1 && Events3.Now>=r.until){
-    r.done=true;Events3.Leave(r.lord);var c=Factions.Colony;if(c!=null)Factions.ChangeGoodwillExact(c,GoodwillSafe,"庇护了同盟贵族");
+    r.done=true;Events3.Leave(r.lord);var c=Factions.Colony;if(c!=null)Factions.ChangeGoodwillExact(c,GoodwillSafe,"庇护了同盟贵族".Loc());
     var gifts=Events3.DropPods(r.map,new[]{Events3.Silver(Silver),Events3.GoodWeapon()});
-    Events3.State?.Deed("庇护了被塞伊追杀的同盟贵族");
-    Find.LetterStack.ReceiveLetter("贵族的谢礼",p.LabelShort+"的伤养好了，告辞回去。同盟好感 +"+GoodwillSafe+"，空投送来"+Events3.Labels(gifts)+"。",LetterDefOf.PositiveEvent,p);
+    Events3.State?.Deed("庇护了被塞伊追杀的同盟贵族".Loc());
+    Find.LetterStack.ReceiveLetter("贵族的谢礼".Loc(),p.LabelShort+"的伤养好了，告辞回去。同盟好感 +".Loc()+GoodwillSafe+"，空投送来".Loc()+Events3.Labels(gifts)+"。".Loc(),LetterDefOf.PositiveEvent,p);
    }
   }
  }
@@ -83,37 +83,37 @@ namespace LichPhylactery {
   public static bool CanFire(Map map){var c=Factions.Colony;return Events3.S.e3Ward && ModsConfig.BiotechActive && c!=null && !c.HostileTo(Faction.OfPlayer) && c.PlayerGoodwill>=MinGoodwill && !Events3.Active(Kind).Any();}
   public static E3Record Start(Map map){
    var r=Events3.Add(Kind,map);
-   Events3.Ask(r,"托付的天才学徒","费伦拓荒同盟的一位法师通过通讯找到你：她手下有个孩子魔法天赋太强，城里的人怕了，想托你们养到成年。\n\n孩子会带着“魔法天才”（学习速度 +50%）；她每 "+GiftDays+" 天寄一次东西来。孩子 "+AdultAge+" 岁成年时，如果智识到了 "+NeedIntellect+" 级，就能成为法师。\n\n小心：天才的孩子心情崩溃时会野魔法爆发。",LookTargets.Invalid,Factions.Colony);
+   Events3.Ask(r,"托付的天才学徒".Loc(),"费伦拓荒同盟的一位法师通过通讯找到你：她手下有个孩子魔法天赋太强，城里的人怕了，想托你们养到成年。\n\n孩子会带着“魔法天才”（学习速度 +50%）；她每 ".Loc()+GiftDays+" 天寄一次东西来。孩子 ".Loc()+AdultAge+" 岁成年时，如果智识到了 ".Loc()+NeedIntellect+" 级，就能成为法师。\n\n小心：天才的孩子心情崩溃时会野魔法爆发。".Loc(),LookTargets.Invalid,Factions.Colony);
    return r;
   }
   public static IEnumerable<DiaOption> Options(Letter_E3 l,E3Record r){
-   yield return l.Choice("收下孩子",()=>Accept(r));
-   yield return l.Choice("婉拒",()=>{r.answered=true;r.done=true;});
+   yield return l.Choice("收下孩子".Loc(),()=>Accept(r));
+   yield return l.Choice("婉拒".Loc(),()=>{r.answered=true;r.done=true;});
   }
   public static Pawn Accept(E3Record r){
    r.answered=true;var map=r.map??Events3.Home;if(map==null){r.done=true;return null;}
    Pawn child=null;
    // 小孩本来就不能做研究（原版按发育阶段禁用），13 岁后才解开；这里只给智识大热情。
    try{child=PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist,Faction.OfPlayer,PawnGenerationContext.NonPlayer,map.Tile,forceGenerateNewPawn:true,canGeneratePawnRelations:false,fixedBiologicalAge:Rand.Range(9f,11f),developmentalStages:DevelopmentalStage.Child));}
-   catch(Exception e){Log.Warning("[DND边缘大陆] 天才学徒生成失败："+e.Message);}
+   catch(Exception e){Log.Warning("[DND边缘大陆] 天才学徒生成失败：".Loc()+e.Message);}
    var intel=child?.skills?.GetSkill(SkillDefOf.Intellectual);if(intel!=null)intel.passion=Passion.Major;
    if(child==null){r.done=true;return null;}
    Events3.DropPods(map,new[]{child});Items.Give(child,"LP_E3_GiftedWard");
    r.a=child;r.next=Events3.Now+GiftDays*GenDate.TicksPerDay;
-   Find.LetterStack.ReceiveLetter("天才学徒到了",child.LabelShort+"坐着空投舱到了，怀里抱着一摞书。",LetterDefOf.PositiveEvent,child);
+   Find.LetterStack.ReceiveLetter("天才学徒到了".Loc(),child.LabelShort+"坐着空投舱到了，怀里抱着一摞书。".Loc(),LetterDefOf.PositiveEvent,child);
    return child;
   }
   public static void Tick(E3Record r){
    if(!r.answered){if(Events3.Now-r.start>2*GenDate.TicksPerDay)r.done=true;return;}
    var p=r.a;if(p==null){r.done=true;return;}
-   if(p.Dead){r.done=true;var c=Factions.Colony;if(c!=null)Factions.ChangeGoodwillExact(c,GoodwillDead,"天才学徒死了");Find.LetterStack.ReceiveLetter("学徒死了",p.LabelShort+"死了。托付孩子的法师再也没有来信。同盟好感 "+GoodwillDead+"。",LetterDefOf.NegativeEvent);return;}
+   if(p.Dead){r.done=true;var c=Factions.Colony;if(c!=null)Factions.ChangeGoodwillExact(c,GoodwillDead,"天才学徒死了".Loc());Find.LetterStack.ReceiveLetter("学徒死了".Loc(),p.LabelShort+"死了。托付孩子的法师再也没有来信。同盟好感 ".Loc()+GoodwillDead+"。".Loc(),LetterDefOf.NegativeEvent);return;}
    if(p.Faction!=Faction.OfPlayer){r.done=true;return;}
    if(p.ageTracker.AgeBiologicalYears>=AdultAge){Graduate(r);return;}
    if(Events3.Now>=r.next){
     r.next+=GiftDays*GenDate.TicksPerDay;var map=p.MapHeld??r.map;
     var pool=new List<Thing>{TowerCrash.MakeScroll(),Growth.MakeTome(),Events3.Silver(500)}.Where(t=>t!=null).InRandomOrder().Take(2).ToList();
     Events3.DropPods(map,pool);
-    Find.LetterStack.ReceiveLetter("法师的来信","托付"+p.LabelShort+"的法师寄来了一封信和"+Events3.Labels(pool)+"。",LetterDefOf.PositiveEvent,p);
+    Find.LetterStack.ReceiveLetter("法师的来信".Loc(),"托付".Loc()+p.LabelShort+"的法师寄来了一封信和".Loc()+Events3.Labels(pool)+"。".Loc(),LetterDefOf.PositiveEvent,p);
    }
   }
   public static void Graduate(E3Record r){
@@ -121,17 +121,17 @@ namespace LichPhylactery {
    if((p.skills?.GetSkill(SkillDefOf.Intellectual)?.Level??0)>=NeedIntellect){
     var h=Adventurer.Get(p)??Adventurer.TryAdd(p,1,true);var wiz=DefDatabase<LP_ClassDef>.GetNamedSilentFail("LP_Class_Wizard");
     if(h!=null && wiz!=null && ClassSystem.Level(h,wiz)<1)ClassSystem.SetLevel(h,wiz,1);
-    if(c!=null)Factions.ChangeGoodwillExact(c,GoodwillDone,"天才学徒学成");
-    Find.LetterStack.ReceiveLetter("学徒出师",p.LabelShort+"成年了，第一次独自施放了法术：成为 1 级法师。托付孩子的法师很欣慰：同盟好感 +"+GoodwillDone+"。",LetterDefOf.PositiveEvent,p);
+    if(c!=null)Factions.ChangeGoodwillExact(c,GoodwillDone,"天才学徒学成".Loc());
+    Find.LetterStack.ReceiveLetter("学徒出师".Loc(),p.LabelShort+"成年了，第一次独自施放了法术：成为 1 级法师。托付孩子的法师很欣慰：同盟好感 +".Loc()+GoodwillDone+"。".Loc(),LetterDefOf.PositiveEvent,p);
    }else{
-    if(c!=null)Factions.ChangeGoodwillExact(c,5,"天才学徒成年");
-    Find.LetterStack.ReceiveLetter("学徒成年",p.LabelShort+"成年了。书读得不够（智识不到 "+NeedIntellect+"），没能成为法师，不过人平平安安长大了：同盟好感 +5。",LetterDefOf.NeutralEvent,p);
+    if(c!=null)Factions.ChangeGoodwillExact(c,5,"天才学徒成年".Loc());
+    Find.LetterStack.ReceiveLetter("学徒成年".Loc(),p.LabelShort+"成年了。书读得不够（智识不到 ".Loc()+NeedIntellect+"），没能成为法师，不过人平平安安长大了：同盟好感 +5。".Loc(),LetterDefOf.NeutralEvent,p);
    }
   }
   public static void OnBreak(Pawn p){
    if(p==null || p.Dead || !p.Spawned || !Items.Has(p,"LP_E3_GiftedWard"))return;
    var e=TowerCrash.WildMagic(p);
-   Messages.Message(p.LabelShort+"情绪失控，身上的魔力爆了出来（野魔法）。",p,MessageTypeDefOf.NeutralEvent,false);
+   Messages.Message(p.LabelShort+"情绪失控，身上的魔力爆了出来（野魔法）。".Loc(),p,MessageTypeDefOf.NeutralEvent,false);
   }
  }
  public class IncidentWorker_E3Ward : IncidentWorker_E3 {
@@ -146,7 +146,7 @@ namespace LichPhylactery {
  public class GameCondition_Starfall : GameCondition {
   public bool forceHeart;
   public override void Init(){base.Init();foreach(var m in AffectedMaps)Events3.ThoughtAll(m,"LP_E3_Starfall");}
-  public override void End(){foreach(var m in AffectedMaps.ToList())try{Starfall.Fall(m,forceHeart);}catch(Exception e){Log.Error("[DND边缘大陆] 秘银陨星出错："+e);}base.End();}
+  public override void End(){foreach(var m in AffectedMaps.ToList())try{Starfall.Fall(m,forceHeart);}catch(Exception e){Log.Error("[DND边缘大陆] 秘银陨星出错：".Loc()+e);}base.End();}
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref forceHeart,"lpForceHeart");}
  }
  public static class Starfall {
@@ -171,12 +171,12 @@ namespace LichPhylactery {
     SkyfallerMaker.SpawnSkyfaller(ThingDefOf.MeteoriteIncoming,things,cell,map);fell++;
    }
    if(fell==0)return 0;
-   string text="天快亮时，"+fell+"块陨石拖着银光砸进了地图。凿开它们能挖出秘银。";
+   string text="天快亮时，".Loc()+fell+"块陨石拖着银光砸进了地图。凿开它们能挖出秘银。".Loc();
    if(heartCell.IsValid){
-    text+="\n\n其中一块陨石里裹着一颗还在发光的“坠星之心”——传奇武器的材料。消息传得很快："+RaidDays+" 天后黑网会派人来抢。";
-    var bn=Factions.BlackNetDef;if(bn!=null && Factions.Of(bn)!=null)Tribute.Events?.scheduledRaids.Add(new ScheduledRaid{faction=bn,fireTick=Events3.Now+RaidDays*GenDate.TicksPerDay,pointsFactor=.8f,letterLabel="坠星之心的抢夺者",temporaryHostile=true});
+    text+="\n\n其中一块陨石里裹着一颗还在发光的“坠星之心”——传奇武器的材料。消息传得很快：".Loc()+RaidDays+" 天后黑网会派人来抢。".Loc();
+    var bn=Factions.BlackNetDef;if(bn!=null && Factions.Of(bn)!=null)Tribute.Events?.scheduledRaids.Add(new ScheduledRaid{faction=bn,fireTick=Events3.Now+RaidDays*GenDate.TicksPerDay,pointsFactor=.8f,letterLabel="坠星之心的抢夺者".Loc(),temporaryHostile=true});
    }
-   Find.LetterStack.ReceiveLetter("秘银陨星",text,LetterDefOf.PositiveEvent,heartCell.IsValid?new LookTargets(heartCell,map):LookTargets.Invalid);
+   Find.LetterStack.ReceiveLetter("秘银陨星".Loc(),text,LetterDefOf.PositiveEvent,heartCell.IsValid?new LookTargets(heartCell,map):LookTargets.Invalid);
    return fell;
   }
  }
@@ -185,7 +185,7 @@ namespace LichPhylactery {
   protected override bool CanFire(Map map,IncidentParms parms)=>Starfall.CanFire(map);
   protected override bool TryExecuteWorker(IncidentParms parms){
    var map=(Map)parms.target;if(Starfall.Start(map)==null)return false;
-   SendStandardLetter("流星雨","夜空里划过一道又一道银色的流星。在户外看着的人都很开心（心情 +4）。\n\n天亮前会有陨石落下来——流星雨这么亮，里面多半有秘银。",LetterDefOf.PositiveEvent,parms,LookTargets.Invalid);
+   SendStandardLetter("流星雨".Loc(),"夜空里划过一道又一道银色的流星。在户外看着的人都很开心（心情 +4）。\n\n天亮前会有陨石落下来——流星雨这么亮，里面多半有秘银。".Loc(),LetterDefOf.PositiveEvent,parms,LookTargets.Invalid);
    return true;
   }
  }
@@ -226,19 +226,19 @@ namespace LichPhylactery {
    r.a=m;r.stage=1;
   }
   public static void Tick(E3Record r){
-   if(r.stage==1 && Events3.SiteCleared(r)){r.stage=2;Find.LetterStack.ReceiveLetter("小队的营地","杀死冒险小队的怪物倒下了。他们的装备和冒险日志都在营地里。\n\n把遗体带回去葬在殖民地的坟墓里，同盟会感激（+"+BuryGoodwill+"）；如果有办法复活他们，他们也许愿意留下。",LetterDefOf.PositiveEvent);}
-   if(!r.flag && r.pawns.Any(p=>p!=null && p.Dead && p.Corpse?.ParentHolder is Building_Grave)){r.flag=true;var c=Factions.Colony;if(c!=null)Factions.ChangeGoodwillExact(c,BuryGoodwill,"安葬了全灭的冒险小队");Messages.Message("冒险小队的遗体入土为安：同盟好感 +"+BuryGoodwill+"。",MessageTypeDefOf.PositiveEvent,false);}
+   if(r.stage==1 && Events3.SiteCleared(r)){r.stage=2;Find.LetterStack.ReceiveLetter("小队的营地".Loc(),"杀死冒险小队的怪物倒下了。他们的装备和冒险日志都在营地里。\n\n把遗体带回去葬在殖民地的坟墓里，同盟会感激（+".Loc()+BuryGoodwill+"）；如果有办法复活他们，他们也许愿意留下。".Loc(),LetterDefOf.PositiveEvent);}
+   if(!r.flag && r.pawns.Any(p=>p!=null && p.Dead && p.Corpse?.ParentHolder is Building_Grave)){r.flag=true;var c=Factions.Colony;if(c!=null)Factions.ChangeGoodwillExact(c,BuryGoodwill,"安葬了全灭的冒险小队".Loc());Messages.Message("冒险小队的遗体入土为安：同盟好感 +".Loc()+BuryGoodwill+"。".Loc(),MessageTypeDefOf.PositiveEvent,false);}
    foreach(var p in r.pawns.Where(x=>x!=null && !x.Dead && x.Spawned && x.Faction!=Faction.OfPlayer).ToList()){
     string key="party:"+p.thingIDNumber;var s=Events3.State;if(s.callingDone.Contains(key))continue;s.callingDone.Add(key);
     var q=Events3.Add(Kind+"Join",p.Map);q.a=p;q.until=Events3.Now+3*GenDate.TicksPerDay;
-    var l=Events3.Ask(q,"复活的冒险者",p.LabelShort+"睁开了眼睛。"+p.gender.GetPronoun()+"记得最后看到的是怪物的獠牙——是你们把"+p.gender.GetPronoun()+"带了回来。\n\n"+p.LabelShort+"想留下来报答你们。",new LookTargets(p));
+    var l=Events3.Ask(q,"复活的冒险者".Loc(),p.LabelShort+"睁开了眼睛。".Loc()+p.gender.GetPronoun()+"记得最后看到的是怪物的獠牙——是你们把".Loc()+p.gender.GetPronoun()+"带了回来。\n\n".Loc()+p.LabelShort+"想留下来报答你们。".Loc(),new LookTargets(p));
    }
    if(Events3.Now>r.until)r.done=true;
   }
   public static IEnumerable<DiaOption> Options(Letter_E3 l,E3Record r){
    if(r.a==null || r.a.Dead)yield break;
-   yield return l.Choice("收留"+r.a.LabelShort,()=>{r.answered=true;r.done=true;if(r.a.Faction!=Faction.OfPlayer)r.a.SetFaction(Faction.OfPlayer);});
-   yield return l.Choice("送"+r.a.LabelShort+"回同盟",()=>{r.answered=true;r.done=true;var c=Factions.Colony;if(c!=null){r.a.SetFaction(c);Factions.ChangeGoodwillExact(c,10,"复活了同盟的冒险者");}});
+   yield return l.Choice("收留".Loc()+r.a.LabelShort,()=>{r.answered=true;r.done=true;if(r.a.Faction!=Faction.OfPlayer)r.a.SetFaction(Faction.OfPlayer);});
+   yield return l.Choice("送".Loc()+r.a.LabelShort+"回同盟".Loc(),()=>{r.answered=true;r.done=true;var c=Factions.Colony;if(c!=null){r.a.SetFaction(c);Factions.ChangeGoodwillExact(c,10,"复活了同盟的冒险者".Loc());}});
   }
  }
  public class IncidentWorker_E3Party : IncidentWorker_E3 {
@@ -246,7 +246,7 @@ namespace LichPhylactery {
   protected override bool CanFire(Map map,IncidentParms parms)=>FallenParty.CanFire(map);
   protected override bool TryExecuteWorker(IncidentParms parms){
    var r=FallenParty.Start((Map)parms.target);if(r==null)return false;
-   SendStandardLetter("全灭的冒险小队","一位路过的商人说，附近一支四人冒险小队进了荒野就再没回来。他在远处看见过他们的营地——还有守在营地边上的东西。\n\n站点已标在世界地图上，"+FallenParty.SiteDays+" 天后消失。",LetterDefOf.NeutralEvent,parms,new LookTargets(r.site));
+   SendStandardLetter("全灭的冒险小队".Loc(),"一位路过的商人说，附近一支四人冒险小队进了荒野就再没回来。他在远处看见过他们的营地——还有守在营地边上的东西。\n\n站点已标在世界地图上，".Loc()+FallenParty.SiteDays+" 天后消失。".Loc(),LetterDefOf.NeutralEvent,parms,new LookTargets(r.site));
    return true;
   }
  }
@@ -277,15 +277,15 @@ namespace LichPhylactery {
   public static string Surge(Pawn p,RimWorld.Ability a,int k){
    var map=p.Map;string what;
    switch(k){
-    case 0:a?.ResetCooldown();what="这次施法没有冷却";break;
-    case 1:{int n=0;foreach(var c in GenRadial.RadialCellsAround(p.Position,BloomRadius,true)){if(!c.InBounds(map))continue;var pl=c.GetPlant(map);if(pl!=null && pl.Growth<1f){pl.Growth=1f;map.mapDrawer.MapMeshDirty(c,MapMeshFlagDefOf.Things);n++;}}what="周围的植物瞬间长熟了（"+n+" 株）";break;}
-    case 2:TowerCrash.WildMagic(p,"haste");what="身体变得飞快";break;
-    case 3:TowerCrash.WildMagic(p,"invisible");what="身影消失了";break;
-    case 4:TowerCrash.WildMagic(p,"teleport");what="被魔网甩到了别处";break;
-    case 5:TowerCrash.WildMagic(p,"hiccup");what="打起了停不下来的嗝";break;
-    default:GenExplosion.DoExplosion(p.Position,map,1.9f,DamageDefOf.Flame,null,8);what="脚下炸开一个小火球";break;
+    case 0:a?.ResetCooldown();what="这次施法没有冷却".Loc();break;
+    case 1:{int n=0;foreach(var c in GenRadial.RadialCellsAround(p.Position,BloomRadius,true)){if(!c.InBounds(map))continue;var pl=c.GetPlant(map);if(pl!=null && pl.Growth<1f){pl.Growth=1f;map.mapDrawer.MapMeshDirty(c,MapMeshFlagDefOf.Things);n++;}}what="周围的植物瞬间长熟了（".Loc()+n+" 株）".Loc();break;}
+    case 2:TowerCrash.WildMagic(p,"haste");what="身体变得飞快".Loc();break;
+    case 3:TowerCrash.WildMagic(p,"invisible");what="身影消失了".Loc();break;
+    case 4:TowerCrash.WildMagic(p,"teleport");what="被魔网甩到了别处".Loc();break;
+    case 5:TowerCrash.WildMagic(p,"hiccup");what="打起了停不下来的嗝".Loc();break;
+    default:GenExplosion.DoExplosion(p.Position,map,1.9f,DamageDefOf.Flame,null,8);what="脚下炸开一个小火球".Loc();break;
    }
-   Messages.Message("魔网潮汐："+p.LabelShort+what+"。",p,k<4?MessageTypeDefOf.PositiveEvent:MessageTypeDefOf.NegativeEvent,false);
+   Messages.Message("魔网潮汐：".Loc()+p.LabelShort+what+"。".Loc(),p,k<4?MessageTypeDefOf.PositiveEvent:MessageTypeDefOf.NegativeEvent,false);
    return what;
   }
  }
@@ -294,7 +294,7 @@ namespace LichPhylactery {
   protected override bool CanFire(Map map,IncidentParms parms)=>WeaveSurge.CanFire(map);
   protected override bool TryExecuteWorker(IncidentParms parms){
    if(WeaveSurge.Start((Map)parms.target)==null)return false;
-   SendStandardLetter("魔网潮汐","天上挂起了彩色的极光：魔网在涨潮。接下来 "+WeaveSurge.Days+" 天里，每次施放能力都有 "+(WeaveSurge.Chance*100).ToString("0")+"% 几率引发野魔法——有好有坏。\n\n施法职业（法师、术士、邪术师、牧师、德鲁伊）每天额外得到 "+WeaveSurge.DailyXp+" 点冒险者经验。",LetterDefOf.NeutralEvent,parms,LookTargets.Invalid);
+   SendStandardLetter("魔网潮汐".Loc(),"天上挂起了彩色的极光：魔网在涨潮。接下来 ".Loc()+WeaveSurge.Days+" 天里，每次施放能力都有 ".Loc()+(WeaveSurge.Chance*100).ToString("0")+"% 几率引发野魔法——有好有坏。\n\n施法职业（法师、术士、邪术师、牧师、德鲁伊）每天额外得到 ".Loc()+WeaveSurge.DailyXp+" 点冒险者经验。".Loc(),LetterDefOf.NeutralEvent,parms,LookTargets.Invalid);
    return true;
   }
  }
@@ -327,11 +327,11 @@ namespace LichPhylactery {
   }
   public static void Tick(E3Record r){
    var box=r.thing as Phylactery;
-   if(box==null || box.Destroyed){if(r.stage==1)Find.LetterStack.ReceiveLetter("命匣毁了","被偷走的命匣毁了。",LetterDefOf.NegativeEvent);r.done=true;return;}
+   if(box==null || box.Destroyed){if(r.stage==1)Find.LetterStack.ReceiveLetter("命匣毁了".Loc(),"被偷走的命匣毁了。".Loc(),LetterDefOf.NegativeEvent);r.done=true;return;}
    switch(r.stage){
     case 0:{
      foreach(var p in r.pawns.Where(x=>x!=null && x.Spawned && !x.Dead).ToList()){
-      if(Items.Has(p,"LP_E3_Shadowed") && Events3.Colonists(p.Map).Any(c=>c.Position.DistanceTo(p.Position)<=RevealRadius)){Items.Remove(p,"LP_E3_Shadowed");Messages.Message("发现了潜入者："+p.LabelShort+"！",p,MessageTypeDefOf.ThreatSmall,false);}
+      if(Items.Has(p,"LP_E3_Shadowed") && Events3.Colonists(p.Map).Any(c=>c.Position.DistanceTo(p.Position)<=RevealRadius)){Items.Remove(p,"LP_E3_Shadowed");Messages.Message("发现了潜入者：".Loc()+p.LabelShort+"！".Loc(),p,MessageTypeDefOf.ThreatSmall,false);}
       Steal(p,box);
      }
      var carrier=r.pawns.FirstOrDefault(p=>p!=null && !p.Dead && (p.carryTracker?.CarriedThing==box || p.inventory?.innerContainer.Contains(box)==true));
@@ -339,11 +339,11 @@ namespace LichPhylactery {
      if(r.pawns.All(p=>p==null || p.Dead || p.Downed || !p.Spawned || p.IsPrisoner)){
       r.done=true;var caught=r.pawns.FirstOrDefault(p=>p!=null && !p.Dead && p.IsPrisonerOfColony);
       if(caught!=null)LootSite(r,caught);
-      else Messages.Message("命匣窃贼失手了。",MessageTypeDefOf.PositiveEvent,false);
+      else Messages.Message("命匣窃贼失手了。".Loc(),MessageTypeDefOf.PositiveEvent,false);
      }
      break;}
     case 1:
-     if(box.Spawned && box.Map.IsPlayerHome){r.done=true;Events3.State?.Deed("从盗贼公会手里夺回了命匣");Find.LetterStack.ReceiveLetter("命匣回来了",box.soul?.LabelShort+"的命匣回到了殖民地。",LetterDefOf.PositiveEvent,box);return;}
+     if(box.Spawned && box.Map.IsPlayerHome){r.done=true;Events3.State?.Deed("从盗贼公会手里夺回了命匣".Loc());Find.LetterStack.ReceiveLetter("命匣回来了".Loc(),box.soul?.LabelShort+"的命匣回到了殖民地。".Loc(),LetterDefOf.PositiveEvent,box);return;}
      if(Events3.Now>r.until)Seize(r,box);
      break;
    }
@@ -353,14 +353,14 @@ namespace LichPhylactery {
    r.stage=1;var pts=Mathf.Max(250f,StorytellerUtility.DefaultThreatPointsNow(r.map));
    var site=Events3.MakeSite(r,r.faction,pts,3,8,SiteDays);
    if(site==null){Seize(r,box);return;}
-   Find.LetterStack.ReceiveLetter("命匣被偷了",carrier.LabelShort+"带着"+box.soul?.LabelShort+"的命匣溜出了地图！\n\n盗贼的藏身处已标在世界地图上。"+SiteDays+" 天内打进去，把命匣带回殖民地——过期它就会被卖给九狱掮客（只能花大价钱从九狱商队赎回）。",LetterDefOf.ThreatBig,new LookTargets(site));
+   Find.LetterStack.ReceiveLetter("命匣被偷了".Loc(),carrier.LabelShort+"带着".Loc()+box.soul?.LabelShort+"的命匣溜出了地图！\n\n盗贼的藏身处已标在世界地图上。".Loc()+SiteDays+" 天内打进去，把命匣带回殖民地——过期它就会被卖给九狱掮客（只能花大价钱从九狱商队赎回）。".Loc(),LetterDefOf.ThreatBig,new LookTargets(site));
   }
   public static void Seize(E3Record r,Phylactery box){
    r.done=true;var owner=box.soul;
    if(box.Spawned)box.DeSpawn(DestroyMode.Vanish);else box.holdingOwner?.Remove(box);
    var c=Pacts.Comp;
    if(c!=null && owner!=null){c.seized.TryAdd(box,false);c.seizedOwners.Add(owner);Items.Give(owner,"LP_PhylacteryLost");
-    Find.LetterStack.ReceiveLetter("命匣被卖掉了","盗贼公会把"+owner.LabelShort+"的命匣卖给了九狱掮客。"+owner.LabelShort+"的力量还在，但死后不会再复活。\n\n九狱商队来时可以赎回（"+Pacts.RansomSilver.ToString("0")+" 银）。",LetterDefOf.NegativeEvent,owner);}
+    Find.LetterStack.ReceiveLetter("命匣被卖掉了".Loc(),"盗贼公会把".Loc()+owner.LabelShort+"的命匣卖给了九狱掮客。".Loc()+owner.LabelShort+"的力量还在，但死后不会再复活。\n\n九狱商队来时可以赎回（".Loc()+Pacts.RansomSilver.ToString("0")+" 银）。".Loc(),LetterDefOf.NegativeEvent,owner);}
    else{var home=Events3.Home;if(home!=null)Events3.DropPods(home,new[]{box});}
    Events3.RemoveSite(r);
   }
@@ -368,7 +368,7 @@ namespace LichPhylactery {
    var q=Events3.Add(Kind+"Loot",r.map);q.faction=r.faction;
    var site=Events3.MakeSite(q,r.faction,Mathf.Max(250f,StorytellerUtility.DefaultThreatPointsNow(r.map)*.8f),3,8,SiteDays);
    if(site==null){q.done=true;return;}
-   Find.LetterStack.ReceiveLetter("审问盗贼",caught.LabelShort+"被抓住后很快就招了：盗贼公会在附近有一处藏宝点。站点已标在世界地图上，"+SiteDays+" 天后消失。",LetterDefOf.PositiveEvent,new LookTargets(site));
+   Find.LetterStack.ReceiveLetter("审问盗贼".Loc(),caught.LabelShort+"被抓住后很快就招了：盗贼公会在附近有一处藏宝点。站点已标在世界地图上，".Loc()+SiteDays+" 天后消失。".Loc(),LetterDefOf.PositiveEvent,new LookTargets(site));
   }
   // 藏身处：盗贼一伙守着（威胁点数），被偷的命匣放在中间；藏宝点放银子和奇物。
   public static void Generate(Map map,E3Record r){
@@ -391,7 +391,7 @@ namespace LichPhylactery {
   protected override bool CanFire(Map map,IncidentParms parms)=>Thief.CanFire(map);
   protected override bool TryExecuteWorker(IncidentParms parms){
    var r=Thief.Start((Map)parms.target);if(r==null)return false;
-   SendStandardLetter("命匣窃贼","哨兵说夜里好像有影子在动——有人隐着身形摸进了地图，直奔"+(r.thing as Phylactery)?.soul?.LabelShort+"的命匣！\n\n派人去命匣附近：靠近到 "+Thief.RevealRadius+" 格内就能让潜入者现形。",LetterDefOf.ThreatSmall,parms,new LookTargets(r.thing));
+   SendStandardLetter("命匣窃贼".Loc(),"哨兵说夜里好像有影子在动——有人隐着身形摸进了地图，直奔".Loc()+(r.thing as Phylactery)?.soul?.LabelShort+"的命匣！\n\n派人去命匣附近：靠近到 ".Loc()+Thief.RevealRadius+" 格内就能让潜入者现形。".Loc(),LetterDefOf.ThreatSmall,parms,new LookTargets(r.thing));
    return true;
   }
  }
@@ -435,9 +435,9 @@ namespace LichPhylactery {
   public static E3Record Start(Pawn p,int level){
    var r=Events3.Add(Kind,p.MapHeld);r.a=p;r.score=level;r.until=Events3.Now+Days*GenDate.TicksPerDay;
    string task;
-   if(IsMartial(p)){r.stage=0;task="30 天内亲手击杀 "+Kills+" 个敌人。";}
-   else{r.stage=1;r.skill=MainSkill(p);var sr=p.skills.GetSkill(r.skill);r.val=Growth.Progress(sr);r.val2=XpBase+level*XpPerLevel;task="30 天内在"+r.skill.label+"上得到 "+r.val2.ToString("0")+" 点经验。";}
-   Find.LetterStack.ReceiveLetter("天命："+p.LabelShort,p.LabelShort+"到了 "+level+" 级。那天夜里"+p.gender.GetPronoun()+"做了一个很长的梦，醒来时知道自己该去做一件事：\n\n"+task+"\n\n完成后可以二选一：主属性 +1、武艺天赋。",LetterDefOf.PositiveEvent,p);
+   if(IsMartial(p)){r.stage=0;task="30 天内亲手击杀 ".Loc()+Kills+" 个敌人。".Loc();}
+   else{r.stage=1;r.skill=MainSkill(p);var sr=p.skills.GetSkill(r.skill);r.val=Growth.Progress(sr);r.val2=XpBase+level*XpPerLevel;task="30 天内在".Loc()+r.skill.label+"上得到 ".Loc()+r.val2.ToString("0")+" 点经验。".Loc();}
+   Find.LetterStack.ReceiveLetter("天命：".Loc()+p.LabelShort,p.LabelShort+"到了 ".Loc()+level+" 级。那天夜里".Loc()+p.gender.GetPronoun()+"做了一个很长的梦，醒来时知道自己该去做一件事：\n\n".Loc()+task+"\n\n完成后可以二选一：主属性 +1、武艺天赋。".Loc(),LetterDefOf.PositiveEvent,p);
    return r;
   }
   public static float Progress(E3Record r){if(r.stage==0)return r.count/(float)Kills;var sr=r.a?.skills?.GetSkill(r.skill);return sr==null?0f:Mathf.Clamp01((Growth.Progress(sr)-r.val)/Mathf.Max(1f,r.val2));}
@@ -447,16 +447,16 @@ namespace LichPhylactery {
    if(r.flag)return;
    if(Progress(r)>=1f){
     r.flag=true;
-    Events3.Ask(r,"天命完成："+p.LabelShort,p.LabelShort+"完成了梦里的那件事。选一样作为回报：",new LookTargets(p));
+    Events3.Ask(r,"天命完成：".Loc()+p.LabelShort,p.LabelShort+"完成了梦里的那件事。选一样作为回报：".Loc(),new LookTargets(p));
     return;
    }
-   if(Events3.Now>r.until){r.done=true;Messages.Message(p.LabelShort+"的天命期限过了，梦里的声音再也没出现。",p,MessageTypeDefOf.NeutralEvent,false);}
+   if(Events3.Now>r.until){r.done=true;Messages.Message(p.LabelShort+"的天命期限过了，梦里的声音再也没出现。".Loc(),p,MessageTypeDefOf.NeutralEvent,false);}
   }
   public static int Primary(Pawn p){var h=Adventurer.Get(p);int a=Adventurer.PrimaryAbility(p);if(a>=0 || h==null)return a;int best=0;for(int i=1;i<6;i++)if(h.scores[i]>h.scores[best])best=i;return best;}
   public static IEnumerable<DiaOption> Options(Letter_E3 l,E3Record r){
    var p=r.a;if(p==null || !r.flag)yield break;var h=Adventurer.Get(p);int a=Primary(p);
-   yield return l.Choice("主属性 +1（"+(a>=0?Adventurer.Names[a]:"")+"）",()=>{r.done=true;if(h!=null && a>=0){h.scores[a]++;h.Dirty();}},h==null || a<0?"没有冒险者等级":null);
-   yield return l.Choice("武艺天赋（已有则升一阶）",()=>{r.done=true;CombatGifts.Wish(p);},CombatGifts.CannotWish(p));
+   yield return l.Choice("主属性 +1（".Loc()+(a>=0?Adventurer.Names[a]:"")+"）".Loc(),()=>{r.done=true;if(h!=null && a>=0){h.scores[a]++;h.Dirty();}},h==null || a<0?"没有冒险者等级".Loc():null);
+   yield return l.Choice("武艺天赋（已有则升一阶）".Loc(),()=>{r.done=true;CombatGifts.Wish(p);},CombatGifts.CannotWish(p));
   }
  }
 
@@ -471,7 +471,7 @@ namespace LichPhylactery {
      case Thief.Kind:case Thief.Kind+"Loot":Thief.Generate(map,r);break;
      case RivalLich.Kind:RivalLich.Generate(map,r);break;
     }
-   }catch(Exception e){Log.Error("[DND边缘大陆] 生成事件站点出错："+e);}
+   }catch(Exception e){Log.Error("[DND边缘大陆] 生成事件站点出错：".Loc()+e);}
   }
  }
 }

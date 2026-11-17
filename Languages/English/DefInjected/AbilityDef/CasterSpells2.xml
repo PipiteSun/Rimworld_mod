@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 友善术 -->
+  <LP_CS_Friends.label>friends</LP_CS_Friends.label>
+  <!-- 戏法（惑控）：1 分钟内社交影响 +30%、谈判能力 +30%（招募、交易、劝说都更容易）。冷却 1 分钟。 -->
+  <LP_CS_Friends.description>Cantrip (Enchantment): for 1 minute, social impact +30% and negotiation ability +30% (recruiting, trading and persuading are all easier). Cooldown 1 minute.</LP_CS_Friends.description>
+  <!-- 英雄气概 -->
+  <LP_CS_Heroism.label>heroism</LP_CS_Heroism.label>
+  <!-- 1 环（惑控·专注）：20 格内一名友军 1 分钟内无所畏惧（陷入恐慌就立刻恢复），并且每秒把临时生命补到 6 × 强度点（专注）。冷却 30 秒。 -->
+  <LP_CS_Heroism.description>Circle 1 (Enchantment, concentration): one ally within 20 cells is fearless for 1 minute (recovers at once from panic), and every second their temporary hit points are topped up to 6 × power (concentration). Cooldown 30 seconds.</LP_CS_Heroism.description>
+  <!-- 言语术 -->
+  <LP_CS_Tongues.label>tongues</LP_CS_Tongues.label>
+  <!-- 3 环（预言）：10 格内一名友方的人 1 小时内能说会道：谈判能力 ×2、社交影响 +50%（趁这时去招募、劝降、交易）。冷却 1 分钟。 -->
+  <LP_CS_Tongues.description>Circle 3 (Divination): one friendly person within 10 cells becomes silver-tongued for 1 hour: negotiation ability ×2, social impact +50% (use the time to recruit, persuade surrender or trade). Cooldown 1 minute.</LP_CS_Tongues.description>
+  <!-- 催眠图纹 -->
+  <LP_CS_HypnoticPattern.label>hypnotic pattern</LP_CS_HypnoticPattern.label>
+  <!-- 3 环（幻术·专注）：20 格内半径 3 浮现出变幻的光纹：里面的敌人各自成功率 55% 看呆了，昏睡 12 秒（受伤就醒）。目标每比施法者高 1 级 −5%（最低 10%），传奇生物和剧情首领减半，心智抗性也能抵抗，对机械体无效（专注）。冷却 40 秒。 -->
+  <LP_CS_HypnoticPattern.description>Circle 3 (Illusion, concentration): shifting patterns of light appear in radius 3 within 20 cells: enemies inside each have a 55% chance to stare transfixed and fall asleep for 12 seconds (waking when hurt). -5% per level the target is above the caster (minimum 10%), halved against legendary creatures and story bosses; mind resistance also resists it, no effect on mechanoids (concentration). Cooldown 40 seconds.</LP_CS_HypnoticPattern.description>
+  <!-- 迷惑术 -->
+  <LP_CS_Compulsion.label>befuddlement</LP_CS_Compulsion.label>
+  <!-- 4 环（惑控）：20 格内半径 4 的敌人各自成功率 55% 被迫走开 5 格、愣住 1.5 秒（心智抗性能抵抗，对机械体无效）。冷却 40 秒。 -->
+  <LP_CS_Compulsion.description>Circle 4 (Enchantment): enemies in radius 4 within 20 cells each have a 55% chance to be forced to walk 5 cells away and freeze for 1.5 seconds (mind resistance resists it, no effect on mechanoids). Cooldown 40 seconds.</LP_CS_Compulsion.description>
+  <!-- 高等隐形术 -->
+  <LP_CS_GreaterInvisibility.label>greater invisibility</LP_CS_GreaterInvisibility.label>
+  <!-- 4 环（幻术·专注）：20 格内一名友军隐形 1 分钟，攻击、施法也不会现形（专注）。冷却 1 分钟。 -->
+  <LP_CS_GreaterInvisibility.description>Circle 4 (Illusion, concentration): one ally within 20 cells turns invisible for 1 minute and stays hidden even when attacking or casting (concentration). Cooldown 1 minute.</LP_CS_GreaterInvisibility.description>
+  <!-- 群体暗示·退兵 -->
+  <LP_CS_MassSuggestion.label>mass suggestion: withdraw</LP_CS_MassSuggestion.label>
+  <!-- 6 环（惑控）：对 30 格内一支敌对小队里的一个人施法，成功率按停战之言算（强度越高、对方倒下的人越多越容易）：成功时整支小队放弃袭击离开地图。亡灵、异界来客、机械族、虫族和剧情首领带的队伍无效。冷却 2 分钟。 -->
+  <LP_CS_MassSuggestion.description>Circle 6 (Enchantment): cast on one member of a hostile squad within 30 cells, with success chance calculated as for Words of Truce (easier the higher the power and the more of them have fallen): on success the whole squad gives up the raid and leaves the map. No effect on groups of undead, outsiders, mechanoids, insectoids or led by story bosses. Cooldown 2 minutes.</LP_CS_MassSuggestion.description>
+  <!-- 奥图狂舞 -->
+  <LP_CS_OttoDance.label>Otto's irresistible dance</LP_CS_OttoDance.label>
+  <!-- 6 环（惑控）：30 格内一个敌人跳起停不下来的舞，10 秒内动弹不得（成功率同刃舞的狂舞，剧情首领时间更短；对机械体无效）。冷却 1 分钟。 -->
+  <LP_CS_OttoDance.description>Circle 6 (Enchantment): one enemy within 30 cells breaks into an unstoppable dance and cannot move for 10 seconds (success chance as Blade Dance's frenzied dance, shorter for story bosses; no effect on mechanoids). Cooldown 1 minute.</LP_CS_OttoDance.description>
+  <!-- 投射幻象 -->
+  <LP_CS_ProjectImage.label>project image</LP_CS_ProjectImage.label>
+  <!-- 7 环（幻术）：在地图上任意一处投下自己的幻象：揭开那里半径 12 的迷雾；1 小时内射向施法者的远程攻击成功率 30% 落空（打在幻象上）。冷却 2 分钟。 -->
+  <LP_CS_ProjectImage.description>Circle 7 (Illusion): project an illusion of yourself anywhere on the map: reveals the fog in radius 12 there; for 1 hour, ranged attacks against the caster have a 30% chance to miss (hitting the illusion). Cooldown 2 minutes.</LP_CS_ProjectImage.description>
+  <!-- 强力治愈 -->
+  <LP_CS_PowerWordHeal.label>power word heal</LP_CS_PowerWordHeal.label>
+  <!-- 9 环（塑能）：10 格内一名友军的伤势全部治好（不含旧伤疤），并解除眩晕、恐惧、各种控制、失明和中毒。冷却 2 分钟。 -->
+  <LP_CS_PowerWordHeal.description>Circle 9 (Evocation): one ally within 10 cells has all injuries healed (except old scars), and is freed from stuns, fear, all control effects, blindness and poisoning. Cooldown 2 minutes.</LP_CS_PowerWordHeal.description>
+  <!-- 炽焰斩 -->
+  <LP_CS_SmiteBlaze.label>searing smite</LP_CS_SmiteBlaze.label>
+  <!-- 1 环（塑能·可升环）：10 秒内下一次近战命中额外造成 10 × 强度点火焰伤害并把目标点着。升环：每环效果 +25%。冷却 6 秒。 -->
+  <LP_CS_SmiteBlaze.description>Circle 1 (Evocation, upcastable): within 10 seconds, the next melee hit deals an extra 10 × power fire damage and sets the target alight. Upcast: +25% effect per circle. Cooldown 6 seconds.</LP_CS_SmiteBlaze.description>
+  <!-- 雷鸣斩 -->
+  <LP_CS_SmiteThunder.label>thunderous smite</LP_CS_SmiteThunder.label>
+  <!-- 1 环（塑能·可升环）：10 秒内下一次近战命中额外造成 10 × 强度点雷鸣（钝器）伤害，把目标震退 2 格、愣住 1 秒。升环：每环效果 +25%。冷却 6 秒。 -->
+  <LP_CS_SmiteThunder.description>Circle 1 (Evocation, upcastable): within 10 seconds, the next melee hit deals an extra 10 × power thunder (blunt) damage, knocking the target back 2 cells and dazing it for 1 second. Upcast: +25% effect per circle. Cooldown 6 seconds.</LP_CS_SmiteThunder.description>
+  <!-- 灼热斩 -->
+  <LP_CS_SmiteSear.label>searing smite</LP_CS_SmiteSear.label>
+  <!-- 1 环（塑能·可升环）：10 秒内下一次近战命中额外造成 6 × 强度点火焰伤害，之后 10 秒目标每秒再烧 1.2 × 强度点。升环：每环效果 +25%。冷却 6 秒。 -->
+  <LP_CS_SmiteSear.description>Circle 1 (Evocation, upcastable): within 10 seconds, the next melee hit deals an extra 6 × power fire damage, then the target burns for another 1.2 × power per second for 10 seconds. Upcast: +25% effect per circle. Cooldown 6 seconds.</LP_CS_SmiteSear.description>
+  <!-- 侦测邪恶 -->
+  <LP_CS_DetectEvil.label>detect evil</LP_CS_DetectEvil.label>
+  <!-- 1 环（预言）：感知地图上所有亡灵、邪魔和异常生物（来信列出位置），并揭开 30 格内隐形的敌人。冷却 1 分钟。 -->
+  <LP_CS_DetectEvil.description>Circle 1 (Divination): sense all undead, fiends and anomalous creatures on the map (a letter lists their positions) and reveal invisible enemies within 30 cells. Cooldown 1 minute.</LP_CS_DetectEvil.description>
+  <!-- 魔法武器 -->
+  <LP_CS_MagicWeapon.label>magic weapon</LP_CS_MagicWeapon.label>
+  <!-- 2 环（变化·专注）：20 格内一名友军的武器附上魔力 1 小时：每次近战或远程命中额外 3 × 强度点力场伤害（专注）。冷却 30 秒。 -->
+  <LP_CS_MagicWeapon.description>Circle 2 (Transmutation, concentration): one ally's weapon within 20 cells is imbued with magic for 1 hour: every melee or ranged hit deals an extra 3 × power force damage (concentration). Cooldown 30 seconds.</LP_CS_MagicWeapon.description>
+  <!-- 寻获坐骑 -->
+  <LP_CS_FindSteed.label>find steed</LP_CS_FindSteed.label>
+  <!-- 2 环（咒法）：召来一匹持续存在的天界战马（原版马，属于殖民地、和施法者建立羁绊、学会能学的训练，移动 ×1.2、受到的伤害 ×0.8）。同时只能有一匹；死了可以重召。不能骑乘。冷却 1 天。 -->
+  <LP_CS_FindSteed.description>Circle 2 (Conjuration): summon a lasting celestial warhorse (a vanilla horse that belongs to the colony, bonds with the caster, learns all trainable skills, movement ×1.2, damage taken ×0.8). Only one at a time; can be summoned again if it dies. Cannot be ridden. Cooldown 1 day.</LP_CS_FindSteed.description>
+  <!-- 标记惩击 -->
+  <LP_CS_SmiteBrand.label>branding smite</LP_CS_SmiteBrand.label>
+  <!-- 2 环（塑能·可升环）：10 秒内下一次命中（近战或远程）额外造成 10 × 强度点光耀伤害（对亡灵、邪魔加倍）；目标 1 分钟内不能隐形。升环：每环效果 +25%。冷却 6 秒。 -->
+  <LP_CS_SmiteBrand.description>Circle 2 (Evocation, upcastable): within 10 seconds, the next hit (melee or ranged) deals an extra 10 × power radiant damage (doubled against undead and fiends); the target cannot turn invisible for 1 minute. Upcast: +25% effect per circle. Cooldown 6 seconds.</LP_CS_SmiteBrand.description>
+  <!-- 十字军披风 -->
+  <LP_CS_CrusadersMantle.label>crusader's mantle</LP_CS_CrusadersMantle.label>
+  <!-- 3 环（塑能·专注）：1 分钟内施法者身边 6 格内的友军每次近战命中额外 3 × 强度点光耀伤害（对亡灵、邪魔加倍）（专注）。冷却 1 分钟。 -->
+  <LP_CS_CrusadersMantle.description>Circle 3 (Evocation, concentration): for 1 minute, allies within 6 cells of the caster deal an extra 3 × power radiant damage on every melee hit (doubled against undead and fiends) (concentration). Cooldown 1 minute.</LP_CS_CrusadersMantle.description>
+  <!-- 元素武器 -->
+  <LP_CS_ElementalWeapon.label>elemental weapon</LP_CS_ElementalWeapon.label>
+  <!-- 3 环（变化·专注）：20 格内一名友军的武器燃起元素之力 1 小时：每次近战或远程命中额外 5 × 强度点火焰伤害（专注）。冷却 30 秒。 -->
+  <LP_CS_ElementalWeapon.description>Circle 3 (Transmutation, concentration): one ally's weapon within 20 cells burns with elemental power for 1 hour: every melee or ranged hit deals an extra 5 × power fire damage (concentration). Cooldown 30 seconds.</LP_CS_ElementalWeapon.description>
+  <!-- 致盲斩 -->
+  <LP_CS_SmiteBlind.label>blinding smite</LP_CS_SmiteBlind.label>
+  <!-- 3 环（塑能·可升环）：10 秒内下一次近战命中额外造成 14 × 强度点光耀伤害（对亡灵、邪魔加倍），目标失明 10 秒。升环：每环效果 +25%。冷却 10 秒。 -->
+  <LP_CS_SmiteBlind.description>Circle 3 (Evocation, upcastable): within 10 seconds, the next melee hit deals an extra 14 × power radiant damage (doubled against undead and fiends) and blinds the target for 10 seconds. Upcast: +25% effect per circle. Cooldown 10 seconds.</LP_CS_SmiteBlind.description>
+  <!-- 灼目斩 -->
+  <LP_CS_SmiteStagger.label>staggering smite</LP_CS_SmiteStagger.label>
+  <!-- 4 环（惑控·可升环）：10 秒内下一次近战命中额外造成 18 × 强度点心灵伤害，目标眩晕 3 秒。升环：每环效果 +25%。冷却 10 秒。 -->
+  <LP_CS_SmiteStagger.description>Circle 4 (Enchantment, upcastable): within 10 seconds, the next melee hit deals an extra 18 × power psychic damage and stuns the target for 3 seconds. Upcast: +25% effect per circle. Cooldown 10 seconds.</LP_CS_SmiteStagger.description>
+  <!-- 逐恶斩 -->
+  <LP_CS_SmiteBanish.label>banishing smite</LP_CS_SmiteBanish.label>
+  <!-- 5 环（咒法）：10 秒内下一次近战命中额外造成 25 × 强度点力场伤害；目标伤势过半（健康 ≤ 50%）时被放逐 1 分钟（剧情首领除外）。冷却 20 秒。 -->
+  <LP_CS_SmiteBanish.description>Circle 5 (Conjuration): within 10 seconds, the next melee hit deals an extra 25 × power force damage; if the target has lost over half its health (health ≤ 50%) it is banished for 1 minute (except story bosses). Cooldown 20 seconds.</LP_CS_SmiteBanish.description>
+  <!-- 诱捕打击 -->
+  <LP_CS_Ensnaring.label>ensnaring strike</LP_CS_Ensnaring.label>
+  <!-- 1 环（咒法）：10 秒内下一次命中（近战或远程）额外造成 6 × 强度点割伤，并成功率 60% 让荆棘缠住目标 4 秒。冷却 6 秒。 -->
+  <LP_CS_Ensnaring.description>Circle 1 (Conjuration): within 10 seconds, the next hit (melee or ranged) deals an extra 6 × power cut damage, with a 60% chance for thorns to entangle the target for 4 seconds. Cooldown 6 seconds.</LP_CS_Ensnaring.description>
+  <!-- 无踪步 -->
+  <LP_CS_PassWithoutTrace.label>pass without trace</LP_CS_PassWithoutTrace.label>
+  <!-- 2 环（防护·专注）：施法者和身边 8 格内最多 9 名友军 1 小时内悄无声息：射向他们的远程攻击成功率 30% 落空（专注）。商队里的游侠另有商队按钮：1 天内商队遇袭的几率减半。冷却 1 分钟。 -->
+  <LP_CS_PassWithoutTrace.description>Circle 2 (Abjuration, concentration): the caster and up to 9 allies within 8 cells move silently for 1 hour: ranged attacks against them have a 30% chance to miss (concentration). Rangers in a caravan get an extra caravan button: for 1 day the chance of the caravan being ambushed is halved. Cooldown 1 minute.</LP_CS_PassWithoutTrace.description>
+  <!-- 召唤箭雨 -->
+  <LP_CS_ConjureBarrage.label>conjure barrage</LP_CS_ConjureBarrage.label>
+  <!-- 3 环（咒法）：朝一个方向射出 8 格锥形的箭雨，里面的敌人受 20 × 强度点穿刺伤害。冷却 30 秒。 -->
+  <LP_CS_ConjureBarrage.description>Circle 3 (Conjuration): fire an 8-cell cone of arrows in one direction; enemies inside take 20 × power piercing damage. Cooldown 30 seconds.</LP_CS_ConjureBarrage.description>
+  <!-- 闪电箭 -->
+  <LP_CS_LightningArrow.label>lightning arrow</LP_CS_LightningArrow.label>
+  <!-- 3 环（变化）：10 秒内下一次远程命中化作一道闪电：额外 20 × 强度点闪电伤害，目标身边 2 格内的敌人各受一半。冷却 10 秒。 -->
+  <LP_CS_LightningArrow.description>Circle 3 (Transmutation): within 10 seconds, the next ranged hit turns into a bolt of lightning: an extra 20 × power lightning damage, and enemies within 2 cells of the target each take half. Cooldown 10 seconds.</LP_CS_LightningArrow.description>
+  <!-- 迅捷箭袋 -->
+  <LP_CS_SwiftQuiver.label>swift quiver</LP_CS_SwiftQuiver.label>
+  <!-- 5 环（变化·专注）：1 分钟内远程攻击的冷却和瞄准时间减半（专注）。冷却 1 分钟。 -->
+  <LP_CS_SwiftQuiver.description>Circle 5 (Transmutation, concentration): for 1 minute, ranged attack cooldown and aiming time are halved (concentration). Cooldown 1 minute.</LP_CS_SwiftQuiver.description>
+  <!-- 召唤箭雨群 -->
+  <LP_CS_ConjureVolley.label>conjure volley</LP_CS_ConjureVolley.label>
+  <!-- 5 环（咒法）：向 40 格内一点射出漫天箭雨：半径 4 内的敌人受 30 × 强度点穿刺伤害。冷却 1 分钟。 -->
+  <LP_CS_ConjureVolley.description>Circle 5 (Conjuration): fire a sky-filling volley of arrows at a point within 40 cells: enemies within radius 4 take 30 × power piercing damage. Cooldown 1 minute.</LP_CS_ConjureVolley.description>
+  <!-- 吸收元素 -->
+  <LP_CS_AbsorbElements.label>absorb elements</LP_CS_AbsorbElements.label>
+  <!-- 1 环（防护）：10 秒内下一次受到的元素伤害（火焰、寒冷、闪电、强酸、心灵）减半；挡下之后，下一次近战命中额外 8 × 强度点火焰伤害。冷却 10 秒。 -->
+  <LP_CS_AbsorbElements.description>Circle 1 (Abjuration): within 10 seconds, the next elemental damage taken (fire, cold, lightning, acid, psychic) is halved; after blocking it, the next melee hit deals an extra 8 × power fire damage. Cooldown 10 seconds.</LP_CS_AbsorbElements.description>
+  <!-- 识别术 -->
+  <LP_CS_Identify.label>identify</LP_CS_Identify.label>
+  <!-- 1 环（预言·仪式）：说出 10 格内一件物品的品质、附魔强化等级、有没有诅咒、有没有魔法灵光和价值。冷却 10 秒。 -->
+  <LP_CS_Identify.description>Circle 1 (Divination, ritual): tell the quality, enchantment level, whether cursed, whether it has a magic aura, and value of one item within 10 cells. Cooldown 10 seconds.</LP_CS_Identify.description>
+  <!-- 加热金属 -->
+  <LP_CS_HeatMetal.label>heat metal</LP_CS_HeatMetal.label>
+  <!-- 2 环（变化）：把 20 格内一个敌人身上的金属烧红：6 × 强度点火焰伤害（穿金属护甲的翻倍），之后 10 秒内穿金属护甲的每秒再受 3 × 强度点火焰伤害。冷却 20 秒。 -->
+  <LP_CS_HeatMetal.description>Circle 2 (Transmutation): heat the metal on one enemy within 20 cells red-hot: 6 × power fire damage (doubled if wearing metal armor), then those in metal armor take another 3 × power fire damage per second for 10 seconds. Cooldown 20 seconds.</LP_CS_HeatMetal.description>
+  <!-- 浮空术 -->
+  <LP_CS_Levitate.label>levitate</LP_CS_Levitate.label>
+  <!-- 2 环（变化）：10 格内一名友军 1 小时内浮在离地一尺的空中：不受地形、雪和植物减速，移动 ×0.9。冷却 20 秒。 -->
+  <LP_CS_Levitate.description>Circle 2 (Transmutation): one ally within 10 cells floats a foot above the ground for 1 hour: no slowdown from terrain, snow or plants, movement ×0.9. Cooldown 20 seconds.</LP_CS_Levitate.description>
+  <!-- 造物术 -->
+  <LP_CS_Creation.label>fabricate</LP_CS_Creation.label>
+  <!-- 5 环（幻术·仪式）：凭空造出一种普通材料：施法职业等级 × 10 份钢铁、木材、布料或花岗岩砖块，或者等级 / 2 个零部件。每天一次。冷却 1 天。 -->
+  <LP_CS_Creation.description>Circle 5 (Illusion, ritual): create a common material out of thin air: spellcasting class level × 10 steel, wood, cloth or granite blocks, or level / 2 components. Once per day. Cooldown 1 day.</LP_CS_Creation.description>
+  <!-- 活化物件 -->
+  <LP_CS_AnimateObjects.label>animate objects</LP_CS_AnimateObjects.label>
+  <!-- 5 环（变化·专注）：让 15 格内一处的石块活过来：召出 1 个活化石像为施法者作战 1 分钟（专注），时间到就散架。冷却 1 分钟。 -->
+  <LP_CS_AnimateObjects.description>Circle 5 (Transmutation, concentration): bring stone blocks within 15 cells to life: summon 1 animated statue to fight for the caster for 1 minute (concentration); it falls apart when time is up. Cooldown 1 minute.</LP_CS_AnimateObjects.description>
+  <!-- 巨人之手 -->
+  <LP_CS_BigbysHand.label>Bigby's hand</LP_CS_BigbysHand.label>
+  <!-- 5 环（塑能）：召出一只巨大的力场之手：24 格内一个敌人受 25 × 强度点力场伤害，被推开 3 格并愣住 2 秒。冷却 30 秒。 -->
+  <LP_CS_BigbysHand.description>Circle 5 (Evocation): summon a huge hand of force: one enemy within 24 cells takes 25 × power force damage, is pushed back 3 cells and dazed for 2 seconds. Cooldown 30 seconds.</LP_CS_BigbysHand.description>
+</LanguageData>

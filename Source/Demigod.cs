@@ -31,10 +31,10 @@ namespace LichPhylactery {
   public float Power{get=>Comp?.divinePower??0f;set{var c=Comp;if(c!=null)c.divinePower=Mathf.Clamp(value,0f,MaxPower);}}
   public float MaxPower=>Demigods.MaxPower(Level);
   public float Strength=>Demigods.LevelStrength(Level);
-  public override string Label=>Demigods.StageName(Level)+"（"+(Portfolio?.label??"?")+"）";
+  public override string Label=>Demigods.StageName(Level)+"（".Loc()+(Portfolio?.label??"?")+"）".Loc();
   public override string LabelBase=>Label;
   public override Color LabelColor=>Portfolio?.color??new Color(1f,.85f,.4f);
-  public override string LabelInBrackets=>"神力 "+Power.ToString("0")+" / "+MaxPower.ToString("0");
+  public override string LabelInBrackets=>"神力 ".Loc()+Power.ToString("0")+" / "+MaxPower.ToString("0");
   public override bool ShouldRemove=>false;
   HediffStage stage;int stageLevel=-1;LP_DivinePortfolioDef stagePortfolio;
   public override HediffStage CurStage{get{
@@ -48,10 +48,10 @@ namespace LichPhylactery {
   }}
   public override string TipStringExtra{get{
    var sb=new System.Text.StringBuilder(base.TipStringExtra);
-   sb.AppendLine("神性等级 "+Level+" / 5："+Demigods.StageName(Level)+"；神职能力强度 ×"+Strength.ToString("0.##"));
-   sb.AppendLine("神力 "+Power.ToString("0.#")+" / "+MaxPower.ToString("0")+"；每天 +"+Demigods.DailyGain(pawn).ToString("0.#")+"（2 + 0.5×信徒 + 0.2×好感≥20 的殖民者）");
-   if(Portfolio!=null){sb.AppendLine("被动："+(Portfolio.passive??"无"));sb.AppendLine("神域赐福（升入神域后）："+(Portfolio.blessing??"无"));}
-   var c=Comp;if(c!=null){if(c.trialActive)sb.AppendLine("神灵议会的试炼进行中"+(c.trialDowned?"（已经倒下过）":""));else if(Level<5)sb.AppendLine("下次议会："+(Demigods.TrialReady(this)?"可以":Demigods.TrialBlocked(this)));}
+   sb.AppendLine("神性等级 ".Loc()+Level+" / 5：".Loc()+Demigods.StageName(Level)+"；神职能力强度 ×".Loc()+Strength.ToString("0.##"));
+   sb.AppendLine("神力 ".Loc()+Power.ToString("0.#")+" / "+MaxPower.ToString("0")+"；每天 +".Loc()+Demigods.DailyGain(pawn).ToString("0.#")+"（2 + 0.5×信徒 + 0.2×好感≥20 的殖民者）".Loc());
+   if(Portfolio!=null){sb.AppendLine("被动：".Loc()+(Portfolio.passive??"无".Loc()));sb.AppendLine("神域赐福（升入神域后）：".Loc()+(Portfolio.blessing??"无".Loc()));}
+   var c=Comp;if(c!=null){if(c.trialActive)sb.AppendLine("神灵议会的试炼进行中".Loc()+(c.trialDowned?"（已经倒下过）".Loc():""));else if(Level<5)sb.AppendLine("下次议会：".Loc()+(Demigods.TrialReady(this)?"可以".Loc():Demigods.TrialBlocked(this)));}
    return sb.ToString().TrimEnd();
   }}
   int acc;
@@ -71,11 +71,11 @@ namespace LichPhylactery {
    yield return new Gizmo_DivinePower(this);
    var c=Comp;if(c==null)yield break;
    if(Level<5){
-    var t=new Command_Action{defaultLabel="接受众神的试炼",defaultDesc="神灵议会：1天后“众神的勇士”来袭（与"+(Portfolio?.label??"")+"对立的神的派系，首领被神明附体）。整场试炼里"+pawn.LabelShort+"一次都没倒下 → 神性等级+1；倒下过 → 神力清零、30天后才能再试，等级不降。\n\n要求：神力满、距上次试炼至少30天、等级低于5。",icon=Demigods.CouncilIcon,action=()=>Demigods.StartTrial(this)};
+    var t=new Command_Action{defaultLabel="接受众神的试炼".Loc(),defaultDesc="神灵议会：1天后“众神的勇士”来袭（与".Loc()+(Portfolio?.label??"")+"对立的神的派系，首领被神明附体）。整场试炼里".Loc()+pawn.LabelShort+"一次都没倒下 → 神性等级+1；倒下过 → 神力清零、30天后才能再试，等级不降。\n\n要求：神力满、距上次试炼至少30天、等级低于5。".Loc(),icon=Demigods.CouncilIcon,action=()=>Demigods.StartTrial(this)};
     string why=Demigods.TrialBlocked(this);if(why!=null)t.Disable(why);
     yield return t;
    }else{
-    yield return new Command_Action{defaultLabel="升入神域",defaultDesc=pawn.LabelShort+"已是神域之主。升入神域后会化作光柱离开这个世界（不再回来），释放半神名额；殖民地永久获得“"+(Portfolio?.label??"")+"”的神域赐福："+(Portfolio?.blessing??"")+"。",icon=Demigods.RealmIcon,action=()=>Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation(pawn.LabelShort+"将离开这个世界，永远不会回来。殖民地会得到神域赐福，全员心情+15（30天），之后永久+3。确定吗？",()=>Demigods.AscendToRealm(pawn),true,"升入神域"))};
+    yield return new Command_Action{defaultLabel="升入神域".Loc(),defaultDesc=pawn.LabelShort+"已是神域之主。升入神域后会化作光柱离开这个世界（不再回来），释放半神名额；殖民地永久获得“".Loc()+(Portfolio?.label??"")+"”的神域赐福：".Loc()+(Portfolio?.blessing??"")+"。".Loc(),icon=Demigods.RealmIcon,action=()=>Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation(pawn.LabelShort+"将离开这个世界，永远不会回来。殖民地会得到神域赐福，全员心情+15（30天），之后永久+3。确定吗？".Loc(),()=>Demigods.AscendToRealm(pawn),true,"升入神域".Loc()))};
    }
   }
  }
@@ -90,11 +90,11 @@ namespace LichPhylactery {
   public override GizmoResult GizmoOnGUI(Vector2 topLeft,float maxWidth,GizmoRenderParms parms){
    var r=new Rect(topLeft.x,topLeft.y,GetWidth(maxWidth),75f);Widgets.DrawWindowBackground(r);
    var inner=r.ContractedBy(6f);
-   Text.Font=GameFont.Small;GUI.DrawTexture(new Rect(inner.x,inner.y,22f,22f),Demigods.DemigodIcon);Widgets.Label(new Rect(inner.x+26f,inner.y,inner.width-26f,22f),"神力");
+   Text.Font=GameFont.Small;GUI.DrawTexture(new Rect(inner.x,inner.y,22f,22f),Demigods.DemigodIcon);Widgets.Label(new Rect(inner.x+26f,inner.y,inner.width-26f,22f),"神力".Loc());
    var bar=new Rect(inner.x,inner.y+24f,inner.width,inner.height-24f);
    Widgets.FillableBar(bar,h.MaxPower<=0?0:h.Power/h.MaxPower,Fill,Empty,true);
    Text.Anchor=TextAnchor.MiddleCenter;Widgets.Label(bar,h.Power.ToString("0")+" / "+h.MaxPower.ToString("0"));Text.Anchor=TextAnchor.UpperLeft;
-   if(Mouse.IsOver(r))TooltipHandler.TipRegion(r,"神力："+h.Power.ToString("0.#")+" / "+h.MaxPower.ToString("0")+"\n每天 +"+Demigods.DailyGain(h.pawn).ToString("0.#")+"。神职能力消耗神力；神力满时可以接受众神的试炼。");
+   if(Mouse.IsOver(r))TooltipHandler.TipRegion(r,"神力：".Loc()+h.Power.ToString("0.#")+" / "+h.MaxPower.ToString("0")+"\n每天 +".Loc()+Demigods.DailyGain(h.pawn).ToString("0.#")+"。神职能力消耗神力；神力满时可以接受众神的试炼。".Loc());
    return new GizmoResult(GizmoState.Clear);
   }
  }
@@ -106,7 +106,7 @@ namespace LichPhylactery {
   public static HediffDef Def=>def??(def=DefDatabase<HediffDef>.GetNamedSilentFail("LP_Demigod"));
   public static Hediff_Demigod Of(Pawn p)=>HediffIndex<Hediff_Demigod>.Get(p); // 1.58.6：按小人登记
   public static bool Is(Pawn p)=>Of(p)!=null;
-  public static string StageName(int level)=>level<=1?"新生神祇":level==2?"次级神祇":level==3?"中等神祇":level==4?"高等神祇":"神域之主";
+  public static string StageName(int level)=>level<=1?"新生神祇".Loc():level==2?"次级神祇".Loc():level==3?"中等神祇".Loc():level==4?"高等神祇".Loc():"神域之主".Loc();
   public static float Sensitivity(int level)=>.2f+.05f*(level-1);
   public static float DamageTaken(int level)=>Mathf.Pow(.95f,level);
   public static float MaxPower(int level)=>BasePower+PowerPerLevel*(level-1);
@@ -128,7 +128,7 @@ namespace LichPhylactery {
    Adventurer.Get(p)?.SyncDemigod(); // 1.49.0
    if(path!=Ascension.Arcane){
     if(p.Spawned)FleckMaker.Static(p.Position,p.Map,FleckDefOf.PsycastAreaEffect,4f);
-    Ascension.Letter("新神诞生："+p.LabelShort,p.LabelShort+"吸收了神性火花，成为“"+(portfolio?.label??"")+"”的半神（新生神祇）。\n\n不老、饥饿×0.3、免疫疾病、心灵敏感度+20%、受到伤害×0.95、精神崩溃阈值-10%。神职能力："+string.Join("、",(portfolio?.abilities??new List<AbilityDef>()).Select(a=>a.label))+"；被动："+(portfolio?.passive??"无")+"。\n\n神力每天恢复，神力满时可以“接受众神的试炼”提升神性等级。",LetterDefOf.PositiveEvent,p);
+    Ascension.Letter("新神诞生：".Loc()+p.LabelShort,p.LabelShort+"吸收了神性火花，成为“".Loc()+(portfolio?.label??"")+"”的半神（新生神祇）。\n\n不老、饥饿×0.3、免疫疾病、心灵敏感度+20%、受到伤害×0.95、精神崩溃阈值-10%。神职能力：".Loc()+string.Join("、".Loc(),(portfolio?.abilities??new List<AbilityDef>()).Select(a=>a.label))+"；被动：".Loc()+(portfolio?.passive??"无".Loc())+"。\n\n神力每天恢复，神力满时可以“接受众神的试炼”提升神性等级。".Loc(),LetterDefOf.PositiveEvent,p);
    }
    return h;
   }
@@ -168,11 +168,11 @@ namespace LichPhylactery {
    // 僭越：殖民地有半神时，除守护神外每位神每天 -0.1；被篡的神、半神巫妖夺走神位的凯兰沃固定 -100。
    if(Faith.Enabled && t.demigods.Any(p=>p!=null && !p.Dead && Of(p)!=null && !t.ascended.Contains(p))){
     var patron=FaithUtility.Patron;
-    foreach(var g in FaithUtility.AllDeities)if(g!=patron)FaithUtility.AddFavor(g,-UsurpDaily,"殖民地的半神僭越神位");
+    foreach(var g in FaithUtility.AllDeities)if(g!=patron)FaithUtility.AddFavor(g,-UsurpDaily,"殖民地的半神僭越神位".Loc());
    }
    foreach(var g in t.usurped.Concat(t.kelemvorFixed).Distinct())FixFavor(g);
   }
-  public static void FixFavor(LP_DeityDef g){if(g==null)return;float v=FaithUtility.GetFavor(g);if(v>-100f)FaithUtility.AddFavor(g,-100f-v,"神位被夺");}
+  public static void FixFavor(LP_DeityDef g){if(g==null)return;float v=FaithUtility.GetFavor(g);if(v>-100f)FaithUtility.AddFavor(g,-100f-v,"神位被夺".Loc());}
   public static void Hourly(LP_AscensionTracker t){
    foreach(var p in t.demigods.Where(x=>x!=null && !x.Destroyed).ToList()){
     var h=Of(p);var c=h?.Comp;if(c==null || !c.trialActive)continue;
@@ -180,7 +180,7 @@ namespace LichPhylactery {
      if(Find.TickManager.TicksGame<c.trialRaidTick)continue;
      var map=p.MapHeld;if(map==null || !map.IsPlayerHome){c.trialRaidTick=Find.TickManager.TicksGame+GenDate.TicksPerHour*6;continue;}
      SpawnChampions(h,map);
-     if(c.trialLord==null){c.trialActive=false;Messages.Message("众神的勇士没能到来（找不到可以派来的派系），试炼取消。",p,MessageTypeDefOf.NeutralEvent,false);}
+     if(c.trialLord==null){c.trialActive=false;Messages.Message("众神的勇士没能到来（找不到可以派来的派系），试炼取消。".Loc(),p,MessageTypeDefOf.NeutralEvent,false);}
      continue;
     }
     if(Ascension.LordOver(c.trialLord,c.trialMap))ResolveTrial(h,c.trialDowned);
@@ -189,20 +189,20 @@ namespace LichPhylactery {
 
   // ---------- 神灵议会 ----------
   public static string TrialBlocked(Hediff_Demigod h){
-   var c=h?.Comp;if(c==null)return "不是半神";
-   if(!Ascension.Enabled)return "成神任务线已关闭。";
-   if(c.trialActive)return "试炼正在进行。";
-   if(h.Level>=5)return "已经是神域之主。";
-   if(h.Power+.01f<h.MaxPower)return "神力没满（"+h.Power.ToString("0")+" / "+h.MaxPower.ToString("0")+"）。";
-   int wait=c.lastTrialTick+TrialCooldownDays*GenDate.TicksPerDay-Find.TickManager.TicksGame;if(wait>0)return "距上次试炼不到"+TrialCooldownDays+"天（还要 "+(wait/(float)GenDate.TicksPerDay).ToString("0.#")+" 天）。";
-   if(h.pawn.MapHeld==null || !h.pawn.MapHeld.IsPlayerHome)return "要在殖民地里接受试炼。";
+   var c=h?.Comp;if(c==null)return "不是半神".Loc();
+   if(!Ascension.Enabled)return "成神任务线已关闭。".Loc();
+   if(c.trialActive)return "试炼正在进行。".Loc();
+   if(h.Level>=5)return "已经是神域之主。".Loc();
+   if(h.Power+.01f<h.MaxPower)return "神力没满（".Loc()+h.Power.ToString("0")+" / "+h.MaxPower.ToString("0")+"）。".Loc();
+   int wait=c.lastTrialTick+TrialCooldownDays*GenDate.TicksPerDay-Find.TickManager.TicksGame;if(wait>0)return "距上次试炼不到".Loc()+TrialCooldownDays+"天（还要 ".Loc()+(wait/(float)GenDate.TicksPerDay).ToString("0.#")+" 天）。".Loc();
+   if(h.pawn.MapHeld==null || !h.pawn.MapHeld.IsPlayerHome)return "要在殖民地里接受试炼。".Loc();
    return null;
   }
   public static bool TrialReady(Hediff_Demigod h)=>TrialBlocked(h)==null;
   public static void StartTrial(Hediff_Demigod h){
    if(TrialBlocked(h)!=null)return;var c=h.Comp;
    c.trialActive=true;c.trialDowned=false;c.trialRaidTick=Find.TickManager.TicksGame+TrialDelay;c.trialLord=null;c.trialMap=null;
-   Ascension.Letter("众神的试炼",h.pawn.LabelShort+"向神灵议会请求更高的神位。议会回应了：1天后，与“"+h.Portfolio?.label+"”对立的神会派来他们的勇士。\n\n整场试炼里"+h.pawn.LabelShort+"一次都不能倒下。",LetterDefOf.ThreatSmall,h.pawn);
+   Ascension.Letter("众神的试炼".Loc(),h.pawn.LabelShort+"向神灵议会请求更高的神位。议会回应了：1天后，与“".Loc()+h.Portfolio?.label+"”对立的神会派来他们的勇士。\n\n整场试炼里".Loc()+h.pawn.LabelShort+"一次都不能倒下。".Loc(),LetterDefOf.ThreatSmall,h.pawn);
   }
   public static float ChampionPoints(Hediff_Demigod h,Map map)=>Mathf.Max(map==null?0f:StorytellerUtility.DefaultThreatPointsNow(map),2000f+1000f*h.Level)*Ascension.Difficulty;
   public static Lord SpawnChampions(Hediff_Demigod h,Map map){
@@ -210,7 +210,7 @@ namespace LichPhylactery {
    var pawns=Ascension.RaidPawns(f,map,ChampionPoints(h,map));if(pawns.Count==0)return null;
    var leader=Ascension.Leader(pawns);var vg=Ascension.VesselGod(god,f,leader);if(leader!=null && vg!=null)Twilight.MakeVessel(leader,vg);
    var lord=Ascension.Arrive(map,f,pawns);c.trialLord=lord;c.trialMap=map;
-   Ascension.Letter("众神的勇士",f.Name+"的勇士奉"+(god?.label??"众神")+"之命来考验"+h.pawn.LabelShort+"。"+(leader!=null?"领队"+leader.LabelShort+"被神明附体。":"")+"\n\n这是神灵议会的试炼："+h.pawn.LabelShort+"不能倒下。",LetterDefOf.ThreatBig,new LookTargets(pawns.Cast<Thing>()),f);
+   Ascension.Letter("众神的勇士".Loc(),f.Name+"的勇士奉".Loc()+(god?.label??"众神".Loc())+"之命来考验".Loc()+h.pawn.LabelShort+"。".Loc()+(leader!=null?"领队".Loc()+leader.LabelShort+"被神明附体。".Loc():"")+"\n\n这是神灵议会的试炼：".Loc()+h.pawn.LabelShort+"不能倒下。".Loc(),LetterDefOf.ThreatBig,new LookTargets(pawns.Cast<Thing>()),f);
    return lord;
   }
   // 结算（测试直接调用）。
@@ -220,7 +220,7 @@ namespace LichPhylactery {
    var p=h.pawn;
    if(downed || p.Dead){
     h.Power=0f;
-    Ascension.Letter("试炼失败",p.LabelShort+"在众神的勇士面前倒下了：神力清零，"+TrialCooldownDays+"天后才能再请求试炼。神性等级不变。",LetterDefOf.NegativeEvent,p);
+    Ascension.Letter("试炼失败".Loc(),p.LabelShort+"在众神的勇士面前倒下了：神力清零，".Loc()+TrialCooldownDays+"天后才能再请求试炼。神性等级不变。".Loc(),LetterDefOf.NegativeEvent,p);
     return false;
    }
    c.level=Math.Min(5,c.level+1);
@@ -230,7 +230,7 @@ namespace LichPhylactery {
    if(thought!=null)foreach(var col in PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive_FreeColonists)col.needs?.mood?.thoughts?.memories?.TryGainMemory(thought);
    p.health.Notify_HediffChanged(h);
    IdeoEvents.Record("LP_HE_DemigodRisen",p); // 1.56.0 文化：成神观
-   Ascension.Letter("新神崛起",p.LabelShort+"通过了神灵议会的试炼，神性等级提升为"+StageName(c.level)+"（"+c.level+" / 5）。\n\n神力上限 "+h.MaxPower.ToString("0")+"，神职能力强度 ×"+h.Strength.ToString("0.##")+"。全体殖民者心情+8（10天）。"+(c.level>=5?"\n\n"+p.LabelShort+"可以升入神域了。":""),LetterDefOf.PositiveEvent,p);
+   Ascension.Letter("新神崛起".Loc(),p.LabelShort+"通过了神灵议会的试炼，神性等级提升为".Loc()+StageName(c.level)+"（".Loc()+c.level+" / 5）。\n\n神力上限 ".Loc()+h.MaxPower.ToString("0")+"，神职能力强度 ×".Loc()+h.Strength.ToString("0.##")+"。全体殖民者心情+8（10天）。".Loc()+(c.level>=5?"\n\n"+p.LabelShort+"可以升入神域了。".Loc():""),LetterDefOf.PositiveEvent,p);
    return true;
   }
 
@@ -253,7 +253,7 @@ namespace LichPhylactery {
    if(p.Faction!=null && p.Faction.IsPlayer){var caravan=p.GetCaravan();caravan?.RemovePawn(p);}
    if(!Find.WorldPawns.Contains(p))Find.WorldPawns.PassToWorld(p,PawnDiscardDecideMode.KeepForever);
    RefreshCache();
-   Ascension.Letter("升入神域",p.LabelShort+"化作一道光柱升上天穹，成为了真正的神。\n\n殖民地永久获得“"+pf?.label+"”的神域赐福："+pf?.blessing+"\n\n全体殖民者“我们的神在看着我们”心情+15（30天），之后永久+3。",LetterDefOf.PositiveEvent,new LookTargets(cell,map));
+   Ascension.Letter("升入神域".Loc(),p.LabelShort+"化作一道光柱升上天穹，成为了真正的神。\n\n殖民地永久获得“".Loc()+pf?.label+"”的神域赐福：".Loc()+pf?.blessing+"\n\n全体殖民者“我们的神在看着我们”心情+15（30天），之后永久+3。".Loc(),LetterDefOf.PositiveEvent,new LookTargets(cell,map));
   }
   public static bool Blessed(string key){var t=Ascension.Tracker;if(t==null)return false;for(int i=0;i<t.blessings.Count;i++)if(t.blessings[i]?.key==key)return true;return false;}
 
@@ -283,34 +283,34 @@ namespace LichPhylactery {
   float Factor(Pawn p,out string why){
    why=null;float f=1f;if(p==null)return 1f;bool player=p.Faction?.IsPlayer==true;
    switch(kind){
-    case "heal":if(player && Demigods.Blessed("Dawn")){f*=1.2f;why="神域赐福（黎明）×1.2";}break;
+    case "heal":if(player && Demigods.Blessed("Dawn")){f*=1.2f;why="神域赐福（黎明）×1.2".Loc();}break;
     case "aim":
-     if(Demigods.active.Count>0 && TyrannyNear(p)){f*=.85f;why="暴政半神的威压×0.85";}
-     if(Items.Has(p,OblivionFog.Def)){f*=.6f;why=(why==null?"":why+"；")+"遗忘之雾×0.6";}
+     if(Demigods.active.Count>0 && TyrannyNear(p)){f*=.85f;why="暴政半神的威压×0.85".Loc();}
+     if(Items.Has(p,OblivionFog.Def)){f*=.6f;why=(why==null?"":why+"；".Loc())+"遗忘之雾×0.6".Loc();}
      break;
-    case "suppress":if(player && Demigods.Blessed("Tyranny")){f*=1.25f;why="神域赐福（暴政）×1.25";}break;
-    case "work":if(player && Demigods.Blessed("Fire") && StatPart_Faith.Smithing(p)){f*=1.15f;why="神域赐福（火焰，锻造）×1.15";}break;
-    case "tame":if(player && Demigods.Blessed("Wild")){f*=1.2f;why="神域赐福（野性）×1.2";}break;
-    case "research":if(player && Demigods.Blessed("Mind")){f*=1.1f;why="神域赐福（心灵）×1.1";}break;
-    case "focus":if(player && Demigods.Blessed("Magic")){f*=1.1f;why="神域赐福（魔法）×1.1";}break;
+    case "suppress":if(player && Demigods.Blessed("Tyranny")){f*=1.25f;why="神域赐福（暴政）×1.25".Loc();}break;
+    case "work":if(player && Demigods.Blessed("Fire") && StatPart_Faith.Smithing(p)){f*=1.15f;why="神域赐福（火焰，锻造）×1.15".Loc();}break;
+    case "tame":if(player && Demigods.Blessed("Wild")){f*=1.2f;why="神域赐福（野性）×1.2".Loc();}break;
+    case "research":if(player && Demigods.Blessed("Mind")){f*=1.1f;why="神域赐福（心灵）×1.1".Loc();}break;
+    case "focus":if(player && Demigods.Blessed("Magic")){f*=1.1f;why="神域赐福（魔法）×1.1".Loc();}break;
     case "move":
-     if(Demigods.Key(p)=="Dark" && Faith.Night(p.MapHeld)){f*=1.15f;why="黑暗半神（夜间）×1.15";}
-     if(Items.Has(p,WindHaste.Def)){f*=1.1f;why=(why==null?"":why+"；")+"唤风×1.1";}
+     if(Demigods.Key(p)=="Dark" && Faith.Night(p.MapHeld)){f*=1.15f;why="黑暗半神（夜间）×1.15".Loc();}
+     if(Items.Has(p,WindHaste.Def)){f*=1.1f;why=(why==null?"":why+"；".Loc())+"唤风×1.1".Loc();}
      break;
    }
    return f;
   }
   float Offset(Pawn p,out string why){
    why=null;if(p==null)return 0f;
-   if(kind=="sensitivity" && p.Faction?.IsPlayer==true && Demigods.colonyMind && p.RaceProps.Humanlike){why="心灵半神的共鸣+5%";return .05f;}
-   if(kind=="surgery" && p.Faction?.IsPlayer==true && Demigods.Blessed("Death")){why="神域赐福（死亡）+5%";return .05f;}
+   if(kind=="sensitivity" && p.Faction?.IsPlayer==true && Demigods.colonyMind && p.RaceProps.Humanlike){why="心灵半神的共鸣+5%".Loc();return .05f;}
+   if(kind=="surgery" && p.Faction?.IsPlayer==true && Demigods.Blessed("Death")){why="神域赐福（死亡）+5%".Loc();return .05f;}
    return 0f;
   }
   // 1.58.6：原来 Factor 里的 lambda 捕获参数 p，10 个属性对每个小人的每次计算都要分配一次闭包；现在只在附近确实有半神时才进这个方法。
   static bool TyrannyNear(Pawn p)=>Demigods.NearDemigod(p,"Tyranny",10f,d=>d.HostileTo(p))!=null;
   static readonly DefRef<HediffDef> OblivionFog=new DefRef<HediffDef>("LP_OblivionFog"),WindHaste=new DefRef<HediffDef>("LP_CallWindHaste");
   public override void TransformValue(StatRequest req,ref float val){if(!(req.Thing is Pawn p))return;val=val*Factor(p,out _)+Offset(p,out _);}
-  public override string ExplanationPart(StatRequest req){if(!(req.Thing is Pawn p))return null;Factor(p,out var a);Offset(p,out var b);return a==null && b==null?null:"成神："+string.Join("；",new[]{a,b}.Where(s=>s!=null));}
+  public override string ExplanationPart(StatRequest req){if(!(req.Thing is Pawn p))return null;Factor(p,out var a);Offset(p,out var b);return a==null && b==null?null:"成神：".Loc()+string.Join("；".Loc(),new[]{a,b}.Where(s=>s!=null));}
   public static void Register(){
    void Add(string stat,string kind){var d=DefDatabase<StatDef>.GetNamedSilentFail(stat);if(d==null)return;if(d.parts==null)d.parts=new List<StatPart>();if(d.parts.Any(x=>x is StatPart_Ascension f && f.kind==kind))return;d.parts.Add(new StatPart_Ascension{kind=kind,parentStat=d});}
    Add("InjuryHealingFactor","heal");Add("ShootingAccuracyPawn","aim");Add("SuppressionPower","suppress");Add("WorkSpeedGlobal","work");Add("TameAnimalChance","tame");Add("ResearchSpeed","research");Add("MeditationFocusGain","focus");Add("MoveSpeed","move");Add("PsychicSensitivity","sensitivity");Add("MedicalSurgerySuccessChance","surgery");
@@ -320,7 +320,7 @@ namespace LichPhylactery {
  }
  public class StatPart_SaintDivine : StatPart {
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p && AscensionPaths.IsSaint(p))val+=.15f;}
-  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && AscensionPaths.IsSaint(p)?"圣徒：+0.15":null;
+  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && AscensionPaths.IsSaint(p)?"圣徒：+0.15".Loc():null;
  }
  // 命匣神龛：生命 ×2（物品的生命上限是缓存的属性，StatPart 不生效，直接改 Thing.MaxHitPoints）。
  [HarmonyPatch(typeof(Thing),"get_MaxHitPoints")]

@@ -7,12 +7,10 @@ using Verse;
 using UnityEngine;
 
 namespace LichPhylactery {
- // 1.22.0 新材料：熔岩结晶（火巨人锻造副产物）、龙鳞蜕、巨魔皮、秘银、精金、寒铁。
+ // 1.22.0 新材料：熔岩结晶（火巨人锻造副产物）、巨魔皮、秘银、精金、寒铁。
  public static class ItemMaterials {
   public const float LavaChance=.15f,TrollHideRepair=.01f,AdamantineFactor=2f,AdamantineArmorPen=.5f,ColdIronFactor=1.25f;
-  public const int ShedPerAge=3,ShedDays=60;
   public static ThingDef Lava=>Items.Thing("LP_LavaCrystal");
-  public static ThingDef Shed=>Items.Thing("LP_DragonShed");
   public static ThingDef TrollHide=>Items.Thing("LP_TrollHide");
   public static ThingDef Mithral=>Items.Thing("LP_Mithral");
   public static ThingDef Adamantine=>Items.Thing("LP_Adamantine");
@@ -20,19 +18,6 @@ namespace LichPhylactery {
 
   // 火巨人在熔火锻炉完成作品：roll<15% 多出1块熔岩结晶。
   public static bool LavaFrom(Pawn worker,Thing bench,float roll)=>bench?.def?.defName=="LP_FireGiantForge" && FireGiant.Active(worker) && roll<LavaChance;
-  // 力能龙蜕鳞：放在龙身边（在宝库里就在宝库里）。
-  public static Thing DropShed(Pawn dragon,int count){
-   if(dragon?.MapHeld==null || Shed==null || count<=0)return null;
-   var t=ThingMaker.MakeThing(Shed);t.stackCount=count;GenPlace.TryPlaceThing(t,dragon.PositionHeld,dragon.MapHeld,ThingPlaceMode.Near);
-   if(dragon.Faction==Faction.OfPlayer)Messages.Message(dragon.LabelShort+"蜕下了"+count+"片龙鳞。",t,MessageTypeDefOf.PositiveEvent,false);
-   return t;
-  }
-  // 卖掉龙鳞蜕：本殖民地所有力能龙记仇（“龙鳞被卖”心情；1.23.3 起宝库被拿走东西不再扣心情）。
-  public static List<Pawn> ShedSold(){
-   var dragons=PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive_FreeColonists.Where(ForceDragon.Active).ToList();
-   if(dragons.Count>0)DragonHoard.Notify_ShedSold(dragons);
-   return dragons;
-  }
   // 巨魔皮服装：每天恢复1%耐久（地图上的物品和所有人身上穿的）。
   public static int DailyRepair(){
    int n=0;var hide=TrollHide;if(hide==null || Find.Maps==null)return 0;
@@ -74,7 +59,7 @@ namespace LichPhylactery {
   public static bool ColdIronBane(Pawn p){
    if(p==null)return false;
    if(p.HasPsylink || Items.IsElf(p))return true;
-   foreach(var hook in Items.ColdIronBaneHooks){try{if(hook(p))return true;}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 寒铁联动出错："+e,9127342);}}
+   foreach(var hook in Items.ColdIronBaneHooks){try{if(hook(p))return true;}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 寒铁联动出错：".Loc()+e,9127342);}}
    return false;
   }
   // 秘银或精灵锁子甲：抵消服装的移速（和工作速度）惩罚。
@@ -101,22 +86,6 @@ namespace LichPhylactery {
     else yield return t;
    }
   }
- }
- // 力能龙：自然晋升一级龙龄蜕下3片龙鳞；在宝库里每住满60天蜕1片。
- [HarmonyPatch(typeof(Gene_ForceDragonHeart),nameof(Gene_ForceDragonHeart.TryAdvance))]
- public static class DragonShedOnAge {static void Postfix(Gene_ForceDragonHeart __instance,bool __result){if(__result)ItemMaterials.DropShed(__instance.pawn,ItemMaterials.ShedPerAge);}}
- [HarmonyPatch(typeof(Gene_ForceDragonHeart),nameof(Gene_ForceDragonHeart.Hourly))]
- public static class DragonShedOnHoard {
-  static void Prefix(Gene_ForceDragonHeart __instance,out float __state){__state=__instance.daysOnHoard;}
-  static void Postfix(Gene_ForceDragonHeart __instance,float __state){int before=(int)(__state/ItemMaterials.ShedDays),after=(int)(__instance.daysOnHoard/ItemMaterials.ShedDays);if(after>before)ItemMaterials.DropShed(__instance.pawn,after-before);}
- }
- [HarmonyPatch]
- public static class DragonShedSale {
-  static IEnumerable<System.Reflection.MethodBase> TargetMethods(){
-   yield return AccessTools.Method(typeof(Pawn_TraderTracker),nameof(Pawn_TraderTracker.GiveSoldThingToTrader));
-   var ship=AccessTools.Method(typeof(TradeShip),"GiveSoldThingToTrader");if(ship!=null)yield return ship;
-  }
-  static void Prefix(Thing __0){if(__0!=null && __0.def==ItemMaterials.Shed && ItemMaterials.Shed!=null)ItemMaterials.ShedSold();}
  }
  // 矮人开采秘银：额外再得一份同样的产量。
  [HarmonyPatch(typeof(Mineable),"TrySpawnYield",new[]{typeof(Map),typeof(bool),typeof(Pawn)})]

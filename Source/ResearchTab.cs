@@ -17,7 +17,7 @@ namespace LichPhylactery {
     if(p==null || p.IsFinished || p.prerequisites==null || !p.prerequisites.All(r=>r.IsFinished))continue;
     Find.ResearchManager.FinishProject(p,false,null,false);done++;
    }
-   if(done>0)Log.Message("[DND边缘大陆] 研究页签迁移：按已完成的原版前置，直接完成了"+done+"项新研究。");
+   if(done>0)Log.Message("[DND边缘大陆] 研究页签迁移：按已完成的原版前置，直接完成了".Loc()+done+"项新研究。".Loc());
    return done;
   }
  }
@@ -26,7 +26,7 @@ namespace LichPhylactery {
   public int layoutVersion;
   public ResearchTabState(Game game){}
   public override void StartedNewGame(){layoutVersion=1;}
-  public override void LoadedGame(){if(layoutVersion>=1)return;try{ResearchTab.MigrateLegacy();}catch(Exception e){Log.Error("[DND边缘大陆] 研究页签迁移失败："+e);}layoutVersion=1;}
+  public override void LoadedGame(){if(layoutVersion>=1)return;try{ResearchTab.MigrateLegacy();}catch(Exception e){Log.Error("[DND边缘大陆] 研究页签迁移失败：".Loc()+e);}layoutVersion=1;}
   public override void ExposeData(){Scribe_Values.Look(ref layoutVersion,"layoutVersion",0);}
  }
 }

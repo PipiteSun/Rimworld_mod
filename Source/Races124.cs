@@ -27,13 +27,13 @@ namespace LichPhylactery {
   // 瞬移（风跃、翱翔共用；位移写法同吉斯洋基的星界跳跃）。
   public static void Blink(Pawn p,IntVec3 c){p.pather?.StopDead();p.Position=c;p.Notify_Teleported(false,true);}
   public static string BasicLanding(Pawn caster,IntVec3 c,int range){
-   var map=caster?.Map;if(map==null)return "施法者不在地图上。";
-   if(!c.IsValid || !c.InBounds(map))return "需要地图上的目标位置。";
-   if(c==caster.Position)return "已经站在这里了。";
-   if(c.DistanceTo(caster.Position)>range+.5f)return "超出距离（"+range+"格）。";
-   if(c.Fogged(map))return "不能落到未探索的地方。";
-   if(!c.Standable(map))return "那里没有可以站立的地方。";
-   if(c.GetFirstPawn(map)!=null)return "那里已经有人了。";
+   var map=caster?.Map;if(map==null)return "施法者不在地图上。".Loc();
+   if(!c.IsValid || !c.InBounds(map))return "需要地图上的目标位置。".Loc();
+   if(c==caster.Position)return "已经站在这里了。".Loc();
+   if(c.DistanceTo(caster.Position)>range+.5f)return "超出距离（".Loc()+range+"格）。".Loc();
+   if(c.Fogged(map))return "不能落到未探索的地方。".Loc();
+   if(!c.Standable(map))return "那里没有可以站立的地方。".Loc();
+   if(c.GetFirstPawn(map)!=null)return "那里已经有人了。".Loc();
    return null;
   }
   // 1.58.6：原来每次都 AllPawnsSpawned.ToList() 复制整张地图的小人。现在只把调用时在半径内的人放进快照（顺序不变），
@@ -80,23 +80,23 @@ namespace LichPhylactery {
   public CompProperties_Races124Ability Props=>(CompProperties_Races124Ability)props;
   Pawn Caster=>parent.pawn;
   public override bool GizmoDisabled(out string reason){
-   if(Genie.Fatigued(Caster) && Genasi.IsBloodlineAbility(parent.def)){reason="巨灵正处于许愿后的倦怠中，血脉能力暂时无法使用。";return true;}
-   if(Props.effect=="smite" && !Titan.CanPay(Caster,Titan.SmiteCost)){reason="神威不足：需要"+Titan.SmiteCost.ToString("0")+"。";return true;}
-   if(Props.effect=="breath" && !Titan.CanPay(Caster,Titan.BreathCost)){reason="神威不足：需要"+Titan.BreathCost.ToString("0")+"。";return true;}
+   if(Genie.Fatigued(Caster) && Genasi.IsBloodlineAbility(parent.def)){reason="巨灵正处于许愿后的倦怠中，血脉能力暂时无法使用。".Loc();return true;}
+   if(Props.effect=="smite" && !Titan.CanPay(Caster,Titan.SmiteCost)){reason="神威不足：需要".Loc()+Titan.SmiteCost.ToString("0")+"。".Loc();return true;}
+   if(Props.effect=="breath" && !Titan.CanPay(Caster,Titan.BreathCost)){reason="神威不足：需要".Loc()+Titan.BreathCost.ToString("0")+"。".Loc();return true;}
    return base.GizmoDisabled(out reason);
   }
   public string Invalid(LocalTargetInfo target){
-   var map=Caster?.Map;if(map==null)return "施法者不在地图上。";
+   var map=Caster?.Map;if(map==null)return "施法者不在地图上。".Loc();
    switch(Props.effect){
     case "spark":return Genasi.CannotSpark(Caster,target);
-    case "tide":return !target.Cell.IsValid || !target.Cell.InBounds(map)?"需要地图上的目标位置。":CastApproach.TooFar(target.Cell.DistanceTo(Caster.Position),Genasi.TideRange+.5f)?"超出距离（"+Genasi.TideRange+"格）。":null;
+    case "tide":return !target.Cell.IsValid || !target.Cell.InBounds(map)?"需要地图上的目标位置。".Loc():CastApproach.TooFar(target.Cell.DistanceTo(Caster.Position),Genasi.TideRange+.5f)?"超出距离（".Loc()+Genasi.TideRange+"格）。".Loc():null;
     case "windleap":return Genasi.CannotLeap(Caster,target.Cell);
     case "soar":return Aarakocra.CannotSoar(Caster,target.Cell);
-    case "buffet":return target.Pawn!=null && target.Pawn.Position.DistanceTo(Caster.Position)>Fiends.BuffetRadius+.5f?"超出振翼范围（4格）。":null;
-    case "smite":return !target.Cell.IsValid || !target.Cell.InBounds(map)?"需要地图上的目标位置。":CastApproach.TooFar(target.Cell.DistanceTo(Caster.Position),Titan.SmiteRange+.5f)?"超出神罚距离（10格）。":target.Cell.Roofed(map) && target.Cell.GetRoof(map).isThickRoof?"闪电打不穿山体。":null;
+    case "buffet":return target.Pawn!=null && target.Pawn.Position.DistanceTo(Caster.Position)>Fiends.BuffetRadius+.5f?"超出振翼范围（4格）。".Loc():null;
+    case "smite":return !target.Cell.IsValid || !target.Cell.InBounds(map)?"需要地图上的目标位置。".Loc():CastApproach.TooFar(target.Cell.DistanceTo(Caster.Position),Titan.SmiteRange+.5f)?"超出神罚距离（10格）。".Loc():target.Cell.Roofed(map) && target.Cell.GetRoof(map).isThickRoof?"闪电打不穿山体。".Loc():null;
     case "breath":case "wish":case "horn":return null;
    }
-   return "未知的能力。";
+   return "未知的能力。".Loc();
   }
   public override bool Valid(LocalTargetInfo target,bool throwMessages=false){
    string reason=Invalid(target);
@@ -184,6 +184,6 @@ namespace LichPhylactery {
   void ExposeRaces124(){Scribe_Values.Look(ref titanWeather,"titanWeather",true);ExposeCommonRaces();}
  }
  public static class Races124Settings {
-  public static void Draw(Listing_Standard l){l.GapLine();l.CheckboxLabeled("神裔影响天气",ref LichMod.Settings.titanWeather,"泰坦（天穹神裔）在地图上时，每天黎明看一次心情：心情≥80%天气转晴，≤30%转雷雨。关闭后泰坦不再影响天气。");Subraces.Draw(l);}
+  public static void Draw(Listing_Standard l){l.GapLine();l.CheckboxLabeled("神裔影响天气".Loc(),ref LichMod.Settings.titanWeather,"泰坦（天穹神裔）在地图上时，每天黎明看一次心情：心情≥80%天气转晴，≤30%转雷雨。关闭后泰坦不再影响天气。".Loc());Subraces.Draw(l);}
  }
 }

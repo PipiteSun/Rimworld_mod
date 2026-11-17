@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（CastApproach.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>[DND边缘大陆] 射程外施放列表出错：</zh><en>[DND Rimlands] Out-of-range cast list error: </en></s>
+  <s><zh>走近后施放</zh><en>Approach, then cast</en></s>
+  <s><zh>定义里关掉</zh><en>disabled in definition</en></s>
+  <s><zh>世界地图目标</zh><en>world map target</en></s>
+  <s><zh>不是能力施放</zh><en>not an ability cast</en></s>
+  <s><zh>跳跃</zh><en>leap</en></s>
+  <s><zh>接触（原版自己走过去）</zh><en>touch (vanilla walks over itself)</en></s>
+  <s><zh>没有射程（对自己）</zh><en>no range (self)</en></s>
+  <s><zh>只能对自己</zh><en>self only</en></s>
+  <s><zh>自带施放工作</zh><en>has its own cast job</en></s>
+  <s><zh>位移（目标就是落点）</zh><en>movement (the target is the landing spot)</en></s>
+  <s><zh>需要再选落点</zh><en>needs a landing spot picked</en></s>
+  <s><zh>: 找不到既在射程内、又看得见目标、还走得到的位置。</zh><en>: Can't find a spot that is in range, can see the target and is reachable.</en></s>
+  <s><zh>[DND边缘大陆] 射程外施放检查出错：</zh><en>[DND Rimlands] Out-of-range cast check error: </en></s>
+  <s><zh>[DND边缘大陆] 射程外施放命令出错：</zh><en>[DND Rimlands] Out-of-range cast order error: </en></s>
+  <s><zh>[DND边缘大陆] 射程外施放光标出错：</zh><en>[DND Rimlands] Out-of-range cast cursor error: </en></s>
+  <s><zh>[DND边缘大陆] 射程外施放高亮出错：</zh><en>[DND Rimlands] Out-of-range cast highlight error: </en></s>
+  <s><zh>走近以施放</zh><en>Approach to cast</en></s>
+</LPStrings>

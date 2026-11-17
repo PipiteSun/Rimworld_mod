@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 霜巨人本源 -->
+  <LP_FrostGiantCore.label>frost giant origin</LP_FrostGiantCore.label>
+  <!-- 霜巨人的冰原血脉，可随种族遗传。成年后体型为常人的2.0倍（显示1.4倍，儿童随年龄长大）；体型越大，生命和近战越强（巨躯规则：成年生命×150%、近战×130%），步子大却不快。霜巨人不怕冷：舒适温度下限-80℃，不会失温、不会冻伤，寒冰魔的寒气和冬狼咬的寒霜迟缓对他们无效。他们不在乎赤身裸体，能穿普通衣服。 -->
+  <LP_FrostGiantCore.description>The ice field bloodline of frost giants, inherited with the race. Adults are 2.0 times the size of an ordinary person (drawn 1.4×, children grow with age); the bigger the body, the stronger the health and melee (giant-body rules: adult health ×150%, melee ×130%); long strides, but not fast. Frost giants don't fear cold: min comfortable temperature -80°C, no hypothermia or frostbite, and the ice devil's chill and the winter wolf bite's frost slow don't work on them. They don't care about nudity and can wear ordinary clothes.</LP_FrostGiantCore.description>
+  <!-- 巨人血统：霜巨人（阶序第4位，低于火巨人）。 | 体型随年龄增长，成年达到×2.0（显示×1.4）。 | 巨躯规则：成年生命总量×150%、近战伤害×130%（可在模组设置调整；关闭时生命仍×150%）。 | 巨胃：饱食度上限随体型提高，成年×200%。 | 移动速度：×85%。 | 不会失温、不会冻伤；不受“寒气侵体”和“寒霜迟缓”影响。 | 不会因裸体产生负面心情；能穿普通衣服，巨人专属衣甲每件心情+2（最多+6）。 -->
+  <LP_FrostGiantCore.customEffectDescriptions.0>Giant lineage: frost giant (rank 4 of the ordning, below fire giants).</LP_FrostGiantCore.customEffectDescriptions.0>
+  <LP_FrostGiantCore.customEffectDescriptions.1>Body size grows with age, reaching ×2.0 as an adult (drawn ×1.4).</LP_FrostGiantCore.customEffectDescriptions.1>
+  <LP_FrostGiantCore.customEffectDescriptions.2>Giant-body rules: adult total health ×150%, melee damage ×130% (adjustable in mod settings; health is still ×150% when off).</LP_FrostGiantCore.customEffectDescriptions.2>
+  <LP_FrostGiantCore.customEffectDescriptions.3>Giant stomach: max food rises with body size, ×200% as an adult.</LP_FrostGiantCore.customEffectDescriptions.3>
+  <LP_FrostGiantCore.customEffectDescriptions.4>Move speed: ×85%.</LP_FrostGiantCore.customEffectDescriptions.4>
+  <LP_FrostGiantCore.customEffectDescriptions.5>Never gets hypothermia or frostbite; unaffected by "chilled to the bone" and "frost slowed".</LP_FrostGiantCore.customEffectDescriptions.5>
+  <LP_FrostGiantCore.customEffectDescriptions.6>No negative mood from nudity; can wear ordinary clothes; each piece of giant-only apparel gives mood +2 (up to +6).</LP_FrostGiantCore.customEffectDescriptions.6>
+  <!-- 霜巨人 -->
+  <LP_FrostGiantCore.modExtensions.0.label>frost giant</LP_FrostGiantCore.modExtensions.0.label>
+  <!-- 雪原行者 -->
+  <LP_FrostSnowWalker.label>snow walker</LP_FrostSnowWalker.label>
+  <!-- 在没膝的积雪里也能大步走：积雪不会拖慢移动速度。冰天雪地里干活也不觉得冷（没有“寒冷”心情）。 -->
+  <LP_FrostSnowWalker.description>Strides even through knee-deep snow: snow doesn't slow movement. Doesn't feel cold working in ice and snow (no "cold" mood).</LP_FrostSnowWalker.description>
+  <!-- 积雪不减速（不影响寻路的绕行判断）。 -->
+  <LP_FrostSnowWalker.customEffectDescriptions.0>No slowdown from snow (doesn't affect pathfinding detour decisions).</LP_FrostSnowWalker.customEffectDescriptions.0>
+  <!-- 畏火 -->
+  <LP_FrostGiantFrailty.label>fire-shy</LP_FrostGiantFrailty.label>
+  <!-- 霜巨人的身体经不起火烤，也受不了暖和天气：受到的火焰伤害×150%，舒适温度上限-22℃。 -->
+  <LP_FrostGiantFrailty.description>A frost giant's body can't take fire and can't stand warm weather: fire damage taken ×150%, max comfortable temperature -22°C.</LP_FrostGiantFrailty.description>
+  <!-- 冬狼之主 -->
+  <LP_FrostWolfLord.label>master of winter wolves</LP_FrostWolfLord.label>
+  <!-- 冬狼认得霜巨人的气味。驯服冬狼的成功率×300%，北极狼与森林狼×150%（最多100%）；驯服失败或误伤时冬狼不会反噬。以这个霜巨人为主人的冬狼近战伤害×115%、移动速度×110%。 -->
+  <LP_FrostWolfLord.description>Winter wolves know a frost giant's scent. Taming winter wolves ×300% success, arctic wolves and timber wolves ×150% (up to 100%); winter wolves don't turn on you when taming fails or they're hurt by accident. Winter wolves whose master is this frost giant get melee damage ×115% and move speed ×110%.</LP_FrostWolfLord.description>
+  <!-- 战利品之心 -->
+  <LP_FrostLootHeart.label>heart of plunder</LP_FrostLootHeart.label>
+  <!-- 霜巨人是天生的掠夺者。打退一场袭击后3天心情+5（战利品）；地图上不是殖民地自己做的武器和护甲（散落或入库的，不算穿在身上的）市值每1000银心情+1，最多+4。 -->
+  <LP_FrostLootHeart.description>Frost giants are born raiders. After beating off a raid, mood +5 for 3 days (spoils of war); for each 1000 silver of market value of weapons and armor on the map not made by the colony (scattered or stored, not worn), mood +1, up to +4.</LP_FrostLootHeart.description>
+  <!-- 冻土肤色 -->
+  <LP_SkinFrost.label>permafrost skin</LP_SkinFrost.label>
+  <!-- 霜巨人浅蓝灰色的皮肤，像冻住的土。 -->
+  <LP_SkinFrost.description>A frost giant's pale blue-grey skin, like frozen earth.</LP_SkinFrost.description>
+  <!-- 冻土 -->
+  <LP_SkinFrost.labelShortAdj>permafrost</LP_SkinFrost.labelShortAdj>
+  <!-- 霜白发色 -->
+  <LP_HairFrost.label>frost-white hair</LP_HairFrost.label>
+  <!-- 白得发蓝的头发，像结了一层霜。 -->
+  <LP_HairFrost.description>White hair tinged with blue, as if covered in frost.</LP_HairFrost.description>
+  <!-- 结霜发辫 -->
+  <LP_FrostBraids.label>frosted braids</LP_FrostBraids.label>
+  <!-- 霜巨人把头发编成两条粗辫子，辫梢挂着冰珠和骨环。 -->
+  <LP_FrostBraids.description>Frost giants braid their hair into two thick braids with ice beads and bone rings at the tips.</LP_FrostBraids.description>
+</LanguageData>

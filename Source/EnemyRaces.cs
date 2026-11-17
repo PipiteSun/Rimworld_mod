@@ -41,13 +41,13 @@ namespace LichPhylactery {
    }
    foreach(var kv in hostile){
     var x=kv.Key;
-    if(Always.Contains(x.defName)){why[x]=string.Join("、",kv.Value.OrderBy(s=>s));continue;}
+    if(Always.Contains(x.defName)){why[x]=string.Join("、".Loc(),kv.Value.OrderBy(s=>s));continue;}
     if(x==XenotypeDefOf.Baseliner || PactStart.IsPactRace(x) || friendly.Contains(x) || scen.Contains(x) || x.factionlessGenerationWeight>0f)continue;
-    why[x]=string.Join("、",kv.Value.OrderBy(s=>s));
+    why[x]=string.Join("、".Loc(),kv.Value.OrderBy(s=>s));
    }
    AddAlways();
   }
-  static void AddAlways(){foreach(var n in Always)if(DefDatabase<XenotypeDef>.GetNamedSilentFail(n) is XenotypeDef x && !why.ContainsKey(x))why[x]="狂猎";}
+  static void AddAlways(){foreach(var n in Always)if(DefDatabase<XenotypeDef>.GetNamedSilentFail(n) is XenotypeDef x && !why.ContainsKey(x))why[x]="狂猎".Loc();}
   public static bool IsEnemyOnly(XenotypeDef x){if(x==null)return false;if(why==null)Build();return why.ContainsKey(x);}
   public static string Factions(XenotypeDef x){if(why==null)Build();return why.TryGetValue(x,out var s)?s:null;}
   public static IEnumerable<XenotypeDef> All{get{if(why==null)Build();return why.Keys;}}

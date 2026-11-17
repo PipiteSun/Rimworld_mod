@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 神圣庇护 -->
+  <LP_Miracle_Sanctuary.label>divine shelter</LP_Miracle_Sanctuary.label>
+  <!-- 为一名友军张开神圣护盾：吸收40×P点伤害，持续12小时。消耗神眷3，冷却1天。 -->
+  <LP_Miracle_Sanctuary.description>Raise a holy shield around one ally: absorbs 40×P damage, lasting 12 hours. Costs 3 divine favor, cooldown 1 day.</LP_Miracle_Sanctuary.description>
+  <!-- 驱逐邪祟 -->
+  <LP_Miracle_Banish.label>banish the unholy</LP_Miracle_Banish.label>
+  <!-- 对一名敌人降下25×P点神圣伤害（不死者与邪魔×2，神明附体者再×1.5）；对神力灌注者有30%×P的几率抹去他身上的灌注。消耗神眷4，冷却6小时。 -->
+  <LP_Miracle_Banish.description>Bring 25×P holy damage down on one enemy (×2 against undead and fiends, another ×1.5 against god-possessed); against the divine-infused, a 30%×P chance to strip their infusion. Costs 4 divine favor, cooldown 6 hours.</LP_Miracle_Banish.description>
+  <!-- 圣化之地 -->
+  <LP_Miracle_Consecrate.label>hallowed ground</LP_Miracle_Consecrate.label>
+  <!-- 把一片地（半径5格）圣化1天：敌方不死者与邪魔在里面每秒受2×P点神圣伤害；巫妖和巨魔的复活计时在里面暂停；站在里面的殖民者心情+3。消耗神眷6，冷却2天。 -->
+  <LP_Miracle_Consecrate.description>Hallow an area (radius 5) for 1 day: enemy undead and fiends inside take 2×P holy damage per second; lich and troll revival timers pause inside; colonists standing inside get mood +3. Costs 6 divine favor, cooldown 2 days.</LP_Miracle_Consecrate.description>
+  <!-- 黎明之光 -->
+  <LP_Miracle_Dawn.label>light of dawn</LP_Miracle_Dawn.label>
+  <!-- 洛山达的领域神术。施法者周围6格的友军止血，每处伤口愈合10×P；这片地上的作物1天内生长+20%。消耗神眷10，冷却3天。 -->
+  <LP_Miracle_Dawn.description>Lathander's domain spell. Allies within 6 cells of the caster stop bleeding and each wound heals 10×P; crops on this land grow +20% for 1 day. Costs 10 divine favor, cooldown 3 days.</LP_Miracle_Dawn.description>
+  <!-- 真言审判 -->
+  <LP_Miracle_Judgment.label>judgment of truth</LP_Miracle_Judgment.label>
+  <!-- 提尔的领域神术。对敌人：造成(10 + 人形击杀数/10×5，最多60)×P点神罚伤害；对殖民地的囚犯：抗拒-20×P，意志-10×P。消耗神眷10，冷却2天。 -->
+  <LP_Miracle_Judgment.description>Tyr's domain spell. Against enemies: deals (10 + humanlike kills/10×5, up to 60)×P divine punishment damage; against colony prisoners: resistance -20×P, will -10×P. Costs 10 divine favor, cooldown 2 days.</LP_Miracle_Judgment.description>
+  <!-- 魔网涌流 -->
+  <LP_Miracle_Weave.label>weave surge</LP_Miracle_Weave.label>
+  <!-- 密斯特拉的领域神术。一名友军的能力冷却全部清零，有心灵链接的话精神力+30%。（VPE 的灵能冷却不在这里清。）消耗神眷12，冷却3天。 -->
+  <LP_Miracle_Weave.description>Mystra's domain spell. All of one ally's ability cooldowns are reset, and if they have a psylink, psyfocus +30%. (VPE psycast cooldowns aren't reset here.) Costs 12 divine favor, cooldown 3 days.</LP_Miracle_Weave.description>
+  <!-- 安息 -->
+  <LP_Miracle_Rest.label>rest eternal</LP_Miracle_Rest.label>
+  <!-- 凯兰沃的领域神术。施法者周围8格的敌方不死者受30×P点神圣伤害；范围内的人形尸体“已安息”：不能汲取灵魂、不能复生。巫妖施放时自己受20点伤害。消耗神眷8，冷却2天。 -->
+  <LP_Miracle_Rest.description>Kelemvor's domain spell. Enemy undead within 8 cells of the caster take 30×P holy damage; humanlike corpses in range are "laid to rest": their souls can't be drained and they can't be raised. When cast by a lich, the caster takes 20 damage. Costs 8 divine favor, cooldown 2 days.</LP_Miracle_Rest.description>
+  <!-- 狩猎之怒 -->
+  <LP_Miracle_Hunt.label>hunting fury</LP_Miracle_Hunt.label>
+  <!-- 马拉尔的领域神术。施法者周围10格的殖民地动物12小时内近战伤害+50%×P，移速+20%。消耗神眷8，冷却2天。 -->
+  <LP_Miracle_Hunt.description>Malar's domain spell. Colony animals within 10 cells of the caster get +50%×P melee damage and +20% move speed for 12 hours. Costs 8 divine favor, cooldown 2 days.</LP_Miracle_Hunt.description>
+  <!-- 召雷 -->
+  <LP_Miracle_Thunder.label>call lightning</LP_Miracle_Thunder.label>
+  <!-- 塔洛斯的领域神术。向目标区域召下3道落雷，每道25×P点伤害，落点随机偏开最多2格。消耗神眷12，冷却2天。 -->
+  <LP_Miracle_Thunder.description>Talos's domain spell. Call down 3 lightning strikes on the target area, each dealing 25×P damage, landing randomly up to 2 cells off. Costs 12 divine favor, cooldown 2 days.</LP_Miracle_Thunder.description>
+  <!-- 暴君之令 -->
+  <LP_Miracle_Dread.label>tyrant's command</LP_Miracle_Dread.label>
+  <!-- 班恩的领域神术。施法者周围6格的敌人惊恐逃跑10秒（心智抗性可以抵抗）；巨躯和神明附体者不受影响。消耗神眷10，冷却2天。 -->
+  <LP_Miracle_Dread.description>Bane's domain spell. Enemies within 6 cells of the caster flee in terror for 10 seconds (mind resistance can resist); giant-bodied and god-possessed are unaffected. Costs 10 divine favor, cooldown 2 days.</LP_Miracle_Dread.description>
+  <!-- 暗影帷幕 -->
+  <LP_Miracle_Veil.label>veil of shadow</LP_Miracle_Veil.label>
+  <!-- 莎尔的领域神术。施法者周围5格的友军隐形20×P秒；攻击就会显形。消耗神眷10，冷却3天。 -->
+  <LP_Miracle_Veil.description>Shar's domain spell. Allies within 5 cells of the caster turn invisible for 20×P seconds; attacking reveals them. Costs 10 divine favor, cooldown 3 days.</LP_Miracle_Veil.description>
+  <!-- 熔炉之怒 -->
+  <LP_Miracle_ForgeWrath.label>fury of the forge</LP_Miracle_ForgeWrath.label>
+  <!-- 苏尔特的领域神术。朝目标方向喷出6格长的锥形熔火，范围内的敌人受25×P点烧伤并着火；火巨人施放时×1.25。消耗神眷10，冷却2天。 -->
+  <LP_Miracle_ForgeWrath.description>Surtur's domain spell. Breathe a 6-cell cone of molten fire toward the target; enemies inside take 25×P burn damage and catch fire; ×1.25 when cast by a fire giant. Costs 10 divine favor, cooldown 2 days.</LP_Miracle_ForgeWrath.description>
+</LanguageData>

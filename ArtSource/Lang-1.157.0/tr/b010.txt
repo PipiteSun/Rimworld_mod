@@ -1,0 +1,192 @@
+s02247	Instantly heal one target (can be yourself) for a total of 20 × divine power injury, worst bleeding wounds first. Cleric level 1.
+s02248	Pain ×0.5. When it would be downed by injuries, instantly heals 30 × divine power injury and uses up this ward.
+s02249	Ward an ally for a day: pain ×0.5; when it would be downed by injuries, instantly heals 30 × divine power injury and uses up the ward (triggers once per day). Cleric level 13.
+s02250	death ward
+s02251	A green ray: a target within 30 cells takes 60 × arcane power arcane force damage (armor counts only half), double to buildings and mechanoids; humanlike targets killed by it leave no corpse. Wizard level 15, and Intellectual 15.
+s02252	disintegrate
+s02253	Spread dragon wings and fly to a standable cell within 15 × innate power cells, untouchable while flying; +20% dodge for 15 seconds after takeoff. Sorcerer level 7.
+s02254	Just took flight on dragon wings: melee dodge +20%.
+s02255	The next sorcerer spells deal ×1.5 damage (severity = remaining uses).
+s02256	metamagic: empowered
+s02257	The next two sorcerer spells within 30 seconds deal ×1.5 damage. Sorcerer level 13.
+s02258	Vines sprout in radius 2.5 at a point within 20 cells, entangling enemies for 4 seconds × verdant power: movement ×0.1 (×0.4 for body size 2+). Druid level 1.
+s02259	Entangled by a druid's vines.
+s02260	entangled
+s02261	large
+s02262	Hurl a fireball at a point within 24 cells: a fire explosion of radius 4, 20 × arcane power damage, setting things alight. Wizard level 3.
+s02263	Guide an ally for 1 hour × divine power: global work speed +15%, learning speed +30%. Cleric level 5.
+s02264	guidance
+s02265	Guided by a guidance spell: global work speed +15%, learning speed +30%.
+s02266	guided
+s02267	Movement ×1.5, work speed ×1.3, melee cooldown ×0.8. Lethargic for an hour afterwards.
+s02268	Haste an ally within 20 cells for 1 hour × arcane power: movement ×1.5, work speed ×1.3, melee cooldown ×0.8; lethargic for an hour afterwards. Wizard level 7.
+s02269	hasted
+s02270	Lethargy after haste: movement ×0.7.
+s02271	haste lethargy
+s02272	Bring down an ice storm at a point within 25 cells: enemies within radius 3 take 14 × arcane power frost damage plus half as much blunt damage and are slowed for 6 seconds; snow piles up on the ground. Sorcerer level 7.
+s02273	ice storm
+s02274	Power multiplier of the sorcerer's Social branch: 0.5 + Social level / 20, plus adventurer Charisma modifier × 0.10 (× talent) and (proficiency bonus - 2) × 0.02, +5% for each level the combined Social-based class levels such as sorcerer exceed 1 (up to +95%, i.e. level 20); +15% more with a sorcerer bloodline.
+s02275	innate power
+s02276	Remove the target's worst disease (food poisoning, flu, plague, infection, muscle parasites, gut worms, etc.) and stop all bleeding for 6 hours. Cleric level 3.
+s02277	{0} was killed by lightning.
+s02278	lightning
+s02279	Draw a line of lightning up to 20 cells from yourself to the target; every enemy on the line takes 30 × arcane power lightning damage and is stunned for 1 second; mechanoids take EMP damage instead. Wizard level 7.
+s02280	An invisible layer of force: sharp and blunt armor +25%.
+s02281	For one day × arcane power, sharp and blunt armor +25%. Wizard level 1.
+s02282	mage armor
+s02283	Cantrip, no mana: fire 3 arcane missiles, each 4 × arcane power arcane force damage, 28 cells, cooldown 5 seconds. Wizard level 1.
+s02284	magic missile
+s02285	Put down by a sleep spell, consciousness reduced to 10%.
+s02286	magical sleep
+s02287	Write an adventurer's manual from 20 cloth and 10 gold.
+s02288	Writing an adventurer's manual.
+s02289	write adventurer's manual
+s02290	Heal every ally within radius 5 for 15 × divine power injury each. Cleric level 10.
+s02291	Hostile humanlikes within radius 4 at a point within 20 cells each resist with mind resistance; those who fail fall into a daze for 15 seconds × innate power. Sorcerer level 10.
+s02292	Passive: +1 quality when crafting slumber staves (up to legendary; runic firearms and other staves have been removed since 1.146.0). Artificer level 7.
+s02293	master craftsmanship
+s02294	Illusory duplicates (severity = remaining duplicates): each time an enemy attack hits, one duplicate is used up and that hit misses.
+s02295	3 illusory duplicates appear around you for 1 hour: each time an enemy attack hits, a duplicate takes it instead (the hit misses), until the duplicates are used up. Mana 2, cooldown 1 minute. Wizard level 5.
+s02296	mirror image
+s02297	1 duplicate
+s02298	2 duplicates
+s02299	3 duplicates
+s02300	Turn into silver mist and teleport to an empty cell in sight within 10 cells. Mana 1, cooldown 10 seconds. Wizard level 3.
+s02301	Passive: the forging method of dwarven royal heavy guns ("Wrath of the Mountain" has been removed since 1.146.0, so this ability currently has no craftable weapon). Artificer level 10.
+s02302	mountain forge
+s02303	The next ranged hit deals ×(1 + artifice power) damage, and the weapon loses 5% durability. Fades if nothing is hit within 10 seconds.
+s02304	Within 10 seconds, your next ranged hit deals ×(1 + artifice power) damage, and the weapon used loses 5% durability. Artificer level 3.
+s02305	overcharged shot
+s02306	All plants (crops and wild) within radius 6 × verdant power at a point within 25 cells gain +25% × verdant power growth (capped at 100%), and blight is removed. Druid level 7.
+s02307	plant growth
+s02308	Power multiplier of the druid's Animals branch: 0.5 + Animals level / 20, plus adventurer Wisdom modifier × 0.05 and (proficiency bonus - 2) × 0.02, +2% for each level the combined druid class levels exceed 1 (up to +40%).
+s02309	primal power
+s02310	Repair an ally's gear: the main weapon and each piece of apparel worn regain 25% durability. Cooldown 1 day. Artificer level 1.
+s02311	quick repair
+s02312	Revive a humanlike corpse within 12 cells that has been dead no more than 3 days (no effect on liches, necromantic constructs or corpses whose brains were devoured); the revived gets 3 days of "resurrection sickness". Cleric level 15, and Social 15.
+s02313	revivify
+s02314	Passive: the Rune Inscription tier of DND weapons (runic firearms have been removed since 1.146.0, so this tier currently has no craftable weapon). Artificer level 5.
+s02315	rune inscription
+s02316	A temporary turret pieced together from runes by an artificer, mounting a runic arquebus. Damage rises with artifice power; falls apart after 60 seconds.
+s02317	rune turret
+s02318	Place a temporary rune turret on an empty cell within 10 cells: runic arquebus stats × artifice power, lasting 60 seconds. Cooldown 2 days. Artificer level 13.
+s02319	A runic arquebus mounted on a rune turret.
+s02320	turret runic arquebus
+s02321	One enemy within 20 cells takes 20 × divine power holy damage, ignoring cover; doubled against undead, fiends and mind flayers. Cleric level 7.
+s02322	divine strike
+s02323	A layer of arcane shield: damage taken is absorbed by the shield first (severity = remaining absorption).
+s02324	For 10 seconds an extra arcane shield surrounds you: damage taken is absorbed by it first, 20 × arcane power in total, until used up. Mana 1, cooldown 10 seconds. Wizard level 1.
+s02325	shield
+s02326	Put one target within 20 cells into magical sleep for 8 seconds × arcane power (consciousness reduced to 10%). No effect on mechanoids or targets whose consciousness is already below 30%; mind resistance can resist it. Wizard level 5.
+s02327	sleep
+s02328	Magic surges inside: sorcerer spells cost no mana, cooldown ×0.25, and each cast has a 20% chance of wild magic.
+s02329	For 30 seconds × innate power: sorcerer spells cost no mana, cooldown ×0.25; each cast has a 20% chance of wild magic: healing light, invisibility, psychic resonance, blooming flowers, or spontaneous combustion, random teleport, entropy surge, chaotic spirits. Sorcerer level 15, and Social 15.
+s02330	wild surge
+s02331	Lesser restoration has stopped all bleeding.
+s02332	divine hemostasis
+s02333	Teleport yourself to any standable cell in sight, up to 20 × arcane power away (max 40). Wizard level 13.
+s02334	teleport
+s02335	Hostile undead within radius 6 × divine power flee in terror for 10 seconds × divine power; mindless skeletons and necromantic constructs are stunned instead; liches are only slowed. Cleric level 7.
+s02336	turn undead
+s02337	The next single-target sorcerer spell within 30 seconds (Chaos Bolt, Charm Person) also affects another enemy within 6 cells of the main target. Sorcerer level 5.
+s02338	metamagic: twinned
+s02339	The next single-target sorcerer spell will also affect a second target.
+s02340	Power multiplier of the druid's Plants branch: 0.5 + Plants level / 20, plus adventurer Wisdom modifier × 0.05 and (proficiency bonus - 2) × 0.02, +2% for each level the combined druid class levels exceed 1 (up to +40%).
+s02341	verdant power
+s02342	Create a 5-cell-long stone wall at a point within 20 cells (perpendicular to the cast direction, 200 × arcane power hit points, dissipates after a day); occupied cells are skipped. Wizard level 10.
+s02343	Wild magic made the body vanish for a few seconds.
+s02344	wild magic: invisibility
+s02345	bear claw
+s02346	bear bite
+s02347	Become a bear: fights with bear claws and bites, melee damage × primal power, damage taken ×0.6, movement ×1.15; cannot do fine work.
+s02348	Take bear form for 1 hour × primal power: ranged weapons go into the pack (re-equipped when changing back), fight with bear claws and bites, melee damage × primal power, damage taken ×0.6, movement ×1.15; cannot do crafting, research or caretaking work. Can "revert form" at any time. Druid level 7.
+s02349	bear form
+s02350	wild shape
+s02351	Legendary: the next 3 class spells (abilities that cost resources) within 1 day cost no resources and trigger no cooldown. Cooldown 2 days. Legendary sorcerer.
+s02352	arcane torrent
+s02353	The next class spells cost no resources and trigger no cooldown (severity = remaining uses).
+s02354	Awakened sorcerer bloodline: damage taken of the bloodline's element is halved.
+s02355	Legendary passive: innate power +20%; with a sorcerer bloodline, damage of the bloodline's element taken ×0.5 (force dragonborn: force; fire genasi, genies, cambions: fire; water genasi: frostbite; earth genasi, titans: blunt; air genasi, storm giants, cloud giants: lightning; mariliths: sharp). Legendary sorcerer.
+s02356	Clad in divine light: burns surrounding enemies and heals surrounding allies every second (severity = damage per second); allies don't panic or have mental breaks.
+s02357	divine avatar
+s02358	Legendary passive: divine power +20%; Revivify costs only 2 divinity. Legendary cleric.
+s02359	divine guardian
+s02360	Legendary: become divine light for 30 seconds: enemies within radius 8 take 10 × divine power (× psychic sensitivity) holy damage per second (doubled against undead and fiends), allies heal half that per second and don't panic or have mental breaks. Cooldown 2 days. Legendary paladin.
+s02361	Legendary: pray to the gods for a miracle: all colonists on this map are fully healed and cured of disease, and colonist corpses dead no more than 3 days are revived (except liches, necromantic constructs and those without a brain). Cooldown 30 days. Legendary cleric.
+s02362	divine intervention
+s02363	Legendary passive: melee dodge +25%, immune to stuns. Legendary monk.
+s02364	formless body
+s02365	Legendary monk: melee dodge +25%, immune to stuns.
+s02366	Legendary: press a palm against an adjacent enemy: first a melee resolution, then a shock to the torso for 80 × martial power (× psychic sensitivity) blunt damage (ignoring 80% of armor), stunning for 10 seconds. Legendary monsters and story bosses have a 50% chance to break the stun. Cooldown 1 day. Legendary monk.
+s02367	heaven-shaking palm
+s02368	Legendary: 4 meteors fall one after another in radius 4 at a point within 30 cells, each a fire explosion of radius 2.5 dealing 35 × arcane power (× psychic sensitivity) damage. Cooldown 1 day. Legendary wizard.
+s02369	meteor swarm
+s02370	Legendary: raise a storm in radius 6 at a point within 30 cells: 4 lightning bolts each strike an enemy (or the area when there are none), each 30 × verdant power (× psychic sensitivity) electrical damage; enemies in range are entangled by vines for 10 seconds × verdant power. Cooldown 1 day. Legendary druid.
+s02371	nature's wrath
+s02372	In the light of a divine avatar: no panic, no mental breaks.
+s02373	divine shelter
+s02374	Legendary passive: crafted DND weapons (those in the artificer requirement table) get +1 quality, with another 10% chance to become legendary outright. Legendary artificer.
+s02375	soulforged
+s02376	Legendary passive: damage and healing of spells using arcane power (all wizard spells, the sorcerer's Intellectual branch) ×1.3; wizard spell mana cost -1 (minimum 1). Legendary wizard.
+s02377	empowered spells
+s02378	Legendary: sweep a 90° cone toward the target. With a melee weapon, every enemy within 5 cells takes a melee resolution at ×3 damage (guaranteed hit); with a ranged weapon, every enemy within weapon range takes one guaranteed-hit bullet at ×3 damage. Cooldown 1 day. Legendary fighter.
+s02379	army breaker
+s02380	Legendary passive: no longer ages after adulthood; Wild Shape costs no mana. Legendary druid.
+s02381	timeless druid
+s02382	Legendary passive: you and allies within 8 cells get +10% success on all saves. Multiple paladins don't stack. Legendary paladin.
+s02383	unbroken oath
+s02384	Legendary passive: once per day, when you would fall you stay up instead, instantly heal half your injuries and fully restore grit. Legendary fighter.
+s02385	unyielding warrior
+s02386	A rune war golem pieced together by a legendary artificer, mounting an enhanced runic arquebus. Damage rises with artifice power; falls apart after 2 days.
+s02387	rune war golem
+s02388	Melee damage multiplier of this assassination strike.
+s02389	assassinate momentum
+s02390	Resolve a melee hit on an adjacent enemy: if the target hasn't noticed you (isn't targeting you, or you're invisible) this hit deals ×(2 + cunning power) damage, otherwise ×1.5; sneak attack stacks as usual. Cooldown 1 minute. Rogue level 13.
+s02391	assassinate
+s02392	Passive: animals whose master is you (on the same map) get the beast companion state: melee damage ×(1.1 + 0.1 × hunter power), movement ×1.1, armor +10% × hunter power, +20% damage against your favored enemy. You may also choose one more favored enemy. Ranger level 10.
+s02393	beast companion
+s02394	A ranger's animal companion: melee damage ×(1.1 + 0.1 × the master's hunter power), movement ×1.1, armor +10% × hunter power; +20% damage against the master's favored enemy.
+s02395	Passive: melee hits have a 15% chance (25% while raging) to land a brutal critical, dealing ×2 damage. Barbarian level 10.
+s02396	brutal critical
+s02397	The DND barbarian draws strength from rage: Rage, Reckless Attack, Danger Sense (passive), Primal Roar, Brutal Critical (passive), Relentless Rage (passive), and ultimately Primal Champion. Power uses "rage power" (Melee level and Strength). Resource: rage (+0.5 when damaged by enemies, +0.1 when hitting enemies, -1 per hour out of combat, not recovered by sleep). Cannot use spellcasting class abilities while raging. Martial class: Extra Attack, fighting style.
+s02398	barbarian
+s02399	The DND ranger is a hunter of the wilds: Favored Enemy (passive, choose a creature type), Hunter's Mark, Land's Stride (passive), Volley, Beast Companion (passive), Hide in Plain Sight, and ultimately Foe Slayer. Power uses "hunter power" (the higher of Shooting or Melee, the higher of Dexterity or Wisdom). No resource; abilities only have cooldowns. Animals whose master is a ranger get the animal companion XP bonus. Martial class: Extra Attack, fighting style.
+s02400	The DND rogue wins with tricks: Sneak Attack (passive), Cunning Action, Uncanny Dodge (passive), Shadow Step, Poisoned Blade, Assassinate, and ultimately Stroke of Luck. Power uses "cunning power" (the higher of Melee or Shooting, Dexterity). No resource; abilities only have cooldowns. Martial class: fighting style; gets no Extra Attack tier and uses Sneak Attack instead.
+s02401	rogue
+s02402	Dash, disengage: movement ×1.6, melee dodge +30%.
+s02403	For 5 seconds × cunning power, movement ×1.6 and melee dodge +30%, for dashing or disengaging. Rogue level 3.
+s02404	cunning action
+s02405	Rogue ability power multiplier: 0.5 + (the higher of Melee and Shooting level) / 20, plus adventurer Dexterity modifier × 0.05 and (proficiency bonus - 2) × 0.02; those with a martial class add 0.02 × (combined martial class levels - 1), up to +40%.
+s02406	cunning power
+s02407	Passive: while not downed, incoming bullets have a 15% × rage power (up to 30%) chance to be dodged completely; explosion damage ×0.5. Barbarian level 5.
+s02408	danger sense
+s02409	Marked by a rogue: the marker deals ×2 damage to it; if it dies under the mark, all the marker's rogue abilities finish cooling down.
+s02410	death mark
+s02411	Passive: choose a favored enemy (dragons, giants, undead, fiends, aberrations, beasts, divine, humanlikes or mechanoids; pick with the "choose favored enemy" button when drafted). Against the favored enemy: damage +20%, melee hit +20%, shooting hit ×1.2. At ranger level 10 you may choose another. Ranger level 1.
+s02412	favored enemy
+s02413	Passive: favored enemy bonuses doubled (damage +40%, melee hit +40%, shooting hit ×1.4). Ranger level 15, also requires Shooting 15.
+s02414	foe slayer
+s02415	Hidden in the surroundings: invisible; the next attack deals ×1.5 damage and reveals you.
+s02416	Blend into the terrain for 20 seconds × hunter power: invisible; the next attack deals ×1.5 damage and reveals you. Cooldown 1 hour. Ranger level 13.
+s02417	hide in plain sight
+s02418	Ranger ability power multiplier: 0.5 + (the higher of Shooting and Melee level) / 20, plus the adventurer's higher of Dexterity or Wisdom modifier × 0.05 and (proficiency bonus - 2) × 0.02; those with a martial class add 0.02 × (combined martial class levels - 1), up to +40%.
+s02419	hunter power
+s02420	Legendary: rain arrows on a point within weapon range; every enemy within radius 6 (up to 10) takes 3 guaranteed-hit bullets from your current weapon. Requires a ranged weapon. Cooldown 1 day. Legendary ranger.
+s02421	arrow storm
+s02422	A legendary barbarian's rage: melee cooldown ×0.85, immune to stuns and mental breaks.
+s02423	berserker soul
+s02424	Legendary passive: while raging, immune to stuns and mental breaks, melee cooldown ×0.85. Legendary barbarian.
+s02425	Legendary: mark one enemy within 30 cells for 30 seconds; you deal ×2 damage to it; if it dies under the mark, all your rogue abilities finish cooling down. Cooldown 1 day. Legendary rogue.
+s02426	Legendary: an axe blow splits the earth; enemies within radius 5 take 30 × rage power blunt damage and are stunned for 3 seconds. Costs 3 rage. Cooldown 1 day. Legendary barbarian.
+s02427	earthshatter
+s02428	Legendary passive: attacks against your favored enemy always hit and deal +15% more damage. Legendary ranger.
+s02429	bane of the foe
+s02430	Legendary passive: Sneak Attack no longer needs any condition and can trigger once every 0.5 seconds. Legendary rogue.
+s02431	shadow dance
+s02432	The weapon is coated in poison: every hit adds +6% × cunning power toxic buildup to the target (no effect on mechanoids and undead).
+s02433	Coat your weapon in poison for 1 minute: every hit adds +6% × cunning power toxic buildup to the target (no effect on mechanoids and undead). Cooldown 1 hour. Rogue level 10.
+s02434	poisoned blade
+s02435	Passive: Strength +4 (applied after the ability cap, like combat gifts), rage no longer decays over time. Barbarian level 15, also requires Melee 15.
+s02436	primal champion
+s02437	A bestial roar: enemies within radius 6 × rage power are shaken for 10 seconds; non-boss humanlikes and animals also have a 40% × rage power (up to 80%) chance to flee in fear. Costs 1 rage. Cooldown 1 hour. Barbarian level 7.
+s02438	primal roar

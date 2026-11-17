@@ -46,20 +46,20 @@ namespace LichPhylactery {
   public static bool Renegotiate(Pawn p){
    if(p==null || !Outsiders.IsDevil(p) || p.Faction?.IsPlayer!=true)return false;
    var h=AbyssBinding.Binding(p);if(h!=null)h.Severity=Mathf.Max(h.Severity,1f);
-   PactLetters.Send("renegotiate",null,p,null,p.LabelShort+"要求重新谈判",p.LabelShort+"的服从度见了底。九狱的造物守契约：它没有挣脱，而是摊开一张新的契约，要求重新谈判——给它 300 银或者 2 枚灵魂币，它就照旧留下（服从度回到 50）；不然它就走（不会动手）。");
+   PactLetters.Send("renegotiate",null,p,null,p.LabelShort+"要求重新谈判".Loc(),p.LabelShort+"的服从度见了底。九狱的造物守契约：它没有挣脱，而是摊开一张新的契约，要求重新谈判——给它 300 银或者 2 枚灵魂币，它就照旧留下（服从度回到 50）；不然它就走（不会动手）。".Loc());
    return true;
   }
   public static void Renegotiated(Pawn p,string paid){
    var map=p.MapHeld;
-   if(paid.Contains("银")){if(!Pacts.TakeSilver(map,300))return;}else if(!AbyssRitual.TakeItems(map,AbyssItems.SoulCoin,2))return;
+   if((paid.Contains("银") || paid=="300 银".Loc())){if(!Pacts.TakeSilver(map,300))return;}else if(!AbyssRitual.TakeItems(map,AbyssItems.SoulCoin,2))return;
    var h=AbyssBinding.Binding(p);if(h!=null)h.Severity=50f;
-   Messages.Message(p.LabelShort+"收下了"+paid+"，在新契约上按了手印（服从度 50）。",p,MessageTypeDefOf.PositiveEvent,false);
+   Messages.Message(p.LabelShort+"收下了".Loc()+paid+"，在新契约上按了手印（服从度 50）。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);
   }
   public static void LetLeave(Pawn p){
    if(p.Spawned){Outsiders.DropBelongings(p,p.Position,p.Map);for(int i=0;i<6;i++)FleckMaker.ThrowSmoke(p.DrawPos,p.Map,2f);p.DeSpawn();}
    var b=AbyssBinding.Binding(p);if(b!=null){b.breaking=true;p.health.RemoveHediff(b);}
    if(Find.WorldPawns.Contains(p))Find.WorldPawns.RemovePawn(p);
-   Messages.Message(p.LabelShort+"收起契约，回九狱去了。",MessageTypeDefOf.NeutralEvent,false);
+   Messages.Message(p.LabelShort+"收起契约，回九狱去了。".Loc(),MessageTypeDefOf.NeutralEvent,false);
    p.Destroy();
   }
   // 守护天使失望离开（殖民地里腐化到恶魔之印的人太多）。
@@ -68,7 +68,7 @@ namespace LichPhylactery {
    if(p.Spawned){Outsiders.DropBelongings(p,p.Position,p.Map);FleckMaker.Static(p.Position,p.Map,FleckDefOf.PsycastAreaEffect,2f);p.DeSpawn();}
    var b=AbyssBinding.Binding(p);if(b!=null){b.breaking=true;p.health.RemoveHediff(b);}
    if(Find.WorldPawns.Contains(p))Find.WorldPawns.RemovePawn(p);
-   Find.LetterStack.ReceiveLetter("守护天使离开了",name+"看着殖民地里越来越浓的深渊气息，失望地展开翅膀回了天界。",LetterDefOf.NegativeEvent);
+   Find.LetterStack.ReceiveLetter("守护天使离开了".Loc(),name+"看着殖民地里越来越浓的深渊气息，失望地展开翅膀回了天界。".Loc(),LetterDefOf.NegativeEvent);
    p.Destroy();
   }
   // 救赎：狄瓦对艾林魔的“劝返”累计 3 次 → 变成狄瓦（换异种型）；来自阿斯莫蒂尔斯契约的，该契约债务 +2。
@@ -76,8 +76,8 @@ namespace LichPhylactery {
    if(erinyes==null || DevaXeno==null)return false;
    AbyssRaces.ConvertTo(erinyes,DevaXeno);Items.Remove(erinyes,"LP_RedeemProgress");
    var c=Pacts.Comp;var pact=c?.Active.FirstOrDefault(x=>x.bound==erinyes);
-   if(pact!=null){pact.bound=null;Items.Remove(erinyes,"LP_PactBound");Pacts.AddDebt(pact,2,"借来的艾林魔被狄瓦劝返了");}
-   Find.LetterStack.ReceiveLetter("救赎："+erinyes.LabelShort,"狄瓦第三次和"+erinyes.LabelShort+"长谈之后，"+erinyes.LabelShort+"的黑羽一片片褪成了白色：她回到了天界的一边，成了一名狄瓦。",LetterDefOf.PositiveEvent,erinyes);
+   if(pact!=null){pact.bound=null;Items.Remove(erinyes,"LP_PactBound");Pacts.AddDebt(pact,2,"借来的艾林魔被狄瓦劝返了".Loc());}
+   Find.LetterStack.ReceiveLetter("救赎：".Loc()+erinyes.LabelShort,"狄瓦第三次和".Loc()+erinyes.LabelShort+"长谈之后，".Loc()+erinyes.LabelShort+"的黑羽一片片褪成了白色：她回到了天界的一边，成了一名狄瓦。".Loc(),LetterDefOf.PositiveEvent,erinyes);
    return true;
   }
 
@@ -92,7 +92,7 @@ namespace LichPhylactery {
   public static bool BindNearestTree(Pawn p){var g=TreeGene(p);if(g==null)return false;var t=NearestTree(p);if(t==null){g.StartDrift();return false;}g.Bind(t);return true;}
   public static void TreeCut(Plant t,Pawn by){
    if(t?.Map==null)return;var owner=TreeOwner(t);if(owner==null)return;
-   Find.LetterStack.ReceiveLetter("林仙的树被砍了",by.LabelShort+"砍倒了"+owner.LabelShort+"的树。远处传来了号角声——狂猎今晚会来找"+by.LabelShort+"。",LetterDefOf.ThreatBig,by);
+   Find.LetterStack.ReceiveLetter("林仙的树被砍了".Loc(),by.LabelShort+"砍倒了".Loc()+owner.LabelShort+"的树。远处传来了号角声——狂猎今晚会来找".Loc()+by.LabelShort+"。".Loc(),LetterDefOf.ThreatBig,by);
    PactEvents.StartWildHunt(t.Map,by,-1,StorytellerUtility.DefaultThreatPointsNow(t.Map),true);
   }
   // ---------- 萨特：派对 / 婚礼时萨特心情 +10 ----------
@@ -103,17 +103,17 @@ namespace LichPhylactery {
 
   // ---------- 能力 ----------
   public static string Invalid(CompAbilityEffect_Pact c,LocalTargetInfo t){
-   var caster=c.parent.pawn;var map=caster?.Map;if(map==null)return "施法者不在地图上。";
+   var caster=c.parent.pawn;var map=caster?.Map;if(map==null)return "施法者不在地图上。".Loc();
    switch(c.P.effect){
     case "summon":return null;
-    case "summerTouch":case "healTouch":return t.Pawn==null || t.Pawn.Dead?"需要一个活着的人":!t.Pawn.health.hediffSet.hediffs.Any(h=>h is Hediff_Injury && !(h is Hediff_MissingPart) || h.def==Items.Hediff("LP_InfernalWound"))?t.Pawn.LabelShort+"没有可以治的伤":null;
+    case "summerTouch":case "healTouch":return t.Pawn==null || t.Pawn.Dead?"需要一个活着的人".Loc():!t.Pawn.health.hediffSet.hediffs.Any(h=>h is Hediff_Injury && !(h is Hediff_MissingPart) || h.def==Items.Hediff("LP_InfernalWound"))?t.Pawn.LabelShort+"没有可以治的伤".Loc():null;
     case "veil":case "wrath":return null;
-    case "chainLash":case "hellfire":case "huntMark":case "entangle":case "rope":return t.Pawn==null || t.Pawn.Dead?"需要一个目标":null;
-    case "charge":{var p=t.Pawn;if(p==null || p.Dead)return "需要一个目标";if(!Beside(caster,p).IsValid)return "目标旁边没有落脚的地方";return null;}
-    case "treeStride":return !TreeOk(t.Thing,caster)?"要选 "+TreeStrideRange+" 格内一棵成年的树（不在种植区里）":t.Thing==TreeGene(caster)?.tree && caster.Position.InHorDistOf(t.Thing.Position,1.5f)?"已经在这棵树旁边了":!Beside(caster,t.Thing).IsValid?"树旁边没有落脚的地方":null;
-    case "bindTree":return !TreeOk(t.Thing,caster)?"要选一棵成年的树（成长 ≥80%，不在种植区里，没被别的林仙占着）":null;
-    case "faces":{var p=t.Pawn;if(p==null || p==caster || !p.RaceProps.Humanlike || p.Dead)return "要选一个看得见的人形";if(Faces(caster)?.on==true)return "已经在伪装了";return null;}
-    case "banish":{var p=t.Pawn;return p==null || !Outsiders.Is(p)?"只能驱散外来者（恶魔、魔鬼、妖精）":Celestial(p)?"不能驱散天界的同伴":null;}
+    case "chainLash":case "hellfire":case "huntMark":case "entangle":case "rope":return t.Pawn==null || t.Pawn.Dead?"需要一个目标".Loc():null;
+    case "charge":{var p=t.Pawn;if(p==null || p.Dead)return "需要一个目标".Loc();if(!Beside(caster,p).IsValid)return "目标旁边没有落脚的地方".Loc();return null;}
+    case "treeStride":return !TreeOk(t.Thing,caster)?"要选 ".Loc()+TreeStrideRange+" 格内一棵成年的树（不在种植区里）".Loc():t.Thing==TreeGene(caster)?.tree && caster.Position.InHorDistOf(t.Thing.Position,1.5f)?"已经在这棵树旁边了".Loc():!Beside(caster,t.Thing).IsValid?"树旁边没有落脚的地方".Loc():null;
+    case "bindTree":return !TreeOk(t.Thing,caster)?"要选一棵成年的树（成长 ≥80%，不在种植区里，没被别的林仙占着）".Loc():null;
+    case "faces":{var p=t.Pawn;if(p==null || p==caster || !p.RaceProps.Humanlike || p.Dead)return "要选一个看得见的人形".Loc();if(Faces(caster)?.on==true)return "已经在伪装了".Loc();return null;}
+    case "banish":{var p=t.Pawn;return p==null || !Outsiders.Is(p)?"只能驱散外来者（恶魔、魔鬼、妖精）".Loc():Celestial(p)?"不能驱散天界的同伴".Loc():null;}
    }
    return null;
   }
@@ -132,7 +132,7 @@ namespace LichPhylactery {
    var caster=c.parent.pawn;var map=caster.Map;var P=c.P;var t=target.Pawn;
    switch(P.effect){
     case "summon":Summon(caster,P.kind,P.count,P.days);break;
-    case "summerTouch":case "healTouch":if(PactBoons.HealWorst(t))Items.Mote(t,"伤口愈合了",new Color(.6f,1f,.6f));break;
+    case "summerTouch":case "healTouch":if(PactBoons.HealWorst(t))Items.Mote(t,"伤口愈合了".Loc(),new Color(.6f,1f,.6f));break;
     case "veil":Veil(caster);break;
     case "chainLash":{
      t.TakeDamage(new DamageInfo(DamageDefOf.Blunt,14f,.2f,-1f,caster));
@@ -140,11 +140,11 @@ namespace LichPhylactery {
      break;
     }
     case "hellfire":t.TakeDamage(new DamageInfo(DamageDefOf.Flame,15f,0f,-1f,caster));if(!t.Dead)FireUtility.TryAttachFire(t,.3f,caster);FleckMaker.ThrowFireGlow(t.DrawPos,map,1f);break;
-    case "huntMark":{var h=(Hediff_HuntMarked)Items.Give(t,"LP_HuntMarked");if(h!=null)h.hunter=caster;Items.Mote(t,"被追猎",new Color(.85f,.3f,.3f));break;}
+    case "huntMark":{var h=(Hediff_HuntMarked)Items.Give(t,"LP_HuntMarked");if(h!=null)h.hunter=caster;Items.Mote(t,"被追猎".Loc(),new Color(.85f,.3f,.3f));break;}
     case "entangle":case "rope":
      if(P.effect=="rope" && !UseRope(caster))break;
      if(Legendary.Save(t,Adventurer.Dex,Legendary.DC(caster,Adventurer.Dex),caster))break;
-     t.stances?.stunner?.StunFor(EntangleTicks,caster,false,true,false);Items.Mote(t,"被缚住了",new Color(.9f,.8f,.6f));break;
+     t.stances?.stunner?.StunFor(EntangleTicks,caster,false,true,false);Items.Mote(t,"被缚住了".Loc(),new Color(.9f,.8f,.6f));break;
     case "charge":{var cell=Beside(caster,t);if(!cell.IsValid)break;Teleport(caster,cell);for(int i=0;i<4;i++)FleckMaker.ThrowDustPuffThick(caster.Position.ToVector3Shifted(),map,1.4f,new Color(.5f,.42f,.3f));if(!Legendary.Save(t,Adventurer.Str,Legendary.DC(caster,Adventurer.Str),caster))t.stances?.stunner?.StunFor(ChargeStun,caster,false,true,false);break;}
     case "treeStride":{var cell=Beside(caster,target.Thing);if(cell.IsValid)Teleport(caster,cell);break;}
     case "bindTree":TreeGene(caster)?.Bind((Plant)target.Thing);break;
@@ -158,7 +158,7 @@ namespace LichPhylactery {
    var pact=Pacts.Of(caster);float f=pact?.boonFactor??1f;
    for(int i=0;i<count;i++){var p=AbyssRaces.Make(kind.defName,Faction.OfPlayer,map.Tile);if(p==null)continue;GenSpawn.Spawn(p,CellFinder.RandomClosewalkCellNear(caster.Position,map,3),map);AbyssBinding.MakeThrall(p,Mathf.RoundToInt(days*f*GenDate.TicksPerDay));made.Add(p);if(pact!=null)pact.guards.Add(p);}
    for(int i=0;i<6;i++)FleckMaker.ThrowSmoke(caster.DrawPos,map,1.6f);
-   if(made.Count>0)Messages.Message(caster.LabelShort+"召来了"+(made.Count>1?made.Count+"个":"")+made[0].KindLabel+"（仆从 "+(days*f).ToString("0.#")+" 天）。",made[0],MessageTypeDefOf.PositiveEvent,false);
+   if(made.Count>0)Messages.Message(caster.LabelShort+"召来了".Loc()+(made.Count>1?made.Count+"个".Loc():"")+made[0].KindLabel+"（仆从 ".Loc()+(days*f).ToString("0.#")+" 天）。".Loc(),made[0],MessageTypeDefOf.PositiveEvent,false);
    return made;
   }
   // 冬之帷幕：6 格内的敌人做感知豁免（DC = 施法者的魅力 DC），失败被魅惑 6 秒。
@@ -166,7 +166,7 @@ namespace LichPhylactery {
    int n=0;var def=DefDatabase<MentalStateDef>.GetNamedSilentFail("LP_DragonCharmed");if(def==null)return 0;int dc=Legendary.DC(caster,Adventurer.Cha);
    foreach(var p in GenRadial.RadialDistinctThingsAround(caster.Position,caster.Map,VeilRadius,true).OfType<Pawn>().ToList()){
     if(p.Dead || p.Downed || !p.HostileTo(caster) || !p.RaceProps.Humanlike)continue;if(Legendary.Save(p,Adventurer.Wis,dc,caster))continue;
-    if(p.mindState.mentalStateHandler.TryStartMentalState(def,"冬之帷幕",forced:true,forceWake:true) && p.MentalState!=null){p.MentalState.forceRecoverAfterTicks=VeilTicks;n++;Items.Mote(p,"被魅惑了",new Color(.7f,.85f,1f));}
+    if(p.mindState.mentalStateHandler.TryStartMentalState(def,"冬之帷幕".Loc(),forced:true,forceWake:true) && p.MentalState!=null){p.MentalState.forceRecoverAfterTicks=VeilTicks;n++;Items.Mote(p,"被魅惑了".Loc(),new Color(.7f,.85f,1f));}
    }
    for(int i=0;i<8;i++)FleckMaker.ThrowAirPuffUp(caster.DrawPos+new Vector3(Rand.Range(-2f,2f),0,Rand.Range(-2f,2f)),caster.Map);
    return n;
@@ -181,7 +181,7 @@ namespace LichPhylactery {
   public static bool Banish(Pawn caster,Pawn t){
    if(t==null || t.Dead)return false;
    if(!Legendary.Save(t,Adventurer.Cha,BanishDC,caster)){
-    if(Legendary.Resist(t,"驱散"))return false;
+    if(Legendary.Resist(t,"驱散".Loc()))return false;
     if(Fiends.Is(t) && t.Spawned)Outsiders.Banish(t);else if(t.Spawned){FleckMaker.Static(t.Position,t.Map,FleckDefOf.PsycastAreaEffect,1.6f);t.DeSpawn();if(!Find.WorldPawns.Contains(t))Find.WorldPawns.PassToWorld(t,PawnDiscardDecideMode.Discard);}
     return true;
    }
@@ -189,7 +189,7 @@ namespace LichPhylactery {
   }
   public static bool UseRope(Pawn p){
    var a=Items.Worn(p,Rope);var c=a?.GetComp<CompMagicCharges>();if(a==null || c==null)return true;
-   if(!c.TryUse())return false;if(c.Charges<=0){p.apparel.Remove(a);a.Destroy();Messages.Message("缚绳用断了。",p,MessageTypeDefOf.NeutralEvent,false);}
+   if(!c.TryUse())return false;if(c.Charges<=0){p.apparel.Remove(a);a.Destroy();Messages.Message("缚绳用断了。".Loc(),p,MessageTypeDefOf.NeutralEvent,false);}
    return true;
   }
 
@@ -209,9 +209,9 @@ namespace LichPhylactery {
    var lead=p.health?.hediffSet?.GetFirstHediffOfDef(Items.Hediff("LP_PatronAgent")) as Hediff_PatronAgent;
    if(lead?.patron!=null && AbyssItems.TrueNameScroll!=null){
     var s=ThingMaker.MakeThing(AbyssItems.TrueNameScroll);var c=s.TryGetComp<CompTrueName>();
-    if(c!=null){c.trueName=TrueNames.Generate(p.thingIDNumber^0x51A7);c.kind=lead.patron.defName;c.kindLabel=lead.patron.agentLabel??(lead.patron.label+"的代理人");c.pawnId=-1;}
+    if(c!=null){c.trueName=TrueNames.Generate(p.thingIDNumber^0x51A7);c.kind=lead.patron.defName;c.kindLabel=lead.patron.agentLabel??(lead.patron.label+"的代理人".Loc());c.pawnId=-1;}
     GenPlace.TryPlaceThing(s,cell,map,ThingPlaceMode.Near);
-    Find.LetterStack.ReceiveLetter("宗主代理人的真名",p.LabelShort+"倒下时掉出了一张真名卷，上面写着"+lead.patron.label+"代理人的真名。拿到契约讲台上，可以无代价地撕毁一份和"+lead.patron.label+"签的契约。",LetterDefOf.PositiveEvent,s);
+    Find.LetterStack.ReceiveLetter("宗主代理人的真名".Loc(),p.LabelShort+"倒下时掉出了一张真名卷，上面写着".Loc()+lead.patron.label+"代理人的真名。拿到契约讲台上，可以无代价地撕毁一份和".Loc()+lead.patron.label+"签的契约。".Loc(),LetterDefOf.PositiveEvent,s);
    }
   }
   // 深渊腐化获得：披着天界羽披 ×0.5。
@@ -229,7 +229,7 @@ namespace LichPhylactery {
     if(s==null || !s.Spawned || s.Map!=pawn.Map || s.Dead || !s.HostileTo(pawn) || !s.Position.InHorDistOf(pawn.Position,PactRaces.SubvertRadius))continue;
     if(tried.TryGetValue(s.thingIDNumber,out int t) && now-t<GenDate.TicksPerHour)continue;tried[s.thingIDNumber]=now;
     if(Legendary.Save(s,Adventurer.Wis,PactRaces.SubvertDC,pawn))continue;
-    if(s.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk,"链魔的策反",forced:true) && s.MentalState!=null)s.MentalState.forceRecoverAfterTicks=PactRaces.SubvertTicks;
+    if(s.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk,"链魔的策反".Loc(),forced:true) && s.MentalState!=null)s.MentalState.forceRecoverAfterTicks=PactRaces.SubvertTicks;
    }
   }
  }
@@ -241,7 +241,7 @@ namespace LichPhylactery {
    foreach(var t in pawn.Map.attackTargetsCache.TargetsHostileToFaction(pawn.Faction)){
     if(!(t.Thing is Pawn e) || e.Dead || !e.RaceProps.Humanlike || seen.Contains(e.thingIDNumber) || !e.Position.InHorDistOf(pawn.Position,PactRaces.DreadRadius))continue;
     seen.Add(e.thingIDNumber);if(Legendary.FearImmune(e) || Legendary.Save(e,Adventurer.Wis,PactRaces.DreadDC,pawn))continue;
-    Items.Give(e,"LP_Frightened",600);Items.Mote(e,"惊惧！",new Color(.9f,.5f,.5f));
+    Items.Give(e,"LP_Frightened",600);Items.Mote(e,"惊惧！".Loc(),new Color(.9f,.5f,.5f));
    }
   }
  }
@@ -252,7 +252,7 @@ namespace LichPhylactery {
   public void Bind(Plant t){
    tree=t;lostTick=None;driftUntil=-1;Items.Remove(pawn,"LP_DryadSevered");
    if(t?.Spawned==true)FleckMaker.Static(t.Position,t.Map,FleckDefOf.PsycastAreaEffect,1.4f);
-   if(pawn.Faction?.IsPlayer==true)Messages.Message(pawn.LabelShort+"和一棵"+t?.LabelNoCount+"结下了绑定。",t,MessageTypeDefOf.PositiveEvent,false);
+   if(pawn.Faction?.IsPlayer==true)Messages.Message(pawn.LabelShort+"和一棵".Loc()+t?.LabelNoCount+"结下了绑定。".Loc(),t,MessageTypeDefOf.PositiveEvent,false);
   }
   public void StartDrift(){if(driftUntil<0)driftUntil=Find.TickManager.TicksGame+PactRaces.DriftDays*GenDate.TicksPerDay;}
   public bool Drifting=>tree==null && lostTick==None && driftUntil>Find.TickManager.TicksGame;
@@ -266,7 +266,7 @@ namespace LichPhylactery {
    if(tree!=null && (tree.Destroyed || !tree.Spawned)){
     tree=null;lostTick=now;Items.Give(pawn,"LP_DryadSevered");
     var th=DefDatabase<ThoughtDef>.GetNamedSilentFail("LP_DryadTreeDied");if(th!=null)pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(th);
-    if(pawn.Faction?.IsPlayer==true)Find.LetterStack.ReceiveLetter("林仙的树死了",pawn.LabelShort+"的树没了。"+pawn.LabelShort+"像被抽掉了半条命：疼痛 +50%、意识 -30%。24 小时内不和一棵新的成年树绑定（能力“绑定此树”），"+pawn.gender.GetPronoun()+"会死。",LetterDefOf.ThreatBig,pawn);
+    if(pawn.Faction?.IsPlayer==true)Find.LetterStack.ReceiveLetter("林仙的树死了".Loc(),pawn.LabelShort+"的树没了。".Loc()+pawn.LabelShort+"像被抽掉了半条命：疼痛 +50%、意识 -30%。24 小时内不和一棵新的成年树绑定（能力“绑定此树”），".Loc()+pawn.gender.GetPronoun()+"会死。".Loc(),LetterDefOf.ThreatBig,pawn);
    }
    if(tree==null && lostTick!=None && now-lostTick>=PactRaces.SeveredDays*GenDate.TicksPerDay){lostTick=None;Fiends.Defer(()=>{if(!pawn.Dead)pawn.Kill(null);});return;}
    if(tree==null && lostTick==None && driftUntil<0)StartDrift();
@@ -297,13 +297,13 @@ namespace LichPhylactery {
    if(!on)return;on=false;until=-1;
    if(origName!=null)pawn.Name=origName;if(pawn.story!=null){if(origHair!=null)pawn.story.hairDef=origHair;if(origHead!=null)pawn.story.headType=origHead;if(origBody!=null)pawn.story.bodyType=origBody;pawn.story.skinColorOverride=origSkin;pawn.story.HairColor=origHairColor;}
    pawn.Drawer?.renderer?.SetAllGraphicsDirty();Items.Remove(pawn,"LP_ChangelingGuise");
-   if(why!=null && pawn.Faction?.IsPlayer==true)Messages.Message(pawn.LabelShort+"的伪装（"+copied+"）解除了："+why+"。",pawn,MessageTypeDefOf.NeutralEvent,false);
+   if(why!=null && pawn.Faction?.IsPlayer==true)Messages.Message(pawn.LabelShort+"的伪装（".Loc()+copied+"）解除了：".Loc()+why+"。".Loc(),pawn,MessageTypeDefOf.NeutralEvent,false);
    copied=null;
   }
   public bool LongDisguised=>Find.TickManager.TicksGame-lastSelf>PactRaces.DriftDays*GenDate.TicksPerDay;
   public override void TickInterval(int delta){
    base.TickInterval(delta);if((acc+=delta)<GenDate.TicksPerHour)return;acc=0;if(pawn.Dead)return;int now=Find.TickManager.TicksGame;
-   if(on){selfHours=0;if(now>=until)Revert("过了 24 小时");else if(pawn.Spawned && SeenThrough())Revert("被看穿了");}
+   if(on){selfHours=0;if(now>=until)Revert("过了 24 小时".Loc());else if(pawn.Spawned && SeenThrough())Revert("被看穿了".Loc());}
    else if(++selfHours>=24){selfHours=0;lastSelf=now;}
   }
   bool SeenThrough(){foreach(var c in GenRadial.RadialCellsAround(pawn.Position,AbyssRaces.SeerRadius,true)){if(!c.InBounds(pawn.Map))continue;var l=c.GetThingList(pawn.Map);for(int i=0;i<l.Count;i++)if(l[i] is Pawn p && p!=pawn && !p.Dead && !p.Downed && Fiends.Sees(p))return true;}return false;}
@@ -321,7 +321,7 @@ namespace LichPhylactery {
  // ---------- 状态 ----------
  public class Hediff_HuntMarked : HediffWithComps {
   public Pawn hunter;
-  public override string LabelInBrackets=>hunter==null?null:"猎手 "+hunter.LabelShort;
+  public override string LabelInBrackets=>hunter==null?null:"猎手 ".Loc()+hunter.LabelShort;
   public override void ExposeData(){base.ExposeData();Scribe_References.Look(ref hunter,"lpHunter");}
  }
  // 阿姆尼祖：被攻击时攻击者智力豁免 DC 16，失败最高技能 -2 级 1 天（移除时还原）。
@@ -336,7 +336,7 @@ namespace LichPhylactery {
   public override void ExposeData(){base.ExposeData();Scribe_Defs.Look(ref skill,"lpSkill");Scribe_Values.Look(ref lost,"lpLost");}
  }
  // 红帽嗜血：近战命中叠层（每层 +3 伤害，最多 5 层），1 小时没命中清零（消失计时）。
- public class Hediff_RedcapBloodlust : HediffWithComps {public override string LabelInBrackets=>Mathf.RoundToInt(Severity)+"层";}
+ public class Hediff_RedcapBloodlust : HediffWithComps {public override string LabelInBrackets=>Mathf.RoundToInt(Severity)+"层".Loc();}
  // 狂猎 / 讨债者的首领：倒下时掉宗主代理人的真名卷。
  public class Hediff_PatronAgent : HediffWithComps {
   public LP_PatronDef patron;public override bool Visible=>false;
@@ -355,7 +355,7 @@ namespace LichPhylactery {
  public class Hediff_ImpNature : HediffWithComps {
   public Pawn master;int acc,hour,intel=-1;
   public override bool Visible=>true;
-  public override string LabelInBrackets=>master==null?null:"主人 "+master.LabelShort;
+  public override string LabelInBrackets=>master==null?null:"主人 ".Loc()+master.LabelShort;
   public override void TickInterval(int delta){
    base.TickInterval(delta);if(pawn.Dead || !pawn.Spawned)return;
    if((acc+=delta)>=60){acc=0;int now=Find.TickManager.TicksGame;bool fight=now-pawn.LastAttackTargetTick<600 || now-pawn.mindState.lastHarmTick<600;bool has=Items.Has(pawn,"LP_QuasitVeil");if(!fight && !has)Items.Give(pawn,"LP_QuasitVeil");else if(fight && has)Items.Remove(pawn,"LP_QuasitVeil");}
@@ -372,7 +372,7 @@ namespace LichPhylactery {
  public class Hediff_PixieNature : HediffWithComps {
   public Pawn master;int acc,dust=-1,prank=-1;
   public override bool Visible=>true;
-  public override string LabelInBrackets=>master==null?null:"主人 "+master.LabelShort;
+  public override string LabelInBrackets=>master==null?null:"主人 ".Loc()+master.LabelShort;
   public override void TickInterval(int delta){
    base.TickInterval(delta);if(pawn.Dead || !pawn.Spawned)return;if((acc+=delta)<GenDate.TicksPerHour)return;acc=0;
    if(master==null && pawn.Faction?.IsPlayer==true)master=PactRaces_Familiar.Adopt(pawn);if(master==null || master.Dead)return;
@@ -393,21 +393,21 @@ namespace LichPhylactery {
   }
   public static string Dust(Pawn pixie,Pawn master){
    var who=new[]{master}.Concat(pixie.Map?.mapPawns.FreeColonistsSpawned.Where(c=>c!=master && c.Position.InHorDistOf(pixie.Position,8f))??Enumerable.Empty<Pawn>()).Where(c=>c!=null && !c.Dead && c.MapHeld==pixie.MapHeld).RandomElementWithFallback();
-   if(who==null)return null;var h=DustHediffs.RandomElement();Items.Give(who,h);Items.Mote(who,"妖精粉尘",new Color(1f,.85f,1f));
+   if(who==null)return null;var h=DustHediffs.RandomElement();Items.Give(who,h);Items.Mote(who,"妖精粉尘".Loc(),new Color(1f,.85f,1f));
    if(h=="LP_PixieDust_Joy"){var th=DefDatabase<ThoughtDef>.GetNamedSilentFail("LP_PixieDustJoy");if(th!=null)who.needs?.mood?.thoughts?.memories?.TryGainMemory(th);}
    return h;
   }
   public static Thing Prank(Pawn pixie,Pawn master){
    var inv=master?.inventory?.innerContainer;if(inv==null || inv.Count==0 || !master.Spawned)return null;var t=inv.RandomElement();
-   if(inv.TryDrop(t,master.Position,master.Map,ThingPlaceMode.Near,out var dropped)){Messages.Message(pixie.LabelShort+"恶作剧：把"+master.LabelShort+"背包里的"+dropped.LabelShort+"扔到了地上。",dropped,MessageTypeDefOf.NeutralEvent,false);return dropped;}
+   if(inv.TryDrop(t,master.Position,master.Map,ThingPlaceMode.Near,out var dropped)){Messages.Message(pixie.LabelShort+"恶作剧：把".Loc()+master.LabelShort+"背包里的".Loc()+dropped.LabelShort+"扔到了地上。".Loc(),dropped,MessageTypeDefOf.NeutralEvent,false);return dropped;}
    return null;
   }
   public static string Intel(Pawn imp,Pawn master){
    var map=master.MapHeld??Find.AnyPlayerHomeMap;if(map==null)return null;float pts=StorytellerUtility.DefaultThreatPointsNow(map);bool truth=PactRaces.Roll<.5f;
    if(!truth)pts*=Rand.Range(.4f,1.8f);
    var fac=Find.FactionManager.AllFactionsVisible.Where(f=>!f.IsPlayer && f.HostileTo(Faction.OfPlayer)).RandomElementWithFallback();
-   string text=imp.LabelShort+"凑到"+master.LabelShort+"耳边嘀咕：下一次来打殖民地的，规模大概有 "+pts.ToString("0")+" 点"+(fac!=null?"，多半是"+fac.Name:"")+"。\n\n（小魔鬼的话一半是真的。这一次……谁知道呢。）";
-   Find.LetterStack.ReceiveLetter("小魔鬼的情报",text,LetterDefOf.NeutralEvent,imp);
+   string text=imp.LabelShort+"凑到".Loc()+master.LabelShort+"耳边嘀咕：下一次来打殖民地的，规模大概有 ".Loc()+pts.ToString("0")+" 点".Loc()+(fac!=null?"，多半是".Loc()+fac.Name:"")+"。\n\n（小魔鬼的话一半是真的。这一次……谁知道呢。）".Loc();
+   Find.LetterStack.ReceiveLetter("小魔鬼的情报".Loc(),text,LetterDefOf.NeutralEvent,imp);
    return truth?"true":"false";
   }
  }
@@ -444,9 +444,9 @@ namespace LichPhylactery {
   public static int Blow(Pawn p){
    var map=p.Map;if(map==null)return 0;int n=0;
    foreach(var a in map.mapPawns.SpawnedColonyAnimals.ToList())if(IsCanine(a)){Items.Give(a,"LP_HornRush");n++;}
-   foreach(var e in map.mapPawns.AllPawnsSpawned.ToList())if(e.RaceProps.Humanlike && !e.Dead && !e.Downed && e.HostileTo(Faction.OfPlayer) && PactRaces.Roll<.1f)e.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.PanicFlee,"狂猎号角",forced:true);
+   foreach(var e in map.mapPawns.AllPawnsSpawned.ToList())if(e.RaceProps.Humanlike && !e.Dead && !e.Downed && e.HostileTo(Faction.OfPlayer) && PactRaces.Roll<.1f)e.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.PanicFlee,"狂猎号角".Loc(),forced:true);
    for(int i=0;i<6;i++)FleckMaker.ThrowAirPuffUp(p.DrawPos,map);
-   Messages.Message(p.LabelShort+"吹响了狂猎号角："+n+"只犬科动物冲劲十足。",p,MessageTypeDefOf.PositiveEvent,false);
+   Messages.Message(p.LabelShort+"吹响了狂猎号角：".Loc()+n+"只犬科动物冲劲十足。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);
    return n;
   }
  }

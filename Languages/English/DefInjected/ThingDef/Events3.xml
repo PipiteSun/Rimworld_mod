@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 镶金宝箱 -->
+  <LP_MimicChest.label>gilded treasure chest</LP_MimicChest.label>
+  <!-- 一只镶金的旧宝箱，箱盖上落满了灰。可能装满了宝物，也可能是一只宝箱怪。右键打开，或者先让智识≥8的人鉴定。 -->
+  <LP_MimicChest.description>An old gilded chest with dust on its lid. It may be full of treasure, or it may be a mimic. Right-click to open, or have someone with Intellectual ≥8 appraise it first.</LP_MimicChest.description>
+  <!-- 森林之心 -->
+  <LP_HeartTree.label>heart of the forest</LP_HeartTree.label>
+  <!-- 树人种下的一棵银叶小树，树干里有微光流动。周围 8 格内的作物生长速度 +20%。不能砍伐，也不能拆除。 -->
+  <LP_HeartTree.description>A small silver-leaved tree planted by a treant, with faint light flowing in its trunk. Crops within 8 cells grow 20% faster. Cannot be cut down or deconstructed.</LP_HeartTree.description>
+  <!-- 银龙鳞 -->
+  <LP_SilverDragonScale.label>silver dragon scale</LP_SilverDragonScale.label>
+  <!-- 银龙化身离开时留下的鳞片，冰凉、轻、几乎刀枪不入。可以当作耐寒的护甲材料。 -->
+  <LP_SilverDragonScale.description>A scale left behind by a silver dragon's avatar when it departed: cold, light and nearly impenetrable. Can be used as a cold-resistant armor material.</LP_SilverDragonScale.description>
+  <!-- 宝箱怪的牙 -->
+  <LP_MimicTooth.label>mimic fang</LP_MimicTooth.label>
+  <!-- 宝箱怪弯钩一样的獠牙，还带着木头的纹路。炼金术士和收藏家都想要。 -->
+  <LP_MimicTooth.description>A mimic's hook-like fang, still with wood grain on it. Alchemists and collectors both want it.</LP_MimicTooth.description>
+  <!-- 坠星之心 -->
+  <LP_StarHeart.label>heart of a fallen star</LP_StarHeart.label>
+  <!-- 裹在秘银陨石里的一颗星核，一直在发微光。传说中的武器都是用这种东西锻出来的——收藏家和黑网都愿意出高价。 -->
+  <LP_StarHeart.description>A star core wrapped in a mithril meteorite, always glowing faintly. Legendary weapons are said to be forged from such things; collectors and the Black Network will pay a high price.</LP_StarHeart.description>
+  <!-- 冒险日志 -->
+  <LP_AdventureLog.label>adventure journal</LP_AdventureLog.label>
+  <!-- 一支全灭冒险小队留下的日志，记着他们一路的经验和教训。读完得到 400 点冒险者经验（只能读一次）。 -->
+  <LP_AdventureLog.description>The journal of an adventuring party that was wiped out, recording their experience and lessons along the way. Reading it grants 400 adventurer XP (can only be read once).</LP_AdventureLog.description>
+  <!-- 读冒险日志 -->
+  <LP_AdventureLog.comps.CompUsable.useLabel>read adventure journal</LP_AdventureLog.comps.CompUsable.useLabel>
+  <!-- 比武奖杯 -->
+  <LP_TourneyTrophy.label>tournament trophy</LP_TourneyTrophy.label>
+  <!-- 费伦拓荒同盟比武大会的镀金奖杯，杯身刻着项目和得胜者的名字。摆在屋里很好看。 -->
+  <LP_TourneyTrophy.description>A gilded trophy from the tournament of Faerûn's pioneer league, engraved with the event and the winner's name. Looks nice in a room.</LP_TourneyTrophy.description>
+  <!-- 塔拉斯克甲壳 -->
+  <LP_TarrasqueShell.label>Tarrasque carapace</LP_TarrasqueShell.label>
+  <!-- 从塔拉斯克背上剥下来的甲壳，比钢厚、比玻璃钢韧。最好的护甲和墙壁材料。 -->
+  <LP_TarrasqueShell.description>Carapace stripped from the Tarrasque's back, thicker than steel and tougher than plasteel. The best material for armor and walls.</LP_TarrasqueShell.description>
+  <!-- 塔拉斯克之牙 -->
+  <LP_TarrasqueTooth.label>Tarrasque fang</LP_TarrasqueTooth.label>
+  <!-- 塔拉斯克的獠牙，有一臂长，锋利得能划开城门。最好的近战武器材料。 -->
+  <LP_TarrasqueTooth.description>A Tarrasque fang, an arm long and sharp enough to slice through city gates. The best material for melee weapons.</LP_TarrasqueTooth.description>
+  <!-- 宝箱怪 -->
+  <LP_Mimic.label>mimic</LP_Mimic.label>
+  <!-- 会装成宝箱的怪物。箱盖是它的嘴，一圈木纹獠牙，舌头又长又黏。肚子里常常还留着上一位冒险者的东西。 -->
+  <LP_Mimic.description>A monster that disguises itself as a treasure chest. The lid is its mouth, ringed with wood-grain fangs, with a long, sticky tongue. Its belly often still holds the previous adventurer's belongings.</LP_Mimic.description>
+  <!-- 宝箱怪肉 -->
+  <LP_Mimic.race.meatLabel>mimic meat</LP_Mimic.race.meatLabel>
+  <!-- 长舌 -->
+  <LP_Mimic.tools.tongue.labelNoLocation>long tongue</LP_Mimic.tools.tongue.labelNoLocation>
+  <!-- 箱盖獠牙 -->
+  <LP_Mimic.tools.lid.labelNoLocation>lid fangs</LP_Mimic.tools.lid.labelNoLocation>
+  <!-- 树人 -->
+  <LP_Treant.label>treant</LP_Treant.label>
+  <!-- 苏醒的古树，树皮像铠甲，枝条像拳头。走得很慢，力气大得能推倒城墙。怕火。 -->
+  <LP_Treant.description>An awakened ancient tree with bark like armor and branches like fists. Walks very slowly but is strong enough to push down city walls. Fears fire.</LP_Treant.description>
+  <!-- 树人木髓 -->
+  <LP_Treant.race.meatLabel>treant heartwood</LP_Treant.race.meatLabel>
+  <!-- 枝拳 -->
+  <LP_Treant.tools.left_branch.labelNoLocation>branch fist</LP_Treant.tools.left_branch.labelNoLocation>
+  <!-- 枝拳 -->
+  <LP_Treant.tools.right_branch.labelNoLocation>branch fist</LP_Treant.tools.right_branch.labelNoLocation>
+  <!-- 塔拉斯克 -->
+  <LP_Tarrasque.label>Tarrasque</LP_Tarrasque.label>
+  <!-- 传说中的末日巨兽：山一样的身躯、反光的甲壳、一嘴能咬碎城门的牙。它在地底沉睡几百年，醒来就一路吃到海边。伤口愈合得飞快，撞上什么就毁掉什么。 -->
+  <LP_Tarrasque.description>The legendary doomsday beast: a mountain-sized body, a reflective carapace and a mouth that can bite through city gates. It sleeps underground for centuries and, when it wakes, eats its way to the sea. Its wounds heal very fast, and it destroys whatever it runs into.</LP_Tarrasque.description>
+  <!-- 塔拉斯克肉 -->
+  <LP_Tarrasque.race.meatLabel>Tarrasque meat</LP_Tarrasque.race.meatLabel>
+  <!-- 巨爪 -->
+  <LP_Tarrasque.tools.left_claw.labelNoLocation>great claws</LP_Tarrasque.tools.left_claw.labelNoLocation>
+  <!-- 巨爪 -->
+  <LP_Tarrasque.tools.right_claw.labelNoLocation>great claws</LP_Tarrasque.tools.right_claw.labelNoLocation>
+  <!-- 巨颚 -->
+  <LP_Tarrasque.tools.jaws.labelNoLocation>great jaws</LP_Tarrasque.tools.jaws.labelNoLocation>
+</LanguageData>

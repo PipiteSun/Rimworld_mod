@@ -22,15 +22,15 @@ namespace LichPhylactery {
   public static void Sync(Pawn p){if(Def!=null && HasVre(p) && p.abilities.GetAbility(Def)==null)p.abilities.GainAbility(Def);}
   // 不能用的原因；null = 可以
   public static string Reason(Pawn caster,Pawn target){
-   if(target==null || target==caster || !target.RaceProps.Humanlike || target.Dead)return "只能对其他人形使用。";
-   if(caster.ageTracker.AgeBiologicalYears<MinAge)return caster.LabelShortCap+"还太年轻。";
-   if(target.ageTracker.AgeBiologicalYears<MinAge)return target.LabelShortCap+"还太年轻。";
-   if(target.Downed || !target.Awake() || target.InMentalState)return target.LabelShortCap+"现在没法回应。";
-   if(target.HostileTo(caster))return "不能对敌对的人使用。";
-   if(target.Faction!=caster.Faction && !target.IsPrisonerOfColony && !target.IsSlaveOfColony)return "只能对同一派系的人、本殖民地的囚犯或奴隶使用。";
-   if(target.story?.traits?.HasTrait(TraitDefOf.Asexual)==true)return target.LabelShortCap+"是无性恋。";
-   if(caster.relations!=null && caster.relations.FamilyByBlood.Contains(target))return "不能对血亲使用。";
-   if(target.relations!=null && target.relations.OpinionOf(caster)<0 && !LovePartnerRelationUtility.LovePartnerRelationExists(caster,target))return target.LabelShortCap+"对"+caster.LabelShortCap+"的好感低于 0。";
+   if(target==null || target==caster || !target.RaceProps.Humanlike || target.Dead)return "只能对其他人形使用。".Loc();
+   if(caster.ageTracker.AgeBiologicalYears<MinAge)return caster.LabelShortCap+"还太年轻。".Loc();
+   if(target.ageTracker.AgeBiologicalYears<MinAge)return target.LabelShortCap+"还太年轻。".Loc();
+   if(target.Downed || !target.Awake() || target.InMentalState)return target.LabelShortCap+"现在没法回应。".Loc();
+   if(target.HostileTo(caster))return "不能对敌对的人使用。".Loc();
+   if(target.Faction!=caster.Faction && !target.IsPrisonerOfColony && !target.IsSlaveOfColony)return "只能对同一派系的人、本殖民地的囚犯或奴隶使用。".Loc();
+   if(target.story?.traits?.HasTrait(TraitDefOf.Asexual)==true)return target.LabelShortCap+"是无性恋。".Loc();
+   if(caster.relations!=null && caster.relations.FamilyByBlood.Contains(target))return "不能对血亲使用。".Loc();
+   if(target.relations!=null && target.relations.OpinionOf(caster)<0 && !LovePartnerRelationUtility.LovePartnerRelationExists(caster,target))return target.LabelShortCap+"对".Loc()+caster.LabelShortCap+"的好感低于 0。".Loc();
    return null;
   }
   // 原版亲热结束时的结果（照 JobDriver_Lovin 的结束动作）；不加也不删任何关系。

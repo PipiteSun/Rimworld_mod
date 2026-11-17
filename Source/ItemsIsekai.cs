@@ -47,7 +47,7 @@ namespace LichPhylactery {
     foreach(var name in Roll(Tier(__instance),()=>Rand.Value)){
      var def=Items.Thing(name);if(def==null)continue;
      var t=ThingMaker.MakeThing(def);GenPlace.TryPlaceThing(t,cell,map,ThingPlaceMode.Near);
-     Messages.Message("宝箱底层还压着一件费伦的物品："+t.LabelCap+"。",t,MessageTypeDefOf.PositiveEvent,false);
+     Messages.Message("宝箱底层还压着一件费伦的物品：".Loc()+t.LabelCap+"。".Loc(),t,MessageTypeDefOf.PositiveEvent,false);
     }
     // 1.29.0：2 级以上的宝箱可能有 DND 枪械或法杖，4 级以上可能有噩耗或天火降世（按宝箱编号播种）。
     // 生成武器（品质、艺术描述）用独立的随机数状态，不影响后面神灯的概率。
@@ -59,24 +59,24 @@ namespace LichPhylactery {
        var def=Items.Thing(name);if(def==null)continue;
        var t=ThingMaker.MakeThing(def,GenStuff.DefaultStuffFor(def));t.TryGetComp<CompQuality>()?.SetQuality(QualityUtility.GenerateQualityReward(),ArtGenerationContext.Outsider);
        GenPlace.TryPlaceThing(t,cell,map,ThingPlaceMode.Near);
-       Messages.Message("宝箱里还躺着一件费伦的魔法武器："+t.LabelCap+"。",t,MessageTypeDefOf.PositiveEvent,false);
+       Messages.Message("宝箱里还躺着一件费伦的魔法武器：".Loc()+t.LabelCap+"。".Loc(),t,MessageTypeDefOf.PositiveEvent,false);
       }
      }finally{Rand.PopState();}
     }
     // 1.37.0：耐瑟瑞尔卷轴——研习卷 10%，3 级以上宝箱秘术残卷 5%（卡苏斯之卷不进宝箱）。
     // 用按宝箱编号播种的独立随机数，不影响后面神灯的概率。
     List<string> netheril;Rand.PushState(__instance.thingIDNumber^0x4E45);try{netheril=NetherilLoot(Tier(__instance),()=>Rand.Value);}finally{Rand.PopState();}
-    foreach(var scroll in netheril){var t=scroll=="arcane"?Netheril.MakeArcane():Netheril.MakeStudy();if(t==null)continue;t.TryGetComp<CompQuality>()?.SetQuality(QualityUtility.GenerateQualityReward(),ArtGenerationContext.Outsider);GenPlace.TryPlaceThing(t,cell,map,ThingPlaceMode.Near);Messages.Message("宝箱里藏着一卷耐瑟瑞尔卷轴："+t.LabelCap+"。",t,MessageTypeDefOf.PositiveEvent,false);}
+    foreach(var scroll in netheril){var t=scroll=="arcane"?Netheril.MakeArcane():Netheril.MakeStudy();if(t==null)continue;t.TryGetComp<CompQuality>()?.SetQuality(QualityUtility.GenerateQualityReward(),ArtGenerationContext.Outsider);GenPlace.TryPlaceThing(t,cell,map,ThingPlaceMode.Near);Messages.Message("宝箱里藏着一卷耐瑟瑞尔卷轴：".Loc()+t.LabelCap+"。".Loc(),t,MessageTypeDefOf.PositiveEvent,false);}
     // 1.45.0：三级以上宝箱额外15%掉一件魔法物品（按宝箱编号播种）。
     string magic;Rand.PushState(__instance.thingIDNumber^0x4D41);try{magic=MagicDrop(Tier(__instance),()=>Rand.Value);}finally{Rand.PopState();}
-    if(magic!=null && Items.Thing(magic) is ThingDef md){var t=ThingMaker.MakeThing(md,md.MadeFromStuff?GenStuff.DefaultStuffFor(md):null);t.TryGetComp<CompQuality>()?.SetQuality(QualityUtility.GenerateQualityReward(),ArtGenerationContext.Outsider);GenPlace.TryPlaceThing(t,cell,map,ThingPlaceMode.Near);Messages.Message("宝箱的暗格里藏着一件魔法物品："+t.LabelCap+"。",t,MessageTypeDefOf.PositiveEvent,false);}
+    if(magic!=null && Items.Thing(magic) is ThingDef md){var t=ThingMaker.MakeThing(md,md.MadeFromStuff?GenStuff.DefaultStuffFor(md):null);t.TryGetComp<CompQuality>()?.SetQuality(QualityUtility.GenerateQualityReward(),ArtGenerationContext.Outsider);GenPlace.TryPlaceThing(t,cell,map,ThingPlaceMode.Near);Messages.Message("宝箱的暗格里藏着一件魔法物品：".Loc()+t.LabelCap+"。".Loc(),t,MessageTypeDefOf.PositiveEvent,false);}
     // 1.58.3：三级以上宝箱 3% 一本属性典籍。
     // 1.63.0：典籍和神灯也按宝箱编号播种（原来用全局随机数，-Isekai 宝箱掉落检查时好时坏）。
     float tomeRoll,lampRoll;Rand.PushState(__instance.thingIDNumber^0x544D);try{tomeRoll=Rand.Value;lampRoll=Rand.Value;}finally{Rand.PopState();}
-    if(Tier(__instance)>=3 && tomeRoll<Growth.TomeIsekai){var tm=Growth.MakeTome();if(tm!=null){GenPlace.TryPlaceThing(tm,cell,map,ThingPlaceMode.Near);Messages.Message("宝箱底层压着一本属性典籍："+tm.LabelCap+"。",tm,MessageTypeDefOf.PositiveEvent,false);}}
+    if(Tier(__instance)>=3 && tomeRoll<Growth.TomeIsekai){var tm=Growth.MakeTome();if(tm!=null){GenPlace.TryPlaceThing(tm,cell,map,ThingPlaceMode.Near);Messages.Message("宝箱底层压着一本属性典籍：".Loc()+tm.LabelCap+"。".Loc(),tm,MessageTypeDefOf.PositiveEvent,false);}}
     // 1.24.0：每个宝箱5%概率压着一盏神灯。
-    if(lampRoll<LampChance && Items.Thing("LP_WonderLamp") is ThingDef lamp){var t=ThingMaker.MakeThing(lamp);GenPlace.TryPlaceThing(t,cell,map,ThingPlaceMode.Near);Messages.Message("宝箱最深处躺着一盏古旧的神灯！",t,MessageTypeDefOf.PositiveEvent,false);}
-   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] Isekai 宝箱联动出错："+e,9127343);}
+    if(lampRoll<LampChance && Items.Thing("LP_WonderLamp") is ThingDef lamp){var t=ThingMaker.MakeThing(lamp);GenPlace.TryPlaceThing(t,cell,map,ThingPlaceMode.Near);Messages.Message("宝箱最深处躺着一盏古旧的神灯！".Loc(),t,MessageTypeDefOf.PositiveEvent,false);}
+   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] Isekai 宝箱联动出错：".Loc()+e,9127343);}
   }
  }
 }

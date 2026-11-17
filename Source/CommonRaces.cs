@@ -59,7 +59,7 @@ namespace LichPhylactery {
    var caster=__instance.CasterPawn;bool savageHit;
    float f=CommonRaces.MeleeFactor(caster,__0.Thing as Pawn,CommonRaces.Has(caster,CommonRaces.SavageGene)?Rand.Value:1f,out savageHit);
    f*=Subraces.DamageFactor(caster,__0.Thing,true); // 1.57.0 熊地精突袭、地精小个子的怒火
-   if(savageHit && caster.Spawned)MoteMaker.ThrowText(caster.DrawPos,caster.Map,"野蛮重击！",new Color(1f,.45f,.3f));
+   if(savageHit && caster.Spawned)MoteMaker.ThrowText(caster.DrawPos,caster.Map,"野蛮重击！".Loc(),new Color(1f,.45f,.3f));
    foreach(var d in values){if(f!=1f){var copy=d;copy.SetAmount(d.Amount*f);yield return copy;}else yield return d;}
   }
  }

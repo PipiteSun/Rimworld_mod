@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（Stampede.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>[DND边缘大陆] 访客受伤处理出错：</zh><en>[DND Rimlands] Visitor injury handling error: </en></s>
+  <s><zh>被撞开了！</zh><en>knocked aside!</en></s>
+  <s><zh>塞伊袭击</zh><en>Thayan raid</en></s>
+  <s><zh>惊逃的兽群</zh><en>Stampeding herd</en></s>
+  <s><zh>一群</zh><en>A herd of </en></s>
+  <s><zh>只）惊慌失措地从地图一边冲向另一边。它们不会主动攻击，但挡在路上的人会被撞开。\n\n它们看上去不像是在迁徙，倒像是在逃避什么……</zh><en>) panics and charges from one side of the map to the other. They won't attack on their own, but anyone in the way gets knocked aside.\n\nThey don't look like they're migrating; more like they're fleeing something...</en></s>
+  <s><zh>寒潮过去了，</zh><en>The cold snap has passed; </en></s>
+  <s><zh>只冬狼的狂性消退，变成了普通的野生冬狼，可以驯服。</zh><en> winter wolves' frenzy faded, and they became ordinary wild winter wolves that can be tamed.</en></s>
+  <s><zh>冬狼寒潮</zh><en>winter wolf cold snap</en></s>
+  <s><zh>一股寒潮压了下来，接下来的</zh><en>A cold snap has descended; temperatures will plunge over the next </en></s>
+  <s><zh>天里气温会骤降。寒潮里来了</zh><en> days. With the cold snap came </en></s>
+  <s><zh>只狂暴的冬狼！\n\n寒潮让它们狂性大发：移速更快，冰咬的寒霜迟缓持续更久。寒潮结束时，活下来的冬狼会恢复平静，变成可以驯服的野生冬狼。\n\n火巨人不受寒潮影响。</zh><en> manhunting winter wolves!\n\nThe cold drives them into a frenzy: faster movement, and their ice bite's frost slow lasts longer. When the cold snap ends, the surviving winter wolves calm down and become wild winter wolves that can be tamed.\n\nFire giants aren't affected by the cold snap.</en></s>
+  <s><zh>DND 事件频率：</zh><en>DND event frequency: </en></s>
+  <s><zh>%（传送门失控、巨人迁徙和下面五个事件的出现权重；0%等于全部不出现）</zh><en>% (weight of portal mishaps, giant migrations and the five events below; 0% means none appear)</en></s>
+  <s><zh>惊逃兽群</zh><en>stampede</en></s>
+  <s><zh>6～14只动物惊慌地横穿地图，撞开挡路的人。70%的情况下1～3天后还有大事发生（龙过境、巨人迁徙、传送门失控或塞伊袭击，只从开着的里面挑）。</zh><en>6-14 animals panic and cross the map, knocking aside anyone in the way. 70% of the time something big follows 1-3 days later (dragon flyover, giant migration, portal mishap or Thayan raid, picked only from those turned on).</en></s>
+  <s><zh>冷的季节或寒带地图：5天寒潮，外加4～8只狂暴冬狼（按袭击点数）。寒潮结束时冬狼恢复平静，可以驯服。</zh><en>In cold seasons or on cold maps: a 5-day cold snap, plus 4-8 manhunting winter wolves (by raid points). When the cold snap ends, the wolves calm down and can be tamed.</en></s>
+  <s><zh>一条龙在天上盘旋1天：龙影掠过时野兽逃散，心情-3，偶尔有吐息落地；结束时可能有五色龙降落勒索。</zh><en>A dragon circles in the sky for 1 day: when its shadow passes, beasts scatter, mood -3, and occasionally a breath lands; at the end a chromatic dragon may land to extort.</en></s>
+  <s><zh>法师塔坠落</zh><en>wizard tower crash</en></s>
+  <s><zh>塞伊法师塔的残骸坠落在殖民地外，骷髅守卫看着，周围野魔法四溢。可以自己拆、等塞伊来回收，或通知同盟来拆。需要塞伊远征军存在。</zh><en>The wreck of a Thayan wizard tower falls outside the colony, watched by skeleton guards, with wild magic spilling all around. You can dismantle it yourself, wait for Thay to recover it, or notify the alliance to dismantle it. Needs the Thayan expedition to exist.</en></s>
+  <s><zh>云游导师（需要 VPE）</zh><en>Wandering mentor (needs VPE)</en></s>
+  <s><zh>殖民地有DND职业路径的人时，一位同路径的导师来住3天，每天教一次（不受每日经验上限限制）；付钱或卷轴可以再留3天。只在启用 Vanilla Psycasts Expanded 时出现。</zh><en>When the colony has people on a DND class path, a mentor of the same path comes to stay for 3 days, teaching once a day (not limited by the daily XP cap); paying or giving a scroll keeps them 3 more days. Only appears with Vanilla Psycasts Expanded enabled.</en></s>
+</LPStrings>

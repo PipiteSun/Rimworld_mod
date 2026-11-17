@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 职业水晶：斩铁式 -->
+  <LP_Crystal_SteelCut.label>class crystal: iron-cleaving form</LP_Crystal_SteelCut.label>
+  <!-- 魔力湖泊的职业水晶。战士吸收后永久学会秘传「斩铁式」（6 环，需要战士 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（6 环战士）：30 秒内所有攻击无视护甲。冷却 2 天。 -->
+  <LP_Crystal_SteelCut.description>A Mana Lake class crystal. A fighter who absorbs it permanently learns the arcanum "Iron-cleaving form" (circle 6, requires fighter level 11, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (fighter, circle 6): for 30 seconds all attacks ignore armor. Cooldown 2 days.</LP_Crystal_SteelCut.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_SteelCut.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_SteelCut.comps.CompUsable.useLabel>
+  <!-- 职业水晶：不动如山 -->
+  <LP_Crystal_Immovable.label>class crystal: immovable as a mountain</LP_Crystal_Immovable.label>
+  <!-- 魔力湖泊的职业水晶。战士吸收后永久学会秘传「不动如山」（7 环，需要战士 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（7 环战士）：30 秒内免疫击晕、不会倒地，受到的伤害 ×0.5。冷却 3 天。 -->
+  <LP_Crystal_Immovable.description>A Mana Lake class crystal. A fighter who absorbs it permanently learns the arcanum "Immovable as a mountain" (circle 7, requires fighter level 13, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (fighter, circle 7): for 30 seconds, immune to stuns, can't be downed, damage taken ×0.5. Cooldown 3 days.</LP_Crystal_Immovable.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_Immovable.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_Immovable.comps.CompUsable.useLabel>
+  <!-- 职业水晶：剑圣之域 -->
+  <LP_Crystal_SwordDomain.label>class crystal: sword saint's domain</LP_Crystal_SwordDomain.label>
+  <!-- 魔力湖泊的职业水晶。战士吸收后永久学会秘传「剑圣之域」（8 环，需要战士 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（8 环战士）：20 秒内剑气笼罩身边 3 格，每 0.5 秒对范围里的一名敌人发动一次近战结算（按当前近战武器，伤害 × 战技强度）。冷却 5 天。 -->
+  <LP_Crystal_SwordDomain.description>A Mana Lake class crystal. A fighter who absorbs it permanently learns the arcanum "Sword saint's domain" (circle 8, requires fighter level 15, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (fighter, circle 8): for 20 seconds a sword aura covers 3 cells around you, resolving a melee attack on one enemy in range every 0.5 seconds (using your current melee weapon, damage × martial power). Cooldown 5 days.</LP_Crystal_SwordDomain.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_SwordDomain.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_SwordDomain.comps.CompUsable.useLabel>
+  <!-- 职业水晶：万军之主 -->
+  <LP_Crystal_Warlord.label>class crystal: lord of armies</LP_Crystal_Warlord.label>
+  <!-- 魔力湖泊的职业水晶。战士吸收后永久学会秘传「万军之主」（9 环，需要战士 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（9 环战士）：本地图所有己方人形 1 天内近战命中 +15%、射击精度提高、造成的伤害 ×1.15，不会精神崩溃。冷却 7 天。 -->
+  <LP_Crystal_Warlord.description>A Mana Lake class crystal. A fighter who absorbs it permanently learns the arcanum "Lord of armies" (circle 9, requires fighter level 17, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (fighter, circle 9): all friendly humanlikes on this map get melee hit +15%, better shooting accuracy, damage dealt ×1.15 and no mental breaks for 1 day. Cooldown 7 days.</LP_Crystal_Warlord.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_Warlord.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_Warlord.comps.CompUsable.useLabel>
+  <!-- 职业水晶：攀云步 -->
+  <LP_Crystal_CloudStep.label>class crystal: cloud step</LP_Crystal_CloudStep.label>
+  <!-- 魔力湖泊的职业水晶。武僧吸收后永久学会秘传「攀云步」（6 环，需要武僧 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（6 环武僧·攀云僧）：跃向 25 格内任意一处空地，无视墙和地形；落地时半径 2 格内的敌人受 15 × 战技强度钝器伤害并被击晕 1 秒。冷却 2 天。 -->
+  <LP_Crystal_CloudStep.description>A Mana Lake class crystal. A monk who absorbs it permanently learns the arcanum "Cloud step" (circle 6, requires monk level 11, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (monk, Cloud Ascendant, circle 6): leap to any open spot within 25 cells, ignoring walls and terrain; on landing, enemies within radius 2 take 15 × martial power blunt damage and are stunned for 1 second. Cooldown 2 days.</LP_Crystal_CloudStep.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_CloudStep.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_CloudStep.comps.CompUsable.useLabel>
+  <!-- 职业水晶：云手 -->
+  <LP_Crystal_CloudHand.label>class crystal: cloud hand</LP_Crystal_CloudHand.label>
+  <!-- 魔力湖泊的职业水晶。武僧吸收后永久学会秘传「云手」（7 环，需要武僧 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（7 环武僧·攀云僧）：隔空打出 15 格的掌劲，40 × 战技强度钝器伤害，无视一半护甲，并把目标击退 3 格。冷却 3 天。 -->
+  <LP_Crystal_CloudHand.description>A Mana Lake class crystal. A monk who absorbs it permanently learns the arcanum "Cloud hand" (circle 7, requires monk level 13, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (monk, Cloud Ascendant, circle 7): strike a 15-cell palm force from afar, 40 × martial power blunt damage, ignoring half the armor and knocking the target back 3 cells. Cooldown 3 days.</LP_Crystal_CloudHand.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_CloudHand.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_CloudHand.comps.CompUsable.useLabel>
+  <!-- 职业水晶：云体 -->
+  <LP_Crystal_CloudBody.label>class crystal: cloud body</LP_Crystal_CloudBody.label>
+  <!-- 魔力湖泊的职业水晶。武僧吸收后永久学会被动秘传「云体」（8 环，需要武僧 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（8 环武僧·攀云僧）：移动 ×1.3，免疫击晕。 -->
+  <LP_Crystal_CloudBody.description>A Mana Lake class crystal. A monk who absorbs it permanently learns the passive arcanum "Cloud body" (circle 8, requires monk level 15, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum passive (monk, Cloud Ascendant, circle 8): movement ×1.3, immune to stuns.</LP_Crystal_CloudBody.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_CloudBody.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_CloudBody.comps.CompUsable.useLabel>
+  <!-- 职业水晶：九霄坠击 -->
+  <LP_Crystal_SkyFall.label>class crystal: ninefold heaven strike</LP_Crystal_SkyFall.label>
+  <!-- 魔力湖泊的职业水晶。武僧吸收后永久学会秘传「九霄坠击」（9 环，需要武僧 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（9 环武僧·攀云僧）：腾身入云 3 秒（期间不可被攻击），再坠向 30 格内一点：半径 4 格内的敌人受 60 × 战技强度钝器伤害并被击晕 5 秒。冷却 7 天。 -->
+  <LP_Crystal_SkyFall.description>A Mana Lake class crystal. A monk who absorbs it permanently learns the arcanum "Ninefold heaven strike" (circle 9, requires monk level 17, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (monk, Cloud Ascendant, circle 9): soar into the clouds for 3 seconds (untargetable meanwhile), then plunge to a point within 30 cells: enemies within radius 4 take 60 × martial power blunt damage and are stunned for 5 seconds. Cooldown 7 days.</LP_Crystal_SkyFall.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_SkyFall.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_SkyFall.comps.CompUsable.useLabel>
+  <!-- 职业水晶：天罚之链 -->
+  <LP_Crystal_JudgmentChain.label>class crystal: chains of heaven's punishment</LP_Crystal_JudgmentChain.label>
+  <!-- 魔力湖泊的职业水晶。圣武士吸收后永久学会秘传「天罚之链」（6 环，需要圣武士 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（6 环圣武士）：用神圣锁链锁住 20 格内一名敌人 10 秒，它几乎无法移动；期间它每攻击一次，自己受 20 × 神恩强度（× 心灵敏感度）神圣伤害。冷却 2 天。 -->
+  <LP_Crystal_JudgmentChain.description>A Mana Lake class crystal. A paladin who absorbs it permanently learns the arcanum "Chains of heaven's punishment" (circle 6, requires paladin level 11, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (paladin, circle 6): bind one enemy within 20 cells with holy chains for 10 seconds, leaving it barely able to move; meanwhile each time it attacks it takes 20 × divine power (× psychic sensitivity) holy damage itself. Cooldown 2 days.</LP_Crystal_JudgmentChain.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_JudgmentChain.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_JudgmentChain.comps.CompUsable.useLabel>
+  <!-- 职业水晶：光耀护盾 -->
+  <LP_Crystal_RadiantShield.label>class crystal: radiant shield</LP_Crystal_RadiantShield.label>
+  <!-- 魔力湖泊的职业水晶。圣武士吸收后永久学会被动秘传「光耀护盾」（7 环，需要圣武士 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（7 环圣武士）：每次施放至圣斩（或其他神圣斩击类能力）后，得到吸收 30 × 神恩强度伤害的护盾，持续 1 分钟。 -->
+  <LP_Crystal_RadiantShield.description>A Mana Lake class crystal. A paladin who absorbs it permanently learns the passive arcanum "Radiant shield" (circle 7, requires paladin level 13, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum passive (paladin, circle 7): after each Divine Smite (or other holy smite-type ability), gain a shield absorbing 30 × divine power damage for 1 minute.</LP_Crystal_RadiantShield.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_RadiantShield.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_RadiantShield.comps.CompUsable.useLabel>
+  <!-- 职业水晶：圣域 -->
+  <LP_Crystal_Sanctuary.label>class crystal: sanctuary</LP_Crystal_Sanctuary.label>
+  <!-- 魔力湖泊的职业水晶。圣武士吸收后永久学会秘传「圣域」（8 环，需要圣武士 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（8 环圣武士）：在 20 格内一点划出半径 5 格的圣域，持续 1 小时：友军每秒恢复 2 × 神恩强度点伤势，邪魔和亡灵每秒受 5 × 神恩强度神圣伤害。冷却 5 天。 -->
+  <LP_Crystal_Sanctuary.description>A Mana Lake class crystal. A paladin who absorbs it permanently learns the arcanum "Sanctuary" (circle 8, requires paladin level 15, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (paladin, circle 8): mark a sanctuary of radius 5 at a point within 20 cells for 1 hour: allies recover 2 × divine power injury per second, fiends and undead take 5 × divine power holy damage per second. Cooldown 5 days.</LP_Crystal_Sanctuary.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_Sanctuary.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_Sanctuary.comps.CompUsable.useLabel>
+  <!-- 职业水晶：天使降临 -->
+  <LP_Crystal_AngelDescent.label>class crystal: angelic descent</LP_Crystal_AngelDescent.label>
+  <!-- 魔力湖泊的职业水晶。圣武士吸收后永久学会秘传「天使降临」（9 环，需要圣武士 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（9 环圣武士）：召来一名天界的天使侍从（天神裔，善战，受到的伤害 ×0.5、近战伤害 ×1.5）协战 1 天，时间一到化为光点离去。冷却 7 天。 -->
+  <LP_Crystal_AngelDescent.description>A Mana Lake class crystal. A paladin who absorbs it permanently learns the arcanum "Angelic descent" (circle 9, requires paladin level 17, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (paladin, circle 9): summon a celestial angelic attendant (an aasimar, a fine fighter, damage taken ×0.5, melee damage ×1.5) to fight alongside you for 1 day, departing as motes of light when time is up. Cooldown 7 days.</LP_Crystal_AngelDescent.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_AngelDescent.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_AngelDescent.comps.CompUsable.useLabel>
+  <!-- 职业水晶：咒法精通 -->
+  <LP_Crystal_CantripMastery.label>class crystal: conjuration mastery</LP_Crystal_CantripMastery.label>
+  <!-- 魔力湖泊的职业水晶。法师吸收后永久学会被动秘传「咒法精通」（6 环，需要法师 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（6 环法师）：法师 1 级能力的法力消耗变为 0。 -->
+  <LP_Crystal_CantripMastery.description>A Mana Lake class crystal. A wizard who absorbs it permanently learns the passive arcanum "Conjuration mastery" (circle 6, requires wizard level 11, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum passive (wizard, circle 6): wizard level 1 abilities cost 0 mana.</LP_Crystal_CantripMastery.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_CantripMastery.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_CantripMastery.comps.CompUsable.useLabel>
+  <!-- 职业水晶：棱光墙 -->
+  <LP_Crystal_PrismWall.label>class crystal: prismatic wall</LP_Crystal_PrismWall.label>
+  <!-- 魔力湖泊的职业水晶。法师吸收后永久学会秘传「棱光墙」（7 环，需要法师 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（7 环法师）：在 25 格内一点立起一道 10 格长的七彩光墙（与施法方向垂直），持续 1 小时：墙上的敌人每秒受火焰、寒霜、闪电、强酸各 8 × 奥术强度（× 心灵敏感度）伤害。冷却 3 天。 -->
+  <LP_Crystal_PrismWall.description>A Mana Lake class crystal. A wizard who absorbs it permanently learns the arcanum "Prismatic wall" (circle 7, requires wizard level 13, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (wizard, circle 7): raise a 10-cell-long prismatic wall (perpendicular to the cast direction) at a point within 25 cells for 1 hour: enemies on the wall take fire, frost, lightning and acid damage of 8 × arcane power (× psychic sensitivity) each per second. Cooldown 3 days.</LP_Crystal_PrismWall.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_PrismWall.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_PrismWall.comps.CompUsable.useLabel>
+  <!-- 职业水晶：拟像术 -->
+  <LP_Crystal_Simulacrum.label>class crystal: simulacrum</LP_Crystal_Simulacrum.label>
+  <!-- 魔力湖泊的职业水晶。法师吸收后永久学会秘传「拟像术」（8 环，需要法师 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（8 环法师）：用冰雪复制 20 格内一名己方人形：拟像有同样的种族、性别和技能等级，只有一半的耐受（受到的伤害 ×2），3 天后融化。冷却 5 天。 -->
+  <LP_Crystal_Simulacrum.description>A Mana Lake class crystal. A wizard who absorbs it permanently learns the arcanum "Simulacrum" (circle 8, requires wizard level 15, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (wizard, circle 8): copy one friendly humanlike within 20 cells out of ice and snow: the simulacrum has the same race, gender and skill levels but only half the toughness (damage taken ×2), and melts after 3 days. Cooldown 5 days.</LP_Crystal_Simulacrum.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_Simulacrum.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_Simulacrum.comps.CompUsable.useLabel>
+  <!-- 职业水晶：真实变形术 -->
+  <LP_Crystal_TruePolymorph.label>class crystal: true polymorph</LP_Crystal_TruePolymorph.label>
+  <!-- 魔力湖泊的职业水晶。法师吸收后永久学会秘传「真实变形术」（9 环，需要法师 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（9 环法师）：把 20 格内一名敌人永久变成一只属于你的动物（体型大的变成灰熊，其余变成森林狼）。对传奇生物、剧情首领和体型 3 以上的目标无效。冷却 10 天。 -->
+  <LP_Crystal_TruePolymorph.description>A Mana Lake class crystal. A wizard who absorbs it permanently learns the arcanum "True polymorph" (circle 9, requires wizard level 17, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (wizard, circle 9): permanently turn one enemy within 20 cells into an animal that belongs to you (big targets become grizzly bears, others timber wolves). No effect on legendary creatures, story bosses and targets of body size 3+. Cooldown 10 days.</LP_Crystal_TruePolymorph.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_TruePolymorph.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_TruePolymorph.comps.CompUsable.useLabel>
+  <!-- 职业水晶：圣言疗愈 -->
+  <LP_Crystal_HolyWordHeal.label>class crystal: holy word healing</LP_Crystal_HolyWordHeal.label>
+  <!-- 魔力湖泊的职业水晶。牧师吸收后永久学会被动秘传「圣言疗愈」（6 环，需要牧师 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（6 环牧师）：治疗伤口和群体治疗另外为每个被治疗的人清除一种疾病或成瘾。 -->
+  <LP_Crystal_HolyWordHeal.description>A Mana Lake class crystal. A cleric who absorbs it permanently learns the passive arcanum "Holy word healing" (circle 6, requires cleric level 11, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum passive (cleric, circle 6): Cure Wounds and Mass Cure Wounds also clear one disease or addiction from each person healed.</LP_Crystal_HolyWordHeal.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_HolyWordHeal.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_HolyWordHeal.comps.CompUsable.useLabel>
+  <!-- 职业水晶：神之圣言 -->
+  <LP_Crystal_DivineWord.label>class crystal: holy word</LP_Crystal_DivineWord.label>
+  <!-- 魔力湖泊的职业水晶。牧师吸收后永久学会秘传「神之圣言」（7 环，需要牧师 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（7 环牧师）：念出神的圣言，半径 6 格内的敌人：剩余健康不到 20% 的当场死亡，不到 50% 的击晕 10 秒，其余失明 1 分钟。传奇生物和剧情首领只会失明。冷却 3 天。 -->
+  <LP_Crystal_DivineWord.description>A Mana Lake class crystal. A cleric who absorbs it permanently learns the arcanum "Holy word" (circle 7, requires cleric level 13, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (cleric, circle 7): speak the holy word of the god; enemies within radius 6: those with under 20% health left die on the spot, under 50% are stunned for 10 seconds, the rest are blinded for 1 minute. Legendary creatures and story bosses are only blinded. Cooldown 3 days.</LP_Crystal_DivineWord.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_DivineWord.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_DivineWord.comps.CompUsable.useLabel>
+  <!-- 职业水晶：神圣光环 -->
+  <LP_Crystal_HolyAura.label>class crystal: holy aura</LP_Crystal_HolyAura.label>
+  <!-- 魔力湖泊的职业水晶。牧师吸收后永久学会秘传「神圣光环」（8 环，需要牧师 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（8 环牧师）：1 分钟内，自己和半径 6 格内的友军受到的伤害 ×0.7，近战攻击他们的邪魔和亡灵失明 10 秒。冷却 5 天。 -->
+  <LP_Crystal_HolyAura.description>A Mana Lake class crystal. A cleric who absorbs it permanently learns the arcanum "Holy aura" (circle 8, requires cleric level 15, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (cleric, circle 8): for 1 minute, you and allies within radius 6 take ×0.7 damage, and fiends and undead that attack them in melee are blinded for 10 seconds. Cooldown 5 days.</LP_Crystal_HolyAura.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_HolyAura.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_HolyAura.comps.CompUsable.useLabel>
+  <!-- 职业水晶：真实复活 -->
+  <LP_Crystal_TrueResurrection.label>class crystal: true resurrection</LP_Crystal_TrueResurrection.label>
+  <!-- 魔力湖泊的职业水晶。牧师吸收后永久学会秘传「真实复活」（9 环，需要牧师 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（9 环牧师）：复活 12 格内一具死亡不超过 1 年的人形尸体，失去的肢体和器官一并长回；尸体腐烂成白骨也可以。对巫妖和死灵造物无效。冷却 30 天。 -->
+  <LP_Crystal_TrueResurrection.description>A Mana Lake class crystal. A cleric who absorbs it permanently learns the arcanum "True resurrection" (circle 9, requires cleric level 17, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (cleric, circle 9): revive a humanlike corpse within 12 cells dead no more than 1 year, regrowing lost limbs and organs too; works even if the corpse has rotted to bones. No effect on liches and necromantic constructs. Cooldown 30 days.</LP_Crystal_TrueResurrection.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_TrueResurrection.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_TrueResurrection.comps.CompUsable.useLabel>
+  <!-- 职业水晶：横越植物 -->
+  <LP_Crystal_TreeStride.label>class crystal: transport via plants</LP_Crystal_TreeStride.label>
+  <!-- 魔力湖泊的职业水晶。德鲁伊吸收后永久学会秘传「横越植物」（6 环，需要德鲁伊 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（6 环德鲁伊）：站在树旁（2 格内）时，走进树里，从本地图另一棵树旁走出来；身边 2 格内最多 3 名友军一起走。冷却 2 天。 -->
+  <LP_Crystal_TreeStride.description>A Mana Lake class crystal. A druid who absorbs it permanently learns the arcanum "Transport via plants" (circle 6, requires druid level 11, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (druid, circle 6): while standing by a tree (within 2 cells), step into it and come out by another tree on this map; up to 3 allies within 2 cells come along. Cooldown 2 days.</LP_Crystal_TreeStride.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_TreeStride.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_TreeStride.comps.CompUsable.useLabel>
+  <!-- 职业水晶：再生之环 -->
+  <LP_Crystal_RegenCircle.label>class crystal: circle of regeneration</LP_Crystal_RegenCircle.label>
+  <!-- 魔力湖泊的职业水晶。德鲁伊吸收后永久学会被动秘传「再生之环」（7 环，需要德鲁伊 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（7 环德鲁伊）：荒野变形期间每 250 刻恢复 2 × 野性强度点伤势；变回人形时再治好当前伤势的 20%。 -->
+  <LP_Crystal_RegenCircle.description>A Mana Lake class crystal. A druid who absorbs it permanently learns the passive arcanum "Circle of regeneration" (circle 7, requires druid level 13, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum passive (druid, circle 7): during wild shape, recover 2 × primal power injury every 250 ticks; when returning to human form, heal another 20% of current injuries.</LP_Crystal_RegenCircle.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_RegenCircle.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_RegenCircle.comps.CompUsable.useLabel>
+  <!-- 职业水晶：兽形术 -->
+  <LP_Crystal_AnimalShapes.label>class crystal: animal shapes</LP_Crystal_AnimalShapes.label>
+  <!-- 魔力湖泊的职业水晶。德鲁伊吸收后永久学会秘传「兽形术」（8 环，需要德鲁伊 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（8 环德鲁伊）：自己和身边 5 格内最多 4 名己方人形一起荒野变形（熊形）1 小时，强度按你的野性强度。冷却 5 天。 -->
+  <LP_Crystal_AnimalShapes.description>A Mana Lake class crystal. A druid who absorbs it permanently learns the arcanum "Animal shapes" (circle 8, requires druid level 15, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (druid, circle 8): you and up to 4 friendly humanlikes within 5 cells wild shape together (bear form) for 1 hour, with strength based on your primal power. Cooldown 5 days.</LP_Crystal_AnimalShapes.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_AnimalShapes.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_AnimalShapes.comps.CompUsable.useLabel>
+  <!-- 职业水晶：化身真龙 -->
+  <LP_Crystal_DragonForm.label>class crystal: dragon form</LP_Crystal_DragonForm.label>
+  <!-- 魔力湖泊的职业水晶。德鲁伊吸收后永久学会秘传「化身真龙」（9 环，需要德鲁伊 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（9 环德鲁伊）：化身真龙 1 小时：龙爪 30、龙咬 36（穿甲 40%），近战伤害 × 野性强度，受到的伤害 ×0.5，移动 ×1.3。冷却 7 天。 -->
+  <LP_Crystal_DragonForm.description>A Mana Lake class crystal. A druid who absorbs it permanently learns the arcanum "Dragon form" (circle 9, requires druid level 17, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (druid, circle 9): become a true dragon for 1 hour: dragon claws 30, dragon bite 36 (armor penetration 40%), melee damage × primal power, damage taken ×0.5, movement ×1.3. Cooldown 7 days.</LP_Crystal_DragonForm.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_DragonForm.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_DragonForm.comps.CompUsable.useLabel>
+  <!-- 职业水晶：超魔·追踪 -->
+  <LP_Crystal_SeekingSpell.label>class crystal: metamagic: seeking</LP_Crystal_SeekingSpell.label>
+  <!-- 魔力湖泊的职业水晶。术士吸收后永久学会被动秘传「超魔·追踪」（6 环，需要术士 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（6 环术士）：术士法术会追着目标的要害打，伤害与治疗 ×1.25。 -->
+  <LP_Crystal_SeekingSpell.description>A Mana Lake class crystal. A sorcerer who absorbs it permanently learns the passive arcanum "Metamagic: seeking" (circle 6, requires sorcerer level 11, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum passive (sorcerer, circle 6): sorcerer spells chase the target's vital spots; damage and healing ×1.25.</LP_Crystal_SeekingSpell.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_SeekingSpell.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_SeekingSpell.comps.CompUsable.useLabel>
+  <!-- 职业水晶：超魔·延效 -->
+  <LP_Crystal_ExtendedSpell.label>class crystal: metamagic: extended</LP_Crystal_ExtendedSpell.label>
+  <!-- 魔力湖泊的职业水晶。术士吸收后永久学会被动秘传「超魔·延效」（7 环，需要术士 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（7 环术士）：术士法术的持续时间 ×2。 -->
+  <LP_Crystal_ExtendedSpell.description>A Mana Lake class crystal. A sorcerer who absorbs it permanently learns the passive arcanum "Metamagic: extended" (circle 7, requires sorcerer level 13, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum passive (sorcerer, circle 7): sorcerer spell durations ×2.</LP_Crystal_ExtendedSpell.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_ExtendedSpell.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_ExtendedSpell.comps.CompUsable.useLabel>
+  <!-- 职业水晶：元素化身 -->
+  <LP_Crystal_ElementalForm.label>class crystal: elemental avatar</LP_Crystal_ElementalForm.label>
+  <!-- 魔力湖泊的职业水晶。术士吸收后永久学会秘传「元素化身」（8 环，需要术士 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（8 环术士）：30 秒内化身元素：免疫火焰、寒霜、闪电、电击和强酸伤害，术士法术伤害 ×1.3。冷却 5 天。 -->
+  <LP_Crystal_ElementalForm.description>A Mana Lake class crystal. A sorcerer who absorbs it permanently learns the arcanum "Elemental avatar" (circle 8, requires sorcerer level 15, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (sorcerer, circle 8): become an elemental for 30 seconds: immune to fire, frost, lightning, electrical and acid damage, sorcerer spell damage ×1.3. Cooldown 5 days.</LP_Crystal_ElementalForm.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_ElementalForm.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_ElementalForm.comps.CompUsable.useLabel>
+  <!-- 职业水晶：源能爆发 -->
+  <LP_Crystal_SourceBurst.label>class crystal: source burst</LP_Crystal_SourceBurst.label>
+  <!-- 魔力湖泊的职业水晶。术士吸收后永久学会秘传「源能爆发」（9 环，需要术士 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（9 环术士）：耗尽全部术士法力（至少 1 点），在 25 格内一点引爆：半径 5 格内的敌人受（每点法力 15）× 天赋强度（× 心灵敏感度）奥术力伤害。冷却 7 天。 -->
+  <LP_Crystal_SourceBurst.description>A Mana Lake class crystal. A sorcerer who absorbs it permanently learns the arcanum "Source burst" (circle 9, requires sorcerer level 17, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (sorcerer, circle 9): spend all your sorcerer mana (at least 1) and detonate it at a point within 25 cells: enemies within radius 5 take (15 per mana point) × innate power (× psychic sensitivity) arcane force damage. Cooldown 7 days.</LP_Crystal_SourceBurst.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_SourceBurst.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_SourceBurst.comps.CompUsable.useLabel>
+  <!-- 职业水晶：血怒 -->
+  <LP_Crystal_BloodFury.label>class crystal: blood fury</LP_Crystal_BloodFury.label>
+  <!-- 魔力湖泊的职业水晶。野蛮人吸收后永久学会被动秘传「血怒」（6 环，需要野蛮人 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（6 环野蛮人）：狂暴中，自己每损失 10% 的健康，造成的伤害 +5%（最多 +50%）。 -->
+  <LP_Crystal_BloodFury.description>A Mana Lake class crystal. A barbarian who absorbs it permanently learns the passive arcanum "Blood fury" (circle 6, requires barbarian level 11, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum passive (barbarian, circle 6): while raging, damage dealt +5% for every 10% of health you've lost (up to +50%).</LP_Crystal_BloodFury.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_BloodFury.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_BloodFury.comps.CompUsable.useLabel>
+  <!-- 职业水晶：不可阻挡 -->
+  <LP_Crystal_Unstoppable.label>class crystal: unstoppable</LP_Crystal_Unstoppable.label>
+  <!-- 魔力湖泊的职业水晶。野蛮人吸收后永久学会被动秘传「不可阻挡」（7 环，需要野蛮人 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（7 环野蛮人）：狂暴中免疫击晕。 -->
+  <LP_Crystal_Unstoppable.description>A Mana Lake class crystal. A barbarian who absorbs it permanently learns the passive arcanum "Unstoppable" (circle 7, requires barbarian level 13, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum passive (barbarian, circle 7): immune to stuns while raging.</LP_Crystal_Unstoppable.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_Unstoppable.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_Unstoppable.comps.CompUsable.useLabel>
+  <!-- 职业水晶：巨人化 -->
+  <LP_Crystal_Enlarge.label>class crystal: giant form</LP_Crystal_Enlarge.label>
+  <!-- 魔力湖泊的职业水晶。野蛮人吸收后永久学会秘传「巨人化」（8 环，需要野蛮人 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（8 环野蛮人）：30 秒内身形暴涨，近战伤害 ×1.5，受到的伤害 ×0.8。冷却 5 天。 -->
+  <LP_Crystal_Enlarge.description>A Mana Lake class crystal. A barbarian who absorbs it permanently learns the arcanum "Giant form" (circle 8, requires barbarian level 15, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (barbarian, circle 8): your body swells for 30 seconds, melee damage ×1.5, damage taken ×0.8. Cooldown 5 days.</LP_Crystal_Enlarge.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_Enlarge.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_Enlarge.comps.CompUsable.useLabel>
+  <!-- 职业水晶：永恒狂怒 -->
+  <LP_Crystal_EternalRage.label>class crystal: eternal fury</LP_Crystal_EternalRage.label>
+  <!-- 魔力湖泊的职业水晶。野蛮人吸收后永久学会被动秘传「永恒狂怒」（9 环，需要野蛮人 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（9 环野蛮人）：狂暴不再有时限，只要 10 秒内还在战斗就一直持续；狂暴中不会倒地（伤势过重时照样会死）。 -->
+  <LP_Crystal_EternalRage.description>A Mana Lake class crystal. A barbarian who absorbs it permanently learns the passive arcanum "Eternal fury" (circle 9, requires barbarian level 17, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum passive (barbarian, circle 9): rage no longer has a time limit and lasts as long as you're still fighting within 10 seconds; can't be downed while raging (you still die from excessive injuries).</LP_Crystal_EternalRage.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_EternalRage.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_EternalRage.comps.CompUsable.useLabel>
+  <!-- 职业水晶：自然伪装 -->
+  <LP_Crystal_Camouflage.label>class crystal: natural camouflage</LP_Crystal_Camouflage.label>
+  <!-- 魔力湖泊的职业水晶。游侠吸收后永久学会被动秘传「自然伪装」（6 环，需要游侠 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（6 环游侠）：征召后静止不动约 4 秒就进入伪装，下一次攻击伤害 ×2（攻击或移动后解除）。 -->
+  <LP_Crystal_Camouflage.description>A Mana Lake class crystal. A ranger who absorbs it permanently learns the passive arcanum "Natural camouflage" (circle 6, requires ranger level 11, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum passive (ranger, circle 6): after standing still for about 4 seconds while drafted you become camouflaged, and the next attack deals ×2 damage (removed after attacking or moving).</LP_Crystal_Camouflage.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_Camouflage.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_Camouflage.comps.CompUsable.useLabel>
+  <!-- 职业水晶：疾风箭 -->
+  <LP_Crystal_GaleArrow.label>class crystal: gale arrow</LP_Crystal_GaleArrow.label>
+  <!-- 魔力湖泊的职业水晶。游侠吸收后永久学会秘传「疾风箭」（7 环，需要游侠 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（7 环游侠）：用当前远程武器射出一发弹射箭：命中目标后再弹向它 8 格内的另外 2 名敌人，每次都是一发完整的射击。冷却 3 天。 -->
+  <LP_Crystal_GaleArrow.description>A Mana Lake class crystal. A ranger who absorbs it permanently learns the arcanum "Gale arrow" (circle 7, requires ranger level 13, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (ranger, circle 7): fire a ricochet arrow with your current ranged weapon: after hitting the target it bounces to 2 other enemies within 8 cells of it, each a full shot. Cooldown 3 days.</LP_Crystal_GaleArrow.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_GaleArrow.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_GaleArrow.comps.CompUsable.useLabel>
+  <!-- 职业水晶：兽伴进化 -->
+  <LP_Crystal_BeastEvolve.label>class crystal: evolved beast companion</LP_Crystal_BeastEvolve.label>
+  <!-- 魔力湖泊的职业水晶。游侠吸收后永久学会被动秘传「兽伴进化」（8 环，需要游侠 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（8 环游侠）：你的兽伴受到的伤害 ×0.67（相当于生命 +50%），近战伤害 ×1.3，移动 ×1.1。 -->
+  <LP_Crystal_BeastEvolve.description>A Mana Lake class crystal. A ranger who absorbs it permanently learns the passive arcanum "Evolved beast companion" (circle 8, requires ranger level 15, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum passive (ranger, circle 8): your beast companion takes ×0.67 damage (equivalent to +50% health), melee damage ×1.3, movement ×1.1.</LP_Crystal_BeastEvolve.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_BeastEvolve.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_BeastEvolve.comps.CompUsable.useLabel>
+  <!-- 职业水晶：猎神之眼 -->
+  <LP_Crystal_HuntGodEye.label>class crystal: eye of the hunt god</LP_Crystal_HuntGodEye.label>
+  <!-- 魔力湖泊的职业水晶。游侠吸收后永久学会秘传「猎神之眼」（9 环，需要游侠 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（9 环游侠）：1 天内射击精度大幅提高（几乎必中），对宿敌伤害 ×1.5。冷却 7 天。 -->
+  <LP_Crystal_HuntGodEye.description>A Mana Lake class crystal. A ranger who absorbs it permanently learns the arcanum "Eye of the hunt god" (circle 9, requires ranger level 17, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (ranger, circle 9): for 1 day, shooting accuracy greatly increased (almost always hits), ×1.5 damage against favored enemies. Cooldown 7 days.</LP_Crystal_HuntGodEye.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_HuntGodEye.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_HuntGodEye.comps.CompUsable.useLabel>
+  <!-- 职业水晶：陷阱大师 -->
+  <LP_Crystal_TrapMaster.label>class crystal: trap master</LP_Crystal_TrapMaster.label>
+  <!-- 魔力湖泊的职业水晶。游荡者吸收后永久学会被动秘传「陷阱大师」（6 环，需要游荡者 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（6 环游荡者）：不会触发任何陷阱。 -->
+  <LP_Crystal_TrapMaster.description>A Mana Lake class crystal. A rogue who absorbs it permanently learns the passive arcanum "Trap master" (circle 6, requires rogue level 11, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum passive (rogue, circle 6): never triggers any trap.</LP_Crystal_TrapMaster.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_TrapMaster.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_TrapMaster.comps.CompUsable.useLabel>
+  <!-- 职业水晶：致残刺 -->
+  <LP_Crystal_CripplingStab.label>class crystal: crippling strike</LP_Crystal_CripplingStab.label>
+  <!-- 魔力湖泊的职业水晶。游荡者吸收后永久学会被动秘传「致残刺」（7 环，需要游荡者 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（7 环游荡者）：偷袭命中后，目标移动 ×0.5，持续 30 秒。 -->
+  <LP_Crystal_CripplingStab.description>A Mana Lake class crystal. A rogue who absorbs it permanently learns the passive arcanum "Crippling strike" (circle 7, requires rogue level 13, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum passive (rogue, circle 7): after a sneak attack hits, the target's movement ×0.5 for 30 seconds.</LP_Crystal_CripplingStab.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_CripplingStab.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_CripplingStab.comps.CompUsable.useLabel>
+  <!-- 职业水晶：毒王 -->
+  <LP_Crystal_PoisonKing.label>class crystal: poison king</LP_Crystal_PoisonKing.label>
+  <!-- 魔力湖泊的职业水晶。游荡者吸收后永久学会被动秘传「毒王」（8 环，需要游荡者 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（8 环游荡者）：淬毒刃的毒量 ×2，对血肉亡灵也生效。 -->
+  <LP_Crystal_PoisonKing.description>A Mana Lake class crystal. A rogue who absorbs it permanently learns the passive arcanum "Poison king" (circle 8, requires rogue level 15, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum passive (rogue, circle 8): Poisoned Blade's poison amount ×2, also works on fleshy undead.</LP_Crystal_PoisonKing.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_PoisonKing.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_PoisonKing.comps.CompUsable.useLabel>
+  <!-- 职业水晶：无影 -->
+  <LP_Crystal_Shadowless.label>class crystal: shadowless</LP_Crystal_Shadowless.label>
+  <!-- 魔力湖泊的职业水晶。游荡者吸收后永久学会被动秘传「无影」（9 环，需要游荡者 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（9 环游荡者）：每次杀死敌人后隐形 3 秒，可以连续触发。 -->
+  <LP_Crystal_Shadowless.description>A Mana Lake class crystal. A rogue who absorbs it permanently learns the passive arcanum "Shadowless" (circle 9, requires rogue level 17, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum passive (rogue, circle 9): turn invisible for 3 seconds after each kill; can trigger repeatedly.</LP_Crystal_Shadowless.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_Shadowless.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_Shadowless.comps.CompUsable.useLabel>
+  <!-- 职业水晶：异界护卫 -->
+  <LP_Crystal_OtherGuardian.label>class crystal: otherworldly guardian</LP_Crystal_OtherGuardian.label>
+  <!-- 魔力湖泊的职业水晶。邪术师吸收后永久学会秘传「异界护卫」（6 环，需要邪术师 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（6 环邪术师）：按宗主召来一只异界护卫协战 3 天：邪魔宗主是小恶魔，妖精宗主是小精灵，其余是夸塞魔。冷却 2 天。 -->
+  <LP_Crystal_OtherGuardian.description>A Mana Lake class crystal. A warlock who absorbs it permanently learns the arcanum "Otherworldly guardian" (circle 6, requires warlock level 11, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (warlock, circle 6): summon an otherworldly guardian based on your patron to fight alongside you for 3 days: an imp for the Fiend, a sprite for the Archfey, a quasit otherwise. Cooldown 2 days.</LP_Crystal_OtherGuardian.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_OtherGuardian.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_OtherGuardian.comps.CompUsable.useLabel>
+  <!-- 职业水晶：灵魂收割 -->
+  <LP_Crystal_SoulHarvest.label>class crystal: soul harvest</LP_Crystal_SoulHarvest.label>
+  <!-- 魔力湖泊的职业水晶。邪术师吸收后永久学会被动秘传「灵魂收割」（7 环，需要邪术师 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（7 环邪术师）：用魔能伤害（魔能爆等）杀死敌人时，回 1 点契约法力。 -->
+  <LP_Crystal_SoulHarvest.description>A Mana Lake class crystal. A warlock who absorbs it permanently learns the passive arcanum "Soul harvest" (circle 7, requires warlock level 13, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum passive (warlock, circle 7): killing an enemy with eldritch damage (eldritch blast etc.) restores 1 pact mana.</LP_Crystal_SoulHarvest.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_SoulHarvest.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_SoulHarvest.comps.CompUsable.useLabel>
+  <!-- 职业水晶：群体恐惧 -->
+  <LP_Crystal_MassFear.label>class crystal: mass fear</LP_Crystal_MassFear.label>
+  <!-- 魔力湖泊的职业水晶。邪术师吸收后永久学会秘传「群体恐惧」（8 环，需要邪术师 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（8 环邪术师）：20 格内一点半径 6 格内的敌人陷入恐惧、四散奔逃 15 秒；传奇生物和剧情首领有 50% 的成功率挣脱。冷却 5 天。 -->
+  <LP_Crystal_MassFear.description>A Mana Lake class crystal. A warlock who absorbs it permanently learns the arcanum "Mass fear" (circle 8, requires warlock level 15, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (warlock, circle 8): enemies within radius 6 at a point within 20 cells are terrified and scatter for 15 seconds; legendary creatures and story bosses have a 50% chance to break free. Cooldown 5 days.</LP_Crystal_MassFear.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_MassFear.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_MassFear.comps.CompUsable.useLabel>
+  <!-- 职业水晶：灵魂契约 -->
+  <LP_Crystal_SoulPact.label>class crystal: soul pact</LP_Crystal_SoulPact.label>
+  <!-- 魔力湖泊的职业水晶。邪术师吸收后永久学会被动秘传「灵魂契约」（9 环，需要邪术师 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传被动（9 环邪术师）：你杀死的敌对人形（传奇生物和剧情首领除外）有 50% 的概率灵魂被束缚：当场爬起来成为你的战斗仆从，3 天后灵魂散去、化为光点消失。 -->
+  <LP_Crystal_SoulPact.description>A Mana Lake class crystal. A warlock who absorbs it permanently learns the passive arcanum "Soul pact" (circle 9, requires warlock level 17, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum passive (warlock, circle 9): hostile humanlikes you kill (except legendary creatures and story bosses) have a 50% chance to have their soul bound: they rise on the spot as your combat thrall, and after 3 days the soul disperses and they vanish as motes of light.</LP_Crystal_SoulPact.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_SoulPact.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_SoulPact.comps.CompUsable.useLabel>
+  <!-- 职业水晶：不可抗拒之舞 -->
+  <LP_Crystal_IrresistibleDance.label>class crystal: irresistible dance</LP_Crystal_IrresistibleDance.label>
+  <!-- 魔力湖泊的职业水晶。吟游诗人吸收后永久学会秘传「不可抗拒之舞」（6 环，需要吟游诗人 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（6 环吟游诗人）：15 格内一个敌人被迫跳舞 20 秒 × 激昂强度：不能攻击、不能走开，受到的伤害 ×1.3。成功率 = 65% + (激昂强度 − 1) × 40%，目标每 1 点感知调整值 −5%、心智抗性也会抵消；剧情首领和传奇单位最多跳 5 秒。机械体无效。冷却 2 天。 -->
+  <LP_Crystal_IrresistibleDance.description>A Mana Lake class crystal. A bard who absorbs it permanently learns the arcanum "Irresistible dance" (circle 6, requires bard level 11, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (bard, circle 6): one enemy within 15 cells is forced to dance for 20 seconds × inspiration power: can't attack or walk away, damage taken ×1.3. Success = 65% + (inspiration power - 1) × 40%, -5% per point of the target's Wisdom modifier, also offset by mind resistance; story bosses and legendary units dance 5 seconds at most. No effect on mechanoids. Cooldown 2 days.</LP_Crystal_IrresistibleDance.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_IrresistibleDance.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_IrresistibleDance.comps.CompUsable.useLabel>
+  <!-- 职业水晶：群体隐形 -->
+  <LP_Crystal_MassInvisibility.label>class crystal: mass invisibility</LP_Crystal_MassInvisibility.label>
+  <!-- 魔力湖泊的职业水晶。吟游诗人吸收后永久学会秘传「群体隐形」（7 环，需要吟游诗人 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（7 环吟游诗人）：10 格内所有友方人形（含自己）隐形 30 秒，攻击或施法就会现形。冷却 3 天。 -->
+  <LP_Crystal_MassInvisibility.description>A Mana Lake class crystal. A bard who absorbs it permanently learns the arcanum "Mass invisibility" (circle 7, requires bard level 13, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (bard, circle 7): all friendly humanlikes within 10 cells (including yourself) turn invisible for 30 seconds; attacking or casting reveals them. Cooldown 3 days.</LP_Crystal_MassInvisibility.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_MassInvisibility.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_MassInvisibility.comps.CompUsable.useLabel>
+  <!-- 职业水晶：力量真言·震慑 -->
+  <LP_Crystal_PowerWordStun.label>class crystal: power word stun</LP_Crystal_PowerWordStun.label>
+  <!-- 魔力湖泊的职业水晶。吟游诗人吸收后永久学会秘传「力量真言·震慑」（8 环，需要吟游诗人 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（8 环吟游诗人）：20 格内一点半径 5 格内的敌人全部眩晕 6 秒 × 激昂强度；剧情首领和传奇单位时间减半。机械体也有效。冷却 5 天。 -->
+  <LP_Crystal_PowerWordStun.description>A Mana Lake class crystal. A bard who absorbs it permanently learns the arcanum "Power word stun" (circle 8, requires bard level 15, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (bard, circle 8): all enemies within radius 5 at a point within 20 cells are stunned for 6 seconds × inspiration power; half the time for story bosses and legendary units. Works on mechanoids too. Cooldown 5 days.</LP_Crystal_PowerWordStun.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_PowerWordStun.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_PowerWordStun.comps.CompUsable.useLabel>
+  <!-- 职业水晶：预知术 -->
+  <LP_Crystal_Foresight.label>class crystal: foresight</LP_Crystal_Foresight.label>
+  <!-- 魔力湖泊的职业水晶。吟游诗人吸收后永久学会秘传「预知术」（9 环，需要吟游诗人 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（9 环吟游诗人）：一名友方（可以是自己）1 天内看得见片刻之后的事：近战命中 +25%，射击精度提高，近战闪避 +25%，心智抗性 +50%，不会被偷袭。冷却 7 天。 -->
+  <LP_Crystal_Foresight.description>A Mana Lake class crystal. A bard who absorbs it permanently learns the arcanum "Foresight" (circle 9, requires bard level 17, takes 1 arcanum slot; there is 1 arcanum slot each at adventurer levels 11 / 15 / 20 and legend level 30).\n\nArcanum (bard, circle 9): one ally (can be yourself) sees a moment into the future for 1 day: melee hit +25%, better shooting accuracy, melee dodge +25%, mind resistance +50%, can't be ambushed. Cooldown 7 days.</LP_Crystal_Foresight.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_Foresight.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_Foresight.comps.CompUsable.useLabel>
+</LanguageData>

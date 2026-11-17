@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 巨灵本源 -->
+  <LP_GenieCore.label>genie origin</LP_GenieCore.label>
+  <!-- 被神灯束缚的巨灵之身。巨灵记得自己的神灯：神灯不在你手里（被卖、被偷、被毁）一天后，巨灵就会化烟离去。巨灵倒下时不会死去、不留尸体，而是化作青烟回到灯里，神灯暗淡15天后能再擦出同一个巨灵（名字、技能、血脉不变，伤势清空）。巨灵不会被招募或俘虏；元素血脉能力的冷却减半。头戴一圈金色的头箍。 -->
+  <LP_GenieCore.description>The body of a genie bound by a lamp. The genie remembers its lamp: a day after the lamp leaves your hands (sold, stolen, destroyed), the genie vanishes in smoke. A genie doesn't die when it falls and leaves no corpse; it turns into blue smoke and returns to the lamp, and after the lamp is dim for 15 days the same genie can be rubbed out again (name, skills and bloodline unchanged, injuries cleared). Genies can't be recruited or captured; elemental bloodline ability cooldowns are halved. Wears a golden circlet on the head.</LP_GenieCore.description>
+  <!-- 灯之束缚：神灯不在手里满1天，巨灵离去。 | 倒下回灯：不死、不留尸体，神灯暗淡15天。 | 元素血脉能力冷却×50%。 -->
+  <LP_GenieCore.customEffectDescriptions.0>Lamp binding: the genie leaves if the lamp is out of your hands for a full day.</LP_GenieCore.customEffectDescriptions.0>
+  <LP_GenieCore.customEffectDescriptions.1>Downed returns to the lamp: doesn't die, leaves no corpse, the lamp is dim for 15 days.</LP_GenieCore.customEffectDescriptions.1>
+  <LP_GenieCore.customEffectDescriptions.2>Elemental bloodline ability cooldowns ×50%.</LP_GenieCore.customEffectDescriptions.2>
+  <!-- 巨灵体型 -->
+  <LP_GenieStature.label>genie build</LP_GenieStature.label>
+  <!-- 巨灵高大的身形：实际体型×150%，显示×130%。巨躯规则让巨灵的生命×125%、近战×115%；巨胃：饱食度上限×150%。 -->
+  <LP_GenieStature.description>The genie's tall figure: actual body size ×150%, drawn ×130%. Giant-body rules give the genie health ×125% and melee ×115%; giant stomach: max food ×150%.</LP_GenieStature.description>
+  <!-- 巨灵不老 -->
+  <LP_GenieAgeless.label>genie agelessness</LP_GenieAgeless.label>
+  <!-- 巨灵已经活了几千年，身体不再衰老：18岁以后生理年龄停止增长。巨灵照常要吃饭睡觉。 -->
+  <LP_GenieAgeless.description>Genies have lived for thousands of years and their bodies no longer age: biological age stops after 18. Genies still need to eat and sleep.</LP_GenieAgeless.description>
+  <!-- 许愿 -->
+  <LP_GenieWish.label>make a wish</LP_GenieWish.label>
+  <!-- 巨灵能实现愿望：每60天一次，从丰收、和平、痊愈、财富、晴空、顿悟六个愿望中选一个。许愿后巨灵会倦怠15天。 -->
+  <LP_GenieWish.description>Genies can grant wishes: once every 60 days, pick one of six wishes: harvest, peace, healing, wealth, clear sky, epiphany. After a wish the genie is weary for 15 days.</LP_GenieWish.description>
+</LanguageData>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 抽恶魔血 -->
+  <LP_ExtractDemonBlood.label>draw demon blood</LP_ExtractDemonBlood.label>
+  <!-- 从戴着位面锚链、关在有束缚法阵房间里的恶魔囚犯身上抽一瓶恶魔血。不伤性命，每 5 天一次。 -->
+  <LP_ExtractDemonBlood.description>Draw a vial of demon blood from a demon prisoner wearing a planar anchor chain and held in a room with a binding circle. Not lethal; once every 5 days.</LP_ExtractDemonBlood.description>
+  <!-- 正在抽恶魔血。 -->
+  <LP_ExtractDemonBlood.jobString>Drawing demon blood.</LP_ExtractDemonBlood.jobString>
+  <!-- 锻造位面锚链 -->
+  <LP_MakeDimensionalShackles.label>forge planar anchor chain</LP_MakeDimensionalShackles.label>
+  <!-- 用 30 银、20 寒铁和 2 份位面残渣锻造一副位面锚链。 -->
+  <LP_MakeDimensionalShackles.description>Forge a planar anchor chain from 30 silver, 20 cold iron and 2 planar residue.</LP_MakeDimensionalShackles.description>
+  <!-- 正在锻造位面锚链。 -->
+  <LP_MakeDimensionalShackles.jobString>Forging a planar anchor chain.</LP_MakeDimensionalShackles.jobString>
+</LanguageData>

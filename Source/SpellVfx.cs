@@ -31,9 +31,9 @@ namespace LichPhylactery {
  }
  public static class SpellVfxSettings {
   public static void Draw(Listing_Standard l){
-   l.Label("<b>法术特效</b>");
-   l.CheckboxLabeled("施放 DND 法术与职业能力时显示特效",ref LichMod.Settings.spellVfx,"预热时脚下出现法阵，施放时有光球飞向目标、落点按元素（火、冰、雷、死灵、神圣、治疗、暗影、毒、血、自然、心灵、力场、近战等）爆发；范围法术的光环按半径放大。只是视觉效果，不影响数值。");
-   l.Label("特效大小："+LichMod.Settings.spellVfxScale+"%");LichMod.Settings.spellVfxScale=(int)l.Slider(LichMod.Settings.spellVfxScale,50,200);
+   l.Label("<b>法术特效</b>".Loc());
+   l.CheckboxLabeled("施放 DND 法术与职业能力时显示特效".Loc(),ref LichMod.Settings.spellVfx,"预热时脚下出现法阵，施放时有光球飞向目标、落点按元素（火、冰、雷、死灵、神圣、治疗、暗影、毒、血、自然、心灵、力场、近战等）爆发；范围法术的光环按半径放大。只是视觉效果，不影响数值。".Loc());
+   l.Label("特效大小：".Loc()+LichMod.Settings.spellVfxScale+"%");LichMod.Settings.spellVfxScale=(int)l.Slider(LichMod.Settings.spellVfxScale,50,200);
    l.GapLine();
   }
  }
@@ -100,20 +100,20 @@ namespace LichPhylactery {
 
   // ===== 分类 =====
   static readonly (VfxTheme t,Regex r)[] Keys={
-   (VfxTheme.Heal,new Regex("治疗|治愈|疗伤|愈合|回复|恢复生命|再生|复苏|复活|回气|圣疗|急救")),
-   (VfxTheme.Fire,new Regex("火|炎|焰|灼|燃|熔|烈日|陨")),
-   (VfxTheme.Frost,new Regex("冰|霜|寒|雪|冻")),
-   (VfxTheme.Lightning,new Regex("雷|电|风暴|霹")),
-   (VfxTheme.Necrotic,new Regex("死灵|亡灵|腐朽|骸|骨|凋|尸|枯萎|吸取生命|噬魂|灵魂|不死|巫妖")),
-   (VfxTheme.Infernal,new Regex("地狱|恶魔|魔鬼|深渊|邪魔")),
-   (VfxTheme.Psychic,new Regex("心灵|精神|魅惑|蛊惑|恐惧|幻象|幻术|催眠|支配|意念|夺心")),
-   (VfxTheme.Holy,new Regex("神圣|神力|神明|神罚|圣光|圣|光明|祝福|天使|裁决|辉|誓")),
-   (VfxTheme.Shadow,new Regex("暗影|阴影|黑暗|暗|影|夜|隐")),
-   (VfxTheme.Poison,new Regex("毒|酸|腐蚀|孢")),
-   (VfxTheme.Blood,new Regex("血")),
-   (VfxTheme.Nature,new Regex("藤|荆棘|植物|野兽|自然|树|大地|岩|石|土|地震|德鲁伊")),
-   (VfxTheme.Eldritch,new Regex("契约|宗主|邪术|异界|星界")),
-   (VfxTheme.Force,new Regex("力场|护盾|屏障|冲击|击退|传送|跃迁|时空|闪现|迅捷|加速|音波|雷鸣")),
+   (VfxTheme.Heal,new Regex("治疗|治愈|疗伤|愈合|回复|恢复生命|再生|复苏|复活|回气|圣疗|急救".Loc())),
+   (VfxTheme.Fire,new Regex("火|炎|焰|灼|燃|熔|烈日|陨".Loc())),
+   (VfxTheme.Frost,new Regex("冰|霜|寒|雪|冻".Loc())),
+   (VfxTheme.Lightning,new Regex("雷|电|风暴|霹".Loc())),
+   (VfxTheme.Necrotic,new Regex("死灵|亡灵|腐朽|骸|骨|凋|尸|枯萎|吸取生命|噬魂|灵魂|不死|巫妖".Loc())),
+   (VfxTheme.Infernal,new Regex("地狱|恶魔|魔鬼|深渊|邪魔".Loc())),
+   (VfxTheme.Psychic,new Regex("心灵|精神|魅惑|蛊惑|恐惧|幻象|幻术|催眠|支配|意念|夺心".Loc())),
+   (VfxTheme.Holy,new Regex("神圣|神力|神明|神罚|圣光|圣|光明|祝福|天使|裁决|辉|誓".Loc())),
+   (VfxTheme.Shadow,new Regex("暗影|阴影|黑暗|暗|影|夜|隐".Loc())),
+   (VfxTheme.Poison,new Regex("毒|酸|腐蚀|孢".Loc())),
+   (VfxTheme.Blood,new Regex("血".Loc())),
+   (VfxTheme.Nature,new Regex("藤|荆棘|植物|野兽|自然|树|大地|岩|石|土|地震|德鲁伊".Loc())),
+   (VfxTheme.Eldritch,new Regex("契约|宗主|邪术|异界|星界".Loc())),
+   (VfxTheme.Force,new Regex("力场|护盾|屏障|冲击|击退|传送|跃迁|时空|闪现|迅捷|加速|音波|雷鸣".Loc())),
   };
   static VfxTheme? FileTheme(string f){
    if(string.IsNullOrEmpty(f))return null;
@@ -125,7 +125,7 @@ namespace LichPhylactery {
    if(f.Contains("LichSouls") || f=="Abilities.xml" || f.Contains("Necro"))return VfxTheme.Necrotic;
    if(f.Contains("FrostGiant"))return VfxTheme.Frost;
    if(f.Contains("StormGiant"))return VfxTheme.Lightning;
-   if(f.Contains("ForceDragon") || f.Contains("CloudGiant"))return VfxTheme.Force;
+   if(f.Contains("CloudGiant"))return VfxTheme.Force;
    return null;
   }
   public static VfxTheme Classify(AbilityDef d){
@@ -335,10 +335,10 @@ namespace LichPhylactery {
  public class AimPreview { public AimShape shape; public float radius,length,halfAngle=45f; public bool classRadius; }
  public static class SpellAim {
   static readonly Dictionary<AbilityDef,AimPreview> cache=new Dictionary<AbilityDef,AimPreview>();
-  static readonly Regex RadiusRx=new Regex(@"半径\s*(\d+(?:\.\d+)?)");
-  static readonly Regex ConeRx=new Regex(@"(?:(\d+(?:\.\d+)?)\s*格(?:长)?的?\s*(?:锥形|扇形))|(?:(?:锥形|扇形)(?:区域)?\s*[（(]?\s*(\d+(?:\.\d+)?)\s*格)");
+  static readonly Regex RadiusRx=new Regex(@"半径\s*(\d+(?:\.\d+)?)".Loc());
+  static readonly Regex ConeRx=new Regex(@"(?:(\d+(?:\.\d+)?)\s*格(?:长)?的?\s*(?:锥形|扇形))|(?:(?:锥形|扇形)(?:区域)?\s*[（(]?\s*(\d+(?:\.\d+)?)\s*格)".Loc());
   static readonly Regex DegRx=new Regex(@"(\d+)\s*°");
-  static readonly Regex LineRx=new Regex("线上|直线|射线|光束|一道闪电");
+  static readonly Regex LineRx=new Regex("线上|直线|射线|光束|一道闪电".Loc());
   public static AimPreview Of(AbilityDef d){
    if(d==null)return null;
    if(cache.TryGetValue(d,out var a))return a;
@@ -350,7 +350,7 @@ namespace LichPhylactery {
    string desc=d.description??"";var ce=d.comps?.OfType<CompProperties_ClassEffect>().FirstOrDefault();
    float range=d.verbProperties?.range??0f;
    var cm=ConeRx.Match(desc);
-   if(desc.Contains("锥形") || desc.Contains("扇形")){
+   if(desc.Contains("锥形") || desc.Contains("扇形") || cm.Success || (!LPLang.Chinese && System.Text.RegularExpressions.Regex.IsMatch(desc,@"\b(cone|fan)\b",System.Text.RegularExpressions.RegexOptions.IgnoreCase))){
     a.shape=AimShape.Cone;
     float len=0;if(cm.Success)float.TryParse(cm.Groups[1].Success?cm.Groups[1].Value:cm.Groups[2].Value,out len);
     a.length=len>0?len:(ce?.radius>0?ce.radius:Math.Max(5f,Math.Min(range,9f)));
@@ -405,7 +405,7 @@ namespace LichPhylactery {
  [HarmonyPatch(typeof(Verb_CastAbility),nameof(Verb_CastAbility.DrawHighlight))]
  public static class SpellAim_DrawHighlight {
   static void Postfix(Verb_CastAbility __instance,LocalTargetInfo target){
-   try{if(__instance?.ability!=null && __instance.CasterPawn!=null)SpellAim.Draw(__instance.CasterPawn,__instance.ability.def,target);}catch(Exception e){Log.ErrorOnce("[LP] 范围指示出错："+e,0x5f7a1c7);}
+   try{if(__instance?.ability!=null && __instance.CasterPawn!=null)SpellAim.Draw(__instance.CasterPawn,__instance.ability.def,target);}catch(Exception e){Log.ErrorOnce("[LP] 范围指示出错：".Loc()+e,0x5f7a1c7);}
   }
  }
 
@@ -415,7 +415,7 @@ namespace LichPhylactery {
   public SpellVfxQueue(Game game){q.Clear();}
   public static int Pending=>q.Count;
   public static void Add(int delay,Action a){if(delay<=0 || Find.TickManager==null){Safe(a);return;}q.Add((Find.TickManager.TicksGame+delay,a));}
-  static void Safe(Action a){try{a();}catch(Exception e){Log.ErrorOnce("[LP] 法术特效出错："+e,0x5f7a1c3);}}
+  static void Safe(Action a){try{a();}catch(Exception e){Log.ErrorOnce("[LP] 法术特效出错：".Loc()+e,0x5f7a1c3);}}
   public override void GameComponentTick(){
    if(q.Count==0)return;int now=Find.TickManager.TicksGame;
    for(int i=q.Count-1;i>=0;i--)if(q[i].tick<=now){var a=q[i].act;q.RemoveAt(i);Safe(a);}
@@ -438,7 +438,7 @@ namespace LichPhylactery {
     if(sig)SpellVfx2.Play(__instance.pawn,__state.pos,__state.map,__instance.def,prof,target,Mathf.Min(r,12f));
     SpellVfx2.OnCast(__instance.pawn,__instance.def,prof);
     SpellVfx.LastDef=__instance.def;SpellVfx.LastTick=Find.TickManager.TicksGame;SpellVfx.Played++;
-   }catch(Exception e){Log.ErrorOnce("[LP] 法术特效出错："+e,0x5f7a1c4);}
+   }catch(Exception e){Log.ErrorOnce("[LP] 法术特效出错：".Loc()+e,0x5f7a1c4);}
   }
  }
 
@@ -447,14 +447,14 @@ namespace LichPhylactery {
  public static class SpellVfx_WarmupStart {
   static void Postfix(Verb verb){
    if(!SpellVfx.On || !(verb is Verb_CastAbility va) || !(verb.caster is Pawn p) || !p.Spawned)return;
-   try{var prof=SpellVfx.Profile(va.ability?.def);if(prof!=null && !prof.off)SpellVfx.Warmup(p,prof);}catch(Exception e){Log.ErrorOnce("[LP] 法术特效出错："+e,0x5f7a1c5);}
+   try{var prof=SpellVfx.Profile(va.ability?.def);if(prof!=null && !prof.off)SpellVfx.Warmup(p,prof);}catch(Exception e){Log.ErrorOnce("[LP] 法术特效出错：".Loc()+e,0x5f7a1c5);}
   }
  }
  [HarmonyPatch(typeof(Stance_Warmup),nameof(Stance_Warmup.StanceTick))]
  public static class SpellVfx_WarmupTick {
   static void Postfix(Stance_Warmup __instance){
    if(!SpellVfx.On || __instance.ticksLeft%5!=0 || !(__instance.verb is Verb_CastAbility va) || !(va.caster is Pawn p) || !p.Spawned)return;
-   try{var prof=SpellVfx.Profile(va.ability?.def);if(prof!=null && !prof.off)SpellVfx.WarmupTick(p,prof);}catch(Exception e){Log.ErrorOnce("[LP] 法术特效出错："+e,0x5f7a1c6);}
+   try{var prof=SpellVfx.Profile(va.ability?.def);if(prof!=null && !prof.off)SpellVfx.WarmupTick(p,prof);}catch(Exception e){Log.ErrorOnce("[LP] 法术特效出错：".Loc()+e,0x5f7a1c6);}
   }
  }
 }

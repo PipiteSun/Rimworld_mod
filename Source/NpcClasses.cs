@@ -88,7 +88,7 @@ namespace LichPhylactery {
    if(ClassSubclass.ManaMax(h)>0)ClassSubclass.Data(h).mana=ClassSubclass.ManaMax(h);
    ClassSystem.Sync(h);if(h.pawn!=null)Martial.Refresh(h.pawn);
   }
-  public static string Summary(Hediff_Adventurer h)=>h?.classes==null?"":string.Join("、",ClassSystem.Taken(h).Select(c=>c.label+" "+ClassSystem.Level(h,c)+(ClassSubclass.Picked(h,c)!=null?"（"+ClassSubclass.Picked(h,c).label+"）":"")));
+  public static string Summary(Hediff_Adventurer h)=>h?.classes==null?"":string.Join("、".Loc(),ClassSystem.Taken(h).Select(c=>c.label+" "+ClassSystem.Level(h,c)+(ClassSubclass.Picked(h,c)!=null?"（".Loc()+ClassSubclass.Picked(h,c).label+"）".Loc():"")));
 
   // ---------- AI 施放 ----------
   // 这些效果 AI 不用：要开窗口、要特殊目标、放建筑 / 陷阱、自我位移、招募倒地的人。
@@ -167,8 +167,8 @@ namespace LichPhylactery {
   // ---------- 设置（冒险者分组里，职业设置下面） ----------
   public static void Draw(Listing_Standard l){
    var s=LichMod.Settings;
-   l.CheckboxLabeled("敌人拥有职业",ref s.npcClasses,"不属于玩家的人形冒险者（袭击者、访客、商队、剧情敌人）第一次出现时按派系拿 DND 职业：部落多是野蛮人 / 德鲁伊 / 游侠，海盗多是游荡者 / 战士 / 邪术师，帝国多是圣武士 / 战士 / 法师 / 牧师，塞伊和亡灵多是法师 / 邪术师 / 牧师，其他按最高技能。一个职业（20% 两个），职业等级合计 = 冒险者等级（最多 20）；子职业随机；冒险者 25 级起有传奇职业能力。旧存档里已经在地图上的人也会补上。关闭后不再给新的 NPC 职业，已有的保留。");
-   l.CheckboxLabeled("敌人施放职业能力",ref s.npcClassCasting,"有职业的 NPC 在战斗中每 4 秒最多放一个职业能力（看冷却和资源）：攻击能力打身边的敌人，范围法术不炸到自己人，治疗职业先救倒地、受伤的友军。关闭后 NPC 只有职业的被动效果。");
+   l.CheckboxLabeled("敌人拥有职业".Loc(),ref s.npcClasses,"不属于玩家的人形冒险者（袭击者、访客、商队、剧情敌人）第一次出现时按派系拿 DND 职业：部落多是野蛮人 / 德鲁伊 / 游侠，海盗多是游荡者 / 战士 / 邪术师，帝国多是圣武士 / 战士 / 法师 / 牧师，塞伊和亡灵多是法师 / 邪术师 / 牧师，其他按最高技能。一个职业（20% 两个），职业等级合计 = 冒险者等级（最多 20）；子职业随机；冒险者 25 级起有传奇职业能力。旧存档里已经在地图上的人也会补上。关闭后不再给新的 NPC 职业，已有的保留。".Loc());
+   l.CheckboxLabeled("敌人施放职业能力".Loc(),ref s.npcClassCasting,"有职业的 NPC 在战斗中每 4 秒最多放一个职业能力（看冷却和资源）：攻击能力打身边的敌人，范围法术不炸到自己人，治疗职业先救倒地、受伤的友军。关闭后 NPC 只有职业的被动效果。".Loc());
   }
  }
  public partial class Settings {

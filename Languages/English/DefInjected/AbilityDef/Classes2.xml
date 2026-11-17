@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 魔法飞弹 -->
+  <LP_MagicMissile.label>magic missile</LP_MagicMissile.label>
+  <!-- 戏法，不耗法力：射出 3 发奥术飞弹，每发 4 × 奥术强度点奥术力伤害，28 格，冷却 5 秒。法师 1 级。 -->
+  <LP_MagicMissile.description>Cantrip, no mana: fire 3 arcane missiles, each 4 × arcane power arcane force damage, 28 cells, cooldown 5 seconds. Wizard level 1.</LP_MagicMissile.description>
+  <!-- 法师护甲 -->
+  <LP_MageArmor.label>mage armor</LP_MageArmor.label>
+  <!-- 一天 × 奥术强度内利器与钝器护甲 +25%。法师 1 级。 -->
+  <LP_MageArmor.description>For one day × arcane power, sharp and blunt armor +25%. Wizard level 1.</LP_MageArmor.description>
+  <!-- 火球术 -->
+  <LP_Fireball.label>fireball</LP_Fireball.label>
+  <!-- 向 24 格内的一点投出火球，半径 4 的火焰爆炸，伤害 20 × 奥术强度并点燃。法师 3 级。 -->
+  <LP_Fireball.description>Hurl a fireball at a point within 24 cells: a fire explosion of radius 4, 20 × arcane power damage, setting things alight. Wizard level 3.</LP_Fireball.description>
+  <!-- 睡眠术 -->
+  <LP_Sleep.label>sleep</LP_Sleep.label>
+  <!-- 让 20 格内的一个目标陷入魔法睡眠 8 秒 × 奥术强度（意识降到 10%）。对机械体、意识已低于 30% 的目标无效；心智抗性可以抵抗。法师 5 级。 -->
+  <LP_Sleep.description>Put one target within 20 cells into magical sleep for 8 seconds × arcane power (consciousness reduced to 10%). No effect on mechanoids or targets whose consciousness is already below 30%; mind resistance can resist it. Wizard level 5.</LP_Sleep.description>
+  <!-- 闪电束 -->
+  <LP_LightningBolt.label>lightning bolt</LP_LightningBolt.label>
+  <!-- 从自己到目标拉出一道最长 20 格的闪电，线上每个敌人受 30 × 奥术强度点闪电伤害并被击晕 1 秒；机械体改受电磁伤害。法师 7 级。 -->
+  <LP_LightningBolt.description>Draw a line of lightning up to 20 cells from yourself to the target; every enemy on the line takes 30 × arcane power lightning damage and is stunned for 1 second; mechanoids take EMP damage instead. Wizard level 7.</LP_LightningBolt.description>
+  <!-- 急速术 -->
+  <LP_Haste.label>haste</LP_Haste.label>
+  <!-- 让 20 格内的一名友军急速 1 小时 × 奥术强度：移动 ×1.5、工作速度 ×1.3、近战冷却 ×0.8；结束后疲乏一小时。法师 7 级。 -->
+  <LP_Haste.description>Haste an ally within 20 cells for 1 hour × arcane power: movement ×1.5, work speed ×1.3, melee cooldown ×0.8; lethargic for an hour afterwards. Wizard level 7.</LP_Haste.description>
+  <!-- 石墙术 -->
+  <LP_WallOfStone.label>wall of stone</LP_WallOfStone.label>
+  <!-- 在 20 格内的一点造出一道 5 格长的石墙（垂直于施法方向，耐久 200 × 奥术强度，一天后消散），已被占的格子跳过。法师 10 级。 -->
+  <LP_WallOfStone.description>Create a 5-cell-long stone wall at a point within 20 cells (perpendicular to the cast direction, 200 × arcane power hit points, dissipates after a day); occupied cells are skipped. Wizard level 10.</LP_WallOfStone.description>
+  <!-- 传送术 -->
+  <LP_Teleport.label>teleport</LP_Teleport.label>
+  <!-- 把自己传送到视线内的任意可站立格，距离 20 × 奥术强度（最多 40）。法师 13 级。 -->
+  <LP_Teleport.description>Teleport yourself to any standable cell in sight, up to 20 × arcane power away (max 40). Wizard level 13.</LP_Teleport.description>
+  <!-- 护盾术 -->
+  <LP_ShieldSpell.label>shield</LP_ShieldSpell.label>
+  <!-- 10 秒内身外多一层奥术护盾：受到的伤害先由护盾吸收，共 20 × 奥术强度点，吸完为止。法力 1，冷却 10 秒。法师 1 级。 -->
+  <LP_ShieldSpell.description>For 10 seconds an extra arcane shield surrounds you: damage taken is absorbed by it first, 20 × arcane power in total, until used up. Mana 1, cooldown 10 seconds. Wizard level 1.</LP_ShieldSpell.description>
+  <!-- 迷踪步 -->
+  <LP_MistyStep.label>misty step</LP_MistyStep.label>
+  <!-- 化作银雾，瞬移到 10 格内视线所及的空格。法力 1，冷却 10 秒。法师 3 级。 -->
+  <LP_MistyStep.description>Turn into silver mist and teleport to an empty cell in sight within 10 cells. Mana 1, cooldown 10 seconds. Wizard level 3.</LP_MistyStep.description>
+  <!-- 镜影术 -->
+  <LP_MirrorImage.label>mirror image</LP_MirrorImage.label>
+  <!-- 身边浮现 3 个幻影分身，持续 1 小时：每次被敌人的攻击命中，改由一个分身挨下（这一下落空），分身用完为止。法力 2，冷却 1 分钟。法师 5 级。 -->
+  <LP_MirrorImage.description>3 illusory duplicates appear around you for 1 hour: each time an enemy attack hits, a duplicate takes it instead (the hit misses), until the duplicates are used up. Mana 2, cooldown 1 minute. Wizard level 5.</LP_MirrorImage.description>
+  <!-- 解离术 -->
+  <LP_Disintegrate.label>disintegrate</LP_Disintegrate.label>
+  <!-- 一道绿色射线：30 格内的目标受 60 × 奥术强度点奥术力伤害（护甲只算一半），建筑与机械体受双倍；被杀死的人形目标不留尸体。法师 15 级，并且智识 15 级。 -->
+  <LP_Disintegrate.description>A green ray: a target within 30 cells takes 60 × arcane power arcane force damage (armor counts only half), double to buildings and mechanoids; humanlike targets killed by it leave no corpse. Wizard level 15, and Intellectual 15.</LP_Disintegrate.description>
+  <!-- 治疗伤口 -->
+  <LP_CureWounds.label>cure wounds</LP_CureWounds.label>
+  <!-- 立即治疗一名目标（可以是自己）共 20 × 神恩强度点伤势，优先流血最严重的伤口。牧师 1 级。 -->
+  <LP_CureWounds.description>Instantly heal one target (can be yourself) for a total of 20 × divine power injury, worst bleeding wounds first. Cleric level 1.</LP_CureWounds.description>
+  <!-- 祝福 -->
+  <LP_Bless.label>bless</LP_Bless.label>
+  <!-- 祝福一名友军 1 小时 × 神恩强度：近战命中 +10%，射击精度提高，心情 +3。牧师 1 级。 -->
+  <LP_Bless.description>Bless an ally for 1 hour × divine power: melee hit +10%, better shooting accuracy, mood +3. Cleric level 1.</LP_Bless.description>
+  <!-- 次级复原术 -->
+  <LP_LesserRestoration.label>lesser restoration</LP_LesserRestoration.label>
+  <!-- 移除目标身上最严重的一种疾病（食物中毒、流感、瘟疫、感染、肌肉寄生虫、肠道蠕虫等），并止住所有出血 6 小时。牧师 3 级。 -->
+  <LP_LesserRestoration.description>Remove the target's worst disease (food poisoning, flu, plague, infection, muscle parasites, gut worms, etc.) and stop all bleeding for 6 hours. Cleric level 3.</LP_LesserRestoration.description>
+  <!-- 神导术 -->
+  <LP_Guidance.label>guidance</LP_Guidance.label>
+  <!-- 指引一名友军 1 小时 × 神恩强度：全局工作速度 +15%，学习速度 +30%。牧师 5 级。 -->
+  <LP_Guidance.description>Guide an ally for 1 hour × divine power: global work speed +15%, learning speed +30%. Cleric level 5.</LP_Guidance.description>
+  <!-- 神圣打击 -->
+  <LP_SacredFlame.label>divine strike</LP_SacredFlame.label>
+  <!-- 20 格内的一个敌人受 20 × 神恩强度点神圣伤害，无视掩体；对亡灵、邪魔和夺心魔翻倍。牧师 7 级。 -->
+  <LP_SacredFlame.description>One enemy within 20 cells takes 20 × divine power holy damage, ignoring cover; doubled against undead, fiends and mind flayers. Cleric level 7.</LP_SacredFlame.description>
+  <!-- 驱散亡灵 -->
+  <LP_TurnUndead.label>turn undead</LP_TurnUndead.label>
+  <!-- 半径 6 × 神恩强度内的敌对亡灵惊恐逃散 10 秒 × 神恩强度；没有心智的骷髅和死灵造物改为被击晕；巫妖只被减速。牧师 7 级。 -->
+  <LP_TurnUndead.description>Hostile undead within radius 6 × divine power flee in terror for 10 seconds × divine power; mindless skeletons and necromantic constructs are stunned instead; liches are only slowed. Cleric level 7.</LP_TurnUndead.description>
+  <!-- 群体治疗 -->
+  <LP_MassHeal.label>mass cure wounds</LP_MassHeal.label>
+  <!-- 治疗半径 5 内的所有友军各 15 × 神恩强度点伤势。牧师 10 级。 -->
+  <LP_MassHeal.description>Heal every ally within radius 5 for 15 × divine power injury each. Cleric level 10.</LP_MassHeal.description>
+  <!-- 死亡守卫 -->
+  <LP_DeathWard.label>death ward</LP_DeathWard.label>
+  <!-- 守护一名友军一天：疼痛 ×0.5；本应因伤倒地时立即治疗 30 × 神恩强度点伤势并消耗守卫（一天内只触发一次）。牧师 13 级。 -->
+  <LP_DeathWard.description>Ward an ally for a day: pain ×0.5; when it would be downed by injuries, instantly heals 30 × divine power injury and uses up the ward (triggers once per day). Cleric level 13.</LP_DeathWard.description>
+  <!-- 复生术 -->
+  <LP_Raise.label>revivify</LP_Raise.label>
+  <!-- 让 12 格内一具死亡不超过 3 天的人形尸体复活（对巫妖、死灵造物和大脑被吞噬的尸体无效），复活者 3 天“复生虚弱”。牧师 15 级，并且社交 15 级。 -->
+  <LP_Raise.description>Revive a humanlike corpse within 12 cells that has been dead no more than 3 days (no effect on liches, necromantic constructs or corpses whose brains were devoured); the revived gets 3 days of "resurrection sickness". Cleric level 15, and Social 15.</LP_Raise.description>
+  <!-- 安抚野兽 -->
+  <LP_AnimalFriendship.label>calm beast</LP_AnimalFriendship.label>
+  <!-- 安抚 15 格内的一只动物：发狂的立刻恢复正常；野生的有一定成功率直接被驯服（35% × 野性强度 × (1 − 野性/2)，最高 90%），失败时它会逃开、不会反击。德鲁伊 1 级。 -->
+  <LP_AnimalFriendship.description>Calm one animal within 15 cells: a manhunting one returns to normal at once; a wild one has a chance to be tamed outright (35% × primal power × (1 - wildness / 2), up to 90%); on failure it runs away and does not fight back. Druid level 1.</LP_AnimalFriendship.description>
+  <!-- 纠缠术 -->
+  <LP_Entangle.label>entangle</LP_Entangle.label>
+  <!-- 20 格内一点半径 2.5 长出藤蔓，敌人被缠住 4 秒 × 生长强度：移动 ×0.1（体型 2 以上 ×0.4）。德鲁伊 1 级。 -->
+  <LP_Entangle.description>Vines sprout in radius 2.5 at a point within 20 cells, entangling enemies for 4 seconds × verdant power: movement ×0.1 (×0.4 for body size 2+). Druid level 1.</LP_Entangle.description>
+  <!-- 召唤野兽 -->
+  <LP_ConjureAnimals.label>conjure animals</LP_ConjureAnimals.label>
+  <!-- 在身边召出 2 只灵体森林狼（野性强度 ≥ 125% 时 3 只），听从施法者，1 天后或死亡时化为光点消失，不留尸体。德鲁伊 3 级。 -->
+  <LP_ConjureAnimals.description>Summon 2 spirit timber wolves nearby (3 at primal power ≥ 125%) that obey the caster, and vanish into motes of light after 1 day or on death, leaving no corpse. Druid level 3.</LP_ConjureAnimals.description>
+  <!-- 树肤术 -->
+  <LP_Barkskin.label>barkskin</LP_Barkskin.label>
+  <!-- 让一名友军的皮肤变得像树皮 1 小时 × 生长强度：利器护甲 +30%、钝器护甲 +15%，移动 ×0.95。德鲁伊 5 级。 -->
+  <LP_Barkskin.description>Make an ally's skin like bark for 1 hour × verdant power: sharp armor +30%, blunt armor +15%, movement ×0.95. Druid level 5.</LP_Barkskin.description>
+  <!-- 荒野变形 -->
+  <LP_WildShape.label>wild shape</LP_WildShape.label>
+  <!-- 化为熊形 1 小时 × 野性强度：远程武器收进背包（变回时装回），用熊爪和熊咬战斗，近战伤害 × 野性强度，受到伤害 ×0.6，移动 ×1.15，不能做手工、研究和照料类工作。可以随时“变回原形”。德鲁伊 7 级。 -->
+  <LP_WildShape.description>Take bear form for 1 hour × primal power: ranged weapons go into the pack (re-equipped when changing back), fight with bear claws and bites, melee damage × primal power, damage taken ×0.6, movement ×1.15; cannot do crafting, research or caretaking work. Can "revert form" at any time. Druid level 7.</LP_WildShape.description>
+  <!-- 植物滋长 -->
+  <LP_PlantGrowth.label>plant growth</LP_PlantGrowth.label>
+  <!-- 25 格内一点半径 6 × 生长强度内的所有植物（作物和野生）生长度 +25% × 生长强度（封顶 100%），并去掉枯萎病。德鲁伊 7 级。 -->
+  <LP_PlantGrowth.description>All plants (crops and wild) within radius 6 × verdant power at a point within 25 cells gain +25% × verdant power growth (capped at 100%), and blight is removed. Druid level 7.</LP_PlantGrowth.description>
+  <!-- 兽王号令 -->
+  <LP_BeastCommand.label>beast lord's call</LP_BeastCommand.label>
+  <!-- 半径 10 × 野性强度内本派系的动物（含召唤的灵狼）1 小时：近战伤害 ×(1 + 0.3 × 野性强度)、移动 ×1.2、受到伤害 ×0.8。德鲁伊 10 级。 -->
+  <LP_BeastCommand.description>Animals of your faction within radius 10 × primal power (including summoned spirit wolves) for 1 hour: melee damage ×(1 + 0.3 × primal power), movement ×1.2, damage taken ×0.8. Druid level 10.</LP_BeastCommand.description>
+  <!-- 召雷术 -->
+  <LP_CallLightning.label>call lightning</LP_CallLightning.label>
+  <!-- 30 格内一点落雷：半径 1.9 内的敌人受 25 × 生长强度 电击伤害（机械体改受电磁）。下雨或雷暴时伤害 ×1.5、冷却减半。德鲁伊 13 级。 -->
+  <LP_CallLightning.description>A lightning bolt strikes a point within 30 cells: enemies within radius 1.9 take 25 × verdant power electrical damage (mechanoids take EMP instead). In rain or thunderstorms, damage ×1.5 and cooldown halved. Druid level 13.</LP_CallLightning.description>
+  <!-- 掌控天气 -->
+  <LP_ControlWeather.label>control weather</LP_ControlWeather.label>
+  <!-- 打开天气窗口选择天气（晴、雨、雾、雷暴，气温 ≤ 0 时还有雪）维持 1 天，并结束本地图一个负面天气事件（毒尘、寒潮、热浪、火山冬天等；任务和永久事件除外）。德鲁伊 15 级，并且种植 15 级。 -->
+  <LP_ControlWeather.description>Open the weather window to choose a weather (clear, rain, fog, thunderstorm, and snow when at or below 0°C) that lasts 1 day, and end one negative weather event on this map (toxic fallout, cold snap, heat wave, volcanic winter, etc.; quest and permanent events excluded). Druid level 15, and Plants 15.</LP_ControlWeather.description>
+  <!-- 混沌箭 -->
+  <LP_ChaosBolt.label>chaos bolt</LP_ChaosBolt.label>
+  <!-- 向 25 格内的敌人射出混沌之力，12 × 天赋强度 伤害，类型随机：火焰（点燃）、闪电（击晕）、奥术力、冰霜（减速）。有 1/8 概率再跳到 6 格内另一个敌人。术士 1 级。 -->
+  <LP_ChaosBolt.description>Hurl chaotic energy at an enemy within 25 cells, 12 × innate power damage of a random type: fire (ignites), lightning (stuns), arcane force, frost (slows). 1/8 chance to leap to another enemy within 6 cells. Sorcerer level 1.</LP_ChaosBolt.description>
+  <!-- 燃烧之手 -->
+  <LP_BurningHands.label>burning hands</LP_BurningHands.label>
+  <!-- 面前 90° 扇形 6 格喷出火焰：18 × 奥术强度 火焰伤害并点燃，地面可能起火。术士 1 级。 -->
+  <LP_BurningHands.description>Spray fire in a 90° cone 6 cells ahead: 18 × arcane power fire damage and ignites; the ground may catch fire. Sorcerer level 1.</LP_BurningHands.description>
+  <!-- 魅惑人类 -->
+  <LP_CharmPerson.label>charm person</LP_CharmPerson.label>
+  <!-- 魅惑一个人形：敌人陷入恍惚 8 秒 × 天赋强度，不再攻击；对囚犯则抵抗 −10 × 天赋强度。心智抗性可以抵抗。术士 3 级。 -->
+  <LP_CharmPerson.description>Charm a humanlike: enemies fall into a daze for 8 seconds × innate power and stop attacking; prisoners lose 10 × innate power resistance. Mind resistance can resist it. Sorcerer level 3.</LP_CharmPerson.description>
+  <!-- 超魔·孪生 -->
+  <LP_TwinSpell.label>metamagic: twinned</LP_TwinSpell.label>
+  <!-- 30 秒内的下一个单体术士法术（混沌箭、魅惑人类）同时作用于主目标 6 格内的另一个敌人。术士 5 级。 -->
+  <LP_TwinSpell.description>The next single-target sorcerer spell within 30 seconds (Chaos Bolt, Charm Person) also affects another enemy within 6 cells of the main target. Sorcerer level 5.</LP_TwinSpell.description>
+  <!-- 龙族之翼 -->
+  <LP_DragonWings.label>dragon wings</LP_DragonWings.label>
+  <!-- 展开龙翼，飞到 15 × 天赋强度 格内的可站立格，飞行中不受攻击；起飞后 15 秒内闪避 +20%。术士 7 级。 -->
+  <LP_DragonWings.description>Spread dragon wings and fly to a standable cell within 15 × innate power cells, untouchable while flying; +20% dodge for 15 seconds after takeoff. Sorcerer level 7.</LP_DragonWings.description>
+  <!-- 冰风暴 -->
+  <LP_IceStorm.label>ice storm</LP_IceStorm.label>
+  <!-- 25 格内一点降下冰风暴：半径 3 内的敌人受 14 × 奥术强度 冰霜伤害和一半的钝器伤害，并减速 6 秒；地面积雪。术士 7 级。 -->
+  <LP_IceStorm.description>Bring down an ice storm at a point within 25 cells: enemies within radius 3 take 14 × arcane power frost damage plus half as much blunt damage and are slowed for 6 seconds; snow piles up on the ground. Sorcerer level 7.</LP_IceStorm.description>
+  <!-- 群体暗示 -->
+  <LP_MassSuggestion.label>mass suggestion</LP_MassSuggestion.label>
+  <!-- 20 格内一点半径 4 内的敌对人形各自对抗心智抗性，没抵抗住的陷入恍惚 15 秒 × 天赋强度。术士 10 级。 -->
+  <LP_MassSuggestion.description>Hostile humanlikes within radius 4 at a point within 20 cells each resist with mind resistance; those who fail fall into a daze for 15 seconds × innate power. Sorcerer level 10.</LP_MassSuggestion.description>
+  <!-- 超魔·强效 -->
+  <LP_EmpoweredSpell.label>metamagic: empowered</LP_EmpoweredSpell.label>
+  <!-- 30 秒内接下来的两个术士法术伤害 ×1.5。术士 13 级。 -->
+  <LP_EmpoweredSpell.description>The next two sorcerer spells within 30 seconds deal ×1.5 damage. Sorcerer level 13.</LP_EmpoweredSpell.description>
+  <!-- 魔涌 -->
+  <LP_SorcerousSurge.label>wild surge</LP_SorcerousSurge.label>
+  <!-- 30 秒 × 天赋强度：术士法术不耗法力、冷却 ×0.25；每次施法有 20% 触发狂野魔法——治愈之光、隐形、灵能共鸣、繁花，或者自燃、乱序传送、熵涌、混乱精魂。术士 15 级，并且社交 15 级。 -->
+  <LP_SorcerousSurge.description>For 30 seconds × innate power: sorcerer spells cost no mana, cooldown ×0.25; each cast has a 20% chance of wild magic: healing light, invisibility, psychic resonance, blooming flowers, or spontaneous combustion, random teleport, entropy surge, chaotic spirits. Sorcerer level 15, and Social 15.</LP_SorcerousSurge.description>
+  <!-- 奥术工坊 -->
+  <LP_ArcaneWorkshop.label>arcane workshop</LP_ArcaneWorkshop.label>
+  <!-- 被动：能制作制伏短棍、缚网弩、安眠短弓和安眠法杖这些奥术工坊那一档的 DND 武器（还需要研究“制伏战术”）。器械师 1 级。 -->
+  <LP_ArcaneWorkshop.description>Passive: can craft the Arcane Workshop tier of DND weapons: subduing cudgel, net crossbow, slumber shortbow and slumber staff (also requires the research "subduing tactics"). Artificer level 1.</LP_ArcaneWorkshop.description>
+  <!-- 快速维修 -->
+  <LP_QuickRepair.label>quick repair</LP_QuickRepair.label>
+  <!-- 给一名友方修好装备：主武器和身上每件服装各恢复 25% 耐久。冷却 1 天。器械师 1 级。 -->
+  <LP_QuickRepair.description>Repair an ally's gear: the main weapon and each piece of apparel worn regain 25% durability. Cooldown 1 day. Artificer level 1.</LP_QuickRepair.description>
+  <!-- 过载射击 -->
+  <LP_Overcharge.label>overcharged shot</LP_Overcharge.label>
+  <!-- 10 秒内，自己的下一次远程命中伤害 ×(1 + 器械强度)，所用武器掉 5% 耐久。器械师 3 级。 -->
+  <LP_Overcharge.description>Within 10 seconds, your next ranged hit deals ×(1 + artifice power) damage, and the weapon used loses 5% durability. Artificer level 3.</LP_Overcharge.description>
+  <!-- 符文铭刻 -->
+  <LP_RuneInscription.label>rune inscription</LP_RuneInscription.label>
+  <!-- 被动：符文铭刻那一档的 DND 武器（1.146.0 起符文火器已移除，这一档暂时没有可制作的武器）。器械师 5 级。 -->
+  <LP_RuneInscription.description>Passive: the Rune Inscription tier of DND weapons (runic firearms have been removed since 1.146.0, so this tier currently has no craftable weapon). Artificer level 5.</LP_RuneInscription.description>
+  <!-- 魔力充能 -->
+  <LP_ArcaneCharge.label>arcane charge</LP_ArcaneCharge.label>
+  <!-- 给一名友方灌注魔力：30 秒内用符文矮人枪械和法杖时魔力系数 +0.5（对其他武器无效）。器械师 7 级。 -->
+  <LP_ArcaneCharge.description>Infuse an ally with magic: for 30 seconds, +0.5 magic factor when using runic dwarven firearms and staves (no effect on other weapons). Artificer level 7.</LP_ArcaneCharge.description>
+  <!-- 大师工艺 -->
+  <LP_MasterCraft.label>master craftsmanship</LP_MasterCraft.label>
+  <!-- 被动：制作安眠法杖时品质 +1（最高传说；1.146.0 起符文火器和其他法杖已移除）。器械师 7 级。 -->
+  <LP_MasterCraft.description>Passive: +1 quality when crafting slumber staves (up to legendary; runic firearms and other staves have been removed since 1.146.0). Artificer level 7.</LP_MasterCraft.description>
+  <!-- 山岳锻造 -->
+  <LP_MountainForge.label>mountain forge</LP_MountainForge.label>
+  <!-- 被动：矮人王族重铳的锻法（1.146.0 起“山岳之怒”已移除，这个能力暂时没有可制作的武器）。器械师 10 级。 -->
+  <LP_MountainForge.description>Passive: the forging method of dwarven royal heavy guns ("Wrath of the Mountain" has been removed since 1.146.0, so this ability currently has no craftable weapon). Artificer level 10.</LP_MountainForge.description>
+  <!-- 符文炮台 -->
+  <LP_RuneTurretAbility.label>rune turret</LP_RuneTurretAbility.label>
+  <!-- 在 10 格内的空格子放下一座临时符文炮台：符文火铳的数值 × 器械强度，持续 60 秒。冷却 2 天。器械师 13 级。 -->
+  <LP_RuneTurretAbility.description>Place a temporary rune turret on an empty cell within 10 cells: runic arquebus stats × artifice power, lasting 60 seconds. Cooldown 2 days. Artificer level 13.</LP_RuneTurretAbility.description>
+  <!-- 魔力共鸣 -->
+  <LP_ArcaneResonance.label>arcane resonance</LP_ArcaneResonance.label>
+  <!-- 被动：自己用符文矮人枪械和法杖时，心灵敏感度不足 150% 按 150% 算。器械师 15 级，并且手工 15 级。 -->
+  <LP_ArcaneResonance.description>Passive: when you use runic dwarven firearms and staves, psychic sensitivity below 150% counts as 150%. Artificer level 15, and Crafting 15.</LP_ArcaneResonance.description>
+</LanguageData>

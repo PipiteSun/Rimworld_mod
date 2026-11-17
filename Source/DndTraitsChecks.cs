@@ -34,7 +34,7 @@ namespace LichPhylactery {
     var good=DtPawn();DtGive(good,DndTraitDefOf.LP_Morality,1);bool psy=DtGive(good,TraitDefOf.Psychopath)!=null;
     var evil=DtPawn();DtGive(evil,DndTraitDefOf.LP_Morality,-1);bool kind=DtGive(evil,TraitDefOf.Kind)!=null;
     var wildP=DtPawn();DtGive(wildP,DndTraitDefOf.LP_ArcaneGift);bool wild=DtGive(wildP,DndTraitDefOf.LP_WildMagic)!=null;
-    Check(pers.Count==18 && curses.Count==7 && zero && red && ns.dndPersonality && ns.dndCurses && ns.dndPersonalityRate==100 && !psy && !kind && !wild && DndTraits.Info(good).morality==1,"18 personality + 7 curse traits load (commonality 0, curses red in the power slot), settings default on / 100%; 仁善 blocks 心理变态, 邪恶 blocks 善良, 奥术天赋 blocks 狂野魔法");
+    Check(pers.Count==17 && curses.Count==7 && zero && red && ns.dndPersonality && ns.dndCurses && ns.dndPersonalityRate==100 && !psy && !kind && !wild && DndTraits.Info(good).morality==1,"17 personality + 7 curse traits load (commonality 0, curses red in the power slot), settings default on / 100%; 仁善 blocks 心理变态, 邪恶 blocks 善良, 奥术天赋 blocks 狂野魔法");
     // 2. 生成 200 人：每人性格特性 ≤2、阵营 ≤1、原版名额 ≤3，至少一个的比例 10%～45%
     for(int k=0;k<200;k++){var p=PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist,Faction.OfPlayer,PawnGenerationContext.NonPlayer,-1,forceGenerateNewPawn:true,canGeneratePawnRelations:false,fixedBiologicalAge:25f,fixedChronologicalAge:25f));batch.Add(p);}
     int maxP=batch.Max(DndTraits.PersonalityCount),maxA=batch.Max(p=>p.story.traits.allTraits.Count(t=>DndTraits.IsAlignment(t.def))),maxV=batch.Where(p=>DndTraits.PersonalityCount(p)>0).Select(p=>DndTraits.VanillaCap-DndTraits.Room(p)).DefaultIfEmpty(0).Max();
@@ -44,27 +44,27 @@ namespace LichPhylactery {
     var thay=Find.FactionManager.FirstFactionOfDef(DefDatabase<FactionDef>.GetNamed("LP_FaerunHostile"));
     var tp=thay!=null?DtPawn(null,thay):null;var bp=DtPawn();var evilE=DndTraits.Table.First(e=>e.def==DndTraitDefOf.LP_Morality && e.degree==-1);
     int te=0,be=0;Rand.PushState(16203);try{for(int k=0;k<1000;k++){if(tp!=null && DndTraits.PickEntry(tp)==evilE)te++;if(DndTraits.PickEntry(bp)==evilE)be++;}}finally{Rand.PopState();}
-    var ext=DefDatabase<FactionDef>.GetNamed("LP_FaerunHostile").GetModExtension<LP_TraitWeightExtension>();var kob=DtPawn("LP_Kobold");var servE=DndTraits.Table.First(e=>e.def==DndTraitDefOf.LP_DragonServant);
-    Check(ext!=null && Near(ext.Factor(DndTraitDefOf.LP_Morality,-1),3f) && (tp==null || Near(DndTraits.Weight(tp,evilE),evilE.weight*3f) && te>be*1.5f) && Near(DndTraits.Weight(kob,servE),servE.weight*5f),"faction weights: 塞伊 evil ×3 ("+te+" vs baseline "+be+" of 1000 picks"+(tp==null?", Thay faction absent":"")+"), kobold 龙之眷从 ×5");
+    var ext=DefDatabase<FactionDef>.GetNamed("LP_FaerunHostile").GetModExtension<LP_TraitWeightExtension>();
+    Check(ext!=null && Near(ext.Factor(DndTraitDefOf.LP_Morality,-1),3f) && (tp==null || Near(DndTraits.Weight(tp,evilE),evilE.weight*3f) && te>be*1.5f),"faction weights: 塞伊 evil ×3 ("+te+" vs baseline "+be+" of 1000 picks"+(tp==null?", Thay faction absent":"")+")");
     // 4. 设置关闭后不生成
     s.dndPersonality=false;int off=0;for(int k=0;k<60;k++){var p=PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Colonist,Faction.OfPlayer,PawnGenerationContext.NonPlayer,-1,forceGenerateNewPawn:true,canGeneratePawnRelations:false));batch.Add(p);if(DndTraits.PersonalityCount(p)>0)off++;}s.dndPersonality=true;
     Check(off==0,"setting off: 60 generated pawns get no personality trait ("+off+")");
     // 5. 仁善者成为巫妖：失去仁善
     var saint=DtPawn();DtGive(saint,DndTraitDefOf.LP_Morality,1);int lc=DndTraits.LichConversions;saint.health.AddHediff(Necro.Def<HediffDef>("Lich"));
     Check(!DndTraits.Has(saint,DndTraitDefOf.LP_Morality) && DndTraits.LichConversions==lc+1 && DndTraits.Info(saint)==null,"a 仁善 pawn who becomes a lich loses 仁善 (now neutral)");
-    // 6. 惧龙 / 屠龙志士不生成于龙裔；巨人杀手不生成于巨人
-    var db=DtPawn("LP_ForceDragon");var fg=DtPawn("LP_FireGiant");
-    Check(DndTraits.Dragonborn(db) && !DndTraits.Allowed(db,DndTraitDefOf.LP_DragonStance,-1) && !DndTraits.Allowed(db,DndTraitDefOf.LP_DragonStance,1) && !DndTraits.Allowed(db,DndTraitDefOf.LP_DragonServant,0) && !DndTraits.Allowed(fg,DndTraitDefOf.LP_GiantStance,-1) && DndTraits.Allowed(fg,DndTraitDefOf.LP_GiantStance,1) && DndTraits.Allowed(bp,DndTraitDefOf.LP_DragonStance,1) && !DndTraits.Candidates(db).Any(e=>e.def==DndTraitDefOf.LP_DragonStance),"dragonborn never rolls 惧龙 / 屠龙志士 / 龙之眷从; fire giant never rolls 巨人杀手 (but can roll 巨人仆从)");
+    // 6. 巨人杀手不生成于巨人
+    var fg=DtPawn("LP_FireGiant");
+    Check(!DndTraits.Allowed(fg,DndTraitDefOf.LP_GiantStance,-1) && DndTraits.Allowed(fg,DndTraitDefOf.LP_GiantStance,1) && DndTraits.Allowed(bp,DndTraitDefOf.LP_DragonStance,1),"fire giant never rolls 巨人杀手 (but can roll 巨人仆从)");
     // 7. 世界公民屏蔽种族关系的负面心情
     var rel=DefDatabase<ThoughtDef>.AllDefsListForReading.FirstOrDefault(d=>d.workerClass==typeof(ThoughtWorker_DNDRacialRelation) && d.stages!=null && d.stages.Count>0 && d.stages[0].baseMoodEffect<0f);
     var cosmo=DtPawn();DtGive(cosmo,DndTraitDefOf.LP_RaceAttitude,1);
     Check(rel!=null && !DndTraits.FilterRacial(cosmo,rel,ThoughtState.ActiveAtStage(0)).Active && DndTraits.FilterRacial(bp,rel,ThoughtState.ActiveAtStage(0)).Active,"世界公民 hides the negative racial relation mood ("+rel?.defName+"), others keep it");
     // 8. 类型伤害合计封顶 +60%
-    var dragon=DtPawn("LP_ForceDragon",AdvEnemy);DndCreatureType.Forget(dragon);
+    var dragon=Dragons.Make("Red",0,AdvEnemy);dtMade.Add(dragon);DndCreatureType.Forget(dragon);
     var slayer=DtPawn();DtGive(slayer,DndTraitDefOf.LP_DragonStance,1);var both=DtPawn();DtGive(both,DndTraitDefOf.LP_DragonStance,1);HeroTraits.Give(both,HeroDefOf.LP_FavoredEnemy,1);HeroTraits.Give(both,HeroDefOf.LP_DeedDragonslayer);
     var hit=new DamageInfo(DamageDefOf.Cut,10f,0f,-1f,slayer,null,ThingDefOf.MeleeWeapon_Knife);
     float f1=dragon==null?0f:DndTraits.OutFactor(slayer,DndTraits.Info(slayer),dragon,hit),hero=dragon==null?0f:HeroCombat.TypeBonus(both,HeroTraits.Info(both),dragon,true),f2=dragon==null?0f:DndTraits.OutFactor(both,DndTraits.Info(both),dragon,hit);
-    Check(dragon!=null && DndCreatureType.Is(dragon,DndType.Dragon) && Near(f1,1.2f) && Near(hero,.55f) && Near((1f+hero)*f2,1.6f),"type damage cap: 屠龙志士 alone ×"+f1+" vs a force dragon; with 1.58.0 bonuses +"+hero+" the total is capped at +60% (×"+((1f+hero)*f2).ToString("0.###")+")");
+    Check(dragon!=null && DndCreatureType.Is(dragon,DndType.Dragon) && Near(f1,1.2f) && Near(hero,.55f) && Near((1f+hero)*f2,1.6f),"type damage cap: 屠龙志士 alone ×"+f1+" vs a red dragon; with 1.58.0 bonuses +"+hero+" the total is capped at +60% (×"+((1f+hero)*f2).ToString("0.###")+")");
     // 9. 战术家光环：4 格内友军 +5%，两个战术家不叠加，远处的人没有
     var t1=DtPawn(null,null,true,0,2);var t2=DtPawn(null,null,true,1,2);var ally=DtPawn(null,null,true,0,3);var far=DtPawn(null,null,true,4,-4);
     DtGive(t1,DndTraitDefOf.LP_Tactician);DtGive(t2,DndTraitDefOf.LP_Tactician);t1.drafter.Drafted=true;t2.drafter.Drafted=true;DndTraits.RefreshAura(new[]{t1,t2});

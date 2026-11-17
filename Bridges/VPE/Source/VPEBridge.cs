@@ -24,7 +24,7 @@ namespace LichPhylactery.VPEBridge {
  // 1.28.0 提尔“审判之庭”：VEF 的能力不继承原版 RimWorld.Ability，这里另挂一次。
  [HarmonyPatch(typeof(Ability),nameof(Ability.IsEnabledForPawn))]
  public static class TwilightCourtVEF {
-  static void Postfix(Ability __instance,ref bool __result,ref string reason){if(__result && TwilightSkills.Silenced(__instance.pawn)){__result=false;reason="提尔的审判之庭：10格内不能使用任何能力。";}}
+  static void Postfix(Ability __instance,ref bool __result,ref string reason){if(__result && TwilightSkills.Silenced(__instance.pawn)){__result=false;reason="提尔的审判之庭：10格内不能使用任何能力。".Loc();}}
  }
 
  public static class Classes {
@@ -63,7 +63,7 @@ namespace LichPhylactery.VPEBridge {
   static void Postfix(CompPsytrainer __instance,Pawn p,ref AcceptanceReport __result){
    if(!__result.Accepted)return;
    var ability=(__instance.props as CompProperties_UseEffectGiveAbility)?.ability;
-   if(ClassMigration.Hidden(ability))__result="这项能力已改为冒险者职业能力（在“冒险者”分页的“职业”页加点获得）";
+   if(ClassMigration.Hidden(ability))__result="这项能力已改为冒险者职业能力（在“冒险者”分页的“职业”页加点获得）".Loc();
   }
  }
 }

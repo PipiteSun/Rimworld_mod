@@ -72,7 +72,7 @@ namespace LichPhylactery {
     var focusStat=DefDatabase<StatDef>.GetNamedSilentFail("MeditationFocusGain");
     if(focusStat!=null){var a=BgPerson();float f0=a.GetStatValue(focusStat);BgGive(a,BackgroundTraits.Acolyte);float f1=a.GetStatValue(focusStat);BgDiscard(new[]{a});Check(f0>0 && Near(f1/f0,1.2f),"acolyte meditation psyfocus gain x1.2 ("+f0+" -> "+f1+")");}
     // 7 罪犯越狱
-    var cellBuilt=DragonHoard.BuildHoard(map,altar.Position+IntVec3.West*14,null,out var cellRect);made.AddRange(cellBuilt);
+    var cellBuilt=TestRooms.Bedroom(map,altar.Position+IntVec3.West*14,null,out var cellRect);made.AddRange(cellBuilt);
     var prisonBed=cellBuilt.OfType<Building_Bed>().First();prisonBed.ForPrisoners=true;prisonBed.GetRoom()?.Notify_RoomShapeChanged();
     var prisoner=BgPerson();var enemy=Find.FactionManager.AllFactions.First(f=>!f.IsPlayer && !f.Hidden && f.def.humanlikeFaction && f.HostileTo(Faction.OfPlayer));
     prisoner.SetFaction(enemy);GenSpawn.Spawn(prisoner,cellRect.Cells.First(c=>c.Standable(map) && c.GetFirstPawn(map)==null && c.GetEdifice(map)==null),map);made.Add(prisoner);prisoner.guest.SetGuestStatus(Faction.OfPlayer,GuestStatus.Prisoner);
@@ -110,7 +110,7 @@ namespace LichPhylactery {
     Check(Near(aim1/aim0,.9f) && Near(acc1,Mathf.Min(acc0*1.05f,StatDefOf.ShootingAccuracyPawn.maxValue)) && Near(hit1,Mathf.Min(hit0*1.05f,StatDefOf.MeleeHitChance.maxValue)),"soldier drafted aiming time x0.9 ("+aim0.ToString("0.###")+" -> "+aim1.ToString("0.###")+"); another soldier within 3 cells: shooting "+acc0.ToString("0.###")+" -> "+acc1.ToString("0.###")+", melee hit "+hit0.ToString("0.###")+" -> "+hit1.ToString("0.###")+" (x1.05 after the skill curve)");
     // 11 隐士
     var hermit=BgSpawn(BgCell(altar.Position+IntVec3.South*16,0,8));made.Add(hermit);BgGive(hermit,BackgroundTraits.Hermit);
-    var roomBuilt=DragonHoard.BuildHoard(map,hermit.Position,hermit,out var roomRect);made.AddRange(roomBuilt);
+    var roomBuilt=TestRooms.Bedroom(map,hermit.Position,hermit,out var roomRect);made.AddRange(roomBuilt);
     var hermitThought=DefDatabase<ThoughtDef>.GetNamed("LP_BG_HermitRoom");var alone=hermitThought.Worker.CurrentState(hermit);
     var lodger=BgPerson();var lodgerBed=(Building_Bed)ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("Bed"),ThingDefOf.WoodLog);lodgerBed.SetFactionDirect(Faction.OfPlayer);GenSpawn.Spawn(lodgerBed,roomRect.Cells.First(c=>c.x==roomRect.maxX && c.z==roomRect.minZ),map,Rot4.North,WipeMode.Vanish);made.Add(lodgerBed);
     GenSpawn.Spawn(lodger,roomRect.Cells.First(c=>c.Standable(map) && c.GetFirstPawn(map)==null && c.GetEdifice(map)==null),map);made.Add(lodger);lodger.ownership.ClaimBedIfNonMedical(lodgerBed);

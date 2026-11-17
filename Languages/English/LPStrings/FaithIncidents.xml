@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（FaithIncidents.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>朝圣者</zh><en>pilgrim</en></s>
+  <s><zh>名来自</zh><en> believers from </en></s>
+  <s><zh>信徒想来殖民地的圣坛前祈祷1天。\n\n接待他们：</zh><en> want to pray before the colony's altar for 1 day.\n\nReceive them: </en></s>
+  <s><zh>（守护神+</zh><en> (patron deity +</en></s>
+  <s><zh>，可能有一人请求留下。拒绝：</zh><en>, and one may ask to stay. Refuse: </en></s>
+  <s><zh>神眷-</zh><en> favor -</en></s>
+  <s><zh>。\n\n注意：朝圣期间圣坛被毁或有朝圣者被打，神眷-</zh><en>.\n\nNote: if the altar is destroyed or a pilgrim is attacked during the pilgrimage, favor -</en></s>
+  <s><zh>，他们会愤然离开。</zh><en>, and they'll leave in anger.</en></s>
+  <s><zh>接待</zh><en>Receive</en></s>
+  <s><zh>没有圣坛了</zh><en>The altar is gone</en></s>
+  <s><zh>拒绝了朝圣者</zh><en>Refused the pilgrims</en></s>
+  <s><zh>有朝圣者被殖民地的人打伤了</zh><en>A pilgrim was injured by the colony's people</en></s>
+  <s><zh>圣坛被毁了</zh><en>The altar was destroyed</en></s>
+  <s><zh>接待了朝圣者</zh><en>Received the pilgrims</en></s>
+  <s><zh>请求留在殖民地，侍奉圣坛：现在是你的殖民者了。</zh><en> asks to stay in the colony and serve the altar: they're your colonist now.</en></s>
+  <s><zh>朝圣结束</zh><en>Pilgrimage over</en></s>
+  <s><zh>朝圣者在圣坛前祈祷了一天，满意地离开了：</zh><en>The pilgrims prayed before the altar for a day and left satisfied: </en></s>
+  <s><zh>朝圣者受辱：</zh><en>Pilgrims insulted: </en></s>
+  <s><zh>朝圣者愤然离开</zh><en>The pilgrims left in anger</en></s>
+  <s><zh>。朝圣者愤然离开：</zh><en>. The pilgrims left in anger: </en></s>
+  <s><zh>收获200份作物</zh><en>harvest 200 crops</en></s>
+  <s><zh>释放1名囚犯，或举行一次审判仪式</zh><en>release 1 prisoner, or hold a judgment ritual</en></s>
+  <s><zh>施放10次神术或法术</zh><en>cast miracles or spells 10 times</en></s>
+  <s><zh>安葬3具尸体</zh><en>bury 3 corpses</en></s>
+  <s><zh>狩猎5只动物</zh><en>hunt 5 animals</en></s>
+  <s><zh>熬过一场雷暴（风暴马上就来）</zh><en>survive a thunderstorm (the storm is coming right away)</en></s>
+  <s><zh>奴役1名囚犯</zh><en>enslave 1 prisoner</en></s>
+  <s><zh>在夜里（22点～5点）祈祷5次</zh><en>pray 5 times at night (22:00-5:00)</en></s>
+  <s><zh>在锻造台上锻造3件武器或护甲</zh><en>forge 3 weapons or armor at the smithy</en></s>
+  <s><zh>神谕试炼：</zh><en>Oracle trial: </en></s>
+  <s><zh>祭司们得到了</zh><en>The priests received an oracle from </en></s>
+  <s><zh>的神谕：在</zh><en>: within </en></s>
+  <s><zh>天内</zh><en> days, </en></s>
+  <s><zh>。\n\n成功：神眷+</zh><en>.\n\nSuccess: favor +</en></s>
+  <s><zh>，30%的几率得到2片神迹残片。失败：神眷-</zh><en>, with a 30% chance of 2 miracle fragments. Failure: favor -</en></s>
+  <s><zh>神谕试炼成功</zh><en>Oracle trial succeeded</en></s>
+  <s><zh>降下了神赐遗物：</zh><en> sent down a divine relic: </en></s>
+  <s><zh>\n\n圣坛旁出现了2片神迹残片。</zh><en>\n\n2 miracle fragments appeared beside the altar.</en></s>
+  <s><zh>神谕试炼完成</zh><en>Oracle trial complete</en></s>
+  <s><zh>的试炼完成了：神眷+</zh><en>'s trial is complete: favor +</en></s>
+  <s><zh>寻回圣物：</zh><en>Recover the relic: </en></s>
+  <s><zh>的神赐遗物</zh><en>'s divine relic </en></s>
+  <s><zh>落在了</zh><en> has fallen into the hands of </en></s>
+  <s><zh>手里，被藏在附近的一处据点里。\n\n</zh><en>, hidden in a settlement nearby.\n\n</en></s>
+  <s><zh>天内把它带回来、放到圣坛旁边（</zh><en> days to bring it back and place it beside the altar (within </en></s>
+  <s><zh>格内）就算供奉：神眷+</zh><en> cells) counts as an offering: favor +</en></s>
+  <s><zh>，圣物可以留着用。过期没带回来：神眷-</zh><en>, and the relic can be kept for use. If not brought back in time: favor -</en></s>
+  <s><zh>亵渎者</zh><en>blasphemer</en></s>
+  <s><zh>信徒来亵渎</zh><en>Believers come to desecrate</en></s>
+  <s><zh>的圣坛！领队</zh><en>'s altar! Leader </en></s>
+  <s><zh>身上带着</zh><en> carries the divine power of </en></s>
+  <s><zh>的神力</zh><en> </en></s>
+  <s><zh>。\n\n圣坛被毁：神眷-</zh><en>.\n\nIf the altar is destroyed: favor -</en></s>
+  <s><zh>。打退他们：神眷+</zh><en>. Repel them: favor +</en></s>
+  <s><zh>，掉一片神迹残片。</zh><en>, and they drop a miracle fragment.</en></s>
+  <s><zh>亵渎者毁了圣坛</zh><en>The desecrators destroyed the altar</en></s>
+  <s><zh>打退了亵渎者</zh><en>Repelled the desecrators</en></s>
+  <s><zh>圣坛保住了：</zh><en>The altar was saved: </en></s>
+  <s><zh>，圣坛旁留下了一片神迹残片。</zh><en>, and a miracle fragment was left beside the altar.</en></s>
+  <s><zh>供奉了寻回的</zh><en>Offered the recovered </en></s>
+  <s><zh>圣物归来</zh><en>The relic returns</en></s>
+  <s><zh>回到了</zh><en> returned to the altar of </en></s>
+  <s><zh>的圣坛：神眷+</zh><en>: favor +</en></s>
+  <s><zh>。圣物可以留着用。</zh><en>. The relic can be kept for use.</en></s>
+  <s><zh>神谕试炼失败</zh><en>Oracle trial failed</en></s>
+  <s><zh>的试炼没能完成：</zh><en>'s trial wasn't completed: </en></s>
+  <s><zh>没能寻回圣物</zh><en>Failed to recover the relic</en></s>
+  <s><zh>圣物失落</zh><en>Relic lost</en></s>
+  <s><zh>的圣物没能寻回：神眷-</zh><en>'s relic wasn't recovered: favor -</en></s>
+</LPStrings>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 奥术力 -->
+  <LP_ArcaneForce.label>arcane force</LP_ArcaneForce.label>
+  <!-- {0}被奥术之力撕碎了。 -->
+  <LP_ArcaneForce.deathMessage>{0} was torn apart by arcane force.</LP_ArcaneForce.deathMessage>
+  <!-- 闪电 -->
+  <LP_Lightning.label>lightning</LP_Lightning.label>
+  <!-- {0}被闪电击毙了。 -->
+  <LP_Lightning.deathMessage>{0} was killed by lightning.</LP_Lightning.deathMessage>
+  <!-- 力场 -->
+  <LP_Force.label>force</LP_Force.label>
+  <!-- {0}被力场撕碎了。 -->
+  <LP_Force.deathMessage>{0} was torn apart by force.</LP_Force.deathMessage>
+</LanguageData>

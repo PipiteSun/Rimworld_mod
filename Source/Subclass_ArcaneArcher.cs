@@ -65,7 +65,7 @@ namespace LichPhylactery {
   // 束缚箭：命中后荆棘缠身，划伤 + 移动 ×0.5 10 秒。
   public static void Grasp(Pawn p,Pawn t,float power){
    if(t==null || t.Dead)return;Extra(p,t,DamageDefOf.Cut,power);
-   if(!t.Dead){Items.Give(t,"LP_AA_Grasped",GraspTicks,1f);Items.Mote(t,"束缚箭",ArcherColor);}
+   if(!t.Dead){Items.Give(t,"LP_AA_Grasped",GraspTicks,1f);Items.Mote(t,"束缚箭".Loc(),ArcherColor);}
   }
   // 爆裂箭：命中点半径 2 内的敌人（含目标）受力场伤害。
   public static int Burst(Pawn p,Map map,IntVec3 c,float power){
@@ -77,31 +77,31 @@ namespace LichPhylactery {
   // 暗影箭：心灵伤害 + 视觉 −60% 15 秒。
   public static void Shadow(Pawn p,Pawn t,float power){
    if(t==null || t.Dead)return;Extra(p,t,Warlock.PsychicDamage,power);
-   if(!t.Dead){Items.Give(t,"LP_AA_Shadowed",ShadowTicks,1f);Items.Mote(t,"暗影箭",ArcherColor);}
+   if(!t.Dead){Items.Give(t,"LP_AA_Shadowed",ShadowTicks,1f);Items.Mote(t,"暗影箭".Loc(),ArcherColor);}
   }
   // 箭雨：目标点半径 4 内最多 10 个敌人各中一发必中的子弹。
   public static int Storm(Pawn p,IntVec3 c){
    var map=p.Map;if(map==null)return 0;int n=0;
    foreach(var t in Races124.PawnsNear(map,c,StormRadius).Where(x=>Hostile(p,x) && !x.Downed).OrderBy(x=>x.Position.DistanceToSquared(c)).Take(StormMax).ToList())
     if(Martial.Fire(p,t,new ShotMod{damage=1f,caster=p},true)!=null)n++;
-   Items.Mote(p,"箭雨",ArcherColor);return n;
+   Items.Mote(p,"箭雨".Loc(),ArcherColor);return n;
   }
 
   public static string Invalid(Pawn caster,CompProperties_ClassEffect e,LocalTargetInfo target){
    switch(e.effect){
     case "AAGrasp":case "AABurst":case "AAShadow":{
-     var t=target.Thing as Pawn;if(t==null || t.Dead)return "需要选择一个活着的目标。";if(!t.HostileTo(caster))return "只能对敌人使用。";
-     return Martial.RangedVerb(caster)?.Projectile==null?"需要远程武器。":null;}
-    case "AAStorm":{var map=caster.Map;if(map==null || !target.Cell.IsValid || !target.Cell.InBounds(map))return "需要选择一个位置。";return Martial.RangedVerb(caster)?.Projectile==null?"需要远程武器。":null;}
+     var t=target.Thing as Pawn;if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();if(!t.HostileTo(caster))return "只能对敌人使用。".Loc();
+     return Martial.RangedVerb(caster)?.Projectile==null?"需要远程武器。".Loc():null;}
+    case "AAStorm":{var map=caster.Map;if(map==null || !target.Cell.IsValid || !target.Cell.InBounds(map))return "需要选择一个位置。".Loc();return Martial.RangedVerb(caster)?.Projectile==null?"需要远程武器。".Loc():null;}
    }
    return null;
   }
   public static bool Apply(Pawn p,AbilityDef def,CompProperties_ClassEffect e,LocalTargetInfo target){
    var t=target.Thing as Pawn;float pw=ClassEffects.Power(p,e);var me=p;
    switch(e.effect){
-    case "AAGrasp":if(Hostile(p,t))Shot(p,t,"束缚箭",(hit,c)=>Grasp(me,hit as Pawn,pw));return true;
-    case "AABurst":if(Hostile(p,t)){var map=p.Map;Shot(p,t,"爆裂箭",(hit,c)=>Burst(me,map,c,pw));}return true;
-    case "AAShadow":if(Hostile(p,t))Shot(p,t,"暗影箭",(hit,c)=>Shadow(me,hit as Pawn,pw));return true;
+    case "AAGrasp":if(Hostile(p,t))Shot(p,t,"束缚箭".Loc(),(hit,c)=>Grasp(me,hit as Pawn,pw));return true;
+    case "AABurst":if(Hostile(p,t)){var map=p.Map;Shot(p,t,"爆裂箭".Loc(),(hit,c)=>Burst(me,map,c,pw));}return true;
+    case "AAShadow":if(Hostile(p,t))Shot(p,t,"暗影箭".Loc(),(hit,c)=>Shadow(me,hit as Pawn,pw));return true;
     case "AAStorm":Storm(p,target.Cell);return true;
    }
    return false;

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（AdventurerAffinity.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>传奇种族</zh><en>legendary race</en></s>
+  <s><zh>普通种族</zh><en>common race</en></s>
+  <s><zh>，擅长 ×</zh><en>, strong ×</en></s>
+  <s><zh>）：六维擅长 </zh><en>): strong abilities </en></s>
+  <s><zh>，笨拙 </zh><en>, weak </en></s>
+  <s><zh>；传奇擅长 </zh><en>; strong legend attributes </en></s>
+  <s><zh>（所有传奇项 ×</zh><en> (all legend attributes ×</en></s>
+  <s><zh>Human|人类||||</zh><en>Human|human||||</en></s>
+  <s><zh>LP_Elf|高等精灵|智敏||远程 学习|</zh><en>LP_Elf|high elf|智敏||远程 学习|</en></s>
+  <s><zh>LP_Dwarf|山地矮人|力体||工作 承受|</zh><en>LP_Dwarf|mountain dwarf|力体||工作 承受|</en></s>
+  <s><zh>LP_HalfOrc|半兽人|力|智|近战 血量|</zh><en>LP_HalfOrc|half-orc|力|智|近战 血量|</en></s>
+  <s><zh>Lich|巫妖|智|魅|心灵 学习|L</zh><en>Lich|lich|智|魅|心灵 学习|L</en></s>
+  <s><zh>LP_FireGiant|火巨人|体力|敏|血量 近战|L</zh><en>LP_FireGiant|fire giant|体力|敏|血量 近战|L</en></s>
+  <s><zh>LP_FrostGiant|霜巨人|体力|敏|血量 承受|L</zh><en>LP_FrostGiant|frost giant|体力|敏|血量 承受|L</en></s>
+  <s><zh>LP_StormGiant|风暴巨人|力感||血量 心灵|L</zh><en>LP_StormGiant|storm giant|力感||血量 心灵|L</en></s>
+  <s><zh>LP_CloudGiant|云巨人|魅力||血量 心灵|L</zh><en>LP_CloudGiant|cloud giant|魅力||血量 心灵|L</en></s>
+  <s><zh>LP_Ettin|双头巨人|体|智|血量 近战|L</zh><en>LP_Ettin|ettin|体|智|血量 近战|L</en></s>
+  <s><zh>LP_EttinKin|双头巨人|体|智|血量 近战|L</zh><en>LP_EttinKin|ettin|体|智|血量 近战|L</en></s>
+  <s><zh>LP_Cyclops|独眼巨人|力|敏|血量 工作|L</zh><en>LP_Cyclops|cyclops|力|敏|血量 工作|L</en></s>
+  <s><zh>LP_CyclopsKin|独眼巨人|力|敏|血量 工作|L</zh><en>LP_CyclopsKin|cyclops|力|敏|血量 工作|L</en></s>
+  <s><zh>LP_Titan|泰坦|力魅||血量 心灵|L</zh><en>LP_Titan|titan|力魅||血量 心灵|L</en></s>
+  <s><zh>LP_AwakenedTitan|觉醒泰坦|力魅||血量 心灵|L</zh><en>LP_AwakenedTitan|awakened titan|力魅||血量 心灵|L</en></s>
+  <s><zh>LP_Troll|巨魔|体|智|回复 血量|</zh><en>LP_Troll|troll|体|智|回复 血量|</en></s>
+  <s><zh>LP_Ogre|食人魔|力|智|血量 近战|</zh><en>LP_Ogre|ogre|力|智|血量 近战|</en></s>
+  <s><zh>LP_Minotaur|牛头人|力体||近战 承受|</zh><en>LP_Minotaur|minotaur|力体||近战 承受|</en></s>
+  <s><zh>LP_Loxodon|象人|感|敏|承受 工作|</zh><en>LP_Loxodon|loxodon|感|敏|承受 工作|</en></s>
+  <s><zh>LP_MindFlayer|夺心魔|智|力|心灵 学习|L</zh><en>LP_MindFlayer|mind flayer|智|力|心灵 学习|L</en></s>
+  <s><zh>LP_HalfIllithid|半夺心魔|智|力|心灵 学习|</zh><en>LP_HalfIllithid|half-illithid|智|力|心灵 学习|</en></s>
+  <s><zh>LP_Githyanki|吉斯洋基|敏智||心灵 近战|</zh><en>LP_Githyanki|githyanki|敏智||心灵 近战|</en></s>
+  <s><zh>LP_GenasiFire|火元素裔|体||近战 心灵|</zh><en>LP_GenasiFire|fire genasi|体||近战 心灵|</en></s>
+  <s><zh>LP_GenasiWater|水元素裔|体感||回复 心灵|</zh><en>LP_GenasiWater|water genasi|体感||回复 心灵|</en></s>
+  <s><zh>LP_GenasiEarth|土元素裔|体力||承受 血量|</zh><en>LP_GenasiEarth|earth genasi|体力||承受 血量|</en></s>
+  <s><zh>LP_GenasiAir|风元素裔|体敏||远程 心灵|</zh><en>LP_GenasiAir|air genasi|体敏||远程 心灵|</en></s>
+  <s><zh>LP_Aarakocra|鸟人|敏|力|远程 回复|</zh><en>LP_Aarakocra|aarakocra|敏|力|远程 回复|</en></s>
+  <s><zh>LP_Genie|巨灵|魅智||心灵 回复|L</zh><en>LP_Genie|genie|魅智||心灵 回复|L</en></s>
+  <s><zh>LP_Oozefolk|流浆人|体|魅|回复 承受|</zh><en>LP_Oozefolk|oozefolk|体|魅|回复 承受|</en></s>
+  <s><zh>LP_Aasimar|阿斯莫|魅感||心灵 回复|L</zh><en>LP_Aasimar|aasimar|魅感||心灵 回复|L</en></s>
+  <s><zh>LP_Tiefling|提夫林|魅智||心灵 近战|</zh><en>LP_Tiefling|tiefling|魅智||心灵 近战|</en></s>
+  <s><zh>LP_Marilith|六臂蛇人|敏力||近战 血量|L</zh><en>LP_Marilith|marilith|敏力||近战 血量|L</en></s>
+  <s><zh>LP_MarilithKin|六臂蛇人|敏力||近战 血量|L</zh><en>LP_MarilithKin|marilith|敏力||近战 血量|L</en></s>
+  <s><zh>LP_IceDevil|寒冰魔|力||近战 承受|L</zh><en>LP_IceDevil|ice devil|力||近战 承受|L</en></s>
+  <s><zh>LP_Balor|炎魔|力||近战 承受|L</zh><en>LP_Balor|balor|力||近战 承受|L</en></s>
+  <s><zh>LP_Cambion|坎比恩|魅敏|感|心灵 近战|</zh><en>LP_Cambion|cambion|魅敏|感|心灵 近战|</en></s>
+  <s><zh>LP_Succubus|魅魔|魅敏||心灵 回复|</zh><en>LP_Succubus|succubus|魅敏||心灵 回复|</en></s>
+  <s><zh>LP_Dretch|劣魔|体|智|承受 工作|</zh><en>LP_Dretch|dretch|体|智|承受 工作|</en></s>
+  <s><zh>LP_Barlgura|巴路古拉|力|智|近战 血量|</zh><en>LP_Barlgura|barlgura|力|智|近战 血量|</en></s>
+  <s><zh>LP_Hezrou|哈兹魔|体力|敏|承受 血量|</zh><en>LP_Hezrou|hezrou|体力|敏|承受 血量|</en></s>
+  <s><zh>LP_Nabassu|纳巴苏|力体||近战 血量|</zh><en>LP_Nabassu|nabassu|力体||近战 血量|</en></s>
+  <s><zh>LP_ShadowDemon|影魔|敏||近战 心灵|</zh><en>LP_ShadowDemon|shadow demon|敏||近战 心灵|</en></s>
+  <s><zh>LP_WoodElf|木精灵|敏感||远程 回复|</zh><en>LP_WoodElf|wood elf|敏感||远程 回复|</en></s>
+  <s><zh>LP_Drow|卓尔精灵|敏魅||近战 心灵|</zh><en>LP_Drow|drow|敏魅||近战 心灵|</en></s>
+  <s><zh>LP_HillDwarf|丘陵矮人|体感||承受 血量|</zh><en>LP_HillDwarf|hill dwarf|体感||承受 血量|</en></s>
+  <s><zh>LP_HalflingLightfoot|轻足半身人|敏魅||回复 工作|</zh><en>LP_HalflingLightfoot|lightfoot halfling|敏魅||回复 工作|</en></s>
+  <s><zh>LP_HalflingStout|敦实半身人|敏体||承受 回复|</zh><en>LP_HalflingStout|stout halfling|敏体||承受 回复|</en></s>
+  <s><zh>LP_RockGnome|岩侏儒|智体||工作 学习|</zh><en>LP_RockGnome|rock gnome|智体||工作 学习|</en></s>
+  <s><zh>LP_ForestGnome|森林侏儒|智敏||学习 回复|</zh><en>LP_ForestGnome|forest gnome|智敏||学习 回复|</en></s>
+  <s><zh>LP_DeepGnome|地侏|智力||承受 学习|</zh><en>LP_DeepGnome|deep gnome|智力||承受 学习|</en></s>
+  <s><zh>LP_HalfElf|半精灵|魅敏||学习 远程|</zh><en>LP_HalfElf|half-elf|魅敏||学习 远程|</en></s>
+  <s><zh>LP_Kobold|狗头人|敏智|力|工作 远程|</zh><en>LP_Kobold|kobold|敏智|力|工作 远程|</en></s>
+  <s><zh>LP_Goblin|地精|敏体||远程 回复|</zh><en>LP_Goblin|goblin|敏体||远程 回复|</en></s>
+  <s><zh>LP_Hobgoblin|大地精|体智||远程 承受|</zh><en>LP_Hobgoblin|hobgoblin|体智||远程 承受|</en></s>
+  <s><zh>LP_Bugbear|熊地精|力敏||近战 血量|</zh><en>LP_Bugbear|bugbear|力敏||近战 血量|</en></s>
+  <s><zh> 擅长</zh><en> strong</en></s>
+  <s><zh> 笨拙</zh><en> weak</en></s>
+  <s><zh>种族亲和已关闭</zh><en>Racial affinity is off</en></s>
+  <s><zh>；</zh><en>; </en></s>
+  <s><zh> ×1.5 与种族倍率取较大</zh><en> ×1.5, the larger of this and the race multiplier</en></s>
+  <s><zh>；特性：</zh><en>; trait: </en></s>
+  <s><zh>，与种族倍率取较大</zh><en>, the larger of this and the race multiplier</en></s>
+  <s><zh>种族擅长：整体 ×</zh><en>Racial strength: whole ×</en></s>
+  <s><zh>种族笨拙：调整值 ×</zh><en>Racial weakness: modifier ×</en></s>
+  <s><zh>极致：整体 ×</zh><en>Paragon: whole ×</en></s>
+  <s><zh>天赋：整体 ×</zh><en>Talent: whole ×</en></s>
+  <s><zh>：整体 ×</zh><en>: whole ×</en></s>
+  <s><zh>；反骨：笨拙按 ×1</zh><en>; contrarian: weakness counts as ×1</en></s>
+  <s><zh>种族擅长（</zh><en>Racial strength (</en></s>
+  <s><zh>）：近战伤害 / 心灵敏感度 / 部位生命 / 职业强度等线性效果整个 ×</zh><en>): melee damage / psychic sensitivity / part health / class power and other linear effects all ×</en></s>
+  <s><zh>（和天赋相乘；效果低于 ×1 时不乘）</zh><en> (multiplies with talent; not applied when the effect is below ×1)</en></s>
+  <s><zh>种族笨拙（</zh><en>Racial weakness (</en></s>
+  <s><zh>）：正的调整值 ×</zh><en>): positive modifiers ×</en></s>
+  <s><zh>（负调整值不乘）</zh><en> (negative modifiers aren't multiplied)</en></s>
+  <s><zh>种族亲和（</zh><en>Racial affinity (</en></s>
+  <s><zh>）：这项 ×1</zh><en>): this entry ×1</en></s>
+  <s><zh>\n天赋（</zh><en>\nTalent (</en></s>
+  <s><zh>，取较大）：近战伤害 / 心灵敏感度 / 部位生命 / 职业强度的整个效果 ×</zh><en>, the larger): the whole effect of melee damage / psychic sensitivity / part health / class power ×</en></s>
+  <s><zh>（不和种族取较大，两者相乘；效果低于 ×1 时不乘）</zh><en> (not the larger of this and race; the two multiply; not applied when the effect is below ×1)</en></s>
+  <s><zh>\n线性效果合计整体 ×</zh><en>\nLinear effects in total: whole ×</en></s>
+  <s><zh>（种族 ×</zh><en> (race ×</en></s>
+  <s><zh> × 天赋 ×</zh><en> × talent ×</en></s>
+  <s><zh>\n其他属性效果（负重、采矿、研究等）倍率 ×</zh><en>\nOther ability effects (carrying capacity, mining, research, etc.) multiplier ×</en></s>
+  <s><zh>（种族和天赋取较大；属性低于 10 时不乘；笨拙不会让倍率低于 ×1）</zh><en> (the larger of race and talent; not applied when the ability is below 10; weakness never makes the multiplier below ×1)</en></s>
+  <s><zh>）：这项每点收益 ×</zh><en>): gain per point of this entry ×</en></s>
+  <s><zh>：稀有天赋互斥，保留后加的 </zh><en>: rare talents are mutually exclusive; kept the newer </en></s>
+  <s><zh>，去掉 </zh><en>, removed </en></s>
+</LPStrings>

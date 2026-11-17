@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 委托地点 -->
+  <LP_AB_Site.label>commission site</LP_AB_Site.label>
+  <!-- 冒险者告示板上委托的目的地。 -->
+  <LP_AB_Site.description>The destination of a commission from the adventurer board.</LP_AB_Site.description>
+  <!-- 正在前往{0}。 -->
+  <LP_AB_Site.approachingReportString>Traveling to {0}.</LP_AB_Site.approachingReportString>
+  <!-- 前往{0} -->
+  <LP_AB_Site.approachOrderString>travel to {0}</LP_AB_Site.approachOrderString>
+  <!-- 这里就是委托的地点。完成目标后，委托会自动结算。 -->
+  <LP_AB_Site.arrivedLetter>This is the commission site. Once the objective is complete, the commission settles automatically.</LP_AB_Site.arrivedLetter>
+</LanguageData>

@@ -44,10 +44,10 @@ namespace LichPhylactery {
   public static string Invalid(Pawn caster,CompProperties_ClassEffect e,LocalTargetInfo target){
    if(e?.effect==null || !e.effect.StartsWith("CS_"))return null;var t=target.Thing as Pawn;var def=DefOf(e);var x=X(def);
    switch(e.effect){
-    case "CS_Bolt":if(t==null || t.Dead)return "需要选择一个活着的目标。";if(!t.HostileTo(caster))return "只能对敌人使用。";return null;
-    case "CS_Hex":if(target.Thing==null && e.radius>0f)return null;if(t==null || t.Dead)return "需要选择一个活着的目标。";if(!t.HostileTo(caster))return "只能对敌人使用。";
-     if(x.vs=="Humanlike" && !t.RaceProps.Humanlike)return "只对人形有效。";if(x.vs=="Animal" && !t.RaceProps.Animal)return "只对动物有效。";if(x.mind && t.RaceProps.IsMechanoid)return "对机械体无效。";return null;
-    case "CS_Heal":case "CS_Buff":case "CS_Restore":case "CS_Imbue":if(t==null || t.Dead)return "需要选择一个活着的目标。";if(t.HostileTo(caster))return "只能对友军使用。";return null;
+    case "CS_Bolt":if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();if(!t.HostileTo(caster))return "只能对敌人使用。".Loc();return null;
+    case "CS_Hex":if(target.Thing==null && e.radius>0f)return null;if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();if(!t.HostileTo(caster))return "只能对敌人使用。".Loc();
+     if(x.vs=="Humanlike" && !t.RaceProps.Humanlike)return "只对人形有效。".Loc();if(x.vs=="Animal" && !t.RaceProps.Animal)return "只对动物有效。".Loc();if(x.mind && t.RaceProps.IsMechanoid)return "对机械体无效。".Loc();return null;
+    case "CS_Heal":case "CS_Buff":case "CS_Restore":case "CS_Imbue":if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();if(t.HostileTo(caster))return "只能对友军使用。".Loc();return null;
     case "CS_Revive":return ReviveCannot(target.Thing as Corpse,x);
     case "CS_Util":return UtilCannot(caster,x.kind,target,e);
    }
@@ -90,8 +90,8 @@ namespace LichPhylactery {
    var d=Dmg(x.damage);float dealt=WizardSpells.Hit(p,t,d,Amount(x,t,pw),x.ap);
    if(!x.damage2.NullOrEmpty() && !t.Dead)dealt+=WizardSpells.Hit(p,t,Dmg(x.damage2),Amount(x,t,pw)*.5f,x.ap);
    if(!t.Dead)Rider(p,x,t,dur,s);
-   if(x.pull && !t.Dead && t.Spawned && p.Spawned){var dir=(p.Position-t.Position).ToVector3();int cells=Mathf.Min(3,Mathf.Max(0,Mathf.RoundToInt(dir.magnitude)-1));if(cells>0){var n=dir.normalized;for(int k=cells;k>=1;k--){var c=t.Position+new IntVec3(Mathf.RoundToInt(n.x*k),0,Mathf.RoundToInt(n.z*k));if(c==t.Position || !c.InBounds(t.Map) || !c.Standable(t.Map) || c.GetFirstPawn(t.Map)!=null || !GenSight.LineOfSight(t.Position,c,t.Map))continue;DNDPush.Move(t,c);Items.Mote(t,"拉近",Nature);break;}}}
-   if(x.push && !t.Dead && t.Spawned && p.Spawned){var dir=(t.Position-p.Position).ToVector3();if(dir.sqrMagnitude<.01f)dir=new Vector3(1f,0f,0f);DNDPush.Move(t,DNDPush.Destination(t.Map,t.Position,dir,3));Items.Mote(t,"推开",C);}
+   if(x.pull && !t.Dead && t.Spawned && p.Spawned){var dir=(p.Position-t.Position).ToVector3();int cells=Mathf.Min(3,Mathf.Max(0,Mathf.RoundToInt(dir.magnitude)-1));if(cells>0){var n=dir.normalized;for(int k=cells;k>=1;k--){var c=t.Position+new IntVec3(Mathf.RoundToInt(n.x*k),0,Mathf.RoundToInt(n.z*k));if(c==t.Position || !c.InBounds(t.Map) || !c.Standable(t.Map) || c.GetFirstPawn(t.Map)!=null || !GenSight.LineOfSight(t.Position,c,t.Map))continue;DNDPush.Move(t,c);Items.Mote(t,"拉近".Loc(),Nature);break;}}}
+   if(x.push && !t.Dead && t.Spawned && p.Spawned){var dir=(t.Position-p.Position).ToVector3();if(dir.sqrMagnitude<.01f)dir=new Vector3(1f,0f,0f);DNDPush.Move(t,DNDPush.Destination(t.Map,t.Position,dir,3));Items.Mote(t,"推开".Loc(),C);}
    if(x.splash>0f && t.Map!=null)foreach(var o in Near(t.Map,t.Position,x.splash))if(o!=t && Hostile(p,o))WizardSpells.Hit(p,o,d,Amount(x,o,pw)*.5f,x.ap);
    int extra=x.count>1?x.count-1:0;if(Spellbook.Upcast(def)=="target")extra+=up;
    if(extra>0 && t.Map!=null)foreach(var o in Near(t.Map,t.Position,6f).Where(o=>o!=t && Hostile(p,o)).OrderBy(o=>o.Position.DistanceToSquared(t.Position)).Take(extra).ToList()){WizardSpells.Hit(p,o,d,Amount(x,o,pw),x.ap);if(!o.Dead)Rider(p,x,o,dur,s);}
@@ -103,7 +103,7 @@ namespace LichPhylactery {
    if(x.chance>0f && !WizardSpells.TryControl(p,t,x.chance,x.mind))return false;
    if(!x.hediff2.NullOrEmpty()){var h=Items.Give(t,x.hediff2,dur>0?dur:600,1f);if(h is Hediff_CS hc){hc.caster=p;hc.power=s;}}
    if(x.stun>0)t.stances?.stunner?.StunFor(x.stun,p);
-   if(!x.mental.NullOrEmpty()){var m=DefDatabase<MentalStateDef>.GetNamedSilentFail(x.mental);if(m!=null)t.mindState?.mentalStateHandler?.TryStartMentalState(m,"法术",true,false,false,null,true);}
+   if(!x.mental.NullOrEmpty()){var m=DefDatabase<MentalStateDef>.GetNamedSilentFail(x.mental);if(m!=null)t.mindState?.mentalStateHandler?.TryStartMentalState(m,"法术".Loc(),true,false,false,null,true);}
    return true;
   }
   public static int Area(Pawn p,AbilityDef def,CasterSpellExt x,IntVec3 c,float r,float pw,int dur){
@@ -130,7 +130,7 @@ namespace LichPhylactery {
    var x=p?.genes?.Xenotype?.defName??"";
    if(x.Contains("Water") || x.Contains("Frost") || x.Contains("White"))return WizardSpells.Frost;
    if(x.Contains("Air") || x.Contains("Storm") || x.Contains("Blue") || x.Contains("Behir"))return Dmg("Lightning");
-   if(x.Contains("Black") || x.Contains("Ooze"))return Dmg("Acid");if(x.Contains("Green"))return Dmg("Poison");if(x.Contains("Force"))return Dmg("Force");
+   if(x.Contains("Black") || x.Contains("Ooze"))return Dmg("Acid");if(x.Contains("Green"))return Dmg("Poison");
    return DamageDefOf.Flame;
   }
   static void Glow(Pawn t,DamageDef d){if(t?.Map==null)return;if(d==DamageDefOf.Flame)FleckMaker.ThrowFireGlow(t.DrawPos,t.Map,1f);else FleckMaker.ThrowLightningGlow(t.DrawPos,t.Map,.8f);}
@@ -138,7 +138,7 @@ namespace LichPhylactery {
    float h=ClassMelee.Heal(t,pw);
    if(x.kind=="cure" || x.kind=="full" || x.kind=="power")CureSick(t,x.kind!="cure");
    if(x.kind=="power"){h+=ClassMelee.Heal(t,9999f);t.stances?.stunner?.StopStun();if(t.InMentalState && !t.MentalStateDef.IsAggro)t.MentalState.RecoverFromState();foreach(var b in t.health.hediffSet.hediffs.Where(b=>Array.IndexOf(LesserBad,b.def.defName)>=0).ToList())t.health.RemoveHediff(b);}
-   Items.Mote(t,"治疗 "+h.ToString("0"),Holy);return h;
+   Items.Mote(t,"治疗 ".Loc()+h.ToString("0"),Holy);return h;
   }
   static int CureSick(Pawn t,bool full){
    int n=0;foreach(var h in t.health.hediffSet.hediffs.Where(h=>h.def==HediffDefOf.FoodPoisoning || h.def==HediffDefOf.ToxicBuildup || full && (ClassCasters.IsDisease(h) || h.def.defName=="LP_WS_Blinded" || h.def.defName=="Blindness")).ToList()){t.health.RemoveHediff(h);n++;}
@@ -174,8 +174,8 @@ namespace LichPhylactery {
    foreach(var o in list){
     if(x.kind=="command"){if(!WizardSpells.TryControl(p,o,x.chance,true))continue;Command(p,o);won.Add(o);continue;}
     if(x.kind=="dominate"){if(WizardSpells2.Dominate(p,def,o,dur,x.chance))won.Add(o);continue;}
-    if(x.kind=="compel"){if(!WizardSpells.TryControl(p,o,x.chance,true))continue;var dir=(o.Position-p.Position).ToVector3();if(dir.sqrMagnitude<.01f)dir=new Vector3(0f,0f,1f);DNDPush.Move(o,DNDPush.Destination(map,o.Position,dir,5));o.stances?.stunner?.StunFor(90,p);Items.Mote(o,"被迫走开",C);won.Add(o);continue;}
-    if(x.kind=="stunWord" && o.health.summaryHealth.SummaryHealthPercent>.6f){Items.Mote(o,"伤势不重，不受影响",C);continue;}
+    if(x.kind=="compel"){if(!WizardSpells.TryControl(p,o,x.chance,true))continue;var dir=(o.Position-p.Position).ToVector3();if(dir.sqrMagnitude<.01f)dir=new Vector3(0f,0f,1f);DNDPush.Move(o,DNDPush.Destination(map,o.Position,dir,5));o.stances?.stunner?.StunFor(90,p);Items.Mote(o,"被迫走开".Loc(),C);won.Add(o);continue;}
+    if(x.kind=="stunWord" && o.health.summaryHealth.SummaryHealthPercent>.6f){Items.Mote(o,"伤势不重，不受影响".Loc(),C);continue;}
     if(Rider(p,x,o,dur,s)){won.Add(o);Items.Mote(o,def.label,C);}
    }
    if(Spellbook.Concentration(def) && won.Count>0 && !x.hediff2.NullOrEmpty())Spellbook.Concentrate(p,def,won,x.hediff2);
@@ -185,9 +185,9 @@ namespace LichPhylactery {
   // 命令术：随机一句——“趴下”（倒地 3 秒）、“滚开”（逃跑）、“放下”（丢掉武器）。
   static void Command(Pawn p,Pawn o){
    int k=Rand.Range(0,3);if(k==2 && o.equipment?.Primary==null)k=0;
-   if(k==0){o.stances?.stunner?.StunFor(180,p);Items.Mote(o,"命令：趴下",C);}
-   else if(k==1){var m=DefDatabase<MentalStateDef>.GetNamedSilentFail("PanicFlee");if(m!=null && o.mindState?.mentalStateHandler?.TryStartMentalState(m,"命令术",true)==true)Items.Mote(o,"命令：滚开",C);else{o.stances?.stunner?.StunFor(180,p);Items.Mote(o,"命令：趴下",C);}}
-   else{if(o.equipment.TryDropEquipment(o.equipment.Primary,out _,o.Position))Items.Mote(o,"命令：放下",C);}
+   if(k==0){o.stances?.stunner?.StunFor(180,p);Items.Mote(o,"命令：趴下".Loc(),C);}
+   else if(k==1){var m=DefDatabase<MentalStateDef>.GetNamedSilentFail("PanicFlee");if(m!=null && o.mindState?.mentalStateHandler?.TryStartMentalState(m,"命令术".Loc(),true)==true)Items.Mote(o,"命令：滚开".Loc(),C);else{o.stances?.stunner?.StunFor(180,p);Items.Mote(o,"命令：趴下".Loc(),C);}}
+   else{if(o.equipment.TryDropEquipment(o.equipment.Primary,out _,o.Position))Items.Mote(o,"命令：放下".Loc(),C);}
   }
   public static SpellZone Zone(Pawn p,AbilityDef def,CompProperties_ClassEffect e,CasterSpellExt x,IntVec3 c,float r,int dur,float pw){
    var z=SpellZone.Make(p,c,"CS_"+(x.zone??"Hurt"),r,dur);if(z==null)return null;
@@ -213,7 +213,7 @@ namespace LichPhylactery {
      foreach(var c in z.Cells.Take(8))if(Rand.Chance(.3f))FleckMaker.ThrowLightningGlow(c.ToVector3Shifted(),map,.7f);return;
     case "CS_Silence":foreach(var o in z.Inside)if(!o.Dead)Items.Give(o,"LP_CS_Silenced",90,1f);return;
     case "CS_Guardian": // 信仰守卫：靠近的敌人受光耀伤害（每个敌人 5 秒一次），总共打出 4 次后消散
-     foreach(var o in z.Inside){if(!z.Foe(o) || o.Downed || !z.Due(o,300))continue;WizardSpells.Hit(caster,o,PaladinCore.Radiant,z.power,.3f);Items.Mote(o,"信仰守卫",Holy);if(++z.csTicks>=4){z.End();return;}}
+     foreach(var o in z.Inside){if(!z.Foe(o) || o.Downed || !z.Due(o,300))continue;WizardSpells.Hit(caster,o,PaladinCore.Radiant,z.power,.3f);Items.Mote(o,"信仰守卫".Loc(),Holy);if(++z.csTicks>=4){z.End();return;}}
      return;
     case "CS_Hallow": // 圣居：亡灵、邪魔、异常生物进不来——每秒受光耀伤害并被推出去
      if(!z.IsHashIntervalTick(60))return;foreach(var o in z.Inside){if(!z.Foe(o) || !Evil(o))continue;WizardSpells.Hit(caster,o,PaladinCore.Radiant,z.power,.3f);if(!o.Dead && o.Spawned)z.Expel(o);}
@@ -236,10 +236,10 @@ namespace LichPhylactery {
   public static List<Pawn> Summon(Pawn p,AbilityDef def,CasterSpellExt x,IntVec3 c,int count,int ticks){
    var made=new List<Pawn>();var map=p.Map;if(map==null)return made;
    PawnKindDef kind=null;foreach(var n in (x.thing??"").Split(',')){kind=DefDatabase<PawnKindDef>.GetNamedSilentFail(n.Trim());if(kind!=null)break;}
-   if(kind==null){Messages.Message("找不到可以召唤的生物。",MessageTypeDefOf.RejectInput,false);return made;}
+   if(kind==null){Messages.Message("找不到可以召唤的生物。".Loc(),MessageTypeDefOf.RejectInput,false);return made;}
    for(int i=0;i<count;i++){
     Pawn w;try{w=PawnGenerator.GeneratePawn(new PawnGenerationRequest(kind,Faction.OfPlayer,PawnGenerationContext.NonPlayer,-1,forceGenerateNewPawn:true,canGeneratePawnRelations:false,mustBeCapableOfViolence:kind.RaceProps.Humanlike));}
-    catch(Exception ex){Log.Warning("[DND边缘大陆] 召唤失败："+ex.Message);break;}
+    catch(Exception ex){Log.Warning("[DND边缘大陆] 召唤失败：".Loc()+ex.Message);break;}
     var at=c.IsValid && c.InBounds(map) && c.Standable(map)?c:p.Position;GenSpawn.Spawn(w,CellFinder.RandomClosewalkCellNear(at,map,2),map);
     var h=(Hediff_WS)Items.Give(w,"LP_WS_Summoned",ticks,1f);if(h!=null)h.caster=p;
     if(w.training!=null)foreach(var td in new[]{TrainableDefOf.Tameness,TrainableDefOf.Obedience,TrainableDefOf.Release})if(td!=null && w.training.CanAssignToTrain(td).Accepted)w.training.Train(td,null,true);
@@ -252,10 +252,10 @@ namespace LichPhylactery {
   }
   // ---------- 复活 ----------
   public static string ReviveCannot(Corpse c,CasterSpellExt x){
-   var p=c?.InnerPawn;if(p==null || !p.RaceProps.Humanlike)return "需要人形尸体。";
-   if(Items.Undead(p) || NecromancyGenes.HasBody(p))return "对巫妖和死灵造物无效。";
-   if(x.days>0 && c.Age>x.days*60000)return "死亡超过 "+x.days+" 天，灵魂已经走远。";
-   if(x.kind!="full" && x.kind!="reincarnate" && p.health.hediffSet.GetBrain()==null)return "大脑已经不在了。";
+   var p=c?.InnerPawn;if(p==null || !p.RaceProps.Humanlike)return "需要人形尸体。".Loc();
+   if(Items.Undead(p) || NecromancyGenes.HasBody(p))return "对巫妖和死灵造物无效。".Loc();
+   if(x.days>0 && c.Age>x.days*60000)return "死亡超过 ".Loc()+x.days+" 天，灵魂已经走远。".Loc();
+   if(x.kind!="full" && x.kind!="reincarnate" && p.health.hediffSet.GetBrain()==null)return "大脑已经不在了。".Loc();
    return null;
   }
   public static bool Revive(Pawn caster,CasterSpellExt x,Corpse c){
@@ -263,15 +263,15 @@ namespace LichPhylactery {
    if(!ResurrectionUtility.TryResurrect(p,new ResurrectionParams{removeDiedThoughts=true,restoreMissingParts=x.kind=="full" || x.kind=="reincarnate"}))return false;
    if(x.kind=="full" || x.kind=="reincarnate")Healed(p);else Items.Give(p,"LP_RevivifyWeakness");
    if(x.kind=="reincarnate")Reincarnate(p);
-   if(!Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"在"+(caster?.LabelShort??"施法者")+"的法术中重新睁开了眼睛。",p,MessageTypeDefOf.PositiveEvent,false);
+   if(!Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"在".Loc()+(caster?.LabelShort??"施法者".Loc())+"的法术中重新睁开了眼睛。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);
    return true;
   }
   static void Healed(Pawn p){foreach(var h in p.health.hediffSet.hediffs.Where(h=>h is Hediff_Injury || h.def.isBad && h.def.makesSickThought).ToList())p.health.RemoveHediff(h);}
   public static readonly string[] ReincarnateXeno={"LP_HighElf","LP_WoodElf","LP_MountainDwarf","LP_HillDwarf","LP_HalfOrc","LP_LightfootHalfling","LP_RockGnome","LP_HalfElf","LP_Tiefling","LP_Aasimar","LP_GenasiFire","LP_GenasiWater","LP_GenasiEarth","LP_GenasiAir","LP_Minotaur","Baseliner"};
   public static XenotypeDef Reincarnate(Pawn p){
    if(p.genes==null || !ModsConfig.BiotechActive)return null;var opts=ReincarnateXeno.Select(n=>DefDatabase<XenotypeDef>.GetNamedSilentFail(n)).Where(d=>d!=null && d!=p.genes.Xenotype).ToList();if(opts.Count==0)return null;
-   var x=opts.RandomElement();try{p.genes.SetXenotype(x);}catch(Exception e){Log.Warning("[DND边缘大陆] 转生术换种族失败："+e.Message);return null;}
-   Items.Mote(p,"转生："+x.label,Nature);return x;
+   var x=opts.RandomElement();try{p.genes.SetXenotype(x);}catch(Exception e){Log.Warning("[DND边缘大陆] 转生术换种族失败：".Loc()+e.Message);return null;}
+   Items.Mote(p,"转生：".Loc()+x.label,Nature);return x;
   }
   // ---------- 复原 ----------
   static readonly string[] LesserBad={"LP_WS_Blinded","LP_MagicSleep","LP_WS_Slowed","LP_WS_Chilled","LP_WL_Hexed","LP_WS_Feebleminded","LP_Shaken","LP_CS_Weakened","LP_CS_ChillTouched","LP_CS_Slivered","LP_CS_Distracted","LP_WL_Darkened","LP_Petrifying","LP_NabassuPetrify"};
@@ -285,12 +285,12 @@ namespace LichPhylactery {
    }else if(kind=="curse"){
     var cursed=hs.Where(h=>h.def.defName.Contains("Curse") || h.def.defName=="LP_WL_Hexed" || h.def.defName=="LP_DivineDominated").ToList();
     foreach(var h in cursed)t.health.RemoveHediff(h);bool item=CursedItems.RemoveCurse(new LocalTargetInfo(t));
-    string r=cursed.Count>0 || item?"解除了 "+(cursed.Count+(item?1:0))+" 个诅咒":"身上没有诅咒";Items.Mote(t,r,Holy);return r;
+    string r=cursed.Count>0 || item?"解除了 ".Loc()+(cursed.Count+(item?1:0))+" 个诅咒".Loc():"身上没有诅咒".Loc();Items.Mote(t,r,Holy);return r;
    }else{
     pick=hs.FirstOrDefault(h=>Array.IndexOf(LesserBad,h.def.defName)>=0)??hs.FirstOrDefault(h=>h.def==HediffDefOf.FoodPoisoning || h.def==HediffDefOf.ToxicBuildup || h.def.defName=="Blindness")??hs.FirstOrDefault(ClassCasters.IsDisease);
    }
-   if(pick==null){Items.Mote(t,"没有可以复原的",Holy);return null;}
-   string label=pick.LabelCap;t.health.RemoveHediff(pick);Items.Mote(t,"复原："+label,Holy);return label;
+   if(pick==null){Items.Mote(t,"没有可以复原的".Loc(),Holy);return null;}
+   string label=pick.LabelCap;t.health.RemoveHediff(pick);Items.Mote(t,"复原：".Loc()+label,Holy);return label;
   }
   public static List<Thing> SpawnThings(Pawn p,string defName,int count,IntVec3 c){
    var made=new List<Thing>();var def=DefCache<ThingDef>.Get(defName);var map=p.Map;if(def==null || map==null || count<=0)return made;
@@ -312,15 +312,15 @@ namespace LichPhylactery {
   static string UtilCannot(Pawn caster,string kind,LocalTargetInfo target,CompProperties_ClassEffect e){
    var map=caster.Map;var c=target.Cell;var t=target.Thing as Pawn;
    switch(kind){
-    case "moldEarth":case "stoneShape":if(map==null || !c.IsValid || !c.InBounds(map))return "需要选择一个格子。";if(c.GetFirstPawn(map)!=null)return "格子上有人。";if(kind=="stoneShape" && !(c.GetEdifice(map)?.def.mineable??false) && !c.Standable(map))return "这里放不下石墙。";return null;
-    case "treeStride":if(TreeNear(caster.Map,caster.Position,2)==null)return "要站在一棵树旁边（2 格内）。";if(map==null || !c.IsValid || !c.InBounds(map) || c.Fogged(map) || !c.Standable(map))return "需要一个已探索、能站立的格子。";if(TreeNear(map,c,1)==null)return "目的地 1 格内要有一棵树。";return null;
-    case "awaken":if(t==null || t.Dead || !t.RaceProps.Animal)return "需要选择一只动物。";if(t.Faction!=caster.Faction)return "只能对已经驯服的动物使用。";if(Items.Has(t,"LP_CS_Awakened"))return "它已经被唤醒了。";return null;
-    case "dream":if(t==null || t.Dead || !t.RaceProps.Humanlike)return "需要选择一个人。";if(t.HostileTo(caster))return "只能给友方的人托梦。";return null;
-    case "messenger":if(!WizardSpells.Factions(caster).Any())return "没有可以联络的派系。";return null;
-    case "trueRes":if(DeadColonists(caster).Count==0)return "没有可以复活的死去的殖民者。";return null;
-    case "identify":if(target.Thing==null || target.Thing.def.category!=ThingCategory.Item)return "需要选择一件物品。";return null;
-    case "steed":{if(map==null)return "要在地图上施放。";var bk=CasterSpells.Book(caster,CasterSpells.ListNamed("LP_CSL_Paladin"))??CasterSpells.FirstBook(caster);if(bk?.familiar!=null && !bk.familiar.Dead && !bk.familiar.Destroyed)return "已经有一匹天界战马了（"+bk.familiar.LabelShort+"）。";return null;}
-    case "suggest":case "dance":if(t==null || t.Dead || !t.HostileTo(caster))return "需要选择一个敌人。";if(t.RaceProps.IsMechanoid)return "对机械体无效。";if(x0(e)=="suggest")return Bard.TruceCannot(caster,t);return null;
+    case "moldEarth":case "stoneShape":if(map==null || !c.IsValid || !c.InBounds(map))return "需要选择一个格子。".Loc();if(c.GetFirstPawn(map)!=null)return "格子上有人。".Loc();if(kind=="stoneShape" && !(c.GetEdifice(map)?.def.mineable??false) && !c.Standable(map))return "这里放不下石墙。".Loc();return null;
+    case "treeStride":if(TreeNear(caster.Map,caster.Position,2)==null)return "要站在一棵树旁边（2 格内）。".Loc();if(map==null || !c.IsValid || !c.InBounds(map) || c.Fogged(map) || !c.Standable(map))return "需要一个已探索、能站立的格子。".Loc();if(TreeNear(map,c,1)==null)return "目的地 1 格内要有一棵树。".Loc();return null;
+    case "awaken":if(t==null || t.Dead || !t.RaceProps.Animal)return "需要选择一只动物。".Loc();if(t.Faction!=caster.Faction)return "只能对已经驯服的动物使用。".Loc();if(Items.Has(t,"LP_CS_Awakened"))return "它已经被唤醒了。".Loc();return null;
+    case "dream":if(t==null || t.Dead || !t.RaceProps.Humanlike)return "需要选择一个人。".Loc();if(t.HostileTo(caster))return "只能给友方的人托梦。".Loc();return null;
+    case "messenger":if(!WizardSpells.Factions(caster).Any())return "没有可以联络的派系。".Loc();return null;
+    case "trueRes":if(DeadColonists(caster).Count==0)return "没有可以复活的死去的殖民者。".Loc();return null;
+    case "identify":if(target.Thing==null || target.Thing.def.category!=ThingCategory.Item)return "需要选择一件物品。".Loc();return null;
+    case "steed":{if(map==null)return "要在地图上施放。".Loc();var bk=CasterSpells.Book(caster,CasterSpells.ListNamed("LP_CSL_Paladin"))??CasterSpells.FirstBook(caster);if(bk?.familiar!=null && !bk.familiar.Dead && !bk.familiar.Destroyed)return "已经有一匹天界战马了（".Loc()+bk.familiar.LabelShort+"）。".Loc();return null;}
+    case "suggest":case "dance":if(t==null || t.Dead || !t.HostileTo(caster))return "需要选择一个敌人。".Loc();if(t.RaceProps.IsMechanoid)return "对机械体无效。".Loc();if(x0(e)=="suggest")return Bard.TruceCannot(caster,t);return null;
    }
    return null;
   }
@@ -330,17 +330,17 @@ namespace LichPhylactery {
   static void Util(Pawn p,AbilityDef def,CompProperties_ClassEffect e,CasterSpellExt x,LocalTargetInfo target,IntVec3 cell,float rad,int dur,float pw,float s){
    var map=p.Map;var t=target.Thing as Pawn;
    switch(x.kind){
-    case "thaumaturgy":{int n=WizardSpells.Prestidigitation(p,new LocalTargetInfo(cell),rad>0?rad:2f);var orb=Subclass3.LightOrb(p,cell);var life=orb?.TryGetComp<CompLifespan>();if(life!=null)life.age=Mathf.Max(0,life.Props.lifespanTicks-2500);Items.Mote(p,"奇术",Holy);return;}
+    case "thaumaturgy":{int n=WizardSpells.Prestidigitation(p,new LocalTargetInfo(cell),rad>0?rad:2f);var orb=Subclass3.LightOrb(p,cell);var life=orb?.TryGetComp<CompLifespan>();if(life!=null)life.age=Mathf.Max(0,life.Props.lifespanTicks-2500);Items.Mote(p,"奇术".Loc(),Holy);return;}
     case "createWater":CreateWater(p,cell,rad>0?rad:3f);return;
     case "purify":Purify(p,cell,rad>0?rad:3f);return;
-    case "daylight":for(int i=0;i<3;i++){var c=i==0?cell:CellFinder.RandomClosewalkCellNear(cell,map,3);var orb=Subclass3.LightOrb(p,c);var life=orb?.TryGetComp<CompLifespan>();if(life!=null)life.age=Mathf.Max(0,life.Props.lifespanTicks-dur);}Items.Mote(p,"昼明术",Holy);return;
+    case "daylight":for(int i=0;i<3;i++){var c=i==0?cell:CellFinder.RandomClosewalkCellNear(cell,map,3);var orb=Subclass3.LightOrb(p,c);var life=orb?.TryGetComp<CompLifespan>();if(life!=null)life.age=Mathf.Max(0,life.Props.lifespanTicks-dur);}Items.Mote(p,"昼明术".Loc(),Holy);return;
     case "divination":WizardSpells2.Scry(p,dur>0?dur:180000);return;
     case "druidcraft":Druidcraft(p);return;
     case "moldEarth":MoldEarth(p,cell);return;
     case "stoneShape":StoneShape(p,cell);return;
     case "findTraps":FindTraps(p,rad>0?rad:40f);return;
     case "messenger":Messenger(p);return;
-    case "treeStride":if(map!=null){FleckMaker.ThrowDustPuffThick(p.DrawPos,map,2f,Nature);Races124.Blink(p,cell);FleckMaker.ThrowDustPuffThick(p.DrawPos,map,2f,Nature);Items.Mote(p,"树跃",Nature);}return;
+    case "treeStride":if(map!=null){FleckMaker.ThrowDustPuffThick(p.DrawPos,map,2f,Nature);Races124.Blink(p,cell);FleckMaker.ThrowDustPuffThick(p.DrawPos,map,2f,Nature);Items.Mote(p,"树跃".Loc(),Nature);}return;
     case "awaken":if(t!=null)Awaken(p,t);return;
     case "controlEnv":ControlEnv(p);return;
     case "tornado":Tornado(p,cell,dur);return;
@@ -348,16 +348,16 @@ namespace LichPhylactery {
     case "dream":if(t!=null)Dream(p,t);return;
     case "feast":Feast(p,rad>0?rad:8f,pw,dur);return;
     case "trueRes":TrueRes(p);return;
-    case "rebuke":{var h=Items.Give(p,"LP_CS_Rebuke",dur>0?dur:2500,1f) as Hediff_CS;if(h!=null){h.caster=p;h.power=pw;}Items.Mote(p,"地狱斥责",new Color(1f,.5f,.3f));return;}
-    case "illusion":foreach(var o in Near(map,cell,rad>0?rad:4f))if(Hostile(p,o))Items.Give(o,"LP_CS_Distracted",dur>0?dur:600,1f);if(map!=null)FleckMaker.Static(cell,map,FleckDefOf.PsycastAreaEffect,3f);Items.Mote(p,"次级幻象",C);return;
+    case "rebuke":{var h=Items.Give(p,"LP_CS_Rebuke",dur>0?dur:2500,1f) as Hediff_CS;if(h!=null){h.caster=p;h.power=pw;}Items.Mote(p,"地狱斥责".Loc(),new Color(1f,.5f,.3f));return;}
+    case "illusion":foreach(var o in Near(map,cell,rad>0?rad:4f))if(Hostile(p,o))Items.Give(o,"LP_CS_Distracted",dur>0?dur:600,1f);if(map!=null)FleckMaker.Static(cell,map,FleckDefOf.PsycastAreaEffect,3f);Items.Mote(p,"次级幻象".Loc(),C);return;
     case "identify":Identify(p,target.Thing);return;
     case "steed":Steed(p,def);return;
     case "detectEvil":DetectEvil(p,rad>0?rad:30f);return;
-    case "animate":{var map2=p.Map;if(map2==null)return;var at=cell.IsValid && cell.InBounds(map2) && cell.Standable(map2)?cell:p.Position;try{var g=Constructs.Create("StoneGolem",p,CellFinder.RandomClosewalkCellNear(at,map2,2),map2);if(g!=null){g.Name=new NameSingle("活化石像");Items.Give(g,"LP_WS_Animated",dur>0?dur:3600,1f);if(Spellbook.Concentration(def))Spellbook.Concentrate(p,def,new[]{g},"LP_WS_Animated");Items.Mote(g,"活化物件",C);}}catch(Exception ex){Log.Warning("[DND边缘大陆] 活化物件失败："+ex.Message);}return;}
+    case "animate":{var map2=p.Map;if(map2==null)return;var at=cell.IsValid && cell.InBounds(map2) && cell.Standable(map2)?cell:p.Position;try{var g=Constructs.Create("StoneGolem",p,CellFinder.RandomClosewalkCellNear(at,map2,2),map2);if(g!=null){g.Name=new NameSingle("活化石像".Loc());Items.Give(g,"LP_WS_Animated",dur>0?dur:3600,1f);if(Spellbook.Concentration(def))Spellbook.Concentrate(p,def,new[]{g},"LP_WS_Animated");Items.Mote(g,"活化物件".Loc(),C);}}catch(Exception ex){Log.Warning("[DND边缘大陆] 活化物件失败：".Loc()+ex.Message);}return;}
     case "creation":Creation(p,def);return;
-    case "suggest":if(t!=null && Bard.Truce(p,t,s))Items.Mote(t,"群体暗示：退兵",C);return;
+    case "suggest":if(t!=null && Bard.Truce(p,t,s))Items.Mote(t,"群体暗示：退兵".Loc(),C);return;
     case "dance":if(t!=null)Bard.Dance(p,t,s,dur);return;
-    case "project":WizardSpells2.ArcaneEye(p,cell,12f);{var h=Items.Give(p,"LP_CS_Projected",dur,1f) as Hediff_CS;if(h!=null)h.caster=p;}Items.Mote(p,"投射幻象",C);return;
+    case "project":WizardSpells2.ArcaneEye(p,cell,12f);{var h=Items.Give(p,"LP_CS_Projected",dur,1f) as Hediff_CS;if(h!=null)h.caster=p;}Items.Mote(p,"投射幻象".Loc(),C);return;
    }
   }
   public static int CreateWater(Pawn p,IntVec3 c,float r){
@@ -366,7 +366,7 @@ namespace LichPhylactery {
    foreach(var x in Near(map,c,r))if(x.IsBurning()){var fire=x.GetAttachment(ThingDefOf.Fire);fire?.Destroy();n++;}
    foreach(var pl in GenRadial.RadialDistinctThingsAround(c,map,r,true).OfType<Plant>().ToList())if(pl.Growth<1f && pl.def.plant!=null && pl.def.plant.Sowable)pl.Growth=Mathf.Min(1f,pl.Growth+.05f);
    for(int i=0;i<6;i++)FleckMaker.ThrowDustPuffThick(GenRadial.RadialCellsAround(c,r,true).RandomElement().ToVector3Shifted(),map,1f,new Color(.5f,.7f,1f));
-   Items.Mote(p,"造水术：扑灭 "+n+" 处火",new Color(.5f,.7f,1f));return n;
+   Items.Mote(p,"造水术：扑灭 ".Loc()+n+" 处火".Loc(),new Color(.5f,.7f,1f));return n;
   }
   public static int Purify(Pawn p,IntVec3 c,float r){
    var map=p.Map;if(map==null)return 0;int n=0;
@@ -375,60 +375,60 @@ namespace LichPhylactery {
     var ing=th.TryGetComp<CompIngredients>();if(th.def.IsIngestible && th.def.ingestible?.tasteThought==ThoughtDefOf.AteRawFood){}
    }
    foreach(var x in Near(map,c,r))if(!x.HostileTo(p)){var fp=x.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.FoodPoisoning);if(fp!=null){x.health.RemoveHediff(fp);n++;}}
-   Items.Mote(p,"净化饮食 ×"+n,Holy);return n;
+   Items.Mote(p,"净化饮食 ×".Loc()+n,Holy);return n;
   }
   static void Druidcraft(Pawn p){
    var map=p.Map;if(map==null)return;var w=map.weatherManager.curWeather;int left=0;try{left=Traverse.Create(map.weatherDecider).Field("curWeatherDuration").GetValue<int>()-Traverse.Create(map.weatherDecider).Field("curWeatherAge").GetValue<int>();}catch{}
    float avg=GenTemperature.GetTemperatureFromSeasonAtTile(Find.TickManager.TicksAbs,map.Tile);float lo=avg-7f,hi=avg+7f;
-   string text="现在是「"+w.label+"」"+(left>0?"，大约还会持续 "+(left/2500f).ToString("0")+" 小时":"")+"。接下来一天室外气温约 "+lo.ToStringTemperature("F0")+" ～ "+hi.ToStringTemperature("F0")+"。"
-    +(map.gameConditionManager.ActiveConditions.Any()?"\n正在持续："+string.Join("、",map.gameConditionManager.ActiveConditions.Select(g=>g.LabelCap))+"。":"");
-   if(!Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"的德鲁伊伎俩："+text,p,MessageTypeDefOf.NeutralEvent,false);
+   string text="现在是「".Loc()+w.label+"」".Loc()+(left>0?"，大约还会持续 ".Loc()+(left/2500f).ToString("0")+" 小时".Loc():"")+"。接下来一天室外气温约 ".Loc()+lo.ToStringTemperature("F0")+" ～ ".Loc()+hi.ToStringTemperature("F0")+"。".Loc()
+    +(map.gameConditionManager.ActiveConditions.Any()?"\n正在持续：".Loc()+string.Join("、".Loc(),map.gameConditionManager.ActiveConditions.Select(g=>g.LabelCap))+"。".Loc():"");
+   if(!Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"的德鲁伊伎俩：".Loc()+text,p,MessageTypeDefOf.NeutralEvent,false);
    foreach(var pl in GenRadial.RadialDistinctThingsAround(p.Position,map,2f,true).OfType<Plant>().ToList())if(pl.Growth<1f)pl.Growth=Mathf.Min(1f,pl.Growth+.02f);
-   Items.Mote(p,"德鲁伊伎俩",Nature);
+   Items.Mote(p,"德鲁伊伎俩".Loc(),Nature);
   }
   public static string MoldEarth(Pawn p,IntVec3 c){
    var map=p.Map;if(map==null)return null;var ed=c.GetEdifice(map);
-   if(ed!=null && ed.def.mineable){ed.Destroy(DestroyMode.KillFinalize);Items.Mote(p,"塑土术：挖开",Nature);return "dig";}
-   var terr=c.GetTerrain(map);if(terr!=null && (terr.IsWater || terr.defName.Contains("Mud") || terr.defName.Contains("Marsh")) && !terr.defName.Contains("Deep")){map.terrainGrid.SetTerrain(c,TerrainDefOf.Soil);Items.Mote(p,"塑土术：填平",Nature);return "fill";}
-   FilthMaker.RemoveAllFilth(c,map);Items.Mote(p,"塑土术：翻整",Nature);return "smooth";
+   if(ed!=null && ed.def.mineable){ed.Destroy(DestroyMode.KillFinalize);Items.Mote(p,"塑土术：挖开".Loc(),Nature);return "dig";}
+   var terr=c.GetTerrain(map);if(terr!=null && (terr.IsWater || terr.defName.Contains("Mud") || terr.defName.Contains("Marsh")) && !terr.defName.Contains("Deep")){map.terrainGrid.SetTerrain(c,TerrainDefOf.Soil);Items.Mote(p,"塑土术：填平".Loc(),Nature);return "fill";}
+   FilthMaker.RemoveAllFilth(c,map);Items.Mote(p,"塑土术：翻整".Loc(),Nature);return "smooth";
   }
   public static Thing StoneShape(Pawn p,IntVec3 c){
    var map=p.Map;if(map==null)return null;var ed=c.GetEdifice(map);
-   if(ed!=null && ed.def.mineable){var chunk=ed.def.building?.mineableThing;ed.Destroy(DestroyMode.KillFinalize);Items.Mote(p,"塑石术：开凿",Nature);return null;}
+   if(ed!=null && ed.def.mineable){var chunk=ed.def.building?.mineableThing;ed.Destroy(DestroyMode.KillFinalize);Items.Mote(p,"塑石术：开凿".Loc(),Nature);return null;}
    var stuff=DefDatabase<ThingDef>.AllDefsListForReading.FirstOrDefault(d=>d.IsStuff && d.stuffProps.categories!=null && d.stuffProps.categories.Contains(StuffCategoryDefOf.Stony) && d.defName.StartsWith("Blocks"))??ThingDefOf.BlocksGranite;
-   var wall=ThingMaker.MakeThing(ThingDefOf.Wall,stuff);wall.SetFaction(p.Faction);var placed=GenSpawn.Spawn(wall,c,map,WipeMode.Vanish);Items.Mote(p,"塑石术：石墙",Nature);return placed;
+   var wall=ThingMaker.MakeThing(ThingDefOf.Wall,stuff);wall.SetFaction(p.Faction);var placed=GenSpawn.Spawn(wall,c,map,WipeMode.Vanish);Items.Mote(p,"塑石术：石墙".Loc(),Nature);return placed;
   }
   public static int FindTraps(Pawn p,float r){
    var map=p.Map;if(map==null)return 0;var traps=map.listerThings.AllThings.Where(t=>t.Spawned && t.def.building!=null && (t.def.building.isTrap || t is Building_Trap) && (t.Faction==null || t.Faction.HostileTo(p.Faction))).ToList();
    int hid=Hediff_WS.Reveal(p,r);
-   if(!Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("寻找陷阱",traps.Count==0 && hid==0?"附近没有发现陷阱或潜伏的敌人。":"发现了 "+traps.Count+" 处陷阱"+(hid>0?"，并揭开了 "+hid+" 个隐形的敌人":"")+"。",LetterDefOf.NeutralEvent,new LookTargets(traps.Take(20)));
-   Items.Mote(p,"寻找陷阱",Nature);return traps.Count+hid;
+   if(!Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("寻找陷阱".Loc(),traps.Count==0 && hid==0?"附近没有发现陷阱或潜伏的敌人。".Loc():"发现了 ".Loc()+traps.Count+" 处陷阱".Loc()+(hid>0?"，并揭开了 ".Loc()+hid+" 个隐形的敌人".Loc():"")+"。".Loc(),LetterDefOf.NeutralEvent,new LookTargets(traps.Take(20)));
+   Items.Mote(p,"寻找陷阱".Loc(),Nature);return traps.Count+hid;
   }
   static void Messenger(Pawn p){
    var fs=WizardSpells.Factions(p).ToList();if(fs.Count==0)return;
    void Go(Faction f){if(!Adventurer.TestSuppressed)Find.WindowStack.Add(new Dialog_Negotiation(p,f,FactionDialogMaker.FactionDialogFor(p,f),true));}
    if(!Spellbook.Player(p) || Adventurer.TestSuppressed){Go(fs[0]);return;}
-   Find.WindowStack.Add(new Dialog_SpellChoice("动物信使","让一只小动物带口信给一个派系的首领（打开和它的通话）。",fs.Select(f=>(f.Name+"（"+f.def.label+"）",(string)null,(Action)(()=>Go(f)))).ToList(),()=>{}));
+   Find.WindowStack.Add(new Dialog_SpellChoice("动物信使".Loc(),"让一只小动物带口信给一个派系的首领（打开和它的通话）。".Loc(),fs.Select(f=>(f.Name+"（".Loc()+f.def.label+"）".Loc(),(string)null,(Action)(()=>Go(f)))).ToList(),()=>{}));
   }
   public static bool Awaken(Pawn p,Pawn t){
    if(t.training!=null)foreach(var td in DefDatabase<TrainableDef>.AllDefsListForReading)if(t.training.CanAssignToTrain(td).Accepted){t.training.SetWantedRecursive(td,true);for(int i=0;i<10 && !t.training.HasLearned(td);i++)t.training.Train(td,p,true);}
-   Items.Give(t,"LP_CS_Awakened");Items.Mote(t,"唤醒：获得智识",Nature);return true;
+   Items.Give(t,"LP_CS_Awakened");Items.Mote(t,"唤醒：获得智识".Loc(),Nature);return true;
   }
   static void ControlEnv(Pawn p){
    var map=p.Map;if(map==null)return;string ended=ClassCasters.EndBadCondition(map);var clear=DefCache<WeatherDef>.Get("Clear");if(clear!=null)ClassCasters.SetWeather(map,clear);
-   Items.Mote(p,"控制环境",Nature);if(!Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"平息了天气"+(ended!=null?"，并结束了"+ended:"")+"。",p,MessageTypeDefOf.PositiveEvent,false);
+   Items.Mote(p,"控制环境".Loc(),Nature);if(!Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"平息了天气".Loc()+(ended!=null?"，并结束了".Loc()+ended:"")+"。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);
   }
   public static Thing Tornado(Pawn p,IntVec3 c,int ticks){
    var map=p.Map;var def=DefCache<ThingDef>.Get("Tornado");if(map==null || def==null || !c.InBounds(map))return null;
    var t=(Thing)GenSpawn.Spawn(def,c,map);var life=t.TryGetComp<CompLifespan>();if(life!=null && ticks>0)life.age=Mathf.Max(0,life.Props.lifespanTicks-ticks);
-   Items.Mote(p,"召唤龙卷风",C);return t;
+   Items.Mote(p,"召唤龙卷风".Loc(),C);return t;
   }
   public static bool ContactPlane(Pawn p,float s){
    float chance=Mathf.Clamp(.55f+.05f*Adventurer.Mod(Adventurer.Score(p,Adventurer.Int))+(s-1f)*.2f,.2f,.95f);
-   if(Roll>=chance){var m=DefDatabase<MentalStateDef>.GetNamedSilentFail("Wander_Psychotic");if(m!=null)p.mindState?.mentalStateHandler?.TryStartMentalState(m,"接触异界",true);Items.Mote(p,"异界的知识冲垮了心智",Dark);return false;}
-   WizardSpells2.Scry(p,180000);float done=WizardSpells.Research(p,500f*s);Items.Mote(p,"接触异界：研究 +"+done.ToString("0"),Dark);return true;
+   if(Roll>=chance){var m=DefDatabase<MentalStateDef>.GetNamedSilentFail("Wander_Psychotic");if(m!=null)p.mindState?.mentalStateHandler?.TryStartMentalState(m,"接触异界".Loc(),true);Items.Mote(p,"异界的知识冲垮了心智".Loc(),Dark);return false;}
+   WizardSpells2.Scry(p,180000);float done=WizardSpells.Research(p,500f*s);Items.Mote(p,"接触异界：研究 +".Loc()+done.ToString("0"),Dark);return true;
   }
-  static void Dream(Pawn p,Pawn t){var th=DefCache<ThoughtDef>.Get("LP_CS_SweetDream");if(th!=null)t.needs?.mood?.thoughts?.memories?.TryGainMemory(th);Items.Mote(t,"美梦",Dark);}
+  static void Dream(Pawn p,Pawn t){var th=DefCache<ThoughtDef>.Get("LP_CS_SweetDream");if(th!=null)t.needs?.mood?.thoughts?.memories?.TryGainMemory(th);Items.Mote(t,"美梦".Loc(),Dark);}
   public static int Feast(Pawn p,float r,float pw,int ticks){
    int n=0;var th=DefCache<ThoughtDef>.Get("LP_CS_FeastThought");
    foreach(var o in Near(p.Map,p.Position,r).Where(o=>Friendly(p,o) && o.RaceProps.Humanlike).Take(12).ToList()){
@@ -436,12 +436,12 @@ namespace LichPhylactery {
     foreach(var h in o.health.hediffSet.hediffs.Where(h=>h.def==HediffDefOf.FoodPoisoning || h.def==HediffDefOf.ToxicBuildup).ToList())o.health.RemoveHediff(h);
     if(th!=null)o.needs?.mood?.thoughts?.memories?.TryGainMemory(th);n++;
    }
-   Items.Mote(p,"英雄宴 ×"+n,Holy);return n;
+   Items.Mote(p,"英雄宴 ×".Loc()+n,Holy);return n;
   }
   static void TrueRes(Pawn p){
    var list=DeadColonists(p);if(list.Count==0)return;
    if(!Spellbook.Player(p) || Adventurer.TestSuppressed){Resurrect(p,list[0]);return;}
-   Find.WindowStack.Add(new Dialog_SpellChoice("真复活","选一个死去的殖民者（没有尸体也可以）。",list.Select(x=>(x.LabelShortCap,(string)null,(Action)(()=>Resurrect(p,x)))).ToList(),()=>{}));
+   Find.WindowStack.Add(new Dialog_SpellChoice("真复活".Loc(),"选一个死去的殖民者（没有尸体也可以）。".Loc(),list.Select(x=>(x.LabelShortCap,(string)null,(Action)(()=>Resurrect(p,x)))).ToList(),()=>{}));
   }
   public static bool Resurrect(Pawn caster,Pawn x){
    if(x==null || !x.Dead)return false;bool had=x.Corpse!=null;
@@ -449,32 +449,32 @@ namespace LichPhylactery {
    Healed(x);var map=caster.Map;
    if(map!=null && (!x.Spawned || x.Map!=map)){if(x.Spawned)x.DeSpawn();if(Find.WorldPawns.Contains(x))Find.WorldPawns.RemovePawn(x);GenSpawn.Spawn(x,CellFinder.RandomClosewalkCellNear(caster.Position,map,3),map);}
    if(x.Faction!=Faction.OfPlayer)x.SetFaction(Faction.OfPlayer);
-   if(!Adventurer.TestSuppressed)Messages.Message(x.LabelShort+(had?"":"（连遗体都不在了）")+"被真复活术带回了人间。",x,MessageTypeDefOf.PositiveEvent,false);
+   if(!Adventurer.TestSuppressed)Messages.Message(x.LabelShort+(had?"":"（连遗体都不在了）".Loc())+"被真复活术带回了人间。".Loc(),x,MessageTypeDefOf.PositiveEvent,false);
    return true;
   }
   static void Identify(Pawn p,Thing t){
-   var lines=new List<string>{t.LabelCap};var q=t.TryGetComp<CompQuality>();if(q!=null)lines.Add("品质："+q.Quality.GetLabel());
-   var en=GearEnhance.Level(t);if(en>0)lines.Add("附魔强化 +"+en);if(t.TryGetComp<CompCursed>() is CompCursed cc && !cc.lifted)lines.Add("带着诅咒！");
-   if(WizardSpells.Magic(t))lines.Add("有魔法灵光");lines.Add("价值 "+t.MarketValue.ToStringMoney());
-   if(!Adventurer.TestSuppressed)Messages.Message(string.Join("，",lines)+"。",t,MessageTypeDefOf.NeutralEvent,false);Items.Mote(p,"识别术",C);
+   var lines=new List<string>{t.LabelCap};var q=t.TryGetComp<CompQuality>();if(q!=null)lines.Add("品质：".Loc()+q.Quality.GetLabel());
+   var en=GearEnhance.Level(t);if(en>0)lines.Add("附魔强化 +".Loc()+en);if(t.TryGetComp<CompCursed>() is CompCursed cc && !cc.lifted)lines.Add("带着诅咒！".Loc());
+   if(WizardSpells.Magic(t))lines.Add("有魔法灵光".Loc());lines.Add("价值 ".Loc()+t.MarketValue.ToStringMoney());
+   if(!Adventurer.TestSuppressed)Messages.Message(string.Join("，".Loc(),lines)+"。".Loc(),t,MessageTypeDefOf.NeutralEvent,false);Items.Mote(p,"识别术".Loc(),C);
   }
   static string x0(CompProperties_ClassEffect e)=>X(DefOf(e)).kind;
   // 寻获坐骑：召来一匹持续存在的天界战马（原版马，殖民地的、认主、羁绊；死了要 1 天才能重召，用能力冷却实现）。
   public static Pawn Steed(Pawn p,AbilityDef def){
    var map=p.Map;if(map==null)return null;var kind=DefDatabase<PawnKindDef>.GetNamedSilentFail("Horse")??DefDatabase<PawnKindDef>.GetNamedSilentFail("Muffalo");if(kind==null)return null;
    var horse=PawnGenerator.GeneratePawn(new PawnGenerationRequest(kind,Faction.OfPlayer,PawnGenerationContext.NonPlayer,-1,forceGenerateNewPawn:true,canGeneratePawnRelations:false));
-   horse.Name=new NameSingle("天界战马");GenSpawn.Spawn(horse,CellFinder.RandomClosewalkCellNear(p.Position,map,2),map);
+   horse.Name=new NameSingle("天界战马".Loc());GenSpawn.Spawn(horse,CellFinder.RandomClosewalkCellNear(p.Position,map,2),map);
    if(horse.training!=null)for(int pass=0;pass<2;pass++)foreach(var td in new[]{TrainableDefOf.Tameness,TrainableDefOf.Obedience}.Concat(DefDatabase<TrainableDef>.AllDefsListForReading))if(td!=null && !horse.training.HasLearned(td) && horse.training.CanAssignToTrain(td).Accepted)horse.training.Train(td,p,true);
    if(horse.playerSettings!=null && horse.training!=null && horse.training.HasLearned(TrainableDefOf.Obedience))horse.playerSettings.Master=p;try{p.relations?.AddDirectRelation(PawnRelationDefOf.Bond,horse);}catch{}
    var h=Items.Give(horse,"LP_CS_Steed") as Hediff_CS;if(h!=null)h.caster=p;
    var bk=CasterSpells.BookFor(p,def)??CasterSpells.FirstBook(p);if(bk!=null)bk.familiar=horse;
-   FleckMaker.ThrowLightningGlow(horse.DrawPos,map,2f);Items.Mote(horse,"天界战马",Holy);return horse;
+   FleckMaker.ThrowLightningGlow(horse.DrawPos,map,2f);Items.Mote(horse,"天界战马".Loc(),Holy);return horse;
   }
   // 侦测邪恶：列出地图上的亡灵、邪魔、异常生物，揭开 30 格内隐形的敌人。
   public static int DetectEvil(Pawn p,float r){
    var map=p.Map;if(map==null)return 0;var evil=map.mapPawns.AllPawnsSpawned.Where(x=>!x.Dead && x!=p && Evil(x)).ToList();int hid=Hediff_WS.Reveal(p,r);
-   if(!Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("侦测邪恶",evil.Count==0?"地图上感觉不到亡灵、邪魔或异常生物。":"感知到 "+evil.Count+" 个亡灵、邪魔或异常生物："+string.Join("、",evil.Take(12).Select(x=>x.LabelShort))+(hid>0?"；揭开了 "+hid+" 个隐形的敌人":"")+"。",LetterDefOf.NeutralEvent,new LookTargets(evil.Take(20)));
-   Items.Mote(p,"侦测邪恶",Holy);return evil.Count;
+   if(!Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("侦测邪恶".Loc(),evil.Count==0?"地图上感觉不到亡灵、邪魔或异常生物。".Loc():"感知到 ".Loc()+evil.Count+" 个亡灵、邪魔或异常生物：".Loc()+string.Join("、".Loc(),evil.Take(12).Select(x=>x.LabelShort))+(hid>0?"；揭开了 ".Loc()+hid+" 个隐形的敌人".Loc():"")+"。".Loc(),LetterDefOf.NeutralEvent,new LookTargets(evil.Take(20)));
+   Items.Mote(p,"侦测邪恶".Loc(),Holy);return evil.Count;
   }
   // 造物术：仪式，造出 器械师等级 × 10 份一种普通材料。
   static readonly string[] CreationMats={"Steel","WoodLog","Cloth","BlocksGranite","ComponentIndustrial"};
@@ -482,7 +482,7 @@ namespace LichPhylactery {
   static void Creation(Pawn p,AbilityDef def){
    var opts=CreationMats.Select(n=>DefCache<ThingDef>.Get(n)).Where(d=>d!=null).ToList();if(opts.Count==0)return;
    if(!Spellbook.Player(p) || Adventurer.TestSuppressed){SpawnThings(p,opts[0].defName,CreationAmount(p,opts[0].defName),p.Position);return;}
-   Find.WindowStack.Add(new Dialog_SpellChoice("造物术","选一种材料（施法职业等级 × 10 份；零部件 等级/2 个）。",opts.Select(d=>(d.LabelCap+" ×"+CreationAmount(p,d.defName),(string)null,(Action)(()=>SpawnThings(p,d.defName,CreationAmount(p,d.defName),p.Position)))).ToList()));
+   Find.WindowStack.Add(new Dialog_SpellChoice("造物术".Loc(),"选一种材料（施法职业等级 × 10 份；零部件 等级/2 个）。".Loc(),opts.Select(d=>(d.LabelCap+" ×"+CreationAmount(p,d.defName),(string)null,(Action)(()=>SpawnThings(p,d.defName,CreationAmount(p,d.defName),p.Position)))).ToList()));
   }
   // 惩击 / 武器附魔 / 下一击：给目标（多半是自己）一个带强度的状态，命中时在 CasterOnHit 里结算。
   public static Hediff_CS Imbue(Pawn p,AbilityDef def,CompProperties_ClassEffect e,Pawn t,int dur,float pw){
@@ -511,8 +511,8 @@ namespace LichPhylactery {
       case "brand":Items.Give(v,"LP_CS_Branded",3600,1f);Hediff_WS.Uncloak(v);break;
       case "blind":Items.Give(v,"LP_WS_Blinded",600,1f);break;
       case "stagger":v.stances?.stunner?.StunFor(180,a);break;
-      case "banish":if(v.health.summaryHealth.SummaryHealthPercent<=.5f && !ClassSubclass.Bossy(v))Banishment.Banish(v,3600,"被逐恶斩放逐 1 分钟");break;
-      case "ensnare":if(WizardSpells.TryControl(a,v,.6f,false)){v.stances?.stunner?.StunFor(240,a);Items.Mote(v,"被荆棘缠住",Nature);}break;
+      case "banish":if(v.health.summaryHealth.SummaryHealthPercent<=.5f && !ClassSubclass.Bossy(v))Banishment.Banish(v,3600,"被逐恶斩放逐 1 分钟".Loc());break;
+      case "ensnare":if(WizardSpells.TryControl(a,v,.6f,false)){v.stances?.stunner?.StunFor(240,a);Items.Mote(v,"被荆棘缠住".Loc(),Nature);}break;
       case "splash":if(v.Map!=null)foreach(var x in Near(v.Map,v.Position,2f))if(x!=v && Hostile(a,x))WizardSpells.Hit(a,x,Dmg("Lightning"),amt*.5f,.2f);FleckMaker.ThrowLightningGlow(v.DrawPos,v.Map,2f);break;
      }
     }finally{inHit=false;}
@@ -527,9 +527,9 @@ namespace LichPhylactery {
    switch(n){
     case "LP_CS_Freedom":{var stun=p.stances?.stunner;if(stun!=null && stun.Stunned)stun.StopStun();foreach(var x in p.health.hediffSet.hediffs.Where(x=>x.def.defName=="LP_WS_Slowed" || x.def.defName=="LP_WS_Chilled" || x.def.defName=="LP_CS_SpikeSlowed" || x.def.defName=="LP_CS_SpiritSlowed" || x.def.defName=="LP_Entangled" || x.def.defName=="LP_WS_Webbed").ToList())p.health.RemoveHediff(x);return;}
     case "LP_CS_SpiritGuardians":if(!p.Spawned)return;foreach(var o in Near(p.Map,p.Position,h.radius))if(Hostile(p,o) && !o.Downed){WizardSpells.Hit(p,o,PaladinCore.Radiant,h.power*.5f,.3f);if(!o.Dead)Items.Give(o,"LP_CS_SpiritSlowed",120,1f);}if(Rand.Chance(.5f))FleckMaker.ThrowLightningGlow(p.DrawPos,p.Map,h.radius*.5f);return;
-    case "LP_CS_SpiritWeapon":{if(!p.Spawned || (h.ticks+=1)%2!=0)return;var foe=Near(p.Map,p.Position,15f).Where(o=>Hostile(p,o) && !o.Downed).OrderBy(o=>o.Position.DistanceToSquared(p.Position)).FirstOrDefault();if(foe!=null){WizardSpells.Hit(p,foe,DamageDefOf.Blunt,h.power,.3f);FleckMaker.ThrowLightningGlow(foe.DrawPos,foe.Map,.7f);Items.Mote(foe,"灵体武器",Holy);}return;}
+    case "LP_CS_SpiritWeapon":{if(!p.Spawned || (h.ticks+=1)%2!=0)return;var foe=Near(p.Map,p.Position,15f).Where(o=>Hostile(p,o) && !o.Downed).OrderBy(o=>o.Position.DistanceToSquared(p.Position)).FirstOrDefault();if(foe!=null){WizardSpells.Hit(p,foe,DamageDefOf.Blunt,h.power,.3f);FleckMaker.ThrowLightningGlow(foe.DrawPos,foe.Map,.7f);Items.Mote(foe,"灵体武器".Loc(),Holy);}return;}
     case "LP_CS_Eyebite":{if(!p.Spawned || (h.ticks+=1)%3!=0)return;var foe=Near(p.Map,p.Position,12f).Where(o=>Hostile(p,o) && !o.Downed && !o.RaceProps.IsMechanoid).OrderBy(o=>o.Position.DistanceToSquared(p.Position)).FirstOrDefault();if(foe==null || !WizardSpells.TryControl(p,foe,.5f,true))return;
-     int k=Rand.Range(0,3);if(k==0){Items.Give(foe,"LP_MagicSleep",600,1f);Items.Mote(foe,"目光：昏睡",Dark);}else if(k==1){var m=DefDatabase<MentalStateDef>.GetNamedSilentFail("PanicFlee");if(m!=null)foe.mindState?.mentalStateHandler?.TryStartMentalState(m,"目光术",true);Items.Mote(foe,"目光：恐慌",Dark);}else{Items.Give(foe,"LP_CS_Weakened",1800,1f);Items.Mote(foe,"目光：虚弱",Dark);}return;}
+     int k=Rand.Range(0,3);if(k==0){Items.Give(foe,"LP_MagicSleep",600,1f);Items.Mote(foe,"目光：昏睡".Loc(),Dark);}else if(k==1){var m=DefDatabase<MentalStateDef>.GetNamedSilentFail("PanicFlee");if(m!=null)foe.mindState?.mentalStateHandler?.TryStartMentalState(m,"目光术".Loc(),true);Items.Mote(foe,"目光：恐慌".Loc(),Dark);}else{Items.Give(foe,"LP_CS_Weakened",1800,1f);Items.Mote(foe,"目光：虚弱".Loc(),Dark);}return;}
     case "LP_CS_Awakened":{if((h.ticks+=1)%40!=0 || p.training==null)return;foreach(var td in DefDatabase<TrainableDef>.AllDefsListForReading)if(p.training.CanAssignToTrain(td).Accepted && !p.training.HasLearned(td))p.training.Train(td,null,true);return;}
     case "LP_CS_Goodberry":ClassMelee.Heal(p,1f);return;
     case "LP_CS_Crusader":if(!p.Spawned)return;foreach(var o in Near(p.Map,p.Position,h.radius))if(Friendly(p,o) && (o.RaceProps.Humanlike || o.Faction==p.Faction)){var b=Items.Give(o,"LP_CS_CrusaderBuff",90,1f) as Hediff_CS;if(b!=null){b.caster=p;b.power=h.power;}}return;
@@ -545,7 +545,7 @@ namespace LichPhylactery {
  public class Hediff_CS : HediffWithComps {
   public Pawn caster;public float power,pool,radius;public int ticks;int acc;
   bool Flier=>def.defName=="LP_CS_SpiderClimb" || def.defName=="LP_CS_Levitating";
-  public override string LabelInBrackets=>pool>0f?"临时生命 "+pool.ToString("0"):base.LabelInBrackets;
+  public override string LabelInBrackets=>pool>0f?"临时生命 ".Loc()+pool.ToString("0"):base.LabelInBrackets;
   public override bool ShouldRemove=>base.ShouldRemove || def.defName=="LP_CS_TempHP" && pool<=0.01f;
   public override void PostAdd(DamageInfo? d){base.PostAdd(d);CasterEffects.Live++;if(Flier)Spellbook.Fliers.Add(pawn);if(def.defName=="LP_CS_Freedom")CasterEffects.HediffTick(this);}
   public override void PostRemoved(){base.PostRemoved();if(CasterEffects.Live>0)CasterEffects.Live--;if(Flier)Spellbook.Fliers.Remove(pawn);}
@@ -568,10 +568,10 @@ namespace LichPhylactery {
    if(a!=null && a!=v && a.HostileTo(v)){
     var o=First(hs,outlined);if(o!=null){dinfo.SetAmount(dinfo.Amount*1.3f);var vv=v;var oo=o;Fiends.Defer(()=>{if(vv.health.hediffSet.hediffs.Contains(oo))vv.health.RemoveHediff(oo);});}
     if(dinfo.Def.isRanged && First(hs,windWard)!=null)dinfo.SetAmount(dinfo.Amount*.5f);
-    if(dinfo.Def.isRanged && (First(hs,passTrace)!=null || First(hs,projected)!=null) && (CasterEffects.RollOverride??Rand.Value)<.3f){Items.Mote(v,"无踪：落空",new Color(.55f,.85f,.45f));absorbed=true;return;} // 1.131.0 无踪步、投射幻象
+    if(dinfo.Def.isRanged && (First(hs,passTrace)!=null || First(hs,projected)!=null) && (CasterEffects.RollOverride??Rand.Value)<.3f){Items.Mote(v,"无踪：落空".Loc(),new Color(.55f,.85f,.45f));absorbed=true;return;} // 1.131.0 无踪步、投射幻象
    }
    if(WizardSpells.EnergyKind(dinfo.Def)>=0 && First(hs,absorb) is Hediff_CS ab){ // 1.131.0 吸收元素：挡一半，下一次近战附加
-    dinfo.SetAmount(dinfo.Amount*.5f);var vv2=v;var ab2=ab;Fiends.Defer(()=>{if(vv2.health.hediffSet.hediffs.Contains(ab2))vv2.health.RemoveHediff(ab2);var c=Items.Give(vv2,"LP_CS_AbsorbCharge",600,1f) as Hediff_CS;if(c!=null){c.caster=vv2;c.power=ab2.power;}Items.Mote(vv2,"吸收元素",new Color(.55f,.8f,1f));});
+    dinfo.SetAmount(dinfo.Amount*.5f);var vv2=v;var ab2=ab;Fiends.Defer(()=>{if(vv2.health.hediffSet.hediffs.Contains(ab2))vv2.health.RemoveHediff(ab2);var c=Items.Give(vv2,"LP_CS_AbsorbCharge",600,1f) as Hediff_CS;if(c!=null){c.caster=vv2;c.power=ab2.power;}Items.Mote(vv2,"吸收元素".Loc(),new Color(.55f,.8f,1f));});
    }
    if(First(hs,tempHp) is Hediff_CS t && t.pool>0f){float take=Mathf.Min(t.pool,dinfo.Amount);t.pool-=take;dinfo.SetAmount(dinfo.Amount-take);if(dinfo.Amount<=.01f){absorbed=true;}}
   }
@@ -584,7 +584,7 @@ namespace LichPhylactery {
   static void Postfix(Pawn __instance,DamageInfo dinfo,float totalDamageDealt){
    if(CasterEffects.Live<=0 || totalDamageDealt<=0f || __instance.Dead)return;var a=dinfo.Instigator as Pawn;if(a==null || a==__instance || !a.HostileTo(__instance) || a.Dead)return;
    if(dinfo.Def!=null && !dinfo.Def.isExplosive && (dinfo.Weapon==null || dinfo.Weapon.IsWeapon) && !CasterEffects.InHit){bool melee=!dinfo.Def.isRanged && !(dinfo.Weapon!=null && dinfo.Weapon.IsRangedWeapon);var vv=__instance;var aa=a;if(HasOnHit(aa))Fiends.Defer(()=>CasterEffects.OnHitFire(aa,vv,melee));} // 1.131.0 惩击、武器附魔
-   if(rebuke.Def!=null && __instance.health.hediffSet.GetFirstHediffOfDef(rebuke.Def) is Hediff_CS h){var v=__instance;float pw=h.power;Fiends.Defer(()=>{if(v.health.hediffSet.hediffs.Contains(h))v.health.RemoveHediff(h);if(!a.Dead){WizardSpells.Hit(v,a,DamageDefOf.Flame,pw,.2f);Items.Mote(a,"地狱斥责",new Color(1f,.5f,.3f));}});}
+   if(rebuke.Def!=null && __instance.health.hediffSet.GetFirstHediffOfDef(rebuke.Def) is Hediff_CS h){var v=__instance;float pw=h.power;Fiends.Defer(()=>{if(v.health.hediffSet.hediffs.Contains(h))v.health.RemoveHediff(h);if(!a.Dead){WizardSpells.Hit(v,a,DamageDefOf.Flame,pw,.2f);Items.Mote(a,"地狱斥责".Loc(),new Color(1f,.5f,.3f));}});}
   }
  }
  // 换存档 / 新游戏：清掉静态计数（读档时 Hediff_CS 自己再加回来）。

@@ -1,0 +1,318 @@
+s04113	{PAWN_nameDef} bears a brand left on the chest by a devil of the Nine Hells, still hot to this day.\n\n- Weapon hits deal an extra 4 fire damage\n- Fire-type damage taken -75%\n- Max comfortable temperature +40°C\n- Cost: cold-type damage taken +50%; mental break threshold +5%; about once every 12 days the devil comes to collect, mood -8 "hellfire debt" (3 days)
+s04114	<color=#D05050>Hellfire Brand</color>
+s04115	Half of {PAWN_nameDef}'s soul was eaten by something, and the remaining half is calm, frighteningly calm.\n\n- Mental break threshold -15%\n- Pain shock threshold +20%\n- Mind resistance +50%\n- Cost: social impact ×0.5, skill learning speed ×0.8, psychic sensitivity -30%, beauty -1 (others find them unsettling)
+s04116	<color=#D05050>Hollow One</color>
+s04117	{PAWN_nameDef}'s will is hard as iron; nothing can crush it.\n\n- Mental break threshold -8%\n- Mind resistance +30%
+s04118	<color=#5B9BD5>Iron Will</color>
+s04119	To {PAWN_nameDef}, a stab feels like a punch.\n\n- Damage taken ×0.85\n- Pain shock threshold +15%\n- The legend attribute "health" is worth ×1.5 per point (takes the larger of this and racial affinity, not multiplied)
+s04120	<color=#B070E0>Unstoppable</color>
+s04121	Something went wrong again. That witch's words keep ringing in my ears.
+s04122	dogged by misfortune
+s04123	The brand is burning again. That devil is reminding me that I still owe it.
+s04124	hellfire debt
+s04125	Just finished off an enemy personally, and I'm on a roll: melee and shooting hit +10%.
+s04126	press the advantage
+s04127	Vampire's curse: sunlight stings the skin like needles. Movement -15%, consciousness -10%, 1 burn damage per hour. Fades indoors or after dark.
+s04128	sunburnt
+s04129	Just crawled back from death's door; won't be so lucky next time: Indomitable won't save a life again until the cooldown ends.
+s04130	indomitable (cooldown)
+s04131	{PAWN_nameDef} learns everything far faster than others.\n\n- Skill learning speed ×1.5\n- The legend attributes "learning" and "work" are worth ×1.5 per point (takes the larger of this and racial affinity, not multiplied)\n- Intelligence cap +2
+s04132	<color=#B070E0>Prodigy</color>
+s04133	When {PAWN_nameDef} speaks, even stones can be persuaded.\n\n- Negotiation ability ×1.3, social impact ×1.3\n- Charisma cap +2
+s04134	<color=#5B9BD5>Silver Tongue</color>
+s04135	{PAWN_nameDef}'s ancestors married some magical creature, and the Weave flows in {PAWN_possessive} blood.\n\n- Psychic sensitivity +25%\n- Neural heat recovery ×1.3\n- The legend attribute "mind" is worth ×2 per point (takes the larger of this and racial affinity, not multiplied)\n- Never appears together with Spell Immunity
+s04136	<color=#B070E0>Magicborn Blood</color>
+s04137	{PAWN_nameDef} should have died several times, yet got back up every time.\n\n- A lethal wound downs and spares you instead, and wounds stop bleeding (cooldown 10 days; executions and surgery don't count)\n- Never triggers on the same blow as Boon of Fate or Fate Unfinished: those are checked first\n- Pain shock threshold +10%
+s04138	<color=#B070E0>Indomitable</color>
+s04139	{PAWN_nameDef} was bitten by a vampire and didn't die, but is no longer entirely alive either.\n\n- Melee damage ×1.3, move speed +0.3\n- Wound healing speed ×2\n- Melee hits drain blood, healing 2 injury\n- Cost: staying in places without a roof by day causes "sunburnt": movement -15%, consciousness -10%, 1 burn damage per hour; fades indoors or after dark
+s04140	<color=#D05050>Vampire's Curse</color>
+s04141	created a necromantic construct
+s04142	demigod ranked up
+s04143	killed a giant
+s04144	lich revived
+s04145	drained a soul
+s04146	cast a spell
+s04147	conflicting deities
+s04148	Bane is the god of tyranny, ruling all with the Black Hand. Order comes from fear, and fear comes from power. The culture's patron deity is fixed to Bane.\n\nPassive: under slave masters of this culture, slave suppression falls ×0.7 as fast.
+s04149	memeAdjective->Black-Handed
+s04150	memeAdjective->iron-fisted
+s04151	memeHyphenPrefix->Tyranno
+s04152	memeConcept->tyranny
+s04153	memeConcept->domination
+s04154	memeLeaderNoun->tyrant
+s04155	memeLeaderAdjective->iron-fisted
+s04156	memeMoralist->Black Hand deacon
+s04157	lord of darkness
+s04158	lord of the Black Hand
+s04159	Gods are just more powerful beings; mortals owe them nothing.\n\nPassive: divine magic received ×0.75 (from friend or foe, takes the smaller of this and the godless ×0.5); mind resistance +5%; mood -2 when the colony has an altar (hated shrine).
+s04160	memeAdjective->unkneeling
+s04161	memeAdjective->mortal
+s04162	memeHyphenPrefix->Mortal
+s04163	memeConcept->self-rule
+s04164	memeLeaderNoun->chief
+s04165	memeLeaderAdjective->stubborn
+s04166	memeMoralist->reasoner
+s04167	the unkneeling
+s04168	Ilsensine is the god of the mind flayers. All minds will eventually return to the hivemind.
+s04169	memeAdjective->hivemind
+s04170	memeHyphenPrefix->Cerebro
+s04171	memeConcept->oneness
+s04172	memeLeaderNoun->voice of the master brain
+s04173	memeLeaderAdjective->whispering
+s04174	memeMoralist->whisperer
+s04175	oneness with the master brain
+s04176	god of the hivemind
+s04177	Kelemvor is the god of death, justly judging every soul. Death is not frightening; refusing death is. The culture's patron deity is fixed to Kelemvor.\n\nPassive: divine favor to Kelemvor from burials ×2 more; not bothered by seeing corpses (the mandatory "corpses: don't care").
+s04178	memeAdjective->grey-robed
+s04179	memeAdjective->restful
+s04180	memeHyphenPrefix->Necro
+s04181	memeConcept->rest
+s04182	memeConcept->judgment
+s04183	memeLeaderNoun->gravekeeper
+s04184	memeLeaderAdjective->grey-robed
+s04185	memeMoralist->soul guide
+s04186	judgment of the dead
+s04187	lord of the dead
+s04188	Lathander is the god of dawn, rebirth and renewal. Every morning is his gift, and every undead body an affront to him. The culture's patron deity is fixed to Lathander.\n\nPassive: global work speed +5% from 5 to 8 in the morning; believers get mood -1 for each necromantic construct in the colony (up to -5).
+s04189	memeAdjective->dawnlit
+s04190	memeAdjective->dawn
+s04191	memeHyphenPrefix->Auro
+s04192	memeConcept->dawn
+s04193	memeConcept->rebirth
+s04194	memeLeaderNoun->dawn priest
+s04195	memeLeaderAdjective->morning-bright
+s04196	memeMoralist->dawn singer
+s04197	light of the Morninglord
+s04198	the Morninglord
+s04199	Malar is the god of beasts and the hunt. The strong hunt, and the weak become prey. The culture's patron deity is fixed to Malar.\n\nPassive: believers get mood +1 for each tamed wolf, bear or winter wolf in the colony (up to +3).
+s04200	memeAdjective->beast-blooded
+s04201	memeAdjective->hunting
+s04202	memeHyphenPrefix->Thero
+s04203	memeConcept->the hunt
+s04204	memeConcept->bestiality
+s04205	memeLeaderNoun->hunt king
+s04206	memeLeaderAdjective->bloodthirsty
+s04207	memeMoralist->tracker
+s04208	the Beastlord's hunt
+s04209	the Beastlord
+s04210	Mystra is the goddess of magic, guardian of the Weave. Every spell draws a thread from her web. The culture's patron deity is fixed to Mystra.\n\nPassive: believers carrying magic items get mood +2 (gift of the Weave).
+s04211	memeAdjective->Weave
+s04212	memeAdjective->starlit
+s04213	memeHyphenPrefix->Weave
+s04214	memeConcept->the Weave
+s04215	memeConcept->mysteries
+s04216	memeLeaderNoun->weaver
+s04217	memeLeaderAdjective->starlit
+s04218	memeMoralist->Weave warden
+s04219	lady of the Weave
+s04220	mother of the Weave
+s04221	The giants' world has a strict hierarchy (the Ordning): the taller, the nobler.\n\nPassive: giant-bodied colonists' social impact on other colonists +10%.
+s04222	memeAdjective->ordning
+s04223	memeAdjective->giant
+s04224	memeHyphenPrefix->Giga
+s04225	memeConcept->the ordning
+s04226	memeLeaderNoun->head of the ordning
+s04227	memeLeaderAdjective->towering
+s04228	memeMoralist->ordning keeper
+s04229	giant ordning
+s04230	Each god has its own domain, and mortals may pray to any of them. Can coexist with one main god.\n\nPassive: prayer divine favor ×1.25; changing patron deity cooldown halved (with no main god); the altar can hold festivals for any worshippable god (once per god per year, up to 4 per year).
+s04231	memeAdjective->pantheon
+s04232	memeAdjective->all-gods
+s04233	memeHyphenPrefix->Theo
+s04234	memeConcept->the gods
+s04235	memeLeaderNoun->servant of the gods
+s04236	memeLeaderAdjective->holy
+s04237	memeMoralist->officiant
+s04238	pantheon
+s04239	Shar is the goddess of darkness and loss, the Lady of the Night. She promises to erase all pain, along with all memory. The culture's patron deity is fixed to Shar.\n\nPassive: global work speed +8% at night (22 to 5).
+s04240	memeAdjective->nightbound
+s04241	memeAdjective->forgetting
+s04242	memeHyphenPrefix->Nocto
+s04243	memeConcept->darkness
+s04244	memeConcept->oblivion
+s04245	memeLeaderNoun->dark moon priest
+s04246	memeLeaderAdjective->shadowed
+s04247	memeMoralist->forgetter
+s04248	Lady of the Night
+s04249	Surtur is the king of fire giants and master of the world forge. Giants are born noble, and iron and fire are their language. The culture's patron deity is fixed to Surtur.\n\nPassive: smithing speed +10%.
+s04250	memeAdjective->molten
+s04251	memeHyphenPrefix->Pyro
+s04252	memeConcept->the forge
+s04253	memeLeaderNoun->forge king
+s04254	memeLeaderAdjective->molten
+s04255	memeMoralist->forge keeper
+s04256	forge giants
+s04257	king of the forge
+s04258	Talos is the god of storms and destruction. Thunder is his voice, wildfire his footprint. The culture's patron deity is fixed to Talos.\n\nPassive: believers get mood +4 in thunderstorms (child of the storm).
+s04259	memeAdjective->storm
+s04260	memeAdjective->thundering
+s04261	memeHyphenPrefix->Fulmo
+s04262	memeConcept->the storm
+s04263	memeConcept->destruction
+s04264	memeLeaderNoun->thunder-caller
+s04265	memeLeaderAdjective->raging
+s04266	memeMoralist->storm herald
+s04267	lord of storms
+s04268	Tyr is the blindfolded god of justice, holding up the scales with a severed hand. The guilty must be judged and the innocent protected. The culture's patron deity is fixed to Tyr.\n\nPassive: divine favor to Tyr from judgment rituals and releasing prisoners ×2 more.
+s04269	memeAdjective->just
+s04270	memeAdjective->judging
+s04271	memeHyphenPrefix->Justo
+s04272	memeConcept->justice
+s04273	memeConcept->law
+s04274	memeLeaderNoun->high justice
+s04275	memeLeaderAdjective->just
+s04276	memeMoralist->judge
+s04277	scales of justice
+s04278	the blindfolded judge
+s04279	Death is just a threshold, and only those who cross it deserve eternity.\n\nPassive: this culture's liches gain +1% certainty per day; everyone gets mood +3 when a lich revives (the master returns, given by "undeath: sacred").
+s04280	memeAdjective->eternal-night
+s04281	memeAdjective->undying
+s04282	memeConcept->immortality
+s04283	memeLeaderNoun->phylactery keeper
+s04284	memeLeaderAdjective->undying
+s04285	memeMoralist->deathspeaker
+s04286	undying eternal night
+s04287	Vlaakith is the lich-queen of the githyanki, demanding eternal loyalty from her people.
+s04288	memeHyphenPrefix->Crown
+s04289	memeConcept->loyalty
+s04290	memeLeaderNoun->sword of the queen
+s04291	memeMoralist->voice of the queen
+s04292	the lich-queen
+s04293	Magic is the highest truth of the world; those who master the Weave belong at the top.\n\nPassive: Netherese scroll study XP ×1.15; mod casting abilities (divine magic, scrolls, lich spells) cooldown ×0.95.
+s04294	memeAdjective->arcane
+s04295	memeAdjective->spellweaving
+s04296	memeHyphenPrefix->Arcano
+s04297	memeLeaderNoun->archmage
+s04298	memeLeaderAdjective->arcane
+s04299	memeMoralist->lecturer
+s04300	supremacy of the Weave
+s04301	The gods too rose from among mortals.
+s04302	acceptable
+s04303	A mortal trying to become a god is blasphemy against the gods. Mood -4 when the colony has a demigod, -6 when the demigod ranks up.
+s04304	blasphemous
+s04305	Helping mortals become gods is our mission. Mood +6 when a demigod ranks up (witnessed a miracle); members of the same culture all count as the demigod's believers (+0.25 divine power per person per day).
+s04306	sacred mission
+s04307	Magic is a tool, to be used carefully. Feels a little uneasy after casting.
+s04308	cautious
+s04309	Magic is the root of corruption. Casting spells is shameful, and carrying magic items is unsettling.
+s04310	forbidden
+s04311	Magic is a gift of the gods. Casting is pleasant; an enchanting table in the colony is reassuring.
+s04312	revered
+s04313	Only those who master the Weave are whole. Casting is delightful; colonists who can't cast feel unfavored by the Weave. Only cultures with the "supremacy of the Weave" meme can pick this.
+s04314	Giants are walking disasters. Every giant-bodied colonist in the colony is unsettling (except for the giants themselves); killing a giant is a heroic feat.
+s04315	feared
+s04316	Giants are like any other race: some good, some bad.
+s04317	respected
+s04318	Giants are born great, and smaller races should look up to them. Giant-bodied colonists get mood +3, other colonists -1; killing a giant is shameful.
+s04319	supreme
+s04320	ascension
+s04321	magic
+s04322	giants
+s04323	offerings
+s04324	race
+s04325	undeath
+s04326	That mortal climbed another step toward godhood. The gods will bring down punishment.
+s04327	usurping demigod
+s04328	I saw a mortal ascend to a higher divine rank with my own eyes.
+s04329	witnessed a miracle
+s04330	I hope nothing went wrong this time.
+s04331	uneasy after casting
+s04332	Someone is casting spells in the colony again.
+s04333	someone cast a spell
+s04334	The moment magic flowed through my fingertips, I felt defiled.
+s04335	I cast a forbidden spell
+s04336	Magic flowing through the body feels so good.
+s04337	joy of casting
+s04338	I touched the Weave once again.
+s04339	resonating with the Weave
+s04340	I sucked a person's mind dry. I'm a monster.
+s04341	I devoured a brain
+s04342	The hivemind has grown a little stronger.
+s04343	another mind joins the hivemind
+s04344	That walking mountain fell, and I'm the one who brought it down.
+s04345	I killed a giant
+s04346	I killed a noble giant with my own hands.
+s04347	Another undead thing has appeared in the colony. It's a blasphemy against life.
+s04348	someone in the colony toys with the undead
+s04349	I personally did something that blasphemes life and death.
+s04350	I defiled the dead
+s04351	A soul was fed to a phylactery and can never go to the land of the dead.
+s04352	someone's soul was drained
+s04353	I stuffed a soul into a phylactery. It's screaming in there.
+s04354	I drained a soul
+s04355	The colony took another step toward eternity.
+s04356	grace of undeath
+s04357	The lich reshaped its body from the phylactery. Death means nothing to a great being.
+s04358	the master returns
+s04359	Death's threshold retreated a little before me.
+s04360	a step closer to eternity
+s04361	I hope they know what they're doing.
+s04362	the colony used necromancy
+s04363	This power is useful, but it gives me the creeps.
+s04364	I used necromancy
+s04365	Evil gods love blood. The altar gets an extra "blood sacrifice" button: pick a prisoner to execute, and when done the patron deity gains +15 divine favor. Only available when the patron deity is an evil god.
+s04366	blood sacrifice
+s04367	The gods need no mortal offerings.
+s04368	no requirement
+s04369	Each quarter (15 days) the colony must complete at least one offering at the altar (miracle fragments, silver or favored sacrifices); if not, mood -3 from day 16 (the god was not honored) until one is done. Divine favor from offerings under this precept ×1.5.
+s04370	quarterly offering
+s04371	Only pure humans are masters of the world. Non-baseliner colonists get mood -2, baseliners +2. Can coexist with the vanilla "human primacy" meme.
+s04372	human supremacy
+s04373	Faerûn has always been a land where many peoples live together. Mood +3 when the colony has 4 or more xenotypes (city of many peoples).
+s04374	many peoples together
+s04375	Our people are the finest. Colonists of the culture's founding xenotype get mood +2, others -1. The founding xenotype is the most common xenotype among the colonists when the culture was first adopted by the player faction.
+s04376	own people first
+s04377	There's a mortal in the colony who calls themself a demigod.
+s04378	a usurper in the colony
+s04379	The colony has an enchanting table; magic is respected here.
+s04380	the colony's enchanting table
+s04381	I'm carrying something steeped in magic.
+s04382	magic items on me
+s04383	I can't cast spells. In this culture I always feel lesser.
+s04384	unfavored by the Weave
+s04385	An elder brain whispers in the colony.
+s04386	protection of the elder brain
+s04387	Something that big could step on me at any moment.
+s04388	giants in the colony
+s04389	I'm a giant. The ordning is on my side.
+s04390	born great
+s04391	Compared to giants, I'm just too small.
+s04392	insignificant
+s04393	Nobody has made an offering at the altar this quarter yet. The gods will be displeased.
+s04394	the god was not honored
+s04395	I'm a pure human.
+s04396	pure human
+s04397	By our creed, my bloodline isn't pure enough.
+s04398	impure bloodline
+s04399	The colony is home to many different races; this is how Faerûn should be.
+s04400	city of many peoples
+s04401	I belong to the culture's founding people.
+s04402	pride of my people
+s04403	I don't belong to the culture's founding people.
+s04404	outsider
+s04405	The colony uses undead servants.
+s04406	necromantic constructs in the colony
+s04407	A lich lives in the colony.
+s04408	living with a lich
+s04409	The colony has a phylactery. Death is not the end.
+s04410	eternal guardian
+s04411	The undead are a double blasphemy against life and death: lich revivals, creating necromantic constructs and draining souls are all disgusting. Every necromantic construct and every lich in the colony is unsettling.
+s04412	abhorrent
+s04413	Necromancy is just one school of magic, nothing special.
+s04414	Transcending death is the noblest pursuit. Lich revivals, creating necromantic constructs and draining souls are sacred acts; a phylactery in the colony is reassuring.
+s04415	Necromancy is a dangerous power; it can be used, but with caution.
+s04416	wary
+s04417	participants
+s04418	room impressiveness
+s04419	led by a priest
+s04420	in a temple
+s04421	statue within 8 cells
+s04422	slaves present
+s04423	Depending on ritual quality, participants get {MINMOOD} to {MAXMOOD} mood for {MOODDAYS} days; this god's divine favor: terrible -3, boring +2, good +6, unforgettable +12.
+s04424	Suppression of all slaves on the map +20%.
+s04425	{0} was terrible! Everyone endured the awkward small talk until it was over.
+s04426	terrible
+s04427	{0} was boring. Nobody could loosen up.
+s04428	boring
+s04429	{0} was good. Everyone was glad of the chance to relax together.
+s04430	good

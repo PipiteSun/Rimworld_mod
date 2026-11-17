@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（ClassLevelInfo.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>（已满级）</zh><en> (max level)</en></s>
+  <s><zh> → 下一级 </zh><en> → next level </en></s>
+  <s><zh> → 下一级 ×</zh><en> → next level ×</en></s>
+  <s><zh>（含冒险者升到 </zh><en> (including adventurer leveling to </en></s>
+  <s><zh>上限 = 2 + 职业等级</zh><en>cap = 2 + class level</en></s>
+  <s><zh>上限 = 2 + 邪术师等级 / 4（向下取整）</zh><en>cap = 2 + warlock level / 4 (rounded down)</en></s>
+  <s><zh>上限 = 2 + 吟游诗人等级 + 魅力调整值（最少 2）</zh><en>cap = 2 + bard level + Charisma modifier (at least 2)</en></s>
+  <s><zh>上限 = 2 + (牧师 + 圣武士等级) / 2（向上取整，合计最多按 </zh><en>cap = 2 + (cleric + paladin level) / 2 (rounded up, total counted at most as </en></s>
+  <s><zh>上限 = 2 + 职业等级 / 2（向上取整）</zh><en>cap = 2 + class level / 2 (rounded up)</en></s>
+  <s><zh>；每个传奇职业能力 +</zh><en>; each legendary class ability +</en></s>
+  <s><zh>\n现在：</zh><en>\nNow: </en></s>
+  <s><zh> + 传奇 </zh><en> + legendary </en></s>
+  <s><zh>\n诡术师法力：上限 = 2 + 游荡者等级 / 2（向上取整），现在 </zh><en>\nTrickster mana: cap = 2 + rogue level / 2 (rounded up), now </en></s>
+  <s><zh>（另要</zh><en> (also needs </en></s>
+  <s><zh>选择子职业</zh><en>Choose subclass</en></s>
+  <s><zh>子职业「</zh><en>Subclass "</en></s>
+  <s><zh>额外攻击 第 1 档</zh><en>Extra Attack tier 1</en></s>
+  <s><zh>（徒手）</zh><en> (unarmed)</en></s>
+  <s><zh>额外攻击 第 2 档</zh><en>Extra Attack tier 2</en></s>
+  <s><zh>额外攻击 第 3 档</zh><en>Extra Attack tier 3</en></s>
+  <s><zh>施法奖励专长（法术类）</zh><en>Spellcasting bonus feat (spell feats)</en></s>
+  <s><zh>魔能爆 </zh><en>Eldritch blast </en></s>
+  <s><zh> 道光束</zh><en> beams</en></s>
+  <s><zh>宿敌 </zh><en>Favored enemy </en></s>
+  <s><zh> 种</zh><en> kinds</en></s>
+  <s><zh>每个职业等级：部位生命 +</zh><en>Each class level: part health +</en></s>
+  <s><zh>%（未分配职业点的等级 +</zh><en>% (levels with unassigned class points +</en></s>
+  <s><zh>%；合计再减 </zh><en>%; the total then minus </en></s>
+  <s><zh>%，再乘体质；加点和升级都不会降低）</zh><en>%, then multiplied by Constitution; neither assigning points nor leveling up lowers it)</en></s>
+  <s><zh>　武器伤害 +</zh><en>  Weapon damage +</en></s>
+  <s><zh>%（近战与远程），近战穿甲 +</zh><en>% (melee and ranged), melee armor penetration +</en></s>
+  <s><zh>%（</zh><en>% (</en></s>
+  <s><zh>所有物理职业</zh><en>all martial classes</en></s>
+  <s><zh>用</zh><en>classes using </en></s>
+  <s><zh>的职业</zh><en> </en></s>
+  <s><zh>等级合计每比 1 高 1 级，最多 +</zh><en> total levels, per level above 1, up to +</en></s>
+  <s><zh>资源 </zh><en>Resource </en></s>
+  <s><zh>等级表：</zh><en>Level table:</en></s>
+  <s><zh>下一级获得（</zh><en>Next level grants (</en></s>
+  <s><zh>，冒险者需先升到 </zh><en>; the adventurer must first reach </en></s>
+  <s><zh>武器伤害 +</zh><en>Weapon damage +</en></s>
+  <s><zh>%、近战穿甲 +</zh><en>%, melee armor penetration +</en></s>
+  <s><zh>，获得 </zh><en>, gains </en></s>
+  <s><zh>（熟练加值）</zh><en> (proficiency bonus)</en></s>
+</LPStrings>

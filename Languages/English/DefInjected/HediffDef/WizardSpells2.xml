@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 反制法术 -->
+  <LP_WS_Counterspell.label>counterspell</LP_WS_Counterspell.label>
+  <!-- 凝神戒备：20 格内下一次敌方的法术或心灵能力会被打断（对方能力等级高于 3 时每高 1 级成功率 −15%）。 -->
+  <LP_WS_Counterspell.description>On guard: the next enemy spell or psychic ability within 20 cells will be interrupted (-15% success per level the opponent's ability is above 3).</LP_WS_Counterspell.description>
+  <!-- 变形术：兔形 -->
+  <LP_WS_Polymorphed.label>polymorph: rabbit form</LP_WS_Polymorphed.label>
+  <!-- 被变成了一只兔子：拿不了武器、放不了能力，操作 −90%，移动 ×0.6，只能咬一口 1 点伤害。 -->
+  <LP_WS_Polymorphed.description>Turned into a rabbit: can't hold weapons or use abilities, manipulation -90%, movement ×0.6, can only bite for 1 damage.</LP_WS_Polymorphed.description>
+  <!-- 兔牙 -->
+  <LP_WS_Polymorphed.comps.HediffComp_VerbGiver.tools.0.label>rabbit teeth</LP_WS_Polymorphed.comps.HediffComp_VerbGiver.tools.0.label>
+  <!-- 石肤术 -->
+  <LP_WS_Stoneskin.label>stoneskin</LP_WS_Stoneskin.label>
+  <!-- 皮肤硬如岩石（专注）：受到的利器、钝器、穿刺伤害 ×0.6。 -->
+  <LP_WS_Stoneskin.description>Skin hard as rock (concentration): sharp, blunt and piercing damage taken ×0.6.</LP_WS_Stoneskin.description>
+  <!-- 魅影杀手 -->
+  <LP_WS_Phantasm.label>phantasmal killer</LP_WS_Phantasm.label>
+  <!-- 只有它自己看得见的恐怖幻影（专注）：每 2 秒成功率 55% 受心灵伤害并惊惧。 -->
+  <LP_WS_Phantasm.description>A terrifying phantom only it can see (concentration): every 2 seconds a 55% chance to take psychic damage and be frightened.</LP_WS_Phantasm.description>
+  <!-- 被支配 -->
+  <LP_WS_Dominated.label>dominated</LP_WS_Dominated.label>
+  <!-- 心智被法师支配，暂时为殖民地作战；结束后回到原阵营并眩晕 5 秒。 -->
+  <LP_WS_Dominated.description>Mind dominated by a wizard, temporarily fighting for the colony; afterwards returns to its original side and is stunned for 5 seconds.</LP_WS_Dominated.description>
+  <!-- 召唤物 -->
+  <LP_WS_Summoned.label>summoned creature</LP_WS_Summoned.label>
+  <!-- 被法术召来的生物，时间到就会消散。 -->
+  <LP_WS_Summoned.description>A creature summoned by a spell; dissipates when time is up.</LP_WS_Summoned.description>
+  <!-- 忠犬守卫 -->
+  <LP_WS_Hound.label>faithful hound</LP_WS_Hound.label>
+  <!-- 看不见的魔法守门犬：敌人进入 15 格时报警，咬得更狠；时间到就消散。 -->
+  <LP_WS_Hound.description>An invisible magic watchdog: warns when enemies come within 15 cells and bites harder; dissipates when time is up.</LP_WS_Hound.description>
+  <!-- 真知术 -->
+  <LP_WS_TrueSeeing.label>true seeing</LP_WS_TrueSeeing.label>
+  <!-- 看穿一切幻象：30 格内隐形的敌人现形；不受魔法黑暗和失明影响。 -->
+  <LP_WS_TrueSeeing.description>Sees through all illusions: invisible enemies within 30 cells are revealed; unaffected by magical darkness and blindness.</LP_WS_TrueSeeing.description>
+  <!-- 目盲 -->
+  <LP_WS_Blinded.label>blinded</LP_WS_Blinded.label>
+  <!-- 被强光刺瞎了眼：视力 −80%。 -->
+  <LP_WS_Blinded.description>Blinded by a dazzling light: sight -80%.</LP_WS_Blinded.description>
+  <!-- 阳炎射线 -->
+  <LP_WS_SunbeamCharge.label>sunbeam</LP_WS_SunbeamCharge.label>
+  <!-- 掌心握着一道阳光（专注）：期间阳炎射线不耗法力、冷却 6 秒。 -->
+  <LP_WS_SunbeamCharge.description>Holding a beam of sunlight in the palm (concentration): meanwhile sunbeam costs no mana with a 6-second cooldown.</LP_WS_SunbeamCharge.description>
+  <!-- 石化诅咒 -->
+  <LP_WS_StoneCurse.label>petrifying curse</LP_WS_StoneCurse.label>
+  <!-- 石化术留下的石痕（严重度 = 已经成功的次数）：累计 3 次就会彻底石化。 -->
+  <LP_WS_StoneCurse.description>Stone marks left by flesh to stone (severity = number of successes so far): full petrification at 3 in total.</LP_WS_StoneCurse.description>
+  <!-- 两处 -->
+  <LP_WS_StoneCurse.stages.1.label>two marks</LP_WS_StoneCurse.stages.1.label>
+  <!-- 反转重力 -->
+  <LP_WS_Levitating.label>reverse gravity</LP_WS_Levitating.label>
+  <!-- 飘在半空动弹不得；结束时摔下来受钝器伤害。 -->
+  <LP_WS_Levitating.description>Floating in midair, unable to move; takes blunt damage falling down when it ends.</LP_WS_Levitating.description>
+  <!-- 以太化 -->
+  <LP_WS_Ethereal.label>etherealness</LP_WS_Ethereal.label>
+  <!-- 身处以太位面：不会被当成目标、不受伤害；攻击或施放伤害法术就会回到物质位面。 -->
+  <LP_WS_Ethereal.description>On the Ethereal Plane: can't be targeted and takes no damage; attacking or casting a damaging spell returns you to the Material Plane.</LP_WS_Ethereal.description>
+  <!-- 魔法宅邸 -->
+  <LP_WS_Mansion.label>magnificent mansion</LP_WS_Mansion.label>
+  <!-- 在法师的异次元宅邸里休整：休息恢复 ×1.2，商队不会遇袭。 -->
+  <LP_WS_Mansion.description>Resting in a wizard's extradimensional mansion: rest recovery ×1.2, the caravan won't be ambushed.</LP_WS_Mansion.description>
+  <!-- 弱智术 -->
+  <LP_WS_Feebleminded.label>feeblemind</LP_WS_Feebleminded.label>
+  <!-- 心智被打碎：30 天内不能施放法术和心灵能力。 -->
+  <LP_WS_Feebleminded.description>Mind shattered: can't cast spells or psychic abilities for 30 days.</LP_WS_Feebleminded.description>
+  <!-- 心灵屏障 -->
+  <LP_WS_MindBlank.label>mind blank</LP_WS_MindBlank.label>
+  <!-- 心智被完全封闭：免疫心灵伤害、精神崩溃和一切心智控制。 -->
+  <LP_WS_MindBlank.description>The mind is completely sealed: immune to psychic damage, mental breaks and all mind control.</LP_WS_MindBlank.description>
+  <!-- 时间停止 -->
+  <LP_WS_TimeStop.label>time stop</LP_WS_TimeStop.label>
+  <!-- 时间为施法者停下：法师法术施放后不进冷却。 -->
+  <LP_WS_TimeStop.description>Time stops for the caster: wizard spells trigger no cooldown after casting.</LP_WS_TimeStop.description>
+  <!-- 祈愿反噬 -->
+  <LP_WS_WishStress.label>wish backlash</LP_WS_WishStress.label>
+  <!-- 扭曲现实的代价：操作和移动大降。 -->
+  <LP_WS_WishStress.description>The price of bending reality: manipulation and movement sharply reduced.</LP_WS_WishStress.description>
+  <!-- 预警术 -->
+  <LP_WS_Foresight.label>foresight</LP_WS_Foresight.label>
+  <!-- 看见了下一刻：被攻击时成功率 50% 躲开，近战命中 +25%，射击精度 ×1.25。 -->
+  <LP_WS_Foresight.description>Seeing the next moment: 50% chance to dodge when attacked, melee hit +25%, shooting accuracy ×1.25.</LP_WS_Foresight.description>
+</LanguageData>

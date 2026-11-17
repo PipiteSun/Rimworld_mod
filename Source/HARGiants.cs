@@ -111,7 +111,7 @@ namespace LichPhylactery {
     foreach(var h in set.hediffs.Where(h=>h.Part!=null && (h is Hediff_MissingPart || h is Hediff_Injury) && Within(h.Part,neck)).ToList())p.health.RemoveHediff(h);
     if(loneDef.Def!=null && !set.HasHediff(loneDef.Def))p.health.AddHediff(loneDef.Def);
    }finally{losing=false;}
-   if(p.Spawned)Items.Mote(p,"失去了一个头！",new Color(.95f,.55f,.45f));
+   if(p.Spawned)Items.Mote(p,"失去了一个头！".Loc(),new Color(.95f,.55f,.45f));
    return true;
   }
   public static void Sync(Pawn p)=>TryLoseHead(p);
@@ -149,14 +149,14 @@ namespace LichPhylactery {
   public static bool FoeNear(Pawn p)=>p?.Map!=null && Races124.PawnsNear(p.Map,p.Position,WatchRadius).Any(o=>o!=p && !o.Dead && !o.Downed && o.HostileTo(p));
   public static bool TryWake(Pawn p){
    if(!WatchActive(p) || !p.Spawned || RestUtility.Awake(p) || !FoeNear(p))return false;
-   RestUtility.WakeUp(p,true);Items.Mote(p,"轮流值守：有敌人！",new Color(.95f,.75f,.4f));return true;
+   RestUtility.WakeUp(p,true);Items.Mote(p,"轮流值守：有敌人！".Loc(),new Color(.95f,.75f,.4f));return true;
   }
 
   // ---------- 两头不和：轻度崩溃“内讧”，另每 15 天 10% 自己吵起来（心情高于 70% 不吵；需要两个头都在） ----------
   public static MentalStateDef ArguingDef=>DefDatabase<MentalStateDef>.GetNamedSilentFail(Arguing);
   public static bool CanQuarrel(Pawn p)=>Races124.Has(p,QuarrelGene) && BothHeads(p) && p.Spawned && !p.Dead && !p.Downed && !p.InMentalState && p.mindState?.mentalStateHandler!=null;
   public static bool StartQuarrel(Pawn p,string reason){var def=ArguingDef;if(def==null || !CanQuarrel(p))return false;return p.mindState.mentalStateHandler.TryStartMentalState(def,reason,forced:true);}
-  public static readonly string[] Lines={"左头：往东！","右头：往西！","“是我先看见的！”","“闭嘴，该我说了！”","两个头互相瞪眼","“都怪你！”"};
+  public static readonly string[] Lines={"左头：往东！".Loc(),"右头：往西！".Loc(),"“是我先看见的！”".Loc(),"“闭嘴，该我说了！”".Loc(),"两个头互相瞪眼".Loc(),"“都怪你！”".Loc()};
  }
  [HarmonyPatch(typeof(PawnCapacityUtility),nameof(PawnCapacityUtility.CalculateTagEfficiency))]
  public static class EttinTagEfficiency {
@@ -178,7 +178,7 @@ namespace LichPhylactery {
  }
  public class StatPart_EttinWatch : StatPart {
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p && Ettin.WatchActive(p))val*=Ettin.WatchRest;}
-  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Ettin.WatchActive(p)?"轮流值守：×"+Ettin.WatchRest.ToStringPercent():null;
+  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Ettin.WatchActive(p)?"轮流值守：×".Loc()+Ettin.WatchRest.ToStringPercent():null;
  }
  public class Gene_EttinWatch : Gene {
   int ticks;
@@ -195,7 +195,7 @@ namespace LichPhylactery {
    nextRoll=now+Ettin.QuarrelDays*GenDate.TicksPerDay;
    if((roll??Rand.Value)>=Ettin.QuarrelChance)return false;
    if((pawn.needs?.mood?.CurLevelPercentage??0f)>Ettin.QuarrelMoodCap || !RestUtility.Awake(pawn))return false;
-   return Ettin.StartQuarrel(pawn,"两个头吵起来了");
+   return Ettin.StartQuarrel(pawn,"两个头吵起来了".Loc());
   }
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref nextRoll,"lpQuarrelNext",-1);}
  }
@@ -247,11 +247,11 @@ namespace LichPhylactery {
  }
  public class StatPart_CyclopsSight : StatPart {
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p)val+=Cyclops.SightPoints(p);}
-  public override string ExplanationPart(StatRequest req){if(!(req.Thing is Pawn p))return null;float s=Cyclops.SightPoints(p);return s==0f?null:"单眼视界"+(Items.Worn(p,Cyclops.Lens)!=null?"（独眼透镜）":"")+"："+s.ToString("0.##");}
+  public override string ExplanationPart(StatRequest req){if(!(req.Thing is Pawn p))return null;float s=Cyclops.SightPoints(p);return s==0f?null:"单眼视界".Loc()+(Items.Worn(p,Cyclops.Lens)!=null?"（独眼透镜）".Loc():"")+"：".Loc()+s.ToString("0.##");}
  }
  public class StatPart_CyclopsSmith : StatPart {
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p && Cyclops.SmithBonus(p))val*=Cyclops.SmithSpeed;}
-  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Cyclops.SmithBonus(p)?"独眼匠心（锻造）：×"+Cyclops.SmithSpeed.ToStringPercent():null;
+  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Cyclops.SmithBonus(p)?"独眼匠心（锻造）：×".Loc()+Cyclops.SmithSpeed.ToStringPercent():null;
  }
  public class ThoughtWorker_CyclopsFlock : ThoughtWorker {
   protected override ThoughtState CurrentStateInternal(Pawn p)=>p.Spawned && Races124.Has(p,Cyclops.ShepherdGene) && p.Map.IsPlayerHome && Cyclops.HasFlock(p.Map)?ThoughtState.ActiveAtStage(0):ThoughtState.Inactive;

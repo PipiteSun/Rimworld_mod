@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 红龙鳞 -->
+  <LP_DragonScale_Red.label>red dragon scale</LP_DragonScale_Red.label>
+  <!-- 从红龙尸体上剥下的鳞片，比钢还硬，又轻得多。可以代替金属做板甲、盾、头盔这类可选材料的装备：利器护甲 ×1.6（相对钢），本色火焰护甲 ×2（热护甲）。 -->
+  <LP_DragonScale_Red.description>Scales stripped from a red dragon's corpse, harder than steel and much lighter. Can replace metal in plate armor, shields, helmets and other gear with selectable materials: sharp armor ×1.6 (relative to steel), its own fire armor ×2 (heat armor).</LP_DragonScale_Red.description>
+  <!-- 蓝龙鳞 -->
+  <LP_DragonScale_Blue.label>blue dragon scale</LP_DragonScale_Blue.label>
+  <!-- 从蓝龙尸体上剥下的鳞片，比钢还硬，又轻得多。可以代替金属做板甲、盾、头盔这类可选材料的装备：利器护甲 ×1.6（相对钢），穿着它做的衣甲时，受到的闪电伤害 −50%。 -->
+  <LP_DragonScale_Blue.description>Scales stripped from a blue dragon's corpse, harder than steel and much lighter. Can replace metal in plate armor, shields, helmets and other gear with selectable materials: sharp armor ×1.6 (relative to steel); while wearing apparel made from it, lightning damage taken -50%.</LP_DragonScale_Blue.description>
+  <!-- 绿龙鳞 -->
+  <LP_DragonScale_Green.label>green dragon scale</LP_DragonScale_Green.label>
+  <!-- 从绿龙尸体上剥下的鳞片，比钢还硬，又轻得多。可以代替金属做板甲、盾、头盔这类可选材料的装备：利器护甲 ×1.6（相对钢），穿着它做的衣甲时，受到的毒素伤害 −50%。 -->
+  <LP_DragonScale_Green.description>Scales stripped from a green dragon's corpse, harder than steel and much lighter. Can replace metal in plate armor, shields, helmets and other gear with selectable materials: sharp armor ×1.6 (relative to steel); while wearing apparel made from it, poison damage taken -50%.</LP_DragonScale_Green.description>
+  <!-- 黑龙鳞 -->
+  <LP_DragonScale_Black.label>black dragon scale</LP_DragonScale_Black.label>
+  <!-- 从黑龙尸体上剥下的鳞片，比钢还硬，又轻得多。可以代替金属做板甲、盾、头盔这类可选材料的装备：利器护甲 ×1.6（相对钢），穿着它做的衣甲时，受到的强酸伤害 −50%。 -->
+  <LP_DragonScale_Black.description>Scales stripped from a black dragon's corpse, harder than steel and much lighter. Can replace metal in plate armor, shields, helmets and other gear with selectable materials: sharp armor ×1.6 (relative to steel); while wearing apparel made from it, acid damage taken -50%.</LP_DragonScale_Black.description>
+  <!-- 白龙鳞 -->
+  <LP_DragonScale_White.label>white dragon scale</LP_DragonScale_White.label>
+  <!-- 从白龙尸体上剥下的鳞片，比钢还硬，又轻得多。可以代替金属做板甲、盾、头盔这类可选材料的装备：利器护甲 ×1.6（相对钢），本色寒冷护甲 ×2（热护甲）。 -->
+  <LP_DragonScale_White.description>Scales stripped from a white dragon's corpse, harder than steel and much lighter. Can replace metal in plate armor, shields, helmets and other gear with selectable materials: sharp armor ×1.6 (relative to steel), its own cold armor ×2 (heat armor).</LP_DragonScale_White.description>
+  <!-- 龙牙 -->
+  <LP_DragonFang.label>dragon fang</LP_DragonFang.label>
+  <!-- 成年以上真龙的牙，又长又利。可以代替金属做刀剑：锋利 ×1.4。 -->
+  <LP_DragonFang.description>The long, sharp tooth of an adult or older true dragon. Can replace metal for making blades: sharpness ×1.4.</LP_DragonFang.description>
+  <!-- 红龙之心 -->
+  <LP_DragonHeart_Red.label>red dragon heart</LP_DragonHeart_Red.label>
+  <!-- 成年以上红龙的心脏，摸上去还是温的。可以在炼金桌上炼成三瓶红龙之血，也能卖个好价钱。 -->
+  <LP_DragonHeart_Red.description>The heart of an adult or older red dragon, still warm to the touch. Can be brewed into three vials of red dragon blood at the alchemy table, or sold for a good price.</LP_DragonHeart_Red.description>
+  <!-- 红龙之血 -->
+  <LP_DragonBlood_Red.label>red dragon blood</LP_DragonBlood_Red.label>
+  <!-- 用红龙之心炼成的药剂。7 天内受到的火焰伤害 −50%，生命 +5%。 -->
+  <LP_DragonBlood_Red.description>A draught brewed from a red dragon heart. For 7 days fire damage taken -50%, health +5%.</LP_DragonBlood_Red.description>
+  <!-- 饮用{0} -->
+  <LP_DragonBlood_Red.ingestible.ingestCommandString>drink {0}</LP_DragonBlood_Red.ingestible.ingestCommandString>
+  <!-- 正在饮用{0}。 -->
+  <LP_DragonBlood_Red.ingestible.ingestReportString>Drinking {0}.</LP_DragonBlood_Red.ingestible.ingestReportString>
+  <!-- 蓝龙之心 -->
+  <LP_DragonHeart_Blue.label>blue dragon heart</LP_DragonHeart_Blue.label>
+  <!-- 成年以上蓝龙的心脏，摸上去还是温的。可以在炼金桌上炼成三瓶蓝龙之血，也能卖个好价钱。 -->
+  <LP_DragonHeart_Blue.description>The heart of an adult or older blue dragon, still warm to the touch. Can be brewed into three vials of blue dragon blood at the alchemy table, or sold for a good price.</LP_DragonHeart_Blue.description>
+  <!-- 蓝龙之血 -->
+  <LP_DragonBlood_Blue.label>blue dragon blood</LP_DragonBlood_Blue.label>
+  <!-- 用蓝龙之心炼成的药剂。7 天内受到的闪电伤害 −50%，生命 +5%。 -->
+  <LP_DragonBlood_Blue.description>A draught brewed from a blue dragon heart. For 7 days lightning damage taken -50%, health +5%.</LP_DragonBlood_Blue.description>
+  <!-- 饮用{0} -->
+  <LP_DragonBlood_Blue.ingestible.ingestCommandString>drink {0}</LP_DragonBlood_Blue.ingestible.ingestCommandString>
+  <!-- 正在饮用{0}。 -->
+  <LP_DragonBlood_Blue.ingestible.ingestReportString>Drinking {0}.</LP_DragonBlood_Blue.ingestible.ingestReportString>
+  <!-- 绿龙之心 -->
+  <LP_DragonHeart_Green.label>green dragon heart</LP_DragonHeart_Green.label>
+  <!-- 成年以上绿龙的心脏，摸上去还是温的。可以在炼金桌上炼成三瓶绿龙之血，也能卖个好价钱。 -->
+  <LP_DragonHeart_Green.description>The heart of an adult or older green dragon, still warm to the touch. Can be brewed into three vials of green dragon blood at the alchemy table, or sold for a good price.</LP_DragonHeart_Green.description>
+  <!-- 绿龙之血 -->
+  <LP_DragonBlood_Green.label>green dragon blood</LP_DragonBlood_Green.label>
+  <!-- 用绿龙之心炼成的药剂。7 天内受到的毒素伤害 −50%，生命 +5%。 -->
+  <LP_DragonBlood_Green.description>A draught brewed from a green dragon heart. For 7 days poison damage taken -50%, health +5%.</LP_DragonBlood_Green.description>
+  <!-- 饮用{0} -->
+  <LP_DragonBlood_Green.ingestible.ingestCommandString>drink {0}</LP_DragonBlood_Green.ingestible.ingestCommandString>
+  <!-- 正在饮用{0}。 -->
+  <LP_DragonBlood_Green.ingestible.ingestReportString>Drinking {0}.</LP_DragonBlood_Green.ingestible.ingestReportString>
+  <!-- 黑龙之心 -->
+  <LP_DragonHeart_Black.label>black dragon heart</LP_DragonHeart_Black.label>
+  <!-- 成年以上黑龙的心脏，摸上去还是温的。可以在炼金桌上炼成三瓶黑龙之血，也能卖个好价钱。 -->
+  <LP_DragonHeart_Black.description>The heart of an adult or older black dragon, still warm to the touch. Can be brewed into three vials of black dragon blood at the alchemy table, or sold for a good price.</LP_DragonHeart_Black.description>
+  <!-- 黑龙之血 -->
+  <LP_DragonBlood_Black.label>black dragon blood</LP_DragonBlood_Black.label>
+  <!-- 用黑龙之心炼成的药剂。7 天内受到的强酸伤害 −50%，生命 +5%。 -->
+  <LP_DragonBlood_Black.description>A draught brewed from a black dragon heart. For 7 days acid damage taken -50%, health +5%.</LP_DragonBlood_Black.description>
+  <!-- 饮用{0} -->
+  <LP_DragonBlood_Black.ingestible.ingestCommandString>drink {0}</LP_DragonBlood_Black.ingestible.ingestCommandString>
+  <!-- 正在饮用{0}。 -->
+  <LP_DragonBlood_Black.ingestible.ingestReportString>Drinking {0}.</LP_DragonBlood_Black.ingestible.ingestReportString>
+  <!-- 白龙之心 -->
+  <LP_DragonHeart_White.label>white dragon heart</LP_DragonHeart_White.label>
+  <!-- 成年以上白龙的心脏，摸上去还是温的。可以在炼金桌上炼成三瓶白龙之血，也能卖个好价钱。 -->
+  <LP_DragonHeart_White.description>The heart of an adult or older white dragon, still warm to the touch. Can be brewed into three vials of white dragon blood at the alchemy table, or sold for a good price.</LP_DragonHeart_White.description>
+  <!-- 白龙之血 -->
+  <LP_DragonBlood_White.label>white dragon blood</LP_DragonBlood_White.label>
+  <!-- 用白龙之心炼成的药剂。7 天内受到的寒冷伤害 −50%，生命 +5%。 -->
+  <LP_DragonBlood_White.description>A draught brewed from a white dragon heart. For 7 days cold damage taken -50%, health +5%.</LP_DragonBlood_White.description>
+  <!-- 饮用{0} -->
+  <LP_DragonBlood_White.ingestible.ingestCommandString>drink {0}</LP_DragonBlood_White.ingestible.ingestCommandString>
+  <!-- 正在饮用{0}。 -->
+  <LP_DragonBlood_White.ingestible.ingestReportString>Drinking {0}.</LP_DragonBlood_White.ingestible.ingestReportString>
+  <!-- 龙巢情报 -->
+  <LP_DragonLairMap.label>dragon lair intel</LP_DragonLairMap.label>
+  <!-- 同盟的探子画的一张兽皮地图，标着一座远古龙巢的位置。读懂它，龙巢就会显露在世界地图上（30 天后消失）。 -->
+  <LP_DragonLairMap.description>A hide map drawn by a league scout, marking the location of an ancient dragon lair. Reading it reveals the lair on the world map (it disappears after 30 days).</LP_DragonLairMap.description>
+  <!-- 读{0_label} -->
+  <LP_DragonLairMap.comps.CompUsable.useLabel>read {0_label}</LP_DragonLairMap.comps.CompUsable.useLabel>
+</LanguageData>

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（AscensionPaths.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>神选者（守护神神眷≥60）：虔信 → 奉献 → 证道（成为圣徒）→ 圣火降临 → 在圣坛升神。</zh><en>Chosen of a god (patron favor ≥60): Devotion → Offering → Proving (become a saint) → Holy Fire Descends → ascend at the altar.</en></s>
+  <s><zh>命匣等级≥</zh><en>Lich with phylactery level ≥</en></s>
+  <s><zh>的巫妖：万魂 → 抗拒凯兰沃的审判 → 在命匣旁夺神。开路时凯兰沃神眷-50，成功后固定-100。</zh><en>: Myriad Souls → Defy Kelemvor's Judgment → seize godhood beside the phylactery. Kelemvor favor -50 when the path opens, fixed at -100 after success.</en></s>
+  <s><zh>成年的天穹神裔：父神之誓 → 巨人之战 → 天穹之门，直接觉醒为半神（不需要火花）。</zh><en>Adult sky-born: Oath of the Sire → War of Giants → Gate of the Heavens, awakening directly as a demigod (no spark needed).</en></s>
+  <s><zh>黄昏之年里，殖民者击败一名神明附体的首领时自动开启：沾血 → 事迹 → 篡火仪式（有失败的风险）。</zh><en>During the twilight years, opens automatically when a colonist defeats a god-possessed boss: Bloodied → Deeds → fire-usurping ritual (with a risk of failure).</en></s>
+  <s><zh>让</zh><en>Have </en></s>
+  <s><zh>？\n\n</zh><en>?\n\n</en></s>
+  <s><zh>\n\n一个人同时只能走一条路；中途死去（巫妖除外）或离开殖民地超过</zh><en>\n\nA person can walk only one path at a time; dying midway (except liches) or leaving the colony for more than </en></s>
+  <s><zh>天，进度会清空。</zh><en> days clears progress.</en></s>
+  <s><zh>\n\n代价：凯兰沃的神眷立刻-</zh><en>\n\nCost: Kelemvor favor immediately -</en></s>
+  <s><zh>，末日卫士会来摧毁命匣。</zh><en>, and doomguards will come to destroy the phylactery.</en></s>
+  <s><zh>\n\n父神：</zh><en>\n\nSire god: </en></s>
+  <s><zh>，神眷+</zh><en>, favor +</en></s>
+  <s><zh>\n\n父神会从七位可信奉的神里选出一位（不含班恩、莎尔），神眷+</zh><en>\n\nThe sire god will be chosen from the seven gods that can be worshipped (excluding Bane and Shar), favor +</en></s>
+  <s><zh>\n\n证道和圣火降临都会引来强敌。</zh><en>\n\nProving and Holy Fire Descends both draw powerful enemies.</en></s>
+  <s><zh>试炼一：虔信</zh><en>Trial 1: Devotion</en></s>
+  <s><zh>试炼二：奉献</zh><en>Trial 2: Offering</en></s>
+  <s><zh>试炼三：证道</zh><en>Trial 3: Proving</en></s>
+  <s><zh>终试：圣火降临</zh><en>Final trial: Holy Fire Descends</en></s>
+  <s><zh>升神仪式</zh><en>ascension ritual</en></s>
+  <s><zh>试炼一：万魂</zh><en>Trial 1: Myriad Souls</en></s>
+  <s><zh>试炼二：抗拒审判</zh><en>Trial 2: Defy Judgment</en></s>
+  <s><zh>试炼三：夺神</zh><en>Trial 3: Seize Godhood</en></s>
+  <s><zh>试炼一：父神之誓</zh><en>Trial 1: Oath of the Sire</en></s>
+  <s><zh>试炼二：巨人之战</zh><en>Trial 2: War of Giants</en></s>
+  <s><zh>试炼三：天穹之门</zh><en>Trial 3: Gate of the Heavens</en></s>
+  <s><zh>等待名额</zh><en>waiting for a slot</en></s>
+  <s><zh>试炼一：沾血</zh><en>Trial 1: Bloodied</en></s>
+  <s><zh>试炼二：事迹</zh><en>Trial 2: Deeds</en></s>
+  <s><zh>篡火仪式</zh><en>fire-usurping ritual</en></s>
+  <s><zh>15天内在圣坛祈祷或冥想累计24小时，期间心情一直≥30%（掉下去重新计）。已累计 </zh><en>Pray or meditate at an altar for 24 hours in total within 15 days, with mood staying ≥30% throughout (dropping below restarts the count). Accumulated </en></s>
+  <s><zh> / 24 小时；剩余 </zh><en> / 24 hours; </en></s>
+  <s><zh> 天。</zh><en> days left.</en></s>
+  <s><zh>在圣坛献上</zh><en>Offer at the altar </en></s>
+  <s><zh>片神迹残片和市场价合计≥</zh><en> miracle fragments and items with total market value ≥</en></s>
+  <s><zh>的物品（一次性消耗）。地图上有神迹残片 </zh><en> (consumed at once). Miracle fragments on the map: </en></s>
+  <s><zh> 片。</zh><en>.</en></s>
+  <s><zh>迎接“异端勇者”：</zh><en>Face the "heretic champion": </en></s>
+  <s><zh>的对立神派系，首领被神明附体，点数≥</zh><en>'s opposing god faction, its leader possessed by a god, points ≥</en></s>
+  <s><zh>必须参战并活下来，首领死亡或被俘。</zh><en> must fight and survive, and the leader must die or be captured.</en></s>
+  <s><zh>\n异端勇者已经来了。</zh><en>\nThe heretic champion has arrived.</en></s>
+  <s><zh>成为圣徒满</zh><en>After being a saint for </en></s>
+  <s><zh>天（</zh><en> days (</en></s>
+  <s><zh>）且</zh><en>) and </en></s>
+  <s><zh>神眷≥</zh><en> favor ≥</en></s>
+  <s><zh>）后，神性火花会坠落在圣徒身边。</zh><en>), a divine spark will fall beside the saint.</en></s>
+  <s><zh>神性火花已经坠落：2天内会有3波夺火者（塞伊远征军 → 吉斯洋基 → </zh><en>The divine spark has fallen: within 2 days 3 waves of fire seekers will come (Thayan expedition → githyanki → </en></s>
+  <s><zh>的对立神派系）。已来 </zh><en>'s opposing god faction). Arrived </en></s>
+  <s><zh> / 3 波。</zh><en> / 3 waves.</en></s>
+  <s><zh>开路之后用“汲取灵魂”献祭完整人形尸体：</zh><en>After opening the path, sacrifice whole humanlike corpses with "drain soul": </en></s>
+  <s><zh>凯兰沃派末日卫士来摧毁命匣：3天3波（点数×0.8 / 1.0 / 1.3），第三波的首领“凯兰沃的审判者”会冻结附近的复生。命匣没被毁就算通过。已来 </zh><en>Kelemvor sends doomguards to destroy the phylactery: 3 waves over 3 days (points ×0.8 / 1.0 / 1.3); the third wave's leader, "Kelemvor's Judge", freezes nearby revivals. It's passed as long as the phylactery isn't destroyed. Arrived </en></s>
+  <s><zh>在命匣旁举行升神仪式：引导神性火花12小时（可打断，不消耗火花），期间会来一波吉斯洋基。</zh><en>Hold the ascension ritual beside the phylactery: channel the divine spark for 12 hours (can be interrupted without consuming the spark); a wave of githyanki comes meanwhile.</en></s>
+  <s><zh>\n（地图上还没有可吸收的火花）</zh><en>\n(There's no absorbable spark on the map yet)</en></s>
+  <s><zh>父神</zh><en>Sire god </en></s>
+  <s><zh>）的事迹：</zh><en>)'s deeds: </en></s>
+  <s><zh>。进度 </zh><en>. Progress </en></s>
+  <s><zh>向巨人王发起挑战：</zh><en>Challenge the giant king: </en></s>
+  <s><zh>霜巨人</zh><en>frost giant</en></s>
+  <s><zh>余烬氏族的火巨人</zh><en>fire giants of the Ember Clan</en></s>
+  <s><zh>，点数≥</zh><en>, points ≥</en></s>
+  <s><zh>本人要对巨人王造成≥30%的伤害（</zh><en> personally must deal ≥30% of the giant king's damage (</en></s>
+  <s><zh>），巨人王死亡或被俘。</zh><en>), and the giant king must die or be captured.</en></s>
+  <s><zh>在室外站上6小时（可打断，打断要重来）：期间神怒风暴，3波位面生物来袭。完成后直接觉醒成半神。</zh><en>Stand outdoors for 6 hours (can be interrupted, but must restart): meanwhile a storm of divine wrath, and 3 waves of planar creatures attack. Afterwards, awaken directly as a demigod.</en></s>
+  <s><zh>天穹之门已经打开，但半神名额满了：</zh><en>The Gate of the Heavens is open, but the demigod slots are full: </en></s>
+  <s><zh>击败同一位神的神明附体首领3名（不同神分开计数）：</zh><en>Defeat 3 god-possessed bosses of the same god (counted separately per god): </en></s>
+  <s><zh>。黄昏之年结束时计数保留到下次。</zh><en>. The count is kept to the next time when the twilight years end.</en></s>
+  <s><zh>被篡之神</zh><en>usurped god</en></s>
+  <s><zh>的事迹：</zh><en>'s deeds: </en></s>
+  <s><zh>在</zh><en>Beside </en></s>
+  <s><zh>命匣</zh><en>phylactery</en></s>
+  <s><zh>圣坛</zh><en>altar</en></s>
+  <s><zh>旁引导神性火花12小时（可打断，打断不消耗火花），期间本地图“神性震荡”（心灵法术冷却×1.5）。</zh><en>, channel the divine spark for 12 hours (can be interrupted without consuming the spark); meanwhile this map has a "divine tremor" (psycast cooldowns ×1.5).</en></s>
+  <s><zh>\n成功率 = 50% + (心灵敏感度-1)×50% + 每片神迹残片 8%（最多</zh><en>\nSuccess chance = 50% + (psychic sensitivity - 1) × 50% + 8% per miracle fragment (up to </en></s>
+  <s><zh>片）+ 弑神者 10%，最多95%。现在（不献残片）：</zh><en>) + Godslayer 10%, max 95%. Now (no fragments offered): </en></s>
+  <s><zh>。失败：</zh><en>. Failure: </en></s>
+  <s><zh>死去，火花碎成5片神迹残片。</zh><en> dies, and the spark shatters into 5 miracle fragments.</en></s>
+  <s><zh>\n成功率100%。</zh><en>\nSuccess chance 100%.</en></s>
+  <s><zh>多在圣坛祈祷（右键圣坛）或在圣坛附近冥想，保持好心情。</zh><en>Pray at the altar often (right-click the altar) or meditate near it, and keep a good mood.</en></s>
+  <s><zh>备好神迹残片和贵重物品，点“献上祭品”。</zh><en>Prepare miracle fragments and valuables, then click "make offering".</en></s>
+  <s><zh>准备好防御，再点“迎接证道”。</zh><en>Prepare your defenses, then click "face the proving".</en></s>
+  <s><zh>继续侍奉</zh><en>Keep serving </en></s>
+  <s><zh>，提高神眷。</zh><en> to raise favor.</en></s>
+  <s><zh>守住火花，打退三波夺火者。</zh><en>Guard the spark and repel the three waves of fire seekers.</en></s>
+  <s><zh>在死灵仪式台用“汲取灵魂”献祭尸体。</zh><en>Sacrifice corpses with "drain soul" at the necromantic ritual table.</en></s>
+  <s><zh>守住命匣。</zh><en>Defend the phylactery.</en></s>
+  <s><zh>按父神的喜好做事。</zh><en>Do as the sire god likes.</en></s>
+  <s><zh>准备好之后点“发起巨人之战”，让</zh><en>When ready, click "start the war of giants" and have </en></s>
+  <s><zh>亲自砍巨人王。</zh><en> strike the giant king personally.</en></s>
+  <s><zh>点“登上天穹之门”，让</zh><en>Click "ascend the Gate of the Heavens" and have </en></s>
+  <s><zh>在室外站满6小时。</zh><en> stand outdoors for a full 6 hours.</en></s>
+  <s><zh>等名额空出来（或在设置里提高名额上限）。</zh><en>Wait for a slot to free up (or raise the slot limit in settings).</en></s>
+  <s><zh>继续在黄昏之年里击败神明附体的首领。</zh><en>Keep defeating god-possessed bosses during the twilight years.</en></s>
+  <s><zh>完成被篡之神的事迹。</zh><en>Complete the usurped god's deeds.</en></s>
+  <s><zh>可以开始升神仪式了。</zh><en>The ascension ritual can begin.</en></s>
+  <s><zh>献上祭品</zh><en>Make offering</en></s>
+  <s><zh>地图上的神迹残片不足</zh><en>Not enough miracle fragments on the map</en></s>
+  <s><zh>片</zh><en> fragments</en></s>
+  <s><zh>需要一座圣坛</zh><en>Needs an altar</en></s>
+  <s><zh>迎接证道</zh><en>Face the proving</en></s>
+  <s><zh>异端勇者已经来了</zh><en>The heretic champion has already arrived</en></s>
+  <s><zh>要在殖民地里</zh><en>Must be in the colony</en></s>
+  <s><zh>发起巨人之战</zh><en>Start the war of giants</en></s>
+  <s><zh>巨人们已经来了</zh><en>The giants have already arrived</en></s>
+  <s><zh>登上天穹之门</zh><en>Ascend the Gate of the Heavens</en></s>
+  <s><zh>开始升神仪式</zh><en>Begin ascension ritual</en></s>
+  <s><zh>放弃这条路</zh><en>Abandon this path</en></s>
+  <s><zh>放弃</zh><en>Abandon </en></s>
+  <s><zh>？进度会全部清空（已经付出的代价不返还）。</zh><en>? All progress will be cleared (costs already paid aren't refunded).</en></s>
+  <s><zh>放弃了</zh><en> abandoned </en></s>
+  <s><zh>踏上半神巫妖之路</zh><en>Set out on the Path of the Demilich</en></s>
+  <s><zh>认父神</zh><en>Acknowledge sire god</en></s>
+  <s><zh>踏上了</zh><en> set out on </en></s>
+  <s><zh>（神职：</zh><en> (portfolio: </en></s>
+  <s><zh>成神之路中断</zh><en>Path to godhood interrupted</en></s>
+  <s><zh>：试炼完成</zh><en>: trial complete</en></s>
+  <s><zh>\n\n下一步 · </zh><en>\n\nNext step · </en></s>
+  <s><zh>死了，</zh><en> died, and the progress of </en></s>
+  <s><zh>的进度随之消散。</zh><en> dissipated with them.</en></s>
+  <s><zh>离开殖民地超过</zh><en> left the colony for more than </en></s>
+  <s><zh>天，</zh><en> days, and the progress of </en></s>
+  <s><zh>的进度消散了。</zh><en> dissipated.</en></s>
+  <s><zh>[DND边缘大陆] 成神路线结算出错（</zh><en>[DND Rimlands] Path to godhood tick error (</en></s>
+  <s><zh>圣徒</zh><en>saint</en></s>
+  <s><zh>的心情掉到了30%以下，虔信的累计重新开始。</zh><en>'s mood dropped below 30%; the devotion count restarts.</en></s>
+  <s><zh>在圣坛前累计虔信了24小时。</zh><en> accumulated 24 hours of devotion before the altar.</en></s>
+  <s><zh>没能在15天内完成虔信，重新开始计时。</zh><en> didn't complete devotion within 15 days; the timer restarts.</en></s>
+  <s><zh>异端勇者的首领没有被击杀或俘虏：证道没有完成，可以再试一次。</zh><en>The heretic champion's leader wasn't killed or captured: the proving isn't complete; you can try again.</en></s>
+  <s><zh>守住了神性火花，三波夺火者都被打退了。</zh><en> guarded the divine spark, and all three waves of fire seekers were repelled.</en></s>
+  <s><zh>证道成圣</zh><en>Proven a saint</en></s>
+  <s><zh>打败了异端勇者，成为</zh><en> defeated the heretic champion and became a saint of </en></s>
+  <s><zh>的圣徒：心灵敏感度+15%、社交+2，</zh><en>: psychic sensitivity +15%, Social +2, </en></s>
+  <s><zh>神眷+</zh><en> favor +</en></s>
+  <s><zh>、之后每天+</zh><en>, then +</en></s>
+  <s><zh>证道：异端勇者</zh><en>Proving: heretic champion</en></s>
+  <s><zh>的异端勇者来挑战</zh><en>'s heretic champion comes to challenge </en></s>
+  <s><zh>的神选者</zh><en>'s chosen </en></s>
+  <s><zh>领队</zh><en>The leader </en></s>
+  <s><zh>被</zh><en> is possessed by </en></s>
+  <s><zh>附体。</zh><en>.</en></s>
+  <s><zh>\n\n这是成神的试炼：</zh><en>\n\nThis is a trial of ascension: </en></s>
+  <s><zh>要参战并活下来，首领要死或被俘。</zh><en> must fight and survive, and the leader must die or be captured.</en></s>
+  <s><zh>在圣坛献上了</zh><en> offered at the altar </en></s>
+  <s><zh>片神迹残片和</zh><en> miracle fragments and </en></s>
+  <s><zh>件祭品。</zh><en> offerings.</en></s>
+  <s><zh>神性火花坠落</zh><en>Divine spark falls</en></s>
+  <s><zh>把一粒神性火花投向了</zh><en> cast a divine spark toward </en></s>
+  <s><zh>：它落在圣徒身边。\n\n凡人和异神都想要它。2天内会有3波夺火者：塞伊远征军 → 吉斯洋基 → </zh><en>: it fell beside the saint.\n\nMortals and alien gods all want it. Within 2 days 3 waves of fire seekers will come: Thayan expedition → githyanki → </en></s>
+  <s><zh>的对立神派系。打退他们之前不能举行升神仪式。</zh><en>'s opposing god faction. The ascension ritual can't be held until they're repelled.</en></s>
+  <s><zh>夺火者（第</zh><en>Fire seekers (wave </en></s>
+  <s><zh>波）</zh><en>)</en></s>
+  <s><zh>来抢神性火花了！</zh><en> come to seize the divine spark!</en></s>
+  <s><zh>汲取了</zh><en> drained </en></s>
+  <s><zh>个灵魂。凯兰沃注意到了：他的末日卫士要来摧毁命匣。</zh><en> souls. Kelemvor has noticed: his doomguards are coming to destroy the phylactery.</en></s>
+  <s><zh>命匣被毁了：</zh><en>Phylactery destroyed: </en></s>
+  <s><zh>的半神巫妖之路断绝。</zh><en>'s Path of the Demilich is cut off.</en></s>
+  <s><zh>挡住了凯兰沃的三波审判，命匣完好无损。审判者留下的神性火花在命匣旁闪着光。</zh><en> withstood Kelemvor's three waves of judgment, and the phylactery is intact. The divine spark left by the judge glimmers beside the phylactery.</en></s>
+  <s><zh>抗拒审判（第</zh><en>Defy Judgment (wave </en></s>
+  <s><zh>凯兰沃的末日卫士来摧毁</zh><en>Kelemvor's doomguards come to destroy the phylactery of </en></s>
+  <s><zh>的命匣！</zh><en>!</en></s>
+  <s><zh>\n\n领头的是“凯兰沃的审判者”：他身边15格内，巫妖和巨魔的复生计时会暂停。</zh><en>\n\nThey're led by "Kelemvor's Judge": within 15 cells of him, the revival timers of liches and trolls are paused.</en></s>
+  <s><zh>夺神：吉斯洋基</zh><en>Seize Godhood: githyanki</en></s>
+  <s><zh>巫妖女王维拉基斯不容许另一个巫妖登上神位：吉斯洋基从星界跳了出来，要打断</zh><en>The lich queen Vlaakith won't allow another lich to take a divine seat: githyanki leap out of the Astral Plane to interrupt the ritual of </en></s>
+  <s><zh>的仪式！</zh><en>!</en></s>
+  <s><zh>巨人王</zh><en>giant king</en></s>
+  <s><zh>巨人之战</zh><en>War of Giants</en></s>
+  <s><zh>火巨人</zh><en>fire giant</en></s>
+  <s><zh>的巨人王带着氏族来应战了。\n\n</zh><en>'s giant king has come with the clan to answer the challenge.\n\n</en></s>
+  <s><zh>要亲手对巨人王造成至少30%的伤害，巨人王死亡或被俘才算赢。</zh><en> must personally deal at least 30% of the giant king's damage, and the giant king must die or be captured, to win.</en></s>
+  <s><zh>在巨人之战中亲手击败了巨人王。</zh><en> personally defeated the giant king in the war of giants.</en></s>
+  <s><zh>对巨人王造成的伤害不够30%：巨人之战不算数，可以再挑战一次。</zh><en>The damage dealt to the giant king was below 30%: the war of giants doesn't count; you can challenge again.</en></s>
+  <s><zh>巨人王逃走了：巨人之战不算数。</zh><en>The giant king escaped: the war of giants doesn't count.</en></s>
+  <s><zh>不在天穹之门这一步。</zh><en>Not at the Gate of the Heavens step.</en></s>
+  <s><zh>要在地图上。</zh><en>Must be on a map.</en></s>
+  <s><zh>要站在室外（没有屋顶）。</zh><en>Must stand outdoors (no roof).</en></s>
+  <s><zh>要在殖民地里。</zh><en>Must be in the colony.</en></s>
+  <s><zh>附近找不到露天的地方。</zh><en>No open-air spot nearby.</en></s>
+  <s><zh>天穹之门</zh><en>Gate of the Heavens</en></s>
+  <s><zh>仰望天穹，等待门开。神怒风暴降临，位面裂隙里的生物会冲向</zh><en> gazes up at the heavens, waiting for the gate to open. A storm of divine wrath descends, and creatures from planar rifts will charge at </en></s>
+  <s><zh>。\n\n站满6小时（不能进屋）就能觉醒。</zh><en>.\n\nStanding for a full 6 hours (no going indoors) brings awakening.</en></s>
+  <s><zh>[DND边缘大陆] 天穹之门生成 </zh><en>[DND Rimlands] Gate of the Heavens spawning </en></s>
+  <s><zh>天穹之门：第</zh><en>Gate of the Heavens: wave </en></s>
+  <s><zh>波位面生物（</zh><en> of planar creatures (</en></s>
+  <s><zh>）冲了过来！</zh><en>) charges in!</en></s>
+  <s><zh>天穹之门已开</zh><en>Gate of the Heavens opened</en></s>
+  <s><zh>撑过了天穹之门，但世上的半神名额已满。等名额空出来时会自动觉醒。</zh><en> endured the Gate of the Heavens, but the world's demigod slots are full. Awakening will happen automatically once a slot frees up.</en></s>
+  <s><zh>击败了</zh><en> defeated a boss possessed by </en></s>
+  <s><zh>附体的首领，尝到了神血的味道。\n\n</zh><en> and tasted divine blood.\n\n</en></s>
+  <s><zh>成为了弑神者：对神力灌注者、神明附体者和半神的伤害×1.3。</zh><en> became a godslayer: damage against the divinely infused, the god-possessed and demigods ×1.3.</en></s>
+  <s><zh>击败了第三名</zh><en> defeated the third boss possessed by </en></s>
+  <s><zh>附体的首领：一粒篡夺的神性火花从他身上掉了出来（任何殖民者都能吸收）。</zh><en>: a usurped divine spark fell from him (any colonist can absorb it).</en></s>
+  <s><zh>篡火失败</zh><en>Fire usurping failed</en></s>
+  <s><zh>没能承受住篡来的神性：神火从内部烧尽了他。\n\n火花碎成了5片神迹残片。</zh><en> couldn't withstand the usurped divinity: the divine fire burned them out from within.\n\nThe spark shattered into 5 miracle fragments.</en></s>
+  <s><zh>完成了</zh><en> completed the deeds of </en></s>
+  <s><zh>的事迹（</zh><en> (</en></s>
+  <s><zh>半神巫妖</zh><en>Demilich</en></s>
+  <s><zh>夺取了神位。命匣化为神龛：复生只要1天，神力≥50时可以立刻复生（扣50神力），命匣生命×2。\n\n凯兰沃的神眷从此固定为-100；吉斯洋基不再把</zh><en> seized a divine seat. The phylactery became a shrine: revival takes only 1 day, instant revival is possible with divine power ≥50 (costs 50 divine power), phylactery health ×2.\n\nKelemvor's favor is fixed at -100 from now on; githyanki no longer regard </en></s>
+  <s><zh>当作巫妖女王的同类。</zh><en> as one of the lich queen's kind.</en></s>
+  <s><zh>篡火者</zh><en>Fire Usurper</en></s>
+  <s><zh>篡夺了</zh><en> usurped the divine fire of </en></s>
+  <s><zh>的神火。</zh><en>.</en></s>
+  <s><zh>的神眷从此固定为-100，信奉祂的派系袭击更频繁（×1.5）。</zh><en>'s favor is fixed at -100 from now on, and factions worshipping that god raid more often (×1.5).</en></s>
+  <s><zh>圣徒的奉献</zh><en>The saint's offering</en></s>
+  <s><zh>选择献给</zh><en>Choose offerings for </en></s>
+  <s><zh>的祭品（整堆献上），合计市场价要≥</zh><en> (whole stacks are offered); total market value must be ≥</en></s>
+  <s><zh>；另外消耗</zh><en>; also consumes </en></s>
+  <s><zh>片神迹残片。\n已选：</zh><en> miracle fragments.\nSelected: </en></s>
+  <s><zh>家园区里没有可以献上的物品。</zh><en>There's nothing in the home area that can be offered.</en></s>
+  <s><zh>献上</zh><en>Offer</en></s>
+  <s><zh>还不够</zh><en>not enough yet</en></s>
+  <s><zh>父神神职：</zh><en>Sire god's portfolio: </en></s>
+  <s><zh>[DND边缘大陆] 成神击杀钩子：</zh><en>[DND Rimlands] Ascension kill hook: </en></s>
+  <s><zh>[DND边缘大陆] 篡火者计数出错：</zh><en>[DND Rimlands] Fire usurper count error: </en></s>
+</LPStrings>

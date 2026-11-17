@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 魔法学徒 -->
+  <LP_Feat_MagicInitiate.label>magic initiate</LP_Feat_MagicInitiate.label>
+  <!-- 学过一点真正的魔法。装了 VPE 时：按智识 / 社交 / 种植与驯兽中最高的一项选法师、牧师或德鲁伊路径，学会该路径的第一个能力（不占路径点、不需要解锁路径）；没装 VPE 时：获得“魔能飞弹”（必中，8 + 等级点魔能伤害，射程 20，约每天 3 次）。附带智力、感知或魅力 +1。 -->
+  <LP_Feat_MagicInitiate.description>Learned a little real magic. With VPE: pick the wizard, cleric or druid path based on the highest of Intellectual / Social / Plants and Animals, and learn that path's first ability (no path point, no path unlock needed). Without VPE: gain "Magic missile" (unerring, 8 + level force damage, range 20, about 3 per day). Grants +1 Intelligence, Wisdom or Charisma.</LP_Feat_MagicInitiate.description>
+  <!-- 酒馆斗殴者 -->
+  <LP_Feat_TavernBrawler.label>tavern brawler</LP_Feat_TavernBrawler.label>
+  <!-- 酒馆里打出来的拳头。徒手伤害 ×2.5，社交斗殴伤害 ×2；徒手命中 40% 把敌人推开 1 格并眩晕 1 秒。附带力量或体质 +1。 -->
+  <LP_Feat_TavernBrawler.description>Fists forged in tavern brawls. Unarmed damage ×2.5, social fight damage ×2; unarmed hits have a 40% chance to push the enemy 1 cell and stun for 1 second. Grants +1 Strength or Constitution.</LP_Feat_TavernBrawler.description>
+  <!-- 工匠 -->
+  <LP_Feat_Crafter.label>crafter</LP_Feat_Crafter.label>
+  <!-- 懂行的手艺人。一般劳动速度（制作类工作）+25%；当谈判人向商人买工具、武器、衣甲时价格 -20%。附带敏捷或智力 +1。 -->
+  <LP_Feat_Crafter.description>A skilled craftsman. General labor speed (crafting work) +25%; when the negotiator buys tools, weapons or apparel from traders, prices -20%. Grants +1 Dexterity or Intelligence.</LP_Feat_Crafter.description>
+  <!-- 技能专家 -->
+  <LP_Feat_Skilled.label>skill expert</LP_Feat_Skilled.label>
+  <!-- 样样都学过一点。选专长时，等级最高、兴趣还没到“大”的 3 个技能兴趣各提升一级（无 → 小 → 大），并且这 3 个技能各 +3 级；全局学习 ×1.1。附带任意一项属性 +1（加在当前最高的一项）。 -->
+  <LP_Feat_Skilled.description>Has learned a bit of everything. When taking the feat, the 3 highest-level skills whose passion is not yet "major" each go up one passion step (none → minor → major), and those 3 skills each gain +3 levels; global learning ×1.1. Grants +1 to any ability score (added to your current highest).</LP_Feat_Skilled.description>
+  <!-- 音乐家 -->
+  <LP_Feat_Musician.label>musician</LP_Feat_Musician.label>
+  <!-- 琴声能鼓动人心。演奏乐器时，10 格内的殖民者心情 +6“激昂乐章”（半天）；每天第一次演奏时，让最多 3 位听众获得“激励”：6 小时内手术成功率、谈判能力、射击精度 ×1.3。需要魅力 13 或艺术 6。附带魅力 +1。 -->
+  <LP_Feat_Musician.description>Music that stirs the heart. When playing an instrument, colonists within 10 cells get mood +6 "rousing music" (half a day); the first performance each day gives up to 3 listeners "Inspired": surgery success, negotiation ability and shooting accuracy ×1.3 for 6 hours. Requires Charisma 13 or Artistic 6. Grants +1 Charisma.</LP_Feat_Musician.description>
+  <!-- 元素使·火 -->
+  <LP_Feat_ElementalAdept_Fire.label>elemental adept: fire</LP_Feat_ElementalAdept_Fire.label>
+  <!-- 火焰听从这个施法者。火焰类伤害无视目标对火焰的抗性（连火巨人也烧得伤），并且 +25%。需要施法职业（法师、牧师、德鲁伊、术士、邪术师、圣武士或诡术师）或佩戴圣徽。只能选一种元素。附带智力、感知或魅力 +1。 -->
+  <LP_Feat_ElementalAdept_Fire.description>Fire obeys this caster. Fire damage ignores the target's fire resistance (even fire giants can be burned) and is +25%. Requires a spellcasting class (wizard, cleric, druid, sorcerer, warlock, paladin or arcane trickster) or a worn holy symbol. Only one element can be chosen. Grants +1 Intelligence, Wisdom or Charisma.</LP_Feat_ElementalAdept_Fire.description>
+  <!-- 元素使·冰 -->
+  <LP_Feat_ElementalAdept_Cold.label>elemental adept: cold</LP_Feat_ElementalAdept_Cold.label>
+  <!-- 寒冰听从这个施法者。寒冷类伤害无视目标对寒冷的抗性，并且 +25%。需要施法职业（法师、牧师、德鲁伊、术士、邪术师、圣武士或诡术师）或佩戴圣徽。只能选一种元素。附带智力、感知或魅力 +1。 -->
+  <LP_Feat_ElementalAdept_Cold.description>Cold obeys this caster. Cold damage ignores the target's cold resistance and is +25%. Requires a spellcasting class (wizard, cleric, druid, sorcerer, warlock, paladin or arcane trickster) or a worn holy symbol. Only one element can be chosen. Grants +1 Intelligence, Wisdom or Charisma.</LP_Feat_ElementalAdept_Cold.description>
+  <!-- 元素使·雷 -->
+  <LP_Feat_ElementalAdept_Lightning.label>elemental adept: lightning</LP_Feat_ElementalAdept_Lightning.label>
+  <!-- 雷电听从这个施法者。雷电类伤害无视目标对雷电的抗性，并且 +25%。需要施法职业（法师、牧师、德鲁伊、术士、邪术师、圣武士或诡术师）或佩戴圣徽。只能选一种元素。附带智力、感知或魅力 +1。 -->
+  <LP_Feat_ElementalAdept_Lightning.description>Lightning obeys this caster. Lightning damage ignores the target's lightning resistance and is +25%. Requires a spellcasting class (wizard, cleric, druid, sorcerer, warlock, paladin or arcane trickster) or a worn holy symbol. Only one element can be chosen. Grants +1 Intelligence, Wisdom or Charisma.</LP_Feat_ElementalAdept_Lightning.description>
+  <!-- 元素使·酸 -->
+  <LP_Feat_ElementalAdept_Acid.label>elemental adept: acid</LP_Feat_ElementalAdept_Acid.label>
+  <!-- 强酸听从这个施法者。强酸类伤害无视目标对强酸的抗性，并且 +25%。需要施法职业（法师、牧师、德鲁伊、术士、邪术师、圣武士或诡术师）或佩戴圣徽。只能选一种元素。附带智力、感知或魅力 +1。 -->
+  <LP_Feat_ElementalAdept_Acid.description>Acid obeys this caster. Acid damage ignores the target's acid resistance and is +25%. Requires a spellcasting class (wizard, cleric, druid, sorcerer, warlock, paladin or arcane trickster) or a worn holy symbol. Only one element can be chosen. Grants +1 Intelligence, Wisdom or Charisma.</LP_Feat_ElementalAdept_Acid.description>
+  <!-- 观察者 -->
+  <LP_Feat_Observant.label>observant</LP_Feat_Observant.label>
+  <!-- 什么都逃不过这双眼睛。研究速度 +25%；看得见隐身的单位（暗影帷幕、隐身药水、心灵隐形、卓尔黑暗术里的人）。需要智力或感知 13。附带智力或感知 +1。 -->
+  <LP_Feat_Observant.description>Nothing escapes these eyes. Research speed +25%; can see invisible units (those in shadow veils, invisibility potions, psychic invisibility, drow darkness). Requires Intelligence or Wisdom 13. Grants +1 Intelligence or Wisdom.</LP_Feat_Observant.description>
+  <!-- 演员 -->
+  <LP_Feat_Actor.label>actor</LP_Feat_Actor.label>
+  <!-- 天生的骗子和演员。交易价格 +10%，谈判能力（招募等）×1.3；能力“伪装”（每天 2 次）：2 分钟内敌人几乎不会优先瞄准这个人。需要魅力 13。附带魅力 +1。 -->
+  <LP_Feat_Actor.description>A born liar and actor. Trade prices +10%, negotiation ability (recruiting etc.) ×1.3; ability "Disguise" (2 per day): for 2 minutes enemies will almost never prioritize targeting this person. Requires Charisma 13. Grants +1 Charisma.</LP_Feat_Actor.description>
+  <!-- 心灵感应 -->
+  <LP_Feat_Telepathic.label>telepathic</LP_Feat_Telepathic.label>
+  <!-- 能把念头送进别人脑子里。社交影响 ×1.15；能力“安抚心灵”（每天 3 次）：让 30 格内一个正在精神崩溃的殖民者立刻平静下来。附带智力、感知或魅力 +1。 -->
+  <LP_Feat_Telepathic.description>Can send thoughts into other people's heads. Social impact ×1.15; ability "Soothe mind" (3 per day): instantly calm a colonist within 30 cells who is having a mental break. Grants +1 Intelligence, Wisdom or Charisma.</LP_Feat_Telepathic.description>
+  <!-- 坚毅心智·意志 -->
+  <LP_Feat_Resilient_Mind.label>resilient: will</LP_Feat_Resilient_Mind.label>
+  <!-- 心志比常人坚定。精神崩溃阈值 -15%，心智抗性 +20%。坚毅心智三选一。附带感知 +1。 -->
+  <LP_Feat_Resilient_Mind.description>More strong-willed than most. Mental break threshold -15%, mind resistance +20%. One of three Resilient choices. Grants +1 Wisdom.</LP_Feat_Resilient_Mind.description>
+  <!-- 坚毅心智·抗毒 -->
+  <LP_Feat_Resilient_Toxic.label>resilient: poison</LP_Feat_Resilient_Toxic.label>
+  <!-- 身体对毒物格外顽强。毒素抗性 +100%（毒素不再累积），毒性环境抗性 +50%，疼痛休克阈值 +10%。坚毅心智三选一。附带体质 +1。 -->
+  <LP_Feat_Resilient_Toxic.description>The body is especially tough against poison. Toxic resistance +100% (toxins no longer build up), toxic environment resistance +50%, pain shock threshold +10%. One of three Resilient choices. Grants +1 Constitution.</LP_Feat_Resilient_Toxic.description>
+  <!-- 坚毅心智·免疫 -->
+  <LP_Feat_Resilient_Immune.label>resilient: immunity</LP_Feat_Resilient_Immune.label>
+  <!-- 很少生病，病了也好得快。免疫获得速度 ×2，休息恢复 ×1.3，伤口愈合 ×1.2。坚毅心智三选一。附带体质 +1。 -->
+  <LP_Feat_Resilient_Immune.description>Rarely sick, and recovers fast when sick. Immunity gain speed ×2, rest recovery ×1.3, wound healing ×1.2. One of three Resilient choices. Grants +1 Constitution.</LP_Feat_Resilient_Immune.description>
+  <!-- 厨师 -->
+  <LP_Feat_Chef.label>chef</LP_Feat_Chef.label>
+  <!-- 厨艺出众。烹饪速度 ×1.25；做饭时 35% 多做出一份“点心”（吃了心情 +5，6 小时伤口愈合 +25%）。需要烹饪 6。附带体质或感知 +1。 -->
+  <LP_Feat_Chef.description>An outstanding cook. Cooking speed ×1.25; 35% chance to make an extra "snack" when cooking (mood +5, +25% wound healing for 6 hours). Requires Cooking 6. Grants +1 Constitution or Wisdom.</LP_Feat_Chef.description>
+  <!-- 毒师 -->
+  <LP_Feat_Poisoner.label>poisoner</LP_Feat_Poisoner.label>
+  <!-- 懂得用草药调毒。能力“武器涂毒”：消耗 1 份草药（身上或地图上的），之后 20 次近战命中附加蛛后之毒。需要手工或医疗 6。附带敏捷或智力 +1。 -->
+  <LP_Feat_Poisoner.description>Knows how to brew poison from herbs. Ability "Coat weapon in poison": uses 1 herbal medicine (carried or on the map), then the next 20 melee hits apply spider queen venom. Requires Crafting or Medicine 6. Grants +1 Dexterity or Intelligence.</LP_Feat_Poisoner.description>
+  <!-- 仪式施法者 -->
+  <LP_Feat_RitualCaster.label>ritual caster</LP_Feat_RitualCaster.label>
+  <!-- 会用仪式补回耗尽的法术。能力“仪式施放”（每天 2 次）：站着引导 1 小时，冷却剩得最久的那个能力立刻冷却完毕，并且之后 1 小时内下一次施法不进冷却、不加心灵熵。需要智力或感知 13，且有施法职业或圣徽。附带智力或感知 +1。 -->
+  <LP_Feat_RitualCaster.description>Uses rituals to restore spent spells. Ability "Ritual casting" (2 per day): channel standing for 1 hour; the ability with the longest remaining cooldown finishes cooling down at once, and for 1 hour afterwards the next cast triggers no cooldown and adds no neural heat. Requires Intelligence or Wisdom 13 and a spellcasting class or holy symbol. Grants +1 Intelligence or Wisdom.</LP_Feat_RitualCaster.description>
+  <!-- 矮人坚毅 -->
+  <LP_Feat_DwarvenFortitude.label>dwarven fortitude</LP_Feat_DwarvenFortitude.label>
+  <!-- 矮人的身子骨。毒素抗性 +70%，疼痛休克阈值 +10%；每天第一次喝酒后立刻治好 60 点伤口。只有山地矮人、丘陵矮人能选。附带体质 +1。 -->
+  <LP_Feat_DwarvenFortitude.description>A dwarf's constitution. Toxic resistance +70%, pain shock threshold +10%; the first drink each day instantly heals 60 points of wounds. Mountain and hill dwarves only. Grants +1 Constitution.</LP_Feat_DwarvenFortitude.description>
+  <!-- 炼狱之怒 -->
+  <LP_Feat_InfernalWrath.label>infernal wrath</LP_Feat_InfernalWrath.label>
+  <!-- 挨打只会让血里的火烧得更旺。被敌人攻击后，下一次攻击额外造成 15 + 冒险者等级点火焰伤害（5 秒冷却）。只有提夫林、阿斯莫能选。附带魅力 +1。 -->
+  <LP_Feat_InfernalWrath.description>Getting hit only makes the fire in the blood burn hotter. After being attacked by an enemy, the next attack deals an extra 15 + adventurer level fire damage (5 second cooldown). Tieflings and aasimar only. Grants +1 Charisma.</LP_Feat_InfernalWrath.description>
+  <!-- 精灵精准 -->
+  <LP_Feat_ElvenAccuracy.label>elven accuracy</LP_Feat_ElvenAccuracy.label>
+  <!-- 精灵的眼睛从不失手。射击精度 ×1.15；卓尔在黑暗中、高等精灵与木精灵在白天再 ×1.1。只有高等精灵、木精灵、卓尔精灵能选。附带敏捷 +1。 -->
+  <LP_Feat_ElvenAccuracy.description>Elven eyes never miss. Shooting accuracy ×1.15; another ×1.1 for drow in darkness and for high elves and wood elves in daylight. High elves, wood elves and drow only. Grants +1 Dexterity.</LP_Feat_ElvenAccuracy.description>
+  <!-- 熔岩之握 -->
+  <LP_Feat_MagmaGrip.label>lava grip</LP_Feat_MagmaGrip.label>
+  <!-- 拳头里流着熔岩。徒手和锤、棒类近战命中 50% 点燃目标。只有火巨人能选。附带力量 +1。 -->
+  <LP_Feat_MagmaGrip.description>Lava flows in the fists. Unarmed and hammer/club melee hits have a 50% chance to ignite the target. Fire giants only. Grants +1 Strength.</LP_Feat_MagmaGrip.description>
+  <!-- 嗜血再生 -->
+  <LP_Feat_BloodRegen.label>bloodthirsty regeneration</LP_Feat_BloodRegen.label>
+  <!-- 鲜血让伤口愈合得更快。近战击杀敌人后立刻治好 60 点伤口（和狂暴可以叠加）。只有巨魔能选。附带体质 +1。 -->
+  <LP_Feat_BloodRegen.description>Blood makes wounds heal faster. After a melee kill, instantly heal 60 points of wounds (stacks with rampage). Trolls only. Grants +1 Constitution.</LP_Feat_BloodRegen.description>
+  <!-- 命匣之誓 -->
+  <LP_Feat_PhylacteryOath.label>phylactery oath</LP_Feat_PhylacteryOath.label>
+  <!-- 灵魂被誓言钉在命匣上。在命匣所在的地图上，即死效果（死亡律令之类上千点的一击、被砍掉头）改为倒地。只有巫妖能选。附带智力 +1。 -->
+  <LP_Feat_PhylacteryOath.description>The soul is nailed to the phylactery by an oath. On the map where the phylactery is, instant-death effects (thousand-point hits like Power Word Kill, decapitation) down you instead. Liches only. Grants +1 Intelligence.</LP_Feat_PhylacteryOath.description>
+  <!-- 好运连连 -->
+  <LP_Feat_BountifulLuck.label>streak of luck</LP_Feat_BountifulLuck.label>
+  <!-- 好运会传染。半身人的幸运冷却 3 天 → 1 天；触发时 3 格内一个友军也得到一次“借来的好运”（下一次会致倒地或死亡的伤只剩 10%）。只有半身人能选。附带敏捷 +1。 -->
+  <LP_Feat_BountifulLuck.description>Luck is contagious. Halfling luck cooldown 3 days → 1 day; when it triggers, one ally within 3 cells also gets "borrowed luck" (the next wound that would down or kill takes only 10%). Halflings only. Grants +1 Dexterity.</LP_Feat_BountifulLuck.description>
+  <!-- 侏儒机巧 -->
+  <LP_Feat_GnomishCunning.label>gnomish ingenuity</LP_Feat_GnomishCunning.label>
+  <!-- 侏儒的脑子转得飞快。心智抗性 +35%；做发条玩具和机械类物品（零部件、机械制品）时一般劳动速度 ×1.4。只有岩侏儒、森林侏儒、地侏能选。附带智力 +1。 -->
+  <LP_Feat_GnomishCunning.description>A gnome's mind turns fast. Mind resistance +35%; general labor speed ×1.4 when making clockwork toys and mechanical items (components, mechanical goods). Rock gnomes, forest gnomes and deep gnomes only. Grants +1 Intelligence.</LP_Feat_GnomishCunning.description>
+</LanguageData>

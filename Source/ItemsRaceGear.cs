@@ -18,7 +18,7 @@ namespace LichPhylactery {
   public static string CannotCraft(RecipeDef recipe,Pawn p){
    var ext=recipe?.ProducedThingDef?.GetModExtension<RaceGearExtension>()??recipe?.GetModExtension<RaceGearExtension>();
    if(ext?.race==null || Items.Is(p,ext.race))return null;
-   return "只有"+Items.RaceLabel(ext.race)+"才能制作"+(recipe.ProducedThingDef?.label??recipe.label)+"。";
+   return "只有".Loc()+Items.RaceLabel(ext.race)+"才能制作".Loc()+(recipe.ProducedThingDef?.label??recipe.label)+"。".Loc();
   }
   // 夺心魔触须披风：同地图有人穿着它时，其他非夺心魔殖民者 -2 心情（不叠加）。按地图缓存，每250刻重算。
   static readonly Dictionary<int,(int tick,bool any)> cloakCensus=new Dictionary<int,(int,bool)>();
@@ -78,11 +78,11 @@ namespace LichPhylactery {
   public CompProperties_ItemAbility Props=>(CompProperties_ItemAbility)props;
   Pawn Caster=>parent.pawn;
   public string Invalid(LocalTargetInfo target){
-   var map=Caster?.Map;if(map==null)return "施法者不在地图上。";
+   var map=Caster?.Map;if(map==null)return "施法者不在地图上。".Loc();
    switch(Props.effect){
     case "speed":return null;
    }
-   return "未知的能力。";
+   return "未知的能力。".Loc();
   }
   public override bool Valid(LocalTargetInfo target,bool throwMessages=false){string reason=Invalid(target);if(reason!=null && throwMessages)Messages.Message(reason,MessageTypeDefOf.RejectInput,false);return reason==null && base.Valid(target,throwMessages);}
   public override void Apply(LocalTargetInfo target,LocalTargetInfo dest){

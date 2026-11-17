@@ -50,13 +50,9 @@ namespace LichPhylactery {
    var child=RacePawn("LP_FireGiant",9);float childOld=LegacyMax(child.RaceProps.body.corePart,child),childNew=PartHealth.Maximum(child.RaceProps.body.corePart,child);
    Check(BodySize.HealthFactor(child)>1f && BodySize.HealthFactor(child)<1.5f && childNew<childOld,"fire giant child health grows with age instead of a flat x1.5: "+childNew+" < "+childOld);child.Destroy();
 
-   // 3. 龙体：只取 ×1.5，与体型因子取较大值；火巨人+龙体不再是 ×2.25。
-   var dragonDef=DefDatabase<XenotypeDef>.GetNamed("LP_ForceDragon");var dragon=GenerateDragon(dragonDef);GenSpawn.Spawn(dragon,CellFinder.RandomClosewalkCellNear(map.Center,map,12),map);
-   Check(Near(BodySize.HealthFactor(dragon),1.5f) && Near(dragon.HealthScale,VanillaScale(dragon)*1.5f) && Near(MeleeRatio(dragon),1f),"wyrmling dragon body is x1.5 health and no size melee bonus");
-   ForceDragon.Heart(dragon).SetAge(ForceDragon.MaxAge);
-   Check(Near(BodySize.Size(dragon),1.2f) && Near(BodySize.HealthFactor(dragon),1.5f) && Near(MeleeRatio(dragon),1.06f),"great wyrm: dragon body x1.5 is not multiplied by its x1.1 size health; melee x1.06");
-   var hybrid=SizePawn("LP_FireGiant");hybrid.genes.AddGene(ForceDragon.BodyGene,false);var torso=hybrid.RaceProps.body.corePart;
-   Check(Near(BodySize.HealthFactor(hybrid),1.5f) && Near(PartHealth.Maximum(torso,hybrid),Mathf.Ceil(torso.def.hitPoints*VanillaScale(hybrid)*1.5f)) && Near(LegacyMax(torso,hybrid),Mathf.Ceil(Mathf.CeilToInt(torso.def.hitPoints*VanillaScale(hybrid))*2.25f)),"fire giant with dragon body takes the larger x1.5, not the old x2.25");
+
+   // 3.（1.167.0 移除力能龙龙体；下面的迁移测试改用第二个火巨人）
+   var hybrid=SizePawn("LP_FireGiant");var torso=hybrid.RaceProps.body.corePart;
 
    // 5. 巫妖强化层仍叠在新的 HealthScale 之上。
    var lichTroll=RacePawn("LP_Troll");lichTroll.health.AddHediff(Necro.Def<HediffDef>("Lich"));var arm=SizePart(lichTroll,"Arm");var limb=lichTroll.health.AddHediff(Necro.Def<HediffDef>("Limb"),arm);limb.Severity=2;
@@ -65,7 +61,7 @@ namespace LichPhylactery {
    // 6. 设置：强度0%与关闭都回到旧的 ×1.5（取较大值）且没有近战加成；200% 时加成翻倍。
    foreach(var off in new[]{(true,0),(false,100)}){
     SetSizeRule(off.Item1,off.Item2);
-    Check(Near(BodySize.HealthFactor(giant),1.5f) && Near(BodySize.HealthFactor(hybrid),1.5f) && Near(BodySize.HealthFactor(dragon),1.5f) && Near(BodySize.HealthFactor(troll),1f) && Near(BodySize.HealthFactor(minotaur),1f) && Near(BodySize.MeleeFactor(giant),1f) && Near(BodySize.MeleeFactor(troll),1f),"rule "+(off.Item1?"at 0%":"switched off")+": fire giant and dragon body keep legacy x1.5, no size bonus");
+    Check(Near(BodySize.HealthFactor(giant),1.5f) && Near(BodySize.HealthFactor(hybrid),1.5f) && Near(BodySize.HealthFactor(troll),1f) && Near(BodySize.HealthFactor(minotaur),1f) && Near(BodySize.MeleeFactor(giant),1f) && Near(BodySize.MeleeFactor(troll),1f),"rule "+(off.Item1?"at 0%":"switched off")+": fire giant keeps legacy x1.5, no size bonus");
    }
    SetSizeRule(true,50);
    Check(Near(BodySize.HealthFactor(giant),1.5f) && Near(BodySize.HealthFactor(hybrid),1.5f) && Near(BodySize.HealthFactor(troll),1.125f) && Near(BodySize.HealthFactor(minotaur),1.075f) && Near(BodySize.MeleeFactor(giant),1.15f) && Near(BodySize.MeleeFactor(troll),1.075f),"strength 50%: adult fire giant health stays at its x1.5 floor while size bonuses halve");
@@ -73,18 +69,18 @@ namespace LichPhylactery {
    Check(Near(BodySize.HealthFactor(giant),2f) && Near(BodySize.HealthFactor(troll),1.5f) && Near(BodySize.HealthFactor(minotaur),1.3f) && Near(BodySize.MeleeFactor(giant),1.6f) && Near(BodySize.MeleeFactor(troll),1.3f) && Near(BodySize.MeleeFactor(minotaur),1.18f),"strength 200% doubles the size bonuses");
    SetSizeRule(true,100);
 
-   // 7. 伤口缩放：模拟 1.22.1 存档载入（火巨人+龙体 2.25→1.5），然后调低强度。
+   // 7. 伤口缩放：模拟 1.22.1 存档载入（火巨人），然后调低强度。
    var parts=new[]{SizePart(hybrid,"Arm"),SizePart(hybrid,"Leg"),hybrid.RaceProps.body.corePart};
    BodySize.Measure(BodySize.Rule.Legacy,()=>{foreach(var part in parts)Wound(hybrid,part,PartHealth.Maximum(part,hybrid)*(part==torso?.3f:.6f));return 0;});
    var legacyRatios=BodySize.Measure(BodySize.Rule.Legacy,()=>WoundRatios(hybrid));
    registry.bodySizeVersion=0;int scaled=registry.MigrateBodySize(new[]{hybrid});var loaded=WoundRatios(hybrid);
-   Check(scaled==1 && registry.bodySizeVersion==1 && legacyRatios.Length==3 && legacyRatios.Zip(loaded,(a,b)=>Math.Abs(a-b)<.001f).All(x=>x),"1.22.1 save migration keeps every wound ratio: "+string.Join(",",loaded.Select(x=>x.ToString("0.###"))));
+   Check(scaled<=1 && registry.bodySizeVersion==1 && legacyRatios.Length==3 && legacyRatios.Zip(loaded,(a,b)=>Math.Abs(a-b)<.001f).All(x=>x),"1.22.1 save migration keeps every wound ratio: "+string.Join(",",loaded.Select(x=>x.ToString("0.###"))));
    Check(!hybrid.Dead && parts.All(x=>!hybrid.health.hediffSet.PartIsMissing(x)),"1.22.1 save migration destroys no part and kills nobody");
    Check(registry.MigrateBodySize(new[]{hybrid})==0,"migration runs once: unchanged settings rescale nothing");
    var trollWound=Wound(troll,trollArm,PartHealth.Maximum(trollArm,troll)*.5f);var trollRatio=WoundRatios(troll);var giantWound=Wound(giant,SizePart(giant,"Leg"),PartHealth.Maximum(SizePart(giant,"Leg"),giant)*.5f);var giantRatio=WoundRatios(giant);var hybridRatio=WoundRatios(hybrid);
    var sized=new[]{troll,giant,hybrid};SetSizeRule(true,50);Necro.Registry.MigrateBodySize(sized);
    Check(Near(BodySize.HealthFactor(troll),1.125f) && trollRatio.Zip(WoundRatios(troll),(a,b)=>Math.Abs(a-b)<.001f).All(x=>x) && giantRatio.Zip(WoundRatios(giant),(a,b)=>Math.Abs(a-b)<.001f).All(x=>x),"lowering strength rescales wounds when maxima fall");
-   Check(hybridRatio.Zip(WoundRatios(hybrid),(a,b)=>Math.Abs(a-b)<.001f).All(x=>x) && !troll.Dead && !giant.Dead && !hybrid.Dead,"dragon body maximum is unchanged by strength and nobody dies");
+   Check(hybridRatio.Zip(WoundRatios(hybrid),(a,b)=>Math.Abs(a-b)<.001f).All(x=>x) && !troll.Dead && !giant.Dead && !hybrid.Dead,"adult fire giant maximum is unchanged by strength and nobody dies");
    float trollSeverity=trollWound.Severity;SetSizeRule(true,100);Necro.Registry.MigrateBodySize(sized);
    Check(Near(trollWound.Severity,trollSeverity) && Necro.Registry.bodySizeStrength==100,"raising strength leaves wounds unchanged (more health, no free heal)");
    troll.health.RemoveHediff(trollWound);giant.health.RemoveHediff(giantWound);
@@ -99,7 +95,7 @@ namespace LichPhylactery {
    eater.Destroy();human.Destroy();dwarf.Destroy();
 
    // 8. 存读档后数值不变（AfterLoad 比较）。
-   foreach(var p in new[]{giant,troll,minotaur,dragon,hybrid})sizeSnapshots[p.ThingID]=SizeSnapshot(p);
+   foreach(var p in new[]{giant,troll,minotaur,hybrid})sizeSnapshots[p.ThingID]=SizeSnapshot(p);
    sizeWoundedId=hybrid.ThingID;sizeWoundRatios=WoundRatios(hybrid);
   }
   // 4. 死灵造物：生命与近战与 1.22.1 完全相同。

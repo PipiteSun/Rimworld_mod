@@ -57,7 +57,7 @@ namespace LichPhylactery {
    if(p==null || p.Dead || p.Downed || !Has(p,FRelentless))return false;
    var r=Rage(p);if(r==null || r.relentlessUsed || Items.Has(p,relentlessDef.Def) || !ClassCasters.WouldDown(p))return false;
    r.relentlessUsed=true;Items.Give(p,"LP_RelentlessRageActive",RelentlessTicks);
-   Items.Mote(p,"不灭之怒",RageColor);
+   Items.Mote(p,"不灭之怒".Loc(),RageColor);
    return true;
   }
   public static bool Holding(Pawn p)=>Martial.Cache.Count>0 && Martial.Is(p) && Items.Has(p,relentlessDef.Def);
@@ -66,7 +66,7 @@ namespace LichPhylactery {
   public const int Humanoid=1<<10,Construct=1<<11;
   public const float FavoredDamage=.2f,FavoredHit=.2f,FoeBaneDamage=.15f,MarkPer=.15f,AmbushFactor=1.5f,BondDamage=.2f;
   public static readonly int[] FoeTypes={(int)DndType.Dragon,(int)DndType.Giant,(int)DndType.Undead,(int)DndType.Fiend,(int)DndType.Aberration,(int)DndType.Beast,(int)DndType.Divine,Humanoid,Construct};
-  public static string FoeLabel(int t)=>t==Humanoid?"人形":t==Construct?"机械体":DndCreatureType.Label((DndType)t);
+  public static string FoeLabel(int t)=>t==Humanoid?"人形".Loc():t==Construct?"机械体".Loc():DndCreatureType.Label((DndType)t);
   public static bool FoeMatches(int t,Pawn v){
    if(v?.RaceProps==null)return false;
    if(t==Humanoid)return v.RaceProps.Humanlike;
@@ -123,21 +123,21 @@ namespace LichPhylactery {
    bool hostile=v.HostileTo(a);
    if(i.barbarian>0){
     if(hostile)GainRage(a,RageDealt);
-    if((i.flags & FBrutal)!=0 && Melee(d) && Roll<(Raging(a)?CritRaging:CritChance)){f*=2f;Items.Mote(v,"重击",RageColor);}
+    if((i.flags & FBrutal)!=0 && Melee(d) && Roll<(Raging(a)?CritRaging:CritChance)){f*=2f;Items.Mote(v,"重击".Loc(),RageColor);}
    }
    if(i.ranger>0){
     if(Favored(a,v))f*=1f+FavoredDamage*FavoredFactor(a)+((i.flags & FFoeBane)!=0?FoeBaneDamage:0f);
-    if(Items.Has(a,"LP_HideInPlain")){if(!ClassSubclass.Unsurprisable(v))f*=AmbushFactor;Items.Remove(a,"LP_HideInPlain");Items.Mote(a,"伏击",HuntColor);}
+    if(Items.Has(a,"LP_HideInPlain")){if(!ClassSubclass.Unsurprisable(v))f*=AmbushFactor;Items.Remove(a,"LP_HideInPlain");Items.Mote(a,"伏击".Loc(),HuntColor);}
    }
    var mark=Mark(v,"LP_RangerMark");if(mark!=null && mark.caster==a)f*=1f+MarkPer*mark.Severity;
    if(i.rogue>0){
     var dm=Mark(v,"LP_DeathMark");if(dm!=null && dm.caster==a)f*=2f;
     bool open=hostile && ClassSubclass.Opening(a,v); // 子职业·刺客 暗杀：重击 ×2 并必定偷袭
-    if(open){f*=2f;Items.Mote(v,"暗杀",ShadowColor);}
+    if(open){f*=2f;Items.Mote(v,"暗杀".Loc(),ShadowColor);}
     if(hostile && (i.flags & FSneak)!=0 && !ClassSubclass.Unsurprisable(v) && (open || SneakReady(a) && SneakOk(a,v))){
      var s=DefCache<StatDef>.Get("LP_CunningPower");f*=1f+SneakBonus(i.rogue,s==null?1f:a.GetStatValue(s));
      if(ClassSubclass.S(a,ClassSubclass.SDeadly) && ClassSubclass.Controlled(v))f*=ClassSubclass.DeadlyFactor; // 致命一击
-     lastSneak[a.thingIDNumber]=Find.TickManager.TicksGame;Items.Mote(v,"偷袭",ShadowColor);
+     lastSneak[a.thingIDNumber]=Find.TickManager.TicksGame;Items.Mote(v,"偷袭".Loc(),ShadowColor);
      if(LakeArcana.Touched && LakeArcana.Has(a,"CripplingStab"))Items.Give(v,"LP_ACB_Crippled",1800); // 1.100.0 致残刺
     }
     if(luckCrit.Remove(a.thingIDNumber))f*=2f;
@@ -156,10 +156,10 @@ namespace LichPhylactery {
     if((cat=="Sharp" || cat=="Blunt") && Raging(v))f*=RageReduction;
     if((i.flags & FDanger)!=0 && !v.Downed){
      if(d.Def.isExplosive)f*=ExplosionFactor;
-     else if(ForceDragon.IsRanged(d) && Roll<DangerChance(v)){Items.Mote(v,"闪开",RageColor);return -1f;}
+     else if(AttackKind.IsRanged(d) && Roll<DangerChance(v)){Items.Mote(v,"闪开".Loc(),RageColor);return -1f;}
     }
    }
-   if(i.rogue>0 && (i.flags & FUncanny)!=0 && ForceDragon.IsRanged(d)){var h=Adventurer.Get(v);if(Ready(h,"uncanny",UncannyTicks)){Use(h,"uncanny");f*=.5f;Items.Mote(v,"诡诈闪避",ShadowColor);}}
+   if(i.rogue>0 && (i.flags & FUncanny)!=0 && AttackKind.IsRanged(d)){var h=Adventurer.Get(v);if(Ready(h,"uncanny",UncannyTicks)){Use(h,"uncanny");f*=.5f;Items.Mote(v,"诡诈闪避".Loc(),ShadowColor);}}
    if(ClassSubclass.Users.Count>0){float g=ClassSubclass.In(v,a,d);if(g<0f)return -1f;f*=g;} // 子职业
    return f;
   }
@@ -182,20 +182,20 @@ namespace LichPhylactery {
   public static bool Apply(Pawn p,AbilityDef def,CompProperties_ClassEffect e,LocalTargetInfo target){
    var t=target.Thing as Pawn;float s=ClassEffects.Strength(p,e);
    switch(e.effect){
-    case "Rage":{var r=Items.Give(p,"LP_Rage",ClassEffects.Duration(p,e),s) as Hediff_Rage;if(r!=null){r.Severity=s;r.relentlessUsed=false;}Items.Mote(p,"狂暴",RageColor);return true;}
+    case "Rage":{var r=Items.Give(p,"LP_Rage",ClassEffects.Duration(p,e),s) as Hediff_Rage;if(r!=null){r.Severity=s;r.relentlessUsed=false;}Items.Mote(p,"狂暴".Loc(),RageColor);return true;}
     case "PrimalRoar":PrimalRoar(p,ClassEffects.Radius(p,e),ClassEffects.Duration(p,e),s);return true;
     case "EarthShatter":EarthShatter(p,ClassEffects.Radius(p,e),ClassEffects.Power(p,e));return true;
-    case "HuntersMark":if(t!=null && !t.Dead && t.HostileTo(p))MarkTarget(p,t,"LP_RangerMark",ClassEffects.Duration(p,e),s,HuntColor,"猎人印记");return true;
-    case "DeathMark":if(t!=null && !t.Dead && t.HostileTo(p))MarkTarget(p,t,"LP_DeathMark",ClassEffects.Duration(p,e),s,ShadowColor,"死亡印记");return true;
-    case "Volley":Volley(p,target.Cell,e.radius,6,1,ClassEffects.Power(p,e));Items.Mote(p,"齐射",HuntColor);return true;
-    case "ArrowStorm":Volley(p,target.Cell,e.radius,10,3,ClassEffects.Power(p,e));Items.Mote(p,"万箭齐发",HuntColor);return true;
+    case "HuntersMark":if(t!=null && !t.Dead && t.HostileTo(p))MarkTarget(p,t,"LP_RangerMark",ClassEffects.Duration(p,e),s,HuntColor,"猎人印记".Loc());return true;
+    case "DeathMark":if(t!=null && !t.Dead && t.HostileTo(p))MarkTarget(p,t,"LP_DeathMark",ClassEffects.Duration(p,e),s,ShadowColor,"死亡印记".Loc());return true;
+    case "Volley":Volley(p,target.Cell,e.radius,6,1,ClassEffects.Power(p,e));Items.Mote(p,"齐射".Loc(),HuntColor);return true;
+    case "ArrowStorm":Volley(p,target.Cell,e.radius,10,3,ClassEffects.Power(p,e));Items.Mote(p,"万箭齐发".Loc(),HuntColor);return true;
     case "Assassinate":if(t!=null && !t.Dead && t.HostileTo(p))Assassinate(p,t,s);return true;
    }
    return false;
   }
   public static string Invalid(Pawn caster,CompProperties_ClassEffect e,LocalTargetInfo target){
    switch(e.effect){
-    case "HuntersMark":case "DeathMark":case "Assassinate":{var t=target.Thing as Pawn;if(t==null || t.Dead)return "需要选择一个活着的目标。";if(!t.HostileTo(caster))return "只能对敌人使用。";return null;}
+    case "HuntersMark":case "DeathMark":case "Assassinate":{var t=target.Thing as Pawn;if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();if(!t.HostileTo(caster))return "只能对敌人使用。".Loc();return null;}
    }
    return null;
   }
@@ -205,9 +205,9 @@ namespace LichPhylactery {
    foreach(var t in Races124.PawnsNear(p.Map,p.Position,radius).ToList()){
     if(t==p || t.Dead || !t.HostileTo(p))continue;
     Items.Give(t,"LP_Shaken",ticks,s);
-    if(!t.Downed && !Boss(t) && (t.RaceProps.Humanlike || t.RaceProps.Animal) && Roll<chance && t.mindState?.mentalStateHandler!=null && t.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.PanicFlee,"野性怒吼",true))fled++;
+    if(!t.Downed && !Boss(t) && (t.RaceProps.Humanlike || t.RaceProps.Animal) && Roll<chance && t.mindState?.mentalStateHandler!=null && t.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.PanicFlee,"野性怒吼".Loc(),true))fled++;
    }
-   Items.Mote(p,"野性怒吼",RageColor);
+   Items.Mote(p,"野性怒吼".Loc(),RageColor);
    return fled;
   }
   public static int EarthShatter(Pawn p,float radius,float amount){
@@ -218,7 +218,7 @@ namespace LichPhylactery {
     if(!t.Dead)t.stances?.stunner?.StunFor(180,p);
    }
    FleckMaker.ThrowDustPuffThick(p.DrawPos,map,4f,new Color(.55f,.45f,.35f));
-   Items.Mote(p,"大地崩裂",RageColor);
+   Items.Mote(p,"大地崩裂".Loc(),RageColor);
    return n;
   }
   public static Hediff_ClassMark MarkTarget(Pawn caster,Pawn t,string name,int ticks,float s,Color c,string label){
@@ -239,7 +239,7 @@ namespace LichPhylactery {
    float f=AssassinFactor(p,t,s);
    Items.Give(p,"LP_AssassinStrike",60,f);
    try{ClassMelee.Strike(p,t);}finally{Items.Remove(p,"LP_AssassinStrike");}
-   Items.Mote(t,f>AssassinAware?"刺杀":"突刺",ShadowColor);
+   Items.Mote(t,f>AssassinAware?"刺杀".Loc():"突刺".Loc(),ShadowColor);
   }
   public static int ResetRogue(Pawn p){
    var list=p?.abilities?.abilities;if(list==null)return 0;int n=0;var r=Rogue;
@@ -249,8 +249,8 @@ namespace LichPhylactery {
 
   // ---------- 分页说明 ----------
   public static void Lines(Pawn p,MartialInfo i,List<string> list){
-   if(i.ranger>0){var h=Adventurer.Get(p);var l=h?.classes?.favored;list.Add("宿敌："+(l==null || l.Count==0?"未选择":string.Join("、",l.Select(FoeLabel)))+(OpenFoeSlots(h)>0?"（还能选 "+OpenFoeSlots(h)+" 种）":"")+"|宿敌（游侠 1 级，"+SecondFoeLevel+" 级再选一种）：对它伤害 +"+(FavoredDamage*FavoredFactor(p)).ToStringPercent()+"、近战命中 +"+(FavoredHit*FavoredFactor(p)).ToStringPercent()+"、射击命中 ×"+(1f+FavoredHit*FavoredFactor(p)).ToString("0.0#")+"。");}
-   if(i.rogue>0){var s=DefCache<StatDef>.Get("LP_CunningPower");list.Add("偷袭：伤害 +"+SneakBonus(i.rogue,s==null?1f:p.GetStatValue(s)).ToStringPercent()+"|偷袭（游荡者）：目标倒地、被击晕、逃跑、没把你当目标，或身边有你的友军时触发，每秒最多一次。伤害 ×(1 + (0.2 + 0.03 ×（游荡者等级 − 1）) × 诡术强度)。");}
+   if(i.ranger>0){var h=Adventurer.Get(p);var l=h?.classes?.favored;list.Add("宿敌：".Loc()+(l==null || l.Count==0?"未选择".Loc():string.Join("、".Loc(),l.Select(FoeLabel)))+(OpenFoeSlots(h)>0?"（还能选 ".Loc()+OpenFoeSlots(h)+" 种）".Loc():"")+"|宿敌（游侠 1 级，".Loc()+SecondFoeLevel+" 级再选一种）：对它伤害 +".Loc()+(FavoredDamage*FavoredFactor(p)).ToStringPercent()+"、近战命中 +".Loc()+(FavoredHit*FavoredFactor(p)).ToStringPercent()+"、射击命中 ×".Loc()+(1f+FavoredHit*FavoredFactor(p)).ToString("0.0#")+"。".Loc());}
+   if(i.rogue>0){var s=DefCache<StatDef>.Get("LP_CunningPower");list.Add("偷袭：伤害 +".Loc()+SneakBonus(i.rogue,s==null?1f:p.GetStatValue(s)).ToStringPercent()+"|偷袭（游荡者）：目标倒地、被击晕、逃跑、没把你当目标，或身边有你的友军时触发，每秒最多一次。伤害 ×(1 + (0.2 + 0.03 ×（游荡者等级 − 1）) × 诡术强度)。".Loc());}
   }
  }
 
@@ -277,8 +277,8 @@ namespace LichPhylactery {
   // 1.124.0 UI 整理：统一标题；选项区可滚动（小屏幕下九个按钮不会压到关闭按钮）。
   public override void DoWindowContents(Rect r){
    var h=Adventurer.Get(pawn);if(h?.classes==null){Close();return;}
-   float y=LPUI.Title(r,pawn.LabelShort+" 的宿敌");int open=ClassMartial2.OpenFoeSlots(h);
-   LPUI.LabelFit(new Rect(r.x,y,r.width,LPUI.RowH),open>0?"还能选 "+open+" 种（选定后不能更改）":"宿敌已经选满");y+=LPUI.RowH+4f;
+   float y=LPUI.Title(r,pawn.LabelShort+" 的宿敌".Loc());int open=ClassMartial2.OpenFoeSlots(h);
+   LPUI.LabelFit(new Rect(r.x,y,r.width,LPUI.RowH),open>0?"还能选 ".Loc()+open+" 种（选定后不能更改）".Loc():"宿敌已经选满".Loc());y+=LPUI.RowH+4f;
    var outRect=new Rect(r.x,y,r.width,r.yMax-y);float need=ClassMartial2.FoeTypes.Length*34f;
    var view=new Rect(0f,0f,outRect.width-(need>outRect.height?LPUI.ScrollBarW:0f),need);
    Widgets.BeginScrollView(outRect,ref scroll,view);
@@ -286,7 +286,7 @@ namespace LichPhylactery {
     float by=0f;
     foreach(var t in ClassMartial2.FoeTypes){
      bool have=h.classes.favored.Contains(t);var b=new Rect(0f,by,view.width,30f);
-     if(Widgets.ButtonText(b,ClassMartial2.FoeLabel(t)+(have?"（已选）":""),active:!have && open>0) && !have && open>0){ClassMartial2.PickFoe(h,t);Messages.Message(pawn.LabelShort+"把"+ClassMartial2.FoeLabel(t)+"定为宿敌。",pawn,MessageTypeDefOf.PositiveEvent,false);if(ClassMartial2.OpenFoeSlots(h)<=0)Close();}
+     if(Widgets.ButtonText(b,ClassMartial2.FoeLabel(t)+(have?"（已选）".Loc():""),active:!have && open>0) && !have && open>0){ClassMartial2.PickFoe(h,t);Messages.Message(pawn.LabelShort+"把".Loc()+ClassMartial2.FoeLabel(t)+"定为宿敌。".Loc(),pawn,MessageTypeDefOf.PositiveEvent,false);if(ClassMartial2.OpenFoeSlots(h)<=0)Close();}
      by+=34f;
     }
    }finally{Widgets.EndScrollView();LPUI.Reset();}
@@ -331,7 +331,7 @@ namespace LichPhylactery {
    if(b!=0f)__result=Mathf.Clamp01(__result+b);
    if(__result<1f && ClassMartial2.LuckReady(a) && Rand.Value>=__result){
     var h=Adventurer.Get(a);h.classes.legendaryTicks["luck"]=Math.Max(1,Find.TickManager.TicksGame);ClassMartial2.luckCrit.Add(a.thingIDNumber);__result=1f;
-    Items.Mote(a,"幸运一击",ClassMartial2.ShadowColor);
+    Items.Mote(a,"幸运一击".Loc(),ClassMartial2.ShadowColor);
    }
   }
  }
@@ -385,7 +385,7 @@ namespace LichPhylactery {
   static void Postfix(Pawn __instance){
    if(!__instance.Dead || Martial.Cache.Count==0)return;
    var m=ClassMartial2.Mark(__instance,"LP_DeathMark");var c=m?.caster;if(c==null || c.Dead)return;
-   if(ClassMartial2.ResetRogue(c)>0)Items.Mote(c,"死亡印记",ClassMartial2.ShadowColor);
+   if(ClassMartial2.ResetRogue(c)>0)Items.Mote(c,"死亡印记".Loc(),ClassMartial2.ShadowColor);
   }
  }
  // 动物伙伴（1.70.0 野性等级）：主人是游侠也算。

@@ -34,13 +34,13 @@ namespace LichPhylactery {
    GenSpawn.Spawn(e,CellFinder.RandomClosewalkCellNear(s.PositionHeld,map,3),map);
    AbyssBinding.Bind(e,s,100f);AbyssBinding.SetLevel(e,Mathf.RoundToInt(boon.count*(p.boonFactor>1f?1.1f:1f)),true);
    Items.Give(e,"LP_PactBound");p.bound=e;
-   Find.LetterStack.ReceiveLetter("艾林魔："+e.LabelShort,"一名艾林魔从硫磺烟里走出来，在"+s.LabelShort+"面前单膝跪下："+e.gender.GetPronoun()+"是阿斯莫蒂尔斯借给签约人的复仇者，会终身跟随"+s.LabelShort+"。九狱的造物守契约：它不会挣脱束缚。",LetterDefOf.PositiveEvent,e);
+   Find.LetterStack.ReceiveLetter("艾林魔：".Loc()+e.LabelShort,"一名艾林魔从硫磺烟里走出来，在".Loc()+s.LabelShort+"面前单膝跪下：".Loc()+e.gender.GetPronoun()+"是阿斯莫蒂尔斯借给签约人的复仇者，会终身跟随".Loc()+s.LabelShort+"。九狱的造物守契约：它不会挣脱束缚。".Loc(),LetterDefOf.PositiveEvent,e);
   }
   public override void OnEnd(PlanarPact p){
    var e=p.bound;p.bound=null;if(e==null || e.Dead || e.Destroyed || !Outsiders.Bound(e))return;
    if(e.Spawned){Outsiders.DropBelongings(e,e.Position,e.Map);for(int i=0;i<6;i++)FleckMaker.ThrowSmoke(e.DrawPos,e.Map,2f);e.DeSpawn();}
    if(Find.WorldPawns.Contains(e))Find.WorldPawns.RemovePawn(e);
-   Messages.Message(e.LabelShort+"回九狱去了（契约结束）。",MessageTypeDefOf.NeutralEvent,false);
+   Messages.Message(e.LabelShort+"回九狱去了（契约结束）。".Loc(),MessageTypeDefOf.NeutralEvent,false);
    e.Destroy();
   }
  }
@@ -52,7 +52,7 @@ namespace LichPhylactery {
    var map=Pacts.HomeOf(p);if(map==null || boon.thing==null)return;int n=Mathf.RoundToInt(boon.count*p.boonFactor);var list=new List<Thing>();
    while(n>0){var t=ThingMaker.MakeThing(boon.thing);t.stackCount=Mathf.Min(n,boon.thing.stackLimit);n-=t.stackCount;list.Add(t);}
    DropPodUtility.DropThingsNear(DropCellFinder.TradeDropSpot(map),map,list,110,false,false,true,false,true,null);
-   Messages.Message(p.patron.label+"送来了"+boon.label+"："+list.Sum(t=>t.stackCount)+" "+boon.thing.label+"。",new TargetInfo(DropCellFinder.TradeDropSpot(map),map),MessageTypeDefOf.PositiveEvent,false);
+   Messages.Message(p.patron.label+"送来了".Loc()+boon.label+"：".Loc()+list.Sum(t=>t.stackCount)+" "+boon.thing.label+"。".Loc(),new TargetInfo(DropCellFinder.TradeDropSpot(map),map),MessageTypeDefOf.PositiveEvent,false);
   }
  }
  // 禁书：每 60 天送来 1 本恶魔学典籍 + 1 张随机耐瑟瑞尔秘术残卷。
@@ -61,10 +61,10 @@ namespace LichPhylactery {
   public override void Tick(PlanarPact p,int now){if(p.nextBoonTick>=0 && now>=p.nextBoonTick){p.nextBoonTick=now+Mathf.RoundToInt(boon.days*GenDate.TicksPerDay);Drop(p);}}
   public static List<Thing> Make(){
    var list=new List<Thing>();if(AbyssItems.Demonomicon!=null)list.Add(ThingMaker.MakeThing(AbyssItems.Demonomicon));
-   try{var s=Netheril.MakeArcane(Netheril.Schools.RandomElement());if(s!=null)list.Add(s);}catch(Exception e){Log.Warning("[DND边缘大陆] 禁书：残卷生成失败 "+e.Message);}
+   try{var s=Netheril.MakeArcane(Netheril.Schools.RandomElement());if(s!=null)list.Add(s);}catch(Exception e){Log.Warning("[DND边缘大陆] 禁书：残卷生成失败 ".Loc()+e.Message);}
    return list;
   }
-  void Drop(PlanarPact p){var map=Pacts.HomeOf(p);if(map==null)return;var list=Make();DropPodUtility.DropThingsNear(DropCellFinder.TradeDropSpot(map),map,list,110,false,false,true,false,true,null);Messages.Message(p.patron.label+"送来了禁书："+string.Join("、",list.Select(t=>t.LabelNoCount))+"。",list.FirstOrDefault(),MessageTypeDefOf.PositiveEvent,false);}
+  void Drop(PlanarPact p){var map=Pacts.HomeOf(p);if(map==null)return;var list=Make();DropPodUtility.DropThingsNear(DropCellFinder.TradeDropSpot(map),map,list,110,false,false,true,false,true,null);Messages.Message(p.patron.label+"送来了禁书：".Loc()+string.Join("、".Loc(),list.Select(t=>t.LabelNoCount))+"。".Loc(),list.FirstOrDefault(),MessageTypeDefOf.PositiveEvent,false);}
  }
  // 铁城工匠：签约人活着、在殖民地地图上时，全殖民地（这张地图的殖民者）建造速度 +25%。
  public class PactBoon_ColonyHediff : PactBoonWorker {
@@ -81,7 +81,7 @@ namespace LichPhylactery {
    var map=Pacts.HomeOf(p);var def=boon.thing??Pacts.ForgeDef;if(map==null || def==null)return;
    var b=ThingMaker.MakeThing(def,def.MadeFromStuff?GenStuff.DefaultStuffFor(def):null);var m=MinifyUtility.MakeMinified(b);
    DropPodUtility.DropThingsNear(DropCellFinder.TradeDropSpot(map),map,new List<Thing>{m},110,false,false,true,false,true,null);
-   Find.LetterStack.ReceiveLetter("地狱铸炉",p.patron.label+"空投了一座未安装的地狱铸炉：烧灵魂币（1 枚 = 1 天），能做符文铁砧的所有配方，速度 ×1.5。",LetterDefOf.PositiveEvent,new TargetInfo(DropCellFinder.TradeDropSpot(map),map));
+   Find.LetterStack.ReceiveLetter("地狱铸炉".Loc(),p.patron.label+"空投了一座未安装的地狱铸炉：烧灵魂币（1 枚 = 1 天），能做符文铁砧的所有配方，速度 ×1.5。".Loc(),LetterDefOf.PositiveEvent,new TargetInfo(DropCellFinder.TradeDropSpot(map),map));
   }
  }
  // 看穿条款：殖民地所有其他契约的隐藏条款自动揭开。
@@ -93,9 +93,9 @@ namespace LichPhylactery {
  public class PactBoon_Unbind : PactBoonWorker {
   public override void OnSign(PlanarPact p){
    var c=Pacts.Comp;var others=c?.Active.Where(x=>x!=p).ToList();
-   if(others==null || others.Count==0){p.periodFactor*=.75f;Messages.Message("殖民地里没有别的契约可以解开：格拉西娅只把代价周期放宽了（×0.75）。",p.signer,MessageTypeDefOf.NeutralEvent,false);return;}
-   if(others.Count==1){Pacts.Unbind(others[0],"格拉西娅的恩赐“解开契约”");p.periodFactor*=.75f;return;}
-   PactLetters.Send("unbind",p,p.signer,null,"解开哪一份契约？","格拉西娅轻轻一笑：殖民地里的哪一份契约，她替你撕掉？");
+   if(others==null || others.Count==0){p.periodFactor*=.75f;Messages.Message("殖民地里没有别的契约可以解开：格拉西娅只把代价周期放宽了（×0.75）。".Loc(),p.signer,MessageTypeDefOf.NeutralEvent,false);return;}
+   if(others.Count==1){Pacts.Unbind(others[0],"格拉西娅的恩赐“解开契约”".Loc());p.periodFactor*=.75f;return;}
+   PactLetters.Send("unbind",p,p.signer,null,"解开哪一份契约？".Loc(),"格拉西娅轻轻一笑：殖民地里的哪一份契约，她替你撕掉？".Loc());
   }
  }
  // 夏日恩泽：有这份契约的殖民地地图作物生长 +30%，种植区作物不因低温枯萎（补丁第一行看缓存的地图集合）。
@@ -105,7 +105,7 @@ namespace LichPhylactery {
  }
  // 夏宫来客：立即得到 1 名萨特或 1 名林仙（选择信件）。
  public class PactBoon_Guest : PactBoonWorker {
-  public override void OnSign(PlanarPact p){PactLetters.Send("guest",p,p.signer,null,"夏宫来客","提泰妮娅说要送一位客人来殖民地常住。来的是谁？\n\n· 萨特：羊角毛腿、爱热闹的乐师，可遗传的凡人。\n· 林仙：和一棵树绑在一起的妖精，种植和驯兽极好，离树太远会憔悴，树死了自己也活不长。");}
+  public override void OnSign(PlanarPact p){PactLetters.Send("guest",p,p.signer,null,"夏宫来客".Loc(),"提泰妮娅说要送一位客人来殖民地常住。来的是谁？\n\n· 萨特：羊角毛腿、爱热闹的乐师，可遗传的凡人。\n· 林仙：和一棵树绑在一起的妖精，种植和驯兽极好，离树太远会憔悴，树死了自己也活不长。".Loc());}
  }
 
  public static class PactBoons {
@@ -127,7 +127,7 @@ namespace LichPhylactery {
    if(!CellFinder.TryFindRandomEdgeCellWith(x=>x.Standable(map) && map.reachability.CanReachColony(x),map,CellFinder.EdgeRoadChance_Neutral,out var cell))cell=CellFinder.RandomClosewalkCellNear(map.Center,map,8);
    GenSpawn.Spawn(g,cell,map);g.workSettings?.EnableAndInitialize();
    if(PactRaces.IsDryad(g)){AbyssBinding.Bind(g,p.signer,100f);PactRaces.BindNearestTree(g);}
-   Find.LetterStack.ReceiveLetter("夏宫来客："+g.LabelShort,"提泰妮娅的客人"+g.LabelShort+"（"+g.genes?.Xenotype?.label+"）到了，作为殖民者加入。",LetterDefOf.PositiveEvent,g);
+   Find.LetterStack.ReceiveLetter("夏宫来客：".Loc()+g.LabelShort,"提泰妮娅的客人".Loc()+g.LabelShort+"（".Loc()+g.genes?.Xenotype?.label+"）到了，作为殖民者加入。".Loc(),LetterDefOf.PositiveEvent,g);
    return g;
   }
   // 治好一名殖民者最严重的一处伤（不含缺失部位）。

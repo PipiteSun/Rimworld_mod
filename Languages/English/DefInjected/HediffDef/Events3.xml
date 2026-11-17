@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 蒙神一顾 -->
+  <LP_E3_DivineGlance.label>noticed by a god</LP_E3_DivineGlance.label>
+  <!-- 施舍过神的化身。神明记得这个人。 -->
+  <LP_E3_DivineGlance.description>Gave alms to an avatar of a god. The god remembers this person.</LP_E3_DivineGlance.description>
+  <!-- 神之不悦 -->
+  <LP_E3_DivineDispleasure.label>divine displeasure</LP_E3_DivineDispleasure.label>
+  <!-- 打过神的化身。干什么都不顺。 -->
+  <LP_E3_DivineDispleasure.description>Struck an avatar of a god. Nothing goes right.</LP_E3_DivineDispleasure.description>
+  <!-- 银龙之友 -->
+  <LP_E3_SilverFriend.label>friend of the silver dragon</LP_E3_SilverFriend.label>
+  <!-- 和一条化身凡人的银龙聊过很多个晚上。耐寒，心也更稳。 -->
+  <LP_E3_SilverFriend.description>Spent many nights talking with a silver dragon in mortal guise. Cold-hardy, and steadier of heart.</LP_E3_SilverFriend.description>
+  <!-- 魔法天才 -->
+  <LP_E3_GiftedWard.label>magic prodigy</LP_E3_GiftedWard.label>
+  <!-- 天生魔力太强的孩子：学东西特别快，情绪失控时魔力会爆出来（野魔法）。13 岁成年时智识够了就能成为法师。 -->
+  <LP_E3_GiftedWard.description>A child with too much innate magic: learns especially fast, and magic bursts out when emotions run wild (wild magic). On coming of age at 13, can become a wizard if Intellectual is high enough.</LP_E3_GiftedWard.description>
+  <!-- 隐身潜行 -->
+  <LP_E3_Shadowed.label>invisible prowl</LP_E3_Shadowed.label>
+  <!-- 盗贼公会的隐身术。有人走到 5 格内就会现形。 -->
+  <LP_E3_Shadowed.description>The thieves' guild's invisibility. Revealed when anyone comes within 5 cells.</LP_E3_Shadowed.description>
+  <!-- 木质身躯 -->
+  <LP_E3_Wooden.label>wooden body</LP_E3_Wooden.label>
+  <!-- 苏醒的树：怕火，受到的火焰伤害翻倍。 -->
+  <LP_E3_Wooden.description>Awakened tree: fears fire, takes double fire damage.</LP_E3_Wooden.description>
+  <!-- 陷阱伤 -->
+  <LP_E3_TrapWounds.label>trap wound</LP_E3_TrapWounds.label>
+  <!-- 一路踩进陷阱，步子慢了下来。 -->
+  <LP_E3_TrapWounds.description>Stepped into trap after trap; the pace has slowed.</LP_E3_TrapWounds.description>
+  <!-- 塔拉斯克的甲壳 -->
+  <LP_E3_TarrasqueHide.label>Tarrasque carapace</LP_E3_TarrasqueHide.label>
+  <!-- 比城墙还厚的甲壳。强度随它醒来时世界的危险程度（威胁点数）而定。 -->
+  <LP_E3_TarrasqueHide.description>A carapace thicker than city walls. Its strength depends on how dangerous the world was when it woke (threat points).</LP_E3_TarrasqueHide.description>
+  <!-- 初醒 -->
+  <LP_E3_TarrasqueHide.stages.0.label>newly woken</LP_E3_TarrasqueHide.stages.0.label>
+  <!-- 坚硬 -->
+  <LP_E3_TarrasqueHide.stages.1.label>hardened</LP_E3_TarrasqueHide.stages.1.label>
+  <!-- 不朽 -->
+  <LP_E3_TarrasqueHide.stages.2.label>immortal</LP_E3_TarrasqueHide.stages.2.label>
+</LanguageData>

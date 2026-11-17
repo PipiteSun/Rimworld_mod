@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- [PAWN_nameDef]的躯体由死灵仪式塑造，没有经历生者的童年。意识在仪式中苏醒，技能与知识由此后亲身学习积累。 -->
+  <LP_ConstructOrigin.description>[PAWN_nameDef]'s body was shaped by a necromantic ritual and never had a living childhood. The mind awoke during the ritual; skills and knowledge were learned and built up firsthand afterwards.</LP_ConstructOrigin.description>
+  <!-- [PAWN_nameDef]的躯体由死灵仪式塑造，没有经历生者的童年。意识在仪式中苏醒，技能与知识由此后亲身学习积累。 -->
+  <LP_ConstructOrigin.baseDesc>[PAWN_nameDef]'s body was shaped by a necromantic ritual and never had a living childhood. The mind awoke during the ritual; skills and knowledge were learned and built up firsthand afterwards.</LP_ConstructOrigin.baseDesc>
+  <!-- 死灵塑形 -->
+  <LP_ConstructOrigin.title>necromantic shaping</LP_ConstructOrigin.title>
+  <!-- 死灵造物 -->
+  <LP_ConstructOrigin.titleShort>necromantic construct</LP_ConstructOrigin.titleShort>
+  <!-- [PAWN_nameDef]以死灵造物的身份加入殖民地，接受巫妖的统御，承担工作并积累属于自己的经验（知识死灵的技能固定，经验传给主人）。 -->
+  <LP_ConstructService.description>[PAWN_nameDef] joined the colony as a necromantic construct under the lich's command, taking on work and building up experience of [PAWN_possessive] own (knowledge undead have fixed skills and pass their XP to the master).</LP_ConstructService.description>
+  <!-- [PAWN_nameDef]以死灵造物的身份加入殖民地，接受巫妖的统御，承担工作并积累属于自己的经验（知识死灵的技能固定，经验传给主人）。 -->
+  <LP_ConstructService.baseDesc>[PAWN_nameDef] joined the colony as a necromantic construct under the lich's command, taking on work and building up experience of [PAWN_possessive] own (knowledge undead have fixed skills and pass their XP to the master).</LP_ConstructService.baseDesc>
+  <!-- 死灵侍从 -->
+  <LP_ConstructService.title>necromantic attendant</LP_ConstructService.title>
+  <!-- 死灵侍从 -->
+  <LP_ConstructService.titleShort>necromantic attendant</LP_ConstructService.titleShort>
+</LanguageData>

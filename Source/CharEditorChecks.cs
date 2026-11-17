@@ -65,6 +65,13 @@ namespace LichPhylactery {
      foreach(var x in traits.allTraits.Where(x=>x.def==gift || x.def==gold || x.def==plain).ToList())CharEditorCompat.TraitRemove.Invoke(null,new object[]{p,x});
      bool cleared=!CombatGifts.HasGift(p,CombatGifts.Mighty) && !HeroTraits.Has(p,gold) && !traits.HasTrait(plain);
      Check(shown && synced && cleared,"char editor own trait list: shown in card "+shown+" ("+string.Join(",",sorted.Select(d=>d.defName))+"), DND caches synced "+synced+", removal cleared "+cleared);
+     // 1.164.1：编辑器特性栏加互斥的稀有天赋时替换掉旧的（百炼成钢 → 天赋异禀），新加的生效
+     foreach(var x in traits.allTraits.Where(x=>Talents.Is(x.def)).ToList())traits.RemoveTrait(x);
+     CharEditorCompat.TraitAdd.Invoke(null,new object[]{p,Talents.Tempered,Talents.Tempered.degreeDatas[0],false,false,null});
+     CharEditorCompat.TraitAdd.Invoke(null,new object[]{p,Talents.Gifted,Talents.Gifted.degreeDatas[0],false,false,null});
+     var tl=traits.allTraits.Where(x=>Talents.Is(x.def)).Select(x=>x.def.defName).ToList();
+     Check(tl.Count==1 && Talents.Of(p)==Talents.Gifted && h.Talent==Talents.Gifted,"char editor own trait list: adding Gifted over Tempered replaces it ("+string.Join(",",tl)+")");
+     foreach(var x in traits.allTraits.Where(x=>Talents.Is(x.def)).ToList())traits.RemoveTrait(x);
     }
    }finally{
     s.adventurer=oOn;Adventurer.TestSuppressed=oSup;

@@ -43,9 +43,9 @@ namespace LichPhylactery {
    if(caster==null || target==null || target.Dead)return;
    var d=Twilight.Infused(caster);float D=Twilight.D;
    if(d!=null)switch(d.key){
-    case "Bane":if(Roll<BaneDread*D){Items.Give(target,"LP_BaneDread",BaneDreadTicks);Mote(target,"畏惧",d);}break;
+    case "Bane":if(Roll<BaneDread*D){Items.Give(target,"LP_BaneDread",BaneDreadTicks);Mote(target,"畏惧".Loc(),d);}break;
     case "Surtr":target.TakeDamage(new DamageInfo(DamageDefOf.Burn,SurtrBurn*D,0f,-1f,caster));if(!target.Dead && Roll<SurtrIgnite && target.Spawned)target.TryAttachFire(.3f,caster);break;
-    case "Malar":if(Roll<MalarBleed*D){target.TakeDamage(new DamageInfo(DamageDefOf.Bite,MalarBite,0f,-1f,caster));Mote(target,"撕咬",d);}break;
+    case "Malar":if(Roll<MalarBleed*D){target.TakeDamage(new DamageInfo(DamageDefOf.Bite,MalarBite,0f,-1f,caster));Mote(target,"撕咬".Loc(),d);}break;
    }
    var v=Twilight.Vessel(caster);
    if(v?.Key=="Vlaakith" && !target.Dead){
@@ -74,10 +74,10 @@ namespace LichPhylactery {
    if(p==null || p.Dead)return;
    var d=Twilight.Infused(p);var v=Twilight.Vessel(p);
    // 伊尔斯维“低语者”：被打倒时对攻击者心灵冲击。
-   if(d?.key=="Ilsvi" && dinfo?.Instigator is Pawn a && !a.Dead && a!=p){a.stances?.stunner?.StunFor(Mathf.RoundToInt(IlsviStunTicks*Twilight.D),p,false,true,false);Mote(a,"心灵冲击",d);}
+   if(d?.key=="Ilsvi" && dinfo?.Instigator is Pawn a && !a.Dead && a!=p){a.stances?.stunner?.StunFor(Mathf.RoundToInt(IlsviStunTicks*Twilight.D),p,false,true,false);Mote(a,"心灵冲击".Loc(),d);}
    if(v!=null){Fiends.Defer(()=>Depart(p,v));return;}
    // 洛山达“晨光之子”：第一次倒地时 30%（D 45%）立刻爬起、止血。
-   if(d?.key=="Lathander"){var dawn=p.health.hediffSet.GetFirstHediffOfDef(Items.Hediff("LP_DawnChild")) as Hediff_DawnChild;if(dawn!=null && !dawn.risen){dawn.risen=true;if(Roll<LathanderRise*Twilight.D)Fiends.Defer(()=>{if(!p.Dead && Rise(p,false))Mote(p,"晨光再起",d);});}}
+   if(d?.key=="Lathander"){var dawn=p.health.hediffSet.GetFirstHediffOfDef(Items.Hediff("LP_DawnChild")) as Hediff_DawnChild;if(dawn!=null && !dawn.risen){dawn.risen=true;if(Roll<LathanderRise*Twilight.D)Fiends.Defer(()=>{if(!p.Dead && Rise(p,false))Mote(p,"晨光再起".Loc(),d);});}}
   }
   // 爬起：止血，治疗伤口直到不再倒地（full=true 时治好全部伤口、长回断肢）。
   public static bool Rise(Pawn p,bool full){
@@ -95,22 +95,22 @@ namespace LichPhylactery {
    if(p==null || v==null || p.Dead || !p.health.hediffSet.hediffs.Contains(v))return;
    var d=v.Deity;var map=p.MapHeld;var cell=p.PositionHeld;
    // 洛山达“复苏”：第一次被打倒时满血爬起；第二次才离体。
-   if(d.key=="Lathander" && !v.revived){v.revived=true;Rise(p,true);Mote(p,"黎明复苏",d);return;}
+   if(d.key=="Lathander" && !v.revived){v.revived=true;Rise(p,true);Mote(p,"黎明复苏".Loc(),d);return;}
    p.health.RemoveHediff(v);
    string text=null;
    switch(d.key){
-    case "Bane":int fled=0;if(map!=null)foreach(var o in Allies(p,BaneLawRadius).Where(o=>o!=p && !o.Downed && o.RaceProps.Humanlike).ToList())if(o.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.PanicFlee,"神力抽走",true,true)==true)fled++;text="神力被抽走了，"+fled+"名随从四散奔逃。";break;
-    case "Surtr":if(map!=null)GenExplosion.DoExplosion(cell,map,SurtrBurstRadius,DamageDefOf.Flame,p,SurtrBurstDamage,ignoredThings:new List<Thing>{p});Wound(p,DamageDefOf.Burn,4,6f);text="苏尔特之焰在体内爆燃，他自己也被严重烧伤。";break;
-    case "Ilsvi":if(HediffDefOf.Dementia!=null && !p.health.hediffSet.HasHediff(HediffDefOf.Dementia))p.health.AddHediff(HediffDefOf.Dementia,p.health.hediffSet.GetBrain());BrainScar(p);Former(p,d);text="脑髓被神力烧尽：他的大脑永久受损，可以俘虏。夺心魔吞噬这颗大脑能多得 "+IlsviDevourBonus+" 脑髓。";break;
-    case "Tyr":foreach(var h in p.health.hediffSet.hediffs.Where(h=>h.Bleeding).ToList())h.Tended(1f,1f);Former(p,d);Items.Give(p,"LP_Surrendered");text="他服从了审判，放下武器投降：不再流血，可以俘虏，招募难度减半。";break;
-    case "Lathander":text="黎明退去，他可以被正常俘虏了。";break;
-    case "Vlaakith":text="巫妖女王收回了她的容器。";break;
-    case "Talos":if(map!=null){map.weatherManager.eventHandler.AddEvent(new WeatherEvent_LightningFlash(map));GenExplosion.DoExplosion(cell,map,1.9f,DamageDefOf.Flame,null,12,ignoredThings:new List<Thing>{p});}Wound(p,DamageDefOf.Burn,3,7f);text="一道雷劈在他自己身上：存活，但伤得很重。";break;
-    case "Malar":int calmed=0;foreach(var a in v.hunted.Where(a=>a!=null && !a.Dead && a.InMentalState).ToList()){a.MentalState.RecoverFromState();calmed++;}text="野性退散，"+calmed+"只被驱使的野兽安静下来。";break;
+    case "Bane":int fled=0;if(map!=null)foreach(var o in Allies(p,BaneLawRadius).Where(o=>o!=p && !o.Downed && o.RaceProps.Humanlike).ToList())if(o.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.PanicFlee,"神力抽走".Loc(),true,true)==true)fled++;text="神力被抽走了，".Loc()+fled+"名随从四散奔逃。".Loc();break;
+    case "Surtr":if(map!=null)GenExplosion.DoExplosion(cell,map,SurtrBurstRadius,DamageDefOf.Flame,p,SurtrBurstDamage,ignoredThings:new List<Thing>{p});Wound(p,DamageDefOf.Burn,4,6f);text="苏尔特之焰在体内爆燃，他自己也被严重烧伤。".Loc();break;
+    case "Ilsvi":if(HediffDefOf.Dementia!=null && !p.health.hediffSet.HasHediff(HediffDefOf.Dementia))p.health.AddHediff(HediffDefOf.Dementia,p.health.hediffSet.GetBrain());BrainScar(p);Former(p,d);text="脑髓被神力烧尽：他的大脑永久受损，可以俘虏。夺心魔吞噬这颗大脑能多得 ".Loc()+IlsviDevourBonus+" 脑髓。".Loc();break;
+    case "Tyr":foreach(var h in p.health.hediffSet.hediffs.Where(h=>h.Bleeding).ToList())h.Tended(1f,1f);Former(p,d);Items.Give(p,"LP_Surrendered");text="他服从了审判，放下武器投降：不再流血，可以俘虏，招募难度减半。".Loc();break;
+    case "Lathander":text="黎明退去，他可以被正常俘虏了。".Loc();break;
+    case "Vlaakith":text="巫妖女王收回了她的容器。".Loc();break;
+    case "Talos":if(map!=null){map.weatherManager.eventHandler.AddEvent(new WeatherEvent_LightningFlash(map));GenExplosion.DoExplosion(cell,map,1.9f,DamageDefOf.Flame,null,12,ignoredThings:new List<Thing>{p});}Wound(p,DamageDefOf.Burn,3,7f);text="一道雷劈在他自己身上：存活，但伤得很重。".Loc();break;
+    case "Malar":int calmed=0;foreach(var a in v.hunted.Where(a=>a!=null && !a.Dead && a.InMentalState).ToList()){a.MentalState.RecoverFromState();calmed++;}text="野性退散，".Loc()+calmed+"只被驱使的野兽安静下来。".Loc();break;
    }
    Twilight.Reward(p);
    if(d.key=="Vlaakith" && !p.Dead){TwilightDeath.vlaakithDeparting=p;p.Kill(null);return;}
-   if(map!=null)Find.LetterStack.ReceiveLetter("击退了神的使者",p.LabelShort+"体内的"+d.label+"离开了。"+text+"\n\n原地留下了神迹残片；全体殖民者心情 +5（3 天）。",LetterDefOf.PositiveEvent,new LookTargets(cell,map));
+   if(map!=null)Find.LetterStack.ReceiveLetter("击退了神的使者".Loc(),p.LabelShort+"体内的".Loc()+d.label+"离开了。".Loc()+text+"\n\n原地留下了神迹残片；全体殖民者心情 +5（3 天）。".Loc(),LetterDefOf.PositiveEvent,new LookTargets(cell,map));
   }
   // 死亡：维拉基斯“女王的复仇”（2 名吉斯洋基战士从星界跳出）与“被女王吞噬”（尸体化为灰烬）；其余照常掉残片。
   public static void OnVesselDied(Pawn p,LP_DeityDef d,bool departed){
@@ -124,7 +124,7 @@ namespace LichPhylactery {
    }
    if(list.Count>0)LordMaker.MakeNewLord(f,new LordJob_AssaultColony(f,false,false,false,false,false,false,false),map,list);
    if(corpse!=null && !corpse.Destroyed){corpse.Destroy();if(!FilthMaker.TryMakeFilth(cell,map,ThingDefOf.Filth_Ash,3))foreach(var c in GenRadial.RadialCellsAround(cell,4f,false))if(c.InBounds(map) && FilthMaker.TryMakeFilth(c,map,ThingDefOf.Filth_Ash,3))break;/* 1.29.0：倒在水里时灰落到旁边能放污物的格子；1.30.0：放宽到4格内（倒在河中间时相邻8格也都是水） */for(int i=0;i<4;i++)FleckMaker.ThrowSmoke(cell.ToVector3Shifted(),map,1.6f);}
-   Find.LetterStack.ReceiveLetter("被女王吞噬",(p?.LabelShort??"化身容器")+"的身体化为灰烬：巫妖女王维拉基斯收回了她的容器，不留尸体，也没有灵魂可以汲取。"+(list.Count>0?"\n\n女王的复仇："+list.Count+"名吉斯洋基战士从星界跳了出来！":""),list.Count>0?LetterDefOf.ThreatSmall:LetterDefOf.NeutralEvent,list.Count>0?new LookTargets(list.Cast<Thing>()):new LookTargets(cell,map));
+   Find.LetterStack.ReceiveLetter("被女王吞噬".Loc(),(p?.LabelShort??"化身容器".Loc())+"的身体化为灰烬：巫妖女王维拉基斯收回了她的容器，不留尸体，也没有灵魂可以汲取。".Loc()+(list.Count>0?"\n\n女王的复仇：".Loc()+list.Count+"名吉斯洋基战士从星界跳了出来！".Loc():""),list.Count>0?LetterDefOf.ThreatSmall:LetterDefOf.NeutralEvent,list.Count>0?new LookTargets(list.Cast<Thing>()):new LookTargets(cell,map));
   }
   static void Former(Pawn p,LP_DeityDef d){var def=Items.Hediff("LP_FormerVessel");if(def==null)return;var h=(Hediff_FormerVessel)HediffMaker.MakeHediff(def,p);h.deity=d;p.health.AddHediff(h);}
   // 加不致命的伤：每处严重度 sev，最多 n 处，加之前确认不会致死、不会倒在致命伤上。
@@ -169,29 +169,29 @@ namespace LichPhylactery {
   public static int TyrantsCommand(Pawn p,LP_DeityDef d){
    int n=0;
    foreach(var o in Enemies(p,SkillRange).Where(o=>o.equipment?.Primary!=null && Sight(p,o)).OrderBy(o=>o.Position.DistanceToSquared(p.Position)).Take(BaneCommandCount).ToList()){
-    if(DNDMind.TryResist(o)){Mote(o,"抵抗",d);continue;}
-    if(o.equipment.TryDropEquipment(o.equipment.Primary,out _,o.Position,false)){Mote(o,"缴械",d);n++;}
+    if(DNDMind.TryResist(o)){Mote(o,"抵抗".Loc(),d);continue;}
+    if(o.equipment.TryDropEquipment(o.equipment.Primary,out _,o.Position,false)){Mote(o,"缴械".Loc(),d);n++;}
    }
    return n;
   }
   public static int Sweep(Pawn p,LP_DeityDef d){
    int n=0;foreach(var o in Enemies(p,SurtrSweepRadius).ToList()){o.TakeDamage(new DamageInfo(DamageDefOf.Flame,SurtrSweepDamage,0f,-1f,p));if(!o.Dead && o.Spawned)o.TryAttachFire(.5f,p);n++;}
-   if(n>0){FleckMaker.Static(p.Position,p.Map,FleckDefOf.ExplosionFlash,4f);Mote(p,"焰剑横扫",d);}
+   if(n>0){FleckMaker.Static(p.Position,p.Map,FleckDefOf.ExplosionFlash,4f);Mote(p,"焰剑横扫".Loc(),d);}
    return n;
   }
   // 伊尔斯维“低语光环”：15 格内随机一名敌人狂乱 10 秒（心智抗性可抵抗；不能被蝌蚪寄生的人免疫：巫妖、火巨人、死灵造物等）。
   public static Pawn Whisper(Hediff_DivineVessel v){
    var p=v.pawn;var o=Enemies(p,IlsviRadius).Where(x=>Tadpoles.Immunity(x)==null && !x.InMentalState).RandomElementWithFallback();if(o==null)return null;
-   if(DNDMind.TryResist(o)){Mote(o,"抵抗",v.Deity);return null;}
-   if(o.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.Berserk,"伊尔斯维的低语",true,true)!=true)return null;
-   v.timedPawns.Add(o);v.timedUntil.Add(Now+IlsviBerserkTicks);Mote(o,"低语",v.Deity);
+   if(DNDMind.TryResist(o)){Mote(o,"抵抗".Loc(),v.Deity);return null;}
+   if(o.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.Berserk,"伊尔斯维的低语".Loc(),true,true)!=true)return null;
+   v.timedPawns.Add(o);v.timedUntil.Add(Now+IlsviBerserkTicks);Mote(o,"低语".Loc(),v.Deity);
    return o;
   }
   public static Pawn Punish(Pawn p,LP_DeityDef d){
    var o=Enemies(p,SkillRange).Where(x=>x.RaceProps.Humanlike && Sight(p,x)).OrderByDescending(Crimes).FirstOrDefault();if(o==null)return null;
    float dmg=Mathf.Min(TyrPunishCap,TyrPunishBase+TyrPunishPer*Crimes(o));
    var map=o.Map;var at=o.Position;
-   o.TakeDamage(new DamageInfo(Divine,dmg,1f,-1f,p));FleckMaker.Static(at,map,FleckDefOf.PsycastAreaEffect,1.5f);Mote(o,"罪罚 "+dmg.ToString("0"),d);
+   o.TakeDamage(new DamageInfo(Divine,dmg,1f,-1f,p));FleckMaker.Static(at,map,FleckDefOf.PsycastAreaEffect,1.5f);Mote(o,"罪罚 ".Loc()+dmg.ToString("0"),d);
    return o;
   }
   public static int DawnAura(Pawn p){
@@ -201,7 +201,7 @@ namespace LichPhylactery {
   public static Pawn Beam(Pawn p,LP_DeityDef d){
    var o=Enemies(p,SkillRange).Where(x=>Sight(p,x)).OrderBy(x=>x.Position.DistanceToSquared(p.Position)).FirstOrDefault();if(o==null)return null;
    var map=o.Map;var at=o.Position;
-   o.TakeDamage(new DamageInfo(Radiant,LathanderBeam*(Items.Undead(o)?2f:1f),.5f,-1f,p));FleckMaker.Static(at,map,FleckDefOf.PsycastAreaEffect,1.8f);Mote(o,"光柱",d);
+   o.TakeDamage(new DamageInfo(Radiant,LathanderBeam*(Items.Undead(o)?2f:1f),.5f,-1f,p));FleckMaker.Static(at,map,FleckDefOf.PsycastAreaEffect,1.8f);Mote(o,"光柱".Loc(),d);
    return o;
   }
   // 维拉基斯“星界突袭”：跳到视线内最远一名殖民者身后，下一次近战必中。
@@ -211,7 +211,7 @@ namespace LichPhylactery {
    var cell=GenAdj.CellsAdjacent8Way(o).Where(c=>c.InBounds(map) && c.Standable(map) && c.GetFirstPawn(map)==null).OrderByDescending(c=>c.DistanceToSquared(p.Position)).FirstOrDefault();
    if(!cell.IsValid || cell==default(IntVec3))return null;
    FleckMaker.Static(p.Position,map,FleckDefOf.PsycastAreaEffect,1.2f);Races124.Blink(p,cell);FleckMaker.Static(cell,map,FleckDefOf.PsycastAreaEffect,1.2f);
-   v.sureHit=true;Mote(p,"星界突袭",v.Deity);
+   v.sureHit=true;Mote(p,"星界突袭".Loc(),v.Deity);
    if(p.jobs!=null){var job=JobMaker.MakeJob(JobDefOf.AttackMelee,o);job.expiryInterval=600;p.jobs.StartJob(job,JobCondition.InterruptForced);}
    return o;
   }
@@ -234,7 +234,7 @@ namespace LichPhylactery {
     if(wolf!=null && CellFinder.TryFindRandomEdgeCellWith(c=>c.Standable(map) && !c.Fogged(map),map,0f,out var edge))for(int i=0;i<2;i++){var a=PawnGenerator.GeneratePawn(wolf);GenSpawn.Spawn(a,CellFinder.RandomClosewalkCellNear(edge,map,3),map);wild.Add(a);}
    }
    int n=0;foreach(var a in wild)if(a.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.ManhunterPermanent,null,true,false,false,null,true)==true){v.hunted.Add(a);n++;}
-   if(n>0)Messages.Message("马拉尔的狩猎号令：地图上"+n+"只野兽开始猎杀你的殖民者！",new LookTargets(wild.Cast<Thing>()),MessageTypeDefOf.ThreatBig,false);
+   if(n>0)Messages.Message("马拉尔的狩猎号令：地图上".Loc()+n+"只野兽开始猎杀你的殖民者！".Loc(),new LookTargets(wild.Cast<Thing>()),MessageTypeDefOf.ThreatBig,false);
    return n;
   }
   // 马拉尔“驯兽反噬”：15 格内一只殖民地动物失控 30 秒（驯兽 ≥10 的人就在旁边时不会）。
@@ -242,8 +242,8 @@ namespace LichPhylactery {
    var p=v.pawn;var map=p.Map;
    var a=map.mapPawns.SpawnedPawnsInFaction(Faction.OfPlayer).Where(x=>x.RaceProps.Animal && !x.Dead && !x.Downed && !x.InMentalState && x.Position.InHorDistOf(p.Position,MalarBacklashRadius) && !Handled(x)).RandomElementWithFallback();
    if(a==null)return null;
-   if(a.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.Manhunter,"马拉尔的驯兽反噬",true,false,false,null,true)!=true)return null;
-   v.timedPawns.Add(a);v.timedUntil.Add(Now+MalarBacklashLength);Mote(a,"失控",v.Deity);
+   if(a.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.Manhunter,"马拉尔的驯兽反噬".Loc(),true,false,false,null,true)!=true)return null;
+   v.timedPawns.Add(a);v.timedUntil.Add(Now+MalarBacklashLength);Mote(a,"失控".Loc(),v.Deity);
    return a;
   }
   public static bool Handled(Pawn animal)=>animal.Map.mapPawns.FreeColonistsSpawned.Any(c=>!c.Downed && c.Position.InHorDistOf(animal.Position,1.5f) && (c.skills?.GetSkill(SkillDefOf.Animals)?.Level??0)>=MalarHandlerSkill);
@@ -312,7 +312,7 @@ namespace LichPhylactery {
    var map=p.Map;
    if(!CellFinder.TryFindRandomCellNear(p.Position,map,TwilightSkills.DodgeRange,c=>c.Standable(map) && c.GetFirstPawn(map)==null && c.DistanceTo(p.Position)>=TwilightSkills.DodgeRange-2,out var cell))return;
    __1.Severity=.01f;
-   Fiends.Defer(()=>{if(!p.Dead && p.Spawned){FleckMaker.Static(p.Position,map,FleckDefOf.PsycastAreaEffect,1.2f);Races124.Blink(p,cell);TwilightSkills.Mote(p,"星界闪避",Twilight.Infused(p));}});
+   Fiends.Defer(()=>{if(!p.Dead && p.Spawned){FleckMaker.Static(p.Position,map,FleckDefOf.PsycastAreaEffect,1.2f);Races124.Blink(p,cell);TwilightSkills.Mote(p,"星界闪避".Loc(),Twilight.Infused(p));}});
   }
  }
  // 神明附体：免疫眩晕。
@@ -336,7 +336,7 @@ namespace LichPhylactery {
   static bool Prefix(MentalStateDef stateDef,Pawn ___pawn,ref bool __result){
    if(stateDef==null || ___pawn==null)return true;
    if(Twilight.Vessel(___pawn)!=null){__result=false;return false;}
-   if((stateDef==MentalStateDefOf.PanicFlee && TwilightSkills.BaneHolds(___pawn,false)) || (stateDef==MentalStateDefOf.Berserk && Troll.Is(___pawn) && TwilightSkills.BaneHolds(___pawn,true))){TwilightSkills.Mote(___pawn,"铁律",Twilight.ByKey("Bane"));__result=false;return false;}
+   if((stateDef==MentalStateDefOf.PanicFlee && TwilightSkills.BaneHolds(___pawn,false)) || (stateDef==MentalStateDefOf.Berserk && Troll.Is(___pawn) && TwilightSkills.BaneHolds(___pawn,true))){TwilightSkills.Mote(___pawn,"铁律".Loc(),Twilight.ByKey("Bane"));__result=false;return false;}
    return true;
   }
  }
@@ -355,9 +355,9 @@ namespace LichPhylactery {
  }
  // 提尔“审判之庭”：原版能力（巫妖法术、夺心魔灵能、本模组种族能力）都走 RimWorld.Ability；VPE 的能力在 VPE 桥接里另挂。
  [HarmonyPatch(typeof(RimWorld.Ability),nameof(RimWorld.Ability.GizmoDisabled))]
- public static class TwilightCourtGizmo {static void Postfix(RimWorld.Ability __instance,ref bool __result,ref string reason){if(!__result && TwilightSkills.Silenced(__instance.pawn)){__result=true;reason="提尔的审判之庭：10格内不能使用任何能力。";}}}
+ public static class TwilightCourtGizmo {static void Postfix(RimWorld.Ability __instance,ref bool __result,ref string reason){if(!__result && TwilightSkills.Silenced(__instance.pawn)){__result=true;reason="提尔的审判之庭：10格内不能使用任何能力。".Loc();}}}
  [HarmonyPatch(typeof(RimWorld.Ability),"get_CanCast")]
- public static class TwilightCourtCast {static void Postfix(RimWorld.Ability __instance,ref AcceptanceReport __result){if(__result.Accepted && TwilightSkills.Silenced(__instance.pawn))__result="提尔的审判之庭";}}
+ public static class TwilightCourtCast {static void Postfix(RimWorld.Ability __instance,ref AcceptanceReport __result){if(__result.Accepted && TwilightSkills.Silenced(__instance.pawn))__result="提尔的审判之庭".Loc();}}
  // 维拉基斯“星界突袭”之后下一次近战必中。
  [HarmonyPatch(typeof(Verb_MeleeAttack),"GetNonMissChance")]
  public static class TwilightSureHit {static void Postfix(Verb_MeleeAttack __instance,ref float __result){if(Twilight.Vessel(__instance.CasterPawn)?.sureHit==true)__result=1f;}}

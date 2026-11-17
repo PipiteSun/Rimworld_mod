@@ -6,7 +6,7 @@
   <ThingDef ParentName="BuildingBase">
     <defName>LP_QuestBoard</defName>
     <label>探索公告板</label>
-    <description>一块钉满羊皮纸告示的木板。附近的冒险者公会、商旅和村镇会把悬赏贴在这里：每天刷新一批分等阶（青铜、白银、黄金、秘银、传说）的委托，例如守住即将来袭的敌人、远征世界地图上的怪物巢穴、清剿敌对据点。\n\n殖民地最高冒险者等级越高，能接的委托等阶越高。完成委托给银币和物品报酬，接取人得到“任务点数 × 0.5”的冒险者经验，殖民地其他人得到其中的四分之一。</description>
+    <description>一块钉满羊皮纸告示的木板。附近的冒险者公会、商旅、村镇、通缉令和魔力湖泊的湖民都会把需要冒险者的活计贴在这里。板上有两类委托：\n\n【每日委托】每天刷新一批分等阶（青铜、白银、黄金、秘银、传说）的委托，例如守住即将来袭的敌人、远征世界地图上的怪物巢穴、清剿敌对据点。殖民地最高冒险者等级越高，能接的等阶越高。完成给银币和物品报酬，接取人得到“任务点数 × 0.5”的冒险者经验，殖民地其他人得到其中的四分之一。\n\n【名声委托】每 5 天换 3 条：清剿怪物巢穴、讨伐通缉犯、救援被困的冒险者、寻回失物、调查闹鬼的废墟。接下后世界地图上出现地点，7 天内完成。完成给参与者冒险者经验、银子、卷轴，并提高殖民地的名声——名声越高，危险的委托越多、报酬越好；失败扣名声。\n\n每张地图只能放一块。</description>
     <thingClass>LichPhylactery.Building_QuestBoard</thingClass>
     <graphicData>
       <texPath>LP/QuestBoard/QuestBoard</texPath>
@@ -42,6 +42,7 @@
     </thingCategories>
     <designationCategory>Misc</designationCategory>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <placeWorkers><li>LichPhylactery.PlaceWorker_OnePerMap</li></placeWorkers>
   </ThingDef>
 
   <!-- 远征讨伐的站点：没有派系，地图上是一群狂暴的野兽（GenStep_QuestBoardLair 生成）。 -->

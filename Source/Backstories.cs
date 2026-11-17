@@ -188,7 +188,7 @@ namespace LichPhylactery {
   [HarmonyPriority(Priority.Last)]
   static void Postfix(Pawn __0,FactionDef __1,PawnGenerationRequest __2,XenotypeDef __3){
    try{Backstories.Assign(__0,__1,__2,__3);}
-   catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 分配背景故事出错："+e,73519021);}
+   catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 分配背景故事出错：".Loc()+e,73519021);}
   }
  }
  [HarmonyPatch(typeof(PawnGenerator),"GenerateTraits")]
@@ -196,7 +196,7 @@ namespace LichPhylactery {
   [HarmonyPriority(Priority.Low)]
   static void Postfix(Pawn pawn,PawnGenerationRequest request){
    try{Backstories.LinkTraits(pawn,request);}
-   catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 背景特性联动出错："+e,73519022);}
+   catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 背景特性联动出错：".Loc()+e,73519022);}
   }
  }
  // DND 成年背景不指定体型：原版会直接拿成年背景的体型（为空），这里按原版没有成年背景时的办法补上。
@@ -218,10 +218,10 @@ namespace LichPhylactery {
  public static class BackstorySettings {
   public static void Draw(Listing_Standard l){
    var s=LichMod.Settings;
-   l.CheckboxLabeled("DND 背景故事",ref s.dndBackstories,"（1.46.0）新生成的小人按兵种、种族、派系换上费伦的童年和成年背景（139 条）。只影响之后新生成的小人，已有的小人不变。关闭后完全按原版分配。");
-   l.Label("种族背景出现率："+s.raceBackstoryPercent+"%（DND 种族的小人每个背景槽位换成本族背景的概率）");
+   l.CheckboxLabeled("DND 背景故事".Loc(),ref s.dndBackstories,"（1.46.0）新生成的小人按兵种、种族、派系换上费伦的童年和成年背景（139 条）。只影响之后新生成的小人，已有的小人不变。关闭后完全按原版分配。".Loc());
+   l.Label("种族背景出现率：".Loc()+s.raceBackstoryPercent+"%（DND 种族的小人每个背景槽位换成本族背景的概率）".Loc());
    s.raceBackstoryPercent=Mathf.RoundToInt(l.Slider(s.raceBackstoryPercent,0,100)/5f)*5;
-   l.Label("原版人类费伦背景："+s.vanillaFaerunPercent+"%（不属于 DND 派系的原版人类，包括开局殖民者，每个背景槽位换成费伦背景的概率）");
+   l.Label("原版人类费伦背景：".Loc()+s.vanillaFaerunPercent+"%（不属于 DND 派系的原版人类，包括开局殖民者，每个背景槽位换成费伦背景的概率）".Loc());
    s.vanillaFaerunPercent=Mathf.RoundToInt(l.Slider(s.vanillaFaerunPercent,0,100)/5f)*5;
   }
  }

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- DND炼金术 -->
+  <LP_DNDAlchemy.label>DND alchemy</LP_DNDAlchemy.label>
+  <!-- 把费伦大陆的炼金术用在边缘世界：用巨魔血、草药等调配药水，以及压制灵能寄生体的抑灵剂。解锁炼金桌和蒸馏器（炼金桌旁的附件，速度+15%）。 -->
+  <LP_DNDAlchemy.description>Apply the alchemy of Faerûn to the Rim: brew potions from troll blood, herbs and more, and psionic suppressants that hold down psionic parasites. Unlocks the alchemy table and distillery (an attachment beside the alchemy table, speed +15%).</LP_DNDAlchemy.description>
+  <!-- 秘金冶炼 -->
+  <LP_MythicMetallurgy.label>mythic smelting</LP_MythicMetallurgy.label>
+  <!-- 学会处理秘银与精金这两种传说金属，并在炼金桌上用白银淬炼寒铁。秘金可以当金属材料做各种装备。 -->
+  <LP_MythicMetallurgy.description>Learn to work the two legendary metals mithril and adamantine, and temper cold iron with silver at the alchemy table. Mythic metals can be used as metal materials for all kinds of gear.</LP_MythicMetallurgy.description>
+  <!-- 秘金深掘 -->
+  <LP_Research_MythicDrilling.label>mythic deep mining</LP_Research_MythicDrilling.label>
+  <!-- 把原版深层钻探和秘金冶炼结合起来：在钻杆上刻寻金符文、用白银探针引路，从地壳深处钻出秘银与精金。解锁秘金深钻（像深层钻机一样通电、由采矿工作操作，不需要深层矿藏）。 -->
+  <LP_Research_MythicDrilling.description>Combine vanilla deep drilling with mythic smelting: carve gold-seeking runes on the drill rod, guide it with a silver probe, and drill mithril and adamantine out of the deep crust. Unlocks the mythic deep drill (powered like a deep drill, operated as mining work, needs no deep deposits).</LP_Research_MythicDrilling.description>
+  <!-- 符文锻造 -->
+  <LP_Research_RuneSmithing.label>rune forging</LP_Research_RuneSmithing.label>
+  <!-- 矮人锻炉的门道：建造符文铁砧和符文淬火槽。制伏武器和符文义肢在符文铁砧上打。 -->
+  <LP_Research_RuneSmithing.description>The secrets of the dwarven forge: build rune anvils and rune quenching troughs. Subduing weapons and runic prosthetics are made on the rune anvil.</LP_Research_RuneSmithing.description>
+  <!-- 卷轴抄写 -->
+  <LP_Research_Scribing.label>scroll copying</LP_Research_Scribing.label>
+  <!-- 学会把法术誊写在羊皮纸上：建造卷轴书桌，抄写识破、防护邪恶、火球卷轴；冒险者手册、魔像手册和解除诅咒卷轴也改在书桌上写。研究者可以在书桌鉴定物品（比研究台快一半）。 -->
+  <LP_Research_Scribing.description>Learn to transcribe spells onto parchment: build the scroll desk and copy scrolls of true seeing, protection from evil and fireball; adventurer's manuals, golem manuals and scrolls of remove curse are also written at the desk. Researchers can identify items at the desk (50% faster than at the research bench).</LP_Research_Scribing.description>
+  <!-- 高阶卷轴 -->
+  <LP_Research_HighScrolls.label>advanced scrolls</LP_Research_HighScrolls.label>
+  <!-- 只有大法师才敢落笔的卷轴：在卷轴书桌抄写传送卷轴（秘银）、石化卷轴（精金）和复生卷轴（神迹残片）。 -->
+  <LP_Research_HighScrolls.description>Scrolls only an archmage dares to write: copy scrolls of teleportation (mithril), flesh to stone (adamantine) and revivify (miracle fragment) at the scroll desk.</LP_Research_HighScrolls.description>
+  <!-- 耐瑟瑞尔奥术 -->
+  <LP_Research_NetherilArcana.label>Netherese arcana</LP_Research_NetherilArcana.label>
+  <!-- 研读坠落的耐瑟瑞尔浮城留下的奥术体系：解锁耐瑟祭坛。完成这项研究、殖民者又读过耐瑟卷轴的话，影巫王拉洛克会注意到你。 -->
+  <LP_Research_NetherilArcana.description>Study the arcane system left by the fallen Netherese flying cities: unlocks the Netherese altar. Once this research is done and a colonist has read a Netherese scroll, Larloch the Shadow King will take notice of you.</LP_Research_NetherilArcana.description>
+  <!-- 附魔学 -->
+  <LP_Research_Enchanting.label>enchantment</LP_Research_Enchanting.label>
+  <!-- 把魔力封进金属与宝石的基础功课：解锁附魔台，在附魔台制作守护戒指、自由行动戒指、适应项链和夜视护目镜；解除诅咒卷轴在卷轴书桌抄写。研究者可以在研究台或卷轴书桌鉴定未鉴定的物品，看穿诅咒。 -->
+  <LP_Research_Enchanting.description>The basic lessons of sealing magic into metal and gems: unlocks the enchanting table, where you can make rings of protection, rings of free action, necklaces of adaptation and goggles of night; scrolls of remove curse are copied at the scroll desk. Researchers can identify unidentified items at the research bench or scroll desk, seeing through curses.</LP_Research_Enchanting.description>
+  <!-- 奇物工艺 -->
+  <LP_Research_WondrousCraft.label>wondrous item crafting</LP_Research_WondrousCraft.label>
+  <!-- 城主指南里那些有名的奇物：食人魔之力手套、接箭手套、箭术与防御护腕、传心头盔、鹰眼、微观之眼、伤口闭合护符、法术转向戒指、再生戒指、储法戒指、护盾胸针、灵能兜帽，都在附魔台制作。解锁奥术聚能石（附魔台、卷轴书桌旁的附件，速度+15%）。 -->
+  <LP_Research_WondrousCraft.description>The famous wondrous items from the Dungeon Master's Guide: gauntlets of ogre power, gloves of missile snaring, bracers of archery and defense, helm of telepathy, eyes of the eagle, eyes of minute seeing, periapt of wound closure, ring of spell turning, ring of regeneration, ring of spell storing, brooch of shielding and psionic hood, all made at the enchanting table. Unlocks the arcane focus stone (an attachment beside the enchanting table and scroll desk, speed +15%).</LP_Research_WondrousCraft.description>
+  <!-- 圣物祝圣 -->
+  <LP_Research_SacredRelics.label>relic consecration</LP_Research_SacredRelics.label>
+  <!-- 在圣坛为护身圣物祝圣：祈祷念珠、圣甲虫护符、净化封印、圣光冠环和护佑誓约戒指。 -->
+  <LP_Research_SacredRelics.description>Consecrate protective relics at the altar: prayer beads, scarab of protection, purifying seals, circlet of holy light and rings of protective vows.</LP_Research_SacredRelics.description>
+  <!-- 神奇器物 -->
+  <LP_Research_WondrousDevices.label>wondrous devices</LP_Research_WondrousDevices.label>
+  <!-- 不戴在身上的魔法器物：不可移动之杖、无尽水瓶、不灭火把、英灵号角（在附魔台制作）。 -->
+  <LP_Research_WondrousDevices.description>Magic devices that aren't worn: immovable rod, decanter of endless water, everburning torch, horn of valhalla (made at the enchanting table).</LP_Research_WondrousDevices.description>
+  <!-- 魔像学 -->
+  <LP_Research_GolemManual.label>golemancy</LP_Research_GolemManual.label>
+  <!-- 研究怎样把石头唤作仆从：巫妖可以在卷轴书桌撰写魔像手册，读完后在死灵仪式台制作石魔像胚体。 -->
+  <LP_Research_GolemManual.description>Study how to call stone into servitude: a lich can write a golem manual at the scroll desk, and after reading it make stone golem seeds at the necromantic ritual table.</LP_Research_GolemManual.description>
+  <!-- 装备强化 -->
+  <LP_Research_GearEnhancing.label>gear enhancement</LP_Research_GearEnhancing.label>
+  <!-- 把魔力一层层叠进已经做好的兵器和衣甲：在武器或衣物上选好强化目标，附魔台的“附魔强化（+1～+5）”工作单会用秘银和白银逐级强化它。每一级武器伤害+6%、远程命中+1.5%，衣物护甲+5%再加1%，价值+15%；强化成功时顺便修好耐久。等级越高越容易失败，失败只损失材料。 -->
+  <LP_Research_GearEnhancing.description>Layer magic onto weapons and apparel already made: pick an enhancement target on a weapon or garment, and the enchanting table's "enchant (+1 to +5)" bill will enhance it level by level with mithril and silver. Each level gives weapons +6% damage and +1.5% ranged hit, apparel +5% armor plus 1%, and +15% value; a successful enhancement also repairs durability. The higher the level, the more likely to fail; failure only loses the materials.</LP_Research_GearEnhancing.description>
+  <!-- 高阶强化 -->
+  <LP_Research_GearEnhancingHigh.label>advanced enhancement</LP_Research_GearEnhancingHigh.label>
+  <!-- 把装备从+5继续推到+10：附魔台的“附魔强化（+6～+10）”工作单改用精金和黄金。成功率更低；从+6往上失败时装备会掉一级（不会掉到+5以下）。 -->
+  <LP_Research_GearEnhancingHigh.description>Push gear from +5 on to +10: the enchanting table's "enchant (+6 to +10)" bill uses adamantine and gold instead. Lower success; failure from +6 upward drops the gear one level (never below +5).</LP_Research_GearEnhancingHigh.description>
+  <!-- 信仰与神术 -->
+  <LP_Research_Faith.label>faith and divine magic</LP_Research_Faith.label>
+  <!-- 按费伦诸神的教义建起圣坛：选择殖民地的守护神、祈祷、献祭，制作圣徽。解锁守护神像（圣坛旁的附件：圣坛速度+10%、祈祷娱乐+20%）。佩戴圣徽的人能消耗神眷施放神术。 -->
+  <LP_Research_Faith.description>Build altars per the teachings of Faerûn's gods: choose the colony's patron deity, pray, make offerings and craft holy symbols. Unlocks patron deity statues (an attachment beside the altar: altar speed +10%, prayer recreation +20%). Those wearing holy symbols can spend divine favor to cast divine magic.</LP_Research_Faith.description>
+  <!-- 天界与地狱血统 -->
+  <LP_Research_Planetouched.label>celestial and infernal bloodlines</LP_Research_Planetouched.label>
+  <!-- 研究阿斯莫与提夫林身上的天界、地狱血统。完成后神选仪式可以顺带把信徒的异种基因换成阿斯莫（善神）或提夫林（恶神）。派系里的阿斯莫和提夫林不需要这项研究。 -->
+  <LP_Research_Planetouched.description>Study the celestial and infernal bloodlines of aasimar and tieflings. Once done, the choosing ritual can also change a believer's xenogenes to aasimar (good god) or tiefling (evil god). Aasimar and tieflings in factions don't need this research.</LP_Research_Planetouched.description>
+  <!-- 神格学 -->
+  <LP_Research_Theogony.label>theurgy</LP_Research_Theogony.label>
+  <!-- 研究凡人如何吸收神性火花、登上神位：解锁“成神之路”（圣徒、半神巫妖、泰坦觉醒、篡火者）和升神仪式。 -->
+  <LP_Research_Theogony.description>Study how mortals absorb divine sparks and ascend to godhood: unlocks the "path of ascension" (saint, demigod lich, titan awakening, usurper) and the ascension ritual.</LP_Research_Theogony.description>
+  <!-- 制伏战术 -->
+  <LP_Research_Subduing.label>subduing tactics</LP_Research_Subduing.label>
+  <!-- 抓活口的门道：在符文铁砧制作制伏短棍、缚网弩和安眠短弓，在附魔台制作安眠法杖。这些武器只会让目标昏迷倒地，不会造成伤口，也不会杀死目标。装了意识形态时，还能在机械加工台制作奴隶麻醉项圈。 -->
+  <LP_Research_Subduing.description>The art of taking them alive: make subduing cudgels, net crossbows and slumber shortbows at the rune anvil, and slumber staves at the enchanting table. These weapons only knock targets unconscious, causing no wounds and never killing. With Ideology installed you can also make anesthetic slave collars at the machining table.</LP_Research_Subduing.description>
+  <!-- 深渊学 -->
+  <LP_Research_Abyssology.label>abyssology</LP_Research_Abyssology.label>
+  <!-- 研究深渊恶魔的真名、习性和召唤仪式。解锁深渊法阵、束缚法阵、驱魔结界和位面锚链。深渊法阵上一开始只能召一阶的劣魔群和夸塞魔；需要恶魔学典籍才能召二阶以上：得先读过记载那种恶魔的典籍（来自深渊低语事件、塞伊红袍法师的遗物、异域商人）。 -->
+  <LP_Research_Abyssology.description>Study the true names, habits and summoning rituals of abyssal demons. Unlocks the abyssal circle, binding circle, exorcism ward and planar anchor chain. At first the abyssal circle can only summon tier 1 manes swarms and quasits; tier 2 and above need demonology tomes: you must first read the tome recording that demon (from abyssal whispers events, Thayan Red Wizard relics and exotic traders).</LP_Research_Abyssology.description>
+  <!-- 银行业 -->
+  <LP_Banking.label>banking</LP_Banking.label>
+  <!-- 学会剑湾商会那一套：铁筋柜台、地下金库和记账的规矩。解锁银行：一座只收银与金的 2×2 金库，每格可存放 20 堆。 -->
+  <LP_Banking.description>Learn the Sword Coast merchant guild's ways: iron-barred counters, underground vaults and the rules of bookkeeping. Unlocks the bank: a 2×2 vault that only takes silver and gold, 20 stacks per cell.</LP_Banking.description>
+</LanguageData>

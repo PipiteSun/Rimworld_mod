@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 风暴巨人本源 -->
+  <LP_StormGiantCore.label>storm giant origin</LP_StormGiantCore.label>
+  <!-- 风暴巨人的海渊血脉，可随种族遗传。成年后体型为常人的2.4倍（显示1.55倍，儿童随年龄长大）；体型越大，生命和近战越强（巨躯规则），胃口也大（成年胃容量×240%），步子大却不快。风暴巨人在浅水、沼泽、浅海里行走如履平地。他们每一次近战命中都会追加一道雷霆（EMP 15），能放出闪电束；成年后还能召唤风暴。他们不在乎赤身裸体，生育能力只有常人的一半。 -->
+  <LP_StormGiantCore.description>The deep sea bloodline of storm giants, inherited with the race. Adults are 2.4 times the size of an ordinary person (drawn 1.55×, children grow with age); the bigger the body, the stronger the health and melee (giant-body rules) and the bigger the appetite (adult stomach ×240%); long strides, but not fast. Storm giants walk through shallow water, marsh and shallow ocean as if on flat ground. Every melee hit they land adds a bolt of thunder (15 EMP), and they can cast lightning bolt; as adults they can also summon storms. They don't care about nudity, and their fertility is only half of normal.</LP_StormGiantCore.description>
+  <!-- 巨人血统：风暴巨人（阶序第1位，最高）。 | 体型随年龄增长，成年达到×2.4（显示×1.55）。 | 巨躯规则：生命与近战随体型提高（可在模组设置调整）。 | 巨胃：饱食度上限随体型提高，成年×240%。 | 移动速度：×90%；生育：×50%。 | 水中行动：浅水、沼泽、浅海不减速（深水仍不可通行）。 | 雷霆一击：每次近战命中追加 EMP 15，无冷却。 | 不会因裸体产生负面心情；能穿普通衣服，巨人专属衣甲每件心情+2（最多+6）。 -->
+  <LP_StormGiantCore.customEffectDescriptions.0>Giant lineage: storm giant (rank 1 of the ordning, the highest).</LP_StormGiantCore.customEffectDescriptions.0>
+  <LP_StormGiantCore.customEffectDescriptions.1>Body size grows with age, reaching ×2.4 as an adult (drawn ×1.55).</LP_StormGiantCore.customEffectDescriptions.1>
+  <LP_StormGiantCore.customEffectDescriptions.2>Giant-body rules: health and melee increase with body size (adjustable in mod settings).</LP_StormGiantCore.customEffectDescriptions.2>
+  <LP_StormGiantCore.customEffectDescriptions.3>Giant stomach: max food rises with body size, ×240% as an adult.</LP_StormGiantCore.customEffectDescriptions.3>
+  <LP_StormGiantCore.customEffectDescriptions.4>Move speed: ×90%; fertility: ×50%.</LP_StormGiantCore.customEffectDescriptions.4>
+  <LP_StormGiantCore.customEffectDescriptions.5>Moving in water: no slowdown in shallow water, marsh and shallow ocean (deep water is still impassable).</LP_StormGiantCore.customEffectDescriptions.5>
+  <LP_StormGiantCore.customEffectDescriptions.6>Thunder strike: each melee hit adds 15 EMP, no cooldown.</LP_StormGiantCore.customEffectDescriptions.6>
+  <LP_StormGiantCore.customEffectDescriptions.7>No negative mood from nudity; can wear ordinary clothes; each piece of giant-only apparel gives mood +2 (up to +6).</LP_StormGiantCore.customEffectDescriptions.7>
+  <!-- 风暴巨人 -->
+  <LP_StormGiantCore.modExtensions.0.label>storm giant</LP_StormGiantCore.modExtensions.0.label>
+  <!-- 雷电之躯 -->
+  <LP_StormBody.label>body of lightning</LP_StormBody.label>
+  <!-- 雷电是风暴巨人的血。EMP 对他们完全无效；落雷（天然雷暴、泰坦的神罚、塔洛斯附体者召下的雷、风暴巨人自己召来的雷）的爆炸伤不到他们。 -->
+  <LP_StormBody.description>Lightning is the storm giants' blood. EMP has no effect on them at all; lightning strike explosions (natural thunderstorms, a titan's divine punishment, lightning called by Talos-possessed, lightning a storm giant calls itself) can't hurt them.</LP_StormBody.description>
+  <!-- EMP 伤害全免。 | 落雷的爆炸对自己无伤害（雷击引起的火仍会烧伤）。 -->
+  <LP_StormBody.customEffectDescriptions.0>Fully immune to EMP damage.</LP_StormBody.customEffectDescriptions.0>
+  <LP_StormBody.customEffectDescriptions.1>Lightning strike explosions don't harm them (fires caused by lightning still burn).</LP_StormBody.customEffectDescriptions.1>
+  <!-- 风暴之子 -->
+  <LP_StormChild.label>child of the storm</LP_StormChild.label>
+  <!-- 风雨越大，风暴巨人越精神。地图天气为下雨、雷雨、干雷暴或大雪时，近战伤害+15%、移动速度+10%，心情+3（风暴在歌唱）。 -->
+  <LP_StormChild.description>The bigger the storm, the livelier the storm giant. When the map's weather is rain, thunderstorm, dry thunderstorm or heavy snow: melee damage +15%, move speed +10%, mood +3 (the storm is singing).</LP_StormChild.description>
+  <!-- 下雨、雷雨、干雷暴、大雪时：近战伤害×115%、移动速度×110%、心情+3。 -->
+  <LP_StormChild.customEffectDescriptions.0>In rain, thunderstorms, dry thunderstorms or heavy snow: melee damage ×115%, move speed ×110%, mood +3.</LP_StormChild.customEffectDescriptions.0>
+  <!-- 忧郁先知 -->
+  <LP_StormMelancholy.label>melancholy seer</LP_StormMelancholy.label>
+  <!-- 看得见将来的人总是不快乐。风暴巨人常年心情-3（沉重的预兆）；只有在雨里，或者身边5格内没有别人、能独自望着天边时，这份忧郁才会散去。 -->
+  <LP_StormMelancholy.description>Those who can see the future are never happy. Storm giants have a constant mood -3 (heavy portents); only in the rain, or with no one else within 5 cells so they can gaze at the horizon alone, does the gloom lift.</LP_StormMelancholy.description>
+  <!-- 常驻心情-3；雨天或5格内没有别人时不生效。 -->
+  <LP_StormMelancholy.customEffectDescriptions.0>Permanent mood -3; doesn't apply in rain or with nobody else within 5 cells.</LP_StormMelancholy.customEffectDescriptions.0>
+  <!-- 风暴预兆 -->
+  <LP_StormOmen.label>storm omen</LP_StormOmen.label>
+  <!-- 风暴巨人能从风云里读出将要到来的灾祸。家园地图上有成年的风暴巨人时，点数≥1000的敌对袭击推迟12小时落地，并提前来信说明派系和方向（与竖琴手预警叠加，可在模组设置关闭）。 -->
+  <LP_StormOmen.description>Storm giants can read coming disasters in the winds and clouds. With an adult storm giant on the home map, hostile raids of ≥1000 points are delayed 12 hours and a letter announces the faction and direction in advance (stacks with the Harper warning; can be turned off in mod settings).</LP_StormOmen.description>
+  <!-- 成年后：家园地图的≥1000点敌对袭击推迟12小时，并提前预警。 -->
+  <LP_StormOmen.customEffectDescriptions.0>As an adult: hostile raids of ≥1000 points on the home map are delayed 12 hours and announced in advance.</LP_StormOmen.customEffectDescriptions.0>
+  <!-- 淡紫灰肤色 -->
+  <LP_SkinStormViolet.label>pale lilac-grey skin</LP_SkinStormViolet.label>
+  <!-- 风暴巨人淡紫灰色的皮肤，像雷雨前的天色。 -->
+  <LP_SkinStormViolet.description>A storm giant's pale lilac-grey skin, like the sky before a thunderstorm.</LP_SkinStormViolet.description>
+  <!-- 淡紫灰 -->
+  <LP_SkinStormViolet.labelShortAdj>pale lilac-grey</LP_SkinStormViolet.labelShortAdj>
+  <!-- 青绿肤色 -->
+  <LP_SkinStormTeal.label>teal skin</LP_SkinStormTeal.label>
+  <!-- 风暴巨人青绿色的皮肤，像风暴里的海水。 -->
+  <LP_SkinStormTeal.description>A storm giant's teal skin, like seawater in a storm.</LP_SkinStormTeal.description>
+  <!-- 青绿 -->
+  <LP_SkinStormTeal.labelShortAdj>teal</LP_SkinStormTeal.labelShortAdj>
+  <!-- 银白发色 -->
+  <LP_HairStormSilver.label>silver-white hair</LP_HairStormSilver.label>
+  <!-- 银白色的头发，像浪尖上的泡沫。 -->
+  <LP_HairStormSilver.description>Silver-white hair, like foam on the crest of a wave.</LP_HairStormSilver.description>
+  <!-- 深蓝发色 -->
+  <LP_HairStormBlue.label>deep blue hair</LP_HairStormBlue.label>
+  <!-- 深蓝色的头发，像风暴中心的海。 -->
+  <LP_HairStormBlue.description>Deep blue hair, like the sea at the heart of a storm.</LP_HairStormBlue.description>
+  <!-- 珊瑚雷纹头冠 -->
+  <LP_StormCrown.label>coral thunder crown</LP_StormCrown.label>
+  <!-- 风暴巨人用海渊珊瑚编成的头冠，枝杈上刻着雷纹，下雨时会泛起微光。 -->
+  <LP_StormCrown.description>A storm giant's crown woven from deep sea coral, its branches carved with thunder patterns that glow faintly in the rain.</LP_StormCrown.description>
+</LanguageData>

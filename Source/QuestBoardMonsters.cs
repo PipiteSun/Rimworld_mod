@@ -24,7 +24,7 @@ namespace LichPhylactery {
   public const float EscortShare=.4f,MonsterSilver=1.25f,MonsterDndBonus=.15f;
   public static string TestTheme;
 
-  public static string ThemeLabel(string t)=>t==Beasts?"魔兽群":t==Giants?"巨人劫掠队":t==Abyss?"深渊魔群":t==Hell?"九狱魔军":t==Dragon?"真龙":t==Legend?"传奇魔物":"魔物";
+  public static string ThemeLabel(string t)=>t==Beasts?"魔兽群".Loc():t==Giants?"巨人劫掠队".Loc():t==Abyss?"深渊魔群".Loc():t==Hell?"九狱魔军".Loc():t==Dragon?"真龙".Loc():t==Legend?"传奇魔物".Loc():"魔物".Loc();
   public static int MinTier(string t)=>t==Beasts?1:t==Giants || t==Abyss?2:t==Hell?3:t==Dragon?4:5;
   static PawnKindDef K(string n)=>DefDatabase<PawnKindDef>.GetNamedSilentFail(n??"");
   static bool Any(string[] kinds)=>kinds.Any(n=>K(n)!=null);
@@ -88,13 +88,13 @@ namespace LichPhylactery {
   public static string Roster(BoardContract c){
    var parts=new List<string>();var lead=LeadLabel(c);if(lead!=null)parts.Add(lead);
    if(c.kinds!=null)foreach(var g in c.kinds.GroupBy(n=>n))parts.Add((K(g.Key)?.label??g.Key)+(g.Count()>1?" ×"+g.Count():""));
-   if(c.theme==Dragon)parts.Add("本色护卫");
-   return string.Join("、",parts);
+   if(c.theme==Dragon)parts.Add("本色护卫".Loc());
+   return string.Join("、".Loc(),parts);
   }
-  public static string Title(BoardContract c){var lead=LeadLabel(c);return "魔物来袭："+(lead!=null?(c.theme==Legend?lead+"带队":lead):ThemeLabel(c.theme));}
+  public static string Title(BoardContract c){var lead=LeadLabel(c);return "魔物来袭：".Loc()+(lead!=null?(c.theme==Legend?lead+"带队".Loc():lead):ThemeLabel(c.theme));}
   public static string Describe(BoardContract c){
-   string who=c.theme==Beasts?"一群被魔力扭曲的魔兽（永久狂暴）":c.theme==Giants?"一支巨人劫掠队（"+(GiantFaction()?.Name??"敌对派系")+"）":c.theme==Abyss?"一股从深渊裂口里爬出的魔群":c.theme==Hell?"一支九狱军团的魔鬼小队":c.theme==Dragon?"一头"+LeadLabel(c)+"和它的护卫":c.theme==Legend?"传说中的"+LeadLabel(c)+"和它的随从":"一群魔物";
-   return "冒险者公会的斥候带回消息："+who+"正朝殖民地而来。接下委托后 6～12 小时内来袭，打退所有来犯者（杀死、打倒、俘虏或赶走）就算完成。\n\n预计阵容："+Roster(c)+(c.theme==Dragon?"（真龙受重伤会飞走，也算打退）":"")+"。";
+   string who=c.theme==Beasts?"一群被魔力扭曲的魔兽（永久狂暴）".Loc():c.theme==Giants?"一支巨人劫掠队（".Loc()+(GiantFaction()?.Name??"敌对派系".Loc())+"）".Loc():c.theme==Abyss?"一股从深渊裂口里爬出的魔群".Loc():c.theme==Hell?"一支九狱军团的魔鬼小队".Loc():c.theme==Dragon?"一头".Loc()+LeadLabel(c)+"和它的护卫".Loc():c.theme==Legend?"传说中的".Loc()+LeadLabel(c)+"和它的随从".Loc():"一群魔物".Loc();
+   return "冒险者公会的斥候带回消息：".Loc()+who+"正朝殖民地而来。接下委托后 6～12 小时内来袭，打退所有来犯者（杀死、打倒、俘虏或赶走）就算完成。\n\n预计阵容：".Loc()+Roster(c)+(c.theme==Dragon?"（真龙受重伤会飞走，也算打退）".Loc():"")+"。".Loc();
   }
 
   // ---------- 来袭 ----------

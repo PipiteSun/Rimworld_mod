@@ -42,12 +42,12 @@ namespace LichPhylactery {
   public static Res Main(Pawn p,AbilityDef d=null){
    var h=Adventurer.Get(p);var res=new Res{label="",cur=0f,max=0f,color=Color.gray};if(h?.classes==null)return res;
    LP_ClassDef c=d!=null?ClassSystem.CastClassOf(p,d):null;
-   if(d!=null && LakeSeals.Is(d)){res.label="湖息";res.cur=LakeSeals.Breath(h);res.max=LakeSeals.BreathMax(h);res.color=LakeSeals.Teal;return res;}
+   if(d!=null && LakeSeals.Is(d)){res.label="湖息".Loc();res.cur=LakeSeals.Breath(h);res.max=LakeSeals.BreathMax(h);res.color=LakeSeals.Teal;return res;}
    if(c==null && d==null)c=ClassSystem.Taken(h).Where(x=>x.resource!=ClassResource.None).OrderByDescending(x=>ClassSystem.Level(h,x)).FirstOrDefault();
    if(c!=null && c.resource!=ClassResource.None){res.label=ClassSystem.ResourceLabel(c.resource);res.cur=ClassSystem.Resource(h,c);res.max=ClassSystem.MaxResource(h,c);res.color=ColorOf(c.resource);return res;}
    var l=(c!=null?CasterSpells.ListOf(c):null)??CasterSpells.ListsOf(p).FirstOrDefault(x=>x.UsesEnergy);
-   if(l!=null && l.UsesEnergy){res.label="法术能量";res.cur=CasterSpells.EnergyLeft(h,l);res.max=CasterSpells.EnergyMax(h,l);res.color=new Color(.55f,.8f,1f);return res;}
-   if(d==null && h.classes.lake!=null && h.classes.lake.seals.Count>0){res.label="湖息";res.cur=LakeSeals.Breath(h);res.max=LakeSeals.BreathMax(h);res.color=LakeSeals.Teal;}
+   if(l!=null && l.UsesEnergy){res.label="法术能量".Loc();res.cur=CasterSpells.EnergyLeft(h,l);res.max=CasterSpells.EnergyMax(h,l);res.color=new Color(.55f,.8f,1f);return res;}
+   if(d==null && h.classes.lake!=null && h.classes.lake.seals.Count>0){res.label="湖息".Loc();res.cur=LakeSeals.Breath(h);res.max=LakeSeals.BreathMax(h);res.color=LakeSeals.Teal;}
    return res;
   }
   // 头像资源条的缓存（每个人 30 帧算一次；只在界面线程用）。
@@ -66,7 +66,7 @@ namespace LichPhylactery {
  }
  [HarmonyPatch(typeof(ColonistBarColonistDrawer),nameof(ColonistBarColonistDrawer.DrawColonist))]
  public static class ColonistResourceBar {
-  static void Postfix(Rect rect,Pawn colonist){try{AutoCastPlus.DrawBar(rect,colonist);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 资源条："+e.Message,0x13601);}}
+  static void Postfix(Rect rect,Pawn colonist){try{AutoCastPlus.DrawBar(rect,colonist);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 资源条：".Loc()+e.Message,0x13601);}}
  }
 
  // 自动施放设置窗口（不用浮动菜单）。
@@ -76,19 +76,19 @@ namespace LichPhylactery {
   public override Vector2 InitialSize=>LPUI.Fit(460f,330f);
   public override void DoWindowContents(Rect r){
    try{
-    float y=LPUI.Title(r,"自动施放："+a.def.LabelCap);
+    float y=LPUI.Title(r,"自动施放：".Loc()+a.def.LabelCap);
     var p=a.pawn;
-    bool d=ClassAutoCast.IsOn(a);var r1=new Rect(r.x,y,r.width,28f);bool d2=d;Widgets.CheckboxLabeled(r1,"征召时自动施放（征召待命或战斗中）",ref d2);if(d2!=d)ClassAutoCast.Toggle(a);y+=32f;
+    bool d=ClassAutoCast.IsOn(a);var r1=new Rect(r.x,y,r.width,28f);bool d2=d;Widgets.CheckboxLabeled(r1,"征召时自动施放（征召待命或战斗中）".Loc(),ref d2);if(d2!=d)ClassAutoCast.Toggle(a);y+=32f;
     bool help=AutoCastPlus.Helpful(a);var r2=new Rect(r.x,y,r.width,28f);
-    if(help){bool u=AutoCastPlus.Undrafted(p,a.def),u2=u;Widgets.CheckboxLabeled(r2,"未征召时自动施放（平时也会给受伤 / 需要的人放）",ref u2);if(u2!=u)AutoCastPlus.SetUndrafted(p,a.def,u2);}
-    else LPUI.Unavailable(r2,"攻击类能力不能在未征召时自动施放");
+    if(help){bool u=AutoCastPlus.Undrafted(p,a.def),u2=u;Widgets.CheckboxLabeled(r2,"未征召时自动施放（平时也会给受伤 / 需要的人放）".Loc(),ref u2);if(u2!=u)AutoCastPlus.SetUndrafted(p,a.def,u2);}
+    else LPUI.Unavailable(r2,"攻击类能力不能在未征召时自动施放".Loc());
     y+=34f;
     int t=AutoCastPlus.Threshold(p,a.def);var res=AutoCastPlus.Main(p,a.def);
-    LPUI.LabelFit(new Rect(r.x,y,r.width,24f),"资源低于 "+t+"% 不自动用"+(res.max>0f?"（"+res.label+" 现在 "+res.cur.ToString("0.#")+" / "+res.max.ToString("0.#")+"）":"（这个能力不耗资源）"));y+=26f;
+    LPUI.LabelFit(new Rect(r.x,y,r.width,24f),"资源低于 ".Loc()+t+"% 不自动用".Loc()+(res.max>0f?"（".Loc()+res.label+" 现在 ".Loc()+res.cur.ToString("0.#")+" / "+res.max.ToString("0.#")+"）".Loc():"（这个能力不耗资源）".Loc()));y+=26f;
     var row=LPUI.Row(new Rect(r.x,y,r.width,28f),10,3f);
     for(int i=0;i<10;i++){int v=i*10;if(Widgets.ButtonText(row[i],v+"%",true,true,t!=v))AutoCastPlus.SetThreshold(p,a.def,v);}
     y+=34f;
-    LPUI.Tiny(new Rect(r.x,y,r.width,40f),"选中的人只改这一个能力。征召时的开关也可以直接左键点按钮右上角的小角标，右键角标打开这个窗口。",true);
+    LPUI.Tiny(new Rect(r.x,y,r.width,40f),"选中的人只改这一个能力。征召时的开关也可以直接左键点按钮右上角的小角标，右键角标打开这个窗口。".Loc(),true);
    }finally{LPUI.Reset();}
   }
  }

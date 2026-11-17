@@ -1,0 +1,807 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- [PAWN_nameDef]在深水城的码头上长大，白天替商船扛货，晚上听水手吹牛。[PAWN_nameDef]学会了在醉汉中间说好话，也学会了在说好话没用的时候先动手。 -->
+  <LP_Bs_DockChild.description>[PAWN_nameDef] grew up on the Waterdeep docks, hauling cargo for merchant ships by day and listening to sailors' tall tales by night. [PAWN_nameDef] learned to sweet-talk drunks, and to strike first when sweet talk failed.</LP_Bs_DockChild.description>
+  <!-- 深水城码头孩 -->
+  <LP_Bs_DockChild.title>Waterdeep dock kid</LP_Bs_DockChild.title>
+  <!-- 码头孩 -->
+  <LP_Bs_DockChild.titleShort>dock kid</LP_Bs_DockChild.titleShort>
+  <!-- 博德之门下城区的孩子没有谁是空着手长大的。[PAWN_nameDef]会撬锁、会跑、会在火焰之拳的巡逻队面前装出一脸无辜。 -->
+  <LP_Bs_GateUrchin.description>No child of Baldur's Gate's lower city grows up empty-handed. [PAWN_nameDef] can pick locks, run, and put on an innocent face in front of Flaming Fist patrols.</LP_Bs_GateUrchin.description>
+  <!-- 博德之门街童 -->
+  <LP_Bs_GateUrchin.title>Baldur's Gate street urchin</LP_Bs_GateUrchin.title>
+  <!-- 街童 -->
+  <LP_Bs_GateUrchin.titleShort>urchin</LP_Bs_GateUrchin.titleShort>
+  <!-- [PAWN_nameDef]是剑湾一户小农家的孩子，种萝卜、赶羊、躲地精。每年秋天都有冒险者路过村子，[PAWN_nameDef]总是看着他们的背影发呆。 -->
+  <LP_Bs_SwordCoastFarm.description>[PAWN_nameDef] is the child of a small farming family on the Sword Coast: growing turnips, herding sheep, dodging goblins. Every autumn adventurers passed through the village, and [PAWN_nameDef] always stared after them.</LP_Bs_SwordCoastFarm.description>
+  <!-- 剑湾农家子 -->
+  <LP_Bs_SwordCoastFarm.title>Sword Coast farm child</LP_Bs_SwordCoastFarm.title>
+  <!-- 农家子 -->
+  <LP_Bs_SwordCoastFarm.titleShort>farm child</LP_Bs_SwordCoastFarm.titleShort>
+  <!-- [PAWN_nameDef]在烛堡的抄经房里长大，替僧侣誊写一本又一本古书。[PAWN_nameDef]读过的禁书比大多数法师都多，只是没人知道。 -->
+  <LP_Bs_CandlekeepScribe.description>[PAWN_nameDef] grew up in the scriptorium of Candlekeep, copying old book after old book for the monks. [PAWN_nameDef] has read more forbidden books than most wizards; nobody knows.</LP_Bs_CandlekeepScribe.description>
+  <!-- 烛堡抄写童 -->
+  <LP_Bs_CandlekeepScribe.title>Candlekeep scribe child</LP_Bs_CandlekeepScribe.title>
+  <!-- 抄写童 -->
+  <LP_Bs_CandlekeepScribe.titleShort>scribe child</LP_Bs_CandlekeepScribe.titleShort>
+  <!-- [PAWN_nameDef]的父母死于一场与塞伊有关的暗杀。竖琴手收养了[PAWN_nameDef]，教会了暗号、弓术，以及“永远别相信穿红袍的人”。 -->
+  <LP_Bs_HarperWard.description>[PAWN_nameDef]'s parents died in an assassination linked to Thay. The Harpers took [PAWN_nameDef] in and taught [PAWN_objective] codes, archery, and "never trust anyone in red robes".</LP_Bs_HarperWard.description>
+  <!-- 竖琴手的养子 -->
+  <LP_Bs_HarperWard.title>Harper foster child</LP_Bs_HarperWard.title>
+  <!-- 竖琴手养子 -->
+  <LP_Bs_HarperWard.titleShort>Harper foster child</LP_Bs_HarperWard.titleShort>
+  <!-- [PAWN_nameDef]在一家叫“打呵欠的门户”的酒馆里刷盘子、端炖菜。每一张通缉令、每一个藏宝图的传言，[PAWN_nameDef]都是第一个听到的。 -->
+  <LP_Bs_TavernHand.description>[PAWN_nameDef] washed dishes and served stew in a tavern called the Yawning Portal. [PAWN_nameDef] was the first to hear every wanted poster and every treasure map rumor.</LP_Bs_TavernHand.description>
+  <!-- 冒险者酒馆帮工 -->
+  <LP_Bs_TavernHand.title>adventurers' tavern helper</LP_Bs_TavernHand.title>
+  <!-- 酒馆帮工 -->
+  <LP_Bs_TavernHand.titleShort>tavern helper</LP_Bs_TavernHand.titleShort>
+  <!-- [PAWN_nameDef]被遗弃在晨曦之主神殿的台阶上，由牧师们养大。[PAWN_nameDef]学会的第一件事是包扎伤口，第二件事是在日出时祈祷。 -->
+  <LP_Bs_TempleOrphan.description>[PAWN_nameDef] was abandoned on the steps of the Morninglord's temple and raised by the priests. The first thing [PAWN_nameDef] learned was bandaging wounds, the second was praying at sunrise.</LP_Bs_TempleOrphan.description>
+  <!-- 晨曦神殿孤儿 -->
+  <LP_Bs_TempleOrphan.title>dawn temple orphan</LP_Bs_TempleOrphan.title>
+  <!-- 神殿孤儿 -->
+  <LP_Bs_TempleOrphan.titleShort>temple orphan</LP_Bs_TempleOrphan.titleShort>
+  <!-- [PAWN_nameDef]是在商队篷车上出生的，从安姆走到卡林珊，又从卡林珊走回来。[PAWN_nameDef]记得每一条商路上哪口井有水、哪个关卡要塞钱。 -->
+  <LP_Bs_CaravanChild.description>[PAWN_nameDef] was born on a caravan wagon, traveling from Amn to Calimshan and back again. [PAWN_nameDef] remembers which wells have water and which checkpoints need a bribe on every trade road.</LP_Bs_CaravanChild.description>
+  <!-- 篷车商队之子 -->
+  <LP_Bs_CaravanChild.title>caravan born</LP_Bs_CaravanChild.title>
+  <!-- 商队之子 -->
+  <LP_Bs_CaravanChild.titleShort>caravan child</LP_Bs_CaravanChild.titleShort>
+  <!-- [PAWN_nameDef]揭过告示板上的每一种委托：清地精窝、护送商队、找丢失的猫。大多数队友都死在了半路上，[PAWN_nameDef]活了下来，并为此感到一点内疚。 -->
+  <LP_Bs_Adventurer.description>[PAWN_nameDef] has taken every kind of commission on the board: clearing goblin nests, escorting caravans, finding lost cats. Most teammates died along the way; [PAWN_nameDef] survived, and feels a little guilty about it.</LP_Bs_Adventurer.description>
+  <!-- 赏金冒险者 -->
+  <LP_Bs_Adventurer.title>bounty adventurer</LP_Bs_Adventurer.title>
+  <!-- 冒险者 -->
+  <LP_Bs_Adventurer.titleShort>adventurer</LP_Bs_Adventurer.titleShort>
+  <!-- [PAWN_nameDef]专门钻那些别人不敢进的古墓和地城。[PAWN_nameDef]能闻出陷阱的味道，也知道宝箱里最值钱的往往是那张不起眼的地图。 -->
+  <LP_Bs_DungeonDelver.description>[PAWN_nameDef] specializes in tombs and dungeons nobody else dares enter. [PAWN_nameDef] can smell a trap, and knows the most valuable thing in a chest is often the unremarkable map.</LP_Bs_DungeonDelver.description>
+  <!-- 地城探索者 -->
+  <LP_Bs_DungeonDelver.title>dungeon delver</LP_Bs_DungeonDelver.title>
+  <!-- 地城探索者 -->
+  <LP_Bs_DungeonDelver.titleShort>dungeon delver</LP_Bs_DungeonDelver.titleShort>
+  <!-- [PAWN_nameDef]在剑湾的每一家酒馆都唱过歌，也欠过每一家酒馆的账。[PAWN_nameDef]的歌能让敌人放下武器，也能让朋友拔出武器。 -->
+  <LP_Bs_Bard.description>[PAWN_nameDef] has sung in every tavern on the Sword Coast and owes money to every one of them. [PAWN_nameDef]'s songs can make enemies lay down their weapons, and friends draw theirs.</LP_Bs_Bard.description>
+  <!-- 流浪吟游诗人 -->
+  <LP_Bs_Bard.title>wandering bard</LP_Bs_Bard.title>
+  <!-- 吟游诗人 -->
+  <LP_Bs_Bard.titleShort>bard</LP_Bs_Bard.titleShort>
+  <!-- [PAWN_nameDef]给穿越荒野的商队当向导，在高森林边缘守了很多年。[PAWN_nameDef]宁可睡在星空下，也不愿在城里多待一晚。 -->
+  <LP_Bs_RangerGuide.description>[PAWN_nameDef] guided caravans through the wilds and kept watch on the edge of the High Forest for many years. [PAWN_nameDef] would rather sleep under the stars than spend one more night in a city.</LP_Bs_RangerGuide.description>
+  <!-- 边境游侠 -->
+  <LP_Bs_RangerGuide.title>frontier ranger</LP_Bs_RangerGuide.title>
+  <!-- 游侠 -->
+  <LP_Bs_RangerGuide.titleShort>ranger</LP_Bs_RangerGuide.titleShort>
+  <!-- [PAWN_nameDef]在深水城城卫队服役多年，抓过小偷、拦过醉鬼，也在一个雨夜亲眼看见一头眼魔从下水道里飘出来。 -->
+  <LP_Bs_CityWatch.description>[PAWN_nameDef] served in the Waterdeep City Watch for years, catching thieves, stopping drunks, and one rainy night seeing a beholder float out of the sewers.</LP_Bs_CityWatch.description>
+  <!-- 城卫军士 -->
+  <LP_Bs_CityWatch.title>city watch sergeant</LP_Bs_CityWatch.title>
+  <!-- 城卫 -->
+  <LP_Bs_CityWatch.titleShort>watchman</LP_Bs_CityWatch.titleShort>
+  <!-- [PAWN_nameDef]在法师学院读了七年，最后因为一场炸掉半座塔的实验被开除。[PAWN_nameDef]坚持说那次实验“在理论上是成功的”。 -->
+  <LP_Bs_FailedWizard.description>[PAWN_nameDef] studied at a wizard academy for seven years and was expelled after an experiment blew up half a tower. [PAWN_nameDef] insists that experiment was "a success in theory".</LP_Bs_FailedWizard.description>
+  <!-- 落第法师 -->
+  <LP_Bs_FailedWizard.title>failed wizard</LP_Bs_FailedWizard.title>
+  <!-- 落第法师 -->
+  <LP_Bs_FailedWizard.titleShort>failed wizard</LP_Bs_FailedWizard.titleShort>
+  <!-- [PAWN_nameDef]是影贼公会的一员，替公会收保护费、开锁、偶尔“劝说”不肯交钱的商人。离开公会的方式只有两种，[PAWN_nameDef]选了比较少见的那一种。 -->
+  <LP_Bs_ThievesGuild.description>[PAWN_nameDef] was a member of the Shadow Thieves, collecting protection money, picking locks, and occasionally "persuading" merchants who wouldn't pay. There are only two ways to leave the guild, and [PAWN_nameDef] chose the rarer one.</LP_Bs_ThievesGuild.description>
+  <!-- 盗贼公会成员 -->
+  <LP_Bs_ThievesGuild.title>thieves' guild member</LP_Bs_ThievesGuild.title>
+  <!-- 盗贼 -->
+  <LP_Bs_ThievesGuild.titleShort>thief</LP_Bs_ThievesGuild.titleShort>
+  <!-- [PAWN_nameDef]在博德之门的火焰之拳佣兵团当过兵，打过地精、海盗和邪教徒。佣兵团的信条很简单：先拿钱，再拔剑。 -->
+  <LP_Bs_FlamingFist.description>[PAWN_nameDef] served in the Flaming Fist mercenary company of Baldur's Gate, fighting goblins, pirates and cultists. The company's creed is simple: take the money first, then draw the sword.</LP_Bs_FlamingFist.description>
+  <!-- 火焰之拳佣兵 -->
+  <LP_Bs_FlamingFist.title>Flaming Fist mercenary</LP_Bs_FlamingFist.title>
+  <!-- 佣兵 -->
+  <LP_Bs_FlamingFist.titleShort>mercenary</LP_Bs_FlamingFist.titleShort>
+  <!-- [PAWN_nameDef]跟着费伦拓荒同盟去过好几片无主之地，砍树、垒墙、开荒。[PAWN_nameDef]亲手建起过三座村子，又亲眼看着其中两座被烧掉。 -->
+  <LP_Bs_Homesteader.description>[PAWN_nameDef] followed Faerûn's pioneer league to several ownerless lands, felling trees, building walls and clearing fields. [PAWN_nameDef] built three villages by hand and watched two of them burn.</LP_Bs_Homesteader.description>
+  <!-- 拓荒定居者 -->
+  <LP_Bs_Homesteader.title>pioneer settler</LP_Bs_Homesteader.title>
+  <!-- 拓荒者 -->
+  <LP_Bs_Homesteader.titleShort>pioneer</LP_Bs_Homesteader.titleShort>
+  <!-- [PAWN_nameDef]在集市上卖药水：治疗药水、隐形药水、以及据说能让头发重新长出来的药水。前两种大多是真的。 -->
+  <LP_Bs_Alchemist.description>[PAWN_nameDef] sold potions at the market: healing potions, invisibility potions, and potions said to regrow hair. The first two were mostly real.</LP_Bs_Alchemist.description>
+  <!-- 街头炼金术士 -->
+  <LP_Bs_Alchemist.title>street alchemist</LP_Bs_Alchemist.title>
+  <!-- 炼金术士 -->
+  <LP_Bs_Alchemist.titleShort>alchemist</LP_Bs_Alchemist.titleShort>
+  <!-- [PAWN_nameDef]从小在神殿的唱诗班里唱颂歌。[PAWN_nameDef]的嗓子很好，好到连脾气最坏的老祭司都会在听歌时闭上眼睛。 -->
+  <LP_Bs_TempleChoir.description>[PAWN_nameDef] sang hymns in a temple choir from childhood. [PAWN_nameDef]'s voice was so good that even the grumpiest old priest would close his eyes to listen.</LP_Bs_TempleChoir.description>
+  <!-- 神殿唱诗童 -->
+  <LP_Bs_TempleChoir.title>temple choir child</LP_Bs_TempleChoir.title>
+  <!-- 唱诗童 -->
+  <LP_Bs_TempleChoir.titleShort>choir child</LP_Bs_TempleChoir.titleShort>
+  <!-- [PAWN_nameDef]是晨曦之主拉山德的侍僧，在瘟疫村庄和战场之间奔走。[PAWN_nameDef]相信每一个黎明都是一次新的机会，包括对最坏的人。 -->
+  <LP_Bs_MorninglordAcolyte.description>[PAWN_nameDef] is an acolyte of Lathander, Morninglord, running between plague villages and battlefields. [PAWN_nameDef] believes every dawn is a new chance, even for the worst people.</LP_Bs_MorninglordAcolyte.description>
+  <!-- 晨曦教会侍僧 -->
+  <LP_Bs_MorninglordAcolyte.title>acolyte of the dawn church</LP_Bs_MorninglordAcolyte.title>
+  <!-- 侍僧 -->
+  <LP_Bs_MorninglordAcolyte.titleShort>acolyte</LP_Bs_MorninglordAcolyte.titleShort>
+  <!-- [PAWN_nameDef]向公正之神提尔立下誓言，守护弱者、审判罪人。[PAWN_nameDef]的盾牌上刻着天平，剑上刻着誓言的每一个字。 -->
+  <LP_Bs_TyrPaladin.description>[PAWN_nameDef] swore an oath to Tyr, god of justice, to protect the weak and judge the guilty. Scales are engraved on [PAWN_nameDef]'s shield, and every word of the oath on the sword.</LP_Bs_TyrPaladin.description>
+  <!-- 提尔的圣武士 -->
+  <LP_Bs_TyrPaladin.title>paladin of Tyr</LP_Bs_TyrPaladin.title>
+  <!-- 圣武士 -->
+  <LP_Bs_TyrPaladin.titleShort>paladin</LP_Bs_TyrPaladin.titleShort>
+  <!-- [PAWN_nameDef]侍奉死神凯兰沃，替无名尸体下葬，替亡魂引路。[PAWN_nameDef]憎恨一切不死生物，对巫妖尤其如此。 -->
+  <LP_Bs_KelemvorUndertaker.description>[PAWN_nameDef] serves Kelemvor, god of death, burying nameless corpses and guiding lost souls. [PAWN_nameDef] hates all undead, liches most of all.</LP_Bs_KelemvorUndertaker.description>
+  <!-- 凯兰沃的送葬人 -->
+  <LP_Bs_KelemvorUndertaker.title>undertaker of Kelemvor</LP_Bs_KelemvorUndertaker.title>
+  <!-- 送葬人 -->
+  <LP_Bs_KelemvorUndertaker.titleShort>undertaker</LP_Bs_KelemvorUndertaker.titleShort>
+  <!-- [PAWN_nameDef]走遍了费伦的圣地，在每一座神龛前留下一枚铜币。[PAWN_nameDef]说自己在找一个答案，但从来不说问题是什么。 -->
+  <LP_Bs_Pilgrim.description>[PAWN_nameDef] has visited every holy site in Faerûn, leaving a copper coin at each shrine. [PAWN_nameDef] says [PAWN_pronoun] is looking for an answer, but never says what the question is.</LP_Bs_Pilgrim.description>
+  <!-- 云游朝圣者 -->
+  <LP_Bs_Pilgrim.title>wandering pilgrim</LP_Bs_Pilgrim.title>
+  <!-- 朝圣者 -->
+  <LP_Bs_Pilgrim.titleShort>pilgrim</LP_Bs_Pilgrim.titleShort>
+  <!-- [PAWN_nameDef]出生在塞伊高原的奴隶营里，记事起就在采石场搬石头。红袍法师从[PAWN_nameDef]身边走过时，从来不会低头看一眼。 -->
+  <LP_Bs_ThayBorn.description>[PAWN_nameDef] was born in a slave camp on the Thayan plateau and has carried stones in the quarry for as long as [PAWN_pronoun] can remember. Red Wizards walking past [PAWN_nameDef] never looked down even once.</LP_Bs_ThayBorn.description>
+  <!-- 塞伊奴隶营之子 -->
+  <LP_Bs_ThayBorn.title>child of a Thayan slave camp</LP_Bs_ThayBorn.title>
+  <!-- 奴隶营之子 -->
+  <LP_Bs_ThayBorn.titleShort>slave camp child</LP_Bs_ThayBorn.titleShort>
+  <!-- [PAWN_nameDef]从小被送进塞伊的法术学校。在那里，同学之间互相下毒是一门选修课，背叛是必修课。 -->
+  <LP_Bs_RedRobeApprentice.description>[PAWN_nameDef] was sent to a Thayan spell school as a child. There, poisoning classmates is an elective and betrayal is required.</LP_Bs_RedRobeApprentice.description>
+  <!-- 红袍学徒 -->
+  <LP_Bs_RedRobeApprentice.title>Red Wizard apprentice</LP_Bs_RedRobeApprentice.title>
+  <!-- 红袍学徒 -->
+  <LP_Bs_RedRobeApprentice.titleShort>Red Wizard apprentice</LP_Bs_RedRobeApprentice.titleShort>
+  <!-- [PAWN_nameDef]是塞伊的红袍法师，剃光了头，纹满了法术刺青。在塞伊，红袍是一切的主人；离开塞伊，[PAWN_nameDef]依然这么认为。 -->
+  <LP_Bs_RedWizard.description>[PAWN_nameDef] is a Red Wizard of Thay, head shaved and covered in spell tattoos. In Thay the Red Wizards are masters of everything; outside Thay, [PAWN_nameDef] still thinks so.</LP_Bs_RedWizard.description>
+  <!-- 塞伊红袍法师 -->
+  <LP_Bs_RedWizard.title>Red Wizard of Thay</LP_Bs_RedWizard.title>
+  <!-- 红袍法师 -->
+  <LP_Bs_RedWizard.titleShort>Red Wizard</LP_Bs_RedWizard.titleShort>
+  <!-- [PAWN_nameDef]负责给塞伊军队里的巨魔烙上符印。[PAWN_nameDef]手臂上的每一道伤疤都来自一头还没被驯服的巨魔。 -->
+  <LP_Bs_RuneTamer.description>[PAWN_nameDef] branded sigils onto the trolls of the Thayan army. Every scar on [PAWN_nameDef]'s arms came from a troll not yet broken.</LP_Bs_RuneTamer.description>
+  <!-- 符印驯兽师 -->
+  <LP_Bs_RuneTamer.title>sigil beastmaster</LP_Bs_RuneTamer.title>
+  <!-- 驯兽师 -->
+  <LP_Bs_RuneTamer.titleShort>beastmaster</LP_Bs_RuneTamer.titleShort>
+  <!-- [PAWN_nameDef]被塞伊征去当兵，站在骷髅和巨魔的队伍最前面。没人教过[PAWN_nameDef]读书，只教过怎么在冲锋时不回头。 -->
+  <LP_Bs_ThayConscript.description>[PAWN_nameDef] was conscripted by Thay and stood at the very front of the skeleton and troll ranks. Nobody taught [PAWN_nameDef] to read, only how not to look back during a charge.</LP_Bs_ThayConscript.description>
+  <!-- 塞伊奴隶兵 -->
+  <LP_Bs_ThayConscript.title>Thayan slave soldier</LP_Bs_ThayConscript.title>
+  <!-- 奴隶兵 -->
+  <LP_Bs_ThayConscript.titleShort>slave soldier</LP_Bs_ThayConscript.titleShort>
+  <!-- [PAWN_nameDef]在塞伊的死灵工坊里监督尸体的缝合与唤醒。[PAWN_nameDef]对死人比对活人有耐心得多。 -->
+  <LP_Bs_NecroForeman.description>[PAWN_nameDef] oversaw the stitching and raising of corpses in a Thayan necromancy workshop. [PAWN_nameDef] has far more patience with the dead than the living.</LP_Bs_NecroForeman.description>
+  <!-- 死灵工坊监工 -->
+  <LP_Bs_NecroForeman.title>necromancy workshop overseer</LP_Bs_NecroForeman.title>
+  <!-- 死灵监工 -->
+  <LP_Bs_NecroForeman.titleShort>necro overseer</LP_Bs_NecroForeman.titleShort>
+  <!-- [PAWN_nameDef]替塞伊的地方总督收税。交不出税的农民有两个选择：交出儿子，或者交出自己。[PAWN_nameDef]会礼貌地问清楚是哪一个。 -->
+  <LP_Bs_TaxCollector.description>[PAWN_nameDef] collected taxes for a Thayan governor. Peasants who couldn't pay had two choices: hand over a son, or hand over themselves. [PAWN_nameDef] would politely ask which.</LP_Bs_TaxCollector.description>
+  <!-- 塞伊收税官 -->
+  <LP_Bs_TaxCollector.title>Thayan tax collector</LP_Bs_TaxCollector.title>
+  <!-- 收税官 -->
+  <LP_Bs_TaxCollector.titleShort>tax collector</LP_Bs_TaxCollector.titleShort>
+  <!-- [PAWN_nameDef]在火巨人的熔炉旁长大，给风箱拉绳、给铁砧递钳子。[PAWN_nameDef]的手臂上满是火星烫出的小疤。 -->
+  <LP_Bs_ForgeSlaveChild.description>[PAWN_nameDef] grew up beside a fire giant's furnace, pulling bellows ropes and passing tongs to the anvil. [PAWN_nameDef]'s arms are covered in little scars from flying sparks.</LP_Bs_ForgeSlaveChild.description>
+  <!-- 熔炉边的奴童 -->
+  <LP_Bs_ForgeSlaveChild.title>furnace slave child</LP_Bs_ForgeSlaveChild.title>
+  <!-- 奴童 -->
+  <LP_Bs_ForgeSlaveChild.titleShort>slave child</LP_Bs_ForgeSlaveChild.titleShort>
+  <!-- [PAWN_nameDef]给余烬氏族的火巨人打了很多年铁。火巨人从不记得奴隶的名字，但记得[PAWN_nameDef]锻的剑从来不崩口。 -->
+  <LP_Bs_ForgeThrall.description>[PAWN_nameDef] forged iron for the fire giants of the ember clan for many years. Fire giants never remember a slave's name, but they remember that [PAWN_nameDef]'s swords never chip.</LP_Bs_ForgeThrall.description>
+  <!-- 锻炉奴工 -->
+  <LP_Bs_ForgeThrall.title>forge slave laborer</LP_Bs_ForgeThrall.title>
+  <!-- 锻炉奴工 -->
+  <LP_Bs_ForgeThrall.titleShort>forge slave laborer</LP_Bs_ForgeThrall.titleShort>
+  <!-- [PAWN_nameDef]替火巨人管着一队奴工，手里拿着鞭子，背后站着比自己高两倍的主人。[PAWN_nameDef]很清楚自己也是奴隶，只是戴着稍微好一点的镣铐。 -->
+  <LP_Bs_SlagOverseer.description>[PAWN_nameDef] managed a gang of slave laborers for the fire giants, whip in hand, with a master twice [PAWN_possessive] height standing behind. [PAWN_nameDef] knows full well [PAWN_pronoun] is a slave too, just in slightly better shackles.</LP_Bs_SlagOverseer.description>
+  <!-- 熔渣监工 -->
+  <LP_Bs_SlagOverseer.title>slag overseer</LP_Bs_SlagOverseer.title>
+  <!-- 监工 -->
+  <LP_Bs_SlagOverseer.titleShort>overseer</LP_Bs_SlagOverseer.titleShort>
+  <!-- [PAWN_nameDef]在幽暗地域的隧道里长大，没见过太阳。[PAWN_nameDef]能在完全的黑暗里认路，也学会了一听到湿漉漉的脚步声就立刻躲起来。 -->
+  <LP_Bs_UnderdarkFoundling.description>[PAWN_nameDef] grew up in the tunnels of the Underdark and never saw the sun. [PAWN_nameDef] can find the way in total darkness, and learned to hide the moment wet footsteps are heard.</LP_Bs_UnderdarkFoundling.description>
+  <!-- 幽暗地域的弃儿 -->
+  <LP_Bs_UnderdarkFoundling.title>Underdark foundling</LP_Bs_UnderdarkFoundling.title>
+  <!-- 幽暗弃儿 -->
+  <LP_Bs_UnderdarkFoundling.titleShort>Underdark foundling</LP_Bs_UnderdarkFoundling.titleShort>
+  <!-- [PAWN_nameDef]被夺心魔支配了很多年，替殖巢挖隧道、搬尸体。那些年的记忆是一片灰白的雾，偶尔能想起一张脸，却想不起是谁。 -->
+  <LP_Bs_Thrall.description>[PAWN_nameDef] was dominated by mind flayers for many years, digging tunnels and hauling corpses for the colony. Those years are a grey fog; sometimes a face surfaces, but never whose it was.</LP_Bs_Thrall.description>
+  <!-- 殖巢奴仆 -->
+  <LP_Bs_Thrall.title>colony thrall</LP_Bs_Thrall.title>
+  <!-- 殖巢奴仆 -->
+  <LP_Bs_Thrall.titleShort>colony thrall</LP_Bs_Thrall.titleShort>
+  <!-- [PAWN_nameDef]的工作是照料上古脑的脑池：调盐分、清残渣、把新鲜的大脑放进去。[PAWN_nameDef]至今会在梦里听见脑池里传出的低语。 -->
+  <LP_Bs_PoolKeeper.description>[PAWN_nameDef]'s job was tending the elder brain's brine pool: adjusting the salt, clearing the residue, putting fresh brains in. [PAWN_nameDef] still hears whispers from the pool in dreams.</LP_Bs_PoolKeeper.description>
+  <!-- 脑池看守 -->
+  <LP_Bs_PoolKeeper.title>brine pool keeper</LP_Bs_PoolKeeper.title>
+  <!-- 脑池看守 -->
+  <LP_Bs_PoolKeeper.titleShort>brine pool keeper</LP_Bs_PoolKeeper.titleShort>
+  <!-- [PAWN_nameDef]替黑网运过蝌蚪罐、走私过龙蛋，也替塞伊和竖琴手两边同时送过信。[PAWN_nameDef]唯一的原则是：货物不问来源，客户不问去处。 -->
+  <LP_Bs_Smuggler.description>[PAWN_nameDef] ran tadpole jars for the Black Network, smuggled dragon eggs, and carried letters for both Thay and the Harpers at once. [PAWN_nameDef]'s only rule: never ask where the goods came from, never ask where the client is going.</LP_Bs_Smuggler.description>
+  <!-- 黑网走私客 -->
+  <LP_Bs_Smuggler.title>Black Network smuggler</LP_Bs_Smuggler.title>
+  <!-- 走私客 -->
+  <LP_Bs_Smuggler.titleShort>smuggler</LP_Bs_Smuggler.titleShort>
+  <!-- [PAWN_nameDef]一眼就能看出一件魔法物品是真是假、是偷来的还是抢来的。前者决定价格，后者决定价格再打几折。 -->
+  <LP_Bs_Fence.description>[PAWN_nameDef] can tell at a glance whether a magic item is real or fake, stolen or robbed. The first decides the price; the second decides the discount.</LP_Bs_Fence.description>
+  <!-- 赃物鉴定师 -->
+  <LP_Bs_Fence.title>stolen goods appraiser</LP_Bs_Fence.title>
+  <!-- 销赃人 -->
+  <LP_Bs_Fence.titleShort>fence</LP_Bs_Fence.titleShort>
+  <!-- [PAWN_nameDef]追猎过术士、德鲁伊、巫妖，以及很多其实只是会认草药的老太太。[PAWN_nameDef]的银弩箭上刻着每一个“女巫”的名字。 -->
+  <LP_Bs_WitchHunter.description>[PAWN_nameDef] has hunted sorcerers, druids, liches, and many old women who merely knew their herbs. Every "witch"'s name is engraved on [PAWN_nameDef]'s silver crossbow bolts.</LP_Bs_WitchHunter.description>
+  <!-- 猎巫人 -->
+  <LP_Bs_WitchHunter.title>witch hunter</LP_Bs_WitchHunter.title>
+  <!-- 猎巫人 -->
+  <LP_Bs_WitchHunter.titleShort>witch hunter</LP_Bs_WitchHunter.titleShort>
+  <!-- [PAWN_nameDef]相信魔法是一切苦难的根源，烧过三座法师塔的藏书室。[PAWN_nameDef]布道时很有感染力，尤其是站在火堆旁边的时候。 -->
+  <LP_Bs_Bookburner.description>[PAWN_nameDef] believes magic is the root of all suffering and has burned the libraries of three wizard towers. [PAWN_nameDef] preaches with great charisma, especially standing next to a bonfire.</LP_Bs_Bookburner.description>
+  <!-- 焚书修士 -->
+  <LP_Bs_Bookburner.title>book-burning friar</LP_Bs_Bookburner.title>
+  <!-- 焚书修士 -->
+  <LP_Bs_Bookburner.titleShort>book-burning friar</LP_Bs_Bookburner.titleShort>
+  <!-- [PAWN_nameDef]活着的时候就是一位大法师，死后也没有打算停下研究。[PAWN_nameDef]已经记不清自己的心跳是什么声音了。 -->
+  <LP_Bs_UndyingArchmage.description>[PAWN_nameDef] was an archmage in life and had no intention of stopping research after death. [PAWN_nameDef] no longer remembers what a heartbeat sounds like.</LP_Bs_UndyingArchmage.description>
+  <!-- 不朽的大法师 -->
+  <LP_Bs_UndyingArchmage.title>undying archmage</LP_Bs_UndyingArchmage.title>
+  <!-- 不朽法师 -->
+  <LP_Bs_UndyingArchmage.titleShort>undying wizard</LP_Bs_UndyingArchmage.titleShort>
+  <!-- [PAWN_nameDef]把命匣藏在只有自己知道的地方，然后在一座塔里独自度过了三百年。[PAWN_nameDef]不喜欢访客，尤其不喜欢带着圣徽的访客。 -->
+  <LP_Bs_PhylacteryHermit.description>[PAWN_nameDef] hid [PAWN_possessive] phylactery where only [PAWN_pronoun] knows, then spent three hundred years alone in a tower. [PAWN_nameDef] dislikes visitors, especially visitors carrying holy symbols.</LP_Bs_PhylacteryHermit.description>
+  <!-- 命匣守密者 -->
+  <LP_Bs_PhylacteryHermit.title>phylactery secret-keeper</LP_Bs_PhylacteryHermit.title>
+  <!-- 守密者 -->
+  <LP_Bs_PhylacteryHermit.titleShort>secret-keeper</LP_Bs_PhylacteryHermit.titleShort>
+  <!-- [PAWN_nameDef]是被一户人类农家捡回去养大的。十岁时[PAWN_nameDef]就比谷仓还高了，村里人从此再也不用搭梯子修屋顶。 -->
+  <LP_Bs_FosterGiant.description>[PAWN_nameDef] was found and raised by a human farming family. By ten [PAWN_nameDef] was taller than the barn, and the villagers never needed a ladder to fix a roof again.</LP_Bs_FosterGiant.description>
+  <!-- 人类收养的巨人娃 -->
+  <LP_Bs_FosterGiant.title>giant child raised by humans</LP_Bs_FosterGiant.title>
+  <!-- 巨人养子 -->
+  <LP_Bs_FosterGiant.titleShort>giant foster child</LP_Bs_FosterGiant.titleShort>
+  <!-- [PAWN_nameDef]跟着巨人游群在山脊之间迁徙，跟着季节走，跟着猎物走。[PAWN_nameDef]见过的地平线比任何人类都多。 -->
+  <LP_Bs_GiantWanderer.description>[PAWN_nameDef] migrated between ridges with a giant wandering band, following the seasons and the game. [PAWN_nameDef] has seen more horizons than any human.</LP_Bs_GiantWanderer.description>
+  <!-- 巨人游群的流浪者 -->
+  <LP_Bs_GiantWanderer.title>wanderer of a giant band</LP_Bs_GiantWanderer.title>
+  <!-- 巨人游群 -->
+  <LP_Bs_GiantWanderer.titleShort>giant band</LP_Bs_GiantWanderer.titleShort>
+  <!-- [PAWN_nameDef]在火山深处的熔岩厅里长大，五岁就能抡动人类铁匠抬不动的锤子。[PAWN_nameDef]的摇篮是一口冷却的坩埚。 -->
+  <LP_Bs_LavaHallChild.description>[PAWN_nameDef] grew up in the lava halls deep in a volcano and could swing at five a hammer human smiths cannot lift. [PAWN_nameDef]'s cradle was a cooled crucible.</LP_Bs_LavaHallChild.description>
+  <!-- 熔岩厅的锤童 -->
+  <LP_Bs_LavaHallChild.title>hammer child of the lava halls</LP_Bs_LavaHallChild.title>
+  <!-- 锤童 -->
+  <LP_Bs_LavaHallChild.titleShort>hammer child</LP_Bs_LavaHallChild.titleShort>
+  <!-- [PAWN_nameDef]小时候被当成人质送到敌对的氏族，在别人的熔炉边长大。[PAWN_nameDef]学会了察言观色，也学会了把仇恨藏在笑容后面。 -->
+  <LP_Bs_HostageChild.description>[PAWN_nameDef] was sent as a hostage to a rival clan as a child and grew up beside someone else's forge. [PAWN_nameDef] learned to read faces, and to hide hatred behind a smile.</LP_Bs_HostageChild.description>
+  <!-- 余烬氏族的人质 -->
+  <LP_Bs_HostageChild.title>ember clan hostage</LP_Bs_HostageChild.title>
+  <!-- 人质 -->
+  <LP_Bs_HostageChild.titleShort>hostage</LP_Bs_HostageChild.titleShort>
+  <!-- [PAWN_nameDef]是氏族里最好的铁匠之一，锻出的武器能劈开城门。对[PAWN_nameDef]来说，世界上只有两种东西：能熔的和还没熔的。 -->
+  <LP_Bs_ForgeSmith.description>[PAWN_nameDef] is one of the clan's best smiths; the weapons [PAWN_pronoun] forges can split city gates. To [PAWN_nameDef], there are only two kinds of things in the world: those that can be melted and those not yet melted.</LP_Bs_ForgeSmith.description>
+  <!-- 熔炉氏族铁匠 -->
+  <LP_Bs_ForgeSmith.title>forge clan smith</LP_Bs_ForgeSmith.title>
+  <!-- 巨人铁匠 -->
+  <LP_Bs_ForgeSmith.titleShort>giant smith</LP_Bs_ForgeSmith.titleShort>
+  <!-- [PAWN_nameDef]带着一队奴兵和巨人，替氏族征讨不肯纳贡的村庄。[PAWN_nameDef]相信力量就是秩序，而秩序要用锤子敲出来。 -->
+  <LP_Bs_Warband.description>[PAWN_nameDef] led a squad of slave soldiers and giants to punish villages that refused tribute for the clan. [PAWN_nameDef] believes strength is order, and order is hammered out.</LP_Bs_Warband.description>
+  <!-- 火巨人战帮头目 -->
+  <LP_Bs_Warband.title>fire giant warband chief</LP_Bs_Warband.title>
+  <!-- 战帮头目 -->
+  <LP_Bs_Warband.titleShort>warband chief</LP_Bs_Warband.titleShort>
+  <!-- [PAWN_nameDef]看守着氏族的圣火，向巨人之神苏尔特献上最好的锻件。[PAWN_nameDef]说火焰里能看见未来，而未来总是在燃烧。 -->
+  <LP_Bs_SurtrKeeper.description>[PAWN_nameDef] tends the clan's sacred fire and offers the finest forgings to Surtur, god of the giants. [PAWN_nameDef] says the future can be seen in the flames, and the future is always burning.</LP_Bs_SurtrKeeper.description>
+  <!-- 苏尔特的祭火者 -->
+  <LP_Bs_SurtrKeeper.title>fire-keeper of Surtur</LP_Bs_SurtrKeeper.title>
+  <!-- 祭火者 -->
+  <LP_Bs_SurtrKeeper.titleShort>fire-keeper</LP_Bs_SurtrKeeper.titleShort>
+  <!-- [PAWN_nameDef]小时候和一窝冬狼崽睡在同一张熊皮上。长大以后，那几头狼仍然只听[PAWN_nameDef]一个人的话。 -->
+  <LP_Bs_WolfPlaymate.description>As a child [PAWN_nameDef] slept on the same bearskin as a litter of winter wolf pups. Grown up, those wolves still obey only [PAWN_nameDef].</LP_Bs_WolfPlaymate.description>
+  <!-- 冬狼崽的玩伴 -->
+  <LP_Bs_WolfPlaymate.title>playmate of winter wolf pups</LP_Bs_WolfPlaymate.title>
+  <!-- 狼崽玩伴 -->
+  <LP_Bs_WolfPlaymate.titleShort>wolf pup playmate</LP_Bs_WolfPlaymate.titleShort>
+  <!-- [PAWN_nameDef]是部族里的冬狼驯主，暴风雪里能凭狼嚎分辨出每一头狼。在冰原上，[PAWN_nameDef]的狼群比任何城墙都可靠。 -->
+  <LP_Bs_WolfMaster.description>[PAWN_nameDef] is the tribe's winter wolf master and can tell every wolf apart by its howl in a blizzard. On the ice fields, [PAWN_nameDef]'s pack is more reliable than any city wall.</LP_Bs_WolfMaster.description>
+  <!-- 冬狼驯主 -->
+  <LP_Bs_WolfMaster.title>winter wolf master</LP_Bs_WolfMaster.title>
+  <!-- 冬狼驯主 -->
+  <LP_Bs_WolfMaster.titleShort>winter wolf master</LP_Bs_WolfMaster.titleShort>
+  <!-- [PAWN_nameDef]驾着冰船沿海岸南下，抢粮食、抢铁器、抢奴隶。[PAWN_nameDef]认为冬天是诸神给霜巨人的礼物，而南方人是礼物的包装纸。 -->
+  <LP_Bs_Reaver.description>[PAWN_nameDef] sailed ice ships south along the coast, raiding for grain, iron and slaves. [PAWN_nameDef] thinks winter is the gods' gift to frost giants, and southerners are the wrapping paper.</LP_Bs_Reaver.description>
+  <!-- 冰原掠袭者 -->
+  <LP_Bs_Reaver.title>ice field reaver</LP_Bs_Reaver.title>
+  <!-- 掠袭者 -->
+  <LP_Bs_Reaver.titleShort>reaver</LP_Bs_Reaver.titleShort>
+  <!-- [PAWN_nameDef]在漂浮于云端的城堡里长大，脚下是雾，头上是星。[PAWN_nameDef]小时候以为地面上的人类都是会动的玩具。 -->
+  <LP_Bs_CastleHeir.description>[PAWN_nameDef] grew up in a castle floating among the clouds, with mist below and stars above. As a child [PAWN_nameDef] thought the humans on the ground were moving toys.</LP_Bs_CastleHeir.description>
+  <!-- 云堡贵胄之子 -->
+  <LP_Bs_CastleHeir.title>cloud castle noble child</LP_Bs_CastleHeir.title>
+  <!-- 云堡之子 -->
+  <LP_Bs_CastleHeir.titleShort>cloud castle child</LP_Bs_CastleHeir.titleShort>
+  <!-- [PAWN_nameDef]代表云端宫廷出使人类诸国，送礼、谈判、记下每一份怠慢。[PAWN_nameDef]的礼物总是太贵重，贵重到对方永远还不起。 -->
+  <LP_Bs_Envoy.description>[PAWN_nameDef] served as envoy of the cloud court to the human kingdoms: giving gifts, negotiating, noting every slight. [PAWN_nameDef]'s gifts are always too precious, so precious the other side can never repay them.</LP_Bs_Envoy.description>
+  <!-- 云端宫廷使节 -->
+  <LP_Bs_Envoy.title>cloud court envoy</LP_Bs_Envoy.title>
+  <!-- 宫廷使节 -->
+  <LP_Bs_Envoy.titleShort>court envoy</LP_Bs_Envoy.titleShort>
+  <!-- [PAWN_nameDef]能读懂风和云的语言，替宫廷预言收成和风暴。人类农夫愿意用整年的收成换[PAWN_nameDef]一句话。 -->
+  <LP_Bs_WeatherSeer.description>[PAWN_nameDef] can read the language of wind and clouds, foretelling harvests and storms for the court. Human farmers would trade a whole year's harvest for one word from [PAWN_nameDef].</LP_Bs_WeatherSeer.description>
+  <!-- 天候术士 -->
+  <LP_Bs_WeatherSeer.title>weather mage</LP_Bs_WeatherSeer.title>
+  <!-- 天候术士 -->
+  <LP_Bs_WeatherSeer.titleShort>weather mage</LP_Bs_WeatherSeer.titleShort>
+  <!-- [PAWN_nameDef]在海底的珊瑚宫殿里长大，和鲸鱼一起游泳，听着潮汐学习预言的韵律。 -->
+  <LP_Bs_DeepPalace.description>[PAWN_nameDef] grew up in a coral palace on the seabed, swimming with whales and learning the rhythm of prophecy from the tides.</LP_Bs_DeepPalace.description>
+  <!-- 海渊宫殿之子 -->
+  <LP_Bs_DeepPalace.title>child of the deep sea palace</LP_Bs_DeepPalace.title>
+  <!-- 海渊之子 -->
+  <LP_Bs_DeepPalace.titleShort>deep sea child</LP_Bs_DeepPalace.titleShort>
+  <!-- [PAWN_nameDef]在风暴中冥想，从雷声里解读诸神的意图。[PAWN_nameDef]的预言总是准的，只是从来没人能在它应验之前听懂。 -->
+  <LP_Bs_StormOracle.description>[PAWN_nameDef] meditates in storms and reads the gods' intentions in the thunder. [PAWN_nameDef]'s prophecies always come true; it's just that nobody ever understands them before they do.</LP_Bs_StormOracle.description>
+  <!-- 风暴预言者 -->
+  <LP_Bs_StormOracle.title>storm prophet</LP_Bs_StormOracle.title>
+  <!-- 预言者 -->
+  <LP_Bs_StormOracle.titleShort>prophet</LP_Bs_StormOracle.titleShort>
+  <!-- [PAWN_nameDef]因为一个不肯说出口的预言被逐出了海渊宫廷。从那以后，[PAWN_nameDef]每次看到雷雨都会抬头，像是在等谁来叫自己回家。 -->
+  <LP_Bs_DeepExile.description>[PAWN_nameDef] was exiled from the deep sea court over a prophecy [PAWN_pronoun] refused to speak aloud. Since then, [PAWN_nameDef] looks up at every thunderstorm, as if waiting for someone to call [PAWN_objective] home.</LP_Bs_DeepExile.description>
+  <!-- 海渊流亡者 -->
+  <LP_Bs_DeepExile.title>deep sea exile</LP_Bs_DeepExile.title>
+  <!-- 流亡者 -->
+  <LP_Bs_DeepExile.titleShort>exile</LP_Bs_DeepExile.titleShort>
+  <!-- [PAWN_nameDef]的父亲是一位神，母亲是一个凡人，而两边都没有来接[PAWN_nameDef]回家。[PAWN_nameDef]五岁那年发脾气时，村子上空下了一场冰雹。 -->
+  <LP_Bs_DivineFoundling.description>[PAWN_nameDef]'s father was a god and mother a mortal, and neither side came to take [PAWN_nameDef] home. When [PAWN_nameDef] threw a tantrum at age five, hail fell over the village.</LP_Bs_DivineFoundling.description>
+  <!-- 神裔弃子 -->
+  <LP_Bs_DivineFoundling.title>godborn foundling</LP_Bs_DivineFoundling.title>
+  <!-- 神裔弃子 -->
+  <LP_Bs_DivineFoundling.titleShort>godborn foundling</LP_Bs_DivineFoundling.titleShort>
+  <!-- [PAWN_nameDef]走遍费伦，替弱者打倒怪物，想要证明自己配得上那一半神血。诗人们已经写了好几首关于[PAWN_nameDef]的歌，大部分都是瞎编的。 -->
+  <LP_Bs_HeroDisciple.description>[PAWN_nameDef] wanders Faerûn slaying monsters for the weak, trying to prove [PAWN_pronoun] is worthy of that half of divine blood. Poets have already written several songs about [PAWN_nameDef], most of them made up.</LP_Bs_HeroDisciple.description>
+  <!-- 半神的门徒 -->
+  <LP_Bs_HeroDisciple.title>disciple of a demigod</LP_Bs_HeroDisciple.title>
+  <!-- 半神门徒 -->
+  <LP_Bs_HeroDisciple.titleShort>demigod disciple</LP_Bs_HeroDisciple.titleShort>
+  <!-- [PAWN_nameDef]在一座没有名字的山顶上守望了几十年，不知道自己在等什么。也许是一个预兆，也许是父亲的一句话。 -->
+  <LP_Bs_PeakWatcher.description>[PAWN_nameDef] kept watch on a nameless mountaintop for decades, not knowing what [PAWN_pronoun] was waiting for. Perhaps an omen, perhaps a word from [PAWN_possessive] father.</LP_Bs_PeakWatcher.description>
+  <!-- 山巅守望者 -->
+  <LP_Bs_PeakWatcher.title>summit watcher</LP_Bs_PeakWatcher.title>
+  <!-- 守望者 -->
+  <LP_Bs_PeakWatcher.titleShort>warden</LP_Bs_PeakWatcher.titleShort>
+  <!-- [PAWN_nameDef]的两个脑袋从会说话起就在吵架：先吃谁的饭、先往哪边走、昨天是谁先动的手。[PAWN_nameDef]的童年基本就是一场持续十年的内斗。 -->
+  <LP_Bs_QuarrelChild.description>[PAWN_nameDef]'s two heads have argued since they could talk: whose meal comes first, which way to go, who started it yesterday. [PAWN_nameDef]'s childhood was basically a ten-year civil war.</LP_Bs_QuarrelChild.description>
+  <!-- 打架长大的双首 -->
+  <LP_Bs_QuarrelChild.title>two-headed brawler</LP_Bs_QuarrelChild.title>
+  <!-- 打架双首 -->
+  <LP_Bs_QuarrelChild.titleShort>brawling twin-head</LP_Bs_QuarrelChild.titleShort>
+  <!-- [PAWN_nameDef]在丘陵里劫掠过路的商队。左边的脑袋负责看路，右边的脑袋负责数钱，两边都坚持自己才是老大。 -->
+  <LP_Bs_HillRaider.description>[PAWN_nameDef] raided passing caravans in the hills. The left head watches the road, the right head counts the money, and both insist they are the boss.</LP_Bs_HillRaider.description>
+  <!-- 丘陵劫掠者 -->
+  <LP_Bs_HillRaider.title>hill raider</LP_Bs_HillRaider.title>
+  <!-- 劫掠者 -->
+  <LP_Bs_HillRaider.titleShort>raider</LP_Bs_HillRaider.titleShort>
+  <!-- [PAWN_nameDef]给一座要塞守了很多年大门。两个脑袋轮流睡觉，从来没有让任何人偷偷溜进去过。 -->
+  <LP_Bs_TwinGatekeeper.description>[PAWN_nameDef] guarded a fortress gate for many years. The two heads took turns sleeping and never let anyone sneak in.</LP_Bs_TwinGatekeeper.description>
+  <!-- 双首守门人 -->
+  <LP_Bs_TwinGatekeeper.title>two-headed gatekeeper</LP_Bs_TwinGatekeeper.title>
+  <!-- 守门人 -->
+  <LP_Bs_TwinGatekeeper.titleShort>gatekeeper</LP_Bs_TwinGatekeeper.titleShort>
+  <!-- [PAWN_nameDef]在海边的山岛上放羊，一只眼睛看着羊群，一只耳朵听着海浪。小时候[PAWN_nameDef]以为全世界都只有一只眼睛。 -->
+  <LP_Bs_CyclopsShepherd.description>[PAWN_nameDef] herded goats on a mountainous sea island, one eye on the flock and one ear on the waves. As a child [PAWN_nameDef] thought everyone in the world had only one eye.</LP_Bs_CyclopsShepherd.description>
+  <!-- 山羊群的牧童 -->
+  <LP_Bs_CyclopsShepherd.title>goatherd</LP_Bs_CyclopsShepherd.title>
+  <!-- 牧童 -->
+  <LP_Bs_CyclopsShepherd.titleShort>herd child</LP_Bs_CyclopsShepherd.titleShort>
+  <!-- [PAWN_nameDef]在火山洞里打铁，打出过能射穿城墙的弩和能挡住闪电的盾。[PAWN_nameDef]话很少，但每一件作品都很有说服力。 -->
+  <LP_Bs_CyclopsSmith.description>[PAWN_nameDef] forged iron in a volcanic cave, making crossbows that could pierce city walls and shields that could stop lightning. [PAWN_nameDef] says little, but every piece is very persuasive.</LP_Bs_CyclopsSmith.description>
+  <!-- 独眼匠人 -->
+  <LP_Bs_CyclopsSmith.title>cyclops artisan</LP_Bs_CyclopsSmith.title>
+  <!-- 独眼匠人 -->
+  <LP_Bs_CyclopsSmith.titleShort>cyclops artisan</LP_Bs_CyclopsSmith.titleShort>
+  <!-- [PAWN_nameDef]看守着一座古老的神谕洞，替来求问的凡人献祭羊羔。据说独眼能看见命运，[PAWN_nameDef]从不否认，也从不承认。 -->
+  <LP_Bs_OmenKeeper.description>[PAWN_nameDef] guards an ancient oracle cave, sacrificing lambs for the mortals who come to ask. They say a single eye can see fate; [PAWN_nameDef] never denies it, nor confirms it.</LP_Bs_OmenKeeper.description>
+  <!-- 神谕洞看守 -->
+  <LP_Bs_OmenKeeper.title>oracle cave keeper</LP_Bs_OmenKeeper.title>
+  <!-- 神谕看守 -->
+  <LP_Bs_OmenKeeper.titleShort>oracle keeper</LP_Bs_OmenKeeper.titleShort>
+  <!-- [PAWN_nameDef]在沼泽里长大，什么都吃，吃不饱就咬兄弟姐妹。被咬掉的胳膊过几天就会长回来，所以大家都不太在意。 -->
+  <LP_Bs_BogWhelp.description>[PAWN_nameDef] grew up in a swamp, ate anything, and bit siblings when still hungry. Bitten-off arms grow back in a few days anyway, so nobody minded much.</LP_Bs_BogWhelp.description>
+  <!-- 沼泽饿崽 -->
+  <LP_Bs_BogWhelp.title>hungry swamp whelp</LP_Bs_BogWhelp.title>
+  <!-- 沼泽饿崽 -->
+  <LP_Bs_BogWhelp.titleShort>hungry swamp whelp</LP_Bs_BogWhelp.titleShort>
+  <!-- [PAWN_nameDef]还很小就被塞伊的驯兽师抓走，在背上烙了符印。符印的灼痛[PAWN_nameDef]到现在都记得，只是记不清烙下它的人长什么样了。 -->
+  <LP_Bs_RuneboundWhelp.description>[PAWN_nameDef] was caught very young by Thayan beastmasters and had a sigil branded on [PAWN_possessive] back. [PAWN_nameDef] still remembers the burning pain, just not the face of the one who branded it.</LP_Bs_RuneboundWhelp.description>
+  <!-- 被烙印的幼巨魔 -->
+  <LP_Bs_RuneboundWhelp.title>branded troll whelp</LP_Bs_RuneboundWhelp.title>
+  <!-- 烙印幼崽 -->
+  <LP_Bs_RuneboundWhelp.titleShort>branded whelp</LP_Bs_RuneboundWhelp.titleShort>
+  <!-- [PAWN_nameDef]在一座石桥下住了很多年，向每一个过路人收过桥费。交不起钱的，就留下一条腿。反正[PAWN_nameDef]自己的腿也会长回来，所以不觉得这很过分。 -->
+  <LP_Bs_BridgeToll.description>[PAWN_nameDef] lived under a stone bridge for many years, charging every passerby a toll. Those who couldn't pay left a leg behind. [PAWN_nameDef]'s own legs grow back anyway, so it never seemed excessive.</LP_Bs_BridgeToll.description>
+  <!-- 桥下收费者 -->
+  <LP_Bs_BridgeToll.title>toll troll under the bridge</LP_Bs_BridgeToll.title>
+  <!-- 桥下收费者 -->
+  <LP_Bs_BridgeToll.titleShort>toll troll under the bridge</LP_Bs_BridgeToll.titleShort>
+  <!-- [PAWN_nameDef]曾是塞伊军队里的符印巨魔，被法术驱赶着冲在最前面。主人死后，符印的声音终于安静了，[PAWN_nameDef]才第一次想起自己饿了。 -->
+  <LP_Bs_RuneboundTroll.description>[PAWN_nameDef] was a sigil troll in the Thayan army, driven to the front by spells. When the master died, the voice of the sigil finally went quiet, and for the first time [PAWN_nameDef] realized [PAWN_pronoun] was hungry.</LP_Bs_RuneboundTroll.description>
+  <!-- 塞伊符印巨魔 -->
+  <LP_Bs_RuneboundTroll.title>Thayan sigil troll</LP_Bs_RuneboundTroll.title>
+  <!-- 符印巨魔 -->
+  <LP_Bs_RuneboundTroll.titleShort>sigil troll</LP_Bs_RuneboundTroll.titleShort>
+  <!-- [PAWN_nameDef]是灰烬中的巨魔部落里最好的猎手，能追着一头鹿跑三天三夜。鹿通常在第二天就放弃了。 -->
+  <LP_Bs_AshHunter.description>[PAWN_nameDef] was the best hunter of a troll tribe in the ashes, able to chase a deer for three days and nights. The deer usually gave up on the second day.</LP_Bs_AshHunter.description>
+  <!-- 灰烬部落猎手 -->
+  <LP_Bs_AshHunter.title>ash tribe hunter</LP_Bs_AshHunter.title>
+  <!-- 灰烬猎手 -->
+  <LP_Bs_AshHunter.titleShort>ash hunter</LP_Bs_AshHunter.titleShort>
+  <!-- [PAWN_nameDef]在兽人部落里长大，因为血统不纯总是挨揍。[PAWN_nameDef]很快就学会了，挨揍之前先揍别人。 -->
+  <LP_Bs_TribeHalfblood.description>[PAWN_nameDef] grew up in an orc tribe and was always beaten for impure blood. [PAWN_nameDef] quickly learned to beat others before getting beaten.</LP_Bs_TribeHalfblood.description>
+  <!-- 兽人部落的混血崽 -->
+  <LP_Bs_TribeHalfblood.title>half-blood whelp of an orc tribe</LP_Bs_TribeHalfblood.title>
+  <!-- 混血崽 -->
+  <LP_Bs_TribeHalfblood.titleShort>half-blood whelp</LP_Bs_TribeHalfblood.titleShort>
+  <!-- [PAWN_nameDef]是城里唯一一个长着獠牙的孩子。邻居们锁上门，商贩们多收钱，城卫军见了就盘问。[PAWN_nameDef]学会了忍耐，也学会了记账。 -->
+  <LP_Bs_CityStreetHalfOrc.description>[PAWN_nameDef] was the only child in town with tusks. Neighbors locked their doors, merchants charged more, and the town guard questioned [PAWN_objective] on sight. [PAWN_nameDef] learned patience, and learned to keep score.</LP_Bs_CityStreetHalfOrc.description>
+  <!-- 城里挨白眼的孩子 -->
+  <LP_Bs_CityStreetHalfOrc.title>scorned town child</LP_Bs_CityStreetHalfOrc.title>
+  <!-- 挨白眼的孩子 -->
+  <LP_Bs_CityStreetHalfOrc.titleShort>scorned child</LP_Bs_CityStreetHalfOrc.titleShort>
+  <!-- [PAWN_nameDef]在卡林珊的地下角斗场连赢了四十场。观众们喊着[PAWN_nameDef]的名字，赌徒们靠[PAWN_nameDef]发了财，而[PAWN_nameDef]只拿到了自由。 -->
+  <LP_Bs_PitFighter.description>[PAWN_nameDef] won forty fights in a row in the underground arenas of Calimshan. The crowd chanted [PAWN_nameDef]'s name, gamblers got rich on [PAWN_objective], and [PAWN_nameDef] got only freedom.</LP_Bs_PitFighter.description>
+  <!-- 角斗场冠军 -->
+  <LP_Bs_PitFighter.title>arena champion</LP_Bs_PitFighter.title>
+  <!-- 角斗冠军 -->
+  <LP_Bs_PitFighter.titleShort>arena champion</LP_Bs_PitFighter.titleShort>
+  <!-- [PAWN_nameDef]曾经被锁在塞伊的奴隶兵队伍里，后来和同伴一起砸断锁链逃了出来。[PAWN_nameDef]的手腕上还留着镣铐的印子，[PAWN_nameDef]不打算去掉它。 -->
+  <LP_Bs_ChainBreaker.description>[PAWN_nameDef] was once chained in Thay's slave soldier ranks, then smashed the chains with comrades and escaped. The marks of the shackles remain on [PAWN_nameDef]'s wrists, and [PAWN_nameDef] has no intention of removing them.</LP_Bs_ChainBreaker.description>
+  <!-- 断链战帮逃兵 -->
+  <LP_Bs_ChainBreaker.title>brokenchain warband deserter</LP_Bs_ChainBreaker.title>
+  <!-- 断链战士 -->
+  <LP_Bs_ChainBreaker.titleShort>brokenchain warrior</LP_Bs_ChainBreaker.titleShort>
+  <!-- [PAWN_nameDef]曾是兽人部落里格乌什的祭司，主持战前的血祭。后来[PAWN_nameDef]离开了部落，但仍保留着在每场战斗前祷告的习惯。 -->
+  <LP_Bs_GruumshPriest.description>[PAWN_nameDef] was once a priest of Gruumsh in an orc tribe, presiding over blood sacrifices before battle. [PAWN_nameDef] later left the tribe but still keeps the habit of praying before every fight.</LP_Bs_GruumshPriest.description>
+  <!-- 独眼之神的祭司 -->
+  <LP_Bs_GruumshPriest.title>priest of the one-eyed god</LP_Bs_GruumshPriest.title>
+  <!-- 兽人祭司 -->
+  <LP_Bs_GruumshPriest.titleShort>orc priest</LP_Bs_GruumshPriest.titleShort>
+  <!-- [PAWN_nameDef]在月光照耀的古林里长大，和树精一起唱歌，和独角兽一起饮水。对精灵来说，[PAWN_nameDef]的童年短暂得只有一个世纪。 -->
+  <LP_Bs_MoonwoodChild.description>[PAWN_nameDef] grew up in a moonlit old forest, singing with dryads and drinking with unicorns. By elven standards [PAWN_nameDef]'s childhood was a brief single century.</LP_Bs_MoonwoodChild.description>
+  <!-- 月下林地的孩子 -->
+  <LP_Bs_MoonwoodChild.title>child of the moonlit woods</LP_Bs_MoonwoodChild.title>
+  <!-- 林地之子 -->
+  <LP_Bs_MoonwoodChild.titleShort>woodland child</LP_Bs_MoonwoodChild.titleShort>
+  <!-- [PAWN_nameDef]五十岁时还是个孩子，却已经能在树梢之间无声地奔跑，在百步之外射中松鼠的尾巴。 -->
+  <LP_Bs_ScoutChild.description>At fifty [PAWN_nameDef] was still a child, yet could already run silently through the treetops and hit a squirrel's tail from a hundred paces.</LP_Bs_ScoutChild.description>
+  <!-- 林地斥候学徒 -->
+  <LP_Bs_ScoutChild.title>woodland scout apprentice</LP_Bs_ScoutChild.title>
+  <!-- 斥候学徒 -->
+  <LP_Bs_ScoutChild.titleShort>scout apprentice</LP_Bs_ScoutChild.titleShort>
+  <!-- [PAWN_nameDef]用一百年学会了一首歌，又用一百年学会了怎么唱好它。人类听[PAWN_nameDef]唱歌会流泪，却说不出为什么。 -->
+  <LP_Bs_CenturySinger.description>[PAWN_nameDef] spent a hundred years learning one song, and another hundred learning to sing it well. Humans weep when [PAWN_nameDef] sings, without knowing why.</LP_Bs_CenturySinger.description>
+  <!-- 百年歌者 -->
+  <LP_Bs_CenturySinger.title>century singer</LP_Bs_CenturySinger.title>
+  <!-- 百年歌者 -->
+  <LP_Bs_CenturySinger.titleShort>century singer</LP_Bs_CenturySinger.titleShort>
+  <!-- [PAWN_nameDef]守护着精灵的森林边界，射退过伐木工、地精和一整支兽人战帮。[PAWN_nameDef]记得每一棵被砍倒的树。 -->
+  <LP_Bs_Warden.description>[PAWN_nameDef] guards the borders of the elven forest and has driven off loggers, goblins and an entire orc warband with arrows. [PAWN_nameDef] remembers every tree that was cut down.</LP_Bs_Warden.description>
+  <!-- 森林守卫 -->
+  <LP_Bs_Warden.title>forest guard</LP_Bs_Warden.title>
+  <!-- 森林守卫 -->
+  <LP_Bs_Warden.titleShort>forest guard</LP_Bs_Warden.titleShort>
+  <!-- [PAWN_nameDef]出身永聚岛的贵族世家，因为一桩不肯解释的丑闻被流放到大陆上。[PAWN_nameDef]对人类的城市很失望，对人类的寿命更失望。 -->
+  <LP_Bs_EvermeetExile.description>[PAWN_nameDef] comes from a noble house of Evermeet and was exiled to the mainland over a scandal [PAWN_pronoun] refuses to explain. [PAWN_nameDef] is disappointed in human cities, and even more in human lifespans.</LP_Bs_EvermeetExile.description>
+  <!-- 永聚岛的流亡贵族 -->
+  <LP_Bs_EvermeetExile.title>exiled noble of Evermeet</LP_Bs_EvermeetExile.title>
+  <!-- 流亡贵族 -->
+  <LP_Bs_EvermeetExile.titleShort>exiled noble</LP_Bs_EvermeetExile.titleShort>
+  <!-- [PAWN_nameDef]在秘银堡的矿道里长大，听着镐头声入睡。[PAWN_nameDef]第一次看见天空时，问大人那块蓝色的石头是什么矿。 -->
+  <LP_Bs_MineChild.description>[PAWN_nameDef] grew up in the mine tunnels of Mithral Hall, falling asleep to the sound of picks. The first time [PAWN_nameDef] saw the sky, [PAWN_pronoun] asked what ore that blue stone was.</LP_Bs_MineChild.description>
+  <!-- 矿道里长大 -->
+  <LP_Bs_MineChild.title>raised in the mines</LP_Bs_MineChild.title>
+  <!-- 矿道之子 -->
+  <LP_Bs_MineChild.titleShort>mine child</LP_Bs_MineChild.titleShort>
+  <!-- [PAWN_nameDef]从小在家族的酒窖里帮忙，搬桶、滚桶、偷偷尝桶。矮人说这是最好的教育。 -->
+  <LP_Bs_BreweryChild.description>[PAWN_nameDef] helped in the family wine cellar from childhood: carrying barrels, rolling barrels, secretly tasting barrels. Dwarves say it's the best education there is.</LP_Bs_BreweryChild.description>
+  <!-- 酒窖童工 -->
+  <LP_Bs_BreweryChild.title>cellar child laborer</LP_Bs_BreweryChild.title>
+  <!-- 酒窖童工 -->
+  <LP_Bs_BreweryChild.titleShort>cellar child laborer</LP_Bs_BreweryChild.titleShort>
+  <!-- [PAWN_nameDef]是家族里第十七代锻工，在铁砧上刻符文的手比雕刻师还稳。[PAWN_nameDef]的作品从来不卖给精灵，尽管出价总是最高。 -->
+  <LP_Bs_RuneSmith.description>[PAWN_nameDef] is the seventeenth generation of smiths in the family, with hands steadier than an engraver's when carving runes on the anvil. [PAWN_nameDef] never sells to elves, though they always bid highest.</LP_Bs_RuneSmith.description>
+  <!-- 符文锻工 -->
+  <LP_Bs_RuneSmith.title>rune smith</LP_Bs_RuneSmith.title>
+  <!-- 符文锻工 -->
+  <LP_Bs_RuneSmith.titleShort>rune smith</LP_Bs_RuneSmith.titleShort>
+  <!-- [PAWN_nameDef]在矮人要塞的大门前站了三十年岗。[PAWN_nameDef]的盾牌上有一道深深的爪痕，那是一头岩龙留下的，龙已经不在了，盾还在。 -->
+  <LP_Bs_ShieldDwarf.description>[PAWN_nameDef] stood guard at the gates of a dwarven fortress for thirty years. [PAWN_nameDef]'s shield bears a deep claw mark left by a rock dragon; the dragon is gone, the shield remains.</LP_Bs_ShieldDwarf.description>
+  <!-- 盾矮人卫士 -->
+  <LP_Bs_ShieldDwarf.title>shield dwarf guard</LP_Bs_ShieldDwarf.title>
+  <!-- 盾矮人 -->
+  <LP_Bs_ShieldDwarf.titleShort>shield dwarf</LP_Bs_ShieldDwarf.titleShort>
+  <!-- [PAWN_nameDef]负责记录家族的血债之书：谁欠了谁、欠了多少、何时偿还。书里还有几十个名字没被划掉，[PAWN_nameDef]一个都没忘。 -->
+  <LP_Bs_GrudgeKeeper.description>[PAWN_nameDef] keeps the family's book of blood debts: who owes whom, how much, and when it will be repaid. Dozens of names in the book are not yet crossed out, and [PAWN_nameDef] has forgotten none of them.</LP_Bs_GrudgeKeeper.description>
+  <!-- 血债清算人 -->
+  <LP_Bs_GrudgeKeeper.title>blood debt collector</LP_Bs_GrudgeKeeper.title>
+  <!-- 清算人 -->
+  <LP_Bs_GrudgeKeeper.titleShort>collector</LP_Bs_GrudgeKeeper.titleShort>
+  <!-- [PAWN_nameDef]没有童年。[PAWN_nameDef]的意识是在一具人类躯体里醒来的，醒来时已经知道自己是谁、该服从谁，以及大脑是什么味道。 -->
+  <LP_Bs_SpawnPool.description>[PAWN_nameDef] had no childhood. [PAWN_nameDef]'s mind woke up in a human body already knowing who [PAWN_pronoun] was, whom to obey, and what brains taste like.</LP_Bs_SpawnPool.description>
+  <!-- 殖巢孵育池 -->
+  <LP_Bs_SpawnPool.title>colony spawning pool</LP_Bs_SpawnPool.title>
+  <!-- 孵育池 -->
+  <LP_Bs_SpawnPool.titleShort>spawning pool</LP_Bs_SpawnPool.titleShort>
+  <!-- [PAWN_nameDef]是上古脑的传声者，把主脑的意志传达给殖巢里的每一个成员。[PAWN_nameDef]的脑中至今还回响着那个庞大的声音。 -->
+  <LP_Bs_ElderVoice.description>[PAWN_nameDef] was the voice of an elder brain, relaying the master brain's will to every member of the colony. That vast voice still echoes in [PAWN_nameDef]'s head.</LP_Bs_ElderVoice.description>
+  <!-- 主脑传声者 -->
+  <LP_Bs_ElderVoice.title>elder brain herald</LP_Bs_ElderVoice.title>
+  <!-- 主脑传声者 -->
+  <LP_Bs_ElderVoice.titleShort>elder brain herald</LP_Bs_ElderVoice.titleShort>
+  <!-- [PAWN_nameDef]负责为殖巢狩猎新鲜的大脑。[PAWN_nameDef]更喜欢聪明的猎物：它们更好吃，逃跑时也更有趣。 -->
+  <LP_Bs_PsionicHunter.description>[PAWN_nameDef] hunted fresh brains for the colony. [PAWN_nameDef] prefers clever prey: they taste better and are more fun when they run.</LP_Bs_PsionicHunter.description>
+  <!-- 灵能猎手 -->
+  <LP_Bs_PsionicHunter.title>psionic hunter</LP_Bs_PsionicHunter.title>
+  <!-- 灵能猎手 -->
+  <LP_Bs_PsionicHunter.titleShort>psionic hunter</LP_Bs_PsionicHunter.titleShort>
+  <!-- 某一天，[PAWN_nameDef]听不见上古脑的声音了。没有了主脑，[PAWN_nameDef]第一次开始思考自己想要什么，答案让[PAWN_nameDef]自己都感到害怕。 -->
+  <LP_Bs_IllithidRenegade.description>One day [PAWN_nameDef] could no longer hear the elder brain's voice. Without the master brain, [PAWN_nameDef] began to think for the first time about what [PAWN_pronoun] wanted, and the answer frightened even [PAWN_objective].</LP_Bs_IllithidRenegade.description>
+  <!-- 叛离殖巢者 -->
+  <LP_Bs_IllithidRenegade.title>colony defector</LP_Bs_IllithidRenegade.title>
+  <!-- 叛离者 -->
+  <LP_Bs_IllithidRenegade.titleShort>defector</LP_Bs_IllithidRenegade.titleShort>
+  <!-- [PAWN_nameDef]在一座古老的迷宫里长大，闭着眼睛也能找到出口。[PAWN_nameDef]小时候最喜欢的游戏是让闯进来的人类迷路。 -->
+  <LP_Bs_MazeChild.description>[PAWN_nameDef] grew up in an ancient labyrinth and can find the exit with eyes closed. [PAWN_nameDef]'s favorite childhood game was getting intruding humans lost.</LP_Bs_MazeChild.description>
+  <!-- 迷宫里长大 -->
+  <LP_Bs_MazeChild.title>raised in a labyrinth</LP_Bs_MazeChild.title>
+  <!-- 迷宫之子 -->
+  <LP_Bs_MazeChild.titleShort>labyrinth child</LP_Bs_MazeChild.titleShort>
+  <!-- [PAWN_nameDef]在恶魔领主巴风特的军队里当过冲锋兵，用犄角撞开过城门和盾墙。[PAWN_nameDef]逃出来以后，再也不肯低头，除非是为了冲锋。 -->
+  <LP_Bs_BaphometCharger.description>[PAWN_nameDef] was a shock trooper in the army of the demon lord Baphomet, battering down gates and shield walls with horns. Since escaping, [PAWN_nameDef] refuses to lower that head, except to charge.</LP_Bs_BaphometCharger.description>
+  <!-- 巴风特的冲锋兵 -->
+  <LP_Bs_BaphometCharger.title>Baphomet's shock trooper</LP_Bs_BaphometCharger.title>
+  <!-- 冲锋兵 -->
+  <LP_Bs_BaphometCharger.titleShort>shock trooper</LP_Bs_BaphometCharger.titleShort>
+  <!-- [PAWN_nameDef]设计过好几座迷宫，每一座都比上一座更难走出去。[PAWN_nameDef]说好的迷宫和好的家是一样的：外人进不来，自己人出得去。 -->
+  <LP_Bs_MazeArchitect.description>[PAWN_nameDef] has designed several labyrinths, each harder to escape than the last. [PAWN_nameDef] says a good labyrinth is like a good home: outsiders can't get in, family can get out.</LP_Bs_MazeArchitect.description>
+  <!-- 迷宫建筑师 -->
+  <LP_Bs_MazeArchitect.title>labyrinth architect</LP_Bs_MazeArchitect.title>
+  <!-- 迷宫建筑师 -->
+  <LP_Bs_MazeArchitect.titleShort>labyrinth architect</LP_Bs_MazeArchitect.titleShort>
+  <!-- [PAWN_nameDef]在物质界的秘密孵育所里长大，那里的孩子在成年前必须杀死一头夺心魔，否则就不算吉斯洋基。[PAWN_nameDef]通过了考验。 -->
+  <LP_Bs_AstralCreche.description>[PAWN_nameDef] grew up in a secret crèche on the Material Plane, where children must kill a mind flayer before adulthood or they are not githyanki. [PAWN_nameDef] passed the test.</LP_Bs_AstralCreche.description>
+  <!-- 星界孵育所 -->
+  <LP_Bs_AstralCreche.title>astral crèche</LP_Bs_AstralCreche.title>
+  <!-- 星界孵育所 -->
+  <LP_Bs_AstralCreche.titleShort>astral crèche</LP_Bs_AstralCreche.titleShort>
+  <!-- [PAWN_nameDef]是巫妖女王维拉基斯麾下的骑士，被赐予了一柄银剑。[PAWN_nameDef]用这柄剑砍下过十几只夺心魔的头，每一颗都献给了女王。 -->
+  <LP_Bs_SilverKnight.description>[PAWN_nameDef] is a knight of the lich-queen Vlaakith and was granted a silver sword. [PAWN_nameDef] has cut off the heads of a dozen mind flayers with it, each one offered to the queen.</LP_Bs_SilverKnight.description>
+  <!-- 银剑骑士 -->
+  <LP_Bs_SilverKnight.title>silver sword knight</LP_Bs_SilverKnight.title>
+  <!-- 银剑骑士 -->
+  <LP_Bs_SilverKnight.titleShort>silver sword knight</LP_Bs_SilverKnight.titleShort>
+  <!-- [PAWN_nameDef]骑着一头与吉斯洋基立有古老盟约的红龙，在星界海上巡游。那头龙从来没有喜欢过[PAWN_nameDef]，但从来没有让[PAWN_nameDef]摔下去。 -->
+  <LP_Bs_DragonRider.description>[PAWN_nameDef] patrols the Astral Sea on a red dragon bound by an ancient pact with the githyanki. The dragon has never liked [PAWN_nameDef], but has never let [PAWN_objective] fall.</LP_Bs_DragonRider.description>
+  <!-- 红龙骑手 -->
+  <LP_Bs_DragonRider.title>red dragon rider</LP_Bs_DragonRider.title>
+  <!-- 红龙骑手 -->
+  <LP_Bs_DragonRider.titleShort>red dragon rider</LP_Bs_DragonRider.titleShort>
+  <!-- [PAWN_nameDef]驾驶着星界舰劫掠过无数个世界。对吉斯洋基来说，抢劫不是罪行，而是一门手艺。 -->
+  <LP_Bs_AstralRaider.description>[PAWN_nameDef] raided countless worlds aboard an astral ship. To the githyanki, plunder is not a crime but a craft.</LP_Bs_AstralRaider.description>
+  <!-- 星界海盗 -->
+  <LP_Bs_AstralRaider.title>astral pirate</LP_Bs_AstralRaider.title>
+  <!-- 星界海盗 -->
+  <LP_Bs_AstralRaider.titleShort>astral pirate</LP_Bs_AstralRaider.titleShort>
+  <!-- [PAWN_nameDef]一生气头发就会冒火，把家里的窗帘烧掉了好几次。后来[PAWN_nameDef]学会了去厨房生气，那里本来就需要火。 -->
+  <LP_Bs_EmberHands.description>Whenever [PAWN_nameDef] got angry, [PAWN_possessive] hair caught fire, burning the curtains at home several times. Later [PAWN_nameDef] learned to go be angry in the kitchen, where fire is needed anyway.</LP_Bs_EmberHands.description>
+  <!-- 灼手的炉边童 -->
+  <LP_Bs_EmberHands.title>scorching hearth child</LP_Bs_EmberHands.title>
+  <!-- 灼手童 -->
+  <LP_Bs_EmberHands.titleShort>scorching child</LP_Bs_EmberHands.titleShort>
+  <!-- [PAWN_nameDef]在海边的渔村长大，能在水下憋气一整天。渔夫们说，只要[PAWN_nameDef]站在船头，就从来不会翻船。 -->
+  <LP_Bs_TideChild.description>[PAWN_nameDef] grew up in a seaside fishing village and can hold [PAWN_possessive] breath underwater all day. The fishermen say no boat ever capsizes as long as [PAWN_nameDef] stands at the bow.</LP_Bs_TideChild.description>
+  <!-- 渔村潮童 -->
+  <LP_Bs_TideChild.title>fishing village tide child</LP_Bs_TideChild.title>
+  <!-- 潮童 -->
+  <LP_Bs_TideChild.titleShort>tide child</LP_Bs_TideChild.titleShort>
+  <!-- [PAWN_nameDef]从小在采石场里玩耍，赤着脚就能感觉到哪里有矿脉。石匠们给了[PAWN_nameDef]一个外号：会走路的探矿杖。 -->
+  <LP_Bs_StoneVein.description>[PAWN_nameDef] played in the quarry as a child and could feel ore veins barefoot. The masons gave [PAWN_objective] a nickname: the walking divining rod.</LP_Bs_StoneVein.description>
+  <!-- 采石场的石脉童 -->
+  <LP_Bs_StoneVein.title>quarry vein child</LP_Bs_StoneVein.title>
+  <!-- 石脉童 -->
+  <LP_Bs_StoneVein.titleShort>vein child</LP_Bs_StoneVein.titleShort>
+  <!-- [PAWN_nameDef]在一座风车塔顶长大，放风筝从来不需要等风。[PAWN_nameDef]说风会跟自己说话，大人们都当笑话听。 -->
+  <LP_Bs_KiteChild.description>[PAWN_nameDef] grew up atop a windmill tower and never had to wait for wind to fly a kite. [PAWN_nameDef] says the wind talks to [PAWN_objective]; the grown-ups took it as a joke.</LP_Bs_KiteChild.description>
+  <!-- 风车塔的放风筝孩 -->
+  <LP_Bs_KiteChild.title>kite-flying child of the windmill</LP_Bs_KiteChild.title>
+  <!-- 风筝孩 -->
+  <LP_Bs_KiteChild.titleShort>kite child</LP_Bs_KiteChild.titleShort>
+  <!-- [PAWN_nameDef]曾经穿过传送门，去血脉源头的元素位面住了几年。回来以后，[PAWN_nameDef]觉得物质界的一切都太温和、太安静了。 -->
+  <LP_Bs_PlaneVisitor.description>[PAWN_nameDef] once went through a portal and lived for a few years on the elemental plane of [PAWN_possessive] bloodline. After coming back, everything on the Material Plane felt too mild and too quiet.</LP_Bs_PlaneVisitor.description>
+  <!-- 元素位面的访客 -->
+  <LP_Bs_PlaneVisitor.title>elemental plane visitor</LP_Bs_PlaneVisitor.title>
+  <!-- 位面访客 -->
+  <LP_Bs_PlaneVisitor.titleShort>planar visitor</LP_Bs_PlaneVisitor.titleShort>
+  <!-- [PAWN_nameDef]在卡林珊替富商当护卫，那里的元素裔很常见，也很值钱。[PAWN_nameDef]的雇主喜欢在客人面前展示[PAWN_nameDef]，就像展示一件稀有的珍宝。 -->
+  <LP_Bs_CalimshanGuard.description>[PAWN_nameDef] guarded wealthy merchants in Calimshan, where genasi are common and valuable. [PAWN_nameDef]'s employer liked to show [PAWN_objective] off to guests like a rare treasure.</LP_Bs_CalimshanGuard.description>
+  <!-- 卡林珊商会护卫 -->
+  <LP_Bs_CalimshanGuard.title>Calimshan guild guard</LP_Bs_CalimshanGuard.title>
+  <!-- 商会护卫 -->
+  <LP_Bs_CalimshanGuard.titleShort>guild guard</LP_Bs_CalimshanGuard.titleShort>
+  <!-- [PAWN_nameDef]能感应物品里沉睡的元素力量，替法师和铁匠调校魔法武器。[PAWN_nameDef]说每一把剑都有自己的脾气。 -->
+  <LP_Bs_ElementalAttuner.description>[PAWN_nameDef] can sense the elemental power sleeping in objects and tunes magic weapons for wizards and smiths. [PAWN_nameDef] says every sword has its own temper.</LP_Bs_ElementalAttuner.description>
+  <!-- 元素调律师 -->
+  <LP_Bs_ElementalAttuner.title>elemental tuner</LP_Bs_ElementalAttuner.title>
+  <!-- 调律师 -->
+  <LP_Bs_ElementalAttuner.titleShort>tuner</LP_Bs_ElementalAttuner.titleShort>
+  <!-- [PAWN_nameDef]在象人的圣地里长大，用长鼻卷着笔抄写经文。[PAWN_nameDef]记得每一页经文，因为象人从不忘记。 -->
+  <LP_Bs_LoxodonScribe.description>[PAWN_nameDef] grew up in a loxodon sanctuary, copying scripture with a pen held in [PAWN_possessive] trunk. [PAWN_nameDef] remembers every page, because loxodons never forget.</LP_Bs_LoxodonScribe.description>
+  <!-- 圣地的抄经童 -->
+  <LP_Bs_LoxodonScribe.title>sanctuary scribe child</LP_Bs_LoxodonScribe.title>
+  <!-- 抄经童 -->
+  <LP_Bs_LoxodonScribe.titleShort>scripture scribe</LP_Bs_LoxodonScribe.titleShort>
+  <!-- [PAWN_nameDef]是一位石匠僧侣，花了四十年雕刻一座神殿的大门。每一刀都是一次祷告，[PAWN_nameDef]还没有雕完。 -->
+  <LP_Bs_StoneMonk.description>[PAWN_nameDef] is a stonemason monk who has spent forty years carving the gates of a temple. Every cut is a prayer, and [PAWN_nameDef] is not done yet.</LP_Bs_StoneMonk.description>
+  <!-- 石匠僧侣 -->
+  <LP_Bs_StoneMonk.title>stonemason monk</LP_Bs_StoneMonk.title>
+  <!-- 石匠僧侣 -->
+  <LP_Bs_StoneMonk.titleShort>stonemason monk</LP_Bs_StoneMonk.titleShort>
+  <!-- [PAWN_nameDef]在城市里调解纠纷、守护弱者。[PAWN_nameDef]很少动手，但只要动手，事情就会立刻和平下来。 -->
+  <LP_Bs_Peacekeeper.description>[PAWN_nameDef] settles disputes and protects the weak in the city. [PAWN_nameDef] rarely raises a hand, but when [PAWN_pronoun] does, things turn peaceful right away.</LP_Bs_Peacekeeper.description>
+  <!-- 和平守卫 -->
+  <LP_Bs_Peacekeeper.title>peacekeeper</LP_Bs_Peacekeeper.title>
+  <!-- 和平守卫 -->
+  <LP_Bs_Peacekeeper.titleShort>peacekeeper</LP_Bs_Peacekeeper.titleShort>
+  <!-- [PAWN_nameDef]在一个山洞里长大，那里的规矩只有一条：谁拳头大谁先吃。[PAWN_nameDef]从小就是先吃的那一个。 -->
+  <LP_Bs_CaveBrute.description>[PAWN_nameDef] grew up in a cave with only one rule: whoever has the biggest fists eats first. [PAWN_nameDef] was always the one who ate first.</LP_Bs_CaveBrute.description>
+  <!-- 山洞里的大块头 -->
+  <LP_Bs_CaveBrute.title>big lug from the cave</LP_Bs_CaveBrute.title>
+  <!-- 山洞大块头 -->
+  <LP_Bs_CaveBrute.titleShort>cave lug</LP_Bs_CaveBrute.titleShort>
+  <!-- [PAWN_nameDef]给出钱最多的人当打手：塞伊、黑网、山贼，谁都行。[PAWN_nameDef]唯一的要求是管饭，而且要管饱。 -->
+  <LP_Bs_HiredMuscle.description>[PAWN_nameDef] works as muscle for whoever pays most: Thay, the Black Network, bandits, anyone. [PAWN_nameDef]'s only demand is meals included, and plenty of them.</LP_Bs_HiredMuscle.description>
+  <!-- 雇来的打手 -->
+  <LP_Bs_HiredMuscle.title>hired muscle</LP_Bs_HiredMuscle.title>
+  <!-- 打手 -->
+  <LP_Bs_HiredMuscle.titleShort>muscle</LP_Bs_HiredMuscle.titleShort>
+  <!-- [PAWN_nameDef]在一家路边客栈当厨子，做的炖肉分量大到能喂饱一支小队。[PAWN_nameDef]做菜从来不看菜谱，只看锅里还剩多少。 -->
+  <LP_Bs_GlutCook.description>[PAWN_nameDef] was the cook at a roadside inn, making stews big enough to feed a whole squad. [PAWN_nameDef] never reads recipes, only how much is left in the pot.</LP_Bs_GlutCook.description>
+  <!-- 大胃王厨子 -->
+  <LP_Bs_GlutCook.title>big-appetite cook</LP_Bs_GlutCook.title>
+  <!-- 大胃王厨子 -->
+  <LP_Bs_GlutCook.titleShort>big-appetite cook</LP_Bs_GlutCook.titleShort>
+  <!-- [PAWN_nameDef]在悬崖上的巢里长大，学会走路之前先学会了飞。[PAWN_nameDef]至今不明白，为什么会有人愿意住在地底下。 -->
+  <LP_Bs_CliffNest.description>[PAWN_nameDef] grew up in a cliffside nest and learned to fly before learning to walk. To this day [PAWN_nameDef] cannot understand why anyone would want to live underground.</LP_Bs_CliffNest.description>
+  <!-- 高崖巢中长大 -->
+  <LP_Bs_CliffNest.title>raised in a high cliff nest</LP_Bs_CliffNest.title>
+  <!-- 高崖之子 -->
+  <LP_Bs_CliffNest.titleShort>cliff child</LP_Bs_CliffNest.titleShort>
+  <!-- [PAWN_nameDef]替山脚下的城市送信，一天能飞过三座王国。[PAWN_nameDef]见过太多秘密，所以学会了不看信的内容。 -->
+  <LP_Bs_WindMessenger.description>[PAWN_nameDef] carries letters for the cities at the mountain's foot and can fly over three kingdoms in a day. [PAWN_nameDef] has seen too many secrets and learned not to read the letters.</LP_Bs_WindMessenger.description>
+  <!-- 风之信使 -->
+  <LP_Bs_WindMessenger.title>wind messenger</LP_Bs_WindMessenger.title>
+  <!-- 风之信使 -->
+  <LP_Bs_WindMessenger.titleShort>wind messenger</LP_Bs_WindMessenger.titleShort>
+  <!-- [PAWN_nameDef]在部落的领空上巡逻，用标枪驱赶狮鹫和双足飞龙。[PAWN_nameDef]能在俯冲时射中地上的一只兔子。 -->
+  <LP_Bs_SkyPatrol.description>[PAWN_nameDef] patrols the tribe's skies, driving off griffons and wyverns with javelins. [PAWN_nameDef] can hit a rabbit on the ground in mid-dive.</LP_Bs_SkyPatrol.description>
+  <!-- 天空巡逻兵 -->
+  <LP_Bs_SkyPatrol.title>sky patroller</LP_Bs_SkyPatrol.title>
+  <!-- 天空巡逻 -->
+  <LP_Bs_SkyPatrol.titleShort>sky patrol</LP_Bs_SkyPatrol.titleShort>
+  <!-- [PAWN_nameDef]在火元素位面的黄铜城里当过侍童，替苏丹端火焰葡萄酒。[PAWN_nameDef]从那时起就懂得，最好的礼物是对方开口之前就送到的那一份。 -->
+  <LP_Bs_BrassPage.description>[PAWN_nameDef] was a page in the City of Brass on the Elemental Plane of Fire, serving the sultan fire wine. Since then [PAWN_nameDef] has known the best gift is the one delivered before the other person asks.</LP_Bs_BrassPage.description>
+  <!-- 黄铜城的宫廷侍童 -->
+  <LP_Bs_BrassPage.title>court page of the City of Brass</LP_Bs_BrassPage.title>
+  <!-- 黄铜侍童 -->
+  <LP_Bs_BrassPage.titleShort>brass page</LP_Bs_BrassPage.titleShort>
+  <!-- [PAWN_nameDef]被一位法师封进神灯，在黑暗里待了整整一千年。[PAWN_nameDef]答应过很多主人的愿望，每一个都实现了，只是不一定按主人想要的方式。 -->
+  <LP_Bs_LampBound.description>[PAWN_nameDef] was sealed in a lamp by a wizard and spent a full thousand years in darkness. [PAWN_nameDef] granted many masters' wishes; every one came true, just not always the way the master wanted.</LP_Bs_LampBound.description>
+  <!-- 被困千年的灯灵 -->
+  <LP_Bs_LampBound.title>genie trapped for a thousand years</LP_Bs_LampBound.title>
+  <!-- 灯灵 -->
+  <LP_Bs_LampBound.titleShort>lamp genie</LP_Bs_LampBound.titleShort>
+  <!-- [PAWN_nameDef]曾是元素宫廷里的大维齐尔，替苏丹管理过一整座城市的事务。[PAWN_nameDef]对凡人的礼仪很宽容，但对凡人的账本很失望。 -->
+  <LP_Bs_Vizier.description>[PAWN_nameDef] was once grand vizier of an elemental court, running the affairs of an entire city for the sultan. [PAWN_nameDef] is tolerant of mortal manners but disappointed by mortal ledgers.</LP_Bs_Vizier.description>
+  <!-- 元素宫廷的大维齐尔 -->
+  <LP_Bs_Vizier.title>grand vizier of an elemental court</LP_Bs_Vizier.title>
+  <!-- 大维齐尔 -->
+  <LP_Bs_Vizier.titleShort>grand vizier</LP_Bs_Vizier.titleShort>
+  <!-- [PAWN_nameDef]诞生在深渊的血战之中，第一件学会的事情是同时握住六把刀。在深渊里，学不会的孩子活不过第一天。 -->
+  <LP_Bs_AbyssSpawn.description>[PAWN_nameDef] was born amid the Blood War of the Abyss, and the first thing learned was to hold six blades at once. In the Abyss, children who can't learn don't survive the first day.</LP_Bs_AbyssSpawn.description>
+  <!-- 深渊战场的幼体 -->
+  <LP_Bs_AbyssSpawn.title>spawn of the abyssal battlefield</LP_Bs_AbyssSpawn.title>
+  <!-- 深渊幼体 -->
+  <LP_Bs_AbyssSpawn.titleShort>abyssal spawn</LP_Bs_AbyssSpawn.titleShort>
+  <!-- [PAWN_nameDef]曾在深渊的血战中指挥过一整支恶魔军团。[PAWN_nameDef]的六只手各握一把剑，每一把都有自己的名字和故事。 -->
+  <LP_Bs_AbyssGeneral.description>[PAWN_nameDef] once commanded an entire demon legion in the Blood War of the Abyss. Each of [PAWN_nameDef]'s six hands holds a sword, and each has its own name and story.</LP_Bs_AbyssGeneral.description>
+  <!-- 深渊将军 -->
+  <LP_Bs_AbyssGeneral.title>abyssal general</LP_Bs_AbyssGeneral.title>
+  <!-- 深渊将军 -->
+  <LP_Bs_AbyssGeneral.titleShort>abyssal general</LP_Bs_AbyssGeneral.titleShort>
+  <!-- [PAWN_nameDef]被塞伊的召唤师用契约束缚了数十年。召唤师死后契约失效，[PAWN_nameDef]第一次可以决定自己往哪里走。 -->
+  <LP_Bs_BoundServant.description>[PAWN_nameDef] was bound by a Thayan summoner's pact for decades. When the summoner died the pact lapsed, and for the first time [PAWN_nameDef] could choose where to go.</LP_Bs_BoundServant.description>
+  <!-- 被契约束缚者 -->
+  <LP_Bs_BoundServant.title>pact-bound</LP_Bs_BoundServant.title>
+  <!-- 契约之仆 -->
+  <LP_Bs_BoundServant.titleShort>pact servant</LP_Bs_BoundServant.titleShort>
+  <!-- [PAWN_nameDef]是从父辈身上分裂出来的，出生时就带着一部分模糊的记忆。[PAWN_nameDef]常常分不清哪些往事是自己的，哪些是父辈的。 -->
+  <LP_Bs_SplitBorn.description>[PAWN_nameDef] split off from a parent and was born with some hazy memories. [PAWN_nameDef] often can't tell which memories are [PAWN_possessive] own and which belong to the parent.</LP_Bs_SplitBorn.description>
+  <!-- 分裂而生 -->
+  <LP_Bs_SplitBorn.title>born of fission</LP_Bs_SplitBorn.title>
+  <!-- 分裂而生 -->
+  <LP_Bs_SplitBorn.titleShort>born of fission</LP_Bs_SplitBorn.titleShort>
+  <!-- [PAWN_nameDef]在一艘星界货船上当了很多年水手，能把身体挤进管道里修船。船坠毁在这个世界之后，[PAWN_nameDef]是唯一一个没有摔碎骨头的人，因为[PAWN_nameDef]根本没有骨头。 -->
+  <LP_Bs_SpelljammerHand.description>[PAWN_nameDef] was a sailor on an astral freighter for many years and could squeeze into pipes to repair the ship. When the ship crashed on this world, [PAWN_nameDef] was the only one who broke no bones, because [PAWN_nameDef] has no bones at all.</LP_Bs_SpelljammerHand.description>
+  <!-- 星界货船水手 -->
+  <LP_Bs_SpelljammerHand.title>astral freighter sailor</LP_Bs_SpelljammerHand.title>
+  <!-- 货船水手 -->
+  <LP_Bs_SpelljammerHand.titleShort>freighter sailor</LP_Bs_SpelljammerHand.titleShort>
+  <!-- [PAWN_nameDef]在深水城的下水道里工作，清淤、驱鼠、处理一些不该出现在下水道里的东西。[PAWN_nameDef]说那里其实挺舒服的，又湿又暗。 -->
+  <LP_Bs_SewerKeeper.description>[PAWN_nameDef] works in the sewers of Waterdeep, clearing silt, driving off rats and dealing with things that shouldn't be in a sewer. [PAWN_nameDef] says it's quite comfortable down there, damp and dark.</LP_Bs_SewerKeeper.description>
+  <!-- 下水道看守 -->
+  <LP_Bs_SewerKeeper.title>sewer warden</LP_Bs_SewerKeeper.title>
+  <!-- 下水道看守 -->
+  <LP_Bs_SewerKeeper.titleShort>sewer warden</LP_Bs_SewerKeeper.titleShort>
+  <!-- [PAWN_nameDef]生来就和别人不一样，村里人说这是神明或者魔鬼的印记。不管是哪一种，他们都不想让[PAWN_nameDef]留下来。 -->
+  <LP_Bs_HornedOutcast.description>[PAWN_nameDef] was born different, and the villagers said it was the mark of a god or a devil. Whichever it was, they did not want [PAWN_nameDef] to stay.</LP_Bs_HornedOutcast.description>
+  <!-- 被村子赶出来的孩子 -->
+  <LP_Bs_HornedOutcast.title>child driven out of the village</LP_Bs_HornedOutcast.title>
+  <!-- 被逐之子 -->
+  <LP_Bs_HornedOutcast.titleShort>outcast child</LP_Bs_HornedOutcast.titleShort>
+  <!-- [PAWN_nameDef]梦里总有一位天界向导在说话，可那声音越来越远。[PAWN_nameDef]走遍费伦治病救人，想找回那个声音。 -->
+  <LP_Bs_AasimarPenitent.description>A celestial guide always speaks in [PAWN_nameDef]'s dreams, but the voice grows ever more distant. [PAWN_nameDef] wanders Faerûn healing people, trying to find that voice again.</LP_Bs_AasimarPenitent.description>
+  <!-- 天界血脉的赎罪者 -->
+  <LP_Bs_AasimarPenitent.title>penitent of celestial blood</LP_Bs_AasimarPenitent.title>
+  <!-- 赎罪者 -->
+  <LP_Bs_AasimarPenitent.titleShort>penitent</LP_Bs_AasimarPenitent.titleShort>
+  <!-- [PAWN_nameDef]曾是一位圣武士，在一场无法挽回的战斗之后背弃了誓言。[PAWN_nameDef]的剑还在，信仰却不知道丢在了哪里。 -->
+  <LP_Bs_FallenPaladin.description>[PAWN_nameDef] was once a paladin who broke [PAWN_possessive] oath after a battle that could not be undone. The sword remains; the faith was lost who knows where.</LP_Bs_FallenPaladin.description>
+  <!-- 堕落的圣武士 -->
+  <LP_Bs_FallenPaladin.title>fallen paladin</LP_Bs_FallenPaladin.title>
+  <!-- 堕落圣武士 -->
+  <LP_Bs_FallenPaladin.titleShort>fallen paladin</LP_Bs_FallenPaladin.titleShort>
+  <!-- [PAWN_nameDef]专门替凡人审读和魔鬼签的契约，找出里面的每一个陷阱。生意一直很好，因为凡人总是先签字再来找[PAWN_nameDef]。 -->
+  <LP_Bs_InfernalLawyer.description>[PAWN_nameDef] reviews contracts mortals sign with devils and finds every trap in them. Business is always good, because mortals always sign first and come to [PAWN_nameDef] afterwards.</LP_Bs_InfernalLawyer.description>
+  <!-- 地狱契约律师 -->
+  <LP_Bs_InfernalLawyer.title>infernal contract lawyer</LP_Bs_InfernalLawyer.title>
+  <!-- 契约律师 -->
+  <LP_Bs_InfernalLawyer.titleShort>contract lawyer</LP_Bs_InfernalLawyer.titleShort>
+  <!-- [PAWN_nameDef]发现，既然人们无论如何都会觉得长角的人是骗子，那还不如真的去当骗子。[PAWN_nameDef]干得很出色。 -->
+  <LP_Bs_TieflingGrifter.description>[PAWN_nameDef] realized that since people would think anyone with horns is a con artist anyway, [PAWN_pronoun] might as well actually be one. [PAWN_nameDef] is excellent at it.</LP_Bs_TieflingGrifter.description>
+  <!-- 街头骗子 -->
+  <LP_Bs_TieflingGrifter.title>street swindler</LP_Bs_TieflingGrifter.title>
+  <!-- 街头骗子 -->
+  <LP_Bs_TieflingGrifter.titleShort>street swindler</LP_Bs_TieflingGrifter.titleShort>
+  <!-- [PAWN_nameDef]曾是科米尔的紫龙骑士，在国王的旗帜下骑马冲锋。战争结束后，[PAWN_nameDef]的连队只剩下三个人和一面烧焦的旗。 -->
+  <LP_Bs_PurpleDragonKnight.description>[PAWN_nameDef] was once a Purple Dragon knight of Cormyr, charging under the king's banner. When the war ended, [PAWN_nameDef]'s company was down to three people and a scorched flag.</LP_Bs_PurpleDragonKnight.description>
+  <!-- 紫龙骑士 -->
+  <LP_Bs_PurpleDragonKnight.title>Purple Dragon knight</LP_Bs_PurpleDragonKnight.title>
+  <!-- 紫龙骑士 -->
+  <LP_Bs_PurpleDragonKnight.titleShort>Purple Dragon knight</LP_Bs_PurpleDragonKnight.titleShort>
+  <!-- [PAWN_nameDef]一生只杀死过一头龙，却为此付出了半个队伍和一只耳朵。[PAWN_nameDef]至今会被任何像翅膀扇动的声音惊醒。 -->
+  <LP_Bs_DragonSlayer.description>[PAWN_nameDef] has killed only one dragon in [PAWN_possessive] life, at the cost of half the party and one ear. To this day any sound like beating wings wakes [PAWN_objective].</LP_Bs_DragonSlayer.description>
+  <!-- 屠龙者 -->
+  <LP_Bs_DragonSlayer.title>dragonslayer</LP_Bs_DragonSlayer.title>
+  <!-- 屠龙者 -->
+  <LP_Bs_DragonSlayer.titleShort>dragonslayer</LP_Bs_DragonSlayer.titleShort>
+  <!-- [PAWN_nameDef]靠猎杀怪物换赏金：枭熊、蝎尾狮、夜里叼走孩子的鹰身女妖。[PAWN_nameDef]的背包里永远装着银粉、盐和一本写满批注的怪物图鉴。 -->
+  <LP_Bs_MonsterHunter.description>[PAWN_nameDef] hunts monsters for bounties: owlbears, manticores, harpies that snatch children at night. [PAWN_nameDef]'s pack always holds silver dust, salt and a heavily annotated bestiary.</LP_Bs_MonsterHunter.description>
+  <!-- 怪物猎人 -->
+  <LP_Bs_MonsterHunter.title>monster hunter</LP_Bs_MonsterHunter.title>
+  <!-- 怪物猎人 -->
+  <LP_Bs_MonsterHunter.titleShort>monster hunter</LP_Bs_MonsterHunter.titleShort>
+  <!-- [PAWN_nameDef]在安洛克沙漠里挖掘耐瑟瑞尔帝国的废墟，找过飞城的碎片和巫妖的手稿。[PAWN_nameDef]有一个原则：读不懂的卷轴，绝不念出声。 -->
+  <LP_Bs_NetherilLooter.description>[PAWN_nameDef] dug through the ruins of the Netherese Empire in the Anauroch desert, searching for flying city fragments and lich manuscripts. [PAWN_nameDef] has one rule: never read aloud a scroll you don't understand.</LP_Bs_NetherilLooter.description>
+  <!-- 耐瑟遗迹盗掘者 -->
+  <LP_Bs_NetherilLooter.title>Netherese ruin robber</LP_Bs_NetherilLooter.title>
+  <!-- 遗迹盗掘者 -->
+  <LP_Bs_NetherilLooter.titleShort>ruin robber</LP_Bs_NetherilLooter.titleShort>
+  <!-- [PAWN_nameDef]在火巨人的锻炉里当了十年奴隶，某个火山爆发的夜里趁乱逃了出来。[PAWN_nameDef]至今听到铁锤声就会下意识地低下头。 -->
+  <LP_Bs_EmberRunaway.description>[PAWN_nameDef] was a slave at a fire giant's forge for ten years and escaped in the chaos of a volcanic eruption one night. To this day [PAWN_nameDef] instinctively ducks at the sound of a hammer.</LP_Bs_EmberRunaway.description>
+  <!-- 余烬氏族逃奴 -->
+  <LP_Bs_EmberRunaway.title>ember clan runaway slave</LP_Bs_EmberRunaway.title>
+  <!-- 逃奴 -->
+  <LP_Bs_EmberRunaway.titleShort>runaway slave</LP_Bs_EmberRunaway.titleShort>
+  <!-- [PAWN_nameDef]年轻时屠过龙、救过公主、拿过一整箱金币，后来全花在了一家没人光顾的酒馆上。[PAWN_nameDef]的故事讲了一遍又一遍，每一遍那条龙都比上一遍更大。 -->
+  <LP_Bs_RetiredAdventurer.description>In [PAWN_possessive] youth [PAWN_nameDef] slew dragons, rescued princesses and won a chest of gold, then spent it all on a tavern nobody visits. [PAWN_nameDef] tells the stories again and again, and every time the dragon is bigger than the last.</LP_Bs_RetiredAdventurer.description>
+  <!-- 退休冒险者 -->
+  <LP_Bs_RetiredAdventurer.title>retired adventurer</LP_Bs_RetiredAdventurer.title>
+  <!-- 退休冒险者 -->
+  <LP_Bs_RetiredAdventurer.titleShort>retired adventurer</LP_Bs_RetiredAdventurer.titleShort>
+</LanguageData>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 治愈药剂 -->
+  <LP_ALP_Healing.label>elixir of healing</LP_ALP_Healing.label>
+  <!-- 炼金师的实验药剂。喝下后止住所有出血，立刻治疗 20 点伤口。谁都能喝，3 天就坏。精炼药剂治疗量 ×1.3。 -->
+  <LP_ALP_Healing.description>An alchemist's experimental elixir. Drinking it stops all bleeding and instantly heals 20 points of wounds. Anyone can drink it; spoils in 3 days. Refined elixirs heal ×1.3.</LP_ALP_Healing.description>
+  <!-- 饮用{0} -->
+  <LP_ALP_Healing.ingestible.ingestCommandString>drink {0}</LP_ALP_Healing.ingestible.ingestCommandString>
+  <!-- 正在饮用{0}。 -->
+  <LP_ALP_Healing.ingestible.ingestReportString>Drinking {0}.</LP_ALP_Healing.ingestible.ingestReportString>
+  <!-- 迅捷药剂 -->
+  <LP_ALP_Swift.label>elixir of swiftness</LP_ALP_Swift.label>
+  <!-- 炼金师的实验药剂。1 天内移动 +25%。谁都能喝，3 天就坏。精炼药剂持续时间 ×1.3。 -->
+  <LP_ALP_Swift.description>An alchemist's experimental elixir. For 1 day movement +25%. Anyone can drink it; spoils in 3 days. Refined elixirs last ×1.3 as long.</LP_ALP_Swift.description>
+  <!-- 饮用{0} -->
+  <LP_ALP_Swift.ingestible.ingestCommandString>drink {0}</LP_ALP_Swift.ingestible.ingestCommandString>
+  <!-- 正在饮用{0}。 -->
+  <LP_ALP_Swift.ingestible.ingestReportString>Drinking {0}.</LP_ALP_Swift.ingestible.ingestReportString>
+  <!-- 坚韧药剂 -->
+  <LP_ALP_Tough.label>elixir of resilience</LP_ALP_Tough.label>
+  <!-- 炼金师的实验药剂。1 天内受到的伤害 −15%。谁都能喝，3 天就坏。精炼药剂持续时间 ×1.3。 -->
+  <LP_ALP_Tough.description>An alchemist's experimental elixir. For 1 day damage taken -15%. Anyone can drink it; spoils in 3 days. Refined elixirs last ×1.3 as long.</LP_ALP_Tough.description>
+  <!-- 饮用{0} -->
+  <LP_ALP_Tough.ingestible.ingestCommandString>drink {0}</LP_ALP_Tough.ingestible.ingestCommandString>
+  <!-- 正在饮用{0}。 -->
+  <LP_ALP_Tough.ingestible.ingestReportString>Drinking {0}.</LP_ALP_Tough.ingestible.ingestReportString>
+  <!-- 轻盈药剂 -->
+  <LP_ALP_Light.label>elixir of lightness</LP_ALP_Light.label>
+  <!-- 炼金师的实验药剂。1 天内走路无视地形、积雪、植物的减速。谁都能喝，3 天就坏。精炼药剂持续时间 ×1.3。 -->
+  <LP_ALP_Light.description>An alchemist's experimental elixir. For 1 day walking ignores slowdown from terrain, snow and plants. Anyone can drink it; spoils in 3 days. Refined elixirs last ×1.3 as long.</LP_ALP_Light.description>
+  <!-- 饮用{0} -->
+  <LP_ALP_Light.ingestible.ingestCommandString>drink {0}</LP_ALP_Light.ingestible.ingestCommandString>
+  <!-- 正在饮用{0}。 -->
+  <LP_ALP_Light.ingestible.ingestReportString>Drinking {0}.</LP_ALP_Light.ingestible.ingestReportString>
+  <!-- 清醒药剂 -->
+  <LP_ALP_Lucid.label>elixir of clarity</LP_ALP_Lucid.label>
+  <!-- 炼金师的实验药剂。1 天内意识 +10%，不会困。谁都能喝，3 天就坏。精炼药剂持续时间 ×1.3。 -->
+  <LP_ALP_Lucid.description>An alchemist's experimental elixir. For 1 day consciousness +10%, no sleepiness. Anyone can drink it; spoils in 3 days. Refined elixirs last ×1.3 as long.</LP_ALP_Lucid.description>
+  <!-- 饮用{0} -->
+  <LP_ALP_Lucid.ingestible.ingestCommandString>drink {0}</LP_ALP_Lucid.ingestible.ingestCommandString>
+  <!-- 正在饮用{0}。 -->
+  <LP_ALP_Lucid.ingestible.ingestReportString>Drinking {0}.</LP_ALP_Lucid.ingestible.ingestReportString>
+  <!-- 勇气药剂 -->
+  <LP_ALP_Courage.label>elixir of courage</LP_ALP_Courage.label>
+  <!-- 炼金师的实验药剂。1 天内心情 +10，精神崩溃阈值 −5%。谁都能喝，3 天就坏。精炼药剂持续时间 ×1.3。 -->
+  <LP_ALP_Courage.description>An alchemist's experimental elixir. For 1 day mood +10, mental break threshold -5%. Anyone can drink it; spoils in 3 days. Refined elixirs last ×1.3 as long.</LP_ALP_Courage.description>
+  <!-- 饮用{0} -->
+  <LP_ALP_Courage.ingestible.ingestCommandString>drink {0}</LP_ALP_Courage.ingestible.ingestCommandString>
+  <!-- 正在饮用{0}。 -->
+  <LP_ALP_Courage.ingestible.ingestReportString>Drinking {0}.</LP_ALP_Courage.ingestible.ingestReportString>
+  <!-- 复原试剂 -->
+  <LP_ALP_Restorative.label>restorative reagent</LP_ALP_Restorative.label>
+  <!-- 炼金师的复原试剂。喝下后治好身上最重的一种疾病（流感、瘟疫、疟疾、昏睡病、肠道或肌肉寄生虫、纤维 / 感官机械虫、食物中毒、伤口感染、肺腐病）；没有病就清除毒素累积。谁都能喝，不会坏。 -->
+  <LP_ALP_Restorative.description>An alchemist's restorative reagent. Drinking it cures the worst disease on the body (flu, plague, malaria, sleeping sickness, gut or muscle parasites, fibrous / sensory mechanites, food poisoning, wound infection, lung rot); with no disease it clears toxic buildup. Anyone can drink it; never spoils.</LP_ALP_Restorative.description>
+  <!-- 饮用{0} -->
+  <LP_ALP_Restorative.ingestible.ingestCommandString>drink {0}</LP_ALP_Restorative.ingestible.ingestCommandString>
+  <!-- 正在饮用{0}。 -->
+  <LP_ALP_Restorative.ingestible.ingestReportString>Drinking {0}.</LP_ALP_Restorative.ingestible.ingestReportString>
+  <!-- 大复原药剂 -->
+  <LP_ALP_GreaterRestorative.label>elixir of greater restoration</LP_ALP_GreaterRestorative.label>
+  <!-- 化学大师每季只做得出一瓶的药剂。喝下后长回一个缺失的肢体或器官（最大的那个），并清除所有疾病、成瘾和毒素累积。谁都能喝，不会坏。 -->
+  <LP_ALP_GreaterRestorative.description>An elixir a master chemist can only make one of per quarter. Drinking it regrows a missing limb or organ (the biggest one) and clears all diseases, addictions and toxic buildup. Anyone can drink it; never spoils.</LP_ALP_GreaterRestorative.description>
+  <!-- 饮用{0} -->
+  <LP_ALP_GreaterRestorative.ingestible.ingestCommandString>drink {0}</LP_ALP_GreaterRestorative.ingestible.ingestCommandString>
+  <!-- 正在饮用{0}。 -->
+  <LP_ALP_GreaterRestorative.ingestible.ingestReportString>Drinking {0}.</LP_ALP_GreaterRestorative.ingestible.ingestReportString>
+  <!-- 符文地雷 -->
+  <LP_RuneMine.label>rune mine</LP_RuneMine.label>
+  <!-- 堡垒工程师埋下的符文：敌人踩上去受 20 × 器械强度 奥术力伤害、倒地 2 秒，然后符文消散。藏在地面里，敌人很难察觉。 -->
+  <LP_RuneMine.description>A rune buried by a Fortress Engineer: an enemy stepping on it takes 20 × artifice power arcane force damage and falls for 2 seconds, then the rune dissipates. Hidden in the ground, hard for enemies to notice.</LP_RuneMine.description>
+  <!-- 奥术电容 -->
+  <LP_ArcaneCapacitor.label>arcane capacitor</LP_ArcaneCapacitor.label>
+  <!-- 堡垒工程师的符文电容：不用燃料，一直输出 300 瓦。3 格内的炮台射速 +15%。每个会「奥术电容」的工程师最多支撑 器械师等级 ÷ 3 台（全殖民地合计）。 -->
+  <LP_ArcaneCapacitor.description>A Fortress Engineer's rune capacitor: needs no fuel and always outputs 300 W. Turrets within 3 cells get +15% fire rate. Each engineer who knows "arcane capacitor" can support at most artificer level ÷ 3 of them (colony-wide total).</LP_ArcaneCapacitor.description>
+  <!-- 要塞核心 -->
+  <LP_FortressCore.label>fortress core</LP_FortressCore.label>
+  <!-- 堡垒工程师的要塞之心：半径 20 格内工程师加固过的防御建筑每小时自动修复 5%。每场袭击可以发动一次「全线升级」：范围内所有炮台（含符文炮台）伤害 +30%，持续 1 小时。每个殖民地只能有 1 个，要有会「要塞之心」的工程师才能建。 -->
+  <LP_FortressCore.description>A Fortress Engineer's heart of the fortress: defensive buildings reinforced by engineers within radius 20 repair 5% per hour automatically. Once per raid, "full-line upgrade" can be triggered: all turrets in range (including rune turrets) get +30% damage for 1 hour. Only 1 per colony, and requires an engineer who knows "heart of the fortress" to build.</LP_FortressCore.description>
+</LanguageData>

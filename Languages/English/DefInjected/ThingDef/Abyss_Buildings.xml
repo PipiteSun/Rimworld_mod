@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 深渊法阵 -->
+  <LP_AbyssCircle.label>abyssal circle</LP_AbyssCircle.label>
+  <!-- 用银和寒铁嵌在地上的 5×5 暗红符文圈。在这里举行深渊仪式召唤恶魔：一阶劣魔群和夸塞魔，二阶巴路古拉和哈兹魔，三阶魅魔 / 梦魔、纳巴苏（和六臂蛇魔），四阶炎魔。二阶以上要先读过记载那种恶魔的恶魔学典籍。还可以在这里炼魂。每张地图只能有一个。\n\n可以再花 40 银镶一圈银边：成功率 +5%。 -->
+  <LP_AbyssCircle.description>A 5×5 dark red rune circle inlaid in the floor with silver and cold iron. Hold abyssal rituals here to summon demons: tier 1 manes swarms and quasits, tier 2 barlguras and hezrous, tier 3 succubi / incubi, nabassus (and mariliths), tier 4 balors. Tier 2 and above require first reading a demonology tome that records that demon. Souls can also be refined here. Only one per map.\n\nYou can spend another 40 silver on a silver rim: +5% success chance.</LP_AbyssCircle.description>
+  <!-- 束缚法阵 -->
+  <LP_BindingCircle.label>binding circle</LP_BindingCircle.label>
+  <!-- 3×3 的银色锁链符文。束缚者的床放在法阵上（或紧挨着它）时，服从度每天 +3；戴位面锚链的外来者囚犯关在有束缚法阵的房间里不会越狱，也只有在这样的房间里才能抽恶魔血。每张地图最多 4 个。 -->
+  <LP_BindingCircle.description>A 3×3 silver chain rune. When a bound one's bed is on the circle (or right next to it), obedience +3 per day. Outsider prisoners wearing a planar anchor chain will not escape from a room with a binding circle, and demon blood can only be drawn in such a room. At most 4 per map.</LP_BindingCircle.description>
+  <!-- 驱魔结界 -->
+  <LP_WardingGlyph.label>exorcism ward</LP_WardingGlyph.label>
+  <!-- 一枚刻在地上的银色符文。半径 6 格内：敌对外来者移速 ×0.7；睡在里面的人深渊腐化每天 -1%；位面裂口不会在这里打开。地图上每个结界让位面薄弱度每天 -1（最多算 5 个）。 -->
+  <LP_WardingGlyph.description>A silver rune carved into the floor. Within 6 cells: hostile outsiders move ×0.7; people sleeping inside lose 1% abyssal taint per day; planar rifts will not open here. Each ward on the map lowers planar thinness by 1 per day (up to 5 count).</LP_WardingGlyph.description>
+</LanguageData>

@@ -23,8 +23,8 @@ namespace LichPhylactery {
   // 访客被殖民者打：古龙一行按“拒绝”处理；云游导师离开（桥接程序集往这里登记）。
   public static Action<Pawn,Pawn> MentorHarmed;
   public static void Harmed(Pawn victim,Pawn attacker,string kind){
-   try{if(kind=="dragon")DragonFlyover.OnVisitorHarmed(victim,attacker);else if(kind=="mentor")MentorHarmed?.Invoke(victim,attacker);else if(kind=="e3")Events3.Harmed(victim,attacker,kind);}
-   catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 访客受伤处理出错："+e,74120611);}
+   try{if(kind=="mentor")MentorHarmed?.Invoke(victim,attacker);else if(kind=="e3")Events3.Harmed(victim,attacker,kind);}
+   catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 访客受伤处理出错：".Loc()+e,74120611);}
   }
   public static Hediff_EventVisitor MarkVisitor(Pawn p,string kind){var h=Items.Give(p,"LP_EventVisitor") as Hediff_EventVisitor;if(h!=null)h.kind=kind;return h;}
   // 从地图边上找一个能走到殖民地的格子。
@@ -56,31 +56,23 @@ namespace LichPhylactery {
   public List<StampedeGroup> stampedes=new List<StampedeGroup>();
   public List<StampedeFollowUp> followUps=new List<StampedeFollowUp>();
   public List<ColdSnapPack> coldSnaps=new List<ColdSnapPack>();
-  public List<DragonVisit> dragonVisits=new List<DragonVisit>();
-  public List<DragonRaid> dragonRaids=new List<DragonRaid>();
   public Events2State(Game game){}
   public override void GameComponentTick(){
    int now=Find.TickManager.TicksGame;
    if(stampedes.Count>0 && now%Stampede.CheckInterval==3)Stampede.Tick(this);
-   if(dragonVisits.Count>0 && now%60==17)DragonFlyover.Tick(this);
    if(now%250!=131)return;
    if(followUps.Count>0)Stampede.TickFollowUps(this);
    if(coldSnaps.Count>0)ColdSnap.Tick(this);
-   if(dragonRaids.Count>0)DragonFlyover.TickRaids(this);
   }
   public override void ExposeData(){
    base.ExposeData();
    Scribe_Collections.Look(ref stampedes,"lpStampedes",LookMode.Deep);
    Scribe_Collections.Look(ref followUps,"lpStampedeFollowUps",LookMode.Deep);
    Scribe_Collections.Look(ref coldSnaps,"lpColdSnaps",LookMode.Deep);
-   Scribe_Collections.Look(ref dragonVisits,"lpDragonVisits",LookMode.Deep);
-   Scribe_Collections.Look(ref dragonRaids,"lpDragonRaids",LookMode.Deep);
    if(Scribe.mode==LoadSaveMode.PostLoadInit){
     stampedes=stampedes?.Where(x=>x!=null).ToList()??new List<StampedeGroup>();
     followUps=followUps?.Where(x=>x!=null).ToList()??new List<StampedeFollowUp>();
     coldSnaps=coldSnaps?.Where(x=>x!=null).ToList()??new List<ColdSnapPack>();
-    dragonVisits=dragonVisits?.Where(x=>x!=null).ToList()??new List<DragonVisit>();
-    dragonRaids=dragonRaids?.Where(x=>x!=null).ToList()??new List<DragonRaid>();
    }
   }
  }
@@ -159,7 +151,7 @@ namespace LichPhylactery {
    DNDPush.Move(victim,DNDPush.Destination(g.map,victim.Position,dir,PushCells));
    g.lastDamage=Rand.Range(DamageMin,DamageMax);
    victim.TakeDamage(new DamageInfo(DamageDefOf.Blunt,g.lastDamage,0f,-1f,animal));
-   Items.Mote(victim,"被撞开了！",new Color(.95f,.8f,.5f));
+   Items.Mote(victim,"被撞开了！".Loc(),new Color(.95f,.8f,.5f));
   }
   public static void Tick(Events2State s){
    for(int i=s.stampedes.Count-1;i>=0;i--){
@@ -181,7 +173,7 @@ namespace LichPhylactery {
    return false;
   }
   public static List<string> EnabledFollowUps(Map map)=>FollowUpKeys.Where(k=>FollowUpEnabled(k,map)).ToList();
-  public static string FollowUpLabel(string key)=>key=="dragon"?"龙过境":key=="migration"?"巨人迁徙":key=="portal"?"传送门失控":key=="thay"?"塞伊袭击":key;
+  public static string FollowUpLabel(string key)=>key=="dragon"?"龙过境".Loc():key=="migration"?"巨人迁徙".Loc():key=="portal"?"传送门失控".Loc():key=="thay"?"塞伊袭击".Loc():key;
   public static StampedeFollowUp RollFollowUp(Map map){
    if(Events2.Roll<NoFollowUp)return null;
    var options=EnabledFollowUps(map);if(options.Count==0)return null;
@@ -238,7 +230,7 @@ namespace LichPhylactery {
    var map=parms.target as Map;if(!Stampede.CanFire(map))return false;
    var g=Stampede.Start(map);if(g==null)return false;
    Stampede.RollFollowUp(map);
-   SendStandardLetter("惊逃的兽群","一群"+string.Join("和",g.kinds)+"（"+g.pawns.Count+"只）惊慌失措地从地图一边冲向另一边。它们不会主动攻击，但挡在路上的人会被撞开。\n\n它们看上去不像是在迁徙，倒像是在逃避什么……",LetterDefOf.NeutralEvent,parms,new LookTargets(g.pawns.Cast<Thing>()));
+   SendStandardLetter("惊逃的兽群".Loc(),"一群".Loc()+string.Join("和".Loc(),g.kinds)+"（".Loc()+g.pawns.Count+"只）惊慌失措地从地图一边冲向另一边。它们不会主动攻击，但挡在路上的人会被撞开。\n\n它们看上去不像是在迁徙，倒像是在逃避什么……".Loc(),LetterDefOf.NeutralEvent,parms,new LookTargets(g.pawns.Cast<Thing>()));
    return true;
   }
  }
@@ -286,7 +278,7 @@ namespace LichPhylactery {
   public static int End(ColdSnapPack p){
    foreach(var w in p.wolves)if(w!=null && !w.Destroyed)Items.Remove(w,Frenzy);
    int n=CompPlanarRift.CalmBeasts(p.wolves);
-   if(n>0 && p.map!=null)Messages.Message("寒潮过去了，"+n+"只冬狼的狂性消退，变成了普通的野生冬狼，可以驯服。",new LookTargets(p.wolves.Where(w=>w!=null && w.Spawned).Cast<Thing>()),MessageTypeDefOf.NeutralEvent,false);
+   if(n>0 && p.map!=null)Messages.Message("寒潮过去了，".Loc()+n+"只冬狼的狂性消退，变成了普通的野生冬狼，可以驯服。".Loc(),new LookTargets(p.wolves.Where(w=>w!=null && w.Spawned).Cast<Thing>()),MessageTypeDefOf.NeutralEvent,false);
    return n;
   }
  }
@@ -299,7 +291,7 @@ namespace LichPhylactery {
   protected override bool TryExecuteWorker(IncidentParms parms){
    var map=parms.target as Map;if(!ColdSnap.CanFire(map))return false;
    var pack=ColdSnap.Start(map,parms.points);if(pack==null || pack.wolves.Count==0)return false;
-   SendStandardLetter("冬狼寒潮","一股寒潮压了下来，接下来的"+ColdSnap.Days+"天里气温会骤降。寒潮里来了"+pack.wolves.Count+"只狂暴的冬狼！\n\n寒潮让它们狂性大发：移速更快，冰咬的寒霜迟缓持续更久。寒潮结束时，活下来的冬狼会恢复平静，变成可以驯服的野生冬狼。\n\n火巨人不受寒潮影响。",LetterDefOf.ThreatBig,parms,new LookTargets(pack.wolves.Cast<Thing>()));
+   SendStandardLetter("冬狼寒潮".Loc(),"一股寒潮压了下来，接下来的".Loc()+ColdSnap.Days+"天里气温会骤降。寒潮里来了".Loc()+pack.wolves.Count+"只狂暴的冬狼！\n\n寒潮让它们狂性大发：移速更快，冰咬的寒霜迟缓持续更久。寒潮结束时，活下来的冬狼会恢复平静，变成可以驯服的野生冬狼。\n\n火巨人不受寒潮影响。".Loc(),LetterDefOf.ThreatBig,parms,new LookTargets(pack.wolves.Cast<Thing>()));
    return true;
   }
  }
@@ -317,13 +309,13 @@ namespace LichPhylactery {
  public static class Events2Settings {
   public static void Draw(Listing_Standard l){
    var s=LichMod.Settings;
-   l.Label("DND 事件频率："+s.dndEventFrequency+"%（传送门失控、巨人迁徙和下面五个事件的出现权重；0%等于全部不出现）");
+   l.Label("DND 事件频率：".Loc()+s.dndEventFrequency+"%（传送门失控、巨人迁徙和下面五个事件的出现权重；0%等于全部不出现）".Loc());
    s.dndEventFrequency=(int)l.Slider(s.dndEventFrequency,0,300);
-   l.CheckboxLabeled("惊逃兽群",ref s.stampede,"6～14只动物惊慌地横穿地图，撞开挡路的人。70%的情况下1～3天后还有大事发生（龙过境、巨人迁徙、传送门失控或塞伊袭击，只从开着的里面挑）。");
-   l.CheckboxLabeled("冬狼寒潮",ref s.winterWolfColdSnap,"冷的季节或寒带地图：5天寒潮，外加4～8只狂暴冬狼（按袭击点数）。寒潮结束时冬狼恢复平静，可以驯服。");
-   l.CheckboxLabeled("龙过境",ref s.dragonFlyover,"一条龙在天上盘旋1天：龙影掠过时野兽逃散，心情-3（力能龙裔+3），偶尔有吐息落地。殖民地有成年力能龙裔时，另一条古龙可能降落：决斗、联姻或拒绝。");
-   l.CheckboxLabeled("法师塔坠落",ref s.towerCrash,"塞伊法师塔的残骸坠落在殖民地外，骷髅守卫看着，周围野魔法四溢。可以自己拆、等塞伊来回收，或通知同盟来拆。需要塞伊远征军存在。");
-   l.CheckboxLabeled("云游导师（需要 VPE）",ref s.wanderingMentor,"殖民地有DND职业路径的人时，一位同路径的导师来住3天，每天教一次（不受每日经验上限限制）；付钱或卷轴可以再留3天。只在启用 Vanilla Psycasts Expanded 时出现。");
+   l.CheckboxLabeled("惊逃兽群".Loc(),ref s.stampede,"6～14只动物惊慌地横穿地图，撞开挡路的人。70%的情况下1～3天后还有大事发生（龙过境、巨人迁徙、传送门失控或塞伊袭击，只从开着的里面挑）。".Loc());
+   l.CheckboxLabeled("冬狼寒潮".Loc(),ref s.winterWolfColdSnap,"冷的季节或寒带地图：5天寒潮，外加4～8只狂暴冬狼（按袭击点数）。寒潮结束时冬狼恢复平静，可以驯服。".Loc());
+   l.CheckboxLabeled("龙过境".Loc(),ref s.dragonFlyover,"一条龙在天上盘旋1天：龙影掠过时野兽逃散，心情-3，偶尔有吐息落地；结束时可能有五色龙降落勒索。".Loc());
+   l.CheckboxLabeled("法师塔坠落".Loc(),ref s.towerCrash,"塞伊法师塔的残骸坠落在殖民地外，骷髅守卫看着，周围野魔法四溢。可以自己拆、等塞伊来回收，或通知同盟来拆。需要塞伊远征军存在。".Loc());
+   l.CheckboxLabeled("云游导师（需要 VPE）".Loc(),ref s.wanderingMentor,"殖民地有DND职业路径的人时，一位同路径的导师来住3天，每天教一次（不受每日经验上限限制）；付钱或卷轴可以再留3天。只在启用 Vanilla Psycasts Expanded 时出现。".Loc());
   }
  }
 }

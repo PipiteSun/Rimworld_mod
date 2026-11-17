@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（ClassMartial.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>缴械</zh><en>disarmed</en></s>
+  <s><zh>近战冷却 ×</zh><en>Melee cooldown ×</en></s>
+  <s><zh>，追击 </zh><en>, follow-up </en></s>
+  <s><zh>，射击冷却 ×</zh><en>, shooting cooldown ×</en></s>
+  <s><zh>额外攻击（物理职业）：\n第 1 档：战士、圣武士、武僧、野蛮人或游侠 5 级（游荡者没有，改用偷袭） — 近战冷却 ×0.80，追击 15%，射击冷却 ×0.85\n第 2 档：战士 10 级 — 近战冷却 ×0.70，追击 25%，射击冷却 ×0.75\n第 3 档：战士 15 级 — 近战冷却 ×0.60，追击 35%，射击冷却 ×0.65\n\n只有武僧的人只在徒手时生效。\n追击：普通近战命中后再按原版近战结算打一下（Isekai 力量、武器品质照常）；追击不再触发追击。</zh><en>Extra Attack (martial classes):\nTier 1: fighter, paladin, monk, barbarian or ranger level 5 (rogues don't get it and use Sneak Attack instead): melee cooldown ×0.80, follow-up 15%, shooting cooldown ×0.85\nTier 2: fighter level 10: melee cooldown ×0.70, follow-up 25%, shooting cooldown ×0.75\nTier 3: fighter level 15: melee cooldown ×0.60, follow-up 35%, shooting cooldown ×0.65\n\nFor people who are only monks, it only applies unarmed.\nFollow-up: after a normal melee hit, strike once more using vanilla melee resolution (Isekai Strength and weapon quality apply as usual); follow-ups don't trigger further follow-ups.</en></s>
+  <s><zh>额外攻击 第 </zh><en>Extra Attack tier </en></s>
+  <s><zh> 档：</zh><en>: </en></s>
+  <s><zh>额外攻击：只在徒手时生效</zh><en>Extra Attack: only applies unarmed</en></s>
+  <s><zh>额外攻击：物理职业 5 级解锁</zh><en>Extra Attack: unlocks at martial class level 5</en></s>
+  <s><zh>斗志：本小时 +</zh><en>Fighting spirit: this hour +</en></s>
+  <s><zh>\n召唤物、友军、囚犯不算。</zh><en>\nSummons, allies and prisoners don't count.</en></s>
+  <s><zh>物理职业等级 </zh><en>Martial class level </en></s>
+  <s><zh>：战技强度、射术强度 +</zh><en>: maneuver power and marksmanship power +</en></s>
+  <s><zh>%|物理职业（战士、武僧、圣武士、野蛮人、游侠、游荡者）等级合计每比 1 高 1 级 +2%，最多 +40%。只加格斗、射击的职业强度。</zh><en>%|For each level the total of martial classes (fighter, monk, paladin, barbarian, ranger, rogue) is above 1, +2%, up to +40%. Only adds to Melee and Shooting class power.</en></s>
+  <s><zh>追击</zh><en>follow-up</en></s>
+  <s><zh>拨开</zh><en>parried</en></s>
+  <s><zh>开掌技</zh><en>open hand technique</en></s>
+  <s><zh>颤心</zh><en>quivering</en></s>
+  <s><zh>誓仇</zh><en>vow of enmity</en></s>
+  <s><zh>圣疗 </zh><en>Lay on hands </en></s>
+  <s><zh>圣疗</zh><en>lay on hands</en></s>
+  <s><zh>解除食物中毒</zh><en>cured food poisoning</en></s>
+  <s><zh>清除毒素</zh><en>purged toxins</en></s>
+  <s><zh>受庇护</zh><en>protected</en></s>
+  <s><zh>传奇职业（</zh><en>Legendary classes (</en></s>
+  <s><zh>还有 </zh><en>Still </en></s>
+  <s><zh> 点传奇职业点：打开职业窗口学一个传奇职业能力（那个职业 </zh><en> legendary class points: open the class window to learn a legendary class ability (that class at level </en></s>
+  <s><zh> 级，同职业第二个 </zh><en>, a second one of the same class at </en></s>
+  <s><zh> 级）。</zh><en>).</en></s>
+  <s><zh> 点职业点：打开职业窗口，给战士、武僧或圣武士加 1 级。也可以在“冒险者”分页的“职业”页里加点。</zh><en> class points: open the class window to add 1 level to fighter, monk or paladin. Points can also be added on the "Class" page of the "Adventurer" tab.</en></s>
+  <s><zh>选择宿敌（</zh><en>Choose favored enemy (</en></s>
+  <s><zh>游侠的宿敌：选一种生物类型，对它伤害 +20%、命中提高。</zh><en>Ranger's favored enemy: choose a creature type for +20% damage and better hit chance against it.</en></s>
+  <s><zh> 级可以再选一种。选定后不能更改。</zh><en> level allows choosing another one. Can't be changed once chosen.</en></s>
+  <s><zh>精准射击：</zh><en>Precise shot: </en></s>
+  <s><zh>切换精准射击的模式：\n要害：伤害 ×(1.5 + 0.5 × 射术强度)，穿甲 +30%。\n打腿：伤害 ×0.7，目标移动 ×0.5 持续 10 秒。\n打手：伤害 ×0.5，有机会打落武器：成功率 = 50% + 10% ×（自己的敏捷调整值 + 熟练加值 − 目标的力量调整值 − 熟练加值）+ 20% ×（射术强度 − 1），限 15%～90%，体型 2 以上减半。</zh><en>Switch precise shot mode:\nVital spot: damage ×(1.5 + 0.5 × marksmanship power), armor penetration +30%.\nLeg shot: damage ×0.7, target movement ×0.5 for 10 seconds.\nHand shot: damage ×0.5, with a chance to knock the weapon away: success chance = 50% + 10% × (own Dexterity modifier + proficiency bonus − target's Strength modifier − proficiency bonus) + 20% × (marksmanship power − 1), limited to 15%-90%, halved against body size 2 or more.</en></s>
+</LPStrings>

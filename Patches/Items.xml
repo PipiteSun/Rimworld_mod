@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 1.22.0 物品与炼金：往本模组各派系商队的货单里加入新物品（Isekai 启用时原版奇物商人另见 Bridges/Isekai）。 -->
 <Patch>
-  <!-- 余烬氏族：熔岩结晶、精金、龙鳞蜕 -->
+  <!-- 余烬氏族：熔岩结晶、精金 -->
   <Operation Class="PatchOperationAdd">
     <xpath>/Defs/TraderKindDef[defName="LP_Caravan_GiantSmith"]/stockGenerators</xpath>
     <value>
       <li Class="StockGenerator_SingleDef"><thingDef>LP_Adamantine</thingDef><countRange>-10~8</countRange></li>
-      <li Class="StockGenerator_BuySingleDef"><thingDef>LP_DragonShed</thingDef></li>
     </value>
   </Operation>
   <!-- 费伦拓荒同盟：少量秘银、寒铁 -->

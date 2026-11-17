@@ -181,10 +181,10 @@ namespace LichPhylactery {
    Check(Near(f1,1.1f) && Near(f2,1.1f) && m1-m0==1 && Near(f3,1.15f) && Near(f4,1.15f),"pack tactics: +5% melee hit per ally next to the target (1.10), cached for 250 ticks (one count, a new ally is ignored until then), capped at +15%: "+f1+" "+f2+" "+f3+" "+f4);
    var servant=DefDatabase<ThoughtDef>.GetNamed("LP_KoboldDragonServant");
    foreach(var d in map.mapPawns.SpawnedPawnsInFaction(Faction.OfPlayer).Where(Dragons.Is).ToList())if(!d.Dead)d.SetFaction(null);
-   Subraces.ClearCaches();var s0t=servant.Worker.CurrentState(kob);float hoard1=Subraces.HoardFactor(map);
-   var dragon=CrPawn("LP_ForceDragon");Subraces.ClearCaches();var s1t=servant.Worker.CurrentState(kob);
-   bool oldSet=LichMod.Settings.koboldDragonServant;LichMod.Settings.koboldDragonServant=false;var s2t=servant.Worker.CurrentState(kob);float hoardOff=Subraces.HoardFactor(map);LichMod.Settings.koboldDragonServant=oldSet;
-   Check(s0t.Active && s0t.StageIndex==0 && servant.stages[0].baseMoodEffect==-2 && s1t.Active && s1t.StageIndex==1 && servant.stages[1].baseMoodEffect==6 && !s2t.Active && Near(hoard1,1.02f) && Near(hoardOff,1f),"dragon servant: -2 without a dragon, +6 with a colony dragon, one kobold adds +2% hoard value; setting off disables both");
+   Subraces.ClearCaches();var s0t=servant.Worker.CurrentState(kob);
+   var dragon=Dragons.Make("Red",0,Faction.OfPlayer);GenSpawn.Spawn(dragon,CrCell(6,6),map);crTemp.Add(dragon);Subraces.ClearCaches();var s1t=servant.Worker.CurrentState(kob);
+   bool oldSet=LichMod.Settings.koboldDragonServant;LichMod.Settings.koboldDragonServant=false;var s2t=servant.Worker.CurrentState(kob);LichMod.Settings.koboldDragonServant=oldSet;
+   Check(s0t.Active && s0t.StageIndex==0 && servant.stages[0].baseMoodEffect==-2 && s1t.Active && s1t.StageIndex==1 && servant.stages[1].baseMoodEffect==6 && !s2t.Active,"dragon servant: -2 without a dragon, +6 with a colony (chromatic) dragon; setting off disables it");
    CrClean();
   }
 

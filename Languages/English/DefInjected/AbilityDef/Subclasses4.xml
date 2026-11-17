@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 实验药剂 -->
+  <LP_AL_Experimental.label>experimental elixir</LP_AL_Experimental.label>
+  <!-- 被动：醒着时每个新的一天，背包里自动出现 1 瓶随机实验药剂（治愈、迅捷、坚韧、轻盈、清醒、勇气）。药物实验室里还能用 1 草药 + 5 钢做指定的药剂（30 分钟）。药剂谁都能喝，3 天就坏。炼金师，器械师 3 级。 -->
+  <LP_AL_Experimental.description>Passive: each new day while awake, 1 random experimental elixir (healing, swiftness, resilience, lightness, clarity, courage) appears in your pack automatically. At the drug lab you can also make a specific elixir from 1 herbal medicine + 5 steel (30 minutes). Anyone can drink the elixirs; they spoil in 3 days. Alchemist, artificer level 3.</LP_AL_Experimental.description>
+  <!-- 炼金学识 -->
+  <LP_AL_Savant.label>alchemical savant</LP_AL_Savant.label>
+  <!-- 被动：每天的实验药剂改为 2 瓶。自己做的药剂都是精炼药剂（治疗量、持续时间 ×1.3）；做原版药物速度 +30%。炼金师，器械师 7 级。 -->
+  <LP_AL_Savant.description>Passive: the daily experimental elixirs become 2 bottles. Elixirs you make are all refined (healing and duration ×1.3); making vanilla drugs +30% speed. Alchemist, artificer level 7.</LP_AL_Savant.description>
+  <!-- 复原试剂 -->
+  <LP_AL_Restorative.label>restorative reagent</LP_AL_Restorative.label>
+  <!-- 做一瓶复原试剂放进背包：喝下后立刻治好一种疾病（流感、瘟疫、寄生虫、食物中毒等）或清除毒素累积。被动：自己受到的毒、酸伤害 −50%，在毒尘、毒雾里不积累毒素。冷却 1 天。炼金师，器械师 11 级。 -->
+  <LP_AL_Restorative.description>Make a restorative reagent and put it in your pack: drinking it instantly cures one disease (flu, plague, parasites, food poisoning, etc.) or clears toxic buildup. Passive: poison and acid damage taken -50%, no toxic buildup in toxic fallout or toxic gas. Cooldown 1 day. Alchemist, artificer level 11.</LP_AL_Restorative.description>
+  <!-- 化学大师 -->
+  <LP_AL_Chemist.label>chemical mastery</LP_AL_Chemist.label>
+  <!-- 终极被动：每天的实验药剂改为 3 瓶，可以用「指定药剂」选种类。自己免疫毒、酸、火焰和燃烧伤害。炼金师，器械师 15 级。 -->
+  <LP_AL_Chemist.description>Ultimate passive: the daily experimental elixirs become 3 bottles, and you can pick the kind with "choose elixir". Yourself immune to poison, acid, fire and burn damage. Alchemist, artificer level 15.</LP_AL_Chemist.description>
+  <!-- 奥术装甲 -->
+  <LP_AR_ArcaneArmor.label>arcane armor</LP_AR_ArcaneArmor.label>
+  <!-- 站在工作台旁（3 格内）花 4 小时，把身上一件躯干护甲（防弹衣、海军装甲、动力甲之类，挑护甲最好的一件）改成奥术装甲：不再拖慢移动。换了别的护甲要重改。守护者：近战命中附加 6 × 器械强度 闪电伤害并嘲讽目标。渗透者：移动 +10%，敌人远程攻击有 10% 打不中你。装甲师，器械师 3 级。 -->
+  <LP_AR_ArcaneArmor.description>Spend 4 hours standing by a workbench (within 3 cells) converting a worn torso armor (flak vest, marine armor, power armor and the like, picking the best-armored one) into arcane armor: it no longer slows movement. Switching to other armor requires converting again. Guardian: melee hits add 6 × artifice power lightning damage and taunt the target. Infiltrator: movement +10%, enemy ranged attacks have a 10% chance to miss you. Armorer, artificer level 3.</LP_AR_ArcaneArmor.description>
+  <!-- 甲胄改装 -->
+  <LP_AR_Modifications.label>armor modifications</LP_AR_Modifications.label>
+  <!-- 被动：奥术装甲的附魔强化立刻 +2（每件一次，上限仍是 +10）。奥术装甲和头盔不会被打烂掉落（最多剩 1 点耐久）。装甲师，器械师 7 级。 -->
+  <LP_AR_Modifications.description>Passive: arcane armor's enchantment instantly +2 (once per piece, cap still +10). Arcane armor and helmets won't be shot to pieces and dropped (at least 1 durability left). Armorer, artificer level 7.</LP_AR_Modifications.description>
+  <!-- 甲胄升级 -->
+  <LP_AR_Upgrade.label>armor upgrade</LP_AR_Upgrade.label>
+  <!-- 被动：穿着奥术装甲时三种护甲值各 +15%。守护者的防御力场翻倍；渗透者的闪电发射器伤害 +50%，打还没开过火的敌人再翻倍。装甲师，器械师 11 级。 -->
+  <LP_AR_Upgrade.description>Passive: while wearing arcane armor, all three armor values +15%. The Guardian's defensive field doubles; the Infiltrator's lightning launcher deals +50% damage, doubled again against enemies that haven't fired yet. Armorer, artificer level 11.</LP_AR_Upgrade.description>
+  <!-- 完美装甲 -->
+  <LP_AR_Perfected.label>perfected armor</LP_AR_Perfected.label>
+  <!-- 终极被动：奥术装甲完全密封，不怕毒尘、毒雾和真空。守护者：每 10 秒把 6 格内一个敌人磁力拉到身边并嘲讽。渗透者：打中的敌人被标记 10 秒，隐形不了，受到队友的下一击伤害 +50%。装甲师，器械师 15 级。 -->
+  <LP_AR_Perfected.description>Ultimate passive: arcane armor is fully sealed, immune to toxic fallout, toxic gas and vacuum. Guardian: every 10 seconds magnetically pull an enemy within 6 cells to your side and taunt it. Infiltrator: enemies you hit are marked for 10 seconds, can't turn invisible, and the next hit from a teammate deals +50% damage. Armorer, artificer level 15.</LP_AR_Perfected.description>
+  <!-- 加固施工 -->
+  <LP_FE_Reinforce.label>reinforced construction</LP_FE_Reinforce.label>
+  <!-- 被动：自己建成的墙、门、沙袋这类掩体、炮台最大生命 +50%；自己修理建筑的速度 ×2。堡垒工程师，器械师 3 级。 -->
+  <LP_FE_Reinforce.description>Passive: walls, doors, sandbags and other cover and turrets you built get +50% max health; your building repair speed ×2. Fortress Engineer, artificer level 3.</LP_FE_Reinforce.description>
+  <!-- 奥术电容 -->
+  <LP_FE_Capacitor.label>arcane capacitor</LP_FE_Capacitor.label>
+  <!-- 被动：能建奥术电容（电力页，20 钢 + 1 零部件）：不用燃料输出 300 瓦，3 格内的炮台射速 +15%。每个工程师最多支撑 器械师等级 ÷ 3 台。堡垒工程师，器械师 7 级。 -->
+  <LP_FE_Capacitor.description>Passive: can build arcane capacitors (power tab, 20 steel + 1 component): 300 W output without fuel, turrets within 3 cells get +15% fire rate. Each engineer can support at most artificer level ÷ 3 of them. Fortress Engineer, artificer level 7.</LP_FE_Capacitor.description>
+  <!-- 战地加固 -->
+  <LP_FE_Fortify.label>field reinforcement</LP_FE_Fortify.label>
+  <!-- 选中 20 格内一处 5×5 区域，里面的建筑 12 小时内受到的伤害 −75%，专治工兵挖墙和爆破。被动：殖民者紧挨着自己建的掩体时，受到的远程伤害再 −15%。冷却 1 天。堡垒工程师，器械师 11 级。 -->
+  <LP_FE_Fortify.description>Select a 5×5 area within 20 cells; buildings inside take -75% damage for 12 hours, a specific counter to sappers digging through walls and breaching. Passive: colonists right next to cover you built take another -15% ranged damage. Cooldown 1 day. Fortress Engineer, artificer level 11.</LP_FE_Fortify.description>
+  <!-- 要塞之心 -->
+  <LP_FE_Citadel.label>heart of the fortress</LP_FE_Citadel.label>
+  <!-- 终极被动：能建要塞核心（防卫页，3×3，每个殖民地 1 个，500 钢 + 10 零部件 + 2 高级零部件）：半径 20 格内自己建的防御建筑每小时自动修复 5%；每场袭击一次「全线升级」，范围内所有炮台（含符文炮台）伤害 +30%、持续 1 小时。堡垒工程师，器械师 15 级。 -->
+  <LP_FE_Citadel.description>Ultimate passive: can build a fortress core (security tab, 3×3, 1 per colony, 500 steel + 10 components + 2 advanced components): defensive buildings you built within radius 20 repair 5% per hour automatically; once per raid, "full-line upgrade" gives all turrets in range (including rune turrets) +30% damage for 1 hour. Fortress Engineer, artificer level 15.</LP_FE_Citadel.description>
+</LanguageData>

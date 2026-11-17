@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（Core.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>DND边缘大陆</zh><en>DND Rimlands</en></s>
+  <s><zh>命匣等</zh><en>Phylactery etc.</en></s>
+  <s><zh>物品</zh><en>Items</en></s>
+  <s><zh>神裔</zh><en>Divine kin</en></s>
+  <s><zh>巨人</zh><en>Giants</en></s>
+  <s><zh>DND 特性</zh><en>DND traits</en></s>
+  <s><zh>六臂蛇人</zh><en>marilith</en></s>
+  <s><zh>流浆人</zh><en>oozefolk</en></s>
+  <s><zh>信仰</zh><en>faith</en></s>
+  <s><zh>文化</zh><en>Culture</en></s>
+  <s><zh>法术特效</zh><en>Spell VFX</en></s>
+  <s><zh>派系</zh><en>Factions</en></s>
+  <s><zh>事件</zh><en>Events</en></s>
+  <s><zh>五色龙</zh><en>Chromatic dragons</en></s>
+  <s><zh>深渊</zh><en>Abyss</en></s>
+  <s><zh>枪械</zh><en>Firearms</en></s>
+  <s><zh>迷锁地牢</zh><en>mythal dungeon</en></s>
+  <s><zh>命匣等级上限：</zh><en>Phylactery level cap: </en></s>
+  <s><zh>软上限：</zh><en>Soft cap: </en></s>
+  <s><zh>（超过后成长为四分之一，升级费用继续提高）</zh><en> (beyond it growth is a quarter, and upgrade costs keep rising)</en></s>
+  <s><zh>降低上限不删除已有经验；等级收益按当前设置截断。恢复上限后恢复原有成长。</zh><en>Lowering the cap doesn't delete existing XP; level benefits are truncated by the current setting. Raising the cap again restores original growth.</en></s>
+  <s><zh>巨魔不烧就会复活</zh><en>Trolls revive unless burned</en></s>
+  <s><zh>死去的巨魔若死前6小时内没受火焰或酸液伤害、大脑完好，尸体保持新鲜约1天后原地复活。对敌方巨魔同样有效。</zh><en>A dead troll that took no fire or acid damage in the 6 hours before death and whose brain is intact keeps a fresh corpse and revives in place after about 1 day. Works on enemy trolls too.</en></s>
+  <s><zh>每个巨魔一生最多复活：</zh><en>Max revivals per troll per lifetime: </en></s>
+  <s><zh>次</zh><en> </en></s>
+  <s><zh>巨躯规则：体型影响生命与近战</zh><en>Giant frame rule: body size affects health and melee</en></s>
+  <s><zh>火巨人、巨魔、牛头人体型越大，生命总量和近战伤害越高：生命×(1+0.5×强度×(体型倍率−1))，近战×(1+0.3×强度×(体型倍率−1))。成年火巨人的生命不低于×150%（与体型倍率取较大值），所以强度只会提高、不会降低它们的生命；火巨人儿童随年龄增长。死灵造物不适用，小体型不减。关闭（或强度0%）时没有近战加成，火巨人的生命为旧的×150%（取较大值）。</zh><en>Fire giants, trolls and minotaurs have more total health and melee damage the larger their body size: health ×(1 + 0.5 × strength × (size multiplier − 1)), melee ×(1 + 0.3 × strength × (size multiplier − 1)). Adult fire giants have health no lower than ×150% (the larger of this and the size multiplier), so strength only raises their health, never lowers it; fire giant children grow with age. Doesn't apply to necromantic constructs, and small sizes aren't reduced. When off (or strength 0%), no melee bonus, and fire giant health is the old ×150% (the larger value).</en></s>
+  <s><zh>巨躯强度：</zh><en>Giant frame strength: </en></s>
+  <s><zh>%（同时缩放生命和近战系数）</zh><en>% (scales both the health and melee factors)</en></s>
+  <s><zh>夺心魔脑饥狂乱</zh><en>Mind flayer brain-hunger frenzy</en></s>
+  <s><zh>脑髓归零的夺心魔每小时有15%概率陷入狂乱。关闭后只有虚弱和负面心情。</zh><en>A mind flayer whose brain matter hits zero has a 15% chance per hour to go into a frenzy. When off, only weakness and a negative mood.</en></s>
+  <s><zh>蝌蚪化形天数：</zh><en>Tadpole transformation days: </en></s>
+  <s><zh>天（被寄生者完全化形为夺心魔所需的基础天数）</zh><en> days (base days needed for the host to fully transform into a mind flayer)</en></s>
+  <s><zh>上古脑召唤</zh><en>Elder brain summons</en></s>
+  <s><zh>3级及以上的上古脑每隔一段时间用心灵呼唤一个流浪者：对方会恍惚地走到上古脑旁边倒下。默认关闭。</zh><en>Elder brains of level 3 and above periodically call a wanderer psychically: they walk in a daze to the elder brain and collapse beside it. Off by default.</en></s>
+  <s><zh>\n命匣主人：</zh><en>\nPhylactery owner: </en></s>
+  <s><zh>未绑定</zh><en>unbound</en></s>
+  <s><zh>\n等级 </zh><en>\nLevel </en></s>
+  <s><zh>；献祭 </zh><en>; sacrifices </en></s>
+  <s><zh>\n统御 </zh><en>\nCommand </en></s>
+  <s><zh>的命匣已毁：无法再通过此命匣复生。</zh><en>'s phylactery is destroyed: revival through this phylactery is no longer possible.</en></s>
+  <s><zh>巫妖潜能：尚未绑定</zh><en>Lich potential: not yet bound</en></s>
+  <s><zh>此超凡基因提供巫妖仪式资格与潜能。建造死灵仪式台，由此角色执行巫妖仪式，才能建立命匣与不死之身。原有内源和异种基因均保留。</zh><en>This archite gene grants eligibility and potential for the lich ritual. Build a necromantic ritual table and have this character perform the lich ritual to establish a phylactery and undying body. Existing endogenes and xenogenes are all kept.</en></s>
+  <s><zh>在死灵仪式台添加巫妖仪式工作单，并把执行者限制为此角色。</zh><en>Add a lich ritual bill at the necromantic ritual table and restrict the worker to this character.</en></s>
+  <s><zh>精神力 </zh><en>Psyfocus </en></s>
+  <s><zh>；占用 </zh><en>; used </en></s>
+  <s><zh>原版精神力条对应 </zh><en>The vanilla psyfocus bar corresponds to </en></s>
+  <s><zh> 点。肢体强化占用 </zh><en> points. Limb reinforcement uses </en></s>
+  <s><zh> 点上限。\n原有内源基因 </zh><en> points of the cap.\nExisting endogenes: </en></s>
+  <s><zh> 项、异种基因 </zh><en>, xenogenes: </en></s>
+  <s><zh> 项，均原样保留。\n</zh><en>, all kept as they were.\n</en></s>
+  <s><zh>；统御 </zh><en>; command </en></s>
+  <s><zh>命匣失联：修复、施法与造物统御暂停。</zh><en>Phylactery link lost: repair, casting and construct command paused.</en></s>
+  <s><zh>\n重塑 </zh><en>\nReshaping </en></s>
+  <s><zh>精神力修复</zh><en>Psyfocus repair</en></s>
+  <s><zh>伤口修复量与断肢重塑速度按心灵敏感度线性提升。100%时每250刻修复1点伤害、消耗0.5点精神力；每个缺失部位需一天与60点精神力。200%时效果翻倍，完成同样修复的总消耗减半。优先较重伤口，治好后剩余治疗量继续用于其他伤口；按实际总治疗量扣费。精神力不足或心灵敏感度为0时暂停。当前倍率：</zh><en>Wound repair amount and limb regrowth speed scale linearly with psychic sensitivity. At 100%, 1 damage is repaired per 250 ticks for 0.5 psyfocus; each missing part takes one day and 60 psyfocus. At 200% the effect doubles and the total cost of the same repair halves. Worse wounds go first, and leftover healing continues on other wounds; cost is by actual total healing. Pauses when psyfocus runs out or psychic sensitivity is 0. Current multiplier: </en></s>
+  <s><zh>倍。</zh><en>×.</en></s>
+  <s><zh>强化肢体</zh><en>Reinforce limb</en></s>
+  <s><zh>仅强化主要器官和肢体：头部、躯干、脊椎、手臂、腿、大脑、心脏、肺、肝、肾、胃、眼睛和耳朵。每层+20%该部位生命上限、+12%部位效率，占用5点精神力上限；立即消耗5点精神力与2心灵熵。每部位最多5层。</zh><en>Only reinforces major organs and limbs: head, torso, spine, arms, legs, brain, heart, lungs, liver, kidneys, stomach, eyes and ears. Each layer: +20% part max health, +12% part efficiency, uses 5 points of psyfocus cap; immediately costs 5 psyfocus and 2 neural heat. At most 5 layers per part.</en></s>
+  <s><zh>精神力、心灵熵空间或可用上限不足，或部位已满5层。</zh><en>Not enough psyfocus, neural heat room or available cap, or the part already has 5 layers.</en></s>
+  <s><zh>解除肢体强化</zh><en>Remove limb reinforcement</en></s>
+  <s><zh>选择一个部位解除全部强化，恢复原生命上限并释放精神力上限；不返还精神力。重伤超过原生命上限时，须先修复才能解除。</zh><en>Choose a part to remove all its reinforcement, restoring the original max health and freeing psyfocus cap; psyfocus isn't refunded. If an injury exceeds the original max health, it must be repaired before removal.</en></s>
+  <s><zh>层）</zh><en> layers)</en></s>
+  <s><zh>此部位伤势过重，请先修复，再解除强化。</zh><en>This part is too badly hurt; repair it first, then remove the reinforcement.</en></s>
+  <s><zh>没有强化部位</zh><en>No reinforced parts</en></s>
+  <s><zh>层；生命上限+</zh><en> layers; max health +</en></s>
+  <s><zh>%；占用</zh><en>%; uses </en></s>
+  <s><zh>点</zh><en> points</en></s>
+</LPStrings>

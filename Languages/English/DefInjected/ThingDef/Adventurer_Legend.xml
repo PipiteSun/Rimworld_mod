@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 传奇重铸之石 -->
+  <LP_LegendRespecStone.label>legend reforging stone</LP_LegendRespecStone.label>
+  <!-- 一块暗色的多面晶石，裂纹里流着金光。传奇冒险者握碎它，过去投下的所有传奇属性点都会退回，可以重新分配。只有传奇冒险者能用；没有投过点的人用不了。\n\n无法制作。宿敌冠军有时会带着它，黑网商队偶尔有货，拉洛克也会拿它当报酬。 -->
+  <LP_LegendRespecStone.description>A dark faceted crystal with gold light flowing in its cracks. When a legendary adventurer crushes it, all legend points spent in the past are refunded and can be reassigned. Only legendary adventurers can use it; those who never spent points cannot.\n\nCannot be crafted. Nemesis champions sometimes carry one, Black Network caravans occasionally stock it, and Larloch also gives it as a reward.</LP_LegendRespecStone.description>
+  <!-- 握碎{0_label} -->
+  <LP_LegendRespecStone.comps.CompUsable.useLabel>crush {0_label}</LP_LegendRespecStone.comps.CompUsable.useLabel>
+</LanguageData>

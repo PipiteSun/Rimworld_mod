@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（WizardSpells2.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>支配人类只能对人形使用（支配怪物没有这个限制）。</zh><en>Dominate person only works on humanlikes (dominate monster has no such limit).</en></s>
+  <s><zh>需要选择一个人或一件物品。</zh><en>Need to pick a person or an item.</en></s>
+  <s><zh>只能对囚犯或殖民者使用。</zh><en>Can only be used on prisoners or colonists.</en></s>
+  <s><zh>变形：灰熊</zh><en>Polymorph: grizzly bear</en></s>
+  <s><zh>石肤术</zh><en>stoneskin</en></s>
+  <s><zh>魅影杀手</zh><en>phantasmal killer</en></s>
+  <s><zh>力场墙</zh><en>wall of force</en></s>
+  <s><zh>真知术</zh><en>true seeing</en></s>
+  <s><zh>食尸鬼仆役</zh><en>ghoul servant</en></s>
+  <s><zh>迷宫放逐</zh><en>maze</en></s>
+  <s><zh>走出了迷宫</zh><en>walked out of the maze</en></s>
+  <s><zh>弱智</zh><en>feebleminded</en></s>
+  <s><zh>阳炎爆</zh><en>sunburst</en></s>
+  <s><zh>变成了兔子</zh><en>turned into a rabbit</en></s>
+  <s><zh>放逐</zh><en>banished</en></s>
+  <s><zh>困惑术</zh><en>confusion</en></s>
+  <s><zh>魅影</zh><en>phantasm</en></s>
+  <s><zh>秘法之眼</zh><en>arcane eye</en></s>
+  <s><zh>需要选择一台工作台。</zh><en>Need to pick a workbench.</en></s>
+  <s><zh>这台工作台没有能做的账单（要有产物的配方）。</zh><en>This workbench has no doable bills (needs a recipe with a product).</en></s>
+  <s><zh>急制术：没有工作量在 </zh><en>Fabricate: no doable bill with work within </en></s>
+  <s><zh> 以内、能做的账单。</zh><en>.</en></s>
+  <s><zh>急制术：材料不够（</zh><en>Fabricate: not enough materials (</en></s>
+  <s><zh>急制术：</zh><en>Fabricate: </en></s>
+  <s><zh>忠犬守卫</zh><en>faithful hound</en></s>
+  <s><zh>看不见的守门犬狂吠起来：有敌人靠近了——</zh><en>The invisible watchdog barks wildly: enemies are approaching: </en></s>
+  <s><zh>枯萎</zh><en>withered</en></s>
+  <s><zh>锥形寒冰</zh><en>cone of cold</en></s>
+  <s><zh>抛飞</zh><en>thrown</en></s>
+  <s><zh>心灵遥控</zh><en>telekinesis</en></s>
+  <s><zh>火元素</zh><en>fire elemental</en></s>
+  <s><zh>水元素</zh><en>water elemental</en></s>
+  <s><zh>土元素</zh><en>earth elemental</en></s>
+  <s><zh>风元素</zh><en>air elemental</en></s>
+  <s><zh>[DND边缘大陆] 召唤元素失败：</zh><en>[DND Rimlands] Summon elemental failed: </en></s>
+  <s><zh>召唤元素</zh><en>conjure elemental</en></s>
+  <s><zh>选一种元素。</zh><en>Choose an element.</en></s>
+  <s><zh>没有另一座传送法阵可以去。</zh><en>There's no other teleportation circle to go to.</en></s>
+  <s><zh>法阵要一块 3×3 的空地。</zh><en>The circle needs a 3×3 open space.</en></s>
+  <s><zh>传送法阵</zh><en>teleportation circle</en></s>
+  <s><zh>传送法阵送走了 </zh><en>The teleportation circle sent away </en></s>
+  <s><zh> 样东西。</zh><en> things.</en></s>
+  <s><zh>抗拒 </zh><en>Resist </en></s>
+  <s><zh>没有负面记忆</zh><en>No negative memories</en></s>
+  <s><zh>忘掉了一件事</zh><en>forgot something</en></s>
+  <s><zh>修改记忆：</zh><en>Modify memory: </en></s>
+  <s><zh>选一条负面记忆删掉。</zh><en>Choose a negative memory to delete.</en></s>
+  <s><zh>· 约 </zh><en>· in about </en></s>
+  <s><zh> 天后：</zh><en> days: </en></s>
+  <s><zh>已经排定的威胁：\n</zh><en>Threats already scheduled:\n</en></s>
+  <s><zh>3 天内看不到已经排定的袭击。</zh><en>No scheduled raids visible within 3 days.</en></s>
+  <s><zh>\n\n按殖民地现在的财富和人口，一次袭击的规模约 </zh><en>\n\nBased on the colony's current wealth and population, a raid would be about </en></s>
+  <s><zh> 点。之后 3 天内若有袭击到来，</zh><en> points. If a raid arrives within the next 3 days, </en></s>
+  <s><zh>会提前感知。</zh><en> will sense it in advance.</en></s>
+  <s><zh>探知术</zh><en>scrying</en></s>
+  <s><zh>[DND边缘大陆] 通晓传奇：生成任务失败：</zh><en>[DND Rimlands] Legend lore: quest generation failed: </en></s>
+  <s><zh>通晓传奇</zh><en>legend lore</en></s>
+  <s><zh>古老的记载指向一处藏匿的宝藏，传说里提到的「</zh><en>Ancient records point to a hidden treasure; the "</en></s>
+  <s><zh>就藏在那里</zh><en> mentioned in the legend is hidden there</en></s>
+  <s><zh>已经找到了</zh><en> has already been found</en></s>
+  <s><zh>。到任务页查看。</zh><en>. See the quests tab.</en></s>
+  <s><zh>没有查到藏宝的下落，但找到了「</zh><en>No trace of the treasure was found, but "</en></s>
+  <s><zh>连锁闪电 ×</zh><en>Chain lightning ×</en></s>
+  <s><zh>关进力场牢笼</zh><en>locked in a force cage</en></s>
+  <s><zh>身体变得僵硬</zh><en>body stiffened</en></s>
+  <s><zh>石痕 </zh><en>stone marks </en></s>
+  <s><zh>移山术 ×</zh><en>Move earth ×</en></s>
+  <s><zh>应急术：</zh><en>Contingency: </en></s>
+  <s><zh>应急术</zh><en>contingency</en></s>
+  <s><zh>选一个法术，倒地或伤势过半时自动施放（10 天内，只能存一个）。</zh><en>Choose a spell to cast automatically when downed or below half health (within 10 days, only one can be stored).</en></s>
+  <s><zh>应急术发动：</zh><en>Contingency triggered: </en></s>
+  <s><zh>阳炎射线</zh><en>sunbeam</en></s>
+  <s><zh>[DND边缘大陆] 亡灵仆从失败：</zh><en>[DND Rimlands] Undead servant failed: </en></s>
+  <s><zh>次元门 ×</zh><en>Dimension door ×</en></s>
+  <s><zh>指死术</zh><en>finger of death</en></s>
+  <s><zh>僵尸仆役</zh><en>zombie servant</en></s>
+  <s><zh>虫族</zh><en>insectoids</en></s>
+  <s><zh>动物</zh><en>animals</en></s>
+  <s><zh>选一类敌对单位：它们进入这片区域时成功率 50% 被赶出去。</zh><en>Choose a kind of hostile unit: when they enter this area, 50% chance to be driven out.</en></s>
+  <s><zh>厌恶之地：</zh><en>Antipathy area: </en></s>
+  <s><zh>巫妖不能培养克隆体。</zh><en>Liches can't grow clones.</en></s>
+  <s><zh>需要生物科技 DLC。</zh><en>Needs the Biotech DLC.</en></s>
+  <s><zh>地图上要有一座生长缸。</zh><en>There must be a growth vat on the map.</en></s>
+  <s><zh>的克隆体开始在生长缸里成长，</zh><en>'s clone began growing in the growth vat, maturing in </en></s>
+  <s><zh> 天后长成。</zh><en> days.</en></s>
+  <s><zh>克隆体</zh><en>clone</en></s>
+  <s><zh>」死去了，灵魂随即移入了生长缸里的克隆体：技能、等级、职业和特性都在，装备留在了死去的地方。</zh><en>" died, and the soul moved at once into the clone in the growth vat: skills, levels, classes and traits are all intact; gear stayed where they died.</en></s>
+  <s><zh>强力真言</zh><en>Power word</en></s>
+  <s><zh>死</zh><en>kill</en></s>
+  <s><zh>还不够虚弱</zh><en>not weak enough yet</en></s>
+  <s><zh>免费施放一个 8 环以下的法师法术</zh><en>Cast any wizard spell of circle 8 or lower for free</en></s>
+  <s><zh>地图上全体殖民者痊愈</zh><en>Heal all colonists on the map</en></s>
+  <s><zh>复活一名殖民者（33% 反噬）</zh><en>Revive one colonist (33% backlash)</en></s>
+  <s><zh>召来一件传说品质的魔法物品（33% 反噬）</zh><en>Summon a legendary-quality magic item (33% backlash)</en></s>
+  <s><zh>祈愿：传说物品</zh><en>Wish: legendary item</en></s>
+  <s><zh>祈愿术</zh><en>wish</en></s>
+  <s><zh>许下一个愿望。</zh><en>Make a wish.</en></s>
+  <s><zh>祈愿：施放法术</zh><en>Wish: cast a spell</en></s>
+  <s><zh>选一个法术，免费施放。</zh><en>Choose a spell to cast for free.</en></s>
+  <s><zh>祈愿：</zh><en>Wish: </en></s>
+  <s><zh>祈愿：痊愈</zh><en>Wish: heal</en></s>
+  <s><zh>地图上没有殖民者的尸体。</zh><en>There are no colonist corpses on the map.</en></s>
+  <s><zh>祈愿：复活</zh><en>Wish: revive</en></s>
+  <s><zh>选一具殖民者的尸体。</zh><en>Choose a colonist's corpse.</en></s>
+  <s><zh>承受了祈愿的反噬</zh><en>suffered the backlash of the wish</en></s>
+  <s><zh>，并且永远失去了祈愿术</zh><en>, and lost wish forever</en></s>
+  <s><zh>[DND边缘大陆] 异界之门：</zh><en>[DND Rimlands] Gate: </en></s>
+  <s><zh>从门里走出</zh><en> stepped out of the gate</en></s>
+  <s><zh>异界之门</zh><en>gate</en></s>
+  <s><zh>门已经打开，选一样东西从门里过来。</zh><en>The gate is open; choose something to come through it.</en></s>
+  <s><zh>召一个恶魔 / 魔鬼为殖民地作战 1 小时</zh><en>Summon a demon / devil to fight for the colony for 1 hour</en></s>
+  <s><zh>让一支友善派系的商队从门里走出来</zh><en>Have a caravan of a friendly faction walk out of the gate</en></s>
+  <s><zh>没有能来的商队。</zh><en>No caravan can come.</en></s>
+  <s><zh>异界传送：全队回到殖民地</zh><en>Plane shift: the whole party returns to the colony</en></s>
+  <s><zh>魔法宅邸：8 小时不遇袭、休整</zh><en>Magnificent mansion: no ambushes for 8 hours, rest</en></s>
+  <s><zh>没有殖民地可以回去</zh><en>No colony to return to</en></s>
+  <s><zh>：消耗 </zh><en>: costs </en></s>
+  <s><zh> 点法力。</zh><en> mana.</en></s>
+  <s><zh>回来了</zh><en> is back</en></s>
+  <s><zh>被反制：</zh><en>Countered: </en></s>
+  <s><zh>反制法术</zh><en>counterspell</en></s>
+  <s><zh>变成兔子了</zh><en>turned into a rabbit</en></s>
+</LPStrings>

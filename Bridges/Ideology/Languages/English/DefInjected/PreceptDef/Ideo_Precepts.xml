@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 憎恶 -->
+  <LP_Undead_Abhorrent.label>abhorrent</LP_Undead_Abhorrent.label>
+  <!-- 不死之物是对生命与死亡的双重亵渎：巫妖复生、造出死灵造物、汲取灵魂都令人作呕。殖民地里每个死灵造物、每个巫妖都让人不安。 -->
+  <LP_Undead_Abhorrent.description>The undead are a double blasphemy against life and death: lich revivals, creating necromantic constructs and draining souls are all disgusting. Every necromantic construct and every lich in the colony is unsettling.</LP_Undead_Abhorrent.description>
+  <!-- 警惕 -->
+  <LP_Undead_Wary.label>wary</LP_Undead_Wary.label>
+  <!-- 亡灵魔法是危险的力量，可以用，但要提防。 -->
+  <LP_Undead_Wary.description>Necromancy is a dangerous power; it can be used, but with caution.</LP_Undead_Wary.description>
+  <!-- 可接受 -->
+  <LP_Undead_Acceptable.label>acceptable</LP_Undead_Acceptable.label>
+  <!-- 亡灵魔法只是魔法的一个流派，没什么特别的。 -->
+  <LP_Undead_Acceptable.description>Necromancy is just one school of magic, nothing special.</LP_Undead_Acceptable.description>
+  <!-- 神圣 -->
+  <LP_Undead_Sacred.label>holy</LP_Undead_Sacred.label>
+  <!-- 超越死亡是最崇高的追求。巫妖复生、造出死灵造物、汲取灵魂都是神圣的事；殖民地有命匣让人安心。 -->
+  <LP_Undead_Sacred.description>Transcending death is the noblest pursuit. Lich revivals, creating necromantic constructs and draining souls are sacred acts; a phylactery in the colony is reassuring.</LP_Undead_Sacred.description>
+  <!-- 恐惧 -->
+  <LP_Giants_Feared.label>feared</LP_Giants_Feared.label>
+  <!-- 巨人是行走的灾难。殖民地里每个巨躯殖民者都让人不安（巨躯本人不算）；杀死巨人是壮举。 -->
+  <LP_Giants_Feared.description>Giants are walking disasters. Every giant-bodied colonist in the colony is unsettling (except for the giants themselves); killing a giant is a heroic feat.</LP_Giants_Feared.description>
+  <!-- 尊重 -->
+  <LP_Giants_Respected.label>respected</LP_Giants_Respected.label>
+  <!-- 巨人和其他种族一样，有好有坏。 -->
+  <LP_Giants_Respected.description>Giants are like any other race: some good, some bad.</LP_Giants_Respected.description>
+  <!-- 至上 -->
+  <LP_Giants_Supreme.label>supreme</LP_Giants_Supreme.label>
+  <!-- 巨人生来伟大，矮小的种族理应仰望他们。巨躯殖民者心情+3，其他殖民者-1；杀死巨人是可耻的。 -->
+  <LP_Giants_Supreme.description>Giants are born great, and smaller races should look up to them. Giant-bodied colonists get mood +3, other colonists -1; killing a giant is shameful.</LP_Giants_Supreme.description>
+  <!-- 禁绝 -->
+  <LP_Arcane_Forbidden.label>forbidden</LP_Arcane_Forbidden.label>
+  <!-- 魔法是腐化的根源。施放法术令人羞耻，带着魔法物品也让人不安。 -->
+  <LP_Arcane_Forbidden.description>Magic is the root of corruption. Casting spells is shameful, and carrying magic items is unsettling.</LP_Arcane_Forbidden.description>
+  <!-- 谨慎 -->
+  <LP_Arcane_Cautious.label>cautious</LP_Arcane_Cautious.label>
+  <!-- 魔法是工具，要慎用。施法后会有点不自在。 -->
+  <LP_Arcane_Cautious.description>Magic is a tool, to be used carefully. Feels a little uneasy after casting.</LP_Arcane_Cautious.description>
+  <!-- 尊崇 -->
+  <LP_Arcane_Revered.label>revered</LP_Arcane_Revered.label>
+  <!-- 魔法是神明的馈赠。施法让人愉快；殖民地有附魔台让人安心。 -->
+  <LP_Arcane_Revered.description>Magic is a gift of the gods. Casting is pleasant; an enchanting table in the colony is reassuring.</LP_Arcane_Revered.description>
+  <!-- 魔网至上 -->
+  <LP_Arcane_Supreme.label>supremacy of the Weave</LP_Arcane_Supreme.label>
+  <!-- 掌握魔网的人才是完整的人。施法让人欣喜；不会施法的殖民者觉得自己不被魔网眷顾。只有带「魔网至上」模因的文化能选。 -->
+  <LP_Arcane_Supreme.description>Only those who master the Weave are whole. Casting is delightful; colonists who can't cast feel unfavored by the Weave. Only cultures with the "supremacy of the Weave" meme can pick this.</LP_Arcane_Supreme.description>
+  <!-- 人类至上 -->
+  <LP_Races_Human.label>human supremacy</LP_Races_Human.label>
+  <!-- 只有纯正的人类才是世界的主人。非基准人类殖民者心情-2，基准人类+2。可以和原版「人类至上」模因共存。 -->
+  <LP_Races_Human.description>Only pure humans are masters of the world. Non-baseliner colonists get mood -2, baseliners +2. Can coexist with the vanilla "human primacy" meme.</LP_Races_Human.description>
+  <!-- 众族共存 -->
+  <LP_Races_Many.label>many peoples together</LP_Races_Many.label>
+  <!-- 费伦大陆本来就是众族共存之地。殖民地里有4种以上的异种型时心情+3（众族之城）。 -->
+  <LP_Races_Many.description>Faerûn has always been a land where many peoples live together. Mood +3 when the colony has 4 or more xenotypes (city of many peoples).</LP_Races_Many.description>
+  <!-- 本族至上 -->
+  <LP_Races_Own.label>own people first</LP_Races_Own.label>
+  <!-- 我们的族裔是最优秀的。和文化创始族裔相同的殖民者心情+2，不同的-1。创始族裔是这个文化第一次被玩家派系采用时殖民者里最多的那个异种型。 -->
+  <LP_Races_Own.description>Our people are the finest. Colonists of the culture's founding xenotype get mood +2, others -1. The founding xenotype is the most common xenotype among the colonists when the culture was first adopted by the player faction.</LP_Races_Own.description>
+  <!-- 亵渎 -->
+  <LP_Apotheosis_Blasphemy.label>blasphemous</LP_Apotheosis_Blasphemy.label>
+  <!-- 凡人妄图成神是对众神的亵渎。殖民地有半神时心情-4，半神升级时-6。 -->
+  <LP_Apotheosis_Blasphemy.description>A mortal trying to become a god is blasphemy against the gods. Mood -4 when the colony has a demigod, -6 when the demigod ranks up.</LP_Apotheosis_Blasphemy.description>
+  <!-- 可接受 -->
+  <LP_Apotheosis_Acceptable.label>acceptable</LP_Apotheosis_Acceptable.label>
+  <!-- 众神也是从凡人走上去的。 -->
+  <LP_Apotheosis_Acceptable.description>The gods too rose from among mortals.</LP_Apotheosis_Acceptable.description>
+  <!-- 神圣使命 -->
+  <LP_Apotheosis_Sacred.label>sacred mission</LP_Apotheosis_Sacred.label>
+  <!-- 帮助凡人成神是我们的使命。半神升级时心情+6（见证神迹）；同文化成员都算作半神的信徒（每人每天神力+0.25）。 -->
+  <LP_Apotheosis_Sacred.description>Helping mortals become gods is our mission. Mood +6 when a demigod ranks up (witnessed a miracle); members of the same culture all count as the demigod's believers (+0.25 divine power per person per day).</LP_Apotheosis_Sacred.description>
+  <!-- 无要求 -->
+  <LP_Offerings_None.label>no requirement</LP_Offerings_None.label>
+  <!-- 神明不需要凡人的祭品。 -->
+  <LP_Offerings_None.description>The gods need no mortal offerings.</LP_Offerings_None.description>
+  <!-- 每季献祭 -->
+  <LP_Offerings_Quarterly.label>quarterly offering</LP_Offerings_Quarterly.label>
+  <!-- 每季（15天）殖民地都要在圣坛完成至少一次献祭（神迹残片、白银或喜爱的祭品），没完成从第16天起心情-3（神没有得到供奉），直到完成为止。这条戒律下献祭得到的神眷×1.5。 -->
+  <LP_Offerings_Quarterly.description>Each quarter (15 days) the colony must complete at least one offering at the altar (miracle fragments, silver or favored sacrifices); if not, mood -3 from day 16 (the god was not honored) until one is done. Divine favor from offerings under this precept ×1.5.</LP_Offerings_Quarterly.description>
+  <!-- 血祭 -->
+  <LP_Offerings_Blood.label>blood sacrifice</LP_Offerings_Blood.label>
+  <!-- 恶神喜欢鲜血。圣坛多一个「血祭」按钮：选一名囚犯处决，完成后守护神神眷+15。只在守护神是恶神时可用。 -->
+  <LP_Offerings_Blood.description>Evil gods love blood. The altar gets an extra "blood sacrifice" button: pick a prisoner to execute, and when done the patron deity gains +15 divine favor. Only available when the patron deity is an evil god.</LP_Offerings_Blood.description>
+</LanguageData>

@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 安装注能义臂 -->
+  <LP_Install_InfusedArm.label>install infused arm</LP_Install_InfusedArm.label>
+  <!-- 用钢和少量秘银锻成、再灌注魔力的义臂。替换整条手臂，部位效率 115%。普通档，不占调谐位。 -->
+  <LP_Install_InfusedArm.description>A prosthetic arm forged from steel and a little mithril, then infused with magic. Replaces a whole arm, part efficiency 115%. Common tier, doesn't take an attunement slot.</LP_Install_InfusedArm.description>
+  <!-- 正在安装注能义臂。 -->
+  <LP_Install_InfusedArm.jobString>Installing an infused arm.</LP_Install_InfusedArm.jobString>
+  <!-- 锻造注能义臂 -->
+  <LP_Make_InfusedArm.label>forge infused arm</LP_Make_InfusedArm.label>
+  <!-- 在符文铁砧锻造注能义臂。 -->
+  <LP_Make_InfusedArm.description>Forge an infused arm at the rune anvil.</LP_Make_InfusedArm.description>
+  <!-- 正在锻造注能义臂。 -->
+  <LP_Make_InfusedArm.jobString>Forging an infused arm.</LP_Make_InfusedArm.jobString>
+  <!-- 安装注能义腿 -->
+  <LP_Install_InfusedLeg.label>install infused leg</LP_Install_InfusedLeg.label>
+  <!-- 用钢和少量秘银锻成、再灌注魔力的义腿。替换整条腿，部位效率 115%。普通档，不占调谐位。 -->
+  <LP_Install_InfusedLeg.description>A prosthetic leg forged from steel and a little mithril, then infused with magic. Replaces a whole leg, part efficiency 115%. Common tier, doesn't take an attunement slot.</LP_Install_InfusedLeg.description>
+  <!-- 正在安装注能义腿。 -->
+  <LP_Install_InfusedLeg.jobString>Installing an infused leg.</LP_Install_InfusedLeg.jobString>
+  <!-- 锻造注能义腿 -->
+  <LP_Make_InfusedLeg.label>forge infused leg</LP_Make_InfusedLeg.label>
+  <!-- 在符文铁砧锻造注能义腿。 -->
+  <LP_Make_InfusedLeg.description>Forge an infused leg at the rune anvil.</LP_Make_InfusedLeg.description>
+  <!-- 正在锻造注能义腿。 -->
+  <LP_Make_InfusedLeg.jobString>Forging an infused leg.</LP_Make_InfusedLeg.jobString>
+  <!-- 安装寒铁义臂 -->
+  <LP_Install_ColdIronArm.label>install cold iron arm</LP_Install_ColdIronArm.label>
+  <!-- 淬炼寒铁锻成的义臂，摸上去总是冰凉。替换整条手臂，部位效率 125%；近战打寒铁克制的目标（妖精血统、精灵、灵能者）和邪魔时伤害 +30%。普通档，不占调谐位。 -->
+  <LP_Install_ColdIronArm.description>A prosthetic arm forged from tempered cold iron, always cold to the touch. Replaces a whole arm, part efficiency 125%; +30% melee damage against targets weak to cold iron (fey blood, elves, psycasters) and fiends. Common tier, doesn't take an attunement slot.</LP_Install_ColdIronArm.description>
+  <!-- 正在安装寒铁义臂。 -->
+  <LP_Install_ColdIronArm.jobString>Installing a cold iron arm.</LP_Install_ColdIronArm.jobString>
+  <!-- 锻造寒铁义臂 -->
+  <LP_Make_ColdIronArm.label>forge cold iron arm</LP_Make_ColdIronArm.label>
+  <!-- 在符文铁砧锻造寒铁义臂。 -->
+  <LP_Make_ColdIronArm.description>Forge a cold iron arm at the rune anvil.</LP_Make_ColdIronArm.description>
+  <!-- 正在锻造寒铁义臂。 -->
+  <LP_Make_ColdIronArm.jobString>Forging a cold iron arm.</LP_Make_ColdIronArm.jobString>
+  <!-- 安装秘银义腿 -->
+  <LP_Install_MithralLeg.label>install mithril leg</LP_Install_MithralLeg.label>
+  <!-- 轻得几乎没有重量的秘银义腿。替换整条腿，部位效率 130%；穿着的衣物带来的移速惩罚减半（重甲最明显）。稀有档，占 1 个调谐位。 -->
+  <LP_Install_MithralLeg.description>A mithril prosthetic leg so light it's almost weightless. Replaces a whole leg, part efficiency 130%; move speed penalties from worn apparel halved (most noticeable with heavy armor). Rare tier, takes 1 attunement slot.</LP_Install_MithralLeg.description>
+  <!-- 正在安装秘银义腿。 -->
+  <LP_Install_MithralLeg.jobString>Installing a mithril leg.</LP_Install_MithralLeg.jobString>
+  <!-- 锻造秘银义腿 -->
+  <LP_Make_MithralLeg.label>forge mithril leg</LP_Make_MithralLeg.label>
+  <!-- 在符文铁砧锻造秘银义腿。 -->
+  <LP_Make_MithralLeg.description>Forge a mithril leg at the rune anvil.</LP_Make_MithralLeg.description>
+  <!-- 正在锻造秘银义腿。 -->
+  <LP_Make_MithralLeg.jobString>Forging a mithril leg.</LP_Make_MithralLeg.jobString>
+  <!-- 安装精金义臂 -->
+  <LP_Install_AdamantArm.label>install adamantine arm</LP_Install_AdamantArm.label>
+  <!-- 精金锻成的义臂，几乎砍不坏。替换整条手臂，部位效率 140%；这条手臂上受的伤 −50%，近战护甲穿透 +25%。稀有档，占 1 个调谐位。 -->
+  <LP_Install_AdamantArm.description>A prosthetic arm forged from adamantine, almost unbreakable. Replaces a whole arm, part efficiency 140%; injuries on this arm -50%, melee armor penetration +25%. Rare tier, takes 1 attunement slot.</LP_Install_AdamantArm.description>
+  <!-- 正在安装精金义臂。 -->
+  <LP_Install_AdamantArm.jobString>Installing an adamantine arm.</LP_Install_AdamantArm.jobString>
+  <!-- 锻造精金义臂 -->
+  <LP_Make_AdamantArm.label>forge adamantine arm</LP_Make_AdamantArm.label>
+  <!-- 在符文铁砧锻造精金义臂。 -->
+  <LP_Make_AdamantArm.description>Forge an adamantine arm at the rune anvil.</LP_Make_AdamantArm.description>
+  <!-- 正在锻造精金义臂。 -->
+  <LP_Make_AdamantArm.jobString>Forging an adamantine arm.</LP_Make_AdamantArm.jobString>
+  <!-- 安装精工机关眼 -->
+  <LP_Install_ClockEye.label>install precision clockwork eye</LP_Install_ClockEye.label>
+  <!-- 秘银齿轮和玉石镜片组成的机关眼。替换一只眼睛，部位效率 125%；射击精度 +5%，光线昏暗时不受惩罚。普通档，不占调谐位。 -->
+  <LP_Install_ClockEye.description>A clockwork eye of mithril gears and jade lenses. Replaces one eye, part efficiency 125%; shooting accuracy +5%, no penalty in dim light. Common tier, doesn't take an attunement slot.</LP_Install_ClockEye.description>
+  <!-- 正在安装精工机关眼。 -->
+  <LP_Install_ClockEye.jobString>Installing a precision clockwork eye.</LP_Install_ClockEye.jobString>
+  <!-- 锻造精工机关眼 -->
+  <LP_Make_ClockEye.label>forge precision clockwork eye</LP_Make_ClockEye.label>
+  <!-- 在符文铁砧锻造精工机关眼。 -->
+  <LP_Make_ClockEye.description>Forge a precision clockwork eye at the rune anvil.</LP_Make_ClockEye.description>
+  <!-- 正在锻造精工机关眼。 -->
+  <LP_Make_ClockEye.jobString>Forging a precision clockwork eye.</LP_Make_ClockEye.jobString>
+  <!-- 安装秘银心核 -->
+  <LP_Install_MithralHeart.label>install mithril heart core</LP_Install_MithralHeart.label>
+  <!-- 秘银和精金打成的心核，跳得又稳又有力。替换心脏，部位效率 130%；毒素积累 −50%，不会再犯心脏病。稀有档，占 1 个调谐位。 -->
+  <LP_Install_MithralHeart.description>A heart core of mithril and adamantine that beats steady and strong. Replaces the heart, part efficiency 130%; toxic buildup -50%, never gets heart disease again. Rare tier, takes 1 attunement slot.</LP_Install_MithralHeart.description>
+  <!-- 正在安装秘银心核。 -->
+  <LP_Install_MithralHeart.jobString>Installing a mithril heart core.</LP_Install_MithralHeart.jobString>
+  <!-- 锻造秘银心核 -->
+  <LP_Make_MithralHeart.label>forge mithril heart core</LP_Make_MithralHeart.label>
+  <!-- 在符文铁砧锻造秘银心核。 -->
+  <LP_Make_MithralHeart.description>Forge a mithril heart core at the rune anvil.</LP_Make_MithralHeart.description>
+  <!-- 正在锻造秘银心核。 -->
+  <LP_Make_MithralHeart.jobString>Forging a mithril heart core.</LP_Make_MithralHeart.jobString>
+  <!-- 制作伊奥恩原石 -->
+  <LP_Make_IounBlank.label>make raw ioun stone</LP_Make_IounBlank.label>
+  <!-- 用 20 秘银、15 玉石和 10 金子在附魔台做一颗伊奥恩原石。 -->
+  <LP_Make_IounBlank.description>Make a raw ioun stone at the enchanting table from 20 mithril, 15 jade and 10 gold.</LP_Make_IounBlank.description>
+  <!-- 正在制作伊奥恩原石。 -->
+  <LP_Make_IounBlank.jobString>Making a raw ioun stone.</LP_Make_IounBlank.jobString>
+  <!-- 镶嵌伊奥恩颅石·力量之石 -->
+  <LP_Install_LP_Ioun_Str.label>set ioun skull stone: strength</LP_Install_LP_Ioun_Str.label>
+  <!-- 原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者力量 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。 -->
+  <LP_Install_LP_Ioun_Str.description>The ioun stones that orbit the head in the original game are set into the frontal bone here. Adventurer Strength +2 (applied after the ability cap, can exceed 20). Each takes 1 attunement slot, up to 3 set in the frontal bone; removal returns the stone.</LP_Install_LP_Ioun_Str.description>
+  <!-- 正在镶嵌伊奥恩颅石·力量之石。 -->
+  <LP_Install_LP_Ioun_Str.jobString>Setting an ioun skull stone of strength.</LP_Install_LP_Ioun_Str.jobString>
+  <!-- 摘除伊奥恩颅石·力量之石 -->
+  <LP_Remove_LP_Ioun_Str.label>remove ioun skull stone: strength</LP_Remove_LP_Ioun_Str.label>
+  <!-- 从额骨里取出伊奥恩颅石·力量之石，石头还能再用。 -->
+  <LP_Remove_LP_Ioun_Str.description>Take the ioun skull stone of strength out of the frontal bone; the stone can be used again.</LP_Remove_LP_Ioun_Str.description>
+  <!-- 正在摘除伊奥恩颅石·力量之石。 -->
+  <LP_Remove_LP_Ioun_Str.jobString>Removing an ioun skull stone of strength.</LP_Remove_LP_Ioun_Str.jobString>
+  <!-- 刻纹：力量之石 -->
+  <LP_Make_LP_Ioun_Str.label>engrave: strength</LP_Make_LP_Ioun_Str.label>
+  <!-- 用 1 颗伊奥恩原石和 5 秘银刻成伊奥恩颅石·力量之石。 -->
+  <LP_Make_LP_Ioun_Str.description>Engrave a raw ioun stone with 5 mithril into an ioun skull stone of strength.</LP_Make_LP_Ioun_Str.description>
+  <!-- 正在刻纹伊奥恩颅石·力量之石。 -->
+  <LP_Make_LP_Ioun_Str.jobString>Engraving an ioun skull stone of strength.</LP_Make_LP_Ioun_Str.jobString>
+  <!-- 镶嵌伊奥恩颅石·敏捷之石 -->
+  <LP_Install_LP_Ioun_Dex.label>set ioun skull stone: agility</LP_Install_LP_Ioun_Dex.label>
+  <!-- 原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者敏捷 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。 -->
+  <LP_Install_LP_Ioun_Dex.description>The ioun stones that orbit the head in the original game are set into the frontal bone here. Adventurer Dexterity +2 (applied after the ability cap, can exceed 20). Each takes 1 attunement slot, up to 3 set in the frontal bone; removal returns the stone.</LP_Install_LP_Ioun_Dex.description>
+  <!-- 正在镶嵌伊奥恩颅石·敏捷之石。 -->
+  <LP_Install_LP_Ioun_Dex.jobString>Setting an ioun skull stone of agility.</LP_Install_LP_Ioun_Dex.jobString>
+  <!-- 摘除伊奥恩颅石·敏捷之石 -->
+  <LP_Remove_LP_Ioun_Dex.label>remove ioun skull stone: agility</LP_Remove_LP_Ioun_Dex.label>
+  <!-- 从额骨里取出伊奥恩颅石·敏捷之石，石头还能再用。 -->
+  <LP_Remove_LP_Ioun_Dex.description>Take the ioun skull stone of agility out of the frontal bone; the stone can be used again.</LP_Remove_LP_Ioun_Dex.description>
+  <!-- 正在摘除伊奥恩颅石·敏捷之石。 -->
+  <LP_Remove_LP_Ioun_Dex.jobString>Removing an ioun skull stone of agility.</LP_Remove_LP_Ioun_Dex.jobString>
+  <!-- 刻纹：敏捷之石 -->
+  <LP_Make_LP_Ioun_Dex.label>engrave: agility</LP_Make_LP_Ioun_Dex.label>
+  <!-- 用 1 颗伊奥恩原石和 5 秘银刻成伊奥恩颅石·敏捷之石。 -->
+  <LP_Make_LP_Ioun_Dex.description>Engrave a raw ioun stone with 5 mithril into an ioun skull stone of agility.</LP_Make_LP_Ioun_Dex.description>
+  <!-- 正在刻纹伊奥恩颅石·敏捷之石。 -->
+  <LP_Make_LP_Ioun_Dex.jobString>Engraving an ioun skull stone of agility.</LP_Make_LP_Ioun_Dex.jobString>
+  <!-- 镶嵌伊奥恩颅石·体质之石 -->
+  <LP_Install_LP_Ioun_Con.label>set ioun skull stone: fortitude</LP_Install_LP_Ioun_Con.label>
+  <!-- 原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者体质 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。 -->
+  <LP_Install_LP_Ioun_Con.description>The ioun stones that orbit the head in the original game are set into the frontal bone here. Adventurer Constitution +2 (applied after the ability cap, can exceed 20). Each takes 1 attunement slot, up to 3 set in the frontal bone; removal returns the stone.</LP_Install_LP_Ioun_Con.description>
+  <!-- 正在镶嵌伊奥恩颅石·体质之石。 -->
+  <LP_Install_LP_Ioun_Con.jobString>Setting an ioun skull stone of fortitude.</LP_Install_LP_Ioun_Con.jobString>
+  <!-- 摘除伊奥恩颅石·体质之石 -->
+  <LP_Remove_LP_Ioun_Con.label>remove ioun skull stone: fortitude</LP_Remove_LP_Ioun_Con.label>
+  <!-- 从额骨里取出伊奥恩颅石·体质之石，石头还能再用。 -->
+  <LP_Remove_LP_Ioun_Con.description>Take the ioun skull stone of fortitude out of the frontal bone; the stone can be used again.</LP_Remove_LP_Ioun_Con.description>
+  <!-- 正在摘除伊奥恩颅石·体质之石。 -->
+  <LP_Remove_LP_Ioun_Con.jobString>Removing an ioun skull stone of fortitude.</LP_Remove_LP_Ioun_Con.jobString>
+  <!-- 刻纹：体质之石 -->
+  <LP_Make_LP_Ioun_Con.label>engrave: fortitude</LP_Make_LP_Ioun_Con.label>
+  <!-- 用 1 颗伊奥恩原石和 5 秘银刻成伊奥恩颅石·体质之石。 -->
+  <LP_Make_LP_Ioun_Con.description>Engrave a raw ioun stone with 5 mithril into an ioun skull stone of fortitude.</LP_Make_LP_Ioun_Con.description>
+  <!-- 正在刻纹伊奥恩颅石·体质之石。 -->
+  <LP_Make_LP_Ioun_Con.jobString>Engraving an ioun skull stone of fortitude.</LP_Make_LP_Ioun_Con.jobString>
+  <!-- 镶嵌伊奥恩颅石·智力之石 -->
+  <LP_Install_LP_Ioun_Int.label>set ioun skull stone: intellect</LP_Install_LP_Ioun_Int.label>
+  <!-- 原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者智力 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。 -->
+  <LP_Install_LP_Ioun_Int.description>The ioun stones that orbit the head in the original game are set into the frontal bone here. Adventurer Intelligence +2 (applied after the ability cap, can exceed 20). Each takes 1 attunement slot, up to 3 set in the frontal bone; removal returns the stone.</LP_Install_LP_Ioun_Int.description>
+  <!-- 正在镶嵌伊奥恩颅石·智力之石。 -->
+  <LP_Install_LP_Ioun_Int.jobString>Setting an ioun skull stone of intellect.</LP_Install_LP_Ioun_Int.jobString>
+  <!-- 摘除伊奥恩颅石·智力之石 -->
+  <LP_Remove_LP_Ioun_Int.label>remove ioun skull stone: intellect</LP_Remove_LP_Ioun_Int.label>
+  <!-- 从额骨里取出伊奥恩颅石·智力之石，石头还能再用。 -->
+  <LP_Remove_LP_Ioun_Int.description>Take the ioun skull stone of intellect out of the frontal bone; the stone can be used again.</LP_Remove_LP_Ioun_Int.description>
+  <!-- 正在摘除伊奥恩颅石·智力之石。 -->
+  <LP_Remove_LP_Ioun_Int.jobString>Removing an ioun skull stone of intellect.</LP_Remove_LP_Ioun_Int.jobString>
+  <!-- 刻纹：智力之石 -->
+  <LP_Make_LP_Ioun_Int.label>engrave: intellect</LP_Make_LP_Ioun_Int.label>
+  <!-- 用 1 颗伊奥恩原石和 5 秘银刻成伊奥恩颅石·智力之石。 -->
+  <LP_Make_LP_Ioun_Int.description>Engrave a raw ioun stone with 5 mithril into an ioun skull stone of intellect.</LP_Make_LP_Ioun_Int.description>
+  <!-- 正在刻纹伊奥恩颅石·智力之石。 -->
+  <LP_Make_LP_Ioun_Int.jobString>Engraving an ioun skull stone of intellect.</LP_Make_LP_Ioun_Int.jobString>
+  <!-- 镶嵌伊奥恩颅石·感知之石 -->
+  <LP_Install_LP_Ioun_Wis.label>set ioun skull stone: insight</LP_Install_LP_Ioun_Wis.label>
+  <!-- 原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者感知 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。 -->
+  <LP_Install_LP_Ioun_Wis.description>The ioun stones that orbit the head in the original game are set into the frontal bone here. Adventurer Wisdom +2 (applied after the ability cap, can exceed 20). Each takes 1 attunement slot, up to 3 set in the frontal bone; removal returns the stone.</LP_Install_LP_Ioun_Wis.description>
+  <!-- 正在镶嵌伊奥恩颅石·感知之石。 -->
+  <LP_Install_LP_Ioun_Wis.jobString>Setting an ioun skull stone of insight.</LP_Install_LP_Ioun_Wis.jobString>
+  <!-- 摘除伊奥恩颅石·感知之石 -->
+  <LP_Remove_LP_Ioun_Wis.label>remove ioun skull stone: insight</LP_Remove_LP_Ioun_Wis.label>
+  <!-- 从额骨里取出伊奥恩颅石·感知之石，石头还能再用。 -->
+  <LP_Remove_LP_Ioun_Wis.description>Take the ioun skull stone of insight out of the frontal bone; the stone can be used again.</LP_Remove_LP_Ioun_Wis.description>
+  <!-- 正在摘除伊奥恩颅石·感知之石。 -->
+  <LP_Remove_LP_Ioun_Wis.jobString>Removing an ioun skull stone of insight.</LP_Remove_LP_Ioun_Wis.jobString>
+  <!-- 刻纹：感知之石 -->
+  <LP_Make_LP_Ioun_Wis.label>engrave: insight</LP_Make_LP_Ioun_Wis.label>
+  <!-- 用 1 颗伊奥恩原石和 5 秘银刻成伊奥恩颅石·感知之石。 -->
+  <LP_Make_LP_Ioun_Wis.description>Engrave a raw ioun stone with 5 mithril into an ioun skull stone of insight.</LP_Make_LP_Ioun_Wis.description>
+  <!-- 正在刻纹伊奥恩颅石·感知之石。 -->
+  <LP_Make_LP_Ioun_Wis.jobString>Engraving an ioun skull stone of insight.</LP_Make_LP_Ioun_Wis.jobString>
+  <!-- 镶嵌伊奥恩颅石·魅力之石 -->
+  <LP_Install_LP_Ioun_Cha.label>set ioun skull stone: leadership</LP_Install_LP_Ioun_Cha.label>
+  <!-- 原作里绕着头飞的伊奥恩石，这里镶进额骨。冒险者魅力 +2（加在属性上限之后，可以超过 20）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。 -->
+  <LP_Install_LP_Ioun_Cha.description>The ioun stones that orbit the head in the original game are set into the frontal bone here. Adventurer Charisma +2 (applied after the ability cap, can exceed 20). Each takes 1 attunement slot, up to 3 set in the frontal bone; removal returns the stone.</LP_Install_LP_Ioun_Cha.description>
+  <!-- 正在镶嵌伊奥恩颅石·魅力之石。 -->
+  <LP_Install_LP_Ioun_Cha.jobString>Setting an ioun skull stone of leadership.</LP_Install_LP_Ioun_Cha.jobString>
+  <!-- 摘除伊奥恩颅石·魅力之石 -->
+  <LP_Remove_LP_Ioun_Cha.label>remove ioun skull stone: leadership</LP_Remove_LP_Ioun_Cha.label>
+  <!-- 从额骨里取出伊奥恩颅石·魅力之石，石头还能再用。 -->
+  <LP_Remove_LP_Ioun_Cha.description>Take the ioun skull stone of leadership out of the frontal bone; the stone can be used again.</LP_Remove_LP_Ioun_Cha.description>
+  <!-- 正在摘除伊奥恩颅石·魅力之石。 -->
+  <LP_Remove_LP_Ioun_Cha.jobString>Removing an ioun skull stone of leadership.</LP_Remove_LP_Ioun_Cha.jobString>
+  <!-- 刻纹：魅力之石 -->
+  <LP_Make_LP_Ioun_Cha.label>engrave: leadership</LP_Make_LP_Ioun_Cha.label>
+  <!-- 用 1 颗伊奥恩原石和 5 秘银刻成伊奥恩颅石·魅力之石。 -->
+  <LP_Make_LP_Ioun_Cha.description>Engrave a raw ioun stone with 5 mithril into an ioun skull stone of leadership.</LP_Make_LP_Ioun_Cha.description>
+  <!-- 正在刻纹伊奥恩颅石·魅力之石。 -->
+  <LP_Make_LP_Ioun_Cha.jobString>Engraving an ioun skull stone of leadership.</LP_Make_LP_Ioun_Cha.jobString>
+  <!-- 镶嵌伊奥恩颅石·维生之石 -->
+  <LP_Install_LP_Ioun_Sustain.label>set ioun skull stone: sustenance</LP_Install_LP_Ioun_Sustain.label>
+  <!-- 原作里绕着头飞的伊奥恩石，这里镶进额骨。饥饿速度 ×0.2。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。 -->
+  <LP_Install_LP_Ioun_Sustain.description>The ioun stones that orbit the head in the original game are set into the frontal bone here. Hunger rate ×0.2. Each takes 1 attunement slot, up to 3 set in the frontal bone; removal returns the stone.</LP_Install_LP_Ioun_Sustain.description>
+  <!-- 正在镶嵌伊奥恩颅石·维生之石。 -->
+  <LP_Install_LP_Ioun_Sustain.jobString>Setting an ioun skull stone of sustenance.</LP_Install_LP_Ioun_Sustain.jobString>
+  <!-- 摘除伊奥恩颅石·维生之石 -->
+  <LP_Remove_LP_Ioun_Sustain.label>remove ioun skull stone: sustenance</LP_Remove_LP_Ioun_Sustain.label>
+  <!-- 从额骨里取出伊奥恩颅石·维生之石，石头还能再用。 -->
+  <LP_Remove_LP_Ioun_Sustain.description>Take the ioun skull stone of sustenance out of the frontal bone; the stone can be used again.</LP_Remove_LP_Ioun_Sustain.description>
+  <!-- 正在摘除伊奥恩颅石·维生之石。 -->
+  <LP_Remove_LP_Ioun_Sustain.jobString>Removing an ioun skull stone of sustenance.</LP_Remove_LP_Ioun_Sustain.jobString>
+  <!-- 刻纹：维生之石 -->
+  <LP_Make_LP_Ioun_Sustain.label>engrave: sustenance</LP_Make_LP_Ioun_Sustain.label>
+  <!-- 用 1 颗伊奥恩原石和 5 秘银刻成伊奥恩颅石·维生之石。 -->
+  <LP_Make_LP_Ioun_Sustain.description>Engrave a raw ioun stone with 5 mithril into an ioun skull stone of sustenance.</LP_Make_LP_Ioun_Sustain.description>
+  <!-- 正在刻纹伊奥恩颅石·维生之石。 -->
+  <LP_Make_LP_Ioun_Sustain.jobString>Engraving an ioun skull stone of sustenance.</LP_Make_LP_Ioun_Sustain.jobString>
+  <!-- 镶嵌伊奥恩颅石·再生之石 -->
+  <LP_Install_LP_Ioun_Regen.label>set ioun skull stone: regeneration</LP_Install_LP_Ioun_Regen.label>
+  <!-- 原作里绕着头飞的伊奥恩石，这里镶进额骨。每天额外治好一处伤口（最重的那处，旧伤疤不算）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。 -->
+  <LP_Install_LP_Ioun_Regen.description>The ioun stones that orbit the head in the original game are set into the frontal bone here. Heals one extra wound per day (the worst one; old scars don't count). Each takes 1 attunement slot, up to 3 set in the frontal bone; removal returns the stone.</LP_Install_LP_Ioun_Regen.description>
+  <!-- 正在镶嵌伊奥恩颅石·再生之石。 -->
+  <LP_Install_LP_Ioun_Regen.jobString>Setting an ioun skull stone of regeneration.</LP_Install_LP_Ioun_Regen.jobString>
+  <!-- 摘除伊奥恩颅石·再生之石 -->
+  <LP_Remove_LP_Ioun_Regen.label>remove ioun skull stone: regeneration</LP_Remove_LP_Ioun_Regen.label>
+  <!-- 从额骨里取出伊奥恩颅石·再生之石，石头还能再用。 -->
+  <LP_Remove_LP_Ioun_Regen.description>Take the ioun skull stone of regeneration out of the frontal bone; the stone can be used again.</LP_Remove_LP_Ioun_Regen.description>
+  <!-- 正在摘除伊奥恩颅石·再生之石。 -->
+  <LP_Remove_LP_Ioun_Regen.jobString>Removing an ioun skull stone of regeneration.</LP_Remove_LP_Ioun_Regen.jobString>
+  <!-- 刻纹：再生之石 -->
+  <LP_Make_LP_Ioun_Regen.label>engrave: regeneration</LP_Make_LP_Ioun_Regen.label>
+  <!-- 用 1 颗伊奥恩原石和 5 秘银刻成伊奥恩颅石·再生之石。 -->
+  <LP_Make_LP_Ioun_Regen.description>Engrave a raw ioun stone with 5 mithril into an ioun skull stone of regeneration.</LP_Make_LP_Ioun_Regen.description>
+  <!-- 正在刻纹伊奥恩颅石·再生之石。 -->
+  <LP_Make_LP_Ioun_Regen.jobString>Engraving an ioun skull stone of regeneration.</LP_Make_LP_Ioun_Regen.jobString>
+  <!-- 镶嵌伊奥恩颅石·精通之石 -->
+  <LP_Install_LP_Ioun_Mastery.label>set ioun skull stone: mastery</LP_Install_LP_Ioun_Mastery.label>
+  <!-- 原作里绕着头飞的伊奥恩石，这里镶进额骨。熟练加值 +1（职业强度、检定都按新的熟练加值算）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。 -->
+  <LP_Install_LP_Ioun_Mastery.description>The ioun stones that orbit the head in the original game are set into the frontal bone here. Proficiency bonus +1 (class power and checks use the new proficiency bonus). Each takes 1 attunement slot, up to 3 set in the frontal bone; removal returns the stone.</LP_Install_LP_Ioun_Mastery.description>
+  <!-- 正在镶嵌伊奥恩颅石·精通之石。 -->
+  <LP_Install_LP_Ioun_Mastery.jobString>Setting an ioun skull stone of mastery.</LP_Install_LP_Ioun_Mastery.jobString>
+  <!-- 摘除伊奥恩颅石·精通之石 -->
+  <LP_Remove_LP_Ioun_Mastery.label>remove ioun skull stone: mastery</LP_Remove_LP_Ioun_Mastery.label>
+  <!-- 从额骨里取出伊奥恩颅石·精通之石，石头还能再用。 -->
+  <LP_Remove_LP_Ioun_Mastery.description>Take the ioun skull stone of mastery out of the frontal bone; the stone can be used again.</LP_Remove_LP_Ioun_Mastery.description>
+  <!-- 正在摘除伊奥恩颅石·精通之石。 -->
+  <LP_Remove_LP_Ioun_Mastery.jobString>Removing an ioun skull stone of mastery.</LP_Remove_LP_Ioun_Mastery.jobString>
+  <!-- 刻纹：精通之石 -->
+  <LP_Make_LP_Ioun_Mastery.label>engrave: mastery</LP_Make_LP_Ioun_Mastery.label>
+  <!-- 用 1 颗伊奥恩原石和 5 秘银刻成伊奥恩颅石·精通之石。 -->
+  <LP_Make_LP_Ioun_Mastery.description>Engrave a raw ioun stone with 5 mithril into an ioun skull stone of mastery.</LP_Make_LP_Ioun_Mastery.description>
+  <!-- 正在刻纹伊奥恩颅石·精通之石。 -->
+  <LP_Make_LP_Ioun_Mastery.jobString>Engraving an ioun skull stone of mastery.</LP_Make_LP_Ioun_Mastery.jobString>
+  <!-- 镶嵌伊奥恩颅石·吸收之石 -->
+  <LP_Install_LP_Ioun_Absorb.label>set ioun skull stone: absorption</LP_Install_LP_Ioun_Absorb.label>
+  <!-- 原作里绕着头飞的伊奥恩石，这里镶进额骨。每天抵消一次灵能或法术伤害（不带武器的火焰、寒冰、闪电、心灵、奥术力伤害）。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。 -->
+  <LP_Install_LP_Ioun_Absorb.description>The ioun stones that orbit the head in the original game are set into the frontal bone here. Negates one instance of psychic or spell damage per day (weaponless fire, cold, lightning, psychic, arcane force damage). Each takes 1 attunement slot, up to 3 set in the frontal bone; removal returns the stone.</LP_Install_LP_Ioun_Absorb.description>
+  <!-- 正在镶嵌伊奥恩颅石·吸收之石。 -->
+  <LP_Install_LP_Ioun_Absorb.jobString>Setting an ioun skull stone of absorption.</LP_Install_LP_Ioun_Absorb.jobString>
+  <!-- 摘除伊奥恩颅石·吸收之石 -->
+  <LP_Remove_LP_Ioun_Absorb.label>remove ioun skull stone: absorption</LP_Remove_LP_Ioun_Absorb.label>
+  <!-- 从额骨里取出伊奥恩颅石·吸收之石，石头还能再用。 -->
+  <LP_Remove_LP_Ioun_Absorb.description>Take the ioun skull stone of absorption out of the frontal bone; the stone can be used again.</LP_Remove_LP_Ioun_Absorb.description>
+  <!-- 正在摘除伊奥恩颅石·吸收之石。 -->
+  <LP_Remove_LP_Ioun_Absorb.jobString>Removing an ioun skull stone of absorption.</LP_Remove_LP_Ioun_Absorb.jobString>
+  <!-- 刻纹：吸收之石 -->
+  <LP_Make_LP_Ioun_Absorb.label>engrave: absorption</LP_Make_LP_Ioun_Absorb.label>
+  <!-- 用 1 颗伊奥恩原石和 5 秘银刻成伊奥恩颅石·吸收之石。 -->
+  <LP_Make_LP_Ioun_Absorb.description>Engrave a raw ioun stone with 5 mithril into an ioun skull stone of absorption.</LP_Make_LP_Ioun_Absorb.description>
+  <!-- 正在刻纹伊奥恩颅石·吸收之石。 -->
+  <LP_Make_LP_Ioun_Absorb.jobString>Engraving an ioun skull stone of absorption.</LP_Make_LP_Ioun_Absorb.jobString>
+  <!-- 镶嵌伊奥恩颅石·警觉之石 -->
+  <LP_Install_LP_Ioun_Alert.label>set ioun skull stone: awareness</LP_Install_LP_Ioun_Alert.label>
+  <!-- 原作里绕着头飞的伊奥恩石，这里镶进额骨。不会被偷袭（刺客、隐匿伏击的偷袭加成对你无效），意识 +5%。每颗占 1 个调谐位，额骨上最多镶 3 颗；摘除能拿回石头。 -->
+  <LP_Install_LP_Ioun_Alert.description>The ioun stones that orbit the head in the original game are set into the frontal bone here. Can't be ambushed (sneak attack bonuses from assassins and hide in plain sight don't work on you), consciousness +5%. Each takes 1 attunement slot, up to 3 set in the frontal bone; removal returns the stone.</LP_Install_LP_Ioun_Alert.description>
+  <!-- 正在镶嵌伊奥恩颅石·警觉之石。 -->
+  <LP_Install_LP_Ioun_Alert.jobString>Setting an ioun skull stone of awareness.</LP_Install_LP_Ioun_Alert.jobString>
+  <!-- 摘除伊奥恩颅石·警觉之石 -->
+  <LP_Remove_LP_Ioun_Alert.label>remove ioun skull stone: awareness</LP_Remove_LP_Ioun_Alert.label>
+  <!-- 从额骨里取出伊奥恩颅石·警觉之石，石头还能再用。 -->
+  <LP_Remove_LP_Ioun_Alert.description>Take the ioun skull stone of awareness out of the frontal bone; the stone can be used again.</LP_Remove_LP_Ioun_Alert.description>
+  <!-- 正在摘除伊奥恩颅石·警觉之石。 -->
+  <LP_Remove_LP_Ioun_Alert.jobString>Removing an ioun skull stone of awareness.</LP_Remove_LP_Ioun_Alert.jobString>
+  <!-- 刻纹：警觉之石 -->
+  <LP_Make_LP_Ioun_Alert.label>engrave: awareness</LP_Make_LP_Ioun_Alert.label>
+  <!-- 用 1 颗伊奥恩原石和 5 秘银刻成伊奥恩颅石·警觉之石。 -->
+  <LP_Make_LP_Ioun_Alert.description>Engrave a raw ioun stone with 5 mithril into an ioun skull stone of awareness.</LP_Make_LP_Ioun_Alert.description>
+  <!-- 正在刻纹伊奥恩颅石·警觉之石。 -->
+  <LP_Make_LP_Ioun_Alert.jobString>Engraving an ioun skull stone of awareness.</LP_Make_LP_Ioun_Alert.jobString>
+  <!-- 安装冥火之心 -->
+  <LP_Install_LP_Flesh_HellHeart.label>install netherfire heart</LP_Install_LP_Flesh_HellHeart.label>
+  <!-- 冥火在胸腔里代替心跳。替换心脏，部位效率 120%；流血速度 ×0.2。在死灵仪式台用 800 份生肉和 150 白银培育，巫妖和活人都能装，可以叠肢体强化。普通档，不占调谐位。 -->
+  <LP_Install_LP_Flesh_HellHeart.description>Netherfire replaces the heartbeat in the chest. Replaces the heart, part efficiency 120%; bleeding rate ×0.2. Grown at the necromantic ritual table from 800 raw meat and 150 silver; can be installed in liches and the living, and stacks with limb reinforcement. Common tier, doesn't take an attunement slot.</LP_Install_LP_Flesh_HellHeart.description>
+  <!-- 正在安装冥火之心。 -->
+  <LP_Install_LP_Flesh_HellHeart.jobString>Installing a netherfire heart.</LP_Install_LP_Flesh_HellHeart.jobString>
+  <!-- 培育冥火之心 -->
+  <LP_Craft_HellHeart.label>grow netherfire heart</LP_Craft_HellHeart.label>
+  <!-- 消耗 800 份新鲜生肉与 150 白银培育冥火之心。 -->
+  <LP_Craft_HellHeart.description>Grow a netherfire heart from 800 fresh raw meat and 150 silver.</LP_Craft_HellHeart.description>
+  <!-- 正在培育冥火之心。 -->
+  <LP_Craft_HellHeart.jobString>Growing a netherfire heart.</LP_Craft_HellHeart.jobString>
+  <!-- 安装骸骨肋笼 -->
+  <LP_Install_LP_Flesh_BoneCage.label>install bone rib cage</LP_Install_LP_Flesh_BoneCage.label>
+  <!-- 在肋骨外再长一层骨笼。躯干附加，不替换部位：躯干最大生命 +50%，受到的利器伤害 −20%。在死灵仪式台用 600 份生肉和 150 白银培育，巫妖和活人都能装，可以叠肢体强化。普通档，不占调谐位。 -->
+  <LP_Install_LP_Flesh_BoneCage.description>Grow another bone cage outside the ribs. Torso add-on, doesn't replace a part: torso max health +50%, sharp damage taken -20%. Grown at the necromantic ritual table from 600 raw meat and 150 silver; can be installed in liches and the living, and stacks with limb reinforcement. Common tier, doesn't take an attunement slot.</LP_Install_LP_Flesh_BoneCage.description>
+  <!-- 正在安装骸骨肋笼。 -->
+  <LP_Install_LP_Flesh_BoneCage.jobString>Installing a bone rib cage.</LP_Install_LP_Flesh_BoneCage.jobString>
+  <!-- 摘除骸骨肋笼 -->
+  <LP_Remove_LP_Flesh_BoneCage.label>remove bone rib cage</LP_Remove_LP_Flesh_BoneCage.label>
+  <!-- 取出骸骨肋笼。 -->
+  <LP_Remove_LP_Flesh_BoneCage.description>Take out the bone rib cage.</LP_Remove_LP_Flesh_BoneCage.description>
+  <!-- 正在摘除骸骨肋笼。 -->
+  <LP_Remove_LP_Flesh_BoneCage.jobString>Removing a bone rib cage.</LP_Remove_LP_Flesh_BoneCage.jobString>
+  <!-- 培育骸骨肋笼 -->
+  <LP_Craft_BoneCage.label>grow bone rib cage</LP_Craft_BoneCage.label>
+  <!-- 消耗 600 份新鲜生肉与 150 白银培育骸骨肋笼。 -->
+  <LP_Craft_BoneCage.description>Grow a bone rib cage from 600 fresh raw meat and 150 silver.</LP_Craft_BoneCage.description>
+  <!-- 正在培育骸骨肋笼。 -->
+  <LP_Craft_BoneCage.jobString>Growing a bone rib cage.</LP_Craft_BoneCage.jobString>
+  <!-- 安装亡者低语之耳 -->
+  <LP_Install_LP_Flesh_DeadEar.label>install ear of the dead's whispers</LP_Install_LP_Flesh_DeadEar.label>
+  <!-- 听得见死人说话的耳朵。替换一只耳朵，部位效率 125%；能力“亡者之语”：对一具人形尸体使用，学到它最高那项技能总经验的 10%（每具尸体一次；照常折算冒险者经验）。在死灵仪式台用 400 份生肉和 150 白银培育，巫妖和活人都能装，可以叠肢体强化。普通档，不占调谐位。 -->
+  <LP_Install_LP_Flesh_DeadEar.description>An ear that can hear the dead speak. Replaces one ear, part efficiency 125%; ability "Speak with dead": use on a humanlike corpse to learn 10% of the total XP of its highest skill (once per corpse; converted to adventurer XP as usual). Grown at the necromantic ritual table from 400 raw meat and 150 silver; can be installed in liches and the living, and stacks with limb reinforcement. Common tier, doesn't take an attunement slot.</LP_Install_LP_Flesh_DeadEar.description>
+  <!-- 正在安装亡者低语之耳。 -->
+  <LP_Install_LP_Flesh_DeadEar.jobString>Installing an ear of the dead's whispers.</LP_Install_LP_Flesh_DeadEar.jobString>
+  <!-- 培育亡者低语之耳 -->
+  <LP_Craft_DeadEar.label>grow ear of the dead's whispers</LP_Craft_DeadEar.label>
+  <!-- 消耗 400 份新鲜生肉与 150 白银培育亡者低语之耳。 -->
+  <LP_Craft_DeadEar.description>Grow an ear of the dead's whispers from 400 fresh raw meat and 150 silver.</LP_Craft_DeadEar.description>
+  <!-- 正在培育亡者低语之耳。 -->
+  <LP_Craft_DeadEar.jobString>Growing an ear of the dead's whispers.</LP_Craft_DeadEar.jobString>
+  <!-- 安装吞魂之颌 -->
+  <LP_Install_LP_Flesh_SoulJaw.label>install soul-devouring jaw</LP_Install_LP_Flesh_SoulJaw.label>
+  <!-- 满口尖牙的下颌。替换下颌，部位效率 120%；多一个近战咬击（14 伤害）；用它咬死血肉活物时回复 10% 精神力。在死灵仪式台用 600 份生肉和 150 白银培育，巫妖和活人都能装，可以叠肢体强化。普通档，不占调谐位。 -->
+  <LP_Install_LP_Flesh_SoulJaw.description>A jaw full of sharp teeth. Replaces the jaw, part efficiency 120%; adds a melee bite (14 damage); biting a living fleshy creature to death with it restores 10% psyfocus. Grown at the necromantic ritual table from 600 raw meat and 150 silver; can be installed in liches and the living, and stacks with limb reinforcement. Common tier, doesn't take an attunement slot.</LP_Install_LP_Flesh_SoulJaw.description>
+  <!-- 正在安装吞魂之颌。 -->
+  <LP_Install_LP_Flesh_SoulJaw.jobString>Installing a soul-devouring jaw.</LP_Install_LP_Flesh_SoulJaw.jobString>
+  <!-- 培育吞魂之颌 -->
+  <LP_Craft_SoulJaw.label>grow soul-devouring jaw</LP_Craft_SoulJaw.label>
+  <!-- 消耗 600 份新鲜生肉与 150 白银培育吞魂之颌。 -->
+  <LP_Craft_SoulJaw.description>Grow a soul-devouring jaw from 600 fresh raw meat and 150 silver.</LP_Craft_SoulJaw.description>
+  <!-- 正在培育吞魂之颌。 -->
+  <LP_Craft_SoulJaw.jobString>Growing a soul-devouring jaw.</LP_Craft_SoulJaw.jobString>
+  <!-- 安装眼魔之眼 -->
+  <LP_Install_LP_Graft_BeholderEye.label>install beholder eye</LP_Install_LP_Graft_BeholderEye.label>
+  <!-- 从眼魔身上取下的一只眼睛，接进眼窝还在转。替换一只眼睛，部位效率 110%；能力“眼魔射线”（20 格，冷却 1 天）：装上时随机定下是死灵射线（30 坏死伤害）、石化射线（开始石化）还是魅惑射线（恍惚 25 秒）。副作用：自己心情 −5（异怪凝视），别人对你的印象 −10。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Install_LP_Graft_BeholderEye.description>An eye taken from a beholder, still rolling when grafted into a socket. Replaces one eye, part efficiency 110%; ability "Beholder ray" (20 cells, cooldown 1 day): randomly set on installation to necrotic ray (30 necrotic damage), petrification ray (begins petrification) or charm ray (dazed 25 seconds). Side effects: own mood -5 (aberrant gaze), others' opinion of you -10. Rare tier, takes 1 attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Install_LP_Graft_BeholderEye.description>
+  <!-- 正在安装眼魔之眼。 -->
+  <LP_Install_LP_Graft_BeholderEye.jobString>Installing a beholder eye.</LP_Install_LP_Graft_BeholderEye.jobString>
+  <!-- 培养眼魔之眼 -->
+  <LP_Grow_Graft_BeholderEye.label>culture beholder eye</LP_Grow_Graft_BeholderEye.label>
+  <!-- 在炼金台用怪物材料培养眼魔之眼（嫁接物只能装在活人身上）。 -->
+  <LP_Grow_Graft_BeholderEye.description>Culture a beholder eye from monster materials at the alchemy table (grafts can only be installed in the living).</LP_Grow_Graft_BeholderEye.description>
+  <!-- 正在培养眼魔之眼。 -->
+  <LP_Grow_Graft_BeholderEye.jobString>Culturing a beholder eye.</LP_Grow_Graft_BeholderEye.jobString>
+  <!-- 安装恶魔之臂 -->
+  <LP_Install_LP_Graft_DemonArm.label>install demon arm</LP_Install_LP_Graft_DemonArm.label>
+  <!-- 浸过恶魔血长出来的手臂，皮下透着火光。替换整条手臂，部位效率 130%；近战命中附加 5 点火焰伤害。副作用：每天 1% 陷入狂怒崩溃；天界血统（阿斯莫、天界契约种族）装不上。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Install_LP_Graft_DemonArm.description>An arm grown steeped in demon blood, with firelight under the skin. Replaces a whole arm, part efficiency 130%; melee hits add 5 fire damage. Side effects: 1% chance per day of a berserk rage break; can't be installed in celestial bloodlines (aasimar, celestial pact races). Common tier, doesn't take an attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Install_LP_Graft_DemonArm.description>
+  <!-- 正在安装恶魔之臂。 -->
+  <LP_Install_LP_Graft_DemonArm.jobString>Installing a demon arm.</LP_Install_LP_Graft_DemonArm.jobString>
+  <!-- 培养恶魔之臂 -->
+  <LP_Grow_Graft_DemonArm.label>culture demon arm</LP_Grow_Graft_DemonArm.label>
+  <!-- 在炼金台用怪物材料培养恶魔之臂（嫁接物只能装在活人身上）。 -->
+  <LP_Grow_Graft_DemonArm.description>Culture a demon arm from monster materials at the alchemy table (grafts can only be installed in the living).</LP_Grow_Graft_DemonArm.description>
+  <!-- 正在培养恶魔之臂。 -->
+  <LP_Grow_Graft_DemonArm.jobString>Culturing a demon arm.</LP_Grow_Graft_DemonArm.jobString>
+  <!-- 安装巨魔再生腺 -->
+  <LP_Install_LP_Graft_TrollGland.label>install troll regeneration gland</LP_Install_LP_Graft_TrollGland.label>
+  <!-- 巨魔的再生腺体，缝在躯干上。躯干附加：伤口自然愈合 ×3；每 15 天长回一个缺失的小部位。副作用：饥饿速度 +50%；受到火焰、强酸伤害后再生停止 12 小时。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Install_LP_Graft_TrollGland.description>A troll's regeneration gland, sewn onto the torso. Torso add-on: natural wound healing ×3; regrows one missing small part every 15 days. Side effects: hunger rate +50%; regeneration stops for 12 hours after taking fire or acid damage. Common tier, doesn't take an attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Install_LP_Graft_TrollGland.description>
+  <!-- 正在安装巨魔再生腺。 -->
+  <LP_Install_LP_Graft_TrollGland.jobString>Installing a troll regeneration gland.</LP_Install_LP_Graft_TrollGland.jobString>
+  <!-- 摘除巨魔再生腺 -->
+  <LP_Remove_LP_Graft_TrollGland.label>remove troll regeneration gland</LP_Remove_LP_Graft_TrollGland.label>
+  <!-- 取出巨魔再生腺。 -->
+  <LP_Remove_LP_Graft_TrollGland.description>Take out the troll regeneration gland.</LP_Remove_LP_Graft_TrollGland.description>
+  <!-- 正在摘除巨魔再生腺。 -->
+  <LP_Remove_LP_Graft_TrollGland.jobString>Removing a troll regeneration gland.</LP_Remove_LP_Graft_TrollGland.jobString>
+  <!-- 培养巨魔再生腺 -->
+  <LP_Grow_Graft_TrollGland.label>culture troll regeneration gland</LP_Grow_Graft_TrollGland.label>
+  <!-- 在炼金台用怪物材料培养巨魔再生腺（嫁接物只能装在活人身上）。 -->
+  <LP_Grow_Graft_TrollGland.description>Culture a troll regeneration gland from monster materials at the alchemy table (grafts can only be installed in the living).</LP_Grow_Graft_TrollGland.description>
+  <!-- 正在培养巨魔再生腺。 -->
+  <LP_Grow_Graft_TrollGland.jobString>Culturing a troll regeneration gland.</LP_Grow_Graft_TrollGland.jobString>
+  <!-- 安装赤龙鳞皮下甲 -->
+  <LP_Install_LP_Graft_ScaleRed.label>install red dragonscale subdermal armor</LP_Install_LP_Graft_ScaleRed.label>
+  <!-- 赤龙的鳞片嵌在皮下。躯干附加：利器护甲 +15%，火焰伤害 −50%，寒冰伤害 +20%。同时只能装一件龙鳞皮下甲。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Install_LP_Graft_ScaleRed.description>Red dragon scales embedded under the skin. Torso add-on: sharp armor +15%, fire damage -50%, cold damage +20%. Only one dragonscale subdermal armor at a time. Common tier, doesn't take an attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Install_LP_Graft_ScaleRed.description>
+  <!-- 正在安装赤龙鳞皮下甲。 -->
+  <LP_Install_LP_Graft_ScaleRed.jobString>Installing red dragonscale subdermal armor.</LP_Install_LP_Graft_ScaleRed.jobString>
+  <!-- 摘除赤龙鳞皮下甲 -->
+  <LP_Remove_LP_Graft_ScaleRed.label>remove red dragonscale subdermal armor</LP_Remove_LP_Graft_ScaleRed.label>
+  <!-- 取出赤龙鳞皮下甲。 -->
+  <LP_Remove_LP_Graft_ScaleRed.description>Take out the red dragonscale subdermal armor.</LP_Remove_LP_Graft_ScaleRed.description>
+  <!-- 正在摘除赤龙鳞皮下甲。 -->
+  <LP_Remove_LP_Graft_ScaleRed.jobString>Removing red dragonscale subdermal armor.</LP_Remove_LP_Graft_ScaleRed.jobString>
+  <!-- 培养赤龙鳞皮下甲 -->
+  <LP_Grow_Graft_ScaleRed.label>culture red dragonscale subdermal armor</LP_Grow_Graft_ScaleRed.label>
+  <!-- 在炼金台用怪物材料培养赤龙鳞皮下甲（嫁接物只能装在活人身上）。 -->
+  <LP_Grow_Graft_ScaleRed.description>Culture red dragonscale subdermal armor from monster materials at the alchemy table (grafts can only be installed in the living).</LP_Grow_Graft_ScaleRed.description>
+  <!-- 正在培养赤龙鳞皮下甲。 -->
+  <LP_Grow_Graft_ScaleRed.jobString>Culturing red dragonscale subdermal armor.</LP_Grow_Graft_ScaleRed.jobString>
+  <!-- 安装白龙鳞皮下甲 -->
+  <LP_Install_LP_Graft_ScaleWhite.label>install white dragonscale subdermal armor</LP_Install_LP_Graft_ScaleWhite.label>
+  <!-- 白龙的鳞片嵌在皮下。躯干附加：利器护甲 +15%，寒冰伤害 −50%，火焰伤害 +20%。同时只能装一件龙鳞皮下甲。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Install_LP_Graft_ScaleWhite.description>White dragon scales embedded under the skin. Torso add-on: sharp armor +15%, cold damage -50%, fire damage +20%. Only one dragonscale subdermal armor at a time. Common tier, doesn't take an attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Install_LP_Graft_ScaleWhite.description>
+  <!-- 正在安装白龙鳞皮下甲。 -->
+  <LP_Install_LP_Graft_ScaleWhite.jobString>Installing white dragonscale subdermal armor.</LP_Install_LP_Graft_ScaleWhite.jobString>
+  <!-- 摘除白龙鳞皮下甲 -->
+  <LP_Remove_LP_Graft_ScaleWhite.label>remove white dragonscale subdermal armor</LP_Remove_LP_Graft_ScaleWhite.label>
+  <!-- 取出白龙鳞皮下甲。 -->
+  <LP_Remove_LP_Graft_ScaleWhite.description>Take out the white dragonscale subdermal armor.</LP_Remove_LP_Graft_ScaleWhite.description>
+  <!-- 正在摘除白龙鳞皮下甲。 -->
+  <LP_Remove_LP_Graft_ScaleWhite.jobString>Removing white dragonscale subdermal armor.</LP_Remove_LP_Graft_ScaleWhite.jobString>
+  <!-- 培养白龙鳞皮下甲 -->
+  <LP_Grow_Graft_ScaleWhite.label>culture white dragonscale subdermal armor</LP_Grow_Graft_ScaleWhite.label>
+  <!-- 在炼金台用怪物材料培养白龙鳞皮下甲（嫁接物只能装在活人身上）。 -->
+  <LP_Grow_Graft_ScaleWhite.description>Culture white dragonscale subdermal armor from monster materials at the alchemy table (grafts can only be installed in the living).</LP_Grow_Graft_ScaleWhite.description>
+  <!-- 正在培养白龙鳞皮下甲。 -->
+  <LP_Grow_Graft_ScaleWhite.jobString>Culturing white dragonscale subdermal armor.</LP_Grow_Graft_ScaleWhite.jobString>
+  <!-- 安装蓝龙鳞皮下甲 -->
+  <LP_Install_LP_Graft_ScaleBlue.label>install blue dragonscale subdermal armor</LP_Install_LP_Graft_ScaleBlue.label>
+  <!-- 蓝龙的鳞片嵌在皮下。躯干附加：利器护甲 +15%，闪电伤害 −50%，强酸伤害 +20%。同时只能装一件龙鳞皮下甲。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Install_LP_Graft_ScaleBlue.description>Blue dragon scales embedded under the skin. Torso add-on: sharp armor +15%, lightning damage -50%, acid damage +20%. Only one dragonscale subdermal armor at a time. Common tier, doesn't take an attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Install_LP_Graft_ScaleBlue.description>
+  <!-- 正在安装蓝龙鳞皮下甲。 -->
+  <LP_Install_LP_Graft_ScaleBlue.jobString>Installing blue dragonscale subdermal armor.</LP_Install_LP_Graft_ScaleBlue.jobString>
+  <!-- 摘除蓝龙鳞皮下甲 -->
+  <LP_Remove_LP_Graft_ScaleBlue.label>remove blue dragonscale subdermal armor</LP_Remove_LP_Graft_ScaleBlue.label>
+  <!-- 取出蓝龙鳞皮下甲。 -->
+  <LP_Remove_LP_Graft_ScaleBlue.description>Take out the blue dragonscale subdermal armor.</LP_Remove_LP_Graft_ScaleBlue.description>
+  <!-- 正在摘除蓝龙鳞皮下甲。 -->
+  <LP_Remove_LP_Graft_ScaleBlue.jobString>Removing blue dragonscale subdermal armor.</LP_Remove_LP_Graft_ScaleBlue.jobString>
+  <!-- 培养蓝龙鳞皮下甲 -->
+  <LP_Grow_Graft_ScaleBlue.label>culture blue dragonscale subdermal armor</LP_Grow_Graft_ScaleBlue.label>
+  <!-- 在炼金台用怪物材料培养蓝龙鳞皮下甲（嫁接物只能装在活人身上）。 -->
+  <LP_Grow_Graft_ScaleBlue.description>Culture blue dragonscale subdermal armor from monster materials at the alchemy table (grafts can only be installed in the living).</LP_Grow_Graft_ScaleBlue.description>
+  <!-- 正在培养蓝龙鳞皮下甲。 -->
+  <LP_Grow_Graft_ScaleBlue.jobString>Culturing blue dragonscale subdermal armor.</LP_Grow_Graft_ScaleBlue.jobString>
+  <!-- 安装黑龙鳞皮下甲 -->
+  <LP_Install_LP_Graft_ScaleBlack.label>install black dragonscale subdermal armor</LP_Install_LP_Graft_ScaleBlack.label>
+  <!-- 黑龙的鳞片嵌在皮下。躯干附加：利器护甲 +15%，强酸伤害 −50%，闪电伤害 +20%。同时只能装一件龙鳞皮下甲。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Install_LP_Graft_ScaleBlack.description>Black dragon scales embedded under the skin. Torso add-on: sharp armor +15%, acid damage -50%, lightning damage +20%. Only one dragonscale subdermal armor at a time. Common tier, doesn't take an attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Install_LP_Graft_ScaleBlack.description>
+  <!-- 正在安装黑龙鳞皮下甲。 -->
+  <LP_Install_LP_Graft_ScaleBlack.jobString>Installing black dragonscale subdermal armor.</LP_Install_LP_Graft_ScaleBlack.jobString>
+  <!-- 摘除黑龙鳞皮下甲 -->
+  <LP_Remove_LP_Graft_ScaleBlack.label>remove black dragonscale subdermal armor</LP_Remove_LP_Graft_ScaleBlack.label>
+  <!-- 取出黑龙鳞皮下甲。 -->
+  <LP_Remove_LP_Graft_ScaleBlack.description>Take out the black dragonscale subdermal armor.</LP_Remove_LP_Graft_ScaleBlack.description>
+  <!-- 正在摘除黑龙鳞皮下甲。 -->
+  <LP_Remove_LP_Graft_ScaleBlack.jobString>Removing black dragonscale subdermal armor.</LP_Remove_LP_Graft_ScaleBlack.jobString>
+  <!-- 培养黑龙鳞皮下甲 -->
+  <LP_Grow_Graft_ScaleBlack.label>culture black dragonscale subdermal armor</LP_Grow_Graft_ScaleBlack.label>
+  <!-- 在炼金台用怪物材料培养黑龙鳞皮下甲（嫁接物只能装在活人身上）。 -->
+  <LP_Grow_Graft_ScaleBlack.description>Culture black dragonscale subdermal armor from monster materials at the alchemy table (grafts can only be installed in the living).</LP_Grow_Graft_ScaleBlack.description>
+  <!-- 正在培养黑龙鳞皮下甲。 -->
+  <LP_Grow_Graft_ScaleBlack.jobString>Culturing black dragonscale subdermal armor.</LP_Grow_Graft_ScaleBlack.jobString>
+  <!-- 安装绿龙鳞皮下甲 -->
+  <LP_Install_LP_Graft_ScaleGreen.label>install green dragonscale subdermal armor</LP_Install_LP_Graft_ScaleGreen.label>
+  <!-- 绿龙的鳞片嵌在皮下。躯干附加：利器护甲 +15%，毒素伤害 −50%，火焰伤害 +20%。同时只能装一件龙鳞皮下甲。普通档，不占调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Install_LP_Graft_ScaleGreen.description>Green dragon scales embedded under the skin. Torso add-on: sharp armor +15%, poison damage -50%, fire damage +20%. Only one dragonscale subdermal armor at a time. Common tier, doesn't take an attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Install_LP_Graft_ScaleGreen.description>
+  <!-- 正在安装绿龙鳞皮下甲。 -->
+  <LP_Install_LP_Graft_ScaleGreen.jobString>Installing green dragonscale subdermal armor.</LP_Install_LP_Graft_ScaleGreen.jobString>
+  <!-- 摘除绿龙鳞皮下甲 -->
+  <LP_Remove_LP_Graft_ScaleGreen.label>remove green dragonscale subdermal armor</LP_Remove_LP_Graft_ScaleGreen.label>
+  <!-- 取出绿龙鳞皮下甲。 -->
+  <LP_Remove_LP_Graft_ScaleGreen.description>Take out the green dragonscale subdermal armor.</LP_Remove_LP_Graft_ScaleGreen.description>
+  <!-- 正在摘除绿龙鳞皮下甲。 -->
+  <LP_Remove_LP_Graft_ScaleGreen.jobString>Removing green dragonscale subdermal armor.</LP_Remove_LP_Graft_ScaleGreen.jobString>
+  <!-- 培养绿龙鳞皮下甲 -->
+  <LP_Grow_Graft_ScaleGreen.label>culture green dragonscale subdermal armor</LP_Grow_Graft_ScaleGreen.label>
+  <!-- 在炼金台用怪物材料培养绿龙鳞皮下甲（嫁接物只能装在活人身上）。 -->
+  <LP_Grow_Graft_ScaleGreen.description>Culture green dragonscale subdermal armor from monster materials at the alchemy table (grafts can only be installed in the living).</LP_Grow_Graft_ScaleGreen.description>
+  <!-- 正在培养绿龙鳞皮下甲。 -->
+  <LP_Grow_Graft_ScaleGreen.jobString>Culturing green dragonscale subdermal armor.</LP_Grow_Graft_ScaleGreen.jobString>
+  <!-- 安装赤龙息腺 -->
+  <LP_Install_LP_Graft_BreathRed.label>install red dragon breath gland</LP_Install_LP_Graft_BreathRed.label>
+  <!-- 赤龙心里剖出的龙息腺，缝在颈部。颈部附加：能力“龙息”（锥形 6 格，敌人受 30 点火焰伤害，冷却 1 天）。副作用：嘴里总冒着余烬，别人对你的印象 −5。同时只能装一件龙息腺。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Install_LP_Graft_BreathRed.description>A breath gland cut from a red dragon's heart, sewn into the neck. Neck add-on: ability "Dragon breath" (6-cell cone, enemies take 30 fire damage, cooldown 1 day). Side effect: always spitting embers, others' opinion of you -5. Only one breath gland at a time. Rare tier, takes 1 attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Install_LP_Graft_BreathRed.description>
+  <!-- 正在安装赤龙息腺。 -->
+  <LP_Install_LP_Graft_BreathRed.jobString>Installing a red dragon breath gland.</LP_Install_LP_Graft_BreathRed.jobString>
+  <!-- 摘除赤龙息腺 -->
+  <LP_Remove_LP_Graft_BreathRed.label>remove red dragon breath gland</LP_Remove_LP_Graft_BreathRed.label>
+  <!-- 取出赤龙息腺。 -->
+  <LP_Remove_LP_Graft_BreathRed.description>Take out the red dragon breath gland.</LP_Remove_LP_Graft_BreathRed.description>
+  <!-- 正在摘除赤龙息腺。 -->
+  <LP_Remove_LP_Graft_BreathRed.jobString>Removing a red dragon breath gland.</LP_Remove_LP_Graft_BreathRed.jobString>
+  <!-- 培养赤龙息腺 -->
+  <LP_Grow_Graft_BreathRed.label>culture red dragon breath gland</LP_Grow_Graft_BreathRed.label>
+  <!-- 在炼金台用怪物材料培养赤龙息腺（嫁接物只能装在活人身上）。 -->
+  <LP_Grow_Graft_BreathRed.description>Culture a red dragon breath gland from monster materials at the alchemy table (grafts can only be installed in the living).</LP_Grow_Graft_BreathRed.description>
+  <!-- 正在培养赤龙息腺。 -->
+  <LP_Grow_Graft_BreathRed.jobString>Culturing a red dragon breath gland.</LP_Grow_Graft_BreathRed.jobString>
+  <!-- 安装白龙息腺 -->
+  <LP_Install_LP_Graft_BreathWhite.label>install white dragon breath gland</LP_Install_LP_Graft_BreathWhite.label>
+  <!-- 白龙心里剖出的龙息腺，缝在颈部。颈部附加：能力“龙息”（锥形 6 格，敌人受 30 点寒冰伤害，冷却 1 天）。副作用：嘴里总冒着余烬，别人对你的印象 −5。同时只能装一件龙息腺。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Install_LP_Graft_BreathWhite.description>A breath gland cut from a white dragon's heart, sewn into the neck. Neck add-on: ability "Dragon breath" (6-cell cone, enemies take 30 cold damage, cooldown 1 day). Side effect: always spitting embers, others' opinion of you -5. Only one breath gland at a time. Rare tier, takes 1 attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Install_LP_Graft_BreathWhite.description>
+  <!-- 正在安装白龙息腺。 -->
+  <LP_Install_LP_Graft_BreathWhite.jobString>Installing a white dragon breath gland.</LP_Install_LP_Graft_BreathWhite.jobString>
+  <!-- 摘除白龙息腺 -->
+  <LP_Remove_LP_Graft_BreathWhite.label>remove white dragon breath gland</LP_Remove_LP_Graft_BreathWhite.label>
+  <!-- 取出白龙息腺。 -->
+  <LP_Remove_LP_Graft_BreathWhite.description>Take out the white dragon breath gland.</LP_Remove_LP_Graft_BreathWhite.description>
+  <!-- 正在摘除白龙息腺。 -->
+  <LP_Remove_LP_Graft_BreathWhite.jobString>Removing a white dragon breath gland.</LP_Remove_LP_Graft_BreathWhite.jobString>
+  <!-- 培养白龙息腺 -->
+  <LP_Grow_Graft_BreathWhite.label>culture white dragon breath gland</LP_Grow_Graft_BreathWhite.label>
+  <!-- 在炼金台用怪物材料培养白龙息腺（嫁接物只能装在活人身上）。 -->
+  <LP_Grow_Graft_BreathWhite.description>Culture a white dragon breath gland from monster materials at the alchemy table (grafts can only be installed in the living).</LP_Grow_Graft_BreathWhite.description>
+  <!-- 正在培养白龙息腺。 -->
+  <LP_Grow_Graft_BreathWhite.jobString>Culturing a white dragon breath gland.</LP_Grow_Graft_BreathWhite.jobString>
+  <!-- 安装蓝龙息腺 -->
+  <LP_Install_LP_Graft_BreathBlue.label>install blue dragon breath gland</LP_Install_LP_Graft_BreathBlue.label>
+  <!-- 蓝龙心里剖出的龙息腺，缝在颈部。颈部附加：能力“龙息”（锥形 6 格，敌人受 30 点闪电伤害，冷却 1 天）。副作用：嘴里总冒着余烬，别人对你的印象 −5。同时只能装一件龙息腺。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Install_LP_Graft_BreathBlue.description>A breath gland cut from a blue dragon's heart, sewn into the neck. Neck add-on: ability "Dragon breath" (6-cell cone, enemies take 30 lightning damage, cooldown 1 day). Side effect: always spitting embers, others' opinion of you -5. Only one breath gland at a time. Rare tier, takes 1 attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Install_LP_Graft_BreathBlue.description>
+  <!-- 正在安装蓝龙息腺。 -->
+  <LP_Install_LP_Graft_BreathBlue.jobString>Installing a blue dragon breath gland.</LP_Install_LP_Graft_BreathBlue.jobString>
+  <!-- 摘除蓝龙息腺 -->
+  <LP_Remove_LP_Graft_BreathBlue.label>remove blue dragon breath gland</LP_Remove_LP_Graft_BreathBlue.label>
+  <!-- 取出蓝龙息腺。 -->
+  <LP_Remove_LP_Graft_BreathBlue.description>Take out the blue dragon breath gland.</LP_Remove_LP_Graft_BreathBlue.description>
+  <!-- 正在摘除蓝龙息腺。 -->
+  <LP_Remove_LP_Graft_BreathBlue.jobString>Removing a blue dragon breath gland.</LP_Remove_LP_Graft_BreathBlue.jobString>
+  <!-- 培养蓝龙息腺 -->
+  <LP_Grow_Graft_BreathBlue.label>culture blue dragon breath gland</LP_Grow_Graft_BreathBlue.label>
+  <!-- 在炼金台用怪物材料培养蓝龙息腺（嫁接物只能装在活人身上）。 -->
+  <LP_Grow_Graft_BreathBlue.description>Culture a blue dragon breath gland from monster materials at the alchemy table (grafts can only be installed in the living).</LP_Grow_Graft_BreathBlue.description>
+  <!-- 正在培养蓝龙息腺。 -->
+  <LP_Grow_Graft_BreathBlue.jobString>Culturing a blue dragon breath gland.</LP_Grow_Graft_BreathBlue.jobString>
+  <!-- 安装黑龙息腺 -->
+  <LP_Install_LP_Graft_BreathBlack.label>install black dragon breath gland</LP_Install_LP_Graft_BreathBlack.label>
+  <!-- 黑龙心里剖出的龙息腺，缝在颈部。颈部附加：能力“龙息”（锥形 6 格，敌人受 30 点强酸伤害，冷却 1 天）。副作用：嘴里总冒着余烬，别人对你的印象 −5。同时只能装一件龙息腺。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Install_LP_Graft_BreathBlack.description>A breath gland cut from a black dragon's heart, sewn into the neck. Neck add-on: ability "Dragon breath" (6-cell cone, enemies take 30 acid damage, cooldown 1 day). Side effect: always spitting embers, others' opinion of you -5. Only one breath gland at a time. Rare tier, takes 1 attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Install_LP_Graft_BreathBlack.description>
+  <!-- 正在安装黑龙息腺。 -->
+  <LP_Install_LP_Graft_BreathBlack.jobString>Installing a black dragon breath gland.</LP_Install_LP_Graft_BreathBlack.jobString>
+  <!-- 摘除黑龙息腺 -->
+  <LP_Remove_LP_Graft_BreathBlack.label>remove black dragon breath gland</LP_Remove_LP_Graft_BreathBlack.label>
+  <!-- 取出黑龙息腺。 -->
+  <LP_Remove_LP_Graft_BreathBlack.description>Take out the black dragon breath gland.</LP_Remove_LP_Graft_BreathBlack.description>
+  <!-- 正在摘除黑龙息腺。 -->
+  <LP_Remove_LP_Graft_BreathBlack.jobString>Removing a black dragon breath gland.</LP_Remove_LP_Graft_BreathBlack.jobString>
+  <!-- 培养黑龙息腺 -->
+  <LP_Grow_Graft_BreathBlack.label>culture black dragon breath gland</LP_Grow_Graft_BreathBlack.label>
+  <!-- 在炼金台用怪物材料培养黑龙息腺（嫁接物只能装在活人身上）。 -->
+  <LP_Grow_Graft_BreathBlack.description>Culture a black dragon breath gland from monster materials at the alchemy table (grafts can only be installed in the living).</LP_Grow_Graft_BreathBlack.description>
+  <!-- 正在培养黑龙息腺。 -->
+  <LP_Grow_Graft_BreathBlack.jobString>Culturing a black dragon breath gland.</LP_Grow_Graft_BreathBlack.jobString>
+  <!-- 安装绿龙息腺 -->
+  <LP_Install_LP_Graft_BreathGreen.label>install green dragon breath gland</LP_Install_LP_Graft_BreathGreen.label>
+  <!-- 绿龙心里剖出的龙息腺，缝在颈部。颈部附加：能力“龙息”（锥形 6 格，敌人受 30 点毒素伤害，冷却 1 天）。副作用：嘴里总冒着余烬，别人对你的印象 −5。同时只能装一件龙息腺。稀有档，占 1 个调谐位。嫁接物只能靠活的血肉供养，装在巫妖身上 3 天就坏死。 -->
+  <LP_Install_LP_Graft_BreathGreen.description>A breath gland cut from a green dragon's heart, sewn into the neck. Neck add-on: ability "Dragon breath" (6-cell cone, enemies take 30 poison damage, cooldown 1 day). Side effect: always spitting embers, others' opinion of you -5. Only one breath gland at a time. Rare tier, takes 1 attunement slot. Grafts can only be sustained by living flesh; installed in a lich they necrotize within 3 days.</LP_Install_LP_Graft_BreathGreen.description>
+  <!-- 正在安装绿龙息腺。 -->
+  <LP_Install_LP_Graft_BreathGreen.jobString>Installing a green dragon breath gland.</LP_Install_LP_Graft_BreathGreen.jobString>
+  <!-- 摘除绿龙息腺 -->
+  <LP_Remove_LP_Graft_BreathGreen.label>remove green dragon breath gland</LP_Remove_LP_Graft_BreathGreen.label>
+  <!-- 取出绿龙息腺。 -->
+  <LP_Remove_LP_Graft_BreathGreen.description>Take out the green dragon breath gland.</LP_Remove_LP_Graft_BreathGreen.description>
+  <!-- 正在摘除绿龙息腺。 -->
+  <LP_Remove_LP_Graft_BreathGreen.jobString>Removing a green dragon breath gland.</LP_Remove_LP_Graft_BreathGreen.jobString>
+  <!-- 培养绿龙息腺 -->
+  <LP_Grow_Graft_BreathGreen.label>culture green dragon breath gland</LP_Grow_Graft_BreathGreen.label>
+  <!-- 在炼金台用怪物材料培养绿龙息腺（嫁接物只能装在活人身上）。 -->
+  <LP_Grow_Graft_BreathGreen.description>Culture a green dragon breath gland from monster materials at the alchemy table (grafts can only be installed in the living).</LP_Grow_Graft_BreathGreen.description>
+  <!-- 正在培养绿龙息腺。 -->
+  <LP_Grow_Graft_BreathGreen.jobString>Culturing a green dragon breath gland.</LP_Grow_Graft_BreathGreen.jobString>
+  <!-- 安装维克那之手 -->
+  <LP_Install_LP_Vecna_Hand.label>install Hand of Vecna</LP_Install_LP_Vecna_Hand.label>
+  <!-- 传说中巫妖神维克那被背叛者砍下的左手，干枯发黑，却还在动。替换左手（必须先截掉自己的左手才能装），部位效率 150%；冒险者力量至少 20；能力“寒冰触”（近身，30 寒冰伤害并降温，冷却 10 秒）和“指挥亡灵”（20 格内一个敌方亡灵为你作战 30 秒，冷却 1 天）。诅咒：每 60 天有 10% 陷入“邪恶意志”杀戮狂暴（巫妖减半）。神器档，占 1 个调谐位；不能叠巫妖肢体强化。拆下来神器就掉在地上，宿主心情 −15、持续 30 天。两件都装在同一个人身上时触发“维克那的意志”：统御上限 +50%，巫妖带死灵之躯时命匣复活 3 天缩到 1 天——但叛徒卡斯会带着卡斯之剑找上门（第一次在 3～7 天后，之后每 30 天）。世上各只有一件：探索公告板传奇委托、迷锁 60 层以后的守卫极少给。 -->
+  <LP_Install_LP_Vecna_Hand.description>The left hand of the lich-god Vecna, cut off by his betrayer, withered and black yet still moving. Replaces the left hand (your own left hand must be amputated first), part efficiency 150%; adventurer Strength at least 20; abilities "Frost touch" (touch, 30 cold damage and lowers temperature, cooldown 10 seconds) and "Command undead" (one enemy undead within 20 cells fights for you for 30 seconds, cooldown 1 day). Curse: every 60 days a 10% chance of an "evil will" murderous rage (halved for liches). Artifact tier, takes 1 attunement slot; can't stack with lich limb reinforcement. Removing it drops the artifact on the ground, and the host gets mood -15 for 30 days. When both pieces are installed in the same person, "Will of Vecna" triggers: command capacity +50%, and for a lich with an undead body, phylactery revival shortens from 3 days to 1, but Kas the Betrayer comes calling with the Sword of Kas (first after 3-7 days, then every 30 days). Only one of each exists in the world: very rarely given by legendary adventure board commissions and mythal guardians past floor 60.</LP_Install_LP_Vecna_Hand.description>
+  <!-- 正在安装维克那之手。 -->
+  <LP_Install_LP_Vecna_Hand.jobString>Installing the Hand of Vecna.</LP_Install_LP_Vecna_Hand.jobString>
+  <!-- 安装维克那之眼 -->
+  <LP_Install_LP_Vecna_Eye.label>install Eye of Vecna</LP_Install_LP_Vecna_Eye.label>
+  <!-- 维克那被剜出的左眼，像一块暗红的宝石。替换左眼，部位效率 150%；黑暗中视物如常（不受光照惩罚）；能力“支配人类”（和夺心魔的支配一样：30 秒内只攻击原来的同伴，冷却 1 天）。诅咒：自己心情 −8（维克那凝视），别人对你的印象 −20。神器档，占 1 个调谐位；不能叠巫妖肢体强化。拆下来神器就掉在地上，宿主心情 −15、持续 30 天。两件都装在同一个人身上时触发“维克那的意志”：统御上限 +50%，巫妖带死灵之躯时命匣复活 3 天缩到 1 天——但叛徒卡斯会带着卡斯之剑找上门（第一次在 3～7 天后，之后每 30 天）。世上各只有一件：探索公告板传奇委托、迷锁 60 层以后的守卫极少给。 -->
+  <LP_Install_LP_Vecna_Eye.description>Vecna's gouged-out left eye, like a dark red gem. Replaces the left eye, part efficiency 150%; sees normally in darkness (no light penalty); ability "Dominate person" (like a mind flayer's domination: only attacks its former companions for 30 seconds, cooldown 1 day). Curse: own mood -8 (Vecna's gaze), others' opinion of you -20. Artifact tier, takes 1 attunement slot; can't stack with lich limb reinforcement. Removing it drops the artifact on the ground, and the host gets mood -15 for 30 days. When both pieces are installed in the same person, "Will of Vecna" triggers: command capacity +50%, and for a lich with an undead body, phylactery revival shortens from 3 days to 1, but Kas the Betrayer comes calling with the Sword of Kas (first after 3-7 days, then every 30 days). Only one of each exists in the world: very rarely given by legendary adventure board commissions and mythal guardians past floor 60.</LP_Install_LP_Vecna_Eye.description>
+  <!-- 正在安装维克那之眼。 -->
+  <LP_Install_LP_Vecna_Eye.jobString>Installing the Eye of Vecna.</LP_Install_LP_Vecna_Eye.jobString>
+</LanguageData>

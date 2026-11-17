@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 守序 -->
+  <LP_Order.degreeDatas.0.label>lawful</LP_Order.degreeDatas.0.label>
+  <!-- {PAWN_nameDef}相信规矩、秩序和说到做到。\n\n- 作息表“工作”时段内全局工作速度 +5%\n- 不会发生纵火、乱跑、出走类精神崩溃\n- 殖民地有领袖或头衔持有者：心情 +3「秩序井然」\n- 自己的作息表全是“任意”：心情 -3「毫无章法」 -->
+  <LP_Order.degreeDatas.0.description>{PAWN_nameDef} believes in rules, order and keeping one's word.\n\n- Global work speed +5% during "work" hours on the schedule\n- Never has fire-starting, wandering or running-away mental breaks\n- The colony has a leader or title holder: mood +3 "well-ordered"\n- Own schedule is all "anything": mood -3 "no order at all"</LP_Order.degreeDatas.0.description>
+  <!-- 混乱 -->
+  <LP_Order.degreeDatas.1.label>chaotic</LP_Order.degreeDatas.1.label>
+  <!-- {PAWN_nameDef}讨厌被管着，想到什么就做什么。\n\n- 灵感出现的几率 ×1.5\n- 连续征召超过 6 小时：心情 -4「被管束」 -->
+  <LP_Order.degreeDatas.1.description>{PAWN_nameDef} hates being controlled and does whatever comes to mind.\n\n- Inspiration chance ×1.5\n- Drafted continuously for more than 6 hours: mood -4 "restrained"</LP_Order.degreeDatas.1.description>
+  <!-- 性格特性 -->
+  <LP_Order.modExtensions.0.kind>personality trait</LP_Order.modExtensions.0.kind>
+  <!-- 仁善 -->
+  <LP_Morality.degreeDatas.0.label>benevolent</LP_Morality.degreeDatas.0.label>
+  <!-- {PAWN_nameDef}心地善良，见不得别人受苦。\n\n- 救援倒地的人、给囚犯包扎：心情 +2「善举」\n- 用制伏武器打倒敌人（不伤性命）：心情 +2「手下留情」\n- 处决、摘取器官带来的坏心情之外再 -5「良心不安」\n- 殖民地有死灵造物：心情 -2\n- 装了 VPE 时，牧师路径的神圣伤害 +15%\n- 不会和心理变态、嗜血、巫妖信徒同时出现；成为巫妖后失去这个特性 -->
+  <LP_Morality.degreeDatas.0.description>{PAWN_nameDef} is kind-hearted and can't bear to see others suffer.\n\n- Rescuing downed people, tending prisoners: mood +2 "good deed"\n- Downing an enemy with a nonlethal weapon (sparing their life): mood +2 "showed mercy"\n- On top of the bad mood from executions and organ harvesting, another -5 "guilty conscience"\n- The colony has necromantic constructs: mood -2\n- With VPE, cleric path holy damage +15%\n- Never appears together with psychopath, bloodlust or lich devotee; lost upon becoming a lich</LP_Morality.degreeDatas.0.description>
+  <!-- 邪恶 -->
+  <LP_Morality.degreeDatas.1.label>evil</LP_Morality.degreeDatas.1.label>
+  <!-- {PAWN_nameDef}只在乎自己想要什么，别人的痛苦不算什么。\n\n- 处决、摘取器官、奴役不会让{PAWN_objective}心情变差\n- 压制奴隶的效果 +20%\n- 殖民地有巫妖：心情 +2「黑暗庇护」\n- 不会和善良、不死猎人同时出现 -->
+  <LP_Morality.degreeDatas.1.description>{PAWN_nameDef} only cares about what they want; others' suffering means nothing.\n\n- Executions, organ harvesting and enslavement don't worsen {PAWN_objective}'s mood\n- Slave suppression effect +20%\n- The colony has a lich: mood +2 "dark protection"\n- Never appears together with benevolent or undead hunter</LP_Morality.degreeDatas.1.description>
+  <!-- 性格特性 -->
+  <LP_Morality.modExtensions.0.kind>personality trait</LP_Morality.modExtensions.0.kind>
+  <!-- 惧龙 -->
+  <LP_DragonStance.degreeDatas.0.label>dragon-fearing</LP_DragonStance.degreeDatas.0.label>
+  <!-- {PAWN_nameDef}小时候见过龙烧掉一整座村子。\n\n- 地图上有龙：心情 -6「龙威压顶」\n- 龙在 10 格内时，每隔几秒有 10% 的几率掉头逃开\n- 五色真龙不会有这个特性 -->
+  <LP_DragonStance.degreeDatas.0.description>As a child {PAWN_nameDef} saw a dragon burn down a whole village.\n\n- A dragon on the map: mood -6 "dragon's dread"\n- With a dragon within 10 cells, a 10% chance every few seconds to turn and flee\n- Chromatic true dragons never get this trait</LP_DragonStance.degreeDatas.0.description>
+  <!-- <color=#7FBF6A>屠龙志士</color> -->
+  <LP_DragonStance.degreeDatas.color7FBF6Acolor.label>&lt;color=#7FBF6A&gt;Dragonslayer&lt;/color&gt;</LP_DragonStance.degreeDatas.color7FBF6Acolor.label>
+  <!-- {PAWN_nameDef}发过誓，这辈子要亲手斩下一条龙。\n\n- 对龙的伤害 +20%（和其他类型伤害加成合计最多 +60%）\n- 击杀龙：心情 +10，持续 10 天 -->
+  <LP_DragonStance.degreeDatas.color7FBF6Acolor.description>{PAWN_nameDef} swore to personally slay a dragon in this lifetime.\n\n- +20% damage against dragons (up to +60% combined with other type damage bonuses)\n- Killing a dragon: mood +10 for 10 days</LP_DragonStance.degreeDatas.color7FBF6Acolor.description>
+  <!-- 性格特性 -->
+  <LP_DragonStance.modExtensions.0.kind>personality trait</LP_DragonStance.modExtensions.0.kind>
+  <!-- 巨人仆从 -->
+  <LP_GiantStance.degreeDatas.0.label>giant's servant</LP_GiantStance.degreeDatas.0.label>
+  <!-- {PAWN_nameDef}在巨人的宅邸里长大，跟在大个子身边才踏实。\n\n- 在体型 1.5 以上的殖民者 3 格内干活，全局工作速度 +10%\n- 对体型 1.5 以上的殖民者好感 +15 -->
+  <LP_GiantStance.degreeDatas.0.description>{PAWN_nameDef} grew up in a giant's mansion and only feels secure next to big folk.\n\n- Working within 3 cells of a colonist with body size 1.5+: global work speed +10%\n- Opinion +15 of colonists with body size 1.5+</LP_GiantStance.degreeDatas.0.description>
+  <!-- <color=#7FBF6A>巨人杀手</color> -->
+  <LP_GiantStance.degreeDatas.color7FBF6Acolor.label>&lt;color=#7FBF6A&gt;Giant Slayer&lt;/color&gt;</LP_GiantStance.degreeDatas.color7FBF6Acolor.label>
+  <!-- {PAWN_nameDef}专门学过怎么对付比自己高三倍的东西。\n\n- 近战攻击体型 1.5 以上的目标伤害 +20%（和其他类型伤害加成合计最多 +60%）\n- 躲闪体型 1.5 以上敌人的近战攻击 +10%\n- 对巨人好感 -10\n- 巨人种族不会有这个特性 -->
+  <LP_GiantStance.degreeDatas.color7FBF6Acolor.description>{PAWN_nameDef} has specifically learned how to deal with things three times their height.\n\n- +20% melee damage against targets with body size 1.5+ (up to +60% combined with other type damage bonuses)\n- +10% dodge against melee attacks from enemies with body size 1.5+\n- Opinion -10 of giants\n- Giant races never get this trait</LP_GiantStance.degreeDatas.color7FBF6Acolor.description>
+  <!-- 性格特性 -->
+  <LP_GiantStance.modExtensions.0.kind>personality trait</LP_GiantStance.modExtensions.0.kind>
+  <!-- 巫妖信徒 -->
+  <LP_UndeadStance.degreeDatas.0.label>lich devotee</LP_UndeadStance.degreeDatas.0.label>
+  <!-- {PAWN_nameDef}相信不朽的巫妖才是这个世界真正的主人。\n\n- 殖民地有巫妖：心情 +4 -->
+  <LP_UndeadStance.degreeDatas.0.description>{PAWN_nameDef} believes undying liches are the true masters of this world.\n\n- The colony has a lich: mood +4</LP_UndeadStance.degreeDatas.0.description>
+  <!-- <color=#7FBF6A>不死猎人</color> -->
+  <LP_UndeadStance.degreeDatas.color7FBF6Acolor.label>&lt;color=#7FBF6A&gt;Undead Hunter&lt;/color&gt;</LP_UndeadStance.degreeDatas.color7FBF6Acolor.label>
+  <!-- {PAWN_nameDef}把一辈子都花在了让死者安息上。\n\n- 对不死生物的伤害 +20%（和其他类型伤害加成合计最多 +60%）\n- 殖民地有巫妖或死灵造物：心情 -6\n- 巫妖和不死种族不会有这个特性 -->
+  <LP_UndeadStance.degreeDatas.color7FBF6Acolor.description>{PAWN_nameDef} has spent a lifetime laying the dead to rest.\n\n- +20% damage against undead (up to +60% combined with other type damage bonuses)\n- The colony has a lich or necromantic constructs: mood -6\n- Liches and undead races never get this trait</LP_UndeadStance.degreeDatas.color7FBF6Acolor.description>
+  <!-- 性格特性 -->
+  <LP_UndeadStance.modExtensions.0.kind>personality trait</LP_UndeadStance.modExtensions.0.kind>
+  <!-- 世界公民 -->
+  <LP_RaceAttitude.degreeDatas.0.label>citizen of the world</LP_RaceAttitude.degreeDatas.0.label>
+  <!-- {PAWN_nameDef}走过很多地方，和哪个种族都处得来。\n\n- 不受种族关系的负面心情影响\n- 殖民地每多一个种族，心情 +1（最多 +4） -->
+  <LP_RaceAttitude.degreeDatas.0.description>{PAWN_nameDef} has been to many places and gets along with every race.\n\n- Unaffected by negative moods from racial relations\n- Mood +1 for each additional race in the colony (up to +4)</LP_RaceAttitude.degreeDatas.0.description>
+  <!-- 纯血至上 -->
+  <LP_RaceAttitude.degreeDatas.1.label>pureblood supremacist</LP_RaceAttitude.degreeDatas.1.label>
+  <!-- {PAWN_nameDef}觉得只有自己的种族靠得住。\n\n- 对同种族的人好感 +10，对其他种族 -10\n- 本种族在殖民地占多数：心情 +3，否则 -3 -->
+  <LP_RaceAttitude.degreeDatas.1.description>{PAWN_nameDef} thinks only their own race can be trusted.\n\n- Opinion +10 of the same race, -10 of other races\n- Own race is the colony majority: mood +3, otherwise -3</LP_RaceAttitude.degreeDatas.1.description>
+  <!-- 性格特性 -->
+  <LP_RaceAttitude.modExtensions.0.kind>personality trait</LP_RaceAttitude.modExtensions.0.kind>
+  <!-- <color=#7FBF6A>殖巢幸存者</color> -->
+  <LP_HiveSurvivor.degreeDatas.color7FBF6Acolor.label>&lt;color=#7FBF6A&gt;Colony Survivor&lt;/color&gt;</LP_HiveSurvivor.degreeDatas.color7FBF6Acolor.label>
+  <!-- {PAWN_nameDef}从夺心魔的殖巢里活着逃了出来。\n\n- 心智抗性 +50%\n- 地图上有夺心魔：心情 -4\n- 对吉斯洋基好感 +10\n- “逃离殖巢”开局的人类俘虏必带\n- 夺心魔和半夺心魔不会有这个特性 -->
+  <LP_HiveSurvivor.degreeDatas.color7FBF6Acolor.description>{PAWN_nameDef} escaped a mind flayer colony alive.\n\n- Mind resistance +50%\n- Mind flayers on the map: mood -4\n- Opinion +10 of githyanki\n- Always present on the human captive of the "escape the colony" start\n- Mind flayers and half-illithids never get this trait</LP_HiveSurvivor.degreeDatas.color7FBF6Acolor.description>
+  <!-- 性格特性 -->
+  <LP_HiveSurvivor.modExtensions.0.kind>personality trait</LP_HiveSurvivor.modExtensions.0.kind>
+  <!-- 吉斯流亡者 -->
+  <LP_GithExile.degreeDatas.0.label>gith exile</LP_GithExile.degreeDatas.0.label>
+  <!-- {PAWN_nameDef}背弃了巫妖女王维拉基斯。\n\n- 不再因为见到殖民地的巫妖而高兴（替代吉斯洋基原有的巫妖心情）\n- 对巫妖好感 -10\n- 只会出现在吉斯洋基身上 -->
+  <LP_GithExile.degreeDatas.0.description>{PAWN_nameDef} has turned away from the lich-queen Vlaakith.\n\n- No longer happy to see the colony's lich (replaces the githyanki's original lich mood)\n- Opinion -10 of liches\n- Only appears on githyanki</LP_GithExile.degreeDatas.0.description>
+  <!-- 性格特性 -->
+  <LP_GithExile.modExtensions.0.kind>personality trait</LP_GithExile.modExtensions.0.kind>
+  <!-- <color=#7FBF6A>战术家</color> -->
+  <LP_Tactician.degreeDatas.color7FBF6Acolor.label>&lt;color=#7FBF6A&gt;Tactician&lt;/color&gt;</LP_Tactician.degreeDatas.color7FBF6Acolor.label>
+  <!-- {PAWN_nameDef}天生会看战场。\n\n- 被征召时，4 格内的友军近战与射击命中 +5%（多个战术家不叠加）\n- 装了 VPE 时：战士路径经验 +25%（和背景、魔网之子等的经验加成取较高，不叠加） -->
+  <LP_Tactician.degreeDatas.color7FBF6Acolor.description>{PAWN_nameDef} was born to read a battlefield.\n\n- While drafted, allies within 4 cells get +5% melee and shooting hit (multiple tacticians don't stack)\n- With VPE: fighter path XP +25% (takes the higher of this and XP bonuses from backstories, Child of the Weave etc., no stacking)</LP_Tactician.degreeDatas.color7FBF6Acolor.description>
+  <!-- 性格特性 -->
+  <LP_Tactician.modExtensions.0.kind>personality trait</LP_Tactician.modExtensions.0.kind>
+  <!-- <color=#7FBF6A>奥术天赋</color> -->
+  <LP_ArcaneGift.degreeDatas.color7FBF6Acolor.label>&lt;color=#7FBF6A&gt;Arcane Gift&lt;/color&gt;</LP_ArcaneGift.degreeDatas.color7FBF6Acolor.label>
+  <!-- {PAWN_nameDef}对魔网的流动格外敏感。\n\n- 装了 VPE 时：法师路径经验 +25%（与其他经验加成取较高），心灵熵消耗 -10%\n- 没装 VPE 时：心灵敏感度 +10%\n- 不会和狂野魔法同时出现 -->
+  <LP_ArcaneGift.degreeDatas.color7FBF6Acolor.description>{PAWN_nameDef} is especially sensitive to the flow of the Weave.\n\n- With VPE: wizard path XP +25% (takes the higher of this and other XP bonuses), neural heat cost -10%\n- Without VPE: psychic sensitivity +10%\n- Never appears together with Wild Magic</LP_ArcaneGift.degreeDatas.color7FBF6Acolor.description>
+  <!-- 性格特性 -->
+  <LP_ArcaneGift.modExtensions.0.kind>personality trait</LP_ArcaneGift.modExtensions.0.kind>
+  <!-- <color=#7FBF6A>狂野魔法</color> -->
+  <LP_WildMagic.degreeDatas.color7FBF6Acolor.label>&lt;color=#7FBF6A&gt;Wild Magic&lt;/color&gt;</LP_WildMagic.degreeDatas.color7FBF6Acolor.label>
+  <!-- {PAWN_nameDef}身上的魔力从来不太听话。\n\n- 装了 VPE 时：每次施放能力有 5% 的几率引发魔力浪涌；法术伤害 +10%\n- 没装 VPE 时：每天随机一次小浪涌\n- 浪涌共 12 种：隐身 10 秒、脚下长花、敌人头上落下小火球、全队治疗 5 点、召唤一只友善的鸡、心灵熵清空、移速 +50% 1 小时、获得一次灵感、周围敌人眩晕 2 秒；或者自己身上着小火、皮肤变绿 1 天、原地发呆 5 秒。都不会致命\n- 不会和奥术天赋、魔法恐惧同时出现 -->
+  <LP_WildMagic.degreeDatas.color7FBF6Acolor.description>The magic in {PAWN_nameDef} never quite behaves.\n\n- With VPE: each ability cast has a 5% chance to trigger a wild magic surge; spell damage +10%\n- Without VPE: one small random surge per day\n- 12 surges in total: invisible for 10 seconds, flowers grow underfoot, small fireballs fall on enemies' heads, the whole team heals 5, summon a friendly chicken, neural heat cleared, move speed +50% for 1 hour, gain an inspiration, nearby enemies stunned for 2 seconds; or a small fire on yourself, skin turns green for 1 day, zone out in place for 5 seconds. None are lethal\n- Never appears together with Arcane Gift or magic-fearing</LP_WildMagic.degreeDatas.color7FBF6Acolor.description>
+  <!-- 性格特性 -->
+  <LP_WildMagic.modExtensions.0.kind>personality trait</LP_WildMagic.modExtensions.0.kind>
+  <!-- <color=#7FBF6A>机械迷</color> -->
+  <LP_Tinkerer.degreeDatas.color7FBF6Acolor.label>&lt;color=#7FBF6A&gt;Gearhead&lt;/color&gt;</LP_Tinkerer.degreeDatas.color7FBF6Acolor.label>
+  <!-- {PAWN_nameDef}看见齿轮就挪不开眼。\n\n- 修理建筑速度 +20%\n- 火器射击冷却 -5% -->
+  <LP_Tinkerer.degreeDatas.color7FBF6Acolor.description>{PAWN_nameDef} can't take their eyes off gears.\n\n- Building repair speed +20%\n- Firearm shooting cooldown -5%</LP_Tinkerer.degreeDatas.color7FBF6Acolor.description>
+  <!-- 性格特性 -->
+  <LP_Tinkerer.modExtensions.0.kind>personality trait</LP_Tinkerer.modExtensions.0.kind>
+  <!-- <color=#7FBF6A>自然之子</color> -->
+  <LP_NatureBond.degreeDatas.color7FBF6Acolor.label>&lt;color=#7FBF6A&gt;Child of Nature&lt;/color&gt;</LP_NatureBond.degreeDatas.color7FBF6Acolor.label>
+  <!-- {PAWN_nameDef}在林子里比在屋里自在。\n\n- 待在户外：心情 +2\n- 驯服、训练动物的成功率 +15%\n- 装了 VPE 时：德鲁伊路径经验 +25%（与其他经验加成取较高） -->
+  <LP_NatureBond.degreeDatas.color7FBF6Acolor.description>{PAWN_nameDef} is more at ease in the woods than indoors.\n\n- Outdoors: mood +2\n- Taming and training animals success +15%\n- With VPE: druid path XP +25% (takes the higher of this and other XP bonuses)</LP_NatureBond.degreeDatas.color7FBF6Acolor.description>
+  <!-- 性格特性 -->
+  <LP_NatureBond.modExtensions.0.kind>personality trait</LP_NatureBond.modExtensions.0.kind>
+  <!-- 魔法恐惧 -->
+  <LP_Magephobe.degreeDatas.0.label>magic-fearing</LP_Magephobe.degreeDatas.0.label>
+  <!-- {PAWN_nameDef}不信任任何会施法的人。\n\n- 对有灵能、会施法的人好感 -10\n- 被别人施加增益法术：心情 -3\n- 受到敌方法术的伤害 -10% -->
+  <LP_Magephobe.degreeDatas.0.description>{PAWN_nameDef} doesn't trust anyone who can cast spells.\n\n- Opinion -10 of psychically gifted people and spellcasters\n- Receiving a buff spell from someone: mood -3\n- Damage taken from enemy spells -10%</LP_Magephobe.degreeDatas.0.description>
+  <!-- 性格特性 -->
+  <LP_Magephobe.modExtensions.0.kind>personality trait</LP_Magephobe.modExtensions.0.kind>
+  <!-- 秘法上瘾 -->
+  <LP_ArcaneCraving.degreeDatas.0.label>arcane addict</LP_ArcaneCraving.degreeDatas.0.label>
+  <!-- {PAWN_nameDef}迷上了魔法流过身体的感觉。\n\n- 超过 5 天没用过魔法药水或魔法卷轴：心情 -6「秘法渴求」\n- 用了一瓶魔法药水或一张魔法卷轴：心情 +4，持续 2 天 -->
+  <LP_ArcaneCraving.degreeDatas.0.description>{PAWN_nameDef} is hooked on the feeling of magic flowing through the body.\n\n- More than 5 days without using a magic potion or magic scroll: mood -6 "arcane craving"\n- Using a magic potion or magic scroll: mood +4 for 2 days</LP_ArcaneCraving.degreeDatas.0.description>
+  <!-- 性格特性 -->
+  <LP_ArcaneCraving.modExtensions.0.kind>personality trait</LP_ArcaneCraving.modExtensions.0.kind>
+  <!-- <color=#7FBF6A>寻宝狂</color> -->
+  <LP_TreasureHunter.degreeDatas.color7FBF6Acolor.label>&lt;color=#7FBF6A&gt;Treasure Hunter&lt;/color&gt;</LP_TreasureHunter.degreeDatas.color7FBF6Acolor.label>
+  <!-- {PAWN_nameDef}听到“宝藏”两个字就坐不住。\n\n- 法师塔坠落、进入迷锁地牢：心情 +5「冒险的召唤」\n- 拆除古代遗迹多得 20% 材料\n- 有寻宝狂在迷锁地牢里时，地牢的宝物有 10% 的几率多出一件 -->
+  <LP_TreasureHunter.degreeDatas.color7FBF6Acolor.description>{PAWN_nameDef} can't sit still at the word "treasure".\n\n- Wizard tower crash, entering a mythal dungeon: mood +5 "call of adventure"\n- Deconstructing ancient ruins yields 20% more material\n- With a treasure hunter in a mythal dungeon, the dungeon's treasure has a 10% chance of one extra item</LP_TreasureHunter.degreeDatas.color7FBF6Acolor.description>
+  <!-- 性格特性 -->
+  <LP_TreasureHunter.modExtensions.0.kind>personality trait</LP_TreasureHunter.modExtensions.0.kind>
+  <!-- 位面错乱 -->
+  <LP_PlaneTouched.degreeDatas.0.label>planar dislocation</LP_PlaneTouched.degreeDatas.0.label>
+  <!-- {PAWN_nameDef}曾在两个位面之间迷失了很久。\n\n- 位面裂隙里钻出来的野兽不会主动攻击{PAWN_objective}\n- 每 10～15 天会出神 1 小时\n- 传送类能力冷却 -20% -->
+  <LP_PlaneTouched.degreeDatas.0.description>{PAWN_nameDef} was once lost between two planes for a long time.\n\n- Beasts crawling out of planar rifts won't attack {PAWN_objective} on their own\n- Falls into a 1-hour trance every 10-15 days\n- Teleport-type ability cooldowns -20%</LP_PlaneTouched.degreeDatas.0.description>
+  <!-- 性格特性 -->
+  <LP_PlaneTouched.modExtensions.0.kind>personality trait</LP_PlaneTouched.modExtensions.0.kind>
+  <!-- <color=#D05050>复仇亡魂</color> -->
+  <LP_Revenant.degreeDatas.colorD05050color.label>&lt;color=#D05050&gt;Revenant&lt;/color&gt;</LP_Revenant.degreeDatas.colorD05050color.label>
+  <!-- {PAWN_nameDef}发过血誓：害死{PAWN_objective}的人，一个也跑不掉。\n\n- 被敌对派系的人杀死、凶手还活着时：12 小时后在尸体处复活（伤势全愈，带「亡魂之躯」）；尸体被焚毁或不在了就不能复活。复活后冷却 60 天\n- 对凶手所在派系的伤害 +30%（和其他类型伤害加成合计最多 +60%）\n- 凶手和{PAWN_objective}在同一张地图上时不能隐身\n- 亲手杀死凶手：一次获得升到下一级所需经验的 50%，特性变为「安息之魂」\n\n「亡魂之躯」：受到治疗的效果 -50%、自然愈合 -30%、不会饿死但吃东西没有好心情；殖民者对{PAWN_objective}好感 -10（仁善的人再 -5）。 -->
+  <LP_Revenant.degreeDatas.colorD05050color.description>{PAWN_nameDef} swore a blood oath: whoever killed {PAWN_objective} won't get away, not a single one.\n\n- When killed by someone from a hostile faction and the killer is still alive: revives at the corpse after 12 hours (fully healed, with "revenant body"); can't revive if the corpse is burned or gone. Cooldown 60 days after reviving\n- +30% damage against the killer's faction (up to +60% combined with other type damage bonuses)\n- The killer can't turn invisible while on the same map as {PAWN_objective}\n- Personally killing the killer: gains 50% of the XP needed for the next level at once, and the trait becomes "Soul at Rest"\n\n"Revenant body": healing received -50%, natural healing -30%, never starves but gets no good mood from eating; colonists' opinion of {PAWN_objective} -10 (another -5 for the benevolent).</LP_Revenant.degreeDatas.colorD05050color.description>
+  <!-- <color=#7FBF6A>安息之魂</color> -->
+  <LP_Revenant.degreeDatas.color7FBF6Acolor.label>&lt;color=#7FBF6A&gt;Soul at Rest&lt;/color&gt;</LP_Revenant.degreeDatas.color7FBF6Acolor.label>
+  <!-- {PAWN_nameDef}的血仇已经报了，亡魂终于安息。\n\n- 对昔日凶手所在派系的伤害 +15%（和其他类型伤害加成合计最多 +60%）\n- 不再死后复活 -->
+  <LP_Revenant.degreeDatas.color7FBF6Acolor.description>{PAWN_nameDef}'s blood feud has been avenged, and the revenant finally rests.\n\n- +15% damage against the former killer's faction (up to +60% combined with other type damage bonuses)\n- No longer revives after death</LP_Revenant.degreeDatas.color7FBF6Acolor.description>
+  <!-- 诅咒之力 -->
+  <LP_Revenant.modExtensions.0.kind>cursed power</LP_Revenant.modExtensions.0.kind>
+  <!-- <color=#D05050>兽化症·狼</color> -->
+  <LP_Lycanthrope.degreeDatas.colorD05050color-0.label>&lt;color=#D05050&gt;Lycanthropy: Wolf&lt;/color&gt;</LP_Lycanthrope.degreeDatas.colorD05050color-0.label>
+  <!-- {PAWN_nameDef}的血里住着一头狼。\n\n- 每 10～15 天、或者血量低于 30% 时，强制化身狼形 6 小时：近战伤害 ×2、移动速度 +1、每小时恢复 10 点伤势；非银、非魔法武器造成的伤害 -50%（法术、神术不减）\n- 化身期间会狂暴地扑向最近的敌人；附近没有敌人时有 10% 的几率攻击殖民者和家畜\n- 冒险者 10 级起「驯服野性」：不再强制化身、不再失控，可以每天主动化身一次\n- 化身时咬伤别人有 5% 的几率传染（对方已有强力特性时不会） -->
+  <LP_Lycanthrope.degreeDatas.colorD05050color-0.description>A wolf lives in {PAWN_nameDef}'s blood.\n\n- Every 10-15 days, or when health drops below 30%, forcibly transforms into wolf form for 6 hours: melee damage ×2, move speed +1, heals 10 injury per hour; damage from non-silver, non-magic weapons -50% (spells and divine magic not reduced)\n- While transformed, berserkly lunges at the nearest enemy; with no enemies nearby, a 10% chance to attack colonists and livestock\n- From adventurer level 10, "Tame the wildness": no more forced transformation or loss of control, and can transform voluntarily once a day\n- Biting others while transformed has a 5% chance to infect them (not if they already have a power trait)</LP_Lycanthrope.degreeDatas.colorD05050color-0.description>
+  <!-- <color=#D05050>兽化症·熊</color> -->
+  <LP_Lycanthrope.degreeDatas.colorD05050color-1.label>&lt;color=#D05050&gt;Lycanthropy: Bear&lt;/color&gt;</LP_Lycanthrope.degreeDatas.colorD05050color-1.label>
+  <!-- {PAWN_nameDef}的血里住着一头熊。\n\n- 每 10～15 天、或者血量低于 30% 时，强制化身熊形 6 小时：近战伤害 ×2、移动速度 +1、每小时恢复 10 点伤势；非银、非魔法武器造成的伤害 -50%（法术、神术不减）\n- 化身期间会狂暴地扑向最近的敌人；附近没有敌人时有 10% 的几率攻击殖民者和家畜\n- 冒险者 10 级起「驯服野性」：不再强制化身、不再失控，可以每天主动化身一次\n- 化身时咬伤别人有 5% 的几率传染（对方已有强力特性时不会） -->
+  <LP_Lycanthrope.degreeDatas.colorD05050color-1.description>A bear lives in {PAWN_nameDef}'s blood.\n\n- Every 10-15 days, or when health drops below 30%, forcibly transforms into bear form for 6 hours: melee damage ×2, move speed +1, heals 10 injury per hour; damage from non-silver, non-magic weapons -50% (spells and divine magic not reduced)\n- While transformed, berserkly lunges at the nearest enemy; with no enemies nearby, a 10% chance to attack colonists and livestock\n- From adventurer level 10, "Tame the wildness": no more forced transformation or loss of control, and can transform voluntarily once a day\n- Biting others while transformed has a 5% chance to infect them (not if they already have a power trait)</LP_Lycanthrope.degreeDatas.colorD05050color-1.description>
+  <!-- <color=#D05050>兽化症·虎</color> -->
+  <LP_Lycanthrope.degreeDatas.colorD05050color-2.label>&lt;color=#D05050&gt;Lycanthropy: Tiger&lt;/color&gt;</LP_Lycanthrope.degreeDatas.colorD05050color-2.label>
+  <!-- {PAWN_nameDef}的血里住着一头虎。\n\n- 每 10～15 天、或者血量低于 30% 时，强制化身虎形 6 小时：近战伤害 ×2、移动速度 +1、每小时恢复 10 点伤势；非银、非魔法武器造成的伤害 -50%（法术、神术不减）\n- 化身期间会狂暴地扑向最近的敌人；附近没有敌人时有 10% 的几率攻击殖民者和家畜\n- 冒险者 10 级起「驯服野性」：不再强制化身、不再失控，可以每天主动化身一次\n- 化身时咬伤别人有 5% 的几率传染（对方已有强力特性时不会） -->
+  <LP_Lycanthrope.degreeDatas.colorD05050color-2.description>A tiger lives in {PAWN_nameDef}'s blood.\n\n- Every 10-15 days, or when health drops below 30%, forcibly transforms into tiger form for 6 hours: melee damage ×2, move speed +1, heals 10 injury per hour; damage from non-silver, non-magic weapons -50% (spells and divine magic not reduced)\n- While transformed, berserkly lunges at the nearest enemy; with no enemies nearby, a 10% chance to attack colonists and livestock\n- From adventurer level 10, "Tame the wildness": no more forced transformation or loss of control, and can transform voluntarily once a day\n- Biting others while transformed has a 5% chance to infect them (not if they already have a power trait)</LP_Lycanthrope.degreeDatas.colorD05050color-2.description>
+  <!-- 诅咒之力 -->
+  <LP_Lycanthrope.modExtensions.0.kind>cursed power</LP_Lycanthrope.modExtensions.0.kind>
+  <!-- <color=#D05050>远域之触</color> -->
+  <LP_FarRealmTouched.degreeDatas.colorD05050color.label>&lt;color=#D05050&gt;Far-Realm Touch&lt;/color&gt;</LP_FarRealmTouched.degreeDatas.colorD05050color.label>
+  <!-- 群星之外的东西碰过{PAWN_nameDef}的心智，留下了一道缝。\n\n- 心灵敏感度 +40%，心灵熵上限 +20\n- 能力「心灵冲击」：前方 5 格锥形内的敌人眩晕 2 秒并受到 15 点灵能伤害，每天 3 次\n- 地图上出现敌对的夺心魔时，会先一步发出警告\n- 代价：每 5～8 天一次「远域低语」——出神 2 小时，身边 6 格内的人心情 -2；精神崩溃阈值 +5%\n- 染上的途径：被心灵震爆打倒（5%）、“逃离殖巢”开局（5%）、获得耐瑟启迪时（1%），都要求还没有强力特性 -->
+  <LP_FarRealmTouched.degreeDatas.colorD05050color.description>Something from beyond the stars touched {PAWN_nameDef}'s mind and left a crack.\n\n- Psychic sensitivity +40%, max neural heat +20\n- Ability "Psychic jolt": enemies in a 5-cell cone ahead are stunned for 2 seconds and take 15 psychic damage, 3 per day\n- Gives an early warning when hostile mind flayers appear on the map\n- Cost: "far-realm whispers" every 5-8 days: a 2-hour trance, people within 6 cells get mood -2; mental break threshold +5%\n- Ways to catch it: knocked out by a psychic blast (5%), the "escape the colony" start (5%), gaining Netherese insight (1%); all require having no power trait yet</LP_FarRealmTouched.degreeDatas.colorD05050color.description>
+  <!-- 诅咒之力 -->
+  <LP_FarRealmTouched.modExtensions.0.kind>cursed power</LP_FarRealmTouched.modExtensions.0.kind>
+</LanguageData>

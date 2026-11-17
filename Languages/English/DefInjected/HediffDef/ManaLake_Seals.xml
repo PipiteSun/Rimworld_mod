@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 湖音回响 -->
+  <LP_LS_Echo.label>lake echoes</LP_LS_Echo.label>
+  <!-- 吸收湖印结晶失败，耳边一直回响着湖水声：意识 -10%。 -->
+  <LP_LS_Echo.description>Failed to absorb a seal crystal; the sound of lake water keeps echoing in the ears: consciousness -10%.</LP_LS_Echo.description>
+  <!-- 净化饮食 -->
+  <LP_LS_Purified.label>purify food and drink</LP_LS_Purified.label>
+  <!-- 湖印的净化：不会食物中毒。 -->
+  <LP_LS_Purified.description>Purified by a lake seal: no food poisoning.</LP_LS_Purified.description>
+  <!-- 暗视术 -->
+  <LP_LS_Darkvision.label>darkvision</LP_LS_Darkvision.label>
+  <!-- 湖印的暗视：无视黑暗对工作和瞄准的惩罚。 -->
+  <LP_LS_Darkvision.description>Darkvision from a lake seal: ignores darkness penalties to work and aiming.</LP_LS_Darkvision.description>
+  <!-- 长步术 -->
+  <LP_LS_Longstrider.label>longstrider</LP_LS_Longstrider.label>
+  <!-- 湖印的长步：移动 +15%。 -->
+  <LP_LS_Longstrider.description>Longstrider from a lake seal: movement +15%.</LP_LS_Longstrider.description>
+  <!-- 宁神术 -->
+  <LP_LS_Calm.label>calm emotions</LP_LS_Calm.label>
+  <!-- 湖印的宁神：精神崩溃阈值 -5%。 -->
+  <LP_LS_Calm.description>Calmed by a lake seal: mental break threshold -5%.</LP_LS_Calm.description>
+  <!-- 沉默 -->
+  <LP_LS_Silenced.label>silenced</LP_LS_Silenced.label>
+  <!-- 被反制法术打断并沉默：不能施放灵能和职业能力。 -->
+  <LP_LS_Silenced.description>Interrupted and silenced by a counterspell: can't cast psycasts or class abilities.</LP_LS_Silenced.description>
+  <!-- 小屋庇护 -->
+  <LP_LS_Sheltered.label>tiny hut shelter</LP_LS_Sheltered.label>
+  <!-- 在小屋术的力场穹顶里：恒温，舒适温度范围上下各扩 30°C。 -->
+  <LP_LS_Sheltered.description>Inside a tiny hut's force dome: constant temperature, comfortable temperature range widened by 30°C at each end.</LP_LS_Sheltered.description>
+  <!-- 湖印·湖泽体质 -->
+  <LP_LSP_LakeBody.label>lake seal: lakeland constitution</LP_LSP_LakeBody.label>
+  <!-- 湖印被动：舒适温度范围上下各扩 8°C。 -->
+  <LP_LSP_LakeBody.description>Lake seal passive: comfortable temperature range widened by 8°C at each end.</LP_LSP_LakeBody.description>
+  <!-- 湖印·魔力消化 -->
+  <LP_LSP_ManaDigest.label>lake seal: mana digestion</LP_LSP_ManaDigest.label>
+  <!-- 湖印被动：饥饿速率 -10%。 -->
+  <LP_LSP_ManaDigest.description>Lake seal passive: hunger rate -10%.</LP_LSP_ManaDigest.description>
+  <!-- 湖印·学者之心 -->
+  <LP_LSP_ScholarHeart.label>lake seal: scholar's mind</LP_LSP_ScholarHeart.label>
+  <!-- 湖印被动：全局学习速度 +12%。 -->
+  <LP_LSP_ScholarHeart.description>Lake seal passive: global learning speed +12%.</LP_LSP_ScholarHeart.description>
+  <!-- 湖印·无梦之眠 -->
+  <LP_LSP_DreamlessSleep.label>lake seal: dreamless sleep</LP_LSP_DreamlessSleep.label>
+  <!-- 湖印被动：休息下降速率 -15%。 -->
+  <LP_LSP_DreamlessSleep.description>Lake seal passive: rest fall rate -15%.</LP_LSP_DreamlessSleep.description>
+  <!-- 湖印·疗愈之流 -->
+  <LP_LSP_HealingFlow.label>lake seal: healing flow</LP_LSP_HealingFlow.label>
+  <!-- 湖印被动：自然愈合 +20%，受到的包扎质量 +5%。 -->
+  <LP_LSP_HealingFlow.description>Lake seal passive: natural healing +20%, tend quality received +5%.</LP_LSP_HealingFlow.description>
+  <!-- 湖印·奥术抗性 -->
+  <LP_LSP_ArcaneResist.label>lake seal: arcane resistance</LP_LSP_ArcaneResist.label>
+  <!-- 湖印被动：受到职业能力、灵能、魔法物品的伤害 -15%。 -->
+  <LP_LSP_ArcaneResist.description>Lake seal passive: damage taken from class abilities, psycasts and magic items -15%.</LP_LSP_ArcaneResist.description>
+  <!-- 湖印·符文皮肤 -->
+  <LP_LSP_RuneSkin.label>lake seal: rune skin</LP_LSP_RuneSkin.label>
+  <!-- 湖印被动：利器、钝器护甲 +6%。 -->
+  <LP_LSP_RuneSkin.description>Lake seal passive: sharp and blunt armor +6%.</LP_LSP_RuneSkin.description>
+  <!-- 湖印·法力导体 -->
+  <LP_LSP_ManaConduit.label>lake seal: mana conduit</LP_LSP_ManaConduit.label>
+  <!-- 湖印被动：每次命中有 15% 概率附加 4 点奥术伤害。 -->
+  <LP_LSP_ManaConduit.description>Lake seal passive: each hit has a 15% chance to add 4 arcane damage.</LP_LSP_ManaConduit.description>
+  <!-- 湖印·湖心 -->
+  <LP_LSP_LakeHeart.label>lake seal: heart of the lake</LP_LSP_LakeHeart.label>
+  <!-- 湖印被动：湖息上限 +1，回复 ×1.5。 -->
+  <LP_LSP_LakeHeart.description>Lake seal passive: max lake breath +1, recovery ×1.5.</LP_LSP_LakeHeart.description>
+  <!-- 湖印·魔网感知 -->
+  <LP_LSP_WeaveSense.label>lake seal: weave sense</LP_LSP_WeaveSense.label>
+  <!-- 湖印被动：8 格内的隐形敌人对你可见。 -->
+  <LP_LSP_WeaveSense.description>Lake seal passive: invisible enemies within 8 cells are visible to you.</LP_LSP_WeaveSense.description>
+</LanguageData>

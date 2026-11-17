@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 内讧 -->
+  <LP_EttinArguing.label>infighting</LP_EttinArguing.label>
+  <!-- 精神状态：内讧 -->
+  <LP_EttinArguing.baseInspectLine>Mental state: infighting</LP_EttinArguing.baseInspectLine>
+  <!-- {0}的两个头吵起来了，站在原地互不相让，大约要吵上一个小时。 -->
+  <LP_EttinArguing.beginLetter>{0}'s two heads have started arguing, standing in place refusing to give in; it'll probably last about an hour.</LP_EttinArguing.beginLetter>
+  <!-- 内讧 -->
+  <LP_EttinArguing.beginLetterLabel>infighting</LP_EttinArguing.beginLetterLabel>
+  <!-- {0}的两个头终于不吵了。 -->
+  <LP_EttinArguing.recoveryMessage>{0}'s two heads have finally stopped arguing.</LP_EttinArguing.recoveryMessage>
+</LanguageData>

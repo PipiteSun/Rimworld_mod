@@ -28,7 +28,7 @@ namespace LichPhylactery {
   public static int Grant(Pawn doer,int units){
    var god=FaithUtility.Patron;var c=TwistedMeat.Comp;if(!GodOk(god) || c==null)return 0;
    int n=Mathf.Clamp(units,0,LeftToday);if(n<=0)return 0;c.AddToday("favor",n);
-   Faith.Gain(god,n,(doer?.LabelShort??"殖民地")+"焚化扭曲肉");if(doer!=null)Items.Mote(doer,"+"+(n*Faith.GainFactor).ToString("0.#")+" 神眷",god.color);
+   Faith.Gain(god,n,(doer?.LabelShort??"殖民地".Loc())+"焚化扭曲肉".Loc());if(doer!=null)Items.Mote(doer,"+"+(n*Faith.GainFactor).ToString("0.#")+" 神眷".Loc(),god.color);
    return n;
   }
  }
@@ -42,7 +42,7 @@ namespace LichPhylactery {
   public static ResearchProjectDef Aberrology=>DefCache<ResearchProjectDef>.Get("LP_Research_Aberrology");
   public static void Dissect(Pawn doer,float n){
    var c=TwistedMeat.Comp;if(c==null || n<=0f)return;c.dissected+=n;
-   var cat=DefCache<KnowledgeCategoryDef>.Get("Basic");if(cat!=null && ModsConfig.AnomalyActive)try{Find.ResearchManager.ApplyKnowledge(cat,KnowledgePer50*n/50f);}catch(Exception e){Log.Warning("[DND边缘大陆] 远域解剖知识失败："+e.Message);}
+   var cat=DefCache<KnowledgeCategoryDef>.Get("Basic");if(cat!=null && ModsConfig.AnomalyActive)try{Find.ResearchManager.ApplyKnowledge(cat,KnowledgePer50*n/50f);}catch(Exception e){Log.Warning("[DND边缘大陆] 远域解剖知识失败：".Loc()+e.Message);}
    var proj=Aberrology;
    if(proj!=null && !proj.IsFinished && c.dissected>=Unlock){Find.ResearchManager.FinishProject(proj,false,doer,true);c.aberrologyDone=true;}
    TwistedMeat.MaybeWhisper(doer,WhisperChance);
@@ -124,13 +124,13 @@ namespace LichPhylactery {
   public override void CalculateMaxPower(PsychicRitualRoleAssignments assignments,List<QualityFactor> powerFactorsOut,out float power){
    base.CalculateMaxPower(assignments,powerFactorsOut,out power);
    var inv=assignments?.FirstAssignedPawn(InvokerRole);bool goo=GreatOldOne(inv);
-   powerFactorsOut?.Add(new QualityFactor{label="旧日支配者邪术师主持",count=goo?"是":"否",qualityChange=goo?"+25%":"0%",quality=goo?WarlockBonus:0f,positive=goo,present=goo,priority=5f,toolTip="主持人是旧日支配者宗主的邪术师时，仪式质量 +25%。"});
+   powerFactorsOut?.Add(new QualityFactor{label="旧日支配者邪术师主持".Loc(),count=goo?"是".Loc():"否".Loc(),qualityChange=goo?"+25%":"0%",quality=goo?WarlockBonus:0f,positive=goo,present=goo,priority=5f,toolTip="主持人是旧日支配者宗主的邪术师时，仪式质量 +25%。".Loc()});
    if(goo)power+=WarlockBonus;power=Mathf.Clamp01(power);
   }
   public override TaggedString OutcomeDescription(FloatRange qualityRange,string qualityNumber,PsychicRitualRoleAssignments assignments){
    float q=qualityRange.min;
-   string reward=q>=EyeFrom?"精金 "+Adamantine(q)+" 份，"+EyeChance.ToStringPercent()+" 机会改为遗物“哈达之眼”":q>=AdamantineFrom?"精金 "+Adamantine(q)+" 份":"秘银 "+Mithral(q)+" 份";
-   return "献上 150 份扭曲肉。以现在的质量：奖励"+reward+"；失败率 "+FailChance(q).ToStringPercent()+"（失败会引来血肉兽群或心灵哭嚎）。\n质量 60% 起换成精金，90% 起有机会得到哈达之眼。";
+   string reward=q>=EyeFrom?"精金 ".Loc()+Adamantine(q)+" 份，".Loc()+EyeChance.ToStringPercent()+" 机会改为遗物“哈达之眼”".Loc():q>=AdamantineFrom?"精金 ".Loc()+Adamantine(q)+" 份".Loc():"秘银 ".Loc()+Mithral(q)+" 份".Loc();
+   return "献上 150 份扭曲肉。以现在的质量：奖励".Loc()+reward+"；失败率 ".Loc()+FailChance(q).ToStringPercent()+"（失败会引来血肉兽群或心灵哭嚎）。\n质量 60% 起换成精金，90% 起有机会得到哈达之眼。".Loc();
   }
   public static int Mithral(float q)=>Mathf.RoundToInt(Mathf.Lerp(15f,40f,Mathf.Clamp01(q/AdamantineFrom)));
   public static int Adamantine(float q)=>Mathf.RoundToInt(Mathf.Lerp(8f,20f,Mathf.Clamp01((q-AdamantineFrom)/(1f-AdamantineFrom))));
@@ -139,9 +139,9 @@ namespace LichPhylactery {
    if(roll<0f)roll=Rand.Value;if(pick<0f)pick=Rand.Value;
    if(roll<FailChance(q)){
     bool beasts=pick<.5f;
-    if(beasts){float pts=Mathf.Max(300f,StorytellerUtility.DefaultThreatPointsNow(map)*.5f);try{FleshbeastUtility.SpawnFleshbeastsFromPitBurrowEmergence(cell,map,pts,new IntRange(300,600),new IntRange(60,180),true);}catch(Exception e){Log.Warning("[DND边缘大陆] 远域献飨血肉兽失败："+e.Message);beasts=false;}}
+    if(beasts){float pts=Mathf.Max(300f,StorytellerUtility.DefaultThreatPointsNow(map)*.5f);try{FleshbeastUtility.SpawnFleshbeastsFromPitBurrowEmergence(cell,map,pts,new IntRange(300,600),new IntRange(60,180),true);}catch(Exception e){Log.Warning("[DND边缘大陆] 远域献飨血肉兽失败：".Loc()+e.Message);beasts=false;}}
     if(!beasts){var cond=GameConditionMaker.MakeCondition(GameConditionDefOf.PsychicDrone,GenDate.TicksPerDay);if(cond is GameCondition_PsychicEmanation pe){pe.gender=Rand.Bool?Gender.Male:Gender.Female;pe.level=PsychicDroneLevel.BadHigh;}map.gameConditionManager.RegisterCondition(cond);}
-    Find.LetterStack.ReceiveLetter("远域献飨失败","远域吃下了扭曲肉，却没有回礼。"+(beasts?"地底传来翻搅声：一群血肉兽要钻出来了！":"一股心灵哭嚎从仪式点扩散开来，持续一天。"),LetterDefOf.ThreatBig,new LookTargets(cell,map));
+    Find.LetterStack.ReceiveLetter("远域献飨失败".Loc(),"远域吃下了扭曲肉，却没有回礼。".Loc()+(beasts?"地底传来翻搅声：一群血肉兽要钻出来了！".Loc():"一股心灵哭嚎从仪式点扩散开来，持续一天。".Loc()),LetterDefOf.ThreatBig,new LookTargets(cell,map));
     return beasts?"fail-beasts":"fail-wail";
    }
    string kind;Thing reward;
@@ -149,7 +149,7 @@ namespace LichPhylactery {
    else if(q>=AdamantineFrom && DefCache<ThingDef>.Get("LP_Adamantine") is ThingDef ad){kind="adamantine";reward=ThingMaker.MakeThing(ad);reward.stackCount=Adamantine(q);}
    else{kind="mithral";var mi=DefCache<ThingDef>.Get("LP_Mithral");reward=mi!=null?ThingMaker.MakeThing(mi):ThingMaker.MakeThing(ThingDefOf.Silver);reward.stackCount=mi!=null?Mithral(q):Mithral(q)*20;}
    GenPlace.TryPlaceThing(reward,cell,map,ThingPlaceMode.Near);
-   Find.LetterStack.ReceiveLetter("远域献飨","远域收下了扭曲肉。仪式点上多了："+reward.LabelCap+"。",LetterDefOf.PositiveEvent,new LookTargets(reward));
+   Find.LetterStack.ReceiveLetter("远域献飨".Loc(),"远域收下了扭曲肉。仪式点上多了：".Loc()+reward.LabelCap+"。".Loc(),LetterDefOf.PositiveEvent,new LookTargets(reward));
    return kind;
   }
  }
@@ -179,7 +179,7 @@ namespace LichPhylactery {
    var map=(Map)parms.target;var c=TwistedMeat.Comp;var f=PactEvents.Court();var kind=DefCache<TraderKindDef>.Get("LP_HagMarketTrader");if(f==null || kind==null || c==null)return false;
    var made=PactEvents.SpawnCaravan(map,f,kind,parms.points);if(made.Count==0)return false;
    c.hagQuadrum=Quadrum;c.hagPawns=made.ToList();c.hagMap=map;c.hagCell=made[0].Position;
-   Find.LetterStack.ReceiveLetter("鬼婆集市","雾里走来一支古怪的小商队：几个裹着破斗篷、牙齿太尖的老妇人，推着一车冒泡的罐子。她们卖药水、诅咒物和黑暗的书，最想要的是扭曲肉（3 银一份）和畸变膏（18 银一份）。\n\n据说鬼婆走的时候偶尔会留下“礼物”——最好别收。",LetterDefOf.PositiveEvent,new LookTargets(made.Cast<Thing>()));
+   Find.LetterStack.ReceiveLetter("鬼婆集市".Loc(),"雾里走来一支古怪的小商队：几个裹着破斗篷、牙齿太尖的老妇人，推着一车冒泡的罐子。她们卖药水、诅咒物和黑暗的书，最想要的是扭曲肉（3 银一份）和畸变膏（18 银一份）。\n\n据说鬼婆走的时候偶尔会留下“礼物”——最好别收。".Loc(),LetterDefOf.PositiveEvent,new LookTargets(made.Cast<Thing>()));
    return true;
   }
  }
@@ -206,7 +206,7 @@ namespace LichPhylactery {
    if(!ForceGift && !Rand.Chance(GiftChance))return null;
    var def=Gifts.Select(n=>DefCache<ThingDef>.Get(n)).Where(d=>d!=null).RandomElementWithFallback();if(def==null)return null;
    var t=ThingMaker.MakeThing(def,def.MadeFromStuff?GenStuff.DefaultStuffFor(def):null);GenPlace.TryPlaceThing(t,cell,map,ThingPlaceMode.Near);
-   Find.LetterStack.ReceiveLetter("鬼婆的礼物","鬼婆集市走了，原地留下一件用黑布包着的“礼物”："+t.LabelCap+"。上面的诅咒还没散……",LetterDefOf.NeutralEvent,new LookTargets(t));
+   Find.LetterStack.ReceiveLetter("鬼婆的礼物".Loc(),"鬼婆集市走了，原地留下一件用黑布包着的“礼物”：".Loc()+t.LabelCap+"。上面的诅咒还没散……".Loc(),LetterDefOf.NeutralEvent,new LookTargets(t));
    return t;
   }
  }

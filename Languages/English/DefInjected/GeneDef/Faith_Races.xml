@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 天界之责 -->
+  <LP_Gene_CelestialLineage.label>celestial duty</LP_Gene_CelestialLineage.label>
+  <!-- 天界之血让人憎恶逃避死亡的东西：对巫妖和死灵造物的伤害+25%；看到巫妖心情-5、看到死灵造物心情-4，巫妖看到阿斯莫也会心情-5。带这条基因的人算作阿斯莫。 -->
+  <LP_Gene_CelestialLineage.description>Celestial blood loathes things that flee death: +25% damage against liches and necromantic constructs; mood -5 when seeing a lich and -4 when seeing a necromantic construct, and liches also get mood -5 when seeing an aasimar. Anyone with this gene counts as an aasimar.</LP_Gene_CelestialLineage.description>
+  <!-- 算作阿斯莫（种族判定、神选仪式、天界之子）。 | 对巫妖、死灵造物的伤害：×125%。 | 神圣伤害像火一样让巨魔的再生停1小时。 -->
+  <LP_Gene_CelestialLineage.customEffectDescriptions.0>Counts as an aasimar (race checks, choosing ritual, child of the heavens).</LP_Gene_CelestialLineage.customEffectDescriptions.0>
+  <LP_Gene_CelestialLineage.customEffectDescriptions.1>Damage against liches and necromantic constructs: ×125%.</LP_Gene_CelestialLineage.customEffectDescriptions.1>
+  <LP_Gene_CelestialLineage.customEffectDescriptions.2>Holy damage stops troll regeneration for 1 hour, like fire.</LP_Gene_CelestialLineage.customEffectDescriptions.2>
+  <!-- 天界抗性 -->
+  <LP_Gene_CelestialResistance.label>celestial resistance</LP_Gene_CelestialResistance.label>
+  <!-- 神圣之光认得这具身体，死灵之力也很难侵蚀它：神圣、神罚与死灵伤害减半。 -->
+  <LP_Gene_CelestialResistance.description>Holy light knows this body, and necrotic power has a hard time corroding it: holy, divine punishment and necrotic damage halved.</LP_Gene_CelestialResistance.description>
+  <!-- 治疗之手 -->
+  <LP_Gene_HealingHands.label>healing hands</LP_Gene_HealingHands.label>
+  <!-- 把手按在伤者身上就能合拢伤口：每处伤口愈合（医疗等级/2 + 社交等级/2）。不能长回断肢。冷却1天。 -->
+  <LP_Gene_HealingHands.description>Laying hands on the wounded closes their wounds: each wound heals (Medicine level/2 + Social level/2). Can't regrow lost limbs. Cooldown 1 day.</LP_Gene_HealingHands.description>
+  <!-- 天界启示：光辉之魂 -->
+  <LP_Gene_RadiantSoul.label>celestial revelation: radiant soul</LP_Gene_RadiantSoul.label>
+  <!-- 一对光翼一闪而过：跳到远处（原版长跳，冷却1天）。天界启示三选一。 -->
+  <LP_Gene_RadiantSoul.description>A flash of wings of light: leap far away (vanilla longjump, cooldown 1 day). One of three celestial revelations.</LP_Gene_RadiantSoul.description>
+  <!-- 天界启示：光辉消耗 -->
+  <LP_Gene_RadiantConsumption.label>celestial revelation: radiant consumption</LP_Gene_RadiantConsumption.label>
+  <!-- 可以开关的灼光：开着时2格内的敌人每秒受2点神圣伤害，自己每10秒受1点烧伤。天界启示三选一。 -->
+  <LP_Gene_RadiantConsumption.description>A toggleable searing light: while on, enemies within 2 cells take 2 holy damage per second, and you take 1 burn damage every 10 seconds. One of three celestial revelations.</LP_Gene_RadiantConsumption.description>
+  <!-- 天界启示：亡者裹布 -->
+  <LP_Gene_NecroticShroud.label>celestial revelation: necrotic shroud</LP_Gene_NecroticShroud.label>
+  <!-- 披上一层死亡的阴影：4格内活着的敌人惊恐逃跑8秒。冷却1天。天界启示三选一。 -->
+  <LP_Gene_NecroticShroud.description>Cloak yourself in the shadow of death: living enemies within 4 cells flee in terror for 8 seconds. Cooldown 1 day. One of three celestial revelations.</LP_Gene_NecroticShroud.description>
+  <!-- 天界光环 -->
+  <LP_Gene_Halo.label>celestial halo</LP_Gene_Halo.label>
+  <!-- 头顶浮着一圈淡淡的光环，颜色随发色。纯外观。 -->
+  <LP_Gene_Halo.description>A faint halo floats overhead, colored after the hair. Purely cosmetic.</LP_Gene_Halo.description>
+  <!-- 浅金肤色 -->
+  <LP_SkinAasimarGold.label>pale gold skin</LP_SkinAasimarGold.label>
+  <!-- 阿斯莫的皮肤带着淡淡的金色光泽。 -->
+  <LP_SkinAasimarGold.description>An aasimar's skin has a faint golden sheen.</LP_SkinAasimarGold.description>
+  <!-- 浅金 -->
+  <LP_SkinAasimarGold.labelShortAdj>pale gold</LP_SkinAasimarGold.labelShortAdj>
+  <!-- 银白肤色 -->
+  <LP_SkinAasimarSilver.label>silver-white skin</LP_SkinAasimarSilver.label>
+  <!-- 阿斯莫的皮肤白得发亮，像月光下的银。 -->
+  <LP_SkinAasimarSilver.description>An aasimar's skin is white and gleaming, like silver under moonlight.</LP_SkinAasimarSilver.description>
+  <!-- 银白 -->
+  <LP_SkinAasimarSilver.labelShortAdj>silver-white</LP_SkinAasimarSilver.labelShortAdj>
+  <!-- 金色头发 -->
+  <LP_HairAasimarGold.label>golden hair</LP_HairAasimarGold.label>
+  <!-- 银色头发 -->
+  <LP_HairAasimarSilver.label>silver hair</LP_HairAasimarSilver.label>
+  <!-- 魔鬼血统 -->
+  <LP_Gene_FiendishBlood.label>fiendish lineage</LP_Gene_FiendishBlood.label>
+  <!-- 祖上和魔鬼立过约，这件事写在脸上。不是提夫林的殖民者看到还没在殖民地住满1年的提夫林时心情-2（异类）；阿斯莫对提夫林好感-3，两人都住满1年后变成+3（宿命之友）。带这条基因的人算作提夫林。 -->
+  <LP_Gene_FiendishBlood.description>An ancestor made a pact with a devil, and it shows on the face. Non-tiefling colonists get mood -2 (outsider) when seeing a tiefling who hasn't lived in the colony for a full year; aasimar have -3 opinion of tieflings, turning into +3 (friend of fate) once both have lived there a full year. Anyone with this gene counts as a tiefling.</LP_Gene_FiendishBlood.description>
+  <!-- 算作提夫林（种族判定、神选仪式、天界之子）。 -->
+  <LP_Gene_FiendishBlood.customEffectDescriptions.0>Counts as a tiefling (race checks, choosing ritual, child of the heavens).</LP_Gene_FiendishBlood.customEffectDescriptions.0>
+  <!-- 地狱抗性 -->
+  <LP_Gene_InfernalResistance.label>infernal resistance</LP_Gene_InfernalResistance.label>
+  <!-- 九狱之火在血里烧过：火焰与烧伤伤害减半。 -->
+  <LP_Gene_InfernalResistance.description>The fire of the Nine Hells has burned in the blood: fire and burn damage halved.</LP_Gene_InfernalResistance.description>
+  <!-- 地狱叱喝 -->
+  <LP_Gene_HellishRebuke.label>hellish rebuke</LP_Gene_HellishRebuke.label>
+  <!-- 被近战打中时25%的几率用地狱之火回敬对方10点烧伤（每10秒最多一次）。 -->
+  <LP_Gene_HellishRebuke.description>When hit in melee, a 25% chance to return 10 burn damage of hellfire to the attacker (at most once every 10 seconds).</LP_Gene_HellishRebuke.description>
+  <!-- 魔鬼契约 -->
+  <LP_Gene_InfernalPact.label>devil's bargain</LP_Gene_InfernalPact.label>
+  <!-- 还能再跟魔鬼讨价还价一次：心情-10（3天），换来24小时射击与近战伤害+20%、精神力获取+20%；之后12小时“契约透支”（意识-10%）。冷却5天。 -->
+  <LP_Gene_InfernalPact.description>Can haggle with the devil one more time: mood -10 (3 days) in exchange for +20% shooting and melee damage and +20% psyfocus gain for 24 hours; then 12 hours of "pact overdraft" (consciousness -10%). Cooldown 5 days.</LP_Gene_InfernalPact.description>
+</LanguageData>

@@ -113,11 +113,11 @@ namespace LichPhylactery {
   float Factor(Pawn p,out float offset,out string why){
    offset=0f;why=null;
    if(p?.story?.traits==null)return 1f;
-   if(parentStat==StatDefOf.AimingDelayFactor){if(p.Drafted && BackgroundTraits.Has(p,BackgroundTraits.Soldier)){why="士兵背景（征召中）";return BackgroundTraits.SoldierAimFactor;}}
-   else if(parentStat==BackgroundTraits.Cohesion){if(BackgroundTraits.SoldierBuddy(p)){why="士兵背景（3格内有士兵战友）";return BackgroundTraits.SoldierHitFactor;}}
-   else if(parentStat==StatDefOf.MoveSpeed){if(BackgroundTraits.Has(p,BackgroundTraits.Outlander) && BackgroundTraits.Comp(p)?.outdoors==true){why="局外人背景（野外）";return BackgroundTraits.OutlanderSpeed;}}
-   else if(parentStat==StatDefOf.PlantHarvestYield){if(BackgroundTraits.Has(p,BackgroundTraits.Outlander) && BackgroundTraits.HarvestingWild(p)){why="局外人背景（野生植物）";return BackgroundTraits.OutlanderWildYield;}}
-   else if(parentStat==StatDefOf.TradePriceImprovement){if(TradeSession.Active && TradeSession.trader?.Faction?.def!=null && TradeSession.trader.Faction.def==Factions.BlackNetDef && BackgroundTraits.Has(p,BackgroundTraits.Criminal)){why="罪犯背景（黑网商队）";offset=BackgroundTraits.CriminalBlackNetPrice;}}
+   if(parentStat==StatDefOf.AimingDelayFactor){if(p.Drafted && BackgroundTraits.Has(p,BackgroundTraits.Soldier)){why="士兵背景（征召中）".Loc();return BackgroundTraits.SoldierAimFactor;}}
+   else if(parentStat==BackgroundTraits.Cohesion){if(BackgroundTraits.SoldierBuddy(p)){why="士兵背景（3格内有士兵战友）".Loc();return BackgroundTraits.SoldierHitFactor;}}
+   else if(parentStat==StatDefOf.MoveSpeed){if(BackgroundTraits.Has(p,BackgroundTraits.Outlander) && BackgroundTraits.Comp(p)?.outdoors==true){why="局外人背景（野外）".Loc();return BackgroundTraits.OutlanderSpeed;}}
+   else if(parentStat==StatDefOf.PlantHarvestYield){if(BackgroundTraits.Has(p,BackgroundTraits.Outlander) && BackgroundTraits.HarvestingWild(p)){why="局外人背景（野生植物）".Loc();return BackgroundTraits.OutlanderWildYield;}}
+   else if(parentStat==StatDefOf.TradePriceImprovement){if(TradeSession.Active && TradeSession.trader?.Faction?.def!=null && TradeSession.trader.Faction.def==Factions.BlackNetDef && BackgroundTraits.Has(p,BackgroundTraits.Criminal)){why="罪犯背景（黑网商队）".Loc();offset=BackgroundTraits.CriminalBlackNetPrice;}}
    return 1f;
   }
   public override void TransformValue(StatRequest req,ref float val){
@@ -236,8 +236,8 @@ namespace LichPhylactery {
  public static class Background_PrisonBreak {
   static void Postfix(Pawn pawn,StringBuilder sb,ref float __result){
    if(__result<=0f || pawn==null)return;
-   if(BackgroundTraits.Has(pawn,BackgroundTraits.Criminal)){__result/=BackgroundTraits.CriminalBreakChance;if(sb!=null){sb.AppendLineIfNotEmpty();sb.Append("  - 罪犯背景: "+BackgroundTraits.CriminalBreakChance.ToStringPercent());}}
-   if(BackgroundTraits.ColonyHasCriminal(pawn.MapHeld)){__result/=BackgroundTraits.CriminalWardenChance;if(sb!=null){sb.AppendLineIfNotEmpty();sb.Append("  - 殖民地有罪犯背景的殖民者: "+BackgroundTraits.CriminalWardenChance.ToStringPercent());}}
+   if(BackgroundTraits.Has(pawn,BackgroundTraits.Criminal)){__result/=BackgroundTraits.CriminalBreakChance;if(sb!=null){sb.AppendLineIfNotEmpty();sb.Append("  - 罪犯背景: ".Loc()+BackgroundTraits.CriminalBreakChance.ToStringPercent());}}
+   if(BackgroundTraits.ColonyHasCriminal(pawn.MapHeld)){__result/=BackgroundTraits.CriminalWardenChance;if(sb!=null){sb.AppendLineIfNotEmpty();sb.Append("  - 殖民地有罪犯背景的殖民者: ".Loc()+BackgroundTraits.CriminalWardenChance.ToStringPercent());}}
   }
  }
  // 罪犯囚犯：招募谈话让抵抗多降 30%。
@@ -271,9 +271,9 @@ namespace LichPhylactery {
  public static class BackgroundSettings {
   public static void Draw(Listing_Standard l){
    var s=LichMod.Settings;
-   l.GapLine();l.Label("背景特性");
-   l.CheckboxLabeled("背景特性",ref s.backgroundTraits,"侍僧、罪犯、民间英雄、贵族、贤者、士兵、隐士、局外人 8 个背景特性进入原版特性随机池，一个人最多一个背景。关闭后不再生成新的背景特性，已有的保留。立即生效。");
-   l.Label("背景特性出现率："+s.backgroundTraitPercent+"%（每个背景的出现权重 = 0.3 × 此值）");
+   l.GapLine();l.Label("背景特性".Loc());
+   l.CheckboxLabeled("背景特性".Loc(),ref s.backgroundTraits,"侍僧、罪犯、民间英雄、贵族、贤者、士兵、隐士、局外人 8 个背景特性进入原版特性随机池，一个人最多一个背景。关闭后不再生成新的背景特性，已有的保留。立即生效。".Loc());
+   l.Label("背景特性出现率：".Loc()+s.backgroundTraitPercent+"%（每个背景的出现权重 = 0.3 × 此值）".Loc());
    s.backgroundTraitPercent=Mathf.RoundToInt(l.Slider(s.backgroundTraitPercent,0,300)/5f)*5;
    BackgroundTraits.ApplySettings();
    // 1.46.0 DND 背景故事放在背景特性组下面。

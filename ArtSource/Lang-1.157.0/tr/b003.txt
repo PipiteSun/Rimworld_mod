@@ -1,0 +1,273 @@
+s00676	Enemy undead and necromantic constructs within 8 cells take 40 holy damage; downed enemies and enemy corpses cannot be raised or have their brains devoured for 6 hours. Costs 40 divine power, cooldown 1 day.
+s00677	soul rest
+s00678	Call down 3 lightning bolts in the target area, each dealing 25 electrical damage to people within 1.5 cells. Costs 40 divine power, cooldown 1 day.
+s00679	thunder wrath
+s00680	Protect one ally for 24 hours: the first lethal wound in that time will not kill, and wounds stop bleeding at once. Costs 50 divine power, cooldown 2 days.
+s00681	undying dawn
+s00682	Fire 5 homing Weave missiles at random enemies within 15 cells, 8 force damage each. Costs 30 divine power, cooldown 1 day.
+s00683	weave missiles
+s00684	Crush one enemy's will, sending them berserk (psychically deaf people are unaffected). Costs 50 divine power, cooldown 1 day.
+s00685	will crush
+s00686	The demigod of dawn is nearby; everything feels warm.
+s00687	morning light
+s00688	A divine spark burns in a mortal body. Ageless, hunger ×0.3, immune to disease, psychic sensitivity +20% (+5% more per rank), damage taken ×0.95 (×0.95 more per rank), mental break threshold -10%; the portfolio grants two active abilities and one passive. Divine power recovers daily; when it is full you may accept the trials of the gods to raise your divine rank.
+s00689	demigod
+s00690	When the Gate of the Heavens opened, the divine father's divinity flowed into the titan's blood: psychic sensitivity +20%, and another ring of faint golden divine glow above the head. Body size unchanged (2.5× like a titan). This divine blood is not passed on to descendants.
+s00691	awakened divine blood
+s00692	Mind dominated by a demigod. Will return to the original faction when it ends.
+s00693	dominated
+s00694	There is a divine spark on the map; the whole land seems a little brighter.
+s00695	divine radiance
+s00696	A grain of divinity made solid; not hot to the touch, yet hard to look at for long. Only the person it fell for can absorb it (channeling 12 hours in the ascension ritual). While a spark is on the map, colonists get mood +4. Cannot be sold.
+s00697	divine spark
+s00698	Someone is channeling a divine spark and all psychic energy on this map trembles: psycast cooldowns ×1.5.
+s00699	divine tremor
+s00700	judicator of Kelemvor
+s00701	doomguard
+s00702	Surtur's fire burns on the weapon: melee hits add 6 burn damage.
+s00703	Judicator of Kelemvor: within 15 cells, the revival timers of liches and trolls are paused.
+s00704	frozen revival
+s00705	A giant king who came to answer the titan's challenge.
+s00706	giant king
+s00707	usurping lich
+s00708	A god risen from this land now watches us from the heavens.
+s00709	our god watches over us
+s00710	Our colony once produced a god.
+s00711	homeland of a god
+s00712	[PAWN_nameDef] has personally defeated a god-possessed leader: ×1.3 damage against divine-infused, god-possessed and demigods; divine skills of god-possessed leaders have only 70% effect on [PAWN_objective].
+s00713	<color=#50C0C0>Godslayer</color>
+s00714	legendary deed
+s00715	Tyr's shield guards me.
+s00716	Doomguards sent by the church of Kelemvor, god of death: grey robes and longswords, hunting undead that should not exist. They negotiate with no one.
+s00717	doomguard of Kelemvor
+s00718	Death is just, and those who flee it must be brought back.
+s00719	Kelemvor
+s00720	Our demigod passed the trials of the gods. I saw a god grow stronger with my own eyes.
+s00721	a new god rises
+s00722	Everything is clouded in mist; often forgets what to aim at: shooting accuracy ×0.6.
+s00723	psycast cooldowns ×0.9
+s00724	Portfolio of the arcane demigod: the Weave itself, which Karsus failed to hold.
+s00725	arcana
+s00726	none (the arcane demigod's original effects are unchanged)
+s00727	not bothered by "in darkness" at night
+s00728	kill enemies at night (22-5h)
+s00729	Shar's portfolio: night, forgetting and secrets.
+s00730	darkness
+s00731	at night (22-5h) movement +15%, damage dealt +10%
+s00732	colonist wound healing ×1.2
+s00733	rescue downed people
+s00734	Lathander's portfolio: morning light, renewal and rebirth.
+s00735	dawn
+s00736	allies within 15 cells mood +4 (morning light)
+s00737	surgery success +5%
+s00738	bury corpses or destroy undead
+s00739	Kelemvor's portfolio: rest, judgment and the final fate of the dead.
+s00740	death
+s00741	not bothered by seeing corpses; colony-wide mood penalties when a colonist dies ×0.5
+s00742	smithing speed ×1.15
+s00743	kill enemies with fire
+s00744	Surtur's portfolio: flame, furnace and forge.
+s00745	fire
+s00746	immune to fire damage, cannot be ignited
+s00747	prisoner escape chance ×0.5
+s00748	capture enemies
+s00749	Tyr's portfolio: law, judgment and protection.
+s00750	justice
+s00751	invisible enemy units within 20 cells are revealed
+s00752	psyfocus regain (meditation) ×1.1
+s00753	successfully cast abilities that cost psyfocus or divine favor
+s00754	Mystra's portfolio: the Weave, spells and knowledge.
+s00755	magic
+s00756	own psycast cooldowns ×0.85
+s00757	research speed ×1.1
+s00758	Ilsensine's portfolio: psionics, will and whispers.
+s00759	mind
+s00760	colony-wide psychic sensitivity +5%
+s00761	lightning never strikes colony buildings
+s00762	kill enemies in rain or thunderstorms
+s00763	Talos's portfolio: thunder, gales and destruction.
+s00764	storm
+s00765	anyone attacking them in melee takes 8 electrical damage (× portfolio strength)
+s00766	suppression/enslavement efficiency ×1.25
+s00767	Portfolio of Bane and Vlaakith: domination, fear and iron law.
+s00768	tyranny
+s00769	enemies within 10 cells shooting accuracy -15%
+s00770	necromantic construct upkeep ×0.8
+s00771	A portfolio seized by the demigod lich: eternal night, souls and immortality.
+s00772	undeath
+s00773	the phylactery becomes a shrine (revive in 1 day, revive at once with divine power ≥50, phylactery health ×2)
+s00774	taming success ×1.2
+s00775	tame animals or kill manhunting animals
+s00776	Malar's portfolio: the hunt, fangs and the pack.
+s00777	wild
+s00778	manhunting wild animals won't target them
+s00779	Malar's bestial nature surges up.
+s00780	[PAWN_nameDef] bore witness to [PAWN_possessive] faith before heretic champions and is a saint of [PAWN_possessive] god: psychic sensitivity +15%, social +2; [PAWN_possessive] god gains +0.2 divine favor per day. With VPE, divine power +0.15.
+s00781	<color=#50C0C0>Saint</color>
+s00782	Waiting beneath the Gate of the Heavens.
+s00783	Summoned by a demigod; will leave or crumble when time is up.
+s00784	divine summons
+s00785	Lathander's morning light protects this person: the first lethal wound will not kill, and wounds stop bleeding at once.
+s00786	A dark red spark seized from a god-possessed pawn, still carrying its owner's wrath. Any colonist can try to absorb it, but the usurping ritual may fail. Cannot be sold.
+s00787	usurped divine spark
+s00788	The Gate of the Heavens is opening; the sky is dark and lightning strikes now and then.
+s00789	storm of divine wrath
+s00790	[PAWN_nameDef]'s body was shaped by a necromantic ritual and never had a living childhood. The mind awoke during the ritual; skills and knowledge were learned and built up firsthand afterwards.
+s00791	necromantic shaping
+s00792	necromantic construct
+s00793	[PAWN_nameDef] joined the colony as a necromantic construct under the lich's command, taking on work and building up experience of [PAWN_possessive] own (knowledge undead have fixed skills and pass their XP to the master).
+s00794	necromantic attendant
+s00795	[PAWN_nameDef] can crouch in the tree shadows all day just to wait for a lone wagon. Bugbears are lazy, but never when it comes to an ambush.
+s00796	forest road ambusher
+s00797	ambusher
+s00798	[PAWN_nameDef] grew up in a city without sunlight. The first thing [PAWN_pronoun] learned was to press against the stone wall motionless until the drow patrol passed.
+s00799	child of Underdark miners
+s00800	svirfneblin miner's child
+s00801	[PAWN_nameDef] can hear which stone hides a gem. When [PAWN_pronoun] fled to the surface, [PAWN_pronoun] carried only an uncut sapphire and a belly full of distrust.
+s00802	svirfneblin gem cutter
+s00803	gem cutter
+s00804	[PAWN_nameDef] was born in the spider-web tower of a drow house in the Underdark. There, the first thing a child learns is never to trust their siblings, and the second is how to poison a blade.
+s00805	youngest child of Menzoberranzan
+s00806	drow youngling
+s00807	[PAWN_nameDef] had enough of the schemes of Lolth's priestesses and fled to the surface with a poisoned short sword. The sunlight hurts [PAWN_possessive] eyes, but it beats going back.
+s00808	traitor who fled the Spider Queen
+s00809	drow traitor
+s00810	[PAWN_nameDef]'s childhood playmates were a badger and three squirrels. Forest gnome villages hide behind illusions; outsiders never find them.
+s00811	gnome of the hollow tree
+s00812	hollow tree gnome
+s00813	[PAWN_nameDef] protects the woods with little illusions: making hunters see bears that aren't there, and leading lost children home by fireflies.
+s00814	woodland illusionist
+s00815	illusionist
+s00816	[PAWN_nameDef] grew up in a goblin warband's camp, fighting for scraps, dodging whips and secretly watching hobgoblins drill. Every goblin brat who survives is sharp.
+s00817	warband camp brat
+s00818	camp brat
+s00819	[PAWN_nameDef] once served in the ranks of a hobgoblin legion and saw too many comrades used as stepping stones for sieges. One rainy night [PAWN_pronoun] threw down the banner and ran.
+s00820	legion deserter
+s00821	deserter
+s00822	Elves thought [PAWN_nameDef] grew up too fast; humans thought too slowly. [PAWN_pronoun] learned to say nice things to both sides, and to take neither side too seriously.
+s00823	child between two peoples
+s00824	half-blood child
+s00825	For years [PAWN_nameDef] ran errands and carried messages between human city-states and the elven court, settling three border disputes that nearly came to war. Neither side can do without [PAWN_objective], and neither fully trusts [PAWN_objective].
+s00826	border envoy
+s00827	envoy
+s00828	[PAWN_nameDef] grew up in a hill dwarf wine cellar, could tell thirty malts apart at ten, and drank [PAWN_possessive] father under the table at twelve.
+s00829	child of a hill brewery
+s00830	brewery child
+s00831	[PAWN_nameDef] stood in the hill dwarf shield wall for decades and took more sword cuts than others have seen. [PAWN_pronoun] never says "I'm tired", only "another round".
+s00832	hill shieldguard
+s00833	shieldguard
+s00834	[PAWN_nameDef] buried something in every tunnel of the dragon's lair: spike pits, falling rocks, tripwires, jars full of bees. Adventurers hate [PAWN_objective], but the dragon loves [PAWN_objective].
+s00835	kobold trapmaker
+s00836	trapmaker
+s00837	[PAWN_nameDef] hatched from an egg. The first thing [PAWN_pronoun] saw was a pile of gold, the second a dragon sleeping on it. From then on [PAWN_pronoun] knew what to live for.
+s00838	egg in the dragon's lair
+s00839	lair hatchling
+s00840	[PAWN_nameDef] traveled the whole Sword Coast with the family caravan, made friends at every market, and pinched a honey cake at every market too.
+s00841	caravan halfling
+s00842	caravan child
+s00843	[PAWN_nameDef] wanders far and wide on a quick tongue and a bag of spices. When trouble comes, [PAWN_pronoun] always finds someone big to stand in front.
+s00844	lightfoot peddler
+s00845	peddler
+s00846	[PAWN_nameDef] took the family clock apart at five and put it back together at six, with two parts left over. Since then everything in the house that moves has been modified by [PAWN_objective].
+s00847	gnome in the gear pile
+s00848	gear gnome
+s00849	[PAWN_nameDef]'s clockwork beetles fly, clockwork puppies bark and clockwork locks curse at thieves. It's just that half of them explode the first time they are wound up.
+s00850	clockwork artisan
+s00851	clockworker
+s00852	[PAWN_nameDef] grew up in a round-doored burrow house at the foot of a hill, eating six meals a day and sleeping until the sun was high. The family garden was the best in the village.
+s00853	burrow cottage child
+s00854	cottage child
+s00855	[PAWN_nameDef]'s inn is famous for its stew and ale. Every dwarf who visits says it's the most homelike place on the surface, and [PAWN_pronoun] never stops repeating it.
+s00856	stout innkeeper
+s00857	innkeeper
+s00858	[PAWN_nameDef] learned to draw a bow at the same time as learning to walk. Every oak in the old forest knows [PAWN_nameDef], and the deer never shy away from [PAWN_objective].
+s00859	little hunter of the old forest
+s00860	little hunter
+s00861	[PAWN_nameDef] guarded the old forest's border for a full century: loggers, poachers and lost orcs all turned back under [PAWN_possessive] arrows.
+s00862	woodland warden
+s00863	warden
+s00864	A celestial guide always speaks in [PAWN_nameDef]'s dreams, but the voice grows ever more distant. [PAWN_nameDef] wanders Faerûn healing people, trying to find that voice again.
+s00865	penitent of celestial blood
+s00866	penitent
+s00867	[PAWN_nameDef] once commanded an entire demon legion in the Blood War of the Abyss. Each of [PAWN_nameDef]'s six hands holds a sword, and each has its own name and story.
+s00868	abyssal general
+s00869	[PAWN_nameDef] was born amid the Blood War of the Abyss, and the first thing learned was to hold six blades at once. In the Abyss, children who can't learn don't survive the first day.
+s00870	spawn of the abyssal battlefield
+s00871	abyssal spawn
+s00872	[PAWN_nameDef] has taken every kind of commission on the board: clearing goblin nests, escorting caravans, finding lost cats. Most teammates died along the way; [PAWN_nameDef] survived, and feels a little guilty about it.
+s00873	bounty adventurer
+s00874	[PAWN_nameDef] sold potions at the market: healing potions, invisibility potions, and potions said to regrow hair. The first two were mostly real.
+s00875	street alchemist
+s00876	alchemist
+s00877	[PAWN_nameDef] was the best hunter of a troll tribe in the ashes, able to chase a deer for three days and nights. The deer usually gave up on the second day.
+s00878	ash tribe hunter
+s00879	ash hunter
+s00880	[PAWN_nameDef] grew up in a secret crèche on the Material Plane, where children must kill a mind flayer before adulthood or they are not githyanki. [PAWN_nameDef] passed the test.
+s00881	astral crèche
+s00882	[PAWN_nameDef] raided countless worlds aboard an astral ship. To the githyanki, plunder is not a crime but a craft.
+s00883	astral pirate
+s00884	[PAWN_nameDef] was a shock trooper in the army of the demon lord Baphomet, battering down gates and shield walls with horns. Since escaping, [PAWN_nameDef] refuses to lower that head, except to charge.
+s00885	Baphomet's shock trooper
+s00886	shock trooper
+s00887	[PAWN_nameDef] has sung in every tavern on the Sword Coast and owes money to every one of them. [PAWN_nameDef]'s songs can make enemies lay down their weapons, and friends draw theirs.
+s00888	wandering bard
+s00889	bard
+s00890	[PAWN_nameDef] grew up in a swamp, ate anything, and bit siblings when still hungry. Bitten-off arms grow back in a few days anyway, so nobody minded much.
+s00891	hungry swamp whelp
+s00892	[PAWN_nameDef] believes magic is the root of all suffering and has burned the libraries of three wizard towers. [PAWN_nameDef] preaches with great charisma, especially standing next to a bonfire.
+s00893	book-burning friar
+s00894	[PAWN_nameDef] was bound by a Thayan summoner's pact for decades. When the summoner died the pact lapsed, and for the first time [PAWN_nameDef] could choose where to go.
+s00895	pact-bound
+s00896	pact servant
+s00897	[PAWN_nameDef] was a page in the City of Brass on the Elemental Plane of Fire, serving the sultan fire wine. Since then [PAWN_nameDef] has known the best gift is the one delivered before the other person asks.
+s00898	court page of the City of Brass
+s00899	brass page
+s00900	[PAWN_nameDef] helped in the family wine cellar from childhood: carrying barrels, rolling barrels, secretly tasting barrels. Dwarves say it's the best education there is.
+s00901	cellar child laborer
+s00902	[PAWN_nameDef] lived under a stone bridge for many years, charging every passerby a toll. Those who couldn't pay left a leg behind. [PAWN_nameDef]'s own legs grow back anyway, so it never seemed excessive.
+s00903	toll troll under the bridge
+s00904	[PAWN_nameDef] guarded wealthy merchants in Calimshan, where genasi are common and valuable. [PAWN_nameDef]'s employer liked to show [PAWN_objective] off to guests like a rare treasure.
+s00905	Calimshan guild guard
+s00906	guild guard
+s00907	[PAWN_nameDef] grew up in the scriptorium of Candlekeep, copying old book after old book for the monks. [PAWN_nameDef] has read more forbidden books than most wizards; nobody knows.
+s00908	Candlekeep scribe child
+s00909	scribe child
+s00910	[PAWN_nameDef] was born on a caravan wagon, traveling from Amn to Calimshan and back again. [PAWN_nameDef] remembers which wells have water and which checkpoints need a bribe on every trade road.
+s00911	caravan born
+s00912	caravan child
+s00913	[PAWN_nameDef] grew up in a castle floating among the clouds, with mist below and stars above. As a child [PAWN_nameDef] thought the humans on the ground were moving toys.
+s00914	cloud castle noble child
+s00915	cloud castle child
+s00916	[PAWN_nameDef] grew up in a cave with only one rule: whoever has the biggest fists eats first. [PAWN_nameDef] was always the one who ate first.
+s00917	big lug from the cave
+s00918	cave lug
+s00919	[PAWN_nameDef] spent a hundred years learning one song, and another hundred learning to sing it well. Humans weep when [PAWN_nameDef] sings, without knowing why.
+s00920	century singer
+s00921	[PAWN_nameDef] was once chained in Thay's slave soldier ranks, then smashed the chains with comrades and escaped. The marks of the shackles remain on [PAWN_nameDef]'s wrists, and [PAWN_nameDef] has no intention of removing them.
+s00922	brokenchain warband deserter
+s00923	brokenchain warrior
+s00924	[PAWN_nameDef] was the only child in town with tusks. Neighbors locked their doors, merchants charged more, and the town guard questioned [PAWN_objective] on sight. [PAWN_nameDef] learned patience, and learned to keep score.
+s00925	scorned town child
+s00926	scorned child
+s00927	[PAWN_nameDef] served in the Waterdeep City Watch for years, catching thieves, stopping drunks, and one rainy night seeing a beholder float out of the sewers.
+s00928	city watch sergeant
+s00929	watchman
+s00930	[PAWN_nameDef] grew up in a cliffside nest and learned to fly before learning to walk. To this day [PAWN_nameDef] cannot understand why anyone would want to live underground.
+s00931	raised in a high cliff nest
+s00932	cliff child
+s00933	[PAWN_nameDef] herded goats on a mountainous sea island, one eye on the flock and one ear on the waves. As a child [PAWN_nameDef] thought everyone in the world had only one eye.
+s00934	goatherd
+s00935	herd child
+s00936	[PAWN_nameDef] forged iron in a volcanic cave, making crossbows that could pierce city walls and shields that could stop lightning. [PAWN_nameDef] says little, but every piece is very persuasive.
+s00937	cyclops artisan
+s00938	[PAWN_nameDef] was exiled from the deep sea court over a prophecy [PAWN_pronoun] refused to speak aloud. Since then, [PAWN_nameDef] looks up at every thunderstorm, as if waiting for someone to call [PAWN_objective] home.
+s00939	deep sea exile
+s00940	exile
+s00941	[PAWN_nameDef] grew up in a coral palace on the seabed, swimming with whales and learning the rhythm of prophecy from the tides.
+s00942	child of the deep sea palace
+s00943	deep sea child
+s00944	[PAWN_nameDef] lived in a city in human form for decades, ran a bookshop, worked as a scholar, and even married once. On the day of leaving, [PAWN_nameDef] took only one book.
+s00945	traveler in human form
+s00946	human-form traveler
+s00947	[PAWN_nameDef]'s father was a god and mother a mortal, and neither side came to take [PAWN_nameDef] home. When [PAWN_nameDef] threw a tantrum at age five, hail fell over the village.
+s00948	godborn foundling

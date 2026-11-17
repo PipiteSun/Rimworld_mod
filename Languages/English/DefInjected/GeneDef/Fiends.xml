@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 九狱之躯 -->
+  <LP_FiendCore.label>body of the Nine Hells</LP_FiendCore.label>
+  <!-- 魔鬼与恶魔的身体：不吃不睡，也不在乎赤身裸体。被击倒或杀死时会被遣返九狱，不留活口、不留尸体，只在原地留下战利品。寒铁武器对它们的伤害×1.5。 -->
+  <LP_FiendCore.description>The body of devils and demons: no eating or sleeping, and no care about nakedness. When knocked down or killed they are banished to the Nine Hells, leaving no survivor and no corpse, only loot on the spot. Cold iron weapons deal ×1.5 damage to them.</LP_FiendCore.description>
+  <!-- 倒下或死亡：化作黑烟遣返九狱，掉落武器与战利品，不能被俘虏或招募。 | 不会因赤身裸体而不快。 | 寒铁武器伤害×1.5。 -->
+  <LP_FiendCore.customEffectDescriptions.0>Downed or killed: turns into black smoke and is banished to the Nine Hells, dropping weapons and loot; can't be captured or recruited.</LP_FiendCore.customEffectDescriptions.0>
+  <LP_FiendCore.customEffectDescriptions.1>Not bothered by being naked.</LP_FiendCore.customEffectDescriptions.1>
+  <LP_FiendCore.customEffectDescriptions.2>Cold iron weapons deal ×1.5 damage.</LP_FiendCore.customEffectDescriptions.2>
+  <!-- 寒冰魔体型 -->
+  <LP_IceDevilStature.label>ice devil build</LP_IceDevilStature.label>
+  <!-- 寒冰魔高大的甲壳身躯：实际体型×150%，显示×130%，头顶一对冰蓝的弯角。巨躯规则让它的生命×125%、近战×115%。 -->
+  <LP_IceDevilStature.description>An ice devil's tall carapaced body: actual body size ×150%, drawn ×130%, a pair of ice-blue curved horns. Giant-body rules give it health ×125% and melee ×115%.</LP_IceDevilStature.description>
+  <!-- 寒霜之躯 -->
+  <LP_IceDevilCold.label>frost body</LP_IceDevilCold.label>
+  <!-- 寒冰魔不怕冷，也不会被点燃，火焰伤害减半。它周身5格内都是刺骨的寒气：对它敌对的角色每秒叠一层“寒气侵体”（最多3层，每层移速×85%、近战冷却×110%），离开30秒后消退。 -->
+  <LP_IceDevilCold.description>Ice devils don't fear cold and can't be ignited; fire damage halved. Biting chill surrounds them within 5 cells: hostile characters gain one stack of "chilled to the bone" per second (up to 3 stacks, each move speed ×85% and melee cooldown ×110%), fading 30 seconds after leaving.</LP_IceDevilCold.description>
+  <!-- 冰刺尾 -->
+  <LP_IceDevilStinger.label>ice-spiked tail</LP_IceDevilStinger.label>
+  <!-- 寒冰魔带冰刺的长尾。获得“尾刺”近战攻击：锐器（刺）18点，冷却3秒，命中追加一层寒气侵体。 -->
+  <LP_IceDevilStinger.description>An ice devil's ice-spiked tail. Gains the "tail spike" melee attack: sharp (stab) 18 damage, cooldown 3 seconds, each hit adds a stack of chilled to the bone.</LP_IceDevilStinger.description>
+  <!-- 魔鬼之眼 -->
+  <LP_IceDevilSight.label>devil's eye</LP_IceDevilSight.label>
+  <!-- 寒冰魔的复眼看得穿一切障眼法：伟龙的隐形、夺心魔的灵能隐匿和隐形药水的隐身，在它眼里都照常可见，可以照常瞄准。 -->
+  <LP_IceDevilSight.description>An ice devil's compound eyes see through every illusion: a great wyrm's invisibility, a mind flayer's psionic concealment and invisibility potions are all visible to it as usual and can be targeted normally.</LP_IceDevilSight.description>
+  <!-- 索敌与攻击时无视目标的心灵隐形。 -->
+  <LP_IceDevilSight.customEffectDescriptions.0>Ignores the target's psychic invisibility when seeking and attacking targets.</LP_IceDevilSight.customEffectDescriptions.0>
+  <!-- 冰蓝甲壳 -->
+  <LP_SkinIceDevil.label>ice-blue carapace</LP_SkinIceDevil.label>
+  <!-- 寒冰魔冰蓝色的甲壳，表面结着白霜。 -->
+  <LP_SkinIceDevil.description>An ice devil's ice-blue carapace covered in white frost.</LP_SkinIceDevil.description>
+  <!-- 冰蓝 -->
+  <LP_SkinIceDevil.labelShortAdj>ice blue</LP_SkinIceDevil.labelShortAdj>
+  <!-- 炎魔体型 -->
+  <LP_BalorStature.label>balor build</LP_BalorStature.label>
+  <!-- 炎魔的巨躯：实际体型×250%，显示×160%，头顶一对焦黑带红的巨角。巨躯规则让它的生命×175%、近战×145%。 -->
+  <LP_BalorStature.description>The balor's huge body: actual body size ×250%, drawn ×160%, a pair of huge charred red-tinged horns. Giant-body rules give it health ×175% and melee ×145%.</LP_BalorStature.description>
+  <!-- 深渊烈焰 -->
+  <LP_BalorFlame.label>abyssal flames</LP_BalorFlame.label>
+  <!-- 炎魔裹在深渊之火里：完全不受火焰伤害、不会被点燃，但怕冷（寒冷伤害×150%）。每2秒，它身边2格内的每个可燃物和角色都有20%概率着火——不分敌我。 -->
+  <LP_BalorFlame.description>A balor is wrapped in abyssal fire: completely immune to fire damage and can't be ignited, but fears cold (cold damage ×150%). Every 2 seconds, each flammable thing and character within 2 cells of it has a 20% chance to catch fire, friend or foe.</LP_BalorFlame.description>
+  <!-- 炎魔之翼 -->
+  <LP_BalorWings.label>balor wings</LP_BalorWings.label>
+  <!-- 一对焦黑带红的巨大蝠翼。能力“振翼”：把4格内的敌人掀开2格并眩晕2秒，冷却1天。 -->
+  <LP_BalorWings.description>A pair of huge charred red-tinged bat wings. Ability "Wing buffet": throw enemies within 4 cells back 2 cells and stun them for 2 seconds, cooldown 1 day.</LP_BalorWings.description>
+  <!-- 死亡爆炸 -->
+  <LP_BalorDeathburst.label>death throes</LP_BalorDeathburst.label>
+  <!-- 炎魔被打倒时身体开始崩解，1秒后炸开：半径4格内造成40点火焰伤害并点燃地面，不分敌我。 -->
+  <LP_BalorDeathburst.description>When a balor is struck down its body starts to crumble and explodes after 1 second: 40 fire damage within radius 4, igniting the ground, hitting friend and foe alike.</LP_BalorDeathburst.description>
+  <!-- 消散时：1秒后半径4格的火焰爆炸（40点）。 -->
+  <LP_BalorDeathburst.customEffectDescriptions.0>On dissipating: after 1 second, a fire explosion of radius 4 (40 damage).</LP_BalorDeathburst.customEffectDescriptions.0>
+  <!-- 深渊暗红 -->
+  <LP_SkinBalor.label>abyssal dark red</LP_SkinBalor.label>
+  <!-- 炎魔暗红色的皮肤，裂缝里透出火光。 -->
+  <LP_SkinBalor.description>A balor's dark red skin with firelight glowing through the cracks.</LP_SkinBalor.description>
+  <!-- 暗红 -->
+  <LP_SkinBalor.labelShortAdj>dark red</LP_SkinBalor.labelShortAdj>
+</LanguageData>

@@ -23,46 +23,46 @@ namespace LichPhylactery {
   public static GameConditionDef CollapseDef=>collapse??(collapse=DefDatabase<GameConditionDef>.GetNamedSilentFail("LP_WeaveCollapse"));
   public static bool Active(Map m,GameConditionDef d)=>m!=null && d!=null && m.gameConditionManager.ConditionIsActive(d);
   public static bool WeaveCollapsed(Map m)=>Active(m,CollapseDef);
-  public const string CollapseReason="魔网崩溃：这张地图上的魔网碎了，法术施放不出来";
+  public static readonly string CollapseReason="魔网崩溃：这张地图上的魔网碎了，法术施放不出来".Loc();
   // 心灵法术冷却：魔网震颤 ×2（1.58.0 魔网之子升华不受影响），奥术半神 ×0.5（原版与 VPE 都走这里）。
   public static float CooldownFactor(Pawn p){float f=1f;if(p==null)return f;if(Active(p.MapHeld,TremorDef) && !HeroDestiny.WeaveImmune(p))f*=2f;if(IsArcaneDemigod(p))f*=.5f;return f;}
   public static IEnumerable<Building_NetherilAltar> Altars(Map map)=>map==null?Enumerable.Empty<Building_NetherilAltar>():map.listerBuildings.allBuildingsColonist.OfType<Building_NetherilAltar>();
   public static int Level(Pawn p)=>NetherilHooks.VPEActive?NetherilHooks.Level(p):p?.GetPsylinkLevel()??0;
   public static bool LevelOk(Pawn p)=>p!=null && (p.GetPsylinkLevel()>=PsylinkNeed || (NetherilHooks.VPEActive && NetherilHooks.Level(p)>=VPENeed));
-  public static string LevelText=>"心灵链接 "+PsylinkNeed+" 级"+(NetherilHooks.VPEActive?"或 VPE 灵能等级 ≥ "+VPENeed:"");
+  public static string LevelText=>"心灵链接 ".Loc()+PsylinkNeed+" 级".Loc()+(NetherilHooks.VPEActive?"或 VPE 灵能等级 ≥ ".Loc()+VPENeed:"");
   public static string PrincipalBlocked(Pawn p){
-   var st=Netheril.State;if(p==null || st==null)return "没有主祭";
-   if(st.Passes(p)<Netheril.AscensionPasses)return p.LabelShort+"读卡苏斯之卷 "+st.Passes(p)+" / "+Netheril.AscensionPasses+" 遍";
-   if(!LevelOk(p))return p.LabelShort+"需要"+LevelText;
+   var st=Netheril.State;if(p==null || st==null)return "没有主祭".Loc();
+   if(st.Passes(p)<Netheril.AscensionPasses)return p.LabelShort+"读卡苏斯之卷 ".Loc()+st.Passes(p)+" / "+Netheril.AscensionPasses+" 遍".Loc();
+   if(!LevelOk(p))return p.LabelShort+"需要".Loc()+LevelText;
    return null;
   }
   public static string ConditionsText(Pawn p){
    var st=Netheril.State;
-   return "升神仪式的三个条件：\n① 一个人把卡苏斯之卷读满 "+Netheril.AscensionPasses+" 遍"+(p!=null && st!=null?"（"+p.LabelShort+"："+st.Passes(p)+" 遍）":"")+"\n② 这个人"+LevelText+(p!=null?"（现在 "+(NetherilHooks.VPEActive?"灵能等级 "+NetherilHooks.Level(p)+"，":"")+"心灵链接 "+p.GetPsylinkLevel()+" 级）":"")+"\n③ 一座耐瑟祭坛（研究“耐瑟瑞尔奥术”，金 100 + 秘银 50 + 玻璃钢 50）\n\n另外还要至少 "+MinCo+" 名有心灵链接的协祭，开始时所有人精神力 ≥ "+FocusNeed.ToStringPercent()+"。";
+   return "升神仪式的三个条件：\n① 一个人把卡苏斯之卷读满 ".Loc()+Netheril.AscensionPasses+" 遍".Loc()+(p!=null && st!=null?"（".Loc()+p.LabelShort+"：".Loc()+st.Passes(p)+" 遍）".Loc():"")+"\n② 这个人".Loc()+LevelText+(p!=null?"（现在 ".Loc()+(NetherilHooks.VPEActive?"灵能等级 ".Loc()+NetherilHooks.Level(p)+"，".Loc():"")+"心灵链接 ".Loc()+p.GetPsylinkLevel()+" 级）".Loc():"")+"\n③ 一座耐瑟祭坛（研究“耐瑟瑞尔奥术”，金 100 + 秘银 50 + 玻璃钢 50）\n\n另外还要至少 ".Loc()+MinCo+" 名有心灵链接的协祭，开始时所有人精神力 ≥ ".Loc()+FocusNeed.ToStringPercent()+"。".Loc();
   }
   public static string ConditionsLine(Map map){
    var st=Netheril.State;if(st==null)return "";
    var best=map?.mapPawns.FreeColonists.OrderByDescending(p=>st.Passes(p)).FirstOrDefault();
    bool a=best!=null && st.Passes(best)>=Netheril.AscensionPasses,b=best!=null && LevelOk(best),c=Altars(map).Any();
-   return "升神条件：读满 "+Netheril.AscensionPasses+" 遍 "+(a?"✓":"✗")+(best!=null?"（最多："+best.LabelShort+" "+st.Passes(best)+" 遍）":"")+"；"+LevelText+" "+(b?"✓":"✗")+"；耐瑟祭坛 "+(c?"✓":"✗");
+   return "升神条件：读满 ".Loc()+Netheril.AscensionPasses+" 遍 ".Loc()+(a?"✓":"✗")+(best!=null?"（最多：".Loc()+best.LabelShort+" "+st.Passes(best)+" 遍）".Loc():"")+"；".Loc()+LevelText+" "+(b?"✓":"✗")+"；耐瑟祭坛 ".Loc()+(c?"✓":"✗");
   }
   public static List<Pawn> Principals(Map map)=>map==null?new List<Pawn>():map.mapPawns.FreeColonistsSpawned.Where(p=>PrincipalBlocked(p)==null && !p.Downed && !p.InMentalState).ToList();
   public static List<Pawn> CoCandidates(Map map,Pawn principal)=>map==null?new List<Pawn>():map.mapPawns.FreeColonistsSpawned.Where(p=>p!=principal && Netheril.HasPsylink(p) && !p.Downed && !p.InMentalState).ToList();
   // 发起前的总条件（不含选人）。
   public static string Blocked(Building_NetherilAltar altar){
-   var st=Netheril.State;if(st==null || altar==null || !altar.Spawned)return "祭坛不在地图上";
-   if(st.demigod!=null && !st.demigod.Dead && !st.demigod.Destroyed && IsArcaneDemigod(st.demigod))return "世上已经有一位奥术半神了（"+st.demigod.LabelShort+"）";
-   if(st.deciphered)return "卡苏斯之卷已被解读，不会再有升神仪式";
-   if(altar.lord!=null && altar.Map.lordManager.lords.Contains(altar.lord))return "仪式正在进行";
-   var k=NetherilQuest.Karsus;if(k==null || k.MapHeld!=altar.Map)return "卡苏斯之卷要在这张地图上";
-   if(Principals(altar.Map).Count==0)return "没有人满足主祭条件："+Netheril.AscensionPasses+" 遍 + "+LevelText;
+   var st=Netheril.State;if(st==null || altar==null || !altar.Spawned)return "祭坛不在地图上".Loc();
+   if(st.demigod!=null && !st.demigod.Dead && !st.demigod.Destroyed && IsArcaneDemigod(st.demigod))return "世上已经有一位奥术半神了（".Loc()+st.demigod.LabelShort+"）".Loc();
+   if(st.deciphered)return "卡苏斯之卷已被解读，不会再有升神仪式".Loc();
+   if(altar.lord!=null && altar.Map.lordManager.lords.Contains(altar.lord))return "仪式正在进行".Loc();
+   var k=NetherilQuest.Karsus;if(k==null || k.MapHeld!=altar.Map)return "卡苏斯之卷要在这张地图上".Loc();
+   if(Principals(altar.Map).Count==0)return "没有人满足主祭条件：".Loc()+Netheril.AscensionPasses+" 遍 + ".Loc()+LevelText;
    return null;
   }
   public static string StartBlocked(Building_NetherilAltar altar,Pawn principal,List<Pawn> co){
    var b=Blocked(altar);if(b!=null)return b;
    b=PrincipalBlocked(principal);if(b!=null)return b;
-   if(co==null || co.Count(p=>p!=principal && Netheril.HasPsylink(p))<MinCo)return "至少要 "+MinCo+" 名有心灵链接的协祭";
-   foreach(var p in co.Concat(new[]{principal}))if((p.psychicEntropy?.CurrentPsyfocus??0f)<FocusNeed-.0001f)return p.LabelShort+"的精神力不到 "+FocusNeed.ToStringPercent();
+   if(co==null || co.Count(p=>p!=principal && Netheril.HasPsylink(p))<MinCo)return "至少要 ".Loc()+MinCo+" 名有心灵链接的协祭".Loc();
+   foreach(var p in co.Concat(new[]{principal}))if((p.psychicEntropy?.CurrentPsyfocus??0f)<FocusNeed-.0001f)return p.LabelShort+"的精神力不到 ".Loc()+FocusNeed.ToStringPercent();
    return null;
   }
   // 成功率 = 40% + 5%×(遍数−7) + 5%×(协祭−3) + 2%×floor((心灵敏感度−100%)/10%)，夹在 40%～90%。
@@ -76,7 +76,7 @@ namespace LichPhylactery {
    var lord=LordMaker.MakeNewLord(Faction.OfPlayer,job,map,all);
    altar.lord=lord;
    if(TremorDef!=null)map.gameConditionManager.RegisterCondition(GameConditionMaker.MakeCondition(TremorDef,DurationTicks));
-   Messages.Message(principal.LabelShort+"开始了升神仪式："+co.Count+" 名协祭，成功率 "+Chance(principal,co.Count).ToStringPercent()+"。仪式要 6 小时。",new LookTargets(altar),MessageTypeDefOf.NeutralEvent,false);
+   Messages.Message(principal.LabelShort+"开始了升神仪式：".Loc()+co.Count+" 名协祭，成功率 ".Loc()+Chance(principal,co.Count).ToStringPercent()+"。仪式要 6 小时。".Loc(),new LookTargets(altar),MessageTypeDefOf.NeutralEvent,false);
    return lord;
   }
   static void ClearFocus(IEnumerable<Pawn> pawns){foreach(var p in pawns)if(p?.psychicEntropy!=null)p.psychicEntropy.OffsetPsyfocusDirectly(-p.psychicEntropy.CurrentPsyfocus);}
@@ -96,21 +96,21 @@ namespace LichPhylactery {
    if(st!=null){st.demigod=p;st.deciphered=true;}
    p.needs?.AddOrRemoveNeedsAsAppropriate();p.Drawer?.renderer?.SetAllGraphicsDirty();
    var t=DefDatabase<ThoughtDef>.GetNamedSilentFail("LP_WitnessedAscension");if(t!=null)foreach(var c in PawnsFinder.AllMaps_FreeColonists)c.needs?.mood?.thoughts?.memories?.TryGainMemory(t);
-   try{ArcaneDemigodGranted?.Invoke(p);}catch(Exception e){Log.Error("[DND边缘大陆] ArcaneDemigodGranted 订阅者出错："+e);}
-   Find.LetterStack.ReceiveLetter("奥术半神",p.LabelShort+"完成了卡苏斯没能完成的事：魔网接纳了他，"+p.LabelShort+"成为了奥术半神。\n\n心灵熵上限 ×2、精神力回复 ×2、不再衰老、不再需要进食；心灵法术冷却减半。获得能力“神谕”：每天一次，抹去一名殖民者所有的负面心情记忆。\n\n卡苏斯之卷已被解读：仍然可以研读以获得回响，但不会再有升神仪式。全体殖民者“见证升神”心情 +5，持续 15 天。",LetterDefOf.PositiveEvent,p);
+   try{ArcaneDemigodGranted?.Invoke(p);}catch(Exception e){Log.Error("[DND边缘大陆] ArcaneDemigodGranted 订阅者出错：".Loc()+e);}
+   Find.LetterStack.ReceiveLetter("奥术半神".Loc(),p.LabelShort+"完成了卡苏斯没能完成的事：魔网接纳了他，".Loc()+p.LabelShort+"成为了奥术半神。\n\n心灵熵上限 ×2、精神力回复 ×2、不再衰老、不再需要进食；心灵法术冷却减半。获得能力“神谕”：每天一次，抹去一名殖民者所有的负面心情记忆。\n\n卡苏斯之卷已被解读：仍然可以研读以获得回响，但不会再有升神仪式。全体殖民者“见证升神”心情 +5，持续 15 天。".Loc(),LetterDefOf.PositiveEvent,p);
   }
   public static void Fail(Pawn p,Map map){
    var st=Netheril.State;
    PetrifiedStatue statue=null;if(p!=null && p.Spawned){statue=ItemScrolls.Petrify(p);if(statue!=null)statue.permanent=true;}
    if(map!=null && CollapseDef!=null)map.gameConditionManager.RegisterCondition(GameConditionMaker.MakeCondition(CollapseDef,CollapseDays*GenDate.TicksPerDay));
-   var k=NetherilQuest.Karsus;if(k!=null){if(k.Spawned)FleckMaker.ThrowDustPuffThick(k.DrawPos,k.Map,2f,Color.gray);k.Destroy(DestroyMode.Vanish);NetherilQuest.OnKarsusLost("在失败的仪式里化成了灰");}
+   var k=NetherilQuest.Karsus;if(k!=null){if(k.Spawned)FleckMaker.ThrowDustPuffThick(k.DrawPos,k.Map,2f,Color.gray);k.Destroy(DestroyMode.Vanish);NetherilQuest.OnKarsusLost("在失败的仪式里化成了灰".Loc());}
    var t=DefDatabase<ThoughtDef>.GetNamedSilentFail("LP_AscensionFailed");if(t!=null)foreach(var c in PawnsFinder.AllMaps_FreeColonists)c.needs?.mood?.thoughts?.memories?.TryGainMemory(t);
-   Find.LetterStack.ReceiveLetter("升神失败",(p?.LabelShort??"主祭")+"没能撑住魔网的重量，化成了一尊石像——这尊石像不可复原。\n\n这张地图陷入“魔网崩溃”，持续 "+CollapseDays+" 天：所有心灵法术（原版和 VPE）、职业法术、巫妖法术和法杖射击都用不了。卡苏斯之卷在仪式里化成了灰，30～60 天后会传来它的下落；各人读过的遍数都还记着。全体殖民者“升神失败”心情 -8，持续 10 天。",LetterDefOf.NegativeEvent,statue!=null?new LookTargets(statue):LookTargets.Invalid);
+   Find.LetterStack.ReceiveLetter("升神失败".Loc(),(p?.LabelShort??"主祭".Loc())+"没能撑住魔网的重量，化成了一尊石像——这尊石像不可复原。\n\n这张地图陷入“魔网崩溃”，持续 ".Loc()+CollapseDays+" 天：所有心灵法术（原版和 VPE）、职业法术、巫妖法术和法杖射击都用不了。卡苏斯之卷在仪式里化成了灰，30～60 天后会传来它的下落；各人读过的遍数都还记着。全体殖民者“升神失败”心情 -8，持续 10 天。".Loc(),LetterDefOf.NegativeEvent,statue!=null?new LookTargets(statue):LookTargets.Invalid);
   }
   public static void Abort(Building_NetherilAltar altar,List<Pawn> all,string why){
    ClearFocus(all);
    var map=altar?.Map;foreach(var c in (map?.gameConditionManager.ActiveConditions??new List<GameCondition>()).Where(c=>c.def==TremorDef).ToList())c.End();
-   Messages.Message("升神仪式中断了："+why+"。卷轴完好，可以重新发起。",new LookTargets(altar),MessageTypeDefOf.NegativeEvent,false);
+   Messages.Message("升神仪式中断了：".Loc()+why+"。卷轴完好，可以重新发起。".Loc(),new LookTargets(altar),MessageTypeDefOf.NegativeEvent,false);
   }
  }
 
@@ -119,14 +119,14 @@ namespace LichPhylactery {
   public override IEnumerable<Gizmo> GetGizmos(){
    foreach(var g in base.GetGizmos())yield return g;
    if(Faction!=Faction.OfPlayer)yield break;
-   var cmd=new Command_Action{defaultLabel="发起升神仪式",defaultDesc="主祭（读满 "+Netheril.AscensionPasses+" 遍卡苏斯之卷、"+NetherilAscension.LevelText+"）和至少 "+NetherilAscension.MinCo+" 名有心灵链接的协祭在祭坛前吟诵 6 小时。开始时所有人精神力 ≥ 80%，结束时清零。\n\n成功率 = 40% + 5%×(遍数−7) + 5%×(协祭−3) + 2%×每高出 10% 的心灵敏感度，40%～90%。\n成功：主祭成为奥术半神。失败：主祭化为不可复原的石像，本地图魔网崩溃 15 天，卷轴化为灰烬。",icon=ContentFinder<Texture2D>.Get(def.uiIconPath??def.graphicData.texPath,false)??BaseContent.BadTex,action=()=>Find.WindowStack.Add(new Dialog_NetherilAscension(this))};
+   var cmd=new Command_Action{defaultLabel="发起升神仪式".Loc(),defaultDesc="主祭（读满 ".Loc()+Netheril.AscensionPasses+" 遍卡苏斯之卷、".Loc()+NetherilAscension.LevelText+"）和至少 ".Loc()+NetherilAscension.MinCo+" 名有心灵链接的协祭在祭坛前吟诵 6 小时。开始时所有人精神力 ≥ 80%，结束时清零。\n\n成功率 = 40% + 5%×(遍数−7) + 5%×(协祭−3) + 2%×每高出 10% 的心灵敏感度，40%～90%。\n成功：主祭成为奥术半神。失败：主祭化为不可复原的石像，本地图魔网崩溃 15 天，卷轴化为灰烬。".Loc(),icon=ContentFinder<Texture2D>.Get(def.uiIconPath??def.graphicData.texPath,false)??BaseContent.BadTex,action=()=>Find.WindowStack.Add(new Dialog_NetherilAscension(this))};
    var why=NetherilAscension.Blocked(this);if(why!=null)cmd.Disable(why);
    yield return cmd;
   }
   public override string GetInspectString(){
    var s=base.GetInspectString();var lines=new List<string>();if(!s.NullOrEmpty())lines.Add(s);
    lines.Add(NetherilAscension.ConditionsLine(Map));
-   if(lord?.LordJob is LordJob_NetherilAscension j && Map.lordManager.lords.Contains(lord))lines.Add("升神仪式进行中：还剩 "+Mathf.Max(0f,(j.startTick+NetherilAscension.DurationTicks-Find.TickManager.TicksGame)/2500f).ToString("0.#")+" 小时");
+   if(lord?.LordJob is LordJob_NetherilAscension j && Map.lordManager.lords.Contains(lord))lines.Add("升神仪式进行中：还剩 ".Loc()+Mathf.Max(0f,(j.startTick+NetherilAscension.DurationTicks-Find.TickManager.TicksGame)/2500f).ToString("0.#")+" 小时".Loc());
    return string.Join("\n",lines);
   }
   public override void ExposeData(){base.ExposeData();ScribeLord.Look(ref lord,"lpAscensionLord");}
@@ -139,26 +139,26 @@ namespace LichPhylactery {
   public Dialog_NetherilAscension(Building_NetherilAltar altar){this.altar=altar;doCloseX=true;forcePause=true;absorbInputAroundWindow=true;principal=NetherilAscension.Principals(altar.Map).FirstOrDefault();}
   // 1.124.0 UI 整理：标题固定，主祭 / 协祭 / 成功率 / 按钮整块滚动（原来主祭很多时会把按钮挤出窗口，协祭列表另有一层小滚动区）。
   public override void DoWindowContents(Rect inRect){
-   float top=LPUI.Title(inRect,"升神仪式");
+   float top=LPUI.Title(inRect,"升神仪式".Loc());
    var l=LPUI.BeginScroll(new Rect(inRect.x,top,inRect.width,inRect.yMax-top),ref scroll,contentH);
    try{Body(l);}finally{contentH=LPUI.EndScroll(l);LPUI.Reset();}
   }
   void Body(Listing_Standard l){
-   l.Label("主祭：");
-   foreach(var p in NetherilAscension.Principals(altar.Map))if(l.RadioButton(p.LabelShort+"（"+Netheril.State.Passes(p)+" 遍，心灵敏感度 "+p.GetStatValue(StatDefOf.PsychicSensitivity).ToStringPercent()+"）",principal==p)){principal=p;co.Remove(p);}
-   l.GapLine();l.Label("协祭（至少 "+NetherilAscension.MinCo+" 名有心灵链接的殖民者）：");
+   l.Label("主祭：".Loc());
+   foreach(var p in NetherilAscension.Principals(altar.Map))if(l.RadioButton(p.LabelShort+"（".Loc()+Netheril.State.Passes(p)+" 遍，心灵敏感度 ".Loc()+p.GetStatValue(StatDefOf.PsychicSensitivity).ToStringPercent()+"）".Loc(),principal==p)){principal=p;co.Remove(p);}
+   l.GapLine();l.Label("协祭（至少 ".Loc()+NetherilAscension.MinCo+" 名有心灵链接的殖民者）：".Loc());
    var cands=NetherilAscension.CoCandidates(altar.Map,principal);
-   if(cands.Count==0){GUI.color=Color.gray;l.Label("没有可以当协祭的殖民者。");GUI.color=Color.white;}
-   foreach(var p in cands){bool on=co.Contains(p);l.CheckboxLabeled(p.LabelShort+"（精神力 "+(p.psychicEntropy?.CurrentPsyfocus??0f).ToStringPercent()+"）",ref on);if(on)co.Add(p);else co.Remove(p);}
+   if(cands.Count==0){GUI.color=Color.gray;l.Label("没有可以当协祭的殖民者。".Loc());GUI.color=Color.white;}
+   foreach(var p in cands){bool on=co.Contains(p);l.CheckboxLabeled(p.LabelShort+"（精神力 ".Loc()+(p.psychicEntropy?.CurrentPsyfocus??0f).ToStringPercent()+"）".Loc(),ref on);if(on)co.Add(p);else co.Remove(p);}
    co.RemoveWhere(p=>!cands.Contains(p));
    l.GapLine();
    var list=co.ToList();
-   if(principal!=null)l.Label("成功率："+NetherilAscension.Chance(principal,list.Count).ToStringPercent()+"（40%～90%）");
+   if(principal!=null)l.Label("成功率：".Loc()+NetherilAscension.Chance(principal,list.Count).ToStringPercent()+"（40%～90%）".Loc());
    var why=NetherilAscension.StartBlocked(altar,principal,list);
    if(why!=null)l.Label("<color=#d08080>"+why+"</color>");
-   if(l.ButtonText("开始仪式") && why==null){
+   if(l.ButtonText("开始仪式".Loc()) && why==null){
     float chance=NetherilAscension.Chance(principal,list.Count);var p0=principal;
-    Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation("由 "+p0.LabelShort+" 主祭、"+list.Count+" 名协祭发起升神仪式。\n\n成功率 "+chance.ToStringPercent()+"。\n失败时 "+p0.LabelShort+" 会化为不可复原的石像，这张地图魔网崩溃 15 天，卡苏斯之卷化为灰烬。\n\n确定开始吗？",()=>{NetherilAscension.Start(altar,p0,list);Close();},true));
+    Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation("由 ".Loc()+p0.LabelShort+" 主祭、".Loc()+list.Count+" 名协祭发起升神仪式。\n\n成功率 ".Loc()+chance.ToStringPercent()+"。\n失败时 ".Loc()+p0.LabelShort+" 会化为不可复原的石像，这张地图魔网崩溃 15 天，卡苏斯之卷化为灰烬。\n\n确定开始吗？".Loc(),()=>{NetherilAscension.Start(altar,p0,list);Close();},true));
    }
   }
  }
@@ -181,9 +181,9 @@ namespace LichPhylactery {
    base.LordJobTick();if(done)return;int now=Find.TickManager.TicksGame;
    if(now%250==0){
     string why=null;
-    if(altar==null || altar.Destroyed || !altar.Spawned)why="祭坛没了";
-    else if(principal==null || principal.Dead || principal.Downed || !lord.ownedPawns.Contains(principal))why="主祭离开了仪式";
-    else if(Co.Count<NetherilAscension.MinCo)why="协祭不足 "+NetherilAscension.MinCo+" 人";
+    if(altar==null || altar.Destroyed || !altar.Spawned)why="祭坛没了".Loc();
+    else if(principal==null || principal.Dead || principal.Downed || !lord.ownedPawns.Contains(principal))why="主祭离开了仪式".Loc();
+    else if(Co.Count<NetherilAscension.MinCo)why="协祭不足 ".Loc()+NetherilAscension.MinCo+" 人".Loc();
     if(why!=null){done=true;NetherilAscension.Abort(altar,lord.ownedPawns.ToList(),why);End();return;}
    }
    if(now>=startTick+NetherilAscension.DurationTicks){done=true;var co=Co;var p=principal;var a=altar;End();NetherilAscension.Resolve(a,p,co);}
@@ -234,7 +234,7 @@ namespace LichPhylactery {
    return s>off+.01f?(s-off)/s:1f;
   }
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p){float r=Ratio(p);if(r!=1f)val*=r;}}
-  public override string ExplanationPart(StatRequest req){float r=Ratio(req.Thing as Pawn);return r==1f?null:"奥术半神（半神层敏感度不重复计入）：×"+r.ToStringPercent();}
+  public override string ExplanationPart(StatRequest req){float r=Ratio(req.Thing as Pawn);return r==1f?null:"奥术半神（半神层敏感度不重复计入）：×".Loc()+r.ToStringPercent();}
  }
  [StaticConstructorOnStartup]
  public static class ArcaneEntropyStartup {
@@ -245,11 +245,11 @@ namespace LichPhylactery {
  public class CompOracle : CompAbilityEffect {
   public static int Clear(Pawn p){var mem=p?.needs?.mood?.thoughts?.memories;if(mem==null)return 0;var bad=mem.Memories.Where(m=>m.MoodOffset()<0f).ToList();foreach(var m in bad)mem.RemoveMemory(m);return bad.Count;}
   public override bool Valid(LocalTargetInfo target,bool throwMessages=false){
-   var p=target.Pawn;string why=p==null || p.Dead?"需要一名活着的殖民者":p.Faction!=Faction.OfPlayer || !p.RaceProps.Humanlike?"只能对殖民者使用":null;
+   var p=target.Pawn;string why=p==null || p.Dead?"需要一名活着的殖民者".Loc():p.Faction!=Faction.OfPlayer || !p.RaceProps.Humanlike?"只能对殖民者使用".Loc():null;
    if(why!=null && throwMessages)Messages.Message(why,MessageTypeDefOf.RejectInput,false);
    return why==null && base.Valid(target,throwMessages);
   }
-  public override void Apply(LocalTargetInfo target,LocalTargetInfo dest){base.Apply(target,dest);var p=target.Pawn;int n=Clear(p);Messages.Message("神谕抚平了"+p.LabelShort+"心里的 "+n+" 段阴影。",p,MessageTypeDefOf.PositiveEvent,false);}
+  public override void Apply(LocalTargetInfo target,LocalTargetInfo dest){base.Apply(target,dest);var p=target.Pawn;int n=Clear(p);Messages.Message("神谕抚平了".Loc()+p.LabelShort+"心里的 ".Loc()+n+" 段阴影。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);}
  }
 
  [HarmonyPatch(typeof(Pawn_AgeTracker),"get_BiologicalTicksPerTick")]

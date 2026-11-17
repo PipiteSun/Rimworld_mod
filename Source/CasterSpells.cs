@@ -34,9 +34,9 @@ namespace LichPhylactery {
    if(table!=null)return table;var t=new Dictionary<AbilityDef,int>();
    foreach(var s in spells){
     if(s.NullOrEmpty())continue;var parts=s.Split('=');var d=DefDatabase<AbilityDef>.GetNamedSilentFail(parts[0].Trim());
-    if(d==null){Log.Warning("[DND边缘大陆] 法术表 "+defName+" 找不到法术 "+parts[0]);continue;}
+    if(d==null){Log.Warning("[DND边缘大陆] 法术表 ".Loc()+defName+" 找不到法术 ".Loc()+parts[0]);continue;}
     int c=parts.Length>1 && int.TryParse(parts[1],out int o)?o:Spellbook.Circle(d);
-    if(c<0){Log.Warning("[DND边缘大陆] 法术表 "+defName+" 的 "+d.defName+" 没有环位");continue;}
+    if(c<0){Log.Warning("[DND边缘大陆] 法术表 ".Loc()+defName+" 的 ".Loc()+d.defName+" 没有环位".Loc());continue;}
     t[d]=c;
    }
    table=t;ordered=t.Keys.OrderBy(k=>t[k]).ThenBy(k=>k.label).ToList();return table;}}
@@ -159,10 +159,10 @@ namespace LichPhylactery {
   public static float EnergyLeft(Hediff_Adventurer h,CasterListDef l){var b=Book(h,l,false);return b==null?0f:Mathf.Max(0f,EnergyMax(h,l)-b.energy);}
   static int EnergyCost(Pawn p,AbilityDef def,CompProperties_ClassEffect props,CasterListDef l)=>CircleIn(l,def)<=0 && AnyCircle(def)<=0?0:ClassLegendary.Cost(p,def,props);
   public static string CannotCast(Pawn p,AbilityDef def,CompProperties_ClassEffect props){
-   if(CasterEffects.Live>0 && Items.Has(p,"LP_CS_Silenced") && (Spellbook.IsSpell(def) || CastList(p,def)!=null))return "被静默术笼罩，念不出咒语";
+   if(CasterEffects.Live>0 && Items.Has(p,"LP_CS_Silenced") && (Spellbook.IsSpell(def) || CastList(p,def)!=null))return "被静默术笼罩，念不出咒语".Loc();
    var c=Adventurer.Get(p)?.classes;if(c?.casterBooks==null || c.casterBooks.Count==0)return null;
    var l=CastList(p,def);if(l==null || !l.UsesEnergy)return null;var b=Book(p,l);if(b==null || b.arcanum.Contains(def))return null;
-   int cost=EnergyCost(p,def,props,l);var h=Adventurer.Get(p);if(cost>0 && EnergyLeft(h,l)+.001f<cost)return "法术能量不足（"+EnergyLeft(h,l).ToString("0.#")+" / "+cost+"，睡醒回满）";
+   int cost=EnergyCost(p,def,props,l);var h=Adventurer.Get(p);if(cost>0 && EnergyLeft(h,l)+.001f<cost)return "法术能量不足（".Loc()+EnergyLeft(h,l).ToString("0.#")+" / "+cost+"，睡醒回满）".Loc();
    return null;
   }
   public static bool Pay(Pawn p,AbilityDef def,CompProperties_ClassEffect props){
@@ -174,29 +174,29 @@ namespace LichPhylactery {
   public static string CostTip(Pawn p,AbilityDef def,CompProperties_ClassEffect props){
    if(props==null || props.passive)return null;var c=Adventurer.Get(p)?.classes;if(c?.casterBooks==null || c.casterBooks.Count==0)return null;
    var l=CastList(p,def);if(l==null)return null;var b=Book(p,l);var h=Adventurer.Get(p);
-   if(b!=null && b.arcanum.Contains(def))return "秘法玄奥：每天 1 次，不消耗资源（今天已用 "+Spellbook.UsedToday(p,def)+" / 1）";
+   if(b!=null && b.arcanum.Contains(def))return "秘法玄奥：每天 1 次，不消耗资源（今天已用 ".Loc()+Spellbook.UsedToday(p,def)+" / 1）".Loc();
    if(!l.UsesEnergy)return null;int cost=EnergyCost(p,def,props,l);
-   return cost<=0?"不消耗资源（只看冷却）":"消耗：法术能量 "+cost+"（剩 "+EnergyLeft(h,l).ToString("0.#")+" / "+EnergyMax(h,l)+"，睡醒回满）";
+   return cost<=0?"不消耗资源（只看冷却）".Loc():"消耗：法术能量 ".Loc()+cost+"（剩 ".Loc()+EnergyLeft(h,l).ToString("0.#")+" / "+EnergyMax(h,l)+"，睡醒回满）".Loc();
   }
   // 1.131.0 无踪步：商队里有人身上有“无踪”时，针对商队的威胁事件一半被避开。
   public static bool TraceBlocks(RimWorld.Planet.Caravan c)=>CasterEffects.Live>0 && c!=null && c.PawnsListForReading.Any(x=>Items.Has(x,"LP_CS_PassTrace")) && Rand.Chance(.5f);
   // 1.131.0 商队按钮：无踪步（1 天遇袭几率减半）、风行术（1 天全队移动 ×2）。
-  static readonly (string def,string label,string hediff)[] CaravanSpells={("LP_CS_PassWithoutTrace","无踪步：1 天内遇袭几率减半","LP_CS_PassTrace"),("LP_CS_WindWalk","风行术：1 天内全队移动 ×2","LP_CS_WindWalk")};
+  static readonly (string def,string label,string hediff)[] CaravanSpells={("LP_CS_PassWithoutTrace","无踪步：1 天内遇袭几率减半".Loc(),"LP_CS_PassTrace"),("LP_CS_WindWalk","风行术：1 天内全队移动 ×2".Loc(),"LP_CS_WindWalk")};
   public static IEnumerable<Gizmo> CaravanGizmos(RimWorld.Planet.Caravan c){
    foreach(var p in c.PawnsListForReading.ToList()){
     var hh=Adventurer.Get(p);if(hh?.classes?.casterBooks==null || hh.classes.casterBooks.Count==0)continue;
     foreach(var (n,label,hed) in CaravanSpells){
      var def=DefCache<AbilityDef>.Get(n);var ab=def==null?null:p.abilities?.GetAbility(def);if(ab==null || CastList(p,def)==null)continue;var props=def.comps?.OfType<CompProperties_ClassEffect>().FirstOrDefault();
-     string why=ab.OnCooldown?"冷却中":ClassSystem.CannotCast(p,def,props);var pawn=p;var caravan=c;
-     yield return new Command_Action{defaultLabel=label,defaultDesc=pawn.LabelShort+"："+def.description,icon=def.uiIcon,Disabled=why!=null,disabledReason=why,
-      action=()=>{ClassSystem.Pay(pawn,def,props);Spellbook.UseDaily(pawn,def);ab.StartCooldown(def.cooldownTicksRange.max);foreach(var x in caravan.PawnsListForReading.ToList())Items.Give(x,hed,60000,1f);Messages.Message(def.label+"："+caravan.Label,MessageTypeDefOf.PositiveEvent,false);}};
+     string why=ab.OnCooldown?"冷却中".Loc():ClassSystem.CannotCast(p,def,props);var pawn=p;var caravan=c;
+     yield return new Command_Action{defaultLabel=label,defaultDesc=pawn.LabelShort+"：".Loc()+def.description,icon=def.uiIcon,Disabled=why!=null,disabledReason=why,
+      action=()=>{ClassSystem.Pay(pawn,def,props);Spellbook.UseDaily(pawn,def);ab.StartCooldown(def.cooldownTicksRange.max);foreach(var x in caravan.PawnsListForReading.ToList())Items.Give(x,hed,60000,1f);Messages.Message(def.label+"：".Loc()+caravan.Label,MessageTypeDefOf.PositiveEvent,false);}};
     }
    }
   }
   public static void AfterCast(Ability_Class a){
    var p=a?.pawn;if(p==null || CasterEffects.Live<=0)return;var e=CExt(a.def);if(e?.kind=="meta")return;
    if(!Spellbook.IsSpell(a.def) && CastList(p,a.def)==null)return;
-   if(Items.Has(p,"LP_CS_MetaQuicken")){Items.Remove(p,"LP_CS_MetaQuicken");a.ResetCooldown();Items.Mote(p,"超魔·即时：不进冷却",Color);}
+   if(Items.Has(p,"LP_CS_MetaQuicken")){Items.Remove(p,"LP_CS_MetaQuicken");a.ResetCooldown();Items.Mote(p,"超魔·即时：不进冷却".Loc(),Color);}
    Items.Remove(p,"LP_CS_MetaExtend");Items.Remove(p,"LP_CS_MetaPierce");
   }
 
@@ -208,12 +208,12 @@ namespace LichPhylactery {
   public static bool OwnAbility(Hediff_Adventurer h,AbilityDef d){var e=ClassSystem.EntryOf(d);var own=e==null?null:ClassSystem.ClassOf(d);return own!=null && ClassSystem.Entitled(h,own,e);}
   public static IEnumerable<AbilityDef> Preparable(Hediff_Adventurer h,CasterListDef l){int max=MaxCircle(l,Level(h,l));return l.Ordered.Where(d=>{int c=CircleIn(l,d);return c>0 && c<=max && !OwnAbility(h,d);});}
   public static string CannotToggle(Hediff_Adventurer h,CasterListDef l,AbilityDef d,bool on){
-   var b=Book(h,l,false);if(b==null)return "没有这个职业";if(!l.prepared)return "这个职业不用备法";
-   int c=CircleIn(l,d);if(c==0)return "戏法常备，不用准备";if(c<0)return "不在"+l.classDef.label+"法术表里";
-   if(c>MaxCircle(l,Level(h,l)))return Spellbook.CircleName(c)+"要"+l.classDef.label+" "+LevelFor(l,c)+" 级";
-   if(OwnAbility(h,d))return "职业能力，常备";
-   if(!b.mayPrepare)return "睡醒后、或在研究台 / 卷轴书桌研读 1 小时后才能更换";
-   if(on && Counted(l,d) && PreparedCount(h,l)>=PrepCap(h,l))return "已经准备满了（"+PreparedCount(h,l)+" / "+PrepCap(h,l)+"）";
+   var b=Book(h,l,false);if(b==null)return "没有这个职业".Loc();if(!l.prepared)return "这个职业不用备法".Loc();
+   int c=CircleIn(l,d);if(c==0)return "戏法常备，不用准备".Loc();if(c<0)return "不在".Loc()+l.classDef.label+"法术表里".Loc();
+   if(c>MaxCircle(l,Level(h,l)))return Spellbook.CircleName(c)+"要".Loc()+l.classDef.label+" "+LevelFor(l,c)+" 级".Loc();
+   if(OwnAbility(h,d))return "职业能力，常备".Loc();
+   if(!b.mayPrepare)return "睡醒后、或在研究台 / 卷轴书桌研读 1 小时后才能更换".Loc();
+   if(on && Counted(l,d) && PreparedCount(h,l)>=PrepCap(h,l))return "已经准备满了（".Loc()+PreparedCount(h,l)+" / "+PrepCap(h,l)+"）".Loc();
    return null;
   }
   public static bool SetPrepared(Hediff_Adventurer h,CasterListDef l,AbilityDef d,bool on){
@@ -229,22 +229,22 @@ namespace LichPhylactery {
   public static int SwapsLeft(Hediff_Adventurer h,CasterListDef l){var b=Book(h,l,false);return b==null || l.prepared?0:Mathf.Max(0,Level(h,l)-1-b.swaps);}
   public static IEnumerable<AbilityDef> PickCandidates(Hediff_Adventurer h,CasterListDef l){var b=Book(h,l,false);int max=MaxCircle(l,Level(h,l));var p=h?.pawn;return l.Ordered.Where(d=>{int c=CircleIn(l,d);return c>0 && c<=max && b!=null && !b.book.Contains(d) && !Spellbook.Knows(p,d) && !Granted(l,d,Level(h,l));});}
   public static string CannotPick(Hediff_Adventurer h,CasterListDef l,AbilityDef d){
-   var b=Book(h,l,false);if(b==null)return "没有这个职业";if(l.prepared)return "这个职业不用选法术";
-   int c=CircleIn(l,d);if(c<=0)return c==0?"戏法在戏法页学":"不在"+l.classDef.label+"法术表里";
-   if(c>MaxCircle(l,Level(h,l)))return Spellbook.CircleName(c)+"要"+l.classDef.label+" "+LevelFor(l,c)+" 级";
-   if(b.book.Contains(d) || Spellbook.Knows(h.pawn,d))return "已经会了";
-   if(PicksDue(h,l)<=0)return "没有待选名额";
+   var b=Book(h,l,false);if(b==null)return "没有这个职业".Loc();if(l.prepared)return "这个职业不用选法术".Loc();
+   int c=CircleIn(l,d);if(c<=0)return c==0?"戏法在戏法页学".Loc():"不在".Loc()+l.classDef.label+"法术表里".Loc();
+   if(c>MaxCircle(l,Level(h,l)))return Spellbook.CircleName(c)+"要".Loc()+l.classDef.label+" "+LevelFor(l,c)+" 级".Loc();
+   if(b.book.Contains(d) || Spellbook.Knows(h.pawn,d))return "已经会了".Loc();
+   if(PicksDue(h,l)<=0)return "没有待选名额".Loc();
    return null;
   }
   public static bool Pick(Hediff_Adventurer h,CasterListDef l,AbilityDef d){if(CannotPick(h,l,d)!=null)return false;Book(h,l,false).book.Add(d);Touch();Sync(h);return true;}
-  public static string CannotForget(Hediff_Adventurer h,CasterListDef l,AbilityDef d){var b=Book(h,l,false);if(b==null || !b.book.Contains(d))return "不是已知法术";if(SwapsLeft(h,l)<=0)return "每升一级只能替换 1 个法术（已用完）";return null;}
+  public static string CannotForget(Hediff_Adventurer h,CasterListDef l,AbilityDef d){var b=Book(h,l,false);if(b==null || !b.book.Contains(d))return "不是已知法术".Loc();if(SwapsLeft(h,l)<=0)return "每升一级只能替换 1 个法术（已用完）".Loc();return null;}
   public static bool Forget(Hediff_Adventurer h,CasterListDef l,AbilityDef d){if(CannotForget(h,l,d)!=null)return false;var b=Book(h,l,false);b.book.Remove(d);b.swaps++;b.hiddenSpells.Remove(d);Touch();Sync(h);return true;}
 
   // ---------- 戏法 ----------
   public static int CantripCap(Hediff_Adventurer h,CasterListDef l)=>l.cantrips?Spellbook.CantripCap(Level(h,l)):0;
   public static int CantripsDue(Hediff_Adventurer h,CasterListDef l){var b=Book(h,l,false);return b==null?0:Mathf.Max(0,CantripCap(h,l)-b.cantrips.Count);}
   public static IEnumerable<AbilityDef> CantripCandidates(Hediff_Adventurer h,CasterListDef l){var p=h?.pawn;return l.Ordered.Where(d=>CircleIn(l,d)==0 && !Spellbook.Knows(p,d));}
-  public static string CannotCantrip(Hediff_Adventurer h,CasterListDef l,AbilityDef d){var b=Book(h,l,false);if(b==null)return "没有这个职业";if(CircleIn(l,d)!=0)return "不是这个职业的戏法";if(Spellbook.Knows(h.pawn,d))return "已经会了";if(CantripsDue(h,l)<=0)return "戏法名额已满";return null;}
+  public static string CannotCantrip(Hediff_Adventurer h,CasterListDef l,AbilityDef d){var b=Book(h,l,false);if(b==null)return "没有这个职业".Loc();if(CircleIn(l,d)!=0)return "不是这个职业的戏法".Loc();if(Spellbook.Knows(h.pawn,d))return "已经会了".Loc();if(CantripsDue(h,l)<=0)return "戏法名额已满".Loc();return null;}
   public static bool LearnCantrip(Hediff_Adventurer h,CasterListDef l,AbilityDef d){if(CannotCantrip(h,l,d)!=null)return false;Book(h,l,false).cantrips.Add(d);Touch();Sync(h);return true;}
 
   // ---------- 秘法玄奥（邪术师 6～9 环） ----------
@@ -252,10 +252,10 @@ namespace LichPhylactery {
   public static AbilityDef ArcanumAt(SpellbookData b,CasterListDef l,int circle){if(b==null)return null;for(int i=0;i<b.arcanum.Count;i++)if(CircleIn(l,b.arcanum[i])==circle)return b.arcanum[i];return null;}
   public static int ArcanumDue(Hediff_Adventurer h,CasterListDef l){if(!l.Pact)return 0;var b=Book(h,l,false);if(b==null)return 0;int n=0;for(int c=6;c<=9;c++)if(Level(h,l)>=ArcanumLevel(c) && ArcanumAt(b,l,c)==null)n++;return n;}
   public static string CannotArcanum(Hediff_Adventurer h,CasterListDef l,AbilityDef d){
-   var b=Book(h,l,false);if(b==null || !l.Pact)return "没有秘法玄奥";int c=CircleIn(l,d);if(c<6)return "不是秘法玄奥";
-   if(Level(h,l)<ArcanumLevel(c))return Spellbook.CircleName(c)+"秘法玄奥要"+l.classDef.label+" "+ArcanumLevel(c)+" 级";
-   if(ArcanumAt(b,l,c)!=null)return Spellbook.CircleName(c)+"已经选了「"+ArcanumAt(b,l,c).label+"」";
-   if(Spellbook.Knows(h.pawn,d))return "已经会了";return null;
+   var b=Book(h,l,false);if(b==null || !l.Pact)return "没有秘法玄奥".Loc();int c=CircleIn(l,d);if(c<6)return "不是秘法玄奥".Loc();
+   if(Level(h,l)<ArcanumLevel(c))return Spellbook.CircleName(c)+"秘法玄奥要".Loc()+l.classDef.label+" "+ArcanumLevel(c)+" 级".Loc();
+   if(ArcanumAt(b,l,c)!=null)return Spellbook.CircleName(c)+"已经选了「".Loc()+ArcanumAt(b,l,c).label+"」".Loc();
+   if(Spellbook.Knows(h.pawn,d))return "已经会了".Loc();return null;
   }
   public static bool PickArcanum(Hediff_Adventurer h,CasterListDef l,AbilityDef d){if(CannotArcanum(h,l,d)!=null)return false;Book(h,l,false).arcanum.Add(d);Touch();Sync(h);return true;}
 
@@ -270,8 +270,8 @@ namespace LichPhylactery {
    return all.Where(d=>{int c=AnyCircle(d);return c>=0 && c<=max && CircleIn(l,d)<0 && !Spellbook.Knows(p,d);}).OrderBy(AnyCircle).ThenBy(d=>d.label);
   }
   public static string CannotSecret(Hediff_Adventurer h,CasterListDef l,AbilityDef d){
-   var b=Book(h,l,false);if(b==null || l.secretLevels.Count==0)return "没有秘法奥秘";if(SecretsDue(h,l)<=0)return "没有待选的秘法奥秘";
-   int c=AnyCircle(d);if(c<0)return "不是法术";if(c>MaxCircle(l,Level(h,l)))return Spellbook.CircleName(c)+"还放不了";if(Spellbook.Knows(h.pawn,d))return "已经会了";return null;
+   var b=Book(h,l,false);if(b==null || l.secretLevels.Count==0)return "没有秘法奥秘".Loc();if(SecretsDue(h,l)<=0)return "没有待选的秘法奥秘".Loc();
+   int c=AnyCircle(d);if(c<0)return "不是法术".Loc();if(c>MaxCircle(l,Level(h,l)))return Spellbook.CircleName(c)+"还放不了".Loc();if(Spellbook.Knows(h.pawn,d))return "已经会了".Loc();return null;
   }
   public static bool PickSecret(Hediff_Adventurer h,CasterListDef l,AbilityDef d){if(CannotSecret(h,l,d)!=null)return false;Book(h,l,false).secrets.Add(d);Touch();Sync(h);return true;}
 
@@ -279,11 +279,11 @@ namespace LichPhylactery {
 
   // ---------- 仪式 ----------
   public static string CannotRitual(Pawn p,CasterListDef l,AbilityDef d){
-   var h=Adventurer.Get(p);var b=Book(h,l,false);if(b==null)return "没有这个职业";if(!Spellbook.Ritual(d))return "不是仪式法术";
-   int c=CircleIn(l,d);bool known=l.prepared?c>0 && c<=MaxCircle(l,Level(h,l)):Active(h,l,b,d,false);if(!known)return "还不会这个法术";
-   if(p.Drafted)return "仪式施法要在非征召状态下进行";if(p.Downed || !p.Spawned)return "现在不能施法";
-   var ab=p.abilities?.GetAbility(d);if(ab!=null && ab.OnCooldown && d.cooldownTicksRange.max>=60000)return "冷却中（还要 "+(ab.CooldownTicksRemaining/60000f).ToString("0.#")+" 天）";
-   if(CasterEffects.Live>0 && Items.Has(p,"LP_CS_Silenced"))return "被静默术笼罩";
+   var h=Adventurer.Get(p);var b=Book(h,l,false);if(b==null)return "没有这个职业".Loc();if(!Spellbook.Ritual(d))return "不是仪式法术".Loc();
+   int c=CircleIn(l,d);bool known=l.prepared?c>0 && c<=MaxCircle(l,Level(h,l)):Active(h,l,b,d,false);if(!known)return "还不会这个法术".Loc();
+   if(p.Drafted)return "仪式施法要在非征召状态下进行".Loc();if(p.Downed || !p.Spawned)return "现在不能施法".Loc();
+   var ab=p.abilities?.GetAbility(d);if(ab!=null && ab.OnCooldown && d.cooldownTicksRange.max>=60000)return "冷却中（还要 ".Loc()+(ab.CooldownTicksRemaining/60000f).ToString("0.#")+" 天）".Loc();
+   if(CasterEffects.Live>0 && Items.Has(p,"LP_CS_Silenced"))return "被静默术笼罩".Loc();
    return null;
   }
   public static void BeginRitual(Pawn p,CasterListDef l,AbilityDef d){
@@ -330,13 +330,13 @@ namespace LichPhylactery {
    if(c.book==null || Spellbook.Level(h)<=0){var d=FirstBook(p);if(d?.conc!=null){if(!Spellbook.ConcActive(d))Spellbook.EndConc(p,d,false);else Spellbook.Concentrating.Add(p);}}
    if(!Spellbook.Player(p) || Adventurer.TestSuppressed)return;
    foreach(var b in c.casterBooks){var l=ListOf(b);if(l==null)continue;int lv=Level(h,l);if(b.notifiedLevel>=lv)continue;b.notifiedLevel=lv;int due=Due(h,l);
-    if(due>0)Messages.Message(p.LabelShort+"的"+l.classDef.label+"法术：有 "+due+" 个待选（点“"+l.classDef.label+"法术”按钮选择）。",p,MessageTypeDefOf.PositiveEvent,false);}
+    if(due>0)Messages.Message(p.LabelShort+"的".Loc()+l.classDef.label+"法术：有 ".Loc()+due+" 个待选（点“".Loc()+l.classDef.label+"法术”按钮选择）。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);}
   }
   public static string Summary(Hediff_Adventurer h,CasterListDef l){
-   int lv=Level(h,l);string s=l.classDef.label+" "+lv+" 级　最高 "+Spellbook.CircleName(MaxCircle(l,lv));
-   if(l.UsesEnergy)s+="　法术能量 "+EnergyLeft(h,l).ToString("0.#")+" / "+EnergyMax(h,l);
-   else s+="　"+ClassSystem.ResourceLabel(l.classDef.resource)+" "+ClassSystem.Resource(h,l.classDef).ToString("0.#")+" / "+ClassSystem.MaxResource(h,l.classDef);
-   if(l.prepared)s+="　已备 "+PreparedCount(h,l)+" / "+PrepCap(h,l)+"（"+(l.Half?"等级/2":"等级")+" + "+l.AbilityLabel+"调整值）";else s+="　已知 "+KnownCount(h,l)+" / "+KnownCap(h,l);
+   int lv=Level(h,l);string s=l.classDef.label+" "+lv+" 级　最高 ".Loc()+Spellbook.CircleName(MaxCircle(l,lv));
+   if(l.UsesEnergy)s+="　法术能量 ".Loc()+EnergyLeft(h,l).ToString("0.#")+" / "+EnergyMax(h,l);
+   else s+="　".Loc()+ClassSystem.ResourceLabel(l.classDef.resource)+" "+ClassSystem.Resource(h,l.classDef).ToString("0.#")+" / "+ClassSystem.MaxResource(h,l.classDef);
+   if(l.prepared)s+="　已备 ".Loc()+PreparedCount(h,l)+" / "+PrepCap(h,l)+"（".Loc()+(l.Half?"等级/2".Loc():"等级".Loc())+" + "+l.AbilityLabel+"调整值）".Loc();else s+="　已知 ".Loc()+KnownCount(h,l)+" / "+KnownCap(h,l);
    return s;
   }
  }
@@ -360,81 +360,81 @@ namespace LichPhylactery {
   }
   List<(string key,string label,int due)> TabsCompute(Hediff_Adventurer h){
    var l=new List<(string,string,int)>();
-   if(list.prepared)l.Add(("prep","备法",0));else{l.Add(("known","已知法术",0));l.Add(("learn","学习新法术（"+CasterSpells.PicksDue(h,list)+"）",CasterSpells.PicksDue(h,list)));}
-   if(list.cantrips)l.Add(("cantrip","戏法（"+CasterSpells.CantripsDue(h,list)+"）",CasterSpells.CantripsDue(h,list)));
-   if(list.Pact)l.Add(("arcanum","秘法玄奥（"+CasterSpells.ArcanumDue(h,list)+"）",CasterSpells.ArcanumDue(h,list)));
-   if(list.secretLevels.Count>0)l.Add(("secret","秘法奥秘（"+CasterSpells.SecretsDue(h,list)+"）",CasterSpells.SecretsDue(h,list)));
+   if(list.prepared)l.Add(("prep","备法".Loc(),0));else{l.Add(("known","已知法术".Loc(),0));l.Add(("learn","学习新法术（".Loc()+CasterSpells.PicksDue(h,list)+"）".Loc(),CasterSpells.PicksDue(h,list)));}
+   if(list.cantrips)l.Add(("cantrip","戏法（".Loc()+CasterSpells.CantripsDue(h,list)+"）".Loc(),CasterSpells.CantripsDue(h,list)));
+   if(list.Pact)l.Add(("arcanum","秘法玄奥（".Loc()+CasterSpells.ArcanumDue(h,list)+"）".Loc(),CasterSpells.ArcanumDue(h,list)));
+   if(list.secretLevels.Count>0)l.Add(("secret","秘法奥秘（".Loc()+CasterSpells.SecretsDue(h,list)+"）".Loc(),CasterSpells.SecretsDue(h,list)));
    return l;
   }
   void Draw(Rect r){
    var h=Adventurer.Get(pawn);var b=CasterSpells.Book(h,list,false);if(b==null){Close();return;}
-   float y=LPUI.Title(r,pawn.LabelShort+" 的法术",false);AbilityGroups.WindowButton(r,pawn); // 1.137.0 技能分组
+   float y=LPUI.Title(r,pawn.LabelShort+" 的法术".Loc(),false);AbilityGroups.WindowButton(r,pawn); // 1.137.0 技能分组
    if(mineCache==null || Stale(ref mineVer,ref mineTick))mineCache=CasterSpells.ListsOf(pawn).ToList();var mine=mineCache;bool wiz=Spellbook.Level(h)>0;
    if(mine.Count>1 || wiz){
     var cls=LPUI.Row(new Rect(r.x,y,r.width,28f),mine.Count+(wiz?1:0));
     for(int i=0;i<mine.Count;i++){if(mine[i]==list)Widgets.DrawHighlightSelected(cls[i]);if(LPUI.Button(cls[i],mine[i].classDef.LabelCap) && mine[i]!=list){list=mine[i];PickTab();armed=null;scroll=Vector2.zero;}}
-    if(wiz && LPUI.Button(cls[mine.Count],"法师法术书")){Close();Find.WindowStack.Add(new Dialog_Spellbook(pawn));}
+    if(wiz && LPUI.Button(cls[mine.Count],"法师法术书".Loc())){Close();Find.WindowStack.Add(new Dialog_Spellbook(pawn));}
     y+=32f;b=CasterSpells.Book(h,list,false);if(b==null)return;
    }
    LPUI.LabelFit(new Rect(r.x,y,r.width,24f),CasterSpells.Summary(h,list));y+=26f;
-   var cb=Spellbook.ConcBook(pawn);if(cb?.conc!=null){var cr=new Rect(r.x,y,r.width-130f,24f);GUI.color=CasterSpells.Color;Widgets.Label(cr,"专注中："+cb.conc.label+"（受到 10 点以上伤害时维持成功率 "+Spellbook.ConcChance(pawn).ToStringPercent()+"）");GUI.color=Color.white;
-    if(LPUI.Button(new Rect(r.xMax-124f,y,120f,24f),"结束专注"))Spellbook.EndConc(pawn,cb,false);y+=26f;}
+   var cb=Spellbook.ConcBook(pawn);if(cb?.conc!=null){var cr=new Rect(r.x,y,r.width-130f,24f);GUI.color=CasterSpells.Color;Widgets.Label(cr,"专注中：".Loc()+cb.conc.label+"（受到 10 点以上伤害时维持成功率 ".Loc()+Spellbook.ConcChance(pawn).ToStringPercent()+"）".Loc());GUI.color=Color.white;
+    if(LPUI.Button(new Rect(r.xMax-124f,y,120f,24f),"结束专注".Loc()))Spellbook.EndConc(pawn,cb,false);y+=26f;}
    var names=Tabs(h);if(tab>=names.Count)tab=0;var tr=LPUI.Row(new Rect(r.x,y,r.width,30f),names.Count);
    for(int i=0;i<names.Count;i++){if(tab==i)Widgets.DrawHighlightSelected(tr[i]);if(LPUI.Button(tr[i],names[i].label)){tab=i;armed=null;}}
    y+=36f;string key=names[tab].key;
    List<AbilityDef> rows;string intro;
    bool fresh=Stale(ref rowsVer,ref rowsTick);bool reuse=!fresh && rowsCache!=null && rowsKey==key && rowsList==list;
    switch(key){
-    case "prep":rows=reuse?rowsCache:CasterSpells.Preparable(h,list).ToList();intro=(b.mayPrepare?"现在可以更换备法（关闭窗口后要再睡一觉或研读 1 小时才能再改）。":"备法已定：睡醒后、或在研究台 / 卷轴书桌研读 1 小时后才能更换。")+"自动知道法术表里能施放环位的全部法术，只有准备了的出现在按钮栏；仪式法术不占名额，没准备也能在这里仪式施法（原地引导 1 小时，不耗资源）。";break;
-    case "known":rows=reuse?rowsCache:b.book.Concat(b.cantrips).Concat(b.arcanum).Concat(b.secrets).Concat(list.Ordered.Where(d=>CasterSpells.Granted(list,d,CasterSpells.Level(h,list)))).Distinct().OrderBy(d=>CasterSpells.CircleFor(pawn,d)).ThenBy(d=>d.label).ToList();intro="已知的法术都在按钮栏（可以在这里隐藏）。每升一级可以替换 1 个已知法术（还能替换 "+CasterSpells.SwapsLeft(h,list)+" 个）。";break;
-    case "learn":rows=reuse?rowsCache:CasterSpells.PickCandidates(h,list).ToList();intro="每个"+list.classDef.label+"等级学 1 个法术（1 级 2 个），只能选已经能施放的环位："+CircleTable()+"。待选 "+CasterSpells.PicksDue(h,list)+" 个。";break;
-    case "cantrip":rows=reuse?rowsCache:CasterSpells.CantripCandidates(h,list).ToList();intro="戏法不耗资源、常备不占名额：1 级 3 个，4 级、10 级各 +1。还能学 "+CasterSpells.CantripsDue(h,list)+" 个。";break;
-    case "arcanum":rows=reuse?rowsCache:list.Ordered.Where(d=>CasterSpells.CircleIn(list,d)>=6).ToList();intro="秘法玄奥：邪术师 11 / 13 / 15 / 17 级各从六 / 七 / 八 / 九环里选 1 个，每个每天施放 1 次，不花契约法力。";break;
-    default:rows=reuse?rowsCache:CasterSpells.SecretCandidates(h,list).ToList();intro="秘法奥秘：吟游诗人 "+string.Join(" / ",list.secretLevels)+" 级各从任意职业的法术表选 "+list.secretsPer+" 个（按自己能施放的环位），算吟游诗人法术、扣乐韵、用激昂强度。还能选 "+CasterSpells.SecretsDue(h,list)+" 个。";break;
+    case "prep":rows=reuse?rowsCache:CasterSpells.Preparable(h,list).ToList();intro=(b.mayPrepare?"现在可以更换备法（关闭窗口后要再睡一觉或研读 1 小时才能再改）。".Loc():"备法已定：睡醒后、或在研究台 / 卷轴书桌研读 1 小时后才能更换。".Loc())+"自动知道法术表里能施放环位的全部法术，只有准备了的出现在按钮栏；仪式法术不占名额，没准备也能在这里仪式施法（原地引导 1 小时，不耗资源）。".Loc();break;
+    case "known":rows=reuse?rowsCache:b.book.Concat(b.cantrips).Concat(b.arcanum).Concat(b.secrets).Concat(list.Ordered.Where(d=>CasterSpells.Granted(list,d,CasterSpells.Level(h,list)))).Distinct().OrderBy(d=>CasterSpells.CircleFor(pawn,d)).ThenBy(d=>d.label).ToList();intro="已知的法术都在按钮栏（可以在这里隐藏）。每升一级可以替换 1 个已知法术（还能替换 ".Loc()+CasterSpells.SwapsLeft(h,list)+" 个）。".Loc();break;
+    case "learn":rows=reuse?rowsCache:CasterSpells.PickCandidates(h,list).ToList();intro="每个".Loc()+list.classDef.label+"等级学 1 个法术（1 级 2 个），只能选已经能施放的环位：".Loc()+CircleTable()+"。待选 ".Loc()+CasterSpells.PicksDue(h,list)+" 个。".Loc();break;
+    case "cantrip":rows=reuse?rowsCache:CasterSpells.CantripCandidates(h,list).ToList();intro="戏法不耗资源、常备不占名额：1 级 3 个，4 级、10 级各 +1。还能学 ".Loc()+CasterSpells.CantripsDue(h,list)+" 个。".Loc();break;
+    case "arcanum":rows=reuse?rowsCache:list.Ordered.Where(d=>CasterSpells.CircleIn(list,d)>=6).ToList();intro="秘法玄奥：邪术师 11 / 13 / 15 / 17 级各从六 / 七 / 八 / 九环里选 1 个，每个每天施放 1 次，不花契约法力。".Loc();break;
+    default:rows=reuse?rowsCache:CasterSpells.SecretCandidates(h,list).ToList();intro="秘法奥秘：吟游诗人 ".Loc()+string.Join(" / ",list.secretLevels)+" 级各从任意职业的法术表选 ".Loc()+list.secretsPer+" 个（按自己能施放的环位），算吟游诗人法术、扣乐韵、用激昂强度。还能选 ".Loc()+CasterSpells.SecretsDue(h,list)+" 个。".Loc();break;
    }
    rowsCache=rows;rowsKey=key;rowsList=list;
    var outer=new Rect(r.x,y,r.width,r.yMax-y-44f);var view=new Rect(0f,0f,outer.width-16f,48f+rows.Count*52f+8f);
    Widgets.BeginScrollView(outer,ref scroll,view);
    try{
     Text.Font=GameFont.Tiny;Widgets.Label(new Rect(0f,0f,view.width-(key=="prep" && !b.mayPrepare?150f:0f),44f),intro);
-    if(key=="prep" && !b.mayPrepare && LPUI.Button(new Rect(view.width-146f,4f,142f,28f),"去研读（1 小时）",Spellbook.StudyBench(pawn)!=null,"走到最近的研究台或卷轴书桌研读 1 小时，之后可以更换备法。")){Spellbook.StartStudy(pawn);Close();}
+    if(key=="prep" && !b.mayPrepare && LPUI.Button(new Rect(view.width-146f,4f,142f,28f),"去研读（1 小时）".Loc(),Spellbook.StudyBench(pawn)!=null,"走到最近的研究台或卷轴书桌研读 1 小时，之后可以更换备法。".Loc())){Spellbook.StartStudy(pawn);Close();}
     Text.Font=GameFont.Small;float yy=48f;
     foreach(var a in rows){Row(new Rect(0f,yy,view.width,48f),h,b,a,key);yy+=52f;}
-    if(rows.Count==0){GUI.color=Color.gray;Widgets.Label(new Rect(0f,yy,view.width,24f),"这里没有法术。");GUI.color=Color.white;}
+    if(rows.Count==0){GUI.color=Color.gray;Widgets.Label(new Rect(0f,yy,view.width,24f),"这里没有法术。".Loc());GUI.color=Color.white;}
    }finally{Widgets.EndScrollView();}
   }
-  string CircleTable(){var parts=new List<string>();for(int c=1;c<=(list.Half?5:list.Pact?5:9);c++)parts.Add(Spellbook.CircleName(c)+" "+CasterSpells.LevelFor(list,c)+" 级");return string.Join("、",parts);}
+  string CircleTable(){var parts=new List<string>();for(int c=1;c<=(list.Half?5:list.Pact?5:9);c++)parts.Add(Spellbook.CircleName(c)+" "+CasterSpells.LevelFor(list,c)+" 级".Loc());return string.Join("、".Loc(),parts);}
   void Row(Rect row,Hediff_Adventurer h,SpellbookData b,AbilityDef a,string key){
    Widgets.DrawLightHighlight(row);GUI.DrawTexture(new Rect(row.x+4f,row.y+6f,36f,36f),a.uiIcon??BaseContent.BadTex);
    int c=key=="secret"?CasterSpells.AnyCircle(a):CasterSpells.CircleIn(list,a);if(c<0)c=CasterSpells.AnyCircle(a);
    bool arc=b.arcanum.Contains(a) || key=="arcanum";
-   string res=list.UsesEnergy?"法术能量":ClassSystem.ResourceLabel(list.classDef.resource);string cost=c<=0?"不耗资源":arc?"每天 1 次、不耗资源":res+" "+Spellbook.ManaFor(c);
+   string res=list.UsesEnergy?"法术能量".Loc():ClassSystem.ResourceLabel(list.classDef.resource);string cost=c<=0?"不耗资源".Loc():arc?"每天 1 次、不耗资源".Loc():res+" "+Spellbook.ManaFor(c);
    float right=key=="prep" || key=="known"?300f:110f;
-   string tags=Spellbook.Tags(a);if(CasterSpells.CExt(a)?.grant>0)tags=(tags.NullOrEmpty()?"":tags+"·")+"职业特性";
-   LPUI.LabelFit(new Rect(row.x+46f,row.y+2f,row.width-46f-right,24f),"【"+Spellbook.CircleName(c)+"】"+a.LabelCap+(tags.NullOrEmpty()?"":"　"+tags)+"　"+cost);
+   string tags=Spellbook.Tags(a);if(CasterSpells.CExt(a)?.grant>0)tags=(tags.NullOrEmpty()?"":tags+"·")+"职业特性".Loc();
+   LPUI.LabelFit(new Rect(row.x+46f,row.y+2f,row.width-46f-right,24f),"【".Loc()+Spellbook.CircleName(c)+"】".Loc()+a.LabelCap+(tags.NullOrEmpty()?"":"　".Loc()+tags)+"　".Loc()+cost);
    Text.Font=GameFont.Tiny;GUI.color=new Color(.8f,.8f,.8f);Widgets.Label(new Rect(row.x+46f,row.y+26f,row.width-46f-right,20f),(a.description??"").Truncate(row.width-46f-right));GUI.color=Color.white;Text.Font=GameFont.Small;
    TooltipHandler.TipRegion(new Rect(row.x,row.y,row.width-right,row.height),a.LabelCap+"\n\n"+a.description);
    float x=row.xMax-right;
    if(key=="prep" || key=="known"){
     if(key=="prep"){
      bool on=b.prepared.Contains(a);string why=CasterSpells.CannotToggle(h,list,a,!on);
-     if(CasterSpells.OwnAbility(h,a)){GUI.color=Color.gray;Widgets.Label(new Rect(x,row.y+12f,96f,24f),"职业能力");GUI.color=Color.white;}
-     else if(LPUI.Button(new Rect(x,row.y+12f,96f,24f),on?"✔ 已准备":"未准备",why==null,why??(on?"取消准备":"准备这个法术")+(CasterSpells.Counted(list,a)?"":"（仪式法术不占名额）"))){CasterSpells.SetPrepared(h,list,a,!on);changed=true;}
+     if(CasterSpells.OwnAbility(h,a)){GUI.color=Color.gray;Widgets.Label(new Rect(x,row.y+12f,96f,24f),"职业能力".Loc());GUI.color=Color.white;}
+     else if(LPUI.Button(new Rect(x,row.y+12f,96f,24f),on?"✔ 已准备".Loc():"未准备".Loc(),why==null,why??(on?"取消准备".Loc():"准备这个法术".Loc())+(CasterSpells.Counted(list,a)?"":"（仪式法术不占名额）".Loc()))){CasterSpells.SetPrepared(h,list,a,!on);changed=true;}
     }else{
      bool hid=b.hiddenSpells.Contains(a);
-     if(LPUI.Button(new Rect(x,row.y+4f,96f,20f),hid?"已隐藏":"显示中",true,hid?"点一下让按钮回到按钮栏":"点一下把这个法术的按钮从按钮栏藏起来（不能施放、也不会自动施放）")){if(hid)b.hiddenSpells.Remove(a);else b.hiddenSpells.Add(a);CasterSpells.Touch();}
+     if(LPUI.Button(new Rect(x,row.y+4f,96f,20f),hid?"已隐藏".Loc():"显示中".Loc(),true,hid?"点一下让按钮回到按钮栏".Loc():"点一下把这个法术的按钮从按钮栏藏起来（不能施放、也不会自动施放）".Loc())){if(hid)b.hiddenSpells.Remove(a);else b.hiddenSpells.Add(a);CasterSpells.Touch();}
      string fw=CasterSpells.CannotForget(h,list,a);
-     if(b.book.Contains(a) && LPUI.Button(new Rect(x,row.y+26f,96f,20f),armed=="f"+a.defName?"确定？":"替换",fw==null,fw??"遗忘这个法术，空出 1 个名额重新选（每级 1 次）。点两次确认") && fw==null){if(armed=="f"+a.defName){armed=null;CasterSpells.Forget(h,list,a);}else armed="f"+a.defName;}
+     if(b.book.Contains(a) && LPUI.Button(new Rect(x,row.y+26f,96f,20f),armed=="f"+a.defName?"确定？".Loc():"替换".Loc(),fw==null,fw??"遗忘这个法术，空出 1 个名额重新选（每级 1 次）。点两次确认".Loc()) && fw==null){if(armed=="f"+a.defName){armed=null;CasterSpells.Forget(h,list,a);}else armed="f"+a.defName;}
     }
     x+=100f;
-    if(Spellbook.Upcast(a)!=null){int up=Spellbook.UpLevel(pawn,a);if(LPUI.Button(new Rect(x,row.y+12f,90f,24f),up>0?"升环 +"+up:"升环",Spellbook.MaxUp(pawn,a)>0,"选择施放的环位：每升 1 环多花 1 点资源，"+Spellbook.UpText(pawn,a,1)+"。也可以右键法术按钮。"))Find.WindowStack.Add(new Dialog_Upcast(pawn,a));}
+    if(Spellbook.Upcast(a)!=null){int up=Spellbook.UpLevel(pawn,a);if(LPUI.Button(new Rect(x,row.y+12f,90f,24f),up>0?"升环 +".Loc()+up:"升环".Loc(),Spellbook.MaxUp(pawn,a)>0,"选择施放的环位：每升 1 环多花 1 点资源，".Loc()+Spellbook.UpText(pawn,a,1)+"。也可以右键法术按钮。".Loc()))Find.WindowStack.Add(new Dialog_Upcast(pawn,a));}
     x+=94f;
-    if(Spellbook.Ritual(a)){string why=CasterSpells.CannotRitual(pawn,list,a);if(LPUI.Button(new Rect(x,row.y+12f,100f,24f),"仪式施法",why==null,why??"原地引导 1 小时施放，不耗资源（要在非征召状态下）。")){Close();CasterSpells.BeginRitual(pawn,list,a);}}
+    if(Spellbook.Ritual(a)){string why=CasterSpells.CannotRitual(pawn,list,a);if(LPUI.Button(new Rect(x,row.y+12f,100f,24f),"仪式施法".Loc(),why==null,why??"原地引导 1 小时施放，不耗资源（要在非征召状态下）。".Loc())){Close();CasterSpells.BeginRitual(pawn,list,a);}}
     return;
    }
    string k2=key+a.defName;var btn=new Rect(row.xMax-104f,row.y+10f,96f,28f);
-   string w=key=="learn"?CasterSpells.CannotPick(h,list,a):key=="cantrip"?CasterSpells.CannotCantrip(h,list,a):key=="arcanum"?(b.arcanum.Contains(a)?"已选":CasterSpells.CannotArcanum(h,list,a)):CasterSpells.CannotSecret(h,list,a);
-   if(LPUI.Button(btn,armed==k2?"确定？":b.arcanum.Contains(a)?"已选":"学会",w==null,w??"点两次确认") && w==null){
+   string w=key=="learn"?CasterSpells.CannotPick(h,list,a):key=="cantrip"?CasterSpells.CannotCantrip(h,list,a):key=="arcanum"?(b.arcanum.Contains(a)?"已选".Loc():CasterSpells.CannotArcanum(h,list,a)):CasterSpells.CannotSecret(h,list,a);
+   if(LPUI.Button(btn,armed==k2?"确定？".Loc():b.arcanum.Contains(a)?"已选".Loc():"学会".Loc(),w==null,w??"点两次确认".Loc()) && w==null){
     if(armed==k2){armed=null;bool ok=key=="learn"?CasterSpells.Pick(h,list,a):key=="cantrip"?CasterSpells.LearnCantrip(h,list,a):key=="arcanum"?CasterSpells.PickArcanum(h,list,a):CasterSpells.PickSecret(h,list,a);if(ok)SoundDefOf.Tick_High.PlayOneShotOnCamera();}else armed=k2;
    }
   }
@@ -454,8 +454,8 @@ namespace LichPhylactery {
    foreach(var l in CasterSpells.Lists){
     if(CasterSpells.Level(h,l)<=0 || CasterSpells.Book(h,l,false)==null)continue;int due=CasterSpells.Due(h,l);var b=CasterSpells.Book(h,l,false);var ll=l;
     string count=l.prepared?CasterSpells.PreparedCount(h,l)+"/"+CasterSpells.PrepCap(h,l):CasterSpells.KnownCount(h,l)+"/"+CasterSpells.KnownCap(h,l);
-    yield return new Command_Action{defaultLabel=l.classDef.label+"法术（"+count+"）"+(due>0?" 待选 "+due:""),icon=l.Icon,
-     defaultDesc="打开"+l.classDef.label+"的法术表："+(l.prepared?"准备法术（只有准备了的出现在按钮栏）":"学习、替换、隐藏已知法术")+(l.cantrips?"、学习戏法":"")+(l.Pact?"、选择秘法玄奥":"")+"、仪式施法、设置升环。"+(l.prepared && !b.mayPrepare?"\n\n睡醒后、或在研究台 / 卷轴书桌研读 1 小时后才能更换备法。":""),
+    yield return new Command_Action{defaultLabel=l.classDef.label+"法术（".Loc()+count+"）".Loc()+(due>0?" 待选 ".Loc()+due:""),icon=l.Icon,
+     defaultDesc="打开".Loc()+l.classDef.label+"的法术表：".Loc()+(l.prepared?"准备法术（只有准备了的出现在按钮栏）".Loc():"学习、替换、隐藏已知法术".Loc())+(l.cantrips?"、学习戏法".Loc():"")+(l.Pact?"、选择秘法玄奥".Loc():"")+"、仪式施法、设置升环。".Loc()+(l.prepared && !b.mayPrepare?"\n\n睡醒后、或在研究台 / 卷轴书桌研读 1 小时后才能更换备法。".Loc():""),
      action=()=>Find.WindowStack.Add(new Dialog_CasterSpells(p,ll))};
    }
   }

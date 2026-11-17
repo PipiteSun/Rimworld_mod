@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 切除畸变瘤块 -->
+  <LP_RemoveAberrantTumor.label>remove aberrant growth</LP_RemoveAberrantTumor.label>
+  <!-- 把畸变再生膏留下的瘤块切掉。 -->
+  <LP_RemoveAberrantTumor.description>Cut off the growth left by aberrant regenerative paste.</LP_RemoveAberrantTumor.description>
+  <!-- 正在切除畸变瘤块。 -->
+  <LP_RemoveAberrantTumor.jobString>Removing an aberrant growth.</LP_RemoveAberrantTumor.jobString>
+  <!-- {0}切除了{1}身上的畸变瘤块。 -->
+  <LP_RemoveAberrantTumor.successfullyRemovedHediffMessage>{0} removed the aberrant growth from {1}.</LP_RemoveAberrantTumor.successfullyRemovedHediffMessage>
+</LanguageData>

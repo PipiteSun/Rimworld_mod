@@ -59,7 +59,7 @@ namespace LichPhylactery {
   public static void SetPoints(Pawn p,float points){var g=Proto(p);if(g!=null)g.Value=Mathf.Clamp(points/Max,0f,g.Max);}
   public static bool CanPay(Pawn p,float points)=>Points(p)+.001f>=points;
   public static bool Pay(Pawn p,float points){var g=Proto(p);if(g==null || !CanPay(p,points))return false;g.Value=Mathf.Max(0f,g.Value-points/Max);return true;}
-  public static string NotEnough(float cost)=>"原生质不足（需要"+cost.ToString("0")+"）";
+  public static string NotEnough(float cost)=>"原生质不足（需要".Loc()+cost.ToString("0")+"）".Loc();
   // 稳形护带只对流浆人有效。
   public static bool BandWorn(Pawn p){
    var band=Band;var worn=p?.apparel?.WornApparel;if(band==null || worn==null || !Is(p))return false;
@@ -108,13 +108,13 @@ namespace LichPhylactery {
 
   // ---------- 吞没 ----------
   public static string CannotEngulf(Pawn caster,Thing t){
-   if(!(t is Corpse c) || c.InnerPawn==null)return "需要一具尸体。";
+   if(!(t is Corpse c) || c.InnerPawn==null)return "需要一具尸体。".Loc();
    var p=c.InnerPawn;
-   if(p.RaceProps.IsMechanoid)return "机械体不能吞没。";
-   if(!p.RaceProps.IsFlesh)return "这具尸体不是血肉之躯。";
-   if(Necro.Undead(p) || NecromancyGenes.HasBody(p))return "巫妖与死灵造物的尸体不能吞没。";
-   if(Is(p))return "不能吞没同族流浆人的尸体。";
-   if(c.GetRotStage()==RotStage.Dessicated)return "干尸里已经没有可以消化的东西了。";
+   if(p.RaceProps.IsMechanoid)return "机械体不能吞没。".Loc();
+   if(!p.RaceProps.IsFlesh)return "这具尸体不是血肉之躯。".Loc();
+   if(Necro.Undead(p) || NecromancyGenes.HasBody(p))return "巫妖与死灵造物的尸体不能吞没。".Loc();
+   if(Is(p))return "不能吞没同族流浆人的尸体。".Loc();
+   if(c.GetRotStage()==RotStage.Dessicated)return "干尸里已经没有可以消化的东西了。".Loc();
    return null;
   }
   // 人形+25、饱食+50%；动物 体型×15（≤30）、体型×30%（≤60%）；开始腐烂减半。
@@ -159,16 +159,16 @@ namespace LichPhylactery {
     }
    }
    Ooze(map,at,3);
-   Mote(caster,"吞没 +"+v.ToString("0")+" 原生质");
+   Mote(caster,"吞没 +".Loc()+v.ToString("0")+" 原生质".Loc());
    return v;
   }
 
   // ---------- 分裂 ----------
   public static string CannotFission(Pawn p){
-   if(p==null || p.Dead)return "已经死了。";
-   if(!p.DevelopmentalStage.Adult())return "只有成年流浆人能分裂。";
-   if(!p.Spawned)return "只能在地图上分裂。";
-   var food=p.needs?.food;if(food!=null && food.CurLevelPercentage+.0001f<FissionFood)return "饱食度不足（需要25%）。";
+   if(p==null || p.Dead)return "已经死了。".Loc();
+   if(!p.DevelopmentalStage.Adult())return "只有成年流浆人能分裂。".Loc();
+   if(!p.Spawned)return "只能在地图上分裂。".Loc();
+   var food=p.needs?.food;if(food!=null && food.CurLevelPercentage+.0001f<FissionFood)return "饱食度不足（需要25%）。".Loc();
    if(!CanPay(p,FissionCost))return NotEnough(FissionCost);
    return null;
   }
@@ -188,7 +188,7 @@ namespace LichPhylactery {
    var food=parent.needs?.food;if(food!=null)food.CurLevel=Mathf.Max(0f,food.CurLevel-food.MaxLevel*FissionFood);
    Items.Give(parent,"LP_OozeSplitWeak");
    Ooze(parent.Map,parent.Position,4);
-   if(faction==Faction.OfPlayer)Messages.Message(parent.LabelShort+"分裂出了一个新生的流浆人。",baby,MessageTypeDefOf.PositiveEvent,false);
+   if(faction==Faction.OfPlayer)Messages.Message(parent.LabelShort+"分裂出了一个新生的流浆人。".Loc(),baby,MessageTypeDefOf.PositiveEvent,false);
    return baby;
   }
   public static void CopyGenes(Pawn parent,Pawn baby){
@@ -211,11 +211,11 @@ namespace LichPhylactery {
   }
   static string Landing(Pawn caster,IntVec3 c){
    var map=caster.Map;
-   if(!c.IsValid || !c.InBounds(map))return "需要地图上的目标位置。";
-   if(c.Fogged(map))return "不能渗进未探索的地方。";
-   if(!c.Standable(map))return "那里没有可以站立的地方。";
-   if(c.GetFirstPawn(map)!=null)return "那里已经有人了。";
-   if(c.DistanceTo(caster.Position)>SeepRange+.5f)return "超出渗过距离（"+SeepRange+"格）。";
+   if(!c.IsValid || !c.InBounds(map))return "需要地图上的目标位置。".Loc();
+   if(c.Fogged(map))return "不能渗进未探索的地方。".Loc();
+   if(!c.Standable(map))return "那里没有可以站立的地方。".Loc();
+   if(c.GetFirstPawn(map)!=null)return "那里已经有人了。".Loc();
+   if(c.DistanceTo(caster.Position)>SeepRange+.5f)return "超出渗过距离（".Loc()+SeepRange+"格）。".Loc();
    return null;
   }
   // 从起点到门的路上不能有墙；终点取门另一侧离直线最近的空格。
@@ -229,16 +229,16 @@ namespace LichPhylactery {
   }
   // 目标：3格内、和自己之间正好隔一扇门（任何门：锁着的、敌人的都行）；或者直接点门，落到门的另一侧。不能穿墙。
   public static string CannotSeep(Pawn caster,LocalTargetInfo t,out IntVec3 dest){
-   dest=IntVec3.Invalid;var map=caster?.Map;if(map==null)return "施法者不在地图上。";
-   var c=t.Cell;if(!c.IsValid || !c.InBounds(map))return "需要地图上的目标位置。";
-   if(c.DistanceTo(caster.Position)>SeepRange+.5f)return "超出渗过距离（"+SeepRange+"格）。";
+   dest=IntVec3.Invalid;var map=caster?.Map;if(map==null)return "施法者不在地图上。".Loc();
+   var c=t.Cell;if(!c.IsValid || !c.InBounds(map))return "需要地图上的目标位置。".Loc();
+   if(c.DistanceTo(caster.Position)>SeepRange+.5f)return "超出渗过距离（".Loc()+SeepRange+"格）。".Loc();
    var door=c.GetDoor(map);
-   if(door!=null){dest=OtherSide(caster,door);return dest.IsValid?null:"门的另一侧没有可以站的地方（或者路上隔着墙）。";}
+   if(door!=null){dest=OtherSide(caster,door);return dest.IsValid?null:"门的另一侧没有可以站的地方（或者路上隔着墙）。".Loc();}
    var r=Landing(caster,c);if(r!=null)return r;
    int doors=0;
-   foreach(var x in Between(caster.Position,c)){if(x.GetDoor(map)!=null){doors++;continue;}if(!x.Walkable(map))return "中间隔着墙，渗不过去（只能穿门）。";}
-   if(doors==0)return "和目标之间没有门。";
-   if(doors>1)return "一次只能渗过一扇门。";
+   foreach(var x in Between(caster.Position,c)){if(x.GetDoor(map)!=null){doors++;continue;}if(!x.Walkable(map))return "中间隔着墙，渗不过去（只能穿门）。".Loc();}
+   if(doors==0)return "和目标之间没有门。".Loc();
+   if(doors>1)return "一次只能渗过一扇门。".Loc();
    dest=c;return null;
   }
   // 位移复用吉斯洋基的星界跳跃（不耗精神力），两端留下胶滴。
@@ -263,9 +263,9 @@ namespace LichPhylactery {
    var h=ReshapeTarget(p);if(h==null || !Pay(p,ReshapeCost))return null;
    string label;
    if(h is Hediff_MissingPart){label=h.Part.LabelShort;p.health.RestorePart(h.Part,null,true);}
-   else{label=h.Part?.LabelShort+"的"+h.LabelBase;p.health.RemoveHediff(h);}
+   else{label=h.Part?.LabelShort+"的".Loc()+h.LabelBase;p.health.RemoveHediff(h);}
    Ooze(p.MapHeld,p.PositionHeld,2);
-   if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"用原生质重塑了"+label+"。",p,MessageTypeDefOf.PositiveEvent,false);
+   if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"用原生质重塑了".Loc()+label+"。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);
    return label;
   }
 
@@ -311,8 +311,8 @@ namespace LichPhylactery {
   public GeneGizmo_OozeProtoplasm(Gene_Resource gene,List<IGeneResourceDrain> drainGenes,Color barColor,Color barHighlightColor):base(gene,drainGenes,barColor,barHighlightColor){resource=gene;}
   protected override bool DraggingBar{get=>dragging;set=>dragging=value;}
   protected override bool IsDraggable=>false;
-  protected override string Title=>"原生质";
-  protected override string GetTooltip()=>"原生质："+(resource.Value*Oozefolk.Max).ToString("0")+" / "+(resource.Max*Oozefolk.Max).ToString("0")+"\n不会自然流失。每吃一顿+3；吞没人形尸体+25，动物按体型×15（最多30），开始腐烂的减半。\n分裂80、重塑40、析出凝胶25、渗过10。";
+  protected override string Title=>"原生质".Loc();
+  protected override string GetTooltip()=>"原生质：".Loc()+(resource.Value*Oozefolk.Max).ToString("0")+" / "+(resource.Max*Oozefolk.Max).ToString("0")+"\n不会自然流失。每吃一顿+3；吞没人形尸体+25，动物按体型×15（最多30），开始腐烂的减半。\n分裂80、重塑40、析出凝胶25、渗过10。".Loc();
  }
  public class Gene_OozeDigest : Gene {
   // 每吃一顿（任何提供营养的食物，药物除外）+3 原生质。
@@ -342,19 +342,19 @@ namespace LichPhylactery {
   public override bool GizmoDisabled(out string reason){
    if(Props.cost>0 && !Oozefolk.CanPay(Caster,Props.cost)){reason=Oozefolk.NotEnough(Props.cost);return true;}
    if(Props.effect=="fission"){reason=Oozefolk.CannotFission(Caster);if(reason!=null)return true;}
-   if(Props.effect=="reshape" && Oozefolk.ReshapeTarget(Caster)==null){reason="没有缺失的外部部位，也没有永久伤疤。";return true;}
+   if(Props.effect=="reshape" && Oozefolk.ReshapeTarget(Caster)==null){reason="没有缺失的外部部位，也没有永久伤疤。".Loc();return true;}
    return base.GizmoDisabled(out reason);
   }
   public string Invalid(LocalTargetInfo target){
-   if(Caster?.Map==null)return "施法者不在地图上。";
+   if(Caster?.Map==null)return "施法者不在地图上。".Loc();
    switch(Props.effect){
     case "engulf":return Oozefolk.CannotEngulf(Caster,target.Thing);
     case "seep":return Oozefolk.CannotSeep(Caster,target,out _);
     case "fission":return Oozefolk.CannotFission(Caster);
-    case "reshape":return Oozefolk.ReshapeTarget(Caster)==null?"没有需要重塑的地方。":null;
+    case "reshape":return Oozefolk.ReshapeTarget(Caster)==null?"没有需要重塑的地方。".Loc():null;
     case "extract":return Oozefolk.CanPay(Caster,Oozefolk.ExtractCost)?null:Oozefolk.NotEnough(Oozefolk.ExtractCost);
    }
-   return "未知的能力。";
+   return "未知的能力。".Loc();
   }
   public override bool Valid(LocalTargetInfo target,bool throwMessages=false){
    string reason=Invalid(target);
@@ -371,7 +371,7 @@ namespace LichPhylactery {
     case "extract":Oozefolk.ExtractGel(Caster);break;
    }
   }
-  public override string ExtraLabelMouseAttachment(LocalTargetInfo target)=>Props.cost>0?"原生质 "+Props.cost.ToString("0")+" / "+Oozefolk.Points(Caster).ToString("0"):null;
+  public override string ExtraLabelMouseAttachment(LocalTargetInfo target)=>Props.cost>0?"原生质 ".Loc()+Props.cost.ToString("0")+" / "+Oozefolk.Points(Caster).ToString("0"):null;
  }
  // 右键尸体：吞没（2小时，复用能力的施放任务）。
  public class FloatMenuOptionProvider_OozeEngulf : FloatMenuOptionProvider {
@@ -382,10 +382,10 @@ namespace LichPhylactery {
    var pawn=context.FirstSelectedPawn;
    if(!(clickedThing is Corpse corpse) || pawn==null || pawn.Faction!=Faction.OfPlayer)return null;
    var ability=pawn.abilities?.GetAbility(Oozefolk.Engulfing);if(ability==null)return null;
-   string label="吞没"+corpse.InnerPawn?.LabelShort+"（2小时）";
-   var why=Oozefolk.CannotEngulf(pawn,corpse);if(why!=null)return new FloatMenuOption(label+"："+why,null);
-   if(ability.GizmoDisabled(out string reason))return new FloatMenuOption(label+"："+reason,null);
-   if(!pawn.CanReach(corpse,PathEndMode.Touch,Danger.Deadly))return new FloatMenuOption(label+"：无法到达",null);
+   string label="吞没".Loc()+corpse.InnerPawn?.LabelShort+"（2小时）".Loc();
+   var why=Oozefolk.CannotEngulf(pawn,corpse);if(why!=null)return new FloatMenuOption(label+"：".Loc()+why,null);
+   if(ability.GizmoDisabled(out string reason))return new FloatMenuOption(label+"：".Loc()+reason,null);
+   if(!pawn.CanReach(corpse,PathEndMode.Touch,Danger.Deadly))return new FloatMenuOption(label+"：无法到达".Loc(),null);
    return FloatMenuUtility.DecoratePrioritizedTask(new FloatMenuOption(label,()=>pawn.jobs.TryTakeOrderedJob(ability.GetJob(corpse,corpse),JobTag.Misc)),pawn,corpse);
   }
  }
@@ -410,13 +410,13 @@ namespace LichPhylactery {
   string pBuf,dBuf,rBuf;
   public const string Hunter="LP_FaerunHostile";
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref protoplasm,"protoplasm",60);Scribe_Values.Look(ref raidDay,"raidDay",6);Scribe_Values.Look(ref raidPoints,"raidPoints",300);Scribe_Values.Look(ref letterLabel,"letterLabel");}
-  public override string Summary(Scenario scen)=>"一名流浆人开局原生质"+protoplasm.ToString("0")+"；第"+raidDay.ToString("0.#")+"天塞伊远征军派来约"+raidPoints.ToString("0")+"点的追捕队"+(letterLabel.NullOrEmpty()?"":"——“"+letterLabel+"”")+"。";
+  public override string Summary(Scenario scen)=>"一名流浆人开局原生质".Loc()+protoplasm.ToString("0")+"；第".Loc()+raidDay.ToString("0.#")+"天塞伊远征军派来约".Loc()+raidPoints.ToString("0")+"点的追捕队".Loc()+(letterLabel.NullOrEmpty()?"":"——“"+letterLabel+"”")+"。".Loc();
   public override IEnumerable<string> ConfigErrors(){foreach(var e in base.ConfigErrors())yield return e;if(protoplasm<0 || protoplasm>Oozefolk.Max)yield return "protoplasm must be 0-100";if(raidDay<0)yield return "raidDay must not be negative";if(raidPoints<=0)yield return "raidPoints must be positive";}
   public override void DoEditInterface(Listing_ScenEdit listing){
    var r=listing.GetScenPartRect(this,RowHeight*4f);
-   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,0,4),"原生质 ",ref protoplasm,ref pBuf,0,Oozefolk.Max);
-   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,1,4),"追捕天数 ",ref raidDay,ref dBuf,0,60);
-   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,2,4),"追捕点数 ",ref raidPoints,ref rBuf,50,5000);
+   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,0,4),"原生质 ".Loc(),ref protoplasm,ref pBuf,0,Oozefolk.Max);
+   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,1,4),"追捕天数 ".Loc(),ref raidDay,ref dBuf,0,60);
+   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,2,4),"追捕点数 ".Loc(),ref raidPoints,ref rBuf,50,5000);
    letterLabel=Widgets.TextField(ScenEdit.Row(r,3,4),letterLabel??"");
   }
   public override void PostGameStart(){var map=Find.AnyPlayerHomeMap;if(map!=null)Apply(map,ScenEdit.Starters(map).ToList(),protoplasm,raidDay,raidPoints,letterLabel);}
@@ -435,7 +435,7 @@ namespace LichPhylactery {
  }
  public static class OozefolkSettings {
   public static void Draw(Listing_Standard l){
-   l.GapLine();l.Label("流浆人分裂冷却："+LichMod.Settings.oozeSplitDays+"天");
+   l.GapLine();l.Label("流浆人分裂冷却：".Loc()+LichMod.Settings.oozeSplitDays+"天".Loc());
    LichMod.Settings.oozeSplitDays=(int)l.Slider(LichMod.Settings.oozeSplitDays,15,60);
   }
  }
@@ -480,7 +480,7 @@ namespace LichPhylactery {
  public static class OozePrisonBreak {
   static void Postfix(Pawn pawn,System.Text.StringBuilder sb,ref float __result){
    if(__result<=0f || !Oozefolk.Has(pawn,Oozefolk.AmorphousGene))return;
-   __result/=Oozefolk.PrisonBreakFactor;if(sb!=null){sb.AppendLineIfNotEmpty();sb.Append("  - 无定形（流浆人）: "+Oozefolk.PrisonBreakFactor.ToStringPercent());}
+   __result/=Oozefolk.PrisonBreakFactor;if(sb!=null){sb.AppendLineIfNotEmpty();sb.Append("  - 无定形（流浆人）: ".Loc()+Oozefolk.PrisonBreakFactor.ToStringPercent());}
   }
  }
  [HarmonyPatch(typeof(Building_Door),nameof(Building_Door.PawnCanOpen))]

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 神迹布道 -->
+  <LP_Ability_DivinePreach.label>miracle preaching</LP_Ability_DivinePreach.label>
+  <!-- 以神迹为证向对方布道，劝说对方改信说话者的文化。效力是原版「改宗」的2倍；额外消耗守护神神眷5（不够时不能用）。冷却和原版改宗一样（3天）。 -->
+  <LP_Ability_DivinePreach.description>Preach to the other with miracles as proof, persuading them to convert to the speaker's culture. Twice as effective as vanilla "convert"; costs an extra 5 patron deity divine favor (unusable if there isn't enough). Same cooldown as vanilla convert (3 days).</LP_Ability_DivinePreach.description>
+  <!-- {INITIATOR_labelShort}的布道没能说服{RECIPIENT_labelShort}。{RECIPIENT_labelShort}有些不快，但确信度从{CERTAINTYBEFORE}降到了{CERTAINTYAFTER}。 -->
+  <LP_Ability_DivinePreach.comps.CompAbilityEffect_Convert.failMessage>{INITIATOR_labelShort}'s preaching failed to convince {RECIPIENT_labelShort}. {RECIPIENT_labelShort} is a bit annoyed, but their certainty fell from {CERTAINTYBEFORE} to {CERTAINTYAFTER}.</LP_Ability_DivinePreach.comps.CompAbilityEffect_Convert.failMessage>
+  <!-- {INITIATOR_labelShort}以神迹布道，{RECIPIENT_labelShort}改信了{IDEO}。 -->
+  <LP_Ability_DivinePreach.comps.CompAbilityEffect_Convert.successMessage>{INITIATOR_labelShort} preached with miracles, and {RECIPIENT_labelShort} converted to {IDEO}.</LP_Ability_DivinePreach.comps.CompAbilityEffect_Convert.successMessage>
+</LanguageData>

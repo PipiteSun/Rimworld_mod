@@ -15,7 +15,7 @@ namespace LichPhylactery {
  // 热路径先查按 pawn 缓存的 DndInfo（没有这些特性 = null）；存档数据在隐藏状态 Hediff_DndRecord；周期逻辑在 GameComponent_DndTraits（250 / 2500 刻）。
  [DefOf]
  public static class DndTraitDefOf {
-  public static TraitDef LP_Order,LP_Morality,LP_DragonStance,LP_GiantStance,LP_UndeadStance,LP_RaceAttitude,LP_HiveSurvivor,LP_DragonServant,LP_GithExile;
+  public static TraitDef LP_Order,LP_Morality,LP_DragonStance,LP_GiantStance,LP_UndeadStance,LP_RaceAttitude,LP_HiveSurvivor,LP_GithExile;
   public static TraitDef LP_Tactician,LP_ArcaneGift,LP_WildMagic,LP_Tinkerer,LP_NatureBond,LP_Magephobe,LP_ArcaneCraving,LP_TreasureHunter,LP_PlaneTouched;
   public static TraitDef LP_Revenant,LP_Lycanthrope,LP_FarRealmTouched;
   public static HediffDef LP_DndRecord,LP_RevenantBody,LP_Beastform_Wolf,LP_Beastform_Bear,LP_Beastform_Tiger;
@@ -33,14 +33,14 @@ namespace LichPhylactery {
  // 一个人身上 1.62 特性的汇总（缓存，不存档）。光谱特性存程度（0 = 没有）；revenant -1 = 没有、0 = 复仇亡魂、1 = 安息之魂。
  public sealed class DndInfo {
   public int order,morality,dragon,giant,undead,race,lycan,revenant=-1,personality;
-  public bool hive,servant,exile,tactician,arcane,wild,tinker,nature,phobe,craving,treasure,plane,far;
+  public bool hive,exile,tactician,arcane,wild,tinker,nature,phobe,craving,treasure,plane,far;
  }
 
  public static class DndTraits {
   public const int VanillaCap=3,MaxPersonality=2;
   public const float FirstChance=.4f,SecondChance=.15f,BossCurseChance=.15f;
   public const float TypeDragon=.2f,TypeGiant=.2f,TypeUndead=.2f,TypeRevenant=.3f,TypeAtRest=.15f,GiantSize=1.5f;
-  public const float OrderWork=1.05f,ServantWork=1.1f,TinkerRepair=1.2f,ArcaneSensitivity=.1f,NatureTame=1.15f,ServantHaul=1.3f,FarEntropy=20f;
+  public const float OrderWork=1.05f,ServantWork=1.1f,TinkerRepair=1.2f,ArcaneSensitivity=.1f,NatureTame=1.15f,FarEntropy=20f;
   public const float AuraHitBonus=.05f,AuraShot=1.05f,GiantDodge=.1f,WildSpell=1.1f,HolyBonus=1.15f,PhobeSpell=.9f,BeastResist=.5f,ArcaneEntropy=.9f,TinkerCooldown=.95f,ClassXpBonus=1.25f;
   public const float WildChance=.05f,BiteChance=.05f,BlastChance=.05f,ScenarioFarChance=.05f,InsightChance=.01f,FleeChance=.1f,BerserkChance=.1f,TreasureLoot=.1f,TreasureRuins=.2f,LowHealth=.3f;
   public const int AuraRadius=4,DragonFleeRadius=10,ServantRadius=3,WhisperRadius=6,RestrainedTicks=6*GenDate.TicksPerHour,BeastTicks=6*GenDate.TicksPerHour,RiseTicks=12*GenDate.TicksPerHour;
@@ -57,7 +57,7 @@ namespace LichPhylactery {
   static HashSet<TraitDef> personality,curses;
   static void Sets(){
    if(personality!=null)return;var D=typeof(DndTraitDefOf);
-   personality=new HashSet<TraitDef>{DndTraitDefOf.LP_Order,DndTraitDefOf.LP_Morality,DndTraitDefOf.LP_DragonStance,DndTraitDefOf.LP_GiantStance,DndTraitDefOf.LP_UndeadStance,DndTraitDefOf.LP_RaceAttitude,DndTraitDefOf.LP_HiveSurvivor,DndTraitDefOf.LP_DragonServant,DndTraitDefOf.LP_GithExile,
+   personality=new HashSet<TraitDef>{DndTraitDefOf.LP_Order,DndTraitDefOf.LP_Morality,DndTraitDefOf.LP_DragonStance,DndTraitDefOf.LP_GiantStance,DndTraitDefOf.LP_UndeadStance,DndTraitDefOf.LP_RaceAttitude,DndTraitDefOf.LP_HiveSurvivor,DndTraitDefOf.LP_GithExile,
     DndTraitDefOf.LP_Tactician,DndTraitDefOf.LP_ArcaneGift,DndTraitDefOf.LP_WildMagic,DndTraitDefOf.LP_Tinkerer,DndTraitDefOf.LP_NatureBond,DndTraitDefOf.LP_Magephobe,DndTraitDefOf.LP_ArcaneCraving,DndTraitDefOf.LP_TreasureHunter,DndTraitDefOf.LP_PlaneTouched};
    curses=new HashSet<TraitDef>{DndTraitDefOf.LP_Revenant,DndTraitDefOf.LP_Lycanthrope,DndTraitDefOf.LP_FarRealmTouched};
    foreach(var d in MoreTraits.Curses)curses.Add(d); // 1.79.0 吸血鬼之咒、厄运缠身、空心之人、狱火烙印（HeroTraitsMore.cs）
@@ -92,7 +92,7 @@ namespace LichPhylactery {
     if(d==DndTraitDefOf.LP_Order)i.order=g;else if(d==DndTraitDefOf.LP_Morality)i.morality=g;
     else if(d==DndTraitDefOf.LP_DragonStance)i.dragon=g;else if(d==DndTraitDefOf.LP_GiantStance)i.giant=g;
     else if(d==DndTraitDefOf.LP_UndeadStance)i.undead=g;else if(d==DndTraitDefOf.LP_RaceAttitude)i.race=g;
-    else if(d==DndTraitDefOf.LP_HiveSurvivor)i.hive=true;else if(d==DndTraitDefOf.LP_DragonServant)i.servant=true;else if(d==DndTraitDefOf.LP_GithExile)i.exile=true;
+    else if(d==DndTraitDefOf.LP_HiveSurvivor)i.hive=true;else if(d==DndTraitDefOf.LP_GithExile)i.exile=true;
     else if(d==DndTraitDefOf.LP_Tactician)i.tactician=true;else if(d==DndTraitDefOf.LP_ArcaneGift)i.arcane=true;else if(d==DndTraitDefOf.LP_WildMagic)i.wild=true;
     else if(d==DndTraitDefOf.LP_Tinkerer)i.tinker=true;else if(d==DndTraitDefOf.LP_NatureBond)i.nature=true;else if(d==DndTraitDefOf.LP_Magephobe)i.phobe=true;
     else if(d==DndTraitDefOf.LP_ArcaneCraving)i.craving=true;else if(d==DndTraitDefOf.LP_TreasureHunter)i.treasure=true;else if(d==DndTraitDefOf.LP_PlaneTouched)i.plane=true;
@@ -120,7 +120,7 @@ namespace LichPhylactery {
    A(DndTraitDefOf.LP_Order,1,1.5f,0);A(DndTraitDefOf.LP_Order,-1,1.5f,0);A(DndTraitDefOf.LP_Morality,1,1.5f,0);A(DndTraitDefOf.LP_Morality,-1,1.5f,0);
    A(DndTraitDefOf.LP_DragonStance,-1,1f,1);A(DndTraitDefOf.LP_DragonStance,1,1f,1);A(DndTraitDefOf.LP_GiantStance,1,1f,1);A(DndTraitDefOf.LP_GiantStance,-1,1f,1);
    A(DndTraitDefOf.LP_UndeadStance,1,1f,1);A(DndTraitDefOf.LP_UndeadStance,-1,1f,1);A(DndTraitDefOf.LP_RaceAttitude,1,1f,1);A(DndTraitDefOf.LP_RaceAttitude,-1,1f,1);
-   A(DndTraitDefOf.LP_HiveSurvivor,0,.5f,1);A(DndTraitDefOf.LP_DragonServant,0,.6f,1);A(DndTraitDefOf.LP_GithExile,0,3f,1);
+   A(DndTraitDefOf.LP_HiveSurvivor,0,.5f,1);A(DndTraitDefOf.LP_GithExile,0,3f,1);
    foreach(var d in new[]{DndTraitDefOf.LP_Tactician,DndTraitDefOf.LP_ArcaneGift,DndTraitDefOf.LP_WildMagic,DndTraitDefOf.LP_Tinkerer,DndTraitDefOf.LP_NatureBond})A(d,0,1f,2);
    foreach(var d in new[]{DndTraitDefOf.LP_Magephobe,DndTraitDefOf.LP_ArcaneCraving,DndTraitDefOf.LP_TreasureHunter,DndTraitDefOf.LP_PlaneTouched})A(d,0,1f,3);
    return table=t;
@@ -128,16 +128,14 @@ namespace LichPhylactery {
   public static bool Eligible(Pawn p)=>HeroTraits.Eligible(p) && Necro.Construct(p)==null;
   // 原版名额里还剩几个空位：强力特性、传说事迹不算（它们在名额以外），背景和性格特性都算。
   public static int Room(Pawn p)=>p?.story?.traits==null?0:VanillaCap-p.story.traits.allTraits.Count(t=>!HeroTraits.IsSlot(t.def) && !HeroTraits.IsDeed(t.def));
-  public static bool Dragonborn(Pawn p)=>p!=null && (Affinity.For(p).key=="LP_ForceDragon" || ForceDragon.Active(p));
   public static bool GiantRace(Pawn p)=>IdeoBridge.IsGiant(p);
   public static bool Gith(Pawn p)=>p?.genes?.Xenotype!=null && p.genes.Xenotype==Githyanki.Xenotype;
   public static bool Allowed(Pawn p,TraitDef d,int degree){
    if(p?.story?.traits==null || d==null)return false;
-   if(d==DndTraitDefOf.LP_DragonStance && (Dragonborn(p) || DndCreatureType.Is(p,DndType.Dragon)))return false;
+   if(d==DndTraitDefOf.LP_DragonStance && DndCreatureType.Is(p,DndType.Dragon))return false;
    if(d==DndTraitDefOf.LP_GiantStance && degree==-1 && GiantRace(p))return false;
    if(d==DndTraitDefOf.LP_UndeadStance && degree==-1 && Items.Undead(p))return false;
    if(d==DndTraitDefOf.LP_HiveSurvivor && (MindFlayer.IsMindFlayer(p) || HalfIllithid.Is(p)))return false;
-   if(d==DndTraitDefOf.LP_DragonServant && Dragonborn(p))return false;
    if(d==DndTraitDefOf.LP_GithExile && !Gith(p))return false;
    var l=p.story.traits.allTraits;var probe=new Trait(d,degree,true);
    for(int k=0;k<l.Count;k++){var e=l[k];if(e.def==d || e.def.ConflictsWith(d) || d.ConflictsWith(e.def) || Clash(probe,e) || Clash(e,probe))return false;}
@@ -186,7 +184,7 @@ namespace LichPhylactery {
   public static Trait Infect(Pawn p,TraitDef d,int degree){
    if(!CurseOn || d==null || !HeroTraits.Eligible(p) || HeroTraits.Full(p) || p.story.traits.allTraits.Any(x=>IsCurse(x.def)) || !Allowed(p,d,degree))return null;
    var t=HeroTraits.Give(p,d,degree);
-   if(t!=null && p.Faction!=null && p.Faction.IsPlayer && !TestSuppressed)Messages.Message(p.LabelShort+"染上了「"+HeroTraits.Plain(t)+"」。",p,MessageTypeDefOf.NegativeEvent,false);
+   if(t!=null && p.Faction!=null && p.Faction.IsPlayer && !TestSuppressed)Messages.Message(p.LabelShort+"染上了「".Loc()+HeroTraits.Plain(t)+"」。".Loc(),p,MessageTypeDefOf.NegativeEvent,false);
    return t;
   }
 
@@ -214,26 +212,24 @@ namespace LichPhylactery {
   public static bool LichConverted(Pawn p){
    if(Degree(p,DndTraitDefOf.LP_Morality)!=1)return false;
    var t=p.story.traits.GetTrait(DndTraitDefOf.LP_Morality);p.story.traits.RemoveTrait(t);
-   if(p.Faction!=null && p.Faction.IsPlayer && !TestSuppressed)Find.LetterStack.ReceiveLetter("仁善消逝",p.LabelShort+"把灵魂封进了命匣。曾经那颗见不得别人受苦的心，随着最后一口活人的气息一起散了。\n\n"+p.LabelShort+"失去了「仁善」特性。",LetterDefOf.NeutralEvent,p);
+   if(p.Faction!=null && p.Faction.IsPlayer && !TestSuppressed)Find.LetterStack.ReceiveLetter("仁善消逝".Loc(),p.LabelShort+"把灵魂封进了命匣。曾经那颗见不得别人受苦的心，随着最后一口活人的气息一起散了。\n\n".Loc()+p.LabelShort+"失去了「仁善」特性。".Loc(),LetterDefOf.NeutralEvent,p);
    LichConversions++;return true;
   }
   public static int LichConversions; // 自检计数
 
   // ---------- 判断（心情、好感共用；殖民地级的按 250 刻缓存） ----------
-  static int colonyStamp=-1;static bool ordered,dragonbornColonist;static readonly Dictionary<string,int> raceCounts=new Dictionary<string,int>();static int colonists;
+  static int colonyStamp=-1;static bool ordered;static readonly Dictionary<string,int> raceCounts=new Dictionary<string,int>();static int colonists;
   public static void ForgetColony(){colonyStamp=-1;mapStamp.Clear();}
   static void Colony(){
    int now=Now;if(colonyStamp>=0 && now>=colonyStamp && now-colonyStamp<250)return;colonyStamp=now;
-   ordered=dragonbornColonist=false;raceCounts.Clear();colonists=0;
+   ordered=false;raceCounts.Clear();colonists=0;
    foreach(var c in PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive_FreeColonists){
     if(!c.RaceProps.Humanlike)continue;colonists++;
     var k=Affinity.For(c).key;raceCounts[k]=raceCounts.TryGetValue(k,out int n)?n+1:1;
-    if(Dragonborn(c))dragonbornColonist=true;
     if(!ordered && (c.royalty?.MostSeniorTitle!=null || ModsConfig.IdeologyActive && c.Ideo?.GetRole(c)?.def==PreceptDefOf.IdeoRole_Leader))ordered=true;
    }
   }
   public static bool ColonyOrdered{get{Colony();return ordered;}}
-  public static bool DragonbornColonist{get{Colony();return dragonbornColonist;}}
   public static int RaceCount{get{Colony();return raceCounts.Count;}}
   public static bool Majority(Pawn p){Colony();if(colonists==0)return true;return raceCounts.TryGetValue(Affinity.For(p).key,out int n) && n*2>colonists;}
   // 每张地图：龙、夺心魔（250 刻）。
@@ -265,7 +261,6 @@ namespace LichPhylactery {
     case "LP_DT_Cosmopolitan":{if(i.race!=1 || !Colonist(p))return -1;int n=RaceCount-1;return n>=1?Math.Min(n,4)-1:-1;}
     case "LP_DT_PureMajority":return i.race==-1 && Colonist(p)?(Majority(p)?0:1):-1;
     case "LP_DT_FlayerNear":return i.hive && FlayerOnMap(p)?0:-1;
-    case "LP_DT_DragonPatron":return i.servant && Colonist(p) && DragonbornColonist?0:-1;
     case "LP_DT_Outdoors":return i.nature && p.Spawned && (p.GetRoom()?.PsychologicallyOutdoors??true)?0:-1;
     case "LP_DT_ArcaneCraving":{var r=Record(p);return i.craving && r!=null && r.lastMagic!=-1 && now-r.lastMagic>CravingTicks?0:-1;}
    }
@@ -277,7 +272,6 @@ namespace LichPhylactery {
    if(def.defName=="LP_DT_RevenantDread")return RevenantBodies.Count>0 && RevenantBodies.Contains(other) && Colonist(p) && !RevenantBodies.Contains(p)?(Degree(p,DndTraitDefOf.LP_Morality)==1?1:0):-1;
    var i=Info(p);if(i==null)return -1;
    switch(def.defName){
-    case "LP_DT_DragonbornDistrust":return i.dragon==1 && other.Faction!=null && other.Faction==p.Faction && Dragonborn(other)?0:-1;
     case "LP_DT_GiantDevotion":return i.giant==1 && other.Faction!=null && other.Faction==p.Faction && other.BodySize>=GiantSize?0:-1;
     case "LP_DT_GiantHatred":return i.giant==-1 && GiantRace(other)?0:-1;
     case "LP_DT_PureBlood":return i.race==-1?(Affinity.For(other).key==Affinity.For(p).key?0:1):-1;
@@ -361,7 +355,7 @@ namespace LichPhylactery {
    if(v.Corpse==null || v.Corpse.Destroyed)return false;
    r.killerId=killer.ThingID;r.killerFaction=killer.Faction;r.killerName=killer.LabelShort;
    var c=GameComponent_DndTraits.Get;if(c==null)return false;c.pending.Add(new RevenantPending{pawn=v,tick=now+RiseTicks});
-   if(v.Faction.IsPlayer && !TestSuppressed)Messages.Message(v.LabelShort+"的亡魂不肯离去：12 小时后，"+v.LabelShort+"会从尸体里爬回来找"+killer.LabelShort+"。别让尸体被烧掉。",v.Corpse,MessageTypeDefOf.NeutralEvent,false);
+   if(v.Faction.IsPlayer && !TestSuppressed)Messages.Message(v.LabelShort+"的亡魂不肯离去：12 小时后，".Loc()+v.LabelShort+"会从尸体里爬回来找".Loc()+killer.LabelShort+"。别让尸体被烧掉。".Loc(),v.Corpse,MessageTypeDefOf.NeutralEvent,false);
    return true;
   }
   public static bool Rise(Pawn p){
@@ -371,7 +365,7 @@ namespace LichPhylactery {
    if(DndTraitDefOf.LP_RevenantBody!=null && !Items.Has(p,DndTraitDefOf.LP_RevenantBody))p.health.AddHediff(DndTraitDefOf.LP_RevenantBody);
    RevenantBodies.Add(p);
    var r=EnsureRecord(p);r.revenantCooldown=Now+RevenantCooldown;
-   if(p.Faction!=null && p.Faction.IsPlayer && !TestSuppressed)Find.LetterStack.ReceiveLetter("复仇亡魂归来",p.LabelShort+"从死亡里爬了回来，伤势全愈，身上带着坟土的寒气。\n\n"+p.LabelShort+"只想找到"+(r.killerName??"凶手")+"。下一次复活要等 60 天。",LetterDefOf.NeutralEvent,p);
+   if(p.Faction!=null && p.Faction.IsPlayer && !TestSuppressed)Find.LetterStack.ReceiveLetter("复仇亡魂归来".Loc(),p.LabelShort+"从死亡里爬了回来，伤势全愈，身上带着坟土的寒气。\n\n".Loc()+p.LabelShort+"只想找到".Loc()+(r.killerName??"凶手".Loc())+"。下一次复活要等 60 天。".Loc(),LetterDefOf.NeutralEvent,p);
    GameComponent_DndTraits.Get?.MarkDirty();
    return true;
   }
@@ -384,7 +378,7 @@ namespace LichPhylactery {
    var rr=Record(revenant);if(rr!=null)rr.killerFaction=fac;
    var body=revenant.health.hediffSet.GetFirstHediffOfDef(DndTraitDefOf.LP_RevenantBody);if(body!=null)revenant.health.RemoveHediff(body);
    RevenantBodies.Remove(revenant);
-   if(revenant.Faction!=null && revenant.Faction.IsPlayer && !TestSuppressed)Find.LetterStack.ReceiveLetter("血仇已报",revenant.LabelShort+"亲手杀死了"+victim.LabelShort+"。亡魂终于安息——"+revenant.LabelShort+"成了「安息之魂」，获得 "+xp.ToString("0")+" 点冒险者经验。",LetterDefOf.PositiveEvent,revenant);
+   if(revenant.Faction!=null && revenant.Faction.IsPlayer && !TestSuppressed)Find.LetterStack.ReceiveLetter("血仇已报".Loc(),revenant.LabelShort+"亲手杀死了".Loc()+victim.LabelShort+"。亡魂终于安息——".Loc()+revenant.LabelShort+"成了「安息之魂」，获得 ".Loc()+xp.ToString("0")+" 点冒险者经验。".Loc(),LetterDefOf.PositiveEvent,revenant);
    GameComponent_DndTraits.Get?.MarkDirty();
    return true;
   }
@@ -402,21 +396,19 @@ namespace LichPhylactery {
      if(ki.dragon==1 && DndCreatureType.Is(v,DndType.Dragon))Memory(killer,"LP_DT_Dragonslain");
     }
    }
-   // 殖民地的龙死去：龙之眷从 -15。
-   if(v.Faction!=null && v.Faction.IsPlayer && DndCreatureType.Is(v,DndType.Dragon))foreach(var c in PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive_FreeColonists)if(c!=v && Info(c)?.servant==true)Memory(c,"LP_DT_DragonLost");
   }
 
   // ---------- 兽化症 ----------
   public static HediffDef FormDef(int degree)=>degree==1?DndTraitDefOf.LP_Beastform_Wolf:degree==2?DndTraitDefOf.LP_Beastform_Bear:DndTraitDefOf.LP_Beastform_Tiger;
-  public static readonly string[] FormNames={"","狼","熊","虎"};
+  public static readonly string[] FormNames={"","狼".Loc(),"熊".Loc(),"虎".Loc()};
   public static Hediff_Beastform Form(Pawn p){var l=p?.health?.hediffSet?.hediffs;if(l!=null)for(int k=0;k<l.Count;k++)if(l[k] is Hediff_Beastform b)return b;return null;}
   public static bool Shapeshift(Pawn p,bool forced){
    var i=Info(p);if(i==null || i.lycan<=0 || p.Dead || Form(p)!=null)return false;
    var def=FormDef(i.lycan);if(def==null)return false;
    var h=(Hediff_Beastform)HediffMaker.MakeHediff(def,p);h.forced=forced;p.health.AddHediff(h);
    var r=EnsureRecord(p);int now=Now;r.lastForm=now;if(forced)r.lycanNext=now+Days(10f,15f);
-   Items.Mote(p,(forced?"兽性发作：":"化身")+FormNames[i.lycan]+"形",new Color(.85f,.35f,.3f));
-   if(forced && p.Faction!=null && p.Faction.IsPlayer && !TestSuppressed)Messages.Message(p.LabelShort+"的兽化症发作了，化身"+FormNames[i.lycan]+"形，6 小时内会扑向最近的敌人。",p,MessageTypeDefOf.ThreatSmall,false);
+   Items.Mote(p,(forced?"兽性发作：".Loc():"化身".Loc())+FormNames[i.lycan]+"形".Loc(),new Color(.85f,.35f,.3f));
+   if(forced && p.Faction!=null && p.Faction.IsPlayer && !TestSuppressed)Messages.Message(p.LabelShort+"的兽化症发作了，化身".Loc()+FormNames[i.lycan]+"形，6 小时内会扑向最近的敌人。".Loc(),p,MessageTypeDefOf.ThreatSmall,false);
    return true;
   }
   // 化身期间的失控：扑向 25 格内最近的敌人；附近没有敌人时（每次化身判定一次）10% 狂暴。
@@ -430,7 +422,7 @@ namespace LichPhylactery {
     p.jobs.StartJob(job,JobCondition.InterruptForced,null,false,true);return;
    }
    if(h.berserkRolled)return;h.berserkRolled=true;
-   if(Roll<BerserkChance)p.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk,"兽化症失控",true,false,false,null,false,false,false);
+   if(Roll<BerserkChance)p.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk,"兽化症失控".Loc(),true,false,false,null,false,false,false);
   }
   public static void LycanTick(Pawn p,DndInfo i,int now){
    var r=EnsureRecord(p);if(r==null)return;
@@ -443,7 +435,7 @@ namespace LichPhylactery {
   public static bool CheckTamed(Pawn p){
    var r=Record(p);if(r==null || r.tamed)return false;var h=Adventurer.Get(p);if(h==null || h.level<TameLevel)return false;
    r.tamed=true;Form(p)?.Calm();SyncAbilities(p);
-   if(p.Faction!=null && p.Faction.IsPlayer && !TestSuppressed)Find.LetterStack.ReceiveLetter("驯服野性",p.LabelShort+"终于学会了和体内的野兽共处：兽化症不再强制发作、不再失控，"+p.LabelShort+"可以每天主动化身一次。",LetterDefOf.PositiveEvent,p);
+   if(p.Faction!=null && p.Faction.IsPlayer && !TestSuppressed)Find.LetterStack.ReceiveLetter("驯服野性".Loc(),p.LabelShort+"终于学会了和体内的野兽共处：兽化症不再强制发作、不再失控，".Loc()+p.LabelShort+"可以每天主动化身一次。".Loc(),LetterDefOf.PositiveEvent,p);
    return true;
   }
   public static void Bite(Pawn v,Pawn a,DamageInfo d){
@@ -460,7 +452,7 @@ namespace LichPhylactery {
    p.jobs.StartJob(job,JobCondition.InterruptForced,null,false,true);Items.Mote(p,text,new Color(.6f,.5f,.85f));
   }
   public static void Whisper(Pawn p){
-   StartDaze(p,WhisperTicks,"远域低语……");
+   StartDaze(p,WhisperTicks,"远域低语……".Loc());
    if(!p.Spawned)return;
    foreach(var o in p.Map.mapPawns.AllHumanlikeSpawned)if(o!=p && !o.Dead && o.Position.DistanceToSquared(p.Position)<=WhisperRadius*WhisperRadius && o.needs?.mood!=null)Memory(o,"LP_DT_FarWhisper");
   }
@@ -486,41 +478,41 @@ namespace LichPhylactery {
    if(which==null){foreach(var s in Surges.InRandomOrder()){var got=Surge(p,s);if(got!=null)return got;}return null;}
    var color=new Color(.75f,.6f,1f);var map=p.MapHeld;
    switch(which){
-    case "invisible":Items.Give(p,"LP_PotionInvisibility",600);Items.Mote(p,"浪涌：隐身",color);break;
+    case "invisible":Items.Give(p,"LP_PotionInvisibility",600);Items.Mote(p,"浪涌：隐身".Loc(),color);break;
     case "flowers":{
      if(map==null || !p.Spawned)return null;var plant=new[]{"Plant_Rose","Plant_Daylily","Plant_Dandelion","Plant_Grass"}.Select(n=>DefDatabase<ThingDef>.GetNamedSilentFail(n)).FirstOrDefault(d=>d?.plant!=null);
      if(plant!=null)foreach(var c in GenAdj.CellsAdjacent8Way(p).Where(c=>c.InBounds(map) && c.GetPlant(map)==null && c.GetEdifice(map)==null && map.fertilityGrid.FertilityAt(c)>=plant.plant.fertilityMin).Take(4)){var pl=(Plant)GenSpawn.Spawn(plant,c,map);pl.Growth=1f;}
-     Items.Mote(p,"浪涌：脚下开满了花",new Color(1f,.7f,.85f));break;}
+     Items.Mote(p,"浪涌：脚下开满了花".Loc(),new Color(1f,.7f,.85f));break;}
     case "fireball":{
      if(map==null || !p.Spawned)return null;
      var foe=p.Map.mapPawns.AllPawnsSpawned.Where(o=>!o.Dead && !o.Downed && o.HostileTo(p) && o.Position.DistanceTo(p.Position)<=20f).OrderBy(o=>o.Position.DistanceToSquared(p.Position)).FirstOrDefault();
      if(foe==null)return null;
      var spare=GenRadial.RadialDistinctThingsAround(foe.Position,map,3f,true).OfType<Pawn>().Where(o=>!o.HostileTo(p)).Cast<Thing>().ToList();
      GenExplosion.DoExplosion(foe.Position,map,1.5f,DamageDefOf.Flame,p,damAmount:6,chanceToStartFire:0f,ignoredThings:spare);
-     Items.Mote(foe,"浪涌：小火球",color);break;}
+     Items.Mote(foe,"浪涌：小火球".Loc(),color);break;}
     case "heal":{
      if(map==null)return null;var team=p.Faction==null?new List<Pawn>{p}:map.mapPawns.SpawnedPawnsInFaction(p.Faction).Where(o=>!o.Dead).ToList();if(!team.Contains(p))team.Add(p);
-     foreach(var o in team)Heal(o,5f);Items.Mote(p,"浪涌：全队治疗",new Color(.6f,1f,.6f));break;}
+     foreach(var o in team)Heal(o,5f);Items.Mote(p,"浪涌：全队治疗".Loc(),new Color(.6f,1f,.6f));break;}
     case "chicken":{
      if(map==null || !p.Spawned)return null;var kind=DefDatabase<PawnKindDef>.GetNamedSilentFail("Chicken");if(kind==null)return null;
      var ch=PawnGenerator.GeneratePawn(new PawnGenerationRequest(kind,p.Faction!=null && p.Faction.IsPlayer?p.Faction:null));GenSpawn.Spawn(ch,CellFinder.RandomClosewalkCellNear(p.Position,map,2),map);
-     Items.Mote(p,"浪涌：咕咕？",color);break;}
-    case "entropy":p.psychicEntropy?.RemoveAllEntropy();Items.Mote(p,"浪涌：心灵熵清空",color);break;
-    case "haste":Items.Give(p,"LP_DT_SurgeHaste");Items.Mote(p,"浪涌：疾行",color);break;
+     Items.Mote(p,"浪涌：咕咕？".Loc(),color);break;}
+    case "entropy":p.psychicEntropy?.RemoveAllEntropy();Items.Mote(p,"浪涌：心灵熵清空".Loc(),color);break;
+    case "haste":Items.Give(p,"LP_DT_SurgeHaste");Items.Mote(p,"浪涌：疾行".Loc(),color);break;
     case "inspire":{
      var ih=p.mindState?.inspirationHandler;if(ih==null || ih.Inspired)return null;
      var defs=DefDatabase<InspirationDef>.AllDefsListForReading.Where(d=>d.Worker!=null && d.Worker.InspirationCanOccur(p)).ToList();if(defs.Count==0)return null;
-     if(!ih.TryStartInspiration(defs.RandomElement(),"狂野魔法浪涌",false))return null;Items.Mote(p,"浪涌：灵感",color);break;}
+     if(!ih.TryStartInspiration(defs.RandomElement(),"狂野魔法浪涌".Loc(),false))return null;Items.Mote(p,"浪涌：灵感".Loc(),color);break;}
     case "stun":{
      if(map==null || !p.Spawned)return null;
      foreach(var o in GenRadial.RadialDistinctThingsAround(p.Position,map,6f,true).OfType<Pawn>().ToList())if(o!=p && !o.Dead && o.HostileTo(p))o.stances?.stunner?.StunFor(120,p,false,true,false);
-     Items.Mote(p,"浪涌：震荡",color);break;}
-    case "burn":if(!p.Spawned)return null;FireUtility.TryAttachFire(p,.1f,p);Items.Mote(p,"浪涌：着火了！",new Color(1f,.5f,.3f));break;
+     Items.Mote(p,"浪涌：震荡".Loc(),color);break;}
+    case "burn":if(!p.Spawned)return null;FireUtility.TryAttachFire(p,.1f,p);Items.Mote(p,"浪涌：着火了！".Loc(),new Color(1f,.5f,.3f));break;
     case "green":{
      if(p.story==null)return null;var h=Items.Give(p,"LP_WildMagicHue",GenDate.TicksPerDay) as Hediff_WildMagicHue;
      if(h!=null){var g=new Color(.45f,.75f,.4f);h.hue=g;p.story.skinColorOverride=g;p.Drawer?.renderer?.SetAllGraphicsDirty();}
-     Items.Mote(p,"浪涌：皮肤变绿了",new Color(.5f,.85f,.45f));break;}
-    case "daze":p.stances?.stunner?.StunFor(300,p,false,false,false);Items.Mote(p,"浪涌：发呆……",color);break;
+     Items.Mote(p,"浪涌：皮肤变绿了".Loc(),new Color(.5f,.85f,.45f));break;}
+    case "daze":p.stances?.stunner?.StunFor(300,p,false,false,false);Items.Mote(p,"浪涌：发呆……".Loc(),color);break;
     default:return null;
    }
    SurgeCount++;return which;
@@ -546,12 +538,6 @@ namespace LichPhylactery {
   }
   public static bool TreasureInDungeon(){foreach(var m in Find.Maps)if(Mythal.IsFloorMap(m))foreach(var p in m.mapPawns.FreeColonistsSpawned)if(Info(p)?.treasure==true)return true;return false;}
   public static void TreasureCall(Map map){if(map==null)return;foreach(var p in map.mapPawns.FreeColonistsSpawned)if(Info(p)?.treasure==true)Memory(p,"LP_DT_CallOfAdventure");}
-  public static bool IsHoard(Room room)=>DragonHoard.Valid(room) && DragonHoard.Owners(room).Count>0;
-  public static bool HaulingToHoard(Pawn p){
-   if(p?.carryTracker?.CarriedThing==null || !p.Spawned)return false;var job=p.CurJob;if(job==null)return false;
-   var c=job.targetB.Cell;if(!job.targetB.IsValid || !c.InBounds(p.Map))return false;
-   return IsHoard(c.GetRoom(p.Map));
-  }
   // VPE 路径经验：职业天赋 ×1.25 与背景、神之勇士等已有的倍率取较高，不叠加。
   public static float ClassXp(Pawn p,string path,float current){
    var i=Info(p);if(i==null)return current;
@@ -562,11 +548,11 @@ namespace LichPhylactery {
   public static string ExtraTip(Pawn p,Trait t){
    if(p==null || t==null)return null;var r=Record(p);var sb=new StringBuilder();int now=Now;
    if(t.def==DndTraitDefOf.LP_Revenant && r!=null){
-    if(t.Degree==0)sb.Append("凶手："+(r.killerName??"（还没有）"));
-    if(r.killerFaction!=null)sb.Append("\n仇敌派系："+r.killerFaction.Name);
-    if(t.Degree==0)sb.Append("\n复活："+(r.revenantCooldown==-1 || now>=r.revenantCooldown?"可用":"冷却中，还要 "+(r.revenantCooldown-now).ToStringTicksToPeriod()));
+    if(t.Degree==0)sb.Append("凶手：".Loc()+(r.killerName??"（还没有）".Loc()));
+    if(r.killerFaction!=null)sb.Append("\n仇敌派系：".Loc()+r.killerFaction.Name);
+    if(t.Degree==0)sb.Append("\n复活：".Loc()+(r.revenantCooldown==-1 || now>=r.revenantCooldown?"可用".Loc():"冷却中，还要 ".Loc()+(r.revenantCooldown-now).ToStringTicksToPeriod()));
    }
-   if(t.def==DndTraitDefOf.LP_Lycanthrope && r!=null)sb.Append(r.tamed?"已驯服野性：可以每天主动化身一次":"野性未驯（冒险者 10 级驯服）"+(r.lycanNext>now?"；下次发作约在 "+(r.lycanNext-now).ToStringTicksToPeriod()+" 后":""));
+   if(t.def==DndTraitDefOf.LP_Lycanthrope && r!=null)sb.Append(r.tamed?"已驯服野性：可以每天主动化身一次".Loc():"野性未驯（冒险者 10 级驯服）".Loc()+(r.lycanNext>now?"；下次发作约在 ".Loc()+(r.lycanNext-now).ToStringTicksToPeriod()+" 后".Loc():""));
    return sb.Length==0?null:sb.ToString().Trim();
   }
  }
@@ -613,7 +599,7 @@ namespace LichPhylactery {
    else if(Props.effect=="shape")DndTraits.Shapeshift(p,false);
   }
   public override bool GizmoDisabled(out string reason){
-   if(Props.effect=="shape" && DndTraits.Form(parent.pawn)!=null){reason="已经是兽形了。";return true;}
+   if(Props.effect=="shape" && DndTraits.Form(parent.pawn)!=null){reason="已经是兽形了。".Loc();return true;}
    return base.GizmoDisabled(out reason);
   }
  }
@@ -631,14 +617,13 @@ namespace LichPhylactery {
   float Factor(Pawn p,out float offset,out string why){
    offset=0f;why=null;var i=DndTraits.Info(p);if(i==null)return 1f;var s=parentStat;float f=1f;
    if(s==StatDefOf.WorkSpeedGlobal){
-    if(i.order==1 && p.timetable?.CurrentAssignment==TimeAssignmentDefOf.Work){f*=DndTraits.OrderWork;why="守序（工作时段）";}
-    if(i.giant==1 && DndTraits.NearGiant.Contains(p)){f*=DndTraits.ServantWork;why=(why==null?"":why+"、")+"巨人仆从（3 格内有巨人）";}
+    if(i.order==1 && p.timetable?.CurrentAssignment==TimeAssignmentDefOf.Work){f*=DndTraits.OrderWork;why="守序（工作时段）".Loc();}
+    if(i.giant==1 && DndTraits.NearGiant.Contains(p)){f*=DndTraits.ServantWork;why=(why==null?"":why+"、".Loc())+"巨人仆从（3 格内有巨人）".Loc();}
    }
-   else if(s==StatDefOf.ConstructionSpeed){if(i.tinker && p.CurJobDef==JobDefOf.Repair){f*=DndTraits.TinkerRepair;why="机械迷（修理）";}}
-   else if(s==StatDefOf.PsychicSensitivity){if(i.arcane && !HeroDestiny.VPEActive){offset=DndTraits.ArcaneSensitivity;why="奥术天赋";}}
-   else if(s==StatDefOf.TameAnimalChance || s==StatDefOf.TrainAnimalChance){if(i.nature){f*=DndTraits.NatureTame;why="自然之子";}}
-   else if(s==StatDefOf.MoveSpeed){if(i.servant && DndTraits.HaulingToHoard(p)){f*=DndTraits.ServantHaul;why="龙之眷从（搬进宝库）";}}
-   else if(s==DndStartup.EntropyMax){if(i.far){offset=DndTraits.FarEntropy;why="远域之触";}}
+   else if(s==StatDefOf.ConstructionSpeed){if(i.tinker && p.CurJobDef==JobDefOf.Repair){f*=DndTraits.TinkerRepair;why="机械迷（修理）".Loc();}}
+   else if(s==StatDefOf.PsychicSensitivity){if(i.arcane && !HeroDestiny.VPEActive){offset=DndTraits.ArcaneSensitivity;why="奥术天赋".Loc();}}
+   else if(s==StatDefOf.TameAnimalChance || s==StatDefOf.TrainAnimalChance){if(i.nature){f*=DndTraits.NatureTame;why="自然之子".Loc();}}
+   else if(s==DndStartup.EntropyMax){if(i.far){offset=DndTraits.FarEntropy;why="远域之触".Loc();}}
    return f;
   }
   public override void TransformValue(StatRequest req,ref float val){if(!(req.Thing is Pawn p))return;float f=Factor(p,out float o,out _);val=val*f+o;}
@@ -653,7 +638,7 @@ namespace LichPhylactery {
   static DndStartup(){
    if(GenCommandLine.CommandLineArgPassed("lichtest"))DndTraits.TestSuppressed=true; // 自测进程：性格特性检查组自己临时打开
    EntropyMax=DefDatabase<StatDef>.GetNamedSilentFail("PsychicEntropyMax");
-   foreach(var stat in new[]{StatDefOf.WorkSpeedGlobal,StatDefOf.ConstructionSpeed,StatDefOf.PsychicSensitivity,StatDefOf.TameAnimalChance,StatDefOf.TrainAnimalChance,StatDefOf.MoveSpeed,EntropyMax}){
+   foreach(var stat in new[]{StatDefOf.WorkSpeedGlobal,StatDefOf.ConstructionSpeed,StatDefOf.PsychicSensitivity,StatDefOf.TameAnimalChance,StatDefOf.TrainAnimalChance,EntropyMax}){
     if(stat==null)continue;if(stat.parts==null)stat.parts=new List<StatPart>();
     if(!stat.parts.Any(x=>x is StatPart_DndTraits))stat.parts.Add(new StatPart_DndTraits{parentStat=stat});
     stat.immutable=false;
@@ -698,11 +683,11 @@ namespace LichPhylactery {
      if(i.lycan>0)DndTraits.LycanTick(p,i,now);
      if(i.dragon==-1 && p.Spawned && !p.Downed && !p.Drafted && !p.InMentalState && p.CurJobDef!=JobDefOf.Flee){
       var d=DndTraits.NearestDragon(p,DndTraits.DragonFleeRadius);
-      if(d!=null && DndTraits.Roll<DndTraits.FleeChance){var dest=CellFinderLoose.GetFleeDest(p,new List<Thing>{d},16f);if(dest.IsValid && dest!=p.Position){p.jobs.StartJob(JobMaker.MakeJob(JobDefOf.Flee,dest,d),JobCondition.InterruptOptional,null,false,true);Items.Mote(p,"龙！快跑！",new Color(.9f,.6f,.4f));}}
+      if(d!=null && DndTraits.Roll<DndTraits.FleeChance){var dest=CellFinderLoose.GetFleeDest(p,new List<Thing>{d},16f);if(dest.IsValid && dest!=p.Position){p.jobs.StartJob(JobMaker.MakeJob(JobDefOf.Flee,dest,d),JobCondition.InterruptOptional,null,false,true);Items.Mote(p,"龙！快跑！".Loc(),new Color(.9f,.6f,.4f));}}
      }
-     if(i.far && p.Spawned && p.Faction!=null && p.Faction.IsPlayer && DndTraits.FlayerOnMap(p,true)){var r=DndTraits.EnsureRecord(p);if(r.flayerWarn==-1 || now-r.flayerWarn>=GenDate.TicksPerDay || now<r.flayerWarn){r.flayerWarn=now;if(!DndTraits.TestSuppressed)Messages.Message(p.LabelShort+"听见远域里有什么在低语：附近有敌对的夺心魔！",p,MessageTypeDefOf.ThreatBig,false);}}
+     if(i.far && p.Spawned && p.Faction!=null && p.Faction.IsPlayer && DndTraits.FlayerOnMap(p,true)){var r=DndTraits.EnsureRecord(p);if(r.flayerWarn==-1 || now-r.flayerWarn>=GenDate.TicksPerDay || now<r.flayerWarn){r.flayerWarn=now;if(!DndTraits.TestSuppressed)Messages.Message(p.LabelShort+"听见远域里有什么在低语：附近有敌对的夺心魔！".Loc(),p,MessageTypeDefOf.ThreatBig,false);}}
      if(i.treasure && p.Faction!=null && p.Faction.IsPlayer){var r=DndTraits.EnsureRecord(p);bool inside=p.Spawned && Mythal.IsFloorMap(p.Map);if(inside && !r.inDungeon)DndTraits.Memory(p,"LP_DT_CallOfAdventure");r.inDungeon=inside;}
-    }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 性格特性 250 刻出错："+e,76200001);}
+    }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 性格特性 250 刻出错：".Loc()+e,76200001);}
    }
    foreach(var k in draftStart.Keys.Where(k=>k==null || k.Dead || !k.Drafted).ToList())draftStart.Remove(k);
    DndTraits.RefreshAura(tacticians);
@@ -714,10 +699,10 @@ namespace LichPhylactery {
     try{
      if(i.lycan>0)DndTraits.CheckTamed(p);
      if(i.far){var r=DndTraits.EnsureRecord(p);if(r.whisperNext==-1)r.whisperNext=now+DndTraits.Days(5f,8f);else if(now>=r.whisperNext && p.Spawned && !p.Drafted){r.whisperNext=now+DndTraits.Days(5f,8f);DndTraits.Whisper(p);}}
-     if(i.plane){var r=DndTraits.EnsureRecord(p);if(r.dazeNext==-1)r.dazeNext=now+DndTraits.Days(10f,15f);else if(now>=r.dazeNext && p.Spawned && !p.Drafted){r.dazeNext=now+DndTraits.Days(10f,15f);DndTraits.StartDaze(p,DndTraits.PlaneDazeTicks,"位面错乱……");}}
+     if(i.plane){var r=DndTraits.EnsureRecord(p);if(r.dazeNext==-1)r.dazeNext=now+DndTraits.Days(10f,15f);else if(now>=r.dazeNext && p.Spawned && !p.Drafted){r.dazeNext=now+DndTraits.Days(10f,15f);DndTraits.StartDaze(p,DndTraits.PlaneDazeTicks,"位面错乱……".Loc());}}
      if(i.wild && !HeroDestiny.VPEActive){var r=DndTraits.EnsureRecord(p);if(r.surgeNext==-1)r.surgeNext=now+DndTraits.Days(.5f,1.5f);else if(now>=r.surgeNext && p.Spawned){r.surgeNext=now+DndTraits.Days(.5f,1.5f);DndTraits.Surge(p);}}
      if(i.craving){var r=DndTraits.EnsureRecord(p);if(r.lastMagic==-1)r.lastMagic=now;}
-    }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 性格特性 2500 刻出错："+e,76200002);}
+    }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 性格特性 2500 刻出错：".Loc()+e,76200002);}
    }
    if(now%60000<2500)DndTraits.Cleanup();
   }
@@ -727,7 +712,7 @@ namespace LichPhylactery {
     var e=pending[k];var p=e.pawn;
     if(p==null || !p.Dead){pending.RemoveAt(k);continue;}
     var corpse=p.Corpse;
-    if(corpse==null || corpse.Destroyed){pending.RemoveAt(k);if(p.Faction!=null && p.Faction.IsPlayer && !DndTraits.TestSuppressed)Messages.Message(p.LabelShort+"的尸体不在了，亡魂无处可归。",MessageTypeDefOf.NegativeEvent,false);continue;}
+    if(corpse==null || corpse.Destroyed){pending.RemoveAt(k);if(p.Faction!=null && p.Faction.IsPlayer && !DndTraits.TestSuppressed)Messages.Message(p.LabelShort+"的尸体不在了，亡魂无处可归。".Loc(),MessageTypeDefOf.NegativeEvent,false);continue;}
     if(now<e.tick || corpse.MapHeld==null)continue;
     pending.RemoveAt(k);if(DndTraits.Rise(p))n++;
    }
@@ -782,7 +767,7 @@ namespace LichPhylactery {
   static void Prefix(Pawn __instance,DamageInfo? dinfo,out Pawn __state){__state=__instance.Dead?null:dinfo?.Instigator as Pawn;if(__instance.Dead)__state=__instance;}
   static void Postfix(Pawn __instance,Pawn __state){
    if(!__instance.Dead || __state==__instance)return;
-   try{DndTraits.OnKilled(__instance,__state);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 性格特性击杀结算出错："+e,76200003);}
+   try{DndTraits.OnKilled(__instance,__state);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 性格特性击杀结算出错：".Loc()+e,76200003);}
   }
  }
  // 战术家光环：近战命中 +5%；巨人杀手躲闪体型 1.5 以上敌人 +10%（在决斗者的掷骰之前）；射击 ×1.05。
@@ -920,9 +905,6 @@ namespace LichPhylactery {
    foreach(var c in __state.costs){int n=Mathf.RoundToInt(c.count*DndTraits.TreasureRuins);if(n<=0 || c.thingDef==null || c.thingDef.category!=ThingCategory.Item)continue;var t=ThingMaker.MakeThing(c.thingDef);t.stackCount=n;GenPlace.TryPlaceThing(t,__state.cell,__state.map,ThingPlaceMode.Near);}
   }
  }
- // 龙之眷从：不从龙宝库往外搬东西。
- [HarmonyPatch(typeof(HaulAIUtility),nameof(HaulAIUtility.PawnCanAutomaticallyHaulFast))]
- public static class DndServantHoard {static void Postfix(Pawn p,Thing t,bool forced,ref bool __result){if(!__result || forced || t==null || !t.Spawned || DndTraits.Info(p)?.servant!=true || !DragonHoard.Counts(t))return;if(DndTraits.IsHoard(t.GetRoom()))__result=false;}}
  // 逃离殖巢开局：人类俘虏必带殖巢幸存者，5% 远域之触。
  [HarmonyPatch(typeof(ScenPart_FlayerEscape),nameof(ScenPart_FlayerEscape.Apply))]
  public static class DndHiveScenario {
@@ -960,9 +942,9 @@ namespace LichPhylactery {
  public static class DndTraitSettings {
   public static void Draw(Listing_Standard l){
    var s=LichMod.Settings;
-   l.CheckboxLabeled("DND 性格特性",ref s.dndPersonality,"（1.62.0）新生成的人形有机会带 1～2 个 DND 性格特性：阵营（守序 / 混乱、仁善 / 邪恶，最多一个）、种族互动（惧龙、屠龙志士、巨人仆从、巨人杀手、巫妖信徒、不死猎人、世界公民、纯血至上、殖巢幸存者、龙之眷从、吉斯流亡者）、职业天赋（战术家、奥术天赋、狂野魔法、机械迷、自然之子）和怪癖（魔法恐惧、秘法上瘾、寻宝狂、位面错乱）。\n只用原版 3 个特性名额里的空位：有空位时 40% 带一个，再有空位时 15% 带第二个，默认约四分之一的人形至少带一个。塞伊多邪恶与守序、费伦拓荒同盟多仁善、余烬氏族多混乱、猎巫狂热分子多守序，狗头人多龙之眷从。\n关闭后不再生成，已有的保留；读档不会给老殖民者补发。");
-   l.Label("性格特性出现率："+s.dndPersonalityRate+"%");s.dndPersonalityRate=Mathf.RoundToInt(l.Slider(s.dndPersonalityRate,0,200)/5f)*5;
-   l.CheckboxLabeled("诅咒之力",ref s.dndCurses,"（1.62.0）红色强力特性：复仇亡魂、兽化症（狼 / 熊 / 虎）是史诗，远域之触是稀有。和其他强力特性一起算数量，在同一次随机里出现：普通种族 1.5%、中等 1%、传奇种族 0.5%（× 强力特性出现率）；剧情首领、宿敌冠军带强力特性时 15% 是红色（不会是复仇亡魂）。兽化症能通过咬伤传染，远域之触能被心灵震爆、逃离殖巢开局、耐瑟启迪染上。\n关闭后不再随机生成、也不会传染，已有的保留。");
+   l.CheckboxLabeled("DND 性格特性".Loc(),ref s.dndPersonality,"（1.62.0）新生成的人形有机会带 1～2 个 DND 性格特性：阵营（守序 / 混乱、仁善 / 邪恶，最多一个）、种族互动（惧龙、屠龙志士、巨人仆从、巨人杀手、巫妖信徒、不死猎人、世界公民、纯血至上、殖巢幸存者、龙之眷从、吉斯流亡者）、职业天赋（战术家、奥术天赋、狂野魔法、机械迷、自然之子）和怪癖（魔法恐惧、秘法上瘾、寻宝狂、位面错乱）。\n只用原版 3 个特性名额里的空位：有空位时 40% 带一个，再有空位时 15% 带第二个，默认约四分之一的人形至少带一个。塞伊多邪恶与守序、费伦拓荒同盟多仁善、余烬氏族多混乱、猎巫狂热分子多守序，狗头人多龙之眷从。\n关闭后不再生成，已有的保留；读档不会给老殖民者补发。".Loc());
+   l.Label("性格特性出现率：".Loc()+s.dndPersonalityRate+"%");s.dndPersonalityRate=Mathf.RoundToInt(l.Slider(s.dndPersonalityRate,0,200)/5f)*5;
+   l.CheckboxLabeled("诅咒之力".Loc(),ref s.dndCurses,"（1.62.0）红色强力特性：复仇亡魂、兽化症（狼 / 熊 / 虎）是史诗，远域之触是稀有。和其他强力特性一起算数量，在同一次随机里出现：普通种族 1.5%、中等 1%、传奇种族 0.5%（× 强力特性出现率）；剧情首领、宿敌冠军带强力特性时 15% 是红色（不会是复仇亡魂）。兽化症能通过咬伤传染，远域之触能被心灵震爆、逃离殖巢开局、耐瑟启迪染上。\n关闭后不再随机生成、也不会传染，已有的保留。".Loc());
   }
  }
 }

@@ -1,0 +1,227 @@
+s03421	Kelemvor's domain spell. Enemy undead within 8 cells of the caster take 30×P holy damage; humanlike corpses in range are "laid to rest": their souls can't be drained and they can't be raised. When cast by a lich, the caster takes 20 damage. Costs 8 divine favor, cooldown 2 days.
+s03422	rest eternal
+s03423	Raise a holy shield around one ally: absorbs 40×P damage, lasting 12 hours. Costs 3 divine favor, cooldown 1 day.
+s03424	Talos's domain spell. Call down 3 lightning strikes on the target area, each dealing 25×P damage, landing randomly up to 2 cells off. Costs 12 divine favor, cooldown 2 days.
+s03425	call lightning
+s03426	Shar's domain spell. Allies within 5 cells of the caster turn invisible for 20×P seconds; attacking reveals them. Costs 10 divine favor, cooldown 3 days.
+s03427	veil of shadow
+s03428	Mystra's domain spell. All of one ally's ability cooldowns are reset, and if they have a psylink, psyfocus +30%. (VPE psycast cooldowns aren't reset here.) Costs 12 divine favor, cooldown 3 days.
+s03429	weave surge
+s03430	A layer of holy shield takes damage for the body until it's depleted or time runs out.
+s03431	Shar's veil hides the body in darkness: others can't see it. Attacking reveals it.
+s03432	Mortals with celestial blood in their veins. Aasimar are handsome, with a faint halo floating overhead; they are naturally gifted at medicine and socializing, and holy light and necrotic power barely hurt them. Every aasimar has received a celestial revelation once: Radiant Soul (a leap), Radiant Consumption (a searing aura) or Necrotic Shroud (scatters the living). They loathe liches and necromantic constructs. The bloodline is inheritable.
+s03433	Inheritable. Celestial resistance, healing hands, one of three celestial revelations, halo; good at medicine and social, loathe the undead.
+s03434	aasimar
+s03435	Stitched-together dead are walking around. It shouldn't be like this.
+s03436	necromantic construct nearby
+s03437	That thing escaped death. Every drop of celestial blood in me is screaming.
+s03438	lich nearby
+s03439	fiendish blood
+s03440	friend of fate
+s03441	Counts as an aasimar (race checks, choosing ritual, child of the heavens).
+s03442	Damage against liches and necromantic constructs: ×125%.
+s03443	Holy damage stops troll regeneration for 1 hour, like fire.
+s03444	Celestial blood loathes things that flee death: +25% damage against liches and necromantic constructs; mood -5 when seeing a lich and -4 when seeing a necromantic construct, and liches also get mood -5 when seeing an aasimar. Anyone with this gene counts as an aasimar.
+s03445	celestial duty
+s03446	Holy light knows this body, and necrotic power has a hard time corroding it: holy, divine punishment and necrotic damage halved.
+s03447	celestial resistance
+s03448	Counts as a tiefling (race checks, choosing ritual, child of the heavens).
+s03449	An ancestor made a pact with a devil, and it shows on the face. Non-tiefling colonists get mood -2 (outsider) when seeing a tiefling who hasn't lived in the colony for a full year; aasimar have -3 opinion of tieflings, turning into +3 (friend of fate) once both have lived there a full year. Anyone with this gene counts as a tiefling.
+s03450	fiendish lineage
+s03451	A faint halo floats overhead, colored after the hair. Purely cosmetic.
+s03452	celestial halo
+s03453	Laying hands on the wounded closes their wounds: each wound heals (Medicine level/2 + Social level/2). Can't regrow lost limbs. Cooldown 1 day.
+s03454	healing hands
+s03455	When hit in melee, a 25% chance to return 10 burn damage of hellfire to the attacker (at most once every 10 seconds).
+s03456	hellish rebuke
+s03457	Can haggle with the devil one more time: mood -10 (3 days) in exchange for +20% shooting and melee damage and +20% psyfocus gain for 24 hours; then 12 hours of "pact overdraft" (consciousness -10%). Cooldown 5 days.
+s03458	devil's bargain
+s03459	The fire of the Nine Hells has burned in the blood: fire and burn damage halved.
+s03460	infernal resistance
+s03461	Cloak yourself in the shadow of death: living enemies within 4 cells flee in terror for 8 seconds. Cooldown 1 day. One of three celestial revelations.
+s03462	celestial revelation: necrotic shroud
+s03463	A toggleable searing light: while on, enemies within 2 cells take 2 holy damage per second, and you take 1 burn damage every 10 seconds. One of three celestial revelations.
+s03464	celestial revelation: radiant consumption
+s03465	A flash of wings of light: leap far away (vanilla longjump, cooldown 1 day). One of three celestial revelations.
+s03466	celestial revelation: radiant soul
+s03467	golden hair
+s03468	silver hair
+s03469	Lay hands on an ally: each wound heals (Medicine level/2 + Social level/2). Can't regrow lost limbs. Cooldown 1 day.
+s03470	I made another deal with that voice. I don't want to know what it'll take.
+s03471	haggled with a devil
+s03472	Haggle with the devil: mood -10 (3 days) in exchange for +20% shooting and melee damage and +20% psyfocus gain for 24 hours; then consciousness -10% for 12 hours. Cooldown 5 days.
+s03473	The deal with the devil is in effect: shooting and melee damage +20%, psyfocus gain +20%. An overdraft follows when it expires.
+s03474	That halo hurts my eyes.
+s03475	aasimar nearby
+s03476	Cloak yourself in the shadow of death: living enemies within 4 cells flee in terror for 8 seconds. Cooldown 1 day.
+s03477	necrotic shroud
+s03478	The devil has come to collect.
+s03479	pact overdraft
+s03480	Spread wings of light and leap far away. Cooldown 1 day.
+s03481	radiant soul
+s03482	leap
+s03483	An aasimar's skin has a faint golden sheen.
+s03484	pale gold skin
+s03485	pale gold
+s03486	An aasimar's skin is white and gleaming, like silver under moonlight.
+s03487	silver-white skin
+s03488	silver-white
+s03489	Mortals whose ancestors made a pact with a devil. Tieflings have horns and thin tails, with red or purple skin; they don't mind heat and fire barely burns them; when hit they strike back with hellfire, and when needed they can haggle with the devil once more. Others take a long time to accept them as one of their own. The bloodline is inheritable.
+s03490	Inheritable. Infernal resistance, hellish rebuke, devil's bargain; horns, tail, red-purple skin, sociable but distrusted.
+s03491	tiefling
+s03492	That horned one hasn't lived here long, and I keep thinking they smell of sulfur.
+s03493	outsider
+s03494	One of the most terrible demons of the Abyss: a body two and a half times human size wrapped in flame, with bat wings and a fiery whip. Balors fear no fire; anything standing next to one may catch fire, even Thay's own soldiers; one beat of its wings can knock down the enemies around it. When a balor is struck down its body crumbles and a second later explodes into a ball of fire, leaving only a still-beating heart.
+s03495	A demon that only appears in the Thayan expedition. Body size ×2.5, fire immunity, flame aura, wing buffet knockback, death explosion; fears cold.
+s03496	Beat the wings hard: enemies within 4 cells are thrown back 2 cells and stunned for 2 seconds. Cooldown 1 day.
+s03497	wing buffet
+s03498	On dissipating: after 1 second, a fire explosion of radius 4 (40 damage).
+s03499	When a balor is struck down its body starts to crumble and explodes after 1 second: 40 fire damage within radius 4, igniting the ground, hitting friend and foe alike.
+s03500	death throes
+s03501	A balor is wrapped in abyssal fire: completely immune to fire damage and can't be ignited, but fears cold (cold damage ×150%). Every 2 seconds, each flammable thing and character within 2 cells of it has a 20% chance to catch fire, friend or foe.
+s03502	abyssal flames
+s03503	The balor's huge body: actual body size ×250%, drawn ×160%, a pair of huge charred red-tinged horns. Giant-body rules give it health ×175% and melee ×145%.
+s03504	balor build
+s03505	A pair of huge charred red-tinged bat wings. Ability "Wing buffet": throw enemies within 4 cells back 2 cells and stun them for 2 seconds, cooldown 1 day.
+s03506	balor wings
+s03507	An ice devil's chill has gotten into the bones: move speed ×85% and melee cooldown ×110% per stack, up to 3 stacks. Fades 30 seconds after leaving the chill.
+s03508	chilled to the bone
+s03509	one stack
+s03510	two stacks
+s03511	three stacks
+s03512	Downed or killed: turns into black smoke and is banished to the Nine Hells, dropping weapons and loot; can't be captured or recruited.
+s03513	Not bothered by being naked.
+s03514	Cold iron weapons deal ×1.5 damage.
+s03515	The body of devils and demons: no eating or sleeping, and no care about nakedness. When knocked down or killed they are banished to the Nine Hells, leaving no survivor and no corpse, only loot on the spot. Cold iron weapons deal ×1.5 damage to them.
+s03516	body of the Nine Hells
+s03517	A devil from the depths of the Nine Hells, with frost on its ice-blue carapace, an insectoid head with curved horns and a long tail with ice spikes. Ice devils are summoned by the Red Wizards to fight for Thay: a biting chill radiates from them, slowing approaching enemies more and more; the tail spike freezes the blood when it pierces flesh. Ice devils don't eat or sleep and can't be captured: once they fall they are banished to the Nine Hells, leaving only a tail spike.
+s03518	A devil that only appears in the Thayan expedition. Chill aura slows enemies, ice-spiked tail, sees the invisible; banished to the Nine Hells when downed.
+s03519	Ice devils don't fear cold and can't be ignited; fire damage halved. Biting chill surrounds them within 5 cells: hostile characters gain one stack of "chilled to the bone" per second (up to 3 stacks, each move speed ×85% and melee cooldown ×110%), fading 30 seconds after leaving.
+s03520	frost body
+s03521	Ignores the target's psychic invisibility when seeking and attacking targets.
+s03522	An ice devil's compound eyes see through every illusion: a great wyrm's invisibility, a mind flayer's psionic concealment and invisibility potions are all visible to it as usual and can be targeted normally.
+s03523	devil's eye
+s03524	An ice devil's tall carapaced body: actual body size ×150%, drawn ×130%, a pair of ice-blue curved horns. Giant-body rules give it health ×125% and melee ×115%.
+s03525	ice devil build
+s03526	An ice devil's ice-spiked tail. Gains the "tail spike" melee attack: sharp (stab) 18 damage, cooldown 3 seconds, each hit adds a stack of chilled to the bone.
+s03527	ice-spiked tail
+s03528	tail spike
+s03529	An ice devil's tail spike; it freezes the blood when it pierces flesh.
+s03530	A balor's dark red skin with firelight glowing through the cracks.
+s03531	abyssal dark red
+s03532	dark red
+s03533	An ice devil's ice-blue carapace covered in white frost.
+s03534	ice-blue carapace
+s03535	ice blue
+s03536	A giant race of molten-fire blood; the bloodline is passed on to children. Adult fire giants are 2.0 times the size of an ordinary person (the bloodline body size cap), with tougher body parts but slow movement. They are completely immune to fire, can't be ignited, are extremely heat-tolerant but somewhat afraid of cold. Fire giants love crafting by nature, and items they make have better quality; they don't care about nudity and can wear ordinary clothes and ordinary armor. In the giant ordning, fire giants rank above frost giants and are their sworn enemies.
+s03537	Inheritable molten giant race. Tall and tough, slow, fully fire-immune, fears cold, skilled crafters with better quality output, doesn't care about nudity, can wear ordinary clothes.
+s03538	fire giant
+s03539	The robust build and deep red skin come from vanilla appearance genes.
+s03540	Body size grows with age, reaching the max multiplier ×2.0 as an adult.
+s03541	Giant-body rules: the bigger the body, the stronger the health and melee. Adult total health ×150%, melee damage ×130% (adjustable in mod settings; health is still ×150% when off).
+s03542	Giant stomach: max food rises with body size, ×200% as an adult (children grow with age); hunger rate unchanged, so one meal lasts longer.
+s03543	Move speed: ×80%.
+s03544	Completely immune to fire damage, can't be ignited.
+s03545	Crafted items have a 50% chance of +1 quality tier (up to masterwork).
+s03546	No negative mood from nudity.
+s03547	Giant lineage: fire giant (rank 3 of the ordning, above frost giants). Can wear ordinary clothes; giant-only apparel can only be worn by giants, each piece mood +2 (up to +6).
+s03548	The molten-fire bloodline of fire giants, inherited with the race. The robust build and deep red skin come from the Biotech vanilla appearance genes. Adults are 2.0 times the size of an ordinary person (the bloodline body size cap); the bigger the body, the stronger the health and melee (see giant-body rules: adult total health ×150%, melee damage ×130%), and slow. Completely immune to fire damage and can't be ignited. When crafting with the Crafting skill, there is a 50% chance to raise quality by one tier (up to masterwork). Fire giants are never sad about being naked. Ordinary clothes scale up with the giant body.
+s03549	molten giant origin
+s03550	A frost eye grown from a great deal of flesh. Replaces one eye, part efficiency 125%, grants the Ray of Frost: range 24 cells, 12 frostbite damage and +0.12 hypothermia, cooldown 8 seconds. Both eyes together give only one ability, with a shared cooldown.
+s03551	blind sight
+s03552	Grow blind sight from 400 fresh raw meat and metal auxiliaries. A frost eye grown from a great deal of flesh. Replaces one eye, part efficiency 125%, grants the Ray of Frost: range 24 cells, 12 frostbite damage and +0.12 hypothermia, cooldown 8 seconds. Both eyes together give only one ability, with a shared cooldown.
+s03553	Growing blind sight.
+s03554	grow blind sight
+s03555	Grow a necromantic sub-personality from 800 fresh raw meat and metal auxiliaries. An add-on brain implant that doesn't replace the brain. Removes the slowdown after daily XP reaches learning saturation and stops natural skill decay. Passion, learning multipliers, skill level caps and XP loss from other mechanics are kept.
+s03556	Growing a necromantic sub-personality.
+s03557	grow necromantic sub-personality
+s03558	Grow shadow walk from 600 fresh raw meat and metal auxiliaries. Replaces a whole leg, part efficiency 135%. Once installed, permanently passes through walls: normal walking and work pathfinding can pass through walls, mountain rock and doors without damaging buildings. Can't cross impassable water or the void or walk off the map, and can't use a spot inside a wall as a work destination.
+s03559	Growing shadow walk.
+s03560	grow shadow walk
+s03561	Grow a withering hand from 600 fresh raw meat and metal auxiliaries. Replaces a whole arm, part efficiency 125%. After a melee attack deals effective damage, a living target gains +0.06 hypothermia; two arms don't trigger twice. Undead bodies and mechanoids are immune to hypothermia.
+s03562	Growing a withering hand.
+s03563	grow withering hand
+s03564	An add-on brain implant that doesn't replace the brain. Removes the slowdown after daily XP reaches learning saturation and stops natural skill decay. Passion, learning multipliers, skill level caps and XP loss from other mechanics are kept.
+s03565	necromantic sub-personality
+s03566	An active ability granted by blind sight. Deals 12 frostbite damage to a target within 24 cells, and living targets gain an extra 0.12 hypothermia. Cooldown 8 seconds. Costs no psyfocus and needs no psylink. Mechanoids and undead bodies are unaffected by hypothermia.
+s03567	ray of frost
+s03568	Installing blind sight.
+s03569	install blind sight
+s03570	Installing a necromantic sub-personality.
+s03571	install necromantic sub-personality
+s03572	Replaces a whole leg, part efficiency 135%. Once installed, permanently passes through walls: normal walking and work pathfinding can pass through walls, mountain rock and doors without damaging buildings. Can't cross impassable water or the void or walk off the map, and can't use a spot inside a wall as a work destination.
+s03573	Installing shadow walk.
+s03574	install shadow walk
+s03575	Replaces a whole arm, part efficiency 125%. After a melee attack deals effective damage, a living target gains +0.06 hypothermia; two arms don't trigger twice. Undead bodies and mechanoids are immune to hypothermia.
+s03576	Installing a withering hand.
+s03577	install withering hand
+s03578	Remove the necromantic sub-personality and recover the implant.
+s03579	Removing a necromantic sub-personality.
+s03580	remove necromantic sub-personality
+s03581	shadow walk
+s03582	withering hand
+s03583	Devour an unequipped shield belt, shield pack or other force field device to convert it into force: shield belts restore 40, other force field devices 30. Costs no force.
+s03584	devour shield
+s03585	The growth stage of a force dragonborn. Advances when both the days spent on the map of its hoard and the hoard's value reach the threshold; each stage increases body size, scales, claws and max force, and unlocks new abilities.
+s03586	dragon age
+s03587	Can't do dumb labor, cleaning or hauling.
+s03588	Chance to insult non-force dragonborn ×300%.
+s03589	A non-force-dragonborn roommate in the bedroom: "deigned to share a room" mood -6.
+s03590	Arrogant presence: enemies with lower Melee skill than it have ×80% melee hit chance against it.
+s03591	Force dragonborn look down on "lesser creatures". They can research, cast spells and fight, but refuse to sweep or haul; when chatting with non-dragons they easily say insulting things, and being made to share a room is humiliating. This arrogance is also a kind of presence: enemies with worse Melee skill need courage just to approach it.
+s03592	draconic arrogance
+s03593	I ate something without meat. Dragons shouldn't eat grass.
+s03594	forced to eat vegetables
+s03595	Total health: ×150% (takes the larger of this and the giant-body size bonus, not multiplied; a fire giant with a dragon body is also ×150%).
+s03596	Dragon bones and sinews are far tougher than a human's, so every body part can withstand more damage. Total health ×150%, taking the larger of this and the giant-body size bonus, not multiplied.
+s03597	draconic body
+s03598	Only eats food containing meat when not starving (judged by the vanilla "carnivore" standard).
+s03599	Eating food without meat: mood -8 for 1 day.
+s03600	Each meal of meat restores 1 force.
+s03601	Force dragonborn eat only meat. Unless starving, they won't eat vegetarian or meatless meals on their own; if actually forced to, they're very displeased. Raw meat with vanilla robust digestion gives no mood penalty.
+s03602	carnivore
+s03603	dragon claws
+s03604	A natural melee weapon from the dragon claws gene.
+s03605	Gains the "dragon claws" melee attack: sharp (scratch) 16 damage, cooldown 2 seconds, armor penetration calculated per vanilla damage.
+s03606	Dragon claw damage rises with dragon age: +25% per stage, great wyrm ×200% (32 damage).
+s03607	Diamond-like claws hidden at the fingertips can be used directly for tearing in melee. Dragon claws deal sharp damage that rises with dragon age.
+s03608	The hoard finally has something decent in it.
+s03609	small hoard
+s03610	Lying on my treasure feels wonderful.
+s03611	rich hoard
+s03612	My hoard is worthy of bards' songs for a thousand years.
+s03613	legendary hoard
+s03614	Mountains of gold and seas of silver piled to the ceiling. No bed in the world is more worthy of me.
+s03615	great wyrm's hoard
+s03616	The treasure is laid out decently enough.
+s03617	tidy hoard
+s03618	The treasures glitter in the lamplight, just as I like it.
+s03619	gorgeous hoard
+s03620	My hoard is a work of art in itself.
+s03621	dazzling hoard
+s03622	Even gods would stop to look at my hoard.
+s03623	dreamlike hoard
+s03624	Hoard wealth mood: +3 from 1000 silver, +6 from 10000, +12 from 50000, +15 from 150000; no hoard or under 1000 silver gives no mood (no penalty).
+s03625	Hoard beauty mood: +2 from room beauty "pretty" (2.4), +4 from "beautiful" (5), +6 from "very beautiful" (15), +8 from "extremely beautiful" (50).
+s03626	Outsiders taking things from the hoard: the force dragonborn goes into a murderous rage against the thief (can be turned off in mod settings).
+s03627	Dragons and hoards are inseparable. A force dragonborn's own private bedroom counts as its hoard; the market value of everything in the room is the hoard value, which decides dragon age advancement and mood. The richer and more beautiful the hoard, the better the dragon's mood; taking things out of the hoard doesn't upset it, but if an outsider touches its hoard, it triggers a murderous rage locked on the thief.
+s03628	hoarder
+s03629	A great wyrm's scales are nearly transparent, making it hard for enemies to see. Briefly revealed after taking damage or attacking. Stops working when force reaches zero.
+s03630	great wyrm invisibility
+s03631	Natural sharp armor: 30% as a wyrmling, +10% per stage, 70% as a great wyrm.
+s03632	Natural blunt armor: 15% as a wyrmling, +7.5% per stage, 45% as a great wyrm.
+s03633	Tiny diamond scales cover the whole body, blocking blades and heavy blows like natural armor. The older the dragon, the harder the scales. The pale "diamond scale" skin appearance comes from the vanilla extremely-white skin gene.
+s03634	dragon scales
+s03635	I actually have to sleep in the same room as a lesser creature.
+s03636	deigned to share a room
+s03637	{0} was torn apart by force.
+s03638	force
+s03639	Breathe a cone of force that tears everything apart. Deals force damage to creatures (13 as a wyrmling, +3 per stage) and triple damage to buildings and cover; shield belts and mechanoid shields of enemies in the cone are shattered outright, each restoring 25 force. Doesn't start fires. Range grows with dragon age from 4 to 9 cells. Costs 25 force.
+s03640	force breath
+s03641	Raise a 3×3 force cage around the target, trapping it for 1 day. The cage is indestructible, good for capturing alive; works on anomaly entities too. Unlocked at ancient, costs 50 force.
+s03642	force cage
+s03643	A force dragon from the Epic Level Handbook, living among mortals in a humanoid avatar. Its fine diamond scales refract light and its skin is pale to near transparency; it is immune to all force effects, feeds on shields and force fields, and breathes not fire but a cone of pure force that tears apart buildings and shields.\n\nA force dragonborn's power is built from saved money and endured time: after spending enough days on the map of its hoard (its own private bedroom) and bringing the hoard's wealth to the threshold, its dragon age grows from wyrmling stage by stage to great wyrm, and body size, scales, claws, max force and abilities all improve with it. They are aloof and arrogant, eat only meat, refuse menial work like hauling and cleaning, and fly into a rage if anyone touches their hoard; instead of ordinary reproduction, they build a nest in the hoard and lay dragon eggs.
+s03644	A pale, horned dragonborn avatar. Force breath breaks walls and shields, deflection and dodging grow stronger with age; grows through time and hoard wealth, eats only meat (iron stomach, no food poisoning; 500% stomach as an adult, one meal lasts three days), arrogant, hoards, reproduces through dragon eggs.
+s03645	force dragonborn
+s03646	A dragon egg that sparkles like diamond on the surface. It must be kept warm in a force dragonborn's hoard to hatch; the richer the hoard, the faster it hatches; it hatches into a force dragonborn baby at wyrmling age. Extremely expensive.
+s03647	force dragon egg

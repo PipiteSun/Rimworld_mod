@@ -19,7 +19,7 @@ namespace LichPhylactery {
   public static bool TryArrive(List<Pawn> pawns,IncidentParms parms){
    if(!Applies(pawns,parms) || (TestRoll??Rand.Value)>=Chance)return false;
    parms.raidArrivalMode=PawnsArrivalModeDefOf.EdgeWalkInGroups;parms.raidArrivalMode.Worker.Arrive(pawns,parms);Fired++;
-   if(!Adventurer.TestSuppressed)Messages.Message("地精埋伏：劫掠者分成几路，从地图的不同边缘包抄过来！",new LookTargets(pawns.Where(p=>p.Spawned)),MessageTypeDefOf.ThreatBig);
+   if(!Adventurer.TestSuppressed)Messages.Message("地精埋伏：劫掠者分成几路，从地图的不同边缘包抄过来！".Loc(),new LookTargets(pawns.Where(p=>p.Spawned)),MessageTypeDefOf.ThreatBig);
    return true;
   }
  }
@@ -51,13 +51,13 @@ namespace LichPhylactery {
     if(gift!=null)GenPlace.TryPlaceThing(gift,at,map,ThingPlaceMode.Near);
     FleckMaker.Static(at,map,FleckDefOf.PsycastAreaEffect,2f);
     d.DeSpawn();if(!Find.WorldPawns.Contains(d))Find.WorldPawns.PassToWorld(d,PawnDiscardDecideMode.Discard);
-    if(!Adventurer.TestSuppressed)Messages.Message(lich.LabelShort+"和半巫妖谈妥了：它沉回了墓穴深处，留下了"+(gift?.LabelShort??"一句咒语")+"。",gift!=null?new LookTargets(gift):new LookTargets(lich),MessageTypeDefOf.PositiveEvent,false);
+    if(!Adventurer.TestSuppressed)Messages.Message(lich.LabelShort+"和半巫妖谈妥了：它沉回了墓穴深处，留下了".Loc()+(gift?.LabelShort??"一句咒语".Loc())+"。".Loc(),gift!=null?new LookTargets(gift):new LookTargets(lich),MessageTypeDefOf.PositiveEvent,false);
     return true;
    }
    var ext=Legendary.Ext(d);
    var w=ext?.actions.Select(a=>Legendary.Worker(a.action)).FirstOrDefault(x=>x!=null && x.CanDo(d,lich));
    w?.Do(d,lich);
-   if(!Adventurer.TestSuppressed)Messages.Message("半巫妖拒绝了"+lich.LabelShort+"："+(w!=null?"它立刻发动了“"+w.Label+"”！":"它被激怒了！"),d,MessageTypeDefOf.ThreatBig,false);
+   if(!Adventurer.TestSuppressed)Messages.Message("半巫妖拒绝了".Loc()+lich.LabelShort+"：".Loc()+(w!=null?"它立刻发动了“".Loc()+w.Label+"”！".Loc():"它被激怒了！".Loc()),d,MessageTypeDefOf.ThreatBig,false);
    return false;
   }
  }
@@ -69,7 +69,7 @@ namespace LichPhylactery {
    if(p==null || !p.Spawned || p.Faction!=Faction.OfPlayer || Necro.Lich(p)==null || Find.Selector.SingleSelectedThing!=p || !Monsters.DemilichOn)yield break;
    foreach(var d in DemilichParley.Candidates(p)){
     var target=d;
-    yield return new Command_Action{defaultLabel="与半巫妖谈判（成功率 "+DemilichParley.Chance(p).ToStringPercent("0")+"）",defaultDesc="巫妖对巫妖：劝"+d.LabelShort+"放过你们。成功率 50% + 社交×3% + 冒险者等级×1%，最多 90%。\n成功：它回到墓穴深处，留下 1 份秘术残卷或 1 块神迹残片。\n失败：它立刻发动一次传奇动作。每个半巫妖只能谈一次。",
+    yield return new Command_Action{defaultLabel="与半巫妖谈判（成功率 ".Loc()+DemilichParley.Chance(p).ToStringPercent("0")+"）".Loc(),defaultDesc="巫妖对巫妖：劝".Loc()+d.LabelShort+"放过你们。成功率 50% + 社交×3% + 冒险者等级×1%，最多 90%。\n成功：它回到墓穴深处，留下 1 份秘术残卷或 1 块神迹残片。\n失败：它立刻发动一次传奇动作。每个半巫妖只能谈一次。".Loc(),
      icon=ContentFinder<Texture2D>.Get("UI/Commands/AttackMelee",false)??BaseContent.BadTex,action=()=>DemilichParley.Resolve(p,target,Rand.Value)};
    }
   }
@@ -89,7 +89,7 @@ namespace LichPhylactery {
  [HarmonyPatch(typeof(MindFlayer),nameof(MindFlayer.Devour))]
  public static class BeholderBrainDevour {
   static void Prefix(Thing t,out bool __state){var p=t as Pawn??(t as Corpse)?.InnerPawn;__state=Monsters.Is(p,Monsters.Beholder);}
-  static void Postfix(Pawn caster,float __result,bool __state){if(__state && __result>0f && caster!=null && !caster.Dead){BeholderBrain.Apply(caster);if(caster.Faction==Faction.OfPlayer && !Adventurer.TestSuppressed)Messages.Message(caster.LabelShort+"吞下了眼魔的脑髓：脑髓补满，得到 10 天“眼魔之识”。",caster,MessageTypeDefOf.PositiveEvent,false);}}
+  static void Postfix(Pawn caster,float __result,bool __state){if(__state && __result>0f && caster!=null && !caster.Dead){BeholderBrain.Apply(caster);if(caster.Faction==Faction.OfPlayer && !Adventurer.TestSuppressed)Messages.Message(caster.LabelShort+"吞下了眼魔的脑髓：脑髓补满，得到 10 天“眼魔之识”。".Loc(),caster,MessageTypeDefOf.PositiveEvent,false);}}
  }
  [HarmonyPatch(typeof(RimWorld.Ability),nameof(RimWorld.Ability.StartCooldown))]
  public static class BeholderInsightCooldown {
@@ -109,27 +109,27 @@ namespace LichPhylactery {
   }
   public static int Silver(Map map)=>map==null?0:map.listerThings.ThingsOfDef(ThingDefOf.Silver).Where(t=>!t.IsForbidden(Faction.OfPlayer) && t.Spawned && map.areaManager.Home[t.Position]).Sum(t=>t.stackCount);
   public static string Blocked(NetherilQuestState st,Map map){
-   if(st?.envoy!=null && st.intelEnvoyId==st.envoy.thingIDNumber)return "这次来访已经买过情报了";
-   if(Kinds().Count==0)return "拉洛克没有你们够格知道的情报（殖民地最高冒险者等级不够，或传奇怪 / 真龙内容没开）";
-   if(Silver(map)<Price)return "家园区里的白银不够 "+Price;
+   if(st?.envoy!=null && st.intelEnvoyId==st.envoy.thingIDNumber)return "这次来访已经买过情报了".Loc();
+   if(Kinds().Count==0)return "拉洛克没有你们够格知道的情报（殖民地最高冒险者等级不够，或传奇怪 / 真龙内容没开）".Loc();
+   if(Silver(map)<Price)return "家园区里的白银不够 ".Loc()+Price;
    return null;
   }
   public static string Buy(NetherilQuestState st,Map map,string kind=null){
    if(Blocked(st,map)!=null)return null;
    int left=Price;foreach(var t in map.listerThings.ThingsOfDef(ThingDefOf.Silver).Where(t=>!t.IsForbidden(Faction.OfPlayer) && t.Spawned && map.areaManager.Home[t.Position]).ToList()){if(left<=0)break;int take=Math.Min(left,t.stackCount);t.SplitOff(take).Destroy();left-=take;}
    if(st.envoy!=null)st.intelEnvoyId=st.envoy.thingIDNumber;
-   kind=kind??Kinds().RandomElement();const string why="拉洛克的使者收下白银，低声说出了一个地点";
+   kind=kind??Kinds().RandomElement();string why="拉洛克的使者收下白银，低声说出了一个地点".Loc();
    if(kind=="dragon"){
     var have=Dragons.State?.lairs.FirstOrDefault(l=>l.site!=null && !l.site.Destroyed);
-    if(have!=null){Find.LetterStack.ReceiveLetter("龙巢情报",why+"：那座已经显露的龙巢。",LetterDefOf.NeutralEvent,new LookTargets(have.site));return "dragon";}
+    if(have!=null){Find.LetterStack.ReceiveLetter("龙巢情报".Loc(),why+"：那座已经显露的龙巢。".Loc(),LetterDefOf.NeutralEvent,new LookTargets(have.site));return "dragon";}
     return Dragons.RevealLair(Dragons.Colors.RandomElement(),2,why)!=null?"dragon":null;
    }
    var old=Monsters.State?.sites.FirstOrDefault(s=>s.kind==kind && s.site!=null && !s.site.Destroyed);
-   if(old!=null){Find.LetterStack.ReceiveLetter(kind==Monsters.Beholder?"眼魔巢穴情报":"无尽墓穴情报",why+"：那处已经显露的地点。",LetterDefOf.NeutralEvent,new LookTargets(old.site));return kind;}
+   if(old!=null){Find.LetterStack.ReceiveLetter(kind==Monsters.Beholder?"眼魔巢穴情报".Loc():"无尽墓穴情报".Loc(),why+"：那处已经显露的地点。".Loc(),LetterDefOf.NeutralEvent,new LookTargets(old.site));return kind;}
    return Monsters.RevealSite(kind,why)!=null?kind:null;
   }
   public static DiaOption Option(NetherilQuestState st,Map map,Action unused){
-   var o=new DiaOption("购买情报（"+Price+" 白银）"){action=()=>{if(Buy(st,map)==null)Messages.Message("没能买到情报。",MessageTypeDefOf.RejectInput,false);},resolveTree=true};
+   var o=new DiaOption("购买情报（".Loc()+Price+" 白银）".Loc()){action=()=>{if(Buy(st,map)==null)Messages.Message("没能买到情报。".Loc(),MessageTypeDefOf.RejectInput,false);},resolveTree=true};
    var why=Blocked(st,map);if(why!=null)o.Disable(why);
    return o;
   }

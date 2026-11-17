@@ -52,11 +52,11 @@ namespace LichPhylactery {
   }
   public override string CompInspectStringExtra(){
    if(!parent.Spawned)return null;
-   return "钻进进度："+ProgressPercent.ToStringPercent("F0")+"（每份 "+(1f-Props.adamantineChance).ToStringPercent("F0")+" 秘银×"+Props.mithralPerPortion+"，"+Props.adamantineChance.ToStringPercent("F0")+" 精金×"+Props.adamantinePerPortion+"）";
+   return "钻进进度：".Loc()+ProgressPercent.ToStringPercent("F0")+"（每份 ".Loc()+(1f-Props.adamantineChance).ToStringPercent("F0")+" 秘银×".Loc()+Props.mithralPerPortion+"，".Loc()+Props.adamantineChance.ToStringPercent("F0")+" 精金×".Loc()+Props.adamantinePerPortion+"）".Loc();
   }
   public override IEnumerable<Gizmo> CompGetGizmosExtra(){
    foreach(var g in base.CompGetGizmosExtra())yield return g;
-   if(DebugSettings.ShowDevGizmos)yield return new Command_Action{defaultLabel="DEV: 钻完这一份",action=()=>{portionProgress=Props.workPerPortion+1f;portionYieldPct=1f;Produce(1f,null,Rand.Value);portionProgress=0f;portionYieldPct=0f;}};
+   if(DebugSettings.ShowDevGizmos)yield return new Command_Action{defaultLabel="DEV: 钻完这一份".Loc(),action=()=>{portionProgress=Props.workPerPortion+1f;portionYieldPct=1f;Produce(1f,null,Rand.Value);portionProgress=0f;portionYieldPct=0f;}};
   }
  }
  public class WorkGiver_MythicDrill : WorkGiver_Scanner {

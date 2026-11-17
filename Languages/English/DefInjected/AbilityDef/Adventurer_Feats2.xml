@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 魔能飞弹 -->
+  <LP_FeatMagicMissile.label>magic missile</LP_FeatMagicMissile.label>
+  <!-- 魔法学徒（没装 VPE）：一道必中的魔能飞弹，8 + 冒险者等级点魔能伤害，射程 20。冷却 8 小时（约每天 3 次）。 -->
+  <LP_FeatMagicMissile.description>Magic Initiate (without VPE): an unerring force missile dealing 8 + adventurer level force damage, range 20. Cooldown 8 hours (about 3 per day).</LP_FeatMagicMissile.description>
+  <!-- 伪装 -->
+  <LP_FeatDisguise.label>disguise</LP_FeatDisguise.label>
+  <!-- 演员：换个模样混进人群。2 分钟内敌人几乎不会优先瞄准这个人。每天 2 次。 -->
+  <LP_FeatDisguise.description>Actor: change your look and blend into the crowd. For 2 minutes enemies will almost never prioritize targeting this person. 2 per day.</LP_FeatDisguise.description>
+  <!-- 安抚心灵 -->
+  <LP_FeatCalmMind.label>soothe mind</LP_FeatCalmMind.label>
+  <!-- 心灵感应：让 30 格内一个正在精神崩溃的殖民者立刻平静下来。每天 3 次。 -->
+  <LP_FeatCalmMind.description>Telepathy: instantly calm a colonist within 30 cells who is having a mental break. 3 per day.</LP_FeatCalmMind.description>
+  <!-- 武器涂毒 -->
+  <LP_FeatCoatBlade.label>coat weapon in poison</LP_FeatCoatBlade.label>
+  <!-- 毒师：用 1 份草药（身上或地图上的）调毒涂在武器上，之后 20 次近战命中附加蛛后之毒。冷却 1 小时。 -->
+  <LP_FeatCoatBlade.description>Poisoner: brew 1 herbal medicine (carried or on the map) into poison and coat a weapon; the next 20 melee hits apply spider queen venom. Cooldown 1 hour.</LP_FeatCoatBlade.description>
+  <!-- 仪式施放 -->
+  <LP_FeatRitualCast.label>ritual casting</LP_FeatRitualCast.label>
+  <!-- 仪式施法者：站着引导 1 小时（打断就白费），冷却剩得最久的那个能力立刻冷却完毕，之后 1 小时内下一次施法不进冷却、不加心灵熵。每天 2 次，只在有能力冷却中时可用。 -->
+  <LP_FeatRitualCast.description>Ritual Caster: channel standing for 1 hour (interruption wastes it); the ability with the longest remaining cooldown finishes cooling down instantly, and for 1 hour afterwards the next cast triggers no cooldown and adds no neural heat. 2 per day, only usable while an ability is on cooldown.</LP_FeatRitualCast.description>
+</LanguageData>

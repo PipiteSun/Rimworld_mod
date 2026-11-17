@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 抄录法术（一环） -->
+  <LP_WS_CopySpell1.label>copy spell (circle 1)</LP_WS_CopySpell1.label>
+  <!-- 法师把一张一环法术书残页（或真知卷轴 → 侦测魔法）抄进自己的法术书：50 白银、2 小时。成功率 60% + 智力调整值 × 5%（最高 95%）；书士会花费减半（完成时退还一半白银）、成功率 +15%。失败只损失材料；已经会这个法术、或环位还放不了时材料退回。只有法师能做。 -->
+  <LP_WS_CopySpell1.description>A wizard copies a circle 1 spellbook page (or a true seeing scroll → detect magic) into their spellbook: 50 silver, 2 hours. Success 60% + Intelligence modifier × 5% (up to 95%); Order of Scribes pays half (half the silver refunded on completion) with +15% success. Failure only loses the materials; materials are refunded if you already know the spell or can't cast that circle yet. Only wizards can do it.</LP_WS_CopySpell1.description>
+  <!-- 正在抄录法术。 -->
+  <LP_WS_CopySpell1.jobString>Copying a spell.</LP_WS_CopySpell1.jobString>
+  <!-- 抄录法术（二环） -->
+  <LP_WS_CopySpell2.label>copy spell (circle 2)</LP_WS_CopySpell2.label>
+  <!-- 法师把一张二环法术书残页（或石化卷轴 → 定身类人）抄进自己的法术书：100 白银、4 小时。成功率 60% + 智力调整值 × 5%（最高 95%）；书士会花费减半、成功率 +15%。失败只损失材料。法师 3 级起。 -->
+  <LP_WS_CopySpell2.description>A wizard copies a circle 2 spellbook page (or a flesh to stone scroll → hold person) into their spellbook: 100 silver, 4 hours. Success 60% + Intelligence modifier × 5% (up to 95%); Order of Scribes pays half with +15% success. Failure only loses the materials. From wizard level 3.</LP_WS_CopySpell2.description>
+  <!-- 正在抄录法术。 -->
+  <LP_WS_CopySpell2.jobString>Copying a spell.</LP_WS_CopySpell2.jobString>
+  <!-- 抄录法术（三环） -->
+  <LP_WS_CopySpell3.label>copy spell (circle 3)</LP_WS_CopySpell3.label>
+  <!-- 法师把一张三环法术书残页（或恐惧凝视卷轴 → 恐惧术、防护邪恶卷轴 → 魔法阵、死灵冲击卷轴 → 吸血之触）抄进自己的法术书：150 白银、6 小时。成功率 60% + 智力调整值 × 5%（最高 95%）；书士会花费减半、成功率 +15%。失败只损失材料。法师 5 级起。 -->
+  <LP_WS_CopySpell3.description>A wizard copies a circle 3 spellbook page (or a fear gaze scroll → fear, a protection from evil scroll → magic circle, a necrotic blast scroll → vampiric touch) into their spellbook: 150 silver, 6 hours. Success 60% + Intelligence modifier × 5% (up to 95%); Order of Scribes pays half with +15% success. Failure only loses the materials. From wizard level 5.</LP_WS_CopySpell3.description>
+  <!-- 正在抄录法术。 -->
+  <LP_WS_CopySpell3.jobString>Copying a spell.</LP_WS_CopySpell3.jobString>
+</LanguageData>

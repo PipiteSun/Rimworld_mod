@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- title->力量手册 -->
+  <LP_Namer_TomeSTR.rulePack.rulesStrings>
+    <li>title-&gt;Manual of Strength</li>
+  </LP_Namer_TomeSTR.rulePack.rulesStrings>
+  <!-- title->敏捷手册 -->
+  <LP_Namer_TomeDEX.rulePack.rulesStrings>
+    <li>title-&gt;Manual of Dexterity</li>
+  </LP_Namer_TomeDEX.rulePack.rulesStrings>
+  <!-- title->体质手册 -->
+  <LP_Namer_TomeCON.rulePack.rulesStrings>
+    <li>title-&gt;Manual of Constitution</li>
+  </LP_Namer_TomeCON.rulePack.rulesStrings>
+  <!-- title->智力之书 -->
+  <LP_Namer_TomeINT.rulePack.rulesStrings>
+    <li>title-&gt;Book of Intelligence</li>
+  </LP_Namer_TomeINT.rulePack.rulesStrings>
+  <!-- title->感知之书 -->
+  <LP_Namer_TomeWIS.rulePack.rulesStrings>
+    <li>title-&gt;Book of Wisdom</li>
+  </LP_Namer_TomeWIS.rulePack.rulesStrings>
+  <!-- title->魅力之书 -->
+  <LP_Namer_TomeCHA.rulePack.rulesStrings>
+    <li>title-&gt;Book of Charisma</li>
+  </LP_Namer_TomeCHA.rulePack.rulesStrings>
+  <!-- desc->一本从古代遗迹里流传出来的典籍，书页间的力量足以改变读者本身。 | desc->封面的徽记仍在微微发光，像是在等待下一位读者。 -->
+  <LP_Description_Tome.rulePack.rulesStrings>
+    <li>desc-&gt;A tome handed down from ancient ruins, with power between its pages enough to change the reader themself.</li>
+    <li>desc-&gt;The emblem on the cover still glows faintly, as if waiting for the next reader.</li>
+  </LP_Description_Tome.rulePack.rulesStrings>
+</LanguageData>

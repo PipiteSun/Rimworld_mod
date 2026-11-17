@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 小屋术穹顶 -->
+  <LP_LS_TinyHut.label>tiny hut dome</LP_LS_TinyHut.label>
+  <!-- 湖印「小屋术」撑起的半径 3 格力场穹顶：外面射来的弹丸进不来，里面的人恒温。施法者离开穹顶或 8 小时后消失。 -->
+  <LP_LS_TinyHut.description>A force dome of radius 3 raised by the lake seal "Tiny hut": projectiles fired from outside can't get in, and those inside stay at a constant temperature. Vanishes when the caster leaves the dome or after 8 hours.</LP_LS_TinyHut.description>
+  <!-- 澄湖结晶 -->
+  <LP_ClearLakeCrystal.label>clarity crystal</LP_ClearLakeCrystal.label>
+  <!-- 魔力湖泊的澄湖结晶。使用后打开窗口，选一个已学会的湖印抹掉（不退费），空出槽位。 -->
+  <LP_ClearLakeCrystal.description>A Mana Lake clarity crystal. Using it opens a window to choose a learned lake seal to erase (no refund), freeing up the slot.</LP_ClearLakeCrystal.description>
+  <!-- 用{0_label}抹掉一个湖印 -->
+  <LP_ClearLakeCrystal.comps.CompUsable.useLabel>erase a lake seal with {0_label}</LP_ClearLakeCrystal.comps.CompUsable.useLabel>
+</LanguageData>

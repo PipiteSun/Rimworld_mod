@@ -75,8 +75,8 @@ namespace LichPhylactery {
    if(dinfo.HasValue && (dinfo.Value.Def==DamageDefOf.ExecutionCut || dinfo.Value.Def==DamageDefOf.SurgicalCut))return false;
    if(Items.Has(p,MoreTraitDefOf.LP_MT_UnyieldingSpent) || !Epic.Rescue(p))return false;
    p.health.AddHediff(MoreTraitDefOf.LP_MT_UnyieldingSpent);Saved++;
-   Items.Mote(p,"百折不挠",new Color(.69f,.44f,.88f));
-   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"本该死去，却又一次撑了下来：百折不挠让其倒地幸存（伤口已止血）。10 天后才能再次生效。",p,MessageTypeDefOf.PositiveEvent);
+   Items.Mote(p,"百折不挠".Loc(),new Color(.69f,.44f,.88f));
+   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"本该死去，却又一次撑了下来：百折不挠让其倒地幸存（伤口已止血）。10 天后才能再次生效。".Loc(),p,MessageTypeDefOf.PositiveEvent);
    return true;
   }
 
@@ -92,7 +92,7 @@ namespace LichPhylactery {
   public static void AfterHit(Pawn v,Pawn a,MoreInfo ai,MoreInfo vi,DamageInfo d,float dealt){
    if(reflecting || HeroCombat.extra)return;
    if(ai!=null && a.HostileTo(v)){
-    if(ai.vampire && HeroCombat.Melee(d) && !a.Dead){DndTraits.Heal(a,VampireHeal);Items.Mote(a,"吸血",new Color(.8f,.2f,.25f));}
+    if(ai.vampire && HeroCombat.Melee(d) && !a.Dead){DndTraits.Heal(a,VampireHeal);Items.Mote(a,"吸血".Loc(),new Color(.8f,.2f,.25f));}
     if(ai.hellbrand && HeroCombat.WeaponHit(d) && !v.Dead){
      HeroCombat.extra=true;
      try{v.TakeDamage(new DamageInfo(HeroCombat.ElementDef(1),HellExtra,0f,-1f,a,null,null,DamageInfo.SourceCategory.ThingOrUnknown,v));}finally{HeroCombat.extra=false;}
@@ -100,7 +100,7 @@ namespace LichPhylactery {
    }
    if(vi!=null && vi.doomed && !v.Dead && !a.Dead && a.HostileTo(v) && dealt>0f && Roll<DoomReflect){
     reflecting=true;HeroCombat.extra=true;
-    try{a.TakeDamage(new DamageInfo(d.Def,dealt*DoomReflectPart,0f,-1f,v,null,null,DamageInfo.SourceCategory.ThingOrUnknown,a));Items.Mote(a,"厄运转嫁",new Color(.82f,.31f,.31f));}
+    try{a.TakeDamage(new DamageInfo(d.Def,dealt*DoomReflectPart,0f,-1f,v,null,null,DamageInfo.SourceCategory.ThingOrUnknown,a));Items.Mote(a,"厄运转嫁".Loc(),new Color(.82f,.31f,.31f));}
     finally{reflecting=false;HeroCombat.extra=false;}
    }
   }
@@ -114,12 +114,12 @@ namespace LichPhylactery {
    Apparel worn=p.apparel?.WornApparel?.Where(x=>x.def.useHitPoints && x.HitPoints>1).RandomElementWithFallback();
    if(worn!=null)worn.HitPoints=Math.Max(1,worn.HitPoints-Mathf.CeilToInt(worn.MaxHitPoints*DoomWear));
    DndTraits.Memory(p,"LP_MT_Doom");
-   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"又倒霉了"+(worn!=null?"："+worn.LabelShort+"莫名其妙地坏了一大块":"")+"。",p,MessageTypeDefOf.NegativeEvent,false);
+   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"又倒霉了".Loc()+(worn!=null?"：".Loc()+worn.LabelShort+"莫名其妙地坏了一大块".Loc():"")+"。".Loc(),p,MessageTypeDefOf.NegativeEvent,false);
    return worn;
   }
   public static void HellDebt(Pawn p){
    DndTraits.Memory(p,"LP_MT_HellDebt");
-   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"胸口的狱火烙印又烫了起来：魔鬼来索债了。",p,MessageTypeDefOf.NegativeEvent,false);
+   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"胸口的狱火烙印又烫了起来：魔鬼来索债了。".Loc(),p,MessageTypeDefOf.NegativeEvent,false);
   }
  }
 
@@ -154,7 +154,7 @@ namespace LichPhylactery {
      if(i.vampire)MoreTraits.Burn(p);
      if(i.doomed && Rand.MTBEventOccurs(MoreTraits.DoomMtbDays,GenDate.TicksPerDay,2500f))MoreTraits.Doom(p);
      if(i.hellbrand && Rand.MTBEventOccurs(MoreTraits.HellMtbDays,GenDate.TicksPerDay,2500f))MoreTraits.HellDebt(p);
-    }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 新增强力特性 2500 刻出错："+e,77000001);}
+    }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 新增强力特性 2500 刻出错：".Loc()+e,77000001);}
    }
    if(now%60000<2500)MoreTraits.Cleanup();
   }

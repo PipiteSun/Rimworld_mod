@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 迷踪步 -->
+  <LP_CloudMistyStep.label>misty step</LP_CloudMistyStep.label>
+  <!-- 化作一缕银雾，瞬间出现在6格内看得见的一个空位上。冷却30秒。 -->
+  <LP_CloudMistyStep.description>Turn into a wisp of silver mist and instantly appear in a visible empty spot within 6 cells. Cooldown 30 seconds.</LP_CloudMistyStep.description>
+  <!-- 云雾术 -->
+  <LP_CloudFog.label>fog cloud</LP_CloudFog.label>
+  <!-- 在目标点召来一团浓雾：4格半径内30秒的致盲烟雾（挡住射击视线）。冷却4小时。 -->
+  <LP_CloudFog.description>Summon a thick fog at the target point: blinding smoke in a 4-cell radius for 30 seconds (blocks line of sight for shooting). Cooldown 4 hours.</LP_CloudFog.description>
+  <!-- 唤风驱云 -->
+  <LP_CloudCallWind.label>call wind, drive clouds</LP_CloudCallWind.label>
+  <!-- （成年）施放后选一种天气：晴天、雾或下雨，地图天气转为它并保持1天。不能召来雷雨。冷却5天（关掉选择菜单不选，冷却退还）。 -->
+  <LP_CloudCallWind.description>(Adult) After casting, choose a weather: clear, fog or rain; the map's weather changes to it and holds for 1 day. Cannot call thunderstorms. Cooldown 5 days (refunded if you close the choice menu without picking).</LP_CloudCallWind.description>
+</LanguageData>

@@ -52,21 +52,21 @@ namespace LichPhylactery {
    if(p.Map==null)return 0;int n=0;
    foreach(var t in Races124.PawnsNear(p.Map,p.Position,radius).ToList()){
     if(!Hostile(p,t) || t.Downed || t.RaceProps.IsMechanoid)continue;
-    if(Roll>=Subclass2.Chance(AspectChance,p,t)){Items.Mote(t,"抵抗！",DreadColor);continue;}
-    Items.Give(t,"LP_Shaken",ticks,1f);ClassSubclass.Fear(t,ticks,"恐惧面容");n++;
+    if(Roll>=Subclass2.Chance(AspectChance,p,t)){Items.Mote(t,"抵抗！".Loc(),DreadColor);continue;}
+    Items.Give(t,"LP_Shaken",ticks,1f);ClassSubclass.Fear(t,ticks,"恐惧面容".Loc());n++;
    }
-   FleckMaker.Static(p.Position,p.Map,FleckDefOf.PsycastAreaEffect,radius);Items.Mote(p,"恐惧面容",DreadColor);return n;
+   FleckMaker.Static(p.Position,p.Map,FleckDefOf.PsycastAreaEffect,radius);Items.Mote(p,"恐惧面容".Loc(),DreadColor);return n;
   }
   // 操控亡者：敌对的亡者或邪魔成功率 80%（同上按等级差扣）倒戈，加入你的阵营 1 天；到期多半挣脱（同心灵支配的到期表）。
   public static bool Control(Pawn p,Pawn t){
    if(t==null || t.Dead || t.mindState==null)return false;
-   if(Roll>=Subclass2.Chance(ControlChance,p,t)){Items.Mote(t,"抵抗了操控",DreadColor);return false;}
+   if(Roll>=Subclass2.Chance(ControlChance,p,t)){Items.Mote(t,"抵抗了操控".Loc(),DreadColor);return false;}
    var orig=t.Faction;
    if(t.InMentalState)t.MentalState.RecoverFromState();
    t.SetFaction(p.Faction);t.mindState.enemyTarget=null;
    Current.Game?.GetComponent<GameComponent_Subclass2>()?.Add(t,orig,Now+ControlTicks);
-   Items.Mote(t,"被操控",DreadColor);
-   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(t.LabelShort+"被"+p.LabelShort+"操控，暂时为你作战 1 天。",t,MessageTypeDefOf.PositiveEvent,false);
+   Items.Mote(t,"被操控".Loc(),DreadColor);
+   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(t.LabelShort+"被".Loc()+p.LabelShort+"操控，暂时为你作战 1 天。".Loc(),t,MessageTypeDefOf.PositiveEvent,false);
    return true;
   }
 
@@ -86,7 +86,7 @@ namespace LichPhylactery {
   // 60 秒：每 4 秒（Tick250）半径 6 内的敌人受「严重度」点死灵伤害；受到的远程伤害 ×0.5。施放时先放一次恐惧面容。
   public static void LordStart(Pawn p,int ticks,float power){
    Items.Give(p,"LP_OB_DreadLord",ticks,power);Lords.Add(p);
-   Aspect(p,DreadRadius,600);Items.Mote(p,"恐惧之王",DreadColor);
+   Aspect(p,DreadRadius,600);Items.Mote(p,"恐惧之王".Loc(),DreadColor);
   }
   public static bool Lord(Pawn p)=>Lords.Count>0 && Lords.Contains(p) && Items.Has(p,"LP_OB_DreadLord");
   public static int LordPulse(Pawn p){
@@ -106,14 +106,14 @@ namespace LichPhylactery {
    if(a!=null && a!=v && a.HostileTo(v) && !Busy && Haters.Count>0 && ClassMartial2.Melee(d))g*=HateFor(a);
    int fv=Flags(v);
    if((fv & FResist)!=0 && !Monsters.Holy(d)){var cat=d.Def.armorCategory;if(cat==DamageArmorCategoryDefOf.Sharp || cat?.defName=="Blunt")g*=ResistFactor;}
-   if(Lords.Count>0 && ForceDragon.IsRanged(d) && Lord(v))g*=LordRanged;
+   if(Lords.Count>0 && AttackKind.IsRanged(d) && Lord(v))g*=LordRanged;
    return g;
   }
 
   public static string Invalid(Pawn caster,CompProperties_ClassEffect e,LocalTargetInfo target){
    if(e.effect!="OBControl")return null;var t=target.Thing as Pawn;
-   if(t==null || t.Dead)return "需要选择一个活着的目标。";if(!t.HostileTo(caster))return "只能对敌人使用。";
-   if(!UndeadOrFiend(t))return "只能操控亡者或邪魔。";if(ClassSubclass.Bossy(t))return "剧情首领和传奇单位不会被操控。";if(t.IsPrisoner)return "已经是囚犯了。";
+   if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();if(!t.HostileTo(caster))return "只能对敌人使用。".Loc();
+   if(!UndeadOrFiend(t))return "只能操控亡者或邪魔。".Loc();if(ClassSubclass.Bossy(t))return "剧情首领和传奇单位不会被操控。".Loc();if(t.IsPrisoner)return "已经是囚犯了。".Loc();
    return null;
   }
   public static bool Apply(Pawn p,AbilityDef def,CompProperties_ClassEffect e,LocalTargetInfo target){

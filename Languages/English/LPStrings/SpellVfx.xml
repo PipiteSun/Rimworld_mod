@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（SpellVfx.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>&lt;b&gt;法术特效&lt;/b&gt;</zh><en>&lt;b&gt;Spell VFX&lt;/b&gt;</en></s>
+  <s><zh>施放 DND 法术与职业能力时显示特效</zh><en>Show effects when casting DND spells and class abilities</en></s>
+  <s><zh>预热时脚下出现法阵，施放时有光球飞向目标、落点按元素（火、冰、雷、死灵、神圣、治疗、暗影、毒、血、自然、心灵、力场、近战等）爆发；范围法术的光环按半径放大。只是视觉效果，不影响数值。</zh><en>A circle appears underfoot during warmup, a light orb flies to the target on casting, and the impact bursts by element (fire, ice, lightning, necrotic, holy, healing, shadow, poison, blood, nature, psychic, force, melee, etc.); area spells' auras scale with their radius. Purely visual; doesn't affect numbers.</en></s>
+  <s><zh>特效大小：</zh><en>Effect size: </en></s>
+  <s><zh>治疗|治愈|疗伤|愈合|回复|恢复生命|再生|复苏|复活|回气|圣疗|急救</zh><en>(?i)heal|cure|mend|restor|regenerat|reviv|resurrect|revivify|recover|lay on hands|first aid</en></s>
+  <s><zh>火|炎|焰|灼|燃|熔|烈日|陨</zh><en>(?i)fire|flame|burn|blaz|scorch|molten|magma|inferno|meteor|sunburst|sunbeam|ember</en></s>
+  <s><zh>冰|霜|寒|雪|冻</zh><en>(?i)cold|frost|\bice\b|icy|snow|freez|chill</en></s>
+  <s><zh>雷|电|风暴|霹</zh><en>(?i)lightning|thunder|storm|shock|electric</en></s>
+  <s><zh>死灵|亡灵|腐朽|骸|骨|凋|尸|枯萎|吸取生命|噬魂|灵魂|不死|巫妖</zh><en>(?i)necro|undead|decay|bone|skelet|wither|corpse|life drain|drain life|devour soul|soul|undying|lich</en></s>
+  <s><zh>地狱|恶魔|魔鬼|深渊|邪魔</zh><en>(?i)hell|demon|devil|abyss|fiend|infernal</en></s>
+  <s><zh>心灵|精神|魅惑|蛊惑|恐惧|幻象|幻术|催眠|支配|意念|夺心</zh><en>(?i)psychic|mental|\bmind|charm|beguil|fear|frighten|illusion|phantasm|hypno|dominat|telepath|mind flayer</en></s>
+  <s><zh>神圣|神力|神明|神罚|圣光|圣|光明|祝福|天使|裁决|辉|誓</zh><en>(?i)holy|divine|\bgods?\b|smite|radiant|\blight\b|bless|angel|celestial|judg|oath|sacred</en></s>
+  <s><zh>暗影|阴影|黑暗|暗|影|夜|隐</zh><en>(?i)shadow|darkness|\bdark|night|invisib</en></s>
+  <s><zh>毒|酸|腐蚀|孢</zh><en>(?i)poison|acid|corro|toxic|spore</en></s>
+  <s><zh>血</zh><en>(?i)blood|hemo</en></s>
+  <s><zh>藤|荆棘|植物|野兽|自然|树|大地|岩|石|土|地震|德鲁伊</zh><en>(?i)vine|thorn|plant|beast|nature|tree|earth|rock|stone|quake|druid|root</en></s>
+  <s><zh>契约|宗主|邪术|异界|星界</zh><en>(?i)pact|patron|eldritch|warlock|otherworld|astral</en></s>
+  <s><zh>力场|护盾|屏障|冲击|击退|传送|跃迁|时空|闪现|迅捷|加速|音波|雷鸣</zh><en>(?i)force|shield|barrier|impact|knock|push|teleport|blink|time|swift|haste|sonic|thunderwave</en></s>
+  <s><zh>半径\s*(\d+(?:\.\d+)?)</zh><en>(?i)radius\s*(\d+(?:\.\d+)?)</en></s>
+  <s><zh>(?:(\d+(?:\.\d+)?)\s*格(?:长)?的?\s*(?:锥形|扇形))|(?:(?:锥形|扇形)(?:区域)?\s*[（(]?\s*(\d+(?:\.\d+)?)\s*格)</zh><en>(?i)(?:(\d+(?:\.\d+)?)\s*-?\s*cells?(?:\s*long)?\s*(?:cone|fan))|(?:(?:cone|fan)(?:\s*area)?\s*\(?\s*(\d+(?:\.\d+)?)\s*cells?)</en></s>
+  <s><zh>线上|直线|射线|光束|一道闪电</zh><en>(?i)along the line|in a line|straight line|\bray\b|beam|bolt of lightning|lightning bolt</en></s>
+  <s><zh>[LP] 范围指示出错：</zh><en>[LP] Area indicator error: </en></s>
+  <s><zh>[LP] 法术特效出错：</zh><en>[LP] Spell VFX error: </en></s>
+</LPStrings>

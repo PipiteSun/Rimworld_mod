@@ -706,7 +706,7 @@
   <GeneDef>
     <defName>LP_KoboldDragonServant</defName>
     <label>龙之仆从</label>
-    <description>狗头人崇拜巨龙。本殖民地有力能龙或五色真龙时心情+6"侍奉巨龙"，并且每个狗头人让力能龙宝库的价值+2%（最多+20%）；没有龙可以侍奉时心情-2"失去主人"。</description>
+    <description>狗头人崇拜巨龙。本殖民地有五色真龙时心情+6"侍奉巨龙"；没有龙可以侍奉时心情-2"失去主人"。</description>
     <iconPath>CommonRaces/Genes/KoboldDragonServant</iconPath>
     <displayCategory>Miscellaneous</displayCategory>
     <biostatCpx>1</biostatCpx>
@@ -714,7 +714,6 @@
     <selectionWeight>0</selectionWeight>
     <customEffectDescriptions>
       <li>本殖民地有龙：心情+6；没有龙：心情-2（每250刻检查一次）。</li>
-      <li>同一地图每个狗头人殖民者：力能龙宝库价值+2%（最多+20%）。</li>
     </customEffectDescriptions>
   </GeneDef>
   <ThoughtDef>

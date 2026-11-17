@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 召唤风暴 -->
+  <LP_StormCalled.label>summon storm</LP_StormCalled.label>
+  <!-- 风暴巨人召来的雷雨。风暴持续期间，每2小时会有一道雷劈向敌人。 -->
+  <LP_StormCalled.description>A thunderstorm summoned by a storm giant. While the storm lasts, a bolt strikes an enemy every 2 hours.</LP_StormCalled.description>
+  <!-- 召来的天气 -->
+  <LP_WeatherCalled.label>summoned weather</LP_WeatherCalled.label>
+  <!-- 被魔法召来、暂时锁定的天气。 -->
+  <LP_WeatherCalled.description>Weather summoned by magic and temporarily locked.</LP_WeatherCalled.description>
+  <!-- 海渊风暴 -->
+  <LP_AbyssStorm.label>deep sea storm</LP_AbyssStorm.label>
+  <!-- 跟着风暴巨人从海上卷来的雷雨。 -->
+  <LP_AbyssStorm.description>A thunderstorm that followed the storm giant in from the sea.</LP_AbyssStorm.description>
+</LanguageData>

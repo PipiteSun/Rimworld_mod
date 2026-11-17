@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 武僧 -->
+  <LP_Path_Monk.label>monk</LP_Path_Monk.label>
+  <!-- DND 武僧以气御身：武艺、拨挡箭矢、乘风步、金刚之躯，疾风连击、震慑拳、开掌技、颤心掌，终极 空灵之身。徒手（或拿短棍）时最强；拳脚走原版近战结算，Isekai 的力量与武器精通照常生效；“气”的效果乘心灵敏感度。学习每一环都需要对应的格斗等级（6/9/12/15/18）。 -->
+  <LP_Path_Monk.description>The DND monk masters the body with ki: Martial Arts, Deflect Missiles, Step of the Wind, Diamond Body, Flurry of Blows, Stunning Strike, Open Hand Technique, Quivering Palm, and ultimately Empty Body. Strongest unarmed (or with a quarterstaff); fists and kicks use vanilla melee resolution, and Isekai's Strength and weapon mastery apply as usual; ki effects are multiplied by psychic sensitivity. Each tier requires the matching Melee level (6/9/12/15/18).</LP_Path_Monk.description>
+  <!-- 需要格斗 6 级（或冒险者敏捷 13） -->
+  <LP_Path_Monk.lockedReason>Requires Melee 6 (or adventurer Dexterity 13)</LP_Path_Monk.lockedReason>
+  <!-- DND职业 -->
+  <LP_Path_Monk.tab>DND classes</LP_Path_Monk.tab>
+  <!-- 武僧：格斗决定气的强度，徒手时最强。 -->
+  <LP_Path_Monk.tooltip>Monk: Melee sets ki power; strongest unarmed.</LP_Path_Monk.tooltip>
+  <!-- 圣武士 -->
+  <LP_Path_Paladin.label>paladin</LP_Path_Paladin.label>
+  <!-- DND 圣武士以誓言为剑：至圣斩、誓仇、神圣武器、援护换位（格斗），圣疗、守护灵光、勇气灵光、放逐邪恶（社交），终极 圣光化身。格斗或社交任一 6 级即可入门；每个能力看自己那门技能（6/9/12/15/18）。武器那一下照常结算，追加的神圣伤害和治疗乘心灵敏感度。巫妖不能学。 -->
+  <LP_Path_Paladin.description>The DND paladin wields the oath as a sword: Divine Smite, Vow of Enmity, Sacred Weapon, Swap Guard (Melee), Lay on Hands, Aura of Protection, Aura of Courage, Banish Evil (Social), and ultimately Holy Avatar. Either Melee or Social 6 unlocks the path; each ability uses its own skill (6/9/12/15/18). The weapon hit resolves as usual; the extra holy damage and healing are multiplied by psychic sensitivity. Liches cannot learn it.</LP_Path_Paladin.description>
+  <!-- 需要格斗或社交 6 级，或冒险者魅力 13（巫妖不能学） -->
+  <LP_Path_Paladin.lockedReason>Requires Melee or Social 6, or adventurer Charisma 13 (liches cannot learn it)</LP_Path_Paladin.lockedReason>
+  <!-- DND职业 -->
+  <LP_Path_Paladin.tab>DND classes</LP_Path_Paladin.tab>
+  <!-- 圣武士：格斗支执掌圣斩，社交支执掌灵光与圣疗。 -->
+  <LP_Path_Paladin.tooltip>Paladin: the Melee branch governs smites, the Social branch governs auras and Lay on Hands.</LP_Path_Paladin.tooltip>
+</LanguageData>

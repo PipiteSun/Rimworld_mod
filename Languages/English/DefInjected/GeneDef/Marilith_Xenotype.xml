@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 蛇身本源 -->
+  <LP_MarilithCore.label>serpent body origin</LP_MarilithCore.label>
+  <!-- 六臂蛇人的血脉：腰部以上是六臂的人形，腰部以下是一条粗壮的蛇尾。体型1.6（显示约1.3倍）。两侧肩膀各多长两条手臂（一侧的肩膀没了或换成义肢，那一侧的额外手臂也就没了）；每只额外的手操作+10%。蛇尾代替双腿，裤子、护腿和鞋穿不上。冷血的种族，暖和天气里最自在。 -->
+  <LP_MarilithCore.description>The marilith bloodline: above the waist a six-armed humanoid, below the waist a thick serpent tail. Body size 1.6 (drawn about 1.3×). Each shoulder grows two extra arms (if one side's shoulder is lost or replaced with a prosthetic, that side's extra arms are gone too); each extra hand gives manipulation +10%. The serpent tail replaces both legs, so pants, greaves and shoes can't be worn. A cold-blooded race, most at ease in warm weather.</LP_MarilithCore.description>
+  <!-- 体型1.6（显示约1.3倍），儿童随年龄长大。 | 每侧肩膀两条额外手臂：每只能用的额外手操作+10%（四只都在+40%）。 | 蛇尾代替双腿：只盖腿脚的衣服穿不上。 -->
+  <LP_MarilithCore.customEffectDescriptions.0>Body size 1.6 (drawn about 1.3×), children grow with age.</LP_MarilithCore.customEffectDescriptions.0>
+  <LP_MarilithCore.customEffectDescriptions.1>Two extra arms on each shoulder: each usable extra hand gives manipulation +10% (+40% with all four).</LP_MarilithCore.customEffectDescriptions.1>
+  <LP_MarilithCore.customEffectDescriptions.2>A serpent tail instead of legs: clothes covering only the legs and feet can't be worn.</LP_MarilithCore.customEffectDescriptions.2>
+  <!-- 六臂连击 -->
+  <LP_MarilithBlades.label>six-armed flurry</LP_MarilithBlades.label>
+  <!-- 需要多于两条手臂。背包里的近战武器会被额外的手臂拿来当副手：每对能用的额外手臂拿一把（最多两把，挑最好的）。主手拿近战武器或空手时，每次普通近战命中后，每把副手各追加一击（伤害按模组设置，默认50%）。装在只有两条手臂的人身上没有效果。 -->
+  <LP_MarilithBlades.description>Requires more than two arms. Melee weapons in the pack are taken up as off-hands by the extra arms: one per usable pair of extra arms (up to two, picking the best). While the main hand holds a melee weapon or is empty, each normal melee hit is followed by a strike from each off-hand (damage per mod settings, 50% by default). No effect on someone with only two arms.</LP_MarilithBlades.description>
+  <!-- 需要多于两条手臂（人类身上无效）。 | 副手：背包里品质×DPS最高的近战武器，数量 = 能用的额外手臂对数（最多2）。 | 普通近战命中后，每把副手各追加一击；主手拿远程武器时不触发，技能命中不触发。 -->
+  <LP_MarilithBlades.customEffectDescriptions.0>Requires more than two arms (no effect on humans).</LP_MarilithBlades.customEffectDescriptions.0>
+  <LP_MarilithBlades.customEffectDescriptions.1>Off-hands: the melee weapons in the pack with the highest quality × DPS, one per usable pair of extra arms (up to 2).</LP_MarilithBlades.customEffectDescriptions.1>
+  <LP_MarilithBlades.customEffectDescriptions.2>After a normal melee hit, each off-hand follows up with a strike; doesn't trigger when the main hand holds a ranged weapon or on ability hits.</LP_MarilithBlades.customEffectDescriptions.2>
+  <!-- 蛇行 -->
+  <LP_SerpentGlide.label>serpentine glide</LP_SerpentGlide.label>
+  <!-- 蛇尾贴着地面滑行，泥地、沼泽和浅水拖不住它：在这些地形上的移动消耗减半。 -->
+  <LP_SerpentGlide.description>The serpent tail glides along the ground, and mud, marsh and shallow water can't hold it back: movement cost on these terrains is halved.</LP_SerpentGlide.description>
+  <!-- 泥地、沼泽、浅水的地形移动消耗减半（不影响寻路的绕行判断）。 -->
+  <LP_SerpentGlide.customEffectDescriptions.0>Terrain movement cost of mud, marsh and shallow water halved (doesn't affect pathfinding detour decisions).</LP_SerpentGlide.customEffectDescriptions.0>
+  <!-- 缠绕 -->
+  <LP_SerpentConstrict.label>constrict</LP_SerpentConstrict.label>
+  <!-- 用蛇尾（或长臂）缠住贴身的敌人：对方3秒内动弹不得，每秒受到6点钝伤（按双方体型比修正，×0.5～×2）；缠绕期间自己也不能移动。冷却12小时。 -->
+  <LP_SerpentConstrict.description>Wrap an adjacent enemy with the serpent tail (or long arms): it can't move for 3 seconds and takes 6 blunt damage per second (adjusted by the size ratio of both, ×0.5 to ×2); you can't move while constricting either. Cooldown 12 hours.</LP_SerpentConstrict.description>
+  <!-- 剑刃风暴 -->
+  <LP_BladeStorm.label>blade storm</LP_BladeStorm.label>
+  <!-- 所有手臂一起挥舞：对身边1格内的每个敌人，主手和每把能用的副手各攻击一次。冷却2天。副手要有额外的手臂才能用；只有两条手臂时只有主手那一击。 -->
+  <LP_BladeStorm.description>Swing all arms at once: against each enemy within 1 cell, the main hand and every usable off-hand attack once. Cooldown 2 days. Off-hands require extra arms; with only two arms there's just the main-hand strike.</LP_BladeStorm.description>
+  <!-- 深渊之躯 -->
+  <LP_AbyssalHide.label>abyssal body</LP_AbyssalHide.label>
+  <!-- 在深渊的火海与冰窟里长成的鳞甲：受到的火焰、烧伤、冻伤和电击伤害×75%，毒素抗性+50%。 -->
+  <LP_AbyssalHide.description>Scales grown in the fire seas and ice caverns of the Abyss: fire, burn, frostbite and electrical damage taken ×75%, toxic resistance +50%.</LP_AbyssalHide.description>
+  <!-- 冷血 -->
+  <LP_ColdBlood.label>cold-blooded</LP_ColdBlood.label>
+  <!-- 冷血的身体跟着天气变：环境温度低于0℃时移动速度×85%。 -->
+  <LP_ColdBlood.description>A cold-blooded body follows the weather: move speed ×85% when the ambient temperature is below 0°C.</LP_ColdBlood.description>
+  <!-- 环境温度低于0℃时移动速度×85%。 -->
+  <LP_ColdBlood.customEffectDescriptions.0>Move speed ×85% when the ambient temperature is below 0°C.</LP_ColdBlood.customEffectDescriptions.0>
+  <!-- 青绿鳞 -->
+  <LP_SkinSerpentTeal.label>teal scales</LP_SkinSerpentTeal.label>
+  <!-- 六臂蛇人青绿色的鳞皮。 -->
+  <LP_SkinSerpentTeal.description>A marilith's teal scaly hide.</LP_SkinSerpentTeal.description>
+  <!-- 青绿 -->
+  <LP_SkinSerpentTeal.labelShortAdj>teal</LP_SkinSerpentTeal.labelShortAdj>
+  <!-- 墨绿鳞 -->
+  <LP_SkinSerpentDark.label>ink-green scales</LP_SkinSerpentDark.label>
+  <!-- 六臂蛇人深墨绿色的鳞皮。 -->
+  <LP_SkinSerpentDark.description>A marilith's deep ink-green scaly hide.</LP_SkinSerpentDark.description>
+  <!-- 墨绿 -->
+  <LP_SkinSerpentDark.labelShortAdj>ink green</LP_SkinSerpentDark.labelShortAdj>
+  <!-- 赤金鳞 -->
+  <LP_SkinSerpentGold.label>red-gold scales</LP_SkinSerpentGold.label>
+  <!-- 六臂蛇人带金属光泽的赤金色鳞皮。 -->
+  <LP_SkinSerpentGold.description>A marilith's red-gold scaly hide with a metallic sheen.</LP_SkinSerpentGold.description>
+  <!-- 赤金 -->
+  <LP_SkinSerpentGold.labelShortAdj>red gold</LP_SkinSerpentGold.labelShortAdj>
+</LanguageData>

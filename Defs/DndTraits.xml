@@ -54,12 +54,12 @@
       <li>
         <degree>-1</degree>
         <label>惧龙</label>
-        <description>{PAWN_nameDef}小时候见过龙烧掉一整座村子。\n\n- 地图上有龙：心情 -6「龙威压顶」\n- 龙在 10 格内时，每隔几秒有 10% 的几率掉头逃开\n- 龙裔和五色真龙不会有这个特性</description>
+        <description>{PAWN_nameDef}小时候见过龙烧掉一整座村子。\n\n- 地图上有龙：心情 -6「龙威压顶」\n- 龙在 10 格内时，每隔几秒有 10% 的几率掉头逃开\n- 五色真龙不会有这个特性</description>
       </li>
       <li>
         <degree>1</degree>
         <label><![CDATA[<color=#7FBF6A>屠龙志士</color>]]></label>
-        <description>{PAWN_nameDef}发过誓，这辈子要亲手斩下一条龙。\n\n- 对龙的伤害 +20%（和其他类型伤害加成合计最多 +60%）\n- 击杀龙：心情 +10，持续 10 天\n- 对殖民地的龙裔好感 -10\n- 龙裔不会有这个特性</description>
+        <description>{PAWN_nameDef}发过誓，这辈子要亲手斩下一条龙。\n\n- 对龙的伤害 +20%（和其他类型伤害加成合计最多 +60%）\n- 击杀龙：心情 +10，持续 10 天</description>
       </li>
     </degreeDatas>
     <modExtensions>
@@ -139,20 +139,6 @@
     </degreeDatas>
     <modExtensions>
       <li Class="LichPhylactery.TraitRarityExt"><tier>Uncommon</tier><kind>性格特性</kind></li>
-    </modExtensions>
-  </TraitDef>
-
-  <TraitDef>
-    <defName>LP_DragonServant</defName>
-    <commonality>0</commonality>
-    <degreeDatas>
-      <li>
-        <label>龙之眷从</label>
-        <description>{PAWN_nameDef}的祖辈世代侍奉龙。\n\n- 殖民地有龙裔殖民者：心情 +4\n- 把东西搬进龙裔的宝库时移动速度 +30%\n- 不会从龙宝库里往外搬东西\n- 殖民地的龙死去：心情 -15\n- 狗头人出现这个特性的几率 ×5；龙裔不会有这个特性</description>
-      </li>
-    </degreeDatas>
-    <modExtensions>
-      <li Class="LichPhylactery.TraitRarityExt"><tier>Common</tier><kind>性格特性</kind></li>
     </modExtensions>
   </TraitDef>
 
@@ -526,10 +512,6 @@
     <stages><li><label>殖巢的回忆</label><description>这附近有夺心魔。我又闻到了殖巢里的味道。</description><baseMoodEffect>-4</baseMoodEffect></li></stages>
   </ThoughtDef>
   <ThoughtDef ParentName="LP_DTMoodBase">
-    <defName>LP_DT_DragonPatron</defName>
-    <stages><li><label>侍奉龙裔</label><description>殖民地有龙裔。能侍奉龙的血脉，祖先会为我骄傲。</description><baseMoodEffect>4</baseMoodEffect></li></stages>
-  </ThoughtDef>
-  <ThoughtDef ParentName="LP_DTMoodBase">
     <defName>LP_DT_Outdoors</defName>
     <stages><li><label>天地之间</label><description>风吹在脸上，脚下是泥土。这才是活着。</description><baseMoodEffect>2</baseMoodEffect></li></stages>
   </ThoughtDef>
@@ -566,12 +548,6 @@
     <stages><li><label>斩落巨龙</label><description>那条龙倒下了。我的誓言兑现了。</description><baseMoodEffect>10</baseMoodEffect></li></stages>
   </ThoughtDef>
   <ThoughtDef>
-    <defName>LP_DT_DragonLost</defName>
-    <durationDays>10</durationDays>
-    <stackLimit>3</stackLimit>
-    <stages><li><label>龙的陨落</label><description>殖民地的龙死了。我没能守住{PAWN_objective}。</description><baseMoodEffect>-15</baseMoodEffect></li></stages>
-  </ThoughtDef>
-  <ThoughtDef>
     <defName>LP_DT_UnwantedBuff</defName>
     <durationDays>1</durationDays>
     <stackLimit>3</stackLimit>
@@ -601,10 +577,6 @@
     <thoughtClass>Thought_SituationalSocial</thoughtClass>
     <workerClass>LichPhylactery.ThoughtWorker_DndOpinion</workerClass>
     <validWhileDespawned>true</validWhileDespawned>
-  </ThoughtDef>
-  <ThoughtDef ParentName="LP_DTOpinionBase">
-    <defName>LP_DT_DragonbornDistrust</defName>
-    <stages><li><label>屠龙之誓</label><baseOpinionOffset>-10</baseOpinionOffset></li></stages>
   </ThoughtDef>
   <ThoughtDef ParentName="LP_DTOpinionBase">
     <defName>LP_DT_GiantDevotion</defName>

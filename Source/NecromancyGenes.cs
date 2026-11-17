@@ -65,10 +65,10 @@ namespace LichPhylactery {
    if(!ResurrectionUtility.TryResurrect(pawn,new ResurrectionParams{restoreMissingParts=true,dontSpawn=true,removeDiedThoughts=true})){souls.TryAdd(pawn,false);return false;}
    if(map!=null)GenSpawn.Spawn(pawn,cell,map);else caravan.AddPawn(pawn,true);
    revivalTick=-1;pawn.psychicEntropy?.OffsetPsyfocusDirectly(-1f);Necro.Refresh(pawn);
-   Messages.Message(pawn.LabelShort+"已在命匣旁重塑身体。",pawn,MessageTypeDefOf.PositiveEvent,false);
+   Messages.Message(pawn.LabelShort+"已在命匣旁重塑身体。".Loc(),pawn,MessageTypeDefOf.PositiveEvent,false);
    IdeoEvents.Record("LP_HE_LichRevived",pawn); // 1.56.0 文化：亡灵观
    return true;
   }
-  public string RevivalStatus=>soul?.Dead!=true?"":revivalTick<0?"\n灵魂已保存，等待复生计时。":Find.TickManager.TicksGame<revivalTick?"\n自动复生剩余："+((revivalTick-Find.TickManager.TicksGame)/2500f).ToString("0.0")+"小时。":"\n复生已就绪，等待命匣附近有可用位置。";
+  public string RevivalStatus=>soul?.Dead!=true?"":revivalTick<0?"\n灵魂已保存，等待复生计时。".Loc():Find.TickManager.TicksGame<revivalTick?"\n自动复生剩余：".Loc()+((revivalTick-Find.TickManager.TicksGame)/2500f).ToString("0.0")+"小时。".Loc():"\n复生已就绪，等待命匣附近有可用位置。".Loc();
  }
 }

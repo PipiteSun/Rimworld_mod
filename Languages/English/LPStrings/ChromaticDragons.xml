@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（ChromaticDragons.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>青年</zh><en>young</en></s>
+  <s><zh>成年</zh><en>adult</en></s>
+  <s><zh>红龙</zh><en>red dragon</en></s>
+  <s><zh>火焰吐息</zh><en>fire breath</en></s>
+  <s><zh>蓝龙</zh><en>blue dragon</en></s>
+  <s><zh>闪电吐息</zh><en>lightning breath</en></s>
+  <s><zh>绿龙</zh><en>green dragon</en></s>
+  <s><zh>毒气吐息</zh><en>poison breath</en></s>
+  <s><zh>黑龙</zh><en>black dragon</en></s>
+  <s><zh>强酸吐息</zh><en>acid breath</en></s>
+  <s><zh>白龙</zh><en>white dragon</en></s>
+  <s><zh>寒冰吐息</zh><en>cold breath</en></s>
+  <s><zh>阿达亚克斯</zh><en>Adaiax</en></s>
+  <s><zh>克拉拉吉斯</zh><en>Kralagis</en></s>
+  <s><zh>奥默拉斯</zh><en>Omeras</en></s>
+  <s><zh>瓦拉斯卡</zh><en>Valaska</en></s>
+  <s><zh>伊莉安德拉</zh><en>Iliandra</en></s>
+  <s><zh>萨卡拉斯</zh><en>Sakaras</en></s>
+  <s><zh>塔罗斯赫</zh><en>Taroshe</en></s>
+  <s><zh>韦尔米索</zh><en>Vermithor</en></s>
+  <s><zh>乌姆布拉</zh><en>Umbra</en></s>
+  <s><zh>科尔加斯</zh><en>Korgas</en></s>
+  <s><zh>梅格拉齐</zh><en>Megrazi</en></s>
+  <s><zh>斯卡尔维克</zh><en>Skarvik</en></s>
+  <s><zh>格丽姆塔</zh><en>Grimta</en></s>
+  <s><zh>阿尔萨洛斯</zh><en>Arsalos</en></s>
+  <s><zh>黑焰</zh><en>Blackflame</en></s>
+  <s><zh>霜牙</zh><en>Frostfang</en></s>
+  <s><zh>苍雷</zh><en>Azurethunder</en></s>
+  <s><zh>毒棘</zh><en>Venomthorn</en></s>
+  <s><zh>伊瑞维斯</zh><en>Irevis</en></s>
+  <s><zh>普尔普拉</zh><en>Purpura</en></s>
+  <s><zh>！</zh><en>!</en></s>
+  <s><zh>真龙魅惑</zh><en>dragon charm</en></s>
+  <s><zh>撤退了</zh><en>retreated</en></s>
+  <s><zh>受了重伤，拍着翅膀撤退了。它不会忘记这里。</zh><en> was badly hurt and retreated on beating wings. It won't forget this place.</en></s>
+  <s><zh>金子、宝石和艺术品</zh><en>gold, gems and art</en></s>
+  <s><zh>银子</zh><en>silver</en></s>
+  <s><zh>的勒索</zh><en>'s extortion</en></s>
+  <s><zh>）落在殖民地外，带着</zh><en>) lands outside the colony with </en></s>
+  <s><zh>名护卫。它的声音震得人耳朵发麻：\n\n“交出价值 </zh><en> guards. Its voice makes ears ring:\n\n"Hand over </en></s>
+  <s><zh> 的</zh><en> worth of </en></s>
+  <s><zh>，我就饶过你们。”\n\n</zh><en>, and I'll spare you."\n\n</en></s>
+  <s><zh>付：从储存区里直接拿走这么多价值的东西（不够就拿别的值钱货），它带着护卫离开；三十天后有一半的可能再来，要价再高一半。\n</zh><en>Pay: it takes that much value straight from the stockpiles (taking other valuables if there's not enough), then leaves with its guards; there's a one-in-two chance it comes back in thirty days, asking half again as much.\n</en></s>
+  <s><zh>谈：派一名殖民者交涉（难度 </zh><en>Parley: send a colonist to negotiate (difficulty </en></s>
+  <s><zh>；魅力调整值和熟练加值每点 +5%），成功要价减半。</zh><en>; +5% per point of Charisma modifier and proficiency bonus); success halves the demand.</en></s>
+  <s><zh>绿龙还会接受交出一名殖民者给它做仆从。</zh><en>A green dragon will also accept a colonist handed over as its servant.</en></s>
+  <s><zh>拒绝：它立刻进攻，护卫一起上。\n\n一天之内不答复就算拒绝。</zh><en>Refuse: it attacks at once, with its guards.\n\nNo answer within a day counts as refusing.</en></s>
+  <s><zh>的成功率 </zh><en>'s success chance </en></s>
+  <s><zh>基础成功率 </zh><en>base success chance </en></s>
+  <s><zh>的交涉（成功率 </zh><en>'s parley (success chance </en></s>
+  <s><zh>成功了：要价减半，现在是 </zh><en> succeeded: the demand is halved, now </en></s>
+  <s><zh>失败了：要价不变。</zh><en> failed: the demand stays the same.</en></s>
+  <s><zh>进攻了</zh><en> attacks</en></s>
+  <s><zh>你拒绝了它的要求。</zh><en>You refused its demand.</en></s>
+  <s><zh>咆哮着扑向殖民地！</zh><en> roars and pounces on the colony!</en></s>
+  <s><zh>的巢穴</zh><en>'s lair</en></s>
+  <s><zh>龙巢显露</zh><en>Dragon lair revealed</en></s>
+  <s><zh>的巢穴显露在世界地图上（离殖民地 6～15 格），</zh><en>'s lair is revealed on the world map (6-15 cells from the colony), and vanishes in </en></s>
+  <s><zh>天后消失。\n\n巢主睡在宝藏堆旁，有人走近 10 格或开枪就会醒来；在巢里它的传奇抗性多 1 次，每 10 秒放一次巢穴动作。把它引出巢穴 20 格以外，巢穴动作就停了。宝藏：</zh><en> days.\n\nThe lair's owner sleeps by its hoard and wakes when someone comes within 10 cells or fires a gun; in its lair it has 1 extra legendary resistance and takes a lair action every 10 seconds. Lure it more than 20 cells out of the lair and the lair actions stop. Treasure: </en></s>
+  <s><zh> 价值的金银珠宝、</zh><en> worth of gold, silver and jewels, </en></s>
+  <s><zh> 件魔法物品</zh><en> magic items</en></s>
+  <s><zh>和一块传奇重铸之石</zh><en> and a legendary reforging stone</en></s>
+  <s><zh>，可能还有一块传奇重铸之石</zh><en>, maybe also a legendary reforging stone</en></s>
+  <s><zh>[DND边缘大陆] 真龙行为出错：</zh><en>[DND Rimlands] True dragon behavior error: </en></s>
+  <s><zh>一天过去了，你没有答复。</zh><en>A day has passed and you didn't answer.</en></s>
+  <s><zh>的尸体旁，你们找到了通往它长辈巢穴的线索</zh><en>: beside its corpse you found clues leading to its elder's lair</en></s>
+  <s><zh>击退</zh><en>Repelled </en></s>
+  <s><zh>之后，你们找到了它飞回去的方向</zh><en>; afterwards you found the direction it flew back</en></s>
+  <s><zh>[DND边缘大陆] 真龙遭遇出错：</zh><en>[DND Rimlands] True dragon encounter error: </en></s>
+  <s><zh>付（</zh><en>Pay (</en></s>
+  <s><zh> 价值的</zh><en> worth of </en></s>
+  <s><zh>谈</zh><en>Parley</en></s>
+  <s><zh>：派</zh><en>: send </en></s>
+  <s><zh>交涉（成功率 </zh><en> to negotiate (success chance </en></s>
+  <s><zh>已经谈过了</zh><en>Already parleyed</en></s>
+  <s><zh>没有能交涉的殖民者</zh><en>No colonist who can parley</en></s>
+  <s><zh>交出</zh><en>Hand over </en></s>
+  <s><zh>做仆从</zh><en> as a servant</en></s>
+  <s><zh>拒绝</zh><en>Refuse</en></s>
+  <s><zh>来袭</zh><en> attacks</en></s>
+  <s><zh>）带着</zh><en>) charges the colony with </en></s>
+  <s><zh>名护卫扑向殖民地！\n\n它会喷吐</zh><en> guards!\n\nIt breathes </en></s>
+  <s><zh>（豁免成功伤害减半），</zh><en> (half damage on a successful save); </en></s>
+  <s><zh>有传奇抗性（拦下眩晕、精神控制、控制类状态和疼痛倒地）和传奇动作，看到它的人要做感知豁免（难度 </zh><en> has legendary resistance (blocks stun, mind control, control effects and pain downing) and legendary actions; those who see it must make a Wisdom save (difficulty </en></s>
+  <s><zh>，属性调整值和熟练加值每点 +5% 成功率），否则会惊惧。</zh><en>, +5% success per point of ability modifier and proficiency bonus) or be frightened.</en></s>
+  <s><zh>倒地即死，不能俘虏。</zh><en>Dies when downed; can't be captured.</en></s>
+  <s><zh>醒了！</zh><en> woke up!</en></s>
+  <s><zh>醒了（</zh><en> woke up (</en></s>
+  <s><zh>）！</zh><en>)!</en></s>
+  <s><zh>有人走近了</zh><en>someone came close</en></s>
+  <s><zh>滑倒了</zh><en>slipped</en></s>
+  <s><zh>[DND边缘大陆] 巢穴动作出错：</zh><en>[DND Rimlands] Lair action error: </en></s>
+  <s><zh>岩浆喷涌</zh><en>magma eruption</en></s>
+  <s><zh>地震</zh><en>earthquake</en></s>
+  <s><zh>火山烟</zh><en>volcanic smoke</en></s>
+  <s><zh>落雷</zh><en>lightning strike</en></s>
+  <s><zh>沙尘</zh><en>sandstorm</en></s>
+  <s><zh>流沙</zh><en>quicksand</en></s>
+  <s><zh>荆棘缠绕</zh><en>entangling thorns</en></s>
+  <s><zh>毒雾</zh><en>poison fog</en></s>
+  <s><zh>魅惑低语</zh><en>charming whispers</en></s>
+  <s><zh>黑暗</zh><en>darkness</en></s>
+  <s><zh>酸泉</zh><en>acid spring</en></s>
+  <s><zh>沼泽化</zh><en>swamp</en></s>
+  <s><zh>冰刺</zh><en>ice spikes</en></s>
+  <s><zh>冰雾</zh><en>freezing fog</en></s>
+  <s><zh>冰面</zh><en>ice sheet</en></s>
+  <s><zh>巢穴动作：</zh><en>Lair action: </en></s>
+  <s><zh>[DND边缘大陆] 生成龙巢出错：</zh><en>[DND Rimlands] Error generating dragon lair: </en></s>
+  <s><zh>读懂了龙巢情报</zh><en>Deciphered the dragon lair intel</en></s>
+  <s><zh>真龙内容没有开启（设置里的“五色真龙”或“龙巢远征”）</zh><en>True dragon content isn't enabled ("chromatic dragons" or "dragon lair expedition" in settings)</en></s>
+  <s><zh>真龙强度：×</zh><en>True dragon strength: ×</en></s>
+  <s><zh>真龙与传奇怪</zh><en>True dragons and legendary monsters</en></s>
+  <s><zh>五色真龙</zh><en>Chromatic dragons</en></s>
+  <s><zh>红、蓝、绿、黑、白五色真龙（青年 / 成年 / 远古）。有传奇抗性、传奇动作、骇人威仪和吐息，是冒险者等级的终局对手。关闭后下面的事件都不出现。</zh><en>Red, blue, green, black and white chromatic dragons (young / adult / ancient). They have legendary resistance, legendary actions, frightful presence and breath weapons, and are the endgame foes of adventurer levels. When off, none of the events below appear.</en></s>
+  <s><zh>　真龙勒索</zh><en>  Dragon extortion</en></s>
+  <s><zh>一条青年或成年龙（白龙不勒索）落在地图边上要贡品：付、谈或拒绝。需要殖民地最高冒险者等级 ≥8。</zh><en>A young or adult dragon (white dragons don't extort) lands at the map edge demanding tribute: pay, parley or refuse. Needs the colony's highest adventurer level ≥8.</en></s>
+  <s><zh>　真龙来袭</zh><en>  Dragon attack</en></s>
+  <s><zh>龙带着本色护卫直接进攻。青年：最高等级 ≥8、点数 ≥1500；成年：≥16、≥4000；远古：≥</zh><en>A dragon attacks directly with guards of its color. Young: highest level ≥8, points ≥1500; adult: ≥16, ≥4000; ancient: ≥</en></s>
+  <s><zh>、≥9000，每年最多一次。冷却 20～30 天。</zh><en>, ≥9000, at most once per year. Cooldown 20-30 days.</en></s>
+  <s><zh>　龙巢远征</zh><en>  Dragon lair expedition</en></s>
+  <s><zh>击退成年龙后 60% 它的巢穴显露、击杀后 30% 远古龙巢显露；殖民地最高等级够高时同盟商队会卖龙巢情报。巢里有大量宝藏、魔法物品和传奇重铸之石。</zh><en>After repelling an adult dragon, 60% chance its lair is revealed; after killing one, 30% chance an ancient dragon's lair is revealed; when the colony's highest level is high enough, allied caravans sell dragon lair intel. Lairs hold lots of treasure, magic items and legendary reforging stones.</en></s>
+  <s><zh>　龙过境联动</zh><en>  Dragon flyover tie-in</en></s>
+  <s><zh>龙过境结束有 25% 一条五色龙降落勒索。</zh><en>A dragon flyover has a 25% chance to end with a chromatic dragon landing to extort.</en></s>
+  <s><zh>真龙强度：</zh><en>True dragon strength: </en></s>
+  <s><zh>%（乘在生命和伤害上）</zh><en>% (multiplied onto health and damage)</en></s>
+  <s><zh>Isekai 下真龙额外生命：×</zh><en>Extra true dragon health under Isekai: ×</en></s>
+  <s><zh>Isekai 下真龙额外伤害：×</zh><en>Extra true dragon damage under Isekai: ×</en></s>
+  <s><zh>远古龙来袭需要的殖民地最高等级：</zh><en>Colony's highest level needed for ancient dragon attacks: </en></s>
+</LPStrings>

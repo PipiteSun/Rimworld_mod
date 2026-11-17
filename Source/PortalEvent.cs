@@ -40,7 +40,7 @@ namespace LichPhylactery {
   public static float Roll=>TestRoll??Rand.Value;
   // VPE 桥接登记：法师路径的判断（主程序集不引用 VPE）。
   public static Func<Pawn,bool> WizardHook;
-  public static bool Wizard(Pawn p){try{return p!=null && WizardHook!=null && WizardHook(p);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 法师路径判断出错："+e,74120533);return false;}}
+  public static bool Wizard(Pawn p){try{return p!=null && WizardHook!=null && WizardHook(p);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 法师路径判断出错：".Loc()+e,74120533);return false;}}
   static ThingDef riftDef,residueDef;
   public static ThingDef RiftDef=>riftDef??(riftDef=DefDatabase<ThingDef>.GetNamedSilentFail("LP_PlanarRift"));
   public static ThingDef ResidueDef=>residueDef??(residueDef=DefDatabase<ThingDef>.GetNamedSilentFail("LP_PlanarResidue"));
@@ -80,7 +80,7 @@ namespace LichPhylactery {
   public static int HolyNear(Map map,IntVec3 center){
    int n=0;
    foreach(var r in Rifts(map).ToList()){var c=r.Comp;if(c?.plane==null || !c.plane.holyClosable || c.closed)continue;if(r.OccupiedRect().ClosestCellTo(center).DistanceTo(center)>HolyRadius+.01f)continue;n++;
-    c.holyHits++;if(c.holyHits>=HolyToClose)c.Close("五瓶圣水浇灭了裂口边缘的深渊之火",true);else Messages.Message("圣水泼在深渊裂口上，裂口剧烈收缩（"+c.holyHits+"/"+HolyToClose+"）。",new TargetInfo(r.Position,map),MessageTypeDefOf.PositiveEvent,false);}
+    c.holyHits++;if(c.holyHits>=HolyToClose)c.Close("五瓶圣水浇灭了裂口边缘的深渊之火".Loc(),true);else Messages.Message("圣水泼在深渊裂口上，裂口剧烈收缩（".Loc()+c.holyHits+"/"+HolyToClose+"）。".Loc(),new TargetInfo(r.Position,map),MessageTypeDefOf.PositiveEvent,false);}
    return n;
   }
   public static bool CanCommand(Pawn p)=>Races124.IsGenie(p) || Marilith.Is(p);
@@ -105,7 +105,7 @@ namespace LichPhylactery {
   }
   public static int DispelNear(Map map,IntVec3 center){
    int n=0;
-   foreach(var r in Rifts(map).ToList())if(r.OccupiedRect().ClosestCellTo(center).DistanceTo(center)<=DispelRadius+.01f){r.Comp.Close("驱散粉尘冲散了裂口的边缘",true);n++;}
+   foreach(var r in Rifts(map).ToList())if(r.OccupiedRect().ClosestCellTo(center).DistanceTo(center)<=DispelRadius+.01f){r.Comp.Close("驱散粉尘冲散了裂口的边缘".Loc(),true);n++;}
    return n;
   }
  }
@@ -120,15 +120,15 @@ namespace LichPhylactery {
   }
   public override void Destroy(DestroyMode mode=DestroyMode.Vanish){
    var comp=Comp;var map=Map;
-   if(mode==DestroyMode.KillFinalize && comp!=null && !comp.closed && map!=null)comp.Rewards(map,"裂口被打碎了",true);
+   if(mode==DestroyMode.KillFinalize && comp!=null && !comp.closed && map!=null)comp.Rewards(map,"裂口被打碎了".Loc(),true);
    base.Destroy(mode);
   }
   public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Pawn selPawn){
    foreach(var o in base.GetFloatMenuOptions(selPawn))yield return o;
    if(selPawn?.Faction!=Faction.OfPlayer || !PortalEvent.CanCommand(selPawn))yield break; // 1.54.0 六臂蛇人和巨灵一样能命令
-   if(Comp.genieTried){yield return new FloatMenuOption("命令裂口关闭（已经试过了）",null);yield break;}
-   if(!selPawn.CanReach(this,PathEndMode.Touch,Danger.Deadly)){yield return new FloatMenuOption("命令裂口关闭（走不到）",null);yield break;}
-   yield return new FloatMenuOption("命令裂口关闭（成功率"+CompPlanarRift.GenieChance(selPawn).ToStringPercent()+"）",()=>selPawn.jobs.TryTakeOrderedJob(JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("LP_CommandRift"),this),JobTag.Misc));
+   if(Comp.genieTried){yield return new FloatMenuOption("命令裂口关闭（已经试过了）".Loc(),null);yield break;}
+   if(!selPawn.CanReach(this,PathEndMode.Touch,Danger.Deadly)){yield return new FloatMenuOption("命令裂口关闭（走不到）".Loc(),null);yield break;}
+   yield return new FloatMenuOption("命令裂口关闭（成功率".Loc()+CompPlanarRift.GenieChance(selPawn).ToStringPercent()+"）".Loc(),()=>selPawn.jobs.TryTakeOrderedJob(JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("LP_CommandRift"),this),JobTag.Misc));
   }
   public override string GetInspectString(){var s=base.GetInspectString();var c=Comp;return c==null?s:(s.NullOrEmpty()?"":s+"\n")+c.Status();}
  }
@@ -145,8 +145,8 @@ namespace LichPhylactery {
   static int Now=>Find.TickManager.TicksGame;
   public string Status(){
    if(plane==null)return null;
-   string s="来源位面："+plane.label+"\n已涌出 "+wave+" 波";
-   if(nextWaveTick>=0)s+="；"+(wave>=PortalEvent.CollapseAfterWave?"崩溃":"下一波")+"还有 "+((nextWaveTick-Now)/(float)GenDate.TicksPerHour).ToString("0.#")+" 小时";
+   string s="来源位面：".Loc()+plane.label+"\n已涌出 ".Loc()+wave+" 波".Loc();
+   if(nextWaveTick>=0)s+="；".Loc()+(wave>=PortalEvent.CollapseAfterWave?"崩溃".Loc():"下一波".Loc())+"还有 ".Loc()+((nextWaveTick-Now)/(float)GenDate.TicksPerHour).ToString("0.#")+" 小时".Loc();
    return s;
   }
   public static float GenieChance(Pawn p)=>Mathf.Min(PortalEvent.GenieCap,(p?.skills?.GetSkill(SkillDefOf.Social)?.Level??0)*PortalEvent.GenieSkillFactor);
@@ -190,7 +190,7 @@ namespace LichPhylactery {
    if(s.side=="abyss"){faction=AbyssRaces.Horde();if(faction==null)return null;}
    XenotypeDef xeno=s.special=="fireGenasi"?Races124.Xeno("LP_GenasiFire"):null;
    var req=new PawnGenerationRequest(s.kind,faction,PawnGenerationContext.NonPlayer,map.Tile,forceGenerateNewPawn:true,canGeneratePawnRelations:false,mustBeCapableOfViolence:s.kind.RaceProps.Humanlike,forcedXenotype:xeno);
-   Pawn p;try{p=PawnGenerator.GeneratePawn(req);}catch(Exception e){Log.Warning("[DND边缘大陆] 裂口生成 "+s.kind.defName+" 失败："+e.Message);return null;}
+   Pawn p;try{p=PawnGenerator.GeneratePawn(req);}catch(Exception e){Log.Warning("[DND边缘大陆] 裂口生成 ".Loc()+s.kind.defName+" 失败：".Loc()+e.Message);return null;}
    var cell=SpawnCell();GenSpawn.Spawn(p,cell,map);
    FleckMaker.Static(cell,map,FleckDefOf.PsycastAreaEffect,1.2f);
    if(s.special=="fireGenasi")Items.Give(p,"LP_PlanarFlameBody");
@@ -236,7 +236,7 @@ namespace LichPhylactery {
    if(plane?.bonusReward!=null){var b=ThingMaker.MakeThing(plane.bonusReward);b.stackCount=Math.Max(1,plane.bonusCount.RandomInRange);GenPlace.TryPlaceThing(b,cell,map,ThingPlaceMode.Near);} // 1.54.0 深渊裂口另掉恶魔血
    int calmed=Calm();
    for(int i=0;i<6;i++)FleckMaker.ThrowSmoke(parent.TrueCenter()+new Vector3(Rand.Range(-1f,1f),0,Rand.Range(-1f,1f)),map,2f);
-   Find.LetterStack.ReceiveLetter("裂口关闭了",reason+"：通往"+plane?.label+"的位面裂口合上了，原地留下了"+n+"份位面残渣。"+(calmed>0?"\n\n从裂口里出来的"+calmed+"只野兽失去了位面的驱使，安静下来，变成了普通的野生动物，可以驯服。":""),LetterDefOf.PositiveEvent,new LookTargets(cell,map));
+   Find.LetterStack.ReceiveLetter("裂口关闭了".Loc(),reason+"：通往".Loc()+plane?.label+"的位面裂口合上了，原地留下了".Loc()+n+"份位面残渣。".Loc()+(calmed>0?"\n\n从裂口里出来的".Loc()+calmed+"只野兽失去了位面的驱使，安静下来，变成了普通的野生动物，可以驯服。".Loc():""),LetterDefOf.PositiveEvent,new LookTargets(cell,map));
   }
   public int Calm()=>CalmBeasts(spawned);
   // 平静：无派系的野兽退出狂暴、停下手上的事（有派系的寒冰魔、元素裔照常是袭击者）。
@@ -256,15 +256,15 @@ namespace LichPhylactery {
    var made=SpawnWave(2f,false);closed=true;var map=parent.Map;var cell=parent.Position;
    int calmed=CalmBeasts(old);
    PortalEvent.State?.pendingCalms.Add(new PendingCalm{pawns=made.Where(p=>p.Faction==null && !p.RaceProps.Humanlike).ToList(),tick=Now+PortalEvent.LastWaveCalmTicks});
-   Find.LetterStack.ReceiveLetter("裂口崩溃","通往"+plane.label+"的位面裂口开了三天，终于撑不住了：最后一次喷涌放出了"+made.Count+"个生物，然后自己塌缩消失。这次没有留下任何位面残渣。"+(calmed>0?"\n\n之前从裂口里出来的"+calmed+"只野兽失去了位面的驱使，安静下来，变成了普通的野生动物。":"")+"\n\n最后这一波野兽还会狂暴一阵，裂口消失 1 小时后才会安静下来。",LetterDefOf.ThreatBig,new LookTargets(made.Where(p=>p.Spawned).Cast<Thing>().DefaultIfEmpty(parent)));
+   Find.LetterStack.ReceiveLetter("裂口崩溃".Loc(),"通往".Loc()+plane.label+"的位面裂口开了三天，终于撑不住了：最后一次喷涌放出了".Loc()+made.Count+"个生物，然后自己塌缩消失。这次没有留下任何位面残渣。".Loc()+(calmed>0?"\n\n之前从裂口里出来的".Loc()+calmed+"只野兽失去了位面的驱使，安静下来，变成了普通的野生动物。".Loc():"")+"\n\n最后这一波野兽还会狂暴一阵，裂口消失 1 小时后才会安静下来。".Loc(),LetterDefOf.ThreatBig,new LookTargets(made.Where(p=>p.Spawned).Cast<Thing>().DefaultIfEmpty(parent)));
    parent.Destroy(DestroyMode.Vanish);
   }
   // 巨灵：社交检定。成功关闭（照常掉残渣）；失败本波提前刷出。每个裂口只能试一次。
   public bool GenieCommand(Pawn genie){
    if(genieTried || closed)return false;genieTried=true;
    float chance=GenieChance(genie);
-   if(PortalEvent.Roll<chance){Close(genie.LabelShort+"以巨灵的权柄命令裂口闭合",true);return true;}
-   Messages.Message("裂口没有服从"+genie.LabelShort+"的命令，反而提前喷出了下一波生物！",new LookTargets(parent),MessageTypeDefOf.NegativeEvent,false);
+   if(PortalEvent.Roll<chance){Close(genie.LabelShort+"以巨灵的权柄命令裂口闭合".Loc(),true);return true;}
+   Messages.Message("裂口没有服从".Loc()+genie.LabelShort+"的命令，反而提前喷出了下一波生物！".Loc(),new LookTargets(parent),MessageTypeDefOf.NegativeEvent,false);
    if(wave>=PortalEvent.CollapseAfterWave)Collapse();else SpawnWave();
    return false;
   }
@@ -310,7 +310,7 @@ namespace LichPhylactery {
    var map=parms.target as Map;if(map==null || !PortalEvent.TryFindSpot(map,out var cell))return false;
    var plane=DefDatabase<PortalPlaneDef>.AllDefsListForReading.Where(d=>d.randomPool).RandomElement(); // 1.54.0 深渊不进随机池
    var rift=PortalEvent.Open(map,cell,plane);
-   SendStandardLetter("传送门失控","一道位面裂口在殖民地外撕开了！裂口另一边是"+plane.label+"，"+plane.description+"\n\n每过 8 小时就会有一波生物从裂口里涌出来，而且一波比一波多；开了 3 天还没关上的话，它会崩溃，一口气喷出双倍的生物。\n\n关上它：打掉裂口（600 生命）。法师路径的殖民者攻击裂口时伤害 ×3；巨灵可以试着直接命令它关闭（只能试一次）。关上后会留下位面残渣，野兽也会安静下来。",LetterDefOf.ThreatBig,parms,new LookTargets(rift));
+   SendStandardLetter("传送门失控".Loc(),"一道位面裂口在殖民地外撕开了！裂口另一边是".Loc()+plane.label+"，".Loc()+plane.description+"\n\n每过 8 小时就会有一波生物从裂口里涌出来，而且一波比一波多；开了 3 天还没关上的话，它会崩溃，一口气喷出双倍的生物。\n\n关上它：打掉裂口（600 生命）。法师路径的殖民者攻击裂口时伤害 ×3；巨灵可以试着直接命令它关闭（只能试一次）。关上后会留下位面残渣，野兽也会安静下来。".Loc(),LetterDefOf.ThreatBig,parms,new LookTargets(rift));
    return true;
   }
  }
@@ -361,14 +361,14 @@ namespace LichPhylactery {
  public static class EventSettings {
   public static void Draw(Listing_Standard l){
    var s=LichMod.Settings;
-   l.GapLine();l.Label("事件");
-   l.CheckboxLabeled("传送门失控",ref s.portalBreach,"殖民地外偶尔撕开一道位面裂口（九狱、元素火位面、妖精荒野、幽影界），每8小时涌出一波生物，3天不关会崩溃。打掉裂口或让巨灵命令都能关上。");
-   l.CheckboxLabeled("巨人迁徙",ref s.giantMigration,"一队饿着的巨人（余烬氏族的火巨人或食人魔一家、费伦拓荒同盟的泰坦或霜巨人战帮）路过扎营，会找你讨吃的，有可能有人想留下来。");
-   l.CheckboxLabeled("黄昏之年",ref s.twilightYear,"每年有25%概率出现“黄昏之兆”（第1年在第1～30天里随机一天，第2年起在每年第一天），15天后开始黄昏之年（最早第16天）：神力灌注者和神明附体的敌人大幅增多。关闭后不再触发（已经开始的照常结束）；平时的神力灌注不受影响。");
-   l.Label("黄昏之年持续："+s.twilightDays+"天");s.twilightDays=(int)l.Slider(s.twilightDays,15,120);
-   l.Label("黄昏强度："+s.twilightStrength+"%（缩放灌注/附体概率和黄昏之年里的神力效果）");s.twilightStrength=(int)l.Slider(s.twilightStrength,50,200);
-   l.CheckboxLabeled("原版派系也有神力（海盗→塔洛斯、部落→马拉尔）",ref s.twilightVanilla,"默认关闭。开启后原版海盗和野蛮部落的袭击者也会被神力灌注、附体。");
-   l.CheckboxLabeled("平时没有神力灌注",ref s.infusionNormalZero,"开启后只有黄昏之年里才会出现神力灌注者（平时的3%改为0）。");
+   l.GapLine();l.Label("事件".Loc());
+   l.CheckboxLabeled("传送门失控".Loc(),ref s.portalBreach,"殖民地外偶尔撕开一道位面裂口（九狱、元素火位面、妖精荒野、幽影界），每8小时涌出一波生物，3天不关会崩溃。打掉裂口或让巨灵命令都能关上。".Loc());
+   l.CheckboxLabeled("巨人迁徙".Loc(),ref s.giantMigration,"一队饿着的巨人（余烬氏族的火巨人或食人魔一家、费伦拓荒同盟的泰坦或霜巨人战帮）路过扎营，会找你讨吃的，有可能有人想留下来。".Loc());
+   l.CheckboxLabeled("黄昏之年".Loc(),ref s.twilightYear,"每年有25%概率出现“黄昏之兆”（第1年在第1～30天里随机一天，第2年起在每年第一天），15天后开始黄昏之年（最早第16天）：神力灌注者和神明附体的敌人大幅增多。关闭后不再触发（已经开始的照常结束）；平时的神力灌注不受影响。".Loc());
+   l.Label("黄昏之年持续：".Loc()+s.twilightDays+"天".Loc());s.twilightDays=(int)l.Slider(s.twilightDays,15,120);
+   l.Label("黄昏强度：".Loc()+s.twilightStrength+"%（缩放灌注/附体概率和黄昏之年里的神力效果）".Loc());s.twilightStrength=(int)l.Slider(s.twilightStrength,50,200);
+   l.CheckboxLabeled("原版派系也有神力（海盗→塔洛斯、部落→马拉尔）".Loc(),ref s.twilightVanilla,"默认关闭。开启后原版海盗和野蛮部落的袭击者也会被神力灌注、附体。".Loc());
+   l.CheckboxLabeled("平时没有神力灌注".Loc(),ref s.infusionNormalZero,"开启后只有黄昏之年里才会出现神力灌注者（平时的3%改为0）。".Loc());
    Events2Settings.Draw(l);
    Events3Settings.Draw(l); // 1.117.0
    ExtraRaidSettings.Draw(l); // 1.118.0 热修

@@ -48,7 +48,7 @@ namespace LichPhylactery {
    h.legendary=true;h.Dirty();State?.RefreshLegend();
    var p=h.pawn;
    Legend.Became(h); // 1.50.0：解锁 21～40 级，攒下的经验立即结算
-   if(p.Faction!=null && p.Faction.IsPlayer && !p.Dead && !Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("传奇冒险者："+p.LabelShort,p.LabelShort+"已经是 20 级的冒险者，又完成过真正的冒险。从今天起，人们称其为“传奇冒险者”。\n\n殖民地全员心情 +3（与传奇同行）；"+p.LabelShort+"社交影响 +10%，囚犯、访客和商人对其好感 +10。\n\n传奇倒下时，全殖民地心情 −6（10 天）。"+(Legend.On?"\n\n传奇等级 21～40 已解锁："+p.LabelShort+"攒下的经验立即结算，每升一级得 2 个传奇属性点（在“冒险者”分页投点）。":""),LetterDefOf.PositiveEvent,p);
+   if(p.Faction!=null && p.Faction.IsPlayer && !p.Dead && !Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("传奇冒险者：".Loc()+p.LabelShort,p.LabelShort+"已经是 20 级的冒险者，又完成过真正的冒险。从今天起，人们称其为“传奇冒险者”。\n\n殖民地全员心情 +3（与传奇同行）；".Loc()+p.LabelShort+"社交影响 +10%，囚犯、访客和商人对其好感 +10。\n\n传奇倒下时，全殖民地心情 −6（10 天）。".Loc()+(Legend.On?"\n\n传奇等级 21～40 已解锁：".Loc()+p.LabelShort+"攒下的经验立即结算，每升一级得 2 个传奇属性点（在“冒险者”分页投点）。".Loc():""),LetterDefOf.PositiveEvent,p);
    return true;
   }
   public static bool ColonyHasLegend(){foreach(var p in PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive_FreeColonists)if(IsLegend(p))return true;return false;}
@@ -56,7 +56,7 @@ namespace LichPhylactery {
    var d=DefDatabase<ThoughtDef>.GetNamedSilentFail("LP_LegendFallen");if(d==null)return;
    foreach(var c in PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive_FreeColonists)if(c!=p)c.needs?.mood?.thoughts?.memories?.TryGainMemory(d);
    State?.RefreshLegend();
-   if(!Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("传奇陨落",p.LabelShort+"，殖民地的传奇冒险者，倒下了。",LetterDefOf.Death,p.Corpse!=null?new LookTargets(p.Corpse):LookTargets.Invalid);
+   if(!Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("传奇陨落".Loc(),p.LabelShort+"，殖民地的传奇冒险者，倒下了。".Loc(),LetterDefOf.Death,p.Corpse!=null?new LookTargets(p.Corpse):LookTargets.Invalid);
   }
 
   // ---------- 命运之恩：致命伤改为倒地并止血，60 天 1 次 ----------
@@ -67,8 +67,8 @@ namespace LichPhylactery {
    if(!FateReady(p,out var h))return false;
    if(!Rescue(p))return false;
    h.fateTick=Find.TickManager.TicksGame;
-   Text(p,"命运之恩");
-   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"本该死去，命运之恩让其倒地幸存（伤口已止血）。"+FateCooldownDays+" 天后才能再次生效。",p,MessageTypeDefOf.PositiveEvent);
+   Text(p,"命运之恩".Loc());
+   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"本该死去，命运之恩让其倒地幸存（伤口已止血）。".Loc()+FateCooldownDays+" 天后才能再次生效。".Loc(),p,MessageTypeDefOf.PositiveEvent);
    return true;
   }
   // 1.58.0：救命的部分拆出来，预言之子的“命运未尽”共用（HeroDestiny.TryFate）。
@@ -98,7 +98,7 @@ namespace LichPhylactery {
     float max=i.Part==null?10f:PartHealth.Maximum(i.Part,a); // 2026-11-10：按放大后的部位上限回 5%
     i.Heal(Mathf.Max(.5f,max*CombatHealFraction));n++;
    }
-   if(n>0)Text(a,"战斗之恩");
+   if(n>0)Text(a,"战斗之恩".Loc());
    return n;
   }
 
@@ -115,7 +115,7 @@ namespace LichPhylactery {
    Legend.Grant(h,legendBonus); // 1.50.0：传奇的 500/1000 杀各 +3 传奇属性点（成为传奇前达到的由 Legend.Became 补）
    float xp=NextLevelXp(h)*KillMilestoneShare;if(xp>0f)Adventurer.GainXP(p,xp,false);
    if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)
-    Find.LetterStack.ReceiveLetter(p.LabelShort+"：百战 "+best,p.LabelShort+"已经击倒了 "+kills+" 个人形敌人（里程碑 "+best+"）。\n\n获得冒险者经验 "+xp.ToString("0")+"（下一级所需的 30%）。"+(best==BoonKills?"\n\n千人斩：获得 1 个史诗恩赐点，可以再选一个恩赐。":"")+(legendBonus>0?"\n\n传奇属性点 +"+legendBonus+"。":""),LetterDefOf.PositiveEvent,p);
+    Find.LetterStack.ReceiveLetter(p.LabelShort+"：百战 ".Loc()+best,p.LabelShort+"已经击倒了 ".Loc()+kills+" 个人形敌人（里程碑 ".Loc()+best+"）。\n\n获得冒险者经验 ".Loc()+xp.ToString("0")+"（下一级所需的 30%）。".Loc()+(best==BoonKills?"\n\n千人斩：获得 1 个史诗恩赐点，可以再选一个恩赐。".Loc():"")+(legendBonus>0?"\n\n传奇属性点 +".Loc()+legendBonus+"。".Loc():""),LetterDefOf.PositiveEvent,p);
    return best;
   }
 
@@ -141,7 +141,7 @@ namespace LichPhylactery {
    var h=MakeChampion(champ,NemesisLevel());
    var all=new List<Pawn>{champ};all.AddRange(followers);
    Ascension.Arrive(map,f,all);
-   Find.LetterStack.ReceiveLetter("宿敌冠军："+champ.LabelShort,f.Name+"听说了殖民地冒险者的名声，派出了他们的冠军"+champ.LabelShort+"（"+(h!=null && h.level>Adventurer.MaxLevel?"传奇 Lv "+h.level:"冒险者 "+(h?.level??0)+" 级")+(h!=null && h.feats.Count>0?"，专长 "+string.Join("、",h.feats.Select(x=>x.label)):"")+(h!=null && h.boons.Count>0?"，"+string.Join("、",h.boons.Select(x=>x.label)):"")+HeroTraits.LetterNote(champ)+"）带着 "+followers.Count+" 名随从前来挑战。\n\n击杀冠军的人获得下一级所需经验的 50% 和一件魔法物品。",LetterDefOf.ThreatBig,new LookTargets(all.Cast<Thing>()),f);
+   Find.LetterStack.ReceiveLetter("宿敌冠军：".Loc()+champ.LabelShort,f.Name+"听说了殖民地冒险者的名声，派出了他们的冠军".Loc()+champ.LabelShort+"（".Loc()+(h!=null && h.level>Adventurer.MaxLevel?"传奇 Lv ".Loc()+h.level:"冒险者 ".Loc()+(h?.level??0)+" 级".Loc())+(h!=null && h.feats.Count>0?"，专长 ".Loc()+string.Join("、".Loc(),h.feats.Select(x=>x.label)):"")+(h!=null && h.boons.Count>0?"，".Loc()+string.Join("、".Loc(),h.boons.Select(x=>x.label)):"")+HeroTraits.LetterNote(champ)+"）带着 ".Loc()+followers.Count+" 名随从前来挑战。\n\n击杀冠军的人获得下一级所需经验的 50% 和一件魔法物品。".Loc(),LetterDefOf.ThreatBig,new LookTargets(all.Cast<Thing>()),f);
    return champ;
   }
   static void Discard(Pawn p){if(p==null || p.Destroyed)return;if(Find.WorldPawns.Contains(p))Find.WorldPawns.RemovePawn(p);p.Destroy();}
@@ -165,7 +165,7 @@ namespace LichPhylactery {
    if(killer!=null && HeroCombat.ExtraRings(killer)>0 && (HeroCombat.TestRoll??Rand.Value)<HeroCombat.AttunerLoot){
     var d2=RandomMagicItemDef();if(d2!=null){var extra=ThingMaker.MakeThing(d2,d2.MadeFromStuff?GenStuff.DefaultStuffFor(d2):null);if(map!=null && at.IsValid)GenPlace.TryPlaceThing(extra,at,map,ThingPlaceMode.Near);else killer.inventory?.innerContainer.TryAdd(extra);attunerDrops++;}
    }
-   if(killer!=null && !Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("宿敌冠军倒下了",killer.LabelShort+"击杀了宿敌冠军。"+(xp>0f?"\n\n获得冒险者经验 "+xp.ToString("0")+"。":"")+(legendPts?"\n\n传奇属性点 +"+Legend.NemesisBonus+"。":"")+(item!=null?"\n\n冠军留下了"+item.LabelCap+(stone!=null?"和"+stone.LabelCap:"")+"。":""),LetterDefOf.PositiveEvent,item!=null && item.Spawned?new LookTargets(item):new LookTargets(killer));
+   if(killer!=null && !Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("宿敌冠军倒下了".Loc(),killer.LabelShort+"击杀了宿敌冠军。".Loc()+(xp>0f?"\n\n获得冒险者经验 ".Loc()+xp.ToString("0")+"。".Loc():"")+(legendPts?"\n\n传奇属性点 +".Loc()+Legend.NemesisBonus+"。".Loc():"")+(item!=null?"\n\n冠军留下了".Loc()+item.LabelCap+(stone!=null?"和".Loc()+stone.LabelCap:"")+"。".Loc():""),LetterDefOf.PositiveEvent,item!=null && item.Spawned?new LookTargets(item):new LookTargets(killer));
    return item;
   }
 
@@ -257,7 +257,7 @@ namespace LichPhylactery {
   static void Postfix(Pawn __instance,ref string __result){
    if(!Adventurer.Enabled || !Epic.ShowsCR(__instance))return;
    if(Legendary.Is(__instance)){var line=Legendary.InspectLine(__instance);__result=__result.NullOrEmpty()?line:line+"\n"+__result;return;} // 1.52.0：传奇单位放第一行，带冒险者等级
-   string s="挑战等级 CR "+Epic.CR(__instance.kindDef.combatPower);
+   string s="挑战等级 CR ".Loc()+Epic.CR(__instance.kindDef.combatPower);
    __result=__result.NullOrEmpty()?s:__result+"\n"+s;
   }
  }
@@ -269,12 +269,12 @@ namespace LichPhylactery {
  }
  public static class EpicSettings {
   public static void Draw(Listing_Standard l){
-   var s=LichMod.Settings;bool ikm=Epic.IkmActive;string note=ikm?"（检测到百战觉醒，默认关）":"";
+   var s=LichMod.Settings;bool ikm=Epic.IkmActive;string note=ikm?"（检测到百战觉醒，默认关）".Loc():"";
    bool k=Epic.On(s.adventurerKillMilestones,ikm),was=k;
-   l.CheckboxLabeled("冒险者击杀里程碑"+note,ref k,"殖民者的人形击杀达到 25、50、100、250、500、1000 时发信件，并一次性获得下一级所需经验的 30%；1000 杀额外得 1 个史诗恩赐点（可以选第二个恩赐）。\n检测到“百战觉醒”时默认关闭，避免两套里程碑重复。");
+   l.CheckboxLabeled("冒险者击杀里程碑".Loc()+note,ref k,"殖民者的人形击杀达到 25、50、100、250、500、1000 时发信件，并一次性获得下一级所需经验的 30%；1000 杀额外得 1 个史诗恩赐点（可以选第二个恩赐）。\n检测到“百战觉醒”时默认关闭，避免两套里程碑重复。".Loc());
    if(k!=was)s.adventurerKillMilestones=k?1:0;
    bool n=Epic.On(s.adventurerNemesis,ikm);was=n;
-   l.CheckboxLabeled("宿敌冠军"+note,ref n,"殖民地最高冒险者等级 ≥ 12 时，每 45～60 天敌对派系派出一名冠军（等级 = 殖民地最高 + 2，最高 20，带专长和史诗恩赐）和少量随从。击杀者获得下一级所需经验的 50% 和一件魔法物品。\n检测到“百战觉醒”时默认关闭。");
+   l.CheckboxLabeled("宿敌冠军".Loc()+note,ref n,"殖民地最高冒险者等级 ≥ 12 时，每 45～60 天敌对派系派出一名冠军（等级 = 殖民地最高 + 2，最高 20，带专长和史诗恩赐）和少量随从。击杀者获得下一级所需经验的 50% 和一件魔法物品。\n检测到“百战觉醒”时默认关闭。".Loc());
    if(n!=was)s.adventurerNemesis=n?1:0;
   }
  }

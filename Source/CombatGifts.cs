@@ -25,8 +25,8 @@ namespace LichPhylactery {
   public const string Tag="LP_CombatGift";
   // 下标：0～5 属性类（和六维下标一致），6～12 战技类。
   public const int Mighty=0,Swift=1,Stalwart=2,Brilliant=3,Eagle=4,Commanding=5,Flurry=6,Rage=7,Deadeye=8,Lethal=9,Bulwark=10,Regen=11,Arcane=12,Count=13;
-  public static readonly string[] Names={"巨力","迅捷","坚韧之体","博闻强识","鹰眼","王者气度","连斩","狂暴之血","神射","致命一击","铁壁","再生之体","法力奔涌"};
-  public static readonly string[] StageNames={"入门","精通","化境"};
+  public static readonly string[] Names={"巨力".Loc(),"迅捷".Loc(),"坚韧之体".Loc(),"博闻强识".Loc(),"鹰眼".Loc(),"王者气度".Loc(),"连斩".Loc(),"狂暴之血".Loc(),"神射".Loc(),"致命一击".Loc(),"铁壁".Loc(),"再生之体".Loc(),"法力奔涌".Loc()};
+  public static readonly string[] StageNames={"入门".Loc(),"精通".Loc(),"化境".Loc()};
   public static readonly float[] StageMult={1f,1.5f,2f};
   public static readonly int[] ScoreAt={2,3,4};
   public static readonly float[] FlurryChance={.15f,.22f,.30f},CritChance={.10f,.15f,.20f},CritMult={2f,2.25f,2.5f},RagePain={.5f,.4f,.3f},PowerAt={.06f,.09f,.12f};
@@ -103,7 +103,7 @@ namespace LichPhylactery {
   public static void Tick250(Hediff_Adventurer h){
    var p=h.pawn;bool rage=HasGift(p,Rage);
    if(!rage && h.cgRage){h.cgRage=false;h.Dirty();}
-   if(rage){bool now=RageActive(p);if(now!=h.cgRage){h.cgRage=now;h.Dirty();if(now)Items.Mote(p,"狂暴！",new Color(.9f,.3f,.25f));}}
+   if(rage){bool now=RageActive(p);if(now!=h.cgRage){h.cgRage=now;h.Dirty();if(now)Items.Mote(p,"狂暴！".Loc(),new Color(.9f,.3f,.25f));}}
    if(HasGift(p,Regen))RegenTick(h,GenTicks.TicksGame);
   }
   public static bool RageActive(Pawn p)=>p?.health?.summaryHealth!=null && !p.Dead && p.health.summaryHealth.SummaryHealthPercent<RageHealth;
@@ -122,8 +122,8 @@ namespace LichPhylactery {
    if(h.cgRegenTick<0 || now<h.cgRegenTick){h.cgRegenTick=now;return null;}
    if(now-h.cgRegenTick<RegenInterval(Stage(h)))return null;
    p.health.RestorePart(part);h.cgRegenTick=now;
-   Items.Mote(p,"长回了"+part.Label,Blue);
-   if(p.Faction!=null && p.Faction.IsPlayer && !TestSuppressed)Messages.Message(p.LabelShort+"的再生之体长回了"+part.Label+"。",p,MessageTypeDefOf.PositiveEvent,false);
+   Items.Mote(p,"长回了".Loc()+part.Label,Blue);
+   if(p.Faction!=null && p.Faction.IsPlayer && !TestSuppressed)Messages.Message(p.LabelShort+"的再生之体长回了".Loc()+part.Label+"。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);
    return part;
   }
 
@@ -142,7 +142,7 @@ namespace LichPhylactery {
     case Deadeye:if(!HeroCombat.Melee(d) && d.Weapon!=null && d.Weapon.IsRangedWeapon)amt*=1f+.15f*m;break;
     case Arcane:if(HeroCombat.Spell(d))amt*=1f+.25f*m;break;
     case Lethal:
-     if(Roll<CritChance[s]){amt*=CritMult[s];Crits++;Items.Mote(v,"致命一击！",new Color(1f,.35f,.3f));}
+     if(Roll<CritChance[s]){amt*=CritMult[s];Crits++;Items.Mote(v,"致命一击！".Loc(),new Color(1f,.35f,.3f));}
      ArmorPen(ref d)=Mathf.Max(0f,d.ArmorPenetrationInt)+.1f*m;
      break;
    }
@@ -163,8 +163,8 @@ namespace LichPhylactery {
    if(from==null || to==null || from.Dead || from.Downed || to.Dead || !from.Spawned || !to.Spawned || from.Map!=to.Map || !from.Position.AdjacentTo8WayOrInside(to.Position))return false;
    if(!(from.meleeVerbs?.TryGetMeleeVerb(to) is Verb_MeleeAttack verb))return false;
    extra=true;
-   try{ApplyMelee(verb,new LocalTargetInfo(to));}catch(Exception e){Log.Warning("[DND边缘大陆] 连斩追加失败："+e.Message);return false;}finally{extra=false;}
-   Flurries++;Items.Mote(from,"连斩！",Blue);return true;
+   try{ApplyMelee(verb,new LocalTargetInfo(to));}catch(Exception e){Log.Warning("[DND边缘大陆] 连斩追加失败：".Loc()+e.Message);return false;}finally{extra=false;}
+   Flurries++;Items.Mote(from,"连斩！".Loc(),Blue);return true;
   }
   public static void RunPending(){
    int now=GenTicks.TicksGame;
@@ -224,7 +224,7 @@ namespace LichPhylactery {
    if(TestSuppressed && roll==null || !On || p?.Faction==null || !p.Faction.IsPlayer || !Eligible(p) || Full(p))return null;
    if((roll??Rand.Value)>=chance)return null;
    var t=Give(p,PickDef(p));
-   if(t!=null && !TestSuppressed)Find.LetterStack.ReceiveLetter("战斗觉醒："+p.LabelShort,p.LabelShort+why+"，在生死之间领悟了武艺：获得武艺天赋「"+Names[IndexOf(t.def)]+"」。\n\n"+Describe(IndexOf(t.def),Stage(p)),LetterDefOf.PositiveEvent,p);
+   if(t!=null && !TestSuppressed)Find.LetterStack.ReceiveLetter("战斗觉醒：".Loc()+p.LabelShort,p.LabelShort+why+"，在生死之间领悟了武艺：获得武艺天赋「".Loc()+Names[IndexOf(t.def)]+"」。\n\n".Loc()+Describe(IndexOf(t.def),Stage(p)),LetterDefOf.PositiveEvent,p);
    return t;
   }
   // 累计击杀人形 100 / 300 时各一次（记在冒险者里程碑里，key 以 kills 开头，不算 DND 里程碑）。
@@ -235,15 +235,15 @@ namespace LichPhylactery {
    foreach(int n in AwakenKills){
     if(kills<n || h.milestonesDone.Contains(KillKey(n)))continue;
     h.milestonesDone.Add(KillKey(n));hit=n;
-    if(Awaken(p,AwakenChance,"已经击倒了 "+kills+" 个人形敌人",roll)!=null)break;
+    if(Awaken(p,AwakenChance,"已经击倒了 ".Loc()+kills+" 个人形敌人".Loc(),roll)!=null)break;
    }
    return hit;
   }
   // 巨灵许愿：没有就给一个随机的；已有就升一阶（化境为止）；已经化境、天赋没满时再给一个新的。
   static bool CanUpgrade(Pawn p){var h=Adventurer.Get(p);return h!=null && Stage(h)<2;}
   public static string CannotWish(Pawn p){
-   if(!Eligible(p))return "无法获得武艺天赋";
-   if(Has(p) && !CanUpgrade(p) && Full(p))return Adventurer.Get(p)==null?"没有冒险者等级":"已经化境，武艺天赋也满了";
+   if(!Eligible(p))return "无法获得武艺天赋".Loc();
+   if(Has(p) && !CanUpgrade(p) && Full(p))return Adventurer.Get(p)==null?"没有冒险者等级".Loc():"已经化境，武艺天赋也满了".Loc();
    return null;
   }
   public static bool Wish(Pawn p){
@@ -252,16 +252,16 @@ namespace LichPhylactery {
    var h=Adventurer.Get(p);h.cgBonus++;h.Dirty();return true;
   }
   public static void OpenWishDialog(Pawn genie,RimWorld.Ability ability){
-   var node=new DiaNode("“谁想得到真正的武艺？”");
+   var node=new DiaNode("“谁想得到真正的武艺？”".Loc());
    foreach(var c in genie.MapHeld.mapPawns.FreeColonistsSpawned.Where(Eligible).ToList()){
-    var who=c;string have=string.Join("、",Gifts(c).Select(x=>Names[x]));
-    var o=new DiaOption(c.LabelShort+(!Has(c) || !CanUpgrade(c)?"："+(Has(c)?have+"（化境）+ ":"")+"获得一个随机武艺天赋":"："+have+" "+StageNames[Stage(c)]+" → "+StageNames[Math.Min(2,Stage(c)+1)])){resolveTree=true};
+    var who=c;string have=string.Join("、".Loc(),Gifts(c).Select(x=>Names[x]));
+    var o=new DiaOption(c.LabelShort+(!Has(c) || !CanUpgrade(c)?"：".Loc()+(Has(c)?have+"（化境）+ ".Loc():"")+"获得一个随机武艺天赋".Loc():"：".Loc()+have+" "+StageNames[Stage(c)]+" → "+StageNames[Math.Min(2,Stage(c)+1)])){resolveTree=true};
     var why=CannotWish(c);if(why!=null)o.Disable(why);
-    o.action=()=>{if(!Wish(who))return;Items.Give(genie,"LP_GenieFatigue",Genie.FatigueDays*GenDate.TicksPerDay);Messages.Message(genie.LabelShort+"实现了愿望："+who.LabelShort+"的武艺天赋「"+string.Join("、",Gifts(who).Select(x=>Names[x]))+"」（"+StageNames[Stage(who)]+"）。",who,MessageTypeDefOf.PositiveEvent,false);};
+    o.action=()=>{if(!Wish(who))return;Items.Give(genie,"LP_GenieFatigue",Genie.FatigueDays*GenDate.TicksPerDay);Messages.Message(genie.LabelShort+"实现了愿望：".Loc()+who.LabelShort+"的武艺天赋「".Loc()+string.Join("、".Loc(),Gifts(who).Select(x=>Names[x]))+"」（".Loc()+StageNames[Stage(who)]+"）。".Loc(),who,MessageTypeDefOf.PositiveEvent,false);};
     node.options.Add(o);
    }
-   node.options.Add(new DiaOption("再想想"){action=()=>ability?.ResetCooldown(),resolveTree=true});
-   Find.WindowStack.Add(new Dialog_NodeTree(node,true,false,"巨灵的愿望"));
+   node.options.Add(new DiaOption("再想想".Loc()){action=()=>ability?.ResetCooldown(),resolveTree=true});
+   Find.WindowStack.Add(new Dialog_NodeTree(node,true,false,"巨灵的愿望".Loc()));
   }
 
   // ---------- 敌人战力：每个武艺天赋 +6% / 9% / 12% ----------
@@ -287,7 +287,7 @@ namespace LichPhylactery {
     if((roll?.Invoke()??Rand.Value)>=BackfillChance)continue;
     if(Give(p,PickDef(p))!=null){got.Add(p);if(roll==null)Extra(p);}
    }
-   if(got.Count>0 && !TestSuppressed)Find.LetterStack.ReceiveLetter("武艺天赋","这片大陆上的战士们开始领悟真正的武艺（1.66.0）。你的殖民者里有人觉醒了：\n\n"+string.Join("\n",got.Select(p=>"· "+p.LabelShort+"：「"+string.Join("、",Gifts(p).Select(x=>Names[x]))+"」"))+"\n\n武艺天赋随冒险者成长：10 级精通（数值 ×1.5），成为传奇冒险者后化境（×2）。",LetterDefOf.PositiveEvent,new LookTargets(got));
+   if(got.Count>0 && !TestSuppressed)Find.LetterStack.ReceiveLetter("武艺天赋".Loc(),"这片大陆上的战士们开始领悟真正的武艺（1.66.0）。你的殖民者里有人觉醒了：\n\n".Loc()+string.Join("\n",got.Select(p=>"· "+p.LabelShort+"：「".Loc()+string.Join("、".Loc(),Gifts(p).Select(x=>Names[x]))+"」".Loc()))+"\n\n武艺天赋随冒险者成长：10 级精通（数值 ×1.5），成为传奇冒险者后化境（×2）。".Loc(),LetterDefOf.PositiveEvent,new LookTargets(got));
    return got;
   }
 
@@ -297,33 +297,33 @@ namespace LichPhylactery {
   public static string Describe(int g,int s){
    float m=StageMult[Mathf.Clamp(s,0,2)];int b=ScoreAt[Mathf.Clamp(s,0,2)];
    switch(g){
-    case Mighty:return "力量 +"+b+"（上限 +"+b+"）；负重 "+P(.25f*m);
-    case Swift:return "敏捷 +"+b+"（上限 +"+b+"）；移动速度 +"+(.4f*m).ToString("0.##");
-    case Stalwart:return "体质 +"+b+"（上限 +"+b+"）；受到的伤害 "+M(DamageCut(m));
-    case Brilliant:return "智力 +"+b+"（上限 +"+b+"）；研究速度 "+P(.15f*m);
-    case Eagle:return "感知 +"+b+"（上限 +"+b+"）；远程瞄准时间 "+M(.2f*m);
-    case Commanding:return "魅力 +"+b+"（上限 +"+b+"）；社交影响 "+P(.2f*m);
-    case Flurry:return "近战冷却 "+M(.2f*m)+"；近战命中后成功率 "+(FlurryChance[s]*100f).ToString("0")+"% 立刻追加一击";
-    case Rage:return "健康低于 60% 时：近战伤害 "+P(.3f*m)+"、近战冷却 "+M(.15f*m)+"、疼痛 ×"+RagePain[s].ToString("0.#");
-    case Deadeye:return "远程命中 "+P(.12f*m)+"；远程伤害 "+P(.15f*m);
-    case Lethal:return "任何攻击成功率 "+(CritChance[s]*100f).ToString("0")+"% 暴击，伤害 ×"+CritMult[s].ToString("0.##")+"；护甲穿透 "+P(.1f*m);
-    case Bulwark:return "利器 / 钝器护甲 "+P(ArmorBonus(m))+"（绝对值）；不会踉跄";
-    case Regen:return "伤口愈合 ×"+(1f+1.5f*m).ToString("0.##")+"；每 "+RegenDays[s]+" 天长回一个缺失的非要害部位";
-    case Arcane:return "法杖 / 灵能 / 神术伤害 "+P(.25f*m)+"；"+(HeroDestiny.VPEActive?"心灵熵上限 +"+(20f*m).ToString("0"):"心灵敏感度 "+P(.15f*m));
+    case Mighty:return "力量 +".Loc()+b+"（上限 +".Loc()+b+"）；负重 ".Loc()+P(.25f*m);
+    case Swift:return "敏捷 +".Loc()+b+"（上限 +".Loc()+b+"）；移动速度 +".Loc()+(.4f*m).ToString("0.##");
+    case Stalwart:return "体质 +".Loc()+b+"（上限 +".Loc()+b+"）；受到的伤害 ".Loc()+M(DamageCut(m));
+    case Brilliant:return "智力 +".Loc()+b+"（上限 +".Loc()+b+"）；研究速度 ".Loc()+P(.15f*m);
+    case Eagle:return "感知 +".Loc()+b+"（上限 +".Loc()+b+"）；远程瞄准时间 ".Loc()+M(.2f*m);
+    case Commanding:return "魅力 +".Loc()+b+"（上限 +".Loc()+b+"）；社交影响 ".Loc()+P(.2f*m);
+    case Flurry:return "近战冷却 ".Loc()+M(.2f*m)+"；近战命中后成功率 ".Loc()+(FlurryChance[s]*100f).ToString("0")+"% 立刻追加一击".Loc();
+    case Rage:return "健康低于 60% 时：近战伤害 ".Loc()+P(.3f*m)+"、近战冷却 ".Loc()+M(.15f*m)+"、疼痛 ×".Loc()+RagePain[s].ToString("0.#");
+    case Deadeye:return "远程命中 ".Loc()+P(.12f*m)+"；远程伤害 ".Loc()+P(.15f*m);
+    case Lethal:return "任何攻击成功率 ".Loc()+(CritChance[s]*100f).ToString("0")+"% 暴击，伤害 ×".Loc()+CritMult[s].ToString("0.##")+"；护甲穿透 ".Loc()+P(.1f*m);
+    case Bulwark:return "利器 / 钝器护甲 ".Loc()+P(ArmorBonus(m))+"（绝对值）；不会踉跄".Loc();
+    case Regen:return "伤口愈合 ×".Loc()+(1f+1.5f*m).ToString("0.##")+"；每 ".Loc()+RegenDays[s]+" 天长回一个缺失的非要害部位".Loc();
+    case Arcane:return "法杖 / 灵能 / 神术伤害 ".Loc()+P(.25f*m)+"；".Loc()+(HeroDestiny.VPEActive?"心灵熵上限 +".Loc()+(20f*m).ToString("0"):"心灵敏感度 ".Loc()+P(.15f*m));
    }
    return "";
   }
   public static string ExtraTip(Pawn p,Trait t){
    int g=IndexOf(t?.def);if(g<0)return null;var h=Adventurer.Get(p);int s=Stage(h);var sb=new StringBuilder();
-   sb.AppendLine("当前阶段："+StageNames[s]+(h!=null && h.cgBonus>0?"（巨灵许愿 +"+h.cgBonus+" 阶）":""));
-   sb.AppendLine("现在："+Describe(g,s));
+   sb.AppendLine("当前阶段：".Loc()+StageNames[s]+(h!=null && h.cgBonus>0?"（巨灵许愿 +".Loc()+h.cgBonus+" 阶）".Loc():""));
+   sb.AppendLine("现在：".Loc()+Describe(g,s));
    sb.AppendLine();
-   sb.AppendLine("入门（获得时）："+Describe(g,0));
-   sb.AppendLine("精通（冒险者 "+MasterLevel+" 级，数值 ×1.5）："+Describe(g,1));
-   sb.Append("化境（传奇冒险者，数值 ×2）："+Describe(g,2));
-   if(g==Rage && h!=null)sb.Append("\n\n"+(h.cgRage?"狂暴中":"未触发"));
-   if(g==Regen && h!=null && h.cgRegenTick>=0)sb.Append("\n\n正在长回缺失部位："+((h.cgRegenTick+RegenInterval(s)-GenTicks.TicksGame)/(float)GenDate.TicksPerDay).ToString("0.#")+" 天后");
-   if(h==null)sb.Append("\n\n（没有冒险者等级：属性加值和附带效果不生效，战技的命中效果照常）");
+   sb.AppendLine("入门（获得时）：".Loc()+Describe(g,0));
+   sb.AppendLine("精通（冒险者 ".Loc()+MasterLevel+" 级，数值 ×1.5）：".Loc()+Describe(g,1));
+   sb.Append("化境（传奇冒险者，数值 ×2）：".Loc()+Describe(g,2));
+   if(g==Rage && h!=null)sb.Append("\n\n"+(h.cgRage?"狂暴中".Loc():"未触发".Loc()));
+   if(g==Regen && h!=null && h.cgRegenTick>=0)sb.Append("\n\n正在长回缺失部位：".Loc()+((h.cgRegenTick+RegenInterval(s)-GenTicks.TicksGame)/(float)GenDate.TicksPerDay).ToString("0.#")+" 天后".Loc());
+   if(h==null)sb.Append("\n\n（没有冒险者等级：属性加值和附带效果不生效，战技的命中效果照常）".Loc());
    return sb.ToString();
   }
  }
@@ -338,7 +338,7 @@ namespace LichPhylactery {
   public override void LoadedGame(){
    base.LoadedGame();if(backfilled)return;backfilled=true;
    if(CombatGifts.TestSuppressed)return;
-   try{CombatGifts.Backfill(PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive_FreeColonists);}catch(Exception e){Log.Error("[DND边缘大陆] 武艺天赋补掷出错："+e);}
+   try{CombatGifts.Backfill(PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive_FreeColonists);}catch(Exception e){Log.Error("[DND边缘大陆] 武艺天赋补掷出错：".Loc()+e);}
   }
   public override void GameComponentTick(){if(CombatGifts.pending.Count>0)CombatGifts.RunPending();}
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref backfilled,"lpCgBackfilled");}
@@ -385,11 +385,11 @@ namespace LichPhylactery {
  public static class CombatGiftSettings {
   public static void Draw(Listing_Standard l){
    var s=LichMod.Settings;
-   l.CheckboxLabeled("武艺天赋",ref s.combatGifts,"（1.66.0）稀有（蓝色）特性，和强力特性分开计数、可以同时拥有；得到一个之后，每次按“额外武艺天赋”的成功率再得一个不同的，直到失败或达到上限。六个属性类（巨力、迅捷、坚韧之体、博闻强识、鹰眼、王者气度：对应属性 +2，上限同样 +2，再加一项附带效果）和七个战技类（连斩、狂暴之血、神射、致命一击、铁壁、再生之体、法力奔涌）。\n随冒险者成长：10 级精通（数值 ×1.5，属性 +3），传奇冒险者化境（×2，属性 +4）。\n开局殖民者 35%；首领、冠军、传奇怪 50%；殖民者累计击杀 100 / 300 个人形时、完成 DND 里程碑时各有成功率 25% 战斗觉醒（已有的也能再觉醒一个，直到上限）；巨灵“让我更强 · 武艺”。老存档读档时给现有殖民者补一次（35%）。\n关闭后不再生成，已有的保留。");
-   l.CheckboxLabeled("敌人也会拥有武艺天赋",ref s.combatGiftsEnemies,"关闭后敌对派系的人不再随机带武艺天赋。敌人每个武艺天赋战力 +6%（精通 +9%，化境 +12%），袭击会相应少来一些人。");
-   l.Label("普通人形获得武艺天赋："+s.combatGiftRate+"%（传奇种族减半）");s.combatGiftRate=Mathf.RoundToInt(l.Slider(s.combatGiftRate,0,30));
-   l.Label("每人最多武艺天赋："+s.combatGiftMax+" 个");s.combatGiftMax=Mathf.RoundToInt(l.Slider(s.combatGiftMax,1,13));
-   l.Label("额外武艺天赋成功率："+s.combatGiftExtra+"%（得到一个之后，每次再得一个的几率）");s.combatGiftExtra=Mathf.RoundToInt(l.Slider(s.combatGiftExtra,0,100)/5f)*5;
+   l.CheckboxLabeled("武艺天赋".Loc(),ref s.combatGifts,"（1.66.0）稀有（蓝色）特性，和强力特性分开计数、可以同时拥有；得到一个之后，每次按“额外武艺天赋”的成功率再得一个不同的，直到失败或达到上限。六个属性类（巨力、迅捷、坚韧之体、博闻强识、鹰眼、王者气度：对应属性 +2，上限同样 +2，再加一项附带效果）和七个战技类（连斩、狂暴之血、神射、致命一击、铁壁、再生之体、法力奔涌）。\n随冒险者成长：10 级精通（数值 ×1.5，属性 +3），传奇冒险者化境（×2，属性 +4）。\n开局殖民者 35%；首领、冠军、传奇怪 50%；殖民者累计击杀 100 / 300 个人形时、完成 DND 里程碑时各有成功率 25% 战斗觉醒（已有的也能再觉醒一个，直到上限）；巨灵“让我更强 · 武艺”。老存档读档时给现有殖民者补一次（35%）。\n关闭后不再生成，已有的保留。".Loc());
+   l.CheckboxLabeled("敌人也会拥有武艺天赋".Loc(),ref s.combatGiftsEnemies,"关闭后敌对派系的人不再随机带武艺天赋。敌人每个武艺天赋战力 +6%（精通 +9%，化境 +12%），袭击会相应少来一些人。".Loc());
+   l.Label("普通人形获得武艺天赋：".Loc()+s.combatGiftRate+"%（传奇种族减半）".Loc());s.combatGiftRate=Mathf.RoundToInt(l.Slider(s.combatGiftRate,0,30));
+   l.Label("每人最多武艺天赋：".Loc()+s.combatGiftMax+" 个".Loc());s.combatGiftMax=Mathf.RoundToInt(l.Slider(s.combatGiftMax,1,13));
+   l.Label("额外武艺天赋成功率：".Loc()+s.combatGiftExtra+"%（得到一个之后，每次再得一个的几率）".Loc());s.combatGiftExtra=Mathf.RoundToInt(l.Slider(s.combatGiftExtra,0,100)/5f)*5;
   }
  }
 }

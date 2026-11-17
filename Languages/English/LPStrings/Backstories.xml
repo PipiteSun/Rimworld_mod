@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（Backstories.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>[DND边缘大陆] 分配背景故事出错：</zh><en>[DND Rimlands] Error assigning backstories: </en></s>
+  <s><zh>[DND边缘大陆] 背景特性联动出错：</zh><en>[DND Rimlands] Background trait link error: </en></s>
+  <s><zh>DND 背景故事</zh><en>DND backstories</en></s>
+  <s><zh>（1.46.0）新生成的小人按兵种、种族、派系换上费伦的童年和成年背景（139 条）。只影响之后新生成的小人，已有的小人不变。关闭后完全按原版分配。</zh><en>(1.46.0) Newly generated pawns get Faerûn childhood and adulthood backstories by pawn kind, race and faction (139 of them). Only affects pawns generated afterwards; existing pawns are unchanged. When off, assignment is fully vanilla.</en></s>
+  <s><zh>种族背景出现率：</zh><en>Racial backstory frequency: </en></s>
+  <s><zh>%（DND 种族的小人每个背景槽位换成本族背景的概率）</zh><en>% (chance for each backstory slot of a DND-race pawn to be replaced with a backstory of its own race)</en></s>
+  <s><zh>原版人类费伦背景：</zh><en>Vanilla humans with Faerûn backstories: </en></s>
+  <s><zh>%（不属于 DND 派系的原版人类，包括开局殖民者，每个背景槽位换成费伦背景的概率）</zh><en>% (chance for each backstory slot of vanilla humans not in a DND faction, including starting colonists, to be replaced with a Faerûn backstory)</en></s>
+</LPStrings>

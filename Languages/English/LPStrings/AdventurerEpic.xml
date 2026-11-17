@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（AdventurerEpic.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>传奇冒险者：</zh><en>Legendary adventurer: </en></s>
+  <s><zh>已经是 20 级的冒险者，又完成过真正的冒险。从今天起，人们称其为“传奇冒险者”。\n\n殖民地全员心情 +3（与传奇同行）；</zh><en> was already a level 20 adventurer, and has completed a true adventure. From today on, people call them a "legendary adventurer".\n\nWhole colony mood +3 (walking with a legend); </en></s>
+  <s><zh>社交影响 +10%，囚犯、访客和商人对其好感 +10。\n\n传奇倒下时，全殖民地心情 −6（10 天）。</zh><en> social impact +10%, prisoners, visitors and traders +10 opinion of them.\n\nWhen the legend falls, whole colony mood −6 (10 days).</en></s>
+  <s><zh>\n\n传奇等级 21～40 已解锁：</zh><en>\n\nLegend levels 21-40 unlocked: </en></s>
+  <s><zh>攒下的经验立即结算，每升一级得 2 个传奇属性点（在“冒险者”分页投点）。</zh><en> accumulated XP is settled immediately, with 2 legend attribute points per level (spent on the "Adventurer" tab).</en></s>
+  <s><zh>传奇陨落</zh><en>a legend has fallen</en></s>
+  <s><zh>，殖民地的传奇冒险者，倒下了。</zh><en>, the colony's legendary adventurer, has fallen.</en></s>
+  <s><zh>命运之恩</zh><en>boon of fate</en></s>
+  <s><zh>本该死去，命运之恩让其倒地幸存（伤口已止血）。</zh><en> should have died, but the boon of fate kept them alive on the ground (wounds have stopped bleeding).</en></s>
+  <s><zh> 天后才能再次生效。</zh><en> days until it can take effect again.</en></s>
+  <s><zh>战斗之恩</zh><en>boon of combat</en></s>
+  <s><zh>：百战 </zh><en>: veteran </en></s>
+  <s><zh>已经击倒了 </zh><en> has downed </en></s>
+  <s><zh> 个人形敌人（里程碑 </zh><en> humanlike enemies (milestone </en></s>
+  <s><zh>）。\n\n获得冒险者经验 </zh><en>).\n\nGained adventurer XP </en></s>
+  <s><zh>（下一级所需的 30%）。</zh><en> (30% of what the next level needs).</en></s>
+  <s><zh>\n\n千人斩：获得 1 个史诗恩赐点，可以再选一个恩赐。</zh><en>\n\nThousand kills: gained 1 epic boon point; another boon can be chosen.</en></s>
+  <s><zh>\n\n传奇属性点 +</zh><en>\n\nLegend attribute points +</en></s>
+  <s><zh>宿敌冠军：</zh><en>Nemesis champion: </en></s>
+  <s><zh>听说了殖民地冒险者的名声，派出了他们的冠军</zh><en> has heard of the colony's adventurers and sent its champion </en></s>
+  <s><zh>冒险者 </zh><en>adventurer </en></s>
+  <s><zh>，专长 </zh><en>, feat </en></s>
+  <s><zh>）带着 </zh><en>) arrives with </en></s>
+  <s><zh> 名随从前来挑战。\n\n击杀冠军的人获得下一级所需经验的 50% 和一件魔法物品。</zh><en> followers to challenge you.\n\nWhoever kills the champion gains 50% of the XP for their next level and a magic item.</en></s>
+  <s><zh>宿敌冠军倒下了</zh><en>Nemesis champion fallen</en></s>
+  <s><zh>击杀了宿敌冠军。</zh><en> killed the nemesis champion.</en></s>
+  <s><zh>\n\n获得冒险者经验 </zh><en>\n\nGained adventurer XP </en></s>
+  <s><zh>\n\n冠军留下了</zh><en>\n\nThe champion left behind </en></s>
+  <s><zh>挑战等级 CR </zh><en>challenge rating CR </en></s>
+  <s><zh>（检测到百战觉醒，默认关）</zh><en> (Hundred Battles Awakening detected, off by default)</en></s>
+  <s><zh>冒险者击杀里程碑</zh><en>Adventurer kill milestones</en></s>
+  <s><zh>殖民者的人形击杀达到 25、50、100、250、500、1000 时发信件，并一次性获得下一级所需经验的 30%；1000 杀额外得 1 个史诗恩赐点（可以选第二个恩赐）。\n检测到“百战觉醒”时默认关闭，避免两套里程碑重复。</zh><en>Sends a letter when a colonist's humanlike kills reach 25, 50, 100, 250, 500 and 1000, and grants a one-time 30% of the XP needed for the next level; 1000 kills also give 1 epic boon point (a second boon can be chosen).\nOff by default when "Hundred Battles Awakening" is detected, to avoid two milestone systems overlapping.</en></s>
+  <s><zh>宿敌冠军</zh><en>nemesis champion</en></s>
+  <s><zh>殖民地最高冒险者等级 ≥ 12 时，每 45～60 天敌对派系派出一名冠军（等级 = 殖民地最高 + 2，最高 20，带专长和史诗恩赐）和少量随从。击杀者获得下一级所需经验的 50% 和一件魔法物品。\n检测到“百战觉醒”时默认关闭。</zh><en>When the colony's highest adventurer level is ≥ 12, every 45-60 days a hostile faction sends a champion (level = colony's highest + 2, max 20, with feats and an epic boon) and a few followers. The killer gains 50% of the XP for their next level and a magic item.\nOff by default when "Hundred Battles Awakening" is detected.</en></s>
+</LPStrings>

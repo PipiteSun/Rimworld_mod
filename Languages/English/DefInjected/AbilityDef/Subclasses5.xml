@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 神恩之选·治疗伤口 -->
+  <LP_DS_CureWounds.label>divine magic: cure wounds</LP_DS_CureWounds.label>
+  <!-- 立即治疗一名目标（可以是自己）共 20 × 天赋强度点伤势，优先流血最严重的伤口。法力 1，冷却 30 秒。神圣之魂，术士 3 级。 -->
+  <LP_DS_CureWounds.description>Instantly heal one target (can be yourself) for a total of 20 × innate power injury, worst bleeding wounds first. Mana 1, cooldown 30 seconds. Divine Soul, sorcerer level 3.</LP_DS_CureWounds.description>
+  <!-- 神恩庇佑 -->
+  <LP_DS_Favored.label>favored by the gods</LP_DS_Favored.label>
+  <!-- 1 小时内手术成功率 +20%、包扎质量 +20%。不耗法力，每天 1 次。神圣之魂，术士 3 级。 -->
+  <LP_DS_Favored.description>For 1 hour surgery success +20%, tend quality +20%. No mana cost, once per day. Divine Soul, sorcerer level 3.</LP_DS_Favored.description>
+  <!-- 神恩共鸣 -->
+  <LP_DS_Resonance.label>divine resonance</LP_DS_Resonance.label>
+  <!-- 被动：冥想或祈祷时每 250 刻多回 0.2 术士法力（信奉神明的再多 25%）；每用 1 点法力治疗别人，自己也恢复那次治疗量的 25%。神圣之魂，术士 7 级。 -->
+  <LP_DS_Resonance.description>Passive: while meditating or praying, regain an extra 0.2 sorcerer mana every 250 ticks (25% more for believers of a god); for each point of mana spent healing others, you also recover 25% of that healing. Divine Soul, sorcerer level 7.</LP_DS_Resonance.description>
+  <!-- 天使形态 -->
+  <LP_DS_AngelForm.label>angelic form</LP_DS_AngelForm.label>
+  <!-- 1 小时内化身天使：3 格内的队友每 10 秒治疗 2 × 天赋强度点伤势，自己移动 +20%。法力 3，冷却 1 小时。神圣之魂，术士 11 级。 -->
+  <LP_DS_AngelForm.description>Become an angel for 1 hour: teammates within 3 cells heal 2 × innate power injury every 10 seconds, and your movement +20%. Mana 3, cooldown 1 hour. Divine Soul, sorcerer level 11.</LP_DS_AngelForm.description>
+  <!-- 神迹 -->
+  <LP_DS_Miracle.label>miracle</LP_DS_Miracle.label>
+  <!-- 主动：本地图所有殖民者伤口治疗 50%、疾病进度 -30%、心情 +10（3 天）。每季 1 次（冷却 15 天），不耗法力。被动：每天第一次倒地或将死时，自动治好一半伤口并站起。神圣之魂，术士 15 级。 -->
+  <LP_DS_Miracle.description>Active: all colonists on this map heal 50% of wounds, disease progress -30%, mood +10 (3 days). Once per quarter (cooldown 15 days), no mana cost. Passive: the first time each day you'd be downed or killed, automatically heal half your wounds and stand back up. Divine Soul, sorcerer level 15.</LP_DS_Miracle.description>
+  <!-- 暗视之眼·坟墓之力 -->
+  <LP_SM_EyesDark.label>eyes of the dark: strength of the grave</LP_SM_EyesDark.label>
+  <!-- 被动：黑暗不扣工作速度和瞄准；站在黑暗里时术士法术威力 +20%；受到会倒地或致死的伤害时，成功率 50% 硬撑不倒（每天判定 1 次，火焰、神圣伤害无效）。暗影魔法，术士 3 级。 -->
+  <LP_SM_EyesDark.description>Passive: darkness doesn't reduce work speed or aiming; while standing in darkness, sorcerer spell power +20%; when taking damage that would down or kill you, 50% chance to hold on and stay up (checked once per day; doesn't work against fire and holy damage). Shadow Magic, sorcerer level 3.</LP_SM_EyesDark.description>
+  <!-- 影犬 -->
+  <LP_SM_Hound.label>hound of ill omen</LP_SM_Hound.label>
+  <!-- 召唤一只影犬（1 小时），追咬指定的敌人：目标无法隐形，被咬中有 30% 的成功率恐惧逃跑 5 秒。法力 2，冷却 1 小时。暗影魔法，术士 7 级。 -->
+  <LP_SM_Hound.description>Summon a hound of ill omen (1 hour) that hunts down the chosen enemy: the target can't turn invisible, and bites have a 30% chance to make it flee in fear for 5 seconds. Mana 2, cooldown 1 hour. Shadow Magic, sorcerer level 7.</LP_SM_Hound.description>
+  <!-- 暗影步 -->
+  <LP_SM_ShadowStep.label>shadow step</LP_SM_ShadowStep.label>
+  <!-- 站在黑暗里时，瞬移到 20 格内另一处黑暗；之后下一个术士法术威力 +20%。不耗法力，冷却 30 秒。暗影魔法，术士 11 级。 -->
+  <LP_SM_ShadowStep.description>While standing in darkness, teleport to another dark spot within 20 cells; the next sorcerer spell afterwards gets +20% power. No mana cost, cooldown 30 seconds. Shadow Magic, sorcerer level 11.</LP_SM_ShadowStep.description>
+  <!-- 影之形态 -->
+  <LP_SM_ShadowForm.label>umbral form</LP_SM_ShadowForm.label>
+  <!-- 主动：1 小时内除火焰、神圣、力场外受到的伤害减半，站在黑暗里时敌人的远程攻击有 30% 落空。法力 3，冷却 2 小时。被动：22～6 点睡觉时法力恢复 ×2。暗影魔法，术士 15 级。 -->
+  <LP_SM_ShadowForm.description>Active: for 1 hour, damage taken halved except fire, holy and force; while standing in darkness, enemy ranged attacks miss 30% of the time. Mana 3, cooldown 2 hours. Passive: mana recovery ×2 when sleeping between 22 and 6. Shadow Magic, sorcerer level 15.</LP_SM_ShadowForm.description>
+  <!-- 秩序之手·机械亲和 -->
+  <LP_CW_Balance.label>restore balance: mechanical affinity</LP_CW_Balance.label>
+  <!-- 被动：每天 2 次，同一张地图上的己方人员豁免失败时自动重新判定一次。机械亲和：修理建筑和机械体的速度 +30%（建造速度 ×1.3），受到机械体的伤害 -10%。时钟之魂，术士 3 级。 -->
+  <LP_CW_Balance.description>Passive: twice per day, when a friendly person on the same map fails a save, it's automatically re-rolled once. Mechanical affinity: building and mechanoid repair speed +30% (construction speed ×1.3), damage taken from mechanoids -10%. Clockwork Soul, sorcerer level 3.</LP_CW_Balance.description>
+  <!-- 秩序护盾 -->
+  <LP_CW_Ward.label>bastion of law</LP_CW_Ward.label>
+  <!-- 15 格内一名队友得到吸收 10 + 术士等级 × 2 点伤害的护盾（1 小时）；是机械师的话控制带宽 +2。法力 1，冷却 10 秒。时钟之魂，术士 7 级。 -->
+  <LP_CW_Ward.description>One teammate within 15 cells gets a shield absorbing 10 + sorcerer level × 2 damage (1 hour); if they're a mechanitor, control bandwidth +2. Mana 1, cooldown 10 seconds. Clockwork Soul, sorcerer level 7.</LP_CW_Ward.description>
+  <!-- 秩序领域 -->
+  <LP_CW_Domain.label>clockwork cavalcade</LP_CW_Domain.label>
+  <!-- 1 小时内近战命中 +30%、射击精度提高；展开时 10 格内的敌方机械体有 30% 的成功率停机 3 秒。法力 3，冷却 2 小时。时钟之魂，术士 11 级。 -->
+  <LP_CW_Domain.description>For 1 hour melee hit +30% and better shooting accuracy; when deployed, enemy mechanoids within 10 cells have a 30% chance to shut down for 3 seconds. Mana 3, cooldown 2 hours. Clockwork Soul, sorcerer level 11.</LP_CW_Domain.description>
+  <!-- 秩序军团 -->
+  <LP_CW_Legion.label>legion of order</LP_CW_Legion.label>
+  <!-- 主动：召来 3 台秩序构装（原版机械体做成的友方临时单位）协战 1 天，到时消散。不耗法力，冷却 3 天。被动：魔涌触发狂野魔法时不会出坏结果（自燃、熵涌、混乱精魂改为重新抽）。时钟之魂，术士 15 级。 -->
+  <LP_CW_Legion.description>Active: summon 3 order constructs (vanilla mechanoids made into friendly temporary units) to fight alongside you for 1 day, dissipating when time is up. No mana cost, cooldown 3 days. Passive: wild magic triggered by wild surge never has bad results (spontaneous combustion, entropy surge and chaotic spirits are re-rolled instead). Clockwork Soul, sorcerer level 15.</LP_CW_Legion.description>
+</LanguageData>

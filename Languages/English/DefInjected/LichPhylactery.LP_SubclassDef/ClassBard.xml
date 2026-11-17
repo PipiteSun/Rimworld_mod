@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 学识学院 -->
+  <LP_Sub_Lore.label>College of Lore</LP_Sub_Lore.label>
+  <!-- 什么书都读过、什么人都见过的学者：用刻薄的话削弱敌人，研究更快，多学一个魔法奥秘，做的东西更精。 -->
+  <LP_Sub_Lore.description>A scholar who has read every book and met everyone: weakens enemies with cutting words, researches faster, learns one extra Magical Secret and crafts finer things.</LP_Sub_Lore.description>
+  <!-- 魔法奥秘 -->
+  <LP_Sub_Lore.choices.0.label>magical secrets</LP_Sub_Lore.choices.0.label>
+  <!-- 火球术 | 迷踪步 | 镜影术 | 急速术 | 闪电束 | 治疗伤口 | 祝福 | 次级复原术 | 树肤术 | 纠缠术 | 龙族之翼 | 咒术 -->
+  <LP_Sub_Lore.choices.0.options.0>fireball</LP_Sub_Lore.choices.0.options.0>
+  <LP_Sub_Lore.choices.0.options.1>misty step</LP_Sub_Lore.choices.0.options.1>
+  <LP_Sub_Lore.choices.0.options.2>mirror image</LP_Sub_Lore.choices.0.options.2>
+  <LP_Sub_Lore.choices.0.options.3>haste</LP_Sub_Lore.choices.0.options.3>
+  <LP_Sub_Lore.choices.0.options.4>lightning bolt</LP_Sub_Lore.choices.0.options.4>
+  <LP_Sub_Lore.choices.0.options.5>cure wounds</LP_Sub_Lore.choices.0.options.5>
+  <LP_Sub_Lore.choices.0.options.6>bless</LP_Sub_Lore.choices.0.options.6>
+  <LP_Sub_Lore.choices.0.options.7>lesser restoration</LP_Sub_Lore.choices.0.options.7>
+  <LP_Sub_Lore.choices.0.options.8>barkskin</LP_Sub_Lore.choices.0.options.8>
+  <LP_Sub_Lore.choices.0.options.9>entangle</LP_Sub_Lore.choices.0.options.9>
+  <LP_Sub_Lore.choices.0.options.10>dragon wings</LP_Sub_Lore.choices.0.options.10>
+  <LP_Sub_Lore.choices.0.options.11>hex</LP_Sub_Lore.choices.0.options.11>
+  <!-- 法师 3 级：火焰爆炸。 | 法师 3 级：短距离瞬移。 | 法师 5 级：分身挡攻击。 | 法师 7 级：给友军加速。 | 法师 7 级：一道直线闪电。 | 牧师 1 级：近身治疗。 | 牧师 1 级：命中、心情。 | 牧师 3 级：解除疾病、中毒。 | 德鲁伊 5 级：护甲。 | 德鲁伊 1 级：缠住一片敌人。 | 术士 7 级：飞到远处。 | 邪术师 7 级：增伤、降低豁免。 -->
+  <LP_Sub_Lore.choices.0.tips.0>Wizard level 3: fire explosion.</LP_Sub_Lore.choices.0.tips.0>
+  <LP_Sub_Lore.choices.0.tips.1>Wizard level 3: short-range teleport.</LP_Sub_Lore.choices.0.tips.1>
+  <LP_Sub_Lore.choices.0.tips.2>Wizard level 5: duplicates block attacks.</LP_Sub_Lore.choices.0.tips.2>
+  <LP_Sub_Lore.choices.0.tips.3>Wizard level 7: hastes an ally.</LP_Sub_Lore.choices.0.tips.3>
+  <LP_Sub_Lore.choices.0.tips.4>Wizard level 7: a line of lightning.</LP_Sub_Lore.choices.0.tips.4>
+  <LP_Sub_Lore.choices.0.tips.5>Cleric level 1: touch healing.</LP_Sub_Lore.choices.0.tips.5>
+  <LP_Sub_Lore.choices.0.tips.6>Cleric level 1: hit chance, mood.</LP_Sub_Lore.choices.0.tips.6>
+  <LP_Sub_Lore.choices.0.tips.7>Cleric level 3: cures disease and poison.</LP_Sub_Lore.choices.0.tips.7>
+  <LP_Sub_Lore.choices.0.tips.8>Druid level 5: armor.</LP_Sub_Lore.choices.0.tips.8>
+  <LP_Sub_Lore.choices.0.tips.9>Druid level 1: entangles a group of enemies.</LP_Sub_Lore.choices.0.tips.9>
+  <LP_Sub_Lore.choices.0.tips.10>Sorcerer level 7: fly far away.</LP_Sub_Lore.choices.0.tips.10>
+  <LP_Sub_Lore.choices.0.tips.11>Warlock level 7: more damage, lower saves.</LP_Sub_Lore.choices.0.tips.11>
+  <!-- 魔法奥秘·二 -->
+  <LP_Sub_Lore.choices.1.label>magical secrets II</LP_Sub_Lore.choices.1.label>
+  <!-- 火球术 | 迷踪步 | 镜影术 | 急速术 | 闪电束 | 治疗伤口 | 祝福 | 次级复原术 | 树肤术 | 纠缠术 | 龙族之翼 | 咒术 | 群体治疗 | 石墙术 | 兽王号令 | 群体暗示 -->
+  <LP_Sub_Lore.choices.1.options.0>fireball</LP_Sub_Lore.choices.1.options.0>
+  <LP_Sub_Lore.choices.1.options.1>misty step</LP_Sub_Lore.choices.1.options.1>
+  <LP_Sub_Lore.choices.1.options.2>mirror image</LP_Sub_Lore.choices.1.options.2>
+  <LP_Sub_Lore.choices.1.options.3>haste</LP_Sub_Lore.choices.1.options.3>
+  <LP_Sub_Lore.choices.1.options.4>lightning bolt</LP_Sub_Lore.choices.1.options.4>
+  <LP_Sub_Lore.choices.1.options.5>cure wounds</LP_Sub_Lore.choices.1.options.5>
+  <LP_Sub_Lore.choices.1.options.6>bless</LP_Sub_Lore.choices.1.options.6>
+  <LP_Sub_Lore.choices.1.options.7>lesser restoration</LP_Sub_Lore.choices.1.options.7>
+  <LP_Sub_Lore.choices.1.options.8>barkskin</LP_Sub_Lore.choices.1.options.8>
+  <LP_Sub_Lore.choices.1.options.9>entangle</LP_Sub_Lore.choices.1.options.9>
+  <LP_Sub_Lore.choices.1.options.10>dragon wings</LP_Sub_Lore.choices.1.options.10>
+  <LP_Sub_Lore.choices.1.options.11>hex</LP_Sub_Lore.choices.1.options.11>
+  <LP_Sub_Lore.choices.1.options.12>mass cure wounds</LP_Sub_Lore.choices.1.options.12>
+  <LP_Sub_Lore.choices.1.options.13>wall of stone</LP_Sub_Lore.choices.1.options.13>
+  <LP_Sub_Lore.choices.1.options.14>beast lord's call</LP_Sub_Lore.choices.1.options.14>
+  <LP_Sub_Lore.choices.1.options.15>mass suggestion</LP_Sub_Lore.choices.1.options.15>
+  <!-- 法师 3 级：火焰爆炸。 | 法师 3 级：短距离瞬移。 | 法师 5 级：分身挡攻击。 | 法师 7 级：给友军加速。 | 法师 7 级：一道直线闪电。 | 牧师 1 级：近身治疗。 | 牧师 1 级：命中、心情。 | 牧师 3 级：解除疾病、中毒。 | 德鲁伊 5 级：护甲。 | 德鲁伊 1 级：缠住一片敌人。 | 术士 7 级：飞到远处。 | 邪术师 7 级：增伤、降低豁免。 | 牧师 10 级：治疗身边所有友军。 | 法师 10 级：立起石墙。 | 德鲁伊 10 级：身边的动物狂暴。 | 术士 10 级：一片敌人恍惚游荡。 -->
+  <LP_Sub_Lore.choices.1.tips.0>Wizard level 3: fire explosion.</LP_Sub_Lore.choices.1.tips.0>
+  <LP_Sub_Lore.choices.1.tips.1>Wizard level 3: short-range teleport.</LP_Sub_Lore.choices.1.tips.1>
+  <LP_Sub_Lore.choices.1.tips.2>Wizard level 5: duplicates block attacks.</LP_Sub_Lore.choices.1.tips.2>
+  <LP_Sub_Lore.choices.1.tips.3>Wizard level 7: hastes an ally.</LP_Sub_Lore.choices.1.tips.3>
+  <LP_Sub_Lore.choices.1.tips.4>Wizard level 7: a line of lightning.</LP_Sub_Lore.choices.1.tips.4>
+  <LP_Sub_Lore.choices.1.tips.5>Cleric level 1: touch healing.</LP_Sub_Lore.choices.1.tips.5>
+  <LP_Sub_Lore.choices.1.tips.6>Cleric level 1: hit chance, mood.</LP_Sub_Lore.choices.1.tips.6>
+  <LP_Sub_Lore.choices.1.tips.7>Cleric level 3: cures disease and poison.</LP_Sub_Lore.choices.1.tips.7>
+  <LP_Sub_Lore.choices.1.tips.8>Druid level 5: armor.</LP_Sub_Lore.choices.1.tips.8>
+  <LP_Sub_Lore.choices.1.tips.9>Druid level 1: entangles a group of enemies.</LP_Sub_Lore.choices.1.tips.9>
+  <LP_Sub_Lore.choices.1.tips.10>Sorcerer level 7: fly far away.</LP_Sub_Lore.choices.1.tips.10>
+  <LP_Sub_Lore.choices.1.tips.11>Warlock level 7: more damage, lower saves.</LP_Sub_Lore.choices.1.tips.11>
+  <LP_Sub_Lore.choices.1.tips.12>Cleric level 10: heals all nearby allies.</LP_Sub_Lore.choices.1.tips.12>
+  <LP_Sub_Lore.choices.1.tips.13>Wizard level 10: raises a stone wall.</LP_Sub_Lore.choices.1.tips.13>
+  <LP_Sub_Lore.choices.1.tips.14>Druid level 10: nearby animals go berserk.</LP_Sub_Lore.choices.1.tips.14>
+  <LP_Sub_Lore.choices.1.tips.15>Sorcerer level 10: a group of enemies wander in a daze.</LP_Sub_Lore.choices.1.tips.15>
+  <!-- 额外魔法奥秘 -->
+  <LP_Sub_Lore.choices.2.label>additional magical secrets</LP_Sub_Lore.choices.2.label>
+  <!-- 火球术 | 迷踪步 | 镜影术 | 急速术 | 闪电束 | 治疗伤口 | 祝福 | 次级复原术 | 树肤术 | 纠缠术 | 龙族之翼 | 咒术 -->
+  <LP_Sub_Lore.choices.2.options.0>fireball</LP_Sub_Lore.choices.2.options.0>
+  <LP_Sub_Lore.choices.2.options.1>misty step</LP_Sub_Lore.choices.2.options.1>
+  <LP_Sub_Lore.choices.2.options.2>mirror image</LP_Sub_Lore.choices.2.options.2>
+  <LP_Sub_Lore.choices.2.options.3>haste</LP_Sub_Lore.choices.2.options.3>
+  <LP_Sub_Lore.choices.2.options.4>lightning bolt</LP_Sub_Lore.choices.2.options.4>
+  <LP_Sub_Lore.choices.2.options.5>cure wounds</LP_Sub_Lore.choices.2.options.5>
+  <LP_Sub_Lore.choices.2.options.6>bless</LP_Sub_Lore.choices.2.options.6>
+  <LP_Sub_Lore.choices.2.options.7>lesser restoration</LP_Sub_Lore.choices.2.options.7>
+  <LP_Sub_Lore.choices.2.options.8>barkskin</LP_Sub_Lore.choices.2.options.8>
+  <LP_Sub_Lore.choices.2.options.9>entangle</LP_Sub_Lore.choices.2.options.9>
+  <LP_Sub_Lore.choices.2.options.10>dragon wings</LP_Sub_Lore.choices.2.options.10>
+  <LP_Sub_Lore.choices.2.options.11>hex</LP_Sub_Lore.choices.2.options.11>
+  <!-- 法师 3 级：火焰爆炸。 | 法师 3 级：短距离瞬移。 | 法师 5 级：分身挡攻击。 | 法师 7 级：给友军加速。 | 法师 7 级：一道直线闪电。 | 牧师 1 级：近身治疗。 | 牧师 1 级：命中、心情。 | 牧师 3 级：解除疾病、中毒。 | 德鲁伊 5 级：护甲。 | 德鲁伊 1 级：缠住一片敌人。 | 术士 7 级：飞到远处。 | 邪术师 7 级：增伤、降低豁免。 -->
+  <LP_Sub_Lore.choices.2.tips.0>Wizard level 3: fire explosion.</LP_Sub_Lore.choices.2.tips.0>
+  <LP_Sub_Lore.choices.2.tips.1>Wizard level 3: short-range teleport.</LP_Sub_Lore.choices.2.tips.1>
+  <LP_Sub_Lore.choices.2.tips.2>Wizard level 5: duplicates block attacks.</LP_Sub_Lore.choices.2.tips.2>
+  <LP_Sub_Lore.choices.2.tips.3>Wizard level 7: hastes an ally.</LP_Sub_Lore.choices.2.tips.3>
+  <LP_Sub_Lore.choices.2.tips.4>Wizard level 7: a line of lightning.</LP_Sub_Lore.choices.2.tips.4>
+  <LP_Sub_Lore.choices.2.tips.5>Cleric level 1: touch healing.</LP_Sub_Lore.choices.2.tips.5>
+  <LP_Sub_Lore.choices.2.tips.6>Cleric level 1: hit chance, mood.</LP_Sub_Lore.choices.2.tips.6>
+  <LP_Sub_Lore.choices.2.tips.7>Cleric level 3: cures disease and poison.</LP_Sub_Lore.choices.2.tips.7>
+  <LP_Sub_Lore.choices.2.tips.8>Druid level 5: armor.</LP_Sub_Lore.choices.2.tips.8>
+  <LP_Sub_Lore.choices.2.tips.9>Druid level 1: entangles a group of enemies.</LP_Sub_Lore.choices.2.tips.9>
+  <LP_Sub_Lore.choices.2.tips.10>Sorcerer level 7: fly far away.</LP_Sub_Lore.choices.2.tips.10>
+  <LP_Sub_Lore.choices.2.tips.11>Warlock level 7: more damage, lower saves.</LP_Sub_Lore.choices.2.tips.11>
+  <!-- 勇气学院 -->
+  <LP_Sub_Valor.label>College of Valor</LP_Sub_Valor.label>
+  <!-- 冲在前排的战歌手：激励带上战斗加成，自己也能打，施法后紧接着出手，最后用战吼稳住全队。 -->
+  <LP_Sub_Valor.description>A war singer on the front line: inspiration carries combat bonuses, fights well personally, strikes right after casting, and steadies the whole team with a war cry at the end.</LP_Sub_Valor.description>
+  <!-- 魔法奥秘 -->
+  <LP_Sub_Valor.choices.0.label>magical secrets</LP_Sub_Valor.choices.0.label>
+  <!-- 火球术 | 迷踪步 | 镜影术 | 急速术 | 闪电束 | 治疗伤口 | 祝福 | 次级复原术 | 树肤术 | 纠缠术 | 龙族之翼 | 咒术 -->
+  <LP_Sub_Valor.choices.0.options.0>fireball</LP_Sub_Valor.choices.0.options.0>
+  <LP_Sub_Valor.choices.0.options.1>misty step</LP_Sub_Valor.choices.0.options.1>
+  <LP_Sub_Valor.choices.0.options.2>mirror image</LP_Sub_Valor.choices.0.options.2>
+  <LP_Sub_Valor.choices.0.options.3>haste</LP_Sub_Valor.choices.0.options.3>
+  <LP_Sub_Valor.choices.0.options.4>lightning bolt</LP_Sub_Valor.choices.0.options.4>
+  <LP_Sub_Valor.choices.0.options.5>cure wounds</LP_Sub_Valor.choices.0.options.5>
+  <LP_Sub_Valor.choices.0.options.6>bless</LP_Sub_Valor.choices.0.options.6>
+  <LP_Sub_Valor.choices.0.options.7>lesser restoration</LP_Sub_Valor.choices.0.options.7>
+  <LP_Sub_Valor.choices.0.options.8>barkskin</LP_Sub_Valor.choices.0.options.8>
+  <LP_Sub_Valor.choices.0.options.9>entangle</LP_Sub_Valor.choices.0.options.9>
+  <LP_Sub_Valor.choices.0.options.10>dragon wings</LP_Sub_Valor.choices.0.options.10>
+  <LP_Sub_Valor.choices.0.options.11>hex</LP_Sub_Valor.choices.0.options.11>
+  <!-- 法师 3 级：火焰爆炸。 | 法师 3 级：短距离瞬移。 | 法师 5 级：分身挡攻击。 | 法师 7 级：给友军加速。 | 法师 7 级：一道直线闪电。 | 牧师 1 级：近身治疗。 | 牧师 1 级：命中、心情。 | 牧师 3 级：解除疾病、中毒。 | 德鲁伊 5 级：护甲。 | 德鲁伊 1 级：缠住一片敌人。 | 术士 7 级：飞到远处。 | 邪术师 7 级：增伤、降低豁免。 -->
+  <LP_Sub_Valor.choices.0.tips.0>Wizard level 3: fire explosion.</LP_Sub_Valor.choices.0.tips.0>
+  <LP_Sub_Valor.choices.0.tips.1>Wizard level 3: short-range teleport.</LP_Sub_Valor.choices.0.tips.1>
+  <LP_Sub_Valor.choices.0.tips.2>Wizard level 5: duplicates block attacks.</LP_Sub_Valor.choices.0.tips.2>
+  <LP_Sub_Valor.choices.0.tips.3>Wizard level 7: hastes an ally.</LP_Sub_Valor.choices.0.tips.3>
+  <LP_Sub_Valor.choices.0.tips.4>Wizard level 7: a line of lightning.</LP_Sub_Valor.choices.0.tips.4>
+  <LP_Sub_Valor.choices.0.tips.5>Cleric level 1: touch healing.</LP_Sub_Valor.choices.0.tips.5>
+  <LP_Sub_Valor.choices.0.tips.6>Cleric level 1: hit chance, mood.</LP_Sub_Valor.choices.0.tips.6>
+  <LP_Sub_Valor.choices.0.tips.7>Cleric level 3: cures disease and poison.</LP_Sub_Valor.choices.0.tips.7>
+  <LP_Sub_Valor.choices.0.tips.8>Druid level 5: armor.</LP_Sub_Valor.choices.0.tips.8>
+  <LP_Sub_Valor.choices.0.tips.9>Druid level 1: entangles a group of enemies.</LP_Sub_Valor.choices.0.tips.9>
+  <LP_Sub_Valor.choices.0.tips.10>Sorcerer level 7: fly far away.</LP_Sub_Valor.choices.0.tips.10>
+  <LP_Sub_Valor.choices.0.tips.11>Warlock level 7: more damage, lower saves.</LP_Sub_Valor.choices.0.tips.11>
+  <!-- 魔法奥秘·二 -->
+  <LP_Sub_Valor.choices.1.label>magical secrets II</LP_Sub_Valor.choices.1.label>
+  <!-- 火球术 | 迷踪步 | 镜影术 | 急速术 | 闪电束 | 治疗伤口 | 祝福 | 次级复原术 | 树肤术 | 纠缠术 | 龙族之翼 | 咒术 | 群体治疗 | 石墙术 | 兽王号令 | 群体暗示 -->
+  <LP_Sub_Valor.choices.1.options.0>fireball</LP_Sub_Valor.choices.1.options.0>
+  <LP_Sub_Valor.choices.1.options.1>misty step</LP_Sub_Valor.choices.1.options.1>
+  <LP_Sub_Valor.choices.1.options.2>mirror image</LP_Sub_Valor.choices.1.options.2>
+  <LP_Sub_Valor.choices.1.options.3>haste</LP_Sub_Valor.choices.1.options.3>
+  <LP_Sub_Valor.choices.1.options.4>lightning bolt</LP_Sub_Valor.choices.1.options.4>
+  <LP_Sub_Valor.choices.1.options.5>cure wounds</LP_Sub_Valor.choices.1.options.5>
+  <LP_Sub_Valor.choices.1.options.6>bless</LP_Sub_Valor.choices.1.options.6>
+  <LP_Sub_Valor.choices.1.options.7>lesser restoration</LP_Sub_Valor.choices.1.options.7>
+  <LP_Sub_Valor.choices.1.options.8>barkskin</LP_Sub_Valor.choices.1.options.8>
+  <LP_Sub_Valor.choices.1.options.9>entangle</LP_Sub_Valor.choices.1.options.9>
+  <LP_Sub_Valor.choices.1.options.10>dragon wings</LP_Sub_Valor.choices.1.options.10>
+  <LP_Sub_Valor.choices.1.options.11>hex</LP_Sub_Valor.choices.1.options.11>
+  <LP_Sub_Valor.choices.1.options.12>mass cure wounds</LP_Sub_Valor.choices.1.options.12>
+  <LP_Sub_Valor.choices.1.options.13>wall of stone</LP_Sub_Valor.choices.1.options.13>
+  <LP_Sub_Valor.choices.1.options.14>beast lord's call</LP_Sub_Valor.choices.1.options.14>
+  <LP_Sub_Valor.choices.1.options.15>mass suggestion</LP_Sub_Valor.choices.1.options.15>
+  <!-- 法师 3 级：火焰爆炸。 | 法师 3 级：短距离瞬移。 | 法师 5 级：分身挡攻击。 | 法师 7 级：给友军加速。 | 法师 7 级：一道直线闪电。 | 牧师 1 级：近身治疗。 | 牧师 1 级：命中、心情。 | 牧师 3 级：解除疾病、中毒。 | 德鲁伊 5 级：护甲。 | 德鲁伊 1 级：缠住一片敌人。 | 术士 7 级：飞到远处。 | 邪术师 7 级：增伤、降低豁免。 | 牧师 10 级：治疗身边所有友军。 | 法师 10 级：立起石墙。 | 德鲁伊 10 级：身边的动物狂暴。 | 术士 10 级：一片敌人恍惚游荡。 -->
+  <LP_Sub_Valor.choices.1.tips.0>Wizard level 3: fire explosion.</LP_Sub_Valor.choices.1.tips.0>
+  <LP_Sub_Valor.choices.1.tips.1>Wizard level 3: short-range teleport.</LP_Sub_Valor.choices.1.tips.1>
+  <LP_Sub_Valor.choices.1.tips.2>Wizard level 5: duplicates block attacks.</LP_Sub_Valor.choices.1.tips.2>
+  <LP_Sub_Valor.choices.1.tips.3>Wizard level 7: hastes an ally.</LP_Sub_Valor.choices.1.tips.3>
+  <LP_Sub_Valor.choices.1.tips.4>Wizard level 7: a line of lightning.</LP_Sub_Valor.choices.1.tips.4>
+  <LP_Sub_Valor.choices.1.tips.5>Cleric level 1: touch healing.</LP_Sub_Valor.choices.1.tips.5>
+  <LP_Sub_Valor.choices.1.tips.6>Cleric level 1: hit chance, mood.</LP_Sub_Valor.choices.1.tips.6>
+  <LP_Sub_Valor.choices.1.tips.7>Cleric level 3: cures disease and poison.</LP_Sub_Valor.choices.1.tips.7>
+  <LP_Sub_Valor.choices.1.tips.8>Druid level 5: armor.</LP_Sub_Valor.choices.1.tips.8>
+  <LP_Sub_Valor.choices.1.tips.9>Druid level 1: entangles a group of enemies.</LP_Sub_Valor.choices.1.tips.9>
+  <LP_Sub_Valor.choices.1.tips.10>Sorcerer level 7: fly far away.</LP_Sub_Valor.choices.1.tips.10>
+  <LP_Sub_Valor.choices.1.tips.11>Warlock level 7: more damage, lower saves.</LP_Sub_Valor.choices.1.tips.11>
+  <LP_Sub_Valor.choices.1.tips.12>Cleric level 10: heals all nearby allies.</LP_Sub_Valor.choices.1.tips.12>
+  <LP_Sub_Valor.choices.1.tips.13>Wizard level 10: raises a stone wall.</LP_Sub_Valor.choices.1.tips.13>
+  <LP_Sub_Valor.choices.1.tips.14>Druid level 10: nearby animals go berserk.</LP_Sub_Valor.choices.1.tips.14>
+  <LP_Sub_Valor.choices.1.tips.15>Sorcerer level 10: a group of enemies wander in a daze.</LP_Sub_Valor.choices.1.tips.15>
+  <!-- 剑舞学院 -->
+  <LP_Sub_Swords.label>College of Swords</LP_Sub_Swords.label>
+  <!-- 刀光里的表演者：近战命中打出剑花（护盾、横扫或击退），出手更快，冲进敌群舞出旋风。 -->
+  <LP_Sub_Swords.description>A performer among the blades: melee hits perform flourishes (shield, sweep or knockback), strikes faster, and dances through enemy crowds in a whirlwind.</LP_Sub_Swords.description>
+  <!-- 魔法奥秘 -->
+  <LP_Sub_Swords.choices.0.label>magical secrets</LP_Sub_Swords.choices.0.label>
+  <!-- 火球术 | 迷踪步 | 镜影术 | 急速术 | 闪电束 | 治疗伤口 | 祝福 | 次级复原术 | 树肤术 | 纠缠术 | 龙族之翼 | 咒术 -->
+  <LP_Sub_Swords.choices.0.options.0>fireball</LP_Sub_Swords.choices.0.options.0>
+  <LP_Sub_Swords.choices.0.options.1>misty step</LP_Sub_Swords.choices.0.options.1>
+  <LP_Sub_Swords.choices.0.options.2>mirror image</LP_Sub_Swords.choices.0.options.2>
+  <LP_Sub_Swords.choices.0.options.3>haste</LP_Sub_Swords.choices.0.options.3>
+  <LP_Sub_Swords.choices.0.options.4>lightning bolt</LP_Sub_Swords.choices.0.options.4>
+  <LP_Sub_Swords.choices.0.options.5>cure wounds</LP_Sub_Swords.choices.0.options.5>
+  <LP_Sub_Swords.choices.0.options.6>bless</LP_Sub_Swords.choices.0.options.6>
+  <LP_Sub_Swords.choices.0.options.7>lesser restoration</LP_Sub_Swords.choices.0.options.7>
+  <LP_Sub_Swords.choices.0.options.8>barkskin</LP_Sub_Swords.choices.0.options.8>
+  <LP_Sub_Swords.choices.0.options.9>entangle</LP_Sub_Swords.choices.0.options.9>
+  <LP_Sub_Swords.choices.0.options.10>dragon wings</LP_Sub_Swords.choices.0.options.10>
+  <LP_Sub_Swords.choices.0.options.11>hex</LP_Sub_Swords.choices.0.options.11>
+  <!-- 法师 3 级：火焰爆炸。 | 法师 3 级：短距离瞬移。 | 法师 5 级：分身挡攻击。 | 法师 7 级：给友军加速。 | 法师 7 级：一道直线闪电。 | 牧师 1 级：近身治疗。 | 牧师 1 级：命中、心情。 | 牧师 3 级：解除疾病、中毒。 | 德鲁伊 5 级：护甲。 | 德鲁伊 1 级：缠住一片敌人。 | 术士 7 级：飞到远处。 | 邪术师 7 级：增伤、降低豁免。 -->
+  <LP_Sub_Swords.choices.0.tips.0>Wizard level 3: fire explosion.</LP_Sub_Swords.choices.0.tips.0>
+  <LP_Sub_Swords.choices.0.tips.1>Wizard level 3: short-range teleport.</LP_Sub_Swords.choices.0.tips.1>
+  <LP_Sub_Swords.choices.0.tips.2>Wizard level 5: duplicates block attacks.</LP_Sub_Swords.choices.0.tips.2>
+  <LP_Sub_Swords.choices.0.tips.3>Wizard level 7: hastes an ally.</LP_Sub_Swords.choices.0.tips.3>
+  <LP_Sub_Swords.choices.0.tips.4>Wizard level 7: a line of lightning.</LP_Sub_Swords.choices.0.tips.4>
+  <LP_Sub_Swords.choices.0.tips.5>Cleric level 1: touch healing.</LP_Sub_Swords.choices.0.tips.5>
+  <LP_Sub_Swords.choices.0.tips.6>Cleric level 1: hit chance, mood.</LP_Sub_Swords.choices.0.tips.6>
+  <LP_Sub_Swords.choices.0.tips.7>Cleric level 3: cures disease and poison.</LP_Sub_Swords.choices.0.tips.7>
+  <LP_Sub_Swords.choices.0.tips.8>Druid level 5: armor.</LP_Sub_Swords.choices.0.tips.8>
+  <LP_Sub_Swords.choices.0.tips.9>Druid level 1: entangles a group of enemies.</LP_Sub_Swords.choices.0.tips.9>
+  <LP_Sub_Swords.choices.0.tips.10>Sorcerer level 7: fly far away.</LP_Sub_Swords.choices.0.tips.10>
+  <LP_Sub_Swords.choices.0.tips.11>Warlock level 7: more damage, lower saves.</LP_Sub_Swords.choices.0.tips.11>
+  <!-- 魔法奥秘·二 -->
+  <LP_Sub_Swords.choices.1.label>magical secrets II</LP_Sub_Swords.choices.1.label>
+  <!-- 火球术 | 迷踪步 | 镜影术 | 急速术 | 闪电束 | 治疗伤口 | 祝福 | 次级复原术 | 树肤术 | 纠缠术 | 龙族之翼 | 咒术 | 群体治疗 | 石墙术 | 兽王号令 | 群体暗示 -->
+  <LP_Sub_Swords.choices.1.options.0>fireball</LP_Sub_Swords.choices.1.options.0>
+  <LP_Sub_Swords.choices.1.options.1>misty step</LP_Sub_Swords.choices.1.options.1>
+  <LP_Sub_Swords.choices.1.options.2>mirror image</LP_Sub_Swords.choices.1.options.2>
+  <LP_Sub_Swords.choices.1.options.3>haste</LP_Sub_Swords.choices.1.options.3>
+  <LP_Sub_Swords.choices.1.options.4>lightning bolt</LP_Sub_Swords.choices.1.options.4>
+  <LP_Sub_Swords.choices.1.options.5>cure wounds</LP_Sub_Swords.choices.1.options.5>
+  <LP_Sub_Swords.choices.1.options.6>bless</LP_Sub_Swords.choices.1.options.6>
+  <LP_Sub_Swords.choices.1.options.7>lesser restoration</LP_Sub_Swords.choices.1.options.7>
+  <LP_Sub_Swords.choices.1.options.8>barkskin</LP_Sub_Swords.choices.1.options.8>
+  <LP_Sub_Swords.choices.1.options.9>entangle</LP_Sub_Swords.choices.1.options.9>
+  <LP_Sub_Swords.choices.1.options.10>dragon wings</LP_Sub_Swords.choices.1.options.10>
+  <LP_Sub_Swords.choices.1.options.11>hex</LP_Sub_Swords.choices.1.options.11>
+  <LP_Sub_Swords.choices.1.options.12>mass cure wounds</LP_Sub_Swords.choices.1.options.12>
+  <LP_Sub_Swords.choices.1.options.13>wall of stone</LP_Sub_Swords.choices.1.options.13>
+  <LP_Sub_Swords.choices.1.options.14>beast lord's call</LP_Sub_Swords.choices.1.options.14>
+  <LP_Sub_Swords.choices.1.options.15>mass suggestion</LP_Sub_Swords.choices.1.options.15>
+  <!-- 法师 3 级：火焰爆炸。 | 法师 3 级：短距离瞬移。 | 法师 5 级：分身挡攻击。 | 法师 7 级：给友军加速。 | 法师 7 级：一道直线闪电。 | 牧师 1 级：近身治疗。 | 牧师 1 级：命中、心情。 | 牧师 3 级：解除疾病、中毒。 | 德鲁伊 5 级：护甲。 | 德鲁伊 1 级：缠住一片敌人。 | 术士 7 级：飞到远处。 | 邪术师 7 级：增伤、降低豁免。 | 牧师 10 级：治疗身边所有友军。 | 法师 10 级：立起石墙。 | 德鲁伊 10 级：身边的动物狂暴。 | 术士 10 级：一片敌人恍惚游荡。 -->
+  <LP_Sub_Swords.choices.1.tips.0>Wizard level 3: fire explosion.</LP_Sub_Swords.choices.1.tips.0>
+  <LP_Sub_Swords.choices.1.tips.1>Wizard level 3: short-range teleport.</LP_Sub_Swords.choices.1.tips.1>
+  <LP_Sub_Swords.choices.1.tips.2>Wizard level 5: duplicates block attacks.</LP_Sub_Swords.choices.1.tips.2>
+  <LP_Sub_Swords.choices.1.tips.3>Wizard level 7: hastes an ally.</LP_Sub_Swords.choices.1.tips.3>
+  <LP_Sub_Swords.choices.1.tips.4>Wizard level 7: a line of lightning.</LP_Sub_Swords.choices.1.tips.4>
+  <LP_Sub_Swords.choices.1.tips.5>Cleric level 1: touch healing.</LP_Sub_Swords.choices.1.tips.5>
+  <LP_Sub_Swords.choices.1.tips.6>Cleric level 1: hit chance, mood.</LP_Sub_Swords.choices.1.tips.6>
+  <LP_Sub_Swords.choices.1.tips.7>Cleric level 3: cures disease and poison.</LP_Sub_Swords.choices.1.tips.7>
+  <LP_Sub_Swords.choices.1.tips.8>Druid level 5: armor.</LP_Sub_Swords.choices.1.tips.8>
+  <LP_Sub_Swords.choices.1.tips.9>Druid level 1: entangles a group of enemies.</LP_Sub_Swords.choices.1.tips.9>
+  <LP_Sub_Swords.choices.1.tips.10>Sorcerer level 7: fly far away.</LP_Sub_Swords.choices.1.tips.10>
+  <LP_Sub_Swords.choices.1.tips.11>Warlock level 7: more damage, lower saves.</LP_Sub_Swords.choices.1.tips.11>
+  <LP_Sub_Swords.choices.1.tips.12>Cleric level 10: heals all nearby allies.</LP_Sub_Swords.choices.1.tips.12>
+  <LP_Sub_Swords.choices.1.tips.13>Wizard level 10: raises a stone wall.</LP_Sub_Swords.choices.1.tips.13>
+  <LP_Sub_Swords.choices.1.tips.14>Druid level 10: nearby animals go berserk.</LP_Sub_Swords.choices.1.tips.14>
+  <LP_Sub_Swords.choices.1.tips.15>Sorcerer level 10: a group of enemies wander in a daze.</LP_Sub_Swords.choices.1.tips.15>
+  <!-- 雄辩学院 -->
+  <LP_Sub_Eloquence.label>College of Eloquence</LP_Sub_Eloquence.label>
+  <!-- 用嘴解决问题：招募、交易、外交样样在行，激励会传给下一个人，最后一句话能让整支袭击队撤退。 -->
+  <LP_Sub_Eloquence.description>Solves problems with words: good at recruiting, trading and diplomacy; inspiration passes to the next person, and a final word can make a whole raid retreat.</LP_Sub_Eloquence.description>
+  <!-- 魔法奥秘 -->
+  <LP_Sub_Eloquence.choices.0.label>magical secrets</LP_Sub_Eloquence.choices.0.label>
+  <!-- 火球术 | 迷踪步 | 镜影术 | 急速术 | 闪电束 | 治疗伤口 | 祝福 | 次级复原术 | 树肤术 | 纠缠术 | 龙族之翼 | 咒术 -->
+  <LP_Sub_Eloquence.choices.0.options.0>fireball</LP_Sub_Eloquence.choices.0.options.0>
+  <LP_Sub_Eloquence.choices.0.options.1>misty step</LP_Sub_Eloquence.choices.0.options.1>
+  <LP_Sub_Eloquence.choices.0.options.2>mirror image</LP_Sub_Eloquence.choices.0.options.2>
+  <LP_Sub_Eloquence.choices.0.options.3>haste</LP_Sub_Eloquence.choices.0.options.3>
+  <LP_Sub_Eloquence.choices.0.options.4>lightning bolt</LP_Sub_Eloquence.choices.0.options.4>
+  <LP_Sub_Eloquence.choices.0.options.5>cure wounds</LP_Sub_Eloquence.choices.0.options.5>
+  <LP_Sub_Eloquence.choices.0.options.6>bless</LP_Sub_Eloquence.choices.0.options.6>
+  <LP_Sub_Eloquence.choices.0.options.7>lesser restoration</LP_Sub_Eloquence.choices.0.options.7>
+  <LP_Sub_Eloquence.choices.0.options.8>barkskin</LP_Sub_Eloquence.choices.0.options.8>
+  <LP_Sub_Eloquence.choices.0.options.9>entangle</LP_Sub_Eloquence.choices.0.options.9>
+  <LP_Sub_Eloquence.choices.0.options.10>dragon wings</LP_Sub_Eloquence.choices.0.options.10>
+  <LP_Sub_Eloquence.choices.0.options.11>hex</LP_Sub_Eloquence.choices.0.options.11>
+  <!-- 法师 3 级：火焰爆炸。 | 法师 3 级：短距离瞬移。 | 法师 5 级：分身挡攻击。 | 法师 7 级：给友军加速。 | 法师 7 级：一道直线闪电。 | 牧师 1 级：近身治疗。 | 牧师 1 级：命中、心情。 | 牧师 3 级：解除疾病、中毒。 | 德鲁伊 5 级：护甲。 | 德鲁伊 1 级：缠住一片敌人。 | 术士 7 级：飞到远处。 | 邪术师 7 级：增伤、降低豁免。 -->
+  <LP_Sub_Eloquence.choices.0.tips.0>Wizard level 3: fire explosion.</LP_Sub_Eloquence.choices.0.tips.0>
+  <LP_Sub_Eloquence.choices.0.tips.1>Wizard level 3: short-range teleport.</LP_Sub_Eloquence.choices.0.tips.1>
+  <LP_Sub_Eloquence.choices.0.tips.2>Wizard level 5: duplicates block attacks.</LP_Sub_Eloquence.choices.0.tips.2>
+  <LP_Sub_Eloquence.choices.0.tips.3>Wizard level 7: hastes an ally.</LP_Sub_Eloquence.choices.0.tips.3>
+  <LP_Sub_Eloquence.choices.0.tips.4>Wizard level 7: a line of lightning.</LP_Sub_Eloquence.choices.0.tips.4>
+  <LP_Sub_Eloquence.choices.0.tips.5>Cleric level 1: touch healing.</LP_Sub_Eloquence.choices.0.tips.5>
+  <LP_Sub_Eloquence.choices.0.tips.6>Cleric level 1: hit chance, mood.</LP_Sub_Eloquence.choices.0.tips.6>
+  <LP_Sub_Eloquence.choices.0.tips.7>Cleric level 3: cures disease and poison.</LP_Sub_Eloquence.choices.0.tips.7>
+  <LP_Sub_Eloquence.choices.0.tips.8>Druid level 5: armor.</LP_Sub_Eloquence.choices.0.tips.8>
+  <LP_Sub_Eloquence.choices.0.tips.9>Druid level 1: entangles a group of enemies.</LP_Sub_Eloquence.choices.0.tips.9>
+  <LP_Sub_Eloquence.choices.0.tips.10>Sorcerer level 7: fly far away.</LP_Sub_Eloquence.choices.0.tips.10>
+  <LP_Sub_Eloquence.choices.0.tips.11>Warlock level 7: more damage, lower saves.</LP_Sub_Eloquence.choices.0.tips.11>
+  <!-- 魔法奥秘·二 -->
+  <LP_Sub_Eloquence.choices.1.label>magical secrets II</LP_Sub_Eloquence.choices.1.label>
+  <!-- 火球术 | 迷踪步 | 镜影术 | 急速术 | 闪电束 | 治疗伤口 | 祝福 | 次级复原术 | 树肤术 | 纠缠术 | 龙族之翼 | 咒术 | 群体治疗 | 石墙术 | 兽王号令 | 群体暗示 -->
+  <LP_Sub_Eloquence.choices.1.options.0>fireball</LP_Sub_Eloquence.choices.1.options.0>
+  <LP_Sub_Eloquence.choices.1.options.1>misty step</LP_Sub_Eloquence.choices.1.options.1>
+  <LP_Sub_Eloquence.choices.1.options.2>mirror image</LP_Sub_Eloquence.choices.1.options.2>
+  <LP_Sub_Eloquence.choices.1.options.3>haste</LP_Sub_Eloquence.choices.1.options.3>
+  <LP_Sub_Eloquence.choices.1.options.4>lightning bolt</LP_Sub_Eloquence.choices.1.options.4>
+  <LP_Sub_Eloquence.choices.1.options.5>cure wounds</LP_Sub_Eloquence.choices.1.options.5>
+  <LP_Sub_Eloquence.choices.1.options.6>bless</LP_Sub_Eloquence.choices.1.options.6>
+  <LP_Sub_Eloquence.choices.1.options.7>lesser restoration</LP_Sub_Eloquence.choices.1.options.7>
+  <LP_Sub_Eloquence.choices.1.options.8>barkskin</LP_Sub_Eloquence.choices.1.options.8>
+  <LP_Sub_Eloquence.choices.1.options.9>entangle</LP_Sub_Eloquence.choices.1.options.9>
+  <LP_Sub_Eloquence.choices.1.options.10>dragon wings</LP_Sub_Eloquence.choices.1.options.10>
+  <LP_Sub_Eloquence.choices.1.options.11>hex</LP_Sub_Eloquence.choices.1.options.11>
+  <LP_Sub_Eloquence.choices.1.options.12>mass cure wounds</LP_Sub_Eloquence.choices.1.options.12>
+  <LP_Sub_Eloquence.choices.1.options.13>wall of stone</LP_Sub_Eloquence.choices.1.options.13>
+  <LP_Sub_Eloquence.choices.1.options.14>beast lord's call</LP_Sub_Eloquence.choices.1.options.14>
+  <LP_Sub_Eloquence.choices.1.options.15>mass suggestion</LP_Sub_Eloquence.choices.1.options.15>
+  <!-- 法师 3 级：火焰爆炸。 | 法师 3 级：短距离瞬移。 | 法师 5 级：分身挡攻击。 | 法师 7 级：给友军加速。 | 法师 7 级：一道直线闪电。 | 牧师 1 级：近身治疗。 | 牧师 1 级：命中、心情。 | 牧师 3 级：解除疾病、中毒。 | 德鲁伊 5 级：护甲。 | 德鲁伊 1 级：缠住一片敌人。 | 术士 7 级：飞到远处。 | 邪术师 7 级：增伤、降低豁免。 | 牧师 10 级：治疗身边所有友军。 | 法师 10 级：立起石墙。 | 德鲁伊 10 级：身边的动物狂暴。 | 术士 10 级：一片敌人恍惚游荡。 -->
+  <LP_Sub_Eloquence.choices.1.tips.0>Wizard level 3: fire explosion.</LP_Sub_Eloquence.choices.1.tips.0>
+  <LP_Sub_Eloquence.choices.1.tips.1>Wizard level 3: short-range teleport.</LP_Sub_Eloquence.choices.1.tips.1>
+  <LP_Sub_Eloquence.choices.1.tips.2>Wizard level 5: duplicates block attacks.</LP_Sub_Eloquence.choices.1.tips.2>
+  <LP_Sub_Eloquence.choices.1.tips.3>Wizard level 7: hastes an ally.</LP_Sub_Eloquence.choices.1.tips.3>
+  <LP_Sub_Eloquence.choices.1.tips.4>Wizard level 7: a line of lightning.</LP_Sub_Eloquence.choices.1.tips.4>
+  <LP_Sub_Eloquence.choices.1.tips.5>Cleric level 1: touch healing.</LP_Sub_Eloquence.choices.1.tips.5>
+  <LP_Sub_Eloquence.choices.1.tips.6>Cleric level 1: hit chance, mood.</LP_Sub_Eloquence.choices.1.tips.6>
+  <LP_Sub_Eloquence.choices.1.tips.7>Cleric level 3: cures disease and poison.</LP_Sub_Eloquence.choices.1.tips.7>
+  <LP_Sub_Eloquence.choices.1.tips.8>Druid level 5: armor.</LP_Sub_Eloquence.choices.1.tips.8>
+  <LP_Sub_Eloquence.choices.1.tips.9>Druid level 1: entangles a group of enemies.</LP_Sub_Eloquence.choices.1.tips.9>
+  <LP_Sub_Eloquence.choices.1.tips.10>Sorcerer level 7: fly far away.</LP_Sub_Eloquence.choices.1.tips.10>
+  <LP_Sub_Eloquence.choices.1.tips.11>Warlock level 7: more damage, lower saves.</LP_Sub_Eloquence.choices.1.tips.11>
+  <LP_Sub_Eloquence.choices.1.tips.12>Cleric level 10: heals all nearby allies.</LP_Sub_Eloquence.choices.1.tips.12>
+  <LP_Sub_Eloquence.choices.1.tips.13>Wizard level 10: raises a stone wall.</LP_Sub_Eloquence.choices.1.tips.13>
+  <LP_Sub_Eloquence.choices.1.tips.14>Druid level 10: nearby animals go berserk.</LP_Sub_Eloquence.choices.1.tips.14>
+  <LP_Sub_Eloquence.choices.1.tips.15>Sorcerer level 10: a group of enemies wander in a daze.</LP_Sub_Eloquence.choices.1.tips.15>
+</LanguageData>

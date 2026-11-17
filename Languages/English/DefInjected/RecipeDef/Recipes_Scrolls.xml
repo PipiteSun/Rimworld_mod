@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 抄写识破卷轴 -->
+  <LP_WriteScrollTrueSeeing.label>copy scroll of true seeing</LP_WriteScrollTrueSeeing.label>
+  <!-- 用10份布和10化合燃料抄写一张识破卷轴。需要智识6。 -->
+  <LP_WriteScrollTrueSeeing.description>Copy a scroll of true seeing from 10 cloth and 10 chemfuel. Requires Intellectual 6.</LP_WriteScrollTrueSeeing.description>
+  <!-- 正在抄写识破卷轴。 -->
+  <LP_WriteScrollTrueSeeing.jobString>Copying a scroll of true seeing.</LP_WriteScrollTrueSeeing.jobString>
+  <!-- 抄写防护邪恶卷轴 -->
+  <LP_WriteScrollProtectionEvil.label>copy scroll of protection from evil</LP_WriteScrollProtectionEvil.label>
+  <!-- 用10份布和20白银抄写一张防护邪恶卷轴。需要智识6。 -->
+  <LP_WriteScrollProtectionEvil.description>Copy a scroll of protection from evil from 10 cloth and 20 silver. Requires Intellectual 6.</LP_WriteScrollProtectionEvil.description>
+  <!-- 正在抄写防护邪恶卷轴。 -->
+  <LP_WriteScrollProtectionEvil.jobString>Copying a scroll of protection from evil.</LP_WriteScrollProtectionEvil.jobString>
+  <!-- 抄写火球卷轴 -->
+  <LP_WriteScrollFireball.label>copy scroll of fireball</LP_WriteScrollFireball.label>
+  <!-- 用10份布和20化合燃料抄写一张火球卷轴。需要智识8。 -->
+  <LP_WriteScrollFireball.description>Copy a scroll of fireball from 10 cloth and 20 chemfuel. Requires Intellectual 8.</LP_WriteScrollFireball.description>
+  <!-- 正在抄写火球卷轴。 -->
+  <LP_WriteScrollFireball.jobString>Copying a scroll of fireball.</LP_WriteScrollFireball.jobString>
+  <!-- 抄写传送卷轴 -->
+  <LP_WriteScrollTeleport.label>copy scroll of teleportation</LP_WriteScrollTeleport.label>
+  <!-- 用10份布和3秘银抄写一张传送卷轴。需要研究“高阶卷轴”和智识10。 -->
+  <LP_WriteScrollTeleport.description>Copy a scroll of teleportation from 10 cloth and 3 mithril. Requires the research "advanced scrolls" and Intellectual 10.</LP_WriteScrollTeleport.description>
+  <!-- 正在抄写传送卷轴。 -->
+  <LP_WriteScrollTeleport.jobString>Copying a scroll of teleportation.</LP_WriteScrollTeleport.jobString>
+  <!-- 抄写石化卷轴 -->
+  <LP_WriteScrollFleshToStone.label>copy scroll of flesh to stone</LP_WriteScrollFleshToStone.label>
+  <!-- 用10份布、2精金和10块任意石砖抄写一张石化卷轴。需要研究“高阶卷轴”和智识12。 -->
+  <LP_WriteScrollFleshToStone.description>Copy a scroll of flesh to stone from 10 cloth, 2 adamantine and 10 stone blocks of any kind. Requires the research "advanced scrolls" and Intellectual 12.</LP_WriteScrollFleshToStone.description>
+  <!-- 正在抄写石化卷轴。 -->
+  <LP_WriteScrollFleshToStone.jobString>Copying a scroll of flesh to stone.</LP_WriteScrollFleshToStone.jobString>
+  <!-- 抄写复生卷轴 -->
+  <LP_WriteScrollRevivify.label>copy scroll of revivify</LP_WriteScrollRevivify.label>
+  <!-- 用10份布、1片神迹残片和10金抄写一张复生卷轴。需要研究“高阶卷轴”和智识14。 -->
+  <LP_WriteScrollRevivify.description>Copy a scroll of revivify from 10 cloth, 1 miracle fragment and 10 gold. Requires the research "advanced scrolls" and Intellectual 14.</LP_WriteScrollRevivify.description>
+  <!-- 正在抄写复生卷轴。 -->
+  <LP_WriteScrollRevivify.jobString>Copying a scroll of revivify.</LP_WriteScrollRevivify.jobString>
+</LanguageData>

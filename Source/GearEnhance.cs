@@ -46,18 +46,18 @@ namespace LichPhylactery {
   public static Result Apply(Thing gear,Pawn worker,Thing bench){
    var c=Comp(gear);if(c==null || c.level>=Max)return Result.None;
    int from=c.level;float chance=Chance(from,worker,bench);float roll=TestRoll??Rand.Value;
-   string who=worker?.LabelShort??"工匠";Result result;
+   string who=worker?.LabelShort??"工匠".Loc();Result result;
    if(roll<chance){
     c.level++;ClearStatCache(gear);if(gear.def.useHitPoints)gear.HitPoints=gear.MaxHitPoints;
     if(c.target<=c.level)c.target=0;
     result=Result.Success;
-    if(!TestSuppressed)Messages.Message(who+"把"+gear.LabelNoCount+"强化到了+"+c.level+"。",gear,MessageTypeDefOf.PositiveEvent,false);
+    if(!TestSuppressed)Messages.Message(who+"把".Loc()+gear.LabelNoCount+"强化到了+".Loc()+c.level+"。".Loc(),gear,MessageTypeDefOf.PositiveEvent,false);
    }else if(from>LowMax){
     c.level--;result=Result.Drop;
-    if(!TestSuppressed)Messages.Message(who+"强化失败，"+gear.LabelNoCount+"掉回了+"+c.level+"（成功率"+chance.ToStringPercent()+"）。",gear,MessageTypeDefOf.NegativeEvent,false);
+    if(!TestSuppressed)Messages.Message(who+"强化失败，".Loc()+gear.LabelNoCount+"掉回了+".Loc()+c.level+"（成功率".Loc()+chance.ToStringPercent()+"）。".Loc(),gear,MessageTypeDefOf.NegativeEvent,false);
    }else{
     result=Result.Fail;
-    if(!TestSuppressed)Messages.Message(who+"强化"+gear.LabelNoCount+"失败了，材料没了，装备不受影响（成功率"+chance.ToStringPercent()+"）。",gear,MessageTypeDefOf.NeutralEvent,false);
+    if(!TestSuppressed)Messages.Message(who+"强化".Loc()+gear.LabelNoCount+"失败了，材料没了，装备不受影响（成功率".Loc()+chance.ToStringPercent()+"）。".Loc(),gear,MessageTypeDefOf.NeutralEvent,false);
    }
    ClearStatCache(gear);
    LastResult=result;
@@ -97,13 +97,13 @@ namespace LichPhylactery {
   }
   public static bool Applies(string kind,Thing t)=>kind=="value" || kind=="hp" || (kind=="armor"?t.def.IsApparel:IsWeapon(t));
   public static string Effects(Thing t,int l){
-   if(l<=0)return "无";
+   if(l<=0)return "无".Loc();
    var parts=new List<string>();
-   if(IsWeapon(t)){parts.Add("伤害+"+(DamagePer*l).ToStringPercent());if(t.def.IsRangedWeapon)parts.Add("命中+"+(AccuracyPer*l).ToStringPercent());}
-   if(t.def.IsApparel)parts.Add("护甲×"+(1f+ArmorPer*l).ToString("0.##")+"再+"+(ArmorFlatPer*l).ToStringPercent());
-   if(t.def.useHitPoints)parts.Add("耐久上限+"+(HpPer*l).ToStringPercent());
-   parts.Add("价值+"+(ValuePer*l).ToStringPercent());
-   return string.Join("，",parts);
+   if(IsWeapon(t)){parts.Add("伤害+".Loc()+(DamagePer*l).ToStringPercent());if(t.def.IsRangedWeapon)parts.Add("命中+".Loc()+(AccuracyPer*l).ToStringPercent());}
+   if(t.def.IsApparel)parts.Add("护甲×".Loc()+(1f+ArmorPer*l).ToString("0.##")+"再+".Loc()+(ArmorFlatPer*l).ToStringPercent());
+   if(t.def.useHitPoints)parts.Add("耐久上限+".Loc()+(HpPer*l).ToStringPercent());
+   parts.Add("价值+".Loc()+(ValuePer*l).ToStringPercent());
+   return string.Join("，".Loc(),parts);
   }
 
   public static void Register(){
@@ -125,6 +125,7 @@ namespace LichPhylactery {
    Add("ArmorRating_Sharp","armor");Add("ArmorRating_Blunt","armor");Add("ArmorRating_Heat","armor");
    Add("MarketValue","value");
    Add("MaxHitPoints","hp");
+   SentientWeapon.Register(); // 1.168.0 人格武器（在强化组件之后加，名字包在“+N”外面）
   }
  }
 
@@ -140,12 +141,12 @@ namespace LichPhylactery {
   public override string TransformLabel(string label)=>level>0?"+"+level+" "+label:label;
   public override string CompInspectStringExtra(){
    if(level<=0 && target<=level)return null;
-   string s="附魔强化 +"+level+"："+GearEnhance.Effects(parent,level);
-   if(target>level)s+="\n强化目标：+"+target;
+   string s="附魔强化 +".Loc()+level+"：".Loc()+GearEnhance.Effects(parent,level);
+   if(target>level)s+="\n强化目标：+".Loc()+target;
    return s;
   }
   public override IEnumerable<StatDrawEntry> SpecialDisplayStats(){
-   if(level>0)yield return new StatDrawEntry(StatCategoryDefOf.BasicsImportant,"附魔强化","+"+level,"在附魔台上强化过的等级。"+GearEnhance.Effects(parent,level)+"。",4990);
+   if(level>0)yield return new StatDrawEntry(StatCategoryDefOf.BasicsImportant,"附魔强化".Loc(),"+"+level,"在附魔台上强化过的等级。".Loc()+GearEnhance.Effects(parent,level)+"。".Loc(),4990);
   }
   // 1.114.0 热修：选目标的按钮挪到附魔台的强化窗口（GearEnhanceWindow.cs）；旧档里挂着的目标仍由旧工作单做完。
  }
@@ -156,11 +157,11 @@ namespace LichPhylactery {
   public override string ExplanationPart(StatRequest req){
    var t=req.Thing;if(t==null)return null;int l=GearEnhance.Level(t);if(l<=0 || !GearEnhance.Applies(kind,t))return null;
    switch(kind){
-    case "dmg":return "附魔强化 +"+l+"：×"+(1f+GearEnhance.DamagePer*l).ToString("0.##");
-    case "acc":return "附魔强化 +"+l+"：+"+(GearEnhance.AccuracyPer*l).ToStringPercent()+"（最高99%）";
-    case "armor":return "附魔强化 +"+l+"：×"+(1f+GearEnhance.ArmorPer*l).ToString("0.##")+"，+"+(GearEnhance.ArmorFlatPer*l).ToStringPercent();
-    case "value":return "附魔强化 +"+l+"：×"+(1f+GearEnhance.ValuePer*l).ToString("0.##");
-    case "hp":return "附魔强化 +"+l+"：×"+(1f+GearEnhance.HpPer*l).ToString("0.##");
+    case "dmg":return "附魔强化 +".Loc()+l+"：×".Loc()+(1f+GearEnhance.DamagePer*l).ToString("0.##");
+    case "acc":return "附魔强化 +".Loc()+l+"：+".Loc()+(GearEnhance.AccuracyPer*l).ToStringPercent()+"（最高99%）".Loc();
+    case "armor":return "附魔强化 +".Loc()+l+"：×".Loc()+(1f+GearEnhance.ArmorPer*l).ToString("0.##")+"，+".Loc()+(GearEnhance.ArmorFlatPer*l).ToStringPercent();
+    case "value":return "附魔强化 +".Loc()+l+"：×".Loc()+(1f+GearEnhance.ValuePer*l).ToString("0.##");
+    case "hp":return "附魔强化 +".Loc()+l+"：×".Loc()+(1f+GearEnhance.HpPer*l).ToString("0.##");
    }
    return null;
   }

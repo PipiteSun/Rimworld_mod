@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（CombatGifts.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>巨力</zh><en>Great Strength</en></s>
+  <s><zh>坚韧之体</zh><en>Tough Body</en></s>
+  <s><zh>博闻强识</zh><en>erudition</en></s>
+  <s><zh>鹰眼</zh><en>eyes of the eagle</en></s>
+  <s><zh>王者气度</zh><en>Kingly Bearing</en></s>
+  <s><zh>连斩</zh><en>Chain Strike</en></s>
+  <s><zh>狂暴之血</zh><en>Berserker Blood</en></s>
+  <s><zh>神射</zh><en>Sharpshooter</en></s>
+  <s><zh>致命一击</zh><en>deadly strike</en></s>
+  <s><zh>铁壁</zh><en>Iron Wall</en></s>
+  <s><zh>再生之体</zh><en>Regenerating Body</en></s>
+  <s><zh>法力奔涌</zh><en>Mana Surge</en></s>
+  <s><zh>入门</zh><en>novice</en></s>
+  <s><zh>精通</zh><en>adept</en></s>
+  <s><zh>化境</zh><en>transcendent</en></s>
+  <s><zh>狂暴！</zh><en>Berserk!</en></s>
+  <s><zh>长回了</zh><en>regrew </en></s>
+  <s><zh>的再生之体长回了</zh><en>'s regenerating body regrew </en></s>
+  <s><zh>致命一击！</zh><en>Critical hit!</en></s>
+  <s><zh>[DND边缘大陆] 连斩追加失败：</zh><en>[DND Rimlands] Chain strike follow-up failed: </en></s>
+  <s><zh>连斩！</zh><en>Chain strike!</en></s>
+  <s><zh>战斗觉醒：</zh><en>Combat awakening: </en></s>
+  <s><zh>，在生死之间领悟了武艺：获得武艺天赋「</zh><en>, between life and death, grasped the martial arts: gained the combat gift "</en></s>
+  <s><zh>」。\n\n</zh><en>".\n\n</en></s>
+  <s><zh> 个人形敌人</zh><en> humanlike enemies</en></s>
+  <s><zh>无法获得武艺天赋</zh><en>can't gain combat gifts</en></s>
+  <s><zh>已经化境，武艺天赋也满了</zh><en>already transcendent, and combat gifts are full too</en></s>
+  <s><zh>“谁想得到真正的武艺？”</zh><en>"Who wants true martial skill?"</en></s>
+  <s><zh>（化境）+ </zh><en> (transcendent) + </en></s>
+  <s><zh>获得一个随机武艺天赋</zh><en>gain a random combat gift</en></s>
+  <s><zh>实现了愿望：</zh><en>Wish granted: </en></s>
+  <s><zh>的武艺天赋「</zh><en>'s combat gift "</en></s>
+  <s><zh>再想想</zh><en>Think again</en></s>
+  <s><zh>巨灵的愿望</zh><en>genie's wish</en></s>
+  <s><zh>这片大陆上的战士们开始领悟真正的武艺（1.66.0）。你的殖民者里有人觉醒了：\n\n</zh><en>The warriors of this continent are beginning to grasp true martial arts (1.66.0). Someone among your colonists has awakened:\n\n</en></s>
+  <s><zh>\n\n武艺天赋随冒险者成长：10 级精通（数值 ×1.5），成为传奇冒险者后化境（×2）。</zh><en>\n\nCombat gifts grow with the adventurer: mastery at level 10 (values ×1.5), transcendence after becoming a legendary adventurer (×2).</en></s>
+  <s><zh>力量 +</zh><en>Strength +</en></s>
+  <s><zh>（上限 +</zh><en> (cap +</en></s>
+  <s><zh>）；负重 </zh><en>); carrying capacity </en></s>
+  <s><zh>敏捷 +</zh><en>Dexterity +</en></s>
+  <s><zh>）；移动速度 +</zh><en>); move speed +</en></s>
+  <s><zh>体质 +</zh><en>Constitution +</en></s>
+  <s><zh>）；受到的伤害 </zh><en>); damage taken </en></s>
+  <s><zh>智力 +</zh><en>Intelligence +</en></s>
+  <s><zh>）；研究速度 </zh><en>); research speed </en></s>
+  <s><zh>感知 +</zh><en>Wisdom +</en></s>
+  <s><zh>）；远程瞄准时间 </zh><en>); ranged aiming time </en></s>
+  <s><zh>魅力 +</zh><en>Charisma +</en></s>
+  <s><zh>）；社交影响 </zh><en>); social impact </en></s>
+  <s><zh>近战冷却 </zh><en>Melee cooldown </en></s>
+  <s><zh>；近战命中后成功率 </zh><en>; after a melee hit, </en></s>
+  <s><zh>% 立刻追加一击</zh><en>% chance to strike again at once</en></s>
+  <s><zh>健康低于 60% 时：近战伤害 </zh><en>Below 60% health: melee damage </en></s>
+  <s><zh>、近战冷却 </zh><en>, melee cooldown </en></s>
+  <s><zh>、疼痛 ×</zh><en>, pain ×</en></s>
+  <s><zh>远程命中 </zh><en>Ranged hit </en></s>
+  <s><zh>；远程伤害 </zh><en>; ranged damage </en></s>
+  <s><zh>任何攻击成功率 </zh><en>Any attack has a </en></s>
+  <s><zh>% 暴击，伤害 ×</zh><en>% chance to crit, damage ×</en></s>
+  <s><zh>；护甲穿透 </zh><en>; armor penetration </en></s>
+  <s><zh>利器 / 钝器护甲 </zh><en>Sharp / blunt armor </en></s>
+  <s><zh>（绝对值）；不会踉跄</zh><en> (absolute); never staggered</en></s>
+  <s><zh>伤口愈合 ×</zh><en>Wound healing ×</en></s>
+  <s><zh>；每 </zh><en>; every </en></s>
+  <s><zh> 天长回一个缺失的非要害部位</zh><en> days regrow one missing non-vital part</en></s>
+  <s><zh>法杖 / 灵能 / 神术伤害 </zh><en>Staff / psycast / divine damage </en></s>
+  <s><zh>心灵熵上限 +</zh><en>Neural heat limit +</en></s>
+  <s><zh>当前阶段：</zh><en>Current stage: </en></s>
+  <s><zh>（巨灵许愿 +</zh><en> (genie wish +</en></s>
+  <s><zh> 阶）</zh><en> stages)</en></s>
+  <s><zh>现在：</zh><en>Now: </en></s>
+  <s><zh>入门（获得时）：</zh><en>Novice (when gained): </en></s>
+  <s><zh>精通（冒险者 </zh><en>Mastery (adventurer </en></s>
+  <s><zh> 级，数值 ×1.5）：</zh><en> level, values ×1.5): </en></s>
+  <s><zh>化境（传奇冒险者，数值 ×2）：</zh><en>Transcendent (legendary adventurer, values ×2): </en></s>
+  <s><zh>狂暴中</zh><en>raging</en></s>
+  <s><zh>未触发</zh><en>not triggered</en></s>
+  <s><zh>\n\n正在长回缺失部位：</zh><en>\n\nRegrowing missing part: </en></s>
+  <s><zh> 天后</zh><en> days</en></s>
+  <s><zh>\n\n（没有冒险者等级：属性加值和附带效果不生效，战技的命中效果照常）</zh><en>\n\n(No adventurer level: ability bonuses and side effects don't apply; maneuver hit effects work as usual)</en></s>
+  <s><zh>[DND边缘大陆] 武艺天赋补掷出错：</zh><en>[DND Rimlands] Combat gift catch-up roll error: </en></s>
+  <s><zh>（1.66.0）稀有（蓝色）特性，和强力特性分开计数、可以同时拥有；得到一个之后，每次按“额外武艺天赋”的成功率再得一个不同的，直到失败或达到上限。六个属性类（巨力、迅捷、坚韧之体、博闻强识、鹰眼、王者气度：对应属性 +2，上限同样 +2，再加一项附带效果）和七个战技类（连斩、狂暴之血、神射、致命一击、铁壁、再生之体、法力奔涌）。\n随冒险者成长：10 级精通（数值 ×1.5，属性 +3），传奇冒险者化境（×2，属性 +4）。\n开局殖民者 35%；首领、冠军、传奇怪 50%；殖民者累计击杀 100 / 300 个人形时、完成 DND 里程碑时各有成功率 25% 战斗觉醒（已有的也能再觉醒一个，直到上限）；巨灵“让我更强 · 武艺”。老存档读档时给现有殖民者补一次（35%）。\n关闭后不再生成，已有的保留。</zh><en>(1.66.0) Rare (blue) traits, counted separately from power traits and can be held together; after gaining one, each further roll at the "extra combat gift" success chance gives another different one, until a failure or the cap. Six ability gifts (Great Strength, Swiftness, Tough Body, Lore Mastery, Eagle Eye, Kingly Bearing: matching ability +2, cap +2 too, plus a side effect) and seven technique gifts (Chain Strike, Berserker Blood, Sharpshooter, Critical Strike, Iron Wall, Regenerating Body, Mana Surge).\nThey grow with the adventurer: mastery at level 10 (values ×1.5, ability +3), transcendence as a legendary adventurer (×2, ability +4).\nStarting colonists 35%; bosses, champions and legendary monsters 50%; when a colonist's total humanlike kills reach 100 / 300 and when completing a DND milestone, 25% chance each for a combat awakening (those who already have one can awaken another, up to the cap); genie "make me stronger · martial". Loading an old save gives existing colonists one catch-up roll (35%).\nWhen off, no new ones generate; existing ones are kept.</en></s>
+  <s><zh>敌人也会拥有武艺天赋</zh><en>Enemies can have combat gifts too</en></s>
+  <s><zh>关闭后敌对派系的人不再随机带武艺天赋。敌人每个武艺天赋战力 +6%（精通 +9%，化境 +12%），袭击会相应少来一些人。</zh><en>When off, hostile faction members no longer randomly carry combat gifts. Each enemy combat gift adds +6% combat power (mastery +9%, transcendent +12%), and raids send correspondingly fewer people.</en></s>
+  <s><zh>普通人形获得武艺天赋：</zh><en>Combat gift chance for ordinary humanlikes: </en></s>
+  <s><zh>%（传奇种族减半）</zh><en>% (halved for legendary races)</en></s>
+  <s><zh>每人最多武艺天赋：</zh><en>Max combat gifts per person: </en></s>
+  <s><zh>额外武艺天赋成功率：</zh><en>Extra combat gift success chance: </en></s>
+  <s><zh>%（得到一个之后，每次再得一个的几率）</zh><en>% (chance of each further one after gaining one)</en></s>
+</LPStrings>

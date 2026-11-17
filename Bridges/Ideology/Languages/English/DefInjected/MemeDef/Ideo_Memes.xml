@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 晨主之光 -->
+  <LP_Meme_Lathander.label>light of the Morninglord</LP_Meme_Lathander.label>
+  <!-- 洛山达是黎明、新生与复苏之神。每一个早晨都是他的恩赐，每一具不死之躯都是对他的冒犯。文化的守护神固定为洛山达。\n\n被动：清晨5～8点全局工作速度+5%；殖民地每有一个死灵造物，信徒心情-1（最多-5）。 -->
+  <LP_Meme_Lathander.description>Lathander is the god of dawn, rebirth and renewal. Every morning is his gift, and every undead body an affront to him. The culture's patron deity is fixed to Lathander.\n\nPassive: global work speed +5% from 5 to 8 in the morning; believers get mood -1 for each necromantic construct in the colony (up to -5).</LP_Meme_Lathander.description>
+  <!-- memeAdjective->晨曦 | memeAdjective->黎明 | memeHyphenPrefix->晨 | memeConcept->黎明 | memeConcept->新生 | memeLeaderNoun->晨祭司 | memeLeaderAdjective->晨光 | memeMoralist->晨颂者 -->
+  <LP_Meme_Lathander.generalRules.rulesStrings>
+    <li>memeAdjective-&gt;dawnlit</li>
+    <li>memeAdjective-&gt;dawn</li>
+    <li>memeHyphenPrefix-&gt;Auro</li>
+    <li>memeConcept-&gt;dawn</li>
+    <li>memeConcept-&gt;rebirth</li>
+    <li>memeLeaderNoun-&gt;dawn priest</li>
+    <li>memeLeaderAdjective-&gt;morning-bright</li>
+    <li>memeMoralist-&gt;dawn singer</li>
+  </LP_Meme_Lathander.generalRules.rulesStrings>
+  <!-- 晨主 -->
+  <LP_Meme_Lathander.modExtensions.0.deityTitle>the Morninglord</LP_Meme_Lathander.modExtensions.0.deityTitle>
+  <!-- 正义之秤 -->
+  <LP_Meme_Tyr.label>scales of justice</LP_Meme_Tyr.label>
+  <!-- 提尔是蒙眼的正义之神，用一只断手托起天平。罪人必受审判，无辜者必得庇护。文化的守护神固定为提尔。\n\n被动：审判仪式和释放囚犯给提尔的神眷再×2。 -->
+  <LP_Meme_Tyr.description>Tyr is the blindfolded god of justice, holding up the scales with a severed hand. The guilty must be judged and the innocent protected. The culture's patron deity is fixed to Tyr.\n\nPassive: divine favor to Tyr from judgment rituals and releasing prisoners ×2 more.</LP_Meme_Tyr.description>
+  <!-- memeAdjective->公正 | memeAdjective->审判 | memeHyphenPrefix->秤 | memeConcept->正义 | memeConcept->律法 | memeLeaderNoun->大法官 | memeLeaderAdjective->公正 | memeMoralist->审判者 -->
+  <LP_Meme_Tyr.generalRules.rulesStrings>
+    <li>memeAdjective-&gt;just</li>
+    <li>memeAdjective-&gt;judging</li>
+    <li>memeHyphenPrefix-&gt;Justo</li>
+    <li>memeConcept-&gt;justice</li>
+    <li>memeConcept-&gt;law</li>
+    <li>memeLeaderNoun-&gt;high justice</li>
+    <li>memeLeaderAdjective-&gt;just</li>
+    <li>memeMoralist-&gt;judge</li>
+  </LP_Meme_Tyr.generalRules.rulesStrings>
+  <!-- 蒙眼的审判者 -->
+  <LP_Meme_Tyr.modExtensions.0.deityTitle>the blindfolded judge</LP_Meme_Tyr.modExtensions.0.deityTitle>
+  <!-- 魔网之女 -->
+  <LP_Meme_Mystra.label>lady of the Weave</LP_Meme_Mystra.label>
+  <!-- 密斯特拉是魔法女神，魔网的守护者。每一道法术都从她的织网上取走一根丝线。文化的守护神固定为密斯特拉。\n\n被动：身上带着魔法物品的信徒心情+2（魔网的礼物）。 -->
+  <LP_Meme_Mystra.description>Mystra is the goddess of magic, guardian of the Weave. Every spell draws a thread from her web. The culture's patron deity is fixed to Mystra.\n\nPassive: believers carrying magic items get mood +2 (gift of the Weave).</LP_Meme_Mystra.description>
+  <!-- memeAdjective->魔网 | memeAdjective->星辉 | memeHyphenPrefix->网 | memeConcept->魔网 | memeConcept->奥秘 | memeLeaderNoun->织网者 | memeLeaderAdjective->星辉 | memeMoralist->守网人 -->
+  <LP_Meme_Mystra.generalRules.rulesStrings>
+    <li>memeAdjective-&gt;Weave</li>
+    <li>memeAdjective-&gt;starlit</li>
+    <li>memeHyphenPrefix-&gt;Weave</li>
+    <li>memeConcept-&gt;the Weave</li>
+    <li>memeConcept-&gt;mysteries</li>
+    <li>memeLeaderNoun-&gt;weaver</li>
+    <li>memeLeaderAdjective-&gt;starlit</li>
+    <li>memeMoralist-&gt;Weave warden</li>
+  </LP_Meme_Mystra.generalRules.rulesStrings>
+  <!-- 魔网之母 -->
+  <LP_Meme_Mystra.modExtensions.0.deityTitle>mother of the Weave</LP_Meme_Mystra.modExtensions.0.deityTitle>
+  <!-- 亡者之判 -->
+  <LP_Meme_Kelemvor.label>judgment of the dead</LP_Meme_Kelemvor.label>
+  <!-- 凯兰沃是死亡之神，他公正地审判每一个亡魂。死亡不可怕，可怕的是拒绝死亡。文化的守护神固定为凯兰沃。\n\n被动：入葬给凯兰沃的神眷再×2；看到尸体不难受（必带的「尸体：不在乎」）。 -->
+  <LP_Meme_Kelemvor.description>Kelemvor is the god of death, justly judging every soul. Death is not frightening; refusing death is. The culture's patron deity is fixed to Kelemvor.\n\nPassive: divine favor to Kelemvor from burials ×2 more; not bothered by seeing corpses (the mandatory "corpses: don't care").</LP_Meme_Kelemvor.description>
+  <!-- memeAdjective->灰袍 | memeAdjective->安息 | memeHyphenPrefix->冥 | memeConcept->安息 | memeConcept->审判 | memeLeaderNoun->守墓人 | memeLeaderAdjective->灰袍 | memeMoralist->送灵人 -->
+  <LP_Meme_Kelemvor.generalRules.rulesStrings>
+    <li>memeAdjective-&gt;grey-robed</li>
+    <li>memeAdjective-&gt;restful</li>
+    <li>memeHyphenPrefix-&gt;Necro</li>
+    <li>memeConcept-&gt;rest</li>
+    <li>memeConcept-&gt;judgment</li>
+    <li>memeLeaderNoun-&gt;gravekeeper</li>
+    <li>memeLeaderAdjective-&gt;grey-robed</li>
+    <li>memeMoralist-&gt;soul guide</li>
+  </LP_Meme_Kelemvor.generalRules.rulesStrings>
+  <!-- 亡者之主 -->
+  <LP_Meme_Kelemvor.modExtensions.0.deityTitle>lord of the dead</LP_Meme_Kelemvor.modExtensions.0.deityTitle>
+  <!-- 兽王之猎 -->
+  <LP_Meme_Malar.label>the Beastlord's hunt</LP_Meme_Malar.label>
+  <!-- 马拉尔是野兽与狩猎之神。强者猎杀，弱者成为猎物。文化的守护神固定为马拉尔。\n\n被动：殖民地每有一只驯服的狼、熊或冬狼，信徒心情+1（最多+3）。 -->
+  <LP_Meme_Malar.description>Malar is the god of beasts and the hunt. The strong hunt, and the weak become prey. The culture's patron deity is fixed to Malar.\n\nPassive: believers get mood +1 for each tamed wolf, bear or winter wolf in the colony (up to +3).</LP_Meme_Malar.description>
+  <!-- memeAdjective->兽血 | memeAdjective->狩猎 | memeHyphenPrefix->兽 | memeConcept->狩猎 | memeConcept->兽性 | memeLeaderNoun->猎王 | memeLeaderAdjective->嗜血 | memeMoralist->追猎者 -->
+  <LP_Meme_Malar.generalRules.rulesStrings>
+    <li>memeAdjective-&gt;beast-blooded</li>
+    <li>memeAdjective-&gt;hunting</li>
+    <li>memeHyphenPrefix-&gt;Thero</li>
+    <li>memeConcept-&gt;the hunt</li>
+    <li>memeConcept-&gt;bestiality</li>
+    <li>memeLeaderNoun-&gt;hunt king</li>
+    <li>memeLeaderAdjective-&gt;bloodthirsty</li>
+    <li>memeMoralist-&gt;tracker</li>
+  </LP_Meme_Malar.generalRules.rulesStrings>
+  <!-- 兽王 -->
+  <LP_Meme_Malar.modExtensions.0.deityTitle>the Beastlord</LP_Meme_Malar.modExtensions.0.deityTitle>
+  <!-- 风暴之怒 -->
+  <LP_Meme_Talos.label>storm's fury</LP_Meme_Talos.label>
+  <!-- 塔洛斯是风暴与毁灭之神。雷霆是他的声音，野火是他的足迹。文化的守护神固定为塔洛斯。\n\n被动：雷暴天气里信徒心情+4（风暴之子）。 -->
+  <LP_Meme_Talos.description>Talos is the god of storms and destruction. Thunder is his voice, wildfire his footprint. The culture's patron deity is fixed to Talos.\n\nPassive: believers get mood +4 in thunderstorms (child of the storm).</LP_Meme_Talos.description>
+  <!-- memeAdjective->风暴 | memeAdjective->雷霆 | memeHyphenPrefix->雷 | memeConcept->风暴 | memeConcept->毁灭 | memeLeaderNoun->唤雷者 | memeLeaderAdjective->狂暴 | memeMoralist->风暴使者 -->
+  <LP_Meme_Talos.generalRules.rulesStrings>
+    <li>memeAdjective-&gt;storm</li>
+    <li>memeAdjective-&gt;thundering</li>
+    <li>memeHyphenPrefix-&gt;Fulmo</li>
+    <li>memeConcept-&gt;the storm</li>
+    <li>memeConcept-&gt;destruction</li>
+    <li>memeLeaderNoun-&gt;thunder-caller</li>
+    <li>memeLeaderAdjective-&gt;raging</li>
+    <li>memeMoralist-&gt;storm herald</li>
+  </LP_Meme_Talos.generalRules.rulesStrings>
+  <!-- 风暴之主 -->
+  <LP_Meme_Talos.modExtensions.0.deityTitle>lord of storms</LP_Meme_Talos.modExtensions.0.deityTitle>
+  <!-- 黑暗之主 -->
+  <LP_Meme_Bane.label>lord of darkness</LP_Meme_Bane.label>
+  <!-- 班恩是暴政之神，用黑手统治一切。秩序来自恐惧，恐惧来自力量。文化的守护神固定为班恩。\n\n被动：本文化的奴隶主人手下，奴隶压制下降速度×0.7。 -->
+  <LP_Meme_Bane.description>Bane is the god of tyranny, ruling all with the Black Hand. Order comes from fear, and fear comes from power. The culture's patron deity is fixed to Bane.\n\nPassive: under slave masters of this culture, slave suppression falls ×0.7 as fast.</LP_Meme_Bane.description>
+  <!-- memeAdjective->黑手 | memeAdjective->铁腕 | memeHyphenPrefix->暴 | memeConcept->暴政 | memeConcept->统治 | memeLeaderNoun->暴君 | memeLeaderAdjective->铁腕 | memeMoralist->黑手执事 -->
+  <LP_Meme_Bane.generalRules.rulesStrings>
+    <li>memeAdjective-&gt;Black-Handed</li>
+    <li>memeAdjective-&gt;iron-fisted</li>
+    <li>memeHyphenPrefix-&gt;Tyranno</li>
+    <li>memeConcept-&gt;tyranny</li>
+    <li>memeConcept-&gt;domination</li>
+    <li>memeLeaderNoun-&gt;tyrant</li>
+    <li>memeLeaderAdjective-&gt;iron-fisted</li>
+    <li>memeMoralist-&gt;Black Hand deacon</li>
+  </LP_Meme_Bane.generalRules.rulesStrings>
+  <!-- 黑手之主 -->
+  <LP_Meme_Bane.modExtensions.0.deityTitle>lord of the Black Hand</LP_Meme_Bane.modExtensions.0.deityTitle>
+  <!-- 夜之女士 -->
+  <LP_Meme_Shar.label>Lady of the Night</LP_Meme_Shar.label>
+  <!-- 莎尔是黑暗与遗忘之神，夜之女士。她承诺抹去一切痛苦——连同一切记忆。文化的守护神固定为莎尔。\n\n被动：夜里（22点～5点）全局工作速度+8%。 -->
+  <LP_Meme_Shar.description>Shar is the goddess of darkness and loss, the Lady of the Night. She promises to erase all pain, along with all memory. The culture's patron deity is fixed to Shar.\n\nPassive: global work speed +8% at night (22 to 5).</LP_Meme_Shar.description>
+  <!-- memeAdjective->暗夜 | memeAdjective->遗忘 | memeHyphenPrefix->夜 | memeConcept->黑暗 | memeConcept->遗忘 | memeLeaderNoun->暗月祭司 | memeLeaderAdjective->幽暗 | memeMoralist->遗忘者 -->
+  <LP_Meme_Shar.generalRules.rulesStrings>
+    <li>memeAdjective-&gt;nightbound</li>
+    <li>memeAdjective-&gt;forgetting</li>
+    <li>memeHyphenPrefix-&gt;Nocto</li>
+    <li>memeConcept-&gt;darkness</li>
+    <li>memeConcept-&gt;oblivion</li>
+    <li>memeLeaderNoun-&gt;dark moon priest</li>
+    <li>memeLeaderAdjective-&gt;shadowed</li>
+    <li>memeMoralist-&gt;forgetter</li>
+  </LP_Meme_Shar.generalRules.rulesStrings>
+  <!-- 夜之女士 -->
+  <LP_Meme_Shar.modExtensions.0.deityTitle>Lady of the Night</LP_Meme_Shar.modExtensions.0.deityTitle>
+  <!-- 熔炉巨人 -->
+  <LP_Meme_Surtr.label>forge giants</LP_Meme_Surtr.label>
+  <!-- 苏尔特是火巨人之王，世界熔炉的主人。巨人生来高贵，铁与火是他们的语言。文化的守护神固定为苏尔特。\n\n被动：锻造速度+10%。 -->
+  <LP_Meme_Surtr.description>Surtur is the king of fire giants and master of the world forge. Giants are born noble, and iron and fire are their language. The culture's patron deity is fixed to Surtur.\n\nPassive: smithing speed +10%.</LP_Meme_Surtr.description>
+  <!-- memeAdjective->熔火 | memeAdjective->巨人 | memeHyphenPrefix->炉 | memeConcept->熔炉 | memeConcept->位阶 | memeLeaderNoun->炉王 | memeLeaderAdjective->熔火 | memeMoralist->守炉人 -->
+  <LP_Meme_Surtr.generalRules.rulesStrings>
+    <li>memeAdjective-&gt;molten</li>
+    <li>memeAdjective-&gt;giant</li>
+    <li>memeHyphenPrefix-&gt;Pyro</li>
+    <li>memeConcept-&gt;the forge</li>
+    <li>memeConcept-&gt;the ordning</li>
+    <li>memeLeaderNoun-&gt;forge king</li>
+    <li>memeLeaderAdjective-&gt;molten</li>
+    <li>memeMoralist-&gt;forge keeper</li>
+  </LP_Meme_Surtr.generalRules.rulesStrings>
+  <!-- 熔炉之王 -->
+  <LP_Meme_Surtr.modExtensions.0.deityTitle>king of the forge</LP_Meme_Surtr.modExtensions.0.deityTitle>
+  <!-- 主脑合一 -->
+  <LP_Meme_Ilsvi.label>oneness with the master brain</LP_Meme_Ilsvi.label>
+  <!-- 伊尔斯维是夺心魔之神。所有心智终将归于群脑。 -->
+  <LP_Meme_Ilsvi.description>Ilsensine is the god of the mind flayers. All minds will eventually return to the hivemind.</LP_Meme_Ilsvi.description>
+  <!-- memeAdjective->群脑 | memeHyphenPrefix->脑 | memeConcept->合一 | memeLeaderNoun->主脑之声 | memeLeaderAdjective->低语 | memeMoralist->低语者 -->
+  <LP_Meme_Ilsvi.generalRules.rulesStrings>
+    <li>memeAdjective-&gt;hivemind</li>
+    <li>memeHyphenPrefix-&gt;Cerebro</li>
+    <li>memeConcept-&gt;oneness</li>
+    <li>memeLeaderNoun-&gt;voice of the master brain</li>
+    <li>memeLeaderAdjective-&gt;whispering</li>
+    <li>memeMoralist-&gt;whisperer</li>
+  </LP_Meme_Ilsvi.generalRules.rulesStrings>
+  <!-- 群脑之神 -->
+  <LP_Meme_Ilsvi.modExtensions.0.deityTitle>god of the hivemind</LP_Meme_Ilsvi.modExtensions.0.deityTitle>
+  <!-- 巫妖女王 -->
+  <LP_Meme_Vlaakith.label>the lich-queen</LP_Meme_Vlaakith.label>
+  <!-- 维拉基斯是吉斯洋基人的巫妖女王，她要求子民永恒的效忠。 -->
+  <LP_Meme_Vlaakith.description>Vlaakith is the lich-queen of the githyanki, demanding eternal loyalty from her people.</LP_Meme_Vlaakith.description>
+  <!-- memeAdjective->不朽 | memeHyphenPrefix->冠 | memeConcept->效忠 | memeLeaderNoun->女王之剑 | memeLeaderAdjective->不朽 | memeMoralist->女王之声 -->
+  <LP_Meme_Vlaakith.generalRules.rulesStrings>
+    <li>memeAdjective-&gt;undying</li>
+    <li>memeHyphenPrefix-&gt;Crown</li>
+    <li>memeConcept-&gt;loyalty</li>
+    <li>memeLeaderNoun-&gt;sword of the queen</li>
+    <li>memeLeaderAdjective-&gt;undying</li>
+    <li>memeMoralist-&gt;voice of the queen</li>
+  </LP_Meme_Vlaakith.generalRules.rulesStrings>
+  <!-- 巫妖女王 -->
+  <LP_Meme_Vlaakith.modExtensions.0.deityTitle>the lich-queen</LP_Meme_Vlaakith.modExtensions.0.deityTitle>
+  <!-- 众神殿 -->
+  <LP_Meme_Pantheon.label>pantheon</LP_Meme_Pantheon.label>
+  <!-- 众神各司其职，凡人可以向任何一位祈求。可以和一位主神共存。\n\n被动：祈祷神眷×1.25；更换守护神的冷却减半（没有主神时）；圣坛上可以为任何一位可信奉的神举办庆典（每神每年一次，每年最多4场）。 -->
+  <LP_Meme_Pantheon.description>Each god has its own domain, and mortals may pray to any of them. Can coexist with one main god.\n\nPassive: prayer divine favor ×1.25; changing patron deity cooldown halved (with no main god); the altar can hold festivals for any worshippable god (once per god per year, up to 4 per year).</LP_Meme_Pantheon.description>
+  <!-- memeAdjective->众神 | memeAdjective->万神 | memeHyphenPrefix->神 | memeConcept->众神 | memeLeaderNoun->众神之仆 | memeLeaderAdjective->神圣 | memeMoralist->司祭 -->
+  <LP_Meme_Pantheon.generalRules.rulesStrings>
+    <li>memeAdjective-&gt;pantheon</li>
+    <li>memeAdjective-&gt;all-gods</li>
+    <li>memeHyphenPrefix-&gt;Theo</li>
+    <li>memeConcept-&gt;the gods</li>
+    <li>memeLeaderNoun-&gt;servant of the gods</li>
+    <li>memeLeaderAdjective-&gt;holy</li>
+    <li>memeMoralist-&gt;officiant</li>
+  </LP_Meme_Pantheon.generalRules.rulesStrings>
+  <!-- 不跪之人 -->
+  <LP_Meme_Defiant.label>the unkneeling</LP_Meme_Defiant.label>
+  <!-- 神明不过是更强大的存在，凡人不欠他们什么。\n\n被动：受到的神术效果×0.75（敌我都算，和无神者的×0.5取较小值）；心智抗性+5%；殖民地有圣坛时心情-2（讨厌的神龛）。 -->
+  <LP_Meme_Defiant.description>Gods are just more powerful beings; mortals owe them nothing.\n\nPassive: divine magic received ×0.75 (from friend or foe, takes the smaller of this and the godless ×0.5); mind resistance +5%; mood -2 when the colony has an altar (hated shrine).</LP_Meme_Defiant.description>
+  <!-- memeAdjective->不跪 | memeAdjective->凡人 | memeHyphenPrefix->凡 | memeConcept->自主 | memeLeaderNoun->首领 | memeLeaderAdjective->倔强 | memeMoralist->说理人 -->
+  <LP_Meme_Defiant.generalRules.rulesStrings>
+    <li>memeAdjective-&gt;unkneeling</li>
+    <li>memeAdjective-&gt;mortal</li>
+    <li>memeHyphenPrefix-&gt;Mortal</li>
+    <li>memeConcept-&gt;self-rule</li>
+    <li>memeLeaderNoun-&gt;chief</li>
+    <li>memeLeaderAdjective-&gt;stubborn</li>
+    <li>memeMoralist-&gt;reasoner</li>
+  </LP_Meme_Defiant.generalRules.rulesStrings>
+  <!-- 魔网至上 -->
+  <LP_Meme_Weave.label>supremacy of the Weave</LP_Meme_Weave.label>
+  <!-- 魔法是世界最高的真理，掌握魔网的人理应站在顶端。\n\n被动：耐瑟卷轴研读经验×1.15；模组施法能力（神术、卷轴、巫妖法术）冷却×0.95。 -->
+  <LP_Meme_Weave.description>Magic is the highest truth of the world; those who master the Weave belong at the top.\n\nPassive: Netherese scroll study XP ×1.15; mod casting abilities (divine magic, scrolls, lich spells) cooldown ×0.95.</LP_Meme_Weave.description>
+  <!-- memeAdjective->奥术 | memeAdjective->织法 | memeHyphenPrefix->法 | memeConcept->魔网 | memeLeaderNoun->大法师 | memeLeaderAdjective->奥术 | memeMoralist->讲法者 -->
+  <LP_Meme_Weave.generalRules.rulesStrings>
+    <li>memeAdjective-&gt;arcane</li>
+    <li>memeAdjective-&gt;spellweaving</li>
+    <li>memeHyphenPrefix-&gt;Arcano</li>
+    <li>memeConcept-&gt;the Weave</li>
+    <li>memeLeaderNoun-&gt;archmage</li>
+    <li>memeLeaderAdjective-&gt;arcane</li>
+    <li>memeMoralist-&gt;lecturer</li>
+  </LP_Meme_Weave.generalRules.rulesStrings>
+  <!-- 永夜不朽 -->
+  <LP_Meme_Undeath.label>undying eternal night</LP_Meme_Undeath.label>
+  <!-- 死亡只是一道门槛，跨过去的人才配得上永恒。\n\n被动：本文化的巫妖每天确信度+1%；巫妖复生时全体心情+3（主人归来，由「亡灵观：神圣」给出）。 -->
+  <LP_Meme_Undeath.description>Death is just a threshold, and only those who cross it deserve eternity.\n\nPassive: this culture's liches gain +1% certainty per day; everyone gets mood +3 when a lich revives (the master returns, given by "undeath: sacred").</LP_Meme_Undeath.description>
+  <!-- memeAdjective->永夜 | memeAdjective->不朽 | memeHyphenPrefix->冥 | memeConcept->不朽 | memeLeaderNoun->命匣守护者 | memeLeaderAdjective->不朽 | memeMoralist->亡语者 -->
+  <LP_Meme_Undeath.generalRules.rulesStrings>
+    <li>memeAdjective-&gt;eternal-night</li>
+    <li>memeAdjective-&gt;undying</li>
+    <li>memeHyphenPrefix-&gt;Necro</li>
+    <li>memeConcept-&gt;immortality</li>
+    <li>memeLeaderNoun-&gt;phylactery keeper</li>
+    <li>memeLeaderAdjective-&gt;undying</li>
+    <li>memeMoralist-&gt;deathspeaker</li>
+  </LP_Meme_Undeath.generalRules.rulesStrings>
+  <!-- 巨人位阶 -->
+  <LP_Meme_Ordning.label>giant ordning</LP_Meme_Ordning.label>
+  <!-- 巨人的世界有严格的位阶（Ordning），越高大越尊贵。\n\n被动：巨躯殖民者对其他殖民者的社交影响+10%。 -->
+  <LP_Meme_Ordning.description>The giants' world has a strict hierarchy (the Ordning): the taller, the nobler.\n\nPassive: giant-bodied colonists' social impact on other colonists +10%.</LP_Meme_Ordning.description>
+  <!-- memeAdjective->位阶 | memeAdjective->巨人 | memeHyphenPrefix->巨 | memeConcept->位阶 | memeLeaderNoun->位阶之首 | memeLeaderAdjective->高大 | memeMoralist->位阶守护者 -->
+  <LP_Meme_Ordning.generalRules.rulesStrings>
+    <li>memeAdjective-&gt;ordning</li>
+    <li>memeAdjective-&gt;giant</li>
+    <li>memeHyphenPrefix-&gt;Giga</li>
+    <li>memeConcept-&gt;the ordning</li>
+    <li>memeLeaderNoun-&gt;head of the ordning</li>
+    <li>memeLeaderAdjective-&gt;towering</li>
+    <li>memeMoralist-&gt;ordning keeper</li>
+  </LP_Meme_Ordning.generalRules.rulesStrings>
+</LanguageData>

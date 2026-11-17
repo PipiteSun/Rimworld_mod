@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 绿草节 -->
+  <LP_Festival_Lathander.label>Greengrass</LP_Festival_Lathander.label>
+  <!-- 洛山达的庆典，在圣坛举行。在晨光里欢庆新生。白天开始品质+10%。 -->
+  <LP_Festival_Lathander.description>Lathander's festival, held at the altar. Celebrate rebirth in the morning light. +10% quality when started by day.</LP_Festival_Lathander.description>
+  <!-- 盾会 -->
+  <LP_Festival_Tyr.label>Shieldmeet</LP_Festival_Tyr.label>
+  <!-- 提尔的庆典，在圣坛举行。重申誓言、裁决纷争。每4年（年份能被4整除）是大盾会：神眷结果×1.5。 -->
+  <LP_Festival_Tyr.description>Tyr's festival, held at the altar. Reaffirm vows and settle disputes. Every 4 years (years divisible by 4) is a Great Shieldmeet: divine favor result ×1.5.</LP_Festival_Tyr.description>
+  <!-- 魔网之夜 -->
+  <LP_Festival_Mystra.label>Night of the Weave</LP_Festival_Mystra.label>
+  <!-- 密斯特拉的庆典，在圣坛举行。在星光下向魔网致意。夜里开始品质+10%，每名会施法的参与者+3%。 -->
+  <LP_Festival_Mystra.description>Mystra's festival, held at the altar. Salute the Weave under the stars. +10% quality when started at night, +3% for each spellcasting participant.</LP_Festival_Mystra.description>
+  <!-- 亡者之宴 -->
+  <LP_Festival_Kelemvor.label>Feast of the Dead</LP_Festival_Kelemvor.label>
+  <!-- 凯兰沃的庆典，在圣坛举行。与逝者共进一餐，送别不得安息的魂灵。地图上有已入葬的墓或石棺时品质+10%。 -->
+  <LP_Festival_Kelemvor.description>Kelemvor's festival, held at the altar. Share a meal with the departed and send off restless spirits. +10% quality when there's an occupied grave or sarcophagus on the map.</LP_Festival_Kelemvor.description>
+  <!-- 大猎 -->
+  <LP_Festival_Malar.label>Great Hunt</LP_Festival_Malar.label>
+  <!-- 马拉尔的庆典，在圣坛举行。把猎物献给兽王。开始时圣坛3格内要有一具体型≥0.7的动物尸体，庆典结束时献上。 -->
+  <LP_Festival_Malar.description>Malar's festival, held at the altar. Offer prey to the Beastlord. At the start there must be an animal corpse of body size ≥0.7 within 3 cells of the altar, offered when the festival ends.</LP_Festival_Malar.description>
+  <!-- 风暴之歌 -->
+  <LP_Festival_Talos.label>Storm Song</LP_Festival_Talos.label>
+  <!-- 塔洛斯的庆典，在圣坛举行。在狂风中高歌。雷暴中品质+25%。 -->
+  <LP_Festival_Talos.description>Talos's festival, held at the altar. Sing loud in the gale. +25% quality in a thunderstorm.</LP_Festival_Talos.description>
+  <!-- 暴政之日 -->
+  <LP_Festival_Bane.label>Day of Tyranny</LP_Festival_Bane.label>
+  <!-- 班恩的庆典，在圣坛举行。向黑手宣誓服从。每名在场的奴隶品质+5%（最多+20%）。 -->
+  <LP_Festival_Bane.description>Bane's festival, held at the altar. Swear obedience to the Black Hand. +5% quality for each slave present (up to +20%).</LP_Festival_Bane.description>
+  <!-- 无光守夜 -->
+  <LP_Festival_Shar.label>Lightless Vigil</LP_Festival_Shar.label>
+  <!-- 莎尔的庆典，在圣坛举行。在黑暗中忘却痛苦。夜里品质+20%，圣坛所在格亮度低于30%再+10%。 -->
+  <LP_Festival_Shar.description>Shar's festival, held at the altar. Forget pain in darkness. +20% quality at night, another +10% when the altar's cell has under 30% light.</LP_Festival_Shar.description>
+  <!-- 熔炉之火 -->
+  <LP_Festival_Surtr.label>Forgefire</LP_Festival_Surtr.label>
+  <!-- 苏尔特的庆典，在圣坛举行。把最好的兵甲投进熔炉。开始时圣坛3格内要有市值合计≥300的武器或护甲，庆典结束时献上。 -->
+  <LP_Festival_Surtr.description>Surtur's festival, held at the altar. Cast the finest arms and armor into the forge. At the start there must be weapons or armor worth ≥300 in total within 3 cells of the altar, offered when the festival ends.</LP_Festival_Surtr.description>
+  <!-- 灰袍葬礼 -->
+  <LP_Funeral_GreyRobe.label>grey-robed funeral</LP_Funeral_GreyRobe.label>
+  <!-- 凯兰沃的灰袍祭司主持的葬礼，代替原版葬礼。原版葬礼的效果照常；「不错」及以上时死者得到安息（不能复生、灵魂不能被汲取），凯兰沃神眷+2，「难忘」再+3。永夜不朽的文化不能选。 -->
+  <LP_Funeral_GreyRobe.description>A funeral led by Kelemvor's grey-robed priests, replacing the vanilla funeral. The vanilla funeral's effects apply as usual; at "good" or better the dead is laid to rest (can't be raised, soul can't be drained), Kelemvor divine favor +2, "unforgettable" another +3. Not available to cultures of undying eternal night.</LP_Funeral_GreyRobe.description>
+  <!-- {PAWN_nameDef}应该入土，并举行一场灰袍葬礼，让{PAWN_possessive}的亲友道别，也让凯兰沃接走{PAWN_possessive}的灵魂。 -->
+  <LP_Funeral_GreyRobe.extraTextPawnDeathLetter>{PAWN_nameDef} should be buried, with a grey-robed funeral so {PAWN_possessive} family and friends can say goodbye and Kelemvor can take {PAWN_possessive} soul.</LP_Funeral_GreyRobe.extraTextPawnDeathLetter>
+</LanguageData>

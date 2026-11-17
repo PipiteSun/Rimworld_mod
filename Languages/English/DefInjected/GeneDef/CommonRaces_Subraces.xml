@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 高等精灵血脉 -->
+  <LP_HighElfLineage.label>high elf bloodline</LP_HighElfLineage.label>
+  <!-- 古老王庭的后裔，生来擅长艺术与学问，却不屑于粗重的体力活。精灵亚种之间互斥。 -->
+  <LP_HighElfLineage.description>Descendants of an ancient court, born gifted at art and learning, but disdainful of heavy physical labor. Elven subraces are mutually exclusive.</LP_HighElfLineage.description>
+  <!-- 木精灵血脉 -->
+  <LP_WoodElfLineage.label>wood elf bloodline</LP_WoodElfLineage.label>
+  <!-- 在古林里长大的精灵，熟悉每一条林间小路，却坐不住书桌。精灵亚种之间互斥。 -->
+  <LP_WoodElfLineage.description>Elves raised in the ancient forest know every woodland path, but can't sit still at a desk. Elven subraces are mutually exclusive.</LP_WoodElfLineage.description>
+  <!-- 阳光敏感 -->
+  <LP_DrowSunlight.label>sunlight sensitivity</LP_DrowSunlight.label>
+  <!-- 卓尔的眼睛习惯了幽暗地域的黑暗。白天在露天处（天光亮度不低于60%、头上没有屋顶）时，射击和近战的命中率都降到85%。精灵亚种之间互斥。 -->
+  <LP_DrowSunlight.description>Drow eyes are used to the darkness of the Underdark. Outdoors by day (daylight at least 60% with no roof overhead), both shooting and melee hit chance drop to 85%. Elven subraces are mutually exclusive.</LP_DrowSunlight.description>
+  <!-- 白天露天（天光≥60%且无屋顶）：射击与近战命中率×85%。 -->
+  <LP_DrowSunlight.customEffectDescriptions.0>Outdoors by day (daylight ≥60% and no roof): shooting and melee hit chance ×85%.</LP_DrowSunlight.customEffectDescriptions.0>
+  <!-- 蛛后之毒 -->
+  <LP_DrowPoison.label>spider queen venom</LP_DrowPoison.label>
+  <!-- 卓尔的刀刃上抹着罗丝信徒调制的毒液。近战命中时有15%概率让目标中毒：意识-20%、移动速度降到80%，持续6小时（重复中毒只刷新时间）。对机械体无效。 -->
+  <LP_DrowPoison.description>Drow blades are coated with venom brewed by Lolth's followers. Melee hits have a 15% chance to poison the target: consciousness -20%, move speed down to 80%, for 6 hours (repeat poisoning only refreshes the time). No effect on mechanoids.</LP_DrowPoison.description>
+  <!-- 近战命中：15%概率给目标"蛛后之毒"（意识-20%，移速×80%，6小时）。 | 机械体不受影响。 -->
+  <LP_DrowPoison.customEffectDescriptions.0>Melee hit: 15% chance to give the target "spider queen venom" (consciousness -20%, move speed ×80%, 6 hours).</LP_DrowPoison.customEffectDescriptions.0>
+  <LP_DrowPoison.customEffectDescriptions.1>Mechanoids are unaffected.</LP_DrowPoison.customEffectDescriptions.1>
+  <!-- 黑暗术 -->
+  <LP_DrowDarknessGene.label>darkness</LP_DrowDarknessGene.label>
+  <!-- 卓尔天生会的法术：在15格内召出一团半径3格的魔法黑暗，持续12秒。黑暗里的敌对单位（卓尔除外）看不清东西，命中率降到70%。不需要心灵链接，冷却1天。 -->
+  <LP_DrowDarknessGene.description>A spell drow are born knowing: call a cloud of magical darkness of radius 3 within 15 cells for 12 seconds. Hostile units inside (except drow) can't see clearly and their hit chance drops to 70%. No psylink needed, cooldown 1 day.</LP_DrowDarknessGene.description>
+  <!-- 矮人护甲训练 -->
+  <LP_DwarfArmorTraining.label>dwarven armor training</LP_DwarfArmorTraining.label>
+  <!-- 山地矮人从小穿着铁甲长大。身上衣甲造成的移动速度惩罚只算一半。矮人亚种之间互斥。 -->
+  <LP_DwarfArmorTraining.description>Mountain dwarves grow up wearing iron armor. Move speed penalties from worn apparel count only half. Dwarf subraces are mutually exclusive.</LP_DwarfArmorTraining.description>
+  <!-- 衣甲的负面移动速度修正×50%。 -->
+  <LP_DwarfArmorTraining.customEffectDescriptions.0>Negative move speed modifiers from apparel ×50%.</LP_DwarfArmorTraining.customEffectDescriptions.0>
+  <!-- 矮人坚韧 -->
+  <LP_DwarfToughness.label>dwarven toughness</LP_DwarfToughness.label>
+  <!-- 丘陵矮人的骨肉格外结实：每个身体部位的最大生命值×115%。矮人亚种之间互斥。 -->
+  <LP_DwarfToughness.description>Hill dwarves' flesh and bones are especially sturdy: max health of each body part ×115%. Dwarf subraces are mutually exclusive.</LP_DwarfToughness.description>
+  <!-- 身体部位最大生命值：×115%。 -->
+  <LP_DwarfToughness.customEffectDescriptions.0>Body part max health: ×115%.</LP_DwarfToughness.customEffectDescriptions.0>
+  <!-- 矮人记仇 -->
+  <LP_DwarfGrudge.label>dwarven grudge</LP_DwarfGrudge.label>
+  <!-- 矮人从不忘记血债。本殖民地的人形成员被某个派系的人杀死时，殖民地里所有带这个基因的人都会记下"血仇：派系名"，心情-3，持续1年（同一派系再犯只刷新时间，不叠加）；血仇未消期间，对这个派系成员的射击与近战命中率×105%。 -->
+  <LP_DwarfGrudge.description>Dwarves never forget a blood debt. When a humanlike member of this colony is killed by someone from a faction, everyone in the colony with this gene records "blood feud: faction name", mood -3 for 1 year (repeat offenses by the same faction only refresh it, no stacking); while the feud lasts, shooting and melee hit chance against that faction's members ×105%.</LP_DwarfGrudge.description>
+  <!-- 同伴被某派系杀死：心情-3"血仇"，持续1年，同派系只刷新。 | 对血仇派系成员：射击与近战命中率×105%。 -->
+  <LP_DwarfGrudge.customEffectDescriptions.0>A companion killed by a faction: mood -3 "blood feud" for 1 year; the same faction only refreshes it.</LP_DwarfGrudge.customEffectDescriptions.0>
+  <LP_DwarfGrudge.customEffectDescriptions.1>Against members of a blood-feud faction: shooting and melee hit chance ×105%.</LP_DwarfGrudge.customEffectDescriptions.1>
+  <!-- 半身人血统 -->
+  <LP_HalflingBlood.label>halfling lineage</LP_HalflingBlood.label>
+  <!-- 半身人只有常人七成高，胃口却一点不小。实际体型为普通人的70%（负重、商队载重、被远程命中的概率随之降低），饿得比常人快35%。半身人生性勇敢：不会陷入恐慌逃跑之类的恐惧状态，恐惧带来的负面心情减半。 -->
+  <LP_HalflingBlood.description>Halflings are only 70% as tall as others, but their appetite is anything but small. Actual body size 70% of an ordinary person (carry capacity, caravan load and chance to be hit by ranged attacks go down accordingly), and they get hungry 35% faster. Halflings are brave by nature: they never fall into fear states like panicked fleeing, and fear-related negative moods are halved.</LP_HalflingBlood.description>
+  <!-- 实际体型：×70%；显示大小：×75%。 | 饥饿速度：×135%（健康页显示"好胃口"）。 | 勇敢：不会恐慌逃跑或陷入其他恐惧类精神状态；恐惧类负面心情×50%。 -->
+  <LP_HalflingBlood.customEffectDescriptions.0>Actual body size: ×70%; drawn size: ×75%.</LP_HalflingBlood.customEffectDescriptions.0>
+  <LP_HalflingBlood.customEffectDescriptions.1>Hunger rate: ×135% (the health tab shows "hearty appetite").</LP_HalflingBlood.customEffectDescriptions.1>
+  <LP_HalflingBlood.customEffectDescriptions.2>Brave: never panics and flees or enters other fear-type mental states; fear-type negative moods ×50%.</LP_HalflingBlood.customEffectDescriptions.2>
+  <!-- 半身人的幸运 -->
+  <LP_HalflingLuck.label>halfling luck</LP_HalflingLuck.label>
+  <!-- 半身人总是走运。一次伤害本该让半身人倒地或死去时，这次伤害只剩10%，头上冒出"真走运！"。之后3天运气用光了（健康页可见），冷却期间不会再触发。 -->
+  <LP_HalflingLuck.description>Halflings are always lucky. When one hit should down or kill a halfling, that hit is reduced to 10%, and "Lucky!" pops up overhead. For the next 3 days their luck is used up (visible on the health tab) and it won't trigger during the cooldown.</LP_HalflingLuck.description>
+  <!-- 会致倒地或死亡的一次伤害：伤势×10%。 | 冷却3天（健康页显示"运气用光了"）。 -->
+  <LP_HalflingLuck.customEffectDescriptions.0>One hit that would down or kill: injury ×10%.</LP_HalflingLuck.customEffectDescriptions.0>
+  <LP_HalflingLuck.customEffectDescriptions.1>Cooldown 3 days (the health tab shows "out of luck").</LP_HalflingLuck.customEffectDescriptions.1>
+  <!-- 真走运！ -->
+  <LP_HalflingLuck.modExtensions.0.moteText>Lucky!</LP_HalflingLuck.modExtensions.0.moteText>
+  <!-- 躲到大个子身后 -->
+  <LP_HalflingHideBehind.label>hide behind the big folk</LP_HalflingHideBehind.label>
+  <!-- 轻足半身人很会找掩护：2格内有体型不小于普通人的友方时，敌人对其远程命中率×85%。半身人亚种之间互斥。 -->
+  <LP_HalflingHideBehind.description>Lightfoot halflings are good at finding cover: with an ally at least ordinary-person-sized within 2 cells, enemy ranged hit chance against them ×85%. Halfling subraces are mutually exclusive.</LP_HalflingHideBehind.description>
+  <!-- 2格内有体型≥1的友方：被远程命中率×85%（每250刻更新一次）。 -->
+  <LP_HalflingHideBehind.customEffectDescriptions.0>An ally of body size ≥1 within 2 cells: chance to be hit by ranged attacks ×85% (updated every 250 ticks).</LP_HalflingHideBehind.customEffectDescriptions.0>
+  <!-- 敦实身板 -->
+  <LP_HalflingStoutLineage.label>stout build</LP_HalflingStoutLineage.label>
+  <!-- 敦实半身人比轻足族圆一圈，走得也慢一点（移动速度-0.3），却百毒不侵、很少生病。半身人亚种之间互斥。 -->
+  <LP_HalflingStoutLineage.description>Stout halflings are a size rounder than lightfoots and walk a bit slower (move speed -0.3), but are immune to all poisons and rarely get sick. Halfling subraces are mutually exclusive.</LP_HalflingStoutLineage.description>
+  <!-- 侏儒狡黠 -->
+  <LP_GnomeBlood.label>gnome cunning</LP_GnomeBlood.label>
+  <!-- 侏儒只有常人六成高，脑子却转得飞快：实际体型为普通人的60%（负重、商队载重、被远程命中的概率随之降低），心智抗性+60%，很难被心灵震爆、魅惑之类的效果影响，心灵类负面心情也大大减弱。 -->
+  <LP_GnomeBlood.description>Gnomes are only 60% as tall as others, but their minds turn fast: actual body size 60% of an ordinary person (carry capacity, caravan load and chance to be hit by ranged attacks go down accordingly), mind resistance +60%, hard to affect with psychic blasts, charm and the like, and negative psychic moods are greatly reduced.</LP_GnomeBlood.description>
+  <!-- 实际体型：×60%；显示大小：×70%。 -->
+  <LP_GnomeBlood.customEffectDescriptions.0>Actual body size: ×60%; drawn size: ×70%.</LP_GnomeBlood.customEffectDescriptions.0>
+  <!-- 修补匠 -->
+  <LP_RockGnomeTinker.label>tinker</LP_RockGnomeTinker.label>
+  <!-- 岩侏儒手里总在摆弄小零件。一般劳动速度×110%，制作发条玩具的工作量减半。侏儒亚种之间互斥。 -->
+  <LP_RockGnomeTinker.description>Rock gnomes are always fiddling with little parts. General labor speed ×110%, and making clockwork toys takes half the work. Gnome subraces are mutually exclusive.</LP_RockGnomeTinker.description>
+  <!-- 制作发条玩具：工作速度×200%。 -->
+  <LP_RockGnomeTinker.customEffectDescriptions.0>Making clockwork toys: work speed ×200%.</LP_RockGnomeTinker.customEffectDescriptions.0>
+  <!-- 与小动物交谈 -->
+  <LP_GnomeSmallBeasts.label>speak with small beasts</LP_GnomeSmallBeasts.label>
+  <!-- 森林侏儒能和松鼠、狐狸、兔子说上话。驯服体型不超过0.5的动物时成功率×2（上限100%），驯服失败时这些小动物也不会反扑。侏儒亚种之间互斥。 -->
+  <LP_GnomeSmallBeasts.description>Forest gnomes can talk with squirrels, foxes and rabbits. When taming animals of body size no more than 0.5, success ×2 (cap 100%), and these small animals don't attack back if taming fails. Gnome subraces are mutually exclusive.</LP_GnomeSmallBeasts.description>
+  <!-- 驯服体型≤0.5的动物：成功率×2（上限100%），失败不反击。 -->
+  <LP_GnomeSmallBeasts.customEffectDescriptions.0>Taming animals with body size ≤0.5: success ×2 (cap 100%), no retaliation on failure.</LP_GnomeSmallBeasts.customEffectDescriptions.0>
+  <!-- 石肤伪装 -->
+  <LP_DeepGnomeCamouflage.label>stone camouflage</LP_DeepGnomeCamouflage.label>
+  <!-- 地侏的灰色皮肤和岩石几乎一样。连续2秒不移动、不攻击后获得"石肤伪装"：敌人对其远程命中率×70%。一移动或出手就会失去伪装。侏儒亚种之间互斥。 -->
+  <LP_DeepGnomeCamouflage.description>A deep gnome's grey skin is nearly identical to rock. After 2 seconds without moving or attacking, gains "stone camouflage": enemy ranged hit chance against it ×70%. Moving or striking loses the camouflage. Gnome subraces are mutually exclusive.</LP_DeepGnomeCamouflage.description>
+  <!-- 静止120刻后：被远程命中率×70%。 | 移动或攻击：立刻失去伪装。 -->
+  <LP_DeepGnomeCamouflage.customEffectDescriptions.0>After 120 ticks still: chance to be hit by ranged attacks ×70%.</LP_DeepGnomeCamouflage.customEffectDescriptions.0>
+  <LP_DeepGnomeCamouflage.customEffectDescriptions.1>Moving or attacking: camouflage lost at once.</LP_DeepGnomeCamouflage.customEffectDescriptions.1>
+  <!-- 半精灵血统 -->
+  <LP_HalfElfBlood.label>half-elf lineage</LP_HalfElfBlood.label>
+  <!-- 人类与精灵的混血。心智抗性+25%；13岁起衰老逐渐放缓，18岁后生理年龄增长速度只有常人的60%。夹在两族之间，心事比别人多一点（精神崩溃阈值+5%）。两族之桥：地图上有本殖民地的半精灵时，精灵与矮人之间的负面种族心情减半。 -->
+  <LP_HalfElfBlood.description>Mixed human and elven blood. Mind resistance +25%; aging gradually slows from age 13, and after 18 biological age advances only 60% as fast as normal. Caught between two peoples, they worry a bit more than others (mental break threshold +5%). Bridge between peoples: when a half-elf of this colony is on the map, negative racial moods between elves and dwarves are halved.</LP_HalfElfBlood.description>
+  <!-- 两族之桥：同一地图上有本殖民地的半精灵时，精灵与矮人之间的负面种族心情×50%。 -->
+  <LP_HalfElfBlood.customEffectDescriptions.0>Bridge between peoples: when a half-elf of this colony is on the same map, negative racial moods between elves and dwarves ×50%.</LP_HalfElfBlood.customEffectDescriptions.0>
+  <!-- 狗头人血统 -->
+  <LP_KoboldBlood.label>kobold lineage</LP_KoboldBlood.label>
+  <!-- 自称龙之后裔的小个子爬行类人。实际体型为普通人的60%（负重、商队载重、被远程命中的概率随之降低）。 -->
+  <LP_KoboldBlood.description>Small reptilian humanoids who claim descent from dragons. Actual body size 60% of an ordinary person (carry capacity, caravan load and chance to be hit by ranged attacks go down accordingly).</LP_KoboldBlood.description>
+  <!-- 实际体型：×60%；显示大小：×70%。 -->
+  <LP_KoboldBlood.customEffectDescriptions.0>Actual body size: ×60%; drawn size: ×70%.</LP_KoboldBlood.customEffectDescriptions.0>
+  <!-- 群体战术 -->
+  <LP_KoboldPackTactics.label>pack tactics</LP_KoboldPackTactics.label>
+  <!-- 狗头人总是一拥而上。近战时，目标身边1格内每多一个本方单位，近战命中率+5%（最多+15%）。 -->
+  <LP_KoboldPackTactics.description>Kobolds always swarm. In melee, each additional friendly unit within 1 cell of the target gives +5% melee hit chance (up to +15%).</LP_KoboldPackTactics.description>
+  <!-- 目标1格内每多一个本方单位：近战命中率×(1+5%)，最多×115%（每250刻更新一次）。 -->
+  <LP_KoboldPackTactics.customEffectDescriptions.0>Each additional friendly unit within 1 cell of the target: melee hit chance ×(1+5%), up to ×115% (updated every 250 ticks).</LP_KoboldPackTactics.customEffectDescriptions.0>
+  <!-- 陷阱匠 -->
+  <LP_KoboldTrapsmith.label>trapmaker</LP_KoboldTrapsmith.label>
+  <!-- 狗头人是天生的陷阱匠。建造陷阱的速度×200%；狗头人亲手建成的陷阱伤害+30%。 -->
+  <LP_KoboldTrapsmith.description>Kobolds are born trapmakers. Trap construction speed ×200%; traps built by a kobold's own hands deal +30% damage.</LP_KoboldTrapsmith.description>
+  <!-- 建造陷阱：建造速度×200%。 | 狗头人建成的陷阱：伤害×130%。 -->
+  <LP_KoboldTrapsmith.customEffectDescriptions.0>Building traps: construction speed ×200%.</LP_KoboldTrapsmith.customEffectDescriptions.0>
+  <LP_KoboldTrapsmith.customEffectDescriptions.1>Traps built by kobolds: damage ×130%.</LP_KoboldTrapsmith.customEffectDescriptions.1>
+  <!-- 龙之仆从 -->
+  <LP_KoboldDragonServant.label>dragon's servant</LP_KoboldDragonServant.label>
+  <!-- 狗头人崇拜巨龙。本殖民地有五色真龙时心情+6"侍奉巨龙"；没有龙可以侍奉时心情-2"失去主人"。 -->
+  <LP_KoboldDragonServant.description>Kobolds worship dragons. When the colony has a chromatic true dragon, mood +6 "serving the dragon"; with no dragon to serve, mood -2 "masterless".</LP_KoboldDragonServant.description>
+  <!-- 本殖民地有龙：心情+6；没有龙：心情-2（每250刻检查一次）。 -->
+  <LP_KoboldDragonServant.customEffectDescriptions.0>Colony has a dragon: mood +6; no dragon: mood -2 (checked every 250 ticks).</LP_KoboldDragonServant.customEffectDescriptions.0>
+  <!-- 地精族血统 -->
+  <LP_GoblinoidBlood.label>goblinoid lineage</LP_GoblinoidBlood.label>
+  <!-- 地精、大地精和熊地精同出一源，都在寒冷的洞穴与山野里长大：舒适温度下限-5℃。 -->
+  <LP_GoblinoidBlood.description>Goblins, hobgoblins and bugbears share one origin and all grew up in cold caves and wilds: min comfortable temperature -5°C.</LP_GoblinoidBlood.description>
+  <!-- 小个子的怒火 -->
+  <LP_GoblinFury.label>fury of the small</LP_GoblinFury.label>
+  <!-- 地精只有常人六成高，最恨被人看扁：实际体型为普通人的60%，攻击体型比自己大的目标时伤害+15%（近战与远程都算）。 -->
+  <LP_GoblinFury.description>Goblins are only 60% as tall as others and hate being looked down on: actual body size 60% of an ordinary person, +15% damage when attacking targets bigger than themselves (melee and ranged).</LP_GoblinFury.description>
+  <!-- 实际体型：×60%；显示大小：×70%。 | 攻击体型更大的目标：伤害×115%。 -->
+  <LP_GoblinFury.customEffectDescriptions.0>Actual body size: ×60%; drawn size: ×70%.</LP_GoblinFury.customEffectDescriptions.0>
+  <LP_GoblinFury.customEffectDescriptions.1>Attacking bigger targets: damage ×115%.</LP_GoblinFury.customEffectDescriptions.1>
+  <!-- 灵巧逃脱 -->
+  <LP_GoblinNimble.label>nimble escape</LP_GoblinNimble.label>
+  <!-- 挨了一刀的地精溜得飞快：被近战命中后2秒内移动速度×130%（再次被打只刷新时间）。 -->
+  <LP_GoblinNimble.description>A goblin that takes a cut runs off fast: move speed ×130% for 2 seconds after being hit in melee (being hit again only refreshes the time).</LP_GoblinNimble.description>
+  <!-- 被近战命中：2秒内移动速度×130%，刷新不叠加。 -->
+  <LP_GoblinNimble.customEffectDescriptions.0>Hit in melee: move speed ×130% for 2 seconds, refreshes without stacking.</LP_GoblinNimble.customEffectDescriptions.0>
+  <!-- 群体之助 -->
+  <LP_HobgoblinNumbers.label>strength in numbers</LP_HobgoblinNumbers.label>
+  <!-- 大地精讲究军阵：3格内每有一个本方人形，射击与近战命中率、全局工作速度各+3%（最多+9%）。 -->
+  <LP_HobgoblinNumbers.description>Hobgoblins value formations: for each friendly humanlike within 3 cells, shooting and melee hit chance and global work speed +3% each (up to +9%).</LP_HobgoblinNumbers.description>
+  <!-- 3格内每个本方人形：命中率与全局工作速度+3%，最多+9%（每250刻更新一次）。 -->
+  <LP_HobgoblinNumbers.customEffectDescriptions.0>Each friendly humanlike within 3 cells: hit chance and global work speed +3%, up to +9% (updated every 250 ticks).</LP_HobgoblinNumbers.customEffectDescriptions.0>
+  <!-- 铁律 -->
+  <LP_HobgoblinDiscipline.label>iron discipline</LP_HobgoblinDiscipline.label>
+  <!-- 军纪刻在大地精的骨子里：被征召时不会因心情低落而精神崩溃。 -->
+  <LP_HobgoblinDiscipline.description>Military discipline is in a hobgoblin's bones: they never have mental breaks from low mood while drafted.</LP_HobgoblinDiscipline.description>
+  <!-- 征召中：不会发生心情引起的精神崩溃。 -->
+  <LP_HobgoblinDiscipline.customEffectDescriptions.0>While drafted: no mood-induced mental breaks.</LP_HobgoblinDiscipline.customEffectDescriptions.0>
+  <!-- 突袭 -->
+  <LP_BugbearSurprise.label>surprise attack</LP_BugbearSurprise.label>
+  <!-- 熊地精擅长从暗处扑出来。目标在600刻（10秒）内既没有攻击过、也没有受过伤时，熊地精对它的近战伤害×125%。 -->
+  <LP_BugbearSurprise.description>Bugbears excel at pouncing from the dark. If the target has neither attacked nor been hurt within 600 ticks (10 seconds), the bugbear's melee damage against it ×125%.</LP_BugbearSurprise.description>
+  <!-- 目标10秒内未攻击也未受伤：近战伤害×125%。 -->
+  <LP_BugbearSurprise.customEffectDescriptions.0>Target has neither attacked nor been hurt within 10 seconds: melee damage ×125%.</LP_BugbearSurprise.customEffectDescriptions.0>
+  <!-- 长臂 -->
+  <LP_BugbearLongLimbs.label>long-limbed</LP_BugbearLongLimbs.label>
+  <!-- 熊地精的胳膊长得出奇，近战够得更远：近战命中+10%。 -->
+  <LP_BugbearLongLimbs.description>A bugbear's arms are unusually long, reaching farther in melee: melee hit +10%.</LP_BugbearLongLimbs.description>
+</LanguageData>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 黎明 -->
+  <LP_Portfolio_Dawn.label>dawn</LP_Portfolio_Dawn.label>
+  <!-- 洛山达的神职：晨光、复苏与新生。 -->
+  <LP_Portfolio_Dawn.description>Lathander's portfolio: morning light, renewal and rebirth.</LP_Portfolio_Dawn.description>
+  <!-- 殖民者伤口愈合×1.2 -->
+  <LP_Portfolio_Dawn.blessing>colonist wound healing ×1.2</LP_Portfolio_Dawn.blessing>
+  <!-- 救治倒地的人 -->
+  <LP_Portfolio_Dawn.deedLabel>rescue downed people</LP_Portfolio_Dawn.deedLabel>
+  <!-- 15格内的友方心情+4（晨光普照） -->
+  <LP_Portfolio_Dawn.passive>allies within 15 cells mood +4 (morning light)</LP_Portfolio_Dawn.passive>
+  <!-- 正义 -->
+  <LP_Portfolio_Justice.label>justice</LP_Portfolio_Justice.label>
+  <!-- 提尔的神职：律法、审判与守护。 -->
+  <LP_Portfolio_Justice.description>Tyr's portfolio: law, judgment and protection.</LP_Portfolio_Justice.description>
+  <!-- 囚犯越狱的几率×0.5 -->
+  <LP_Portfolio_Justice.blessing>prisoner escape chance ×0.5</LP_Portfolio_Justice.blessing>
+  <!-- 俘获敌人 -->
+  <LP_Portfolio_Justice.deedLabel>capture enemies</LP_Portfolio_Justice.deedLabel>
+  <!-- 20格内的敌方隐形单位现形 -->
+  <LP_Portfolio_Justice.passive>invisible enemy units within 20 cells are revealed</LP_Portfolio_Justice.passive>
+  <!-- 暴政 -->
+  <LP_Portfolio_Tyranny.label>tyranny</LP_Portfolio_Tyranny.label>
+  <!-- 班恩与维拉基斯的神职：支配、恐惧与铁律。 -->
+  <LP_Portfolio_Tyranny.description>Portfolio of Bane and Vlaakith: domination, fear and iron law.</LP_Portfolio_Tyranny.description>
+  <!-- 镇压/奴役效率×1.25 -->
+  <LP_Portfolio_Tyranny.blessing>suppression/enslavement efficiency ×1.25</LP_Portfolio_Tyranny.blessing>
+  <!-- 10格内的敌人射击精度-15% -->
+  <LP_Portfolio_Tyranny.passive>enemies within 10 cells shooting accuracy -15%</LP_Portfolio_Tyranny.passive>
+  <!-- 风暴 -->
+  <LP_Portfolio_Storm.label>storm</LP_Portfolio_Storm.label>
+  <!-- 塔洛斯的神职：雷霆、狂风与毁灭。 -->
+  <LP_Portfolio_Storm.description>Talos's portfolio: thunder, gales and destruction.</LP_Portfolio_Storm.description>
+  <!-- 闪电不会击中殖民地建筑 -->
+  <LP_Portfolio_Storm.blessing>lightning never strikes colony buildings</LP_Portfolio_Storm.blessing>
+  <!-- 雨天或雷暴天杀敌 -->
+  <LP_Portfolio_Storm.deedLabel>kill enemies in rain or thunderstorms</LP_Portfolio_Storm.deedLabel>
+  <!-- 近战攻击他的人受到8点电击（×神职强度） -->
+  <LP_Portfolio_Storm.passive>anyone attacking them in melee takes 8 electrical damage (× portfolio strength)</LP_Portfolio_Storm.passive>
+  <!-- 火焰 -->
+  <LP_Portfolio_Fire.label>fire</LP_Portfolio_Fire.label>
+  <!-- 苏尔特的神职：烈焰、熔炉与锻造。 -->
+  <LP_Portfolio_Fire.description>Surtur's portfolio: flame, furnace and forge.</LP_Portfolio_Fire.description>
+  <!-- 锻造速度×1.15 -->
+  <LP_Portfolio_Fire.blessing>smithing speed ×1.15</LP_Portfolio_Fire.blessing>
+  <!-- 用火焰杀敌 -->
+  <LP_Portfolio_Fire.deedLabel>kill enemies with fire</LP_Portfolio_Fire.deedLabel>
+  <!-- 免疫火焰伤害，不会被点燃 -->
+  <LP_Portfolio_Fire.passive>immune to fire damage, cannot be ignited</LP_Portfolio_Fire.passive>
+  <!-- 野性 -->
+  <LP_Portfolio_Wild.label>wild</LP_Portfolio_Wild.label>
+  <!-- 马拉尔的神职：狩猎、獠牙与兽群。 -->
+  <LP_Portfolio_Wild.description>Malar's portfolio: the hunt, fangs and the pack.</LP_Portfolio_Wild.description>
+  <!-- 驯兽成功率×1.2 -->
+  <LP_Portfolio_Wild.blessing>taming success ×1.2</LP_Portfolio_Wild.blessing>
+  <!-- 驯服动物或杀死狂暴的动物 -->
+  <LP_Portfolio_Wild.deedLabel>tame animals or kill manhunting animals</LP_Portfolio_Wild.deedLabel>
+  <!-- 狂暴的野生动物不会把他当作目标 -->
+  <LP_Portfolio_Wild.passive>manhunting wild animals won't target them</LP_Portfolio_Wild.passive>
+  <!-- 心灵 -->
+  <LP_Portfolio_Mind.label>mind</LP_Portfolio_Mind.label>
+  <!-- 伊尔斯维的神职：灵能、意志与低语。 -->
+  <LP_Portfolio_Mind.description>Ilsensine's portfolio: psionics, will and whispers.</LP_Portfolio_Mind.description>
+  <!-- 研究速度×1.1 -->
+  <LP_Portfolio_Mind.blessing>research speed ×1.1</LP_Portfolio_Mind.blessing>
+  <!-- 殖民地全体心灵敏感度+5% -->
+  <LP_Portfolio_Mind.passive>colony-wide psychic sensitivity +5%</LP_Portfolio_Mind.passive>
+  <!-- 死亡 -->
+  <LP_Portfolio_Death.label>death</LP_Portfolio_Death.label>
+  <!-- 凯兰沃的神职：安息、审判与亡者的归宿。 -->
+  <LP_Portfolio_Death.description>Kelemvor's portfolio: rest, judgment and the final fate of the dead.</LP_Portfolio_Death.description>
+  <!-- 手术成功率+5% -->
+  <LP_Portfolio_Death.blessing>surgery success +5%</LP_Portfolio_Death.blessing>
+  <!-- 安葬尸体或摧毁亡灵 -->
+  <LP_Portfolio_Death.deedLabel>bury corpses or destroy undead</LP_Portfolio_Death.deedLabel>
+  <!-- 看到尸体不难受；殖民者死去时全员的心情惩罚×0.5 -->
+  <LP_Portfolio_Death.passive>not bothered by seeing corpses; colony-wide mood penalties when a colonist dies ×0.5</LP_Portfolio_Death.passive>
+  <!-- 魔法 -->
+  <LP_Portfolio_Magic.label>magic</LP_Portfolio_Magic.label>
+  <!-- 密斯特拉的神职：魔网、法术与知识。 -->
+  <LP_Portfolio_Magic.description>Mystra's portfolio: the Weave, spells and knowledge.</LP_Portfolio_Magic.description>
+  <!-- 精神力回复（冥想）×1.1 -->
+  <LP_Portfolio_Magic.blessing>psyfocus regain (meditation) ×1.1</LP_Portfolio_Magic.blessing>
+  <!-- 成功施放消耗精神力或神眷的能力 -->
+  <LP_Portfolio_Magic.deedLabel>successfully cast abilities that cost psyfocus or divine favor</LP_Portfolio_Magic.deedLabel>
+  <!-- 本人心灵法术冷却×0.85 -->
+  <LP_Portfolio_Magic.passive>own psycast cooldowns ×0.85</LP_Portfolio_Magic.passive>
+  <!-- 黑暗 -->
+  <LP_Portfolio_Dark.label>darkness</LP_Portfolio_Dark.label>
+  <!-- 莎尔的神职：夜色、遗忘与秘密。 -->
+  <LP_Portfolio_Dark.description>Shar's portfolio: night, forgetting and secrets.</LP_Portfolio_Dark.description>
+  <!-- 夜里不会因为“在黑暗中”难受 -->
+  <LP_Portfolio_Dark.blessing>not bothered by "in darkness" at night</LP_Portfolio_Dark.blessing>
+  <!-- 夜里（22～5点）杀敌 -->
+  <LP_Portfolio_Dark.deedLabel>kill enemies at night (22-5h)</LP_Portfolio_Dark.deedLabel>
+  <!-- 夜里（22～5点）移动+15%、造成的伤害+10% -->
+  <LP_Portfolio_Dark.passive>at night (22-5h) movement +15%, damage dealt +10%</LP_Portfolio_Dark.passive>
+  <!-- 不死 -->
+  <LP_Portfolio_Undeath.label>undeath</LP_Portfolio_Undeath.label>
+  <!-- 半神巫妖夺来的神职：永夜、灵魂与不朽。 -->
+  <LP_Portfolio_Undeath.description>A portfolio seized by the demigod lich: eternal night, souls and immortality.</LP_Portfolio_Undeath.description>
+  <!-- 死灵造物的维护费×0.8 -->
+  <LP_Portfolio_Undeath.blessing>necromantic construct upkeep ×0.8</LP_Portfolio_Undeath.blessing>
+  <!-- 命匣化为神龛（复生1天、神力≥50时立即复生、命匣生命×2） -->
+  <LP_Portfolio_Undeath.passive>the phylactery becomes a shrine (revive in 1 day, revive at once with divine power ≥50, phylactery health ×2)</LP_Portfolio_Undeath.passive>
+  <!-- 奥术 -->
+  <LP_Portfolio_Arcane.label>arcana</LP_Portfolio_Arcane.label>
+  <!-- 奥术半神的神职：卡苏斯没能握住的魔网本身。 -->
+  <LP_Portfolio_Arcane.description>Portfolio of the arcane demigod: the Weave itself, which Karsus failed to hold.</LP_Portfolio_Arcane.description>
+  <!-- 心灵法术冷却×0.9 -->
+  <LP_Portfolio_Arcane.blessing>psycast cooldowns ×0.9</LP_Portfolio_Arcane.blessing>
+  <!-- 无（奥术半神原有的效果不变） -->
+  <LP_Portfolio_Arcane.passive>none (the arcane demigod's original effects are unchanged)</LP_Portfolio_Arcane.passive>
+</LanguageData>

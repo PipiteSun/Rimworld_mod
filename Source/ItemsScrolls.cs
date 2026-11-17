@@ -16,15 +16,15 @@ namespace LichPhylactery {
   public static int Intellect(Pawn p)=>p?.skills?.GetSkill(SkillDefOf.Intellectual)?.Level??0;
   public static float FailChance(Pawn p)=>Items.IsLich(p) || Subclass3.S(p,Subclass3.FQuill)?0f:Mathf.Max(0f,(8-Intellect(p))*FailPerLevel)*MagicApparel.ScrollFailFactor(p); // 1.45.1 法袍失误率减半
   public static string CannotRead(Pawn p){
-   if(p?.skills==null)return "不会读卷轴。";
-   if(!Items.IsLich(p) && Intellect(p)<MinIntellect)return "智识不足"+MinIntellect+"级，读不懂卷轴。";
+   if(p?.skills==null)return "不会读卷轴。".Loc();
+   if(!Items.IsLich(p) && Intellect(p)<MinIntellect)return "智识不足".Loc()+MinIntellect+"级，读不懂卷轴。".Loc();
    return null;
   }
   // 读卷轴失误：卷轴烧毁，一只手轻微烧伤。
   public static void Fizzle(Pawn p,Thing scroll){
    var hand=p.health.hediffSet.GetNotMissingParts().Where(b=>b.def.defName=="Hand").RandomElementWithFallback();
    var burn=HediffMaker.MakeHediff(Troll.Burn,p,hand);burn.Severity=2f;p.health.AddHediff(burn,hand);
-   if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"念错了"+scroll.LabelNoCount+"上的咒文，卷轴在手里烧了起来。",p,MessageTypeDefOf.NegativeEvent,false);
+   if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"念错了".Loc()+scroll.LabelNoCount+"上的咒文，卷轴在手里烧了起来。".Loc(),p,MessageTypeDefOf.NegativeEvent,false);
    Consume(scroll);
   }
   public static void Consume(Thing scroll){if(scroll==null || scroll.Destroyed)return;if(scroll.stackCount>1)scroll.SplitOff(1).Destroy();else scroll.Destroy();}
@@ -64,18 +64,18 @@ namespace LichPhylactery {
   public static bool Teleport(Pawn p){
    var home=HomeMap();if(home==null || p.MapHeld==home)return false;
    var cell=HomeSpot(p,home);
-   Items.State.Defer(()=>{if(p.Dead || !p.Spawned)return;p.jobs?.StopAll();p.GetLord()?.Notify_PawnLost(p,PawnLostCondition.ExitedMap,null);p.DeSpawn(DestroyMode.Vanish);GenSpawn.Spawn(p,cell,home);if(p.drafter!=null)p.drafter.Drafted=false;FleckMaker.Static(cell,home,FleckDefOf.PsycastAreaEffect,1.5f);if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"读完传送卷轴，回到了主基地。",p,MessageTypeDefOf.PositiveEvent,false);});
+   Items.State.Defer(()=>{if(p.Dead || !p.Spawned)return;p.jobs?.StopAll();p.GetLord()?.Notify_PawnLost(p,PawnLostCondition.ExitedMap,null);p.DeSpawn(DestroyMode.Vanish);GenSpawn.Spawn(p,cell,home);if(p.drafter!=null)p.drafter.Drafted=false;FleckMaker.Static(cell,home,FleckDefOf.PsycastAreaEffect,1.5f);if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"读完传送卷轴，回到了主基地。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);});
    return true;
   }
   // ---------- 复生 ----------
   public static string CannotRevivify(Corpse c){
-   var p=c?.InnerPawn;if(p==null || !p.RaceProps.Humanlike)return "需要人形尸体。";
-   if(Items.Undead(p) || NecromancyGenes.HasBody(p))return "复生卷轴对巫妖和死灵造物无效。";
+   var p=c?.InnerPawn;if(p==null || !p.RaceProps.Humanlike)return "需要人形尸体。".Loc();
+   if(Items.Undead(p) || NecromancyGenes.HasBody(p))return "复生卷轴对巫妖和死灵造物无效。".Loc();
    // 1.45.0：灵魂封在魂石里的人不论死了多久都能复生（尸体要在）。
    bool stone=SpiritStones.Holds(p);
-   if(!stone && c.Age>RevivifyMaxAge)return "死亡超过1天，灵魂已经走远。";
-   if(p.health.hediffSet.GetBrain()==null)return "大脑已经不在了（被吞噬或被毁），无法复生。";
-   if(!stone && c.GetRotStage()!=RotStage.Fresh)return "尸体已经腐烂。";
+   if(!stone && c.Age>RevivifyMaxAge)return "死亡超过1天，灵魂已经走远。".Loc();
+   if(p.health.hediffSet.GetBrain()==null)return "大脑已经不在了（被吞噬或被毁），无法复生。".Loc();
+   if(!stone && c.GetRotStage()!=RotStage.Fresh)return "尸体已经腐烂。".Loc();
    return null;
   }
   public static bool Revivify(Pawn user,Corpse c){
@@ -83,7 +83,7 @@ namespace LichPhylactery {
    var p=c.InnerPawn;bool stone=SpiritStones.Holds(p);if(!ResurrectionUtility.TryResurrect(p,new ResurrectionParams{removeDiedThoughts=true}))return false;
    if(stone)SpiritStones.Consume(p);
    p.health.AddHediff(Items.Hediff("LP_RevivifyWeakness"));
-   if(p.Faction==Faction.OfPlayer || user.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"在复生卷轴的光芒中重新睁开了眼睛。",p,MessageTypeDefOf.PositiveEvent,false);
+   if(p.Faction==Faction.OfPlayer || user.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"在复生卷轴的光芒中重新睁开了眼睛。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);
    return true;
   }
   // ---------- 防护邪恶 ----------
@@ -100,7 +100,7 @@ namespace LichPhylactery {
    int now=Find.TickManager.TicksGame;m.wards.RemoveAll(w=>w.until<=now);
    foreach(var w in m.wards)foreach(var p in w.rect.Cells.SelectMany(c=>c.GetThingList(m.map)).OfType<Pawn>().Where(Evil).ToList()){
     if(!CellFinder.TryFindRandomCellNear(p.Position,m.map,6,c=>c.Standable(m.map) && !Warded(m.map,c) && c.GetFirstPawn(m.map)==null,out var outside))continue;
-    p.pather?.StopDead();p.Position=outside;p.Notify_Teleported(true,false);Items.Mote(p,"被结界推开",new Color(1f,.95f,.6f));
+    p.pather?.StopDead();p.Position=outside;p.Notify_Teleported(true,false);Items.Mote(p,"被结界推开".Loc(),new Color(1f,.95f,.6f));
    }
   }
   // ---------- 识破 ----------
@@ -112,25 +112,25 @@ namespace LichPhylactery {
     if(dom!=null){p.health.RemoveHediff(dom);freed++;}else if(p.MentalStateDef==MindFlayerPowers.Dominated){MindFlayerPowers.EndDomination(p);freed++;}
     if(FactionGroups.IsThralled(p)){Decapitation.Free(p);freed++;}
    }
-   if(freed>0)Messages.Message("识破卷轴的光芒驱散了夺心魔的控制："+freed+"人清醒过来。",MessageTypeDefOf.PositiveEvent,false);
+   if(freed>0)Messages.Message("识破卷轴的光芒驱散了夺心魔的控制：".Loc()+freed+"人清醒过来。".Loc(),MessageTypeDefOf.PositiveEvent,false);
    CursedItems.IdentifyMap(map); // 1.45.0：顺便鉴定地图上的诅咒物品
    return freed;
   }
   // ---------- 石化 ----------
   public static string CannotPetrify(Pawn user,Pawn p){
-   if(p==null || p.Dead || !p.Spawned)return "需要地图上活着的目标。";
-   if(user!=null && !p.HostileTo(user))return "只能对敌人使用。";
-   if(p.BodySize>MaxPetrifySize)return "目标体型太大（超过2）。";
+   if(p==null || p.Dead || !p.Spawned)return "需要地图上活着的目标。".Loc();
+   if(user!=null && !p.HostileTo(user))return "只能对敌人使用。".Loc();
+   if(p.BodySize>MaxPetrifySize)return "目标体型太大（超过2）。".Loc();
    return null;
   }
-  public static bool StartPetrify(Pawn user,Pawn p){if(CannotPetrify(user,p)!=null)return false;Items.Give(p,"LP_Petrifying",PetrifyTicks);Items.Mote(p,"开始石化",new Color(.75f,.75f,.7f));return true;}
+  public static bool StartPetrify(Pawn user,Pawn p){if(CannotPetrify(user,p)!=null)return false;Items.Give(p,"LP_Petrifying",PetrifyTicks);Items.Mote(p,"开始石化".Loc(),new Color(.75f,.75f,.7f));return true;}
   public static PetrifiedStatue Petrify(Pawn p){
    if(p==null || p.Dead || !p.Spawned)return null;var map=p.Map;var cell=p.Position;
    var statue=(PetrifiedStatue)ThingMaker.MakeThing(Items.Thing("LP_PetrifiedStatue"));
    p.jobs?.StopAll();p.GetLord()?.Notify_PawnLost(p,PawnLostCondition.Incapped,null);p.DeSpawn(DestroyMode.Vanish);
    if(Find.WorldPawns.Contains(p))Find.WorldPawns.RemovePawn(p);
    statue.inner.TryAdd(p);GenPlace.TryPlaceThing(statue,cell,map,ThingPlaceMode.Near);
-   Messages.Message(p.LabelShort+"化成了一尊石像。",statue,MessageTypeDefOf.NeutralEvent,false);
+   Messages.Message(p.LabelShort+"化成了一尊石像。".Loc(),statue,MessageTypeDefOf.NeutralEvent,false);
    return statue;
   }
  }
@@ -142,14 +142,14 @@ namespace LichPhylactery {
   public LocalTargetInfo target=LocalTargetInfo.Invalid;
   public new CompProperties_Scroll Props=>(CompProperties_Scroll)props;
   public string Invalid(Pawn user,LocalTargetInfo t){
-   if(user?.Map==null)return "读卷轴的人不在地图上。";
+   if(user?.Map==null)return "读卷轴的人不在地图上。".Loc();
    switch(Props.effect){
-    case "teleport":var home=ItemScrolls.HomeMap();return home==null?"没有主基地可以回去。":user.Map==home?"已经在主基地了，传送卷轴没有效果。":null;
+    case "teleport":var home=ItemScrolls.HomeMap();return home==null?"没有主基地可以回去。".Loc():user.Map==home?"已经在主基地了，传送卷轴没有效果。".Loc():null;
     case "revivify":return ItemScrolls.CannotRevivify(t.Thing as Corpse);
     case "fleshtostone":return ItemScrolls.CannotPetrify(user,t.Pawn);
-    case "removecurse":return CursedItems.RemoveCurseTarget(t)==null?"目标身上没有被诅咒的物品。":null;
+    case "removecurse":return CursedItems.RemoveCurseTarget(t)==null?"目标身上没有被诅咒的物品。".Loc():null;
    }
-   if(Props.target=="cell" && (!t.Cell.IsValid || !t.Cell.InBounds(user.Map)))return "需要地图上的目标位置。";
+   if(Props.target=="cell" && (!t.Cell.IsValid || !t.Cell.InBounds(user.Map)))return "需要地图上的目标位置。".Loc();
    return null;
   }
   public override AcceptanceReport CanBeUsedBy(Pawn p){
@@ -168,7 +168,7 @@ namespace LichPhylactery {
   public override bool SelectedUseOption(Pawn p){
    if(Props.target=="none"){target=LocalTargetInfo.Invalid;return false;}
    Find.Targeter.BeginTargeting(Params(),t=>{
-    if(t.Cell.DistanceTo(p.Position)>Props.range){Messages.Message("超出卷轴射程（"+Props.range.ToString("0")+"格）。",MessageTypeDefOf.RejectInput,false);return;}
+    if(t.Cell.DistanceTo(p.Position)>Props.range){Messages.Message("超出卷轴射程（".Loc()+Props.range.ToString("0")+"格）。".Loc(),MessageTypeDefOf.RejectInput,false);return;}
     string bad=Invalid(p,t);if(bad!=null){Messages.Message(bad,MessageTypeDefOf.RejectInput,false);return;}
     target=t;parent.GetComp<CompUsable>()?.TryStartUseJob(p,t,false);
    },p);
@@ -202,13 +202,13 @@ namespace LichPhylactery {
   public override void TickRare(){base.TickRare();if(!permanent && Spawned && Pawn!=null && restoreTick>=0 && Find.TickManager.TicksGame>=restoreTick)Restore();}
   public PetrifiedStatue(){inner=new ThingOwner<Pawn>(this,true,LookMode.Deep,false);}
   public Pawn Pawn=>inner.Count>0?inner[0]:null;
-  public override string LabelNoCount=>Pawn!=null?"石化的"+Pawn.LabelShort:base.LabelNoCount;
-  public override string GetInspectString(){var s=base.GetInspectString();var line=Pawn==null?"空的石像。":permanent?Pawn.LabelShort+"在升神仪式失败时化成了石像。魔网的反噬把血肉彻底变成了石头，不可复原。":Pawn.LabelShort+"被石化在里面，"+(restoreTick>Find.TickManager.TicksGame?(restoreTick-Find.TickManager.TicksGame).ToStringTicksToPeriod()+"后":"很快")+"会自己恢复血肉。";return string.IsNullOrEmpty(s)?line:s+"\n"+line;}
+  public override string LabelNoCount=>Pawn!=null?"石化的".Loc()+Pawn.LabelShort:base.LabelNoCount;
+  public override string GetInspectString(){var s=base.GetInspectString();var line=Pawn==null?"空的石像。".Loc():permanent?Pawn.LabelShort+"在升神仪式失败时化成了石像。魔网的反噬把血肉彻底变成了石头，不可复原。".Loc():Pawn.LabelShort+"被石化在里面，".Loc()+(restoreTick>Find.TickManager.TicksGame?(restoreTick-Find.TickManager.TicksGame).ToStringTicksToPeriod()+"后".Loc():"很快".Loc())+"会自己恢复血肉。".Loc();return string.IsNullOrEmpty(s)?line:s+"\n"+line;}
   public Pawn Restore(){
    var p=Pawn;var map=MapHeld;if(p==null || map==null)return null;var cell=PositionHeld;
-   if(permanent){Messages.Message(p.LabelShort+"的石像纹丝不动：这尊石像不可复原。",this,MessageTypeDefOf.RejectInput,false);return null;}
+   if(permanent){Messages.Message(p.LabelShort+"的石像纹丝不动：这尊石像不可复原。".Loc(),this,MessageTypeDefOf.RejectInput,false);return null;}
    inner.Remove(p);GenSpawn.Spawn(p,cell,map);Destroy(DestroyMode.Vanish);
-   Messages.Message(p.LabelShort+"从石像中恢复了血肉。",p,MessageTypeDefOf.NeutralEvent,false);
+   Messages.Message(p.LabelShort+"从石像中恢复了血肉。".Loc(),p,MessageTypeDefOf.NeutralEvent,false);
    return p;
   }
   public ThingOwner GetDirectlyHeldThings()=>inner;
@@ -223,7 +223,7 @@ namespace LichPhylactery {
   static void Postfix(Bill __instance,Pawn p,ref bool __result){
    var ext=__instance.recipe?.GetModExtension<ScribeExtension>();if(!__result || ext==null)return;
    var h=Necro.Lich(p);if(h!=null && h.Active && h.Points+.001f>=ext.focusCost)return;
-   __result=false;JobFailReason.Is("需要至少"+ext.focusCost.ToString("0")+"点精神力的巫妖。");
+   __result=false;JobFailReason.Is("需要至少".Loc()+ext.focusCost.ToString("0")+"点精神力的巫妖。".Loc());
   }
  }
  [HarmonyPatch(typeof(GenRecipe),nameof(GenRecipe.MakeRecipeProducts))]
@@ -233,7 +233,7 @@ namespace LichPhylactery {
    if(ext==null){foreach(var t in values)yield return t;yield break;}
    bool paid=Necro.Pay(worker,ext.focusCost);
    foreach(var t in values){if(paid)yield return t;else if(!t.Destroyed)t.Destroy();}
-   if(!paid)Messages.Message((worker?.LabelShort??"抄写者")+"的精神力不够，抄写失败。",worker,MessageTypeDefOf.NegativeEvent,false);
+   if(!paid)Messages.Message((worker?.LabelShort??"抄写者".Loc())+"的精神力不够，抄写失败。".Loc(),worker,MessageTypeDefOf.NegativeEvent,false);
   }
  }
 }

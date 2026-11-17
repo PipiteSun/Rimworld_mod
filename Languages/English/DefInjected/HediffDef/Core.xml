@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 巫妖之躯 -->
+  <LP_Lich.label>lich body</LP_Lich.label>
+  <!-- 精神力维持的不死之躯。命匣保存灵魂与原有基因；不需要食物、睡眠或娱乐，不流血，无法自然愈合。通过精神力修复与重塑身体。 -->
+  <LP_Lich.description>An undead body sustained by psyfocus. The phylactery preserves the soul and original genes; needs no food, sleep or recreation, doesn't bleed, cannot heal naturally. Repairs and reshapes the body with psyfocus.</LP_Lich.description>
+  <!-- 魂能强化 -->
+  <LP_Limb.label>soul reinforcement</LP_Limb.label>
+  <!-- 每层增加20%该部位生命上限、12%部位效率，占用5点精神力上限。仅支持头部、躯干、脊椎、手臂、腿及主要器官（大脑、心脏、肺、肝、肾、胃、眼睛、耳朵）；手指等小部位不可强化。每部位至多5层；部位缺失后强化消失。 -->
+  <LP_Limb.description>Each stack adds 20% to that part's max health and 12% part efficiency, taking up 5 points of max psyfocus. Only supports the head, torso, spine, arms, legs and major organs (brain, heart, lungs, liver, kidneys, stomach, eyes, ears); small parts like fingers can't be enhanced. At most 5 stacks per part; the enhancement disappears if the part is lost.</LP_Limb.description>
+  <!-- 死灵造物 -->
+  <LP_Construct.label>necromantic construct</LP_Construct.label>
+  <!-- 受到巫妖统御的造物。失去主人或统御容量不足时休眠。 -->
+  <LP_Construct.description>A creation under a lich's command. Goes dormant when it loses its master or command capacity is insufficient.</LP_Construct.description>
+</LanguageData>

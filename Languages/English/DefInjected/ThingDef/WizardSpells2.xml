@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 力场墙 -->
+  <LP_WS_ForceWall.label>wall of force</LP_WS_ForceWall.label>
+  <!-- 法师召出的透明力场，挡子弹和近战，过一会儿消散。 -->
+  <LP_WS_ForceWall.description>A transparent force field conjured by a wizard that blocks bullets and melee, dissipating after a while.</LP_WS_ForceWall.description>
+  <!-- 传送法阵 -->
+  <LP_WS_TeleportCircle.label>teleportation circle</LP_WS_TeleportCircle.label>
+  <!-- 法师刻下的永久传送法阵（3×3）。法师对着法阵施放“传送法阵”，就把阵上 3×3 的人和物送到另一座传送法阵（优先主基地的）。 -->
+  <LP_WS_TeleportCircle.description>A permanent teleportation circle (3×3) carved by a wizard. When a wizard casts "teleportation circle" on it, the people and things on its 3×3 are sent to another teleportation circle (the main base's preferred).</LP_WS_TeleportCircle.description>
+</LanguageData>

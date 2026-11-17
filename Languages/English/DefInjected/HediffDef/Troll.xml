@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 巨魔代谢 -->
+  <LP_TrollMetabolism.label>troll metabolism</LP_TrollMetabolism.label>
+  <!-- 快速再生所需的旺盛代谢。 -->
+  <LP_TrollMetabolism.description>The vigorous metabolism needed for rapid regeneration.</LP_TrollMetabolism.description>
+  <!-- 再生中的残肢 -->
+  <LP_TrollRegrowth.label>regenerating stump</LP_TrollRegrowth.label>
+  <!-- 巨魔的血肉正在长出失去的部位。括号中显示正在长回的部位和进度；饥饿或火焰会让进度暂停。 -->
+  <LP_TrollRegrowth.description>The troll's flesh is regrowing a lost part. The brackets show the part being regrown and progress; hunger or fire pauses progress.</LP_TrollRegrowth.description>
+  <!-- 再生虚弱 -->
+  <LP_TrollRevivalWeakness.label>regeneration weakness</LP_TrollRevivalWeakness.label>
+  <!-- 这只巨魔刚从死亡中重新长合，身体还没有完全恢复。 -->
+  <LP_TrollRevivalWeakness.description>This troll just knit back together from death and hasn't fully recovered yet.</LP_TrollRevivalWeakness.description>
+</LanguageData>

@@ -37,8 +37,8 @@ namespace LichPhylactery {
    if(t==null || t.Destroyed || !t.def.useHitPoints || !IsMetal(t))return false;
    int loss=Mathf.Max(1,Mathf.RoundToInt(t.MaxHitPoints*factor));
    t.HitPoints-=loss;
-   if(t.HitPoints>0){Items.Mote(owner,"锈蚀",RustColor);return false;}
-   if(owner!=null && owner.Faction==Faction.OfPlayer)Messages.Message(owner.LabelShort+"的"+t.LabelNoCount+"被锈蚀成了一堆废铁。",owner,MessageTypeDefOf.NegativeEvent,false);
+   if(t.HitPoints>0){Items.Mote(owner,"锈蚀".Loc(),RustColor);return false;}
+   if(owner!=null && owner.Faction==Faction.OfPlayer)Messages.Message(owner.LabelShort+"的".Loc()+t.LabelNoCount+"被锈蚀成了一堆废铁。".Loc(),owner,MessageTypeDefOf.NegativeEvent,false);
    t.Destroy();
    return true;
   }
@@ -77,7 +77,7 @@ namespace LichPhylactery {
    if(Legendary.Save(t,Adventurer.Con,GazeDC,basilisk)){h.Severity=.5f;return false;}
    t.health.RemoveHediff(h);
    Items.Give(t,"LP_BasiliskPetrified",PetrifiedTicks);
-   Items.Mote(t,"石化！",StoneColor);
+   Items.Mote(t,"石化！".Loc(),StoneColor);
    return true;
   }
   public static int GazeAll(Pawn basilisk){
@@ -98,7 +98,7 @@ namespace LichPhylactery {
    target.health.AddHediff(h);
    target.stances?.stunner?.StunFor(90,cube,false,false);
    comp.engulfReadyTick=Find.TickManager.TicksGame+EngulfCooldown;
-   Items.Mote(target,"被吞没",GelColor);
+   Items.Mote(target,"被吞没".Loc(),GelColor);
    return true;
   }
 
@@ -115,7 +115,7 @@ namespace LichPhylactery {
    if(h.Severity<.99f)return false;
    t.health.RemoveHediff(h);
    Items.Give(t,"LP_CrawlerParalysis",ParalysisTicks);
-   Items.Mote(t,"全身麻痹",CrawlerColor);
+   Items.Mote(t,"全身麻痹".Loc(),CrawlerColor);
    return true;
   }
 
@@ -134,7 +134,7 @@ namespace LichPhylactery {
     proj.Launch(p,p.DrawPos,used,t,used.HasThing?ProjectileHitFlags.IntendedTarget:ProjectileHitFlags.All);
    }
    comp.spikes-=n;
-   if(n>0)Items.Mote(p,"尾刺齐射",SpikeColor);
+   if(n>0)Items.Mote(p,"尾刺齐射".Loc(),SpikeColor);
    return n;
   }
 
@@ -143,10 +143,10 @@ namespace LichPhylactery {
   public static bool Leap(Pawn p,Pawn t){
    var cell=Charge.LandingCell(p,t);if(!cell.IsValid)return false;var map=p.Map;
    var def=DefDatabase<ThingDef>.GetNamedSilentFail("LP_BuletteFlyer");
-   Items.Mote(p,"跃起",StoneColor);
+   Items.Mote(p,"跃起".Loc(),StoneColor);
    PawnFlyer flyer=null;
    try{flyer=def==null?null:PawnFlyer.MakeFlyer(def,p,cell,null,null);}
-   catch(Exception e){Log.WarningOnce("[DND边缘大陆] 掘地兽跃击失败："+e.Message,74177001);}
+   catch(Exception e){Log.WarningOnce("[DND边缘大陆] 掘地兽跃击失败：".Loc()+e.Message,74177001);}
    for(int i=0;i<3;i++)FleckMaker.ThrowDustPuffThick(p.Position.ToVector3Shifted(),map,1.6f,new Color(.6f,.55f,.45f));
    if(flyer==null){Races124.Blink(p,cell);Land(p);return true;}
    GenSpawn.Spawn(flyer,cell,map); // MakeFlyer 已经把掘地兽从地图上拿走了
@@ -163,7 +163,7 @@ namespace LichPhylactery {
     t.TakeDamage(new DamageInfo(blunt,saved?LeapDamage/2:LeapDamage,0.2f,-1f,p));
     if(!saved && !t.Dead){t.stances?.stunner?.StunFor(LeapStunTicks,p,false,false);knocked++;}
    }
-   Items.Mote(p,"致命跃击",StoneColor);
+   Items.Mote(p,"致命跃击".Loc(),StoneColor);
    return knocked;
   }
 
@@ -236,9 +236,9 @@ namespace LichPhylactery {
   public override string CompInspectStringExtra(){
    int now=Now;
    switch(Props.kind){
-    case "Manticore":return "尾刺："+spikes+" / "+WildMonsters.SpikeMax_+(now<volleyReadyTick?"（齐射冷却 "+((volleyReadyTick-now)/60f).ToString("0.#")+" 秒）":"");
-    case "Bulette":return now<leapReadyTick?"跃击冷却："+((leapReadyTick-now)/60f).ToString("0.#")+"秒":null;
-    case "GelatinousCube":return now<engulfReadyTick?"吞没冷却："+((engulfReadyTick-now)/60f).ToString("0.#")+"秒":null;
+    case "Manticore":return "尾刺：".Loc()+spikes+" / "+WildMonsters.SpikeMax_+(now<volleyReadyTick?"（齐射冷却 ".Loc()+((volleyReadyTick-now)/60f).ToString("0.#")+" 秒）".Loc():"");
+    case "Bulette":return now<leapReadyTick?"跃击冷却：".Loc()+((leapReadyTick-now)/60f).ToString("0.#")+"秒".Loc():null;
+    case "GelatinousCube":return now<engulfReadyTick?"吞没冷却：".Loc()+((engulfReadyTick-now)/60f).ToString("0.#")+"秒".Loc():null;
    }
    return null;
   }
@@ -257,7 +257,7 @@ namespace LichPhylactery {
   public Pawn cube;public int left=WildMonsters.EngulfTicks;int acc;
   public bool Holding=>cube!=null && !cube.Dead && !cube.Downed && cube.Spawned && pawn.Spawned && cube.Map==pawn.Map;
   public override bool ShouldRemove=>base.ShouldRemove || left<=0 || !Holding;
-  public override string LabelInBrackets=>(Mathf.Max(0,left)/60f).ToString("0")+"秒";
+  public override string LabelInBrackets=>(Mathf.Max(0,left)/60f).ToString("0")+"秒".Loc();
   public override void PostAdd(DamageInfo? dinfo){base.PostAdd(dinfo);Drag();}
   void Drag(){if(Holding && pawn.Position!=cube.Position)Races124.Blink(pawn,cube.Position);}
   public override void TickInterval(int delta){
@@ -296,6 +296,6 @@ namespace LichPhylactery {
   void ExposeWildMonsters(){Scribe_Values.Look(ref dndMonstersWild,"dndMonstersWild",true);}
  }
  public static class WildMonsterSettings {
-  public static void Draw(Listing_Standard l){l.CheckboxLabeled("野外刷新 DND 怪物",ref LichMod.Settings.dndMonstersWild,"锈蚀怪、凝胶怪、石化蜥、蝎尾狮、掘地兽、腐尸爬虫会在各自的生态区偶尔刷新，也会以狂暴兽群出现。关闭后不再刷新、也不会以狂暴兽群出现（迷锁地牢的「幽暗地穴」不受影响）；保存设置后立即生效，已经在地图上的怪物不受影响。");}
+  public static void Draw(Listing_Standard l){l.CheckboxLabeled("野外刷新 DND 怪物".Loc(),ref LichMod.Settings.dndMonstersWild,"锈蚀怪、凝胶怪、石化蜥、蝎尾狮、掘地兽、腐尸爬虫会在各自的生态区偶尔刷新，也会以狂暴兽群出现。关闭后不再刷新、也不会以狂暴兽群出现（迷锁地牢的「幽暗地穴」不受影响）；保存设置后立即生效，已经在地图上的怪物不受影响。".Loc());}
  }
 }

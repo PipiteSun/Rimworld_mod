@@ -163,11 +163,10 @@ namespace LichPhylactery {
    map.zoneManager.DeregisterZone(zone);
    DragClean();
 
-   // 8 龙过境联动：没有成年力能龙裔 → 25% 五色龙降落勒索；有力能龙裔时原来的逻辑不变
+   // 8 龙过境联动：25% 五色龙降落勒索
    Dragons.TestRoll=0f;var fly=Dragons.OnFlyoverEnd(map);Dragons.TestRoll=.99f;var noFly=Dragons.OnFlyoverEnd(map);Dragons.TestRoll=null;
-   bool forceDragonBranch=DragonFlyover.AdultDragons(map).Count==0;
    Events2.TestRoll=.99f;int before=st.encounters.Count;DragonFlyover.OnFlyoverEnd(map);Events2.TestRoll=null;
-   Check(fly!=null && fly.kind=="extortion" && fly.color!="White" && noFly==null && forceDragonBranch,"dragon flyover without an adult force dragon: 25% a chromatic dragon lands and extorts (never white)");
+   Check(fly!=null && fly.kind=="extortion" && fly.color!="White" && noFly==null,"dragon flyover: 25% a chromatic dragon lands and extorts (never white)");
    DragClean();
 
    // 9 龙巢：地点、宝藏价值、魔法物品、重铸之石；巢穴动作

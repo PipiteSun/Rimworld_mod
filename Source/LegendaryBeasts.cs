@@ -40,8 +40,8 @@ namespace LichPhylactery {
  public static class LegendaryBeastLoad {
   static void Postfix(Pawn __instance){
    if(Scribe.mode!=LoadSaveMode.PostLoadInit || !LegendaryBeasts.IsRace(__instance?.def))return;
-   try{if(LegendaryBeasts.StripHumanlike(__instance))Log.Message("[DND边缘大陆] 旧存档："+__instance.LabelShortCap+"（"+__instance.def.label+"）改成动物型怪物，去掉了人形部件。");}
-   catch(Exception e){Log.Warning("[DND边缘大陆] 旧存档传奇怪转换失败（"+__instance.LabelShortCap+"）："+e.Message);}
+   try{if(LegendaryBeasts.StripHumanlike(__instance))Log.Message("[DND边缘大陆] 旧存档：".Loc()+__instance.LabelShortCap+"（".Loc()+__instance.def.label+"）改成动物型怪物，去掉了人形部件。".Loc());}
+   catch(Exception e){Log.Warning("[DND边缘大陆] 旧存档传奇怪转换失败（".Loc()+__instance.LabelShortCap+"）：".Loc()+e.Message);}
   }
  }
 
@@ -54,6 +54,6 @@ namespace LichPhylactery {
  }
  public class StatPart_LegendaryBeastMelee : StatPart {
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p)val*=LegendaryBeasts.MeleeFactor(p);}
-  public override string ExplanationPart(StatRequest req){if(!(req.Thing is Pawn p))return null;float f=LegendaryBeasts.MeleeFactor(p);return f>1.0001f?"传奇等级（近战）：×"+f.ToString("0.##"):null;}
+  public override string ExplanationPart(StatRequest req){if(!(req.Thing is Pawn p))return null;float f=LegendaryBeasts.MeleeFactor(p);return f>1.0001f?"传奇等级（近战）：×".Loc()+f.ToString("0.##"):null;}
  }
 }

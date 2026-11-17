@@ -186,16 +186,6 @@
     <enemyTags><li>any</li></enemyTags>
   </LichPhylactery.LP_FeatDef>
   <LichPhylactery.LP_FeatDef>
-    <defName>LP_Feat_DragonFear</defName>
-    <label>龙威</label>
-    <description>龙的怒火让人胆寒。龙息（力能龙裔不带武器的伤害）命中的敌人 40% 恐慌逃跑 8 秒（首领、传奇单位无效）。只有力能龙裔能选。附带力量或魅力 +1。</description>
-    <bonusAbilities><li>Str</li><li>Cha</li></bonusAbilities>
-    <iconPath>LP/Feats/DragonFear</iconPath>
-    <order>41</order><category>Racial</category>
-    <requiredXenotypesAny><li>LP_ForceDragon</li></requiredXenotypesAny>
-    <enemyTags><li>any</li></enemyTags>
-  </LichPhylactery.LP_FeatDef>
-  <LichPhylactery.LP_FeatDef>
     <defName>LP_Feat_InfernalWrath</defName>
     <label>炼狱之怒</label>
     <description>挨打只会让血里的火烧得更旺。被敌人攻击后，下一次攻击额外造成 15 + 冒险者等级点火焰伤害（5 秒冷却）。只有提夫林、阿斯莫能选。附带魅力 +1。</description>

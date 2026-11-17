@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 血肉孵化槽 -->
+  <LP_FleshIncubator.label>flesh incubator</LP_FleshIncubator.label>
+  <!-- 一口泡着畸变膏的肉槽。往里填扭曲肉，每 30 份孵出 1 只友好的小血肉兽（指刺兽），听殖民地的话，3 天后烂掉；同时最多 4 只。孵一只要 6 小时。\n\n又腥又难看：周围美观 -10。 -->
+  <LP_FleshIncubator.description>A flesh trough steeped in aberrant paste. Fill it with twisted meat: every 30 units hatches 1 friendly small flesh beast (a fingerspike) that obeys the colony and rots after 3 days; at most 4 at a time. Each one takes 6 hours to hatch.\n\nFoul-smelling and ugly: beauty -10 around it.</LP_FleshIncubator.description>
+  <!-- 扭曲肉 -->
+  <LP_FleshIncubator.comps.CompRefuelable.fuelGizmoLabel>twisted meat</LP_FleshIncubator.comps.CompRefuelable.fuelGizmoLabel>
+  <!-- 扭曲肉 -->
+  <LP_FleshIncubator.comps.CompRefuelable.fuelLabel>twisted meat</LP_FleshIncubator.comps.CompRefuelable.fuelLabel>
+  <!-- 血肉壁垒 -->
+  <LP_FleshWall.label>flesh bulwark</LP_FleshWall.label>
+  <!-- 用畸变膏“种”出来的墙，一直在慢慢跳动。和石墙差不多结实，每天自己长回 10% 生命；怕酸（酸液伤害 ×2）。能撑住屋顶。 -->
+  <LP_FleshWall.description>A wall "grown" from aberrant paste that keeps slowly pulsing. About as sturdy as a stone wall, regrows 10% health per day; vulnerable to acid (acid damage ×2). Can hold up a roof.</LP_FleshWall.description>
+</LanguageData>

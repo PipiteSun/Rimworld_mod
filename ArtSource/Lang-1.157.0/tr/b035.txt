@@ -1,0 +1,187 @@
+s07688	flesh lock
+s07689	On an ally within 15 cells: stitch up all bleeding wounds and heal 15 × arcane power. On yourself: no blood loss; instead blood loss is reduced by 20%. Blood loss 16% (free on yourself), cooldown 1 hour. School of Hemomancy, wizard level 7.
+s07690	flesh shaping
+s07691	Passive: when you kill an enemy with blood, your blood loss -10% (vampires: hemogen +10). School of Hemomancy, wizard level 7.
+s07692	blood siphon
+s07693	Just cast hemomancy: damage taken ×0.5.
+s07694	crimson avatar
+s07695	Broke my own oath three times in one day. What kind of paladin am I?
+s07696	forsook the oath
+s07697	Broke the oath: divinity recovery halved, Channel Oath unusable.
+s07698	oath broken
+s07699	Psychic sensitivity +15%, focus gained from meditation +25%.
+s07700	telekinetic adept
+s07701	Ranged damage taken ×0.5.
+s07702	guardian field
+s07703	Allies within radius 6 (including yourself) take ×0.5 ranged damage for 10 seconds. Passive: mind resistance +20%. Grit 2 (neural heat 30 instead with a psylink), cooldown 1 hour. Psi Warrior, fighter level 11.
+s07704	Mind resistance +20%.
+s07705	bulwark of force
+s07706	Passive: with a psylink, each hit taken ×0.7 while adding 4 neural heat (no effect if neural heat can't take it); without a psylink, each hit taken ×0.85. Psi Warrior, fighter level 3.
+s07707	protective field
+s07708	Passive: psychic sensitivity +15%, focus gained from meditation +25%. Psi Warrior, fighter level 7.
+s07709	For 30 seconds each melee hit adds 6 × martial power psychic damage. Grit 1 (neural heat 8 instead with a psylink), cooldown 30 seconds. Psi Warrior, fighter level 3.
+s07710	psionic strike
+s07711	One enemy within 15 cells has a 70% chance (40% for mechanoids) to be pushed back 3 cells and knocked down for 2 seconds. -5% success per level the target is above you, minimum 10%. Grit 1 (neural heat 10 instead with a psylink), cooldown 10 seconds. Psi Warrior, fighter level 7.
+s07712	telekinetic thrust
+s07713	Max neural heat ×1.3.
+s07714	telekinetic master
+s07715	Each melee hit adds 6 × power psychic damage.
+s07716	Hurl yourself with telekinesis to an empty cell within 10 cells, ignoring obstacles. Grit 1 (neural heat 10 instead with a psylink), cooldown 10 seconds. Psi Warrior, fighter level 3.
+s07717	telekinetic leap
+s07718	All enemies within radius 8 are lifted by telekinesis and slammed down: stunned for 3 seconds, taking 15 × martial power blunt damage. Passive: max neural heat ×1.3. Grit 3 (neural heat 40 instead with a psylink), once per day. Psi Warrior, fighter level 15.
+s07719	telekinetic storm
+s07720	Passive: while drafted, when an ally within radius 5 is hit by an enemy, you take that hit instead (transferred damage ×0.75). Oath of Redemption, paladin level 7.
+s07721	aura of the guardian
+s07722	Social impact +30%, negotiation ability +20%.
+s07723	emissary of peace
+s07724	For 1 hour social impact +30% and negotiation ability +20% (benefits recruiting, trading and comms console negotiation). Channel Oath 1, no divinity cost. Oath of Redemption, paladin level 3.
+s07725	channel oath: emissary of peace
+s07726	Passive: damage taken ×0.75 (except holy and psychic damage); enemies hitting you in melee take 4 × divine power holy retribution damage. Oath of Redemption, paladin level 15.
+s07727	emissary of redemption
+s07728	Passive: with over half your health lost, heal 1 × divine power every 4 seconds; mental break threshold -10%. Oath of Redemption, paladin level 11.
+s07729	protective spirit
+s07730	The next enemy to hit you or an ally within 15 cells in melee takes equal holy damage (at most the severity).
+s07731	rebuke the violent
+s07732	Valid for 1 day: the next enemy to hit you or an ally within 15 cells in melee takes holy damage equal to that hit (at most 30 × divine power). Channel Oath 1, no divinity cost. Oath of Redemption, paladin level 3.
+s07733	channel oath: rebuke the violent
+s07734	Reach out to the enemies of the whole map: each humanlike enemy (except bosses and prisoners) has a 40% chance to drop their weapon and leave, and their faction's goodwill +15. No effect on mechanoids and manhunters. Divinity 3, cooldown 15 days. Oath of Redemption, paladin level 15.
+s07735	reconciliation
+s07736	Mental break threshold -10%; continuous healing while over half your health is lost.
+s07737	A small construct pieced together by a Battle Smith from steel and components, about the size of a dog. Doesn't eat or sleep, fights alongside its master, and steps in when the master is attacked in melee. Leaves only a pile of steel when destroyed.
+s07738	iron fist
+s07739	The shadow of a mind flayer lies in the blood: calm colonists having breaks, hurt enemies with psionic spikes, grow tentacles, and finally dominate an enemy to serve you.
+s07740	Aberrant Mind
+s07741	Rule through fear. Channel Oath once per day (twice at level 11, three times at 15), no divinity cost. Tenet: don't release prisoners; when the colony releases a prisoner the oath is broken (for 1 day divinity recovery halved and Channel Oath unusable; a third break within 1 day adds mood -10).
+s07742	Oath of Conquest
+s07743	The soul of a true dragon flows in the blood: dragon blood at level 4 (Constitution +2), dragon wings at 10 (walking ignores terrain), dragon fear at 14 (a frightful presence like a true dragon's that can frighten enemies and make them panic and flee).
+s07744	Draconic Soul
+s07745	Sword and sorcery. Has their own mana (max 1 + fighter level ÷ 3, recovered by sleep and research, slowly regained while awake too), used for war cantrips; the bound weapon can't be disarmed and can be summoned back to the hand.
+s07746	Eldritch Knight
+s07747	permanently fixed enhancement
+s07748	Charisma +4, always on, doesn't reduce max mana.
+s07749	Skin turns red, wound healing ×2 with continuous regeneration, always on, doesn't reduce max mana.
+s07750	Psychic sensitivity +60%, always on, doesn't reduce max mana.
+s07751	Cage the fiend of your bloodline within your body, trading max mana for body enhancements: eyes (Charisma), skin (turns red, faster wound healing and continuous regeneration), tongue (psychic sensitivity). Each enhancement turned on reduces sorcerer max mana by 2. At level 4 only 1 can be on at once; at level 8 you can have 2 on and enhancement effects double; at level 12 pick one to fix permanently (always on, not counting toward the limit, not reducing mana), with the other two maintained as usual.
+s07752	Fiendish Blood
+s07753	Blood instead of mana: hemomancy spells don't cost mana but make you lose blood (can't cast once blood loss reaches 45%; vampires spend hemogen instead). The more you're hurt yourself, the higher the hemomancy damage (up to +30%). Liches and the undead have no blood and can't choose it.
+s07754	School of Hemomancy
+s07755	Fight with the power of the mind. With a psylink, abilities cost no grit and add neural heat instead (costing grit as usual when neural heat can't take it); without a psylink they only cost grit. Effects are multiplied by psychic sensitivity.
+s07756	Psi Warrior
+s07757	Make peace to end war. Channel Oath once per day (twice at level 11, three times at 15), no divinity cost. Tenet: never personally kill a downed person, prisoner or slave (executions count); violating it breaks the oath (for 1 day divinity recovery halved and Channel Oath unusable; a third break within 1 day adds mood -10).
+s07758	Oath of Redemption
+s07759	Passive: augmented breath, dragon's breath 12 cells with 24 × martial power damage; blindsight, enemies within 3 cells can't turn invisible; fury burst, during ancient dragon stance each enemy in the aura takes 16 × martial power damage of the chosen element. Way of the Ascendant Dragon, monk level 17.
+s07760	ascendant aspect
+s07761	Exude a draconic aura for 1 minute: allies within radius 3 (including yourself) take ×0.5 damage of the chosen element; enemies in the aura have a 50% chance to panic and flee for 10 seconds (-5% per level the target is above you). The first use each day is free, then 3 ki each time. Cooldown 10 seconds. Way of the Ascendant Dragon, monk level 11.
+s07762	ancient dragon stance
+s07763	The ancient dragon's aura protects you: damage of the chosen element ×0.5.
+s07764	cold
+s07765	poison
+s07766	Breathe a 6-cell cone of dragon breath in one direction (12 cells from level 17): each enemy takes 12 × martial power damage of the chosen element (18 at level 11, 24 at 17), with a 50% chance to dodge half (+5% dodge chance per level the target is above you). Free 2 + (monk level - 1) ÷ 4 times per day, then 2 ki each time. Cooldown 5 seconds. Way of the Ascendant Dragon, monk level 3.
+s07767	breath of the dragon
+s07768	Passive: draconic strike, unarmed hits add 4 × martial power damage of the chosen element; draconic presence, social impact +15%, negotiation ability +10%. Way of the Ascendant Dragon, monk level 3.
+s07769	draconic disciple
+s07770	Click the button to switch the dragon's element: fire → cold → lightning → acid → poison. Draconic strike, breath of the dragon and ancient dragon stance all use it. No ki cost. Way of the Ascendant Dragon, monk level 3.
+s07771	draconic strike: element
+s07772	Every gesture carries a great dragon's bearing: social impact +15%, negotiation ability +10%.
+s07773	draconic presence
+s07774	Passive: during Step of the Wind, spectral dragon wings unfold on your back, and terrain, snow and plants don't slow you while walking. Way of the Ascendant Dragon, monk level 6.
+s07775	wings unfurled
+s07776	Passive: evocation spell (magic missile, fireball, lightning bolt, disintegrate) damage + Intelligence modifier × 10% (Intelligence 16 → +30%). School of Evocation, wizard level 10.
+s07777	empowered evocation
+s07778	The next evocation spell deals ×2 damage.
+s07779	The next evocation spell cast within 10 seconds deals ×2 damage. The first use between each sleep has no cost; each further use deals 26 / 39 / 52... arcane force backlash to yourself after casting (26 for the 2nd, +13 each time after, ignoring resistance). No mana cost, cooldown 10 seconds. School of Evocation, wizard level 14.
+s07780	overchannel
+s07781	Passive: magic missile (the wizard cantrip) damage ×1.5. School of Evocation, wizard level 6.
+s07782	potent cantrip
+s07783	Passive: research speed +20% (studying spell theory). School of Evocation, wizard level 2.
+s07784	evocation savant
+s07785	Research speed +20%.
+s07786	Passive: your spell damage (fire, cold, lightning, psychic, arcane force, not from weapons) can't hit allies, so fireball and lightning bolt can be thrown into melee with confidence. Different from the class feat "Spell sculpting" (mana -1, cooldown ×0.85); both can be had at once. School of Evocation, wizard level 2.
+s07787	sculpt spells (school)
+s07788	Spend 50 steel that isn't forbidden on the map to conjure an excellent-quality steel longsword, spear or mace at your feet (choose in a popup). Channel Divinity 1, no divinity cost. Forge Domain, cleric level 2.
+s07789	channel divinity: artisan's blessing
+s07790	Enchant the weapon in hand (or the best-armored piece of worn apparel if no weapon) +1 (up to +10); blessing another piece withdraws the +1 from the previous one. Passive: crafting and handiwork speed +10%. Once per day. Forge Domain, cleric level 1.
+s07791	Crafting and other handiwork speed +10%.
+s07792	blessing of the forge
+s07793	Passive: the first weapon hit every 2 seconds adds 8 × divine power fire damage (16 from level 14). Forge Domain, cleric level 8.
+s07794	divine strike: fire
+s07795	Passive: immune to fire and burning; while wearing heavy armor, non-spell damage taken ×0.5 (replacing soul of the forge's ×0.9). Forge Domain, cleric level 17.
+s07796	saint of forge and fire
+s07797	Passive: fire damage ×0.5; while wearing heavy armor (60%+ sharp armor), damage taken another ×0.9. Forge Domain, cleric level 6.
+s07798	soul of the forge
+s07799	Ice underfoot: movement ×0.4 (×0.2 when upgraded).
+s07800	frost grip
+s07801	Cast a different spell based on the map's climate (at a point within 20 cells): cold, frost grip (radius 3, 8 × verdant power freezing, movement ×0.4 for 10 seconds); temperate, grasping roots (radius 3, 6 blunt and entangled by vines for 10 seconds); desert, sunbeam (a 10-cell line toward it, 15 fire and sight -50% for 3 seconds); humid, plague mist (radius 3, toxic buildup +15%). Upgraded from level 10: frost ×0.2 with a 50% chance to freeze for 3 seconds, roots and plague radius 5 with toxin +25%, sunbeam ×1.5 by day. Mana 2, cooldown 20 seconds. Circle of the Land, druid level 2.
+s07802	land's spell
+s07803	Passive: no slowdown from terrain, snow or plants, can't be entangled by vines; plant work speed +20%. Circle of the Land, druid level 6.
+s07804	land's stride
+s07805	Sit still for 5 seconds communing with the earth to recover half your max mana. Once per day. Circle of the Land, druid level 2.
+s07806	natural recovery
+s07807	Passive: immune to food poisoning and toxic buildup, immunity gain ×1.5; land's spell upgraded, earth shaping radius +1. Circle of the Land, druid level 10.
+s07808	nature's ward
+s07809	Passive: attacks from animals (wild, manhunting, enemy) can't hurt you; while standing on natural ground (not floors), heal 1 every 4 seconds. Circle of the Land, druid level 14.
+s07810	nature's sanctuary
+s07811	No slowdown from terrain, snow or plants, can't be entangled by vines; plant work speed +20%.
+s07812	Click the button to switch the terrain earth shaping creates: deep water → shallow water → marsh → mud → soil → rich soil → sand. No mana cost. Circle of the Land, druid level 6.
+s07813	earth shaping: terrain
+s07814	Permanently reshape the terrain in radius 2 at a point within 20 cells (radius 3 from level 10) into the type picked with the "terrain" button: deep water (dig a lake), shallow water, marsh, mud, soil, rich soil, sand. Only changes natural ground: player-laid floors, cells with buildings / items / pawns, and special terrain like lava and propane lakes (Alpha Biomes) are left alone; plants on cells turned to water are washed away. Mana 2, cooldown 10 seconds. Circle of the Land, druid level 6.
+s07815	earth shaping
+s07816	Immune to food poisoning and toxic buildup, immunity gain ×1.5.
+s07817	Passive: each time you cast cure wounds or mass cure wounds, you also heal 2 + that spell's divinity cost. Life Domain, cleric level 6.
+s07818	blessed healer
+s07819	Passive: cure wounds and mass cure wounds healing ×1.3; tend speed and tend quality +15%, surgery success +10%. Life Domain, cleric level 1.
+s07820	disciple of life
+s07821	Healing spells ×1.3; tend speed and tend quality +15%, surgery success +10%.
+s07822	Passive: the first weapon hit every 2 seconds adds 8 × divine power radiant damage (16 from level 14). Life Domain, cleric level 8.
+s07823	divine strike: radiant
+s07824	Allies within radius 6 with over half their health lost share 5 × cleric level healing, the most injured first, each healed back at most half their injuries. Channel Divinity 1, no divinity cost. Life Domain, cleric level 2.
+s07825	channel divinity: preserve life
+s07826	Passive: healing spell amounts another ×1.5 (×1.95 in total). Life Domain, cleric level 17.
+s07827	supreme healing
+s07828	A 1-minute aura of dawnlight: enemies within radius 6 take 8 × divine power radiant damage every 4 seconds and sight -30%. Uses one Channel Divinity with no divinity cost if you have any left, otherwise divinity 3. Cooldown 10 seconds. Light Domain, cleric level 17.
+s07829	corona of light
+s07830	Wreathed in dawnlight: enemies within radius 6 take radiant damage every 4 seconds and sight -30%.
+s07831	Dispel magical darkness within radius 6, reveal invisible enemies for 1 hour, and each enemy takes 10 × divine power + cleric level radiant damage (×2 against undead, fiends and mind flayers from level 6). Channel Divinity 1, no divinity cost. Light Domain, cleric level 2.
+s07832	channel divinity: radiance of the dawn
+s07833	Dazzled by dawnlight: sight -30%.
+s07834	dawnlight glare
+s07835	Passive: warding flare also protects allies within 15 cells; radiance of the dawn ×2 against undead, fiends and mind flayers. Light Domain, cleric level 6.
+s07836	improved warding flare
+s07837	Cantrip: make a cell within 20 cells glow for 1 day (light radius 6). No divinity cost, cooldown 5 seconds. Light Domain, cleric level 1.
+s07838	light
+s07839	A ball of light lit by a cleric; goes out after a day.
+s07840	Passive: divine strike (the cleric cantrip) damage + Wisdom modifier × 10%. Light Domain, cleric level 8.
+s07841	potent spellcasting
+s07842	Passive: when an enemy attacks you, spend one warding flare for a 50% chance (-5% per level the attacker is above you) to dazzle them into missing. Uses per day = Wisdom modifier (at least 1). Light Domain, cleric level 1.
+s07843	warding flare
+s07844	Detonate the enemy on the same map carrying your quivering ki (no need to see them): 50% chance (25% for bosses, -5% per level the target is above you, minimum 10%) to drop them outright; even on failure they take 55 × martial power force damage. No ki cost, cooldown 10 seconds. Way of the Open Hand, monk level 17.
+s07845	detonate quivering palm
+s07846	A lethal force lies latent in the body, and the Open Hand monk can detonate it at any time.
+s07847	Punch a lethal force into an adjacent enemy (a full melee resolution): the force lies latent for monk level days with no effect until you use "detonate quivering palm". Only one person can carry quivering ki at a time. Ki 3, cooldown 10 seconds. Way of the Open Hand, monk level 17.
+s07848	quivering palm
+s07849	Ki disrupted by an Open Hand monk: melee hit -30%.
+s07850	disrupted
+s07851	Each punch of Flurry of Blows adds an effect; click this button to cycle three: knockdown (70% chance, stun 1.5 seconds), push (70% chance, push 3 cells), disrupt (always works, the target's melee hit -30% for 6 seconds). -5% success per level the target is above you, minimum 10%. No ki cost. Way of the Open Hand, monk level 3.
+s07852	open hand technique
+s07853	Surrounded by an aura of peace: each enemy attack has a 50% chance to miss (-5% per level they're above you). Ends when you attack an enemy; regained after waking from sleep.
+s07854	tranquility
+s07855	Passive: every time you wake you carry an aura of peace: each enemy attack has a 50% chance to miss (-5% per level they're above you, minimum 10%). The aura breaks as soon as you attack an enemy, returning the next time you wake. Way of the Open Hand, monk level 11.
+s07856	Circulate ki to heal yourself: instantly heal 3 × monk level injury. No ki cost, once per day. Way of the Open Hand, monk level 6.
+s07857	wholeness of body
+s07858	The mind of the spellbook floats beside you: the next wizard spells cost no mana (severity = remaining uses), and enemies within 15 cells can't turn invisible.
+s07859	Manifest the mind of the spellbook for 1 hour: the next 3 wizard spells cost no mana, and enemies within 15 cells can't turn invisible. Once per day. Order of Scribes, wizard level 6.
+s07860	manifest mind
+s07861	Passive: each time you wake, one more scroll is in your pack (a random one of fireball, true seeing, protection from evil, teleportation), which anyone can read. Order of Scribes, wizard level 10.
+s07862	master scrivener
+s07863	Passive: once between each sleep, when you've lost over half your health, block one hit of 10 or more damage; the cost is losing a random 3-18 mana (down to 0 if not enough). Order of Scribes, wizard level 14.
+s07864	one with the word
+s07865	Passive: a magic quill that needs no ink: reading scrolls never fails, research speed +10%. Order of Scribes, wizard level 2.
+s07866	wizardly quill
+s07867	Magic quill: reading scrolls never fails, research speed +10%.
+s07868	Click the button to switch fireball and lightning bolt damage type: unchanged → fire → cold → lightning → arcane force (for enemies weak to some element, or immune to fire). No mana cost. Order of Scribes, wizard level 2.
+s07869	awakened spellbook
+s07870	While standing in darkness, become a shadow: invisible until you attack or step into light (30%+ light). No ki cost, cooldown 10 seconds. Way of Shadow, monk level 11.
+s07871	cloak of shadows
+s07872	Become a shadow: invisible, revealed by attacking or stepping into light.
+s07873	While in darkness, sight +30%, unaffected by magical darkness.
+s07874	shadow sight

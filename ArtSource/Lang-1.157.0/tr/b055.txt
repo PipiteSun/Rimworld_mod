@@ -1,0 +1,480 @@
+s15833	When the colony has people on a DND class path, a mentor of the same path comes to stay for 3 days, teaching once a day (not limited by the daily XP cap); paying or giving a scroll keeps them 3 more days. Only appears with Vanilla Psycasts Expanded enabled.
+s15834	Child of the storm (rain and wind): ×
+s15835	unharmed by lightning
+s15836	 is shackled and can't use abilities.
+s15837	Only adult storm giants can summon storms.
+s15838	Must release the lightning in a direction.
+s15839	 summoned a storm: thunderstorms will last a day, and lightning will strike enemies.
+s15840	Must be used on a map.
+s15841	 crushed the storm orb: dark clouds roll in, and thunderstorms will last a day.
+s15842	Die of fate: 1! Critical failure
+s15843	A dull thud comes from behind the screen. Talia looks down at the die, then slowly smiles.\n\n"A one. So sorry, everyone."
+s15844	Die of fate:\s
+s15845	 (misfortune)
+s15846	The die rolls to the edge of the table and stops. Talia turns a page of her notes: "Not very lucky... a bit of trouble on the road, then."
+s15847	The die of fate shows\s
+s15848	: Talia glances at the die and carries on with the story.
+s15849	 (good fortune)
+s15850	The number on the die glimmers. Talia nods: "A fine check. On this stretch of the journey, the gods are on your side."
+s15851	 was inspired.
+s15852	Die of fate: 20! Critical success
+s15853	The moment the die settles, every candle behind the screen flares. Talia slaps the table and stands: "Natural twenty!"
+s15854	All adventurers gained XP (about\s
+s15855	A magic item falls from the sky:\s
+s15856	\n\nNext:\s
+s15857	binding arrow
+s15858	shadow arrow
+s15859	bursting arrow
+s15860	dreadful aspect
+s15861	resisted control
+s15862	controlled
+s15863	's control, fighting for you for 1 day.
+s15864	Can only control the dead or fiends.
+s15865	Story bosses and legendary units can't be controlled.
+s15866	knocked down
+s15867	ancient stomp
+s15868	titan form ended: exhausted
+s15869	Must be on a map to stomp.
+s15870	Already in titan form.
+s15871	Body size ×
+s15872	 quest rewards (
+s15873	 days:\s
+s15874	kill\s
+s15875	 enemies or beasts
+s15876	complete\s
+s15877	 crafts
+s15878	heal others\s
+s15879	harvest crops\s
+s15880	research\s
+s15881	capture\s
+s15882	The system has issued new quests:\s
+s15883	 can choose one of\s
+s15884	 quests to accept in the "system panel".
+s15885	The quests have changed; please reopen the system panel.
+s15886	Accepted the quest "
+s15887	Abandoned the quest "
+s15888	" (abandoned voluntarily, no penalty)
+s15889	Lost "system host"; the quest "
+s15890	" is void
+s15891	Completed the quest "
+s15892	", earning one reward
+s15893	 completed the system quest "
+s15894	" and can claim a reward!
+s15895	The quest "
+s15896	" timed out; system penalty for 3 days
+s15897	System penalty:\s
+s15898	 failed to complete the quest "
+s15899	" in time (completed\s
+s15900	).\n\nThe voice in their head coldly announced the penalty: global work speed ×0.85 for 3 days.
+s15901	The character or reward has changed; please reopen the window.
+s15902	This person has no adventurer level and can't claim ability points. The reward chance is kept.
+s15903	Gained 1 adventurer ability point (assign it on the "Adventurer" tab)
+s15904	The fate talisman couldn't be put in the inventory; the reward chance is kept.
+s15905	Gained item: fate talisman ×1 (put in inventory)
+s15906	This item is currently unavailable. The reward chance is kept.
+s15907	The item couldn't be put in the inventory; the reward chance is kept.
+s15908	Gained item:\s
+s15909	 (put in inventory)
+s15910	The system hasn't issued quests yet
+s15911	Current quest:\s
+s15912	\s
+s15913	 quests waiting to be accepted
+s15914	Waiting for the next quest issue
+s15915	, rewards to claim\s
+s15916	. Click the "system panel" button under the character to view.
+s15917	System panel (
+s15918	System panel
+s15919	Open the system host's panel: view and accept quests, and claim rewards for completed quests.\n\n
+s15920	Fate talisman (
+s15921	Use a fate talisman from the inventory: rewrite one trait of yourself or another colonist in the same place into another trait of the same tier. Consumes 1 fate talisman.
+s15922	Curse ·\s
+s15923	Deed ·\s
+s15924	Doesn't have this trait
+s15925	Granted by the gene "
+s15926	"
+s15927	Specified by the starting scenario
+s15928	Legendary deeds can't be rewritten
+s15929	The system host can't rewrite itself
+s15930	Isekai / Hundred Battles Awakening traits are managed by those systems
+s15931	Granted by the story; tracks story progress
+s15932	The fate talisman or traits have changed; please reopen the window.
+s15933	This trait can't be rewritten:\s
+s15934	Can't change to this trait (different tier, conflicting or already owned).
+s15935	Fate rewritten:\s
+s15936	's destiny has been rewritten.\n\nTrait "
+s15937	" → "
+s15938	).\n\nThe fate talisman burned out into a wisp of blue smoke.
+s15939	Use fate talisman
+s15940	Choose a colonist on this map and rewrite one of their traits into another trait of the same tier. Consumes 1 fate talisman.
+s15941	Rewrite fate
+s15942	Rewrite one trait into another of the same tier (spectrum traits count each degree as its own tier). Curses can only become curses; legendary deeds, gene-granted traits and story traits can't be changed. Consumes 1 fate talisman (\s
+s15943	First choose a trait to rewrite in the middle.
+s15944	No trait of the same tier to change to.
+s15945	No trait chosen
+s15946	" → ?
+s15947	Confirm fate rewrite
+s15948	?\n\nThe old trait will be removed, consuming 1 fate talisman.
+s15949	 · system host
+s15950	No "system host" trait; no more quests issued
+s15951	Quest in progress; more are issued once it's completed or ended
+s15952	issuing soon
+s15953	Next issue: about\s
+s15954	Quests completed {0}    timed out {1}    abandoned {2}    rewards claimed {3}    {4}
+s15955	Current quest: {0}    {1} / {2}    {3:0.0} days left
+s15956	Abandon quest
+s15957	Abandon the quest "{0}"? Abandoning voluntarily has no penalty, but this quest won't give a reward anymore.
+s15958	Progress counts this person's records after accepting the quest (kills, crafting, healing, harvesting, research, captures). Completing it within the deadline earns one reward; timing out brings a 3-day system penalty (global work speed ×0.85).
+s15959	Accept quest
+s15960	Accept the quest "{0}"? Deadline 7 days; timing out brings a 3-day system penalty; the other two quests will be abandoned.
+s15961	Choose one of three quests to accept, or accept none (a new batch comes next issue). Closing the panel doesn't reroll.
+s15962	No quests to accept right now. The system issues quests every 7 days.
+s15963	This person no longer has the "system host" trait: no more quests are issued, but rewards for completed quests can still be claimed.
+s15964	{0} to claim. Choose one of three each time: ability points are assigned on the "Adventurer" tab, items go into the inventory.
+s15965	Ability growth
+s15966	+1 ability point
+s15967	Added to the adventurer's assignable ability points (assigned in the same place as points from leveling up), usable for Strength, Dexterity, Constitution, Intelligence, Wisdom or Charisma.
+s15968	This person has no adventurer level (adventurer system off or under 13), so this option isn't available.
+s15969	Fate talisman ×1
+s15970	Put into the inventory. When used, rewrites one trait of yourself or another colonist in the same place into another trait of the same tier (curses only to curses; deeds and gene traits can't be changed).
+s15971	Random item
+s15972	Revealed after completing the quest
+s15973	No items available
+s15974	A random one of: magic core, enhancement core, mana essence or star fragment.
+s15975	A random one of: healing potion, potion of superior healing, potion of heroism, planar residue or mithral.
+s15976	Open adventurer tab
+s15977	Claiming now: {0}
+s15978	Complete system quests to earn the next reward.
+s15979	No "system host" trait; no more new rewards.
+s15980	System log (quests and rewards, last 60 entries)
+s15981	Hover for details
+s15982	Choose this reward
+s15983	Claim {0}, choosing "{1}: {2}"? The other two rewards this time will be given up.
+s15984	Can only be used on other humanlikes.
+s15985	 is too young.
+s15986	 can't respond right now.
+s15987	Can't be used on hostile people.
+s15988	Can only be used on people of the same faction, or this colony's prisoners or slaves.
+s15989	 is asexual.
+s15990	Can't be used on blood relatives.
+s15991	's opinion is below 0.
+s15992	Divine might:\s
+s15993	\nRecovers 10 per day naturally; another 10 per day when mood ≥80%; +5 per enemy killed.\nDivine punishment costs 30, divine kin's breath costs 40.
+s15994	The starting titan excels at melee and social; it starts with a sire god acknowledged (random among the seven worshippable gods), and the path of titan awakening is already open.
+s15995	 still remembered the sire god's name when falling from the heavens:\s
+s15996	(no worshippable god)
+s15997	, portfolio "
+s15998	\n\nThe path of titan awakening is open (recommended path). Select\s
+s15999	 and click "path to godhood" to view progress:\n\n
+s16000	\n\nNext come the war of giants and the Gate of the Heavens, after which they awaken directly as a demigod. If you don't want this path, you can abandon it in the window.
+s16001	\n\nThe ascension questline is off in settings: the sire god is recorded, and will still be this one when the path of titan awakening is taken after turning it on.
+s16002	Fallen divine kin: sire god\s
+s16003	Turned invisible!
+s16004	Hasted!
+s16005	Teleported!
+s16006	Flowers sprouted on their head
+s16007	Hic!
+s16008	Changed color!
+s16009	The alliance is hostile to you
+s16010	Alliance goodwill below\s
+s16011	Needs a powered comms console
+s16012	alliance demolition crew
+s16013	Thayan recovery team
+s16014	 didn't come.
+s16015	Alliance demolition crew
+s16016	 sent a crew to dismantle the wizard tower wreck. When done, they'll leave half the materials to you.
+s16017	Thayan recovery team
+s16018	 sent a recovery team to haul the wizard tower wreck back to Thay.
+s16019	The guards kept watching the wreck and you never made your stance known, so they came on their own.
+s16020	\n\nLet them stay a full hour and the wreck will be hauled away; repel them and the wreck stays yours.
+s16021	Help dismantle the wizard tower wreck
+s16022	Wreck dismantled
+s16023	The alliance demolition crew dismantled the wizard tower wreck and left half the materials:\s
+s16024	. Alliance goodwill +
+s16025	Wreck recovered
+s16026	The Thayan recovery team hauled away the wizard tower wreck.
+s16027	A Thayan wizard tower fell from the sky and crashed outside the colony! The wreck is guarded by\s
+s16028	 red-robed skeletons, and wild magic spills out within radius\s
+s16029	 cells: nearby people and animals will now and then turn invisible, speed up, get teleported, sprout flowers on their heads, hiccup or change color (none of it fatal).\n\n
+s16030	Dismantle it yourself: after defeating the guards, dismantle the wreck for scrolls, steel, plasteel and possibly wondrous items.\nWait for Thay to recover it: in 5 days Thay sends a recovery team to haul it away (they'll fight you; repel them and the wreck stays yours).\nNotify the alliance: needs a powered comms console and alliance goodwill ≥
+s16031	. In 3 days the alliance sends people to dismantle it and leave half the materials, alliance goodwill +
+s16032	.\n\nNot choosing counts as handling it yourself; but if the guards are still there after 5 days, Thay will come to recover it on its own.
+s16033	Wild magic range:\s
+s16034	 days to arrive
+s16035	already on the way
+s16036	Dismantle it yourself
+s16037	Already decided
+s16038	Wait for Thay to recover it (in\s
+s16039	 days)
+s16040	Notify the alliance (
+s16041	common
+s16042	uncommon
+s16043	rare
+s16044	epic
+s16045	mythic
+s16046	[curse ·\s
+s16047	]
+s16048	[deed ·\s
+s16049	[
+s16050	 (removed)
+s16051	's old wound (
+s16052	) faded under troll regeneration.
+s16053	 grew back.
+s16054	 has fallen, but the troll flesh is still regenerating: revives in about 1 day. Fire, cremation or rot will interrupt it.
+s16055	Fallen enemy troll
+s16056	 is still regenerating: will stand up again in about 1 day. Burning or cremating the corpse can stop it.
+s16057	's corpse was scorched by fire; troll regeneration is completely cut off.
+s16058	Troll regeneration:\s
+s16059	 hours until revival (burning or cremating the corpse can stop it)
+s16060	's flesh knitted back together, and they rose from death.
+s16061	Enemy troll\s
+s16062	 stood up again!
+s16063	blocked by fire
+s16064	hungry, regeneration paused
+s16065	regenerating
+s16066	dormant
+s16067	Trolls · top row native appearance / bottom row standard duster, helmet and longsword
+s16068	The sky turned dark red, and the gods turned their gaze to this land.\n\nFor the next\s
+s16069	 days, divinely infused enemies increase greatly (15%), leaders of large raids have a one-in-two chance to be possessed by gods, and divine power effects are stronger too.\n\nDriving off the god-possessed yields miracle fragments.
+s16070	The priests all had the same dream: the gods quarreling under a dark red sky.\n\n
+s16071	 days from now, the twilight years will begin. Then more divinely infused enemies will appear, and leaders of large raids may be possessed by gods.
+s16072	's avatar vessel
+s16073	maul
+s16074	dawn rises again
+s16075	dawn's revival
+s16076	divine power drained
+s16077	The divine power was drained;\s
+s16078	 followers scattered and fled.
+s16079	Surtur's flame erupted inside him, and he was badly burned himself.
+s16080	His brain matter was burned out by divine power: his brain is permanently damaged and he can be captured. A mind flayer devouring this brain gains an extra\s
+s16081	 brain matter.
+s16082	He submitted to judgment and laid down his weapons in surrender: no longer bleeding, can be captured, recruitment difficulty halved.
+s16083	The dawn receded; he can be captured normally.
+s16084	The lich queen took back her vessel.
+s16085	A bolt of lightning struck himself: alive, but badly hurt.
+s16086	The wildness faded;\s
+s16087	 driven beasts calmed down.
+s16088	The\s
+s16089	 inside left.
+s16090	\n\nMiracle fragments were left on the spot; all colonists mood +5 (3 days).
+s16091	devoured by the queen
+s16092	avatar vessel
+s16093	's body turned to ash: the lich queen Vlaakith took back her vessel, leaving no corpse and no soul to drain.
+s16094	\n\nThe queen's revenge:\s
+s16095	 githyanki warriors leapt out of the Astral Plane!
+s16096	flame blade sweep
+s16097	pillar of light
+s16098	astral raid
+s16099	Malar's hunting command:\s
+s16100	 beasts on the map have started hunting your colonists!
+s16101	Malar's beast-taming backlash
+s16102	out of control
+s16103	astral dodge
+s16104	Tyr's court of judgment: no abilities can be used within 10 cells.
+s16105	Tyr's court of judgment
+s16106	 fresh raw meat (1 twisted meat counts as 2, 1 twisted flesh paste as 20)
+s16107	colony
+s16108	[DND Rimlands] Far Realm dissection knowledge failed:\s
+s16109	Led by a Great Old One warlock
+s16110	No
+s16111	When the leader is a warlock of a Great Old One patron, ritual quality +25%.
+s16112	Adamantine\s
+s16113	,\s
+s16114	 chance to become the relic "eye of Hadar" instead
+s16115	Mithral\s
+s16116	Offer 150 twisted meat. At the current quality: reward\s
+s16117	; failure chance\s
+s16118	 (failure draws a flesh beast swarm or a psychic wail).\nFrom 60% quality it becomes adamantine, from 90% there's a chance of the eye of Hadar.
+s16119	[DND Rimlands] Far Realm feast flesh beast failed:\s
+s16120	Far Realm feast failed
+s16121	The Far Realm ate the twisted meat but gave nothing back.\s
+s16122	Churning sounds come from underground: a swarm of flesh beasts is about to burst out!
+s16123	A psychic wail spreads from the ritual spot, lasting a day.
+s16124	The Far Realm accepted the twisted meat. The ritual spot now holds:\s
+s16125	A strange little caravan walks out of the fog: a few old women in tattered cloaks with teeth too sharp, pushing a cart of bubbling jars. They sell potions, cursed things and dark books, and most want twisted meat (3 silver each) and twisted flesh paste (18 silver each).\n\nThey say the hags sometimes leave a "gift" when they go; better not to accept it.
+s16126	The hags' gift
+s16127	The hag market has left, leaving behind a "gift" wrapped in black cloth:\s
+s16128	. The curse on it hasn't faded yet...
+s16129	Psychic ritual:\s
+s16130	change patron deity
+s16131	the pact patron's next visit:\s
+s16132	abyssal circle: soul refining
+s16133	Choose a colonist first
+s16134	can't go right now
+s16135	doesn't do this kind of work
+s16136	Flesh catalysis at the altar can only be done by Shar's believers and the godless (
+s16137	 worships\s
+s16138	can't get there
+s16139	Needs Anomaly
+s16140	The building isn't on the map
+s16141	This ritual isn't on cooldown
+s16142	This cycle is already shortened to the limit (60% of the full cooldown, at least 1 day left)
+s16143	Shorten by at least 1 day
+s16144	Not enough twisted meat within 12 cells of the building (needs\s
+s16145	 equivalent)
+s16146	 twisted meat: the cooldown of "
+s16147	" was shortened by\s
+s16148	Flesh catalysis
+s16149	Sacrifice twisted meat to shorten a ritual here that's on cooldown: -1 day per 25 twisted meat (1 twisted flesh paste counts as 10), each day shortened in the same cooldown cycle raises the next day's price +20%; at most 60% of the full cooldown, with at least 1 day left.\n\nThe twisted meat must be within 12 cells of the building; choose a colonist to work beside it for 1 hour. The sacrificer has a 10% chance to hear whispers from the Far Realm.
+s16150	\n\nAt the altar, only Shar's believers and the godless can do this.
+s16151	No ritual here is on cooldown
+s16152	Flesh catalysis ·\s
+s16153	remaining\s
+s16154	, shortened this cycle\s
+s16155	No ritual here is on cooldown.
+s16156	Full cooldown\s
+s16157	 days, can still shorten this cycle by\s
+s16158	Shorten\s
+s16159	Needs twisted meat\s
+s16160	 equivalent (
+s16161	), within 12 cells there is\s
+s16162	Actually shortens\s
+s16163	 days. 1 twisted flesh paste counts as 10 twisted meat. The sacrificer has a 10% chance to hear whispers from the Far Realm.
+s16164	Who sacrifices (works beside the building for 1 hour):
+s16165	 (can't)
+s16166	Start sacrifice (
+s16167	 went to\s
+s16168	 to sacrifice twisted meat.
+s16169	Couldn't send anyone
+s16170	[DND Rimlands] Flesh beast spawn failed:\s
+s16171	Only liches and necromantic bodies can devour it
+s16172	Can't devour right now
+s16173	No necromantic ability is on cooldown
+s16174	Not enough twisted meat within 12 cells\s
+s16175	 cooldown recovered
+s16176	When on, take\s
+s16177	 twisted meat from the map each day to feed this knowledge necro: work efficiency +10% for the day. Without twisted meat it isn't fed, with no penalty.
+s16178	Devour twisted meat
+s16179	Swallow\s
+s16180	 twisted meat within 12 cells: the necromantic ability with the longest cooldown (soul bolt, fear gaze, power word death, ray of frost, mend construct) recovers at once. Necromantic bodies feel no discomfort from it.
+s16181	The flesh incubation vat hatched a\s
+s16182	Hatched flesh beast:\s
+s16183	Incubating:\s
+s16184	's remains split into\s
+s16185	 small flesh beasts.
+s16186	\nTwisted colossus: awakens with "twisted flesh" (damage taken -17%, slow self-healing, splits into 2 small flesh beasts on death).
+s16187	\n\n1 twisted meat counts as 2 raw meat, 1 twisted flesh paste as 20 raw meat (twisted flesh paste must be ticked in the bill).
+s16188	[DND Rimlands] Twisted meat startup failed:\s
+s16189	 grew a twisted tumor.
+s16190	bottle of frenzy
+s16191	No twisted flesh paste (needs Anomaly)
+s16192	Already has "flesh regeneration"
+s16193	Can only be carved on armor (middle or outer layer)
+s16194	Not enough twisted flesh paste (needs\s
+s16195	Flesh regeneration armor: -
+s16196	flesh regeneration
+s16197	Carve the "flesh regeneration" affix onto a piece of armor: uses\s
+s16198	 twisted flesh paste as an auxiliary material. The wearer recovers one small wound per day, but beauty -1.
+s16199	Enchantment affix · flesh regeneration
+s16200	Flesh regeneration ·\s
+s16201	The wearer recovers one small wound per day (the lightest, at most\s
+s16202	 points), beauty -1. Can only be carved on armor.\nMaterials: twisted flesh paste ×
+s16203	 (on the map:\s
+s16204	). Never fails.
+s16205	Carve flesh regeneration
+s16206	Done: "
+s16207	" now has flesh regeneration.
+s16208	Corpse poison paralysis!
+s16209	Life drain +
+s16210	healed
+s16211	drain life
+s16212	In open daylight: damage taken ×1.5, no more healing
+s16213	This ability is now an adventurer class ability (gained by adding points on the "Class" page of the "Adventurer" tab)
+s16214	rusted
+s16215	 was rusted into a pile of scrap.
+s16216	Petrified!
+s16217	tail spike volley
+s16218	leap
+s16219	[DND Rimlands] Bulette leap failed:\s
+s16220	deadly leap
+s16221	Tail spikes:\s
+s16222	 (volley cooldown\s
+s16223	 seconds)
+s16224	Leap cooldown:\s
+s16225	Engulf cooldown:\s
+s16226	Spawn DND monsters in the wild
+s16227	Rust monsters, gelatinous cubes, basilisks, manticores, bulettes and carrion crawlers occasionally spawn in their biomes, and also appear as manhunter packs. When off, they no longer spawn or appear as manhunter packs (the mythal dungeon's "Underdark caverns" are unaffected); takes effect immediately after saving settings, monsters already on the map are unaffected.
+s16228	cantrip
+s16229	circle 1
+s16230	circle 2
+s16231	circle 3
+s16232	circle 4
+s16233	circle 5
+s16234	circle 6
+s16235	circle 7
+s16236	circle 8
+s16237	circle 9
+s16238	 circle
+s16239	ritual
+s16240	concentration
+s16241	upcastable
+s16242	Not a wizard
+s16243	Not a spell that can be written into a spellbook
+s16244	Already in the spellbook
+s16245	Needs wizard\s
+s16246	Not on the wizard spell list
+s16247	Wish has been lost forever
+s16248	Not a cantrip
+s16249	This spell isn't prepared (click "prepare" in the spellbook; can be changed after sleeping or 1 hour of study)
+s16250	Turned into a rabbit; can't cast spells
+s16251	Mind shattered by feeblemind; can't cast spells
+s16252	Today's uses are spent (
+s16253	effect ×
+s16254	 targets
+s16255	radius +
+s16256	charge\s
+s16257	 seconds
+s16258	Concentration lost:\s
+s16259	 was hurt and lost concentration;\s
+s16260	 ended.
+s16261	maintained concentration
+s16262	return to the Material Plane
+s16263	Time stop: no cooldown
+s16264	's spellbook: spells to pick\s
+s16265	, cantrips\s
+s16266	 (click the "prepare" button to choose).
+s16267	Not in the spellbook
+s16268	Today's uses are spent
+s16269	Mind shattered by feeblemind
+s16270	: ritual failed:\s
+s16271	Ritual:\s
+s16272	No usable research bench or scroll desk nearby.
+s16273	 finished studying the spellbook and can prepare spells again.
+s16274	Only wizards can copy spells
+s16275	There's no spell on this page
+s16276	 level to copy
+s16277	Copy failed
+s16278	Copy:\s
+s16279	Spell:\s
+s16280	 copied "
+s16281	" into the spellbook.
+s16282	Copying "
+s16283	" failed; the materials were lost.
+s16284	Didn't copy:\s
+s16285	; materials refunded.
+s16286	's spellbook
+s16287	Wizard\s
+s16288	  mana\s
+s16289	 (wizard level + Intelligence modifier)
+s16290	Spellbook / prepare
+s16291	Prepared spells can be changed now (after closing the window, another sleep or 1 hour of study is needed to change again). Cantrips are always ready; ritual spells take no slot and can be ritual cast here even unprepared (channel in place for 1 hour, no mana).
+s16292	Prepared spells are set: can only be changed after sleeping or after studying for 1 hour at a research bench / scroll desk. Ritual spells can be ritual cast here anytime.
+s16293	Each wizard level can write 2 spells into the spellbook, only of circles you can already cast (circle 1 at level 1, circle 2 at 3, circle 3 at 5... circle 9 at 17, one circle every 2 levels). To pick:\s
+s16294	. The scroll desk's "copy spell" doesn't use this allowance.
+s16295	Cantrips cost no mana and are always ready without taking prepared slots. Wizards get 3 at level 1 (magic missile counts as one), +1 each at levels 4 and 10. Can still learn\s
+s16296	The spellbook is empty.
+s16297	No spells to pick (already knows them all, or needs a higher wizard level).
+s16298	No more cantrips to learn.
+s16299	No mana cost
+s16300	Cantrip · always ready
+s16301	Choose the charge seconds (0-5, no extra mana). You can also right-click the spell button.
+s16302	Choose the circle to cast at: each extra circle costs 1 more mana,\s
+s16303	Channel in place for 1 hour to cast, no mana cost (must be undrafted).
+s16304	Write
+s16305	Charge:\s
+s16306	Later casts all use the selected charge seconds: the fire bead explodes that many seconds after landing, +10 × arcane power damage per second. No extra mana.
+s16307	 seconds: damage (
+s16308	) × arcane power
+s16309	Upcast:\s
+s16310	Later casts of this spell all use the selected circle (each extra circle costs 1 more mana). Up to the\s
+s16311	By\s
+s16312	Cast: mana\s

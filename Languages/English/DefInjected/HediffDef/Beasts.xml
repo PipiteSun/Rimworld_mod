@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 寒霜迟缓 -->
+  <LP_FrostSlow.label>frost slowed</LP_FrostSlow.label>
+  <!-- 被冬狼的冰咬冻僵，行动迟缓。 -->
+  <LP_FrostSlow.description>Frozen stiff by a winter wolf's icy bite; moving slowly.</LP_FrostSlow.description>
+  <!-- 位移幻影 -->
+  <LP_DisplacementPhantom.label>displacement phantom</LP_DisplacementPhantom.label>
+  <!-- 魔化兽的身影总是偏离它真正所在的位置。下一次会造成伤害的攻击会打在幻影上完全落空，之后幻影消失6秒再重新出现。倒地后不再生效。 -->
+  <LP_DisplacementPhantom.description>The displacer beast's image is always offset from where it really is. The next attack that would deal damage hits the phantom and misses completely; the phantom then vanishes for 6 seconds before reappearing. No longer works once downed.</LP_DisplacementPhantom.description>
+</LanguageData>

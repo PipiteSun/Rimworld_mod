@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（Exalted.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>巨人之力</zh><en>giant strength</en></s>
+  <s><zh>疾影</zh><en>Shadowstep</en></s>
+  <s><zh>不屈之躯</zh><en>Unyielding Body</en></s>
+  <s><zh>洞彻心智</zh><en>Lucid Mind</en></s>
+  <s><zh>明察</zh><en>Keen Insight</en></s>
+  <s><zh>威仪</zh><en>majesty</en></s>
+  <s><zh>撼山</zh><en>Mountain Shaker</en></s>
+  <s><zh>无影</zh><en>shadowless</en></s>
+  <s><zh>金刚不坏</zh><en>Adamantine Body</en></s>
+  <s><zh>天才</zh><en>Genius</en></s>
+  <s><zh>先知</zh><en>Seer</en></s>
+  <s><zh>君临</zh><en>sovereign</en></s>
+  <s><zh>冒险者等级已在设置里关闭</zh><en>Adventurer levels are turned off in settings</en></s>
+  <s><zh>超凡属性特性已在设置里关闭</zh><en>Exalted ability traits are turned off in settings</en></s>
+  <s><zh>Isekai 共存模式：效果已关，可在设置「冒险者」中开启（勾选“共存模式下超凡特性仍生效”）</zh><en>Isekai coexistence mode: effect off; can be turned on in "Adventurer" settings (tick "exalted traits still apply in coexistence mode")</en></s>
+  <s><zh>达到了凡人的极限——超凡·</zh><en> reached the limit of mortals: Exalted·</en></s>
+  <s><zh>。\n\n</zh><en>.\n\n</en></s>
+  <s><zh>越过了凡人的极限，踏入神话——神话·</zh><en> crossed the limit of mortals into myth: Mythic·</en></s>
+  <s><zh>撼山：负重 +25%、采矿 +20%；近战护甲穿透 +30%；近战命中 15% 让体型 ≤3 的目标踉跄 1.5 秒；近战打建筑 ×2；免疫踉跄和击倒类状态。</zh><en>Mountain Shaker: carrying capacity +25%, mining +20%; melee armor penetration +30%; melee hits have a 15% chance to stagger targets of body size ≤3 for 1.5 seconds; melee against buildings ×2; immune to stagger and knockdown effects.</en></s>
+  <s><zh>巨人之力：负重 +25%、采矿速度 +20%；近战护甲穿透 +15%；近战命中 15% 让体型 ≤1.5 的目标踉跄 1.5 秒（移速 ×0.1、近战冷却 ×1.5）。</zh><en>Giant's Might: carrying capacity +25%, mining speed +20%; melee armor penetration +15%; melee hits have a 15% chance to stagger targets of body size ≤1.5 for 1.5 seconds (move speed ×0.1, melee cooldown ×1.5).</en></s>
+  <s><zh>无影：在疾影之上，敌人射击的命中 ×0.75；每 10 秒受到的第一次近战或投射物伤害有 25% 完全落空。</zh><en>Shadowless: on top of Shadowstep, enemy shooting hit chance ×0.75; the first melee or projectile damage taken every 10 seconds has a 25% chance to miss entirely.</en></s>
+  <s><zh>疾影：瞄准时间 −20%，近战闪避 +10；敌人射击他的命中 ×0.85；不会被哨兵借机攻击（已有“灵活”则改为移速 +0.2）。</zh><en>Shadowstep: aiming time −20%, melee dodge +10; enemy shooting hit chance against them ×0.85; can't be hit by sentinels' opportunity attacks (if they already have "nimble", move speed +0.2 instead).</en></s>
+  <s><zh>金刚不坏：在不屈之躯之上，硬撑每天 2 次、每次 12 秒；失血封顶在极重之前；伤疤消除加快到每半天一处。</zh><en>Adamantine Body: on top of Unyielding Body, endure 2 times per day for 12 seconds each; blood loss capped before extreme; scar removal sped up to one every half day.</en></s>
+  <s><zh>不屈之躯：失血速度 −30%，疼痛休克阈值 +15%；食物中毒、流感、瘟疫、疟疾、睡眠病等可致死的疾病停在致死之前；硬撑：每天一次，本该倒地时撑 8 秒再倒；身上有伤疤或旧伤时，每 1 天消除最重的一处。</zh><en>Unyielding Body: bleeding rate −30%, pain shock threshold +15%; potentially lethal diseases such as food poisoning, flu, plague, malaria and sleeping sickness stop before becoming lethal; endure: once per day, when they should go down, hold on for 8 seconds first; with scars or old wounds, the worst one is removed every 1 day.</en></s>
+  <s><zh>天才：在洞彻心智之上，全局学习速度 ×1.2；没有热情的技能按小热情学习；举一反三 50%。</zh><en>Genius: on top of Lucid Mind, global learning speed ×1.2; skills without passion learn as minor passion; cross-learning 50%.</en></s>
+  <s><zh>洞彻心智：读书、研读卷轴和典籍速度 +50%；技能不衰退；举一反三：技能升级时随机另一项技能得到这次升级所需经验的 25%。</zh><en>Lucid Mind: reading books, scrolls and tomes +50% faster; skills don't decay; cross-learning: when a skill levels up, another random skill gains 25% of the XP that level needed.</en></s>
+  <s><zh>先知：在明察之上，显形半径 15 格；免疫心灵震爆；敌对袭击到来时收到一封先知的预感。</zh><en>Seer: on top of Keen Insight, reveal radius 15 cells; immune to psychic blasts; receives a seer's premonition letter when a hostile raid arrives.</en></s>
+  <s><zh>明察：冥想心灵专注 +30%，医疗品质 +10%；8 格内隐形或伪装的敌人显形；心灵震爆、夺心魔支配、魅惑等心灵效果持续时间减半。</zh><en>Keen Insight: meditation psyfocus +30%, medical quality +10%; invisible or disguised enemies within 8 cells are revealed; psychic effects such as psychic blasts, mind flayer domination and charms last half as long.</en></s>
+  <s><zh>君临：光环 15 格、心情 +6；他击倒或击杀敌人时，8 格内的敌方人形 15% 逃跑（首领、宿敌冠军、神力灌注 3 级以上、传奇怪物除外）；派系声望获得 ×1.5。</zh><en>Sovereign: aura 15 cells, mood +6; when they down or kill an enemy, hostile humanlikes within 8 cells have a 15% chance to flee (except bosses, nemesis champions, divinely infused level 3+ and legendary monsters); faction reputation gains ×1.5.</en></s>
+  <s><zh>威仪：交易价格 +5%，招募 / 说服 +15%；10 格内己方人形心情 +3、精神崩溃阈值 −3%；6 格内敌方人形命中 −8%。多个威仪不叠加。</zh><en>Majesty: trade prices +5%, recruit / persuade +15%; own humanlikes within 10 cells mood +3, mental break threshold −3%; hostile humanlikes within 6 cells hit chance −8%. Multiple majesties don't stack.</en></s>
+  <s><zh>&lt;color=#C080FF&gt;神话·</zh><en>&lt;color=#C080FF&gt;Mythic·</en></s>
+  <s><zh>&lt;color=#E8C050&gt;超凡·</zh><en>&lt;color=#E8C050&gt;Exalted·</en></s>
+  <s><zh>\n神话条件：属性 24，或 20 + 传奇冒险者 + </zh><en>\nMythic condition: ability 24, or 20 + legendary adventurer + </en></s>
+  <s><zh>传奇点合计 20。</zh><en> legend points totaling 20.</en></s>
+  <s><zh>：已达成，效果未生效——</zh><en>: achieved, effect not active: </en></s>
+  <s><zh>\n\n&lt;color=#909090&gt;超凡·</zh><en>\n\n&lt;color=#909090&gt;Exalted·</en></s>
+  <s><zh>：暂停（当前值低于 20）&lt;/color&gt;</zh><en>: paused (current value below 20)&lt;/color&gt;</en></s>
+  <s><zh>消除了</zh><en>Removed </en></s>
+  <s><zh>上的</zh><en> from </en></s>
+  <s><zh>的明察看穿了它的伪装</zh><en>'s keen insight saw through its disguise</en></s>
+  <s><zh>畏惧君临</zh><en>awed by sovereign</en></s>
+  <s><zh>踉跄</zh><en>staggered</en></s>
+  <s><zh>硬撑！</zh><en>Endure!</en></s>
+  <s><zh>在它们出现之前就看见了：</zh><en> saw them before they appeared: </en></s>
+  <s><zh>敌人</zh><en>enemies</en></s>
+  <s><zh>，共 </zh><en>, total </en></s>
+  <s><zh> 人。</zh><en> people.</en></s>
+  <s><zh>领头的：</zh><en>Leader: </en></s>
+  <s><zh>最高冒险者等级：</zh><en>Highest adventurer level: </en></s>
+  <s><zh>其中 </zh><en>Of them, </en></s>
+  <s><zh> 人带着超凡属性。</zh><en> have exalted abilities.</en></s>
+  <s><zh>先知的预感</zh><en>Seer's premonition</en></s>
+  <s><zh>未生效</zh><en>not active</en></s>
+  <s><zh>效果未生效：</zh><en>Effect not active: </en></s>
+  <s><zh>超凡属性特性</zh><en>Exalted ability traits</en></s>
+  <s><zh>六维的有效值达到 20 时获得该项的超凡特性（巨人之力、疾影、不屈之躯、洞彻心智、明察、威仪）；24，或 20 + 传奇冒险者 + 对应两项传奇属性点合计 20 时升为神话。降到 20 以下暂停，回升恢复。获得时发一封信。</zh><en>When a six-ability effective value reaches 20, gain that ability's exalted trait (Giant's Might, Shadowstep, Unyielding Body, Lucid Mind, Keen Insight, Majesty); at 24, or 20 + legendary adventurer + matching two legend attribute points totaling 20, it becomes Mythic. Dropping below 20 pauses it, rising again restores it. A letter is sent on gaining it.</en></s>
+  <s><zh>共存模式下超凡特性仍生效</zh><en>Exalted traits still apply in coexistence mode</en></s>
+  <s><zh>默认开：Isekai 共存模式下六维的数值效果交给 Isekai，超凡特性大多是规则效果（踉跄、硬撑、显形、光环等），和 Isekai 的数值不叠加，照常生效。取消勾选则共存模式下超凡也一起关闭（分页和健康页仍显示，灰色）。</zh><en>On by default: in Isekai coexistence mode, the six abilities' numeric effects go to Isekai, but exalted traits are mostly rule effects (stagger, endure, reveal, aura etc.) that don't stack with Isekai's numbers, and apply as usual. Untick to turn exalted off too in coexistence mode (still shown on the tab and health page, greyed).</en></s>
+</LPStrings>

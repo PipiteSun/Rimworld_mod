@@ -50,7 +50,7 @@ namespace LichPhylactery {
    int f=Refresh(h);
    bool dark=(f & FDarkSight)!=0 && InDark(p);
    if(dark){if(!Items.Has(p,"LP_SH_DarkSight"))Items.Give(p,"LP_SH_DarkSight");Items.Remove(p,"LP_WL_Darkened");}else if(Items.Has(p,"LP_SH_DarkSight"))Items.Remove(p,"LP_SH_DarkSight");
-   if(Items.Has(p,"LP_SH_Cloaked") && !InDark(p)){Items.Remove(p,"LP_SH_Cloaked");Items.Mote(p,"现形",ShadowColor);}
+   if(Items.Has(p,"LP_SH_Cloaked") && !InDark(p)){Items.Remove(p,"LP_SH_Cloaked");Items.Mote(p,"现形".Loc(),ShadowColor);}
    if((f & FTranquil)!=0 && !p.Awake() && !Items.Has(p,"LP_OH_Tranquil"))Items.Give(p,"LP_OH_Tranquil"); // 宁神境：睡一觉醒来就有，出手才结束
    Passive(p,"LP_EV_SavantBuff",(f & FSavant)!=0);Passive(p,"LP_SC_QuillBuff",(f & FQuill)!=0);
    var d=ClassSubclass.Data(h);
@@ -85,10 +85,10 @@ namespace LichPhylactery {
    if(e?.effect=="S3Breath" || e?.effect=="S3Aspect")DragonPaid(p,e); // 施放前后次数没变：还有免费次数 = 这次没付气
    if(e?.effect=="S3StarBolt")StarPaid(p);
    if(e?.effect=="S3Corona" && ChannelLeft(p)>0)ChannelUse(p);
-   if((e?.effect=="Heal" || e?.effect=="MassHeal") && ClassSystem.Knows(p,"LP_LF_BlessedHealer")){float h=ClassMelee.Heal(p,2f+e.cost);if(h>0f)Items.Mote(p,"受祝的治疗者",OpenColor);}
+   if((e?.effect=="Heal" || e?.effect=="MassHeal") && ClassSystem.Knows(p,"LP_LF_BlessedHealer")){float h=ClassMelee.Heal(p,2f+e.cost);if(h>0f)Items.Mote(p,"受祝的治疗者".Loc(),OpenColor);}
    if(Evo(e) && Items.Has(p,"LP_EV_Overchannel")){
     Items.Remove(p,"LP_EV_Overchannel");var d=ClassSubclass.Data(p);if(d==null)return;d.ticks.TryGetValue("ovN",out int n);d.ticks["ovN"]=n+1;
-    if(n>0){float back=13f*(n+1);Busy=true;try{p.TakeDamage(new DamageInfo(Warlock.ForceDamage,back,1f,-1f,null));}finally{Busy=false;}Items.Mote(p,"超限反噬 "+back.ToString("0"),ShadowColor);}
+    if(n>0){float back=13f*(n+1);Busy=true;try{p.TakeDamage(new DamageInfo(Warlock.ForceDamage,back,1f,-1f,null));}finally{Busy=false;}Items.Mote(p,"超限反噬 ".Loc()+back.ToString("0"),ShadowColor);}
    }
    if(Items.Has(p,"LP_SC_Manifest") && ClassSystem.ClassOf(a.def)==wizard.Def && e?.cost>0){var h=p.health.hediffSet.GetFirstHediffOfDef(Items.Hediff("LP_SC_Manifest"));if(h!=null){h.Severity-=1f;if(h.Severity<.5f)p.health.RemoveHediff(h);}}
   }
@@ -97,7 +97,7 @@ namespace LichPhylactery {
   public static bool Free(Pawn p,CompProperties_ClassEffect props)=>Users.Count>0 && props!=null && (props.stat!=null && props.stat.defName=="LP_ArcanePower" && Items.Has(p,"LP_SC_Manifest") || DragonFree(p,props) || props.effect=="S3StarBolt" && StarBoltLeft(p)>0 || props.effect=="S3Corona" && ChannelLeft(p)>0);
 
   // ---------- 书士会·觉醒魔典：火球、闪电束换伤害类型 ----------
-  public static readonly string[] TomeModes={"原样","火焰","寒冰","闪电","奥术力"};
+  public static readonly string[] TomeModes={"原样".Loc(),"火焰".Loc(),"寒冰".Loc(),"闪电".Loc(),"奥术力".Loc()};
   public static int TomeMode(Pawn p){var d=ClassSubclass.Data(p);if(d==null || !S(p,FTome))return 0;d.ticks.TryGetValue("tome",out int m);return Mathf.Clamp(m,0,4);}
   public static DamageDef Retype(Pawn p,DamageDef d){
    if(Users.Count==0)return d;switch(TomeMode(p)){
@@ -109,20 +109,20 @@ namespace LichPhylactery {
   public static Thing MasterScroll(Pawn p){
    var def=DefCache<ThingDef>.Get(Scrolls.RandomElement());if(def==null || p.inventory==null)return null;var th=ThingMaker.MakeThing(def);
    if(!p.inventory.innerContainer.TryAdd(th)){if(p.Spawned)GenPlace.TryPlaceThing(th,p.Position,p.Map,ThingPlaceMode.Near);else{th.Destroy();return null;}}
-   Items.Mote(p,"大书士："+def.label,ClassCasters.Arcane);return th;
+   Items.Mote(p,"大书士：".Loc()+def.label,ClassCasters.Arcane);return th;
   }
-  public static void Manifest(Pawn p,int ticks){var h=Items.Give(p,"LP_SC_Manifest",ticks,3f);if(h!=null)h.Severity=3f;Items.Mote(p,"思维具现",ClassCasters.Arcane);}
+  public static void Manifest(Pawn p,int ticks){var h=Items.Give(p,"LP_SC_Manifest",ticks,3f);if(h!=null)h.Severity=3f;Items.Mote(p,"思维具现".Loc(),ClassCasters.Arcane);}
 
   // ---------- 散打技巧：疾风连击每一拳的附加效果（ClassEffects 的 Flurry） ----------
-  public static readonly string[] TechModes={"击倒","推开","封招"};
+  public static readonly string[] TechModes={"击倒".Loc(),"推开".Loc(),"封招".Loc()};
   public static int Mode(Pawn p){var d=ClassSubclass.Data(p);if(d==null)return 0;d.ticks.TryGetValue("ohMode",out int m);return Mathf.Clamp(m,0,2);}
   public static void FlurryHit(Pawn p,Pawn t){
    if(Users.Count==0 || !S(p,FTechnique) || t==null || t.Dead || !t.Spawned)return;
    int m=Mode(p);
    if(m==2){Items.Give(t,"LP_OH_Sealed",SealTicks);return;}
-   if(Roll>=Subclass2.Chance(TechChance,p,t)){Items.Mote(t,"稳住了",OpenColor);return;}
-   if(m==0){t.stances?.stunner?.StunFor(TechStun,p);Items.Mote(t,"击倒",OpenColor);}
-   else{var dest=DNDPush.Destination(t.Map,t.Position,(t.Position-p.Position).ToVector3(),3);DNDPush.Move(t,dest);Items.Mote(t,"推开",OpenColor);}
+   if(Roll>=Subclass2.Chance(TechChance,p,t)){Items.Mote(t,"稳住了".Loc(),OpenColor);return;}
+   if(m==0){t.stances?.stunner?.StunFor(TechStun,p);Items.Mote(t,"击倒".Loc(),OpenColor);}
+   else{var dest=DNDPush.Destination(t.Map,t.Position,(t.Position-p.Position).ToVector3(),3);DNDPush.Move(t,dest);Items.Mote(t,"推开".Loc(),OpenColor);}
   }
 
   // ---------- 主动能力 ----------
@@ -131,23 +131,23 @@ namespace LichPhylactery {
   public static string Invalid(Pawn caster,CompProperties_ClassEffect e,LocalTargetInfo target){
    if(!Known.Contains(e.effect))return null;var t=target.Thing as Pawn;var map=caster.Map;
    switch(e.effect){
-    case "S3ShadowArts":if(map==null || !target.Cell.IsValid || !target.Cell.InBounds(map))return "需要选择一个位置。";return null;
+    case "S3ShadowArts":if(map==null || !target.Cell.IsValid || !target.Cell.InBounds(map))return "需要选择一个位置。".Loc();return null;
     case "S3ShadowStep":{
-     if(!InDark(caster))return "自己要站在暗处（光照低于 30%）。";var c=target.Cell;
-     if(map==null || !c.IsValid || !c.InBounds(map) || c.Fogged(map) || !c.Standable(map) || c.GetFirstPawn(map)!=null)return "需要一个空着的、能站立的格子。";
-     if(!DarkCell(map,c))return "目的地也要在暗处。";
-     if(caster.Position.DistanceTo(c)>StepRange)return "超出距离（"+StepRange.ToString("0")+" 格）。";
-     if(!GenSight.LineOfSight(caster.Position,c,map,true))return "要看得见目的地。";
+     if(!InDark(caster))return "自己要站在暗处（光照低于 30%）。".Loc();var c=target.Cell;
+     if(map==null || !c.IsValid || !c.InBounds(map) || c.Fogged(map) || !c.Standable(map) || c.GetFirstPawn(map)!=null)return "需要一个空着的、能站立的格子。".Loc();
+     if(!DarkCell(map,c))return "目的地也要在暗处。".Loc();
+     if(caster.Position.DistanceTo(c)>StepRange)return "超出距离（".Loc()+StepRange.ToString("0")+" 格）。".Loc();
+     if(!GenSight.LineOfSight(caster.Position,c,map,true))return "要看得见目的地。".Loc();
      return null;}
-    case "S3Cloak":return InDark(caster)?null:"要站在暗处（光照低于 30%）才能化身幽影。";
-    case "S3Palm":if(t==null || t.Dead)return "需要选择一个活着的目标。";if(!t.HostileTo(caster))return "只能对敌人使用。";return null;
-    case "S3Detonate":return Palmed(caster)==null?"现在没有身中渗透劲的敌人。":null;
-    case "S3Breath":case "S3LandSpell":if(map==null || !target.Cell.IsValid || !target.Cell.InBounds(map))return "需要选择一个位置。";return null;
-    case "S3Terraform":{if(map==null || !target.Cell.IsValid || !target.Cell.InBounds(map))return "需要选择一个位置。";if(!GenRadial.RadialCellsAround(target.Cell,ClassEffects.Radius(caster,e),true).Any(c=>Terraformable(map,c)))return "这里没有能改的自然地面（地板、建筑、物品、小人、熔岩之类不能改）。";return null;}
-    case "S3Light":if(map==null || !target.Cell.IsValid || !target.Cell.InBounds(map) || !target.Cell.Standable(map))return "需要一个空地。";return null;
-    case "S3ForgeBless":return BlessTarget(caster)==null?"手里没有武器、身上也没有护甲可以祝福。":null;
-    case "S3Artisan":return caster.Map==null?"需要在地图上。":(caster.Faction!=null && caster.Faction.IsPlayer && caster.Map.listerThings.ThingsOfDef(ThingDefOf.Steel).Where(x=>!x.IsForbidden(Faction.OfPlayer)).Sum(x=>x.stackCount)<50?"地图上没被禁止的钢不够 50。":null);
-    case "S3RotTouch":case "S3StarBolt":if(t==null || t.Dead)return "需要选择一个活着的目标。";if(!t.HostileTo(caster))return "只能对敌人使用。";return null;
+    case "S3Cloak":return InDark(caster)?null:"要站在暗处（光照低于 30%）才能化身幽影。".Loc();
+    case "S3Palm":if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();if(!t.HostileTo(caster))return "只能对敌人使用。".Loc();return null;
+    case "S3Detonate":return Palmed(caster)==null?"现在没有身中渗透劲的敌人。".Loc():null;
+    case "S3Breath":case "S3LandSpell":if(map==null || !target.Cell.IsValid || !target.Cell.InBounds(map))return "需要选择一个位置。".Loc();return null;
+    case "S3Terraform":{if(map==null || !target.Cell.IsValid || !target.Cell.InBounds(map))return "需要选择一个位置。".Loc();if(!GenRadial.RadialCellsAround(target.Cell,ClassEffects.Radius(caster,e),true).Any(c=>Terraformable(map,c)))return "这里没有能改的自然地面（地板、建筑、物品、小人、熔岩之类不能改）。".Loc();return null;}
+    case "S3Light":if(map==null || !target.Cell.IsValid || !target.Cell.InBounds(map) || !target.Cell.Standable(map))return "需要一个空地。".Loc();return null;
+    case "S3ForgeBless":return BlessTarget(caster)==null?"手里没有武器、身上也没有护甲可以祝福。".Loc():null;
+    case "S3Artisan":return caster.Map==null?"需要在地图上。".Loc():(caster.Faction!=null && caster.Faction.IsPlayer && caster.Map.listerThings.ThingsOfDef(ThingDefOf.Steel).Where(x=>!x.IsForbidden(Faction.OfPlayer)).Sum(x=>x.stackCount)<50?"地图上没被禁止的钢不够 50。".Loc():null);
+    case "S3RotTouch":case "S3StarBolt":if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();if(!t.HostileTo(caster))return "只能对敌人使用。".Loc();return null;
    }
    return null;
   }
@@ -155,34 +155,34 @@ namespace LichPhylactery {
    if(!Known.Contains(e.effect))return false;
    var t=target.Thing as Pawn;float s=ClassEffects.Strength(p,e);int dur=ClassEffects.Duration(p,e);float rad=ClassEffects.Radius(p,e);
    switch(e.effect){
-    case "S3ShadowArts":Warlock.Darkness(p,target.Cell,rad,dur);Items.Mote(p,"暗影技艺",ShadowColor);break;
-    case "S3ShadowStep":if(Invalid(p,e,target)==null){FleckMaker.ThrowDustPuffThick(p.DrawPos,p.Map,1.5f,ShadowColor);Races124.Blink(p,target.Cell);Items.Give(p,"LP_SH_StepStrike",300);Items.Mote(p,"暗影步",ShadowColor);}break;
-    case "S3Cloak":if(InDark(p)){Items.Give(p,"LP_SH_Cloaked");Items.Mote(p,"幽影斗篷",ShadowColor);}break;
-    case "S3TechMode":{var d=ClassSubclass.Data(p);if(d!=null){int m=(Mode(p)+1)%3;d.ticks["ohMode"]=m;Items.Mote(p,"散打技巧："+TechModes[m],OpenColor);}break;}
-    case "S3Wholeness":{float healed=ClassMelee.Heal(p,3f*ClassSystem.Level(p,ClassSystem.Monk));Items.Mote(p,"混元体 "+healed.ToString("0"),OpenColor);break;}
+    case "S3ShadowArts":Warlock.Darkness(p,target.Cell,rad,dur);Items.Mote(p,"暗影技艺".Loc(),ShadowColor);break;
+    case "S3ShadowStep":if(Invalid(p,e,target)==null){FleckMaker.ThrowDustPuffThick(p.DrawPos,p.Map,1.5f,ShadowColor);Races124.Blink(p,target.Cell);Items.Give(p,"LP_SH_StepStrike",300);Items.Mote(p,"暗影步".Loc(),ShadowColor);}break;
+    case "S3Cloak":if(InDark(p)){Items.Give(p,"LP_SH_Cloaked");Items.Mote(p,"幽影斗篷".Loc(),ShadowColor);}break;
+    case "S3TechMode":{var d=ClassSubclass.Data(p);if(d!=null){int m=(Mode(p)+1)%3;d.ticks["ohMode"]=m;Items.Mote(p,"散打技巧：".Loc()+TechModes[m],OpenColor);}break;}
+    case "S3Wholeness":{float healed=ClassMelee.Heal(p,3f*ClassSystem.Level(p,ClassSystem.Monk));Items.Mote(p,"混元体 ".Loc()+healed.ToString("0"),OpenColor);break;}
     case "S3Palm":if(Hostile(p,t))Plant(p,t,dur);break;
     case "S3Detonate":Detonate(p,s);break;
-    case "S3Tome":{var d=ClassSubclass.Data(p);if(d!=null){int m=(TomeMode(p)+1)%5;d.ticks["tome"]=m;Items.Mote(p,"觉醒魔典："+TomeModes[m],ClassCasters.Arcane);}break;}
+    case "S3Tome":{var d=ClassSubclass.Data(p);if(d!=null){int m=(TomeMode(p)+1)%5;d.ticks["tome"]=m;Items.Mote(p,"觉醒魔典：".Loc()+TomeModes[m],ClassCasters.Arcane);}break;}
     case "S3Manifest":Manifest(p,dur);break;
-    case "S3DragonEl":{var d=ClassSubclass.Data(p);if(d!=null){int m=(DragonMode(p)+1)%5;d.ticks["dmEl"]=m;Items.Mote(p,"龙之打击："+DragonModes[m],OpenColor);}break;}
+    case "S3DragonEl":{var d=ClassSubclass.Data(p);if(d!=null){int m=(DragonMode(p)+1)%5;d.ticks["dmEl"]=m;Items.Mote(p,"龙之打击：".Loc()+DragonModes[m],OpenColor);}break;}
     case "S3Breath":Breath(p,target.Cell,s);break;
     case "S3Aspect":Aspect(p,s,dur);break;
     case "S3LandSpell":LandSpell(p,target.Cell,s);break;
-    case "S3NatRecover":{var h=Adventurer.Get(p);if(h!=null){var c=druid.Def;ClassSystem.AddResource(h,c,ClassSystem.MaxResource(h,c)*.5f);}Items.Mote(p,"自然恢复",LandColor);break;}
-    case "S3TerraMode":{var d=ClassSubclass.Data(p);if(d!=null){int m=(TerraMode(p)+1)%TerraModes.Length;d.ticks["terra"]=m;Items.Mote(p,"大地塑形："+TerraModes[m],LandColor);}break;}
+    case "S3NatRecover":{var h=Adventurer.Get(p);if(h!=null){var c=druid.Def;ClassSystem.AddResource(h,c,ClassSystem.MaxResource(h,c)*.5f);}Items.Mote(p,"自然恢复".Loc(),LandColor);break;}
+    case "S3TerraMode":{var d=ClassSubclass.Data(p);if(d!=null){int m=(TerraMode(p)+1)%TerraModes.Length;d.ticks["terra"]=m;Items.Mote(p,"大地塑形：".Loc()+TerraModes[m],LandColor);}break;}
     case "S3Terraform":Terraform(p,target.Cell,rad+(ClassSystem.Knows(p,"LP_LD_NatureWard")?1f:0f));break;
-    case "S3Halo":if(HaloOn(p)){Items.Remove(p,"LP_SP_HaloOn");Items.Mote(p,"收起死亡光环",SporeColor);}else{Items.Give(p,"LP_SP_HaloOn");Items.Mote(p,"死亡光环",SporeColor);}break;
-    case "S3RotTouch":if(Hostile(p,t)){t.TakeDamage(new DamageInfo(Necrotic,ClassEffects.Power(p,e),.3f,-1f,p));if(!t.Dead)Items.Give(t,"LP_SP_Rotting",2500);Items.Mote(t,"腐烂之触",SporeColor);}break;
-    case "S3Symbiotic":{Items.Give(p,"LP_SP_SymbioticBuff",dur);var sh=Items.Give(p,"LP_ShieldSpell",dur,4f*ClassSystem.Level(p,druid.Def));if(sh!=null)sh.Severity=4f*ClassSystem.Level(p,druid.Def);Items.Mote(p,"共生实体",SporeColor);break;}
-    case "S3StarBolt":if(Hostile(p,t)){t.TakeDamage(new DamageInfo(PaladinCore.Radiant,ClassEffects.Power(p,e),.3f,-1f,p));if(!t.Dead)Items.Give(t,"LP_ST_Guided",600);Items.Mote(t,"指引箭",StarColor);}break;
-    case "S3FormMode":{var d=ClassSubclass.Data(p);if(d!=null){int m=(FormMode(p)+1)%3;d.ticks["stForm"]=m;var h=p.health.hediffSet.GetFirstHediffOfDef(Items.Hediff("LP_ST_Form"));if(h!=null)h.Severity=m+1f;Items.Mote(p,"星象形态："+FormModes[m],StarColor);}break;}
+    case "S3Halo":if(HaloOn(p)){Items.Remove(p,"LP_SP_HaloOn");Items.Mote(p,"收起死亡光环".Loc(),SporeColor);}else{Items.Give(p,"LP_SP_HaloOn");Items.Mote(p,"死亡光环".Loc(),SporeColor);}break;
+    case "S3RotTouch":if(Hostile(p,t)){t.TakeDamage(new DamageInfo(Necrotic,ClassEffects.Power(p,e),.3f,-1f,p));if(!t.Dead)Items.Give(t,"LP_SP_Rotting",2500);Items.Mote(t,"腐烂之触".Loc(),SporeColor);}break;
+    case "S3Symbiotic":{Items.Give(p,"LP_SP_SymbioticBuff",dur);var sh=Items.Give(p,"LP_ShieldSpell",dur,4f*ClassSystem.Level(p,druid.Def));if(sh!=null)sh.Severity=4f*ClassSystem.Level(p,druid.Def);Items.Mote(p,"共生实体".Loc(),SporeColor);break;}
+    case "S3StarBolt":if(Hostile(p,t)){t.TakeDamage(new DamageInfo(PaladinCore.Radiant,ClassEffects.Power(p,e),.3f,-1f,p));if(!t.Dead)Items.Give(t,"LP_ST_Guided",600);Items.Mote(t,"指引箭".Loc(),StarColor);}break;
+    case "S3FormMode":{var d=ClassSubclass.Data(p);if(d!=null){int m=(FormMode(p)+1)%3;d.ticks["stForm"]=m;var h=p.health.hediffSet.GetFirstHediffOfDef(Items.Hediff("LP_ST_Form"));if(h!=null)h.Severity=m+1f;Items.Mote(p,"星象形态：".Loc()+FormModes[m],StarColor);}break;}
     case "S3Preserve":Preserve(p,ClassSystem.Level(p,cleric.Def));break;
     case "S3Light":LightOrb(p,target.Cell);break;
     case "S3Dawn":Dawn(p,s);break;
-    case "S3Corona":Items.Give(p,"LP_LT_CoronaOn",dur);Items.Mote(p,"晨光之冕",ClassCasters.Divine);break;
-    case "S3ForgeBless":Items.Mote(p,ForgeBless(p)??"没有可以祝福的装备",ClassCasters.Artisan);break;
+    case "S3Corona":Items.Give(p,"LP_LT_CoronaOn",dur);Items.Mote(p,"晨光之冕".Loc(),ClassCasters.Divine);break;
+    case "S3ForgeBless":Items.Mote(p,ForgeBless(p)??"没有可以祝福的装备".Loc(),ClassCasters.Artisan);break;
     case "S3Artisan":Artisan(p,-1);break;
-    case "S3StarryForm":{var h=Items.Give(p,"LP_ST_Form",dur,FormMode(p)+1f);if(h!=null)h.Severity=FormMode(p)+1f;Items.Mote(p,"星象形态："+FormModes[FormMode(p)],StarColor);break;}
+    case "S3StarryForm":{var h=Items.Give(p,"LP_ST_Form",dur,FormMode(p)+1f);if(h!=null)h.Severity=FormMode(p)+1f;Items.Mote(p,"星象形态：".Loc()+FormModes[FormMode(p)],StarColor);break;}
    }
    return true;
   }
@@ -191,7 +191,7 @@ namespace LichPhylactery {
    ClassMelee.Strike(p,t);if(t.Dead)return null;
    var old=Palmed(p);if(old!=null && old!=t)Items.Remove(old,"LP_OH_Palm");
    int ticks=Mathf.Max(1,ClassSystem.Level(p,ClassSystem.Monk))*GenDate.TicksPerDay;
-   var m=ClassMartial2.MarkTarget(p,t,"LP_OH_Palm",ticks,1f,OpenColor,"渗透劲");
+   var m=ClassMartial2.MarkTarget(p,t,"LP_OH_Palm",ticks,1f,OpenColor,"渗透劲".Loc());
    var d=ClassSubclass.Data(p);if(d!=null)d.ticks["ohPalm"]=t.thingIDNumber;
    return m;
   }
@@ -204,8 +204,8 @@ namespace LichPhylactery {
   public static bool Detonate(Pawn p,float s){
    var t=Palmed(p);if(t==null)return false;Items.Remove(t,"LP_OH_Palm");ClassSubclass.Data(p)?.ticks.Remove("ohPalm");
    float chance=Subclass2.Chance(ClassSubclass.Bossy(t)?PalmBoss:PalmChance,p,t);
-   if(Roll<chance){HealthUtility.DamageUntilDowned(t,false);Items.Mote(t,"渗透劲：倒下",OpenColor);return true;}
-   t.TakeDamage(new DamageInfo(Warlock.ForceDamage,PalmDamage*s,1f,-1f,p));Items.Mote(t,"渗透劲",OpenColor);return false;
+   if(Roll<chance){HealthUtility.DamageUntilDowned(t,false);Items.Mote(t,"渗透劲：倒下".Loc(),OpenColor);return true;}
+   t.TakeDamage(new DamageInfo(Warlock.ForceDamage,PalmDamage*s,1f,-1f,p));Items.Mote(t,"渗透劲".Loc(),OpenColor);return false;
   }
 
   // ---------- 伤害（Subclass3Damage） ----------
@@ -213,9 +213,9 @@ namespace LichPhylactery {
   public static float DamageFactor(Pawn v,DamageInfo d){
    var a=d.Instigator as Pawn;bool hostile=a!=null && a!=v && a.HostileTo(v);
    // 法术塑形：塑能学派自己的法术（没有武器的火焰、闪电、寒冰、奥术力）不伤友军。
-   if(!hostile && a!=null && a!=v && d.Weapon==null && S(a,FSculpt) && Subclass2.IsSpell(d.Def)){Items.Mote(v,"法术塑形",ClassCasters.Arcane);return 0f;}
+   if(!hostile && a!=null && a!=v && d.Weapon==null && S(a,FSculpt) && Subclass2.IsSpell(d.Def)){Items.Mote(v,"法术塑形".Loc(),ClassCasters.Arcane);return 0f;}
    // 一字同心：一天一次，伤势已过半时挡下一次 10 点以上的伤害，代价是 3～18 点法力。
-   if(!Busy && S(v,FOneWord) && d.Amount>=10f && v.health.summaryHealth.SummaryHealthPercent<.5f){var vd=ClassSubclass.Data(v);if(vd!=null && !vd.ticks.ContainsKey("oneWord")){vd.ticks["oneWord"]=1;var hv=Adventurer.Get(v);if(hv!=null)ClassSystem.AddResource(hv,wizard.Def,-Rand.RangeInclusive(3,18));Items.Mote(v,"一字同心",ClassCasters.Arcane);return 0f;}}
+   if(!Busy && S(v,FOneWord) && d.Amount>=10f && v.health.summaryHealth.SummaryHealthPercent<.5f){var vd=ClassSubclass.Data(v);if(vd!=null && !vd.ticks.ContainsKey("oneWord")){vd.ticks["oneWord"]=1;var hv=Adventurer.Get(v);if(hv!=null)ClassSystem.AddResource(hv,wizard.Def,-Rand.RangeInclusive(3,18));Items.Mote(v,"一字同心".Loc(),ClassCasters.Arcane);return 0f;}}
    // 古龙姿·抗性：所选元素伤害 ×0.5。
    var ar=Items.Hediff("LP_DM_AspectResist");var arh=ar==null?null:v.health?.hediffSet?.GetFirstHediffOfDef(ar);
    float pre=arh!=null && DragonElementOf(d.Def)==Mathf.RoundToInt(arh.Severity)-1?.5f:1f;
@@ -236,7 +236,7 @@ namespace LichPhylactery {
    if(S(v,FForgeSoul) && ClassSubclass.Element(d.Def)==0)g*=.5f;
    if(S(v,FForgeSoul) && HeavyArmor(v))g*=S(v,FForgeSaint) && !Subclass2.IsSpell(d.Def)?.5f:.9f;
    // 自然庇护所：动物伤不了你。
-   if(S(v,FSanctuary) && a.RaceProps.Animal){Items.Mote(v,"自然庇护",LandColor);return 0f;}
+   if(S(v,FSanctuary) && a.RaceProps.Animal){Items.Mote(v,"自然庇护".Loc(),LandColor);return 0f;}
    if(S(v,FFungalBody) && d.Def.armorCategory?.defName=="Sharp")g*=.75f;
    if(S(v,FFullStars) && Items.Has(v,"LP_ST_Form") && !ClassSubclass.Psychic(d.Def))g*=.5f;
    if(Users.Count>0 && v.Spawned)foreach(var kv in Users){if((kv.Value & FOmen)==0)continue;var sg=v.Map.mapPawns.AllPawnsSpawned.FirstOrDefault(x=>x.thingIDNumber==kv.Key);if(sg==null || !sg.Position.InHorDistOf(v.Position,10f))continue;var od=ClassSubclass.Data(sg);if(od==null || !od.ticks.TryGetValue("omen",out int om))continue;
@@ -244,13 +244,13 @@ namespace LichPhylactery {
    // 龙之打击：徒手命中附加 4 × 战技强度 所选元素伤害。
    if(!Busy && S(a,FDisciple) && ClassMartial2.Melee(d) && MonkCore.Unarmed(a)){float amt=4f*MonkCore.Strength(a);var def=DragonDamage(a);var tv=v;var me=a;Fiends.Defer(()=>{if(tv.Dead || !tv.Spawned)return;Busy=true;try{tv.TakeDamage(new DamageInfo(def,amt,.2f,-1f,me));}finally{Busy=false;}});}
    // 受击方：宁神境 50% 的成功率这一下落空（目标每比施法者高 1 级 −5%）。
-   if(Items.Has(v,"LP_OH_Tranquil") && Roll<Subclass2.Chance(TranquilChance,v,a)){Items.Mote(v,"宁神境",OpenColor);return 0f;}
+   if(Items.Has(v,"LP_OH_Tranquil") && Roll<Subclass2.Chance(TranquilChance,v,a)){Items.Mote(v,"宁神境".Loc(),OpenColor);return 0f;}
    // 灵机一斩：身边 1 格的敌人被别人打中，暗影武僧补一击（每 2 秒一次）。
    if(!Busy && Opportunists.Count>0 && v.Spawned)foreach(var o in Opportunists){
     if(o==null || o==a || o.Dead || o.Downed || !o.Spawned || o.Map!=v.Map || !o.HostileTo(v) || !o.Position.AdjacentTo8WayOrInside(v.Position))continue;
     var sd=ClassSubclass.Data(o);if(sd==null)continue;sd.ticks.TryGetValue("opp",out int last);if(last>0 && Now-last<OpportunistGap && Now>=last)continue;
     sd.ticks["opp"]=Math.Max(1,Now);var me=o;var tgt=v;
-    Fiends.Defer(()=>{if(me.Dead || me.Downed || tgt.Dead || !tgt.Spawned)return;Busy=true;try{ClassMelee.Strike(me,tgt);}finally{Busy=false;}Items.Mote(me,"灵机一斩",ShadowColor);});
+    Fiends.Defer(()=>{if(me.Dead || me.Downed || tgt.Dead || !tgt.Spawned)return;Busy=true;try{ClassMelee.Strike(me,tgt);}finally{Busy=false;}Items.Mote(me,"灵机一斩".Loc(),ShadowColor);});
     break;
    }
    return g;
@@ -258,7 +258,7 @@ namespace LichPhylactery {
   public static void Reset(){Users.Clear();Opportunists.Clear();Wingers.Clear();Busy=false;}
 
   // ---------- 神龙宗（1.108.0） ----------
-  public static readonly string[] DragonModes={"火焰","寒冰","闪电","强酸","毒素"};
+  public static readonly string[] DragonModes={"火焰".Loc(),"寒冰".Loc(),"闪电".Loc(),"强酸".Loc(),"毒素".Loc()};
   static readonly string[] DragonDefs={"Flame","LP_Frost","LP_Lightning","LP_OozeAcid","LP_DragonPoison"};
   public static int DragonMode(Pawn p){var d=ClassSubclass.Data(p);if(d==null)return 0;d.ticks.TryGetValue("dmEl",out int m);return Mathf.Clamp(m,0,4);}
   public static DamageDef DragonDamage(Pawn p){var n=DragonDefs[DragonMode(p)];return n=="Flame"?DamageDefOf.Flame:DefCache<DamageDef>.Get(n)??DamageDefOf.Flame;}
@@ -283,7 +283,7 @@ namespace LichPhylactery {
     if(!Hostile(p,t) || !hit.Add(t))continue;float a=Roll<Subclass2.Chance(.5f,p,t)?amount:amount*.5f;
     t.TakeDamage(new DamageInfo(def,a,.2f,-1f,p));n++;
    }
-   Items.Mote(p,"龙之息·"+DragonModes[DragonMode(p)],OpenColor);return n;
+   Items.Mote(p,"龙之息·".Loc()+DragonModes[DragonMode(p)],OpenColor);return n;
   }
   // 古龙姿：1 分钟灵光——半径 3 内友军（含自己）所选元素伤害 ×0.5；敌人成功率 50% 恐慌；神龙身再对敌人爆发 16 × 战技强度 元素伤害。
   public static int Aspect(Pawn p,float s,int ticks){
@@ -291,10 +291,10 @@ namespace LichPhylactery {
    foreach(var x in Races124.PawnsNear(map,p.Position,3f).ToList()){
     if(x.Dead)continue;
     if(!x.HostileTo(p)){if(x.Faction==p.Faction){var h=Items.Give(x,"LP_DM_AspectResist",ticks,DragonMode(p)+1f);if(h!=null)h.Severity=DragonMode(p)+1f;}continue;}
-    if(Roll<Subclass2.Chance(.5f,p,x)){ClassSubclass.Fear(x,600,"古龙姿");n++;}
+    if(Roll<Subclass2.Chance(.5f,p,x)){ClassSubclass.Fear(x,600,"古龙姿".Loc());n++;}
     if(fury)x.TakeDamage(new DamageInfo(def,16f*s,.2f,-1f,p));
    }
-   FleckMaker.ThrowDustPuffThick(p.DrawPos,map,3f,OpenColor);Items.Mote(p,fury?"古龙姿·怒气爆发":"古龙姿",OpenColor);return n;
+   FleckMaker.ThrowDustPuffThick(p.DrawPos,map,3f,OpenColor);Items.Mote(p,fury?"古龙姿·怒气爆发".Loc():"古龙姿".Loc(),OpenColor);return n;
   }
   // ==================== 1.109.0 德鲁伊：大地、孢子、群星结社 ====================
   static readonly DefRef<LP_ClassDef> druid=new DefRef<LP_ClassDef>("LP_Class_Druid");
@@ -311,12 +311,12 @@ namespace LichPhylactery {
    if(!p.Spawned || p.Downed)return;
    if((f & FSanctuary)!=0 && !p.Position.GetTerrain(p.Map).layerable)ClassMelee.Heal(p,1f); // 站在自然地面上
    if((f & FHalo)!=0 && Items.Has(p,"LP_SP_HaloOn"))Halo(p);
-   if((f & FOmen)!=0 && d!=null){if(!p.Awake())d.ticks.Remove("omenDay");else if(!d.ticks.TryGetValue("omenDay",out int od) || od!=Day){d.ticks["omenDay"]=Day;d.ticks["omen"]=Rand.Bool?1:2;Items.Mote(p,d.ticks["omen"]==1?"宇宙预兆：吉":"宇宙预兆：凶",StarColor);}}
+   if((f & FOmen)!=0 && d!=null){if(!p.Awake())d.ticks.Remove("omenDay");else if(!d.ticks.TryGetValue("omenDay",out int od) || od!=Day){d.ticks["omenDay"]=Day;d.ticks["omen"]=Rand.Bool?1:2;Items.Mote(p,d.ticks["omen"]==1?"宇宙预兆：吉".Loc():"宇宙预兆：凶".Loc(),StarColor);}}
    if(Items.Has(p,"LP_ST_Form"))StarryTick(p,f);
   }
 
   // ---------- 大地法术：按地块气候（不认具体生物群系，Alpha Biomes 等模组的生物群系照样分得出） ----------
-  public static readonly string[] Climates={"寒带","温带","沙漠","湿热"};
+  public static readonly string[] Climates={"寒带".Loc(),"温带".Loc(),"沙漠".Loc(),"湿热".Loc()};
   public static int Climate(Map map){
    if(map==null)return 1;var tile=Find.WorldGrid[map.Tile];float temp=tile.temperature,rain=tile.rainfall;var bn=map.Biome?.defName??"";
    if(temp<0f || bn.Contains("Tundra") || bn.Contains("Ice"))return 0;
@@ -329,7 +329,7 @@ namespace LichPhylactery {
    if(cl==2){ // 烈日光柱：直线 10 格
     foreach(var cell in GenSight.PointsOnLineOfSight(p.Position,c).Take(10)){if(!cell.InBounds(map))continue;FleckMaker.ThrowLightningGlow(cell.ToVector3Shifted(),map,.8f);
      foreach(var t in cell.GetThingList(map).OfType<Pawn>().ToList())if(Hostile(p,t)){float amt=15f*s*(up && map.skyManager.CurSkyGlow>.5f?1.5f:1f);t.TakeDamage(new DamageInfo(DamageDefOf.Flame,amt,.2f,-1f,p));if(!t.Dead)Items.Give(t,"LP_WL_Darkened",180,1f);n++;}}
-    Items.Mote(p,"烈日光柱",LandColor);return n;
+    Items.Mote(p,"烈日光柱".Loc(),LandColor);return n;
    }
    float rad=up?5f:3f;
    foreach(var t in Races124.PawnsNear(map,c,cl==0?3f:rad).ToList()){
@@ -338,10 +338,10 @@ namespace LichPhylactery {
     else if(cl==1){t.TakeDamage(new DamageInfo(DamageDefOf.Blunt,6f*s,.1f,-1f,p));if(!t.Dead)Items.Give(t,"LP_Entangled",600,t.BodySize>=2f?2f:1f);}
     else{HealthUtility.AdjustSeverity(t,HediffDefOf.ToxicBuildup,(up?.25f:.15f)*s);}
    }
-   FleckMaker.ThrowDustPuffThick(c.ToVector3Shifted(),map,3f,LandColor);Items.Mote(p,cl==0?"寒霜之握":cl==1?"缠根":"疫病之雾",LandColor);return n;
+   FleckMaker.ThrowDustPuffThick(c.ToVector3Shifted(),map,3f,LandColor);Items.Mote(p,cl==0?"寒霜之握".Loc():cl==1?"缠根".Loc():"疫病之雾".Loc(),LandColor);return n;
   }
   // ---------- 大地塑形：永久改地形 ----------
-  public static readonly string[] TerraModes={"深水","浅水","沼泽","泥地","土壤","沃土","沙地"};
+  public static readonly string[] TerraModes={"深水".Loc(),"浅水".Loc(),"沼泽".Loc(),"泥地".Loc(),"土壤".Loc(),"沃土".Loc(),"沙地".Loc()};
   static readonly string[] TerraDefs={"WaterDeep","WaterShallow","Marsh","Mud","Soil","SoilRich","Sand"};
   public static int TerraMode(Pawn p){var d=ClassSubclass.Data(p);if(d==null)return 0;d.ticks.TryGetValue("terra",out int m);return Mathf.Clamp(m,0,TerraDefs.Length-1);}
   // 能改的格子：自然地面（不是玩家铺的地板）、没有建筑和小人、不是熔岩 / 丙烷这类有特殊机制的地形（Alpha Biomes）。
@@ -359,7 +359,7 @@ namespace LichPhylactery {
     if(!def.passability.Equals(Traversability.Standable) || def.IsWater)foreach(var pl in c.GetThingList(map).OfType<Plant>().ToList())pl.Destroy();
     map.terrainGrid.SetTerrain(c,def);n++;
    }
-   FleckMaker.ThrowDustPuffThick(center.ToVector3Shifted(),map,3f,LandColor);Items.Mote(p,"大地塑形："+TerraModes[TerraMode(p)],LandColor);return n;
+   FleckMaker.ThrowDustPuffThick(center.ToVector3Shifted(),map,3f,LandColor);Items.Mote(p,"大地塑形：".Loc()+TerraModes[TerraMode(p)],LandColor);return n;
   }
 
   // ---------- 孢子 ----------
@@ -384,7 +384,7 @@ namespace LichPhylactery {
    if(!ResurrectionUtility.TryResurrect(victim,new ResurrectionParams{removeDiedThoughts=true}))return null;
    if(victim.Faction!=druidP.Faction)victim.SetFaction(druidP.Faction);
    var h=Items.Give(victim,"LP_Conjured");var comp=(h as HediffWithComps)?.TryGetComp<HediffComp_Conjured>();if(comp!=null)comp.ticksLeft=GenDate.TicksPerDay;
-   Items.Give(victim,"LP_SP_Puppet");Items.Mote(victim,"真菌傀儡",SporeColor);return victim;
+   Items.Give(victim,"LP_SP_Puppet");Items.Mote(victim,"真菌傀儡".Loc(),SporeColor);return victim;
   }
 
   // ---------- 群星 ----------
@@ -392,11 +392,11 @@ namespace LichPhylactery {
   public static int StarBoltLeft(Pawn p){var d=ClassSubclass.Data(p);if(d==null)return 0;d.ticks.TryGetValue("stDay",out int day);d.ticks.TryGetValue("stUsed",out int u);if(day!=Day)u=0;return Mathf.Max(0,StarBoltMax(p)-u);}
   static void StarPaid(Pawn p){var d=ClassSubclass.Data(p);if(d==null || StarBoltLeft(p)<=0)return;d.ticks.TryGetValue("stDay",out int day);d.ticks.TryGetValue("stUsed",out int u);if(day!=Day)u=0;d.ticks["stDay"]=Day;d.ticks["stUsed"]=u+1;}
   public static bool NightOutdoors(Pawn p)=>p.Spawned && !p.Position.Roofed(p.Map) && p.Map.skyManager.CurSkyGlow<.4f;
-  public static readonly string[] FormModes={"弓手","圣杯","巨龙"};
+  public static readonly string[] FormModes={"弓手".Loc(),"圣杯".Loc(),"巨龙".Loc()};
   public static int FormMode(Pawn p){var d=ClassSubclass.Data(p);if(d==null)return 0;d.ticks.TryGetValue("stForm",out int m);return Mathf.Clamp(m,0,2);}
   static void StarryTick(Pawn p,int f){
    float s=Verdant(p);int m=FormMode(p);
-   if(m==0){var t=Races124.PawnsNear(p.Map,p.Position,15f).Where(x=>Hostile(p,x) && !x.Downed).OrderBy(x=>x.Position.DistanceToSquared(p.Position)).FirstOrDefault();if(t!=null){Busy=true;try{t.TakeDamage(new DamageInfo(PaladinCore.Radiant,8f*s,.3f,-1f,p));}finally{Busy=false;}Items.Mote(t,"星光箭",StarColor);}}
+   if(m==0){var t=Races124.PawnsNear(p.Map,p.Position,15f).Where(x=>Hostile(p,x) && !x.Downed).OrderBy(x=>x.Position.DistanceToSquared(p.Position)).FirstOrDefault();if(t!=null){Busy=true;try{t.TakeDamage(new DamageInfo(PaladinCore.Radiant,8f*s,.3f,-1f,p));}finally{Busy=false;}Items.Mote(t,"星光箭".Loc(),StarColor);}}
    else if(m==1){var a=Races124.PawnsNear(p.Map,p.Position,6f).Where(x=>!x.Dead && x.Faction==p.Faction && x.health.summaryHealth.SummaryHealthPercent<.999f).OrderBy(x=>x.health.summaryHealth.SummaryHealthPercent).FirstOrDefault();if(a!=null)ClassMelee.Heal(a,4f*s);}
   }
   // ==================== 1.110.0 牧师：生命、光明、熔炉领域 ====================
@@ -406,9 +406,9 @@ namespace LichPhylactery {
   public static int ChannelMax(Pawn p){int lv=ClassSystem.Level(p,cleric.Def);return lv<=0?0:1+(lv>=6?1:0)+(lv>=18?1:0);}
   public static int ChannelLeft(Pawn p){var d=ClassSubclass.Data(p);if(d==null)return 0;d.ticks.TryGetValue("chDay",out int day);d.ticks.TryGetValue("chUsed",out int u);if(day!=Day)u=0;return Mathf.Max(0,ChannelMax(p)-u);}
   public static void ChannelUse(Pawn p){var d=ClassSubclass.Data(p);if(d==null)return;d.ticks.TryGetValue("chDay",out int day);d.ticks.TryGetValue("chUsed",out int u);if(day!=Day)u=0;d.ticks["chDay"]=Day;d.ticks["chUsed"]=u+1;}
-  public static string CannotCast(Pawn p,AbilityDef def,CompProperties_ClassEffect props)=>def!=null && ChannelAbilities.Contains(def.defName) && ChannelLeft(p)<=0?"今天的引导神力用完了":null;
+  public static string CannotCast(Pawn p,AbilityDef def,CompProperties_ClassEffect props)=>def!=null && ChannelAbilities.Contains(def.defName) && ChannelLeft(p)<=0?"今天的引导神力用完了".Loc():null;
   public static bool Pay(Pawn p,AbilityDef def,CompProperties_ClassEffect props){if(def==null || !ChannelAbilities.Contains(def.defName))return false;ChannelUse(p);return true;}
-  public static string CostText(Pawn p,AbilityDef def)=>def!=null && ChannelAbilities.Contains(def.defName)?"消耗：引导神力 1（今天还剩 "+ChannelLeft(p)+" / "+ChannelMax(p)+"）":null;
+  public static string CostText(Pawn p,AbilityDef def)=>def!=null && ChannelAbilities.Contains(def.defName)?"消耗：引导神力 1（今天还剩 ".Loc()+ChannelLeft(p)+" / "+ChannelMax(p)+"）".Loc():null;
   static float Divine(Pawn p){var s=DefCache<StatDef>.Get("LP_DivinePower");return (s==null?1f:p.GetStatValue(s))*ClassSystem.PsychicFactor(p,psy)*(ClassSystem.Devotee(p)?1.2f:1f);}
 
   // 保全生命：半径 6 内友军分 5 × 牧师等级 的治疗，先给伤得最重的，每人最多治到一半生命。
@@ -416,12 +416,12 @@ namespace LichPhylactery {
    float pool=5f*Mathf.Max(1,level),total=0f;if(p.Map==null)return 0f;
    foreach(var a in Races124.PawnsNear(p.Map,p.Position,6f).Where(x=>!x.Dead && x.Faction==p.Faction).OrderBy(x=>x.health.summaryHealth.SummaryHealthPercent).ToList()){
     if(pool<=0f)break;if(a.health.summaryHealth.SummaryHealthPercent>=.5f)continue;
-    float h=ClassMelee.Heal(a,Mathf.Min(pool,ClassMelee.InjurySum(a)*.5f+1f));pool-=h;total+=h;if(h>0f)Items.Mote(a,"保全生命 "+h.ToString("0"),ClassCasters.Divine);
+    float h=ClassMelee.Heal(a,Mathf.Min(pool,ClassMelee.InjurySum(a)*.5f+1f));pool-=h;total+=h;if(h>0f)Items.Mote(a,"保全生命 ".Loc()+h.ToString("0"),ClassCasters.Divine);
    }
    return total;
   }
   // 光亮术：一个格子发光 1 天。
-  public static Thing LightOrb(Pawn p,IntVec3 c){var def=DefCache<ThingDef>.Get("LP_LT_LightOrb");if(def==null || p.Map==null)return null;var th=GenSpawn.Spawn(ThingMaker.MakeThing(def),c,p.Map);Items.Mote(p,"光亮术",ClassCasters.Divine);return th;}
+  public static Thing LightOrb(Pawn p,IntVec3 c){var def=DefCache<ThingDef>.Get("LP_LT_LightOrb");if(def==null || p.Map==null)return null;var th=GenSpawn.Spawn(ThingMaker.MakeThing(def),c,p.Map);Items.Mote(p,"光亮术".Loc(),ClassCasters.Divine);return th;}
   // 破晓之光：半径 6 驱散黑暗与隐形，敌人受 10 × 强度 + 牧师等级 光耀（6 级起对亡灵、邪魔 ×2）。
   public static int Dawn(Pawn p,float s){
    var map=p.Map;if(map==null)return 0;int n=0;float amt=10f*s+ClassSystem.Level(p,cleric.Def);
@@ -430,7 +430,7 @@ namespace LichPhylactery {
     foreach(var n2 in new[]{"LP_SH_Cloaked","LP_ATInvisible"})Items.Remove(x,n2);Items.Give(x,"LP_Spotted",3600);
     float a=amt*(ClassSystem.Knows(p,"LP_LT_ImprovedFlare") && PaladinCore.HolyVulnerable(x)?2f:1f);Busy=true;try{x.TakeDamage(new DamageInfo(PaladinCore.Radiant,a,.4f,-1f,p));}finally{Busy=false;}n++;
    }
-   FleckMaker.ThrowLightningGlow(p.DrawPos,map,4f);Items.Mote(p,"破晓之光",ClassCasters.Divine);return n;
+   FleckMaker.ThrowLightningGlow(p.DrawPos,map,4f);Items.Mote(p,"破晓之光".Loc(),ClassCasters.Divine);return n;
   }
   static void Corona(Pawn p){
    float amt=8f*Divine(p);
@@ -445,7 +445,7 @@ namespace LichPhylactery {
     if((kv.Value & FFlare)==0)continue;Pawn c=kv.Key==v.thingIDNumber?v:null;
     if(c==null){if((kv.Value & FFlareAlly)==0 || !v.Spawned)continue;c=v.Map.mapPawns.AllPawnsSpawned.FirstOrDefault(x=>x.thingIDNumber==kv.Key);if(c==null || c.Faction!=v.Faction || !c.Position.InHorDistOf(v.Position,15f))continue;}
     if(c.Downed || FlareLeft(c)<=0)continue;FlareUse(c);
-    if(Roll<Subclass2.Chance(.5f,c,a)){Items.Mote(a,"守护之光",ClassCasters.Divine);if(a.Spawned)FleckMaker.ThrowLightningGlow(a.DrawPos,a.Map,1.5f);return true;}
+    if(Roll<Subclass2.Chance(.5f,c,a)){Items.Mote(a,"守护之光".Loc(),ClassCasters.Divine);if(a.Spawned)FleckMaker.ThrowLightningGlow(a.DrawPos,a.Map,1.5f);return true;}
     return false;
    }
    return false;
@@ -459,9 +459,9 @@ namespace LichPhylactery {
     if(old==null && p.MapHeld!=null)old=p.MapHeld.listerThings.ThingsInGroup(ThingRequestGroup.HaulableEver).FirstOrDefault(x=>x.thingIDNumber==oldId);
     var oc=GearEnhance.Comp(old);if(oc!=null && oc.level>0){oc.level--;GearEnhance.ClearStatCache(old);}
    }
-   else if(d!=null && d.ticks.TryGetValue("forgeId",out int same) && same==t.thingIDNumber)return "这件已经受过熔炉祝福";
-   if(c.level>=GearEnhance.Max)return "已经强化到 +"+GearEnhance.Max;
-   c.level++;GearEnhance.ClearStatCache(t);if(d!=null)d.ticks["forgeId"]=t.thingIDNumber;return "熔炉祝福："+t.LabelNoCount;
+   else if(d!=null && d.ticks.TryGetValue("forgeId",out int same) && same==t.thingIDNumber)return "这件已经受过熔炉祝福".Loc();
+   if(c.level>=GearEnhance.Max)return "已经强化到 +".Loc()+GearEnhance.Max;
+   c.level++;GearEnhance.ClearStatCache(t);if(d!=null)d.ticks["forgeId"]=t.thingIDNumber;return "熔炉祝福：".Loc()+t.LabelNoCount;
   }
   // 工匠祝福：50 钢变出一件优秀品质的长剑 / 长矛 / 钉锤（玩家弹窗选，测试直接给编号）。
   static readonly string[] ArtisanItems={"MeleeWeapon_LongSword","MeleeWeapon_Spear","MeleeWeapon_Mace"};
@@ -473,7 +473,7 @@ namespace LichPhylactery {
    var d2=DefCache<ThingDef>.Get(ArtisanItems[Mathf.Clamp(pick,0,ArtisanItems.Length-1)]);var map=p.Map;if(d2==null || map==null)return null;
    if(p.Faction!=null && p.Faction.IsPlayer){int need=50;foreach(var x in map.listerThings.ThingsOfDef(ThingDefOf.Steel).Where(x=>!x.IsForbidden(Faction.OfPlayer)).ToList()){if(need<=0)break;int k=Math.Min(need,x.stackCount);x.SplitOff(k).Destroy();need-=k;}}
    var th=ThingMaker.MakeThing(d2,ThingDefOf.Steel);th.TryGetComp<CompQuality>()?.SetQuality(QualityCategory.Excellent,ArtGenerationContext.Colony);
-   GenPlace.TryPlaceThing(th,p.Position,map,ThingPlaceMode.Near);Items.Mote(p,"工匠祝福："+th.LabelNoCount,ClassCasters.Artisan);return th;
+   GenPlace.TryPlaceThing(th,p.Position,map,ThingPlaceMode.Near);Items.Mote(p,"工匠祝福：".Loc()+th.LabelNoCount,ClassCasters.Artisan);return th;
   }
   static bool HeavyArmor(Pawn v)=>v.GetStatValue(StatDefOf.ArmorRating_Sharp)>=.6f;
   public static int DragonElementOf(DamageDef d){if(d==null)return -1;for(int i=0;i<DragonDefs.Length;i++){if(DragonDefs[i]=="Flame"?d==DamageDefOf.Flame || d==DamageDefOf.Burn:d.defName==DragonDefs[i])return i;}return -1;}

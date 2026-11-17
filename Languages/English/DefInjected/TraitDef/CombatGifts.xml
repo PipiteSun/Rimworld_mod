@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- <color=#5B9BD5>巨力</color> -->
+  <LP_CG_Mighty.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Mighty&lt;/color&gt;</LP_CG_Mighty.degreeDatas.color5B9BD5color.label>
+  <!-- {PAWN_nameDef}天生神力，抡起战锤像抡起柴刀。\n\n入门：力量 +2（上限 +2）；负重 +25% -->
+  <LP_CG_Mighty.degreeDatas.color5B9BD5color.description>{PAWN_nameDef} was born with divine strength and swings a warhammer like a hatchet.\n\nNovice: Strength +2 (cap +2); carry capacity +25%</LP_CG_Mighty.degreeDatas.color5B9BD5color.description>
+  <!-- 武艺天赋 -->
+  <LP_CG_Mighty.modExtensions.0.kind>combat gift</LP_CG_Mighty.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>迅捷</color> -->
+  <LP_CG_Swift.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Swift&lt;/color&gt;</LP_CG_Swift.degreeDatas.color5B9BD5color.label>
+  <!-- {PAWN_nameDef}的脚步轻得像风，没人追得上。\n\n入门：敏捷 +2（上限 +2）；移动速度 +0.4 -->
+  <LP_CG_Swift.degreeDatas.color5B9BD5color.description>{PAWN_nameDef}'s steps are light as the wind, and no one can keep up.\n\nNovice: Dexterity +2 (cap +2); move speed +0.4</LP_CG_Swift.degreeDatas.color5B9BD5color.description>
+  <!-- 武艺天赋 -->
+  <LP_CG_Swift.modExtensions.0.kind>combat gift</LP_CG_Swift.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>坚韧之体</color> -->
+  <LP_CG_Stalwart.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Tough Body&lt;/color&gt;</LP_CG_Stalwart.degreeDatas.color5B9BD5color.label>
+  <!-- {PAWN_nameDef}的骨头比铁还硬，挨了刀也只是皱皱眉。\n\n入门：体质 +2（上限 +2）；受到的伤害 -10%（最多 -25%） -->
+  <LP_CG_Stalwart.degreeDatas.color5B9BD5color.description>{PAWN_nameDef}'s bones are harder than iron; a sword cut only earns a frown.\n\nNovice: Constitution +2 (cap +2); damage taken -10% (up to -25%)</LP_CG_Stalwart.degreeDatas.color5B9BD5color.description>
+  <!-- 武艺天赋 -->
+  <LP_CG_Stalwart.modExtensions.0.kind>combat gift</LP_CG_Stalwart.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>博闻强识</color> -->
+  <LP_CG_Brilliant.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Eidetic Memory&lt;/color&gt;</LP_CG_Brilliant.degreeDatas.color5B9BD5color.label>
+  <!-- {PAWN_nameDef}过目不忘，任何典籍读一遍就能复述。\n\n入门：智力 +2（上限 +2）；研究速度 +15% -->
+  <LP_CG_Brilliant.degreeDatas.color5B9BD5color.description>{PAWN_nameDef} has a photographic memory and can recite any tome after reading it once.\n\nNovice: Intelligence +2 (cap +2); research speed +15%</LP_CG_Brilliant.degreeDatas.color5B9BD5color.description>
+  <!-- 武艺天赋 -->
+  <LP_CG_Brilliant.modExtensions.0.kind>combat gift</LP_CG_Brilliant.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>鹰眼</color> -->
+  <LP_CG_Eagle.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Hawk Eye&lt;/color&gt;</LP_CG_Eagle.degreeDatas.color5B9BD5color.label>
+  <!-- {PAWN_nameDef}能在百步之外看清敌人的眼神。\n\n入门：感知 +2（上限 +2）；远程瞄准时间 -20% -->
+  <LP_CG_Eagle.degreeDatas.color5B9BD5color.description>{PAWN_nameDef} can read an enemy's eyes from a hundred paces.\n\nNovice: Wisdom +2 (cap +2); ranged aiming time -20%</LP_CG_Eagle.degreeDatas.color5B9BD5color.description>
+  <!-- 武艺天赋 -->
+  <LP_CG_Eagle.modExtensions.0.kind>combat gift</LP_CG_Eagle.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>王者气度</color> -->
+  <LP_CG_Commanding.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Regal Bearing&lt;/color&gt;</LP_CG_Commanding.degreeDatas.color5B9BD5color.label>
+  <!-- {PAWN_nameDef}一开口，所有人都会安静下来听。\n\n入门：魅力 +2（上限 +2）；社交影响 +20% -->
+  <LP_CG_Commanding.degreeDatas.color5B9BD5color.description>When {PAWN_nameDef} speaks, everyone falls silent to listen.\n\nNovice: Charisma +2 (cap +2); social impact +20%</LP_CG_Commanding.degreeDatas.color5B9BD5color.description>
+  <!-- 武艺天赋 -->
+  <LP_CG_Commanding.modExtensions.0.kind>combat gift</LP_CG_Commanding.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>连斩</color> -->
+  <LP_CG_Flurry.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Chain Slash&lt;/color&gt;</LP_CG_Flurry.degreeDatas.color5B9BD5color.label>
+  <!-- {PAWN_nameDef}的刀快得只剩残影。\n\n入门：近战冷却 -20%；近战命中后成功率 15% 立刻追加一击 -->
+  <LP_CG_Flurry.degreeDatas.color5B9BD5color.description>{PAWN_nameDef}'s blade is so fast only afterimages remain.\n\nNovice: melee cooldown -20%; melee hits have a 15% chance of an immediate follow-up strike</LP_CG_Flurry.degreeDatas.color5B9BD5color.description>
+  <!-- 武艺天赋 -->
+  <LP_CG_Flurry.modExtensions.0.kind>combat gift</LP_CG_Flurry.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>狂暴之血</color> -->
+  <LP_CG_Rage.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Berserker Blood&lt;/color&gt;</LP_CG_Rage.degreeDatas.color5B9BD5color.label>
+  <!-- 越是伤重，{PAWN_nameDef}越是凶猛。\n\n入门：健康低于 60% 时近战伤害 +30%、近战冷却 -15%、疼痛 ×0.5 -->
+  <LP_CG_Rage.degreeDatas.color5B9BD5color.description>The worse the wounds, the fiercer {PAWN_nameDef} becomes.\n\nNovice: below 60% health, melee damage +30%, melee cooldown -15%, pain ×0.5</LP_CG_Rage.degreeDatas.color5B9BD5color.description>
+  <!-- 武艺天赋 -->
+  <LP_CG_Rage.modExtensions.0.kind>combat gift</LP_CG_Rage.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>神射</color> -->
+  <LP_CG_Deadeye.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Deadeye&lt;/color&gt;</LP_CG_Deadeye.degreeDatas.color5B9BD5color.label>
+  <!-- {PAWN_nameDef}射出的箭和子弹好像长了眼睛。\n\n入门：远程命中 +12%；远程伤害 +15% -->
+  <LP_CG_Deadeye.degreeDatas.color5B9BD5color.description>{PAWN_nameDef}'s arrows and bullets seem to have eyes.\n\nNovice: ranged hit +12%; ranged damage +15%</LP_CG_Deadeye.degreeDatas.color5B9BD5color.description>
+  <!-- 武艺天赋 -->
+  <LP_CG_Deadeye.modExtensions.0.kind>combat gift</LP_CG_Deadeye.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>致命一击</color> -->
+  <LP_CG_Lethal.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Killing Blow&lt;/color&gt;</LP_CG_Lethal.degreeDatas.color5B9BD5color.label>
+  <!-- {PAWN_nameDef}总能找到对手的要害。\n\n入门：任何攻击成功率 10% 暴击，伤害 ×2；护甲穿透 +10% -->
+  <LP_CG_Lethal.degreeDatas.color5B9BD5color.description>{PAWN_nameDef} always finds the opponent's vital spot.\n\nNovice: any attack has a 10% chance to crit for ×2 damage; armor penetration +10%</LP_CG_Lethal.degreeDatas.color5B9BD5color.description>
+  <!-- 武艺天赋 -->
+  <LP_CG_Lethal.modExtensions.0.kind>combat gift</LP_CG_Lethal.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>铁壁</color> -->
+  <LP_CG_Bulwark.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Iron Wall&lt;/color&gt;</LP_CG_Bulwark.degreeDatas.color5B9BD5color.label>
+  <!-- {PAWN_nameDef}站稳了就像一堵墙。\n\n入门：利器 / 钝器护甲 +15%（绝对值，最多 +30%）；不会踉跄 -->
+  <LP_CG_Bulwark.degreeDatas.color5B9BD5color.description>Once {PAWN_nameDef} plants their feet, they're like a wall.\n\nNovice: sharp / blunt armor +15% (absolute, up to +30%); never staggers</LP_CG_Bulwark.degreeDatas.color5B9BD5color.description>
+  <!-- 武艺天赋 -->
+  <LP_CG_Bulwark.modExtensions.0.kind>combat gift</LP_CG_Bulwark.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>再生之体</color> -->
+  <LP_CG_Regen.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Regenerating Body&lt;/color&gt;</LP_CG_Regen.degreeDatas.color5B9BD5color.label>
+  <!-- {PAWN_nameDef}的伤口愈合得惊人地快，断肢也能慢慢长回来。\n\n入门：伤口愈合 ×2.5；每 15 天长回一个缺失的非要害部位 -->
+  <LP_CG_Regen.degreeDatas.color5B9BD5color.description>{PAWN_nameDef}'s wounds heal astonishingly fast, and even lost limbs slowly grow back.\n\nNovice: wound healing ×2.5; regrows one missing non-vital part every 15 days</LP_CG_Regen.degreeDatas.color5B9BD5color.description>
+  <!-- 武艺天赋 -->
+  <LP_CG_Regen.modExtensions.0.kind>combat gift</LP_CG_Regen.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>法力奔涌</color> -->
+  <LP_CG_Arcane.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Mana Surge&lt;/color&gt;</LP_CG_Arcane.degreeDatas.color5B9BD5color.label>
+  <!-- 魔力在{PAWN_nameDef}的血管里奔流。\n\n入门：法杖 / 灵能 / 神术伤害 +25%；装了 VPE 时心灵熵上限 +20，否则心灵敏感度 +15% -->
+  <LP_CG_Arcane.degreeDatas.color5B9BD5color.description>Magic surges through {PAWN_nameDef}'s veins.\n\nNovice: staff / psychic / divine magic damage +25%; with VPE installed, max neural heat +20, otherwise psychic sensitivity +15%</LP_CG_Arcane.degreeDatas.color5B9BD5color.description>
+  <!-- 武艺天赋 -->
+  <LP_CG_Arcane.modExtensions.0.kind>combat gift</LP_CG_Arcane.modExtensions.0.kind>
+</LanguageData>

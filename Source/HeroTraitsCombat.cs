@@ -59,7 +59,7 @@ namespace LichPhylactery {
    if(!a.HostileTo(v))return ff;
    float f=ff*(1f+TypeBonus(a,i,v,Melee(d)));
    if(i.element>0 && !extra && Element(d.Def)==i.element && Spell(d))f*=ElementSpell;
-   var r=i.rec;if(i.prophesied && r!=null && r.masterArmed){r.masterArmed=false;f*=2f;Items.Mote(a,"命运主宰！",new Color(1f,.8f,.3f));}
+   var r=i.rec;if(i.prophesied && r!=null && r.masterArmed){r.masterArmed=false;f*=2f;Items.Mote(a,"命运主宰！".Loc(),new Color(1f,.8f,.3f));}
    return f;
   }
   public static float InFactor(Pawn v,HeroInfo i,Pawn a,DamageInfo d){
@@ -97,12 +97,12 @@ namespace LichPhylactery {
    }
    if(ai.totem==2 && Melee(d)){
     marks[v]=new Mark{wolf=a,tick=GenTicks.TicksGame};
-    if(!v.Dead && v.BodySize<WolfMaxSize && Roll<WolfDown){v.stances?.stunner?.StunFor(WolfDownTicks,a,false,true,false);Items.Mote(v,"扑倒！",new Color(.8f,.8f,.7f));}
+    if(!v.Dead && v.BodySize<WolfMaxSize && Roll<WolfDown){v.stances?.stunner?.StunFor(WolfDownTicks,a,false,true,false);Items.Mote(v,"扑倒！".Loc(),new Color(.8f,.8f,.7f));}
    }
   }
   public static void Reflect(Pawn v,HeroInfo vi,Pawn a){
    if(vi.pact!=2 || vi.Stage<1 || a.Dead || !a.HostileTo(v) || Roll>=FeyReflect)return;
-   a.stances?.stunner?.StunFor(FeyStunTicks,v,false,true,false);Items.Mote(a,"迷惑",new Color(.7f,1f,.7f));
+   a.stances?.stunner?.StunFor(FeyStunTicks,v,false,true,false);Items.Mote(a,"迷惑".Loc(),new Color(.7f,1f,.7f));
   }
 
   // ---------- 近战命中 ----------
@@ -139,8 +139,8 @@ namespace LichPhylactery {
   public static bool CounterNow(Pawn from,Pawn to){
    if(from==null || to==null || from.Dead || from.Downed || to.Dead || !from.Spawned || !to.Spawned || from.Map!=to.Map || !from.Position.AdjacentTo8WayOrInside(to.Position))return false;
    if(!(from.meleeVerbs?.TryGetMeleeVerb(to) is Verb_MeleeAttack verb))return false;
-   try{ApplyMelee(verb,new LocalTargetInfo(to));}catch(Exception e){Log.Warning("[DND边缘大陆] 决斗者反击失败："+e.Message);return false;}
-   Countered++;Items.Mote(from,"反击！",new Color(.95f,.85f,.45f));return true;
+   try{ApplyMelee(verb,new LocalTargetInfo(to));}catch(Exception e){Log.Warning("[DND边缘大陆] 决斗者反击失败：".Loc()+e.Message);return false;}
+   Countered++;Items.Mote(from,"反击！".Loc(),new Color(.95f,.85f,.45f));return true;
   }
   public static void RunCounters(){
    int now=GenTicks.TicksGame;
@@ -156,7 +156,7 @@ namespace LichPhylactery {
     foreach(var o in h.Map.mapPawns.AllPawnsSpawned){
      if(o.Dead || o.Downed || !o.HostileTo(h) || !HeroTraits.FavoredTarget(i,o))continue;
      r.favoredNoticeTick=now;n++;
-     if(!Adventurer.TestSuppressed || HeroTraits.TestNotices)Messages.Message(h.LabelShort+"认出了宿敌："+o.LabelShort+"（"+HeroTraits.FavoredLabels[i.favored]+"）。",o,MessageTypeDefOf.ThreatSmall,false);
+     if(!Adventurer.TestSuppressed || HeroTraits.TestNotices)Messages.Message(h.LabelShort+"认出了宿敌：".Loc()+o.LabelShort+"（".Loc()+HeroTraits.FavoredLabels[i.favored]+"）。".Loc(),o,MessageTypeDefOf.ThreatSmall,false);
      break;
     }
    }
@@ -180,8 +180,8 @@ namespace LichPhylactery {
   // ---------- 心智：支配、心灵震爆、心灵束缚（DNDMind.TryResist） ----------
   public static bool MindResist(Pawn p){
    var i=HeroTraits.Info(p);if(i==null)return false;
-   if(i.fortress){Items.Mote(p,"心智堡垒",new Color(.7f,.85f,1f));return true;}
-   if(i.warded && Roll<WardChance){Items.Mote(p,"法术抗体",new Color(.75f,.6f,.95f));return true;}
+   if(i.fortress){Items.Mote(p,"心智堡垒".Loc(),new Color(.7f,.85f,1f));return true;}
+   if(i.warded && Roll<WardChance){Items.Mote(p,"法术抗体".Loc(),new Color(.75f,.6f,.95f));return true;}
    return false;
   }
   static readonly HashSet<string> controlStates=new HashSet<string>{"PanicFlee","Berserk","BerserkShort","BerserkTrance","Manhunter","ManhunterPermanent","LP_Dominated"};
@@ -289,8 +289,8 @@ namespace LichPhylactery {
    if(__0<=0 || !(__instance.parent is Pawn p))return true;
    var i=HeroTraits.Info(p);if(i==null)return true;
    var a=__1 as Pawn;if(a==null || a==p || !a.HostileTo(p))return true;
-   if(i.rec!=null && i.rec.favoredBane && HeroTraits.FavoredTarget(i,a)){Items.Mote(p,"宿敌克星",new Color(.75f,.6f,.95f));return false;}
-   if(i.warded && HeroCombat.Roll<HeroCombat.WardChance){Items.Mote(p,"法术抗体",new Color(.75f,.6f,.95f));return false;}
+   if(i.rec!=null && i.rec.favoredBane && HeroTraits.FavoredTarget(i,a)){Items.Mote(p,"宿敌克星".Loc(),new Color(.75f,.6f,.95f));return false;}
+   if(i.warded && HeroCombat.Roll<HeroCombat.WardChance){Items.Mote(p,"法术抗体".Loc(),new Color(.75f,.6f,.95f));return false;}
    return true;
   }
  }
@@ -301,7 +301,7 @@ namespace LichPhylactery {
    if(causedByMood || stateDef==null || ___pawn==null)return true;
    var i=HeroTraits.Info(___pawn);if(i==null || !i.fortress && !i.warded || !HeroCombat.ControlState(stateDef))return true;
    if(!i.fortress && HeroCombat.Roll>=HeroCombat.WardChance)return true;
-   Items.Mote(___pawn,i.fortress?"心智堡垒":"法术抗体",new Color(.75f,.6f,.95f));__result=false;return false;
+   Items.Mote(___pawn,i.fortress?"心智堡垒".Loc():"法术抗体".Loc(),new Color(.75f,.6f,.95f));__result=false;return false;
   }
  }
  // 1.63.0：法术抗体只抵抗敌对施法者（伤害、眩晕、控制都已经要求施法者敌对），不再挡友方的增益法术（原来友方“给状态”类能力 50% 落空）。
@@ -315,7 +315,7 @@ namespace LichPhylactery {
   }
   static bool Prefix(CompAbilityEffect_GiveHediff __instance,LocalTargetInfo __0){
    var t=__0.Pawn;if(!Blocks(__instance.parent?.pawn,t,HeroCombat.Roll))return true;
-   Items.Mote(t,"法术抗体",new Color(.75f,.6f,.95f));return false;
+   Items.Mote(t,"法术抗体".Loc(),new Color(.75f,.6f,.95f));return false;
   }
  }
  // 冷却：神之勇士显现后本神领域神术 -25%；魔网涌动期间不进冷却。
@@ -365,7 +365,7 @@ namespace LichPhylactery {
   }
   static void Postfix(Pawn __instance,HeroKillState __state){
    if(__state==null || !__instance.Dead)return;
-   try{HeroDeeds.OnKilled(__instance,__state);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 强力特性击杀结算出错："+e,75158002);}
+   try{HeroDeeds.OnKilled(__instance,__state);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 强力特性击杀结算出错：".Loc()+e,75158002);}
   }
  }
  [HarmonyPatch(typeof(ResurrectionUtility),nameof(ResurrectionUtility.TryResurrect))]

@@ -24,21 +24,21 @@ namespace LichPhylactery {
    var h=Adventurer.Get(p);string reward;
    if(d==HeroDefOf.LP_LastStand){
     if(h!=null){h.pendingASI++;if(Adventurer.AutoASI(p))h.AutoAssign();}
-    reward="+1 次属性提升";
+    reward="+1 次属性提升".Loc();
     if(Roll<SparkChance){
      var slot=HeroTraits.Full(p)?HeroTraits.SlotTrait(p):null; // 1.66.0 热修：名额满了才会取代最早的一个
-     if(HeroTraits.Has(p,HeroDefOf.LP_HeroicSpark)){Legend.Grant(h,SparkFallback);reward+="；绝境里迸出了英雄之资的火花——但"+p.LabelShort+"已经有英雄之资，改为传奇属性点 +"+SparkFallback;}
-     else{HeroTraits.Give(p,HeroDefOf.LP_HeroicSpark);reward+="；绝境之中，"+p.LabelShort+"觉醒了英雄之资！"+(slot!=null?"（强力特性已满，取代了"+HeroTraits.Plain(slot)+"）":"");}
+     if(HeroTraits.Has(p,HeroDefOf.LP_HeroicSpark)){Legend.Grant(h,SparkFallback);reward+="；绝境里迸出了英雄之资的火花——但".Loc()+p.LabelShort+"已经有英雄之资，改为传奇属性点 +".Loc()+SparkFallback;}
+     else{HeroTraits.Give(p,HeroDefOf.LP_HeroicSpark);reward+="；绝境之中，".Loc()+p.LabelShort+"觉醒了英雄之资！".Loc()+(slot!=null?"（强力特性已满，取代了".Loc()+HeroTraits.Plain(slot)+"）".Loc():"");}
     }
    }else{
     int n=Points(d);
-    if(h!=null && h.legendary){Legend.Grant(h,n);reward="传奇属性点 +"+n;}
-    else if(h!=null){h.pendingASI++;if(Adventurer.AutoASI(p))h.AutoAssign();reward="+1 次属性提升（成为传奇冒险者之后，这份事迹相当于 "+n+" 个传奇属性点）";}
-    else reward="（没有冒险者等级，没有加点奖励）";
+    if(h!=null && h.legendary){Legend.Grant(h,n);reward="传奇属性点 +".Loc()+n;}
+    else if(h!=null){h.pendingASI++;if(Adventurer.AutoASI(p))h.AutoAssign();reward="+1 次属性提升（成为传奇冒险者之后，这份事迹相当于 ".Loc()+n+" 个传奇属性点）".Loc();}
+    else reward="（没有冒险者等级，没有加点奖励）".Loc();
    }
    if(d==HeroDefOf.LP_DeedGodslayer && Faith.ShardDef!=null && p.MapHeld!=null)GenPlace.TryPlaceThing(ThingMaker.MakeThing(Faith.ShardDef),p.PositionHeld,p.MapHeld,ThingPlaceMode.Near);
    h?.Dirty();
-   if(!Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("传说事迹："+HeroTraits.Plain(d),p.LabelShort+why+"，成为了"+HeroTraits.Plain(d)+"。\n\n"+(p.story.traits.GetTrait(d)?.TipString(p)??"")+"\n\n奖励："+reward+(d==HeroDefOf.LP_DeedGodslayer?"；1 枚神迹残片":"")+"。",LetterDefOf.PositiveEvent,p);
+   if(!Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("传说事迹：".Loc()+HeroTraits.Plain(d),p.LabelShort+why+"，成为了".Loc()+HeroTraits.Plain(d)+"。\n\n".Loc()+(p.story.traits.GetTrait(d)?.TipString(p)??"")+"\n\n奖励：".Loc()+reward+(d==HeroDefOf.LP_DeedGodslayer?"；1 枚神迹残片".Loc():"")+"。".Loc(),LetterDefOf.PositiveEvent,p);
    return true;
   }
 
@@ -50,7 +50,7 @@ namespace LichPhylactery {
    return list;
   }
   static bool MeleeBy(Pawn p,HeroKillState s)=>p==s.killer?s.killerMelee:(p.equipment?.Primary==null || p.equipment.Primary.def.IsMeleeWeapon);
-  public static bool DragonDeed(Pawn v)=>Dragons.IsChromatic(v) || !v.RaceProps.Humanlike && Dragons.Is(v) || ForceDragon.Active(v) && HeroDestiny.Boss(v);
+  public static bool DragonDeed(Pawn v)=>Dragons.IsChromatic(v) || !v.RaceProps.Humanlike && Dragons.Is(v);
   public static bool DivineFoe(Pawn v)=>Twilight.Vessel(v)!=null || Demigods.Is(v) || Twilight.Infused(v)!=null && Legendary.LevelOf(v)>=GodslayerLevel;
   public static void OnKilled(Pawn victim,HeroKillState s){
    var parts=Participants(victim,s);
@@ -58,18 +58,18 @@ namespace LichPhylactery {
     var vt=DndCreatureType.Compute(victim);
     bool dragon=DragonDeed(victim),giant=(vt&DndType.Giant)!=0,larloch=Items.Has(victim,"LP_LarlochAvatar"),divine=DivineFoe(victim),nemesis=Adventurer.Get(victim)?.nemesis==true,boss=HeroDestiny.Boss(victim);
     foreach(var p in parts){
-     if(dragon)Grant(p,HeroDefOf.LP_DeedDragonslayer,"参与击杀了"+victim.LabelShort);
-     if(giant && MeleeBy(p,s)){var r=HeroTraits.EnsureRecord(p);if(r!=null){r.giantKills++;if(r.giantKills>=GiantKillsNeed)Grant(p,HeroDefOf.LP_Giantbane,"用近战放倒了第 "+r.giantKills+" 个巨人（"+victim.LabelShort+"）");}}
-     if(larloch)Grant(p,HeroDefOf.LP_Lichbane,"击败了影巫王拉洛克");
-     if(divine)Grant(p,HeroDefOf.LP_DeedGodslayer,"参与击杀了"+victim.LabelShort);
+     if(dragon)Grant(p,HeroDefOf.LP_DeedDragonslayer,"参与击杀了".Loc()+victim.LabelShort);
+     if(giant && MeleeBy(p,s)){var r=HeroTraits.EnsureRecord(p);if(r!=null){r.giantKills++;if(r.giantKills>=GiantKillsNeed)Grant(p,HeroDefOf.LP_Giantbane,"用近战放倒了第 ".Loc()+r.giantKills+" 个巨人（".Loc()+victim.LabelShort+"）".Loc());}}
+     if(larloch)Grant(p,HeroDefOf.LP_Lichbane,"击败了影巫王拉洛克".Loc());
+     if(divine)Grant(p,HeroDefOf.LP_DeedGodslayer,"参与击杀了".Loc()+victim.LabelShort);
      var i=HeroTraits.Info(p);var rec=i?.rec;
      if(i!=null && i.prophesied && rec!=null && !rec.prophecyDone){
       bool hit=rec.prophecy==0 && dragon || rec.prophecy==1 && giant && boss || rec.prophecy==2 && larloch || rec.prophecy==3 && nemesis;
-      if(hit)HeroDestiny.Fulfill(p,p.LabelShort+"参与击杀了"+victim.LabelShort);
+      if(hit)HeroDestiny.Fulfill(p,p.LabelShort+"参与击杀了".Loc()+victim.LabelShort);
      }
      if(i!=null && i.favored>0 && rec!=null && HeroTraits.FavoredTarget(i,victim)){
       rec.favoredKills++;
-      if(!rec.favoredBane && rec.favoredKills>=HeroCombat.BaneKills){rec.favoredBane=true;if(!Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("宿敌克星："+p.LabelShort,p.LabelShort+"已经杀了 "+rec.favoredKills+" 个宿敌（"+HeroTraits.FavoredLabels[i.favored]+"），成为“宿敌克星”：对宿敌伤害 +40%，免疫宿敌施加的眩晕与控制。",LetterDefOf.PositiveEvent,p);}
+      if(!rec.favoredBane && rec.favoredKills>=HeroCombat.BaneKills){rec.favoredBane=true;if(!Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("宿敌克星：".Loc()+p.LabelShort,p.LabelShort+"已经杀了 ".Loc()+rec.favoredKills+" 个宿敌（".Loc()+HeroTraits.FavoredLabels[i.favored]+"），成为“宿敌克星”：对宿敌伤害 +40%，免疫宿敌施加的眩晕与控制。".Loc(),LetterDefOf.PositiveEvent,p);}
      }
     }
    }
@@ -90,14 +90,14 @@ namespace LichPhylactery {
   // ---------- 其他事件 ----------
   public static void Blasted(Pawn p){
    if(!Player(p))return;var r=HeroTraits.EnsureRecord(p);if(r==null)return;
-   r.blastSurvived++;if(r.blastSurvived>=BlastsNeed)Grant(p,HeroDefOf.LP_MindFortress,"扛过了 "+r.blastSurvived+" 次心灵震爆");
+   r.blastSurvived++;if(r.blastSurvived>=BlastsNeed)Grant(p,HeroDefOf.LP_MindFortress,"扛过了 ".Loc()+r.blastSurvived+" 次心灵震爆".Loc());
   }
-  public static void DominationEnded(Pawn p){if(Player(p))Grant(p,HeroDefOf.LP_MindFortress,"从夺心魔的支配里挣脱了出来");}
-  public static void Resurrected(Pawn p){if(Player(p))Grant(p,HeroDefOf.LP_DeathReturned,"从冥界回来了");}
+  public static void DominationEnded(Pawn p){if(Player(p))Grant(p,HeroDefOf.LP_MindFortress,"从夺心魔的支配里挣脱了出来".Loc());}
+  public static void Resurrected(Pawn p){if(Player(p))Grant(p,HeroDefOf.LP_DeathReturned,"从冥界回来了".Loc());}
   public static void PhylacteryDestroyed(Phylactery ph){
    var soul=ph?.soul;if(soul==null || soul.Faction==null || soul.Faction.IsPlayer || !soul.Faction.HostileTo(Faction.OfPlayer))return;
    if(!HeroCombat.lastPhylacteryHit.TryGetValue(ph,out var p))return;HeroCombat.lastPhylacteryHit.Remove(ph);
-   Grant(p,HeroDefOf.LP_Lichbane,"摧毁了"+soul.LabelShort+"的命匣");
+   Grant(p,HeroDefOf.LP_Lichbane,"摧毁了".Loc()+soul.LabelShort+"的命匣".Loc());
   }
   // 冥界归来：亲友 / 同伴死去、目睹死亡之类的负面记忆。
   static readonly Dictionary<ThoughtDef,bool> deathThoughts=new Dictionary<ThoughtDef,bool>();
@@ -121,10 +121,10 @@ namespace LichPhylactery {
   }
   public static void RaidDefended(RaidRecord r){
    if(r==null)return;
-   var lone=r.lastStand;if(lone!=null && Player(lone) && lone.MapHeld==r.map)Grant(lone,HeroDefOf.LP_LastStand,"在袭击里一个人撑到了最后");
+   var lone=r.lastStand;if(lone!=null && Player(lone) && lone.MapHeld==r.map)Grant(lone,HeroDefOf.LP_LastStand,"在袭击里一个人撑到了最后".Loc());
    foreach(var p in r.fighters.Where(Player).Distinct().ToList()){
     var i=HeroTraits.Info(p);var rec=i?.rec;if(i==null || !i.prophesied || rec==null || rec.prophecyDone || rec.prophecy!=5)continue;
-    rec.raidsDefended++;if(rec.raidsDefended>=HeroDestiny.ProphecyRaids)HeroDestiny.Fulfill(p,p.LabelShort+"守住了第 "+rec.raidsDefended+" 次袭击");
+    rec.raidsDefended++;if(rec.raidsDefended>=HeroDestiny.ProphecyRaids)HeroDestiny.Fulfill(p,p.LabelShort+"守住了第 ".Loc()+rec.raidsDefended+" 次袭击".Loc());
    }
   }
  }

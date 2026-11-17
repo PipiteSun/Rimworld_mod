@@ -1,0 +1,212 @@
+s00464	The soul is nailed to the phylactery by an oath. On the map where the phylactery is, instant-death effects (thousand-point hits like Power Word Kill, decapitation) down you instead. Liches only. Grants +1 Intelligence.
+s00465	phylactery oath
+s00466	Knows how to brew poison from herbs. Ability "Coat weapon in poison": uses 1 herbal medicine (carried or on the map), then the next 20 melee hits apply spider queen venom. Requires Crafting or Medicine 6. Grants +1 Dexterity or Intelligence.
+s00467	poisoner
+s00468	Rarely sick, and recovers fast when sick. Immunity gain speed ×2, rest recovery ×1.3, wound healing ×1.2. One of three Resilient choices. Grants +1 Constitution.
+s00469	resilient: immunity
+s00470	More strong-willed than most. Mental break threshold -15%, mind resistance +20%. One of three Resilient choices. Grants +1 Wisdom.
+s00471	resilient: will
+s00472	The body is especially tough against poison. Toxic resistance +100% (toxins no longer build up), toxic environment resistance +50%, pain shock threshold +10%. One of three Resilient choices. Grants +1 Constitution.
+s00473	resilient: poison
+s00474	Uses rituals to restore spent spells. Ability "Ritual casting" (2 per day): channel standing for 1 hour; the ability with the longest remaining cooldown finishes cooling down at once, and for 1 hour afterwards the next cast triggers no cooldown and adds no neural heat. Requires Intelligence or Wisdom 13 and a spellcasting class or holy symbol. Grants +1 Intelligence or Wisdom.
+s00475	ritual caster
+s00476	Has learned a bit of everything. When taking the feat, the 3 highest-level skills whose passion is not yet "major" each go up one passion step (none → minor → major), and those 3 skills each gain +3 levels; global learning ×1.1. Grants +1 to any ability score (added to your current highest).
+s00477	skill expert
+s00478	Fists forged in tavern brawls. Unarmed damage ×2.5, social fight damage ×2; unarmed hits have a 40% chance to push the enemy 1 cell and stun for 1 second. Grants +1 Strength or Constitution.
+s00479	tavern brawler
+s00480	Can send thoughts into other people's heads. Social impact ×1.15; ability "Soothe mind" (3 per day): instantly calm a colonist within 30 cells who is having a mental break. Grants +1 Intelligence, Wisdom or Charisma.
+s00481	telepathic
+s00482	The musician's playing still echoes in the heart: surgery success, negotiation ability and shooting accuracy ×1.3.
+s00483	inspired
+s00484	The power of the ritual lingers: the next cast triggers no cooldown and adds no neural heat.
+s00485	ritual afterglow
+s00486	That tune just now set my blood racing.
+s00487	rousing music
+s00488	Ate a good snack: wound healing +25%.
+s00489	snack aftertaste
+s00490	Cut deep by a slasher: move speed halved.
+s00491	deep wound
+s00492	One hammer blow sends man and armor flying. Blunt damage ×1.2; hits have a 25% chance to push the target 1 cell and stun for 1 second. One of slasher, piercer, crusher. Grants +1 Strength or Constitution.
+s00493	crusher
+s00494	A flick of the blade turns the incoming blow aside. Melee dodge +15, melee hit chance ×1.05. Grants +1 Dexterity.
+s00495	defensive duelist
+s00496	No matter how bad the wounds, back on your feet quickly. Wound healing ×1.5, rest recovery ×1.3, pain shock threshold +10%. Grants +1 Constitution.
+s00497	durable
+s00498	Has dealt with the Feywild. Gains the ability "Misty step" (vanilla longjump: jump to a distant cell, cooldown as vanilla); mind resistance +20%, social impact ×1.1. Grants +1 Intelligence, Wisdom or Charisma.
+s00499	fey touched
+s00500	Specializes in fighting spellcasters. ×1.3 damage against casters (DND classes, holy symbol wearers, psycasters, enemy caster units); hitting someone who is casting interrupts the cast and stuns them for 1 second; mind resistance +25%. Grants +1 Strength or Dexterity.
+s00501	mage slayer
+s00502	Always goes for vital spots. Stab, bite, bullet and arrow damage ×1.2; such attacks have a 20% chance to deal double damage. One of slasher, piercer, crusher. Grants +1 Strength or Dexterity.
+s00503	piercer
+s00504	The blade leaves long, deep wounds. Sharp (cut, scratch) damage ×1.2; hits have a 25% chance to halve the target's move speed for 3 seconds. One of slasher, piercer, crusher. Grants +1 Strength or Dexterity.
+s00505	slasher
+s00506	Any weapon feels right in your hands. Melee hit chance ×1.1, shooting accuracy ×1.1, aiming time ×0.9. Grants +1 Strength or Dexterity.
+s00507	weapon master
+s00508	Caught by a grappler: cannot move for 3 seconds.
+s00509	grappled
+s00510	Strikes with momentum. Melee hits while running (moved within the last second) deal ×1.3 damage and have a 25% chance to knock the target back 1 cell; moving +0.2. Grants +1 Strength or Dexterity.
+s00511	charger
+s00512	Reloads as fast as breathing. With bows and crossbows (medieval-or-lower ranged weapons) aiming time ×0.7 and shooting cooldown ×0.8; all ranged weapons get shooting accuracy ×1.05. Grants +1 Dexterity.
+s00513	crossbow expert
+s00514	Both hands always busy. Melee cooldown ×0.85, melee dodge +8, melee hit chance ×1.05. Grants +1 Strength or Dexterity.
+s00515	dual wielder
+s00516	Once caught, there's no running. Melee hits have a 25% chance to keep a target no bigger than 1.5× your size from moving for 3 seconds; ×1.5 melee damage against grappled, stunned or downed targets. Grants +1 Strength.
+s00517	grappler
+s00518	The butt end is a weapon too. With polearm melee weapons (stab / cut weapons of mass ≥2), the first hit every 3 seconds is followed at once by a butt-end strike (50% damage); melee cooldown ×0.9. Grants +1 Strength or Dexterity.
+s00519	polearm master
+s00520	A shield isn't just for blocking. Armor +6%, melee dodge +6; while wearing a shield belt, another +10 melee dodge, and melee hits have a 25% chance to push the target 1 cell and stun for 1 second. Grants +1 Strength or Constitution.
+s00521	shield master
+s00522	Hands of Creation feat: press while crafting at a workbench to instantly finish half the remaining work (up to the equivalent of 60000 work); this piece's quality is at least "excellent". Does not interrupt the current bill. Once per day, restored at midnight.
+s00523	fabricate
+s00524	The afterglow of fabricate: the next piece you make by hand is at least "excellent" quality.
+s00525	Hand of Harvest feat: all plants within 6 cells of you gain +20% growth (up to mature). Once per day, restored at midnight.
+s00526	quicken growth
+s00527	This piece is worthy of the ages.
+s00528	proud work
+s00529	A thought, and the object takes shape. Gains the active ability "Fabricate" (once per day, restored at midnight): press while crafting at a workbench to instantly finish half the remaining work (up to the equivalent of 60000 work), and this piece's quality is at least "excellent" (the effect lasts 1 day and applies to the next piece finished). Requires Master Artisan. Grants +1 Intelligence.
+s00530	hands of creation
+s00531	Every crop you touch grows well. Plant work speed ×1.3, harvest yield +15%; gains the active ability "Quicken growth" (once per day, restored at midnight): all plants within 6 cells of you gain +20% growth (up to mature). Grants +1 Wisdom or Constitution.
+s00532	hand of harvest
+s00533	Heat and proportions, exact to the grain. Work speed ×1.35 at the alchemy table; products made at the alchemy table have a 30% chance of an extra unit (based on the recipe's first product). Requires Crafting or Medicine 6. Grants +1 Intelligence or Constitution.
+s00534	master alchemist
+s00535	From a master's hands. Every item you craft has a 30% chance to go up one quality tier (up to legendary); making a masterwork or legendary piece gives mood +4 "proud work" for 1 day. Requires Dexterity or Intelligence 13. Grants +1 Dexterity or Intelligence.
+s00536	master artisan
+s00537	Every brick laid solid. Construction speed ×1.35, construction success +15%; construction speed another ×1.5 when repairing buildings. Grants +1 Strength or Constitution.
+s00538	master builder
+s00539	Work is training too. Adventurer XP converted from daily work ×1.5; the daily full-credit portion rises from 80 to 120 (after that still counted at half). Grants +1 Wisdom or Intelligence.
+s00540	learning by doing
+s00541	Every hammer stroke has its method. Work speed ×1.4 at the rune anvil; items made on the rune anvil have a 25% chance to go up one quality tier (only the higher chance of this and Master Artisan counts, one tier only); each completed item has a 20% chance to refund a quarter of the metal. Requires Strength or Intelligence 13. Grants +1 Strength or Intelligence.
+s00542	rune smith
+s00543	Never makes a big mistake with the knife. Surgery success ×1.25 (stacks with Healer, still subject to the vanilla cap), surgery speed ×1.5; failed surgeries are never fatal or catastrophic, at worst a minor failure. Requires Dexterity 13. Grants +1 Dexterity or Wisdom.
+s00544	master surgeon
+s00545	crush {0_label}
+s00546	A dark faceted crystal with gold light flowing in its cracks. When a legendary adventurer crushes it, all legend points spent in the past are refunded and can be reassigned. Only legendary adventurers can use it; those who never spent points cannot.\n\nCannot be crafted. Nemesis champions sometimes carry one, Black Network caravans occasionally stock it, and Larloch also gives it as a reward.
+s00547	legend reforging stone
+s00548	Grabbed by an unarmed fighter, almost unable to move. Lasts 2 seconds (120 ticks).
+s00549	Fighting style - Defense: wearing hard enough outerwear, sharp and blunt armor +8%.
+s00550	defense style
+s00551	Fighting style - Dueling: one-handed weapon with no off-hand, melee damage ×1.2.
+s00552	dueling style
+s00553	Fighting style - Great weapon: two-handed weapon, melee damage ×1.15, melee cooldown ×0.95.
+s00554	great weapon style
+s00555	Fighting style - Unarmed: no weapon, fist and kick damage ×1.6.
+s00556	unarmed style
+s00557	Ranged weapon shot hit chance ×1.08, range +2 cells (weapon shots only, not abilities; thrown weapons don't count).
+s00558	archery
+s00559	Shooting is unaffected by smoke; can see invisible units within 3 cells.
+s00560	blind fighting
+s00561	While wearing an outer or middle layer whose sharp armor is ≥ 40%, sharp and blunt armor +8%.
+s00562	defense
+s00563	When the main hand is a one-handed melee weapon (mass under 2.5 kg) and no off-hand is in use, melee damage ×1.2.
+s00564	dueling
+s00565	With a two-handed melee weapon (mass over 2.5 kg), melee damage ×1.15 and melee cooldown ×0.95.
+s00566	great weapon fighting
+s00567	When an ally within 3 cells takes outside damage, block 3 + proficiency bonus points of it (down to 0 at least). Once every 10 seconds.
+s00568	interception
+s00569	When an adjacent ally (surrounding 8 cells) is attacked, the attacker's hit chance ×0.85 (melee and ranged).
+s00570	protection
+s00571	Thrown weapons (grenades, molotovs, EMP grenades, this mod's alchemical throwables) range ×1.3, hit chance ×1.1.
+s00572	thrown weapon fighting
+s00573	A melee weapon in the pack serves as an off-hand: each normal melee hit has a 30% chance of an extra off-hand strike (damage uses the off-hand multiplier in settings). Right-click a melee weapon on the ground to "take as off-hand". Has no effect with dual-wield mods installed.
+s00574	two-weapon fighting
+s00575	Without a weapon, fist and kick damage ×1.6; unarmed hits have a 20% chance to grab the target for 2 seconds (almost unable to move).
+s00576	unarmed fighting
+s00577	[PAWN_nameDef] was born with more talent than others. The effect of each point of positive modifier in the six adventurer ability scores ×1.5 (takes the larger of this and racial affinity, not multiplied).
+s00578	<color=#B070E0>Gifted</color>
+s00579	power trait
+s00580	[PAWN_nameDef] starts slowly but goes farther and farther. Gains 1 legend point every 4 adventurer levels; legend levels 21-40 give 3 legend points per level (normally 2).
+s00581	<color=#B070E0>Late Bloomer</color>
+s00582	[PAWN_nameDef] has no illustrious bloodline, only a will that refuses to give up. Adventurer XP +25%; every legend attribute point is worth ×1.5 (takes the larger of this and racial affinity, not multiplied).
+s00583	<color=#B070E0>Mortal Resolve</color>
+s00584	Every bit of [PAWN_nameDef]'s progress was hard-won. Each ability score improvement gives 3 points (+3 to one, or +2 to one and +1 to another), with one more improvement at level 20.
+s00585	<color=#B070E0>Tempered Steel</color>
+s00586	A fully enclosed helmet matching the artificer power armor; amber visors with built-in targeting assist shorten aiming time.
+s00587	artificer rebreather helm
+s00588	Power armor with a bronze shell and an aether core set in the chest. Mithril servos make it more agile than vanilla power armor, and the tool rig on the back and aether assist make the wearer work faster.\n\nSlightly stronger than marine armor, and only slightly slower.
+s00589	artificer power armor
+s00590	Steel-grey adamantine plate with gilded trim and rows of aether lattice on the chest and shoulders. Heavier than any vanilla armor; the wearer barely feels pain but walks very slowly.\n\nThe grey plating can be dyed.
+s00591	oathbound bastion armor
+s00592	A gilded great helm matching the oathbound bastion armor, with a glowing vision slit behind the visor. Heavy but does not block sight, and keeps the wearer clear-headed under impact.\n\nThe grey parts can be dyed.
+s00593	bastion great helm
+s00594	Weave mithril into the joints and servo structure of power armor and replace ordinary batteries with an aether core. Allows crafting the "artificer power armor" and "artificer rebreather helm" at the fabrication bench.
+s00595	aether power armor
+s00596	Cast whole breastplates and pauldrons of adamantine and engrave them with oath runes to make the heaviest power armor. Allows crafting the "oathbound bastion armor" and "bastion great helm" at the fabrication bench.
+s00597	oathbound bastion armor
+s00598	physical_description_root->This [fleshart] [depicts] [image]. [desc_sentence_group]
+s00599	physical_description_root->This [fleshart] [depiction] [image] in twisted muscle bundles. [desc_sentence_group]
+s00600	physical_description_root->On this [fleshart], layered flesh [depiction] [image]. [desc_sentence_group]
+s00601	physical_description_root->This [fleshart] pieces together [image] out of sinew and bone shards. [desc_sentence_group]
+s00602	fleshart->flesh artwork
+s00603	fleshart->flesh sculpture
+s00604	fleshart->meat sculpture
+s00605	fleshart->piece
+s00606	physical_description_root->This [leatherart] [depicts] [image]. [desc_sentence_group]
+s00607	physical_description_root->The pattern pressed into this [leatherart] [depiction] [image]. [desc_sentence_group]
+s00608	physical_description_root->On this [leatherart], stitched leather pieces [depiction] [image]. [desc_sentence_group]
+s00609	physical_description_root->This [leatherart] portrays [image] with carving knife and thread. [desc_sentence_group]
+s00610	leatherart->leather carving
+s00611	leatherart->leatherwork
+s00612	leatherart->stitched statue
+s00613	leatherart->piece
+s00614	A huge work piled from heaps of raw meat and whole skeletons, big enough to fill a room, set with salt and wax so it never rots. Viewers often can't tell whether they are moved or offended.
+s00615	grand flesh artwork
+s00616	A man-high flesh work: muscle bundles wound around a skeleton, set with salt and wax so it never rots. Viewers often can't tell whether they are moved or offended.
+s00617	large flesh artwork
+s00618	A torso-sized work shaped from raw meat, sinew and bone shards, set with salt and wax so it never rots. Viewers often can't tell whether they are moved or offended.
+s00619	small flesh artwork
+s00620	A huge work stitched together from dozens of hides, big enough to fill a room. Lighter than stone or wood sculptures, and more vulnerable to fire.
+s00621	grand leather carving
+s00622	A man-high leather work: hide stretched and stitched over a frame, its surface covered in carved patterns. Lighter than stone or wood sculptures, and more vulnerable to fire.
+s00623	large leather carving
+s00624	A torso-sized piece of cloth or leather carved, embossed and stitched into art. Lighter than stone or wood sculptures, and more vulnerable to fire.
+s00625	small leather carving
+s00626	Shape a grand flesh artwork from 400 raw meat.
+s00627	Shaping flesh.
+s00628	make grand flesh artwork
+s00629	Shape a large flesh artwork from 100 raw meat.
+s00630	make large flesh artwork
+s00631	Shape a small flesh artwork from 50 raw meat.
+s00632	make small flesh artwork
+s00633	A lump of raw meat being shaped; the bone shards are in place, the sinew not yet fully wound.
+s00634	unfinished flesh artwork
+s00635	A half-carved, half-stitched piece of leather.
+s00636	unfinished leather carving
+s00637	Channeling the divine spark.
+s00638	A celestial titanborn who has passed through the Gate of the Heavens: divinity has awakened in the blood, and beyond the halo overhead a faint golden divine glow has appeared. Still a titanborn, just one step closer to the divine father. Awakened divine blood is not passed on to descendants.
+s00639	All the genes of a celestial titanborn, plus "awakened divine blood" (psychic sensitivity +20%, divine glow overhead). Not inheritable.
+s00640	awakened titan
+s00641	The wind pushes my steps.
+s00642	call the wind
+s00643	Open a 6-cell antimagic field centered on yourself for 1 day: enemies inside cannot use abilities, and divine skills of god-possessed pawns stop working. Costs 50 divine power, cooldown 1 day.
+s00644	antimagic field
+s00645	Brings a thunderstorm to this map (about 1 day), and your faction's people get +10% move speed for 1 day. Costs 30 divine power, cooldown 1 day.
+s00646	Enemies within 7 cells flee in terror. Costs 40 divine power, cooldown 1 day.
+s00647	crown of dread
+s00648	Allies within 6 cells heal a combined 15 points of wounds; enemy undead, fiends and mind flayers take 20 holy damage. Costs 30 divine power, cooldown 1 day.
+s00649	light of dawn
+s00650	Raise 4 skeletons from the ground (the necromantic construct skeletons), which crumble after 1 day. Costs 50 divine power, cooldown 1 day.
+s00651	army of the dead
+s00652	Dominate the mind of one humanlike enemy: for 12 hours they fight on your side, then return to their original faction. Psychically deaf people are unaffected. Costs 60 divine power, cooldown 2 days.
+s00653	dominate
+s00654	Allied humanlikes within 6 cells add 6 burn damage to every melee hit for 1 day. Costs 30 divine power, cooldown 1 day.
+s00655	forge blessing
+s00656	Open the gate of judgment for one enemy: below 30% health they die on the spot, otherwise they take 30 holy damage. Costs 50 divine power, cooldown 1 day.
+s00657	gate of judgment
+s00658	Smash one enemy with 35 holy damage and stun them for 2 seconds. Costs 30 divine power, cooldown 1 day.
+s00659	hammer of judgment
+s00660	Allied humanlikes within 8 cells get +20% armor (sharp, blunt) for 1 day. Costs 40 divine power, cooldown 1 day.
+s00661	shield of justice
+s00662	Call down a fireball: 40 fire damage within 4 cells, setting things alight. Costs 45 divine power, cooldown 1 day.
+s00663	meteor fire
+s00664	Release a mist of forgetting at the target: enemies within 6 cells get -40% shooting accuracy for 6 hours. Costs 40 divine power, cooldown 1 day.
+s00665	mist of forgetting
+s00666	Summon 4 wargs that obey your faction; after 1 day they return to the wild. Costs 50 divine power, cooldown 2 days.
+s00667	call of the pack
+s00668	Become a predator for 6 hours: melee damage +50%, move speed +20%. Costs 30 divine power, cooldown 1 day.
+s00669	predator form
+s00670	Enemies within 5 cells are stunned for 3 seconds and take 15 psychic damage (psychically deaf people are unaffected). Costs 45 divine power, cooldown 1 day.
+s00671	psychic blast
+s00672	Sink into the shadows, teleport to a spot within 12 cells and turn invisible for 8 seconds. Costs 30 divine power, cooldown 1 day.
+s00673	shadow step
+s00674	Reap the souls of all downed humanlike enemies within 8 cells: they die on the spot (bodies intact), and each soul gives the phylactery 50 sacrifice XP. Costs 40 divine power, cooldown 1 day.
+s00675	reaping of souls

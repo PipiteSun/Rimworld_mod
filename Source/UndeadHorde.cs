@@ -51,9 +51,9 @@ namespace LichPhylactery {
     case Ghoul:
      if(!v.RaceProps.IsFlesh || Items.Undead(v) || Is(v) || Items.Has(v,"LP_UH_Paralysis"))return;
      if(Legendary.Save(v,Adventurer.Con,ParalysisDC,a))return;
-     Items.Give(v,"LP_UH_Paralysis",ParalysisTicks);Items.Mote(v,"尸毒麻痹！",Grave);break;
+     Items.Give(v,"LP_UH_Paralysis",ParalysisTicks);Items.Mote(v,"尸毒麻痹！".Loc(),Grave);break;
     case Wight:case Vampire:
-     if(dealt<=0f || !v.RaceProps.IsFlesh)return;float h=ClassMelee.Heal(a,dealt*(kind==Wight?WightDrain:VampireDrain));if(h>0f)Items.Mote(a,"吸取生命 +"+h.ToString("0"),Grave);break;
+     if(dealt<=0f || !v.RaceProps.IsFlesh)return;float h=ClassMelee.Heal(a,dealt*(kind==Wight?WightDrain:VampireDrain));if(h>0f)Items.Mote(a,"吸取生命 +".Loc()+h.ToString("0"),Grave);break;
    }
   }
   // 受伤：怨灵半实体；吸血鬼白天露天 ×1.5、挨过圣火记 10 秒。
@@ -76,7 +76,7 @@ namespace LichPhylactery {
   public override void TickInterval(int delta){
    base.TickInterval(delta);var p=pawn;if(p==null || p.Dead)return;
    ticks+=delta;drain+=delta;int now=Find.TickManager.TicksGame;
-   if(Kind==UndeadHorde.Vampire && ticks>=250){ticks=0;if(now-lastHoly>UndeadHorde.SunBurnMemory && !UndeadHorde.InSun(p)){float h=ClassMelee.Heal(p,UndeadHorde.VampireRegen);if(h>0f && p.Spawned)Items.Mote(p,"愈合",UndeadHorde.Grave);}}
+   if(Kind==UndeadHorde.Vampire && ticks>=250){ticks=0;if(now-lastHoly>UndeadHorde.SunBurnMemory && !UndeadHorde.InSun(p)){float h=ClassMelee.Heal(p,UndeadHorde.VampireRegen);if(h>0f && p.Spawned)Items.Mote(p,"愈合".Loc(),UndeadHorde.Grave);}}
    if(Kind==UndeadHorde.Wraith && drain>=UndeadHorde.WraithInterval){drain=0;Drain();}
   }
   // 怨灵：2 格内敌对的活人各抽 3 点死灵伤害，抽到的总量治疗自己。
@@ -86,10 +86,10 @@ namespace LichPhylactery {
     if(t==p || t.Dead || !t.RaceProps.IsFlesh || Items.Undead(t) || UndeadHorde.Is(t) || !t.HostileTo(p))continue;
     float before=ClassMelee.InjurySum(t);t.TakeDamage(new DamageInfo(necro,UndeadHorde.WraithDrain,1f,-1f,p));got+=Mathf.Max(0f,ClassMelee.InjurySum(t)-before);n++;
    }
-   if(got>0f){ClassMelee.Heal(p,got);Items.Mote(p,"抽取生命",UndeadHorde.Grave);}
+   if(got>0f){ClassMelee.Heal(p,got);Items.Mote(p,"抽取生命".Loc(),UndeadHorde.Grave);}
    return n;
   }
-  public override string TipStringExtra=>Kind==UndeadHorde.Vampire && UndeadHorde.InSun(pawn)?"白天露天：受到的伤害 ×1.5，不再愈合":base.TipStringExtra;
+  public override string TipStringExtra=>Kind==UndeadHorde.Vampire && UndeadHorde.InSun(pawn)?"白天露天：受到的伤害 ×1.5，不再愈合".Loc():base.TipStringExtra;
  }
 
  // ==================== 挂钩 ====================

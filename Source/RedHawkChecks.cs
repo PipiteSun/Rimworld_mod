@@ -65,7 +65,7 @@ namespace LichPhylactery {
    if(guard.guest!=null)guard.guest.joinStatus=JoinStatus.JoinAsSlave;
    Check(notChattel.Count==0 && guard.GetTraderCaravanRole()==TraderCaravanRole.Guard,"slaver caravan stock slaves count as goods (Chattel) so the trade window lists them; a red hawk mercenary stays a guard ("+guard.GetTraderCaravanRole()+"/"+guard.guest?.joinStatus+") "+string.Join(",",notChattel));
 
-   // 4. 种族池 33 个基础条目都能解析并生成（含力能龙裔）
+   // 4. 种族池 32 个基础条目都能解析并生成
    var basic=gen.entries.Where(e=>e.pawnKind.NullOrEmpty()).ToList();
    var unresolved=basic.Where(e=>!e.Valid).Select(e=>e.xenotype).ToList();
    var wrong=new List<string>();
@@ -74,8 +74,8 @@ namespace LichPhylactery {
     if(p?.genes?.Xenotype!=e.Xeno || p.DevelopmentalStage!=DevelopmentalStage.Adult)wrong.Add(e.xenotype+"→"+p?.genes?.Xenotype?.defName);
    }
    bool samePools=new[]{RedHawk.Base,RedHawk.Orbital}.All(n=>RhSlaveGen(n).entries.Select(e=>e.Key).SequenceEqual(gen.entries.Select(e=>e.Key)));
-   Check(basic.Count==33 && unresolved.Count==0 && wrong.Count==0 && basic.Count(e=>e.Rare)==19 && samePools,
-    "slave race pool: 33 base xenotypes (14 common + 19 rare) all resolve and generate adults of that xenotype, incl. LP_ForceDragon; base and orbital use the same pool "+string.Join(",",unresolved.Concat(wrong)));
+   Check(basic.Count==32 && unresolved.Count==0 && wrong.Count==0 && basic.Count(e=>e.Rare)==18 && samePools,
+    "slave race pool: 32 base xenotypes (14 common + 18 rare) all resolve and generate adults of that xenotype; base and orbital use the same pool "+string.Join(",",unresolved.Concat(wrong)));
 
    // 5. 三族条目（1.102.0 起是异种型，不需要 HAR）
    var har=gen.entries.Where(e=>!e.pawnKind.NullOrEmpty()).ToList();

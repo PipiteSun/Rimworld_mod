@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 斩杀传奇 -->
+  <LP_SlewLegend.label>slew a legend</LP_SlewLegend.label>
+  <!-- tale_noun->[KILLER_nameDef]斩杀[VICTIM_nameDef] | tale_noun->[VICTIM_nameDef]之死 | image->[KILLER_nameFull]站在[VICTIM_nameFull]巨大的尸体上 | image->[KILLER_nameFull]把武器刺进[VICTIM_nameFull]的心口 | image->[VICTIM_nameFull]在[KILLER_nameFull]面前轰然倒下 | circumstance_phrase->鳞片和鲜血洒了一地 | circumstance_phrase->远处的人们屏住了呼吸 | circumstance_phrase->宝藏堆在一旁闪闪发光 | desc_sentence->[VICTIM_nameDef]的翅膀还张着。 | desc_sentence->[KILLER_ -->
+  <LP_SlewLegend.rulePack.rulesStrings>
+    <li>tale_noun-&gt;[KILLER_nameDef] slaying [VICTIM_nameDef]</li>
+    <li>tale_noun-&gt;the death of [VICTIM_nameDef]</li>
+    <li>image-&gt;[KILLER_nameFull] standing on the huge corpse of [VICTIM_nameFull]</li>
+    <li>image-&gt;[KILLER_nameFull] driving a weapon into the heart of [VICTIM_nameFull]</li>
+    <li>image-&gt;[VICTIM_nameFull] crashing down before [KILLER_nameFull]</li>
+    <li>circumstance_phrase-&gt;with scales and blood scattered everywhere</li>
+    <li>circumstance_phrase-&gt;as people in the distance held their breath</li>
+    <li>circumstance_phrase-&gt;with treasure glittering in a pile nearby</li>
+    <li>desc_sentence-&gt;[VICTIM_nameDef]'s wings are still spread.</li>
+    <li>desc_sentence-&gt;[KILLER_nameDef] is covered in wounds.</li>
+  </LP_SlewLegend.rulePack.rulesStrings>
+</LanguageData>

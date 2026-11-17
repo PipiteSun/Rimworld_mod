@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（ManaLakeSeals.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>没有学会任何湖印</zh><en>No lake seals learned</en></s>
+  <s><zh>澄湖结晶</zh><en>clarity crystal</en></s>
+  <s><zh>选一个湖印抹掉（不退费，空出槽位）。</zh><en>Choose a lake seal to erase (no refund; frees the slot).</en></s>
+  <s><zh>这枚结晶里没有湖印</zh><en>This crystal holds no lake seal</en></s>
+  <s><zh>只有人形生物能吸收湖印结晶</zh><en>Only humanlikes can absorb lake seal crystals</en></s>
+  <s><zh>湖印）</zh><en> lake seal)</en></s>
+  <s><zh>需要智识 </zh><en>Needs Intellectual </en></s>
+  <s><zh>永久心灵聋只能学湖印被动</zh><en>The permanently psychically deaf can only learn passive lake seals</en></s>
+  <s><zh>槽已满（</zh><en> slots are full (</en></s>
+  <s><zh>），可以先用澄湖结晶抹掉一个</zh><en>); you can first erase one with a clear lake crystal</en></s>
+  <s><zh>吸收了湖印结晶，学会了湖印「</zh><en> absorbed the lake seal crystal and learned the lake seal "</en></s>
+  <s><zh>没能吸收湖印「</zh><en> failed to absorb the lake seal "</en></s>
+  <s><zh>），结晶碎了，耳边湖音回响。</zh><en>); the crystal shattered, with lake sounds echoing in their ears.</en></s>
+  <s><zh>抹掉湖印：</zh><en>Erased lake seal: </en></s>
+  <s><zh>心灵聋放不了湖印法术</zh><en>The psychically deaf can't cast lake seal spells</en></s>
+  <s><zh>湖息不足（</zh><en>Not enough lake breath (</en></s>
+  <s><zh>需要一件有耐久损耗的服装或武器（或身上有的人）。</zh><en>Needs a piece of apparel or weapon with durability loss (or a person wearing one).</en></s>
+  <s><zh>只能对友方使用。</zh><en>Can only be used on friendlies.</en></s>
+  <s><zh>需要选择一扇门。</zh><en>Need to pick a door.</en></s>
+  <s><zh>湖息不足</zh><en>Not enough lake breath</en></s>
+  <s><zh>修补术</zh><en>mending</en></s>
+  <s><zh>净化饮食</zh><en>purify food and drink</en></s>
+  <s><zh>警报术</zh><en>alarm</en></s>
+  <s><zh>秘法锁</zh><en>arcane lock</en></s>
+  <s><zh>虚假生命</zh><en>false life</en></s>
+  <s><zh>雷鸣波</zh><en>thunderwave</en></s>
+  <s><zh>卜问没有回应</zh><en>The augury got no answer</en></s>
+  <s><zh>卜问没有得到回应（成功率 </zh><en>The augury got no answer (success chance </en></s>
+  <s><zh>），湖息已经用掉。</zh><en>); the lake breath is spent.</en></s>
+  <s><zh>卜问</zh><en>augury</en></s>
+  <s><zh>造粮术</zh><en>create food</en></s>
+  <s><zh>宁神</zh><en>calm</en></s>
+  <s><zh>宁神术</zh><en>calm emotions</en></s>
+  <s><zh>粉碎音波</zh><en>shatter</en></s>
+  <s><zh>反制失败</zh><en>counter failed</en></s>
+  <s><zh>被反制</zh><en>countered</en></s>
+  <s><zh>小屋术</zh><en>tiny hut</en></s>
+  <s><zh>湖印警报：「</zh><en>Lake seal alarm: "</en></s>
+  <s><zh>」闯进了警报符文的范围。殖民者都被叫醒了。</zh><en>" entered the range of the alarm rune. The colonists were all woken.</en></s>
+  <s><zh>（通用秘传 </zh><en> (general arcanum </en></s>
+  <s><zh> 环）\n\n</zh><en> circle)\n\n</en></s>
+  <s><zh>湖印　法术 </zh><en>Lake seals  spells </en></s>
+  <s><zh>　被动 </zh><en>  passives </en></s>
+  <s><zh>　湖息 </zh><en>  lake breath </en></s>
+  <s><zh>（湖印</zh><en> (lake seal </en></s>
+  <s><zh>法术，湖息 </zh><en>spells, lake breath </en></s>
+  <s><zh>湖印：魔力湖泊的常规结晶，右键吸收（约 1 小时），用完即碎。\n法术槽 = 1 + 冒险者等级 ÷ 7（最多 4），被动槽 = 1 + 冒险者等级 ÷ 12（最多 3），再乘设置里的「湖印槽位倍率」。\n湖印法术用湖息：上限 3，每 24 小时回 1；效果按施法属性，每 1 点调整值 +5%，最多 +25%。\n槽满时可以用澄湖结晶抹掉一个（不退费）。</zh><en>Lake seals: the Mana Lake's regular crystals; right-click to absorb (about 1 hour), shattering once used.\nSpell slots = 1 + adventurer level ÷ 7 (max 4), passive slots = 1 + adventurer level ÷ 12 (max 3), then multiplied by "lake seal slot multiplier" in settings.\nLake seal spells use lake breath: cap 3, 1 recovered every 24 hours; effects scale with the casting ability, +5% per modifier point, up to +25%.\nWhen slots are full, one can be erased with a clear lake crystal (no refund).</en></s>
+  <s><zh>湖印槽位倍率：×</zh><en>Lake seal slot multiplier: ×</en></s>
+  <s><zh>（1.133.0）魔力湖泊湖印：法术槽、被动槽的数量乘这个倍率（四舍五入，至少 1 个）。</zh><en>(1.133.0) Mana Lake lake seals: the number of spell and passive slots is multiplied by this (rounded, at least 1).</en></s>
+</LPStrings>

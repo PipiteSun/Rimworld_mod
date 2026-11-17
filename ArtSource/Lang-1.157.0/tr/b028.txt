@@ -1,0 +1,258 @@
+s06215	Release a psychic jolt in a cone ahead (9 cells). Hostile targets are stunned for about 4 seconds (scaled by their psychic sensitivity) and suffer 1 hour of "psychic concussion" (consciousness -20%). Mind resistance can resist it; mechanoids and the psychically deaf are unaffected. Costs 10 brain matter, cooldown 1 day.
+s06216	Shaken by a mind flayer's psychic jolt; head foggy.
+s06217	psychic concussion
+s06218	An octopus-headed psionic predator that feeds on the brains of intelligent creatures. Mind flayers don't reproduce and don't pass the bloodline to descendants: new mind flayers can only grow from a tadpole parasitizing a humanlike's brain through "ceremorphosis". Their minds are extremely keen, they learn very fast and see in the dark, but they fear sunlight, are fragile, look horrifying and are poor at socializing. Mind flayers live on "brain matter": it drains daily and must be replenished by devouring brains; when it runs out they fall into brain hunger.
+s06219	A non-inheritable psionic predator. Devours brains to replenish brain matter, can stun enemies with a psychic blast; extremely keen mind, quick learner, night vision; fears sunlight, fragile, ugly, sterile.
+s06220	Mind flayers can't reproduce. New mind flayers can only come from tadpole ceremorphosis.
+s06221	mind flayer sterility
+s06222	Mind flayers can naturally hear the whispers of minds around them, and their own mind is like a wall: mind resistance +30%, resists others' charm, psychic blasts and parasites; can also read minds actively.
+s06223	psionic sense
+s06224	Tried to devour the "brain" of an undead creature and tasted only rotting necrotic power. Nauseous, temporarily unable to concentrate.
+s06225	taste of undeath
+s06226	That thing had no living brain at all; my mouth is full of rot.
+s06227	I saw that thing bore its tentacles into someone's skull and suck the brain dry. Worse than cannibalism.
+s06228	witnessed brain devouring
+s06229	Seize the will of a humanlike not from this colony for 30 seconds: the dominated only attacks its former companions, then collapses exhausted after 30 seconds. Mind resistance can resist it; the psychically deaf are unaffected. Costs 25 brain matter, cooldown 2 days.
+s06230	dominated: attacking former companions
+s06231	Will taken by a mind flayer; only attacks its former companions. Collapses exhausted when the domination ends.
+s06232	{0} broke free of the mind flayer's domination.
+s06233	Psionics are free, limited only by cooldown.
+s06234	Each humanlike brain devoured: learn one psionic power (up to 3); 25% chance to break the suppressant.
+s06235	The tadpole was suppressed halfway by the suppressant; the host kept their self but also gained part of a mind flayer's power: can read minds and devour brains (needs no brain matter and gains none). Each humanlike brain devoured teaches one psionic power (psychic blast, telekinetic throw, psionic concealment in order, up to 3). Not upset by witnessing brain devouring.
+s06236	half-illithid
+s06237	A pill that suppresses psionic parasites. Taken while tadpole ceremorphosis progress is under 50%, it freezes the transformation, making the host a "half-illithid" who keeps their self: can read minds and devour brains, learning one psionic power per brain devoured (up to 3).\n\nThe effect lasts 3 days; 3 days after stopping the pills the transformation resumes. Each brain devoured has a 25% chance to break the suppression.
+s06238	psionic suppressant
+s06239	The suppressant is holding down the tadpole in the brain. Ceremorphosis is frozen while below 50%. If no pill is taken within 3 days after the effect ends, the transformation resumes.
+s06240	Press the hivemind's doctrine straight into the other's mind: a humanlike of a different belief loses 40 certainty, converting to the caster's ideoligion when certainty reaches zero. Mind resistance can resist it. Only available with Ideology loaded. Costs 20 brain matter, cooldown 1 day.
+s06241	psychic binding
+s06242	Release a raging psychic storm in 8 cells around you: all hostile targets are stunned for about 6 seconds and suffer psychic concussion, harder to resist than a psychic blast (mind resistance has only half effect). Costs 40 brain matter, cooldown 5 days.
+s06243	psychic storm
+s06244	Peek into a humanlike's thoughts: see their traits, best skills, current mood and what they care about most. Used on colony prisoners it also shakes their will: resistance -3. Costs 3 brain matter (free for half-illithids), cooldown 1 hour.
+s06245	read mind
+s06246	Fling a creature up to 4 cells with telekinesis, dealing 10 blunt damage and staggering it for 1 second. Costs 8 brain matter, cooldown 6 hours.
+s06247	telekinetic throw
+s06248	The minds around can't see this person.
+s06249	Make yourself invisible to all minds around you for 1 hour (uses vanilla psychic invisibility; attacking or being hurt may reveal you). Costs 15 brain matter, cooldown 1 day.
+s06250	psionic concealment
+s06251	ceremorphosis implanter
+s06252	[PAWN_nameDef] was once an ordinary person, until a mind flayer tadpole burrowed into [PAWN_possessive] brain. After ceremorphosis, only half of the old memories remain and the personality was completely rewritten; now [PAWN_pronoun] is a mind flayer that feeds on brains.
+s06253	ceremorphosed
+s06254	Place a mind flayer tadpole into the target's skull. Within about 5 days (adjustable in mod settings) the tadpole turns the host into a mind flayer, which then joins the faction of whoever performed the surgery. Doing this to an unwilling person is an atrocity.
+s06255	Implanting a mind flayer tadpole into TargetA.
+s06256	implant mind flayer tadpole
+s06257	Open the skull and remove the mind flayer tadpole parasitizing the brain. It can be removed any time before ceremorphosis completes; the tadpole dies when taken out.
+s06258	Removing a tadpole from TargetA's brain.
+s06259	remove mind flayer tadpole
+s06260	{0} successfully removed the mind flayer tadpole from {1}'s brain.
+s06261	A slimy little purple tadpole that keeps wriggling in its jar. Placed into a humanlike's skull through surgery, it burrows into the brain and remakes the host into a new mind flayer within a few days (ceremorphosis). The resulting mind flayer joins the implanter's faction.\n\nA fire giant's molten body scalds the tadpole to death; liches, necromantic constructs and mechanoids have no living brain; troll regeneration slows and expels it; the brain of the psychically deaf starves it; mind resistance slows the ceremorphosis. A tadpole outside a host survives no more than 15 days.
+s06262	mind flayer tadpole
+s06263	A mind flayer tadpole is parasitizing the brain, rewriting its host bit by bit. At 100% progress the host turns into a mind flayer. Can be removed by surgery.
+s06264	Something keeps moving in my head; sometimes I hear thoughts that aren't mine.
+s06265	tendrils
+s06266	something in the head
+s06267	Something is gnawing at my brain. I remember less and less of who I am.
+s06268	erosion
+s06269	splitting headache
+s06270	My thoughts are being rewritten...
+s06271	rewriting
+s06272	self dissolving
+s06273	ceremorphosis
+s06274	imminent ceremorphosis
+s06275	Charge straight up to 8 cells toward the target. The first enemy hit takes 15 × body size blunt damage, is knocked back 2 cells and stunned for 1 second. Stops on hitting a wall, building or someone in the way, without damaging buildings. Cooldown 1 day.
+s06276	bull rush
+s06277	A burly race with bull heads and horns; the bloodline is passed on to children. Minotaurs are a size bigger than ordinary people, covered in short brown fur, extremely strong and good at melee, able to gore with their horns; when they charge they're like a mad bull, sending enemies in the way flying. Legend says they're born in labyrinths, and they move faster indoors under a roof. The price is slow learning, a hot temper and an astonishing appetite.
+s06278	Inheritable burly race. Body size ×1.3, carries a lot, strong melee, horn attacks, a bull rush once per day, indoor move speed +10%; slow learner, hot-tempered, big appetite.
+s06279	minotaur
+s06280	A huge body needs a lot of food.
+s06281	minotaur appetite
+s06282	The minotaur lowers its head and charges straight up to 8 cells like a bull. The first enemy hit takes about 15 blunt damage (scaled up by the minotaur's body size, about 20 for a minotaur), is knocked back 2 cells and stunned for 1 second. Stops on hitting a wall or building without damaging it; friendly and neutral people block the way. Cooldown 1 day.
+s06283	horns
+s06284	A natural melee weapon from the horns gene.
+s06285	Gains the "horns" melee attack: sharp (stab) 11 damage, cooldown 2.6 seconds (fists are 8.2 damage, 2 seconds).
+s06286	Mutually exclusive with vanilla skull genes (mini horns, unihorn, etc.).
+s06287	A pair of thick curved bull horns on the head, replacing the ordinary skull shape. The horns can be used directly to gore in melee: sharp damage slightly higher than fists, but the head swing is a little slower.
+s06288	Under a roof: move speed ×110%.
+s06289	Minotaurs are born in labyrinths and are in their element in places enclosed by walls and roofs. Move speed +10% while standing on a roofed cell.
+s06290	With a roof overhead and walls around, minotaurs walk faster.
+s06291	labyrinth sense
+s06292	in the labyrinth
+s06293	A wide, moist bull nose with big nostrils. Purely cosmetic.
+s06294	bull nose
+s06295	Appetite: ×120%; together with the minotaur's overall metabolism -1 (vanilla ×125%), about 150% of an ordinary person.
+s06296	The burly minotaur build. Actual body size 130% of an ordinary person (carry capacity and caravan load go up, and they're easier to hit at range), drawn at 115% size; hand hauling capacity about 150% of an ordinary person. The huge body also means eating one and a half times as much as normal, with a bigger stomach (giant stomach: max food ×130%), so one meal lasts longer. The bigger the body, the stronger the health and melee (see giant-body rules: total health ×115%, melee damage ×109%).
+s06297	minotaur build
+s06298	That minotaur is all brute strength; reassuring in a fight.
+s06299	sturdy minotaur
+s06300	That half-orc talks straight and hits hard; just to a minotaur's taste.
+s06301	straightforward half-orc
+s06302	half-orcs on minotaurs
+s06303	minotaurs on half-orcs
+s06304	An echo within the mythal ward: from here you can return directly to the mythal gate on the surface.
+s06305	mythal echo
+s06306	I fell in the mythal dungeon and woke up lying at the entrance. Being rejected by a ward doesn't feel good.
+s06307	expelled by the mythal
+s06308	mythal dungeon
+s06309	A clear spring welling up within the mythal ward. Those who walk to it have their wounds healed and fatigue swept away, once per person per floor.
+s06310	mythal spring
+s06311	A stone archway built jointly by ancient elves and the Netherese, with a lost mythal buried beneath. The city the mythal guarded is long gone, and the ward is now just a labyrinth that reassembles itself: each floor collapses once solved, and after being sealed for a few days it weaves the next floor in a new shape, going ever deeper with no end.\n\nDefeat the guardian on each floor and whoever solves it gets adventurer XP, mythal shards and treasure; every 10 floors there's a milestone boss. Mythal shards can be exchanged for supplies at the gate.\n\nThe mythal gate can't be deconstructed, moved or damaged.
+s06312	mythal gate
+s06313	A cluster of pale blue mythal crystals that glow on their own.
+s06314	mythal lamp
+s06315	This floor's mythal recognizes you and secretly helps. Disappears after leaving the mythal dungeon.
+s06316	Our melee hit +10%, aiming time -15%
+s06317	mythal rule: blessing
+s06318	This floor's mythal makes flesh fragile. Disappears after leaving the mythal dungeon.
+s06319	Everyone takes +25% damage
+s06320	mythal rule: shattered
+s06321	shattered
+s06322	This floor's mythal stirs up every swing. Disappears after leaving the mythal dungeon.
+s06323	Both sides' melee damage +30%
+s06324	mythal rule: frenzy
+s06325	This floor's mythal drags everything down. Disappears after leaving the mythal dungeon.
+s06326	Everyone's move speed -25%
+s06327	mythal rule: gravity
+s06328	gravity
+s06329	This floor's mythal pours life force back into every body, enemies included. Disappears after leaving the mythal dungeon.
+s06330	Everyone (enemies included) heals wounds ×4
+s06331	mythal rule: life reflux
+s06332	life reflux
+s06333	This floor's mythal is quiet.
+s06334	none
+s06335	Time has almost stopped on this floor: wounds don't bleed, nobody gets hungry or tired. Disappears after leaving the mythal dungeon.
+s06336	Wounds don't bleed, no hunger, no fatigue
+s06337	mythal rule: time stasis
+s06338	time stasis
+s06339	A pale blue crystal shard that falls when a mythal ward collapses. Can only be exchanged for things at the mythal gate; traders don't accept it.
+s06340	mythal shard
+s06341	abyssal rift
+s06342	tomb of the dead
+s06343	dragon cult lair
+s06344	goblin camp
+s06345	kobold mine
+s06346	owlbear forest den
+s06347	Red Wizard tower
+s06348	Underdark
+s06349	A stone wall congealed from the mythal ward, warm to the touch. Can't be mined or broken.
+s06350	mythal stone wall
+s06351	The taotie swallowed a force dragonborn's flesh and a trace of force lingers inside: force damage taken halved. Lasts 24 hours; eating again only refreshes the time.
+s06352	force dragon meat
+s06353	The taotie swallowed a fire giant's flesh and temporarily took on a trace of molten power: fire damage taken halved. Lasts 24 hours; eating again only refreshes the time.
+s06354	fire giant meat
+s06355	The lich escapes destiny with a phylactery; the baize is uneasy looking at it.
+s06356	defying fate
+s06357	The baize knows the form of all things, yet can't see through the mind behind those tentacles. Chilling.
+s06358	the unspeakable
+s06359	That taotie keeps eyeing my wine barrels and cured meat.
+s06360	thieving taotie
+s06361	When the goumang comes, even the woods feel more alive.
+s06362	scion of the spring god
+s06363	The goumang keeps complaining that the forge burns trees. What a busybody.
+s06364	meddling wood spirit
+s06365	That suanni can tell good forging from bad at a glance; a real connoisseur.
+s06366	connoisseur suanni
+s06367	The suanni can take treasures up another level; a dragon's hoard needs someone like that.
+s06368	treasure-enlightening suanni
+s06369	Elves know how to tend plants, sharing the same roots as the power of spring.
+s06370	friend of the woods
+s06371	Fire giants bring smoke and fire wherever they go, giving the plants no peace.
+s06372	forest-burning fire
+s06373	The baize keeps sizing up my fate. Annoying.
+s06374	scrutiny of the fate-knower
+s06375	That baize's gaze feels like it's dissecting my mind.
+s06376	the mind-seer
+s06377	Fire giant forge craftsmanship is the real thing, of one mind with enlightening objects.
+s06378	kindred craftsmanship
+s06379	Force dragonborn love good things too; we can talk treasures for hours.
+s06380	treasure confidant
+s06381	Dwarves hide their wine and meat tight and won't share a bite.
+s06382	food-guarding dwarf
+s06383	Trolls have bottomless appetites just like me; eating together is great.
+s06384	fellow eater
+s06385	The taotie eats even more than me; finally nobody looks down on my appetite.
+s06386	hearty taotie
+s06387	Faint regeneration a taotie gains after drinking troll blood: heals wounds and recovers blood loss at a quarter of a troll's rate. Doesn't regrow limbs or revive; pauses while on fire. Lasts 12 hours; drinking again only refreshes the time.
+s06388	lingering troll blood
+s06389	drill mythic metals
+s06390	operate mythic deep drill
+s06391	drilling
+s06392	A dwarven-style deep drill: gold-seeking runes are carved on the drill rod, which, guided by a silver probe, passes through the rock layers to reach fine mithril and adamantine veins buried deep in the crust that don't show on the map. Needs power and a pawn operating it as mining work; drilling speed and yield are based on the operator's deep drilling speed and mining yield, like the vanilla deep drill.\n\nNeeds no deep deposits; it can drill anywhere and can be moved at any time. Each full portion drilled (1.5× the work of the vanilla deep drill): 75% for 7 mithril, 25% for 3 adamantine; mithril doubled when a dwarf operates it. Attracts insectoids like the vanilla deep drill.
+s06393	mythic deep drill
+s06394	Drilling for mythic metals at TargetA.
+s06395	Cold resistance: 100% (immune to hypothermia and frostbite).
+s06396	While the bound phylactery is intact, automatically revives 3 game days after death.
+s06397	An archite gene granted by the lich ritual. Vacuum and cold resistance 100%, immune to hypothermia and frostbite, needs no food, sleep or recreation. After death, as long as the bound phylactery is intact, the body automatically re-forms near the phylactery after 3 game days, with no ritual table, materials or other characters needed. Original identity, skills, relationships and genes are kept; psyfocus recovers from zero.
+s06398	undead body
+s06399	Melee hits on the living: stunned for 2 seconds.
+s06400	An archite gene granted by the lich ritual. Melee hits on fleshy creatures that are still alive stun them for 2 seconds. Works unarmed and with melee weapons; doesn't affect mechanoids, necromantic constructs, liches, corpses or buildings, and ranged attacks don't trigger it.
+s06401	necrotic touch
+s06402	The Weave has accepted this person: max neural heat ×2, psyfocus regain ×2, no longer ages, needs no food, psycast cooldowns halved, one "oracle" per day. There can be only one arcane demigod in the world.
+s06403	arcane demigod
+s06404	The Weave turned our companion to stone.
+s06405	failed ascension
+s06406	We handed a companion over to the lich.
+s06407	companion sent away
+s06408	Larloch the Shadow King is one of the oldest liches to survive the fall of Netheril, hiding in the tomb of Warlock's Crypt collecting Netherese relics. His retinue is demiliches and skeletons.
+s06409	retinue of Larloch the Shadow King
+s06410	The legacy of Netheril belongs only to those worthy of it.
+s06411	Shadow King
+s06412	Larloch the Shadow King
+s06413	retainer
+s06414	This isn't Larloch himself, only one of his avatars: part health ×2, feels no pain, can use fear gaze and necrotic blast, and is always shrouded in a life-draining aura. The avatar won't revive when it dies.
+s06415	avatar of the Shadow King
+s06416	This is Larloch's tomb. The Scroll of Karsus is on the shelf in the central hall.
+s06417	The tomb of Larloch the Shadow King: stone burial chambers guarded by skeletons, flesh golems, demiliches and an avatar of Larloch. The Scroll of Karsus lies in the central hall.
+s06418	Larloch's tomb
+s06419	Larloch's envoy
+s06420	An offering chest left by Larloch's envoy that only accepts planar residue and miracle fragments. Once 20 planar residue and 3 miracle fragments are placed in it, the chest and its contents vanish together.
+s06421	Larloch's offering chest
+s06422	Larloch's skeleton
+s06423	A Netherese altar built of gold, mithril and plasteel. Whoever has read the Scroll of Karsus seven times can start the ascension ritual here. Also a meditation focus.
+s06424	Netherese altar
+s06425	Chanting the ascension incantation.
+s06426	An undead body Larloch sustains with Netherese arcana: feels no pain, needs no food or sleep. Casts fear gaze and necrotic blast when enemies are nearby.
+s06427	attack {0}
+s06428	Attacking {0}.
+s06429	This is the wreck of a sunken Netherese flying city; the Scroll of Karsus is in the middle of the wreck.
+s06430	A wreck of a Netherese flying city has risen from underground, and the Scroll of Karsus fell inside. Someone got here first.
+s06431	wreck of a sunken Netherese flying city
+s06432	The arcane demigod whispers the truth of the Weave to a colonist: erasing all their negative mood memories. Once per day.
+s06433	oracle
+s06434	A casket escorted by Larloch's skeletons, sealing a phylactery inside. Thay wants to seize it.
+s06435	phylactery casket
+s06436	This lich's phylactery is in the hands of Larloch the Shadow King. The lich keeps all abilities and phylactery level, but will no longer revive after death and can't make sacrifices to the phylactery anymore.
+s06437	lich without phylactery
+s06438	This is a Red Wizard camp. Killing the elite Red Wizard completes Larloch's second errand.
+s06439	Thayan Red Wizards are camped here, with one elite wizard in the camp.
+s06440	Red Wizard camp
+s06441	A Red Wizard carefully trained by Thay; protective incantations reduce damage taken by 40%.
+s06442	Thayan elite wizard
+s06443	A failed ascension ritual has torn the Weave here: all psycasts (vanilla and VPE), class spells, lich spells and staff shots can't be cast.
+s06444	Weave collapse
+s06445	An ascension ritual is prying at the Weave: psycast cooldowns on this map ×2.
+s06446	Weave tremor
+s06447	I saw a mortal become a god with my own eyes.
+s06448	witnessed ascension
+s06449	desc->A scroll handed down from the fallen Netherese flying cities; the Weave's warmth still lingers between the lines.
+s06450	desc->The scroll's edges are scorched, yet the Netherese script is still clear, as if just written.
+s06451	An echo the Scroll of Karsus leaves in the mind. Each stack: max neural heat +5%, psychic sensitivity +5%, mental break threshold +2%, up to 10 stacks. Permanent.
+s06452	echo of Karsus
+s06453	Mental state: Karsus's delusion
+s06454	{0} is entranced by the Scroll of Karsus: for the next day refuses to work and only reads the Scroll of Karsus, wandering near the Netherese altar when it can't be read.
+s06455	Karsus's delusion
+s06456	{0} woke from Karsus's delusion.
+s06457	The scroll written by the Netherese archmage Karsus when he tried to seize the Weave's divinity; there is only one in the world. One full reading takes 40 hours, and each reading leaves a stack of "echo of Karsus". Someone who has read it 7 times with psylink level 6 (VPE psycaster level 20) can start the ascension ritual at the Netherese altar. Can't be traded.
+s06458	Scroll of Karsus
+s06459	title->Scroll of Karsus
+s06460	title->Netherese Arcane Fragment
+s06461	title->Netherese Study Scroll: On the Weave
+s06462	title->Netherese Study Scroll: Notes of the Flying City School
+s06463	title->Netherese Study Scroll: Twelve Lectures on Arcane Basics
+s06464	title->Netherese Study Scroll: The Mind and the Weave
+s06465	A fragment recording a spell from some arcane school, with the school written in its name. After 24 hours of reading (faster with quality) you comprehend a psycast of that school no higher than your psylink level, taking no VPE path point and needing no path unlocked first. Each person can comprehend at most 2 per scroll, after which only the study afterglow remains. Each hour of reading adds 4 neural heat.
+s06466	Netherese arcane fragment
+s06467	Just put down a Netherese scroll, and the incantations of the lost empire still echo in the head: a keener mind, more gained from meditation and study (Intellectual skill learning ×1.25), but neural heat fades more slowly. Lasts 10 hours; once neural heat overflows, the insight dissipates.
+s06468	Netherese insight
+s06469	Karsus's insight
+s06470	An introductory lecture left by Netherese arcanists. Requires a psylink and at least Intellectual 6 to read: each hour of reading adds 8 neural heat in exchange for psycaster XP (with VPE) or "Netherese study" (without VPE, the psylink rises one level at 100/200/400/800/1600 study, up to level 6). Each person can gain at most 40 points per day from Netherese scrolls. Can't be worn out by reading.
+s06471	Netherese study scroll
+s06472	slumber bolt

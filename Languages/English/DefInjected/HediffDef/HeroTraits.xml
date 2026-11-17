@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 强力特性记录 -->
+  <LP_HeroRecord.label>power trait record</LP_HeroRecord.label>
+  <!-- 记录天命阶段、预言、偿契、宿敌和传说事迹的进度（隐藏）。 -->
+  <LP_HeroRecord.description>Records destiny stages, prophecies, pact payments, sworn foes and legendary deed progress (hidden).</LP_HeroRecord.description>
+  <!-- 寒霜迟滞 -->
+  <LP_HeroFrostSlow.label>frost sluggishness</LP_HeroFrostSlow.label>
+  <!-- 元素之触·冰的寒气让动作变慢。 -->
+  <LP_HeroFrostSlow.description>The chill of Elemental Touch: Ice slows movement.</LP_HeroFrostSlow.description>
+  <!-- 为了预言之子 -->
+  <LP_ForTheProphesied.label>for the child of prophecy</LP_ForTheProphesied.label>
+  <!-- 预言之子倒下了——为了预言，所有人都打起了精神。近战和射击命中 +10%。 -->
+  <LP_ForTheProphesied.description>The child of prophecy has fallen; everyone steels themselves for the prophecy. Melee and shooting hit +10%.</LP_ForTheProphesied.description>
+  <!-- 邪魔活力 -->
+  <LP_FiendishVigor.label>fiendish vigor</LP_FiendishVigor.label>
+  <!-- 宗主从死者身上抽出的生命：吸收受到的伤害（数值 = 剩余吸收量），1 天后消散。 -->
+  <LP_FiendishVigor.description>Life drawn from the dead by the patron: absorbs damage taken (value = remaining absorption), dissipates after 1 day.</LP_FiendishVigor.description>
+  <!-- 直坠地狱 -->
+  <LP_HurledThroughHell.label>straight to hell</LP_HurledThroughHell.label>
+  <!-- 被扔进九狱转了一圈：动弹不得，每秒受到灼烧伤害。 -->
+  <LP_HurledThroughHell.description>Hurled on a tour of the Nine Hells: unable to move, taking burn damage every second.</LP_HurledThroughHell.description>
+  <!-- 异界触须 -->
+  <LP_EldritchTentacles.label>otherworldly tentacles</LP_EldritchTentacles.label>
+  <!-- 从地面裂缝里伸出的触须缠住了身体：动弹不得，每秒受到伤害。 -->
+  <LP_EldritchTentacles.description>Tentacles reaching from cracks in the ground have wrapped the body: unable to move, taking damage every second.</LP_EldritchTentacles.description>
+  <!-- 宗主之怒 -->
+  <LP_PatronWrath.label>patron's wrath</LP_PatronWrath.label>
+  <!-- 没能偿契，宗主收回了恩惠：邪契魔能爆不能用。 -->
+  <LP_PatronWrath.description>Failed to pay the pact; the patron has withdrawn its favor: Pactbound Eldritch Blast unusable.</LP_PatronWrath.description>
+  <!-- 冥界的宽限 -->
+  <LP_DeathGrace.label>grace of the underworld</LP_DeathGrace.label>
+  <!-- 死过一次的人，死神会多给一点时间：不再失血。 -->
+  <LP_DeathGrace.description>Death gives a little more time to those who have died once: no more blood loss.</LP_DeathGrace.description>
+  <!-- 魔网涌动 -->
+  <LP_WeaveSurge.label>weave surge</LP_WeaveSurge.label>
+  <!-- 魔网之子的升华：施法不耗心灵熵、不进冷却。 -->
+  <LP_WeaveSurge.description>Exaltation of the Child of the Weave: casting costs no neural heat and triggers no cooldown.</LP_WeaveSurge.description>
+  <!-- 公正之剑 -->
+  <LP_DivineBlessing.label>sword of justice</LP_DivineBlessing.label>
+  <!-- 提尔的神迹：近战伤害 +50%。 -->
+  <LP_DivineBlessing.description>Tyr's miracle: melee damage +50%.</LP_DivineBlessing.description>
+  <!-- 死亡止步 -->
+  <LP_DivineRespite.label>death halted</LP_DivineRespite.label>
+  <!-- 凯兰沃的神迹：伤口不再流血。 -->
+  <LP_DivineRespite.description>Kelemvor's miracle: wounds no longer bleed.</LP_DivineRespite.description>
+</LanguageData>

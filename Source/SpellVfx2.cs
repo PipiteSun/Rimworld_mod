@@ -237,6 +237,40 @@ namespace LichPhylactery {
   }
   public static AbilityDef LastSignature;
 
+  // ===== 1.161.0 传奇怪招牌连招特效（LegendaryMonsterMoves 调用，受「法术特效」开关和大小控制） =====
+  public static int MonsterVfxPlayed;public static string LastMonsterVfx;
+  public static void Monster(string move,Map map,Vector3 from,Vector3 to,float r=2f){
+   if(!SpellVfx.On || map==null)return;
+   var c=new Ctx{map=map,from=from,to=to,r=r,k=SpellVfx.K,col=Color.white};
+   try{
+    switch(move){
+     case "BehirBurrow": // 钻入：地裂 + 尘土 + 电光
+      Icon(c,"Crack",from,2.2f,Brown,0,.9f);Dust(c,from,2.4f,C(.55f,.48f,.38f,.9f));Nova(c,"Shard",from,7,2.2f,.5f,Brown);Sparks(c,from,8,2.5f,C(.6f,.8f,1f));break;
+     case "BehirSurface": // 钻出：大地裂、石块四溅、雷光环
+      Icon(c,"Crack",to,3f,Brown,0,1f);Dust(c,to,3f,C(.55f,.48f,.38f,.9f));Nova(c,"Shard",to,10,3.2f,.7f,Brown);
+      Ring(c,to,r,C(.6f,.8f,1f));FleckMaker.ThrowLightningGlow(to,map,2f*c.k);Later(6,()=>Sparks(c,to,14,3.5f,C(.7f,.9f,1f)));Later(10,()=>Wave(c,to,r));break;
+     case "BeholderPull": // 念动：紫色光束 + 抓手 + 眼
+      Line(c,"Beam",from,to,.8f,Violet);Line(c,"Chain",from,to,.5f,A(Pink,.8f));Icon(c,"Hand",to+Up(.6f),1.3f,Violet,0,.6f);
+      Icon(c,"Eye",from+Up(1.6f),2.4f,Violet,0,.8f);Later(8,()=>{Ring(c,from,1.4f,Violet);Sparks(c,from,10,2.5f,Violet);});break;
+     case "BeholderVolley": // 齐射：眼柄四周放射
+      Orbit(c,"Eye",from+Up(.8f),1.1f,6,.6f,Violet,120f,.4f);Nova(c,"Spark",from,12,3f,.5f,Pink);Glow(c,from,2.2f,Violet);break;
+     case "DemilichBurst": // 骨尘爆
+      Smoke(c,from,8,C(.78f,.74f,.66f,.85f));Nova(c,"Shard",from,10,2.6f,.5f,C(.9f,.88f,.8f));Icon(c,"Skull",from+Up(.8f),1.6f,Green,0,.6f);Ring(c,from,r,Green);break;
+     case "DemilichArrive": // 闪现落点：宝石光 + 绿雾 + 诅咒符文
+      Icon(c,"Portal",to,1.8f,Green,-160f,.5f);Glow(c,to,2f,Green);Rise(c,"Rune",to,6,.8f,.5f,Green);Smoke(c,to,4,C(.3f,.45f,.3f,.7f));break;
+     case "DemilichCurse":
+      Icon(c,"Hex",to+Up(.9f),1.1f,Green,90f,.7f);Rise(c,"Rune",to,3,.4f,.4f,Green);Line(c,"Beam",from,to,.35f,A(Green,.6f));break;
+     case "KnightLeap": // 起跳：火焰尾迹
+      Fire(c,from,1.4f);Smoke(c,from,4,C(.15f,.1f,.1f,.8f));Icon(c,"Skull",from+Up(1f),1.2f,Ember,0,.4f);break;
+     case "KnightSlam": // 落地：冥火冲击波 + 地裂 + 火柱
+      Icon(c,"Crack",to,2.6f,C(.3f,.12f,.08f),0,1f);Pillar(c,to,4f,1.4f,Ember,.4f);Ring(c,to,r,Ember);Later(4,()=>Wave(c,to,r+.6f));
+      Nova(c,"Spark",to,14,3.2f,.6f,Ember);Fire(c,to,2f);Later(6,()=>Smoke(c,to,6,C(.12f,.06f,.1f,.85f)));Icon(c,"Skull",to+Up(1.2f),1.6f,C(.55f,1f,.5f),0,.5f);break;
+     default:return;
+    }
+    MonsterVfxPlayed++;LastMonsterVfx=move;
+   }catch(Exception e){Log.WarningOnce("[DND边缘大陆] 传奇怪特效出错：".Loc()+e.Message,74152303);}
+  }
+
   // ===== 2）持续区域 =====
   public static int ZoneTicks;
   public static void ZoneTick(SpellZone z){
@@ -270,7 +304,7 @@ namespace LichPhylactery {
      case "CS_Hunger":Smoke(c,Cell(),2,C(.03f,.01f,.06f,.85f));if(Rand.Chance(.25f))Tentacles(c,pos,r,1,Abyss,1,.5f);if(z.IsHashIntervalTick(120))Icon(c,"Eye",pos+Up(.5f),1f,A(C(.6f,1f,.8f),.5f),0,1f);break;
      default:if(z.kind.StartsWith("CS_") && Rand.Chance(.3f))Rise(c,"Spark",Cell(),1,.3f,.4f,C(.6f,.75f,1f));break;
     }
-   }catch(Exception e){Log.ErrorOnce("[LP] 区域特效出错："+e,0x5f7a1d1);}
+   }catch(Exception e){Log.ErrorOnce("[LP] 区域特效出错：".Loc()+e,0x5f7a1d1);}
   }
 
   // ===== 2）绕身光环：状态还在就一直有 =====
@@ -304,7 +338,7 @@ namespace LichPhylactery {
       case "holy":Orbit(c,"Feather",pos,1.4f,2,.5f,A(Gold,.7f),60f,.3f);break;
       case "ether":Rise(c,"Spark",pos,2,.5f,.35f,A(Silver,.5f));break;
      }
-    }catch(Exception e){Log.ErrorOnce("[LP] 光环特效出错："+e,0x5f7a1d2);}
+    }catch(Exception e){Log.ErrorOnce("[LP] 光环特效出错：".Loc()+e,0x5f7a1d2);}
    }
   }
   // 状态刚施放时可能还没挂上：前 60 刻不因为没有状态而结束（见 TickAuras）。

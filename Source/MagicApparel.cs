@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace LichPhylactery {
  // 1.45.1 魔法盔甲衣服：纹章色（意识形态色 → 派系色 → 白金）、7 个套装、派系换装（必穿件在 Patches/MagicApparel.xml，概率件在这里）、
- // 各件的小效果（旗帜、威吓、红袍威势、暗处闪避、林中掩护、偷袭、再站起来、龙骑士……）。体型门槛用 1.45.0 的 ApparelGate。
+ // 各件的小效果（旗帜、威吓、红袍威势、暗处闪避、林中掩护、偷袭、再站起来……）。体型门槛用 1.45.0 的 ApparelGate。
  public class HeraldryExtension : DefModExtension {public bool element;}
  public class EmpStunImmunity : DefModExtension {}
  public class AltarForgeExtension : DefModExtension {public ThingDef product,stuff;public float experience;}
@@ -67,8 +67,8 @@ namespace LichPhylactery {
    foreach(var inj in p.health.hediffSet.hediffs.OfType<Hediff_Injury>().Where(i=>!i.IsPermanent()).ToList())inj.Heal(inj.Severity*(1f-RiseHealth));
    var loss=p.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.BloodLoss);if(loss!=null)loss.Severity=Math.Min(loss.Severity,.2f);
    p.health.CheckForStateChange(null,null);
-   Items.Mote(p,"死亡骑士：再站起来",new Color(.55f,1f,.6f));
-   if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"倒下又站了起来——死亡骑士的铠甲不让他倒下。",p,MessageTypeDefOf.PositiveEvent,false);
+   Items.Mote(p,"死亡骑士：再站起来".Loc(),new Color(.55f,1f,.6f));
+   if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"倒下又站了起来——死亡骑士的铠甲不让他倒下。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);
    return true;
   }
   // ---------- 红袍 ----------
@@ -76,7 +76,7 @@ namespace LichPhylactery {
    var a=MagicItems.Alliance;if(visitor==null || visitor!=a || map==null || a.HostileTo(Faction.OfPlayer))return false;
    var wearers=map.mapPawns.FreeColonistsSpawned.Where(p=>Items.Worn(p,"LP_RedWizardRobe")!=null).ToList();if(wearers.Count==0)return false;
    a.TryAffectGoodwillWith(Faction.OfPlayer,RedRobeGoodwill,true,true,null,wearers[0]);
-   Messages.Message("同盟的商队看到"+wearers[0].LabelShort+"穿着塞伊红袍，脸色很难看：同盟好感"+RedRobeGoodwill+"。",wearers[0],MessageTypeDefOf.NegativeEvent,false);
+   Messages.Message("同盟的商队看到".Loc()+wearers[0].LabelShort+"穿着塞伊红袍，脸色很难看：同盟好感".Loc()+RedRobeGoodwill+"。".Loc(),wearers[0],MessageTypeDefOf.NegativeEvent,false);
    return true;
   }
   // ---------- 元素织袍 ----------
@@ -131,7 +131,7 @@ namespace LichPhylactery {
   public CompProperties_SetAbility Props=>(CompProperties_SetAbility)props;
   public override void Apply(LocalTargetInfo target,LocalTargetInfo dest){
    var caster=parent.pawn;if(caster?.Map==null)return;
-   if(Props.effect=="holdoath"){Items.Give(caster,"LP_HoldOath");Items.Mote(caster,"坚守誓约",new Color(1f,.92f,.6f));}
+   if(Props.effect=="holdoath"){Items.Give(caster,"LP_HoldOath");Items.Mote(caster,"坚守誓约".Loc(),new Color(1f,.92f,.6f));}
    else if(Props.effect=="turnundead")TurnUndead(caster,Props.radius);
   }
   public static int TurnUndead(Pawn caster,float radius){
@@ -165,12 +165,12 @@ namespace LichPhylactery {
   }
   public static void Reset()=>cache.Clear();
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p && Under(p))val-=MagicApparel.BannerOffset;}
-  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Under(p)?"骑士披风的旗帜: -"+MagicApparel.BannerOffset.ToStringPercent():null;
+  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Under(p)?"骑士披风的旗帜: -".Loc()+MagicApparel.BannerOffset.ToStringPercent():null;
  }
  public class StatPart_RedRobeCommand : StatPart {
   public static bool Commanded(Pawn p){var m=Necro.Construct(p)?.master;return m!=null && Items.Worn(m,"LP_RedWizardRobe")!=null;}
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p && Commanded(p))val*=MagicApparel.RedRobeSpeed;}
-  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Commanded(p)?"塞伊的威势: x"+MagicApparel.RedRobeSpeed.ToStringPercent():null;
+  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Commanded(p)?"塞伊的威势: x".Loc()+MagicApparel.RedRobeSpeed.ToStringPercent():null;
  }
  public class StatPart_OgreIntimidation : StatPart {
   static readonly Dictionary<int,(int tick,bool on)> cache=new Dictionary<int,(int,bool)>();
@@ -184,7 +184,7 @@ namespace LichPhylactery {
   }
   public static void Reset()=>cache.Clear();
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p && Cowed(p))val-=MagicApparel.IntimidateOffset;}
-  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Cowed(p)?"被食人魔战利品吓到: -"+MagicApparel.IntimidateOffset.ToStringPercent():null;
+  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && Cowed(p)?"被食人魔战利品吓到: -".Loc()+MagicApparel.IntimidateOffset.ToStringPercent():null;
  }
  // ---------- 心情 ----------
  public class ThoughtWorker_DeathknightWhispers : ThoughtWorker {
@@ -224,29 +224,19 @@ namespace LichPhylactery {
   static IEnumerable<DamageInfo> Postfix(IEnumerable<DamageInfo> values,Verb_MeleeAttackDamage __instance,LocalTargetInfo target){
    var caster=__instance.CasterPawn;var victim=target.Pawn;var h=MagicApparel.SetHediff(caster,"LP_Set_Shadow");
    bool sneak=h!=null && victim!=null && !h.struck.Contains(victim.thingIDNumber) && MagicApparel.Unaware(victim);
-   if(sneak){h.struck.Add(victim.thingIDNumber);if(h.struck.Count>200)h.struck.RemoveAt(0);Items.Mote(victim,"偷袭！",new Color(.8f,.3f,.3f));}
+   if(sneak){h.struck.Add(victim.thingIDNumber);if(h.struck.Count>200)h.struck.RemoveAt(0);Items.Mote(victim,"偷袭！".Loc(),new Color(.8f,.3f,.3f));}
    foreach(var d in values){if(sneak){var x=d;x.SetAmount(d.Amount*MagicApparel.SneakFactor);yield return x;}else yield return d;}
   }
  }
- // 死亡骑士铠甲：近战攻击者10%恐惧；龙骑士：受伤时己方龙冲向攻击者。
+ // 死亡骑士铠甲：近战攻击者10%恐惧。
  [HarmonyPatch(typeof(Pawn_HealthTracker),nameof(Pawn_HealthTracker.PostApplyDamage))]
  public static class MagicApparelOnHurt {
-  static readonly Dictionary<int,int> dragonCalls=new Dictionary<int,int>();
   static void Postfix(Pawn ___pawn,DamageInfo dinfo,float totalDamageDealt){
    var p=___pawn;if(p?.apparel==null || p.Dead || !(dinfo.Instigator is Pawn att) || att==p || !att.HostileTo(p))return;
-   if(!ForceDragon.IsRanged(dinfo) && Items.Worn(p,"LP_DeathknightPlate")!=null && Rand.Chance(.1f) && !Items.IsMinotaur(att) && !Races124.IsLoxodon(att))LichSpells.Frighten(p,att);
-  }
-  public static int CallDragons(Pawn knight,Pawn att){
-   int n=0,now=Find.TickManager.TicksGame;
-   foreach(var d in knight.Map.mapPawns.SpawnedPawnsInFaction(knight.Faction).ToList()){
-    if(d==knight || !ForceDragon.Active(d) || d.Downed || d.Drafted || d.InMentalState || !d.Position.InHorDistOf(knight.Position,30f))continue;
-    if(dragonCalls.TryGetValue(d.thingIDNumber,out var t) && now-t<600)continue;
-    dragonCalls[d.thingIDNumber]=now;d.jobs?.StartJob(JobMaker.MakeJob(JobDefOf.AttackMelee,att),JobCondition.InterruptForced);n++;
-   }
-   return n;
+   if(!AttackKind.IsRanged(dinfo) && Items.Worn(p,"LP_DeathknightPlate")!=null && Rand.Chance(.1f) && !Items.IsMinotaur(att) && !Races124.IsLoxodon(att))LichSpells.Frighten(p,att);
   }
  }
- // 冷却：巫妖穿大法师长袍死灵冲击-10%；吉斯洋基戴战冠星界跳跃-10%；龙骑士身边的龙吐息-15%。
+ // 冷却：吉斯洋基戴战冠星界跳跃-10%。
  [HarmonyPatch(typeof(Ability),nameof(Ability.Activate),new[]{typeof(LocalTargetInfo),typeof(LocalTargetInfo)})]
  public static class MagicApparelCooldowns {
   static void Postfix(Ability __instance,bool __result){
@@ -265,7 +255,7 @@ namespace LichPhylactery {
  public static class HarperCloakGift {
   static void Postfix(IncidentParms parms,bool __result){
    var s=MagicItemsState.Get;if(!__result || s==null || s.harperCloaks>=3 || !Harper.Active() || !(parms?.target is Map map))return;
-   if(MagicApparel.GiveHarperCloak(map)!=null){s.harperCloaks++;Messages.Message("竖琴手的密信里还夹着一件旅人斗篷——竖琴手的标志。",MessageTypeDefOf.PositiveEvent,false);}
+   if(MagicApparel.GiveHarperCloak(map)!=null){s.harperCloaks++;Messages.Message("竖琴手的密信里还夹着一件旅人斗篷——竖琴手的标志。".Loc(),MessageTypeDefOf.PositiveEvent,false);}
   }
  }
  // 塞伊红袍：同盟商队来访时看到红袍，好感-5（每次来访一次）。
@@ -276,5 +266,5 @@ namespace LichPhylactery {
  public static class RangerWildAnimals {static void Postfix(Pawn __instance,IAttackTargetSearcher __0,ref bool __result){if(!__result && __0?.Thing is Pawn a && a.RaceProps.Animal && a.Faction==null && __instance.health?.hediffSet?.GetFirstHediffOfDef(Ranger.Def) is Hediff_ApparelSet)__result=true;}static readonly DefRef<HediffDef> Ranger=new DefRef<HediffDef>("LP_Set_Ranger");} // 1.58.6：野兽索敌时每个目标都会问，用静态 Def
  // 派系换装（概率件）。
  [HarmonyPatch(typeof(PawnGenerator),nameof(PawnGenerator.GeneratePawn),new[]{typeof(PawnGenerationRequest)})]
- public static class MagicApparelOutfit {static void Postfix(Pawn __result){try{if(__result?.Faction!=null && !__result.Faction.IsPlayer)MagicApparel.Outfit(__result);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 派系换装出错："+e,9127461);}}}
+ public static class MagicApparelOutfit {static void Postfix(Pawn __result){try{if(__result?.Faction!=null && !__result.Faction.IsPlayer)MagicApparel.Outfit(__result);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 派系换装出错：".Loc()+e,9127461);}}}
 }

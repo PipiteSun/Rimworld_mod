@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 读心（传心头盔） -->
+  <LP_MI_ReadMind.label>read mind (helm of telepathy)</LP_MI_ReadMind.label>
+  <!-- 窥探15格内一个人的特质、擅长的技能和心情；对囚犯还会降低一些抵抗。每天一次；夺心魔使用没有冷却。 -->
+  <LP_MI_ReadMind.description>Peek at the traits, best skills and mood of one person within 15 cells; also lowers some resistance on prisoners. Once per day; no cooldown when used by a mind flayer.</LP_MI_ReadMind.description>
+  <!-- 释放储存的法术 -->
+  <LP_MI_StoredSpell.label>release stored spell</LP_MI_StoredSpell.label>
+  <!-- 释放储法戒指里封存的法术（效果同对应卷轴）。戒指空着时不能使用。 -->
+  <LP_MI_StoredSpell.description>Release the spell stored in the ring of spell storing (same effect as the corresponding scroll). Unusable while the ring is empty.</LP_MI_StoredSpell.description>
+  <!-- 安抚动物 -->
+  <LP_MI_Soothe.label>calm animal</LP_MI_Soothe.label>
+  <!-- 让15格内一只发狂（猎杀人类、狂暴）的动物恢复平静。每天一次。 -->
+  <LP_MI_Soothe.description>Calm one maddened (manhunting, berserk) animal within 15 cells. Once per day.</LP_MI_Soothe.description>
+  <!-- 召唤流星 -->
+  <LP_MI_ShootingStar.label>call meteor</LP_MI_ShootingStar.label>
+  <!-- 从夜空召下一颗流星砸向25格内的目标点：半径2格爆炸（20点伤害），并点燃落点。冷却半天（每天两次）。 -->
+  <LP_MI_ShootingStar.description>Call a meteor down from the night sky onto a target point within 25 cells: an explosion of radius 2 (20 damage) that ignites the impact point. Cooldown half a day (twice per day).</LP_MI_ShootingStar.description>
+  <!-- 投掷火球 -->
+  <LP_MI_FireballBead.label>throw fireball</LP_MI_FireballBead.label>
+  <!-- 摘下一颗火球珠扔向12格内的目标点：半径2.5格火焰爆炸（15点伤害）。消耗一颗珠子。 -->
+  <LP_MI_FireballBead.description>Pluck a fireball bead and throw it at a target point within 12 cells: a fire explosion of radius 2.5 (15 damage). Uses up one bead.</LP_MI_FireballBead.description>
+  <!-- 祈祷治疗 -->
+  <LP_MI_PrayHeal.label>prayer of healing</LP_MI_PrayHeal.label>
+  <!-- 握着念珠祈祷，治好5格内一个人最重的一处伤口。每天一次，和“祈祷祝福”共用冷却。夺心魔用不了。 -->
+  <LP_MI_PrayHeal.description>Pray holding the beads to heal the worst wound of one person within 5 cells. Once per day, sharing a cooldown with "prayer blessing". Mind flayers can't use it.</LP_MI_PrayHeal.description>
+  <!-- 祈祷祝福 -->
+  <LP_MI_PrayBless.label>prayer blessing</LP_MI_PrayBless.label>
+  <!-- 高声祈祷：6格内的友军（包括自己）1小时内命中+5%、心智抗性+10%。每天一次，和“祈祷治疗”共用冷却。夺心魔用不了。 -->
+  <LP_MI_PrayBless.description>Pray aloud: allies within 6 cells (including yourself) get hit +5% and mind resistance +10% for 1 hour. Once per day, sharing a cooldown with "prayer of healing". Mind flayers can't use it.</LP_MI_PrayBless.description>
+  <!-- 星界跳跃（护符） -->
+  <LP_MI_AstralStep.label>astral jump (amulet)</LP_MI_AstralStep.label>
+  <!-- 借星界护符穿过星界，瞬间出现在8格内一处可站立的空地。每天一次；5%概率被卷到地图边缘。 -->
+  <LP_MI_AstralStep.description>Pass through the Astral Plane with the astral amulet and instantly appear on an open standable spot within 8 cells. Once per day; 5% chance to be blown to the map edge.</LP_MI_AstralStep.description>
+</LanguageData>

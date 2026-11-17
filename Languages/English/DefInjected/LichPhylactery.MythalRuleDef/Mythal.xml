@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 无 -->
+  <LP_MythalRule_None.label>none</LP_MythalRule_None.label>
+  <!-- 这一层的迷锁很安静。 -->
+  <LP_MythalRule_None.description>This floor's mythal is quiet.</LP_MythalRule_None.description>
+  <!-- 重力 -->
+  <LP_MythalRule_Gravity.label>gravity</LP_MythalRule_Gravity.label>
+  <!-- 所有人移动速度 −25% -->
+  <LP_MythalRule_Gravity.description>Everyone's move speed -25%</LP_MythalRule_Gravity.description>
+  <!-- 狂暴 -->
+  <LP_MythalRule_Fury.label>rage</LP_MythalRule_Fury.label>
+  <!-- 双方近战伤害 +30% -->
+  <LP_MythalRule_Fury.description>Both sides' melee damage +30%</LP_MythalRule_Fury.description>
+  <!-- 生命回流 -->
+  <LP_MythalRule_Lifeflow.label>life reflux</LP_MythalRule_Lifeflow.label>
+  <!-- 所有人（包括敌人）伤口愈合 ×4 -->
+  <LP_MythalRule_Lifeflow.description>Everyone (enemies included) heals wounds ×4</LP_MythalRule_Lifeflow.description>
+  <!-- 时间凝滞 -->
+  <LP_MythalRule_Stasis.label>time stasis</LP_MythalRule_Stasis.label>
+  <!-- 伤口不流血，不会饿，也不会累 -->
+  <LP_MythalRule_Stasis.description>Wounds don't bleed, no hunger, no fatigue</LP_MythalRule_Stasis.description>
+  <!-- 破碎 -->
+  <LP_MythalRule_Fragile.label>shattered</LP_MythalRule_Fragile.label>
+  <!-- 所有人受到的伤害 +25% -->
+  <LP_MythalRule_Fragile.description>Everyone takes +25% damage</LP_MythalRule_Fragile.description>
+  <!-- 祝福 -->
+  <LP_MythalRule_Blessing.label>bless</LP_MythalRule_Blessing.label>
+  <!-- 我方近战命中 +10%，瞄准时间 −15% -->
+  <LP_MythalRule_Blessing.description>Our melee hit +10%, aiming time -15%</LP_MythalRule_Blessing.description>
+</LanguageData>

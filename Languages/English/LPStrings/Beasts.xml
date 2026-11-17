@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（Beasts.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>熊抱！</zh><en>Bear hug!</en></s>
+  <s><zh>落空</zh><en>Missed</en></s>
+  <s><zh>闪现</zh><en>Blink</en></s>
+  <s><zh>熊抱冷却：</zh><en>Bear hug cooldown: </en></s>
+  <s><zh>秒</zh><en> seconds</en></s>
+  <s><zh>位移幻影恢复中：</zh><en>Displacement phantom recovering: </en></s>
+  <s><zh>闪现冷却：</zh><en>Blink cooldown: </en></s>
+  <s><zh>群嚎：附近</zh><en>Pack howl: nearby </en></s>
+  <s><zh>只同伴，近战命中+</zh><en> companions, melee hit +</en></s>
+  <s><zh>DND野兽</zh><en>DND beasts</en></s>
+  <s><zh>野外刷新 DND 野兽</zh><en>Spawn DND beasts in the wild</en></s>
+  <s><zh>猫头鹰熊、邪座狼、冬狼、地狱犬、魔化兽、闪光犬，以及伪龙、翼猫、巨型火甲虫、罗斯牛、鹰头马身兽、斧喙鸟、狮鹫、钩爪恐兽、相位蜘蛛、暗斗篷、血蝠蝇会在各自的生态区野外刷新，其中凶猛的也会以狂暴兽群出现。关闭后不再刷新、也不会以狂暴兽群出现；保存设置后立即生效，已经在地图上的野兽不受影响。</zh><en>Owlbears, worgs, winter wolves, hell hounds, fiendish beasts, blink dogs, as well as pseudodragons, tressyms, giant fire beetles, rothé, hippogriffs, axe beaks, griffons, hook horrors, phase spiders, darkmantles and stirges spawn in the wild in their biomes, and the fierce ones also appear as manhunter packs. When off, they no longer spawn or appear as manhunter packs; takes effect immediately after saving settings, beasts already on the map are unaffected.</en></s>
+  <s><zh>野兽野性等级</zh><en>Beast wild levels</en></s>
+  <s><zh>野生和非玩家的动物出现时带「野性等级」：狂暴兽群和敌对组按威胁点数定级，野外动物 1～殖民地最高等级 −3，上限殖民地最高等级 +3。等级越高近战伤害、部位生命越高、跑得越快（与殖民者同一条六维曲线，1 级不变）。玩家的动物靠战斗和搬运成长。关闭后不再给新动物定级，已有的等级不提供效果。</zh><en>Wild and non-player animals spawn with a "wild level": manhunter packs and hostile groups are leveled by threat points, wild animals 1 to colony's highest level −3, capped at colony's highest level +3. Higher levels mean more melee damage, more part health and faster movement (the same six-ability curve as colonists; level 1 unchanged). Player animals grow through combat and hauling. When off, new animals aren't leveled and existing levels give no effect.</en></s>
+  <s><zh>精英野兽概率：</zh><en>Elite beast chance: </en></s>
+  <s><zh>野兽出现时成为精英（恐怖 / 狂暴 / 远古 / 深渊腐化）的概率，死后掉落兽王之心。狂暴兽群的首领总是精英。</zh><en>Chance for a spawning beast to become elite (dread / berserk / ancient / abyss-tainted), dropping a beast king's heart on death. Manhunter pack leaders are always elite.</en></s>
+</LPStrings>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（KnowledgeFeedback.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>\n知识回馈：技能固定，不会因工作、学习或衰减改变；工作中本该获得的经验（按自身兴趣与学习倍率）100%传给主人对应技能，不重复乘算主人学习倍率。\n状态：</zh><en>\nKnowledge feedback: skills are fixed and don't change from work, learning or decay; XP that work should have given (by own passions and learning multiplier) goes 100% to the master's matching skill, without applying the master's learning multiplier again.\nStatus: </en></s>
+  <s><zh>正在连接</zh><en>connected</en></s>
+  <s><zh>暂停（休眠或统御失效，经验不传递）</zh><en>paused (dormant or command lost; XP isn't passed on)</en></s>
+  <s><zh>；累计回馈 </zh><en>; total fed back </en></s>
+</LPStrings>

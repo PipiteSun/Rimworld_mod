@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（Faith.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>善</zh><en>good</en></s>
+  <s><zh>恶</zh><en>evil</en></s>
+  <s><zh>中立</zh><en>neutral</en></s>
+  <s><zh>信仰系统</zh><en>Faith system</en></s>
+  <s><zh>圣坛、守护神、神眷、神术、信仰任务和季度显圣。关闭后神眷不再变化，神术不能施放，信仰任务不出现，信徒和无神者不再随机出现（已有的保留）。</zh><en>Altars, patron deities, favor, divine miracles, faith quests and seasonal manifestations. When off, favor no longer changes, miracles can't be cast, faith quests don't appear, and believers and the godless no longer appear randomly (existing ones are kept).</en></s>
+  <s><zh>神眷获取倍率：</zh><en>Favor gain multiplier: </en></s>
+  <s><zh>%（祈祷、献祭、各神作为和任务奖励得到的神眷；扣神眷不受影响）</zh><en>% (favor from prayer, sacrifices, each god's deeds and quest rewards; favor losses aren't affected)</en></s>
+  <s><zh>信仰任务频率：</zh><en>Faith quest frequency: </en></s>
+  <s><zh>%（朝圣者、神谕试炼、寻回圣物、亵渎者；和“DND 事件频率”相乘）</zh><en>% (pilgrims, oracle trials, relic recovery, desecrators; multiplied by "DND event frequency")</en></s>
+  <s><zh>季度显圣</zh><en>Seasonal manifestation</en></s>
+  <s><zh>每15天按守护神的神眷结算一次：≥50赐福3天，≤-30降罚1天。</zh><en>Settled every 15 days by the patron deity's favor: ≥50 gives a 3-day blessing, ≤-30 a 1-day punishment.</en></s>
+  <s><zh>信仰系统已关闭。</zh><en>The faith system is off.</en></s>
+  <s><zh>无神者不祈祷。</zh><en>The godless don't pray.</en></s>
+  <s><zh>殖民地还没有守护神：先在圣坛选一位。</zh><en>The colony has no patron deity yet: pick one at an altar first.</en></s>
+  <s><zh>只有殖民者会在这里祈祷。</zh><en>Only colonists pray here.</en></s>
+  <s><zh>祈祷</zh><en>Pray</en></s>
+  <s><zh>殖民地没有守护神。</zh><en>The colony has no patron deity.</en></s>
+  <s><zh>不是</zh><en>Not </en></s>
+  <s><zh>已经是神选者了。</zh><en>Already a chosen.</en></s>
+  <s><zh>在殖民地已经有</zh><en> already has </en></s>
+  <s><zh>名神选者了。</zh><en> chosen in the colony.</en></s>
+  <s><zh>神眷不足</zh><en>Not enough favor</en></s>
+  <s><zh>片。</zh><en> fragments.</en></s>
+  <s><zh>的神选仪式</zh><en>'s chosen ritual</en></s>
+  <s><zh>的血脉被神力重塑，成为了</zh><en>'s bloodline was reshaped by divine power, becoming </en></s>
+  <s><zh>神选者：</zh><en>Chosen: </en></s>
+  <s><zh>在圣坛前被</zh><en> was chosen by </en></s>
+  <s><zh>选中，成为了神选者：神恩强度+0.25，神术消耗减半，心智抗性+20%。</zh><en> before the altar and became a chosen: divine favor power +0.25, miracle costs halved, mental resistance +20%.</en></s>
+  <s><zh>[DND边缘大陆] 神眷 </zh><en>[DND Rimlands] Favor </en></s>
+  <s><zh>）→ </zh><en>) → </en></s>
+  <s><zh>[DND边缘大陆] FavorChanged 订阅者出错：</zh><en>[DND Rimlands] FavorChanged subscriber error: </en></s>
+  <s><zh>没有世界</zh><en>No world</en></s>
+  <s><zh>不接受凡人的信奉。</zh><en> doesn't accept mortal worship.</en></s>
+  <s><zh>已经是守护神了。</zh><en>Already the patron deity.</en></s>
+  <s><zh>刚换过守护神，还要等</zh><en>Just changed patron deity; must wait another </en></s>
+  <s><zh>天。</zh><en> days.</en></s>
+  <s><zh>神赐遗物：</zh><en>Divine relic: </en></s>
+  <s><zh>对殖民地的虔诚很满意，在圣坛旁降下了</zh><en> is pleased with the colony's devotion and sent down beside the altar </en></s>
+  <s><zh>殖民地改奉</zh><en>The colony now worships </en></s>
+  <s><zh>每天回落</zh><en>falls back each day</en></s>
+  <s><zh>殖民地侍奉</zh><en>The colony serves </en></s>
+  <s><zh>个死灵造物</zh><en> necromantic constructs</en></s>
+  <s><zh>殖民地里有巫妖</zh><en>The colony has a lich</en></s>
+  <s><zh>[DND边缘大陆] 圣坛发光：</zh><en>[DND Rimlands] Altar glow: </en></s>
+  <s><zh>信仰系统已关闭</zh><en>The faith system is off</en></s>
+  <s><zh>守护神：未选择</zh><en>Patron deity: not chosen</en></s>
+  <s><zh>守护神：</zh><en>Patron deity: </en></s>
+  <s><zh>；神眷 </zh><en>; favor </en></s>
+  <s><zh>选择守护神</zh><en>Choose patron deity</en></s>
+  <s><zh>选一位殖民地的守护神（一个殖民地一位）。更换时原来的神神眷-30，之后</zh><en>Choose a patron deity for the colony (one per colony). When changing, the old god's favor -30, and it can't be changed again for </en></s>
+  <s><zh>天内不能再换。\n\n当前：</zh><en> days.\n\nCurrent: </en></s>
+  <s><zh> · 神眷 </zh><en> · favor </en></s>
+  <s><zh>神眷一览</zh><en>Favor overview</en></s>
+  <s><zh>神选仪式</zh><en>Chosen ritual</en></s>
+  <s><zh>守护神神眷≥</zh><en>When patron favor ≥</en></s>
+  <s><zh>时，为一名信奉守护神的信徒举行神选仪式（2小时，可打断，打断不扣资源）：消耗神眷</zh><en>, hold a chosen ritual for a believer of the patron deity (2 hours, can be interrupted without spending resources): costs favor </en></s>
+  <s><zh>片神迹残片。神选者神恩强度+0.25、神术消耗减半、心智抗性+20%；每位神在殖民地最多</zh><en> miracle fragments. The chosen get divine favor power +0.25, miracle costs halved, mental resistance +20%; at most </en></s>
+  <s><zh>名。研究“天界与地狱血统”后可以顺带改换血脉（善神→阿斯莫，恶神→提夫林）。</zh><en> per god in the colony. After researching "celestial and infernal bloodlines", the bloodline can be changed along the way (good gods → aasimar, evil gods → tiefling).</en></s>
+  <s><zh>[DND边缘大陆] 圣坛外部按钮出错：</zh><en>[DND Rimlands] Altar gizmo error: </en></s>
+  <s><zh>在圣坛祈祷（</zh><en>Pray at the altar (</en></s>
+  <s><zh>在圣坛祈祷（到不了圣坛旁边）</zh><en>Pray at the altar (can't reach the altar)</en></s>
+  <s><zh>在圣坛祈祷（1小时）</zh><en>Pray at the altar (1 hour)</en></s>
+  <s><zh>各神神眷（-100～100）：</zh><en>Favor with each god (-100 to 100):</en></s>
+  <s><zh>（不接受信奉）</zh><en> (doesn't accept worship)</en></s>
+  <s><zh>（敌对）</zh><en> (hostile)</en></s>
+  <s><zh>守护神阈值：≥</zh><en>Patron deity thresholds: ≥</en></s>
+  <s><zh> 可施放领域神术；≥</zh><en> domain miracles can be cast; ≥</en></s>
+  <s><zh> 季度赐福；≥</zh><en> seasonal blessings; ≥</en></s>
+  <s><zh> 可做神选仪式（第一次到</zh><en> chosen ritual possible (a relic granted the first time reaching </en></s>
+  <s><zh>赐一件遗物）；≤</zh><en>); ≤</en></s>
+  <s><zh> 季度降罚。任何神≤</zh><en> seasonal punishment. When any god is ≤</en></s>
+  <s><zh>时它的信徒心情-6。</zh><en>, its believers get mood -6.</en></s>
+  <s><zh>非守护神每天向0回落</zh><en>Non-patron gods fall back toward 0 each day</en></s>
+  <s><zh>；守护神的敌对神每天-</zh><en>; the patron's enemy god -</en></s>
+  <s><zh>喜爱的祭品：</zh><en> per day</en></s>
+  <s><zh>（还没有神眷变化记录）</zh><en>(No favor change records yet)</en></s>
+  <s><zh>最近的变化：\n</zh><en>Recent changes:\n</en></s>
+  <s><zh>前 · </zh><en> ago · </en></s>
+  <s><zh>的信徒</zh><en> believer of </en></s>
+  <s><zh>神选仪式 · </zh><en>Chosen ritual · </en></s>
+  <s><zh>为</zh><en>Hold a chosen ritual for </en></s>
+  <s><zh>举行神选仪式（</zh><en> (</en></s>
+  <s><zh>）：消耗神眷</zh><en>): costs favor </en></s>
+  <s><zh>片神迹残片，2小时，可打断（打断不扣资源）。</zh><en> miracle fragments, 2 hours, can be interrupted (no resources spent if interrupted).</en></s>
+  <s><zh>同时改换血脉为</zh><en>Also change bloodline to </en></s>
+  <s><zh>（只替换异种基因，内生基因保留）</zh><en> (only xenogenes are replaced; endogenes kept)</en></s>
+  <s><zh>改换血脉：不可用（</zh><en>Change bloodline: unavailable (</en></s>
+  <s><zh> 神眷</zh><en> favor</en></s>
+  <s><zh>市值 </zh><en>market value </en></s>
+  <s><zh>守护神</zh><en>patron deity</en></s>
+  <s><zh>喜爱之物</zh><en>favorite things</en></s>
+  <s><zh>喝下了祝圣圣水</zh><en>drank consecrated holy water</en></s>
+  <s><zh>减轻了一些。</zh><en> eased a little.</en></s>
+  <s><zh>[DND边缘大陆] 季度显圣出错：</zh><en>[DND Rimlands] Seasonal manifestation error: </en></s>
+  <s><zh>赐福：</zh><en>Blessing: </en></s>
+  <s><zh>降罚：</zh><en>Punishment: </en></s>
+  <s><zh>对殖民地的虔诚很满意，降下赐福（</zh><en> is pleased with the colony's devotion and grants a blessing (</en></s>
+  <s><zh>天）：\n\n</zh><en> days):\n\n</en></s>
+  <s><zh>对殖民地很不满，降下惩罚（</zh><en> is displeased with the colony and sends a punishment (</en></s>
+  <s><zh>神</zh><en>god</en></s>
+  <s><zh>作物生长+25%，殖民者心情+4（黎明的眷顾）。</zh><en>Crop growth +25%, colonist mood +4 (dawn's favor).</en></s>
+  <s><zh>作物生长-25%。</zh><en>Crop growth -25%.</en></s>
+  <s><zh>招募时囚犯抗拒下降×1.5。</zh><en>Prisoner resistance drops ×1.5 faster during recruitment.</en></s>
+  <s><zh>罪行最多的殖民者良心不安（心情-8，1天）。</zh><en>The colonist with the most sins has a guilty conscience (mood -8, 1 day).</en></s>
+  <s><zh>殖民者心灵敏感度+10%，精神力恢复（冥想）+20%。</zh><en>Colonist psychic sensitivity +10%, psyfocus recovery (meditation) +20%.</en></s>
+  <s><zh>一名施法者的精神力被抽空。</zh><en>A spellcaster's psyfocus is drained.</en></s>
+  <s><zh>精神力清空</zh><en>psyfocus cleared</en></s>
+  <s><zh>看到尸体不会难受；殖民者受到致命伤时有25%的几率免于一死（这次显圣里最多一次）。</zh><en>Seeing corpses causes no distress; colonists dealt a fatal wound have a 25% chance to escape death (at most once during this manifestation).</en></s>
+  <s><zh>地图上2～3具尸体消失了。</zh><en>2-3 corpses on the map vanished.</en></s>
+  <s><zh>打猎时命中+15%，驯兽成功率×1.5。</zh><en>Hunting hit +15%, animal training success ×1.5.</en></s>
+  <s><zh>两只野兽发狂。</zh><en>Two beasts go mad.</en></s>
+  <s><zh>马拉尔的惩罚</zh><en>Malar's punishment</en></s>
+  <s><zh>雷暴里殖民地的建筑不会被雷劈。</zh><en>The colony's buildings aren't struck by lightning during thunderstorms.</en></s>
+  <s><zh>立刻来一场雷暴，落雷专挑殖民地附近。</zh><en>A thunderstorm arrives at once, with lightning striking near the colony.</en></s>
+  <s><zh>奴隶的压制下降速度×0.5。</zh><en>Slave suppression falls ×0.5 as fast.</en></s>
+  <s><zh>一名奴隶开始反抗。</zh><en>A slave starts rebelling.</en></s>
+  <s><zh>[DND边缘大陆] 班恩降罚：奴隶反抗失败 </zh><en>[DND Rimlands] Bane's punishment: slave rebellion failed </en></s>
+  <s><zh>在黑暗中不会难受；夜里（22点～5点）工作速度+10%。</zh><en>No distress in darkness; work speed +10% at night (22:00-5:00).</en></s>
+  <s><zh>一名殖民者失去了一段非血缘的关系。</zh><en>A colonist loses one non-blood relationship.</en></s>
+  <s><zh>莎尔的惩罚：</zh><en>Shar's punishment: </en></s>
+  <s><zh>关系被遗忘了。</zh><en> relationship was forgotten.</en></s>
+  <s><zh>锻造速度+25%，锻炉燃料消耗×0.5。</zh><en>Smithing speed +25%, smithy fuel consumption ×0.5.</en></s>
+  <s><zh>殖民地的一处建筑起火。</zh><en>A building in the colony catches fire.</en></s>
+  <s><zh>神选者（</zh><en>Chosen (</en></s>
+  <s><zh>晨星（清晨）×1.05</zh><en>Morning star (early morning) ×1.05</en></s>
+  <s><zh>莎尔的赐福（夜里）×1.1</zh><en>Shar's blessing (night) ×1.1</en></s>
+  <s><zh>苏尔特信徒（锻造）×1.1</zh><en>Surtur believer (smithing) ×1.1</en></s>
+  <s><zh>熔炉之心（锻造）×1.3</zh><en>Heart of the forge (smithing) ×1.3</en></s>
+  <s><zh>苏尔特的赐福（锻造）×1.25</zh><en>Surtur's blessing (smithing) ×1.25</en></s>
+  <s><zh>密斯特拉的赐福×1.1</zh><en>Mystra's blessing ×1.1</en></s>
+  <s><zh>密斯特拉的赐福×1.2</zh><en>Mystra's blessing ×1.2</en></s>
+  <s><zh>魔鬼契约×1.2</zh><en>Devil's pact ×1.2</en></s>
+  <s><zh>马拉尔信徒（打猎）×1.1</zh><en>Malar believer (hunting) ×1.1</en></s>
+  <s><zh>马拉尔的赐福（打猎）×1.15</zh><en>Malar's blessing (hunting) ×1.15</en></s>
+  <s><zh>马拉尔的赐福×1.5</zh><en>Malar's blessing ×1.5</en></s>
+  <s><zh>班恩的赐福×0.5</zh><en>Bane's blessing ×0.5</en></s>
+  <s><zh>黑手护手×0.5</zh><en>Black gauntlet ×0.5</en></s>
+  <s><zh>暗夜之泪（黑暗中）+15%</zh><en>Tears of the night (in darkness) +15%</en></s>
+  <s><zh>信仰：</zh><en>Faith: </en></s>
+  <s><zh>有人</zh><en>someone</en></s>
+  <s><zh>成为奥术半神</zh><en>became an arcane demigod</en></s>
+  <s><zh>收获作物</zh><en>harvested crops</en></s>
+  <s><zh>扑灭了火</zh><en>put out fires</en></s>
+  <s><zh>安葬了尸体</zh><en>buried corpses</en></s>
+  <s><zh>驯服了动物</zh><en>tamed animals</en></s>
+  <s><zh>[DND边缘大陆] 信仰击杀钩子：</zh><en>[DND Rimlands] Faith kill hook: </en></s>
+  <s><zh>击杀不死者</zh><en>killed undead</en></s>
+  <s><zh>击杀敌方不死者</zh><en>killed hostile undead</en></s>
+  <s><zh>猎杀</zh><en>hunted</en></s>
+  <s><zh>近战击杀</zh><en>melee kill</en></s>
+  <s><zh>神圣之光杀死了敌人</zh><en>holy light killed an enemy</en></s>
+  <s><zh>殖民者失去了亲人</zh><en>a colonist lost family</en></s>
+  <s><zh>处决囚犯</zh><en>executed a prisoner</en></s>
+  <s><zh>摘取器官</zh><en>harvested organs</en></s>
+  <s><zh>审判仪式</zh><en>judgment ritual</en></s>
+  <s><zh>释放了</zh><en>released </en></s>
+  <s><zh>释放了奴隶</zh><en>released a slave</en></s>
+  <s><zh>奴役了</zh><en>enslaved </en></s>
+  <s><zh>施放</zh><en>cast </en></s>
+  <s><zh>祝圣圣水</zh><en>consecrated holy water</en></s>
+  <s><zh>炼金桌产物</zh><en>alchemy table product</en></s>
+  <s><zh>产物</zh><en>product</en></s>
+  <s><zh>锻造了</zh><en>forged </en></s>
+  <s><zh>汲取灵魂</zh><en>drained a soul</en></s>
+  <s><zh>以巫妖之身复生</zh><en>revived as a lich</en></s>
+  <s><zh>巨魔</zh><en>troll</en></s>
+  <s><zh>复活</zh><en>resurrected</en></s>
+  <s><zh>冻伤</zh><en>frostbite</en></s>
+  <s><zh>雷击落在地图上</zh><en>lightning struck the map</en></s>
+  <s><zh>魔网崩坏</zh><en>Weave collapse</en></s>
+  <s><zh>凯兰沃把</zh><en>Kelemvor pushed </en></s>
+  <s><zh>从死亡边缘推了回来。</zh><en> back from the brink of death.</en></s>
+  <s><zh>这具尸体已经安息，不能复生。</zh><en>This corpse is already at rest and can't be revived.</en></s>
+  <s><zh>这具尸体已经安息（凯兰沃），灵魂不能被汲取。</zh><en>This corpse is already at rest (Kelemvor); its soul can't be drained.</en></s>
+  <s><zh>[DND边缘大陆] 信仰生成钩子：</zh><en>[DND Rimlands] Faith generation hook: </en></s>
+</LPStrings>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 元素血脉 -->
+  <LP_GenasiCore.label>elemental bloodline</LP_GenasiCore.label>
+  <!-- 祖上某位与元素生物结合留下的血脉。带这条基因的人算作元素裔；血脉的具体力量来自另一条“元素血脉”基因（炽焰、潮汐、岩石、疾风四选一）。 -->
+  <LP_GenasiCore.description>A bloodline left by an ancestor who joined with an elemental being. Anyone with this gene counts as a genasi; the bloodline's specific power comes from another "elemental bloodline" gene (one of blaze, tide, stone, gale).</LP_GenasiCore.description>
+  <!-- 算作元素裔（种族关系、派系好感、元素符制作）。 -->
+  <LP_GenasiCore.customEffectDescriptions.0>Counts as a genasi (racial relations, faction goodwill, elemental charm crafting).</LP_GenasiCore.customEffectDescriptions.0>
+  <!-- 炽焰血脉 -->
+  <LP_ElementFire.label>blaze bloodline</LP_ElementFire.label>
+  <!-- 火元素的血脉。携带者不会被点燃，受到的火焰伤害减半（不是免疫）；耐热但怕冷。能用“火花”点燃6格内的一个目标。 -->
+  <LP_ElementFire.description>The bloodline of elemental fire. Carriers can't be ignited and take half fire damage (not immune); heat-tolerant but cold-sensitive. Can use "Spark" to ignite a target within 6 cells.</LP_ElementFire.description>
+  <!-- 潮汐血脉 -->
+  <LP_ElementWater.label>tide bloodline</LP_ElementWater.label>
+  <!-- 水元素的血脉。携带者走进浅水、沼泽和浅海时不会减速，寻路也不再绕开水；比常人耐寒。能用“水流”在目标处扑灭3×3范围的火，并把格内的敌人浇透（移速×80%，10秒）。 -->
+  <LP_ElementWater.description>The bloodline of elemental water. Carriers aren't slowed by shallow water, marsh and shallow ocean, and pathfinding no longer avoids water; more cold-tolerant than others. Can use "Water stream" to put out fires in a 3×3 area at the target and drench enemies in it (move speed ×80%, 10 seconds).</LP_ElementWater.description>
+  <!-- 水中行动：浅水、沼泽、浅海不减速（深水仍不可通行）。 -->
+  <LP_ElementWater.customEffectDescriptions.0>Moving in water: no slowdown in shallow water, marsh and shallow ocean (deep water is still impassable).</LP_ElementWater.customEffectDescriptions.0>
+  <!-- 岩石血脉 -->
+  <LP_ElementEarth.label>stone bloodline</LP_ElementEarth.label>
+  <!-- 土元素的血脉。携带者采矿速度×130%、采矿产量+10%，皮肤像岩石一样抗钝击（钝器护甲+15%），走路略慢。没有主动能力。 -->
+  <LP_ElementEarth.description>The bloodline of elemental earth. Carriers get mining speed ×130%, mining yield +10%, and skin as resistant to blunt blows as rock (blunt armor +15%), but walk a little slower. No active ability.</LP_ElementEarth.description>
+  <!-- 采矿产量：+10%（最高100%）。 -->
+  <LP_ElementEarth.customEffectDescriptions.0>Mining yield: +10% (max 100%).</LP_ElementEarth.customEffectDescriptions.0>
+  <!-- 疾风血脉 -->
+  <LP_ElementAir.label>gale bloodline</LP_ElementAir.label>
+  <!-- 风元素的血脉。携带者移动速度×110%，能乘风“风跃”到8格内看得见、能站人的地方（不能穿墙，不消耗精神力）。 -->
+  <LP_ElementAir.description>The bloodline of elemental air. Carriers get move speed ×110% and can "wind leap" on the wind to a visible standable spot within 8 cells (can't pass through walls, costs no psyfocus).</LP_ElementAir.description>
+  <!-- 余烬肤色 -->
+  <LP_SkinEmber.label>ember skin</LP_SkinEmber.label>
+  <!-- 火元素裔的赭红色皮肤，像炭火将熄时的颜色。 -->
+  <LP_SkinEmber.description>A fire genasi's ochre-red skin, the color of dying embers.</LP_SkinEmber.description>
+  <!-- 赭红 -->
+  <LP_SkinEmber.labelShortAdj>ochre-red</LP_SkinEmber.labelShortAdj>
+  <!-- 潮汐肤色 -->
+  <LP_SkinTide.label>tide skin</LP_SkinTide.label>
+  <!-- 水元素裔的蓝青色皮肤，带着水面一样的光泽。 -->
+  <LP_SkinTide.description>A water genasi's blue-green skin with a sheen like the water's surface.</LP_SkinTide.description>
+  <!-- 蓝青 -->
+  <LP_SkinTide.labelShortAdj>blue-green</LP_SkinTide.labelShortAdj>
+  <!-- 岩石肤色 -->
+  <LP_SkinStone.label>rock skin</LP_SkinStone.label>
+  <!-- 土元素裔的灰褐色皮肤，像风化的砂岩。 -->
+  <LP_SkinStone.description>An earth genasi's grey-brown skin, like weathered sandstone.</LP_SkinStone.description>
+  <!-- 灰褐 -->
+  <LP_SkinStone.labelShortAdj>grey-brown</LP_SkinStone.labelShortAdj>
+  <!-- 天空肤色 -->
+  <LP_SkinSky.label>sky skin</LP_SkinSky.label>
+  <!-- 风元素裔的浅灰蓝色皮肤，像阴天的天空。 -->
+  <LP_SkinSky.description>An air genasi's pale grey-blue skin, like an overcast sky.</LP_SkinSky.description>
+  <!-- 浅灰蓝 -->
+  <LP_SkinSky.labelShortAdj>pale grey-blue</LP_SkinSky.labelShortAdj>
+</LanguageData>

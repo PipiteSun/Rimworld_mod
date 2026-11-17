@@ -1,0 +1,231 @@
+s06986	Raise the sword to the heavens: enemies within 8 cells take 30 radiant damage. Cooldown 1 day.
+s06987	celestial wrath
+s06988	A small, savage fey wearing a cap dyed red with its victims' blood and heavy iron boots. Redcaps get fiercer the longer they fight: each hit makes them more vicious, and anyone lying on the ground gets stomped hard by their iron boots.
+s06989	Fey killer. Bloodlust (melee hits stack damage, up to +15), heavy stomp (×1.5 against downed targets); banished when downed.
+s06990	The redcap gets fiercer with every cut: +3 melee damage per stack.
+s06991	Each melee hit adds a stack of "bloodlust" (+3 melee damage, up to 5 stacks = +15), cleared after an hour without a hit.
+s06992	A small body: actual body size ×60%, drawn ×70%; a blood-red pointed cap, heavy iron boots.
+s06993	redcap build
+s06994	Iron boots stomp on those lying on the ground: ×1.5 damage against downed targets.
+s06995	heavy stomp
+s06996	A deva is persuading this erinyes to turn back: after 3 times in total she becomes a deva again.
+s06997	Throw the binding rope: one target within 8 cells makes a Dexterity save (difficulty rises with the user's proficiency bonus and Dexterity; each point of the target's ability modifier and proficiency bonus gives +5% success) or is bound for 4 seconds. Uses 1 point of the rope's durability. Cooldown 2 hours.
+s06998	Fey descendants with goat horns, furry legs and hooves, born musicians and drinkers. Satyr blood is mortal blood and is inheritable; they have a natural resistance to magic, can knock people over with a charge, and are always the happiest at a party.
+s06999	Playable, inheritable. Psychic sensitivity ×0.6, mental save success +10%, ram, party mood +10, Artistic talent +2; can't wear shoes.
+s07000	Ability "Ram": charge next to a target within 6 cells; the target makes a Strength save (difficulty rises with the satyr's proficiency bonus and Strength; each point of the target's ability modifier and proficiency bonus gives +5% success) or falls for 1 second. Cooldown 4 hours.
+s07001	Lower your head and charge next to a target within 6 cells: the target makes a Strength save (difficulty rises with the satyr's proficiency bonus and Strength; each point of the target's ability modifier and proficiency bonus gives +5% success) or falls for 1 second. Cooldown 4 hours.
+s07002	ram
+s07003	Furry goat legs and a pair of hooves: can't wear shoes or boots (clothing covering the feet). Anyone with this gene counts as a satyr.
+s07004	goat hooves
+s07005	A pair of backward-curving goat horns.
+s07006	satyr horns
+s07007	Psychic sensitivity ×0.6; Intelligence, Wisdom and Charisma save success +10%.
+s07008	resistance of fey blood
+s07009	A born musician: Artistic talent +2.
+s07010	woodland musician
+s07011	Whenever the colony holds a party or wedding, satyrs get mood +10 (1 day).
+s07012	revelry
+s07013	Music, wine and dancing: that's what living is!
+s07014	An amnizu's sallow skin like parchment.
+s07015	sallow skin
+s07016	sallow
+s07017	A bone devil's pale skin stretched tight over the bones.
+s07018	bone-white skin
+s07019	bone white
+s07020	A chain devil's iron-grey skin covered in chain marks.
+s07021	iron-grey skin
+s07022	iron grey
+s07023	A changeling's skin, pale without a hint of color.
+s07024	unblemished pale
+s07025	pale
+s07026	A deva's skin with a faint golden sheen.
+s07027	golden-gleaming skin
+s07028	golden gleam
+s07029	A dryad's brown-green skin with bark patterns.
+s07030	bark-colored skin
+s07031	bark
+s07032	An erinyes's ashen grey skin.
+s07033	ashen grey skin
+s07034	ashen grey
+s07035	A horned devil's dark red scales.
+s07036	dark red scales
+s07037	A planetar's skin with a silver sheen.
+s07038	silver-gleaming skin
+s07039	silver gleam
+s07040	A redcap's wrinkled grey-brown skin.
+s07041	grey-brown skin
+s07042	A wild hunt rider's frost-crusted skin.
+s07043	frost-white skin
+s07044	frost white
+s07045	Walk into a nearby tree and come out next to another adult tree within 30 cells. Cooldown 2 hours.
+s07046	The leader of the wild hunt, with bigger antlers and a cloak of winter wolf pelt. Defeating it gives the true name of the agent of the patron it serves.
+s07047	Wild hunt leader (enemy only). Drops the true name scroll of the patron's agent when defeated.
+s07048	Wild hunt leader: higher level; drops the true name scroll of the patron's agent when defeated.
+s07049	huntmaster
+s07050	The wild hunt is chasing this person: riders deal +30% damage to them. Safe once they last until 6 AM.
+s07051	prey of the wild hunt
+s07052	Fey hunters in antlered helms; both the winter court and the summer court keep a troop. The wild hunt chases only one prey: only those in the way get hit. Fey lances are especially deadly to the prey; like all fey, they fear cold iron.
+s07053	Wild hunt rider (enemy only). Fey lance, +30% damage against the prey, fears cold iron; banished when downed, drops cold iron and a horn.
+s07054	An antlered helm grown together with the head.
+s07055	antlered helm
+s07056	+30% damage against the prey the wild hunt is chasing.
+s07057	prey
+s07058	Natural weapon: fey lance (pierce 20, armor penetration 40%).
+s07059	fey lance
+s07060	A wild hunt rider's lance.
+s07061	A mortal pactmaker, a satyr who followed from the Feywild, a cambion with abyssal blood, and a manes chained to this world by a planar anchor chain. You hold three pact scrolls from different patrons; whichever you sign, the price won't be small.\n\nThis is the only start that lets you pick pact races during character creation: devils of the Nine Hells (chain devil, bone devil, horned devil, erinyes, amnizu), the fey courts (satyr, dryad, redcap, changeling), celestial emissaries (deva, planetar), abyssal demons (manes, barlgura, hezrou, succubus, nabassu, shadow demon, cambion), plus ice devils and balors. These races don't appear in the xenotype dropdown of other starts; wild hunt riders and wild hunt leaders only appear as enemies and can't be chosen in any start.\n\nThe starting outsider colonists all wear planar anchor chains: they aren't banished when downed and leave corpses when they die. Planar contract law (with its prerequisites planar bloodlines and abyssology) is already researched, and you start with an uninstalled pact lectern: take a pact scroll to the lectern and read for 4 hours to review, negotiate and sign.\n\nNote: the costs of pacts are real, and debt attracts debt collectors; outsider colonists are strong, but some races (such as balors and planetars) are far stronger than ordinary starts; a high-freedom start where the balance is up to you.
+s07062	pactmaker
+s07063	A pactmaker, a satyr, a cambion and a manes.
+s07064	The wax on the pact scrolls is still warm.\n\nThree patrons have heard your name: one in the ledgers of the Nine Hells, one in the moonlight of the fey court, one somewhere even farther. The anchor chain on the manes's foot clinks, the satyr plays an off-key flute nearby, and the cambion stares at the scrolls with fire reflected in its eyes.\n\nSet up the lectern first. Read every word clearly, especially the very small ones.
+s07065	A pactmaker, a satyr, a cambion and an anchor-chained manes, three pact scrolls and a pact lectern; pact races can be chosen during character creation.
+s07066	pactmaker start
+s07067	The divine magic of the DND cleric: Cure Wounds, Bless, Lesser Restoration, Guidance, Divine Strike, Turn Undead, Mass Cure Wounds, Death Ward and Revivify. Divine power uses "divine power" (grows with Social level); damage and healing are also multiplied by psychic sensitivity (minimum 0.2, no cap). Each tier of divine spells requires the matching Social level (6/9/12/15/18).
+s07068	Requires Social 6 (or adventurer Wisdom 13)
+s07069	Cleric: Social sets divine power and learnable divine spells.
+s07070	Martial techniques of the DND fighter. Melee branch: Second Wind, War Cry, Charge, Trip Attack, Action Surge, Weapon Specialization, Indomitable, Disarming Strike, Whirlwind Attack, Guardian Stance, and ultimately Renewed Fighting Spirit; Shooting branch (1.53.0): Steady Aim, Suppressing Fire, Precise Shot, Rapid Shot, and ultimately Eye of Death. Either Melee or Shooting 6 unlocks the path; the Melee branch uses "martial power", the Shooting branch "marksman power", and Second Wind and War Cry use the higher of the two. Each tier requires the matching skill level of that branch (6/9/12/15/18). Martial path: regain psyfocus by fighting (grit), Extra Attack, fighting style.
+s07071	Requires Melee or Shooting 6 (or adventurer Strength/Dexterity 13)
+s07072	Fighter: the Melee branch uses Melee, the Shooting branch uses Shooting.
+s07073	The arcane magic of the DND wizard: Magic Missile, Mage Armor, Fireball, Sleep, Lightning Bolt, Haste, Wall of Stone, Teleport and Disintegrate. Spell power uses "arcane power" (grows with Intellectual level); damage is also multiplied by psychic sensitivity (minimum 0.2, no cap), with high psyfocus and neural heat costs. Each tier of spells requires the matching Intellectual level (6/9/12/15/18).
+s07074	Requires Intellectual 6 (or adventurer Intelligence 13)
+s07075	Wizard: Intellectual sets arcane power and learnable spells.
+s07076	hunt down {0}
+s07077	Hunting down {0}.
+s07078	This is the monster nest from the bounty. Wipe out every monster (killed or downed) to complete the commission.
+s07079	The monsters bountied on the exploration board lurk here.
+s07080	monster nest
+s07081	A wooden board nailed full of parchment notices. Nearby adventurers' guilds, caravans and towns post bounties here: each day a batch of tiered commissions (bronze, silver, gold, mithril, legendary) refreshes, such as holding off incoming enemies, expeditions to monster nests on the world map, and clearing hostile outposts.\n\nThe higher the colony's highest adventurer level, the higher the commission tiers you can take. Completing a commission pays silver and items; the taker gets "quest points × 0.5" adventurer XP, and the colony's other members get a quarter of that.
+s07082	exploration board
+s07083	exploration board commission
+s07084	The pawn performing this bill becomes a lich. Assign the performer in the details. Crafts and binds a phylactery and adds the three archite genes lich soul core, necrotic touch and undead body; the original genes are kept.
+s07085	Performing the lich ritual.
+s07086	lich ritual
+s07087	Consume a fresh humanlike corpse to get one soul-sealed arm. Requires the corresponding intact natural organ; the whole corpse is consumed by the ritual and can't be extracted again.
+s07088	Sealing an arm.
+s07089	seal arm
+s07090	Consume a fresh humanlike corpse to get one soul-sealed brain. Requires the corresponding intact natural organ; the whole corpse is consumed by the ritual and can't be extracted again.
+s07091	Sealing a brain.
+s07092	seal brain
+s07093	Consume a fresh humanlike corpse to get one soul-sealed eye. Requires the corresponding intact natural organ; the whole corpse is consumed by the ritual and can't be extracted again.
+s07094	Sealing an eye.
+s07095	seal eye
+s07096	Consume a fresh humanlike corpse to get one soul-sealed heart. Requires the corresponding intact natural organ; the whole corpse is consumed by the ritual and can't be extracted again.
+s07097	Sealing a heart.
+s07098	seal heart
+s07099	Make a seed from 300 fresh raw meat. Select the product to open the configuration screen, add raw meat, steel and plasteel to customize starting stats, then confirm to awaken. Seeds don't take command capacity yet; capacity is checked on awakening.
+s07100	Making a flesh golem seed.
+s07101	make flesh golem seed
+s07102	Make a seed from 150 fresh raw meat. Select the product to open the configuration screen, add raw meat, steel and plasteel to customize starting stats, then confirm to awaken. Seeds don't take command capacity yet; capacity is checked on awakening.
+s07103	Making a knowledge undead seed (construction).
+s07104	make knowledge undead seed (construction)
+s07105	Making a knowledge undead seed (research).
+s07106	make knowledge undead seed (research)
+s07107	Making a knowledge undead seed (crafting).
+s07108	make knowledge undead seed (crafting)
+s07109	Making a knowledge undead seed (medicine).
+s07110	make knowledge undead seed (medicine)
+s07111	Make a seed from 50 fresh raw meat. Select the product to open the configuration screen, add raw meat, steel and plasteel to customize starting stats, then confirm to awaken. Seeds don't take command capacity yet; capacity is checked on awakening.
+s07112	Making a skeleton servant seed.
+s07113	make skeleton servant seed
+s07114	Consume 100 fresh raw meat to gain 100 phylactery XP. Different kinds of raw meat can be mixed.
+s07115	Sacrificing raw meat.
+s07116	sacrifice raw meat
+s07117	A legacy bill, no longer used. A lich with an undead body revives automatically through an intact phylactery 3 days after death, consuming no materials.
+s07118	Reshaping the lich's body.
+s07119	reshape lich body
+s07120	Consume 100 raw meat to give 100 flesh to the friendly golem on the same map with the lowest reserve that is missing at least 100. Max reserve 500.
+s07121	Supplying a flesh golem.
+s07122	supply flesh golem
+s07123	Mince raw meat and boil it soft into mush for babies. The product is vanilla baby food, just no longer vegetarian: it remembers what meat was used, and adults forced to eat it get moods per meat and cannibalism precepts as usual. Uses only raw meat by default (no human or insect meat); vegetables, milk and eggs can be ticked in the bill to mix in.
+s07124	raw meat or other raw ingredients
+s07125	Making baby food from meat.
+s07126	make baby food from meat
+s07127	Boil a big pot of raw meat into baby food mush at once. The product is vanilla baby food, just no longer vegetarian: it remembers what meat was used, and adults forced to eat it get moods per meat and cannibalism precepts as usual. Uses only raw meat by default (no human or insect meat); vegetables, milk and eggs can be ticked in the bill to mix in.
+s07128	Making baby food from meat in bulk.
+s07129	make baby food from meat x4
+s07130	Copy a scroll of fireball from 10 cloth and 20 chemfuel. Requires Intellectual 8.
+s07131	Copying a scroll of fireball.
+s07132	copy scroll of fireball
+s07133	Copy a scroll of flesh to stone from 10 cloth, 2 adamantine and 10 stone blocks of any kind. Requires the research "advanced scrolls" and Intellectual 12.
+s07134	Copying a scroll of flesh to stone.
+s07135	copy scroll of flesh to stone
+s07136	Copy a scroll of protection from evil from 10 cloth and 20 silver. Requires Intellectual 6.
+s07137	Copying a scroll of protection from evil.
+s07138	copy scroll of protection from evil
+s07139	Copy a scroll of revivify from 10 cloth, 1 miracle fragment and 10 gold. Requires the research "advanced scrolls" and Intellectual 14.
+s07140	Copying a scroll of revivify.
+s07141	copy scroll of revivify
+s07142	Copy a scroll of teleportation from 10 cloth and 3 mithril. Requires the research "advanced scrolls" and Intellectual 10.
+s07143	Copying a scroll of teleportation.
+s07144	copy scroll of teleportation
+s07145	Copy a scroll of true seeing from 10 cloth and 10 chemfuel. Requires Intellectual 6.
+s07146	Copying a scroll of true seeing.
+s07147	copy scroll of true seeing
+s07148	Red Hawk trading post
+s07149	Red Hawk magic materials caravan
+s07150	Red Hawk pact scroll caravan
+s07151	Red Hawk slave caravan
+s07152	Red Hawk sky ship
+s07153	materials appraiser
+s07154	Red Hawk crossbowman
+s07155	gladiator
+s07156	Red Hawk chief merchant
+s07157	Red Hawk mercenary
+s07158	Red Hawk merchant
+s07159	pact broker
+s07160	slave
+s07161	slaver
+s07162	Waukeen
+s07163	goddess of wealth
+s07164	A trade league spanning Faerûn's major ports, whose banner shows a red hawk holding a gold coin. Red Hawk asks no questions about origins and only honors contracts: slaves, dragon scales, mithril, soul coins of the Abyss, even pact scrolls signed by otherworldly patrons themselves; anything can be bought at the right price.\n\nThe league holds no prejudice against liches, mind flayers or demon pactmakers; to them, these are just bigger clients.
+s07165	Red Hawk Trade League
+s07166	Every deal must be signed, and every signature must be honored.
+s07167	gold and contract
+s07168	chief merchant
+s07169	Entering the necromantic remolding pool.
+s07170	A 3×3 remolding pool. Modifies an existing necromantic construct's material investment, skill passions and knowledge specialty, keeping the individual, skill XP, relationships and implants. Takes 1 game day; command and upkeep continue; pauses if command is lost. Increasing investment pays the difference, decreasing refunds nothing, plus a 50 raw meat fee. Absorbs usable materials within 12 cells when entering; canceling after entering gives no refund. Deconstructing or destroying the pool releases the construct with its original configuration.
+s07171	necromantic remolding pool
+s07172	Learn the Sword Coast merchant guild's ways: iron-barred counters, underground vaults and the rules of bookkeeping. Unlocks the bank: a 2×2 vault that only takes silver and gold, 20 stacks per cell.
+s07173	banking
+s07174	Apply the alchemy of Faerûn to the Rim: brew potions from troll blood, herbs and more, and psionic suppressants that hold down psionic parasites. Unlocks the alchemy table and distillery (an attachment beside the alchemy table, speed +15%).
+s07175	DND alchemy
+s07176	DND Rimlands
+s07177	Learn to work the two legendary metals mithril and adamantine, and temper cold iron with silver at the alchemy table. Mythic metals can be used as metal materials for all kinds of gear.
+s07178	mythic smelting
+s07179	Study the true names, habits and summoning rituals of abyssal demons. Unlocks the abyssal circle, binding circle, exorcism ward and planar anchor chain. At first the abyssal circle can only summon tier 1 manes swarms and quasits; tier 2 and above need demonology tomes: you must first read the tome recording that demon (from abyssal whispers events, Thayan Red Wizard relics and exotic traders).
+s07180	abyssology
+s07181	The basic lessons of sealing magic into metal and gems: unlocks the enchanting table, where you can make rings of protection, rings of free action, necklaces of adaptation and goggles of night; scrolls of remove curse are copied at the scroll desk. Researchers can identify unidentified items at the research bench or scroll desk, seeing through curses.
+s07182	enchantment
+s07183	Build altars per the teachings of Faerûn's gods: choose the colony's patron deity, pray, make offerings and craft holy symbols. Unlocks patron deity statues (an attachment beside the altar: altar speed +10%, prayer recreation +20%). Those wearing holy symbols can spend divine favor to cast divine magic.
+s07184	faith and divine magic
+s07185	Layer magic onto weapons and apparel already made: pick an enhancement target on a weapon or garment, and the enchanting table's "enchant (+1 to +5)" bill will enhance it level by level with mithril and silver. Each level gives weapons +6% damage and +1.5% ranged hit, apparel +5% armor plus 1%, and +15% value; a successful enhancement also repairs durability. The higher the level, the more likely to fail; failure only loses the materials.
+s07186	gear enhancement
+s07187	Push gear from +5 on to +10: the enchanting table's "enchant (+6 to +10)" bill uses adamantine and gold instead. Lower success; failure from +6 upward drops the gear one level (never below +5).
+s07188	advanced enhancement
+s07189	Study how to call stone into servitude: a lich can write a golem manual at the scroll desk, and after reading it make stone golem seeds at the necromantic ritual table.
+s07190	golemancy
+s07191	Scrolls only an archmage dares to write: copy scrolls of teleportation (mithril), flesh to stone (adamantine) and revivify (miracle fragment) at the scroll desk.
+s07192	advanced scrolls
+s07193	Combine vanilla deep drilling with mythic smelting: carve gold-seeking runes on the drill rod, guide it with a silver probe, and drill mithril and adamantine out of the deep crust. Unlocks the mythic deep drill (powered like a deep drill, operated as mining work, needs no deep deposits).
+s07194	mythic deep mining
+s07195	Study the arcane system left by the fallen Netherese flying cities: unlocks the Netherese altar. Once this research is done and a colonist has read a Netherese scroll, Larloch the Shadow King will take notice of you.
+s07196	Netherese arcana
+s07197	Study the celestial and infernal bloodlines of aasimar and tieflings. Once done, the choosing ritual can also change a believer's xenogenes to aasimar (good god) or tiefling (evil god). Aasimar and tieflings in factions don't need this research.
+s07198	celestial and infernal bloodlines
+s07199	The secrets of the dwarven forge: build rune anvils and rune quenching troughs. Subduing weapons and runic prosthetics are made on the rune anvil.
+s07200	rune forging
+s07201	Consecrate protective relics at the altar: prayer beads, scarab of protection, purifying seals, circlet of holy light and rings of protective vows.
+s07202	relic consecration
+s07203	Learn to transcribe spells onto parchment: build the scroll desk and copy scrolls of true seeing, protection from evil and fireball; adventurer's manuals, golem manuals and scrolls of remove curse are also written at the desk. Researchers can identify items at the desk (50% faster than at the research bench).
+s07204	scroll copying
+s07205	The art of taking them alive: make subduing cudgels, net crossbows and slumber shortbows at the rune anvil, and slumber staves at the enchanting table. These weapons only knock targets unconscious, causing no wounds and never killing. With Ideology installed you can also make anesthetic slave collars at the machining table.
+s07206	subduing tactics
+s07207	Study how mortals absorb divine sparks and ascend to godhood: unlocks the "path of ascension" (saint, demigod lich, titan awakening, usurper) and the ascension ritual.
+s07208	theurgy
+s07209	The famous wondrous items from the Dungeon Master's Guide: gauntlets of ogre power, gloves of missile snaring, bracers of archery and defense, helm of telepathy, eyes of the eagle, eyes of minute seeing, periapt of wound closure, ring of spell turning, ring of regeneration, ring of spell storing, brooch of shielding and psionic hood, all made at the enchanting table. Unlocks the arcane focus stone (an attachment beside the enchanting table and scroll desk, speed +15%).
+s07210	wondrous item crafting
+s07211	Magic devices that aren't worn: immovable rod, decanter of endless water, everburning torch, horn of valhalla (made at the enchanting table).
+s07212	wondrous devices
+s07213	A typical Faerûn adventuring party: a human, a high elf, a mountain dwarf, a lightfoot halfling and a half-orc. They took one last commission in a tavern, and the map the client left led them to this empty frontier.\n\nFive people, five races: the elf and the dwarf can't stand each other at first (after 60 days they become old comrades), the halfling's luck and courage can save the day, and the half-orc can hold on for half a day before falling. Starting supplies are like the vanilla crashlanded start; good for players who want to try several common races at once.\n\nNote: more people and more supplies; difficulty is about the same as the vanilla crashlanded start.
+s07214	adventuring party
+s07215	One each: human, high elf, mountain dwarf, lightfoot halfling, half-orc.
+s07216	human

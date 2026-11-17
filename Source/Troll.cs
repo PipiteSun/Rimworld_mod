@@ -88,7 +88,7 @@ namespace LichPhylactery {
    if(scars.Count==0)scarTicks=0;
    else if((scarTicks+=elapsed)>=ScarTicks){
     var scar=scars.RandomElement();scarTicks=0;pawn.health.RemoveHediff(scar);healed+=10;
-    if(pawn.Faction==Faction.OfPlayer)Messages.Message(pawn.LabelShort+"的旧伤（"+scar.LabelCap+"）在巨魔再生下消退了。",pawn,MessageTypeDefOf.PositiveEvent,false);
+    if(pawn.Faction==Faction.OfPlayer)Messages.Message(pawn.LabelShort+"的旧伤（".Loc()+scar.LabelCap+"）在巨魔再生下消退了。".Loc(),pawn,MessageTypeDefOf.PositiveEvent,false);
    }
    var missing=Necro.Missing(pawn).Where(CanRegrow).ToList();
    if(regrowing!=null && !missing.Contains(regrowing)){regrowing=null;regrowthTicks=0;}
@@ -98,7 +98,7 @@ namespace LichPhylactery {
     regrowthTicks+=elapsed;healed+=50f*elapsed/total;
     if(regrowthTicks>=total){
      var part=regrowing;regrowing=null;regrowthTicks=0;pawn.health.RestorePart(part);
-     if(pawn.Faction==Faction.OfPlayer)Messages.Message(pawn.LabelShort+"的"+part.Label+"长回来了。",pawn,MessageTypeDefOf.PositiveEvent,false);
+     if(pawn.Faction==Faction.OfPlayer)Messages.Message(pawn.LabelShort+"的".Loc()+part.Label+"长回来了。".Loc(),pawn,MessageTypeDefOf.PositiveEvent,false);
     }
    }
    SyncRegrowthHediff();
@@ -129,15 +129,15 @@ namespace LichPhylactery {
    reviveTick=Find.TickManager.TicksGame+RevivalDelay;
    Troll.Revivals?.Add(pawn);
    var corpse=pawn.Corpse;
-   if(pawn.Faction==Faction.OfPlayer)Messages.Message(pawn.LabelShort+"倒下了，但巨魔血肉仍在重生：约1天后会复活。火焰、火化或腐烂会打断它。",corpse,MessageTypeDefOf.NeutralEvent,false);
-   else if(pawn.HostileTo(Faction.OfPlayer) && corpse.MapHeld?.IsPlayerHome==true)Messages.Message("倒下的敌方巨魔"+pawn.LabelShort+"仍在再生：约1天后会重新站起来。烧掉或火化尸体可以阻止。",corpse,MessageTypeDefOf.ThreatSmall,false);
+   if(pawn.Faction==Faction.OfPlayer)Messages.Message(pawn.LabelShort+"倒下了，但巨魔血肉仍在重生：约1天后会复活。火焰、火化或腐烂会打断它。".Loc(),corpse,MessageTypeDefOf.NeutralEvent,false);
+   else if(pawn.HostileTo(Faction.OfPlayer) && corpse.MapHeld?.IsPlayerHome==true)Messages.Message("倒下的敌方巨魔".Loc()+pawn.LabelShort+"仍在再生：约1天后会重新站起来。烧掉或火化尸体可以阻止。".Loc(),corpse,MessageTypeDefOf.ThreatSmall,false);
   }
   public void CancelRevival(bool burned){
    if(reviveTick<0)return;
    reviveTick=-1;
-   if(burned && pawn.Corpse?.MapHeld?.IsPlayerHome==true)Messages.Message(pawn.LabelShort+"的尸体被火焰灼烧，巨魔再生彻底中断。",pawn.Corpse,MessageTypeDefOf.NeutralEvent,false);
+   if(burned && pawn.Corpse?.MapHeld?.IsPlayerHome==true)Messages.Message(pawn.LabelShort+"的尸体被火焰灼烧，巨魔再生彻底中断。".Loc(),pawn.Corpse,MessageTypeDefOf.NeutralEvent,false);
   }
-  public string RevivalStatus=>reviveTick<0?null:"巨魔再生："+Math.Max(0,(reviveTick-Find.TickManager.TicksGame)/2500f).ToString("0.0")+"小时后复活（烧掉或火化尸体可阻止）";
+  public string RevivalStatus=>reviveTick<0?null:"巨魔再生：".Loc()+Math.Max(0,(reviveTick-Find.TickManager.TicksGame)/2500f).ToString("0.0")+"小时后复活（烧掉或火化尸体可阻止）".Loc();
   // 返回 true 表示这次复活已经结束（成功或取消），可以移出待复活列表。
   public bool ProcessRevival(){
    if(reviveTick<0)return true;
@@ -163,8 +163,8 @@ namespace LichPhylactery {
    if(pawn.needs?.food!=null)pawn.needs.food.CurLevel=0;
    if(pawn.Spawned && pawn.HostileTo(Faction.OfPlayer) && !pawn.IsPrisoner && pawn.GetLord()==null)LordMaker.MakeNewLord(pawn.Faction,new LordJob_AssaultColony(pawn.Faction),map,new[]{pawn});
    else if(pawn.Spawned && pawn.Faction!=null && pawn.Faction!=Faction.OfPlayer && !pawn.IsPrisoner && pawn.GetLord()==null)LordMaker.MakeNewLord(pawn.Faction,new LordJob_ExitMapBest(),map,new[]{pawn}); // 访客、商队成员复活后自行离开，不会呆站在地图上。
-   if(pawn.Faction==Faction.OfPlayer)Messages.Message(pawn.LabelShort+"的血肉重新长合，从死亡中站了起来。",pawn,MessageTypeDefOf.PositiveEvent,false);
-   else if(pawn.HostileTo(Faction.OfPlayer))Messages.Message("敌方巨魔"+pawn.LabelShort+"重新站了起来！",pawn,MessageTypeDefOf.ThreatBig,false);
+   if(pawn.Faction==Faction.OfPlayer)Messages.Message(pawn.LabelShort+"的血肉重新长合，从死亡中站了起来。".Loc(),pawn,MessageTypeDefOf.PositiveEvent,false);
+   else if(pawn.HostileTo(Faction.OfPlayer))Messages.Message("敌方巨魔".Loc()+pawn.LabelShort+"重新站了起来！".Loc(),pawn,MessageTypeDefOf.ThreatBig,false);
    return true;
   }
   public override void ExposeData(){
@@ -186,7 +186,7 @@ namespace LichPhylactery {
   static readonly HediffStage inactive=new HediffStage{hungerRateFactor=1f};
   Gene_TrollRegeneration Gene=>Troll.Gene(pawn);
   public override HediffStage CurStage{get{var gene=Gene;return gene?.Active!=true?inactive:gene.Regenerating?regenerating:resting;}}
-  public override string LabelInBrackets{get{var gene=Gene;if(gene?.Active!=true)return null;if(Find.TickManager.TicksGame<gene.suppressedUntilTick)return "被火焰阻断";if(pawn.needs?.food!=null && pawn.needs.food.CurLevelPercentage<.5f)return "饥饿，再生暂停";return gene.Regenerating?"再生中":"静息";}}
+  public override string LabelInBrackets{get{var gene=Gene;if(gene?.Active!=true)return null;if(Find.TickManager.TicksGame<gene.suppressedUntilTick)return "被火焰阻断".Loc();if(pawn.needs?.food!=null && pawn.needs.food.CurLevelPercentage<.5f)return "饥饿，再生暂停".Loc();return gene.Regenerating?"再生中".Loc():"静息".Loc();}}
  }
  public class Hediff_TrollRegrowth : Hediff {
   public string target;

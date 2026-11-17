@@ -21,7 +21,7 @@ namespace LichPhylactery {
    var bag=Items.Worn(p,"LP_BagOfHolding");if(bag==null || !BurstDamage(dinfo.Def) || roll>=BagBurstChance)return false;
    p.apparel.Remove(bag);bag.Destroy();
    if(p.Spawned)p.inventory?.DropAllNearPawn(p.Position,false,true);
-   if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"的次元袋被撕破，里面的东西撒了一地。",p,MessageTypeDefOf.NegativeEvent,false);
+   if(p.Faction==Faction.OfPlayer)Messages.Message(p.LabelShort+"的次元袋被撕破，里面的东西撒了一地。".Loc(),p,MessageTypeDefOf.NegativeEvent,false);
    return true;
   }
   // 精灵斗篷：站着不动时被远程命中率 -15%（精灵 -30%）。
@@ -45,8 +45,8 @@ namespace LichPhylactery {
   public SkillDef skill;
   static Material glow;
   public override void PostPostMake(){base.PostPostMake();if(skill==null)skill=ItemWondrous.IounSkills.RandomElement();}
-  public override string TransformLabel(string label)=>skill==null?label:label+"（"+skill.label+"）";
-  public override string CompInspectStringExtra()=>skill==null?null:"环绕头顶时"+skill.label+"学习速度+50%。";
+  public override string TransformLabel(string label)=>skill==null?label:label+"（".Loc()+skill.label+"）".Loc();
+  public override string CompInspectStringExtra()=>skill==null?null:"环绕头顶时".Loc()+skill.label+"学习速度+50%。".Loc();
   public override void PostExposeData(){base.PostExposeData();Scribe_Defs.Look(ref skill,"iounSkill");if(Scribe.mode==LoadSaveMode.PostLoadInit && skill==null)skill=ItemWondrous.IounSkills.RandomElement();}
   // 头顶环绕的小光点。
   public override void CompDrawWornExtras(){
@@ -81,7 +81,7 @@ namespace LichPhylactery {
    if(caster==null || caster.Dead || Items.Worn(target,"LP_IntellectFortress")==null)return;
    caster.stances?.stunner?.StunFor(120,target,false,true,false);
    var old=caster.health.hediffSet.GetFirstHediffOfDef(MindFlayer.Blasted);if(old!=null)caster.health.RemoveHediff(old);caster.health.AddHediff(MindFlayer.Blasted);
-   Items.Mote(caster,"心灵反噬！",new Color(.85f,.6f,1f));
+   Items.Mote(caster,"心灵反噬！".Loc(),new Color(.85f,.6f,1f));
   }
  }
  // 健康护符：不会染上疾病。

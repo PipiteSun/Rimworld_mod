@@ -17,7 +17,7 @@ namespace LichPhylactery {
   void AbEnsureBoard(){
    if(akbBoard!=null && akbBoard.Spawned)return;var def=AdventureBoard.BoardDef;
    var cell=map.AllCells.Where(c=>c.x>15 && c.z>15 && c.x<map.Size.x-15 && c.z<map.Size.z-15 && CellRect.CenteredOn(c,2).Cells.All(x=>x.InBounds(map) && x.Standable(map) && x.GetFirstBuilding(map)==null)).OrderBy(c=>c.DistanceToSquared(map.Center)).First();
-   akbBoard=(Building)ThingMaker.MakeThing(def,ThingDefOf.WoodLog);akbBoard.SetFaction(Faction.OfPlayer);GenSpawn.Spawn(akbBoard,cell,map);
+   akbBoard=(Building)ThingMaker.MakeThing(def);akbBoard.SetFaction(Faction.OfPlayer);GenSpawn.Spawn(akbBoard,cell,map);
   }
   // 接下一条指定类型的委托并生成它的地图，跑 body（参数：委托、地点地图），最后清理地图和站点。
   void AbRun(AdventureKindDef kind,int danger,Action<AdventureContract,Map> body,bool lake=false){
@@ -42,8 +42,8 @@ namespace LichPhylactery {
    var st=AdventureBoard.State;AbEnsureBoard();
    // 1. 定义：告示板 1×2、木材或石料 50、没有研究；每张地图只能一块；6 种委托类型都有 Worker。
    {var def=AdventureBoard.BoardDef;var pw=new PlaceWorker_OnePerMap();var second=pw.AllowsPlacing(def,map.Center,Rot4.South,map);
-    Check(def.size==new IntVec2(1,2) && def.costStuffCount==50 && def.stuffCategories.Contains(StuffCategoryDefOf.Woody) && def.stuffCategories.Contains(StuffCategoryDefOf.Stony) && def.researchPrerequisites.NullOrEmpty() && !second.Accepted
-     && AdventureBoard.Kinds.Count==6 && AdventureBoard.Kinds.All(k=>k.Worker!=null) && AdventureBoard.SiteDef!=null && AdventureBoard.RootDef!=null,"[1.134.0] adventurer board: 1×2, 50 wood or stone, no research, one per map ("+second.Reason+"), 6 contract kinds with workers");}
+    Check(def.defName=="LP_QuestBoard" && def.thingClass==typeof(Building_QuestBoard) && def.size==new IntVec2(2,1) && DefDatabase<ThingDef>.GetNamedSilentFail("LP_AdventurerBoard")==null && def.researchPrerequisites.NullOrEmpty() && !second.Accepted
+     && AdventureBoard.Kinds.Count==6 && AdventureBoard.Kinds.All(k=>k.Worker!=null) && AdventureBoard.SiteDef!=null && AdventureBoard.RootDef!=null,"[1.169.0] merged board: renown commissions live on LP_QuestBoard (2×1), old board def gone, no research, one per map ("+second.Reason+"), 6 contract kinds with workers");}
    // 2. 名声：0～100，无名 0 / 小有名气 20 / 知名 45 / 威名远扬 70 / 传奇 90；完成 +2～+6，失败 -3（夹在 0～100）。
    {st.renown=0;AdventureBoard.AddRenown(-5);int a=st.renown;st.renown=99;AdventureBoard.AddRenown(6);int b=st.renown;
     Check(a==0 && b==100 && AdventureBoard.RenownName(0)=="无名" && AdventureBoard.RenownName(20)=="小有名气" && AdventureBoard.RenownName(44)=="小有名气" && AdventureBoard.RenownName(45)=="知名" && AdventureBoard.RenownName(70)=="威名远扬" && AdventureBoard.RenownName(90)=="传奇" && AdventureBoard.RenownGain.SequenceEqual(new[]{2,3,5,6}),"[1.134.0] renown 0–100 with the five tiers, +2/+3/+5/+6 by danger, clamped");

@@ -14,22 +14,22 @@ namespace LichPhylactery {
  public static class FactionSettings {
   public static void Draw(Listing_Standard l){
    var s=LichMod.Settings;
-   l.Label("1.19.0 派系（关掉后新世界不再生成；已有存档不删派系，只停相关事件）");
-   l.CheckboxLabeled("费伦拓荒同盟",ref s.factionColony,"友善的费伦殖民者：人类、矮人、精灵、半兽人，四种商队。关掉同时停用猎巫狂热分子和竖琴手预警。");
-   l.CheckboxLabeled("塞伊远征军",ref s.factionHostile,"红袍法师、符印巨魔、兽人与牛头人的敌对派系。关掉同时停用招揽和进贡来信。");
-   l.CheckboxLabeled("余烬氏族",ref s.factionEmber,"火巨人领队带着人类和半兽人奴兵。");
-   l.CheckboxLabeled("幽暗殖巢",ref s.factionIllithid,"夺心魔和被支配的奴仆，会从地下钻出。");
-   l.CheckboxLabeled("黑网",ref s.factionBlackNet,"隐藏的走私商队，大约每季来一次。");
-   l.CheckboxLabeled("红鹰商业联盟",ref s.factionRedHawk,"（1.64.0）中立的贸易联盟：奴隶商队（十几个不同种族）、魔法材料商队、契约卷轴商队，还有据点和飞空商船。");
-   l.CheckboxLabeled("魔力湖泊",ref s.factionManaLake,"（1.100.0）中立的湖畔法术匠人：出售秘传结晶（职业水晶要和他们结盟），塞伊远征军和猎巫狂热分子是他们的死敌。");LakeSettings.Draw(l); // 1.133.0 湖印槽位倍率
+   l.Label("1.19.0 派系（关掉后新世界不再生成；已有存档不删派系，只停相关事件）".Loc());
+   l.CheckboxLabeled("费伦拓荒同盟".Loc(),ref s.factionColony,"友善的费伦殖民者：人类、矮人、精灵、半兽人，四种商队。关掉同时停用猎巫狂热分子和竖琴手预警。".Loc());
+   l.CheckboxLabeled("塞伊远征军".Loc(),ref s.factionHostile,"红袍法师、符印巨魔、兽人与牛头人的敌对派系。关掉同时停用招揽和进贡来信。".Loc());
+   l.CheckboxLabeled("余烬氏族".Loc(),ref s.factionEmber,"火巨人领队带着人类和半兽人奴兵。".Loc());
+   l.CheckboxLabeled("幽暗殖巢".Loc(),ref s.factionIllithid,"夺心魔和被支配的奴仆，会从地下钻出。".Loc());
+   l.CheckboxLabeled("黑网".Loc(),ref s.factionBlackNet,"隐藏的走私商队，大约每季来一次。".Loc());
+   l.CheckboxLabeled("红鹰商业联盟".Loc(),ref s.factionRedHawk,"（1.64.0）中立的贸易联盟：奴隶商队（十几个不同种族）、魔法材料商队、契约卷轴商队，还有据点和飞空商船。".Loc());
+   l.CheckboxLabeled("魔力湖泊".Loc(),ref s.factionManaLake,"（1.100.0）中立的湖畔法术匠人：出售秘传结晶（职业水晶要和他们结盟），塞伊远征军和猎巫狂热分子是他们的死敌。".Loc());LakeSettings.Draw(l); // 1.133.0 湖印槽位倍率
    l.GapLine();
-   l.CheckboxLabeled("竖琴手袭击预警",ref s.harperWarning,"与费伦拓荒同盟好感≥60时，大型敌对袭击推迟1～2天落地，并提前来信说明来自哪个派系。");
-   l.CheckboxLabeled("斩首：符印巨魔狂暴",ref s.decapTrollBerserk,"红袍法师倒下时，他的符印巨魔失控狂暴、攻击所有人。关闭后改为逃跑。");
-   l.CheckboxLabeled("猎巫狂热分子",ref s.zealotRaids,"殖民地有巫妖或夺心魔时，同盟里的狂热分子偶尔前来猎巫。");
-   l.CheckboxLabeled("红袍招揽巫妖",ref s.redRobeRecruit,"有巫妖时，塞伊远征军来信招揽效忠。");
-   l.CheckboxLabeled("向红袍进贡",ref s.tributeDemand,"没有巫妖且与塞伊远征军敌对时，对方来信索要贡银。");
+   l.CheckboxLabeled("竖琴手袭击预警".Loc(),ref s.harperWarning,"与费伦拓荒同盟好感≥60时，大型敌对袭击推迟1～2天落地，并提前来信说明来自哪个派系。".Loc());
+   l.CheckboxLabeled("斩首：符印巨魔狂暴".Loc(),ref s.decapTrollBerserk,"红袍法师倒下时，他的符印巨魔失控狂暴、攻击所有人。关闭后改为逃跑。".Loc());
+   l.CheckboxLabeled("猎巫狂热分子".Loc(),ref s.zealotRaids,"殖民地有巫妖或夺心魔时，同盟里的狂热分子偶尔前来猎巫。".Loc());
+   l.CheckboxLabeled("红袍招揽巫妖".Loc(),ref s.redRobeRecruit,"有巫妖时，塞伊远征军来信招揽效忠。".Loc());
+   l.CheckboxLabeled("向红袍进贡".Loc(),ref s.tributeDemand,"没有巫妖且与塞伊远征军敌对时，对方来信索要贡银。".Loc());
    l.GapLine();
-   if(Current.ProgramState==ProgramState.Playing && l.ButtonText("把已开启的新派系加入当前存档")){int n=Factions.AddMissingToCurrentGame();Messages.Message(n>0?"已加入"+n+"个派系，并在世界地图上为每个派系放下3个据点。":"当前存档已经有全部开启的派系。",MessageTypeDefOf.NeutralEvent,false);}
+   if(Current.ProgramState==ProgramState.Playing && l.ButtonText("把已开启的新派系加入当前存档".Loc())){int n=Factions.AddMissingToCurrentGame();Messages.Message(n>0?"已加入".Loc()+n+"个派系，并在世界地图上为每个派系放下3个据点。".Loc():"当前存档已经有全部开启的派系。".Loc(),MessageTypeDefOf.NeutralEvent,false);}
   }
  }
 
@@ -84,12 +84,12 @@ namespace LichPhylactery {
  public class GoodwillSituationWorker_Racial : GoodwillSituationWorker {
   RacialGoodwillExtension Ext=>def.GetModExtension<RacialGoodwillExtension>();
   public override int GetNaturalGoodwillOffset(Faction other){var e=Ext;return e==null || other?.def!=e.faction?0:e.Value();}
-  public override string GetPostProcessedLabel(Faction other){var e=Ext;return e?.condition=="constructs"?def.label+"（"+ColonyCensus.Constructs+"具）":def.label;}
+  public override string GetPostProcessedLabel(Faction other){var e=Ext;return e?.condition=="constructs"?def.label+"（".Loc()+ColonyCensus.Constructs+"具）".Loc():def.label;}
  }
  // 矮人血债：每笔让同盟好感上限 -10，最多 -50。
  public class GoodwillSituationWorker_BloodDebt : GoodwillSituationWorker {
   public override int GetMaxGoodwill(Faction other)=>other?.def==Factions.ColonyDef?BloodDebt.MaxGoodwill:100;
-  public override string GetPostProcessedLabel(Faction other)=>def.label+"（"+BloodDebt.Debts+"笔）";
+  public override string GetPostProcessedLabel(Faction other)=>def.label+"（".Loc()+BloodDebt.Debts+"笔）".Loc();
  }
  // 1.20.0 效忠塞伊 / 旧日盟约：原版会把好感慢慢拉回自然好感（塞伊远征军是天生敌人，自然好感为负）。
  // 生效期间用自然好感修正抵消其余所有负值，让自然好感≥0；效忠解除或盟约到期后修正自动消失，好感照常回落。
@@ -109,7 +109,7 @@ namespace LichPhylactery {
  public class GoodwillSituationWorker_ThayPledge : GoodwillSituationWorker_Pact {protected override bool Applies(Faction f)=>Pact.Pledged(f);}
  public class GoodwillSituationWorker_OldPact : GoodwillSituationWorker_Pact {
   protected override bool Applies(Faction f)=>Pact.OldPact(f) && !Pact.Pledged(f);
-  public override string GetPostProcessedLabel(Faction other)=>def.label+"（还剩"+Pact.OldPactDaysLeft().ToString("0.#")+"天）";
+  public override string GetPostProcessedLabel(Faction other)=>def.label+"（还剩".Loc()+Pact.OldPactDaysLeft().ToString("0.#")+"天）".Loc();
  }
  public static class BloodDebt {
   public const int PerDebt=10,MaxDebts=5,Price=300;
@@ -126,7 +126,7 @@ namespace LichPhylactery {
    if(victim?.Faction==null || victim.Faction.def!=Factions.ColonyDef || !CommonRaces.IsDwarf(victim))return false;
    return killer!=null && killer.Faction==Faction.OfPlayer;
   }
-  public static void Record(Pawn victim){Add();Messages.Message("你杀死了费伦拓荒同盟的矮人"+victim.LabelShort+"：矮人记下了一笔血债（同盟好感上限 -"+PerDebt+"）。可以在通讯台上偿还。",MessageTypeDefOf.NegativeEvent,false);}
+  public static void Record(Pawn victim){Add();Messages.Message("你杀死了费伦拓荒同盟的矮人".Loc()+victim.LabelShort+"：矮人记下了一笔血债（同盟好感上限 -".Loc()+PerDebt+"）。可以在通讯台上偿还。".Loc(),MessageTypeDefOf.NegativeEvent,false);}
  }
  [HarmonyPatch(typeof(Pawn),nameof(Pawn.Kill))]
  public static class BloodDebtOnKill {
@@ -139,10 +139,10 @@ namespace LichPhylactery {
   static void Postfix(Pawn negotiator,Faction faction,DiaNode __result){
    if(faction?.def!=Factions.ColonyDef || BloodDebt.Debts<=0 || __result?.options==null)return;
    var map=negotiator?.MapHeld;
-   var opt=new DiaOption("偿还一笔矮人血债（"+BloodDebt.Price+"银，还剩"+BloodDebt.Debts+"笔）");
-   if(map==null || !TradeUtility.ColonyHasEnoughSilver(map,BloodDebt.Price))opt.Disable("信标附近的白银不足"+BloodDebt.Price);
-   var done=new DiaNode("矮人长老收下了偿金，在账本上划掉了一笔。"){};
-   done.options.Add(new DiaOption("好"){resolveTree=true});
+   var opt=new DiaOption("偿还一笔矮人血债（".Loc()+BloodDebt.Price+"银，还剩".Loc()+BloodDebt.Debts+"笔）".Loc());
+   if(map==null || !TradeUtility.ColonyHasEnoughSilver(map,BloodDebt.Price))opt.Disable("信标附近的白银不足".Loc()+BloodDebt.Price);
+   var done=new DiaNode("矮人长老收下了偿金，在账本上划掉了一笔。".Loc()){};
+   done.options.Add(new DiaOption("好".Loc()){resolveTree=true});
    opt.action=()=>BloodDebt.Repay(map);opt.link=done;
    __result.options.Insert(Math.Max(0,__result.options.Count-1),opt);
   }
@@ -154,14 +154,14 @@ namespace LichPhylactery {
   // 1.20.0：旧日盟约天数（>0 时这段时间里自然好感不会把开局值拉回去）。
   public float pactDays;
   public override void ExposeData(){base.ExposeData();Scribe_Defs.Look(ref faction,"faction");Scribe_Values.Look(ref goodwill,"goodwill");Scribe_Values.Look(ref pactDays,"pactDays");}
-  public override string Summary(Scenario scen)=>faction==null?null:"开局时与"+(faction.fixedName??faction.label)+"的好感为"+goodwill+(pactDays>0?"；“旧日盟约”让这个好感维持"+pactDays.ToString("0")+"天，之后照常回落":"")+"。";
+  public override string Summary(Scenario scen)=>faction==null?null:"开局时与".Loc()+(faction.fixedName??faction.label)+"的好感为".Loc()+goodwill+(pactDays>0?"；“旧日盟约”让这个好感维持".Loc()+pactDays.ToString("0")+"天，之后照常回落".Loc():"")+"。".Loc();
   public override IEnumerable<string> ConfigErrors(){foreach(var e in base.ConfigErrors())yield return e;if(faction==null)yield return "faction is null";if(pactDays<0)yield return "pactDays must not be negative";}
   string gwBuf,pactBuf;
   public override void DoEditInterface(Listing_ScenEdit listing){
    var r=listing.GetScenPartRect(this,RowHeight*3f);
    ScenEdit.DefButton(ScenEdit.Row(r,0,3),faction,Factions.Managed.Where(d=>!d.hidden),x=>faction=x);
-   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,1,3),"好感 ",ref goodwill,ref gwBuf,-100,100);
-   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,2,3),"旧日盟约天数 ",ref pactDays,ref pactBuf,0,120);
+   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,1,3),"好感 ".Loc(),ref goodwill,ref gwBuf,-100,100);
+   Widgets.TextFieldNumericLabeled(ScenEdit.Row(r,2,3),"旧日盟约天数 ".Loc(),ref pactDays,ref pactBuf,0,120);
   }
   public override void PostGameStart(){if(Apply() && pactDays>0)Pact.StartOldPact(faction,pactDays);}
   public bool Apply(){var f=Factions.Of(faction);if(f==null || f.def.permanentEnemy)return false;Factions.SetRelation(f,Faction.OfPlayer,goodwill);return true;}
@@ -194,10 +194,10 @@ namespace LichPhylactery {
    var events=Tribute.Events;if(events==null)return false;
    float days=(harper?Rand.Range(1f,2f):0f)+(omen?StormGiant.OmenDays:0f)+(prophecy?1f:0f);
    events.harperQueue.Add(new HarperEntry{def=worker.def,parms=parms,fireTick=Find.TickManager.TicksGame+(int)(days*GenDate.TicksPerDay)});
-   string when=days<1f?"大约"+(days*24f).ToString("0")+"小时后":"大约"+days.ToString("0.#")+"天后";
-   if(harper)Find.LetterStack.ReceiveLetter("竖琴手的警告","费伦拓荒同盟的竖琴手送来密信：\n\n"+f.NameColored+"正在集结人手，"+when+"会袭击"+map.Parent.LabelCap+"。\n\n趁现在做好准备。",LetterDefOf.ThreatSmall,new LookTargets(map.Parent),f);
-   if(omen)Find.LetterStack.ReceiveLetter("风暴预兆",seer.LabelShort+"望着天边的云，脸色沉了下来：\n\n“风从"+Direction(map,parms)+"吹来，带着"+f.NameColored+"的气味。他们"+when+"就到。”"+(harper?"\n\n（竖琴手的密信和风暴巨人的预兆都应验了同一件事，袭击推迟的时间叠加。）":"")+"\n\n点数≥1000的敌对袭击，因风暴预兆推迟12小时落地。",LetterDefOf.ThreatSmall,new LookTargets(seer),f);
-   if(prophecy){StormGiantState.Get.UseProphecy();Find.LetterStack.ReceiveLetter("先知的预言应验","风暴巨人先知说过的话应验了：\n\n"+f.NameColored+"正在逼近，"+when+"会袭击"+map.Parent.LabelCap+"。预言让你们多出了一天准备时间。",LetterDefOf.ThreatSmall,new LookTargets(map.Parent),f);}
+   string when=days<1f?"大约".Loc()+(days*24f).ToString("0")+"小时后".Loc():"大约".Loc()+days.ToString("0.#")+"天后".Loc();
+   if(harper)Find.LetterStack.ReceiveLetter("竖琴手的警告".Loc(),"费伦拓荒同盟的竖琴手送来密信：\n\n".Loc()+f.NameColored+"正在集结人手，".Loc()+when+"会袭击".Loc()+map.Parent.LabelCap+"。\n\n趁现在做好准备。".Loc(),LetterDefOf.ThreatSmall,new LookTargets(map.Parent),f);
+   if(omen)Find.LetterStack.ReceiveLetter("风暴预兆".Loc(),seer.LabelShort+"望着天边的云，脸色沉了下来：\n\n“风从".Loc()+Direction(map,parms)+"吹来，带着".Loc()+f.NameColored+"的气味。他们".Loc()+when+"就到。”".Loc()+(harper?"\n\n（竖琴手的密信和风暴巨人的预兆都应验了同一件事，袭击推迟的时间叠加。）".Loc():"")+"\n\n点数≥1000的敌对袭击，因风暴预兆推迟12小时落地。".Loc(),LetterDefOf.ThreatSmall,new LookTargets(seer),f);
+   if(prophecy){StormGiantState.Get.UseProphecy();Find.LetterStack.ReceiveLetter("先知的预言应验".Loc(),"风暴巨人先知说过的话应验了：\n\n".Loc()+f.NameColored+"正在逼近，".Loc()+when+"会袭击".Loc()+map.Parent.LabelCap+"。预言让你们多出了一天准备时间。".Loc(),LetterDefOf.ThreatSmall,new LookTargets(map.Parent),f);}
    return true;
   }
   // 袭击来的方向（东南西北）：还没定落点时先挑一个地图边缘的进场点写进 parms，袭击落地时从那里来（空投到中心的袭击仍按原版落点）。
@@ -205,7 +205,7 @@ namespace LichPhylactery {
    if(!parms.spawnCenter.IsValid && RCellFinder.TryFindRandomPawnEntryCell(out var entry,map,CellFinder.EdgeRoadChance_Hostile))parms.spawnCenter=entry;
    var c=parms.spawnCenter.IsValid?parms.spawnCenter:CellFinder.RandomEdgeCell(map);
    int dx=c.x-map.Center.x,dz=c.z-map.Center.z;
-   return Math.Abs(dx)>Math.Abs(dz)?(dx>0?"东边":"西边"):(dz>0?"北边":"南边");
+   return Math.Abs(dx)>Math.Abs(dz)?(dx>0?"东边".Loc():"西边".Loc()):(dz>0?"北边".Loc():"南边".Loc());
   }
   public static int Process(FactionEvents events,bool force=false){
    int fired=0;
@@ -263,7 +263,7 @@ namespace LichPhylactery {
 
  // ==================== 猎巫狂热分子 ====================
  public class IncidentWorker_ZealotRaid : IncidentWorker_RaidEnemy {
-  public const string Label="猎巫狂热分子";
+  public static readonly string Label="猎巫狂热分子".Loc();
   public static bool Allowed(Map map){
    var c=Factions.Colony;
    return LichMod.Settings.zealotRaids && map!=null && map.IsPlayerHome && c!=null && Factions.Enabled(c) && !c.defeated && !c.HostileTo(Faction.OfPlayer) && ColonyCensus.HasLichOrFlayer && Factions.ZealotsDef!=null;
@@ -284,14 +284,14 @@ namespace LichPhylactery {
    return true;
   }
   protected override string GetLetterLabel(IncidentParms parms)=>Label;
-  protected override string GetLetterText(IncidentParms parms,List<Pawn> pawns)=>"费伦拓荒同盟里的狂热分子不顾高层反对前来猎巫！一群圣武士和牧师听说这里藏着巫妖或夺心魔，要把它们烧成灰。"+(parms.attackTargets.NullOrEmpty()?"":"\n\n他们会优先冲向巫妖、夺心魔和命匣。")+"\n\n杀死他们不会影响你和同盟的关系；如果抓住了再放走，同盟高层会感激你的克制。";
+  protected override string GetLetterText(IncidentParms parms,List<Pawn> pawns)=>"费伦拓荒同盟里的狂热分子不顾高层反对前来猎巫！一群圣武士和牧师听说这里藏着巫妖或夺心魔，要把它们烧成灰。".Loc()+(parms.attackTargets.NullOrEmpty()?"":"\n\n他们会优先冲向巫妖、夺心魔和命匣。".Loc())+"\n\n杀死他们不会影响你和同盟的关系；如果抓住了再放走，同盟高层会感激你的克制。".Loc();
  }
  // 释放俘虏的狂热分子：同盟好感 +5。
  [HarmonyPatch(typeof(GenGuest),nameof(GenGuest.PrisonerRelease))]
  public static class ZealotRelease {
   public const int Goodwill=5;
   static void Prefix(Pawn p,out bool __state){__state=p?.Faction?.def==Factions.ZealotsDef;}
-  static void Postfix(Pawn p,bool __state){if(!__state)return;var c=Factions.Colony;if(c!=null && !c.HostileTo(Faction.OfPlayer) && c.TryAffectGoodwillWith(Faction.OfPlayer,Goodwill,false,false))Messages.Message("你放走了狂热分子"+p.LabelShort+"：费伦拓荒同盟的高层感激你的克制（好感 +"+Goodwill+"）。",MessageTypeDefOf.PositiveEvent,false);}
+  static void Postfix(Pawn p,bool __state){if(!__state)return;var c=Factions.Colony;if(c!=null && !c.HostileTo(Faction.OfPlayer) && c.TryAffectGoodwillWith(Faction.OfPlayer,Goodwill,false,false))Messages.Message("你放走了狂热分子".Loc()+p.LabelShort+"：费伦拓荒同盟的高层感激你的克制（好感 +".Loc()+Goodwill+"）。".Loc(),MessageTypeDefOf.PositiveEvent,false);}
  }
 
  // ==================== 黑网商队 ====================
@@ -332,12 +332,12 @@ namespace LichPhylactery {
   public static string DemotionText(){
    if(!CanPaySouls())return null;
    var drops=PlanSouls().Where(e=>e.level<e.box.level).ToList();
-   return drops.Count==0?null:string.Join("，",drops.Select(e=>"会使"+(drops.Count>1?e.box.soul.LabelShort+"的":"")+"命匣从"+e.box.level+"级降到"+e.level+"级"));
+   return drops.Count==0?null:string.Join("，".Loc(),drops.Select(e=>"会使".Loc()+(drops.Count>1?e.box.soul.LabelShort+"的".Loc():"")+"命匣从".Loc()+e.box.level+"级降到".Loc()+e.level+"级".Loc()));
   }
   public static bool CanRecruit()=>LichMod.Settings.redRobeRecruit && Factions.Hostile!=null && Factions.Enabled(Factions.HostileDef) && !Factions.Hostile.defeated && ColonyCensus.HasLich;
   public static bool CanDemand()=>LichMod.Settings.tributeDemand && Factions.Hostile!=null && Factions.Enabled(Factions.HostileDef) && !Factions.Hostile.defeated && !ColonyCensus.HasLich && Factions.Hostile.HostileTo(Faction.OfPlayer);
   public static void Pledge(){var e=Events;var h=Factions.Hostile;if(e==null || h==null)return;e.pledged=true;e.nextSoulTick=Find.TickManager.TicksGame+SeasonTicks;Factions.SetRelation(h,Faction.OfPlayer,0);Pact.Recalculate();}
-  public static void RefusePledgeOffer(){Factions.ChangeGoodwillExact(Factions.Hostile,RefusePledge,"拒绝红袍的招揽");}
+  public static void RefusePledgeOffer(){Factions.ChangeGoodwillExact(Factions.Hostile,RefusePledge,"拒绝红袍的招揽".Loc());}
   // 从命匣的献祭经验里扣，不够就倒扣等级；降级后收回超出等级的法术和统御容量（超出容量的造物按原规则休眠）。
   public static bool PaySouls(){
    if(!CanPaySouls())return false;
@@ -350,7 +350,7 @@ namespace LichPhylactery {
    return true;
   }
   // 拒交灵魂同时解除效忠。
-  public static void RefuseSouls(){var e=Events;if(e!=null)e.pledged=false;Factions.ChangeGoodwillExact(Factions.Hostile,RefuseSoulsGoodwill,"拒交灵魂");Pact.Recalculate();}
+  public static void RefuseSouls(){var e=Events;if(e!=null)e.pledged=false;Factions.ChangeGoodwillExact(Factions.Hostile,RefuseSoulsGoodwill,"拒交灵魂".Loc());Pact.Recalculate();}
   public static bool PayTribute(Map map,int amount){
    var e=Events;if(e==null || map==null || !TradeUtility.ColonyHasEnoughSilver(map,amount))return false;
    TradeUtility.LaunchSilver(map,amount);e.tributeUntilTick=Find.TickManager.TicksGame+SeasonTicks;return true;
@@ -361,19 +361,19 @@ namespace LichPhylactery {
   public override IEnumerable<DiaOption> Choices{get{
    if(ArchivedOnly){yield return Option_Close;yield break;}
    if(kind=="recruit"){
-    yield return Choice("宣誓效忠塞伊",()=>{Tribute.Pledge();Messages.Message("你向红袍法师宣誓效忠：塞伊远征军不再敌视你（好感设为0）。每季他们会来收取灵魂。",MessageTypeDefOf.NeutralEvent,false);});
-    yield return Choice("拒绝",()=>Tribute.RefusePledgeOffer());
+    yield return Choice("宣誓效忠塞伊".Loc(),()=>{Tribute.Pledge();Messages.Message("你向红袍法师宣誓效忠：塞伊远征军不再敌视你（好感设为0）。每季他们会来收取灵魂。".Loc(),MessageTypeDefOf.NeutralEvent,false);});
+    yield return Choice("拒绝".Loc(),()=>Tribute.RefusePledgeOffer());
    }else if(kind=="souls"){
     var demote=Tribute.DemotionText();
-    var pay=Choice("上缴"+Tribute.SoulDemand+"点献祭经验"+(demote==null?"":"（"+demote+"）"),()=>Tribute.PaySouls());
-    if(!Tribute.CanPaySouls())pay.Disable("命匣只有1级，献祭经验也不足"+Tribute.SoulDemand);
+    var pay=Choice("上缴".Loc()+Tribute.SoulDemand+"点献祭经验".Loc()+(demote==null?"":"（".Loc()+demote+"）".Loc()),()=>Tribute.PaySouls());
+    if(!Tribute.CanPaySouls())pay.Disable("命匣只有1级，献祭经验也不足".Loc()+Tribute.SoulDemand);
     yield return pay;
-    yield return Choice("拒交（好感 "+Tribute.RefuseSoulsGoodwill+"）",()=>Tribute.RefuseSouls());
+    yield return Choice("拒交（好感 ".Loc()+Tribute.RefuseSoulsGoodwill+"）".Loc(),()=>Tribute.RefuseSouls());
    }else if(kind=="tribute"){
-    var pay=Choice("交出"+amount+"白银",()=>Tribute.PayTribute(map,amount));
-    if(map==null || !TradeUtility.ColonyHasEnoughSilver(map,amount))pay.Disable("信标附近的白银不足"+amount);
+    var pay=Choice("交出".Loc()+amount+"白银".Loc(),()=>Tribute.PayTribute(map,amount));
+    if(map==null || !TradeUtility.ColonyHasEnoughSilver(map,amount))pay.Disable("信标附近的白银不足".Loc()+amount);
     yield return pay;
-    yield return Choice("拒绝",null);
+    yield return Choice("拒绝".Loc(),null);
    }
    yield return Option_Postpone;
   }}
@@ -416,15 +416,15 @@ namespace LichPhylactery {
    return def.Worker.CanFireNow(parms) && def.Worker.TryExecute(parms);
   }
   static Letter_FactionChoice Make(string label,string text,string kind){var l=(Letter_FactionChoice)LetterMaker.MakeLetter(DefDatabase<LetterDef>.GetNamed("LP_FactionChoiceLetter"));l.Label=label;l.Text=text;l.kind=kind;l.relatedFaction=Factions.Hostile;return l;}
-  public static Letter_FactionChoice SendRecruit(){var l=Make("红袍的招揽","一位红袍法师派信使送来一封盖着骷髅火漆的信：\n\n“塞伊欢迎掌握不死之道的人。向大法师宣誓效忠，远征军就不再与你为敌。我们只要一点点回报——每季一些灵魂。”\n\n效忠：与塞伊远征军的好感设为0（中立），之后每季要上缴"+Tribute.SoulDemand+"点命匣献祭经验，拒交好感"+Tribute.RefuseSoulsGoodwill+"。\n拒绝：好感"+Tribute.RefusePledge+"。","recruit");Find.LetterStack.ReceiveLetter(l);return l;}
-  public static Letter_FactionChoice SendSouls(){var l=Make("上缴灵魂","红袍法师的信使来收这一季的灵魂了：上缴"+Tribute.SoulDemand+"点命匣献祭经验。\n\n命匣里现有献祭经验："+Tribute.StoredSouls().ToString("0")+"。当前经验不够时会倒扣命匣等级（降一级返还那一级的经验）。","souls");Find.LetterStack.ReceiveLetter(l);return l;}
-  public static Letter_FactionChoice SendTribute(Map map){if(map==null)return null;int amount=Tribute.Amount(map);var l=Make("进贡要求","塞伊远征军的使者带着一队兽人来到殖民地外：\n\n“交出"+amount+"白银，远征军这一季就少来打扰你。”\n\n交钱后一季（15天）内，塞伊远征军来袭的概率减半。拒绝不会有别的后果。","tribute");l.amount=amount;l.map=map;Find.LetterStack.ReceiveLetter(l);return l;}
+  public static Letter_FactionChoice SendRecruit(){var l=Make("红袍的招揽".Loc(),"一位红袍法师派信使送来一封盖着骷髅火漆的信：\n\n“塞伊欢迎掌握不死之道的人。向大法师宣誓效忠，远征军就不再与你为敌。我们只要一点点回报——每季一些灵魂。”\n\n效忠：与塞伊远征军的好感设为0（中立），之后每季要上缴".Loc()+Tribute.SoulDemand+"点命匣献祭经验，拒交好感".Loc()+Tribute.RefuseSoulsGoodwill+"。\n拒绝：好感".Loc()+Tribute.RefusePledge+"。".Loc(),"recruit");Find.LetterStack.ReceiveLetter(l);return l;}
+  public static Letter_FactionChoice SendSouls(){var l=Make("上缴灵魂".Loc(),"红袍法师的信使来收这一季的灵魂了：上缴".Loc()+Tribute.SoulDemand+"点命匣献祭经验。\n\n命匣里现有献祭经验：".Loc()+Tribute.StoredSouls().ToString("0")+"。当前经验不够时会倒扣命匣等级（降一级返还那一级的经验）。".Loc(),"souls");Find.LetterStack.ReceiveLetter(l);return l;}
+  public static Letter_FactionChoice SendTribute(Map map){if(map==null)return null;int amount=Tribute.Amount(map);var l=Make("进贡要求".Loc(),"塞伊远征军的使者带着一队兽人来到殖民地外：\n\n“交出".Loc()+amount+"白银，远征军这一季就少来打扰你。”\n\n交钱后一季（15天）内，塞伊远征军来袭的概率减半。拒绝不会有别的后果。".Loc(),"tribute");l.amount=amount;l.map=map;Find.LetterStack.ReceiveLetter(l);return l;}
   public void CheckZealots(){
    if(zealotRaid.Count==0)return;
    zealotRaid.RemoveAll(p=>p==null || p.Destroyed);
    if(zealotRaid.Any(p=>!p.Dead && !p.Downed && p.Spawned && !p.IsPrisoner && p.Map.IsPlayerHome && p.HostileTo(Faction.OfPlayer)))return;
    zealotRaid.Clear();zealotsRepelled++;
-   Messages.Message("猎巫狂热分子被打退了（累计"+zealotsRepelled+"次）。",MessageTypeDefOf.PositiveEvent,false);
+   Messages.Message("猎巫狂热分子被打退了（累计".Loc()+zealotsRepelled+"次）。".Loc(),MessageTypeDefOf.PositiveEvent,false);
    ZealotsRepelled?.Invoke(zealotsRepelled);
   }
   public override void ExposeData(){

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 修补术 -->
+  <LP_LS_Mending.label>mending</LP_LS_Mending.label>
+  <!-- 湖印（一阶法术，智力，湖息 1）：一件服装或武器恢复 30% 耐久。选人时修他身上最破的一件；也可以直接选地上的物品。 -->
+  <LP_LS_Mending.description>Lake seal (tier 1 spell, Intelligence, lake breath 1): one piece of apparel or weapon recovers 30% durability. When targeting a person, mends the most worn piece on them; you can also target an item on the ground directly.</LP_LS_Mending.description>
+  <!-- 净化饮食 -->
+  <LP_LS_PurifyFood.label>purify food and drink</LP_LS_PurifyFood.label>
+  <!-- 湖印（一阶法术，感知，湖息 1）：移除目标的食物中毒；之后 2 天不会食物中毒。 -->
+  <LP_LS_PurifyFood.description>Lake seal (tier 1 spell, Wisdom, lake breath 1): removes the target's food poisoning; no food poisoning for 2 days afterwards.</LP_LS_PurifyFood.description>
+  <!-- 警报术 -->
+  <LP_LS_Alarm.label>alarm</LP_LS_Alarm.label>
+  <!-- 湖印（一阶法术，智力，湖息 1）：在目标处画一个半径 6 格的隐形符文，持续 3 天；敌人进入时发一封信并叫醒殖民者（触发一次就消失）。 -->
+  <LP_LS_Alarm.description>Lake seal (tier 1 spell, Intelligence, lake breath 1): draw an invisible rune of radius 6 at the target that lasts 3 days; when an enemy enters, it sends a letter and wakes the colonists (disappears after triggering once).</LP_LS_Alarm.description>
+  <!-- 暗视术 -->
+  <LP_LS_Darkvision.label>darkvision</LP_LS_Darkvision.label>
+  <!-- 湖印（一阶法术，感知，湖息 1）：目标 1 天内无视黑暗对工作和瞄准的惩罚（持续时间随施法属性延长）。 -->
+  <LP_LS_Darkvision.description>Lake seal (tier 1 spell, Wisdom, lake breath 1): the target ignores darkness penalties to work and aiming for 1 day (duration lengthens with the casting ability).</LP_LS_Darkvision.description>
+  <!-- 长步术 -->
+  <LP_LS_Longstrider.label>longstrider</LP_LS_Longstrider.label>
+  <!-- 湖印（一阶法术，智力，湖息 1）：目标移速 +15%，持续 1 天（持续时间随施法属性延长）。 -->
+  <LP_LS_Longstrider.description>Lake seal (tier 1 spell, Intelligence, lake breath 1): target move speed +15% for 1 day (duration lengthens with the casting ability).</LP_LS_Longstrider.description>
+  <!-- 雷鸣波 -->
+  <LP_LS_Thunderwave.label>thunderwave</LP_LS_Thunderwave.label>
+  <!-- 湖印（一阶法术，智力，湖息 2）：前方 4 格锥形，8 点钝器伤害，击退 2 格，30% 概率眩晕 2 秒。 -->
+  <LP_LS_Thunderwave.description>Lake seal (tier 1 spell, Intelligence, lake breath 2): a 4-cell cone ahead, 8 blunt damage, knocks back 2 cells, 30% chance to stun for 2 seconds.</LP_LS_Thunderwave.description>
+  <!-- 秘法锁 -->
+  <LP_LS_ArcaneLock.label>arcane lock</LP_LS_ArcaneLock.label>
+  <!-- 湖印（二阶法术，智力，湖息 1）：给一扇门上锁 5 天：敌人砸门的伤害 ×0.33。 -->
+  <LP_LS_ArcaneLock.description>Lake seal (tier 2 spell, Intelligence, lake breath 1): lock a door for 5 days: enemies bashing it deal ×0.33 damage.</LP_LS_ArcaneLock.description>
+  <!-- 卜问 -->
+  <LP_LS_Augury.label>augury</LP_LS_Augury.label>
+  <!-- 湖印（二阶法术，感知，湖息 2）：成功率 60% + 感知调整值 × 3%：告诉你 3 天内最大威胁的类型和大概时间。 -->
+  <LP_LS_Augury.description>Lake seal (tier 2 spell, Wisdom, lake breath 2): success 60% + Wisdom modifier × 3%: tells you the type and rough timing of the biggest threat within 3 days.</LP_LS_Augury.description>
+  <!-- 虚假生命 -->
+  <LP_LS_FalseLife.label>false life</LP_LS_FalseLife.label>
+  <!-- 湖印（二阶法术，智力，湖息 1）：目标得到吸收 20 点伤害的护盾（随施法属性提高），持续 1 天。 -->
+  <LP_LS_FalseLife.description>Lake seal (tier 2 spell, Intelligence, lake breath 1): the target gets a shield absorbing 20 damage (rising with the casting ability) for 1 day.</LP_LS_FalseLife.description>
+  <!-- 造粮术 -->
+  <LP_LS_CreateFood.label>create food</LP_LS_CreateFood.label>
+  <!-- 湖印（二阶法术，感知，湖息 3）：在脚下变出 5 份简单餐。 -->
+  <LP_LS_CreateFood.description>Lake seal (tier 2 spell, Wisdom, lake breath 3): conjure 5 simple meals at your feet.</LP_LS_CreateFood.description>
+  <!-- 宁神术 -->
+  <LP_LS_CalmMind.label>calm emotions</LP_LS_CalmMind.label>
+  <!-- 湖印（二阶法术，魅力，湖息 2）：结束目标的非暴力精神崩溃；没有崩溃时让目标 1 天内精神崩溃阈值 -5%。 -->
+  <LP_LS_CalmMind.description>Lake seal (tier 2 spell, Charisma, lake breath 2): ends the target's non-violent mental break; with no break, the target gets mental break threshold -5% for 1 day.</LP_LS_CalmMind.description>
+  <!-- 粉碎音波 -->
+  <LP_LS_Shatter.label>shatter</LP_LS_Shatter.label>
+  <!-- 湖印（二阶法术，智力，湖息 2）：目标处半径 2 格，15 点钝器伤害；对机械体和建筑 ×3。 -->
+  <LP_LS_Shatter.description>Lake seal (tier 2 spell, Intelligence, lake breath 2): radius 2 at the target, 15 blunt damage; ×3 against mechanoids and buildings.</LP_LS_Shatter.description>
+  <!-- 反制法术 -->
+  <LP_LS_Counterspell.label>counterspell</LP_LS_Counterspell.label>
+  <!-- 湖印（三阶法术，智力，湖息 2）：打断一个敌人正在读条的灵能 / 职业能力，并沉默 10 秒；对传奇生物成功率 50%。 -->
+  <LP_LS_Counterspell.description>Lake seal (tier 3 spell, Intelligence, lake breath 2): interrupt a psycast / class ability an enemy is channeling and silence it for 10 seconds; 50% success against legendary creatures.</LP_LS_Counterspell.description>
+  <!-- 小屋术 -->
+  <LP_LS_TinyHut.label>tiny hut</LP_LS_TinyHut.label>
+  <!-- 湖印（三阶法术，感知，湖息 3）：撑起半径 3 格的力场穹顶 8 小时：挡住外面射来的弹丸，里面的人恒温；施法者离开穹顶即消失。 -->
+  <LP_LS_TinyHut.description>Lake seal (tier 3 spell, Wisdom, lake breath 3): raise a force dome of radius 3 for 8 hours: blocks projectiles fired from outside, and those inside stay at a constant temperature; vanishes when the caster leaves the dome.</LP_LS_TinyHut.description>
+  <!-- 湖泽体质 -->
+  <LP_LS_LakeBody.label>lakeland constitution</LP_LS_LakeBody.label>
+  <!-- 湖印被动（一阶）：舒适温度范围上下各扩 8°C。 -->
+  <LP_LS_LakeBody.description>Lake seal passive (tier 1): comfortable temperature range widened by 8°C at each end.</LP_LS_LakeBody.description>
+  <!-- 魔力消化 -->
+  <LP_LS_ManaDigest.label>mana digestion</LP_LS_ManaDigest.label>
+  <!-- 湖印被动（一阶）：饥饿速率 -10%。 -->
+  <LP_LS_ManaDigest.description>Lake seal passive (tier 1): hunger rate -10%.</LP_LS_ManaDigest.description>
+  <!-- 学者之心 -->
+  <LP_LS_ScholarHeart.label>scholar's mind</LP_LS_ScholarHeart.label>
+  <!-- 湖印被动（一阶）：全局学习速度 +12%。 -->
+  <LP_LS_ScholarHeart.description>Lake seal passive (tier 1): global learning speed +12%.</LP_LS_ScholarHeart.description>
+  <!-- 无梦之眠 -->
+  <LP_LS_DreamlessSleep.label>dreamless sleep</LP_LS_DreamlessSleep.label>
+  <!-- 湖印被动（一阶）：休息下降速率 -15%。 -->
+  <LP_LS_DreamlessSleep.description>Lake seal passive (tier 1): rest fall rate -15%.</LP_LS_DreamlessSleep.description>
+  <!-- 疗愈之流 -->
+  <LP_LS_HealingFlow.label>healing flow</LP_LS_HealingFlow.label>
+  <!-- 湖印被动（二阶）：自然愈合 +20%，受到的包扎质量 +5%。 -->
+  <LP_LS_HealingFlow.description>Lake seal passive (tier 2): natural healing +20%, tend quality received +5%.</LP_LS_HealingFlow.description>
+  <!-- 奥术抗性 -->
+  <LP_LS_ArcaneResist.label>arcane resistance</LP_LS_ArcaneResist.label>
+  <!-- 湖印被动（二阶）：受到职业能力、灵能、魔法物品的伤害 -15%（和心智抗性不重叠：这个管伤害，心智抗性管控制）。 -->
+  <LP_LS_ArcaneResist.description>Lake seal passive (tier 2): damage taken from class abilities, psycasts and magic items -15% (doesn't overlap with mind resistance: this covers damage, mind resistance covers control).</LP_LS_ArcaneResist.description>
+  <!-- 符文皮肤 -->
+  <LP_LS_RuneSkin.label>rune skin</LP_LS_RuneSkin.label>
+  <!-- 湖印被动（二阶）：利器、钝器护甲 +6%。 -->
+  <LP_LS_RuneSkin.description>Lake seal passive (tier 2): sharp and blunt armor +6%.</LP_LS_RuneSkin.description>
+  <!-- 法力导体 -->
+  <LP_LS_ManaConduit.label>mana conduit</LP_LS_ManaConduit.label>
+  <!-- 湖印被动（二阶）：每次命中有 15% 概率附加 4 点奥术伤害。 -->
+  <LP_LS_ManaConduit.description>Lake seal passive (tier 2): each hit has a 15% chance to add 4 arcane damage.</LP_LS_ManaConduit.description>
+  <!-- 湖心 -->
+  <LP_LS_LakeHeart.label>heart of the lake</LP_LS_LakeHeart.label>
+  <!-- 湖印被动（三阶）：湖息上限 +1，回复 ×1.5。 -->
+  <LP_LS_LakeHeart.description>Lake seal passive (tier 3): max lake breath +1, recovery ×1.5.</LP_LS_LakeHeart.description>
+  <!-- 魔网感知 -->
+  <LP_LS_WeaveSense.label>weave sense</LP_LS_WeaveSense.label>
+  <!-- 湖印被动（三阶）：8 格内的隐形敌人对你可见。 -->
+  <LP_LS_WeaveSense.description>Lake seal passive (tier 3): invisible enemies within 8 cells are visible to you.</LP_LS_WeaveSense.description>
+</LanguageData>

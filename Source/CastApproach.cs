@@ -27,10 +27,10 @@ namespace LichPhylactery {
  // 名单在定义加载完后建（CastApproach 本身在 Harmony 打补丁时就会被碰到，那时还没有定义）。
  [StaticConstructorOnStartup]
  public static class CastApproachInit {
-  static CastApproachInit(){try{CastApproach.Build();}catch(Exception e){Log.Error("[DND边缘大陆] 射程外施放列表出错："+e);}}
+  static CastApproachInit(){try{CastApproach.Build();}catch(Exception e){Log.Error("[DND边缘大陆] 射程外施放列表出错：".Loc()+e);}}
  }
  public static class CastApproach {
-  public const string Hint="走近后施放";
+  public static readonly string Hint="走近后施放".Loc();
   // 能力效果名（各种 Comp 的 effect 字段）：目标就是施法者要去的位置 / 施法者会冲过去。
   public static readonly HashSet<string> MoveEffects=new HashSet<string>{
    "Teleport","Charge","RageCharge","Intercept","S2Blink","S3ShadowStep","ArCloudStep","WS_DimensionDoor","DragonWings",
@@ -68,22 +68,22 @@ namespace LichPhylactery {
   static string Why(AbilityDef d){
    var vp=d.verbProperties;
    var ext=d.GetModExtension<CastRangeExt>();
-   if(ext!=null && !ext.approach)return "定义里关掉";
-   if(d.targetWorldCell)return "世界地图目标";
-   if(vp==null || vp.verbClass==null || !typeof(Verb_CastAbility).IsAssignableFrom(vp.verbClass))return "不是能力施放";
-   if(typeof(Verb_CastAbilityJump).IsAssignableFrom(vp.verbClass))return "跳跃";
-   if(typeof(Verb_CastAbilityTouch).IsAssignableFrom(vp.verbClass))return "接触（原版自己走过去）";
-   if(vp.range<=0f)return "没有射程（对自己）";
+   if(ext!=null && !ext.approach)return "定义里关掉".Loc();
+   if(d.targetWorldCell)return "世界地图目标".Loc();
+   if(vp==null || vp.verbClass==null || !typeof(Verb_CastAbility).IsAssignableFrom(vp.verbClass))return "不是能力施放".Loc();
+   if(typeof(Verb_CastAbilityJump).IsAssignableFrom(vp.verbClass))return "跳跃".Loc();
+   if(typeof(Verb_CastAbilityTouch).IsAssignableFrom(vp.verbClass))return "接触（原版自己走过去）".Loc();
+   if(vp.range<=0f)return "没有射程（对自己）".Loc();
    var tp=vp.targetParams;
-   if(tp!=null && !tp.canTargetPawns && !tp.canTargetLocations && !tp.canTargetBuildings && !tp.canTargetItems && !tp.canTargetCorpses && !tp.canTargetPlants)return "只能对自己";
-   if(d.jobDef!=null && d.jobDef!=JobDefOf.CastAbilityOnThing)return "自带施放工作";
+   if(tp!=null && !tp.canTargetPawns && !tp.canTargetLocations && !tp.canTargetBuildings && !tp.canTargetItems && !tp.canTargetCorpses && !tp.canTargetPlants)return "只能对自己".Loc();
+   if(d.jobDef!=null && d.jobDef!=JobDefOf.CastAbilityOnThing)return "自带施放工作".Loc();
    if(ext!=null && ext.approach)return null;
-   if(MoveDefs.Contains(d.defName))return "位移（目标就是落点）";
+   if(MoveDefs.Contains(d.defName))return "位移（目标就是落点）".Loc();
    if(d.comps!=null)foreach(var c in d.comps){
-    if(c is CompProperties_AbilityTeleport)return "位移（目标就是落点）";
-    if(c is CompProperties_EffectWithDest w && w.destination==AbilityEffectDestination.Selected)return "需要再选落点";
+    if(c is CompProperties_AbilityTeleport)return "位移（目标就是落点）".Loc();
+    if(c is CompProperties_EffectWithDest w && w.destination==AbilityEffectDestination.Selected)return "需要再选落点".Loc();
     var f=AccessTools.Field(c.GetType(),"effect");
-    if(f!=null && f.FieldType==typeof(string) && f.GetValue(c) is string e && MoveEffects.Contains(e))return "位移（目标就是落点）";
+    if(f!=null && f.FieldType==typeof(string) && f.GetValue(c) is string e && MoveEffects.Contains(e))return "位移（目标就是落点）".Loc();
    }
    return null;
   }
@@ -156,7 +156,7 @@ namespace LichPhylactery {
    if(!a.CanQueueCast || !canApply)return false;
    var cell=FindCastCell(p,a.verb,t,a.verb.EffectiveRange);
    if(!cell.IsValid){
-    Messages.Message("CannotUseAbility".Translate(a.def.label)+": 找不到既在射程内、又看得见目标、还走得到的位置。",new LookTargets(p,t.ToTargetInfo(p.Map)),MessageTypeDefOf.RejectInput,false);
+    Messages.Message("CannotUseAbility".Translate(a.def.label)+": 找不到既在射程内、又看得见目标、还走得到的位置。".Loc(),new LookTargets(p,t.ToTargetInfo(p.Map)),MessageTypeDefOf.RejectInput,false);
     return false;
    }
    confirm(a,t,()=>{
@@ -200,7 +200,7 @@ namespace LichPhylactery {
    try{
     if(!CastApproach.Approachable(__instance,target))return true;
     __result=showMessages?CastApproach.ValidateFar(__instance,target,true):CastApproach.ValidFarMemo(__instance,target);return false;
-   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 射程外施放检查出错："+e,0x4c5201);return true;}
+   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 射程外施放检查出错：".Loc()+e,0x4c5201);return true;}
   }
  }
  [HarmonyPatch(typeof(Verb_CastAbility),nameof(Verb_CastAbility.OrderForceTarget))]
@@ -209,7 +209,7 @@ namespace LichPhylactery {
    try{
     if(!CastApproach.Approachable(__instance,target) || !CastApproach.ValidateFar(__instance,target,false))return true;
     CastApproach.Order(__instance.ability,target);return false;
-   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 射程外施放命令出错："+e,0x4c5202);return true;}
+   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 射程外施放命令出错：".Loc()+e,0x4c5202);return true;}
   }
  }
  [HarmonyPatch(typeof(Verb_CastAbility),nameof(Verb_CastAbility.OnGUI))]
@@ -218,7 +218,7 @@ namespace LichPhylactery {
    try{
     if(!CastApproach.Approachable(__instance,target) || !CastApproach.ValidFarMemo(__instance,target))return true;
     CastApproach.DrawCursor(__instance,target);return false;
-   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 射程外施放光标出错："+e,0x4c5203);return true;}
+   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 射程外施放光标出错：".Loc()+e,0x4c5203);return true;}
   }
  }
  [HarmonyPatch(typeof(Verb_CastAbility),nameof(Verb_CastAbility.DrawHighlight))]
@@ -228,7 +228,7 @@ namespace LichPhylactery {
     if(!CastApproach.Approachable(__instance,target) || !CastApproach.ValidFarMemo(__instance,target))return;
     GenDraw.DrawTargetHighlightWithLayer(target.CenterVector3,AltitudeLayer.MetaOverlays);
     var d=__instance.ability.def;if(d.HasAreaOfEffect)GenDraw.DrawRadiusRing(target.Cell,d.EffectRadius,Verb_CastAbility.RadiusHighlightColor);
-   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 射程外施放高亮出错："+e,0x4c5204);}
+   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 射程外施放高亮出错：".Loc()+e,0x4c5204);}
   }
  }
  [HarmonyPatch(typeof(Targeter),"CurrentTargetUnderMouse")]
@@ -252,7 +252,7 @@ namespace LichPhylactery {
   float rangeFactor=1f;int shrinks;int lastPathTick=-99999;IntVec3 lastTargetCell=IntVec3.Invalid;
   Ability Ab=>job.ability;
   public override bool TryMakePreToilReservations(bool errorOnFailed)=>true;
-  public override string GetReport()=>Ab==null?base.GetReport():"走近以施放"+Ab.def.label+"。";
+  public override string GetReport()=>Ab==null?base.GetReport():"走近以施放".Loc()+Ab.def.label+"。".Loc();
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref rangeFactor,"lpCastRange",1f);Scribe_Values.Look(ref shrinks,"lpCastShrinks",0);}
   protected override IEnumerable<Toil> MakeNewToils(){
    this.FailOn(()=>Ab==null || Ab.pawn!=pawn || !(Ab.verb is Verb_CastAbility));

@@ -1,0 +1,562 @@
+s08851	. The "ability groups" button on the ability bar switches to the next group with left-click and opens this window with right-click. It only affects display: abilities outside the current group still cool down as usual, and those with autocast on still cast automatically. An ability can be in several groups.
+s08852	All (
+s08853	)
+s08854	 (
+s08855	ability bar
+s08856	New group
+s08857	Create an empty group, then tick abilities on the right
+s08858	At most 
+s08859	 groups
+s08860	Delete?
+s08861	Delete group
+s08862	Click again to delete (the abilities themselves are unaffected)
+s08863	Click twice to delete this group
+s08864	Pick a group above first
+s08865	Up
+s08866	Down
+s08867	Name: 
+s08868	All: the ability bar shows every ability (the right side lists which groups each ability is in)
+s08869	The ability bar is showing this group
+s08870	Ability bar shows only this group
+s08871	Ability bar shows all
+s08872	Select all
+s08873	Put all abilities listed below into this group
+s08874	Select none
+s08875	Remove all abilities listed below from this group
+s08876	Ungrouped only
+s08877	This person has no abilities yet.
+s08878	No abilities here (all are grouped).
+s08879	\s\s
+s08880	 (not prepared, not on the ability bar)
+s08881	ungrouped
+s08882	Groups: 
+s08883	, 
+s08884	psycasts
+s08885	psycast: 
+s08886	Hit by a cold iron weapon
+s08887	Master 
+s08888	 died
+s08889	Broke free of its binding: 
+s08890	. It no longer obeys anyone and has joined the abyssal horde, turning to pounce on the colony!
+s08891	Can stay for 
+s08892	's summoning time is up, but it didn't go back: it has snapped the abyssal ritual's binding
+s08893	Obedience 
+s08894	Obedience per day -
+s08895	 (holding its true name scroll: halved)
+s08896	.
+s08897	Master: 
+s08898	 (dead)
+s08899	Master "reaffirming its true name" once per day +8; its bed inside a binding circle +3 per day; master dies -40; hit by the colony's cold iron weapons -5. At 0 it breaks free.
+s08900	's obedience 
+s08901	).
+s08902	It's testing its binding: 
+s08903	's obedience has dropped to 
+s08904	. If this goes on it will break free. Have its master reaffirm its true name, put its bed in a binding circle, or get its true name scroll.
+s08905	's obedience has run out
+s08906	The soul pledged to the Abyss has been collected; the corpse turned into black smoke.
+s08907	Wraith rises
+s08908	what remains after being devoured
+s08909	's corpse
+s08910	 twitched and stood up: its soul has turned into a larva, becoming a manes.
+s08911	Soul hunter
+s08912	A nabassu has broken into the map under cover of night: grey-black stony hide, bat wings, long fangs. It picks off those who are alone, and the souls of those it kills are devoured and can never be revived.
+s08913	\n\nIt's the one that got away last time, still carrying 
+s08914	 stacks of soul glut.
+s08915	\n\nIf it's still alive at dawn, it will fly away.
+s08916	Dawn broke and the nabassu flew away
+s08917	, taking 
+s08918	 stacks of soul glut
+s08919	Incubus/succubus
+s08920	revealed: 
+s08921	: 
+s08922	, who joined recently, isn't mortal at all: horns, bat wings and a thin tail showed through the illusion. It's a 
+s08923	. Those recent nights "plagued by nightmares" were it draining the energy of whoever shared its bed.\n\nWhat will you do with it?
+s08924	 dreamed of standing at the edge of the Abyss while a voice repeated a name over and over. On waking, there was a book bound in some unknown hide beside the pillow: 
+s08925	.\n\nKeep it, and 
+s08926	 will be tainted a little more by the Abyss; burn it, and their mind will ease a little; or hand it over to the Faerûn Frontier Alliance.
+s08927	No Faerûn Frontier Alliance
+s08928	The Faerûn Frontier Alliance is hostile to you
+s08929	handed over a demonology tome
+s08930	Keep (
+s08931	 taint +5%)
+s08932	Burn (mood +3, 3 days)
+s08933	Give to the Faerûn Frontier Alliance (goodwill +10)
+s08934	Wanderer joins
+s08935	 is a lone traveler who wants to join you. Nothing seems suspicious.
+s08936	[DND Rimlands] Failed to generate the succubus visit: 
+s08937	Time is up
+s08938	No abyssal circle on the map
+s08939	Bound slots are full
+s08940	tore off the disguise
+s08941	Bind it (obedience 50, master is the colonist with the highest Social)
+s08942	Banish (it leaves; the person closest to it gets mood -8)
+s08943	Attack
+s08944	The planes are thin as paper: an abyssal rift has torn open outside the colony! Manes rush out first, then barlguras, hezrous, and shadow demons at night; later succubi and (with enough raid points) balors will walk out in person. A wave every 8 hours; if it stays open for 3 days it collapses.\n\nClose it: destroy the rift (600 HP), have a genie or marilith command it shut, or seal it outright with a true name scroll. Closing it leaves planar residue and demon blood.
+s08945	Soul isn't pledged
+s08946	Needs a good god as patron deity
+s08947	 doesn't have enough favor 
+s08948	Redeem soul
+s08949	 redeemed the soul pledged to the Abyss before the altar.
+s08950	Redeem soul (
+s08951	Redeem soul at the altar (
+s08952	 favor)
+s08953	[DND Rimlands] Failed to spawn 
+s08954	: 
+s08955	 devoured 
+s08956	's soul.
+s08957	resist -
+s08958	charmed
+s08959	saw through its disguise
+s08960	 saw through 
+s08961	's shapechanger disguise!
+s08962	When on, it looks like an ordinary person: horns, wings, tail and crimson skin are hidden. Seeing a devil's sight (8 cells) or an aasimar (5 cells) removes it automatically.
+s08963	There's no place to land beside the target.
+s08964	Beyond glide range (6 cells).
+s08965	Can only kiss humanlikes.
+s08966	Just resisted its charm (immune for 24 hours).
+s08967	Needs a target.
+s08968	resisted the charming kiss.
+s08969	stacks
+s08970	Master 
+s08971	Abyss (light / warding seal): ×
+s08972	's soul has been devoured (or pledged to the Abyss) and can't be revived.
+s08973	The soul has been devoured; there's nothing to drain.
+s08974	familiar (permanent)
+s08975	3-6 servants, 
+s08976	 days
+s08977	bound (permanent colonist)
+s08978	servant 
+s08979	 humanlike corpses
+s08980	 prisoners
+s08981	 soul coins
+s08982	 demon blood
+s08983	 miracle fragments
+s08984	manes swarm
+s08985	marilith
+s08986	tier 1
+s08987	tier 2
+s08988	tier 3
+s08989	tier 4
+s08990	No colonist who can pledge a soul
+s08991	Needs 
+s08992	Abyss content is disabled
+s08993	Needs Humanoid Alien Races
+s08994	Missing pawn kind definition
+s08995	"Allow binding demons as colonists" is turned off in settings
+s08996	Needs to have read the demonology tome on 
+s08997	 
+s08998	Bound slots are full (limit 
+s08999	Servants are full (limit 
+s09000	can't lead
+s09001	can't lead right now
+s09002	can't bring themselves to do it (non-violent)
+s09003	refused (aasimar)
+s09004	There's already a quasit
+s09005	abyssal ritual
+s09006	abyssal ritual warden
+s09007	Abyssal ritual failed: rift
+s09008	The ritual spun completely out of control (success chance 
+s09009	, this result 
+s09010	): a rift to the Abyss has torn open beside the circle!
+s09011	There's a balor in the first wave.
+s09012	\n\nThe circle can't be used again until the rift is closed. To close it: destroy it, have a genie or marilith command it, or use a true name scroll.
+s09013	Abyssal ritual failed: binding failed
+s09014	 answered the summons, but the binding spell didn't take hold (success chance 
+s09015	). It belongs to no one and is pouncing on the colony right where it stands!
+s09016	became 
+s09017	's familiar (permanent, can follow its master)
+s09018	bound as a colonist: starting obedience 
+s09019	, master is 
+s09020	. Obedience drops each day; at 0 it breaks free
+s09021	serves at your command for 
+s09022	 days, then is sent back when time is up
+s09023	Abyssal ritual succeeded: 
+s09024	 spoke the last syllable (success chance 
+s09025	\s
+s09026	 stepped out of the black smoke, 
+s09027	No offering chosen
+s09028	Not enough prisoners on the circle
+s09029	Not enough corpses on the circle
+s09030	Not enough soul coins / demon blood / miracle fragments on the map
+s09031	The abyssal ritual was interrupted and the incantation dispersed.
+s09032	Abyssal ritual interrupted
+s09033	Interrupted halfway through: the unfinished incantation has torn an abyssal rift open beside the circle!
+s09034	planar thinness 
+s09035	  silver border (success chance +5%)
+s09036	Can't hold a ritual while the abyssal rift is open.
+s09037	In progress: 
+s09038	), leader 
+s09039	, chanting
+s09040	, preparing offerings
+s09041	Known demons: 
+s09042	Begin abyssal ritual
+s09043	Choose the demon to summon and the leader. Success chance = tier base + (Cha + Int modifier) × 4% + proficiency × 2% + wardens × 4% + silver border 5% + true name scroll of that kind 10% + race bonus + 0.5% per Social level - thinness ÷ 10%.
+s09044	A ritual is in progress
+s09045	The abyssal rift is still open
+s09046	Cancel ritual
+s09047	Abort the ritual being prepared (cancelling during the chanting phase counts as an interruption).
+s09048	Soul refining
+s09049	Bring a prisoner onto the circle and execute them to get 3 soul coins. Executioner taint +5%, thinness +3; cooldown 1 day.
+s09050	On cooldown (another 
+s09051	Add silver border (
+s09052	 silver)
+s09053	Trace a silver border around the circle: ritual success chance +5%. Deducted directly from silver on the map.
+s09054	Not enough silver on the map
+s09055	)  Offering: 
+s09056	 or 
+s09057	  success chance 
+s09058	No colonist who can lead
+s09059	 (not counting wardens)
+s09060	Soul pledge: choose a colonist instead of an offering
+s09061	 (taint 
+s09062	's soul will be pledged to the Abyss: taint immediately +30%, can't be revived after death, and the corpse will vanish too. The soul can be "redeemed" from a good god at an altar (30 favor). Are you sure?
+s09063	 (no colonist who can execute)
+s09064	Soul refining: 
+s09065	 (executioner 
+s09066	No prisoners
+s09067	 refined 
+s09068	 soul coins on the abyssal circle.
+s09069	Act as warden (already 3 people)
+s09070	Act as warden (success chance +4%, half the leader's taint)
+s09071	At most 
+s09072	 per map
+s09073	Chanting an abyssal incantation.
+s09074	Preparing offerings for an abyssal ritual.
+s09075	The abyssal ritual can't begin: 
+s09076	: 
+s09077	Records: 
+s09078	  study progress 
+s09079	 (the colony already knows)
+s09080	Understood the demonology tome
+s09081	 finished reading the demonology tome recording 
+s09082	: the colony can now summon 
+s09083	 on the abyssal circle.
+s09084	Read for 4 hours to learn to summon the demon recorded in the book. Abyssal taint +0.5% per hour of reading.\n
+s09085	 absorbed the soul in a soul coin: phylactery +
+s09086	 XP.
+s09087	Only liches with a phylactery can absorb soul coins
+s09088	Demon blood can only be drawn in a room with a binding circle.
+s09089	Put a planar anchor chain on 
+s09090	 (no chain available)
+s09091	Put on planar anchor chain
+s09092	 gritted its teeth and didn't say its true name.
+s09093	 pried its true name out of 
+s09094	's mouth: 
+s09095	's abyssal taint has deepened: 
+s09096	's soul is soaked through by the Abyss and even the phylactery has turned black: revival takes half again as long.
+s09097	 has fully embraced the Abyss: now an "abyssal favorite", damage +10%. Aasimar feel uneasy seeing it.
+s09098	Turned fiend
+s09099	's body has finally yielded to the Abyss: dark red shows through the skin and a pair of horns pushes out of the forehead. 
+s09100	 has become a cambion. Taint falls back to 60%, but this step can't be undone.
+s09101	Someone in the colony bears the demon's mark
+s09102	Stage: 
+s09103	. Race factor ×
+s09104	Fades naturally by 0.5% per day.
+s09105	Stops fading naturally once it reaches "demon's mark".
+s09106	Removal: praying to a good god -5%, an aasimar's healing hands -8%, sleeping inside a warding seal -1% per day.
+s09107	Abyssal taint blocks the heavenly light (celestial revelation can't be used at "shadow" stage or above).
+s09108	Change per day 
+s09109	. At ≥20 abyssal whispers may happen, at ≥60 abyssal incursions. Each warding seal -1/day (up to 5).
+s09110	low
+s09111	medium
+s09112	high
+s09113	deadly
+s09114	nameless
+s09115	somewhat known
+s09116	known
+s09117	renowned
+s09118	legendary
+s09119	 silver
+s09120	renown +
+s09121	Mana Lake goodwill +10-15
+s09122	about this much adventurer XP for participants: 
+s09123	Lakeside job: 
+s09124	Client: Mana Lake (lakefolk ask adventurers for help; on completion goodwill +10-15, plus a tier 1 lake seal crystal).\n\n
+s09125	\n\nLocation: about 
+s09126	 cells from the colony (appears on the world map once accepted; complete within 
+s09127	 days, failure renown -
+s09128	)\nRecommended level: 
+s09129	  Danger: 
+s09130	\nEnemies: 
+s09131	\nThreat points: 
+s09132	\nReward: 
+s09133	The adventure board is disabled in settings
+s09134	The job has been taken down
+s09135	At most 
+s09136	 jobs at once
+s09137	No colony
+s09138	The job's location can no longer be found; try another job.
+s09139	Job accepted: 
+s09140	The job on the adventurers' notice board has been accepted, the location is marked on the world map; complete within 
+s09141	 days.\n\n
+s09142	 day deadline has passed.
+s09143	The job location has disappeared.
+s09144	Job complete: 
+s09145	The job "
+s09146	" on the adventurers' notice board is complete
+s09147	 (leader captured, reward ×1.25)
+s09148	.\n\nReward (sent to the colony by drop pod):
+s09149	\nAdventurer XP: 
+s09150	 about 
+s09151	 each
+s09152	no participants
+s09153	\nColony renown +
+s09154	 (now 
+s09155	, 
+s09156	Job failed: 
+s09157	" failed, colony renown -
+s09158	, remaining 
+s09159	[DND Rimlands] Adventure job failed to generate enemies: 
+s09160	location has disappeared
+s09161	arrived, enemies remain
+s09162	arrived
+s09163	Head to "
+s09164	" on the world map
+s09165	"Bloodhand"
+s09166	"One-Eye"
+s09167	"Greycloak"
+s09168	"Venomfang"
+s09169	"Ironjaw"
+s09170	"the Nameless"
+s09171	outlaw
+s09172	hostile faction
+s09173	, with a class, about level 
+s09174	) and guards
+s09175	The outlaw is down: capture (put in a prison cell) for reward ×1.25, or kill
+s09176	 besieging 
+s09177	The trapped adventurer is dead
+s09178	Bring the adventurer back to the colony
+s09179	Rescue successful: "
+s09180	The rescued adventurer thanks you. Recruit them into the colony, or let them pay a bounty as per the job (half the current reward) and leave on their own?
+s09181	Recruit 
+s09182	They will join the colony.
+s09183	Take the bounty (+
+s09184	They will leave once their wounds are healed.
+s09185	 joined the colony.
+s09186	guards of 
+s09187	 guarding the relic
+s09188	The relic has been destroyed
+s09189	Bring the relic back to the colony
+s09190	, and the undead source
+s09191	Destroy the undead source
+s09192	 and native guards
+s09193	 and 
+s09194	[DND Rimlands] Adventure job error: 
+s09195	[DND Rimlands] Error generating job location: 
+s09196	Only one adventurers' notice board per map
+s09197	View jobs
+s09198	Open the adventurers' notice board: view the current 3 jobs, accept jobs, check progress on accepted jobs and the colony's renown.
+s09199	Jobs 
+s09200	, accepted 
+s09201	, renown 
+s09202	Colony renown 
+s09203	Renown: nameless 0 / somewhat known 20 / known 45 / renowned 70 / legendary 90.\nCompleting a job +2 to +6 (by danger), failing -3. The higher the renown, the more high-danger jobs and the better the rewards; at "legendary", jobs to slay legendary monsters occasionally appear.
+s09204	Average adventurer level of the colony's top 3: 
+s09205	. Jobs change every 
+s09206	 days (in about 
+s09207	 days), and unaccepted ones vanish then; at most 
+s09208	 accepted at once, to be completed within 
+s09209	 days of accepting.
+s09210	The adventure board is disabled in settings (Adventurer group).
+s09211	Current jobs
+s09212	No jobs right now.
+s09213	Accepted jobs (
+s09214	No jobs accepted yet.
+s09215	Danger 
+s09216	Recommended level 
+s09217	 · about 
+s09218	 cells away · threat 
+s09219	 · remaining 
+s09220	Enemies: 
+s09221	Reward: 
+s09222	Accept?
+s09223	Accept
+s09224	Click twice to confirm
+s09225	Locate site
+s09226	Locate target
+s09227	Adventure board
+s09228	1.134.0: the building "adventurers' notice board" (Misc, 50 wood or stone) posts 3 jobs every few days (clear monster lairs, hunt outlaws, rescue trapped adventurers, recover lost items, investigate haunted ruins), showing recommended level and danger; once accepted, a site appears on the world map, to be completed within 7 days. When off, it stops refreshing; accepted jobs continue as usual.
+s09229	  Refresh interval: every 
+s09230	  Difficulty multiplier: ×
+s09231	Strength
+s09232	Dexterity
+s09233	Constitution
+s09234	Intelligence
+s09235	Wisdom
+s09236	Charisma
+s09237	Completed a DND milestone
+s09238	Melee hit 
+s09239	, shooting accuracy ×
+s09240	, VPE class power +
+s09241	Proficiency bonus +
+s09242	 (+2 at levels 1-4, then +1 every 4 levels, +6 at 17; legend level 28 +7, 36 +8)
+s09243	Next increase: 
+s09244	 level (+
+s09245	For each point above +2: 
+s09246	· Melee hit +2% (added to the final hit chance): now 
+s09247	· Shooting accuracy ×+1%: now ×
+s09248	· VPE class power +0.02: now +
+s09249	Level (+1% per level, up to 20): melee hit 
+s09250	, melee dodge 
+s09251	 (added to the final chance)
+s09252	Always in effect: 
+s09253	· Saves against the effects of legendary monsters (true dragons, beholders, demons, etc.): +5% save chance per point of ability modifier and of proficiency bonus
+s09254	· Parleying with true dragons: +5% success chance per point of Charisma modifier and of proficiency bonus
+s09255	Depends only on level, not multiplied by "ability effect strength"; also applies in Isekai coexistence mode.
+s09256	's divinity rises: gained 
+s09257	 ability score improvements.
+s09258	Doesn't have this boon
+s09259	Already has it
+s09260	No boon points
+s09261	Doesn't have this feat
+s09262	No ability score improvement or class bonus feat available
+s09263	Only spellcasting bonus feats left: can only be swapped for spell feats
+s09264	Not assigning starting abilities
+s09265	Minimum base value 
+s09266	Maximum base value 
+s09267	Not enough points (need 
+s09268	, have 
+s09269	Ability can't be lower than 
+s09270	Over the cap 
+s09271	melee damage
+s09272	carrying capacity
+s09273	caravan carrying capacity
+s09274	mining speed
+s09275	shooting accuracy
+s09276	melee hit
+s09277	aiming time
+s09278	melee dodge
+s09279	move speed
+s09280	caravan speed
+s09281	immunity gain speed
+s09282	wound healing
+s09283	rest recovery
+s09284	pain shock threshold
+s09285	toxic resistance
+s09286	sharp armor
+s09287	blunt armor
+s09288	heat armor
+s09289	research speed
+s09290	global learning
+s09291	work speed
+s09292	hacking speed
+s09293	medical quality
+s09294	psychic sensitivity
+s09295	surgery success chance
+s09296	meditation focus
+s09297	train animals
+s09298	animal gather yield
+s09299	neural heat recovery
+s09300	neural heat limit
+s09301	mental break threshold
+s09302	social impact
+s09303	negotiation
+s09304	tame animals
+s09305	bond chance
+s09306	arrest success chance
+s09307	trade price
+s09308	 (modifier 
+s09309	feat +
+s09310	 (added after the cap)
+s09311	Cap 
+s09312	Boon of Might +4
+s09313	 legend Lv 
+s09314	; the excess is kept but its effect counts as 
+s09315	 
+s09316	Ability effects are handed over to Isekai (can be turned on in settings).
+s09317	Ability effects are turned off in settings.
+s09318	Legendary unit: the six abilities give no numeric effects (their power is already built into the pawn kind).
+s09319	Ability multiplier 
+s09320	 (after racial affinity 
+s09321	: 10 = ×1, about double per +5, ×4 per +10
+s09322	: 10 = ×1, about × 
+s09323	 (per-level ability effect 
+s09324	%)
+s09325	 (melee damage doesn't use this table: per modifier point +
+s09326	 (psychic sensitivity doesn't use this table: per modifier point +
+s09327	 (part health doesn't use this table: per modifier point +
+s09328	 (research speed doesn't use this table: as Isekai, per point +
+s09329	, converging past ×5, also multiplied by global work speed)
+s09330	Affinity / talent: linear effects (
+s09331	melee damage,
+s09332	psychic sensitivity,
+s09333	Constitution factor of part health,
+s09334	the ability part of class power when this is the main ability) all ×
+s09335	 (racial affinity × talent multiply; clumsy only reduces positive modifiers)
+s09336	Part health 
+s09337	 (Constitution 
+s09338	 × level growth; Constitution below 10 doesn't reduce it)
+s09339	Melee
+s09340	Shooting
+s09341	Intellectual
+s09342	Medicine, Plants, Animals
+s09343	Social
+s09344	learning speed 
+s09345	minimum learning speed ×
+s09346	; capped stats converge past their cap the Isekai way.
+s09347	part health (Constitution)
+s09348	level growth
+s09349	total part health
+s09350	wound pain
+s09351	lethal damage threshold
+s09352	Medicine / Plants / Animals
+s09353	learning
+s09354	class power (main ability)
+s09355	arcane power (Intelligence)
+s09356	gift power (Charisma)
+s09357	Adventurer levels
+s09358	DND Rimlands 1.48.0 adds adventurer levels: everyone over 13 has levels 1-20 and six abilities: Strength, Dexterity, Constitution, Intelligence, Wisdom and Charisma.\n\nIn this save, 
+s09359	 colonists have had abilities generated from their skills, with levels estimated from kill records (+1 level per 10 humanlike kills, up to 5). See the "Adventurer" tab of the pawn inspect pane.
+s09360	 reached 
+s09361	legend Lv 
+s09362	 level
+s09363	 (from 
+s09364	 level)
+s09365	· Proficiency bonus +
+s09366	: now 
+s09367	 (+2 relative)
+s09368	· Proficiency bonus still +
+s09369	 level rises to +
+s09370	· Ability score improvement ×
+s09371	 (each 
+s09372	 points)
+s09373	: available ability points 
+s09374	; click +1 / +2 on the "Adventurer" tab, or pick a feat instead
+s09375	: assigned automatically
+s09376	· Available ability points remaining 
+s09377	· Legend ability points +
+s09378	 (remaining 
+s09379	· VPE path points +
+s09380	· Legendary class points +
+s09381	 (available 
+s09382	; click the "legendary classes" button or the tab's "Class" page)
+s09383	· Class points +
+s09384	; click the "choose class" button or the tab's "Class" page)
+s09385	· Melee hit and melee dodge each +
+s09386	% (now each +
+s09387	· Part health 
+s09388	 (by class hit die; unassigned levels count +4%)
+s09389	· Part health growth handed over to Isekai (coexistence mode)
+s09390	· Epic boon points +1
+s09391	 points to pick)
+s09392	· Became a legendary adventurer
+s09393	· Level 20 is maxed: can only level further after completing a DND event milestone and becoming a legendary adventurer
+s09394	 can assign starting DND abilities.\n\nAt the top of the "Adventurer" tab, assign the six abilities with 5e point buy: base values 8-15, 
+s09395	 points total (9-13 cost 1 each, 14 and 15 cost 2 each), race and background bonuses counted separately. A recommended assignment is already prefilled from skills; you can "all 8" and reassign. Click "confirm" to lock it; without confirming, the current assignment still takes effect.
+s09396	: assign starting abilities
+s09397	Assign starting abilities (
+s09398	 people)
+s09399	 leveled up
+s09400	 people leveled up
+s09401	Everyone over 13 has adventurer levels 1-20 and six abilities (Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma). Kills, defending against raids, completing quests and DND event milestones give XP, and daily work gives a little too; an ability score improvement every 4 levels. When off, no more XP is gained, abilities have no effect and the "Adventurer" tab is hidden; existing levels and abilities are kept.
+s09402	Adventurer XP multiplier: 
+s09403	Daily work XP multiplier: 
+s09404	off
+s09405	Every 50 skill XP = 1 × multiplier adventurer XP; the first 80 per day in full, after that ×0.5. 0 = off.
+s09406	1.71.0: the building "exploration notice board" (Misc) posts 6 tiered jobs each day: defend the home, expedition (monster lairs), clear strongholds. Tiers bronze / silver / gold / mithral / legendary need a top colony adventurer level of 1 / 5 / 9 / 13 / 17; completion gives silver and item rewards, and the takers gain "quest points × 0.5" adventurer XP. When off, no new jobs refresh; accepted ones continue as usual.
+s09407	Ability effect strength: 
+s09408	% (numeric effects of the six abilities, skill learning speed, part health growth; 0% means level only)
+s09409	Per-level ability effect: 
+s09410	% (per +2 ability: melee damage 
+s09411	, part health 
+s09412	, carrying capacity etc. ×

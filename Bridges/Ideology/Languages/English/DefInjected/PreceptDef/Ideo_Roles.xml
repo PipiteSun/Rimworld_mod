@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 神官 -->
+  <LP_Role_Cleric.label>priest</LP_Role_Cleric.label>
+  <!-- 侍奉文化之神的神职人员。神术消耗×0.75（和信徒、神选者的折扣相乘），社交影响+10%；会「神迹布道」（效力是原版改宗的2倍，额外消耗守护神神眷5）；殖民地有神官在地图上时，圣坛多一个「集体祈祷」按钮；庆典和灰袍葬礼有神官参加品质+15%。需要神祇模因或众神殿。 -->
+  <LP_Role_Cleric.description>A cleric serving the culture's god. Divine magic cost ×0.75 (multiplies with believer and chosen-one discounts), social impact +10%; can use "miracle preaching" (twice as effective as vanilla convert, costs an extra 5 patron deity divine favor); while a priest is on the map, the altar gets an extra "group prayer" button; festivals and grey-robed funerals get +15% quality with a priest present. Requires a deity meme or the pantheon.</LP_Role_Cleric.description>
+</LanguageData>

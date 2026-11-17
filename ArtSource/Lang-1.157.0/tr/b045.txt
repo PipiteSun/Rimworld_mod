@@ -1,0 +1,657 @@
+s10789	Power traits (gold / purple / rare talents / curses)
+s10790	, combat gifts\s
+s10791	: adding more when full pushes out the earliest one (the cap is changed in mod settings); mutually exclusive ones (between destinies, between rare talents, between curses) replace each other. Other traits can also be edited on Character Editor's own trait page.
+s10792	Gold power traits
+s10793	Purple power traits
+s10794	Rare talents
+s10795	Deeds
+s10796	Failed to\s
+s10797	add\s
+s10798	remove\s
+s10799	"
+s10800	" (conflicts with an existing trait)
+s10801	fire breath
+s10802	lightning breath
+s10803	poison breath
+s10804	acid breath
+s10805	cold breath
+s10806	Adaiax
+s10807	Kralagis
+s10808	Omeras
+s10809	Valaska
+s10810	Iliandra
+s10811	Sakaras
+s10812	Taroshe
+s10813	Vermithor
+s10814	Umbra
+s10815	Korgas
+s10816	Megrazi
+s10817	Skarvik
+s10818	Grimta
+s10819	Arsalos
+s10820	Blackflame
+s10821	Frostfang
+s10822	Azurethunder
+s10823	Venomthorn
+s10824	Irevis
+s10825	Purpura
+s10826	!
+s10827	dragon charm
+s10828	retreated
+s10829	 was badly hurt and retreated on beating wings. It won't forget this place.
+s10830	gold, gems and art
+s10831	silver
+s10832	's extortion
+s10833	) lands outside the colony with\s
+s10834	 guards. Its voice makes ears ring:\n\n"Hand over\s
+s10835	 worth of\s
+s10836	, and I'll spare you."\n\n
+s10837	Pay: it takes that much value straight from the stockpiles (taking other valuables if there's not enough), then leaves with its guards; there's a one-in-two chance it comes back in thirty days, asking half again as much.\n
+s10838	Parley: send a colonist to negotiate (difficulty\s
+s10839	; +5% per point of Charisma modifier and proficiency bonus); success halves the demand.
+s10840	A green dragon will also accept a colonist handed over as its servant.
+s10841	Refuse: it attacks at once, with its guards.\n\nNo answer within a day counts as refusing.
+s10842	's success chance\s
+s10843	base success chance\s
+s10844	's parley (success chance\s
+s10845	 succeeded: the demand is halved, now\s
+s10846	 failed: the demand stays the same.
+s10847	 attacks
+s10848	You refused its demand.
+s10849	 roars and pounces on the colony!
+s10850	's lair
+s10851	Dragon lair revealed
+s10852	's lair is revealed on the world map (6-15 cells from the colony), and vanishes in\s
+s10853	 days.\n\nThe lair's owner sleeps by its hoard and wakes when someone comes within 10 cells or fires a gun; in its lair it has 1 extra legendary resistance and takes a lair action every 10 seconds. Lure it more than 20 cells out of the lair and the lair actions stop. Treasure:\s
+s10854	 worth of gold, silver and jewels,\s
+s10855	 magic items
+s10856	 and a legendary reforging stone
+s10857	, maybe also a legendary reforging stone
+s10858	[DND Rimlands] True dragon behavior error:\s
+s10859	A day has passed and you didn't answer.
+s10860	: beside its corpse you found clues leading to its elder's lair
+s10861	Repelled\s
+s10862	; afterwards you found the direction it flew back
+s10863	[DND Rimlands] True dragon encounter error:\s
+s10864	Pay (
+s10865	 worth of\s
+s10866	Parley
+s10867	: send\s
+s10868	 to negotiate (success chance\s
+s10869	Already parleyed
+s10870	No colonist who can parley
+s10871	Hand over\s
+s10872	 as a servant
+s10873	Refuse
+s10874	 attacks
+s10875	) charges the colony with\s
+s10876	 guards!\n\nIt breathes\s
+s10877	 (half damage on a successful save);\s
+s10878	 has legendary resistance (blocks stun, mind control, control effects and pain downing) and legendary actions; those who see it must make a Wisdom save (difficulty\s
+s10879	, +5% success per point of ability modifier and proficiency bonus) or be frightened.
+s10880	Dies when downed; can't be captured.
+s10881	 woke up!
+s10882	 woke up (
+s10883	)!
+s10884	someone came close
+s10885	slipped
+s10886	[DND Rimlands] Lair action error:\s
+s10887	magma eruption
+s10888	earthquake
+s10889	volcanic smoke
+s10890	lightning strike
+s10891	sandstorm
+s10892	quicksand
+s10893	entangling thorns
+s10894	poison fog
+s10895	charming whispers
+s10896	acid spring
+s10897	swamp
+s10898	ice spikes
+s10899	freezing fog
+s10900	ice sheet
+s10901	Lair action:\s
+s10902	[DND Rimlands] Error generating dragon lair:\s
+s10903	Deciphered the dragon lair intel
+s10904	True dragon content isn't enabled ("chromatic dragons" or "dragon lair expedition" in settings)
+s10905	True dragon strength: ×
+s10906	True dragons and legendary monsters
+s10907	Chromatic dragons
+s10908	Red, blue, green, black and white chromatic dragons (young / adult / ancient). They have legendary resistance, legendary actions, frightful presence and breath weapons, and are the endgame foes of adventurer levels. When off, none of the events below appear.
+s10909	  Dragon extortion
+s10910	A young or adult dragon (white dragons don't extort) lands at the map edge demanding tribute: pay, parley or refuse. Needs the colony's highest adventurer level ≥8.
+s10911	  Dragon attack
+s10912	A dragon attacks directly with guards of its color. Young: highest level ≥8, points ≥1500; adult: ≥16, ≥4000; ancient: ≥
+s10913	, ≥9000, at most once per year. Cooldown 20-30 days.
+s10914	  Dragon lair expedition
+s10915	After repelling an adult dragon, 60% chance its lair is revealed; after killing one, 30% chance an ancient dragon's lair is revealed; when the colony's highest level is high enough, allied caravans sell dragon lair intel. Lairs hold lots of treasure, magic items and legendary reforging stones.
+s10916	  Dragon flyover tie-in
+s10917	When the colony has no adult force dragonborn, a dragon flyover has a 25% chance to end with a chromatic dragon landing to extort. With force dragonborn, flyovers stay the same.
+s10918	True dragon strength:\s
+s10919	% (multiplied onto health and damage)
+s10920	Extra true dragon health under Isekai: ×
+s10921	Extra true dragon damage under Isekai: ×
+s10922	Colony's highest level needed for ancient dragon attacks:\s
+s10923	\nPower:\s
+s10924	\n\nCost: mana\s
+s10925	 (have\s
+s10926	)\nPower:\s
+s10927	passive
+s10928	Cost:\s
+s10929	, free during mana surge
+s10930	Needs a ranged weapon.
+s10931	Beyond the current weapon's range (
+s10932	 cells).
+s10933	There's no cell to land on beside the target.
+s10934	Need to pick another ally.
+s10935	Beyond swap range (
+s10936	[DND Rimlands] Unknown class ability effect:\s
+s10937	knocked down
+s10938	leg shot
+s10939	vital spot
+s10940	Precise shot·
+s10941	on
+s10942	off
+s10943	 (left-click to toggle)\nRight-click: autocast settings (autocast while undrafted:\s
+s10944	, don't autocast below resource\s
+s10945	%)\n\nWhen on, it casts this ability by itself while drafted on standby or in combat: heals go first to downed and injured allies, buffs to allies who are fighting and don't have the effect yet, attack abilities at enemies in range, and area spells won't hit your own people. It won't interrupt your move orders.
+s10946	Turn off autocast
+s10947	Turn on autocast
+s10948	Already learned "
+s10949	Already knows "
+s10950	"
+s10951	's lore mastery:\s
+s10952	 passion raised, +2 levels.
+s10953	Master's flourish: rhythm +1
+s10954	Renowned: the ballads spread across the continent,\s
+s10955	 factions' goodwill +
+s10956	Has no effect on mechanoids
+s10957	, insectoids and mindless targets
+s10958	.
+s10959	Can't inspire yourself.
+s10960	Can only inspire humanlikes.
+s10961	Need to pick a position.
+s10962	Inspiration!
+s10963	the inspiration spread
+s10964	held back laughter
+s10965	Hahahaha!
+s10966	came to their senses
+s10967	Resisted!
+s10968	bard's song of dread
+s10969	bard's song of renown
+s10970	Song of dread
+s10971	 turned the colony's infamy (
+s10972	) into a song that chills the blood.\n\n
+s10973	 goodwill +
+s10974	, and the size of their next raid −10%.
+s10975	 wrote the colony's story into ballads and spread them to\s
+s10976	.\n\n
+s10977	Colonist mood "our legend" +5 (3 days).
+s10978	Power word kill
+s10979	Power word
+s10980	Power word heal
+s10981	slash
+s10982	mobile
+s10983	 (costs rhythm, always triggers)
+s10984	 (30% trigger, no rhythm cost)
+s10985	Blade flourish:\s
+s10986	\n\nCurrent move:\s
+s10987	\n\nMagical secrets: uses inspiration power, costs rhythm.
+s10988	Blade flourish·defensive
+s10989	Blade flourish·slashing
+s10990	Blade flourish·mobile
+s10991	Blade dance whirlwind ×
+s10992	Can only shout at humanlikes.
+s10993	It doesn't belong to any faction.
+s10994	It isn't in a raid group.
+s10995	This group doesn't fall for that (undead, outsiders, mechanoids, insectoids or led by a story boss).
+s10996	unmoved
+s10997	 persuaded\s
+s10998	's raid group: they gave up the raid and are leaving.\n\n
+s10999	 goodwill +10.
+s11000	started dancing
+s11001	revealed
+s11002	woke up laughing
+s11003	dazed
+s11004	flailing
+s11005	rose to the song
+s11006	Song of renown: sing it to whom?
+s11007	The colony's infamy is known (
+s11008	), so it can only become a song of dread for a hostile faction: goodwill +
+s11009	The chosen faction's goodwill +
+s11010	, colonist mood "our legend" +5.
+s11011	Singer:\s
+s11012	Factions to sing to (
+s11013	No factions to sing to.
+s11014	Goodwill\s
+s11015	  leader\s
+s11016	Sing to them
+s11017	Can only be used on enemies or others' buildings.
+s11018	Can only be used on humanlikes.
+s11019	Can only be used on enemies or prisoners.
+s11020	Needs an empty, standable cell.
+s11021	Beyond teleport range (
+s11022	resisted sleep
+s11023	asleep
+s11024	Repaired\s
+s11025	 items
+s11026	Ritual afterglow: no cooldown
+s11027	Child of the Weave: no cooldown
+s11028	mirror double
+s11029	shield absorbed
+s11030	Needs a living target.
+s11031	Sleep has no effect on mechanoids.
+s11032	The target's consciousness is already too low.
+s11033	dispelled by holy light
+s11034	Revivify has no effect on liches and necromantic constructs.
+s11035	Dead for more than 3 days; the soul has wandered far.
+s11036	The brain is gone; can't be revived.
+s11037	 opened their eyes again in the light of revivify.
+s11038	Death ward protected\s
+s11039	Needs a living animal.
+s11040	Can only be used on animals.
+s11041	This animal already has a master.
+s11042	calmed down
+s11043	tamed
+s11044	druid's soothing
+s11045	soothing failed
+s11046	dispelled\s
+s11047	invisible
+s11048	psychic resonance
+s11049	blossoms
+s11050	spontaneous combustion
+s11051	random teleport
+s11052	entropic surge
+s11053	chaos spirit
+s11054	Wild magic:\s
+s11055	resisted charm
+s11056	dazed
+s11057	Needs an empty standable cell.
+s11058	This cell is occupied.
+s11059	Choose the weather (lasts 1 day)
+s11060	Revert to true form
+s11061	End wild shape, return to humanlike form and re-equip the stowed weapon.
+s11062	Artifice power ×
+s11063	Crafting requires: artificer
+s11064	" (artificer\s
+s11065	Needs someone with an adventurer level.
+s11066	The previous manual's waiver hasn't been used yet.
+s11067	Already multiclassed in\s
+s11068	 classes.
+s11069	Needs to be conscious.
+s11070	Finished reading the adventurer's manual: the next adventurer class ignores skill requirements.
+s11071	\nClass feats (
+s11072	): +
+s11073	Doesn't have this ability
+s11074	Already learned
+s11075	No legendary class points (legendary adventurers get 1 each at levels 25 / 30 / 35 / 40)
+s11076	 (second legendary ability of the same class)
+s11077	 grasped the legendary ability "
+s11078	" (
+s11079	's indomitable spirit: should have fallen, but stood up again.
+s11080	broke free
+s11081	The gods
+s11082	 answered\s
+s11083	's prayer: the wounded are healed, the dead revived.
+s11084	Legendary "
+s11085	": +
+s11086	 (max level)
+s11087	 → next level\s
+s11088	 → next level ×
+s11089	 (including adventurer leveling to\s
+s11090	cap = 2 + class level
+s11091	cap = 2 + warlock level / 4 (rounded down)
+s11092	cap = 2 + bard level + Charisma modifier (at least 2)
+s11093	cap = 2 + (cleric + paladin level) / 2 (rounded up, total counted at most as\s
+s11094	cap = 2 + class level / 2 (rounded up)
+s11095	; each legendary class ability +
+s11096	\nNow:\s
+s11097	 + legendary\s
+s11098	\nTrickster mana: cap = 2 + rogue level / 2 (rounded up), now\s
+s11099	 (also needs\s
+s11100	Choose subclass
+s11101	Subclass "
+s11102	Extra Attack tier 1
+s11103	 (unarmed)
+s11104	Extra Attack tier 2
+s11105	Extra Attack tier 3
+s11106	Spellcasting bonus feat (spell feats)
+s11107	Eldritch blast\s
+s11108	 beams
+s11109	Favored enemy\s
+s11110	 kinds
+s11111	Each class level: part health +
+s11112	% (levels with unassigned class points +
+s11113	%; the total then minus\s
+s11114	%, then multiplied by Constitution; neither assigning points nor leveling up lowers it)
+s11115	  Weapon damage +
+s11116	% (melee and ranged), melee armor penetration +
+s11117	% (
+s11118	all martial classes
+s11119	classes using\s
+s11120	\s
+s11121	 total levels, per level above 1, up to +
+s11122	Resource\s
+s11123	Level table:
+s11124	Next level grants (
+s11125	; the adventurer must first reach\s
+s11126	Weapon damage +
+s11127	%, melee armor penetration +
+s11128	, gains\s
+s11129	 (proficiency bonus)
+s11130	disarmed
+s11131	Melee cooldown ×
+s11132	, follow-up\s
+s11133	, shooting cooldown ×
+s11134	Extra Attack (martial classes):\nTier 1: fighter, paladin, monk, barbarian or ranger level 5 (rogues don't get it and use Sneak Attack instead): melee cooldown ×0.80, follow-up 15%, shooting cooldown ×0.85\nTier 2: fighter level 10: melee cooldown ×0.70, follow-up 25%, shooting cooldown ×0.75\nTier 3: fighter level 15: melee cooldown ×0.60, follow-up 35%, shooting cooldown ×0.65\n\nFor people who are only monks, it only applies unarmed.\nFollow-up: after a normal melee hit, strike once more using vanilla melee resolution (Isekai Strength and weapon quality apply as usual); follow-ups don't trigger further follow-ups.
+s11135	Extra Attack tier\s
+s11136	:\s
+s11137	Extra Attack: only applies unarmed
+s11138	Extra Attack: unlocks at martial class level 5
+s11139	Fighting spirit: this hour +
+s11140	\nSummons, allies and prisoners don't count.
+s11141	Martial class level\s
+s11142	: maneuver power and marksmanship power +
+s11143	%|For each level the total of martial classes (fighter, monk, paladin, barbarian, ranger, rogue) is above 1, +2%, up to +40%. Only adds to Melee and Shooting class power.
+s11144	follow-up
+s11145	parried
+s11146	Lay on hands\s
+s11147	cured food poisoning
+s11148	purged toxins
+s11149	Legendary classes (
+s11150	Still\s
+s11151	 legendary class points: open the class window to learn a legendary class ability (that class at level\s
+s11152	, a second one of the same class at\s
+s11153	).
+s11154	 class points: open the class window to add 1 level to fighter, monk or paladin. Points can also be added on the "Class" page of the "Adventurer" tab.
+s11155	Choose favored enemy (
+s11156	Ranger's favored enemy: choose a creature type for +20% damage and better hit chance against it.
+s11157	 level allows choosing another one. Can't be changed once chosen.
+s11158	Precise shot:\s
+s11159	Switch precise shot mode:\nVital spot: damage ×(1.5 + 0.5 × marksmanship power), armor penetration +30%.\nLeg shot: damage ×0.7, target movement ×0.5 for 10 seconds.\nHand shot: damage ×0.5, with a chance to knock the weapon away: success chance = 50% + 10% × (own Dexterity modifier + proficiency bonus − target's Strength modifier − proficiency bonus) + 20% × (marksmanship power − 1), limited to 15%-90%, halved against body size 2 or more.
+s11160	humanlike
+s11161	mechanoid
+s11162	heavy blow
+s11163	ambush
+s11164	dodged
+s11165	lunge
+s11166	Favored enemy:\s
+s11167	not chosen
+s11168	 (can still choose\s
+s11169	)
+s11170	|Favored enemy (ranger level 1, another at level\s
+s11171	): damage against it +
+s11172	, melee hit +
+s11173	, shooting hit ×
+s11174	Sneak attack: damage +
+s11175	|Sneak attack (rogue): triggers when the target is downed, stunned, fleeing, not targeting you, or has an ally of yours next to it, at most once per second. Damage ×(1 + (0.2 + 0.03 × (rogue level − 1)) × trickery power).
+s11176	's favored enemies
+s11177	Can still choose\s
+s11178	 (can't be changed once chosen)
+s11179	Favored enemies are full
+s11180	 (chosen)
+s11181	Made\s
+s11182	 a favored enemy.
+s11183	Choose subclass (
+s11184	: "
+s11185	Subclass abilities (by the chosen subclass)
+s11186	class crystal
+s11187	)
+s11188	Mastered
+s11189	Needs the "
+s11190	" arcane crystal (sold by the Mana Lake),\s
+s11191	 level, and takes 1 arcane slot.
+s11192	\n\nAdventurer levels\s
+s11193	 each grant 1 legendary class point; the first needs\s
+s11194	 level, the second\s
+s11195	 level.
+s11196	Arcane slots
+s11197	Arcane slot\s
+s11198	 (legendary)
+s11199	Spellbook
+s11200	Cantrips learnable per level: 3 at level 1, +1 each at levels 4 / 10.
+s11201	Write into the spellbook (
+s11202	 per level, scrolls can also be copied), prepare daily (wizard level + Intelligence modifier).
+s11203	Mystic arcanum
+s11204	Mystic arcanum·
+s11205	 (choose 1, once per day)
+s11206	Warlock\s
+s11207	 level: choose 1 from these\s
+s11208	 spells, castable once per day without pact mana:\n
+s11209	Preparing class: automatically knows every spell on the list of castable circles and prepares some each day.
+s11210	Known-spells class: known cap = class level + 1, 1 can be replaced per level.
+s11211	Spell list
+s11212	Magical secrets
+s11213	Magical secrets (choose\s
+s11214	 from any class's spell list)
+s11215	Bard levels\s
+s11216	: choose\s
+s11217	 each from any class's spell list (including the wizard spellbook), by the circles you can cast; they count as bard spells and cost rhythm.
+s11218	\nChosen:\s
+s11219	, known\s
+s11220	 available from level.
+s11221	Legendary class abilities (legendary class points\s
+s11222	This class has no abilities to list
+s11223	Gained
+s11224	To choose
+s11225	Needs legendary class points
+s11226	Needs adventurer\s
+s11227	Needs Lv\s
+s11228	Can't meditate while drafted
+s11229	downed
+s11230	in combat
+s11231	Meditating to recover
+s11232	Meditative rest: class resources refilled
+s11233	Meditative rest
+s11234	A body that doesn't need sleep sits in meditation instead of a long rest: meditate in place for\s
+s11235	 hours, and at the end all class resources (fighting spirit, ki, divine favor, mana, pact mana) are refilled. Interruptions mean no effect.\nNormally, when not in combat and undrafted, 1/4 of the cap also recovers automatically every 6 hours.
+s11236	Doesn't have this subclass
+s11237	 (can't be changed once chosen)
+s11238	 set out on "
+s11239	, still needs to choose:\s
+s11240	Doesn't have this branch yet
+s11241	Already chosen (can't be changed)
+s11242	No such option
+s11243	Already chose "
+s11244	 reached\s
+s11245	 level and can choose a subclass (the "choose subclass" button, or the class page of the adventurer tab).
+s11246	Not enough mana (
+s11247	knocked prone
+s11248	Primeval awareness:\s
+s11249	 favored enemies.
+s11250	's ranger companion\s
+s11251	 died; a new one can be chosen.
+s11252	Share spells: saved the companion
+s11253	Spell thief:\s
+s11254	Eagle glide must be used while raging.
+s11255	glide
+s11256	Can only pick an item or a door.
+s11257	The ranger companion isn't nearby (use "choose companion" first).
+s11258	Pick an enemy, an ally or an item.
+s11259	Can't be used on the companion itself.
+s11260	Beyond\s
+s11261	 range (
+s11262	mage hand interference
+s11263	resisted intimidation
+s11264	scared off
+s11265	bear spirit
+s11266	wolf spirit
+s11267	bear's taunt
+s11268	eagle glide
+s11269	resisted death strike
+s11270	touched nothing
+s11271	took nothing
+s11272	Pickpocket:\s
+s11273	magical ambush·sleep
+s11274	multiattack·volley
+s11275	multiattack·whirlwind
+s11276	companion pounce
+s11277	companion fetch
+s11278	DND Rimlands: barbarians, rangers and rogues now have subclasses (choose one at class level 3, abilities gained at levels 3 / 7 / 11 / 15), and each class also has 2 general abilities (gained automatically at levels 7 and 11).\n\n
+s11279	\n\nSelect a colonist and click the "choose subclass" button, or choose on the "Class" page of the "Adventurer" tab. Can't be changed once chosen.
+s11280	Subclass: not chosen
+s11281	Subclass:\s
+s11282	 level to choose
+s11283	general
+s11284	 level)\n\n
+s11285	not mastered
+s11286	Choose branch
+s11287	Mana\s
+s11288	Companion:\s
+s11289	Placed by:\s
+s11290	 level: choose a subclass
+s11291	: choose one
+s11292	's subclass
+s11293	No subclass or branch to choose right now (subclasses can be chosen at class level\s
+s11294	; some branches only at higher levels).
+s11295	Can't be changed once chosen. Click on the left to view, click the button on the right twice to confirm.
+s11296	 subclasses (
+s11297	 level choice)
+s11298	" branches (
+s11299	(no further description)
+s11300	Other options
+s11301	Subclass abilities (
+s11302	now\s
+s11303	Afterwards still needs to choose\s
+s11304	Choose "
+s11305	"?
+s11306	Choose "
+s11307	Click twice to confirm (can't be changed once chosen)
+s11308	  wild level\s
+s11309	  body size\s
+s11310	  health\s
+s11311	  master:\s
+s11312	you
+s11313	's ranger companion
+s11314	Current companion:\s
+s11315	No ranger companion right now
+s11316	Switching releases the previous one. The companion's wild level grows with your adventurer level, and it deals +20% damage to your favored enemies.
+s11317	Colony animals on this map (
+s11318	No colony animals on this map.
+s11319	 (current)
+s11320	Current companion
+s11321	Bond as companion
+s11322	 bonded as ranger companions.
+s11323	At class level\s
+s11324	, a subclass can be chosen (3 each for barbarian, ranger and rogue), with subclass abilities gained at class levels 3 / 7 / 11 / 15; some subclasses also need a branch chosen. Can't be changed once chosen.
+s11325	Choose companion
+s11326	Change companion
+s11327	Beast master: choose a colony animal on the same map as your ranger companion (set as master). The companion's wild level grows with your adventurer level, and it deals +20% damage to your favored enemies.
+s11328	Needs a weapon in hand to bind.
+s11329	Recall bonded weapon
+s11330	Weapon bond:\s
+s11331	No blood in the body; can't cast blood curses
+s11332	Not enough hemocraft (
+s11333	Too much blood loss (
+s11334	, cap\s
+s11335	 broke their oath (
+s11336	): divine favor recovery halved for 1 day, channel oath can't be used.
+s11337	Oathbreaking; channel oath can't be used
+s11338	Today's channel oath uses are spent
+s11339	Cost: hemocraft\s
+s11340	Cost: blood loss\s
+s11341	% (current blood loss\s
+s11342	Cost: channel oath 1 (remaining today\s
+s11343	Has a psychic implant: costs no fighting spirit, adds\s
+s11344	 neural heat instead (uses fighting spirit as usual when neural heat can't fit)
+s11345	No blood in the body; can't choose the blood curse school
+s11346	Beyond range (
+s11347	Mechanoids have no mind.
+s11348	Can only dominate humanlikes.
+s11349	Story bosses and legendary units can't be dominated.
+s11350	Already a prisoner.
+s11351	The target has no flesh to sculpt.
+s11352	Need to pick a colonist.
+s11353	The target isn't having a mental break.
+s11354	resisted telekinetic shove
+s11355	no blood, no effect
+s11356	broke the blood bond
+s11357	flesh sculpting: bleeding stopped
+s11358	Flesh sculpting\s
+s11359	broke the flesh prison
+s11360	Flesh regeneration:\s
+s11361	Cure all ailments (
+s11362	)
+s11363	Restore youth
+s11364	Conqueror's presence
+s11365	laid down arms
+s11366	's reconciliation:\s
+s11367	 enemies laid down their weapons and left
+s11368	goodwill +15
+s11369	resisted domination
+s11370	's mind domination, temporarily joining for 1 day.
+s11371	Stayed willingly
+s11372	 chose to stay after the domination ended.
+s11373	Domination ended
+s11374	 broke free of mind domination and became an enemy again.
+s11375	Must be on a map.
+s11376	Not enough materials: needs\s
+s11377	 steel
+s11378	 components
+s11379	 (unforbidden on the map).
+s11380	Recall steel defender
+s11381	's steel defender
+s11382	auto-rebuild
+s11383	entangled by tentacles
+s11384	defender guards master
+s11385	arcane jolt·heal
+s11386	's steel defender was smashed: it can be rebuilt with 20 steel within 1 day.
+s11387	Already permanently fixed
+s11388	At most\s
+s11389	 infusions at once (dismiss one first)
+s11390	killed someone helpless
+s11391	released a prisoner
+s11392	Overreach backlash\s
+s11393	unchanged
+s11394	Archivist:\s
+s11395	knocked down
+s11396	held steady
+s11397	Must stand in darkness yourself (light below 30%).
+s11398	The destination must also be in darkness.
+s11399	Must be able to see the destination.
+s11400	Must stand in darkness (light below 30%) to become a shadow.
+s11401	No enemies currently afflicted by quivering palm.
+s11402	There's no natural ground here to change (floors, buildings, items, pawns, lava etc. can't be changed).
+s11403	Needs an open space.
+s11404	No weapon in hand and no armor on the body to bless.
+s11405	Not enough unforbidden steel on the map (needs 50).
+s11406	Brawler technique:\s
+s11407	Unified body\s
+s11408	Awakened spellbook:\s
+s11409	Dragon strike:\s
+s11410	Earth shaping:\s
+s11411	Dismiss aura of death
+s11412	Starry form:\s
+s11413	No gear that can be blessed
+s11414	quivering palm: fell
+s11415	nature's sanctuary
+s11416	Dragon breath·
+s11417	Ancient dragon stance·fury burst
+s11418	Cosmic omen: weal
+s11419	Cosmic omen: woe
+s11420	frigid
+s11421	temperate
+s11422	tropical
+s11423	blazing sun beam
+s11424	entangling roots
+s11425	plague fog
+s11426	deep water
+s11427	shallow water
+s11428	marsh
+s11429	mud
+s11430	soil
+s11431	rich soil
+s11432	sand
+s11433	starlight arrow
+s11434	Today's channel divinity uses are spent
+s11435	Cost: channel divinity 1 (remaining today\s
+s11436	Preserve life\s
+s11437	This item has already received the forge blessing
+s11438	Already enhanced to +
+s11439	Blessing of the forge:\s
+s11440	Artisan's blessing:\s
+s11441	healing
+s11442	swiftness
+s11443	lightness
+s11444	clarity
+s11445	courage

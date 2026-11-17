@@ -34,7 +34,7 @@ namespace LichPhylactery {
     PatchTraitTool(harmony);
     isekaiButton=ModsConfig.IsActive(IsekaiPatchId) && ModsConfig.IsActive(Adventurer.IsekaiId);
     Active=true;
-   }catch(Exception e){Log.Warning("[LichPhylactery] 角色编辑器联动初始化失败："+e);}
+   }catch(Exception e){Log.Warning("[LichPhylactery] 角色编辑器联动初始化失败：".Loc()+e);}
   }
   public static Pawn EditorPawn(){try{var api=apiProp?.GetValue(null);return api==null?null:pawnProp.GetValue(api) as Pawn;}catch{return null;}}
   static int Prop(PropertyInfo pi,object inst,int fallback){try{return pi==null?fallback:(int)pi.GetValue(pi.GetGetMethod(true).IsStatic?null:inst);}catch{return fallback;}}
@@ -52,8 +52,8 @@ namespace LichPhylactery {
     GUI.color=panel!=null?Color.yellow:Color.white;
     if(Widgets.ButtonText(r,"DND")){if(panel!=null)panel.Close();else Find.WindowStack.Add(new Window_DndEditor(p,__instance));}
     GUI.color=Color.white;
-    TooltipHandler.TipRegion(r,"打开 DND 编辑面板：冒险者等级、六维属性、职业与子职业、专长、史诗恩赐、强力特性与武艺天赋。");
-   }catch(Exception e){GUI.color=Color.white;if(logged.Add(e.GetType()))Log.Error("[LichPhylactery] 角色编辑器 DND 按钮出错（同类错误不再提示）："+e);}
+    TooltipHandler.TipRegion(r,"打开 DND 编辑面板：冒险者等级、六维属性、职业与子职业、专长、史诗恩赐、强力特性与武艺天赋。".Loc());
+   }catch(Exception e){GUI.color=Color.white;if(logged.Add(e.GetType()))Log.Error("[LichPhylactery] 角色编辑器 DND 按钮出错（同类错误不再提示）：".Loc()+e);}
   }
 
   // ---------- 编辑器自己的特性栏 ----------
@@ -73,10 +73,12 @@ namespace LichPhylactery {
     var before=__state??new List<Trait>();
     foreach(var t in before.Where(t=>!now.Contains(t)).ToList())TraitLost(p,t);
     foreach(var t in now.Where(t=>!before.Contains(t)).ToList())TraitGained(p,t);
-   }catch(Exception e){if(logged.Add(e.GetType()))Log.Error("[LichPhylactery] 角色编辑器特性同步出错（同类错误不再提示）："+e);}
+   }catch(Exception e){if(logged.Add(e.GetType()))Log.Error("[LichPhylactery] 角色编辑器特性同步出错（同类错误不再提示）：".Loc()+e);}
   }
   public static void TraitGained(Pawn p,Trait t){
    if(t==null)return;t.pawn=p;
+   // 1.164.1：编辑器特性栏不看互斥（稀有天赋之间、天命之间、诅咒之间），这里照 HeroTraits.Give 去掉和新加的互斥的那一个，免得两个都挂着、只有一个生效。
+   if(HeroTraits.IsSlot(t.def))foreach(var x in p.story.traits.allTraits.Where(x=>x!=t && HeroTraits.IsSlot(x.def) && (x.def==t.def || x.def.ConflictsWith(t.def) || t.def.ConflictsWith(x.def))).ToList())p.story.traits.RemoveTrait(x);
    HeroGain.Postfix(p,t);DndGain.Postfix(p,t);MoreGain.Postfix(p,t);CombatGiftGain.Postfix(p,t);TalentGain.Postfix(p,t);
    HeroTraits.Invalidate(p);CombatGifts.Invalidate(p);DndTraits.Invalidate(p);MoreTraits.Invalidate(p);Adventurer.Get(p)?.Dirty();
   }
@@ -176,7 +178,7 @@ namespace LichPhylactery {
  public class Window_DndEditor : Window {
   public Pawn pawn;readonly Window editor;
   public int tab;Vector2 scroll;float viewH=600f;
-  static readonly string[] Tabs={"等级与属性","职业","专长与恩赐","特性"};
+  static readonly string[] Tabs={"等级与属性".Loc(),"职业".Loc(),"专长与恩赐".Loc(),"特性".Loc()};
   public Window_DndEditor(Pawn p,Window editor){
    pawn=p;this.editor=editor;
    doCloseX=true;draggable=true;closeOnClickedOutside=false;absorbInputAroundWindow=false;preventCameraMotion=false;forcePause=false;onlyOneOfTypeAllowed=true;
@@ -195,7 +197,7 @@ namespace LichPhylactery {
 
   public override void DoWindowContents(Rect inRect){
    if(!CharEditorCompat.EditorOpen() || pawn==null || pawn.Destroyed && !pawn.Dead){Close(false);return;}
-   Text.Font=GameFont.Medium;Widgets.Label(new Rect(0f,0f,inRect.width-30f,32f),"DND："+pawn.LabelShortCap);Text.Font=GameFont.Small;
+   Text.Font=GameFont.Medium;Widgets.Label(new Rect(0f,0f,inRect.width-30f,32f),"DND：".Loc()+pawn.LabelShortCap);Text.Font=GameFont.Small;
    float tw=inRect.width/Tabs.Length;
    for(int i=0;i<Tabs.Length;i++){var r=new Rect(i*tw,36f,tw-4f,28f);GUI.color=tab==i?Color.yellow:Color.white;if(Widgets.ButtonText(r,Tabs[i])){tab=i;scroll=Vector2.zero;}}
    GUI.color=Color.white;
@@ -230,38 +232,38 @@ namespace LichPhylactery {
   }
 
   float NoAdventurer(float w){
-   float y=Head(0f,w,"没有冒险者状态");
-   if(!Adventurer.Enabled)return Note(y,w,"模组设置里关掉了冒险者等级。");
-   if(!Adventurer.Eligible(pawn))return Note(y,w,"这个角色不能成为冒险者（需要类人、满 "+Adventurer.MinAge+" 岁，且不是构装体 / 召唤物）。");
-   y=Note(y,w,"这个角色还没有冒险者等级和六维属性。");
-   if(Widgets.ButtonText(new Rect(0f,y,200f,30f),"添加冒险者状态"))Adventurer.TryAdd(pawn,1,true);
+   float y=Head(0f,w,"没有冒险者状态".Loc());
+   if(!Adventurer.Enabled)return Note(y,w,"模组设置里关掉了冒险者等级。".Loc());
+   if(!Adventurer.Eligible(pawn))return Note(y,w,"这个角色不能成为冒险者（需要类人、满 ".Loc()+Adventurer.MinAge+" 岁，且不是构装体 / 召唤物）。".Loc());
+   y=Note(y,w,"这个角色还没有冒险者等级和六维属性。".Loc());
+   if(Widgets.ButtonText(new Rect(0f,y,200f,30f),"添加冒险者状态".Loc()))Adventurer.TryAdd(pawn,1,true);
    return y+34f;
   }
 
   // ---------- 等级与属性 ----------
   float LevelTab(Hediff_Adventurer h,float w){
-   float y=Head(0f,w,"冒险者等级");
-   y=IntRow(y,w,"等级",h.level,v=>CharEditorCompat.SetLevel(h,v),1,h.LevelCap,"上限 "+h.LevelCap+"，熟练加值 +"+h.Proficiency,"升级照常发属性提升、传奇属性点和恩赐点；降级不收回已经发的（可以在下面直接改点数）。Shift 点 ±5。");
-   y=Toggle(y,w,"传奇冒险者（解锁 21～40 级）",h.legendary,v=>CharEditorCompat.SetLegendary(h,v),"关掉时等级降回 20。"+(Legend.On?"":"\n模组设置里关掉了传奇等级：开着也只到 20 级。"));
-   y=Note(y,w,"经验 "+h.xp.ToString("0")+" / 下一级 "+h.NextXp.ToString("0")+"（设等级时经验取该级下限）");
-   y=Head(y+4f,w,"六维属性");
+   float y=Head(0f,w,"冒险者等级".Loc());
+   y=IntRow(y,w,"等级".Loc(),h.level,v=>CharEditorCompat.SetLevel(h,v),1,h.LevelCap,"上限 ".Loc()+h.LevelCap+"，熟练加值 +".Loc()+h.Proficiency,"升级照常发属性提升、传奇属性点和恩赐点；降级不收回已经发的（可以在下面直接改点数）。Shift 点 ±5。".Loc());
+   y=Toggle(y,w,"传奇冒险者（解锁 21～40 级）".Loc(),h.legendary,v=>CharEditorCompat.SetLegendary(h,v),"关掉时等级降回 20。".Loc()+(Legend.On?"":"\n模组设置里关掉了传奇等级：开着也只到 20 级。".Loc()));
+   y=Note(y,w,"经验 ".Loc()+h.xp.ToString("0")+" / 下一级 ".Loc()+h.NextXp.ToString("0")+"（设等级时经验取该级下限）".Loc());
+   y=Head(y+4f,w,"六维属性".Loc());
    for(int a=0;a<6;a++){int i=a;
-    string extra="有效 "+h.Eff(i)+" / 上限 "+h.Cap(i)+"　"+Adventurer.Signed(h.Mod(i))+"　×"+h.AMult(i).ToString("0.00");
-    y=IntRow(y,w,Adventurer.Names[i],h.scores[i],v=>CharEditorCompat.SetScore(h,i,v),Adventurer.ScoreMin,CharEditorCompat.MaxScore,extra,"基础值（专长、武艺天赋、职业的加值另算）。超过上限的部分保留，但效果按上限算。");
+    string extra="有效 ".Loc()+h.Eff(i)+" / 上限 ".Loc()+h.Cap(i)+"　".Loc()+Adventurer.Signed(h.Mod(i))+"　×".Loc()+h.AMult(i).ToString("0.00");
+    y=IntRow(y,w,Adventurer.Names[i],h.scores[i],v=>CharEditorCompat.SetScore(h,i,v),Adventurer.ScoreMin,CharEditorCompat.MaxScore,extra,"基础值（专长、武艺天赋、职业的加值另算）。超过上限的部分保留，但效果按上限算。".Loc());
    }
-   if(h.buyOpen){y=Note(y,w,"正在分配初始购点（还剩 "+h.BuyLeft+" 点）。");if(Widgets.ButtonText(new Rect(0f,y,180f,26f),"结束初始购点"))h.ConfirmBuy();y+=30f;}
-   y=Head(y+4f,w,"待分配点数");
-   y=IntRow(y,w,"属性提升",h.pendingASI,v=>{h.pendingASI=v;h.Dirty();},0,99,"每次 "+h.ASIPoints+" 点，或换一个专长");
-   y=IntRow(y,w,"拆开剩余的点",h.asiLeft,v=>{h.asiLeft=v;h.Dirty();},0,99);
-   y=IntRow(y,w,"职业奖励专长",h.fighterFeats,v=>{h.fighterFeats=v;h.Dirty();},0,99);
-   y=IntRow(y,w,"施法奖励专长",h.casterFeats,v=>{h.casterFeats=v;h.Dirty();},0,99); // 1.140.0
-   y=IntRow(y,w,"史诗恩赐点",h.boonPoints,v=>{h.boonPoints=v;h.Dirty();},0,99);
-   y=IntRow(y,w,"传奇属性点",h.legendPoints,v=>{h.legendPoints=v;h.Dirty();},0,999);
+   if(h.buyOpen){y=Note(y,w,"正在分配初始购点（还剩 ".Loc()+h.BuyLeft+" 点）。".Loc());if(Widgets.ButtonText(new Rect(0f,y,180f,26f),"结束初始购点".Loc()))h.ConfirmBuy();y+=30f;}
+   y=Head(y+4f,w,"待分配点数".Loc());
+   y=IntRow(y,w,"属性提升".Loc(),h.pendingASI,v=>{h.pendingASI=v;h.Dirty();},0,99,"每次 ".Loc()+h.ASIPoints+" 点，或换一个专长".Loc());
+   y=IntRow(y,w,"拆开剩余的点".Loc(),h.asiLeft,v=>{h.asiLeft=v;h.Dirty();},0,99);
+   y=IntRow(y,w,"职业奖励专长".Loc(),h.fighterFeats,v=>{h.fighterFeats=v;h.Dirty();},0,99);
+   y=IntRow(y,w,"施法奖励专长".Loc(),h.casterFeats,v=>{h.casterFeats=v;h.Dirty();},0,99); // 1.140.0
+   y=IntRow(y,w,"史诗恩赐点".Loc(),h.boonPoints,v=>{h.boonPoints=v;h.Dirty();},0,99);
+   y=IntRow(y,w,"传奇属性点".Loc(),h.legendPoints,v=>{h.legendPoints=v;h.Dirty();},0,999);
    if(h.classes==null)h.classes=new ClassData();
-   y=IntRow(y,w,"传奇职业点",h.classes.legendaryPoints,v=>h.classes.legendaryPoints=v,0,99);
-   y=IntRow(y,w,"职业免门槛次数",h.classes.freeUnlocks,v=>h.classes.freeUnlocks=v,0,9,null,"下一个新职业跳过技能 / 兼修门槛（冒险者手册）。");
-   y=Note(y,w,"这些点在原版「冒险者」分页里分配。");
-   y=Head(y+4f,w,"传奇属性点（已投）");
+   y=IntRow(y,w,"传奇职业点".Loc(),h.classes.legendaryPoints,v=>h.classes.legendaryPoints=v,0,99);
+   y=IntRow(y,w,"职业免门槛次数".Loc(),h.classes.freeUnlocks,v=>h.classes.freeUnlocks=v,0,9,null,"下一个新职业跳过技能 / 兼修门槛（冒险者手册）。".Loc());
+   y=Note(y,w,"这些点在原版「冒险者」分页里分配。".Loc());
+   y=Head(y+4f,w,"传奇属性点（已投）".Loc());
    if(h.legendSpent==null || h.legendSpent.Length!=Legend.Count)h.legendSpent=new int[Legend.Count];
    for(int i=0;i<Legend.Count;i++){int k=i;y=IntRow(y,w,Legend.Names[k],h.legendSpent[k],v=>{h.legendSpent[k]=v;h.Dirty();},0,999);}
    return y;
@@ -270,8 +272,8 @@ namespace LichPhylactery {
   // ---------- 职业 ----------
   float ClassTab(Hediff_Adventurer h,float w){
    if(h.classes==null)h.classes=new ClassData();
-   float y=Head(0f,w,"职业");
-   y=Note(y,w,"已用职业等级 "+ClassSystem.Total(h)+" / 冒险者等级给的 "+ClassSystem.Budget(h)+"。这里改不看技能和兼修门槛，也可以超过预算或兼修超过 "+ClassSystem.MaxClasses+" 个；降级会收回不再应得的职业能力。");
+   float y=Head(0f,w,"职业".Loc());
+   y=Note(y,w,"已用职业等级 ".Loc()+ClassSystem.Total(h)+" / 冒险者等级给的 ".Loc()+ClassSystem.Budget(h)+"。这里改不看技能和兼修门槛，也可以超过预算或兼修超过 ".Loc()+ClassSystem.MaxClasses+" 个；降级会收回不再应得的职业能力。".Loc());
    foreach(var c in ClassSystem.All){
     int lv=ClassSystem.Level(h,c);var cc=c;
     GUI.color=lv>0?c.color:Color.white;
@@ -281,47 +283,47 @@ namespace LichPhylactery {
     var opts=ClassSubclass.Options(c).ToList();
     if(opts.Count>0){
      var cur=ClassSubclass.Picked(h,c);var r=new Rect(24f,y,w-24f,26f);
-     Text.Anchor=TextAnchor.MiddleLeft;Widgets.Label(new Rect(24f,y,126f,26f),"子职业");Text.Anchor=TextAnchor.UpperLeft;
-     if(Widgets.ButtonText(new Rect(156f,y+1f,220f,24f),cur?.LabelCap.Resolve()??"（未选）")){
-      var menu=new List<FloatMenuOption>{new FloatMenuOption("（不选）",()=>CharEditorCompat.SetSubclass(h,cc,null))};
+     Text.Anchor=TextAnchor.MiddleLeft;Widgets.Label(new Rect(24f,y,126f,26f),"子职业".Loc());Text.Anchor=TextAnchor.UpperLeft;
+     if(Widgets.ButtonText(new Rect(156f,y+1f,220f,24f),cur?.LabelCap.Resolve()??"（未选）".Loc())){
+      var menu=new List<FloatMenuOption>{new FloatMenuOption("（不选）".Loc(),()=>CharEditorCompat.SetSubclass(h,cc,null))};
       foreach(var s in opts){var ss=s;menu.Add(new FloatMenuOption(s.LabelCap,()=>CharEditorCompat.SetSubclass(h,cc,ss)));}
       Find.WindowStack.Add(new FloatMenu(menu));
      }
      if(cur!=null)TooltipHandler.TipRegion(r,cur.description);
-     if(lv<ClassSubclass.PickLevelFor(c)){GUI.color=Color.gray;Text.Anchor=TextAnchor.MiddleLeft;Widgets.Label(new Rect(384f,y,w-384f,26f),"平时 "+ClassSubclass.PickLevelFor(c)+" 级才选");Text.Anchor=TextAnchor.UpperLeft;GUI.color=Color.white;}
+     if(lv<ClassSubclass.PickLevelFor(c)){GUI.color=Color.gray;Text.Anchor=TextAnchor.MiddleLeft;Widgets.Label(new Rect(384f,y,w-384f,26f),"平时 ".Loc()+ClassSubclass.PickLevelFor(c)+" 级才选".Loc());Text.Anchor=TextAnchor.UpperLeft;GUI.color=Color.white;}
      y+=28f;
      if(cur!=null)foreach(var ch in cur.choices){
       var chh=ch;int v=ClassSubclass.Choice(h,ch.key);
       Text.Anchor=TextAnchor.MiddleLeft;Widgets.Label(new Rect(40f,y,110f,26f),ch.label);Text.Anchor=TextAnchor.UpperLeft;
-      if(Widgets.ButtonText(new Rect(156f,y+1f,220f,24f),v>=0 && v<ch.options.Count?ch.options[v]:"（未选）")){
-       var menu=new List<FloatMenuOption>{new FloatMenuOption("（不选）",()=>CharEditorCompat.SetChoice(h,chh.key,-1))};
+      if(Widgets.ButtonText(new Rect(156f,y+1f,220f,24f),v>=0 && v<ch.options.Count?ch.options[v]:"（未选）".Loc())){
+       var menu=new List<FloatMenuOption>{new FloatMenuOption("（不选）".Loc(),()=>CharEditorCompat.SetChoice(h,chh.key,-1))};
        for(int i=0;i<ch.options.Count;i++){int k=i;menu.Add(new FloatMenuOption(chh.options[k],()=>CharEditorCompat.SetChoice(h,chh.key,k)));}
        Find.WindowStack.Add(new FloatMenu(menu));
       }
-      if(lv<ch.level){GUI.color=Color.gray;Text.Anchor=TextAnchor.MiddleLeft;Widgets.Label(new Rect(384f,y,w-384f,26f),"平时 "+ch.level+" 级才选");Text.Anchor=TextAnchor.UpperLeft;GUI.color=Color.white;}
+      if(lv<ch.level){GUI.color=Color.gray;Text.Anchor=TextAnchor.MiddleLeft;Widgets.Label(new Rect(384f,y,w-384f,26f),"平时 ".Loc()+ch.level+" 级才选".Loc());Text.Anchor=TextAnchor.UpperLeft;GUI.color=Color.white;}
       y+=28f;
      }
     }
    }
    if(pawn.abilities!=null){
     var known=pawn.abilities.abilities.Where(a=>ClassSystem.ClassOf(a.def)!=null).Select(a=>a.def.label).ToList();
-    y=Note(y+4f,w,"已有职业能力（"+known.Count+"）："+(known.Count==0?"无":string.Join("、",known)));
+    y=Note(y+4f,w,"已有职业能力（".Loc()+known.Count+"）：".Loc()+(known.Count==0?"无".Loc():string.Join("、".Loc(),known)));
    }
    return y;
   }
 
   // ---------- 专长与恩赐 ----------
   float FeatTab(Hediff_Adventurer h,float w){
-   float y=Head(0f,w,"专长（"+h.feats.Count+"）");
-   y=Note(y,w,"勾选直接获得、取消直接失去，不看等级和前置，也不占属性提升。");
+   float y=Head(0f,w,"专长（".Loc()+h.feats.Count+"）".Loc());
+   y=Note(y,w,"勾选直接获得、取消直接失去，不看等级和前置，也不占属性提升。".Loc());
    foreach(var f in DefDatabase<LP_FeatDef>.AllDefsListForReading.OrderBy(f=>f.origin?1:f.Racial?2:0).ThenBy(f=>f.order).ThenBy(f=>f.label)){
-    var ff=f;string tag=f.origin?"〔起源〕":f.Racial?"〔种族〕":"";
+    var ff=f;string tag=f.origin?"〔起源〕".Loc():f.Racial?"〔种族〕".Loc():"";
     string unmet=null;try{unmet=f.Worker.Unmet(pawn,h);}catch{}
-    y=Toggle(y,w,tag+f.LabelCap,h.HasFeat(f),v=>CharEditorCompat.SetFeat(h,ff,v),f.description+(f.BonusText!=null?"\n\n"+f.BonusText:"")+(unmet!=null && !h.HasFeat(f)?"\n\n平时的条件："+unmet:""));
+    y=Toggle(y,w,tag+f.LabelCap,h.HasFeat(f),v=>CharEditorCompat.SetFeat(h,ff,v),f.description+(f.BonusText!=null?"\n\n"+f.BonusText:"")+(unmet!=null && !h.HasFeat(f)?"\n\n平时的条件：".Loc()+unmet:""));
    }
-   y=Head(y+6f,w,"史诗恩赐（"+h.boons.Count+"）");
+   y=Head(y+6f,w,"史诗恩赐（".Loc()+h.boons.Count+"）".Loc());
    foreach(var b in Epic.Boons){
-    var bb=b;string label=b.LabelCap+(b==Epic.Might && h.HasBoon(b) && h.mightAbility>=0?"（"+Adventurer.Names[h.mightAbility]+"）":"");
+    var bb=b;string label=b.LabelCap+(b==Epic.Might && h.HasBoon(b) && h.mightAbility>=0?"（".Loc()+Adventurer.Names[h.mightAbility]+"）".Loc():"");
     y=Toggle(y,w,label,h.HasBoon(b),v=>{
      if(v && bb==Epic.Might){var menu=new List<FloatMenuOption>();for(int i=0;i<6;i++){int k=i;menu.Add(new FloatMenuOption(Adventurer.Names[k]+" +"+Epic.MightBonus,()=>CharEditorCompat.SetBoon(h,bb,true,k)));}Find.WindowStack.Add(new FloatMenu(menu));}
      else CharEditorCompat.SetBoon(h,bb,v);
@@ -332,15 +334,15 @@ namespace LichPhylactery {
 
   // ---------- 特性 ----------
   float TraitTab(Hediff_Adventurer h,float w){
-   float y=Head(0f,w,"特性");
-   y=Note(y,w,"强力特性（金 / 紫 / 稀有天赋 / 诅咒）"+HeroTraits.Count(pawn)+" / "+HeroTraits.Max+"，武艺天赋 "+CombatGifts.CountOf(pawn)+" / "+CombatGifts.Max+"：满了再加会顶掉最早的一个（上限在模组设置里改）；互斥的（天命之间、稀有天赋之间、诅咒之间）会替换。其他特性在角色编辑器自己的特性页也能改。");
-   y=Group(y,w,"金色强力特性",HeroTraits.Gold);
-   y=Group(y,w,"紫色强力特性",HeroTraits.Purple);
-   y=Group(y,w,"稀有天赋",Talents.All);
-   y=Group(y,w,"武艺天赋",CombatGifts.All);
-   y=Group(y,w,"事迹",HeroTraits.Deeds);
-   y=Group(y,w,"诅咒之力",DndTraits.Curses);
-   y=Group(y,w,"性格特性",DndTraits.Personality);
+   float y=Head(0f,w,"特性".Loc());
+   y=Note(y,w,"强力特性（金 / 紫 / 稀有天赋 / 诅咒）".Loc()+HeroTraits.Count(pawn)+" / "+HeroTraits.Max+"，武艺天赋 ".Loc()+CombatGifts.CountOf(pawn)+" / "+CombatGifts.Max+"：满了再加会顶掉最早的一个（上限在模组设置里改）；互斥的（天命之间、稀有天赋之间、诅咒之间）会替换。其他特性在角色编辑器自己的特性页也能改。".Loc());
+   y=Group(y,w,"金色强力特性".Loc(),HeroTraits.Gold);
+   y=Group(y,w,"紫色强力特性".Loc(),HeroTraits.Purple);
+   y=Group(y,w,"稀有天赋".Loc(),Talents.All);
+   y=Group(y,w,"武艺天赋".Loc(),CombatGifts.All);
+   y=Group(y,w,"事迹".Loc(),HeroTraits.Deeds);
+   y=Group(y,w,"诅咒之力".Loc(),DndTraits.Curses);
+   y=Group(y,w,"性格特性".Loc(),DndTraits.Personality);
    return y;
   }
   float Group(float y,float w,string title,IEnumerable<TraitDef> defs){
@@ -352,7 +354,7 @@ namespace LichPhylactery {
      int deg=dg.degree;string label=dg.label.CapitalizeFirst();
      bool has=pawn.story?.traits?.HasTrait(d,deg)==true;
      string tip=null;try{tip=dg.description.Formatted(pawn.Named("PAWN")).AdjustedFor(pawn).Resolve();}catch{tip=dg.description;}
-     y=Toggle(y,w,label,has,v=>{if(!CharEditorCompat.SetTrait(pawn,dd,deg,v))Messages.Message("没能"+(v?"加上":"去掉")+"「"+dg.label+"」（和已有特性冲突）",MessageTypeDefOf.RejectInput,false);},tip);
+     y=Toggle(y,w,label,has,v=>{if(!CharEditorCompat.SetTrait(pawn,dd,deg,v))Messages.Message("没能".Loc()+(v?"加上".Loc():"去掉".Loc())+"「".Loc()+dg.label+"」（和已有特性冲突）".Loc(),MessageTypeDefOf.RejectInput,false);},tip);
     }
    }
    return y;

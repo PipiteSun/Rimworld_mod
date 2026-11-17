@@ -1,0 +1,206 @@
+s16313	 (base)
+s16314	Prepare (
+s16315	Open the spellbook: prepare spells (only prepared spells appear on the button bar), learn new spells and cantrips, ritual cast, set upcasting.
+s16316	\n\nConcentrating:\s
+s16317	Need to pick an item or building.
+s16318	It isn't damaged.
+s16319	Too heavy (over 10 kg).
+s16320	Already nearby.
+s16321	Can only lock doors.
+s16322	This door is already locked.
+s16323	frozen
+s16324	Dispel magic ×
+s16325	No magic to dispel
+s16326	[DND Rimlands] Unknown wizard spell effect:\s
+s16327	Scorching ray ×
+s16328	resisted\s
+s16329	broke free of\s
+s16330	held
+s16331	Strength: carrying capacity ×1.5, mining ×1.3
+s16332	Dexterity: melee dodge +10
+s16333	Intelligence: research ×1.2
+s16334	Charisma: social impact ×1.2
+s16335	Enhance ability:\s
+s16336	Choose an ability, lasting 1 hour.
+s16337	Need to pick a container, door or something that can be cracked.
+s16338	It's empty inside.
+s16339	Already cracked.
+s16340	No need to knock on your own door.
+s16341	Can only be used on sealed containers, doors or things that need cracking.
+s16342	Knock: opened
+s16343	Knock: cracked
+s16344	slowed
+s16345	Blood drain\s
+s16346	Can only animate humanlike corpses.
+s16347	Undead corpses can't be animated again.
+s16348	[DND Rimlands] Animate dead failed:\s
+s16349	Animate dead ×
+s16350	cold
+s16351	Protection from energy:\s
+s16352	Choose a damage type; take ×0.5 of that damage for 1 hour.
+s16353	demons and devils
+s16354	undead
+s16355	elementals
+s16356	Choose a kind of creature: hostile creatures of that kind can't get in, and allies inside the circle take ×0.5 damage from them.
+s16357	Magic circle:\s
+s16358	Can only talk with humanlike dead.
+s16359	Can only question the dead of hostile factions.
+s16360	This corpse has already been questioned.
+s16361	The dead shakes its head: "
+s16362	" has no settlements left.
+s16363	's ghost revealed a settlement of "
+s16364	":\s
+s16365	The ghost's knowledge: current research +
+s16366	No research in progress; the ghost's knowledge dissipated for nothing.
+s16367	Speak with dead:\s
+s16368	This corpse can only be questioned once.
+s16369	Ask about a settlement of "
+s16370	"
+s16371	Ask about their knowledge in life: current research +
+s16372	Doesn't know sending
+s16373	Sending is once per day (another\s
+s16374	 hours).
+s16375	Choose a faction and talk with its leader.
+s16376	No magic items sensed on this map.
+s16377	 magic items or legendary-quality items:\n
+s16378	fell
+s16379	fell apart
+s16380	black cat
+s16381	rat
+s16382	tressym
+s16383	pseudodragon
+s16384	Already has a familiar (
+s16385	A familiar takes 1 day to resummon after it dies (another\s
+s16386	No familiar forms available.
+s16387	Choose the familiar's form.
+s16388	[DND Rimlands] Familiar training / bond failed:\s
+s16389	's familiar died: a new familiar can be found in 1 day.
+s16390	Remove arcane lock
+s16391	This door has an arcane lock: damage taken ÷3. Click to remove.
+s16392	arcane lock removed
+s16393	caught fire
+s16394	slipped
+s16395	stuck in the web
+s16396	vomiting
+s16397	An enemy has entered\s
+s16398	's alarm:\s
+s16399	revulsion
+s16400	repelled by the magic circle
+s16401	blink: missed
+s16402	foresight: dodged
+s16403	Dominate person only works on humanlikes (dominate monster has no such limit).
+s16404	Need to pick a person or an item.
+s16405	Can only be used on prisoners or colonists.
+s16406	Polymorph: grizzly bear
+s16407	ghoul servant
+s16408	walked out of the maze
+s16409	feebleminded
+s16410	turned into a rabbit
+s16411	banished
+s16412	phantasm
+s16413	Need to pick a workbench.
+s16414	This workbench has no doable bills (needs a recipe with a product).
+s16415	Fabricate: no doable bill with work within\s
+s16416	.
+s16417	Fabricate: not enough materials (
+s16418	Fabricate:\s
+s16419	The invisible watchdog barks wildly: enemies are approaching:\s
+s16420	withered
+s16421	thrown
+s16422	fire elemental
+s16423	water elemental
+s16424	earth elemental
+s16425	air elemental
+s16426	[DND Rimlands] Summon elemental failed:\s
+s16427	Choose an element.
+s16428	There's no other teleportation circle to go to.
+s16429	The circle needs a 3×3 open space.
+s16430	The teleportation circle sent away\s
+s16431	 things.
+s16432	Resist\s
+s16433	No negative memories
+s16434	forgot something
+s16435	Modify memory:\s
+s16436	Choose a negative memory to delete.
+s16437	· in about\s
+s16438	 days:\s
+s16439	Threats already scheduled:\n
+s16440	No scheduled raids visible within 3 days.
+s16441	\n\nBased on the colony's current wealth and population, a raid would be about\s
+s16442	 points. If a raid arrives within the next 3 days,\s
+s16443	 will sense it in advance.
+s16444	[DND Rimlands] Legend lore: quest generation failed:\s
+s16445	Ancient records point to a hidden treasure; the "
+s16446	 mentioned in the legend is hidden there
+s16447	 has already been found
+s16448	. See the quests tab.
+s16449	No trace of the treasure was found, but "
+s16450	Chain lightning ×
+s16451	locked in a force cage
+s16452	body stiffened
+s16453	stone marks\s
+s16454	Move earth ×
+s16455	Contingency:\s
+s16456	Choose a spell to cast automatically when downed or below half health (within 10 days, only one can be stored).
+s16457	Contingency triggered:\s
+s16458	[DND Rimlands] Undead servant failed:\s
+s16459	Dimension door ×
+s16460	zombie servant
+s16461	insectoids
+s16462	animals
+s16463	Choose a kind of hostile unit: when they enter this area, 50% chance to be driven out.
+s16464	Antipathy area:\s
+s16465	Liches can't grow clones.
+s16466	Needs the Biotech DLC.
+s16467	There must be a growth vat on the map.
+s16468	's clone began growing in the growth vat, maturing in\s
+s16469	 days.
+s16470	" died, and the soul moved at once into the clone in the growth vat: skills, levels, classes and traits are all intact; gear stayed where they died.
+s16471	Power word
+s16472	kill
+s16473	not weak enough yet
+s16474	Cast any wizard spell of circle 8 or lower for free
+s16475	Heal all colonists on the map
+s16476	Revive one colonist (33% backlash)
+s16477	Summon a legendary-quality magic item (33% backlash)
+s16478	Wish: legendary item
+s16479	Make a wish.
+s16480	Wish: cast a spell
+s16481	Choose a spell to cast for free.
+s16482	Wish:\s
+s16483	Wish: heal
+s16484	There are no colonist corpses on the map.
+s16485	Wish: revive
+s16486	Choose a colonist's corpse.
+s16487	suffered the backlash of the wish
+s16488	, and lost wish forever
+s16489	[DND Rimlands] Gate:\s
+s16490	 stepped out of the gate
+s16491	The gate is open; choose something to come through it.
+s16492	Summon a demon / devil to fight for the colony for 1 hour
+s16493	Have a caravan of a friendly faction walk out of the gate
+s16494	No caravan can come.
+s16495	Plane shift: the whole party returns to the colony
+s16496	Magnificent mansion: no ambushes for 8 hours, rest
+s16497	No colony to return to
+s16498	: costs\s
+s16499	 mana.
+s16500	 is back
+s16501	Countered:\s
+s16502	turned into a rabbit
+s16503	Giant anvil (body size\s
+s16504	Robe loom (racial cloaks)
+s16505	DND recipes have moved
+s16506	other workbenches
+s16507	DND recipes have moved: rune firearms and exotic gear to the rune anvil, giant gear to the giant anvil, magic items to the enchanting table, relics to the altar, scrolls and manuals to the scroll desk, robes to the robe loom.\n\nIn this save, these bills on the vanilla smithy, alchemy table and tailoring bench have been cleared; please place them again at the new workbenches:\n
+s16508	\n\nUnfinished items in progress are handled by vanilla rules (can be discarded to refund materials).
+s16509	Craftsmen of body size 1.8 or more: ×
+s16510	Racial cloaks: ×
+s16511	[DND Rimlands] Workbench move migration failed:\s
+s16512	[DND Rimlands] DND workbenches: based on completed research, completed\s
+s16513	 new research projects (rune forging / scroll copying).
+s16514	[DND Rimlands] DND workbenches: cleared\s
+s16515	 old bills whose recipes have moved.
+s16516	[DND Rimlands] Old save: moved\s
+s16517	 from HAR race bodies onto human bodies (xenotype\s
+s16518	[DND Rimlands] Old save race conversion failed (

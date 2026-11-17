@@ -4,7 +4,7 @@ using Verse;
 
 namespace LichPhylactery {
  // 1.52.0 热修：传奇种族不会食物中毒（见 ArtSource/LegendaryFoodPoison-hotfix-report.md）。
- // 传奇种族 = 种族亲和表里的传奇层（巫妖、巨人、泰坦/觉醒泰坦、力能龙裔、夺心魔、巨灵、阿斯莫、六臂蛇人、寒冰魔、炎魔……，含 modExtension 标了 legendary 的种族/异种），
+ // 传奇种族 = 种族亲和表里的传奇层（巫妖、巨人、泰坦/觉醒泰坦、夺心魔、巨灵、阿斯莫、六臂蛇人、寒冰魔、炎魔……，含 modExtension 标了 legendary 的种族/异种），
  // 加上传奇单位（LP_LegendaryExtension，五色真龙等）和半神。每次吃东西时现查，不加基因也不存档，旧存档直接生效。
  public static class LegendaryFoodPoison {
   public static bool Immune(Pawn p)=>p!=null && (Affinity.LegendaryRace(p) || Legendary.Is(p) || Demigods.Is(p));

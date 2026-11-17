@@ -101,27 +101,27 @@ namespace LichPhylactery {
    switch(kind){
     case "work":{
      string key=i.deity?.key;
-     if(key=="Lathander" && p.MapHeld!=null){int h=GenLocalDate.HourOfDay(p.MapHeld);if(h>=5 && h<8){f*=1.05f;why="晨主之光（清晨）×1.05";}}
-     else if(key=="Shar" && p.MapHeld!=null && Faith.Night(p.MapHeld)){f*=1.08f;why="夜之女士（夜里）×1.08";}
+     if(key=="Lathander" && p.MapHeld!=null){int h=GenLocalDate.HourOfDay(p.MapHeld);if(h>=5 && h<8){f*=1.05f;why="晨主之光（清晨）×1.05".Loc();}}
+     else if(key=="Shar" && p.MapHeld!=null && Faith.Night(p.MapHeld)){f*=1.08f;why="夜之女士（夜里）×1.08".Loc();}
      if(StatPart_Faith.Smithing(p)){
-      if(key=="Surtr"){f*=1.1f;why=(why==null?"":why+"；")+"熔炉巨人（锻造）×1.1";}
+      if(key=="Surtr"){f*=1.1f;why=(why==null?"":why+"；".Loc())+"熔炉巨人（锻造）×1.1".Loc();}
       if(forgeFire==null)forgeFire=DefDatabase<HediffDef>.GetNamedSilentFail("LP_ForgeFire");
-      if(forgeFire!=null && p.health.hediffSet.HasHediff(forgeFire)){f*=1.25f;why=(why==null?"":why+"；")+"熔炉之火（锻造）×1.25";}
+      if(forgeFire!=null && p.health.hediffSet.HasHediff(forgeFire)){f*=1.25f;why=(why==null?"":why+"；".Loc())+"熔炉之火（锻造）×1.25".Loc();}
      }
      break;}
     case "slave":{
      if(!p.IsSlave)break;if(bane==null)bane=DefDatabase<MemeDef>.GetNamedSilentFail("LP_Meme_Bane");
-     var owner=p.Faction?.ideos?.PrimaryIdeo;if(owner!=null && IdeoBridge.DeityOf(owner)?.key=="Bane"){f*=.7f;why="黑暗之主×0.7";}
+     var owner=p.Faction?.ideos?.PrimaryIdeo;if(owner!=null && IdeoBridge.DeityOf(owner)?.key=="Bane"){f*=.7f;why="黑暗之主×0.7".Loc();}
      break;}
     case "social":
-     if(p.Faction?.IsPlayer==true && IdeoBridge.Player.ordning && IdeoBridge.IsGiant(p)){f*=1.1f;why="巨人位阶×1.1";}
+     if(p.Faction?.IsPlayer==true && IdeoBridge.Player.ordning && IdeoBridge.IsGiant(p)){f*=1.1f;why="巨人位阶×1.1".Loc();}
      break;
    }
    return f;
   }
-  float Offset(Pawn p,out string why){why=null;if(kind=="mind" && p?.ideo!=null && IdeoBridge.Linked && IdeoBridge.OfPawn(p).defiant){why="不跪之人+5%";return .05f;}return 0f;}
+  float Offset(Pawn p,out string why){why=null;if(kind=="mind" && p?.ideo!=null && IdeoBridge.Linked && IdeoBridge.OfPawn(p).defiant){why="不跪之人+5%".Loc();return .05f;}return 0f;}
   public override void TransformValue(StatRequest req,ref float val){if(!(req.Thing is Pawn p) || p.ideo==null)return;val=val*Factor(p,out _)+Offset(p,out _);}
-  public override string ExplanationPart(StatRequest req){if(!(req.Thing is Pawn p) || p.ideo==null)return null;Factor(p,out var a);Offset(p,out var b);return a==null && b==null?null:"文化："+string.Join("；",new[]{a,b}.Where(s=>s!=null));}
+  public override string ExplanationPart(StatRequest req){if(!(req.Thing is Pawn p) || p.ideo==null)return null;Factor(p,out var a);Offset(p,out var b);return a==null && b==null?null:"文化：".Loc()+string.Join("；".Loc(),new[]{a,b}.Where(s=>s!=null));}
  }
  public static class IdeoPrecepts {
   public static void Register(){

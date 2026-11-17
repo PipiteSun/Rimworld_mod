@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（MagicItemsAbilities.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>需要手持火焰舌。</zh><en>Needs a flame tongue in hand.</en></s>
+  <s><zh>需要地图上活着的人形目标。</zh><en>Needs a living humanlike target on the map.</en></s>
+  <s><zh>储法戒指是空的。</zh><en>The ring of spell storing is empty.</en></s>
+  <s><zh>需要一只发狂的动物。</zh><en>Needs a maddened animal.</en></s>
+  <s><zh>火球项链上已经没有珠子了。</zh><en>There are no beads left on the necklace of fireballs.</en></s>
+  <s><zh>巫妖和夺心魔用不了祈祷念珠。</zh><en>Liches and mind flayers can't use prayer beads.</en></s>
+  <s><zh>需要有伤口的人。</zh><en>Needs someone with wounds.</en></s>
+  <s><zh>还要等</zh><en>Must wait another </en></s>
+  <s><zh>小时才能再用。</zh><en> hours to use again.</en></s>
+  <s><zh>已经读过魔像手册了。</zh><en>Already read the golem manual.</en></s>
+  <s><zh>只有巫妖读得懂魔像手册。</zh><en>Only liches can understand the golem manual.</en></s>
+  <s><zh>要穿着躯干衣物才能贴净化封印。</zh><en>Must wear torso apparel to apply a purity seal.</en></s>
+  <s><zh>已经贴满3张了。</zh><en>Already has 3 applied.</en></s>
+  <s><zh>冷却中：</zh><en>On cooldown: </en></s>
+  <s><zh>（空）</zh><en>(empty)</en></s>
+  <s><zh>（存着：</zh><en>(stored: </en></s>
+  <s><zh>存入法术</zh><en>Store spell</en></s>
+  <s><zh>把身上或3格内的一张法术卷轴读进储法戒指（卷轴消耗）。巫妖也可以花30点精神力直接存入恐惧凝视或死灵冲击。</zh><en>Read a spell scroll from your body or within 3 cells into the ring of spell storing (the scroll is consumed). Liches can also spend 30 psyfocus to store fear gaze or necrotic blast directly.</en></s>
+  <s><zh>戒指里已经存着</zh><en>The ring already stores </en></s>
+  <s><zh>法术存进戒指</zh><en>stored the spell in the ring</en></s>
+  <s><zh>存入</zh><en>Store </en></s>
+  <s><zh>存入恐惧凝视（30精神力）</zh><en>Store fear gaze (30 psyfocus)</en></s>
+  <s><zh>存入死灵冲击（30精神力）</zh><en>Store necrotic blast (30 psyfocus)</en></s>
+  <s><zh>身边没有法术卷轴</zh><en>No spell scrolls nearby</en></s>
+  <s><zh>（未绑定）</zh><en> (unbound)</en></s>
+  <s><zh>（甲戒）</zh><en> (ring A)</en></s>
+  <s><zh>（乙戒）</zh><en> (ring B)</en></s>
+  <s><zh>没有配对的另一枚戒指。</zh><en>No paired second ring.</en></s>
+  <s><zh>甲戒：佩戴者受到的伤害一半转给乙戒的佩戴者。</zh><en>Ring A: half the damage the wearer takes is transferred to the wearer of ring B.</en></s>
+  <s><zh>乙戒：替甲戒的佩戴者分担一半伤害。</zh><en>Ring B: takes half the damage for the wearer of ring A.</en></s>
+  <s><zh>的灵魂）</zh><en>'s soul)</en></s>
+  <s><zh>空的魂石：佩戴者死亡时会收下他的灵魂。</zh><en>Empty soul stone: takes the wearer's soul when they die.</en></s>
+  <s><zh>里面封着</zh><en>It holds the soul of </en></s>
+  <s><zh>的灵魂。可以在死灵仪式台献给命匣，或者对</zh><en>. It can be offered to a phylactery at the necromantic ritual table, or a revival scroll can be used on the corpse of </en></s>
+  <s><zh>的尸体使用复生卷轴（不论死了多久）。</zh><en> (no matter how long they've been dead).</en></s>
+  <s><zh>的灵魂被吸进了魂石。</zh><en>'s soul was drawn into the soul stone.</en></s>
+  <s><zh>收回</zh><en>Retract</en></s>
+  <s><zh>再按一次按钮，杖子变回能搬走的物品。</zh><en>Press the button again, and the rod turns back into a portable item.</en></s>
+  <s><zh>按下</zh><en>Press</en></s>
+  <s><zh>按下按钮：杖子定在原地，变成一格不可摧毁、不可通行的障碍。</zh><en>Press the button: the rod is fixed in place, becoming an indestructible, impassable obstacle cell.</en></s>
+  <s><zh>要放在地上。</zh><en>Must be placed on the ground.</en></s>
+  <s><zh>格子里有人。</zh><en>There's someone in the cell.</en></s>
+  <s><zh>格子里已经有建筑。</zh><en>There's already a building in the cell.</en></s>
+  <s><zh>喷射</zh><en>Spray</en></s>
+  <s><zh>浇灭3格内的所有火（包括身上着火的人）。每天一次。</zh><en>Douse all fires within 3 cells (including people on fire). Once per day.</en></s>
+  <s><zh>无尽水瓶喷出一大股水，浇灭了</zh><en>The decanter of endless water sprayed a great gush of water, putting out </en></s>
+  <s><zh>处火。</zh><en> fires.</en></s>
+  <s><zh>今天已经喷过了。</zh><en>Already sprayed today.</en></s>
+  <s><zh>周围3格植物生长+20%。</zh><en>Plants within 3 cells grow +20%.</en></s>
+  <s><zh>可以喷射。</zh><en>Can spray.</en></s>
+  <s><zh>喷射冷却中。</zh><en>Spray on cooldown.</en></s>
+  <s><zh>\n派系：</zh><en>\nFaction: </en></s>
+  <s><zh>\n守军种族：</zh><en>\nDefender races: </en></s>
+  <s><zh>看不清</zh><en>unclear</en></s>
+  <s><zh>\n常见兵种：</zh><en>\nCommon pawn kinds: </en></s>
+  <s><zh>\n预估守军威胁点数：约</zh><en>\nEstimated defender threat points: about </en></s>
+  <s><zh>水晶球：窥视</zh><en>Crystal ball: scrying</en></s>
+  <s><zh>雾气在水晶球里散开，映出远方的据点：\n\n</zh><en>The mist clears in the crystal ball, showing a distant settlement:\n\n</en></s>
+  <s><zh>窥视</zh><en>Scry</en></s>
+  <s><zh>选一个世界地图上的据点，看看它的派系、守军种族和大致兵力。每天一次。</zh><en>Choose a settlement on the world map to see its faction, defender races and rough strength. Once per day.</en></s>
+  <s><zh>附近没有据点</zh><en>No settlements nearby</en></s>
+  <s><zh>今天已经窥视过了。</zh><en>Already scried today.</en></s>
+  <s><zh>火焰舌燃起</zh><en>flame tongue ignited</en></s>
+  <s><zh>火焰舌熄灭</zh><en>flame tongue extinguished</en></s>
+  <s><zh>释放储存的法术</zh><en>release stored spell</en></s>
+  <s><zh>扔出了最后一颗火球珠，项链碎了。</zh><en> threw the last fireball bead, and the necklace shattered.</en></s>
+  <s><zh>身上着了火，火球项链的</zh><en> caught fire, and </en></s>
+  <s><zh>颗珠子一起炸开了！</zh><en> beads of the necklace of fireballs exploded at once!</en></s>
+  <s><zh>被星界之风卷到了地图边缘。</zh><en> was swept to the map edge by an astral wind.</en></s>
+  <s><zh>骷髅战士</zh><en>skeleton warrior</en></s>
+  <s><zh>英灵战士</zh><en>einherjar warrior</en></s>
+  <s><zh>吹响英灵号角，</zh><en> blew the horn of valhalla, and </en></s>
+  <s><zh>名</zh><en> </en></s>
+  <s><zh>应声而来。</zh><en> answered the call.</en></s>
+  <s><zh>从捉弄袋里掏出了一只</zh><en> pulled a </en></s>
+  <s><zh>读完了魔像手册：死灵仪式台可以为他制作石魔像胚体了。</zh><en> finished reading the golem manual: the necromantic ritual table can now make stone golem embryos for them.</en></s>
+  <s><zh>已经在主基地了。</zh><en>Already at the main base.</en></s>
+  <s><zh>再生戒指：伤口愈合</zh><en>Ring of regeneration: wound healed</en></s>
+  <s><zh>万变印记：一阵眩晕</zh><en>Mark of many changes: a dizzy spell</en></s>
+  <s><zh>万变印记作怪：</zh><en>Mark of many changes acts up: </en></s>
+  <s><zh>的热情对调了。</zh><en>'s passions swapped.</en></s>
+  <s><zh>竖琴手的礼物</zh><en>The Harpers' gift</en></s>
+  <s><zh>费伦拓荒同盟的竖琴手送来一只小包裹，里面是一枚审判徽记和一张字条：\n\n“你们一直是同盟的朋友。戴上它，狂热分子就知道这里不归他们管。”</zh><en>The Harpers of the Faerûn Frontier Alliance sent a small package with a judgment badge and a note:\n\n"You've always been friends of the alliance. Wear this, and the zealots will know this place isn't theirs to police."</en></s>
+  <s><zh>身上的复苏核心闪了几下，碎了，没能把他唤回来。</zh><en>The revival core flickered a few times and shattered, failing to call him back.</en></s>
+  <s><zh>的复苏核心启动了：他从死亡里爬了回来，核心碎成了粉末。</zh><en>'s revival core activated: he crawled back from death, and the core crumbled to powder.</en></s>
+  <s><zh>[DND边缘大陆] 魔法物品死亡钩子出错：</zh><en>[DND Rimlands] Magic item death hook error: </en></s>
+</LPStrings>

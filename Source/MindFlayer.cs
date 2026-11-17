@@ -40,14 +40,14 @@ namespace LichPhylactery {
   // 不能吞噬的原因；null 表示可以下口（巫妖、死灵造物可以下口，但会失败）。
   public static string CannotDevour(Pawn caster,Thing t){
    var p=Victim(t);
-   if(p==null)return "需要倒地的生物或新鲜的尸体。";
-   if(p==caster)return "不能吞噬自己。";
-   if(p.RaceProps.IsMechanoid)return "机械体没有大脑。";
-   if(!p.RaceProps.IsFlesh || Brain(p)==null)return "目标没有可吞噬的大脑。";
+   if(p==null)return "需要倒地的生物或新鲜的尸体。".Loc();
+   if(p==caster)return "不能吞噬自己。".Loc();
+   if(p.RaceProps.IsMechanoid)return "机械体没有大脑。".Loc();
+   if(!p.RaceProps.IsFlesh || Brain(p)==null)return "目标没有可吞噬的大脑。".Loc();
    // 1.31.1：尸体只要求新鲜（未开始腐烂）、人形、有大脑；不再限6小时，心灵失聪的尸体也能吞噬。
-   if(t is Corpse c){if(c.GetRotStage()!=RotStage.Fresh)return "尸体已不新鲜（开始腐烂）。";if(!p.RaceProps.Humanlike && !LegendaryBeasts.IsRace(p.def))return "动物尸体的大脑不值得吞噬。";return null;} // 1.116.0：五色龙、眼魔等传奇怪改成动物型后照旧算有智慧的大脑
-   if(p.Dead || !p.Downed)return "目标必须倒地。";
-   if(!Necro.Undead(p) && PsychicallyDeaf(p))return "心灵失聪者的大脑无法吞噬。";
+   if(t is Corpse c){if(c.GetRotStage()!=RotStage.Fresh)return "尸体已不新鲜（开始腐烂）。".Loc();if(!p.RaceProps.Humanlike && !LegendaryBeasts.IsRace(p.def))return "动物尸体的大脑不值得吞噬。".Loc();return null;} // 1.116.0：五色龙、眼魔等传奇怪改成动物型后照旧算有智慧的大脑
+   if(p.Dead || !p.Downed)return "目标必须倒地。".Loc();
+   if(!Necro.Undead(p) && PsychicallyDeaf(p))return "心灵失聪者的大脑无法吞噬。".Loc();
    return null;
   }
   // 吞噬获得的脑髓。人形：(20+3×智识)×心灵敏感度，最多80；动物3～10；新鲜尸体三分之一。1.116.0：传奇怪（动物型）按人形算，没有技能时智识按智力的一半。
@@ -70,8 +70,8 @@ namespace LichPhylactery {
    var p=Victim(t);bool corpse=t is Corpse;var map=t.MapHeld;
    if(Necro.Undead(p)){
     var old=caster.health.hediffSet.GetFirstHediffOfDef(Taste);if(old!=null)caster.health.RemoveHediff(old);
-    caster.health.AddHediff(Taste);Mote(caster,"亡灵之味！",new Color(.55f,.65f,.5f));
-    if(caster.Faction==Faction.OfPlayer)Messages.Message(caster.LabelShort+"试图吞噬"+p.LabelShort+"的大脑，却只尝到了腐朽的死灵之力。不死生物没有活着的大脑。",caster,MessageTypeDefOf.NegativeEvent,false);
+    caster.health.AddHediff(Taste);Mote(caster,"亡灵之味！".Loc(),new Color(.55f,.65f,.5f));
+    if(caster.Faction==Faction.OfPlayer)Messages.Message(caster.LabelShort+"试图吞噬".Loc()+p.LabelShort+"的大脑，却只尝到了腐朽的死灵之力。不死生物没有活着的大脑。".Loc(),caster,MessageTypeDefOf.NegativeEvent,false);
     return 0;
    }
    float value=Value(p,corpse);
@@ -95,7 +95,7 @@ namespace LichPhylactery {
    if(humanlike && caster.Faction==Faction.OfPlayer && faction!=null && !faction.IsPlayer && !faction.Hidden)faction.TryAffectGoodwillWith(Faction.OfPlayer,Goodwill,true,true,Devoured,p.Corpse);
    if(humanlike && ModsConfig.IdeologyActive)Find.HistoryEventsManager.RecordEvent(new HistoryEvent(Devoured,caster.Named(HistoryEventArgsNames.Doer),p.Named(HistoryEventArgsNames.Victim)));
    if(map!=null)FilthMaker.TryMakeFilth(t.PositionHeld,map,ThingDefOf.Filth_Blood,2);
-   Mote(caster,"吞噬大脑 +"+value.ToString("0"),new Color(.8f,.55f,.95f));
+   Mote(caster,"吞噬大脑 +".Loc()+value.ToString("0"),new Color(.8f,.55f,.95f));
    MindFlayerHooks.Devoured(caster,p,humanlike);
    return value;
   }
@@ -120,7 +120,7 @@ namespace LichPhylactery {
   // 对一个目标做心智冲击：返回 true 表示击中（未抵抗）。chanceFactor 传给 DNDMind.TryResist。
   public static bool PsychicStrike(Pawn caster,Pawn p,int stunTicks,float chanceFactor=1f){
    if(p==null || p.Dead || p.RaceProps.IsMechanoid || PsychicallyDeaf(p))return false;
-   if(DNDMind.TryResist(p,chanceFactor)){Mote(p,"抵抗！",new Color(.7f,.85f,1f));return false;}
+   if(DNDMind.TryResist(p,chanceFactor)){Mote(p,"抵抗！".Loc(),new Color(.7f,.85f,1f));return false;}
    if(Exalted.Count>0 && Exalted.BlastImmune(p))return false; // 1.59.0 先知免疫心灵震爆
    float sens=Mathf.Clamp(p.GetStatValue(StatDefOf.PsychicSensitivity),.25f,2.5f)*Exalted.PsychicDuration(p); // 1.59.0 明察：眩晕减半
    p.stances?.stunner?.StunFor(Mathf.RoundToInt(stunTicks*sens),caster,false,false,false);
@@ -142,7 +142,7 @@ namespace LichPhylactery {
   // ---------- 脑饥狂乱 ----------
   public static bool StartRage(Pawn p){
    if(!LichMod.Settings.brainHungerRage || p==null || !p.Spawned || p.Dead || p.Downed || p.InMentalState)return false;
-   return p.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk,"脑饥狂乱",true,true);
+   return p.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk,"脑饥狂乱".Loc(),true,true);
   }
  }
 
@@ -189,7 +189,7 @@ namespace LichPhylactery {
  }
  public class Hediff_CerebrumHunger : Hediff {
   public override bool ShouldRemove=>base.ShouldRemove || MindFlayer.Cerebrum(pawn)==null;
-  public override string LabelInBrackets=>CurStage?.label+"，脑髓 "+MindFlayer.Points(pawn).ToString("0");
+  public override string LabelInBrackets=>CurStage?.label+"，脑髓 ".Loc()+MindFlayer.Points(pawn).ToString("0");
  }
  public class GeneGizmo_CerebrumResource : GeneGizmo_Resource {
   static bool dragging;
@@ -197,8 +197,8 @@ namespace LichPhylactery {
   public GeneGizmo_CerebrumResource(Gene_Resource gene,List<IGeneResourceDrain> drainGenes,Color barColor,Color barHighlightColor):base(gene,drainGenes,barColor,barHighlightColor){resource=gene;}
   protected override bool DraggingBar{get=>dragging;set=>dragging=value;}
   protected override bool IsDraggable=>false;
-  protected override string Title=>"脑髓";
-  protected override string GetTooltip()=>"脑髓："+(resource.Value*MindFlayer.Max).ToString("0")+" / "+(resource.Max*MindFlayer.Max).ToString("0")+"\n每天流失"+MindFlayer.DailyDrain.ToString("0")+"点。低于30虚弱，低于10衰弱，归零陷入脑饥"+(LichMod.Settings.brainHungerRage?"（可能狂乱）":"")+"。\n吞噬倒地的人形生物：（20+3×智识）×心灵敏感度，最多80；动物3～10；未腐烂的新鲜人形尸体三分之一。";
+  protected override string Title=>"脑髓".Loc();
+  protected override string GetTooltip()=>"脑髓：".Loc()+(resource.Value*MindFlayer.Max).ToString("0")+" / "+(resource.Max*MindFlayer.Max).ToString("0")+"\n每天流失".Loc()+MindFlayer.DailyDrain.ToString("0")+"点。低于30虚弱，低于10衰弱，归零陷入脑饥".Loc()+(LichMod.Settings.brainHungerRage?"（可能狂乱）".Loc():"")+"。\n吞噬倒地的人形生物：（20+3×智识）×心灵敏感度，最多80；动物3～10；未腐烂的新鲜人形尸体三分之一。".Loc();
  }
 
  // ---------- 群脑联络 ----------
@@ -245,14 +245,14 @@ namespace LichPhylactery {
   // 半夺心魔没有脑髓条：灵能免费，只受冷却限制。
   public bool Free=>!MindFlayer.IsMindFlayer(Caster);
   public override bool GizmoDisabled(out string reason){
-   if(!Free && Props.cost>0 && MindFlayer.Points(Caster)+.001f<Props.cost){reason="脑髓不足：需要"+Props.cost.ToString("0")+"点，当前"+MindFlayer.Points(Caster).ToString("0")+"点。";return true;}
+   if(!Free && Props.cost>0 && MindFlayer.Points(Caster)+.001f<Props.cost){reason="脑髓不足：需要".Loc()+Props.cost.ToString("0")+"点，当前".Loc()+MindFlayer.Points(Caster).ToString("0")+"点。".Loc();return true;}
    return base.GizmoDisabled(out reason);
   }
   public string Invalid(LocalTargetInfo target){
-   var map=Caster?.Map;if(map==null)return "施法者不在地图上。";
+   var map=Caster?.Map;if(map==null)return "施法者不在地图上。".Loc();
    switch(Props.effect){
     case "devour":return MindFlayer.CannotDevour(Caster,target.Thing);
-    case "mindblast":return target.Cell.IsValid && target.Cell.InBounds(map)?null:"需要地图上的目标位置。";
+    case "mindblast":return target.Cell.IsValid && target.Cell.InBounds(map)?null:"需要地图上的目标位置。".Loc();
     default:return InvalidPower(target);
    }
   }
@@ -274,10 +274,10 @@ namespace LichPhylactery {
    if(Caster?.Map==null || !target.Cell.IsValid)return;
    if(Props.effect=="mindblast")GenDraw.DrawFieldEdges(MindFlayer.ConeCells(Caster,target.Cell,MindFlayer.BlastRangeFor(Caster),MindFlayer.BlastHalfAngle));
   }
-  public override string ExtraLabelMouseAttachment(LocalTargetInfo target)=>!Free && Props.cost>0?"脑髓 "+Props.cost.ToString("0")+" / "+MindFlayer.Points(Caster).ToString("0"):null;
+  public override string ExtraLabelMouseAttachment(LocalTargetInfo target)=>!Free && Props.cost>0?"脑髓 ".Loc()+Props.cost.ToString("0")+" / "+MindFlayer.Points(Caster).ToString("0"):null;
   partial void InvalidPowerImpl(LocalTargetInfo target,ref string reason);
   partial void ApplyPowerImpl(LocalTargetInfo target);
-  string InvalidPower(LocalTargetInfo target){string reason="未知的灵能。";InvalidPowerImpl(target,ref reason);return reason;}
+  string InvalidPower(LocalTargetInfo target){string reason="未知的灵能。".Loc();InvalidPowerImpl(target,ref reason);return reason;}
   void ApplyPower(LocalTargetInfo target)=>ApplyPowerImpl(target);
  }
 }

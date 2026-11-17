@@ -43,7 +43,7 @@ namespace LichPhylactery {
   public static Pawn MakePawn(PawnKindDef kind,Faction f,Map map,float? age=null,Gender? gender=null){
    if(kind==null)return null;
    try{return PawnGenerator.GeneratePawn(new PawnGenerationRequest(kind,f,PawnGenerationContext.NonPlayer,map?.Tile??-1,forceGenerateNewPawn:true,canGeneratePawnRelations:false,fixedBiologicalAge:age,fixedGender:gender));}
-   catch(Exception e){Log.Warning("[DND边缘大陆] 第三批事件生成角色失败（"+kind.defName+"）："+e.Message);return null;}
+   catch(Exception e){Log.Warning("[DND边缘大陆] 第三批事件生成角色失败（".Loc()+kind.defName+"）：".Loc()+e.Message);return null;}
   }
   // 从地图边走进来，在殖民地外落脚闲逛；kind 是访客标记（被殖民者打时回调 Harmed）。
   public static Lord Visit(Map map,List<Pawn> pawns,Faction f,string kind,IntVec3? spot=null){
@@ -65,7 +65,7 @@ namespace LichPhylactery {
    var r=Of(victim);if(r==null)return;
    switch(r.kind){
     case Beggar.Kind:Beggar.OnHarmed(r,attacker);break;
-    case SilverGuest.Kind:SilverGuest.OnHarmed(r,attacker,"打了他");break;
+    case SilverGuest.Kind:SilverGuest.OnHarmed(r,attacker,"打了他".Loc());break;
     case Bards.Kind:Bards.OnHarmed(r);break;
    }
   }
@@ -98,7 +98,7 @@ namespace LichPhylactery {
    DropPodUtility.DropThingsNear(DropCellFinder.TradeDropSpot(map),map,list,110,false,false,true);
    return list;
   }
-  public static string Labels(IEnumerable<Thing> things)=>string.Join("、",things.Where(t=>t!=null).Select(t=>t.LabelCap.ToString()));
+  public static string Labels(IEnumerable<Thing> things)=>string.Join("、".Loc(),things.Where(t=>t!=null).Select(t=>t.LabelCap.ToString()));
   // 一件随机的普通武器（优秀品质），给逃亡贵族的谢礼用。
   public static Thing GoodWeapon(){
    var defs=DefDatabase<ThingDef>.AllDefsListForReading.Where(d=>d.IsWeapon && d.tradeability!=Tradeability.None && !d.destroyOnDrop && d.techLevel<=TechLevel.Industrial && d.techLevel>=TechLevel.Medieval && d.BaseMarketValue>=150 && d.HasComp(typeof(CompQuality)) && !d.IsStuff && d.weaponTags!=null && !d.weaponTags.Contains("TurretGun")).ToList();
@@ -170,7 +170,7 @@ namespace LichPhylactery {
       case Tarrasque.Kind:Tarrasque.Tick(r);break;
       default:if(r.until>0 && Now>r.until)r.done=true;break;
      }
-    }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 第三批事件（"+r.kind+"）出错："+e,74120700+r.id%1000);r.done=true;}
+    }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 第三批事件（".Loc()+r.kind+"）出错：".Loc()+e,74120700+r.id%1000);r.done=true;}
    }
    if(Now%2500<250)Calling.Scan(s);
    // 2026-11-06 审查：砍树记录原来只在树人事件判定时清理，从不触发时整局都在涨（每砍一棵树一条，全进存档）。每天清掉 60 天以前的。
@@ -325,19 +325,19 @@ namespace LichPhylactery {
     if(__state.colonist && __state.killer?.Faction!=null && !__state.killer.Faction.IsPlayer)s.killers[__instance.thingIDNumber]=__state.killer.Faction;
     Mimic.OnDeath(__instance,__state);Tarrasque.OnDeath(__instance,__state);
     if(__state.killer!=null && __state.killer.Faction==Faction.OfPlayer && __instance.HostileTo(Faction.OfPlayer)){Calling.OnKill(__state.killer,__instance);GhostWish.OnKill(__instance);}
-   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 第三批事件击杀处理出错："+e,74120790);}
+   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 第三批事件击杀处理出错：".Loc()+e,74120790);}
   }
  }
  // 魔网潮汐：施放能力时 20% 野魔法。
  [HarmonyPatch(typeof(RimWorld.Ability),nameof(RimWorld.Ability.Activate),new[]{typeof(LocalTargetInfo),typeof(LocalTargetInfo)})]
  public static class E3AbilityCast {
-  static void Postfix(RimWorld.Ability __instance,bool __result){if(__result)try{WeaveSurge.OnCast(__instance);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 魔网潮汐出错："+e,74120791);}}
+  static void Postfix(RimWorld.Ability __instance,bool __result){if(__result)try{WeaveSurge.OnCast(__instance);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 魔网潮汐出错：".Loc()+e,74120791);}}
  }
  // 天才学徒心情崩溃时野魔法爆发。
  [HarmonyPatch(typeof(MentalStateHandler),nameof(MentalStateHandler.TryStartMentalState))]
  public static class E3MentalBreak {
   static readonly AccessTools.FieldRef<MentalStateHandler,Pawn> pawnRef=AccessTools.FieldRefAccess<MentalStateHandler,Pawn>("pawn");
-  static void Postfix(MentalStateHandler __instance,bool __result){if(__result)try{Ward.OnBreak(pawnRef(__instance));}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 天才学徒出错："+e,74120792);}}
+  static void Postfix(MentalStateHandler __instance,bool __result){if(__result)try{Ward.OnBreak(pawnRef(__instance));}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 天才学徒出错：".Loc()+e,74120792);}}
  }
  // 树人：记下殖民者砍的树；森林之心让周围作物长得快。
  [HarmonyPatch(typeof(Plant),nameof(Plant.PlantCollected))]
@@ -363,23 +363,23 @@ namespace LichPhylactery {
  public static class Events3Settings {
   public static void Draw(Listing_Standard l){
    var s=LichMod.Settings;
-   l.Label("1.117.0 新事件（都受“DND 事件频率”影响，最早第 15 天）：");
-   l.CheckboxLabeled("宝箱怪",ref s.e3Mimic,"地图上出现一只无主的宝箱：七成是真宝箱，三成是宝箱怪。可以先让智识≥8的人鉴定。");
-   l.CheckboxLabeled("神祇的乞丐",ref s.e3Beggar,"有守护神时，一个乞丐来讨东西（看守护神善恶）。施舍了，他第二天现出神的化身：神眷+15，施舍的人得到“蒙神一顾”。");
-   l.CheckboxLabeled("吟游诗人巡演",ref s.e3Bard,"2～4名吟游诗人来演一晚：全殖民地心情+，冒险者经验；把殖民地最大的功绩写成歌谣，各派系好感+5。恶名在外会被写成讽刺歌。");
-   l.CheckboxLabeled("化身旅人的银龙",ref s.e3Silver,"一位老旅人借宿3天，按吃住和陪伴打分；走时现出银龙真身，好的招待换龙鳞、“银龙之友”，极好的有几率留下龙蛋。");
-   l.CheckboxLabeled("亡魂的遗愿",ref s.e3Ghost,"死去3～15天的殖民者托付最后一件事（安葬、照顾亲人或报仇）。完成后受托人继承他一半的技能经验。");
-   l.CheckboxLabeled("逃亡的同盟贵族",ref s.e3Noble,"受伤的同盟贵族被塞伊追杀，逃到殖民地：庇护、交给塞伊或卖给黑网。");
-   l.CheckboxLabeled("托付的天才学徒（需要 Biotech）",ref s.e3Ward,"同盟的法师把一个魔法天才托付给你，定期寄来礼物；成年时智识够了就成为法师。");
-   l.CheckboxLabeled("秘银陨星",ref s.e3Starfall,"一晚流星雨，天亮前落下秘银陨石；一成几率带着坠星之心，会引来抢夺。");
-   l.CheckboxLabeled("全灭的冒险小队",ref s.e3Party,"世界地图上出现一支全灭冒险小队的营地，杀死他们的怪物还在。装备、冒险日志，复活他们就能招募。");
-   l.CheckboxLabeled("魔网潮汐",ref s.e3Surge,"5天极光：每次施放能力 20% 触发野魔法（好坏都有），施法职业每天额外得冒险者经验。");
-   l.CheckboxLabeled("命匣窃贼",ref s.e3Thief,"隐身的盗贼夜里潜入偷巫妖的命匣。偷走了要在15天内去藏身处抢回来，否则命匣被卖到九狱掮客手里（可赎回）。");
-   l.CheckboxLabeled("冒险者的天命",ref s.e3Calling,"冒险者第一次到5、10、15级时，各有一半几率接到个人任务；完成后二选一：属性+1、武艺天赋。");
-   l.CheckboxLabeled("骑士比武大会",ref s.e3Tourney,"同盟邀请你参加比武：剑术、长枪、射箭、摔角各派一人，按技能和属性掷骰。赢了拿奖杯和经验，三项以上得冠军称号。");
-   l.CheckboxLabeled("敌对巫妖的战书",ref s.e3Rival,"殖民地有命匣5级以上的巫妖时，一名塞伊巫妖下战书：法术决斗、命匣狩猎或拒绝。");
-   l.CheckboxLabeled("树人苏醒",ref s.e3Treant,"林木多的地图上，最老的树站了起来：砍树少就送一棵森林之心（周围作物生长+20%），砍得多就带着苏醒的树来报复。");
-   l.CheckboxLabeled("塔拉斯克苏醒",ref s.e3Tarrasque,"传说中的巨兽醒了，约20天后到。可以请援军、设陷阱或献肉引开。打死它得到甲壳和獠牙（顶级材料）。");
+   l.Label("1.117.0 新事件（都受“DND 事件频率”影响，最早第 15 天）：".Loc());
+   l.CheckboxLabeled("宝箱怪".Loc(),ref s.e3Mimic,"地图上出现一只无主的宝箱：七成是真宝箱，三成是宝箱怪。可以先让智识≥8的人鉴定。".Loc());
+   l.CheckboxLabeled("神祇的乞丐".Loc(),ref s.e3Beggar,"有守护神时，一个乞丐来讨东西（看守护神善恶）。施舍了，他第二天现出神的化身：神眷+15，施舍的人得到“蒙神一顾”。".Loc());
+   l.CheckboxLabeled("吟游诗人巡演".Loc(),ref s.e3Bard,"2～4名吟游诗人来演一晚：全殖民地心情+，冒险者经验；把殖民地最大的功绩写成歌谣，各派系好感+5。恶名在外会被写成讽刺歌。".Loc());
+   l.CheckboxLabeled("化身旅人的银龙".Loc(),ref s.e3Silver,"一位老旅人借宿3天，按吃住和陪伴打分；走时现出银龙真身，好的招待换龙鳞、“银龙之友”。".Loc());
+   l.CheckboxLabeled("亡魂的遗愿".Loc(),ref s.e3Ghost,"死去3～15天的殖民者托付最后一件事（安葬、照顾亲人或报仇）。完成后受托人继承他一半的技能经验。".Loc());
+   l.CheckboxLabeled("逃亡的同盟贵族".Loc(),ref s.e3Noble,"受伤的同盟贵族被塞伊追杀，逃到殖民地：庇护、交给塞伊或卖给黑网。".Loc());
+   l.CheckboxLabeled("托付的天才学徒（需要 Biotech）".Loc(),ref s.e3Ward,"同盟的法师把一个魔法天才托付给你，定期寄来礼物；成年时智识够了就成为法师。".Loc());
+   l.CheckboxLabeled("秘银陨星".Loc(),ref s.e3Starfall,"一晚流星雨，天亮前落下秘银陨石；一成几率带着坠星之心，会引来抢夺。".Loc());
+   l.CheckboxLabeled("全灭的冒险小队".Loc(),ref s.e3Party,"世界地图上出现一支全灭冒险小队的营地，杀死他们的怪物还在。装备、冒险日志，复活他们就能招募。".Loc());
+   l.CheckboxLabeled("魔网潮汐".Loc(),ref s.e3Surge,"5天极光：每次施放能力 20% 触发野魔法（好坏都有），施法职业每天额外得冒险者经验。".Loc());
+   l.CheckboxLabeled("命匣窃贼".Loc(),ref s.e3Thief,"隐身的盗贼夜里潜入偷巫妖的命匣。偷走了要在15天内去藏身处抢回来，否则命匣被卖到九狱掮客手里（可赎回）。".Loc());
+   l.CheckboxLabeled("冒险者的天命".Loc(),ref s.e3Calling,"冒险者第一次到5、10、15级时，各有一半几率接到个人任务；完成后二选一：属性+1、武艺天赋。".Loc());
+   l.CheckboxLabeled("骑士比武大会".Loc(),ref s.e3Tourney,"同盟邀请你参加比武：剑术、长枪、射箭、摔角各派一人，按技能和属性掷骰。赢了拿奖杯和经验，三项以上得冠军称号。".Loc());
+   l.CheckboxLabeled("敌对巫妖的战书".Loc(),ref s.e3Rival,"殖民地有命匣5级以上的巫妖时，一名塞伊巫妖下战书：法术决斗、命匣狩猎或拒绝。".Loc());
+   l.CheckboxLabeled("树人苏醒".Loc(),ref s.e3Treant,"林木多的地图上，最老的树站了起来：砍树少就送一棵森林之心（周围作物生长+20%），砍得多就带着苏醒的树来报复。".Loc());
+   l.CheckboxLabeled("塔拉斯克苏醒".Loc(),ref s.e3Tarrasque,"传说中的巨兽醒了，约20天后到。可以请援军、设陷阱或献肉引开。打死它得到甲壳和獠牙（顶级材料）。".Loc());
   }
  }
 }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（Gameplay.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>休眠；</zh><en>dormant; </en></s>
+  <s><zh>血肉 </zh><en>flesh </en></s>
+  <s><zh> / 500；</zh><en> / 500; </en></s>
+  <s><zh>统御 </zh><en>command </en></s>
+  <s><zh>\n精神力维护：</zh><en>\nPsyfocus upkeep: </en></s>
+  <s><zh>点/天。</zh><en> per day.</en></s>
+  <s><zh>\n血肉储备每天消耗25，修复每点伤害额外消耗2；低于25停止自愈，耗尽时行动与操作减半。</zh><en>\nFlesh reserve costs 25 per day, plus 2 per point of damage repaired; below 25 self-healing stops, and when empty, moving and manipulation are halved.</en></s>
+  <s><zh>\n专长：</zh><en>\nSpecialty: </en></s>
+  <s><zh>。学习与工作倍率 </zh><en>. Learning and work multiplier </en></s>
+  <s><zh>；技能由自身正常积累。</zh><en>; skills build up on their own as usual.</en></s>
+  <s><zh>石魔像</zh><en>stone golem</en></s>
+  <s><zh>知识死灵·</zh><en>Knowledge necro·</en></s>
+  <s><zh>服务命匣：</zh><en>Serving phylactery: </en></s>
+  <s><zh>未选择或距离超过12格</zh><en>not chosen or more than 12 cells away</en></s>
+  <s><zh>\n巫妖仪式绑定工作单执行者。</zh><en>\nThe lich ritual binds the bill's worker.</en></s>
+  <s><zh>选择服务命匣</zh><en>Choose serving phylactery</en></s>
+  <s><zh>献祭、造物胚体与补给服务于此命匣。命匣必须留在仪式台12格内；不同巫妖可使用不同仪式台。</zh><en>Sacrifices, construct embryos and supplies serve this phylactery. The phylactery must stay within 12 cells of the ritual table; different liches can use different ritual tables.</en></s>
+  <s><zh>无主</zh><en>ownerless</en></s>
+  <s><zh> · 等级</zh><en> · level </en></s>
+  <s><zh>12格内没有命匣</zh><en>No phylactery within 12 cells</en></s>
+  <s><zh>需要已建成的死灵仪式台。</zh><en>Needs a completed necromantic ritual table.</en></s>
+  <s><zh>执行者必须是尚未转化的人形殖民者。</zh><en>The worker must be an unconverted humanlike colonist.</en></s>
+  <s><zh>心灵敏感度必须大于0。</zh><en>Psychic sensitivity must be above 0.</en></s>
+  <s><zh>器官封存已停用；知识死灵改用生肉胚体培育。</zh><en>Organ sealing is disabled; knowledge necros are now grown from raw-meat embryos.</en></s>
+  <s><zh>先选择12格内的命匣。</zh><en>First choose a phylactery within 12 cells.</en></s>
+  <s><zh>死灵之躯会在死亡3日后自动复生，无须此工作单。</zh><en>Necromantic bodies revive automatically 3 days after death; this bill isn't needed.</en></s>
+  <s><zh>命匣主人必须存活并已绑定。</zh><en>The phylactery owner must be alive and bound.</en></s>
+  <s><zh>命匣已达当前等级上限。</zh><en>The phylactery has reached the current level cap.</en></s>
+  <s><zh>献祭只接受新鲜生肉或畸变膏。</zh><en>Sacrifices only accept fresh raw meat or twisted flesh paste.</en></s>
+  <s><zh>汲取灵魂需要一具完整的人形尸体。</zh><en>Drain soul needs a whole humanlike corpse.</en></s>
+  <s><zh>同地图没有需要至少100血肉补给的巨像。</zh><en>No colossus on the same map needs at least 100 flesh supply.</en></s>
+  <s><zh>命匣主人还没读过魔像手册。</zh><en>The phylactery owner hasn't read the golem manual yet.</en></s>
+  <s><zh>石魔像胚体只用石块。</zh><en>Stone golem embryos only use stone blocks.</en></s>
+  <s><zh>需要一颗封着灵魂的魂石。</zh><en>Needs a soul stone with a sealed soul.</en></s>
+  <s><zh>命匣攒下的献祭经验不足</zh><en>Not enough sacrifice XP stored in the phylactery</en></s>
+  <s><zh>（当前</zh><en> (current </en></s>
+  <s><zh>造物胚体只使用新鲜生肉或畸变膏。</zh><en>Construct embryos only use fresh raw meat or twisted flesh paste.</en></s>
+  <s><zh>的灵魂被汲入命匣：+</zh><en>'s soul was drawn into the phylactery: +</en></s>
+  <s><zh>献祭经验。</zh><en> sacrifice XP.</en></s>
+  <s><zh>的灵魂从魂石里被汲入命匣：+</zh><en>'s soul was drawn from the soul stone into the phylactery: +</en></s>
+  <s><zh>需要有效绑定的命匣。</zh><en>Needs a validly bound phylactery.</en></s>
+  <s><zh>需要敌对的存活生物。</zh><en>Needs a hostile living creature.</en></s>
+  <s><zh>需要自己的受伤死灵造物。</zh><en>Needs your own injured necromantic construct.</en></s>
+</LPStrings>

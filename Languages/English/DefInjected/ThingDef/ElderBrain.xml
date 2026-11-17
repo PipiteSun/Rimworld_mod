@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 上古脑 -->
+  <LP_ElderBrain.label>elder brain</LP_ElderBrain.label>
+  <!-- 泡在灵能浆液里的巨大大脑，夺心魔群落的心智核心。建好后要放一具夺心魔尸体到它旁边才能唤醒。\n\n殖民地的夺心魔在同一地图上吞噬的每一个人形大脑都会汇入上古脑：累计1/4/10/20/35个大脑时分别达到1～5级。上古脑会定期产出夺心魔蝌蚪（1级每5天一条，5级每天一条），并保存最近5个被吞噬者的"传承记忆"，可以灌装成脑浆罐，让夺心魔继承其80%的经验。\n\n上古脑需要用草药或食物（生肉、饭菜）维持；断粮时停止产出，每挨饿一天丢失一份记忆。上古脑被摧毁时，所有夺心魔都会受到重创。 -->
+  <LP_ElderBrain.description>A huge brain floating in psionic brine, the mental core of a mind flayer colony. After building it, place a mind flayer corpse next to it to awaken it.\n\nEvery humanlike brain devoured by the colony's mind flayers on the same map flows into the elder brain: at 1/4/10/20/35 brains in total it reaches levels 1-5. The elder brain periodically produces mind flayer tadpoles (one every 5 days at level 1, one per day at level 5) and keeps the "inherited memories" of the last 5 victims, which can be bottled into brine jars to let a mind flayer inherit 80% of their XP.\n\nThe elder brain must be fed with herbal medicine or food (raw meat, meals); without food it stops producing and loses one memory for each day it starves. When the elder brain is destroyed, all mind flayers are badly hurt.</LP_ElderBrain.description>
+  <!-- 上古脑养料 -->
+  <LP_ElderBrain.comps.CompRefuelable.fuelGizmoLabel>elder brain nutrients</LP_ElderBrain.comps.CompRefuelable.fuelGizmoLabel>
+  <!-- 养料 -->
+  <LP_ElderBrain.comps.CompRefuelable.fuelLabel>nutrients</LP_ElderBrain.comps.CompRefuelable.fuelLabel>
+  <!-- 上古脑在挨饿 -->
+  <LP_ElderBrain.comps.CompRefuelable.outOfFuelMessage>The elder brain is starving</LP_ElderBrain.comps.CompRefuelable.outOfFuelMessage>
+  <!-- 脑浆罐 -->
+  <LP_BrainJar.label>brine jar</LP_BrainJar.label>
+  <!-- 一罐从上古脑里灌装出来的灵能浆液，封存着一个被吞噬者的记忆。夺心魔使用后会继承其中80%的技能经验。 -->
+  <LP_BrainJar.description>A jar of psionic brine drawn from an elder brain, sealing the memories of one devoured victim. A mind flayer who uses it inherits 80% of its skill XP.</LP_BrainJar.description>
+  <!-- 吸收传承记忆 -->
+  <LP_BrainJar.comps.CompUsable.useLabel>absorb inherited memory</LP_BrainJar.comps.CompUsable.useLabel>
+</LanguageData>

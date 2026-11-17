@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 贝希尔 -->
+  <LP_BehirBody.label>behir</LP_BehirBody.label>
+  <!-- 蛇躯 -->
+  <LP_BehirBody.corePart.customLabel>serpent body</LP_BehirBody.corePart.customLabel>
+  <!-- 尾 -->
+  <LP_BehirBody.corePart.parts.0.customLabel>tail</LP_BehirBody.corePart.parts.0.customLabel>
+  <!-- 脊椎 -->
+  <LP_BehirBody.corePart.parts.1.customLabel>spine</LP_BehirBody.corePart.parts.1.customLabel>
+  <!-- 胃袋 -->
+  <LP_BehirBody.corePart.parts.2.customLabel>stomach sac</LP_BehirBody.corePart.parts.2.customLabel>
+  <!-- 心 -->
+  <LP_BehirBody.corePart.parts.3.customLabel>heart</LP_BehirBody.corePart.parts.3.customLabel>
+  <!-- 左肺 -->
+  <LP_BehirBody.corePart.parts.4.customLabel>left lung</LP_BehirBody.corePart.parts.4.customLabel>
+  <!-- 右肺 -->
+  <LP_BehirBody.corePart.parts.5.customLabel>right lung</LP_BehirBody.corePart.parts.5.customLabel>
+  <!-- 左肾 -->
+  <LP_BehirBody.corePart.parts.6.customLabel>left kidney</LP_BehirBody.corePart.parts.6.customLabel>
+  <!-- 右肾 -->
+  <LP_BehirBody.corePart.parts.7.customLabel>right kidney</LP_BehirBody.corePart.parts.7.customLabel>
+  <!-- 肝 -->
+  <LP_BehirBody.corePart.parts.8.customLabel>liver</LP_BehirBody.corePart.parts.8.customLabel>
+  <!-- 颈 -->
+  <LP_BehirBody.corePart.parts.9.customLabel>neck</LP_BehirBody.corePart.parts.9.customLabel>
+  <!-- 头 -->
+  <LP_BehirBody.corePart.parts.9.parts.0.customLabel>head</LP_BehirBody.corePart.parts.9.parts.0.customLabel>
+  <!-- 颅骨 -->
+  <LP_BehirBody.corePart.parts.9.parts.0.parts.0.customLabel>skull</LP_BehirBody.corePart.parts.9.parts.0.parts.0.customLabel>
+  <!-- 脑 -->
+  <LP_BehirBody.corePart.parts.9.parts.0.parts.0.parts.0.customLabel>brain</LP_BehirBody.corePart.parts.9.parts.0.parts.0.parts.0.customLabel>
+  <!-- 左眼 -->
+  <LP_BehirBody.corePart.parts.9.parts.0.parts.1.customLabel>left eye</LP_BehirBody.corePart.parts.9.parts.0.parts.1.customLabel>
+  <!-- 右眼 -->
+  <LP_BehirBody.corePart.parts.9.parts.0.parts.2.customLabel>right eye</LP_BehirBody.corePart.parts.9.parts.0.parts.2.customLabel>
+  <!-- 鼻 -->
+  <LP_BehirBody.corePart.parts.9.parts.0.parts.3.customLabel>nose</LP_BehirBody.corePart.parts.9.parts.0.parts.3.customLabel>
+  <!-- 颚 -->
+  <LP_BehirBody.corePart.parts.9.parts.0.parts.4.customLabel>jaw</LP_BehirBody.corePart.parts.9.parts.0.parts.4.customLabel>
+  <!-- 第一对左足 -->
+  <LP_BehirBody.corePart.parts.10.customLabel>first left leg</LP_BehirBody.corePart.parts.10.customLabel>
+  <!-- 第一对左爪 -->
+  <LP_BehirBody.corePart.parts.10.parts.0.customLabel>first left claw</LP_BehirBody.corePart.parts.10.parts.0.customLabel>
+  <!-- 第一对右足 -->
+  <LP_BehirBody.corePart.parts.11.customLabel>first right leg</LP_BehirBody.corePart.parts.11.customLabel>
+  <!-- 第一对右爪 -->
+  <LP_BehirBody.corePart.parts.11.parts.0.customLabel>first right claw</LP_BehirBody.corePart.parts.11.parts.0.customLabel>
+  <!-- 第二对左足 -->
+  <LP_BehirBody.corePart.parts.12.customLabel>second left leg</LP_BehirBody.corePart.parts.12.customLabel>
+  <!-- 第二对右足 -->
+  <LP_BehirBody.corePart.parts.13.customLabel>second right leg</LP_BehirBody.corePart.parts.13.customLabel>
+  <!-- 第三对左足 -->
+  <LP_BehirBody.corePart.parts.14.customLabel>third left leg</LP_BehirBody.corePart.parts.14.customLabel>
+  <!-- 第三对右足 -->
+  <LP_BehirBody.corePart.parts.15.customLabel>third right leg</LP_BehirBody.corePart.parts.15.customLabel>
+  <!-- 第四对左足 -->
+  <LP_BehirBody.corePart.parts.16.customLabel>fourth left leg</LP_BehirBody.corePart.parts.16.customLabel>
+  <!-- 第四对右足 -->
+  <LP_BehirBody.corePart.parts.17.customLabel>fourth right leg</LP_BehirBody.corePart.parts.17.customLabel>
+  <!-- 第五对左足 -->
+  <LP_BehirBody.corePart.parts.18.customLabel>fifth left leg</LP_BehirBody.corePart.parts.18.customLabel>
+  <!-- 第五对右足 -->
+  <LP_BehirBody.corePart.parts.19.customLabel>fifth right leg</LP_BehirBody.corePart.parts.19.customLabel>
+  <!-- 第六对左足 -->
+  <LP_BehirBody.corePart.parts.20.customLabel>sixth left leg</LP_BehirBody.corePart.parts.20.customLabel>
+  <!-- 第六对右足 -->
+  <LP_BehirBody.corePart.parts.21.customLabel>sixth right leg</LP_BehirBody.corePart.parts.21.customLabel>
+  <!-- 眼魔 -->
+  <LP_BeholderBody.label>beholder</LP_BeholderBody.label>
+  <!-- 眼魔球体 -->
+  <LP_BeholderBody.corePart.customLabel>beholder orb</LP_BeholderBody.corePart.customLabel>
+  <!-- 脑 -->
+  <LP_BeholderBody.corePart.parts.0.customLabel>brain</LP_BeholderBody.corePart.parts.0.customLabel>
+  <!-- 心 -->
+  <LP_BeholderBody.corePart.parts.1.customLabel>heart</LP_BeholderBody.corePart.parts.1.customLabel>
+  <!-- 气囊 -->
+  <LP_BeholderBody.corePart.parts.2.customLabel>air sac</LP_BeholderBody.corePart.parts.2.customLabel>
+  <!-- 肾 -->
+  <LP_BeholderBody.corePart.parts.3.customLabel>kidney</LP_BeholderBody.corePart.parts.3.customLabel>
+  <!-- 肝 -->
+  <LP_BeholderBody.corePart.parts.4.customLabel>liver</LP_BeholderBody.corePart.parts.4.customLabel>
+  <!-- 胃 -->
+  <LP_BeholderBody.corePart.parts.5.customLabel>stomach</LP_BeholderBody.corePart.parts.5.customLabel>
+  <!-- 左漂浮囊 -->
+  <LP_BeholderBody.corePart.parts.6.customLabel>left float sac</LP_BeholderBody.corePart.parts.6.customLabel>
+  <!-- 右漂浮囊 -->
+  <LP_BeholderBody.corePart.parts.7.customLabel>right float sac</LP_BeholderBody.corePart.parts.7.customLabel>
+  <!-- 主眼 -->
+  <LP_BeholderBody.corePart.parts.8.customLabel>central eye</LP_BeholderBody.corePart.parts.8.customLabel>
+  <!-- 巨口 -->
+  <LP_BeholderBody.corePart.parts.9.customLabel>great maw</LP_BeholderBody.corePart.parts.9.customLabel>
+  <!-- 魅惑眼柄 -->
+  <LP_BeholderBody.corePart.parts.10.customLabel>charm eyestalk</LP_BeholderBody.corePart.parts.10.customLabel>
+  <!-- 麻痹眼柄 -->
+  <LP_BeholderBody.corePart.parts.11.customLabel>paralysis eyestalk</LP_BeholderBody.corePart.parts.11.customLabel>
+  <!-- 恐惧眼柄 -->
+  <LP_BeholderBody.corePart.parts.12.customLabel>fear eyestalk</LP_BeholderBody.corePart.parts.12.customLabel>
+  <!-- 减速眼柄 -->
+  <LP_BeholderBody.corePart.parts.13.customLabel>slow eyestalk</LP_BeholderBody.corePart.parts.13.customLabel>
+  <!-- 衰弱眼柄 -->
+  <LP_BeholderBody.corePart.parts.14.customLabel>enervation eyestalk</LP_BeholderBody.corePart.parts.14.customLabel>
+  <!-- 石化眼柄 -->
+  <LP_BeholderBody.corePart.parts.15.customLabel>petrification eyestalk</LP_BeholderBody.corePart.parts.15.customLabel>
+  <!-- 解离眼柄 -->
+  <LP_BeholderBody.corePart.parts.16.customLabel>disintegration eyestalk</LP_BeholderBody.corePart.parts.16.customLabel>
+  <!-- 死亡眼柄 -->
+  <LP_BeholderBody.corePart.parts.17.customLabel>death eyestalk</LP_BeholderBody.corePart.parts.17.customLabel>
+  <!-- 睡眠眼柄 -->
+  <LP_BeholderBody.corePart.parts.18.customLabel>sleep eyestalk</LP_BeholderBody.corePart.parts.18.customLabel>
+  <!-- 念动眼柄 -->
+  <LP_BeholderBody.corePart.parts.19.customLabel>telekinesis eyestalk</LP_BeholderBody.corePart.parts.19.customLabel>
+  <!-- 半巫妖 -->
+  <LP_DemilichBody.label>demilich</LP_DemilichBody.label>
+  <!-- 头骨 -->
+  <LP_DemilichBody.corePart.customLabel>skull</LP_DemilichBody.corePart.customLabel>
+  <!-- 残魂 -->
+  <LP_DemilichBody.corePart.parts.0.customLabel>soul remnant</LP_DemilichBody.corePart.parts.0.customLabel>
+  <!-- 负能核心 -->
+  <LP_DemilichBody.corePart.parts.1.customLabel>negative energy core</LP_DemilichBody.corePart.parts.1.customLabel>
+  <!-- 魂息 -->
+  <LP_DemilichBody.corePart.parts.2.customLabel>soul breath</LP_DemilichBody.corePart.parts.2.customLabel>
+  <!-- 死灵脉络 -->
+  <LP_DemilichBody.corePart.parts.3.customLabel>necrotic veins</LP_DemilichBody.corePart.parts.3.customLabel>
+  <!-- 枯髓 -->
+  <LP_DemilichBody.corePart.parts.4.customLabel>withered marrow</LP_DemilichBody.corePart.parts.4.customLabel>
+  <!-- 浮空之力 -->
+  <LP_DemilichBody.corePart.parts.5.customLabel>levitation force</LP_DemilichBody.corePart.parts.5.customLabel>
+  <!-- 左宝石眼 -->
+  <LP_DemilichBody.corePart.parts.6.customLabel>left gem eye</LP_DemilichBody.corePart.parts.6.customLabel>
+  <!-- 右宝石眼 -->
+  <LP_DemilichBody.corePart.parts.7.customLabel>right gem eye</LP_DemilichBody.corePart.parts.7.customLabel>
+  <!-- 颚骨 -->
+  <LP_DemilichBody.corePart.parts.8.customLabel>jawbone</LP_DemilichBody.corePart.parts.8.customLabel>
+</LanguageData>

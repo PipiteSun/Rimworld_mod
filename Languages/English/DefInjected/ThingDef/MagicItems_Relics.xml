@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 圣光冠环 -->
+  <LP_HaloOfLight.label>circlet of holy light</LP_HaloOfLight.label>
+  <!-- 同盟圣武士的最高荣誉：一圈悬在头顶的淡金光环。任何攻击（包括近战）有20%概率被光环完全挡下，每天最多挡5次。戴在奇物层的头顶。 -->
+  <LP_HaloOfLight.description>The highest honor of the league's paladins: a pale golden halo hanging over the head. Any attack (including melee) has a 20% chance to be blocked completely by the halo, at most 5 blocks per day. Worn on the head in the trinket layer.</LP_HaloOfLight.description>
+  <!-- 格挡 -->
+  <LP_HaloOfLight.comps.CompMagicCharges.chargeLabel>block</LP_HaloOfLight.comps.CompMagicCharges.chargeLabel>
+  <!-- 净化封印 -->
+  <LP_PuritySeal.label>purifying seal</LP_PuritySeal.label>
+  <!-- 盖着圣徽火漆的羊皮纸条。“贴上”后封在使用者身上穿着的衣服上，不占任何栏位，最多贴3张：每张精神崩溃阈值-3%；每天一次自动挣脱支配或恐惧。需要穿着躯干衣物才能贴；脱光衣服封印也不会掉（它封的是人）。 -->
+  <LP_PuritySeal.description>A parchment strip with a holy symbol wax seal. "Applied", it's sealed onto clothing worn by the user, taking no slot, up to 3: each gives mental break threshold -3%; once per day automatically breaks free of domination or fear. Requires torso clothing to apply; stripping naked won't make the seals fall off (they seal the person).</LP_PuritySeal.description>
+  <!-- 贴上{0_label} -->
+  <LP_PuritySeal.comps.CompUsable.useLabel>apply {0_label}</LP_PuritySeal.comps.CompUsable.useLabel>
+  <!-- 灵能兜帽 -->
+  <LP_PsychicHood.label>psionic hood</LP_PsychicHood.label>
+  <!-- 缀着灵能晶格的深色兜帽。佩戴者5格内的友军（包括自己）被敌人的灵能、心灵能力指定时（支配、读心、心灵冲击、灵能扩展的法术等），有40%概率让法术落空。专门克制夺心魔。戴在奇物层的头顶。 -->
+  <LP_PsychicHood.description>A dark hood studded with psionic lattice. When allies within 5 cells of the wearer (including themself) are targeted by enemy psychic or psionic abilities (domination, mind reading, psychic jolts, psycasts from psionic expansions, etc.), there's a 40% chance the spell misses. A specific counter to mind flayers. Worn on the head in the trinket layer.</LP_PsychicHood.description>
+  <!-- 匠神齿轮 -->
+  <LP_CogOfMakers.label>tinker god's gear</LP_CogOfMakers.label>
+  <!-- 矮人异端“齿轮之神”的圣徽，一枚永远在转的铜齿轮。修理、维护机械体的速度×1.5；佩戴者身上的仿生部件不会被 EMP 关闭（不会被 EMP 震晕）。戴在奇物层的胸前。 -->
+  <LP_CogOfMakers.description>The holy symbol of the dwarven heretical "god of gears", a copper gear that never stops turning. Mechanoid repair and maintenance speed ×1.5; the wearer's bionic parts aren't shut down by EMP (not stunned by EMP). Worn on the chest in the trinket layer.</LP_CogOfMakers.description>
+  <!-- 审判徽记 -->
+  <LP_InquisitorSeal.label>inquisitor's badge</LP_InquisitorSeal.label>
+  <!-- 同盟审判官的玫瑰徽。谈判能力×1.2（招募、审讯更容易）；殖民地有人佩戴时，和费伦拓荒同盟的好感增加量×1.25；猎巫狂热分子不会来袭击这个殖民地。同盟好感≥75时，竖琴手会把一枚徽记当作礼物送来（只送一次）。戴在奇物层的胸前。 -->
+  <LP_InquisitorSeal.description>The rose badge of a league inquisitor. Negotiation ability ×1.2 (easier recruiting and interrogation); while someone in the colony wears it, goodwill gains with Faerûn's pioneer league ×1.25; witch-hunting zealots won't raid this colony. At league goodwill ≥75, the Harpers send a badge as a gift (only once). Worn on the chest in the trinket layer.</LP_InquisitorSeal.description>
+  <!-- 复苏核心 -->
+  <LP_RevivalCore.label>revival core</LP_RevivalCore.label>
+  <!-- 嵌在胸甲内侧的墨绿晶核，古老的复生协议还在运转。佩戴者死后24小时有50%概率以虚弱状态复活，核心随之碎掉（不论成败）。和巨魔的复活、死亡骑士套装不叠加（那样核心不会启动）。戴在奇物层的胸前。 -->
+  <LP_RevivalCore.description>A dark green crystal core set inside the breastplate, with an ancient revival protocol still running. When the wearer dies, there's a 50% chance after 24 hours to revive in a weakened state, and the core shatters (success or not). Doesn't stack with troll revival or the death knight set (the core won't activate then). Worn on the chest in the trinket layer.</LP_RevivalCore.description>
+  <!-- 鲜血印记 -->
+  <LP_MarkBlood.label>mark of blood</LP_MarkBlood.label>
+  <!-- 烙着血色八芒星的铁片，贴在胸口就长进肉里。近战伤害+30%，疼痛休克阈值+20%；但3天不打架就会陷入越来越重的“嗜血”心情。诅咒物品：戴上脱不下。巫妖戴着没有代价（同盟好感-30，只扣一次）。 -->
+  <LP_MarkBlood.description>An iron plate branded with a blood-red eight-pointed star that grows into the flesh when pressed to the chest. Melee damage +30%, pain shock threshold +20%; but after 3 days without fighting, an ever-worsening "bloodthirst" mood sets in. Cursed item: can't be removed once worn. No cost when worn by a lich (league goodwill -30, deducted only once).</LP_MarkBlood.description>
+  <!-- 一枚暗红色的古旧护符，摸上去微微发烫。黑网说它“能让人打得更狠”。 -->
+  <LP_MarkBlood.comps.CompCursed.disguiseDescription>An old dark red amulet, faintly warm to the touch. The Black Network says it "makes you hit harder".</LP_MarkBlood.comps.CompCursed.disguiseDescription>
+  <!-- 古旧红铁护符 -->
+  <LP_MarkBlood.comps.CompCursed.disguiseLabel>old red iron amulet</LP_MarkBlood.comps.CompCursed.disguiseLabel>
+  <!-- 腐朽印记 -->
+  <LP_MarkDecay.label>mark of decay</LP_MarkDecay.label>
+  <!-- 长着铜绿的三环印记。免疫疾病和毒素累积，失血速度-50%；但佩戴者美观-3，身边5格内的人心情-2。诅咒物品：戴上脱不下。巫妖戴着没有代价（同盟好感-30，只扣一次）。 -->
+  <LP_MarkDecay.description>A triple-ring mark grown with verdigris. Immune to disease and toxic buildup, bleeding rate -50%; but the wearer's beauty -3, and people within 5 cells get mood -2. Cursed item: can't be removed once worn. No cost when worn by a lich (league goodwill -30, deducted only once).</LP_MarkDecay.description>
+  <!-- 一枚长满铜绿的古旧护符。黑网说它“能让人百病不侵”。 -->
+  <LP_MarkDecay.comps.CompCursed.disguiseDescription>An old amulet covered in verdigris. The Black Network says it "makes you immune to every illness".</LP_MarkDecay.comps.CompCursed.disguiseDescription>
+  <!-- 古旧铜绿护符 -->
+  <LP_MarkDecay.comps.CompCursed.disguiseLabel>old verdigris amulet</LP_MarkDecay.comps.CompCursed.disguiseLabel>
+  <!-- 万变印记 -->
+  <LP_MarkChange.label>mark of change</LP_MarkChange.label>
+  <!-- 颜色一直在变的蓝色印记。心灵敏感度+40%，研究速度+20%；但每天会出一件小怪事（短暂眩晕，或者两项技能的热情对调）。诅咒物品：戴上脱不下。巫妖戴着没有代价（同盟好感-30，只扣一次）。 -->
+  <LP_MarkChange.description>A blue mark whose color keeps shifting. Psychic sensitivity +40%, research speed +20%; but one small oddity happens each day (a brief stun, or two skills' passions swap). Cursed item: can't be removed once worn. No cost when worn by a lich (league goodwill -30, deducted only once).</LP_MarkChange.description>
+  <!-- 一枚颜色说不清的古旧护符。黑网说它“能让人开窍”。 -->
+  <LP_MarkChange.comps.CompCursed.disguiseDescription>An old amulet of an indescribable color. The Black Network says it "opens your mind".</LP_MarkChange.comps.CompCursed.disguiseDescription>
+  <!-- 古旧蓝晶护符 -->
+  <LP_MarkChange.comps.CompCursed.disguiseLabel>old blue crystal amulet</LP_MarkChange.comps.CompCursed.disguiseLabel>
+  <!-- 欢愉印记 -->
+  <LP_MarkRapture.label>mark of pleasure</LP_MarkRapture.label>
+  <!-- 紫粉色的蛇形印记。移动速度+15%，娱乐需求下降速度-50%；但心情上限被压到90%。诅咒物品：戴上脱不下。巫妖戴着没有代价（同盟好感-30，只扣一次）。 -->
+  <LP_MarkRapture.description>A purple-pink serpentine mark. Move speed +15%, recreation need falls 50% slower; but mood is capped at 90%. Cursed item: can't be removed once worn. No cost when worn by a lich (league goodwill -30, deducted only once).</LP_MarkRapture.description>
+  <!-- 一枚泛着紫光的古旧护符。黑网说它“能让人轻快起来”。 -->
+  <LP_MarkRapture.comps.CompCursed.disguiseDescription>An old amulet with a purple glow. The Black Network says it "lightens you up".</LP_MarkRapture.comps.CompCursed.disguiseDescription>
+  <!-- 古旧紫晶护符 -->
+  <LP_MarkRapture.comps.CompCursed.disguiseLabel>old amethyst amulet</LP_MarkRapture.comps.CompCursed.disguiseLabel>
+</LanguageData>

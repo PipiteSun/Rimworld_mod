@@ -57,15 +57,15 @@ namespace LichPhylactery {
    if(Scribe.mode!=LoadSaveMode.PostLoadInit || F==null)return;
    if(!(F.GetValue(__instance) is List<Thing> list))return;
    int n=list.RemoveAll(t=>t!=null && t.def!=null && t.def.defName.StartsWith(SpellPageFix.Prefix) && t.stackCount<=0);
-   if(n>0)Log.Message("[DND边缘大陆] 读档修复：丢掉 "+n+" 张数量为 0 的旧法术页残留。");
+   if(n>0)Log.Message("[DND边缘大陆] 读档修复：丢掉 ".Loc()+n+" 张数量为 0 的旧法术页残留。".Loc());
   }
  }
  public class GameComponent_SpellPageFix : GameComponent {
   public GameComponent_SpellPageFix(Game g){}
   public override void FinalizeInit(){
-   if(SpellPageFix.Renumbered>0)Log.Message("[DND边缘大陆] 读档修复：给 "+SpellPageFix.Renumbered+" 张撞号的旧法术页换了新编号。");SpellPageFix.Seen.Clear();SpellPageFix.Renumbered=0;
+   if(SpellPageFix.Renumbered>0)Log.Message("[DND边缘大陆] 读档修复：给 ".Loc()+SpellPageFix.Renumbered+" 张撞号的旧法术页换了新编号。".Loc());SpellPageFix.Seen.Clear();SpellPageFix.Renumbered=0;
    int n=0;foreach(var m in Find.Maps)n+=SpellPageFix.CleanListers(m);
-   if(n>0)Log.Message("[DND边缘大陆] 读档修复：清掉地图物品清单里 "+n+" 个没生成在地图上的残留（旧版法术页撞号留下的）。");
+   if(n>0)Log.Message("[DND边缘大陆] 读档修复：清掉地图物品清单里 ".Loc()+n+" 个没生成在地图上的残留（旧版法术页撞号留下的）。".Loc());
   }
  }
 }

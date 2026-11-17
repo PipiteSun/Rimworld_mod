@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 治疗之手 -->
+  <LP_HealingHands.label>healing hands</LP_HealingHands.label>
+  <!-- 把手按在一名友军身上：每处伤口愈合（医疗等级/2 + 社交等级/2）。不能长回断肢。冷却1天。 -->
+  <LP_HealingHands.description>Lay hands on an ally: each wound heals (Medicine level/2 + Social level/2). Can't regrow lost limbs. Cooldown 1 day.</LP_HealingHands.description>
+  <!-- 光辉之魂 -->
+  <LP_RadiantSoulLeap.label>radiant soul</LP_RadiantSoulLeap.label>
+  <!-- 光翼一展，跳到远处。冷却1天。 -->
+  <LP_RadiantSoulLeap.description>Spread wings of light and leap far away. Cooldown 1 day.</LP_RadiantSoulLeap.description>
+  <!-- 跳跃 -->
+  <LP_RadiantSoulLeap.verbProperties.label>leap</LP_RadiantSoulLeap.verbProperties.label>
+  <!-- 亡者裹布 -->
+  <LP_NecroticShroud.label>necrotic shroud</LP_NecroticShroud.label>
+  <!-- 披上死亡的阴影：4格内活着的敌人惊恐逃跑8秒。冷却1天。 -->
+  <LP_NecroticShroud.description>Cloak yourself in the shadow of death: living enemies within 4 cells flee in terror for 8 seconds. Cooldown 1 day.</LP_NecroticShroud.description>
+  <!-- 魔鬼契约 -->
+  <LP_InfernalPact.label>devil's bargain</LP_InfernalPact.label>
+  <!-- 跟魔鬼讨价还价：心情-10（3天），换来24小时射击与近战伤害+20%、精神力获取+20%；之后12小时意识-10%。冷却5天。 -->
+  <LP_InfernalPact.description>Haggle with the devil: mood -10 (3 days) in exchange for +20% shooting and melee damage and +20% psyfocus gain for 24 hours; then consciousness -10% for 12 hours. Cooldown 5 days.</LP_InfernalPact.description>
+</LanguageData>

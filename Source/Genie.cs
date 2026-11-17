@@ -13,12 +13,12 @@ namespace LichPhylactery {
  public static class Genie {
   public const float CooldownFactor=.5f;
   public const int DimDays=15,LeaveTicks=GenDate.TicksPerDay,FatigueDays=15,WishCooldownDays=60,Wealth=2000,PeaceDays=15,ClearDays=5,InsightLevels=2,RubTicks=180;
-  public static string Prefix(string element){switch(element){case "Fire":return "伊弗利特";case "Water":return "玛瑞德";case "Earth":return "道";case "Air":return "金尼";}return "巨灵";}
+  public static string Prefix(string element){switch(element){case "Fire":return "伊弗利特".Loc();case "Water":return "玛瑞德".Loc();case "Earth":return "道".Loc();case "Air":return "金尼".Loc();}return "巨灵".Loc();}
   public static XenotypeDef Xenotype=>Races124.Xeno("LP_Genie");
   public static ThingDef LampDef=>Items.Thing("LP_WonderLamp");
   public static Gene_GenieCore Core(Pawn p)=>p?.genes?.GetFirstGeneOfType<Gene_GenieCore>();
   public static bool Fatigued(Pawn p)=>Races124.IsGenie(p) && Items.Has(p,"LP_GenieFatigue");
-  public static readonly string[] WishLabels={"丰收","和平","痊愈","财富","晴空","顿悟"};
+  public static readonly string[] WishLabels={"丰收".Loc(),"和平".Loc(),"痊愈".Loc(),"财富".Loc(),"晴空".Loc(),"顿悟".Loc()};
 
   // ---------- 召唤 ----------
   public static Pawn Summon(WonderLamp lamp,Pawn rubber,string element=null){
@@ -31,7 +31,7 @@ namespace LichPhylactery {
    var map=lamp.MapHeld;var near=lamp.PositionHeld;if(rubber?.Spawned==true){map=rubber.Map;near=rubber.Position;}
    if(map!=null)GenSpawn.Spawn(p,CellFinder.RandomClosewalkCellNear(near,map,3),map);
    Bind(lamp,p);
-   if(map!=null){for(int i=0;i<8;i++)FleckMaker.ThrowSmoke(p.DrawPos,map,2f);Find.LetterStack.ReceiveLetter("巨灵现身","神灯里升起一缕青烟，凝成了"+Genasi.Label(element)+"之巨灵"+p.LabelShort+"（"+Prefix(element)+"）。\n\n巨灵会留下来做你的殖民者，每60天能实现一次愿望。神灯必须留在你手里：神灯被卖掉、偷走或毁掉，巨灵一天后就会化烟离去。巨灵被击倒或杀死时不会死去，而是回到灯里沉睡15天（灯里与外界隔绝，不会受伤挨饿）；暗淡时也可以花"+ReviveSilver+"白银立刻唤醒。",LetterDefOf.PositiveEvent,p);}
+   if(map!=null){for(int i=0;i<8;i++)FleckMaker.ThrowSmoke(p.DrawPos,map,2f);Find.LetterStack.ReceiveLetter("巨灵现身".Loc(),"神灯里升起一缕青烟，凝成了".Loc()+Genasi.Label(element)+"之巨灵".Loc()+p.LabelShort+"（".Loc()+Prefix(element)+"）。\n\n巨灵会留下来做你的殖民者，每60天能实现一次愿望。神灯必须留在你手里：神灯被卖掉、偷走或毁掉，巨灵一天后就会化烟离去。巨灵被击倒或杀死时不会死去，而是回到灯里沉睡15天（灯里与外界隔绝，不会受伤挨饿）；暗淡时也可以花".Loc()+ReviveSilver+"白银立刻唤醒。".Loc(),LetterDefOf.PositiveEvent,p);}
    return p;
   }
   // 血脉作为异种基因加入，肤色随血脉（复用元素裔的肤色基因）。
@@ -126,7 +126,7 @@ namespace LichPhylactery {
    if(!lamp.inner.TryAddOrTransfer(p,false))return false;
    Refresh(p);
    lamp.genie=null;lamp.dimUntil=Find.TickManager.TicksGame+DimDays*GenDate.TicksPerDay;
-   if(map!=null){for(int i=0;i<6;i++)FleckMaker.ThrowSmoke(cell.ToVector3Shifted(),map,2f);Messages.Message(p.LabelShort+"化作一缕青烟回到了神灯里。神灯会暗淡"+DimDays+"天。",lamp,MessageTypeDefOf.NeutralEvent,false);}
+   if(map!=null){for(int i=0;i<6;i++)FleckMaker.ThrowSmoke(cell.ToVector3Shifted(),map,2f);Messages.Message(p.LabelShort+"化作一缕青烟回到了神灯里。神灯会暗淡".Loc()+DimDays+"天。".Loc(),lamp,MessageTypeDefOf.NeutralEvent,false);}
    return true;
   }
   public static void Depart(Pawn p,string reason){
@@ -141,14 +141,14 @@ namespace LichPhylactery {
   }
   // ---------- 许愿 ----------
   public static void OpenWishDialog(Pawn genie,RimWorld.Ability ability){
-   var node=new DiaNode(genie.LabelShort+"双臂交叉，悬在半空：\n\n“说出你的愿望吧，凡人。一个就够了。”\n\n许愿后巨灵会倦怠15天（工作速度减半、血脉能力不可用、心情-5）。");
-   for(int i=0;i<WishLabels.Length;i++){int k=i;node.options.Add(new DiaOption(WishLabels[i]+"："+WishText(i)){action=()=>Grant(genie,k),resolveTree=true});}
-   node.options.Add(new DiaOption("让我更强：一名殖民者的一项属性 +1（每人一生一次，可以超过上限 1 点）"){action=()=>Growth.OpenStrongerDialog(genie,ability),resolveTree=true}); // 1.58.3
-   if(CombatGifts.On)node.options.Add(new DiaOption("让我更强 · 武艺：一名殖民者获得一个随机武艺天赋（已有则直接升一阶）"){action=()=>CombatGifts.OpenWishDialog(genie,ability),resolveTree=true}); // 1.66.0
-   node.options.Add(new DiaOption("再想想"){action=()=>ability?.ResetCooldown(),resolveTree=true});
-   Find.WindowStack.Add(new Dialog_NodeTree(node,true,false,"巨灵的愿望"));
+   var node=new DiaNode(genie.LabelShort+"双臂交叉，悬在半空：\n\n“说出你的愿望吧，凡人。一个就够了。”\n\n许愿后巨灵会倦怠15天（工作速度减半、血脉能力不可用、心情-5）。".Loc());
+   for(int i=0;i<WishLabels.Length;i++){int k=i;node.options.Add(new DiaOption(WishLabels[i]+"：".Loc()+WishText(i)){action=()=>Grant(genie,k),resolveTree=true});}
+   node.options.Add(new DiaOption("让我更强：一名殖民者的一项属性 +1（每人一生一次，可以超过上限 1 点）".Loc()){action=()=>Growth.OpenStrongerDialog(genie,ability),resolveTree=true}); // 1.58.3
+   if(CombatGifts.On)node.options.Add(new DiaOption("让我更强 · 武艺：一名殖民者获得一个随机武艺天赋（已有则直接升一阶）".Loc()){action=()=>CombatGifts.OpenWishDialog(genie,ability),resolveTree=true}); // 1.66.0
+   node.options.Add(new DiaOption("再想想".Loc()){action=()=>ability?.ResetCooldown(),resolveTree=true});
+   Find.WindowStack.Add(new Dialog_NodeTree(node,true,false,"巨灵的愿望".Loc()));
   }
-  public static string WishText(int i){switch(i){case 0:return "地图上所有作物立刻成熟";case 1:return "15天内不会有敌对袭击";case 2:return "治好所有殖民者的伤口和疾病";case 3:return "巨灵脚下出现2000白银";case 4:return "天气放晴并维持5天";case 5:return "每个殖民者随机一项技能+2级";}return "";}
+  public static string WishText(int i){switch(i){case 0:return "地图上所有作物立刻成熟".Loc();case 1:return "15天内不会有敌对袭击".Loc();case 2:return "治好所有殖民者的伤口和疾病".Loc();case 3:return "巨灵脚下出现2000白银".Loc();case 4:return "天气放晴并维持5天".Loc();case 5:return "每个殖民者随机一项技能+2级".Loc();}return "";}
   // 执行愿望 index（0～5）并让巨灵倦怠；返回影响到的数量（作物、殖民者、白银等）。
   public static int Grant(Pawn genie,int index){
    var map=genie?.MapHeld;if(map==null)return 0;int n=0;
@@ -162,7 +162,7 @@ namespace LichPhylactery {
      break;
     case 1:
      var s=Races124.State;if(s!=null){s.peaceUntil[map.uniqueID]=Find.TickManager.TicksGame+PeaceDays*GenDate.TicksPerDay;n=1;}
-     Find.LetterStack.ReceiveLetter("巨灵的屏障","一道看不见的屏障笼罩了这片土地。接下来"+PeaceDays+"天里，敌人的袭击都到不了这里。",LetterDefOf.PositiveEvent,genie);
+     Find.LetterStack.ReceiveLetter("巨灵的屏障".Loc(),"一道看不见的屏障笼罩了这片土地。接下来".Loc()+PeaceDays+"天里，敌人的袭击都到不了这里。".Loc(),LetterDefOf.PositiveEvent,genie);
      break;
     case 2:foreach(var p in map.mapPawns.FreeColonistsSpawned.ToList()){int before=p.health.hediffSet.hediffs.Count;Heal(p);if(p.health.hediffSet.hediffs.Count<before)n++;}break;
     case 3:{var silver=ThingMaker.MakeThing(ThingDefOf.Silver);silver.stackCount=Wealth;GenPlace.TryPlaceThing(silver,genie.PositionHeld,map,ThingPlaceMode.Near);n=Wealth;break;}
@@ -175,7 +175,7 @@ namespace LichPhylactery {
      break;
    }
    Items.Give(genie,"LP_GenieFatigue",FatigueDays*GenDate.TicksPerDay);
-   Messages.Message(genie.LabelShort+"实现了愿望："+WishLabels[Mathf.Clamp(index,0,WishLabels.Length-1)]+"。",genie,MessageTypeDefOf.PositiveEvent,false);
+   Messages.Message(genie.LabelShort+"实现了愿望：".Loc()+WishLabels[Mathf.Clamp(index,0,WishLabels.Length-1)]+"。".Loc(),genie,MessageTypeDefOf.PositiveEvent,false);
    return n;
   }
  }
@@ -188,12 +188,12 @@ namespace LichPhylactery {
    // 1.59.0 热修：野性回归（没有派系、不是囚犯）不算被带走——留在殖民地，恢复成殖民者。
    if(pawn.Faction==null && !pawn.IsPrisoner && pawn.Spawned){Genie.Reclaim(pawn);return;}
    // 被俘、被别的派系带走：回到灯里（灯也不在手里就直接离去）。
-   if(pawn.Faction!=Faction.OfPlayer || pawn.IsPrisoner){var l=Genie.FindLamp(lampId);if(l==null || !Genie.ReturnToLamp(pawn,l))Genie.Depart(pawn,"化烟离去了。");return;}
+   if(pawn.Faction!=Faction.OfPlayer || pawn.IsPrisoner){var l=Genie.FindLamp(lampId);if(l==null || !Genie.ReturnToLamp(pawn,l))Genie.Depart(pawn,"化烟离去了。".Loc());return;}
    var lamp=Genie.FindLamp(lampId);
    if(Genie.PlayerHolds(lamp)){leaveTick=-1;return;}
    int now=Find.TickManager.TicksGame;
-   if(leaveTick<0){leaveTick=now+Genie.LeaveTicks;Messages.Message(pawn.LabelShort+"感到神灯离开了你的掌控。一天之内找不回来，巨灵就会离去。",pawn,MessageTypeDefOf.ThreatSmall,false);return;}
-   if(now>=leaveTick){if(lamp!=null && lamp.genie==pawn)lamp.genie=null;Genie.Depart(pawn,"失去了神灯的束缚，化烟离去。");}
+   if(leaveTick<0){leaveTick=now+Genie.LeaveTicks;Messages.Message(pawn.LabelShort+"感到神灯离开了你的掌控。一天之内找不回来，巨灵就会离去。".Loc(),pawn,MessageTypeDefOf.ThreatSmall,false);return;}
+   if(now>=leaveTick){if(lamp!=null && lamp.genie==pawn)lamp.genie=null;Genie.Depart(pawn,"失去了神灯的束缚，化烟离去。".Loc());}
   }
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref lampId,"genieLampId");Scribe_Values.Look(ref leaveTick,"genieLeaveTick",-1);}
  }
@@ -214,48 +214,48 @@ namespace LichPhylactery {
    var s=State;if(!graphics.TryGetValue(s,out var g)){g=GraphicDatabase.Get<Graphic_Single>("Races124/Items/WonderLamp_"+s,ShaderDatabase.Cutout,def.graphicData.drawSize,Color.white);graphics[s]=g;}
    return g;
   }}
-  public static string StateLabel(LampState s){switch(s){case LampState.Asleep:return "沉睡";case LampState.Bound:return "有主";case LampState.Dim:return "暗淡";}return "";}
+  public static string StateLabel(LampState s){switch(s){case LampState.Asleep:return "沉睡".Loc();case LampState.Bound:return "有主".Loc();case LampState.Dim:return "暗淡".Loc();}return "";}
   public override string GetInspectString(){
-   var s=State;string text="状态："+StateLabel(s);
-   if(s==LampState.Bound)text+="（"+(genieName??"巨灵")+"在外）";
-   if(s==LampState.Dim)text+="，还要"+(DimTicksLeft/(float)GenDate.TicksPerDay).ToString("0.0")+"天才能再擦出"+Stored.LabelShort;
-   if(s==LampState.Asleep && Stored!=null)text+="（"+Stored.LabelShort+"在灯里，可以擦出来）";
+   var s=State;string text="状态：".Loc()+StateLabel(s);
+   if(s==LampState.Bound)text+="（".Loc()+(genieName??"巨灵".Loc())+"在外）".Loc();
+   if(s==LampState.Dim)text+="，还要".Loc()+(DimTicksLeft/(float)GenDate.TicksPerDay).ToString("0.0")+"天才能再擦出".Loc()+Stored.LabelShort;
+   if(s==LampState.Asleep && Stored!=null)text+="（".Loc()+Stored.LabelShort+"在灯里，可以擦出来）".Loc();
    var b=base.GetInspectString();return b.NullOrEmpty()?text:b+"\n"+text;
   }
   // 擦灯的结果（右键→擦拭神灯，3秒）。
   public string Rub(Pawn by){
    switch(State){
-    case LampState.Bound:return "灯身微温，巨灵"+(genieName??"")+"已经在外面了，什么也没有发生。";
-    case LampState.Dim:return "神灯还很暗淡，"+(DimTicksLeft/(float)GenDate.TicksPerDay).ToString("0.0")+"天后才能把"+Stored.LabelShort+"擦出来。";
+    case LampState.Bound:return "灯身微温，巨灵".Loc()+(genieName??"")+"已经在外面了，什么也没有发生。".Loc();
+    case LampState.Dim:return "神灯还很暗淡，".Loc()+(DimTicksLeft/(float)GenDate.TicksPerDay).ToString("0.0")+"天后才能把".Loc()+Stored.LabelShort+"擦出来。".Loc();
    }
    if(Stored!=null){
-    var p=Stored;var map=by?.MapHeld??MapHeld;var near=by?.PositionHeld??PositionHeld;if(map==null)return "这里放不出巨灵。";
+    var p=Stored;var map=by?.MapHeld??MapHeld;var near=by?.PositionHeld??PositionHeld;if(map==null)return "这里放不出巨灵。".Loc();
     inner.Remove(p);Genie.Refresh(p);GenSpawn.Spawn(p,CellFinder.RandomClosewalkCellNear(near,map,3),map);p.health.CheckForStateChange(null,null);Genie.Reclaim(p);
     Genie.Bind(this,p);dimUntil=-1;for(int i=0;i<6;i++)FleckMaker.ThrowSmoke(p.DrawPos,map,2f);
-    return p.LabelShort+"从神灯里重新现身了。";
+    return p.LabelShort+"从神灯里重新现身了。".Loc();
    }
-   var g=Genie.Summon(this,by);return g==null?"神灯毫无反应。":g.LabelShort+"从神灯里现身了！";
+   var g=Genie.Summon(this,by);return g==null?"神灯毫无反应。".Loc():g.LabelShort+"从神灯里现身了！".Loc();
   }
   public string Revive(){
-   if(State!=LampState.Dim)return "神灯没有暗淡，不需要唤醒。";
-   var map=MapHeld;if(map==null)return "这里放不出巨灵。";
-   if(!Genie.TakeSilver(map,Genie.ReviveSilver))return "白银不够：需要"+Genie.ReviveSilver+"，这张地图上能用的只有"+Genie.SilverOn(map)+"。";
+   if(State!=LampState.Dim)return "神灯没有暗淡，不需要唤醒。".Loc();
+   var map=MapHeld;if(map==null)return "这里放不出巨灵。".Loc();
+   if(!Genie.TakeSilver(map,Genie.ReviveSilver))return "白银不够：需要".Loc()+Genie.ReviveSilver+"，这张地图上能用的只有".Loc()+Genie.SilverOn(map)+"。".Loc();
    dimUntil=Find.TickManager.TicksGame-1;
    var holder=(ParentHolder as Pawn_InventoryTracker)?.pawn ?? (ParentHolder as Pawn_CarryTracker)?.pawn;
-   return "花了"+Genie.ReviveSilver+"白银唤醒神灯："+Rub(holder);
+   return "花了".Loc()+Genie.ReviveSilver+"白银唤醒神灯：".Loc()+Rub(holder);
   }
   public override IEnumerable<Gizmo> GetGizmos(){
    foreach(var g in base.GetGizmos())yield return g;
    if(State!=LampState.Dim)yield break;
-   var cmd=new Command_Action{defaultLabel="花"+Genie.ReviveSilver+"银唤醒",defaultDesc="立刻结束暗淡，把"+Stored.LabelShort+"从神灯里召回（从这张地图上没被禁止的白银里扣"+Genie.ReviveSilver+"）。",icon=ThingDefOf.Silver.uiIcon,action=()=>Messages.Message(Revive(),this,MessageTypeDefOf.NeutralEvent,false)};
-   if(MapHeld==null)cmd.Disable("神灯不在地图上。");else{int have=Genie.SilverOn(MapHeld);if(have<Genie.ReviveSilver)cmd.Disable("白银不够：需要"+Genie.ReviveSilver+"，这张地图上能用的只有"+have+"。");}
+   var cmd=new Command_Action{defaultLabel="花".Loc()+Genie.ReviveSilver+"银唤醒".Loc(),defaultDesc="立刻结束暗淡，把".Loc()+Stored.LabelShort+"从神灯里召回（从这张地图上没被禁止的白银里扣".Loc()+Genie.ReviveSilver+"）。".Loc(),icon=ThingDefOf.Silver.uiIcon,action=()=>Messages.Message(Revive(),this,MessageTypeDefOf.NeutralEvent,false)};
+   if(MapHeld==null)cmd.Disable("神灯不在地图上。".Loc());else{int have=Genie.SilverOn(MapHeld);if(have<Genie.ReviveSilver)cmd.Disable("白银不够：需要".Loc()+Genie.ReviveSilver+"，这张地图上能用的只有".Loc()+have+"。".Loc());}
    yield return cmd;
   }
   public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Pawn selPawn){
    foreach(var o in base.GetFloatMenuOptions(selPawn))yield return o;
    var job=DefDatabase<JobDef>.GetNamedSilentFail("LP_RubLamp");if(job==null)yield break;
-   if(!selPawn.CanReach(this,PathEndMode.Touch,Danger.Deadly)){yield return new FloatMenuOption("擦拭神灯（无法到达）",null);yield break;}
-   yield return new FloatMenuOption("擦拭神灯",()=>selPawn.jobs.TryTakeOrderedJob(JobMaker.MakeJob(job,this),JobTag.Misc));
+   if(!selPawn.CanReach(this,PathEndMode.Touch,Danger.Deadly)){yield return new FloatMenuOption("擦拭神灯（无法到达）".Loc(),null);yield break;}
+   yield return new FloatMenuOption("擦拭神灯".Loc(),()=>selPawn.jobs.TryTakeOrderedJob(JobMaker.MakeJob(job,this),JobTag.Misc));
   }
   public ThingOwner GetDirectlyHeldThings()=>inner;
   public void GetChildHolders(List<IThingHolder> outChildren){ThingOwnerUtility.AppendThingHoldersFromThings(outChildren,inner);}
@@ -280,7 +280,7 @@ namespace LichPhylactery {
  public static class GenieDeath {
   static bool Prefix(Pawn __instance){return __instance.Dead || !Races124.IsGenie(__instance) || !Genie.CatchDeath(__instance);}
   // 死者的基因不算“激活”，这里按基因是否存在判断。
-  static void Postfix(Pawn __instance){if(__instance.Dead && Genie.Core(__instance)!=null){var p=__instance;Fiends.Defer(()=>{if(p.Corpse!=null && !p.Corpse.Destroyed)Genie.Depart(p,"的身体化作青烟散去了。");});}}
+  static void Postfix(Pawn __instance){if(__instance.Dead && Genie.Core(__instance)!=null){var p=__instance;Fiends.Defer(()=>{if(p.Corpse!=null && !p.Corpse.Destroyed)Genie.Depart(p,"的身体化作青烟散去了。".Loc());});}}
  }
  // 1.58.3 热修：灯里的巨灵与外界隔绝——不跑 tick（不冻伤、不挨饿、不生病），擦出来前一直是回灯时的满状态。
  public static class GenieLampFreeze {public static bool Runs(Pawn p)=>p.Spawned || !(p.ParentHolder is WonderLamp);}
@@ -302,7 +302,7 @@ namespace LichPhylactery {
  public static class GeniePeaceExecute {
   static bool Prefix(IncidentWorker __instance,IncidentParms parms,ref bool __result){
    if(!GeniePeace.Blocks(__instance,parms))return true;
-   Messages.Message("巨灵的屏障挡住了一场袭击。",MessageTypeDefOf.PositiveEvent,false);__result=false;return false;
+   Messages.Message("巨灵的屏障挡住了一场袭击。".Loc(),MessageTypeDefOf.PositiveEvent,false);__result=false;return false;
   }
  }
 }

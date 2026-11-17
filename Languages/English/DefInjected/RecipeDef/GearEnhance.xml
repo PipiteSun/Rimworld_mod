@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 附魔强化（+1～+5） -->
+  <LP_EnhanceGearLow.label>enchant (+1 to +5)</LP_EnhanceGearLow.label>
+  <!-- 把一件选了强化目标的武器或衣物强化一级，最高到+5。每次用4秘银和25白银。成功率：+1 100%、+2 95%、+3 90%、+4 80%、+5 70%，智识和手工的平均等级每比8高一级再+1.5%（最多+18%），连着奥术聚能石再+5%。失败只损失材料。装备要放在地上或储存区里，穿在身上的不会被拿来强化。 -->
+  <LP_EnhanceGearLow.description>Enhance a weapon or apparel with an enhancement target chosen by one level, up to +5. Each attempt uses 4 mithril and 25 silver. Success: +1 100%, +2 95%, +3 90%, +4 80%, +5 70%; +1.5% for each level the average of Intellectual and Crafting exceeds 8 (up to +18%), another +5% when linked to an arcane focus stone. Failure only loses the materials. The gear must be on the ground or in a storage zone; worn gear won't be taken for enhancement.</LP_EnhanceGearLow.description>
+  <!-- 正在附魔强化装备。 -->
+  <LP_EnhanceGearLow.jobString>Enchanting gear.</LP_EnhanceGearLow.jobString>
+  <!-- 附魔强化（+6～+10） -->
+  <LP_EnhanceGearHigh.label>enchant (+6 to +10)</LP_EnhanceGearHigh.label>
+  <!-- 把一件已经+5以上、选了强化目标的武器或衣物再强化一级，最高到+10。每次用4精金和10黄金。成功率：+6 60%、+7 50%、+8 40%、+9 30%、+10 20%，技能和奥术聚能石的加成同低阶。从+6往上失败时装备掉一级（不会掉到+5以下）。 -->
+  <LP_EnhanceGearHigh.description>Enhance a weapon or apparel that is already +5 or higher and has an enhancement target chosen by one more level, up to +10. Each attempt uses 4 adamantine and 10 gold. Success: +6 60%, +7 50%, +8 40%, +9 30%, +10 20%; skill and arcane focus stone bonuses as for the lower tiers. Failure from +6 upward drops the gear one level (never below +5).</LP_EnhanceGearHigh.description>
+  <!-- 正在附魔强化装备。 -->
+  <LP_EnhanceGearHigh.jobString>Enchanting gear.</LP_EnhanceGearHigh.jobString>
+</LanguageData>

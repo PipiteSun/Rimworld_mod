@@ -1,0 +1,277 @@
+s05371	The lich's gaze shatters the enemy's nerve. Hostile humanlikes within 4.9 cells of the target panic and flee, and hostile animals are stunned for 5 seconds; mechanoids, necromantic creatures and the psychically deaf are unaffected. Unlocked at phylactery level 3. Base psyfocus cost 15, neural heat 20.
+s05372	fear gaze
+s05373	{0}'s life was devoured by necrotic energy.
+s05374	necrotic energy
+s05375	Detonate necrotic energy at the target. Every hostile target within 3.9 cells takes 15 necrotic damage with a diminishing psychic sensitivity bonus (about 1.5× at 100% sensitivity, approaching a 2.5× cap), ignoring armor and not harming allies. Unlocked at phylactery level 6. Base psyfocus cost 12, neural heat 25.
+s05376	necrotic blast
+s05377	necrotic scar
+s05378	Flesh corroded by necrotic energy.
+s05379	corroded away
+s05380	necrotic erosion
+s05381	a necrotic erosion
+s05382	Consume a complete humanlike corpse and draw its soul into the phylactery. Sacrifice XP gained = (50 + 5 × total skill levels) × psychic sensitivity (counted between 20% and 400%). The corpse must not be missing any body part, must not be a desiccated skeleton, and must not be a lich or necromantic construct. Select a corpse to see its soul value.
+s05383	Draining a soul.
+s05384	Speak a word of death and the chosen character dies on the spot, with the corpse intact and usable for soul draining. Usable on enemies, neutrals, animals, mechanoids and prisoners, but not on your own colonists or creations. Unlocked at phylactery level 15. Base psyfocus cost 50, neural heat 45, cooldown 1 day.
+s05385	power word kill
+s05386	A tall race with elephant heads and trunks, thick grey skin and a temperament as steady as a boulder. Loxodons are strong and carry a lot; the trunk works like a third hand, so they can keep working with it when both hands are hurt; they barely know what fear is. The price is walking slowly and poor shooting. The bloodline is passed on to children.
+s05387	Inheritable burly race. Body size ×1.3, about 1.5× carrying, trunk keeps a floor on manipulation, immune to fear, thick skin; slow, poor shooting.
+s05388	loxodon
+s05389	A tall body needs more food.
+s05390	loxodon appetite
+s05391	Immune to fear-type mental states (panic flee, fear gaze) and the "saw a tentacle cloak" mood.
+s05392	Loxodons stay calm and almost never get frightened: they never panic and flee, a lich's fear gaze doesn't work on them, and they're unmoved by horrors like tentacle cloaks. Mind resistance +20%.
+s05393	steady
+s05394	A loxodon's skin is thick and tough: blunt armor +10%, sharp armor +5%, and more heat-resistant.
+s05395	thick hide
+s05396	Actual body size: ×130% (multiplies with other body size effects).
+s05397	Drawn size: ×115%.
+s05398	Hauling capacity: about 150% of an ordinary person (body size ×130% then ×115%).
+s05399	Appetite: ×120%.
+s05400	The tall, heavy build of a loxodon. Actual body size 130% of an ordinary person (carry capacity and caravan load go up, and they're easier to hit at range), drawn at 115% size; hand hauling capacity about 150% of an ordinary person. They eat a bit more too, with a bigger stomach (giant stomach: max food ×130%). The bigger the body, the stronger the health and melee (see giant-body rules: total health ×115%, melee damage ×109%).
+s05401	loxodon build
+s05402	Third hand: manipulation no lower than 50% (but not above consciousness).
+s05403	Mutually exclusive with vanilla nose genes and the cow nose.
+s05404	A flexible, powerful trunk that replaces the ordinary nose. The trunk works like a third hand: even with both hands hurt, a loxodon can curl things up with the trunk and keep working, and manipulation won't drop below 50%.
+s05405	trunk
+s05406	That minotaur wears a beast's head like me. We both know the looks people give us.
+s05407	fellow beast-heads
+s05408	That ogre eats like a pig and talks crudely; loxodons can't stand such people.
+s05409	crude ogre
+s05410	That loxodon wears a beast's head like me, and is big enough too.
+s05411	loxodons on minotaurs
+s05412	loxodons on ogres
+s05413	minotaurs on loxodons
+s05414	The thick grey skin of a loxodon.
+s05415	elephant grey skin
+s05416	elephant grey
+s05417	cape
+s05418	A thin black iron circlet with five polished finger bones standing up in front and a purple gem in the middle. Social impact +10%; when worn by a lich, fear gaze range +1 cell. Can only be made by a lich at the necromantic ritual table (gold 20 + human leather 10).
+s05419	bone crown
+s05420	Blackened iron-grey plate armor with upturned jagged spikes on the pauldrons, a small skull ornament on the left shoulder and eerie green light seeping through a crack in the breastplate; a black cloak torn into strips on the back (takes the cape layer). Armor 110% of vanilla plate armor; cold damage -20%; enemies attacking the wearer in melee each have a 10% chance to become frightened (not minotaurs, loxodons or the psychically immune). Non-undead wearers get mood -3 ("the cold armor whispers"). Can only be forged by a lich at the necromantic ritual table (steel 150 + 200 phylactery sacrifice XP).\n\nSet "Death Knight" (armor + revenant great helm): when downed, "rises again" with 30% health, once every 3 days; doesn't trigger when worn by the lich themself.
+s05421	death knight armor
+s05422	The death knight armor clings to the skin, cold as a grave stone, and keeps whispering in my ear.
+s05423	the cold armor whispers
+s05424	A black iron full helm with two swept-back horns on the forehead, a visor shaped like skull teeth and two points of eerie green in the eye slits. A heavy full helm, mind resistance +10%. Can only be forged by a lich at the necromantic ritual table (steel 50 + 80 phylactery sacrifice XP).
+s05425	revenant great helm
+s05426	A lich makes a bone crown from 20 gold and 10 human leather.
+s05427	Making a bone crown.
+s05428	make bone crown
+s05429	A lich forges a suit of death knight armor from 150 steel and 200 sacrifice XP from the phylactery (can't start without enough XP).
+s05430	Forging death knight armor.
+s05431	forge death knight armor
+s05432	A lich forges a revenant great helm from 50 steel and 80 sacrifice XP from the phylactery (can't start without enough XP).
+s05433	Forging a revenant great helm.
+s05434	forge revenant great helm
+s05435	With death knight armor and revenant great helm both worn: when downed, rises again with 30% health, once every 3 days (doesn't trigger when worn by the lich themself).
+s05436	set: death knight
+s05437	reach into {0_label}
+s05438	A small grey woolen bag. Once per day you can "reach in": pull out a random small animal (rat, rabbit, cat...), docile toward you, that vanishes into thin air after 24 hours. Useful as a scout or a decoy.
+s05439	bag of tricks
+s05440	A crystal ball on an ebony stand, with mist slowly swirling inside. Once per day you can "scry": pick a settlement on the world map, and a letter says which faction it belongs to, what race guards it and roughly how many threat points the garrison is. Only sold by Red Wizard merchants of Thay.
+s05441	crystal ball
+s05442	A blue-glazed porcelain flask whose mouth always seeps water; set on the ground it's a little spring. Plants within 3 cells grow +20% faster; "spray" once per day puts out all fires within 3 cells (saves your own trolls). Can be moved.
+s05443	decanter of endless water
+s05444	Struck by a dragon slayer weapon; force deflection temporarily fails.
+s05445	deflection disabled
+s05446	A torch whose flame never goes out and isn't hot at all, hung on the belt. The wearer always has light around them; it's not real fire, can't ignite anything, and trolls holding it don't count as "burned".
+s05447	everburning torch
+s05448	Has read the golem manual: the necromantic ritual table can make stone golem seeds for this lich.
+s05449	golem lore
+s05450	A silver-banded horn. Blowing the "horn of valhalla" summons 2-4 spirit warriors (translucent shadow warriors with longswords) that dissipate after 1 hour; when a lich blows it, skeleton warriors come instead. Once every 7 days. Hung at the waist in the trinket layer (shares the slot with other horns).
+s05451	horn of valhalla
+s05452	Identifying TargetA at the research bench.
+s05453	A plain iron rod with a button at one end. Put it on the ground, select it and "press" the button: the rod locks in place, becoming an indestructible, impassable obstacle on one cell, for blocking doors and tunnels or stopping minotaur charges; press again ("retract") to turn it back into a movable rod.
+s05454	immovable rod
+s05455	An immovable rod with its button pressed, fixed firmly in midair; nothing can push or break it. Select it and "retract" to turn it back into an item.
+s05456	pressed immovable rod
+s05457	Blow the horn to summon 2-4 spirit warriors to fight by your side, dissipating after 1 hour. Summons skeleton warriors when blown by a lich. Once every 7 days.
+s05458	blow horn of valhalla
+s05459	magic light
+s05460	Make a stone golem seed from 300 stone blocks (only liches who have read the golem manual can make it for their own phylactery). Stone golems have body size 2, take 4 command capacity, 0.5 psyfocus upkeep per day, don't eat, sleep or rot, and consume no flesh. Select the seed to open the configuration screen and confirm to awaken it.
+s05461	Making a stone golem seed.
+s05462	make stone golem seed
+s05463	A thick book with stone slab covers, describing how to call stone into servitude. Only liches can understand it: after a lich reads it, the necromantic ritual table unlocks "make stone golem seed" for them (the fourth necromantic construct: 300 stone blocks, body size 2, doesn't eat, sleep or rot). The book crumbles into stone dust once read.
+s05464	golem manual
+s05465	A lich spends 30 psyfocus and 20 cloth to copy a scroll of remove curse. Only liches can make it.
+s05466	Copying a scroll of remove curse.
+s05467	copy scroll of remove curse
+s05468	Read on a person or a cursed item: removes the curse from one cursed item (identifying it as well). Afterwards it can be taken off or put down normally, with effects and costs unchanged. Sold by church priests, copyable at the scroll desk, and liches can also copy it at the necromantic ritual table.
+s05469	scroll of remove curse
+s05470	A shadow warrior summoned by the horn of valhalla. Dissipates when time is up.
+s05471	valhalla summons
+s05472	A stone golem awakened by necromantic ritual and commanded by the phylactery's owner. Doesn't eat, sleep or rot.
+s05473	stone golem
+s05474	A necromantic seed built of stone blocks and carved with golem runes. Select it and open "configure necromantic construct" to adjust extra raw meat, steel, plasteel and starting stats, then confirm to awaken it. Materials are absorbed from reachable, unforbidden ground items within 12 cells.
+s05475	stone golem seed
+s05476	A small animal pulled out of a bag of tricks. Vanishes into thin air when time is up.
+s05477	critter from the bag of tricks
+s05478	Make a pair of bracers of archery from 15 leather and 5 gold.
+s05479	Making bracers of archery.
+s05480	make bracers of archery
+s05481	Make a pair of bracers of defense from 30 steel and 5 gold.
+s05482	Making bracers of defense.
+s05483	make bracers of defense
+s05484	Make a brooch of shielding from 20 silver and 10 mithril.
+s05485	Making a brooch of shielding.
+s05486	make brooch of shielding
+s05487	Make an everburning torch from 5 wood, 3 gold and 10 chemfuel.
+s05488	Making an everburning torch.
+s05489	make everburning torch
+s05490	Grind a pair of eyes of the eagle lenses from 15 silver and 5 gold.
+s05491	Making eyes of the eagle.
+s05492	make eyes of the eagle
+s05493	Grind a pair of eyes of minute seeing lenses from 20 silver and 3 gold.
+s05494	Making eyes of minute seeing.
+s05495	make eyes of minute seeing
+s05496	Make a pair of gauntlets of ogre power from 20 leather, 15 steel and 10 chemfuel.
+s05497	Making gauntlets of ogre power.
+s05498	make gauntlets of ogre power
+s05499	Make a pair of gloves of missile snaring from 15 leather and 20 silver.
+s05500	Making gloves of missile snaring.
+s05501	make gloves of missile snaring
+s05502	Make a pair of goggles of night from 10 cloth and 10 steel.
+s05503	Making goggles of night.
+s05504	make goggles of night
+s05505	Cast a circlet of holy light from 30 gold and 1 miracle fragment.
+s05506	Consecrating a circlet of holy light.
+s05507	make circlet of holy light
+s05508	Make a helm of telepathy from 30 silver and 10 mithril.
+s05509	Making a helm of telepathy.
+s05510	make helm of telepathy
+s05511	Make a horn of valhalla from 40 silver, 10 gold and 10 mithril.
+s05512	Making a horn of valhalla.
+s05513	make horn of valhalla
+s05514	Make an immovable rod from 50 steel and 10 plasteel.
+s05515	Making an immovable rod.
+s05516	make immovable rod
+s05517	A lich carves their golemancy research into stone slabs and makes a golem manual (30 stone blocks, 20 gold). Only liches can write it.
+s05518	Writing a golem manual.
+s05519	write golem manual
+s05520	Make a necklace of adaptation from 30 silver and 2 herbal medicine.
+s05521	Making a necklace of adaptation.
+s05522	make necklace of adaptation
+s05523	Make a periapt of wound closure from 15 gold and 2 troll blood.
+s05524	Making a periapt of wound closure.
+s05525	make periapt of wound closure
+s05526	String a set of prayer beads from 10 wood and 5 gold and consecrate them.
+s05527	Consecrating prayer beads.
+s05528	make prayer beads
+s05529	Make a psionic hood from 30 cloth, 10 gold and 1 component.
+s05530	Making a psionic hood.
+s05531	make psionic hood
+s05532	Write 3 purifying seals from 30 silver and 5 cloth.
+s05533	Making purifying seals.
+s05534	make purifying seal
+s05535	Make a ring of free action from 10 gold and 20 silver.
+s05536	Making a ring of free action.
+s05537	make ring of free action
+s05538	Make a ring of protection from 10 gold and 10 mithril.
+s05539	Making a ring of protection.
+s05540	make ring of protection
+s05541	Make a ring of regeneration from 10 gold and 2 troll blood.
+s05542	Making a ring of regeneration.
+s05543	make ring of regeneration
+s05544	Make a ring of spell storing from 20 silver and 10 mithril.
+s05545	Making a ring of spell storing.
+s05546	make ring of spell storing
+s05547	Make a ring of spell turning from 15 mithril and 15 gold.
+s05548	Making a ring of spell turning.
+s05549	make ring of spell turning
+s05550	Carve a scarab amulet from 5 jade and 10 gold and consecrate it.
+s05551	Consecrating a scarab amulet.
+s05552	make scarab amulet
+s05553	Write a scroll of remove curse from 10 cloth and 2 gold.
+s05554	Making a scroll of remove curse.
+s05555	make scroll of remove curse
+s05556	Forge a pair of bound rings of protective vows from 20 gold and 20 silver, packed in a vow ring box.
+s05557	Forging rings of protective vows.
+s05558	make rings of protective vows (pair)
+s05559	The blood mark burns on the chest: haven't fought for days.
+s05560	bloodthirst
+s05561	The blood mark burns unbearably; my head is full of thoughts of cutting someone down.
+s05562	unbearable bloodthirst
+s05563	If I don't see blood soon, I'll go mad.
+s05564	bloodthirst frenzy
+s05565	The holy symbol of the dwarven heretical "god of gears", a copper gear that never stops turning. Mechanoid repair and maintenance speed ×1.5; the wearer's bionic parts aren't shut down by EMP (not stunned by EMP). Worn on the chest in the trinket layer.
+s05566	tinker god's gear
+s05567	Someone nearby carries a mark of decay; the smell makes me want to throw up.
+s05568	smell of decay
+s05569	block
+s05570	The highest honor of the league's paladins: a pale golden halo hanging over the head. Any attack (including melee) has a 20% chance to be blocked completely by the halo, at most 5 blocks per day. Worn on the head in the trinket layer.
+s05571	circlet of holy light
+s05572	The rose badge of a league inquisitor. Negotiation ability ×1.2 (easier recruiting and interrogation); while someone in the colony wears it, goodwill gains with Faerûn's pioneer league ×1.25; witch-hunting zealots won't raid this colony. At league goodwill ≥75, the Harpers send a badge as a gift (only once). Worn on the chest in the trinket layer.
+s05573	inquisitor's badge
+s05574	Mechanoid repair speed ×1.5; bionic parts aren't shut down by EMP.
+s05575	no effect
+s05576	Negotiation ability ×1.2.
+s05577	Melee damage +30%, pain shock threshold +20%. Bloodthirst sets in after three days without fighting (except for liches).
+s05578	mark of blood
+s05579	Psychic sensitivity +40%, research speed +20%; one small oddity per day (except for liches).
+s05580	mark of change
+s05581	Immune to disease and toxic buildup, bleeding rate -50%; beauty -3 (except for liches).
+s05582	mark of decay
+s05583	lich
+s05584	Move speed +15%, recreation need falls 50% slower; mood capped at 90% (except for liches).
+s05585	mark of pleasure
+s05586	An old dark red amulet, faintly warm to the touch. The Black Network says it "makes you hit harder".
+s05587	old red iron amulet
+s05588	An iron plate branded with a blood-red eight-pointed star that grows into the flesh when pressed to the chest. Melee damage +30%, pain shock threshold +20%; but after 3 days without fighting, an ever-worsening "bloodthirst" mood sets in. Cursed item: can't be removed once worn. No cost when worn by a lich (league goodwill -30, deducted only once).
+s05589	An old amulet of an indescribable color. The Black Network says it "opens your mind".
+s05590	old blue crystal amulet
+s05591	A blue mark whose color keeps shifting. Psychic sensitivity +40%, research speed +20%; but one small oddity happens each day (a brief stun, or two skills' passions swap). Cursed item: can't be removed once worn. No cost when worn by a lich (league goodwill -30, deducted only once).
+s05592	An old amulet covered in verdigris. The Black Network says it "makes you immune to every illness".
+s05593	old verdigris amulet
+s05594	A triple-ring mark grown with verdigris. Immune to disease and toxic buildup, bleeding rate -50%; but the wearer's beauty -3, and people within 5 cells get mood -2. Cursed item: can't be removed once worn. No cost when worn by a lich (league goodwill -30, deducted only once).
+s05595	An old amulet with a purple glow. The Black Network says it "lightens you up".
+s05596	old amethyst amulet
+s05597	A purple-pink serpentine mark. Move speed +15%, recreation need falls 50% slower; but mood is capped at 90%. Cursed item: can't be removed once worn. No cost when worn by a lich (league goodwill -30, deducted only once).
+s05598	A dark hood studded with psionic lattice. When allies within 5 cells of the wearer (including themself) are targeted by enemy psychic or psionic abilities (domination, mind reading, psychic jolts, psycasts from psionic expansions, etc.), there's a 40% chance the spell misses. A specific counter to mind flayers. Worn on the head in the trinket layer.
+s05599	psionic hood
+s05600	apply {0_label}
+s05601	A parchment strip with a holy symbol wax seal. "Applied", it's sealed onto clothing worn by the user, taking no slot, up to 3: each gives mental break threshold -3%; once per day automatically breaks free of domination or fear. Requires torso clothing to apply; stripping naked won't make the seals fall off (they seal the person).
+s05602	purifying seal
+s05603	Purifying seals on the clothes: each gives mental break threshold -3%, and once per day automatically breaks free of domination or fear.
+s05604	1 seal
+s05605	2 seals
+s05606	3 seals
+s05607	A dark green crystal core set inside the breastplate, with an ancient revival protocol still running. When the wearer dies, there's a 50% chance after 24 hours to revive in a weakened state, and the core shatters (success or not). Doesn't stack with troll revival or the death knight set (the core won't activate then). Worn on the chest in the trinket layer.
+s05608	revival core
+s05609	Just pulled back from death by a revival core: consciousness -30%, movement -30%.
+s05610	revival weakness
+s05611	{0} was struck dead by lightning.
+s05612	shock
+s05613	A small spinning astrolabe on a silver chain. Even non-githyanki can astral jump once per day (teleport within 8 cells); githyanki wearing it get their own astral jump cooldown halved. Each jump with the amulet has a 5% chance of being blown to the map edge by the astral wind. Worn on the neck in the trinket layer.
+s05614	astral amulet
+s05615	A dull grey lead pendant, cold to the touch. While invisible, the wearer isn't revealed by true seeing scrolls or wands of detection, and mind reading by mind flayers (and helms of telepathy) on the wearer fails. Worn on the neck in the trinket layer.
+s05616	amulet of proof against detection
+s05617	Leather bracers engraved with eagle feathers. With a bow or crossbow in hand, hit chance +10%, aiming time -15%; firearms unaffected. Worn in the bracer slot of the trinket layer; can be worn with gloves.
+s05618	bracers of archery
+s05619	A pair of bronze bracers engraved with shield runes. When the torso wears no middle or outer layer, sharp and blunt armor +25% each. For liches, mind flayers, trolls and others who don't like wearing armor. Worn in the bracer slot of the trinket layer.
+s05620	bracers of defense
+s05621	A silver shield-shaped brooch pinned on the lapel. Force damage taken by the wearer -75%: force dragonborn force breath, resilient sphere, telekinetic sphere and wall of force impacts all count. A specific counter to dragons. Worn on the chest in the trinket layer.
+s05622	brooch of shielding
+s05623	A pair of crystal lenses held before the eyes that let you see very far. By day, ranged weapon range +3 cells; aiming time -10%. Worn on the eyes in the trinket layer; can be worn with vanilla eyewear.
+s05624	eyes of the eagle
+s05625	Crystal lenses that reveal the texture of a single hair. Surgery success +10%, research speed +10%, but shooting and melee hit -5%. "Glasses" for doctors and researchers. Worn on the eyes in the trinket layer.
+s05626	eyes of minute seeing
+s05627	Thick leather gauntlets with iron studs on the knuckles that grant immense strength: carrying capacity ×1.5, melee damage +15%. No effect on big folk of body size 1.5+ (a fire giant wearing them won't get stronger). Worn on the hands in the trinket layer.
+s05628	gauntlets of ogre power
+s05629	Soft gloves with fine silver thread sewn into the palms. When unarmed, holding a one-handed melee weapon or a pistol, a 20% chance to catch an incoming projectile bare-handed, unharmed (shells and explosions don't count). Worn on the hands in the trinket layer.
+s05630	gloves of missile snaring
+s05631	Leather goggles with black glass lenses. No penalties to working and shooting in darkness. Worn on the eyes in the trinket layer; can be worn with vanilla eyewear.
+s05632	goggles of night
+s05633	A silver circlet set with amethyst. The wearer gains the ability "Read mind" (a weakened version of a mind flayer's mind reading that costs no brain matter), once per day; mind flayers wearing it read minds with no cooldown. Worn on the head in the trinket layer.
+s05634	helm of telepathy
+s05635	Ring of animal influence: taming and training success ×1.25.
+s05636	animal influence
+s05637	With a bow or crossbow in hand, aiming time -15%, hit +10%.
+s05638	no bow held
+s05639	Pass through the Astral Plane with the astral amulet and instantly appear on an open standable spot within 8 cells. Once per day; 5% chance to be blown to the map edge.
+s05640	astral jump (amulet)
+s05641	The prayer of the beads still rings in the ears: hit +5%, mind resistance +10%.
+s05642	prayer blessing
+s05643	When the torso wears no middle or outer layer, sharp and blunt armor +25% each.
+s05644	wearing armor
+s05645	Pluck a fireball bead and throw it at a target point within 12 cells: a fire explosion of radius 2.5 (15 damage). Uses up one bead.
+s05646	throw fireball
+s05647	Gauntlets of ogre power: carrying capacity ×1.5, melee damage +15%. No effect at body size 1.5+.

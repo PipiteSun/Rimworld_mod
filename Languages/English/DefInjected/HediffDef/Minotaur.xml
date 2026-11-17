@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 犄角 -->
+  <LP_MinotaurHornWeapon.label>horns</LP_MinotaurHornWeapon.label>
+  <!-- 犄角基因带来的天然近战武器。 -->
+  <LP_MinotaurHornWeapon.description>A natural melee weapon from the horns gene.</LP_MinotaurHornWeapon.description>
+  <!-- 犄角 -->
+  <LP_MinotaurHornWeapon.comps.HediffComp_VerbGiver.tools.0.label>horns</LP_MinotaurHornWeapon.comps.HediffComp_VerbGiver.tools.0.label>
+  <!-- 迷宫之中 -->
+  <LP_MinotaurMaze.label>in the labyrinth</LP_MinotaurMaze.label>
+  <!-- 头顶有屋顶、四周有墙，牛头人走得更快。 -->
+  <LP_MinotaurMaze.description>With a roof overhead and walls around, minotaurs walk faster.</LP_MinotaurMaze.description>
+  <!-- 牛头人食量 -->
+  <LP_MinotaurAppetite.label>minotaur appetite</LP_MinotaurAppetite.label>
+  <!-- 庞大的身躯需要大量食物。 -->
+  <LP_MinotaurAppetite.description>A huge body needs a lot of food.</LP_MinotaurAppetite.description>
+</LanguageData>

@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 秘传结晶：连锁闪电 -->
+  <LP_Crystal_ChainLightning.label>arcanum crystal: chain lightning</LP_Crystal_ChainLightning.label>
+  <!-- 魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 11 级、智力 15，占 1 个秘传槽；基础吸收成功率 80%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（6 环法术，智力）：一道闪电从目标开始跳过 4 个敌人，每个受 25 点电击伤害，机械体 ×1.5。冷却 2 天。 -->
+  <LP_Crystal_ChainLightning.description>A Mana Lake arcanum crystal (a universal arcanum any class can learn). Absorbing requires adventurer level 11 and Intelligence 15, taking 1 arcanum slot; base absorb success 80%, +5% per point above the requirement. On failure the crystal doesn't shatter, but you suffer arcanum backlash for 3 days and can only retry after 7 days.\n\nUniversal arcanum (circle 6 spell, Intelligence): a bolt of lightning starts at the target and jumps across 4 enemies, each taking 25 electrical damage, ×1.5 against mechanoids. Cooldown 2 days.</LP_Crystal_ChainLightning.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_ChainLightning.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_ChainLightning.comps.CompUsable.useLabel>
+  <!-- 秘传结晶：剑刃屏障 -->
+  <LP_Crystal_BladeBarrier.label>arcanum crystal: blade barrier</LP_Crystal_BladeBarrier.label>
+  <!-- 魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 11 级、感知 15，占 1 个秘传槽；基础吸收成功率 80%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（6 环法术，感知）：在目标处立起一道 8 格长的旋转刃墙，持续 1 小时；墙上的敌人每秒受 20 点割伤并减速 50%。冷却 2 天。 -->
+  <LP_Crystal_BladeBarrier.description>A Mana Lake arcanum crystal (a universal arcanum any class can learn). Absorbing requires adventurer level 11 and Wisdom 15, taking 1 arcanum slot; base absorb success 80%, +5% per point above the requirement. On failure the crystal doesn't shatter, but you suffer arcanum backlash for 3 days and can only retry after 7 days.\n\nUniversal arcanum (circle 6 spell, Wisdom): raise an 8-cell-long wall of whirling blades at the target for 1 hour; enemies on the wall take 20 cut damage per second and are slowed 50%. Cooldown 2 days.</LP_Crystal_BladeBarrier.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_BladeBarrier.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_BladeBarrier.comps.CompUsable.useLabel>
+  <!-- 秘传结晶：治愈术 -->
+  <LP_Crystal_Heal.label>arcanum crystal: heal</LP_Crystal_Heal.label>
+  <!-- 魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 11 级、感知 15，占 1 个秘传槽；基础吸收成功率 80%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（6 环法术，感知）：目标治好 70% 伤势（乘强度），并清除失明、疾病和食物中毒。冷却 2 天。 -->
+  <LP_Crystal_Heal.description>A Mana Lake arcanum crystal (a universal arcanum any class can learn). Absorbing requires adventurer level 11 and Wisdom 15, taking 1 arcanum slot; base absorb success 80%, +5% per point above the requirement. On failure the crystal doesn't shatter, but you suffer arcanum backlash for 3 days and can only retry after 7 days.\n\nUniversal arcanum (circle 6 spell, Wisdom): the target heals 70% of injuries (multiplied by power) and is cured of blindness, disease and food poisoning. Cooldown 2 days.</LP_Crystal_Heal.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_Heal.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_Heal.comps.CompUsable.useLabel>
+  <!-- 秘传结晶：死亡之指 -->
+  <LP_Crystal_FingerOfDeath.label>arcanum crystal: finger of death</LP_Crystal_FingerOfDeath.label>
+  <!-- 魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 13 级、魅力 16，占 1 个秘传槽；基础吸收成功率 70%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（7 环法术，魅力）：50 点死灵伤害；被它杀死的人形会作为施法者阵营的亡仆爬起来（永久，不会精神崩溃）。冷却 3 天。 -->
+  <LP_Crystal_FingerOfDeath.description>A Mana Lake arcanum crystal (a universal arcanum any class can learn). Absorbing requires adventurer level 13 and Charisma 16, taking 1 arcanum slot; base absorb success 70%, +5% per point above the requirement. On failure the crystal doesn't shatter, but you suffer arcanum backlash for 3 days and can only retry after 7 days.\n\nUniversal arcanum (circle 7 spell, Charisma): 50 necrotic damage; humanlikes killed by it rise as undead servants of the caster's faction (permanent, no mental breaks). Cooldown 3 days.</LP_Crystal_FingerOfDeath.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_FingerOfDeath.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_FingerOfDeath.comps.CompUsable.useLabel>
+  <!-- 秘传结晶：再生术 -->
+  <LP_Crystal_Regenerate.label>arcanum crystal: regenerate</LP_Crystal_Regenerate.label>
+  <!-- 魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 13 级、感知 16，占 1 个秘传槽；基础吸收成功率 70%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（7 环法术，感知）：立刻消除目标一处旧伤疤；3 天后长回一个失去的肢体或器官。冷却 3 天。 -->
+  <LP_Crystal_Regenerate.description>A Mana Lake arcanum crystal (a universal arcanum any class can learn). Absorbing requires adventurer level 13 and Wisdom 16, taking 1 arcanum slot; base absorb success 70%, +5% per point above the requirement. On failure the crystal doesn't shatter, but you suffer arcanum backlash for 3 days and can only retry after 7 days.\n\nUniversal arcanum (circle 7 spell, Wisdom): instantly removes one of the target's old scars; after 3 days a lost limb or organ grows back. Cooldown 3 days.</LP_Crystal_Regenerate.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_Regenerate.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_Regenerate.comps.CompUsable.useLabel>
+  <!-- 秘传结晶：反转重力 -->
+  <LP_Crystal_ReverseGravity.label>arcanum crystal: reverse gravity</LP_Crystal_ReverseGravity.label>
+  <!-- 魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 13 级、智力 16，占 1 个秘传槽；基础吸收成功率 70%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（7 环法术，智力）：目标处半径 5 格的敌人飞起 10 秒、动弹不得，落地时各受 20 点钝器伤害。冷却 3 天。 -->
+  <LP_Crystal_ReverseGravity.description>A Mana Lake arcanum crystal (a universal arcanum any class can learn). Absorbing requires adventurer level 13 and Intelligence 16, taking 1 arcanum slot; base absorb success 70%, +5% per point above the requirement. On failure the crystal doesn't shatter, but you suffer arcanum backlash for 3 days and can only retry after 7 days.\n\nUniversal arcanum (circle 7 spell, Intelligence): enemies within radius 5 of the target fly up for 10 seconds, unable to move, and each take 20 blunt damage on landing. Cooldown 3 days.</LP_Crystal_ReverseGravity.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_ReverseGravity.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_ReverseGravity.comps.CompUsable.useLabel>
+  <!-- 秘传结晶：炎阳爆 -->
+  <LP_Crystal_Sunburst.label>arcanum crystal: sunburst</LP_Crystal_Sunburst.label>
+  <!-- 魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 15 级、感知 17，占 1 个秘传槽；基础吸收成功率 60%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（8 环法术，感知）：30 格内一点半径 6 格烈阳爆发——45 点神圣灼烧伤害并失明 1 分钟；对亡灵 ×2。友军也会被波及（施法者自己除外）。冷却 5 天。 -->
+  <LP_Crystal_Sunburst.description>A Mana Lake arcanum crystal (a universal arcanum any class can learn). Absorbing requires adventurer level 15 and Wisdom 17, taking 1 arcanum slot; base absorb success 60%, +5% per point above the requirement. On failure the crystal doesn't shatter, but you suffer arcanum backlash for 3 days and can only retry after 7 days.\n\nUniversal arcanum (circle 8 spell, Wisdom): a blazing sunburst of radius 6 at a point within 30 cells: 45 holy burn damage and blinded for 1 minute; ×2 against undead. Allies are caught too (except the caster). Cooldown 5 days.</LP_Crystal_Sunburst.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_Sunburst.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_Sunburst.comps.CompUsable.useLabel>
+  <!-- 秘传结晶：心灵空白 -->
+  <LP_Crystal_MindBlank.label>arcanum crystal: mind blank</LP_Crystal_MindBlank.label>
+  <!-- 魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 15 级、智力 17，占 1 个秘传槽；基础吸收成功率 60%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（8 环法术，智力）：目标 1 天内免疫心灵控制、魅惑、精神崩溃和心灵伤害。冷却 5 天。 -->
+  <LP_Crystal_MindBlank.description>A Mana Lake arcanum crystal (a universal arcanum any class can learn). Absorbing requires adventurer level 15 and Intelligence 17, taking 1 arcanum slot; base absorb success 60%, +5% per point above the requirement. On failure the crystal doesn't shatter, but you suffer arcanum backlash for 3 days and can only retry after 7 days.\n\nUniversal arcanum (circle 8 spell, Intelligence): the target is immune to mind control, charm, mental breaks and psychic damage for 1 day. Cooldown 5 days.</LP_Crystal_MindBlank.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_MindBlank.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_MindBlank.comps.CompUsable.useLabel>
+  <!-- 秘传结晶：迷宫术 -->
+  <LP_Crystal_Maze.label>arcanum crystal: maze</LP_Crystal_Maze.label>
+  <!-- 魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 15 级、智力 17，占 1 个秘传槽；基础吸收成功率 60%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（8 环法术，智力）：把一个敌人放逐到异界迷宫 30 秒（从地图上消失，之后回到原处）；传奇生物 10 秒。施法者死亡或地图卸载时会立刻放回。冷却 5 天。 -->
+  <LP_Crystal_Maze.description>A Mana Lake arcanum crystal (a universal arcanum any class can learn). Absorbing requires adventurer level 15 and Intelligence 17, taking 1 arcanum slot; base absorb success 60%, +5% per point above the requirement. On failure the crystal doesn't shatter, but you suffer arcanum backlash for 3 days and can only retry after 7 days.\n\nUniversal arcanum (circle 8 spell, Intelligence): banish an enemy to an otherworldly labyrinth for 30 seconds (it vanishes from the map, then returns to its spot); 10 seconds for legendary creatures. It's put back at once if the caster dies or the map unloads. Cooldown 5 days.</LP_Crystal_Maze.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_Maze.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_Maze.comps.CompUsable.useLabel>
+  <!-- 秘传结晶：时间停止 -->
+  <LP_Crystal_TimeStop.label>arcanum crystal: time stop</LP_Crystal_TimeStop.label>
+  <!-- 魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 17 级、智力 18，占 1 个秘传槽；基础吸收成功率 50%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（9 环法术，智力）：除施法者外，本地图所有人和飞行中的弹丸停顿 6 秒（传奇生物和剧情首领 3 秒）；施法者伤害别人会让时间提前恢复。冷却 7 天。 -->
+  <LP_Crystal_TimeStop.description>A Mana Lake arcanum crystal (a universal arcanum any class can learn). Absorbing requires adventurer level 17 and Intelligence 18, taking 1 arcanum slot; base absorb success 50%, +5% per point above the requirement. On failure the crystal doesn't shatter, but you suffer arcanum backlash for 3 days and can only retry after 7 days.\n\nUniversal arcanum (circle 9 spell, Intelligence): everyone on this map except the caster, and projectiles in flight, freeze for 6 seconds (3 seconds for legendary creatures and story bosses); the caster harming someone makes time resume early. Cooldown 7 days.</LP_Crystal_TimeStop.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_TimeStop.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_TimeStop.comps.CompUsable.useLabel>
+  <!-- 秘传结晶：真言·杀 -->
+  <LP_Crystal_PowerWordKill.label>arcanum crystal: power word kill</LP_Crystal_PowerWordKill.label>
+  <!-- 魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 17 级、魅力 18，占 1 个秘传槽；基础吸收成功率 50%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（9 环法术，魅力）：剩余健康 ≤ 40% 的非传奇生物当场死亡；否则受 40 点心灵伤害。冷却 7 天。 -->
+  <LP_Crystal_PowerWordKill.description>A Mana Lake arcanum crystal (a universal arcanum any class can learn). Absorbing requires adventurer level 17 and Charisma 18, taking 1 arcanum slot; base absorb success 50%, +5% per point above the requirement. On failure the crystal doesn't shatter, but you suffer arcanum backlash for 3 days and can only retry after 7 days.\n\nUniversal arcanum (circle 9 spell, Charisma): non-legendary creatures with remaining health ≤ 40% die on the spot; otherwise they take 40 psychic damage. Cooldown 7 days.</LP_Crystal_PowerWordKill.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_PowerWordKill.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_PowerWordKill.comps.CompUsable.useLabel>
+  <!-- 秘传结晶：许愿术 -->
+  <LP_Crystal_Wish.label>arcanum crystal: wish</LP_Crystal_Wish.label>
+  <!-- 魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 17 级、魅力 18，占 1 个秘传槽；基础吸收成功率 50%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（9 环法术，魅力）：打开许愿窗口选一个愿望。安全愿望：直接施放任意一个 8 环或以下的通用秘传法术（包括没学过的）；本地图所有殖民者伤势全愈、疾病清除；变出市场价合计 3000 银以内的物品。大愿望：复活 1 名死亡不超过 30 天的殖民者、永久 +1 属性，或驱散一个长期事件——有 33% 的概率让施法者永久失去许愿术并虚弱 10 天。没选就关掉窗口不进冷却。和神灯的许愿是两回事。冷却 15 天。 -->
+  <LP_Crystal_Wish.description>A Mana Lake arcanum crystal (a universal arcanum any class can learn). Absorbing requires adventurer level 17 and Charisma 18, taking 1 arcanum slot; base absorb success 50%, +5% per point above the requirement. On failure the crystal doesn't shatter, but you suffer arcanum backlash for 3 days and can only retry after 7 days.\n\nUniversal arcanum (circle 9 spell, Charisma): open the wish window and pick a wish. Safe wishes: cast any universal arcanum spell of circle 8 or lower directly (including ones you haven't learned); fully heal all colonists on this map and cure their diseases; conjure items worth up to 3000 silver in total. Great wishes: revive 1 colonist dead no more than 30 days, +1 ability score permanently, or dispel a long-term event; these have a 33% chance to make the caster permanently lose Wish and be weakened for 10 days. Closing the window without choosing triggers no cooldown. Different from a genie lamp's wish. Cooldown 15 days.</LP_Crystal_Wish.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_Wish.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_Wish.comps.CompUsable.useLabel>
+  <!-- 秘传结晶：断骨击 -->
+  <LP_Crystal_BoneBreak.label>arcanum crystal: bone-breaker strike</LP_Crystal_BoneBreak.label>
+  <!-- 魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 11 级、力量 15、格斗或射击 10 级，占 1 个秘传槽；基础吸收成功率 80%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（6 环武技，力量）：1 小时内下一次近战命中打断目标一条腿或一只手臂（骨折 10 天）；传奇生物改为 30 点钝器伤害。冷却 2 天。 -->
+  <LP_Crystal_BoneBreak.description>A Mana Lake arcanum crystal (a universal arcanum any class can learn). Absorbing requires adventurer level 11, Strength 15 and Melee or Shooting 10, taking 1 arcanum slot; base absorb success 80%, +5% per point above the requirement. On failure the crystal doesn't shatter, but you suffer arcanum backlash for 3 days and can only retry after 7 days.\n\nUniversal arcanum (circle 6 martial technique, Strength): within 1 hour, the next melee hit breaks one of the target's legs or arms (fracture for 10 days); legendary creatures take 30 blunt damage instead. Cooldown 2 days.</LP_Crystal_BoneBreak.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_BoneBreak.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_BoneBreak.comps.CompUsable.useLabel>
+  <!-- 秘传结晶：贯日一箭 -->
+  <LP_Crystal_SunArrow.label>arcanum crystal: sun-piercing arrow</LP_Crystal_SunArrow.label>
+  <!-- 魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 13 级、敏捷 16、格斗或射击 12 级，占 1 个秘传槽；基础吸收成功率 70%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传（7 环武技，敏捷）：一发直线穿透 40 格，沿线所有敌人各受 4 倍武器伤害；只能用远程武器。冷却 3 天。 -->
+  <LP_Crystal_SunArrow.description>A Mana Lake arcanum crystal (a universal arcanum any class can learn). Absorbing requires adventurer level 13, Dexterity 16 and Melee or Shooting 12, taking 1 arcanum slot; base absorb success 70%, +5% per point above the requirement. On failure the crystal doesn't shatter, but you suffer arcanum backlash for 3 days and can only retry after 7 days.\n\nUniversal arcanum (circle 7 martial technique, Dexterity): one shot pierces in a straight line for 40 cells, every enemy along it takes 4× weapon damage; ranged weapons only. Cooldown 3 days.</LP_Crystal_SunArrow.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_SunArrow.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_SunArrow.comps.CompUsable.useLabel>
+  <!-- 秘传结晶：真视 -->
+  <LP_Crystal_TrueSight.label>arcanum crystal: true seeing</LP_Crystal_TrueSight.label>
+  <!-- 魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 13 级、最高的一项属性 16，占 1 个秘传槽；基础吸收成功率 70%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传被动（7 环）：30 格内的隐形敌人对你可见（被识破 1 小时）；免疫失明和幻象。 -->
+  <LP_Crystal_TrueSight.description>A Mana Lake arcanum crystal (a universal arcanum any class can learn). Absorbing requires adventurer level 13 and highest ability score 16, taking 1 arcanum slot; base absorb success 70%, +5% per point above the requirement. On failure the crystal doesn't shatter, but you suffer arcanum backlash for 3 days and can only retry after 7 days.\n\nUniversal arcanum passive (circle 7): invisible enemies within 30 cells are visible to you (revealed for 1 hour); immune to blindness and illusions.</LP_Crystal_TrueSight.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_TrueSight.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_TrueSight.comps.CompUsable.useLabel>
+  <!-- 秘传结晶：秘法壁垒 -->
+  <LP_Crystal_ArcaneBulwark.label>arcanum crystal: arcane bulwark</LP_Crystal_ArcaneBulwark.label>
+  <!-- 魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 15 级、最高的一项属性 17，占 1 个秘传槽；基础吸收成功率 60%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传被动（8 环）：受到的法术、灵能伤害 -40%，所有豁免成功率 +15%。 -->
+  <LP_Crystal_ArcaneBulwark.description>A Mana Lake arcanum crystal (a universal arcanum any class can learn). Absorbing requires adventurer level 15 and highest ability score 17, taking 1 arcanum slot; base absorb success 60%, +5% per point above the requirement. On failure the crystal doesn't shatter, but you suffer arcanum backlash for 3 days and can only retry after 7 days.\n\nUniversal arcanum passive (circle 8): spell and psychic damage taken -40%, all save success +15%.</LP_Crystal_ArcaneBulwark.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_ArcaneBulwark.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_ArcaneBulwark.comps.CompUsable.useLabel>
+  <!-- 秘传结晶：传奇抵抗 -->
+  <LP_Crystal_LegendaryResistance.label>arcanum crystal: legendary resistance</LP_Crystal_LegendaryResistance.label>
+  <!-- 魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 17 级、最高的一项属性 18，占 1 个秘传槽；基础吸收成功率 50%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传被动（9 环）：每天 3 次，把一次失败的豁免改为成功。 -->
+  <LP_Crystal_LegendaryResistance.description>A Mana Lake arcanum crystal (a universal arcanum any class can learn). Absorbing requires adventurer level 17 and highest ability score 18, taking 1 arcanum slot; base absorb success 50%, +5% per point above the requirement. On failure the crystal doesn't shatter, but you suffer arcanum backlash for 3 days and can only retry after 7 days.\n\nUniversal arcanum passive (circle 9): 3 times per day, turn a failed save into a success.</LP_Crystal_LegendaryResistance.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_LegendaryResistance.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_LegendaryResistance.comps.CompUsable.useLabel>
+  <!-- 秘传结晶：第二心脏 -->
+  <LP_Crystal_SecondHeart.label>arcanum crystal: second heart</LP_Crystal_SecondHeart.label>
+  <!-- 魔力湖泊的秘传结晶（通用秘传，任何职业都能学）。吸收需要冒险者 17 级、最高的一项属性 18，占 1 个秘传槽；基础吸收成功率 50%，属性每超过门槛 1 点 +5%。失败时结晶不碎，但会秘传反噬 3 天，7 天后才能再试。\n\n通用秘传被动（9 环）：每 10 天一次，本应死亡时改为倒地并止血（治好一半伤势）。 -->
+  <LP_Crystal_SecondHeart.description>A Mana Lake arcanum crystal (a universal arcanum any class can learn). Absorbing requires adventurer level 17 and highest ability score 18, taking 1 arcanum slot; base absorb success 50%, +5% per point above the requirement. On failure the crystal doesn't shatter, but you suffer arcanum backlash for 3 days and can only retry after 7 days.\n\nUniversal arcanum passive (circle 9): once every 10 days, when you would die you're downed instead and stop bleeding (half the injuries healed).</LP_Crystal_SecondHeart.description>
+  <!-- 吸收{0_label} -->
+  <LP_Crystal_SecondHeart.comps.CompUsable.useLabel>absorb {0_label}</LP_Crystal_SecondHeart.comps.CompUsable.useLabel>
+  <!-- 湖印结晶：修补术 -->
+  <LP_SealCrystal_Mending.label>seal crystal: mending</LP_SealCrystal_Mending.label>
+  <!-- 魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「修补术」，占 1 个湖印法术槽。冒险者 1 级、智识 4 级，吸收成功率 100%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（一阶法术，智力，湖息 1）：一件服装或武器恢复 30% 耐久。选人时修他身上最破的一件；也可以直接选地上的物品。 -->
+  <LP_SealCrystal_Mending.description>A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal spell "Mending", taking 1 seal spell slot. Adventurer level 1 and Intellectual 4, absorb success 100%; on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal (tier 1 spell, Intelligence, lake breath 1): one piece of apparel or weapon recovers 30% durability. When targeting a person, mends the most worn piece on them; you can also target an item on the ground directly.</LP_SealCrystal_Mending.description>
+  <!-- 吸收{0_label} -->
+  <LP_SealCrystal_Mending.comps.CompUsable.useLabel>absorb {0_label}</LP_SealCrystal_Mending.comps.CompUsable.useLabel>
+  <!-- 湖印结晶：净化饮食 -->
+  <LP_SealCrystal_PurifyFood.label>seal crystal: purify food and drink</LP_SealCrystal_PurifyFood.label>
+  <!-- 魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「净化饮食」，占 1 个湖印法术槽。冒险者 1 级、智识 4 级，吸收成功率 100%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（一阶法术，感知，湖息 1）：移除目标的食物中毒；之后 2 天不会食物中毒。 -->
+  <LP_SealCrystal_PurifyFood.description>A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal spell "Purify food and drink", taking 1 seal spell slot. Adventurer level 1 and Intellectual 4, absorb success 100%; on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal (tier 1 spell, Wisdom, lake breath 1): removes the target's food poisoning; no food poisoning for 2 days afterwards.</LP_SealCrystal_PurifyFood.description>
+  <!-- 吸收{0_label} -->
+  <LP_SealCrystal_PurifyFood.comps.CompUsable.useLabel>absorb {0_label}</LP_SealCrystal_PurifyFood.comps.CompUsable.useLabel>
+  <!-- 湖印结晶：警报术 -->
+  <LP_SealCrystal_Alarm.label>seal crystal: alarm</LP_SealCrystal_Alarm.label>
+  <!-- 魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「警报术」，占 1 个湖印法术槽。冒险者 1 级、智识 4 级，吸收成功率 100%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（一阶法术，智力，湖息 1）：在目标处画一个半径 6 格的隐形符文，持续 3 天；敌人进入时发一封信并叫醒殖民者（触发一次就消失）。 -->
+  <LP_SealCrystal_Alarm.description>A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal spell "Alarm", taking 1 seal spell slot. Adventurer level 1 and Intellectual 4, absorb success 100%; on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal (tier 1 spell, Intelligence, lake breath 1): draw an invisible rune of radius 6 at the target that lasts 3 days; when an enemy enters, it sends a letter and wakes the colonists (disappears after triggering once).</LP_SealCrystal_Alarm.description>
+  <!-- 吸收{0_label} -->
+  <LP_SealCrystal_Alarm.comps.CompUsable.useLabel>absorb {0_label}</LP_SealCrystal_Alarm.comps.CompUsable.useLabel>
+  <!-- 湖印结晶：暗视术 -->
+  <LP_SealCrystal_Darkvision.label>seal crystal: darkvision</LP_SealCrystal_Darkvision.label>
+  <!-- 魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「暗视术」，占 1 个湖印法术槽。冒险者 1 级、智识 4 级，吸收成功率 100%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（一阶法术，感知，湖息 1）：目标 1 天内无视黑暗对工作和瞄准的惩罚（持续时间随施法属性延长）。 -->
+  <LP_SealCrystal_Darkvision.description>A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal spell "Darkvision", taking 1 seal spell slot. Adventurer level 1 and Intellectual 4, absorb success 100%; on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal (tier 1 spell, Wisdom, lake breath 1): the target ignores darkness penalties to work and aiming for 1 day (duration lengthens with the casting ability).</LP_SealCrystal_Darkvision.description>
+  <!-- 吸收{0_label} -->
+  <LP_SealCrystal_Darkvision.comps.CompUsable.useLabel>absorb {0_label}</LP_SealCrystal_Darkvision.comps.CompUsable.useLabel>
+  <!-- 湖印结晶：长步术 -->
+  <LP_SealCrystal_Longstrider.label>seal crystal: longstrider</LP_SealCrystal_Longstrider.label>
+  <!-- 魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「长步术」，占 1 个湖印法术槽。冒险者 1 级、智识 4 级，吸收成功率 100%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（一阶法术，智力，湖息 1）：目标移速 +15%，持续 1 天（持续时间随施法属性延长）。 -->
+  <LP_SealCrystal_Longstrider.description>A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal spell "Longstrider", taking 1 seal spell slot. Adventurer level 1 and Intellectual 4, absorb success 100%; on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal (tier 1 spell, Intelligence, lake breath 1): target move speed +15% for 1 day (duration lengthens with the casting ability).</LP_SealCrystal_Longstrider.description>
+  <!-- 吸收{0_label} -->
+  <LP_SealCrystal_Longstrider.comps.CompUsable.useLabel>absorb {0_label}</LP_SealCrystal_Longstrider.comps.CompUsable.useLabel>
+  <!-- 湖印结晶：雷鸣波 -->
+  <LP_SealCrystal_Thunderwave.label>seal crystal: thunderwave</LP_SealCrystal_Thunderwave.label>
+  <!-- 魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「雷鸣波」，占 1 个湖印法术槽。冒险者 1 级、智识 4 级，吸收成功率 100%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（一阶法术，智力，湖息 2）：前方 4 格锥形，8 点钝器伤害，击退 2 格，30% 概率眩晕 2 秒。 -->
+  <LP_SealCrystal_Thunderwave.description>A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal spell "Thunderwave", taking 1 seal spell slot. Adventurer level 1 and Intellectual 4, absorb success 100%; on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal (tier 1 spell, Intelligence, lake breath 2): a 4-cell cone ahead, 8 blunt damage, knocks back 2 cells, 30% chance to stun for 2 seconds.</LP_SealCrystal_Thunderwave.description>
+  <!-- 吸收{0_label} -->
+  <LP_SealCrystal_Thunderwave.comps.CompUsable.useLabel>absorb {0_label}</LP_SealCrystal_Thunderwave.comps.CompUsable.useLabel>
+  <!-- 湖印结晶：秘法锁 -->
+  <LP_SealCrystal_ArcaneLock.label>seal crystal: arcane lock</LP_SealCrystal_ArcaneLock.label>
+  <!-- 魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「秘法锁」，占 1 个湖印法术槽。冒险者 5 级、智识 6 级，吸收成功率 90% + 智识 ×1%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（二阶法术，智力，湖息 1）：给一扇门上锁 5 天：敌人砸门的伤害 ×0.33。 -->
+  <LP_SealCrystal_ArcaneLock.description>A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal spell "Arcane lock", taking 1 seal spell slot. Adventurer level 5 and Intellectual 6, absorb success 90% + Intellectual ×1%; on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal (tier 2 spell, Intelligence, lake breath 1): lock a door for 5 days: enemies bashing it deal ×0.33 damage.</LP_SealCrystal_ArcaneLock.description>
+  <!-- 吸收{0_label} -->
+  <LP_SealCrystal_ArcaneLock.comps.CompUsable.useLabel>absorb {0_label}</LP_SealCrystal_ArcaneLock.comps.CompUsable.useLabel>
+  <!-- 湖印结晶：卜问 -->
+  <LP_SealCrystal_Augury.label>seal crystal: augury</LP_SealCrystal_Augury.label>
+  <!-- 魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「卜问」，占 1 个湖印法术槽。冒险者 5 级、智识 6 级，吸收成功率 90% + 智识 ×1%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（二阶法术，感知，湖息 2）：成功率 60% + 感知调整值 × 3%：告诉你 3 天内最大威胁的类型和大概时间。 -->
+  <LP_SealCrystal_Augury.description>A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal spell "Augury", taking 1 seal spell slot. Adventurer level 5 and Intellectual 6, absorb success 90% + Intellectual ×1%; on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal (tier 2 spell, Wisdom, lake breath 2): success 60% + Wisdom modifier × 3%: tells you the type and rough timing of the biggest threat within 3 days.</LP_SealCrystal_Augury.description>
+  <!-- 吸收{0_label} -->
+  <LP_SealCrystal_Augury.comps.CompUsable.useLabel>absorb {0_label}</LP_SealCrystal_Augury.comps.CompUsable.useLabel>
+  <!-- 湖印结晶：虚假生命 -->
+  <LP_SealCrystal_FalseLife.label>seal crystal: false life</LP_SealCrystal_FalseLife.label>
+  <!-- 魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「虚假生命」，占 1 个湖印法术槽。冒险者 5 级、智识 6 级，吸收成功率 90% + 智识 ×1%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（二阶法术，智力，湖息 1）：目标得到吸收 20 点伤害的护盾（随施法属性提高），持续 1 天。 -->
+  <LP_SealCrystal_FalseLife.description>A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal spell "False life", taking 1 seal spell slot. Adventurer level 5 and Intellectual 6, absorb success 90% + Intellectual ×1%; on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal (tier 2 spell, Intelligence, lake breath 1): the target gets a shield absorbing 20 damage (rising with the casting ability) for 1 day.</LP_SealCrystal_FalseLife.description>
+  <!-- 吸收{0_label} -->
+  <LP_SealCrystal_FalseLife.comps.CompUsable.useLabel>absorb {0_label}</LP_SealCrystal_FalseLife.comps.CompUsable.useLabel>
+  <!-- 湖印结晶：造粮术 -->
+  <LP_SealCrystal_CreateFood.label>seal crystal: create food</LP_SealCrystal_CreateFood.label>
+  <!-- 魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「造粮术」，占 1 个湖印法术槽。冒险者 5 级、智识 6 级，吸收成功率 90% + 智识 ×1%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（二阶法术，感知，湖息 3）：在脚下变出 5 份简单餐。 -->
+  <LP_SealCrystal_CreateFood.description>A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal spell "Create food", taking 1 seal spell slot. Adventurer level 5 and Intellectual 6, absorb success 90% + Intellectual ×1%; on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal (tier 2 spell, Wisdom, lake breath 3): conjure 5 simple meals at your feet.</LP_SealCrystal_CreateFood.description>
+  <!-- 吸收{0_label} -->
+  <LP_SealCrystal_CreateFood.comps.CompUsable.useLabel>absorb {0_label}</LP_SealCrystal_CreateFood.comps.CompUsable.useLabel>
+  <!-- 湖印结晶：宁神术 -->
+  <LP_SealCrystal_CalmMind.label>seal crystal: calm emotions</LP_SealCrystal_CalmMind.label>
+  <!-- 魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「宁神术」，占 1 个湖印法术槽。冒险者 5 级、智识 6 级，吸收成功率 90% + 智识 ×1%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（二阶法术，魅力，湖息 2）：结束目标的非暴力精神崩溃；没有崩溃时让目标 1 天内精神崩溃阈值 -5%。 -->
+  <LP_SealCrystal_CalmMind.description>A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal spell "Calm emotions", taking 1 seal spell slot. Adventurer level 5 and Intellectual 6, absorb success 90% + Intellectual ×1%; on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal (tier 2 spell, Charisma, lake breath 2): ends the target's non-violent mental break; with no break, the target gets mental break threshold -5% for 1 day.</LP_SealCrystal_CalmMind.description>
+  <!-- 吸收{0_label} -->
+  <LP_SealCrystal_CalmMind.comps.CompUsable.useLabel>absorb {0_label}</LP_SealCrystal_CalmMind.comps.CompUsable.useLabel>
+  <!-- 湖印结晶：粉碎音波 -->
+  <LP_SealCrystal_Shatter.label>seal crystal: shatter</LP_SealCrystal_Shatter.label>
+  <!-- 魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「粉碎音波」，占 1 个湖印法术槽。冒险者 5 级、智识 6 级，吸收成功率 90% + 智识 ×1%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（二阶法术，智力，湖息 2）：目标处半径 2 格，15 点钝器伤害；对机械体和建筑 ×3。 -->
+  <LP_SealCrystal_Shatter.description>A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal spell "Shatter", taking 1 seal spell slot. Adventurer level 5 and Intellectual 6, absorb success 90% + Intellectual ×1%; on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal (tier 2 spell, Intelligence, lake breath 2): radius 2 at the target, 15 blunt damage; ×3 against mechanoids and buildings.</LP_SealCrystal_Shatter.description>
+  <!-- 吸收{0_label} -->
+  <LP_SealCrystal_Shatter.comps.CompUsable.useLabel>absorb {0_label}</LP_SealCrystal_Shatter.comps.CompUsable.useLabel>
+  <!-- 湖印结晶：反制法术 -->
+  <LP_SealCrystal_Counterspell.label>seal crystal: counterspell</LP_SealCrystal_Counterspell.label>
+  <!-- 魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「反制法术」，占 1 个湖印法术槽。冒险者 10 级、智识 8 级，吸收成功率 70% + 智识 ×2%（要和魔力湖泊结盟才买得到）；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（三阶法术，智力，湖息 2）：打断一个敌人正在读条的灵能 / 职业能力，并沉默 10 秒；对传奇生物成功率 50%。 -->
+  <LP_SealCrystal_Counterspell.description>A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal spell "Counterspell", taking 1 seal spell slot. Adventurer level 10 and Intellectual 8, absorb success 70% + Intellectual ×2% (only purchasable once allied with the Mana Lake); on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal (tier 3 spell, Intelligence, lake breath 2): interrupt a psycast / class ability an enemy is channeling and silence it for 10 seconds; 50% success against legendary creatures.</LP_SealCrystal_Counterspell.description>
+  <!-- 吸收{0_label} -->
+  <LP_SealCrystal_Counterspell.comps.CompUsable.useLabel>absorb {0_label}</LP_SealCrystal_Counterspell.comps.CompUsable.useLabel>
+  <!-- 湖印结晶：小屋术 -->
+  <LP_SealCrystal_TinyHut.label>seal crystal: tiny hut</LP_SealCrystal_TinyHut.label>
+  <!-- 魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印法术「小屋术」，占 1 个湖印法术槽。冒险者 10 级、智识 8 级，吸收成功率 70% + 智识 ×2%（要和魔力湖泊结盟才买得到）；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印（三阶法术，感知，湖息 3）：撑起半径 3 格的力场穹顶 8 小时：挡住外面射来的弹丸，里面的人恒温；施法者离开穹顶即消失。 -->
+  <LP_SealCrystal_TinyHut.description>A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal spell "Tiny hut", taking 1 seal spell slot. Adventurer level 10 and Intellectual 8, absorb success 70% + Intellectual ×2% (only purchasable once allied with the Mana Lake); on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal (tier 3 spell, Wisdom, lake breath 3): raise a force dome of radius 3 for 8 hours: blocks projectiles fired from outside, and those inside stay at a constant temperature; vanishes when the caster leaves the dome.</LP_SealCrystal_TinyHut.description>
+  <!-- 吸收{0_label} -->
+  <LP_SealCrystal_TinyHut.comps.CompUsable.useLabel>absorb {0_label}</LP_SealCrystal_TinyHut.comps.CompUsable.useLabel>
+  <!-- 湖印结晶：湖泽体质 -->
+  <LP_SealCrystal_LakeBody.label>seal crystal: lakeland constitution</LP_SealCrystal_LakeBody.label>
+  <!-- 魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印被动「湖泽体质」，占 1 个湖印被动槽。冒险者 1 级、智识 4 级，吸收成功率 100%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印被动（一阶）：舒适温度范围上下各扩 8°C。 -->
+  <LP_SealCrystal_LakeBody.description>A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal passive "Lakeland constitution", taking 1 seal passive slot. Adventurer level 1 and Intellectual 4, absorb success 100%; on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal passive (tier 1): comfortable temperature range widened by 8°C at each end.</LP_SealCrystal_LakeBody.description>
+  <!-- 吸收{0_label} -->
+  <LP_SealCrystal_LakeBody.comps.CompUsable.useLabel>absorb {0_label}</LP_SealCrystal_LakeBody.comps.CompUsable.useLabel>
+  <!-- 湖印结晶：魔力消化 -->
+  <LP_SealCrystal_ManaDigest.label>seal crystal: mana digestion</LP_SealCrystal_ManaDigest.label>
+  <!-- 魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印被动「魔力消化」，占 1 个湖印被动槽。冒险者 1 级、智识 4 级，吸收成功率 100%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印被动（一阶）：饥饿速率 -10%。 -->
+  <LP_SealCrystal_ManaDigest.description>A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal passive "Mana digestion", taking 1 seal passive slot. Adventurer level 1 and Intellectual 4, absorb success 100%; on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal passive (tier 1): hunger rate -10%.</LP_SealCrystal_ManaDigest.description>
+  <!-- 吸收{0_label} -->
+  <LP_SealCrystal_ManaDigest.comps.CompUsable.useLabel>absorb {0_label}</LP_SealCrystal_ManaDigest.comps.CompUsable.useLabel>
+  <!-- 湖印结晶：学者之心 -->
+  <LP_SealCrystal_ScholarHeart.label>seal crystal: scholar's mind</LP_SealCrystal_ScholarHeart.label>
+  <!-- 魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印被动「学者之心」，占 1 个湖印被动槽。冒险者 1 级、智识 4 级，吸收成功率 100%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印被动（一阶）：全局学习速度 +12%。 -->
+  <LP_SealCrystal_ScholarHeart.description>A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal passive "Scholar's mind", taking 1 seal passive slot. Adventurer level 1 and Intellectual 4, absorb success 100%; on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal passive (tier 1): global learning speed +12%.</LP_SealCrystal_ScholarHeart.description>
+  <!-- 吸收{0_label} -->
+  <LP_SealCrystal_ScholarHeart.comps.CompUsable.useLabel>absorb {0_label}</LP_SealCrystal_ScholarHeart.comps.CompUsable.useLabel>
+  <!-- 湖印结晶：无梦之眠 -->
+  <LP_SealCrystal_DreamlessSleep.label>seal crystal: dreamless sleep</LP_SealCrystal_DreamlessSleep.label>
+  <!-- 魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印被动「无梦之眠」，占 1 个湖印被动槽。冒险者 1 级、智识 4 级，吸收成功率 100%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印被动（一阶）：休息下降速率 -15%。 -->
+  <LP_SealCrystal_DreamlessSleep.description>A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal passive "Dreamless sleep", taking 1 seal passive slot. Adventurer level 1 and Intellectual 4, absorb success 100%; on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal passive (tier 1): rest fall rate -15%.</LP_SealCrystal_DreamlessSleep.description>
+  <!-- 吸收{0_label} -->
+  <LP_SealCrystal_DreamlessSleep.comps.CompUsable.useLabel>absorb {0_label}</LP_SealCrystal_DreamlessSleep.comps.CompUsable.useLabel>
+  <!-- 湖印结晶：疗愈之流 -->
+  <LP_SealCrystal_HealingFlow.label>seal crystal: healing flow</LP_SealCrystal_HealingFlow.label>
+  <!-- 魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印被动「疗愈之流」，占 1 个湖印被动槽。冒险者 5 级、智识 6 级，吸收成功率 90% + 智识 ×1%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印被动（二阶）：自然愈合 +20%，受到的包扎质量 +5%。 -->
+  <LP_SealCrystal_HealingFlow.description>A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal passive "Healing flow", taking 1 seal passive slot. Adventurer level 5 and Intellectual 6, absorb success 90% + Intellectual ×1%; on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal passive (tier 2): natural healing +20%, tend quality received +5%.</LP_SealCrystal_HealingFlow.description>
+  <!-- 吸收{0_label} -->
+  <LP_SealCrystal_HealingFlow.comps.CompUsable.useLabel>absorb {0_label}</LP_SealCrystal_HealingFlow.comps.CompUsable.useLabel>
+  <!-- 湖印结晶：奥术抗性 -->
+  <LP_SealCrystal_ArcaneResist.label>seal crystal: arcane resistance</LP_SealCrystal_ArcaneResist.label>
+  <!-- 魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印被动「奥术抗性」，占 1 个湖印被动槽。冒险者 5 级、智识 6 级，吸收成功率 90% + 智识 ×1%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印被动（二阶）：受到职业能力、灵能、魔法物品的伤害 -15%（和心智抗性不重叠：这个管伤害，心智抗性管控制）。 -->
+  <LP_SealCrystal_ArcaneResist.description>A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal passive "Arcane resistance", taking 1 seal passive slot. Adventurer level 5 and Intellectual 6, absorb success 90% + Intellectual ×1%; on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal passive (tier 2): damage taken from class abilities, psycasts and magic items -15% (doesn't overlap with mind resistance: this covers damage, mind resistance covers control).</LP_SealCrystal_ArcaneResist.description>
+  <!-- 吸收{0_label} -->
+  <LP_SealCrystal_ArcaneResist.comps.CompUsable.useLabel>absorb {0_label}</LP_SealCrystal_ArcaneResist.comps.CompUsable.useLabel>
+  <!-- 湖印结晶：符文皮肤 -->
+  <LP_SealCrystal_RuneSkin.label>seal crystal: rune skin</LP_SealCrystal_RuneSkin.label>
+  <!-- 魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印被动「符文皮肤」，占 1 个湖印被动槽。冒险者 5 级、智识 6 级，吸收成功率 90% + 智识 ×1%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印被动（二阶）：利器、钝器护甲 +6%。 -->
+  <LP_SealCrystal_RuneSkin.description>A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal passive "Rune skin", taking 1 seal passive slot. Adventurer level 5 and Intellectual 6, absorb success 90% + Intellectual ×1%; on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal passive (tier 2): sharp and blunt armor +6%.</LP_SealCrystal_RuneSkin.description>
+  <!-- 吸收{0_label} -->
+  <LP_SealCrystal_RuneSkin.comps.CompUsable.useLabel>absorb {0_label}</LP_SealCrystal_RuneSkin.comps.CompUsable.useLabel>
+  <!-- 湖印结晶：法力导体 -->
+  <LP_SealCrystal_ManaConduit.label>seal crystal: mana conduit</LP_SealCrystal_ManaConduit.label>
+  <!-- 魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印被动「法力导体」，占 1 个湖印被动槽。冒险者 5 级、智识 6 级，吸收成功率 90% + 智识 ×1%；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印被动（二阶）：每次命中有 15% 概率附加 4 点奥术伤害。 -->
+  <LP_SealCrystal_ManaConduit.description>A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal passive "Mana conduit", taking 1 seal passive slot. Adventurer level 5 and Intellectual 6, absorb success 90% + Intellectual ×1%; on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal passive (tier 2): each hit has a 15% chance to add 4 arcane damage.</LP_SealCrystal_ManaConduit.description>
+  <!-- 吸收{0_label} -->
+  <LP_SealCrystal_ManaConduit.comps.CompUsable.useLabel>absorb {0_label}</LP_SealCrystal_ManaConduit.comps.CompUsable.useLabel>
+  <!-- 湖印结晶：湖心 -->
+  <LP_SealCrystal_LakeHeart.label>seal crystal: heart of the lake</LP_SealCrystal_LakeHeart.label>
+  <!-- 魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印被动「湖心」，占 1 个湖印被动槽。冒险者 10 级、智识 8 级，吸收成功率 70% + 智识 ×2%（要和魔力湖泊结盟才买得到）；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印被动（三阶）：湖息上限 +1，回复 ×1.5。 -->
+  <LP_SealCrystal_LakeHeart.description>A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal passive "Heart of the lake", taking 1 seal passive slot. Adventurer level 10 and Intellectual 8, absorb success 70% + Intellectual ×2% (only purchasable once allied with the Mana Lake); on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal passive (tier 3): max lake breath +1, recovery ×1.5.</LP_SealCrystal_LakeHeart.description>
+  <!-- 吸收{0_label} -->
+  <LP_SealCrystal_LakeHeart.comps.CompUsable.useLabel>absorb {0_label}</LP_SealCrystal_LakeHeart.comps.CompUsable.useLabel>
+  <!-- 湖印结晶：魔网感知 -->
+  <LP_SealCrystal_WeaveSense.label>seal crystal: weave sense</LP_SealCrystal_WeaveSense.label>
+  <!-- 魔力湖泊的湖印结晶。吸收（约 1 小时）后永久学会湖印被动「魔网感知」，占 1 个湖印被动槽。冒险者 10 级、智识 8 级，吸收成功率 70% + 智识 ×2%（要和魔力湖泊结盟才买得到）；失败时结晶碎掉，小人湖音回响 1 天。巫妖吸收不会失败。\n\n湖印被动（三阶）：8 格内的隐形敌人对你可见。 -->
+  <LP_SealCrystal_WeaveSense.description>A Mana Lake seal crystal. After absorbing it (about 1 hour) you permanently learn the lake seal passive "Weave sense", taking 1 seal passive slot. Adventurer level 10 and Intellectual 8, absorb success 70% + Intellectual ×2% (only purchasable once allied with the Mana Lake); on failure the crystal shatters and the pawn hears lake echoes for 1 day. Liches never fail to absorb.\n\nLake seal passive (tier 3): invisible enemies within 8 cells are visible to you.</LP_SealCrystal_WeaveSense.description>
+  <!-- 吸收{0_label} -->
+  <LP_SealCrystal_WeaveSense.comps.CompUsable.useLabel>absorb {0_label}</LP_SealCrystal_WeaveSense.comps.CompUsable.useLabel>
+</LanguageData>

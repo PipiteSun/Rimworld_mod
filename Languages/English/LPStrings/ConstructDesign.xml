@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（ConstructDesign.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>大脑</zh><en>brain</en></s>
+  <s><zh>眼睛</zh><en>eyes</en></s>
+  <s><zh>手臂</zh><en>arms</en></s>
+  <s><zh>心脏</zh><en>heart</en></s>
+  <s><zh>研究</zh><en>research</en></s>
+  <s><zh>制造</zh><en>crafting</en></s>
+  <s><zh>建造</zh><en>construction</en></s>
+  <s><zh>医疗</zh><en>medicine</en></s>
+  <s><zh>基础</zh><en>basic</en></s>
+  <s><zh>改良</zh><en>improved</en></s>
+  <s><zh>精良</zh><en>fine</en></s>
+  <s><zh>卓越</zh><en>superior</en></s>
+  <s><zh>杰作</zh><en>masterwork</en></s>
+  <s><zh>躯体质量：</zh><en>Body quality: </en></s>
+  <s><zh>\n生命上限：×</zh><en>\nMax health: ×</en></s>
+  <s><zh>\n利器 / 钝器护甲：+</zh><en>\nSharp / blunt armor: +</en></s>
+  <s><zh>%\n移动速度：×</zh><en>%\nMove speed: ×</en></s>
+  <s><zh>\n工作与学习效率：×</zh><en>\nWork and learning efficiency: ×</en></s>
+  <s><zh>\n专长初始等级：</zh><en>\nStarting specialty level: </en></s>
+  <s><zh>\n近战初始等级：</zh><en>\nStarting melee level: </en></s>
+  <s><zh>\n追加材料：生肉 </zh><en>\nExtra materials: raw meat </en></s>
+  <s><zh> / 钢铁 </zh><en> / steel </en></s>
+  <s><zh> / 玻璃钢 </zh><en> / plasteel </en></s>
+  <s><zh>请把胚体放在地图上。</zh><en>Please place the embryo on the map.</en></s>
+  <s><zh>绑定命匣必须完好，主人必须存活且属于殖民地。</zh><en>The bound phylactery must be intact, and the master must be alive and in the colony.</en></s>
+  <s><zh>主人统御容量不足；胚体可保留到容量空闲时。</zh><en>The master lacks command capacity; the embryo can be kept until capacity frees up.</en></s>
+  <s><zh>配置超出允许范围。</zh><en>Configuration exceeds the allowed range.</en></s>
+  <s><zh>胚体12格内可用的新鲜生肉不足。</zh><en>Not enough fresh raw meat available within 12 cells of the embryo.</en></s>
+  <s><zh>胚体12格内可用的钢铁不足。</zh><en>Not enough steel available within 12 cells of the embryo.</en></s>
+  <s><zh>胚体12格内可用的玻璃钢不足。</zh><en>Not enough plasteel available within 12 cells of the embryo.</en></s>
+  <s><zh>胚体附近没有可站立位置。</zh><en>No standable spot near the embryo.</en></s>
+  <s><zh>唤醒失败，追加材料已退回。</zh><en>Awakening failed; extra materials refunded.</en></s>
+  <s><zh>\n主人：</zh><en>\nMaster: </en></s>
+  <s><zh>失联</zh><en>lost</en></s>
+  <s><zh>\n胚体已消耗石块：300</zh><en>\nStone blocks used by the embryo: 300</en></s>
+  <s><zh>\n胚体已消耗生肉：</zh><en>\nRaw meat used by the embryo: </en></s>
+  <s><zh>\n待唤醒 · </zh><en>\nAwaiting awakening · </en></s>
+  <s><zh>\n选择“配置死灵造物”调整初始属性。</zh><en>\nChoose "configure necromantic construct" to adjust starting stats.</en></s>
+  <s><zh>配置死灵造物</zh><en>Configure necromantic construct</en></s>
+  <s><zh>调整生肉、钢铁和玻璃钢投入，预览属性并唤醒。</zh><en>Adjust the raw meat, steel and plasteel invested, preview stats, and awaken.</en></s>
+  <s><zh>造物档案</zh><en>Construct record</en></s>
+  <s><zh>查看初始材料投入、质量与属性。</zh><en>View starting material investment, quality and stats.</en></s>
+  <s><zh>死灵重塑</zh><en>Necromantic reshaping</en></s>
+  <s><zh>到重塑池修改材料、技能兴趣和知识专长。保留经验、关系和植入体。</zh><en>Change materials, skill passions and knowledge specialty at the reshaping pool. Keeps XP, relationships and implants.</en></s>
+  <s><zh>死灵重塑 · 已有造物</zh><en>Necromantic reshaping · existing construct</en></s>
+  <s><zh>死灵塑形 · 初始配置</zh><en>Necromantic shaping · initial configuration</en></s>
+  <s><zh>死灵造物 · 躯体档案</zh><en>Necromantic construct · body record</en></s>
+  <s><zh>保留原角色、技能经验、关系和植入体。耗时1日；增加材料补差额，减少不返还，另消耗50生肉。</zh><en>Keeps the original character, skill XP, relationships and implants. Takes 1 day; added materials pay the difference, removed ones aren't refunded, and 50 raw meat is also consumed.</en></s>
+  <s><zh>先塑造躯体，再赋予灵魂。调整投入即可预览结果；保存方案不扣材料。</zh><en>Shape the body first, then grant the soul. Adjust the investment to preview the result; saving a plan doesn't deduct materials.</en></s>
+  <s><zh>初始配置已固定，以下为本个体的材料与强化记录。</zh><en>The initial configuration is fixed; below are this individual's material and reinforcement records.</en></s>
+  <s><zh>躯体材料</zh><en>Body materials</en></s>
+  <s><zh>✓ 躯体材料</zh><en>✓ Body materials</en></s>
+  <s><zh>✓ 技能兴趣</zh><en>✓ Skill passions</en></s>
+  <s><zh>技能兴趣</zh><en>Skill passions</en></s>
+  <s><zh>  /  主人：</zh><en>  /  master: </en></s>
+  <s><zh>旧版造物：未记录历史材料投入</zh><en>Old construct: no historical material investment recorded</en></s>
+  <s><zh>基础胚体：生肉 </zh><en>Base embryo: raw meat </en></s>
+  <s><zh>（已支付）</zh><en> (paid)</en></s>
+  <s><zh>生肉 · 强化生命上限</zh><en>Raw meat · raises max health</en></s>
+  <s><zh>钢铁 · 增加护甲，略降低移动速度</zh><en>Steel · adds armor, slightly lowers move speed</en></s>
+  <s><zh>玻璃钢 · 精密骨架与魂能传导</zh><en>Plasteel · precision skeleton and soul conduction</en></s>
+  <s><zh>追加生肉：</zh><en>Extra raw meat: </en></s>
+  <s><zh>\n\n追加钢铁：</zh><en>\n\nExtra steel: </en></s>
+  <s><zh>\n\n追加玻璃钢：</zh><en>\n\nExtra plasteel: </en></s>
+  <s><zh>知识专长</zh><en>Knowledge specialty</en></s>
+  <s><zh>低成本躯体：可以承担全部殖民者工作，并正常学习。</zh><en>Low-cost body: can do all colonist work and learns normally.</en></s>
+  <s><zh>攻坚躯体：可以承担全部殖民者工作。血肉维护与统御规则保持不变。</zh><en>Assault body: can do all colonist work. Flesh upkeep and command rules are unchanged.</en></s>
+  <s><zh>统御占用：</zh><en>Command used: </en></s>
+  <s><zh>\n总生肉成本：</zh><en>\nTotal raw meat cost: </en></s>
+  <s><zh>\n数值相对该类型的基础属性。\n知识死灵另享主人心灵敏感度加成。\n知识死灵技能固定，工作经验100%回馈主人。</zh><en>\nValues are relative to this type's base stats.\nKnowledge necros also get a bonus from the master's psychic sensitivity.\nKnowledge necro skills are fixed; 100% of work XP goes back to the master.</en></s>
+  <s><zh>可用材料：生肉 </zh><en>Available materials: raw meat </en></s>
+  <s><zh>基础配置</zh><en>Base configuration</en></s>
+  <s><zh>保存方案</zh><en>Save plan</en></s>
+  <s><zh>唤醒吸收12格内可达、未禁用的材料。</zh><en>Awakening absorbs reachable, unforbidden materials within 12 cells.</en></s>
+  <s><zh>投入材料并唤醒</zh><en>Invest materials and awaken</en></s>
+</LPStrings>

@@ -335,7 +335,7 @@
         <actions><li><action>Detect</action><cost>1</cost></li><li><action>Tail</action><cost>1</cost></li></actions>
         <legendPoints>2</legendPoints>
       </li>
-      <li Class="LichPhylactery.LP_MonsterExtension"><kind>behir</kind><renderScale>2.4</renderScale></li>
+      <li Class="LichPhylactery.LP_MonsterExtension"><kind>behir</kind><renderScale>2.9</renderScale></li>
     </modExtensions>
   </PawnKindDef>
   <PawnKindDef ParentName="LP_LegendaryMonsterKindBase">

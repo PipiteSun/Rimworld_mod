@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 巨魔血余力 -->
+  <LPMB_TrollBloodRegen.label>lingering troll blood</LPMB_TrollBloodRegen.label>
+  <!-- 饕餮饮下巨魔血后获得的微弱再生：以巨魔四分之一的速度愈合伤口、恢复失血。不会长回肢体，也不会复活；身上着火时暂停。持续12小时，再次饮用只刷新时间。 -->
+  <LPMB_TrollBloodRegen.description>Faint regeneration a taotie gains after drinking troll blood: heals wounds and recovers blood loss at a quarter of a troll's rate. Doesn't regrow limbs or revive; pauses while on fire. Lasts 12 hours; drinking again only refreshes the time.</LPMB_TrollBloodRegen.description>
+  <!-- 火巨人之肉 -->
+  <LPMB_FireGiantFlesh.label>fire giant meat</LPMB_FireGiantFlesh.label>
+  <!-- 饕餮吞下火巨人的血肉，暂时沾上了一丝熔火之力：受到的火焰伤害减半。持续24小时，再次食用只刷新时间。 -->
+  <LPMB_FireGiantFlesh.description>The taotie swallowed a fire giant's flesh and temporarily took on a trace of molten power: fire damage taken halved. Lasts 24 hours; eating again only refreshes the time.</LPMB_FireGiantFlesh.description>
+</LanguageData>

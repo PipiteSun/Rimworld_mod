@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 邪契魔能爆 -->
+  <LP_HeroPactBlast.label>pactbound eldritch blast</LP_HeroPactBlast.label>
+  <!-- 邪契者的契约法术：一道力场光束（射程 24），每道 12 点魔能伤害（护甲穿透 30%）。道数随冒险者等级：1–4 级 1 道、5–10 级 2 道、11–16 级 3 道、17 级起 4 道；目标倒下后剩下的光束自动打向附近的敌人。不耗心灵熵。冷却 4 秒。宗主之怒期间不能用。 -->
+  <LP_HeroPactBlast.description>The Pactbound's pact spell: a beam of force (range 24), each beam 12 eldritch damage (armor penetration 30%). Number of beams by adventurer level: 1 at levels 1-4, 2 at 5-10, 3 at 11-16, 4 from 17; if the target falls, the remaining beams automatically fire at nearby enemies. Costs no neural heat. Cooldown 4 seconds. Can't be used during the patron's wrath.</LP_HeroPactBlast.description>
+  <!-- 妖精步 -->
+  <LP_HeroFeyStep.label>fey step</LP_HeroFeyStep.label>
+  <!-- 踏进妖精荒野又走出来：传送到 8 格内看得见的空地。冷却 30 秒。 -->
+  <LP_HeroFeyStep.description>Step into the Feywild and back out: teleport to a visible open spot within 8 cells. Cooldown 30 seconds.</LP_HeroFeyStep.description>
+  <!-- 直坠地狱 -->
+  <LP_HeroHurlHell.label>straight to hell</LP_HeroHurlHell.label>
+  <!-- 邪契者·邪魔的升华：把一个敌人扔进九狱转一圈。10 秒内目标动弹不得，每秒受到 6 点灼烧伤害（共 60 点）。每天一次。 -->
+  <LP_HeroHurlHell.description>Exaltation of the Pactbound (Fiend): hurl an enemy on a tour of the Nine Hells. For 10 seconds the target can't move and takes 6 burn damage per second (60 total). Once per day.</LP_HeroHurlHell.description>
+  <!-- 妖精魅惑 -->
+  <LP_HeroFeyCharm.label>fey charm</LP_HeroFeyCharm.label>
+  <!-- 邪契者·妖精的升华：6 格内的敌人被妖精的歌声迷住，失神 10 秒（首领、传奇单位、半神无效）。每天一次。 -->
+  <LP_HeroFeyCharm.description>Exaltation of the Pactbound (Fey): enemies within 6 cells are entranced by fey song and dazed for 10 seconds (no effect on bosses, legendary units or demigods). Once per day.</LP_HeroFeyCharm.description>
+  <!-- 异界触须 -->
+  <LP_HeroTentacles.label>otherworldly tentacles</LP_HeroTentacles.label>
+  <!-- 邪契者·旧日的升华：在一处地面（半径 3）撕开星界之外的裂缝，里面的敌人被触须困住 15 秒，每秒受到 3 点伤害。每天一次。 -->
+  <LP_HeroTentacles.description>Exaltation of the Pactbound (Old One): tear open a rift from beyond the stars in an area of ground (radius 3); enemies inside are trapped by tentacles for 15 seconds, taking 3 damage per second. Once per day.</LP_HeroTentacles.description>
+  <!-- 命运主宰 -->
+  <LP_HeroFateMaster.label>master of fate</LP_HeroFateMaster.label>
+  <!-- 预言之子的升华：下一次攻击必中，伤害 ×2。每天一次。 -->
+  <LP_HeroFateMaster.description>Exaltation of the child of prophecy: the next attack always hits for ×2 damage. Once per day.</LP_HeroFateMaster.description>
+  <!-- 魔网涌动 -->
+  <LP_HeroWeaveSurge.label>weave surge</LP_HeroWeaveSurge.label>
+  <!-- 魔网之子的升华：60 秒内施法不耗心灵熵、不进冷却。每天一次。 -->
+  <LP_HeroWeaveSurge.description>Exaltation of the Child of the Weave: for 60 seconds, casting costs no neural heat and triggers no cooldown. Once per day.</LP_HeroWeaveSurge.description>
+</LanguageData>

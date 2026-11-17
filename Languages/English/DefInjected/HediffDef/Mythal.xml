@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 迷锁规则：重力 -->
+  <LP_MythalRule_Gravity.label>mythal rule: gravity</LP_MythalRule_Gravity.label>
+  <!-- 这一层的迷锁把一切往下拽。离开迷锁地牢后消失。 -->
+  <LP_MythalRule_Gravity.description>This floor's mythal drags everything down. Disappears after leaving the mythal dungeon.</LP_MythalRule_Gravity.description>
+  <!-- 迷锁规则：狂暴 -->
+  <LP_MythalRule_Fury.label>mythal rule: frenzy</LP_MythalRule_Fury.label>
+  <!-- 这一层的迷锁煽动着每一次挥击。离开迷锁地牢后消失。 -->
+  <LP_MythalRule_Fury.description>This floor's mythal stirs up every swing. Disappears after leaving the mythal dungeon.</LP_MythalRule_Fury.description>
+  <!-- 迷锁规则：生命回流 -->
+  <LP_MythalRule_Lifeflow.label>mythal rule: life reflux</LP_MythalRule_Lifeflow.label>
+  <!-- 这一层的迷锁把生命力灌回每一具身体，敌人也一样。离开迷锁地牢后消失。 -->
+  <LP_MythalRule_Lifeflow.description>This floor's mythal pours life force back into every body, enemies included. Disappears after leaving the mythal dungeon.</LP_MythalRule_Lifeflow.description>
+  <!-- 迷锁规则：时间凝滞 -->
+  <LP_MythalRule_Stasis.label>mythal rule: time stasis</LP_MythalRule_Stasis.label>
+  <!-- 这一层的时间几乎停住了：伤口不流血，不会饿，也不会累。离开迷锁地牢后消失。 -->
+  <LP_MythalRule_Stasis.description>Time has almost stopped on this floor: wounds don't bleed, nobody gets hungry or tired. Disappears after leaving the mythal dungeon.</LP_MythalRule_Stasis.description>
+  <!-- 迷锁规则：破碎 -->
+  <LP_MythalRule_Fragile.label>mythal rule: shattered</LP_MythalRule_Fragile.label>
+  <!-- 这一层的迷锁让血肉变得脆弱。离开迷锁地牢后消失。 -->
+  <LP_MythalRule_Fragile.description>This floor's mythal makes flesh fragile. Disappears after leaving the mythal dungeon.</LP_MythalRule_Fragile.description>
+  <!-- 迷锁规则：祝福 -->
+  <LP_MythalRule_Blessing.label>mythal rule: blessing</LP_MythalRule_Blessing.label>
+  <!-- 这一层的迷锁认出了你们，暗暗相助。离开迷锁地牢后消失。 -->
+  <LP_MythalRule_Blessing.description>This floor's mythal recognizes you and secretly helps. Disappears after leaving the mythal dungeon.</LP_MythalRule_Blessing.description>
+</LanguageData>

@@ -1,0 +1,503 @@
+s15330	's contract (4 hours)
+s15331	The colony's pacts:\s
+s15332	 (debt\s
+s15333	Dragged away:\s
+s15334	Compensate the patron:\s
+s15335	Deliver double the current demand once,\s
+s15336	's debt -1 (now\s
+s15337	).\n\nTo hand over:\s
+s15338	double\s
+s15339	execute 2 prisoners (by the signatory's own hand)
+s15340	1000 silver
+s15341	3 soul coins
+s15342	Can't compensate:\s
+s15343	Break the pact with the agent's true name:\s
+s15344	Speak the true name of\s
+s15345	's agent and tear up on the spot\s
+s15346	's pact: no cost at all. Uses up this true name scroll.
+s15347	The agent's true name scroll tore up the pact
+s15348	Eldritch blast ×
+s15349	Sign: boon "
+s15350	Review (
+s15351	 Intelligence save, difficulty\s
+s15352	Ask a lawyer to review it again (
+s15353	, plus proficiency bonus
+s15354	Review succeeded: revealed a hidden clause.
+s15355	Review failed: the writing of the clauses swims before their eyes; nothing could be made out.
+s15356	No other colonist can act as lawyer
+s15357	Negotiate (
+s15358	 Charisma save, difficulty\s
+s15359	Negotiation succeeded
+s15360	The devil lawyer frowns and agrees to strike one clause. Which one?
+s15361	Negotiation failed: the other side sneers and adds a price.\n\n
+s15362	Refuse (the book burns,\s
+s15363	 mood -3)
+s15364	Strike:\s
+s15365	A price was struck.\n\n
+s15366	Deliver
+s15367	Pay a year of life
+s15368	Pay an eye
+s15369	No eye to pay
+s15370	Undo\s
+s15371	's pact (
+s15372	Give it 300 silver
+s15373	300 silver
+s15374	Give it 2 soul coins
+s15375	2 soul coins
+s15376	Not enough soul coins
+s15377	Let it leave
+s15378	Otherworldly pacts
+s15379	Enable otherworldly pacts
+s15380	(1.55.0) Planar pact research, patrons' whispers, Nine Hells caravans, fey markets and random Wild Hunts. When off, the research is hidden and these events no longer trigger randomly; pacts already signed keep working.
+s15381	Hidden clauses
+s15382	When off, all clauses on contracts are visible directly, and letters no longer have a "review" button.
+s15383	Payment frequency:\s
+s15384	% (higher is more frequent)
+s15385	Debt collection strength:\s
+s15386	% (points of collector squads and the Wild Hunt)
+s15387	Changeling chance:\s
+s15388	% (per birth)
+s15389	Celestial invocation
+s15390	With a good god as patron deity, the altar gains an extra "invoke celestial reinforcements" group (deva reinforcements, guardian angel, planetar descends).
+s15391	cut down a tree (hidden clause "oath of no felling")
+s15392	[DND Rimlands] Wizard path check error:\s
+s15393	Five bottles of holy water put out the abyssal fire at the rift's edge
+s15394	Holy water splashed on the abyssal rift, and the rift shrank violently (
+s15395	Dispelling dust scattered the edge of the rift
+s15396	The rift was shattered
+s15397	Command the rift to close (already tried)
+s15398	Command the rift to close (can't reach)
+s15399	Command the rift to close (success chance\s
+s15400	Source plane:\s
+s15401	\nWaves emerged:\s
+s15402	\s
+s15403	Collapse
+s15404	Next wave
+s15405	[DND Rimlands] Rift spawning\s
+s15406	Rift closed
+s15407	: the planar rift to\s
+s15408	 closed, leaving behind\s
+s15409	 planar residue.
+s15410	\n\nThe\s
+s15411	 beasts that came out of the rift lost the plane's compulsion, calmed down and became ordinary wild animals that can be tamed.
+s15412	Rift collapse
+s15413	The planar rift to\s
+s15414	 stayed open for three days and finally gave way: a final eruption released\s
+s15415	 creatures, then it collapsed and vanished. No planar residue was left this time.
+s15416	\n\nThe\s
+s15417	 beasts that came out of the rift earlier lost the plane's compulsion, calmed down and became ordinary wild animals.
+s15418	\n\nThe beasts of this last wave will stay berserk for a while, calming down only 1 hour after the rift vanishes.
+s15419	Command the rift to close with a genie's authority
+s15420	The rift didn't obey\s
+s15421	's command, and spewed out the next wave of creatures early instead!
+s15422	A planar rift has torn open outside the colony! On the other side of the rift is\s
+s15423	\n\nEvery 8 hours a wave of creatures pours out of the rift, each wave bigger than the last; if it's still open after 3 days, it collapses, spewing out double the creatures at once.\n\nClose it: destroy the rift (600 HP). Colonists on the wizard path deal ×3 damage when attacking the rift; a genie can try to command it shut directly (only one try). Closing it leaves planar residue, and the beasts calm down too.
+s15424	A planar rift occasionally tears open outside the colony (the Nine Hells, the Elemental Plane of Fire, the Feywild, the Shadowfell), with a wave of creatures pouring out every 8 hours; it collapses if not closed in 3 days. Destroying the rift or a genie's command can close it.
+s15425	A band of hungry giants (fire giants or an ogre family of the Ember Clan, titans or a frost giant war band of the Faerûn Frontier Alliance) passes by and camps, asking you for food; someone might want to stay.
+s15426	Each year there's a 25% chance of "omens of twilight" (in year 1 on a random day in days 1-30, from year 2 on the first day of each year), and the twilight years begin 15 days later (earliest day 16): divinely infused and god-possessed enemies increase greatly. When off, it no longer triggers (ones already started end as usual); normal divine infusion is unaffected.
+s15427	Twilight years last:\s
+s15428	Twilight strength:\s
+s15429	% (scales infusion / possession chances and divine effects during the twilight years)
+s15430	Vanilla factions have divine power too (pirates → Talos, tribes → Malar)
+s15431	Off by default. When on, raiders from vanilla pirates and savage tribes can also be divinely infused and possessed.
+s15432	No divine infusion normally
+s15433	When on, divinely infused enemies only appear during the twilight years (the usual 3% becomes 0).
+s15434	force field collapsed
+s15435	Arcane core:\s
+s15436	 (depleted)
+s15437	arcane depleted: iron shell
+s15438	Can't be used while downed.
+s15439	Arcane energy is depleted; charge it first.
+s15440	Not enough arcane energy (needs\s
+s15441	 seconds).
+s15442	This armor has no thrusters.
+s15443	This armor has no force field generator.
+s15444	The force field is already on.
+s15445	This armor can't overload.
+s15446	Invalid landing spot.
+s15447	Too close.
+s15448	Beyond leap range (
+s15449	Can't land there.
+s15450	Blocked in between.
+s15451	Thruster leap
+s15452	Arcane force field
+s15453	Overload shock
+s15454	Swap in an arcane battery
+s15455	Not wearing arcane power armor.
+s15456	Arcane energy is already full.
+s15457	The charging dock has no power.
+s15458	Can't get there or it's in use.
+s15459	The arcane thrusters on the back spray a blue flame, leaping to a landing spot\s
+s15460	 cells away (costs\s
+s15461	 arcane, cooldown\s
+s15462	 seconds). On landing, enemies within\s
+s15463	 cells take\s
+s15464	 blunt damage, with a chance of\s
+s15465	 to be knocked down (stunned\s
+s15466	Deploy a close-fitting arcane force field for\s
+s15467	 seconds (costs\s
+s15468	 seconds): while the field is on, all damage is blocked, each point blocked costing\s
+s15469	 arcane; when arcane runs out, the field collapses.
+s15470	Overload the core instantly, releasing a ring of arcane shock around you (costs\s
+s15471	 seconds):\s
+s15472	 blunt damage
+s15473	 (scales with arcane power)
+s15474	, stunned for\s
+s15475	 seconds. Doesn't hurt allies.
+s15476	Charge
+s15477	If carrying an arcane battery, swap one in at once (+
+s15478	); otherwise go to the nearest powered arcane charging dock and charge, +
+s15479	 per hour, until full or interrupted; without a charging dock, go fetch a nearby arcane battery.
+s15480	No powered arcane charging dock or arcane battery nearby.
+s15481	Can't charge while downed.
+s15482	Arcane power armor: +
+s15483	Charge arcane power armor
+s15484	Can't charge:\s
+s15485	Arcane core (depleted)
+s15486	Arcane core
+s15487	Arcane:\s
+s15488	\nWhen taking damage the core absorbs the impact, -
+s15489	 per point of damage; -
+s15490	 per hour while drafted; armor abilities cost extra.\nWhen depleted it becomes a heavy iron shell: movement -35%, manipulation -25%, abilities unusable.\nCharge at a powered arcane charging dock (+
+s15491	 per hour), or swap in an arcane battery (+
+s15492	).\nCap +20% with the matching helmet; +50% when an armorer turns it into arcane armor.
+s15493	bronze
+s15494	gold
+s15495	Defend the home
+s15496	Expedition
+s15497	Monster attack
+s15498	Clear stronghold
+s15499	Defend the home:\s
+s15500	beast pack
+s15501	Expedition:\s
+s15502	 pack
+s15503	Clear stronghold:\s
+s15504	hostile stronghold
+s15505	The adventurers' guild has received word:\s
+s15506	's band
+s15507	a pack of manhunting\s
+s15508	 is closing in on the colony. After accepting, they attack within 6-12 hours; repelling all attackers (killed, downed, captured or driven off) completes it.
+s15509	A pack of manhunting\s
+s15510	 has appeared in the wilds, threatening passing traders. After accepting, a "monster lair" appears on the world map (\s
+s15511	 cells from the colony); organize an expedition and destroy all monsters (killed or downed).
+s15512	 days without going there, and the lair disperses; the job fails.
+s15513	 has built an outpost nearby. After accepting, the outpost appears on the world map (\s
+s15514	 cells from the colony); go there and destroy all its defenders.
+s15515	 days without going there, and the outpost withdraws; the job fails.
+s15516	\n\nTier:\s
+s15517	 (recommended adventurer level\s
+s15518	+)\nThreat points:\s
+s15519	 (items worth about\s
+s15520	\nAdventurer XP: about\s
+s15521	 for the taker, about\s
+s15522	 each for other colonists.
+s15523	The exploration notice board is turned off in settings
+s15524	 jobs
+s15525	Needs an adventurer in the colony at level\s
+s15526	No suitable site found nearby; try another job.
+s15527	The enemies will arrive within 6-12 hours.
+s15528	The target is marked on the world map,\s
+s15529	 took this job from the exploration notice board.
+s15530	The colony is gone.
+s15531	The monster lair has dispersed.
+s15532	The stronghold has withdrawn.
+s15533	Job: monster attack
+s15534	Job: enemy attack
+s15535	The job "
+s15536	The monsters have arrived (
+s15537	The enemies have arrived
+s15538	! Repelling all attackers completes it.
+s15539	The [
+s15540	] job "
+s15541	" on the exploration notice board is complete.\n\nReward (sent to the colony by drop pod):\s
+s15542	,\s
+s15543	about this much each for other colonists:\s
+s15544	" failed.
+s15545	Enemies arrive in about\s
+s15546	 hours
+s15547	Enemies attacking,\s
+s15548	 left
+s15549	The target has vanished
+s15550	The expedition has arrived; enemies remain
+s15551	 (searching)
+s15552	", remaining\s
+s15553	[DND Rimlands] Exploration notice board job error:\s
+s15554	[DND Rimlands] Monster lair generation error:\s
+s15555	Open the exploration notice board: view today's jobs, accept jobs, and check progress on accepted jobs.
+s15556	Today's jobs\s
+s15557	, accepted\s
+s15558	, available tiers: bronze to\s
+s15559	The colony's highest adventurer level\s
+s15560	. Jobs refresh daily, with a new batch in about\s
+s15561	 hours; at most\s
+s15562	 accepted at once.
+s15563	The exploration notice board is turned off in settings (Adventurer group).
+s15564	Today's jobs
+s15565	No jobs today.
+s15566	Accepted jobs
+s15567	+ · threat points\s
+s15568	 · XP about\s
+s15569	 · in the colony
+s15570	 · expedition
+s15571	Accept
+s15572	 below recommended level
+s15573	 accepts
+s15574	Accept directly (no taker)
+s15575	Locate enemies
+s15576	monster pack
+s15577	giant raiding party
+s15578	Nine Hells host
+s15579	legendary monster
+s15580	monsters
+s15581	native guards
+s15582	Monster attack:\s
+s15583	 leading
+s15584	a pack of magic-twisted monsters (permanently berserk)
+s15585	a giant raiding party (
+s15586	a horde crawling out of an abyssal rift
+s15587	a devil squad of the Nine Hells legion
+s15588	a\s
+s15589	 and its guards
+s15590	the legendary\s
+s15591	 and its followers
+s15592	a group of monsters
+s15593	Scouts of the adventurers' guild bring word:\s
+s15594	 is coming toward the colony. After accepting, they attack within 6-12 hours; repelling all attackers (killed, downed, captured or driven off) completes it.\n\nExpected lineup:\s
+s15595	 (a badly wounded true dragon flies away, which also counts as repelled)
+s15596	Can't land in unexplored places.
+s15597	The genie is weary after granting a wish; bloodline abilities are unavailable for now.
+s15598	Not enough divine might: needs\s
+s15599	Beyond wing beat range (4 cells).
+s15600	Beyond divine punishment range (10 cells).
+s15601	Lightning can't pierce through the mountain.
+s15602	Divine kin affect the weather
+s15603	When a titan (sky-born) is on the map, its mood is checked at every dawn: mood ≥80% turns the weather clear, ≤30% turns it to thunderstorms. When off, titans no longer affect the weather.
+s15604	Reading speed = the reader's research speed (minimum ×0.25, uncapped).
+s15605	, reading speed ×
+s15606	 (research speed)
+s15607	, about\s
+s15608	Reward gained (
+s15609	already gained from a tome)
+s15610	Reading progress:\s
+s15611	 hours (
+s15612	psycast XP keeps accumulating (no end)
+s15613	, this time +
+s15614	study\s
+s15615	: psylink rewards all gained (can keep accumulating)
+s15616	 (next psylink level,\s
+s15617	Reward gained: grasped\s
+s15618	 spells (further reading only gives the study aftereffect)
+s15619	fragment progress\s
+s15620	), grasped\s
+s15621	 (psycast level too low to grasp for now)
+s15622	Finished\s
+s15623	 reads: echo of Karsus is full (can still be studied)
+s15624	 reads:\s
+s15625	), finished\s
+s15626	 (full at\s
+s15627	Finished (the colony has learned to summon\s
+s15628	; reading speed depends on the reader's research speed
+s15629	, reward gained (the colony already knows\s
+s15630	Reading progress: no one has read it yet
+s15631	 (reading)
+s15632	  another\s
+s15633	 people have progress
+s15634	 (reward gained)
+s15635	 (progress\s
+s15636	Reading
+s15637	Reading progress
+s15638	Progress toward the reward from reading this item (accumulated per person, kept in the save).\n
+s15639	The hours needed stay the same; faster readers finish sooner.\n\n
+s15640	Not enough raw meat available within 12 cells of the reshaping pool.
+s15641	Not enough steel available within 12 cells of the reshaping pool.
+s15642	Not enough plasteel available within 12 cells of the reshaping pool.
+s15643	Please select a construct on the map to reshape.
+s15644	Needs an idle, reachable necromantic reshaping pool.
+s15645	Needs a completed reshaping pool in the colony.
+s15646	The construct must be on the same map, able to act and not having a mental break.
+s15647	The reshaping pool is occupied by another construct.
+s15648	Needs valid command and master's psyfocus.
+s15649	The configuration hasn't changed.
+s15650	The construct can't reach the reshaping pool.
+s15651	The reshaping pool is reserved.
+s15652	The construct must first walk to the reshaping pool's entrance.
+s15653	Entering the pool failed; materials refunded.
+s15654	 completed necromantic reshaping.
+s15655	 left the reshaping pool keeping the original configuration; invested materials aren't refunded.
+s15656	Idle: select a construct and configure reshaping.
+s15657	Waiting for\s
+s15658	 to enter the pool; materials not yet deducted.
+s15659	Reshaping:\s
+s15660	\nProgress\s
+s15661	; remaining\s
+s15662	 hours.\n
+s15663	Command and upkeep continue to apply.
+s15664	Command lost; progress paused.
+s15665	Cancel reshaping and leave the pool
+s15666	Keeps the original character and configuration; consumed materials aren't refunded.
+s15667	Cancel entering the pool
+s15668	Cancel reshaping that hasn't started; no materials deducted.
+s15669	Configure necromantic reshaping
+s15670	Choose an existing construct and change materials, passions and specialty.
+s15671	No usable constructs on the map
+s15672	This time's cost (including 50 raw meat reshaping fee):\nraw meat\s
+s15673	\nReshaping time: 1 game day\nCommand used:\s
+s15674	 (unchanged)\nKeeps skill XP; starting levels aren't granted again.\nLowering investment doesn't refund materials; injury proportions are kept.
+s15675	Available at the pool: raw meat\s
+s15676	Restore current
+s15677	Materials are deducted on entering the pool; cancelling after entering doesn't refund.
+s15678	Schedule reshaping in the pool
+s15679	[DND Rimlands] Research window height calculation failed:\s
+s15680	[DND Rimlands] The research window vertical scroll patch didn't fully take effect (
+s15681	); the game version may have changed the research window.
+s15682	[DND Rimlands] Research tab migration: based on completed vanilla prerequisites, directly completed\s
+s15683	 new research projects.
+s15684	[DND Rimlands] Research tab migration failed:\s
+s15685	[DND Rimlands] Stomach capacity migration: scaled up the food saturation of\s
+s15686	 characters by the stomach capacity multiplier.
+s15687	Dragon stomach: ×
+s15688	Giant stomach: ×
+s15689	\n\nEquivalent to a normal person's saturation\s
+s15690	 (cap\s
+s15691	\nDragon's long sleep: looks for food only below\s
+s15692	, hungry only below\s
+s15693	; once eating, keeps eating until\s
+s15694	 (gorging)
+s15695	There isn't enough open space near the start to place\s
+s15696	; please build it yourself.
+s15697	The first character on the starting character page is already a lich: phylactery level\s
+s15698	, commanding\s
+s15699	 skeleton servants
+s15700	 flesh colossi
+s15701	, with a necromantic ritual table nearby.
+s15702	Near the start there's a molten forge with\s
+s15703	 fuel remaining; each fire giant wears a smith's coat, and the fire giant best at melee holds a forge hammer.
+s15704	After the start,\s
+s15705	 days in:\s
+s15706	The raid promised by the start
+s15707	 didn't arrive:\s
+s15708	this faction isn't in this save
+s15709	has been turned off
+s15710	is no longer hostile
+s15711	[DND Rimlands] The scenario's promised raid (
+s15712	) failed to land (points\s
+s15713	 attack (points ×
+s15714	Points multiplier\s
+s15715	Starting supplies are placed in an open area with a thick rock roof nearby (mountain-hollow camp):\s
+s15716	. If no mountain is found, placed at a normal location.
+s15717	Search radius:\s
+s15718	No mountain found
+s15719	No open area with a thick rock roof was found near the starting characters; supplies were placed at a normal location.\n\nStarting on hills or mountains is recommended: the dwarves' "stone endurance" only works under thick rock roofs.
+s15720	Near the start there's a\s
+s15721	 granite labyrinth ruin
+s15722	 (fully roofed)
+s15723	, with\s
+s15724	 bedrolls in the central 5×5 room
+s15725	. Not generated if no flat ground is found.
+s15726	Size (odd)\s
+s15727	Roof everything
+s15728	Bedrolls\s
+s15729	No space for the labyrinth
+s15730	No flat ground of\s
+s15731	 without buildings, water or mountain roof was found near the starting characters; the labyrinth ruin wasn't generated.\n\nSupplies are next to the starting characters as usual.
+s15732	The best one holds a\s
+s15733	-quality\s
+s15734	; everyone else\s
+s15735	Everyone\s
+s15736	a\s
+s15737	 (random)
+s15738	Everyone wears\s
+s15739	Starting gear:\s
+s15740	-level psylink
+s15741	level 2
+s15742	level 1
+s15743	 passion
+s15744	each starting character
+s15745	the best starting character
+s15746	 has\s
+s15747	Psylink level\s
+s15748	The starting characters' adulthood backstories are all "
+s15749	Mind flayer starting brain matter\s
+s15750	; the human colonists have a tadpole in their brains at progress\s
+s15751	, currently under the suppressant's effect (half-illithids); nearby are\s
+s15752	 bound human prisoners.
+s15753	Tadpole progress\s
+s15754	Prisoners\s
+s15755	Past-life memory:\s
+s15756	The road of the past life is walked
+s15757	, has caught up with where they reached in their past life.\n\nFrom here on, the road wasn't walked in the past life: adventurer XP no longer doubles, and leveling up no longer brings back memories of the past life.
+s15758	 returned in a dream to the study of their past life, and on waking wrote down everything they remembered.\n\nResearch project "
+s15759	" progress +
+s15760	 (30% of the project's cost).
+s15761	The moment they picked up the tools, their hands seemed to remember the past life.\n\nSkill "
+s15762	" passion:\s
+s15763	none → minor
+s15764	minor → major
+s15765	Past-life level\s
+s15766	 (adventurer system not enabled; this trait has no effect for now)
+s15767	, now\s
+s15768	,\s
+s15769	adventurer XP ×2
+s15770	XP bonus ended
+s15771	Sedative sac: full (triggers immediately on a rebellion)
+s15772	Sedative sac: refilling, another\s
+s15773	Sedative collar: ready
+s15774	Sedative collar: refilling
+s15775	\n\nWhen a slave wearing this collar starts a rebellion, incites rebellion or goes berserk hurting people, they're injected with a sedative and sleep for about half a day, with suppression +30% on waking. Only works on slaves.
+s15776	\nTriggered\s
+s15777	 times.
+s15778	Sedated!
+s15779	 was about to cause trouble, but the slave sedative collar injected a sedative, and\s
+s15780	 fell asleep.
+s15781	[DND Rimlands] Slave sedative collar trigger error:\s
+s15782	Slave rebellion: the slave sedative collar knocked out\s
+s15783	Small body hauling: ×
+s15784	[DND Rimlands] Load fix: dropped\s
+s15785	 leftover old spell pages with quantity 0.
+s15786	[DND Rimlands] Load fix: gave new IDs to\s
+s15787	 old spell pages with clashing IDs.
+s15788	[DND Rimlands] Load fix: cleared\s
+s15789	 leftovers in the map item list that never spawned on the map (left by old clashing spell page IDs).
+s15790	<b>Spell VFX</b>
+s15791	Show effects when casting DND spells and class abilities
+s15792	A circle appears underfoot during warmup, a light orb flies to the target on casting, and the impact bursts by element (fire, ice, lightning, necrotic, holy, healing, shadow, poison, blood, nature, psychic, force, melee, etc.); area spells' auras scale with their radius. Purely visual; doesn't affect numbers.
+s15793	Effect size:\s
+s15794	(?i)heal|cure|mend|restor|regenerat|reviv|resurrect|revivify|recover|lay on hands|first aid
+s15795	(?i)fire|flame|burn|blaz|scorch|molten|magma|inferno|meteor|sunburst|sunbeam|ember
+s15796	(?i)cold|frost|\\bice\\b|icy|snow|freez|chill
+s15797	(?i)lightning|thunder|storm|shock|electric
+s15798	(?i)necro|undead|decay|bone|skelet|wither|corpse|life drain|drain life|devour soul|soul|undying|lich
+s15799	(?i)hell|demon|devil|abyss|fiend|infernal
+s15800	(?i)psychic|mental|\\bmind|charm|beguil|fear|frighten|illusion|phantasm|hypno|dominat|telepath|mind flayer
+s15801	(?i)holy|divine|\\bgods?\\b|smite|radiant|\\blight\\b|bless|angel|celestial|judg|oath|sacred
+s15802	(?i)shadow|darkness|\\bdark|night|invisib
+s15803	(?i)poison|acid|corro|toxic|spore
+s15804	(?i)blood|hemo
+s15805	(?i)vine|thorn|plant|beast|nature|tree|earth|rock|stone|quake|druid|root
+s15806	(?i)pact|patron|eldritch|warlock|otherworld|astral
+s15807	(?i)force|shield|barrier|impact|knock|push|teleport|blink|time|swift|haste|sonic|thunderwave
+s15808	(?i)radius\\s*(\\d+(?:\\.\\d+)?)
+s15809	(?i)(?:(\\d+(?:\\.\\d+)?)\\s*-?\\s*cells?(?:\\s*long)?\\s*(?:cone|fan))|(?:(?:cone|fan)(?:\\s*area)?\\s*\\(?\\s*(\\d+(?:\\.\\d+)?)\\s*cells?)
+s15810	(?i)along the line|in a line|straight line|\\bray\\b|beam|bolt of lightning|lightning bolt
+s15811	[LP] Area indicator error:\s
+s15812	[LP] Spell VFX error:\s
+s15813	[LP] Zone VFX error:\s
+s15814	[LP] Aura VFX error:\s
+s15815	[DND Rimlands] Visitor injury handling error:\s
+s15816	knocked aside!
+s15817	Thayan raid
+s15818	Stampeding herd
+s15819	A herd of\s
+s15820	) panics and charges from one side of the map to the other. They won't attack on their own, but anyone in the way gets knocked aside.\n\nThey don't look like they're migrating; more like they're fleeing something...
+s15821	The cold snap has passed;\s
+s15822	 winter wolves' frenzy faded, and they became ordinary wild winter wolves that can be tamed.
+s15823	A cold snap has descended; temperatures will plunge over the next\s
+s15824	 days. With the cold snap came\s
+s15825	 manhunting winter wolves!\n\nThe cold drives them into a frenzy: faster movement, and their ice bite's frost slow lasts longer. When the cold snap ends, the surviving winter wolves calm down and become wild winter wolves that can be tamed.\n\nFire giants aren't affected by the cold snap.
+s15826	DND event frequency:\s
+s15827	% (weight of portal mishaps, giant migrations and the five events below; 0% means none appear)
+s15828	6-14 animals panic and cross the map, knocking aside anyone in the way. 70% of the time something big follows 1-3 days later (dragon flyover, giant migration, portal mishap or Thayan raid, picked only from those turned on).
+s15829	In cold seasons or on cold maps: a 5-day cold snap, plus 4-8 manhunting winter wolves (by raid points). When the cold snap ends, the wolves calm down and can be tamed.
+s15830	A dragon circles in the sky for 1 day: when its shadow passes, beasts scatter, mood -3 (force dragonborn +3), and occasionally a breath lands. When the colony has an adult force dragonborn, another ancient dragon may land: duel, marriage or refuse.
+s15831	The wreck of a Thayan wizard tower falls outside the colony, watched by skeleton guards, with wild magic spilling all around. You can dismantle it yourself, wait for Thay to recover it, or notify the alliance to dismantle it. Needs the Thayan expedition to exist.
+s15832	Wandering mentor (needs VPE)

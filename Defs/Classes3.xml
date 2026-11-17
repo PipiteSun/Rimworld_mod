@@ -121,7 +121,7 @@
   <AbilityDef ParentName="LP_LegendaryBase">
     <defName>LP_LegBloodlineAwakening</defName>
     <label>血脉觉醒</label>
-    <description>传奇被动：天赋强度 +20%；有术士血脉时，受到血脉对应元素的伤害 ×0.5（力能龙裔：力场；火元素裔、巨灵、坎比恩：火焰；水元素裔：冻伤；土元素裔、泰坦：钝器；风元素裔、风暴巨人、云巨人：闪电；六臂蛇人：利器）。传奇术士。</description>
+    <description>传奇被动：天赋强度 +20%；有术士血脉时，受到血脉对应元素的伤害 ×0.5（火元素裔、巨灵、坎比恩：火焰；水元素裔：冻伤；土元素裔、泰坦：钝器；风元素裔、风暴巨人、云巨人：闪电；六臂蛇人：利器）。传奇术士。</description>
     <iconPath>LP/Classes/Legendary/BloodlineAwakening</iconPath>
     <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_InnatePower</stat></li></comps>
   </AbilityDef>

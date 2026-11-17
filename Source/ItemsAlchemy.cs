@@ -20,7 +20,7 @@ namespace LichPhylactery {
  }
  public class StatPart_AlchemySkill : StatPart {
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p && p.skills!=null)val*=Alchemy.SkillFactor(p);}
-  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && p.skills!=null?"智识与医疗平均等级"+Alchemy.AverageSkill(p).ToString("0.#")+"：×"+Alchemy.SkillFactor(p).ToStringPercent():null;
+  public override string ExplanationPart(StatRequest req)=>req.Thing is Pawn p && p.skills!=null?"智识与医疗平均等级".Loc()+Alchemy.AverageSkill(p).ToString("0.#")+"：×".Loc()+Alchemy.SkillFactor(p).ToStringPercent():null;
  }
  // 做炼金配方时，智识经验的一半转给医疗。
  [HarmonyPatch(typeof(Pawn_SkillTracker),nameof(Pawn_SkillTracker.Learn))]

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 食人魔之力手套 -->
+  <LP_GauntletsOgrePower.label>gauntlets of ogre power</LP_GauntletsOgrePower.label>
+  <!-- 指节镶着铁钉的厚皮手套，戴上后力大无穷：搬运量×1.5，近战伤害+15%。对体型1.5以上的大个子没有效果（火巨人戴上也不会更强）。戴在奇物层的手部。 -->
+  <LP_GauntletsOgrePower.description>Thick leather gauntlets with iron studs on the knuckles that grant immense strength: carrying capacity ×1.5, melee damage +15%. No effect on big folk of body size 1.5+ (a fire giant wearing them won't get stronger). Worn on the hands in the trinket layer.</LP_GauntletsOgrePower.description>
+  <!-- 接箭手套 -->
+  <LP_GlovesMissileSnaring.label>gloves of missile snaring</LP_GlovesMissileSnaring.label>
+  <!-- 掌心缝着一层细密银丝的软手套。空手、持近战单手武器或手枪时，有20%概率徒手接住一发射来的投射物，毫发无伤（炮弹、爆炸不算）。戴在奇物层的手部。 -->
+  <LP_GlovesMissileSnaring.description>Soft gloves with fine silver thread sewn into the palms. When unarmed, holding a one-handed melee weapon or a pistol, a 20% chance to catch an incoming projectile bare-handed, unharmed (shells and explosions don't count). Worn on the hands in the trinket layer.</LP_GlovesMissileSnaring.description>
+  <!-- 箭术护腕 -->
+  <LP_BracersArchery.label>bracers of archery</LP_BracersArchery.label>
+  <!-- 刻着鹰羽纹的皮护腕。手持弓弩时命中率+10%、瞄准时间-15%；枪械不受影响。戴在奇物层的护腕位置，可以和手套同戴。 -->
+  <LP_BracersArchery.description>Leather bracers engraved with eagle feathers. With a bow or crossbow in hand, hit chance +10%, aiming time -15%; firearms unaffected. Worn in the bracer slot of the trinket layer; can be worn with gloves.</LP_BracersArchery.description>
+  <!-- 防御护腕 -->
+  <LP_BracersDefense.label>bracers of defense</LP_BracersDefense.label>
+  <!-- 一对刻着护盾符文的铜护腕。躯干没有穿中层或外层衣甲时，锐器和钝器护甲各+25%。给巫妖、夺心魔、巨魔这类不爱穿甲的人。戴在奇物层的护腕位置。 -->
+  <LP_BracersDefense.description>A pair of bronze bracers engraved with shield runes. When the torso wears no middle or outer layer, sharp and blunt armor +25% each. For liches, mind flayers, trolls and others who don't like wearing armor. Worn in the bracer slot of the trinket layer.</LP_BracersDefense.description>
+  <!-- 传心头盔 -->
+  <LP_HelmTelepathy.label>helm of telepathy</LP_HelmTelepathy.label>
+  <!-- 嵌着紫晶的银色额冠。佩戴者获得能力“读心”（夺心魔读心的弱化版，不消耗脑髓），每天一次；夺心魔戴上读心没有冷却。戴在奇物层的头顶。 -->
+  <LP_HelmTelepathy.description>A silver circlet set with amethyst. The wearer gains the ability "Read mind" (a weakened version of a mind flayer's mind reading that costs no brain matter), once per day; mind flayers wearing it read minds with no cooldown. Worn on the head in the trinket layer.</LP_HelmTelepathy.description>
+  <!-- 鹰眼 -->
+  <LP_EyesEagle.label>eyes of the eagle</LP_EyesEagle.label>
+  <!-- 一对水晶镜片，贴在眼前看得极远。白天远程武器射程+3格；瞄准时间-10%。戴在奇物层的眼部，可以和原版眼饰同戴。 -->
+  <LP_EyesEagle.description>A pair of crystal lenses held before the eyes that let you see very far. By day, ranged weapon range +3 cells; aiming time -10%. Worn on the eyes in the trinket layer; can be worn with vanilla eyewear.</LP_EyesEagle.description>
+  <!-- 微观之眼 -->
+  <LP_EyesMinuteSeeing.label>eyes of minute seeing</LP_EyesMinuteSeeing.label>
+  <!-- 能看清发丝纹理的水晶镜片。手术成功率+10%、研究速度+10%，但射击和近战命中-5%。医生和研究员的“眼镜”。戴在奇物层的眼部。 -->
+  <LP_EyesMinuteSeeing.description>Crystal lenses that reveal the texture of a single hair. Surgery success +10%, research speed +10%, but shooting and melee hit -5%. "Glasses" for doctors and researchers. Worn on the eyes in the trinket layer.</LP_EyesMinuteSeeing.description>
+  <!-- 伤口闭合护符 -->
+  <LP_PeriaptWoundClosure.label>periapt of wound closure</LP_PeriaptWoundClosure.label>
+  <!-- 红玉髓雕成的护符，贴着心口微微发热。佩戴者不会失血而死（失血最多停在90%），伤口自然愈合速度×2。戴在奇物层的颈部。 -->
+  <LP_PeriaptWoundClosure.description>A periapt carved from carnelian, faintly warm against the heart. The wearer never bleeds to death (blood loss stops at 90% at most), and natural wound healing speed ×2. Worn on the neck in the trinket layer.</LP_PeriaptWoundClosure.description>
+  <!-- 防探测护符 -->
+  <LP_AmuletProofDetection.label>amulet of proof against detection</LP_AmuletProofDetection.label>
+  <!-- 灰扑扑的铅坠，摸上去冰凉。佩戴者隐形时不会被识破卷轴和探测魔杖揭示，夺心魔（以及传心头盔）对佩戴者读心会落空。戴在奇物层的颈部。 -->
+  <LP_AmuletProofDetection.description>A dull grey lead pendant, cold to the touch. While invisible, the wearer isn't revealed by true seeing scrolls or wands of detection, and mind reading by mind flayers (and helms of telepathy) on the wearer fails. Worn on the neck in the trinket layer.</LP_AmuletProofDetection.description>
+  <!-- 法术转向戒指 -->
+  <LP_RingSpellTurning.label>ring of spell turning</LP_RingSpellTurning.label>
+  <!-- 戒面是一块会映出人影的镜石。每天一次：敌人对佩戴者施放的能力（支配、恐惧凝视、心灵冲击等）被反弹回施法者身上。最多戴两枚不同的戒指。 -->
+  <LP_RingSpellTurning.description>The ring face is a mirror stone that reflects figures. Once per day: an ability an enemy casts on the wearer (domination, fear gaze, psychic jolt, etc.) is reflected back onto the caster. Up to two different rings can be worn.</LP_RingSpellTurning.description>
+  <!-- 反弹 -->
+  <LP_RingSpellTurning.comps.CompMagicCharges.chargeLabel>reflect</LP_RingSpellTurning.comps.CompMagicCharges.chargeLabel>
+  <!-- 自由行动戒指 -->
+  <LP_RingFreeAction.label>ring of free action</LP_RingFreeAction.label>
+  <!-- 戒圈刻着挣脱锁链的图案。佩戴者免疫黏胶袋、寒霜迟缓、法杖寒气之类的减速，力场囚笼也困不住他。给牛头人冲撞流。最多戴两枚不同的戒指。 -->
+  <LP_RingFreeAction.description>The band is engraved with a breaking chain. The wearer is immune to slows like sticky bags, frost slow and staff chill, and force cages can't hold them. For minotaur charge builds. Up to two different rings can be worn.</LP_RingFreeAction.description>
+  <!-- 再生戒指 -->
+  <LP_RingRegeneration.label>ring of regeneration</LP_RingRegeneration.label>
+  <!-- 泡过巨魔血的绿玉戒指。每天治好佩戴者一处伤口（不会长出断肢）。巨魔戴上没有额外效果。最多戴两枚不同的戒指。 -->
+  <LP_RingRegeneration.description>A jade ring soaked in troll blood. Heals one of the wearer's wounds each day (doesn't regrow lost limbs). No extra effect when worn by trolls. Up to two different rings can be worn.</LP_RingRegeneration.description>
+  <!-- 守护戒指 -->
+  <LP_RingProtection.label>ring of protection</LP_RingProtection.label>
+  <!-- 最朴素也最常用的魔法戒指。锐器、钝器、热能护甲各+6%，心智抗性+5%。最多戴两枚不同的戒指。 -->
+  <LP_RingProtection.description>The simplest and most common magic ring. Sharp, blunt and heat armor +6% each, mind resistance +5%. Up to two different rings can be worn.</LP_RingProtection.description>
+  <!-- 护佑誓约戒指 -->
+  <LP_RingWardingBond.label>ring of protective vows</LP_RingWardingBond.label>
+  <!-- 成对打造的一枚誓约戒指，另一枚是它的另一半。戴“甲戒”的人受到伤害时，一半转给同地图上戴“乙戒”的人。圣武士保护队友、巫妖让仆从挡刀都用得上。只能成对制作或购买（打开誓约戒匣得到两枚）。最多戴两枚不同的戒指。 -->
+  <LP_RingWardingBond.description>One of a pair of vow rings forged together, the other being its other half. When the wearer of the "first ring" takes damage, half of it transfers to the wearer of the "second ring" on the same map. Useful for paladins protecting teammates or liches having servants take hits. Can only be made or bought as a pair (opening a vow ring box gives two). Up to two different rings can be worn.</LP_RingWardingBond.description>
+  <!-- 誓约戒匣 -->
+  <LP_WardingBondCase.label>vow ring box</LP_WardingBondCase.label>
+  <!-- 天鹅绒衬里的小匣，里面并排躺着一对互相绑定的护佑誓约戒指（甲戒、乙戒）。打开就能取出两枚。 -->
+  <LP_WardingBondCase.description>A small velvet-lined box with a pair of bound rings of protective vows side by side inside (first ring, second ring). Open it to take out both.</LP_WardingBondCase.description>
+  <!-- 打开{0_label} -->
+  <LP_WardingBondCase.comps.CompUsable.useLabel>open {0_label}</LP_WardingBondCase.comps.CompUsable.useLabel>
+  <!-- 储法戒指 -->
+  <LP_RingSpellStoring.label>ring of spell storing</LP_RingSpellStoring.label>
+  <!-- 戒面是一颗空心的蓝晶，能封存一道法术。用戒指的“存入法术”把身边的一张法术卷轴读进戒指（卷轴消耗），佩戴者就能不经阅读、不会失误地施放一次那道法术；用完可以再存。巫妖可以不用卷轴，直接花30点精神力把恐惧凝视或死灵冲击存进去。最多戴两枚不同的戒指。 -->
+  <LP_RingSpellStoring.description>The ring face is a hollow blue crystal that can store one spell. Use the ring's "store spell" to read a nearby spell scroll into the ring (the scroll is used up), and the wearer can cast that spell once without reading and without fail; it can be stored again after use. A lich can skip the scroll and spend 30 psyfocus to store Fear Gaze or Necrotic Blast directly. Up to two different rings can be worn.</LP_RingSpellStoring.description>
+  <!-- 动物影响戒指 -->
+  <LP_RingAnimalInfluence.label>ring of animal influence</LP_RingAnimalInfluence.label>
+  <!-- 戒面嵌着一片狼牙。驯服和训练成功率×1.25；能力“安抚”每天一次，让15格内一只发狂的动物恢复平静。最多戴两枚不同的戒指。 -->
+  <LP_RingAnimalInfluence.description>A wolf tooth set in the ring face. Taming and training success ×1.25; ability "Calm" once per day calms one maddened animal within 15 cells. Up to two different rings can be worn.</LP_RingAnimalInfluence.description>
+  <!-- 流星戒指 -->
+  <LP_RingShootingStars.label>ring of shooting stars</LP_RingShootingStars.label>
+  <!-- 戒面里像关着一小片夜空。夜里佩戴者身边自带一圈星光照明；能力“召唤流星”每天两次（冷却半天），在25格内召下一颗流星：半径2格的爆炸，并点燃落点。最多戴两枚不同的戒指。 -->
+  <LP_RingShootingStars.description>The ring face seems to hold a little piece of night sky. At night the wearer is surrounded by a ring of starlight; the ability "Call meteor" twice per day (cooldown half a day) calls down a meteor within 25 cells: an explosion of radius 2 that ignites the impact point. Up to two different rings can be worn.</LP_RingShootingStars.description>
+  <!-- 适应项链 -->
+  <LP_NecklaceAdaptation.label>necklace of adaptation</LP_NecklaceAdaptation.label>
+  <!-- 坠着一枚琉璃泡的项链，泡里总有一口新鲜空气。免疫毒气、毒尘和腐烂恶臭；装了奥德赛时还能在真空里呼吸。戴在奇物层的颈部。 -->
+  <LP_NecklaceAdaptation.description>A necklace with a glass bubble pendant that always holds a breath of fresh air. Immune to toxic gas, toxic fallout and rot stench; with Odyssey installed you can also breathe in vacuum. Worn on the neck in the trinket layer.</LP_NecklaceAdaptation.description>
+  <!-- 火球项链 -->
+  <LP_NecklaceFireballs.label>necklace of fireballs</LP_NecklaceFireballs.label>
+  <!-- 串着几颗暗红珠子的项链，生成时带3～9颗。每颗珠子都是一次“投掷火球”：扔向12格内的目标点，半径2.5格火焰爆炸。珠子用完项链就碎了。佩戴者自己着火时，有10%概率所有珠子一起炸开。戴在奇物层的颈部。 -->
+  <LP_NecklaceFireballs.description>A necklace strung with a few dark red beads, 3-9 when generated. Each bead is one "throw fireball": thrown at a target point within 12 cells for a fire explosion of radius 2.5. The necklace shatters when the beads run out. When the wearer catches fire, there's a 10% chance all the beads explode at once. Worn on the neck in the trinket layer.</LP_NecklaceFireballs.description>
+  <!-- 珠 -->
+  <LP_NecklaceFireballs.comps.CompMagicCharges.chargeLabel>beads</LP_NecklaceFireballs.comps.CompMagicCharges.chargeLabel>
+  <!-- 祈祷念珠 -->
+  <LP_PrayerBeads.label>prayer beads</LP_PrayerBeads.label>
+  <!-- 檀木念珠，每颗都刻着祷文。每天一次（两种用法共用冷却）：“祈祷治疗”治好5格内一个人最重的一处伤口；或者“祈祷祝福”让6格内的友军1小时内命中+5%、心智抗性+10%。巫妖和夺心魔戴上没有效果。戴在奇物层的颈部。 -->
+  <LP_PrayerBeads.description>Sandalwood prayer beads, each engraved with a prayer. Once per day (both uses share a cooldown): "prayer of healing" heals the worst wound of one person within 5 cells; or "prayer blessing" gives allies within 6 cells hit +5% and mind resistance +10% for 1 hour. No effect when worn by liches and mind flayers. Worn on the neck in the trinket layer.</LP_PrayerBeads.description>
+  <!-- 护盾胸针 -->
+  <LP_BroochShielding.label>brooch of shielding</LP_BroochShielding.label>
+  <!-- 银质盾形胸针，别在衣襟上。佩戴者受到的力场伤害-75%（力场法术等）。戴在奇物层的胸前。 -->
+  <LP_BroochShielding.description>A silver shield-shaped brooch pinned on the lapel. Force damage taken by the wearer -75% (force spells and the like). Worn on the chest in the trinket layer.</LP_BroochShielding.description>
+  <!-- 圣甲虫护符 -->
+  <LP_ScarabProtection.label>scarab of protection</LP_ScarabProtection.label>
+  <!-- 翡翠雕成的圣甲虫，翅膀上刻满护身咒文。死灵伤害-50%；另有12次抵抗：生命汲取光环的每次汲取、死亡律令都会被它挡下并消耗一次。次数用完就变回一块普通的玉石。专门对付巫妖。戴在奇物层的胸前。 -->
+  <LP_ScarabProtection.description>A scarab carved from emerald, its wings covered in protective incantations. Necrotic damage -50%; plus 12 charges of resistance: each drain from a life-draining aura and each power word kill is blocked by it, consuming one charge. When the charges run out it becomes an ordinary piece of jade. A specific counter to liches. Worn on the chest in the trinket layer.</LP_ScarabProtection.description>
+  <!-- 抵抗 -->
+  <LP_ScarabProtection.comps.CompMagicCharges.chargeLabel>resistance</LP_ScarabProtection.comps.CompMagicCharges.chargeLabel>
+  <!-- 星界护符 -->
+  <LP_AmuletPlanes.label>astral amulet</LP_AmuletPlanes.label>
+  <!-- 银链上挂着一枚旋转的小星盘。非吉斯洋基也能每天星界跳跃一次（8格内瞬移）；吉斯洋基戴上时自己的星界跳跃冷却减半。每次用护符跳跃有5%概率被星界之风卷到地图边缘。戴在奇物层的颈部。 -->
+  <LP_AmuletPlanes.description>A small spinning astrolabe on a silver chain. Even non-githyanki can astral jump once per day (teleport within 8 cells); githyanki wearing it get their own astral jump cooldown halved. Each jump with the amulet has a 5% chance of being blown to the map edge by the astral wind. Worn on the neck in the trinket layer.</LP_AmuletPlanes.description>
+  <!-- 夜视护目镜 -->
+  <LP_GogglesNight.label>goggles of night</LP_GogglesNight.label>
+  <!-- 黑玻璃镜片的皮护目镜。黑暗中工作和射击不受减益。戴在奇物层的眼部，可以和原版眼饰同戴。 -->
+  <LP_GogglesNight.description>Leather goggles with black glass lenses. No penalties to working and shooting in darkness. Worn on the eyes in the trinket layer; can be worn with vanilla eyewear.</LP_GogglesNight.description>
+</LanguageData>

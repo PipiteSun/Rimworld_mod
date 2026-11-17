@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 象人体型 -->
+  <LP_LoxodonStature.label>loxodon build</LP_LoxodonStature.label>
+  <!-- 高大厚重的象人身材。实际体型为普通人的130%（负重、商队载重随之提高，也更容易被远程命中），显示为115%大小；手上搬运量约为普通人的150%。饭量也大一些，胃也更大（巨胃：饱食度上限×130%）。体型越大，生命和近战越强（见巨躯规则：生命总量×115%、近战伤害×109%）。 -->
+  <LP_LoxodonStature.description>The tall, heavy build of a loxodon. Actual body size 130% of an ordinary person (carry capacity and caravan load go up, and they're easier to hit at range), drawn at 115% size; hand hauling capacity about 150% of an ordinary person. They eat a bit more too, with a bigger stomach (giant stomach: max food ×130%). The bigger the body, the stronger the health and melee (see giant-body rules: total health ×115%, melee damage ×109%).</LP_LoxodonStature.description>
+  <!-- 实际体型：×130%（与其他体型效果相乘）。 | 显示大小：×115%。 | 搬运量：约为普通人的150%（体型×130%后再×115%）。 | 食量：×120%。 -->
+  <LP_LoxodonStature.customEffectDescriptions.0>Actual body size: ×130% (multiplies with other body size effects).</LP_LoxodonStature.customEffectDescriptions.0>
+  <LP_LoxodonStature.customEffectDescriptions.1>Drawn size: ×115%.</LP_LoxodonStature.customEffectDescriptions.1>
+  <LP_LoxodonStature.customEffectDescriptions.2>Hauling capacity: about 150% of an ordinary person (body size ×130% then ×115%).</LP_LoxodonStature.customEffectDescriptions.2>
+  <LP_LoxodonStature.customEffectDescriptions.3>Appetite: ×120%.</LP_LoxodonStature.customEffectDescriptions.3>
+  <!-- 象鼻 -->
+  <LP_LoxodonTrunk.label>trunk</LP_LoxodonTrunk.label>
+  <!-- 一条灵活有力的长鼻，取代普通的鼻子。象鼻像第三只手：双手都受了伤时，象人还能用鼻子卷起东西干活，操作能力不会低于50%。 -->
+  <LP_LoxodonTrunk.description>A flexible, powerful trunk that replaces the ordinary nose. The trunk works like a third hand: even with both hands hurt, a loxodon can curl things up with the trunk and keep working, and manipulation won't drop below 50%.</LP_LoxodonTrunk.description>
+  <!-- 第三只手：操作能力不低于50%（但不超过意识水平）。 | 与原版鼻子基因、牛鼻互斥。 -->
+  <LP_LoxodonTrunk.customEffectDescriptions.0>Third hand: manipulation no lower than 50% (but not above consciousness).</LP_LoxodonTrunk.customEffectDescriptions.0>
+  <LP_LoxodonTrunk.customEffectDescriptions.1>Mutually exclusive with vanilla nose genes and the cow nose.</LP_LoxodonTrunk.customEffectDescriptions.1>
+  <!-- 沉稳 -->
+  <LP_LoxodonCalm.label>steady</LP_LoxodonCalm.label>
+  <!-- 象人遇事不慌，几乎不会被吓到：不会陷入恐慌逃跑，巫妖的恐惧凝视对他们无效，看到触须披风之类的可怕东西也无动于衷。心智抗性+20%。 -->
+  <LP_LoxodonCalm.description>Loxodons stay calm and almost never get frightened: they never panic and flee, a lich's fear gaze doesn't work on them, and they're unmoved by horrors like tentacle cloaks. Mind resistance +20%.</LP_LoxodonCalm.description>
+  <!-- 免疫恐惧类精神状态（恐慌逃跑、恐惧凝视）和“看到触须披风”的心情。 -->
+  <LP_LoxodonCalm.customEffectDescriptions.0>Immune to fear-type mental states (panic flee, fear gaze) and the "saw a tentacle cloak" mood.</LP_LoxodonCalm.customEffectDescriptions.0>
+  <!-- 厚皮 -->
+  <LP_LoxodonHide.label>thick hide</LP_LoxodonHide.label>
+  <!-- 象人的皮又厚又韧：钝器护甲+10%，锐器护甲+5%，也更耐热。 -->
+  <LP_LoxodonHide.description>A loxodon's skin is thick and tough: blunt armor +10%, sharp armor +5%, and more heat-resistant.</LP_LoxodonHide.description>
+  <!-- 象灰肤色 -->
+  <LP_SkinLoxodon.label>elephant grey skin</LP_SkinLoxodon.label>
+  <!-- 象人的灰色厚皮。 -->
+  <LP_SkinLoxodon.description>The thick grey skin of a loxodon.</LP_SkinLoxodon.description>
+  <!-- 象灰 -->
+  <LP_SkinLoxodon.labelShortAdj>elephant grey</LP_SkinLoxodon.labelShortAdj>
+</LanguageData>

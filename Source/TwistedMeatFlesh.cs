@@ -16,7 +16,7 @@ namespace LichPhylactery {
   public static PawnKindDef MinionKind=>DefCache<PawnKindDef>.Get("Fingerspike");
   public static Pawn SpawnMinion(Map map,IntVec3 near,int days){
    var kind=MinionKind;var h=DefCache<HediffDef>.Get("LP_FleshMinion");if(kind==null || h==null || map==null)return null;
-   Pawn p;try{p=PawnGenerator.GeneratePawn(new PawnGenerationRequest(kind,Faction.OfPlayer,PawnGenerationContext.NonPlayer,-1,forceGenerateNewPawn:true,allowDead:false,allowDowned:false));}catch(Exception e){Log.Warning("[DND边缘大陆] 血肉兽生成失败："+e.Message);return null;}
+   Pawn p;try{p=PawnGenerator.GeneratePawn(new PawnGenerationRequest(kind,Faction.OfPlayer,PawnGenerationContext.NonPlayer,-1,forceGenerateNewPawn:true,allowDead:false,allowDowned:false));}catch(Exception e){Log.Warning("[DND边缘大陆] 血肉兽生成失败：".Loc()+e.Message);return null;}
    var cell=CellFinder.StandableCellNear(near,map,4);if(!cell.IsValid)cell=near;
    GenSpawn.Spawn(p,cell,map);
    var hd=p.health.AddHediff(h);var comp=hd.TryGetComp<HediffComp_FleshMinion>();if(comp!=null)comp.ticksLeft=days*GenDate.TicksPerDay;
@@ -45,17 +45,17 @@ namespace LichPhylactery {
   public static Ability CoolingNecro(Pawn p)=>p?.abilities?.AllAbilitiesForReading.Where(a=>a.CooldownTicksRemaining>0 && (NecroAbilities.Contains(a.def.defName) || a.def.defName.StartsWith("LP_Necro"))).OrderByDescending(a=>a.CooldownTicksRemaining).FirstOrDefault();
   public static bool CanDevour(Pawn p)=>p!=null && (Necro.Lich(p)!=null || Items.Undead(p) && Necro.Construct(p)==null);
   public static string DevourBlocked(Pawn p){
-   if(!CanDevour(p))return "只有巫妖和死灵之躯能吞食";
-   if(!p.Spawned || p.Downed)return p.LabelShort+"现在不能吞食";
-   if(CoolingNecro(p)==null)return "没有正在冷却的死灵能力";
-   if(TwistedMeat.Nearby(p.Map,p.Position,DevourRadius).Where(TwistedMeat.IsMeat).Sum(t=>t.stackCount)<DevourMeat)return "12 格内的扭曲肉不够 "+DevourMeat+" 份";
+   if(!CanDevour(p))return "只有巫妖和死灵之躯能吞食".Loc();
+   if(!p.Spawned || p.Downed)return p.LabelShort+"现在不能吞食".Loc();
+   if(CoolingNecro(p)==null)return "没有正在冷却的死灵能力".Loc();
+   if(TwistedMeat.Nearby(p.Map,p.Position,DevourRadius).Where(TwistedMeat.IsMeat).Sum(t=>t.stackCount)<DevourMeat)return "12 格内的扭曲肉不够 ".Loc()+DevourMeat+" 份".Loc();
    return null;
   }
   public static Ability Devour(Pawn p){
    if(DevourBlocked(p)!=null)return null;var a=CoolingNecro(p);
    TwistedMeat.Take(TwistedMeat.Nearby(p.Map,p.Position,DevourRadius).Where(TwistedMeat.IsMeat).ToList(),DevourMeat);TwistedMeat.Consumed(DevourMeat);
    a.ResetCooldown();if(TwistedMeat.AteTwisted!=null)p.needs?.mood?.thoughts?.memories?.RemoveMemoriesOfDef(TwistedMeat.AteTwisted);
-   Items.Mote(p,a.def.LabelCap+" 冷却恢复",new Color(.8f,.4f,.45f));return a;
+   Items.Mote(p,a.def.LabelCap+" 冷却恢复".Loc(),new Color(.8f,.4f,.45f));return a;
   }
  }
 
@@ -66,10 +66,10 @@ namespace LichPhylactery {
    var p=__instance;if(!TwistedMeat.Active || p.Faction!=Faction.OfPlayer || !p.Spawned)yield break;
    if(FleshWorks.IsScholar(p) && DefCache<ResearchProjectDef>.Get("LP_Research_FleshShaping")?.IsFinished==true){
     bool on=FleshWorks.Nourishing(p);
-    yield return new Command_Toggle{defaultLabel="扭曲肉滋养",defaultDesc="打开后每天从地图上取 "+FleshWorks.NourishMeat+" 份扭曲肉喂给这名知识死灵：当天工作效率 +10%。没有扭曲肉就不喂，没有惩罚。",icon=TwistedMeat.Icon("TwistedMeat/NourishGizmo"),isActive=()=>on,toggleAction=()=>{var c=TwistedMeat.Comp;if(c==null)return;if(c.nourished.Contains(p.thingIDNumber))c.nourished.Remove(p.thingIDNumber);else{c.nourished.Add(p.thingIDNumber);FleshWorks.Feed(p);}}};
+    yield return new Command_Toggle{defaultLabel="扭曲肉滋养".Loc(),defaultDesc="打开后每天从地图上取 ".Loc()+FleshWorks.NourishMeat+" 份扭曲肉喂给这名知识死灵：当天工作效率 +10%。没有扭曲肉就不喂，没有惩罚。".Loc(),icon=TwistedMeat.Icon("TwistedMeat/NourishGizmo"),isActive=()=>on,toggleAction=()=>{var c=TwistedMeat.Comp;if(c==null)return;if(c.nourished.Contains(p.thingIDNumber))c.nourished.Remove(p.thingIDNumber);else{c.nourished.Add(p.thingIDNumber);FleshWorks.Feed(p);}}};
    }
    if(FleshWorks.CanDevour(p)){
-    var cmd=new Command_Action{defaultLabel="吞食扭曲肉",defaultDesc="吞下 12 格内的 "+FleshWorks.DevourMeat+" 份扭曲肉：冷却最久的一个死灵能力（灵魂箭、恐惧凝视、律令死亡、寒冰射线、修补造物）立刻恢复。死灵之躯不会因此不舒服。",icon=TwistedMeat.Icon("TwistedMeat/DevourGizmo"),action=()=>FleshWorks.Devour(p)};
+    var cmd=new Command_Action{defaultLabel="吞食扭曲肉".Loc(),defaultDesc="吞下 12 格内的 ".Loc()+FleshWorks.DevourMeat+" 份扭曲肉：冷却最久的一个死灵能力（灵魂箭、恐惧凝视、律令死亡、寒冰射线、修补造物）立刻恢复。死灵之躯不会因此不舒服。".Loc(),icon=TwistedMeat.Icon("TwistedMeat/DevourGizmo"),action=()=>FleshWorks.Devour(p)};
     string why=FleshWorks.DevourBlocked(p);if(why!=null)cmd.Disable(why);yield return cmd;
    }
   }
@@ -89,12 +89,12 @@ namespace LichPhylactery {
    var f=Fuel;if(f==null || f.Fuel<FleshWorks.MinionFeed || Alive>=FleshWorks.MinionMax)return null;
    var p=FleshWorks.SpawnMinion(Map,Position,FleshWorks.MinionDays);progress=0;if(p==null)return null;
    f.ConsumeFuel(FleshWorks.MinionFeed);TwistedMeat.Consumed(FleshWorks.MinionFeed);minions.Add(p);
-   Messages.Message("血肉孵化槽孵出了一只"+p.LabelShort+"。",p,MessageTypeDefOf.NeutralEvent,false);return p;
+   Messages.Message("血肉孵化槽孵出了一只".Loc()+p.LabelShort+"。".Loc(),p,MessageTypeDefOf.NeutralEvent,false);return p;
   }
   public override string GetInspectString(){
    var s=base.GetInspectString();var lines=new List<string>();if(!s.NullOrEmpty())lines.Add(s);
-   lines.Add("孵出的血肉兽："+Alive+" / "+FleshWorks.MinionMax);
-   if(Fuel!=null && Fuel.Fuel>=FleshWorks.MinionFeed && Alive<FleshWorks.MinionMax)lines.Add("孵化中："+((float)progress/FleshWorks.IncubateTicks).ToStringPercent());
+   lines.Add("孵出的血肉兽：".Loc()+Alive+" / "+FleshWorks.MinionMax);
+   if(Fuel!=null && Fuel.Fuel>=FleshWorks.MinionFeed && Alive<FleshWorks.MinionMax)lines.Add("孵化中：".Loc()+((float)progress/FleshWorks.IncubateTicks).ToStringPercent());
    return string.Join("\n",lines);
   }
   // 2026-11-06 审查：烂掉的血肉兽连尸体一起销毁，存档前不先清掉会写进已销毁的引用（读档时报“无法解析引用”）。
@@ -138,7 +138,7 @@ namespace LichPhylactery {
   public override void Notify_PawnDied(DamageInfo? dinfo,Hediff culprit){
    base.Notify_PawnDied(dinfo,culprit);var p=Pawn;var map=p?.MapHeld;if(map==null)return;var cell=p.PositionHeld;
    for(int i=0;i<FleshWorks.GolemMinions;i++)FleshWorks.SpawnMinion(map,cell,FleshWorks.GolemMinionDays);
-   Messages.Message(p.LabelShort+"的残躯裂成了 "+FleshWorks.GolemMinions+" 只小血肉兽。",new LookTargets(cell,map),MessageTypeDefOf.NeutralEvent,false);
+   Messages.Message(p.LabelShort+"的残躯裂成了 ".Loc()+FleshWorks.GolemMinions+" 只小血肉兽。".Loc(),new LookTargets(cell,map),MessageTypeDefOf.NeutralEvent,false);
   }
  }
  public static class AberrantGolem {
@@ -168,5 +168,5 @@ namespace LichPhylactery {
   }
  }
  [HarmonyPatch(typeof(ConstructSeed),nameof(ConstructSeed.GetInspectString))]
- public static class AberrantSeedInspect {static void Postfix(ConstructSeed __instance,ref string __result){if(AberrantGolem.Marked(__instance))__result+="\n畸变巨像：唤醒后带“畸变血肉”（受伤 -17%、缓慢自愈、死亡时裂成 2 只小血肉兽）。";}}
+ public static class AberrantSeedInspect {static void Postfix(ConstructSeed __instance,ref string __result){if(AberrantGolem.Marked(__instance))__result+="\n畸变巨像：唤醒后带“畸变血肉”（受伤 -17%、缓慢自愈、死亡时裂成 2 只小血肉兽）。".Loc();}}
 }

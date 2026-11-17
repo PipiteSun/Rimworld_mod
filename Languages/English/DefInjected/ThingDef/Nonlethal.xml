@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 制伏短棍 -->
+  <LP_SubduingCudgel.label>subduing cudgel</LP_SubduingCudgel.label>
+  <!-- 皮革缠柄的短棍，铁箍上刻着让人昏昏欲睡的安眠符文。专门用来把人敲晕，打得再重也只会让对方头晕眼花、最后昏迷倒地。\n\n非致命：只会让目标昏迷倒地，不会造成伤口，也不会杀死目标。适合抓俘虏。 -->
+  <LP_SubduingCudgel.description>A leather-wrapped short club whose iron bands are engraved with drowsy slumber runes. Made specifically for knocking people out; however hard it hits, it only leaves them dizzy and finally unconscious.\n\nNonlethal: only knocks the target unconscious, causing no wounds and never killing. Good for taking prisoners.</LP_SubduingCudgel.description>
+  <!-- 棍头 -->
+  <LP_SubduingCudgel.tools.0.label>head</LP_SubduingCudgel.tools.0.label>
+  <!-- 戳击 -->
+  <LP_SubduingCudgel.tools.1.label>poke</LP_SubduingCudgel.tools.1.label>
+  <!-- 缚网弩 -->
+  <LP_NetCrossbow.label>net crossbow</LP_NetCrossbow.label>
+  <!-- 沉重的木弩，弩托上盘着一卷灰色绳网。射出的束缚网把目标打得一个踉跄（眩晕 2.5 秒），之后 6 秒内移动能力 -50%。\n\n非致命：只会让目标昏迷倒地，不会造成伤口，也不会杀死目标。适合抓俘虏。 -->
+  <LP_NetCrossbow.description>A heavy wooden crossbow with a coil of grey rope net on the stock. The binding net it fires makes the target stagger (stunned 2.5 seconds), then moving -50% for 6 seconds.\n\nNonlethal: only knocks the target unconscious, causing no wounds and never killing. Good for taking prisoners.</LP_NetCrossbow.description>
+  <!-- 弩托 -->
+  <LP_NetCrossbow.tools.0.label>stock</LP_NetCrossbow.tools.0.label>
+  <!-- 缚网弩 -->
+  <LP_NetCrossbow.verbs.Verb_Shoot.label>net crossbow</LP_NetCrossbow.verbs.Verb_Shoot.label>
+  <!-- 束缚网 -->
+  <LP_Proj_Net.label>binding net</LP_Proj_Net.label>
+  <!-- 安眠短弓 -->
+  <LP_SleepBow.label>slumber shortbow</LP_SleepBow.label>
+  <!-- 深绿色的短弓，箭羽染成淡紫色，箭头蘸着会发光的紫色安眠粉。中箭的人只会越来越困。精灵这类心智坚定的种族按心智抗性少受影响。\n\n非致命：只会让目标昏迷倒地，不会造成伤口，也不会杀死目标。适合抓俘虏。 -->
+  <LP_SleepBow.description>A dark green shortbow with lavender-dyed fletching, its arrowheads dipped in glowing purple slumber powder. Those hit only get sleepier and sleepier. Strong-minded races such as elves are less affected according to their mind resistance.\n\nNonlethal: only knocks the target unconscious, causing no wounds and never killing. Good for taking prisoners.</LP_SleepBow.description>
+  <!-- 弓臂 -->
+  <LP_SleepBow.tools.0.label>limb</LP_SleepBow.tools.0.label>
+  <!-- 安眠短弓 -->
+  <LP_SleepBow.verbs.Verb_Shoot.label>slumber shortbow</LP_SleepBow.verbs.Verb_Shoot.label>
+  <!-- 安眠箭 -->
+  <LP_Proj_SleepArrow.label>slumber arrow</LP_Proj_SleepArrow.label>
+  <!-- 安眠法杖 -->
+  <LP_SleepStaff.label>slumber staff</LP_SleepStaff.label>
+  <!-- 弯曲的灰白木杖，杖头的月牙托着一颗淡紫色水晶，射出催人入睡的安眠魔弹。威力随持有者的心灵敏感度变化（魔力系数 = 敏感度，最低 0.2，不封顶）；敏感度为0的人用它，法杖毫无回应。有心灵链接的人每次施放增加心灵熵；没有心灵链接的人只能发挥70%的威力。精灵这类心智坚定的种族按心智抗性少受影响。\n\n非致命：只会让目标昏迷倒地，不会造成伤口，也不会杀死目标。适合抓俘虏。 -->
+  <LP_SleepStaff.description>A curved grey-white wooden staff whose crescent head holds a pale purple crystal, firing sleep-inducing slumber bolts. Its power varies with the wielder's psychic sensitivity (magic factor = sensitivity, minimum 0.2, no cap); in the hands of someone with zero sensitivity, the staff doesn't respond at all. Those with a psylink gain neural heat with each cast; those without a psylink only get 70% of the power. Strong-minded races such as elves are less affected according to their mind resistance.\n\nNonlethal: only knocks the target unconscious, causing no wounds and never killing. Good for taking prisoners.</LP_SleepStaff.description>
+  <!-- 杖身 -->
+  <LP_SleepStaff.tools.0.label>staff</LP_SleepStaff.tools.0.label>
+  <!-- 安眠法杖 -->
+  <LP_SleepStaff.verbs.Verb_ArcaneShoot.label>slumber staff</LP_SleepStaff.verbs.Verb_ArcaneShoot.label>
+  <!-- 安眠魔弹 -->
+  <LP_Bolt_Sleep.label>slumber bolt</LP_Bolt_Sleep.label>
+</LanguageData>

@@ -301,7 +301,7 @@
   <ThingDef ParentName="LP_MagicChestBase">
     <defName>LP_BroochShielding</defName>
     <label>护盾胸针</label>
-    <description>银质盾形胸针，别在衣襟上。佩戴者受到的力场伤害-75%：力能龙裔的力场吐息、弹力法球、念动法球和力场墙撞击都算。专门对付龙。戴在奇物层的胸前。</description>
+    <description>银质盾形胸针，别在衣襟上。佩戴者受到的力场伤害-75%（力场法术等）。戴在奇物层的胸前。</description>
     <graphicData><texPath>Items/Magic/BroochShielding</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
     <statBases><MarketValue>1100</MarketValue></statBases>
     <modExtensions><li Class="LichPhylactery.ItemDamageFactors"><factor>0.25</factor><damageDefs><li>LP_Force</li><li>LP_ArcaneForce</li></damageDefs><keywords><li>Force</li></keywords></li></modExtensions>

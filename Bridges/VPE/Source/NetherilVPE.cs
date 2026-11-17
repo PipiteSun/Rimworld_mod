@@ -41,7 +41,7 @@ namespace LichPhylactery.VPEBridge {
    var d=DefDatabase<AbilityDef>.GetNamedSilentFail(name);var comp=p?.GetComp<CompAbilities>();if(d==null || comp==null)return null;
    if(!comp.HasAbility(d))comp.GiveAbility(d);return d.LabelCap.Resolve();
   }
-  public static string Table()=>string.Join("\n",DefDatabase<PsycasterPathDef>.AllDefsListForReading.OrderBy(x=>x.defName).Select(x=>x.defName+" → "+(School(x)==null?"（排除）":Netheril.SchoolLabel(School(x)))));
+  public static string Table()=>string.Join("\n",DefDatabase<PsycasterPathDef>.AllDefsListForReading.OrderBy(x=>x.defName).Select(x=>x.defName+" → "+(School(x)==null?"（排除）".Loc():Netheril.SchoolLabel(School(x)))));
  }
  [HarmonyPatch(typeof(Ability),nameof(Ability.GetCooldownForPawn))]
  public static class NetherilVEFCooldown {static void Postfix(Ability __instance,ref int __result){if(__result<=0 || __instance?.def?.Psycast()==null)return;float f=NetherilAscension.CooldownFactor(__instance.pawn);if(f!=1f)__result=Math.Max(1,(int)Math.Round(__result*f));}}

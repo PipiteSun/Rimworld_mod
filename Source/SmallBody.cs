@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace LichPhylactery {
  // 共享组件：小体型（矮人0.8、侏儒0.6、半身人0.7……）。挂在 GeneDef 的 modExtensions 上。
- // 与火巨人/巨魔（取较大者）、力能龙龙龄、构造体等已有体型来源相乘；多个小体型基因之间也相乘。
+ // 与火巨人/巨魔（取较大者）、构造体等已有体型来源相乘；多个小体型基因之间也相乘。
  // 不依赖 VEF：VEF 的 GeneExtension 也能改体型，但本模组核心环境不加载 VEF。两者同时使用时效果相乘。
  public class SmallBodyExtension : DefModExtension {
   public float bodySize=1f;     // 实际体型倍率（BodySize：食量、负重、被远程命中概率、尸体价值等）
@@ -54,7 +54,7 @@ namespace LichPhylactery {
  }
  public class StatPart_SmallBodyCarry : StatPart {
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p)val*=SmallBody.Carry(p);}
-  public override string ExplanationPart(StatRequest req){if(!(req.Thing is Pawn p))return null;float f=SmallBody.Carry(p);return f==1f?null:"小体型搬运：×"+f.ToStringPercent();}
+  public override string ExplanationPart(StatRequest req){if(!(req.Thing is Pawn p))return null;float f=SmallBody.Carry(p);return f==1f?null:"小体型搬运：×".Loc()+f.ToStringPercent();}
  }
  [StaticConstructorOnStartup]
  public static class SmallBodyStartup {

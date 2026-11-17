@@ -15,7 +15,7 @@ namespace LichPhylactery {
   public const float SurgeryXp=30f,TendXp=15f,BleedHours=6f,TradePer=100f,BuildPer=1000f,BuildMin=2f,ResearchShare=.05f,SurviveBase=50f,SurvivePower=.5f;
   public const int SurviveCooldown=180000; // 3 天
   public static readonly float[] Cap={150f,100f,100f,0f,0f}; // 0 = 不封顶
-  public static readonly string[] Names={"治疗与手术","交易","建筑完工","研究完成","重伤倒地生还"};
+  public static readonly string[] Names={"治疗与手术".Loc(),"交易".Loc(),"建筑完工".Loc(),"研究完成".Loc(),"重伤倒地生还".Loc()};
   public static float Mult=>LichMod.Settings?.adventurerNonCombatXp??1f;
   public static bool On(int src){
    var s=LichMod.Settings;if(s==null)return true;
@@ -80,16 +80,16 @@ namespace LichPhylactery {
 
   // 悬停经验条的说明行。
   public static void Tip(System.Text.StringBuilder sb,Hediff_Adventurer h,float mult){
-   float m=Mult;string Off(int i)=>"· "+Names[i]+"：已关闭";
-   string Day(int i)=>"今日 "+Today(h,i).ToString("0.#")+" / "+Cap[i].ToString("0")+"；累计 "+(h.exTotal[i]*m*mult).ToString("0");
+   float m=Mult;string Off(int i)=>"· "+Names[i]+"：已关闭".Loc();
+   string Day(int i)=>"今日 ".Loc()+Today(h,i).ToString("0.#")+" / "+Cap[i].ToString("0")+"；累计 ".Loc()+(h.exTotal[i]*m*mult).ToString("0");
    string x(float v)=>(v*m*mult).ToString("0.##");
    bool all=m>0f;
-   sb.AppendLine(!all || !On(Heal)?Off(Heal):"· 治疗与手术：手术成功 +"+x(SurgeryXp)+"，救治 "+BleedHours.ToString("0")+" 小时内会失血而死的病人 +"+x(TendXp)+"（"+Day(Heal)+"）");
-   sb.AppendLine(!all || !On(Trade)?Off(Trade):"· 交易：谈判者按成交总价（买卖双向）每 "+TradePer.ToString("0")+" 银 +"+x(1f)+"（"+Day(Trade)+"）");
-   sb.AppendLine(!all || !On(Build)?Off(Build):"· 建筑完工：工作量 ÷ "+BuildPer.ToString("0")+"，至少 "+BuildMin.ToString("0")+"，× "+x(1f)+"（地板不算；"+Day(Build)+"）");
-   sb.AppendLine(!all || !On(Research)?Off(Research):"· 研究完成：研究费用 × "+(ResearchShare*100f).ToString("0")+"% × "+x(1f)+"，按出力比例分给参与的人（不封顶；累计 "+(h.exTotal[Research]*m*mult).ToString("0")+"）");
+   sb.AppendLine(!all || !On(Heal)?Off(Heal):"· 治疗与手术：手术成功 +".Loc()+x(SurgeryXp)+"，救治 ".Loc()+BleedHours.ToString("0")+" 小时内会失血而死的病人 +".Loc()+x(TendXp)+"（".Loc()+Day(Heal)+"）".Loc());
+   sb.AppendLine(!all || !On(Trade)?Off(Trade):"· 交易：谈判者按成交总价（买卖双向）每 ".Loc()+TradePer.ToString("0")+" 银 +".Loc()+x(1f)+"（".Loc()+Day(Trade)+"）".Loc());
+   sb.AppendLine(!all || !On(Build)?Off(Build):"· 建筑完工：工作量 ÷ ".Loc()+BuildPer.ToString("0")+"，至少 ".Loc()+BuildMin.ToString("0")+"，× ".Loc()+x(1f)+"（地板不算；".Loc()+Day(Build)+"）".Loc());
+   sb.AppendLine(!all || !On(Research)?Off(Research):"· 研究完成：研究费用 × ".Loc()+(ResearchShare*100f).ToString("0")+"% × "+x(1f)+"，按出力比例分给参与的人（不封顶；累计 ".Loc()+(h.exTotal[Research]*m*mult).ToString("0")+"）".Loc());
    int left=h.exSurviveTick<0?0:SurviveCooldown-(Find.TickManager.TicksGame-h.exSurviveTick);
-   sb.AppendLine(!all || !On(Survive)?Off(Survive):"· 重伤倒地生还：被敌人打倒后站起来 +"+x(SurviveBase)+" + 敌人战斗力 × "+x(SurvivePower)+"（每 3 天一次"+(left>0?"，还要 "+(left/(float)GenDate.TicksPerDay).ToString("0.#")+" 天":"")+"；累计 "+(h.exTotal[Survive]*m*mult).ToString("0")+"）");
+   sb.AppendLine(!all || !On(Survive)?Off(Survive):"· 重伤倒地生还：被敌人打倒后站起来 +".Loc()+x(SurviveBase)+" + 敌人战斗力 × ".Loc()+x(SurvivePower)+"（每 3 天一次".Loc()+(left>0?"，还要 ".Loc()+(left/(float)GenDate.TicksPerDay).ToString("0.#")+" 天".Loc():"")+"；累计 ".Loc()+(h.exTotal[Survive]*m*mult).ToString("0")+"）".Loc());
   }
 
   public static void Expose(Hediff_Adventurer h){
@@ -124,7 +124,7 @@ namespace LichPhylactery {
  // ---------- Harmony ----------
  [HarmonyPatch(typeof(Recipe_Surgery),"CheckSurgeryFail")]
  public static class ExtraXpSurgery {
-  static void Postfix(Pawn surgeon,Pawn patient,bool __result){try{AdventurerExtraXp.Surgery(surgeon,patient,__result);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 手术经验："+e,0x1A75001);}}
+  static void Postfix(Pawn surgeon,Pawn patient,bool __result){try{AdventurerExtraXp.Surgery(surgeon,patient,__result);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 手术经验：".Loc()+e,0x1A75001);}}
  }
  [HarmonyPatch(typeof(TendUtility),nameof(TendUtility.DoTend))]
  public static class ExtraXpTend {
@@ -134,7 +134,7 @@ namespace LichPhylactery {
  [HarmonyPatch(typeof(TradeDeal),nameof(TradeDeal.TryExecute))]
  public static class ExtraXpTrade {
   static void Prefix(TradeDeal __instance,out float __state){
-   __state=0f;try{if(!TradeSession.giftMode && AdventurerExtraXp.On(AdventurerExtraXp.Trade) && AdventurerWork.Counts(TradeSession.playerNegotiator))__state=AdventurerExtraXp.DealValue(__instance);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 交易经验："+e,0x1A75002);}
+   __state=0f;try{if(!TradeSession.giftMode && AdventurerExtraXp.On(AdventurerExtraXp.Trade) && AdventurerWork.Counts(TradeSession.playerNegotiator))__state=AdventurerExtraXp.DealValue(__instance);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 交易经验：".Loc()+e,0x1A75002);}
   }
   static void Postfix(bool __result,bool actuallyTraded,float __state){if(__result && actuallyTraded && __state>0f)AdventurerExtraXp.Traded(TradeSession.playerNegotiator,__state);}
  }
@@ -156,7 +156,7 @@ namespace LichPhylactery {
  [HarmonyPatch(typeof(ResearchManager),nameof(ResearchManager.FinishProject))]
  public static class ExtraXpResearchFinish {
   static void Prefix(ResearchProjectDef proj,out bool __state){__state=proj!=null && !proj.IsFinished;}
-  static void Postfix(ResearchProjectDef proj,bool __state){if(__state && proj.IsFinished)try{AdventurerExtraXp.ResearchFinished(proj);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 研究经验："+e,0x1A75003);}}
+  static void Postfix(ResearchProjectDef proj,bool __state){if(__state && proj.IsFinished)try{AdventurerExtraXp.ResearchFinished(proj);}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 研究经验：".Loc()+e,0x1A75003);}}
  }
  [HarmonyPatch(typeof(Pawn_HealthTracker),"MakeDowned")]
  public static class ExtraXpDowned {
@@ -176,13 +176,13 @@ namespace LichPhylactery {
   }
   public static void DrawExtraXp(Listing_Standard l){
    var s=LichMod.Settings;
-   TooltipHandler.TipRegion(l.Label("非战斗经验倍率："+(s.adventurerNonCombatXp<=0f?"关闭":"×"+s.adventurerNonCombatXp.ToString("0.0"))),"治疗与手术、交易、建筑完工、研究完成、重伤倒地生还这五项的冒险者经验都乘这个倍率（之后再乘冒险者经验倍率）。每日上限按倍率之前算。0 = 五项全关。");
+   TooltipHandler.TipRegion(l.Label("非战斗经验倍率：".Loc()+(s.adventurerNonCombatXp<=0f?"关闭".Loc():"×"+s.adventurerNonCombatXp.ToString("0.0"))),"治疗与手术、交易、建筑完工、研究完成、重伤倒地生还这五项的冒险者经验都乘这个倍率（之后再乘冒险者经验倍率）。每日上限按倍率之前算。0 = 五项全关。".Loc());
    s.adventurerNonCombatXp=Mathf.Round(l.Slider(s.adventurerNonCombatXp,0f,3f)*10f)/10f;
-   l.CheckboxLabeled("经验：治疗与手术",ref s.adventurerXpHeal,"手术成功（不是失败）主刀医生 +30；救治 6 小时内会失血而死的病人 +15。每人每天最多 150。");
-   l.CheckboxLabeled("经验：交易",ref s.adventurerXpTrade,"每完成一笔交易，谈判者按成交总价（买和卖都算，不含银币本身）每 100 银 +1。每人每天最多 100。赠礼不算。");
-   l.CheckboxLabeled("经验：建筑完工",ref s.adventurerXpBuild,"建好一个建筑，完工的人得到 工作量 ÷ 1000（至少 2）。地板不算。每人每天最多 100。");
-   l.CheckboxLabeled("经验：研究完成",ref s.adventurerXpResearch,"研究项目完成时，研究费用 × 5% 按每人出的研究量比例分给参与过的人（还活着、还在殖民地）。不封顶。");
-   l.CheckboxLabeled("经验：重伤倒地生还",ref s.adventurerXpSurvive,"被敌人打倒在地、之后活着站起来：+50 + 打倒你的敌人战斗力 × 0.5。每人每 3 天最多一次；自己弄伤、友军误伤不算。");
+   l.CheckboxLabeled("经验：治疗与手术".Loc(),ref s.adventurerXpHeal,"手术成功（不是失败）主刀医生 +30；救治 6 小时内会失血而死的病人 +15。每人每天最多 150。".Loc());
+   l.CheckboxLabeled("经验：交易".Loc(),ref s.adventurerXpTrade,"每完成一笔交易，谈判者按成交总价（买和卖都算，不含银币本身）每 100 银 +1。每人每天最多 100。赠礼不算。".Loc());
+   l.CheckboxLabeled("经验：建筑完工".Loc(),ref s.adventurerXpBuild,"建好一个建筑，完工的人得到 工作量 ÷ 1000（至少 2）。地板不算。每人每天最多 100。".Loc());
+   l.CheckboxLabeled("经验：研究完成".Loc(),ref s.adventurerXpResearch,"研究项目完成时，研究费用 × 5% 按每人出的研究量比例分给参与过的人（还活着、还在殖民地）。不封顶。".Loc());
+   l.CheckboxLabeled("经验：重伤倒地生还".Loc(),ref s.adventurerXpSurvive,"被敌人打倒在地、之后活着站起来：+50 + 打倒你的敌人战斗力 × 0.5。每人每 3 天最多一次；自己弄伤、友军误伤不算。".Loc());
   }
  }
 }

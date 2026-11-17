@@ -29,15 +29,15 @@ namespace LichPhylactery {
  }
  public static class IdeoSettings {
   public static void Draw(Listing_Standard l){
-   var s=LichMod.Settings;l.GapLine();l.Label("文化");
-   if(!ModsConfig.IdeologyActive){GUI.color=Color.gray;l.Label("未启用文化 DLC");GUI.color=Color.white;return;}
-   l.CheckboxLabeled("文化联动",ref s.ideoLink,"DND 模因的被动、DND 戒律的心情、确信度漂移、改宗修正、守护神锁定、神像效果。关闭后这些全部停用（模因和戒律仍然加载，存档不会报错）；派系补的模因保留。");
-   l.Label("DND 模因出现在随机 NPC 文化的权重："+s.ideoNpcWeight.ToString("0.00")+"（0～1；伊尔斯维、维拉基斯两个 NPC 专用模因永远不随机出现）");s.ideoNpcWeight=Mathf.Round(l.Slider(s.ideoNpcWeight,0f,1f)*20f)/20f;
-   l.CheckboxLabeled("神眷影响确信度",ref s.ideoCertainty,"信奉带神祇模因（或众神殿）的主文化的殖民者，每天按守护神神眷改变确信度：≥80 +1%，≥50 +0.5%，≤-30 -1%；季度显圣赐福 +5%、降罚 -5%；神选仪式 +3%。");
-   l.CheckboxLabeled("文化锁定守护神",ref s.ideoPatronLock,"主文化带神祇模因时，殖民地的守护神就是那位神，不能在圣坛上手动换；重塑文化换了神时自动改奉（旧神神眷只扣15，没有冷却）。");
+   var s=LichMod.Settings;l.GapLine();l.Label("文化".Loc());
+   if(!ModsConfig.IdeologyActive){GUI.color=Color.gray;l.Label("未启用文化 DLC".Loc());GUI.color=Color.white;return;}
+   l.CheckboxLabeled("文化联动".Loc(),ref s.ideoLink,"DND 模因的被动、DND 戒律的心情、确信度漂移、改宗修正、守护神锁定、神像效果。关闭后这些全部停用（模因和戒律仍然加载，存档不会报错）；派系补的模因保留。".Loc());
+   l.Label("DND 模因出现在随机 NPC 文化的权重：".Loc()+s.ideoNpcWeight.ToString("0.00")+"（0～1；伊尔斯维、维拉基斯两个 NPC 专用模因永远不随机出现）".Loc());s.ideoNpcWeight=Mathf.Round(l.Slider(s.ideoNpcWeight,0f,1f)*20f)/20f;
+   l.CheckboxLabeled("神眷影响确信度".Loc(),ref s.ideoCertainty,"信奉带神祇模因（或众神殿）的主文化的殖民者，每天按守护神神眷改变确信度：≥80 +1%，≥50 +0.5%，≤-30 -1%；季度显圣赐福 +5%、降罚 -5%；神选仪式 +3%。".Loc());
+   l.CheckboxLabeled("文化锁定守护神".Loc(),ref s.ideoPatronLock,"主文化带神祇模因时，殖民地的守护神就是那位神，不能在圣坛上手动换；重塑文化换了神时自动改奉（旧神神眷只扣15，没有冷却）。".Loc());
    bool playing=Current.ProgramState==ProgramState.Playing && Find.FactionManager!=null;
-   if(l.ButtonText(playing?"重建 DND 派系文化":"重建 DND 派系文化（需要在游戏中）") && playing){
-    Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation("给缺少 DND 模因的 DND 派系（费伦拓荒同盟、塞伊远征军、余烬氏族、幽暗殖巢、猎巫狂热分子、拉洛克、凯兰沃教会）按派系定义重新生成一个文化，设为主文化。旧文化保留：已有的 NPC 仍信旧文化，之后新出现的人用新文化。\n\n用于 1.56.0 之前的存档。继续吗？",()=>IdeoFactions.Rebuild(true)));
+   if(l.ButtonText(playing?"重建 DND 派系文化".Loc():"重建 DND 派系文化（需要在游戏中）".Loc()) && playing){
+    Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation("给缺少 DND 模因的 DND 派系（费伦拓荒同盟、塞伊远征军、余烬氏族、幽暗殖巢、猎巫狂热分子、拉洛克、凯兰沃教会）按派系定义重新生成一个文化，设为主文化。旧文化保留：已有的 NPC 仍信旧文化，之后新出现的人用新文化。\n\n用于 1.56.0 之前的存档。继续吗？".Loc(),()=>IdeoFactions.Rebuild(true)));
    }
   }
  }
@@ -82,7 +82,7 @@ namespace LichPhylactery {
   public static string PatronLockReason(LP_DeityDef god){
    if(!Linked || LichMod.Settings?.ideoPatronLock==false)return null;
    var ideo=PlayerIdeo;var d=DeityOf(ideo);if(d==null || !d.worshippable || god==d)return null;
-   return "守护神由文化「"+ideo.name+"」决定（"+d.label+"）。";
+   return "守护神由文化「".Loc()+ideo.name+"」决定（".Loc()+d.label+"）。".Loc();
   }
   public static float PatronCooldownFactor{get{if(!Linked)return 1f;var i=Player;return i.pantheon && i.deity==null?.5f:1f;}}
 
@@ -124,8 +124,8 @@ namespace LichPhylactery {
   // ---------- 神谕作为 ----------
   public static void OnDeed(LP_DeityDef god,float amount,string reason){
    var st=IdeoState.Get;if(!Linked || st==null || god==null || amount<=0f || st.oracleGod!=god || st.oracleKey.NullOrEmpty() || Now>st.oracleUntil || reason==null || !reason.Contains(st.oracleKey))return;
-   st.oracleKey=null;Faith.Gain(god,5f,"完成神谕的指示");
-   Messages.Message(god.label+"满意地回应了：神谕的指示完成了（神眷+5）。",MessageTypeDefOf.PositiveEvent,false);
+   st.oracleKey=null;Faith.Gain(god,5f,"完成神谕的指示".Loc());
+   Messages.Message(god.label+"满意地回应了：神谕的指示完成了（神眷+5）。".Loc(),MessageTypeDefOf.PositiveEvent,false);
   }
 
   // ---------- 日结算（WorldComponent_Faith.Daily 调用） ----------
@@ -143,17 +143,17 @@ namespace LichPhylactery {
      }
     }
     // 7.1 守护神（众神殿文化：众神像）的神像在任一家园：每天 +0.3，只算一次。
-    if(patron!=null && (IdeoTemple.StatueAtHome(patron) || (info.pantheon && IdeoTemple.StatueAtHome(null))))Faith.Gain(patron,.3f,"家园里的神像");
+    if(patron!=null && (IdeoTemple.StatueAtHome(patron) || (info.pantheon && IdeoTemple.StatueAtHome(null))))Faith.Gain(patron,.3f,"家园里的神像".Loc());
     // 7.3 主文化的圣物在家园地图的圣物柜里：该遗物所属神每天 +0.5。
     if(ideo!=null)foreach(var r in ideo.PreceptsListForReading.OfType<Precept_Relic>()){
      var t=IdeoFields.GeneratedRelic(r);if(t==null || t.Destroyed)continue;var god=FaithUtility.AllDeities.FirstOrDefault(d=>d.relic==t.def);if(god==null)continue;
-     if(t.ParentHolder is CompRelicContainer comp && comp.parent.MapHeld?.IsPlayerHome==true)Faith.Gain(god,.5f,t.LabelNoCount+"供在圣物柜里");
+     if(t.ParentHolder is CompRelicContainer comp && comp.parent.MapHeld?.IsPlayerHome==true)Faith.Gain(god,.5f,t.LabelNoCount+"供在圣物柜里".Loc());
     }
     if(st!=null){
      if(st.oracleUntil>0 && Now>st.oracleUntil){st.oracleKey=null;st.oracleGod=null;st.oracleUntil=-1;}
      int year=GenDate.Year(GenTicks.TicksAbs,0f);if(st.pantheonYear!=year){st.pantheonYear=year;st.pantheonDone.Clear();}
     }
-   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 文化日结算出错："+e,8815601);}
+   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 文化日结算出错：".Loc()+e,8815601);}
   }
   public static void OnManifest(bool blessing){if(Linked && LichMod.Settings?.ideoCertainty!=false)OffsetMembers(blessing?.05f:-.05f);}
   public static void OnChosen(Pawn p){if(Linked && LichMod.Settings?.ideoCertainty!=false)OffsetMembers(.03f);}
@@ -189,7 +189,7 @@ namespace LichPhylactery {
     var d=DefDatabase<HistoryEventDef>.GetNamedSilentFail(defName);if(d==null)return;
     if(defName=="LP_HE_SpellCast"){int now=IdeoBridge.Now;if(lastSpell.TryGetValue(doer.thingIDNumber,out int t) && now-t<2500)return;lastSpell[doer.thingIDNumber]=now;}
     Find.HistoryEventsManager.RecordEvent(new HistoryEvent(d,doer.Named(HistoryEventArgsNames.Doer)));
-   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 文化历史事件 "+defName+"："+e,8815602);}
+   }catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 文化历史事件 ".Loc()+defName+"：".Loc()+e,8815602);}
   }
   public static void ResetSpellLimit()=>lastSpell.Clear();
  }
@@ -205,7 +205,7 @@ namespace LichPhylactery {
   public IdeoState(Game game){}
   public override void GameComponentTick(){
    if(Find.TickManager.TicksGame%2500!=1234 || !IdeoBridge.Active)return;
-   try{Sync();}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 文化同步出错："+e,8815603);}
+   try{Sync();}catch(Exception e){Log.ErrorOnce("[DND边缘大陆] 文化同步出错：".Loc()+e,8815603);}
   }
   public override void FinalizeInit(){base.FinalizeInit();IdeoBridge.Invalidate();}
   // 规格 1.4 / 1.5 / 6.2 / 7.3：模因变了就清缓存；神变了就改奉；大祭司改名；神名；圣物换成神赐遗物；灰袍葬礼替换原版葬礼；记创始族裔。
@@ -221,7 +221,7 @@ namespace LichPhylactery {
    var god=info.deity;var c=Faith.Comp;
    if(god!=null && god.worshippable && c!=null && c.patron!=god){
     var old=c.patron;c.SetPatron(god,15f,false);
-    Find.LetterStack.ReceiveLetter("殖民地正式改奉"+god.label,"殖民地的主文化「"+ideo.name+"」信奉"+god.FullLabel+"，殖民地的守护神随之定为"+god.label+"。"+(old!=null?"\n\n"+old.label+"的神眷-15（文化改宗，不设冷却）。":""),LetterDefOf.NeutralEvent);
+    Find.LetterStack.ReceiveLetter("殖民地正式改奉".Loc()+god.label,"殖民地的主文化「".Loc()+ideo.name+"」信奉".Loc()+god.FullLabel+"，殖民地的守护神随之定为".Loc()+god.label+"。".Loc()+(old!=null?"\n\n"+old.label+"的神眷-15（文化改宗，不设冷却）。".Loc():""),LetterDefOf.NeutralEvent);
    }
   }
   public override void ExposeData(){
@@ -239,7 +239,7 @@ namespace LichPhylactery {
 
  // ==================== 文化内容修正（生成时和同步时都调用，可重复调用） ====================
  public static class IdeoSync {
-  public const string HighPriest="大祭司";
+  public static readonly string HighPriest="大祭司".Loc();
   public static void FixIdeo(Ideo ideo,IdeoState st){
    if(ideo==null || !IdeoBridge.Active)return;
    var info=IdeoBridge.Of(ideo);
@@ -254,7 +254,7 @@ namespace LichPhylactery {
   public static bool SwapRelic(Ideo ideo,LP_DeityDef god){
    var r=ideo.PreceptsListForReading.OfType<Precept_Relic>().FirstOrDefault();
    if(r==null || god?.relic==null || IdeoFields.RelicGenerated(r) || r.ThingDef==god.relic)return false;
-   try{r.ThingDef=god.relic;r.ClearTipCache();return true;}catch(Exception e){Log.Warning("[DND边缘大陆] 圣物换成神赐遗物失败："+e.Message);return false;}
+   try{r.ThingDef=god.relic;r.ClearTipCache();return true;}catch(Exception e){Log.Warning("[DND边缘大陆] 圣物换成神赐遗物失败：".Loc()+e.Message);return false;}
   }
   // 2.2 固定神名：第一位神是模因的神；众神殿另加 2 位（没有主神时 3 位）随机可信奉的善 / 中立神。没有神的结构（意识形态类）不动。
   public static void FixDeities(Ideo ideo){
@@ -302,10 +302,10 @@ namespace LichPhylactery {
      var ideo=IdeoGenerator.GenerateIdeo(parms);Find.IdeoManager.Add(ideo);
      f.ideos.SetPrimary(ideo);var minor=f.ideos.IdeosMinorListForReading;if(old!=null && minor!=null && !minor.Contains(old) && f.ideos.PrimaryIdeo!=old)minor.Add(old);
      done.Add(f);
-    }catch(Exception e){Log.Error("[DND边缘大陆] 重建"+f.Name+"的文化失败："+e);}
+    }catch(Exception e){Log.Error("[DND边缘大陆] 重建".Loc()+f.Name+"的文化失败：".Loc()+e);}
    }
    IdeoBridge.Invalidate();
-   if(letter)Find.LetterStack.ReceiveLetter("重建 DND 派系文化",done.Count==0?"所有 DND 派系的主文化都已经带着应有的 DND 模因，不需要重建。":"重建了这些派系的文化：\n\n"+string.Join("\n",done.Select(f=>"· "+f.Name+"："+f.ideos.PrimaryIdeo?.name))+"\n\n旧文化保留：已有的 NPC 仍信旧文化，之后新出现的人用新文化。",LetterDefOf.NeutralEvent);
+   if(letter)Find.LetterStack.ReceiveLetter("重建 DND 派系文化".Loc(),done.Count==0?"所有 DND 派系的主文化都已经带着应有的 DND 模因，不需要重建。".Loc():"重建了这些派系的文化：\n\n".Loc()+string.Join("\n",done.Select(f=>"· "+f.Name+"：".Loc()+f.ideos.PrimaryIdeo?.name))+"\n\n旧文化保留：已有的 NPC 仍信旧文化，之后新出现的人用新文化。".Loc(),LetterDefOf.NeutralEvent);
    return done;
   }
  }
@@ -323,7 +323,7 @@ namespace LichPhylactery {
    ApplySettings();
    IdeoPrecepts.Register();
    IdeoAltar.Register();
-   try{IdeoPatches.Apply(new Harmony("local.lich.phylactery.ideology"));}catch(Exception e){Log.Error("[DND边缘大陆] 文化补丁失败："+e);}
+   try{IdeoPatches.Apply(new Harmony("local.lich.phylactery.ideology"));}catch(Exception e){Log.Error("[DND边缘大陆] 文化补丁失败：".Loc()+e);}
   }
   // 2.1 DND 模因在随机 NPC 文化里的权重 = XML 值 × 设置；NPC 专用的（XML 是 0）永远 0。
   public static void ApplySettings(){

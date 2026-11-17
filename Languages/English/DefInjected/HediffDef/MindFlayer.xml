@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 脑髓不足 -->
+  <LP_CerebrumHunger.label>brain matter deficit</LP_CerebrumHunger.label>
+  <!-- 脑髓不足，夺心魔的身体和意识正在衰弱。吞噬大脑可以恢复。 -->
+  <LP_CerebrumHunger.description>Not enough brain matter; the mind flayer's body and mind are weakening. Devouring brains restores it.</LP_CerebrumHunger.description>
+  <!-- 不足 -->
+  <LP_CerebrumHunger.stages.0.label>deficient</LP_CerebrumHunger.stages.0.label>
+  <!-- 匮乏 -->
+  <LP_CerebrumHunger.stages.1.label>starved</LP_CerebrumHunger.stages.1.label>
+  <!-- 脑饥 -->
+  <LP_CerebrumHunger.stages.2.label>brain hunger</LP_CerebrumHunger.stages.2.label>
+  <!-- 亡灵之味 -->
+  <LP_UndeadTaste.label>taste of undeath</LP_UndeadTaste.label>
+  <!-- 试图吞噬不死生物的"大脑"，结果只尝到了腐朽的死灵之力。恶心反胃，暂时难以集中精神。 -->
+  <LP_UndeadTaste.description>Tried to devour the "brain" of an undead creature and tasted only rotting necrotic power. Nauseous, temporarily unable to concentrate.</LP_UndeadTaste.description>
+  <!-- 群脑联络 -->
+  <LP_HiveLink.label>hivemind link</LP_HiveLink.label>
+  <!-- 与同一地图上的夺心魔同伴心灵相连。 -->
+  <LP_HiveLink.description>Mentally linked with mind flayer companions on the same map.</LP_HiveLink.description>
+  <!-- 1名同伴 -->
+  <LP_HiveLink.stages._1.label>1 companion</LP_HiveLink.stages._1.label>
+  <!-- 2名同伴 -->
+  <LP_HiveLink.stages._2.label>2 companions</LP_HiveLink.stages._2.label>
+  <!-- 3名同伴 -->
+  <LP_HiveLink.stages._3.label>3 companions</LP_HiveLink.stages._3.label>
+  <!-- 心灵震荡 -->
+  <LP_MindBlasted.label>psychic concussion</LP_MindBlasted.label>
+  <!-- 被夺心魔的心灵冲击震伤，头脑昏沉。 -->
+  <LP_MindBlasted.description>Shaken by a mind flayer's psychic jolt; head foggy.</LP_MindBlasted.description>
+</LanguageData>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- <color=#5B9BD5>巧匠之手</color> -->
+  <LP_Artisan.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Skilled Hands&lt;/color&gt;</LP_Artisan.degreeDatas.color5B9BD5color.label>
+  <!-- {PAWN_nameDef}的手好像天生就知道该怎么用工具。\n\n- 全局工作速度 +10%\n- 传奇属性“工作”每点收益 ×1.5（与种族亲和取较大，不相乘） -->
+  <LP_Artisan.degreeDatas.color5B9BD5color.description>{PAWN_nameDef}'s hands seem to know how to use tools by nature.\n\n- Global work speed +10%\n- The legend attribute "work" is worth ×1.5 per point (takes the larger of this and racial affinity, not multiplied)</LP_Artisan.degreeDatas.color5B9BD5color.description>
+  <!-- 强力特性 -->
+  <LP_Artisan.modExtensions.0.kind>power trait</LP_Artisan.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>疾风之足</color> -->
+  <LP_Fleetfoot.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Windrunner&lt;/color&gt;</LP_Fleetfoot.degreeDatas.color5B9BD5color.label>
+  <!-- {PAWN_nameDef}跑起来像一阵风。\n\n- 移动速度 +0.4\n- 近战闪避 +10 -->
+  <LP_Fleetfoot.degreeDatas.color5B9BD5color.description>{PAWN_nameDef} runs like the wind.\n\n- Move speed +0.4\n- Melee dodge +10</LP_Fleetfoot.degreeDatas.color5B9BD5color.description>
+  <!-- 强力特性 -->
+  <LP_Fleetfoot.modExtensions.0.kind>power trait</LP_Fleetfoot.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>钢铁意志</color> -->
+  <LP_IronWill.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Iron Will&lt;/color&gt;</LP_IronWill.degreeDatas.color5B9BD5color.label>
+  <!-- {PAWN_nameDef}的意志像铁一样硬，什么都压不垮。\n\n- 精神崩溃阈值 -8%\n- 心智抗性 +30% -->
+  <LP_IronWill.degreeDatas.color5B9BD5color.description>{PAWN_nameDef}'s will is hard as iron; nothing can crush it.\n\n- Mental break threshold -8%\n- Mind resistance +30%</LP_IronWill.degreeDatas.color5B9BD5color.description>
+  <!-- 强力特性 -->
+  <LP_IronWill.modExtensions.0.kind>power trait</LP_IronWill.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>银舌</color> -->
+  <LP_Silvertongue.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Silver Tongue&lt;/color&gt;</LP_Silvertongue.degreeDatas.color5B9BD5color.label>
+  <!-- {PAWN_nameDef}一开口，石头都能被说动。\n\n- 谈判能力 ×1.3、社交影响 ×1.3\n- 魅力上限 +2 -->
+  <LP_Silvertongue.degreeDatas.color5B9BD5color.description>When {PAWN_nameDef} speaks, even stones can be persuaded.\n\n- Negotiation ability ×1.3, social impact ×1.3\n- Charisma cap +2</LP_Silvertongue.degreeDatas.color5B9BD5color.description>
+  <!-- 强力特性 -->
+  <LP_Silvertongue.modExtensions.0.kind>power trait</LP_Silvertongue.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>荒野之躯</color> -->
+  <LP_Hardy.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Wilderness Body&lt;/color&gt;</LP_Hardy.degreeDatas.color5B9BD5color.label>
+  <!-- {PAWN_nameDef}在荒野里摸爬滚打长大，什么苦都吃过。\n\n- 免疫获得速度 ×1.2\n- 伤口愈合速度 ×1.3\n- 毒素抗性 +25%\n- 舒适温度范围两头各放宽 10°C -->
+  <LP_Hardy.degreeDatas.color5B9BD5color.description>{PAWN_nameDef} grew up rough in the wilds and has endured every hardship.\n\n- Immunity gain speed ×1.2\n- Wound healing speed ×1.3\n- Toxic resistance +25%\n- Comfortable temperature range widened by 10°C at both ends</LP_Hardy.degreeDatas.color5B9BD5color.description>
+  <!-- 强力特性 -->
+  <LP_Hardy.modExtensions.0.kind>power trait</LP_Hardy.modExtensions.0.kind>
+  <!-- <color=#5B9BD5>远瞳</color> -->
+  <LP_EagleEyed.degreeDatas.color5B9BD5color.label>&lt;color=#5B9BD5&gt;Far Sight&lt;/color&gt;</LP_EagleEyed.degreeDatas.color5B9BD5color.label>
+  <!-- {PAWN_nameDef}能看清别人只看得到一个黑点的东西。\n\n- 射击精度 +6\n- 瞄准时间 ×0.85 -->
+  <LP_EagleEyed.degreeDatas.color5B9BD5color.description>{PAWN_nameDef} sees clearly what others see only as a dot.\n\n- Shooting accuracy +6\n- Aiming time ×0.85</LP_EagleEyed.degreeDatas.color5B9BD5color.description>
+  <!-- 强力特性 -->
+  <LP_EagleEyed.modExtensions.0.kind>power trait</LP_EagleEyed.modExtensions.0.kind>
+  <!-- <color=#B070E0>神童</color> -->
+  <LP_Prodigy.degreeDatas.colorB070E0color.label>&lt;color=#B070E0&gt;Prodigy&lt;/color&gt;</LP_Prodigy.degreeDatas.colorB070E0color.label>
+  <!-- {PAWN_nameDef}学什么都比别人快一大截。\n\n- 技能学习速度 ×1.5\n- 传奇属性“学习”“工作”每点收益 ×1.5（与种族亲和取较大，不相乘）\n- 智力上限 +2 -->
+  <LP_Prodigy.degreeDatas.colorB070E0color.description>{PAWN_nameDef} learns everything far faster than others.\n\n- Skill learning speed ×1.5\n- The legend attributes "learning" and "work" are worth ×1.5 per point (takes the larger of this and racial affinity, not multiplied)\n- Intelligence cap +2</LP_Prodigy.degreeDatas.colorB070E0color.description>
+  <!-- 强力特性 -->
+  <LP_Prodigy.modExtensions.0.kind>power trait</LP_Prodigy.modExtensions.0.kind>
+  <!-- <color=#B070E0>百折不挠</color> -->
+  <LP_Unyielding.degreeDatas.colorB070E0color.label>&lt;color=#B070E0&gt;Indomitable&lt;/color&gt;</LP_Unyielding.degreeDatas.colorB070E0color.label>
+  <!-- {PAWN_nameDef}好几次都该死了，可每次都又爬了起来。\n\n- 致命伤改为倒地幸存，伤口止血（冷却 10 天，处决和手术不算）\n- 和命运之恩、命运未尽不会同一次触发：它们先判\n- 疼痛休克阈值 +10% -->
+  <LP_Unyielding.degreeDatas.colorB070E0color.description>{PAWN_nameDef} should have died several times, yet got back up every time.\n\n- A lethal wound downs and spares you instead, and wounds stop bleeding (cooldown 10 days; executions and surgery don't count)\n- Never triggers on the same blow as Boon of Fate or Fate Unfinished: those are checked first\n- Pain shock threshold +10%</LP_Unyielding.degreeDatas.colorB070E0color.description>
+  <!-- 强力特性 -->
+  <LP_Unyielding.modExtensions.0.kind>power trait</LP_Unyielding.modExtensions.0.kind>
+  <!-- <color=#B070E0>万夫莫敌</color> -->
+  <LP_Juggernaut.degreeDatas.colorB070E0color.label>&lt;color=#B070E0&gt;Unstoppable&lt;/color&gt;</LP_Juggernaut.degreeDatas.colorB070E0color.label>
+  <!-- {PAWN_nameDef}挨刀子就像挨了一拳。\n\n- 受到的伤害 ×0.85\n- 疼痛休克阈值 +15%\n- 传奇属性“血量”每点收益 ×1.5（与种族亲和取较大，不相乘） -->
+  <LP_Juggernaut.degreeDatas.colorB070E0color.description>To {PAWN_nameDef}, a stab feels like a punch.\n\n- Damage taken ×0.85\n- Pain shock threshold +15%\n- The legend attribute "health" is worth ×1.5 per point (takes the larger of this and racial affinity, not multiplied)</LP_Juggernaut.degreeDatas.colorB070E0color.description>
+  <!-- 强力特性 -->
+  <LP_Juggernaut.modExtensions.0.kind>power trait</LP_Juggernaut.modExtensions.0.kind>
+  <!-- <color=#B070E0>魔裔之血</color> -->
+  <LP_Spellblood.degreeDatas.colorB070E0color.label>&lt;color=#B070E0&gt;Magicborn Blood&lt;/color&gt;</LP_Spellblood.degreeDatas.colorB070E0color.label>
+  <!-- {PAWN_nameDef}的祖上和某种魔法生物通过婚，魔网在{PAWN_possessive}血里流淌。\n\n- 心灵敏感度 +25%\n- 心灵熵恢复速度 ×1.3\n- 传奇属性“心灵”每点收益 ×2（与种族亲和取较大，不相乘）\n- 不会和法术抗体同时出现 -->
+  <LP_Spellblood.degreeDatas.colorB070E0color.description>{PAWN_nameDef}'s ancestors married some magical creature, and the Weave flows in {PAWN_possessive} blood.\n\n- Psychic sensitivity +25%\n- Neural heat recovery ×1.3\n- The legend attribute "mind" is worth ×2 per point (takes the larger of this and racial affinity, not multiplied)\n- Never appears together with Spell Immunity</LP_Spellblood.degreeDatas.colorB070E0color.description>
+  <!-- 强力特性 -->
+  <LP_Spellblood.modExtensions.0.kind>power trait</LP_Spellblood.modExtensions.0.kind>
+  <!-- <color=#B070E0>处刑者</color> -->
+  <LP_Executioner.degreeDatas.colorB070E0color.label>&lt;color=#B070E0&gt;Executioner&lt;/color&gt;</LP_Executioner.degreeDatas.colorB070E0color.label>
+  <!-- {PAWN_nameDef}看得出谁已经撑不住了，下手从不留情。\n\n- 对倒地、或者总体健康低于 30% 的敌人伤害 +50%\n- 亲手击杀敌人后 1 小时内近战与射击命中 +10%「乘胜追击」 -->
+  <LP_Executioner.degreeDatas.colorB070E0color.description>{PAWN_nameDef} can tell who's about to break, and never holds back.\n\n- +50% damage against enemies who are downed or below 30% overall health\n- After personally killing an enemy, melee and shooting hit +10% for 1 hour "press the advantage"</LP_Executioner.degreeDatas.colorB070E0color.description>
+  <!-- 强力特性 -->
+  <LP_Executioner.modExtensions.0.kind>power trait</LP_Executioner.modExtensions.0.kind>
+  <!-- <color=#D05050>吸血鬼之咒</color> -->
+  <LP_Vampirism.degreeDatas.colorD05050color.label>&lt;color=#D05050&gt;Vampire's Curse&lt;/color&gt;</LP_Vampirism.degreeDatas.colorD05050color.label>
+  <!-- {PAWN_nameDef}被吸血鬼咬过，没死，可也不再完全是活人了。\n\n- 近战伤害 ×1.3，移动速度 +0.3\n- 伤口愈合速度 ×2\n- 近战命中时吸血，回复 2 点伤势\n- 代价：白天待在没有屋顶的地方会「日光灼身」——移动 -15%、意识 -10%，每小时受到 1 点烧伤；进屋或天黑就消退 -->
+  <LP_Vampirism.degreeDatas.colorD05050color.description>{PAWN_nameDef} was bitten by a vampire and didn't die, but is no longer entirely alive either.\n\n- Melee damage ×1.3, move speed +0.3\n- Wound healing speed ×2\n- Melee hits drain blood, healing 2 injury\n- Cost: staying in places without a roof by day causes "sunburnt": movement -15%, consciousness -10%, 1 burn damage per hour; fades indoors or after dark</LP_Vampirism.degreeDatas.colorD05050color.description>
+  <!-- 诅咒之力 -->
+  <LP_Vampirism.modExtensions.0.kind>cursed power</LP_Vampirism.modExtensions.0.kind>
+  <!-- <color=#D05050>厄运缠身</color> -->
+  <LP_Doomed.degreeDatas.colorD05050color.label>&lt;color=#D05050&gt;Dogged by Misfortune&lt;/color&gt;</LP_Doomed.degreeDatas.colorD05050color.label>
+  <!-- 一个女巫在临死前诅咒了{PAWN_nameDef}。厄运一直跟着{PAWN_objective}，有时也会扑向别人。\n\n- 近战闪避 +15\n- 被敌人打中时 15% 的几率「厄运转嫁」：攻击者也受到这次伤害的一半\n- 代价：平均每 8 天一次厄运降临——身上一件衣甲耐久 -30%，心情 -5「厄运缠身」（2 天） -->
+  <LP_Doomed.degreeDatas.colorD05050color.description>A witch cursed {PAWN_nameDef} as she died. Misfortune follows {PAWN_objective} everywhere, and sometimes pounces on others.\n\n- Melee dodge +15\n- When hit by an enemy, 15% chance of "misfortune transfer": the attacker also takes half of that damage\n- Cost: misfortune strikes about once every 8 days: one worn piece of apparel loses 30% durability, mood -5 "dogged by misfortune" (2 days)</LP_Doomed.degreeDatas.colorD05050color.description>
+  <!-- 诅咒之力 -->
+  <LP_Doomed.modExtensions.0.kind>cursed power</LP_Doomed.modExtensions.0.kind>
+  <!-- <color=#D05050>空心之人</color> -->
+  <LP_Hollow.degreeDatas.colorD05050color.label>&lt;color=#D05050&gt;Hollow One&lt;/color&gt;</LP_Hollow.degreeDatas.colorD05050color.label>
+  <!-- {PAWN_nameDef}的一半灵魂被什么东西吃掉了，剩下的那一半很平静——平静得吓人。\n\n- 精神崩溃阈值 -15%\n- 疼痛休克阈值 +20%\n- 心智抗性 +50%\n- 代价：社交影响 ×0.5、技能学习速度 ×0.8、心灵敏感度 -30%、外貌 -1（别人看着发怵） -->
+  <LP_Hollow.degreeDatas.colorD05050color.description>Half of {PAWN_nameDef}'s soul was eaten by something, and the remaining half is calm, frighteningly calm.\n\n- Mental break threshold -15%\n- Pain shock threshold +20%\n- Mind resistance +50%\n- Cost: social impact ×0.5, skill learning speed ×0.8, psychic sensitivity -30%, beauty -1 (others find them unsettling)</LP_Hollow.degreeDatas.colorD05050color.description>
+  <!-- 诅咒之力 -->
+  <LP_Hollow.modExtensions.0.kind>cursed power</LP_Hollow.modExtensions.0.kind>
+  <!-- <color=#D05050>狱火烙印</color> -->
+  <LP_Hellbrand.degreeDatas.colorD05050color.label>&lt;color=#D05050&gt;Hellfire Brand&lt;/color&gt;</LP_Hellbrand.degreeDatas.colorD05050color.label>
+  <!-- {PAWN_nameDef}的胸口有一个九狱魔鬼留下的烙印，到现在还是烫的。\n\n- 武器命中额外造成 4 点火焰伤害\n- 受到的火焰类伤害 -75%\n- 舒适温度上限 +40°C\n- 代价：受到的寒冷类伤害 +50%；精神崩溃阈值 +5%；平均每 12 天一次魔鬼来索债，心情 -8「狱火索债」（3 天） -->
+  <LP_Hellbrand.degreeDatas.colorD05050color.description>{PAWN_nameDef} bears a brand left on the chest by a devil of the Nine Hells, still hot to this day.\n\n- Weapon hits deal an extra 4 fire damage\n- Fire-type damage taken -75%\n- Max comfortable temperature +40°C\n- Cost: cold-type damage taken +50%; mental break threshold +5%; about once every 12 days the devil comes to collect, mood -8 "hellfire debt" (3 days)</LP_Hellbrand.degreeDatas.colorD05050color.description>
+  <!-- 诅咒之力 -->
+  <LP_Hellbrand.modExtensions.0.kind>cursed power</LP_Hellbrand.modExtensions.0.kind>
+</LanguageData>

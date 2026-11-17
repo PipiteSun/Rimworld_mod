@@ -36,40 +36,6 @@
     </modExtensions>
   </ThoughtDef>
   <ThoughtDef>
-    <defName>LPMB_Relation_SuanniForceDragon</defName>
-    <workerClass>LichPhylactery.MythicBridge.ThoughtWorker_MythicRelation</workerClass>
-    <stages>
-      <li>
-        <label>宝物知音</label>
-        <description>力能龙裔也爱好东西，和它聊宝贝聊得来。</description>
-        <baseMoodEffect>2</baseMoodEffect>
-      </li>
-    </stages>
-    <modExtensions>
-      <li Class="LichPhylactery.MythicBridge.MythicRelation">
-        <observer>Suanni</observer>
-        <target>ForceDragon</target>
-      </li>
-    </modExtensions>
-  </ThoughtDef>
-  <ThoughtDef>
-    <defName>LPMB_Relation_ForceDragonSuanni</defName>
-    <workerClass>LichPhylactery.MythicBridge.ThoughtWorker_MythicRelation</workerClass>
-    <stages>
-      <li>
-        <label>点化宝物的狻猊</label>
-        <description>狻猊能让宝物更上一层，龙的宝库就缺这样的人。</description>
-        <baseMoodEffect>3</baseMoodEffect>
-      </li>
-    </stages>
-    <modExtensions>
-      <li Class="LichPhylactery.MythicBridge.MythicRelation">
-        <observer>ForceDragon</observer>
-        <target>Suanni</target>
-      </li>
-    </modExtensions>
-  </ThoughtDef>
-  <ThoughtDef>
     <defName>LPMB_Relation_JumangElf</defName>
     <workerClass>LichPhylactery.MythicBridge.ThoughtWorker_MythicRelation</workerClass>
     <stages>
@@ -316,32 +282,6 @@
         <excludedKeywords>
           <li>Acid</li>
         </excludedKeywords>
-      </li>
-    </modExtensions>
-  </HediffDef>
-  <HediffDef>
-    <defName>LPMB_DragonFlesh</defName>
-    <label>力能龙之肉</label>
-    <description>饕餮吞下力能龙裔的血肉，体内残留着力场的余韵：受到的力场伤害减半。持续24小时，再次食用只刷新时间。</description>
-    <hediffClass>HediffWithComps</hediffClass>
-    <defaultLabelColor>(0.55, 0.7, 1)</defaultLabelColor>
-    <isBad>false</isBad>
-    <scenarioCanAdd>false</scenarioCanAdd>
-    <comps>
-      <li Class="HediffCompProperties_Disappears">
-        <disappearsAfterTicks>60000</disappearsAfterTicks>
-        <showRemainingTime>true</showRemainingTime>
-      </li>
-    </comps>
-    <modExtensions>
-      <li Class="LichPhylactery.MythicBridge.DamageFactorExtension">
-        <factor>0.5</factor>
-        <damageDefs>
-          <li>LP_Force</li>
-        </damageDefs>
-        <keywords>
-          <li>Force</li>
-        </keywords>
       </li>
     </modExtensions>
   </HediffDef>

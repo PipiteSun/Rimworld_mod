@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 跃击 -->
+  <LP_BarlguraLeap.label>leap strike</LP_BarlguraLeap.label>
+  <!-- 一跃扑到 8 格内的目标身边，落地时 1 格内的敌人做敏捷豁免（难度 13，基础成功率 50%），失败倒地 1 秒。冷却 6 小时。 -->
+  <LP_BarlguraLeap.description>Leap next to a target within 8 cells; on landing, enemies within 1 cell make a Dexterity save (difficulty 13, base success 50%) or fall for 1 second. Cooldown 6 hours.</LP_BarlguraLeap.description>
+  <!-- 魅惑之吻 -->
+  <LP_SuccubusKiss.label>charming kiss</LP_SuccubusKiss.label>
+  <!-- 吻一名相邻的人形：目标做感知豁免（豁免难度随魅魔的熟练加值和魅力提高；目标的属性调整值和熟练加值每点 +5% 成功率）。失败：敌人被魅惑 60 秒；囚犯招募抵抗 -15；殖民者对你的好感 +20。豁免成功的人 24 小时内免疫。冷却 1 天。 -->
+  <LP_SuccubusKiss.description>Kiss an adjacent humanlike: the target makes a Wisdom save (difficulty rises with the succubus's proficiency bonus and Charisma; each point of the target's ability modifier and proficiency bonus gives +5% success). On failure: enemies are charmed for 60 seconds; prisoners lose 15 recruit resistance; colonists gain +20 opinion of you. Those who succeed are immune for 24 hours. Cooldown 1 day.</LP_SuccubusKiss.description>
+  <!-- 石化凝视 -->
+  <LP_NabassuGaze.label>petrifying gaze</LP_NabassuGaze.label>
+  <!-- 凝视 6 格内的一人：它做体质豁免（难度 14，基础成功率 45%），失败移速 ×0.5，10 秒。冷却 30 秒。 -->
+  <LP_NabassuGaze.description>Gaze at one person within 6 cells: they make a Constitution save (difficulty 14, base success 45%) or move speed ×0.5 for 10 seconds. Cooldown 30 seconds.</LP_NabassuGaze.description>
+  <!-- 滑翔跳跃 -->
+  <LP_CambionGlide.label>gliding leap</LP_CambionGlide.label>
+  <!-- 张开小翼滑翔到 6 格内的地方。冷却 4 小时。 -->
+  <LP_CambionGlide.description>Spread the small wings and glide to a spot within 6 cells. Cooldown 4 hours.</LP_CambionGlide.description>
+</LanguageData>

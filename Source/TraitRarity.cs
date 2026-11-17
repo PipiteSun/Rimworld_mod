@@ -9,7 +9,7 @@ namespace LichPhylactery {
  // 六档 普通 / 优秀 / 稀有 / 史诗 / 传说 / 神话 = 无色 / 绿 / 蓝 / 紫 / 橙 / 金；诅咒（红）、事迹（青）是性质标记，档位写在悬停说明第一行。
  // 名字颜色直接写在 XML 标签里（ArtSource/trait_rarity.py 按同一张表生成，-Only TraitRarity 检查两边一致），这里只加悬停标头。
  public class TraitRarityExt:DefModExtension {
-  public string tier="Common",kind="DND 特性",mark;
+  public string tier="Common",kind="DND 特性".Loc(),mark;
   public List<string> degrees; // "程度:档位" 或 "程度:档位:标记"（标记 None = 去掉诅咒 / 事迹标记），如光谱两端、安息之魂
   Dictionary<int,KeyValuePair<int,string>> parsed;
   public KeyValuePair<int,string> At(int degree){
@@ -22,7 +22,7 @@ namespace LichPhylactery {
  }
  public static class TraitRarity {
   public static readonly string[] Keys={"Common","Uncommon","Rare","Epic","Legendary","Mythic"};
-  public static readonly string[] Names={"普通","优秀","稀有","史诗","传说","神话"};
+  public static readonly string[] Names={"普通".Loc(),"优秀".Loc(),"稀有".Loc(),"史诗".Loc(),"传说".Loc(),"神话".Loc()};
   public static readonly string[] Hexes={null,"#7FBF6A","#5B9BD5","#B070E0","#E08A3A","#E0B040"};
   public const string CurseHex="#D05050",DeedHex="#50C0C0";
   public static int Index(string key){int i=Array.IndexOf(Keys,key);return i<0?0:i;}
@@ -36,7 +36,7 @@ namespace LichPhylactery {
    var e=Ext(d);if(e==null)return null;int key=d.index*64+degree+32;
    if(headers.TryGetValue(key,out var h))return h;
    var a=e.At(degree);string tn=Names[a.Key];
-   string text=a.Value=="Curse"?"〔诅咒 · "+tn+"〕":a.Value=="Deed"?"〔事迹 · "+tn+"〕":"〔"+tn+" · "+e.kind+(e.mark=="Curse"?"（已解除）":"")+"〕";
+   string text=a.Value=="Curse"?"〔诅咒 · ".Loc()+tn+"〕".Loc():a.Value=="Deed"?"〔事迹 · ".Loc()+tn+"〕".Loc():"〔".Loc()+tn+" · "+e.kind+(e.mark=="Curse"?"（已解除）".Loc():"")+"〕".Loc();
    var hex=Hex(d,degree);h=hex==null?text:"<color="+hex+">"+text+"</color>";
    headers[key]=h;return h;
   }

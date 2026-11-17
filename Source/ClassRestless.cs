@@ -39,7 +39,7 @@ namespace LichPhylactery {
   public static JobDef AttuneJob=>attune.Def;
   public static bool Attuning(Pawn p)=>p?.CurJobDef!=null && p.CurJobDef==AttuneJob;
   public static string CannotAttune(Pawn p){
-   if(p.Drafted)return "征召中不能冥想调息";if(p.Downed)return "倒地了";if(!ClassSubclass.NotInCombat(p))return "正在战斗";if(Attuning(p))return "正在冥想调息";
+   if(p.Drafted)return "征召中不能冥想调息".Loc();if(p.Downed)return "倒地了".Loc();if(!ClassSubclass.NotInCombat(p))return "正在战斗".Loc();if(Attuning(p))return "正在冥想调息".Loc();
    return null;
   }
  }
@@ -51,7 +51,7 @@ namespace LichPhylactery {
    sit.defaultCompleteMode=ToilCompleteMode.Delay;sit.defaultDuration=ClassRestless.AttuneTicks;
    sit.WithProgressBarToilDelay(TargetIndex.A);
    yield return sit;
-   yield return Toils_General.Do(()=>{ClassRestless.Refill(Adventurer.Get(pawn));if(pawn.Faction!=null && pawn.Faction.IsPlayer)Items.Mote(pawn,"冥想调息：职业资源回满",new Color(.7f,.8f,1f));});
+   yield return Toils_General.Do(()=>{ClassRestless.Refill(Adventurer.Get(pawn));if(pawn.Faction!=null && pawn.Faction.IsPlayer)Items.Mote(pawn,"冥想调息：职业资源回满".Loc(),new Color(.7f,.8f,1f));});
   }
  }
 
@@ -63,8 +63,8 @@ namespace LichPhylactery {
    var p=__instance;if(p.Faction!=Faction.OfPlayer || !Adventurer.Enabled || p.Dead || !p.Spawned || !ClassRestless.NoSleep(p))yield break;
    var h=Adventurer.Get(p);if(h==null || !ClassRestless.HasPools(h) || ClassRestless.AttuneJob==null)yield break;
    var cmd=new Command_Action{
-    defaultLabel="冥想调息",
-    defaultDesc="不需要睡觉的身体用静坐代替长休：原地静坐 "+(ClassRestless.AttuneTicks/2500)+" 小时，结束时所有职业资源（斗志、气、神恩、法力、契约法力）回满。中途被打断就没有效果。\n平时不在战斗中、未征召时，每 6 小时也会自动回上限的 1/4。",
+    defaultLabel="冥想调息".Loc(),
+    defaultDesc="不需要睡觉的身体用静坐代替长休：原地静坐 ".Loc()+(ClassRestless.AttuneTicks/2500)+" 小时，结束时所有职业资源（斗志、气、神恩、法力、契约法力）回满。中途被打断就没有效果。\n平时不在战斗中、未征召时，每 6 小时也会自动回上限的 1/4。".Loc(),
     icon=ContentFinder<Texture2D>.Get("LP/Classes/Monk/DiamondSoul",false)??BaseContent.BadTex,
     action=()=>p.jobs.TryTakeOrderedJob(JobMaker.MakeJob(ClassRestless.AttuneJob,p.Position),JobTag.Misc)
    };

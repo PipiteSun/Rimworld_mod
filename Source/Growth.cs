@@ -27,35 +27,35 @@ namespace LichPhylactery {
   public static void Drop(Thing t,Map map,IntVec3 at,Pawn fallback=null){if(t==null)return;if(map!=null && at.IsValid)GenPlace.TryPlaceThing(t,at,map,ThingPlaceMode.Near);else fallback?.inventory?.innerContainer.TryAdd(t);}
 
   // ---------- 典籍 ----------
-  public static string CannotReadTome(Pawn p,int a){var h=Adventurer.Get(p);if(h==null)return "没有冒险者等级";if(a<0)return null;return h.tomes[a]?p.LabelShort+"已经从典籍得到过"+Adventurer.Names[a]+"了":null;}
+  public static string CannotReadTome(Pawn p,int a){var h=Adventurer.Get(p);if(h==null)return "没有冒险者等级".Loc();if(a<0)return null;return h.tomes[a]?p.LabelShort+"已经从典籍得到过".Loc()+Adventurer.Names[a]+"了".Loc():null;}
   public static bool FinishTome(Pawn p,int a,Thing book,bool destroyNow){
    var h=Adventurer.Get(p);if(h==null || a<0 || h.tomes[a])return false;
    h.tomes[a]=true;h.scores[a]+=TomeBonus;h.Dirty();
    if(book!=null && !book.Destroyed){if(destroyNow)book.Destroy();else{var b=book;Fiends.Defer(()=>{if(!b.Destroyed)b.Destroy();});}}
-   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("典籍读完："+p.LabelShort,p.LabelShort+"读完了"+TomeDef(a)?.label+"："+Adventurer.Names[a]+" +"+TomeBonus+"（现在 "+h.scores[a]+"），上限 +"+TomeBonus+"（现在 "+h.Cap(a)+"）。书化成了灰。",LetterDefOf.PositiveEvent,p);
+   if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("典籍读完：".Loc()+p.LabelShort,p.LabelShort+"读完了".Loc()+TomeDef(a)?.label+"：".Loc()+Adventurer.Names[a]+" +"+TomeBonus+"（现在 ".Loc()+h.scores[a]+"），上限 +".Loc()+TomeBonus+"（现在 ".Loc()+h.Cap(a)+"）。书化成了灰。".Loc(),LetterDefOf.PositiveEvent,p);
    return true;
   }
 
   // ---------- 巨灵：让我更强（每人一生一次 +1，可以超过上限 1 点） ----------
-  public static string CannotWish(Pawn p){var h=Adventurer.Get(p);if(h==null)return "没有冒险者等级";return h.wishAbility>=0?"已经许过这个愿了":null;}
+  public static string CannotWish(Pawn p){var h=Adventurer.Get(p);if(h==null)return "没有冒险者等级".Loc();return h.wishAbility>=0?"已经许过这个愿了".Loc():null;}
   public static bool WishStronger(Pawn p,int a){var h=Adventurer.Get(p);if(h==null || a<0 || a>5 || CannotWish(p)!=null)return false;h.wishAbility=a;h.scores[a]++;h.Dirty();return true;}
   public static void OpenStrongerDialog(Pawn genie,RimWorld.Ability ability){
-   var node=new DiaNode("“谁想变得更强？”");
+   var node=new DiaNode("“谁想变得更强？”".Loc());
    foreach(var c in genie.MapHeld.mapPawns.FreeColonistsSpawned.Where(x=>Adventurer.Get(x)!=null).ToList()){
     var who=c;var o=new DiaOption(c.LabelShort){resolveTree=false};var why=CannotWish(c);if(why!=null)o.Disable(why);
-    var n2=new DiaNode("“"+c.LabelShort+"，你想要哪一份力量？”（+1，可以超过上限 1 点）");
-    for(int i=0;i<6;i++){int k=i;var h=Adventurer.Get(c);n2.options.Add(new DiaOption(Adventurer.Names[i]+" "+h.scores[i]+" → "+(h.scores[i]+1)){action=()=>{WishStronger(who,k);Items.Give(genie,"LP_GenieFatigue",Genie.FatigueDays*GenDate.TicksPerDay);Messages.Message(genie.LabelShort+"实现了愿望："+who.LabelShort+"的"+Adventurer.Names[k]+" +1。",who,MessageTypeDefOf.PositiveEvent,false);},resolveTree=true});}
-    n2.options.Add(new DiaOption("再想想"){action=()=>ability?.ResetCooldown(),resolveTree=true});
+    var n2=new DiaNode("“"+c.LabelShort+"，你想要哪一份力量？”（+1，可以超过上限 1 点）".Loc());
+    for(int i=0;i<6;i++){int k=i;var h=Adventurer.Get(c);n2.options.Add(new DiaOption(Adventurer.Names[i]+" "+h.scores[i]+" → "+(h.scores[i]+1)){action=()=>{WishStronger(who,k);Items.Give(genie,"LP_GenieFatigue",Genie.FatigueDays*GenDate.TicksPerDay);Messages.Message(genie.LabelShort+"实现了愿望：".Loc()+who.LabelShort+"的".Loc()+Adventurer.Names[k]+" +1。".Loc(),who,MessageTypeDefOf.PositiveEvent,false);},resolveTree=true});}
+    n2.options.Add(new DiaOption("再想想".Loc()){action=()=>ability?.ResetCooldown(),resolveTree=true});
     o.link=n2;node.options.Add(o);
    }
-   node.options.Add(new DiaOption("再想想"){action=()=>ability?.ResetCooldown(),resolveTree=true});
-   Find.WindowStack.Add(new Dialog_NodeTree(node,true,false,"巨灵的愿望"));
+   node.options.Add(new DiaOption("再想想".Loc()){action=()=>ability?.ResetCooldown(),resolveTree=true});
+   Find.WindowStack.Add(new Dialog_NodeTree(node,true,false,"巨灵的愿望".Loc()));
   }
 
   // ---------- 实战磨砺：每 2500 刻按差值采样 ----------
   static float Xp(Pawn p,SkillDef s){var r=p.skills?.GetSkill(s);return r==null?0f:Progress(r);}
   public static float Progress(SkillRecord r)=>r.XpTotalEarned+r.xpSinceLastLevel; // XpTotalEarned 只算已升过的级，加上本级进度才是实时总量
-  public static readonly string[] GrindSources={"格斗经验 + 采矿经验 ×0.5","射击经验","受到的伤害 ×100","智识经验","（医疗 + 驯兽 + 种植经验）×0.5","社交经验"};
+  public static readonly string[] GrindSources={"格斗经验 + 采矿经验 ×0.5".Loc(),"射击经验".Loc(),"受到的伤害 ×100".Loc(),"智识经验".Loc(),"（医疗 + 驯兽 + 种植经验）×0.5".Loc(),"社交经验".Loc()};
   public static float[] Sources(Pawn p){
    var s=new float[6];if(p?.skills==null)return s;
    s[0]=Xp(p,SkillDefOf.Melee)+Xp(p,SkillDefOf.Mining)*.5f;s[1]=Xp(p,SkillDefOf.Shooting);
@@ -72,7 +72,7 @@ namespace LichPhylactery {
    h.grind[a]+=amount;
    if(h.grind[a]>=GrindNeed && !Adventurer.EffectsHandedToIsekai && h.grindGained[a]<GrindMax && h.scores[a]<h.Cap(a)){ // Isekai 共存：照常累计但只显示
     h.grind[a]-=GrindNeed;h.grindGained[a]++;h.scores[a]++;h.Dirty();n++;Raised++;
-    if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"在实战中磨砺出了更好的"+Adventurer.Names[a]+"（+1，现在 "+h.scores[a]+"；这一项还能磨砺 "+(GrindMax-h.grindGained[a])+" 次）。",p,MessageTypeDefOf.PositiveEvent,false);
+    if(p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"在实战中磨砺出了更好的".Loc()+Adventurer.Names[a]+"（+1，现在 ".Loc()+h.scores[a]+"；这一项还能磨砺 ".Loc()+(GrindMax-h.grindGained[a])+" 次）。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);
    }
    if(h.grindGained[a]>=GrindMax || h.scores[a]>=h.Cap(a))h.grind[a]=Mathf.Min(h.grind[a],GrindNeed);
    return n;
@@ -85,15 +85,15 @@ namespace LichPhylactery {
    if(s==SkillDefOf.Medicine || s==SkillDefOf.Animals || s==SkillDefOf.Plants){factor=.5f;return 4;}
    return -1;
   }
-  public static string GrindTip(Hediff_Adventurer h,int a)=>"实战磨砺："+Adventurer.Names[a]+" "+Mathf.Min(h.grind[a],GrindNeed).ToString("0")+" / "+GrindNeed+"\n来源："+GrindSources[a]+"\n满了这一项 +1（一生最多 +"+GrindMax+"，不超过上限；已得 "+h.grindGained[a]+"）。实时累计。"+(Adventurer.EffectsHandedToIsekai?"\nIsekai 共存模式：照常累计，但不加属性。":"")+(GrindOn?"":"\n“实战磨砺”已在设置里关闭。");
+  public static string GrindTip(Hediff_Adventurer h,int a)=>"实战磨砺：".Loc()+Adventurer.Names[a]+" "+Mathf.Min(h.grind[a],GrindNeed).ToString("0")+" / "+GrindNeed+"\n来源：".Loc()+GrindSources[a]+"\n满了这一项 +1（一生最多 +".Loc()+GrindMax+"，不超过上限；已得 ".Loc()+h.grindGained[a]+"）。实时累计。".Loc()+(Adventurer.EffectsHandedToIsekai?"\nIsekai 共存模式：照常累计，但不加属性。".Loc():"")+(GrindOn?"":"\n“实战磨砺”已在设置里关闭。".Loc());
   // 分页：典籍 / 许愿 / 磨砺一行。
   public static float Draw(float y,float w,Hediff_Adventurer h){
-   var src=new List<string>();for(int a=0;a<6;a++){if(h.tomes[a])src.Add(Adventurer.Names[a]+" 典籍 +2");}if(h.wishAbility>=0)src.Add(Adventurer.Names[h.wishAbility]+" 许愿 +1");
-   if(src.Count>0){var r=new Rect(0f,y,w,24f);Widgets.Label(r,"成长："+string.Join("、",src));TooltipHandler.TipRegion(r,"属性典籍：该项 +2、上限 +2（每项一生一次）。巨灵“让我更强”：该项 +1、上限 +1（每人一生一次）。");y+=26f;}
+   var src=new List<string>();for(int a=0;a<6;a++){if(h.tomes[a])src.Add(Adventurer.Names[a]+" 典籍 +2".Loc());}if(h.wishAbility>=0)src.Add(Adventurer.Names[h.wishAbility]+" 许愿 +1".Loc());
+   if(src.Count>0){var r=new Rect(0f,y,w,24f);Widgets.Label(r,"成长：".Loc()+string.Join("、".Loc(),src));TooltipHandler.TipRegion(r,"属性典籍：该项 +2、上限 +2（每项一生一次）。巨灵“让我更强”：该项 +1、上限 +1（每人一生一次）。".Loc());y+=26f;}
    float cw=w/6f;
    for(int a=0;a<6;a++){
     var cell=new Rect(cw*a,y,cw-4f,20f);Widgets.FillableBar(cell,Mathf.Clamp01(h.grind[a]/GrindNeed));
-    Text.Font=GameFont.Tiny;Text.Anchor=TextAnchor.MiddleCenter;Widgets.Label(cell,Adventurer.Names[a].Substring(0,1)+" 磨砺"+(h.grindGained[a]>0?" +"+h.grindGained[a]:""));Text.Anchor=TextAnchor.UpperLeft;Text.Font=GameFont.Small;
+    Text.Font=GameFont.Tiny;Text.Anchor=TextAnchor.MiddleCenter;Widgets.Label(cell,Adventurer.Names[a].Substring(0,1)+" 磨砺".Loc()+(h.grindGained[a]>0?" +"+h.grindGained[a]:""));Text.Anchor=TextAnchor.UpperLeft;Text.Font=GameFont.Small;
     TooltipHandler.TipRegion(cell,GrindTip(h,a));
    }
    return y+24f;
@@ -126,10 +126,10 @@ namespace LichPhylactery {
    if(c.owner!=null)return;
    c.kills.TryGetValue(killer.thingIDNumber,out int k);k++;c.kills[killer.thingIDNumber]=k;
    if(k>=LegacyKills){c.owner=killer;c.kills.Clear();Bonded++;Sync(killer);
-    if(killer.Faction!=null && killer.Faction.IsPlayer && !Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("传承武器："+c.parent.LabelNoCount,c.parent.LabelNoCount+"认可了"+killer.LabelShort+"：从今天起，"+killer.LabelShort+"是它的主人。\n\n冒险者 10 级时它会觉醒（伤害 +15%，获得能力），成为传奇冒险者时升华（再 +15%，被动光环）。",LetterDefOf.PositiveEvent,killer);}
+    if(killer.Faction!=null && killer.Faction.IsPlayer && !Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("传承武器：".Loc()+c.parent.LabelNoCount,c.parent.LabelNoCount+"认可了".Loc()+killer.LabelShort+"：从今天起，".Loc()+killer.LabelShort+"是它的主人。\n\n冒险者 10 级时它会觉醒（伤害 +15%，获得能力），成为传奇冒险者时升华（再 +15%，被动光环）。".Loc(),LetterDefOf.PositiveEvent,killer);}
   }
   public static void OwnerDied(Pawn p){
-   foreach(var c in all.ToList())if(c.owner==p){c.owner=null;c.kills.Clear();Released++;if(!Adventurer.TestSuppressed && c.parent.MapHeld!=null)Messages.Message(c.parent.LabelNoCount+"失去了主人，重新沉睡。",new LookTargets(c.parent.SpawnedOrAnyParentSpawned?c.parent.PositionHeld:IntVec3.Invalid,c.parent.MapHeld),MessageTypeDefOf.NeutralEvent,false);}
+   foreach(var c in all.ToList())if(c.owner==p){c.owner=null;c.kills.Clear();Released++;if(!Adventurer.TestSuppressed && c.parent.MapHeld!=null)Messages.Message(c.parent.LabelNoCount+"失去了主人，重新沉睡。".Loc(),new LookTargets(c.parent.SpawnedOrAnyParentSpawned?c.parent.PositionHeld:IntVec3.Invalid,c.parent.MapHeld),MessageTypeDefOf.NeutralEvent,false);}
   }
   // 能力和光环：觉醒后持有时给能力；升华的剑主进光环名单、杖主得到星辉共鸣。
   public static void Sync(Pawn p){
@@ -157,31 +157,31 @@ namespace LichPhylactery {
   public static readonly int[] RepRanks={3,10,25,50};
   public const int RepMax=50,QuestRep=3,AidRep=2,GiftPerRep=20;
   public static readonly Dictionary<string,string[]> RepTitles=new Dictionary<string,string[]>{
-   {"LP_FaerunColony",new[]{"竖琴手线人","竖琴手","竖琴大师","竖琴之主"}},
-   {"LP_EmberClan",new[]{"余烬之友","炉边客","熔铁誓友","炉心之主"}},
-   {"LP_BlackNetwork",new[]{"黑网熟客","黑网掮客","暗影掮主","黑网之主"}}};
+   {"LP_FaerunColony",new[]{"竖琴手线人".Loc(),"竖琴手".Loc(),"竖琴大师".Loc(),"竖琴之主".Loc()}},
+   {"LP_EmberClan",new[]{"余烬之友".Loc(),"炉边客".Loc(),"熔铁誓友".Loc(),"炉心之主".Loc()}},
+   {"LP_BlackNetwork",new[]{"黑网熟客".Loc(),"黑网掮客".Loc(),"暗影掮主".Loc(),"黑网之主".Loc()}}};
   public static readonly Dictionary<string,string> RepItems=new Dictionary<string,string>{{"LP_FaerunColony","LP_PotionHeroism"}};
   public static bool Tracked(Faction f)=>f!=null && !f.IsPlayer && RepFactions.Contains(f.def.defName);
   public static GameComponent_Growth State=>GameComp<GameComponent_Growth>.Get();
   public static int Rep(Faction f)=>State?.Get(f)??0;
   public static int Rank(Faction f){int r=Rep(f),n=0;foreach(var t in RepRanks)if(r>=t)n++;return n;}
-  public static string Title(Faction f){int k=Rank(f);return k<=0 || !RepTitles.TryGetValue(f.def.defName,out var t)?"无":t[k-1];}
+  public static string Title(Faction f){int k=Rank(f);return k<=0 || !RepTitles.TryGetValue(f.def.defName,out var t)?"无".Loc():t[k-1];}
   public static bool Gain(Faction f,int n,string why){
    var s=State;if(!RepOn || s==null || !Tracked(f) || n<=0 || f.HostileTo(Faction.OfPlayer))return false; // 敌对时冻结
    n=Exalted.Reputation(n); // 1.59.0 君临 ×1.5
    int before=Rank(f);s.Add(f,n);int after=Rank(f);
-   if(after>before && !Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("派系声望："+f.Name,"殖民地在"+f.Name+"的声望到了 "+Rep(f)+"（"+why+"），获得头衔“"+Title(f)+"”。\n\n"+RankRewards(after),LetterDefOf.PositiveEvent);
+   if(after>before && !Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("派系声望：".Loc()+f.Name,"殖民地在".Loc()+f.Name+"的声望到了 ".Loc()+Rep(f)+"（".Loc()+why+"），获得头衔“".Loc()+Title(f)+"”。\n\n".Loc()+RankRewards(after),LetterDefOf.PositiveEvent);
    return true;
   }
   public static string RankRewards(int k){
-   var l=new List<string>();if(k>=1)l.Add("该派系商队卖给你的东西 -5%");if(k>=2)l.Add("每季一封情报信");if(k>=3)l.Add("请求援兵冷却减半，商队带一件专属物品");if(k>=4)l.Add("每季一份礼物（魔法物品，5% 是属性典籍）");
-   return "头衔奖励："+string.Join("；",l)+"。";
+   var l=new List<string>();if(k>=1)l.Add("该派系商队卖给你的东西 -5%".Loc());if(k>=2)l.Add("每季一封情报信".Loc());if(k>=3)l.Add("请求援兵冷却减半，商队带一件专属物品".Loc());if(k>=4)l.Add("每季一份礼物（魔法物品，5% 是属性典籍）".Loc());
+   return "头衔奖励：".Loc()+string.Join("；".Loc(),l)+"。".Loc();
   }
   public static float PriceFactor(Faction f,TradeAction a)=>a==TradeAction.PlayerBuys && Tracked(f) && Rank(f)>=1?RepDiscount:1f;
   public static void Gift(Faction f,int goodwill){
    var s=State;if(s==null || !Tracked(f) || goodwill<=0)return;
    s.giftAccum.TryGetValue(f.loadID,out int acc);acc+=goodwill;int n=acc/GiftPerRep;acc%=GiftPerRep;s.giftAccum[f.loadID]=acc;
-   if(n>0)Gain(f,n,"送礼");
+   if(n>0)Gain(f,n,"送礼".Loc());
   }
   public static void Aid(Pawn victim,Pawn killer){
    var s=State;if(s==null || killer?.Faction==null || !killer.Faction.IsPlayer || victim?.MapHeld==null || !victim.HostileTo(Faction.OfPlayer))return;
@@ -189,22 +189,22 @@ namespace LichPhylactery {
    foreach(var f in Find.FactionManager.AllFactionsListForReading.Where(Tracked).ToList()){
     if(s.aidTick.TryGetValue(f.loadID,out int t) && now>=t && now-t<AidCooldown)continue;
     if(!map.mapPawns.SpawnedPawnsInFaction(f).Any(p=>!p.Dead && !p.Downed))continue;
-    if(victim.HostileTo(f) || victim.Faction==null){s.aidTick[f.loadID]=now;Gain(f,AidRep,"援助");}
+    if(victim.HostileTo(f) || victim.Faction==null){s.aidTick[f.loadID]=now;Gain(f,AidRep,"援助".Loc());}
    }
   }
   public static string IntelText(){
    var hostile=Find.FactionManager.AllFactionsListForReading.Where(f=>!f.IsPlayer && !f.Hidden && !f.defeated && f.HostileTo(Faction.OfPlayer)).ToList();
    var map=Find.AnyPlayerHomeMap;float pts=map==null?0f:StorytellerUtility.DefaultThreatPointsNow(map);
-   if(hostile.Count==0)return "眼下没有哪个派系对殖民地怀有敌意。";
+   if(hostile.Count==0)return "眼下没有哪个派系对殖民地怀有敌意。".Loc();
    var f=hostile.RandomElementByWeight(x=>x.def.humanlikeFaction?2f:1f);
-   return "线人说，下一次来犯的多半是"+f.Name+"，规模大约 "+(pts*.8f).ToString("0")+"～"+(pts*1.2f).ToString("0")+" 点（按殖民地现在的威胁点数估算）。";
+   return "线人说，下一次来犯的多半是".Loc()+f.Name+"，规模大约 ".Loc()+(pts*.8f).ToString("0")+"～".Loc()+(pts*1.2f).ToString("0")+" 点（按殖民地现在的威胁点数估算）。".Loc();
   }
   public static void Quarterly(GameComponent_Growth s){
    if(!RepOn)return;var map=Find.AnyPlayerHomeMap;if(map==null)return;
    foreach(var f in Find.FactionManager.AllFactionsListForReading.Where(Tracked).ToList()){
     if(f.HostileTo(Faction.OfPlayer))continue;int k=Rank(f);
-    if(k>=2 && !Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("情报："+f.Name,f.Name+"（你的头衔：“"+Title(f)+"”）送来了一封情报信：\n\n"+IntelText(),LetterDefOf.NeutralEvent);
-    if(k>=4){var t=GiftThing();if(t!=null){DropPodUtility.DropThingsNear(DropCellFinder.TradeDropSpot(map),map,new[]{t},110,false,false,true,false,true,null);s.gifts++;if(!Adventurer.TestSuppressed)Messages.Message(f.Name+"送来了一份礼物："+t.LabelCap+"。",MessageTypeDefOf.PositiveEvent,false);}}
+    if(k>=2 && !Adventurer.TestSuppressed)Find.LetterStack.ReceiveLetter("情报：".Loc()+f.Name,f.Name+"（你的头衔：“".Loc()+Title(f)+"”）送来了一封情报信：\n\n".Loc()+IntelText(),LetterDefOf.NeutralEvent);
+    if(k>=4){var t=GiftThing();if(t!=null){DropPodUtility.DropThingsNear(DropCellFinder.TradeDropSpot(map),map,new[]{t},110,false,false,true,false,true,null);s.gifts++;if(!Adventurer.TestSuppressed)Messages.Message(f.Name+"送来了一份礼物：".Loc()+t.LabelCap+"。".Loc(),MessageTypeDefOf.PositiveEvent,false);}}
    }
   }
   public static Thing GiftThing(){
@@ -215,7 +215,7 @@ namespace LichPhylactery {
 
  // ---------- 典籍 ----------
  public class Book_Tome : Book {
-  public override string LabelNoCount=>def.label+(this.TryGetQuality(out var q)?"（"+q.GetLabel()+"）":"");
+  public override string LabelNoCount=>def.label+(this.TryGetQuality(out var q)?"（".Loc()+q.GetLabel()+"）".Loc():"");
  }
  public class BookOutcome_Tome : BookOutcomeDoer {
   public Dictionary<int,int> read=new Dictionary<int,int>();readonly Dictionary<int,int> last=new Dictionary<int,int>();readonly Dictionary<int,float> rem=new Dictionary<int,float>();
@@ -234,8 +234,8 @@ namespace LichPhylactery {
    return Growth.FinishTome(r,Ability,Parent,destroyNow);
   }
   public override string GetBenefitsString(Pawn reader){
-   int a=Ability;var s="累计研读 30 小时后："+(a>=0?Adventurer.Names[a]:"属性")+" +2，上限 +2（同一项属性一生只能从典籍得一次），书随即化为灰烬。\n"+ReadSpeed.Note;
-   if(reader!=null){var why=Growth.CannotReadTome(reader,a);s+=why!=null?"\n不能读："+why:"\n"+reader.LabelShort+"：已读 "+(Ticks(reader)/(float)GenDate.TicksPerHour).ToString("0.#")+" / 30 小时。";}
+   int a=Ability;var s="累计研读 30 小时后：".Loc()+(a>=0?Adventurer.Names[a]:"属性".Loc())+" +2，上限 +2（同一项属性一生只能从典籍得一次），书随即化为灰烬。\n".Loc()+ReadSpeed.Note;
+   if(reader!=null){var why=Growth.CannotReadTome(reader,a);s+=why!=null?"\n不能读：".Loc()+why:"\n"+reader.LabelShort+"：已读 ".Loc()+(Ticks(reader)/(float)GenDate.TicksPerHour).ToString("0.#")+" / 30 小时。".Loc();}
    return s;
   }
   public override void PostExposeData(){base.PostExposeData();Scribe_Collections.Look(ref read,"lpTomeRead",LookMode.Value,LookMode.Value);if(read==null)read=new Dictionary<int,int>();}
@@ -257,10 +257,10 @@ namespace LichPhylactery {
   public override void PostDestroy(DestroyMode mode,Map previousMap){base.PostDestroy(mode,previousMap);Growth.all.Remove(this);}
   public override void Notify_Equipped(Pawn pawn){base.Notify_Equipped(pawn);Growth.Sync(pawn);}
   public override void Notify_Unequipped(Pawn pawn){base.Notify_Unequipped(pawn);Fiends.Defer(()=>Growth.Sync(pawn));}
-  public string StageLabel(){if(owner==null)return "沉睡（无主）";int s=Growth.Stage(owner);return s>=2?"升华":s==1?"觉醒":"沉睡";}
+  public string StageLabel(){if(owner==null)return "沉睡（无主）".Loc();int s=Growth.Stage(owner);return s>=2?"升华".Loc():s==1?"觉醒".Loc():"沉睡".Loc();}
   public override string CompInspectStringExtra(){
-   if(owner!=null)return "主人："+owner.LabelShort+"（"+StageLabel()+"）";
-   int best=kills.Count==0?0:kills.Values.Max();return "沉睡：第一个用它击杀 "+Growth.LegacyKills+" 个敌人的人成为主人（目前最多 "+best+"）";
+   if(owner!=null)return "主人：".Loc()+owner.LabelShort+"（".Loc()+StageLabel()+"）".Loc();
+   int best=kills.Count==0?0:kills.Values.Max();return "沉睡：第一个用它击杀 ".Loc()+Growth.LegacyKills+" 个敌人的人成为主人（目前最多 ".Loc()+best+"）".Loc();
   }
   public override void PostExposeData(){
    base.PostExposeData();Scribe_References.Look(ref owner,"lpLegacyOwner");Scribe_Collections.Look(ref kills,"lpLegacyKills",LookMode.Value,LookMode.Value);
@@ -286,7 +286,7 @@ namespace LichPhylactery {
   }
   public override bool AICanTargetNow(LocalTargetInfo target){var t=target.Pawn;return t!=null && !t.Dead && !t.Downed && t.HostileTo(parent.pawn);}
   public override bool GizmoDisabled(out string reason){
-   var c=Growth.Legacy(parent.pawn);if(c==null || c.owner!=parent.pawn || Growth.Stage(parent.pawn)<1){reason="要握着觉醒的传承武器。";return true;}
+   var c=Growth.Legacy(parent.pawn);if(c==null || c.owner!=parent.pawn || Growth.Stage(parent.pawn)<1){reason="要握着觉醒的传承武器。".Loc();return true;}
    return base.GizmoDisabled(out reason);
   }
  }
@@ -321,7 +321,7 @@ namespace LichPhylactery {
  // ==================== Harmony ====================
  // 声望：完成派系任务 +3。
  [HarmonyPatch(typeof(Quest),nameof(Quest.End))]
- public static class GrowthQuestRep {static void Postfix(Quest __instance,QuestEndOutcome outcome){if(outcome!=QuestEndOutcome.Success || !Growth.RepOn)return;foreach(var f in __instance.InvolvedFactions.Where(Growth.Tracked).Distinct().ToList())Growth.Gain(f,Growth.QuestRep,"完成了任务："+__instance.name);}}
+ public static class GrowthQuestRep {static void Postfix(Quest __instance,QuestEndOutcome outcome){if(outcome!=QuestEndOutcome.Success || !Growth.RepOn)return;foreach(var f in __instance.InvolvedFactions.Where(Growth.Tracked).Distinct().ToList())Growth.Gain(f,Growth.QuestRep,"完成了任务：".Loc()+__instance.name);}}
  // 声望：送礼（好感上升且原因是礼物）。
  [HarmonyPatch(typeof(Faction),nameof(Faction.TryAffectGoodwillWith))]
  public static class GrowthGiftRep {
@@ -362,7 +362,7 @@ namespace LichPhylactery {
  }
  // 派系信息里写声望和头衔。
  [HarmonyPatch(typeof(Faction),nameof(Faction.GetInfoText))]
- public static class GrowthRepInfo {static void Postfix(Faction __instance,ref string __result){if(!Growth.RepOn || !Growth.Tracked(__instance))return;__result+="\n\n殖民地声望："+Growth.Rep(__instance)+" / "+Growth.RepMax+"（头衔："+Growth.Title(__instance)+"）";}}
+ public static class GrowthRepInfo {static void Postfix(Faction __instance,ref string __result){if(!Growth.RepOn || !Growth.Tracked(__instance))return;__result+="\n\n殖民地声望：".Loc()+Growth.Rep(__instance)+" / "+Growth.RepMax+"（头衔：".Loc()+Growth.Title(__instance)+"）".Loc();}}
 
  // ---------- 设置（画在“DND 特性”分组里） ----------
  public partial class Settings {

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（BackgroundTraits.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>士兵背景（征召中）</zh><en>soldier background (drafted)</en></s>
+  <s><zh>士兵背景（3格内有士兵战友）</zh><en>soldier background (fellow soldier within 3 cells)</en></s>
+  <s><zh>局外人背景（野外）</zh><en>outlander background (wilderness)</en></s>
+  <s><zh>局外人背景（野生植物）</zh><en>outlander background (wild plants)</en></s>
+  <s><zh>罪犯背景（黑网商队）</zh><en>criminal background (black-market caravan)</en></s>
+  <s><zh>  - 罪犯背景: </zh><en>  - criminal background: </en></s>
+  <s><zh>  - 殖民地有罪犯背景的殖民者: </zh><en>  - colony has colonists with a criminal background: </en></s>
+  <s><zh>背景特性</zh><en>background trait</en></s>
+  <s><zh>侍僧、罪犯、民间英雄、贵族、贤者、士兵、隐士、局外人 8 个背景特性进入原版特性随机池，一个人最多一个背景。关闭后不再生成新的背景特性，已有的保留。立即生效。</zh><en>Eight background traits (acolyte, criminal, folk hero, noble, sage, soldier, hermit, outlander) join the vanilla random trait pool, at most one background per person. When off, no new background traits are generated; existing ones are kept. Takes effect immediately.</en></s>
+  <s><zh>背景特性出现率：</zh><en>Background trait frequency: </en></s>
+  <s><zh>%（每个背景的出现权重 = 0.3 × 此值）</zh><en>% (each background's spawn weight = 0.3 × this value)</en></s>
+</LPStrings>

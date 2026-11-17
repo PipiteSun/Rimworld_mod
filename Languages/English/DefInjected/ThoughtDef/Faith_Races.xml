@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 与魔鬼讨价还价 -->
+  <LP_InfernalBargain.stages.0.label>haggled with a devil</LP_InfernalBargain.stages.0.label>
+  <!-- 我又跟那个声音做了一笔交易。我不想知道它要拿走什么。 -->
+  <LP_InfernalBargain.stages.0.description>I made another deal with that voice. I don't want to know what it'll take.</LP_InfernalBargain.stages.0.description>
+  <!-- 附近有巫妖 -->
+  <LP_AasimarSeesLich.stages.0.label>lich nearby</LP_AasimarSeesLich.stages.0.label>
+  <!-- 那东西逃过了死亡。我身上的每一滴天界之血都在尖叫。 -->
+  <LP_AasimarSeesLich.stages.0.description>That thing escaped death. Every drop of celestial blood in me is screaming.</LP_AasimarSeesLich.stages.0.description>
+  <!-- 附近有死灵造物 -->
+  <LP_AasimarSeesConstruct.stages.0.label>necromantic construct nearby</LP_AasimarSeesConstruct.stages.0.label>
+  <!-- 被拼起来的死者在走动。不该是这样的。 -->
+  <LP_AasimarSeesConstruct.stages.0.description>Stitched-together dead are walking around. It shouldn't be like this.</LP_AasimarSeesConstruct.stages.0.description>
+  <!-- 附近有阿斯莫 -->
+  <LP_LichSeesAasimar.stages.0.label>aasimar nearby</LP_LichSeesAasimar.stages.0.label>
+  <!-- 那圈光环刺得我眼睛疼。 -->
+  <LP_LichSeesAasimar.stages.0.description>That halo hurts my eyes.</LP_LichSeesAasimar.stages.0.description>
+  <!-- 异类 -->
+  <LP_TieflingStranger.stages.0.label>outsider</LP_TieflingStranger.stages.0.label>
+  <!-- 那个长着犄角的家伙还没在这里住多久，我总觉得他身上有硫磺味。 -->
+  <LP_TieflingStranger.stages.0.description>That horned one hasn't lived here long, and I keep thinking they smell of sulfur.</LP_TieflingStranger.stages.0.description>
+  <!-- 魔鬼之血 -->
+  <LP_AasimarTieflingOpinion.stages.0.label>fiendish blood</LP_AasimarTieflingOpinion.stages.0.label>
+  <!-- 宿命之友 -->
+  <LP_AasimarTieflingOpinion.stages.1.label>friend of fate</LP_AasimarTieflingOpinion.stages.1.label>
+</LanguageData>

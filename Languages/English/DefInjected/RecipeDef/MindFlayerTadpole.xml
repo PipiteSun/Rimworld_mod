@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 植入夺心魔蝌蚪 -->
+  <LP_ImplantTadpole.label>implant mind flayer tadpole</LP_ImplantTadpole.label>
+  <!-- 把一条夺心魔蝌蚪放进目标的颅腔。蝌蚪会在约5天内（模组设置可调）把宿主化形为夺心魔，化形后加入实施手术者的阵营。对不情愿的人这是暴行。 -->
+  <LP_ImplantTadpole.description>Place a mind flayer tadpole into the target's skull. Within about 5 days (adjustable in mod settings) the tadpole turns the host into a mind flayer, which then joins the faction of whoever performed the surgery. Doing this to an unwilling person is an atrocity.</LP_ImplantTadpole.description>
+  <!-- 正在给TargetA植入夺心魔蝌蚪。 -->
+  <LP_ImplantTadpole.jobString>Implanting a mind flayer tadpole into TargetA.</LP_ImplantTadpole.jobString>
+  <!-- 摘除夺心魔蝌蚪 -->
+  <LP_RemoveTadpole.label>remove mind flayer tadpole</LP_RemoveTadpole.label>
+  <!-- 开颅取出寄生在大脑里的夺心魔蝌蚪。化形完成之前都可以摘除，蝌蚪会在取出时死去。 -->
+  <LP_RemoveTadpole.description>Open the skull and remove the mind flayer tadpole parasitizing the brain. It can be removed any time before ceremorphosis completes; the tadpole dies when taken out.</LP_RemoveTadpole.description>
+  <!-- 正在从TargetA的大脑里摘除蝌蚪。 -->
+  <LP_RemoveTadpole.jobString>Removing a tadpole from TargetA's brain.</LP_RemoveTadpole.jobString>
+  <!-- {0}成功从{1}的大脑里摘除了夺心魔蝌蚪。 -->
+  <LP_RemoveTadpole.successfullyRemovedHediffMessage>{0} successfully removed the mind flayer tadpole from {1}'s brain.</LP_RemoveTadpole.successfullyRemovedHediffMessage>
+</LanguageData>

@@ -87,8 +87,8 @@ namespace LichPhylactery {
   // 选分支时：已经会的法术（自己的职业或别的奥秘）不能再选。
   public static string ChoiceBlock(Hediff_Adventurer h,string key,int option){
    if(key==null || !key.StartsWith("secret"))return null;var d=SecretOption(option);if(d==null)return null;
-   foreach(var k in SecretKeys)if(k!=key && ClassSubclass.Choice(h,k)==option)return "已经用魔法奥秘学过「"+d.label+"」";
-   if(h?.pawn?.abilities?.GetAbility(d)!=null)return "已经会「"+d.label+"」了";
+   foreach(var k in SecretKeys)if(k!=key && ClassSubclass.Choice(h,k)==option)return "已经用魔法奥秘学过「".Loc()+d.label+"」".Loc();
+   if(h?.pawn?.abilities?.GetAbility(d)!=null)return "已经会「".Loc()+d.label+"」了".Loc();
    return null;
   }
 
@@ -136,22 +136,22 @@ namespace LichPhylactery {
    foreach(var r in p.skills.skills.Where(r=>!r.TotallyDisabled && r.passion!=Passion.Major).OrderBy(r=>(int)r.passion).ThenBy(r=>r.Level).Take(3).ToList()){
     r.passion=r.passion==Passion.None?Passion.Minor:Passion.Major;r.Level=Math.Min(20,r.Level+2);got.Add(r);
    }
-   if(got.Count>0 && p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"的博闻强识："+string.Join("、",got.Select(r=>r.def.label))+" 兴趣提升、+2 级。",p,MessageTypeDefOf.PositiveEvent,false);
+   if(got.Count>0 && p.Faction!=null && p.Faction.IsPlayer && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"的博闻强识：".Loc()+string.Join("、".Loc(),got.Select(r=>r.def.label))+" 兴趣提升、+2 级。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);
    return got;
   }
   // 大师花招：战斗中乐韵低于 2 时每 10 秒 +1。
   public static void MasterTick(Hediff_Adventurer h,SubclassData d,Pawn p,int ticks=250){
    if(ClassSubclass.NotInCombat(p) || ClassSystem.Resource(h,Class)>=2f){d.ticks.Remove("bdMaster");return;}
    d.ticks.TryGetValue("bdMaster",out int t);t+=ticks;
-   if(t>=MasterTicks){t-=MasterTicks;ClassSystem.AddResource(h,Class,1f);Items.Mote(p,"大师花招：乐韵 +1",Steel);}
+   if(t>=MasterTicks){t-=MasterTicks;ClassSystem.AddResource(h,Class,1f);Items.Mote(p,"大师花招：乐韵 +1".Loc(),Steel);}
    d.ticks["bdMaster"]=t;
   }
   // 名动四方：每季度（15 天）非敌对派系好感 +2（到 +50 不再加）。
   public static int RenownTick(SubclassData d,Pawn p){
    int now=Now;if(!d.ticks.TryGetValue("bdRenown",out int last) || last<=0){d.ticks["bdRenown"]=Math.Max(1,now);return 0;}
    if(now-last<RenownTicks)return 0;d.ticks["bdRenown"]=now;int n=0;
-   foreach(var fa in Find.FactionManager.AllFactionsVisible.Where(x=>!x.IsPlayer && x.HasGoodwill && !x.def.hidden && !x.HostileTo(Faction.OfPlayer) && x.PlayerGoodwill<RenownCap).ToList()){Factions.ChangeGoodwillExact(fa,RenownGoodwill,"名动四方");n++;}
-   if(n>0 && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"名动四方：歌谣传遍大陆，"+n+" 个派系好感 +"+RenownGoodwill+"。",p,MessageTypeDefOf.PositiveEvent,false);
+   foreach(var fa in Find.FactionManager.AllFactionsVisible.Where(x=>!x.IsPlayer && x.HasGoodwill && !x.def.hidden && !x.HostileTo(Faction.OfPlayer) && x.PlayerGoodwill<RenownCap).ToList()){Factions.ChangeGoodwillExact(fa,RenownGoodwill,"名动四方".Loc());n++;}
+   if(n>0 && !Adventurer.TestSuppressed)Messages.Message(p.LabelShort+"名动四方：歌谣传遍大陆，".Loc()+n+" 个派系好感 +".Loc()+RenownGoodwill+"。".Loc(),p,MessageTypeDefOf.PositiveEvent,false);
    return n;
   }
   // 聊天（BardChat）：吟游诗人（说的、听的都算）+0.2 乐韵；普世言谈：和非敌对派系的人聊天，对方好感 +1（每天最多 +5）。返回好感变化。
@@ -161,7 +161,7 @@ namespace LichPhylactery {
    var d=ClassSubclass.Data(a);if(d==null)return 0;int day=Now/GenDate.TicksPerDay+1;
    d.ticks.TryGetValue("bdUniDay",out int last);d.ticks.TryGetValue("bdUniN",out int n);if(last!=day){last=day;n=0;}
    if(n>=UniversalDailyCap)return 0;
-   d.ticks["bdUniDay"]=last;d.ticks["bdUniN"]=n+1;Factions.ChangeGoodwillExact(b.Faction,1,"普世言谈");return 1;
+   d.ticks["bdUniDay"]=last;d.ticks["bdUniN"]=n+1;Factions.ChangeGoodwillExact(b.Faction,1,"普世言谈".Loc());return 1;
   }
   public static float QualityTiers(Pawn p)=>Users.Count>0 && S(p,FPeerless)?QualityBonus:0f;
   public static bool Foreseeing(Pawn v)=>v!=null && Items.Has(v,"LP_ACB_Foresight");
@@ -173,16 +173,16 @@ namespace LichPhylactery {
    if(e==null || !Known.Contains(e.effect))return null;var t=target.Thing as Pawn;
    switch(e.effect){
     case "BdMockery":case "BdCutting":case "BdBladeWhirl":
-     if(t==null || t.Dead)return "需要选择一个活着的目标。";if(!t.HostileTo(caster))return "只能对敌人使用。";return null;
+     if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();if(!t.HostileTo(caster))return "只能对敌人使用。".Loc();return null;
     case "BdLaughter":case "BdDance":
-     if(t==null || t.Dead)return "需要选择一个活着的目标。";if(!t.HostileTo(caster))return "只能对敌人使用。";
-     if(e.effect=="BdDance"?t.RaceProps.IsMechanoid:Mindless(t))return "对机械体"+(e.effect=="BdDance"?"":"、虫族和没有心智的目标")+"无效。";return null;
+     if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();if(!t.HostileTo(caster))return "只能对敌人使用。".Loc();
+     if(e.effect=="BdDance"?t.RaceProps.IsMechanoid:Mindless(t))return "对机械体".Loc()+(e.effect=="BdDance"?"":"、虫族和没有心智的目标".Loc())+"无效。".Loc();return null;
     case "BdInspire":
-     if(t==null || t.Dead)return "需要选择一个活着的目标。";if(t==caster)return "不能激励自己。";if(t.HostileTo(caster))return "只能对友军使用。";if(!t.RaceProps.Humanlike)return "只能激励人形。";return null;
+     if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();if(t==caster)return "不能激励自己。".Loc();if(t.HostileTo(caster))return "只能对友军使用。".Loc();if(!t.RaceProps.Humanlike)return "只能激励人形。".Loc();return null;
     case "BdCreation":
-     if(t==null || t.Dead)return "需要选择一个活着的目标。";return null;
+     if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();return null;
     case "BdTruce":return TruceCannot(caster,t);
-    case "BdConfusion":case "BdStun":{var map=caster.Map;var c=target.Cell;if(map==null || !c.IsValid || !c.InBounds(map))return "需要选择一个位置。";return null;}
+    case "BdConfusion":case "BdStun":{var map=caster.Map;var c=target.Cell;if(map==null || !c.IsValid || !c.InBounds(map))return "需要选择一个位置。".Loc();return null;}
    }
    return null;
   }
@@ -200,7 +200,7 @@ namespace LichPhylactery {
     case "BdMislead":Mislead(p,rad,e.duration);break;
     case "BdCreation":if(t!=null && !t.Dead){if(t.HostileTo(p))WordKill(p,t,s,pw);else WordHeal(p,t);}break;
     case "BdFinale":Finale(p,e.duration);break;
-    case "BdCutting":if(Hostile(p,t)){Items.Give(t,"LP_BD_CuttingWords",dur,1f);Items.Mote(t,"刻薄之语",Lyric);}break;
+    case "BdCutting":if(Hostile(p,t)){Items.Give(t,"LP_BD_CuttingWords",dur,1f);Items.Mote(t,"刻薄之语".Loc(),Lyric);}break;
     case "BdAnthem":Anthem(p,rad,e.duration,pw);break;
     case "BdFlourishMode":CycleMode(p);break;
     case "BdBladeWhirl":if(Hostile(p,t))BladeWhirl(p,t,s);break;
@@ -222,7 +222,7 @@ namespace LichPhylactery {
   public static void Mock(Pawn p,Pawn t,float amount,int ticks){
    t.TakeDamage(new DamageInfo(Warlock.PsychicDamage,amount,999f,-1f,p));
    if(!t.Dead && !t.RaceProps.IsMechanoid)Items.Give(t,"LP_BD_Mocked",ticks,1f);
-   Items.Mote(t,"恶毒嘲讽",Rose);
+   Items.Mote(t,"恶毒嘲讽".Loc(),Rose);
   }
   // 吟游激励：给目标（不朽传奇：12 格内所有友方人形）。返回激励的人数。
   public static int Inspire(Pawn p,Pawn t,float s){
@@ -237,8 +237,8 @@ namespace LichPhylactery {
    if(hd!=null){hd.caster=p;hd.moved=moved;hd.strength=s;}
    if(S(p,FValor))Items.Give(x,"LP_BD_ValorInspired",ticks,1f);
    int lv=Level(p);
-   if(lv>=5 && !moved && Roll<lv*.02f){var ih=x.mindState?.inspirationHandler;if(ih!=null && !ih.Inspired){var defs=DefDatabase<InspirationDef>.AllDefsListForReading.Where(d=>d.Worker!=null && d.Worker.InspirationCanOccur(x)).ToList();if(defs.Count>0 && ih.TryStartInspiration(defs.RandomElement(),"吟游激励",true))Items.Mote(x,"灵感！",Rose);}}
-   Items.Mote(x,moved?"激励传开了":"吟游激励",Rose);
+   if(lv>=5 && !moved && Roll<lv*.02f){var ih=x.mindState?.inspirationHandler;if(ih!=null && !ih.Inspired){var defs=DefDatabase<InspirationDef>.AllDefsListForReading.Where(d=>d.Worker!=null && d.Worker.InspirationCanOccur(x)).ToList();if(defs.Count>0 && ih.TryStartInspiration(defs.RandomElement(),"吟游激励".Loc(),true))Items.Mote(x,"灵感！".Loc(),Rose);}}
+   Items.Mote(x,moved?"激励传开了".Loc():"吟游激励".Loc(),Rose);
    return hd;
   }
   // 感染性激励：激励到期或对方倒地时转给 10 格内另一个没被激励的友方人形。
@@ -251,14 +251,14 @@ namespace LichPhylactery {
   }
   public static bool Laughter(Pawn p,Pawn t,float s,int ticks){
    if(Mindless(t))return false;
-   if(!Succeed(Chance(StdBase,s,t),t)){Items.Give(t,"LP_BD_Mocked",MockTicks,1f);Items.Mote(t,"忍住了笑",Rose);return false;}
-   Items.Give(t,"LP_BD_Laughing",ticks,1f);t.stances?.stunner?.StunFor(ticks,p,false);Items.Mote(t,"哈哈哈哈！",new Color(.95f,.75f,.4f));
+   if(!Succeed(Chance(StdBase,s,t),t)){Items.Give(t,"LP_BD_Mocked",MockTicks,1f);Items.Mote(t,"忍住了笑".Loc(),Rose);return false;}
+   Items.Give(t,"LP_BD_Laughing",ticks,1f);t.stances?.stunner?.StunFor(ticks,p,false);Items.Mote(t,"哈哈哈哈！".Loc(),new Color(.95f,.75f,.4f));
    return true;
   }
   public static int Rest(Pawn p,float radius,int ticks,float s){
    int n=0;var th=DefCache<ThoughtDef>.Get("LP_BD_RestSongMood");
    foreach(var x in Near(p.Map,p.Position,radius).ToList()){if(!Friendly(p,x) || !x.RaceProps.Humanlike)continue;Items.Give(x,"LP_BD_Resting",ticks,Mathf.Clamp(s,.5f,5f));if(th!=null)x.needs?.mood?.thoughts?.memories?.TryGainMemory(th);n++;}
-   Items.Mote(p,"安歇之歌",Lyric);return n;
+   Items.Mote(p,"安歇之歌".Loc(),Lyric);return n;
   }
   public static bool Fearful(Pawn x)=>x.InMentalState && ClassSubclass.FearState(x.MentalStateDef);
   public static int Countercharm(Pawn p,float radius,int ticks,float s){
@@ -266,16 +266,16 @@ namespace LichPhylactery {
    foreach(var x in Near(p.Map,p.Position,radius).ToList()){
     if(!Friendly(p,x) || !x.RaceProps.Humanlike)continue;
     if(x.InMentalState){var ms=x.MentalState;var md=x.MentalStateDef;
-     if(Fearful(x) || md!=null && !md.IsExtreme && Roll<Mathf.Clamp(StdBase+(s-1f)*PerStrength,.05f,.95f)){ms.RecoverFromState();n++;Items.Mote(x,"回过神来",Lyric);}}
+     if(Fearful(x) || md!=null && !md.IsExtreme && Roll<Mathf.Clamp(StdBase+(s-1f)*PerStrength,.05f,.95f)){ms.RecoverFromState();n++;Items.Mote(x,"回过神来".Loc(),Lyric);}}
     Items.Give(x,"LP_BD_Countercharmed",ticks,1f);
    }
-   Items.Mote(p,"反迷惑之歌",Lyric);return n;
+   Items.Mote(p,"反迷惑之歌".Loc(),Lyric);return n;
   }
   public static int Confusion(Pawn p,IntVec3 c,float radius,int ticks,float s){
    int n=0;
    foreach(var x in Near(p.Map,c,radius).ToList()){
     if(!Hostile(p,x) || x.Downed || Mindless(x))continue;
-    if(Succeed(Chance(StdBase,s,x),x)){Items.Give(x,"LP_BD_Confused",ticks,1f);Items.Mote(x,"困惑",Rose);n++;}else Items.Mote(x,"抵抗！",Rose);
+    if(Succeed(Chance(StdBase,s,x),x)){Items.Give(x,"LP_BD_Confused",ticks,1f);Items.Mote(x,"困惑".Loc(),Rose);n++;}else Items.Mote(x,"抵抗！".Loc(),Rose);
    }
    if(p.Map!=null)foreach(var cell in GenRadial.RadialCellsAround(c,radius,true))if(cell.InBounds(p.Map))FleckMaker.ThrowDustPuffThick(cell.ToVector3Shifted(),p.Map,1f,new Color(.85f,.5f,.75f));
    return n;
@@ -290,12 +290,12 @@ namespace LichPhylactery {
   }
   public static int Ballad(Pawn p,Faction f){
    if(p==null || f==null)return 0;var bad=Notorious(p);bool satire=bad!=null;float s=p.GetStatValue(Power);int amount=BalladAmount(s,satire);
-   Factions.ChangeGoodwillExact(f,amount,satire?"吟游诗人的威名之歌":"吟游诗人的传颂之歌");
+   Factions.ChangeGoodwillExact(f,amount,satire?"吟游诗人的威名之歌".Loc():"吟游诗人的传颂之歌".Loc());
    if(satire)GameComponent_Bard.Instance?.satire.AddDistinct(f.loadID);
    if(p.Map!=null)Events3.ThoughtAll(p.Map,"LP_BD_LegendMood");
    if(!Adventurer.TestSuppressed && p.Faction!=null && p.Faction.IsPlayer){
     var deed=p.Map==null?null:Bards.Deed(p.Map);
-    Find.LetterStack.ReceiveLetter(satire?"威名之歌":"传颂之歌",p.LabelShort+(satire?"把殖民地的恶名（"+bad+"）唱成了一首让人胆寒的歌。\n\n"+f.Name+"好感 +"+amount+"，他们下一次袭击的规模 −10%。":"把殖民地的故事"+(deed!=null?"（"+deed+"）":"")+"写成歌谣传了出去。\n\n"+f.Name+"好感 +"+amount+"。")+"殖民者心情“我们的传说”+5（3 天）。",LetterDefOf.PositiveEvent,p);
+    Find.LetterStack.ReceiveLetter(satire?"威名之歌".Loc():"传颂之歌".Loc(),p.LabelShort+(satire?"把殖民地的恶名（".Loc()+bad+"）唱成了一首让人胆寒的歌。\n\n".Loc()+f.Name+"好感 +".Loc()+amount+"，他们下一次袭击的规模 −10%。".Loc():"把殖民地的故事".Loc()+(deed!=null?"（".Loc()+deed+"）".Loc():"")+"写成歌谣传了出去。\n\n".Loc()+f.Name+"好感 +".Loc()+amount+"。".Loc())+"殖民者心情“我们的传说”+5（3 天）。".Loc(),LetterDefOf.PositiveEvent,p);
    }
    return amount;
   }
@@ -309,47 +309,47 @@ namespace LichPhylactery {
     if(cell.IsValid && cell!=default(IntVec3)){decoy=ThingMaker.MakeThing(def);decoy.SetFactionDirect(p.Faction);GenSpawn.Spawn(decoy,cell,map,WipeMode.FullRefund);}
    }
    if(decoy!=null)foreach(var x in Near(map,origin,radius).ToList())if(Hostile(p,x) && !x.Downed && x.mindState!=null){x.mindState.enemyTarget=decoy;Items.Give(x,"LP_Taunted",ticks);}
-   Items.Mote(p,"惑心幻景",Rose);return decoy;
+   Items.Mote(p,"惑心幻景".Loc(),Rose);return decoy;
   }
   public static bool WordKill(Pawn p,Pawn t,float s,float amount){
    float line=Mathf.Min(KillMax,KillPer*s);
-   if(!Boss(t) && t.health.summaryHealth.SummaryHealthPercent<line){t.Kill(new DamageInfo(Warlock.PsychicDamage,9999f,999f,-1f,p));Items.Mote(p,"力量真言·杀",Rose);return true;}
+   if(!Boss(t) && t.health.summaryHealth.SummaryHealthPercent<line){t.Kill(new DamageInfo(Warlock.PsychicDamage,9999f,999f,-1f,p));Items.Mote(p,"力量真言·杀".Loc(),Rose);return true;}
    t.TakeDamage(new DamageInfo(Warlock.PsychicDamage,amount,999f,-1f,p));if(!t.Dead)t.stances?.stunner?.StunFor(360,p);
-   Items.Mote(t,"力量真言",Rose);return false;
+   Items.Mote(t,"力量真言".Loc(),Rose);return false;
   }
   public static float WordHeal(Pawn p,Pawn t){
    float healed=ClassMelee.Heal(t,ClassMelee.InjurySum(t)+1f);
    foreach(var n in new[]{"LP_BD_Confused","LP_BD_Laughing","LP_BD_Mocked","LP_Shaken","LP_MagicSleep","LP_ACB_Dancing"})Items.Remove(t,n);
    var bl=t.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.BloodLoss);if(bl!=null)t.health.RemoveHediff(bl);
    t.stances?.stunner?.StopStun();if(Fearful(t))t.MentalState.RecoverFromState();
-   Items.Mote(t,"力量真言·疗愈",new Color(1f,.9f,.6f));return healed;
+   Items.Mote(t,"力量真言·疗愈".Loc(),new Color(1f,.9f,.6f));return healed;
   }
   public static int Finale(Pawn p,int ticks){
    var map=p.Map;if(map==null)return 0;int n=0;
    Items.Give(p,"LP_BD_FinaleAura",ticks,1f);
    foreach(var x in map.mapPawns.AllPawnsSpawned.ToList())if(Friendly(p,x) && x.RaceProps.Humanlike){Items.Give(x,"LP_BD_FinalSong",ticks,1f);n++;}
-   Items.Mote(p,"终焉之歌",new Color(1f,.8f,.5f));return n;
+   Items.Mote(p,"终焉之歌".Loc(),new Color(1f,.8f,.5f));return n;
   }
   public static int FinaleFearTick(Pawn p){
    int n=0;if(p?.Map==null)return 0;
-   foreach(var x in Near(p.Map,p.Position,FinaleRange).ToList())if(Hostile(p,x) && !x.Downed && !x.RaceProps.IsMechanoid && Roll<FinaleFear && ClassSubclass.Fear(x,FinaleInterval,"终焉之歌"))n++;
+   foreach(var x in Near(p.Map,p.Position,FinaleRange).ToList())if(Hostile(p,x) && !x.Downed && !x.RaceProps.IsMechanoid && Roll<FinaleFear && ClassSubclass.Fear(x,FinaleInterval,"终焉之歌".Loc()))n++;
    return n;
   }
   public static int Anthem(Pawn p,float radius,int ticks,float shield){
    int n=0;
    foreach(var x in Near(p.Map,p.Position,radius).ToList()){if(!Friendly(p,x) || !x.RaceProps.Humanlike)continue;Items.Give(x,"LP_BD_Anthem",ticks,1f);if(Fearful(x))x.MentalState.RecoverFromState();n++;}
    var cur=p.health.hediffSet.GetFirstHediffOfDef(Items.Hediff("LP_FeatInspired"));if(cur==null || cur.Severity<shield)Items.Give(p,"LP_FeatInspired",-1,shield);
-   Items.Mote(p,"勇气战吼",Valiant);return n;
+   Items.Mote(p,"勇气战吼".Loc(),Valiant);return n;
   }
   // 刀光剑舞：0 防御、1 斩击、2 机动；+3 = 花乐韵必定触发。
-  public static readonly string[] ModeNames={"防御","斩击","机动"};
+  public static readonly string[] ModeNames={"防御".Loc(),"斩击".Loc(),"机动".Loc()};
   public static int Mode(Pawn p){var d=ClassSubclass.Data(p);if(d==null)return 0;d.ticks.TryGetValue("bdMode",out int m);return Mathf.Clamp(m,0,5);}
-  public static string ModeText(int m)=>ModeNames[m%3]+(m>=3?"（花乐韵，必定触发）":"（30% 触发，不花乐韵）");
-  public static int CycleMode(Pawn p){var d=ClassSubclass.Data(p);if(d==null)return 0;int m=(Mode(p)+1)%6;d.ticks["bdMode"]=m;Items.Mote(p,"剑花："+ModeText(m),Steel);return m;}
+  public static string ModeText(int m)=>ModeNames[m%3]+(m>=3?"（花乐韵，必定触发）".Loc():"（30% 触发，不花乐韵）".Loc());
+  public static int CycleMode(Pawn p){var d=ClassSubclass.Data(p);if(d==null)return 0;int m=(Mode(p)+1)%6;d.ticks["bdMode"]=m;Items.Mote(p,"剑花：".Loc()+ModeText(m),Steel);return m;}
   public static string Tip(Pawn p,AbilityDef def){
    if(def==null || p==null)return "";
-   if(def.defName=="LP_BD_BladeFlourish")return "\n\n当前招式："+ModeText(Mode(p));
-   if(SecretClass(p,def)!=null)return "\n\n魔法奥秘：用激昂强度，消耗乐韵。";
+   if(def.defName=="LP_BD_BladeFlourish")return "\n\n当前招式：".Loc()+ModeText(Mode(p));
+   if(SecretClass(p,def)!=null)return "\n\n魔法奥秘：用激昂强度，消耗乐韵。".Loc();
    return "";
   }
   static bool busy;
@@ -361,9 +361,9 @@ namespace LichPhylactery {
    if(!proc)return false;int kind=m%3;float s=a.GetStatValue(Power);
    Fiends.Defer(()=>{
     if(a.Dead || !a.Spawned)return;
-    if(kind==0){float amt=10f*s;var cur=a.health.hediffSet.GetFirstHediffOfDef(Items.Hediff("LP_FeatInspired"));if(cur==null || cur.Severity<amt)Items.Give(a,"LP_FeatInspired",FlourishShieldTicks,amt);Items.Mote(a,"剑花·防御",Steel);}
-    else if(kind==1){var other=v.Spawned?Near(v.Map,v.Position,1.5f).FirstOrDefault(x=>x!=v && Hostile(a,x) && !x.Downed && x.Position.AdjacentTo8WayOrInside(a.Position)):null;if(other!=null){busy=true;try{other.TakeDamage(new DamageInfo(def??DamageDefOf.Cut,amount,.2f,-1f,a));}finally{busy=false;}Items.Mote(other,"剑花·斩击",Steel);}}
-    else if(v.Spawned && !v.Dead){var dest=DNDPush.Destination(v.Map,v.Position,(v.Position-a.Position).ToVector3(),2);DNDPush.Move(v,dest);Items.Mote(v,"剑花·机动",Steel);}
+    if(kind==0){float amt=10f*s;var cur=a.health.hediffSet.GetFirstHediffOfDef(Items.Hediff("LP_FeatInspired"));if(cur==null || cur.Severity<amt)Items.Give(a,"LP_FeatInspired",FlourishShieldTicks,amt);Items.Mote(a,"剑花·防御".Loc(),Steel);}
+    else if(kind==1){var other=v.Spawned?Near(v.Map,v.Position,1.5f).FirstOrDefault(x=>x!=v && Hostile(a,x) && !x.Downed && x.Position.AdjacentTo8WayOrInside(a.Position)):null;if(other!=null){busy=true;try{other.TakeDamage(new DamageInfo(def??DamageDefOf.Cut,amount,.2f,-1f,a));}finally{busy=false;}Items.Mote(other,"剑花·斩击".Loc(),Steel);}}
+    else if(v.Spawned && !v.Dead){var dest=DNDPush.Destination(v.Map,v.Position,(v.Position-a.Position).ToVector3(),2);DNDPush.Move(v,dest);Items.Mote(v,"剑花·机动".Loc(),Steel);}
    });
    return true;
   }
@@ -378,25 +378,25 @@ namespace LichPhylactery {
      ClassMelee.Strike(p,x);n++;
     }
    }finally{Items.Remove(p,"LP_WhirlwindFury");}
-   Items.Mote(p,"刃舞旋风 ×"+n,Steel);return n;
+   Items.Mote(p,"刃舞旋风 ×".Loc()+n,Steel);return n;
   }
   // 停战之言。
   static bool RaidLeaderBoss(Lord l)=>l.ownedPawns.Any(x=>Boss(x));
   public static string TruceCannot(Pawn caster,Pawn t){
-   if(t==null || t.Dead)return "需要选择一个活着的目标。";if(!t.HostileTo(caster))return "只能对敌人使用。";if(!t.RaceProps.Humanlike)return "只能对人形喊话。";
-   if(t.Faction==null)return "它不属于任何派系。";
-   var l=t.GetLord();if(l==null)return "它不在袭击队伍里。";
-   if(Items.Undead(t) || Outsiders.Is(t) || RaidLeaderBoss(l) || l.ownedPawns.Any(x=>x.RaceProps.IsMechanoid || Mindless(x) && !x.RaceProps.Animal))return "这支队伍不吃这一套（亡灵、异界来客、机械族、虫族或剧情首领带队）。";
+   if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();if(!t.HostileTo(caster))return "只能对敌人使用。".Loc();if(!t.RaceProps.Humanlike)return "只能对人形喊话。".Loc();
+   if(t.Faction==null)return "它不属于任何派系。".Loc();
+   var l=t.GetLord();if(l==null)return "它不在袭击队伍里。".Loc();
+   if(Items.Undead(t) || Outsiders.Is(t) || RaidLeaderBoss(l) || l.ownedPawns.Any(x=>x.RaceProps.IsMechanoid || Mindless(x) && !x.RaceProps.Animal))return "这支队伍不吃这一套（亡灵、异界来客、机械族、虫族或剧情首领带队）。".Loc();
    return null;
   }
   public static float TruceChance(float s,Lord l)=>Mathf.Clamp(TruceBase+(s-1f)*PerStrength+TrucePerDown*((l?.numPawnsLostViolently??0)+(l?.ownedPawns.Count(x=>x.Downed)??0)),.05f,TruceMax);
   public static bool Truce(Pawn p,Pawn t,float s){
    var l=t.GetLord();if(TruceCannot(p,t)!=null || l==null)return false;
-   if(Roll>=TruceChance(s,l)){Items.Give(t,"LP_BD_Mocked",TruceShaken,1f);Items.Mote(t,"不为所动",Silver);return false;}
+   if(Roll>=TruceChance(s,l)){Items.Give(t,"LP_BD_Mocked",TruceShaken,1f);Items.Mote(t,"不为所动".Loc(),Silver);return false;}
    var f=t.Faction;var map=t.Map;Retreat(l);
-   Factions.ChangeGoodwillExact(f,10,"停战之言");
-   if(!Adventurer.TestSuppressed && p.Faction!=null && p.Faction.IsPlayer)Find.LetterStack.ReceiveLetter("停战",p.LabelShort+"说服了"+f.Name+"的袭击队伍：他们放弃了袭击，正在离开。\n\n"+f.Name+"好感 +10。",LetterDefOf.PositiveEvent,new LookTargets(t));
-   Items.Mote(t,"停战",Silver);return true;
+   Factions.ChangeGoodwillExact(f,10,"停战之言".Loc());
+   if(!Adventurer.TestSuppressed && p.Faction!=null && p.Faction.IsPlayer)Find.LetterStack.ReceiveLetter("停战".Loc(),p.LabelShort+"说服了".Loc()+f.Name+"的袭击队伍：他们放弃了袭击，正在离开。\n\n".Loc()+f.Name+"好感 +10。".Loc(),LetterDefOf.PositiveEvent,new LookTargets(t));
+   Items.Mote(t,"停战".Loc(),Silver);return true;
   }
   public static List<Pawn> Retreat(Lord l){
    var map=l.Map;var f=l.faction;var all=l.ownedPawns.ToList();var go=all.Where(x=>!x.Dead && x.Spawned && !x.Downed).ToList();
@@ -407,9 +407,9 @@ namespace LichPhylactery {
   }
   public static bool Dance(Pawn p,Pawn t,float s,int ticks){
    if(t.RaceProps.IsMechanoid)return false;
-   if(!Succeed(Chance(DanceBase,s,t),t)){Items.Mote(t,"抵抗！",Rose);return false;}
+   if(!Succeed(Chance(DanceBase,s,t),t)){Items.Mote(t,"抵抗！".Loc(),Rose);return false;}
    if(Boss(t))ticks=Math.Min(ticks,DanceBossTicks);
-   Items.Give(t,"LP_ACB_Dancing",ticks,1f);t.stances?.stunner?.StunFor(ticks,p,false);Items.Mote(t,"跳起舞来",Rose);return true;
+   Items.Give(t,"LP_ACB_Dancing",ticks,1f);t.stances?.stunner?.StunFor(ticks,p,false);Items.Mote(t,"跳起舞来".Loc(),Rose);return true;
   }
   public static readonly HashSet<Pawn> Invisible=new HashSet<Pawn>();
   public static int MassInvisibility(Pawn p,float radius,int ticks){
@@ -418,16 +418,16 @@ namespace LichPhylactery {
     if(!Friendly(p,x) || !x.RaceProps.Humanlike)continue;
     var h=HediffMaker.MakeHediff(inv,x);var dis=h.TryGetComp<HediffComp_Disappears>();if(dis!=null)dis.ticksToDisappear=ticks;x.health.AddHediff(h);Invisible.Add(x);n++;
    }
-   Items.Mote(p,"群体隐形",Rose);return n;
+   Items.Mote(p,"群体隐形".Loc(),Rose);return n;
   }
   public static void Reveal(Pawn p){
    Invisible.Remove(p);var inv=DefCache<HediffDef>.Get("PsychicInvisibility");var h=inv==null?null:p?.health?.hediffSet?.GetFirstHediffOfDef(inv);
-   if(h!=null){p.health.RemoveHediff(h);Items.Mote(p,"现形",Rose);}
+   if(h!=null){p.health.RemoveHediff(h);Items.Mote(p,"现形".Loc(),Rose);}
   }
   public static int PowerWordStun(Pawn p,IntVec3 c,float radius,int ticks){
    int n=0;foreach(var x in Near(p.Map,c,radius).ToList())if(Hostile(p,x)){x.stances?.stunner?.StunFor(Boss(x)?ticks/2:ticks,p,false);n++;}
    if(p.Map!=null)foreach(var cell in GenRadial.RadialCellsAround(c,radius,true))if(cell.InBounds(p.Map))FleckMaker.ThrowLightningGlow(cell.ToVector3Shifted(),p.Map,.5f);
-   Items.Mote(p,"力量真言·震慑",Rose);return n;
+   Items.Mote(p,"力量真言·震慑".Loc(),Rose);return n;
   }
 
   // ---------- NPC ----------
@@ -460,7 +460,7 @@ namespace LichPhylactery {
   public override void Notify_PawnPostApplyDamage(DamageInfo dinfo,float totalDamageDealt){
    base.Notify_PawnPostApplyDamage(dinfo,totalDamageDealt);
    if(totalDamageDealt<=0f || dinfo.Def==null || !dinfo.Def.harmsHealth)return;
-   var self=this;Fiends.Defer(()=>{var p=self.pawn;if(p?.health?.hediffSet?.hediffs.Contains(self)==true){p.health.RemoveHediff(self);Items.Mote(p,"笑醒了",Bard.Rose);}});
+   var self=this;Fiends.Defer(()=>{var p=self.pawn;if(p?.health?.hediffSet?.hediffs.Contains(self)==true){p.health.RemoveHediff(self);Items.Mote(p,"笑醒了".Loc(),Bard.Rose);}});
   }
   public override void PostRemoved(){base.PostRemoved();pawn?.stances?.stunner?.StopStun();}
  }
@@ -473,10 +473,10 @@ namespace LichPhylactery {
    Act(p,Rand.Range(0,3));
   }
   public static void Act(Pawn p,int roll){
-   if(roll==0){p.stances?.stunner?.StunFor(Bard.ConfuseInterval,p,false);Items.Mote(p,"发呆",Bard.Rose);return;}
+   if(roll==0){p.stances?.stunner?.StunFor(Bard.ConfuseInterval,p,false);Items.Mote(p,"发呆".Loc(),Bard.Rose);return;}
    if(roll==2){
     var t=Races124.PawnsNear(p.Map,p.Position,6f).Where(x=>x!=p && !x.Dead && !x.Downed && x.Spawned).OrderBy(x=>x.Position.DistanceToSquared(p.Position)).FirstOrDefault();
-    if(t!=null){var job=JobMaker.MakeJob(JobDefOf.AttackMelee,t);job.expiryInterval=Bard.ConfuseInterval;job.killIncappedTarget=false;p.jobs.StartJob(job,JobCondition.InterruptForced);Items.Mote(p,"乱打",Bard.Rose);return;}
+    if(t!=null){var job=JobMaker.MakeJob(JobDefOf.AttackMelee,t);job.expiryInterval=Bard.ConfuseInterval;job.killIncappedTarget=false;p.jobs.StartJob(job,JobCondition.InterruptForced);Items.Mote(p,"乱打".Loc(),Bard.Rose);return;}
    }
    var c=CellFinder.RandomClosewalkCellNear(p.Position,p.Map,5);var j=JobMaker.MakeJob(JobDefOf.GotoWander,c);j.expiryInterval=Bard.ConfuseInterval;p.jobs.StartJob(j,JobCondition.InterruptForced);
   }
@@ -495,7 +495,7 @@ namespace LichPhylactery {
   public override void TickInterval(int delta){
    base.TickInterval(delta);
    if(used || pawn==null || !pawn.Downed || pawn.Dead)return;used=true;var p=pawn;
-   Fiends.Defer(()=>{if(p.Dead)return;ClassMelee.Heal(p,ClassMelee.InjurySum(p)*.5f);var bl=p.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.BloodLoss);if(bl!=null)bl.Severity=Mathf.Max(0f,bl.Severity-.3f);Items.Mote(p,"歌声里站起来",new Color(1f,.8f,.5f));});
+   Fiends.Defer(()=>{if(p.Dead)return;ClassMelee.Heal(p,ClassMelee.InjurySum(p)*.5f);var bl=p.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.BloodLoss);if(bl!=null)bl.Severity=Mathf.Max(0f,bl.Severity-.3f);Items.Mote(p,"歌声里站起来".Loc(),new Color(1f,.8f,.5f));});
   }
   public override void ExposeData(){base.ExposeData();Scribe_Values.Look(ref used,"lpBdUsed");}
  }
@@ -536,22 +536,22 @@ namespace LichPhylactery {
   public Vector2 Scroll{get=>scroll;set=>scroll=value;}
   public override void DoWindowContents(Rect r){
    try{
-    float y=LPUI.Title(r,"传颂之歌：唱给谁听？");
+    float y=LPUI.Title(r,"传颂之歌：唱给谁听？".Loc());
     var bad=Bard.Notorious(pawn);float s=pawn.GetStatValue(Bard.Power);int amount=Bard.BalladAmount(s,bad!=null);
-    y+=LPUI.Para(r.x,y,r.width,bad!=null?"殖民地恶名在外（"+bad+"），只能唱成威名之歌给敌对派系：好感 +"+amount+"，他们下一次袭击的规模 −10%。":"选中的派系好感 +"+amount+"，殖民者心情“我们的传说”+5。")+LPUI.Gap;
-    LPUI.Tiny(new Rect(r.x,y,r.width,20f),"歌者："+pawn.LabelShort+"　"+Bard.Power.LabelCap+" ×"+s.ToString("0.00"),true);y+=20f+LPUI.Gap;
+    y+=LPUI.Para(r.x,y,r.width,bad!=null?"殖民地恶名在外（".Loc()+bad+"），只能唱成威名之歌给敌对派系：好感 +".Loc()+amount+"，他们下一次袭击的规模 −10%。".Loc():"选中的派系好感 +".Loc()+amount+"，殖民者心情“我们的传说”+5。".Loc())+LPUI.Gap;
+    LPUI.Tiny(new Rect(r.x,y,r.width,20f),"歌者：".Loc()+pawn.LabelShort+"　".Loc()+Bard.Power.LabelCap+" ×"+s.ToString("0.00"),true);y+=20f+LPUI.Gap;
     var list=Bard.BalladTargets(pawn);
-    y=LPUI.Bar(new Rect(r.x,y,r.width,LPUI.RowH),"可以传颂的派系（"+list.Count+"）");
+    y=LPUI.Bar(new Rect(r.x,y,r.width,LPUI.RowH),"可以传颂的派系（".Loc()+list.Count+"）".Loc());
     var outer=new Rect(r.x,y,r.width,r.yMax-y-48f);
-    if(list.Count==0){LPUI.Unavailable(new Rect(outer.x,outer.y,outer.width,LPUI.RowH*2f),"没有可以传颂的派系。");return;}
+    if(list.Count==0){LPUI.Unavailable(new Rect(outer.x,outer.y,outer.width,LPUI.RowH*2f),"没有可以传颂的派系。".Loc());return;}
     var view=new Rect(0f,0f,outer.width-LPUI.ScrollBarW,list.Count*(RowH+4f));
     Widgets.BeginScrollView(outer,ref scroll,view);
     try{float yy=0f;foreach(var f in list){
      var row=new Rect(0f,yy,view.width,RowH);Widgets.DrawLightHighlight(row);Widgets.DrawHighlightIfMouseover(row);
      var ic=f.def?.FactionIcon;if(ic!=null){GUI.color=f.Color;GUI.DrawTexture(new Rect(row.x+6f,row.y+6f,32f,32f),ic,ScaleMode.ScaleToFit);GUI.color=Color.white;}
      LPUI.LabelFit(new Rect(row.x+46f,row.y+3f,row.width-46f-112f,22f),f.Name);
-     LPUI.Tiny(new Rect(row.x+46f,row.y+24f,row.width-46f-112f,18f),"好感 "+f.PlayerGoodwill+"（"+f.PlayerRelationKind.GetLabelCap()+"）"+(f.leader!=null?"　首领 "+f.leader.LabelShort:""),true);
-     if(LPUI.Button(new Rect(row.xMax-104f,row.y+6f,98f,32f),"唱给他们",true,"好感 +"+amount)){done=true;Bard.Ballad(pawn,f);Close();}
+     LPUI.Tiny(new Rect(row.x+46f,row.y+24f,row.width-46f-112f,18f),"好感 ".Loc()+f.PlayerGoodwill+"（".Loc()+f.PlayerRelationKind.GetLabelCap()+"）".Loc()+(f.leader!=null?"　首领 ".Loc()+f.leader.LabelShort:""),true);
+     if(LPUI.Button(new Rect(row.xMax-104f,row.y+6f,98f,32f),"唱给他们".Loc(),true,"好感 +".Loc()+amount)){done=true;Bard.Ballad(pawn,f);Close();}
      yy+=RowH+4f;}}
     finally{Widgets.EndScrollView();}
    }finally{LPUI.Reset();}

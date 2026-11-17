@@ -92,10 +92,10 @@ namespace LichPhylactery {
   readonly List<Pawn> pawns;public AppearanceGallery(List<Pawn> pawns){this.pawns=pawns;forcePause=true;absorbInputAroundWindow=true;}
   public override Vector2 InitialSize=>new Vector2(1160,760);
   public override void DoWindowContents(Rect r){
-   Text.Font=GameFont.Medium;Widgets.Label(new Rect(12,0,1100,35),"人类死灵造物 · 原版外表基因与装备显示");Text.Font=GameFont.Small;
-   string[] labels={"未着甲 · 正面","装备 · 正面","装备 · 侧面","装备 · 背面","装备 · 另一侧"};
+   Text.Font=GameFont.Medium;Widgets.Label(new Rect(12,0,1100,35),"人类死灵造物 · 原版外表基因与装备显示".Loc());Text.Font=GameFont.Small;
+   string[] labels={"未着甲 · 正面".Loc(),"装备 · 正面".Loc(),"装备 · 侧面".Loc(),"装备 · 背面".Loc(),"装备 · 另一侧".Loc()};
    for(int col=0;col<5;col++)Widgets.Label(new Rect(115+col*195,40,190,26),labels[col]);
-   string[] rows={"巫妖/人形","骷髅仆役","血肉巨像","知识死灵"};
+   string[] rows={"巫妖/人形".Loc(),"骷髅仆役".Loc(),"血肉巨像".Loc(),"知识死灵".Loc()};
    for(int row=0;row<4;row++){
     Widgets.Label(new Rect(6,110+row*153,108,50),rows[row]);
     for(int col=0;col<5;col++){var p=pawns[row*2+(col==0?0:1)];var face=col<2?Rot4.South:col==2?Rot4.East:col==3?Rot4.North:Rot4.West;

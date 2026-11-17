@@ -1,0 +1,211 @@
+s01367	Circle 1 (Evocation, upcastable): a bolt of light flies at one enemy within 24 cells, 14 × power radiant damage; for 10 seconds afterwards, the next attack on it deals ×1.3 damage. Upcast: +25% effect per circle. Cooldown 15 seconds.
+s01368	guiding bolt
+s01369	Circle 5 (Evocation, ritual): consecrate an area of radius 6 within 10 cells for 10 days: undead, demons, devils and anomalous creatures that enter take 10 × power radiant damage per second and are pushed out. Cooldown 1 day.
+s01370	hallow
+s01371	Circle 6 (Evocation): one ally within 20 cells heals 70 × power injury and is cured of disease, blindness, food poisoning and toxins. Cooldown 1 minute.
+s01372	heal
+s01373	Circle 1 (Evocation, upcastable): speak a healing word from afar: one ally within 30 cells instantly heals 10 × power injury (bleeding wounds first). Upcast: +25% effect per circle. Cooldown 10 seconds.
+s01374	healing word
+s01375	Circle 1 (Evocation): within 1 hour, the next time an enemy wounds you, hellfire instantly burns them back for 15 × power fire damage (then fades). Cooldown 20 seconds.
+s01376	hellish rebuke
+s01377	Ate a god-given feast: toxic resistance +100%, mental break threshold -15%.
+s01378	Circle 6 (Conjuration, ritual): lay out a god-given feast: up to 12 friendly humanlikes within 8 cells are fed, cured of food poisoning and toxins, and for 24 hours get toxic resistance +100%, mental break threshold -15%, and 20 × power temporary hit points. Once per day. Cooldown 1 day.
+s01379	Bathed in holy light: damage taken ×0.7.
+s01380	Circle 8 (Abjuration, concentration): the caster and up to 9 allies within 6 cells are bathed in holy light for 1 minute: damage taken ×0.7 (concentration). Cooldown 1 minute.
+s01381	holy aura
+s01382	Circle 3 (Conjuration, concentration): tear open a rift to the void in radius 3 within 24 cells for 1 minute: inside is pitch dark (ranged accuracy drops sharply), and enemies take 6 × power cold and 3 × power acid damage per second (concentration). Cooldown 30 seconds.
+s01383	hunger of Hadar
+s01384	Circle 5 (Conjuration, concentration): a swarm of locusts pours out in radius 4 within 24 cells for 1 minute: enemies inside take 5 × power cut damage per second and move ×0.5 (concentration). Cooldown 40 seconds.
+s01385	insect plague
+s01386	Running and leaping as if flying: movement ×1.3.
+s01387	Circle 1 (Transmutation): one ally within 10 cells runs and leaps as if flying for 1 hour: movement ×1.3. Cooldown 20 seconds.
+s01388	jump
+s01389	Circle 9 (Evocation): up to 12 of the most injured allies within 15 cells each heal 60 × power injury and are cured of disease, blindness and toxins. Cooldown 1 minute.
+s01390	mass heal
+s01391	Circle 3 (Evocation, upcastable): up to 6 of the most injured allies within 20 cells each heal 10 × power injury. Upcast: +25% effect per circle. Cooldown 30 seconds.
+s01392	mass healing word
+s01393	The next spell's duration ×2.
+s01394	Circle 2 (Metamagic): gained at sorcerer level 5: the next spell cast within 30 seconds has duration ×2 (used up once cast). Cooldown 5 seconds.
+s01395	metamagic: extended
+s01396	The next spell's control success +25%.
+s01397	Circle 1 (Metamagic): gained at sorcerer level 3: the next spell cast within 30 seconds gets +25% control success (used up once cast). Cooldown 5 seconds.
+s01398	metamagic: heightened
+s01399	The next spell triggers no cooldown.
+s01400	Circle 3 (Metamagic): gained at sorcerer level 9: the next spell cast within 30 seconds triggers no cooldown (used up once cast). Cooldown 30 seconds.
+s01401	metamagic: quickened
+s01402	Cantrip (Enchantment): an invisible psychic spike stabs into the mind of one enemy within 24 cells: 7 × power psychic damage (ignores armor), and sight -20% for 10 seconds (both shooting and melee worsen). Cooldown 5 seconds.
+s01403	mind sliver
+s01404	Cantrip (Illusion): conjure a lifelike illusion at a point within 24 cells: enemies within radius 4 are distracted, sight -15% for 10 seconds. Cooldown 10 seconds.
+s01405	minor illusion
+s01406	Cantrip (Transmutation): one cell within 10 cells: rock is dug out at once; shallow water, mud and marsh are filled into soil; otherwise the floor is cleaned. Cooldown 5 seconds.
+s01407	mold earth
+s01408	Circle 2 (Evocation, concentration): a silver beam of moonlight of radius 1.5 falls at a point within 24 cells for 1 minute: enemies inside take 10 × power radiant damage per second (concentration). The beam does not move. Cooldown 30 seconds.
+s01409	moonbeam
+s01410	Marked by the light of a guiding bolt: the next enemy attack against it deals ×1.3 damage.
+s01411	guiding light
+s01412	Circle 8 (Enchantment): speak a word of stunning to one enemy within 24 cells: enemies who have lost over half their health (health ≤ 60%) are stunned for 8 seconds; those barely hurt are unaffected. Cooldown 1 minute.
+s01413	power word stun
+s01414	Circle 2 (Evocation, ritual): lead up to 10 allies within 8 cells in prayer: each heals 25 × power injury. Can be cast as a ritual (channel in place for 1 hour, no resources spent). Cooldown 1 minute.
+s01415	prayer of healing
+s01416	Cantrip (Conjuration): flame flares up in your palm and is hurled at one enemy within 20 cells, 8 × power fire damage. Cooldown 4 seconds.
+s01417	produce flame
+s01418	Circle 7 (Enchantment): enemies in radius 3 within 24 cells take 35 × power psychic damage (ignores armor) and are stunned for 2 seconds. Cooldown 40 seconds.
+s01419	psychic scream
+s01420	Circle 1 (Transmutation, ritual): purify food in radius 3 within 10 cells: rot progress reset to zero; friendly people in range are cured of food poisoning. Cooldown 10 seconds.
+s01421	purify food and drink
+s01422	Circle 5 (Necromancy): revive a humanlike corpse within 5 cells that has been dead no more than 10 days; the revived gets 3 days of "resurrection sickness". No effect on liches, necromantic constructs or corpses without a brain. Cooldown 1 day.
+s01423	raise dead
+s01424	The next time an enemy wounds you, hellfire burns them back.
+s01425	Circle 5 (Transmutation): revive a humanlike corpse within 5 cells that has been dead no more than 10 days in a new body: all injuries and missing parts restored, but the race changes randomly to another (elf, dwarf, half-orc, genasi, tiefling..., requires Biotech). Cooldown 1 day.
+s01426	reincarnate
+s01427	Circle 3 (Abjuration): remove curse-type conditions from an ally within 5 cells (hexes, all curses, divine domination), as well as the curse on one cursed item they have equipped. Cooldown 20 seconds.
+s01428	remove curse
+s01429	Damage taken ×0.85.
+s01430	Cantrip (Abjuration): one ally within 10 cells takes ×0.85 damage for 30 seconds. Cooldown 10 seconds.
+s01431	resistance
+s01432	Circle 7 (Necromancy): revive a humanlike corpse within 5 cells no matter how long it has been dead (as long as the corpse still exists), with all injuries and missing parts restored. Cooldown 1 day.
+s01433	resurrection
+s01434	Circle 3 (Necromancy): revive a humanlike corpse within 5 cells that has been dead no more than 1 day; the revived gets 3 days of "resurrection sickness". No effect on liches, necromantic constructs or corpses without a brain. Cooldown 1 minute.
+s01435	revivify
+s01436	A shimmering shield: sharp and blunt armor +20%.
+s01437	Circle 1 (Abjuration, concentration): one ally within 20 cells is surrounded by a shimmering shield for 10 minutes: sharp and blunt armor +20% (concentration). Cooldown 20 seconds.
+s01438	shield of faith
+s01439	Weapon infused with nature's power: melee damage ×1.4.
+s01440	Cantrip (Transmutation): infuse the club or fist in hand with nature's power, melee damage ×1.4 for 1 minute. Cooldown 1 minute.
+s01441	shillelagh
+s01442	Circle 2 (Illusion, ritual, concentration): an area of radius 3 within 20 cells falls utterly silent for 1 minute: nobody inside can speak incantations or cast class spells (concentration). Cooldown 30 seconds.
+s01443	silence
+s01444	Inside a silence spell: cannot speak incantations or cast class spells.
+s01445	silenced
+s01446	A psychic spike is lodged in the mind: sight -20%.
+s01447	Crawling like a spider: no terrain slowdown, movement ×1.1.
+s01448	Circle 2 (Transmutation): one ally within 10 cells crawls like a spider for 1 hour: no slowdown from terrain, snow or plants, movement ×1.1. Cooldown 20 seconds.
+s01449	spider climb
+s01450	Circle 2 (Transmutation, concentration): the ground in radius 3 within 24 cells sprouts spikes for 1 minute: enemies inside move ×0.5 and take 4 × power cut damage per second (concentration). Cooldown 30 seconds.
+s01451	spike growth
+s01452	Spikes underfoot / surrounded by a swarm: movement ×0.5.
+s01453	spiked feet
+s01454	Guardian spirits whirl around: nearby enemies take radiant damage every second and are slowed.
+s01455	Circle 3 (Conjuration, concentration): guardian spirits whirl around you for 1 minute: every second they deal 4 × power radiant damage to enemies within 3 cells and make them move ×0.5 (concentration). Cooldown 30 seconds.
+s01456	spirit guardians
+s01457	Entangled by spirit guardians: movement ×0.5.
+s01458	spirit-bound
+s01459	A radiant hammer floats nearby, striking the nearest enemy every 2 seconds.
+s01460	spiritual weapon
+s01461	Circle 2 (Evocation, concentration): summon a floating radiant hammer; for 1 minute it strikes the nearest enemy within 15 cells of the caster every 2 seconds for 8 × power damage (concentration). Cooldown 30 seconds.
+s01462	Circle 4 (Transmutation): one cell within 15 cells: rock is carved out at once (dropping stone chunks); on open ground a stone wall rises. Cooldown 20 seconds.
+s01463	stone shape
+s01464	Circle 9 (Conjuration, concentration): storm clouds gather over radius 10 within 40 cells for 1 minute: every 2 seconds a 25 × power lightning bolt strikes an enemy in the area (concentration). Cooldown 1 minute.
+s01465	storm of vengeance
+s01466	Circle 6 (Conjuration, concentration): summon a chain devil from the Nine Hells to fight for the caster for 1 hour (concentration). Cooldown 1 minute.
+s01467	summon fiend
+s01468	Had a beautiful dream last night and woke up feeling warm inside.
+s01469	sweet dream
+s01470	Temporary hit points are lost first when taking damage.
+s01471	temporary hit points
+s01472	Cantrip (Transmutation): manifest a minor wonder at a point within 15 cells: filth in radius 2 is cleaned up and a holy light burns for 1 hour. Cooldown 5 seconds.
+s01473	thaumaturgy
+s01474	Cantrip (Transmutation): a thorny whip lashes one enemy within 12 cells for 7 × power cut damage and pulls it up to 3 cells toward the caster. Cooldown 5 seconds.
+s01475	thorn whip
+s01476	Cantrip (Necromancy): a death knell tolls in the ear of one enemy within 24 cells, dealing 8 × power necrotic damage; double damage if the target is already hurt. Cooldown 4 seconds.
+s01477	toll the dead
+s01478	Circle 9 (Transmutation): plant a glowing tree of life (radius 6) within 15 cells: for 1 day, allies inside heal 3 × power injury per second. Cooldown 1 day.
+s01479	tree of life
+s01480	Circle 5 (Conjuration): while standing by a tree (within 2 cells), step into it and come out by another tree on the map (the destination must have a tree within 1 cell and be explored). Cooldown 10 seconds.
+s01481	tree stride
+s01482	Circle 9 (Necromancy): revive a dead colonist, no corpse needed, with all injuries and missing parts restored, waking up next to the caster. Once every 7 days. Cooldown 7 days.
+s01483	true resurrection
+s01484	Strength drained by eyebite: melee damage ×0.5.
+s01485	weakened
+s01486	Circle 7 (Evocation): call a tornado at a point within 30 cells that dissipates after 30 seconds (it wanders on its own and doesn't care who is friend or foe). Cooldown 1 minute.
+s01487	whirlwind
+s01488	Turned into wind: movement ×2.
+s01489	Circle 6 (Transmutation): the caster and up to 9 allies within 8 cells turn into wind for 1 hour: movement ×2. Cooldown 1 minute.
+s01490	wind walk
+s01491	Circle 3 (Evocation, concentration): raise an 8-cell-long wall of gale within 20 cells for 1 minute: enemies on the wall are blown back 2 cells and take 6 × power blunt damage (once per second); allies within 1 cell of the wall take half ranged damage (concentration). Cooldown 30 seconds.
+s01492	wind wall
+s01493	Sheltered by a wind wall: ranged damage taken halved.
+s01494	wind wall shelter
+s01495	Absorbed elemental power: the next melee hit adds fire damage.
+s01496	elemental charge
+s01497	The next elemental damage taken is halved.
+s01498	Circle 1 (Abjuration): within 10 seconds, the next elemental damage taken (fire, cold, lightning, acid, psychic) is halved; after blocking it, the next melee hit deals an extra 8 × power fire damage. Cooldown 10 seconds.
+s01499	absorb elements
+s01500	Circle 5 (Transmutation, concentration): bring stone blocks within 15 cells to life: summon 1 animated statue to fight for the caster for 1 minute (concentration); it falls apart when time is up. Cooldown 1 minute.
+s01501	animate objects
+s01502	Circle 5 (Evocation): summon a huge hand of force: one enemy within 24 cells takes 25 × power force damage, is pushed back 3 cells and dazed for 2 seconds. Cooldown 30 seconds.
+s01503	Bigby's hand
+s01504	Branded with a radiant mark: cannot turn invisible.
+s01505	radiant mark
+s01506	Circle 4 (Enchantment): enemies in radius 4 within 20 cells each have a 55% chance to be forced to walk 5 cells away and freeze for 1.5 seconds (mind resistance resists it, no effect on mechanoids). Cooldown 40 seconds.
+s01507	befuddlement
+s01508	Circle 3 (Conjuration): fire an 8-cell cone of arrows in one direction; enemies inside take 20 × power piercing damage. Cooldown 30 seconds.
+s01509	conjure barrage
+s01510	Circle 5 (Conjuration): fire a sky-filling volley of arrows at a point within 40 cells: enemies within radius 4 take 30 × power piercing damage. Cooldown 1 minute.
+s01511	conjure volley
+s01512	Circle 5 (Illusion, ritual): create a common material out of thin air: spellcasting class level × 10 steel, wood, cloth or granite blocks, or level / 2 components. Once per day. Cooldown 1 day.
+s01513	Nearby allies' melee hits add radiant damage.
+s01514	crusader's mantle
+s01515	Melee hits add radiant damage.
+s01516	crusader's might
+s01517	Circle 3 (Evocation, concentration): for 1 minute, allies within 6 cells of the caster deal an extra 3 × power radiant damage on every melee hit (doubled against undead and fiends) (concentration). Cooldown 1 minute.
+s01518	Circle 1 (Divination): sense all undead, fiends and anomalous creatures on the map (a letter lists their positions) and reveal invisible enemies within 30 cells. Cooldown 1 minute.
+s01519	detect evil
+s01520	The weapon burns with elemental power: every hit adds fire damage.
+s01521	Circle 3 (Transmutation, concentration): one ally's weapon within 20 cells burns with elemental power for 1 hour: every melee or ranged hit deals an extra 5 × power fire damage (concentration). Cooldown 30 seconds.
+s01522	elemental weapon
+s01523	The next hit adds cut damage, and thorns may entangle the target.
+s01524	Circle 1 (Conjuration): within 10 seconds, the next hit (melee or ranged) deals an extra 6 × power cut damage, with a 60% chance for thorns to entangle the target for 4 seconds. Cooldown 6 seconds.
+s01525	ensnaring strike
+s01526	Circle 2 (Conjuration): summon a lasting celestial warhorse (a vanilla horse that belongs to the colony, bonds with the caster, learns all trainable skills, movement ×1.2, damage taken ×0.8). Only one at a time; can be summoned again if it dies. Cannot be ridden. Cooldown 1 day.
+s01527	find steed
+s01528	Especially warm toward others: social impact +30%, negotiation ability +30%.
+s01529	Cantrip (Enchantment): for 1 minute, social impact +30% and negotiation ability +30% (recruiting, trading and persuading are all easier). Cooldown 1 minute.
+s01530	friends
+s01531	Circle 4 (Illusion, concentration): one ally within 20 cells turns invisible for 1 minute and stays hidden even when attacking or casting (concentration). Cooldown 1 minute.
+s01532	greater invisibility
+s01533	Completely vanished; attacking or casting does not reveal them.
+s01534	The metal on the body glows red-hot: takes fire damage every second while wearing metal armor.
+s01535	Circle 2 (Transmutation): heat the metal on one enemy within 20 cells red-hot: 6 × power fire damage (doubled if wearing metal armor), then those in metal armor take another 3 × power fire damage per second for 10 seconds. Cooldown 20 seconds.
+s01536	heat metal
+s01537	Fearless, with temporary hit points constantly topped up.
+s01538	Circle 1 (Enchantment, concentration): one ally within 20 cells is fearless for 1 minute (recovers at once from panic), and every second their temporary hit points are topped up to 6 × power (concentration). Cooldown 30 seconds.
+s01539	heroism
+s01540	Circle 3 (Illusion, concentration): shifting patterns of light appear in radius 3 within 20 cells: enemies inside each have a 55% chance to stare transfixed and fall asleep for 12 seconds (waking when hurt). -5% per level the target is above the caster (minimum 10%), halved against legendary creatures and story bosses; mind resistance also resists it, no effect on mechanoids (concentration). Cooldown 40 seconds.
+s01541	hypnotic pattern
+s01542	Circle 1 (Divination, ritual): tell the quality, enchantment level, whether cursed, whether it has a magic aura, and value of one item within 10 cells. Cooldown 10 seconds.
+s01543	identify
+s01544	Circle 2 (Transmutation): one ally within 10 cells floats a foot above the ground for 1 hour: no slowdown from terrain, snow or plants, movement ×0.9. Cooldown 20 seconds.
+s01545	levitate
+s01546	Floating a foot above the ground: no terrain slowdown, movement ×0.9.
+s01547	The next ranged hit turns into lightning.
+s01548	Circle 3 (Transmutation): within 10 seconds, the next ranged hit turns into a bolt of lightning: an extra 20 × power lightning damage, and enemies within 2 cells of the target each take half. Cooldown 10 seconds.
+s01549	lightning arrow
+s01550	The weapon is imbued with magic: every hit adds force damage.
+s01551	Circle 2 (Transmutation, concentration): one ally's weapon within 20 cells is imbued with magic for 1 hour: every melee or ranged hit deals an extra 3 × power force damage (concentration). Cooldown 30 seconds.
+s01552	magic weapon
+s01553	Circle 6 (Enchantment): cast on one member of a hostile squad within 30 cells, with success chance calculated as for Words of Truce (easier the higher the power and the more of them have fallen): on success the whole squad gives up the raid and leaves the map. No effect on groups of undead, outsiders, mechanoids, insectoids or led by story bosses. Cooldown 2 minutes.
+s01554	mass suggestion: withdraw
+s01555	Circle 6 (Enchantment): one enemy within 30 cells breaks into an unstoppable dance and cannot move for 10 seconds (success chance as Blade Dance's frenzied dance, shorter for story bosses; no effect on mechanoids). Cooldown 1 minute.
+s01556	Otto's irresistible dance
+s01557	Utterly silent: incoming ranged attacks miss 30% of the time.
+s01558	traceless
+s01559	Circle 2 (Abjuration, concentration): the caster and up to 9 allies within 8 cells move silently for 1 hour: ranged attacks against them have a 30% chance to miss (concentration). Rangers in a caravan get an extra caravan button: for 1 day the chance of the caravan being ambushed is halved. Cooldown 1 minute.
+s01560	pass without trace
+s01561	Circle 9 (Evocation): one ally within 10 cells has all injuries healed (except old scars), and is freed from stuns, fear, all control effects, blindness and poisoning. Cooldown 2 minutes.
+s01562	power word heal
+s01563	Circle 7 (Illusion): project an illusion of yourself anywhere on the map: reveals the fog in radius 12 there; for 1 hour, ranged attacks against the caster have a 30% chance to miss (hitting the illusion). Cooldown 2 minutes.
+s01564	project image
+s01565	An illusion of yourself is far away: incoming ranged attacks miss 30% of the time.
+s01566	Set alight by a searing smite: takes fire damage every second.
+s01567	searing
+s01568	The next melee hit adds force damage, and badly hurt targets are banished.
+s01569	Circle 5 (Conjuration): within 10 seconds, the next melee hit deals an extra 25 × power force damage; if the target has lost over half its health (health ≤ 50%) it is banished for 1 minute (except story bosses). Cooldown 20 seconds.
+s01570	banishing smite
+s01571	The next melee hit adds fire damage and ignites the target.
+s01572	Circle 1 (Evocation, upcastable): within 10 seconds, the next melee hit deals an extra 10 × power fire damage and sets the target alight. Upcast: +25% effect per circle. Cooldown 6 seconds.
+s01573	searing smite
+s01574	The next melee hit adds radiant damage and blinds the target.
+s01575	Circle 3 (Evocation, upcastable): within 10 seconds, the next melee hit deals an extra 14 × power radiant damage (doubled against undead and fiends) and blinds the target for 10 seconds. Upcast: +25% effect per circle. Cooldown 10 seconds.
+s01576	blinding smite
+s01577	The next hit adds radiant damage, and the target cannot turn invisible.

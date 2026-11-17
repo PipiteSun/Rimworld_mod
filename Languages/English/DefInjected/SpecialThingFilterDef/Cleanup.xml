@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 巨魔尸体 -->
+  <LP_AllowTrollCorpses.label>troll corpses</LP_AllowTrollCorpses.label>
+  <!-- 带巨魔再生基因的尸体。不烧掉或火化，它们会复活。 -->
+  <LP_AllowTrollCorpses.description>Corpses with the troll regeneration gene. Unless burned or cremated, they will revive.</LP_AllowTrollCorpses.description>
+  <!-- 非巨魔尸体 -->
+  <LP_AllowNonTrollCorpses.label>non-troll corpses</LP_AllowNonTrollCorpses.label>
+  <!-- 除巨魔以外的所有尸体。火化账单里取消勾选这一项，就只烧巨魔。 -->
+  <LP_AllowNonTrollCorpses.description>All corpses except trolls. Untick this in a cremation bill to burn only trolls.</LP_AllowNonTrollCorpses.description>
+</LanguageData>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 回气 -->
+  <LP_SecondWind.label>second wind</LP_SecondWind.label>
+  <!-- 战士调匀呼吸，600刻内持续治疗伤势（总量 = 20 × 战技强度，优先流血伤口）。 -->
+  <LP_SecondWind.description>The fighter steadies their breath, continuously healing injuries over 600 ticks (total = 20 × martial power, bleeding wounds first).</LP_SecondWind.description>
+  <!-- 震慑 -->
+  <LP_Shaken.label>shaken</LP_Shaken.label>
+  <!-- 被震慑：移动 ×0.7、近战命中与射击精度下降。 -->
+  <LP_Shaken.description>Shaken: movement ×0.7, lower melee hit chance and shooting accuracy.</LP_Shaken.description>
+  <!-- 动作如潮 -->
+  <LP_ActionSurge.label>action surge</LP_ActionSurge.label>
+  <!-- 近战冷却 ×0.6、射击冷却 ×0.6，移动 ×1.3。 -->
+  <LP_ActionSurge.description>Melee cooldown ×0.6, shooting cooldown ×0.6, movement ×1.3.</LP_ActionSurge.description>
+  <!-- 武器专精 -->
+  <LP_WeaponMastery.label>weapon specialization</LP_WeaponMastery.label>
+  <!-- 近战伤害提高（×1.24 ～ ×1.45，随战技强度分档）；远程武器的伤害也乘同一档系数。 -->
+  <LP_WeaponMastery.description>Melee damage increased (×1.24 to ×1.45, tiered by martial power); ranged weapon damage also uses the same tier multiplier.</LP_WeaponMastery.description>
+  <!-- 熟练 -->
+  <LP_WeaponMastery.stages.0.label>proficient</LP_WeaponMastery.stages.0.label>
+  <!-- 精通 -->
+  <LP_WeaponMastery.stages.1.label>adept</LP_WeaponMastery.stages.1.label>
+  <!-- 专精 -->
+  <LP_WeaponMastery.stages.2.label>specialist</LP_WeaponMastery.stages.2.label>
+  <!-- 大师 -->
+  <LP_WeaponMastery.stages.3.label>master</LP_WeaponMastery.stages.3.label>
+  <!-- 宗师 -->
+  <LP_WeaponMastery.stages.4.label>grandmaster</LP_WeaponMastery.stages.4.label>
+  <!-- 不屈意志 -->
+  <LP_Indomitable.label>indomitable</LP_Indomitable.label>
+  <!-- 感觉不到疼痛，不会因疼痛倒地，免疫击晕，精神崩溃阈值 -15%。 -->
+  <LP_Indomitable.description>Feels no pain, cannot be downed by pain, immune to stuns, mental break threshold -15%.</LP_Indomitable.description>
+  <!-- 守护姿态 -->
+  <LP_GuardStance.label>guardian stance</LP_GuardStance.label>
+  <!-- 护甲提高（+16% ～ +30%，随战技强度分档），移动 ×0.7；半径 3 内友军受到的伤害有 30% 转到自己身上。 -->
+  <LP_GuardStance.description>Armor increased (+16% to +30%, tiered by martial power), movement ×0.7; 30% of damage taken by allies within radius 3 is transferred to yourself.</LP_GuardStance.description>
+  <!-- 战意再临 -->
+  <LP_SurgeOfBattle.label>renewed fighting spirit</LP_SurgeOfBattle.label>
+  <!-- 近战冷却 ×0.5、近战伤害 ×1.5，免疫击晕；每次近战击杀让所有战士战技立即冷却完毕。 -->
+  <LP_SurgeOfBattle.description>Melee cooldown ×0.5, melee damage ×1.5, immune to stuns; every melee kill instantly resets all fighter maneuvers.</LP_SurgeOfBattle.description>
+  <!-- 旋风之势 -->
+  <LP_WhirlwindFury.label>whirlwind momentum</LP_WhirlwindFury.label>
+  <!-- 旋风斩这一下的近战伤害 × 战技强度。 -->
+  <LP_WhirlwindFury.description>This Whirlwind Attack's melee damage × martial power.</LP_WhirlwindFury.description>
+  <!-- 冲锋之势 -->
+  <LP_ChargeStrike.label>charge momentum</LP_ChargeStrike.label>
+  <!-- 冲锋落地的这一下近战伤害 ×(1 + 0.3 × 战技强度)。 -->
+  <LP_ChargeStrike.description>The melee hit on landing from a charge deals ×(1 + 0.3 × martial power) damage.</LP_ChargeStrike.description>
+  <!-- 额外攻击 -->
+  <LP_ExtraAttack.label>extra attack</LP_ExtraAttack.label>
+  <!-- 物理职业的额外攻击：近战冷却、射击冷却缩短，普通近战命中后有机会追击一次。档位：任一物理职业 5 级第 1 档，战士 10 级第 2 档、15 级第 3 档。 -->
+  <LP_ExtraAttack.description>Extra Attack of martial classes: shorter melee and shooting cooldowns, and a chance of a follow-up after a normal melee hit. Tiers: any martial class at level 5 gives tier 1, fighter level 10 tier 2, level 15 tier 3.</LP_ExtraAttack.description>
+  <!-- 第 1 档 -->
+  <LP_ExtraAttack.stages._1.label>tier 1</LP_ExtraAttack.stages._1.label>
+  <!-- 第 2 档 -->
+  <LP_ExtraAttack.stages._2.label>tier 2</LP_ExtraAttack.stages._2.label>
+  <!-- 第 3 档 -->
+  <LP_ExtraAttack.stages._3.label>tier 3</LP_ExtraAttack.stages._3.label>
+  <!-- 稳固瞄准 -->
+  <LP_SteadyAim.label>steady aim</LP_SteadyAim.label>
+  <!-- 沉下身子瞄准：射击预热 ×0.5、远程命中 ×1.15，移动 ×0.5。 -->
+  <LP_SteadyAim.description>Hunkered down to aim: shooting warmup ×0.5, ranged hit ×1.15, movement ×0.5.</LP_SteadyAim.description>
+  <!-- 被压制 -->
+  <LP_Suppressed.label>suppressed</LP_Suppressed.label>
+  <!-- 被压制射击的火力压得抬不起头：移动 ×0.6、远程命中 ×0.75。 -->
+  <LP_Suppressed.description>Pinned down by suppressing fire: movement ×0.6, ranged hit ×0.75.</LP_Suppressed.description>
+  <!-- 连射 -->
+  <LP_RapidFire.label>rapid shot</LP_RapidFire.label>
+  <!-- 射击冷却 ×0.5；连发武器每轮多打 1 发。 -->
+  <LP_RapidFire.description>Shooting cooldown ×0.5; burst weapons fire 1 extra shot per burst.</LP_RapidFire.description>
+  <!-- 死神之眼 -->
+  <LP_DeadEye.label>eye of death</LP_DeadEye.label>
+  <!-- 远程必中、无视掩体，射击伤害 ×1.5；每次射杀敌人，所有战士战技立刻冷却完毕。 -->
+  <LP_DeadEye.description>Ranged attacks always hit and ignore cover, shooting damage ×1.5; every enemy shot dead instantly resets all fighter maneuvers.</LP_DeadEye.description>
+  <!-- 腿部中弹 -->
+  <LP_Hobbled.label>shot in the leg</LP_Hobbled.label>
+  <!-- 被精准射击打中腿：移动 ×0.5。 -->
+  <LP_Hobbled.description>Leg hit by a precise shot: movement ×0.5.</LP_Hobbled.description>
+  <!-- 压制射击中 -->
+  <LP_SuppressingVolley.label>laying down suppressing fire</LP_SuppressingVolley.label>
+  <!-- 正在倾泻压制火力。 -->
+  <LP_SuppressingVolley.description>Pouring out suppressing fire.</LP_SuppressingVolley.description>
+  <!-- 武艺 -->
+  <LP_MonkStance.label>martial arts</LP_MonkStance.label>
+  <!-- 徒手的武僧：近战伤害提高（× 1 + 0.5 × 战技强度），近战冷却 ×0.85。 -->
+  <LP_MonkStance.description>Unarmed monk: melee damage increased (× 1 + 0.5 × martial power), melee cooldown ×0.85.</LP_MonkStance.description>
+  <!-- 轻身 -->
+  <LP_MonkUnarmored.label>unarmored grace</LP_MonkUnarmored.label>
+  <!-- 不穿重甲的武僧：近战闪避 +10% × 战技强度。 -->
+  <LP_MonkUnarmored.description>Monk without heavy armor: melee dodge +10% × martial power.</LP_MonkUnarmored.description>
+  <!-- 拨挡箭矢 -->
+  <LP_Deflecting.label>deflect missiles</LP_Deflecting.label>
+  <!-- 每发远程攻击的伤害减少（严重度 = 减伤量），减到 0 时整发拨开。 -->
+  <LP_Deflecting.description>Each ranged attack's damage is reduced (severity = reduction); reduced to 0, the whole shot is deflected.</LP_Deflecting.description>
+  <!-- 乘风步 -->
+  <LP_StepOfTheWind.label>step of the wind</LP_StepOfTheWind.label>
+  <!-- 身轻如风：移动 ×1.6、近战闪避 +20%。 -->
+  <LP_StepOfTheWind.description>Light as the wind: movement ×1.6, melee dodge +20%.</LP_StepOfTheWind.description>
+  <!-- 金刚之躯 -->
+  <LP_DiamondSoul.label>diamond body</LP_DiamondSoul.label>
+  <!-- 气凝全身：受到伤害 ×0.7，免疫击晕，精神崩溃阈值 −10%。 -->
+  <LP_DiamondSoul.description>Ki fills the whole body: damage taken ×0.7, immune to stuns, mental break threshold -10%.</LP_DiamondSoul.description>
+  <!-- 颤心 -->
+  <LP_QuiveringPalm.label>quivering</LP_QuiveringPalm.label>
+  <!-- 体内被种下了武僧的颤心之气，几秒后就会爆发。 -->
+  <LP_QuiveringPalm.description>A monk's quivering ki has been planted in the body and will burst in a few seconds.</LP_QuiveringPalm.description>
+  <!-- 空灵之身 -->
+  <LP_EmptyBody.label>empty body</LP_EmptyBody.label>
+  <!-- 身形化入虚空：隐身，受到伤害 ×0.5，每秒治疗（严重度 = 每秒治疗量）。 -->
+  <LP_EmptyBody.description>Body dissolved into the void: invisible, damage taken ×0.5, heals every second (severity = healing per second).</LP_EmptyBody.description>
+  <!-- 至圣斩 -->
+  <LP_SmiteReady.label>divine smite</LP_SmiteReady.label>
+  <!-- 下一次近战命中追加神圣伤害（严重度 = 伤害量），10 秒内有效。 -->
+  <LP_SmiteReady.description>The next melee hit adds holy damage (severity = damage), valid for 10 seconds.</LP_SmiteReady.description>
+  <!-- 神圣武器 -->
+  <LP_SacredWeapon.label>sacred weapon</LP_SacredWeapon.label>
+  <!-- 每次近战命中追加神圣伤害（严重度 = 伤害量）。 -->
+  <LP_SacredWeapon.description>Every melee hit adds holy damage (severity = damage).</LP_SacredWeapon.description>
+  <!-- 誓仇 -->
+  <LP_Enmity.label>vow of enmity</LP_Enmity.label>
+  <!-- 被圣武士立誓追讨：那名圣武士对它的伤害提高。 -->
+  <LP_Enmity.description>Sworn against by a paladin: that paladin deals more damage to it.</LP_Enmity.description>
+  <!-- 守护灵光 -->
+  <LP_ProtectionAura.label>aura of protection</LP_ProtectionAura.label>
+  <!-- 在圣武士的守护灵光里：受到伤害降低（×0.8～×0.95，随神恩强度），精神崩溃阈值 −5%。 -->
+  <LP_ProtectionAura.description>In a paladin's Aura of Protection: damage taken reduced (×0.8 to ×0.95, by divine power), mental break threshold -5%.</LP_ProtectionAura.description>
+  <!-- 勇气灵光 -->
+  <LP_CourageAura.label>aura of courage</LP_CourageAura.label>
+  <!-- 在圣武士的勇气灵光里：不会恐慌逃跑。 -->
+  <LP_CourageAura.description>In a paladin's Aura of Courage: does not panic and flee.</LP_CourageAura.description>
+  <!-- 受庇护 -->
+  <LP_Sheltered.label>protected</LP_Sheltered.label>
+  <!-- 圣武士挡在身前：受到伤害 ×0.5。 -->
+  <LP_Sheltered.description>A paladin stands in front: damage taken ×0.5.</LP_Sheltered.description>
+  <!-- 圣光化身 -->
+  <LP_HolyAvatar.label>holy avatar</LP_HolyAvatar.label>
+  <!-- 圣光加身：每秒灼伤周围的敌人、治疗周围的友军（严重度 = 每秒伤害），免疫击晕与恐慌。 -->
+  <LP_HolyAvatar.description>Clad in holy light: burns surrounding enemies and heals surrounding allies every second (severity = damage per second), immune to stuns and panic.</LP_HolyAvatar.description>
+</LanguageData>

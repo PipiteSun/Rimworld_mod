@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- [PAWN_nameDef]学会走路的同时就学会了拉弓。古林里的每一棵橡树都认得[PAWN_nameDef]，鹿群也从不躲[PAWN_objective]。 -->
+  <LP_Bs_WoodElfChild.description>[PAWN_nameDef] learned to draw a bow at the same time as learning to walk. Every oak in the old forest knows [PAWN_nameDef], and the deer never shy away from [PAWN_objective].</LP_Bs_WoodElfChild.description>
+  <!-- 古林里的小猎手 -->
+  <LP_Bs_WoodElfChild.title>little hunter of the old forest</LP_Bs_WoodElfChild.title>
+  <!-- 小猎手 -->
+  <LP_Bs_WoodElfChild.titleShort>little hunter</LP_Bs_WoodElfChild.titleShort>
+  <!-- [PAWN_nameDef]守着古林的边界整整一个世纪：伐木工、偷猎者、迷路的兽人，都在[PAWN_possessive]的箭下掉过头。 -->
+  <LP_Bs_WoodElfWarden.description>[PAWN_nameDef] guarded the old forest's border for a full century: loggers, poachers and lost orcs all turned back under [PAWN_possessive] arrows.</LP_Bs_WoodElfWarden.description>
+  <!-- 林地守望者 -->
+  <LP_Bs_WoodElfWarden.title>woodland warden</LP_Bs_WoodElfWarden.title>
+  <!-- 守望者 -->
+  <LP_Bs_WoodElfWarden.titleShort>warden</LP_Bs_WoodElfWarden.titleShort>
+  <!-- [PAWN_nameDef]出生在幽暗地域一座卓尔家族的蛛网塔里。在那里，孩子学会的第一件事是不要相信兄弟姐妹，第二件事是怎么往刀上抹毒。 -->
+  <LP_Bs_DrowHouseChild.description>[PAWN_nameDef] was born in the spider-web tower of a drow house in the Underdark. There, the first thing a child learns is never to trust their siblings, and the second is how to poison a blade.</LP_Bs_DrowHouseChild.description>
+  <!-- 魔索布莱城的幼子 -->
+  <LP_Bs_DrowHouseChild.title>youngest child of Menzoberranzan</LP_Bs_DrowHouseChild.title>
+  <!-- 卓尔幼子 -->
+  <LP_Bs_DrowHouseChild.titleShort>drow youngling</LP_Bs_DrowHouseChild.titleShort>
+  <!-- [PAWN_nameDef]受够了罗丝祭司的阴谋，带着一把淬毒短剑逃上地表。阳光刺得[PAWN_objective]睁不开眼，可总比回去强。 -->
+  <LP_Bs_DrowRenegade.description>[PAWN_nameDef] had enough of the schemes of Lolth's priestesses and fled to the surface with a poisoned short sword. The sunlight hurts [PAWN_possessive] eyes, but it beats going back.</LP_Bs_DrowRenegade.description>
+  <!-- 逃离蛛后的叛徒 -->
+  <LP_Bs_DrowRenegade.title>traitor who fled the Spider Queen</LP_Bs_DrowRenegade.title>
+  <!-- 卓尔叛徒 -->
+  <LP_Bs_DrowRenegade.titleShort>drow traitor</LP_Bs_DrowRenegade.titleShort>
+  <!-- [PAWN_nameDef]在丘陵矮人的酒窖里长大，十岁就能分清三十种麦芽，十二岁第一次把老爹灌倒在桌子底下。 -->
+  <LP_Bs_HillDwarfChild.description>[PAWN_nameDef] grew up in a hill dwarf wine cellar, could tell thirty malts apart at ten, and drank [PAWN_possessive] father under the table at twelve.</LP_Bs_HillDwarfChild.description>
+  <!-- 丘陵酿酒坊的孩子 -->
+  <LP_Bs_HillDwarfChild.title>child of a hill brewery</LP_Bs_HillDwarfChild.title>
+  <!-- 酿酒坊孩子 -->
+  <LP_Bs_HillDwarfChild.titleShort>brewery child</LP_Bs_HillDwarfChild.titleShort>
+  <!-- [PAWN_nameDef]在丘陵矮人的盾墙里站了几十年，挨过的刀伤比别人见过的都多。[PAWN_pronoun]从不说累，只说"再来一杯"。 -->
+  <LP_Bs_HillDwarfShieldbearer.description>[PAWN_nameDef] stood in the hill dwarf shield wall for decades and took more sword cuts than others have seen. [PAWN_pronoun] never says "I'm tired", only "another round".</LP_Bs_HillDwarfShieldbearer.description>
+  <!-- 丘陵盾卫 -->
+  <LP_Bs_HillDwarfShieldbearer.title>hill shieldguard</LP_Bs_HillDwarfShieldbearer.title>
+  <!-- 盾卫 -->
+  <LP_Bs_HillDwarfShieldbearer.titleShort>shieldguard</LP_Bs_HillDwarfShieldbearer.titleShort>
+  <!-- [PAWN_nameDef]跟着家族的大篷车走遍了剑湾沿岸，在每一座集市上都交到了朋友，也在每一座集市上都顺走过一块蜂蜜蛋糕。 -->
+  <LP_Bs_LightfootChild.description>[PAWN_nameDef] traveled the whole Sword Coast with the family caravan, made friends at every market, and pinched a honey cake at every market too.</LP_Bs_LightfootChild.description>
+  <!-- 大篷车上的半身人 -->
+  <LP_Bs_LightfootChild.title>caravan halfling</LP_Bs_LightfootChild.title>
+  <!-- 大篷车孩子 -->
+  <LP_Bs_LightfootChild.titleShort>caravan child</LP_Bs_LightfootChild.titleShort>
+  <!-- [PAWN_nameDef]靠一张嘴和一包香料走南闯北。遇到麻烦时，[PAWN_pronoun]总能找到一个大个子挡在前面。 -->
+  <LP_Bs_LightfootWanderer.description>[PAWN_nameDef] wanders far and wide on a quick tongue and a bag of spices. When trouble comes, [PAWN_pronoun] always finds someone big to stand in front.</LP_Bs_LightfootWanderer.description>
+  <!-- 轻足游商 -->
+  <LP_Bs_LightfootWanderer.title>lightfoot peddler</LP_Bs_LightfootWanderer.title>
+  <!-- 游商 -->
+  <LP_Bs_LightfootWanderer.titleShort>peddler</LP_Bs_LightfootWanderer.titleShort>
+  <!-- [PAWN_nameDef]在山坡下的圆门洞屋里长大，每天吃六顿饭，睡到太阳晒屁股。家里的菜园是全村最好的。 -->
+  <LP_Bs_StoutChild.description>[PAWN_nameDef] grew up in a round-doored burrow house at the foot of a hill, eating six meals a day and sleeping until the sun was high. The family garden was the best in the village.</LP_Bs_StoutChild.description>
+  <!-- 洞穴小屋的孩子 -->
+  <LP_Bs_StoutChild.title>burrow cottage child</LP_Bs_StoutChild.title>
+  <!-- 小屋孩子 -->
+  <LP_Bs_StoutChild.titleShort>cottage child</LP_Bs_StoutChild.titleShort>
+  <!-- [PAWN_nameDef]开的旅店以炖菜和麦酒闻名。来过的矮人都说那是地表上最像家的地方，这话[PAWN_pronoun]一直挂在嘴边。 -->
+  <LP_Bs_StoutInnkeeper.description>[PAWN_nameDef]'s inn is famous for its stew and ale. Every dwarf who visits says it's the most homelike place on the surface, and [PAWN_pronoun] never stops repeating it.</LP_Bs_StoutInnkeeper.description>
+  <!-- 敦实族旅店老板 -->
+  <LP_Bs_StoutInnkeeper.title>stout innkeeper</LP_Bs_StoutInnkeeper.title>
+  <!-- 旅店老板 -->
+  <LP_Bs_StoutInnkeeper.titleShort>innkeeper</LP_Bs_StoutInnkeeper.titleShort>
+  <!-- [PAWN_nameDef]五岁拆了家里的钟，六岁装回去了，还多出两个零件。从那以后家里所有会动的东西都被[PAWN_objective]改过。 -->
+  <LP_Bs_RockGnomeChild.description>[PAWN_nameDef] took the family clock apart at five and put it back together at six, with two parts left over. Since then everything in the house that moves has been modified by [PAWN_objective].</LP_Bs_RockGnomeChild.description>
+  <!-- 齿轮堆里的侏儒 -->
+  <LP_Bs_RockGnomeChild.title>gnome in the gear pile</LP_Bs_RockGnomeChild.title>
+  <!-- 齿轮侏儒 -->
+  <LP_Bs_RockGnomeChild.titleShort>gear gnome</LP_Bs_RockGnomeChild.titleShort>
+  <!-- [PAWN_nameDef]做的发条甲虫会飞，发条小狗会叫，发条门锁会骂小偷。只是有一半作品在第一次上弦时就炸了。 -->
+  <LP_Bs_RockGnomeTinker.description>[PAWN_nameDef]'s clockwork beetles fly, clockwork puppies bark and clockwork locks curse at thieves. It's just that half of them explode the first time they are wound up.</LP_Bs_RockGnomeTinker.description>
+  <!-- 发条匠人 -->
+  <LP_Bs_RockGnomeTinker.title>clockwork artisan</LP_Bs_RockGnomeTinker.title>
+  <!-- 发条匠 -->
+  <LP_Bs_RockGnomeTinker.titleShort>clockworker</LP_Bs_RockGnomeTinker.titleShort>
+  <!-- [PAWN_nameDef]的童年玩伴是一只獾和三只松鼠。森林侏儒的村子藏在幻术后面，外人从来找不到。 -->
+  <LP_Bs_ForestGnomeChild.description>[PAWN_nameDef]'s childhood playmates were a badger and three squirrels. Forest gnome villages hide behind illusions; outsiders never find them.</LP_Bs_ForestGnomeChild.description>
+  <!-- 树洞里的侏儒 -->
+  <LP_Bs_ForestGnomeChild.title>gnome of the hollow tree</LP_Bs_ForestGnomeChild.title>
+  <!-- 树洞侏儒 -->
+  <LP_Bs_ForestGnomeChild.titleShort>hollow tree gnome</LP_Bs_ForestGnomeChild.titleShort>
+  <!-- [PAWN_nameDef]用小小的幻术保护林子：让猎人看见不存在的熊，让迷路的孩子跟着萤火走回家。 -->
+  <LP_Bs_ForestGnomeFriend.description>[PAWN_nameDef] protects the woods with little illusions: making hunters see bears that aren't there, and leading lost children home by fireflies.</LP_Bs_ForestGnomeFriend.description>
+  <!-- 林间幻术师 -->
+  <LP_Bs_ForestGnomeFriend.title>woodland illusionist</LP_Bs_ForestGnomeFriend.title>
+  <!-- 幻术师 -->
+  <LP_Bs_ForestGnomeFriend.titleShort>illusionist</LP_Bs_ForestGnomeFriend.titleShort>
+  <!-- [PAWN_nameDef]在没有阳光的城市里长大，学会的第一件事是一动不动地贴着石壁，等巡逻的卓尔走过去。 -->
+  <LP_Bs_DeepGnomeChild.description>[PAWN_nameDef] grew up in a city without sunlight. The first thing [PAWN_pronoun] learned was to press against the stone wall motionless until the drow patrol passed.</LP_Bs_DeepGnomeChild.description>
+  <!-- 幽暗地域的矿工之子 -->
+  <LP_Bs_DeepGnomeChild.title>child of Underdark miners</LP_Bs_DeepGnomeChild.title>
+  <!-- 地侏矿工子 -->
+  <LP_Bs_DeepGnomeChild.titleShort>svirfneblin miner's child</LP_Bs_DeepGnomeChild.titleShort>
+  <!-- [PAWN_nameDef]能听出石头里哪一块藏着宝石。[PAWN_pronoun]逃上地表时，口袋里只带了一块没切好的蓝宝石和满肚子的不信任。 -->
+  <LP_Bs_DeepGnomeGemcutter.description>[PAWN_nameDef] can hear which stone hides a gem. When [PAWN_pronoun] fled to the surface, [PAWN_pronoun] carried only an uncut sapphire and a belly full of distrust.</LP_Bs_DeepGnomeGemcutter.description>
+  <!-- 地侏宝石匠 -->
+  <LP_Bs_DeepGnomeGemcutter.title>svirfneblin gem cutter</LP_Bs_DeepGnomeGemcutter.title>
+  <!-- 宝石匠 -->
+  <LP_Bs_DeepGnomeGemcutter.titleShort>gem cutter</LP_Bs_DeepGnomeGemcutter.titleShort>
+  <!-- 精灵嫌[PAWN_nameDef]长得太快，人类嫌[PAWN_nameDef]长得太慢。[PAWN_pronoun]学会了在两边都说好话，也学会了在两边都不太当真。 -->
+  <LP_Bs_HalfElfChild.description>Elves thought [PAWN_nameDef] grew up too fast; humans thought too slowly. [PAWN_pronoun] learned to say nice things to both sides, and to take neither side too seriously.</LP_Bs_HalfElfChild.description>
+  <!-- 两族之间的孩子 -->
+  <LP_Bs_HalfElfChild.title>child between two peoples</LP_Bs_HalfElfChild.title>
+  <!-- 混血孩子 -->
+  <LP_Bs_HalfElfChild.titleShort>half-blood child</LP_Bs_HalfElfChild.titleShort>
+  <!-- [PAWN_nameDef]替人类城邦和精灵王庭跑腿传话多年，调停过三场差点打起来的边境纠纷。两边都离不开[PAWN_objective]，两边也都不完全信[PAWN_objective]。 -->
+  <LP_Bs_HalfElfEnvoy.description>For years [PAWN_nameDef] ran errands and carried messages between human city-states and the elven court, settling three border disputes that nearly came to war. Neither side can do without [PAWN_objective], and neither fully trusts [PAWN_objective].</LP_Bs_HalfElfEnvoy.description>
+  <!-- 边境使节 -->
+  <LP_Bs_HalfElfEnvoy.title>border envoy</LP_Bs_HalfElfEnvoy.title>
+  <!-- 使节 -->
+  <LP_Bs_HalfElfEnvoy.titleShort>envoy</LP_Bs_HalfElfEnvoy.titleShort>
+  <!-- [PAWN_nameDef]从一颗蛋里孵出来，第一眼看到的是一堆金币，第二眼看到的是金币上睡着的龙。从此[PAWN_pronoun]就知道自己为什么而活。 -->
+  <LP_Bs_KoboldWarrenChild.description>[PAWN_nameDef] hatched from an egg. The first thing [PAWN_pronoun] saw was a pile of gold, the second a dragon sleeping on it. From then on [PAWN_pronoun] knew what to live for.</LP_Bs_KoboldWarrenChild.description>
+  <!-- 龙穴里的蛋 -->
+  <LP_Bs_KoboldWarrenChild.title>egg in the dragon's lair</LP_Bs_KoboldWarrenChild.title>
+  <!-- 龙穴幼崽 -->
+  <LP_Bs_KoboldWarrenChild.titleShort>lair hatchling</LP_Bs_KoboldWarrenChild.titleShort>
+  <!-- [PAWN_nameDef]在龙穴的每一条通道里都埋过东西：刺坑、落石、绊索、装满蜜蜂的罐子。冒险者都恨[PAWN_objective]，龙却很喜欢[PAWN_objective]。 -->
+  <LP_Bs_KoboldTrapper.description>[PAWN_nameDef] buried something in every tunnel of the dragon's lair: spike pits, falling rocks, tripwires, jars full of bees. Adventurers hate [PAWN_objective], but the dragon loves [PAWN_objective].</LP_Bs_KoboldTrapper.description>
+  <!-- 狗头人陷阱师 -->
+  <LP_Bs_KoboldTrapper.title>kobold trapmaker</LP_Bs_KoboldTrapper.title>
+  <!-- 陷阱师 -->
+  <LP_Bs_KoboldTrapper.titleShort>trapmaker</LP_Bs_KoboldTrapper.titleShort>
+  <!-- [PAWN_nameDef]在地精战帮的营地里长大，抢剩饭、躲鞭子、偷看大地精操练。活下来的地精崽子，个个都很机灵。 -->
+  <LP_Bs_GoblinCampChild.description>[PAWN_nameDef] grew up in a goblin warband's camp, fighting for scraps, dodging whips and secretly watching hobgoblins drill. Every goblin brat who survives is sharp.</LP_Bs_GoblinCampChild.description>
+  <!-- 战帮营地的崽子 -->
+  <LP_Bs_GoblinCampChild.title>warband camp brat</LP_Bs_GoblinCampChild.title>
+  <!-- 营地崽子 -->
+  <LP_Bs_GoblinCampChild.titleShort>camp brat</LP_Bs_GoblinCampChild.titleShort>
+  <!-- [PAWN_nameDef]曾经在大地精军团的阵列里服役，见过太多同伴被当成攻城的垫脚石。一个雨夜，[PAWN_pronoun]扔下军旗跑了。 -->
+  <LP_Bs_GoblinoidLegion.description>[PAWN_nameDef] once served in the ranks of a hobgoblin legion and saw too many comrades used as stepping stones for sieges. One rainy night [PAWN_pronoun] threw down the banner and ran.</LP_Bs_GoblinoidLegion.description>
+  <!-- 军团逃兵 -->
+  <LP_Bs_GoblinoidLegion.title>legion deserter</LP_Bs_GoblinoidLegion.title>
+  <!-- 逃兵 -->
+  <LP_Bs_GoblinoidLegion.titleShort>deserter</LP_Bs_GoblinoidLegion.titleShort>
+  <!-- [PAWN_nameDef]能在树影里蹲上一整天，只为等一辆落单的马车。熊地精懒，可伏击的时候从不偷懒。 -->
+  <LP_Bs_BugbearAmbusher.description>[PAWN_nameDef] can crouch in the tree shadows all day just to wait for a lone wagon. Bugbears are lazy, but never when it comes to an ambush.</LP_Bs_BugbearAmbusher.description>
+  <!-- 林道伏击者 -->
+  <LP_Bs_BugbearAmbusher.title>forest road ambusher</LP_Bs_BugbearAmbusher.title>
+  <!-- 伏击者 -->
+  <LP_Bs_BugbearAmbusher.titleShort>ambusher</LP_Bs_BugbearAmbusher.titleShort>
+</LanguageData>

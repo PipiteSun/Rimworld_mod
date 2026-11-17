@@ -16,9 +16,9 @@ namespace LichPhylactery {
    if(h.classes==null)h.classes=new ClassData();
    float y=0f;int pts=ClassSystem.Points(h);
    {var r=new Rect(0f,y,w-130f,26f);if(pts<=0)GUI.color=Color.gray;
-    Widgets.Label(new Rect(r.x,r.y+3f,r.width,24f),"职业点：可用 "+pts+"　已用 "+ClassSystem.Total(h)+" / "+ClassSystem.Budget(h)+(ClassLegendary.Points(h)>0?"　传奇职业点 "+ClassLegendary.Points(h):"")+(h.classes.freeUnlocks>0?"　（冒险者手册：下一个职业跳过门槛）":""));GUI.color=Color.white;
-    TooltipHandler.TipRegion(r,"每个冒险者等级 1 点职业点（传奇等级 21～40 不给），职业等级总和不超过冒险者等级（最多 20）。\n第一个职业：主或副技能 "+ClassSystem.FirstSkill+" 级（或主属性 "+ClassSystem.ScoreGate+"）。\n兼修（最多 "+ClassSystem.MaxClasses+" 个）：冒险者 "+ClassSystem.MultiAdventurerLevel+" 级，且那门技能 "+ClassSystem.MultiSkill+" 级（或主属性 "+ClassSystem.ScoreGate+"）。\n能力在职业等级 "+string.Join(" / ",ClassSystem.AbilityLevels)+" 自动获得（邪术师的秘法奥秘在 11 / 13）；"+ClassSystem.AbilityLevels[ClassSystem.AbilityLevels.Length-1]+" 级的终极另要那门技能 "+ClassSystem.CapstoneSkill+" 级。");
-    if(own && pts>0 && Widgets.ButtonText(new Rect(w-124f,y,124f,26f),"选择职业"))Find.WindowStack.Add(new Dialog_ChooseClass(p));}
+    Widgets.Label(new Rect(r.x,r.y+3f,r.width,24f),"职业点：可用 ".Loc()+pts+"　已用 ".Loc()+ClassSystem.Total(h)+" / "+ClassSystem.Budget(h)+(ClassLegendary.Points(h)>0?"　传奇职业点 ".Loc()+ClassLegendary.Points(h):"")+(h.classes.freeUnlocks>0?"　（冒险者手册：下一个职业跳过门槛）".Loc():""));GUI.color=Color.white;
+    TooltipHandler.TipRegion(r,"每个冒险者等级 1 点职业点（传奇等级 21～40 不给），职业等级总和不超过冒险者等级（最多 20）。\n第一个职业：主或副技能 ".Loc()+ClassSystem.FirstSkill+" 级（或主属性 ".Loc()+ClassSystem.ScoreGate+"）。\n兼修（最多 ".Loc()+ClassSystem.MaxClasses+" 个）：冒险者 ".Loc()+ClassSystem.MultiAdventurerLevel+" 级，且那门技能 ".Loc()+ClassSystem.MultiSkill+" 级（或主属性 ".Loc()+ClassSystem.ScoreGate+"）。\n能力在职业等级 ".Loc()+string.Join(" / ",ClassSystem.AbilityLevels)+" 自动获得（邪术师的秘法奥秘在 11 / 13）；".Loc()+ClassSystem.AbilityLevels[ClassSystem.AbilityLevels.Length-1]+" 级的终极另要那门技能 ".Loc()+ClassSystem.CapstoneSkill+" 级。".Loc());
+    if(own && pts>0 && Widgets.ButtonText(new Rect(w-124f,y,124f,26f),"选择职业".Loc()))Find.WindowStack.Add(new Dialog_ChooseClass(p));}
    y+=30f;
    if(LakeArcana.Slots(h)>0){var ar=new Rect(0f,y,w,22f);GUI.color=new Color(.55f,.8f,1f);Widgets.Label(ar,LakeArcana.SlotLine(h));GUI.color=Color.white;TooltipHandler.TipRegion(ar,LakeArcana.SlotTip);y+=24f;} // 1.100.0
    y=LakeSeals.DrawRows(y,w,p,h); // 1.133.0 通用秘传、湖印
@@ -35,15 +35,15 @@ namespace LichPhylactery {
     var br=new Rect(200f,y+6f,180f,18f);Widgets.FillableBar(br,max<=0?0f:cur/max,Bar(c.color));
     Text.Anchor=TextAnchor.MiddleCenter;Text.Font=GameFont.Tiny;Widgets.Label(br,ClassSystem.ResourceLabel(c.resource)+" "+cur.ToString("0.#")+" / "+max);Text.Anchor=TextAnchor.UpperLeft;Text.Font=GameFont.Small;
     Widgets.DrawHighlightIfMouseover(br);if(Mouse.IsOver(br))TooltipHandler.TipRegion(br,ClassLevelInfo.ResourceTip(h,c)); // 1.89.0 每种资源的真实上限公式
-   }else{GUI.color=Color.gray;Text.Font=GameFont.Tiny;Widgets.Label(new Rect(200f,y+7f,w-320f,20f),(why??"可以学习").Truncate(w-320f));Text.Font=GameFont.Small;GUI.color=Color.white;if(why!=null)TooltipHandler.TipRegion(new Rect(200f,y,w-320f,28f),why);}
+   }else{GUI.color=Color.gray;Text.Font=GameFont.Tiny;Widgets.Label(new Rect(200f,y+7f,w-320f,20f),(why??"可以学习".Loc()).Truncate(w-320f));Text.Font=GameFont.Small;GUI.color=Color.white;if(why!=null)TooltipHandler.TipRegion(new Rect(200f,y,w-320f,28f),why);}
    if(own && pts>0){
     var b=new Rect(w-110f,y+1f,106f,26f);bool ok=why==null;string key=c.defName;
-    if(Widgets.ButtonText(b,armed==key?"确定？":lv>0?"+1 级":"学习",active:ok) && ok){if(armed==key){armed=null;ClassLevelInfo.AddLevel(h,c);}else armed=key;}
-    TooltipHandler.TipRegion(b,ok?(armed==key?"再点一次确认":"点两次确认："+c.label+" "+(lv+1)+" 级"):why);
+    if(Widgets.ButtonText(b,armed==key?"确定？".Loc():lv>0?"+1 级".Loc():"学习".Loc(),active:ok) && ok){if(armed==key){armed=null;ClassLevelInfo.AddLevel(h,c);}else armed=key;}
+    TooltipHandler.TipRegion(b,ok?(armed==key?"再点一次确认".Loc():"点两次确认：".Loc()+c.label+" "+(lv+1)+" 级".Loc()):why);
    }
    y+=30f;
    // 1.89.0 直显：部位生命与职业强度，现在 → 下一级。
-   {string line=ClassLevelInfo.RowLine(p,h,c);if(line!=null){Text.Font=GameFont.Tiny;var lr=new Rect(4f,y,w-8f,Mathf.Max(18f,Text.CalcHeight(line,w-8f)));GUI.color=lv>0?new Color(.85f,.85f,.85f):Color.gray;Widgets.Label(lr,line);GUI.color=Color.white;Text.Font=GameFont.Small;if(Mouse.IsOver(lr))TooltipHandler.TipRegion(lr,"“下一级”是在这个职业再加 1 级之后的值（悬停职业名看每级表）。");y+=lr.height+2f;}else y+=2f;}
+   {string line=ClassLevelInfo.RowLine(p,h,c);if(line!=null){Text.Font=GameFont.Tiny;var lr=new Rect(4f,y,w-8f,Mathf.Max(18f,Text.CalcHeight(line,w-8f)));GUI.color=lv>0?new Color(.85f,.85f,.85f):Color.gray;Widgets.Label(lr,line);GUI.color=Color.white;Text.Font=GameFont.Small;if(Mouse.IsOver(lr))TooltipHandler.TipRegion(lr,"“下一级”是在这个职业再加 1 级之后的值（悬停职业名看每级表）。".Loc());y+=lr.height+2f;}else y+=2f;}
    // 能力树：按获得等级分行，每行最多 4 个。
    var rows=new List<List<ClassAbilityEntry>>();
    foreach(var g in c.abilities.GroupBy(e=>e.level).OrderBy(g=>g.Key)){var l=g.ToList();for(int i=0;i<l.Count;i+=4)rows.Add(l.Skip(i).Take(4).ToList());}
@@ -78,16 +78,16 @@ namespace LichPhylactery {
   // 1.74.0「传奇」行：两个传奇能力的图标、状态，可以学的时候有按钮。
   static float DrawLegendRow(float y,float w,Pawn p,Hediff_Adventurer h,LP_ClassDef c,bool own){
    var row=new Rect(0f,y,w,44f);Widgets.DrawBoxSolid(row,new Color(.35f,.28f,.1f,.25f));
-   GUI.color=new Color(1f,.82f,.35f);Widgets.Label(new Rect(6f,y+12f,50f,24f),"传奇");GUI.color=Color.white;
+   GUI.color=new Color(1f,.82f,.35f);Widgets.Label(new Rect(6f,y+12f,50f,24f),"传奇".Loc());GUI.color=Color.white;
    float x=60f,cw=(w-60f)/Math.Max(1,c.legendary.Count);
    foreach(var a in c.legendary){
     var cell=new Rect(x,y+2f,cw-6f,40f);x+=cw;
     bool have=ClassLegendary.Knows(h,a);string why=have?null:ClassLegendary.CanLearn(h,c,a);
     if(!have)GUI.color=new Color(.5f,.5f,.5f);GUI.DrawTexture(new Rect(cell.x,cell.y+2f,36f,36f),a.uiIcon??BaseContent.BadTex);GUI.color=Color.white;
     float bw=own && !have && why==null?72f:0f;
-    if(!have)GUI.color=Color.gray;Widgets.Label(new Rect(cell.x+40f,cell.y+10f,cell.width-40f-bw,24f),(a.LabelCap+(have?"":"（"+(why??"可以学")+"）")).Truncate(cell.width-40f-bw));GUI.color=Color.white;
-    TooltipHandler.TipRegion(new Rect(cell.x,cell.y,cell.width-bw,cell.height),a.LabelCap+"\n\n"+a.description+"\n\n"+(have?"已掌握":why??"可以学")+"\n学会后"+c.label+"的资源上限 +"+ClassLegendary.ResourceBonus+"。");
-    if(bw>0f){var b=new Rect(cell.xMax-bw,cell.y+6f,bw,28f);string key="leg:"+a.defName;if(Widgets.ButtonText(b,armed==key?"确定？":"学习")){if(armed==key){armed=null;ClassLegendary.Learn(h,c,a,true);}else armed=key;}}
+    if(!have)GUI.color=Color.gray;Widgets.Label(new Rect(cell.x+40f,cell.y+10f,cell.width-40f-bw,24f),(a.LabelCap+(have?"":"（".Loc()+(why??"可以学".Loc())+"）".Loc())).Truncate(cell.width-40f-bw));GUI.color=Color.white;
+    TooltipHandler.TipRegion(new Rect(cell.x,cell.y,cell.width-bw,cell.height),a.LabelCap+"\n\n"+a.description+"\n\n"+(have?"已掌握".Loc():why??"可以学".Loc())+"\n学会后".Loc()+c.label+"的资源上限 +".Loc()+ClassLegendary.ResourceBonus+"。".Loc());
+    if(bw>0f){var b=new Rect(cell.xMax-bw,cell.y+6f,bw,28f);string key="leg:"+a.defName;if(Widgets.ButtonText(b,armed==key?"确定？".Loc():"学习".Loc())){if(armed==key){armed=null;ClassLegendary.Learn(h,c,a,true);}else armed=key;}}
    }
    return y+46f;
   }
@@ -95,9 +95,9 @@ namespace LichPhylactery {
    var d=e.ability;var props=d.comps?.OfType<CompProperties_ClassEffect>().FirstOrDefault();
    // 1.90.0：消耗、冷却、强度按实际公式（传奇能力、职业专属专长的减免与倍率都算进去）。
    int pay=props==null?0:ClassLegendary.Cost(p,d,props);
-   string cost=props==null?"":props.passive?"被动":"消耗 "+ClassSystem.ResourceLabel(c.resource)+" "+pay+(pay!=props.cost?"（基础 "+props.cost+"）":"");
+   string cost=props==null?"":props.passive?"被动".Loc():"消耗 ".Loc()+ClassSystem.ResourceLabel(c.resource)+" "+pay+(pay!=props.cost?"（基础 ".Loc()+props.cost+"）".Loc():"");
    int cd0=d.cooldownTicksRange.max,cd=cd0<=0?cd0:Mathf.Max(1,Mathf.RoundToInt(cd0*ClassFeats.CooldownFactor(p,d)));
-   return d.LabelCap+"（"+c.label+" "+e.level+" 级"+(e.capstoneSkill!=null?"，"+e.capstoneSkill.LabelCap+" "+ClassSystem.CapstoneSkill+" 级":"")+"）\n\n"+d.description+"\n\n"+cost+(cd>0?"　冷却 "+cd.ToStringTicksToPeriod()+(cd!=cd0?"（基础 "+cd0.ToStringTicksToPeriod()+"）":""):"")+(props!=null && props.stat!=null?"\n当前强度 "+(ClassSystem.Strength(p,props)*ClassLegendary.PowerFactor(p,props)).ToStringPercent():"")+"\n\n"+(have?"已掌握":miss??"未掌握");
+   return d.LabelCap+"（".Loc()+c.label+" "+e.level+" 级".Loc()+(e.capstoneSkill!=null?"，".Loc()+e.capstoneSkill.LabelCap+" "+ClassSystem.CapstoneSkill+" 级".Loc():"")+"）\n\n".Loc()+d.description+"\n\n"+cost+(cd>0?"　冷却 ".Loc()+cd.ToStringTicksToPeriod()+(cd!=cd0?"（基础 ".Loc()+cd0.ToStringTicksToPeriod()+"）".Loc():""):"")+(props!=null && props.stat!=null?"\n当前强度 ".Loc()+(ClassSystem.Strength(p,props)*ClassLegendary.PowerFactor(p,props)).ToStringPercent():"")+"\n\n"+(have?"已掌握".Loc():miss??"未掌握".Loc());
   }
  }
 }

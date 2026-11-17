@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 吞噬大脑 -->
+  <LP_DevourBrain.label>brain devouring</LP_DevourBrain.label>
+  <!-- 用触须钻进一个倒地生物（或死亡不超过6小时的新鲜人形尸体）的头颅，吸食大脑。目标立即死亡（大脑缺失），夺心魔获得脑髓并吸收目标最高技能20%的经验。看到的人会深受震撼，目标所属派系好感-15。巫妖与死灵造物没有活着的大脑，吞噬会失败并留下6小时"亡灵之味"。机械体与心灵失聪者无法吞噬。 -->
+  <LP_DevourBrain.description>Bore tentacles into the skull of a downed creature (or a fresh humanlike corpse dead no more than 6 hours) and suck out its brain. The target dies at once (brain missing), and the mind flayer gains brain matter and absorbs 20% of the XP of the target's highest skill. Witnesses are deeply shaken, and the target's faction goodwill -15. Liches and necromantic constructs have no living brain; devouring them fails and leaves a 6-hour "taste of undeath". Mechanoids and the psychically deaf can't be devoured.</LP_DevourBrain.description>
+  <!-- 心灵震爆 -->
+  <LP_MindBlast.label>psychic scream</LP_MindBlast.label>
+  <!-- 向前方锥形区域（9格）释放心灵冲击。敌对目标会被击晕约4秒（按其心灵敏感度缩放），并陷入1小时"心灵震荡"（意识-20%）。心智抗性可以抵抗；机械体与心灵失聪者不受影响。消耗10点脑髓，冷却1天。 -->
+  <LP_MindBlast.description>Release a psychic jolt in a cone ahead (9 cells). Hostile targets are stunned for about 4 seconds (scaled by their psychic sensitivity) and suffer 1 hour of "psychic concussion" (consciousness -20%). Mind resistance can resist it; mechanoids and the psychically deaf are unaffected. Costs 10 brain matter, cooldown 1 day.</LP_MindBlast.description>
+</LanguageData>

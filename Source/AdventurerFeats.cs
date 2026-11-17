@@ -23,7 +23,7 @@ namespace LichPhylactery {
   public List<string> bonusAbilities;
   public List<int> BonusOptions{get{if(bonusIdx==null){bonusIdx=new List<int>();if(bonusAbilities!=null)foreach(var s in bonusAbilities){if(s!=null && s.Trim().ToLowerInvariant()=="any"){bonusIdx=Enumerable.Range(0,6).ToList();break;}int i=Adventurer.AbilityIndex(s);if(i>=0 && !bonusIdx.Contains(i))bonusIdx.Add(i);}}return bonusIdx;}}
   [Unsaved] List<int> bonusIdx;
-  public string BonusText=>BonusOptions.Count==0?null:BonusOptions.Count==6?"任意一项属性 +1（加在当前最高的一项）":string.Join("或",BonusOptions.Select(i=>Adventurer.Names[i]))+" +1"+(BonusOptions.Count>1?"（加在当前更高的一项）":"");
+  public string BonusText=>BonusOptions.Count==0?null:BonusOptions.Count==6?"任意一项属性 +1（加在当前最高的一项）".Loc():string.Join("或".Loc(),BonusOptions.Select(i=>Adventurer.Names[i]))+" +1"+(BonusOptions.Count>1?"（加在当前更高的一项）".Loc():"");
   public string category="General",exclusiveGroup;public List<XenotypeDef> requiredXenotypesAny;public List<GeneDef> requiredGenesAny;public bool requireLich,origin;public int element;public AbilityDef grantAbility;
   public bool Racial=>category=="Racial";
   // 1.88.0 职业专属专长（Defs/Adventurer_ClassFeats.xml，效果在 Source/ClassFeats.cs）：要这个职业到 classLevel 级才能选，只对有这个职业的人显示。
@@ -36,12 +36,12 @@ namespace LichPhylactery {
   public Texture2D Icon=>icon??(icon=iconPath.NullOrEmpty()?BaseContent.BadTex:ContentFinder<Texture2D>.Get(iconPath,false)??BaseContent.BadTex);
   public string PrereqText(){
    var parts=new List<string>();
-   if(requiredClass!=null)parts.Add(requiredClass.label+" "+classLevel+" 级"); // 1.88.0
-   if(minLevel>1)parts.Add(minLevel+" 级");
+   if(requiredClass!=null)parts.Add(requiredClass.label+" "+classLevel+" 级".Loc()); // 1.88.0
+   if(minLevel>1)parts.Add(minLevel+" 级".Loc());
    if(skillReqs!=null)foreach(var r in skillReqs)parts.Add(r.skill.LabelCap+" ≥ "+r.level);
    if(AbilityIdx>=0)parts.Add(Adventurer.Names[AbilityIdx]+" ≥ "+abilityMin);
    var extra=Worker.ExtraPrereq;if(!extra.NullOrEmpty())parts.Add(extra);
-   return parts.Count==0?"无":string.Join("，",parts);
+   return parts.Count==0?"无".Loc():string.Join("，".Loc(),parts);
   }
   public override IEnumerable<string> ConfigErrors(){foreach(var e in base.ConfigErrors())yield return e;if(bonusAbilities!=null && BonusOptions.Count==0)yield return "bonusAbilities has no valid ability";}
  }
@@ -51,11 +51,11 @@ namespace LichPhylactery {
   public virtual int UsesPerDay(Hediff_Adventurer h)=>def.usesPerDay; // 1.67.0 幸运按熟练加值
   // 不满足的前置：null = 满足。
   public virtual string Unmet(Pawn p,Hediff_Adventurer h){
-   if(h==null)return "没有冒险者等级";
-   if(def.requiredClass!=null && ClassSystem.Level(h,def.requiredClass)<def.classLevel)return "需要"+def.requiredClass.label+" "+def.classLevel+" 级"; // 1.88.0 职业专属
-   if(h.level<def.minLevel)return "需要 "+def.minLevel+" 级";
-   if(def.skillReqs!=null)foreach(var r in def.skillReqs){var s=p?.skills?.GetSkill(r.skill);if(s==null || s.TotallyDisabled || s.Level<r.level)return "需要"+r.skill.label+" "+r.level;}
-   int a=def.AbilityIdx;if(a>=0 && h.scores[a]<def.abilityMin)return "需要"+Adventurer.Names[a]+" "+def.abilityMin;
+   if(h==null)return "没有冒险者等级".Loc();
+   if(def.requiredClass!=null && ClassSystem.Level(h,def.requiredClass)<def.classLevel)return "需要".Loc()+def.requiredClass.label+" "+def.classLevel+" 级".Loc(); // 1.88.0 职业专属
+   if(h.level<def.minLevel)return "需要 ".Loc()+def.minLevel+" 级".Loc();
+   if(def.skillReqs!=null)foreach(var r in def.skillReqs){var s=p?.skills?.GetSkill(r.skill);if(s==null || s.TotallyDisabled || s.Level<r.level)return "需要".Loc()+r.skill.label+" "+r.level;}
+   int a=def.AbilityIdx;if(a>=0 && h.scores[a]<def.abilityMin)return "需要".Loc()+Adventurer.Names[a]+" "+def.abilityMin;
    return Feats2.RaceUnmet(def,p)??Feats2.GroupUnmet(def,h); // 1.58.1 种族专长、同组互斥
   }
   public virtual void Gained(Pawn p,Hediff_Adventurer h){Feats2.GrantAbility(p,def.grantAbility,true);}
@@ -63,8 +63,8 @@ namespace LichPhylactery {
  }
  // 战争施法者：有 DND 职业路径（VPE 桥登记）或佩戴圣徽（神术）。
  public class FeatWorker_WarCaster : FeatWorker {
-  public override string ExtraPrereq=>"有"+ClassSystem.SpellcasterText+"或佩戴圣徽";
-  public override string Unmet(Pawn p,Hediff_Adventurer h)=>base.Unmet(p,h)??(Feats.IsCaster(p)?null:"需要"+ClassSystem.SpellcasterText+"或佩戴圣徽");
+  public override string ExtraPrereq=>"有".Loc()+ClassSystem.SpellcasterText+"或佩戴圣徽".Loc();
+  public override string Unmet(Pawn p,Hediff_Adventurer h)=>base.Unmet(p,h)??(Feats.IsCaster(p)?null:"需要".Loc()+ClassSystem.SpellcasterText+"或佩戴圣徽".Loc());
  }
  // 法术狙击：同上，没有法术可放时选它没有意义。
  public class FeatWorker_SpellSniper : FeatWorker_WarCaster {}
@@ -113,7 +113,7 @@ namespace LichPhylactery {
    if(h?.featScore==null || h.featScore.Count==0 || !Adventurer.Enabled)return 0;
    int n=0;foreach(var kv in h.featScore)if(kv.Value==a)n++;return n;
   }
-  public static string ScoreFrom(Hediff_Adventurer h,int a)=>h?.featScore==null?"":string.Join("、",h.feats.Where(f=>h.featScore.TryGetValue(f.defName,out int i) && i==a).Select(f=>f.label));
+  public static string ScoreFrom(Hediff_Adventurer h,int a)=>h?.featScore==null?"":string.Join("、".Loc(),h.feats.Where(f=>h.featScore.TryGetValue(f.defName,out int i) && i==a).Select(f=>f.label));
   // 属性旁的标记：武艺天赋与专长的加值合在一起（例如“18+3”）。
   public static string ScoreTag(Hediff_Adventurer h,int a){int b=CombatGifts.ScoreBonus(h,a)+ScoreBonus(h,a);return b>0?"+"+b:"";}
   // 坚韧：部位生命 +2% × 等级（最多算到 30 级），不受属性效果强度影响。
@@ -167,7 +167,7 @@ namespace LichPhylactery {
    foreach(var inj in p.health.hediffSet.hediffs.OfType<Hediff_Injury>().Where(i=>i.Bleeding).ToList())inj.Tended(Rand.Range(.3f,.5f),1f);
    Feats2.Heal(p,ToughHeal);
    var d=Items.Hediff("LP_FeatToughResolve");if(d!=null){var old=p.health.hediffSet.GetFirstHediffOfDef(d);if(old!=null)p.health.RemoveHediff(old);p.health.AddHediff(d);}
-   Text(p,"坚韧");return true;
+   Text(p,"坚韧".Loc());return true;
   }
 
   // ---------- 幸运：每天熟练加值次，被命中或自己打空时重掷 ----------
@@ -175,8 +175,8 @@ namespace LichPhylactery {
   public static bool LuckyRoll(Pawn attacker,Pawn defender,float chance){
    bool hit=Rand.Chance(chance);
    if(chance<=0f || chance>=1f)return hit;
-   if(!hit && Use(attacker,Lucky)){hit=Rand.Chance(chance);Text(attacker,"幸运");}
-   if(hit && defender!=attacker && Use(defender,Lucky)){hit=Rand.Chance(chance);Text(defender,"幸运");}
+   if(!hit && Use(attacker,Lucky)){hit=Rand.Chance(chance);Text(attacker,"幸运".Loc());}
+   if(hit && defender!=attacker && Use(defender,Lucky)){hit=Rand.Chance(chance);Text(defender,"幸运".Loc());}
    return hit;
   }
   public static bool LuckyInvolved(Pawn a,Pawn d)=>Has(a,Lucky) && Adventurer.Get(a).UsesLeft(Lucky)>0 || Has(d,Lucky) && Adventurer.Get(d).UsesLeft(Lucky)>0;
@@ -198,7 +198,7 @@ namespace LichPhylactery {
   public static Pawn GreatWeaponFollowUp(Pawn attacker){
    if(!gwmPending.Remove(attacker) || attacker==null || !attacker.Spawned || attacker.Downed || attacker.Dead)return null;
    if(attacker.stances.curStance is Stance_Busy)attacker.stances.SetStance(new Stance_Mobile());
-   Text(attacker,"巨武器大师");
+   Text(attacker,"巨武器大师".Loc());
    var next=GenAdj.CellsAdjacent8Way(attacker).Where(c=>c.InBounds(attacker.Map)).SelectMany(c=>c.GetThingList(attacker.Map)).OfType<Pawn>().FirstOrDefault(t=>t!=attacker && !t.Dead && !t.Downed && t.HostileTo(attacker));
    if(next!=null && attacker.meleeVerbs.TryMeleeAttack(next,null,false))return next;
    return null;
@@ -239,9 +239,9 @@ namespace LichPhylactery {
    if(s==null || target==null || s.Dead || s.Downed || s.InMentalState && !s.InAggroMentalState || !s.Awake() || s.stances.stunner.Stunned || !s.HostileTo(target) || s.WorkTagIsDisabled(WorkTags.Violent))return false;
    var h=Adventurer.Get(s);int now=Find.TickManager.TicksGame;if(h==null || now-h.lastSentinelTick<SentinelCooldown)return false;
    if(!(s.meleeVerbs.TryGetMeleeVerb(target) is Verb_MeleeAttack verb))return false;
-   h.lastSentinelTick=now;Text(s,"哨兵");
+   h.lastSentinelTick=now;Text(s,"哨兵".Loc());
    if(!Rand.Chance(s.GetStatValue(StatDefOf.MeleeHitChance)))return false;
-   try{ApplyMelee(verb,new LocalTargetInfo(target));}catch(Exception e){Log.Warning("[DND边缘大陆] 哨兵自由攻击失败："+e.Message);return false;}
+   try{ApplyMelee(verb,new LocalTargetInfo(target));}catch(Exception e){Log.Warning("[DND边缘大陆] 哨兵自由攻击失败：".Loc()+e.Message);return false;}
    var slow=Items.Hediff("LP_FeatSentinelSlow");if(slow!=null && !target.Dead){var old=target.health.hediffSet.GetFirstHediffOfDef(slow);if(old!=null)target.health.RemoveHediff(old);target.health.AddHediff(slow);}
    if(!target.Dead && !target.Downed)target.stances?.stunner?.StunFor(SentinelStunTicks,s,false,true,false); // 1.67.0 定身
    return true;
@@ -285,13 +285,13 @@ namespace LichPhylactery {
     var h=HediffMaker.MakeHediff(d,p);h.Severity=amount;p.health.AddHediff(h);n++;
     var mood=DefDatabase<ThoughtDef>.GetNamedSilentFail("LP_FeatInspiredMood");if(mood!=null)p.needs?.mood?.thoughts?.memories?.TryGainMemory(mood); // 1.67.0
    }
-   Text(leader,"鼓舞领袖");return n;
+   Text(leader,"鼓舞领袖".Loc());return n;
   }
  }
 
  // 鼓舞：吸收伤害的护盾（Severity = 剩余吸收量），1 天后消失。
  public class Hediff_FeatInspired : HediffWithComps {
-  public override string LabelInBrackets=>"剩余 "+Severity.ToString("0");
+  public override string LabelInBrackets=>"剩余 ".Loc()+Severity.ToString("0");
   public override bool ShouldRemove=>base.ShouldRemove || Severity<=.5f;
  }
  public class CompProperties_FeatInspire : CompProperties_AbilityEffect {public CompProperties_FeatInspire(){compClass=typeof(CompAbilityEffect_FeatInspire);}}
@@ -299,8 +299,8 @@ namespace LichPhylactery {
   public override void Apply(LocalTargetInfo target,LocalTargetInfo dest){base.Apply(target,dest);Feats.Inspire(parent.pawn);}
   public override bool GizmoDisabled(out string reason){
    var h=Adventurer.Get(parent.pawn);
-   if(h==null || !Feats.Has(parent.pawn,Feats.Leader)){reason="没有鼓舞领袖专长。";return true;}
-   if(h.UsesLeft(Feats.Leader)<=0){reason="今天的次数用完了（午夜恢复）。";return true;}
+   if(h==null || !Feats.Has(parent.pawn,Feats.Leader)){reason="没有鼓舞领袖专长。".Loc();return true;}
+   if(h.UsesLeft(Feats.Leader)<=0){reason="今天的次数用完了（午夜恢复）。".Loc();return true;}
    return base.GizmoDisabled(out reason);
   }
  }

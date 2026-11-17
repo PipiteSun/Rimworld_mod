@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（CasterEffects.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>需要选择一个活着的目标。</zh><en>Need to pick a living target.</en></s>
+  <s><zh>只能对敌人使用。</zh><en>Can only be used on enemies.</en></s>
+  <s><zh>只对人形有效。</zh><en>Only works on humanlikes.</en></s>
+  <s><zh>只对动物有效。</zh><en>Only works on animals.</en></s>
+  <s><zh>对机械体无效。</zh><en>No effect on mechanoids.</en></s>
+  <s><zh>只能对友军使用。</zh><en>Can only be used on allies.</en></s>
+  <s><zh>拉近</zh><en>pulled in</en></s>
+  <s><zh>推开</zh><en>pushed away</en></s>
+  <s><zh>法术</zh><en>spell</en></s>
+  <s><zh>治疗 </zh><en>Heal </en></s>
+  <s><zh>被迫走开</zh><en>forced away</en></s>
+  <s><zh>伤势不重，不受影响</zh><en>Not badly hurt; unaffected</en></s>
+  <s><zh>命令：趴下</zh><en>Command: grovel</en></s>
+  <s><zh>命令术</zh><en>command</en></s>
+  <s><zh>命令：滚开</zh><en>Command: flee</en></s>
+  <s><zh>命令：放下</zh><en>Command: drop</en></s>
+  <s><zh>信仰守卫</zh><en>guardian of faith</en></s>
+  <s><zh>找不到可以召唤的生物。</zh><en>No creature that can be summoned was found.</en></s>
+  <s><zh>[DND边缘大陆] 召唤失败：</zh><en>[DND Rimlands] Summon failed: </en></s>
+  <s><zh>需要人形尸体。</zh><en>Needs a humanlike corpse.</en></s>
+  <s><zh>对巫妖和死灵造物无效。</zh><en>No effect on liches and necromantic constructs.</en></s>
+  <s><zh>死亡超过 </zh><en>Dead for more than </en></s>
+  <s><zh> 天，灵魂已经走远。</zh><en> days; the soul has wandered far.</en></s>
+  <s><zh>大脑已经不在了。</zh><en>The brain is gone.</en></s>
+  <s><zh>施法者</zh><en>the caster</en></s>
+  <s><zh>的法术中重新睁开了眼睛。</zh><en>'s spell, they opened their eyes again.</en></s>
+  <s><zh>[DND边缘大陆] 转生术换种族失败：</zh><en>[DND Rimlands] Reincarnate race change failed: </en></s>
+  <s><zh>转生：</zh><en>Reincarnated: </en></s>
+  <s><zh>解除了 </zh><en>Removed </en></s>
+  <s><zh> 个诅咒</zh><en> curses</en></s>
+  <s><zh>身上没有诅咒</zh><en>No curses on them</en></s>
+  <s><zh>没有可以复原的</zh><en>Nothing to restore</en></s>
+  <s><zh>复原：</zh><en>Restored: </en></s>
+  <s><zh>需要选择一个格子。</zh><en>Need to pick a cell.</en></s>
+  <s><zh>格子上有人。</zh><en>There's someone on the cell.</en></s>
+  <s><zh>这里放不下石墙。</zh><en>A stone wall can't fit here.</en></s>
+  <s><zh>要站在一棵树旁边（2 格内）。</zh><en>Must stand next to a tree (within 2 cells).</en></s>
+  <s><zh>需要一个已探索、能站立的格子。</zh><en>Needs an explored, standable cell.</en></s>
+  <s><zh>目的地 1 格内要有一棵树。</zh><en>There must be a tree within 1 cell of the destination.</en></s>
+  <s><zh>需要选择一只动物。</zh><en>Need to pick an animal.</en></s>
+  <s><zh>只能对已经驯服的动物使用。</zh><en>Can only be used on tamed animals.</en></s>
+  <s><zh>它已经被唤醒了。</zh><en>It's already been awakened.</en></s>
+  <s><zh>需要选择一个人。</zh><en>Need to pick a person.</en></s>
+  <s><zh>只能给友方的人托梦。</zh><en>Can only send dreams to friendly people.</en></s>
+  <s><zh>没有可以联络的派系。</zh><en>No faction to contact.</en></s>
+  <s><zh>没有可以复活的死去的殖民者。</zh><en>No dead colonist to revive.</en></s>
+  <s><zh>需要选择一件物品。</zh><en>Need to pick an item.</en></s>
+  <s><zh>要在地图上施放。</zh><en>Must be cast on a map.</en></s>
+  <s><zh>已经有一匹天界战马了（</zh><en>There's already a celestial steed (</en></s>
+  <s><zh>需要选择一个敌人。</zh><en>Need to pick an enemy.</en></s>
+  <s><zh>奇术</zh><en>thaumaturgy</en></s>
+  <s><zh>昼明术</zh><en>daylight</en></s>
+  <s><zh>树跃</zh><en>tree stride</en></s>
+  <s><zh>地狱斥责</zh><en>hellish rebuke</en></s>
+  <s><zh>次级幻象</zh><en>minor illusion</en></s>
+  <s><zh>活化石像</zh><en>animated statue</en></s>
+  <s><zh>活化物件</zh><en>animate objects</en></s>
+  <s><zh>[DND边缘大陆] 活化物件失败：</zh><en>[DND Rimlands] Animate objects failed: </en></s>
+  <s><zh>群体暗示：退兵</zh><en>Mass suggestion: retreat</en></s>
+  <s><zh>投射幻象</zh><en>project image</en></s>
+  <s><zh>造水术：扑灭 </zh><en>Create water: put out </en></s>
+  <s><zh> 处火</zh><en> fires</en></s>
+  <s><zh>净化饮食 ×</zh><en>Purify food and drink ×</en></s>
+  <s><zh>现在是「</zh><en>It's now "</en></s>
+  <s><zh>，大约还会持续 </zh><en>, lasting about another </en></s>
+  <s><zh> 小时</zh><en> hours</en></s>
+  <s><zh>。接下来一天室外气温约 </zh><en>. Outdoor temperature over the next day about </en></s>
+  <s><zh> ～ </zh><en> to </en></s>
+  <s><zh>\n正在持续：</zh><en>\nOngoing: </en></s>
+  <s><zh>的德鲁伊伎俩：</zh><en>'s druidcraft: </en></s>
+  <s><zh>德鲁伊伎俩</zh><en>druidcraft</en></s>
+  <s><zh>塑土术：挖开</zh><en>Mold earth: dug out </en></s>
+  <s><zh>塑土术：填平</zh><en>Mold earth: filled </en></s>
+  <s><zh>塑土术：翻整</zh><en>Mold earth: tilled </en></s>
+  <s><zh>塑石术：开凿</zh><en>Stone shape: carved </en></s>
+  <s><zh>塑石术：石墙</zh><en>Stone shape: stone wall </en></s>
+  <s><zh>寻找陷阱</zh><en>find traps</en></s>
+  <s><zh>附近没有发现陷阱或潜伏的敌人。</zh><en>No traps or lurking enemies found nearby.</en></s>
+  <s><zh>发现了 </zh><en>Found </en></s>
+  <s><zh> 处陷阱</zh><en> traps</en></s>
+  <s><zh>，并揭开了 </zh><en>, and revealed </en></s>
+  <s><zh> 个隐形的敌人</zh><en> invisible enemies</en></s>
+  <s><zh>动物信使</zh><en>animal messenger</en></s>
+  <s><zh>让一只小动物带口信给一个派系的首领（打开和它的通话）。</zh><en>Have a small animal carry a message to a faction's leader (opens a comms call with them).</en></s>
+  <s><zh>唤醒：获得智识</zh><en>Awakened: gained intellect</en></s>
+  <s><zh>控制环境</zh><en>control weather</en></s>
+  <s><zh>平息了天气</zh><en>calmed the weather</en></s>
+  <s><zh>，并结束了</zh><en>, and ended </en></s>
+  <s><zh>召唤龙卷风</zh><en>whirlwind</en></s>
+  <s><zh>接触异界</zh><en>contact other plane</en></s>
+  <s><zh>异界的知识冲垮了心智</zh><en>otherworldly knowledge overwhelmed the mind</en></s>
+  <s><zh>接触异界：研究 +</zh><en>Contact other plane: research +</en></s>
+  <s><zh>美梦</zh><en>sweet dream</en></s>
+  <s><zh>英雄宴 ×</zh><en>Heroes' feast ×</en></s>
+  <s><zh>真复活</zh><en>true resurrection</en></s>
+  <s><zh>选一个死去的殖民者（没有尸体也可以）。</zh><en>Pick a dead colonist (works even without a corpse).</en></s>
+  <s><zh>（连遗体都不在了）</zh><en> (not even the remains are left)</en></s>
+  <s><zh>被真复活术带回了人间。</zh><en> was brought back to the world by true resurrection.</en></s>
+  <s><zh>品质：</zh><en>Quality: </en></s>
+  <s><zh>附魔强化 +</zh><en>Enchantment +</en></s>
+  <s><zh>带着诅咒！</zh><en>Cursed!</en></s>
+  <s><zh>有魔法灵光</zh><en>Has a magic aura</en></s>
+  <s><zh>价值 </zh><en>Value </en></s>
+  <s><zh>识别术</zh><en>identify</en></s>
+  <s><zh>天界战马</zh><en>celestial warhorse</en></s>
+  <s><zh>侦测邪恶</zh><en>detect evil</en></s>
+  <s><zh>地图上感觉不到亡灵、邪魔或异常生物。</zh><en>No undead, fiends or anomalous creatures sensed on the map.</en></s>
+  <s><zh>感知到 </zh><en>Sensed </en></s>
+  <s><zh> 个亡灵、邪魔或异常生物：</zh><en> undead, fiends or anomalous creatures: </en></s>
+  <s><zh>；揭开了 </zh><en>; revealed </en></s>
+  <s><zh>选一种材料（施法职业等级 × 10 份；零部件 等级/2 个）。</zh><en>Pick a material (spellcasting class level × 10 units; components level/2).</en></s>
+  <s><zh>被逐恶斩放逐 1 分钟</zh><en>banished for 1 minute by banishing smite</en></s>
+  <s><zh>被荆棘缠住</zh><en>entangled by thorns</en></s>
+  <s><zh>灵体武器</zh><en>spiritual weapon</en></s>
+  <s><zh>目光：昏睡</zh><en>gaze: sleep</en></s>
+  <s><zh>目光术</zh><en>eyebite</en></s>
+  <s><zh>目光：恐慌</zh><en>gaze: panic</en></s>
+  <s><zh>目光：虚弱</zh><en>gaze: weakness</en></s>
+  <s><zh>临时生命 </zh><en>Temporary HP </en></s>
+  <s><zh>无踪：落空</zh><en>Pass without trace: missed</en></s>
+  <s><zh>吸收元素</zh><en>absorb elements</en></s>
+</LPStrings>

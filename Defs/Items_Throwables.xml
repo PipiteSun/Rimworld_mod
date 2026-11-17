@@ -43,7 +43,7 @@
   <HediffDef>
     <defName>LP_MagicDispelled</defName>
     <label>魔法被驱散</label>
-    <description>身上的魔法被驱散压制：护盾腰带停摆，力能龙裔的偏折、朦胧与错位失效，隐形被迫现形。</description>
+    <description>身上的魔法被驱散压制：护盾腰带停摆，隐形被迫现形。</description>
     <hediffClass>HediffWithComps</hediffClass>
     <isBad>true</isBad>
     <defaultLabelColor>(0.75, 0.75, 0.9)</defaultLabelColor>

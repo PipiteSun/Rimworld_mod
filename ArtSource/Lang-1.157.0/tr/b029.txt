@@ -1,0 +1,260 @@
+s06473	A heavy wooden crossbow with a coil of grey rope net on the stock. The binding net it fires makes the target stagger (stunned 2.5 seconds), then moving -50% for 6 seconds.\n\nNonlethal: only knocks the target unconscious, causing no wounds and never killing. Good for taking prisoners.
+s06474	net crossbow
+s06475	stock
+s06476	Hands and feet tangled in a binding net, moving -50%. Can break free in a few seconds.
+s06477	netted
+s06478	binding net
+s06479	slumber arrow
+s06480	A dark green shortbow with lavender-dyed fletching, its arrowheads dipped in glowing purple slumber powder. Those hit only get sleepier and sleepier. Strong-minded races such as elves are less affected according to their mind resistance.\n\nNonlethal: only knocks the target unconscious, causing no wounds and never killing. Good for taking prisoners.
+s06481	slumber shortbow
+s06482	limb
+s06483	{0} fell into a deep sleep.
+s06484	slumber magic
+s06485	A curved grey-white wooden staff whose crescent head holds a pale purple crystal, firing sleep-inducing slumber bolts. Its power varies with the wielder's psychic sensitivity (magic factor = sensitivity, minimum 0.2, no cap); in the hands of someone with zero sensitivity, the staff doesn't respond at all. Those with a psylink gain neural heat with each cast; those without a psylink only get 70% of the power. Strong-minded races such as elves are less affected according to their mind resistance.\n\nNonlethal: only knocks the target unconscious, causing no wounds and never killing. Good for taking prisoners.
+s06486	slumber staff
+s06487	staff
+s06488	{0} was subdued.
+s06489	subduing blow
+s06490	subdue
+s06491	Dazed by a subduing weapon or slumber magic. This isn't a wound: no bleeding, no infection, no treatment needed, and painkillers don't help. At 100% severity they collapse unconscious (consciousness at most 10%, never fatal). Doesn't fade for 1 hour after the last subduing damage, then drops 10% per hour. Real wounds from other sources are calculated by vanilla rules as usual.
+s06492	dazed
+s06493	tottering
+s06494	about to collapse
+s06495	knocked out
+s06496	A leather-wrapped short club whose iron bands are engraved with drowsy slumber runes. Made specifically for knocking people out; however hard it hits, it only leaves them dizzy and finally unconscious.\n\nNonlethal: only knocks the target unconscious, causing no wounds and never killing. Good for taking prisoners.
+s06497	subduing cudgel
+s06498	head
+s06499	poke
+s06500	A crude giant a head and shoulders above ordinary people, with tawny skin, a thick jaw and heavy brow ridges. Ogres are immensely strong and can send someone flying with one club swing; but their minds aren't sharp: slow research, slow learning, always lowballed in trade, and ugly too. The bloodline is passed on to children.
+s06501	Inheritable huge race. Body size ×1.6 (health ×1.3, melee ×1.18), high melee damage; research ×50%, slow learner, lowballed, hot-tempered, ugly.
+s06502	ogre
+s06503	A huge body needs a lot of food.
+s06504	ogre appetite
+s06505	An ogre's mind turns slowly: research speed halved, often lowballed when trading, and more easily swayed by psychic means (mind resistance -10%, not below 0).
+s06506	dimwitted
+s06507	Actual body size: ×160% (multiplies with other body size effects).
+s06508	Drawn size: ×130%.
+s06509	Hauling capacity: another ×110% after rising with body size.
+s06510	Appetite: ×130%.
+s06511	The huge body of an ogre. Actual body size 160% of an ordinary person, drawn at 130% size, and hauls 10% more on top; eats 1.3× as much as normal, with a bigger stomach (giant stomach: max food ×160%). Giant-body rules give ogres total health ×130% and melee damage ×118%.
+s06512	ogre build
+s06513	In dwarven ballads, ogres are always stealing sheep and smashing mine carts. That big lug had better stay away from my tunnels.
+s06514	ogre nearby
+s06515	That ogre trampled the flower bed and grinned stupidly at me.
+s06516	That half-orc doesn't think I'm stupid, and fights hard enough.
+s06517	half-orc buddy
+s06518	dwarves on ogres
+s06519	elves on ogres
+s06520	ogres on half-orcs
+s06521	An ogre's rough tawny skin.
+s06522	ogre skin
+s06523	tawny
+s06524	oozefolk wanderer
+s06525	Cloth strips soaked in protoplasm gel. Applied to a wound, they adhere and tighten by themselves, close to industrial medicine in effect.
+s06526	gel dressing
+s06527	Make 2 gel dressings from 1 protoplasm gel and 3 cloth.
+s06528	Making gel dressings.
+s06529	make gel dressing
+s06530	{0} was dissolved to death by oozefolk acid.
+s06531	As a prisoner: prison break chance ×200% (multiplies with effects like criminal backstories); can open any door during a prison break.
+s06532	The body has no fixed shape and can squeeze through any gap: can "seep" through a door crack, even if it's locked or belongs to someone else. They also break out of prison more easily, and locked doors can't stop them during a break.
+s06533	amorphous
+s06534	On a cell below 0°C (-15°C with a stabilizing belt): congealed, move speed ×75%, manipulation -10%; disappears 1 hour after warming up.
+s06535	Frostbite and other cold damage ×150%; frost slow, frostbound and chilled-to-the-bone durations ×150%.
+s06536	Protoplasm thickens in the cold. Oozefolk fear the cold: min comfortable temperature 8°C higher; standing somewhere below 0°C, the body "congeals", walking slowly with clumsy hands, recovering only 1 hour after warming up. Frostbite, the winter wolf's frost bite and the ice devil's chill are especially harmful to them.
+s06537	congealed
+s06538	Counts as oozefolk (engulf, fission, stabilizing belt, race checks).
+s06539	Acid damage: ×25% (all damage whose name contains Acid, including acid from this mod and other mods).
+s06540	Bleeding rate: ×50%.
+s06541	Wounds don't get infected, and old wounds never become permanent scars.
+s06542	Mind flayer tadpoles can't parasitize (they get dissolved).
+s06543	The body is a thinking mass of protoplasm with no bones and no fixed organ positions. Blunt weapons just sink in, and acid can't dissolve it; wounds close up by themselves, never get infected or leave scars, and blood loss is slower than normal. Anyone with this gene counts as oozefolk.
+s06544	ooze body
+s06545	Protoplasm is mostly water: it boils in fire and dries out when roasted: fire damage taken ×150%, and catches fire more easily.
+s06546	fears drying out
+s06547	Not unhappy about eating raw food.
+s06548	Each meal: protoplasm +3.
+s06549	The stomach is the whole body. Can dissolve anything: no food poisoning, doesn't mind raw food; each meal also stores a little more protoplasm. Can "engulf" a whole corpse into the body to slowly digest it.
+s06550	omnivorous digestion
+s06551	Swallow a corpse whole into the body and digest it slowly; takes 2 hours and can be interrupted. The corpse disappears; clothes and weapons stay behind. Humanlike corpses: protoplasm +25, food +50%; animals: protoplasm = body size ×15 (up to 30), food = body size ×30% (up to 60%); halved for corpses that have started rotting. Desiccated corpses, mechanoids, liches and necromantic constructs, and oozefolk corpses can't be engulfed. Colonists who see it within 15 cells get mood -3 (1 day; cannibals, psychopaths and oozefolk don't care). Engulfing a humanlike corpse counts as eating human flesh. You can also select an oozefolk and right-click a corpse to order it.
+s06552	engulf
+s06553	escape from the vats
+s06554	Squeeze some protoplasm out of the body to congeal 1 protoplasm gel (used for gel dressings and stabilizing belts). Costs 25 protoplasm, takes 30 seconds.
+s06555	exude gel
+s06556	Split off part of your protoplasm, and an hour later an oozefolk baby is born: the same xenotype, carrying all the parent's endogenes (implanted xenogenes aren't copied), with random skin color. Only adult oozefolk can split; costs 80 protoplasm and 25% food; the parent then has 3 days of "fission weakness" (consciousness -20%, move speed ×80%). Cooldown 30 days (adjustable to 15-60 days in mod settings).
+s06557	fission
+s06558	acid pseudopod
+s06559	A natural melee weapon from the pseudopod gene.
+s06560	Max protoplasm 100 (120 with a stabilizing belt), starting at 30, doesn't drain naturally.
+s06561	Stores protoplasm in the body that can be drawn on at will. Provides the "protoplasm" resource bar (0-100, starting at 30, doesn't drain naturally): eating and engulfing corpses replenish it, and fission, seeping, reshaping and exuding gel all consume it.
+s06562	protoplasm
+s06563	Protoplasm an oozefolk can draw on. Replenished by eating and engulfing corpses; consumed by fission, seeping, reshaping and exuding gel. Doesn't drain naturally.
+s06564	Gains the "acid pseudopod" melee attack: 9 blunt + 4 acid, cooldown 2 seconds; acid damage to the victim's clothing ×200%.
+s06565	Manipulation no lower than 60% (but not above consciousness).
+s06566	Can lash out an acid-dripping pseudopod from the body as a whip at any time, and clothes soaked in the acid wear out especially fast. Even without both hands it can work with pseudopods, so manipulation won't drop below 60%.
+s06567	pseudopod
+s06568	Rest still for 6 hours to sculpt missing body parts back out of protoplasm: restores one missing external part (hand, foot, finger, toe, ear, nose; not eyes or internal organs, bigger first); with no missing parts, smooths out one permanent scar instead. Costs 40 protoplasm, cooldown 2 days.
+s06569	reshape
+s06570	Thayan Red Wizards kept a vat of protoplasm in an underground lab, hoping to breed it into obedient servants. In a failed experiment three oozefolk gained minds of their own, dissolved the seals on the vat walls and escaped with whatever they could grab.\n\nOne of them soaked in the vat a few days longer and starts with 60 protoplasm; they also carry gel dressings and a stabilizing belt. Oozefolk fear no infection, can eat anything, and can engulf corpses and multiply by fission; but they're very afraid of the cold. Around day 6, Thay sends a small pursuit squad (about 300 points) to bring the specimens back.\n\nNote: all three greatly fear the cold, so in places where winter comes early, sort out heating first; the pursuers aren't strong but come quickly; medium difficulty.
+s06571	Three oozefolk.
+s06572	oozefolk
+s06573	The moment the runes on the vat walls went dark, you knew for the first time what "self" meant.\n\nYou flowed out of the lab through the drains, seeped through three locked doors, and re-sculpted human shapes in the wilds. Behind you, the Red Wizards' curses still echo; they won't let precious specimens just run off.\n\nFind somewhere warm. Fast.
+s06574	pursuers from the vats
+s06575	Three oozefolk escaped from a Thayan vat; on day 6 the Red Wizards' pursuers come knocking.
+s06576	Squeeze through a door crack: pick a spot within 3 cells with a door between you (or click the door directly) and instantly seep to the other side. Any door works, locked or an enemy's alike; but you can't pass through walls or rock. Costs 10 protoplasm, cooldown 1 hour.
+s06577	seep through
+s06578	Oozefolk always have a wet sheen on top of the head, occasionally dripping a drop of gel. Purely cosmetic, colored after the skin.
+s06579	flowing sheen
+s06580	Too cold; the protoplasm in the body has thickened: move speed ×75%, manipulation -10%. Recovers 1 hour after returning above 0°C.
+s06581	Oozefolk don't reproduce through pregnancy; instead, once enough protoplasm is stored, they split themselves in two: what splits off is a baby carrying all the parent's endogenes. The price is being unable to reproduce the ordinary way with anyone (including other oozefolk).
+s06582	fission reproduction
+s06583	Just split off half the protoplasm, and the body hasn't grown back yet: consciousness -20%, move speed ×80%.
+s06584	fission weakness
+s06585	A mass of protoplasm that gained a mind and roughly shaped itself into a person. Oozefolk have no bones; blunt weapons hit them like hitting a barrel of glue, and acid barely hurts them; wounds don't get infected or scar. They can digest anything, can engulf a whole corpse, and use stored protoplasm to split off new selves, seep through door cracks and regrow severed fingers. The price is fearing the cold (the body congeals below zero), fire and drying out. The bloodline is passed on to children; or rather, the children split off are almost identical to the parent.
+s06586	Inheritable. Greatly reduced blunt and acid damage, no infections, no scars, eats anything; protoplasm drives engulf, fission, seeping and reshaping; fears cold and fire.
+s06587	A lump of translucent gel exuded by an oozefolk, cool to the touch and faintly wriggling. Can be made into gel dressings at the alchemy table, or into stabilizing belts for oozefolk at the tailoring bench.\n\nProduced by the oozefolk "exude gel" ability; butchering an oozefolk corpse also yields 3 (no meat or leather). Black Network caravans occasionally sell it.
+s06588	protoplasm gel
+s06589	Amber protoplasm like honey or resin.
+s06590	amber skin
+s06591	amber
+s06592	Grey-blue protoplasm like deep water.
+s06593	abyssal blue skin
+s06594	abyssal blue
+s06595	The bile-green common to oozefolk, translucent with a wet gleam.
+s06596	bile green skin
+s06597	bile green
+s06598	Grey-purple protoplasm with a misty layer.
+s06599	mist purple skin
+s06600	mist purple
+s06601	A leather belt sewn with a few pouches of protoplasm gel, cinched tight around an oozefolk's body so it keeps its shape even in the cold. Only works for oozefolk: the congealing threshold drops from 0°C to -15°C, max protoplasm +20. Worn in the trinket slot, taking no other gear slot.
+s06602	stabilizing belt
+s06603	I saw that oozefolk swallow a whole corpse; it slowly dissolved inside its body...
+s06604	witnessed engulfing
+s06605	tide of the Blood War
+s06606	[PAWN_nameDef] was born from a prayer.
+s06607	formed in the light
+s06608	angel
+s06609	[PAWN_nameDef] is an emissary of the good gods who stood in the light of the heavens for who knows how many years before first being sent to the mortal world.
+s06610	emissary of the heavens
+s06611	[PAWN_nameDef] was born in a forest of the Feywild where it is always dusk, and learned to sing before learning to walk.
+s06612	moon-born
+s06613	fey
+s06614	[PAWN_nameDef] runs errands, trades and hunts for the queen at court, and knows the price of every promise.
+s06615	the queen's courtier
+s06616	courtier
+s06617	[PAWN_nameDef] took shape from a torn-up contract, and the first thing seen was the iron gate of the Nine Hells.
+s06618	born of the Nine Hells
+s06619	devil
+s06620	[PAWN_nameDef] has fought demons in the tide of the Blood War for centuries, signing a new contract for each promotion.
+s06621	soldier of the infernal legion
+s06622	deva
+s06623	planetar
+s06624	redcap
+s06625	wild hunt leader
+s06626	wild hunt rider
+s06627	changeling volunteer
+s06628	dryad
+s06629	fey merchant
+s06630	satyr
+s06631	satyr volunteer
+s06632	fallen angel
+s06633	Fey merchants who come out of the two queens' courts to trade: they set up stalls when the moon rises and pack up before dawn. They don't take silver as payment; they take memories, years of life, names and laughter.
+s06634	fey court
+s06635	Everything has a price; it's just not always silver.
+s06636	the court under the moon
+s06637	The hunting party of the two queens: riders in antlered helms, winter wolves, blink dogs and redcaps. They chase only one prey, until dawn. Mutually hostile with the abyssal horde.
+s06638	wild hunt
+s06639	When the moon rises, the prey had better run.
+s06640	the eternal hunt
+s06641	hunter
+s06642	fey market
+s06643	infernal broker
+s06644	bone devil guard
+s06645	amnizu
+s06646	bone devil
+s06647	chain devil
+s06648	debt-collecting horned devil
+s06649	erinyes
+s06650	horned devil
+s06651	A band of trading devil lawyers and their bone devil guards. They sell contracts, soul coins and demonology tomes, and buy prisoners and souls; people dragged into the Nine Hells by them can also be ransomed back from them. Whoever dares rob their caravans, the Nine Hells will remember forever.
+s06652	Everything can be traded; everything must be signed.
+s06653	the way of contracts
+s06654	broker
+s06655	The regular army of the Nine Hells: chain devils, bone devils, horned devils and erinyes. They come to collect debts and catch those in breach of contract, and fight the abyssal horde in the tide of the Blood War. Mutually hostile with the abyssal horde.
+s06656	infernal legion
+s06657	Order is contract, and contract is everything.
+s06658	Nine Hells
+s06659	Nine Hells caravan
+s06660	whispers of a patron
+s06661	The side in the tide of the Blood War that accepted the colony's help: neutral toward you this time, leaving once the fighting is over.
+s06662	truce outsiders
+s06663	The enemy of my enemy.
+s06664	truce
+s06665	temporary truce
+s06666	outsiders
+s06667	A golden rope erinyes use to bind people; it flies out and wraps the target on its own. Hung at the waist (trinket slot): ability "Binding rope": one target within 8 cells makes a Dexterity save (difficulty rises with the user's proficiency bonus and Dexterity; each point of the target's ability modifier and proficiency bonus gives +5% success), and on failure is bound for 4 seconds. 10 uses of durability, then it breaks. Cooldown 2 hours.
+s06668	binding rope
+s06669	The horn of the wild hunt sounds in the blood: move speed +30%, melee damage +20%.
+s06670	Dispater's iron city forge: soul coins burn in its black iron hearth, with green flames. Can do every rune anvil recipe at ×1.5 work speed. Burns soul coins, consumed only while working (1 coin = 1 day). Can't be built: only obtained from Dispater's boon "Infernal forge".
+s06671	infernal forge
+s06672	pact items
+s06673	A chained bookstand lectern: one end of the chain is fastened to the reading stand, the other locks the compartment where pacts are kept. Pact scrolls can only be read here: read for 4 hours to see the terms, then review, negotiate, sign or refuse. The lectern can also "compensate the patron" (pay off debt) and tear up a pact using the true name scroll of the patron's agent; the inspect pane lists all the colony's pacts.
+s06674	pact lectern
+s06675	A pact written on unknown leather, sealed with wax bearing the crest of some otherworldly patron. Only after 4 hours of reading at a pact lectern can you see what it says: three selectable boons, the visible cost, the payment cycle, and the hidden clauses tucked between the lines. Cannot be crafted.
+s06676	pact scroll
+s06677	Reading a pact scroll at the pact lectern.
+s06678	Study the contract formats, clause traps and true names of patrons of the Nine Hells and the fey courts. Unlocks the pact lectern: pact scrolls (from "whispers of a patron", Nine Hells caravans and Thayan Red Wizards) must be read at the lectern for 4 hours before you can see the terms, review, negotiate and sign.
+s06679	planar contract law
+s06680	blow wild hunt horn
+s06681	The curved horn of a wild hunt rider, sounding like wolves howling in the wind. Single use: after blowing it, for 2 hours the colony's canines on the map (dogs, wolves, worgs, blink dogs...) get move speed +30% and melee damage +20%; hostile humanlikes each have a 10% chance to flee in fear.
+s06682	wild hunt horn
+s06683	The frost shadow of the Queen of Air and Darkness: turns invisible after standing still for 3 seconds, revealed by moving or attacking.
+s06684	frost shadow
+s06685	Mephistopheles's ice flows in the veins: max neural heat +20%; frost damage hits add +1 extra stack of chilled to the bone.
+s06686	arcana of the frozen hell
+s06687	The mark of Asmodeus burns on the forehead: hostile humanlikes within 5 cells are filled with fear (mental break threshold +15%); eldritch blast ignite chance 40%.
+s06688	mark of the Lord of Hell
+s06689	Dispater's pact: colony construction speed +25% (while the signer is alive and on this map).
+s06690	iron city artisan
+s06691	The tongue Glasya lends the signer: social impact +30%, trade prices improved +15%.
+s06692	the queen's tongue
+s06693	The "hellfire" in the pact: fire damage taken ×1.25.
+s06694	hellfire
+s06695	The "frozen heart" in the pact: mood always -5.
+s06696	frozen heart
+s06697	The "winter's kiss" in the pact: min comfortable temperature +10°C.
+s06698	winter's kiss
+s06699	{0} was torn apart by an eldritch blast.
+s06700	eldritch
+s06701	A pact spell every signer knows: a beam of force (range 24), each beam 12 eldritch damage (armor penetration 30%). Number of beams by adventurer level: 1 at levels 1-4, 2 at 5-10, 3 at 11-16, 4 from 17; if the target falls, the remaining beams automatically fire at nearby enemies. Nine Hells patrons: 20% to ignite; fey patrons: 15% to confuse the target for 2 seconds. Cooldown 4 seconds. Lost when the pact ends.
+s06702	Firstborn clause: when this child turns eighteen, the Nine Hells will come to collect (50%).
+s06703	the Nine Hells' claim
+s06704	A layer of frost has formed on my heart; nothing warm gets in.
+s06705	The mark of the Lord of Hell is suffocating: mental break threshold +15%.
+s06706	dread of the Nine Hells
+s06707	I sold my laughter to the fey. Now I can't laugh even when I want to.
+s06708	laughter sold
+s06709	When someone calls me, it takes me a moment to realize they mean me.
+s06710	lost my name
+s06711	The original name was taken by the patron, and the new name never feels right: social impact -20%.
+s06712	lost name
+s06713	A guard the patron lends the signer under the pact: keeps the pact, obedience never drops. It goes back when the pact ends.
+s06714	pact guard
+s06715	I owe something I shouldn't. Every night I can hear them counting.
+s06716	shadow of default
+s06717	That pact was burned. Maybe it was right... maybe not.
+s06718	missed opportunity
+s06719	A pact signed with an otherworldly patron. In brackets are the patron and debt (0-3). Debt 1: mood -6, abilities granted by boons have cooldown ×2; debt 2: the patron sends debt collectors (Nine Hells) or the wild hunt (fey), then once every 15 days; debt 3: enforcement: the signer is dragged into that plane (lich: the phylactery is taken). "Compensate the patron" at the pact lectern pays off debt.
+s06720	pact
+s06721	in good standing
+s06722	in debt
+s06723	pursued for debt
+s06724	enforcement
+s06725	(Hidden) Leader of debt collectors / the wild hunt: drops the true name scroll of the patron's agent when downed.
+s06726	patron's agent
+s06727	agent of Asmodeus
+s06728	Hostile humanlikes within 5 cells are filled with fear: mental break threshold +15% (refreshed every 5 seconds). Eldritch blast ignite chance raised from 20% to 40%.
+s06729	Ability "Summon horned devil": 1 horned devil serves as your servant for 5 days, cooldown 15 days.
+s06730	infernal guard
+s06731	Immediately gain 1 bound erinyes (starting at level 9) that follows the signer for life, with obedience that never drops. It returns to the Nine Hells when the signer dies or the pact ends.
+s06732	Execute a prisoner every 20 days.

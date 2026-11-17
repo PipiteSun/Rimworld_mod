@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.157.0 代码字符串（PowerArmor.cs）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>力场崩溃</zh><en>force field collapsed</en></s>
+  <s><zh>奥能核心：</zh><en>Arcane core: </en></s>
+  <s><zh>（耗尽）</zh><en> (depleted)</en></s>
+  <s><zh>奥能耗尽：铁壳</zh><en>arcane depleted: iron shell</en></s>
+  <s><zh>倒地时不能使用。</zh><en>Can't be used while downed.</en></s>
+  <s><zh>奥能耗尽了，先充能。</zh><en>Arcane energy is depleted; charge it first.</en></s>
+  <s><zh>奥能不足（需要 </zh><en>Not enough arcane energy (needs </en></s>
+  <s><zh> 秒）。</zh><en> seconds).</en></s>
+  <s><zh>这件甲没有推进器。</zh><en>This armor has no thrusters.</en></s>
+  <s><zh>这件甲没有力场发生器。</zh><en>This armor has no force field generator.</en></s>
+  <s><zh>力场已经开着。</zh><en>The force field is already on.</en></s>
+  <s><zh>这件甲不能过载。</zh><en>This armor can't overload.</en></s>
+  <s><zh>落点无效。</zh><en>Invalid landing spot.</en></s>
+  <s><zh>太近了。</zh><en>Too close.</en></s>
+  <s><zh>超出跃击距离（</zh><en>Beyond leap range (</en></s>
+  <s><zh>落不了脚。</zh><en>Can't land there.</en></s>
+  <s><zh>中间挡着。</zh><en>Blocked in between.</en></s>
+  <s><zh>推进跃击</zh><en>Thruster leap</en></s>
+  <s><zh>奥能力场</zh><en>Arcane force field</en></s>
+  <s><zh>过载冲击</zh><en>Overload shock</en></s>
+  <s><zh>换上奥能电池</zh><en>Swap in an arcane battery</en></s>
+  <s><zh>没有穿奥能动力甲。</zh><en>Not wearing arcane power armor.</en></s>
+  <s><zh>奥能已经满了。</zh><en>Arcane energy is already full.</en></s>
+  <s><zh>充能座没有通电。</zh><en>The charging dock has no power.</en></s>
+  <s><zh>过不去或者有人在用。</zh><en>Can't get there or it's in use.</en></s>
+  <s><zh>背后的奥能推进器喷出一道蓝焰，跃到 </zh><en>The arcane thrusters on the back spray a blue flame, leaping to a landing spot </en></s>
+  <s><zh> 格外的落点（消耗 </zh><en> cells away (costs </en></s>
+  <s><zh> 奥能，冷却 </zh><en> arcane, cooldown </en></s>
+  <s><zh> 秒）。落地时 </zh><en> seconds). On landing, enemies within </en></s>
+  <s><zh> 格内的敌人受到 </zh><en> cells take </en></s>
+  <s><zh> 点钝击，成功率 </zh><en> blunt damage, with a chance of </en></s>
+  <s><zh> 被震倒（眩晕 </zh><en> to be knocked down (stunned </en></s>
+  <s><zh>展开贴身的奥能力场 </zh><en>Deploy a close-fitting arcane force field for </en></s>
+  <s><zh> 秒（消耗 </zh><en> seconds (costs </en></s>
+  <s><zh> 秒）：力场开着时所有伤害都被挡下，每挡 1 点伤害消耗 </zh><en> seconds): while the field is on, all damage is blocked, each point blocked costing </en></s>
+  <s><zh> 奥能；奥能耗尽时力场崩溃。</zh><en> arcane; when arcane runs out, the field collapses.</en></s>
+  <s><zh>让核心瞬间过载，向四周放出一圈奥能冲击（消耗 </zh><en>Overload the core instantly, releasing a ring of arcane shock around you (costs </en></s>
+  <s><zh> 秒）：</zh><en> seconds): </en></s>
+  <s><zh> 点钝击</zh><en> blunt damage</en></s>
+  <s><zh>（随奥术强度）</zh><en> (scales with arcane power)</en></s>
+  <s><zh> 被震晕 </zh><en>, stunned for </en></s>
+  <s><zh> 秒。不伤友军。</zh><en> seconds. Doesn't hurt allies.</en></s>
+  <s><zh>充能</zh><en>Charge</en></s>
+  <s><zh>身上带着奥能电池就立刻换上一块（+</zh><en>If carrying an arcane battery, swap one in at once (+</en></s>
+  <s><zh>）；否则去最近一座通电的奥能充能座充能，每小时 +</zh><en>); otherwise go to the nearest powered arcane charging dock and charge, +</en></s>
+  <s><zh>，充满或被打断为止；没有充能座时去拿附近的奥能电池。</zh><en> per hour, until full or interrupted; without a charging dock, go fetch a nearby arcane battery.</en></s>
+  <s><zh>附近没有通电的奥能充能座，也没有奥能电池。</zh><en>No powered arcane charging dock or arcane battery nearby.</en></s>
+  <s><zh>倒地时不能充能。</zh><en>Can't charge while downed.</en></s>
+  <s><zh>奥能动力甲：+</zh><en>Arcane power armor: +</en></s>
+  <s><zh>给奥能动力甲充能</zh><en>Charge arcane power armor</en></s>
+  <s><zh>不能充能：</zh><en>Can't charge: </en></s>
+  <s><zh>奥能核心（耗尽）</zh><en>Arcane core (depleted)</en></s>
+  <s><zh>奥能核心</zh><en>Arcane core</en></s>
+  <s><zh>奥能：</zh><en>Arcane: </en></s>
+  <s><zh>\n受到伤害时核心分担冲击，每点伤害 -</zh><en>\nWhen taking damage the core absorbs the impact, -</en></s>
+  <s><zh>；征召时每小时 -</zh><en> per point of damage; -</en></s>
+  <s><zh>；装甲能力另外消耗。\n耗尽时变成沉重的铁壳：移动 -35%、操作 -25%，能力不能用。\n在通电的奥能充能座充能（每小时 +</zh><en> per hour while drafted; armor abilities cost extra.\nWhen depleted it becomes a heavy iron shell: movement -35%, manipulation -25%, abilities unusable.\nCharge at a powered arcane charging dock (+</en></s>
+  <s><zh>），或换上奥能电池（+</zh><en> per hour), or swap in an arcane battery (+</en></s>
+  <s><zh>）。\n戴配套头盔时上限 +20%；装甲师把它改成奥术装甲时上限 +50%。</zh><en>).\nCap +20% with the matching helmet; +50% when an armorer turns it into arcane armor.</en></s>
+</LPStrings>

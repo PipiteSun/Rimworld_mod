@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 神明附体 -->
+  <LP_DivineVessel.label>god-possessed</LP_DivineVessel.label>
+  <!-- 一位神明借这具身体降临。附体者免疫眩晕、精神崩溃和一切精神状态；倒下时神明离体（各神不同），留下神迹残片。 -->
+  <LP_DivineVessel.description>A god descends through this body. The possessed is immune to stuns, mental breaks and all mental states; when it falls the god leaves the body (different for each god), leaving a miracle fragment behind.</LP_DivineVessel.description>
+  <!-- 曾为化身容器 -->
+  <LP_FormerVessel.label>former avatar vessel</LP_FormerVessel.label>
+  <!-- 神明曾借这具身体降临，留下了痕迹。 -->
+  <LP_FormerVessel.description>A god once descended through this body and left a mark.</LP_FormerVessel.description>
+  <!-- 服从审判 -->
+  <LP_Surrendered.label>submitted to judgment</LP_Surrendered.label>
+  <!-- 提尔的化身容器服从了审判：放下武器，伤口不再流血。 -->
+  <LP_Surrendered.description>Tyr's avatar vessel has submitted to judgment: laid down its weapons, and its wounds no longer bleed.</LP_Surrendered.description>
+  <!-- 晨光之子 -->
+  <LP_DawnChild.label>child of the dawn</LP_DawnChild.label>
+  <!-- 洛山达的晨光在伤口间流动。 -->
+  <LP_DawnChild.description>Lathander's morning light flows between the wounds.</LP_DawnChild.description>
+  <!-- 暴君的恐惧 -->
+  <LP_BaneFear.label>dread of the tyrant</LP_BaneFear.label>
+  <!-- 班恩的化身容器就在附近，手在发抖。 -->
+  <LP_BaneFear.description>Bane's avatar vessel is nearby; my hands are shaking.</LP_BaneFear.description>
+  <!-- 畏惧 -->
+  <LP_BaneDread.label>cowed</LP_BaneDread.label>
+  <!-- 被暴君之仆吓破了胆：移速×0.7，不敢开枪。 -->
+  <LP_BaneDread.description>Terrified by a servant of the tyrant: move speed ×0.7, doesn't dare fire.</LP_BaneDread.description>
+  <!-- 塔洛斯的狂风 -->
+  <LP_TalosGale.label>Talos's gale</LP_TalosGale.label>
+  <!-- 风暴之主身边狂风大作，很难瞄准。 -->
+  <LP_TalosGale.description>Gales rage around the lord of storms, making it hard to aim.</LP_TalosGale.description>
+</LanguageData>

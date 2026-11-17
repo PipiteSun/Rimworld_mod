@@ -10,7 +10,7 @@ namespace LichPhylactery.VPEBridge {
  public static class AntiMagicVPEEnabled {
   static void Postfix(Ability __instance,ref bool __result,ref string reason){
    if(!__result || !(__instance?.Caster is Pawn p) || !Monsters.InAntiMagic(p))return;
-   __result=false;reason="被反魔法压制（眼魔主眼正面或反魔法护符附近）";
+   __result=false;reason="被反魔法压制（眼魔主眼正面或反魔法护符附近）".Loc();
   }
  }
  [HarmonyPatch(typeof(Ability),nameof(Ability.Cast),new[]{typeof(GlobalTargetInfo[])})]

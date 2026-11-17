@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 寒冰魔 -->
+  <LP_IceDevil.label>ice devil</LP_IceDevil.label>
+  <!-- 九狱深处的魔鬼，冰蓝的甲壳上结着霜，昆虫般的头颅长着一对弯角，身后拖着带冰刺的长尾。寒冰魔被红袍法师召来为塞伊作战：它周身散发刺骨的寒气，靠近的敌人会越来越迟缓；尾刺扎进肉里就冻住血液。寒冰魔不吃不睡，也不会被俘——一旦倒下就会被遣返九狱，只留下一根尾刺。 -->
+  <LP_IceDevil.description>A devil from the depths of the Nine Hells, with frost on its ice-blue carapace, an insectoid head with curved horns and a long tail with ice spikes. Ice devils are summoned by the Red Wizards to fight for Thay: a biting chill radiates from them, slowing approaching enemies more and more; the tail spike freezes the blood when it pierces flesh. Ice devils don't eat or sleep and can't be captured: once they fall they are banished to the Nine Hells, leaving only a tail spike.</LP_IceDevil.description>
+  <!-- 只出现在塞伊远征军中的魔鬼。寒气光环减速敌人、冰刺尾、看得见隐身者；倒下即遣返九狱。 -->
+  <LP_IceDevil.descriptionShort>A devil that only appears in the Thayan expedition. Chill aura slows enemies, ice-spiked tail, sees the invisible; banished to the Nine Hells when downed.</LP_IceDevil.descriptionShort>
+  <!-- 炎魔 -->
+  <LP_Balor.label>balor</LP_Balor.label>
+  <!-- 深渊里最可怕的恶魔之一：两倍半于常人的巨躯裹在烈焰里，背生蝠翼，手握火鞭。炎魔完全不怕火，站在它身边的东西都可能烧起来，连塞伊自己的兵也不例外；它一振翅就能把身边的敌人掀翻。炎魔被打倒时身体崩解，一秒后炸成一团烈火，只留下一颗还在跳动的心脏。 -->
+  <LP_Balor.description>One of the most terrible demons of the Abyss: a body two and a half times human size wrapped in flame, with bat wings and a fiery whip. Balors fear no fire; anything standing next to one may catch fire, even Thay's own soldiers; one beat of its wings can knock down the enemies around it. When a balor is struck down its body crumbles and a second later explodes into a ball of fire, leaving only a still-beating heart.</LP_Balor.description>
+  <!-- 只出现在塞伊远征军中的恶魔。体型×2.5、火焰免疫、烈焰光环、振翼击退、死亡爆炸；怕冷。 -->
+  <LP_Balor.descriptionShort>A demon that only appears in the Thayan expedition. Body size ×2.5, fire immunity, flame aura, wing buffet knockback, death explosion; fears cold.</LP_Balor.descriptionShort>
+</LanguageData>

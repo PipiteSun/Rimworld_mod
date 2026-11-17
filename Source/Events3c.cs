@@ -20,19 +20,19 @@ namespace LichPhylactery {
   public const string Kind="tourney";
   public const int WinXp=300,WinGoodwill=5,ChampionGoodwill=10,ThayPenalty=-10,ThayBonus=4,LossDamage=6;public const float ThayChance=.3f;
   public class Bout{public string name;public SkillDef skill;public int a1,a2;public bool rough;public Bout(string n,SkillDef s,int x,int y,bool r){name=n;skill=s;a1=x;a2=y;rough=r;}}
-  public static List<Bout> Bouts=>new List<Bout>{new Bout("剑术",SkillDefOf.Melee,0,1,false),new Bout("长枪",SkillDefOf.Melee,0,2,true),new Bout("射箭",SkillDefOf.Shooting,1,4,false),new Bout("摔角",SkillDefOf.Melee,0,2,true)};
+  public static List<Bout> Bouts=>new List<Bout>{new Bout("剑术".Loc(),SkillDefOf.Melee,0,1,false),new Bout("长枪".Loc(),SkillDefOf.Melee,0,2,true),new Bout("射箭".Loc(),SkillDefOf.Shooting,1,4,false),new Bout("摔角".Loc(),SkillDefOf.Melee,0,2,true)};
   public static bool CanFire(Map map){var c=Factions.Colony;return Events3.S.e3Tourney && c!=null && !c.HostileTo(Faction.OfPlayer) && Events3.Colonists(map).Count(p=>!p.WorkTagIsDisabled(WorkTags.Violent))>=1 && !Events3.Active(Kind).Any();}
   public static E3Record Start(Map map){
    var r=Events3.Add(Kind,map);r.until=Events3.Now+3*GenDate.TicksPerDay;
-   Events3.Ask(r,"同盟的比武大会","费伦拓荒同盟要办一场比武大会，邀请殖民地参加：剑术、长枪、射箭、摔角，每项派一人。\n\n每赢一项得一座奖杯、"+WinXp+" 点冒险者经验和同盟好感 +"+WinGoodwill+"；赢三项以上能拿“比武冠军”。长枪和摔角输了会挨几下。",LookTargets.Invalid,Factions.Colony);
+   Events3.Ask(r,"同盟的比武大会".Loc(),"费伦拓荒同盟要办一场比武大会，邀请殖民地参加：剑术、长枪、射箭、摔角，每项派一人。\n\n每赢一项得一座奖杯、".Loc()+WinXp+" 点冒险者经验和同盟好感 +".Loc()+WinGoodwill+"；赢三项以上能拿“比武冠军”。长枪和摔角输了会挨几下。".Loc(),LookTargets.Invalid,Factions.Colony);
    return r;
   }
   public static IEnumerable<DiaOption> Options(Letter_E3 l,E3Record r){
-   yield return l.Choice("参加（每项自动派最合适的人）",()=>Resolve(r));
-   yield return l.Choice("不参加",()=>{r.answered=true;r.done=true;});
+   yield return l.Choice("参加（每项自动派最合适的人）".Loc(),()=>Resolve(r));
+   yield return l.Choice("不参加".Loc(),()=>{r.answered=true;r.done=true;});
   }
   public static int Mod(Pawn p,int a){int s=Adventurer.Score(p,a);if(s<=0)s=10;return (s-10)/2;}
-  public static int Base(Pawn p,Bout b){var sk=p.skills?.GetSkill(b.skill);int lv=sk==null || sk.TotallyDisabled?0:sk.Level;if(b.name=="摔角")lv/=2;return lv+Mod(p,b.a1)+Mod(p,b.a2);}
+  public static int Base(Pawn p,Bout b){var sk=p.skills?.GetSkill(b.skill);int lv=sk==null || sk.TotallyDisabled?0:sk.Level;if(b.name=="摔角".Loc())lv/=2;return lv+Mod(p,b.a1)+Mod(p,b.a2);}
   public static string Resolve(E3Record r){
    r.answered=true;r.done=true;var map=r.map??Events3.Home;var c=Factions.Colony;
    var fighters=Events3.Colonists(map).Where(p=>!p.WorkTagIsDisabled(WorkTags.Violent) && !p.Downed).ToList();if(fighters.Count==0)return null;
@@ -44,17 +44,17 @@ namespace LichPhylactery {
     int ours=Base(p,b)+Rand.RangeInclusive(1,20),theirs=12+bonus+Rand.RangeInclusive(1,20)+(i==thay?ThayBonus:0);
     bool won=ours>=theirs;
     if(won){
-     total++;wins.TryGetValue(p,out int w);wins[p]=w+1;Adventurer.GainXP(p,WinXp);if(c!=null)Factions.ChangeGoodwillExact(c,WinGoodwill,"比武大会得胜");
+     total++;wins.TryGetValue(p,out int w);wins[p]=w+1;Adventurer.GainXP(p,WinXp);if(c!=null)Factions.ChangeGoodwillExact(c,WinGoodwill,"比武大会得胜".Loc());
      var t=Events3.Make("LP_TourneyTrophy");if(t!=null)trophies.Add(t);
-     if(i==thay){var h=Factions.Hostile;if(h!=null)Factions.ChangeGoodwillExact(h,ThayPenalty,"在比武中打败了塞伊的神秘骑士");}
+     if(i==thay){var h=Factions.Hostile;if(h!=null)Factions.ChangeGoodwillExact(h,ThayPenalty,"在比武中打败了塞伊的神秘骑士".Loc());}
     }else if(b.rough && !p.Dead){var part=p.health.hediffSet.GetRandomNotMissingPart(DamageDefOf.Blunt,BodyPartHeight.Undefined,BodyPartDepth.Outside);if(part!=null)p.TakeDamage(new DamageInfo(DamageDefOf.Blunt,LossDamage,0f,-1f,null,part));}
-    lines.Add("· "+b.name+"："+p.LabelShort+" "+ours+" 对 "+(i==thay?"塞伊的神秘骑士":"对手")+" "+theirs+"，"+(won?"胜":"负"));
+    lines.Add("· "+b.name+"：".Loc()+p.LabelShort+" "+ours+" 对 ".Loc()+(i==thay?"塞伊的神秘骑士".Loc():"对手".Loc())+" "+theirs+"，".Loc()+(won?"胜".Loc():"负".Loc()));
    }
    if(trophies.Count>0)Events3.DropPods(map,trophies);
    string tail="";
-   if(total>=3){var champ=wins.OrderByDescending(kv=>kv.Value).First().Key;Events3.Thought(champ,"LP_E3_Champion");if(c!=null)Factions.ChangeGoodwillExact(c,ChampionGoodwill,"比武大会夺冠");Events3.State?.Deed("在同盟比武大会上夺冠");tail="\n\n赢了 "+total+" 项："+champ.LabelShort+"成了“比武冠军”（+10，15 天），同盟好感再 +"+ChampionGoodwill+"。";}
-   string text="比武大会的结果：\n\n"+string.Join("\n",lines)+"\n\n赢了 "+total+" 项"+(trophies.Count>0?"，奖杯已经空投到殖民地":"")+"。"+(thay>=0?"\n\n塞伊派来的神秘骑士在“"+bouts[thay].name+"”上场。":"")+tail;
-   Find.LetterStack.ReceiveLetter("比武大会",text,total>0?LetterDefOf.PositiveEvent:LetterDefOf.NeutralEvent);
+   if(total>=3){var champ=wins.OrderByDescending(kv=>kv.Value).First().Key;Events3.Thought(champ,"LP_E3_Champion");if(c!=null)Factions.ChangeGoodwillExact(c,ChampionGoodwill,"比武大会夺冠".Loc());Events3.State?.Deed("在同盟比武大会上夺冠".Loc());tail="\n\n赢了 ".Loc()+total+" 项：".Loc()+champ.LabelShort+"成了“比武冠军”（+10，15 天），同盟好感再 +".Loc()+ChampionGoodwill+"。".Loc();}
+   string text="比武大会的结果：\n\n".Loc()+string.Join("\n",lines)+"\n\n赢了 ".Loc()+total+" 项".Loc()+(trophies.Count>0?"，奖杯已经空投到殖民地".Loc():"")+"。".Loc()+(thay>=0?"\n\n塞伊派来的神秘骑士在“".Loc()+bouts[thay].name+"”上场。".Loc():"")+tail;
+   Find.LetterStack.ReceiveLetter("比武大会".Loc(),text,total>0?LetterDefOf.PositiveEvent:LetterDefOf.NeutralEvent);
    return text;
   }
  }
@@ -77,15 +77,15 @@ namespace LichPhylactery {
   public static E3Record Start(Map map){
    var lich=Lich(map);if(lich==null)return null;
    var r=Events3.Add(Kind,map);r.a=lich;r.faction=Factions.Hostile;r.until=Events3.Now+3*GenDate.TicksPerDay;
-   Events3.Ask(r,"巫妖的战书","一只骷髅从地图边走进来，把一卷黑色羊皮纸放在地上，转身就走了。是塞伊一名巫妖写给"+lich.LabelShort+"的战书：\n\n“两个不死者容不下同一片土地。你选——在月光下比一场法术，或者来我的塔里找我的命匣。不敢来，我就去找你。”",new LookTargets(lich),Factions.Hostile);
+   Events3.Ask(r,"巫妖的战书".Loc(),"一只骷髅从地图边走进来，把一卷黑色羊皮纸放在地上，转身就走了。是塞伊一名巫妖写给".Loc()+lich.LabelShort+"的战书：\n\n“两个不死者容不下同一片土地。你选——在月光下比一场法术，或者来我的塔里找我的命匣。不敢来，我就去找你。”".Loc(),new LookTargets(lich),Factions.Hostile);
    return r;
   }
   public static Phylactery Box(E3Record r)=>Necro.Lich(r.a)?.box;
   public static IEnumerable<DiaOption> Options(Letter_E3 l,E3Record r){
    var box=Box(r);
-   yield return l.Choice("法术决斗",()=>Duel(r),box==null || box.Destroyed?"命匣不在了":null);
-   yield return l.Choice("命匣狩猎（去他的塔）",()=>Hunt(r),Events3.SiteDef==null?"站点定义缺失":null);
-   yield return l.Choice("拒绝（他会派兵来）",()=>Refuse(r));
+   yield return l.Choice("法术决斗".Loc(),()=>Duel(r),box==null || box.Destroyed?"命匣不在了".Loc():null);
+   yield return l.Choice("命匣狩猎（去他的塔）".Loc(),()=>Hunt(r),Events3.SiteDef==null?"站点定义缺失".Loc():null);
+   yield return l.Choice("拒绝（他会派兵来）".Loc(),()=>Refuse(r));
   }
   public static Thing Arcane()=>Netheril.MakeArcane("Necromancy",QualityCategory.Excellent);
   public static bool Duel(E3Record r){
@@ -95,25 +95,25 @@ namespace LichPhylactery {
    bool won=ours>=theirs;
    if(won){
     box.Feed(Necro.Requirement(box.level)*DuelFeed);var loot=Events3.Drop(p.MapHeld,p.PositionHeld,new[]{Arcane()});
-    Events3.State?.Deed(p.LabelShort+"在法术决斗中击败了塞伊的巫妖");
-    Find.LetterStack.ReceiveLetter("决斗胜利","月光下，"+p.LabelShort+"（"+ours+"）压过了塞伊巫妖（"+theirs+"）。对方的影子碎成了灰：命匣吸走了他积攒的力量（一整级的经验），还留下"+Events3.Labels(loot)+"。",LetterDefOf.PositiveEvent,p);
+    Events3.State?.Deed(p.LabelShort+"在法术决斗中击败了塞伊的巫妖".Loc());
+    Find.LetterStack.ReceiveLetter("决斗胜利".Loc(),"月光下，".Loc()+p.LabelShort+"（".Loc()+ours+"）压过了塞伊巫妖（".Loc()+theirs+"）。对方的影子碎成了灰：命匣吸走了他积攒的力量（一整级的经验），还留下".Loc()+Events3.Labels(loot)+"。".Loc(),LetterDefOf.PositiveEvent,p);
    }else{
     box.experience*=LoseFactor;
-    Find.LetterStack.ReceiveLetter("决斗失败",p.LabelShort+"（"+ours+"）输给了塞伊巫妖（"+theirs+"）。对方笑着抽走了命匣里的一部分力量：当前经验 -25%。",LetterDefOf.NegativeEvent,p);
+    Find.LetterStack.ReceiveLetter("决斗失败".Loc(),p.LabelShort+"（".Loc()+ours+"）输给了塞伊巫妖（".Loc()+theirs+"）。对方笑着抽走了命匣里的一部分力量：当前经验 -25%。".Loc(),LetterDefOf.NegativeEvent,p);
    }
    return won;
   }
   public static void Hunt(E3Record r){
    r.answered=true;var pts=Mathf.Max(400f,StorytellerUtility.DefaultThreatPointsNow(r.map)*1.2f);
    var site=Events3.MakeSite(r,r.faction??Factions.Hostile,pts,4,10,SiteDays);
-   if(site==null){r.done=true;Messages.Message("找不到巫妖的塔。",MessageTypeDefOf.RejectInput,false);return;}
+   if(site==null){r.done=true;Messages.Message("找不到巫妖的塔。".Loc(),MessageTypeDefOf.RejectInput,false);return;}
    r.stage=1;
-   Find.LetterStack.ReceiveLetter("巫妖的塔","塞伊巫妖的塔已标在世界地图上（"+SiteDays+" 天）。打进去，消灭里面所有的敌人，他的命匣就归"+r.a?.LabelShort+"了。",LetterDefOf.NeutralEvent,new LookTargets(site));
+   Find.LetterStack.ReceiveLetter("巫妖的塔".Loc(),"塞伊巫妖的塔已标在世界地图上（".Loc()+SiteDays+" 天）。打进去，消灭里面所有的敌人，他的命匣就归".Loc()+r.a?.LabelShort+"了。".Loc(),LetterDefOf.NeutralEvent,new LookTargets(site));
   }
   public static void Refuse(E3Record r){
    r.answered=true;r.done=true;var ev=Tribute.Events;
-   if(ev!=null)foreach(var d in new[]{15,30})ev.scheduledRaids.Add(new ScheduledRaid{faction=Factions.HostileDef,fireTick=Events3.Now+d*GenDate.TicksPerDay,pointsFactor=.8f,letterLabel="敌对巫妖的报复"});
-   Messages.Message("塞伊的巫妖收到了回绝。他说过会来找你的。",MessageTypeDefOf.ThreatSmall,false);
+   if(ev!=null)foreach(var d in new[]{15,30})ev.scheduledRaids.Add(new ScheduledRaid{faction=Factions.HostileDef,fireTick=Events3.Now+d*GenDate.TicksPerDay,pointsFactor=.8f,letterLabel="敌对巫妖的报复".Loc()});
+   Messages.Message("塞伊的巫妖收到了回绝。他说过会来找你的。".Loc(),MessageTypeDefOf.ThreatSmall,false);
   }
   public static void Generate(Map map,E3Record r){
    var f=r.faction??Factions.Hostile;if(f==null)return;
@@ -130,11 +130,11 @@ namespace LichPhylactery {
     r.done=true;var box=Box(r);var p=r.a;
     if(box!=null && !box.Destroyed)box.Feed(Necro.Requirement(box.level)*HuntFeed);
     var home=Events3.Home;var loot=home!=null?Events3.DropPods(home,new[]{Arcane()}):new List<Thing>();
-    Events3.State?.Deed("攻下了塞伊巫妖的塔");
-    Find.LetterStack.ReceiveLetter("命匣狩猎成功","巫妖的塔里再没有活着（或死着）的守卫了。"+p?.LabelShort+"砸碎了对手的命匣，把里面的力量吸进了自己的（1.5 级的经验）。"+(loot.Count>0?"塔里的"+Events3.Labels(loot)+"已经空投回殖民地。":""),LetterDefOf.PositiveEvent,p);
+    Events3.State?.Deed("攻下了塞伊巫妖的塔".Loc());
+    Find.LetterStack.ReceiveLetter("命匣狩猎成功".Loc(),"巫妖的塔里再没有活着（或死着）的守卫了。".Loc()+p?.LabelShort+"砸碎了对手的命匣，把里面的力量吸进了自己的（1.5 级的经验）。".Loc()+(loot.Count>0?"塔里的".Loc()+Events3.Labels(loot)+"已经空投回殖民地。".Loc():""),LetterDefOf.PositiveEvent,p);
     return;
    }
-   if(r.stage==1 && Events3.Now>r.until){r.done=true;Messages.Message("巫妖的塔消失在了迷雾里。",MessageTypeDefOf.NeutralEvent,false);}
+   if(r.stage==1 && Events3.Now>r.until){r.done=true;Messages.Message("巫妖的塔消失在了迷雾里。".Loc(),MessageTypeDefOf.NeutralEvent,false);}
   }
  }
  public class IncidentWorker_E3Rival : IncidentWorker_E3 {
@@ -192,7 +192,7 @@ namespace LichPhylactery {
    var t=r.a;if(t==null || t.Dead || !t.Spawned){r.done=true;return;}
    if(r.stage==0 && Events3.Now>=r.next){
     r.stage=1;var h=PlantHeart(r.map,t.Position);Events3.Leave(r.lord);r.done=true;
-    Find.LetterStack.ReceiveLetter("森林之心",t.LabelShort+"在殖民地外站了几个小时，看着你们怎么对待这片林子。它很满意：临走前把一颗种子按进土里，眨眼间长成了一棵森林之心。\n\n森林之心 "+HeartRadius.ToString("0")+" 格内的作物生长 +"+((HeartGrowth-1f)*100).ToString("0")+"%。",LetterDefOf.PositiveEvent,h!=null?new LookTargets(h):new LookTargets(t));
+    Find.LetterStack.ReceiveLetter("森林之心".Loc(),t.LabelShort+"在殖民地外站了几个小时，看着你们怎么对待这片林子。它很满意：临走前把一颗种子按进土里，眨眼间长成了一棵森林之心。\n\n森林之心 ".Loc()+HeartRadius.ToString("0")+" 格内的作物生长 +".Loc()+((HeartGrowth-1f)*100).ToString("0")+"%。".Loc(),LetterDefOf.PositiveEvent,h!=null?new LookTargets(h):new LookTargets(t));
    }
   }
  }
@@ -201,8 +201,8 @@ namespace LichPhylactery {
   protected override bool CanFire(Map map,IncidentParms parms)=>Treant.CanFire(map);
   protected override bool TryExecuteWorker(IncidentParms parms){
    var r=Treant.Start((Map)parms.target);if(r==null)return false;
-   if(r.stage==2)SendStandardLetter("愤怒的树人","地图上最老的一棵树站了起来，身边还有"+(r.pawns.Count-1)+"棵被唤醒的树。最近 "+Treant.CutDays+" 天殖民地砍了太多树（"+Treant.RecentCuts()+" 棵），它们是来报复的！\n\n树怕火。",LetterDefOf.ThreatBig,parms,new LookTargets(r.pawns.Cast<Thing>()));
-   else SendStandardLetter("树人苏醒","地图上最老的一棵树站了起来，慢慢走向殖民地。它看上去没有敌意——它想看看你们是怎么对待这片林子的。\n\n（最近 "+Treant.CutDays+" 天殖民地砍了 "+Treant.RecentCuts()+" 棵树。）",LetterDefOf.PositiveEvent,parms,r.a);
+   if(r.stage==2)SendStandardLetter("愤怒的树人".Loc(),"地图上最老的一棵树站了起来，身边还有".Loc()+(r.pawns.Count-1)+"棵被唤醒的树。最近 ".Loc()+Treant.CutDays+" 天殖民地砍了太多树（".Loc()+Treant.RecentCuts()+" 棵），它们是来报复的！\n\n树怕火。".Loc(),LetterDefOf.ThreatBig,parms,new LookTargets(r.pawns.Cast<Thing>()));
+   else SendStandardLetter("树人苏醒".Loc(),"地图上最老的一棵树站了起来，慢慢走向殖民地。它看上去没有敌意——它想看看你们是怎么对待这片林子的。\n\n（最近 ".Loc()+Treant.CutDays+" 天殖民地砍了 ".Loc()+Treant.RecentCuts()+" 棵树。）".Loc(),LetterDefOf.PositiveEvent,parms,r.a);
    return true;
   }
  }
@@ -221,17 +221,17 @@ namespace LichPhylactery {
   public static bool CanFire(Map map)=>Events3.S.e3Tarrasque && TKind!=null && !Events3.Active(Kind).Any();
   public static E3Record Start(Map map){
    var r=Events3.Add(Kind,map);r.until=Events3.Now+ArriveDays*GenDate.TicksPerDay;r.next=Events3.Now+5*GenDate.TicksPerDay;
-   Events3.Ask(r,"塔拉斯克苏醒","一连几天，大地都在轻轻颤动。今天来了消息：传说中的塔拉斯克从地底醒了，正朝这边走——大约 "+ArriveDays+" 天后到。\n\n它会撞碎沿路的一切，伤口愈合得飞快。还有时间准备：",LookTargets.Invalid);
+   Events3.Ask(r,"塔拉斯克苏醒".Loc(),"一连几天，大地都在轻轻颤动。今天来了消息：传说中的塔拉斯克从地底醒了，正朝这边走——大约 ".Loc()+ArriveDays+" 天后到。\n\n它会撞碎沿路的一切，伤口愈合得飞快。还有时间准备：".Loc(),LookTargets.Invalid);
    return r;
   }
   static bool IsMeat(Thing t)=>t.def.IsMeat;
   public static IEnumerable<DiaOption> Options(Letter_E3 l,E3Record r){
    var map=r.map;var c=Factions.Colony;
-   yield return l.Choice("请求同盟援军（到时同盟派兵助战）",()=>{r.answered=true;r.stage=1;},c==null || c.HostileTo(Faction.OfPlayer) || c.PlayerGoodwill<AllyGoodwill?"同盟好感不到 "+AllyGoodwill:null);
-   string trap=Events3.Count(map,t=>t.def==ThingDefOf.Steel)<Steel || Events3.Count(map,t=>t.def==ThingDefOf.ComponentIndustrial)<Components?"需要 "+Steel+" 钢和 "+Components+" 个零部件":null;
-   yield return l.Choice("在它来的路上设陷阱（"+Steel+" 钢 + "+Components+" 零部件）",()=>{if(Events3.Take(map,t=>t.def==ThingDefOf.Steel,Steel) && Events3.Take(map,t=>t.def==ThingDefOf.ComponentIndustrial,Components)){r.answered=true;r.stage=2;}},trap);
-   yield return l.Choice("献上 "+Meat+" 份肉，把它引开",()=>{if(Events3.Take(map,IsMeat,Meat)){r.answered=true;r.stage=3;r.done=true;Find.LetterStack.ReceiveLetter("引开了塔拉斯克","堆成小山的肉被拖到远处的荒野里。塔拉斯克闻着味道转了方向，地面的震动渐渐远去了。",LetterDefOf.PositiveEvent);}},Events3.Count(map,IsMeat)<Meat?"肉不到 "+Meat+" 份":null);
-   yield return l.Choice("正面迎战",()=>{r.answered=true;r.stage=4;});
+   yield return l.Choice("请求同盟援军（到时同盟派兵助战）".Loc(),()=>{r.answered=true;r.stage=1;},c==null || c.HostileTo(Faction.OfPlayer) || c.PlayerGoodwill<AllyGoodwill?"同盟好感不到 ".Loc()+AllyGoodwill:null);
+   string trap=Events3.Count(map,t=>t.def==ThingDefOf.Steel)<Steel || Events3.Count(map,t=>t.def==ThingDefOf.ComponentIndustrial)<Components?"需要 ".Loc()+Steel+" 钢和 ".Loc()+Components+" 个零部件".Loc():null;
+   yield return l.Choice("在它来的路上设陷阱（".Loc()+Steel+" 钢 + ".Loc()+Components+" 零部件）".Loc(),()=>{if(Events3.Take(map,t=>t.def==ThingDefOf.Steel,Steel) && Events3.Take(map,t=>t.def==ThingDefOf.ComponentIndustrial,Components)){r.answered=true;r.stage=2;}},trap);
+   yield return l.Choice("献上 ".Loc()+Meat+" 份肉，把它引开".Loc(),()=>{if(Events3.Take(map,IsMeat,Meat)){r.answered=true;r.stage=3;r.done=true;Find.LetterStack.ReceiveLetter("引开了塔拉斯克".Loc(),"堆成小山的肉被拖到远处的荒野里。塔拉斯克闻着味道转了方向，地面的震动渐渐远去了。".Loc(),LetterDefOf.PositiveEvent);}},Events3.Count(map,IsMeat)<Meat?"肉不到 ".Loc()+Meat+" 份".Loc():null);
+   yield return l.Choice("正面迎战".Loc(),()=>{r.answered=true;r.stage=4;});
   }
   public static float Severity(float points)=>points<1500f?.1f:points<4000f?.5f:.9f;
   public static Pawn Arrive(E3Record r){
@@ -246,19 +246,19 @@ namespace LichPhylactery {
    if(r.stage==2){
     Items.Give(t,"LP_E3_TrapWounds");
     for(int i=0;i<12 && !t.Downed;i++){var part=t.health.hediffSet.GetRandomNotMissingPart(DamageDefOf.Cut,BodyPartHeight.Undefined,BodyPartDepth.Outside);if(part!=null)t.TakeDamage(new DamageInfo(DamageDefOf.Cut,12f,0f,-1f,null,part));}
-    extra="\n\n它踩进了你们设下的陷阱，带着一身伤、步子也慢了。";
+    extra="\n\n它踩进了你们设下的陷阱，带着一身伤、步子也慢了。".Loc();
    }
    if(r.stage==1){
     var c=Factions.Colony;
-    if(c!=null && !c.HostileTo(Faction.OfPlayer)){var parms=new IncidentParms{target=map,faction=c,points=pts*.8f,raidArrivalMode=PawnsArrivalModeDefOf.EdgeWalkIn,raidStrategy=RaidStrategyDefOf.ImmediateAttackFriendly,forced=true};if(IncidentDefOf.RaidFriendly.Worker.TryExecute(parms))extra="\n\n费伦拓荒同盟的援军也到了！";}
+    if(c!=null && !c.HostileTo(Faction.OfPlayer)){var parms=new IncidentParms{target=map,faction=c,points=pts*.8f,raidArrivalMode=PawnsArrivalModeDefOf.EdgeWalkIn,raidStrategy=RaidStrategyDefOf.ImmediateAttackFriendly,forced=true};if(IncidentDefOf.RaidFriendly.Worker.TryExecute(parms))extra="\n\n费伦拓荒同盟的援军也到了！".Loc();}
    }
-   Find.LetterStack.ReceiveLetter("塔拉斯克来了","地平线上升起一座会走的山：塔拉斯克到了。它会撞碎身边的一切，伤口愈合得飞快。"+extra,LetterDefOf.ThreatBig,t);
+   Find.LetterStack.ReceiveLetter("塔拉斯克来了".Loc(),"地平线上升起一座会走的山：塔拉斯克到了。它会撞碎身边的一切，伤口愈合得飞快。".Loc()+extra,LetterDefOf.ThreatBig,t);
    return t;
   }
   public static void Tick(E3Record r){
    if(r.a==null){
     if(Events3.Now>=r.until){Arrive(r);return;}
-    if(Events3.Now>=r.next){r.next+=5*GenDate.TicksPerDay;int left=(r.until-Events3.Now)/GenDate.TicksPerDay;Messages.Message("大地又震了一下：塔拉斯克还有约 "+left+" 天到。",MessageTypeDefOf.ThreatBig,false);}
+    if(Events3.Now>=r.next){r.next+=5*GenDate.TicksPerDay;int left=(r.until-Events3.Now)/GenDate.TicksPerDay;Messages.Message("大地又震了一下：塔拉斯克还有约 ".Loc()+left+" 天到。".Loc(),MessageTypeDefOf.ThreatBig,false);}
     return;
    }
    var t=r.a;if(t.Dead)return;if(!t.Spawned){r.done=true;return;}
@@ -273,8 +273,8 @@ namespace LichPhylactery {
    var r=Events3.Active(Kind).FirstOrDefault(x=>x.a==p);if(r==null)return;r.done=true;
    var loot=Events3.Drop(st.map,st.at,new[]{Events3.Make("LP_TarrasqueShell",Shells),Events3.Make("LP_TarrasqueTooth",Teeth)});
    if(st.map!=null)foreach(var c in Events3.Colonists(st.map))Adventurer.GainXP(c,KillXp);
-   Events3.State?.Deed("屠杀了塔拉斯克");
-   Find.LetterStack.ReceiveLetter("塔拉斯克倒下了","山一样的巨兽终于倒下，再没有站起来。殖民地每个人都得到 "+KillXp+" 点冒险者经验。\n\n它的尸体上剥下了"+Events3.Labels(loot)+"——最好的护甲和武器材料。吟游诗人会唱这件事很多年。",LetterDefOf.PositiveEvent,new LookTargets(st.at,st.map));
+   Events3.State?.Deed("屠杀了塔拉斯克".Loc());
+   Find.LetterStack.ReceiveLetter("塔拉斯克倒下了".Loc(),"山一样的巨兽终于倒下，再没有站起来。殖民地每个人都得到 ".Loc()+KillXp+" 点冒险者经验。\n\n它的尸体上剥下了".Loc()+Events3.Labels(loot)+"——最好的护甲和武器材料。吟游诗人会唱这件事很多年。".Loc(),LetterDefOf.PositiveEvent,new LookTargets(st.at,st.map));
   }
  }
  public class IncidentWorker_E3Tarrasque : IncidentWorker_E3 {
@@ -286,7 +286,7 @@ namespace LichPhylactery {
  // ==================== 冒险日志 ====================
  public class CompUseEffect_AdventureLog : CompUseEffect {
   public const float Xp=400f;
-  public override void DoEffect(Pawn usedBy){base.DoEffect(usedBy);Adventurer.GainXP(usedBy,Xp);Messages.Message(usedBy.LabelShort+"读完了冒险日志：冒险者经验 +"+Xp.ToString("0")+"。",usedBy,MessageTypeDefOf.PositiveEvent,false);}
-  public override AcceptanceReport CanBeUsedBy(Pawn p)=>Adventurer.Get(p)!=null?true:new AcceptanceReport("没有冒险者等级");
+  public override void DoEffect(Pawn usedBy){base.DoEffect(usedBy);Adventurer.GainXP(usedBy,Xp);Messages.Message(usedBy.LabelShort+"读完了冒险日志：冒险者经验 +".Loc()+Xp.ToString("0")+"。".Loc(),usedBy,MessageTypeDefOf.PositiveEvent,false);}
+  public override AcceptanceReport CanBeUsedBy(Pawn p)=>Adventurer.Get(p)!=null?true:new AcceptanceReport("没有冒险者等级".Loc());
  }
 }

@@ -20,7 +20,7 @@ namespace LichPhylactery.MythicBridge {
    center=map.AllCells.Where(c=>c.x>15 && c.z>15 && c.x<map.Size.x-15 && c.z<map.Size.z-15 && CellRect.CenteredOn(c,6).Cells.All(x=>x.Standable(map) && !x.Fogged(map) && !x.Roofed(map) && x.GetThingList(map).All(t=>t is Plant || t.def.category==ThingCategory.Filth))).OrderBy(c=>c.DistanceToSquared(map.Center)).First();
    foreach(var c in CellRect.CenteredOn(center,6).Cells)foreach(var plant in c.GetThingList(map).OfType<Plant>().ToList())plant.Destroy();
    try{
-    Definitions();Relations();Rain();Eating();Hoard();Reveal();Alchemy();
+    Definitions();Relations();Rain();Eating();Masterwork();Reveal();Alchemy();
    }finally{foreach(var p in made)if(!p.Destroyed)p.Destroy();made.Clear();}
    return checks;
   }
@@ -51,20 +51,20 @@ namespace LichPhylactery.MythicBridge {
 
   static void Definitions(){
    var thoughts=DefDatabase<ThoughtDef>.AllDefsListForReading.Where(d=>d.defName.StartsWith("LPMB_Relation_")).ToList();
-   Check(thoughts.Count==16 && thoughts.All(d=>!d.ConfigErrors().Any() && d.GetModExtension<MythicRelation>()!=null),"sixteen gene-based relation thoughts load cleanly");
-   foreach(var name in new[]{"LPMB_TrollBloodRegen","LPMB_FireGiantFlesh","LPMB_DragonFlesh"}){var h=DefDatabase<HediffDef>.GetNamedSilentFail(name);Check(h!=null && !h.ConfigErrors().Any() && h.CompProps<HediffCompProperties_Disappears>()!=null,"visible short-term hediff loads: "+name);}
+   Check(thoughts.Count==14 && thoughts.All(d=>!d.ConfigErrors().Any() && d.GetModExtension<MythicRelation>()!=null),"fourteen gene-based relation thoughts load cleanly");
+   foreach(var name in new[]{"LPMB_TrollBloodRegen","LPMB_FireGiantFlesh"}){var h=DefDatabase<HediffDef>.GetNamedSilentFail(name);Check(h!=null && !h.ConfigErrors().Any() && h.CompProps<HediffCompProperties_Disappears>()!=null,"visible short-term hediff loads: "+name);}
    var blood=MythicBridge.TrollBlood;Check(blood.IsIngestible && !blood.ConfigErrors().Any() && blood.ingestible.preferability==FoodPreferability.NeverForNutrition,"troll blood is drinkable only as a non-nutrition item");
    Check(S!=null,"bridge game component exists");
   }
   static ThoughtDef Thought(string a,string b)=>DefDatabase<ThoughtDef>.GetNamed("LPMB_Relation_"+a+b);
   static string Xeno(string race){
-   switch(race){case "FireGiant":return "LP_FireGiant";case "ForceDragon":return "LP_ForceDragon";case "Elf":return "LP_Elf";case "MindFlayer":return "LP_MindFlayer";case "Troll":return "LP_Troll";case "Dwarf":return "LP_Dwarf";case "Lich":return "Baseliner";default:return "MB_"+race;}
+   switch(race){case "FireGiant":return "LP_FireGiant";case "Elf":return "LP_Elf";case "MindFlayer":return "LP_MindFlayer";case "Troll":return "LP_Troll";case "Dwarf":return "LP_Dwarf";case "Lich":return "Baseliner";default:return "MB_"+race;}
   }
   static Pawn MakeRace(string race,Faction faction=null){var p=Make(Xeno(race),faction);if(race=="Lich")p.genes.AddGene(DefDatabase<GeneDef>.GetNamed("LP_LichGene"),true);Check(MythicBridge.Is(p,race),"fixture is recognised by genes: "+race);return p;}
   static bool Active(Pawn p,ThoughtDef t){S.InvalidateCensus();return t.Worker.CurrentState(p).Active;}
   static int Count(string race){S.InvalidateCensus();return S.CensusOf(map).Count(race);}
   static void Relations(){
-   var pairs=new[]{new object[]{"Suanni","FireGiant",2f,2f},new object[]{"Suanni","ForceDragon",2f,3f},new object[]{"Jumang","Elf",2f,2f},new object[]{"Jumang","FireGiant",-2f,-2f},new object[]{"Baize","MindFlayer",-3f,-3f},new object[]{"Baize","Lich",-2f,-2f},new object[]{"Taotie","Troll",2f,2f},new object[]{"Taotie","Dwarf",-1f,-1f}};
+   var pairs=new[]{new object[]{"Suanni","FireGiant",2f,2f},new object[]{"Jumang","Elf",2f,2f},new object[]{"Jumang","FireGiant",-2f,-2f},new object[]{"Baize","MindFlayer",-3f,-3f},new object[]{"Baize","Lich",-2f,-2f},new object[]{"Taotie","Troll",2f,2f},new object[]{"Taotie","Dwarf",-1f,-1f}};
    foreach(var pair in pairs){
     string a=(string)pair[0],b=(string)pair[1];var pa=MakeRace(a);var pb=MakeRace(b);
     var ab=Thought(a,b);var ba=Thought(b,a);
@@ -118,8 +118,8 @@ namespace LichPhylactery.MythicBridge {
    var finger=taotie.RaceProps.body.AllParts.First(b=>b.def.defName=="Finger");taotie.health.AddHediff(HediffDefOf.MissingBodyPart,finger);
    for(int i=0;i<40;i++)((Hediff_LesserTrollRegen)regen).Heal(250);
    Check(taotie.health.hediffSet.PartIsMissing(finger) && Troll.Gene(taotie)==null,"lesser regeneration never regrows parts and grants no troll revival");
-   // 肉：屠宰火巨人/力能龙得到的肉带来源标记。
-   foreach(var pair in new[]{new[]{"FireGiant","LPMB_FireGiantFlesh"},new[]{"ForceDragon","LPMB_DragonFlesh"}}){
+   // 肉：屠宰火巨人得到的肉带来源标记。
+   foreach(var pair in new[]{new[]{"FireGiant","LPMB_FireGiantFlesh"}}){
     var donor=MakeRace(pair[0],null);donor.Kill(null);var corpse=donor.Corpse;
     var meat=corpse.ButcherProducts(taotie,1f).First(t=>t.def==donor.RaceProps.meatDef);
     Check(S.MeatSource(meat)==pair[0] && meat.def==ThingDefOf.Human.race.meatDef,"butchering a "+pair[0]+" marks its human meat");
@@ -133,30 +133,23 @@ namespace LichPhylactery.MythicBridge {
    var flame=new DamageInfo(DamageDefOf.Flame,10);taotie.PreApplyDamage(ref flame,out _);
    var force=new DamageInfo(DefDatabase<DamageDef>.GetNamed("LP_Force"),10);taotie.PreApplyDamage(ref force,out _);
    var cutDamage=new DamageInfo(DamageDefOf.Cut,10);taotie.PreApplyDamage(ref cutDamage,out _);
-   Check(Near(flame.Amount,5) && Near(force.Amount,5) && Near(cutDamage.Amount,10),"fire and force damage halve, other damage unchanged ("+flame.Amount+"/"+force.Amount+"/"+cutDamage.Amount+")");
+   Check(Near(flame.Amount,5) && Near(force.Amount,10) && Near(cutDamage.Amount,10),"fire damage halves, force and other damage unchanged ("+flame.Amount+"/"+force.Amount+"/"+cutDamage.Amount+")");
    var other=MakeRace("Taotie");var human=Item("Meat_Human",center+IntVec3.South,5);human.Ingested(other,.1f);
-   Check(Has(other,"LPMB_FireGiantFlesh")==null && Has(other,"LPMB_DragonFlesh")==null && Has(other,"LPMB_TrollBloodRegen")==null,"ordinary human meat gives no bridge effect");
+   Check(Has(other,"LPMB_FireGiantFlesh")==null && Has(other,"LPMB_TrollBloodRegen")==null,"ordinary human meat gives no bridge effect");
    foreach(var name in new[]{"LP_BrainJar","LP_Tadpole"}){var t=Item(name,center+IntVec3.South*2);Check(!tg.FoodAllowed(t),"Taotie cannot eat "+name);t.Destroy();}
    if(!human.Destroyed)human.Destroy();if(!blood.Destroyed)blood.Destroy();
    Remove(taotie,plain,other);
   }
-  static void Hoard(){
-   var dragon=MakeRace("ForceDragon");var far=map.AllCells.Where(c=>c.InBounds(map) && c.DistanceTo(center)>25 && c.DistanceTo(center)<45).OrderBy(c=>c.DistanceToSquared(map.Center)).First();
-   DragonHoard.BuildHoard(map,far,dragon,out var interior);var room=DragonHoard.RoomOf(dragon);
-   Check(room!=null && DragonHoard.Valid(room),"fixture hoard room is valid");
+  static void Masterwork(){
    var suanni=MakeRace("Suanni");suanni.Position=center;suanni.Notify_Teleported();
    var sword=Item("MeleeWeapon_LongSword",center+IntVec3.East);sword.TryGetComp<CompQuality>().SetQuality(QualityCategory.Normal,ArtGenerationContext.Colony);
    var improve=(InnatePsycast)suanni.abilities.abilities.First(a=>a.def.defName=="MB_ImproveQuality");suanni.psychicEntropy.RemoveAllEntropy();suanni.psychicEntropy.OffsetPsyfocusDirectly(1);
    Check(improve.Activate(sword,sword) && sword.TryGetComp<CompQuality>().Quality==QualityCategory.Good && S.IsMasterwork(sword),"Masterwork success marks the item");
    var copy=Item("MeleeWeapon_LongSword",center+IntVec3.West);copy.TryGetComp<CompQuality>().SetQuality(QualityCategory.Good,ArtGenerationContext.Colony);copy.HitPoints=sword.HitPoints;
    Check(!S.IsMasterwork(copy),"items not touched by Masterwork stay unmarked");
-   var free=DragonHoard.FreeCells(interior,map).ToList();
-   float v0=DragonHoard.Value(room);sword.DeSpawn();GenSpawn.Spawn(sword,free[0],map);float v1=DragonHoard.Value(room);copy.DeSpawn();GenSpawn.Spawn(copy,free[1],map);float v2=DragonHoard.Value(room);
-   Check(Near(v1-v0,1.1f*DragonHoard.ItemValue(sword)),"marked item counts 110% in the hoard ("+(v1-v0)+" vs "+DragonHoard.ItemValue(sword)+")");
-   Check(Near(v2-v1,DragonHoard.ItemValue(copy)),"unmarked item counts 100% in the hoard");
-   sword.DeSpawn();GenSpawn.Spawn(sword,center+IntVec3.East*2,map);Check(Near(DragonHoard.Value(room),v2-1.1f*DragonHoard.ItemValue(sword)),"marked item outside the hoard adds nothing");
+   sword.DeSpawn();GenSpawn.Spawn(sword,center+IntVec3.East*2,map);
    savedSwordId=sword.ThingID;copy.Destroy();
-   Remove(dragon,suanni);
+   Remove(suanni);
   }
   static void Reveal(){
    var baize=MakeRace("Baize");baize.Position=center;baize.Notify_Teleported();

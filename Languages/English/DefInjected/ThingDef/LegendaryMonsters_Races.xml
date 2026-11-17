@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 贝希尔 -->
+  <LP_Behir.label>behir</LP_Behir.label>
+  <!-- 蓝色鳞片、十二条腿的巨大蛇形怪物，住在高山和沙漠的洞穴里。它是真龙的死敌：闻到龙的气味就会追上去，喷出一道闪电，把敌人整个吞下。 -->
+  <LP_Behir.description>A huge serpentine monster with blue scales and twelve legs, living in caves in high mountains and deserts. It is the sworn enemy of true dragons: when it smells a dragon it gives chase, breathes a line of lightning and swallows enemies whole.</LP_Behir.description>
+  <!-- 咬 -->
+  <LP_Behir.tools.0.label>bite</LP_Behir.tools.0.label>
+  <!-- 左前爪 -->
+  <LP_Behir.tools.1.label>left front claw</LP_Behir.tools.1.label>
+  <!-- 右前爪 -->
+  <LP_Behir.tools.2.label>right front claw</LP_Behir.tools.2.label>
+  <!-- 尾巴 -->
+  <LP_Behir.tools.3.label>tail</LP_Behir.tools.3.label>
+  <!-- 眼魔 -->
+  <LP_Beholder.label>beholder</LP_Beholder.label>
+  <!-- 漂浮在半空的巨大眼球，一张满是利齿的大嘴，头顶十根眼柄各射出一种魔法射线。它中央的主眼看到的地方，魔法统统失效。眼魔多疑、贪婪，恨一切和自己长得不一样的东西——尤其是夺心魔。 -->
+  <LP_Beholder.description>A huge eyeball floating in midair, with a big mouth full of sharp teeth and ten eyestalks on top, each firing a different magic ray. Wherever its central eye looks, magic fails. Beholders are paranoid, greedy and hate everything that doesn't look like them, especially mind flayers.</LP_Beholder.description>
+  <!-- 咬 -->
+  <LP_Beholder.tools.0.label>bite</LP_Beholder.tools.0.label>
+  <!-- 半巫妖 -->
+  <LP_Demilich.label>demilich</LP_Demilich.label>
+  <!-- 活了太久、连身体都朽烂了的巫妖，只剩下一颗镶着宝石的头骨漂在空中。它的嚎叫能把活人的灵魂撕下来，吸进眼窝里的宝石。 -->
+  <LP_Demilich.description>A lich that has lived so long even its body has rotted away, leaving only a gem-studded skull floating in the air. Its howl can tear the souls from the living and suck them into the gems in its eye sockets.</LP_Demilich.description>
+  <!-- 啃咬 -->
+  <LP_Demilich.tools.0.label>gnaw</LP_Demilich.tools.0.label>
+</LanguageData>

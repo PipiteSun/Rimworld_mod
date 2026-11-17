@@ -1,0 +1,136 @@
+s03867	manual of dexterity
+s03868	The speculative notes of an unknown archmage. After 30 hours of study in total, the reader gets Intelligence +2 and Intelligence cap +2 (each ability can only be gained from a tome once), and the book then crumbles to ash.
+s03869	book of intelligence
+s03870	A manual recording the ancient monks' methods of hardening the body. After 30 hours of study in total, the reader gets Strength +2 and Strength cap +2 (each ability can only be gained from a tome once), and the book then crumbles to ash.
+s03871	manual of strength
+s03872	A book of meditation written under the moon by a druid elder. After 30 hours of study in total, the reader gets Wisdom +2 and Wisdom cap +2 (each ability can only be gained from a tome once), and the book then crumbles to ash.
+s03873	book of wisdom
+s03874	{0} was frozen into an ice sculpture.
+s03875	frost
+s03876	Half the body frozen by a frost round: move speed -40%.
+s03877	frostbound
+s03878	The runes struck by Wrath of the Mountain still burn: magic damage taken (runic firearms, staves) +15%.
+s03879	rune brand
+s03880	cyclops colonist
+s03881	Giant lineage: cyclops (rank 6 of the ordning, below ettins).
+s03882	Body size 1.8 (drawn about 1.35×), children grow with age; one eye: sight takes the worst of the two eye parts.
+s03883	Immune to gaze effects (lich fear gaze, scroll of fearful gaze, etc.).
+s03884	The cyclops bloodline, inheritable. Body size 1.8 (drawn about 1.35×), one big eye in the middle of the forehead (the two eye parts together make up this single eye: if either is damaged, sight takes the worst; without it they're blind); robust build, move speed 4.2, learning ×85%, stomach ×170%. This gene makes them count as giants: rank 6 of the ordning (below ettins), can wear giant-only apparel and wield giant-only weapons, and don't care about nudity. That big eye isn't afraid of being stared down: gaze effects like a lich's fear gaze don't work on them.
+s03885	cyclops origin
+s03886	cyclops
+s03887	Work speed of smithing recipes: ×115%.
+s03888	Cyclopes are born craftsmen: construction speed +20%; work speed at the smithy and rune anvil (smithing recipes) +15%.
+s03889	cyclops craftsmanship
+s03890	Shooting accuracy: -3.5 points (trigger-happy -5 points).
+s03891	With only one eye, depth perception is poor: shooting accuracy -3.5 points (vanilla accuracy points; at Shooting 10 and 20 cells, hit chance about ×70%), ranged aiming time +10%.
+s03892	monocular vision
+s03893	Hearing the sheep bleat puts my mind at ease.
+s03894	the flock
+s03895	The cyclops bloodline: only one big eye in the middle of the forehead. They are superb smiths and masons and patient herders, most at ease with a flock nearby; but with one eye they misjudge distance, and their archery and shooting fall short. Intimidating gazes don't work on them. The bloodline is passed on to children.
+s03896	Inheritable giant race. One eye (blind without it), faster construction and smithing, good at animal handling and herding, immune to gazes; poor shooting.
+s03897	Colony has sheep or goats: mood +2 (the flock).
+s03898	Cyclopes are patient herders: taming and training success and animal gathering (milking, shearing) yield +25%. Mood +2 when the colony keeps sheep or goats (the flock).
+s03899	herder
+s03900	Mental state: infighting
+s03901	{0}'s two heads have started arguing, standing in place refusing to give in; it'll probably last about an hour.
+s03902	infighting
+s03903	{0}'s two heads have finally stopped arguing.
+s03904	ettin colonist
+s03905	Giant lineage: ettin (rank 5 of the ordning, below frost giants).
+s03906	Body size 2.0 (drawn about 1.4×), children grow with age; two heads (the second head is cosmetic; when the main head takes a lethal wound, it takes over, granting "lone head").
+s03907	The ettin bloodline, inheritable. Body size 2.0 (drawn about 1.4×), two heads side by side on the shoulders (losing one head isn't fatal, see "lone head"); robust build, move speed 4.0, learning ×85%, stomach ×180%. This gene makes them count as giants: rank 5 of the ordning (below frost giants), can wear giant-only apparel and wield giant-only weapons, and don't care about nudity.
+s03908	ettin origin
+s03909	ettin
+s03910	The bloodline of the ettins: two heads on one huge body, each brain with its own ideas. The two heads take turns sleeping and keeping watch, each controls one hand and they strike with both in a fight; but they're always arguing too. The bloodline is passed on to children.
+s03911	Inheritable giant race. Two heads, two brains: losing one head isn't fatal, sleeps less and keeps watch, wields off-hand weapons with both hands; the two heads often argue.
+s03912	The ettin has lost a head (the other head took the lethal head wound: the wounds and the loss count on the head that's gone); the remaining head must watch the road and keep watch alone: sight ×75%, taking turns at watch and two-headed discord stop working, mood -8. The remaining head eats and talks as usual.
+s03913	lone head
+s03914	The other head is gone. No one to argue with, and no one to keep watch for me.
+s03915	Minor mental breaks gain one more type, "infighting" (as common as "sad wander"): arguing in place for 1 hour, doing no work.
+s03916	Every 15 days, a 10% chance to start arguing on its own; not when mood is above 70% or asleep.
+s03917	Requires two heads (no more arguing after losing one).
+s03918	Neither head yields to the other. During a minor mental break they may fall into "infighting": standing in place arguing for 1 hour, doing no work; also about every 15 days there's a 10% chance they start arguing on their own (not when mood is above 70%). Needs two heads to argue.
+s03919	two-headed discord
+s03920	Requires two heads each controlling one hand (needs the ettin origin), with both hands usable.
+s03921	Off-hand: the 1 melee weapon in the pack with the highest quality × DPS.
+s03922	After a normal melee hit, the off-hand follows up with one strike; doesn't trigger when the main hand holds a ranged weapon or on ability hits.
+s03923	Requires two heads each controlling one hand: only works for those with the ettin origin, with both hands usable. The best melee weapon in the pack serves as the off-hand; while the main hand holds a melee weapon or is empty, each normal melee hit is followed by an off-hand strike (damage per the mod setting "off-hand follow-up damage", 50% by default, same as mariliths).
+s03924	ambidextrous
+s03925	Requires two heads (no effect on humans; stops working after losing one head).
+s03926	Sleep need fall rate: ×50%.
+s03927	Wakes at once when enemies come within 10 cells while asleep (checked every 250 ticks).
+s03928	Requires two heads. While one head sleeps, the other stays awake: sleep need fall rate ×50%; wakes at once when enemies appear within 10 cells during sleep. Has no effect with only one head (or when on someone with only one head).
+s03929	taking turns at watch
+s03930	cyclops guard
+s03931	cyclops herder
+s03932	wandering ettin
+s03933	ettin brute
+s03934	An ettin driven out by its kin, a cyclops who lost his sheepfold, and a human who somehow tagged along arrive at the foot of a mountain herding four sheep.\n\nAll they have are two clubs, a little steel and dry rations. The ettin's two heads always argue and the cyclops can't shoot straight, but the two big folk work like several people.\n\nHills recommended: the cyclops builds fast and can smith, and mountain stone and ore veins suit them; the flock keeps the cyclops at ease.
+s03935	outcasts at the mountain's foot
+s03936	Your kin drove you down the mountain.\n\nThe left head says go east, the right head says go west; the cyclops says nothing and just keeps counting his four sheep; the little human follows along and won't be shooed away.\n\nNow this mountain foot is your home.
+s03937	An ettin, a cyclops, a human and four sheep. Hills map recommended.
+s03938	A cyclops's skin tanned olive.
+s03939	olive skin
+s03940	olive
+s03941	A cyclops's skin baked reddish-brown by forge fires.
+s03942	russet skin
+s03943	russet
+s03944	An ettin's rough grey-brown skin, like weathered mountain rock.
+s03945	grey-brown skin
+s03946	An ettin's ochre skin, like sun-dried clay.
+s03947	ochre skin
+s03948	ochre
+s03949	Magic items are especially obedient in {PAWN_nameDef}'s hands.\n\n- Stat bonuses built into worn magic items (1.45.0 magic items, magic apparel) ×1.25\n- Can wear up to three rings (normally two)\n- When {PAWN_pronoun} kills a nemesis champion, a 20% chance of one extra magic item drop
+s03950	<color=#5B9BD5>Attuned</color>
+s03951	Death gives a little more time to those who have died once: no more blood loss.
+s03952	grace of the underworld
+s03953	{PAWN_nameDef} died once and came back.\n\n- Mood isn't worsened by death-related events (deaths of family and comrades, witnessing death)\n- +20% damage against undead\n- Once every 30 days: won't bleed out within 2 hours of being downed
+s03954	<color=#50C0C0>Returned from the Underworld</color>
+s03955	{PAWN_nameDef} took part in killing a dragon.\n\n- +30% damage against dragons\n- Immune to the fear caused by dragon presence\n- Dragon breath (a dragon's weaponless damage) -30%
+s03956	<color=#50C0C0>Dragonslayer</color>
+s03957	{PAWN_nameDef} took part in killing a god-possessed pawn or demigod.\n\n- +35% damage against the divine-infused, god-possessed and demigods\n- Their divine magic damage (weaponless damage) -35%\n- Six ability score caps +1
+s03958	{PAWN_nameDef} refuses to believe in a fate written by bloodline.\n\n- The race's "clumsy" ability scores count as ×1\n- Each ability score improvement gives 1 extra point (normally 2, now 3)
+s03959	<color=#B070E0>Contrarian</color>
+s03960	{PAWN_nameDef} never slacks off and grows a bit more than others.\n\n- One extra ability score improvement at levels 6, 10, 14 and 18 (these levels normally give nothing; each time you can raise abilities or pick a feat instead, one or the other)
+s03961	<color=#B070E0>Diligent</color>
+s03962	Tyr's miracle: melee damage +50%.
+s03963	sword of justice
+s03964	Lathander, the Morninglord, has chosen {PAWN_nameDef}.\n\nAwakened: cleric / paladin path XP +30%, divine favor from praying at the altar ×2, +20% damage against undead.\nManifest (adventurer level 10): Path of Ascension progress ×1.5, Lathander's domain spell cooldown -25%.\nExalted (legendary adventurer): divine intervention: when 3 or more colonists on the same map are downed, a miracle descends automatically (once per quarter): morning light shines and everyone's wounds heal and stop bleeding. Starts as demigod rank +1 upon ascension.
+s03965	<color=#E0B040>Champion of the Gods: Lathander</color>
+s03966	Tyr, god of justice, has chosen {PAWN_nameDef}.\n\nAwakened: cleric / paladin path XP +30%, divine favor from praying at the altar ×2, +20% damage against fiends.\nManifest (adventurer level 10): Path of Ascension progress ×1.5, Tyr's domain spell cooldown -25%.\nExalted (legendary adventurer): divine intervention: when 3 or more colonists on the same map are downed, a miracle descends automatically (once per quarter): sword of justice, everyone's melee damage +50% for 30 seconds. Starts as demigod rank +1 upon ascension.
+s03967	<color=#E0B040>Champion of the Gods: Tyr</color>
+s03968	Mystra, goddess of magic, has chosen {PAWN_nameDef}.\n\nAwakened: cleric / paladin path XP +30%, divine favor from praying at the altar ×2, +20% damage against aberrations.\nManifest (adventurer level 10): Path of Ascension progress ×1.5, Mystra's domain spell cooldown -25%.\nExalted (legendary adventurer): divine intervention: when 3 or more colonists on the same map are downed, a miracle descends automatically (once per quarter): the Weave severed, interrupting all enemy casting and stunning every enemy for 5 seconds. Starts as demigod rank +1 upon ascension.
+s03969	<color=#E0B040>Champion of the Gods: Mystra</color>
+s03970	Kelemvor, god of death, has chosen {PAWN_nameDef}.\n\nAwakened: cleric / paladin path XP +30%, divine favor from praying at the altar ×2, +20% damage against undead.\nManifest (adventurer level 10): Path of Ascension progress ×1.5, Kelemvor's domain spell cooldown -25%.\nExalted (legendary adventurer): divine intervention: when 3 or more colonists on the same map are downed, a miracle descends automatically (once per quarter): death halted, all downed colonists stop bleeding and won't bleed out for 1 day. Starts as demigod rank +1 upon ascension.
+s03971	<color=#E0B040>Champion of the Gods: Kelemvor</color>
+s03972	Malar, the Beastlord, has chosen {PAWN_nameDef}.\n\nAwakened: cleric / paladin path XP +30%, divine favor from praying at the altar ×2, +20% damage against beasts.\nManifest (adventurer level 10): Path of Ascension progress ×1.5, Malar's domain spell cooldown -25%.\nExalted (legendary adventurer): divine intervention: when 3 or more colonists on the same map are downed, a miracle descends automatically (once per quarter): the Beastlord's roar, enemies on the map panic and flee for 10 seconds. Starts as demigod rank +1 upon ascension.
+s03973	<color=#E0B040>Champion of the Gods: Malar</color>
+s03974	Talos, god of storms, has chosen {PAWN_nameDef}.\n\nAwakened: cleric / paladin path XP +30%, divine favor from praying at the altar ×2, +20% damage against giants.\nManifest (adventurer level 10): Path of Ascension progress ×1.5, Talos's domain spell cooldown -25%.\nExalted (legendary adventurer): divine intervention: when 3 or more colonists on the same map are downed, a miracle descends automatically (once per quarter): thunder wrath, up to 6 lightning bolts strike enemies (30 electrical damage each). Starts as demigod rank +1 upon ascension.
+s03975	<color=#E0B040>Champion of the Gods: Talos</color>
+s03976	Bane, the Black Lord, has chosen {PAWN_nameDef}.\n\nAwakened: cleric / paladin path XP +30%, divine favor from praying at the altar ×2, +20% damage against the divine-infused, god-possessed and demigods.\nManifest (adventurer level 10): Path of Ascension progress ×1.5, Bane's domain spell cooldown -25%.\nExalted (legendary adventurer): divine intervention: when 3 or more colonists on the same map are downed, a miracle descends automatically (once per quarter): tyrant's dread, every enemy on the map is terrified for 1 hour. Starts as demigod rank +1 upon ascension.
+s03977	<color=#E0B040>Champion of the Gods: Bane</color>
+s03978	Shar, goddess of night, has chosen {PAWN_nameDef}.\n\nAwakened: cleric / paladin path XP +30%, divine favor from praying at the altar ×2, +20% damage against aberrations.\nManifest (adventurer level 10): Path of Ascension progress ×1.5, Shar's domain spell cooldown -25%.\nExalted (legendary adventurer): divine intervention: when 3 or more colonists on the same map are downed, a miracle descends automatically (once per quarter): veil of night, colonists on the map turn invisible for 30 seconds. Starts as demigod rank +1 upon ascension.
+s03979	<color=#E0B040>Champion of the Gods: Shar</color>
+s03980	Surtur, god of fire giants, has chosen {PAWN_nameDef}.\n\nAwakened: cleric / paladin path XP +30%, divine favor from praying at the altar ×2, +20% damage against dragons.\nManifest (adventurer level 10): Path of Ascension progress ×1.5, Surtur's domain spell cooldown -25%.\nExalted (legendary adventurer): divine intervention: when 3 or more colonists on the same map are downed, a miracle descends automatically (once per quarter): fury of the forge, every enemy on the map catches fire and takes 20 fire damage. Starts as demigod rank +1 upon ascension.
+s03981	<color=#E0B040>Champion of the Gods: Surtur</color>
+s03982	destiny
+s03983	Kelemvor's miracle: wounds no longer bleed.
+s03984	death halted
+s03985	{PAWN_nameDef} is best one-on-one.\n\n- With only one enemy adjacent (within 1.5 cells): melee hit +25%, melee dodge +25%, and a successful dodge has a 50% chance of an instant counterattack\n- With 3 or more enemies close in: melee hit -10%\n(The number of nearby enemies updates every 4 seconds)
+s03986	<color=#5B9BD5>Duelist</color>
+s03987	{PAWN_nameDef} was born for war.\n\n- Each point of the legend attributes "melee" and "ranged" is worth ×1.5 (takes the larger of this and racial affinity, not multiplied)
+s03988	<color=#5B9BD5>Keen Edge</color>
+s03989	Tentacles reaching from cracks in the ground have wrapped the body: unable to move, taking damage every second.
+s03990	otherworldly tentacles
+s03991	Elemental fire has left its mark on {PAWN_nameDef}.\n\n- Every weapon hit deals an extra 3 burn damage\n- Fire-type damage taken -50%\n- {PAWN_possessive} fire-type spell, divine magic and staff damage +30%\n- Fire genasi: instead fire damage -75%, no added damage
+s03992	<color=#5B9BD5>Elemental Touch: Fire</color>
+s03993	Elemental ice has left its mark on {PAWN_nameDef}.\n\n- Every weapon hit deals an extra 3 frost damage and slows the target for 2 seconds\n- Cold-type damage taken -50%\n- {PAWN_possessive} cold-type spell, divine magic and staff damage +30%\n- Water genasi: instead cold damage -75%, no added damage
+s03994	<color=#5B9BD5>Elemental Touch: Ice</color>
+s03995	Elemental lightning has left its mark on {PAWN_nameDef}.\n\n- Every weapon hit deals an extra 3 electrical damage, with a 10% chance to jump to another enemy within 2 cells\n- Lightning-type damage taken -50%\n- {PAWN_possessive} lightning-type spell, divine magic and staff damage +30%\n- Air genasi: instead lightning damage -75%, no added damage
+s03996	<color=#5B9BD5>Elemental Touch: Lightning</color>
+s03997	Elemental acid has left its mark on {PAWN_nameDef}.\n\n- Every weapon hit deals an extra 3 acid damage\n- Acid-type damage taken -50%\n- {PAWN_possessive} acid-type spell, divine magic and staff damage +30%\n- Earth genasi: instead acid damage -75%, no added damage
+s03998	<color=#5B9BD5>Elemental Touch: Acid</color>
+s03999	{PAWN_nameDef} swore to hunt the world's dragons.\n\n- Against the sworn foe (dragons: chromatic true dragons, force dragonborn, other dragonkind): damage +25%, hit +15%\n- A notice when the sworn foe appears on this map\n- After 50 sworn-foe kills in total, becomes a "Foe Slayer": damage +40%, immune to stuns and control effects from the sworn foe
+s04000	<color=#5B9BD5>Sworn Hunter: Dragons</color>
+s04001	{PAWN_nameDef} swore to hunt giants.\n\n- Against the sworn foe (giant races of body size 2+): damage +25%, hit +15%\n- A notice when the sworn foe appears on this map\n- After 50 sworn-foe kills in total, becomes a "Foe Slayer": damage +40%, immune to stuns and control effects from the sworn foe
+s04002	<color=#5B9BD5>Sworn Hunter: Giants</color>

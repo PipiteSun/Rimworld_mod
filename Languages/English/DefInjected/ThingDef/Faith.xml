@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 圣坛 -->
+  <LP_FaithAltar.label>altar</LP_FaithAltar.label>
+  <!-- 供奉殖民地守护神的圣坛。在这里选择守护神、祈祷（娱乐，1小时）、献上祭品换取神眷，制作圣徽，并为圣物祝圣（念珠、圣甲虫护符、净化封印、圣光冠环、护佑誓约戒指）；可连接守护神像；神眷够高时还能为信徒举行神选仪式。圣坛的光是守护神的颜色。可以建多座。 -->
+  <LP_FaithAltar.description>An altar to the colony's patron deity. Here you choose the patron deity, pray (recreation, 1 hour), offer sacrifices for divine favor, craft holy symbols and consecrate holy relics (prayer beads, scarab amulet, purifying seal, circlet of holy light, ring of protective vows); it can link to patron deity statues; with enough divine favor you can also hold the choosing ritual for believers. The altar's light is the color of the patron deity. You can build several.</LP_FaithAltar.description>
+  <!-- 圣徽 -->
+  <LP_HolySymbol.label>holy symbol</LP_HolySymbol.label>
+  <!-- 挂在胸前的银质圣徽，上面的纹样是殖民地守护神的标记（没有守护神时圣徽“沉寂”）。佩戴者可以施放三个通用神术和守护神的领域神术，神恩强度+0.1；神术消耗殖民地的守护神神眷。无神者戴上没有用。 -->
+  <LP_HolySymbol.description>A silver holy symbol hung on the chest, bearing the mark of the colony's patron deity (without a patron deity the symbol is "silent"). The wearer can cast three common divine spells and the patron deity's domain spell, divine power +0.1; divine magic spends the colony patron deity's divine favor. Useless when worn by the godless.</LP_HolySymbol.description>
+</LanguageData>

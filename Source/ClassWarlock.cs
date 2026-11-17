@@ -42,7 +42,7 @@ namespace LichPhylactery {
    d.ticks.Remove(RestKey);
    int max=ClassSystem.MaxResource(h,Class);if(ClassSystem.Resource(h,Class)>=max-.001f)return false;
    ClassSystem.AddResource(h,Class,max);
-   if(h.pawn?.Faction!=null && h.pawn.Faction.IsPlayer)Items.Mote(h.pawn,"契约法力回满",Eldritch);
+   if(h.pawn?.Faction!=null && h.pawn.Faction.IsPlayer)Items.Mote(h.pawn,"契约法力回满".Loc(),Eldritch);
    return true;
   }
   // 邪魔宗主 + 九狱 / 深渊的异界契约：邪术师能力 ×1.25；宗主化身 ×1.5。
@@ -100,14 +100,14 @@ namespace LichPhylactery {
    if((g & FLuck)!=0)f*=DarkLuckFactor;
    if((g & FResilience)!=0 && ClassSubclass.Element(d.Def)==0)f*=ResilienceFactor;
    if((g & FThought)!=0 && ClassSubclass.Psychic(d.Def))f*=ThoughtFactor;
-   if((g & FEntropic)!=0 && ForceDragon.IsRanged(d))f*=EntropicFactor;
-   if((g & FBeguile)!=0 && a!=null && a!=v && a.HostileTo(v) && HeroCombat.Melee(d) && Rand.Chance(BeguileChance)){a.stances?.stunner?.StunFor(BeguileStun,v);Items.Mote(a,"被迷住了",new Color(.5f,.8f,.6f));}
+   if((g & FEntropic)!=0 && AttackKind.IsRanged(d))f*=EntropicFactor;
+   if((g & FBeguile)!=0 && a!=null && a!=v && a.HostileTo(v) && HeroCombat.Melee(d) && Rand.Chance(BeguileChance)){a.stances?.stunner?.StunFor(BeguileStun,v);Items.Mote(a,"被迷住了".Loc(),new Color(.5f,.8f,.6f));}
    return f;
   }
   public static void Killed(Pawn victim,Pawn killer){
    int g=Flags(killer);if(g==0 || killer.Dead || !victim.HostileTo(killer))return;
    var h=Adventurer.Get(killer);if(h==null)return;
-   if((g & FBless)!=0){float healed=ClassMelee.Heal(killer,5f+Level(h)/2f);if(healed>0f)Items.Mote(killer,"黑暗祝福",new Color(.85f,.4f,.35f));}
+   if((g & FBless)!=0){float healed=ClassMelee.Heal(killer,5f+Level(h)/2f);if(healed>0f)Items.Mote(killer,"黑暗祝福".Loc(),new Color(.85f,.4f,.35f));}
    if((g & FSoul)!=0)ClassSystem.AddResource(h,Class,1f);
   }
 
@@ -120,13 +120,13 @@ namespace LichPhylactery {
    if(!Known.Contains(e.effect))return null;var t=target.Thing as Pawn;
    switch(e.effect){
     case "EldritchBlast":case "WLHex":case "WLRebuke":case "WLHurl":case "WLDelirium":case "WLWhispers":case "WLDominate":case "WLThrall":
-     if(t==null || t.Dead)return "需要选择一个活着的目标。";
-     if(!t.HostileTo(caster))return "只能对敌人使用。";
-     if(e.effect=="EldritchBlast"){float r=Range(caster);if(CastApproach.TooFar(caster.Position.DistanceTo(t.Position),r))return "超出魔能爆的射程（"+r.ToString("0")+" 格）。";}
-     if(e.effect=="WLDominate" && !t.RaceProps.Humanlike)return "只能支配人形。";
-     if(e.effect=="WLThrall"){if(!t.RaceProps.Humanlike)return "只能对人形使用。";if(!t.Downed)return "目标要先倒地。";if(Boss(t))return "剧情首领和传奇单位不会变成奴仆。";}
+     if(t==null || t.Dead)return "需要选择一个活着的目标。".Loc();
+     if(!t.HostileTo(caster))return "只能对敌人使用。".Loc();
+     if(e.effect=="EldritchBlast"){float r=Range(caster);if(CastApproach.TooFar(caster.Position.DistanceTo(t.Position),r))return "超出魔能爆的射程（".Loc()+r.ToString("0")+" 格）。".Loc();}
+     if(e.effect=="WLDominate" && !t.RaceProps.Humanlike)return "只能支配人形。".Loc();
+     if(e.effect=="WLThrall"){if(!t.RaceProps.Humanlike)return "只能对人形使用。".Loc();if(!t.Downed)return "目标要先倒地。".Loc();if(Boss(t))return "剧情首领和传奇单位不会变成奴仆。".Loc();}
      return null;
-    case "WLDarkness":case "WLForceCage":{var map=caster.Map;var c=target.Cell;if(map==null || !c.IsValid || !c.InBounds(map))return "需要选择一个位置。";return null;}
+    case "WLDarkness":case "WLForceCage":{var map=caster.Map;var c=target.Cell;if(map==null || !c.IsValid || !c.InBounds(map))return "需要选择一个位置。".Loc();return null;}
    }
    return null;
   }
@@ -136,15 +136,15 @@ namespace LichPhylactery {
    switch(e.effect){
     case "EldritchBlast":if(Hostile(p,t))Blast(p,t,pw);break;
     case "WLDarkness":Darkness(p,target.Cell,rad,dur);break;
-    case "WLHex":if(Hostile(p,t)){foreach(var old in Hexed.Where(x=>x!=t && Hex(x)?.caster==p).ToList())Items.Remove(old,"LP_WL_Hexed");ClassMartial2.MarkTarget(p,t,"LP_WL_Hexed",dur,s,Eldritch,"咒术");Hexed.Add(t);}break;
+    case "WLHex":if(Hostile(p,t)){foreach(var old in Hexed.Where(x=>x!=t && Hex(x)?.caster==p).ToList())Items.Remove(old,"LP_WL_Hexed");ClassMartial2.MarkTarget(p,t,"LP_WL_Hexed",dur,s,Eldritch,"咒术".Loc());Hexed.Add(t);}break;
     case "WLDominate":if(Hostile(p,t))Dominate(p,t,dur);break;
     case "WLForceCage":ForceCage(p,target.Cell,rad,dur);break;
-    case "WLMaster":{var h=Adventurer.Get(p);if(h!=null){ClassSystem.AddResource(h,Class,ClassSystem.MaxResource(h,Class));Items.Mote(p,"秘法大师：契约法力回满",Eldritch);}break;}
-    case "WLRebuke":if(Hostile(p,t)){t.TakeDamage(new DamageInfo(DamageDefOf.Flame,pw,.2f,-1f,p));if(!t.Dead)t.TryAttachFire(.4f,p);Line(p,t);Items.Mote(t,"炼狱叱喝",new Color(.95f,.45f,.3f));}break;
-    case "WLHurl":if(Hostile(p,t)){t.TakeDamage(new DamageInfo(DamageDefOf.Flame,pw,.4f,-1f,p));if(!t.Dead){t.stances?.stunner?.StunFor(300,p);Items.Give(t,"LP_Shaken",600,1f);}Items.Mote(t,"掷入地狱",new Color(.95f,.35f,.25f));}break;
-    case "WLFeyPresence":foreach(var x in Near(p,p.Position,rad).ToList())if(Hostile(p,x) && !x.Downed){if(DNDMind.TryResist(x))Items.Mote(x,"抵抗！",Eldritch);else ClassSubclass.Fear(x,dur,"妖精风采");}Items.Mote(p,"妖精风采",new Color(.5f,.8f,.6f));break;
+    case "WLMaster":{var h=Adventurer.Get(p);if(h!=null){ClassSystem.AddResource(h,Class,ClassSystem.MaxResource(h,Class));Items.Mote(p,"秘法大师：契约法力回满".Loc(),Eldritch);}break;}
+    case "WLRebuke":if(Hostile(p,t)){t.TakeDamage(new DamageInfo(DamageDefOf.Flame,pw,.2f,-1f,p));if(!t.Dead)t.TryAttachFire(.4f,p);Line(p,t);Items.Mote(t,"炼狱叱喝".Loc(),new Color(.95f,.45f,.3f));}break;
+    case "WLHurl":if(Hostile(p,t)){t.TakeDamage(new DamageInfo(DamageDefOf.Flame,pw,.4f,-1f,p));if(!t.Dead){t.stances?.stunner?.StunFor(300,p);Items.Give(t,"LP_Shaken",600,1f);}Items.Mote(t,"掷入地狱".Loc(),new Color(.95f,.35f,.25f));}break;
+    case "WLFeyPresence":foreach(var x in Near(p,p.Position,rad).ToList())if(Hostile(p,x) && !x.Downed){if(DNDMind.TryResist(x))Items.Mote(x,"抵抗！".Loc(),Eldritch);else ClassSubclass.Fear(x,dur,"妖精风采".Loc());}Items.Mote(p,"妖精风采".Loc(),new Color(.5f,.8f,.6f));break;
     case "WLDelirium":if(Hostile(p,t))Delirium(p,t,dur);break;
-    case "WLWhispers":if(Hostile(p,t)){t.TakeDamage(new DamageInfo(PsychicDamage,pw,1f,-1f,p));if(!t.Dead && !DNDMind.TryResist(t))ClassSubclass.Fear(t,dur,"不谐低语");Items.Mote(t,"不谐低语",new Color(.45f,.7f,.75f));}break;
+    case "WLWhispers":if(Hostile(p,t)){t.TakeDamage(new DamageInfo(PsychicDamage,pw,1f,-1f,p));if(!t.Dead && !DNDMind.TryResist(t))ClassSubclass.Fear(t,dur,"不谐低语".Loc());Items.Mote(t,"不谐低语".Loc(),new Color(.45f,.7f,.75f));}break;
     case "WLThrall":Thrall(p,t);break;
    }
    return true;
@@ -160,7 +160,7 @@ namespace LichPhylactery {
     if(target==null || target.Dead || !target.Spawned){target=target?.MapHeld==null?null:Races124.PawnsNear(target.MapHeld,target.PositionHeld,6f).Where(x=>Hostile(p,x) && !x.Downed).OrderBy(x=>x.Position.DistanceToSquared(t.PositionHeld)).FirstOrDefault();if(target==null)break;}
     Line(p,target);target.TakeDamage(new DamageInfo(ForceDamage,amount,.3f,-1f,p));n++;
    }
-   Items.Mote(p,"魔能爆"+(n>1?" ×"+n:""),Eldritch);
+   Items.Mote(p,"魔能爆".Loc()+(n>1?" ×"+n:""),Eldritch);
    return n;
   }
   public static int Darkness(Pawn p,IntVec3 c,float radius,int ticks){
@@ -171,11 +171,11 @@ namespace LichPhylactery {
   }
   public static bool Dominate(Pawn p,Pawn t,int ticks,float roll=-1f){
    if(roll<0f)roll=Rand.Value;
-   if(Boss(t) && roll<BossBreak || DNDMind.TryResist(t)){Items.Mote(t,"抵抗了支配",Eldritch);return false;}
+   if(Boss(t) && roll<BossBreak || DNDMind.TryResist(t)){Items.Mote(t,"抵抗了支配".Loc(),Eldritch);return false;}
    var msh=t.mindState?.mentalStateHandler;
-   if(msh==null || !msh.TryStartMentalState(MentalStateDefOf.Berserk,"被邪术师支配",true,true)){Items.Give(t,"LP_Shaken",ticks,1f);return false;}
+   if(msh==null || !msh.TryStartMentalState(MentalStateDefOf.Berserk,"被邪术师支配".Loc(),true,true)){Items.Give(t,"LP_Shaken",ticks,1f);return false;}
    if(t.MentalState!=null)t.MentalState.forceRecoverAfterTicks=ticks;
-   Line(p,t);Items.Mote(t,"被支配",Eldritch);return true;
+   Line(p,t);Items.Mote(t,"被支配".Loc(),Eldritch);return true;
   }
   public static int ForceCage(Pawn p,IntVec3 c,float radius,int ticks){
    var map=p.Map;if(map==null)return 0;int n=0;
@@ -184,19 +184,19 @@ namespace LichPhylactery {
     x.stances?.stunner?.StunFor(k,p,false);Items.Give(x,"LP_WL_Caged",k,1f);n++;
    }
    foreach(var cell in GenRadial.RadialCellsAround(c,radius,true))if(cell.InBounds(map))FleckMaker.ThrowLightningGlow(cell.ToVector3Shifted(),map,.6f);
-   Items.Mote(p,"力场监牢",Eldritch);return n;
+   Items.Mote(p,"力场监牢".Loc(),Eldritch);return n;
   }
   public static void Delirium(Pawn p,Pawn t,int ticks){
    Items.Give(t,"LP_Shaken",ticks,1f);
-   if(Boss(t)){Items.Mote(t,"震慑",Eldritch);return;}
-   if(DNDMind.TryResist(t)){Items.Mote(t,"抵抗！",Eldritch);return;}
-   ClassSubclass.Fear(t,ticks,"黑暗谵妄",false);Items.Mote(t,"黑暗谵妄",new Color(.5f,.8f,.6f));
+   if(Boss(t)){Items.Mote(t,"震慑".Loc(),Eldritch);return;}
+   if(DNDMind.TryResist(t)){Items.Mote(t,"抵抗！".Loc(),Eldritch);return;}
+   ClassSubclass.Fear(t,ticks,"黑暗谵妄".Loc(),false);Items.Mote(t,"黑暗谵妄".Loc(),new Color(.5f,.8f,.6f));
   }
   public static bool Thrall(Pawn p,Pawn t){
    if(t==null || t.Dead || !t.Downed || !t.RaceProps.Humanlike || Boss(t) || !t.HostileTo(p))return false;
-   if(DNDMind.TryResist(t)){Items.Mote(t,"抵抗！",Eldritch);return false;}
+   if(DNDMind.TryResist(t)){Items.Mote(t,"抵抗！".Loc(),Eldritch);return false;}
    if(p.Faction==Faction.OfPlayer)InteractionWorker_RecruitAttempt.DoRecruit(p,t);else t.SetFaction(p.Faction);
-   Items.Mote(t,"成了奴仆",new Color(.45f,.7f,.75f));
+   Items.Mote(t,"成了奴仆".Loc(),new Color(.45f,.7f,.75f));
    return t.Faction==p.Faction;
   }
  }

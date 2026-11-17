@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 事件地点 -->
+  <LP_E3Site.label>event site</LP_E3Site.label>
+  <!-- 和殖民地最近发生的事有关的地方。 -->
+  <LP_E3Site.description>A place related to something that recently happened to the colony.</LP_E3Site.description>
+  <!-- 正在前往{0}。 -->
+  <LP_E3Site.approachingReportString>Traveling to {0}.</LP_E3Site.approachingReportString>
+  <!-- 前往{0} -->
+  <LP_E3Site.approachOrderString>travel to {0}</LP_E3Site.approachOrderString>
+  <!-- 到了。这里的敌人还在。 -->
+  <LP_E3Site.arrivedLetter>We've arrived. The enemies here are still around.</LP_E3Site.arrivedLetter>
+</LanguageData>

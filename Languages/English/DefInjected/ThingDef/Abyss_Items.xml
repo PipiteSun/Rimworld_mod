@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 灵魂币 -->
+  <LP_SoulCoin.label>soul coin</LP_SoulCoin.label>
+  <!-- 深渊的通货：一枚冰冷的黑铁币，正面锁着一个尖叫的灵魂。深渊仪式用它代替活祭；巫妖可以把它吸收进命匣（每枚相当于献祭一具普通尸体的 25%）。背包里揣着 10 枚以上会让人心神不宁。不能制作，只能炼魂或从恶魔身上得到。 -->
+  <LP_SoulCoin.description>The currency of the Abyss: a cold black iron coin with a screaming soul locked in its face. Abyssal rituals use it in place of live sacrifices; a lich can absorb it into the phylactery (each worth 25% of sacrificing an ordinary corpse). Carrying 10 or more in a pack is unsettling. Cannot be crafted; only obtained by soul refining or from demons.</LP_SoulCoin.description>
+  <!-- 吸收灵魂（巫妖） -->
+  <LP_SoulCoin.comps.CompUsable.useLabel>absorb soul (lich)</LP_SoulCoin.comps.CompUsable.useLabel>
+  <!-- 恶魔血 -->
+  <LP_DemonBlood.label>demon blood</LP_DemonBlood.label>
+  <!-- 一小瓶冒着热气的黑红色血液。喝下去：1 天内近战伤害 +15%、疼痛 -10%，但深渊腐化 +8%。深渊仪式的二阶祭品之一；炼金桌的配方以后会用到它。 -->
+  <LP_DemonBlood.description>A small steaming vial of black-red blood. Drinking it: +15% melee damage and -10% pain for 1 day, but +8% abyssal taint. One of the tier 2 offerings for abyssal rituals; alchemy table recipes will use it later.</LP_DemonBlood.description>
+  <!-- 饮用{0} -->
+  <LP_DemonBlood.ingestible.ingestCommandString>drink {0}</LP_DemonBlood.ingestible.ingestCommandString>
+  <!-- 正在饮用{0}。 -->
+  <LP_DemonBlood.ingestible.ingestReportString>Drinking {0}.</LP_DemonBlood.ingestible.ingestReportString>
+  <!-- 恶魔学典籍 -->
+  <LP_Demonomicon.label>demonology tome</LP_Demonomicon.label>
+  <!-- 记载深渊恶魔真名、习性和召唤仪式的禁书。每本只详细记载一种恶魔（巴路古拉、哈兹魔、魅魔、纳巴苏、六臂蛇魔或炎魔）。读满 4 小时，殖民地就学会在深渊法阵上召唤它；阅读时每小时深渊腐化 +0.5%。地图上放着它会让位面一点点变薄。 -->
+  <LP_Demonomicon.description>A forbidden book recording the true names, habits and summoning rituals of abyssal demons. Each copy details only one kind of demon (barlgura, hezrou, succubus, nabassu, marilith or balor). After 4 hours of reading the colony learns to summon it at the abyssal circle; reading adds +0.5% abyssal taint per hour. Keeping it on the map slowly thins the plane.</LP_Demonomicon.description>
+  <!-- 真名卷 -->
+  <LP_TrueNameScroll.label>true name scroll</LP_TrueNameScroll.label>
+  <!-- 一张写着外来者真名的羊皮卷。持有自己束缚者的真名卷，它的服从度衰减减半；对卷上记载的敌人念出真名，它要做魅力豁免，失败立刻被逐回原来的位面；召唤同种外来者的仪式成功率 +10%；还能直接封住一道深渊裂口（用掉卷）。 -->
+  <LP_TrueNameScroll.description>A parchment bearing an outsider's true name. Holding the true name scroll of your own bound one halves its obedience decay. Speak the true name to an enemy recorded on the scroll and it must make a Charisma save or be banished to its home plane at once. Rituals summoning the same kind of outsider get +10% success chance. It can also seal an abyssal rift outright (uses up the scroll).</LP_TrueNameScroll.description>
+  <!-- 位面锚链 -->
+  <LP_DimensionalShackles.label>planar anchor chain</LP_DimensionalShackles.label>
+  <!-- 刻满锚定符文的银与寒铁镣铐。给倒地的外来者戴上，它就不会再被遣返，可以俘虏；殖民者背包里带着锚链时，5 格内倒下的敌对外来者会被自动锁住。戴锚链的外来者囚犯关在有束缚法阵的房间里不会越狱，还能审讯出真名。 -->
+  <LP_DimensionalShackles.description>Silver and cold iron shackles covered in anchoring runes. Put them on a downed outsider and it will no longer be banished and can be captured. When a colonist carries an anchor chain in their pack, hostile outsiders that fall within 5 cells are chained automatically. Outsider prisoners in anchor chains held in a room with a binding circle will not escape and can be interrogated for their true name.</LP_DimensionalShackles.description>
+  <!-- 饱魂之牙 -->
+  <LP_GorgedFang.label>soul-gorged fang</LP_GorgedFang.label>
+  <!-- 纳巴苏的一颗长獠牙，穿了根皮绳挂在脖子上。佩戴者每杀死一个人形就叠一层“饱魂之牙”（伤害 +1%，最多 10 层，死亡清零）；但佩戴时深渊腐化每天 +0.2%。戴在奇物层的颈部。 -->
+  <LP_GorgedFang.description>A long nabassu fang strung on a leather cord around the neck. The wearer gains a "soul-gorged fang" stack for each humanlike killed (+1% damage, up to 10 stacks, cleared on death), but abyssal taint +0.2% per day while worn. Worn on the neck in the trinket layer.</LP_GorgedFang.description>
+</LanguageData>

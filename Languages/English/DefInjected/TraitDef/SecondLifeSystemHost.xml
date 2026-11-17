@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- <color=#E08A3A>二周目</color> -->
+  <LP_SecondLife.degreeDatas.colorE08A3Acolor.label>&lt;color=#E08A3A&gt;Second Life&lt;/color&gt;</LP_SecondLife.degreeDatas.colorE08A3Acolor.label>
+  <!-- 前世走到过更远的地方。这一世重走一遍，进步飞快，偶尔想起前世的事。\n\n- 前世等级 8～14 级（第一次获得这个特性时决定）\n- 冒险者等级低于前世等级时，所有冒险者经验 ×2；到达前世等级后加成结束\n- 前世等级以内每次升级有 25% 几率想起前世的事：当前研究项目进度 +30%，或一项技能热情 +1\n- 冒险者系统关闭时不生效 -->
+  <LP_SecondLife.degreeDatas.colorE08A3Acolor.description>A past life went further. Walking the road again in this life, progress comes fast, with occasional memories of the past life.\n\n- Past life level 8-14 (decided the first time this trait is gained)\n- While adventurer level is below the past life level, all adventurer XP ×2; the bonus ends upon reaching the past life level\n- Each level-up within the past life level has a 25% chance to recall the past life: current research project progress +30%, or +1 passion in a skill\n- No effect when the adventurer system is off</LP_SecondLife.degreeDatas.colorE08A3Acolor.description>
+  <!-- 奇遇特性 -->
+  <LP_SecondLife.modExtensions.0.kind>fortune trait</LP_SecondLife.modExtensions.0.kind>
+  <!-- <color=#E08A3A>系统宿主</color> -->
+  <LP_SystemHost.degreeDatas.colorE08A3Acolor.label>&lt;color=#E08A3A&gt;System Host&lt;/color&gt;</LP_SystemHost.degreeDatas.colorE08A3Acolor.label>
+  <!-- 脑海里有个声音不停发布任务。\n\n- 每 7 天发布 3 个任务（击杀、制作、治疗、收获、研究、俘获，数量随冒险者等级增加），选 1 个接受，期限 7 天\n- 完成后领取一次奖励，三选一：+1 冒险者属性点、改命符 ×1、随机物品 ×1\n- 超时受到 3 天系统惩罚（全局工作速度 ×0.85）；主动放弃没有惩罚\n- 点人物下方的「系统面板」按钮查看任务和奖励 -->
+  <LP_SystemHost.degreeDatas.colorE08A3Acolor.description>A voice in the head keeps issuing quests.\n\n- Every 7 days 3 quests are issued (kill, craft, heal, harvest, research, capture; amounts rise with adventurer level); accept 1, with a 7-day deadline\n- Upon completion claim one reward, choosing one of three: +1 adventurer ability point, fate talisman ×1, random item ×1\n- Running out of time brings a 3-day system penalty (global work speed ×0.85); giving up voluntarily has no penalty\n- Click the "system panel" button below the pawn to see quests and rewards</LP_SystemHost.degreeDatas.colorE08A3Acolor.description>
+  <!-- 奇遇特性 -->
+  <LP_SystemHost.modExtensions.0.kind>fortune trait</LP_SystemHost.modExtensions.0.kind>
+</LanguageData>
