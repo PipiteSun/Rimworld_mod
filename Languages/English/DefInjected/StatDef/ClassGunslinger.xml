@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 枪术强度 -->
+  <LP_GunPower.label>gunslinging power</LP_GunPower.label>
+  <LP_GunPower.description>Strength multiplier for gunslinger abilities: 0.5 + Shooting/20, plus Dexterity modifier × 0.05 and (proficiency − 2) × 0.02; +2% per combined martial class level above 1 (max +40%).</LP_GunPower.description>
+</LanguageData>

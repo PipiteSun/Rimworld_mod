@@ -110,6 +110,8 @@ namespace LichPhylactery {
    if(b.secrets.Contains(d))return AnyCircle(d)<=MaxCircle(l,lv);
    if(Granted(l,d,lv))return true;
    int c=CircleIn(l,d);if(c<=0 || c>MaxCircle(l,lv))return false;
+   if(Psion.SubSpell(h,l,d))return true; // 2026-11-19 心灵术士子职业的常备法术
+   if(Psion.SubOnly(l,d))return false;
    if(ritualToo && b.ritual==d)return true;
    return l.prepared?b.prepared.Contains(d):b.book.Contains(d);
   }
@@ -206,12 +208,13 @@ namespace LichPhylactery {
   public static int PreparedCount(Hediff_Adventurer h,CasterListDef l){var b=Book(h,l,false);if(b==null)return 0;int max=MaxCircle(l,Level(h,l));int n=0;for(int i=0;i<b.prepared.Count;i++){var d=b.prepared[i];if(Counted(l,d) && CircleIn(l,d)<=max)n++;}return n;}
   // 表里这个人能备的：环位够、不是本来就有的职业能力。
   public static bool OwnAbility(Hediff_Adventurer h,AbilityDef d){var e=ClassSystem.EntryOf(d);var own=e==null?null:ClassSystem.ClassOf(d);return own!=null && ClassSystem.Entitled(h,own,e);}
-  public static IEnumerable<AbilityDef> Preparable(Hediff_Adventurer h,CasterListDef l){int max=MaxCircle(l,Level(h,l));return l.Ordered.Where(d=>{int c=CircleIn(l,d);return c>0 && c<=max && !OwnAbility(h,d);});}
+  public static IEnumerable<AbilityDef> Preparable(Hediff_Adventurer h,CasterListDef l){int max=MaxCircle(l,Level(h,l));return l.Ordered.Where(d=>{int c=CircleIn(l,d);return c>0 && c<=max && !OwnAbility(h,d) && !Psion.SubOnly(l,d);});}
   public static string CannotToggle(Hediff_Adventurer h,CasterListDef l,AbilityDef d,bool on){
    var b=Book(h,l,false);if(b==null)return "没有这个职业".Loc();if(!l.prepared)return "这个职业不用备法".Loc();
    int c=CircleIn(l,d);if(c==0)return "戏法常备，不用准备".Loc();if(c<0)return "不在".Loc()+l.classDef.label+"法术表里".Loc();
    if(c>MaxCircle(l,Level(h,l)))return Spellbook.CircleName(c)+"要".Loc()+l.classDef.label+" "+LevelFor(l,c)+" 级".Loc();
    if(OwnAbility(h,d))return "职业能力，常备".Loc();
+   if(Psion.SubOnly(l,d))return Psion.SubSpell(h,l,d)?"子职业常备法术".Loc():"只有对应的子职业能用（常备）".Loc(); // 2026-11-19
    if(!b.mayPrepare)return "睡醒后、或在研究台 / 卷轴书桌研读 1 小时后才能更换".Loc();
    if(on && Counted(l,d) && PreparedCount(h,l)>=PrepCap(h,l))return "已经准备满了（".Loc()+PreparedCount(h,l)+" / "+PrepCap(h,l)+"）".Loc();
    return null;
@@ -312,7 +315,7 @@ namespace LichPhylactery {
    foreach(var l in Lists)Book(h,l,true);
    var want=new Dictionary<AbilityDef,SpellbookData>();
    foreach(var b in c.casterBooks){var l=ListOf(b);if(l==null)continue;
-    foreach(var d in b.cantrips.Concat(b.arcanum).Concat(b.secrets).Concat(l.prepared?b.prepared:b.book).Concat(l.Table.Keys.Where(k=>Granted(l,k,Level(h,l)))))
+    foreach(var d in b.cantrips.Concat(b.arcanum).Concat(b.secrets).Concat(l.prepared?b.prepared:b.book).Concat(l.Table.Keys.Where(k=>Granted(l,k,Level(h,l)) || Psion.SubSpell(h,l,k))))
      if(!want.ContainsKey(d) && Active(h,l,b,d,false))want[d]=b;}
    foreach(var kv in want)if(p.abilities.GetAbility(kv.Key)==null){p.abilities.GainAbility(kv.Key);if(!kv.Value.granted.Contains(kv.Key))kv.Value.granted.Add(kv.Key);n++;}
    foreach(var b in c.casterBooks)foreach(var d in b.granted.ToList()){

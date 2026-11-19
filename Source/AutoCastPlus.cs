@@ -37,7 +37,7 @@ namespace LichPhylactery {
 
   // ---------- 主资源 ----------
   public struct Res{public string label;public float cur,max;public Color color;}
-  public static Color ColorOf(ClassResource r){switch(r){case ClassResource.Mana:return new Color(.4f,.6f,1f);case ClassResource.Fury:return new Color(.95f,.55f,.35f);case ClassResource.Grace:return new Color(1f,.85f,.45f);case ClassResource.Ki:return new Color(.55f,.9f,.75f);case ClassResource.Melody:return new Color(.95f,.55f,.85f);case ClassResource.Pact:return new Color(.7f,.45f,.9f);case ClassResource.Rage:return new Color(.9f,.3f,.3f);}return Color.gray;}
+  public static Color ColorOf(ClassResource r){switch(r){case ClassResource.Mana:return new Color(.4f,.6f,1f);case ClassResource.Fury:return new Color(.95f,.55f,.35f);case ClassResource.Grace:return new Color(1f,.85f,.45f);case ClassResource.Ki:return new Color(.55f,.9f,.75f);case ClassResource.Melody:return new Color(.95f,.55f,.85f);case ClassResource.Pact:return new Color(.7f,.45f,.9f);case ClassResource.Rage:return new Color(.9f,.3f,.3f);case ClassResource.Grit:return new Color(.85f,.7f,.45f);}return Color.gray;} // 2026-11-19 枪手的胆识
   // 某个能力用的资源（def 为空 = 殖民者的主资源：等级最高、有资源的职业；没有就法术能量；再没有就湖息）。
   public static Res Main(Pawn p,AbilityDef d=null){
    var h=Adventurer.Get(p);var res=new Res{label="",cur=0f,max=0f,color=Color.gray};if(h?.classes==null)return res;

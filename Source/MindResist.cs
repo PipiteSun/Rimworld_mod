@@ -20,7 +20,8 @@ namespace LichPhylactery {
   public static bool TryResist(Pawn pawn,float chanceFactor=1f){
    if(HeroCombat.MindResist(pawn))return true; // 1.58.0 心智堡垒免疫、法术抗体 50%
    float chance=Mathf.Clamp01(Resistance(pawn)*chanceFactor-Warlock.SavePenalty(pawn)); // 邪术师咒术 −15%
-   return chance>0f && Rand.Chance(chance);
+   if(chance<=0f)return false;if(Rand.Chance(chance))return true;
+   return Gunslinger.Luck(pawn) && Rand.Chance(chance); // 2026-11-19 枪手好运：没抵抗住时花 2 点胆识重来一次
   }
   // 按抗性削弱一个数值（伤害、严重度、心情惩罚）：value×(1-抗性)。
   public static float Attenuate(Pawn pawn,float value)=>value*(1f-Resistance(pawn));

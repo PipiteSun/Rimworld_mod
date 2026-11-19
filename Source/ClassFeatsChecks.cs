@@ -13,7 +13,7 @@ namespace LichPhylactery {
    try{
     // 1. 定义：24 个，十二个职业各两个（3 级、7 级），都有图标、附带属性、能被 NPC 选到
     var all=ClassFeats.All.ToList();
-    Check(all.Count==26 && ClassSystem.All.Count==13 && ClassSystem.All.All(c=>ClassFeats.For(c).Select(f=>f.classLevel).OrderBy(x=>x).SequenceEqual(new[]{3,7}))
+    Check(all.Count==2*ClassSystem.All.Count && ClassSystem.All.Count>=14 && /* 2026-11-19 +心灵术士、枪手；器械师（已删）不一定在 */ ClassSystem.All.All(c=>ClassFeats.For(c).Select(f=>f.classLevel).OrderBy(x=>x).SequenceEqual(new[]{3,7}))
      && all.All(f=>f.Icon!=BaseContent.BadTex && f.BonusOptions.Count>0 && f.enemyTags!=null && f.enemyTags.Contains("any") && f.category=="Class"),"26 class feats: every class has one at level 3 and one at level 7, all with icons, +1 ability and NPC tags (classes "+ClassSystem.All.Count+", feats "+all.Count+")");
     // 2. 显示与前置：只对有这个职业的人显示；战士 2 级选不了，3 级可以；前置文字写职业等级
     var vet=FD("LP_Feat_Class_FighterVeteran");var wizF=FD("LP_Feat_Class_WizardScholar");

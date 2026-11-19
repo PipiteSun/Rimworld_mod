@@ -41,7 +41,7 @@ namespace LichPhylactery {
    return names?.Select(C).Where(c=>c!=null).ToList();
   }
   public static LP_ClassDef Pick(Pawn p,LP_ClassDef exclude=null){
-   bool Ok(LP_ClassDef c)=>c!=exclude && ClassSystem.Forbidden(c,p)==null;
+   bool Ok(LP_ClassDef c)=>c!=exclude && ClassSystem.ForbiddenAny(c,p)==null; // 2026-11-19 心灵失聪的 NPC 不当心灵术士
    var flavor=Flavor(p.Faction,p.kindDef)?.Where(Ok).ToList();
    if(flavor!=null && flavor.Count>0)return flavor.RandomElementByWeight(c=>1f+c.SkillLevel(p)/4f);
    var all=ClassSystem.All.Where(Ok).ToList();if(all.Count==0)return null;

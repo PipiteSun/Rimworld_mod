@@ -61,7 +61,7 @@ namespace LichPhylactery {
    bool perClass=ClassSystem.All.All(c=>LakeArcana.OfClass(c).Select(a=>LakeArcana.Ext(a).ring).SequenceEqual(new[]{6,7,8,9}));
    bool icons=all.All(a=>a.uiIcon!=null && a.uiIcon!=BaseContent.BadTex && a.abilityClass==typeof(Ability_Class) && a.comps.OfType<CompProperties_ClassEffect>().Any());
    bool prices=crystals.All(c=>Mathf.Abs(c.BaseMarketValue-LakeArcana.PriceFor(LakeArcana.Ext(LakeArcana.AbilityOf(c)).ring))<1f && c.label.StartsWith("职业水晶") && c.graphicData.color!=Color.white);
-   Check(all.Count==52 && crystals.Count==52 && ClassSystem.All.Count==13 && perClass && icons && prices && all.All(a=>LakeArcana.CrystalFor(a)!=null),"52 class crystals: 13 classes × rings 6/7/8/9, abilities with icons, crystals priced 8000/12000/16000/25000 and tinted by class colour");
+   Check(all.Count==4*ClassSystem.All.Count && crystals.Count==all.Count && ClassSystem.All.Count>=14 && /* 2026-11-19 */ perClass && icons && prices && all.All(a=>LakeArcana.CrystalFor(a)!=null),"60 class crystals (2026-11-19 +psion, gunslinger): 15 classes × rings 6/7/8/9, abilities with icons, crystals priced 8000/12000/16000/25000 and tinted by class colour");
 
    // 3. 秘传槽：冒险者 10 级 0 个，11 / 15 / 20 级 1 / 2 / 3 个，传奇 30 级 4 个。
    var ha=new Hediff_Adventurer();int[] slots=new[]{10,11,15,20,30}.Select(l=>{ha.level=l;return LakeArcana.Slots(ha);}).ToArray();

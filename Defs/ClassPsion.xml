@@ -1,0 +1,959 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 2026-11-19 心灵术士：由 ArtSource/NewClasses/gen_newclasses.py 生成，不要手改。效果在 Source/ClassPsion.cs。 -->
+<Defs>
+  <LichPhylactery.LP_ClassDef>
+    <defName>LP_Class_Psion</defName>
+    <label>心灵术士</label>
+    <description>DND 心灵术士用纯粹的心灵之力施法：法术不出声、不打手势（法术表约 80 个，备法），另有一池「灵能点」驱动念动推拉、心灵感应和灵能修行（3 级起选 6 项）。1 级起自带心灵链接（设置可关），灵能点用完时可以改加神经热。3 级选子职业：血肉塑形者、念动师、心灵感应者或灵跃者。终极 燃魂。强度看“灵能强度”（智识，智力），伤害与治疗（设置开着时）乘心灵敏感度。资源：法力（上限 2 + 等级，冥想时回得快）与灵能点（健康页显示）。心灵失聪的人不能学。</description>
+    <mainSkill>Intellectual</mainSkill>
+    <alternateSkill>Social</alternateSkill>
+    <primary>Int</primary>
+    <order>8</order>
+    <subclassLevel>3</subclassLevel>
+    <resource>Mana</resource>
+    <caster>true</caster>
+    <background>LP/Classes/Background_Wizard</background>
+    <color>(0.55,0.75,0.95)</color>
+    <abilities>
+      <li><ability>LP_PS_Propel</ability><level>1</level></li>
+      <li><ability>LP_PS_Telepathy</ability><level>1</level></li>
+      <li><ability>LP_PS_MindHand</ability><level>1</level></li>
+      <li><ability>LP_PS_Awakening</ability><level>1</level></li>
+      <li><ability>LP_PS_Restoration</ability><level>5</level></li>
+      <li><ability>LP_PS_Surge</ability><level>7</level></li>
+      <li><ability>LP_PS_Resonance</ability><level>10</level></li>
+      <li><ability>LP_PS_Reserves</ability><level>13</level></li>
+      <li><ability>LP_PS_Enkindle</ability><level>15</level><capstoneSkill>Intellectual</capstoneSkill></li>
+    </abilities>
+    <legendary><li>LP_LegPsychicCatastrophe</li><li>LP_LegTranscendentMind</li></legendary>
+  </LichPhylactery.LP_ClassDef>
+
+  <StatDef ParentName="LP_ClassPowerBase">
+    <defName>LP_PsionicPower</defName>
+    <label>灵能强度</label>
+    <description>心灵术士能力与法术的强度倍率：0.5 + 智识等级/20，另加冒险者智力调整值 × 0.05 与 (熟练加值 − 2) × 0.02、心灵术士等职业等级合计每比 1 高 1 级 +2%（最多 +40%）。灵能值（灵能档范围里随机）也乘它。</description>
+    <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Intellectual</skill><ability>Int</ability></li></parts>
+    <displayPriorityInCategory>4219</displayPriorityInCategory>
+  </StatDef>
+
+  <!-- ===== 状态 ===== -->
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_PS_Pool</defName>
+    <hediffClass>LichPhylactery.Hediff_PsionPool</hediffClass>
+    <label>灵能</label>
+    <description>心灵术士的灵能池：括号里是现有的灵能点。睡醒回满，连续 1 小时冥想、娱乐或睡觉回 1 点。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_PS_MindHand</defName>
+    <label>念力之手</label>
+    <description>看不见的念力帮你搬东西：负重提高。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <stages><li><minSeverity>0</minSeverity><label>心灵术士</label><statFactors><CarryingCapacity>1.15</CarryingCapacity></statFactors></li><li><minSeverity>1.5</minSeverity><label>强化念力</label><statFactors><CarryingCapacity>1.4</CarryingCapacity></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_PS_Resonance</defName>
+    <label>念灵共鸣</label>
+    <description>心灵术士的心智与心灵链接共鸣：神经热上限、神经热消散提高。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <stages><li><minSeverity>0</minSeverity><label>一</label><statFactors><PsychicEntropyRecoveryRate>1.1</PsychicEntropyRecoveryRate></statFactors><statOffsets><PsychicEntropyMax>5</PsychicEntropyMax></statOffsets></li><li><minSeverity>1.5</minSeverity><label>二</label><statFactors><PsychicEntropyRecoveryRate>1.2</PsychicEntropyRecoveryRate></statFactors><statOffsets><PsychicEntropyMax>10</PsychicEntropyMax></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_PS_DevilTongue</defName>
+    <label>魔鬼之舌</label>
+    <description>灵能修行：话语里带着心灵暗示（有灵能点时）。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <stages><li><minSeverity>0</minSeverity><label>一档</label><statOffsets><SocialImpact>0.1</SocialImpact><NegotiationAbility>0.1</NegotiationAbility><TradePriceImprovement>0.01</TradePriceImprovement></statOffsets></li><li><minSeverity>1.5</minSeverity><label>二档</label><statOffsets><SocialImpact>0.15</SocialImpact><NegotiationAbility>0.15</NegotiationAbility><TradePriceImprovement>0.02</TradePriceImprovement></statOffsets></li><li><minSeverity>2.5</minSeverity><label>三档</label><statOffsets><SocialImpact>0.2</SocialImpact><NegotiationAbility>0.2</NegotiationAbility><TradePriceImprovement>0.03</TradePriceImprovement></statOffsets></li><li><minSeverity>3.5</minSeverity><label>四档</label><statOffsets><SocialImpact>0.25</SocialImpact><NegotiationAbility>0.25</NegotiationAbility><TradePriceImprovement>0.04</TradePriceImprovement></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_PS_InerrantAim</defName>
+    <label>无误瞄准</label>
+    <description>灵能修行：念力悄悄修正每一次攻击（有灵能点时）。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <stages><li><minSeverity>0</minSeverity><label>一档</label><statOffsets><ShootingAccuracyPawn>0.05</ShootingAccuracyPawn><MeleeHitChance>0.05</MeleeHitChance></statOffsets></li><li><minSeverity>1.5</minSeverity><label>二档</label><statOffsets><ShootingAccuracyPawn>0.07</ShootingAccuracyPawn><MeleeHitChance>0.07</MeleeHitChance></statOffsets></li><li><minSeverity>2.5</minSeverity><label>三档</label><statOffsets><ShootingAccuracyPawn>0.09</ShootingAccuracyPawn><MeleeHitChance>0.09</MeleeHitChance></statOffsets></li><li><minSeverity>3.5</minSeverity><label>四档</label><statOffsets><ShootingAccuracyPawn>0.11</ShootingAccuracyPawn><MeleeHitChance>0.11</MeleeHitChance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_PS_Kinetic</defName>
+    <label>念动之力</label>
+    <description>念动师：念力托着工具，采矿更快。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <stages><li><statFactors><MiningSpeed>1.15</MiningSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_PS_Observant</defName>
+    <label>观察入微</label>
+    <description>灵能修行：心智全开地钻研，研究速度提高。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <stages><li><minSeverity>0</minSeverity><label>一档</label><statFactors><ResearchSpeed>1.3</ResearchSpeed></statFactors></li><li><minSeverity>1.5</minSeverity><label>二档</label><statFactors><ResearchSpeed>1.4</ResearchSpeed></statFactors></li><li><minSeverity>2.5</minSeverity><label>三档</label><statFactors><ResearchSpeed>1.5</ResearchSpeed></statFactors></li><li><minSeverity>3.5</minSeverity><label>四档</label><statFactors><ResearchSpeed>1.6</ResearchSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_PS_Precog</defName>
+    <label>预知增幅</label>
+    <description>预知到下一瞬间：命中、闪避提高。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <stages><li><minSeverity>0</minSeverity><label>一档</label><statOffsets><ShootingAccuracyPawn>0.15</ShootingAccuracyPawn><MeleeHitChance>0.15</MeleeHitChance><MeleeDodgeChance>15</MeleeDodgeChance></statOffsets></li><li><minSeverity>1.5</minSeverity><label>二档</label><statOffsets><ShootingAccuracyPawn>0.2</ShootingAccuracyPawn><MeleeHitChance>0.2</MeleeHitChance><MeleeDodgeChance>20</MeleeDodgeChance></statOffsets></li><li><minSeverity>2.5</minSeverity><label>三档</label><statOffsets><ShootingAccuracyPawn>0.25</ShootingAccuracyPawn><MeleeHitChance>0.25</MeleeHitChance><MeleeDodgeChance>25</MeleeDodgeChance></statOffsets></li><li><minSeverity>3.5</minSeverity><label>四档</label><statOffsets><ShootingAccuracyPawn>0.3</ShootingAccuracyPawn><MeleeHitChance>0.3</MeleeHitChance><MeleeDodgeChance>30</MeleeDodgeChance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_PS_IdInsinuation</defName>
+    <label>心智暗示</label>
+    <description>心灵术士在心里埋了一颗种子：心智抗性暂时下降。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <stages><li><minSeverity>0</minSeverity><label>一档</label><statOffsets><LP_MindResist>-0.08</LP_MindResist></statOffsets></li><li><minSeverity>1.5</minSeverity><label>二档</label><statOffsets><LP_MindResist>-0.1</LP_MindResist></statOffsets></li><li><minSeverity>2.5</minSeverity><label>三档</label><statOffsets><LP_MindResist>-0.13</LP_MindResist></statOffsets></li><li><minSeverity>3.5</minSeverity><label>四档</label><statOffsets><LP_MindResist>-0.15</LP_MindResist></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_PS_SurgeOn</defName>
+    <label>灵能涌动</label>
+    <description>灵能涌动开着：灵能值的下限提到范围的 60%，每次多加神经热 6（没有心灵链接就扣休息值）。再按一次关掉。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_PS_Enkindled</defName>
+    <label>燃魂</label>
+    <description>燃烧生命力换取灵能：每次用到灵能值，另加 1～2 份（每份神经热 10）。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_PS_Sensed</defName>
+    <label>被心灵感知</label>
+    <description>心灵术士感知到了这个心智：藏不住了。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <stages><li><statOffsets><MeleeDodgeChance>-5</MeleeDodgeChance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_PS_AwarenessBuff</defName>
+    <label>扩展感知</label>
+    <description>感官向四面八方延伸：视觉提高、射击更准，看得见隐形的单位。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <stages><li><statOffsets><ShootingAccuracyPawn>0.05</ShootingAccuracyPawn></statOffsets><capMods><li><capacity>Sight</capacity><offset>0.15</offset></li></capMods></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_PS_GuardsBuff</defName>
+    <label>灵能守护</label>
+    <description>心智上了锁：免疫恐惧，心智抗性 +25%。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <stages><li><statOffsets><LP_MindResist>0.25</LP_MindResist></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_PS_SharpenedBuff</defName>
+    <label>锐化心智</label>
+    <description>心灵之刃磨得飞快：你造成的心灵伤害 ×1.3。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_PS_Mutable</defName>
+    <label>柔变之躯</label>
+    <description>血肉塑形者把身体捏得更适合施法：移动 +10%。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>1.1</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_PS_FleshWeaveBuff</defName>
+    <label>血肉编织</label>
+    <description>血肉层层织密：受到的伤害 ×0.85。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <stages><li><statFactors><IncomingDamageFactor>0.85</IncomingDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_PS_EvolvedStone</defName>
+    <label>石化表皮</label>
+    <description>进化之躯（柔变之躯期间）：皮肤硬如岩石，受到的伤害 ×0.75。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <stages><li><statFactors><IncomingDamageFactor>0.75</IncomingDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_PS_EvolvedStride</defName>
+    <label>超凡步态</label>
+    <description>进化之躯（柔变之躯期间）：移动 +25%。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>1.25</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_PS_EvolvedFlex</defName>
+    <label>非凡柔韧</label>
+    <description>进化之躯（柔变之躯期间）：身体软得能钻过缝，近战闪避 +10。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <stages><li><statOffsets><MeleeDodgeChance>10</MeleeDodgeChance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_PS_FormBlade</defName>
+    <label>骨刃</label>
+    <description>血肉塑形者的生体武器：前臂长出骨刃（锐器近战）。再用一次生体武器切换形态。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_VerbGiver"><tools><li><label>骨刃</label><capacities><li>Cut</li></capacities><power>14</power><cooldownTime>1.6</cooldownTime></li></tools></li></comps>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_PS_FormMaul</defName>
+    <label>血肉巨锤</label>
+    <description>血肉塑形者的生体武器：拳头和前臂凝成一团硬肉（钝器近战）。再用一次生体武器切换形态。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <comps><li Class="HediffCompProperties_VerbGiver"><tools><li><label>血肉巨锤</label><capacities><li>Blunt</li></capacities><power>16</power><cooldownTime>2</cooldownTime></li></tools></li></comps>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_PS_FormLauncher</defName>
+    <label>内脏弩</label>
+    <description>血肉塑形者的生体武器：手臂变成一把肌腱弩，用「内脏弩」能力射击。再用一次生体武器切换形态（或收起）。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_PS_TranceBuff</defName>
+    <label>毁灭恍惚</label>
+    <description>念力托着身子：移动 +20%，法术与能力的伤害另加 灵能值 × 2。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>1.2</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_PS_Slowed</defName>
+    <label>念力碾压</label>
+    <description>被念力压着：移动 ×0.5。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>0.5</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_PS_BulwarkBuff</defName>
+    <label>堤垒心智</label>
+    <description>心智筑起堤坝：受到的心灵伤害 ×0.5，心智抗性提高。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <stages><li><minSeverity>0</minSeverity><label>一档</label><statOffsets><LP_MindResist>0.15</LP_MindResist></statOffsets></li><li><minSeverity>1.5</minSeverity><label>二档</label><statOffsets><LP_MindResist>0.2</LP_MindResist></statOffsets></li><li><minSeverity>2.5</minSeverity><label>三档</label><statOffsets><LP_MindResist>0.25</LP_MindResist></statOffsets></li><li><minSeverity>3.5</minSeverity><label>四档</label><statOffsets><LP_MindResist>0.3</LP_MindResist></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_PS_Linked</defName>
+    <label>心灵网络</label>
+    <description>心灵感应者把附近的同伴连在一起：互相提醒，射击、近战更准一点。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <stages><li><statOffsets><ShootingAccuracyPawn>0.05</ShootingAccuracyPawn><MeleeHitChance>0.05</MeleeHitChance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_PS_Probed</defName>
+    <label>被读过心</label>
+    <description>最近被心灵术士翻过心思（1 天内不能再潜入）。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_PS_Fortress</defName>
+    <label>智识壁垒</label>
+    <description>心智被壁垒护住：受到的心灵伤害 ×0.5，心智抗性 +25%。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <stages><li><statOffsets><LP_MindResist>0.25</LP_MindResist></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_PS_EgoWhipped</defName>
+    <label>自我鞭笞</label>
+    <description>自我被鞭笞得支离破碎：射击、近战命中 −20%，意识 −10%。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <stages><li><statOffsets><ShootingAccuracyPawn>-0.2</ShootingAccuracyPawn><MeleeHitChance>-0.2</MeleeHitChance></statOffsets><capMods><li><capacity>Consciousness</capacity><offset>-0.1</offset></li></capMods></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_PS_Static</defName>
+    <label>突触静电</label>
+    <description>脑子里噼啪作响：意识 −15%，命中 −10%。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <stages><li><statOffsets><ShootingAccuracyPawn>-0.1</ShootingAccuracyPawn><MeleeHitChance>-0.1</MeleeHitChance></statOffsets><capMods><li><capacity>Consciousness</capacity><offset>-0.15</offset></li></capMods></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_LegTranscendentBuff</defName>
+    <label>超凡心智</label>
+    <description>传奇心灵术士：灵能值永远至少是范围的 60%（灵能涌动不再加神经热），灵能点上限 +4。</description>
+    <defaultLabelColor>(0.75,0.85,1)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_LegPsychicCatastropheBuff</defName>
+    <label>心灵天灾</label>
+    <description>传奇心灵术士：修行、职业与子职业能力不扣灵能点，每次改加神经热 4。</description>
+    <defaultLabelColor>(0.75,0.85,1)</defaultLabelColor>
+  </HediffDef>
+
+  <!-- ===== 职业、修行、子职业能力 ===== -->
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_PS_Propel</defName>
+    <label>念动推拉</label>
+    <description>把 12 格内一个中型以下的生物（体型 1.6 以下）推开或拉近：敌人对抗心智抗性，没抵抗住就被推开 1 格；友军被拉近。有灵能点时自动花 1 点，改推 灵能值/2 格，撞墙、撞人另受 灵能值 × 灵能强度 钝击（目标抵抗住就不扣点）。冷却 6 秒。心灵术士 1 级。</description>
+    <iconPath>LP/Classes/Subclass2/Shove</iconPath>
+    <cooldownTicksRange>360</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSPropel</effect><cost>0</cost><stat>LP_PsionicPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_Telepathy</defName>
+    <label>心灵感应</label>
+    <description>把感知铺开：灵能值 × 4 格内所有有心智的敌人（机械体除外）现形 1 小时（解除心灵隐形），被感知的敌人更难躲闪。每天第一次免费，之后花 1 点灵能点。冷却 30 秒。心灵术士 1 级。</description>
+    <iconPath>LP/Classes/Warlock/AwakenedMind</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSTelepathy</effect><cost>0</cost><stat>LP_PsionicPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_MindHand</defName>
+    <label>念力之手</label>
+    <description>被动：看不见的念力帮你搬东西，负重 +15%（念动师 +40%）。心灵术士 1 级。</description>
+    <iconPath>LP/Classes/WizardSpells/MageHand</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_Awakening</defName>
+    <label>心灵觉醒</label>
+    <description>被动：没有心灵链接的人得到 1 级心灵链接；心灵术士 7 / 13 / 19 级时心灵链接至少 2 / 3 / 4 级（只升不降，不超过 6 级，设置里可关）。灵能点用完时，有心灵链接的人每 1 点改加神经热 12（放不下就不能用）。心灵术士 1 级。</description>
+    <iconPath>LP/Classes/Warlock/ThoughtShield</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_Restoration</defName>
+    <label>灵能复苏</label>
+    <description>原地静坐 1 小时（40 秒）调息：结束时灵能点回满，精神力 +10%。每天一次。心灵术士 5 级。</description>
+    <iconPath>LP/Classes/Subclass2/CalmMind</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>40</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSRestore</effect><cost>0</cost><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_Surge</defName>
+    <label>灵能涌动</label>
+    <description>开关：开着时灵能值的下限提到范围的 60%（一档 2～8 → 5.6～8），每次用到灵能值多加神经热 6（没有心灵链接就扣 3% 休息值）。心灵术士 7 级。</description>
+    <iconPath>LP/Classes/Subclass2/PsiAdept</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>60</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSSurge</effect><cost>0</cost><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_Resonance</defName>
+    <label>念灵共鸣</label>
+    <description>被动：神经热上限 +5、神经热消散 +10%（心灵术士 10 级起 +10 / +20%），心灵术士也是最好的原版心灵法术使用者。心灵术士 10 级。</description>
+    <iconPath>LP/Classes/Subclass2/PsychicDefense</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_Reserves</defName>
+    <label>灵能储备</label>
+    <description>被动：被征召时灵能点少于 4 就补到 4，每天一次（心灵术士 18 级起生效）。心灵术士 13 级。</description>
+    <iconPath>LP/Classes/Subclass2/ProtectiveField</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_Enkindle</defName>
+    <label>燃魂</label>
+    <description>终极：60 秒内燃烧生命力换取灵能：每次用到灵能值，另加 1～2 份（合计最多 ×3），每多一份神经热 10（放不下就不加；神经热超过上限会像原版一样心灵过热）。消耗 2 点灵能点，冷却 1 天。心灵术士 15 级，另要智识 15 级。</description>
+    <iconPath>LP/Classes/Legendary/ArcaneSurge</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSEnkindle</effect><cost>0</cost><duration>3600</duration><hediff>LP_PS_Enkindled</hediff><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_Awareness</defName>
+    <label>扩展感知</label>
+    <description>灵能修行：2 小时内视觉 +15%、射击精度 +5%，看得见隐形的单位。消耗 1 点灵能点，冷却 1 分钟。</description>
+    <iconPath>LP/Classes/Subclass3/Opportunist</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSAwareness</effect><cost>0</cost><duration>5000</duration><hediff>LP_PS_AwarenessBuff</hediff><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_Guards</defName>
+    <label>灵能守护</label>
+    <description>灵能修行：30 秒内免疫恐惧（身上的恐惧立刻解除），心智抗性 +25%。消耗 1 点灵能点，冷却 30 秒。</description>
+    <iconPath>LP/Classes/Subclass2/PsychicDefense</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSGuards</effect><cost>0</cost><duration>1800</duration><hediff>LP_PS_GuardsBuff</hediff><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_Sharpened</defName>
+    <label>锐化心智</label>
+    <description>灵能修行：60 秒内你造成的心灵伤害 ×1.3。消耗 1 点灵能点，冷却 1 分钟。</description>
+    <iconPath>LP/Classes/Subclass2/PsychicSpike</iconPath>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSSharpened</effect><cost>0</cost><duration>3600</duration><hediff>LP_PS_SharpenedBuff</hediff><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_MutableForm</defName>
+    <label>柔变之躯</label>
+    <description>把身体捏成施法的容器：1 小时内移动 +10%，得到（灵能值 + 智力调整值）× 2 × 灵能强度 临时生命。会血肉编织时多花 1 点、另外受到的伤害 ×0.85。消耗 1 点灵能点，冷却 1 分钟。血肉塑形者，心灵术士 3 级。</description>
+    <iconPath>LP/Classes/Subclass2/FleshShaping</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSMutable</effect><cost>0</cost><duration>2500</duration><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_OrganicWeapons</defName>
+    <label>生体武器</label>
+    <description>把手臂捏成武器，按一次换一种：骨刃（锐器 14）→ 血肉巨锤（钝器 16）→ 内脏弩（用「内脏弩」射击）→ 收起。不占武器格，徒手时最常用到。血肉塑形者，心灵术士 3 级。</description>
+    <iconPath>LP/Classes/Subclass2/FleshRevelation</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>120</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSOrganic</effect><cost>0</cost><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_PS_BileLauncher</defName>
+    <label>内脏弩</label>
+    <description>用内脏弩向 20 格内一个敌人射出胆汁：10 × 灵能强度 酸蚀伤害，每秒第一下再 +80%。要先把生体武器换成内脏弩。冷却 1.5 秒。血肉塑形者，心灵术士 3 级。</description>
+    <iconPath>LP/Classes/Subclass2/BloodSpear</iconPath>
+    <cooldownTicksRange>90</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSBile</effect><cost>0</cost><power>10</power><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_FleshWeave</defName>
+    <label>血肉编织</label>
+    <description>被动：柔变之躯多花 1 点灵能点（够的话），额外得到「血肉编织」：受到的伤害 ×0.85。血肉塑形者，心灵术士 6 级。</description>
+    <iconPath>LP/Classes/Subclass2/FleshPrison</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_EvolvedForm</defName>
+    <label>进化之躯</label>
+    <description>被动：柔变之躯至少持续 4 小时，期间另按选择得到：石化表皮（受到的伤害 ×0.75）、超凡步态（移动 +25%）或非凡柔韧（近战闪避 +10）。血肉塑形者，心灵术士 10 级。</description>
+    <iconPath>LP/Classes/Subclass3/FormMode</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_LifeBending</defName>
+    <label>生死扭曲之刃</label>
+    <description>被动：生体武器打中敌人时另加 灵能值 伤害（不扣点）；有灵能点时每 3 秒一次自动花 1 点，6 格内受伤的友军各回复 灵能值 + 智力调整值。血肉塑形者，心灵术士 14 级。</description>
+    <iconPath>LP/Classes/Subclass3/LifeStrike</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_StrongTK</defName>
+    <label>强化念力</label>
+    <description>被动：念力之手的负重加成 +15% → +40%，采矿速度 +15%。念动师，心灵术士 3 级。</description>
+    <iconPath>LP/Classes/Subclass2/TeleJump</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_TKTechniques</defName>
+    <label>念动技巧</label>
+    <description>被动：念动推拉不花点时也推 2 格；推敌人时另附念力弹：灵能值 × 2 × 灵能强度 力场伤害。念动师，心灵术士 3 级。</description>
+    <iconPath>LP/Classes/Subclass2/Shove</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_DestructiveTrance</defName>
+    <label>毁灭恍惚</label>
+    <description>念力托起身子：1 小时内移动 +20%，你的法术与能力（不是武器）打中敌人时另加 灵能值 × 2 伤害。消耗 1 点灵能点，冷却 1 分钟。念动师，心灵术士 6 级。</description>
+    <iconPath>LP/Classes/Subclass2/TeleStorm</iconPath>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSTrance</effect><cost>0</cost><duration>2500</duration><hediff>LP_PS_TranceBuff</hediff><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_ReboundField</defName>
+    <label>反弹力场</label>
+    <description>被动：护盾术挡着时被远程攻击打中，自动花 1 点：攻击者受（灵能值 + 智力调整值）× 2 × 灵能强度 力场伤害（抵抗住减半），你得到等量临时生命。念动师，心灵术士 6 级。</description>
+    <iconPath>LP/Classes/Subclass2/ProtectiveField</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_EnhancedCrush</defName>
+    <label>强化念力碾压</label>
+    <description>被动：念力碾压有灵能点时自动多花 1 点：命中的敌人不管豁免成败都减速 5 秒，伤害另加 灵能值 × 2。念动师，心灵术士 10 级。</description>
+    <iconPath>LP/Classes/WizardSpells/Telekinesis</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_PS_HeightenedTK</defName>
+    <label>高阶心灵遥控</label>
+    <description>用念力抓起 30 格内一个敌人（不管多大）：30 × 灵能强度 力场伤害，扔出 5 格并眩晕 10 秒（剧情首领与传奇减半）。消耗 4 点灵能点，冷却 1 天。念动师，心灵术士 14 级。</description>
+    <iconPath>LP/Classes/WizardSpells/Telekinesis</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><range>30</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSHeightenedTK</effect><cost>0</cost><power>30</power><duration>600</duration><stat>LP_PsionicPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_PS_Infiltrate</defName>
+    <label>读心</label>
+    <description>读 20 格内一个人形的心思：看它的心情、拿手技能、特性和心智抗性。对本殖民地的囚犯花 1 点灵能点：招募抗拒 − 灵能值 × 0.5，或（抗拒已经是 0 时）意志 − 灵能值 × 0.2；同一个囚犯每天一次，对方没抵抗住就察觉不到。心灵感应者，心灵术士 3 级。</description>
+    <iconPath>LP/Classes/Warlock/DissonantWhispers</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime><targetParams><canTargetPawns>true</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetSelf>false</canTargetSelf><canTargetHumans>true</canTargetHumans><canTargetAnimals>false</canTargetAnimals><canTargetMechs>false</canTargetMechs></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSInfiltrate</effect><cost>0</cost><stat>LP_PsionicPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_TeleDistract</defName>
+    <label>心灵干扰</label>
+    <description>被动：心灵感应范围（12 格，强力思绪后 24 格）内的友军被敌人打中时，有 灵能档成功率 × 2（30 / 40 / 50 / 60%）改成打偏，成功才扣 1 点（每 3 秒判定一次）。心灵感应者，心灵术士 3 级。</description>
+    <iconPath>LP/Classes/Warlock/BeguilingDefense</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_BulwarkMind</defName>
+    <label>堤垒心智</label>
+    <description>1 小时内受到的心灵伤害 ×0.5，心智抗性 +15 / 20 / 25 / 30%（按灵能档）。消耗 1 点灵能点，冷却 1 分钟。心灵感应者，心灵术士 6 级。</description>
+    <iconPath>LP/Classes/Warlock/ThoughtShield</iconPath>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSBulwark</effect><cost>0</cost><duration>2500</duration><hediff>LP_PS_BulwarkBuff</hediff><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_PotentThoughts</defName>
+    <label>强力思绪</label>
+    <description>被动：心灵感应范围 12 → 24 格；你造成的心灵伤害 + 智力调整值 × 2。心灵感应者，心灵术士 6 级。</description>
+    <iconPath>LP/Classes/Subclass2/PsychicSpike</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_TeleBolster</defName>
+    <label>心灵鼓舞</label>
+    <description>被动：心灵感应范围内的同伴连成心灵网络：射击、近战命中 +5%。心灵感应者，心灵术士 10 级。</description>
+    <iconPath>LP/Classes/Subclass2/MindDominion</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_PS_ScrambleMinds</defName>
+    <label>心智搅乱</label>
+    <description>搅乱 25 格内一点半径 6 内敌人的心智：没抵抗住的人狂暴 10 秒、乱打身边的人；剧情首领与传奇只眩晕，机械体眩晕 2 秒。消耗 4 点灵能点，冷却 1 天。心灵感应者，心灵术士 14 级。</description>
+    <iconPath>LP/Classes/WizardSpells/Confusion</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><range>25</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSScramble</effect><cost>0</cost><duration>600</duration><radius>6</radius><stat>LP_PsionicPower</stat><psychic>true</psychic></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_PS_Teleport</defName>
+    <label>灵能瞬移</label>
+    <description>瞬移到 12 格内看得见的空地，或和那里的一名友军换位。每小时第一次免费，之后花 1 点灵能点。冷却 3 秒。灵跃者，心灵术士 3 级。</description>
+    <iconPath>LP/Classes/Warlock/MistyEscape</iconPath>
+    <hostile>false</hostile>
+    <cooldownTicksRange>180</cooldownTicksRange>
+    <verbProperties><range>12</range><warmupTime>0</warmupTime><targetParams><canTargetPawns>true</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>true</canTargetLocations><canTargetSelf>false</canTargetSelf></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSBlink</effect><cost>0</cost><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_WarpPropel</defName>
+    <label>扭曲推拉</label>
+    <description>被动：念动推拉多推 2 格。灵跃者，心灵术士 3 级。</description>
+    <iconPath>LP/Classes/Subclass2/Shove</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_Displace</defName>
+    <label>换位迷踪</label>
+    <description>被动：被远程攻击打中时（每 10 秒一次）花 1 点，和 6 格内一个敌人换位，这一下打到它身上（剧情首领与传奇除外）。灵跃者，心灵术士 6 级。</description>
+    <iconPath>LP/Classes/Rogue/ShadowStep</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_PS_RescueWarp</defName>
+    <label>救援跃迁</label>
+    <description>把 24 格内一个倒地的友军传到身边，它得到 灵能值 × 2 × 灵能强度 临时生命。消耗 1 点灵能点，冷却 30 秒。灵跃者，心灵术士 6 级。</description>
+    <iconPath>LP/Classes/WizardSpells/DimensionDoor</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>24</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSRescue</effect><cost>0</cost><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_WarpBeacon</defName>
+    <label>跃迁信标</label>
+    <description>没有信标时在脚下放一个（花 1 点灵能点）；有信标、并且在同一张地图时，按一下就传回信标，信标消失。灵跃者，心灵术士 10 级。</description>
+    <iconPath>LP/Classes/WizardSpells/TeleportationCircle</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSBeacon</effect><cost>0</cost><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_PS_MassWarp</defName>
+    <label>群体跃迁</label>
+    <description>把身边 6 格内最多（智力调整值 + 2）个生物（友军自动，敌人对抗心智抗性；剧情首领与传奇不行）连同自己传到 30 格内一点附近，被传走的敌人眩晕 2 秒。消耗 4 点灵能点，冷却 1 天。灵跃者，心灵术士 14 级。</description>
+    <iconPath>LP/Classes/WizardSpells/PlaneShift</iconPath>
+    <hostile>false</hostile>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><range>30</range><warmupTime>1</warmupTime><targetParams><canTargetPawns>false</canTargetPawns><canTargetBuildings>false</canTargetBuildings><canTargetLocations>true</canTargetLocations></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSMassWarp</effect><cost>0</cost><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_LegendaryBase">
+    <defName>LP_LegPsychicCatastrophe</defName>
+    <label>心灵天灾</label>
+    <description>传奇：60 秒内灵能修行、职业与子职业能力都不扣灵能点，每次改加神经热 4。消耗 3 点灵能点，冷却 2 天。传奇心灵术士。</description>
+    <iconPath>LP/Classes/Legendary/ArcaneSurge</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSCatastrophe</effect><cost>0</cost><duration>3600</duration><hediff>LP_LegPsychicCatastropheBuff</hediff><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_LegendaryBase">
+    <defName>LP_LegTranscendentMind</defName>
+    <label>超凡心智</label>
+    <description>传奇被动：灵能值永远至少是范围的 60%（灵能涌动不再加神经热），灵能点上限 +4。传奇心灵术士。</description>
+    <iconPath>LP/Classes/Legendary/SpellMastery</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_PsionicPower</stat></li></comps>
+  </AbilityDef>
+
+  <!-- ===== 心灵术士的新法术 ===== -->
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_PS_TelekineticFling</defName>
+    <label>念力飞掷</label>
+    <description>戏法（塑能）：拎起身边一件小东西砸向 24 格内的一个敌人：10 × 强度点钝器伤害。冷却 5 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/PSTelekineticFling</iconPath>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <verbProperties><range>24</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Bolt</effect><cost>0</cost><power>10</power><stat>LP_PsionicPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>0</circle><school>塑能</school><damage>Blunt</damage><ap>0.2</ap></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_PS_LifeSiphon</defName>
+    <label>生命虹吸</label>
+    <description>1 环（死灵·可升环）：抽走 12 格内一个敌人的生命：12 × 强度点死灵伤害，你回复造成伤害的一半。升环：每环效果 +25%。冷却 10 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/PSLifeSiphon</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>12</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSLifeSiphon</effect><cost>1</cost><power>12</power><stat>LP_PsionicPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>1</circle><school>死灵</school><upcast>power</upcast></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_PS_EgoWhip</defName>
+    <label>自我鞭笞</label>
+    <description>2 环（惑控）：鞭笞 20 格内一个敌人的自我：16 × 强度点心灵伤害，20 秒内射击、近战命中 −20%、意识 −10%。冷却 15 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/PSEgoWhip</iconPath>
+    <cooldownTicksRange>900</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Bolt</effect><cost>1</cost><power>16</power><duration>1200</duration><stat>LP_PsionicPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>2</circle><school>惑控</school><damage>Psychic</damage><ap>1</ap><hediff2>LP_PS_EgoWhipped</hediff2></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_PS_TelekineticCrush</defName>
+    <label>念力碾压</label>
+    <description>3 环（变化）：20 格内一点半径 2 的形力压下：22 × 强度点力场伤害并眩晕 2 秒（目标豁免成功减半、不眩晕），对建筑另造成双倍钝击。冷却 20 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/PSTelekineticCrush</iconPath>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSCrush</effect><cost>2</cost><power>22</power><radius>2</radius><stat>LP_PsionicPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>3</circle><school>变化</school></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassAllyBase">
+    <defName>LP_PS_IntellectFortress</defName>
+    <label>智识壁垒</label>
+    <description>3 环（防护）：20 格内一名友军（可以是自己）1 小时内受到的心灵伤害 ×0.5，心智抗性 +25%。冷却 30 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/PSIntellectFortress</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>20</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>TargetBuff</effect><cost>2</cost><duration>2500</duration><hediff>LP_PS_Fortress</hediff><stat>LP_PsionicPower</stat><fixedSeverity>true</fixedSeverity></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>3</circle><school>防护</school><concentration>true</concentration></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_PS_PsychicLance</defName>
+    <label>心灵长矛</label>
+    <description>4 环（惑控）：一支心灵长矛刺穿 36 格内一个敌人的心智（无视掩体）：30 × 强度点心灵伤害并眩晕 3 秒。冷却 20 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/PSPsychicLance</iconPath>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><range>36</range><warmupTime>0.5</warmupTime><requireLineOfSight>false</requireLineOfSight></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Bolt</effect><cost>2</cost><power>30</power><stat>LP_PsionicPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>4</circle><school>惑控</school><damage>Psychic</damage><ap>1</ap><stun>180</stun></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_PS_SynapticStatic</defName>
+    <label>突触静电</label>
+    <description>5 环（惑控）：24 格内一点半径 4 的敌人脑中炸开静电：28 × 强度点心灵伤害，1 分钟内意识 −15%、命中 −10%。冷却 30 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/PSSynapticStatic</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>24</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Area</effect><cost>3</cost><power>28</power><duration>3600</duration><radius>4</radius><stat>LP_PsionicPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>5</circle><school>惑控</school><damage>Psychic</damage><ap>1</ap><hediff2>LP_PS_Static</hediff2></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_PS_MentalPrison</defName>
+    <label>心灵监牢</label>
+    <description>6 环（幻术）：把 30 格内一个敌人关进幻象牢笼：20 × 强度点心灵伤害，之后 30 秒动弹不得（成功率 70%，目标每比施法者高 1 级 −5%，心智抗性也能抵抗；剧情首领减半）。冷却 1 小时。</description>
+    <iconPath>LP/Classes/CasterSpells/PSMentalPrison</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><range>30</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Bolt</effect><cost>4</cost><power>20</power><stat>LP_PsionicPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>6</circle><school>幻术</school><damage>Psychic</damage><ap>1</ap><stun>1800</stun><chance>0.7</chance><mind>true</mind></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_PS_PsionicBlast</defName>
+    <label>灵能爆破</label>
+    <description>6 环（塑能）：身前 12 格锥形的灵能冲击：36 × 强度点力场伤害并眩晕 1 秒。冷却 30 秒。</description>
+    <iconPath>LP/Classes/CasterSpells/PSPsionicBlast</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>12</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>CS_Cone</effect><cost>4</cost><power>36</power><stat>LP_PsionicPower</stat><psychic>true</psychic><range>12</range></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>6</circle><school>塑能</school><damage>Force</damage><ap>0.4</ap><stun>60</stun></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_PS_PsychicScream</defName>
+    <label>心灵尖啸</label>
+    <description>9 环（惑控）：放出一声只有心智听得见的尖啸：36 格内最多 10 个敌人（机械体、极小的动物除外）受 60 × 强度点心灵伤害并眩晕 10 秒（豁免成功减半、不眩晕；剧情首领眩晕减半），被这一下打倒的人脑部受伤。冷却 1 天。</description>
+    <iconPath>LP/Classes/CasterSpells/PSPsychicScream</iconPath>
+    <hostile>true</hostile>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSScream</effect><cost>9</cost><power>60</power><duration>600</duration><radius>36</radius><stat>LP_PsionicPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.CasterSpellExt"><circle>9</circle><school>惑控</school></li></modExtensions>
+  </AbilityDef>
+
+  <LichPhylactery.CasterListDef>
+    <defName>LP_CSL_Psion</defName>
+    <label>心灵术士法术表</label>
+    <classDef>LP_Class_Psion</classDef>
+    <ability>Int</ability>
+    <caster>full</caster>
+    <prepared>true</prepared>
+    <order>8</order>
+    <iconPath>LP/Classes/Subclass2/PsychicSpike</iconPath>
+    <stats><li>LP_PsionicPower</li></stats>
+    <spells>
+      <li>LP_CS_MindSliver</li>
+      <li>LP_WS_MageHand</li>
+      <li>LP_CS_MinorIllusion</li>
+      <li>LP_CS_Friends</li>
+      <li>LP_WS_Light</li>
+      <li>LP_WS_Mending</li>
+      <li>LP_WS_Prestidigitation</li>
+      <li>LP_PS_TelekineticFling</li>
+      <li>LP_CharmPerson=1</li>
+      <li>LP_CS_Command</li>
+      <li>LP_WS_ComprehendLanguages</li>
+      <li>LP_WS_DetectMagic</li>
+      <li>LP_CS_Jump</li>
+      <li>LP_ShieldSpell</li>
+      <li>LP_MageArmor</li>
+      <li>LP_Sleep</li>
+      <li>LP_WS_Thunderwave</li>
+      <li>LP_PS_LifeSiphon</li>
+      <li>LP_WS_MindSpike</li>
+      <li>LP_WS_HoldPerson</li>
+      <li>LP_WS_Invisibility</li>
+      <li>LP_MirrorImage</li>
+      <li>LP_WS_EnhanceAbility</li>
+      <li>LP_WS_Shatter</li>
+      <li>LP_WS_Knock</li>
+      <li>LP_CS_Silence</li>
+      <li>LP_PS_EgoWhip</li>
+      <li>LP_WS_Fear</li>
+      <li>LP_WS_Fly</li>
+      <li>LP_WS_DispelMagic</li>
+      <li>LP_CS_HypnoticPattern</li>
+      <li>LP_CS_Tongues</li>
+      <li>LP_WS_Sending</li>
+      <li>LP_PS_TelekineticCrush</li>
+      <li>LP_PS_IntellectFortress</li>
+      <li>LP_WS_Confusion</li>
+      <li>LP_WS_Banishment</li>
+      <li>LP_WS_DimensionDoor</li>
+      <li>LP_WS_Polymorph</li>
+      <li>LP_CS_GreaterInvisibility</li>
+      <li>LP_CS_FreedomOfMovement</li>
+      <li>LP_WS_PhantasmalKiller</li>
+      <li>LP_PS_PsychicLance</li>
+      <li>LP_WS_DominatePerson</li>
+      <li>LP_WS_HoldMonster</li>
+      <li>LP_WS_Telekinesis</li>
+      <li>LP_WS_ModifyMemory</li>
+      <li>LP_WS_Scrying</li>
+      <li>LP_CS_Dream</li>
+      <li>LP_CS_ContactOtherPlane</li>
+      <li>LP_WS_TeleportationCircle</li>
+      <li>LP_CS_Awaken</li>
+      <li>LP_PS_SynapticStatic</li>
+      <li>LP_Disintegrate</li>
+      <li>LP_CS_Eyebite</li>
+      <li>LP_WS_MoveEarth</li>
+      <li>LP_WS_TrueSeeing</li>
+      <li>LP_CS_BladeBarrier</li>
+      <li>LP_CS_OttoDance</li>
+      <li>LP_CS_MassSuggestion</li>
+      <li>LP_PS_MentalPrison</li>
+      <li>LP_PS_PsionicBlast</li>
+      <li>LP_WS_ForceCage</li>
+      <li>LP_WS_Etherealness</li>
+      <li>LP_WS_PlaneShift</li>
+      <li>LP_WS_ReverseGravity</li>
+      <li>LP_CS_ProjectImage</li>
+      <li>LP_Teleport</li>
+      <li>LP_WS_DominateMonster</li>
+      <li>LP_WS_Feeblemind</li>
+      <li>LP_CS_PowerWordStun</li>
+      <li>LP_WS_MindBlank</li>
+      <li>LP_WS_Foresight</li>
+      <li>LP_WS_PowerWordKill</li>
+      <li>LP_CS_PowerWordHeal</li>
+      <li>LP_WS_TimeStop</li>
+      <li>LP_PS_PsychicScream</li>
+      <li>LP_CureWounds=1</li>
+      <li>LP_LesserRestoration=2</li>
+      <li>LP_Haste</li>
+      <li>LP_CS_MassHealingWord</li>
+      <li>LP_WS_Stoneskin</li>
+      <li>LP_MassHeal=5</li>
+      <li>LP_CS_GreaterRestoration</li>
+      <li>LP_WS_Slow</li>
+      <li>LP_CS_StoneShape</li>
+      <li>LP_WallOfStone=5</li>
+      <li>LP_WS_Counterspell</li>
+      <li>LP_MistyStep</li>
+      <li>LP_WS_Blink</li>
+    </spells>
+  </LichPhylactery.CasterListDef>
+
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Metamorph</defName>
+    <label>血肉塑形者</label>
+    <description>把血肉当成黏土：柔变之躯、生体武器（骨刃、血肉巨锤、内脏弩）、血肉编织，最后让武器既能杀人也能救人。常备法术：治疗伤口、次级复原术、增强属性、生命虹吸（3 级），急速术、群体治疗真言（5 级），变形术、石肤术（7 级），群体治疗、高等复原术（9 级）。</description>
+    <parent>LP_Class_Psion</parent><order>1</order><emblem>LP/Classes/Subclass/Emblem_AberrantMind</emblem><color>(0.8,0.45,0.45)</color>
+    <abilities><li><ability>LP_PS_MutableForm</ability><level>3</level></li><li><ability>LP_PS_OrganicWeapons</ability><level>3</level></li><li><ability>LP_PS_BileLauncher</ability><level>3</level></li><li><ability>LP_PS_FleshWeave</ability><level>6</level></li><li><ability>LP_PS_EvolvedForm</ability><level>10</level></li><li><ability>LP_PS_LifeBending</ability><level>14</level></li></abilities>
+    <choices><li><key>psd1</key><label>灵能修行</label><level>3</level><options><li>生物反馈</li><li>预知增幅</li><li>毁灭思绪</li><li>魔鬼之舌</li><li>扩展感知</li><li>心智暗示</li><li>无误瞄准</li><li>观察入微</li><li>灵能反噬</li><li>灵能守护</li><li>锐化心智</li><li>念动精修</li></options><tips><li>施放死灵 / 变化系法术（1 环以上）时，花最多 智力调整值 点灵能点：得到（灵能值合计 + 智力调整值）× 灵能强度 的临时生命。</li><li>施放防护 / 预言系法术时花 1 点：自己或那名友军 10 秒内命中、闪避提高（按灵能档 +15 / 20 / 25 / 30%）。</li><li>施放咒法 / 塑能系法术打中敌人时，花最多 智力调整值 点：目标另受（灵能值合计 + 智力调整值）× 灵能强度 心灵伤害，不管豁免成败。</li><li>被动（有灵能点时）：社交影响、谈判能力 +10 / 15 / 20 / 25%，交易价格好一点。</li><li>得到能力「扩展感知」：花 1 点，2 小时内视觉 +15%、射击精度提高、看得见隐形的单位。</li><li>施放惑控 / 幻术系法术前花 1 点：目标的心智抗性暂时 −8 / 10 / 13 / 15%。</li><li>被动（有灵能点时）：射击精度、近战命中 +5 / 7 / 9 / 11%。</li><li>研究时自动花 1 点：4 小时内研究速度 +30 / 40 / 50 / 60%（每天最多 2 次）。</li><li>被打中时自动花 1 点（每 10 秒一次）：伤害 −（2 × 灵能值 + 智力调整值），攻击者没抵抗住就受等量心灵伤害。</li><li>得到能力「灵能守护」：花 1 点，30 秒内免疫恐惧、心智抗性 +25%。</li><li>得到能力「锐化心智」：花 1 点，60 秒内你造成的心灵伤害 ×1.3。</li><li>念动推拉距离 12 → 20 格、能推体型 2 的目标；不花点时推 2 格。</li></tips></li><li><key>psd2</key><label>第二修行</label><level>3</level><distinctFrom>psd1</distinctFrom><options><li>生物反馈</li><li>预知增幅</li><li>毁灭思绪</li><li>魔鬼之舌</li><li>扩展感知</li><li>心智暗示</li><li>无误瞄准</li><li>观察入微</li><li>灵能反噬</li><li>灵能守护</li><li>锐化心智</li><li>念动精修</li></options><tips><li>施放死灵 / 变化系法术（1 环以上）时，花最多 智力调整值 点灵能点：得到（灵能值合计 + 智力调整值）× 灵能强度 的临时生命。</li><li>施放防护 / 预言系法术时花 1 点：自己或那名友军 10 秒内命中、闪避提高（按灵能档 +15 / 20 / 25 / 30%）。</li><li>施放咒法 / 塑能系法术打中敌人时，花最多 智力调整值 点：目标另受（灵能值合计 + 智力调整值）× 灵能强度 心灵伤害，不管豁免成败。</li><li>被动（有灵能点时）：社交影响、谈判能力 +10 / 15 / 20 / 25%，交易价格好一点。</li><li>得到能力「扩展感知」：花 1 点，2 小时内视觉 +15%、射击精度提高、看得见隐形的单位。</li><li>施放惑控 / 幻术系法术前花 1 点：目标的心智抗性暂时 −8 / 10 / 13 / 15%。</li><li>被动（有灵能点时）：射击精度、近战命中 +5 / 7 / 9 / 11%。</li><li>研究时自动花 1 点：4 小时内研究速度 +30 / 40 / 50 / 60%（每天最多 2 次）。</li><li>被打中时自动花 1 点（每 10 秒一次）：伤害 −（2 × 灵能值 + 智力调整值），攻击者没抵抗住就受等量心灵伤害。</li><li>得到能力「灵能守护」：花 1 点，30 秒内免疫恐惧、心智抗性 +25%。</li><li>得到能力「锐化心智」：花 1 点，60 秒内你造成的心灵伤害 ×1.3。</li><li>念动推拉距离 12 → 20 格、能推体型 2 的目标；不花点时推 2 格。</li></tips></li><li><key>psd3</key><label>第三修行</label><level>5</level><options><li>生物反馈</li><li>预知增幅</li><li>毁灭思绪</li><li>魔鬼之舌</li><li>扩展感知</li><li>心智暗示</li><li>无误瞄准</li><li>观察入微</li><li>灵能反噬</li><li>灵能守护</li><li>锐化心智</li><li>念动精修</li></options><tips><li>施放死灵 / 变化系法术（1 环以上）时，花最多 智力调整值 点灵能点：得到（灵能值合计 + 智力调整值）× 灵能强度 的临时生命。</li><li>施放防护 / 预言系法术时花 1 点：自己或那名友军 10 秒内命中、闪避提高（按灵能档 +15 / 20 / 25 / 30%）。</li><li>施放咒法 / 塑能系法术打中敌人时，花最多 智力调整值 点：目标另受（灵能值合计 + 智力调整值）× 灵能强度 心灵伤害，不管豁免成败。</li><li>被动（有灵能点时）：社交影响、谈判能力 +10 / 15 / 20 / 25%，交易价格好一点。</li><li>得到能力「扩展感知」：花 1 点，2 小时内视觉 +15%、射击精度提高、看得见隐形的单位。</li><li>施放惑控 / 幻术系法术前花 1 点：目标的心智抗性暂时 −8 / 10 / 13 / 15%。</li><li>被动（有灵能点时）：射击精度、近战命中 +5 / 7 / 9 / 11%。</li><li>研究时自动花 1 点：4 小时内研究速度 +30 / 40 / 50 / 60%（每天最多 2 次）。</li><li>被打中时自动花 1 点（每 10 秒一次）：伤害 −（2 × 灵能值 + 智力调整值），攻击者没抵抗住就受等量心灵伤害。</li><li>得到能力「灵能守护」：花 1 点，30 秒内免疫恐惧、心智抗性 +25%。</li><li>得到能力「锐化心智」：花 1 点，60 秒内你造成的心灵伤害 ×1.3。</li><li>念动推拉距离 12 → 20 格、能推体型 2 的目标；不花点时推 2 格。</li></tips></li><li><key>psd4</key><label>第四修行</label><level>10</level><options><li>生物反馈</li><li>预知增幅</li><li>毁灭思绪</li><li>魔鬼之舌</li><li>扩展感知</li><li>心智暗示</li><li>无误瞄准</li><li>观察入微</li><li>灵能反噬</li><li>灵能守护</li><li>锐化心智</li><li>念动精修</li></options><tips><li>施放死灵 / 变化系法术（1 环以上）时，花最多 智力调整值 点灵能点：得到（灵能值合计 + 智力调整值）× 灵能强度 的临时生命。</li><li>施放防护 / 预言系法术时花 1 点：自己或那名友军 10 秒内命中、闪避提高（按灵能档 +15 / 20 / 25 / 30%）。</li><li>施放咒法 / 塑能系法术打中敌人时，花最多 智力调整值 点：目标另受（灵能值合计 + 智力调整值）× 灵能强度 心灵伤害，不管豁免成败。</li><li>被动（有灵能点时）：社交影响、谈判能力 +10 / 15 / 20 / 25%，交易价格好一点。</li><li>得到能力「扩展感知」：花 1 点，2 小时内视觉 +15%、射击精度提高、看得见隐形的单位。</li><li>施放惑控 / 幻术系法术前花 1 点：目标的心智抗性暂时 −8 / 10 / 13 / 15%。</li><li>被动（有灵能点时）：射击精度、近战命中 +5 / 7 / 9 / 11%。</li><li>研究时自动花 1 点：4 小时内研究速度 +30 / 40 / 50 / 60%（每天最多 2 次）。</li><li>被打中时自动花 1 点（每 10 秒一次）：伤害 −（2 × 灵能值 + 智力调整值），攻击者没抵抗住就受等量心灵伤害。</li><li>得到能力「灵能守护」：花 1 点，30 秒内免疫恐惧、心智抗性 +25%。</li><li>得到能力「锐化心智」：花 1 点，60 秒内你造成的心灵伤害 ×1.3。</li><li>念动推拉距离 12 → 20 格、能推体型 2 的目标；不花点时推 2 格。</li></tips></li><li><key>psd5</key><label>第五修行</label><level>13</level><options><li>生物反馈</li><li>预知增幅</li><li>毁灭思绪</li><li>魔鬼之舌</li><li>扩展感知</li><li>心智暗示</li><li>无误瞄准</li><li>观察入微</li><li>灵能反噬</li><li>灵能守护</li><li>锐化心智</li><li>念动精修</li></options><tips><li>施放死灵 / 变化系法术（1 环以上）时，花最多 智力调整值 点灵能点：得到（灵能值合计 + 智力调整值）× 灵能强度 的临时生命。</li><li>施放防护 / 预言系法术时花 1 点：自己或那名友军 10 秒内命中、闪避提高（按灵能档 +15 / 20 / 25 / 30%）。</li><li>施放咒法 / 塑能系法术打中敌人时，花最多 智力调整值 点：目标另受（灵能值合计 + 智力调整值）× 灵能强度 心灵伤害，不管豁免成败。</li><li>被动（有灵能点时）：社交影响、谈判能力 +10 / 15 / 20 / 25%，交易价格好一点。</li><li>得到能力「扩展感知」：花 1 点，2 小时内视觉 +15%、射击精度提高、看得见隐形的单位。</li><li>施放惑控 / 幻术系法术前花 1 点：目标的心智抗性暂时 −8 / 10 / 13 / 15%。</li><li>被动（有灵能点时）：射击精度、近战命中 +5 / 7 / 9 / 11%。</li><li>研究时自动花 1 点：4 小时内研究速度 +30 / 40 / 50 / 60%（每天最多 2 次）。</li><li>被打中时自动花 1 点（每 10 秒一次）：伤害 −（2 × 灵能值 + 智力调整值），攻击者没抵抗住就受等量心灵伤害。</li><li>得到能力「灵能守护」：花 1 点，30 秒内免疫恐惧、心智抗性 +25%。</li><li>得到能力「锐化心智」：花 1 点，60 秒内你造成的心灵伤害 ×1.3。</li><li>念动推拉距离 12 → 20 格、能推体型 2 的目标；不花点时推 2 格。</li></tips></li><li><key>psd6</key><label>第六修行</label><level>17</level><options><li>生物反馈</li><li>预知增幅</li><li>毁灭思绪</li><li>魔鬼之舌</li><li>扩展感知</li><li>心智暗示</li><li>无误瞄准</li><li>观察入微</li><li>灵能反噬</li><li>灵能守护</li><li>锐化心智</li><li>念动精修</li></options><tips><li>施放死灵 / 变化系法术（1 环以上）时，花最多 智力调整值 点灵能点：得到（灵能值合计 + 智力调整值）× 灵能强度 的临时生命。</li><li>施放防护 / 预言系法术时花 1 点：自己或那名友军 10 秒内命中、闪避提高（按灵能档 +15 / 20 / 25 / 30%）。</li><li>施放咒法 / 塑能系法术打中敌人时，花最多 智力调整值 点：目标另受（灵能值合计 + 智力调整值）× 灵能强度 心灵伤害，不管豁免成败。</li><li>被动（有灵能点时）：社交影响、谈判能力 +10 / 15 / 20 / 25%，交易价格好一点。</li><li>得到能力「扩展感知」：花 1 点，2 小时内视觉 +15%、射击精度提高、看得见隐形的单位。</li><li>施放惑控 / 幻术系法术前花 1 点：目标的心智抗性暂时 −8 / 10 / 13 / 15%。</li><li>被动（有灵能点时）：射击精度、近战命中 +5 / 7 / 9 / 11%。</li><li>研究时自动花 1 点：4 小时内研究速度 +30 / 40 / 50 / 60%（每天最多 2 次）。</li><li>被打中时自动花 1 点（每 10 秒一次）：伤害 −（2 × 灵能值 + 智力调整值），攻击者没抵抗住就受等量心灵伤害。</li><li>得到能力「灵能守护」：花 1 点，30 秒内免疫恐惧、心智抗性 +25%。</li><li>得到能力「锐化心智」：花 1 点，60 秒内你造成的心灵伤害 ×1.3。</li><li>念动推拉距离 12 → 20 格、能推体型 2 的目标；不花点时推 2 格。</li></tips></li><li><key>psevo</key><label>进化之躯</label><level>10</level><options><li>石化表皮</li><li>超凡步态</li><li>非凡柔韧</li></options><tips><li>柔变之躯期间受到的伤害 ×0.75。</li><li>柔变之躯期间移动 +25%。</li><li>柔变之躯期间近战闪避 +10。</li></tips></li></choices>
+  </LichPhylactery.LP_SubclassDef>
+
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Psykinetic</defName>
+    <label>念动师</label>
+    <description>把念力当成可塑的力：搬运、推拉、碾压、反弹，最后能把任何东西举起来扔出去。常备法术：护盾术、雷鸣波、粉碎音波、跳跃术（3 级），缓慢术、念力碾压（5 级），塑石术、自由行动（7 级），心灵遥控、石墙术（9 级）。</description>
+    <parent>LP_Class_Psion</parent><order>2</order><emblem>LP/Classes/Subclass/Emblem_PsiWarrior</emblem><color>(0.5,0.65,0.95)</color>
+    <abilities><li><ability>LP_PS_StrongTK</ability><level>3</level></li><li><ability>LP_PS_TKTechniques</ability><level>3</level></li><li><ability>LP_PS_DestructiveTrance</ability><level>6</level></li><li><ability>LP_PS_ReboundField</ability><level>6</level></li><li><ability>LP_PS_EnhancedCrush</ability><level>10</level></li><li><ability>LP_PS_HeightenedTK</ability><level>14</level></li></abilities>
+    <choices><li><key>psd1</key><label>灵能修行</label><level>3</level><options><li>生物反馈</li><li>预知增幅</li><li>毁灭思绪</li><li>魔鬼之舌</li><li>扩展感知</li><li>心智暗示</li><li>无误瞄准</li><li>观察入微</li><li>灵能反噬</li><li>灵能守护</li><li>锐化心智</li><li>念动精修</li></options><tips><li>施放死灵 / 变化系法术（1 环以上）时，花最多 智力调整值 点灵能点：得到（灵能值合计 + 智力调整值）× 灵能强度 的临时生命。</li><li>施放防护 / 预言系法术时花 1 点：自己或那名友军 10 秒内命中、闪避提高（按灵能档 +15 / 20 / 25 / 30%）。</li><li>施放咒法 / 塑能系法术打中敌人时，花最多 智力调整值 点：目标另受（灵能值合计 + 智力调整值）× 灵能强度 心灵伤害，不管豁免成败。</li><li>被动（有灵能点时）：社交影响、谈判能力 +10 / 15 / 20 / 25%，交易价格好一点。</li><li>得到能力「扩展感知」：花 1 点，2 小时内视觉 +15%、射击精度提高、看得见隐形的单位。</li><li>施放惑控 / 幻术系法术前花 1 点：目标的心智抗性暂时 −8 / 10 / 13 / 15%。</li><li>被动（有灵能点时）：射击精度、近战命中 +5 / 7 / 9 / 11%。</li><li>研究时自动花 1 点：4 小时内研究速度 +30 / 40 / 50 / 60%（每天最多 2 次）。</li><li>被打中时自动花 1 点（每 10 秒一次）：伤害 −（2 × 灵能值 + 智力调整值），攻击者没抵抗住就受等量心灵伤害。</li><li>得到能力「灵能守护」：花 1 点，30 秒内免疫恐惧、心智抗性 +25%。</li><li>得到能力「锐化心智」：花 1 点，60 秒内你造成的心灵伤害 ×1.3。</li><li>念动推拉距离 12 → 20 格、能推体型 2 的目标；不花点时推 2 格。</li></tips></li><li><key>psd2</key><label>第二修行</label><level>3</level><distinctFrom>psd1</distinctFrom><options><li>生物反馈</li><li>预知增幅</li><li>毁灭思绪</li><li>魔鬼之舌</li><li>扩展感知</li><li>心智暗示</li><li>无误瞄准</li><li>观察入微</li><li>灵能反噬</li><li>灵能守护</li><li>锐化心智</li><li>念动精修</li></options><tips><li>施放死灵 / 变化系法术（1 环以上）时，花最多 智力调整值 点灵能点：得到（灵能值合计 + 智力调整值）× 灵能强度 的临时生命。</li><li>施放防护 / 预言系法术时花 1 点：自己或那名友军 10 秒内命中、闪避提高（按灵能档 +15 / 20 / 25 / 30%）。</li><li>施放咒法 / 塑能系法术打中敌人时，花最多 智力调整值 点：目标另受（灵能值合计 + 智力调整值）× 灵能强度 心灵伤害，不管豁免成败。</li><li>被动（有灵能点时）：社交影响、谈判能力 +10 / 15 / 20 / 25%，交易价格好一点。</li><li>得到能力「扩展感知」：花 1 点，2 小时内视觉 +15%、射击精度提高、看得见隐形的单位。</li><li>施放惑控 / 幻术系法术前花 1 点：目标的心智抗性暂时 −8 / 10 / 13 / 15%。</li><li>被动（有灵能点时）：射击精度、近战命中 +5 / 7 / 9 / 11%。</li><li>研究时自动花 1 点：4 小时内研究速度 +30 / 40 / 50 / 60%（每天最多 2 次）。</li><li>被打中时自动花 1 点（每 10 秒一次）：伤害 −（2 × 灵能值 + 智力调整值），攻击者没抵抗住就受等量心灵伤害。</li><li>得到能力「灵能守护」：花 1 点，30 秒内免疫恐惧、心智抗性 +25%。</li><li>得到能力「锐化心智」：花 1 点，60 秒内你造成的心灵伤害 ×1.3。</li><li>念动推拉距离 12 → 20 格、能推体型 2 的目标；不花点时推 2 格。</li></tips></li><li><key>psd3</key><label>第三修行</label><level>5</level><options><li>生物反馈</li><li>预知增幅</li><li>毁灭思绪</li><li>魔鬼之舌</li><li>扩展感知</li><li>心智暗示</li><li>无误瞄准</li><li>观察入微</li><li>灵能反噬</li><li>灵能守护</li><li>锐化心智</li><li>念动精修</li></options><tips><li>施放死灵 / 变化系法术（1 环以上）时，花最多 智力调整值 点灵能点：得到（灵能值合计 + 智力调整值）× 灵能强度 的临时生命。</li><li>施放防护 / 预言系法术时花 1 点：自己或那名友军 10 秒内命中、闪避提高（按灵能档 +15 / 20 / 25 / 30%）。</li><li>施放咒法 / 塑能系法术打中敌人时，花最多 智力调整值 点：目标另受（灵能值合计 + 智力调整值）× 灵能强度 心灵伤害，不管豁免成败。</li><li>被动（有灵能点时）：社交影响、谈判能力 +10 / 15 / 20 / 25%，交易价格好一点。</li><li>得到能力「扩展感知」：花 1 点，2 小时内视觉 +15%、射击精度提高、看得见隐形的单位。</li><li>施放惑控 / 幻术系法术前花 1 点：目标的心智抗性暂时 −8 / 10 / 13 / 15%。</li><li>被动（有灵能点时）：射击精度、近战命中 +5 / 7 / 9 / 11%。</li><li>研究时自动花 1 点：4 小时内研究速度 +30 / 40 / 50 / 60%（每天最多 2 次）。</li><li>被打中时自动花 1 点（每 10 秒一次）：伤害 −（2 × 灵能值 + 智力调整值），攻击者没抵抗住就受等量心灵伤害。</li><li>得到能力「灵能守护」：花 1 点，30 秒内免疫恐惧、心智抗性 +25%。</li><li>得到能力「锐化心智」：花 1 点，60 秒内你造成的心灵伤害 ×1.3。</li><li>念动推拉距离 12 → 20 格、能推体型 2 的目标；不花点时推 2 格。</li></tips></li><li><key>psd4</key><label>第四修行</label><level>10</level><options><li>生物反馈</li><li>预知增幅</li><li>毁灭思绪</li><li>魔鬼之舌</li><li>扩展感知</li><li>心智暗示</li><li>无误瞄准</li><li>观察入微</li><li>灵能反噬</li><li>灵能守护</li><li>锐化心智</li><li>念动精修</li></options><tips><li>施放死灵 / 变化系法术（1 环以上）时，花最多 智力调整值 点灵能点：得到（灵能值合计 + 智力调整值）× 灵能强度 的临时生命。</li><li>施放防护 / 预言系法术时花 1 点：自己或那名友军 10 秒内命中、闪避提高（按灵能档 +15 / 20 / 25 / 30%）。</li><li>施放咒法 / 塑能系法术打中敌人时，花最多 智力调整值 点：目标另受（灵能值合计 + 智力调整值）× 灵能强度 心灵伤害，不管豁免成败。</li><li>被动（有灵能点时）：社交影响、谈判能力 +10 / 15 / 20 / 25%，交易价格好一点。</li><li>得到能力「扩展感知」：花 1 点，2 小时内视觉 +15%、射击精度提高、看得见隐形的单位。</li><li>施放惑控 / 幻术系法术前花 1 点：目标的心智抗性暂时 −8 / 10 / 13 / 15%。</li><li>被动（有灵能点时）：射击精度、近战命中 +5 / 7 / 9 / 11%。</li><li>研究时自动花 1 点：4 小时内研究速度 +30 / 40 / 50 / 60%（每天最多 2 次）。</li><li>被打中时自动花 1 点（每 10 秒一次）：伤害 −（2 × 灵能值 + 智力调整值），攻击者没抵抗住就受等量心灵伤害。</li><li>得到能力「灵能守护」：花 1 点，30 秒内免疫恐惧、心智抗性 +25%。</li><li>得到能力「锐化心智」：花 1 点，60 秒内你造成的心灵伤害 ×1.3。</li><li>念动推拉距离 12 → 20 格、能推体型 2 的目标；不花点时推 2 格。</li></tips></li><li><key>psd5</key><label>第五修行</label><level>13</level><options><li>生物反馈</li><li>预知增幅</li><li>毁灭思绪</li><li>魔鬼之舌</li><li>扩展感知</li><li>心智暗示</li><li>无误瞄准</li><li>观察入微</li><li>灵能反噬</li><li>灵能守护</li><li>锐化心智</li><li>念动精修</li></options><tips><li>施放死灵 / 变化系法术（1 环以上）时，花最多 智力调整值 点灵能点：得到（灵能值合计 + 智力调整值）× 灵能强度 的临时生命。</li><li>施放防护 / 预言系法术时花 1 点：自己或那名友军 10 秒内命中、闪避提高（按灵能档 +15 / 20 / 25 / 30%）。</li><li>施放咒法 / 塑能系法术打中敌人时，花最多 智力调整值 点：目标另受（灵能值合计 + 智力调整值）× 灵能强度 心灵伤害，不管豁免成败。</li><li>被动（有灵能点时）：社交影响、谈判能力 +10 / 15 / 20 / 25%，交易价格好一点。</li><li>得到能力「扩展感知」：花 1 点，2 小时内视觉 +15%、射击精度提高、看得见隐形的单位。</li><li>施放惑控 / 幻术系法术前花 1 点：目标的心智抗性暂时 −8 / 10 / 13 / 15%。</li><li>被动（有灵能点时）：射击精度、近战命中 +5 / 7 / 9 / 11%。</li><li>研究时自动花 1 点：4 小时内研究速度 +30 / 40 / 50 / 60%（每天最多 2 次）。</li><li>被打中时自动花 1 点（每 10 秒一次）：伤害 −（2 × 灵能值 + 智力调整值），攻击者没抵抗住就受等量心灵伤害。</li><li>得到能力「灵能守护」：花 1 点，30 秒内免疫恐惧、心智抗性 +25%。</li><li>得到能力「锐化心智」：花 1 点，60 秒内你造成的心灵伤害 ×1.3。</li><li>念动推拉距离 12 → 20 格、能推体型 2 的目标；不花点时推 2 格。</li></tips></li><li><key>psd6</key><label>第六修行</label><level>17</level><options><li>生物反馈</li><li>预知增幅</li><li>毁灭思绪</li><li>魔鬼之舌</li><li>扩展感知</li><li>心智暗示</li><li>无误瞄准</li><li>观察入微</li><li>灵能反噬</li><li>灵能守护</li><li>锐化心智</li><li>念动精修</li></options><tips><li>施放死灵 / 变化系法术（1 环以上）时，花最多 智力调整值 点灵能点：得到（灵能值合计 + 智力调整值）× 灵能强度 的临时生命。</li><li>施放防护 / 预言系法术时花 1 点：自己或那名友军 10 秒内命中、闪避提高（按灵能档 +15 / 20 / 25 / 30%）。</li><li>施放咒法 / 塑能系法术打中敌人时，花最多 智力调整值 点：目标另受（灵能值合计 + 智力调整值）× 灵能强度 心灵伤害，不管豁免成败。</li><li>被动（有灵能点时）：社交影响、谈判能力 +10 / 15 / 20 / 25%，交易价格好一点。</li><li>得到能力「扩展感知」：花 1 点，2 小时内视觉 +15%、射击精度提高、看得见隐形的单位。</li><li>施放惑控 / 幻术系法术前花 1 点：目标的心智抗性暂时 −8 / 10 / 13 / 15%。</li><li>被动（有灵能点时）：射击精度、近战命中 +5 / 7 / 9 / 11%。</li><li>研究时自动花 1 点：4 小时内研究速度 +30 / 40 / 50 / 60%（每天最多 2 次）。</li><li>被打中时自动花 1 点（每 10 秒一次）：伤害 −（2 × 灵能值 + 智力调整值），攻击者没抵抗住就受等量心灵伤害。</li><li>得到能力「灵能守护」：花 1 点，30 秒内免疫恐惧、心智抗性 +25%。</li><li>得到能力「锐化心智」：花 1 点，60 秒内你造成的心灵伤害 ×1.3。</li><li>念动推拉距离 12 → 20 格、能推体型 2 的目标；不花点时推 2 格。</li></tips></li></choices>
+  </LichPhylactery.LP_SubclassDef>
+
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Telepath</defName>
+    <label>心灵感应者</label>
+    <description>心智战场上的战术家：读心、审讯、干扰敌人、把同伴连成网，最后搅乱一整群敌人的心智。常备法术：命令术、心灵尖刺、魅惑人类、自我鞭笞（3 级），反制法术、缓慢术（5 级），困惑术、魅影杀手（7 级），修改记忆、支配人类（9 级）。</description>
+    <parent>LP_Class_Psion</parent><order>3</order><emblem>LP/Classes/Subclass/Emblem_GreatOldOne</emblem><color>(0.6,0.5,0.9)</color>
+    <abilities><li><ability>LP_PS_Infiltrate</ability><level>3</level></li><li><ability>LP_PS_TeleDistract</ability><level>3</level></li><li><ability>LP_PS_BulwarkMind</ability><level>6</level></li><li><ability>LP_PS_PotentThoughts</ability><level>6</level></li><li><ability>LP_PS_TeleBolster</ability><level>10</level></li><li><ability>LP_PS_ScrambleMinds</ability><level>14</level></li></abilities>
+    <choices><li><key>psd1</key><label>灵能修行</label><level>3</level><options><li>生物反馈</li><li>预知增幅</li><li>毁灭思绪</li><li>魔鬼之舌</li><li>扩展感知</li><li>心智暗示</li><li>无误瞄准</li><li>观察入微</li><li>灵能反噬</li><li>灵能守护</li><li>锐化心智</li><li>念动精修</li></options><tips><li>施放死灵 / 变化系法术（1 环以上）时，花最多 智力调整值 点灵能点：得到（灵能值合计 + 智力调整值）× 灵能强度 的临时生命。</li><li>施放防护 / 预言系法术时花 1 点：自己或那名友军 10 秒内命中、闪避提高（按灵能档 +15 / 20 / 25 / 30%）。</li><li>施放咒法 / 塑能系法术打中敌人时，花最多 智力调整值 点：目标另受（灵能值合计 + 智力调整值）× 灵能强度 心灵伤害，不管豁免成败。</li><li>被动（有灵能点时）：社交影响、谈判能力 +10 / 15 / 20 / 25%，交易价格好一点。</li><li>得到能力「扩展感知」：花 1 点，2 小时内视觉 +15%、射击精度提高、看得见隐形的单位。</li><li>施放惑控 / 幻术系法术前花 1 点：目标的心智抗性暂时 −8 / 10 / 13 / 15%。</li><li>被动（有灵能点时）：射击精度、近战命中 +5 / 7 / 9 / 11%。</li><li>研究时自动花 1 点：4 小时内研究速度 +30 / 40 / 50 / 60%（每天最多 2 次）。</li><li>被打中时自动花 1 点（每 10 秒一次）：伤害 −（2 × 灵能值 + 智力调整值），攻击者没抵抗住就受等量心灵伤害。</li><li>得到能力「灵能守护」：花 1 点，30 秒内免疫恐惧、心智抗性 +25%。</li><li>得到能力「锐化心智」：花 1 点，60 秒内你造成的心灵伤害 ×1.3。</li><li>念动推拉距离 12 → 20 格、能推体型 2 的目标；不花点时推 2 格。</li></tips></li><li><key>psd2</key><label>第二修行</label><level>3</level><distinctFrom>psd1</distinctFrom><options><li>生物反馈</li><li>预知增幅</li><li>毁灭思绪</li><li>魔鬼之舌</li><li>扩展感知</li><li>心智暗示</li><li>无误瞄准</li><li>观察入微</li><li>灵能反噬</li><li>灵能守护</li><li>锐化心智</li><li>念动精修</li></options><tips><li>施放死灵 / 变化系法术（1 环以上）时，花最多 智力调整值 点灵能点：得到（灵能值合计 + 智力调整值）× 灵能强度 的临时生命。</li><li>施放防护 / 预言系法术时花 1 点：自己或那名友军 10 秒内命中、闪避提高（按灵能档 +15 / 20 / 25 / 30%）。</li><li>施放咒法 / 塑能系法术打中敌人时，花最多 智力调整值 点：目标另受（灵能值合计 + 智力调整值）× 灵能强度 心灵伤害，不管豁免成败。</li><li>被动（有灵能点时）：社交影响、谈判能力 +10 / 15 / 20 / 25%，交易价格好一点。</li><li>得到能力「扩展感知」：花 1 点，2 小时内视觉 +15%、射击精度提高、看得见隐形的单位。</li><li>施放惑控 / 幻术系法术前花 1 点：目标的心智抗性暂时 −8 / 10 / 13 / 15%。</li><li>被动（有灵能点时）：射击精度、近战命中 +5 / 7 / 9 / 11%。</li><li>研究时自动花 1 点：4 小时内研究速度 +30 / 40 / 50 / 60%（每天最多 2 次）。</li><li>被打中时自动花 1 点（每 10 秒一次）：伤害 −（2 × 灵能值 + 智力调整值），攻击者没抵抗住就受等量心灵伤害。</li><li>得到能力「灵能守护」：花 1 点，30 秒内免疫恐惧、心智抗性 +25%。</li><li>得到能力「锐化心智」：花 1 点，60 秒内你造成的心灵伤害 ×1.3。</li><li>念动推拉距离 12 → 20 格、能推体型 2 的目标；不花点时推 2 格。</li></tips></li><li><key>psd3</key><label>第三修行</label><level>5</level><options><li>生物反馈</li><li>预知增幅</li><li>毁灭思绪</li><li>魔鬼之舌</li><li>扩展感知</li><li>心智暗示</li><li>无误瞄准</li><li>观察入微</li><li>灵能反噬</li><li>灵能守护</li><li>锐化心智</li><li>念动精修</li></options><tips><li>施放死灵 / 变化系法术（1 环以上）时，花最多 智力调整值 点灵能点：得到（灵能值合计 + 智力调整值）× 灵能强度 的临时生命。</li><li>施放防护 / 预言系法术时花 1 点：自己或那名友军 10 秒内命中、闪避提高（按灵能档 +15 / 20 / 25 / 30%）。</li><li>施放咒法 / 塑能系法术打中敌人时，花最多 智力调整值 点：目标另受（灵能值合计 + 智力调整值）× 灵能强度 心灵伤害，不管豁免成败。</li><li>被动（有灵能点时）：社交影响、谈判能力 +10 / 15 / 20 / 25%，交易价格好一点。</li><li>得到能力「扩展感知」：花 1 点，2 小时内视觉 +15%、射击精度提高、看得见隐形的单位。</li><li>施放惑控 / 幻术系法术前花 1 点：目标的心智抗性暂时 −8 / 10 / 13 / 15%。</li><li>被动（有灵能点时）：射击精度、近战命中 +5 / 7 / 9 / 11%。</li><li>研究时自动花 1 点：4 小时内研究速度 +30 / 40 / 50 / 60%（每天最多 2 次）。</li><li>被打中时自动花 1 点（每 10 秒一次）：伤害 −（2 × 灵能值 + 智力调整值），攻击者没抵抗住就受等量心灵伤害。</li><li>得到能力「灵能守护」：花 1 点，30 秒内免疫恐惧、心智抗性 +25%。</li><li>得到能力「锐化心智」：花 1 点，60 秒内你造成的心灵伤害 ×1.3。</li><li>念动推拉距离 12 → 20 格、能推体型 2 的目标；不花点时推 2 格。</li></tips></li><li><key>psd4</key><label>第四修行</label><level>10</level><options><li>生物反馈</li><li>预知增幅</li><li>毁灭思绪</li><li>魔鬼之舌</li><li>扩展感知</li><li>心智暗示</li><li>无误瞄准</li><li>观察入微</li><li>灵能反噬</li><li>灵能守护</li><li>锐化心智</li><li>念动精修</li></options><tips><li>施放死灵 / 变化系法术（1 环以上）时，花最多 智力调整值 点灵能点：得到（灵能值合计 + 智力调整值）× 灵能强度 的临时生命。</li><li>施放防护 / 预言系法术时花 1 点：自己或那名友军 10 秒内命中、闪避提高（按灵能档 +15 / 20 / 25 / 30%）。</li><li>施放咒法 / 塑能系法术打中敌人时，花最多 智力调整值 点：目标另受（灵能值合计 + 智力调整值）× 灵能强度 心灵伤害，不管豁免成败。</li><li>被动（有灵能点时）：社交影响、谈判能力 +10 / 15 / 20 / 25%，交易价格好一点。</li><li>得到能力「扩展感知」：花 1 点，2 小时内视觉 +15%、射击精度提高、看得见隐形的单位。</li><li>施放惑控 / 幻术系法术前花 1 点：目标的心智抗性暂时 −8 / 10 / 13 / 15%。</li><li>被动（有灵能点时）：射击精度、近战命中 +5 / 7 / 9 / 11%。</li><li>研究时自动花 1 点：4 小时内研究速度 +30 / 40 / 50 / 60%（每天最多 2 次）。</li><li>被打中时自动花 1 点（每 10 秒一次）：伤害 −（2 × 灵能值 + 智力调整值），攻击者没抵抗住就受等量心灵伤害。</li><li>得到能力「灵能守护」：花 1 点，30 秒内免疫恐惧、心智抗性 +25%。</li><li>得到能力「锐化心智」：花 1 点，60 秒内你造成的心灵伤害 ×1.3。</li><li>念动推拉距离 12 → 20 格、能推体型 2 的目标；不花点时推 2 格。</li></tips></li><li><key>psd5</key><label>第五修行</label><level>13</level><options><li>生物反馈</li><li>预知增幅</li><li>毁灭思绪</li><li>魔鬼之舌</li><li>扩展感知</li><li>心智暗示</li><li>无误瞄准</li><li>观察入微</li><li>灵能反噬</li><li>灵能守护</li><li>锐化心智</li><li>念动精修</li></options><tips><li>施放死灵 / 变化系法术（1 环以上）时，花最多 智力调整值 点灵能点：得到（灵能值合计 + 智力调整值）× 灵能强度 的临时生命。</li><li>施放防护 / 预言系法术时花 1 点：自己或那名友军 10 秒内命中、闪避提高（按灵能档 +15 / 20 / 25 / 30%）。</li><li>施放咒法 / 塑能系法术打中敌人时，花最多 智力调整值 点：目标另受（灵能值合计 + 智力调整值）× 灵能强度 心灵伤害，不管豁免成败。</li><li>被动（有灵能点时）：社交影响、谈判能力 +10 / 15 / 20 / 25%，交易价格好一点。</li><li>得到能力「扩展感知」：花 1 点，2 小时内视觉 +15%、射击精度提高、看得见隐形的单位。</li><li>施放惑控 / 幻术系法术前花 1 点：目标的心智抗性暂时 −8 / 10 / 13 / 15%。</li><li>被动（有灵能点时）：射击精度、近战命中 +5 / 7 / 9 / 11%。</li><li>研究时自动花 1 点：4 小时内研究速度 +30 / 40 / 50 / 60%（每天最多 2 次）。</li><li>被打中时自动花 1 点（每 10 秒一次）：伤害 −（2 × 灵能值 + 智力调整值），攻击者没抵抗住就受等量心灵伤害。</li><li>得到能力「灵能守护」：花 1 点，30 秒内免疫恐惧、心智抗性 +25%。</li><li>得到能力「锐化心智」：花 1 点，60 秒内你造成的心灵伤害 ×1.3。</li><li>念动推拉距离 12 → 20 格、能推体型 2 的目标；不花点时推 2 格。</li></tips></li><li><key>psd6</key><label>第六修行</label><level>17</level><options><li>生物反馈</li><li>预知增幅</li><li>毁灭思绪</li><li>魔鬼之舌</li><li>扩展感知</li><li>心智暗示</li><li>无误瞄准</li><li>观察入微</li><li>灵能反噬</li><li>灵能守护</li><li>锐化心智</li><li>念动精修</li></options><tips><li>施放死灵 / 变化系法术（1 环以上）时，花最多 智力调整值 点灵能点：得到（灵能值合计 + 智力调整值）× 灵能强度 的临时生命。</li><li>施放防护 / 预言系法术时花 1 点：自己或那名友军 10 秒内命中、闪避提高（按灵能档 +15 / 20 / 25 / 30%）。</li><li>施放咒法 / 塑能系法术打中敌人时，花最多 智力调整值 点：目标另受（灵能值合计 + 智力调整值）× 灵能强度 心灵伤害，不管豁免成败。</li><li>被动（有灵能点时）：社交影响、谈判能力 +10 / 15 / 20 / 25%，交易价格好一点。</li><li>得到能力「扩展感知」：花 1 点，2 小时内视觉 +15%、射击精度提高、看得见隐形的单位。</li><li>施放惑控 / 幻术系法术前花 1 点：目标的心智抗性暂时 −8 / 10 / 13 / 15%。</li><li>被动（有灵能点时）：射击精度、近战命中 +5 / 7 / 9 / 11%。</li><li>研究时自动花 1 点：4 小时内研究速度 +30 / 40 / 50 / 60%（每天最多 2 次）。</li><li>被打中时自动花 1 点（每 10 秒一次）：伤害 −（2 × 灵能值 + 智力调整值），攻击者没抵抗住就受等量心灵伤害。</li><li>得到能力「灵能守护」：花 1 点，30 秒内免疫恐惧、心智抗性 +25%。</li><li>得到能力「锐化心智」：花 1 点，60 秒内你造成的心灵伤害 ×1.3。</li><li>念动推拉距离 12 → 20 格、能推体型 2 的目标；不花点时推 2 格。</li></tips></li></choices>
+  </LichPhylactery.LP_SubclassDef>
+
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_PsiWarper</defName>
+    <label>灵跃者</label>
+    <description>把空间折起来走：瞬移、换位、救人、放信标，最后把一群人一起传走。常备法术：迷踪步、跳跃术、镜影术（3 级），闪现术、急速术（5 级），次元门、放逐术（7 级），传送法阵、探知术（9 级）。</description>
+    <parent>LP_Class_Psion</parent><order>4</order><emblem>LP/Classes/Subclass/Emblem_ShadowMagic</emblem><color>(0.55,0.85,0.8)</color>
+    <abilities><li><ability>LP_PS_Teleport</ability><level>3</level></li><li><ability>LP_PS_WarpPropel</ability><level>3</level></li><li><ability>LP_PS_Displace</ability><level>6</level></li><li><ability>LP_PS_RescueWarp</ability><level>6</level></li><li><ability>LP_PS_WarpBeacon</ability><level>10</level></li><li><ability>LP_PS_MassWarp</ability><level>14</level></li></abilities>
+    <choices><li><key>psd1</key><label>灵能修行</label><level>3</level><options><li>生物反馈</li><li>预知增幅</li><li>毁灭思绪</li><li>魔鬼之舌</li><li>扩展感知</li><li>心智暗示</li><li>无误瞄准</li><li>观察入微</li><li>灵能反噬</li><li>灵能守护</li><li>锐化心智</li><li>念动精修</li></options><tips><li>施放死灵 / 变化系法术（1 环以上）时，花最多 智力调整值 点灵能点：得到（灵能值合计 + 智力调整值）× 灵能强度 的临时生命。</li><li>施放防护 / 预言系法术时花 1 点：自己或那名友军 10 秒内命中、闪避提高（按灵能档 +15 / 20 / 25 / 30%）。</li><li>施放咒法 / 塑能系法术打中敌人时，花最多 智力调整值 点：目标另受（灵能值合计 + 智力调整值）× 灵能强度 心灵伤害，不管豁免成败。</li><li>被动（有灵能点时）：社交影响、谈判能力 +10 / 15 / 20 / 25%，交易价格好一点。</li><li>得到能力「扩展感知」：花 1 点，2 小时内视觉 +15%、射击精度提高、看得见隐形的单位。</li><li>施放惑控 / 幻术系法术前花 1 点：目标的心智抗性暂时 −8 / 10 / 13 / 15%。</li><li>被动（有灵能点时）：射击精度、近战命中 +5 / 7 / 9 / 11%。</li><li>研究时自动花 1 点：4 小时内研究速度 +30 / 40 / 50 / 60%（每天最多 2 次）。</li><li>被打中时自动花 1 点（每 10 秒一次）：伤害 −（2 × 灵能值 + 智力调整值），攻击者没抵抗住就受等量心灵伤害。</li><li>得到能力「灵能守护」：花 1 点，30 秒内免疫恐惧、心智抗性 +25%。</li><li>得到能力「锐化心智」：花 1 点，60 秒内你造成的心灵伤害 ×1.3。</li><li>念动推拉距离 12 → 20 格、能推体型 2 的目标；不花点时推 2 格。</li></tips></li><li><key>psd2</key><label>第二修行</label><level>3</level><distinctFrom>psd1</distinctFrom><options><li>生物反馈</li><li>预知增幅</li><li>毁灭思绪</li><li>魔鬼之舌</li><li>扩展感知</li><li>心智暗示</li><li>无误瞄准</li><li>观察入微</li><li>灵能反噬</li><li>灵能守护</li><li>锐化心智</li><li>念动精修</li></options><tips><li>施放死灵 / 变化系法术（1 环以上）时，花最多 智力调整值 点灵能点：得到（灵能值合计 + 智力调整值）× 灵能强度 的临时生命。</li><li>施放防护 / 预言系法术时花 1 点：自己或那名友军 10 秒内命中、闪避提高（按灵能档 +15 / 20 / 25 / 30%）。</li><li>施放咒法 / 塑能系法术打中敌人时，花最多 智力调整值 点：目标另受（灵能值合计 + 智力调整值）× 灵能强度 心灵伤害，不管豁免成败。</li><li>被动（有灵能点时）：社交影响、谈判能力 +10 / 15 / 20 / 25%，交易价格好一点。</li><li>得到能力「扩展感知」：花 1 点，2 小时内视觉 +15%、射击精度提高、看得见隐形的单位。</li><li>施放惑控 / 幻术系法术前花 1 点：目标的心智抗性暂时 −8 / 10 / 13 / 15%。</li><li>被动（有灵能点时）：射击精度、近战命中 +5 / 7 / 9 / 11%。</li><li>研究时自动花 1 点：4 小时内研究速度 +30 / 40 / 50 / 60%（每天最多 2 次）。</li><li>被打中时自动花 1 点（每 10 秒一次）：伤害 −（2 × 灵能值 + 智力调整值），攻击者没抵抗住就受等量心灵伤害。</li><li>得到能力「灵能守护」：花 1 点，30 秒内免疫恐惧、心智抗性 +25%。</li><li>得到能力「锐化心智」：花 1 点，60 秒内你造成的心灵伤害 ×1.3。</li><li>念动推拉距离 12 → 20 格、能推体型 2 的目标；不花点时推 2 格。</li></tips></li><li><key>psd3</key><label>第三修行</label><level>5</level><options><li>生物反馈</li><li>预知增幅</li><li>毁灭思绪</li><li>魔鬼之舌</li><li>扩展感知</li><li>心智暗示</li><li>无误瞄准</li><li>观察入微</li><li>灵能反噬</li><li>灵能守护</li><li>锐化心智</li><li>念动精修</li></options><tips><li>施放死灵 / 变化系法术（1 环以上）时，花最多 智力调整值 点灵能点：得到（灵能值合计 + 智力调整值）× 灵能强度 的临时生命。</li><li>施放防护 / 预言系法术时花 1 点：自己或那名友军 10 秒内命中、闪避提高（按灵能档 +15 / 20 / 25 / 30%）。</li><li>施放咒法 / 塑能系法术打中敌人时，花最多 智力调整值 点：目标另受（灵能值合计 + 智力调整值）× 灵能强度 心灵伤害，不管豁免成败。</li><li>被动（有灵能点时）：社交影响、谈判能力 +10 / 15 / 20 / 25%，交易价格好一点。</li><li>得到能力「扩展感知」：花 1 点，2 小时内视觉 +15%、射击精度提高、看得见隐形的单位。</li><li>施放惑控 / 幻术系法术前花 1 点：目标的心智抗性暂时 −8 / 10 / 13 / 15%。</li><li>被动（有灵能点时）：射击精度、近战命中 +5 / 7 / 9 / 11%。</li><li>研究时自动花 1 点：4 小时内研究速度 +30 / 40 / 50 / 60%（每天最多 2 次）。</li><li>被打中时自动花 1 点（每 10 秒一次）：伤害 −（2 × 灵能值 + 智力调整值），攻击者没抵抗住就受等量心灵伤害。</li><li>得到能力「灵能守护」：花 1 点，30 秒内免疫恐惧、心智抗性 +25%。</li><li>得到能力「锐化心智」：花 1 点，60 秒内你造成的心灵伤害 ×1.3。</li><li>念动推拉距离 12 → 20 格、能推体型 2 的目标；不花点时推 2 格。</li></tips></li><li><key>psd4</key><label>第四修行</label><level>10</level><options><li>生物反馈</li><li>预知增幅</li><li>毁灭思绪</li><li>魔鬼之舌</li><li>扩展感知</li><li>心智暗示</li><li>无误瞄准</li><li>观察入微</li><li>灵能反噬</li><li>灵能守护</li><li>锐化心智</li><li>念动精修</li></options><tips><li>施放死灵 / 变化系法术（1 环以上）时，花最多 智力调整值 点灵能点：得到（灵能值合计 + 智力调整值）× 灵能强度 的临时生命。</li><li>施放防护 / 预言系法术时花 1 点：自己或那名友军 10 秒内命中、闪避提高（按灵能档 +15 / 20 / 25 / 30%）。</li><li>施放咒法 / 塑能系法术打中敌人时，花最多 智力调整值 点：目标另受（灵能值合计 + 智力调整值）× 灵能强度 心灵伤害，不管豁免成败。</li><li>被动（有灵能点时）：社交影响、谈判能力 +10 / 15 / 20 / 25%，交易价格好一点。</li><li>得到能力「扩展感知」：花 1 点，2 小时内视觉 +15%、射击精度提高、看得见隐形的单位。</li><li>施放惑控 / 幻术系法术前花 1 点：目标的心智抗性暂时 −8 / 10 / 13 / 15%。</li><li>被动（有灵能点时）：射击精度、近战命中 +5 / 7 / 9 / 11%。</li><li>研究时自动花 1 点：4 小时内研究速度 +30 / 40 / 50 / 60%（每天最多 2 次）。</li><li>被打中时自动花 1 点（每 10 秒一次）：伤害 −（2 × 灵能值 + 智力调整值），攻击者没抵抗住就受等量心灵伤害。</li><li>得到能力「灵能守护」：花 1 点，30 秒内免疫恐惧、心智抗性 +25%。</li><li>得到能力「锐化心智」：花 1 点，60 秒内你造成的心灵伤害 ×1.3。</li><li>念动推拉距离 12 → 20 格、能推体型 2 的目标；不花点时推 2 格。</li></tips></li><li><key>psd5</key><label>第五修行</label><level>13</level><options><li>生物反馈</li><li>预知增幅</li><li>毁灭思绪</li><li>魔鬼之舌</li><li>扩展感知</li><li>心智暗示</li><li>无误瞄准</li><li>观察入微</li><li>灵能反噬</li><li>灵能守护</li><li>锐化心智</li><li>念动精修</li></options><tips><li>施放死灵 / 变化系法术（1 环以上）时，花最多 智力调整值 点灵能点：得到（灵能值合计 + 智力调整值）× 灵能强度 的临时生命。</li><li>施放防护 / 预言系法术时花 1 点：自己或那名友军 10 秒内命中、闪避提高（按灵能档 +15 / 20 / 25 / 30%）。</li><li>施放咒法 / 塑能系法术打中敌人时，花最多 智力调整值 点：目标另受（灵能值合计 + 智力调整值）× 灵能强度 心灵伤害，不管豁免成败。</li><li>被动（有灵能点时）：社交影响、谈判能力 +10 / 15 / 20 / 25%，交易价格好一点。</li><li>得到能力「扩展感知」：花 1 点，2 小时内视觉 +15%、射击精度提高、看得见隐形的单位。</li><li>施放惑控 / 幻术系法术前花 1 点：目标的心智抗性暂时 −8 / 10 / 13 / 15%。</li><li>被动（有灵能点时）：射击精度、近战命中 +5 / 7 / 9 / 11%。</li><li>研究时自动花 1 点：4 小时内研究速度 +30 / 40 / 50 / 60%（每天最多 2 次）。</li><li>被打中时自动花 1 点（每 10 秒一次）：伤害 −（2 × 灵能值 + 智力调整值），攻击者没抵抗住就受等量心灵伤害。</li><li>得到能力「灵能守护」：花 1 点，30 秒内免疫恐惧、心智抗性 +25%。</li><li>得到能力「锐化心智」：花 1 点，60 秒内你造成的心灵伤害 ×1.3。</li><li>念动推拉距离 12 → 20 格、能推体型 2 的目标；不花点时推 2 格。</li></tips></li><li><key>psd6</key><label>第六修行</label><level>17</level><options><li>生物反馈</li><li>预知增幅</li><li>毁灭思绪</li><li>魔鬼之舌</li><li>扩展感知</li><li>心智暗示</li><li>无误瞄准</li><li>观察入微</li><li>灵能反噬</li><li>灵能守护</li><li>锐化心智</li><li>念动精修</li></options><tips><li>施放死灵 / 变化系法术（1 环以上）时，花最多 智力调整值 点灵能点：得到（灵能值合计 + 智力调整值）× 灵能强度 的临时生命。</li><li>施放防护 / 预言系法术时花 1 点：自己或那名友军 10 秒内命中、闪避提高（按灵能档 +15 / 20 / 25 / 30%）。</li><li>施放咒法 / 塑能系法术打中敌人时，花最多 智力调整值 点：目标另受（灵能值合计 + 智力调整值）× 灵能强度 心灵伤害，不管豁免成败。</li><li>被动（有灵能点时）：社交影响、谈判能力 +10 / 15 / 20 / 25%，交易价格好一点。</li><li>得到能力「扩展感知」：花 1 点，2 小时内视觉 +15%、射击精度提高、看得见隐形的单位。</li><li>施放惑控 / 幻术系法术前花 1 点：目标的心智抗性暂时 −8 / 10 / 13 / 15%。</li><li>被动（有灵能点时）：射击精度、近战命中 +5 / 7 / 9 / 11%。</li><li>研究时自动花 1 点：4 小时内研究速度 +30 / 40 / 50 / 60%（每天最多 2 次）。</li><li>被打中时自动花 1 点（每 10 秒一次）：伤害 −（2 × 灵能值 + 智力调整值），攻击者没抵抗住就受等量心灵伤害。</li><li>得到能力「灵能守护」：花 1 点，30 秒内免疫恐惧、心智抗性 +25%。</li><li>得到能力「锐化心智」：花 1 点，60 秒内你造成的心灵伤害 ×1.3。</li><li>念动推拉距离 12 → 20 格、能推体型 2 的目标；不花点时推 2 格。</li></tips></li></choices>
+  </LichPhylactery.LP_SubclassDef>
+
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_PsionTempered</defName>
+    <label>心灵淬炼</label>
+    <description>日复一日地打磨心智。灵能强度 +15%；灵能点上限 +2；冥想时精神力获得更快。心灵术士专属。附带智力 +1。</description>
+    <iconPath>LP/Feats/Class/WizardScholar</iconPath>
+    <order>86</order>
+    <requiredClass>LP_Class_Psion</requiredClass><classLevel>3</classLevel>
+    <powerStats><li>LP_PsionicPower</li></powerStats><powerBonus>0.15</powerBonus>
+    <statFactors><MeditationFocusGain>1.2</MeditationFocusGain></statFactors>
+    <bonusAbilities><li>Int</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_PsionSilent</defName>
+    <label>无声之心</label>
+    <description>心里的声音小到连自己都听不见。灵能强度 +10%；心智抗性 +30%，心灵敏感度 +10%，神经热消散 +25%；心灵术士能力冷却 ×0.85。心灵术士专属。附带智力或感知 +1。</description>
+    <iconPath>LP/Feats/Class/SorcererResonance</iconPath>
+    <order>87</order>
+    <requiredClass>LP_Class_Psion</requiredClass><classLevel>7</classLevel>
+    <powerStats><li>LP_PsionicPower</li></powerStats><powerBonus>0.1</powerBonus>
+    <cooldownFactor>0.85</cooldownFactor>
+    <statOffsets><LP_MindResist>0.3</LP_MindResist><PsychicSensitivity>0.1</PsychicSensitivity></statOffsets>
+    <statFactors><PsychicEntropyRecoveryRate>1.25</PsychicEntropyRecoveryRate></statFactors>
+    <bonusAbilities><li>Int</li><li>Wis</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+
+  <!-- ===== 秘传 ===== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AC_ThousandMinds</defName>
+    <label>千心之眼</label>
+    <description>秘传（6 环心灵术士）：1 小时内整张地图上的敌人现形（解除心灵隐形），本地图所有殖民者射击、近战命中 +10%。冷却 2 天。</description>
+    <iconPath>LP/Arcana/Foresight</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSArcEyes</effect><cost>0</cost><duration>2500</duration><stat>LP_PsionicPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>6</ring><cls>LP_Class_Psion</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_AC_MindSeal</defName>
+    <label>思维幽闭</label>
+    <description>秘传（7 环心灵术士）：30 格内一个敌人对抗心智抗性（剧情首领与传奇免疫）：没抵抗住就意识归零 1 天——活着、动不了，可以直接抓进牢房。冷却 3 天。</description>
+    <iconPath>LP/Arcana/DreamlessSleep</iconPath>
+    <cooldownTicksRange>180000</cooldownTicksRange>
+    <verbProperties><range>30</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSArcSeal</effect><cost>0</cost><stat>LP_PsionicPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>7</ring><cls>LP_Class_Psion</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AC_PsychicStorm</defName>
+    <label>心灵风暴</label>
+    <description>秘传（8 环心灵术士）：以你为中心半径 12 掀起心灵风暴，10 秒内敌人每秒受 15 × 灵能强度 心灵伤害。冷却 5 天。</description>
+    <iconPath>LP/Arcana/MassFear</iconPath>
+    <hostile>true</hostile>
+    <cooldownTicksRange>300000</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSArcStorm</effect><cost>0</cost><power>15</power><radius>12</radius><stat>LP_PsionicPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>8</ring><cls>LP_Class_Psion</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_AC_MindDominion</defName>
+    <label>心灵主宰</label>
+    <description>秘传（9 环心灵术士）：重塑 3 格内一个倒地的敌对人形的心智（剧情首领与传奇不行，对抗心智抗性）：没抵抗住就加入你的阵营。冷却 7 天。</description>
+    <iconPath>LP/Classes/Subclass2/MindDominion</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>420000</cooldownTicksRange>
+    <verbProperties><range>3</range><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>PSArcDominion</effect><cost>0</cost><stat>LP_PsionicPower</stat><psychic>true</psychic></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>9</ring><cls>LP_Class_Psion</cls></li></modExtensions>
+  </AbilityDef>
+
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_PS_ArcEyesBuff</defName>
+    <label>千心之眼</label>
+    <description>心灵术士的千心之眼照着整片战场：射击、近战命中 +10%。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <stages><li><statOffsets><ShootingAccuracyPawn>0.1</ShootingAccuracyPawn><MeleeHitChance>0.1</MeleeHitChance></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_PS_MindSealed</defName>
+    <label>思维幽闭</label>
+    <description>心智被关进了没有门的房间：意识归零。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+    <stages><li><capMods><li><capacity>Consciousness</capacity><setMax>0.1</setMax></li></capMods></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_PS_StormAura</defName>
+    <hediffClass>LichPhylactery.Hediff_PsionStorm</hediffClass>
+    <label>心灵风暴</label>
+    <description>身边掀起心灵风暴：每秒伤害周围的敌人。</description>
+    <defaultLabelColor>(0.55,0.75,0.95)</defaultLabelColor>
+  </HediffDef>
+
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_ThousandMinds</defName>
+    <label>职业水晶：千心之眼</label>
+    <description>魔力湖泊的职业水晶。心灵术士吸收后永久学会秘传「千心之眼」（6 环，需要心灵术士 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（6 环心灵术士）：1 小时内整张地图上的敌人现形，本地图所有殖民者命中 +10%。冷却 2 天。</description>
+    <graphicData><color>(0.55,0.75,0.95)</color></graphicData>
+    <statBases><MarketValue>8000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_ThousandMinds</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_MindSeal</defName>
+    <label>职业水晶：思维幽闭</label>
+    <description>魔力湖泊的职业水晶。心灵术士吸收后永久学会秘传「思维幽闭」（7 环，需要心灵术士 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（7 环心灵术士）：一个敌人没抵抗住就意识归零 1 天。冷却 3 天。</description>
+    <graphicData><color>(0.55,0.75,0.95)</color></graphicData>
+    <statBases><MarketValue>12000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_MindSeal</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_PsychicStorm</defName>
+    <label>职业水晶：心灵风暴</label>
+    <description>魔力湖泊的职业水晶。心灵术士吸收后永久学会秘传「心灵风暴」（8 环，需要心灵术士 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（8 环心灵术士）：半径 12 的心灵风暴，10 秒内敌人每秒受心灵伤害。冷却 5 天。</description>
+    <graphicData><color>(0.55,0.75,0.95)</color></graphicData>
+    <statBases><MarketValue>16000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_PsychicStorm</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_MindDominion</defName>
+    <label>职业水晶：心灵主宰</label>
+    <description>魔力湖泊的职业水晶。心灵术士吸收后永久学会秘传「心灵主宰」（9 环，需要心灵术士 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（9 环心灵术士）：让一个倒地的敌对人形加入你的阵营。冷却 7 天。</description>
+    <graphicData><color>(0.55,0.75,0.95)</color></graphicData>
+    <statBases><MarketValue>25000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_MindDominion</ability></li></comps>
+  </ThingDef>
+</Defs>

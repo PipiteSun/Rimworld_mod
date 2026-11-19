@@ -49,11 +49,11 @@ namespace LichPhylactery {
   public static void Reset(){Cache.Clear();infos.Clear();Shots.Clear();ShotFlags.Clear();Hediff_MartialFlag.generation++;ClassMartial2.Reset();}
   public static void Refresh(Pawn p){
    if(p==null)return;int id=p.thingIDNumber;
-   var h=p.Dead?null:Adventurer.Get(p);int f=0,pa=0,mo=0,ba=0,ra=0,ro=0;
-   if(h?.classes!=null){f=ClassSystem.Level(h,ClassSystem.Fighter);pa=ClassSystem.Level(h,ClassSystem.Paladin);mo=ClassSystem.Level(h,ClassSystem.Monk);ba=ClassSystem.Level(h,ClassMartial2.Barbarian);ra=ClassSystem.Level(h,ClassMartial2.Ranger);ro=ClassSystem.Level(h,ClassMartial2.Rogue);}
-   if(f+pa+mo+ba+ra+ro<=0){if(Cache.Remove(id)){var old=infos.TryGetValue(id,out var oi)?oi.flags:0;infos.Remove(id);if(!p.Dead)Items.Remove(p,"LP_ExtraAttack");ClassMartial2.Refreshed(p,null,old);}return;}
+   var h=p.Dead?null:Adventurer.Get(p);int f=0,pa=0,mo=0,ba=0,ra=0,ro=0,gs=0;
+   if(h?.classes!=null){f=ClassSystem.Level(h,ClassSystem.Fighter);pa=ClassSystem.Level(h,ClassSystem.Paladin);mo=ClassSystem.Level(h,ClassSystem.Monk);ba=ClassSystem.Level(h,ClassMartial2.Barbarian);ra=ClassSystem.Level(h,ClassMartial2.Ranger);ro=ClassSystem.Level(h,ClassMartial2.Rogue);gs=Gunslinger.Level(h);} // 2026-11-19 枪手
+   if(f+pa+mo+ba+ra+ro+gs<=0){if(Cache.Remove(id)){var old=infos.TryGetValue(id,out var oi)?oi.flags:0;infos.Remove(id);if(!p.Dead)Items.Remove(p,"LP_ExtraAttack");ClassMartial2.Refreshed(p,null,old);}return;}
    if(!infos.TryGetValue(id,out var i))infos[id]=i=new MartialInfo();
-   i.fighter=f>0;i.paladin=pa>0;i.monk=mo>0;i.fighterLevel=f;i.best=Mathf.Max(Mathf.Max(f,ba),Mathf.Max(Mathf.Max(pa,mo),ra));i.total=f+pa+mo+ba+ra+ro;i.bonus=ClassSystem.MartialBonusFor(i.total); // 游荡者不算额外攻击档位（best），只算强度合计
+   i.fighter=f>0;i.paladin=pa>0;i.monk=mo>0;i.fighterLevel=f;i.best=Mathf.Max(Mathf.Max(Mathf.Max(f,ba),gs),Mathf.Max(Mathf.Max(pa,mo),ra));i.total=f+pa+mo+ba+ra+ro+gs;i.bonus=ClassSystem.MartialBonusFor(i.total); // 游荡者不算额外攻击档位（best），只算强度合计
    i.damage=ClassSystem.MartialDamage(h);i.pen=ClassSystem.MartialPen(h);
    i.barbarian=ba;i.ranger=ra;i.rogue=ro;int oldFlags=i.flags;i.flags=ClassMartial2.Flags(p);ClassMartial2.Refreshed(p,i,oldFlags);
    int tier=TierFor(i);

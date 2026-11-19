@@ -1,4 +1,5 @@
-# 把 Peter 画的 3:1 三视图（品红底，左 south / 中 east / 右 north）装成书架竖放贴图。
+# 把 Peter 画的 3:1 三视图（品红底，左书脊 / 中封面 / 右俯视）装成书架竖放贴图。
+# 注意：输出时书脊 → _north，俯视 → _south（原版朝南书架用 _north 画书脊，见下方 outs）。
 # 用法：python -I install_sheets.py <LichPhylactery 根目录> <sheet 目录> [只处理的名字...]
 # 每张 sheet 叫 <名字>-sheet.png；输出 64×64 透明底 <前缀>_Vertical_{south,east,north}.png。
 # north：书类把俯视图转 90° 变成竖条（原版 north 也是竖条）；卷轴的俯视是圆头，放进书架格子不像样，改用 south 镜像。
@@ -92,7 +93,9 @@ for name, prefix in ITEMS.items():
         north = south.transpose(Image.FLIP_LEFT_RIGHT)
     else:
         north = north.rotate(90, expand=True)
-    outs = {"south": fit(south, SPINE), "east": fit(east, COVER), "north": fit(north, SPINE)}
+    # 2026-11-19 修正：原版书架朝南（横放）时用 _north 画书，原版 north = 书脊、south = 书页切口。
+    # sheet 里的变量名沿用"左 south"的叫法，但左边画的是书脊，所以书脊存成 north，俯视/镜像那张存成 south。
+    outs = {"north": fit(south, SPINE), "east": fit(east, COVER), "south": fit(north, SPINE)}
     for d, im in outs.items():
         p = os.path.join(TEX, prefix + "_Vertical_%s.png" % d)
         os.makedirs(os.path.dirname(p), exist_ok=True)

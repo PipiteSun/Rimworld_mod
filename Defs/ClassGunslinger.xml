@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 2026-11-19 枪手：由 ArtSource/NewClasses/gen_newclasses.py 生成，不要手改。效果在 Source/ClassGunslinger.cs。 -->
+<Defs>
+  <LichPhylactery.LP_ClassDef>
+    <defName>LP_Class_Gunslinger</defName>
+    <label>枪手</label>
+    <description>DND 枪手靠胆识和一把好枪活下来：相依之枪、枪手闪避、暴力射击（会卡壳）、部位瞄准、致命一击、威慑射击，终极 死亡射击。只吃火器（工业以上的远程武器和本模组的魔法枪、矮人枪械；弓、弩、法杖、手雷不算）。3 级选枪道：流浪者（短枪 + 刀）、双枪客（短枪）、狙击手（长枪）或先锋（重火器）。还会造枪：做火器更快，有机会高一档品质。强度看“枪术强度”（射击，敏捷）。资源：胆识（用火器击杀、打倒敌人就回，睡觉也回）。物理职业：额外攻击、战斗风格。</description>
+    <mainSkill>Shooting</mainSkill>
+    <alternateSkill>Crafting</alternateSkill>
+    <primary>Dex/Wis</primary>
+    <order>14</order>
+    <subclassLevel>3</subclassLevel>
+    <resource>Grit</resource>
+    <martial>true</martial>
+    <background>LP/Classes/Background_Fighter</background>
+    <color>(0.85,0.7,0.45)</color>
+    <abilities>
+      <li><ability>LP_GS_BondGun</ability><level>1</level></li>
+      <li><ability>LP_GS_Dodge</ability><level>1</level></li>
+      <li><ability>LP_GS_ViolentShot</ability><level>1</level></li>
+      <li><ability>LP_GS_QuickClear</ability><level>1</level></li>
+      <li><ability>LP_GS_Deadeye</ability><level>1</level></li>
+      <li><ability>LP_GS_QuickDraw</ability><level>3</level></li>
+      <li><ability>LP_GS_PistolWhip</ability><level>3</level></li>
+      <li><ability>LP_GS_UtilityShot</ability><level>3</level></li>
+      <li><ability>LP_GS_GunTraining</ability><level>5</level></li>
+      <li><ability>LP_GS_Gunsmith</ability><level>5</level></li>
+      <li><ability>LP_GS_DeadShot</ability><level>7</level></li>
+      <li><ability>LP_GS_Targeting</ability><level>7</level></li>
+      <li><ability>LP_GS_AimMode</ability><level>7</level></li>
+      <li><ability>LP_GS_StartlingShot</ability><level>7</level></li>
+      <li><ability>LP_GS_BleedingWound</ability><level>10</level></li>
+      <li><ability>LP_GS_LightningReload</ability><level>10</level></li>
+      <li><ability>LP_GS_Evasive</ability><level>13</level></li>
+      <li><ability>LP_GS_MenacingShot</ability><level>13</level></li>
+      <li><ability>LP_GS_StunningShot</ability><level>13</level></li>
+      <li><ability>LP_GS_SlingerLuck</ability><level>13</level></li>
+      <li><ability>LP_GS_DeathShot</ability><level>15</level><capstoneSkill>Shooting</capstoneSkill></li>
+      <li><ability>LP_GS_CheatDeath</ability><level>17</level></li>
+    </abilities>
+    <legendary><li>LP_LegBulletStorm</li><li>LP_LegTrueGrit</li></legendary>
+  </LichPhylactery.LP_ClassDef>
+
+  <StatDef ParentName="LP_ClassPowerBase">
+    <defName>LP_GunPower</defName>
+    <label>枪术强度</label>
+    <description>枪手能力的强度倍率：0.5 + 射击等级/20，另加冒险者敏捷调整值 × 0.05 与 (熟练加值 − 2) × 0.02；物理职业等级合计每比 1 高 1 级 +2%（最多 +40%）。</description>
+    <parts><li Class="LichPhylactery.StatPart_ClassPower"><skill>Shooting</skill><ability>Dex</ability></li></parts>
+    <displayPriorityInCategory>4220</displayPriorityInCategory>
+  </StatDef>
+
+  <!-- ===== 状态 ===== -->
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_GS_Bonded</defName>
+    <label>相依之枪</label>
+    <description>手里是自己的那把枪：越用越顺手（随枪手等级成长）。</description>
+    <defaultLabelColor>(0.85,0.7,0.45)</defaultLabelColor>
+    <stages><li><minSeverity>0</minSeverity><label>一</label><statOffsets><ShootingAccuracyPawn>0.05</ShootingAccuracyPawn></statOffsets></li><li><minSeverity>1.5</minSeverity><label>二</label><statFactors><RangedCooldownFactor>0.9</RangedCooldownFactor></statFactors><statOffsets><ShootingAccuracyPawn>0.05</ShootingAccuracyPawn></statOffsets></li><li><minSeverity>2.5</minSeverity><label>三</label><statFactors><RangedCooldownFactor>0.9</RangedCooldownFactor><AimingDelayFactor>0.9</AimingDelayFactor></statFactors><statOffsets><ShootingAccuracyPawn>0.07</ShootingAccuracyPawn></statOffsets></li><li><minSeverity>3.5</minSeverity><label>四</label><statFactors><RangedCooldownFactor>0.85</RangedCooldownFactor><AimingDelayFactor>0.85</AimingDelayFactor></statFactors><statOffsets><ShootingAccuracyPawn>0.08</ShootingAccuracyPawn></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_GS_GritEdge</defName>
+    <label>胆识在身</label>
+    <description>只要还有胆识：远距离也打得准（远距锁定），拔枪更快（拔枪先手）。</description>
+    <defaultLabelColor>(0.85,0.7,0.45)</defaultLabelColor>
+    <stages><li><minSeverity>0</minSeverity><label>远距锁定</label><statOffsets><ShootingAccuracyPawn>0.05</ShootingAccuracyPawn></statOffsets></li><li><minSeverity>1.5</minSeverity><label>远距锁定 · 拔枪先手</label><statFactors><AimingDelayFactor>0.75</AimingDelayFactor></statFactors><statOffsets><ShootingAccuracyPawn>0.05</ShootingAccuracyPawn></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_GS_Gunsmith</defName>
+    <label>枪匠</label>
+    <description>枪手熟悉每一颗螺丝：做东西更快。</description>
+    <defaultLabelColor>(0.85,0.7,0.45)</defaultLabelColor>
+    <stages><li><statOffsets><GeneralLaborSpeed>0.3</GeneralLaborSpeed></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_GS_Jammed</defName>
+    <label>卡壳</label>
+    <description>枪卡壳了：3 秒内瞄准极慢。用快速排障立刻解除。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.9,0.4,0.35)</defaultLabelColor>
+    <stages><li><statFactors><AimingDelayFactor>6</AimingDelayFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_GS_Startled</defName>
+    <label>惊骇</label>
+    <description>一颗子弹擦着脸飞过去：近战闪避 −20，射击精度 −20%。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.85,0.7,0.45)</defaultLabelColor>
+    <stages><li><statOffsets><MeleeDodgeChance>-20</MeleeDodgeChance><ShootingAccuracyPawn>-0.2</ShootingAccuracyPawn></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_GS_BleedReady</defName>
+    <label>放血伤</label>
+    <description>接下来 5 秒内火器打中的活物多一道流血的伤口。</description>
+    <defaultLabelColor>(0.85,0.7,0.45)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_GS_ReloadBuff</defName>
+    <label>闪电装填</label>
+    <description>装填快得看不清：射击冷却 ×0.6。</description>
+    <defaultLabelColor>(0.85,0.7,0.45)</defaultLabelColor>
+    <stages><li><statFactors><RangedCooldownFactor>0.6</RangedCooldownFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_GS_CloseQuarters</defName>
+    <label>贴身枪法</label>
+    <description>流浪者：贴身也开得准，射击精度 ×1.1。</description>
+    <defaultLabelColor>(0.85,0.7,0.45)</defaultLabelColor>
+    <stages><li><statFactors><ShootingAccuracyPawn>1.1</ShootingAccuracyPawn></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_GS_DrifterBlade</defName>
+    <label>刀枪并用·刀</label>
+    <description>刚开枪打中：下一刀伤害 ×1.25。</description>
+    <defaultLabelColor>(0.85,0.7,0.45)</defaultLabelColor>
+    <stages><li><statFactors><MeleeDamageFactor>1.25</MeleeDamageFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_GS_DrifterShot</defName>
+    <label>刀枪并用·枪</label>
+    <description>刚砍中：下一枪瞄得快、打得准。</description>
+    <defaultLabelColor>(0.85,0.7,0.45)</defaultLabelColor>
+    <stages><li><statFactors><AimingDelayFactor>0.3</AimingDelayFactor></statFactors><statOffsets><ShootingAccuracyPawn>0.15</ShootingAccuracyPawn></statOffsets></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_GS_SkirmishBuff</defName>
+    <label>游击步</label>
+    <description>刚撂倒一个：移动 ×1.3。</description>
+    <defaultLabelColor>(0.85,0.7,0.45)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>1.3</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_GS_Dueled</defName>
+    <hediffClass>LichPhylactery.Hediff_ClassMark</hediffClass>
+    <label>正午决斗</label>
+    <description>被枪手点名决斗：受到它的火器伤害 ×1.5，自己射击精度 ×0.5。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.85,0.7,0.45)</defaultLabelColor>
+    <stages><li><statFactors><ShootingAccuracyPawn>0.5</ShootingAccuracyPawn></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_GS_Concealed</defName>
+    <label>隐蔽位置</label>
+    <description>狙击手藏好了：下一发火器伤害 ×2。挪动就没了。</description>
+    <defaultLabelColor>(0.85,0.7,0.45)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_GS_Spotted</defName>
+    <label>被观测</label>
+    <description>被狙击手标记：藏不住，受到的伤害 ×1.15。</description>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.85,0.7,0.45)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_GS_YardBuff</defName>
+    <label>千码凝视</label>
+    <description>盯着远处：对 30 格外目标的火器伤害 ×2，射击精度 ×1.25。</description>
+    <defaultLabelColor>(0.85,0.7,0.45)</defaultLabelColor>
+    <stages><li><statFactors><ShootingAccuracyPawn>1.25</ShootingAccuracyPawn></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_SubclassPassiveBase">
+    <defName>LP_GS_HeavyStance</defName>
+    <label>重装持枪</label>
+    <description>先锋端着重火器也走得动：移动 ×1.1，受到的近战伤害 ×0.85。</description>
+    <defaultLabelColor>(0.85,0.7,0.45)</defaultLabelColor>
+    <stages><li><statFactors><MoveSpeed>1.1</MoveSpeed></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_GS_Covered</defName>
+    <label>掩护火力</label>
+    <description>先锋在掩护你：受到的远程伤害 ×0.85。</description>
+    <defaultLabelColor>(0.85,0.7,0.45)</defaultLabelColor>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_GS_StormBuff</defName>
+    <label>钢铁风暴</label>
+    <description>先锋打开了全部火力：射击冷却 ×0.5，受到的伤害 ×0.8。</description>
+    <defaultLabelColor>(0.85,0.7,0.45)</defaultLabelColor>
+    <stages><li><statFactors><RangedCooldownFactor>0.5</RangedCooldownFactor></statFactors></li></stages>
+  </HediffDef>
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_LegBulletStormBuff</defName>
+    <label>子弹风暴</label>
+    <description>传奇枪手：每次射击都连开两枪，每次击杀胆识 +2。</description>
+    <defaultLabelColor>(0.95,0.8,0.5)</defaultLabelColor>
+  </HediffDef>
+
+  <!-- ===== 职业、枪道能力 ===== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GS_BondGun</defName>
+    <label>相依之枪</label>
+    <description>把手里的火器绑定为相依之枪：拿着它时射击精度 +5%（5 级起射击冷却 ×0.9，10 级起瞄准 ×0.9，15 级起火器伤害 +10%）。同时只能有一把，换绑要等 3 天。枪手 1 级。</description>
+    <iconPath>LP/Classes/Fighter/WeaponMastery</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSBond</effect><cost>0</cost><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GS_Dodge</defName>
+    <label>枪手闪避</label>
+    <description>被动：被远程攻击打中时（每 5 秒判定一次）有 30% 的成功率闪开，花 1 点胆识；穿着利器护甲 40% 以上的衣服时不行。枪手 1 级。</description>
+    <iconPath>LP/Classes/Rogue/UncannyDodge</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_GS_ViolentShot</defName>
+    <label>暴力射击</label>
+    <description>花掉 1～3 点胆识（有多少花多少，最多 3）打出一发猛药：必中，伤害 ×(1 + 0.5 × 点数 × 枪术强度)，穿甲 +10% × 点数；每 1 点有 8% 的成功率卡壳（枪械训练后减半）。冷却 10 秒。枪手 1 级。</description>
+    <iconPath>LP/Classes/Fighter/PrecisionShot</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>40</range><warmupTime>0.5</warmupTime><requireLineOfSight>true</requireLineOfSight></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSViolent</effect><cost>0</cost><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GS_QuickClear</defName>
+    <label>快速排障</label>
+    <description>立刻解除卡壳。要至少 1 点胆识（不扣）。枪手 1 级。</description>
+    <iconPath>LP/Classes/Artificer/QuickRepair</iconPath>
+    <cooldownTicksRange>60</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSClear</effect><cost>0</cost><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GS_Deadeye</defName>
+    <label>远距锁定</label>
+    <description>被动：有胆识时射击精度 +5%（远距离也打得准）。枪手 1 级。</description>
+    <iconPath>LP/Classes/Fighter/SteadyAim</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GS_QuickDraw</defName>
+    <label>拔枪先手</label>
+    <description>被动：有胆识时射击预热 ×0.75。枪手 3 级。</description>
+    <iconPath>LP/Classes/Rogue/CunningAction</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_GS_PistolWhip</defName>
+    <label>枪托猛击</label>
+    <description>用枪托砸身边的敌人：10 × 枪术强度 钝器伤害（不拿短枪时 14），40% 的成功率打倒 1 秒。消耗 1 点胆识，冷却 5 秒。枪手 3 级。</description>
+    <iconPath>LP/Classes/Fighter/Trip</iconPath>
+    <cooldownTicksRange>300</cooldownTicksRange>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSWhip</effect><cost>1</cost><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_GS_UtilityShot</defName>
+    <label>实用射击</label>
+    <description>一发派用场的子弹：打门、墙、建筑时伤害 ×5（破锁）；打地上的东西把它弹开 3 格（挤移，可以把冒烟的手雷弹走）；对流血的友军用烫枪管烙住流血最多的伤口（止血，留一点烧伤）。要至少 1 点胆识（不扣），冷却 10 秒。枪手 3 级。</description>
+    <iconPath>LP/Classes/Artificer/Overcharge</iconPath>
+    <hostile>false</hostile>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>30</range><warmupTime>0.5</warmupTime><targetParams><canTargetPawns>true</canTargetPawns><canTargetBuildings>true</canTargetBuildings><canTargetItems>true</canTargetItems><canTargetLocations>false</canTargetLocations><canTargetSelf>false</canTargetSelf></targetParams></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSUtility</effect><cost>0</cost><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GS_GunTraining</defName>
+    <label>枪械训练</label>
+    <description>被动：火器每发伤害 + 敏捷调整值 × 1.5；暴力射击的卡壳率减半。枪手 5 级。</description>
+    <iconPath>LP/Classes/Fighter/WeaponMastery</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GS_Gunsmith</defName>
+    <label>枪匠</label>
+    <description>被动：一般劳动速度 +30%（含做枪）；做火器时 25% 品质高一档。枪手 5 级。</description>
+    <iconPath>LP/Classes/Artificer/MasterCraft</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_GS_DeadShot</defName>
+    <label>致命一击</label>
+    <description>把一整轮射击合成一发：必中，伤害 ×(1 + 0.5 × 连发数)，单发武器至少 ×2.5，穿甲 +20%。消耗 1 点胆识，冷却 20 秒。枪手 7 级。</description>
+    <iconPath>LP/Classes/Fighter/DeadEye</iconPath>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <verbProperties><range>40</range><warmupTime>2</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSDeadShot</effect><cost>1</cost><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_GS_Targeting</defName>
+    <label>部位瞄准</label>
+    <description>朝指定部位开一枪（必中）：手（缴械）、头（晕 2 秒）、眼（伤害 ×0.6，伤到眼睛）、腿（腿部中弹，体型 1.5 以下的倒地 1 秒）、躯干（穿甲 +30%）。用「切换瞄准部位」选部位。消耗 1 点胆识，冷却 10 秒。枪手 7 级。</description>
+    <iconPath>LP/Classes/Fighter/PrecisionShot</iconPath>
+    <cooldownTicksRange>600</cooldownTicksRange>
+    <verbProperties><range>40</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSTargeting</effect><cost>1</cost><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GS_AimMode</defName>
+    <label>切换瞄准部位</label>
+    <description>切换部位瞄准打哪里：手 → 头 → 眼 → 腿 → 躯干。不消耗、不进冷却。枪手 7 级。</description>
+    <iconPath>LP/Classes/Fighter/SteadyAim</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSAimMode</effect><cost>0</cost><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_GS_StartlingShot</defName>
+    <label>惊骇射击</label>
+    <description>故意擦着一个敌人开一枪：4 秒内它近战闪避 −20、射击精度 −20%。要至少 1 点胆识（不扣），冷却 8 秒。枪手 7 级。</description>
+    <iconPath>LP/Classes/Ranger/HuntersMark</iconPath>
+    <cooldownTicksRange>480</cooldownTicksRange>
+    <verbProperties><range>40</range><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSStartle</effect><cost>0</cost><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GS_BleedingWound</defName>
+    <label>放血伤</label>
+    <description>5 秒内火器打中的活物多一道会流血的伤口。消耗 1 点胆识，冷却 15 秒。枪手 10 级。</description>
+    <iconPath>LP/Classes/Rogue/PoisonBlade</iconPath>
+    <cooldownTicksRange>900</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSBleed</effect><cost>1</cost><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GS_LightningReload</defName>
+    <label>闪电装填</label>
+    <description>10 秒内射击冷却 ×0.6。要至少 1 点胆识（不扣），冷却 30 秒。枪手 10 级。</description>
+    <iconPath>LP/Classes/Fighter/RapidFire</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><warmupTime>0</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSReload</effect><cost>0</cost><duration>600</duration><hediff>LP_GS_ReloadBuff</hediff><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GS_Evasive</defName>
+    <label>闪避本能</label>
+    <description>被动：有胆识时受到的爆炸伤害 ×0.5。枪手 13 级。</description>
+    <iconPath>LP/Classes/Rogue/UncannyDodge</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GS_MenacingShot</defName>
+    <label>威慑射击</label>
+    <description>朝天开一枪：半径 8 内的敌人对抗心智抗性，没抵抗住的惊恐逃跑 8 秒（人形会丢下扛着的东西）。消耗 1 点胆识，冷却 1 小时。枪手 13 级。</description>
+    <iconPath>LP/Classes/Fighter/BattleCry</iconPath>
+    <hostile>true</hostile>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSMenace</effect><cost>1</cost><duration>480</duration><radius>8</radius><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_GS_StunningShot</defName>
+    <label>击晕射击</label>
+    <description>必中的一枪：目标对抗体质（每比你高 1 级更难，最多 50%）失败就眩晕 3 秒（剧情首领与传奇减半）。消耗 2 点胆识，冷却 15 秒。枪手 13 级。</description>
+    <iconPath>LP/Classes/Fighter/DisarmingStrike</iconPath>
+    <cooldownTicksRange>900</cooldownTicksRange>
+    <verbProperties><range>40</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSStun</effect><cost>2</cost><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GS_SlingerLuck</defName>
+    <label>枪手好运</label>
+    <description>被动：心智抗性没挺住时，花 2 点胆识再判定一次，每天 3 次。枪手 13 级。</description>
+    <iconPath>LP/Classes/Rogue/StrokeOfLuck</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_GS_DeathShot</defName>
+    <label>死亡射击</label>
+    <description>终极：必中的一枪，伤害 ×3 × 枪术强度，穿甲 +30%；目标没挺住（豁免，目标越强越难）就当场死亡。剧情首领、传奇、体型 3 以上的只吃伤害。用它击杀不回胆识。消耗 2 点胆识，冷却 1 天。枪手 15 级，另要射击 15 级。</description>
+    <iconPath>LP/Classes/Fighter/DeadEye</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><range>45</range><warmupTime>1.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSDeath</effect><cost>2</cost><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GS_CheatDeath</defName>
+    <label>欺骗死神</label>
+    <description>被动：本该倒地时，花光所有胆识（至少 1 点）撑住，治好四成伤势，每天一次（在死亡守卫、不屈战魂之后判定）。枪手 17 级。</description>
+    <iconPath>LP/Classes/Fighter/Indomitable</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GS_BladeAndGun</defName>
+    <label>刀枪并用</label>
+    <description>被动：开枪打中后 5 秒内下一刀伤害 ×1.25；砍中后 5 秒内下一枪瞄得快、射击精度 +15%。流浪者，枪手 3 级。</description>
+    <iconPath>LP/Classes/Subclass6/SBDuelist</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GS_Skirmish</defName>
+    <label>游击步</label>
+    <description>被动：用火器击杀或打倒敌人后 5 秒内移动 ×1.3。流浪者，枪手 7 级。</description>
+    <iconPath>LP/Classes/Subclass6/SBFootwork</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GS_CloseQuarters</defName>
+    <label>贴身枪法</label>
+    <description>被动：拿着火器时射击精度 ×1.1。流浪者，枪手 11 级。</description>
+    <iconPath>LP/Classes/Subclass6/SBElegant</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_GS_DriftersWake</defName>
+    <label>流浪者余波</label>
+    <description>贴身一刀（相邻时）再接两枪（必中），目标倒下就转向 8 格内最近的敌人。要拿着短枪。消耗 2 点胆识，冷却 30 秒。流浪者，枪手 15 级。</description>
+    <iconPath>LP/Classes/Subclass6/SBPanache</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>8</range><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSWake</effect><cost>2</cost><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GS_TwinPistols</defName>
+    <label>双持短枪</label>
+    <description>被动：拿着短枪时，每次射击有 35% 的成功率多开一枪（伤害 ×0.7）。双枪客，枪手 3 级。</description>
+    <iconPath>LP/Classes/Fighter/RapidFire</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_GS_Fanning</defName>
+    <label>扇击</label>
+    <description>对 30 格内一点半径 4 的区域连开 6 枪（每发伤害 ×0.8，随机打区域里的敌人）。要拿着短枪。消耗 1 点胆识，冷却 12 秒。双枪客，枪手 7 级。</description>
+    <iconPath>LP/Classes/Fighter/SuppressingFire</iconPath>
+    <cooldownTicksRange>720</cooldownTicksRange>
+    <verbProperties><range>30</range><warmupTime>0.3</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSFan</effect><cost>1</cost><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GS_Retort</defName>
+    <label>以枪还枪</label>
+    <description>被动：枪手闪避闪开一发子弹时，立刻还射手一枪。双枪客，枪手 11 级。</description>
+    <iconPath>LP/Classes/Subclass6/SBAudacity</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_GS_HighNoon</defName>
+    <label>正午决斗</label>
+    <description>点名 40 格内一个敌人决斗 30 秒：你对它的火器伤害 ×1.5，它射击精度 ×0.5；你用火器杀了它，胆识回满。消耗 1 点胆识，冷却 1 小时。双枪客，枪手 15 级。</description>
+    <iconPath>LP/Classes/Ranger/FavoredFoe</iconPath>
+    <cooldownTicksRange>2500</cooldownTicksRange>
+    <verbProperties><range>40</range><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSNoon</effect><cost>1</cost><duration>1800</duration><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GS_Hidden</defName>
+    <label>隐蔽位置</label>
+    <description>被动：拿着长枪原地不动一会儿（250 刻）就进入隐蔽，下一发火器伤害 ×2；挪动就没了。狙击手，枪手 3 级。</description>
+    <iconPath>LP/Classes/Ranger/HideInPlain</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_GS_PiercingShot</defName>
+    <label>穿透射击</label>
+    <description>一发子弹沿直线穿过射程内的所有敌人（必中），每穿一个伤害 ×0.8，穿甲 +20%。要拿着长枪。消耗 1 点胆识，冷却 15 秒。狙击手，枪手 7 级。</description>
+    <iconPath>LP/Classes/Ranger/Volley</iconPath>
+    <cooldownTicksRange>900</cooldownTicksRange>
+    <verbProperties><range>45</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSPierce</effect><cost>1</cost><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_GS_Spotter</defName>
+    <label>观测手</label>
+    <description>标记 45 格内一个敌人 30 秒：它藏不住（解除心灵隐形），受到的伤害 ×1.15。要至少 1 点胆识（不扣），冷却 30 秒。狙击手，枪手 11 级。</description>
+    <iconPath>LP/Classes/Ranger/HuntersMark</iconPath>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <verbProperties><range>45</range><warmupTime>0.25</warmupTime><requireLineOfSight>false</requireLineOfSight></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSSpot</effect><cost>0</cost><duration>1800</duration><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GS_ThousandYard</defName>
+    <label>千码凝视</label>
+    <description>60 秒内射击精度 ×1.25，对 30 格外目标的火器伤害 ×2。要拿着长枪。消耗 2 点胆识，冷却 1 天。狙击手，枪手 15 级。</description>
+    <iconPath>LP/Classes/Ranger/FoeSlayer</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSYard</effect><cost>2</cost><duration>3600</duration><hediff>LP_GS_YardBuff</hediff><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GS_HeavyStance</defName>
+    <label>重装持枪</label>
+    <description>被动：拿着重火器时移动 ×1.1，受到的近战伤害 ×0.85。先锋，枪手 3 级。</description>
+    <iconPath>LP/Classes/Fighter/GuardStance</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_GS_PointBlank</defName>
+    <label>顿射</label>
+    <description>对 3 格内一个敌人开一枪（必中），把它推开 2 格。要拿着重火器。消耗 1 点胆识，冷却 6 秒。先锋，枪手 3 级。</description>
+    <iconPath>LP/Classes/Fighter/Charge</iconPath>
+    <cooldownTicksRange>360</cooldownTicksRange>
+    <verbProperties><range>3</range><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSBlast</effect><cost>1</cost><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GS_CoveringFire</defName>
+    <label>掩护火力</label>
+    <description>30 秒内 8 格内的友军（含自己）受到的远程伤害 ×0.85。消耗 1 点胆识，冷却 1 分钟。先锋，枪手 7 级。</description>
+    <iconPath>LP/Classes/Fighter/SuppressingFire</iconPath>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSCover</effect><cost>1</cost><duration>1800</duration><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GS_Breach</defName>
+    <label>破阵</label>
+    <description>被动：拿着重火器时对机械体伤害 ×1.4，每发有 15% 的成功率把人形击退 1 格。先锋，枪手 11 级。</description>
+    <iconPath>LP/Classes/Fighter/Whirlwind</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_GS_SteelStorm</defName>
+    <label>钢铁风暴</label>
+    <description>10 秒内射击冷却 ×0.5，受到的伤害 ×0.8。要拿着重火器。消耗 2 点胆识，冷却 1 天。先锋，枪手 15 级。</description>
+    <iconPath>LP/Classes/Fighter/SurgeOfBattle</iconPath>
+    <cooldownTicksRange>60000</cooldownTicksRange>
+    <verbProperties><warmupTime>0.25</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSStorm</effect><cost>2</cost><duration>600</duration><hediff>LP_GS_StormBuff</hediff><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_LegendaryBase">
+    <defName>LP_LegBulletStorm</defName>
+    <label>子弹风暴</label>
+    <description>传奇：30 秒内每次射击都连开两枪，每次用火器击杀胆识 +2。消耗 3 点胆识，冷却 2 天。传奇枪手。</description>
+    <iconPath>LP/Classes/Legendary/ArrowStorm</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSBulletStorm</effect><cost>3</cost><duration>1800</duration><hediff>LP_LegBulletStormBuff</hediff><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_LegendaryBase">
+    <defName>LP_LegTrueGrit</defName>
+    <label>真胆识</label>
+    <description>传奇被动：枪手能力里消耗 2 点以上胆识的少 1 点。传奇枪手。</description>
+    <iconPath>LP/Classes/Legendary/Unyielding</iconPath>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>Passive</effect><passive>true</passive><stat>LP_GunPower</stat></li></comps>
+  </AbilityDef>
+
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Drifter</defName>
+    <label>流浪者</label>
+    <description>一把短枪一把刀走天下：刀枪交替、撂倒一个就换位置，最后一刀两枪连成一串。枪道能力要拿着短枪或近战时才用得上。</description>
+    <parent>LP_Class_Gunslinger</parent><order>1</order><emblem>LP/Classes/Subclass/Emblem_Swashbuckler</emblem><color>(0.8,0.6,0.4)</color>
+    <abilities><li><ability>LP_GS_BladeAndGun</ability><level>3</level></li><li><ability>LP_GS_Skirmish</ability><level>7</level></li><li><ability>LP_GS_CloseQuarters</ability><level>11</level></li><li><ability>LP_GS_DriftersWake</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Pistolero</defName>
+    <label>双枪客</label>
+    <description>两把短枪、一根火柴的耐心：双持、扇击、以枪还枪，最后在正午和人决斗。</description>
+    <parent>LP_Class_Gunslinger</parent><order>2</order><emblem>LP/Classes/Subclass/Emblem_Champion</emblem><color>(0.9,0.75,0.4)</color>
+    <abilities><li><ability>LP_GS_TwinPistols</ability><level>3</level></li><li><ability>LP_GS_Fanning</ability><level>7</level></li><li><ability>LP_GS_Retort</ability><level>11</level></li><li><ability>LP_GS_HighNoon</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Sniper</defName>
+    <label>狙击手</label>
+    <description>在敌人看不见的地方等一发：隐蔽、穿透、为全队指示目标，最后一千码外也能一枪命中。</description>
+    <parent>LP_Class_Gunslinger</parent><order>3</order><emblem>LP/Classes/Subclass/Emblem_GloomStalker</emblem><color>(0.6,0.7,0.55)</color>
+    <abilities><li><ability>LP_GS_Hidden</ability><level>3</level></li><li><ability>LP_GS_PiercingShot</ability><level>7</level></li><li><ability>LP_GS_Spotter</ability><level>11</level></li><li><ability>LP_GS_ThousandYard</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+
+  <LichPhylactery.LP_SubclassDef>
+    <defName>LP_Sub_Vanguard</defName>
+    <label>先锋</label>
+    <description>扛着重火器顶在最前面：顿射、掩护、破阵，最后打开全部火力。</description>
+    <parent>LP_Class_Gunslinger</parent><order>4</order><emblem>LP/Classes/Subclass/Emblem_FortEngineer</emblem><color>(0.7,0.55,0.45)</color>
+    <abilities><li><ability>LP_GS_HeavyStance</ability><level>3</level></li><li><ability>LP_GS_PointBlank</ability><level>3</level></li><li><ability>LP_GS_CoveringFire</ability><level>7</level></li><li><ability>LP_GS_Breach</ability><level>11</level></li><li><ability>LP_GS_SteelStorm</ability><level>15</level></li></abilities>
+  </LichPhylactery.LP_SubclassDef>
+
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_GunExpert</defName>
+    <label>火器专家</label>
+    <description>枪拆开又装上一千遍了。枪术强度 +10%；暴力射击不会卡壳；做东西更快；枪手能力冷却 ×0.9。枪手专属。附带敏捷 +1。</description>
+    <iconPath>LP/Feats/Class/FighterVeteran</iconPath>
+    <order>88</order>
+    <requiredClass>LP_Class_Gunslinger</requiredClass><classLevel>3</classLevel>
+    <powerStats><li>LP_GunPower</li></powerStats><powerBonus>0.1</powerBonus>
+    <cooldownFactor>0.9</cooldownFactor>
+    <statOffsets><GeneralLaborSpeed>0.2</GeneralLaborSpeed></statOffsets>
+    <bonusAbilities><li>Dex</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+
+  <LichPhylactery.LP_FeatDef ParentName="LP_ClassFeatBase">
+    <defName>LP_Feat_Class_GunRenown</defName>
+    <label>神枪手之誉</label>
+    <description>枪声一响，大家都知道是你。枪术强度 +15%；胆识上限 +2；射击精度 +5%。枪手专属。附带敏捷或感知 +1。</description>
+    <iconPath>LP/Feats/Class/RangerStalker</iconPath>
+    <order>89</order>
+    <requiredClass>LP_Class_Gunslinger</requiredClass><classLevel>7</classLevel>
+    <powerStats><li>LP_GunPower</li></powerStats><powerBonus>0.15</powerBonus>
+    <resourceBonus>2</resourceBonus>
+    <statOffsets><ShootingAccuracyPawn>0.05</ShootingAccuracyPawn></statOffsets>
+    <bonusAbilities><li>Dex</li><li>Wis</li></bonusAbilities>
+  </LichPhylactery.LP_FeatDef>
+
+  <!-- ===== 秘传 ===== -->
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AC_RuneBullets</defName>
+    <label>符文魔弹</label>
+    <description>秘传（6 环枪手）：60 秒内火器子弹附带火焰，额外造成 50% 的火焰伤害。冷却 2 天。</description>
+    <iconPath>LP/Arcana/GaleArrow</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSArcRunes</effect><cost>0</cost><duration>3600</duration><stat>LP_GunPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>6</ring><cls>LP_Class_Gunslinger</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassLocBase">
+    <defName>LP_AC_BulletRain</defName>
+    <label>弹雨</label>
+    <description>秘传（7 环枪手）：对 40 格内一点半径 5 的区域开 20 枪，每发伤害 ×0.6。要拿着火器。冷却 3 天。</description>
+    <iconPath>LP/Arcana/ChainLightning</iconPath>
+    <cooldownTicksRange>180000</cooldownTicksRange>
+    <verbProperties><range>40</range><warmupTime>1</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSArcRain</effect><cost>0</cost><stat>LP_GunPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>7</ring><cls>LP_Class_Gunslinger</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassSelfBase">
+    <defName>LP_AC_StoppedTime</defName>
+    <label>时停一枪</label>
+    <description>秘传（8 环枪手）：世界在你眼里慢下来：30 格内的敌人全部眩晕 3 秒，你对每个敌人各开一枪（必中，最多 8 个）。要拿着火器。冷却 5 天。</description>
+    <iconPath>LP/Arcana/Immovable</iconPath>
+    <hostile>true</hostile>
+    <cooldownTicksRange>300000</cooldownTicksRange>
+    <verbProperties><warmupTime>0.5</warmupTime></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSArcStop</effect><cost>0</cost><radius>30</radius><stat>LP_GunPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>8</ring><cls>LP_Class_Gunslinger</cls></li></modExtensions>
+  </AbilityDef>
+  <AbilityDef ParentName="LP_ClassMeleeBase">
+    <defName>LP_AC_FateBullet</defName>
+    <label>命运之弹</label>
+    <description>秘传（9 环枪手）：一发写好结局的子弹：必中，伤害 ×5，穿甲 +100%，无视掩体（不需要视线）。要拿着火器。冷却 7 天。</description>
+    <iconPath>LP/Arcana/FingerOfDeath</iconPath>
+    <cooldownTicksRange>420000</cooldownTicksRange>
+    <verbProperties><range>60</range><warmupTime>1</warmupTime><requireLineOfSight>false</requireLineOfSight></verbProperties>
+    <comps><li Class="LichPhylactery.CompProperties_ClassEffect"><effect>GSArcFate</effect><cost>0</cost><stat>LP_GunPower</stat></li></comps>
+    <modExtensions><li Class="LichPhylactery.ArcanumExt"><ring>9</ring><cls>LP_Class_Gunslinger</cls></li></modExtensions>
+  </AbilityDef>
+
+  <HediffDef ParentName="LP_ClassBuffBase">
+    <defName>LP_GS_RunesBuff</defName>
+    <label>符文魔弹</label>
+    <description>子弹上刻着燃烧的符文：火器打中时另造成 50% 的火焰伤害。</description>
+    <defaultLabelColor>(0.85,0.7,0.45)</defaultLabelColor>
+  </HediffDef>
+
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_RuneBullets</defName>
+    <label>职业水晶：符文魔弹</label>
+    <description>魔力湖泊的职业水晶。枪手吸收后永久学会秘传「符文魔弹」（6 环，需要枪手 11 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（6 环枪手）：60 秒内火器子弹附带 50% 火焰伤害。冷却 2 天。</description>
+    <graphicData><color>(0.85,0.7,0.45)</color></graphicData>
+    <statBases><MarketValue>8000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_RuneBullets</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_BulletRain</defName>
+    <label>职业水晶：弹雨</label>
+    <description>魔力湖泊的职业水晶。枪手吸收后永久学会秘传「弹雨」（7 环，需要枪手 13 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（7 环枪手）：对一片区域开 20 枪。冷却 3 天。</description>
+    <graphicData><color>(0.85,0.7,0.45)</color></graphicData>
+    <statBases><MarketValue>12000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_BulletRain</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_StoppedTime</defName>
+    <label>职业水晶：时停一枪</label>
+    <description>魔力湖泊的职业水晶。枪手吸收后永久学会秘传「时停一枪」（8 环，需要枪手 15 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（8 环枪手）：30 格内敌人眩晕 3 秒，每人吃你一枪。冷却 5 天。</description>
+    <graphicData><color>(0.85,0.7,0.45)</color></graphicData>
+    <statBases><MarketValue>16000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_StoppedTime</ability></li></comps>
+  </ThingDef>
+  <ThingDef ParentName="LP_ArcanumCrystalBase">
+    <defName>LP_Crystal_FateBullet</defName>
+    <label>职业水晶：命运之弹</label>
+    <description>魔力湖泊的职业水晶。枪手吸收后永久学会秘传「命运之弹」（9 环，需要枪手 17 级，占 1 个秘传槽；冒险者 11 / 15 / 20 级、传奇 30 级各有 1 个秘传槽）。\n\n秘传（9 环枪手）：必中、×5 伤害、无视掩体的一枪。冷却 7 天。</description>
+    <graphicData><color>(0.85,0.7,0.45)</color></graphicData>
+    <statBases><MarketValue>25000</MarketValue></statBases>
+    <comps><li Class="LichPhylactery.CompProperties_Arcanum"><ability>LP_AC_FateBullet</ability></li></comps>
+  </ThingDef>
+</Defs>

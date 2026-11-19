@@ -112,7 +112,7 @@ namespace LichPhylactery {
    if(option<0 || option>=ch.options.Count)return "没有这个选项".Loc();
    if(!ch.distinctFrom.NullOrEmpty() && Choice(h,ch.distinctFrom)==option)return "已经选过「".Loc()+ch.options[option]+"」".Loc();
    var s=d.picks.First(x=>x.choices.Contains(ch));if(ClassSystem.Level(h,s.parent)<ch.level)return "需要".Loc()+s.parent.label+" "+ch.level+" 级".Loc();
-   var bd=Bard.ChoiceBlock(h,key,option);if(bd!=null)return bd; // 1.123.0 魔法奥秘不能选已经会的法术
+   var bd=Bard.ChoiceBlock(h,key,option)??Psion.ChoiceBlock(h,key,option);if(bd!=null)return bd; // 1.123.0 魔法奥秘不能选已经会的法术；2026-11-19 灵能修行不能重复
    return null;
   }
   public static bool Choose(Hediff_Adventurer h,string key,int option,bool message=false){

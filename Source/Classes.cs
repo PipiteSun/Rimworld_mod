@@ -13,7 +13,7 @@ namespace LichPhylactery {
  // 第一个职业：主或副技能 ≥ 6（或主属性 ≥ 13）；兼修第 2、3 个：冒险者 ≥ 3 级且那门技能 ≥ 8（或主属性 ≥ 13）；最多 3 个。冒险者手册给一次跳过门槛。
  // 能力在职业等级 1/3/5/7/10/13/15 自动获得（15 级终极另要那门技能 15 级；1.87.0 前是 1/3/5/9/13/17/20 与技能 18）；施放消耗职业资源（斗志 / 气 / 神恩），资源上限 = 2 + 职业等级/2（四舍五入）。
  // 1.73.0：法师、牧师、德鲁伊、术士、器械师也移过来（Classes2.xml / ClassCasters.cs）。法力（Mana）每个职业一条；神恩牧师和圣武士共用一条（PoolKey）；器械师没有资源。
- public enum ClassResource{None,Fury,Ki,Grace,Mana,Rage,Pact,Melody} // Rage：野蛮人的怒气（Classes4.xml / ClassMartial2.cs）；Pact：邪术师的契约法力（ClassWarlock.xml / ClassWarlock.cs）；Melody：1.123.0 吟游诗人的乐韵（ClassBard.xml / ClassBard.cs）
+ public enum ClassResource{None,Fury,Ki,Grace,Mana,Rage,Pact,Melody,Grit} // Rage：野蛮人的怒气（Classes4.xml / ClassMartial2.cs）；Pact：邪术师的契约法力（ClassWarlock.xml / ClassWarlock.cs）；Melody：1.123.0 吟游诗人的乐韵（ClassBard.xml / ClassBard.cs）
  public class ClassAbilityEntry {public AbilityDef ability;public int level=1;public SkillDef capstoneSkill;}
  public class LP_ClassDef : Def {
   public SkillDef mainSkill,alternateSkill;public int order;public ClassResource resource;public bool martial,caster,bloodline;
@@ -110,7 +110,7 @@ namespace LichPhylactery {
    switch(d){
     case "LP_Class_Barbarian":case "LP_Class_Monk":return .07f; // 2026-11-03 热修（Peter）：武僧 5% → 7%
     case "LP_Class_Fighter":case "LP_Class_Paladin":case "LP_Class_Ranger":return .06f;
-    case "LP_Class_Wizard":case "LP_Class_Sorcerer":return .04f;
+    case "LP_Class_Wizard":case "LP_Class_Sorcerer":case "LP_Class_Psion":return .04f; // 2026-11-19 心灵术士 d6
     default:return Hediff_Adventurer.PartPerLevel; // 牧师、德鲁伊、游荡者、器械师、未知职业
    }
   }
@@ -118,14 +118,14 @@ namespace LichPhylactery {
   public static float DefaultDamagePer(string d){
    switch(d){
     case "LP_Class_Fighter":case "LP_Class_Barbarian":return .03f;
-    case "LP_Class_Paladin":case "LP_Class_Ranger":case "LP_Class_Monk":case "LP_Class_Rogue":return .02f;
+    case "LP_Class_Paladin":case "LP_Class_Ranger":case "LP_Class_Monk":case "LP_Class_Rogue":case "LP_Class_Gunslinger":return .02f;
     default:return 0f;
    }
   }
   public static float DefaultPenPer(string d){
    switch(d){
     case "LP_Class_Fighter":case "LP_Class_Barbarian":return .015f;
-    case "LP_Class_Paladin":case "LP_Class_Ranger":case "LP_Class_Monk":case "LP_Class_Rogue":return .01f;
+    case "LP_Class_Paladin":case "LP_Class_Ranger":case "LP_Class_Monk":case "LP_Class_Rogue":case "LP_Class_Gunslinger":return .01f;
     default:return 0f;
    }
   }
@@ -175,6 +175,12 @@ namespace LichPhylactery {
    if(c.defName=="LP_Class_Druid")return "死亡之躯与自然相斥".Loc();
    return null;
   }
+  // 2026-11-19 心灵术士：心灵失聪的人不能学（巫妖照常能学）。
+  public static string ForbiddenAny(LP_ClassDef c,Pawn p){
+   var f=Forbidden(c,p);if(f!=null)return f;
+   if(c!=null && c==Psion.Class && p!=null && p.GetStatValue(StatDefOf.PsychicSensitivity)<=0.01f)return "心灵失聪的人无法成为心灵术士".Loc();
+   return null;
+  }
 
   // ---------- 加点 ----------
   // 1.90.0：主属性写全（“力量或敏捷 13”），ScoreOk 本来就取较高的一项。
@@ -191,7 +197,7 @@ namespace LichPhylactery {
    int cur=Level(h,c);if(cur>=CapLevel)return "已经 ".Loc()+CapLevel+" 级".Loc();
    if(Points(h)<=0)return h.level>CapLevel?"传奇等级不给职业点".Loc():"没有职业点（每个冒险者等级 1 点）".Loc();
    if(cur>0)return null;
-   var f=Forbidden(c,h.pawn);if(f!=null)return f;
+   var f=ForbiddenAny(c,h.pawn);if(f!=null)return f;
    int taken=h.classes.levels.Count(kv=>kv.Value>0);
    if(taken>=MaxClasses)return "最多兼修 ".Loc()+MaxClasses+" 个职业".Loc();
    if(!GateOk(h,c,taken) && h.classes.freeUnlocks<=0)return GateText(c,taken,h.pawn);
@@ -292,7 +298,7 @@ namespace LichPhylactery {
 
   // ---------- 资源 ----------
   public static int MaxResource(int level)=>level<=0?0:2+(level+1)/2;
-  public static string ResourceLabel(ClassResource r){switch(r){case ClassResource.Fury:return "斗志".Loc();case ClassResource.Ki:return "气".Loc();case ClassResource.Grace:return "神恩".Loc();case ClassResource.Mana:return "法力".Loc();case ClassResource.Rage:return "怒气".Loc();case ClassResource.Pact:return "契约法力".Loc();case ClassResource.Melody:return "乐韵".Loc();default:return "";}}
+  public static string ResourceLabel(ClassResource r){switch(r){case ClassResource.Fury:return "斗志".Loc();case ClassResource.Ki:return "气".Loc();case ClassResource.Grace:return "神恩".Loc();case ClassResource.Mana:return "法力".Loc();case ClassResource.Rage:return "怒气".Loc();case ClassResource.Pact:return "契约法力".Loc();case ClassResource.Melody:return "乐韵".Loc();case ClassResource.Grit:return "胆识".Loc();default:return "";}}
   // 1.73.0：神恩是牧师和圣武士共用的一条（存在圣武士名下），上限按两个职业等级之和（最多按 20 级算）；其他资源每个职业一条。
   public static LP_ClassDef PoolKey(LP_ClassDef c)=>c!=null && c.resource==ClassResource.Grace && Paladin!=null?Paladin:c;
   public static int PoolLevel(Hediff_Adventurer h,LP_ClassDef c){
@@ -311,7 +317,7 @@ namespace LichPhylactery {
    float cur=Resource(h,c),next=Mathf.Clamp(cur+amount,0f,max);h.classes.res[PoolKey(c)]=next;return next-cur;
   }
   // 1.99.0：靠睡觉恢复的资源补一句不睡觉种族的恢复方式（ClassRestless）。
-  public static string ResourceTip(LP_ClassDef c){var s=ResourceTipBase(c);var r=c?.resource;return r==ClassResource.Fury || r==ClassResource.Ki || r==ClassResource.Grace || r==ClassResource.Mana || r==ClassResource.Pact || r==ClassResource.Melody?s+"不需要睡觉的种族：不在战斗中、未征召时每 6 小时回上限的 1/4，或用“冥想调息”原地静坐 2 小时回满。".Loc():s;}
+  public static string ResourceTip(LP_ClassDef c){var s=ResourceTipBase(c);var r=c?.resource;return r==ClassResource.Fury || r==ClassResource.Ki || r==ClassResource.Grace || r==ClassResource.Mana || r==ClassResource.Pact || r==ClassResource.Melody || r==ClassResource.Grit?s+"不需要睡觉的种族：不在战斗中、未征召时每 6 小时回上限的 1/4，或用“冥想调息”原地静坐 2 小时回满。".Loc():s;}
   static string ResourceTipBase(LP_ClassDef c){
    switch(c?.resource){
     case ClassResource.Fury:return "斗志：命中敌对、未倒地的目标 +".Loc()+(Martial.FuryHit*Martial.FuryResourcePer).ToString("0.##")+"，击杀敌人 +".Loc()+(Martial.FuryKill*Martial.FuryResourcePer).ToString("0.##")+"（每人每游戏小时最多 +".Loc()+(Martial.FuryCap*Martial.FuryResourcePer).ToString("0.#")+"）；睡觉时每 250 刻 +".Loc()+SleepRegen+"。有心灵链接时照旧另加精神力。".Loc();
@@ -321,6 +327,7 @@ namespace LichPhylactery {
     case ClassResource.Rage:return "怒气：受到敌人伤害 +".Loc()+ClassMartial2.RageTaken+"，命中敌人 +".Loc()+ClassMartial2.RageDealt+"；不在狂暴中、10 秒没有攻防时每小时 −1（原初斗士不衰减）。睡觉不恢复。".Loc();
     case ClassResource.Pact:return "契约法力（上限 2 + 邪术师等级/4）：连续 1 小时冥想、娱乐或睡觉（短休）就回满，中断要重来；其他时候不恢复。".Loc();
     case ClassResource.Melody:return "乐韵（上限 2 + 吟游诗人等级 + 魅力调整值，最少 2）：醒着时每 250 刻 +".Loc()+Bard.AwakeRegen+"（每小时约 +0.5），睡觉时每 250 刻 +".Loc()+SleepRegen+"；演奏乐器、听音乐或做艺术品时每 250 刻另 +".Loc()+Bard.ActivityRegen+"；每次和人闲聊、深谈 +".Loc()+Bard.ChatGain+"。".Loc();
+    case ClassResource.Grit:return Gunslinger.ResourceTip;
     case ClassResource.None:return c.defName=="LP_Class_Artificer"?"器械师没有资源，能力只看冷却。".Loc():c.label+"没有资源，能力只看冷却。".Loc();
    }
    return "";
@@ -341,7 +348,8 @@ namespace LichPhylactery {
     else if(med && c.resource==ClassResource.Ki)add=MeditateRegen;
     else if(med && c.resource==ClassResource.Grace)add=MeditateRegen*(Devotee(p)?DevoteeRegen:1f);
     else if(c.resource==ClassResource.Mana && c.defName=="LP_Class_Wizard" && Studying(p))add=StudyRegen;
-    if(!asleep && c.resource==ClassResource.Mana)add+=AwakeManaRegen; // 1.81.0 热修4：醒着也慢慢回（每小时约 +0.5），和研究的回复叠加
+    if(!asleep && c.resource==ClassResource.Mana)add+=AwakeManaRegen;
+    if(med && c==Psion.Class)add+=Psion.MeditateRegen; // 2026-11-19 心灵术士：冥想时法力回得快 // 1.81.0 热修4：醒着也慢慢回（每小时约 +0.5），和研究的回复叠加
     if(add>0f && c.resource==ClassResource.Grace && Items.Has(p,"LP_Oathbroken"))add*=.5f; // 1.103.0 背誓
     if(add>0f && c.resource==ClassResource.Mana && Items.Has(p,"LP_SP_HaloOn"))add*=.5f; // 1.109.0 死亡光环开着
     if(add>0f)AddResource(h,c,add);
@@ -358,6 +366,7 @@ namespace LichPhylactery {
    if(d.table<TableVersion)Regrant(h); // 1.87.0 新等级表（老存档补一次）
    Regen(h);
    ClassRestless.Tick250(h); // 1.99.0 不睡觉的种族：平时慢慢回（代替睡觉）
+   Psion.Tick250(h);Gunslinger.Tick250(h); // 2026-11-19 心灵术士、枪手
    Warlock.Tick250(h); // 邪术师：短休回满契约法力、被动
    Bard.Tick250(h); // 1.123.0 吟游诗人：乐韵、被动、学院
    Spellbook.Tick250(h); // 1.128.0 法术书：睡醒可备法、专注、魔宠、待选提醒
@@ -392,6 +401,7 @@ namespace LichPhylactery {
    var arc=LakeArcana.CannotCast(p,def);if(arc!=null)return arc; // 1.100.0 秘传公共冷却
    var sb=Spellbook.CannotCast(p,def);if(sb!=null)return sb; // 1.128.0 没准备的法师法术
    var csb=CasterSpells.CannotCast(p,def,props);if(csb!=null)return csb; // 1.130.0 静默、法术能量（器械师 / 游侠）
+   var nc=Psion.CannotCast(p,def,props)??Gunslinger.CannotCast(p,def,props);if(nc!=null)return nc; // 2026-11-19 心灵术士（灵能点）、枪手（胆识、火器）
    if(c==null || h==null)return null;
    if(c.caster && ClassMartial2.Raging(p))return "狂暴中无法施法".Loc();
    int cost=ClassLegendary.Cost(p,def,props);
@@ -619,14 +629,15 @@ namespace LichPhylactery {
 
  // ---------- 设置（放在“冒险者”分组里） ----------
  public partial class Settings {
-  public bool classPsychic=true,classEntropy=false;
-  void ExposeClasses(){Scribe_Values.Look(ref classPsychic,"lpClassPsychic",true);Scribe_Values.Look(ref classEntropy,"lpClassEntropy",false);ExposeNpcClasses();}
+  public bool classPsychic=true,classEntropy=false,psionPsylink=true;
+  void ExposeClasses(){Scribe_Values.Look(ref classPsychic,"lpClassPsychic",true);Scribe_Values.Look(ref classEntropy,"lpClassEntropy",false);Scribe_Values.Look(ref psionPsylink,"lpPsionPsylink",true);ExposeNpcClasses();}
  }
  public static class ClassSettings {
   public static void Draw(Listing_Standard l){
    var s=LichMod.Settings;
    l.CheckboxLabeled("施法类能力受心灵敏感度影响".Loc(),ref s.classPsychic,"1.72.0 职业：武僧的气功（拨挡箭矢、震慑拳、金刚之躯、颤心掌、空灵之身）和圣武士的神术（至圣斩、圣疗、神圣武器、放逐邪恶、圣光化身）的伤害、治疗再乘心灵敏感度（最低 ×0.2，不封顶）。战士的战技永远不乘。".Loc());
    NpcClasses.Draw(l); // NPC 职业
+   l.CheckboxLabeled("心灵术士自带心灵链接".Loc(),ref s.psionPsylink,"2026-11-19 心灵术士：打开时，心灵术士 1 级起没有心灵链接的人得到 1 级心灵链接，7 / 13 / 19 级时心灵链接至少 2 / 3 / 4 级（只升不降，不超过 6 级）。关闭后只靠帝国头衔或心灵扩增器。".Loc());
    l.CheckboxLabeled("职业能力消耗心灵熵".Loc(),ref s.classEntropy,"1.72.0 职业：打开时，有心灵链接的人施放职业能力另外增加心灵熵（每 1 点资源消耗 +5）。默认关闭：职业能力只消耗斗志 / 气 / 神恩。".Loc());
   }
  }

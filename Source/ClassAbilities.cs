@@ -33,15 +33,17 @@ namespace LichPhylactery {
   public override bool Activate(LocalTargetInfo target,LocalTargetInfo dest){
    if(ClassSystem.CannotCast(pawn,def,Props)!=null)return false;
    ClassSystem.Pay(pawn,def,Props);
+   Psion.BeforeCast(this,target); // 2026-11-19 心灵术士：心智暗示（目标先降心智抗性）
    Spellbook.BeginCast(this); // 1.128.0 升环（Pay 已经按升环扣了法力）
    bool ok;try{ok=base.Activate(target,dest);}finally{Spellbook.EndCast();}
-   if(ok){ClassCasters.AfterCast(this);ClassLegendary.AfterCast(this);ClassSubclass.AfterCast(this);Subclass2.AfterCast(this);Subclass3.AfterCast(this);LakeArcana.AfterCast(this,target);Subclass5.AfterCast(this,target);Subclass6.AfterCast(this,target);Bard.AfterCast(this);Spellbook.AfterCast(this);CasterSpells.AfterCast(this);} // 1.100.0 秘传；1.123.0 吟游诗人（战斗魔法、施法现形）；1.128.0 隐形术施法现形
+   if(ok){ClassCasters.AfterCast(this);ClassLegendary.AfterCast(this);ClassSubclass.AfterCast(this);Subclass2.AfterCast(this);Subclass3.AfterCast(this);LakeArcana.AfterCast(this,target);Subclass5.AfterCast(this,target);Subclass6.AfterCast(this,target);Bard.AfterCast(this);Spellbook.AfterCast(this);CasterSpells.AfterCast(this);Psion.AfterCast(this,target);Gunslinger.AfterCast(this,target);} // 2026-11-19 心灵术士（修行）、枪手 // 1.100.0 秘传；1.123.0 吟游诗人（战斗魔法、施法现形）；1.128.0 隐形术施法现形
    return ok;
   }
   public override string Tooltip{get{
    var p=Props;var c=ClassSystem.CastClassOf(pawn,def);string s=base.Tooltip+Bard.Tip(pawn,def); // 1.123.0 魔法奥秘扣乐韵；刀光剑舞显示当前招式
    if(p==null || c==null)return s;
    var s2=p.passive?null:Subclass2.CostText(pawn,def)??Subclass3.CostText(pawn,def);if(s2!=null)return s+"\n\n"+s2+"\n强度：".Loc()+ClassEffects.Strength(pawn,p).ToStringPercent(); // 1.103.0 失血、誓言之力、神经热
+   var pst=Psion.CostTip(pawn,p);if(pst!=null)return s+"\n\n"+pst+"\n强度：".Loc()+ClassEffects.Strength(pawn,p).ToStringPercent(); // 2026-11-19 心灵术士：灵能点
    var cst=CasterSpells.CostTip(pawn,def,p);if(cst!=null)return s+"\n\n"+cst+"\n强度：".Loc()+ClassEffects.Strength(pawn,p).ToStringPercent(); // 1.130.0 施法职业法术表：法术能量 / 秘法玄奥
    if(ClassSubclass.UsesMana(def) && !p.passive)return s+"\n\n消耗：法力 ".Loc()+ClassLegendary.Cost(pawn,def,p)+"（现有 ".Loc()+ClassSubclass.Mana(pawn).ToString("0.#")+"）\n强度：".Loc()+ClassEffects.Strength(pawn,p).ToStringPercent(); // 诡术师
    return s+"\n\n"+(p.passive?"被动".Loc():c.resource==ClassResource.None || p.cost<=0?"不消耗资源（只看冷却）".Loc():"消耗：".Loc()+ClassSystem.ResourceLabel(c.resource)+" "+ClassLegendary.Cost(pawn,def,p)+"（现有 ".Loc()+ClassSystem.Resource(pawn,c).ToString("0.#")+"）".Loc()+(ClassSystem.FreeCast(pawn,p)?"，魔涌中免费".Loc():""))+"\n强度：".Loc()+ClassEffects.Strength(pawn,p).ToStringPercent();
@@ -84,7 +86,7 @@ namespace LichPhylactery {
      if(t.HostileTo(caster))return "只能对友军使用。".Loc();
      break;
    }
-   var cw=ClassCasters.Invalid(caster,e,target)??ClassLegendary.Invalid(caster,e,target)??ClassMartial2.Invalid(caster,e,target)??ClassSubclass.Invalid(caster,e,target)??Warlock.Invalid(caster,e,target)??Subclass2.Invalid(caster,e,target)??Subclass3.Invalid(caster,e,target)??Subclass4.Invalid(caster,e,target)??Subclass5.Invalid(caster,e,target)??Subclass6.Invalid(caster,e,target)??ArcanaEffects.Invalid(caster,e,target)??Bard.Invalid(caster,e,target)??WizardSpells.Invalid(caster,e,target)??CasterEffects.Invalid(caster,e,target);if(cw!=null)return cw; // 1.130.0 施法职业法术表的新法术 // 1.128.0 法师新法术 // 1.123.0 吟游诗人 // 1.73.0 施法职业；1.74.0 传奇；新职业；子职业；邪术师
+   var cw=ClassCasters.Invalid(caster,e,target)??ClassLegendary.Invalid(caster,e,target)??ClassMartial2.Invalid(caster,e,target)??ClassSubclass.Invalid(caster,e,target)??Warlock.Invalid(caster,e,target)??Subclass2.Invalid(caster,e,target)??Subclass3.Invalid(caster,e,target)??Subclass4.Invalid(caster,e,target)??Subclass5.Invalid(caster,e,target)??Subclass6.Invalid(caster,e,target)??ArcanaEffects.Invalid(caster,e,target)??Bard.Invalid(caster,e,target)??WizardSpells.Invalid(caster,e,target)??CasterEffects.Invalid(caster,e,target)??Psion.Invalid(caster,e,target)??Gunslinger.Invalid(caster,e,target);if(cw!=null)return cw; // 2026-11-19 心灵术士、枪手 // 1.130.0 施法职业法术表的新法术 // 1.128.0 法师新法术 // 1.123.0 吟游诗人 // 1.73.0 施法职业；1.74.0 传奇；新职业；子职业；邪术师
    if(e.ranged){var v=Martial.RangedVerb(caster);if(v?.Projectile==null)return "需要远程武器。".Loc();if(target.Cell.IsValid && CastApproach.TooFar(caster.Position.DistanceTo(target.Cell),v.EffectiveRange))return "超出当前武器的射程（".Loc()+v.EffectiveRange.ToString("0")+" 格）。".Loc();}
    switch(e.effect){
     case "Charge":if(!t.Position.AdjacentTo8WayOrInside(caster.Position) && !Charge.LandingCell(caster,t).IsValid)return "目标身边没有能落脚的格子。".Loc();break;
@@ -137,6 +139,8 @@ namespace LichPhylactery {
    if(Bard.Apply(p,def,e,target))return; // 1.123.0 吟游诗人
    if(WizardSpells.Apply(p,def,e,target))return; // 1.128.0 法师新法术（WS_）
    if(CasterEffects.Apply(p,def,e,target))return; // 1.130.0 施法职业法术表的新法术（CS_）
+   if(Psion.Apply(p,def,e,target))return; // 2026-11-19 心灵术士（PS）
+   if(Gunslinger.Apply(p,def,e,target))return; // 2026-11-19 枪手（GS）
    Log.ErrorOnce("[DND边缘大陆] 未知的职业能力效果：".Loc()+e.effect,e.effect?.GetHashCode()??0);
   }
   public static int BattleCry(Pawn p,float radius,int ticks,float s){

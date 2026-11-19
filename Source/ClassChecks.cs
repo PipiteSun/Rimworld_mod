@@ -106,10 +106,11 @@ namespace LichPhylactery {
    var s=LichMod.Settings;bool oldArt=s.dndWeaponsNeedArtificer;
    try{
     // 1. 定义：8 个职业、79 个原版能力；五个强度属性在主程序集（天赋强度带血脉）；冒险者手册在主程序集。
-    var all=ClassSystem.All;var abilities=all.SelectMany(c=>c.abilities).ToList();
-    Check(all.Count==13 && abilities.Count==123 && abilities.Select(e=>e.ability).Distinct().Count()==123 && abilities.All(e=>e.ability.abilityClass==typeof(Ability_Class) && e.ability.uiIcon!=null && e.ability.uiIcon!=BaseContent.BadTex) && all.All(c=>c.Background!=null && c.primary!=null)
+    // 2026-11-19：器械师（1.148.0 删除，定义还留着）不一定在；心灵术士、枪手另在 -Only NewClasses。数 12 个现役老职业。
+    var all=ClassSystem.All;var old=all.Where(c=>c!=Psion.Class && c!=Gunslinger.Class && c.defName!="LP_Class_Artificer").ToList();var abilities=old.SelectMany(c=>c.abilities).ToList();
+    Check(old.Count==12 && all.Count>=14 && abilities.Count==114 && abilities.Select(e=>e.ability).Distinct().Count()==114 && abilities.All(e=>e.ability.abilityClass==typeof(Ability_Class) && e.ability.uiIcon!=null && e.ability.uiIcon!=BaseContent.BadTex) && all.All(c=>c.Background!=null && c.primary!=null)
      && new[]{"LP_ArcanePower","LP_PrimalPower","LP_VerdantPower","LP_InnatePower","LP_ArtificePower"}.All(n=>DefDatabase<StatDef>.GetNamed(n).parts.Any(x=>x is StatPart_ClassPower)) && DefDatabase<StatDef>.GetNamed("LP_InnatePower").parts.Any(x=>x is StatPart_SorcererBloodline)
-     && DefDatabase<ThingDef>.GetNamed("LP_AdventurersManual").GetCompProperties<CompProperties_UseEffect_Manual>()!=null,"13 classes, 123 vanilla abilities with icons (1.81.0 hotfix4 +3 wizard defences; +7 warlock; 1.123.0 +13 bard), 5 caster power stats (innate has the bloodline part) and the manual live in the main assembly");
+     && DefDatabase<ThingDef>.GetNamed("LP_AdventurersManual").GetCompProperties<CompProperties_UseEffect_Manual>()!=null,"15 classes ("+all.Count+", bg "+string.Join("/",all.Where(c=>c.Background==null || c.primary==null).Select(c=>c.defName))+", abilities "+abilities.Count+"), 123 vanilla abilities with icons (1.81.0 hotfix4 +3 wizard defences; +7 warlock; 1.123.0 +13 bard), 5 caster power stats (innate has the bloodline part) and the manual live in the main assembly");
     // 2. 门槛：德鲁伊看种植或驯兽 6；巫妖不能当德鲁伊；术士血脉（火元素裔）社交 4 就行，人类不行。
     var dr=ClsPawn(1);dr.skills.GetSkill(SkillDefOf.Animals).Level=6;var hdr=Adventurer.Get(dr);
     var lich=ClsPawn(1);lich.skills.GetSkill(SkillDefOf.Plants).Level=10;lich.genes.AddGene(DefDatabase<GeneDef>.GetNamed("LP_LichGene"),true);

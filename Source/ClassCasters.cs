@@ -647,7 +647,7 @@ namespace LichPhylactery {
  // 死亡守卫：本应因伤倒地时治疗并消耗守卫（倒地判定在 CheckForStateChange 里，所以在它之前检查）。
  [HarmonyPatch(typeof(Pawn_HealthTracker),"CheckForStateChange")]
  public static class ClassDeathWard {
-  static void Prefix(Pawn ___pawn){if(!ClassCasters.TryDeathWard(___pawn))ClassLegendary.TryUnyielding(___pawn);} // 1.74.0 不屈战魂在死亡守卫之后
+  static void Prefix(Pawn ___pawn){if(!ClassCasters.TryDeathWard(___pawn) && !ClassLegendary.TryUnyielding(___pawn))Gunslinger.TryCheatDeath(___pawn);} // 2026-11-19 枪手的欺骗死神排最后 // 1.74.0 不屈战魂在死亡守卫之后
  }
  // 召唤物死了不留尸体。
  [HarmonyPatch(typeof(Pawn),nameof(Pawn.Kill))]

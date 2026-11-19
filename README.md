@@ -2,7 +2,7 @@
 
 把《龙与地下城》（D&D）的种族、职业、冒险者等级、魔法物品、神祇与怪物带进 RimWorld 的大型内容模组。从最初的“命匣与巫妖”一路扩展而来，packageId 仍是 `local.lich.phylactery`，旧存档可以直接继续用。
 
-- **当前版本**：1.156.0（麻醉项圈、基因工作台拆分为独立模组、故事叙述者塔莉亚、竖版书脊、颅石上限、每级属性效果设置、精灵衰老）
+- **当前版本**：1.181.0（新职业心灵术士、枪手；竖版书脊贴图修复）
 - **游戏版本**：RimWorld 1.7
 - **详细说明**：游戏内容、各系统数值和完整更新日志见 [`使用说明.txt`](使用说明.txt)
 
@@ -39,7 +39,7 @@
 **冒险者系统**
 - 冒险者等级 1～20、六维属性（3.5 版负重表倍率）、购点开局，击杀、任务、工作和事件给经验。
 - 传奇等级 21～40 与传奇属性点、史诗恩赐、超凡 / 神话属性特性。
-- 十三个职业（战士、武僧、圣武士、野蛮人、游侠、游荡者、法师、牧师、德鲁伊、术士、器械师、邪术师、吟游诗人）及子职业（术士新增神圣之魂、暗影魔法、时钟之魂）、传奇职业能力；NPC 也会按派系拿职业。
+- 十四个职业（战士、武僧、圣武士、野蛮人、游侠、游荡者、法师、牧师、德鲁伊、术士、邪术师、吟游诗人，1.181.0 新增心灵术士、枪手）及子职业（术士新增神圣之魂、暗影魔法、时钟之魂；心灵术士 4 个：血肉塑形者、念动师、心灵感应者、灵跃者；枪手 4 条枪道：流浪者、双枪客、狙击手、先锋）、传奇职业能力；NPC 也会按派系拿职业。
 - 法术：法师法术书，牧师、德鲁伊、术士、邪术师、吟游诗人、圣武士、游侠、器械师各有法术表，戏法到九环，备法 / 已知法术、仪式与专注；射程外点目标会自动走近再施放。
 - 魔力湖泊：职业水晶、18 个任何职业都能学的通用秘传，以及 24 枚湖印（湖印法术与湖印被动）。
 - 自动施放：按钮右上角的小角标切换征召时自动施放，右键设置未征召时自动施放和资源门槛；设置里可以让技能对任何人释放。
@@ -79,7 +79,7 @@ ArtSource/     贴图源文件与各版本报告（版本备份 backup-* 不进�
 
 **DND边缘大陆 (LichPhylactery)** is a large RimWorld 1.7 content mod that brings Dungeons & Dragons into the rim: liches and phylacteries, giants, dragonborn, trolls, mind flayers and dozens of other heritable races; adventurer levels 1–40 with six ability scores, thirteen classes with subclasses, spellbooks and spell lists up to 9th level, mana-lake arcana and lake seals, configurable auto-cast, feats and legendary traits; D&D factions, events, an endless pocket-map dungeon, an adventurer contract board, a bestiary, deities and ascension, demon summoning and planar pacts; plus magic items, armor sets, alchemy and new workbenches. All D&D research lives in one research tab.
 
-- **Version:** 1.156.0 (anesthetic collar, gene workbench split out, storyteller Talia, vertical book spines, skull-stone cap, per-level ability effect setting, elf aging) · **Game:** RimWorld 1.7 · **packageId:** `local.lich.phylactery`
+- **Version:** 1.181.0 (new classes Psion and Gunslinger; vertical book spine texture fix) · **Game:** RimWorld 1.7 · **packageId:** `local.lich.phylactery`
 - **Required:** Harmony, Royalty, Biotech
 - **Optional:** Ideology, Vanilla Psycasts Expanded, Humanoid Alien Races (no longer needed; load before this mod if installed), and several other mods with small bridges that only load when present
 - **Install:** drop the folder into `RimWorld/Mods/`, enable it after its dependencies. Prebuilt DLLs are included; rebuild with `Source/Build.ps1` (PowerShell 7) if you change the code.
