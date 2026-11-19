@@ -45,8 +45,7 @@ namespace LichPhylactery {
   public static int UnlockedLevel(Phylactery box)=>box==null || box.Destroyed?0:Math.Min(box.level,LichMod.Settings.levelCap);
   public static bool Enemy(Pawn caster,Pawn p)=>p!=null && p!=caster && !p.Dead && p.Spawned && p.Map==caster.Map && p.HostileTo(caster);
   public static bool Frighten(Pawn caster,Pawn p){
-   // 1.44.0：独眼巨人本源免疫凝视类效果（巫妖法术、卷轴、半巫妖和拉洛克化身都走这里）。
-   if(p.RaceProps.IsMechanoid || Necro.Undead(p) || p.GetStatValue(StatDefOf.PsychicSensitivity)<=0 || Cyclops.GazeImmune(p))return false;
+   if(p.RaceProps.IsMechanoid || Necro.Undead(p) || p.GetStatValue(StatDefOf.PsychicSensitivity)<=0)return false;
    if(p.RaceProps.Humanlike)return p.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.PanicFlee,"恐惧凝视".Loc(),forced:true,forceWake:true);
    p.stances?.stunner.StunFor(FearStunTicks,caster,false,true,false);return true;
   }

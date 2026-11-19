@@ -19,7 +19,7 @@ namespace LichPhylactery {
   public static float Compute(Pawn p){
    if(p?.genes==null || Necro.Construct(p)!=null)return 1f;
    // 1.30.0：火巨人一项改为所有巨人血统（GiantKin）：成年霜巨人也是×200%，儿童随年龄长大。
-   // 1.44.0：HAR 巨人种族的胃容量写在种族扩展上（双头巨人 180%、独眼巨人 170%，儿童随年龄），与巨人血统、巨魔取较大者。
+   // 1.44.0：HAR 巨人种族的胃容量写在种族扩展上（儿童随年龄），与巨人血统、巨魔取较大者。
    return Mathf.Max(1f,Mathf.Max(Mathf.Max(GiantKin.Size(p),TrollAppearance.Size(p)),RaceSize.Stomach(p))*SmallBody.Size(p));
   }
 

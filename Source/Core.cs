@@ -57,7 +57,7 @@ namespace LichPhylactery {
    float value=0,total=0;
    foreach(var part in p.RaceProps.body.AllParts){float w=Math.Max(.001f,part.coverageAbs);total+=w;if(!p.health.hediffSet.PartIsMissing(part))value+=w*Mathf.Clamp01(p.health.hediffSet.GetPartHealth(part)/Math.Max(1f,PartHealth.Maximum(part,p)));}
    float rot=corpse.GetRotStage()==RotStage.Dessicated?.1f:corpse.GetRotStage()==RotStage.Rotting?.5f:1f;
-   return total<=0?0:100f*Mathf.Clamp(p.BodySize,.1f,4f)*value/total*rot;
+   return total<=0?0:100f*Mathf.Max(p.BodySize,.1f)*value/total*rot; // 1.173.0：体型不再封顶在 4
   }
   public static bool Pay(Pawn p,float points,float heat=0){var h=Lich(p);if(h==null || !h.Active || p.psychicEntropy==null || !p.psychicEntropy.IsPsychicallySensitive || h.Points+.0001f<points || p.psychicEntropy.WouldOverflowEntropy(heat))return false;if(heat>0 && !p.psychicEntropy.TryAddEntropy(heat,null,true,false))return false;p.psychicEntropy.OffsetPsyfocusDirectly(-points/h.Power);return true;}
   public static float Mentoring(Pawn master){float s=Math.Max(0,master?.GetStatValue(StatDefOf.PsychicSensitivity)??0);return 1f+1.5f*s/(s+2f);}

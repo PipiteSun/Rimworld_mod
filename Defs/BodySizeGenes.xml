@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.177.0 通用体型基因（Peter：按 0.7 / 2 / 3 / 4 的挡位）。任何种族都能装，四档互斥（也和古巨兽后裔的无限生长、Big and Small 的体型基因互斥）。
+     装上以后角色的体型倍率 = 档位 × 种族本源的小倍率（Patches/BodySizeTweaks.xml：云巨人 ×1.1、风暴巨人 ×1.2……），
+     不和种族自带的体型相乘（代码见 Source/SmallBody.cs 的 universal）。生命、近战、负重照巨躯规则按体型算，胃容量和画面跟着变。 -->
+<Defs>
+
+  <GeneDef Name="LP_BodySizeTierBase" Abstract="True">
+    <displayCategory>Miscellaneous</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>3</biostatCpx>
+    <exclusionTags>
+      <li>LP_BodySizeTier</li>
+      <li>BS_BodySizeHuge</li>
+      <li>BodySize</li>
+    </exclusionTags>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_BodySizeTierBase">
+    <defName>LP_SizeSmall</defName>
+    <label>矮小之躯</label>
+    <description>携带者的身体只有常人的七成大：体型×0.7（显示约0.8倍）。吃得少、目标小，负重也跟着变少。</description>
+    <iconPath>BodySize/Small</iconPath>
+    <displayOrderInCategory>3001</displayOrderInCategory>
+    <biostatCpx>1</biostatCpx>
+    <biostatMet>1</biostatMet>
+    <customEffectDescriptions>
+      <li>体型×0.7（显示约0.8倍）；装上后取代种族自带的体型，再乘种族本源的小倍率。</li>
+    </customEffectDescriptions>
+    <modExtensions>
+      <li Class="LichPhylactery.SmallBodyExtension"><bodySize>0.7</bodySize><renderScale>0.8</renderScale><universal>true</universal></li>
+    </modExtensions>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_BodySizeTierBase">
+    <defName>LP_SizeLarge</defName>
+    <label>巨人之躯</label>
+    <description>携带者长成巨人的个头：体型×2（显示约1.4倍）。生命、近战、负重按巨躯规则随体型提高，胃口也大了。</description>
+    <iconPath>BodySize/Large</iconPath>
+    <displayOrderInCategory>3002</displayOrderInCategory>
+    <biostatMet>-2</biostatMet>
+    <customEffectDescriptions>
+      <li>体型×2（显示约1.4倍，儿童随年龄长大）；装上后取代种族自带的体型，再乘种族本源的小倍率。</li>
+      <li>生命×150%、近战×130%、负重×150%（巨躯规则，强度100%时）；胃容量×2。</li>
+    </customEffectDescriptions>
+    <modExtensions>
+      <li Class="LichPhylactery.SmallBodyExtension"><bodySize>2</bodySize><renderScale>1.4</renderScale><universal>true</universal></li>
+    </modExtensions>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_BodySizeTierBase">
+    <defName>LP_SizeHuge</defName>
+    <label>山岳之躯</label>
+    <description>携带者像一座小山：体型×3（显示约1.75倍）。生命、近战、负重按巨躯规则随体型提高。</description>
+    <iconPath>BodySize/Huge</iconPath>
+    <displayOrderInCategory>3003</displayOrderInCategory>
+    <biostatCpx>4</biostatCpx>
+    <biostatMet>-4</biostatMet>
+    <customEffectDescriptions>
+      <li>体型×3（显示约1.75倍，儿童随年龄长大）；装上后取代种族自带的体型，再乘种族本源的小倍率。</li>
+      <li>生命×200%、近战×160%、负重×200%（巨躯规则，强度100%时）；胃容量×3。</li>
+    </customEffectDescriptions>
+    <modExtensions>
+      <li Class="LichPhylactery.SmallBodyExtension"><bodySize>3</bodySize><renderScale>1.75</renderScale><universal>true</universal></li>
+    </modExtensions>
+  </GeneDef>
+
+  <GeneDef ParentName="LP_BodySizeTierBase">
+    <defName>LP_SizeColossal</defName>
+    <label>擎天之躯</label>
+    <description>携带者高得像要撑起天空：体型×4（显示约2倍）。生命、近战、负重按巨躯规则随体型提高。</description>
+    <iconPath>BodySize/Colossal</iconPath>
+    <displayOrderInCategory>3004</displayOrderInCategory>
+    <biostatCpx>5</biostatCpx>
+    <biostatMet>-6</biostatMet>
+    <customEffectDescriptions>
+      <li>体型×4（显示约2倍，儿童随年龄长大）；装上后取代种族自带的体型，再乘种族本源的小倍率。</li>
+      <li>生命×250%、近战×190%、负重×250%（巨躯规则，强度100%时）；胃容量×4。</li>
+    </customEffectDescriptions>
+    <modExtensions>
+      <li Class="LichPhylactery.SmallBodyExtension"><bodySize>4</bodySize><renderScale>2</renderScale><universal>true</universal></li>
+    </modExtensions>
+  </GeneDef>
+
+</Defs>

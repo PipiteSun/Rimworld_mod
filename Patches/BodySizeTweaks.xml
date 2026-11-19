@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.177.0 种族本源对通用体型基因的小倍率（Peter：不同的种族可以在本源基因内加入对体型基因的小倍数调整）。
+     只在角色带通用体型基因（Defs/BodySizeGenes.xml）时生效：体型 = 档位 × 这里的倍率。没写的种族是 ×1。
+     云巨人、风暴巨人、天穹神裔照它们现在自带的体型换算（2.2 = 2×1.1，2.4 = 2×1.2，2.5 = 2×1.25）。 -->
+<Patch>
+  <Operation Class="PatchOperationAddModExtension"><xpath>Defs/GeneDef[defName="LP_CloudGiantCore"]</xpath><value><li Class="LichPhylactery.SizeGeneTweakExtension"><factor>1.1</factor></li></value></Operation>
+  <Operation Class="PatchOperationAddModExtension"><xpath>Defs/GeneDef[defName="LP_StormGiantCore"]</xpath><value><li Class="LichPhylactery.SizeGeneTweakExtension"><factor>1.2</factor></li></value></Operation>
+  <Operation Class="PatchOperationAddModExtension"><xpath>Defs/GeneDef[defName="LP_TitanStature"]</xpath><value><li Class="LichPhylactery.SizeGeneTweakExtension"><factor>1.25</factor></li></value></Operation>
+  <Operation Class="PatchOperationAddModExtension"><xpath>Defs/GeneDef[defName="LP_OgreStature"]</xpath><value><li Class="LichPhylactery.SizeGeneTweakExtension"><factor>1.05</factor></li></value></Operation>
+  <Operation Class="PatchOperationAddModExtension"><xpath>Defs/GeneDef[defName="LP_DwarfStature"]</xpath><value><li Class="LichPhylactery.SizeGeneTweakExtension"><factor>0.9</factor></li></value></Operation>
+  <Operation Class="PatchOperationAddModExtension"><xpath>Defs/GeneDef[defName="LP_HalflingBlood"]</xpath><value><li Class="LichPhylactery.SizeGeneTweakExtension"><factor>0.85</factor></li></value></Operation>
+  <Operation Class="PatchOperationAddModExtension"><xpath>Defs/GeneDef[defName="LP_GnomeBlood"]</xpath><value><li Class="LichPhylactery.SizeGeneTweakExtension"><factor>0.85</factor></li></value></Operation>
+</Patch>

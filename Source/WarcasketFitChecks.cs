@@ -38,15 +38,14 @@ namespace LichPhylactery {
      if(!Near(h1.x,refO.x) || !Near(h1.z,refO.y) || !Near(w1.x,-refO.x))fit=false;log+=b.defName+" "+h0.x.ToString("0.00")+"→"+h1.x.ToString("0.00")+"; ";
     }
     Check(headsOk && fit,"warcasket head aligned to reference body (east x): "+log+"unencased heads untouched "+headsOk+"; shots in "+dir);
-    // 3. 双头巨人、六臂蛇人：装着战棺时第二个头、额外手臂、蛇尾隐藏，主头回正中；脱了恢复。
-    var et=Add(Person());GenSpawn.Spawn(et,ScCell(-6,-14),map);et.genes.SetXenotype(DefDatabase<XenotypeDef>.GetNamed("LP_EttinKin"));
+    // 3. 六臂蛇人：装着战棺时额外手臂、蛇尾隐藏；脱了恢复。（1.171.0 双头巨人已移除）
     var ma=Add(Person());GenSpawn.Spawn(ma,ScCell(-2,-14),map);ma.genes.SetXenotype(DefDatabase<XenotypeDef>.GetNamed("LP_MarilithKin"));
-    int Extra(Pawn x){Redraw(x);var parms=DrawParms(x,Rot4.South);parms.flags=PawnRenderFlags.Clothes|PawnRenderFlags.Headgear;return RenderNodes(x).Count(n=>n.Props is PawnRenderNodeProperties_LPPart pp && pp.part!="cyclopsEye" && n.Worker.CanDrawNow(n,parms));}
-    float eh0=et.Drawer.renderer.BaseHeadOffsetAt(Rot4.South).x;int e0=Extra(et),m0=Extra(ma);
-    var worn=new List<Apparel>();foreach(var x in new[]{et,ma}){x.apparel.DestroyAll();foreach(var n in CasketSet)worn.Add(WearVisual(x,n));}
-    int e1=Extra(et),m1=Extra(ma);float eh1=et.Drawer.renderer.BaseHeadOffsetAt(Rot4.South).x;Shot(et,Rot4.South,Path.Combine(dir,"Ettin_S.png"));Shot(ma,Rot4.South,Path.Combine(dir,"Marilith_S.png"));
-    foreach(var a in worn){a.Wearer?.apparel.Remove(a);a.Destroy();}int e2=Extra(et),m2=Extra(ma);
-    Check(e0>0 && m0>0 && e1==0 && m1==0 && e2==e0 && m2==m0 && Math.Abs(eh0)>.1f && Near(eh1,0f),"encased ettin/marilith hide extra parts ("+e0+"/"+m0+" → "+e1+"/"+m1+" → "+e2+"/"+m2+"), ettin head centred "+eh0+"→"+eh1);
+    int Extra(Pawn x){Redraw(x);var parms=DrawParms(x,Rot4.South);parms.flags=PawnRenderFlags.Clothes|PawnRenderFlags.Headgear;return RenderNodes(x).Count(n=>n.Props is PawnRenderNodeProperties_LPPart pp && n.Worker.CanDrawNow(n,parms));}
+    int m0=Extra(ma);
+    var worn=new List<Apparel>();foreach(var x in new[]{ma}){x.apparel.DestroyAll();foreach(var n in CasketSet)worn.Add(WearVisual(x,n));}
+    int m1=Extra(ma);Shot(ma,Rot4.South,Path.Combine(dir,"Marilith_S.png"));
+    foreach(var a in worn){a.Wearer?.apparel.Remove(a);a.Destroy();}int m2=Extra(ma);
+    Check(m0>0 && m1==0 && m2==m0,"encased marilith hides extra parts ("+m0+" → "+m1+" → "+m2+")");
     // 4. 泰坦战士 20 装战棺：根节点 ×√1.5、战棺件再乘身体类型修正；泰坦化时根节点跟着变到 ×√1.875，结束复原。
     var t=Add(S2Pawn("LP_Class_Fighter",20,TitanWarrior.Sub,20));t.SetFaction(Faction.OfPlayer);ScSpawn(t,ScCell(2,-14));TitanWarrior.Refresh(Adventurer.Get(t));t.story.bodyType=BodyTypeDefOf.Hulk;
     t.apparel.DestroyAll();foreach(var n in CasketSet)WearVisual(t,n);Redraw(t);

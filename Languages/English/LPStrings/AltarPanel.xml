@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.178.0 代码字符串（AltarPanel.cs 与仪式台按钮）：<zh> 中文原文，<en> 译文；首尾空格有意义。 -->
+<LPStrings>
+  <s><zh>仪式</zh><en>Ritual</en></s>
+  <s><zh>献祭</zh><en>Sacrifice</en></s>
+  <s><zh>造物</zh><en>Constructs</en></s>
+  <s><zh>植入物</zh><en>Implants</en></s>
+  <s><zh>锻造与抄写</zh><en>Forging &amp; scribing</en></s>
+  <s><zh>  · 已暂停</zh><en>  · paused</en></s>
+  <s><zh>  · 执行者 </zh><en>  · performer </en></s>
+  <s><zh>  · 等待：</zh><en>  · waiting: </en></s>
+  <s><zh>  · 队列中 </zh><en>  · queued </en></s>
+  <s><zh> · 心灵敏感度 </zh><en> · psychic sensitivity </en></s>
+  <s><zh> · 血肉 </zh><en> · flesh </en></s>
+  <s><zh> 天</zh><en> days</en></s>
+  <s><zh> 次</zh><en>x</en></s>
+  <s><zh>一直做下去（材料够、条件满足就做）。</zh><en>Keep doing it (whenever materials and conditions allow).</en></s>
+  <s><zh>不需要材料</zh><en>No materials</en></s>
+  <s><zh>休眠 · </zh><en>Dormant · </en></s>
+  <s><zh>工作中 · </zh><en>Active · </en></s>
+  <s><zh>删除</zh><en>Delete</en></s>
+  <s><zh>加一次。已有同类按次数的工作单时，在它上面加一次。</zh><en>Add one. If a counted bill of this kind exists, adds one to it.</en></s>
+  <s><zh>可以排入。</zh><en>Can be queued.</en></s>
+  <s><zh>台子12格内有命匣，点上面的按钮选一个。</zh><en>There is a phylactery within 12 cells; pick one with the button above.</en></s>
+  <s><zh>台子12格内没有命匣。还没有巫妖时，先在「仪式」页排入巫妖仪式；已有命匣就把它搬到台子旁边。</zh><en>No phylactery within 12 cells. Without a lich yet, queue the lich ritual on the Ritual tab; otherwise move the phylactery next to the altar.</en></s>
+  <s><zh>命匣失效</zh><en>Phylactery inactive</en></s>
+  <s><zh>命匣献祭经验 </zh><en>phylactery sacrifice XP </en></s>
+  <s><zh>命匣等级 </zh><en>Phylactery level </en></s>
+  <s><zh>在这里排入仪式、献祭、造物和植入物培育；工人按队列从上到下来台子做。造物唤醒与重塑的追加材料从全图吸收。</zh><en>Queue rituals, sacrifices, constructs and implant growing here; workers take the queue from top to bottom. Extra materials for awakening and reshaping constructs are taken from the whole map.</en></s>
+  <s><zh>复生中：还有 </zh><en>Reviving: </en></s>
+  <s><zh>工人按从上到下的顺序挑能做的工作单。「设置」打开原版的详细设置（执行者、材料筛选、搜索半径等）。</zh><en>Workers pick the first doable bill from the top. "Settings" opens the vanilla bill details (performer, ingredient filter, search radius, etc.).</en></s>
+  <s><zh>工作队列（</zh><en>Work queue (</en></s>
+  <s><zh>死灵造物（</zh><en>Undead constructs (</en></s>
+  <s><zh>）</zh><en>)</en></s>
+  <s><zh>（有效 </zh><en> (effective </en></s>
+  <s><zh>，</zh><en>, </en></s>
+  <s><zh>、</zh><en>, </en></s>
+  <s><zh>巫妖 · 存活</zh><en>Lich · alive</en></s>
+  <s><zh>已排入巫妖仪式：</zh><en>Lich ritual queued: </en></s>
+  <s><zh>已死亡</zh><en>Dead</en></s>
+  <s><zh>已满级</zh><en>Max level</en></s>
+  <s><zh>当前条件不满足。</zh><en>Conditions are not met right now.</en></s>
+  <s><zh>持续</zh><en>Forever</en></s>
+  <s><zh>指定执行者…</zh><en>Choose performer…</en></s>
+  <s><zh>排入 +1</zh><en>Queue +1</en></s>
+  <s><zh>暂不可排入</zh><en>Not available now</en></s>
+  <s><zh>暂停</zh><en>Pause</en></s>
+  <s><zh>继续</zh><en>Resume</en></s>
+  <s><zh>设置</zh><en>Settings</en></s>
+  <s><zh>更换命匣…</zh><en>Change phylactery…</en></s>
+  <s><zh>选择命匣…</zh><en>Choose phylactery…</en></s>
+  <s><zh>服务命匣</zh><en>Served phylactery</en></s>
+  <s><zh>未绑定</zh><en>Unbound</en></s>
+  <s><zh>材料：</zh><en>Materials: </en></s>
+  <s><zh>死灵仪式台</zh><en>Necromantic altar</en></s>
+  <s><zh>没有符合条件的殖民者（尚未转化、心灵敏感度大于0）</zh><en>No eligible colonist (not yet converted, psychic sensitivity above 0)</en></s>
+  <s><zh>献祭 </zh><en>Sacrifice </en></s>
+  <s><zh>献祭、造物胚体与补给都服务于这里选中的命匣。命匣必须留在仪式台12格内。</zh><en>Sacrifices, construct embryos and refills all serve the phylactery chosen here. It must stay within 12 cells of the altar.</en></s>
+  <s><zh>精神力 </zh><en>Psyfocus </en></s>
+  <s><zh>统御 </zh><en>Command </en></s>
+  <s><zh>选一位殖民者执行；被选中的人会成为巫妖。</zh><en>Pick a colonist to perform it; the chosen one becomes a lich.</en></s>
+  <s><zh>队列是空的。在上面点「排入」或「持续」。</zh><en>The queue is empty. Use "Queue" or "Forever" above.</en></s>
+  <s><zh>需要研究：</zh><en>Requires research: </en></s>
+  <s><zh>仪式台面板</zh><en>Altar panel</en></s>
+  <s><zh>打开死灵仪式台面板：查看服务命匣与造物，按分类排入巫妖仪式、献祭、造物和植入物培育，管理工作队列。</zh><en>Open the necromantic altar panel: see the served phylactery and constructs, queue the lich ritual, sacrifices, constructs and implant growing by category, and manage the work queue.</en></s>
+</LPStrings>

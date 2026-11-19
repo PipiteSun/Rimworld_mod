@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.180.0 Alpha Memes「精神失常」也认异象的「虚空宣泄」：换成 LichPhylactery.Thought_VoidCatharsisMadness，并加第二档（带精神失常时 +50）。说明见 Source/MadnessVoidCatharsis.cs。 -->
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Alpha Memes</li>
+    </mods>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/ThoughtDef[defName="VoidCatharsis"]/thoughtClass</xpath>
+      <nomatch Class="PatchOperationSequence">
+        <operations>
+          <li Class="PatchOperationAdd">
+            <xpath>Defs/ThoughtDef[defName="VoidCatharsis"]</xpath>
+            <value><thoughtClass>LichPhylactery.Thought_VoidCatharsisMadness</thoughtClass></value>
+          </li>
+          <li Class="PatchOperationAdd">
+            <xpath>Defs/ThoughtDef[defName="VoidCatharsis"]/stages</xpath>
+            <value>
+              <li>
+                <label>疯狂的虚空宣泄</label>
+                <description>脑子里积攒的疯狂终于倾泻出来了。那些自称“正常”的人根本不懂，这才是真正的清醒！</description>
+                <baseMoodEffect>50</baseMoodEffect>
+              </li>
+            </value>
+          </li>
+        </operations>
+      </nomatch>
+    </match>
+  </Operation>
+</Patch>

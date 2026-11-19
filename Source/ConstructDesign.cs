@@ -47,9 +47,9 @@ namespace LichPhylactery {
    if(Necro.Used(master)+Control(kind)>Necro.Lich(master).box.Capacity)return "主人统御容量不足；胚体可保留到容量空闲时。".Loc();
    if(plan.meat<0 || plan.meat>600 || plan.steel<0 || plan.steel>300 || plan.plasteel<0 || plan.plasteel>150 || !ConstructDesign.Specialties.Contains(plan.specialty))return "配置超出允许范围。".Loc();
    if(plan.MajorCount(kind)>ConstructDesign.MajorPassionLimit)return ConstructDesign.PassionLimitReason;
-   if(supplies.Where(RawMeat).Sum(t=>t.stackCount)<plan.meat)return "胚体12格内可用的新鲜生肉不足。".Loc();
-   if(supplies.Where(t=>t.def==ThingDefOf.Steel).Sum(t=>t.stackCount)<plan.steel)return "胚体12格内可用的钢铁不足。".Loc();
-   if(supplies.Where(t=>t.def==ThingDefOf.Plasteel).Sum(t=>t.stackCount)<plan.plasteel)return "胚体12格内可用的玻璃钢不足。".Loc();
+   if(supplies.Where(RawMeat).Sum(t=>t.stackCount)<plan.meat)return "地图上可用的新鲜生肉不足。".Loc();
+   if(supplies.Where(t=>t.def==ThingDefOf.Steel).Sum(t=>t.stackCount)<plan.steel)return "地图上可用的钢铁不足。".Loc();
+   if(supplies.Where(t=>t.def==ThingDefOf.Plasteel).Sum(t=>t.stackCount)<plan.plasteel)return "地图上可用的玻璃钢不足。".Loc();
    return null;
   }
   public bool Awaken(ConstructDesign plan,out Pawn result,out string reason){
@@ -114,7 +114,7 @@ namespace LichPhylactery {
    Widgets.Label(new Rect(0,bottom-1,rect.width,30),reason??("可用材料：生肉 ".Loc()+supplies.Where(ConstructSeed.RawMeat).Sum(t=>t.stackCount)+" / 钢铁 ".Loc()+supplies.Where(t=>t.def==ThingDefOf.Steel).Sum(t=>t.stackCount)+" / 玻璃钢 ".Loc()+supplies.Where(t=>t.def==ThingDefOf.Plasteel).Sum(t=>t.stackCount)));
    if(Widgets.ButtonText(new Rect(0,bottom+34,120,34),"基础配置".Loc()))plan=new ConstructDesign{specialty=plan.specialty};
    if(Widgets.ButtonText(new Rect(134,bottom+34,130,34),"保存方案".Loc())){seed.design=plan.Copy();Close();}
-   Widgets.Label(new Rect(278,bottom+34,rect.width-470,38),"唤醒吸收12格内可达、未禁用的材料。".Loc());
+   Widgets.Label(new Rect(278,bottom+34,rect.width-470,38),"唤醒从全图吸收可达、未禁用的材料。".Loc());
    GUI.enabled=reason==null;if(Widgets.ButtonText(new Rect(rect.width-175,bottom+34,175,34),"投入材料并唤醒".Loc())){Pawn pawn;string error;if(seed.Awaken(plan,out pawn,out error)){Find.Selector.ClearSelection();Find.Selector.Select(pawn);Close();}else Messages.Message(error,MessageTypeDefOf.RejectInput,false);}GUI.enabled=true;
   }
   static int Material(float x,float y,float width,string label,int value,int max,int step){Widgets.Label(new Rect(x,y,width,25),label+"：".Loc()+value);return Mathf.Clamp(Mathf.RoundToInt(Widgets.HorizontalSlider(new Rect(x,y+32,width,26),value,0,max)/step)*step,0,max);}

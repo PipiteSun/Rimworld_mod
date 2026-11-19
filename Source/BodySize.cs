@@ -17,7 +17,7 @@ namespace LichPhylactery {
   void ExposeBodySize(){Scribe_Values.Look(ref bodySizeRule,"bodySizeRule",true);Scribe_Values.Look(ref bodySizeStrength,"bodySizeStrength",100);bodySizeStrength=Math.Max(0,Math.Min(200,bodySizeStrength));}
  }
  public static class BodySize {
-  public const float HealthPerSize=.5f,MeleePerSize=.3f,LegacyFactor=1.5f;
+  public const float HealthPerSize=.5f,MeleePerSize=.3f,CarryPerSize=.5f,LegacyFactor=1.5f;
   // legacy=1.22.1 公式（火巨人在部位生命上×1.5，HealthScale 不变）；
   // on=false 时生命取旧的×1.5但取较大值、没有近战加成；强度0%等同关闭。
   public struct Rule {
@@ -45,13 +45,13 @@ namespace LichPhylactery {
   }
   // 1.30.0：火巨人一项改为所有巨人血统（GiantKin，火巨人、霜巨人……）；火巨人数值不变。
   // 1.33.0：六臂蛇人的体型是种族自带的（HAR 种族 baseBodySize 1.6，不走 get_BodySize 补丁），这里按种族扩展再乘一项（成年 1.6，儿童随年龄长大）。
-  // 1.44.0：种族一项改为通用的 RaceSize（六臂蛇人 1.6、双头巨人 2.0、独眼巨人 1.8）；这两族巨人的本源基因 adultSize 是 1，所以 GiantKin.Size 那一项是 1，不会叠乘。
+  // 1.44.0：种族一项改为通用的 RaceSize（六臂蛇人 1.6）。
   public static float Size(Pawn p)=>Mathf.Max(GiantKin.Size(p),TrollAppearance.Size(p))*SmallBody.Size(p)*RaceSize.SizeFactor(p);
   static Entry Get(Pawn p){
    var e=cache.GetOrCreateValue(p);
    var list=p.health?.hediffSet?.hediffs;int hediffs=list?.Count??0,genes=p.genes.Endogenes.Count+p.genes.Xenogenes.Count,years=p.ageTracker?.AgeBiologicalYears??0;
    var tm=Current.Game?.tickManager;int now=tm?.TicksGame??0;
-   if(tm!=null && e.hediffs==hediffs && e.genes==genes && e.years==years && now>=e.tick && now-e.tick<StaleTicks)return e;
+   if(tm!=null && e.hediffs==hediffs && e.genes==genes && e.years==years && now>=e.tick && (long)now-e.tick<StaleTicks)return e; // 1.173.0：Invalidate 把 tick 设成 int.MinValue，原来的 int 减法会溢出成负数、缓存清不掉
    e.construct=Necro.Construct(p)!=null;
    // 1.30.0：fire/fireAdult 扩大为“巨人血统/成年巨人”：霜巨人和火巨人一样，生命不低于×150%（关闭巨躯规则时也是旧的×150%）。
    e.size=e.construct?1f:Size(p);var kin=GiantKin.Of(p);e.fire=kin!=null;e.fireAdult=e.fire && GiantKin.Size(p)>=kin.adultSize-.0001f && kin.adultSize>=2f-.0001f;
@@ -66,6 +66,10 @@ namespace LichPhylactery {
    return e.fireAdult?Mathf.Max(h,LegacyFactor):h;
   }
   static float Melee(Entry e,Rule r)=>e.construct || r.legacy || !r.on?1f:1f+MeleePerSize*r.k*Mathf.Max(0f,e.size-1f);
+  // 1.172.0 负重：手上搬运量（CarryingCapacity）与背包 / 商队载重（MassUtility.Capacity）×(1 + 0.5×强度×(S−1))。
+  // 原版这两项本来就按体型线性相乘，这里是在其上再乘（成年火巨人 2 × 1.5 = 普通人的 3 倍）；体型不到 1、死灵造物、规则关闭时不变。
+  static float Carry(Entry e,Rule r)=>e.construct || r.legacy || !r.on?1f:1f+CarryPerSize*r.k*Mathf.Max(0f,e.size-1f);
+  public static float CarryFactor(Pawn p)=>p?.genes==null?1f:Carry(Get(p),ActiveRule);
   public static float HealthFactor(Pawn p)=>p?.genes==null?1f:Health(Get(p),ActiveRule);
   public static float HealthFactor(Pawn p,Rule r)=>p?.genes==null?1f:Health(Get(p),r);
   public static float MeleeFactor(Pawn p)=>p?.genes==null?1f:Melee(Get(p),ActiveRule);
@@ -132,11 +136,25 @@ namespace LichPhylactery {
   public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p)val*=BodySize.MeleeFactor(p);}
   public override string ExplanationPart(StatRequest req){if(!(req.Thing is Pawn p))return null;float f=BodySize.MeleeFactor(p);return f==1f?null:"巨躯：×".Loc()+f.ToStringPercent();}
  }
+ public class StatPart_BodySizeCarry : StatPart {
+  public override void TransformValue(StatRequest req,ref float val){if(req.Thing is Pawn p)val*=BodySize.CarryFactor(p);}
+  public override string ExplanationPart(StatRequest req){if(!(req.Thing is Pawn p))return null;float f=BodySize.CarryFactor(p);return f==1f?null:"巨躯：×".Loc()+f.ToStringPercent();}
+ }
  [StaticConstructorOnStartup]
  public static class BodySizeStartup {
   static BodySizeStartup(){
    var stat=StatDefOf.MeleeDamageFactor;if(stat.parts==null)stat.parts=new List<StatPart>();
    if(!stat.parts.Any(p=>p is StatPart_BodySizeMelee))stat.parts.Add(new StatPart_BodySizeMelee{parentStat=stat});
+   var carry=StatDefOf.CarryingCapacity;if(carry.parts==null)carry.parts=new List<StatPart>();
+   if(!carry.parts.Any(p=>p is StatPart_BodySizeCarry))carry.parts.Add(new StatPart_BodySizeCarry{parentStat=carry});
+  }
+ }
+ // 背包 / 商队载重（原版 35 × 体型）：同样乘巨躯负重倍率，说明里补一行。
+ [HarmonyPatch(typeof(MassUtility),nameof(MassUtility.Capacity))]
+ public static class BodySizeMassCapacity {
+  static void Postfix(Pawn p,System.Text.StringBuilder explanation,ref float __result){
+   if(p?.genes==null || __result<=0f)return;float f=BodySize.CarryFactor(p);if(f==1f)return;
+   __result*=f;explanation?.Append("（"+"巨躯：×".Loc()+f.ToStringPercent()+"）");
   }
  }
  // 与构造体材料、其他模组的 HealthScale 补丁相乘。

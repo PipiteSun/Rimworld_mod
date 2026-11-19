@@ -26,7 +26,7 @@ namespace LichPhylactery {
     // 1. 表：每个有种族加值的种族都有亲和条目；传奇种族分档
     var missing=Adventurer.Racial.Keys.Where(k=>!Affinity.Table.ContainsKey(k)).ToList();
     var t=Affinity.Table;
-    Check(missing.Count==0 && t["LP_FireGiant"].legendary && t["Lich"].legendary && t["LP_Ettin"].legendary && !t["LP_Elf"].legendary && !t["LP_HalfOrc"].legendary && !t[Affinity.HumanKey].legendary && Near(t["LP_FireGiant"].StrongMult,1.75f) && Near(t["LP_Elf"].StrongMult,1.5f),"affinity table covers every racial-bonus race ("+(missing.Count==0?"ok":"missing "+string.Join(",",missing))+"); giants/lich are legendary-tier ×1.75, elf/half-orc/human common ×1.5");
+    Check(missing.Count==0 && t["LP_FireGiant"].legendary && t["Lich"].legendary && !t["LP_Elf"].legendary && !t["LP_HalfOrc"].legendary && !t[Affinity.HumanKey].legendary && Near(t["LP_FireGiant"].StrongMult,1.75f) && Near(t["LP_Elf"].StrongMult,1.5f),"affinity table covers every racial-bonus race ("+(missing.Count==0?"ok":"missing "+string.Join(",",missing))+"); giants/lich are legendary-tier ×1.75, elf/half-orc/human common ×1.5");
     // 1b. 1.165.0：亡灵大军 4 个异种和其他 mod 的异种都有条目，每行至少一项擅长；原版尼安德特人按异种查、名字用异种自己的；基准人仍是人类
     {
      var noStrong=t.Values.Where(a=>a.key!=Affinity.HumanKey && !a.strong.Any(b=>b) && !a.legendary).Select(a=>a.key).ToList();
@@ -54,13 +54,7 @@ namespace LichPhylactery {
     var giant=AdvPawn(DefDatabase<XenotypeDef>.GetNamed("LP_FireGiant"));var hg=AdvAt(giant,10);hg.legendSpent[Legend.Health]=10;
     hg.scores[Adventurer.Con]=14;hg.Dirty();
     Check(hg.Affinity.key=="LP_FireGiant" && Near(Legend.HealthFactor(hg),1.35f) && Near(hg.AMod(Adventurer.Con),2f) && Near(Affinity.WholeMult(hg,Adventurer.Con),1.75f) && hg.Mod(Adventurer.Con)==2 && hg.Cap(Adventurer.Con)==20,"fire giant (legendary tier): legend health 10 = ×"+Legend.HealthFactor(hg).ToString("0.###")+", Con +2 with the whole linear effect ×1.75 (1.121.0) while the score/modifier/cap stay 14/+2/20");
-    // 5. 双头巨人（1.102.0 起是人类 + 异种型）按异种型查表
-    var ettinKind=DefDatabase<PawnKindDef>.GetNamedSilentFail("LP_EttinColonist");
-    if(ettinKind!=null){
-     var ettin=PawnGenerator.GeneratePawn(new PawnGenerationRequest(ettinKind,Faction.OfPlayer,PawnGenerationContext.NonPlayer,-1,forceGenerateNewPawn:true,allowDead:false,allowDowned:false,canGeneratePawnRelations:false,mustBeCapableOfViolence:true,fixedBiologicalAge:25f,fixedChronologicalAge:25f));advMade.Add(ettin);
-     var hx=Adventurer.Get(ettin);
-     Check(hx!=null && ettin.def==ThingDefOf.Human && hx.Affinity.key=="LP_EttinKin" && hx.Affinity.legendary && Near(Affinity.ScoreMult(hx,Adventurer.Con),1.75f) && Near(Affinity.ScoreMult(hx,Adventurer.Int),.5f) && Near(Affinity.LegendMult(hx,Legend.Melee),1.75f),"ettin (human + LP_EttinKin xenotype, 1.102.0) uses the LP_EttinKin entry: Con ×1.75, Int ×0.5, legend melee ×1.75");
-    }else Check(!ModsConfig.IsActive("erdelf.humanoidalienraces"),"HAR ettin affinity check skipped (HAR not loaded)");
+    // 5.（1.171.0 双头巨人已移除，这条检查跟着去掉）
     // 6. 设置关掉：全部 ×1；部位生命变少时伤口缩小
     s.adventurerAffinity=false;he.Dirty();hh.Dirty();
     float reOff=Research(he)-1f;bool allOne=Near(Affinity.ScoreMult(he,Adventurer.Int),1f) && Near(Affinity.LegendMult(hh,Legend.Health),1f) && Near(Legend.HealthFactor(hg),1.2f) && Affinity.Tag(he,Adventurer.Int)=="";

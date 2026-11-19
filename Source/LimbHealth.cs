@@ -9,8 +9,8 @@ using Verse;
 using UnityEngine;
 namespace LichPhylactery {
  public partial class Hediff_Lich {
-  // 1.33.0：六臂蛇人的蛇尾代替双腿，也能强化。1.44.0：双头巨人的第二个头、独眼巨人的独眼同样算主要部位。
-  static readonly HashSet<string> MajorParts=new HashSet<string>{"Torso","Head","Brain","Spine","Heart","Lung","Liver","Kidney","Stomach","Eye","Ear","Arm","Leg","LP_SerpentTail","LP_EttinHead","LP_CyclopsEye"};
+  // 1.33.0：六臂蛇人的蛇尾代替双腿，也能强化。
+  static readonly HashSet<string> MajorParts=new HashSet<string>{"Torso","Head","Brain","Spine","Heart","Lung","Liver","Kidney","Stomach","Eye","Ear","Arm","Leg","LP_SerpentTail"};
   public static bool IsMajorPart(BodyPartRecord part)=>part!=null && MajorParts.Contains(part.def.defName);
   public bool CanStrengthenPart(BodyPartRecord part)=>IsMajorPart(part) && pawn.RaceProps.body.AllParts.Contains(part) && !part.def.conceptual && !pawn.health.hediffSet.PartIsMissing(part) && !DndImplants.ArtifactOn(pawn,part); // 1.114.0 维克那神器自带意志，不能强化
   public IEnumerable<BodyPartRecord> StrengthenableParts=>pawn.RaceProps.body.AllParts.Where(CanStrengthenPart);

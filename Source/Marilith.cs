@@ -12,12 +12,12 @@ namespace LichPhylactery {
  // 1.33.0 六臂蛇人（原为 Humanoid Alien Races 种族）。1.102.0 起改成原版人类 + 异种型 LP_MarilithKin（Defs/Marilith_Xenotype.xml，不需要 HAR）：
  // 体型、六臂、蛇尾都在“蛇身本源”基因上（MarilithExtension + 渲染节点，见 Source/XenoParts.cs），旧档里的 HAR 种族读档时转成人类（LegacyRaceSave）。
  // 这里是规则：种族识别、六臂操作加成、副手连击、蛇行、冷血、缠绕、剑刃风暴、上半身贴图、穿不上裤子。
- // 1.44.0：体型、渲染、胃容量字段移到通用的 RaceSizeExtension（Source/HARGiants.cs，双头巨人、独眼巨人共用）。
+ // 1.44.0：体型、渲染、胃容量字段移到通用的 RaceSizeExtension（Source/RaceSize.cs）。
  public class MarilithExtension : RaceSizeExtension {
   public MarilithExtension(){adultSize=1.6f;renderScale=1.3f;} // 巨躯规则用的成年体型倍率、整体渲染缩放（衣服、额外手臂、蛇尾一起放大），儿童随年龄长大
  }
- // 1.44.0 副手连击改成通用扩展（挂在基因上）：六臂连击 max 2、按额外手臂对数；双头巨人的左右开弓 max 1、要双头巨人的身体且两只手都能用。
- public class OffhandExtension : DefModExtension {public int max=2;public bool perExtraArmPair=true,needsTwinHeads;}
+ // 1.44.0 副手连击改成通用扩展（挂在基因上）：六臂连击 max 2、按额外手臂对数。
+ public class OffhandExtension : DefModExtension {public int max=2;public bool perExtraArmPair=true;}
  public static class Marilith {
   public const string Race="LP_Marilith",Core="LP_MarilithCore",Kin="LP_MarilithKin",SixArms="LP_SixArms",Blades="LP_MarilithBlades",Glide="LP_SerpentGlide",ColdBlood="LP_ColdBlood",Constricted="LP_Constricted",Constricting="LP_Constricting";
   public static readonly string[] SkinGenes={"LP_SkinSerpentTeal","LP_SkinSerpentDark","LP_SkinSerpentGold"};
@@ -87,11 +87,10 @@ namespace LichPhylactery {
    for(int i=0;i<list.Count;i++){if(!list[i].Active)continue;var e=list[i].def.GetModExtension<OffhandExtension>();if(e!=null)best=Math.Max(best,Slots(p,e));}
    return best;
   }
-  // 副手追加攻击的触发概率：蛇人、双头巨人（基因副手）每次都触发；只有双武器风格的人 30%。
+  // 副手追加攻击的触发概率：蛇人（基因副手）每次都触发；只有双武器风格的人 30%。
   public static float OffhandChance(Pawn p)=>GeneSlots(p)>0?1f:Styles.TwoWeaponChance;
   static int Slots(Pawn p,OffhandExtension e){
    if(e.perExtraArmPair)return Math.Min(e.max,UsablePairs(p));
-   if(e.needsTwinHeads && !Ettin.TwoHeaded(p))return 0;
    var hands=p.RaceProps.body.GetPartsWithDef(BodyPartDefOf.Hand);
    return hands.Count>=2 && hands.All(h=>HandUsable(p,h))?e.max:0;
   }
@@ -103,7 +102,7 @@ namespace LichPhylactery {
    foreach(var t in p.inventory.innerContainer)if(OffhandWeapon(t))list.Add((ThingWithComps)t);
    return list.OrderByDescending(Score).ThenBy(w=>w.thingIDNumber).Take(n).ToList();
   }
-  // 1.52.0 补丁：有副手连击基因（六臂蛇人、双头巨人）的人；双持类模组启用时不算。
+  // 1.52.0 补丁：有副手连击基因（六臂蛇人）的人；双持类模组启用时不算。
   // 1.53.0：有双武器战斗风格的人也算。
   public static bool OffhandUser(Pawn p){
    if(DualWield || p==null)return false;
@@ -173,7 +172,7 @@ namespace LichPhylactery {
   static void Postfix(Pawn __result){if(__result==null || !Marilith.Is(__result))return;Marilith.EnsureSkin(__result);Marilith.EnsureSixArms(__result);}
  }
 
- // 渲染：根节点 ×1.3（同巨人的做法，不用 HAR 的 customDrawSize，头、衣服、身体附件一起缩放）。1.44.0 起所有带 RaceSizeExtension 的种族通用（双头巨人 ×1.4、独眼巨人 ×1.35）。
+ // 渲染：根节点 ×1.3（同巨人的做法，不用 HAR 的 customDrawSize，头、衣服、身体附件一起缩放）。1.44.0 起所有带 RaceSizeExtension 的种族通用。
  [HarmonyPatch(typeof(PawnRenderNodeWorker),nameof(PawnRenderNodeWorker.ScaleFor))]
  public static class MarilithRenderSize {
   static void Postfix(PawnRenderNode node,PawnDrawParms parms,ref Vector3 __result){if(RenderTags.IsRoot(node?.Props?.tagDef) && RaceSize.Of(parms.pawn)!=null)__result*=RaceSize.RenderFactor(parms.pawn);}
@@ -319,7 +318,7 @@ namespace LichPhylactery {
  }
  public class CompSerpentConstrict : CompAbilityEffect {
   public CompProperties_SerpentConstrict Props=>(CompProperties_SerpentConstrict)props;
-  public static float SizeFactor(Pawn caster,Pawn target)=>Mathf.Clamp(caster.BodySize/Mathf.Max(.1f,target.BodySize),.5f,2f);
+  public static float SizeFactor(Pawn caster,Pawn target)=>Mathf.Max(.5f,caster.BodySize/Mathf.Max(.1f,target.BodySize)); // 1.173.0：体型优势不再封顶在 ×2
   public override bool Valid(LocalTargetInfo target,bool throwMessages=false){
    var t=target.Pawn;var p=parent.pawn;
    string why=t==null || t.Dead?"需要选择一个活着的目标。".Loc():t==p?"不能缠住自己。".Loc():!t.Position.AdjacentTo8WayOrInside(p.Position)?"要贴身才能缠住。".Loc():null;

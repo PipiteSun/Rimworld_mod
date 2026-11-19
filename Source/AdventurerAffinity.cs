@@ -38,13 +38,13 @@ namespace LichPhylactery {
    "LP_Elf|高等精灵|智敏||远程 学习|".Loc(),"LP_Dwarf|山地矮人|力体||工作 承受|".Loc(),"LP_HalfOrc|半兽人|力|智|近战 血量|".Loc(),
    "Lich|巫妖|智|魅|心灵 学习|L".Loc(),
    "LP_FireGiant|火巨人|体力|敏|血量 近战|L".Loc(),"LP_FrostGiant|霜巨人|体力|敏|血量 承受|L".Loc(),"LP_StormGiant|风暴巨人|力感||血量 心灵|L".Loc(),"LP_CloudGiant|云巨人|魅力||血量 心灵|L".Loc(),
-   "LP_Ettin|双头巨人|体|智|血量 近战|L".Loc(),"LP_EttinKin|双头巨人|体|智|血量 近战|L".Loc(),"LP_Cyclops|独眼巨人|力|敏|血量 工作|L".Loc(),"LP_CyclopsKin|独眼巨人|力|敏|血量 工作|L".Loc(),
+   
    "LP_Titan|泰坦|力魅||血量 心灵|L".Loc(),"LP_AwakenedTitan|觉醒泰坦|力魅||血量 心灵|L".Loc(),
    "LP_Troll|巨魔|体|智|回复 血量|".Loc(),"LP_Ogre|食人魔|力|智|血量 近战|".Loc(),"LP_Minotaur|牛头人|力体||近战 承受|".Loc(),"LP_Loxodon|象人|感|敏|承受 工作|".Loc(),
    "LP_MindFlayer|夺心魔|智|力|心灵 学习|L".Loc(),"LP_HalfIllithid|半夺心魔|智|力|心灵 学习|".Loc(),"LP_Githyanki|吉斯洋基|敏智||心灵 近战|".Loc(),
    "LP_GenasiFire|火元素裔|体||近战 心灵|".Loc(),"LP_GenasiWater|水元素裔|体感||回复 心灵|".Loc(),"LP_GenasiEarth|土元素裔|体力||承受 血量|".Loc(),"LP_GenasiAir|风元素裔|体敏||远程 心灵|".Loc(),
    "LP_Aarakocra|鸟人|敏|力|远程 回复|".Loc(),"LP_Genie|巨灵|魅智||心灵 回复|L".Loc(),"LP_Oozefolk|流浆人|体|魅|回复 承受|".Loc(),"LP_Aasimar|阿斯莫|魅感||心灵 回复|L".Loc(),
-   "LP_Tiefling|提夫林|魅智||心灵 近战|".Loc(),"LP_Marilith|六臂蛇人|敏力||近战 血量|L".Loc(),"LP_MarilithKin|六臂蛇人|敏力||近战 血量|L".Loc(),
+   "LP_Tiefling|提夫林|魅智||心灵 近战|".Loc(),"LP_Marilith|六臂蛇人|敏力||近战 血量|L".Loc(),"LP_MarilithKin|六臂蛇人|敏力||近战 血量|L".Loc(),"LP_BehemothKin|古巨兽后裔|体力|敏|血量 近战|L".Loc(),
    "LP_IceDevil|寒冰魔|力||近战 承受|L".Loc(),"LP_Balor|炎魔|力||近战 承受|L".Loc(),
    // 1.54.0 深渊仪式：坎比恩（可玩、可遗传）、魅魔，以及能被束缚的恶魔。
    "LP_Cambion|坎比恩|魅敏|感|心灵 近战|".Loc(),"LP_Succubus|魅魔|魅敏||心灵 回复|".Loc(),"LP_Dretch|劣魔|体|智|承受 工作|".Loc(),"LP_Barlgura|巴路古拉|力|智|近战 血量|".Loc(),
@@ -132,6 +132,8 @@ namespace LichPhylactery {
    if(Items.IsLich(p))return Override(LichKey)??Table[LichKey];
    if(HalfIllithid.Is(p))return Override(HalfIllithidKey)??Table[HalfIllithidKey];
    if(p.def!=null && p.def!=ThingDefOf.Human){var o=Override(p.def.defName,p.def);if(o!=null)return o;var e=FromExt(p.def);if(e!=null)return e;if(Table.TryGetValue(p.def.defName,out var r))return Named(r,p.def);}
+   // 1.175.0：自设异种（原版异种编辑器做的，没有 XenotypeDef）按名字查设置里的覆盖；没配过的照旧往下走（血脉基因 → 人类）。
+   {var cn=CustomNameOf(p);if(cn!=null){var o=Override(CustomKey(cn));if(o!=null)return o;}}
    var x=p.genes?.Xenotype;
    if(x!=null){var o=Override(x.defName,x);if(o!=null)return o;var e=FromExt(x);if(e!=null)return e;if(Table.TryGetValue(x.defName,out var r))return Named(r,x);}
    if(p.genes!=null)foreach(var g in GeneTable)if(p.genes.HasActiveGene(g.gene) && Table.TryGetValue(g.key,out var r))return Override(g.key)??Named(r,g.gene);

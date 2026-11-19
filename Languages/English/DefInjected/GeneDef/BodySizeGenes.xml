@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 矮小之躯 -->
+  <LP_SizeSmall.label>small frame</LP_SizeSmall.label>
+  <LP_SizeSmall.description>The carrier's body is only seven tenths the size of an ordinary person: body size ×0.7 (drawn at about 0.8×). Eats less and is a smaller target, but carries less too.</LP_SizeSmall.description>
+  <LP_SizeSmall.customEffectDescriptions.0>Body size ×0.7 (drawn at about 0.8×); replaces the race's own body size, then multiplied by the race's small adjustment.</LP_SizeSmall.customEffectDescriptions.0>
+  <!-- 巨人之躯 -->
+  <LP_SizeLarge.label>giant frame</LP_SizeLarge.label>
+  <LP_SizeLarge.description>The carrier grows to the size of a giant: body size ×2 (drawn at about 1.4×). Health, melee and carrying rise with body size by the giant-body rule, and so does appetite.</LP_SizeLarge.description>
+  <LP_SizeLarge.customEffectDescriptions.0>Body size ×2 (drawn at about 1.4×, children grow with age); replaces the race's own body size, then multiplied by the race's small adjustment.</LP_SizeLarge.customEffectDescriptions.0>
+  <LP_SizeLarge.customEffectDescriptions.1>Health ×150%, melee ×130%, carrying ×150% (giant-body rule at 100% strength); stomach capacity ×2.</LP_SizeLarge.customEffectDescriptions.1>
+  <!-- 山岳之躯 -->
+  <LP_SizeHuge.label>mountain frame</LP_SizeHuge.label>
+  <LP_SizeHuge.description>The carrier is like a small mountain: body size ×3 (drawn at about 1.75×). Health, melee and carrying rise with body size by the giant-body rule.</LP_SizeHuge.description>
+  <LP_SizeHuge.customEffectDescriptions.0>Body size ×3 (drawn at about 1.75×, children grow with age); replaces the race's own body size, then multiplied by the race's small adjustment.</LP_SizeHuge.customEffectDescriptions.0>
+  <LP_SizeHuge.customEffectDescriptions.1>Health ×200%, melee ×160%, carrying ×200% (giant-body rule at 100% strength); stomach capacity ×3.</LP_SizeHuge.customEffectDescriptions.1>
+  <!-- 擎天之躯 -->
+  <LP_SizeColossal.label>sky-bearing frame</LP_SizeColossal.label>
+  <LP_SizeColossal.description>The carrier stands tall enough to hold up the sky: body size ×4 (drawn at about 2×). Health, melee and carrying rise with body size by the giant-body rule.</LP_SizeColossal.description>
+  <LP_SizeColossal.customEffectDescriptions.0>Body size ×4 (drawn at about 2×, children grow with age); replaces the race's own body size, then multiplied by the race's small adjustment.</LP_SizeColossal.customEffectDescriptions.0>
+  <LP_SizeColossal.customEffectDescriptions.1>Health ×250%, melee ×190%, carrying ×250% (giant-body rule at 100% strength); stomach capacity ×4.</LP_SizeColossal.customEffectDescriptions.1>
+</LanguageData>

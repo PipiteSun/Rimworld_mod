@@ -10,7 +10,7 @@ namespace LichPhylactery {
  // A. 巨人血统（含火巨人）可以进战棺铸造厂、穿战棺：战棺不受「巨人可穿普通衣物」限制（GiantKin.CanWear 里的例外），画面照常随根节点按体型缩放。
  // B. 战棺贴图只有一套（VEF isUnifiedApparel），五种身体类型画出来的战棺外壳大小本来就一样（自检截图对照过，不用缩放）；
  //    不一样的是头的位置（侧面 x 偏移 0.04～0.10），头盔跟着头走就会偏离外壳，所以装着战棺时头统一放到参考体型（男性）的位置。
- // C. 装着战棺时隐藏六臂蛇人的额外手臂、蛇尾和双头巨人的第二个头（XenoParts.Visible），主头也不再往一侧让位。
+ // C. 装着战棺时隐藏六臂蛇人的额外手臂、蛇尾（XenoParts.Visible）。
  // 没装 VFE 海盗时 CasketType 为空，所有补丁第一步就返回。
  public static class WarcasketFit {
   static Type casketType;static bool looked;
@@ -37,13 +37,13 @@ namespace LichPhylactery {
   public static bool Adult(Pawn p){var b=p?.story?.bodyType;return b!=null && b!=BodyTypeDefOf.Child && b!=BodyTypeDefOf.Baby;}
  }
 
- // B. 装着战棺时头（和头盔）放到参考体型的位置，跟战棺贴图对齐；C. 双头巨人不再让位（第二个头已隐藏）。排在其他头部偏移补丁之后。
+ // B. 装着战棺时头（和头盔）放到参考体型的位置，跟战棺贴图对齐。排在其他头部偏移补丁之后。
  [HarmonyPatch(typeof(PawnRenderer),nameof(PawnRenderer.BaseHeadOffsetAt))]
  public static class WarcasketHeadOffset {
   [HarmonyPriority(Priority.Last)]
   static void Postfix(Rot4 rotation,Pawn ___pawn,ref Vector3 __result){
    if(WarcasketFit.CasketType==null || !WarcasketFit.Enabled || !WarcasketFit.Adult(___pawn) || !WarcasketFit.Encased(___pawn))return;
-   var own=___pawn.story.bodyType;var refB=WarcasketFit.Reference;if(Ettin.BothHeads(___pawn))__result-=XenoParts.EttinHeadOffset(rotation);
+   var own=___pawn.story.bodyType;var refB=WarcasketFit.Reference;
    if(own==refB)return;
    float k=Mathf.Sqrt(___pawn.ageTracker.CurLifeStage.bodySizeFactor);Vector2 d=(refB.headOffset-own.headOffset)*k;
    __result+=rotation==Rot4.East?new Vector3(d.x,0f,d.y):rotation==Rot4.West?new Vector3(-d.x,0f,d.y):new Vector3(0f,0f,d.y);

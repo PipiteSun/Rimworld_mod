@@ -28,9 +28,9 @@
   <s><zh>绑定命匣必须完好，主人必须存活且属于殖民地。</zh><en>The bound phylactery must be intact, and the master must be alive and in the colony.</en></s>
   <s><zh>主人统御容量不足；胚体可保留到容量空闲时。</zh><en>The master lacks command capacity; the embryo can be kept until capacity frees up.</en></s>
   <s><zh>配置超出允许范围。</zh><en>Configuration exceeds the allowed range.</en></s>
-  <s><zh>胚体12格内可用的新鲜生肉不足。</zh><en>Not enough fresh raw meat available within 12 cells of the embryo.</en></s>
-  <s><zh>胚体12格内可用的钢铁不足。</zh><en>Not enough steel available within 12 cells of the embryo.</en></s>
-  <s><zh>胚体12格内可用的玻璃钢不足。</zh><en>Not enough plasteel available within 12 cells of the embryo.</en></s>
+  <s><zh>地图上可用的新鲜生肉不足。</zh><en>Not enough fresh raw meat available on the map.</en></s>
+  <s><zh>地图上可用的钢铁不足。</zh><en>Not enough steel available on the map.</en></s>
+  <s><zh>地图上可用的玻璃钢不足。</zh><en>Not enough plasteel available on the map.</en></s>
   <s><zh>胚体附近没有可站立位置。</zh><en>No standable spot near the embryo.</en></s>
   <s><zh>唤醒失败，追加材料已退回。</zh><en>Awakening failed; extra materials refunded.</en></s>
   <s><zh>\n主人：</zh><en>\nMaster: </en></s>
@@ -74,6 +74,6 @@
   <s><zh>可用材料：生肉 </zh><en>Available materials: raw meat </en></s>
   <s><zh>基础配置</zh><en>Base configuration</en></s>
   <s><zh>保存方案</zh><en>Save plan</en></s>
-  <s><zh>唤醒吸收12格内可达、未禁用的材料。</zh><en>Awakening absorbs reachable, unforbidden materials within 12 cells.</en></s>
+  <s><zh>唤醒从全图吸收可达、未禁用的材料。</zh><en>Awakening absorbs reachable, unforbidden materials from anywhere on the map.</en></s>
   <s><zh>投入材料并唤醒</zh><en>Invest materials and awaken</en></s>
 </LPStrings>

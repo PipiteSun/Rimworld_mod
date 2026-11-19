@@ -8,7 +8,7 @@ using Verse.AI.Group;
 
 namespace LichPhylactery {
  // 1.105.0 公告板「魔物来袭」委托（见 ArtSource/QuestBoardMonsters-1.105.0-report.md）：和守卫家园一样在殖民地打，来的是本模组独有的 DND 怪物。
- // 六种魔物，按等阶解锁：魔兽群（青铜起：猫头鹰熊、座狼、蝎尾狮、掘地兽……，永久狂暴）、巨人劫掠队（白银起：食人魔、双头巨人、霜巨人、风暴巨人，红袍法师会派系）、
+ // 六种魔物，按等阶解锁：魔兽群（青铜起：猫头鹰熊、座狼、蝎尾狮、掘地兽……，永久狂暴）、巨人劫掠队（白银起：食人魔、霜巨人、风暴巨人，红袍法师会派系）、
  // 深渊魔群（白银起：劣魔、巴路古拉、影魔、魅魔、哈兹魔、纳巴苏）、九狱魔军（黄金起：链魔、骨魔、艾林魔、角魔、阿姆尼祖）、
  // 真龙来袭（秘银起：青年五色龙，传说是成年龙，带本色护卫，照 1.52.0 的真龙来袭生成）、传奇魔物（传说：贝希尔带魔兽，或死亡骑士带红袍亡灵）。
  // 阵容在贴出委托时就按威胁点数配好（存在委托里），公告板上写着会来什么；对应系统在设置里关掉、或缺少需要的模组时，这种魔物不出。
@@ -16,7 +16,7 @@ namespace LichPhylactery {
   public const string Beasts="beasts",Giants="giants",Abyss="abyss",Hell="hell",Dragon="dragon",Legend="legend";
   public static readonly string[] Themes={Beasts,Giants,Abyss,Hell,Dragon,Legend};
   public static readonly string[] BeastKinds={"LP_BlinkDog","LP_RustMonster","LP_Worg","LP_WinterWolf","LP_HellHound","LP_DisplacerBeast","LP_CarrionCrawler","LP_GelatinousCube","LP_Basilisk","LP_Owlbear","LP_Manticore","LP_Bulette"};
-  public static readonly string[] GiantKinds={"LP_FH_OgreBrute","LP_FH_EttinBrute","LP_FH_FrostGiantRaider","LP_FH_EnslavedStormGiant"};
+  public static readonly string[] GiantKinds={"LP_FH_OgreBrute","LP_FH_FrostGiantRaider","LP_FH_EnslavedStormGiant"};
   public static readonly string[] AbyssKinds={"LP_AH_Dretch","LP_AH_Barlgura","LP_AH_ShadowDemon","LP_AH_Succubus","LP_AH_Hezrou","LP_AH_Nabassu"};
   public static readonly string[] HellKinds={"LP_HL_ChainDevil","LP_HL_BoneDevil","LP_HL_Erinyes","LP_HL_HornedDevil","LP_HL_Amnizu"};
   public static readonly string[] UndeadKinds={"LP_FH_Skeleton","LP_FH_Golem"};

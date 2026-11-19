@@ -18,7 +18,7 @@ namespace LichPhylactery {
    foreach(var e in base.ConfigErrors())yield return e;
    if(rank<1)yield return "GiantKinExtension.rank must be at least 1";
    if(element.NullOrEmpty())yield return "GiantKinExtension.element is required";
-   if(adultSize<1f || adultSize>4f || RenderScale<1f || RenderScale>4f)yield return "GiantKinExtension sizes must be in [1,4]";
+   if(adultSize<1f || RenderScale<1f)yield return "GiantKinExtension sizes must be at least 1"; // 1.173.0：去掉 4 的上限
   }
  }
  // 巨人专属衣甲（只有巨人能穿，每件 mood 点“合身的巨人之衣”）与巨人专用武器。
@@ -82,14 +82,12 @@ namespace LichPhylactery {
   public static bool NormalAllowed=>LichMod.Settings?.giantsWearNormal!=false;
   public static bool CanWear(Pawn p,ThingDef d){
    if(p==null || d==null || !d.IsApparel)return true;
-   // 1.44.0：带 GeneWearExtension 的装备（独眼透镜）只有带那个基因的人能戴。
-   var g=d.GetModExtension<GeneWearExtension>();if(g!=null && !Races124.Has(p,g.gene))return false;
    if(WarcasketFit.IsCasket(d))return true; // 1.115.0 热修：战棺是专门例外，巨人（含火巨人）都能穿（WarcasketFit.cs）
    bool giant=GiantKin.Is(p);
    if(Exclusive(d))return giant;
    return !giant || NormalAllowed;
   }
-  public static string WearReason(Pawn p,ThingDef d){var g=d?.GetModExtension<GeneWearExtension>();if(g!=null && !Races124.Has(p,g.gene))return "只有".Loc()+g.label+"能戴。".Loc();return Exclusive(d)?"只有巨人能穿。".Loc():"巨人只能穿巨人专属衣甲（模组设置“巨人穿普通衣服”已关闭）。".Loc();}
+  public static string WearReason(Pawn p,ThingDef d){return Exclusive(d)?"只有巨人能穿。".Loc():"巨人只能穿巨人专属衣甲（模组设置“巨人穿普通衣服”已关闭）。".Loc();}
   // 失去巨人血统（或改了设置）后，脱下不合规矩的衣甲、放下巨人武器。
   public static void Release(Pawn p){
    if(p==null)return;GiantKin.Invalidate(p);
@@ -198,7 +196,7 @@ namespace LichPhylactery {
   public static void Draw(Listing_Standard l){
    l.GapLine();l.Label("巨人".Loc());
    l.CheckboxLabeled("巨人穿普通衣服".Loc(),ref LichMod.Settings.giantsWearNormal,"火巨人、霜巨人（以后的巨人也一样）能穿任何普通衣服，普通衣服随巨躯一起放大显示。（1.146.0 起巨人专属衣甲已全部移除。）关闭后回到1.29.0的旧规则：巨人只能穿专属衣甲；保存设置后，已穿着的普通衣服会在下次换装时脱下。".Loc());
-   l.CheckboxLabeled("阶序心情".Loc(),ref LichMod.Settings.ordningMood,"巨人的阶序（风暴＞云＞火＞霜＞双头＞独眼）：殖民地有更高位的巨人“阶序井然”+3、有更低位的“统领众巨”+2，同种巨人里近战或手工最高的“氏族之首”+3，有两个以上巨人时“同族之语”+2；有人本事超过首领时会挑战首领（30天一次）。关闭后这些心情和挑战都不出现（火巨人与霜巨人的“世仇”种族关系不受影响）。".Loc());
+   l.CheckboxLabeled("阶序心情".Loc(),ref LichMod.Settings.ordningMood,"巨人的阶序（风暴＞云＞火＞霜）：殖民地有更高位的巨人“阶序井然”+3、有更低位的“统领众巨”+2，同种巨人里近战或手工最高的“氏族之首”+3，有两个以上巨人时“同族之语”+2；有人本事超过首领时会挑战首领（30天一次）。关闭后这些心情和挑战都不出现（火巨人与霜巨人的“世仇”种族关系不受影响）。".Loc());
    l.CheckboxLabeled("风暴预兆".Loc(),ref LichMod.Settings.stormOmen,"（1.34.0）家园地图上有成年的风暴巨人（带“风暴预兆”基因）时，点数≥1000的敌对袭击推迟12小时落地，并提前来信说明派系和方向。与竖琴手预警叠加（两者都触发时推迟时间相加）。".Loc());
   }
  }

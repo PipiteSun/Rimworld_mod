@@ -2,7 +2,7 @@
   <ThingDef ParentName="BuildingBase">
     <defName>LP_Altar</defName>
     <label>死灵仪式台</label>
-    <description>3×3的死灵仪式工作台。添加巫妖仪式工作单，由预定角色执行完成转化。其他工作单服务于按钮选定的12格内命匣。</description>
+    <description>3×3的死灵仪式工作台。选中后点“仪式台面板”：查看命匣、按分类排入巫妖仪式、献祭、造物与植入物培育，并管理队列。服务的命匣须在台子12格内。可以拆下搬运、重新安装，工作队列和选中的命匣会保留。</description>
     <thingClass>LichPhylactery.Building_Altar</thingClass>
     <graphicData>
       <texPath>Necromancy/Altar</texPath>
@@ -15,6 +15,10 @@
     <pathCost>50</pathCost>
     <fillPercent>0.5</fillPercent>
     <designationCategory>Production</designationCategory>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsProduction</li>
+    </thingCategories>
     <hasInteractionCell>true</hasInteractionCell>
     <interactionCellOffset>(0,0,-2)</interactionCellOffset>
     <surfaceType>Item</surfaceType>
@@ -30,9 +34,6 @@
       <BlocksGranite>150</BlocksGranite>
       <Steel>100</Steel>
     </costList>
-    <inspectorTabs>
-      <li>ITab_Bills</li>
-    </inspectorTabs>
     <building>
       <buildingTags>
         <li>Production</li>

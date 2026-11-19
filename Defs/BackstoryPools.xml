@@ -89,22 +89,6 @@
     <adulthood><li><category>LP_Race_Titan</category><weight>3</weight></li><li><category>LP_Race_Giant</category></li></adulthood>
   </LichPhylactery.BackstoryPoolDef>
   <LichPhylactery.BackstoryPoolDef>
-    <defName>LP_BsPool_Ettin</defName>
-    <tier>Race</tier><chanceSetting>race</chanceSetting>
-    <xenotypes><li>LP_EttinKin</li></xenotypes>
-    <races><li>LP_Ettin</li></races>
-    <childhood><li><category>LP_Race_Ettin</category><weight>3</weight></li><li><category>LP_Race_Giant</category></li></childhood>
-    <adulthood><li><category>LP_Race_Ettin</category><weight>3</weight></li><li><category>LP_Race_Giant</category></li></adulthood>
-  </LichPhylactery.BackstoryPoolDef>
-  <LichPhylactery.BackstoryPoolDef>
-    <defName>LP_BsPool_Cyclops</defName>
-    <tier>Race</tier><chanceSetting>race</chanceSetting>
-    <xenotypes><li>LP_CyclopsKin</li></xenotypes>
-    <races><li>LP_Cyclops</li></races>
-    <childhood><li><category>LP_Race_Cyclops</category><weight>3</weight></li><li><category>LP_Race_Giant</category></li></childhood>
-    <adulthood><li><category>LP_Race_Cyclops</category><weight>3</weight></li><li><category>LP_Race_Giant</category></li></adulthood>
-  </LichPhylactery.BackstoryPoolDef>
-  <LichPhylactery.BackstoryPoolDef>
     <defName>LP_BsPool_Troll</defName>
     <tier>Race</tier><chanceSetting>race</chanceSetting>
     <xenotypes><li>LP_Troll</li></xenotypes>

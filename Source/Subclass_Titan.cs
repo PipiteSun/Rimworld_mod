@@ -35,8 +35,8 @@ namespace LichPhylactery {
 
   // 体型倍率：1 + 2.5% × 等级；战士 20 级后冒险者传奇等级（21～40）接着算，上限 ×2.0。泰坦化再 ×1.25。
   public static int SizeLevel(int fighterLevel,int advLevel)=>fighterLevel+(fighterLevel>=Adventurer.MaxLevel?Mathf.Max(0,advLevel-Adventurer.MaxLevel):0);
-  public static float SizeFactor(int fighterLevel,int advLevel)=>Mathf.Min(SizeMax,1f+SizePer*SizeLevel(fighterLevel,advLevel));
-  // 绘制倍率 = √体型（同双头巨人体型 2.0 画 ×1.4 的做法），头、衣服、身体附件随根节点一起缩放，武器另由下面的补丁缩放。
+  public static float SizeFactor(int fighterLevel,int advLevel)=>1f+SizePer*SizeLevel(fighterLevel,advLevel); // 1.173.0：去掉 ×2.0 的上限（等级 40 时本来就是 ×2.0，再高接着长）
+  // 绘制倍率 = √体型，头、衣服、身体附件随根节点一起缩放，武器另由下面的补丁缩放。
   public static float RenderFactor(float size)=>Mathf.Sqrt(size);
 
   public static int Refresh(Hediff_Adventurer h){

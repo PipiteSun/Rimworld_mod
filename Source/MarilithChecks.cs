@@ -165,24 +165,23 @@ namespace LichPhylactery {
    if(p!=null)p.Destroy();
   }
 
-  // 1.102.0 旧存档：HAR 种族名读成人类；挂在旧身体上的伤口按部位搬到人类身体（额外手臂、蛇尾、第二个头丢掉，独眼 → 左眼，第二个头缺失 → 孤首）；旧的六臂蛇人补上蛇身本源。
+  // 1.102.0 旧存档：HAR 种族名读成人类；挂在旧身体上的伤口按部位搬到人类身体（额外手臂、蛇尾丢掉；1.171.0 双头巨人、独眼巨人的旧身体已移除）；旧的六臂蛇人补上蛇身本源。
   void CheckLegacyRaceMapping(){
-   var mb=DefDatabase<BodyDef>.GetNamed("LP_MarilithBody");var eb=DefDatabase<BodyDef>.GetNamed("LP_EttinBody");var cb=DefDatabase<BodyDef>.GetNamed("LP_CyclopsBody");var hb=BodyDefOf.Human;
+   var mb=DefDatabase<BodyDef>.GetNamed("LP_MarilithBody");var hb=BodyDefOf.Human;
    BodyPartRecord Old(BodyDef b,string label)=>b.AllParts.First(x=>x.untranslatedCustomLabel==label);
    var upper=LegacyRaceSave.Map(Old(mb,"左上手"),hb);var mid=LegacyRaceSave.Map(Old(mb,"左中臂"),hb);var tail=LegacyRaceSave.Map(mb.AllParts.First(x=>x.def.defName=="LP_SerpentTail"),hb);
-   var leftHead=LegacyRaceSave.Map(Old(eb,"左头的大脑"),hb);var rightHead=LegacyRaceSave.Map(Old(eb,"右头"),hb);var eye=LegacyRaceSave.Map(cb.AllParts.First(x=>x.def.defName==Cyclops.Eye),hb);
-   string names=BackCompatibility.BackCompatibleDefName(typeof(ThingDef),"LP_Ettin")+"/"+BackCompatibility.BackCompatibleDefName(typeof(ThingDef),"Corpse_LP_Marilith");
-   // 一个旧的双头巨人：右头缺失、左手有伤，挂在旧身体上；转换后右头的缺失丢掉、得到孤首，左手的伤搬到人类左手。
-   var e=PawnGenerator.GeneratePawn(new PawnGenerationRequest(DefDatabase<PawnKindDef>.GetNamed("LP_EttinColonist"),Faction.OfPlayer,PawnGenerationContext.NonPlayer,-1,forceGenerateNewPawn:true,canGeneratePawnRelations:false,fixedBiologicalAge:30,fixedChronologicalAge:30));
+   string names=BackCompatibility.BackCompatibleDefName(typeof(ThingDef),"LP_Marilith")+"/"+BackCompatibility.BackCompatibleDefName(typeof(ThingDef),"Corpse_LP_Marilith");
+   // 一个旧的六臂蛇人：左中臂缺失、左上手有伤，挂在旧身体上；转换后中臂的缺失丢掉，手上的伤搬到人类左手。
+   var e=MarilithPawn(Faction.OfPlayer);
    foreach(var h in e.health.hediffSet.hediffs.Where(h=>h is Hediff_Injury || h is Hediff_MissingPart || h is Hediff_AddedPart).ToList())e.health.RemoveHediff(h);
-   var gone=HediffMaker.MakeHediff(HediffDefOf.MissingBodyPart,e);gone.Part=Old(eb,"右颈");var cut=HediffMaker.MakeHediff(HediffDefOf.Cut,e);cut.Part=Old(eb,"左手");cut.Severity=3f;
+   var gone=HediffMaker.MakeHediff(HediffDefOf.MissingBodyPart,e);gone.Part=Old(mb,"左中臂");var cut=HediffMaker.MakeHediff(HediffDefOf.Cut,e);cut.Part=Old(mb,"左上手");cut.Severity=3f;
    e.health.hediffSet.hediffs.Add(gone);e.health.hediffSet.hediffs.Add(cut);
    LegacyRaceSave.Fix(e);
-   bool ettinOk=Ettin.Lone(e) && !e.health.hediffSet.hediffs.Contains(gone) && cut.Part?.body==hb && cut.Part.def==BodyPartDefOf.Hand && !e.Dead;
+   bool woundOk=!e.health.hediffSet.hediffs.Contains(gone) && cut.Part?.body==hb && cut.Part.def==BodyPartDefOf.Hand && !e.Dead;
    // 一个旧的六臂蛇人（读档前异种型已经是六臂蛇人，没有 1.102.0 的本源基因）。
    var m=MarilithPawn(Faction.OfPlayer);m.genes.RemoveGene(m.genes.GetGene(Races124.Gene(Marilith.Core)));bool before=Marilith.Is(m);LegacyRaceSave.EnsureCore(m);
-   Check(upper!=null && upper.def==BodyPartDefOf.Hand && upper.body==hb && mid==null && tail==null && leftHead?.def.defName=="Brain" && rightHead==null && eye?.def==BodyPartDefOf.Eye && names=="Human/Corpse_Human" && ettinOk && !before && Marilith.Is(m) && Near(m.BodySize,1.6f),
-    "old HAR saves: race names load as Human ("+names+"); wounds on the old bodies move to the matching human part (upper hand, left head's brain, cyclops eye -> left eye), extra arms / tail / right head are dropped; an old ettin missing its right head becomes a lone head; an old marilith gets the serpent-body core");
+   Check(upper!=null && upper.def==BodyPartDefOf.Hand && upper.body==hb && mid==null && tail==null && names=="Human/Corpse_Human" && woundOk && !before && Marilith.Is(m) && Near(m.BodySize,1.6f),
+    "old HAR saves: race names load as Human ("+names+"); wounds on the old bodies move to the matching human part (upper hand), extra arms / tail are dropped, a wound on an old upper hand moves to the human hand; an old marilith gets the serpent-body core");
    e.Destroy();m.Destroy();
   }
  }

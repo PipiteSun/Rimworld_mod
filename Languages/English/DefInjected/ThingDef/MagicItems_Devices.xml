@@ -42,8 +42,8 @@
   <LP_StoneGolem.description>A stone golem awakened by necromantic ritual and commanded by the phylactery's owner. Doesn't eat, sleep or rot.</LP_StoneGolem.description>
   <!-- 石魔像胚体 -->
   <LP_StoneGolemSeed.label>stone golem seed</LP_StoneGolemSeed.label>
-  <!-- 用石块砌成、刻满魔像符文的死灵胚体。选中后打开“配置死灵造物”，调整追加生肉、钢铁、玻璃钢与初始属性，再确认唤醒。材料从12格内可达且未禁用的地面物资吸收。 -->
-  <LP_StoneGolemSeed.description>A necromantic seed built of stone blocks and carved with golem runes. Select it and open "configure necromantic construct" to adjust extra raw meat, steel, plasteel and starting stats, then confirm to awaken it. Materials are absorbed from reachable, unforbidden ground items within 12 cells.</LP_StoneGolemSeed.description>
+  <!-- 用石块砌成、刻满魔像符文的死灵胚体。选中后打开“配置死灵造物”，调整追加生肉、钢铁、玻璃钢与初始属性，再确认唤醒。材料从全图可达且未禁用的地面物资吸收。 -->
+  <LP_StoneGolemSeed.description>A necromantic seed built of stone blocks and carved with golem runes. Select it and open "configure necromantic construct" to adjust extra raw meat, steel, plasteel and starting stats, then confirm to awaken it. Materials are absorbed from reachable, unforbidden ground items anywhere on the map.</LP_StoneGolemSeed.description>
   <!-- 解除诅咒卷轴 -->
   <LP_ScrollRemoveCurse.label>scroll of remove curse</LP_ScrollRemoveCurse.label>
   <!-- 对一个人或一件诅咒物品阅读：解除一件诅咒物品的诅咒（顺便鉴定它）。之后它可以正常脱下或放下，效果和代价不变。教会牧师有售，卷轴书桌可以抄写，巫妖也能在死灵仪式台抄写。 -->

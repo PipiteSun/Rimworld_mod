@@ -50,7 +50,7 @@ namespace LichPhylactery {
    // 3. 配方归属表
    var wrong=new List<string>();
    foreach(var n in WbRuneOnly)if(!WbUsers(n,"LP_RuneAnvil") && !WbUsers(n,"LP_RuneAnvil","LP_InfernalForge"))wrong.Add(WbWhere(n)); // 地狱铸炉共享符文铁砧配方
-   foreach(var n in WbGiantOnly)if(DefDatabase<RecipeDef>.GetNamedSilentFail(n)!=null || !n.Contains("Cyclops") && !n.Contains("Ettin"))if(!WbUsers(n,"LP_GiantAnvil"))wrong.Add(WbWhere(n));
+   foreach(var n in WbGiantOnly)if(!WbUsers(n,"LP_GiantAnvil"))wrong.Add(WbWhere(n));
    if(!WbUsers("Make_LP_OgreClub","LP_GiantAnvil","CraftingSpot"))wrong.Add(WbWhere("Make_LP_OgreClub"));
    foreach(var n in WbRelics)if(!WbUsers(n,"LP_FaithAltar"))wrong.Add(WbWhere(n));
    foreach(var n in WbDesk)if(!WbUsers(n,"LP_ScribeDesk"))wrong.Add(WbWhere(n));

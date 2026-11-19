@@ -77,12 +77,12 @@ namespace LichPhylactery {
    Check(basic.Count==32 && unresolved.Count==0 && wrong.Count==0 && basic.Count(e=>e.Rare)==18 && samePools,
     "slave race pool: 32 base xenotypes (14 common + 18 rare) all resolve and generate adults of that xenotype; base and orbital use the same pool "+string.Join(",",unresolved.Concat(wrong)));
 
-   // 5. 三族条目（1.102.0 起是异种型，不需要 HAR）
+   // 5. 六臂蛇人条目（1.102.0 起是异种型，不需要 HAR；1.171.0 双头巨人、独眼巨人已移除）
    var har=gen.entries.Where(e=>!e.pawnKind.NullOrEmpty()).ToList();
    {
     var races=new List<string>();
     foreach(var e in har){var p=RedHawk.MakeSlave(e,fac,map.Tile,false);rhMade.Add(p);races.Add(p?.genes?.Xenotype?.defName);}
-    Check(har.Count==3 && har.All(e=>e.Valid && e.Rare && Near(e.weight,.5f)) && races.SequenceEqual(new[]{"LP_CyclopsKin","LP_EttinKin","LP_MarilithKin"}),"cyclops, ettin and marilith join the slave pool with or without HAR (weight 0.5, rare) and generate as their xenotypes ("+string.Join(",",races)+")");
+    Check(har.Count==1 && har.All(e=>e.Valid && e.Rare && Near(e.weight,.5f)) && races.SequenceEqual(new[]{"LP_MarilithKin"}),"marilith joins the slave pool with or without HAR (weight 0.5, rare) and generate as their xenotypes ("+string.Join(",",races)+")");
    }
 
    // 6. 材料商队

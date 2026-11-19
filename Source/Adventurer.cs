@@ -123,12 +123,12 @@ namespace LichPhylactery {
   public static readonly Dictionary<string,int[]> Racial=new Dictionary<string,int[]>{
    {"LP_Elf",new[]{0,2,0,0,1,0}},{"LP_Dwarf",new[]{0,0,2,0,1,0}},{"LP_HalfOrc",new[]{2,0,1,0,0,0}},
    {"LP_FireGiant",new[]{2,0,1,0,0,0}},{"LP_FrostGiant",new[]{2,0,1,0,0,0}},{"LP_StormGiant",new[]{2,0,0,0,1,0}},{"LP_CloudGiant",new[]{1,0,0,0,0,2}},
-   {"LP_Ettin",new[]{2,0,2,-2,0,0}},{"LP_EttinKin",new[]{2,0,2,-2,0,0}},{"LP_Cyclops",new[]{2,-1,1,0,0,0}},{"LP_CyclopsKin",new[]{2,-1,1,0,0,0}},
+   
    {"LP_Titan",new[]{2,0,0,0,0,2}},{"LP_AwakenedTitan",new[]{2,0,0,0,0,2}},{"LP_Troll",new[]{1,0,2,0,0,0}},{"LP_Ogre",new[]{3,0,0,-2,0,0}},
    {"LP_Minotaur",new[]{2,0,1,0,0,0}},{"LP_Loxodon",new[]{0,0,1,0,2,0}},{"LP_MindFlayer",new[]{0,0,0,2,0,1}},{"LP_Githyanki",new[]{0,2,0,1,0,0}},
    {"LP_GenasiFire",new[]{0,0,2,1,0,0}},{"LP_GenasiWater",new[]{0,0,2,0,1,0}},{"LP_GenasiEarth",new[]{1,0,2,0,0,0}},{"LP_GenasiAir",new[]{0,1,2,0,0,0}},
    {"LP_Aarakocra",new[]{0,2,0,0,1,0}},{"LP_Genie",new[]{0,0,0,1,0,2}},{"LP_Oozefolk",new[]{0,1,2,0,0,0}},{"LP_Aasimar",new[]{0,0,0,0,1,2}},
-   {"LP_Tiefling",new[]{0,0,0,1,0,2}},{"LP_Marilith",new[]{1,2,0,0,0,0}},{"LP_MarilithKin",new[]{1,2,0,0,0,0}},
+   {"LP_Tiefling",new[]{0,0,0,1,0,2}},{"LP_Marilith",new[]{1,2,0,0,0,0}},{"LP_MarilithKin",new[]{1,2,0,0,0,0}},{"LP_BehemothKin",new[]{2,-1,2,0,0,0}},
    {"LP_IceDevil",new[]{2,0,1,0,0,0}},{"LP_Balor",new[]{2,0,0,0,0,1}},
    // 1.57.0 普通种族：精灵/矮人亚种、半身人、侏儒、半精灵、狗头人、地精三族。
    {"LP_WoodElf",new[]{0,2,0,0,1,0}},{"LP_Drow",new[]{0,2,0,0,0,1}},{"LP_HillDwarf",new[]{0,0,2,0,1,0}},

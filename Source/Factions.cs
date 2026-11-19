@@ -203,9 +203,6 @@ namespace LichPhylactery {
    if(def==Factions.HostileDef)MarilithRaid.Apply(list,parms);
    // 1.34.0：被奴役的风暴巨人（≥4000点、10%，戴镣铐）。
    if(def==Factions.HostileDef)StormGiantRaid.Apply(list,parms);
-   // 1.44.0（只在启用 HAR 时有这些兵种）：双头蛮兵（≥800点、10%）；同盟商队的独眼巨人护卫（10%）。
-   if(def==Factions.HostileDef)EttinRaid.Apply(list,parms);
-   if(def==Factions.ColonyDef)CyclopsGuard.Apply(list,parms);
    Decapitation.Assign(list,parms.faction);
    return list;
   }

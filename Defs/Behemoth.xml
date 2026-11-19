@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1.173.0 古巨兽后裔：原版人类 + 异种型。基因：无限生长（本模组；1.174.0 起长到体型 10 为止，到顶获得特性「巨兽」）、不死（原版 Deathless）、永生（原版 Ageless）。
+     规则代码见 Source/Behemoth.cs，体型倍率走通用的 Source/RaceSize.cs；做法参考 Big and Small 的 Endless Growth（那边按年龄曲线，这里按基因自己记的生长年数）。 -->
+<Defs>
+
+  <XenotypeDef>
+    <defName>LP_BehemothKin</defName>
+    <label>古巨兽后裔</label>
+    <description>远古巨兽的血脉流进了人的身体：他们一年一年地长，一直长到十个人那么大才停下，成为真正的巨兽；不会老，也杀不死——只要大脑还在，再重的伤也只是睡一觉。血脉会遗传给子女。</description>
+    <descriptionShort>可遗传的种族。体型每年变大，长到10为止（生命、近战、负重、胃容量跟着涨），到顶时获得特性“巨兽”；不会老，除非大脑被毁否则不会死。</descriptionShort>
+    <iconPath>Behemoth/Xenotype</iconPath>
+    <inheritable>true</inheritable>
+    <combatPowerFactor>1.6</combatPowerFactor>
+    <factionlessGenerationWeight>0</factionlessGenerationWeight>
+    <genes>
+      <li>LP_EndlessGrowth</li>
+      <li>Deathless</li>
+      <li>Ageless</li>
+    </genes>
+  </XenotypeDef>
+
+  <GeneDef>
+    <defName>LP_EndlessGrowth</defName>
+    <label>无限生长</label>
+    <description>携带者的身体不停地生长：体型每年增加0.5，一直长到10为止。体型越大，生命、近战伤害、负重和胃容量越高（巨躯规则），画面也跟着变大。长到10时获得特性“巨兽”：睡得更久、吃得更多。</description>
+    <geneClass>LichPhylactery.Gene_EndlessGrowth</geneClass>
+    <iconPath>Behemoth/Genes/EndlessGrowth</iconPath>
+    <displayCategory>Miscellaneous</displayCategory>
+    <selectionWeight>0</selectionWeight>
+    <biostatCpx>5</biostatCpx>
+    <biostatMet>-4</biostatMet>
+    <marketValueFactor>1.5</marketValueFactor>
+    <customEffectDescriptions>
+      <li>体型每年+0.5，长到10为止（约18年；画面按体型的平方根放大）。</li>
+      <li>长到10时获得特性“巨兽”：睡眠需求下降速度×150%，饥饿速度×200%。</li>
+      <li>新生成的成年人已经长了0.5～2年（体型1.25～2）；婴儿和后来才装上基因的人从1开始长。</li>
+      <li>生命、近战、负重按巨躯规则随体型提高；胃容量×体型。</li>
+    </customEffectDescriptions>
+    <exclusionTags>
+      <li>LP_RaceBody</li>
+      <li>LP_BodySizeTier</li>
+    </exclusionTags>
+    <modExtensions>
+      <li Class="LichPhylactery.EndlessGrowthExtension">
+        <perYear>0.5</perYear>
+        <startMin>0.5</startMin>
+        <startMax>2</startMax>
+        <maxSize>10</maxSize>
+        <trait>LP_BehemothTrait</trait>
+      </li>
+    </modExtensions>
+  </GeneDef>
+
+  <!-- 1.174.0 巨兽：无限生长长到体型 10 时由代码加上（Behemoth.SyncTrait），不会随机出现；基因拿掉时一并去掉。 -->
+  <TraitDef>
+    <defName>LP_BehemothTrait</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label>巨兽</label>
+        <description>[PAWN_nameDef]已经长到了头，是一头真正的巨兽。这么大的身体要睡得更久、吃得更多：睡眠需求下降速度×150%，饥饿速度×200%。</description>
+        <hungerRateFactor>2</hungerRateFactor>
+        <statFactors>
+          <RestFallRateFactor>1.5</RestFallRateFactor>
+        </statFactors>
+      </li>
+    </degreeDatas>
+  </TraitDef>
+
+</Defs>

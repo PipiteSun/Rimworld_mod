@@ -252,8 +252,8 @@ namespace LichPhylactery {
    GiantMigration.TestRoll=.99f;GiantMigration.OnLeave(eg);
    var gifts=GenRadial.RadialCellsAround(eg.camp,6f,true).Where(c=>c.InBounds(map)).SelectMany(c=>c.GetThingList(map)).Where(t=>t.def.category==ThingCategory.Item && !nearBefore.Contains(t)).ToList();eventMade.AddRange(gifts);
    var giftNames=gifts.Select(t=>t.def.defName).ToList();
-   Check(eg.left && eg.campThings.Count==0 && (eg.kind=="ember"?giftNames.Any(n=>n=="LP_LavaCrystal" || n.StartsWith("LP_FireGiant")):eg.kind=="ogre"?giftNames.Contains("LP_OgreClub"):giftNames.Contains("LP_MiracleShard")),"fed giants pack up and leave a gift: "+string.Join(",",giftNames));
-   Check(GiantMigration.Gifts("ogre").Single().def.defName=="LP_OgreClub" && GiantMigration.Gifts("titan").Any(t=>t.def.defName=="LP_MiracleShard") && GiantMigration.Gifts("titan").Any(t=>t.def.defName.StartsWith("LP_Scroll")),"ogre gift is a club; titan gift is a scroll and a miracle shard");
+   Check(eg.left && eg.campThings.Count==0 && (eg.kind=="ember"?giftNames.Contains("Steel"):eg.kind=="ogre"?giftNames.Contains("WoodLog"):giftNames.Contains("LP_MiracleShard")) /* 1.171.0：照 1.146.0 / 1.147.0 改过的礼物（火巨人 100 钢、食人魔 80 木材）更新 */,"fed giants pack up and leave a gift: "+string.Join(",",giftNames));
+   Check(GiantMigration.Gifts("ogre").Single().def.defName=="WoodLog" && GiantMigration.Gifts("titan").Any(t=>t.def.defName=="LP_MiracleShard") && GiantMigration.Gifts("titan").Any(t=>t.def.defName.StartsWith("LP_Scroll")),"ogre gift is 80 wood (1.146.0); titan gift is a scroll and a miracle shard");
    // 不给：15% 夜里偷粮。
    var g2=groups.Values.FirstOrDefault(x=>x!=eg)??GiantMigration.Start(map,eg.kind);GiantMigration.OnCamp(g2);
    GiantMigration.TestRoll=.2f;GiantMigration.Refuse(g2);Check(g2.answered && g2.theftTick<0,"refused giants above 15% do not steal");

@@ -43,7 +43,7 @@ namespace LichPhylactery {
   static Dictionary<string,AdventurerAffinity> Overrides{get{
    var o=overrides;if(o!=null)return o;
    o=new Dictionary<string,AdventurerAffinity>();var src=LichMod.Settings?.affinityOverrides;
-   if(src!=null)foreach(var kv in src){if(kv.Key.NullOrEmpty())continue;var d=KeyDef(kv.Key);o[kv.Key]=AffinityOverrides.Decode(kv.Key,kv.Value,Default(kv.Key,d)??new AdventurerAffinity{key=kv.Key,label=d?.LabelCap.ToString()??kv.Key});}
+   if(src!=null)foreach(var kv in src){if(kv.Key.NullOrEmpty())continue;var d=KeyDef(kv.Key);o[kv.Key]=AffinityOverrides.Decode(kv.Key,kv.Value,Default(kv.Key,d)??new AdventurerAffinity{key=kv.Key,label=d?.LabelCap.ToString()??CustomName(kv.Key)??kv.Key});}
    overrides=o;return o;
   }}
   // 设置里的覆盖（没有就 null）。返回的对象在设置不变时保持同一个（冒险者按引用比较，换了才刷新）。
@@ -56,7 +56,25 @@ namespace LichPhylactery {
    if(d!=null){var e=FromExt(d);if(e!=null)return e;}
    return key!=null && Table.TryGetValue(key,out var r)?(d!=null?Named(r,d):r):null;
   }
-  public static Def KeyDef(string key)=>(Def)DefDatabase<XenotypeDef>.GetNamedSilentFail(key)??DefDatabase<ThingDef>.GetNamedSilentFail(key);
+  public static Def KeyDef(string key)=>key!=null && key.StartsWith(CustomPrefix)?null:(Def)DefDatabase<XenotypeDef>.GetNamedSilentFail(key)??DefDatabase<ThingDef>.GetNamedSilentFail(key);
+  // 1.175.0 自设异种（原版异种编辑器保存的 CustomXenotype，没有 XenotypeDef）：按名字存，key = "Custom:" + 名字。
+  public const string CustomPrefix="Custom:";
+  public static string CustomKey(string name)=>name.NullOrEmpty()?null:CustomPrefix+name.Trim();
+  public static string CustomName(string key)=>key!=null && key.StartsWith(CustomPrefix)?key.Substring(CustomPrefix.Length):null;
+  public static string CustomNameOf(Pawn p){
+   var g=p?.genes;if(g==null)return null;
+   if(g.UniqueXenotype && !g.xenotypeName.NullOrEmpty())return g.xenotypeName.Trim();
+   var c=g.CustomXenotype;return c==null || c.name.NullOrEmpty()?null:c.name.Trim();
+  }
+  // 现在能找到的自设异种名字：异种文件夹里保存的、本局游戏里记着的、地图和世界上的人身上带的、设置里已经配过的。
+  public static List<string> CustomNames(){
+   var set=new HashSet<string>();void Add(string n){if(!n.NullOrEmpty())set.Add(n.Trim());}
+   try{foreach(var f in GenFilePaths.AllCustomXenotypeFiles)Add(System.IO.Path.GetFileNameWithoutExtension(f.Name));}catch(Exception){}
+   try{var db=Current.Game?.customXenotypeDatabase?.customXenotypes;if(db!=null)foreach(var c in db)Add(c?.name);}catch(Exception){}
+   try{if(Current.Game!=null)foreach(var p in PawnsFinder.AllMapsWorldAndTemporary_AliveOrDead)Add(CustomNameOf(p));}catch(Exception){}
+   var src=LichMod.Settings?.affinityOverrides;if(src!=null)foreach(var k in src.Keys)Add(CustomName(k));
+   return set.OrderBy(n=>n).ToList();
+  }
  }
 
  public class Dialog_AffinityEditor : Window {
@@ -78,7 +96,8 @@ namespace LichPhylactery {
    foreach(var t in DefDatabase<ThingDef>.AllDefs)
     if(t.race!=null && t!=ThingDefOf.Human && (t.race.Humanlike || t.GetModExtension<LP_AdventurerAffinityExt>()!=null))Add(t.defName,t);
    foreach(var k in Affinity.Table.Keys)if(!list.ContainsKey(k)){var d=Affinity.KeyDef(k);if(d!=null)Add(k,d);} // 按血脉基因查的条目（MB_*）等
-   return list.Values.OrderBy(r=>r.key==Affinity.HumanKey?0:r.source=="DND边缘大陆".Loc()?1:2).ThenBy(r=>r.source).ThenBy(r=>r.label).ToList();
+   foreach(var n in Affinity.CustomNames())Add(Affinity.CustomKey(n),null,n,"自设异种".Loc()); // 1.175.0
+   return list.Values.OrderBy(r=>r.key==Affinity.HumanKey?0:r.source=="自设异种".Loc()?1:r.source=="DND边缘大陆".Loc()?2:3).ThenBy(r=>r.source).ThenBy(r=>r.label).ToList();
   }
 
   public static List<string> Keys()=>Build().Select(r=>r.key).ToList();
@@ -130,7 +149,7 @@ namespace LichPhylactery {
    var nameRect=new Rect(rect.x+4f,rect.y,NameW-4f,rect.height);
    if(changed)GUI.color=new Color(1f,.85f,.4f);
    Text.Anchor=TextAnchor.MiddleLeft;Widgets.Label(nameRect,r.label.Truncate(nameRect.width));GUI.color=Color.white;
-   TooltipHandler.TipRegion(nameRect,r.label+(r.key==Affinity.HumanKey?"\n"+"基准人、自创异种和没有条目的种族都用这一行；所有传奇项另外 ×1.1。".Loc():"")+"\n"+r.key+(cur==null?"\n"+"没有条目：按人类算".Loc():"")+(changed?"\n"+"已改（存在模组设置里）".Loc():""));
+   TooltipHandler.TipRegion(nameRect,r.label+(r.key==Affinity.HumanKey?"\n"+"基准人、没配过的自设异种和没有条目的种族都用这一行；所有传奇项另外 ×1.1。".Loc():"")+"\n"+r.key+(Affinity.CustomName(r.key)!=null?"\n"+"自设异种：按异种的名字认，改名后要重新配。没配过时按人类（或血脉基因）算。".Loc():"")+(cur==null?"\n"+"没有条目：按人类算".Loc():"")+(changed?"\n"+"已改（存在模组设置里）".Loc():""));
    GUI.color=Color.gray;Widgets.Label(new Rect(rect.x+NameW,rect.y,SrcW-4f,rect.height),(r.source??"").Truncate(SrcW-4f));GUI.color=Color.white;
    Text.Anchor=TextAnchor.MiddleCenter;
    float x=rect.x+NameW+SrcW;

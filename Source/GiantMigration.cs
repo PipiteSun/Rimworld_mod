@@ -23,19 +23,15 @@ namespace LichPhylactery {
   public static bool Usable(Faction f)=>f!=null && !f.defeated && Factions.Enabled(f) && !f.HostileTo(Faction.OfPlayer);
   public static bool IsEmberKind(string kind)=>kind=="ember" || kind=="ogre";
   public static Faction FactionFor(string kind)=>IsEmberKind(kind)?Factions.Ember:Factions.Colony;
-  // 1.44.0：双头巨人（ettin）、独眼巨人牧群（cyclops）只在启用 HAR 时出现，各占 8%，其余队伍按原来的比例压缩。
-  public static readonly string[] Kinds={"ember","ogre","titan","frost","storm","cloud","ettin","cyclops"};
-  public static bool HARKind(string kind)=>kind=="ettin" || kind=="cyclops";
-  public static bool Available(string kind)=>Usable(FactionFor(kind)) && (!IsEmberKind(kind) || LichMod.Settings.factionEmber) && (!HARKind(kind) || K(kind=="ettin"?"LP_FC_EttinWanderer":"LP_FC_CyclopsShepherd")!=null);
+  // 1.171.0：双头巨人、独眼巨人牧群两种队伍随种族一起移除，原来各占的 8% 回到其余六种队伍（按原比例）。
+  public static readonly string[] Kinds={"ember","ogre","titan","frost","storm","cloud"};
+  public static bool Available(string kind)=>Usable(FactionFor(kind)) && (!IsEmberKind(kind) || LichMod.Settings.factionEmber);
   public static bool CanFire(Map map)=>LichMod.Settings.giantMigration && LichMod.Settings.factionEmber && map!=null && map.IsPlayerHome && Kinds.Any(Available);
-  public const float FrostWeight=.2f,FrostWinterFactor=2f,StormWeight=.05f,ProphetStayChance=.25f,CloudWeight=.1f,CloudBedroomBonus=.2f,HARShare=.08f;
+  public const float FrostWeight=.2f,FrostWinterFactor=2f,StormWeight=.05f,ProphetStayChance=.25f,CloudWeight=.1f,CloudBedroomBonus=.2f;
   public static bool Winter(Map map){if(map==null)return false;var s=GenLocalDate.Season(map);return s==Season.Winter || s==Season.PermanentWinter;}
   public static float WeightOf(string kind,Map map){
    switch(kind){case "ember":return .48f;case "ogre":return .24f;case "titan":return .08f;case "frost":return FrostWeight*(Winter(map)?FrostWinterFactor:1f);case "storm":return StormWeight;case "cloud":return CloudWeight;}
-   if(!HARKind(kind))return 0f;
-   // 新队伍各占 8%：权重 = 8% ÷（1 − 两种新队伍的份额）× 其余可用队伍的权重和。
-   float others=Kinds.Where(k=>!HARKind(k) && Available(k)).Sum(k=>WeightOf(k,map));
-   return HARShare/(1f-HARShare*Kinds.Count(k=>HARKind(k) && Available(k)))*others;
+   return 0f;
   }
   public static string PickKind(Map map=null){
    var options=Kinds.Where(Available).Select(k=>(k,WeightOf(k,map))).ToList();
@@ -57,15 +53,12 @@ namespace LichPhylactery {
     case "storm":Add("LP_FC_StormGiantProphet",1);Add("LP_FC_Sailor",2);break;
     // 1.34.1 云巨人使节团：云巨人贵族1、仆从2～3。
     case "cloud":Add(CloudGiant.NobleKind,1);Add("LP_FC_Servant",Rand.RangeInclusive(2,3));break;
-    // 1.44.0 双头巨人 1（两张嘴，讨食营养 ×2）；独眼巨人牧群：独眼巨人 1、绵羊 3～5（同一派系的动物）。
-    case "ettin":Add("LP_FC_EttinWanderer",1);break;
-    case "cyclops":Add("LP_FC_CyclopsShepherd",1);Add("Sheep",Rand.RangeInclusive(3,5));break;
    }
    return list;
   }
   // 巨人：巨人血统（火巨人、霜巨人……）、食人魔、泰坦（奴兵、追随者、冬狼不算）。
   public static bool IsGiant(Pawn p)=>p!=null && (GiantKin.Is(p) || Races124.IsOgre(p) || Races124.IsTitan(p));
-  public static float Appetite(Pawn p)=>Ettin.Is(p)?Ettin.Appetite:GiantKin.Is(p)?2f:Races124.IsTitan(p)?2.5f:Races124.IsOgre(p)?1.6f:1f;
+  public static float Appetite(Pawn p)=>GiantKin.Is(p)?2f:Races124.IsTitan(p)?2.5f:Races124.IsOgre(p)?1.6f:1f;
   // 讨要的营养值：每人每天 1.6 × 体型食量倍率，要两天的量（只算人）；冬狼另要肉，每只 1.0。
   public const float WolfMeat=1f;
   public static float Need(IEnumerable<Pawn> pawns)=>pawns.Where(p=>p!=null && !p.Dead && p.RaceProps.Humanlike).Sum(p=>NutritionPerDay*Appetite(p))*DaysAsked;
@@ -120,7 +113,7 @@ namespace LichPhylactery {
    return true;
   }
   public static GiantGroup GroupOf(Pawn p)=>p==null?null:State?.migrations.FirstOrDefault(g=>g.pawns.Contains(p));
-  public static string KindLabel(string kind)=>kind=="ember"?"余烬氏族的火巨人".Loc():kind=="ogre"?"一家食人魔".Loc():kind=="frost"?"一支霜巨人战帮".Loc():kind=="storm"?"一位风暴巨人先知和两名水手".Loc():kind=="cloud"?"一支云巨人使节团".Loc():kind=="ettin"?"一个流浪的双头巨人".Loc():kind=="cyclops"?"一位赶着羊群的独眼巨人".Loc():"一位泰坦和追随者".Loc();
+  public static string KindLabel(string kind)=>kind=="ember"?"余烬氏族的火巨人".Loc():kind=="ogre"?"一家食人魔".Loc():kind=="frost"?"一支霜巨人战帮".Loc():kind=="storm"?"一位风暴巨人先知和两名水手".Loc():kind=="cloud"?"一支云巨人使节团".Loc():"一位泰坦和追随者".Loc();
 
   // 扎营：篝火 + 每人一个睡袋，然后发讨食信。
   public static void OnCamp(GiantGroup g){
@@ -144,7 +137,7 @@ namespace LichPhylactery {
   public static Letter_GiantMigration SendFoodLetter(GiantGroup g){
    var l=(Letter_GiantMigration)LetterMaker.MakeLetter(DefDatabase<LetterDef>.GetNamed("LP_GiantChoiceLetter"));
    l.Label="饥饿的巨人".Loc();l.kind="food";l.group=g;l.lookTargets=new LookTargets(g.Alive.Cast<Thing>());l.relatedFaction=g.Origin;
-   l.Text=KindLabel(g.kind)+"在殖民地外扎了营，一共".Loc()+g.Alive.Count()+"人。他们饿坏了，派人来讨吃的：想要能吃两天的食物，营养值合计 ".Loc()+g.need.ToString("0.#")+"（巨人的胃口大：火巨人、霜巨人等巨人×2，双头巨人两张嘴×4，泰坦×2.5，食人魔×1.6）".Loc()+(g.meatNeed>0?"，另外冬狼要生肉，营养值 ".Loc()+g.meatNeed.ToString("0.#"):"")+"。".Loc()+(FineOnly(g)?"云巨人贵族很挑剔：只收精致饭或奢华饭（营养值照算）。".Loc():"")+"\n\n给：从储存区里扣除食物（".Loc()+(FineOnly(g)?"只扣精致饭、奢华饭".Loc():"优先干肉饼、简餐、生肉".Loc())+"），".Loc()+(g.Origin?.Name??"他们的派系".Loc())+"好感 +".Loc()+FedGoodwill+"，离开时会在营地留下礼物。\n不给：不会翻脸，但饿肚子的巨人晚上可能派人来偷粮。\n\n他们会在这里待一天，然后从地图另一边离开。".Loc();
+   l.Text=KindLabel(g.kind)+"在殖民地外扎了营，一共".Loc()+g.Alive.Count()+"人。他们饿坏了，派人来讨吃的：想要能吃两天的食物，营养值合计 ".Loc()+g.need.ToString("0.#")+"（巨人的胃口大：火巨人、霜巨人等巨人×2，泰坦×2.5，食人魔×1.6）".Loc()+(g.meatNeed>0?"，另外冬狼要生肉，营养值 ".Loc()+g.meatNeed.ToString("0.#"):"")+"。".Loc()+(FineOnly(g)?"云巨人贵族很挑剔：只收精致饭或奢华饭（营养值照算）。".Loc():"")+"\n\n给：从储存区里扣除食物（".Loc()+(FineOnly(g)?"只扣精致饭、奢华饭".Loc():"优先干肉饼、简餐、生肉".Loc())+"），".Loc()+(g.Origin?.Name??"他们的派系".Loc())+"好感 +".Loc()+FedGoodwill+"，离开时会在营地留下礼物。\n不给：不会翻脸，但饿肚子的巨人晚上可能派人来偷粮。\n\n他们会在这里待一天，然后从地图另一边离开。".Loc();
    Find.LetterStack.ReceiveLetter(l);return l;
   }
   // 殖民地储存区里的食物（不含尸体、药物、被禁止的），按优先顺序排好。
@@ -247,9 +240,6 @@ namespace LichPhylactery {
     case "frost":list.Add(WolfPup());break;
     // 1.34.1：云纹长袍（60%）或天空琥珀（40%）。
     case "cloud":list.Add(Make(CloudGiant.Amber));break; // 1.146.0：云纹长袍已移除，只送天空琥珀
-    // 1.44.0：双头巨人送 80 钢；独眼巨人送 2 只绵羊（已归殖民地）或一枚独眼透镜（1.143.0 双盔、独眼巨锤已移除）。
-    case "ettin":list.Add(Make("Steel",80));break;
-    case "cyclops":if(K("Sheep")!=null){for(int i=0;i<2;i++)list.Add(PawnGenerator.GeneratePawn(new PawnGenerationRequest(K("Sheep"),Faction.OfPlayer,PawnGenerationContext.NonPlayer,-1,forceGenerateNewPawn:true)));}else list.Add(Make("Steel",60));break; // 1.146.0：独眼透镜已移除
    }
    list.RemoveAll(t=>t==null);return list;
   }

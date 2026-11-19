@@ -86,7 +86,7 @@ namespace LichPhylactery {
     bool sageOk=sage.All(p=>BackgroundTraits.Has(p,BackgroundTraits.Sage) && !BackgroundTraits.Has(p,BackgroundTraits.Noble) && BackgroundTraits.Count(p)==1);
     Check(eligible.Count>0 && nobles>0 && explained && linked.All(p=>BackgroundTraits.Count(p)<=1) && sageOk,"trait link at 100%: "+nobles+"/"+eligible.Count+" red wizards with the red wizard adulthood become nobles; forced sages get no noble ("+sageOk+")");
     // 8 HAR 种族
-    var harKinds=new[]{("LP_MarilithColonist","LP_Race_Marilith"),("LP_EttinColonist","LP_Race_Ettin"),("LP_CyclopsColonist","LP_Race_Cyclops")};
+    var harKinds=new[]{("LP_MarilithColonist","LP_Race_Marilith")};
     if(harKinds.All(k=>DefDatabase<PawnKindDef>.GetNamedSilentFail(k.Item1)!=null)){
      s.raceBackstoryPercent=100;
      var res=new List<string>();bool ok=true;
@@ -98,7 +98,7 @@ namespace LichPhylactery {
       ok&=good && own;res.Add(kind+":"+BsNames(batch));
      }
      s.raceBackstoryPercent=75;
-     Check(ok,"HAR races at 100%: marilith/ettin/cyclops adulthoods come from their own race category (giants may also draw LP_Race_Giant): "+string.Join(" | ",res));
+     Check(ok,"HAR races at 100%: marilith adulthoods come from their own race category: "+string.Join(" | ",res));
     }else Log.Message("[LICH-TEST] HAR not active: skipped the HAR backstory check");
    }finally{
     BgDiscard(batches);

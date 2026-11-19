@@ -38,6 +38,63 @@ namespace LichPhylactery {
    int tolerance=FullModList?1:0;
    Check(giant.RaceProps.body.AllParts.All(x=>Math.Abs(PartHealth.Maximum(x,giant)-LegacyMax(x,giant))<=tolerance),"adult fire giant part maxima equal the 1.22.1 values");
    Check(Near(BodySize.MeleeFactor(giant),1.3f) && Near(MeleeRatio(giant),1.3f),"adult fire giant melee damage factor is x1.3: "+MeleeRatio(giant));
+   // 1.173.0 古巨兽后裔：无限生长没有上限——长 18 年体型 ×10，真实体型、巨躯规则（生命 / 近战 / 负重）、胃容量、画面都跟着算；不死、永生是原版基因。
+   {
+    var beast=SizePawn("LP_BehemothKin");var g=Behemoth.GeneOf(beast);var human0=SizePawn(null);
+    bool genes=g!=null && beast.genes.HasActiveGene(DefDatabase<GeneDef>.GetNamed("Deathless")) && beast.genes.HasActiveGene(DefDatabase<GeneDef>.GetNamed("Ageless"));
+    float start=g?.Size??0f;
+    if(g!=null){g.years=0f;g.Grow(0f);Behemoth.Changed(beast);}
+    float s0=BodySize.Size(beast),b0=beast.BodySize;
+    g?.Grow(17f);bool early=Behemoth.HasTrait(beast);float restEarly=beast.GetStatValue(StatDefOf.RestFallRateFactor,true,-1);
+    g?.Grow(1f);
+    float s1=BodySize.Size(beast),b1=beast.BodySize;bool full=Behemoth.HasTrait(beast);float restFull=beast.GetStatValue(StatDefOf.RestFallRateFactor,true,-1);
+    float hunger=beast.story.traits.GetTrait(DefDatabase<TraitDef>.GetNamed(Behemoth.TraitName))?.CurrentData.hungerRateFactor??0f;
+    g?.Grow(180f);float s2=BodySize.Size(beast);
+    if(g!=null){g.years=18f;g.Grow(0f);Behemoth.Changed(beast);}
+    Check(genes && start>=1f && start<=2.001f && Near(s0,1f) && Near(s1,10f) && Near(b1/b0,10f) && Near(s2,10f) && Near(g.years,18f) && !early && full && Near(restFull/restEarly,1.5f) && Near(hunger,2f) && Near(BodySize.HealthFactor(beast),5.5f) && Near(BodySize.MeleeFactor(beast),3.7f) && Near(BodySize.CarryFactor(beast),5.5f) && Near(RaceSize.RenderFactor(beast),Mathf.Sqrt(10f)) && Near(RaceSize.Stomach(beast),10f) && Near(MassUtility.Capacity(beast),35f*beast.BodySize*5.5f) && !beast.Dead,
+     "1.173.0 behemoth scion: endless growth + vanilla Deathless / Ageless; new adult starts at ×"+start.ToString("0.00")+"; 0 years ×"+s0+", 18 years ×"+s1+" (body size "+b0+" → "+b1+"), 198 years ×"+s2+" (1.174.0: stops at ×10; trait 巨兽 only at the top: "+early+"→"+full+", rest fall ×"+(restFull/restEarly)+", hunger ×"+hunger+"); at ×10 health ×"+BodySize.HealthFactor(beast)+", melee ×"+BodySize.MeleeFactor(beast)+", carry ×"+BodySize.CarryFactor(beast)+", drawn ×"+RaceSize.RenderFactor(beast).ToString("0.00")+", stomach ×"+RaceSize.Stomach(beast));
+    if(g!=null){g.years=1f;g.Grow(0f);Behemoth.Changed(beast);}
+    Check(!Behemoth.HasTrait(beast),"1.174.0 behemoth trait is removed again when the pawn is below the size cap");
+   }
+   // 1.177.0 通用体型基因：四档 0.7 / 2 / 3 / 4 互斥；装上以后体型 = 档位 × 种族本源小倍率，不和种族自带体型相乘；拿掉恢复。
+   {
+    GeneDef G(string n)=>DefDatabase<GeneDef>.GetNamed(n);
+    var tiers=new[]{("LP_SizeSmall",.7f,.8f),("LP_SizeLarge",2f,1.4f),("LP_SizeHuge",3f,1.75f),("LP_SizeColossal",4f,2f)};
+    bool excl=tiers.All(a=>tiers.All(b=>a.Item1==b.Item1 || G(a.Item1).ConflictsWith(G(b.Item1)))) && G("LP_SizeLarge").ConflictsWith(G("LP_EndlessGrowth"));
+    var tp=SizePawn(null);float pb=tp.BodySize;var res=new List<string>();bool tOk=true;
+    foreach(var (n,size,render) in tiers){
+     tp.genes.AddGene(G(n),true);BodySize.Notify_SizeChanged(tp);
+     bool one=Near(BodySize.Size(tp),size) && Near(tp.BodySize/pb,size) && Near(SmallBody.Render(tp),render);tOk&=one;res.Add(n+" ×"+BodySize.Size(tp));
+     tp.genes.RemoveGene(tp.genes.GetGene(G(n)));BodySize.Notify_SizeChanged(tp);
+    }
+    bool back=Near(BodySize.Size(tp),1f) && Near(tp.BodySize,pb);
+    // 云巨人（自带 2.2 = 2 × 1.1）装山岳之躯：3 × 1.1 = 3.3，不是 2.2 × 3；风暴巨人装擎天之躯 4 × 1.2 = 4.8；矮人（0.8）装巨人之躯 2 × 0.9 = 1.8。
+    float Take(string xeno,string gene){var p=SizePawn(xeno);float before=BodySize.Size(p);p.genes.AddGene(G(gene),true);BodySize.Notify_SizeChanged(p);float s=BodySize.Size(p);float real=p.BodySize;p.genes.RemoveGene(p.genes.GetGene(G(gene)));BodySize.Notify_SizeChanged(p);res.Add(xeno+" "+before+" → "+s+" → "+BodySize.Size(p));return Near(real/pb,s)?s:-1f;}
+    float tCloud=Take("LP_CloudGiant","LP_SizeHuge"),tStorm=Take("LP_StormGiant","LP_SizeColossal"),tDwarf=Take("LP_Dwarf","LP_SizeLarge"),tFire=Take("LP_FireGiant","LP_SizeHuge");
+    Check(excl && tOk && back && Near(tCloud,3.3f) && Near(tStorm,4.8f) && Near(tDwarf,1.8f) && Near(tFire,3f),
+     "1.177.0 universal size genes: four tiers mutually exclusive (and with endless growth) "+excl+"; on a human "+string.Join(", ",res.Take(4))+" and back to ×1 "+back+"; with a race tweak the gene takes over instead of multiplying: "+string.Join("; ",res.Skip(4)));
+   }
+   // 1.176.0 兼容修正：整具吃掉、已经销毁的尸体再被问“是什么肉”时不抛空引用（Alpha Memes 的后置补丁会这样问，抛错会让营养加不上）。
+   {
+    var prey=PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Thrumbo,null,PawnGenerationContext.NonPlayer,-1,forceGenerateNewPawn:true));
+    GenSpawn.Spawn(prey,SizePawn(null).Position,map);prey.Kill(null,null);var corpse=prey.Corpse;
+    bool live=corpse!=null && FoodUtility.GetMeatSourceCategoryFromCorpse(corpse)==FoodUtility.GetMeatSourceCategory(prey.RaceProps.meatDef);
+    if(corpse!=null && !corpse.Destroyed)corpse.Destroy();
+    int before=CorpseMeatSourceGuard.Guarded;bool threw=false;bool insect=false;
+    try{FoodUtility.GetMeatSourceCategoryFromCorpse(corpse);insect=FoodUtility.IsInsectCorpseOrInsectMeatIngredient(corpse);}catch(Exception){threw=true;}
+    Check(live && !threw && !insect && (corpse.InnerPawn!=null || CorpseMeatSourceGuard.Guarded>before),"1.176.0 a fully eaten (destroyed) corpse no longer throws when asked for its meat category (guarded "+(CorpseMeatSourceGuard.Guarded-before)+" calls); a normal corpse still reports its real category");
+   }
+   // 1.172.0 负重：手上搬运量与背包载重在原版体型倍率之上再 ×(1 + 0.5×强度×(S−1))；强度 200% → ×2；关闭 → ×1；普通人、矮人不变。
+   {
+    float CarryStat(Pawn x)=>x.GetStatValue(StatDefOf.CarryingCapacity,true,-1);
+    float c1=CarryStat(giant),m1=MassUtility.Capacity(giant);var sb=new System.Text.StringBuilder();MassUtility.Capacity(giant,sb);
+    SetSizeRule(true,200);float f2=BodySize.CarryFactor(giant),c2=CarryStat(giant);
+    SetSizeRule(false,100);float f0=BodySize.CarryFactor(giant),c0=CarryStat(giant),m0=MassUtility.Capacity(giant);
+    SetSizeRule(true,100);
+    var plain=SizePawn(null);var dwarfC=SizePawn("LP_Dwarf");
+    Check(StatDefOf.CarryingCapacity.parts.Count(x=>x is StatPart_BodySizeCarry)==1 && Near(BodySize.CarryFactor(giant),1.5f) && Near(c1/c0,1.5f) && Near(m1/m0,1.5f) && Near(m0,35f*giant.BodySize) && Near(f2,2f) && Near(c2/c0,2f) && Near(f0,1f) && Near(BodySize.CarryFactor(plain),1f) && Near(BodySize.CarryFactor(dwarfC),1f) && sb.ToString().Contains("150%"),
+     "1.172.0 giant-body carry: adult fire giant hand carry "+c0+" → "+c1+" and pack mass "+m0+" → "+m1+" (×1.5 on top of vanilla body size), ×2 at 200% strength, ×1 when off; human and dwarf unchanged; explanation: "+sb);
+   }
    Check(giant.GetStatValue(StatDefOf.MeleeDamageFactor)>0 && StatDefOf.MeleeDamageFactor.Worker.GetExplanationFull(StatRequest.For(giant),ToStringNumberSense.Factor,Melee(giant)).Contains("巨躯：×130%"),"melee damage explanation shows the giant-body factor");
 
    // 2. 巨魔、牛头人、矮人、普通人。

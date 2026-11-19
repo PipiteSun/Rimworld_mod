@@ -2,8 +2,8 @@
 <LanguageData>
   <!-- 死灵仪式台 -->
   <LP_Altar.label>necromantic ritual table</LP_Altar.label>
-  <!-- 3×3的死灵仪式工作台。添加巫妖仪式工作单，由预定角色执行完成转化。其他工作单服务于按钮选定的12格内命匣。 -->
-  <LP_Altar.description>A 3×3 necromantic ritual workbench. Add a lich ritual bill and the assigned pawn performs the transformation. Other bills serve the phylactery within 12 cells selected with the button.</LP_Altar.description>
+  <!-- 3×3的死灵仪式工作台。选中后点“仪式台面板”：查看命匣、按分类排入巫妖仪式、献祭、造物与植入物培育，并管理队列。服务的命匣须在台子12格内。可以拆下搬运、重新安装，工作队列和选中的命匣会保留。 -->
+  <LP_Altar.description>A 3×3 necromantic ritual workbench. Select it and press "Altar panel" to view the phylactery, queue the lich ritual, sacrifices, constructs and implant growing by category, and manage the queue. The served phylactery must be within 12 cells. It can be uninstalled, carried and reinstalled; its queue and chosen phylactery are kept.</LP_Altar.description>
   <!-- 命匣 -->
   <LP_Phylactery.label>phylactery</LP_Phylactery.label>
   <!-- 巫妖的灵魂容器。可搬运、储藏，必须保护免于摧毁。生肉献祭提高等级；主人拥有死灵之躯时，死亡3日后自动复活。工作单服务时放在台子12格内。 -->

@@ -45,7 +45,7 @@ namespace LichPhylactery {
     Check(orcRac.SequenceEqual(new[]{2,0,1,0,0,0}) && ogreRac[Adventurer.Int]==-2 && ogreRac[Adventurer.Str]==3,"racial bonuses: half-orc Str+2 Con+1 ("+Join(orcRac)+"), ogre Str+3 Int-2 ("+Join(ogreRac)+")");
     var orcH=Adventurer.Get(orc);var orcTr=Adventurer.TraitBonus(orc);
     Check(orcH!=null && orcH.scores[Adventurer.Str]==Math.Min(20,orcBase[Adventurer.Str]+2+orcTr[Adventurer.Str]),"half-orc generated scores include the racial Str +2");
-    Check(new[]{"LP_Elf","LP_Dwarf","LP_FireGiant","LP_Troll","LP_MindFlayer","LP_Githyanki","LP_GenasiFire","LP_Aasimar","LP_Tiefling","LP_Oozefolk","LP_Titan","LP_Genie","LP_Aarakocra","LP_Loxodon","LP_Minotaur","LP_StormGiant","LP_CloudGiant","LP_FrostGiant","LP_GenasiWater","LP_GenasiEarth","LP_GenasiAir","LP_AwakenedTitan","LP_EttinKin","LP_CyclopsKin","LP_MarilithKin"}.All(n=>DefDatabase<XenotypeDef>.GetNamedSilentFail(n)!=null && Adventurer.Racial.ContainsKey(n)),"every DND xenotype has a racial bonus entry");
+    Check(new[]{"LP_Elf","LP_Dwarf","LP_FireGiant","LP_Troll","LP_MindFlayer","LP_Githyanki","LP_GenasiFire","LP_Aasimar","LP_Tiefling","LP_Oozefolk","LP_Titan","LP_Genie","LP_Aarakocra","LP_Loxodon","LP_Minotaur","LP_StormGiant","LP_CloudGiant","LP_FrostGiant","LP_GenasiWater","LP_GenasiEarth","LP_GenasiAir","LP_AwakenedTitan","LP_MarilithKin"}.All(n=>DefDatabase<XenotypeDef>.GetNamedSilentFail(n)!=null && Adventurer.Racial.ContainsKey(n)),"every DND xenotype has a racial bonus entry");
     // 3. 经验表
     var b=AdvPawn();var hb=Adventurer.Get(b);
     Adventurer.GainXP(b,2200f);

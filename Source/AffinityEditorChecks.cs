@@ -34,6 +34,15 @@ namespace LichPhylactery {
     // 4. 编辑器列表：包含人类、巫妖、原版异种、LP 异种和人形种族，不含基准人；窗口能建
     var keys=Dialog_AffinityEditor.Keys();
     Check(keys.Contains(Affinity.HumanKey) && keys.Contains(Affinity.LichKey) && keys.Contains("Neanderthal") && keys.Contains("LP_Elf") && !keys.Contains("Baseliner") && keys.Count>=60,"editor lists "+keys.Count+" races (human / lich / vanilla / LP), baseliner folded into human");
+    // 5. 1.175.0 自设异种（没有 XenotypeDef）：按名字查覆盖；没配过按人类；列进编辑器；去掉覆盖后回到人类
+    var cp=AdvPawn();cp.genes.xenotypeName="测试巨种";
+    string ck=Affinity.CustomKey("测试巨种");var before=Affinity.For(cp);
+    var ca=new AdventurerAffinity{key=ck};ca.strong[Adventurer.Con]=true;ca.weak[Adventurer.Dex]=true;ca.legend[Legend.Health]=true;ca.legendary=true;
+    s.affinityOverrides[ck]=AffinityOverrides.Encode(ca);Affinity.InvalidateOverrides();
+    var got=Affinity.For(cp);var other=AdvPawn();other.genes.xenotypeName="别的名字";var notMine=Affinity.For(other);bool listed=Dialog_AffinityEditor.Keys().Contains(ck);
+    s.affinityOverrides.Remove(ck);Affinity.InvalidateOverrides();var after=Affinity.For(cp);
+    Check(Affinity.CustomNameOf(cp)=="测试巨种" && before.key==Affinity.HumanKey && got.key==ck && got.label=="测试巨种" && got.strong[Adventurer.Con] && got.weak[Adventurer.Dex] && got.legend[Legend.Health] && got.legendary && notMine.key==Affinity.HumanKey && listed && after.key==Affinity.HumanKey,
+     "1.175.0 custom xenotype '测试巨种' (no XenotypeDef): human before, uses its own override by name (Con strong / Dex weak / legendary), another custom name stays human, row listed in the editor ("+listed+"), back to human after reset");
    }finally{s.affinityOverrides.Clear();foreach(var kv in keep)s.affinityOverrides[kv.Key]=kv.Value;Affinity.InvalidateOverrides();s.adventurerAffinity=oAff;Adventurer.TestSuppressed=oSup;s.adventurer=oOn;foreach(var x in advMade)if(!x.Destroyed)x.Destroy();advMade.Clear();}
   }
   static int affFrames;

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 无限生长 -->
+  <LP_EndlessGrowth.label>endless growth</LP_EndlessGrowth.label>
+  <!-- 携带者的身体不停地生长：体型每年增加0.5，一直长到10为止。体型越大，生命、近战伤害、负重和胃容量越高（巨躯规则），画面也跟着变大。长到10时获得特性“巨兽”：睡得更久、吃得更多。 -->
+  <LP_EndlessGrowth.description>The carrier's body keeps growing: body size increases by 0.5 every year until it reaches 10. The larger the body, the higher the health, melee damage, carrying capacity and stomach capacity (giant-body rule), and the larger the pawn is drawn. At 10 the trait "behemoth" is gained: sleeps longer and eats more.</LP_EndlessGrowth.description>
+  <!-- 体型每年+0.5，长到10为止（约18年；画面按体型的平方根放大）。 | 长到10时获得特性“巨兽”：睡眠需求下降速度×150%，饥饿速度×200%。 | 新生成的成年人已经长了0.5～2年（体型1.25～2）；婴儿和后来才装上基因的人从1开始长。 | 生命、近战、负重按巨躯规则随体型提高；胃容量×体型。 -->
+  <LP_EndlessGrowth.customEffectDescriptions.0>Body size +0.5 per year up to 10 (about 18 years; drawn at the square root of body size).</LP_EndlessGrowth.customEffectDescriptions.0>
+  <LP_EndlessGrowth.customEffectDescriptions.1>At 10 the trait "behemoth" is gained: rest fall rate ×150%, hunger rate ×200%.</LP_EndlessGrowth.customEffectDescriptions.1>
+  <LP_EndlessGrowth.customEffectDescriptions.2>Newly generated adults have already grown for 0.5-2 years (body size 1.25-2); babies and those who receive the gene later start from 1.</LP_EndlessGrowth.customEffectDescriptions.2>
+  <LP_EndlessGrowth.customEffectDescriptions.3>Health, melee and carrying rise with body size by the giant-body rule; stomach capacity × body size.</LP_EndlessGrowth.customEffectDescriptions.3>
+</LanguageData>

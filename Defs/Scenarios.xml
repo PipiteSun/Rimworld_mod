@@ -130,19 +130,34 @@
     <spawnCategories><li>LP_ScenarioOnly</li></spawnCategories>
   </BackstoryDef>
 
+  <BackstoryDef>
+    <defName>LP_CryptRecluse</defName>
+    <slot>Adulthood</slot>
+    <title>墓室独居者</title>
+    <titleShort>独居者</titleShort>
+    <baseDesc>[PAWN_nameDef]曾是一座边境学院里最有天分的死灵学徒。导师死于瘟疫，同门被猎巫的圣武士烧死在广场上，只有[PAWN_objective]带着导师的笔记逃进了荒原下的古墓。[PAWN_pronoun]在墓室里独自度过了许多年：用野兽和盗墓贼的尸体练手，缝起第一具骷髅，又用三季的生肉堆出一具血肉巨像。最后一个冬天，[PAWN_pronoun]把自己的心脏和灵魂一起献给了命匣。从那以后，墓室里再也没有心跳，只有骨头的咔嗒声在回答[PAWN_possessive]的命令。</baseDesc>
+    <skillGains>
+      <Intellectual>3</Intellectual>
+      <Crafting>2</Crafting>
+      <Medicine>1</Medicine>
+    </skillGains>
+    <shuffleable>false</shuffleable>
+    <spawnCategories><li>LP_ScenarioOnly</li></spawnCategories>
+  </BackstoryDef>
+
   <!-- ==================== 巫妖：命匣初成 ==================== -->
 
   <ScenarioDef ParentName="ScenarioBase">
     <defName>LP_LichScenario</defName>
     <label>命匣初成</label>
-    <description>你在废弃的地下墓室里完成了最后一步仪式，把灵魂封进了命匣。追随你的学徒还活着，几具刚刚唤醒的死灵造物守在门口。太阳在仪式完成的那一刻暗了下去。\n\n开局人物页的第一位角色会成为巫妖（若其心灵失聪，则改由心灵敏感度最高的人担任）。巫妖不吃不睡，但需要生肉和完整的尸体喂养命匣；另一名活人学徒负责吃饭和那些死者做不好的事。塞伊远征军听说了你的仪式，暂时把你当作同道：开局好感0，“旧日盟约”让它维持60天，之后会逐渐回落，除非你向红袍宣誓效忠。\n\n注意：只有两名活人，前期人手主要靠死灵造物，属于有难度的开局。</description>
+    <description>导师死于瘟疫，同门被猎巫的圣武士烧死，你带着导师的笔记逃进荒原下的古墓，在那里独自过了许多年。你用野兽和盗墓贼的尸体练手，缝起了两具骷髅，又用三季的生肉堆出一具血肉巨像。今夜，你在墓室里独自完成了最后一步仪式，把心脏和灵魂一起封进了命匣。墓室里没有一个活人，只有这几具死灵造物守在门口。太阳在仪式完成的那一刻暗了下去。\n\n开局只有一名角色，这名角色会成为巫妖（若其心灵失聪，照样转化，但命匣法术和修复会很弱，建议重新随机）。巫妖不吃不睡，需要生肉和完整的尸体喂养命匣。塞伊远征军听说了你的仪式，暂时把你当作同道：开局好感0，“旧日盟约”让它维持60天，之后会逐渐回落，除非你向红袍宣誓效忠。\n\n注意：没有活人同伴，前期人手全靠死灵造物，属于有难度的开局。</description>
     <scenario>
-      <summary>一位刚完成仪式的巫妖、一名学徒，以及命匣、仪式台和三具死灵造物。</summary>
+      <summary>一位刚完成仪式的巫妖，没有活人同伴；命匣、仪式台和三具死灵造物。</summary>
       <parts>
 
         <li Class="ScenPart_ConfigPage_ConfigureStartingPawns">
           <def>ConfigPage_ConfigureStartingPawns</def>
-          <pawnCount>2</pawnCount>
+          <pawnCount>1</pawnCount>
           <pawnChoiceCount>8</pawnChoiceCount>
         </li>
 
@@ -157,6 +172,11 @@
           <faction>LP_FaerunHostile</faction>
           <goodwill>0</goodwill>
           <pactDays>60</pactDays>
+        </li>
+
+        <li Class="LichPhylactery.ScenPart_StarterBackstory">
+          <def>LP_StarterBackstory</def>
+          <adulthood>LP_CryptRecluse</adulthood>
         </li>
 
         <li Class="LichPhylactery.ScenPart_LichAscension">
@@ -216,7 +236,7 @@
 
         <li Class="ScenPart_GameStartDialog">
           <def>GameStartDialog</def>
-          <text>最后一句咒文落下时，你的心跳停了，却没有死去。\n\n灵魂沉进那只冰冷的命匣，墓室里的骷髅与血肉巨像一同睁开空洞的眼睛，等待你的命令。只有你的学徒还在发抖——这里只剩学徒还需要吃饭和睡觉。\n\n外面，太阳被黑影吞没了。\n\n保护好命匣。只要它还在，死亡就只是一场三天的长眠。</text>
+          <text>最后一句咒文落下时，你的心跳停了，却没有死去。\n\n灵魂沉进那只冰冷的命匣，墓室里的骷髅与血肉巨像一同睁开空洞的眼睛，等待你的命令。这些年来，它们是你唯一的同伴；从今夜起，你也和它们一样，不再需要吃饭和睡觉。墓室里再没有心跳。\n\n外面，太阳被黑影吞没了。\n\n保护好命匣。只要它还在，死亡就只是一场三天的长眠。</text>
           <closeSound>GameStartSting</closeSound>
         </li>
 

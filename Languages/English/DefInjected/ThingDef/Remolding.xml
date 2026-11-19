@@ -2,6 +2,6 @@
 <LanguageData>
   <!-- 死灵重塑池 -->
   <LP_RemoldingPool.label>necromantic remolding pool</LP_RemoldingPool.label>
-  <!-- 3×3重塑池。修改已有死灵造物的材料投入、技能兴趣和知识专长，保留本人、技能经验、关系及植入体。耗时1个游戏日，统御与维护继续生效；失去统御时暂停。增加投入补差额，减少不返还，另收50生肉。入池时吸收12格内可用材料，入池后取消不退款。池体被拆除或摧毁会释放造物并保留原配置。 -->
-  <LP_RemoldingPool.description>A 3×3 remolding pool. Modifies an existing necromantic construct's material investment, skill passions and knowledge specialty, keeping the individual, skill XP, relationships and implants. Takes 1 game day; command and upkeep continue; pauses if command is lost. Increasing investment pays the difference, decreasing refunds nothing, plus a 50 raw meat fee. Absorbs usable materials within 12 cells when entering; canceling after entering gives no refund. Deconstructing or destroying the pool releases the construct with its original configuration.</LP_RemoldingPool.description>
+  <!-- 3×3重塑池。修改已有死灵造物的材料投入、技能兴趣和知识专长，保留本人、技能经验、关系及植入体。耗时1个游戏日，统御与维护继续生效；失去统御时暂停。增加投入补差额，减少不返还，另收50生肉。入池时从全图吸收可用材料，入池后取消不退款。池体被拆除或摧毁会释放造物并保留原配置。 -->
+  <LP_RemoldingPool.description>A 3×3 remolding pool. Modifies an existing necromantic construct's material investment, skill passions and knowledge specialty, keeping the individual, skill XP, relationships and implants. Takes 1 game day; command and upkeep continue; pauses if command is lost. Increasing investment pays the difference, decreasing refunds nothing, plus a 50 raw meat fee. Absorbs usable materials from anywhere on the map when entering; canceling after entering gives no refund. Deconstructing or destroying the pool releases the construct with its original configuration.</LP_RemoldingPool.description>
 </LanguageData>
