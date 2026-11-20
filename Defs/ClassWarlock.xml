@@ -7,7 +7,7 @@
   <LichPhylactery.LP_ClassDef>
     <defName>LP_Class_Warlock</defName>
     <label>邪术师</label>
-    <description>DND 邪术师与异界宗主立约换取力量：魔能爆（戏法，5 / 10 / 15 级多一道光束）、黑暗术、魔能祈唤（被动，选择）、咒术、秘法奥秘（支配人类、力场监牢，每天一次），终极 秘法大师。1 级选宗主：邪魔、妖精或旧日支配者。强度看“契约强度”（社交或智识，魅力）。资源：契约法力（上限 2 + 邪术师等级/4，很少；连续 1 小时冥想、娱乐或睡觉就回满）。</description>
+    <description>与异界宗主立约的施法者，魔能爆连发，法力少但回得快。\n强度：「契约强度」（主属性魅力，技能社交或智识，取较高者）。</description>
     <mainSkill>Social</mainSkill>
     <alternateSkill>Intellectual</alternateSkill>
     <primary>Cha</primary>

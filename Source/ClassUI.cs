@@ -22,7 +22,7 @@ namespace LichPhylactery {
    y+=30f;
    if(LakeArcana.Slots(h)>0){var ar=new Rect(0f,y,w,22f);GUI.color=new Color(.55f,.8f,1f);Widgets.Label(ar,LakeArcana.SlotLine(h));GUI.color=Color.white;TooltipHandler.TipRegion(ar,LakeArcana.SlotTip);y+=24f;} // 1.100.0
    y=LakeSeals.DrawRows(y,w,p,h); // 1.133.0 通用秘传、湖印
-   foreach(var c in ClassSystem.All)y=DrawClass(y,w,p,h,c,own,pts);
+   foreach(var c in ClassSystem.LearnedFirst(h))y=DrawClass(y,w,p,h,c,own,pts);
    return y;
   }
   static float DrawClass(float y,float w,Pawn p,Hediff_Adventurer h,LP_ClassDef c,bool own,int pts){

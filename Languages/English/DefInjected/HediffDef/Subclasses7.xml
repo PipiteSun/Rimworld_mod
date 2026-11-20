@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 醉步 -->
+  <LP_DK_SwayBuff.label>drunken sway</LP_DK_SwayBuff.label>
+  <LP_DK_SwayBuff.description>Drunken Master: move speed +0.2, melee dodge +10.</LP_DK_SwayBuff.description>
+  <!-- 醉意麻木 -->
+  <LP_DK_NumbBuff.label>drunken numbness</LP_DK_NumbBuff.label>
+  <LP_DK_NumbBuff.description>Drunken Master: pain shock threshold +15%, mind resistance +20%.</LP_DK_NumbBuff.description>
+  <!-- 剑圣之道 -->
+  <LP_KS_PathBuff.label>path of the kensei</LP_KS_PathBuff.label>
+  <LP_KS_PathBuff.description>Kensei: with a melee weapon in hand, melee hit chance +10%, melee dodge +5.</LP_KS_PathBuff.description>
+  <!-- 磨砺剑锋 -->
+  <LP_KS_Sharpened.label>sharpened blade</LP_KS_Sharpened.label>
+  <LP_KS_Sharpened.description>A ki-sharpened edge: melee damage ×1.25.</LP_KS_Sharpened.description>
+  <!-- 狂热专注 -->
+  <LP_ZL_FocusBuff.label>fanatical focus</LP_ZL_FocusBuff.label>
+  <LP_ZL_FocusBuff.description>Zealot: mind resistance +20%, pain shock threshold +10%.</LP_ZL_FocusBuff.description>
+  <!-- 狂热 -->
+  <LP_ZL_Zeal.label>zeal</LP_ZL_Zeal.label>
+  <LP_ZL_Zeal.description>Fired up by a zealot's war cry: melee hit chance +10%, move speed ×1.1.</LP_ZL_Zeal.description>
+  <!-- 先祖纠缠 -->
+  <LP_AG_Haunted.label>haunted by ancestors</LP_AG_Haunted.label>
+  <LP_AG_Haunted.description>Hounded by ancestral spirits: damage ×0.75 against anyone but the barbarian who marked it.</LP_AG_Haunted.description>
+  <!-- 请示先祖 -->
+  <LP_AG_ConsultBuff.label>consult the spirits</LP_AG_ConsultBuff.label>
+  <LP_AG_ConsultBuff.description>Ancestral Guardian: learning speed ×1.15, mind resistance +15%.</LP_AG_ConsultBuff.description>
+  <!-- 迷人之姿 -->
+  <LP_WN_BeguilingBuff.label>beguiling presence</LP_WN_BeguilingBuff.label>
+  <LP_WN_BeguilingBuff.description>Fey Wanderer: mind resistance +20%, social impact +15%, negotiation ability +15%.</LP_WN_BeguilingBuff.description>
+  <!-- 以太步 -->
+  <LP_HW_Ethereal.label>ethereal step</LP_HW_Ethereal.label>
+  <LP_HW_Ethereal.description>Half in the Ethereal Plane: damage taken ×0.5, move speed ×1.2.</LP_HW_Ethereal.description>
+  <!-- 远距打击 -->
+  <LP_HW_Momentum.label>distant strike</LP_HW_Momentum.label>
+  <LP_HW_Momentum.description>Fresh out of a planar rift: weapon damage ×1.2.</LP_HW_Momentum.description>
+  <!-- 迷魂演出 -->
+  <LP_GL_EnthrallBuff.label>enthralling performance</LP_GL_EnthrallBuff.label>
+  <LP_GL_EnthrallBuff.description>College of Glamour: social impact +20%, negotiation ability +20%, trade price improvement +5%.</LP_GL_EnthrallBuff.description>
+  <!-- 不破威严 -->
+  <LP_GL_UnbreakBuff.label>unbreakable majesty</LP_GL_UnbreakBuff.label>
+  <LP_GL_UnbreakBuff.description>Fey-like majesty: damage taken ×0.7, mind resistance +30%.</LP_GL_UnbreakBuff.description>
+  <!-- 悬赏标记 -->
+  <LP_BH_Marked.label>bounty mark</LP_BH_Marked.label>
+  <LP_BH_Marked.description>Marked by a bounty hunter: the gunslinger who marked it deals ×1.2 damage to it (×1.4 with dead or alive).</LP_BH_Marked.description>
+  <!-- 追踪好手 -->
+  <LP_BH_TrackerBuff.label>expert tracker</LP_BH_TrackerBuff.label>
+  <LP_BH_TrackerBuff.description>Bounty Hunter: move speed +0.2, shooting accuracy +1.</LP_BH_TrackerBuff.description>
+  <!-- 缚足 -->
+  <LP_BH_Hobbled.label>hobbled</LP_BH_Hobbled.label>
+  <LP_BH_Hobbled.description>Legs tangled: move speed ×0.5.</LP_BH_Hobbled.description>
+  <!-- 预知闪避 -->
+  <LP_SR_ForesightBuff.label>foresight</LP_SR_ForesightBuff.label>
+  <LP_SR_ForesightBuff.description>Seer: melee dodge +8, shooting accuracy +1.</LP_SR_ForesightBuff.description>
+  <!-- 天眼 -->
+  <LP_SR_EyeBuff.label>third eye</LP_SR_EyeBuff.label>
+  <LP_SR_EyeBuff.description>Seer: mind resistance +20%, psychic sensitivity +15%.</LP_SR_EyeBuff.description>
+  <!-- 危机预感 -->
+  <LP_SR_Warned.label>premonition</LP_SR_Warned.label>
+  <LP_SR_Warned.description>Warned by a seer: damage taken ×0.8, melee dodge +10.</LP_SR_Warned.description>
+  <!-- 破绽尽现 -->
+  <LP_SR_Exposed.label>exposed</LP_SR_Exposed.label>
+  <LP_SR_Exposed.description>Openings laid bare by a seer: damage taken ×1.15.</LP_SR_Exposed.description>
+</LanguageData>

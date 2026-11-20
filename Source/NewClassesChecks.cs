@@ -16,10 +16,10 @@ namespace LichPhylactery {
     var gsAbs=GS.abilities.Select(e=>e.ability).Concat(gsSubs.SelectMany(s=>s.abilities.Select(e=>e.ability))).Concat(GS.legendary).ToList();
     var list=CasterSpells.ListOf(PS);
     bool icons=psAbs.Concat(gsAbs).All(a=>a!=null && a.abilityClass==typeof(Ability_Class) && a.uiIcon!=null && a.uiIcon!=BaseContent.BadTex);
-    Check(PS!=null && GS!=null && PS.caster && PS.resource==ClassResource.Mana && PS.subclassLevel==3 && GS.martial && GS.resource==ClassResource.Grit && psSubs.Count==4 && gsSubs.Count==4
+    Check(PS!=null && GS!=null && PS.caster && PS.resource==ClassResource.Mana && PS.subclassLevel==3 && GS.martial && GS.resource==ClassResource.Grit && psSubs.Count==5 && gsSubs.Count==5
      && psSubs.All(s=>s.choices.Count>=6) && icons && list!=null && list.Table.Count==list.spells.Count && DefDatabase<StatDef>.GetNamed("LP_PsionicPower").parts.Any(x=>x is StatPart_ClassPower)
      && DefDatabase<StatDef>.GetNamed("LP_GunPower").parts.Any(x=>x is StatPart_ClassPower) && ClassSystem.ResourceLabel(ClassResource.Grit)=="胆识",
-     "new classes: psion (caster, mana, 4 subclasses with 6 discipline choices, "+(list?.Table.Count??0)+"/"+(list?.spells.Count??0)+" spells) and gunslinger (martial, grit, 4 ways); "+psAbs.Count+"+"+gsAbs.Count+" abilities with icons");
+     "new classes: psion (caster, mana, 5 subclasses with 6 discipline choices, "+(list?.Table.Count??0)+"/"+(list?.spells.Count??0)+" spells) and gunslinger (martial, grit, 5 ways); "+psAbs.Count+"+"+gsAbs.Count+" abilities with icons");
     // 2. 心灵术士：智识 6 学 1 级 → 念动推拉等；灵能点 4，花 1 剩 3；5 级 6 点二档；法力 2 + 等级；灵能值在范围里。
     var a=ClsPawn(5);a.SetFactionDirect(Faction.OfPlayer);a.skills.GetSkill(SkillDefOf.Intellectual).Level=6;var ha=Adventurer.Get(a);bool add=ClassSystem.AddLevel(ha,PS);
     int p1=Psion.Points(ha);bool spent=Psion.Spend(a,1);int p2=Psion.Points(ha);

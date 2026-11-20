@@ -121,7 +121,7 @@ def psion():
     P.append(f'''  <LichPhylactery.LP_ClassDef>
     <defName>{PC}</defName>
     <label>心灵术士</label>
-    <description>DND 心灵术士用纯粹的心灵之力施法：法术不出声、不打手势（法术表约 80 个，备法），另有一池「灵能点」驱动念动推拉、心灵感应和灵能修行（3 级起选 6 项）。1 级起自带心灵链接（设置可关），灵能点用完时可以改加神经热。3 级选子职业：血肉塑形者、念动师、心灵感应者或灵跃者。终极 燃魂。强度看“灵能强度”（智识，智力），伤害与治疗（设置开着时）乘心灵敏感度。资源：法力（上限 2 + 等级，冥想时回得快）与灵能点（健康页显示）。心灵失聪的人不能学。</description>
+    <description>用纯粹心灵之力施法，念动推拉、心灵感应，还能借神经热续航。\\n强度：「灵能强度」（主属性智力，技能智识）；伤害与治疗另乘心灵敏感度。心灵失聪的人不能学。</description>
     <mainSkill>Intellectual</mainSkill>
     <alternateSkill>Social</alternateSkill>
     <primary>Int</primary>
@@ -380,7 +380,7 @@ def gunslinger():
     P.append(f'''  <LichPhylactery.LP_ClassDef>
     <defName>{GC}</defName>
     <label>枪手</label>
-    <description>DND 枪手靠胆识和一把好枪活下来：相依之枪、枪手闪避、暴力射击（会卡壳）、部位瞄准、致命一击、威慑射击，终极 死亡射击。只吃火器（工业以上的远程武器和本模组的魔法枪、矮人枪械；弓、弩、法杖、手雷不算）。3 级选枪道：流浪者（短枪 + 刀）、双枪客（短枪）、狙击手（长枪）或先锋（重火器）。还会造枪：做火器更快，有机会高一档品质。强度看“枪术强度”（射击，敏捷）。资源：胆识（用火器击杀、打倒敌人就回，睡觉也回）。物理职业：额外攻击、战斗风格。</description>
+    <description>靠胆识和一把好枪吃饭的火器专家，只用火器，还会造枪。\\n强度：「枪术强度」（主属性敏捷，技能射击）。</description>
     <mainSkill>Shooting</mainSkill>
     <alternateSkill>Crafting</alternateSkill>
     <primary>Dex/Wis</primary>

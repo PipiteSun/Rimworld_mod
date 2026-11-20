@@ -1,3 +1,4 @@
+# 【已停用 2026-11-19】Peter 改要原版风格，书架贴图现由 draw_from_vanilla.py 生成；运行本脚本会覆盖掉原版风格的 north/south。
 # 把 Peter 画的 3:1 三视图（品红底，左书脊 / 中封面 / 右俯视）装成书架竖放贴图。
 # 注意：输出时书脊 → _north，俯视 → _south（原版朝南书架用 _north 画书脊，见下方 outs）。
 # 用法：python -I install_sheets.py <LichPhylactery 根目录> <sheet 目录> [只处理的名字...]
@@ -95,7 +96,8 @@ for name, prefix in ITEMS.items():
         north = north.rotate(90, expand=True)
     # 2026-11-19 修正：原版书架朝南（横放）时用 _north 画书，原版 north = 书脊、south = 书页切口。
     # sheet 里的变量名沿用"左 south"的叫法，但左边画的是书脊，所以书脊存成 north，俯视/镜像那张存成 south。
-    outs = {"north": fit(south, SPINE), "east": fit(east, COVER), "south": fit(north, SPINE)}
+    # east 不再用手绘封面（朝东/西书架叠放会乱），改由 draw_east_from_vanilla.py 按原版形状生成。
+    outs = {"north": fit(south, SPINE), "south": fit(north, SPINE)}
     for d, im in outs.items():
         p = os.path.join(TEX, prefix + "_Vertical_%s.png" % d)
         os.makedirs(os.path.dirname(p), exist_ok=True)

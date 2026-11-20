@@ -249,6 +249,7 @@ namespace LichPhylactery {
    var s=LichMod.Settings;
    l.CheckboxLabeled("野兽野性等级".Loc(),ref s.beastLevels,"野生和非玩家的动物出现时带「野性等级」：狂暴兽群和敌对组按威胁点数定级，野外动物 1～殖民地最高等级 −3，上限殖民地最高等级 +3。等级越高近战伤害、部位生命越高、跑得越快（与殖民者同一条六维曲线，1 级不变）。玩家的动物靠战斗和搬运成长。关闭后不再给新动物定级，已有的等级不提供效果。".Loc());
    if(s.beastLevels){
+    l.CheckboxLabeled("DND 生物按挑战等级定级".Loc(),ref s.beastCRLevels,"DND 生物（显示挑战等级 CR 的怪物和野兽）的野性等级至少等于它的 CR，驯服后也保留：CR N 的生物和 N 级冒险者一样成长，部位生命 = 原版 × 等级成长 × 体质，近战伤害随力量提高。塔拉斯克另有事件强化，不受影响。关闭后新出现的生物不再按 CR 定级，已有的等级不变。".Loc()); // 1.184.0
     TooltipHandler.TipRegion(l.Label("精英野兽概率：".Loc()+Mathf.RoundToInt(s.beastEliteChance*100f)+"%"),"野兽出现时成为精英（恐怖 / 狂暴 / 远古 / 深渊腐化）的概率，死后掉落兽王之心。狂暴兽群的首领总是精英。".Loc());
     s.beastEliteChance=Mathf.Round(l.Slider(s.beastEliteChance,0f,BeastLevels.EliteMax)*100f)/100f;
    }

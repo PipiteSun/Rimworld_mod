@@ -25,7 +25,7 @@ namespace LichPhylactery {
   void CheckBeastLevels(){
    var s=LichMod.Settings;bool oOn=s.beastLevels,oAdv=s.adventurer,oSup=BeastLevels.TestSuppressed,oAsup=Adventurer.TestSuppressed;float oChance=s.beastEliteChance;
    BeastLevels.TestSuppressed=false;s.beastLevels=true;s.beastEliteChance=BeastLevels.DefaultElite;s.adventurer=true;BeastLevels.ForgetColony();
-   try{BlDefs();BlFormula();BlLevelOne();BlElites();BlPack();BlGrowth();BlMisc();}
+   try{BlDefs();BlFormula();BlLevelOne();BlElites();BlPack();BlGrowth();BlMisc();BlCR();}
    finally{
     s.beastLevels=oOn;s.adventurer=oAdv;s.beastEliteChance=oChance;BeastLevels.TestSuppressed=oSup;Adventurer.TestSuppressed=oAsup;
     BeastLevels.TestRoll=null;BeastLevels.TestVariant=null;BeastLevels.TestNoise=null;BeastLevels.ForgetColony();
@@ -175,6 +175,29 @@ namespace LichPhylactery {
    Check(ho!=null && after==MapComponent_BeastPacks.InitVersion && count==1,"[beast levels] old saves: animals without a level get one once when the map loads");
   }
 
+  // 1.184.0：DND 生物野性等级不低于 CR。
+  void BlCR(){
+   var s=LichMod.Settings;bool oCR=s.beastCRLevels;s.beastCRLevels=true;
+   try{
+    Check(BeastLevels.CRLevel(180f)==7 && BeastLevels.CRLevel(10f)==1 && BeastLevels.CRLevel(3000f)==30 && BeastLevels.CRLevel(0f)==0,"[beast CR] CR = combat power ÷25 rounded, 1..30 (same as the displayed 挑战等级)");
+    BeastLevels.TestNoise=0;BeastLevels.TestRoll=1f;
+    var wolf=BlAnimal();var owl=BlAnimal("LP_Owlbear");var h=BeastLevels.Get(owl);
+    Check(BeastLevels.CRFloor(wolf)==0 && BeastLevels.Get(wolf)?.level==1 && h!=null && h.level==7 && BeastLevels.CRFloor(owl)==7,"[beast CR] vanilla wolf stays at its rolled level 1; owlbear (CR 7) spawns at wild level 7 ("+h?.level+")");
+    var torso=owl.RaceProps.body.corePart;BeastLevels.TestSuppressed=true;var plain=BlAnimal("LP_Owlbear");BeastLevels.TestSuppressed=false;
+    float hp0=PartHealth.Maximum(torso,plain),hp7=PartHealth.Maximum(torso,owl);
+    Check(Near(BeastLevels.PartFactor(7,0),1.3f*(1f+.15f*(BeastLevels.Score(7)-10f)/2f)) && Math.Abs(hp7-Mathf.Ceil(hp0*BeastLevels.PartFactor(7,0)))<=1f && Near(BlFac(h,StatDefOf.MeleeDamageFactor),BeastLevels.MeleeFactor(7,0)),"[beast CR] CR 7 owlbear: part HP = vanilla × level growth 1.3 × constitution ("+hp0+" → "+hp7+"), melee × strength");
+    h.level=2;h.ApplyCRFloor();
+    Check(h.level==7 && Near(h.Severity,7f),"[beast CR] old saves: a DND creature below its CR is raised to it on load");
+    owl.SetFaction(Faction.OfPlayer);
+    Check(BeastLevels.GrowthCap(owl)>=7 && BeastLevels.Get(owl).level==7,"[beast CR] a tamed DND creature keeps its CR level (growth cap ≥ CR)");
+    s.beastCRLevels=false;var owl2=BlAnimal("LP_Owlbear");
+    Check(BeastLevels.CRFloor(owl2)==0 && BeastLevels.Get(owl2)?.level==1,"[beast CR] setting off: DND creatures roll like any animal");
+    s.beastCRLevels=true;
+    var tarr=DefDatabase<PawnKindDef>.GetNamedSilentFail("LP_Tarrasque");
+    Check(tarr!=null && BeastLevels.CRSkip.Contains(tarr.defName),"[beast CR] the tarrasque keeps its own event scaling (no CR floor)");
+    Check(BlClean(h.TipStringExtra) && h.TipStringExtra.Contains("挑战等级 CR 7"),"[beast CR] the wild-level tooltip names the CR floor");
+   }finally{s.beastCRLevels=oCR;BeastLevels.TestNoise=null;BeastLevels.TestRoll=null;}
+  }
   void PrepareBeastLevelsSave(){
    map=Find.CurrentMap;var s=LichMod.Settings;bool oSup=BeastLevels.TestSuppressed,oOn=s.beastLevels;BeastLevels.TestSuppressed=false;s.beastLevels=true;
    try{

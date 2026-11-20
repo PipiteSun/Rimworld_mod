@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 醉步 -->
+  <LP_DK_Sway.label>drunken sway</LP_DK_Sway.label>
+  <LP_DK_Sway.description>Passive: move speed +0.2, melee dodge +10. Drunken Master, monk level 3.</LP_DK_Sway.description>
+  <!-- 借力打力 -->
+  <LP_DK_Redirect.label>redirect attack</LP_DK_Redirect.label>
+  <LP_DK_Redirect.description>Passive: when an enemy hits you in melee, a 25% success chance to turn the blow aside (no damage) and stun the attacker for 1 second. At most once every 3 seconds. Drunken Master, monk level 6.</LP_DK_Redirect.description>
+  <!-- 醉意麻木 -->
+  <LP_DK_Numb.label>drunken numbness</LP_DK_Numb.label>
+  <LP_DK_Numb.description>Passive: pain shock threshold +15%, mind resistance +20%. Drunken Master, monk level 11.</LP_DK_Numb.description>
+  <!-- 醉拳乱舞 -->
+  <LP_DK_Frenzy.label>intoxicated frenzy</LP_DK_Frenzy.label>
+  <LP_DK_Frenzy.description>Strike each adjacent enemy (up to 5) with two full melee attacks. Ki 3, cooldown 20 seconds. Drunken Master, monk level 17.</LP_DK_Frenzy.description>
+  <!-- 剑圣之道 -->
+  <LP_KS_Path.label>path of the kensei</LP_KS_Path.label>
+  <LP_KS_Path.description>Passive: with a melee weapon in hand, melee hit chance +10%, melee dodge +5. Kensei, monk level 3.</LP_KS_Path.description>
+  <!-- 人剑合一 -->
+  <LP_KS_OneWithBlade.label>one with the blade</LP_KS_OneWithBlade.label>
+  <LP_KS_OneWithBlade.description>Passive: melee weapon hits deal ×1.1 damage with +20% armor penetration. Kensei, monk level 6.</LP_KS_OneWithBlade.description>
+  <!-- 磨砺剑锋 -->
+  <LP_KS_Sharpen.label>sharpen the blade</LP_KS_Sharpen.label>
+  <LP_KS_Sharpen.description>For 60 seconds melee damage ×1.25. Ki 2, cooldown 2 minutes. Kensei, monk level 11.</LP_KS_Sharpen.description>
+  <!-- 无误精准 -->
+  <LP_KS_Unerring.label>unerring accuracy</LP_KS_Unerring.label>
+  <LP_KS_Unerring.description>Passive: melee weapon hits have a 15% success chance to deal double damage. Kensei, monk level 17.</LP_KS_Unerring.description>
+  <!-- 神圣狂怒 -->
+  <LP_ZL_DivineFury.label>divine fury</LP_ZL_DivineFury.label>
+  <LP_ZL_DivineFury.description>Passive: melee damage ×1.15 while raging. Zealot, barbarian level 3.</LP_ZL_DivineFury.description>
+  <!-- 狂热专注 -->
+  <LP_ZL_Focus.label>fanatical focus</LP_ZL_Focus.label>
+  <LP_ZL_Focus.description>Passive: mind resistance +20%, pain shock threshold +10%. Zealot, barbarian level 7.</LP_ZL_Focus.description>
+  <!-- 狂热威仪 -->
+  <LP_ZL_Presence.label>zealous presence</LP_ZL_Presence.label>
+  <LP_ZL_Presence.description>A war cry: you and allies within 8 cells get melee hit chance +10% and move speed ×1.1 for 30 seconds. Cooldown 2 hours. Zealot, barbarian level 11.</LP_ZL_Presence.description>
+  <!-- 死战不休 -->
+  <LP_ZL_BeyondDeath.label>rage beyond death</LP_ZL_BeyondDeath.label>
+  <LP_ZL_BeyondDeath.description>Passive: damage taken ×0.85 while raging. Zealot, barbarian level 15.</LP_ZL_BeyondDeath.description>
+  <!-- 先祖护卫 -->
+  <LP_AG_Protectors.label>ancestral protectors</LP_AG_Protectors.label>
+  <LP_AG_Protectors.description>Passive: enemies you hit in melee while raging are hounded by ancestral spirits for 6 seconds: their damage against anyone but you is ×0.75. Ancestral Guardian, barbarian level 3.</LP_AG_Protectors.description>
+  <!-- 灵魂护盾 -->
+  <LP_AG_SpiritShield.label>spirit shield</LP_AG_SpiritShield.label>
+  <LP_AG_SpiritShield.description>Passive: while you rage, allies within 6 cells take ×0.85 damage. Ancestral Guardian, barbarian level 7.</LP_AG_SpiritShield.description>
+  <!-- 请示先祖 -->
+  <LP_AG_Consult.label>consult the spirits</LP_AG_Consult.label>
+  <LP_AG_Consult.description>Passive: learning speed ×1.15, mind resistance +15%. Ancestral Guardian, barbarian level 11.</LP_AG_Consult.description>
+  <!-- 复仇先祖 -->
+  <LP_AG_Vengeful.label>vengeful ancestors</LP_AG_Vengeful.label>
+  <LP_AG_Vengeful.description>Passive: whatever damage spirit shield blocks, the attacker takes as force damage. Ancestral Guardian, barbarian level 15.</LP_AG_Vengeful.description>
+  <!-- 恐惧打击 -->
+  <LP_WN_Dreadful.label>dreadful strikes</LP_WN_Dreadful.label>
+  <LP_WN_Dreadful.description>Passive: weapon hits on enemies deal ×1.1 damage. Fey Wanderer, ranger level 3.</LP_WN_Dreadful.description>
+  <!-- 迷人之姿 -->
+  <LP_WN_Beguiling.label>beguiling presence</LP_WN_Beguiling.label>
+  <LP_WN_Beguiling.description>Passive: mind resistance +20%, social impact +15%, negotiation ability +15%. Fey Wanderer, ranger level 7.</LP_WN_Beguiling.description>
+  <!-- 惑心之雾 -->
+  <LP_WN_Glamour.label>beguiling mist</LP_WN_Glamour.label>
+  <LP_WN_Glamour.description>Enemies within 4 cells are shaken for 10 seconds; those who fail to resist (mind resistance) are also stunned for 2 seconds. Cooldown 1 minute. Fey Wanderer, ranger level 11.</LP_WN_Glamour.description>
+  <!-- 迷雾漫步 -->
+  <LP_WN_MistyStep.label>misty wanderer</LP_WN_MistyStep.label>
+  <LP_WN_MistyStep.description>Step through the mist to a visible empty cell within 12 cells. Cooldown 20 seconds. Fey Wanderer, ranger level 15.</LP_WN_MistyStep.description>
+  <!-- 位面战士 -->
+  <LP_HW_PlanarWarrior.label>planar warrior</LP_HW_PlanarWarrior.label>
+  <LP_HW_PlanarWarrior.description>Passive: weapon hits on enemies add 8 × hunt power force damage, once every 5 seconds. Horizon Walker, ranger level 3.</LP_HW_PlanarWarrior.description>
+  <!-- 以太步 -->
+  <LP_HW_EtherealStep.label>ethereal step</LP_HW_EtherealStep.label>
+  <LP_HW_EtherealStep.description>For 10 seconds damage taken ×0.5 and move speed ×1.2. Cooldown 2 minutes. Horizon Walker, ranger level 7.</LP_HW_EtherealStep.description>
+  <!-- 远距打击 -->
+  <LP_HW_DistantStrike.label>distant strike</LP_HW_DistantStrike.label>
+  <LP_HW_DistantStrike.description>Teleport to a visible empty cell within 10 cells; for the next 5 seconds weapon damage ×1.2. Cooldown 8 seconds. Horizon Walker, ranger level 11.</LP_HW_DistantStrike.description>
+  <!-- 幽灵防御 -->
+  <LP_HW_Spectral.label>spectral defense</LP_HW_Spectral.label>
+  <LP_HW_Spectral.description>Passive: the first damage you take every 5 seconds is halved. Horizon Walker, ranger level 15.</LP_HW_Spectral.description>
+  <!-- 炽焰之种 -->
+  <LP_WF_Seed.label>fiery seed</LP_WF_Seed.label>
+  <LP_WF_Seed.description>An enemy within 20 cells takes 12 × verdant power flame damage and is set on fire. Mana 1, cooldown 5 seconds. Circle of Wildfire, druid level 2.</LP_WF_Seed.description>
+  <!-- 野火之灵 -->
+  <LP_WF_Bond.label>wildfire spirit</LP_WF_Bond.label>
+  <LP_WF_Bond.description>Passive: druid spells and abilities are ×1.1 as effective. Circle of Wildfire, druid level 6.</LP_WF_Bond.description>
+  <!-- 治愈余烬 -->
+  <LP_WF_Cauterize.label>cauterizing flames</LP_WF_Cauterize.label>
+  <LP_WF_Cauterize.description>Passive: when an enemy dies within 10 cells of you, you and the most wounded ally within 10 cells each heal 6 + druid level. At most once every 10 seconds. Circle of Wildfire, druid level 10.</LP_WF_Cauterize.description>
+  <!-- 浴火重生 -->
+  <LP_WF_Rebirth.label>blazing revival</LP_WF_Rebirth.label>
+  <LP_WF_Rebirth.description>Passive: when about to go down, rise in flame: heal half your wounds and stop bleeding. Once per day. Circle of Wildfire, druid level 14.</LP_WF_Rebirth.description>
+  <!-- 激励披风 -->
+  <LP_GL_Mantle.label>mantle of inspiration</LP_GL_Mantle.label>
+  <LP_GL_Mantle.description>You and allies within 8 cells each gain an absorb shield of (6 + bard level) × bardic power for 30 seconds. Costs 1 melody, cooldown 1 minute. College of Glamour, bard level 3.</LP_GL_Mantle.description>
+  <!-- 迷魂演出 -->
+  <LP_GL_Enthrall.label>enthralling performance</LP_GL_Enthrall.label>
+  <LP_GL_Enthrall.description>Passive: social impact +20%, negotiation ability +20%, trade price improvement +5%. College of Glamour, bard level 7.</LP_GL_Enthrall.description>
+  <!-- 威仪披风 -->
+  <LP_GL_Majesty.label>mantle of majesty</LP_GL_Majesty.label>
+  <LP_GL_Majesty.description>Command an enemy within 15 cells to kneel: if it fails to resist (mind resistance) it is stunned for 4 seconds; even if it resists it is shaken for 10 seconds. Costs 1 melody, cooldown 20 seconds. College of Glamour, bard level 11.</LP_GL_Majesty.description>
+  <!-- 不破威严 -->
+  <LP_GL_Unbreakable.label>unbreakable majesty</LP_GL_Unbreakable.label>
+  <LP_GL_Unbreakable.description>For 60 seconds damage taken ×0.7 and mind resistance +30%. Costs 2 melody, cooldown 1 day. College of Glamour, bard level 15.</LP_GL_Unbreakable.description>
+  <!-- 悬赏标记 -->
+  <LP_BH_Mark.label>bounty mark</LP_BH_Mark.label>
+  <LP_BH_Mark.description>Mark an enemy within 30 cells for 60 seconds: your damage to it is ×1.2. Costs 1 grit, cooldown 30 seconds. Bounty Hunter, gunslinger level 3.</LP_BH_Mark.description>
+  <!-- 追踪好手 -->
+  <LP_BH_Tracker.label>expert tracker</LP_BH_Tracker.label>
+  <LP_BH_Tracker.description>Passive: move speed +0.2, shooting accuracy +1. Bounty Hunter, gunslinger level 3.</LP_BH_Tracker.description>
+  <!-- 缚足射击 -->
+  <LP_BH_Bola.label>hobbling shot</LP_BH_Bola.label>
+  <LP_BH_Bola.description>Tangle the legs of an enemy within 20 cells: move speed ×0.5 for 8 seconds. Costs 1 grit, cooldown 20 seconds. Bounty Hunter, gunslinger level 7.</LP_BH_Bola.description>
+  <!-- 赏金到手 -->
+  <LP_BH_Payday.label>payday</LP_BH_Payday.label>
+  <LP_BH_Payday.description>Passive: when an enemy you marked dies, you regain 1 grit and heal 10. Bounty Hunter, gunslinger level 11.</LP_BH_Payday.description>
+  <!-- 生死不论 -->
+  <LP_BH_DeadOrAlive.label>dead or alive</LP_BH_DeadOrAlive.label>
+  <LP_BH_DeadOrAlive.description>Passive: bounty mark damage multiplier ×1.2 → ×1.4, and the mark lasts 120 seconds. Bounty Hunter, gunslinger level 15.</LP_BH_DeadOrAlive.description>
+  <!-- 预知闪避 -->
+  <LP_SR_Foresight.label>foresight</LP_SR_Foresight.label>
+  <LP_SR_Foresight.description>Passive: melee dodge +8, shooting accuracy +1. Seer, psion level 3.</LP_SR_Foresight.description>
+  <!-- 危机预感 -->
+  <LP_SR_Premonition.label>premonition</LP_SR_Premonition.label>
+  <LP_SR_Premonition.description>Warn an ally within 20 cells (or yourself): for 30 seconds damage taken ×0.8 and melee dodge +10. Costs 1 psi point, cooldown 10 seconds. Seer, psion level 3.</LP_SR_Premonition.description>
+  <!-- 洞悉破绽 -->
+  <LP_SR_Expose.label>expose weakness</LP_SR_Expose.label>
+  <LP_SR_Expose.description>See through an enemy within 24 cells: for 20 seconds it takes ×1.15 damage. Costs 1 psi point, cooldown 15 seconds. Seer, psion level 6.</LP_SR_Expose.description>
+  <!-- 天眼 -->
+  <LP_SR_ThirdEye.label>third eye</LP_SR_ThirdEye.label>
+  <LP_SR_ThirdEye.description>Passive: mind resistance +20%, psychic sensitivity +15%. Seer, psion level 6.</LP_SR_ThirdEye.description>
+  <!-- 先知先觉 -->
+  <LP_SR_Precog.label>precognition</LP_SR_Precog.label>
+  <LP_SR_Precog.description>Passive: fully avoid one enemy attack every 10 seconds. Seer, psion level 10.</LP_SR_Precog.description>
+  <!-- 命运改写 -->
+  <LP_SR_Rewind.label>rewrite fate</LP_SR_Rewind.label>
+  <LP_SR_Rewind.description>Turn time back: you and allies within 8 cells each heal 15 × psionic power and are freed from stun. Costs 4 psi points, cooldown 1 day. Seer, psion level 14.</LP_SR_Rewind.description>
+</LanguageData>

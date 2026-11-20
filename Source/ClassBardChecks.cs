@@ -27,10 +27,10 @@ namespace LichPhylactery {
     bool labels=sec2!=null && sec2.options.Count==16 && sec2.tips.Count==16 && Enumerable.Range(0,16).All(i=>Bard.SecretOption(i)?.label==sec2.options[i]);
     var crystals=DefDatabase<AbilityDef>.AllDefsListForReading.Where(a=>a.GetModExtension<ArcanumExt>()?.cls==BD).ToList();
     Check(BD!=null && BD.resource==ClassResource.Melody && BD.caster && BD.subclassLevel==3 && BD.order==13 && BD.abilities.Select(e=>e.level).SequenceEqual(new[]{1,1,1,3,3,5,5,7,7,10,13,13,15}) && BD.abilities.Last().capstoneSkill==SkillDefOf.Social
-     && subs.Count==4 && subs.All(x=>x.Emblem!=null && x.Emblem!=BD.Background && x.abilities.Select(e=>e.level).SequenceEqual(new[]{3,7,11,15}) && x.choices.Count==(x.defName==Bard.Lore?3:2))
-     && abs.Count==31 && abs.Distinct().Count()==31 && abs.All(a=>a.abilityClass==typeof(Ability_Class) && a.uiIcon!=null && a.uiIcon!=BaseContent.BadTex) && BD.Background!=null && labels
+     && subs.Count==5 && subs.All(x=>x.Emblem!=null && x.Emblem!=BD.Background && x.abilities.Select(e=>e.level).SequenceEqual(new[]{3,7,11,15}) && x.choices.Count==(x.defName==Bard.Lore?3:2))
+     && abs.Count==35 && abs.Distinct().Count()==35 && abs.All(a=>a.abilityClass==typeof(Ability_Class) && a.uiIcon!=null && a.uiIcon!=BaseContent.BadTex) && BD.Background!=null && labels
      && Bard.Power?.parts.Any(x=>x is StatPart_ClassPower)==true && ClassSystem.ResourceLabel(ClassResource.Melody)=="乐韵" && ClassFeats.For(BD).Count()==2 && crystals.Count==4 && crystals.All(a=>LakeArcana.CrystalFor(a)!=null && a.uiIcon!=BaseContent.BadTex),
-     "bard: 13 class abilities (1/1/1/3/3/5/5/7/7/10/13/13/15, capstone needs social 15), 4 colleges × 4 (3/7/11/15, lore 3 choices), 2 legendaries, icons, 16 magical-secret options match their spells, 激昂强度, 乐韵, 2 feats, 4 crystals");
+     "bard: 13 class abilities (1/1/1/3/3/5/5/7/7/10/13/13/15, capstone needs social 15), 5 colleges × 4 (3/7/11/15, lore 3 choices), 2 legendaries, icons, 16 magical-secret options match their spells, 激昂强度, 乐韵, 2 feats, 4 crystals");
     // 2. 门槛与乐韵：社交 5 不行、6 可以 → 3 个 1 级能力；乐韵上限 2 + 等级 + 魅力调整值（最少 2）；醒着 +0.0104 / 250 刻；聊天 +0.2。
     var a=ClsPawn(1,0,5);var ha=Adventurer.Get(a);string w5=ClassSystem.CanAdd(ha,BD);a.skills.GetSkill(SkillDefOf.Social).Level=6;bool add=ClassSystem.AddLevel(ha,BD);
     int m10=ClassSystem.MaxResource(ha,BD);ha.scores=new[]{10,10,10,10,10,16};ha.Dirty();int m16=ClassSystem.MaxResource(ha,BD);ha.scores=new[]{10,10,10,10,10,6};ha.Dirty();int m6=ClassSystem.MaxResource(ha,BD);ha.scores=new[]{10,10,10,10,10,10};ha.Dirty();

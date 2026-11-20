@@ -9,7 +9,8 @@
 # 1.27.0：-VPE 在 Core 档里加上 VEF 与 Vanilla Psycasts Expanded（创意工坊，放在本模组之前），只跑职业路径检查（-lichclassesonly）和存读档，并照常检查日志红字。
 # 1.22.0：-Isekai 在 Core 档里加上 Isekai RPG Leveling 与地下城附加包（放在本模组之前），只跑物品与联动检查（-lichitemsonly）和存读档，并照常检查日志红字。
 # 1.28.0：-Only <组名>（如 -Only Events，多个用逗号：-Only Events,Beasts）在 Core 档里只跑这些检查组（Check<组名>）和它们的存读档部分；不写 -Only 时照旧跑全部。
-param([string]$Only="",[switch]$Warcasket,[switch]$Full,[switch]$Appearance,[switch]$VisualCompat,[switch]$HealthCompat,[ValidateSet("None","Human","Mythic","Both")][string]$HealthProvider="None",[switch]$Mythic,[switch]$Aptitudes,[switch]$Isekai,[switch]$VPE,[switch]$NoHAR,[switch]$NoIdeology,[switch]$RPG,[switch]$CE,[switch]$Highmate,[switch]$Anomaly,[string]$LoadSave="",[string]$Lang="",[string]$LangExport="")
+# 1.185.0：-Show 用正常窗口启动游戏（1.7.5013 更新后隐藏窗口时自检会卡在读取阶段，开着窗口就正常）。
+param([string]$Only="",[switch]$Warcasket,[switch]$Full,[switch]$Appearance,[switch]$VisualCompat,[switch]$HealthCompat,[ValidateSet("None","Human","Mythic","Both")][string]$HealthProvider="None",[switch]$Mythic,[switch]$Aptitudes,[switch]$Isekai,[switch]$VPE,[switch]$NoHAR,[switch]$NoIdeology,[switch]$RPG,[switch]$CE,[switch]$Highmate,[switch]$Anomaly,[string]$LoadSave="",[string]$Lang="",[string]$LangExport="",[switch]$Show)
 $ErrorActionPreference='Stop'
 $lichGame=Split-Path (Split-Path (Split-Path $PSScriptRoot -Parent) -Parent) -Parent
 $lichProfile=Join-Path $lichGame ('StandaloneMods\Validation\Lich-'+$(if($Warcasket){'Warcasket'}elseif($HealthCompat){'Health-'+$(if($Full){'Full'}else{$HealthProvider})}elseif($VisualCompat -and $Full){'VisualFull'}elseif($VisualCompat){'VisualCompat'}elseif($Full){'Full'}elseif($Appearance){'Appearance'}else{'Core'})+$(if($Mythic){'-Mythic'}else{''})+$(if($Aptitudes){'-Aptitudes'}else{''})+$(if($Isekai){'-Isekai'}else{''})+$(if($VPE){'-VPE'}else{''})+$(if($NoHAR){'-NoHAR'}else{''})+$(if($NoIdeology){'-NoIdeology'}else{''})+$(if($RPG){'-RPG'}else{''})+$(if($CE){'-CE'}else{''})+$(if($Highmate){'-Highmate'}else{''})+$(if($Anomaly){'-Anomaly'}else{''})+$(if($LoadSave){'-LoadSave'}else{''})+$(if($Lang){'-'+$Lang}else{''})+$(if($Only){'-Only'}else{''}))
@@ -36,6 +37,8 @@ $lichConfig.Save((Join-Path $lichProfile 'Config\ModsConfig.xml'))
 Copy-Item -LiteralPath (Join-Path $lichUser 'Config\Prefs.xml') -Destination (Join-Path $lichProfile 'Config\Prefs.xml') -Force
 # 1.63.0：玩家开了开发者选项「测试用小地图」(testMapSizes) 时，自检地图会变小，吐息形状、空地之类的检查找不到地方。自检里固定关掉，其余偏好照抄。
 $lichPrefsPath=Join-Path $lichProfile 'Config\Prefs.xml';[xml]$lichPrefs=Get-Content -LiteralPath $lichPrefsPath -Raw;$lichTms=$lichPrefs.SelectSingleNode('//testMapSizes');if($lichTms){$lichTms.InnerText='False'}
+# 1.185.0：玩家关着「后台运行」(runInBackground) 时，测试窗口拿不到焦点游戏就停在读取阶段（自检超时）。隔离档里固定打开。
+$lichRib=$lichPrefs.SelectSingleNode('//runInBackground');if($lichRib){$lichRib.InnerText='True'}
 # 1.157.0：-Lang English 把隔离档的游戏语言改成英文（检查英文语言文件）；-LangExport <文件> 启动时导出所有含中文的可翻译 Def 字段。
 if($Lang){$lichLn=$lichPrefs.SelectSingleNode('//langFolderName');if($lichLn){$lichLn.InnerText=$Lang}}
 $lichPrefs.Save($lichPrefsPath)
@@ -68,7 +71,7 @@ try {
  if($Lang){$lichArgs+='-lichlangerrors'}
  if($LangExport){$lichArgs+=('-lichlangexport='+$LangExport)}
  if($LoadSave){$lichSaves=Join-Path $lichProfile 'Saves';New-Item -ItemType Directory -Path $lichSaves -Force | Out-Null;Copy-Item -LiteralPath (Join-Path $lichUser ('Saves\'+$LoadSave+'.rws')) -Destination $lichSaves -Force;$lichArgs=@(('-lichloadsave='+$LoadSave),'-screen-fullscreen','0','-screen-width','1200','-screen-height','800',('-savedatafolder="'+$lichProfile+'"'))}
- $lichProc=Start-Process -FilePath (Join-Path $lichGame 'RimWorld.exe') -WorkingDirectory $lichGame -WindowStyle Hidden -RedirectStandardOutput $lichLog -RedirectStandardError (Join-Path $lichProfile 'stderr.txt') -ArgumentList $lichArgs -PassThru
+ $lichProc=Start-Process -FilePath (Join-Path $lichGame 'RimWorld.exe') -WorkingDirectory $lichGame -WindowStyle $(if($Show){'Normal'}else{'Hidden'}) -RedirectStandardOutput $lichLog -RedirectStandardError (Join-Path $lichProfile 'stderr.txt') -ArgumentList $lichArgs -PassThru
  Write-Output "Isolated lich test process $($lichProc.Id)"
  while(!$lichProc.HasExited){if(((Get-Date)-$lichStart).TotalSeconds -gt $(if($LoadSave){1200}else{360})){throw 'Lich test timeout'};$lichProc.WaitForExit(1000)|Out-Null}
  $lichReport=Join-Path $lichProfile 'LichResult.txt'

@@ -166,6 +166,8 @@ namespace LichPhylactery {
   static int GateBonus(LP_ClassDef c,Pawn p)=>c!=null && c.bloodline && Bloodline(p)?BloodlineSkillBonus:0;
   public static bool ScoreOk(LP_ClassDef c,Pawn p){if(!Adventurer.Enabled)return false;int a=Ability(c,p);return a>=0 && Adventurer.Score(p,a)>=ScoreGate;}
   // 主职业（等级最高，同级按 order）：自动加点、传奇属性点的角色。
+  // 2026-11-20 Peter：职业页先显示已学的职业（等级高的在前），其余按原顺序，不用往下滑找。
+  public static List<LP_ClassDef> LearnedFirst(Hediff_Adventurer h)=>h==null?All:All.OrderByDescending(c=>Level(h,c)>0?1:0).ThenByDescending(c=>Level(h,c)).ThenBy(c=>c.order).ToList();
   public static LP_ClassDef MainClass(Pawn p){var h=Adventurer.Get(p);LP_ClassDef best=null;int bl=0;foreach(var c in All){int l=Level(h,c);if(l>bl){bl=l;best=c;}}return best;}
   public static int Primary(Pawn p)=>Ability(MainClass(p),p);
   public static string Role(Pawn p){var c=MainClass(p);if(c==null)return null;if(c==Fighter && Skill(p,SkillDefOf.Shooting)>Skill(p,SkillDefOf.Melee))return "ranged";return "melee";}
@@ -551,7 +553,7 @@ namespace LichPhylactery {
    return y+LPUI.SectionGap-4f;
   }
   void DrawRows(float w,float y,Hediff_Adventurer h){
-   foreach(var c in ClassSystem.All){
+   foreach(var c in ClassSystem.LearnedFirst(h)){
     var row=new Rect(0f,y,w,ClassRowH);LPUI.RowBg(row,c==selected);
     int lv=ClassSystem.Level(h,c);string why=ClassSystem.CanAdd(h,c);bool ok=why==null;
     var icon=c.Background;if(icon!=null){GUI.color=new Color(1f,1f,1f,lv>0?.9f:.55f);GUI.DrawTexture(new Rect(row.x+4f,row.y+4f,40f,ClassRowH-8f),icon,ScaleMode.ScaleAndCrop);GUI.color=Color.white;}
@@ -563,7 +565,7 @@ namespace LichPhylactery {
     string key=c.defName;var b=new Rect(row.xMax-86f,row.y+(ClassRowH-32f)/2f,80f,32f);
     if(LPUI.Button(b,armed==key?"确定？".Loc():lv>0?"+1 级".Loc():"学习".Loc(),ok,ok?(armed==key?"再点一次确认".Loc():"点两次确认：".Loc()+c.label+" "+(lv+1)+" 级".Loc()):why)){if(armed==key){armed=null;ClassLevelInfo.AddLevel(h,c);}else armed=key;selected=c;}
     var tr=new Rect(row.x,row.y,row.width-90f,row.height);
-    if(Mouse.IsOver(tr))TooltipHandler.TipRegion(tr,ClassLevelInfo.ClassTip(pawn,h,c)+"\n\n"+ClassLevelInfo.ResourceTip(h,c));
+    if(Mouse.IsOver(tr))TooltipHandler.TipRegion(tr,ClassLevelInfo.ClassTip(pawn,h,c)); // 2026-11-20 只留两行介绍
     if(Widgets.ButtonInvisible(tr)){if(selected!=c)scrollR=Vector2.zero;selected=c;}
     y+=ClassRowH+4f;
    }

@@ -58,6 +58,17 @@ namespace LichPhylactery {
   public static float PartFactor(int level,int elite)=>(1f+PartPer*(Mathf.Clamp(level,1,Adventurer.MaxLevel)-1))*ConPart(level)*(elite==Dread?DreadPart:1f);
   public static float SpeedFactor(int level)=>1f+Mathf.Min(SpeedMax,SpeedPer*(Mathf.Clamp(level,1,MaxLevel)-1));
   // 部位生命（LimbHealth.cs 的 PartHealth.WithoutReinforcement 乘进去）。热路径：先看是不是动物，再查登记表。
+  // 1.184.0 CR 对齐：DND 生物（显示挑战等级的 LP_ 非人形动物）的野性等级至少等于它的 CR，
+  // 于是 CR N 的生物和 N 级冒险者走同一套成长：部位生命 = 原版 × 等级成长 × 体质，近战伤害 × 力量。
+  // CR 同 Epic.CR（战斗力 ÷25，四舍五入，1～30）。塔拉斯克另有按威胁点数缩放的事件强化，不叠加。
+  public const int CRMax=30;
+  public static readonly HashSet<string> CRSkip=new HashSet<string>{"LP_Tarrasque"};
+  public static bool CROn=>LichMod.Settings?.beastCRLevels!=false;
+  public static int CRLevel(float combatPower)=>combatPower<=0f?0:Mathf.Clamp(Mathf.RoundToInt(combatPower/25f),1,CRMax);
+  public static int CRFloor(Pawn p){
+   if(!CROn || p?.kindDef==null || p.RaceProps==null || p.RaceProps.Humanlike || !p.def.defName.StartsWith("LP_") || CRSkip.Contains(p.kindDef.defName))return 0;
+   return CRLevel(p.kindDef.combatPower);
+  }
   public static float PartHealthFactor(Pawn p){
    if(p?.def?.race==null || !p.def.race.Animal)return 1f;
    var h=Get(p);return h==null || !h.Applies?1f:PartFactor(h.level,h.elite);
@@ -81,6 +92,7 @@ namespace LichPhylactery {
   public static Hediff_BeastLevel Give(Pawn p,int level,int elite=None,bool leader=false,int pack=0){
    if(TestSuppressed || !On || Def==null || p?.health==null || !Eligible(p))return null;
    var h=Get(p);if(h!=null)return h;
+   level=Mathf.Max(level,CRFloor(p)); // 1.184.0：DND 生物不低于 CR
    if(elite==Ancient)level+=AncientBonus;
    if(leader)level+=LeaderBonus;
    h=(Hediff_BeastLevel)HediffMaker.MakeHediff(Def,p);
@@ -126,7 +138,7 @@ namespace LichPhylactery {
   public static int GrowthCap(Pawn p){
    if(ClassSubclass.Companions.Count>0 && ClassSubclass.Companions.Contains(p)){var mh=Adventurer.Get(Master(p));if(mh!=null)return Mathf.Clamp(mh.level,1,MaxLevel);} // 子职业·兽王的游侠伙伴：跟到游侠的冒险者等级（最多 40）
    int c;if(!Adventurer.Enabled)c=TameCap;else{var m=Master(p);c=m!=null?(Adventurer.Get(m)?.level??1):ColonyMax();}
-   return Mathf.Clamp(c,1,TameCap);
+   return Mathf.Max(Mathf.Clamp(c,1,TameCap),CRFloor(p)); // 1.184.0：驯服的 DND 生物至少保留 CR 等级
   }
   // 动物伙伴：主人是游侠（游侠向导背景，或穿着游侠皮甲 / 林行者斗篷）或德鲁伊（VPE 的德鲁伊路径）。
   public static bool Companion(Pawn master){
@@ -191,6 +203,8 @@ namespace LichPhylactery {
   public override Color LabelColor=>elite>BeastLevels.None?BeastLevels.EliteColors[elite]:base.LabelColor;
 
   HediffStage stage;int stageKey=-1;
+  // 1.184.0：旧存档里低于 CR 的 DND 生物补到 CR（读档后出生时调用一次）。
+  public bool ApplyCRFloor(){int f=BeastLevels.CRFloor(pawn);if(f<=level)return false;level=Mathf.Clamp(f,1,BeastLevels.MaxLevel);xp=0f;Dirty();return true;}
   public void Dirty(){stage=null;Severity=level;if(pawn?.health?.hediffSet!=null && pawn.health.hediffSet.hediffs.Contains(this))pawn.health.Notify_HediffChanged(this);}
   public override HediffStage CurStage{get{int key=(Applies?1:0)+level*2+elite*1000;if(stage==null || stageKey!=key){stage=Build();stageKey=key;}return stage;}}
   HediffStage Build(){
@@ -226,6 +240,7 @@ namespace LichPhylactery {
    else{
     float s=BeastLevels.Score(level);
     sb.AppendLine("相当于力量 / 体质 ".Loc()+s.ToString("0.#")+"（与殖民者同一条六维曲线）".Loc());
+    int cr=BeastLevels.CRFloor(pawn);if(cr>0)sb.AppendLine("挑战等级 CR ".Loc()+cr+"：野性等级不低于 ".Loc()+cr+"，强度对应 ".Loc()+cr+" 级冒险者。".Loc());
     sb.AppendLine("近战伤害 ×".Loc()+BeastLevels.MeleeFactor(level,elite).ToString("0.##")+"，部位生命 ×".Loc()+BeastLevels.PartFactor(level,elite).ToString("0.##")+"，移速 +".Loc()+((BeastLevels.SpeedFactor(level)-1f)*100f).ToString("0")+"%");
    }
    if(pawn?.Faction!=null && pawn.Faction.IsPlayer){
@@ -305,7 +320,8 @@ namespace LichPhylactery {
  [HarmonyPatch(typeof(Pawn),nameof(Pawn.SpawnSetup))]
  public static class BeastLevelSpawn {
   static void Postfix(Pawn __instance,Map map,bool respawningAfterLoad){
-   if(respawningAfterLoad || BeastLevels.TestSuppressed || __instance?.def?.race==null || !__instance.def.race.Animal)return;
+   if(BeastLevels.TestSuppressed || __instance?.def?.race==null || !__instance.def.race.Animal)return;
+   if(respawningAfterLoad){if(BeastLevels.On)BeastLevels.Get(__instance)?.ApplyCRFloor();return;}
    var h=BeastLevels.Get(__instance)??BeastLevels.InitAmbient(__instance);
    if(h!=null && h.pack!=0)MapComp<MapComponent_BeastPacks>.Get(map)?.Join(h.pack,__instance,h.leader);
   }
@@ -387,7 +403,7 @@ namespace LichPhylactery {
 
  // 1.70.0 设置（放在“野兽”分组里）。
  public partial class Settings {
-  public bool beastLevels=true;public float beastEliteChance=BeastLevels.DefaultElite;
-  void ExposeBeastLevels(){Scribe_Values.Look(ref beastLevels,"beastLevels",true);Scribe_Values.Look(ref beastEliteChance,"beastEliteChance",BeastLevels.DefaultElite);}
+  public bool beastLevels=true,beastCRLevels=true;public float beastEliteChance=BeastLevels.DefaultElite;
+  void ExposeBeastLevels(){Scribe_Values.Look(ref beastLevels,"beastLevels",true);Scribe_Values.Look(ref beastEliteChance,"beastEliteChance",BeastLevels.DefaultElite);Scribe_Values.Look(ref beastCRLevels,"beastCRLevels",true);}
  }
 }

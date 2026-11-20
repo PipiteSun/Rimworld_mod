@@ -3,17 +3,17 @@
   <!-- 法师 -->
   <LP_Class_Wizard.label>wizard</LP_Class_Wizard.label>
   <!-- DND 法师的奥术：魔法飞弹（戏法）、法师护甲、护盾术、火球术、迷踪步、睡眠术、镜影术、闪电束、急速术、石墙术、传送术，终极 解离术。强度看“奥术强度”（智识），伤害与治疗（设置开着时）乘心灵敏感度。资源：法力（上限 2 + 法师等级；醒着时缓慢恢复，睡觉时快，在研究台、卷轴书桌或读书时再快一些）。 -->
-  <LP_Class_Wizard.description>The arcane magic of the DND wizard: Magic Missile (cantrip), Mage Armor, Shield, Fireball, Misty Step, Sleep, Mirror Image, Lightning Bolt, Haste, Wall of Stone, Teleport, and ultimately Disintegrate. Power uses "arcane power" (Intellectual); damage and healing are multiplied by psychic sensitivity (when the setting is on). Resource: mana (max 2 + wizard level; slowly regained while awake, faster asleep, faster still at a research bench, scroll desk or while reading).</LP_Class_Wizard.description>
+  <LP_Class_Wizard.description>A scholar of arcane magic with the widest spellbook: fireballs, teleports, control.\nPower: arcane power (Intelligence, Intellectual); damage and healing also scale with psychic sensitivity.</LP_Class_Wizard.description>
   <!-- 牧师 -->
   <LP_Class_Cleric.label>cleric</LP_Class_Cleric.label>
   <!-- DND 牧师的神术：治疗伤口、祝福、次级复原术、神导术、神圣打击、驱散亡灵、群体治疗、死亡守卫，终极 复生术。强度看“神恩强度”（社交），伤害与治疗（设置开着时）乘心灵敏感度。资源：神恩（和圣武士共用一条：祈祷、冥想时恢复，信奉神明的人快 25%，睡觉时恢复）。 -->
-  <LP_Class_Cleric.description>The divine magic of the DND cleric: Cure Wounds, Bless, Lesser Restoration, Guidance, Divine Strike, Turn Undead, Mass Cure Wounds, Death Ward, and ultimately Revivify. Power uses "divine power" (Social); damage and healing are multiplied by psychic sensitivity (when the setting is on). Resource: divinity (shared with paladins: recovered by prayer and meditation, 25% faster for believers of a god, recovered by sleep).</LP_Class_Cleric.description>
+  <LP_Class_Cleric.description>A god's voice: the core of healing, revival and turning undead.\nPower: divine power (Wisdom or Charisma, Social); damage and healing also scale with psychic sensitivity.</LP_Class_Cleric.description>
   <!-- 德鲁伊 -->
   <LP_Class_Druid.label>druid</LP_Class_Druid.label>
   <!-- DND 德鲁伊守护自然：安抚野兽、召唤野兽、荒野变形、兽王号令（驯兽，野性强度），纠缠术、树肤术、植物滋长、召雷术（种植，生长强度），终极 掌控天气。效果（设置开着时）乘心灵敏感度。资源：法力（上限 2 + 德鲁伊等级；醒着时缓慢恢复，睡觉时快）。巫妖不能当德鲁伊。 -->
-  <LP_Class_Druid.description>The DND druid protects nature: Calm Beast, Conjure Animals, Wild Shape, Beast Lord's Call (Animals, primal power), Entangle, Barkskin, Plant Growth, Call Lightning (Plants, verdant power), and ultimately Control Weather. Effects are multiplied by psychic sensitivity (when the setting is on). Resource: mana (max 2 + druid level; slowly regained while awake, faster asleep). Liches cannot be druids.</LP_Class_Druid.description>
+  <LP_Class_Druid.description>A guardian of nature who tames beasts, shapeshifts, grows plants and calls storms.\nPower: beast abilities use primal power (Wisdom, Animals); plant and weather abilities use verdant power (Wisdom, Plants). Liches cannot become druids.</LP_Class_Druid.description>
   <!-- 术士 -->
   <LP_Class_Sorcerer.label>sorcerer</LP_Class_Sorcerer.label>
   <!-- DND 术士生来带着魔力：混沌箭、魅惑人类、龙族之翼、群体暗示（社交，天赋强度），燃烧之手、超魔·孪生、冰风暴、超魔·强效（智识，奥术强度），终极 魔涌。元素裔、巨灵、泰坦、风暴巨人、云巨人、六臂蛇人、坎比恩有术士血脉：技能门槛 −2、天赋强度 +15%。资源：法力（上限 2 + 术士等级；醒着时缓慢恢复，睡觉时快）。 -->
-  <LP_Class_Sorcerer.description>The DND sorcerer is born with magic: Chaos Bolt, Charm Person, Dragon Wings, Mass Suggestion (Social, innate power), Burning Hands, Twinned Spell, Ice Storm, Empowered Spell (Intellectual, arcane power), and ultimately Wild Surge. Genasi, genies, titans, storm giants, cloud giants, mariliths and cambions have a sorcerer bloodline: skill requirements -2, innate power +15%. Resource: mana (max 2 + sorcerer level; slowly regained while awake, faster asleep).</LP_Class_Sorcerer.description>
+  <LP_Class_Sorcerer.description>A caster born with magic who reshapes spells with metamagic for big bursts.\nPower: charm abilities use innate power (Charisma, Social); elemental abilities use arcane power (Intelligence, Intellectual). Races with sorcerous blood are stronger.</LP_Class_Sorcerer.description>
 </LanguageData>

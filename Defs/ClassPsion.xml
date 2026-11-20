@@ -4,7 +4,7 @@
   <LichPhylactery.LP_ClassDef>
     <defName>LP_Class_Psion</defName>
     <label>心灵术士</label>
-    <description>DND 心灵术士用纯粹的心灵之力施法：法术不出声、不打手势（法术表约 80 个，备法），另有一池「灵能点」驱动念动推拉、心灵感应和灵能修行（3 级起选 6 项）。1 级起自带心灵链接（设置可关），灵能点用完时可以改加神经热。3 级选子职业：血肉塑形者、念动师、心灵感应者或灵跃者。终极 燃魂。强度看“灵能强度”（智识，智力），伤害与治疗（设置开着时）乘心灵敏感度。资源：法力（上限 2 + 等级，冥想时回得快）与灵能点（健康页显示）。心灵失聪的人不能学。</description>
+    <description>用纯粹心灵之力施法，念动推拉、心灵感应，还能借神经热续航。\n强度：「灵能强度」（主属性智力，技能智识）；伤害与治疗另乘心灵敏感度。心灵失聪的人不能学。</description>
     <mainSkill>Intellectual</mainSkill>
     <alternateSkill>Social</alternateSkill>
     <primary>Int</primary>

@@ -1423,6 +1423,7 @@
     <weaponTags Inherit="False" />
     <recipeMaker IsNull="True" />
     <costList Inherit="False" />
+    <smeltable>false</smeltable>
     <tools>
       <li><label>剑刃</label><capacities><li>Cut</li></capacities><power>37</power><cooldownTime>1.7</cooldownTime><armorPenetration>0.85</armorPenetration></li>
       <li><label>剑尖</label><capacities><li>Stab</li></capacities><power>32</power><cooldownTime>1.7</cooldownTime><armorPenetration>0.95</armorPenetration></li>

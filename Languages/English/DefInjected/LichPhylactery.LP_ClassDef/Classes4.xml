@@ -3,13 +3,13 @@
   <!-- 野蛮人 -->
   <LP_Class_Barbarian.label>barbarian</LP_Class_Barbarian.label>
   <!-- DND 野蛮人以怒为力：狂暴、鲁莽攻击、危险感知（被动）、野性怒吼、残暴重击（被动）、不灭之怒（被动），终极 原初斗士。强度看“狂怒强度”（格斗等级与力量）。资源：怒气（受到敌人伤害 +0.5、命中敌人 +0.1，脱战后每小时 −1，睡觉不恢复）。狂暴中不能使用施法职业的能力。物理职业：额外攻击、战斗风格。 -->
-  <LP_Class_Barbarian.description>The DND barbarian draws strength from rage: Rage, Reckless Attack, Danger Sense (passive), Primal Roar, Brutal Critical (passive), Relentless Rage (passive), and ultimately Primal Champion. Power uses "rage power" (Melee level and Strength). Resource: rage (+0.5 when damaged by enemies, +0.1 when hitting enemies, -1 per hour out of combat, not recovered by sleep). Cannot use spellcasting class abilities while raging. Martial class: Extra Attack, fighting style.</LP_Class_Barbarian.description>
+  <LP_Class_Barbarian.description>A berserker fuelled by rage: the more hits taken, the fiercer and tougher.\nPower: rage power (Strength, Melee). Cannot use caster abilities while raging.</LP_Class_Barbarian.description>
   <!-- 游侠 -->
   <LP_Class_Ranger.label>ranger</LP_Class_Ranger.label>
   <!-- DND 游侠是荒野的猎手：宿敌（被动，选一种生物类型）、猎人印记、野外穿行（被动）、齐射、兽伴（被动）、隐匿伏击，终极 屠戮宿敌。强度看“猎术强度”（射击或格斗较高者，敏捷或感知较高者）。没有资源，能力只看冷却。主人是游侠的动物得到动物伙伴的经验加成。物理职业：额外攻击、战斗风格。 -->
-  <LP_Class_Ranger.description>The DND ranger is a hunter of the wilds: Favored Enemy (passive, choose a creature type), Hunter's Mark, Land's Stride (passive), Volley, Beast Companion (passive), Hide in Plain Sight, and ultimately Foe Slayer. Power uses "hunter power" (the higher of Shooting or Melee, the higher of Dexterity or Wisdom). No resource; abilities only have cooldowns. Animals whose master is a ranger get the animal companion XP bonus. Martial class: Extra Attack, fighting style.</LP_Class_Ranger.description>
+  <LP_Class_Ranger.description>A hunter of the wilds who fights mainly with the bow, with a beast companion and favored enemies.\nPower: hunt power (Dexterity or Wisdom, Shooting or Melee, whichever is higher).</LP_Class_Ranger.description>
   <!-- 游荡者 -->
   <LP_Class_Rogue.label>rogue</LP_Class_Rogue.label>
   <!-- DND 游荡者靠诡计取胜：偷袭（被动）、灵巧动作、诡诈闪避（被动）、暗影潜行、淬毒刃、刺杀，终极 幸运一击。强度看“诡术强度”（格斗或射击较高者，敏捷）。没有资源，能力只看冷却。物理职业：战斗风格；不给额外攻击档位，改用偷袭。 -->
-  <LP_Class_Rogue.description>The DND rogue wins with tricks: Sneak Attack (passive), Cunning Action, Uncanny Dodge (passive), Shadow Step, Poisoned Blade, Assassinate, and ultimately Stroke of Luck. Power uses "cunning power" (the higher of Melee or Shooting, Dexterity). No resource; abilities only have cooldowns. Martial class: fighting style; gets no Extra Attack tier and uses Sneak Attack instead.</LP_Class_Rogue.description>
+  <LP_Class_Rogue.description>A trickster assassin: stealth, sneak attacks, one deadly strike.\nPower: cunning power (Dexterity, Melee or Shooting, whichever is higher).</LP_Class_Rogue.description>
 </LanguageData>

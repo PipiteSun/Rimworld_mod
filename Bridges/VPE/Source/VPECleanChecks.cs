@@ -21,8 +21,10 @@ namespace LichPhylactery.VPEBridge {
    var allTrainers=DefDatabase<ThingDef>.AllDefsListForReading.Where(d=>d.comps!=null && d.comps.OfType<CompProperties_UseEffectGiveAbility>().Any()).ToList();
    var others=allTrainers.Except(hiddenTrainers).ToList();
    var cats=DefDatabase<ThingCategoryDef>.AllDefsListForReading;
-   Check(hiddenTrainers.Count>0 && hiddenTrainers.All(d=>d.comps.OfType<CompProperties_UseEffectGiveAbility>().Any(c=>ClassMigration.Hidden(c.ability))),"vpe clean: "+hiddenTrainers.Count+" legacy DND psytrainers found ("+others.Count+" VPE psytrainers untouched)");
-   Check(hiddenTrainers.All(d=>d.tradeability==Tradeability.None && d.thingSetMakerTags.NullOrEmpty() && d.generateAllowChance==0f && d.thingCategories.NullOrEmpty() && !ThingSetMakerUtility.allGeneratableItems.Contains(d) && !cats.Any(c=>c.childThingDefs.Contains(d) || c.ContainedInThisOrDescendant(d))),"vpe clean: legacy psytrainers are out of traders, rewards and item filters");
+   // 1.182.0：旧能力的神经成型器在生成隐含定义时就筛掉，DefDatabase 里一个都没有（不只是下架）。
+   int legacyAbilities=DefDatabase<AbilityDef>.AllDefsListForReading.Count(d=>d.abilityClass!=null && typeof(Ability_ClassLegacy).IsAssignableFrom(d.abilityClass));
+   Check(hiddenTrainers.Count==0 && !allTrainers.Any(d=>VPECleanMod.Legacy(d) || d.comps.OfType<CompProperties_UseEffectGiveAbility>().Any(c=>ClassMigration.Hidden(c.ability))) && legacyAbilities>0 && VPECleanMod.Removed==legacyAbilities,"vpe clean: "+VPECleanMod.Removed+" legacy DND psytrainers never generated (legacy abilities "+legacyAbilities+", "+others.Count+" VPE psytrainers kept)");
+   Check(!DefDatabase<ThingDef>.AllDefsListForReading.Any(VPECleanMod.Legacy) && !ThingSetMakerUtility.allGeneratableItems.Any(VPECleanMod.Legacy) && !cats.Any(c=>c.childThingDefs.Any(VPECleanMod.Legacy)),"vpe clean: no legacy psytrainer in defs, rewards or item categories");
    Check(others.Count>0 && others.Any(d=>!d.thingCategories.NullOrEmpty() && d.tradeability!=Tradeability.None),"vpe clean: VPE's own psytrainers still trade and keep their category");
    var p=Make(0,10,0);var psy=Classes.Psycasts(p);var comp=p.GetComp<CompAbilities>();
    psy.UnlockPath(Classes.Path(Classes.WizardPath));comp.GiveAbility(Def("LP_MagicMissile"));comp.GiveAbility(Def("LP_Fireball"));int pts=psy.points;

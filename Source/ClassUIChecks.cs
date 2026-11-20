@@ -16,8 +16,14 @@ namespace LichPhylactery {
     float pf1=Adventurer.PartHealthFactor(p),mf1=p.GetStatValue(mp),af1=p.GetStatValue(ap);
     float pw=ClassLevelInfo.PartWith(h,W,h.level),aw=ClassLevelInfo.PowerWith(p,h,ap,W,h.level);bool okW=ClassLevelInfo.AddLevel(h,W);
     float pw1=Adventurer.PartHealthFactor(p),aw1=p.GetStatValue(ap);string row=ClassLevelInfo.RowLine(p,h,W);
-    Check(okF && okW && Near(pf,pf1) && Near(mf,mf1) && Near(af0,af1) && Near(pw,pw1) && Near(aw,aw1) && pf1>1f && aw1>af1 && row!=null && row.Contains("部位生命") && row.Contains(ap.label) && ClassLevelInfo.ClassTip(p,h,W).Contains("下一级获得"),
+    Check(okF && okW && Near(pf,pf1) && Near(mf,mf1) && Near(af0,af1) && Near(pw,pw1) && Near(aw,aw1) && pf1>1f && aw1>af1 && row!=null && row.Contains("部位生命") && row.Contains(ap.label) && ClassLevelInfo.ClassDetail(p,h,W).Contains("下一级获得"),
      "[1.89.0] predicted next level matches the real stats: part HP "+pf.ToString("0.###")+"/"+pf1.ToString("0.###")+", martial "+mf.ToString("0.###")+"/"+mf1.ToString("0.###")+", arcane "+aw.ToString("0.###")+"/"+aw1.ToString("0.###"));}
+   // 2026-11-20 Peter：职业悬停只留两行（特色 + 强度/主属性/技能）；职业页已学的职业排最前，等级高的在前。
+   {var p=ClsPawn(8,10);p.skills.GetSkill(SkillDefOf.Intellectual).Level=10;var h=Adventurer.Get(p);var F=ClassSystem.Fighter;var W=Cls("Wizard");ClassSystem.AddLevel(h,F);ClassSystem.AddLevel(h,F);ClassSystem.AddLevel(h,W);
+    var tips=ClassSystem.All.Select(c=>ClassLevelInfo.ClassTip(p,h,c)).ToList();var ord=ClassSystem.LearnedFirst(h);
+    bool twoLines=tips.All(t=>t.Split('\n').Length==2 && t.Contains("强度") && t.Contains("主属性") && !t.Contains("等级表") && !t.Contains("Lv "));
+    Check(twoLines && ord.Count==ClassSystem.All.Count && ord[0]==F && ord[1]==W && ord.Skip(2).All(c=>ClassSystem.Level(h,c)==0),
+     "[2026-11-20] class hover = 2 lines only ("+tips.Count+" classes, all two-line: "+twoLines+"); learned classes listed first: "+string.Join(",",ord.Take(3).Select(c=>c.label+" "+ClassSystem.Level(h,c))));}
    // 2. 升级信件：部位生命和受影响的职业强度写成“前 → 后”（冒险者 4 → 5 级，熟练加值 +2 → +3）。
    {var p=ClsPawn(4);p.skills.GetSkill(SkillDefOf.Intellectual).Level=10;var h=Adventurer.Get(p);ClassSystem.AddLevel(h,Cls("Wizard"));
     var ap=DefDatabase<StatDef>.GetNamed("LP_ArcanePower");float part4=Adventurer.PartHealthFactor(p),a4=p.GetStatValue(ap);
@@ -55,7 +61,7 @@ namespace LichPhylactery {
     var ap=DefDatabase<StatDef>.GetNamed("LP_ArcanePower");var part=ClassLevelInfo.Part(ap);var art=ClassLevelInfo.Part(DefDatabase<StatDef>.GetNamed("LP_ArtificePower"));
     float v=p.GetStatValue(ap),mod=h.AMod(Adventurer.Int),tm=Affinity.WholeMult(h,Adventurer.Int),sc=Adventurer.EffectScale;
     float want=1.25f+(Affinity.Talented(1f+.1f*mod,tm)-1f)*sc+.04f+.45f,next=ClassLevelInfo.PowerWith(p,h,ap,W,ClassLevelInfo.NextAdventurerLevel(h));
-    bool plain=Near(mod,4f) && Near(tm,1f) && Near(sc,1f);string tip=ClassLevelInfo.ClassTip(p,h,W),expl=part.ExplanationPart(StatRequest.For(p));
+    bool plain=Near(mod,4f) && Near(tm,1f) && Near(sc,1f);string tip=ClassLevelInfo.ClassDetail(p,h,W),expl=part.ExplanationPart(StatRequest.For(p));
     Check(part!=null && Near(part.abilityPer,.1f) && Near(part.LevelPer,.05f) && Near(part.LevelMax,.95f) && art!=null && Near(art.abilityPer,.05f) && Near(art.LevelPer,.02f)
      && Near(v,want) && (!plain || Near(v,2.14f)) && Near(next-v,.05f) && tip.Contains(ap.LabelCap+" +5%") && tip.Contains("最多 +95%") && expl.Contains("×10%") && expl.Contains("+5%"),
      "[1.97.0] wizard 10, Int skill 15, INT 18 (mod "+mod.ToString("0.##")+", talent ×"+tm.ToString("0.##")+", scale "+sc.ToString("0.##")+"): arcane power ×"+v.ToString("0.00")+" (want ×"+want.ToString("0.00")+", old ×1.67), next level ×"+next.ToString("0.00")+"; artificer still 5% / 2%");}
@@ -65,7 +71,7 @@ namespace LichPhylactery {
     var ip=DefDatabase<StatDef>.GetNamed("LP_InnatePower");var part=ClassLevelInfo.Part(ip);var div=ClassLevelInfo.Part(DefDatabase<StatDef>.GetNamed("LP_DivinePower"));
     float v=p.GetStatValue(ip),mod=h.AMod(Adventurer.Cha),tm=Affinity.WholeMult(h,Adventurer.Cha),sc=Adventurer.EffectScale;
     float want=1.10f+(Affinity.Talented(1f+.1f*mod,tm)-1f)*sc+.04f+.45f+(ClassSystem.Bloodline(p)?ClassSystem.BloodlineBonus:0f),next=ClassLevelInfo.PowerWith(p,h,ip,S,ClassLevelInfo.NextAdventurerLevel(h));
-    bool plain=Near(mod,4f) && Near(tm,1f) && Near(sc,1f) && !ClassSystem.Bloodline(p);string tip=ClassLevelInfo.ClassTip(p,h,S),expl=part.ExplanationPart(StatRequest.For(p));
+    bool plain=Near(mod,4f) && Near(tm,1f) && Near(sc,1f) && !ClassSystem.Bloodline(p);string tip=ClassLevelInfo.ClassDetail(p,h,S),expl=part.ExplanationPart(StatRequest.For(p));
     Check(part!=null && Near(part.abilityPer,.1f) && Near(part.LevelPer,.05f) && Near(part.LevelMax,.95f) && div!=null && Near(div.abilityPer,.05f) && Near(div.LevelPer,.02f)
      && Near(v,want) && (!plain || Near(v,1.99f)) && Near(next-v,.05f) && tip.Contains(ip.LabelCap+" +5%") && tip.Contains("最多 +95%") && expl.Contains("×10%") && expl.Contains("+5%"),
      "[1.98.0] sorcerer 10, Social 12, CHA 18 (mod "+mod.ToString("0.##")+", talent ×"+tm.ToString("0.##")+", scale "+sc.ToString("0.##")+"): innate power ×"+v.ToString("0.00")+" (want ×"+want.ToString("0.00")+", old ×1.52), next level ×"+next.ToString("0.00")+"; divine still 5% / 2%");}

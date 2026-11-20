@@ -115,7 +115,9 @@ namespace LichPhylactery {
    if(c==ClassMartial2.Ranger && (level==1 || level==ClassMartial2.SecondFoeLevel))l.Add("宿敌 ".Loc()+(level==1?1:2)+" 种".Loc());
    return l;
   }
-  public static string ClassTip(Pawn p,Hediff_Adventurer h,LP_ClassDef c){
+  // 2026-11-20 Peter：职业页悬停只留两行介绍（特色 + 强度/主属性/技能），不要别的内容。旧的长提示改名 ClassDetail，只给测试用。
+  public static string ClassTip(Pawn p,Hediff_Adventurer h,LP_ClassDef c)=>c?.description??"";
+  public static string ClassDetail(Pawn p,Hediff_Adventurer h,LP_ClassDef c){
    var sb=new StringBuilder();
    sb.AppendLine(c.LabelCap);sb.AppendLine();sb.AppendLine(c.description);sb.AppendLine();
    sb.AppendLine("每个职业等级：部位生命 +".Loc()+(c.PartPerLevel*100f).ToString("0.#")+"%（未分配职业点的等级 +".Loc()+(Hediff_Adventurer.UnspentPartPer*100f).ToString("0.#")+"%；合计再减 ".Loc()+(Hediff_Adventurer.UnspentPartPer*100f).ToString("0.#")+"%，再乘体质；加点和升级都不会降低）".Loc());

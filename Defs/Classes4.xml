@@ -6,7 +6,7 @@
   <LichPhylactery.LP_ClassDef>
     <defName>LP_Class_Barbarian</defName>
     <label>野蛮人</label>
-    <description>DND 野蛮人以怒为力：狂暴、鲁莽攻击、危险感知（被动）、野性怒吼、残暴重击（被动）、不灭之怒（被动），终极 原初斗士。强度看“狂怒强度”（格斗等级与力量）。资源：怒气（受到敌人伤害 +0.5、命中敌人 +0.1，脱战后每小时 −1，睡觉不恢复）。狂暴中不能使用施法职业的能力。物理职业：额外攻击、战斗风格。</description>
+    <description>以怒为力的狂战士，挨打越多越凶，皮糙肉厚。\n强度：「狂怒强度」（主属性力量，技能格斗）。狂暴中不能用施法职业的能力。</description>
     <mainSkill>Melee</mainSkill>
     <primary>Str</primary>
     <order>9</order>
@@ -29,7 +29,7 @@
   <LichPhylactery.LP_ClassDef>
     <defName>LP_Class_Ranger</defName>
     <label>游侠</label>
-    <description>DND 游侠是荒野的猎手：宿敌（被动，选一种生物类型）、猎人印记、野外穿行（被动）、齐射、兽伴（被动）、隐匿伏击，终极 屠戮宿敌。强度看“猎术强度”（射击或格斗较高者，敏捷或感知较高者）。没有资源，能力只看冷却。主人是游侠的动物得到动物伙伴的经验加成。物理职业：额外攻击、战斗风格。</description>
+    <description>荒野猎手，弓箭为主，带着兽伴追猎宿敌。\n强度：「猎术强度」（主属性敏捷或感知，技能射击或格斗，取较高者）。</description>
     <mainSkill>Shooting</mainSkill>
     <alternateSkill>Animals</alternateSkill>
     <primary>Dex/Wis</primary>
@@ -53,7 +53,7 @@
   <LichPhylactery.LP_ClassDef>
     <defName>LP_Class_Rogue</defName>
     <label>游荡者</label>
-    <description>DND 游荡者靠诡计取胜：偷袭（被动）、灵巧动作、诡诈闪避（被动）、暗影潜行、淬毒刃、刺杀，终极 幸运一击。强度看“诡术强度”（格斗或射击较高者，敏捷）。没有资源，能力只看冷却。物理职业：战斗风格；不给额外攻击档位，改用偷袭。</description>
+    <description>靠诡计取胜的刺客，潜行偷袭、一击致命。\n强度：「诡术强度」（主属性敏捷，技能格斗或射击，取较高者）。</description>
     <mainSkill>Melee</mainSkill>
     <alternateSkill>Shooting</alternateSkill>
     <primary>Dex</primary>

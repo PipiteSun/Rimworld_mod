@@ -63,7 +63,7 @@ namespace LichPhylactery {
  public static class ClassEffects {
   public static readonly Color MartialColor=new Color(.95f,.6f,.4f);
   public static float Strength(Pawn p,CompProperties_ClassEffect e)=>ClassSystem.Strength(p,e);
-  public static float Power(Pawn p,CompProperties_ClassEffect e)=>e.power*Strength(p,e)*(e.sorcery && Items.Has(p,"LP_Empowered")?1.5f:1f)*ClassLegendary.PowerFactor(p,e)*Warlock.PowerFactor(p,e)*LakeArcana.PowerFactor(p,e)*Subclass2.PowerFactor(p,e)*Subclass3.PowerFactor(p,e)*Spellbook.PowerFactor(e)*CasterSpells.PowerFactor(p,e)*Subclass5.PowerFactor(p,e)*Subclass6.PowerFactor(p,e); // 1.140.0 强效施法、光耀之魂 // 1.130.0 血脉觉醒 // 1.128.0 升环 +25%/环；1.73.0 超魔·强效；1.74.0 法术强效 ×1.3；邪术师（宗主化身、邪魔 + 契约）；1.100.0 超魔·追踪、元素化身
+  public static float Power(Pawn p,CompProperties_ClassEffect e)=>e.power*Strength(p,e)*(e.sorcery && Items.Has(p,"LP_Empowered")?1.5f:1f)*ClassLegendary.PowerFactor(p,e)*Warlock.PowerFactor(p,e)*LakeArcana.PowerFactor(p,e)*Subclass2.PowerFactor(p,e)*Subclass3.PowerFactor(p,e)*Spellbook.PowerFactor(e)*CasterSpells.PowerFactor(p,e)*Subclass5.PowerFactor(p,e)*Subclass6.PowerFactor(p,e)*Subclass7.PowerFactor(p,e); // 1.185.0 野火之灵 // 1.140.0 强效施法、光耀之魂 // 1.130.0 血脉觉醒 // 1.128.0 升环 +25%/环；1.73.0 超魔·强效；1.74.0 法术强效 ×1.3；邪术师（宗主化身、邪魔 + 契约）；1.100.0 超魔·追踪、元素化身
   public static int Duration(Pawn p,CompProperties_ClassEffect e)=>Mathf.RoundToInt(e.duration*(e.durationScales?ClassSystem.StatValue(p,e):1f)*LakeArcana.DurationFactor(p,e)*CasterSpells.DurationFactor(p,e)); // 1.130.0 超魔·扩展 // 1.100.0 超魔·延效
   public static float Radius(Pawn p,CompProperties_ClassEffect e)=>e.radius*(e.radiusScales?ClassSystem.StatValue(p,e):1f);
   static bool Hostile(Pawn caster,Pawn t)=>AnyTarget.Hostile(caster,t); // 1.136.0 热修：手动选的目标不分敌我

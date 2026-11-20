@@ -4,7 +4,7 @@
   <LichPhylactery.LP_ClassDef>
     <defName>LP_Class_Gunslinger</defName>
     <label>枪手</label>
-    <description>DND 枪手靠胆识和一把好枪活下来：相依之枪、枪手闪避、暴力射击（会卡壳）、部位瞄准、致命一击、威慑射击，终极 死亡射击。只吃火器（工业以上的远程武器和本模组的魔法枪、矮人枪械；弓、弩、法杖、手雷不算）。3 级选枪道：流浪者（短枪 + 刀）、双枪客（短枪）、狙击手（长枪）或先锋（重火器）。还会造枪：做火器更快，有机会高一档品质。强度看“枪术强度”（射击，敏捷）。资源：胆识（用火器击杀、打倒敌人就回，睡觉也回）。物理职业：额外攻击、战斗风格。</description>
+    <description>靠胆识和一把好枪吃饭的火器专家，只用火器，还会造枪。\n强度：「枪术强度」（主属性敏捷，技能射击）。</description>
     <mainSkill>Shooting</mainSkill>
     <alternateSkill>Crafting</alternateSkill>
     <primary>Dex/Wis</primary>

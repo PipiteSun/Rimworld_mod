@@ -7,7 +7,7 @@
   <LichPhylactery.LP_ClassDef>
     <defName>LP_Class_Bard</defName>
     <label>吟游诗人</label>
-    <description>DND 吟游诗人用歌声与言语施法：恶毒嘲讽（戏法）、吟游激励、治疗真言、狂笑术、安歇之歌、万事通（被动）、反迷惑之歌、困惑术、传颂之歌、魔法奥秘（10 / 13 级各从别的施法职业学一个法术）、惑心幻景，终极 创世之言。3 级选学院：学识、勇气、剑舞或雄辩。强度看“激昂强度”（社交或艺术，魅力），伤害与治疗（设置开着时）乘心灵敏感度。资源：乐韵（上限 2 + 吟游等级 + 魅力调整值；醒着慢慢回、睡觉快，演奏乐器、听音乐、做艺术品时更快，每次和人聊天 +0.2）。</description>
+    <description>用歌声施法的多面手，激励队友、扰乱敌人，什么都会一点。\n强度：「激昂强度」（主属性魅力，技能社交或艺术，取较高者）；伤害与治疗另乘心灵敏感度。</description>
     <mainSkill>Social</mainSkill>
     <alternateSkill>Artistic</alternateSkill>
     <primary>Cha</primary>

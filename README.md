@@ -2,7 +2,7 @@
 
 把《龙与地下城》（D&D）的种族、职业、冒险者等级、魔法物品、神祇与怪物带进 RimWorld 的大型内容模组。从最初的“命匣与巫妖”一路扩展而来，packageId 仍是 `local.lich.phylactery`，旧存档可以直接继续用。
 
-- **当前版本**：1.181.0（新职业心灵术士、枪手；竖版书脊贴图修复）
+- **当前版本**：1.185.0（每个职业至少 5 个子职业；DND 生物野性等级不低于 CR）
 - **游戏版本**：RimWorld 1.7
 - **详细说明**：游戏内容、各系统数值和完整更新日志见 [`使用说明.txt`](使用说明.txt)
 
@@ -79,7 +79,7 @@ ArtSource/     贴图源文件与各版本报告（版本备份 backup-* 不进�
 
 **DND边缘大陆 (LichPhylactery)** is a large RimWorld 1.7 content mod that brings Dungeons & Dragons into the rim: liches and phylacteries, giants, dragonborn, trolls, mind flayers and dozens of other heritable races; adventurer levels 1–40 with six ability scores, thirteen classes with subclasses, spellbooks and spell lists up to 9th level, mana-lake arcana and lake seals, configurable auto-cast, feats and legendary traits; D&D factions, events, an endless pocket-map dungeon, an adventurer contract board, a bestiary, deities and ascension, demon summoning and planar pacts; plus magic items, armor sets, alchemy and new workbenches. All D&D research lives in one research tab.
 
-- **Version:** 1.181.0 (new classes Psion and Gunslinger; vertical book spine texture fix) · **Game:** RimWorld 1.7 · **packageId:** `local.lich.phylactery`
+- **Version:** 1.185.0 (at least 5 subclasses per class; DND creature levels ≥ CR) · **Game:** RimWorld 1.7 · **packageId:** `local.lich.phylactery`
 - **Required:** Harmony, Royalty, Biotech
 - **Optional:** Ideology, Vanilla Psycasts Expanded, Humanoid Alien Races (no longer needed; load before this mod if installed), and several other mods with small bridges that only load when present
 - **Install:** drop the folder into `RimWorld/Mods/`, enable it after its dependencies. Prebuilt DLLs are included; rebuild with `Source/Build.ps1` (PowerShell 7) if you change the code.

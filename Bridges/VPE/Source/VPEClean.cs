@@ -10,9 +10,25 @@ namespace LichPhylactery.VPEBridge {
  // 1.99.1 VPE 里不再出现 DND 内容（职业已经是冒险者分页的独立体系）：
  // · VPE 给每个灵能自动生成的神经成型器里，79 个旧职业能力（“（旧）”）的那份：不再出现在商人、奖励和物品筛选里（定义保留，老存档里的照样读得进来，用不了）；
  // · 新生成的人（VPE 给 NPC 随机配灵能时）如果带上了旧路径 / 旧能力，当场去掉。“DND职业”页签的隐藏在 Martial.cs（HideMovedPaths）。
+ // 1.182.0（Peter：游戏里还能找到训练旧 DND 技能的训练器）：旧职业能力的神经成型器干脆不生成了。
+ // VPE 在自己的 Mod 构造函数里给 ThingDefGenerator_Neurotrainer.ImpliedThingDefs 打补丁，生成隐含定义在所有 Mod 构造之后、
+ // StaticConstructorOnStartup 之前，所以这里用一个 Mod 子类提前挂一个最后执行的后置补丁，把赋予 Ability_ClassLegacy 能力的那些筛掉。
+ // 旧能力 / 旧路径的定义本身保留（老存档迁移成冒险者职业等级要读它们）。
+ public class VPECleanMod : Mod {
+  public VPECleanMod(ModContentPack content):base(content){
+   var m=AccessTools.Method(typeof(ThingDefGenerator_Neurotrainer),nameof(ThingDefGenerator_Neurotrainer.ImpliedThingDefs));
+   if(m!=null)new Harmony("local.lich.phylactery.vpebridge.trainers").Patch(m,postfix:new HarmonyMethod(typeof(VPECleanMod),nameof(Postfix)){priority=Priority.Last});
+  }
+  public static int Removed;
+  public static bool Legacy(ThingDef d)=>d?.comps!=null && d.comps.OfType<CompProperties_UseEffectGiveAbility>().Any(c=>c.ability?.abilityClass!=null && typeof(Ability_ClassLegacy).IsAssignableFrom(c.ability.abilityClass));
+  static void Postfix(ref IEnumerable<ThingDef> __result){
+   if(__result==null)return;
+   var list=__result.ToList();Removed+=list.RemoveAll(Legacy);__result=list;
+  }
+ }
  [StaticConstructorOnStartup]
  public static class VPEClean {
-  public static readonly List<ThingDef> Psytrainers=new List<ThingDef>();
+  public static readonly List<ThingDef> Psytrainers=new List<ThingDef>(); // 1.182.0 起正常应为空（已在生成时筛掉），留作兜底
   static VPEClean(){
    // 灵能页签在 ThingDef.ResolveReferences 时就由 InspectTabManager 建好共享实例，比本程序集打 Harmony 补丁早，
    // 构造函数补丁对它不起作用（游戏里还看得到“DND职业”页签）：这里对已建好的共享实例补做一次隐藏。
